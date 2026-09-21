@@ -13,6 +13,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 外延 */
     {
       id: 'ax.ext',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '外延公理',
       title: '外延公理（Axiom of Extensionality）',
@@ -36,6 +37,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 分离 */
     {
       id: 'ax.sep',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '分离公理模式',
       title: '分离公理模式（Axiom Schema of Separation）',
@@ -58,6 +60,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 配对 */
     {
       id: 'ax.pair',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '配对公理',
       title: '配对公理（Axiom of Pairing）',
@@ -77,6 +80,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 并集 */
     {
       id: 'ax.union',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '并集公理',
       title: '并集公理（Axiom of Union）',
@@ -96,6 +100,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 幂集 */
     {
       id: 'ax.power',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '幂集公理',
       title: '幂集公理（Axiom of Power Set）',
@@ -115,6 +120,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 无穷 */
     {
       id: 'ax.inf',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '无穷公理',
       title: '无穷公理（Axiom of Infinity）',
@@ -135,6 +141,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 替换 */
     {
       id: 'ax.repl',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '替换公理模式',
       title: '替换公理模式（Axiom Schema of Replacement）',
@@ -154,6 +161,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 正则 */
     {
       id: 'ax.found',
+      cluster: 'set.zfc',
       type: 'axiom',
       label: '正则公理',
       title: '正则公理 / 基础公理（Axiom of Foundation）',
@@ -178,6 +186,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 选择 */
     {
       id: 'ax.choice',
+      cluster: 'set.choice',
       type: 'axiom',
       label: '选择公理',
       title: '选择公理（Axiom of Choice, AC）',

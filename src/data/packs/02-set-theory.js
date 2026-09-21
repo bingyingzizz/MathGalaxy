@@ -10,6 +10,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------------- 子集 */
     {
       id: 'def.subset',
+      cluster: 'set.construct',
       type: 'definition',
       label: '子集',
       title: '子集 / 真子集（Subset）',
@@ -34,6 +35,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 有序对 */
     {
       id: 'def.pair',
+      cluster: 'set.construct',
       type: 'definition',
       label: '有序对',
       title: '有序对（Ordered Pair, Kuratowski）',
@@ -59,6 +61,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 关系与函数 */
     {
       id: 'def.rel',
+      cluster: 'set.choice',
       type: 'definition',
       label: '关系与函数',
       title: '关系 / 函数（Relation & Function）',
@@ -83,6 +86,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 选择函数 */
     {
       id: 'def.choicefn',
+      cluster: 'set.choice',
       type: 'definition',
       label: '选择函数',
       title: '选择函数（Choice Function）',
@@ -107,6 +111,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 空集存在 */
     {
       id: 'thm.empty',
+      cluster: 'set.construct',
       type: 'theorem',
       label: '空集存在',
       title: '空集存在且唯一',
@@ -126,6 +131,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 无自属集合 */
     {
       id: 'thm.noself',
+      cluster: 'set.zfc',
       type: 'theorem',
       label: '无自属集合',
       title: '任何集合都不属于自身',
@@ -145,6 +151,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 自然数集 */
     {
       id: 'thm.omega',
+      cluster: 'set.zfc',
       type: 'theorem',
       label: '自然数集存在',
       title: '自然数集 ω 存在',
@@ -164,6 +171,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 二元并 */
     {
       id: 'thm.binunion',
+      cluster: 'set.construct',
       type: 'theorem',
       label: '二元并存在',
       title: '二元并 a ∪ b 存在',
@@ -183,6 +191,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 笛卡尔积 */
     {
       id: 'thm.product',
+      cluster: 'set.construct',
       type: 'theorem',
       label: '笛卡尔积存在',
       title: '笛卡尔积 A × B 存在',

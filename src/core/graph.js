@@ -28,6 +28,7 @@
       label: n.label || n.title || n.id,
       title: n.title || n.label || n.id,
       regions: toArray(n.regions || n.region),
+      cluster: n.cluster || null,        // 所属星团 id（可省略 → 直接属于星系）
       tags: toArray(n.tags),
       statement: n.statement || '',
       notes: n.notes || '',
@@ -85,7 +86,7 @@
   }
 
   /* ------------------------------------------------------------------ 构建 */
-  function buildGraph(packs, regions) {
+  function buildGraph(packs, regions, clusterDefs) {
     var nodes = [], edges = [], byId = Object.create(null);
     var warnings = [];
 
@@ -103,6 +104,7 @@
     packs.forEach(function (pack) {
       var name = pack.name || 'pack';
       (pack.edges || []).forEach(function (raw) {
+        if (raw && raw.kind === 'cluster-link') return;  // 星团连线请写在 pack.clusterLinks
         var e = normEdge(raw, name);
         e.id = e.id || ('e' + (++autoId) + ':' + e.kind);
         edges.push(e);
@@ -153,6 +155,85 @@
     };
 
     graph.regions.forEach(function (r) { graph.regionById[r.id] = r; });
+
+    /* ---------------------------------------------------------- 星团索引 */
+    /* 星团 = 星系内部一套「自足的装置」。节点写 cluster 字段即归属；
+       不写就直属于星系。星团的 parent 指向它所属的星系。            */
+    var clusters = (clusterDefs || []).slice();
+    var clusterById = Object.create(null);
+    clusters.forEach(function (c) {
+      clusterById[c.id] = c;
+      c.nodes = [];
+      c.region = null;
+    });
+    nodes.forEach(function (n) {
+      var co = n.cluster ? clusterById[n.cluster] : null;
+      if (n.cluster && !co) {
+        warnings.push('节点 ' + n.id + ' 指向不存在的星团：' + n.cluster);
+      }
+      n.clusterObj = co || null;
+      if (co) co.nodes.push(n);
+    });
+    graph.clusters = clusters;
+    graph.clusterById = clusterById;
+
+    /** 星团所属星系对象 */
+    graph.galaxyOf = function (c) {
+      return (c && c.parent && graph.regionById[c.parent]) || null;
+    };
+
+    /**
+     * 星团之间的连线。
+     *  · 自动聚合：两个星团之间有几条节点级连线，就累积几条
+     *  · 显式声明：数据里写 { kind:'cluster-link', a:'团id', b:'团id', label }
+     * 两种合并，显式的权重更高。
+     */
+    graph.buildClusterLinks = function () {
+      var tally = Object.create(null);
+
+      function bump(a, b, w, extra) {
+        if (!a || !b || a === b) return;
+        var key = a < b ? a + '|' + b : b + '|' + a;
+        if (!tally[key]) tally[key] = { a: a < b ? a : b, b: a < b ? b : a, count: 0, links: [] };
+        tally[key].count += w;
+        if (extra) tally[key].links.push(extra);
+      }
+
+      edges.forEach(function (e) {
+        var cs = [];
+        edgeNodes(e).forEach(function (id) {
+          var n = byId[id];
+          if (n && n.clusterObj && cs.indexOf(n.clusterObj.id) < 0) cs.push(n.clusterObj.id);
+        });
+        for (var i = 0; i < cs.length; i++) {
+          for (var j = i + 1; j < cs.length; j++) {
+            // 每对星团之间计入一次（一条边只算一次）
+            bump(cs[i], cs[j], 1, { kind: e.kind, id: e.id });
+          }
+        }
+      });
+
+      // 显式星团连线
+      packs.forEach(function (pack) {
+        (pack.clusterLinks || []).forEach(function (l, k) {
+          var a = l.a || l.from, b = l.b || l.to;
+          if (!clusterById[a] || !clusterById[b]) {
+            warnings.push('星团连线指向不存在的星团：' + a + ' / ' + b);
+            return;
+          }
+          var key = a < b ? a + '|' + b : b + '|' + a;
+          if (!tally[key]) tally[key] = { a: a < b ? a : b, b: a < b ? b : a, count: 0, links: [] };
+          tally[key].count += l.weight || 4;
+          tally[key].explicit = true;
+          tally[key].label = l.label || tally[key].label;
+          tally[key].note = l.note || tally[key].note;
+        });
+      });
+
+      return Object.keys(tally).map(function (k) { return tally[k]; });
+    };
+
+    graph.clusterLinks = graph.buildClusterLinks();
 
     /* 每个节点真正「用到的定义」（蓝线另一头是定义节点） */
     graph.definitionsOf = function (id) {

@@ -10,6 +10,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.poset',
+      cluster: 'order.structure',
       type: 'definition',
       label: '偏序集',
       title: '偏序集 / 全序集（Partially Ordered Set）',
@@ -35,6 +36,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.chain',
+      cluster: 'order.structure',
       type: 'definition',
       label: '链',
       title: '链 / 反链（Chain / Antichain）',
@@ -57,6 +59,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.bound',
+      cluster: 'order.structure',
       type: 'definition',
       label: '上界与极大元',
       title: '上界 / 上确界 / 极大元（Bound & Maximal Element）',
@@ -82,6 +85,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.wellorder',
+      cluster: 'order.structure',
       type: 'definition',
       label: '良序集',
       title: '良序集（Well-Ordered Set）',
@@ -102,6 +106,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.finchar',
+      cluster: 'order.structure',
       type: 'definition',
       label: '有限特征',
       title: '有限特征族（Family of Finite Character）',

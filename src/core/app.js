@@ -45,7 +45,7 @@
 
     /* ------------------------------------------------------------ 建图 */
     var localPacks = (MG.packs || []).slice();
-    var graph = MG.buildGraph(localPacks, MG.regions);
+    var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
@@ -196,11 +196,19 @@
       return { k: k, cx: base.cx, cy: base.cy };
     }
 
-    /** 适配到某个板块 */
+    /** 适配到某个星系 */
     function fitRegion(rid) {
       var list = graph.nodes.filter(function (n) { return n.regions.indexOf(rid) >= 0; });
       if (!list.length) return;
       cam.animateTo(targetFor(bboxOf(list), 170, 1.35));
+      requestDraw();
+    }
+
+    /** 适配到某个星团 */
+    function fitCluster(cid) {
+      var c = graph.clusterById[cid];
+      if (!c || !c.nodes || !c.nodes.length) return;
+      cam.animateTo(targetFor(bboxOf(c.nodes), 190, 1.7));
       requestDraw();
     }
 
@@ -216,6 +224,7 @@
         else focusEdge(hit.id, { force: true });
       },
       onRegion: function (rid) { fitRegion(rid); },
+      onCluster: function (cid) { fitCluster(cid); },
       onClose: function () { panelOpen = false; requestDraw(); }
     });
 
@@ -286,10 +295,21 @@
         '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px;position:relative"></span>推出 →</span>' +
         '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>定义引用</span>';
 
+      // 星系 + 它下面的星团（缩进一层）
       var regionRows = live.map(function (r) {
-        return '<span class="lg-item" data-region="' + r.id + '" style="cursor:pointer">' +
+        var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
+        var head = '<span class="lg-item" data-region="' + r.id + '" style="cursor:pointer">' +
           '<span class="lg-swatch" style="background:' + U.mixWithWhite(r.color, 0.45) + '"></span>' +
-          r.name + '<span style="color:#A5ABB3">·' + r.stat.count + '</span></span>';
+          '<b style="font-weight:600">' + r.name + '</b>' +
+          '<span style="color:#A5ABB3">·' + r.stat.count + '</span></span>';
+        if (!mine.length) return head;
+        var kids = mine.map(function (c) {
+          return '<span class="lg-item" data-cluster="' + c.id + '" style="cursor:pointer">' +
+            '<span class="lg-swatch" style="background:' + U.mixWithWhite(c.color || r.color, 0.62) +
+            ';width:11px;height:11px;border-radius:50%"></span>' +
+            c.name + '<span style="color:#A5ABB3">·' + c.stat.count + '</span></span>';
+        }).join('');
+        return head + '<span class="lg-kids">' + kids + '</span>';
       }).join('');
 
       legendEl.innerHTML =
@@ -306,6 +326,8 @@
         legendEl.classList.toggle('collapsed');
         return;
       }
+      var cchip = e.target.closest ? e.target.closest('[data-cluster]') : null;
+      if (cchip) { fitCluster(cchip.getAttribute('data-cluster')); return; }
       var chip = e.target.closest ? e.target.closest('[data-region]') : null;
       if (chip) fitRegion(chip.getAttribute('data-region'));
     });
@@ -348,15 +370,18 @@
     hideHintSoon();
 
     /* ------------------------------------------------------------ 启动 */
-    /** 深链：#n=<节点id>  #e=<连线id>  #r=<板块id> */
+    /** 深链：#n=<节点id>  #e=<连线id>  #r=<星系id>  #c=<星团id> */
     function applyHash() {
       var h = String(global.location.hash || '').replace(/^#/, '');
-      var m = h.match(/^([ner])=(.+)$/);
+      var m = h.match(/^([necr])=(.+)$/);
       if (!m) return false;
       var id = decodeURIComponent(m[2]).trim();
       if (m[1] === 'n' && graph.byId[id]) { focusNode(id, { force: true }); return true; }
       if (m[1] === 'e' && findEdge(id)) { focusEdge(id, { force: true }); return true; }
       if (m[1] === 'r' && graph.regionById[id]) { fitRegion(id); return true; }
+      if (m[1] === 'c' && graph.clusterById[id] && graph.clusterById[id].nodes.length) {
+        fitCluster(id); return true;
+      }
       return false;
     }
 
@@ -388,7 +413,7 @@
           if (!v.ok) { console.warn('[数学星图] 外部内容包有问题：', p.name, v.errs); }
         });
         var packs = localPacks.concat(res.packs);
-        graph = MG.buildGraph(packs, MG.regions);
+        graph = MG.buildGraph(packs, MG.regions, MG.clusters);
         MG.computeLayout(graph);
         view.graph = graph;
         view.visible = MG.graphUtil.visibleEdges(graph);

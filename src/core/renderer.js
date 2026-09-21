@@ -52,6 +52,13 @@
     return w;
   }
 
+  /* ------------------------------------------------------------ LOD 工具 */
+  function smoothstep(e0, e1, x) {
+    if (e1 === e0) return x < e0 ? 0 : 1;
+    var t = U.clamp((x - e0) / (e1 - e0), 0, 1);
+    return t * t * (3 - 2 * t);
+  }
+
   /* ======================================================================= */
   function createRenderer(canvas, view) {
     var ctx = canvas.getContext('2d');
@@ -59,6 +66,27 @@
     var W = 0, H = 0;
     var geomCache = null;      // 本帧的连线几何
     var nodeCache = Object.create(null);
+
+    /* 本帧各层的可见度（0~1），随缩放变化，由 computeLod() 填 */
+    var lodA = {
+      galaxyName: 1, clusterName: 1, nodeDot: 1,
+      nodeName: 1, nodeEdge: 1, clusterLink: 0
+    };
+
+    function computeLod() {
+      var k = view.cam.k, L = C.lod;
+      lodA.nodeDot = smoothstep(L.nodeDotIn[0], L.nodeDotIn[1], k);
+      lodA.nodeName = smoothstep(L.nodeNameIn[0], L.nodeNameIn[1], k);
+      lodA.nodeEdge = smoothstep(L.nodeEdgeIn[0], L.nodeEdgeIn[1], k);
+      // 星团名：放大到看得见节点名时就退场，避免和节点名打架
+      var cNameIn = smoothstep(L.clusterNameIn[0], L.clusterNameIn[1], k);
+      var cNameOut = smoothstep(L.clusterNameOut[0], L.clusterNameOut[1], k);
+      lodA.clusterName = cNameIn * (1 - cNameOut);
+      // 星系名：最小的时候出现，星团名一出来就让它退场
+      lodA.galaxyName = (1 - cNameIn) * smoothstep(L.galaxyNameIn[0], L.galaxyNameIn[1], k);
+      // 星团级粗线与节点级细线交叉淡入淡出
+      lodA.clusterLink = 1 - smoothstep(L.clusterLinkOut[0], L.clusterLinkOut[1], k);
+    }
 
     /* ------------------------------------------------------------ 尺寸 */
     function resize() {
@@ -239,8 +267,12 @@
 
       var geoms = buildGeometry();
       var cam = view.cam;
+      computeLod();
 
-      /* ---------- 1. 连线 ---------- */
+      /* ---------- 0. 星团级粗线（缩小时才出现，整块对整块） ---------- */
+      drawClusterLinks();
+
+      /* ---------- 1. 节点级连线 ---------- */
       var defs = [], eqs = [], imps = [];
       geoms.forEach(function (g) {
         if (g.edge.kind === 'definition') defs.push(g);
@@ -254,19 +286,128 @@
       geoms.forEach(function (g) { if (g.arrow) drawArrow(g); });
 
       /* ---------- 2. 节点 ---------- */
-      view.graph.nodes.forEach(function (n) { drawNode(n); });
+      if (lodA.nodeDot > 0.02) {
+        view.graph.nodes.forEach(function (n) { drawNode(n); });
+      }
 
-      /* ---------- 3. 名称 ---------- */
+      /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
+      if (lodA.galaxyName > 0.02) drawGalaxyNames();
+      if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
+    }
 
-      /* ---------- 4. 节点序号取消（占位） ---------- */
+    /* ------------------------------------------------ 星系名 */
+    function drawGalaxyNames() {
+      var a = lodA.galaxyName;
+      var fs = U.clamp(15 * Math.pow(view.cam.k, 0.30), 13, 34);
+      ctx.save();
+      ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      (view.graph.regions || []).forEach(function (r) {
+        if (!r.stat || !r.name) return;
+        var p = view.cam.toScreen(r.stat.cx, r.stat.cy);
+        if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
+        var text = r.name;
+        var tw = ctx.measureText(text).width;
+        var ls = fs * 0.18;
+        var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
+        ctx.globalAlpha = a;
+        ctx.fillStyle = 'rgba(255,255,255,0.86)';
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, p.y - bh / 2, bw, bh, bh / 2);
+        else ctx.rect(p.x - bw / 2, p.y - bh / 2, bw, bh);
+        ctx.fill();
+        ctx.strokeStyle = U.rgba(r.color, 0.55);
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        // 手动加字距
+        var chars = text.split('');
+        var total = tw + ls * (chars.length - 1);
+        var cx = p.x - total / 2;
+        ctx.fillStyle = 'rgba(26,28,34,0.92)';
+        ctx.textAlign = 'left';
+        chars.forEach(function (ch) {
+          ctx.fillText(ch, cx, p.y + 0.5);
+          cx += ctx.measureText(ch).width + ls;
+        });
+        ctx.textAlign = 'center';
+        ctx.globalAlpha = 1;
+      });
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 星团级连线 */
+    function drawClusterLinks() {
+      var a = lodA.clusterLink;
+      if (a <= 0.02) return;
+      var links = view.graph.clusterLinks || [];
+      if (!links.length) return;
+      var cfgL = C.clusterLink;
+      var maxCount = 1;
+      links.forEach(function (l) { if (l.count > maxCount) maxCount = l.count; });
+
+      ctx.save();
+      ctx.lineCap = 'round';
+      links.forEach(function (l) {
+        if (l.count < cfgL.minEdges) return;
+        var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
+        if (!A || !B || !A.stat || !B.stat) return;
+        var p0 = view.cam.toScreen(A.stat.cx, A.stat.cy);
+        var p1 = view.cam.toScreen(B.stat.cx, B.stat.cy);
+        var len = U.dist(p0.x, p0.y, p1.x, p1.y);
+        if (len < 2) return;
+        var t = Math.min(1, l.count / Math.max(2, maxCount));
+        var w = U.lerp(cfgL.widthMin, cfgL.widthMax, Math.sqrt(t)) * Math.min(1.4, Math.max(0.6, view.cam.k));
+        var bend = (l.a < l.b ? 1 : -1) * len * cfgL.curve;
+        var ctl = U.perpControl(p0.x, p0.y, p1.x, p1.y, bend);
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.quadraticCurveTo(ctl.x, ctl.y, p1.x, p1.y);
+        ctx.lineWidth = w;
+        ctx.strokeStyle = 'rgba(' + cfgL.color + ',' + (cfgL.alpha * a).toFixed(3) + ')';
+        ctx.stroke();
+      });
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 星团名 */
+    function drawClusterNames() {
+      var a = lodA.clusterName;
+      var fs = U.clamp(C.cluster.labelSize * Math.pow(view.cam.k, 0.42), 11, 26);
+      ctx.save();
+      ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      (view.graph.clusters || []).forEach(function (c) {
+        if (!c.stat || !c.name) return;
+        var p = view.cam.toScreen(c.stat.cx, c.stat.cy);
+        if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
+        var text = c.name;
+        var tw = ctx.measureText(text).width;
+        var pad = C.cluster.namePad;
+        var bw = tw + pad * 2, bh = fs + 9;
+        ctx.globalAlpha = a;
+        ctx.fillStyle = 'rgba(255,255,255,0.88)';
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, p.y - bh / 2, bw, bh, bh / 2);
+        else ctx.rect(p.x - bw / 2, p.y - bh / 2, bw, bh);
+        ctx.fill();
+        var g = view.graph.galaxyOf(c);
+        if (g) { ctx.strokeStyle = U.rgba(g.color, 0.5); ctx.lineWidth = 1.2; ctx.stroke(); }
+        // 深色字，保证在云上读得清
+        ctx.fillStyle = 'rgba(30,32,40,0.90)';
+        ctx.fillText(text, p.x, p.y + 0.5);
+        ctx.globalAlpha = 1;
+      });
+      ctx.restore();
     }
 
     function drawEdges(list) {
       list.forEach(function (g) {
         var e = g.edge;
         var style = T.edgeStyles[e.kind];
-        var a = alphaForEdge(e);
+        var a = alphaForEdge(e) * lodA.nodeEdge;
         if (a <= 0.02) return;
 
         var active = isEdgeActive(g);
@@ -329,7 +470,7 @@
 
     function drawArrow(g) {
       var e = g.edge;
-      var a = alphaForEdge(e);
+      var a = alphaForEdge(e) * lodA.nodeEdge;
       if (a <= 0.02) return;
       var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
       var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;
@@ -351,7 +492,7 @@
     function drawNode(n) {
       var p = screenOf(n);
       var r = nodeRadius(n);
-      var a = alphaForNode(n.id);
+      var a = alphaForNode(n.id) * lodA.nodeDot;
       if (a <= 0.02) return;
 
       var st = MG.typeStyle(n.type);
@@ -392,7 +533,7 @@
     function drawLabels() {
       var k = view.cam.k;
       var fs = labelFont();
-      if (k < C.node.labelMinZoom) { drawKeyLabels(fs); return; }
+      if (lodA.nodeName <= 0.02) { drawKeyLabels(fs); return; }
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
       var keepAll = k >= C.node.labelMinZoomAll;
@@ -429,7 +570,7 @@
         }
         placed.push(box);
 
-        var alpha = a * (isSpecial ? 1 : 0.92);
+        var alpha = a * (isSpecial ? 1 : 0.92 * lodA.nodeName);
         ctx.lineWidth = Math.max(2.5, fs * 0.28);
         ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
         ctx.strokeText(text, x, y);

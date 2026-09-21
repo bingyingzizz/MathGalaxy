@@ -13,6 +13,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.vs',
+      cluster: 'algebra.vectorspace',
       type: 'definition',
       label: '向量空间的基',
       title: '向量空间 / 线性无关 / 基',
@@ -33,6 +34,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.vsbasis',
+      cluster: 'algebra.vectorspace',
       type: 'theorem',
       label: '每个向量空间有基',
       title: '每个向量空间都有基（Zorn 引理的经典应用）',

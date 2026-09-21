@@ -12,6 +12,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.wellordering',
+      cluster: 'order.maximal',
       type: 'theorem',
       label: '良序定理',
       title: '良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）',
@@ -37,6 +38,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.zorn',
+      cluster: 'order.maximal',
       type: 'lemma',
       label: '佐恩引理',
       title: '佐恩引理（Zorn\'s Lemma）',
@@ -59,6 +61,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.hausdorff',
+      cluster: 'order.maximal',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
       title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）',
@@ -80,6 +83,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.tukey',
+      cluster: 'order.maximal',
       type: 'lemma',
       label: 'Tukey 引理',
       title: 'Tukey 引理（Tukey\'s Lemma / Teichmüller–Tukey）',

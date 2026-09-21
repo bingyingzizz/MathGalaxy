@@ -41,8 +41,16 @@
     }
 
     function regionChips(node) {
-      if (!node.regions.length) return '';
-      return '<div class="pn-regions">' + node.regions.map(function (rid) {
+      if (!node.regions.length && !node.clusterObj) return '';
+      var head = '';
+      if (node.clusterObj) {
+        var g = view.graph.galaxyOf ? view.graph.galaxyOf(node.clusterObj) : null;
+        var col = node.clusterObj.color || (g ? g.color : '#8892A0');
+        head = '<span class="pn-chip" data-cluster="' + node.clusterObj.id + '">' +
+          '<span class="lg-swatch" style="background:' + U.mixWithWhite(col, 0.62) + '"></span>' +
+          U.escapeHtml(node.clusterObj.name) + '</span>';
+      }
+      return '<div class="pn-regions">' + head + node.regions.map(function (rid) {
         var r = view.graph.regionById[rid];
         if (!r) return '';
         return '<span class="pn-chip" data-region="' + r.id + '">' +
@@ -242,6 +250,11 @@
 
     /* ----------------------------------------------------------- 事件 */
     bodyEl.addEventListener('click', function (ev) {
+      var cchip = ev.target.closest ? ev.target.closest('[data-cluster]') : null;
+      if (cchip) {
+        hooks.onCluster && hooks.onCluster(cchip.getAttribute('data-cluster'));
+        return;
+      }
       var chip = ev.target.closest ? ev.target.closest('[data-region]') : null;
       if (chip) {
         hooks.onRegion && hooks.onRegion(chip.getAttribute('data-region'));

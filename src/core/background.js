@@ -18,7 +18,7 @@
     var bc = MG.config.background;
     var bb = graph.bbox();
 
-    var pad = 240;
+    var pad = 300;
     var minX = bb.minX - pad, minY = bb.minY - pad;
     var maxX = bb.maxX + pad, maxY = bb.maxY + pad;
     var w = (maxX - minX) * bc.dilate;
@@ -37,17 +37,51 @@
 
     var drawn = 0;
     (graph.regions || []).forEach(function (region) {
-      if (!region.stat) return;                       // 空板块不画云
+      if (!region.stat) return;                       // 空星系不画云
       drawn++;
       paintRegion(ctx, region, graph, bc);
+    });
+
+    // 星团：在星系云之上再叠一层更小更浓的云 → 看起来像星云里更密的结
+    var cdrawn = 0;
+    (graph.clusters || []).forEach(function (c) {
+      if (!c.stat) return;
+      cdrawn++;
+      paintCluster(ctx, c, graph, bc);
     });
 
     return {
       canvas: cv,
       x: minX, y: minY, w: w, h: h,
       scale: scale,
-      regions: drawn
+      regions: drawn,
+      clusters: cdrawn
     };
+  }
+
+  /** 星团的云：比星系云更小、更浓，用星团自己的颜色（没写就继承星系） */
+  function paintCluster(ctx, c, graph, bc) {
+    var cc = MG.config.cluster;
+    var galaxy = graph.galaxyOf ? graph.galaxyOf(c) : null;
+    var color = c.color || (galaxy ? galaxy.color : '#7A8699');
+    var rgb = U.hexToRgb(color);
+    var st = c.stat;
+    var R = st.radius;
+    var rand = U.rngFrom(c.id, MG.config.seed);
+
+    blob(ctx, rgb, st.cx, st.cy, R * 0.98, cc.cloudAlpha * 1.15);
+
+    for (var i = 0; i < 7; i++) {
+      var ang = rand() * Math.PI * 2;
+      var rad = Math.sqrt(rand()) * R * 0.62;
+      var br = R * U.lerp(0.34, 0.56, rand());
+      blob(ctx, rgb, st.cx + Math.cos(ang) * rad, st.cy + Math.sin(ang) * rad,
+        br, cc.cloudAlpha * U.lerp(0.6, 1.15, rand()));
+    }
+
+    c.nodes.forEach(function (n) {
+      blob(ctx, rgb, n.x, n.y, R * 0.24, cc.cloudAlpha * 0.8);
+    });
   }
 
   function paintRegion(ctx, region, graph, bc) {
