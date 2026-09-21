@@ -184,14 +184,18 @@ src/
 ### 网络：本机已配好代理
 
 本机 **127.0.0.1:7890** 上跑着代理（番茄V2航线），走它可以正常访问 GitHub。
-已经给这个仓库配好了一条**只对 github.com 生效**的规则：
+已经配好了一条**只对 github.com 生效**的规则，**全局 + 本仓库各写了一份**：
 
 ```bash
-git config --local http.https://github.com/.proxy http://127.0.0.1:7890
+git config --global http.https://github.com/.proxy http://127.0.0.1:7890   # 已配
+git config --local  http.https://github.com/.proxy http://127.0.0.1:7890   # 已配（双保险）
 ```
 
-代理设置只写在本仓库的 `.git/config` 里（不会被提交），不会污染你其它的项目。
-想全局生效就把 `--local` 换成 `--global`。
+为什么必须写全局：**新设备上第一次 `git clone` 时还没有仓库级配置**，
+不写全局就会卡在「连不上」的死循环里（这个坑实测踩过）。
+
+> ⚠️ 换新设备时，第一件事就是在新机器上执行上面那条 `--global`
+> （把 7890 换成那台机器上的代理端口）。
 
 > **重要**：git 用的 libcurl **不读 Windows 的「系统代理」设置**。
 > 即使浏览器已经能打开 github.com（系统代理 / TUN 模式生效），
