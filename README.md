@@ -174,23 +174,98 @@ src/
 
 ---
 
-## 后续计划
+## 版本管理 / 多端同步
 
-### GitHub 多端同步
+这个文件夹**已经是一个 Git 仓库**了（分支 `main`，已完成首次提交），
+`.gitignore` 只让 Git 管源文件和数学内容，调试截图、编辑器垃圾一律不入库。
 
-内容全部是纯文本 `.js` / `.json`，天然适合 Git：
+内容全部是纯文本 `.js` / `.json`，天然适合 Git。
 
-1. `git init && git add . && git commit -m "init"`，推到 GitHub；
-2. 多台设备 `git pull` 即可拿到同一份星图；
-3. 想把「我自己写的笔记」和「内置内容」分开，就用外部内容包机制：
-   在 `src/data/external/` 放 `index.json` 与若干 `*.json`（结构与 `packs` 完全一致），
-   页面启动时会自动并入。用本地服务器打开即可生效：
+### 网络：本机已配好代理
 
-   ```bash
-   python -m http.server 8000     # 然后访问 http://localhost:8000
-   ```
+`github.com` 的 443 直连不通（DNS 能解析但连不上），而本机 **127.0.0.1:7890** 上跑着代理
+（番茄V2航线），走它可以正常访问 GitHub。已经给这个仓库配好了一条**只对 github.com 生效**的规则：
 
-   （`file://` 直接打开时浏览器禁止 fetch，这时会静默跳过外部包，不影响内置内容。）
+```bash
+git config --local http.https://github.com/.proxy http://127.0.0.1:7890
+```
+
+也就是说，代理设置只写在本仓库的 `.git/config` 里（不会被提交），不会污染你其它的项目。
+如果你想全局生效，把 `--local` 换成 `--global`。
+
+> 代理没开的时候 git 会连不上 GitHub，先启动代理再 push / pull。
+
+### 认证：还差这一步
+
+仓库里没有任何 GitHub 凭据，所以**推送前需要先登录一次**。三种方式任选：
+
+**① 用 Personal Access Token（最简单，推荐）**
+
+在 GitHub → Settings → Developer settings → Personal access tokens 生成一个带 `repo` 权限的 token，
+然后：
+
+```bash
+git remote add origin https://github.com/<你的用户名>/MathGalaxy.git
+git push -u origin main          # 提示输入用户名 / 密码时，密码处粘贴 token
+```
+
+想让 git 记住，先开一下凭据缓存：
+
+```bash
+git config --global credential.helper manager    # Git for Windows 自带
+```
+
+**② 用 SSH（长期最省事）**
+
+注意本机 `github.com:22` 是通的、但常规 git-over-https 走不通，稳妥起见让 SSH 走 443 端口：
+
+```bash
+ssh-keygen -t ed25519 -C "your@email"
+# 把 ~/.ssh/id_ed25519.pub 的内容贴到 GitHub → Settings → SSH keys
+
+# 让 github.com 走 443（写入 ~/.ssh/config）：
+#   Host github.com
+#     HostName ssh.github.com
+#     Port 443
+#     User git
+
+git remote add origin git@github.com:<你的用户名>/MathGalaxy.git
+git push -u origin main
+```
+
+**③ 装 GitHub CLI 一条命令搞定**
+
+```bash
+winget install GitHub.cli     # 或者来 Cherry 里让我用 cli_install 装 gh
+gh auth login
+gh repo create MathGalaxy --public --source=. --push
+```
+
+### 多端使用
+
+```bash
+# 新设备上第一次
+git clone <仓库地址> MathGalaxy
+# 之后
+git pull          # 拉别人的改动
+git add -A && git commit -m "补充：xxx 定理" && git push
+```
+
+星图是纯静态页面，clone 下来**双击 `index.html` 就能看**，不需要安装任何东西。
+在任意一端改了 `src/data/` 里的节点，另一端 `git pull` 刷新页面就同步了。
+
+### 个人笔记和内置内容分开
+
+想让「我自己的笔记」和「内置内容」分开、甚至不进公开仓库，用外部内容包机制：
+在 `src/data/external/` 放 `index.json` 与若干 `*.json`（结构与 `packs` 完全一致），
+页面启动时会自动并入。用本地服务器打开即可生效：
+
+```bash
+python -m http.server 8000     # 然后访问 http://localhost:8000
+```
+
+（`file://` 直接打开时浏览器禁止 fetch，这时会静默跳过外部包，不影响内置内容。）
+私人笔记建议放 `src/data/local/`，那个目录已经在 `.gitignore` 里了。
 
 ### PDF 笔记导入
 
