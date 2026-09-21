@@ -201,63 +201,66 @@ git config --local http.https://github.com/.proxy http://127.0.0.1:7890
 实测结论（2026-09）：`git ls-remote` 走代理 ✅ 2 秒；推送通道 ✅ 能连上 GitHub，
 只差账号认证（`fatal: could not read Username`）。
 
-### 认证：还差这一步
+### 远端仓库：已连上 ✅
 
-### 认证：还差这一步
-
-仓库里没有任何 GitHub 凭据，所以**推送前需要先登录一次**。三种方式任选：
-
-**① 用 Personal Access Token（最简单，推荐）**
-
-在 GitHub → Settings → Developer settings → Personal access tokens 生成一个带 `repo` 权限的 token，
-然后：
-
-```bash
-git remote add origin https://github.com/<你的用户名>/MathGalaxy.git
-git push -u origin main          # 提示输入用户名 / 密码时，密码处粘贴 token
+```
+https://github.com/bingyingzizz/MathGalaxy     （private 🔒）
+origin  https://github.com/bingyingzizz/MathGalaxy.git
+main    → 跟踪 origin/main
 ```
 
-想让 git 记住，先开一下凭据缓存：
+认证走的是 **Git 自带的凭据管理器（GCM）**，账号已登录并记住，
+`git push` / `git pull` 不用再输任何东西。
+查看当前账号：`git credential-manager github list`
+
+### 日常操作（已经是全部了）
 
 ```bash
-git config --global credential.helper manager    # Git for Windows 自带
+cd /d H:\MathGalaxy
+
+git pull                                  # 先拉一下（多端时很重要）
+# ……改 src/data/ 里的内容，或者改引擎……
+git add -A
+git commit -m "补充：Banach 不动点定理"
+git push
 ```
 
-**② 用 SSH（长期最省事）**
-
-注意本机 `github.com:22` 是通的、但常规 git-over-https 走不通，稳妥起见让 SSH 走 443 端口：
-
-```bash
-ssh-keygen -t ed25519 -C "your@email"
-# 把 ~/.ssh/id_ed25519.pub 的内容贴到 GitHub → Settings → SSH keys
-
-# 让 github.com 走 443（写入 ~/.ssh/config）：
-#   Host github.com
-#     HostName ssh.github.com
-#     Port 443
-#     User git
-
-git remote add origin git@github.com:<你的用户名>/MathGalaxy.git
-git push -u origin main
-```
-
-**③ 装 GitHub CLI 一条命令搞定**
-
-```bash
-winget install GitHub.cli     # 或者来 Cherry 里让我用 cli_install 装 gh
-gh auth login
-gh repo create MathGalaxy --public --source=. --push
-```
+> ⚠️ **记得先启动代理**（127.0.0.1:7890）。git 不读 Windows 系统代理，
+> 代理没开时 push/pull 会超时。
 
 ### 多端使用
 
 ```bash
 # 新设备上第一次
-git clone <仓库地址> MathGalaxy
+git clone https://github.com/bingyingzizz/MathGalaxy.git MathGalaxy
 # 之后
-git pull          # 拉别人的改动
+git pull          # 拉别的设备上做的改动
 git add -A && git commit -m "补充：xxx 定理" && git push
 ```
+
+新设备上第一次 push 会弹一次浏览器让你登录 GitHub（GCM 自动处理），之后同样记住。
+
+星图是纯静态页面，clone 下来**双击 `index.html` 就能看**，不需要安装任何东西。
+在任意一端改了 `src/data/` 里的节点，另一端 `git pull` 刷新页面就同步了。
+
+### 如果以后要换认证方式
+
+**SSH（长期最省事）**：本机 `ssh.github.com:443` 是通的，建议让 SSH 走 443：
+
+```bash
+ssh-keygen -t ed25519 -C "your@email"
+# 把 ~/.ssh/id_ed25519.pub 贴到 GitHub → Settings → SSH keys
+# 再写入 ~/.ssh/config：
+#   Host github.com
+#     HostName ssh.github.com
+#     Port 443
+#     User git
+
+git remote set-url origin git@github.com:bingyingzizz/MathGalaxy.git
+```
+
+**GitHub CLI**：`gh` 目前没装（mise 下载时没走代理会失败）。
+需要的话可以在 Cherry 里让我用 `cli_install` 装，或自己 `winget install GitHub.cli`。
 
 星图是纯静态页面，clone 下来**双击 `index.html` 就能看**，不需要安装任何东西。
 在任意一端改了 `src/data/` 里的节点，另一端 `git pull` 刷新页面就同步了。
