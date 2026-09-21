@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>数学星图 · Math Galaxy</title>
+<meta name="description" content="可交互的数学知识星图：定理 / 定义 / 引理 按数学板块聚簇，箭头表示推出，黑线表示等价，蓝线表示定义引用。" />
+<link rel="stylesheet" href="src/ui/styles.css" />
+
+<!-- 出错兜底：任何脚本报错都直接在页面上显示出来，而不是留一片白屏 -->
+<script>
+window.__mgFatal = function (err) {
+  var msg = (err && (err.stack || err.message)) || String(err || '未知错误');
+  if (window.console) console.error('[数学星图]', err);
+  var show = function () {
+    if (document.getElementById('mg-fatal')) return;
+    var box = document.createElement('div');
+    box.id = 'mg-fatal';
+    box.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;max-height:50vh;' +
+      'overflow:auto;z-index:99;background:#fff;border:1px solid rgba(200,60,60,.35);' +
+      'border-left:3px solid #D0483C;border-radius:10px;padding:14px 16px;' +
+      'box-shadow:0 12px 40px rgba(0,0,0,.16);white-space:pre-wrap;' +
+      'font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;color:#3a2020';
+    box.textContent = '数学星图出错了（多半是某个内容包写错了）：\n\n' + msg;
+    document.body.appendChild(box);
+  };
+  if (document.body) show(); else document.addEventListener('DOMContentLoaded', show);
+};
+window.addEventListener('error', function (e) {
+  // 资源（图片/字体）加载失败不算，只管脚本本身的错误
+  if (e.target && e.target !== window && e.target.tagName) return;
+  window.__mgFatal(e.error || e.message || '脚本执行出错');
+}, true);
+</script>
+</head>
+<body>
+
+<!-- ===== 画布层 ===== -->
+<div id="viewport" aria-hidden="true">
+  <canvas id="layer-cloud"></canvas>
+  <canvas id="layer-graph"></canvas>
+</div>
+
+<!-- ===== 左上角：搜索 ===== -->
+<div id="search-box" class="floating">
+  <span class="search-icon" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="14" height="14"><path d="M7 1a6 6 0 1 0 3.7 10.7l3.3 3.3 1-1-3.3-3.3A6 6 0 0 0 7 1Zm0 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/></svg>
+  </span>
+  <input id="search-input" type="text" placeholder="搜索节点：定理 / 定义 / 关键词…"
+         autocomplete="off" autocorrect="off" spellcheck="false" />
+  <kbd class="search-kbd">/</kbd>
+  <div id="search-results" class="hidden" role="listbox"></div>
+</div>
+
+<!-- ===== 右上角：工具条 ===== -->
+<div id="toolbar" class="floating">
+  <button data-act="zoom-in"  title="放大（+）">＋</button>
+  <button data-act="zoom-out" title="缩小（−）">－</button>
+  <button data-act="fit"      title="适配全部节点（0）">⤢</button>
+  <span class="tb-sep"></span>
+  <button data-act="toggle-defs"   class="toggle on" title="显示 / 隐藏「定义引用」蓝线">定义线</button>
+  <button data-act="toggle-labels" class="toggle on" title="显示 / 隐藏节点名称">名称</button>
+  <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移">滚轮·缩放</button>
+</div>
+
+<!-- ===== 左下角：图例 ===== -->
+<div id="legend" class="floating"></div>
+
+<!-- ===== 右侧：详情面板 ===== -->
+<aside id="panel" class="floating hidden" aria-live="polite">
+  <button id="panel-close" title="关闭（Esc）">×</button>
+  <div id="panel-body"></div>
+</aside>
+
+<!-- ===== 底部提示 ===== -->
+<div id="hint" class="floating">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导</div>
+
+<!-- =========================================================================
+     底层引擎（与内容无关，一般不需要改）
+     加载顺序：config → util → camera → graph → layout → background
+               → renderer → interaction → search → panel → loader → app
+     ========================================================================= -->
+<script src="src/core/config.js"></script>
+<script src="src/core/util.js"></script>
+<script src="src/core/camera.js"></script>
+<script src="src/core/graph.js"></script>
+<script src="src/core/layout.js"></script>
+<script src="src/core/background.js"></script>
+<script src="src/core/renderer.js"></script>
+<script src="src/core/interaction.js"></script>
+<script src="src/core/search.js"></script>
+<script src="src/core/panel.js"></script>
+<script src="src/core/loader.js"></script>
+
+<!-- =========================================================================
+     内容层（数学板块 + 节点 + 连线）
+     新增内容只需在下面加/改 src/data/ 里的文件，不用碰引擎。
+     ========================================================================= -->
+<script src="src/data/regions.js"></script>
+<script src="src/data/packs/01-zfc-axioms.js"></script>
+<script src="src/data/packs/02-set-theory.js"></script>
+<script src="src/data/packs/03-order-theory.js"></script>
+<script src="src/data/packs/04-choice-equivalents.js"></script>
+<script src="src/data/packs/05-algebra-example.js"></script>
+<script src="src/data/packs/90-definition-links.js"></script>
+
+<!-- 启动 -->
+<script src="src/core/app.js"></script>
+</body>
+</html>

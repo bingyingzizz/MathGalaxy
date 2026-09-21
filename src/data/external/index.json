@@ -1,0 +1,5 @@
+{
+  "_说明": "外部内容包清单。每个 *.json 的结构与 src/data/packs/*.js 里的 {nodes, edges} 完全一致。用本地服务器打开页面时会自动并入这些包。",
+  "_示例": "把 \"my-paper.json\" 填进 packs 数组即可。file:// 直接打开时浏览器禁止 fetch，这里的内容会被静默跳过。",
+  "packs": []
+}

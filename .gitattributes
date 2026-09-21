@@ -1,0 +1,28 @@
+# 多端同步用（Windows / macOS / Linux 混着用也不会到处是换行符差异）
+* text=auto eol=lf
+
+# 明确按二进制处理
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+
+# 这两个文件在 Windows 上通常用 CRLF，不参与换行转换
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 让 git diff / GitHub 正确识别语言
+*.js   text
+*.json text
+*.css  text
+*.html text
+*.md   text
+
+# 语言统计时把内容目录单列出来
+src/data/** linguist-language=JavaScript

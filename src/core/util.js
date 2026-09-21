@@ -1,0 +1,296 @@
+/* ==========================================================================
+   数学星图 · 工具函数
+   随机数（可复现）、几何、文本 / Markdown 渲染
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  /* ------------------------------------------------------------ 可复现随机 */
+  function hashString(str) {
+    var h = 2166136261 >>> 0;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+
+  function mulberry32(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /** 由一个字符串派生一个稳定的 0~1 随机函数 */
+  function rngFrom(str, salt) {
+    return mulberry32(hashString(String(str) + '#' + (salt || 0)));
+  }
+
+  /* ---------------------------------------------------------------- 数学 */
+  function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function dist(ax, ay, bx, by) { var dx = ax - bx, dy = ay - by; return Math.sqrt(dx * dx + dy * dy); }
+  function dist2(ax, ay, bx, by) { var dx = ax - bx, dy = ay - by; return dx * dx + dy * dy; }
+
+  /** 点到线段距离 */
+  function pointSegDist(px, py, ax, ay, bx, by) {
+    var vx = bx - ax, vy = by - ay;
+    var wx = px - ax, wy = py - ay;
+    var len2 = vx * vx + vy * vy;
+    var t = len2 > 1e-9 ? (wx * vx + wy * vy) / len2 : 0;
+    t = clamp(t, 0, 1);
+    return Math.sqrt(dist2(px, py, ax + t * vx, ay + t * vy));
+  }
+
+  /** 二次贝塞尔上一点 */
+  function quadPoint(p0, p1, p2, t) {
+    var u = 1 - t;
+    return {
+      x: u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
+      y: u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y
+    };
+  }
+
+  /** 把二次贝塞尔按段采样为折线（用于命中检测） */
+  function flattenQuad(p0, p1, p2, segments) {
+    var pts = [];
+    var n = segments || 14;
+    for (var i = 0; i <= n; i++) pts.push(quadPoint(p0, p1, p2, i / n));
+    return pts;
+  }
+
+  /** 点到折线的最短距离 */
+  function pointPolylineDist(px, py, pts) {
+    var best = Infinity;
+    for (var i = 0; i < pts.length - 1; i++) {
+      var d = pointSegDist(px, py, pts[i].x, pts[i].y, pts[i + 1].x, pts[i + 1].y);
+      if (d < best) best = d;
+    }
+    return best;
+  }
+
+  /** 以 (cx,cy) 为中心、垂直于 a→b 方向偏移 offset 的控制点 */
+  function perpControl(ax, ay, bx, by, offset) {
+    var mx = (ax + bx) / 2, my = (ay + by) / 2;
+    var dx = bx - ax, dy = by - ay;
+    var len = Math.sqrt(dx * dx + dy * dy) || 1;
+    return { x: mx + (-dy / len) * offset, y: my + (dx / len) * offset };
+  }
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+  /* ---------------------------------------------------------------- 颜色 */
+  var _rgbCache = Object.create(null);
+
+  /** '#rrggbb' / '#rgb' / '12,34,56' → {r,g,b} */
+  function hexToRgb(color) {
+    if (_rgbCache[color]) return _rgbCache[color];
+    var out = { r: 0, g: 0, b: 0 };
+    if (!color) return out;
+    var m = String(color).trim();
+    if (m.charAt(0) === '#') {
+      var h = m.slice(1);
+      if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+      out = { r: parseInt(h.slice(0, 2), 16), g: parseInt(h.slice(2, 4), 16), b: parseInt(h.slice(4, 6), 16) };
+    } else if (m.indexOf(',') >= 0) {
+      var p = m.split(',').map(function (v) { return parseFloat(v); });
+      out = { r: p[0] || 0, g: p[1] || 0, b: p[2] || 0 };
+    }
+    _rgbCache[color] = out;
+    return out;
+  }
+
+  /** 把颜色 + 不透明度转成 rgba() 字符串 */
+  function rgba(color, alpha) {
+    if (alpha == null || alpha >= 1) return color;
+    var c = hexToRgb(color);
+    return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + alpha + ')';
+  }
+
+  /** 加白（模拟电子云淡化效果） */
+  function mixWithWhite(color, amount) {
+    var c = hexToRgb(color);
+    var f = clamp(amount, 0, 1);
+    return 'rgb(' + Math.round(lerp(255, c.r, f)) + ',' +
+      Math.round(lerp(255, c.g, f)) + ',' + Math.round(lerp(255, c.b, f)) + ')';
+  }
+
+  /* ---------------------------------------------------------------- 文本 */
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  /** 取纯文本（去掉 LaTeX 记号），用于搜索与摘要 */
+  function plain(text) {
+    return String(text || '')
+      .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+      .replace(/\$[^$\n]*\$/g, ' ')
+      .replace(/\\[a-zA-Z]+\*?/g, ' ')
+      .replace(/[{}\\]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function truncate(s, n) {
+    s = String(s || '');
+    return s.length > n ? s.slice(0, n - 1) + '…' : s;
+  }
+
+  /* ------------------------------------------- 极简 Markdown → HTML ------ */
+  /*  支持： ## 标题 / 段落 / - 列表 / 1. 列表 / > 引用 / **粗** / *斜* /
+             `行内代码` / ```代码块``` / $行内公式$ / $$独立公式$$        */
+  function inlineMd(s) {
+    // 行内公式 $...$ 先摘出来（避免被 HTML 转义），最后再交给 KaTeX / 等宽显示
+    var math = [];
+    var raw = String(s).replace(/\$([^$\n]+?)\$/g, function (m, tex) {
+      math.push(tex);
+      return '\u0000M' + (math.length - 1) + '\u0000';
+    });
+    var out = escapeHtml(raw);
+    out = out.replace(/\u0000M(\d+)\u0000/g, function (m, idx) {
+      var tex = math[+idx];
+      if (MG.renderInlineMath) return MG.renderInlineMath(tex);
+      return '<code>' + escapeHtml(tex) + '</code>';
+    });
+    out = out.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+    out = out.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+    out = out.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>');
+    return out;
+  }
+
+  function blockMath(tex) {
+    if (MG.renderBlockMath) {
+      var html = MG.renderBlockMath(tex);
+      if (html) return html;
+    }
+    return '<div class="math-block">' + escapeHtml(tex.trim()) + '</div>';
+  }
+
+  function md(text) {
+    if (!text) return '';
+    var lines = String(text).replace(/\r\n?/g, '\n').split('\n');
+    var html = [];
+    var i = 0;
+    var para = [];
+
+    function flushPara() {
+      if (!para.length) return;
+      html.push('<p>' + inlineMd(para.join(' ')) + '</p>');
+      para = [];
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+
+      // 独立公式块 $$ ... $$
+      if (/^\s*\$\$/.test(line)) {
+        flushPara();
+        var buf = [];
+        var first = line.replace(/^\s*\$\$\s?/, '');
+        if (/\$\$\s*$/.test(first) && first.replace(/\$\$\s*$/, '').trim() !== '') {
+          html.push(blockMath(first.replace(/\$\$\s*$/, '')));
+          i++; continue;
+        }
+        if (first.trim()) buf.push(first);
+        i++;
+        while (i < lines.length && !/\$\$\s*$/.test(lines[i])) { buf.push(lines[i]); i++; }
+        if (i < lines.length) { buf.push(lines[i].replace(/\$\$\s*$/, '')); i++; }
+        html.push(blockMath(buf.join('\n')));
+        continue;
+      }
+
+      // 代码块
+      if (/^\s*```/.test(line)) {
+        flushPara();
+        var code = [];
+        i++;
+        while (i < lines.length && !/^\s*```/.test(lines[i])) { code.push(lines[i]); i++; }
+        i++;
+        html.push('<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>');
+        continue;
+      }
+
+      // 标题
+      var h = line.match(/^\s*(#{2,5})\s+(.*)$/);
+      if (h) { flushPara(); html.push('<h5>' + inlineMd(h[2]) + '</h5>'); i++; continue; }
+
+      // 引用
+      if (/^\s*>\s?/.test(line)) {
+        flushPara();
+        var quote = [];
+        while (i < lines.length && /^\s*>\s?/.test(lines[i])) {
+          quote.push(lines[i].replace(/^\s*>\s?/, '')); i++;
+        }
+        html.push('<blockquote>' + inlineMd(quote.join(' ')) + '</blockquote>');
+        continue;
+      }
+
+      // 无序列表
+      if (/^\s*[-*+]\s+/.test(line)) {
+        flushPara();
+        var ul = [];
+        while (i < lines.length && /^\s*[-*+]\s+/.test(lines[i])) {
+          ul.push('<li>' + inlineMd(lines[i].replace(/^\s*[-*+]\s+/, '')) + '</li>'); i++;
+        }
+        html.push('<ul>' + ul.join('') + '</ul>');
+        continue;
+      }
+
+      // 有序列表
+      if (/^\s*\d+[.)]\s+/.test(line)) {
+        flushPara();
+        var ol = [];
+        while (i < lines.length && /^\s*\d+[.)]\s+/.test(lines[i])) {
+          ol.push('<li>' + inlineMd(lines[i].replace(/^\s*\d+[.)]\s+/, '')) + '</li>'); i++;
+        }
+        html.push('<ol>' + ol.join('') + '</ol>');
+        continue;
+      }
+
+      if (!line.trim()) { flushPara(); i++; continue; }
+
+      para.push(line.trim());
+      i++;
+    }
+    flushPara();
+    return html.join('');
+  }
+
+  /* ---------------------------------------------------------------- 导出 */
+  MG.util = {
+    hashString: hashString,
+    mulberry32: mulberry32,
+    rngFrom: rngFrom,
+    clamp: clamp,
+    lerp: lerp,
+    dist: dist,
+    dist2: dist2,
+    pointSegDist: pointSegDist,
+    pointPolylineDist: pointPolylineDist,
+    quadPoint: quadPoint,
+    flattenQuad: flattenQuad,
+    perpControl: perpControl,
+    hexToRgb: hexToRgb,
+    rgba: rgba,
+    mixWithWhite: mixWithWhite,
+    easeOutCubic: easeOutCubic,
+    easeInOutCubic: easeInOutCubic,
+    escapeHtml: escapeHtml,
+    escapeRegExp: escapeRegExp,
+    plain: plain,
+    truncate: truncate,
+    md: md,
+    inlineMd: inlineMd
+  };
+})(typeof window !== 'undefined' ? window : globalThis);

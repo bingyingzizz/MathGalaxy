@@ -1,0 +1,43 @@
+{
+  "name": "示例外部内容包（可删）",
+  "_说明": "把本文件里的 \"example-paper.json\" 写进 index.json 的 packs 数组，然后用本地服务器打开页面，这两个节点就会出现在星图上。它们会自动落进「拓扑学」板块，并和佐恩引理连起来。",
+  "nodes": [
+    {
+      "id": "thm.tychonoff",
+      "type": "theorem",
+      "label": "Tychonoff 定理",
+      "title": "Tychonoff 定理：任意多个紧空间的乘积紧",
+      "regions": ["topology"],
+      "tags": ["外部包", "示例", "选择"],
+      "statement": "设 { Xᵢ : i ∈ I } 是一族紧拓扑空间，则乘积空间 ∏ᵢ Xᵢ 在乘积拓扑下是紧的。",
+      "notes": "它等价于选择公理的一种弱形式（超滤子引理），因此也常被列为「选择原理」家族的一员。",
+      "refs": ["Tychonoff (1930)"]
+    },
+    {
+      "id": "def.ultrafilter",
+      "type": "definition",
+      "label": "超滤子",
+      "title": "滤子与超滤子（Filter & Ultrafilter）",
+      "regions": ["topology", "set-theory"],
+      "tags": ["外部包", "示例", "定义"],
+      "statement": "集合 X 上的滤子 F 是 𝒫(X) 的一个非空子族，对取超集封闭、对有限交封闭且不含 ∅。极大滤子称为超滤子。",
+      "notes": "「每个滤子都能扩充成超滤子」就是超滤子引理，它严格弱于选择公理。"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "implication",
+      "sources": ["lem.zorn"],
+      "target": "thm.tychonoff",
+      "title": "佐恩引理 ⇒ Tychonoff 定理",
+      "proof": "用「有限交性质」刻画紧性：乘积空间的任何具有有限交性质的闭集族都有非空交。\n\n把所有具有有限交性质的闭集族按包含排序，用佐恩引理取极大元，再由每个因子的紧性证明它落在每个坐标上的投影都有公共点，从而给出乘积中的公共点。∎",
+      "note": "这是外部内容包的示例：删掉本文件并在 index.json 里移除它即可。"
+    },
+    {
+      "kind": "definition",
+      "definition": "def.ultrafilter",
+      "usedBy": "thm.tychonoff",
+      "note": "Tychonoff 定理的另一条证明路线（超滤子证明）完全建立在超滤子概念之上。"
+    }
+  ]
+}
