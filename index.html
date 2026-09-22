@@ -6,6 +6,8 @@
 <title>数学星图 · Math Galaxy</title>
 <meta name="description" content="可交互的数学知识星图：定理 / 定义 / 引理 按数学板块聚簇，箭头表示推出，黑线表示等价，蓝线表示定义引用。" />
 <link rel="stylesheet" href="src/ui/styles.css" />
+<!-- KaTeX：数学排版。CSS 与 JS 都放 src/ui/，字体在 src/ui/fonts/（与 CSS 同目录，file:// 也能加载） -->
+<link rel="stylesheet" href="src/ui/katex.min.css" />
 
 <!-- 出错兜底：任何脚本报错都直接在页面上显示出来，而不是留一片白屏 -->
 <script>
@@ -81,6 +83,11 @@ window.addEventListener('error', function (e) {
      加载顺序：config → util → camera → graph → layout → background
                → renderer → interaction → search → panel → loader → app
      ========================================================================= -->
+<!-- ⚠ KaTeX 必须在 core/util.js 之前加载：util.js 里的行内/块级公式渲染会去问
+     MG.renderInlineMath / MG.renderBlockMath，而它们由 app.js 的 hookKatex() 挂上，
+     挂钩的前提是 global.katex 已经存在。 -->
+<script src="src/ui/katex.min.js"></script>
+
 <script src="src/core/config.js"></script>
 <script src="src/core/util.js"></script>
 <script src="src/core/camera.js"></script>

@@ -423,6 +423,21 @@ if (doHTML) {
   fs.writeFileSync(path.join(DIST, 'mathgalaxy.html'), html, 'utf8');
   const kb = (Buffer.byteLength(html, 'utf8') / 1024).toFixed(0);
   console.log(`  → dist/mathgalaxy.html  (${kb} KB，自包含，手机双击即可打开)`);
+
+  // KaTeX 字体：CSS 里写的是 url(fonts/…)，相对「加载这个 CSS 的页面」解析。
+  // 单文件里的 CSS 是内联的，所以要把它旁边的 fonts/ 也一起带上，
+  // 否则拷到手机 / 发到线上都拿不到数学字体。
+  const fontSrc = path.join(SRC, 'ui', 'fonts');
+  if (fs.existsSync(fontSrc)) {
+    const fontDst = path.join(DIST, 'fonts');
+    fs.rmSync(fontDst, { recursive: true, force: true });
+    fs.mkdirSync(fontDst, { recursive: true });
+    let n = 0;
+    for (const f of fs.readdirSync(fontSrc)) {
+      if (f.endsWith('.woff2')) { fs.copyFileSync(path.join(fontSrc, f), path.join(fontDst, f)); n++; }
+    }
+    console.log(`  → dist/fonts/  (${n} 个 woff2 —— 自包含单文件与线上站点共用)`);
+  }
 }
 
 console.log('完成。');
