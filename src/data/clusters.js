@@ -103,6 +103,12 @@ MG.clusters = [
     name: 'ℝⁿ 上的微分',
     parent: 'analysis',
     desc: '造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。'
+  },
+  {
+    id: 'analysis.bv',
+    name: '有界变差与绝对连续',
+    parent: 'analysis',
+    desc: '造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
