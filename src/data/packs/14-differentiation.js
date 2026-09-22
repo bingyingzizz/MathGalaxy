@@ -35,9 +35,9 @@ window.MG = window.MG || {};
       statement: [
         '设 ν 是符号测度或复测度。',
         '',
-        '**(a)** $$\\nu ≪ |\\nu|$$，并且',
+        '**(a)** $$\\nu \\ll  |\\nu|$$，并且',
         '',
-        '$$| d\\nu / d|\\nu| | = 1　|\\nu|-a.e.$$',
+        '$$| d\\nu / d|\\nu| | = 1\\quad  |\\nu|-a.e.$$',
         '',
         '**(b)** 定义 $$L^1(\\nu) := L^1(|\\nu|)$$。若 $$f \\in L^1(\\nu)$$，则',
         '',
@@ -62,7 +62,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '覆盖', 'Vitali'],
       statement: [
-        '设 ℰ 是一族 ℝⁿ 中的开球，$$U = \\bigcup\\mathcal{E}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, …, B_k$$ 使',
+        '设 ℰ 是一族 ℝⁿ 中的开球，$$U = \\bigcup\\mathcal{E}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, \\ldots , B_k$$ 使',
         '',
         '$$\\sum_{j=1}^{k} m(B_j) > 3^{-n} c$$'
       ].join('\n'),
@@ -72,7 +72,7 @@ window.MG = window.MG || {};
         '为什么这样挑就够了：若某个 $$A_i \\in \\mathcal{E}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \\subseteq 3B_j$$，于是 $$K \\subseteq \\bigcup_j 3B_j$$。',
         '剩下的就是计数：',
         '',
-        '$$c < m(K) \\le 3^n \\sum_j m(B_j)　\\implies　\\sum_j m(B_j) > 3^{-n} c$$',
+        '$$c < m(K) \\le 3^n \\sum_j m(B_j)\\quad  \\implies\\quad  \\sum_j m(B_j) > 3^{-n} c$$',
         '',
         '⚠ 注意膨胀因子是 **3ⁿ**（而不是 2ⁿ）—— 这正是因为「半径不超过」是弱不等式，需要一点余量。'
       ].join('\n\n'),
@@ -90,7 +90,7 @@ window.MG = window.MG || {};
       statement: [
         '可测函数 $$f : \\mathbb{R}^n \\to \\mathbb{C}$$ 是**局部可积的**，当且仅当',
         '',
-        '$$\\int_K |f(x)| dx < \\infty　对每个有界可测集 K \\subseteq \\mathbb{R}^n$$',
+        '$$\\int_K |f(x)| dx < \\infty\\quad \\text{ 对每个有界可测集} K \\subseteq \\mathbb{R}^n$$',
         '',
         '局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\\mathbb{R}^n)$$）。'
       ].join('\n'),
@@ -143,8 +143,8 @@ window.MG = window.MG || {};
         '于是只需证 $$\\chi_{B(r,x)} \\to \\chi_{B(r_0,x_0)}$$（当 $$(r,x) \\to (r_0,x_0)$$）在足够好的意义上成立，再用 DCT。',
         '分两块看（取目标点 $$(r_0, x_0)$$）：',
         '',
-        '· 若 $$y$$ 在球内：$$\\varepsilon := r_0 − |y − x_0| > 0$$；当 $$|x − x_0| < \\varepsilon/2$$ 且 $$|r − r_0| < \\varepsilon/2$$ 时 $$|y − x| < r$$，故 $$\\chi = 1$$；',
-        '· 若 $$y$$ 在球外：$$\\varepsilon := |y − x_0| − r_0 > 0$$；同样的小扰动下 $$|y − x| > r$$，故 $$\\chi = 0$$。',
+        '· 若 $$y$$ 在球内：$$\\varepsilon := r_0 - |y - x_0| > 0$$；当 $$|x - x_0| < \\varepsilon/2$$ 且 $$|r - r_0| < \\varepsilon/2$$ 时 $$|y - x| < r$$，故 $$\\chi = 1$$；',
+        '· 若 $$y$$ 在球外：$$\\varepsilon := |y - x_0| - r_0 > 0$$；同样的小扰动下 $$|y - x| > r$$，故 $$\\chi = 0$$。',
         '',
         '两边合起来说明：对**几乎处处的** y（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。',
         '控制函数取 $$\\chi_{B(r_0+1, x_0)}(y)\\cdot|f(y)| \\in L^1$$，由 **DCT** 得连续性。∎'
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$。则',
         '',
-        '$$\\lim_{r\\to0} A_r f(x) = f(x)　对 a.e. x \\in \\mathbb{R}^n$$'
+        '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对} a.e. x \\in \\mathbb{R}^n$$'
       ].join('\n'),
       notes: [
         '⭐ 一句话：**可积函数几乎处处等于自己局部平均值的极限**。',
@@ -228,12 +228,12 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$。定义',
         '',
-        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y) − f(x)| dy = 0 \\}$$',
+        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y) - f(x)| dy = 0 \\}$$',
         '',
         '称为 f 的 **Lebesgue 集**。'
       ].join('\n'),
       notes: [
-        '⚠ 注意定义里积的是 $$|f(y) − f(x)|$$（与 f 在该点的值比较），不是 $$|f(y)|$$。',
+        '⚠ 注意定义里积的是 $$|f(y) - f(x)|$$（与 f 在该点的值比较），不是 $$|f(y)|$$。',
         '这么定义是为了让「可缩族」版本（下一条定理）能直接用 —— 那里需要的是**局部一致逼近**，而不是简单的平均值收敛。',
         '$$x \\in L_f$$ 常被说成「x 是 f 的 Lebesgue 点」。直觉：在这个点附近，f 的振荡在平均意义下趋于 0。'
       ].join('\n\n'),
@@ -256,10 +256,10 @@ window.MG = window.MG || {};
         '即：**几乎每个点都是 Lebesgue 点**。'
       ].join('\n'),
       notes: [
-        '证明的思路很巧（笔记里的）：对每个复数 c，把微分定理用在函数 $$|f(x) − c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\\lim_{1/m(B)}\\int|f(y) − c|dy = |f(x) − c|$$」。',
-        '然后取 **ℂ 的一个可数稠密子集 D**，令 $$E = \\bigcup_{c \\in D} E_c$$（可数并仍是零集）。对 $$x \\notin E$$ 与任意 ε > 0，取 $$c \\in D$$ 使 $$|f(x) − c| < \\varepsilon$$，于是',
+        '证明的思路很巧（笔记里的）：对每个复数 c，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$$」。',
+        '然后取 **ℂ 的一个可数稠密子集 D**，令 $$E = \\bigcup_{c \\in D} E_c$$（可数并仍是零集）。对 $$x \\notin E$$ 与任意 ε > 0，取 $$c \\in D$$ 使 $$|f(x) - c| < \\varepsilon$$，于是',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − f(x)| dy \\le |f(x) − c| + \\varepsilon < 2\\varepsilon$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
         '',
         '令 ε → 0 即得。∎',
         '⭐ 「取一个可数稠密子集」这一步是可数性技巧的典型用法：把不可数多个条件化归成可数多个零集之并。'
@@ -301,16 +301,16 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$，$$x \\in L_f$$。则对**每一个**可缩地趋于 x 的族 $$\\{E_r\\}_{r>0}$$：',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} |f(y) − f(x)| dy = 0，$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy = 0, $$',
         '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} f(y) dy = f(x)$$'
       ].join('\n'),
       notes: [
         '证明是一行估计：由 $$E_r \\subseteq B(r,x)$$ 与 $$m(E_r) > \\alpha m(B(r,x))$$，',
         '',
-        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f − f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f − f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f − f(x)|$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f - f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f - f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f - f(x)|$$',
         '',
         '而最右边由「$$x \\in L_f$$」趋于 0。∎',
-        '⭐ 全部难度都在把 L_f 的定义选对（用 $$|f(y) − f(x)|$$ 而不是 $$|f(y)|$$）—— 选对之后这一步就是白送的。'
+        '⭐ 全部难度都在把 L_f 的定义选对（用 $$|f(y) - f(x)|$$ 而不是 $$|f(y)|$$）—— 选对之后这一步就是白送的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.21']
     },
@@ -327,7 +327,7 @@ window.MG = window.MG || {};
         'ℝⁿ 上的 Borel 测度 ν 是**正则的**，当且仅当',
         '',
         '· $$\\nu(K) < \\infty$$ 对每个紧集 K 成立；',
-        '· $$\\nu(E) = inf\\{ \\nu(U) : U 开，E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak{B}_{\\mathbb{R}^n}$$ 成立（**外正则**）。',
+        '· $$\\nu(E) = inf\\{ \\nu(U) : U\\text{ 开}, E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak{B}_{\\mathbb{R}^n}$$ 成立（**外正则**）。',
         '',
         '符号测度或复测度 ν 叫正则 ⟺ $$|\\nu|$$ 正则。'
       ].join('\n'),
@@ -381,11 +381,11 @@ window.MG = window.MG || {};
       proof: [
         '**① 把坏集换成球族。** 令 $$E_\\alpha = \\{x : Hf(x) > \\alpha\\}$$。对每个 $$x \\in E_\\alpha$$，由 Hf 的定义（上确界）存在 $$r_x > 0$$ 使',
         '',
-        '$$A_{r_x}|f|(x) > \\alpha　\\iff　\\int_{B(r_x, x)} |f(y)| dy > \\alpha\\cdot m(B(r_x, x))$$',
+        '$$A_{r_x}|f|(x) > \\alpha\\quad  \\iff\\quad  \\int_{B(r_x, x)} |f(y)| dy > \\alpha\\cdot m(B(r_x, x))$$',
         '',
         '于是 $$\\{B(r_x, x)\\}_{x \\in E_\\alpha}$$ 是 $$E_\\alpha$$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
         '',
-        '**② 用覆盖引理挑不交子族。** 任取 $$c < m(E_\\alpha)$$（先设 m(E_α) < ∞）。由**覆盖引理**，存在 $$x_1, …, x_k \\in E_\\alpha$$ 使 $$B_j = B(r_{x_j}, x_j)$$ 两两不交，且',
+        '**② 用覆盖引理挑不交子族。** 任取 $$c < m(E_\\alpha)$$（先设 m(E_α) < ∞）。由**覆盖引理**，存在 $$x_1, \\ldots , x_k \\in E_\\alpha$$ 使 $$B_j = B(r_{x_j}, x_j)$$ 两两不交，且',
         '',
         '$$\\sum_j m(B_j) > 3^{-n} c$$',
         '',
@@ -415,21 +415,21 @@ window.MG = window.MG || {};
         '',
         '**② 用连续函数逼近。** 给定 $$\\varepsilon > 0$$，由「L¹ 里的逼近」，取**连续函数** g 使',
         '',
-        '$$\\int |g(y) − f(y)| dy < \\varepsilon$$',
+        '$$\\int |g(y) - f(y)| dy < \\varepsilon$$',
         '',
         '**③ 连续情形是白送的。** 若 g 连续，则对**每一个** x 都有 $$A_r g(x) \\to g(x)$$（$$r \\to 0$$）—— 因为 g 在 x 附近近似为常数。',
         '',
         '**④ 把差值压住。** 对任意 x，',
         '',
-        '$$\\sup_{r>0} |A_r f(x) − f(x)| = sup_r |A_r(f − g)(x) + (A_r g − g)(x) + (g − f)(x)| \\le H(f − g)(x) + |f − g|(x)$$',
+        '$$\\sup_{r>0} |A_r f(x) - f(x)| = sup_r |A_r(f - g)(x) + (A_r g - g)(x) + (g - f)(x)| \\le H(f - g)(x) + |f - g|(x)$$',
         '',
-        '（第一项用 $$|A_r(f−g)| \\le A_r|f−g| \\le H(f−g)$$，第二项由 ③ 取 r → 0）。',
+        '（第一项用 $$|A_r(f-g)| \\le A_r|f-g| \\le H(f-g)$$，第二项由 ③ 取 r → 0）。',
         '',
         '**⑤ 估计坏集。** 令',
         '',
-        '$$E_\\alpha = \\{x : \\sup_{r>0} |A_r f(x) − f(x)| > \\alpha\\}$$',
+        '$$E_\\alpha = \\{x : \\sup_{r>0} |A_r f(x) - f(x)| > \\alpha\\}$$',
         '',
-        '由 ④，$$E_\\alpha \\subseteq F_{\\alpha/2} \\cup \\{x : H(f−g)(x) > \\alpha/2\\}$$，其中 $$F_{\\alpha/2} = \\{|f − g| > \\alpha/2\\}$$。于是',
+        '由 ④，$$E_\\alpha \\subseteq F_{\\alpha/2} \\cup \\{x : H(f-g)(x) > \\alpha/2\\}$$，其中 $$F_{\\alpha/2} = \\{|f - g| > \\alpha/2\\}$$。于是',
         '',
         '$$m(E_\\alpha) \\le 2\\varepsilon / \\alpha + 2C\\varepsilon / \\alpha$$',
         '',
@@ -437,7 +437,7 @@ window.MG = window.MG || {};
         '',
         '**⑥ 令 ε → 0。** 右边对**任意** ε > 0 成立，故 $$m(E_\\alpha) = 0$$ 对一切 $$\\alpha > 0$$ 成立。于是',
         '',
-        '$$\\lim_{r\\to0} A_r f(x) = f(x)　对一切 x \\notin \\bigcup_{m\\in\\mathbb{N}} E_{1/m}$$',
+        '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对一切} x \\notin \\bigcup_{m\\in\\mathbb{N}} E_{1/m}$$',
         '',
         '而右边是可数个零集之并，仍是零集。∎'
       ].join('\n'),
@@ -451,9 +451,9 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-set-full',
       title: '微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处',
       proof: [
-        '**① 对每个复数 c 用一次微分定理。** 固定 $$c \\in \\mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) − c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
+        '**① 对每个复数 c 用一次微分定理。** 固定 $$c \\in \\mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − c| dy = |f(x) − c|$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy = |f(x) - c|$$',
         '',
         '**② 只取可数多个 c。** 取 ℂ 的一个**可数稠密子集** D（比如 $$\\mathbb{Q} + i\\mathbb{Q}$$），令',
         '',
@@ -461,11 +461,11 @@ window.MG = window.MG || {};
         '',
         '可数多个零集之并仍是零集，故 $$m(E) = 0$$。',
         '',
-        '**③ 在 E 外验证**。设 $$x \\notin E$$，任给 ε > 0，取 $$c \\in D$$ 使 $$|f(x) − c| < \\varepsilon$$。则',
+        '**③ 在 E 外验证**。设 $$x \\notin E$$，任给 ε > 0，取 $$c \\in D$$ 使 $$|f(x) - c| < \\varepsilon$$。则',
         '',
-        '$$\\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − f(x)| dy \\le \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − c| dy + |f(x) − c|$$',
+        '$$\\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy + |f(x) - c|$$',
         '',
-        '右边第一项由 ①（$$x \\notin E_c$$）在 $$r \\to 0$$ 时趋于 $$|f(x) − c|$$，于是整个右端的极限 ≤ $$|f(x) − c| + \\varepsilon < 2\\varepsilon$$。令 ε → 0 得极限为 0，即 $$x \\in L_f$$。',
+        '右边第一项由 ①（$$x \\notin E_c$$）在 $$r \\to 0$$ 时趋于 $$|f(x) - c|$$，于是整个右端的极限 ≤ $$|f(x) - c| + \\varepsilon < 2\\varepsilon$$。令 ε → 0 得极限为 0，即 $$x \\in L_f$$。',
         '',
         '故 $$L_f^c \\subseteq E$$，从而 $$m(L_f^c) = 0$$。∎'
       ].join('\n'),
@@ -483,17 +483,17 @@ window.MG = window.MG || {};
         '',
         '**① 关键估计（一行）。** 因为 $$E_r \\subseteq B(r,x)$$，把积分域放大到球上只会变大；再用 $$m(E_r) > \\alpha m(B(r,x))$$ 把分母换小：',
         '',
-        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) − f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f(y) − f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) − f(x)| dy$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f(y) - f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) - f(x)| dy$$',
         '',
         '**② 收尾。** 由 $$x \\in L_f$$ 的定义，最右边当 $$r \\to 0$$ 时趋于 0。故第一个极限为 0。',
         '',
         '**③ 第二个极限。** 由',
         '',
-        '$$| \\frac{1}{m(E_r)} \\int_{E_r} f − f(x) | \\le \\frac{1}{m(E_r)} \\int_{E_r} |f(y) − f(x)| dy \\to 0$$',
+        '$$| \\frac{1}{m(E_r)} \\int_{E_r} f - f(x) | \\le \\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\to 0$$',
         '',
         '即得 $$\\frac{1}{m(E_r)} \\int_{E_r} f dy \\to f(x)$$。∎'
       ].join('\n'),
-      note: '全部难度都被「把 L_f 的定义写成 $$\\int|f(y) − f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。'
+      note: '全部难度都被「把 L_f 的定义写成 $$\\int|f(y) - f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。'
     },
 
     {
@@ -503,7 +503,7 @@ window.MG = window.MG || {};
       target: 'thm.rn-pointwise',
       title: '微分定理 + 正则性 ⟹ RN 导数的点态公式',
       proof: [
-        '设 $$d\\nu = d\\lambda + f\\cdot dm$$（$$\\lambda ⊥ m$$），ν 正则。',
+        '设 $$d\\nu = d\\lambda + f\\cdot dm$$（$$\\lambda \\perp  m$$），ν 正则。',
         '',
         '**① 先算全变差。** 由全变差的性质，$$d|\\nu| = d|\\lambda| + |f|\\cdot dm$$。既然 ν 正则，|ν| 正则，于是 λ 与 $$f\\cdot dm$$ 都正则；由「$$g\\cdot dm$$ 正则 ⟺ $$g \\in L^1_{loc}$$」得 $$f \\in L^1_{loc}$$。',
         '',
@@ -523,7 +523,7 @@ window.MG = window.MG || {};
         '',
         '$$\\lambda(B_x) > (1/k)\\cdot m(B_x)$$',
         '',
-        '**⑥ 覆盖引理再来一次。** 令 $$V_\\varepsilon = \\bigcup_{x \\in F_k} B_x$$（它是 U 中的开集，故 $$\\lambda(V_\\varepsilon) \\le \\lambda(U) < \\varepsilon$$）。取 $$c < m(V_\\varepsilon)$$，由**覆盖引理**挑出不交的 $$B_{x_1}, …, B_{x_j}$$ 使 $$\\sum m(B_{x_i}) > 3^{-n} c$$。于是',
+        '**⑥ 覆盖引理再来一次。** 令 $$V_\\varepsilon = \\bigcup_{x \\in F_k} B_x$$（它是 U 中的开集，故 $$\\lambda(V_\\varepsilon) \\le \\lambda(U) < \\varepsilon$$）。取 $$c < m(V_\\varepsilon)$$，由**覆盖引理**挑出不交的 $$B_{x_1}, \\ldots , B_{x_j}$$ 使 $$\\sum m(B_{x_i}) > 3^{-n} c$$。于是',
         '',
         '$$c < 3^n \\sum_i m(B_{x_i}) \\le 3^n k \\sum_i \\lambda(B_{x_i}) \\le 3^n k\\cdot\\lambda(V_\\varepsilon) \\le 3^n k \\varepsilon$$',
         '',

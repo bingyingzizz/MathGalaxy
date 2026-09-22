@@ -25,7 +25,7 @@ window.MG = window.MG || {};
         '',
         '若还满足 **可比性** ∀x, y ∈ A ( x ⪯ y ∨ y ⪯ x )，则 ⪯ 称为 **A 上的全序**（线性序），(A, ⪯) 称为全序集。',
         '',
-        '称 (A, ⪯) 为**偏序集**。由 ⪯ 定义**严格序**：$$x \\prec y :\\iff x \\preceq y ∧ x \\ne y$$'
+        '称 (A, ⪯) 为**偏序集**。由 ⪯ 定义**严格序**：$$x \\prec y :\\iff x \\preceq y \\wedge  x \\ne y$$'
       ].join('\n'),
       notes: [
         '典型例子：⟨𝒫(S), ⊆⟩ 是偏序集但不是全序集；⟨ℝ, ≤⟩ 是全序集。',
@@ -47,7 +47,7 @@ window.MG = window.MG || {};
         '',
         '**C 是链**（也叫全序子集），当且仅当 C 中任意两个元素都可比：',
         '',
-        '$$\\forall x, y \\in C ( x \\preceq y ∨ y \\preceq x )$$',
+        '$$\\forall x, y \\in C ( x \\preceq y \\vee  y \\preceq x )$$',
         '',
         '**C 是反链**，当且仅当 C 中任意两个不同元素都不可比。',
         '',
@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       statement: [
         '集合族 𝒜 具有**有限特征**，当且仅当对任意集合 X：',
         '',
-        '$$X \\in \\mathcal{A} \\iff X 的每个有限子集都属于 \\mathcal{A}$$',
+        '$$X \\in \\mathcal{A} \\iff X\\text{ 的每个有限子集都属于} \\mathcal{A}$$',
         '',
         '也就是说：「局部地看起来像 𝒜 的成员」⟹「整体就是 𝒜 的成员」。'
       ].join('\n'),

@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ) 与 (Y, 𝒩) 是可测空间。函数 $$f : X \\to Y$$ 是 **(ℳ, 𝒩)-可测的**，当且仅当每个可测集的原像可测：',
         '',
-        '$$f^{-1}(E) \\in \\mathcal{M}　\\forall E \\in \\mathcal{N}$$'
+        '$$f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{N}$$'
       ].join('\n'),
       notes: [
         '为什么用「原像」而不是「像」：原像对交、并、补全部保持（$$f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。',
@@ -42,14 +42,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '可测', '生成元', '复合'],
       statement: [
-        '**(1) 复合**：若 $$f : X \\to Y$$ 是 (ℳ, 𝒩)-可测、$$g : Y \\to Z$$ 是 (𝒩, 𝒪)-可测，则 $$g ∘ f$$ 是 (ℳ, 𝒪)-可测。',
+        '**(1) 复合**：若 $$f : X \\to Y$$ 是 (ℳ, 𝒩)-可测、$$g : Y \\to Z$$ 是 (𝒩, 𝒪)-可测，则 $$g \\circ  f$$ 是 (ℳ, 𝒪)-可测。',
         '',
         '**(2) 只需验证生成元**：若 𝒩 = ℳ(ℰ)，则',
         '',
-        '$$f : X \\to Y 可测 \\iff f^{-1}(E) \\in \\mathcal{M}　\\forall E \\in \\mathcal{E}$$'
+        '$$f : X \\to Y\\text{ 可测} \\iff f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{E}$$'
       ].join('\n'),
       notes: [
-        '(1)：对 E ∈ 𝒪 有 $$(g∘f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。',
+        '(1)：对 E ∈ 𝒪 有 $$(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。',
         '(2) 的 (⟸)：令 𝒞 = { E ⊆ Y : f⁻¹(E) ∈ ℳ }。因为原像保持并、交、补，**𝒞 是一个 σ-代数**；题设说 ℰ ⊆ 𝒞，于是 ℳ(ℰ) ⊆ 𝒞，即所有可测集的原像都可测。',
         '(2) 是整段里最常用的判定工具：要证 f 可测，只需在一小族生成元上验证 —— 比如 ℝ 值函数只需验证 $$f^{-1}((a, \\infty))$$ 可测。'
       ].join('\n\n'),
@@ -67,7 +67,7 @@ window.MG = window.MG || {};
       statement: [
         '设 X, Y 是拓扑空间，各配 Borel σ-代数 $$\\mathfrak{B}_X, \\mathfrak{B}_Y$$。则',
         '',
-        '$$f : X \\to Y 连续 \\implies f 是 (\\mathfrak{B}_X, \\mathfrak{B}_Y)-可测的$$'
+        '$$f : X \\to Y\\text{ 连续} \\implies f\\text{ 是} (\\mathfrak{B}_X, \\mathfrak{B}_Y)-\\text{可测的}$$'
       ].join('\n'),
       notes: '连续的定义就是「开集的原像开」；而开集生成 𝔅_Y，用上一条的判定准则 (2) 立刻得到。'
     },
@@ -89,7 +89,7 @@ window.MG = window.MG || {};
       notes: [
         '⚠ **注意这里有个坑：两个 Lebesgue 可测函数的复合不一定 Lebesgue 可测。**',
         '',
-        '原因：复合要跑通 (1) 需要中间那个 σ-代数配合，而 ℒ 严格大于 𝔅_ℝ。取 f : ℝ → ℝ Lebesgue 可测、g : ℝ → ℝ Lebesgue 可测，则 $$g∘f$$ 关于 ℒ 未必可测 —— 因为 $$g^{-1}$$ 只能保证把 𝔅_ℝ 里的集合拉回 ℒ，而 $$f^{-1}$$ 需要在 ℝ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。',
+        '原因：复合要跑通 (1) 需要中间那个 σ-代数配合，而 ℒ 严格大于 𝔅_ℝ。取 f : ℝ → ℝ Lebesgue 可测、g : ℝ → ℝ Lebesgue 可测，则 $$g\\circ f$$ 关于 ℒ 未必可测 —— 因为 $$g^{-1}$$ 只能保证把 𝔅_ℝ 里的集合拉回 ℒ，而 $$f^{-1}$$ 需要在 ℝ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。',
         '标准修法：让中间那个函数 Borel 可测。若 g 是 Borel 可测、f 是 Lebesgue 可测，则 g∘f 是 Lebesgue 可测的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1']
@@ -104,18 +104,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '积空间', '实部虚部'],
       statement: [
-        '**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \\prod_{\\alpha} Y_\\alpha$$，$$\\mathcal{N} = ⊗_{\\alpha} \\mathcal{N}_\\alpha$$，$$π_\\alpha : Y \\to Y_\\alpha$$ 是投影。则',
+        '**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \\prod_{\\alpha} Y_\\alpha$$，$$\\mathcal{N} = \\otimes _{\\alpha} \\mathcal{N}_\\alpha$$，$$\\pi _\\alpha : Y \\to Y_\\alpha$$ 是投影。则',
         '',
-        '$$f : X \\to Y 可测 \\iff f_\\alpha = π_\\alpha ∘ f 可测（\\forall\\alpha \\in A）$$',
+        '$$f : X \\to Y\\text{ 可测} \\iff f_\\alpha = \\pi _\\alpha \\circ  f\\text{ 可测}(\\forall\\alpha \\in A)$$',
         '',
         '**(2)** 特别地，$$f : X \\to \\mathbb{C}$$ 可测 ⟺ $$Re f$$ 与 $$Im f$$ 都可测。'
       ].join('\n'),
       notes: [
         '(1) 的 (⟹)：投影 π_α 本身可测（π_α⁻¹(E_α) 是柱集），用复合保持。',
-        '(1) 的 (⟸)：只要证柱集的原像可测 —— 而 $$f^{-1}(π_\\alpha^{-1}(E_\\alpha)) = f_\\alpha^{-1}(E_\\alpha)$$ 可测 —— 再由积 σ-代数由柱集生成、用判定准则 (2)。',
+        '(1) 的 (⟸)：只要证柱集的原像可测 —— 而 $$f^{-1}(\\pi _\\alpha^{-1}(E_\\alpha)) = f_\\alpha^{-1}(E_\\alpha)$$ 可测 —— 再由积 σ-代数由柱集生成、用判定准则 (2)。',
         '(2) 的证明用了一个干净的事实：**ℂ 的 Borel σ-代数与 ℝ² 的 Borel σ-代数是同一个**：',
         '',
-        '$$\\mathfrak{B}_\\mathbb{C} = \\mathfrak{B}_{\\mathbb{R}^2} = \\mathfrak{B}_\\mathbb{R} ⊗ \\mathfrak{B}_\\mathbb{R}$$',
+        '$$\\mathfrak{B}_\\mathbb{C} = \\mathfrak{B}_{\\mathbb{R}^2} = \\mathfrak{B}_\\mathbb{R} \\otimes  \\mathfrak{B}_\\mathbb{R}$$',
         '',
         '于是 (2) 就是 (1) 在 A = {1, 2} 时的特例。'
       ].join('\n\n'),
@@ -142,7 +142,7 @@ window.MG = window.MG || {};
         '$$sup_j f_j$$ 的关键：$$(sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$$ 是可数并，故可测。（取 $$(a, +\\infty]$$ 这族生成元就够了。）',
         'max 是 sup 的有限特例（把不够的地方补成 $$-\\infty$$）。',
         '极限：$$lim inf_j f_j = sup_n \\inf_{j\\ge n} f_j$$，而 inf 可以由 sup 取负得到（$$inf f_j = -\\sup_{-f_j}$$），所以极限是可测函数经过可数次 sup/inf 得到的。',
-        '和与积：把 $$sup_j f_j$$ 的做法搬到 $$\\{f+g > a\\}$$ 上（用有理数把 $$f > q > a − g$$ 拆开），或先对简单函数验证再逼近。',
+        '和与积：把 $$sup_j f_j$$ 的做法搬到 $$\\{f+g > a\\}$$ 上（用有理数把 $$f > q > a - g$$ 拆开），或先对简单函数验证再逼近。',
         '⭐ 这条命题是**整个积分理论的地基**：它保证「可测函数取极限之后仍然可测」，而后面 MCT / Fatou / DCT 全都是在取极限。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.7']
@@ -181,24 +181,24 @@ window.MG = window.MG || {};
       statement: [
         '**(a)** 若 $$f : X \\to [0, +\\infty]$$ 可测，则存在简单函数列 $$\\{\\varphi_n\\}$$ 使',
         '',
-        '$$0 \\le \\varphi_1 \\le \\varphi_2 \\le \\cdots \\le f，　\\varphi_n \\to f 逐点，$$',
+        '$$0 \\le \\varphi_1 \\le \\varphi_2 \\le \\cdots \\le f, \\quad  \\varphi_n \\to f\\text{ 逐点}, $$',
         '',
         '并且**在 f 有界的集合上还是一致收敛**。',
         '',
         '**(b)** 一般地（$$f : X \\to \\mathbb{C}$$ 可测），可取 $$\\{\\varphi_n\\}$$ 简单使',
         '',
-        '$$0 \\le |\\varphi_1| \\le |\\varphi_2| \\le \\cdots \\le |f|，　\\varphi_n \\to f 逐点$$'
+        '$$0 \\le |\\varphi_1| \\le |\\varphi_2| \\le \\cdots \\le |f|, \\quad  \\varphi_n \\to f\\text{ 逐点}$$'
       ].join('\n'),
       notes: [
         '(a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $$2^{-n}$$ 切碎，超过 n 的部分一律抹成 n ——',
         '',
-        '$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n−1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}，$$',
-        '$$E_n^k = f^{-1}((k\\cdot2^{-n}, (k+1)\\cdot2^{-n}])，　F_n = f^{-1}((n, +\\infty])$$',
+        '$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n-1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}, $$',
+        '$$E_n^k = f^{-1}((k\\cdot2^{-n}, (k+1)\\cdot2^{-n}]), \\quad  F_n = f^{-1}((n, +\\infty])$$',
         '',
         '每一层都是可测集的原像，所以 φₙ 是简单函数；n 越大格子越细、天花板越高，于是单调递增地爬到 f。',
-        '(b) 把 $$f = g + ih$$ 拆成 $$g = g^+ − g^-$$、$$h = h^+ − h^-$$，对四个非负部分用 (a)：',
+        '(b) 把 $$f = g + ih$$ 拆成 $$g = g^+ - g^-$$、$$h = h^+ - h^-$$，对四个非负部分用 (a)：',
         '',
-        '$$\\varphi_n = \\psi_n^+ − \\psi_n^- + i(ζ_n^+ − ζ_n^-)$$'
+        '$$\\varphi_n = \\psi_n^+ - \\psi_n^- + i(\\zeta _n^+ - \\zeta _n^-)$$'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.10']
     },
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
         '(⟹) 是完备性的直接好处：重新定义零集上的值不改变可测性。',
         '(⟸) 是这条命题有意思的地方 —— 它说明**完备性恰好是「不破坏可测性」所需的全部**。构造：取零集 E（μ(E) = 0）里一个不可测的子集 F（若 μ 不完备，这样的 F 存在），令',
         '',
-        '$$f ≡ 0，　g = \\chi_F$$',
+        '$$f \\equiv  0, \\quad  g = \\chi_F$$',
         '',
         '则 $$f$$ 可测、$$f = g$$ 在 E 外处处成立（即 a.e.），但',
         '',
@@ -244,11 +244,11 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ, μ) 是测度空间，$$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\\bar{\\mathcal{M}}$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使',
         '',
-        '$$f = g　\\bar{\\mu}-a.e.$$'
+        '$$f = g\\quad  \\bar{\\mu}-a.e.$$'
       ].join('\n'),
       notes: [
         '直观：完备化只多加了零集的子集，所以 ℳ̄-可测函数与 ℳ-可测函数只差在零集上的取值。',
-        '证明思路（笔记里写的）：先看 $$f = \\chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \\chi_{E′}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\\{\\varphi_n\\} \\to f$$，每个 $$\\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\\psi_n$$。把零集并起来得 $$N \\in \\mathcal{M}$$，$$\\mu(N) = 0$$，$$N \\supseteq \\bigcup E_n$$，令',
+        '证明思路（笔记里写的）：先看 $$f = \\chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \\chi_{E\'}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\\{\\varphi_n\\} \\to f$$，每个 $$\\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\\psi_n$$。把零集并起来得 $$N \\in \\mathcal{M}$$，$$\\mu(N) = 0$$，$$N \\supseteq \\bigcup E_n$$，令',
         '',
         '$$g = lim_n \\chi_{N^c} \\cdot \\varphi_n$$',
         '',
@@ -279,9 +279,9 @@ window.MG = window.MG || {};
         '',
         '**④ 和与积。** 先看 $$f + g$$：对任意 a ∈ ℝ，',
         '',
-        '$$\\{f + g > a\\} = \\bigcup_{q \\in \\mathbb{Q}} ( \\{f > q\\} \\cap \\{g > a − q\\} )$$',
+        '$$\\{f + g > a\\} = \\bigcup_{q \\in \\mathbb{Q}} ( \\{f > q\\} \\cap \\{g > a - q\\} )$$',
         '',
-        '（左边 ⊆ 右边：取有理数 q 夹在 $$a − g$$ 与 f 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 − f^2 − g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。',
+        '（左边 ⊆ 右边：取有理数 q 夹在 $$a - g$$ 与 f 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 - f^2 - g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。',
         '',
         '**⑤ 与简单函数的关系。** 上面 ①~④ 已经把「可测」做成了一个对极限与代数运算封闭的类；而简单函数逼近定理保证**每个非负可测函数都是一列简单函数的逐点极限**，所以这个类是「刚好够用」的：从简单函数出发，取极限就得到全部可测函数。∎'
       ].join('\n'),
@@ -297,7 +297,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $$f : X \\to Y$$ 连续，即每个开集的原像是开集。',
         '',
-        '由定义 $$\\mathfrak{B}_Y = \\mathcal{M}(\\{ U \\subseteq Y : U 开 \\})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\\in \\mathfrak{B}_X$$。故 f 可测。∎',
+        '由定义 $$\\mathfrak{B}_Y = \\mathcal{M}(\\{ U \\subseteq Y : U\\text{ 开} \\})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\\in \\mathfrak{B}_X$$。故 f 可测。∎',
         '',
         '> 复习一下笔记里点的那个坑：**这个论证对 (𝔅, 𝔅) 成立，但对 (ℒ, ℒ) 不成立** —— 因为 ℒ 并不由开集生成，它比 𝔅_ℝ 多了很多非 Borel 的零测集子集。'
       ].join('\n')

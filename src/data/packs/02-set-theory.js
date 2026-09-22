@@ -24,7 +24,7 @@ window.MG = window.MG || {};
         '',
         '基本性质：⊆ 自反、传递；并且由外延公理，',
         '',
-        '$$A = B \\iff A \\subseteq B ∧ B \\subseteq A$$',
+        '$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$',
         '',
         '这是证明两个集合相等最常用的套路：**两边互包**。'
       ].join('\n'),
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
         '',
         '**特征性质**（这才是「有序」的全部含义）：',
         '',
-        '$$(a, b) = (c, d) \\iff a = c ∧ b = d$$',
+        '$$(a, b) = (c, d) \\iff a = c \\wedge  b = d$$',
         '',
         'n 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。'
       ].join('\n'),
@@ -142,7 +142,7 @@ window.MG = window.MG || {};
         '',
         '更一般地，正则公理排除了任何有限的 ∈-循环：',
         '',
-        '$$A_0 ∋ A_1 ∋ \\cdots ∋ A_n = A_0$$'
+        '$$A_0 \\ni  A_1 \\ni  \\cdots \\ni  A_n = A_0$$'
       ].join('\n'),
       notes: '这条定理说明罗素悖论里的「集合 R = { x : x ∉ x }」不可能存在——否则 R ∈ R 与 R ∉ R 同时成立。',
       refs: ['Kunen, Set Theory, I.9']
@@ -160,7 +160,7 @@ window.MG = window.MG || {};
       statement: [
         '存在**最小归纳集** ω：它含有 ∅，对 x ↦ x ∪ {x} 封闭，且含于一切归纳集之中：',
         '',
-        '$$\\omega = \\{ \\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}, \\{\\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}\\}, … \\}$$',
+        '$$\\omega = \\{ \\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}, \\{\\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}\\}, \\ldots  \\}$$',
         '',
         '把 ∈ 读作 <，⟨ω, ∈⟩ 就是自然数系 ⟨ℕ, <⟩。'
       ].join('\n'),
@@ -180,7 +180,7 @@ window.MG = window.MG || {};
       statement: [
         '任给两个集合，它们的并仍是集合：',
         '',
-        '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A ↔ ( x \\in a ∨ x \\in b ) ]$$',
+        '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A \\leftrightarrow  ( x \\in a \\vee  x \\in b ) ]$$',
         '',
         '记作 a ∪ b。'
       ].join('\n'),
@@ -200,7 +200,7 @@ window.MG = window.MG || {};
       statement: [
         '任给两个集合，全体有序对构成一个集合：',
         '',
-        '$$\\forall A \\forall B \\exists C \\forall z [ z \\in C ↔ \\exists a \\in A, \\exists b \\in B, z = (a, b) ]$$',
+        '$$\\forall A \\forall B \\exists C \\forall z [ z \\in C \\leftrightarrow  \\exists a \\in A, \\exists b \\in B, z = (a, b) ]$$',
         '',
         '记作 A × B = { (a, b) : a ∈ A, b ∈ B }。'
       ].join('\n'),
@@ -258,7 +258,7 @@ window.MG = window.MG || {};
         '',
         '2. 由幂集公理，𝒫(I) 是集合；再用分离公理模式取',
         '',
-        '$$S = \\{ J \\in \\mathcal{P}(I) : J 是归纳集 \\}$$',
+        '$$S = \\{ J \\in \\mathcal{P}(I) : J\\text{ 是归纳集} \\}$$',
         '',
         'S 非空（I ∈ S）。',
         '',
@@ -287,7 +287,7 @@ window.MG = window.MG || {};
         '1. 由配对公理，{ a, b } 是集合。',
         '2. 由并集公理，⋃{ a, b } 是集合，且',
         '',
-        '$$x \\in \\bigcup\\{ a, b \\} \\iff \\exists Y ( Y \\in \\{ a, b \\} ∧ x \\in Y ) \\iff ( x \\in a ∨ x \\in b )$$',
+        '$$x \\in \\bigcup\\{ a, b \\} \\iff \\exists Y ( Y \\in \\{ a, b \\} \\wedge  x \\in Y ) \\iff ( x \\in a \\vee  x \\in b )$$',
         '',
         '取 A = ⋃{ a, b } 即为所求。∎'
       ].join('\n')

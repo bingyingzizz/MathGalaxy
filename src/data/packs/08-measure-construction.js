@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       statement: [
         '若 ℳ 只是一个**环**（不必是 σ-代数），而 $$\\mu : \\mathcal{M} \\to [0, +\\infty]$$ 仍满足测度的两条：',
         '',
-        '$$\\mu(\\emptyset) = 0，　\\{E_j\\} 两两不交 \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
+        '$$\\mu(\\emptyset) = 0, \\quad  \\{E_j\\}\\text{ 两两不交} \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
         '',
         '则称 μ 是 ℳ 上的**预测度**。'
       ].join('\n'),
@@ -77,7 +77,7 @@ window.MG = window.MG || {};
       statement: [
         '若 μ 只满足 (i) 与**有限**可加性：',
         '',
-        '$$A, B \\in \\mathcal{M} 两两不交 \\implies \\mu(A \\cup B) = \\mu(A) + \\mu(B)$$',
+        '$$A, B \\in \\mathcal{M}\\text{ 两两不交} \\implies \\mu(A \\cup B) = \\mu(A) + \\mu(B)$$',
         '（由归纳，可推到任意有限多个不交集合），',
         '',
         '则 μ 称为**有限可加测度**。'
@@ -101,13 +101,13 @@ window.MG = window.MG || {};
         '设 (X, ℳ, μ) 是测度空间。',
         '',
         '- **有限**：$$\\mu(X) < \\infty$$',
-        '- **σ-有限**：X 能写成可数个测度有限的集合之并：$$X = \\bigcup_{j=1}^{\\infty} E_j，　\\mu(E_j) < \\infty$$',
+        '- **σ-有限**：X 能写成可数个测度有限的集合之并：$$X = \\bigcup_{j=1}^{\\infty} E_j, \\quad  \\mu(E_j) < \\infty$$',
         '- **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：',
         '',
         '$$\\forall E \\in \\mathcal{M}, \\mu(E) = \\infty \\implies \\exists F \\subseteq E, F \\in \\mathcal{M}, 0 < \\mu(F) < \\infty$$'
       ].join('\n'),
       notes: [
-        '$$有限 \\implies \\sigma-有限 \\implies 半有限$$，两个箭头都不可逆。',
+        '$$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$$，两个箭头都不可逆。',
         'σ-有限是**最常用的技术假设**：ℝ 上的 Lebesgue 测度 σ-有限（ℝ = ⋃ₙ [-n, n]），而计数测度在 ℝ 上不是 σ-有限的。很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 σ-有限。',
         '半有限比 σ-有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。'
       ].join('\n\n'),
@@ -128,7 +128,7 @@ window.MG = window.MG || {};
         '- **(a) 单调**：$$E \\subseteq F \\implies \\mu(E) \\le \\mu(F)$$',
         '- **(b) 次可加**：$$\\mu( \\bigcup_j E_j ) \\le \\sum_j \\mu(E_j)$$（不要求不交）',
         '- **(c) 下连续**：$$E_1 \\subseteq E_2 \\subseteq \\cdots \\implies \\mu( \\bigcup_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$',
-        '- **(d) 上连续**：$$\\mu(E_1) < \\infty，　E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$'
+        '- **(d) 上连续**：$$\\mu(E_1) < \\infty, \\quad  E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$'
       ].join('\n'),
       notes: [
         '(a)：把 F 拆成 F = E ∪ (F ∖ E) 用可数可加（把余下的位置补 ∅）。',
@@ -274,7 +274,7 @@ window.MG = window.MG || {};
       statement: [
         '设 μ* 是 X 上的外测度。A ⊆ X 称为 **μ\\*-可测的**，当且仅当 A 把每个集合都「干净地切成两块」：',
         '',
-        '$$\\mu^*(E) = \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)　\\forall E \\subseteq X$$'
+        '$$\\mu^*(E) = \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)\\quad  \\forall E \\subseteq X$$'
       ].join('\n'),
       notes: [
         '因为 μ* 只有次可加性，永远有 $$\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：A 不「吃掉」任何东西。',
@@ -345,7 +345,7 @@ window.MG = window.MG || {};
       statement: [
         '设 μ₀ 是代数 𝔄 上的预测度，μ := μ*|_ℳ 是它经 Carathéodory 得到的扩张。若 ν 是 ℳ(𝔄) 上**另一个**扩张 μ₀ 的测度，则',
         '',
-        '$$\\nu(E) \\le \\mu(E)　\\forall E \\in \\mathcal{M}(\\mathfrak{A})$$',
+        '$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$',
         '',
         '且当 $$\\mu(E) < \\infty$$ 时等号成立；进而，若 μ 是 σ-有限的，则 $$\\nu = \\mu$$。'
       ].join('\n'),
@@ -368,7 +368,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$F : \\mathbb{R} \\to \\mathbb{R}$$ 是**递增**且**右连续**的函数。在半开区间的全体上定义',
         '',
-        '$$\\mu_0( (a, b] ) = F(b) − F(a)$$',
+        '$$\\mu_0( (a, b] ) = F(b) - F(a)$$',
         '',
         '（并规定 μ₀(∅) = 0，扩充到由这些区间做有限不交并得到的代数 𝔄 上。）则 μ₀ 是 𝔄 上的一个**预测度**。'
       ].join('\n'),
@@ -391,7 +391,7 @@ window.MG = window.MG || {};
       statement: [
         '对每个递增右连续的 $$F : \\mathbb{R} \\to \\mathbb{R}$$，存在 ℝ 上的一个 Borel 测度 μ_F 使',
         '',
-        '$$\\mu_F( (a, b] ) = F(b) − F(a)　\\forall a < b$$',
+        '$$\\mu_F( (a, b] ) = F(b) - F(a)\\quad  \\forall a < b$$',
         '',
         '且这样的 μ_F 与 F 的对应在**相差一个常数**的意义下是一一的。'
       ].join('\n'),
@@ -416,7 +416,7 @@ window.MG = window.MG || {};
         '',
         '特别地，取 $$F(x) = x$$，得到的 μ_F 就是 ℝ 上的 **Lebesgue 测度** m：',
         '',
-        '$$m( (a, b] ) = b − a$$'
+        '$$m( (a, b] ) = b - a$$'
       ].join('\n'),
       notes: [
         '若改用左连续的 F 配区间 [a, b)，得到的是同一族测度 —— 只是把「右连续」换成了「左连续」。笔记里专门标注了这一点。',
@@ -450,7 +450,7 @@ window.MG = window.MG || {};
         '',
         '**(d) 上连续。** 设 E₁ ⊇ E₂ ⊇ ⋯ 且 μ(E₁) < ∞。令 Fⱼ = E₁ ∖ Eⱼ，则 F₁ ⊆ F₂ ⊆ ⋯ 且 ⋃Fⱼ = E₁ ∖ ⋂Eⱼ。由 (c) 与 (a)，',
         '',
-        '$$\\mu(E_1) − \\mu(\\bigcap_j E_j) = \\mu(E_1 \\setminus \\bigcap_j E_j) = lim_j \\mu(F_j) = lim_j ( \\mu(E_1) − \\mu(E_j) )$$',
+        '$$\\mu(E_1) - \\mu(\\bigcap_j E_j) = \\mu(E_1 \\setminus \\bigcap_j E_j) = lim_j \\mu(F_j) = lim_j ( \\mu(E_1) - \\mu(E_j) )$$',
         '',
         '因为 μ(E₁) < ∞ 是个有限数，可以从两边同时减掉，得 μ(⋂Eⱼ) = lim μ(Eⱼ)。∎',
         '',
@@ -518,7 +518,7 @@ window.MG = window.MG || {};
         '',
         '**④ 完备。** 设 μ*(A) = 0，B ⊆ A。对任意 E，由单调性与次可加，',
         '',
-        '$$\\mu^*(E) \\ge \\mu^*(E \\cap B^c) \\ge \\mu^*(E) − \\mu^*(E \\cap B) \\ge \\mu^*(E) − \\mu^*(A) = \\mu^*(E)$$',
+        '$$\\mu^*(E) \\ge \\mu^*(E \\cap B^c) \\ge \\mu^*(E) - \\mu^*(E \\cap B) \\ge \\mu^*(E) - \\mu^*(A) = \\mu^*(E)$$',
         '',
         '故 μ*(E) = μ*(E∩B) + μ*(E∩Bᶜ)（注意 μ*(E∩B) ≤ μ*(A) = 0），即 B ∈ ℳ。故 μ*|_ℳ 完备。∎',
         '',

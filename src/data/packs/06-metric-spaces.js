@@ -57,7 +57,7 @@ window.MG = window.MG || {};
         '',
         '距离空间 (X, d) **完备**，当且仅当 X 中每个 Cauchy 列都在 X 中收敛：',
         '',
-        '$$\\{x_n\\} 是 Cauchy 列 \\implies \\exists x \\in X : x_n \\to x$$'
+        '$$\\{x_n\\}\\text{ 是} Cauchy\\text{ 列} \\implies \\exists x \\in X : x_n \\to x$$'
       ].join('\n'),
       notes: [
         '「收敛 ⟹ Cauchy」永远成立；**「Cauchy ⟹ 收敛」才是完备性的内容**。',
@@ -78,7 +78,7 @@ window.MG = window.MG || {};
       statement: [
         '距离空间 (X, d) **全有界**（也叫**预紧**），当且仅当对每个 ε > 0 都存在**有限的 ε-网**：',
         '',
-        '$$\\forall\\varepsilon > 0, \\exists n 与 x_1, …, x_n \\in X : X = \\bigcup_{i=1}^{n} B(x_i, \\varepsilon)$$',
+        '$$\\forall\\varepsilon > 0, \\exists n\\text{ 与} x_1, \\ldots , x_n \\in X : X = \\bigcup_{i=1}^{n} B(x_i, \\varepsilon)$$',
         '',
         '等价说法：对每个 ε > 0，X 都能被**有限个**半径 ε 的开球盖住。'
       ].join('\n'),
@@ -101,7 +101,7 @@ window.MG = window.MG || {};
       statement: [
         '距离空间 (X, d) **列紧**（序列紧），当且仅当 X 中每个序列都有收敛到 X 中的子列：',
         '',
-        '$$\\forall\\{x_n\\} \\subseteq X, \\exists\\{x_{n_k}\\} 与 \\exists x \\in X : x_{n_k} \\to x$$'
+        '$$\\forall\\{x_n\\} \\subseteq X, \\exists\\{x_{n_k}\\}\\text{ 与} \\exists x \\in X : x_{n_k} \\to x$$'
       ].join('\n'),
       notes: '在度量空间里「列紧 ⟺ 紧」（见下面的箭头），但在一般拓扑空间里**不等价** —— 列紧严格更强。度量空间好用的地方正是这里。\n\n注意子列收敛到的是 X 中的点：列紧是内蕴性质，不看外面那个空间。',
       refs: ['Munkres, Topology, §28']
@@ -118,7 +118,7 @@ window.MG = window.MG || {};
       statement: [
         '距离空间 (X, d) **紧**，当且仅当 X 的每个**开覆盖**都有有限子覆盖：',
         '',
-        '$$\\forall\\{U_i\\}_{i \\in I} ( 每个 U_i 开且 X = \\bigcup_{i \\in I} U_i ) \\implies \\exists i_1, …, i_n : X = \\bigcup_{k=1}^{n} U_{i_k}$$'
+        '$$\\forall\\{U_i\\}_{i \\in I} (\\text{ 每个} U_i\\text{ 开且} X = \\bigcup_{i \\in I} U_i ) \\implies \\exists i_1, \\ldots , i_n : X = \\bigcup_{k=1}^{n} U_{i_k}$$'
       ].join('\n'),
       notes: [
         '紧性是**拓扑**性质，只依赖开集，跟 d 的具体取值无关。',
@@ -139,7 +139,7 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, d) 是距离空间。则下列三条**彼此等价**：',
         '',
-        '$$X 紧 \\iff X 列紧 \\iff X 完备且全有界$$'
+        '$$X\\text{ 紧} \\iff X\\text{ 列紧} \\iff X\\text{ 完备且全有界}$$'
       ].join('\n'),
       notes: [
         '逻辑骨架全在箭头里（点箭头看证明）：',
@@ -168,7 +168,7 @@ window.MG = window.MG || {};
       statement: [
         '设 A 是距离空间 X 的子集（按子空间度量）。则',
         '',
-        '$$A 紧 \\implies A 是 X 中的闭集$$'
+        '$$A\\text{ 紧} \\implies A\\text{ 是} X\\text{ 中的闭集}$$'
       ].join('\n'),
       notes: [
         '其实只要 X 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。',
@@ -188,14 +188,14 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, d) 是**完备**的距离空间，A ⊆ X。则',
         '',
-        '$$A 紧 \\iff A 闭 且 A 全有界$$',
+        '$$A\\text{ 紧} \\iff A\\text{ 闭}\\text{ 且} A\\text{ 全有界}$$',
         '',
         '（「A 全有界」按子空间度量 d|A 理解。）'
       ].join('\n'),
       notes: [
         '⚠ **「X 完备」这个前提不能省。** 理由是中间那一步：A 作为子空间完备 ⟺ A 在 X 中闭 —— 这一步要用 X 完备。少了它，A 闭 + A 全有界推不出 A 紧。',
         '这也是 **Heine–Borel** 的推广：ℝⁿ 完备，而在 ℝⁿ 中 A 有界 ⟺ A 全有界，于是「有界闭集紧」正是它的特例。',
-        '⚠ 笔记里这一行写的是「A 紧 ⟺ A 闭 + 全有界」，字面没写前提；上面单独一行的「X 完备」应该就是这条的前提。（已请本人核对。）'
+        '📌 笔记原稿里这一行是**缩进**写在「Prop. X 完备.」下面、而且**没有自己的 Prop. 前缀** —— 本人 2026-09-22 确认：**「X 完备」就是这条的前提**，两行合起来是一个命题。'
       ].join('\n\n'),
       refs: ['Munkres, Topology, §28', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
     }
@@ -219,7 +219,7 @@ window.MG = window.MG || {};
         '',
         '**③ 造一个开覆盖。** 取',
         '',
-        '$$𝒰 = \\{ U_n : n \\in \\mathbb{N} \\} \\cup \\{ X \\setminus \\{x_n : n \\in \\mathbb{N}\\} \\}$$',
+        '$$\\mathcal{U} = \\{ U_n : n \\in \\mathbb{N} \\} \\cup \\{ X \\setminus \\{x_n : n \\in \\mathbb{N}\\} \\}$$',
         '',
         '其中 Uₙ 是 ② 中给 xₙ 的那个邻域（只含有限个 xₘ）。再补上闭集的余集，𝒰 就是 X 的开覆盖。',
         '',
@@ -294,13 +294,13 @@ window.MG = window.MG || {};
         '',
         '再把 B₁ 用有限个半径 1/2 的球盖住（B₁ ⊆ X，全有界性对它同样管用），其中必有一个坏球 B₂ ⊆ B₁。如此继续，得到',
         '',
-        '$$B_1 \\supseteq B_2 \\supseteq B_3 \\supseteq \\cdots，　B_k 的半径 \\le 1/k，　每个 B_k 都是坏的$$',
+        '$$B_1 \\supseteq B_2 \\supseteq B_3 \\supseteq \\cdots, \\quad  B_k\\text{ 的半径} \\le 1/k, \\quad \\text{ 每个} B_k\\text{ 都是坏的}$$',
         '',
         '（每一步都只是在**有限**多个球里挑一个，可以规定「取编号最小的那个」，所以这里不动用选择公理。）',
         '',
         '**③ 取点，得到 Cauchy 列。** 取 xₖ ∈ Bₖ。由嵌套与半径趋于 0，对 m ≤ n 有 xₘ, xₙ ∈ Bₘ 而 Bₘ 的半径 ≤ 1/m，于是',
         '',
-        '$$d(x_m, x_n) \\le 2/m　\\implies　\\{x_k\\} 是 Cauchy 列$$',
+        '$$d(x_m, x_n) \\le 2/m\\quad  \\implies\\quad  \\{x_k\\}\\text{ 是} Cauchy\\text{ 列}$$',
         '',
         '**④** 由列紧它有子列收敛到某点 x ∈ X；Cauchy 列一旦有收敛子列就整体收敛，故 xₖ → x。',
         '',
@@ -346,7 +346,7 @@ window.MG = window.MG || {};
       proof: [
         '给定 ε > 0。考虑开球族',
         '',
-        '$$𝒰 = \\{ B(x, \\varepsilon) : x \\in X \\}$$',
+        '$$\\mathcal{U} = \\{ B(x, \\varepsilon) : x \\in X \\}$$',
         '',
         '它显然是 X 的开覆盖（每个 x 都被 B(x, ε) 含住）。由 X 紧，存在有限子覆盖：',
         '',

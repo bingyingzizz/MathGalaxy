@@ -27,7 +27,7 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ, μ) 与 (Y, 𝒩, ν) 是测度空间。',
         '',
-        '**① 矩形**：形如 $$A \\times B$$（$$A \\in \\mathcal{M}$$，$$B \\in \\mathcal{N}$$）的集合叫（可测）矩形。全体矩形**生成** $$\\mathcal{M} ⊗ \\mathcal{N}$$。',
+        '**① 矩形**：形如 $$A \\times B$$（$$A \\in \\mathcal{M}$$，$$B \\in \\mathcal{N}$$）的集合叫（可测）矩形。全体矩形**生成** $$\\mathcal{M} \\otimes  \\mathcal{N}$$。',
         '',
         '**② 矩形上的预测度**：令 𝒜 为**矩形的有限不交并**全体。对',
         '',
@@ -35,18 +35,18 @@ window.MG = window.MG || {};
         '',
         '定义',
         '',
-        '$$π(E) := \\sum_{j=1}^{n} \\mu(A_j) \\nu(B_j)$$',
+        '$$\\pi (E) := \\sum_{j=1}^{n} \\mu(A_j) \\nu(B_j)$$',
         '',
         '则 π 是代数 𝒜 上的**预测度**。',
         '',
-        '**③ 扩张**：π 诱导 X × Y 上的外测度，限制在 $$\\mathcal{M} ⊗ \\mathcal{N}$$ 上得到一个测度，记作',
+        '**③ 扩张**：π 诱导 X × Y 上的外测度，限制在 $$\\mathcal{M} \\otimes  \\mathcal{N}$$ 上得到一个测度，记作',
         '',
         '$$\\mu \\times \\nu$$',
         '',
         '即**乘积测度**。'
       ].join('\n'),
       notes: [
-        '$$π$$ 的良定义要检查（同一个 E 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。',
+        '$$\\pi $$ 的良定义要检查（同一个 E 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。',
         '**σ-有限的时候一切顺利**：若 μ、ν 都 σ-有限，则 μ×ν 也 σ-有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。',
         '⚠ 这一步的整个机器（预测度 → 外测度 → Carathéodory 扩张 → 唯一性）就是「测度的构造」那个星团里现成的四件套。'
       ].join('\n\n'),
@@ -89,19 +89,19 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '截口', '可测'],
       statement: [
-        '**(a)** 若 $$E \\in \\mathcal{M} ⊗ \\mathcal{N}$$，则对一切 $$x \\in X$$ 有 $$E_x \\in \\mathcal{N}$$，对一切 $$y \\in Y$$ 有 $$E^y \\in \\mathcal{M}$$。',
+        '**(a)** 若 $$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$，则对一切 $$x \\in X$$ 有 $$E_x \\in \\mathcal{N}$$，对一切 $$y \\in Y$$ 有 $$E^y \\in \\mathcal{M}$$。',
         '',
-        '**(b)** 若 $$f$$ 是 $$\\mathcal{M} ⊗ \\mathcal{N}$$-可测的，则对一切 $$x$$ 有 $$f_x$$ 是 $$\\mathcal{N}$$-可测的，对一切 $$y$$ 有 $$f^y$$ 是 $$\\mathcal{M}$$-可测的。'
+        '**(b)** 若 $$f$$ 是 $$\\mathcal{M} \\otimes  \\mathcal{N}$$-可测的，则对一切 $$x$$ 有 $$f_x$$ 是 $$\\mathcal{N}$$-可测的，对一切 $$y$$ 有 $$f^y$$ 是 $$\\mathcal{M}$$-可测的。'
       ].join('\n'),
       notes: [
         '证明是一个「先看矩形、再看 σ-代数」的标准套路：令',
         '',
-        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} 且 E^y \\in \\mathcal{M}　\\forall(x, y)\\}$$',
+        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y)\\}$$',
         '',
         '则 ℛ 包含所有矩形，而且**ℛ 是一个 σ-代数**（截口运算保持并、交、补）。于是 ℛ ⊇ ℳ ⊗ 𝒩。',
         '(b) 由 (a) 与两条恒等式得到：',
         '',
-        '$$f_x^{-1}(B) = (f^{-1}(B))_x，　f^{y-1}(B) = (f^{-1}(B))^y$$',
+        '$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$',
         '',
         '⚠ 注意 (b) 说的是「**每一个** x 都行」，而 Fubini 定理里只能保证「几乎每一个」—— 那是因为 Fubini 还要它可积。'
       ].join('\n\n'),
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       statement: [
         '若 𝒜 是一个**代数**，则由 𝒜 生成的单调类就是由 𝒜 生成的 σ-代数：',
         '',
-        '$$\\mathcal{A} 是代数 \\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$$'
+        '$$\\mathcal{A}\\text{ 是代数} \\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$$'
       ].join('\n'),
       notes: [
         '⭐ 这一条是证明「某个 σ-代数里所有集合都满足性质 P」的**标准武器**，用法固定两步：',
@@ -129,7 +129,7 @@ window.MG = window.MG || {};
         '',
         '于是 P 对 𝔪(𝒜) = ℳ(𝒜) 中所有集合成立。',
         '⚠ 与「测度的构造」里那条「环 → σ-环 的判据」是姊妹结果：那条说环 + 单调 ⟹ σ-环，这条说代数 ⟹ 单调类与 σ-代数重合。',
-        '📌 笔记第 6 页把这条写得很清楚，正好也印证了第 2 页上那条「ℳ(ℰ) = 𝔪(ℰ)」的存疑 —— 标准形式就是「𝒜 是代数」这个前提。'
+        '📌 笔记第 6 页把这条写得很清楚：标准形式就是「𝒜 是代数」这个前提。第 2 页上那条 ℳ(ℰ) = 𝔪(ℰ) 是它的**加强版**（条件松一档，只要求 ℰ 的补、并落进 𝔪(ℰ)），见「单调类定理」节点。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37', 'Halmos, Measure Theory, §6']
     },
@@ -143,7 +143,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '乘积测度', '截口'],
       statement: [
-        '设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是 **σ-有限**的，$$E \\in \\mathcal{M} ⊗ \\mathcal{N}$$。则',
+        '设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是 **σ-有限**的，$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$。则',
         '',
         '- $$x \\mapsto \\nu(E_x)$$ 在 X 上可测；',
         '- $$y \\mapsto \\mu(E^y)$$ 在 Y 上可测；',
@@ -156,12 +156,12 @@ window.MG = window.MG || {};
         '这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。',
         '证明的结构：先设 μ、ν **有限**，令',
         '',
-        '$$\\mathcal{C} = \\{E \\in \\mathcal{M} ⊗ \\mathcal{N} : 上面两条都成立\\}$$',
+        '$$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} :\\text{ 上面两条都成立}\\}$$',
         '',
         '- 矩形 $$E = A \\times B$$：$$\\nu(E_x) = \\chi_A(x) \\nu(B)$$，立刻成立；',
         '- 𝒞 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；',
         '',
-        '于是 𝒞 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\\mathcal{M} ⊗ \\mathcal{N}$$。',
+        '于是 𝒞 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。',
         '最后把「有限」推广到「σ-有限」：取 $$X \\times Y = \\bigcup (X_i \\times Y_i)$$，对每个 $$E \\cap (X_i \\times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.36']
@@ -180,7 +180,7 @@ window.MG = window.MG || {};
         '',
         '**(a) Tonelli（非负情形，无附加条件）**：若 $$f \\in L^+(X \\times Y)$$，则',
         '',
-        '$$\\int f_x d\\nu \\in L^+(X)，　\\int f^y d\\mu \\in L^+(Y)$$',
+        '$$\\int f_x d\\nu \\in L^+(X), \\quad  \\int f^y d\\mu \\in L^+(Y)$$',
         '',
         '且',
         '',
@@ -195,7 +195,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 f 可积，于是可以放心换序。',
         '**Fubini 则必须假定可积** —— 否则一边是 +∞、一边是 −∞，换序会出事。',
-        '⚠ 反例（不是可积但累次积分不等）：在 [0,1]² 上取 $$f(x, y) = (x^2 − y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。',
+        '⚠ 反例（不是可积但累次积分不等）：在 [0,1]² 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。',
         '⚠ σ-有限不能省：在「ℝ 上的计数测度 × Lebesgue 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37']
@@ -212,7 +212,7 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是**完备**的 σ-有限测度空间，$$(X \\times Y, \\mathcal{L}, \\lambda)$$ 是',
         '',
-        '$$(X \\times Y, \\mathcal{M} ⊗ \\mathcal{N}, \\mu \\times \\nu)$$',
+        '$$(X \\times Y, \\mathcal{M} \\otimes  \\mathcal{N}, \\mu \\times \\nu)$$',
         '',
         '的**完备化**。设 f 是 ℒ-可测的。',
         '',
@@ -239,7 +239,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['注记', '完备', '乘积测度'],
       statement: [
-        '即使 μ 与 ν 都**完备**，$$\\mu \\times \\nu$$ 也**经常是不完备的**：存在 $$E \\in \\mathcal{M} ⊗ \\mathcal{N}$$ 使 $$\\mu \\times \\nu(E) = 0$$，但 E 有子集不属于 $$\\mathcal{M} ⊗ \\mathcal{N}$$。'
+        '即使 μ 与 ν 都**完备**，$$\\mu \\times \\nu$$ 也**经常是不完备的**：存在 $$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$ 使 $$\\mu \\times \\nu(E) = 0$$，但 E 有子集不属于 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。'
       ].join('\n'),
       notes: [
         '这就是为什么必须单独有「完备情形的 F–T」：实际用的时候（比如 ℝ² 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 μ×ν。',
@@ -258,7 +258,7 @@ window.MG = window.MG || {};
       target: 'def.product-measure',
       title: '矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度',
       proof: [
-        '**① π 是良定义的。** 设 E 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k′$$ × $$B_j \\cap B_k′$$），π 的值不变 —— 因为 μ、ν 在各自那一侧都是有限可加的。',
+        '**① π 是良定义的。** 设 E 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k\'$$ × $$B_j \\cap B_k\'$$），π 的值不变 —— 因为 μ、ν 在各自那一侧都是有限可加的。',
         '',
         '**② π 是 𝒜 上的预测度。** 𝒜 = 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 μ、ν 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。',
         '',
@@ -277,11 +277,11 @@ window.MG = window.MG || {};
       target: 'prop.section-measurable',
       title: '截口的定义 ⟹ 截口保持可测性',
       proof: [
-        '**(a)** 令 $$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} 且 E^y \\in \\mathcal{M}　\\forall(x, y) \\in X \\times Y\\}$$。',
+        '**(a)** 令 $$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y) \\in X \\times Y\\}$$。',
         '',
         '- **ℛ 含所有矩形**：若 $$E = A \\times B$$，则',
         '',
-        '$$E_x = B　(x \\in A)，　E_x = \\emptyset　(x \\notin A)$$',
+        '$$E_x = B\\quad  (x \\in A), \\quad  E_x = \\emptyset\\quad  (x \\notin A)$$',
         '',
         '两边都在 𝒩 里（𝒩 含 ∅）；横截口同理。',
         '',
@@ -293,7 +293,7 @@ window.MG = window.MG || {};
         '',
         '$$f_x^{-1}(B) = \\{y : f(x, y) \\in B\\} = (f^{-1}(B))_x$$',
         '',
-        '而 $$f^{-1}(B) \\in \\mathcal{M} ⊗ \\mathcal{N}$$，由 (a) 它的纵截口属于 𝒩，即 $$f_x^{-1}(B) \\in \\mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎'
+        '而 $$f^{-1}(B) \\in \\mathcal{M} \\otimes  \\mathcal{N}$$，由 (a) 它的纵截口属于 𝒩，即 $$f_x^{-1}(B) \\in \\mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎'
       ].join('\n')
     },
 
@@ -304,17 +304,17 @@ window.MG = window.MG || {};
       target: 'thm.product-measure-sections',
       title: '单调类引理 ⟹ 乘积测度由截口积分给出',
       proof: [
-        '**① 先设 μ、ν 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} ⊗ \\mathcal{N} : x \\mapsto \\nu(E_x) 可测，y \\mapsto \\mu(E^y) 可测，且 \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。',
+        '**① 先设 μ、ν 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。',
         '',
         '**② 矩形在 𝒞 里。** 若 $$E = A \\times B$$，则 $$\\nu(E_x) = \\chi_A(x)\\cdot\\nu(B)$$，它是可测的（指示函数 × 常数），且',
         '',
         '$$\\int \\nu(E_x) d\\mu(x) = \\nu(B)\\cdot\\mu(A) = \\mu \\times \\nu(A \\times B)$$',
         '',
-        '**③ 𝒞 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 𝒞 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) ↗ \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = lim \\int\\nu((E_n)_x)d\\mu = lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。',
+        '**③ 𝒞 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 𝒞 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) \\nearrow  \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = lim \\int\\nu((E_n)_x)d\\mu = lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。',
         '',
         '**④ 𝒞 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。',
         '',
-        '**⑤ 用单调类引理。** 由 ①②③④，𝒞 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 𝒞 含这个代数；由单调类引理，$$\\mathfrak{m}(代数) = \\mathcal{M}(代数) = \\mathcal{M} ⊗ \\mathcal{N}$$，于是 𝒞 = ℳ ⊗ 𝒩。',
+        '**⑤ 用单调类引理。** 由 ①②③④，𝒞 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 𝒞 含这个代数；由单调类引理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 𝒞 = ℳ ⊗ 𝒩。',
         '',
         '**⑥ 推广到 σ-有限。** 取 $$X = \\bigcup_i X_i$$、$$Y = \\bigcup_i Y_i$$（各自测度有限），则 $$X \\times Y = \\bigcup_i (X_i \\times Y_i)$$。对每个 i，把 ⑤ 用在 $$E \\cap (X_i \\times Y_i)$$ 上（这一步只用到**有限**测度）；再把 i 加起来，用 MCT 对 i 求极限即可。∎',
         '',
@@ -329,19 +329,19 @@ window.MG = window.MG || {};
       target: 'thm.fubini-tonelli',
       title: '集合版（截口公式）+ MCT ⟹ Tonelli',
       proof: [
-        '**① 指示函数。** 取 $$f = \\chi_E$$（$$E \\in \\mathcal{M} ⊗ \\mathcal{N}$$）。此时',
+        '**① 指示函数。** 取 $$f = \\chi_E$$（$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$）。此时',
         '',
-        '$$\\int_Y f(x, y) d\\nu(y) = \\nu(E_x)，　\\int_X f(x, y) d\\mu(x) = \\mu(E^y)$$',
+        '$$\\int_Y f(x, y) d\\nu(y) = \\nu(E_x), \\quad  \\int_X f(x, y) d\\mu(x) = \\mu(E^y)$$',
         '',
         '于是三重等式正是上一条定理的内容。',
         '',
         '**② 简单函数。** 由线性推广到 $$f = \\sum_j a_j \\chi_{E_j}$$（$$a_j \\ge 0$$，Eⱼ 不交）。',
         '',
-        '**③ 非负可测函数。** 取简单函数列 $$\\{f_n\\} ↗ f$$（简单函数逼近定理）。令',
+        '**③ 非负可测函数。** 取简单函数列 $$\\{f_n\\} \\nearrow  f$$（简单函数逼近定理）。令',
         '',
-        '$$g_n(x) = \\int f_n(x, y) d\\nu(y)，　g(x) = \\int f(x, y) d\\nu(y)$$',
+        '$$g_n(x) = \\int f_n(x, y) d\\nu(y), \\quad  g(x) = \\int f(x, y) d\\nu(y)$$',
         '',
-        '由 $$f_n ↑ f$$ 与积分的单调性，$$\\{g_n\\}$$ 递增；由 **MCT**，$$g = lim_n g_n$$ 且',
+        '由 $$f_n \\uparrow  f$$ 与积分的单调性，$$\\{g_n\\}$$ 递增；由 **MCT**，$$g = lim_n g_n$$ 且',
         '',
         '$$\\int g d\\mu = lim_n \\int g_n d\\mu$$',
         '',
@@ -355,7 +355,7 @@ window.MG = window.MG || {};
         '',
         '（最后一步又用一次 MCT。）另一边对称。**这就是 Tonelli，全程不需要可积性。**',
         '',
-        '**④ Fubini。** 设 $$f \\in L^1(\\mu \\times \\nu)$$。把 f 拆成 $$Re f^+、Re f^-、Im f^+、Im f^-$$ 四个非负部分，对每一部分用 ③。由',
+        '**④ Fubini。** 设 $$f \\in L^1(\\mu \\times \\nu)$$。把 f 拆成 $$Re f^+, Re f^-, Im f^+, Im f^-$$ 四个非负部分，对每一部分用 ③。由',
         '',
         '$$\\int |f| d(\\mu \\times \\nu) < \\infty$$',
         '',
@@ -374,9 +374,9 @@ window.MG = window.MG || {};
       proof: [
         '**① 先证 f ≥ 0 的情形。** 由于 λ 是 μ×ν 的完备化，$$\\mathcal{L}$$ 中的集合可以写成',
         '',
-        '$$E = F \\cup G，　F \\in \\mathcal{M} ⊗ \\mathcal{N}，　G \\subseteq H，　\\mu \\times \\nu(H) = 0$$',
+        '$$E = F \\cup G, \\quad  F \\in \\mathcal{M} \\otimes  \\mathcal{N}, \\quad  G \\subseteq H, \\quad  \\mu \\times \\nu(H) = 0$$',
         '',
-        '（取不交化后即 $$E = F ⊔ G$$，于是 $$\\chi_E = \\chi_F + \\chi_G$$。）',
+        '（取不交化后即 $$E = F \\sqcup  G$$，于是 $$\\chi_E = \\chi_F + \\chi_G$$。）',
         '',
         '**② $$\\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（F ∈ ℳ⊗𝒩）。',
         '',
@@ -388,7 +388,7 @@ window.MG = window.MG || {};
         '',
         '**④ 由线性推广到非负简单函数，再用 MCT 推广到一切 $$f \\ge 0$$。** 关键点：完备化只多出「含在零集里的部分」，而这部分对积分的贡献恒为 0，所以整段论证不会被破坏。',
         '',
-        '**⑤ 一般情形**：把 f 拆成 $$Re f^±、Im f^±$$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎',
+        '**⑤ 一般情形**：把 f 拆成 $$Re f^\\pm , Im f^\\pm $$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎',
         '',
         '> 笔记里的原话把要点概括得很准：**「应该是核心思想，其余都类似。」** —— 核心就是把 E 拆成 F ⊔ G，F 归老定理、G 归「截口都是零集」。'
       ].join('\n')
@@ -405,7 +405,7 @@ window.MG = window.MG || {};
         '',
         '$$D = \\{(x, x) : x \\in [0, 1]\\}$$',
         '',
-        '则 D 是闭集，故属于 $$\\mathfrak{B}_{[0,1]} ⊗ \\mathfrak{B}_{[0,1]}$$；且 $$\\mu \\times \\nu(D)$$ 可以用截口公式算：对每个 x，$$\\nu(D_x) = \\nu(\\{x\\}) = 0$$，故',
+        '则 D 是闭集，故属于 $$\\mathfrak{B}_{[0,1]} \\otimes  \\mathfrak{B}_{[0,1]}$$；且 $$\\mu \\times \\nu(D)$$ 可以用截口公式算：对每个 x，$$\\nu(D_x) = \\nu(\\{x\\}) = 0$$，故',
         '',
         '$$\\mu \\times \\nu(D) = \\int \\nu(D_x) d\\mu(x) = 0$$',
         '',
@@ -413,7 +413,7 @@ window.MG = window.MG || {};
         '',
         '$$G = \\{(x, x) : x \\in N\\} \\subseteq D$$',
         '',
-        '则 G ⊆ D 而 μ×ν(D) = 0，但 G **不属于** $$\\mathfrak{B} ⊗ \\mathfrak{B}$$（它的截口给出的正是 N —— 若 $$G \\in \\mathfrak{B} ⊗ \\mathfrak{B}$$，由截口可测性，对每个 x 都有 $$G_x \\in \\mathfrak{B}$$，而 $$G_x$$ 是 {x} 或 ∅ …… 需要用「G 的截面沿对角线还原出 N」这一论证）。故 μ×ν 不完备。∎',
+        '则 G ⊆ D 而 μ×ν(D) = 0，但 G **不属于** $$\\mathfrak{B} \\otimes  \\mathfrak{B}$$（它的截口给出的正是 N —— 若 $$G \\in \\mathfrak{B} \\otimes  \\mathfrak{B}$$，由截口可测性，对每个 x 都有 $$G_x \\in \\mathfrak{B}$$，而 $$G_x$$ 是 {x} 或 ∅ …… 需要用「G 的截面沿对角线还原出 N」这一论证）。故 μ×ν 不完备。∎',
         '',
         '> ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。'
       ].join('\n'),

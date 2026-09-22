@@ -28,7 +28,7 @@ window.MG = window.MG || {};
       statement: [
         '固定测度空间 (X, ℳ, μ)。记',
         '',
-        '$$L^+ := \\{ f : X \\to [0, +\\infty] : f 可测 \\}$$',
+        '$$L^+ := \\{ f : X \\to [0, +\\infty] : f\\text{ 可测} \\}$$',
         '',
         '即取值在**扩充**非负实数里的可测函数全体。'
       ].join('\n'),
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\varphi \\in L^+$$ 是简单函数，写成标准形式',
         '',
-        '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}，　a_j \\ge 0，E_j \\in \\mathcal{M} 两两不交$$',
+        '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}, \\quad  a_j \\ge 0, E_j \\in \\mathcal{M}\\text{ 两两不交}$$',
         '',
         '则定义',
         '',
@@ -83,7 +83,7 @@ window.MG = window.MG || {};
       notes: [
         '(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 A）全部免费。',
         '',
-        '⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$lim_n \\int_{E_n} \\varphi = \\int \\varphi$$，用的就是「A ↦ ∫_A φ 是测度」加上测度的下连续性（$$E_n ↑ X$$）。',
+        '⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$lim_n \\int_{E_n} \\varphi = \\int \\varphi$$，用的就是「A ↦ ∫_A φ 是测度」加上测度的下连续性（$$E_n \\uparrow  X$$）。',
         '(a) 里 c > 0 而不是 c ≥ 0：因为约定 0·∞ = 0，c = 0 时左边也自动成立，写成 c > 0 只是为了不啰嗦。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.13']
@@ -100,7 +100,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^+$$。定义',
         '',
-        '$$\\int f d\\mu := sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f，\\varphi 是简单函数 \\}$$'
+        '$$\\int f d\\mu := sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f, \\varphi\\text{ 是简单函数} \\}$$'
       ].join('\n'),
       notes: [
         '直观：用简单函数从**下面**去顶 f，取这些面积的**上确界**。这与 Jordan 测度「从外面盖、从里面填」的做法不同 —— 这里只从里面填。',
@@ -121,7 +121,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\{f_n\\} \\subseteq L^+$$ 满足',
         '',
-        '$$f_1 \\le f_2 \\le \\cdots，　f_n ↑ f 逐点，$$',
+        '$$f_1 \\le f_2 \\le \\cdots, \\quad  f_n \\uparrow  f\\text{ 逐点}, $$',
         '',
         '则',
         '',
@@ -187,7 +187,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\{f_n\\} \\subseteq L^+$$，$$f \\in L^+$$。若对**几乎处处的** x 有',
         '',
-        '$$f_n(x) ↑ f(x)，$$',
+        '$$f_n(x) \\uparrow  f(x), $$',
         '',
         '则',
         '',
@@ -266,11 +266,11 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f : X \\to \\bar{\\mathbb{R}}$$ 可测，记正部与负部',
         '',
-        '$$f^+ = \\max_{f, 0}，　f^- = \\max_{-f, 0}$$',
+        '$$f^+ = \\max_{f, 0}, \\quad  f^- = \\max_{-f, 0}$$',
         '',
-        '（两者都属于 L⁺，且 $$f = f^+ − f^-$$、$$|f| = f^+ + f^-$$。）若 $$\\int f^+$$ 与 $$\\int f^-$$ 中**至少一个有限**，定义',
+        '（两者都属于 L⁺，且 $$f = f^+ - f^-$$、$$|f| = f^+ + f^-$$。）若 $$\\int f^+$$ 与 $$\\int f^-$$ 中**至少一个有限**，定义',
         '',
-        '$$\\int f := \\int f^+ − \\int f^-$$',
+        '$$\\int f := \\int f^+ - \\int f^-$$',
         '',
         '对复值函数，拆实部虚部：$$\\int f := \\int Re f + i \\int Im f$$（要求两个积分都有意义）。'
       ].join('\n'),
@@ -293,7 +293,7 @@ window.MG = window.MG || {};
       statement: [
         '实值可测 $$f$$ **可积**，当且仅当 $$\\int f^+ < \\infty$$ 且 $$\\int f^- < \\infty$$。等价地：',
         '',
-        '$$f 可积 \\iff \\int |f| d\\mu < \\infty$$',
+        '$$f\\text{ 可积} \\iff \\int |f| d\\mu < \\infty$$',
         '',
         '复值可测 $$f$$ 可积，当且仅当 $$\\int |f| d\\mu < \\infty$$。可积函数全体记作',
         '',
@@ -318,7 +318,7 @@ window.MG = window.MG || {};
       statement: [
         '$$X$$ 上可积的（实值）函数全体构成一个**实向量空间**，并且',
         '',
-        '$$\\int (af + bg) = a\\int f + b\\int g　\\forall a, b \\in \\mathbb{R}$$',
+        '$$\\int (af + bg) = a\\int f + b\\int g\\quad  \\forall a, b \\in \\mathbb{R}$$',
         '',
         '即 $$f \\mapsto \\int f$$ 是线性的。'
       ].join('\n'),
@@ -375,9 +375,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f, g \\in L^1(\\mu)$$。则下列三条等价：',
         '',
-        '$$\\int_E f d\\mu = \\int_E g d\\mu　\\forall E \\in \\mathcal{M}；$$',
-        '$$\\int |f − g| d\\mu = 0；$$',
-        '$$f = g　\\mu-a.e.$$'
+        '$$\\int_E f d\\mu = \\int_E g d\\mu\\quad  \\forall E \\in \\mathcal{M}; $$',
+        '$$\\int |f - g| d\\mu = 0; $$',
+        '$$f = g\\quad  \\mu-a.e.$$'
       ].join('\n'),
       notes: [
         '作用：这类命题就是「用对一切可测集的积分来**识别**函数」。',
@@ -398,7 +398,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\{f_n\\} \\subseteq L^1$$，$$f_n \\to f$$ a.e.，且存在**控制函数** $$g \\in L^1$$ 使',
         '',
-        '$$|f_n| \\le g　a.e.　\\forall n$$',
+        '$$|f_n| \\le g\\quad  a.e.\\quad  \\forall n$$',
         '',
         '则 $$f \\in L^1$$ 且',
         '',
@@ -451,11 +451,11 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1(\\mu)$$。则对任意 ε > 0，存在简单函数 $$\\varphi = \\sum_j a_j \\chi_{E_j}$$ 使',
         '',
-        '$$\\int |f − \\varphi| d\\mu < \\varepsilon$$',
+        '$$\\int |f - \\varphi| d\\mu < \\varepsilon$$',
         '',
         '进一步，若 μ 是 **ℝ 上的 Lebesgue–Stieltjes 测度**，还可以要求 Eⱼ 是开区间的有限并；甚至可以取一个**连续函数** g（在某个有界区间外恒为 0）使',
         '',
-        '$$\\int |f − g| d\\mu < \\varepsilon$$'
+        '$$\\int |f - g| d\\mu < \\varepsilon$$'
       ].join('\n'),
       notes: [
         '意义：**简单函数与连续函数在 L¹ 里是稠密的**。所以很多命题只要对这两类函数验证就够了，再取极限。',
@@ -474,7 +474,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'DCT', '求导', '带参变量积分'],
       statement: [
-        '设 $$f : X \\times [a, b] \\to \\mathbb{C}$$（$$−\\infty < a < b < \\infty$$），$$f(\\cdot, t)$$ 对每个 $$t \\in [a, b]$$ 都可积。记',
+        '设 $$f : X \\times [a, b] \\to \\mathbb{C}$$（$$-\\infty < a < b < \\infty$$），$$f(\\cdot, t)$$ 对每个 $$t \\in [a, b]$$ 都可积。记',
         '',
         '$$F(t) := \\int_X f(x, t) d\\mu(x)$$',
         '',
@@ -482,9 +482,9 @@ window.MG = window.MG || {};
         '',
         '$$\\lim_{t\\to t_0} F(t) = F(t_0)$$',
         '',
-        '**(b) 求导**：若 $$∂f / ∂t$$ 处处存在，且存在 $$g \\in L^1(\\mu)$$ 使 $$| ∂f / ∂t(x, t) | \\le g(x)$$ 对一切 $$x, t$$ 成立，则 F 可微，且',
+        '**(b) 求导**：若 $$\\partial f / \\partial t$$ 处处存在，且存在 $$g \\in L^1(\\mu)$$ 使 $$| \\partial f / \\partial t(x, t) | \\le g(x)$$ 对一切 $$x, t$$ 成立，则 F 可微，且',
         '',
-        '$$F\'(t) = \\int_X ∂f / ∂t(x, t) d\\mu(x)$$'
+        '$$F\'(t) = \\int_X \\partial f / \\partial t(x, t) d\\mu(x)$$'
       ].join('\n'),
       notes: [
         '两个控制条件都是「用同一个 g 控制一整族函数」—— 这正是 DCT 的标准用法。',
@@ -512,7 +512,7 @@ window.MG = window.MG || {};
         '',
         '**② 用一个简单函数从下面逼近 f。** 给定 ε > 0，由 ∫f 的定义（取上确界）存在简单函数 φ 使',
         '',
-        '$$0 \\le \\varphi \\le f，　\\int \\varphi \\ge \\int f − \\varepsilon$$',
+        '$$0 \\le \\varphi \\le f, \\quad  \\int \\varphi \\ge \\int f - \\varepsilon$$',
         '',
         '**③ 把 φ 搬进 Eₙ。** 令 $$E_n = \\{x : f_n(x) \\ge \\varphi(x)\\}$$。因为 fₙ ↑ f 且 φ ≤ f，集合列 Eₙ 是递增的、且 $$\\bigcup_n E_n = X$$。于是',
         '',
@@ -522,11 +522,11 @@ window.MG = window.MG || {};
         '',
         '$$\\lim_{n\\to\\infty} \\int_{E_n} \\varphi = \\int_X \\varphi = \\int \\varphi$$',
         '',
-        '所以存在 N 使 n > N 时 $$\\int_{E_n} \\varphi > \\int \\varphi − \\varepsilon$$，从而',
+        '所以存在 N 使 n > N 时 $$\\int_{E_n} \\varphi > \\int \\varphi - \\varepsilon$$，从而',
         '',
-        '$$\\int f_n \\ge \\int \\varphi − \\varepsilon \\ge \\int f − 2\\varepsilon$$',
+        '$$\\int f_n \\ge \\int \\varphi - \\varepsilon \\ge \\int f - 2\\varepsilon$$',
         '',
-        '**⑤ 收尾。** 对一切 n > N 成立，故 $$lim_n \\int f_n \\ge \\int f − 2\\varepsilon$$；令 ε → 0 得 $$lim_n \\int f_n \\ge \\int f$$。与 ① 合起来就是等号。∎',
+        '**⑤ 收尾。** 对一切 n > N 成立，故 $$lim_n \\int f_n \\ge \\int f - 2\\varepsilon$$；令 ε → 0 得 $$lim_n \\int f_n \\ge \\int f$$。与 ① 合起来就是等号。∎',
         '',
         '> ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 A ↦ ∫_A φ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 Eₙ 递增到 X 的。'
       ].join('\n'),
@@ -540,7 +540,7 @@ window.MG = window.MG || {};
       target: 'thm.termwise-integration',
       title: 'MCT ⟹ 逐项积分',
       proof: [
-        '**① 先看两项。** 由非负性，$$\\{f_1 ∧ n\\}$$、$$\\{f_2 ∧ n\\}$$ 都是简单函数列的极限（简单函数逼近定理），于是',
+        '**① 先看两项。** 由非负性，$$\\{f_1 \\wedge  n\\}$$、$$\\{f_2 \\wedge  n\\}$$ 都是简单函数列的极限（简单函数逼近定理），于是',
         '',
         '$$\\int (f_1 + f_2) = \\lim_{n\\to\\infty} \\int (\\varphi_n + \\psi_n) = \\int f_1 + \\int f_2$$',
         '',
@@ -592,13 +592,13 @@ window.MG = window.MG || {};
         '',
         '**① f ∈ L¹。** 由 $$|f| = lim|f_n| \\le g$$（a.e.）得 f 可积。',
         '',
-        '**② 上界方向：$$lim sup_n \\int f_n \\le \\int f$$。** 考虑 $$g − f_n \\ge 0$$（因为 |fₙ| ≤ g）。这列非负函数满足',
+        '**② 上界方向：$$lim sup_n \\int f_n \\le \\int f$$。** 考虑 $$g - f_n \\ge 0$$（因为 |fₙ| ≤ g）。这列非负函数满足',
         '',
-        '$$g − f_n \\to g − f　a.e.$$',
+        '$$g - f_n \\to g - f\\quad  a.e.$$',
         '',
         '对它用 Fatou 引理：',
         '',
-        '$$\\int (g − f) \\le lim inf_n \\int (g − f_n) = \\int g − lim sup_n \\int f_n$$',
+        '$$\\int (g - f) \\le lim inf_n \\int (g - f_n) = \\int g - lim sup_n \\int f_n$$',
         '',
         '（最后一步是因为 $$\\liminf_{-a_n} = -lim sup a_n$$。）移项即得 $$lim sup_n \\int f_n \\le \\int f$$。',
         '',
@@ -610,7 +610,7 @@ window.MG = window.MG || {};
         '',
         '**④** ②与③合起来 $$lim sup \\le \\int f \\le lim inf$$，故极限存在且等于 ∫f。∎',
         '',
-        '> ⭐ 关键在于**控制函数提供的非负性**：$$g ± f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 g，这一步就写不出来。',
+        '> ⭐ 关键在于**控制函数提供的非负性**：$$g \\pm  f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 g，这一步就写不出来。',
         '> 移项之所以合法，是因为 $$g$$ 可积（∫g < ∞）—— 这正是「控制函数必须属于 L¹」而不能只是「有界」的原因。'
       ].join('\n')
     },
@@ -630,16 +630,16 @@ window.MG = window.MG || {};
         '',
         '**(b)** 取任意 $$t_n \\to t_0$$，令',
         '',
-        '$$h_n(x) = (f(x, t_n) − f(x, t_0)) / (t_n − t_0)$$',
+        '$$h_n(x) = (f(x, t_n) - f(x, t_0)) / (t_n - t_0)$$',
         '',
-        '则 $$F\'(t_0) = lim_n (F(t_n) − F(t_0)) / (t_n − t_0) = lim_n \\int h_n$$。要把它换成 ∫lim hₙ 就够了，而 DCT 正好提供这个能力：',
+        '则 $$F\'(t_0) = lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = lim_n \\int h_n$$。要把它换成 ∫lim hₙ 就够了，而 DCT 正好提供这个能力：',
         '',
-        '· $$h_n \\to ∂f / ∂t(x, t_0)$$ 逐点（这是导数的定义）；',
-        '· **控制**：由中值定理，$$|h_n(x)| \\le \\sup_{t \\in [t_0, t_n]} | ∂f / ∂t(x, t) | \\le g(x)$$。',
+        '· $$h_n \\to \\partial f / \\partial t(x, t_0)$$ 逐点（这是导数的定义）；',
+        '· **控制**：由中值定理，$$|h_n(x)| \\le \\sup_{t \\in [t_0, t_n]} | \\partial f / \\partial t(x, t) | \\le g(x)$$。',
         '',
         '于是',
         '',
-        '$$F\'(t_0) = lim_n \\int h_n = \\int lim_n h_n = \\int ∂f / ∂t(x, t_0) d\\mu(x)$$',
+        '$$F\'(t_0) = lim_n \\int h_n = \\int lim_n h_n = \\int \\partial f / \\partial t(x, t_0) d\\mu(x)$$',
         '',
         '∎',
         '',
@@ -681,9 +681,9 @@ window.MG = window.MG || {};
       target: 'prop.integrals-equal-iff',
       title: '积分为零 ⟹ 用积分识别函数',
       proof: [
-        '记 $$h = f − g \\in L^1$$。三条之间的等价链条是',
+        '记 $$h = f - g \\in L^1$$。三条之间的等价链条是',
         '',
-        '$$(i) \\int_E f = \\int_E g　\\forall E \\in \\mathcal{M}　\\iff　\\int_E h = 0　\\forall E$$',
+        '$$(i) \\int_E f = \\int_E g\\quad  \\forall E \\in \\mathcal{M}\\quad  \\iff\\quad  \\int_E h = 0\\quad  \\forall E$$',
         '',
         '**(i) ⟹ (ii)**：分别取 $$E = \\{h \\ge 0\\}$$ 与 $$E = \\{h < 0\\}$$。由 $$\\int_E h = 0$$ 且 h 在 E 上不变号，得 $$\\{h > 0\\}$$ 与 $$\\{h < 0\\}$$ 都是零集（否则积分为正/负），故 $$\\mu(\\{h \\ne 0\\}) = 0$$，于是 $$\\int|h| = 0$$。',
         '',
