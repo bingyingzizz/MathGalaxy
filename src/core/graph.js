@@ -204,8 +204,10 @@
      *  · 自动聚合：两个星团之间有几条节点级连线，就累积几条
      *  · 显式声明：数据里写 { kind:'cluster-link', a:'团id', b:'团id', label }
      * 两种合并，显式的权重更高。
+     *
+     * edgeOk 可选：只统计「还在场」的连线（用户藏了节点时用）。
      */
-    graph.buildClusterLinks = function () {
+    graph.buildClusterLinks = function (edgeOk) {
       var tally = Object.create(null);
 
       function bump(a, b, w, extra) {
@@ -217,6 +219,7 @@
       }
 
       edges.forEach(function (e) {
+        if (edgeOk && !edgeOk(e)) return;
         var cs = [];
         edgeNodes(e).forEach(function (id) {
           var n = byId[id];

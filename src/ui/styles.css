@@ -201,12 +201,15 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 }
 .tb-sep { width: 1px; height: 18px; background: var(--line-strong); margin: 0 4px; }
 
-/* ---------- 图例 ---------- */
+/* ---------- 图例（同时是「显示 / 隐藏」开关面板） ---------- */
 #legend {
   left: 14px;
   bottom: 14px;
   padding: 10px 12px;
   max-width: 300px;
+  max-height: calc(100vh - 28px);   /* 窗口太矮时自己滚，别让顶跑出屏幕 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
   font-size: 12px;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -217,11 +220,11 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   color: var(--ink-faint);
   margin: 2px 0 5px;
 }
-#legend .lg-row { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+#legend .lg-row { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 #legend .lg-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
 /* 星团：缩进一层，视觉上从属于上面的星系 */
 #legend .lg-kids {
-  display: flex; flex-wrap: wrap; gap: 3px 12px;
+  display: flex; flex-wrap: wrap; gap: 3px 10px;
   flex-basis: 100%;                 /* 总是另起一行，层级才看得出来 */
   margin: 3px 0 4px 15px; padding-left: 9px;
   border-left: 2px solid var(--line);
@@ -238,6 +241,43 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 #legend.collapsed .lg-caret { transform: rotate(-90deg); }
 #legend .lg-body { margin-top: 7px; }
 
+/* 可点击的开关芯片：实心 = 全显示，半透明 + 橙数字 = 藏了一部分，空心 = 全藏起来 */
+#legend .lg-tog {
+  padding: 1px 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background .14s ease, opacity .14s ease;
+}
+#legend .lg-tog:hover { background: rgba(20, 22, 28, .07); }
+#legend .lg-tog.part { opacity: .78; }
+#legend .lg-tog.off { opacity: .92; }
+#legend .lg-tog.off .lg-name { color: var(--ink-faint) !important; }
+#legend .lg-name { color: inherit; }
+#legend .lg-strong, #legend .lg-tog b { font-weight: 600; color: var(--ink); }
+#legend .lg-name[data-nav] {
+  cursor: pointer;
+  text-underline-offset: 2.5px;
+}
+#legend .lg-name[data-nav]:hover { text-decoration: underline; }
+#legend .lg-num { color: var(--ink-faint); font-size: 11px; font-variant-numeric: tabular-nums; }
+#legend .lg-tog.part .lg-num, #legend .lg-tog.off .lg-num { color: #C2703A; font-weight: 600; }
+#legend .lg-reset {
+  appearance: none;
+  margin-left: auto;
+  height: 20px;
+  padding: 0 8px;
+  border: 1px solid rgba(194, 112, 58, .45);
+  border-radius: 7px;
+  background: rgba(194, 112, 58, .08);
+  color: #A85E2C;
+  font: inherit;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#legend .lg-reset:hover { background: rgba(194, 112, 58, .16); }
+#legend .lg-hint { margin-top: 7px; font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
 /* ---------- 详情面板 ---------- */
 #panel {
   position: fixed;            /* 冗余声明：不依赖 .floating 也一定浮起来 */

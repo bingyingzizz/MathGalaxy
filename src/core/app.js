@@ -53,18 +53,36 @@
     }
 
     /* ------------------------------------------------------------ 状态 */
+    /* 可见性：左下角「显示节点」面板里挑的那一块（存在 localStorage 里）。
+       被藏起来的点不画、不出名字、不响应点击；一端被藏的连线也一起不画。 */
+    var vis = MG.createVisibility(graph);
+
     var view = {
       graph: graph,
       cam: null,
-      visible: MG.graphUtil.visibleEdges(graph),
+      visible: [],
       focus: null,
-      hover: null
+      hover: null,
+      isNodeVisible: vis.isNodeVisible
     };
+
+    /** 真正参与绘制的连线：先按定义线开关过滤，再去掉「有一端被藏起来」的 */
+    function visibleEdgeList() {
+      return MG.graphUtil.visibleEdges(graph).filter(function (e) { return vis.edgeOk(e); });
+    }
+
+    function visibleNodes() {
+      return graph.nodes.filter(function (n) { return vis.isNodeVisible(n.id); });
+    }
+
+    view.visible = visibleEdgeList();
+
     var cam = MG.createCamera();
     view.cam = cam;
 
     var renderer = MG.createRenderer(graphEl, view);
     var cloudTex = null;
+    var cloudDirty = true;
     var dpr = 1;
     var rafId = 0;
     var dirty = true;
@@ -77,6 +95,11 @@
 
     function frame() {
       rafId = 0;
+      // 云雾是按「还看得见的点」铺的：藏了点就重画一次纹理（每帧最多一次）
+      if (cloudDirty) {
+        cloudDirty = false;
+        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+      }
       var animating = cam.tick();
       if (dirty || animating) {
         MG.background.draw(cloudCtx, cam, cloudTex, dpr);
@@ -115,6 +138,8 @@
 
     function focusNode(id, opts) {
       opts = opts || {};
+      // 被藏起来的点：先让它可见 —— 否则点了搜索结果/深链，星图上什么也没有
+      if (!vis.isNodeVisible(id)) vis.setNode(id, true);
       if (view.focus && view.focus.type === 'node' && view.focus.id === id && !opts.force) {
         clearFocus();       // 再点一次同一个节点 = 取消聚焦
         panel.hide();
@@ -197,24 +222,30 @@
       return { k: k, cx: base.cx, cy: base.cy };
     }
 
-    /** 适配到某个星系 */
+    /** 适配到某个星系（只算还看得见的点） */
     function fitRegion(rid) {
-      var list = graph.nodes.filter(function (n) { return n.regions.indexOf(rid) >= 0; });
+      var list = graph.nodes.filter(function (n) {
+        return n.regions.indexOf(rid) >= 0 && vis.isNodeVisible(n.id);
+      });
       if (!list.length) return;
       cam.animateTo(targetFor(bboxOf(list), 170, 1.35));
       requestDraw();
     }
 
-    /** 适配到某个星团 */
+    /** 适配到某个星团（只算还看得见的点） */
     function fitCluster(cid) {
       var c = graph.clusterById[cid];
       if (!c || !c.nodes || !c.nodes.length) return;
-      cam.animateTo(targetFor(bboxOf(c.nodes), 190, 1.7));
+      var list = c.nodes.filter(function (n) { return vis.isNodeVisible(n.id); });
+      if (!list.length) return;
+      cam.animateTo(targetFor(bboxOf(list), 190, 1.7));
       requestDraw();
     }
 
     function fitAll() {
-      cam.animateTo(targetFor(graph.bbox(), C.camera.fitPadding));
+      var list = visibleNodes();
+      if (!list.length) return;                 // 全藏起来了，没什么可适配的
+      cam.animateTo(targetFor(bboxOf(list), C.camera.fitPadding));
       requestDraw();
     }
 
@@ -228,6 +259,39 @@
       onCluster: function (cid) { fitCluster(cid); },
       onClose: function () { panelOpen = false; requestDraw(); }
     });
+
+    /* ------------------------------------- 可见性变化后的统一善后 */
+    /** 挑了显示哪一块之后：连线、星团级粗线、云雾、聚焦状态、图例全部跟着走 */
+    function refreshVisible() {
+      view.visible = visibleEdgeList();
+      graph.clusterLinks = graph.buildClusterLinks(function (e) { return vis.edgeOk(e); });
+
+      // 正在看的东西被藏起来了 → 收手（别对着看不见的点显示详情）
+      if (view.focus) {
+        var fo = view.focus;
+        var gone = (fo.type === 'node' && !vis.isNodeVisible(fo.id));
+        if (fo.type === 'edge') {
+          var fe = findEdge(fo.id);
+          gone = !!(fe && !vis.edgeOk(fe));
+        }
+        if (gone) { clearFocus(); panel.hide(); }
+      }
+      if (view.hover) {
+        var ho = view.hover;
+        var hGone = (ho.type === 'node' && !vis.isNodeVisible(ho.id));
+        if (ho.type === 'edge') {
+          var he = findEdge(ho.id);
+          hGone = !!(he && !vis.edgeOk(he));
+        }
+        if (hGone) view.hover = null;
+      }
+
+      renderer.invalidate();
+      cloudDirty = true;
+      requestDraw();
+    }
+
+    vis.onChange(function () { refreshVisible(); renderLegend(); });
 
     /* ---------------------------------------------------------- 交互 */
     MG.createInteraction(graphEl, view, {
@@ -280,22 +344,75 @@
       }
     });
 
-    function refreshVisible() {
-      view.visible = MG.graphUtil.visibleEdges(graph);
-      renderer.invalidate();
-      requestDraw();
+    /* ---------------------------------------------------- 图例（也是开关） */
+    /*
+      图例同时是「显示 / 隐藏」的控制面板：
+        · 节点类别（公理 / 定义 / …）  点一下 = 整类显示或隐藏
+        · 数学板块 / 星团              点色块 = 整块显示或隐藏，点名字 = 跳过去看
+      三态靠色块的样子表示：实心 = 全显示，半透明 + 橙数字 = 藏了一部分，空心 = 全藏了。
+    */
+
+    /** 一组节点里有多少还看得见 */
+    function statOf(list) {
+      var v = 0;
+      for (var i = 0; i < list.length; i++) if (vis.isNodeVisible(list[i].id)) v++;
+      return { v: v, n: list.length };
     }
 
-    /* ---------------------------------------------------------- 图例 */
+    /** 点一下：全显示 → 全隐藏；只要缺了 → 补齐 */
+    function toggleList(list) {
+      if (!list.length) return;
+      var s = statOf(list);
+      vis.setMany(list.map(function (n) { return n.id; }), s.v < s.n);
+    }
+
+    function typeNodes(t) {
+      return graph.nodes.filter(function (n) { return n.type === t; });
+    }
+    function regionNodes(id) {
+      return graph.nodes.filter(function (n) { return n.regions.indexOf(id) >= 0; });
+    }
+
+    /**
+     * 一个可点的开关芯片。
+     * attr    —— 打在这个芯片上的 data-*（data-vt / data-vc / data-vr）
+     * nav     —— 有的话，名字可点 = 跳过去看
+     */
+    function togChip(o) {
+      var s = statOf(o.list);
+      var state = s.v === 0 ? ' off' : (s.v < s.n ? ' part' : '');
+      var mark = 'background:' + o.color + ';';
+      if (s.v === 0) mark = 'background:transparent;box-shadow:inset 0 0 0 1.5px ' + o.color + ';';
+      var num = s.v === s.n ? '·' + s.n : '·' + s.v + '/' + s.n;
+      var name = U.escapeHtml(o.label);
+      if (o.nav) name = '<span class="lg-name" data-nav="' + o.nav + '" title="' +
+        U.escapeHtml(o.navTip || '跳过去看') + '">' + name + '</span>';
+      else name = '<span class="lg-name">' + name + '</span>';
+      return '<span class="lg-item lg-tog' + state + '" ' + o.attr + ' title="' +
+        U.escapeHtml(o.tip) + '">' +
+        '<span class="' + (o.round ? 'lg-dot' : 'lg-swatch') + '" style="' + mark + '"></span>' +
+        name + '<span class="lg-num">' + num + '</span></span>';
+    }
+
     function renderLegend() {
       var regions = graph.regions || [];
       var types = T.typeOrder || Object.keys(T.nodeTypes || {});
       var live = regions.filter(function (r) { return r.stat; });
+      var total = graph.nodes.length;
+      var shown = vis.visibleCount();
+
+      /* ---------- 节点类别（点一下 = 整类开关） ---------- */
       var typeRows = types.filter(function (t) { return T.nodeTypes[t]; }).map(function (t) {
         var st = T.nodeTypes[t];
-        return '<span class="lg-item"><span class="lg-dot" style="background:' + st.color + '"></span>' + st.name + '</span>';
+        var list = typeNodes(t);
+        if (!list.length) return '';
+        return togChip({
+          label: st.name, color: st.color, list: list, attr: 'data-vt="' + t + '"',
+          tip: '点一下：显示 / 隐藏全部「' + st.name + '」（共 ' + list.length + ' 个）'
+        });
       }).join('');
 
+      /* ---------- 连线 ---------- */
       var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
       var edgeRows =
         '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
@@ -308,41 +425,71 @@
             (C.exploreMode ? '' : '（点右上角「探索」显示）') + '</em></span>'
           : '');
 
-      // 星系 + 它下面的星团（缩进一层）
+      /* ---------- 数学板块：星系 + 它下面的星团（缩进一层） ---------- */
       var regionRows = live.map(function (r) {
         var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
-        var head = '<span class="lg-item" data-region="' + r.id + '" style="cursor:pointer">' +
-          '<span class="lg-swatch" style="background:' + U.mixWithWhite(r.color, 0.45) + '"></span>' +
-          '<b style="font-weight:600">' + r.name + '</b>' +
-          '<span style="color:#A5ABB3">·' + r.stat.count + '</span></span>';
+        var head = togChip({
+          label: r.name, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
+          attr: 'data-vr="' + r.id + '"', tip: '点色块：显示 / 隐藏整个「' + r.name + '」；点名字：跳过去看',
+          nav: r.id, navTip: '跳过去看「' + r.name + '」'
+        });
         if (!mine.length) return head;
         var kids = mine.map(function (c) {
-          return '<span class="lg-item" data-cluster="' + c.id + '" style="cursor:pointer">' +
-            '<span class="lg-swatch" style="background:' + U.mixWithWhite(c.color || r.color, 0.62) +
-            ';width:11px;height:11px;border-radius:50%"></span>' +
-            c.name + '<span style="color:#A5ABB3">·' + c.stat.count + '</span></span>';
+          return togChip({
+            label: c.name, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
+            attr: 'data-vc="' + c.id + '"', round: true,
+            tip: '点圆点：显示 / 隐藏「' + c.name + '」；点名字：跳过去看',
+            nav: c.id, navTip: '跳过去看「' + c.name + '」'
+          });
         }).join('');
         return head + '<span class="lg-kids">' + kids + '</span>';
       }).join('');
 
+      var hidden = total - shown;
       legendEl.innerHTML =
-        '<div class="lg-head" data-toggle><b>图例</b><span class="lg-caret">▼</span></div>' +
+        '<div class="lg-head" data-toggle><b>图例</b>' +
+        (hidden
+          ? '<button class="lg-reset" data-reset title="把所有节点都显示出来">显示全部 ' + shown + '/' + total + '</button>'
+          : '') +
+        '<span class="lg-caret">▼</span></div>' +
         '<div class="lg-body">' +
-        '<div class="lg-group"><div class="lg-title">节点（' + graph.nodes.length + '）</div><div class="lg-row">' + typeRows + '</div></div>' +
-        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div><div class="lg-row">' + edgeRows + '</div></div>' +
-        '<div class="lg-group"><div class="lg-title">数学板块</div><div class="lg-row">' + regionRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">节点（' + total + '）</div>' +
+        '<div class="lg-row">' + typeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
+        '<div class="lg-row">' + edgeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">数学板块</div>' +
+        '<div class="lg-row">' + regionRows + '</div></div>' +
+        '<div class="lg-hint">点色块 = 显示 / 隐藏 · 点名字 = 跳过去看</div>' +
         '</div>';
     }
 
     legendEl.addEventListener('click', function (e) {
-      if (e.target.closest && e.target.closest('[data-toggle]')) {
-        legendEl.classList.toggle('collapsed');
+      var t = e.target;
+      if (!t.closest) return;
+      // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
+      if (t.closest('[data-reset]')) { vis.showAll(); return; }
+      if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
+
+      // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）
+      var nav = t.closest('[data-nav]');
+      if (nav) {
+        var nid = nav.getAttribute('data-nav');
+        if (graph.clusterById[nid]) fitCluster(nid);
+        else fitRegion(nid);
         return;
       }
-      var cchip = e.target.closest ? e.target.closest('[data-cluster]') : null;
-      if (cchip) { fitCluster(cchip.getAttribute('data-cluster')); return; }
-      var chip = e.target.closest ? e.target.closest('[data-region]') : null;
-      if (chip) fitRegion(chip.getAttribute('data-region'));
+
+      // 色块 = 显示 / 隐藏
+      var chip = t.closest('[data-vt]');
+      if (chip) { toggleList(typeNodes(chip.getAttribute('data-vt'))); return; }
+      chip = t.closest('[data-vc]');
+      if (chip) {
+        var c = graph.clusterById[chip.getAttribute('data-vc')];
+        if (c) toggleList(c.nodes);
+        return;
+      }
+      chip = t.closest('[data-vr]');
+      if (chip) toggleList(regionNodes(chip.getAttribute('data-vr')));
     });
 
     /* ---------------------------------------------------------- 键盘 */
@@ -400,9 +547,14 @@
 
     function start() {
       resize();
-      cloudTex = MG.background.buildTexture(graph);
+      if (cloudDirty || !cloudTex) {
+        cloudDirty = false;
+        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+      }
       renderLegend();
-      var bb = graph.bbox();
+      // 上次藏了一批点 → 开局就只把「还看得见的那些」铺满屏幕
+      var live = visibleNodes();
+      var bb = (vis.hiddenCount() && live.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
@@ -429,9 +581,11 @@
         graph = MG.buildGraph(packs, MG.regions, MG.clusters);
         MG.computeLayout(graph);
         view.graph = graph;
-        view.visible = MG.graphUtil.visibleEdges(graph);
+        vis.rebind(graph);            // 挑选结果保留，丢掉已经不存在的 id
+        view.visible = visibleEdgeList();
+        graph.clusterLinks = graph.buildClusterLinks(function (e) { return vis.edgeOk(e); });
         renderer.invalidate();
-        cloudTex = MG.background.buildTexture(graph);
+        cloudDirty = true;
         search.reindex();
         renderLegend();
         start();
@@ -442,6 +596,7 @@
     /* 方便在控制台里调试：MG.app.graph / MG.app.cam */
     MG.app = {
       view: view, cam: cam, renderer: renderer, search: search,
+      visibility: vis,
       focusNode: focusNode, focusEdge: focusEdge, fitAll: fitAll, fitRegion: fitRegion,
       clearFocus: clearFocus,
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次

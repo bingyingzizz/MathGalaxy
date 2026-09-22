@@ -209,12 +209,15 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 }
 .tb-sep { width: 1px; height: 18px; background: var(--line-strong); margin: 0 4px; }
 
-/* ---------- 图例 ---------- */
+/* ---------- 图例（同时是「显示 / 隐藏」开关面板） ---------- */
 #legend {
   left: 14px;
   bottom: 14px;
   padding: 10px 12px;
   max-width: 300px;
+  max-height: calc(100vh - 28px);   /* 窗口太矮时自己滚，别让顶跑出屏幕 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
   font-size: 12px;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -225,11 +228,11 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   color: var(--ink-faint);
   margin: 2px 0 5px;
 }
-#legend .lg-row { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+#legend .lg-row { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 #legend .lg-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
 /* 星团：缩进一层，视觉上从属于上面的星系 */
 #legend .lg-kids {
-  display: flex; flex-wrap: wrap; gap: 3px 12px;
+  display: flex; flex-wrap: wrap; gap: 3px 10px;
   flex-basis: 100%;                 /* 总是另起一行，层级才看得出来 */
   margin: 3px 0 4px 15px; padding-left: 9px;
   border-left: 2px solid var(--line);
@@ -246,6 +249,43 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 #legend.collapsed .lg-caret { transform: rotate(-90deg); }
 #legend .lg-body { margin-top: 7px; }
 
+/* 可点击的开关芯片：实心 = 全显示，半透明 + 橙数字 = 藏了一部分，空心 = 全藏起来 */
+#legend .lg-tog {
+  padding: 1px 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background .14s ease, opacity .14s ease;
+}
+#legend .lg-tog:hover { background: rgba(20, 22, 28, .07); }
+#legend .lg-tog.part { opacity: .78; }
+#legend .lg-tog.off { opacity: .92; }
+#legend .lg-tog.off .lg-name { color: var(--ink-faint) !important; }
+#legend .lg-name { color: inherit; }
+#legend .lg-strong, #legend .lg-tog b { font-weight: 600; color: var(--ink); }
+#legend .lg-name[data-nav] {
+  cursor: pointer;
+  text-underline-offset: 2.5px;
+}
+#legend .lg-name[data-nav]:hover { text-decoration: underline; }
+#legend .lg-num { color: var(--ink-faint); font-size: 11px; font-variant-numeric: tabular-nums; }
+#legend .lg-tog.part .lg-num, #legend .lg-tog.off .lg-num { color: #C2703A; font-weight: 600; }
+#legend .lg-reset {
+  appearance: none;
+  margin-left: auto;
+  height: 20px;
+  padding: 0 8px;
+  border: 1px solid rgba(194, 112, 58, .45);
+  border-radius: 7px;
+  background: rgba(194, 112, 58, .08);
+  color: #A85E2C;
+  font: inherit;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#legend .lg-reset:hover { background: rgba(194, 112, 58, .16); }
+#legend .lg-hint { margin-top: 7px; font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
 /* ---------- 详情面板 ---------- */
 #panel {
   position: fixed;            /* 冗余声明：不依赖 .floating 也一定浮起来 */
@@ -510,7 +550,7 @@ window.addEventListener('error', function (e) {
   <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移">滚轮·缩放</button>
 </div>
 
-<!-- ===== 左下角：图例 ===== -->
+<!-- ===== 左下角：图例（同时是「显示 / 隐藏」的开关面板） ===== -->
 <div id="legend" class="floating"></div>
 
 <!-- ===== 右侧：详情面板 ===== -->
@@ -525,7 +565,7 @@ window.addEventListener('error', function (e) {
 <!-- =========================================================================
      底层引擎（与内容无关，一般不需要改）
      加载顺序：config → util → camera → graph → layout → background
-               → renderer → interaction → search → panel → loader → app
+               → renderer → interaction → search → panel → visibility → loader → app
      ========================================================================= -->
 <!-- ⚠ KaTeX 必须在 core/util.js 之前加载：util.js 里的行内/块级公式渲染会去问
      MG.renderInlineMath / MG.renderBlockMath，而它们由 app.js 的 hookKatex() 挂上，
@@ -1413,8 +1453,10 @@ window.addEventListener('error', function (e) {
      *  · 自动聚合：两个星团之间有几条节点级连线，就累积几条
      *  · 显式声明：数据里写 { kind:'cluster-link', a:'团id', b:'团id', label }
      * 两种合并，显式的权重更高。
+     *
+     * edgeOk 可选：只统计「还在场」的连线（用户藏了节点时用）。
      */
-    graph.buildClusterLinks = function () {
+    graph.buildClusterLinks = function (edgeOk) {
       var tally = Object.create(null);
 
       function bump(a, b, w, extra) {
@@ -1426,6 +1468,7 @@ window.addEventListener('error', function (e) {
       }
 
       edges.forEach(function (e) {
+        if (edgeOk && !edgeOk(e)) return;
         var cs = [];
         edgeNodes(e).forEach(function (id) {
           var n = byId[id];
@@ -1884,9 +1927,14 @@ window.addEventListener('error', function (e) {
   var MG = (global.MG = global.MG || {});
   var U = MG.util;
 
-  /** 建一张覆盖全部内容的云雾纹理 */
-  function buildTexture(graph) {
+  /**
+   * 建一张覆盖全部内容的云雾纹理。
+   * isVisible 可选：藏起来的点不再往云里加斑；整团都藏光 → 连云一起收掉。
+   * （所以「只看测度论」时，背景也跟着瘦成那一块，不会有空云飘着）
+   */
+  function buildTexture(graph, isVisible) {
     var bc = MG.config.background;
+    var ok = isVisible || function () { return true; };
     var bb = graph.bbox();
 
     var pad = 300;
@@ -1909,16 +1957,22 @@ window.addEventListener('error', function (e) {
     var drawn = 0;
     (graph.regions || []).forEach(function (region) {
       if (!region.stat) return;                       // 空星系不画云
+      var list = graph.nodes.filter(function (n) {
+        return n.regions.indexOf(region.id) >= 0 && ok(n.id);
+      });
+      if (!list.length) return;                       // 点全被藏了 → 这一团云也收掉
       drawn++;
-      paintRegion(ctx, region, graph, bc);
+      paintRegion(ctx, region, list, bc);
     });
 
     // 星团：在星系云之上再叠一层更小更浓的云 → 看起来像星云里更密的结
     var cdrawn = 0;
     (graph.clusters || []).forEach(function (c) {
       if (!c.stat) return;
+      var list = c.nodes.filter(function (n) { return ok(n.id); });
+      if (!list.length) return;
       cdrawn++;
-      paintCluster(ctx, c, graph, bc);
+      paintCluster(ctx, c, list, graph, bc);
     });
 
     return {
@@ -1930,54 +1984,71 @@ window.addEventListener('error', function (e) {
     };
   }
 
-  /** 星团的云：比星系云更小、更浓，用星团自己的颜色（没写就继承星系） */
-  function paintCluster(ctx, c, graph, bc) {
+  /**
+   * 星团的云：比星系云更小、更浓，用星团自己的颜色（没写就继承星系）
+   * list 是这一团里「还看得见」的节点 —— 藏了一半，云也跟着缩一半。
+   */
+  function paintCluster(ctx, c, list, graph, bc) {
     var cc = MG.config.cluster;
     var galaxy = graph.galaxyOf ? graph.galaxyOf(c) : null;
-    var color = c.color || (galaxy ? galaxy.color : '#7A8699');
-    var rgb = U.hexToRgb(color);
-    var st = c.stat;
-    var R = st.radius;
+    var rgb = U.hexToRgb(c.color || (galaxy ? galaxy.color : '#7A8699'));
+    var R = fitRadius(list, cc.cloudMinRadius, cc.cloudPadding);
+    var cx = centroid(list).x, cy = centroid(list).y;
     var rand = U.rngFrom(c.id, MG.config.seed);
 
-    blob(ctx, rgb, st.cx, st.cy, R * 0.98, cc.cloudAlpha * 1.15);
+    blob(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15);
 
     for (var i = 0; i < 7; i++) {
       var ang = rand() * Math.PI * 2;
       var rad = Math.sqrt(rand()) * R * 0.62;
       var br = R * U.lerp(0.34, 0.56, rand());
-      blob(ctx, rgb, st.cx + Math.cos(ang) * rad, st.cy + Math.sin(ang) * rad,
+      blob(ctx, rgb, cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad,
         br, cc.cloudAlpha * U.lerp(0.6, 1.15, rand()));
     }
 
-    c.nodes.forEach(function (n) {
+    list.forEach(function (n) {
       blob(ctx, rgb, n.x, n.y, R * 0.24, cc.cloudAlpha * 0.8);
     });
   }
 
-  function paintRegion(ctx, region, graph, bc) {
-    var st = region.stat;
+  function centroid(list) {
+    if (!list.length) return { x: 0, y: 0 };
+    var x = 0, y = 0;
+    list.forEach(function (n) { x += n.x; y += n.y; });
+    return { x: x / list.length, y: y / list.length };
+  }
+
+  /** 一群点需要多大的云：最远的一颗 + 余量（有下限，免得缩成一点） */
+  function fitRadius(list, minR, padding) {
+    if (!list.length) return minR;
+    var c = centroid(list), maxd = 0;
+    list.forEach(function (n) { maxd = Math.max(maxd, U.dist(n.x, n.y, c.x, c.y)); });
+    return Math.max(minR, maxd + padding);
+  }
+
+  function paintRegion(ctx, region, list, bc) {
     var rgb = U.hexToRgb(region.color);
-    var R = st.radius;
+    var R = Math.max(bc.cloudRadiusMin,
+      fitRadius(list, bc.cloudRadiusMin, bc.cloudMargin));
+    var cx = region.center.x, cy = region.center.y;   // 星系的云仍以星系中心为心
     var rand = U.rngFrom(region.id, MG.config.seed);
 
     /* 1) 板块中心的大团雾 —— 界定「这块地方属于谁」 */
-    blob(ctx, rgb, st.cx, st.cy, R, bc.centerAlpha * 1.15);
+    blob(ctx, rgb, cx, cy, R, bc.centerAlpha * 1.15);
 
     /* 2) 随机软斑 —— 让云看起来不规整 */
     for (var i = 0; i < bc.blobsPerRegion; i++) {
       var ang = rand() * Math.PI * 2;
       var rad = Math.sqrt(rand()) * R * bc.spread;
-      var x = st.cx + Math.cos(ang) * rad;
-      var y = st.cy + Math.sin(ang) * rad;
+      var x = cx + Math.cos(ang) * rad;
+      var y = cy + Math.sin(ang) * rad;
       var br = R * U.lerp(bc.blobRadiusMin, bc.blobRadiusMax, rand());
       var a = bc.blobAlpha * U.lerp(0.55, 1.25, rand());
       blob(ctx, rgb, x, y, br, a);
     }
 
-    /* 3) 每个节点周围的小斑 —— 让云的形状跟着内容走 */
-    graph.nodes.forEach(function (n) {
-      if (n.regions.indexOf(region.id) < 0) return;
+    /* 3) 每个（看得见的）节点周围的小斑 —— 让云的形状跟着内容走 */
+    list.forEach(function (n) {
       blob(ctx, rgb, n.x, n.y, R * 0.30, bc.nodeAlpha);
     });
   }
@@ -2254,6 +2325,24 @@ window.addEventListener('error', function (e) {
     function dimNode() { return C.focus.hideUnrelated ? 0 : C.focus.dimNodeAlpha; }
     function dimEdge() { return C.focus.hideUnrelated ? 0 : C.focus.dimEdgeAlpha; }
 
+    /** 用户在左下角的「显示节点」面板里藏起来的点，一律不画 */
+    function nodeOk(id) { return !view.isNodeVisible || view.isNodeVisible(id); }
+
+    /** 这一组里还有几颗星看得见（全藏光的星系/星团连名字都不出） */
+    function visibleIn(list) {
+      var c = 0;
+      for (var i = 0; i < list.length; i++) if (nodeOk(list[i].id)) c++;
+      return c;
+    }
+
+    function regionHasVisible(rid) {
+      var ns = view.graph.nodes;
+      for (var i = 0; i < ns.length; i++) {
+        if (ns[i].regions.indexOf(rid) >= 0 && nodeOk(ns[i].id)) return true;
+      }
+      return false;
+    }
+
     function alphaForNode(id) {
       var f = view.focus;
       if (!f) return 1;
@@ -2314,7 +2403,6 @@ window.addEventListener('error', function (e) {
       if (lodA.nodeDot > 0.02) {
         view.graph.nodes.forEach(function (n) { drawNode(n); });
       }
-
       /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
@@ -2331,6 +2419,8 @@ window.addEventListener('error', function (e) {
       ctx.textBaseline = 'middle';
       (view.graph.regions || []).forEach(function (r) {
         if (!r.stat || !r.name) return;
+        // 整个星系的点都被藏起来了 → 只剩云雾，名字也不必出
+        if (view.isNodeVisible && !regionHasVisible(r.id)) return;
         var p = view.cam.toScreen(r.stat.cx, r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = r.name;
@@ -2378,6 +2468,7 @@ window.addEventListener('error', function (e) {
         if (l.count < cfgL.minEdges) return;
         var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
         if (!A || !B || !A.stat || !B.stat) return;
+        if (view.isNodeVisible && (!visibleIn(A.nodes) || !visibleIn(B.nodes))) return;
         var p0 = view.cam.toScreen(A.stat.cx, A.stat.cy);
         var p1 = view.cam.toScreen(B.stat.cx, B.stat.cy);
         var len = U.dist(p0.x, p0.y, p1.x, p1.y);
@@ -2406,6 +2497,7 @@ window.addEventListener('error', function (e) {
       ctx.textBaseline = 'middle';
       (view.graph.clusters || []).forEach(function (c) {
         if (!c.stat || !c.name) return;
+        if (view.isNodeVisible && !visibleIn(c.nodes)) return;   // 整团都藏起来了
         var p = view.cam.toScreen(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = c.name;
@@ -2526,6 +2618,7 @@ window.addEventListener('error', function (e) {
 
     /* ---------------------------------------------------------- 节点 */
     function drawNode(n) {
+      if (!nodeOk(n.id)) return;                 // 被藏起来的点：不画（连线也已一并去掉）
       var p = screenOf(n);
       var r = nodeRadius(n);
       var a = alphaForNode(n.id) * lodA.nodeDot;
@@ -2583,6 +2676,7 @@ window.addEventListener('error', function (e) {
       ctx.textBaseline = 'top';
 
       nodes.forEach(function (n) {
+        if (!nodeOk(n.id)) return;
         var a = alphaForNode(n.id);
         var isSpecial = (view.focus && view.focus.id === n.id) ||
           (view.hover && view.hover.type === 'node' && view.hover.id === n.id);
@@ -2626,7 +2720,7 @@ window.addEventListener('error', function (e) {
       ctx.textBaseline = 'top';
       special.forEach(function (id) {
         var n = view.graph.byId[id];
-        if (!n) return;
+        if (!n || !nodeOk(id)) return;
         var p = screenOf(n), r = nodeRadius(n);
         var y = p.y + r + 10;
         ctx.lineWidth = 3;
@@ -2651,6 +2745,7 @@ window.addEventListener('error', function (e) {
       // 先节点
       var best = null, bestD = Infinity;
       view.graph.nodes.forEach(function (n) {
+        if (!nodeOk(n.id)) return;
         var a = alphaForNode(n.id);
         if (a <= 0.06) return;
         var p = screenOf(n);
@@ -3395,6 +3490,176 @@ window.addEventListener('error', function (e) {
   }
 
   MG.createPanel = createPanel;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 可见性（哪些点参与绘制）
+   --------------------------------------------------------------------------
+   左下角的「显示节点」面板改的就是这里。规则只有两条：
+
+     · 被隐藏的节点：不画、不出名字、不响应点击
+     · 只要有一端被隐藏，这条连线也一起不画（不留半截悬空的线）
+
+   挑选结果记在 localStorage 里 —— 下次打开还是你挑的那一块。
+   引擎的其它部分只问两件事：isNodeVisible(id) / edgeOk(edge)。
+
+   注：hidden 用 Object.create(null) 当字典（节点 id 里带点、带冒号，不能用普通对象）
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  var KEY = 'mathgalaxy.hidden.v1';
+
+  function createVisibility(graph) {
+    var hidden = Object.create(null);       // id → true
+    var listeners = [];
+    var nodes = graph.nodes;
+
+    /* ------------------------------------------------------------ 读写 */
+    function read() {
+      var raw = null;
+      try { raw = global.localStorage ? global.localStorage.getItem(KEY) : null; }
+      catch (e) { raw = null; }                       // 无痕模式 / 受限的 file://
+      if (!raw) return;
+      var list = null;
+      try { list = JSON.parse(raw); } catch (e) { return; }
+      if (!list || typeof list.forEach !== 'function') return;
+      list.forEach(function (id) {
+        if (typeof id === 'string' && graph.byId[id]) hidden[id] = true;
+      });
+    }
+
+    function write() {
+      try {
+        if (!global.localStorage) return;
+        var ids = Object.keys(hidden);
+        if (ids.length) global.localStorage.setItem(KEY, JSON.stringify(ids));
+        else global.localStorage.removeItem(KEY);
+      } catch (e) { /* 记不住就算了，不影响使用 */ }
+    }
+
+    /** 每处改动只走一次：存盘 → 通知（面板重画 + 星图重画） */
+    function commit() {
+      write();
+      listeners.forEach(function (cb) {
+        try { cb(); } catch (e) { console.error('[数学星图] 可见性回调出错', e); }
+      });
+    }
+
+    /* ------------------------------------------------------------ 查询 */
+    function isNodeVisible(id) { return !hidden[id]; }
+    function isNodeHidden(id) { return !!hidden[id]; }
+
+    function hiddenCount() { return Object.keys(hidden).length; }
+
+    function visibleCount() {
+      var c = 0;
+      for (var i = 0; i < nodes.length; i++) if (!hidden[nodes[i].id]) c++;
+      return c;
+    }
+
+    /** 两个端点都还在，这条线才画 */
+    function edgeOk(e) {
+      var ids = MG.graphUtil.edgeNodes(e);
+      for (var i = 0; i < ids.length; i++) if (hidden[ids[i]]) return false;
+      return true;
+    }
+
+    /* ------------------------------------------------------------ 改动 */
+    function setNode(id, visible) {
+      if (!graph.byId[id]) return;
+      if (visible) { if (!hidden[id]) return; delete hidden[id]; }
+      else { if (hidden[id]) return; hidden[id] = true; }
+      commit();
+    }
+
+    /** 一次勾一批（整个星系 / 整个星团），只通知一次 */
+    function setMany(ids, visible) {
+      var hits = 0;
+      ids.forEach(function (id) {
+        if (!graph.byId[id]) return;
+        if (visible) { if (hidden[id]) { delete hidden[id]; hits++; } }
+        else if (!hidden[id]) { hidden[id] = true; hits++; }
+      });
+      if (hits) commit();
+    }
+
+    function showAll() {
+      if (!Object.keys(hidden).length) return;
+      hidden = Object.create(null);
+      commit();
+    }
+
+    function hideAll() {
+      if (visibleCount() === 0) return;
+      nodes.forEach(function (n) { hidden[n.id] = true; });
+      commit();
+    }
+
+    function invert() {
+      var next = Object.create(null);
+      nodes.forEach(function (n) { if (!hidden[n.id]) next[n.id] = true; });
+      hidden = next;
+      commit();
+    }
+
+    /** 只看这些：其余全藏起来 */
+    function only(ids) {
+      var keep = Object.create(null);
+      ids.forEach(function (id) { keep[id] = true; });
+      var next = Object.create(null);
+      nodes.forEach(function (n) { if (!keep[n.id]) next[n.id] = true; });
+      hidden = next;
+      commit();
+    }
+
+    /**
+     * 换了一张图（外部内容包加载完会重建 graph）：
+     * 保留挑选结果，但丢掉已经不存在的 id。
+     */
+    function rebind(g) {
+      graph = g;
+      nodes = g.nodes;
+      var dropped = 0;
+      Object.keys(hidden).forEach(function (id) {
+        if (!g.byId[id]) { delete hidden[id]; dropped++; }
+      });
+      if (dropped) commit();
+    }
+
+    function onChange(cb) {
+      listeners.push(cb);
+      return function () {
+        var i = listeners.indexOf(cb);
+        if (i >= 0) listeners.splice(i, 1);
+      };
+    }
+
+    /** 恢复上次的挑选（初始状态，不触发回调） */
+    read();
+
+    return {
+      isNodeVisible: isNodeVisible,
+      isNodeHidden: isNodeHidden,
+      hiddenCount: hiddenCount,
+      visibleCount: visibleCount,
+      edgeOk: edgeOk,
+      setNode: setNode,
+      setMany: setMany,
+      showAll: showAll,
+      hideAll: hideAll,
+      invert: invert,
+      only: only,
+      rebind: rebind,
+      onChange: onChange,
+      hiddenIds: function () { return Object.keys(hidden); }
+    };
+  }
+
+  MG.createVisibility = createVisibility;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -11774,18 +12039,36 @@ window.MG = window.MG || {};
     }
 
     /* ------------------------------------------------------------ 状态 */
+    /* 可见性：左下角「显示节点」面板里挑的那一块（存在 localStorage 里）。
+       被藏起来的点不画、不出名字、不响应点击；一端被藏的连线也一起不画。 */
+    var vis = MG.createVisibility(graph);
+
     var view = {
       graph: graph,
       cam: null,
-      visible: MG.graphUtil.visibleEdges(graph),
+      visible: [],
       focus: null,
-      hover: null
+      hover: null,
+      isNodeVisible: vis.isNodeVisible
     };
+
+    /** 真正参与绘制的连线：先按定义线开关过滤，再去掉「有一端被藏起来」的 */
+    function visibleEdgeList() {
+      return MG.graphUtil.visibleEdges(graph).filter(function (e) { return vis.edgeOk(e); });
+    }
+
+    function visibleNodes() {
+      return graph.nodes.filter(function (n) { return vis.isNodeVisible(n.id); });
+    }
+
+    view.visible = visibleEdgeList();
+
     var cam = MG.createCamera();
     view.cam = cam;
 
     var renderer = MG.createRenderer(graphEl, view);
     var cloudTex = null;
+    var cloudDirty = true;
     var dpr = 1;
     var rafId = 0;
     var dirty = true;
@@ -11798,6 +12081,11 @@ window.MG = window.MG || {};
 
     function frame() {
       rafId = 0;
+      // 云雾是按「还看得见的点」铺的：藏了点就重画一次纹理（每帧最多一次）
+      if (cloudDirty) {
+        cloudDirty = false;
+        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+      }
       var animating = cam.tick();
       if (dirty || animating) {
         MG.background.draw(cloudCtx, cam, cloudTex, dpr);
@@ -11836,6 +12124,8 @@ window.MG = window.MG || {};
 
     function focusNode(id, opts) {
       opts = opts || {};
+      // 被藏起来的点：先让它可见 —— 否则点了搜索结果/深链，星图上什么也没有
+      if (!vis.isNodeVisible(id)) vis.setNode(id, true);
       if (view.focus && view.focus.type === 'node' && view.focus.id === id && !opts.force) {
         clearFocus();       // 再点一次同一个节点 = 取消聚焦
         panel.hide();
@@ -11918,24 +12208,30 @@ window.MG = window.MG || {};
       return { k: k, cx: base.cx, cy: base.cy };
     }
 
-    /** 适配到某个星系 */
+    /** 适配到某个星系（只算还看得见的点） */
     function fitRegion(rid) {
-      var list = graph.nodes.filter(function (n) { return n.regions.indexOf(rid) >= 0; });
+      var list = graph.nodes.filter(function (n) {
+        return n.regions.indexOf(rid) >= 0 && vis.isNodeVisible(n.id);
+      });
       if (!list.length) return;
       cam.animateTo(targetFor(bboxOf(list), 170, 1.35));
       requestDraw();
     }
 
-    /** 适配到某个星团 */
+    /** 适配到某个星团（只算还看得见的点） */
     function fitCluster(cid) {
       var c = graph.clusterById[cid];
       if (!c || !c.nodes || !c.nodes.length) return;
-      cam.animateTo(targetFor(bboxOf(c.nodes), 190, 1.7));
+      var list = c.nodes.filter(function (n) { return vis.isNodeVisible(n.id); });
+      if (!list.length) return;
+      cam.animateTo(targetFor(bboxOf(list), 190, 1.7));
       requestDraw();
     }
 
     function fitAll() {
-      cam.animateTo(targetFor(graph.bbox(), C.camera.fitPadding));
+      var list = visibleNodes();
+      if (!list.length) return;                 // 全藏起来了，没什么可适配的
+      cam.animateTo(targetFor(bboxOf(list), C.camera.fitPadding));
       requestDraw();
     }
 
@@ -11949,6 +12245,39 @@ window.MG = window.MG || {};
       onCluster: function (cid) { fitCluster(cid); },
       onClose: function () { panelOpen = false; requestDraw(); }
     });
+
+    /* ------------------------------------- 可见性变化后的统一善后 */
+    /** 挑了显示哪一块之后：连线、星团级粗线、云雾、聚焦状态、图例全部跟着走 */
+    function refreshVisible() {
+      view.visible = visibleEdgeList();
+      graph.clusterLinks = graph.buildClusterLinks(function (e) { return vis.edgeOk(e); });
+
+      // 正在看的东西被藏起来了 → 收手（别对着看不见的点显示详情）
+      if (view.focus) {
+        var fo = view.focus;
+        var gone = (fo.type === 'node' && !vis.isNodeVisible(fo.id));
+        if (fo.type === 'edge') {
+          var fe = findEdge(fo.id);
+          gone = !!(fe && !vis.edgeOk(fe));
+        }
+        if (gone) { clearFocus(); panel.hide(); }
+      }
+      if (view.hover) {
+        var ho = view.hover;
+        var hGone = (ho.type === 'node' && !vis.isNodeVisible(ho.id));
+        if (ho.type === 'edge') {
+          var he = findEdge(ho.id);
+          hGone = !!(he && !vis.edgeOk(he));
+        }
+        if (hGone) view.hover = null;
+      }
+
+      renderer.invalidate();
+      cloudDirty = true;
+      requestDraw();
+    }
+
+    vis.onChange(function () { refreshVisible(); renderLegend(); });
 
     /* ---------------------------------------------------------- 交互 */
     MG.createInteraction(graphEl, view, {
@@ -12001,22 +12330,75 @@ window.MG = window.MG || {};
       }
     });
 
-    function refreshVisible() {
-      view.visible = MG.graphUtil.visibleEdges(graph);
-      renderer.invalidate();
-      requestDraw();
+    /* ---------------------------------------------------- 图例（也是开关） */
+    /*
+      图例同时是「显示 / 隐藏」的控制面板：
+        · 节点类别（公理 / 定义 / …）  点一下 = 整类显示或隐藏
+        · 数学板块 / 星团              点色块 = 整块显示或隐藏，点名字 = 跳过去看
+      三态靠色块的样子表示：实心 = 全显示，半透明 + 橙数字 = 藏了一部分，空心 = 全藏了。
+    */
+
+    /** 一组节点里有多少还看得见 */
+    function statOf(list) {
+      var v = 0;
+      for (var i = 0; i < list.length; i++) if (vis.isNodeVisible(list[i].id)) v++;
+      return { v: v, n: list.length };
     }
 
-    /* ---------------------------------------------------------- 图例 */
+    /** 点一下：全显示 → 全隐藏；只要缺了 → 补齐 */
+    function toggleList(list) {
+      if (!list.length) return;
+      var s = statOf(list);
+      vis.setMany(list.map(function (n) { return n.id; }), s.v < s.n);
+    }
+
+    function typeNodes(t) {
+      return graph.nodes.filter(function (n) { return n.type === t; });
+    }
+    function regionNodes(id) {
+      return graph.nodes.filter(function (n) { return n.regions.indexOf(id) >= 0; });
+    }
+
+    /**
+     * 一个可点的开关芯片。
+     * attr    —— 打在这个芯片上的 data-*（data-vt / data-vc / data-vr）
+     * nav     —— 有的话，名字可点 = 跳过去看
+     */
+    function togChip(o) {
+      var s = statOf(o.list);
+      var state = s.v === 0 ? ' off' : (s.v < s.n ? ' part' : '');
+      var mark = 'background:' + o.color + ';';
+      if (s.v === 0) mark = 'background:transparent;box-shadow:inset 0 0 0 1.5px ' + o.color + ';';
+      var num = s.v === s.n ? '·' + s.n : '·' + s.v + '/' + s.n;
+      var name = U.escapeHtml(o.label);
+      if (o.nav) name = '<span class="lg-name" data-nav="' + o.nav + '" title="' +
+        U.escapeHtml(o.navTip || '跳过去看') + '">' + name + '</span>';
+      else name = '<span class="lg-name">' + name + '</span>';
+      return '<span class="lg-item lg-tog' + state + '" ' + o.attr + ' title="' +
+        U.escapeHtml(o.tip) + '">' +
+        '<span class="' + (o.round ? 'lg-dot' : 'lg-swatch') + '" style="' + mark + '"></span>' +
+        name + '<span class="lg-num">' + num + '</span></span>';
+    }
+
     function renderLegend() {
       var regions = graph.regions || [];
       var types = T.typeOrder || Object.keys(T.nodeTypes || {});
       var live = regions.filter(function (r) { return r.stat; });
+      var total = graph.nodes.length;
+      var shown = vis.visibleCount();
+
+      /* ---------- 节点类别（点一下 = 整类开关） ---------- */
       var typeRows = types.filter(function (t) { return T.nodeTypes[t]; }).map(function (t) {
         var st = T.nodeTypes[t];
-        return '<span class="lg-item"><span class="lg-dot" style="background:' + st.color + '"></span>' + st.name + '</span>';
+        var list = typeNodes(t);
+        if (!list.length) return '';
+        return togChip({
+          label: st.name, color: st.color, list: list, attr: 'data-vt="' + t + '"',
+          tip: '点一下：显示 / 隐藏全部「' + st.name + '」（共 ' + list.length + ' 个）'
+        });
       }).join('');
 
+      /* ---------- 连线 ---------- */
       var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
       var edgeRows =
         '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
@@ -12029,41 +12411,71 @@ window.MG = window.MG || {};
             (C.exploreMode ? '' : '（点右上角「探索」显示）') + '</em></span>'
           : '');
 
-      // 星系 + 它下面的星团（缩进一层）
+      /* ---------- 数学板块：星系 + 它下面的星团（缩进一层） ---------- */
       var regionRows = live.map(function (r) {
         var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
-        var head = '<span class="lg-item" data-region="' + r.id + '" style="cursor:pointer">' +
-          '<span class="lg-swatch" style="background:' + U.mixWithWhite(r.color, 0.45) + '"></span>' +
-          '<b style="font-weight:600">' + r.name + '</b>' +
-          '<span style="color:#A5ABB3">·' + r.stat.count + '</span></span>';
+        var head = togChip({
+          label: r.name, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
+          attr: 'data-vr="' + r.id + '"', tip: '点色块：显示 / 隐藏整个「' + r.name + '」；点名字：跳过去看',
+          nav: r.id, navTip: '跳过去看「' + r.name + '」'
+        });
         if (!mine.length) return head;
         var kids = mine.map(function (c) {
-          return '<span class="lg-item" data-cluster="' + c.id + '" style="cursor:pointer">' +
-            '<span class="lg-swatch" style="background:' + U.mixWithWhite(c.color || r.color, 0.62) +
-            ';width:11px;height:11px;border-radius:50%"></span>' +
-            c.name + '<span style="color:#A5ABB3">·' + c.stat.count + '</span></span>';
+          return togChip({
+            label: c.name, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
+            attr: 'data-vc="' + c.id + '"', round: true,
+            tip: '点圆点：显示 / 隐藏「' + c.name + '」；点名字：跳过去看',
+            nav: c.id, navTip: '跳过去看「' + c.name + '」'
+          });
         }).join('');
         return head + '<span class="lg-kids">' + kids + '</span>';
       }).join('');
 
+      var hidden = total - shown;
       legendEl.innerHTML =
-        '<div class="lg-head" data-toggle><b>图例</b><span class="lg-caret">▼</span></div>' +
+        '<div class="lg-head" data-toggle><b>图例</b>' +
+        (hidden
+          ? '<button class="lg-reset" data-reset title="把所有节点都显示出来">显示全部 ' + shown + '/' + total + '</button>'
+          : '') +
+        '<span class="lg-caret">▼</span></div>' +
         '<div class="lg-body">' +
-        '<div class="lg-group"><div class="lg-title">节点（' + graph.nodes.length + '）</div><div class="lg-row">' + typeRows + '</div></div>' +
-        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div><div class="lg-row">' + edgeRows + '</div></div>' +
-        '<div class="lg-group"><div class="lg-title">数学板块</div><div class="lg-row">' + regionRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">节点（' + total + '）</div>' +
+        '<div class="lg-row">' + typeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
+        '<div class="lg-row">' + edgeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">数学板块</div>' +
+        '<div class="lg-row">' + regionRows + '</div></div>' +
+        '<div class="lg-hint">点色块 = 显示 / 隐藏 · 点名字 = 跳过去看</div>' +
         '</div>';
     }
 
     legendEl.addEventListener('click', function (e) {
-      if (e.target.closest && e.target.closest('[data-toggle]')) {
-        legendEl.classList.toggle('collapsed');
+      var t = e.target;
+      if (!t.closest) return;
+      // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
+      if (t.closest('[data-reset]')) { vis.showAll(); return; }
+      if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
+
+      // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）
+      var nav = t.closest('[data-nav]');
+      if (nav) {
+        var nid = nav.getAttribute('data-nav');
+        if (graph.clusterById[nid]) fitCluster(nid);
+        else fitRegion(nid);
         return;
       }
-      var cchip = e.target.closest ? e.target.closest('[data-cluster]') : null;
-      if (cchip) { fitCluster(cchip.getAttribute('data-cluster')); return; }
-      var chip = e.target.closest ? e.target.closest('[data-region]') : null;
-      if (chip) fitRegion(chip.getAttribute('data-region'));
+
+      // 色块 = 显示 / 隐藏
+      var chip = t.closest('[data-vt]');
+      if (chip) { toggleList(typeNodes(chip.getAttribute('data-vt'))); return; }
+      chip = t.closest('[data-vc]');
+      if (chip) {
+        var c = graph.clusterById[chip.getAttribute('data-vc')];
+        if (c) toggleList(c.nodes);
+        return;
+      }
+      chip = t.closest('[data-vr]');
+      if (chip) toggleList(regionNodes(chip.getAttribute('data-vr')));
     });
 
     /* ---------------------------------------------------------- 键盘 */
@@ -12121,9 +12533,14 @@ window.MG = window.MG || {};
 
     function start() {
       resize();
-      cloudTex = MG.background.buildTexture(graph);
+      if (cloudDirty || !cloudTex) {
+        cloudDirty = false;
+        cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+      }
       renderLegend();
-      var bb = graph.bbox();
+      // 上次藏了一批点 → 开局就只把「还看得见的那些」铺满屏幕
+      var live = visibleNodes();
+      var bb = (vis.hiddenCount() && live.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
@@ -12150,9 +12567,11 @@ window.MG = window.MG || {};
         graph = MG.buildGraph(packs, MG.regions, MG.clusters);
         MG.computeLayout(graph);
         view.graph = graph;
-        view.visible = MG.graphUtil.visibleEdges(graph);
+        vis.rebind(graph);            // 挑选结果保留，丢掉已经不存在的 id
+        view.visible = visibleEdgeList();
+        graph.clusterLinks = graph.buildClusterLinks(function (e) { return vis.edgeOk(e); });
         renderer.invalidate();
-        cloudTex = MG.background.buildTexture(graph);
+        cloudDirty = true;
         search.reindex();
         renderLegend();
         start();
@@ -12163,6 +12582,7 @@ window.MG = window.MG || {};
     /* 方便在控制台里调试：MG.app.graph / MG.app.cam */
     MG.app = {
       view: view, cam: cam, renderer: renderer, search: search,
+      visibility: vis,
       focusNode: focusNode, focusEdge: focusEdge, fitAll: fitAll, fitRegion: fitRegion,
       clearFocus: clearFocus,
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次

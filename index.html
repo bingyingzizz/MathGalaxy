@@ -66,7 +66,7 @@ window.addEventListener('error', function (e) {
   <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移">滚轮·缩放</button>
 </div>
 
-<!-- ===== 左下角：图例 ===== -->
+<!-- ===== 左下角：图例（同时是「显示 / 隐藏」的开关面板） ===== -->
 <div id="legend" class="floating"></div>
 
 <!-- ===== 右侧：详情面板 ===== -->
@@ -81,7 +81,7 @@ window.addEventListener('error', function (e) {
 <!-- =========================================================================
      底层引擎（与内容无关，一般不需要改）
      加载顺序：config → util → camera → graph → layout → background
-               → renderer → interaction → search → panel → loader → app
+               → renderer → interaction → search → panel → visibility → loader → app
      ========================================================================= -->
 <!-- ⚠ KaTeX 必须在 core/util.js 之前加载：util.js 里的行内/块级公式渲染会去问
      MG.renderInlineMath / MG.renderBlockMath，而它们由 app.js 的 hookKatex() 挂上，
@@ -98,6 +98,7 @@ window.addEventListener('error', function (e) {
 <script src="src/core/interaction.js"></script>
 <script src="src/core/search.js"></script>
 <script src="src/core/panel.js"></script>
+<script src="src/core/visibility.js"></script>
 <script src="src/core/loader.js"></script>
 
 <!-- =========================================================================

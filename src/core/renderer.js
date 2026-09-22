@@ -233,6 +233,24 @@
     function dimNode() { return C.focus.hideUnrelated ? 0 : C.focus.dimNodeAlpha; }
     function dimEdge() { return C.focus.hideUnrelated ? 0 : C.focus.dimEdgeAlpha; }
 
+    /** 用户在左下角的「显示节点」面板里藏起来的点，一律不画 */
+    function nodeOk(id) { return !view.isNodeVisible || view.isNodeVisible(id); }
+
+    /** 这一组里还有几颗星看得见（全藏光的星系/星团连名字都不出） */
+    function visibleIn(list) {
+      var c = 0;
+      for (var i = 0; i < list.length; i++) if (nodeOk(list[i].id)) c++;
+      return c;
+    }
+
+    function regionHasVisible(rid) {
+      var ns = view.graph.nodes;
+      for (var i = 0; i < ns.length; i++) {
+        if (ns[i].regions.indexOf(rid) >= 0 && nodeOk(ns[i].id)) return true;
+      }
+      return false;
+    }
+
     function alphaForNode(id) {
       var f = view.focus;
       if (!f) return 1;
@@ -293,7 +311,6 @@
       if (lodA.nodeDot > 0.02) {
         view.graph.nodes.forEach(function (n) { drawNode(n); });
       }
-
       /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
@@ -310,6 +327,8 @@
       ctx.textBaseline = 'middle';
       (view.graph.regions || []).forEach(function (r) {
         if (!r.stat || !r.name) return;
+        // 整个星系的点都被藏起来了 → 只剩云雾，名字也不必出
+        if (view.isNodeVisible && !regionHasVisible(r.id)) return;
         var p = view.cam.toScreen(r.stat.cx, r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = r.name;
@@ -357,6 +376,7 @@
         if (l.count < cfgL.minEdges) return;
         var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
         if (!A || !B || !A.stat || !B.stat) return;
+        if (view.isNodeVisible && (!visibleIn(A.nodes) || !visibleIn(B.nodes))) return;
         var p0 = view.cam.toScreen(A.stat.cx, A.stat.cy);
         var p1 = view.cam.toScreen(B.stat.cx, B.stat.cy);
         var len = U.dist(p0.x, p0.y, p1.x, p1.y);
@@ -385,6 +405,7 @@
       ctx.textBaseline = 'middle';
       (view.graph.clusters || []).forEach(function (c) {
         if (!c.stat || !c.name) return;
+        if (view.isNodeVisible && !visibleIn(c.nodes)) return;   // 整团都藏起来了
         var p = view.cam.toScreen(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = c.name;
@@ -505,6 +526,7 @@
 
     /* ---------------------------------------------------------- 节点 */
     function drawNode(n) {
+      if (!nodeOk(n.id)) return;                 // 被藏起来的点：不画（连线也已一并去掉）
       var p = screenOf(n);
       var r = nodeRadius(n);
       var a = alphaForNode(n.id) * lodA.nodeDot;
@@ -562,6 +584,7 @@
       ctx.textBaseline = 'top';
 
       nodes.forEach(function (n) {
+        if (!nodeOk(n.id)) return;
         var a = alphaForNode(n.id);
         var isSpecial = (view.focus && view.focus.id === n.id) ||
           (view.hover && view.hover.type === 'node' && view.hover.id === n.id);
@@ -605,7 +628,7 @@
       ctx.textBaseline = 'top';
       special.forEach(function (id) {
         var n = view.graph.byId[id];
-        if (!n) return;
+        if (!n || !nodeOk(id)) return;
         var p = screenOf(n), r = nodeRadius(n);
         var y = p.y + r + 10;
         ctx.lineWidth = 3;
@@ -630,6 +653,7 @@
       // 先节点
       var best = null, bestD = Infinity;
       view.graph.nodes.forEach(function (n) {
+        if (!nodeOk(n.id)) return;
         var a = alphaForNode(n.id);
         if (a <= 0.06) return;
         var p = screenOf(n);
