@@ -96,6 +96,20 @@ for (const f of ['graph.json', 'graph.md', 'llms.txt']) {
   fs.copyFileSync(path.join(DIST, f), path.join(STAGE, 'mathgalaxy', f));
 }
 
+// KaTeX 字体：单文件里的 CSS 是**内联**的，而里面的 url(fonts/…) 是相对
+// 「加载这个 CSS 的页面」解析的 —— 也就是相对 mathgalaxy/index.html。
+// 所以字体必须跟它同目录一起发上去，否则线上公式没有数学字体（会退化）。
+const fontSrc = path.join(DIST, 'fonts');
+if (fs.existsSync(fontSrc)) {
+  const fontDst = path.join(STAGE, 'mathgalaxy', 'fonts');
+  fs.mkdirSync(fontDst, { recursive: true });
+  let nf = 0;
+  for (const f of fs.readdirSync(fontSrc)) {
+    if (f.endsWith('.woff2')) { fs.copyFileSync(path.join(fontSrc, f), path.join(fontDst, f)); nf++; }
+  }
+  console.log(`   KaTeX 字体：${nf} 个 woff2 → mathgalaxy/fonts/`);
+}
+
 // 首页样式
 fs.writeFileSync(path.join(STAGE, 'assets', 'site.css'), `/* 个人站点 · 全局样式（随便改） */
 :root{
