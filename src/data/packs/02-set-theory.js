@@ -17,18 +17,18 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定义', '包含关系'],
       statement: [
-        '设 A、B 是集合。',
+        '设 $A$、$B$ 是集合。',
         '',
-        '- **A 是 B 的子集**（记 A ⊆ B）：$$\\forall x ( x \\in A \\to x \\in B )$$',
-        '- **A 是 B 的真子集**（记 A ⊊ B）：A ⊆ B 且 A ≠ B。',
+        '- **$A$ 是 $B$ 的子集**（记 $A \\subseteq B$）：$$\\forall x ( x \\in A \\to x \\in B )$$',
+        '- **$A$ 是 $B$ 的真子集**（记 $A \\subsetneq B$）：$A \\subseteq B$ 且 $A \\ne B$。',
         '',
-        '基本性质：⊆ 自反、传递；并且由外延公理，',
+        '基本性质：$\\subseteq$ 自反、传递；并且由外延公理，',
         '',
         '$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$',
         '',
         '这是证明两个集合相等最常用的套路：**两边互包**。'
       ].join('\n'),
-      notes: '∅ ⊆ A 对一切 A 成立（空泛真）。',
+      notes: '$\\emptyset \\subseteq A$ 对一切 $A$ 成立（空泛真）。',
       refs: ['Kunen, Set Theory, I.2']
     },
 
@@ -52,7 +52,7 @@ window.MG = window.MG || {};
         '',
         '$$(a, b) = (c, d) \\iff a = c \\wedge  b = d$$',
         '',
-        'n 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。'
+        '$n$ 元组递归定义为 $(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$。'
       ].join('\n'),
       notes: '用集合「编码」有序对之后，关系、函数、序型等等才都能在 ZFC 内部说清楚。',
       refs: ['Kunen, Set Theory, I.5']
@@ -68,16 +68,16 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定义', '函数'],
       statement: [
-        '设 A、B 是集合。',
+        '设 $A$、$B$ 是集合。',
         '',
-        '- **关系** R 由有序对组成；R ⊆ A × B 表示 R 是 A 到 B 的关系。',
-        '- **定义域** dom R = { a : ∃b (a, b) ∈ R }；**值域** ran R = { b : ∃a (a, b) ∈ R }。',
-        '- **逆** R⁻¹ = { (b, a) : (a, b) ∈ R }。',
-        '- **函数** f : A → B 是满足下式的关系 f ⊆ A × B：',
+        '- **关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。',
+        '- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；**值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$。',
+        '- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。',
+        '- **函数** $f : A \\to B$ 是满足下式的关系 $f \\subseteq A \\times B$：',
         '',
         '$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$',
         '',
-        '唯一性使 f(a) = b 这个记号不会歧义；此时 dom f = A。'
+        '唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$。'
       ].join('\n'),
       notes: '在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。',
       refs: ['Kunen, Set Theory, I.5']
@@ -93,18 +93,18 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定义', '选择'],
       statement: [
-        '设 F 是一个集合族，且 ∅ ∉ F。',
+        '设 $F$ 是一个集合族，且 $\\emptyset \\notin F$。',
         '',
-        'f 是 F 的**选择函数**，当且仅当',
+        '$f$ 是 $F$ 的**选择函数**，当且仅当',
         '',
-        '- f 是函数，dom f = F；',
-        '- ∀X ∈ F, f(X) ∈ X。',
+        '$f$ 是函数，$\\operatorname{dom} f = F$；',
+        '$\\forall X \\in F, f(X) \\in X$。',
         '',
-        '即：f 从 F 的每一个成员里各挑出一个元素。',
+        '即：$f$ 从 $F$ 的每一个成员里各挑出一个元素。',
         '',
-        '于是选择公理可以简洁地写成：**每个满足 ∅ ∉ F 的集合族 F 都有选择函数**。'
+        '于是选择公理可以简洁地写成：**每个满足 $\\emptyset \\notin F$ 的集合族 $F$ 都有选择函数**。'
       ].join('\n'),
-      notes: '若 F 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。',
+      notes: '若 $F$ 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。',
       refs: ['Jech, The Axiom of Choice']
     },
 
@@ -122,9 +122,9 @@ window.MG = window.MG || {};
         '',
         '$$\\exists B \\forall x ( x \\notin B )$$',
         '',
-        '由外延公理，这样的 B 唯一，记作 ∅。'
+        '由外延公理，这样的 $B$ 唯一，记作 $\\emptyset$。'
       ].join('\n'),
-      notes: '∅ 是 ∈-关系的最小元，也是 ⊆-关系的最小元：∅ ⊆ A 对一切 A 成立。',
+      notes: '$\\emptyset$ 是 $\\in$关系的最小元，也是 $\\subseteq$关系的最小元：$\\emptyset \\subseteq A$ 对一切 $A$ 成立。',
       refs: ['Kunen, Set Theory, I.4']
     },
 
@@ -140,11 +140,11 @@ window.MG = window.MG || {};
       statement: [
         '$$\\forall A ( A \\notin A )$$',
         '',
-        '更一般地，正则公理排除了任何有限的 ∈-循环：',
+        '更一般地，正则公理排除了任何有限的 $\\in$循环：',
         '',
         '$$A_0 \\ni  A_1 \\ni  \\cdots \\ni  A_n = A_0$$'
       ].join('\n'),
-      notes: '这条定理说明罗素悖论里的「集合 R = { x : x ∉ x }」不可能存在——否则 R ∈ R 与 R ∉ R 同时成立。',
+      notes: '这条定理说明罗素悖论里的「集合 $R = \\{ x : x \\notin x \\}$」不可能存在——否则 $R \\in R$ 与 $R \\notin R$ 同时成立。',
       refs: ['Kunen, Set Theory, I.9']
     },
 
@@ -158,13 +158,13 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定理', '自然数', '序数'],
       statement: [
-        '存在**最小归纳集** ω：它含有 ∅，对 x ↦ x ∪ {x} 封闭，且含于一切归纳集之中：',
+        '存在**最小归纳集** $\\omega$：它含有 $\\emptyset$，对 $x \\mapsto x \\cup \\{x\\}$ 封闭，且含于一切归纳集之中：',
         '',
         '$$\\omega = \\{ \\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}, \\{\\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}\\}, \\ldots  \\}$$',
         '',
-        '把 ∈ 读作 <，⟨ω, ∈⟩ 就是自然数系 ⟨ℕ, <⟩。'
+        '把 $\\in$ 读作 $<$，$\\langle \\omega , \\in \\rangle$ 就是自然数系 $\\langle \\mathbb{N}, <\\rangle$。'
       ].join('\n'),
-      notes: 'ω 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。',
+      notes: '$\\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。',
       refs: ['Kunen, Set Theory, I.5']
     },
 
@@ -182,9 +182,9 @@ window.MG = window.MG || {};
         '',
         '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A \\leftrightarrow  ( x \\in a \\vee  x \\in b ) ]$$',
         '',
-        '记作 a ∪ b。'
+        '记作 $a \\cup b$。'
       ].join('\n'),
-      notes: 'a ∪ b 是包含 a 与 b 的最小集合（⊆-意义下）。',
+      notes: '$a \\cup b$ 是包含 $a$ 与 $b$ 的最小集合（$\\subseteq$意义下）。',
       refs: ['Kunen, Set Theory, I.3']
     },
 
@@ -202,9 +202,9 @@ window.MG = window.MG || {};
         '',
         '$$\\forall A \\forall B \\exists C \\forall z [ z \\in C \\leftrightarrow  \\exists a \\in A, \\exists b \\in B, z = (a, b) ]$$',
         '',
-        '记作 A × B = { (a, b) : a ∈ A, b ∈ B }。'
+        '记作 $A \\times B = \\{ (a, b) : a \\in A, b \\in B \\}$。'
       ].join('\n'),
-      notes: '它是「关系」「函数」得以定义为集合的前提：没有 A × B，就没有 R ⊆ A × B 这个说法。',
+      notes: '它是「关系」「函数」得以定义为集合的前提：没有 $A \\times B$，就没有 $R \\subseteq A \\times B$ 这个说法。',
       refs: ['Kunen, Set Theory, I.5']
     }
   ],
@@ -217,14 +217,14 @@ window.MG = window.MG || {};
       target: 'thm.empty',
       title: '分离公理模式 ⇒ 空集存在',
       proof: [
-        '取任意集合 a（一阶逻辑的论域非空，故这样的 a 存在；在 ZF 中也可由无穷公理提供）。',
+        '取任意集合 $a$（一阶逻辑的论域非空，故这样的 $a$ 存在；在 ZF 中也可由无穷公理提供）。',
         '',
-        '取公式 φ(x) :≡ ( x ≠ x )，它是矛盾式。分离公理模式给出集合',
+        '取公式 $\\varphi (x) :\\equiv ( x \\ne x )$，它是矛盾式。分离公理模式给出集合',
         '',
         '$$B = \\{ x \\in a : x \\ne x \\}$$',
         '',
-        '对任意 x，x ∈ B ↔ ( x ∈ a ∧ x ≠ x ) 恒为假，故 B 不含任何元素。',
-        '由外延公理，这样的 B 唯一，记作 ∅。∎'
+        '对任意 $x$，$x \\in B \\leftrightarrow ( x \\in a \\wedge x \\ne x )$ 恒为假，故 $B$ 不含任何元素。',
+        '由外延公理，这样的 $B$ 唯一，记作 $\\emptyset$。∎'
       ].join('\n'),
       note: '严格地说，「论域非空」是一阶逻辑的约定，不属于 ZF 公理。若不喜欢这个约定，也可以先由无穷公理取出一个集合再分离。'
     },
@@ -235,17 +235,17 @@ window.MG = window.MG || {};
       target: 'thm.noself',
       title: '正则公理 + 配对公理 ⇒ A ∉ A',
       proof: [
-        '反设存在集合 A 使 A ∈ A。由配对公理取 a = b = A，得单点集 {A}。',
+        '反设存在集合 $A$ 使 $A \\in A$。由配对公理取 $a = b = A$，得单点集 {A}。',
         '',
-        '由外延公理 {A} ≠ ∅（它含有 A）。对 {A} 用正则公理：存在 x ∈ {A} 使',
+        '由外延公理 $\\{A\\} \\ne \\emptyset$（它含有 $A$）。对 {A} 用正则公理：存在 $x \\in \\{A\\}$ 使',
         '',
         '$$x \\cap \\{ A \\} = \\emptyset$$',
         '',
-        '而 {A} 只有唯一的元素，故 x = A。于是 A ∩ {A} = ∅。',
+        '而 {A} 只有唯一的元素，故 $x = A$。于是 $A \\cap \\{A\\} = \\emptyset$。',
         '',
-        '但由假设 A ∈ A 且 A ∈ {A}，所以 A ∈ A ∩ {A}，与 A ∩ {A} = ∅ 矛盾。故 A ∉ A。∎'
+        '但由假设 $A \\in A$ 且 $A \\in \\{A\\}$，所以 $A \\in A \\cap \\{A\\}$，与 $A \\cap \\{A\\} = \\emptyset$ 矛盾。故 $A \\notin A$。∎'
       ].join('\n'),
-      note: '把同样的论证用在任意有限 ∈-循环 A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀ 上，取集合 {A₀, …, Aₙ₋₁}（可由配对公理反复构造），也能得到矛盾。'
+      note: '把同样的论证用在任意有限 $\\in$循环 $A_{0} \\ni A_{1} \\ni \\cdots \\ni A_{n} = A_{0}$ 上，取集合 $\\{A_{0}$ …$A_{n-1}\\}$（可由配对公理反复构造），也能得到矛盾。'
     },
     {
       id: 'imp.inf-to-omega',
@@ -254,25 +254,25 @@ window.MG = window.MG || {};
       target: 'thm.omega',
       title: '无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在',
       proof: [
-        '1. 由无穷公理取一个归纳集 I。称 J ⊆ I 是**归纳的**，若 ∅ ∈ J 且 ∀x (x ∈ J → x ∪ {x} ∈ J)。',
+        '1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。',
         '',
-        '2. 由幂集公理，𝒫(I) 是集合；再用分离公理模式取',
+        '2. 由幂集公理，$\\mathcal{P}(I)$ 是集合；再用分离公理模式取',
         '',
         '$$S = \\{ J \\in \\mathcal{P}(I) : J\\text{ 是归纳集} \\}$$',
         '',
-        'S 非空（I ∈ S）。',
+        '$S$ 非空（$I \\in S$）。',
         '',
-        '3. 再对 𝒫(I) 用一次分离公理模式，令',
+        '3. 再对 $\\mathcal{P}(I)$ 用一次分离公理模式，令',
         '',
         '$$\\omega = \\{ x \\in I : \\forall J ( J \\in S \\to x \\in J ) \\}$$',
         '',
-        '即 ω 是所有归纳子集的交。',
+        '即 $\\omega$ 是所有归纳子集的交。',
         '',
-        '4. ω 是归纳集：∅ 属于每个 J ∈ S，故 ∅ ∈ ω；若 x ∈ ω，则 x 属于每个 J ∈ S，从而 x ∪ {x} 属于每个 J ∈ S，故 x ∪ {x} ∈ ω。',
+        '$4. \\omega$ 是归纳集：$\\emptyset$ 属于每个 $J \\in S$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个 $J \\in S$，从而 $x \\cup \\{x\\}$ 属于每个 $J \\in S$，故 $x \\cup \\{x\\} \\in \\omega$。',
         '',
-        '5. ω 含于一切归纳集：若 K 是归纳集，则 K ∩ I 也是归纳集且 K ∩ I ∈ S，由 ω 的定义 ω ⊆ K ∩ I ⊆ K。',
+        '$5. \\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\in S$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。',
         '',
-        '故 ω 是最小归纳集，即自然数集。∎'
+        '故 $\\omega$ 是最小归纳集，即自然数集。∎'
       ].join('\n')
     },
     {
@@ -282,14 +282,14 @@ window.MG = window.MG || {};
       target: 'thm.binunion',
       title: '配对公理 + 并集公理 ⇒ 二元并存在',
       proof: [
-        '任给 a、b。',
+        '任给 $a$、$b$。',
         '',
         '1. 由配对公理，{ a, b } 是集合。',
-        '2. 由并集公理，⋃{ a, b } 是集合，且',
+        '2. 由并集公理，$\\bigcup \\{ a, b \\}$ 是集合，且',
         '',
         '$$x \\in \\bigcup\\{ a, b \\} \\iff \\exists Y ( Y \\in \\{ a, b \\} \\wedge  x \\in Y ) \\iff ( x \\in a \\vee  x \\in b )$$',
         '',
-        '取 A = ⋃{ a, b } 即为所求。∎'
+        '取 $A = \\bigcup \\{ a, b \\}$ 即为所求。∎'
       ].join('\n')
     },
     {
@@ -299,17 +299,17 @@ window.MG = window.MG || {};
       target: 'thm.product',
       title: '幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在',
       proof: [
-        '任给 A、B。',
+        '任给 $A$、$B$。',
         '',
-        '1. 由配对公理与并集公理，A ∪ B 是集合。',
+        '1. 由配对公理与并集公理，$A \\cup B$ 是集合。',
         '',
-        '2. 对任意 a ∈ A、b ∈ B，Kuratowski 有序对 (a, b) = {{a}, {a, b}}。其中 {a} ⊆ A ∪ B，{a, b} ⊆ A ∪ B，所以 {a}, {a, b} ∈ 𝒫(A ∪ B)，进而 (a, b) ∈ 𝒫(𝒫(A ∪ B))。',
+        '2. 对任意 $a \\in A$、$b \\in B$，Kuratowski 有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$。其中 $\\{a\\} \\subseteq A \\cup B$，$\\{a, b\\} \\subseteq A \\cup B$，所以 $\\{a\\}, \\{a, b\\} \\in \\mathcal{P}(A \\cup B)$，进而 $(a, b) \\in \\mathcal{P}(\\mathcal{P}(A \\cup B))$。',
         '',
-        '3. 由幂集公理，𝒫(𝒫(A ∪ B)) 是集合。用分离公理模式取',
+        '3. 由幂集公理，$\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 是集合。用分离公理模式取',
         '',
         '$$C = \\{ z \\in \\mathcal{P}(\\mathcal{P}(A \\cup B)) : \\exists a \\in A, \\exists b \\in B, z = (a, b) \\}$$',
         '',
-        '则 C 恰是 A × B：一方面每个 (a, b) 都在 𝒫(𝒫(A ∪ B)) 中，另一方面 z 是不在 A、B 中任意点处取到的有序对时不会被选进来。∎'
+        '则 $C$ 恰是 $A \\times B$：一方面每个 (a, b) 都在 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 中，另一方面 $z$ 是不在 $A$、$B$ 中任意点处取到的有序对时不会被选进来。∎'
       ].join('\n'),
       note: '这个证明展示了一个典型套路：先用幂集「造一个足够大的容器」，再用分离公理模式「筛出真正想要的东西」。'
     }

@@ -95,7 +95,7 @@ window.MG = window.MG || {};
         '',
         '两边积分即得 $\\|fg\\|_1 \\le \\frac{1}\\{p\\} + \\frac{1}\\{q\\} = 1$。一般情形把 $f, g$ 各自归一化。',
         '⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。',
-        '$p = 1$ 时共轭指数是 $q = \\infty$，此时 $\\|fg\\|_1 \\le \\|f\\|_1 \\|g\\|_\\infty$（见 L^∞ 那一节）。'
+        '$p = 1$ 时共轭指数是 $q = \\infty$，此时 $\\|fg\\|_1 \\le \\|f\\|_1 \\|g\\|_\\infty$（见 $L^\\infty$ 那一节）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 6.2']
     },
@@ -186,7 +186,7 @@ window.MG = window.MG || {};
       label: '本性上界与 L^∞',
       title: '本性上界 $\\|f\\|_\\infty$ 与空间 $L^\\infty$',
       regions: ['analysis'],
-      tags: ['定义', 'L∞', '本性上界'],
+      tags: ['定义', '$L\\infty$', '本性上界'],
       statement: [
         '定义',
         '',
@@ -211,7 +211,7 @@ window.MG = window.MG || {};
       label: 'L^∞ 的性质',
       title: '定理：$L^\\infty$ 的五条基本性质',
       regions: ['analysis'],
-      tags: ['定理', 'L∞', 'Banach', '一致收敛'],
+      tags: ['定理', '$L\\infty$', 'Banach', '一致收敛'],
       statement: [
         '**(a)** $\\|fg\\|_\\infty \\le \\|f\\|_\\infty \\|g\\|_\\infty$。若 $f \\in L^1$、$g \\in L^\\infty$，则',
         '',
@@ -226,7 +226,7 @@ window.MG = window.MG || {};
         '**(e)** 简单函数在 $L^\\infty$ 中**稠密**。'
       ].join('\n'),
       notes: [
-        '⚠ (c) 值得注意：$L^\\infty$ 范数收敛 = **「丢掉一个零集之后一致收敛」** —— 这是 $L^\\infty$ 独有的、比其他 $L^p$ 强得多的性质。',
+        '⚠ (c) 值得注意：$L^\\infty$ 范数收敛 $=$ **「丢掉一个零集之后一致收敛」** —— 这是 $L^\\infty$ 独有的、比其他 $L^p$ 强得多的性质。',
         '⚠ (e) 与「紧支简单函数在 $L^p$ 稠密」形成对照：$L^\\infty$ 里简单函数够稠密，但**紧支**的就不够（因为 $L^\\infty$ 不看测度大小，只看逐点大小）。',
         '笔记里给了一句很实用的直觉 ——「**$L^p$ 怎么样失败？**」：',
         '',
@@ -352,8 +352,8 @@ window.MG = window.MG || {};
         '⭐ **与 $\\ell^p$ 的方向正好相反**（那里是 $p$ 越大空间越小，这里是越小越大）。',
         '记忆口诀：',
         '',
-        '- **测度有限** → 只有「爆破」要防 → 指数**越小**空间**越大**：$L^1 \\supseteq L^2 \\supseteq \\cdots \\supseteq L^\\infty$；',
-        '- **计数测度** → 只有「衰减」要防 → 指数**越大**空间**越小**：$\\ell^1 \\subseteq \\ell^2 \\subseteq \\cdots \\subseteq \\ell^\\infty$。'
+        '- **测度有限** $\\to$ 只有「爆破」要防 $\\to$ 指数**越小**空间**越大**：$L^1 \\supseteq L^2 \\supseteq \\cdots \\supseteq L^\\infty$；',
+        '- **计数测度** $\\to$ 只有「衰减」要防 $\\to$ 指数**越大**空间**越小**：$\\ell^1 \\subseteq \\ell^2 \\subseteq \\cdots \\subseteq \\ell^\\infty$。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §6.1']
     },
@@ -454,9 +454,9 @@ window.MG = window.MG || {};
         '',
         '$$M_g(g) := \\sup \\left\\{ \\, \\left| \\int fg \\right| : f \\in \\Sigma,\\ \\|f\\|_p = 1 \\,\\right\\}$$',
         '',
-        '（$\\Sigma$ = 有限支集简单函数全体。）若 $M_g(g) < \\infty$，且',
+        '（$\\Sigma$ $=$ 有限支集简单函数全体。）若 $M_g(g) < \\infty$，且',
         '',
-        '- $\\{x : g(x) \\ne 0\\}$ 是 **σ-有限** 的，**或**',
+        '- $\\{x : g(x) \\ne 0\\}$ 是 **$\\sigma$有限** 的，**或**',
         '- $\\mu$ 是**半有限**的，',
         '',
         '则 $g \\in L^q$，且 $M_g(g) = \\|g\\|_q$。'
@@ -464,7 +464,7 @@ window.MG = window.MG || {};
       notes: [
         '这条是下一个大定理（$(L^p)^* \\cong L^q$）的技术准备：它说「泛函有界」这件事本身就已经把 $g$ 逼进了 $L^q$。',
         '证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\\int fg| \\le M_g(g)$；Step 2 处理 $q < \\infty$；Step 3 处理 $q = \\infty$。',
-        '⚠ 两个前提条件（σ-有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。'
+        '⚠ 两个前提条件（$\\sigma$有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 6.14']
     },
@@ -490,7 +490,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ 这是 $L^p$ 理论的高潮：**$L^p$ 上的每一个连续线性泛函，都只是「乘一个 $L^q$ 函数再积分」**。',
-        '$p = 1$、$\\mu$ σ-有限时结论同样成立（$(L^1)^* \\cong L^\\infty$）；',
+        '$p = 1$、$\\mu$ $\\sigma$有限时结论同样成立（$(L^1)^* \\cong L^\\infty$）；',
         '⚠ 但 $p = \\infty$ 时**不成立**：$(L^\\infty)^*$ 严格大于 $L^1$（存在不是由 $L^1$ 函数给出的有界线性泛函，比如在 $C[0,1]$ 上调 Hahn–Banach 得到的那些）。',
         '证明思路（见右侧箭头）：先把 $\\Phi$ 变成一个复测度（$\\nu(E) := \\Phi(\\chi_E)$），再用 Radon–Nikodym 把它写成 $\\int \\cdot \\, g \\, d\\mu$，最后验证 $g \\in L^q$。'
       ].join('\n\n'),
@@ -611,7 +611,7 @@ window.MG = window.MG || {};
         '',
         '即 $s_n \\to F$ 于 $L^p$。故绝对收敛级数都收敛，$L^p$ 完备。∎',
         '',
-        '> ⭐ 这一段是「用逐点收敛的定理（MCT / DCT）去证范数收敛」的范例：控制函数 $G$ 就是关键桥梁。'
+        '$>$ ⭐ 这一段是「用逐点收敛的定理（MCT / DCT）去证范数收敛」的范例：控制函数 $G$ 就是关键桥梁。'
       ].join('\n')
     },
 
@@ -628,7 +628,7 @@ window.MG = window.MG || {};
         '',
         '$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M_g(g)$$',
         '',
-        '**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ σ-有限（$\\mu$ 半有限时这一点自动成立）。',
+        '**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ $\\sigma$有限（$\\mu$ 半有限时这一点自动成立）。',
         '',
         '先说明**必须**有 $\\mu(\\{|g| > \\varepsilon\\}) < \\infty$（对一切 $\\varepsilon > 0$）：否则设 $E_\\varepsilon = \\{|g| > \\varepsilon\\}$ 测度无穷，对任意 $C$ 取 $B \\subseteq E_\\varepsilon$ 使 $C < \\mu(B) < \\infty$，令',
         '',
@@ -646,7 +646,7 @@ window.MG = window.MG || {};
         '',
         '（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。',
         '',
-        '**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 σ-有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；反方向由 Hölder。∎'
+        '**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；反方向由 Hölder。∎'
       ].join('\n')
     },
 
@@ -678,22 +678,22 @@ window.MG = window.MG || {};
         '',
         '**④ 把 $g$ 提升到 $L^q$。** 由 $\\left| \\int fg \\right| = |\\Phi(f)| \\le \\|\\Phi\\| \\, \\|f\\|_p$，有界泛函那条命题给出 $g \\in L^q$ 且 $\\|g\\|_q \\le \\|\\Phi\\|$。再由稠密性（简单函数在 $L^p$ 稠密、$\\Phi$ 连续）得 $\\Phi(f) = \\int fg$ 对**一切** $f \\in L^p$ 成立。',
         '',
-        '**Step 2：$\\mu$ σ-有限。** 取 $\\{E_n\\} \\uparrow$、$0 < \\mu(E_n) < \\infty$、$X = \\bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \\in L^q(E_n)$，且',
+        '**Step 2：$\\mu$ $\\sigma$有限。** 取 $\\{E_n\\} \\uparrow$、$0 < \\mu(E_n) < \\infty$、$X = \\bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \\in L^q(E_n)$，且',
         '',
         '$$\\|g_n\\|_q \\le \\left\\| \\Phi|_{L^p(E_n)} \\right\\| \\le \\|\\Phi\\|$$',
         '唯一性（a.e.）给出 $g_n = g_m$ a.e. 于 $E_n$（$n < m$），所以它们拼成一个 a.e. 良定义的 $g$。由 **MCT**，$\\|g\\|_q = \\lim_n \\|g_n\\|_q \\le \\|\\Phi\\|$，故 $g \\in L^q$；而对 $f \\in L^p$，由 **DCT** $f\\chi_{E_n} \\to f$ 于 $L^p$，于是 $\\Phi(f) = \\lim_n \\Phi(f\\chi_{E_n}) = \\lim_n \\int_{E_n} fg = \\int fg$。',
         '',
-        '**Step 3：$\\mu$ 任意（此时 $p > 1$，故 $q < \\infty$）。** 对每个 σ-有限集 $E \\subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \\in L^q(E)$ 使 $\\Phi(f) = \\int f g_E$ 对一切 $f \\in L^p(E)$ 成立，且 $\\|g_E\\|_q \\le \\|\\Phi\\|$。若 $F \\supseteq E$ 也 σ-有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\\|g_F\\|_q \\ge \\|g_E\\|_q$。令',
+        '**Step 3：$\\mu$ 任意（此时 $p > 1$，故 $q < \\infty$）。** 对每个 $\\sigma$有限集 $E \\subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \\in L^q(E)$ 使 $\\Phi(f) = \\int f g_E$ 对一切 $f \\in L^p(E)$ 成立，且 $\\|g_E\\|_q \\le \\|\\Phi\\|$。若 $F \\supseteq E$ 也 $\\sigma$有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\\|g_F\\|_q \\ge \\|g_E\\|_q$。令',
         '',
         '$$M := \\sup \\{\\, \\|g_E\\|_q : E \\text{ 是 }\\sigma\\text{-有限集} \\,\\} \\le \\|\\Phi\\|$$',
         '',
-        '取 $\\{E_n\\}$ 使 $\\|g_{E_n}\\|_q \\to M$，令 $F = \\bigcup_n E_n$（仍 σ-有限）。则 $\\|g_F\\|_q \\ge \\|g_{E_n}\\|_q$ 对一切 $n$ 成立，故 $\\|g_F\\|_q = M$。',
+        '取 $\\{E_n\\}$ 使 $\\|g_{E_n}\\|_q \\to M$，令 $F = \\bigcup_n E_n$（仍 $\\sigma$有限）。则 $\\|g_F\\|_q \\ge \\|g_{E_n}\\|_q$ 对一切 $n$ 成立，故 $\\|g_F\\|_q = M$。',
         '',
-        '**$g_F$ 已经是我们要的那个 $g$**：设 $A \\supseteq F$ σ-有限，则',
+        '**$g_F$ 已经是我们要的那个 $g$**：设 $A \\supseteq F$ $\\sigma$有限，则',
         '',
         '$$\\int |g_F|^q + \\int |g_{A \\setminus F}|^q = \\int |g_A|^q \\le M^q = \\int |g_F|^q$$',
         '',
-        '故 $g_{A \\setminus F} = 0$，即 $g_A = g_F$ a.e.。而对 $f \\in L^p$，集合 $A := F \\cup \\{f \\ne 0\\}$ 是 σ-有限的，于是 $\\Phi(f) = \\int f g_A = \\int f g_F$。取 $g = g_F$ 即可。∎'
+        '故 $g_{A \\setminus F} = 0$，即 $g_A = g_F$ a.e.。而对 $f \\in L^p$，集合 $A := F \\cup \\{f \\ne 0\\}$ 是 $\\sigma$有限的，于是 $\\Phi(f) = \\int f g_A = \\int f g_F$。取 $g = g_F$ 即可。∎'
       ].join('\n'),
       note: '⭐ Step 1 的核心思想：**把 $L^p$ 上的泛函限制在「特征函数」上，就得到一个测度**，再用 Radon–Nikodym 把测度变成函数。'
     },
@@ -711,7 +711,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.conjugate-exponents',
       usedBy: 'thm.holder',
-      note: '陈述里那个 1/p + 1/q = 1 就是共轭指数的定义。'
+      note: '陈述里那个 $1/p + 1/q = 1$ 就是共轭指数的定义。'
     },
     {
       id: 'def-link.lp-minkowski',
@@ -732,42 +732,42 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.essential-sup',
       usedBy: 'thm.linf-properties',
-      note: '整条定理都是在处理 ‖·‖_∞。'
+      note: '整条定理都是在处理 $‖\\cdot ‖_\\infty$。'
     },
     {
       id: 'def-link.duality-holder',
       kind: 'definition',
       definition: 'def.duality-map',
       usedBy: 'prop.duality-isometry',
-      note: '命题算的就是 φ_g 的算子范数。'
+      note: '命题算的就是 $\\varphi _g$ 的算子范数。'
     },
     {
       id: 'def-link.conjugate-duality',
       kind: 'definition',
       definition: 'def.conjugate-exponents',
       usedBy: 'prop.duality-isometry',
-      note: '前提是 p、q 共轭。'
+      note: '前提是 $p$、$q$ 共轭。'
     },
     {
       id: 'def-link.duality-bounded',
       kind: 'definition',
       definition: 'def.duality-map',
       usedBy: 'prop.bounded-functional-gives-lq',
-      note: '这条命题说的正是「配对 ∫fg 有界」把 g 逼进 L^q。'
+      note: '这条命题说的正是「配对 $\\int fg$ 有界」把 $g$ 逼进 L^q。'
     },
     {
       id: 'def-link.conjugate-riesz',
       kind: 'definition',
       definition: 'def.conjugate-exponents',
       usedBy: 'thm.riesz-representation-lp',
-      note: '结论那句话里「q 是共轭指数」。'
+      note: '结论那句话里「$q$ 是共轭指数」。'
     },
     {
       id: 'def-link.duality-riesz',
       kind: 'definition',
       definition: 'def.duality-map',
       usedBy: 'thm.riesz-representation-lp',
-      note: '定理说 g ↦ φ_g 是等距同构。'
+      note: '定理说 $g \\mapsto \\varphi _g$ 是等距同构。'
     },
     {
       id: 'def-link.lp-reflexive',

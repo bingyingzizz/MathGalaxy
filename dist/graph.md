@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:23:23.974Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:39:57.272Z
 > 6 星系 / 13 星团 / 182 节点 / 220 连线（强边 216，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
@@ -24,10 +24,10 @@
 
 $$\forall A \forall B [ \forall x ( x \in A \leftrightarrow  x \in B ) \to A = B ]$$
 
-反方向（A = B → 元素完全相同）由等词逻辑自动成立，所以常写成 ↔。
-这条公理保证了「用条件刻画集合」时结果是唯一的，因此 { x ∈ A : φ(x) } 这种写法不会产生歧义。
+反方向（$A = B \to$ 元素完全相同）由等词逻辑自动成立，所以常写成 $\leftrightarrow$。
+这条公理保证了「用条件刻画集合」时结果是唯一的，因此 $\{ x \in A : \varphi (x) \}$ 这种写法不会产生歧义。
 
-它是「集合」这个名字的全部含义：一个集合 = 一个外延（一堆元素），与「怎么描述它」无关。
+它是「集合」这个名字的全部含义：一个集合 $=$ 一个外延（一堆元素），与「怎么描述它」无关。
 
 去掉它，就可以有元素完全相同却彼此不同的对象（例如带原子 ur-element 的集合论）。
 
@@ -36,15 +36,15 @@ $$\forall A \forall B [ \forall x ( x \in A \leftrightarrow  x \in B ) \to A = B
 #### 分离公理模式　`ax.sep`
 *公理*　分离公理模式（Axiom Schema of Separation）
 
-对每个公式 φ(x, p)（其中 B 不出现），下面是一条公理：
+对每个公式 $\varphi (x, p)$（其中 $B$ 不出现），下面是一条公理：
 
 $$\forall p \forall A \exists B \forall x [ x \in B \leftrightarrow  ( x \in A \wedge  \varphi(x, p) ) ]$$
 
-由外延公理，这样的 B 唯一，记作 B = { x ∈ A : φ(x, p) }。俗称「子集公理」。
+由外延公理，这样的 $B$ 唯一，记作 $B = \{ x \in A : \varphi (x, p) \}$。俗称「子集公理」。
 
-它是**公理模式**而不是单条公理：每取一个公式 φ 就得到一条公理，ZFC 因此有无穷多条公理。
+它是**公理模式**而不是单条公理：每取一个公式 $\varphi$ 就得到一条公理，ZFC 因此有无穷多条公理。
 
-限制 `x ∈ A` 是关键——不能写成 { x : x ∉ x }，否则就是罗素悖论。
+限制 `$x \in A$` 是关键——不能写成 $\{ x : x \notin x \}$，否则就是罗素悖论。
 
 参考：Kunen, Set Theory, I.4
 
@@ -55,9 +55,9 @@ $$\forall p \forall A \exists B \forall x [ x \in B \leftrightarrow  ( x \in A \
 
 $$\forall a \forall b \exists A \forall x [ x \in A \leftrightarrow  ( x = a \vee  x = b ) ]$$
 
-由外延公理 A 唯一，记作 { a, b }（无序对）。取 a = b 即得单点集 { a }。
+由外延公理 $A$ 唯一，记作 { a, b }（无序对）。取 $a = b$ 即得单点集 { a }。
 
-有了配对公理，「{a, b}」才是集合；它也是构造有序对 (a,b) = {{a},{a,b}} 的第一步。
+有了配对公理，「{a, b}」才是集合；它也是构造有序对 $(a,b) = \{\{a\},\{a,b\}\}$ 的第一步。
 
 参考：Kunen, Set Theory, I.3
 
@@ -68,9 +68,9 @@ $$\forall a \forall b \exists A \forall x [ x \in A \leftrightarrow  ( x = a \ve
 
 $$\forall F \exists A \forall x [ x \in A \leftrightarrow  \exists Y ( Y \in F \wedge  x \in Y ) ]$$
 
-记作 ⋃F。配合配对公理可得二元并 a ∪ b = ⋃{ a, b }。
+记作 $\bigcup F$。配合配对公理可得二元并 $a \cup b = \bigcup \{ a, b \}$。
 
-注意 ⋃F 是「F 中元素的元素」，不是 F 自身；⋃{a,b} = a ∪ b 正是我们要的二元并。
+注意 $\bigcup F$ 是「$F$ 中元素的元素」，不是 $F$ 自身；$\bigcup \{a,b\} = a \cup b$ 正是我们要的二元并。
 
 参考：Kunen, Set Theory, I.3
 
@@ -81,53 +81,53 @@ $$\forall F \exists A \forall x [ x \in A \leftrightarrow  \exists Y ( Y \in F \
 
 $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 
-记作 𝒫(A)（或 P(A)）。Cantor 定理说 |𝒫(A)| > |A|，所以幂集是「造更大的集合」的基本手段。
+记作 $\mathcal{P}(A)$（或 P(A)）。Cantor 定理说 $|\mathcal{P}(A)| > |A|$，所以幂集是「造更大的集合」的基本手段。
 
-它是笛卡尔积 A × B 存在性的关键：{{a},{a,b}} 落在 𝒫(𝒫(A ∪ B)) 里。
+它是笛卡尔积 $A \times B$ 存在性的关键：{{a},{a,b}} 落在 $\mathcal{P}(\mathcal{P}(A \cup B))$ 里。
 
 参考：Kunen, Set Theory, I.3
 
 #### 无穷公理　`ax.inf`
 *公理*　无穷公理（Axiom of Infinity）
 
-存在一个「归纳集」——含有 ∅ 且对后继封闭的集合：
+存在一个「归纳集」——含有 $\emptyset$ 且对后继封闭的集合：
 
 $$\exists I [ \emptyset \in I \wedge  \forall x ( x \in I \to x \cup \{ x \} \in I ) ]$$
 
-其中 ∅ 由分离公理模式得到，x ∪ {x} 由配对公理与并集公理得到。
-这条公理宣告了无穷集合的存在，是从中构造自然数集 ω 的唯一来源。
+其中 $\emptyset$ 由分离公理模式得到，$x \cup \{x\}$ 由配对公理与并集公理得到。
+这条公理宣告了无穷集合的存在，是从中构造自然数集 $\omega$ 的唯一来源。
 
-没有它，V_ω 就是一个模型，所有集合都有限，算术只能在有界范围内进行。
+没有它，$V_\omega$ 就是一个模型，所有集合都有限，算术只能在有界范围内进行。
 
 参考：Kunen, Set Theory, I.5
 
 #### 替换公理模式　`ax.repl`
 *公理*　替换公理模式（Axiom Schema of Replacement）
 
-若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 φ(x, y, p)（其中 B 不出现）：
+若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 $\varphi (x, y, p)$（其中 $B$ 不出现）：
 
 $$\forall p [ \forall x\forall y\forall z ( \varphi(x,y,p) \wedge  \varphi(x,z,p) \to y = z ) \to \forall A \exists B \forall y ( y \in B \leftrightarrow  \exists x \in A, \varphi(x,y,p) ) ]$$
 
-它保证了「替换」不会跑出集合论宇宙：像 B 也是集合。
+它保证了「替换」不会跑出集合论宇宙：像 $B$ 也是集合。
 
-替换公理模式是 Z 与 ZF 的分水岭。由它（加上任取一个集合 A）可以推出分离公理模式。
+替换公理模式是 $Z$ 与 ZF 的分水岭。由它（加上任取一个集合 $A$）可以推出分离公理模式。
 
 参考：Kunen, Set Theory, I.6
 
 #### 正则公理　`ax.found`
 *公理*　正则公理 / 基础公理（Axiom of Foundation）
 
-每个非空集合都有「∈-极小元」：
+每个非空集合都有「$\in$极小元」：
 
 $$\forall A [ A \ne \emptyset \to \exists x ( x \in A \wedge  x \cap A = \emptyset ) ]$$
 
-等价说法：∈ 是良基关系，不存在无穷递减链
+等价说法：$\in$ 是良基关系，不存在无穷递减链
 
 $$x_0 \ni  x_1 \ni  x_2 \ni  \cdots$$
 
-它排除了 A ∈ A 这类循环集合，也排除了「集合的无穷下降」。
+它排除了 $A \in A$ 这类循环集合，也排除了「集合的无穷下降」。
 
-正则公理等价于「集合论宇宙 V 是累积层级 ⋃α Vα」，这条公理让 ∈-归纳法成为合法的证明方法。
+正则公理等价于「集合论宇宙 $V$ 是累积层级 $\bigcup \alpha V\alpha$」，这条公理让 $\in$归纳法成为合法的证明方法。
 
 参考：Kunen, Set Theory, I.9
 
@@ -136,24 +136,24 @@ $$x_0 \ni  x_1 \ni  x_2 \ni  \cdots$$
 
 $$\forall A ( A \notin A )$$
 
-更一般地，正则公理排除了任何有限的 ∈-循环：
+更一般地，正则公理排除了任何有限的 $\in$循环：
 
 $$A_0 \ni  A_1 \ni  \cdots \ni  A_n = A_0$$
 
-这条定理说明罗素悖论里的「集合 R = { x : x ∉ x }」不可能存在——否则 R ∈ R 与 R ∉ R 同时成立。
+这条定理说明罗素悖论里的「集合 $R = \{ x : x \notin x \}$」不可能存在——否则 $R \in R$ 与 $R \notin R$ 同时成立。
 
 参考：Kunen, Set Theory, I.9
 
 #### 自然数集存在　`thm.omega`
 *定理*　自然数集 ω 存在
 
-存在**最小归纳集** ω：它含有 ∅，对 x ↦ x ∪ {x} 封闭，且含于一切归纳集之中：
+存在**最小归纳集** $\omega$：它含有 $\emptyset$，对 $x \mapsto x \cup \{x\}$ 封闭，且含于一切归纳集之中：
 
 $$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}, \ldots  \}$$
 
-把 ∈ 读作 <，⟨ω, ∈⟩ 就是自然数系 ⟨ℕ, <⟩。
+把 $\in$ 读作 $<$，$\langle \omega , \in \rangle$ 就是自然数系 $\langle \mathbb{N}, <\rangle$。
 
-ω 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。
+$\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。
 
 参考：Kunen, Set Theory, I.5
 
@@ -163,18 +163,18 @@ $$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyse
 #### 子集　`def.subset`
 *定义*　子集 / 真子集（Subset）
 
-设 A、B 是集合。
+设 $A$、$B$ 是集合。
 
-- **A 是 B 的子集**（记 A ⊆ B）：$$\forall x ( x \in A \to x \in B )$$
-- **A 是 B 的真子集**（记 A ⊊ B）：A ⊆ B 且 A ≠ B。
+- **$A$ 是 $B$ 的子集**（记 $A \subseteq B$）：$$\forall x ( x \in A \to x \in B )$$
+- **$A$ 是 $B$ 的真子集**（记 $A \subsetneq B$）：$A \subseteq B$ 且 $A \ne B$。
 
-基本性质：⊆ 自反、传递；并且由外延公理，
+基本性质：$\subseteq$ 自反、传递；并且由外延公理，
 
 $$A = B \iff A \subseteq B \wedge  B \subseteq A$$
 
 这是证明两个集合相等最常用的套路：**两边互包**。
 
-∅ ⊆ A 对一切 A 成立（空泛真）。
+$\emptyset \subseteq A$ 对一切 $A$ 成立（空泛真）。
 
 参考：Kunen, Set Theory, I.2
 
@@ -191,7 +191,7 @@ $$(a, b) := \{ \{a\}, \{a, b\} \}$$
 
 $$(a, b) = (c, d) \iff a = c \wedge  b = d$$
 
-n 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。
+$n$ 元组递归定义为 $(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$。
 
 用集合「编码」有序对之后，关系、函数、序型等等才都能在 ZFC 内部说清楚。
 
@@ -204,9 +204,9 @@ n 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。
 
 $$\exists B \forall x ( x \notin B )$$
 
-由外延公理，这样的 B 唯一，记作 ∅。
+由外延公理，这样的 $B$ 唯一，记作 $\emptyset$。
 
-∅ 是 ∈-关系的最小元，也是 ⊆-关系的最小元：∅ ⊆ A 对一切 A 成立。
+$\emptyset$ 是 $\in$关系的最小元，也是 $\subseteq$关系的最小元：$\emptyset \subseteq A$ 对一切 $A$ 成立。
 
 参考：Kunen, Set Theory, I.4
 
@@ -217,9 +217,9 @@ $$\exists B \forall x ( x \notin B )$$
 
 $$\forall a \forall b \exists A \forall x [ x \in A \leftrightarrow  ( x \in a \vee  x \in b ) ]$$
 
-记作 a ∪ b。
+记作 $a \cup b$。
 
-a ∪ b 是包含 a 与 b 的最小集合（⊆-意义下）。
+$a \cup b$ 是包含 $a$ 与 $b$ 的最小集合（$\subseteq$意义下）。
 
 参考：Kunen, Set Theory, I.3
 
@@ -230,9 +230,9 @@ a ∪ b 是包含 a 与 b 的最小集合（⊆-意义下）。
 
 $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \in A, \exists b \in B, z = (a, b) ]$$
 
-记作 A × B = { (a, b) : a ∈ A, b ∈ B }。
+记作 $A \times B = \{ (a, b) : a \in A, b \in B \}$。
 
-它是「关系」「函数」得以定义为集合的前提：没有 A × B，就没有 R ⊆ A × B 这个说法。
+它是「关系」「函数」得以定义为集合的前提：没有 $A \times B$，就没有 $R \subseteq A \times B$ 这个说法。
 
 参考：Kunen, Set Theory, I.5
 
@@ -246,11 +246,11 @@ $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \
 
 $$\forall F [ ( \forall X \in F, X \ne \emptyset ) \to \exists f ( f\text{ 是函数} \wedge  dom f = F \wedge  \forall X \in F, f(X) \in X ) ]$$
 
-另一种常见形式（两两不交形式）：若 F 是两两不交的非空集合族，则存在集合 C，使对每个 X ∈ F 都有 |C ∩ X| = 1。
+另一种常见形式（两两不交形式）：若 $F$ 是两两不交的非空集合族，则存在集合 $C$，使对每个 $X \in F$ 都有 $|C \cap X| = 1$。
 
-选择函数 f 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。
+选择函数 $f$ 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。
 
-AC 与 ZF 独立：Gödel (1938) 证明 Con(ZF) → Con(ZF + AC)，Cohen (1963) 证明 Con(ZF) → Con(ZF + ¬AC)。
+AC 与 ZF 独立：Gödel (1938) 证明 $Con(ZF) \to Con(ZF + AC)$，Cohen (1963) 证明 $Con(ZF) \to Con(ZF + \neg AC)$。
 
 它是本星系里大量命题的枢纽——佐恩引理、良序定理、Hausdorff 极大原理、Tukey 引理都与它等价。
 
@@ -261,16 +261,16 @@ AC 与 ZF 独立：Gödel (1938) 证明 Con(ZF) → Con(ZF + AC)，Cohen (1963) 
 #### 关系与函数　`def.rel`
 *定义*　关系 / 函数（Relation & Function）
 
-设 A、B 是集合。
+设 $A$、$B$ 是集合。
 
-- **关系** R 由有序对组成；R ⊆ A × B 表示 R 是 A 到 B 的关系。
-- **定义域** dom R = { a : ∃b (a, b) ∈ R }；**值域** ran R = { b : ∃a (a, b) ∈ R }。
-- **逆** R⁻¹ = { (b, a) : (a, b) ∈ R }。
-- **函数** f : A → B 是满足下式的关系 f ⊆ A × B：
+- **关系** $R$ 由有序对组成；$R \subseteq A \times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。
+- **定义域** $\operatorname{dom} R = \{ a : \exists b (a, b) \in R \}$；**值域** $\operatorname{ran} R = \{ b : \exists a (a, b) \in R \}$。
+- **逆** $R^{-1} = \{ (b, a) : (a, b) \in R \}$。
+- **函数** $f : A \to B$ 是满足下式的关系 $f \subseteq A \times B$：
 
 $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 
-唯一性使 f(a) = b 这个记号不会歧义；此时 dom f = A。
+唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\operatorname{dom} f = A$。
 
 在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。
 
@@ -279,35 +279,35 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 #### 选择函数　`def.choicefn`
 *定义*　选择函数（Choice Function）
 
-设 F 是一个集合族，且 ∅ ∉ F。
+设 $F$ 是一个集合族，且 $\emptyset \notin F$。
 
-f 是 F 的**选择函数**，当且仅当
+$f$ 是 $F$ 的**选择函数**，当且仅当
 
-- f 是函数，dom f = F；
-- ∀X ∈ F, f(X) ∈ X。
+$f$ 是函数，$\operatorname{dom} f = F$；
+$\forall X \in F, f(X) \in X$。
 
-即：f 从 F 的每一个成员里各挑出一个元素。
+即：$f$ 从 $F$ 的每一个成员里各挑出一个元素。
 
-于是选择公理可以简洁地写成：**每个满足 ∅ ∉ F 的集合族 F 都有选择函数**。
+于是选择公理可以简洁地写成：**每个满足 $\emptyset \notin F$ 的集合族 $F$ 都有选择函数**。
 
-若 F 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。
+若 $F$ 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。
 
 参考：Jech, The Axiom of Choice
 
 #### Hartogs 定理　`thm.hartogs`
 *定理*　Hartogs 定理（Hartogs' Theorem, 1915）—— ZF 中即可证明
 
-对任意集合 X，都存在一个**不能单射进 X** 的序数；取其中最小的那个，记作 ℵ(X)，叫做 X 的 **Hartogs 数**（Hartogs 序数）。
+对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。
 
 $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 且} \alpha = \aleph(X)\text{ 时}: \forall\beta < \alpha, \beta \hookrightarrow  X\text{ 成立}$$
 
-⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「AC ⟹ 良序定理」「AC ⟹ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。
+⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \implies$ 良序定理」「$AC \implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。
 
-**证明思路**（全在 ZF 内）：设 𝒲 为 X 的各个子集上的良序关系全体 —— 它是集合，因为 𝒲 ⊆ 𝒫(X × X)。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 A。A 在 ∈ 下是传递的良序集，于是 **A 本身就是一个序数 α**。若 α 能单射进 X，把这个单射搬过去，就得到 X 某个子集上的一个良序、其序型恰为 α，即 α ∈ A = α —— 与序数不能自属矛盾。故 α 不能单射进 X。
+**证明思路**（全在 ZF 内）：设 𝒲 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $𝒲 \subseteq \mathcal{P}(X \times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\alpha$**。若 $\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\alpha$，即 $\alpha \in A = \alpha$ —— 与序数不能自属矛盾。故 $\alpha$ 不能单射进 $X$。
 
-**它怎样让递归「停」**：超限递归每走一步就吐出 X 的一个新元素。若一直走下去，就会得到 ℵ(X) → X 的单射，与 ℵ(X) 的定义直接冲突。所以递归必在某个 α < ℵ(X) 处停止。
+**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\aleph (X) \to X$ 的单射，与 $\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\alpha < \aleph (X)$ 处停止。
 
-**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 X = 全体序数即可 —— 每个序数都通过恒等映射单射进它。
+**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。
 
 参考：Hartogs (1915)；Kunen, Set Theory, I.11；Jech, The Axiom of Choice, Ch. 2
 
@@ -320,34 +320,34 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 #### 偏序集　`def.poset`
 *定义*　偏序集 / 全序集（Partially Ordered Set）
 
-设 ⪯ 是集合 A 上的二元关系。⪯ 是 **A 上的偏序**，当且仅当：
+设 $\preceq$ 是集合 $A$ 上的二元关系。$\preceq$ 是 **$A$ 上的偏序**，当且仅当：
 
-- **自反**：∀x ∈ A, x ⪯ x；
-- **反对称**：∀x, y ∈ A ( x ⪯ y ∧ y ⪯ x → x = y )；
-- **传递**：∀x, y, z ∈ A ( x ⪯ y ∧ y ⪯ z → x ⪯ z )。
+- **自反**：$\forall x \in A, x \preceq x$；
+- **反对称**：$\forall x, y \in A ( x \preceq y \wedge y \preceq x \to x = y )$；
+- **传递**：$\forall x, y, z \in A ( x \preceq y \wedge y \preceq z \to x \preceq z )$。
 
-若还满足 **可比性** ∀x, y ∈ A ( x ⪯ y ∨ y ⪯ x )，则 ⪯ 称为 **A 上的全序**（线性序），(A, ⪯) 称为全序集。
+若还满足 **可比性** $\forall x, y \in A ( x \preceq y \vee y \preceq x )$，则 $\preceq$ 称为 **$A$ 上的全序**（线性序），$(A, \preceq )$ 称为全序集。
 
-称 (A, ⪯) 为**偏序集**。由 ⪯ 定义**严格序**：$$x \prec y :\iff x \preceq y \wedge  x \ne y$$
+称 $(A, \preceq )$ 为**偏序集**。由 $\preceq$ 定义**严格序**：$$x \prec y :\iff x \preceq y \wedge  x \ne y$$
 
-典型例子：⟨𝒫(S), ⊆⟩ 是偏序集但不是全序集；⟨ℝ, ≤⟩ 是全序集。
+典型例子：$\langle \mathcal{P}(S), \subseteq \rangle$ 是偏序集但不是全序集；$\langle \mathbb{R}, \le \rangle$ 是全序集。
 
-反对称性是说：只允许「相等」这一种互相 ≤ 的方式，所以偏序可以看成「≤ 的抽象」。
+反对称性是说：只允许「相等」这一种互相 $\le$ 的方式，所以偏序可以看成「$\le$ 的抽象」。
 
 参考：Kunen, Set Theory, I.11；Davey & Priestley, Introduction to Lattices and Order
 
 #### 链　`def.chain`
 *定义*　链 / 反链（Chain / Antichain）
 
-设 (P, ⪯) 是偏序集，C ⊆ P。
+设 $(P, \preceq )$ 是偏序集，$C \subseteq P$。
 
-**C 是链**（也叫全序子集），当且仅当 C 中任意两个元素都可比：
+**$C$ 是链**（也叫全序子集），当且仅当 $C$ 中任意两个元素都可比：
 
 $$\forall x, y \in C ( x \preceq y \vee  y \preceq x )$$
 
-**C 是反链**，当且仅当 C 中任意两个不同元素都不可比。
+**$C$ 是反链**，当且仅当 $C$ 中任意两个不同元素都不可比。
 
-约定：∅ 与单点集都算链。
+约定：$\emptyset$ 与单点集都算链。
 
 「链」这个词是佐恩引理、Hausdorff 极大原理的中心概念——它们说的都是「链能长到多大」。
 
@@ -356,16 +356,16 @@ $$\forall x, y \in C ( x \preceq y \vee  y \preceq x )$$
 #### 上界与极大元　`def.bound`
 *定义*　上界 / 上确界 / 极大元（Bound & Maximal Element）
 
-设 (P, ⪯) 是偏序集，S ⊆ P，u, m ∈ P。
+设 $(P, \preceq )$ 是偏序集，$S \subseteq P$，$u, m \in P$。
 
-- **u 是 S 的上界**：∀s ∈ S, s ⪯ u。
-- **u 是 S 的上确界**（记 sup S）：u 是上界，且 u ⪯ 每一个上界。
-- **m 是 P 的极大元**：$$\forall x \in P ( m \preceq x \to x = m )$$，即没有比 m 更大的元素。
-- **m 是 P 的最大元**：∀x ∈ P, x ⪯ m，即 m 比所有元素都大。
+- **$u$ 是 $S$ 的上界**：$\forall s \in S, s \preceq u$。
+- **$u$ 是 $S$ 的上确界**（记 sup S）：$u$ 是上界，且 $u \preceq$ 每一个上界。
+- **$m$ 是 $P$ 的极大元**：$$\forall x \in P ( m \preceq x \to x = m )$$，即没有比 $m$ 更大的元素。
+- **$m$ 是 $P$ 的最大元**：$\forall x \in P, x \preceq m$，即 $m$ 比所有元素都大。
 
-⚠ **极大元 ≠ 最大元。**
+⚠ **极大元 $\ne$ 最大元。**
 
-例子：P = { {1}, {2} } 按 ⊆ 排序。两个元素都是极大元（谁也包不住谁），但没有最大元。
+例子：$P = \{ \{1\}, \{2\} \}$ 按 $\subseteq$ 排序。两个元素都是极大元（谁也包不住谁），但没有最大元。
 
 在**全序**集里两者才重合。偏序集里「极大」只要求「上面没有别人」，不要求「下面有所有人」。
 
@@ -376,30 +376,30 @@ $$\forall x, y \in C ( x \preceq y \vee  y \preceq x )$$
 #### 良序集　`def.wellorder`
 *定义*　良序集（Well-Ordered Set）
 
-全序集 (W, ⪯) 是**良序的**，当且仅当 W 的每个非空子集都有最小元：
+全序集 $(W, \preceq )$ 是**良序的**，当且仅当 $W$ 的每个非空子集都有最小元：
 
 $$\forall S \subseteq W ( S \ne \emptyset \to \exists m \in S, \forall s \in S, m \preceq s )$$
 
-等价于：不存在无穷严格递减链 w₀ ≻ w₁ ≻ w₂ ≻ ⋯。
+等价于：不存在无穷严格递减链 $w_{0} \succ w_{1} \succ w_{2} \succ \cdots$。
 
 良序集上可以做**超限归纳**与**超限递归**；每个良序集序同构于唯一的一个序数。
 
-⟨ℕ, ≤⟩ 是良序的；⟨ℤ, ≤⟩、⟨ℝ, ≤⟩ 不是（ℝ 的某些非空子集没有最小元）。
+$\langle \mathbb{N}, \le \rangle$ 是良序的；$\langle \mathbb{Z}, \le \rangle$、$\langle \mathbb{R}, \le \rangle$ 不是（$\mathbb{R}$ 的某些非空子集没有最小元）。
 
 参考：Kunen, Set Theory, I.11
 
 #### 有限特征　`def.finchar`
 *定义*　有限特征族（Family of Finite Character）
 
-集合族 𝒜 具有**有限特征**，当且仅当对任意集合 X：
+集合族 $\mathcal{A}$ 具有**有限特征**，当且仅当对任意集合 $X$：
 
 $$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
 
-也就是说：「局部地看起来像 𝒜 的成员」⟹「整体就是 𝒜 的成员」。
+也就是说：「局部地看起来像 $\mathcal{A}$ 的成员」$\implies$「整体就是 $\mathcal{A}$ 的成员」。
 
 典型例子：
 
-- 偏序集 P 的**链族**（X 是链 ⟺ X 的每个二元子集可比）；
+- 偏序集 $P$ 的**链族**（$X$ 是链 $\iff X$ 的每个二元子集可比）；
 
 - 向量空间的**线性无关子集族**；
 
@@ -421,7 +421,7 @@ $$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
 
 $$\forall X \exists\preceq ( \preceq\text{ 是} X\text{ 上的良序关系} )$$
 
-换句话说：任何集合 X 都与某个序数等势。
+换句话说：任何集合 $X$ 都与某个序数等势。
 
 特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。
 
@@ -436,7 +436,7 @@ Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公�
 #### 佐恩引理　`lem.zorn`
 *引理*　佐恩引理（Zorn's Lemma）
 
-设 (P, ⪯) 是**非空**偏序集。若 P 的每个链在 P 中都有上界，则 P 有**极大元**。
+设 $(P, \preceq )$ 是**非空**偏序集。若 $P$ 的每个链在 $P$ 中都有上界，则 $P$ 有**极大元**。
 
 $$P \ne \emptyset \wedge  ( \forall C \subseteq P, C\text{ 是链} \to \exists u \in P, u\text{ 是} C\text{ 的上界} ) \implies \exists m \in P, m\text{ 是极大元}$$
 
@@ -453,11 +453,11 @@ $$P \ne \emptyset \wedge  ( \forall C \subseteq P, C\text{ 是链} \to \exists u
 #### Hausdorff 极大原理　`thm.hausdorff`
 *定理*　Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）
 
-设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。则存在 P 的**极大链** M 使 C₀ ⊆ M。
+设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则存在 $P$ 的**极大链** $M$ 使 $C_{0} \subseteq M$。
 
-其中「极大链」指在包含关系 ⊆ 下极大的链：若 M ⊆ M′ ⊆ P 且 M′ 也是链，则 M′ = M。
+其中「极大链」指在包含关系 $\subseteq$ 下极大的链：若 $M \subseteq M' \subseteq P$ 且 $M'$ 也是链，则 $M' = M$。
 
-取 C₀ = ∅ 即得：**每个非空偏序集都有极大链。**
+取 $C_{0} = \emptyset$ 即得：**每个非空偏序集都有极大链。**
 
 形式上它比佐恩引理更早（Hausdorff, 1914），并且与佐恩引理等价。
 
@@ -468,13 +468,13 @@ $$P \ne \emptyset \wedge  ( \forall C \subseteq P, C\text{ 是链} \to \exists u
 #### Tukey 引理　`lem.tukey`
 *引理*　Tukey 引理（Tukey's Lemma / Teichmüller–Tukey）
 
-设 𝒜 是**具有有限特征的非空集合族**，则 (𝒜, ⊆) 有极大元。
+设 $\mathcal{A}$ 是**具有有限特征的非空集合族**，则 $(\mathcal{A}, \subseteq )$ 有极大元。
 
-即：存在 A ∈ 𝒜，使得不存在 B ∈ 𝒜 满足 A ⊊ B。
+即：存在 $A \in \mathcal{A}$，使得不存在 $B \in \mathcal{A}$ 满足 $A \subsetneq B$。
 
 Tukey 引理的好处是「免验证」：只要目标族具有有限特征，就可以跳过「每个链都有上界」这一繁琐检查。
 
-例：线性无关集族具有有限特征（X 线性无关 ⟺ X 的每个有限子集线性无关），所以「线性无关集可扩充为极大线性无关集」自动成立。
+例：线性无关集族具有有限特征（$X$ 线性无关 $\iff X$ 的每个有限子集线性无关），所以「线性无关集可扩充为极大线性无关集」自动成立。
 
 等价形式：Teichmüller (1939) 与 Tukey (1940) 都独立陈述过它。
 
@@ -489,55 +489,55 @@ Tukey 引理的好处是「免验证」：只要目标族具有有限特征，�
 #### 距离空间　`def.metric-space`
 *定义*　距离空间 / 度量空间（Metric Space）
 
-**距离空间**是一对 (X, d)：X 是集合，d : X × X → [0, +∞) 是 X 上的**距离**，满足
+**距离空间**是一对 (X, d)：$X$ 是集合，$d : X \times X \to [0, +\infty )$ 是 $X$ 上的**距离**，满足
 
 - **非退化**：$$d(x, y) = 0 \iff x = y$$
 - **对称**：$$d(x, y) = d(y, x)$$
 - **三角不等式**：$$d(x, z) \le d(x, y) + d(y, z)$$
 
-由 d 定义**开球** $$B(x, r) = \{ y \in X : d(x, y) < r \}$$，并规定 U ⊆ X 是开集 ⟺ U 是若干开球之并。这样 X 上就有了一个拓扑。
+由 $d$ 定义**开球** $$B(x, r) = \{ y \in X : d(x, y) < r \}$$，并规定 $U \subseteq X$ 是开集 $\iff U$ 是若干开球之并。这样 $X$ 上就有了一个拓扑。
 
-给定 ε > 0，称 D ⊆ X 是一个 **ε-网**，若 $$\forall x \in X, \exists y \in D : d(x, y) < \varepsilon$$
+给定 $\varepsilon > 0$，称 $D \subseteq X$ 是一个 **$\varepsilon$网**，若 $$\forall x \in X, \exists y \in D : d(x, y) < \varepsilon$$
 
 开球全体构成这个拓扑的一组**基**。度量空间自动是第一可数、正规（因而 Hausdorff）的。
 
-下面几条性质分两类：**紧性 / 闭**只依赖开集，是**拓扑**性质；**完备 / 全有界**要用到 d，是**度量**性质。这条分界线是整段的重点。
+下面几条性质分两类：**紧性 / 闭**只依赖开集，是**拓扑**性质；**完备 / 全有界**要用到 $d$，是**度量**性质。这条分界线是整段的重点。
 
-⚠ 完备性**不是**拓扑性质：ℝ 与开区间 (0, 1) 同胚，前者完备、后者不完备。
+⚠ 完备性**不是**拓扑性质：$\mathbb{R}$ 与开区间 (0, 1) 同胚，前者完备、后者不完备。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 2；Munkres, Topology, §20
 
 #### 完备　`def.complete`
 *定义*　完备距离空间（Complete Metric Space）
 
-序列 {xₙ} 是 **Cauchy 列**，当且仅当
+序列 $\{x_{n}\}$ 是 **Cauchy 列**，当且仅当
 
 $$\forall\varepsilon > 0, \exists N : m, n \ge N \implies d(x_m, x_n) < \varepsilon$$
 
-距离空间 (X, d) **完备**，当且仅当 X 中每个 Cauchy 列都在 X 中收敛：
+距离空间 (X, d) **完备**，当且仅当 $X$ 中每个 Cauchy 列都在 $X$ 中收敛：
 
 $$\{x_n\}\text{ 是} Cauchy\text{ 列} \implies \exists x \in X : x_n \to x$$
 
-「收敛 ⟹ Cauchy」永远成立；**「Cauchy ⟹ 收敛」才是完备性的内容**。
+「收敛 $\implies Cauchy$」永远成立；**「$Cauchy \implies$ 收敛」才是完备性的内容**。
 
-例子：ℝⁿ、ℂⁿ、任何 Banach 空间都完备；ℚ 不完备（3, 3.1, 3.14, …, 一个收敛到 √2 的 Cauchy 列在 ℚ 中不收敛）。
+例子：$\mathbb{R}^{n}$、$\mathbb{C}^{n}$、任何 Banach 空间都完备；$\mathbb{Q}$ 不完备（3, 3.1, 3.14, …, 一个收敛到 $\sqrt 2$ 的 Cauchy 列在 $\mathbb{Q}$ 中不收敛）。
 
-**闭子集继承完备**：X 完备时，A ⊆ X 作为子空间完备 ⟺ A 在 X 中闭。这条在下面「子集的紧性刻画」里要用。
+**闭子集继承完备**：$X$ 完备时，$A \subseteq X$ 作为子空间完备 $\iff A$ 在 $X$ 中闭。这条在下面「子集的紧性刻画」里要用。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 全有界　`def.totally-bounded`
 *定义*　全有界 / 预紧（Totally Bounded）
 
-距离空间 (X, d) **全有界**（也叫**预紧**），当且仅当对每个 ε > 0 都存在**有限的 ε-网**：
+距离空间 (X, d) **全有界**（也叫**预紧**），当且仅当对每个 $\varepsilon > 0$ 都存在**有限的 $\varepsilon$网**：
 
 $$\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n \in X : X = \bigcup_{i=1}^{n} B(x_i, \varepsilon)$$
 
-等价说法：对每个 ε > 0，X 都能被**有限个**半径 ε 的开球盖住。
+等价说法：对每个 $\varepsilon > 0$，$X$ 都能被**有限个**半径 $\varepsilon$ 的开球盖住。
 
 关键词是**有限**。它只要求「存在」一组有限的球，不要求你写得出来。
 
-**全有界 ⟹ 有界**（取 ε = 1，X 就被有限个单位球盖住），但反之不然：无限维 Banach 空间的单位球有界而不全有界。
+**全有界 $\implies$ 有界**（取 $\varepsilon = 1$，$X$ 就被有限个单位球盖住），但反之不然：无限维 Banach 空间的单位球有界而不全有界。
 
 全有界被**一致连续**映射保持，但不被连续映射保持 —— 又一次说明它是度量性质而非拓扑性质。
 
@@ -546,26 +546,24 @@ $$\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n \in X : X = \bi
 #### 列紧　`def.sequentially-compact`
 *定义*　列紧 / 序列紧（Sequentially Compact）
 
-距离空间 (X, d) **列紧**（序列紧），当且仅当 X 中每个序列都有收敛到 X 中的子列：
+距离空间 (X, d) **列紧**（序列紧），当且仅当 $X$ 中每个序列都有收敛到 $X$ 中的子列：
 
 $$\forall\{x_n\} \subseteq X, \exists\{x_{n_k}\}\text{ 与} \exists x \in X : x_{n_k} \to x$$
 
-在度量空间里「列紧 ⟺ 紧」（见下面的箭头），但在一般拓扑空间里**不等价** —— 列紧严格更强。度量空间好用的地方正是这里。
-
-注意子列收敛到的是 X 中的点：列紧是内蕴性质，不看外面那个空间。
+在度量空间里「列紧 $\iff$ 紧」（见下面的箭头），但在一般拓扑空间里**不等价** —— 列紧严格更强。度量空间好用的地方正是这里。$n$$n$注意子列收敛到的是 $X$ 中的点：列紧是内蕴性质，不看外面那个空间。
 
 参考：Munkres, Topology, §28
 
 #### 紧　`def.compact`
 *定义*　紧空间（Compact Space）
 
-距离空间 (X, d) **紧**，当且仅当 X 的每个**开覆盖**都有有限子覆盖：
+距离空间 (X, d) **紧**，当且仅当 $X$ 的每个**开覆盖**都有有限子覆盖：
 
 $$\forall\{U_i\}_{i \in I} (\text{ 每个} U_i\text{ 开且} X = \bigcup_{i \in I} U_i ) \implies \exists i_1, \ldots , i_n : X = \bigcup_{k=1}^{n} U_{i_k}$$
 
-紧性是**拓扑**性质，只依赖开集，跟 d 的具体取值无关。
+紧性是**拓扑**性质，只依赖开集，跟 $d$ 的具体取值无关。
 
-例子：ℝ 中的闭区间 [a, b] 紧（Heine–Borel）；ℝ 本身不紧（{(-n, n)} 没有有限子覆盖）；(0, 1] 不紧。
+例子：$\mathbb{R}$ 中的闭区间 [a, b] 紧（Heine–Borel）；$\mathbb{R}$ 本身不紧（{(-n, n)} 没有有限子覆盖）；(0, 1] 不紧。
 
 紧性的一个常用等价形式：**有限交性质** —— 若一族闭集的任意有限子族都有交，则整族的交非空。
 
@@ -582,53 +580,53 @@ $$X\text{ 紧} \iff X\text{ 列紧} \iff X\text{ 完备且全有界}$$
 
 
 
-- 紧 ⟹ 列紧
+- 紧 $\implies$ 列紧
 
-- 列紧 ⟹ 全有界　（整段里**唯一**实质用到选择原理的一步，用的是 DC）
+- 列紧 $\implies$ 全有界　（整段里**唯一**实质用到选择原理的一步，用的是 DC）
 
-- 列紧 ⟹ 完备
+- 列紧 $\implies$ 完备
 
-- 列紧 ⟹ 紧　（「坏球」法，只用到全有界，不动选择公理）
+- 列紧 $\implies$ 紧　（「坏球」法，只用到全有界，不动选择公理）
 
-- 紧 ⟹ 完备、紧 ⟹ 全有界
+- 紧 $\implies$ 完备、紧 $\implies$ 全有界
 
-- 完备 + 全有界 ⟹ 列紧　（对角线法，也不动选择公理）
+- 完备 + 全有界 $\implies$ 列紧　（对角线法，也不动选择公理）
 
 
 
-于是「列紧 ⟹ 全有界 ⟹ 紧」与「紧 ⟹ 列紧」闭合，三个概念打通。
+于是「列紧 $\implies$ 全有界 $\implies$ 紧」与「紧 $\implies$ 列紧」闭合，三个概念打通。
 
-⚠ 在一般拓扑空间里只有「紧 ⟹ 列紧」成立、**反向不成立** —— 列紧是度量空间特有的好运气。
+⚠ 在一般拓扑空间里只有「紧 $\implies$ 列紧」成立、**反向不成立** —— 列紧是度量空间特有的好运气。
 
 参考：Munkres, Topology, §28 与 §43
 
 #### 紧子集是闭的　`prop.compact-subset-closed`
 *命题*　命题：紧子集在 X 中是闭集
 
-设 A 是距离空间 X 的子集（按子空间度量）。则
+设 $A$ 是距离空间 $X$ 的子集（按子空间度量）。则
 
 $$A\text{ 紧} \implies A\text{ 是} X\text{ 中的闭集}$$
 
-其实只要 X 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。
+其实只要 $X$ 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。
 
-第 1 页笔记里把它和「X 完备」并列写在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「A 紧 ⟹ A 闭」和「A 闭 + X 完备 ⟹ A 完备」。
+第 1 页笔记里把它和「$X$ 完备」并列写在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\implies A$ 完备」。
 
 参考：Munkres, Topology, §26
 
 #### 子集的紧性刻画　`prop.subset-compact-equiv`
 *命题*　命题：X 完备时，A 紧 ⟺ A 闭且全有界
 
-设 (X, d) 是**完备**的距离空间，A ⊆ X。则
+设 (X, d) 是**完备**的距离空间，$A \subseteq X$。则
 
 $$A\text{ 紧} \iff A\text{ 闭}\text{ 且} A\text{ 全有界}$$
 
-（「A 全有界」按子空间度量 d|A 理解。）
+（「$A$ 全有界」按子空间度量 d|A 理解。）
 
-⚠ **「X 完备」这个前提不能省。** 理由是中间那一步：A 作为子空间完备 ⟺ A 在 X 中闭 —— 这一步要用 X 完备。少了它，A 闭 + A 全有界推不出 A 紧。
+⚠ **「$X$ 完备」这个前提不能省。** 理由是中间那一步：$A$ 作为子空间完备 $\iff A$ 在 $X$ 中闭 —— 这一步要用 $X$ 完备。少了它，$A$ 闭 $A$ 全有界推不出 $A$ 紧。
 
-这也是 **Heine–Borel** 的推广：ℝⁿ 完备，而在 ℝⁿ 中 A 有界 ⟺ A 全有界，于是「有界闭集紧」正是它的特例。
+这也是 **Heine–Borel** 的推广：$\mathbb{R}^{n}$ 完备，而在 $\mathbb{R}^{n}$ 中 $A$ 有界 $\iff A$ 全有界，于是「有界闭集紧」正是它的特例。
 
-📌 笔记原稿里这一行是**缩进**写在「Prop. X 完备.」下面、而且**没有自己的 Prop. 前缀** —— 本人 2026-09-22 确认：**「X 完备」就是这条的前提**，两行合起来是一个命题。
+📌 笔记原稿里这一行是**缩进**写在「Prop. X 完备.」下面、而且**没有自己的 Prop. 前缀** —— 本人 2026-09-22 确认：**「$X$ 完备」就是这条的前提**，两行合起来是一个命题。
 
 参考：Munkres, Topology, §28；Rudin, Principles of Mathematical Analysis, Ch. 2
 
@@ -641,25 +639,25 @@ $$A\text{ 紧} \iff A\text{ 闭}\text{ 且} A\text{ 全有界}$$
 #### 向量空间的基　`def.vs`
 *定义*　向量空间 / 线性无关 / 基
 
-设 K 是域，V 是 K 上的向量空间，S ⊆ V。
+设 $K$ 是域，$V$ 是 $K$ 上的向量空间，$S \subseteq V$。
 
-- **S 线性无关**：S 的每个有限子集都线性无关，即不存在不全为零的 c₁,…,cₙ ∈ K 使 c₁v₁ + ⋯ + cₙvₙ = 0。
-- **S 生成 V**：V 中每个向量都是 S 中有限多个向量的线性组合。
-- **S 是 V 的基**：S 既线性无关又生成 V。
+- **$S$ 线性无关**：$S$ 的每个有限子集都线性无关，即不存在不全为零的 $c_{1}$…$c_{n} \in K$ 使 $c_{1}v_{1} + \cdots + c_{n}v_{n} = 0$。
+- **$S$ 生成 $V$**：$V$ 中每个向量都是 $S$ 中有限多个向量的线性组合。
+- **$S$ 是 $V$ 的基**：$S$ 既线性无关又生成 $V$。
 
 注意线性无关性是**逐有限子集**定义的性质——这正是它「具有有限特征」的原因。
 
-等价说法：S 是基 ⟺ V 中每个向量都能唯一地写成 S 的有限线性组合。
+等价说法：$S$ 是基 $\iff V$ 中每个向量都能唯一地写成 $S$ 的有限线性组合。
 
 参考：Lang, Linear Algebra
 
 #### 每个向量空间有基　`thm.vsbasis`
 *定理*　每个向量空间都有基（Zorn 引理的经典应用）
 
-设 V 是域 K 上的向量空间。则
+设 $V$ 是域 $K$ 上的向量空间。则
 
-- V 有基；
-- 更精确地：V 的任一线性无关子集都能扩充成 V 的一个基，任一生成集都含有一个基。
+$V$ 有基；
+- 更精确地：$V$ 的任一线性无关子集都能扩充成 $V$ 的一个基，任一生成集都含有一个基。
 
 在 ZF 中此命题与 AC 等价——去掉 AC，可以构造出没有基的向量空间。
 
@@ -676,7 +674,7 @@ $$A\text{ 紧} \iff A\text{ 闭}\text{ 且} A\text{ 全有界}$$
 #### 基本类　`def.fundamental-class`
 *定义*　基本类（Fundamental Class）
 
-设 X 是集合，𝔄 ⊆ 𝒫(X)。𝔄 是 X 上的一个**基本类**，当且仅当
+设 $X$ 是集合，$\mathfrak{A} \subseteq \mathcal{P}(X)$。$\mathfrak{A}$ 是 $X$ 上的一个**基本类**，当且仅当
 
 - 对**交**封闭：$$A, B \in \mathfrak{A} \implies A \cap B \in \mathfrak{A}$$
 - 差可以拆开：$$A, B \in \mathfrak{A} \implies A \setminus B\text{ 是} \mathfrak{A}\text{ 中有限多个两两不交集合之并}$$
@@ -685,166 +683,166 @@ $$A\text{ 紧} \iff A\text{ 闭}\text{ 且} A\text{ 全有界}$$
 
 基本类的作用是当**砖块**：把它的元素做成有限不交并，就得到一个环 —— 这正是下面那条性质 (5)。
 
-典型例子：半开区间族 { (a, b] : a < b } 是 ℝ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个代数。
+典型例子：半开区间族 $\{ (a, b] : a < b \}$ 是 $\mathbb{R}$ 上的基本类；由它做有限不交并得到的，正是构造 Lebesgue–Stieltjes 测度时要用的那个代数。
 
 参考：Halmos, Measure Theory, §4
 
 #### 环与代数　`def.set-ring`
 *定义*　环与代数（Ring, Algebra）
 
-设 𝔄 ⊆ 𝒫(X) 是 X 的一族子集。
+设 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 的一族子集。
 
-- 𝔄 是**环**（ring），当且仅当它对有限并封闭、且对差封闭：
+$\mathfrak{A}$ 是**环**（ring），当且仅当它对有限并封闭、且对差封闭：
 
 $$A, B \in \mathfrak{A} \implies A \cup B \in \mathfrak{A}, \quad A \setminus B \in \mathfrak{A}$$
 
-- 𝔄 是**代数**（algebra），当且仅当 𝔄 是环、且含全集：
+$\mathfrak{A}$ 是**代数**（algebra），当且仅当 $\mathfrak{A}$ 是环、且含全集：
 
 $$X \in \mathfrak{A}$$
 
-**代数 = 环 + X ∈ 𝔄**。「把整个 X 放进去」是唯一的差别。
+**代数 $=$ 环 $X \in \mathfrak{A}$**。「把整个 $X$ 放进去」是唯一的差别。
 
-环加上 X ∈ 𝔄 之后，差就自动升级成补：$$A^c = X \setminus A \in \mathfrak{A}$$。所以**代数**也等价于「对有限并、对补封闭」。
+环加上 $X \in \mathfrak{A}$ 之后，差就自动升级成补：$$A^c = X \setminus A \in \mathfrak{A}$$。所以**代数**也等价于「对有限并、对补封闭」。
 
 ⚠ 这里的「环」是**集合环**（ring of sets），和抽象代数里的 ring 只是同名，毫无关系。
 
-把「有限」都升级成「可数」，就得到 **σ-环** 与 **σ-代数** —— 另开两条节点写。
+把「有限」都升级成「可数」，就得到 **$\sigma$环** 与 **$\sigma$代数** —— 另开两条节点写。
 
 参考：Halmos, Measure Theory, §4；Folland, Real Analysis, §1.2
 
 #### σ-环　`def.sigma-ring`
 *定义*　σ-环（σ-Ring）
 
-𝔄 ⊆ 𝒫(X) 是 X 上的一个 **σ-环**，当且仅当把「有限」都换成「可数」之后仍封闭：
+$\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 上的一个 **$\sigma$环**，当且仅当把「有限」都换成「可数」之后仍封闭：
 
 - 对**可数并**封闭：$$A_1, A_2, \ldots \in \mathfrak{A} \implies \bigcup_{n=1}^{\infty} A_n \in \mathfrak{A}$$
 - 对**差**封闭：$$A, B \in \mathfrak{A} \implies A \setminus B \in \mathfrak{A}$$
 
-**σ-环 = 环 + 可数并**。它**不要求**含 X —— 这正是它与 σ-代数的唯一差别。
+**$\sigma$环 $=$ 环 + 可数并**。它**不要求**含 $X$ —— 这正是它与 $\sigma$代数的唯一差别。
 
-不含 X 的后果是实质的：σ-环里集合的并可能仍是一个真子集，补运算也落不到里面。
+不含 $X$ 的后果是实质的：$\sigma$环里集合的并可能仍是一个真子集，补运算也落不到里面。
 
-典型例子：X = ℝ 上「全体可数集」是 σ-环，不是 σ-代数 —— 它的元素之并（如 ℝ ∖ ℚ）不在里面。
+典型例子：$X = \mathbb{R}$ 上「全体可数集」是 $\sigma$环，不是 $\sigma$代数 —— 它的元素之并（如 $\mathbb{R} \setminus \mathbb{Q}$）不在里面。
 
 由差 + 可数并，**可数交**自动可用：$$\bigcap_n A_n = A_1 \setminus \bigcup_{n \ge 2} (A_1 \setminus A_n)$$。
 
-与单调类的关系：**环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭**。
+与单调类的关系：**环是 $\sigma$环 $\iff$ 它是单调类 $\iff$ 它对可数不交并封闭**。
 
 参考：Halmos, Measure Theory, §4
 
 #### σ-代数　`def.sigma-algebra`
 *定义*　σ-代数（σ-Algebra）
 
-设 X 是集合，𝔄 ⊆ 𝒫(X)。𝔄 是 X 上的一个 **σ-代数**，当且仅当它同时满足三条：
+设 $X$ 是集合，$\mathfrak{A} \subseteq \mathcal{P}(X)$。$\mathfrak{A}$ 是 $X$ 上的一个 **$\sigma$代数**，当且仅当它同时满足三条：
 
 1. **含全集**：$$X \in \mathfrak{A}$$
 2. **对补封闭**：$$A \in \mathfrak{A} \implies A^c := X \setminus A \in \mathfrak{A}$$
 3. **对可数并封闭**：$$A_1, A_2, \ldots \in \mathfrak{A} \implies \bigcup_{n=1}^{\infty} A_n \in \mathfrak{A}$$
 
-二元组 $$(X, \mathfrak{A})$$ 称为**可测空间**（measurable space），𝔄 的元素称为**可测集**（measurable set）。
+二元组 $$(X, \mathfrak{A})$$ 称为**可测空间**（measurable space），$\mathfrak{A}$ 的元素称为**可测集**（measurable set）。
 
-三条是配套的，缺一不可：只留 (2)(3) 就是**σ-环**；把 (3) 降成「有限并」就是**代数**。
+三条是配套的，缺一不可：只留 (2)(3) 就是**$\sigma$环**；把 (3) 降成「有限并」就是**代数**。
 
 由 (2)(3) 用 De Morgan 立得对**可数交**封闭：$$\Big( \bigcap_n A_n \Big)^c = \bigcup_n A_n^c \in \mathfrak{A}$$。于是有限并、有限交、差、对称差全都可用 —— 真正超出「代数」的，只有**可数**这一件事。
 
-⚠ 方向不能反：σ-代数一定是代数，代数不一定是 σ-代数。反例：X = ℝ 上「有限集与余有限集」全体是代数，而 ℕ = {1} ∪ {2} ∪ {3} ∪ ⋯ 是其中可数多个元素的并、本身既非有限也非余有限，所以那个代数不封闭于可数并。
+⚠ 方向不能反：$\sigma$代数一定是代数，代数不一定是 $\sigma$代数。反例：$X = \mathbb{R}$ 上「有限集与余有限集」全体是代数，而 $\mathbb{N} = \{1\} \cup \{2\} \cup \{3\} \cup \cdots$ 是其中可数多个元素的并、本身既非有限也非余有限，所以那个代数不封闭于可数并。
 
-记号里的「σ」表示**可数**（取自德文 Summe / 法文 somme 的首字母），和标准差那个 σ 无关。
+记号里的「$\sigma$」表示**可数**（取自德文 Summe / 法文 somme 的首字母），和标准差那个 $\sigma$ 无关。
 
-为什么非要有它：测度的可数可加性 μ(⋃Aₙ) = Σμ(Aₙ) 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。
+为什么非要有它：测度的可数可加性 $\mu (\bigcup A_{n}) = \Sigma \mu (A_{n})$ 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。
 
 参考：Halmos, Measure Theory, §4；Folland, Real Analysis, §1.2；Rudin, Real and Complex Analysis, Ch. 1
 
 #### 单调类　`def.monotone-class`
 *定义*　单调类（Monotone Class）
 
-𝔄 ⊆ 𝒫(X) 是**单调类**，当且仅当它对两种单调极限都封闭：
+$\mathfrak{A} \subseteq \mathcal{P}(X)$ 是**单调类**，当且仅当它对两种单调极限都封闭：
 
 $$\{E_j\}_{j=1}^{\infty} \nearrow  \implies \bigcup_{j=1}^{\infty} E_j \in \mathfrak{A}$$
 $$\{E_j\}_{j=1}^{\infty} \searrow  \implies \bigcap_{j=1}^{\infty} E_j \in \mathfrak{A}$$
 
-单调类只关心「递增取并、递减取交」这两种极限，**不**要求对有限并、差、补封闭 —— 所以它比 σ-代数弱得多。
+单调类只关心「递增取并、递减取交」这两种极限，**不**要求对有限并、差、补封闭 —— 所以它比 $\sigma$代数弱得多。
 
-它的用处全在单调类定理：一个 σ-代数等价于「一个对两种极限都封闭的环」。证明「某性质对所有可测集成立」时，通常先验证它在一个单调类上成立，再交给单调类定理。
+它的用处全在单调类定理：一个 $\sigma$代数等价于「一个对两种极限都封闭的环」。证明「某性质对所有可测集成立」时，通常先验证它在一个单调类上成立，再交给单调类定理。
 
 参考：Halmos, Measure Theory, §6
 
 #### 集合族的基本性质　`prop.set-class-properties`
 *命题*　命题：基本类 / 环 / σ-代数的几条基本性质
 
-(1) 基本类包含 ∅。
+(1) 基本类包含 $\emptyset$。
 
-(2) 代数与 σ-代数对**有限交**、**可数交**封闭。
+(2) 代数与 $\sigma$代数对**有限交**、**可数交**封闭。
 
-(3) 𝔄 是 σ-代数 ⟺ 𝔄 对**可数并**与**取补**都封闭。
+$(3) \mathfrak{A}$ 是 $\sigma$代数 $\iff \mathfrak{A}$ 对**可数并**与**取补**都封闭。
 
-(5) 若 ℰ 是**基本类**，则
+(5) 若 $\mathcal{E}$ 是**基本类**，则
 
 $$\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \}$$
 
 是一个**环**。
 
-（编号沿用笔记；第 (4) 条因为本身是一条定理，单独列在「环 ⟹ σ-环 的判据」里。）
+（编号沿用笔记；第 (4) 条因为本身是一条定理，单独列在「环 $\implies \sigma$环 的判据」里。）
 
-(1)：取 A ∈ 𝔄，则 A ∖ A = ∅ 要能被拆成不交并，只能是空并。
+(1)：取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset$ 要能被拆成不交并，只能是空并。
 
-(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 𝔄 只是环而不含 X，「补」要小心，通常用 **A ∖ ⋃Bⱼ** 这种相对补。
+(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \setminus \bigcup B_{j}$** 这种相对补。
 
 (5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。
 
-这几条性质的实际用途：**验证一个族是 σ-代数时，只需查「含 X」「对补」「对可数并」三条**，其余全部免费。
+这几条性质的实际用途：**验证一个族是 $\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。
 
 参考：Halmos, Measure Theory, §4
 
 #### 环 → σ-环 的判据　`thm.ring-monotone-sigma`
 *定理*　定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭
 
-设 𝔄 是一个**环**。则下列三条等价：
+设 $\mathfrak{A}$ 是一个**环**。则下列三条等价：
 
 $$\mathfrak{A}\text{ 是} \sigma-\text{环} \iff \mathfrak{A}\text{ 是单调类} \iff \mathfrak{A}\text{ 对可列不交并封闭}$$
 
-注意前提「𝔄 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 σ-环。
+注意前提「$\mathfrak{A}$ 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 $\sigma$环。
 
-这条定理是单调类定理的技术核心：正是因为它，才能把「对 σ-代数成立」化归为「先验证一个环，再看单调极限」。
+这条定理是单调类定理的技术核心：正是因为它，才能把「对 $\sigma$代数成立」化归为「先验证一个环，再看单调极限」。
 
 参考：Halmos, Measure Theory, §6
 
 #### 生成的 σ-代数　`def.generated-sigma`
 *定义*　由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)
 
-设 ℰ ⊆ 𝒫(X)。定义
+设 $\mathcal{E} \subseteq \mathcal{P}(X)$。定义
 
 $$\mathcal{M}(\mathcal{E}) := \bigcap \{ \mathfrak{A} : \mathfrak{A}\text{ 是包含} \mathcal{E}\text{ 的} \sigma-\text{代数} \}$$
 $$\mathfrak{m}(\mathcal{E}) := \bigcap \{ \mathfrak{A} : \mathfrak{A}\text{ 是包含} \mathcal{E}\text{ 的单调类} \}$$
 
-ℳ(ℰ) 称为**由 ℰ 生成的 σ-代数**，𝔪(ℰ) 称为由 ℰ 生成的单调类。
+$\mathcal{M}(\mathcal{E})$ 称为**由 $\mathcal{E}$ 生成的 $\sigma$代数**，$\mathfrak{m}(\mathcal{E})$ 称为由 $\mathcal{E}$ 生成的单调类。
 
-为什么这样定义是合法的：这个交非空（𝒫(X) 总是一个含 ℰ 的 σ-代数），而且**任意多个 σ-代数之交仍是 σ-代数**（单调类也一样），所以交出来的是最小的那一个。
+为什么这样定义是合法的：这个交非空（$\mathcal{P}(X)$ 总是一个含 $\mathcal{E}$ 的 $\sigma$代数），而且**任意多个 $\sigma$代数之交仍是 $\sigma$代数**（单调类也一样），所以交出来的是最小的那一个。
 
-「生成」是整段里最常用的手法：你给我一族好用的集合（基本类、开集、柱集），我把它补成最小的 σ-代数，再在上面做测度。Borel、积 σ-代数都是这么来的。
+「生成」是整段里最常用的手法：你给我一族好用的集合（基本类、开集、柱集），我把它补成最小的 $\sigma$代数，再在上面做测度。Borel、积 $\sigma$代数都是这么来的。
 
 参考：Halmos, Measure Theory, §6；Folland, Real Analysis, §1.2
 
 #### 单调类定理　`thm.monotone-class`
 *定理*　单调类定理（Monotone Class Theorem）
 
-设 ℰ ⊆ 𝒫(X)。则
+设 $\mathcal{E} \subseteq \mathcal{P}(X)$。则
 
 $$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\text{ 且} \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
 
-**这条比教科书上的标准版更强，而且是对的。** 标准版（Halmos §6）要求 ℰ 本身是一个**代数**；这里只要求 ℰ 中集合的**补**与**并**落进 𝔪(ℰ) 就行 —— 条件松了一档。证明仍是单调类定理那三步，只是把「ℰ 是代数」换成这两条：
+**这条比教科书上的标准版更强，而且是对的。** 标准版（Halmos §6）要求 $\mathcal{E}$ 本身是一个**代数**；这里只要求 $\mathcal{E}$ 中集合的**补**与**并**落进 $\mathfrak{m}(\mathcal{E})$ 就行 —— 条件松了一档。证明仍是单调类定理那三步，只是把「$\mathcal{E}$ 是代数」换成这两条：
 
-**①** 令 𝒦₁ = {A ∈ 𝔪 : Aᶜ ∈ 𝔪}。它含 ℰ（第一条条件），且本身是单调类（𝔪 单调 ⇒ 极限仍在 𝔪；补用一次递减极限）⇒ 𝒦₁ = 𝔪，即 𝔪 对**补**封闭。
+**①** 令 $\mathcal{K}_{1} = \{A \in \mathfrak{m} : A^{c} \in \mathfrak{m}\}$。它含 $\mathcal{E}$（第一条条件），且本身是单调类（$\mathfrak{m}$ 单调 $\implies$ 极限仍在 $\mathfrak{m}$；补用一次递减极限）$\implies \mathcal{K}_{1} = \mathfrak{m}$，即 $\mathfrak{m}$ 对**补**封闭。
 
-**②** 固定 A ∈ ℰ，令 𝒦₂ = {B ∈ 𝔪 : A ∪ B ∈ 𝔪}。由第二条条件 𝒦₂ ⊇ ℰ ⇒ 𝒦₂ = 𝔪。
+**②** 固定 $A \in \mathcal{E}$，令 $\mathcal{K}_{2} = \{B \in \mathfrak{m} : A \cup B \in \mathfrak{m}\}$。由第二条条件 $\mathcal{K}_{2} \supseteq \mathcal{E} \implies \mathcal{K}_{2} = \mathfrak{m}$。
 
-**③** 固定 B ∈ 𝔪，令 𝒦₃ = {A ∈ 𝔪 : A ∪ B ∈ 𝔪}。由 ② 知 𝒦₃ ⊇ ℰ ⇒ 𝒦₃ = 𝔪，即 𝔪 对**并**封闭。
+**③** 固定 $B \in \mathfrak{m}$，令 $\mathcal{K}_{3} = \{A \in \mathfrak{m} : A \cup B \in \mathfrak{m}\}$。由 ② 知 $\mathcal{K}_{3} \supseteq \mathcal{E} \implies \mathcal{K}_{3} = \mathfrak{m}$，即 $\mathfrak{m}$ 对**并**封闭。
 
-于是 𝔪 对 ∪ 与补封闭、又是单调类 ⇒ 𝔪 是一个 σ-代数 ⇒ ℳ(ℰ) ⊆ 𝔪(ℰ)；反向恒成立，两边相等。（需 ℰ ≠ ∅，否则 𝔪(ℰ) = {∅}。）
+于是 $\mathfrak{m}$ 对 $\cup$ 与补封闭、又是单调类 $\implies \mathfrak{m}$ 是一个 $\sigma$代数 $\implies \mathcal{M}(\mathcal{E}) \subseteq \mathfrak{m}(\mathcal{E})$；反向恒成立，两边相等。（需 $\mathcal{E} \ne \emptyset$，否则 $\mathfrak{m}(\mathcal{E}) = \{\emptyset \}$。）
 
-⚠ 笔记原稿这个条件里用的是 **∪**（本人 2026-09-22 确认）。顺带一提，把 ∪ 换成 ∩ 或 ∖ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。
+⚠ 笔记原稿这个条件里用的是 **$\cup$**（本人 2026-09-22 确认）。顺带一提，把 $\cup$ 换成 $\cap$ 或 $\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。
 
-不论哪个版本，定理的**用法**是一样的：要证某个性质对 ℳ(ℰ) 中所有集合成立，只需（i）证明它对 ℰ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 ℰ 的单调类，它 ⊇ 𝔪(ℰ) = ℳ(ℰ)。
+不论哪个版本，定理的**用法**是一样的：要证某个性质对 $\mathcal{M}(\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\mathcal{E}$ 的单调类，它 $\supseteq \mathfrak{m}(\mathcal{E}) = \mathcal{M}(\mathcal{E})$。
 
 这是测度论里最常用的证明模式之一，后面「唯一性」「可测函数逼近」都会用到它。
 
@@ -853,37 +851,37 @@ $$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathc
 #### Borel σ-代数　`def.borel`
 *定义*　Borel σ-代数（Borel σ-Algebra 𝔅_X）
 
-设 X 是拓扑空间。X 上的 **Borel σ-代数**是由全体开集生成的 σ-代数：
+设 $X$ 是拓扑空间。$X$ 上的 **$Borel \sigma$代数**是由全体开集生成的 $\sigma$代数：
 
 $$\mathfrak{B}_X := \mathcal{M}(\{ U \subseteq X : U\text{ 是开集} \})$$
 
-𝔅_X 中的集合称为 **Borel 集**：开集、闭集、可数个开集之交（G_δ）、可数个闭集之并（F_σ）等都属于 𝔅_X。
+$\mathfrak{B}_X$ 中的集合称为 **Borel 集**：开集、闭集、可数个开集之交（$G_\delta$）、可数个闭集之并（$F_\sigma$）等都属于 $\mathfrak{B}_X$。
 
-开集族本身一般只是拓扑，不是 σ-代数 —— 取它生成的 σ-代数才得到 Borel 集全体。
+开集族本身一般只是拓扑，不是 $\sigma$代数 —— 取它生成的 $\sigma$代数才得到 Borel 集全体。
 
-ℝ 上 𝔅_ℝ 也可以由半开区间 { (a, b] : a < b } 生成（或 { [a, b) }）。这些形式在构造测度时更好用，因为半开区间的「不交并」算起来干净。
+$\mathbb{R}$ 上 $\mathfrak{B}_\mathbb{R}$ 也可以由半开区间 $\{ (a, b] : a < b \}$ 生成（或 { [a, b) }）。这些形式在构造测度时更好用，因为半开区间的「不交并」算起来干净。
 
 参考：Folland, Real Analysis, §1.2
 
 #### 积 σ-代数　`def.product-sigma`
 *定义*　积 σ-代数（Product σ-Algebra）
 
-设 { (X_α, ℳ_α) }_{α ∈ A} 是一族可测空间，$$X = \prod_{\alpha \in A} X_\alpha$$，投影 $$\pi _\alpha : X \to X_\alpha$$。**积 σ-代数**定义为
+设 $\{ (X_\alpha , \mathcal{M}_\alpha ) \}_\{\alpha \in A\}$ 是一族可测空间，$$X = \prod_{\alpha \in A} X_\alpha$$，投影 $$\pi _\alpha : X \to X_\alpha$$。**积 $\sigma$代数**定义为
 
 $$\otimes _{\alpha \in A} \mathcal{M}_\alpha := \mathcal{M}(\{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{M}_\alpha, \alpha \in A \})$$
 
-即由全体**柱集**生成的 σ-代数。柱集 π_α⁻¹(E_α) 就是「只对第 α 个坐标提要求」的集合。
+即由全体**柱集**生成的 $\sigma$代数。柱集 $\pi _\alpha ^{-1}(E_\alpha )$ 就是「只对第 $\alpha$ 个坐标提要求」的集合。
 
-⚠ 一般**不能**定义成「∏E_α 的全体生成的 σ-代数」—— 那只在**可数**指标集时等价（见下一条）。
+⚠ 一般**不能**定义成「$\prod E_\alpha$ 的全体生成的 $\sigma$代数」—— 那只在**可数**指标集时等价（见下一条）。
 
-这样定义的原因：投影 π_α 应当是可测的，而 σ-代数要对逆像封闭 —— 取最小的那一个就够了。
+这样定义的原因：投影 $\pi _\alpha$ 应当是可测的，而 $\sigma$代数要对逆像封闭 —— 取最小的那一个就够了。
 
 参考：Folland, Real Analysis, §2.1
 
 #### 积 σ-代数的生成基　`prop.product-sigma-base`
 *命题*　命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变
 
-设每个 ℳ_α = ℳ(ℰ_α)（即 ℳ_α 由 ℰ_α 生成）。令
+设每个 $\mathcal{M}_\alpha = \mathcal{M}(\mathcal{E}_\alpha )$（即 $\mathcal{M}_\alpha$ 由 $\mathcal{E}_\alpha$ 生成）。令
 
 $$\mathcal{F} = \{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{E}_\alpha, \alpha \in A \}$$
 
@@ -891,24 +889,24 @@ $$\mathcal{F} = \{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{E}_\alpha,
 
 $$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\mathcal{F})$$
 
-意义：算积 σ-代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 ℳ_α 搬进来。
+意义：算积 $\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\mathcal{M}_\alpha$ 搬进来。
 
-典型用法：ℝ 上取 ℰ = 半开区间 { (a, b] }（它生成 𝔅_ℝ），于是 𝔅_ℝ ⊗ 𝔅_ℝ 已经由形如 (a, b] × (c, d] 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。
+典型用法：$\mathbb{R}$ 上取 $\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\mathfrak{B}_\mathbb{R}$），于是 $\mathfrak{B}_\mathbb{R} ⊗ \mathfrak{B}_\mathbb{R}$ 已经由形如 $(a, b] \times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。
 
-证明是「生成」的通用套路：两边都等于「包含 ℱ 的最小 σ-代数」，各自验证 ℱ ⊆ 一边、另一边 ⊆ ℱ。
+证明是「生成」的通用套路：两边都等于「包含 $\mathcal{F}$ 的最小 $\sigma$代数」，各自验证 $\mathcal{F} \subseteq$ 一边、另一边 $\subseteq \mathcal{F}$。
 
 参考：Folland, Real Analysis, §2.1
 
 #### 可数积的生成集　`prop.product-sigma-generated`
 *命题*　命题：指标集可数时，积 σ-代数由「矩形」生成
 
-若指标集 A **可数**，则
+若指标集 $A$ **可数**，则
 
 $$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\{ \prod_{\alpha \in A} E_\alpha : E_\alpha \in \mathcal{M}_\alpha \})$$
 
-即：可数积的 σ-代数，恰好是由全体「矩形」生成的 σ-代数。
+即：可数积的 $\sigma$代数，恰好是由全体「矩形」生成的 $\sigma$代数。
 
-笔记里这一条写的是「pf. obvious.」。之所以确实 obvious：A 可数时每个矩形都是**可数多个柱集之交**，
+笔记里这一条写的是「pf. obvious.」。之所以确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，
 
 
 
@@ -916,26 +914,26 @@ $$\prod_{\alpha \in A} E_\alpha = \bigcap_{\alpha \in A} \pi _\alpha^{-1}(E_\alp
 
 
 
-而柱集本来就已经在 σ-代数里了，矩形自然也就在里面；反过来柱集是矩形（其余坐标取全空间）的特例。
+而柱集本来就已经在 $\sigma$代数里了，矩形自然也就在里面；反过来柱集是矩形（其余坐标取全空间）的特例。
 
-⚠ 该结论对**不可数**的 A **不成立** —— 这就是为什么定义必须用柱集而不是矩形。
+⚠ 该结论对**不可数**的 $A$ **不成立** —— 这就是为什么定义必须用柱集而不是矩形。
 
 参考：Folland, Real Analysis, §2.1
 
 #### 可数积的 Borel 代数　`cor.borel-product`
 *推论*　推论：可数积距离空间的 Borel σ-代数（可分时相等）
 
-设 X₁, X₂, … 是距离空间，$$X = \prod_{j=1}^{\infty} X_j$$ 配以积度量。则
+设 $X_{1}, X_{2}$ … 是距离空间，$$X = \prod_{j=1}^{\infty} X_j$$ 配以积度量。则
 
 $$\otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} \subseteq \mathfrak{B}_X$$
 
-且当每个 Xⱼ **可分**时，等号成立：
+且当每个 $X_{j}$ **可分**时，等号成立：
 
 $$X_j\text{ 都可分} \implies \otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} = \mathfrak{B}_X$$
 
-⊆ 的原因很直接：投影 πⱼ 连续，所以 πⱼ⁻¹(开集) 是开集，那些柱集都在 𝔅_X 里。
+$\subseteq$ 的原因很直接：投影 $\pi _{j}$ 连续，所以 $\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\mathfrak{B}_X$ 里。
 
-反方向登场的又是「可分」：Xⱼ 可分时取可数稠密集 Cⱼ，则
+反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则
 
 
 
@@ -943,99 +941,99 @@ $$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
 
 
 
-是 Xⱼ 的**可数**拓扑基，它已经生成 𝔅_{Xⱼ}。于是 X 的拓扑基由这些基的有限积组成，仍然可数，从而 𝔅_X ⊆ ⊗𝔅_{Xⱼ}。
+是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\mathfrak{B}_\{X_{j}\}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\mathfrak{B}_X \subseteq ⊗\mathfrak{B}_\{X_{j}\}$。
 
-⚠ 可分性不能省：ℝ^ℝ（不可数积）上，积 σ-代数真包含于 Borel σ-代数。
+⚠ 可分性不能省：$\mathbb{R}^\mathbb{R}$（不可数积）上，积 $\sigma$代数真包含于 $Borel \sigma$代数。
 
 参考：Folland, Real Analysis, §2.1
 
 #### 测度　`def.measure`
 *定义*　测度（Measure）
 
-设 ℳ 是 X 上的 σ-代数。函数 $$\mu : \mathcal{M} \to [0, +\infty]$$ 是一个**测度**，当且仅当
+设 $\mathcal{M}$ 是 $X$ 上的 $\sigma$代数。函数 $$\mu : \mathcal{M} \to [0, +\infty]$$ 是一个**测度**，当且仅当
 
 - **(i)**　$$\mu(\emptyset) = 0$$
-- **(ii) 可数可加**：若 {Eⱼ} 是 ℳ 中两两不交的集合列，则
+- **(ii) 可数可加**：若 $\{E_{j}\}$ 是 $\mathcal{M}$ 中两两不交的集合列，则
 
 $$\mu( \bigcup_{j=1}^{\infty} E_j ) = \sum_{j=1}^{\infty} \mu(E_j)$$
 
-(X, ℳ, μ) 称为**测度空间**。
+$(X, \mathcal{M}, \mu )$ 称为**测度空间**。
 
-(i) 看起来多余（由 (ii) 取 Eⱼ = ∅ 立刻得到），写出来是为了排除「恒取 +∞」这种没有意义的解，同时保证 (ii) 中的级数不是 ∞ − ∞。
+(i) 看起来多余（由 (ii) 取 $E_{j} = \emptyset$ 立刻得到），写出来是为了排除「恒取 $\infty$」这种没有意义的解，同时保证 (ii) 中的级数不是 $\infty - \infty$。
 
-**可数可加是本定义唯一有实质内容的要求**：它把「大小」从有限可加提升到可数可加，代价是允许取值为 +∞。
+**可数可加是本定义唯一有实质内容的要求**：它把「大小」从有限可加提升到可数可加，代价是允许取值为 $\infty$。
 
-⚠ 允许 μ(E) = +∞ 是必要的：ℝ 的 Lebesgue 测度就是 ∞。
+⚠ 允许 $\mu (E) = +\infty$ 是必要的：$\mathbb{R}$ 的 Lebesgue 测度就是 $\infty$。
 
 参考：Halmos, Measure Theory, §9；Folland, Real Analysis, §1.2
 
 #### 预测度　`def.premeasure`
 *定义*　预测度（Premeasure）—— 定义在环上的「测度」
 
-若 ℳ 只是一个**环**（不必是 σ-代数），而 $$\mu : \mathcal{M} \to [0, +\infty]$$ 仍满足测度的两条：
+若 $\mathcal{M}$ 只是一个**环**（不必是 $\sigma$代数），而 $$\mu : \mathcal{M} \to [0, +\infty]$$ 仍满足测度的两条：
 
 $$\mu(\emptyset) = 0, \quad  \{E_j\}\text{ 两两不交} \implies \mu(\bigcup E_j) = \sum \mu(E_j)$$
 
-则称 μ 是 ℳ 上的**预测度**。
+则称 $\mu$ 是 $\mathcal{M}$ 上的**预测度**。
 
-为什么要有这个中间概念：ℝ 上半开区间 (a, b] 的全体只是一个基本类，它的有限不交并构成一个环，还不是 σ-代数 —— 但这时已经能定义长度了，那就是预测度。
+为什么要有这个中间概念：$\mathbb{R}$ 上半开区间 (a, b] 的全体只是一个基本类，它的有限不交并构成一个环，还不是 $\sigma$代数 —— 但这时已经能定义长度了，那就是预测度。
 
-Carathéodory 扩张定理的作用就是把预测度从环一路提升到生成的 σ-代数上。所以「**先造预测度，再扩张**」是构造测度的标准两步走。
+Carathéodory 扩张定理的作用就是把预测度从环一路提升到生成的 $\sigma$代数上。所以「**先造预测度，再扩张**」是构造测度的标准两步走。
 
 参考：Halmos, Measure Theory, §9；Folland, Real Analysis, §1.4
 
 #### 有限可加测度　`def.finitely-additive`
 *定义*　有限可加测度（Finitely Additive Measure）
 
-若 μ 只满足 (i) 与**有限**可加性：
+若 $\mu$ 只满足 (i) 与**有限**可加性：
 
 $$A, B \in \mathcal{M}\text{ 两两不交} \implies \mu(A \cup B) = \mu(A) + \mu(B)$$
 （由归纳，可推到任意有限多个不交集合），
 
-则 μ 称为**有限可加测度**。
+则 $\mu$ 称为**有限可加测度**。
 
 它比预测度还弱：预测度是可数可加的（只是定义域是环），有限可加测度只要求有限可加。
 
-⚠ 有限可加 ≠ 可数可加：在 ℕ 上定义 μ(E) = 0（E 有限）、μ(E) = +∞（E 无限），它是有限可加的，但对 ⋃ₙ {n} = ℕ 不满足可数可加。历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，但那样连「长度」都构造不出来。
+⚠ 有限可加 $\ne$ 可数可加：在 $\mathbb{N}$ 上定义 $\mu (E) = 0$（$E$ 有限）、$\mu (E) = +\infty$（$E$ 无限），它是有限可加的，但对 $\bigcup _{n} \{n\} = \mathbb{N}$ 不满足可数可加。历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，但那样连「长度」都构造不出来。
 
 参考：Halmos, Measure Theory, §9
 
 #### 有限 / σ-有限 / 半有限　`def.measure-space`
 *定义*　测度空间的几种「大小」：有限、σ-有限、半有限
 
-设 (X, ℳ, μ) 是测度空间。
+设 $(X, \mathcal{M}, \mu )$ 是测度空间。
 
 - **有限**：$$\mu(X) < \infty$$
-- **σ-有限**：X 能写成可数个测度有限的集合之并：$$X = \bigcup_{j=1}^{\infty} E_j, \quad  \mu(E_j) < \infty$$
+- **$\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$$X = \bigcup_{j=1}^{\infty} E_j, \quad  \mu(E_j) < \infty$$
 - **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：
 
 $$\forall E \in \mathcal{M}, \mu(E) = \infty \implies \exists F \subseteq E, F \in \mathcal{M}, 0 < \mu(F) < \infty$$
 
 $$\text{有限} \implies \sigma-\text{有限} \implies\text{ 半有限}$$，两个箭头都不可逆。
 
-σ-有限是**最常用的技术假设**：ℝ 上的 Lebesgue 测度 σ-有限（ℝ = ⋃ₙ [-n, n]），而计数测度在 ℝ 上不是 σ-有限的。很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 σ-有限。
+$\sigma$有限是**最常用的技术假设**：$\mathbb{R}$ 上的 Lebesgue 测度 $\sigma$有限（$\mathbb{R} = \bigcup _{n} [-n, n]$），而计数测度在 $\mathbb{R}$ 上不是 $\sigma$有限的。很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\sigma$有限。
 
-半有限比 σ-有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。
+半有限比 $\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。
 
 参考：Folland, Real Analysis, §1.2
 
 #### 测度的基本性质　`prop.measure-basic`
 *命题*　命题：测度的单调性、次可加性与两种连续性
 
-设 (X, ℳ, μ) 是测度空间，以下集合都取自 ℳ。
+设 $(X, \mathcal{M}, \mu )$ 是测度空间，以下集合都取自 $\mathcal{M}$。
 
 - **(a) 单调**：$$E \subseteq F \implies \mu(E) \le \mu(F)$$
 - **(b) 次可加**：$$\mu( \bigcup_j E_j ) \le \sum_j \mu(E_j)$$（不要求不交）
 - **(c) 下连续**：$$E_1 \subseteq E_2 \subseteq \cdots \implies \mu( \bigcup_j E_j ) = \lim_{j\to\infty} \mu(E_j)$$
 - **(d) 上连续**：$$\mu(E_1) < \infty, \quad  E_1 \supseteq E_2 \supseteq \cdots \implies \mu( \bigcap_j E_j ) = \lim_{j\to\infty} \mu(E_j)$$
 
-(a)：把 F 拆成 F = E ∪ (F ∖ E) 用可数可加（把余下的位置补 ∅）。
+(a)：把 $F$ 拆成 $F = E \cup (F \setminus E)$ 用可数可加（把余下的位置补 $\emptyset$）。
 
-(b)：把 ⋃Eⱼ 改成不交并：Fⱼ = Eⱼ ∖ (E₁ ∪ ⋯ ∪ E_{j-1})，则 μ(⋃Eⱼ) = Σμ(Fⱼ) ≤ Σμ(Eⱼ)。
+(b)：把 $\bigcup E_{j}$ 改成不交并：$F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $\mu (\bigcup E_{j}) = \Sigma \mu (F_{j}) \le \Sigma \mu (E_{j})$。
 
-(c)：令 Aⱼ = Eⱼ ∖ E_{j-1}（E₀ = ∅），则 ⋃Eⱼ 是 Aⱼ 的不交并，而 μ(Eₙ) = ∑_{j≤n} μ(Aⱼ) —— 两边取极限即可。
+(c)：令 $A_{j} = E_{j} \setminus E_\{j-1\}$（$E_{0} = \emptyset$），则 $\bigcup E_{j}$ 是 $A_{j}$ 的不交并，而 $\mu (E_{n}) = \sum _\{j\le n\} \mu (A_{j})$ —— 两边取极限即可。
 
-(d)：**「μ(E₁) < ∞」不能省。** 反例：X = ℕ，μ = 计数测度，Eⱼ = {j, j+1, …}，则每个 μ(Eⱼ) = ∞ 但交集为 ∅、μ(∅) = 0。
+(d)：**「$\mu (E_{1}) < \infty$」不能省。** 反例：$X = \mathbb{N}$，$\mu =$ 计数测度，$E_{j} = \{j, j+1$ …}，则每个 $\mu (E_{j}) = \infty$ 但交集为 $\emptyset$、$\mu (\emptyset ) = 0$。
 
 (c) 与 (d) 合起来说明：测度在集合的**单调极限**下连续 —— 这正与「单调类」这个词呼应。
 
@@ -1044,26 +1042,26 @@ $$\text{有限} \implies \sigma-\text{有限} \implies\text{ 半有限}$$，两�
 #### 零集与完备　`def.null-set`
 *定义*　μ-零集 / 完备测度空间（Null Set & Complete Measure Space）
 
-设 (X, ℳ, μ) 是测度空间，E ∈ ℳ。
+设 $(X, \mathcal{M}, \mu )$ 是测度空间，$E \in \mathcal{M}$。
 
-若 $$\mu(E) = 0$$，则称 E 是 **μ-零集**（μ-null set）。
+若 $$\mu(E) = 0$$，则称 $E$ 是 **$\mu$零集**（$\mu -null set$）。
 
 若**零集的每个子集都可测**：
 
 $$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \mathcal{M}$$
 
-则称 μ（或这个测度空间）**完备**。
+则称 $\mu$（或这个测度空间）**完备**。
 
-完备性说的是「零集的子集也是可测集」。这条**不是**自动成立的：Borel σ-代数配上 Lebesgue 测度就不完备 —— Cantor 集是 Borel 集且测度为 0，它的某些子集不是 Borel 集。
+完备性说的是「零集的子集也是可测集」。这条**不是**自动成立的：$Borel \sigma$代数配上 Lebesgue 测度就不完备 —— Cantor 集是 Borel 集且测度为 0，它的某些子集不是 Borel 集。
 
-所以常见做法是先把 Borel 测度**完备化**（见下一条定理），得到 Lebesgue σ-代数。
+所以常见做法是先把 Borel 测度**完备化**（见下一条定理），得到 $Lebesgue \sigma$代数。
 
 参考：Halmos, Measure Theory, §11
 
 #### 完备化定理　`thm.completion`
 *定理*　定理：任何测度空间都能完备化
 
-设 (X, ℳ, μ) 是测度空间。令
+设 $(X, \mathcal{M}, \mu )$ 是测度空间。令
 
 $$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}$$
 
@@ -1071,135 +1069,135 @@ $$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M},\ F \subseteq N,\ N \in \m
 
 则
 
-1. ℳ̄ 是一个 σ-代数，且 ℳ ⊆ ℳ̄；
-2. 令 $$\bar{\mu}(E \cup F) := \mu(E)$$，它是 ℳ̄ 上良定义的测度；
-3. $$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。
+$1. \bar{\mathcal{M}}$ 是一个 $\sigma$代数，且 $\mathcal{M} \subseteq \bar{\mathcal{M}}$；
+2. 令 $$\bar{\mu}(E \cup F) := \mu(E)$$，它是 $\bar{\mathcal{M}}$ 上良定义的测度；
+3. $$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是**完备**测度空间，称为 $(X, \mathcal{M}, \mu )$ 的**完备化**。
 
-ℳ̄ 的直观：在原来的可测集上「撒一点零集的小碎片」。
+$\bar{\mathcal{M}}$ 的直观：在原来的可测集上「撒一点零集的小碎片」。
 
-**良定义是要检查的**：E ∪ F 的写法不唯一，若 E₁ ∪ F₁ = E₂ ∪ F₂，要证明 μ(E₁) = μ(E₂)。做法是用 E₁ ⊆ E₂ ∪ N₂（N₂ 零集）得 μ(E₁) ≤ μ(E₂)，反向同理。
+**良定义是要检查的**：$E \cup F$ 的写法不唯一，若 $E_{1} \cup F_{1} = E_{2} \cup F_{2}$，要证明 $\mu (E_{1}) = \mu (E_{2})$。做法是用 $E_{1} \subseteq E_{2} \cup N_{2}$（$N_{2}$ 零集）得 $\mu (E_{1}) \le \mu (E_{2})$，反向同理。
 
-⚠ 完备化是「把零集的子集塞进来」，代价是 σ-代数变大、测度不变。
+⚠ 完备化是「把零集的子集塞进来」，代价是 $\sigma$代数变大、测度不变。
 
 参考：Halmos, Measure Theory, §13；Folland, Real Analysis, Prop. 1.6
 
 #### 半有限部分　`def.semifinite-part`
 *定义*　半有限部分（Semifinite Part of a Measure）
 
-设 (X, ℳ, μ) 是测度空间。定义
+设 $(X, \mathcal{M}, \mu )$ 是测度空间。定义
 
 $$\mu_0(E) := sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty \}$$
 
-则 μ₀ 称为 μ 的**半有限部分**，它是一个半有限测度，且 μ₀ ≤ μ。
+则 $\mu _{0}$ 称为 $\mu$ 的**半有限部分**，它是一个半有限测度，且 $\mu _{0} \le \mu$。
 
 它的作用：把一个「可能有很坏的无穷值」的测度修成半有限的，同时尽量保留原来的有限部分。
 
-若 μ 本身半有限，则 μ₀ = μ —— 所以这是「半有限化」操作。
+若 $\mu$ 本身半有限，则 $\mu _{0} = \mu$ —— 所以这是「半有限化」操作。
 
 参考：Folland, Real Analysis, §1.2
 
 #### 外测度　`def.outer-measure`
 *定义*　外测度（Outer Measure）
 
-设 X 是非空集合。函数 $$\mu^* : \mathcal{P}(X) \to [0, +\infty]$$ 是一个**外测度**，当且仅当
+设 $X$ 是非空集合。函数 $$\mu^* : \mathcal{P}(X) \to [0, +\infty]$$ 是一个**外测度**，当且仅当
 
 - $$\mu^*(\emptyset) = 0$$
 - **单调**：$$A \subseteq B \implies \mu^*(A) \le \mu^*(B)$$
 - **可数次可加**：$$\mu^*( \bigcup_{j=1}^{\infty} A_j ) \le \sum_{j=1}^{\infty} \mu^*(A_j)$$
 
-外测度定义在**全体**子集上（𝒫(X)，不是某个 σ-代数），代价是它只有**次**可加性。
+外测度定义在**全体**子集上（$\mathcal{P}(X)$，不是某个 $\sigma$代数），代价是它只有**次**可加性。
 
-所以外测度不是测度 —— 它太大了，连 𝒫(X) 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。
+所以外测度不是测度 —— 它太大了，连 $\mathcal{P}(X)$ 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。
 
-Lebesgue 最初构造的就是外测度：μ*(A) = inf{ ∑(bₙ − aₙ) : A ⊆ ⋃(aₙ, bₙ) }。
+Lebesgue 最初构造的就是外测度：$\mu$*$(A) = \inf\{ \sum (b_{n} - a_{n}) : A \subseteq \bigcup (a_{n}, b_{n}) \}$。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 
 #### 由预测度诱导外测度　`prop.outer-measure-induced`
 *命题*　命题：从 ℰ 上的 ρ 诱导出一个外测度
 
-设 ℰ ⊆ 𝒫(X)，∅ ∈ ℰ，X ∈ ℰ，ρ : ℰ → [0, +∞] 满足 ρ(∅) = 0。对 A ⊆ X 定义
+设 $\mathcal{E} \subseteq \mathcal{P}(X)$，$\emptyset \in \mathcal{E}$，$X \in \mathcal{E}$，$\rho : \mathcal{E} \to [0, +\infty ]$ 满足 $\rho (\emptyset ) = 0$。对 $A \subseteq X$ 定义
 
 $$\mu^*(A) := inf \{ \sum_{j=1}^{\infty} \rho(E_j) : E_j \in \mathcal{E}, A \subseteq \bigcup_{j=1}^{\infty} E_j \}$$
 
-（用 ℰ 中可数个集合覆盖 A，取下确界。）则 μ\* 是 X 上的一个**外测度**。
+（用 $\mathcal{E}$ 中可数个集合覆盖 $A$，取下确界。）则 $\mu$\* 是 $X$ 上的一个**外测度**。
 
-这个公式就是「用已知面积的砖块去盖住 A，取最省的盖法」—— Lebesgue 外测度正是它的特例（ℰ 取开区间，ρ 取长度）。
+这个公式就是「用已知面积的砖块去盖住 $A$，取最省的盖法」—— Lebesgue 外测度正是它的特例（$\mathcal{E}$ 取开区间，$\rho$ 取长度）。
 
-为什么要求 X ∈ ℰ：保证 A ⊆ X 总有覆盖，inf 不是对空集取。
+为什么要求 $X \in \mathcal{E}$：保证 $A \subseteq X$ 总有覆盖，inf 不是对空集取。
 
-⚠ 这一步只用到 ρ(∅) = 0，**没用到可加性** —— 所以 μ* 一般并不还原成 ρ。要还原，就得靠 Carathéodory。
+⚠ 这一步只用到 $\rho (\emptyset ) = 0$，**没用到可加性** —— 所以 $\mu$* 一般并不还原成 $\rho$。要还原，就得靠 Carathéodory。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 
 #### μ*-可测集　`def.caratheodory-measurable`
 *定义*　Carathéodory 可测性（μ*-Measurable Set）
 
-设 μ* 是 X 上的外测度。A ⊆ X 称为 **μ\*-可测的**，当且仅当 A 把每个集合都「干净地切成两块」：
+设 $\mu$* 是 $X$ 上的外测度。$A \subseteq X$ 称为 **$\mu$\*-可测的**，当且仅当 $A$ 把每个集合都「干净地切成两块」：
 
 $$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)\quad  \forall E \subseteq X$$
 
-因为 μ* 只有次可加性，永远有 $$\mu^*(E) \le \mu^*(E \cap A) + \mu^*(E \cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：A 不「吃掉」任何东西。
+因为 $\mu$* 只有次可加性，永远有 $$\mu^*(E) \le \mu^*(E \cap A) + \mu^*(E \cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。
 
-这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 μ* 一个对象，不需要任何拓扑。所以它对任意外测度都能用。
+这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\mu$* 一个对象，不需要任何拓扑。所以它对任意外测度都能用。
 
-直观：A 是「可以随便切」的集合。
+直观：$A$ 是「可以随便切」的集合。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
 
 #### Carathéodory 定理　`thm.caratheodory`
 *定理*　Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度
 
-设 μ* 是 X 上的外测度，ℳ 是全体 μ\*-可测集。则
+设 $\mu$* 是 $X$ 上的外测度，$\mathcal{M}$ 是全体 $\mu$\*-可测集。则
 
-1. **ℳ 是一个 σ-代数**；
-2. **$$\mu^*|_\mathcal{M}$$ 是 (X, ℳ) 上的一个测度**（即 μ* 在 ℳ 上真的可加）；
+1. **$\mathcal{M}$ 是一个 $\sigma$代数**；
+2. **$$\mu^*|_\mathcal{M}$$ 是 $(X, \mathcal{M})$ 上的一个测度**（即 $\mu$* 在 $\mathcal{M}$ 上真的可加）；
 3. 这个测度是**完备**的。
 
 这是整个测度论构造的枢纽：**外测度不必可加，但它的「可切集合」上就可加了**。
 
 1 的证明是一个冗长的验证（对有限并、补、可数不交并逐一验算），笔记里写「pf. just verify.」。
 
-3 的完备性来自定义本身：若 μ*(A) = 0 且 B ⊆ A，则对任意 E 有 μ*(E ∩ B) ≤ μ*(B) = 0 且 μ*(E ∩ Bᶜ) ≤ μ*(E)，两边一夹就得到 B 满足可测性条件。
+3 的完备性来自定义本身：若 $\mu$*$(A) = 0$ 且 $B \subseteq A$，则对任意 $E$ 有 $\mu$*$(E \cap B) \le \mu$*$(B) = 0$ 且 $\mu$*$(E \cap B^{c}) \le \mu$*(E)，两边一夹就得到 $B$ 满足可测性条件。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
 
 #### 预测度还原　`prop.caratheodory-extension`
 *命题*　命题：从预测度出发做 Carathéodory，原代数上的值不变
 
-设 𝔄 ⊆ 𝒫(X) 是**代数**，μ₀ 是 𝔄 上的**预测度**，μ* 是由 μ₀ 诱导的外测度（按上一条命题，取 ℰ = 𝔄、ρ = μ₀）。则
+设 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是**代数**，$\mu _{0}$ 是 $\mathfrak{A}$ 上的**预测度**，$\mu$* 是由 $\mu _{0}$ 诱导的外测度（按上一条命题，取 $\mathcal{E} = \mathfrak{A}$、$\rho = \mu _{0}$）。则
 
 1. $$\mu^*|_\mathfrak{A} = \mu_0$$
-2. **𝔄 中每个集合都是 μ\*-可测的**，因此
+2. **$\mathfrak{A}$ 中每个集合都是 $\mu$\*-可测的**，因此
 
 $$\mathfrak{A} \subseteq \mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$$
 
-（ℳ 是全体 μ\*-可测集），于是 μ*|_ℳ 是 μ₀ 在 σ-代数 ℳ(𝔄) 上的扩张。
+（$\mathcal{M}$ 是全体 $\mu$\*-可测集），于是 $\mu$*$|_\mathcal{M}$ 是 $\mu _{0}$ 在 $\sigma$代数 $\mathcal{M}(\mathfrak{A})$ 上的扩张。
 
-这就是「预测度 → 外测度 → 测度」三步走的收官：**预测度在 σ-代数的扩张上被完整还原**。
+这就是「预测度 $\to$ 外测度 $\to$ 测度」三步走的收官：**预测度在 $\sigma$代数的扩张上被完整还原**。
 
-1 的两个方向：$$\mu^*(A) \le \mu_0(A)$$ 是直接的（A 自己被 A 覆盖）；反向要用 μ₀ 的可数可加性。
+1 的两个方向：$$\mu^*(A) \le \mu_0(A)$$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\mu _{0}$ 的可数可加性。
 
-2 是技术核心，要在 𝔄 上验证 Carathéodory 的可切性条件。
+2 是技术核心，要在 $\mathfrak{A}$ 上验证 Carathéodory 的可切性条件。
 
-笔记里还记了一句：不仅 𝔄 本身，连它做可数并、可数交（以及反复做）得到的 𝔄_σ、𝔄_δ、𝔄_σδ、𝔄_δσ 里的集合也都 μ\*-可测 —— 因为 ℳ 是 σ-代数，对这些操作封闭。
+笔记里还记了一句：不仅 $\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\mathfrak{A}_\sigma$、$\mathfrak{A}_\delta$、$\mathfrak{A}_\sigma \delta$、$\mathfrak{A}_\delta \sigma$ 里的集合也都 $\mu$\*-可测 —— 因为 $\mathcal{M}$ 是 $\sigma$代数，对这些操作封闭。
 
 参考：Halmos, Measure Theory, §12；Folland, Real Analysis, Theorem 1.14
 
 #### 扩张的唯一性　`thm.caratheodory-uniqueness`
 *定理*　定理：Carathéodory 扩张是最大的，σ-有限时唯一
 
-设 μ₀ 是代数 𝔄 上的预测度，μ := μ*|_ℳ 是它经 Carathéodory 得到的扩张。若 ν 是 ℳ(𝔄) 上**另一个**扩张 μ₀ 的测度，则
+设 $\mu _{0}$ 是代数 $\mathfrak{A}$ 上的预测度，$\mu := \mu$*$|_\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上**另一个**扩张 $\mu _{0}$ 的测度，则
 
 $$\nu(E) \le \mu(E)\quad  \forall E \in \mathcal{M}(\mathfrak{A})$$
 
-且当 $$\mu(E) < \infty$$ 时等号成立；进而，若 μ 是 σ-有限的，则 $$\nu = \mu$$。
+且当 $$\mu(E) < \infty$$ 时等号成立；进而，若 $\mu$ 是 $\sigma$有限的，则 $$\nu = \mu$$。
 
-要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 μ* 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 ν 都要满足次可加性，于是 ν(A) ≤ ∑ν(Eⱼ) = ∑μ₀(Eⱼ)，对所有覆盖取下确界就得到 ν ≤ μ*。
+要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\mu$* 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\nu$ 都要满足次可加性，于是 $\nu (A) \le \sum \nu (E_{j}) = \sum \mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\nu \le \mu$*。
 
-⚠ 不 σ-有限时唯一性会**失效**：ℝ 上取 𝔄 = 有限并的半开区间，μ₀ = Lebesgue 长度限制在 𝔄 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。σ-有限性正是用来堵住这种漏洞的。
+⚠ 不 $\sigma$有限时唯一性会**失效**：$\mathbb{R}$ 上取 $\mathfrak{A} =$ 有限并的半开区间，$\mu _{0} = Lebesgue$ 长度限制在 $\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。$\sigma$有限性正是用来堵住这种漏洞的。
 
-构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 σ-有限保证唯一**。
+构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 $\sigma$有限保证唯一**。
 
 参考：Halmos, Measure Theory, §13；Folland, Real Analysis, Theorem 1.14
 
@@ -1210,47 +1208,47 @@ $$\nu(E) \le \mu(E)\quad  \forall E \in \mathcal{M}(\mathfrak{A})$$
 
 $$\mu_0( (a, b] ) = F(b) - F(a)$$
 
-（并规定 μ₀(∅) = 0，扩充到由这些区间做有限不交并得到的代数 𝔄 上。）则 μ₀ 是 𝔄 上的一个**预测度**。
+（并规定 $\mu _{0}(\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的代数 $\mathfrak{A}$ 上。）则 $\mu _{0}$ 是 $\mathfrak{A}$ 上的一个**预测度**。
 
-**右连续正是用来保证可数可加性的**：若 (a, b] 是 (aⱼ, bⱼ] 的不交并，把 bⱼ 从左边逼近 bⱼ 就能得到单调性的不等式。
+**右连续正是用来保证可数可加性的**：若 (a, b] 是 $(a_{j}, b_{j}]$ 的不交并，把 $b_{j}$ 从左边逼近 $b_{j}$ 就能得到单调性的不等式。
 
-取 F(x) = x 就回到长度 μ₀((a, b]) = b − a —— 也就是 Lebesgue 测度的出发点。
+取 $F(x) = x$ 就回到长度 $\mu _{0}((a, b]) = b - a$ —— 也就是 Lebesgue 测度的出发点。
 
-⚠ 半开区间 (a, b] 比开区间好用：它们做不交并时端点不重叠，μ₀ 的加法好验。用 [a, b) 也一样，只是右连续要换成左连续。
+⚠ 半开区间 (a, b] 比开区间好用：它们做不交并时端点不重叠，$\mu _{0}$ 的加法好验。用 [a, b) 也一样，只是右连续要换成左连续。
 
 参考：Folland, Real Analysis, Theorem 1.16
 
 #### F ↔ Borel 测度　`thm.ls-exists`
 *定理*　定理：每个单调右连续的 F 对应一个 Borel 测度（差常数意义下）
 
-对每个递增右连续的 $$F : \mathbb{R} \to \mathbb{R}$$，存在 ℝ 上的一个 Borel 测度 μ_F 使
+对每个递增右连续的 $$F : \mathbb{R} \to \mathbb{R}$$，存在 $\mathbb{R}$ 上的一个 Borel 测度 $\mu _F$ 使
 
 $$\mu_F( (a, b] ) = F(b) - F(a)\quad  \forall a < b$$
 
-且这样的 μ_F 与 F 的对应在**相差一个常数**的意义下是一一的。
+且这样的 $\mu _F$ 与 $F$ 的对应在**相差一个常数**的意义下是一一的。
 
-证明就是把前两条接起来：F ↦ 预测度 μ₀（上一条命题）→ 由 Carathéodory 扩张到 𝔅_ℝ（前面两条定理）。
+证明就是把前两条接起来：$F \mapsto$ 预测度 $\mu _{0}$（上一条命题）$\to$ 由 Carathéodory 扩张到 $\mathfrak{B}_\mathbb{R}$（前面两条定理）。
 
-「差常数」是因为 μ_F 只看增量 F(b) − F(a)：把 F 换成 F + c，增量不变，测度也不变。所以严格的对应是「递增右连续函数模掉常数」↔「ℝ 上局部有限的 Borel 测度」。
+「差常数」是因为 $\mu _F$ 只看增量 $F(b) - F(a)$：把 $F$ 换成 F + c，增量不变，测度也不变。所以严格的对应是「递增右连续函数模掉常数」$\leftrightarrow$「$\mathbb{R}$ 上局部有限的 Borel 测度」。
 
-⚠ 「局部有限」这个限制是必要的：μ_F((−n, n]) = F(n) − F(−n) 必须有限，才能由递增实值函数给出。
+⚠ 「局部有限」这个限制是必要的：$\mu _F((-n, n]) = F(n) - F(-n)$ 必须有限，才能由递增实值函数给出。
 
 参考：Folland, Real Analysis, Theorem 1.16
 
 #### Lebesgue–Stieltjes 测度　`def.lebesgue-stieltjes`
 *定义*　Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure μ_F）
 
-由递增右连续函数 F 按上一条定理得到的 Borel 测度 $$\mu_F$$ 称为 **F 的 Lebesgue–Stieltjes 测度**。
+由递增右连续函数 $F$ 按上一条定理得到的 Borel 测度 $$\mu_F$$ 称为 **$F$ 的 Lebesgue–Stieltjes 测度**。
 
-特别地，取 $$F(x) = x$$，得到的 μ_F 就是 ℝ 上的 **Lebesgue 测度** m：
+特别地，取 $$F(x) = x$$，得到的 $\mu _F$ 就是 $\mathbb{R}$ 上的 **Lebesgue 测度** $m$：
 
 $$m( (a, b] ) = b - a$$
 
-若改用左连续的 F 配区间 [a, b)，得到的是同一族测度 —— 只是把「右连续」换成了「左连续」。笔记里专门标注了这一点。
+若改用左连续的 $F$ 配区间 [a, b)，得到的是同一族测度 —— 只是把「右连续」换成了「左连续」。笔记里专门标注了这一点。
 
-μ_F 的**分布函数**视角：若 F 还满足 F(−∞) = 0、F(+∞) = 1，那 F 就是一个概率分布的分布函数，μ_F 就是对应的概率测度。
+$\mu _F$ 的**分布函数**视角：若 $F$ 还满足 $F(-\infty ) = 0$、$F(+\infty ) = 1$，那 $F$ 就是一个概率分布的分布函数，$\mu _F$ 就是对应的概率测度。
 
-这条把「测度」和「函数」这两类对象接了起来：ℝ 上（局部有限的）测度 ↔ 递增右连续函数（模常数）。后面 Radon–Nikodym 会把「绝对连续」精确地实现为「F 是可积函数的积分」。
+这条把「测度」和「函数」这两类对象接了起来：$\mathbb{R}$ 上（局部有限的）测度 $\leftrightarrow$ 递增右连续函数（模常数）。后面 Radon–Nikodym 会把「绝对连续」精确地实现为「$F$ 是可积函数的积分」。
 
 参考：Folland, Real Analysis, Theorem 1.16
 
@@ -1260,76 +1258,76 @@ $$m( (a, b] ) = b - a$$
 #### 可测函数　`def.measurable-function`
 *定义*　可测函数（Measurable Function）
 
-设 (X, ℳ) 与 (Y, 𝒩) 是可测空间。函数 $$f : X \to Y$$ 是 **(ℳ, 𝒩)-可测的**，当且仅当每个可测集的原像可测：
+设 $(X, \mathcal{M})$ 与 $(Y, \mathcal{N})$ 是可测空间。函数 $$f : X \to Y$$ 是 **$(\mathcal{M}, \mathcal{N})$可测的**，当且仅当每个可测集的原像可测：
 
 $$f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{N}$$
 
 为什么用「原像」而不是「像」：原像对交、并、补全部保持（$$f^{-1}(\bigcup E_i) = \bigcup f^{-1}(E_i)$$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。
 
-等价说法（当 Y 是拓扑空间、𝒩 = 𝔅_Y 时）：f 可测 ⟺ 每个开集的原像可测。
+等价说法（当 $Y$ 是拓扑空间、$\mathcal{N} = \mathfrak{B}_Y$ 时）：$f$ 可测 $\iff$ 每个开集的原像可测。
 
-⚠ 「在 E 上可测」是相对说法：$$f$$ 在 E 上可测 ⟺ $$f|_E$$ 关于子空间 σ-代数 $$\mathcal{M}_E$$ 可测。
+⚠ 「在 $E$ 上可测」是相对说法：$$f$$ 在 $E$ 上可测 $\iff$ $$f|_E$$ 关于子空间 $\sigma$代数 $$\mathcal{M}_E$$ 可测。
 
 参考：Folland, Real Analysis, §2.1；Halmos, Measure Theory, §18
 
 #### 可测性的两条判定准则　`prop.measurable-criterion`
 *命题*　命题：复合保持可测；只需在生成元上验证
 
-**(1) 复合**：若 $$f : X \to Y$$ 是 (ℳ, 𝒩)-可测、$$g : Y \to Z$$ 是 (𝒩, 𝒪)-可测，则 $$g \circ  f$$ 是 (ℳ, 𝒪)-可测。
+**(1) 复合**：若 $$f : X \to Y$$ 是 $(\mathcal{M}, \mathcal{N})$可测、$$g : Y \to Z$$ 是 $(\mathcal{N}, 𝒪)$可测，则 $$g \circ  f$$ 是 $(\mathcal{M}, 𝒪)$可测。
 
-**(2) 只需验证生成元**：若 𝒩 = ℳ(ℰ)，则
+**(2) 只需验证生成元**：若 $\mathcal{N} = \mathcal{M}(\mathcal{E})$，则
 
 $$f : X \to Y\text{ 可测} \iff f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{E}$$
 
-(1)：对 E ∈ 𝒪 有 $$(g\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。
+(1)：对 $E \in 𝒪$ 有 $$(g\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。
 
-(2) 的 (⟸)：令 𝒞 = { E ⊆ Y : f⁻¹(E) ∈ ℳ }。因为原像保持并、交、补，**𝒞 是一个 σ-代数**；题设说 ℰ ⊆ 𝒞，于是 ℳ(ℰ) ⊆ 𝒞，即所有可测集的原像都可测。
+(2) 的 $(\Longleftarrow )$：令 $\mathcal{C} = \{ E \subseteq Y : f^{-1}(E) \in \mathcal{M} \}$。因为原像保持并、交、补，**$\mathcal{C}$ 是一个 $\sigma$代数**；题设说 $\mathcal{E} \subseteq \mathcal{C}$，于是 $\mathcal{M}(\mathcal{E}) \subseteq \mathcal{C}$，即所有可测集的原像都可测。
 
-(2) 是整段里最常用的判定工具：要证 f 可测，只需在一小族生成元上验证 —— 比如 ℝ 值函数只需验证 $$f^{-1}((a, \infty))$$ 可测。
+(2) 是整段里最常用的判定工具：要证 $f$ 可测，只需在一小族生成元上验证 —— 比如 $\mathbb{R}$ 值函数只需验证 $$f^{-1}((a, \infty))$$ 可测。
 
 参考：Folland, Real Analysis, Prop. 2.1
 
 #### 连续 ⟹ Borel 可测　`cor.continuous-measurable`
 *推论*　推论：连续函数是 Borel 可测的
 
-设 X, Y 是拓扑空间，各配 Borel σ-代数 $$\mathfrak{B}_X, \mathfrak{B}_Y$$。则
+设 X, Y 是拓扑空间，各配 $Borel \sigma$代数 $$\mathfrak{B}_X, \mathfrak{B}_Y$$。则
 
 $$f : X \to Y\text{ 连续} \implies f\text{ 是} (\mathfrak{B}_X, \mathfrak{B}_Y)-\text{可测的}$$
 
-连续的定义就是「开集的原像开」；而开集生成 𝔅_Y，用上一条的判定准则 (2) 立刻得到。
+连续的定义就是「开集的原像开」；而开集生成 $\mathfrak{B}_Y$，用上一条的判定准则 (2) 立刻得到。
 
 #### Lebesgue 可测　`def.lebesgue-measurable`
 *定义*　Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）
 
 对 $$f : \mathbb{R} \to \mathbb{C}$$：
 
-- 若 f 是 $$(\mathcal{L}, \mathfrak{B}_\mathbb{C})$$-可测，称 f **Lebesgue 可测**（ℒ 是 Lebesgue σ-代数）；
-- 若 f 是 $$(\mathfrak{B}_\mathbb{R}, \mathfrak{B}_\mathbb{C})$$-可测，称 f **Borel 可测**。
+- 若 $f$ 是 $$(\mathcal{L}, \mathfrak{B}_\mathbb{C})$$-可测，称 $f$ **Lebesgue 可测**（$\mathcal{L}$ 是 $Lebesgue \sigma$代数）；
+- 若 $f$ 是 $$(\mathfrak{B}_\mathbb{R}, \mathfrak{B}_\mathbb{C})$$-可测，称 $f$ **Borel 可测**。
 
 ⚠ **注意这里有个坑：两个 Lebesgue 可测函数的复合不一定 Lebesgue 可测。**
 
 
 
-原因：复合要跑通 (1) 需要中间那个 σ-代数配合，而 ℒ 严格大于 𝔅_ℝ。取 f : ℝ → ℝ Lebesgue 可测、g : ℝ → ℝ Lebesgue 可测，则 $$g\circ f$$ 关于 ℒ 未必可测 —— 因为 $$g^{-1}$$ 只能保证把 𝔅_ℝ 里的集合拉回 ℒ，而 $$f^{-1}$$ 需要在 ℝ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。
+原因：复合要跑通 (1) 需要中间那个 $\sigma$代数配合，而 $\mathcal{L}$ 严格大于 $\mathfrak{B}_\mathbb{R}$。取 $f : \mathbb{R} \to \mathbb{R} Lebesgue$ 可测、$g : \mathbb{R} \to \mathbb{R} Lebesgue$ 可测，则 $$g\circ f$$ 关于 $\mathcal{L}$ 未必可测 —— 因为 $$g^{-1}$$ 只能保证把 $\mathfrak{B}_\mathbb{R}$ 里的集合拉回 $\mathcal{L}$，而 $$f^{-1}$$ 需要在 $\mathbb{R}$ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。
 
-标准修法：让中间那个函数 Borel 可测。若 g 是 Borel 可测、f 是 Lebesgue 可测，则 g∘f 是 Lebesgue 可测的。
+标准修法：让中间那个函数 Borel 可测。若 $g$ 是 Borel 可测、$f$ 是 Lebesgue 可测，则 $g\circ f$ 是 Lebesgue 可测的。
 
 参考：Folland, Real Analysis, §2.1
 
 #### 积空间与实虚部　`prop.measurable-product-and-realimag`
 *命题*　命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测
 
-**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \prod_{\alpha} Y_\alpha$$，$$\mathcal{N} = \otimes _{\alpha} \mathcal{N}_\alpha$$，$$\pi _\alpha : Y \to Y_\alpha$$ 是投影。则
+**(1)** 设 $(X, \mathcal{M})$、$(Y_\alpha , \mathcal{N}_\alpha ) (\alpha \in A)$ 是可测空间，$$Y = \prod_{\alpha} Y_\alpha$$，$$\mathcal{N} = \otimes _{\alpha} \mathcal{N}_\alpha$$，$$\pi _\alpha : Y \to Y_\alpha$$ 是投影。则
 
 $$f : X \to Y\text{ 可测} \iff f_\alpha = \pi _\alpha \circ  f\text{ 可测}(\forall\alpha \in A)$$
 
-**(2)** 特别地，$$f : X \to \mathbb{C}$$ 可测 ⟺ $$Re f$$ 与 $$Im f$$ 都可测。
+**(2)** 特别地，$$f : X \to \mathbb{C}$$ 可测 $\iff$ $$Re f$$ 与 $$Im f$$ 都可测。
 
-(1) 的 (⟹)：投影 π_α 本身可测（π_α⁻¹(E_α) 是柱集），用复合保持。
+(1) 的 $(\implies )$：投影 $\pi _\alpha$ 本身可测（$\pi _\alpha ^{-1}(E_\alpha )$ 是柱集），用复合保持。
 
-(1) 的 (⟸)：只要证柱集的原像可测 —— 而 $$f^{-1}(\pi _\alpha^{-1}(E_\alpha)) = f_\alpha^{-1}(E_\alpha)$$ 可测 —— 再由积 σ-代数由柱集生成、用判定准则 (2)。
+(1) 的 $(\Longleftarrow )$：只要证柱集的原像可测 —— 而 $$f^{-1}(\pi _\alpha^{-1}(E_\alpha)) = f_\alpha^{-1}(E_\alpha)$$ 可测 —— 再由积 $\sigma$代数由柱集生成、用判定准则 (2)。
 
-(2) 的证明用了一个干净的事实：**ℂ 的 Borel σ-代数与 ℝ² 的 Borel σ-代数是同一个**：
+(2) 的证明用了一个干净的事实：**$\mathbb{C}$ 的 $Borel \sigma$代数与 $\mathbb{R}^{2}$ 的 $Borel \sigma$代数是同一个**：
 
 
 
@@ -1337,18 +1335,18 @@ $$\mathfrak{B}_\mathbb{C} = \mathfrak{B}_{\mathbb{R}^2} = \mathfrak{B}_\mathbb{R
 
 
 
-于是 (2) 就是 (1) 在 A = {1, 2} 时的特例。
+于是 (2) 就是 (1) 在 $A = \{1, 2\}$ 时的特例。
 
 参考：Folland, Real Analysis, Prop. 2.3
 
 #### 可测函数的封闭性　`prop.measurable-closure`
 *命题*　命题：可测函数对和、积、sup、max、极限封闭
 
-以下都设函数取值在 ℝ̄ = [−∞, +∞] 或 ℂ 中，且可测。
+以下都设函数取值在 $\bar{\mathbb{R}} = [-\infty , +\infty ]$ 或 $\mathbb{C}$ 中，且可测。
 
 - **和与积**：$$f + g$$、$$fg$$ 可测；
-- **逐点上确界**：$$\{f_j\}$$ 可测 ⟹ $$sup_j f_j$$ 可测；
-- **有限个取大**：$$f, g$$ 可测 ⟹ $$\max_{f, g}$$ 可测；
+- **逐点上确界**：$$\{f_j\}$$ 可测 $\implies$ $$sup_j f_j$$ 可测；
+- **有限个取大**：$$f, g$$ 可测 $\implies$ $$\max_{f, g}$$ 可测；
 - **极限**：若 $$lim_j f_j$$ 逐点存在，则它是可测的。
 
 $$sup_j f_j$$ 的关键：$$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty])$$ 是可数并，故可测。（取 $$(a, +\infty]$$ 这族生成元就够了。）
@@ -1385,13 +1383,13 @@ $$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}$$
 
 $$0 \le \varphi_1 \le \varphi_2 \le \cdots \le f, \quad  \varphi_n \to f\text{ 逐点}, $$
 
-并且**在 f 有界的集合上还是一致收敛**。
+并且**在 $f$ 有界的集合上还是一致收敛**。
 
 **(b)** 一般地（$$f : X \to \mathbb{C}$$ 可测），可取 $$\{\varphi_n\}$$ 简单使
 
 $$0 \le |\varphi_1| \le |\varphi_2| \le \cdots \le |f|, \quad  \varphi_n \to f\text{ 逐点}$$
 
-(a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $$2^{-n}$$ 切碎，超过 n 的部分一律抹成 n ——
+(a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $$2^{-n}$$ 切碎，超过 $n$ 的部分一律抹成 $n$ ——
 
 
 
@@ -1401,7 +1399,7 @@ $$E_n^k = f^{-1}((k\cdot2^{-n}, (k+1)\cdot2^{-n}]), \quad  F_n = f^{-1}((n, +\in
 
 
 
-每一层都是可测集的原像，所以 φₙ 是简单函数；n 越大格子越细、天花板越高，于是单调递增地爬到 f。
+每一层都是可测集的原像，所以 $\varphi _{n}$ 是简单函数；$n$ 越大格子越细、天花板越高，于是单调递增地爬到 $f$。
 
 (b) 把 $$f = g + ih$$ 拆成 $$g = g^+ - g^-$$、$$h = h^+ - h^-$$，对四个非负部分用 (a)：
 
@@ -1414,15 +1412,15 @@ $$\varphi_n = \psi_n^+ - \psi_n^- + i(\zeta _n^+ - \zeta _n^-)$$
 #### 完备性 ⟺ 不破坏可测性　`prop.complete-measurable`
 *命题*　命题：μ 完备 ⟺ 几乎处处相等 / 几乎处处收敛不破坏可测性
 
-设 (X, ℳ, μ) 是测度空间。则 μ **完备**当且仅当下面两条都成立：
+设 $(X, \mathcal{M}, \mu )$ 是测度空间。则 $\mu$ **完备**当且仅当下面两条都成立：
 
-**(a)** $$f$$ 可测且 $$f = g$$ μ-a.e. ⟹ $$g$$ 可测；
+**(a)** $$f$$ 可测且 $$f = g$$ $\mu -\text{a.e.} \implies$ $$g$$ 可测；
 
-**(b)** 每个 $$f_n$$ 可测且 $$f_n \to f$$ μ-a.e. ⟹ $$f$$ 可测。
+**(b)** 每个 $$f_n$$ 可测且 $$f_n \to f$$ $\mu -\text{a.e.} \implies$ $$f$$ 可测。
 
-(⟹) 是完备性的直接好处：重新定义零集上的值不改变可测性。
+$(\implies )$ 是完备性的直接好处：重新定义零集上的值不改变可测性。
 
-(⟸) 是这条命题有意思的地方 —— 它说明**完备性恰好是「不破坏可测性」所需的全部**。构造：取零集 E（μ(E) = 0）里一个不可测的子集 F（若 μ 不完备，这样的 F 存在），令
+$(\Longleftarrow )$ 是这条命题有意思的地方 —— 它说明**完备性恰好是「不破坏可测性」所需的全部**。构造：取零集 $E$（$\mu (E) = 0$）里一个不可测的子集 $F$（若 $\mu$ 不完备，这样的 $F$ 存在），令
 
 
 
@@ -1430,7 +1428,7 @@ $$f \equiv  0, \quad  g = \chi_F$$
 
 
 
-则 $$f$$ 可测、$$f = g$$ 在 E 外处处成立（即 a.e.），但
+则 $$f$$ 可测、$$f = g$$ 在 $E$ 外处处成立（即 a.e.），但
 
 
 
@@ -1438,20 +1436,20 @@ $$\{f \ne g\} = F$$
 
 
 
-不可测，所以 $$g^{-1}((0, +\infty]) = F$$ 不可测，g 不可测。(a) 失败 ⟹ μ 不完备。
+不可测，所以 $$g^{-1}((0, +\infty]) = F$$ 不可测，$g$ 不可测。(a) 失败 $\implies \mu$ 不完备。
 
 参考：Folland, Real Analysis, Prop. 2.11
 
 #### 完备化后可改在零集上　`prop.completion-measurable-function`
 *命题*　命题：完备化空间上的可测函数，几乎处处等于一个原空间可测函数
 
-设 (X, ℳ, μ) 是测度空间，$$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\bar{\mathcal{M}}$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使
+设 $(X, \mathcal{M}, \mu )$ 是测度空间，$$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\bar{\mathcal{M}}$$-可测的函数，则存在 **$\mathcal{M}$可测**的函数 $$g$$ 使
 
 $$f = g\quad  \bar{\mu}-a.e.$$
 
-直观：完备化只多加了零集的子集，所以 ℳ̄-可测函数与 ℳ-可测函数只差在零集上的取值。
+直观：完备化只多加了零集的子集，所以 $\bar{\mathcal{M}}$可测函数与 $\mathcal{M}$可测函数只差在零集上的取值。
 
-证明思路（笔记里写的）：先看 $$f = \chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \chi_{E'}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\{\varphi_n\} \to f$$，每个 $$\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\psi_n$$。把零集并起来得 $$N \in \mathcal{M}$$，$$\mu(N) = 0$$，$$N \supseteq \bigcup E_n$$，令
+证明思路（笔记里写的）：先看 $$f = \chi_E$$ 的情形（此时 $E = E' \cup F$，$E' \in \mathcal{M}$、$F$ 含于零集，取 $$g = \chi_{E'}$$）；对 $\mathcal{M}$可测的简单函数显然；一般情形取简单函数列 $$\{\varphi_n\} \to f$$，每个 $$\varphi_n$$ 在某个 $\bar{\mathcal{M}}$零集 $$E_n$$ 外等于一个 $\mathcal{M}$可测的 $$\psi_n$$。把零集并起来得 $$N \in \mathcal{M}$$，$$\mu(N) = 0$$，$$N \supseteq \bigcup E_n$$，令
 
 
 
@@ -1459,22 +1457,22 @@ $$g = lim_n \chi_{N^c} \cdot \varphi_n$$
 
 
 
-则 $$g = f$$ 在 $$N^c$$ 上成立，且 $$g$$ 是 ℳ-可测的。
+则 $$g = f$$ 在 $$N^c$$ 上成立，且 $$g$$ 是 $\mathcal{M}$可测的。
 
 参考：Folland, Real Analysis, Prop. 2.12
 
 #### L⁺　`def.lplus`
 *定义*　L⁺：非负可测函数全体
 
-固定测度空间 (X, ℳ, μ)。记
+固定测度空间 $(X, \mathcal{M}, \mu )$。记
 
 $$L^+ := \{ f : X \to [0, +\infty] : f\text{ 可测} \}$$
 
 即取值在**扩充**非负实数里的可测函数全体。
 
-⚠ 取值允许是 +∞，这是刻意的：先把积分对 [0, +∞] 值的函数定义好，收敛定理（sup / 极限）在整个 L⁺ 里封闭，不必反复讨论「积分是不是有限」。
+⚠ 取值允许是 $\infty$，这是刻意的：先把积分对 $[0, +\infty ]$ 值的函数定义好，收敛定理（sup / 极限）在整个 $L^{+}$ 里封闭，不必反复讨论「积分是不是有限」。
 
-「可积」（积分有限）是之后单独加的条件，见 L¹ 的定义。
+「可积」（积分有限）是之后单独加的条件，见 $L^{1}$ 的定义。
 
 参考：Folland, Real Analysis, §2.2
 
@@ -1489,9 +1487,9 @@ $$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}, \quad  a_j \ge 0, E_j \in \mathcal{M}
 
 $$\int \varphi d\mu := \sum_{j=1}^{n} a_j \mu(E_j)$$
 
-这就是「面积 = 各层高度 × 各层测度」—— 完全照着 Riemann 和的样子写，只是把区间换成了可测集。
+这就是「面积 $=$ 各层高度 $\times$ 各层测度」—— 完全照着 Riemann 和的样子写，只是把区间换成了可测集。
 
-要检查**良定义**：同一个 φ 可以写成不同的标准形式（比如把某个 Eⱼ 再拆开），但由 μ 的有限可加性，结果一样。
+要检查**良定义**：同一个 $\varphi$ 可以写成不同的标准形式（比如把某个 $E_{j}$ 再拆开），但由 $\mu$ 的有限可加性，结果一样。
 
 约定 $$0 \cdot \infty = 0$$：这一步很关键 —— 它让「在无穷测度集上取 0 的函数」积分为 0，符合直觉。
 
@@ -1505,15 +1503,15 @@ $$\int \varphi d\mu := \sum_{j=1}^{n} a_j \mu(E_j)$$
 - **(a)** $$c > 0 \implies \int c\varphi = c\int \varphi$$
 - **(b)** $$\int (\varphi + \psi) = \int \varphi + \int \psi$$
 - **(c)** $$\varphi \le \psi \implies \int \varphi \le \int \psi$$
-- **(d)** $$A \mapsto \int_A \varphi d\mu$$ 是 ℳ 上的**测度**。
+- **(d)** $$A \mapsto \int_A \varphi d\mu$$ 是 $\mathcal{M}$ 上的**测度**。
 
-(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 A）全部免费。
+(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 $A$）全部免费。
 
 
 
-⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$lim_n \int_{E_n} \varphi = \int \varphi$$，用的就是「A ↦ ∫_A φ 是测度」加上测度的下连续性（$$E_n \uparrow  X$$）。
+⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$lim_n \int_{E_n} \varphi = \int \varphi$$，用的就是「$A \mapsto \int _A \varphi$ 是测度」加上测度的下连续性（$$E_n \uparrow  X$$）。
 
-(a) 里 c > 0 而不是 c ≥ 0：因为约定 0·∞ = 0，c = 0 时左边也自动成立，写成 c > 0 只是为了不啰嗦。
+(a) 里 $c > 0$ 而不是 $c \ge 0$：因为约定 $0\cdot \infty = 0$，$c = 0$ 时左边也自动成立，写成 $c > 0$ 只是为了不啰嗦。
 
 参考：Folland, Real Analysis, Theorem 2.13
 
@@ -1524,9 +1522,9 @@ $$\int \varphi d\mu := \sum_{j=1}^{n} a_j \mu(E_j)$$
 
 $$\int f d\mu := sup \{ \int \varphi d\mu : 0 \le \varphi \le f, \varphi\text{ 是简单函数} \}$$
 
-直观：用简单函数从**下面**去顶 f，取这些面积的**上确界**。这与 Jordan 测度「从外面盖、从里面填」的做法不同 —— 这里只从里面填。
+直观：用简单函数从**下面**去顶 $f$，取这些面积的**上确界**。这与 Jordan 测度「从外面盖、从里面填」的做法不同 —— 这里只从里面填。
 
-为什么不再要求「外面的盖」：因为测度已经在对偶的那一侧（μ 本身是从外面用外测度定义的），简单函数的下确界只会把积分定义偏小。
+为什么不再要求「外面的盖」：因为测度已经在对偶的那一侧（$\mu$ 本身是从外面用外测度定义的），简单函数的下确界只会把积分定义偏小。
 
 ⚠ 这个定义只对非负函数管用。对一般实值函数，先拆成正负部再相减（见「复函数的积分」）。
 
@@ -1547,7 +1545,7 @@ $$\int f = \lim_{n\to\infty} \int f_n$$
 
 对比 Riemann 积分：那里「积分与极限交换」需要一致收敛这样强的条件；这里只要**单调**就够了 —— 这就是 Lebesgue 积分的全部好处。
 
-⚠ 两者都可能是 +∞，等式在扩充意义下理解。
+⚠ 两者都可能是 $\infty$，等式在扩充意义下理解。
 
 参考：Folland, Real Analysis, Theorem 2.14
 
@@ -1558,9 +1556,9 @@ $$\int f = \lim_{n\to\infty} \int f_n$$
 
 $$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int f_n$$
 
-（现在 $f_n \ge 0$，所以两边都可能是 +∞；结论等价于：不可能出现「逐项积分发散而整体积分有限」的怪事。）
+（现在 $f_n \ge 0$，所以两边都可能是 $\infty$；结论等价于：不可能出现「逐项积分发散而整体积分有限」的怪事。）
 
-用法上这就是**无条件地交换 ∫ 和 ∑**，不需要控制函数 —— 代价是要求非负。有正有负时必须换 DCT。
+用法上这就是**无条件地交换 $\int$ 和 $\sum$**，不需要控制函数 —— 代价是要求非负。有正有负时必须换 DCT。
 
 参考：Folland, Real Analysis, Theorem 2.15
 
@@ -1571,18 +1569,18 @@ $$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int f_n$$
 
 $$\int f d\mu = 0 \iff f = 0 \mu-a.e.$$
 
-(⟸) 只要 f 在零集外为零，下确界里的每个简单函数 φ ≤ f 也几乎处处为零，从而 ∫φ = 0。
+$(\Longleftarrow )$ 只要 $f$ 在零集外为零，下确界里的每个简单函数 $\varphi \le f$ 也几乎处处为零，从而 $\int \varphi = 0$。
 
-(⟹) 记 $$A_n = \{f > 1/n\}$$，则 $$(1/n)\cdot\mu(A_n) \le \int f = 0$$，故 μ(Aₙ) = 0；而 $$\{f > 0\} = \bigcup_n A_n$$ 是零测的。
+$(\implies )$ 记 $$A_n = \{f > 1/n\}$$，则 $$(1/n)\cdot\mu(A_n) \le \int f = 0$$，故 $\mu (A_{n}) = 0$；而 $$\{f > 0\} = \bigcup_n A_n$$ 是零测的。
 
-⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 L¹ 里「f = g」按 a.e. 理解的原因。
+⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 $L^{1}$ 里「$f = g$」按 a.e. 理解的原因。
 
 参考：Folland, Real Analysis, Prop. 2.16
 
 #### MCT（a.e. 版本）　`cor.mct-ae`
 *推论*　推论：单调收敛定理的几乎处处版本
 
-设 $$\{f_n\} \subseteq L^+$$，$$f \in L^+$$。若对**几乎处处的** x 有
+设 $$\{f_n\} \subseteq L^+$$，$$f \in L^+$$。若对**几乎处处的** $x$ 有
 
 $$f_n(x) \uparrow  f(x), $$
 
@@ -1590,7 +1588,7 @@ $$f_n(x) \uparrow  f(x), $$
 
 $$\int f = \lim_{n\to\infty} \int f_n$$
 
-把例外集 N（μ(N) = 0）上的值全部改掉不影响任何一边的积分：左边用「积分为零 ⟺ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。
+把例外集 $N$（$\mu (N) = 0$）上的值全部改掉不影响任何一边的积分：左边用「积分为零 $\iff$ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。
 
 #### Fatou 引理　`lem.fatou`
 *引理*　Fatou 引理（Fatou's Lemma）
@@ -1603,7 +1601,7 @@ $$\int \liminf_{n\to\infty} f_n \le \liminf_{n\to\infty} \int f_n$$
 
 这是 MCT 去掉单调性后剩下的东西 —— 单调性一旦丢掉，等号就退化成不等式。
 
-反向的例子：$$f_n = \chi_{[n, n+1]}$$（在 ℝ 上），则每个 ∫fₙ = 1 但 ∫liminf fₙ = 0。
+反向的例子：$$f_n = \chi_{[n, n+1]}$$（在 $\mathbb{R}$ 上），则每个 $\int f_{n} = 1$ 但 $\int liminf f_{n} = 0$。
 
 参考：Folland, Real Analysis, Theorem 2.18
 
@@ -1622,13 +1620,13 @@ a.e. 收敛时 $$lim inf f_n = f$$，直接套 Fatou 引理即可。
 设 $$f \in L^+$$ 且 $$\int f < \infty$$。则
 
 - $$\{x : f(x) = \infty\}$$ 是零集；
-- $$\{x : f(x) > 0\}$$ 是 **σ-有限**的（即它是可数个有限测度集之并）。
+- $$\{x : f(x) > 0\}$$ 是 **$\sigma$有限**的（即它是可数个有限测度集之并）。
 
-第一条：若 $$\mu(\{f = \infty\}) > 0$$，则对每个 n 有 $$\int f \ge n\cdot\mu(\{f=\infty\})$$，让 n → ∞ 得 ∫f = ∞。
+第一条：若 $$\mu(\{f = \infty\}) > 0$$，则对每个 $n$ 有 $$\int f \ge n\cdot\mu(\{f=\infty\})$$，让 $n \to \infty$ 得 $\int f = \infty$。
 
 第二条：$$\{f > 0\} = \bigcup_n \{f > 1/n\}$$，而 $$\mu(\{f > 1/n\}) \le n\int f < \infty$$ —— 所以是**可数**个有限测度集之并。
 
-⭐ 这条解释了为什么「L¹ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 σ-有限假设。
+⭐ 这条解释了为什么「$L^{1}$ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 $\sigma$有限假设。
 
 参考：Folland, Real Analysis, Prop. 2.20
 
@@ -1639,17 +1637,17 @@ a.e. 收敛时 $$lim inf f_n = f$$，直接套 Fatou 引理即可。
 
 $$f^+ = \max_{f, 0}, \quad  f^- = \max_{-f, 0}$$
 
-（两者都属于 L⁺，且 $$f = f^+ - f^-$$、$$|f| = f^+ + f^-$$。）若 $$\int f^+$$ 与 $$\int f^-$$ 中**至少一个有限**，定义
+（两者都属于 $L^{+}$，且 $$f = f^+ - f^-$$、$$|f| = f^+ + f^-$$。）若 $$\int f^+$$ 与 $$\int f^-$$ 中**至少一个有限**，定义
 
 $$\int f := \int f^+ - \int f^-$$
 
 对复值函数，拆实部虚部：$$\int f := \int Re f + i \int Im f$$（要求两个积分都有意义）。
 
-⚠ 「至少一个有限」是为了避免 ∞ − ∞：那是不定式，必须排除。
+⚠ 「至少一个有限」是为了避免 $\infty - \infty$：那是不定式，必须排除。
 
-若两个都有限，就说 f **可积**（见下一条）。
+若两个都有限，就说 $f$ **可积**（见下一条）。
 
-对复值函数，$$Re f$$ 与 $$Im f$$ 可积 ⟺ f 可积，因为 $$|Re f|, |Im f| \le |f| \le |Re f| + |Im f|$$。
+对复值函数，$$Re f$$ 与 $$Im f$$ 可积 $\iff f$ 可积，因为 $$|Re f|, |Im f| \le |f| \le |Re f| + |Im f|$$。
 
 参考：Folland, Real Analysis, §2.3
 
@@ -1664,11 +1662,11 @@ $$f\text{ 可积} \iff \int |f| d\mu < \infty$$
 
 $$L^1(\mu) = L^1(X, \mathcal{M}, \mu) = L^1(X, \mu)$$
 
-⭐ **可积 ⟺ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 |f| ∈ L⁺，一切非负情形的定理都能直接套用。
+⭐ **可积 $\iff$ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 $|f| \in L^{+}$，一切非负情形的定理都能直接套用。
 
 （对比 Riemann 反常积分：那里 $$\int f$$ 收敛而 $$\int|f|$$ 发散是可能的，叫条件收敛。）
 
-⚠ 严格说 L¹ 的元素是**函数的等价类**（a.e. 相等视为同一个），所以「∫|f| = 0 ⟹ f = 0」要在 a.e. 意义下读。这是后面 Lp 空间成为赋范空间的关键一步。
+⚠ 严格说 $L^{1}$ 的元素是**函数的等价类**（a.e. 相等视为同一个），所以「$\int |f| = 0 \implies f = 0$」要在 a.e. 意义下读。这是后面 Lp 空间成为赋范空间的关键一步。
 
 参考：Folland, Real Analysis, §2.3
 
@@ -1683,7 +1681,7 @@ $$\int (af + bg) = a\int f + b\int g\quad  \forall a, b \in \mathbb{R}$$
 
 「是向量空间」要在 a.e. 意义下理解（两个 a.e. 相等的可积函数看作同一个元素）。
 
-线性来自正负部分解后对简单函数的 (a)(b) 逐条验证 —— 这条本身不深，但它是 L¹ 成为**赋范空间**的第一步，后面 Lp 空间整套理论都从这儿开始。
+线性来自正负部分解后对简单函数的 (a)(b) 逐条验证 —— 这条本身不深，但它是 $L^{1}$ 成为**赋范空间**的第一步，后面 Lp 空间整套理论都从这儿开始。
 
 参考：Folland, Real Analysis, Prop. 2.21
 
@@ -1705,9 +1703,9 @@ $$| \int f d\mu | \le \int |f| d\mu$$
 
 $$\{x : f(x) \ne 0\}$$
 
-是 σ-有限的。
+是 $\sigma$有限的。
 
-把「积分有限的后果」分别用到 |f| 上即可：{f ≠ 0} = {|f| > 0}。
+把「积分有限的后果」分别用到 |f| 上即可：$\{f \ne 0\} = \{|f| > 0\}$。
 
 #### 何时两个函数积分处处相同　`prop.integrals-equal-iff`
 *命题*　命题：∫_E f = ∫_E g 对一切 E ⟺ f = g a.e.
@@ -1722,7 +1720,7 @@ $$f = g\quad  \mu-a.e.$$
 
 后面 Radon–Nikodym 定理的**唯一性**部分正是用的这一条 —— 两个密度给出同一个测度，就必须 a.e. 相等。
 
-（$E$ 取遍 ℳ 而不是只取 X，是关键：只对 X 相等是不够的。）
+（$E$ 取遍 $\mathcal{M}$ 而不是只取 $X$，是关键：只对 $X$ 相等是不够的。）
 
 参考：Folland, Real Analysis, Cor. 2.23
 
@@ -1741,15 +1739,15 @@ $$\int f = \lim_{n\to\infty} \int f_n$$
 
 
 
-· a.e. 收敛 —— 不能去掉（$$\chi_{[n,n+1]}$$ 反例）；
+$\cdot \text{a.e.}$ 收敛 —— 不能去掉（$$\chi_{[n,n+1]}$$ 反例）；
 
-· 控制函数 g ∈ L¹ —— 不能去掉（$$n\chi_{[0,1/n]}$$ 在 [0,1] 上每点趋于 0，但积分为 1）；
+$\cdot$ 控制函数 $g \in L^{1}$ —— 不能去掉（$$n\chi_{[0,1/n]}$$ 在 [0,1] 上每点趋于 0，但积分为 1）；
 
-· 必须是**可积**的 g，光是「有界」不够（在无穷测度空间上）。
+$\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。
 
 
 
-为什么叫「控制」：g 把所有 fₙ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。
+为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。
 
 参考：Folland, Real Analysis, Theorem 2.24
 
@@ -1764,7 +1762,7 @@ $$\sum_{j=1}^{\infty} \int |f_j| d\mu < \infty$$
 
 $$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j$$
 
-与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** Σ∫|fⱼ| < ∞ —— 用可积性换来「允许有正有负」。
+与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\Sigma \int |f_{j}| < \infty$ —— 用可积性换来「允许有正有负」。
 
 这是 Fubini–Tonelli 定理证明里的关键工具。
 
@@ -1773,19 +1771,19 @@ $$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j$$
 #### L¹ 里的逼近　`thm.approximation-L1`
 *定理*　定理：L¹ 中可用简单函数 / 连续函数逼近
 
-设 $$f \in L^1(\mu)$$。则对任意 ε > 0，存在简单函数 $$\varphi = \sum_j a_j \chi_{E_j}$$ 使
+设 $$f \in L^1(\mu)$$。则对任意 $\varepsilon > 0$，存在简单函数 $$\varphi = \sum_j a_j \chi_{E_j}$$ 使
 
 $$\int |f - \varphi| d\mu < \varepsilon$$
 
-进一步，若 μ 是 **ℝ 上的 Lebesgue–Stieltjes 测度**，还可以要求 Eⱼ 是开区间的有限并；甚至可以取一个**连续函数** g（在某个有界区间外恒为 0）使
+进一步，若 $\mu$ 是 **$\mathbb{R}$ 上的 Lebesgue–Stieltjes 测度**，还可以要求 $E_{j}$ 是开区间的有限并；甚至可以取一个**连续函数** $g$（在某个有界区间外恒为 0）使
 
 $$\int |f - g| d\mu < \varepsilon$$
 
-意义：**简单函数与连续函数在 L¹ 里是稠密的**。所以很多命题只要对这两类函数验证就够了，再取极限。
+意义：**简单函数与连续函数在 $L^{1}$ 里是稠密的**。所以很多命题只要对这两类函数验证就够了，再取极限。
 
-证明思路（笔记里的）：先把 f 拆成 Re f⁺、Re f⁻、Im f⁺、Im f⁻ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；ℝ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。
+证明思路（笔记里的）：先把 $f$ 拆成 $\operatorname{Re} f^{+}$、$\operatorname{Re} f^{-}$、$\operatorname{Im} f^{+}$、$\operatorname{Im} f^{-}$ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；$\mathbb{R}$ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。
 
-⚠ 连续函数那一句**依赖 μ 是 Lebesgue–Stieltjes 测度**：换一个任意测度，简单函数的逼近照旧，连续函数的说法就不成立了。
+⚠ 连续函数那一句**依赖 $\mu$ 是 Lebesgue–Stieltjes 测度**：换一个任意测度，简单函数的逼近照旧，连续函数的说法就不成立了。
 
 参考：Folland, Real Analysis, Theorem 2.26
 
@@ -1796,17 +1794,17 @@ $$\int |f - g| d\mu < \varepsilon$$
 
 $$F(t) := \int_X f(x, t) d\mu(x)$$
 
-**(a) 连续性**：若存在 $$g \in L^1(\mu)$$ 使 $$|f(x, t)| \le g(x)$$ 对一切 $$x, t$$ 成立，且对每个 x 有 $$\lim_{t\to t_0} f(x, t) = f(x, t_0)$$，则
+**(a) 连续性**：若存在 $$g \in L^1(\mu)$$ 使 $$|f(x, t)| \le g(x)$$ 对一切 $$x, t$$ 成立，且对每个 $x$ 有 $$\lim_{t\to t_0} f(x, t) = f(x, t_0)$$，则
 
 $$\lim_{t\to t_0} F(t) = F(t_0)$$
 
-**(b) 求导**：若 $$\partial f / \partial t$$ 处处存在，且存在 $$g \in L^1(\mu)$$ 使 $$| \partial f / \partial t(x, t) | \le g(x)$$ 对一切 $$x, t$$ 成立，则 F 可微，且
+**(b) 求导**：若 $$\partial f / \partial t$$ 处处存在，且存在 $$g \in L^1(\mu)$$ 使 $$| \partial f / \partial t(x, t) | \le g(x)$$ 对一切 $$x, t$$ 成立，则 $F$ 可微，且
 
 $$F'(t) = \int_X \partial f / \partial t(x, t) d\mu(x)$$
 
-两个控制条件都是「用同一个 g 控制一整族函数」—— 这正是 DCT 的标准用法。
+两个控制条件都是「用同一个 $g$ 控制一整族函数」—— 这正是 DCT 的标准用法。
 
-⚠ g 必须属于 L¹（不能只是「局部有界」）。
+⚠ $g$ 必须属于 $L^{1}$（不能只是「局部有界」）。
 
 这是「带参变量积分」的两个基本定理：连续性可以交换极限与积分，可导性可以交换导数与积分。
 
@@ -1815,13 +1813,13 @@ $$F'(t) = \int_X \partial f / \partial t(x, t) d\mu(x)$$
 #### 五种收敛　`def.convergence-modes`
 *定义*　收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹
 
-设 $$f_n, f : X \to \mathbb{C}$$ 可测，X 带测度 μ。
+设 $$f_n, f : X \to \mathbb{C}$$ 可测，$X$ 带测度 $\mu$。
 
 - **一致收敛** $$f_n \rightrightarrows  f$$：$$\forall\varepsilon > 0, \exists N > 0, \forall x \in X, n > N \implies |f_n(x) - f(x)| < \varepsilon$$
-- **几乎处处收敛** $$f_n \to f$$ a.e.：存在零集 E 使 $$f_n(x) \to f(x)$$ 对一切 $$x \in X \setminus E$$ 成立
+- **几乎处处收敛** $$f_n \to f$$ a.e.：存在零集 $E$ 使 $$f_n(x) \to f(x)$$ 对一切 $$x \in X \setminus E$$ 成立
 - **依测度收敛** $$f_n \to f$$ 依测度：$$\forall\varepsilon > 0, \forall\delta > 0, \exists N, \forall n > N : \mu(\{x : |f_n(x) - f(x)| > \delta\}) < \varepsilon$$
-- **L¹ 收敛**：$$\int |f_n - f| d\mu \to 0$$
-- **近一致收敛**：$$\forall\varepsilon > 0$$，存在 E 使 $$\mu(E) < \varepsilon$$ 且 $$f_n \rightrightarrows  f$$ 在 $$E^c$$ 上一致
+- **$L^{1}$ 收敛**：$$\int |f_n - f| d\mu \to 0$$
+- **近一致收敛**：$$\forall\varepsilon > 0$$，存在 $E$ 使 $$\mu(E) < \varepsilon$$ 且 $$f_n \rightrightarrows  f$$ 在 $$E^c$$ 上一致
 
 强弱关系（都能画成箭头）：
 
@@ -1837,30 +1835,30 @@ $$L^1 \implies\text{ 依测度}$$
 
 ⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。
 
-⚠ **a.e. 收敛与依测度收敛互不包含**：a.e. ⟹ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 ⇏ a.e.（见反例 iv）。
+⚠ **a.e. 收敛与依测度收敛互不包含**：$\text{a.e.} \implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 ⇏ a.e.（见反例 iv）。
 
-⚠ L¹ 收敛 ⇏ a.e. 收敛，a.e. 收敛 + 控制函数 ⟹ L¹ 收敛（这就是 DCT）。
+⚠ $L^{1}$ 收敛 ⇏ a.e. 收敛，a.e. 收敛 + 控制函数 $\implies L^{1}$ 收敛（这就是 DCT）。
 
 参考：Folland, Real Analysis, §2.4
 
 #### 四个标准反例　`prop.convergence-counterexamples`
 *命题*　命题：四个标准反例（把各种收敛区分开）
 
-在 ℝ（或 [0, 1]）上取 Lebesgue 测度。
+在 $\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。
 
 - **(i)** $$f_n = n^{-1} \chi_{(0, n)}$$：$$f_n \rightrightarrows  0$$ **一致**收敛。
-- **(ii)** $$f_n = \chi_{(n, n+1)}$$：$$f_n \to 0$$ **逐点**（因而 a.e.），但**不一致**（$$sup_x |f_n| = 1$$），也不 L¹ 收敛（$$\int f_n = 1 \nrightarrow  0$$）。
-- **(iii)** $$f_n = n \chi_{[0, 1/n]}$$：$$f_n \to 0$$ a.e.（也依测度收敛，因为 $$\mu(\{|f_n| > \delta\}) = 1/n \to 0$$），但**不 L¹ 收敛**（$$\int f_n = 1$$ 对一切 n）。
+- **(ii)** $$f_n = \chi_{(n, n+1)}$$：$$f_n \to 0$$ **逐点**（因而 a.e.），但**不一致**（$$sup_x |f_n| = 1$$），也不 $L^{1}$ 收敛（$$\int f_n = 1 \nrightarrow  0$$）。
+- **(iii)** $$f_n = n \chi_{[0, 1/n]}$$：$$f_n \to 0$$ a.e.（也依测度收敛，因为 $$\mu(\{|f_n| > \delta\}) = 1/n \to 0$$），但**不 $L^{1}$ 收敛**（$$\int f_n = 1$$ 对一切 $n$）。
 - **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——
 
 $$f_1 = \chi_{[0,1]}, f_2 = \chi_{[0,1/2]}, f_3 = \chi_{[1/2,1]}, f_4 = \chi_{[0,1/4]}, \cdots$$
 即 $$f_n = \chi_{[j/2^k, (j+1)/2^k]}$$（$$n = 2^k + j$$）：它**依测度**收敛到 0，但对**任何** $$x \in [0,1]$$ 都**不**收敛。
 
-(iii) 是「a.e. 收敛 ⇏ L¹ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
+(iii) 是「a.e. 收敛 $⇏ L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
 
 (iv) 是「依测度收敛 ⇏ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。
 
-⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 L¹ 各自独立。
+⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 $L^{1}$ 各自独立。
 
 参考：Folland, Real Analysis, §2.4
 
@@ -1873,9 +1871,9 @@ $$\forall\varepsilon > 0, \mu(\{x : |f_n(x) - f_m(x)| \ge \varepsilon\}) \to 0\q
 
 即：在测度意义下，下标够大之后各项彼此越来越近。
 
-**依测度 Cauchy ⟺ 依测度收敛**：两个方向都能证（收敛 ⟹ Cauchy 由三角不等式；Cauchy ⟹ 收敛就是下一条定理）。
+**依测度 $Cauchy \iff$ 依测度收敛**：两个方向都能证（收敛 $\implies Cauchy$ 由三角不等式；$Cauchy \implies$ 收敛就是下一条定理）。
 
-这是「依测度」这个拓扑的一个好处：它**完备**。相比之下 a.e. 收敛既不强也不完备，L¹ 收敛则完备（Riesz–Fischer）。
+这是「依测度」这个拓扑的一个好处：它**完备**。相比之下 a.e. 收敛既不强也不完备，$L^{1}$ 收敛则完备（Riesz–Fischer）。
 
 参考：Folland, Real Analysis, §2.4
 
@@ -1894,7 +1892,7 @@ $$f_{n_j} \to f\quad  a.e.$$
 
 证明的工具是 Borel–Cantelli 型的推理：造出 $$\sum_k \mu(E_k) < \infty$$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。
 
-这也是 Riesz 定理（a.e. 收敛 ⟺ 依测度收敛 + 子列）的那一半。
+这也是 Riesz 定理（a.e. 收敛 $\iff$ 依测度收敛 + 子列）的那一半。
 
 参考：Folland, Real Analysis, Theorem 2.30
 
@@ -1910,7 +1908,7 @@ $$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
 
 （因为 $$\varepsilon \chi_{\{|g| \ge \varepsilon\}} \le |g|$$，两边积分即可。）取 $$g = f_n - f$$ 就得到结论。
 
-⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 L¹ 收敛。
+⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 $L^{1}$ 收敛。
 
 参考：Folland, Real Analysis, Prop. 2.29
 
@@ -1923,7 +1921,7 @@ $$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ �
 
 ⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。
 
-⚠ **「$$\mu(X) < \infty$$」不能省。** 反例：$$f_n = \chi_{(n, n+1)}$$ 在 ℝ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 sup = 1，无法一致收敛。
+⚠ **「$$\mu(X) < \infty$$」不能省。** 反例：$$f_n = \chi_{(n, n+1)}$$ 在 $\mathbb{R}$ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 $\sup = 1$，无法一致收敛。
 
 这是「丢掉小集合换取好性质」这一类结论的模板（Lusin 定理也是这个模式）。
 
@@ -1932,7 +1930,7 @@ $$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ �
 #### Lusin 定理　`cor.lusin`
 *推论*　Lusin 定理：可测函数几乎处处连续
 
-设 $$f : [a, b] \to \mathbb{C}$$ 是 Lebesgue 可测的。则对任意 ε > 0，存在**紧集** $$E \subseteq [a, b]$$ 使
+设 $$f : [a, b] \to \mathbb{C}$$ 是 Lebesgue 可测的。则对任意 $\varepsilon > 0$，存在**紧集** $$E \subseteq [a, b]$$ 使
 
 $$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
 
@@ -1940,18 +1938,18 @@ $$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
 
 与 Egorov 的分工：Egorov 说「一列函数」几乎一致收敛，Lusin 说「一个函数」几乎连续。两者都是「丢掉小集合换取正则性」。
 
-⚠ 挖掉的那块必须容许是开集，剩下的必须是**紧**集（在 [a,b] 上紧 ⟺ 有界闭），不能只是可测集。
+⚠ 挖掉的那块必须容许是开集，剩下的必须是**紧**集（在 [a,b] 上紧 $\iff$ 有界闭），不能只是可测集。
 
 参考：Folland, Real Analysis, Theorem 2.34
 
 #### 乘积测度　`def.product-measure`
 *定义*　乘积测度（Product Measure μ × ν）
 
-设 (X, ℳ, μ) 与 (Y, 𝒩, ν) 是测度空间。
+设 $(X, \mathcal{M}, \mu )$ 与 $(Y, \mathcal{N}, \nu )$ 是测度空间。
 
 **① 矩形**：形如 $$A \times B$$（$$A \in \mathcal{M}$$，$$B \in \mathcal{N}$$）的集合叫（可测）矩形。全体矩形**生成** $$\mathcal{M} \otimes  \mathcal{N}$$。
 
-**② 矩形上的预测度**：令 𝒜 为**矩形的有限不交并**全体。对
+**② 矩形上的预测度**：令 $\mathcal{A}$ 为**矩形的有限不交并**全体。对
 
 $$E = \bigsqcup_{j=1}^{n} (A_j \times B_j)$$
 
@@ -1959,19 +1957,19 @@ $$E = \bigsqcup_{j=1}^{n} (A_j \times B_j)$$
 
 $$\pi (E) := \sum_{j=1}^{n} \mu(A_j) \nu(B_j)$$
 
-则 π 是代数 𝒜 上的**预测度**。
+则 $\pi$ 是代数 $\mathcal{A}$ 上的**预测度**。
 
-**③ 扩张**：π 诱导 X × Y 上的外测度，限制在 $$\mathcal{M} \otimes  \mathcal{N}$$ 上得到一个测度，记作
+**③ 扩张**：$\pi$ 诱导 $X \times Y$ 上的外测度，限制在 $$\mathcal{M} \otimes  \mathcal{N}$$ 上得到一个测度，记作
 
 $$\mu \times \nu$$
 
 即**乘积测度**。
 
-$$\pi $$ 的良定义要检查（同一个 E 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。
+$$\pi $$ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。
 
-**σ-有限的时候一切顺利**：若 μ、ν 都 σ-有限，则 μ×ν 也 σ-有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。
+**$\sigma$有限的时候一切顺利**：若 $\mu$、$\nu$ 都 $\sigma$有限，则 $\mu \times \nu$ 也 $\sigma$有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。
 
-⚠ 这一步的整个机器（预测度 → 外测度 → Carathéodory 扩张 → 唯一性）就是「测度的构造」那个星团里现成的四件套。
+⚠ 这一步的整个机器（预测度 $\to$ 外测度 $\to Carathéodory$ 扩张 $\to$ 唯一性）就是「测度的构造」那个星团里现成的四件套。
 
 参考：Folland, Real Analysis, §2.5；Halmos, Measure Theory, §35
 
@@ -1983,7 +1981,7 @@ $$\pi $$ 的良定义要检查（同一个 E 可以拆成不同的矩形不交�
 $$E_x := \{y \in Y : (x, y) \in E\}$$
 $$E^y := \{x \in X : (x, y) \in E\}$$
 
-分别叫 E 在 x 处的**纵截口**与在 y 处的**横截口**。
+分别叫 $E$ 在 $x$ 处的**纵截口**与在 $y$ 处的**横截口**。
 
 类似地，对函数 $$f : X \times Y \to \mathbb{C}$$ 定义
 
@@ -2002,7 +2000,7 @@ $$f_x(y) := f^y(x) := f(x, y)$$
 
 **(b)** 若 $$f$$ 是 $$\mathcal{M} \otimes  \mathcal{N}$$-可测的，则对一切 $$x$$ 有 $$f_x$$ 是 $$\mathcal{N}$$-可测的，对一切 $$y$$ 有 $$f^y$$ 是 $$\mathcal{M}$$-可测的。
 
-证明是一个「先看矩形、再看 σ-代数」的标准套路：令
+证明是一个「先看矩形、再看 $\sigma$代数」的标准套路：令
 
 
 
@@ -2010,7 +2008,7 @@ $$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N}\text{ 且} E^y \i
 
 
 
-则 ℛ 包含所有矩形，而且**ℛ 是一个 σ-代数**（截口运算保持并、交、补）。于是 ℛ ⊇ ℳ ⊗ 𝒩。
+则 $\mathcal{R}$ 包含所有矩形，而且**$\mathcal{R}$ 是一个 $\sigma$代数**（截口运算保持并、交、补）。于是 $\mathcal{R} \supseteq \mathcal{M} ⊗ \mathcal{N}$。
 
 (b) 由 (a) 与两条恒等式得到：
 
@@ -2020,42 +2018,42 @@ $$f_x^{-1}(B) = (f^{-1}(B))_x, \quad  f^{y-1}(B) = (f^{-1}(B))^y$$
 
 
 
-⚠ 注意 (b) 说的是「**每一个** x 都行」，而 Fubini 定理里只能保证「几乎每一个」—— 那是因为 Fubini 还要它可积。
+⚠ 注意 (b) 说的是「**每一个** $x$ 都行」，而 Fubini 定理里只能保证「几乎每一个」—— 那是因为 Fubini 还要它可积。
 
 参考：Folland, Real Analysis, Prop. 2.34
 
 #### 单调类引理　`lem.monotone-class-lemma`
 *引理*　单调类引理（Monotone Class Lemma）
 
-若 𝒜 是一个**代数**，则由 𝒜 生成的单调类就是由 𝒜 生成的 σ-代数：
+若 $\mathcal{A}$ 是一个**代数**，则由 $\mathcal{A}$ 生成的单调类就是由 $\mathcal{A}$ 生成的 $\sigma$代数：
 
 $$\mathcal{A}\text{ 是代数} \implies \mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$$
 
-⭐ 这一条是证明「某个 σ-代数里所有集合都满足性质 P」的**标准武器**，用法固定两步：
+⭐ 这一条是证明「某个 $\sigma$代数里所有集合都满足性质 $P$」的**标准武器**，用法固定两步：
 
 
 
-1. 验证 P 对所有矩形（或 𝒜 中元素）成立；
+1. 验证 $P$ 对所有矩形（或 $\mathcal{A}$ 中元素）成立；
 
-2. 验证「满足 P 的集合」构成一个含 𝒜 的**单调类**。
+2. 验证「满足 $P$ 的集合」构成一个含 $\mathcal{A}$ 的**单调类**。
 
 
 
-于是 P 对 𝔪(𝒜) = ℳ(𝒜) 中所有集合成立。
+于是 $P$ 对 $\mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$ 中所有集合成立。
 
-⚠ 与「测度的构造」里那条「环 → σ-环 的判据」是姊妹结果：那条说环 + 单调 ⟹ σ-环，这条说代数 ⟹ 单调类与 σ-代数重合。
+⚠ 与「测度的构造」里那条「环 $\to \sigma$环 的判据」是姊妹结果：那条说环 + 单调 $\implies \sigma$环，这条说代数 $\implies$ 单调类与 $\sigma$代数重合。
 
-📌 笔记第 6 页把这条写得很清楚：标准形式就是「𝒜 是代数」这个前提。第 2 页上那条 ℳ(ℰ) = 𝔪(ℰ) 是它的**加强版**（条件松一档，只要求 ℰ 的补、并落进 𝔪(ℰ)），见「单调类定理」节点。
+📌 笔记第 6 页把这条写得很清楚：标准形式就是「$\mathcal{A}$ 是代数」这个前提。第 2 页上那条 $\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E})$ 是它的**加强版**（条件松一档，只要求 $\mathcal{E}$ 的补、并落进 $\mathfrak{m}(\mathcal{E})$），见「单调类定理」节点。
 
 参考：Folland, Real Analysis, Theorem 2.37；Halmos, Measure Theory, §6
 
 #### 乘积测度由截口给出　`thm.product-measure-sections`
 *定理*　定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)
 
-设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是 **σ-有限**的，$$E \in \mathcal{M} \otimes  \mathcal{N}$$。则
+设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是 **$\sigma$有限**的，$$E \in \mathcal{M} \otimes  \mathcal{N}$$。则
 
-- $$x \mapsto \nu(E_x)$$ 在 X 上可测；
-- $$y \mapsto \mu(E^y)$$ 在 Y 上可测；
+- $$x \mapsto \nu(E_x)$$ 在 $X$ 上可测；
+- $$y \mapsto \mu(E^y)$$ 在 $Y$ 上可测；
 
 并且
 
@@ -2063,7 +2061,7 @@ $$\mu \times \nu(E) = \int_X \nu(E_x) d\mu(x) = \int_Y \mu(E^y) d\nu(y)$$
 
 这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。
 
-证明的结构：先设 μ、ν **有限**，令
+证明的结构：先设 $\mu$、$\nu$ **有限**，令
 
 
 
@@ -2073,20 +2071,20 @@ $$\mathcal{C} = \{E \in \mathcal{M} \otimes  \mathcal{N} :\text{ 上面两条都
 
 - 矩形 $$E = A \times B$$：$$\nu(E_x) = \chi_A(x) \nu(B)$$，立刻成立；
 
-- 𝒞 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；
+$\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；
 
 
 
-于是 𝒞 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\mathcal{M} \otimes  \mathcal{N}$$。
+于是 $\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\mathcal{M} \otimes  \mathcal{N}$$。
 
-最后把「有限」推广到「σ-有限」：取 $$X \times Y = \bigcup (X_i \times Y_i)$$，对每个 $$E \cap (X_i \times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。
+最后把「有限」推广到「$\sigma$有限」：取 $$X \times Y = \bigcup (X_i \times Y_i)$$，对每个 $$E \cap (X_i \times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。
 
 参考：Folland, Real Analysis, Theorem 2.36
 
 #### Fubini–Tonelli　`thm.fubini-tonelli`
 *定理*　Fubini–Tonelli 定理（重积分可交换次序）
 
-设 (X, ℳ, μ)、(Y, 𝒩, ν) 是 **σ-有限**的测度空间。
+设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 是 **$\sigma$有限**的测度空间。
 
 **(a) Tonelli（非负情形，无附加条件）**：若 $$f \in L^+(X \times Y)$$，则
 
@@ -2102,47 +2100,47 @@ $$\int f d(\mu \times \nu) = \int_X ( \int_Y f(x, y) d\nu(y) ) d\mu(x) = \int_Y 
 - $$\int f_x d\nu \in L^1(\mu)$$、$$\int f^y d\mu \in L^1(\nu)$$（都在 a.e. 意义下有定义）；
 - 上面那两个三重等式同样成立。
 
-⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 f 可积，于是可以放心换序。
+⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。
 
-**Fubini 则必须假定可积** —— 否则一边是 +∞、一边是 −∞，换序会出事。
+**Fubini 则必须假定可积** —— 否则一边是 $\infty$、一边是 $-\infty$，换序会出事。
 
-⚠ 反例（不是可积但累次积分不等）：在 [0,1]² 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。
+⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。
 
-⚠ σ-有限不能省：在「ℝ 上的计数测度 × Lebesgue 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。
+⚠ $\sigma$有限不能省：在「$\mathbb{R}$ 上的计数测度 $\times Lebesgue$ 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。
 
 参考：Folland, Real Analysis, Theorem 2.37
 
 #### 完备情形的 F–T　`thm.fubini-complete`
 *定理*　定理：完备化的乘积测度上，Fubini–Tonelli 仍然成立
 
-设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是**完备**的 σ-有限测度空间，$$(X \times Y, \mathcal{L}, \lambda)$$ 是
+设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是**完备**的 $\sigma$有限测度空间，$$(X \times Y, \mathcal{L}, \lambda)$$ 是
 
 $$(X \times Y, \mathcal{M} \otimes  \mathcal{N}, \mu \times \nu)$$
 
-的**完备化**。设 f 是 ℒ-可测的。
+的**完备化**。设 $f$ 是 $\mathcal{L}$可测的。
 
-- 若 $$f \ge 0$$ 或 $$f \in L^1(\lambda)$$：$$f_x$$ 对 a.e. x 是 𝒩-可测的，$$f^y$$ 对 a.e. y 是 ℳ-可测的；
-- 若 $$f \in L^1(\lambda)$$：$$f_x$$、$$f^y$$ 对 a.e. 的 x、y 可积；并且 $$x \mapsto \int f_x d\nu$$、$$y \mapsto \int f^y d\mu$$ 可测；
+- 若 $$f \ge 0$$ 或 $$f \in L^1(\lambda)$$：$$f_x$$ 对 a.e. x 是 $\mathcal{N}$可测的，$$f^y$$ 对 a.e. y 是 $\mathcal{M}$可测的；
+- 若 $$f \in L^1(\lambda)$$：$$f_x$$、$$f^y$$ 对 a.e. 的 $x$、$y$ 可积；并且 $$x \mapsto \int f_x d\nu$$、$$y \mapsto \int f^y d\mu$$ 可测；
 - 此时
 
 $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\nu$$
 
-为什么需要这一条：**μ×ν 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 λ 里，而不是 ℳ⊗𝒩 里。
+为什么需要这一条：**$\mu \times \nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\lambda$ 里，而不是 $\mathcal{M}⊗\mathcal{N}$ 里。
 
-代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 ℒ 里多出来的那些集合只在零集上有区别。
+代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\mathcal{L}$ 里多出来的那些集合只在零集上有区别。
 
-证明的核心（笔记里的原话：「先证 f ≥ 0。若 f = χ_E，E = F ∪ G 其中 F ∈ ℳ⊗𝒩、G ⊆ H 且 μ×ν(H) = 0，设不交并，则 f = χ_F + χ_G。χ_F ✓（归 Fubini–Tonelli），χ_G ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**」）。
+证明的核心（笔记里的原话：「先证 $f \ge 0$。若 $f = \chi _E$，$E = F \cup G$ 其中 $F \in \mathcal{M}⊗\mathcal{N}$、$G \subseteq H$ 且 $\mu \times \nu (H) = 0$，设不交并，则 $f = \chi _F + \chi _G$。$\chi _F$ ✓（归 Fubini–Tonelli），$\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**」）。
 
 参考：Folland, Real Analysis, Theorem 2.39
 
 #### 乘积测度通常不完备　`prop.product-incomplete`
 *命题*　注记：μ、ν 完备时，μ × ν 常常不完备
 
-即使 μ 与 ν 都**完备**，$$\mu \times \nu$$ 也**经常是不完备的**：存在 $$E \in \mathcal{M} \otimes  \mathcal{N}$$ 使 $$\mu \times \nu(E) = 0$$，但 E 有子集不属于 $$\mathcal{M} \otimes  \mathcal{N}$$。
+即使 $\mu$ 与 $\nu$ 都**完备**，$$\mu \times \nu$$ 也**经常是不完备的**：存在 $$E \in \mathcal{M} \otimes  \mathcal{N}$$ 使 $$\mu \times \nu(E) = 0$$，但 $E$ 有子集不属于 $$\mathcal{M} \otimes  \mathcal{N}$$。
 
-这就是为什么必须单独有「完备情形的 F–T」：实际用的时候（比如 ℝ² 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 μ×ν。
+这就是为什么必须单独有「完备情形的 $F$–$T$」：实际用的时候（比如 $\mathbb{R}^{2}$ 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 $\mu \times \nu$。
 
-笔记第 7 页特意把这一句单独写出来（"Notice that if μ, ν are complete, μ × ν often incomplete."），说明这是个容易踩的坑。
+笔记第 7 页特意把这一句单独写出来（$"Notice that if \mu , \nu are complete, \mu \times \nu often incomplete."$），说明这是个容易踩的坑。
 
 参考：Folland, Real Analysis, §2.5
 
@@ -2152,19 +2150,19 @@ $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\n
 #### 符号测度　`def.signed-measure`
 *定义*　符号测度（Signed Measure）
 
-设 (X, ℳ) 是可测空间。$$\nu : \mathcal{M} \to [-\infty, +\infty]$$ 是**符号测度**，当且仅当
+设 $(X, \mathcal{M})$ 是可测空间。$$\nu : \mathcal{M} \to [-\infty, +\infty]$$ 是**符号测度**，当且仅当
 
 - $$\nu(\emptyset) = 0$$；
-- $$\nu$$ **至多取到 ±∞ 中的一个**（不能同时取到 +∞ 与 −∞）；
+- $$\nu$$ **至多取到 $\pm \infty$ 中的一个**（不能同时取到 $\infty$ 与 $-\infty$）；
 - 对两两不交的 $$\{E_j\} \subseteq \mathcal{M}$$：
 
 $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 且右边的级数绝对收敛}(\text{当} |\nu(\bigsqcup E_j)| < \infty\text{ 时})$$
 
 ⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $$\infty - \infty$$。（笔记里专门在旁边写了「防止重排问题」。）
 
-**例 1**：μ₁、μ₂ 是测度，其中至少一个有限 ⟹ $$\nu = \mu_1 - \mu_2$$ 是符号测度。
+**例 1**：$\mu _{1}$、$\mu _{2}$ 是测度，其中至少一个有限 $\implies$ $$\nu = \mu_1 - \mu_2$$ 是符号测度。
 
-**例 2**：$$f : X \to [-\infty, +\infty]$$ 可测，且 $$\int f^+ d\mu$$、$$\int f^- d\mu$$ 中至少一个有限 ⟹
+**例 2**：$$f : X \to [-\infty, +\infty]$$ 可测，且 $$\int f^+ d\mu$$、$$\int f^- d\mu$$ 中至少一个有限 $\implies$
 
 
 
@@ -2172,29 +2170,29 @@ $$\nu(E) := \int_E f d\mu$$
 
 
 
-是符号测度。这样的 f 叫**广义可积函数**（extended integrable function）。
+是符号测度。这样的 $f$ 叫**广义可积函数**（extended integrable function）。
 
 参考：Folland, Real Analysis, §3.1；Halmos, Measure Theory, §28
 
 #### 正集 / 负集 / 零集　`def.positive-negative-null`
 *定义*　正集 / 负集 / 零集（Positive, Negative, Null Set）
 
-设 ν 是符号测度，$$E \in \mathcal{M}$$。
+设 $\nu$ 是符号测度，$$E \in \mathcal{M}$$。
 
-- E 是**正的**：$$\nu(F) \ge 0$$ 对一切可测 $$F \subseteq E$$ 成立；
-- E 是**负的**：$$\nu(F) \le 0$$ 对一切可测 $$F \subseteq E$$ 成立；
-- E 是**零的**：$$\nu(F) = 0$$ 对一切可测 $$F \subseteq E$$ 成立。
+$E$ 是**正的**：$$\nu(F) \ge 0$$ 对一切可测 $$F \subseteq E$$ 成立；
+$E$ 是**负的**：$$\nu(F) \le 0$$ 对一切可测 $$F \subseteq E$$ 成立；
+$E$ 是**零的**：$$\nu(F) = 0$$ 对一切可测 $$F \subseteq E$$ 成立。
 
-⚠ 注意「正集」不是「ν(E) > 0 的集合」—— 它要求 **E 的每一个可测子集**都非负。
+⚠ 注意「正集」不是「$\nu (E) > 0$ 的集合」—— 它要求 **$E$ 的每一个可测子集**都非负。
 
-⚠ 与 μ-零集区分：这里的「零集」是关于符号测度 ν 说的（$$\nu(F) = 0$$），不是关于测度 μ 的。
+⚠ 与 $\mu$零集区分：这里的「零集」是关于符号测度 $\nu$ 说的（$$\nu(F) = 0$$），不是关于测度 $\mu$ 的。
 
 参考：Folland, Real Analysis, §3.1
 
 #### 正集的封闭性　`prop.positive-set-closure`
 *命题*　命题：正集的可测子集仍是正集；可数个正集之并仍是正集
 
-设 ν 是符号测度。
+设 $\nu$ 是符号测度。
 
 - 正集的每个可测子集都是正集；
 - **可数多个正集之并仍是正集**。
@@ -2208,17 +2206,17 @@ $$\nu(E) := \int_E f d\mu$$
 #### Hahn 分解定理　`thm.hahn-decomposition`
 *定理*　Hahn 分解定理（Hahn Decomposition Theorem）
 
-设 ν 是 $$(X, \mathcal{M})$$ 上的符号测度。则存在 $$P, N \in \mathcal{M}$$ 使
+设 $\nu$ 是 $$(X, \mathcal{M})$$ 上的符号测度。则存在 $$P, N \in \mathcal{M}$$ 使
 
 $$P \cup N = X, \quad  P \cap N = \emptyset, $$
 
-其中 **P 是正集、N 是负集**。
+其中 **$P$ 是正集、$N$ 是负集**。
 
-若 $$P', N'$$ 是另一对这样的集合，则 $$P \triangle  P' = N \triangle  N'$$ 是 ν-零集。
+若 $$P', N'$$ 是另一对这样的集合，则 $$P \triangle  P' = N \triangle  N'$$ 是 $\nu$零集。
 
-这就是「把空间按符号一刀切开」：ν 在 P 上非负、在 N 上非正。
+这就是「把空间按符号一刀切开」：$\nu$ 在 $P$ 上非负、在 $N$ 上非正。
 
-⚠ 「P △ P′ 是零集」只是说分解**在零集意义下唯一** —— 严格说 Hahn 分解并不唯一（可以把零集在 P、N 之间随意搬），但一切可测集的 ν-值完全相同。
+⚠ 「$P \triangle P'$ 是零集」只是说分解**在零集意义下唯一** —— 严格说 Hahn 分解并不唯一（可以把零集在 $P$、$N$ 之间随意搬），但一切可测集的 $\nu$值完全相同。
 
 ⭐ 有了它，「符号测度」就完全化归成「两个真测度」—— 这正是下一条 Jordan 分解的内容。
 
@@ -2231,26 +2229,26 @@ $$P \cup N = X, \quad  P \cap N = \emptyset, $$
 
 $$E \cap F = \emptyset, \quad  E \cup F = X, $$
 
-且 **E 是 μ-零集、F 是 ν-零集**。
+且 **$E$ 是 $\mu$零集、$F$ 是 $\nu$零集**。
 
-直观：两个测度「住在不相交的地方」—— 空间可以切成两块，一块完全没有 μ 的质量，另一块完全没有 ν 的质量。
+直观：两个测度「住在不相交的地方」—— 空间可以切成两块，一块完全没有 $\mu$ 的质量，另一块完全没有 $\nu$ 的质量。
 
-典型例子：Lebesgue 测度与「Dirac 测度 δ₀」相互奇异（取 E = ℝ∖{0}，F = {0}）；而任何绝对连续的测度与 Dirac 测度不奇异。
+典型例子：Lebesgue 测度与「Dirac 测度 $\delta _{0}$」相互奇异（取 $E = \mathbb{R}\setminus \{0\}$，$F = \{0\}$）；而任何绝对连续的测度与 Dirac 测度不奇异。
 
-⚠ 与「绝对连续」是一对对偶概念：$$\nu \ll  \mu$$ 说「ν 的质量都在 μ 给得出质量的地方」，$$\nu \perp  \mu$$ 说「ν 的质量都在 μ 没有质量的地方」。
+⚠ 与「绝对连续」是一对对偶概念：$$\nu \ll  \mu$$ 说「$\nu$ 的质量都在 $\mu$ 给得出质量的地方」，$$\nu \perp  \mu$$ 说「$\nu$ 的质量都在 $\mu$ 没有质量的地方」。
 
 参考：Folland, Real Analysis, §3.2
 
 #### Jordan 分解定理　`thm.jordan-decomposition`
 *定理*　Jordan 分解定理（Jordan Decomposition Theorem）
 
-设 ν 是符号测度。则存在**测度** $$\mu_1, \mu_2$$ 使
+设 $\nu$ 是符号测度。则存在**测度** $$\mu_1, \mu_2$$ 使
 
 $$\nu = \mu_1 - \mu_2, \quad  \mu_1 \perp  \mu_2, $$
 
 且其中**至少一个是有限的**。这样的分解是唯一的。
 
-具体地，取 ν 的一个 Hahn 分解 $$X = P \sqcup  N$$，令
+具体地，取 $\nu$ 的一个 Hahn 分解 $$X = P \sqcup  N$$，令
 
 $$\nu^+ := \nu(\cdot \cap P), \quad  \nu^- := -\nu(\cdot \cap N)$$
 
@@ -2266,71 +2264,71 @@ $$|\nu| := \nu^+ + \nu^-$$
 
 ⭐ 「符号测度」由此被完全拆解：任何符号测度都是一对相互奇异的测度之差。
 
-⚠ 「至少一个有限」对应符号测度定义里那条「至多取到 ±∞ 中的一个」。
+⚠ 「至少一个有限」对应符号测度定义里那条「至多取到 $\pm \infty$ 中的一个」。
 
 参考：Folland, Real Analysis, Theorem 3.4
 
 #### 绝对连续　`def.absolute-continuity`
 *定义*　绝对连续（Absolute Continuity ν ≪ μ）
 
-设 μ 是 (X, ℳ) 上的测度、ν 是符号测度。称 ν **关于 μ 绝对连续**，记作
+设 $\mu$ 是 $(X, \mathcal{M})$ 上的测度、$\nu$ 是符号测度。称 $\nu$ **关于 $\mu$ 绝对连续**，记作
 
 $$\nu \ll  \mu, $$
 
-当且仅当**每个 μ-零集都是 ν-零集**：
+当且仅当**每个 $\mu$零集都是 $\nu$零集**：
 
 $$\forall E \in \mathcal{M}, \mu(E) = 0 \implies \nu(E) = 0$$
 
-一句话：**μ 认为「没有」的地方，ν 也必须认为「没有」**。
+一句话：**$\mu$ 认为「没有」的地方，$\nu$ 也必须认为「没有」**。
 
-⚠ 注意这里 μ(E) = 0 用的是 μ（正测度），而 ν(E) = 0 用的是符号测度；等价说法是 $$|\nu|(E) = 0$$。
+⚠ 注意这里 $\mu (E) = 0$ 用的是 $\mu$（正测度），而 $\nu (E) = 0$ 用的是符号测度；等价说法是 $$|\nu|(E) = 0$$。
 
-显然 $$\mu \ll  |\mu|$$ 且 $$|\mu| \ll  \mu$$（对测度 μ 自身而言）。
+显然 $$\mu \ll  |\mu|$$ 且 $$|\mu| \ll  \mu$$（对测度 $\mu$ 自身而言）。
 
 参考：Folland, Real Analysis, §3.2
 
 #### 绝对连续与变差　`prop.ac-and-variations`
 *命题*　命题：ν ≪ μ ⟺ |ν| ≪ μ ⟺ ν⁺、ν⁻ ≪ μ；ν ⊥ μ 且 ν ≪ μ ⟹ ν = 0
 
-设 μ 是测度，ν 是符号测度。则
+设 $\mu$ 是测度，$\nu$ 是符号测度。则
 
 $$\nu \ll  \mu \iff |\nu| \ll  \mu \iff \nu^+ \ll  \mu\text{ 且} \nu^- \ll  \mu$$
 
 并且：若同时有 $$\nu \perp  \mu$$ 与 $$\nu \ll  \mu$$，则 $$\nu = 0$$。
 
-后半句「既奇异又绝对连续 ⟹ 等于零」是结构定理的**起始点**：Radon–Nikodym 要说的正是「一般情形下 ν 就是这两部分之和」。
+后半句「既奇异又绝对连续 $\implies$ 等于零」是结构定理的**起始点**：Radon–Nikodym 要说的正是「一般情形下 $\nu$ 就是这两部分之和」。
 
-证明：若 ν ⊥ μ，取 E（μ-零）与 F（ν-零）划分空间；由 ν ≪ μ 得 ν(E) = 0；又 ν(F) = 0，故 ν 在整个 X 上为 0。
+证明：若 $\nu \perp \mu$，取 $E$（$\mu$零）与 $F$（$\nu$零）划分空间；由 $\nu \ll \mu$ 得 $\nu (E) = 0$；又 $\nu (F) = 0$，故 $\nu$ 在整个 $X$ 上为 0。
 
 参考：Folland, Real Analysis, Prop. 3.5
 
 #### 绝对连续的 ε–δ 刻画　`thm.ac-epsilon-delta`
 *定理*　定理（有限情形）：ν ≪ μ ⟺ ∀ε>0 ∃δ>0 ( μ(E)<δ ⟹ |ν(E)|≤ε )
 
-设 ν 是**有限**符号测度、μ 是测度。则
+设 $\nu$ 是**有限**符号测度、$\mu$ 是测度。则
 
 $$\nu \ll  \mu \iff \forall\varepsilon > 0, \exists\delta > 0 : \mu(E) < \delta \implies |\nu(E)| \le \varepsilon$$
 
 把「零集上为零」升级成了定量的「小测度上小值」—— 这正是绝对连续这个名字里「连续」两个字的来源。
 
-⚠ 「ν 有限」不能省：否则 $$\delta$$ 卡不住（例如 μ = Lebesgue 测度、$$\nu(E) = \int_E 1/x$$ 这类）。
+⚠ 「$\nu$ 有限」不能省：否则 $$\delta$$ 卡不住（例如 $\mu = Lebesgue$ 测度、$$\nu(E) = \int_E 1/x$$ 这类）。
 
-（⟸）方向很直接：μ(E) = 0 时对一切 ε 都有 |ν(E)| ≤ ε，故 ν(E) = 0。
+（$\Longleftarrow$）方向很直接：$\mu (E) = 0$ 时对一切 $\varepsilon$ 都有 $|\nu (E)| \le \varepsilon$，故 $\nu (E) = 0$。
 
 参考：Folland, Real Analysis, Prop. 3.5
 
 #### 积分给出绝对连续测度　`prop.integral-gives-ac`
 *命题*　命题：ν(E) = ∫_E f dμ 关于 μ 绝对连续
 
-设 μ 是测度，$$f$$ 是广义 μ-可积函数，定义
+设 $\mu$ 是测度，$$f$$ 是广义 $\mu$可积函数，定义
 
 $$\nu(E) := \int_E f d\mu$$
 
-则 ν 是符号测度，且 $$\nu \ll  \mu$$。并且
+则 $\nu$ 是符号测度，且 $$\nu \ll  \mu$$。并且
 
 $$\nu\text{ 有限} \iff f \in L^1(\mu)$$
 
-这是绝对连续测度的**标准来源**，也是 Radon–Nikodym 定理要反过来证明的那件事：**所有**绝对连续的 ν 都长这个样子。
+这是绝对连续测度的**标准来源**，也是 Radon–Nikodym 定理要反过来证明的那件事：**所有**绝对连续的 $\nu$ 都长这个样子。
 
 记法上常写成微分形式：
 
@@ -2347,21 +2345,21 @@ $$\nu(E) = \int_E f d\mu\quad  \iff\quad  d\nu = f d\mu$$
 
 $$\forall\varepsilon > 0, \exists\delta > 0 : \mu(E) < \delta \implies | \int_E f d\mu | < \varepsilon$$
 
-把「积分给出绝对连续测度」与上一条 ε–δ 刻画拼起来即可（注意 f ∈ L¹ ⟹ ν(E) = ∫_E f dμ 是**有限**符号测度，符合前提）。
+把「积分给出绝对连续测度」与上一条 $\varepsilon$–$\delta$ 刻画拼起来即可（注意 $f \in L^{1} \implies \nu (E) = \int _E f d\mu$ 是**有限**符号测度，符合前提）。
 
 参考：Folland, Real Analysis, Prop. 3.5
 
 #### 要么奇异、要么有下界　`lem.singular-or-lower-bound`
 *引理*　引理：两个有限测度，要么相互奇异，要么在某个正测度集上成比例
 
-设 ν、μ 都是**有限**测度。则二者必有一个成立：
+设 $\nu$、$\mu$ 都是**有限**测度。则二者必有一个成立：
 
 - $$\nu \perp  \mu$$；或
-- 存在 $$\varepsilon > 0$$ 与 $$E \in \mathcal{M}$$，$$\mu(E) > 0$$，使 $$\nu \ge \varepsilon \mu$$ 在 E 上成立（即 $$\nu(F) \ge \varepsilon \mu(F)$$ 对一切可测 $$F \subseteq E$$）。
+- 存在 $$\varepsilon > 0$$ 与 $$E \in \mathcal{M}$$，$$\mu(E) > 0$$，使 $$\nu \ge \varepsilon \mu$$ 在 $E$ 上成立（即 $$\nu(F) \ge \varepsilon \mu(F)$$ 对一切可测 $$F \subseteq E$$）。
 
-这是 Radon–Nikodym 证明里的**关键一步**：它提供了一个「往下顶」的 ε，从而可以造出那个上确界函数 f。
+这是 Radon–Nikodym 证明里的**关键一步**：它提供了一个「往下顶」的 $\varepsilon$，从而可以造出那个上确界函数 $f$。
 
-证明用的手法很典型：对每个 n，取 $$\nu - n^{-1} \mu$$ 的一个 Hahn 分解 $$X = P_n \sqcup  N_n$$。令
+证明用的手法很典型：对每个 $n$，取 $$\nu - n^{-1} \mu$$ 的一个 Hahn 分解 $$X = P_n \sqcup  N_n$$。令
 
 
 
@@ -2369,58 +2367,58 @@ $$P = \bigcup_n P_n, \quad  N = \bigcap_n N_n$$
 
 
 
-N 是每个 $$\nu - n^{-1}\mu$$ 的负集，于是 $$0 \le \nu(N) \le n^{-1} \mu(N)$$ 对一切 n 成立，令 n → ∞ 得 ν(N) = 0。
+$N$ 是每个 $$\nu - n^{-1}\mu$$ 的负集，于是 $$0 \le \nu(N) \le n^{-1} \mu(N)$$ 对一切 $n$ 成立，令 $n \to \infty$ 得 $\nu (N) = 0$。
 
-于是若 μ(P) = 0，则 ν ⊥ μ（取 E = P、F = N）；若 μ(P) > 0，则某个 n 有 μ(Pₙ) > 0，而 Pₙ 是 $$\nu - n^{-1}\mu$$ 的正集，即 ν ≥ n⁻¹ μ 在 Pₙ 上成立。∎
+于是若 $\mu (P) = 0$，则 $\nu \perp \mu$（取 $E = P$、$F = N$）；若 $\mu (P) > 0$，则某个 $n$ 有 $\mu (P_{n}) > 0$，而 $P_{n}$ 是 $$\nu - n^{-1}\mu$$ 的正集，即 $\nu \ge n^{-1} \mu$ 在 $P_{n}$ 上成立。∎
 
 参考：Folland, Real Analysis, Lemma 3.8
 
 #### Lebesgue–Radon–Nikodym 定理　`thm.lebesgue-radon-nikodym`
 *定理*　Lebesgue–Radon–Nikodym 定理：ν = λ + ρ，λ ⊥ μ，ρ ≪ μ
 
-设 ν 是 **σ-有限**符号测度、μ 是 **σ-有限**正测度，都在 (X, ℳ) 上。则存在**唯一**的一对 σ-有限符号测度 λ、ρ 使
+设 $\nu$ 是 **$\sigma$有限**符号测度、$\mu$ 是 **$\sigma$有限**正测度，都在 $(X, \mathcal{M})$ 上。则存在**唯一**的一对 $\sigma$有限符号测度 $\lambda$、$\rho$ 使
 
 $$\lambda \perp  \mu, \quad  \rho \ll  \mu, \quad  \nu = \lambda + \rho$$
 
-且 $$\rho$$ 可以写成积分：存在广义 μ-可积函数 $$f$$ 使
+且 $$\rho$$ 可以写成积分：存在广义 $\mu$可积函数 $$f$$ 使
 
 $$d\rho = f d\mu$$
 
-任何两个这样的 $$f$$ 都在 μ-a.e. 意义下相等。
+任何两个这样的 $$f$$ 都在 $\mu -\text{a.e.}$ 意义下相等。
 
-⭐ 这是整个符号测度理论的**结构定理**：任何 ν 都能唯一拆成「与 μ 奇异的部分」+「关于 μ 绝对连续的部分」。
+⭐ 这是整个符号测度理论的**结构定理**：任何 $\nu$ 都能唯一拆成「与 $\mu$ 奇异的部分」+「关于 $\mu$ 绝对连续的部分」。
 
-特别地，**当 ν ≪ μ 时**，$$\lambda = 0$$，于是 $$d\nu = f d\mu$$ —— 这就是通常说的 **Radon–Nikodym 定理**。
+特别地，**当 $\nu \ll \mu$ 时**，$$\lambda = 0$$，于是 $$d\nu = f d\mu$$ —— 这就是通常说的 **Radon–Nikodym 定理**。
 
-⚠ σ-有限不能省（对 ν 和 μ 都要）。
+⚠ $\sigma$有限不能省（对 $\nu$ 和 $\mu$ 都要）。
 
-证明的三步（下一段箭头里展开）：I. ν、μ 有限；II. 用 σ-有限切成有限块；III. ν 是符号测度时分别对 $$\nu^+, \nu^-$$ 做。
+证明的三步（下一段箭头里展开）：$I. \nu$、$\mu$ 有限；II. 用 $\sigma$有限切成有限块；$III. \nu$ 是符号测度时分别对 $$\nu^+, \nu^-$$ 做。
 
 参考：Folland, Real Analysis, Theorem 3.8
 
 #### RN 导数与 Lebesgue 分解　`def.rn-derivative`
 *定义*　Radon–Nikodym 导数 dν/dμ 与 Lebesgue 分解
 
-设 $$\nu \ll  \mu$$（都是 σ-有限的）。取定理里的 $$f$$，称
+设 $$\nu \ll  \mu$$（都是 $\sigma$有限的）。取定理里的 $$f$$，称
 
 $$f = \frac{d\nu}{d\mu}$$
 
-为 ν 关于 μ 的 **Radon–Nikodym 导数**（注意它定义在「μ-本质相同的函数类」上，不是单个函数）。
+为 $\nu$ 关于 $\mu$ 的 **Radon–Nikodym 导数**（注意它定义在「$\mu$本质相同的函数类」上，不是单个函数）。
 
-一般的分解 $$\nu = \lambda + \rho$$（$$\lambda \perp  \mu$$，$$\rho \ll  \mu$$）称为 ν 关于 μ 的 **Lebesgue 分解**。
+一般的分解 $$\nu = \lambda + \rho$$（$$\lambda \perp  \mu$$，$$\rho \ll  \mu$$）称为 $\nu$ 关于 $\mu$ 的 **Lebesgue 分解**。
 
 记号的用意：$$d\nu = f d\mu$$ 看起来就像两个「微分」的商。
 
-⚠ 「μ-本质相同」= μ-a.e. 相等 —— 这是 RN 导数唯一的**唯一性**内容：它不是一个函数，而是一个等价类。
+⚠ 「$\mu$本质相同」$= \mu -\text{a.e.}$ 相等 —— 这是 RN 导数唯一的**唯一性**内容：它不是一个函数，而是一个等价类。
 
-术语提醒：「Lebesgue 分解」这个名字在两个地方出现 —— 这里指的是 ν 拆成奇异部分 + 绝对连续部分。
+术语提醒：「Lebesgue 分解」这个名字在两个地方出现 —— 这里指的是 $\nu$ 拆成奇异部分 + 绝对连续部分。
 
 参考：Folland, Real Analysis, §3.2
 
 #### RN 导数的链式法则　`prop.rn-chain-rule`
 *命题*　命题：RN 导数的换元公式与链式法则
 
-设 ν 是 σ-有限符号测度、μ 与 λ 是 σ-有限测度，且
+设 $\nu$ 是 $\sigma$有限符号测度、$\mu$ 与 $\lambda$ 是 $\sigma$有限测度，且
 
 $$\nu \ll  \mu, \quad  \mu \ll  \lambda$$
 
@@ -2432,9 +2430,9 @@ $$\int g d\nu = \int g \frac{d\nu}{d\mu} d\mu$$
 
 $$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}\quad  (\lambda-a.e.)$$
 
-(a) 就是「换元公式」：把对 ν 的积分换成对 μ 的积分，代价是乘上 RN 导数。它对指示函数成立、于是对简单函数成立、再用单调收敛到 L⁺、最后到 L¹(ν)。
+(a) 就是「换元公式」：把对 $\nu$ 的积分换成对 $\mu$ 的积分，代价是乘上 RN 导数。它对指示函数成立、于是对简单函数成立、再用单调收敛到 $L^{+}$、最后到 $L^{1}(\nu )$。
 
-(b) 的证明用 (a)：对任意可测 E，
+(b) 的证明用 (a)：对任意可测 $E$，
 
 
 
@@ -2449,7 +2447,7 @@ $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{
 #### 互为绝对连续时导数互逆　`cor.rn-inverse`
 *推论*　推论：μ ≪ λ 且 λ ≪ μ ⟹ (dμ/dλ)(dλ/dμ) = 1
 
-若 $$\mu \ll  \lambda$$ 且 $$\lambda \ll  \mu$$（两个 σ-有限测度互为绝对连续），则
+若 $$\mu \ll  \lambda$$ 且 $$\lambda \ll  \mu$$（两个 $\sigma$有限测度互为绝对连续），则
 
 $$\frac{d\mu}{d\lambda} \cdot \frac{d\lambda}{d\mu} = 1\quad  a.e.$$
 
@@ -2460,7 +2458,7 @@ $$\frac{d\mu}{d\lambda} \cdot \frac{d\lambda}{d\mu} = 1\quad  a.e.$$
 #### 复测度　`def.complex-measure`
 *定义*　复测度（Complex Measure）
 
-可测空间 (X, ℳ) 上的**复测度**是一个映射
+可测空间 $(X, \mathcal{M})$ 上的**复测度**是一个映射
 
 $$\nu : \mathcal{M} \to \mathbb{C}$$
 
@@ -2472,7 +2470,7 @@ $$\nu(\emptyset) = 0, $$
 
 $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 
-⚠ 与符号测度相比，复测度**自动有限**（取值在 ℂ 里，不涉及 ±∞），而且可数可加性里的那个级数**自动绝对收敛**。
+⚠ 与符号测度相比，复测度**自动有限**（取值在 $\mathbb{C}$ 里，不涉及 $\pm \infty$），而且可数可加性里的那个级数**自动绝对收敛**。
 
 所以在复测度的世界里，「有限性」「重排问题」这些麻烦全部消失 —— 代价是不能再有「无穷质量」的例子。
 
@@ -2481,7 +2479,7 @@ $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 #### 复测度的 Radon–Nikodym　`thm.rn-complex`
 *定理*　定理：复测度的 ν = λ + f dμ 分解
 
-设 ν 是复测度、μ 是 **σ-有限**测度。则存在复测度 λ 与 $$f \in L^1(\mu)$$ 使
+设 $\nu$ 是复测度、$\mu$ 是 **$\sigma$有限**测度。则存在复测度 $\lambda$ 与 $$f \in L^1(\mu)$$ 使
 
 $$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
 
@@ -2496,15 +2494,15 @@ $$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
 #### 全变差的基本性质　`prop.total-variation-basics`
 *命题*　命题：|ν(E)| ≤ |ν|(E)，且 d|ν| = |f| dμ
 
-设 ν 是复测度（或符号测度），$$|\nu|$$ 是它的全变差。则
+设 $\nu$ 是复测度（或符号测度），$$|\nu|$$ 是它的全变差。则
 
 **(a)** $$|\nu(E)| \le |\nu|(E)$$ 对一切 $$E \in \mathcal{M}$$ 成立；
 
-**(b)** 若 $$d\nu = f d\mu$$（即 ν ≪ μ）则 $$d|\nu| = |f| d\mu$$，即
+**(b)** 若 $$d\nu = f d\mu$$（即 $\nu \ll \mu$）则 $$d|\nu| = |f| d\mu$$，即
 
 $$|\nu|(E) = \int_E |f| d\mu$$
 
-(b) 的证法（笔记里）：先取 $$\rho = |\nu_1| + |\nu_2|$$ 把 ν 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 ρ 上。于是要证的就是
+(b) 的证法（笔记里）：先取 $$\rho = |\nu_1| + |\nu_2|$$ 把 $\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\rho$ 上。于是要证的就是
 
 
 
@@ -2512,7 +2510,7 @@ $$|f_1| \frac{d\mu_1}{d\rho} = |f_2| \frac{d\mu_2}{d\rho}\quad  \rho-a.e.$$
 
 
 
-从而 $$|f_1| d\mu_1 = |f_2| d\mu_2$$ —— 说明全变差的密度与「用哪个 μ 表示 ν」无关。
+从而 $$|f_1| d\mu_1 = |f_2| d\mu_2$$ —— 说明全变差的密度与「用哪个 $\mu$ 表示 $\nu$」无关。
 
 由此也得到一个实用的直觉：**全变差就是「把质量取绝对值之后再测一遍」**。
 
@@ -2524,7 +2522,7 @@ $$|f_1| \frac{d\mu_1}{d\rho} = |f_2| \frac{d\mu_2}{d\rho}\quad  \rho-a.e.$$
 #### L¹(ν) 与全变差　`prop.L1-signed`
 *命题*　命题：符号测度的 L¹(ν) = L¹(|ν|)，以及几条基本不等式
 
-设 ν 是符号测度或复测度。
+设 $\nu$ 是符号测度或复测度。
 
 **(a)** $$\nu \ll  |\nu|$$，并且
 
@@ -2536,9 +2534,9 @@ $$| \int f d\nu | \le \int |f| d|\nu|$$
 
 **(c)** $$|\nu_1 + \nu_2| \le |\nu_1| + |\nu_2|$$（即全变差满足三角不等式）。
 
-(a) 的来源：$$d\nu = g\cdot d|\nu|$$ 对某个 g 成立（Radon–Nikodym），且 |g| = 1 a.e. —— 因为全变差本来就是「把质量取绝对值」得到的。
+(a) 的来源：$$d\nu = g\cdot d|\nu|$$ 对某个 $g$ 成立（Radon–Nikodym），且 $|g| = 1 \text{a.e.}$ —— 因为全变差本来就是「把质量取绝对值」得到的。
 
-(b) 说明**积分理论对符号测度不需要重写**：把 |ν| 当作底层的真测度，一切照旧。
+(b) 说明**积分理论对符号测度不需要重写**：把 $|\nu |$ 当作底层的真测度，一切照旧。
 
 (c) 让「全变差」成为一个范数，这正是把测度空间看作 Banach 空间的起点。
 
@@ -2547,7 +2545,7 @@ $$| \int f d\nu | \le \int |f| d|\nu|$$
 #### 覆盖引理　`lem.covering`
 *引理*　覆盖引理：开球族里能挑出不交子族，三倍膨胀仍覆盖
 
-设 ℰ 是一族 ℝⁿ 中的开球，$$U = \bigcup\mathcal{E}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, \ldots , B_k$$ 使
+设 $\mathcal{E}$ 是一族 $\mathbb{R}^{n}$ 中的开球，$$U = \bigcup\mathcal{E}$$。若 $$c < m(U)$$，则存在 $\mathcal{E}$ 中**两两不交**的球 $$B_1, \ldots , B_k$$ 使
 
 $$\sum_{j=1}^{k} m(B_j) > 3^{-n} c$$
 
@@ -2565,7 +2563,7 @@ $$c < m(K) \le 3^n \sum_j m(B_j)\quad  \implies\quad  \sum_j m(B_j) > 3^{-n} c$$
 
 
 
-⚠ 注意膨胀因子是 **3ⁿ**（而不是 2ⁿ）—— 这正是因为「半径不超过」是弱不等式，需要一点余量。
+⚠ 注意膨胀因子是 **$3^{n}$**（而不是 $2^{n}$）—— 这正是因为「半径不超过」是弱不等式，需要一点余量。
 
 参考：Folland, Real Analysis, Lemma 3.15
 
@@ -2580,9 +2578,9 @@ $$\int_K |f(x)| dx < \infty\quad \text{ 对每个有界可测集} K \subseteq \m
 
 直觉：$$f$$ 可能「在无穷远处爆掉」，但在每个有限范围里都还好。
 
-例：常函数 1 属于 L¹ₗoc 但不属于 L¹(ℝⁿ)；$$1/|x|$$ 在 ℝⁿ 上属于 L¹ₗoc（n ≥ 2 时不属于 L¹）。
+例：常函数 1 属于 $L^{1}_{l}oc$ 但不属于 $L^{1}(\mathbb{R}^{n})$；$$1/|x|$$ 在 $\mathbb{R}^{n}$ 上属于 $L^{1}_{l}oc$（$n \ge 2$ 时不属于 $L^{1}$）。
 
-⚠ 微分理论里必须是 L¹ₗoc 而不是 L¹：因为讨论的是**逐点**行为，而局部信息就够。
+⚠ 微分理论里必须是 $L^{1}_{l}oc$ 而不是 $L^{1}$：因为讨论的是**逐点**行为，而局部信息就够。
 
 参考：Folland, Real Analysis, §3.4
 
@@ -2593,11 +2591,11 @@ $$\int_K |f(x)| dx < \infty\quad \text{ 对每个有界可测集} K \subseteq \m
 
 $$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
 
-即 f 在以 x 为心、r 为半径的球上的**平均值**。
+即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。
 
-这是「把函数抹平」的算子：$$A_r f$$ 是 f 的连续化版本（见下一条），r → 0 时应当回到 f 本身 —— 而那正是 Lebesgue 微分定理要说的事。
+这是「把函数抹平」的算子：$$A_r f$$ 是 $f$ 的连续化版本（见下一条），$r \to 0$ 时应当回到 $f$ 本身 —— 而那正是 Lebesgue 微分定理要说的事。
 
-⚠ 注意积分是**对 Lebesgue 测度 m** 取的，跟这一段的符号测度 ν 无关。
+⚠ 注意积分是**对 Lebesgue 测度 $m$** 取的，跟这一段的符号测度 $\nu$ 无关。
 
 参考：Folland, Real Analysis, §3.4
 
@@ -2620,13 +2618,13 @@ $$\int_{B(r, x)} f(y) dy = \int_{\mathbb{R}^n} \chi_{B(r, x)}(y) f(y) dy$$
 
 
 
-· 若 $$y$$ 在球内：$$\varepsilon := r_0 - |y - x_0| > 0$$；当 $$|x - x_0| < \varepsilon/2$$ 且 $$|r - r_0| < \varepsilon/2$$ 时 $$|y - x| < r$$，故 $$\chi = 1$$；
+$\cdot$ 若 $$y$$ 在球内：$$\varepsilon := r_0 - |y - x_0| > 0$$；当 $$|x - x_0| < \varepsilon/2$$ 且 $$|r - r_0| < \varepsilon/2$$ 时 $$|y - x| < r$$，故 $$\chi = 1$$；
 
-· 若 $$y$$ 在球外：$$\varepsilon := |y - x_0| - r_0 > 0$$；同样的小扰动下 $$|y - x| > r$$，故 $$\chi = 0$$。
+$\cdot$ 若 $$y$$ 在球外：$$\varepsilon := |y - x_0| - r_0 > 0$$；同样的小扰动下 $$|y - x| > r$$，故 $$\chi = 0$$。
 
 
 
-两边合起来说明：对**几乎处处的** y（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。
+两边合起来说明：对**几乎处处的** $y$（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。
 
 控制函数取 $$\chi_{B(r_0+1, x_0)}(y)\cdot|f(y)| \in L^1$$，由 **DCT** 得连续性。∎
 
@@ -2639,11 +2637,11 @@ $$\int_{B(r, x)} f(y) dy = \int_{\mathbb{R}^n} \chi_{B(r, x)}(y) f(y) dy$$
 
 $$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
 
-称为 f 的 **Hardy–Littlewood 极大函数**。
+称为 $f$ 的 **Hardy–Littlewood 极大函数**。
 
-直觉：$$Hf(x)$$ 是「f 在 x 附近所有尺度上的平均值里最大的那个」。
+直觉：$$Hf(x)$$ 是「$f$ 在 $x$ 附近所有尺度上的平均值里最大的那个」。
 
-它当然比 f 大（$$Hf \ge |f|$$ a.e.，因为可以取 r → 0），但好处是它**可测**：对每个固定的 r，$$x \mapsto A_r|f|(x)$$ 可测（由联合连续性更强），而可数个可测函数的上确界仍可测。
+它当然比 $f$ 大（$$Hf \ge |f|$$ a.e.，因为可以取 $r \to 0$），但好处是它**可测**：对每个固定的 $r$，$$x \mapsto A_r|f|(x)$$ 可测（由联合连续性更强），而可数个可测函数的上确界仍可测。
 
 ⭐ 极大函数是微分理论里的「万能控制函数」：它把一个逐点问题化归成一个关于测度的估计问题，而那个估计就是下一条的极大不等式。
 
@@ -2652,15 +2650,15 @@ $$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r 
 #### 极大定理　`thm.maximal-theorem`
 *定理*　极大定理（弱 (1,1) 不等式）
 
-存在常数 $$C > 0$$（只依赖维数 n），使对一切 $$f \in L^1$$ 与一切 $$\alpha > 0$$：
+存在常数 $$C > 0$$（只依赖维数 $n$），使对一切 $$f \in L^1$$ 与一切 $$\alpha > 0$$：
 
 $$m(\{x : Hf(x) > \alpha\}) \le (C/\alpha)\cdot\int |f(x)| dx$$
 
 这叫**弱 (1,1) 型**不等式：不能保证 $$Hf \in L^1$$（事实上一般不是），但能保证它的**分布函数**被 $$1/\alpha$$ 控制。
 
-在 ℝⁿ 里 $$C = 3^n$$（这正是覆盖引理里那个膨胀因子）。
+在 $\mathbb{R}^{n}$ 里 $$C = 3^n$$（这正是覆盖引理里那个膨胀因子）。
 
-⭐ 它的角色：**「平均值的例外集是小的」** —— 于是一切逐点收敛问题都可以用「例外集测度 → 0」来解决。
+⭐ 它的角色：**「平均值的例外集是小的」** —— 于是一切逐点收敛问题都可以用「例外集测度 $\to 0$」来解决。
 
 参考：Folland, Real Analysis, Theorem 3.17
 
@@ -2675,7 +2673,7 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对} a.e. x \in \mathbb{R}^n$$
 
 这也是「Lebesgue 积分比 Riemann 积分好」最直观的一条：Riemann 可积函数的连续性几乎处处成立，而这里连「连续」都不需要。
 
-证明的三段（下一条箭头里展开）：先用连续函数逼近 → 再用极大定理把「坏集」压成零测。
+证明的三段（下一条箭头里展开）：先用连续函数逼近 $\to$ 再用极大定理把「坏集」压成零测。
 
 参考：Folland, Real Analysis, Theorem 3.18
 
@@ -2686,13 +2684,13 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对} a.e. x \in \mathbb{R}^n$$
 
 $$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y) - f(x)| dy = 0 \}$$
 
-称为 f 的 **Lebesgue 集**。
+称为 $f$ 的 **Lebesgue 集**。
 
-⚠ 注意定义里积的是 $$|f(y) - f(x)|$$（与 f 在该点的值比较），不是 $$|f(y)|$$。
+⚠ 注意定义里积的是 $$|f(y) - f(x)|$$（与 $f$ 在该点的值比较），不是 $$|f(y)|$$。
 
 这么定义是为了让「可缩族」版本（下一条定理）能直接用 —— 那里需要的是**局部一致逼近**，而不是简单的平均值收敛。
 
-$$x \in L_f$$ 常被说成「x 是 f 的 Lebesgue 点」。直觉：在这个点附近，f 的振荡在平均意义下趋于 0。
+$$x \in L_f$$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个点附近，$f$ 的振荡在平均意义下趋于 0。
 
 参考：Folland, Real Analysis, §3.4
 
@@ -2705,9 +2703,9 @@ $$m(L_f^c) = 0$$
 
 即：**几乎每个点都是 Lebesgue 点**。
 
-证明的思路很巧（笔记里的）：对每个复数 c，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\lim_{1/m(B)}\int|f(y) - c|dy = |f(x) - c|$$」。
+证明的思路很巧（笔记里的）：对每个复数 $c$，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\lim_{1/m(B)}\int|f(y) - c|dy = |f(x) - c|$$」。
 
-然后取 **ℂ 的一个可数稠密子集 D**，令 $$E = \bigcup_{c \in D} E_c$$（可数并仍是零集）。对 $$x \notin E$$ 与任意 ε > 0，取 $$c \in D$$ 使 $$|f(x) - c| < \varepsilon$$，于是
+然后取 **$\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $$E = \bigcup_{c \in D} E_c$$（可数并仍是零集）。对 $$x \notin E$$ 与任意 $\varepsilon > 0$，取 $$c \in D$$ 使 $$|f(x) - c| < \varepsilon$$，于是
 
 
 
@@ -2715,7 +2713,7 @@ $$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le |f(x) - c|
 
 
 
-令 ε → 0 即得。∎
+令 $\varepsilon \to 0$ 即得。∎
 
 ⭐ 「取一个可数稠密子集」这一步是可数性技巧的典型用法：把不可数多个条件化归成可数多个零集之并。
 
@@ -2726,14 +2724,14 @@ $$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le |f(x) - c|
 
 $$\mathbb{R}^n$$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当
 
-· $$E_r \subseteq B(r, x)$$ 对每个 r 成立；
-· 存在 $$\alpha > 0$$，使 $$m(E_r) > \alpha\cdot m(B(r, x))$$ 对一切 r 成立。
+$\cdot$ $$E_r \subseteq B(r, x)$$ 对每个 $r$ 成立；
+$\cdot$ 存在 $$\alpha > 0$$，使 $$m(E_r) > \alpha\cdot m(B(r, x))$$ 对一切 $r$ 成立。
 
-两个条件的含义：**装得进去**（$$E_r$$ 在球里）、**不能太瘪**（体积至少是球的 α 倍）。
+两个条件的含义：**装得进去**（$$E_r$$ 在球里）、**不能太瘪**（体积至少是球的 $\alpha$ 倍）。
 
-典型例子：取 $$E_r = B(r, x)$$ 本身（α = 1）；或取 $$E_r$$ 为球内某个固定形状（如立方体）按比例缩放。
+典型例子：取 $$E_r = B(r, x)$$ 本身（$\alpha = 1$）；或取 $$E_r$$ 为球内某个固定形状（如立方体）按比例缩放。
 
-反例：$$E_r$$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 x。
+反例：$$E_r$$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 $x$。
 
 ⭐ 引入这个概念是为了让微分定理**不依赖球的形状**：只要不瘪，结论照旧。
 
@@ -2742,7 +2740,7 @@ $$\mathbb{R}^n$$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于
 #### 可缩族的微分定理　`thm.differentiation-general`
 *定理*　定理：对可缩族，Lebesgue 微分定理仍然成立
 
-设 $$f \in L^1_{loc}$$，$$x \in L_f$$。则对**每一个**可缩地趋于 x 的族 $$\{E_r\}_{r>0}$$：
+设 $$f \in L^1_{loc}$$，$$x \in L_f$$。则对**每一个**可缩地趋于 $x$ 的族 $$\{E_r\}_{r>0}$$：
 
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy = 0, $$
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} f(y) dy = f(x)$$
@@ -2764,29 +2762,29 @@ $$\frac{1}{m(E_r)} \int_{E_r} |f - f(x)| \le \frac{1}{m(E_r)} \int_{B(r,x)} |f -
 #### 正则 Borel 测度　`def.regular-measure`
 *定义*　正则 Borel 测度（Regular Borel Measure）
 
-ℝⁿ 上的 Borel 测度 ν 是**正则的**，当且仅当
+$\mathbb{R}^{n}$ 上的 Borel 测度 $\nu$ 是**正则的**，当且仅当
 
-· $$\nu(K) < \infty$$ 对每个紧集 K 成立；
-· $$\nu(E) = inf\{ \nu(U) : U\text{ 开}, E \subseteq U \}$$ 对每个 $$E \in \mathfrak{B}_{\mathbb{R}^n}$$ 成立（**外正则**）。
+$\cdot$ $$\nu(K) < \infty$$ 对每个紧集 $K$ 成立；
+$\cdot$ $$\nu(E) = inf\{ \nu(U) : U\text{ 开}, E \subseteq U \}$$ 对每个 $$E \in \mathfrak{B}_{\mathbb{R}^n}$$ 成立（**外正则**）。
 
-符号测度或复测度 ν 叫正则 ⟺ $$|\nu|$$ 正则。
+符号测度或复测度 $\nu$ 叫正则 $\iff$ $$|\nu|$$ 正则。
 
-第二条是「从外面用开集逼近」。在 ℝⁿ 上它其实由第一条推出（笔记里专门注了一句 "actually implied by above"）。
+第二条是「从外面用开集逼近」。在 $\mathbb{R}^{n}$ 上它其实由第一条推出（笔记里专门注了一句 "actually implied by above"）。
 
-**每个正则测度都是 σ-有限的**（用紧集的可数覆盖）。
+**每个正则测度都是 $\sigma$有限的**（用紧集的可数覆盖）。
 
-$$f \in L^+(\mathbb{R}^n)$$ 时，$$f\cdot dm$$ 正则 ⟺ $$f \in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。
+$$f \in L^+(\mathbb{R}^n)$$ 时，$$f\cdot dm$$ 正则 $\iff$ $$f \in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。
 
 参考：Folland, Real Analysis, §7.2
 
 #### RN 导数的点态公式　`thm.rn-pointwise`
 *定理*　定理：ν(Eᵣ)/m(Eᵣ) → f(x) a.e.，其中 dν = dλ + f dm
 
-设 ν 是 ℝⁿ 上的**正则**符号/复 Borel 测度，$$d\nu = d\lambda + f\cdot dm$$ 是它关于 Lebesgue 测度 m 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \in \mathbb{R}^n$$，
+设 $\nu$ 是 $\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$$d\nu = d\lambda + f\cdot dm$$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \in \mathbb{R}^n$$，
 
 $$\lim_{r\to0} \nu(E_r) / m(E_r) = f(x)$$
 
-对**每一个**可缩地趋于 x 的族 $$\{E_r\}_{r>0}$$ 成立。
+对**每一个**可缩地趋于 $x$ 的族 $$\{E_r\}_{r>0}$$ 成立。
 
 ⭐ 这条定理把 Radon–Nikodym 导数从「抽象的存在物」变成了**可以逐点算出来的极限**：
 
@@ -2796,9 +2794,9 @@ $$f(x) = \lim_{r\to0} \nu(B(r, x)) / m(B(r, x))$$
 
 
 
-这正是微积分里「密度 = 质量 / 体积」的严格版本，也是「RN 导数是导数的推广」这一说法的根据。
+这正是微积分里「密度 $=$ 质量 / 体积」的严格版本，也是「RN 导数是导数的推广」这一说法的根据。
 
-证明的思路：先验证 $$d|\nu| = d|\lambda| + |f| dm$$，于是 λ 与 f dm 都正则、特别地 $$f \in L^1_{loc}$$；把比值拆成
+证明的思路：先验证 $$d|\nu| = d|\lambda| + |f| dm$$，于是 $\lambda$ 与 f dm 都正则、特别地 $$f \in L^1_{loc}$$；把比值拆成
 
 
 
@@ -2806,7 +2804,7 @@ $$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac{1}{m(E_r)} \int_{E_r} f\cdot
 
 
 
-第二项由微分定理趋于 f(x)。第一项要证它是 0，用一个「分块 + 覆盖引理 + λ(A) = m(Aᶜ) = 0」的论证把坏集压成零测。
+第二项由微分定理趋于 f(x)。第一项要证它是 0，用一个「分块 + 覆盖引理 $\lambda (A) = m(A^{c}) = 0$」的论证把坏集压成零测。
 
 参考：Folland, Real Analysis, Theorem 3.22
 
@@ -2818,15 +2816,15 @@ $$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac{1}{m(E_r)} \int_{E_r} f\cdot
 
 设 $$F : \mathbb{R} \to \mathbb{R}$$ 递增，$$G(x) := F(x+)$$（右极限）。则
 
-**(a)** F 的不连续点至多可数；
+**(a)** $F$ 的不连续点至多可数；
 
-**(b)** F 与 G 都 **a.e. 可导**，且
+**(b)** $F$ 与 $G$ 都 **a.e. 可导**，且
 
 $$F' = G'\quad  a.e.$$
 
-(a)：每个不连续点 x 对应一个「跳跃区间」$$(F(x-), F(x+))$$，这些区间两两不交；每个区间里取一个有理数，得到一个到 ℚ 的单射。故不连续点至多可数。
+(a)：每个不连续点 $x$ 对应一个「跳跃区间」$$(F(x-), F(x+))$$，这些区间两两不交；每个区间里取一个有理数，得到一个到 $\mathbb{Q}$ 的单射。故不连续点至多可数。
 
-(b) 的路线很漂亮：G 右连续递增，于是它诱导一个正则 Borel 测度 μ_G。对 h > 0 有
+(b) 的路线很漂亮：$G$ 右连续递增，于是它诱导一个正则 Borel 测度 $\mu _G$。对 $h > 0$ 有
 
 
 
@@ -2834,9 +2832,9 @@ $$G(x+h) - G(x) = \mu_G((x, x+h])$$
 
 
 
-于是差商恰好是 $$\mu_G(E_h)/m(E_h)$$ —— 其中 $$E_h = (x, x+h]$$ 是一个**可缩族**。由 RN 导数的点态公式（见「ℝⁿ 上的微分」），这个比值 a.e. 收敛到 μ_G 关于 m 的 RN 导数，即 G′ a.e. 存在。
+于是差商恰好是 $$\mu_G(E_h)/m(E_h)$$ —— 其中 $$E_h = (x, x+h]$$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\mu _G$ 关于 $m$ 的 RN 导数，即 $G' \text{a.e.}$ 存在。
 
-剩下的部分用一个「夹逼」把 F′ = G′ 也拿下：令 H = G − F ≥ 0（跳跃函数），它 a.e. 为 0；再令 F̄ 为跳跃的累积函数，则 μ_F̄ 集中在可数集上，故 μ_F̄ ⊥ m，于是 F̄′ = 0 a.e.。在 F̄′ = 0 的点上用
+剩下的部分用一个「夹逼」把 $F' = G'$ 也拿下：令 $H = G - F \ge 0$（跳跃函数），它 a.e. 为 0；再令 $\bar{F}$ 为跳跃的累积函数，则 $\mu _\bar{F}$ 集中在可数集上，故 $\mu _\bar{F} \perp m$，于是 $\bar{F}' = 0 \text{a.e.}$。在 $\bar{F}' = 0$ 的点上用
 
 
 
@@ -2844,7 +2842,7 @@ $$0 \le H(x+h) / h \le (\bar{F}(x+h) - \bar{F}(x)) / h\quad  (h > 0)$$
 
 
 
-夹逼即得 H′ = 0 a.e.，故 F′ = G′ a.e.∎
+夹逼即得 $H' = 0 \text{a.e.}$，故 $F' = G' \text{a.e.}$∎
 
 参考：Folland, Real Analysis, Theorem 3.23
 
@@ -2855,11 +2853,11 @@ $$0 \le H(x+h) / h \le (\bar{F}(x+h) - \bar{F}(x)) / h\quad  (h > 0)$$
 
 $$T_F(x) := sup \{ \sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \in \mathbb{N}, -\infty < x_0 < \cdots < x_n = x \}$$
 
-$$T_F$$ 是递增的 $$\mathbb{R} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 F 是**有界变差的**，这类函数全体记作 **BV**。
+$$T_F$$ 是递增的 $$\mathbb{R} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。
 
-$$T_F(b) - T_F(a)$$ 称为 F 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。
+$$T_F(b) - T_F(a)$$ 称为 $F$ 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。
 
-直观：$$T_F(x)$$ 是「沿着图像从 −∞ 走到 x 所走过的总路程」。有界变差就是「走过的路有限」。
+直观：$$T_F(x)$$ 是「沿着图像从 $-\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。
 
 两个自然的映射：**投射** $$BV \to BV([a,b])$$，$$f \mapsto f|_{[a,b]}$$；**嵌入** $$BV([a,b]) \to BV$$，$$f \mapsto \{ f(x) (x \in [a,b]); f(b) (x > b); f(a) (x < a) \}$$。
 
@@ -2872,32 +2870,32 @@ $$T_F(b) - T_F(a)$$ 称为 F 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有�
 
 1. 若 $$F : \mathbb{R} \to \mathbb{R}$$ **有界递增**，则 $$F \in BV$$（此时 $$T_F = F - F(-\infty)$$）。
 
-2. $$BV$$ 是 ℂ-向量空间。
+2. $$BV$$ 是 $\mathbb{C}$向量空间。
 
-3. 若 F 实可微且 F′ 有界，则对一切 $$-\infty < a < b < \infty$$ 有 $$F \in BV([a,b])$$。
+3. 若 $F$ 实可微且 $F'$ 有界，则对一切 $$-\infty < a < b < \infty$$ 有 $$F \in BV([a,b])$$。
 
 4. $$F(x) = sin x$$：对任何紧区间 $$[a,b]$$，$$F \in BV([a,b])$$。
 
 5. $$F(x) = xsin(1/x)$$（$$x \ne 0$$），$$F(0) = 0$$：若 $$0 \in [a,b]$$，则 $$F \in BV([a,b])$$。
 
-第 4、5 两个例子是「振荡型」的：函数本身有界、但导数在某个点附近爆掉或无限振荡。它们仍然有界变差 —— 说明**BV 比「C¹」宽得多**。
+第 4、5 两个例子是「振荡型」的：函数本身有界、但导数在某个点附近爆掉或无限振荡。它们仍然有界变差 —— 说明**BV 比「$C^{1}$」宽得多**。
 
 一个标准的**反例**（不属于 BV）：$$F(x) = sin(1/x)$$（$$x \ne 0$$）、$$F(0) = 0$$ —— 它在 0 附近无限次振荡且振幅不衰减，全变差发散。
 
-⭐ 记住这条分界线：**振幅不衰减的振荡 ⟹ 不是 BV**。
+⭐ 记住这条分界线：**振幅不衰减的振荡 $\implies$ 不是 BV**。
 
 参考：Folland, Real Analysis, §3.5
 
 #### T_F ± F 递增　`lem.variation-monotone`
 *引理*　引理：实值 BV 函数的 T_F + F 与 T_F − F 都递增
 
-设 F 是**实值**有界变差函数。则
+设 $F$ 是**实值**有界变差函数。则
 
 $$T_F + F\quad \text{ 与}\quad  T_F - F$$
 
 都是**递增**函数。
 
-证明（笔记里的）：设 x < y，任给 ε > 0，取分划 $$x_0 < \cdots < x_n = x$$ 使 $$\sum|F(x_j) - F(x_{j-1})| \ge T_F(x) - \varepsilon$$，再补上点 y 与 x 之间的比较：
+证明（笔记里的）：设 $x < y$，任给 $\varepsilon > 0$，取分划 $$x_0 < \cdots < x_n = x$$ 使 $$\sum|F(x_j) - F(x_{j-1})| \ge T_F(x) - \varepsilon$$，再补上点 $y$ 与 $x$ 之间的比较：
 
 
 
@@ -2905,9 +2903,9 @@ $$T_F(y) \pm  F(y) \ge \sum_j |F(x_j) - F(x_{j-1})| + (F(y) - F(x)) \pm  F(x) \g
 
 
 
-由 ε 任意即得 $$T_F(y) \pm  F(y) \ge T_F(x) \pm  F(x)$$。∎
+由 $\varepsilon$ 任意即得 $$T_F(y) \pm  F(y) \ge T_F(x) \pm  F(x)$$。∎
 
-⭐ 这条是下一条「BV 的 Jordan 分解」的全部技术内容：一旦知道 $$T_F \pm  F$$ 递增，就能把 F 写成一增一减。
+⭐ 这条是下一条「BV 的 Jordan 分解」的全部技术内容：一旦知道 $$T_F \pm  F$$ 递增，就能把 $F$ 写成一增一减。
 
 参考：Folland, Real Analysis, Theorem 3.27
 
@@ -2928,11 +2926,11 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 
 
 
-前一项叫 F 的**正变差**，后一项叫**负变差** —— 名字与符号测度的 ν⁺、ν⁻ 完全对应。
+前一项叫 $F$ 的**正变差**，后一项叫**负变差** —— 名字与符号测度的 $\nu ^{+}$、$\nu ^{-}$ 完全对应。
 
-由引理，$$T_F \pm  F$$ 递增；而「有界」来自 F ∈ BV。
+由引理，$$T_F \pm  F$$ 递增；而「有界」来自 $F \in BV$。
 
-⭐ 意义：**BV 函数 = 两个有界递增函数之差**。于是关于 BV 的一切都能化归到「递增函数」这个好处理的情形。
+⭐ 意义：**BV 函数 $=$ 两个有界递增函数之差**。于是关于 BV 的一切都能化归到「递增函数」这个好处理的情形。
 
 参考：Folland, Real Analysis, Theorem 3.27
 
@@ -2943,11 +2941,11 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 
 **(c)** 对每个 $$x \in \mathbb{R}$$，$$F(x+)$$ 与 $$F(x-)$$ 都存在；$$F(\pm \infty)$$ 也存在；
 
-**(d)** F 的不连续点至多可数；
+**(d)** $F$ 的不连续点至多可数；
 
 **(e)** 令 $$G(x) = F(x+)$$，则 $$F'$$ 与 $$G'$$ 处处存在且相等（a.e.）。
 
-全部由「F = G − H」化归到递增函数：递增函数的单侧极限显然存在；不连续点可数由单调函数那条定理；a.e. 可导也由那条定理（差的导数 = 导数的差）。
+全部由「$F = G - H$」化归到递增函数：递增函数的单侧极限显然存在；不连续点可数由单调函数那条定理；a.e. 可导也由那条定理（差的导数 $=$ 导数的差）。
 
 ⭐ 所以 BV 函数虽然可能很不光滑，但**结构上非常驯服**：只有可数多个跳跃，其余地方都「几乎处处可导」。
 
@@ -2958,7 +2956,7 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 
 $$NBV := \{ F \in BV : F\text{ 右连续},\text{ 且} F(-\infty) = 0 \}$$
 
-为什么要加这两个条件：因为下一条定理要建立**ℝ 上的复 Borel 测度 ↔ NBV** 的一一对应，而对应式是
+为什么要加这两个条件：因为下一条定理要建立**$\mathbb{R}$ 上的复 Borel 测度 $\leftrightarrow NBV$** 的一一对应，而对应式是
 
 
 
@@ -2966,7 +2964,7 @@ $$F(x) = \mu((-\infty, x])$$
 
 
 
-右边那个函数自动右连续、且在 −∞ 处为 0。把左边限制成 NBV，对应才是**双射**而不是满射。
+右边那个函数自动右连续、且在 $-\infty$ 处为 0。把左边限制成 NBV，对应才是**双射**而不是满射。
 
 参考：Folland, Real Analysis, Theorem 3.29
 
@@ -2976,11 +2974,11 @@ $$F(x) = \mu((-\infty, x])$$
 设 $$F \in BV$$。则
 
 - $$T_F(-\infty) = 0$$；
-- 若 F **右连续**，则 $$T_F$$ 也右连续。
+- 若 $F$ **右连续**，则 $$T_F$$ 也右连续。
 
-第一部分：给定 ε > 0 与 x，取分划使 $$\sum \ge T_F(x) - \varepsilon$$；于是对 $$y \le x_0$$ 有 $$T_F(y) \le \varepsilon$$。由 ε 任意，$$T_F(-\infty) = 0$$。
+第一部分：给定 $\varepsilon > 0$ 与 $x$，取分划使 $$\sum \ge T_F(x) - \varepsilon$$；于是对 $$y \le x_0$$ 有 $$T_F(y) \le \varepsilon$$。由 $\varepsilon$ 任意，$$T_F(-\infty) = 0$$。
 
-第二部分：设 $$\alpha = T_F(x+) - T_F(x)$$。由 F 右连续，对充分小的 h 有 $$|F(x+h) - F(x)| < \varepsilon$$ 且 $$T_F(x+h) - T_F(x+) < \varepsilon$$；再从两边各取分划夹住，得到
+第二部分：设 $$\alpha = T_F(x+) - T_F(x)$$。由 $F$ 右连续，对充分小的 $h$ 有 $$|F(x+h) - F(x)| < \varepsilon$$ 且 $$T_F(x+h) - T_F(x+) < \varepsilon$$；再从两边各取分划夹住，得到
 
 
 
@@ -2988,9 +2986,9 @@ $$(3/2)\alpha - \varepsilon \le T_F(x+h) - T_F(x) < \varepsilon + \alpha$$
 
 
 
-于是 $$\alpha < 4\varepsilon$$，由 ε 任意得 α = 0。∎
+于是 $$\alpha < 4\varepsilon$$，由 $\varepsilon$ 任意得 $\alpha = 0$。∎
 
-⭐ 这条保证「全变差」这个操作**保持 NBV**：F ∈ NBV ⟹ T_F ∈ NBV，正是下一条定理里 |μ_F| = μ_{T_F} 的根据。
+⭐ 这条保证「全变差」这个操作**保持 NBV**：$F \in NBV \implies T_F \in NBV$，正是下一条定理里 $|\mu _F| = \mu _\{T_F\}$ 的根据。
 
 参考：Folland, Real Analysis, Lemma 3.30
 
@@ -3001,7 +2999,7 @@ $$(3/2)\alpha - \varepsilon \le T_F(x+h) - T_F(x) < \varepsilon + \alpha$$
 
 $$\int_a^b F' \le F(b) - F(a)$$
 
-证明（笔记里的）：G 右连续递增，诱导一个正则 Borel 测度 μ_G。写它的 Lebesgue–Radon–Nikodym 分解
+证明（笔记里的）：$G$ 右连续递增，诱导一个正则 Borel 测度 $\mu _G$。写它的 Lebesgue–Radon–Nikodym 分解
 
 
 
@@ -3017,16 +3015,16 @@ $$\int_a^b F' = \int_a^b f\cdot dm \le \int_a^b d\mu_G = G(b) - G(a) \le F(b) - 
 
 
 
-（中间那个不等号是因为省略了奇异的 λ ≥ 0。）∎
+（中间那个不等号是因为省略了奇异的 $\lambda \ge 0$。）∎
 
-⚠ **这里一般不是等号**：Cantor 函数是经典反例 —— 它递增、连续、导数 a.e. 为 0，所以左边 = 0 但右边 = 1。这个差别正是「绝对连续」这个概念要补上的东西。
+⚠ **这里一般不是等号**：Cantor 函数是经典反例 —— 它递增、连续、导数 a.e. 为 0，所以左边 $= 0$ 但右边 $= 1$。这个差别正是「绝对连续」这个概念要补上的东西。
 
 参考：Folland, Real Analysis, Theorem 3.28
 
 #### 测度 ↔ NBV 的一一对应　`thm.borel-measure-nbv`
 *定理*　定理：ℝ 上的复 Borel 测度 ⟷ NBV 函数
 
-**(1)** 若 μ 是 ℝ 上的复 Borel 测度，$$F(x) := \mu((-\infty, x])$$，则 $$F \in NBV$$。
+**(1)** 若 $\mu$ 是 $\mathbb{R}$ 上的复 Borel 测度，$$F(x) := \mu((-\infty, x])$$，则 $$F \in NBV$$。
 
 **(2)** 反之，若 $$F \in NBV$$，则存在**唯一**的复 Borel 测度 $$\mu_F$$ 使
 
@@ -3038,9 +3036,9 @@ $$|\mu_F| = \mu_{T_F}$$
 
 这是 **Riesz 表示定理**在实数轴上的形式：测度与一类函数一一对应。
 
-证明思路（笔记里的）：把复测度拆成四个正测度 $$\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$$，各取 $$F_j^{\pm }(x) = \mu_j^{\pm }((-\infty, x])$$ —— 它们递增、右连续、在 −∞ 处为 0、在 +∞ 处有限，于是 F ∈ NBV。反方向把 F ∈ NBV 拆成 $$F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$，每一块配一个测度。
+证明思路（笔记里的）：把复测度拆成四个正测度 $$\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$$，各取 $$F_j^{\pm }(x) = \mu_j^{\pm }((-\infty, x])$$ —— 它们递增、右连续、在 $-\infty$ 处为 0、在 $\infty$ 处有限，于是 $F \in NBV$。反方向把 $F \in NBV$ 拆成 $$F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$，每一块配一个测度。
 
-$$|\mu_F| = \mu_{T_F}$$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「T_F ∈ NBV」的用处。
+$$|\mu_F| = \mu_{T_F}$$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「$T_F \in NBV$」的用处。
 
 参考：Folland, Real Analysis, Theorem 3.29
 
@@ -3056,11 +3054,11 @@ $$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
 
 
-· $$\mu_F \perp  m$$ 意味着绝对连续部为零，即 f = 0 ⟹ F′ = 0 a.e.；
+$\cdot$ $$\mu_F \perp  m$$ 意味着绝对连续部为零，即 $f = 0 \implies F' = 0 \text{a.e.}$；
 
-· $$\mu_F \ll  m$$ 意味着 λ = 0，于是 $$F(x) = \mu_F((-\infty,x]) = \int_{-\infty}^x f\cdot dm = \int_{-\infty}^x F'\cdot dt$$。
+$\cdot$ $$\mu_F \ll  m$$ 意味着 $\lambda = 0$，于是 $$F(x) = \mu_F((-\infty,x]) = \int_{-\infty}^x f\cdot dm = \int_{-\infty}^x F'\cdot dt$$。
 
-⭐ 这一条就是「微积分基本定理」的测度版：**能不能把函数积回来，取决于 μ_F 是否绝对连续**。
+⭐ 这一条就是「微积分基本定理」的测度版：**能不能把函数积回来，取决于 $\mu _F$ 是否绝对连续**。
 
 参考：Folland, Real Analysis, Theorem 3.35
 
@@ -3084,9 +3082,9 @@ $$\forall\varepsilon > 0, \exists\delta > 0 :\text{ 任意有限个两两不交�
 
 $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 
-**(⟸)** 由测度的绝对连续的 ε–δ 刻画：$$\mu_F \ll  m$$ 给出「$$m(E) < \delta \implies |\mu_F(E)| < \varepsilon$$」。取 E 为区间的有限不交并，就直接得到函数版的绝对连续性。
+**$(\Longleftarrow )$** 由测度的绝对连续的 $\varepsilon$–$\delta$ 刻画：$$\mu_F \ll  m$$ 给出「$$m(E) < \delta \implies |\mu_F(E)| < \varepsilon$$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。
 
-**(⟹)** 设 $$E \in \mathfrak{B}_\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\mu_F(E) = 0$$。取递减开集列 $$U_1 \supset  U_2 \supset  \cdots \supset  E$$ 使 $$m(U_k) < \delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \delta$$ 得 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性与 $$\bigcap U_k = E$$ 得 $$|\mu_F(E)| \le \varepsilon$$。由 ε 任意，$$\mu_F(E) = 0$$。∎
+**$(\implies )$** 设 $$E \in \mathfrak{B}_\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\mu_F(E) = 0$$。取递减开集列 $$U_1 \supset  U_2 \supset  \cdots \supset  E$$ 使 $$m(U_k) < \delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \delta$$ 得 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性与 $$\bigcap U_k = E$$ 得 $$|\mu_F(E)| \le \varepsilon$$。由 $\varepsilon$ 任意，$$\mu_F(E) = 0$$。∎
 
 ⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。
 
@@ -3105,7 +3103,7 @@ $$F(x) := \int_{-\infty}^{x} f(t) dt$$
 
 $$F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
-两个方向合起来就是「绝对连续函数正好是某个 L¹ 函数的积分」。
+两个方向合起来就是「绝对连续函数正好是某个 $L^{1}$ 函数的积分」。
 
 参考：Folland, Real Analysis, Theorem 3.35
 
@@ -3114,11 +3112,11 @@ $$F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
 $$AC([a, b]) \subseteq BV([a, b])$$
 
-证明：由绝对连续性取 δ 使「总长 < δ ⟹ 总变差 < 1」。把 [a,b] 切成有限多段、每段长度 < δ，则每段的变差 ≤ 1，加起来 ≤ 段数 —— 有限。∎
+证明：由绝对连续性取 $\delta$ 使「总长 $< \delta \implies$ 总变差 $< 1$」。把 [a,b] 切成有限多段、每段长度 $< \delta$，则每段的变差 $\le 1$，加起来 $\le$ 段数 —— 有限。∎
 
 ⚠ 反过来不成立：**Cantor 函数在 [0,1] 上有界变差但不绝对连续**。所以这个包含是严格的。
 
-⭐ 这条是下面那条「微积分基本定理 TFAE」的准备工作：它保证 (a) ⟹ BV，从而可以谈 F′。
+⭐ 这条是下面那条「微积分基本定理 TFAE」的准备工作：它保证 $(a) \implies BV$，从而可以谈 $F'$。
 
 参考：Folland, Real Analysis, §3.5
 
@@ -3127,23 +3125,23 @@ $$AC([a, b]) \subseteq BV([a, b])$$
 
 设 $$F : [a, b] \to \mathbb{C}$$，区间紧。则下列三条**彼此等价**：
 
-**(a)** F 在 $$[a, b]$$ 上**绝对连续**；
+**(a)** $F$ 在 $$[a, b]$$ 上**绝对连续**；
 
 **(b)** 存在 $$f \in L^1([a, b])$$ 使
 
 $$F(x) - F(a) = \int_a^x f(t) dt\quad  \forall x \in [a, b]$$
 
-**(c)** F **a.e. 可导**、$$F' \in L^1([a, b])$$，且
+**(c)** $F$ **a.e. 可导**、$$F' \in L^1([a, b])$$，且
 
 $$F(x) - F(a) = \int_a^x F'(t) dt$$
 
-⭐ 这是 **Newton–Leibniz 公式在 Lebesgue 积分下的完整版本**。对比 Riemann 积分：那里「F′ 可积且公式成立」要求 F′ 连续（或至少 Riemann 可积），这里只需要「F 绝对连续」。
+⭐ 这是 **Newton–Leibniz 公式在 Lebesgue 积分下的完整版本**。对比 Riemann 积分：那里「$F'$ 可积且公式成立」要求 $F'$ 连续（或至少 Riemann 可积），这里只需要「$F$ 绝对连续」。
 
 三个条件的分工：(a) 是「函数侧」的条件（用区间划分刻画），(b) 是「积分侧」，(c) 是「导数侧」。定理说它们是同一件事。
 
-⚠ 若去掉绝对连续，公式**会失效**：Cantor 函数满足 (c) 的「a.e. 可导 + F′ ∈ L¹」但 ∫₀¹ F′ = 0 ≠ F(1) − F(0) = 1。
+⚠ 若去掉绝对连续，公式**会失效**：Cantor 函数满足 (c) 的「a.e. 可导 $F' \in L^{1}$」但 $\int _{0}^{1} F' = 0 \ne F(1) - F(0) = 1$。
 
-证明链条：(a) ⟹ (b)：由 AC ⊆ BV 与「μ_F ≪ m」；(b) ⟹ (c)：微积分基本定理的直接推论；(c) ⟹ (a)：由「F(x) = ∫ F′」的形式给出绝对连续性。
+证明链条：$(a) \implies (b)$：由 $AC \subseteq BV$ 与「$\mu _F \ll m$」；$(b) \implies (c)$：微积分基本定理的直接推论；$(c) \implies (a)$：由「$F(x) = \int F'$」的形式给出绝对连续性。
 
 参考：Folland, Real Analysis, Theorem 3.35
 
@@ -3221,7 +3219,7 @@ $$|fg| \le \frac{|f|^p}\{p\} + \frac{|g|^q}\{q\}$$
 
 ⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。
 
-$p = 1$ 时共轭指数是 $q = \infty$，此时 $\|fg\|_1 \le \|f\|_1 \|g\|_\infty$（见 L^∞ 那一节）。
+$p = 1$ 时共轭指数是 $q = \infty$，此时 $\|fg\|_1 \le \|f\|_1 \|g\|_\infty$（见 $L^\infty$ 那一节）。
 
 参考：Folland, Real Analysis, Theorem 6.2
 
@@ -3342,7 +3340,7 @@ $$\|fg\|_1 = \|f\|_1 \|g\|_\infty \iff |g(x)| = \|g\|_\infty \text{ a.e. on } \{
 
 **(e)** 简单函数在 $L^\infty$ 中**稠密**。
 
-⚠ (c) 值得注意：$L^\infty$ 范数收敛 = **「丢掉一个零集之后一致收敛」** —— 这是 $L^\infty$ 独有的、比其他 $L^p$ 强得多的性质。
+⚠ (c) 值得注意：$L^\infty$ 范数收敛 $=$ **「丢掉一个零集之后一致收敛」** —— 这是 $L^\infty$ 独有的、比其他 $L^p$ 强得多的性质。
 
 ⚠ (e) 与「紧支简单函数在 $L^p$ 稠密」形成对照：$L^\infty$ 里简单函数够稠密，但**紧支**的就不够（因为 $L^\infty$ 不看测度大小，只看逐点大小）。
 
@@ -3480,9 +3478,9 @@ $$\|f\|_p^p = \int |f|^p \cdot 1 \le \big\| |f|^p \big\|_{q/p} \, \|1\|_{q/(q-p)
 
 
 
-- **测度有限** → 只有「爆破」要防 → 指数**越小**空间**越大**：$L^1 \supseteq L^2 \supseteq \cdots \supseteq L^\infty$；
+- **测度有限** $\to$ 只有「爆破」要防 $\to$ 指数**越小**空间**越大**：$L^1 \supseteq L^2 \supseteq \cdots \supseteq L^\infty$；
 
-- **计数测度** → 只有「衰减」要防 → 指数**越大**空间**越小**：$\ell^1 \subseteq \ell^2 \subseteq \cdots \subseteq \ell^\infty$。
+- **计数测度** $\to$ 只有「衰减」要防 $\to$ 指数**越大**空间**越小**：$\ell^1 \subseteq \ell^2 \subseteq \cdots \subseteq \ell^\infty$。
 
 参考：Folland, Real Analysis, §6.1
 
@@ -3575,9 +3573,9 @@ $$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 
 $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 \,\right\}$$
 
-（$\Sigma$ = 有限支集简单函数全体。）若 $M_g(g) < \infty$，且
+（$\Sigma$ $=$ 有限支集简单函数全体。）若 $M_g(g) < \infty$，且
 
-- $\{x : g(x) \ne 0\}$ 是 **σ-有限** 的，**或**
+- $\{x : g(x) \ne 0\}$ 是 **$\sigma$有限** 的，**或**
 - $\mu$ 是**半有限**的，
 
 则 $g \in L^q$，且 $M_g(g) = \|g\|_q$。
@@ -3586,7 +3584,7 @@ $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 
 
 证明分三步（见右侧箭头）：Step 1 先证「$f$ 有限支可测」时也有 $|\int fg| \le M_g(g)$；Step 2 处理 $q < \infty$；Step 3 处理 $q = \infty$。
 
-⚠ 两个前提条件（σ-有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。
+⚠ 两个前提条件（$\sigma$有限 / 半有限）在 Step 2、Step 3 里各用一次，**不能省**。
 
 参考：Folland, Real Analysis, Theorem 6.14
 
@@ -3607,7 +3605,7 @@ $$(L^p)^* \cong L^q$$
 
 ⭐ 这是 $L^p$ 理论的高潮：**$L^p$ 上的每一个连续线性泛函，都只是「乘一个 $L^q$ 函数再积分」**。
 
-$p = 1$、$\mu$ σ-有限时结论同样成立（$(L^1)^* \cong L^\infty$）；
+$p = 1$、$\mu$ $\sigma$有限时结论同样成立（$(L^1)^* \cong L^\infty$）；
 
 ⚠ 但 $p = \infty$ 时**不成立**：$(L^\infty)^*$ 严格大于 $L^1$（存在不是由 $L^1$ 函数给出的有界线性泛函，比如在 $C[0,1]$ 上调 Hahn–Banach 得到的那些）。
 
@@ -3641,96 +3639,96 @@ $$L^p \cong (L^p)^{**}$$
 #### 替换公理模式 ⟹ 分离公理模式　`imp.repl-to-sep`
 *替换公理模式 ⇒ 分离公理模式*
 
-设 φ(x, p) 是不含 B 的公式，A 是任意集合。取公式
+设 $\varphi (x, p)$ 是不含 $B$ 的公式，$A$ 是任意集合。取公式
 
 $$\psi(x, y, p) :\equiv  ( x = y \wedge  \varphi(x, p) )$$
 
-对任意 x，至多只有一个 y 使 ψ(x, y, p) 成立（因为 x = y 已经确定了 y）。于是替换公理模式给出一个集合
+对任意 $x$，至多只有一个 $y$ 使 $\psi (x, y, p)$ 成立（因为 $x = y$ 已经确定了 $y$）。于是替换公理模式给出一个集合
 
 $$B = \{ y : \exists x \in A, \psi(x, y, p) \} = \{ x \in A : \varphi(x, p) \}$$
 
-这正是分离公理模式所要的 B（外延公理保证唯一）。∎
+这正是分离公理模式所要的 $B$（外延公理保证唯一）。∎
 
 > 所以 ZF 里其实只需要「替换 + 一个集合存在」就够了，教材仍保留分离公理是为了方便陈述与使用。
 
 #### 分离公理模式 ⟹ 空集存在　`imp.sep-to-empty`
 *分离公理模式 ⇒ 空集存在*
 
-取任意集合 a（一阶逻辑的论域非空，故这样的 a 存在；在 ZF 中也可由无穷公理提供）。
+取任意集合 $a$（一阶逻辑的论域非空，故这样的 $a$ 存在；在 ZF 中也可由无穷公理提供）。
 
-取公式 φ(x) :≡ ( x ≠ x )，它是矛盾式。分离公理模式给出集合
+取公式 $\varphi (x) :\equiv ( x \ne x )$，它是矛盾式。分离公理模式给出集合
 
 $$B = \{ x \in a : x \ne x \}$$
 
-对任意 x，x ∈ B ↔ ( x ∈ a ∧ x ≠ x ) 恒为假，故 B 不含任何元素。
-由外延公理，这样的 B 唯一，记作 ∅。∎
+对任意 $x$，$x \in B \leftrightarrow ( x \in a \wedge x \ne x )$ 恒为假，故 $B$ 不含任何元素。
+由外延公理，这样的 $B$ 唯一，记作 $\emptyset$。∎
 
 > 严格地说，「论域非空」是一阶逻辑的约定，不属于 ZF 公理。若不喜欢这个约定，也可以先由无穷公理取出一个集合再分离。
 
 #### 正则公理 + 配对公理 ⟹ 无自属集合　`imp.found-to-noself`
 *正则公理 + 配对公理 ⇒ A ∉ A*
 
-反设存在集合 A 使 A ∈ A。由配对公理取 a = b = A，得单点集 {A}。
+反设存在集合 $A$ 使 $A \in A$。由配对公理取 $a = b = A$，得单点集 {A}。
 
-由外延公理 {A} ≠ ∅（它含有 A）。对 {A} 用正则公理：存在 x ∈ {A} 使
+由外延公理 $\{A\} \ne \emptyset$（它含有 $A$）。对 {A} 用正则公理：存在 $x \in \{A\}$ 使
 
 $$x \cap \{ A \} = \emptyset$$
 
-而 {A} 只有唯一的元素，故 x = A。于是 A ∩ {A} = ∅。
+而 {A} 只有唯一的元素，故 $x = A$。于是 $A \cap \{A\} = \emptyset$。
 
-但由假设 A ∈ A 且 A ∈ {A}，所以 A ∈ A ∩ {A}，与 A ∩ {A} = ∅ 矛盾。故 A ∉ A。∎
+但由假设 $A \in A$ 且 $A \in \{A\}$，所以 $A \in A \cap \{A\}$，与 $A \cap \{A\} = \emptyset$ 矛盾。故 $A \notin A$。∎
 
-> 把同样的论证用在任意有限 ∈-循环 A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀ 上，取集合 {A₀, …, Aₙ₋₁}（可由配对公理反复构造），也能得到矛盾。
+> 把同样的论证用在任意有限 $\in$循环 $A_{0} \ni A_{1} \ni \cdots \ni A_{n} = A_{0}$ 上，取集合 $\{A_{0}$ …$A_{n-1}\}$（可由配对公理反复构造），也能得到矛盾。
 
 #### 无穷公理 + 幂集公理 + 分离公理模式 ⟹ 自然数集存在　`imp.inf-to-omega`
 *无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在*
 
-1. 由无穷公理取一个归纳集 I。称 J ⊆ I 是**归纳的**，若 ∅ ∈ J 且 ∀x (x ∈ J → x ∪ {x} ∈ J)。
+1. 由无穷公理取一个归纳集 $I$。称 $J \subseteq I$ 是**归纳的**，若 $\emptyset \in J$ 且 $\forall x (x \in J \to x \cup \{x\} \in J)$。
 
-2. 由幂集公理，𝒫(I) 是集合；再用分离公理模式取
+2. 由幂集公理，$\mathcal{P}(I)$ 是集合；再用分离公理模式取
 
 $$S = \{ J \in \mathcal{P}(I) : J\text{ 是归纳集} \}$$
 
-S 非空（I ∈ S）。
+$S$ 非空（$I \in S$）。
 
-3. 再对 𝒫(I) 用一次分离公理模式，令
+3. 再对 $\mathcal{P}(I)$ 用一次分离公理模式，令
 
 $$\omega = \{ x \in I : \forall J ( J \in S \to x \in J ) \}$$
 
-即 ω 是所有归纳子集的交。
+即 $\omega$ 是所有归纳子集的交。
 
-4. ω 是归纳集：∅ 属于每个 J ∈ S，故 ∅ ∈ ω；若 x ∈ ω，则 x 属于每个 J ∈ S，从而 x ∪ {x} 属于每个 J ∈ S，故 x ∪ {x} ∈ ω。
+$4. \omega$ 是归纳集：$\emptyset$ 属于每个 $J \in S$，故 $\emptyset \in \omega$；若 $x \in \omega$，则 $x$ 属于每个 $J \in S$，从而 $x \cup \{x\}$ 属于每个 $J \in S$，故 $x \cup \{x\} \in \omega$。
 
-5. ω 含于一切归纳集：若 K 是归纳集，则 K ∩ I 也是归纳集且 K ∩ I ∈ S，由 ω 的定义 ω ⊆ K ∩ I ⊆ K。
+$5. \omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \cap I$ 也是归纳集且 $K \cap I \in S$，由 $\omega$ 的定义 $\omega \subseteq K \cap I \subseteq K$。
 
-故 ω 是最小归纳集，即自然数集。∎
+故 $\omega$ 是最小归纳集，即自然数集。∎
 
 #### 配对公理 + 并集公理 ⟹ 二元并存在　`imp.binunion`
 *配对公理 + 并集公理 ⇒ 二元并存在*
 
-任给 a、b。
+任给 $a$、$b$。
 
 1. 由配对公理，{ a, b } 是集合。
-2. 由并集公理，⋃{ a, b } 是集合，且
+2. 由并集公理，$\bigcup \{ a, b \}$ 是集合，且
 
 $$x \in \bigcup\{ a, b \} \iff \exists Y ( Y \in \{ a, b \} \wedge  x \in Y ) \iff ( x \in a \vee  x \in b )$$
 
-取 A = ⋃{ a, b } 即为所求。∎
+取 $A = \bigcup \{ a, b \}$ 即为所求。∎
 
 #### 幂集公理 + 配对公理 + 并集公理 + 分离公理模式 ⟹ 笛卡尔积存在　`imp.product`
 *幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在*
 
-任给 A、B。
+任给 $A$、$B$。
 
-1. 由配对公理与并集公理，A ∪ B 是集合。
+1. 由配对公理与并集公理，$A \cup B$ 是集合。
 
-2. 对任意 a ∈ A、b ∈ B，Kuratowski 有序对 (a, b) = {{a}, {a, b}}。其中 {a} ⊆ A ∪ B，{a, b} ⊆ A ∪ B，所以 {a}, {a, b} ∈ 𝒫(A ∪ B)，进而 (a, b) ∈ 𝒫(𝒫(A ∪ B))。
+2. 对任意 $a \in A$、$b \in B$，Kuratowski 有序对 $(a, b) = \{\{a\}, \{a, b\}\}$。其中 $\{a\} \subseteq A \cup B$，$\{a, b\} \subseteq A \cup B$，所以 $\{a\}, \{a, b\} \in \mathcal{P}(A \cup B)$，进而 $(a, b) \in \mathcal{P}(\mathcal{P}(A \cup B))$。
 
-3. 由幂集公理，𝒫(𝒫(A ∪ B)) 是集合。用分离公理模式取
+3. 由幂集公理，$\mathcal{P}(\mathcal{P}(A \cup B))$ 是集合。用分离公理模式取
 
 $$C = \{ z \in \mathcal{P}(\mathcal{P}(A \cup B)) : \exists a \in A, \exists b \in B, z = (a, b) \}$$
 
-则 C 恰是 A × B：一方面每个 (a, b) 都在 𝒫(𝒫(A ∪ B)) 中，另一方面 z 是不在 A、B 中任意点处取到的有序对时不会被选进来。∎
+则 $C$ 恰是 $A \times B$：一方面每个 (a, b) 都在 $\mathcal{P}(\mathcal{P}(A \cup B))$ 中，另一方面 $z$ 是不在 $A$、$B$ 中任意点处取到的有序对时不会被选进来。∎
 
 > 这个证明展示了一个典型套路：先用幂集「造一个足够大的容器」，再用分离公理模式「筛出真正想要的东西」。
 
@@ -3739,35 +3737,35 @@ $$C = \{ z \in \mathcal{P}(\mathcal{P}(A \cup B)) : \exists a \in A, \exists b \
 
 **选择公理 ⇒ 良序定理（路线 1⟹4）**
 
-设 X 是集合。X = ∅ 时平凡，以下设 X ≠ ∅。
+设 $X$ 是集合。$X = \emptyset$ 时平凡，以下设 $X \ne \emptyset$。
 
-1. 由 AC，非空子集族 𝒫(X) ∖ {∅} 上有选择函数 φ，即 φ(A) ∈ A 对每个非空 A ⊆ X 成立。
+1. 由 AC，非空子集族 $\mathcal{P}(X) \setminus \{\emptyset \}$ 上有选择函数 $\varphi$，即 $\varphi (A) \in A$ 对每个非空 $A \subseteq X$ 成立。
 
-2. 用超限递归往下取元素：对序数 α，只要余集非空就令
+2. 用超限递归往下取元素：对序数 $\alpha$，只要余集非空就令
 
 $$x(\alpha) = \varphi( X \setminus \{ x(\beta) : \beta < \alpha \} )$$
 
 一旦余集为空就停止。
 
-3. **过程一定会停**：取 X 的 **Hartogs 数** ℵ(X)，即最小的不能单射进 X 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。若对一切 α < ℵ(X) 过程都没停，则 α ↦ x(α) 就是 ℵ(X) 到 X 的单射，与 ℵ(X) 的定义矛盾。故存在序数 γ 使 x : γ → X 是双射。
+3. **过程一定会停**：取 $X$ 的 **Hartogs 数** $\aleph (X)$，即最小的不能单射进 $X$ 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。若对一切 $\alpha < \aleph (X)$ 过程都没停，则 $\alpha \mapsto x(\alpha )$ 就是 $\aleph (X)$ 到 $X$ 的单射，与 $\aleph (X)$ 的定义矛盾。故存在序数 $\gamma$ 使 $x : \gamma \to X$ 是双射。
 
-4. 把 γ 上的序经 x 搬到 X 上：
+4. 把 $\gamma$ 上的序经 $x$ 搬到 $X$ 上：
 
 $$a \preceq b :\iff x^{-1}(a) \le x^{-1}(b)$$
 
-因为序数在 ∈／≤ 下是良序的，X 上这个序也是良序。∎
+因为序数在 $\in$／$\le$ 下是良序的，$X$ 上这个序也是良序。∎
 
 **良序定理 ⇒ 选择公理（路线 4⟹1）**
 
-设 F 是一族非空集合（即 ∅ ∉ F）。
+设 $F$ 是一族非空集合（即 $\emptyset \notin F$）。
 
-1. 由良序定理，取 U = ⋃F 的一个良序 ⪯。
+1. 由良序定理，取 $U = \bigcup F$ 的一个良序 $\preceq$。
 
-2. 对每个 X ∈ F：X ≠ ∅ 且 X ⊆ U，所以 X 是 U 的非空子集，有 ⪯-最小元 m(X)。
+2. 对每个 $X \in F$：$X \ne \emptyset$ 且 $X \subseteq U$，所以 $X$ 是 $U$ 的非空子集，有 $\preceq$最小元 m(X)。
 
-3. 定义 f(X) = m(X)（X 唯一确定 m(X)，故这是一个函数）。则 dom f = F 且 f(X) ∈ X 对一切 X ∈ F 成立，即 f 是 F 的选择函数。
+3. 定义 $f(X) = m(X)$（$X$ 唯一确定 m(X)，故这是一个函数）。则 $\operatorname{dom} f = F$ 且 $f(X) \in X$ 对一切 $X \in F$ 成立，即 $f$ 是 $F$ 的选择函数。
 
-由 F 的任意性，AC 成立。∎
+由 $F$ 的任意性，AC 成立。∎
 
 > 这是整张星图里最关键的一条等价链的起点：AC 给「挑选」，良序给「最小」，两者互为表里。
 
@@ -3776,321 +3774,321 @@ $$a \preceq b :\iff x^{-1}(a) \le x^{-1}(b)$$
 
 **良序定理 ⇒ 佐恩引理**
 
-设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。由良序定理，取 P 上的一个良序 ≤（与 ⪯ 无关）。
+设 $(P, \preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。由良序定理，取 $P$ 上的一个良序 $\le$（与 $\preceq$ 无关）。
 
-用超限递归沿 ≤ 构造 P 的一个 ⪯-链 C：
+用超限递归沿 $\le$ 构造 $P$ 的一个 $\preceq$链 $C$：
 
-- 记 U(C) = { u ∈ P : u 是 C 的 ⪯-上界 }。
-- 若 U(C) 中存在元素有 ⪯-严格上界，就取其中 ≤-最小的那个 v，令 C ← C ∪ {v}；
+- 记 $U(C) = \{ u \in P : u$ 是 $C$ 的 $\preceq$上界 }。
+- 若 U(C) 中存在元素有 $\preceq$严格上界，就取其中 $\le$最小的那个 $v$，令 $C \leftarrow C \cup \{v\}$；
 - 否则停止。
 
-**为什么必停**：每步都往 C 里加入一个不属于 C 的元素，所以若在任意序数处都不停，就会得到从「全体序数」到 P 的单射。由替换公理模式，全体序数会是一个集合的像，即序数全体构成集合——这与 Burali-Forti 悖论矛盾。故递归在某个序数 β 处停止。
+**为什么必停**：每步都往 $C$ 里加入一个不属于 $C$ 的元素，所以若在任意序数处都不停，就会得到从「全体序数」到 $P$ 的单射。由替换公理模式，全体序数会是一个集合的像，即序数全体构成集合——这与 Burali-Forti 悖论矛盾。故递归在某个序数 $\beta$ 处停止。
 
-**停止时 C 有上界**：C 是 ⪯-链，由题设 U(C) ≠ ∅，取 u ∈ U(C)。
+**停止时 $C$ 有上界**：$C$ 是 $\preceq$链，由题设 $U(C) \ne \emptyset$，取 $u \in U(C)$。
 
-**u 是极大元**：若存在 w ∈ P 使 u ≺ w，则 w ≻ u ⪰ c（∀c ∈ C），故 w ∈ U(C) 是有严格上界的元素，与「停止条件」矛盾。
+**$u$ 是极大元**：若存在 $w \in P$ 使 $u \prec w$，则 $w \succ u \succeq c$（$\forall c \in C$），故 $w \in U(C)$ 是有严格上界的元素，与「停止条件」矛盾。
 
-故 u 是 P 的 ⪯-极大元。∎
+故 $u$ 是 $P$ 的 $\preceq$极大元。∎
 
 **佐恩引理 ⇒ 良序定理**
 
-设 X 是集合。考虑「X 的部分良序」全体：
+设 $X$ 是集合。考虑「$X$ 的部分良序」全体：
 
 $$\mathcal{W} = \{ (W, \preceq_W) : W \subseteq X, \preceq_W\text{ 是} W\text{ 上的良序} \}$$
 
 按**初始段延拓**排序：
 
-(W₁, ⪯₁) ≤ (W₂, ⪯₂) ⟺ W₁ ⊆ W₂，⪯₁ = ⪯₂|W₁，且 W₁ 是 (W₂, ⪯₂) 的一个前段。
+$(W_{1}, \preceq _{1}) \le (W_{2}, \preceq _{2}) \iff W_{1} \subseteq W_{2}$，$\preceq _{1} = \preceq _{2}|W_{1}$，且 $W_{1}$ 是 $(W_{2}, \preceq _{2})$ 的一个前段。
 
-1. (𝒲, ≤) 是偏序集（三条性质直接验证）。
+$1. (𝒲, \le )$ 是偏序集（三条性质直接验证）。
 
-2. **每个链有上界**：设 𝒟 ⊆ 𝒲 是链。令 W* = ⋃{ W : (W, ⪯) ∈ 𝒟 }，在 W* 上定义
+2. **每个链有上界**：设 $\mathcal{D} \subseteq 𝒲$ 是链。令 $W$* $= \bigcup \{ W : (W, \preceq ) \in \mathcal{D} \}$，在 $W$* 上定义
 
 $$x \preceq_* y \iff\text{ 存在} (W, \preceq_W) \in \mathcal{D}\text{ 使} x, y \in W\text{ 且} x \preceq_W y$$
 
-因 𝒟 是链，这些良序彼此兼容，⪯_* 是 W* 上的良序，且 (W*, ⪯_*) ∈ 𝒲 是 𝒟 的上界。
+因 $\mathcal{D}$ 是链，这些良序彼此兼容，$\preceq _$* 是 $W$* 上的良序，且 (W*$\preceq _$*$) \in 𝒲$ 是 $\mathcal{D}$ 的上界。
 
-3. 由佐恩引理，取极大元 (W, ⪯)。
+3. 由佐恩引理，取极大元 $(W, \preceq )$。
 
-4. 若 W ≠ X，取 x ∈ X ∖ W，在 W ∪ {x} 上定义序：保留 W 上的 ⪯，并令所有 w ∈ W 都 ⪯ x（把 x 放在最顶端）。这仍是良序，而且是 (W, ⪯) 的严格延拓，与极大性矛盾。故 W = X，即 X 被良序化。∎
+4. 若 $W \ne X$，取 $x \in X \setminus W$，在 $W \cup \{x\}$ 上定义序：保留 $W$ 上的 $\preceq$，并令所有 $w \in W$ 都 $\preceq x$（把 $x$ 放在最顶端）。这仍是良序，而且是 $(W, \preceq )$ 的严格延拓，与极大性矛盾。故 $W = X$，即 $X$ 被良序化。∎
 
 #### 佐恩引理 ⟺ Hausdorff 极大原理　`eq.zorn-hausdorff`
 *佐恩引理 ⟺ Hausdorff 极大原理*
 
 **佐恩引理 ⇒ Hausdorff 极大原理（路线 2⟹3）**
 
-设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。令
+设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。令
 
 $$\mathcal{C} = \{ C \subseteq P : C\text{ 是链} \}$$
 
-按包含关系 ⊆ 排序。给定 C₀ 时改用 𝒞₀ = { C ∈ 𝒞 : C ⊇ C₀ }，它非空（C₀ ∈ 𝒞₀）。
+按包含关系 $\subseteq$ 排序。给定 $C_{0}$ 时改用 $\mathcal{C}_{0} = \{ C \in \mathcal{C} : C \supseteq C_{0} \}$，它非空（$C_{0} \in \mathcal{C}_{0}$）。
 
-1. **𝒞₀ 中每个链有上界**：设 𝒟 ⊆ 𝒞₀ 是（⊆-）链，即 𝒟 是一族两两可比较的链。令 U = ⋃𝒟。任取 x, y ∈ U，则有 D₁, D₂ ∈ 𝒟 使 x ∈ D₁、y ∈ D₂；因 𝒟 是链，不妨设 D₁ ⊆ D₂，于是 x, y ∈ D₂，而 D₂ 是链，故 x 与 y 可比。所以 U 是链。又每个 D ∈ 𝒟 都 ⊇ C₀，故 U ⊇ C₀，即 U ∈ 𝒞₀，它是 𝒟 的上界。
+1. **$\mathcal{C}_{0}$ 中每个链有上界**：设 $\mathcal{D} \subseteq \mathcal{C}_{0}$ 是（$\subseteq$）链，即 $\mathcal{D}$ 是一族两两可比较的链。令 $U = \bigcup \mathcal{D}$。任取 $x, y \in U$，则有 $D_{1}, D_{2} \in \mathcal{D}$ 使 $x \in D_{1}$、$y \in D_{2}$；因 $\mathcal{D}$ 是链，不妨设 $D_{1} \subseteq D_{2}$，于是 $x, y \in D_{2}$，而 $D_{2}$ 是链，故 $x$ 与 $y$ 可比。所以 $U$ 是链。又每个 $D \in \mathcal{D}$ 都 $\supseteq C_{0}$，故 $U \supseteq C_{0}$，即 $U \in \mathcal{C}_{0}$，它是 $\mathcal{D}$ 的上界。
 
-2. 由佐恩引理，𝒞₀ 有极大元 M。M 是包含 C₀ 的链，且不能再变大，即 M 是包含 C₀ 的极大链。∎
+2. 由佐恩引理，$\mathcal{C}_{0}$ 有极大元 $M$。$M$ 是包含 $C_{0}$ 的链，且不能再变大，即 $M$ 是包含 $C_{0}$ 的极大链。∎
 
 **Hausdorff 极大原理 ⇒ 佐恩引理（路线 3⟹2）**
 
-设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。
+设 $(P, \preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。
 
-1. 由 Hausdorff 极大原理（取 C₀ = ∅），P 存在极大链 M。
+1. 由 Hausdorff 极大原理（取 $C_{0} = \emptyset$），$P$ 存在极大链 $M$。
 
-2. M 是链，故由题设有上界 u ∈ P。
+2. M 是链，故由题设有上界 $u \in P$。
 
-3. **断言 u 是极大元**：若不然，存在 v ∈ P 使 u ≺ v。则 M ∪ {v} 仍是链——任取 m ∈ M，由 m ⪯ u ≺ v 及传递性得 m ⪯ v，故 m 与 v 可比。于是 M ⊊ M ∪ {v} 是一个更大的链，与 M 的极大性矛盾。
+3. **断言 $u$ 是极大元**：若不然，存在 $v \in P$ 使 $u \prec v$。则 $M \cup \{v\}$ 仍是链——任取 $m \in M$，由 $m \preceq u \prec v$ 及传递性得 $m \preceq v$，故 $m$ 与 $v$ 可比。于是 $M \subsetneq M \cup \{v\}$ 是一个更大的链，与 $M$ 的极大性矛盾。
 
-故 u 是 P 的极大元。∎
+故 $u$ 是 $P$ 的极大元。∎
 
 #### Hausdorff 极大原理 ⟺ Tukey 引理　`eq.hausdorff-tukey`
 *Hausdorff 极大原理 ⟺ Tukey 引理*
 
 **Tukey 引理 ⇒ Hausdorff 极大原理**
 
-设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。令 𝒞 = { C ⊆ P : C 是链 }。
+设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。令 $\mathcal{C} = \{ C \subseteq P : C$ 是链 }。
 
-1. **𝒞 具有有限特征**：对任意 X ⊆ P，
+1. **$\mathcal{C}$ 具有有限特征**：对任意 $X \subseteq P$，
 
-X 是链 ⟺ X 中任两元素可比 ⟺ X 的每个有限子集是链 ⟺ X 的每个有限子集属于 𝒞。
+$X$ 是链 $\iff X$ 中任两元素可比 $\iff X$ 的每个有限子集是链 $\iff X$ 的每个有限子集属于 $\mathcal{C}$。
 
-（最后一个 ⟸ 方向：任取 x, y ∈ X，则 {x, y} 是 X 的有限子集，属于 𝒞，故 x 与 y 可比。）
+（最后一个 $\Longleftarrow$ 方向：任取 $x, y \in X$，则 {x, y} 是 $X$ 的有限子集，属于 $\mathcal{C}$，故 $x$ 与 $y$ 可比。）
 
-2. 𝒞 非空（∅ 是链）。由 Tukey 引理，𝒞 有极大元 M，即 P 的极大链。
+$2. \mathcal{C}$ 非空（$\emptyset$ 是链）。由 Tukey 引理，$\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。
 
-3. 若要包含给定的 C₀：注意 𝒞₀ = { C ∈ 𝒞 : C ⊇ C₀ } 同样具有有限特征——「X 含 C₀ 且 X 的每个有限子集是链」正是有限特征的形状（含 C₀ 是整体性质，不对有限子集设限）。对 𝒞₀ 用 Tukey 引理即得包含 C₀ 的极大链。∎
+3. 若要包含给定的 $C_{0}$：注意 $\mathcal{C}_{0} = \{ C \in \mathcal{C} : C \supseteq C_{0} \}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。对 $\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。∎
 
 **Hausdorff 极大原理 ⇒ Tukey 引理**
 
-设 𝒜 是具有有限特征的非空集合族。把 Hausdorff 极大原理用在偏序集 (𝒜, ⊆) 上，得到 𝒜 的一个**极大链** 𝒞（即 𝒜 中一族在 ⊆ 下两两可比较、且不能再扩大成员的子族）。
+设 $\mathcal{A}$ 是具有有限特征的非空集合族。把 Hausdorff 极大原理用在偏序集 $(\mathcal{A}, \subseteq )$ 上，得到 $\mathcal{A}$ 的一个**极大链** $\mathcal{C}$（即 $\mathcal{A}$ 中一族在 $\subseteq$ 下两两可比较、且不能再扩大成员的子族）。
 
 令
 
 $$U = \bigcup \{ A : A \in \mathcal{C} \}$$
 
-1. **U ∈ 𝒜**：由有限特征，只需证 U 的每个有限子集属于 𝒜。设 S ⊆ U 有限，则每个 s ∈ S 落在某个 A_s ∈ 𝒞 中；𝒞 是 ⊆-链而 S 有限，故其中必有最大的 A₀ 包含 S（即 S ⊆ A₀）。因为 A₀ ∈ 𝒜 且 𝒜 具有有限特征，A₀ 的每个有限子集都属于 𝒜，特别地 S ∈ 𝒜。故 U 的每个有限子集属于 𝒜，从而 U ∈ 𝒜。
+1. **$U \in \mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\mathcal{A}$。设 $S \subseteq U$ 有限，则每个 $s \in S$ 落在某个 $A_s \in \mathcal{C}$ 中；$\mathcal{C}$ 是 $\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \subseteq A_{0}$）。因为 $A_{0} \in \mathcal{A}$ 且 $\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\mathcal{A}$，特别地 $S \in \mathcal{A}$。故 $U$ 的每个有限子集属于 $\mathcal{A}$，从而 $U \in \mathcal{A}$。
 
-2. **U 是极大元**：若存在 B ∈ 𝒜 使 U ⊊ B，则 𝒞 ∪ {B} 仍是 ⊆-链（每个 A ∈ 𝒞 满足 A ⊆ U ⊆ B），与 𝒞 的极大性矛盾。
+2. **$U$ 是极大元**：若存在 $B \in \mathcal{A}$ 使 $U \subsetneq B$，则 $\mathcal{C} \cup \{B\}$ 仍是 $\subseteq$链（每个 $A \in \mathcal{C}$ 满足 $A \subseteq U \subseteq B$），与 $\mathcal{C}$ 的极大性矛盾。
 
-故 U 是 (𝒜, ⊆) 的极大元。∎
+故 $U$ 是 $(\mathcal{A}, \subseteq )$ 的极大元。∎
 
 > 这一对证明很典型：先看出「链」这个概念本身具有有限特征，就把 Hausdorff 原理换成了用起来更省事的 Tukey 引理。
 
 #### 选择公理 + Hartogs 定理 ⟹ 佐恩引理　`imp.hartogs-zorn`
 *选择公理 + Hartogs 定理 ⟹ 佐恩引理（路线 1⟹2）*
 
-设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。目标是造出一个极大元。
+设 $(P, \preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。
 
-**① 一个选择函数**：由 AC，𝒫(P) ∖ {∅} 上有选择函数 φ，即 φ(A) ∈ A 对每个非空 A ⊆ P 成立。整段证明只挑这一次。
+**① 一个选择函数**：由 AC，$\mathcal{P}(P) \setminus \{\emptyset \}$ 上有选择函数 $\varphi$，即 $\varphi (A) \in A$ 对每个非空 $A \subseteq P$ 成立。整段证明只挑这一次。
 
-**② 链的严格上界**：对链 C ⊆ P 记
+**② 链的严格上界**：对链 $C \subseteq P$ 记
 
 $$S(C) = \{ p \in P : \forall c \in C, p \succ  c \}$$
 
-（约定 S(∅) = P。）注意「C 有上界」与「S(C) ≠ ∅」不是一回事：S 要的是**严格**上界。
+（约定 $S(\emptyset ) = P$。）注意「$C$ 有上界」与「$S(C) \ne \emptyset$」不是一回事：$S$ 要的是**严格**上界。
 
-**③ 超限递归**：只要 S 非空就往下走 ——
+**③ 超限递归**：只要 $S$ 非空就往下走 ——
 
 $$p(\alpha) = \varphi( S(\{ p(\beta) : \beta < \alpha \}) )\quad \text{ 只要} S(\{ p(\beta) : \beta < \alpha \}) \ne \emptyset;\text{ 一旦} S\text{ 为空就停}$$
 
-于是得到一列严格递增的 p(0) ≺ p(1) ≺ p(2) ≺ ⋯。第 0 步用 S(∅) = P ≠ ∅，所以 p(0) = φ(P) 有定义。
+于是得到一列严格递增的 $p(0) \prec p(1) \prec p(2) \prec \cdots$。第 0 步用 $S(\emptyset ) = P \ne \emptyset$，所以 $p(0) = \varphi (P)$ 有定义。
 
-**④ 必停**：由 **Hartogs 定理**，ℵ(P) 是不能单射进 P 的最小序数。把递归的上限取到 ℵ(P) 就够 —— 若对一切 α < ℵ(P) 都不停，则 α ↦ p(α) 就是一个单射 ℵ(P) → P，与 ℵ(P) 的定义矛盾。故存在 α₀ < ℵ(P) 使 S({ p(β) : β < α₀ }) = ∅。（这一步只用到 ZF，不用 AC。）
+**④ 必停**：由 **Hartogs 定理**，$\aleph (P)$ 是不能单射进 $P$ 的最小序数。把递归的上限取到 $\aleph (P)$ 就够 —— 若对一切 $\alpha < \aleph (P)$ 都不停，则 $\alpha \mapsto p(\alpha )$ 就是一个单射 $\aleph (P) \to P$，与 $\aleph (P)$ 的定义矛盾。故存在 $\alpha _{0} < \aleph (P)$ 使 $S(\{ p(\beta ) : \beta < \alpha _{0} \}) = \emptyset$。（这一步只用到 ZF，不用 AC。）
 
-**⑤ 停下来就给极大元**：令 C = { p(β) : β < α₀ }，它是 P 的一个链（而且是严格递增的），由题设存在上界 u ∈ P。
+**⑤ 停下来就给极大元**：令 $C = \{ p(\beta ) : \beta < \alpha _{0} \}$，它是 $P$ 的一个链（而且是严格递增的），由题设存在上界 $u \in P$。
 
-**⑥ u 是极大元**：若存在 v ∈ P 使 u ≺ v，则由 u ⪰ c（∀c ∈ C）与传递性得 v ≻ c（∀c ∈ C），即 v ∈ S(C) —— 与 S(C) = ∅ 矛盾。故 u 是 P 的极大元。∎
+**⑥ $u$ 是极大元**：若存在 $v \in P$ 使 $u \prec v$，则由 $u \succeq c$（$\forall c \in C$）与传递性得 $v \succ c$（$\forall c \in C$），即 $v \in S(C)$ —— 与 $S(C) = \emptyset$ 矛盾。故 $u$ 是 $P$ 的极大元。∎
 
-> 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停」**。对比之下，经由良序定理的证法（见「良序定理 ⟺ 佐恩引理」那条黑线）是把「停」交给 Burali–Forti 悖论。
+$>$ 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停」**。对比之下，经由良序定理的证法（见「良序定理 $\iff$ 佐恩引理」那条黑线）是把「停」交给 Burali–Forti 悖论。
 
 > 比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。
 
 #### 佐恩引理 ⟹ 选择公理　`imp.zorn-choice`
 *佐恩引理 ⟹ 选择公理（路线 2⟹1）*
 
-设 {A_i}_{i ∈ I} 是一族非空集合。要对它造出一个选择函数。
+设 $\{A_i\}_\{i \in I\}$ 是一族非空集合。要对它造出一个选择函数。
 
 **① 舞台：部分选择函数全体**。令
 
 $$\mathcal{F} = \{ f : f\text{ 是函数}, dom f \subseteq I,\text{ 且} \forall i \in dom f, f(i) \in A_i \}$$
 
-按包含关系 ⊆ 排序。ℱ ≠ ∅（空函数在 ℱ 中），且 (ℱ, ⊆) 是偏序集。
+按包含关系 $\subseteq$ 排序。$\mathcal{F} \ne \emptyset$（空函数在 $\mathcal{F}$ 中），且 $(\mathcal{F}, \subseteq )$ 是偏序集。
 
-**② 每个链有上界**：设 𝒟 ⊆ ℱ 是 ⊆-链，令 f = ⋃𝒟。
+**② 每个链有上界**：设 $\mathcal{D} \subseteq \mathcal{F}$ 是 $\subseteq$链，令 $f = \bigcup \mathcal{D}$。
 
-- f 是函数：若 (i, a), (i, a′) ∈ f，则它们分别属于某个 f₁, f₂ ∈ 𝒟；𝒟 是链，不妨设 f₁ ⊆ f₂，于是 (i, a), (i, a′) ∈ f₂，而 f₂ 是函数，故 a = a′。
-- f ∈ ℱ：dom f = ⋃_{g ∈ 𝒟} dom g ⊆ I，且对 i ∈ dom f 有 f(i) ∈ A_i。
-- f 是 𝒟 的上界：f ⊇ g 对一切 g ∈ 𝒟 成立。
+$f$ 是函数：若 $(i, a), (i, a') \in f$，则它们分别属于某个 $f_{1}, f_{2} \in \mathcal{D}$；$\mathcal{D}$ 是链，不妨设 $f_{1} \subseteq f_{2}$，于是 $(i, a), (i, a') \in f_{2}$，而 $f_{2}$ 是函数，故 $a = a'$。
+$f \in \mathcal{F}$：$\operatorname{dom} f = \bigcup _\{g \in \mathcal{D}\} \operatorname{dom} g \subseteq I$，且对 $i \in \operatorname{dom} f$ 有 $f(i) \in A_i$。
+$f$ 是 $\mathcal{D}$ 的上界：$f \supseteq g$ 对一切 $g \in \mathcal{D}$ 成立。
 
-**③ 用佐恩引理**，取 (ℱ, ⊆) 的极大元 f。
+**③ 用佐恩引理**，取 $(\mathcal{F}, \subseteq )$ 的极大元 $f$。
 
-**④ 极大元必须「定义在全体 I 上」**：若存在 i₀ ∈ I ∖ dom f，由 A_{i₀} ≠ ∅ 取 a ∈ A_{i₀}，则
+**④ 极大元必须「定义在全体 $I$ 上」**：若存在 $i_{0} \in I \setminus \operatorname{dom} f$，由 $A_\{i_{0}\} \ne \emptyset$ 取 $a \in A_\{i_{0}\}$，则
 
 $$f' = f \cup \{ (i_0, a) \}$$
 
-仍是 ℱ 中的元素（i₀ ∉ dom f，不破坏函数性），且 f ⊊ f′ —— 与 f 的极大性矛盾。故 dom f = I。
+仍是 $\mathcal{F}$ 中的元素（$i_{0} \notin \operatorname{dom} f$，不破坏函数性），且 $f \subsetneq f'$ —— 与 $f$ 的极大性矛盾。故 $\operatorname{dom} f = I$。
 
-**⑤** 于是 f : I → ⋃_{i ∈ I} A_i 且 f(i) ∈ A_i 对一切 i 成立，即 f 是这族集合的选择函数。由族的任意性，AC 成立。∎
+**⑤** 于是 $f : I \to \bigcup _\{i \in I\} A_i$ 且 $f(i) \in A_i$ 对一切 $i$ 成立，即 $f$ 是这族集合的选择函数。由族的任意性，AC 成立。∎
 
 > 「按包含序取极大元，再证明它已经没法再大」—— 这是用佐恩引理造存在性对象的典型手法。
 
 #### 佐恩引理 ⟹ 每个向量空间有基　`imp.zorn-to-basis`
 *佐恩引理 ⇒ 每个向量空间有基*
 
-设 V ≠ 0 是域 K 上的向量空间，并给定线性无关集 S₀ ⊆ V。令
+设 $V \ne 0$ 是域 $K$ 上的向量空间，并给定线性无关集 $S_{0} \subseteq V$。令
 
 $$\mathcal{A} = \{ S \subseteq V : S \supseteq S_0\text{ 且} S\text{ 线性无关} \}$$
 
-按包含关系 ⊆ 排序。
+按包含关系 $\subseteq$ 排序。
 
-1. **𝒜 ≠ ∅**：S₀ ∈ 𝒜。
+1. **$\mathcal{A} \ne \emptyset$**：$S_{0} \in \mathcal{A}$。
 
-2. **每个链有上界**：设 𝒟 ⊆ 𝒜 是 ⊆-链，令 U = ⋃𝒟。要证 U 线性无关，只需证 U 的每个有限子集线性无关：取有限子集 {v₁, …, vₙ} ⊆ U，每个 vᵢ 属于某个 Dᵢ ∈ 𝒟；𝒟 是链且只有有限多个 Dᵢ，故其中有一个最大的 D 包含全部 vᵢ，即 {v₁, …, vₙ} ⊆ D。而 D 线性无关，故它的子集 {v₁, …, vₙ} 也线性无关。因此 U 线性无关，U ∈ 𝒜，它是 𝒟 的上界。
+2. **每个链有上界**：设 $\mathcal{D} \subseteq \mathcal{A}$ 是 $\subseteq$链，令 $U = \bigcup \mathcal{D}$。要证 $U$ 线性无关，只需证 $U$ 的每个有限子集线性无关：取有限子集 $\{v_{1}$ …$v_{n}\} \subseteq U$，每个 $v_{i}$ 属于某个 $D_{i} \in \mathcal{D}$；$\mathcal{D}$ 是链且只有有限多个 $D_{i}$，故其中有一个最大的 $D$ 包含全部 $v_{i}$，即 $\{v_{1}$ …$v_{n}\} \subseteq D$。而 $D$ 线性无关，故它的子集 $\{v_{1}$ …$v_{n}\}$ 也线性无关。因此 $U$ 线性无关，$U \in \mathcal{A}$，它是 $\mathcal{D}$ 的上界。
 
-3. 由佐恩引理，𝒜 有极大元 B。B 是含 S₀ 的线性无关集，且在「含 S₀ 的线性无关集」中极大。
+3. 由佐恩引理，$\mathcal{A}$ 有极大元 $B$。$B$ 是含 $S_{0}$ 的线性无关集，且在「含 $S_{0}$ 的线性无关集」中极大。
 
-4. **B 生成 V**：若存在 v ∈ V 不在 B 的张成空间 span(B) 中，则 B ∪ {v} 仍线性无关（否则 v 可写成 B 中有限多个向量的线性组合，与 v ∉ span(B) 矛盾），且严格大于 B，与 B 的极大性矛盾。故 span(B) = V，即 B 是 V 的基。取 S₀ = ∅ 得「V 有基」。∎
+4. **$B$ 生成 $V$**：若存在 $v \in V$ 不在 $B$ 的张成空间 span(B) 中，则 $B \cup \{v\}$ 仍线性无关（否则 $v$ 可写成 $B$ 中有限多个向量的线性组合，与 $v \notin span(B)$ 矛盾），且严格大于 $B$，与 $B$ 的极大性矛盾。故 $span(B) = V$，即 $B$ 是 $V$ 的基。取 $S_{0} = \emptyset$ 得「$V$ 有基」。∎
 
 > 同样的套路可以证明：每个环有极大理想、每个域上每个模有极大无关组、每个偏序集有极大反链。
 
 #### 紧 ⟹ 列紧　`imp.compact-seqcompact`
 *紧 ⟹ 列紧*
 
-设 {xₙ} 是 X 中的序列。反证：假设它没有收敛的子列。
+设 $\{x_{n}\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。
 
-**① 点集 {xₙ : n ∈ ℕ} 是闭的。** 任取 y 不在这个点集中。若 y 是某个 xₙ，那 y 显然不在余集里；以下设 y ∉ {xₙ}。由于 {xₙ} 没有收敛子列，{xₙ} 中任何子列都不趋于 y，于是存在 ε > 0 使 B(y, ε) 中只含**有限个** xₙ（否则可以挑出趋于 y 的子列）。删掉这有限多个点，就得到一个含 y 的开球不碰 {xₙ}。故余集开，{xₙ} 闭。
+**① 点集 $\{x_{n} : n \in \mathbb{N}\}$ 是闭的。** 任取 $y$ 不在这个点集中。若 $y$ 是某个 $x_{n}$，那 $y$ 显然不在余集里；以下设 $y \notin \{x_{n}\}$。由于 $\{x_{n}\}$ 没有收敛子列，$\{x_{n}\}$ 中任何子列都不趋于 $y$，于是存在 $\varepsilon > 0$ 使 $B(y, \varepsilon )$ 中只含**有限个** $x_{n}$（否则可以挑出趋于 $y$ 的子列）。删掉这有限多个点，就得到一个含 $y$ 的开球不碰 $\{x_{n}\}$。故余集开，$\{x_{n}\}$ 闭。
 
-**② 每个 xₙ 有一个只含有限多个 xₘ 的开邻域。** xₙ 自己也被排除在子列之外，同上可得。
+**② 每个 $x_{n}$ 有一个只含有限多个 $x_{m}$ 的开邻域。** $x_{n}$ 自己也被排除在子列之外，同上可得。
 
 **③ 造一个开覆盖。** 取
 
 $$\mathcal{U} = \{ U_n : n \in \mathbb{N} \} \cup \{ X \setminus \{x_n : n \in \mathbb{N}\} \}$$
 
-其中 Uₙ 是 ② 中给 xₙ 的那个邻域（只含有限个 xₘ）。再补上闭集的余集，𝒰 就是 X 的开覆盖。
+其中 $U_{n}$ 是 ② 中给 $x_{n}$ 的那个邻域（只含有限个 $x_{m}$）。再补上闭集的余集，$\mathcal{U}$ 就是 $X$ 的开覆盖。
 
-**④ 由紧性取有限子覆盖** 𝒱 ⊆ 𝒰。若 𝒱 包含那个余集，则没盖住任何 xₙ；若只含有限个 Uₙ，而每个 Uₙ 只含有限个 xₘ，则 𝒱 总共只盖住**有限多个** xₘ —— 与 {xₙ} 是无限集矛盾（没有收敛子列迫使它无限）。
+**④ 由紧性取有限子覆盖** $𝒱 \subseteq \mathcal{U}$。若 𝒱 包含那个余集，则没盖住任何 $x_{n}$；若只含有限个 $U_{n}$，而每个 $U_{n}$ 只含有限个 $x_{m}$，则 𝒱 总共只盖住**有限多个** $x_{m}$ —— 与 $\{x_{n}\}$ 是无限集矛盾（没有收敛子列迫使它无限）。
 
-故 {xₙ} 必有收敛子列，X 列紧。∎
+故 $\{x_{n}\}$ 必有收敛子列，$X$ 列紧。∎
 
 > 只有这一步不需要选择公理。
 
 #### 列紧 ⟹ 全有界　`imp.seqcompact-totbdd`
 *列紧 ⟹ 全有界*
 
-证明逆否：若 X 不全有界，则存在一个没有收敛子列的序列。
+证明逆否：若 $X$ 不全有界，则存在一个没有收敛子列的序列。
 
-**① 不全有界给了我们一个「一致」的正数。** X 不全有界，意思是存在某个 ε₀ > 0，使 X **不能**被有限个半径 ε₀ 的球盖住。
+**① 不全有界给了我们一个「一致」的正数。** $X$ 不全有界，意思是存在某个 $\varepsilon _{0} > 0$，使 $X$ **不能**被有限个半径 $\varepsilon _{0}$ 的球盖住。
 
-**② 递归地挑点。** 取 x₁ ∈ X 任意。已取好 x₁, …, xₙ 后，有限个球 B(x₁, ε₀), …, B(xₙ, ε₀) 盖不住 X，所以可再取
+**② 递归地挑点。** 取 $x_{1} \in X$ 任意。已取好 $x_{1}$ …$x_{n}$ 后，有限个球 $B(x_{1}, \varepsilon _{0})$ …$B(x_{n}, \varepsilon _{0})$ 盖不住 $X$，所以可再取
 
 $$x_{n+1} \in X \setminus \bigcup_{i=1}^{n} B(x_i, \varepsilon_0)$$
 
 于是任何两个不同的项都满足 $$m \ne n \implies d(x_m, x_n) \ge \varepsilon_0$$
 
-**③ 它没有收敛子列。** 任何子列中任意两项距离都 ≥ ε₀，所以它不是 Cauchy 列；而度量空间里收敛必 Cauchy，故它不收敛。
+**③ 它没有收敛子列。** 任何子列中任意两项距离都 $\ge \varepsilon _{0}$，所以它不是 Cauchy 列；而度量空间里收敛必 Cauchy，故它不收敛。
 
-**④** 于是 X 不列紧。取逆否，得列紧 ⟹ 全有界。∎
+**④** 于是 $X$ 不列紧。取逆否，得列紧 $\implies$ 全有界。∎
 
-> ⚠ ② 是「取了一个点才能决定下一个点在哪」的递归选取，用的是**相依选择公理 DC**（比 AC 弱，但仍是选择原理）。这是整段里唯一实质用到选择的地方。
+$>$ ⚠ ② 是「取了一个点才能决定下一个点在哪」的递归选取，用的是**相依选择公理 DC**（比 AC 弱，但仍是选择原理）。这是整段里唯一实质用到选择的地方。
 
-> 顺带得到一个常用的推论：**列紧 ⟹ 有界**（因为全有界 ⟹ 有界）。
+> 顺带得到一个常用的推论：**列紧 $\implies$ 有界**（因为全有界 $\implies$ 有界）。
 
 #### 列紧 ⟹ 完备　`imp.seqcompact-complete`
 *列紧 ⟹ 完备*
 
-设 X 列紧，{xₙ} 是 X 中的 Cauchy 列。
+设 $X$ 列紧，$\{x_{n}\}$ 是 $X$ 中的 Cauchy 列。
 
-**①** 由列紧，{xₙ} 有收敛子列 x_{nₖ} → x ∈ X。
+**①** 由列紧，$\{x_{n}\}$ 有收敛子列 $x_\{n_{k}\} \to x \in X$。
 
-**② Cauchy 列只要有收敛子列，就整体收敛到同一个极限**：给定 ε > 0，取 N 使 m, n ≥ N 时 d(xₘ, xₙ) < ε/2；再取 K 使 k ≥ K 时 nₖ ≥ N 且 d(x_{nₖ}, x) < ε/2。于是对 n ≥ N，取 k ≥ K 使 nₖ ≥ N，得
+**② Cauchy 列只要有收敛子列，就整体收敛到同一个极限**：给定 $\varepsilon > 0$，取 $N$ 使 $m, n \ge N$ 时 $d(x_{m}, x_{n}) < \varepsilon /2$；再取 $K$ 使 $k \ge K$ 时 $n_{k} \ge N$ 且 $d(x_\{n_{k}\}, x) < \varepsilon /2$。于是对 $n \ge N$，取 $k \ge K$ 使 $n_{k} \ge N$，得
 
 $$d(x_n, x) \le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \varepsilon/2 + \varepsilon/2 = \varepsilon$$
 
-故 xₙ → x。所以 X 完备。∎
+故 $x_{n} \to x$。所以 $X$ 完备。∎
 
-> 和「紧 ⟹ 完备」是同一个套路，只是把「紧」换成它的直接推论「列紧」。
+> 和「紧 $\implies$ 完备」是同一个套路，只是把「紧」换成它的直接推论「列紧」。
 
 #### 列紧 ⟹ 紧　`imp.seqcompact-compact`
 *列紧 ⟹ 紧*
 
-用**反证 + 一串不断缩小的「坏球」**。设 X 列紧。
+用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。
 
-**① X 全有界** —— 用上面那条箭头「列紧 ⟹ 全有界」。
+**① $X$ 全有界** —— 用上面那条箭头「列紧 $\implies$ 全有界」。
 
-**② 造嵌套的坏球。** 设 𝒰 是 X 的开覆盖，且它**没有**有限子覆盖。由全有界，X 能被有限个半径 1 的开球盖住；其中必有一个球不能被 𝒰 的有限多个成员盖住 —— 否则把每个球各自的有限覆盖并起来，就得到 𝒰 的一个有限子覆盖。称这样的球为**坏球**，取一个记作 B₁。
+**② 造嵌套的坏球。** 设 $\mathcal{U}$ 是 $X$ 的开覆盖，且它**没有**有限子覆盖。由全有界，$X$ 能被有限个半径 1 的开球盖住；其中必有一个球不能被 $\mathcal{U}$ 的有限多个成员盖住 —— 否则把每个球各自的有限覆盖并起来，就得到 $\mathcal{U}$ 的一个有限子覆盖。称这样的球为**坏球**，取一个记作 $B_{1}$。
 
-再把 B₁ 用有限个半径 1/2 的球盖住（B₁ ⊆ X，全有界性对它同样管用），其中必有一个坏球 B₂ ⊆ B₁。如此继续，得到
+再把 $B_{1}$ 用有限个半径 1/2 的球盖住（$B_{1} \subseteq X$，全有界性对它同样管用），其中必有一个坏球 $B_{2} \subseteq B_{1}$。如此继续，得到
 
 $$B_1 \supseteq B_2 \supseteq B_3 \supseteq \cdots, \quad  B_k\text{ 的半径} \le 1/k, \quad \text{ 每个} B_k\text{ 都是坏的}$$
 
 （每一步都只是在**有限**多个球里挑一个，可以规定「取编号最小的那个」，所以这里不动用选择公理。）
 
-**③ 取点，得到 Cauchy 列。** 取 xₖ ∈ Bₖ。由嵌套与半径趋于 0，对 m ≤ n 有 xₘ, xₙ ∈ Bₘ 而 Bₘ 的半径 ≤ 1/m，于是
+**③ 取点，得到 Cauchy 列。** 取 $x_{k} \in B_{k}$。由嵌套与半径趋于 0，对 $m \le n$ 有 $x_{m}, x_{n} \in B_{m}$ 而 $B_{m}$ 的半径 $\le 1/m$，于是
 
 $$d(x_m, x_n) \le 2/m\quad  \implies\quad  \{x_k\}\text{ 是} Cauchy\text{ 列}$$
 
-**④** 由列紧它有子列收敛到某点 x ∈ X；Cauchy 列一旦有收敛子列就整体收敛，故 xₖ → x。
+**④** 由列紧它有子列收敛到某点 $x \in X$；Cauchy 列一旦有收敛子列就整体收敛，故 $x_{k} \to x$。
 
-**⑤ 收尾。** x 落在某个 U ∈ 𝒰 中。U 开，故存在 r > 0 使 B(x, r) ⊆ U。取 k 充分大，使 1/k < r/2 且 d(xₖ, x) < r/2；则对任意 y ∈ Bₖ，
+**⑤ 收尾。** $x$ 落在某个 $U \in \mathcal{U}$ 中。$U$ 开，故存在 $r > 0$ 使 $B(x, r) \subseteq U$。取 $k$ 充分大，使 $1/k < r/2$ 且 $d(x_{k}, x) < r/2$；则对任意 $y \in B_{k}$，
 
 $$d(y, x) \le d(y, x_k) + d(x_k, x) < 1/k + r/2 < r$$
 
-即 Bₖ ⊆ B(x, r) ⊆ U。于是 Bₖ 被 𝒰 的**一个**成员盖住了，与「Bₖ 是坏球」矛盾。
+即 $B_{k} \subseteq B(x, r) \subseteq U$。于是 $B_{k}$ 被 $\mathcal{U}$ 的**一个**成员盖住了，与「$B_{k}$ 是坏球」矛盾。
 
-故 𝒰 必有有限子覆盖，X 紧。∎
+故 $\mathcal{U}$ 必有有限子覆盖，$X$ 紧。∎
 
 > 「坏球」这一招的直觉是：让一串被架空的小球缩到一个极限点，再用极限点的开邻域一口吞掉它。整段只用全有界，没用选择公理。
 
 #### 紧 ⟹ 完备　`imp.compact-complete`
 *紧 ⟹ 完备*
 
-设 X 紧，{xₙ} 是 X 中的 Cauchy 列。要证它收敛。
+设 $X$ 紧，$\{x_{n}\}$ 是 $X$ 中的 Cauchy 列。要证它收敛。
 
-**①** 由「紧 ⟹ 列紧」（见那条箭头），{xₙ} 有收敛子列 x_{nₖ} → x ∈ X。
+**①** 由「紧 $\implies$ 列紧」（见那条箭头），$\{x_{n}\}$ 有收敛子列 $x_\{n_{k}\} \to x \in X$。
 
-**② Cauchy 列只要有收敛子列就整体收敛到同一个极限**：给定 ε > 0，取 N₁ 使 m, n ≥ N₁ 时 d(xₘ, xₙ) < ε/2；取 K 使 nₖ ≥ N₁ 且 d(x_{nₖ}, x) < ε/2 对 k ≥ K 成立。则对 n ≥ N₁，取一个 k ≥ K 使 nₖ ≥ N₁，得
+**② Cauchy 列只要有收敛子列就整体收敛到同一个极限**：给定 $\varepsilon > 0$，取 $N_{1}$ 使 $m, n \ge N_{1}$ 时 $d(x_{m}, x_{n}) < \varepsilon /2$；取 $K$ 使 $n_{k} \ge N_{1}$ 且 $d(x_\{n_{k}\}, x) < \varepsilon /2$ 对 $k \ge K$ 成立。则对 $n \ge N_{1}$，取一个 $k \ge K$ 使 $n_{k} \ge N_{1}$，得
 
 $$d(x_n, x) \le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \varepsilon/2 + \varepsilon/2 = \varepsilon$$
 
-故 xₙ → x ∈ X。所以 X 完备。∎
+故 $x_{n} \to x \in X$。所以 $X$ 完备。∎
 
-> 关键引理：「Cauchy 列 + 有一个收敛子列 ⟹ 收敛」，这在任何度量空间里都对。
+> 关键引理：「Cauchy 列 + 有一个收敛子列 $\implies$ 收敛」，这在任何度量空间里都对。
 
 #### 紧 ⟹ 全有界　`imp.compact-totbdd`
 *紧 ⟹ 全有界*
 
-给定 ε > 0。考虑开球族
+给定 $\varepsilon > 0$。考虑开球族
 
 $$\mathcal{U} = \{ B(x, \varepsilon) : x \in X \}$$
 
-它显然是 X 的开覆盖（每个 x 都被 B(x, ε) 含住）。由 X 紧，存在有限子覆盖：
+它显然是 $X$ 的开覆盖（每个 $x$ 都被 $B(x, \varepsilon )$ 含住）。由 $X$ 紧，存在有限子覆盖：
 
 $$X = B(x_1, \varepsilon) \cup \cdots \cup B(x_n, \varepsilon)$$
 
-即 {x₁, …, xₙ} 是一个有限的 ε-网。由 ε > 0 任意，X 全有界。∎
+即 $\{x_{1}$ …$x_{n}\}$ 是一个有限的 $\varepsilon$网。由 $\varepsilon > 0$ 任意，$X$ 全有界。∎
 
-> 注意这条证明只用了「开球盖住自己」这一点 —— 它说明紧 ⟹ 全有界几乎不需要任何技术。真正难的方向是下一条。
+$>$ 注意这条证明只用了「开球盖住自己」这一点 —— 它说明紧 $\implies$ 全有界几乎不需要任何技术。真正难的方向是下一条。
 
 #### 完备 + 全有界 ⟹ 列紧　`imp.complete-totbdd-seqcompact`
 *完备 + 全有界 ⟹ 列紧（对角线法）*
 
-设 X 完备且全有界，{xₙ} 是 X 中任一序列。要抽出一个收敛子列。
+设 $X$ 完备且全有界，$\{x_{n}\}$ 是 $X$ 中任一序列。要抽出一个收敛子列。
 
-**① 抽一个「直径越来越小」的子列。** 对 k = 1, 2, 3, … 依次操作：由全有界，X 能被有限个半径 1/k 的球盖住，于是**其中一个球含有当前子列中的无穷多项**（抽屉原理：有限个球盖住无穷多项，必有一个球含无穷多项）。把子列限制到这个球里。
+**① 抽一个「直径越来越小」的子列。** 对 $k = 1, 2, 3$ … 依次操作：由全有界，$X$ 能被有限个半径 1/k 的球盖住，于是**其中一个球含有当前子列中的无穷多项**（抽屉原理：有限个球盖住无穷多项，必有一个球含无穷多项）。把子列限制到这个球里。
 
 这样得到一串子列
 
 $$\{x_n\} \supseteq \{x^{(1)}_n\} \supseteq \{x^{(2)}_n\} \supseteq \cdots$$
 
-其中第 k 个子列的项全部落在某个半径 1/k 的球内，因此它任意两项的距离 < 2/k。
+其中第 $k$ 个子列的项全部落在某个半径 1/k 的球内，因此它任意两项的距离 $< 2/k$。
 
-**② 对角线。** 取 yₖ = x^{(k)}ₖ（第 k 个子列的第 k 项）。则 {yₖ} 是 {xₙ} 的子列；且对 k, l ≥ K，yₖ 与 yₗ 都是第 K 个子列的项（下标 ≥ K 的项都在里面），故
+**② 对角线。** 取 $y_{k} = x^\{(k)\}_{k}$（第 $k$ 个子列的第 $k$ 项）。则 $\{y_{k}\}$ 是 $\{x_{n}\}$ 的子列；且对 $k, l \ge K$，$y_{k}$ 与 $y_{l}$ 都是第 $K$ 个子列的项（下标 $\ge K$ 的项都在里面），故
 
 $$d(y_k, y_l) < 2/K$$
 
-于是 {yₖ} 是 Cauchy 列。
+于是 $\{y_{k}\}$ 是 Cauchy 列。
 
-**③** 由 X 完备，{yₖ} 收敛。于是 {xₙ} 有收敛子列，X 列紧。∎
+**③** 由 $X$ 完备，$\{y_{k}\}$ 收敛。于是 $\{x_{n}\}$ 有收敛子列，$X$ 列紧。∎
 
-> ① 里「无穷多项落进某一个球」用到抽屉原理（有限情形，不需要选择）。② 的对角线抽取也不需要选择 —— 所有选取都由「取第 k 个子列的第 k 项」唯一确定。
+> ① 里「无穷多项落进某一个球」用到抽屉原理（有限情形，不需要选择）。② 的对角线抽取也不需要选择 —— 所有选取都由「取第 $k$ 个子列的第 $k$ 项」唯一确定。
 
 #### 定义引用：「紧」→ 紧的三个等价刻画　`def-link.compact-theorem`
 
@@ -4122,26 +4120,26 @@ $$d(y_k, y_l) < 2/K$$
 
 #### 定义引用：「完备」→ 子集的紧性刻画　`def-link.complete-subset-equiv`
 
-⚠ 这条命题的**前提**就是「X 完备」，所以它引用完备的定义。
+⚠ 这条命题的**前提**就是「$X$ 完备」，所以它引用完备的定义。
 
 #### 环与代数 + 单调类 ⟹ 环 → σ-环 的判据　`imp.ring-monotone-sigma`
 *环 + 单调类 ⟹ σ-环*
 
-设 𝔄 是环，且是单调类。要证它对**可数并**封闭。
+设 $\mathfrak{A}$ 是环，且是单调类。要证它对**可数并**封闭。
 
-**① 先换成不交并。** 给定 A₁, A₂, … ∈ 𝔄，令
+**① 先换成不交并。** 给定 $A_{1}, A_{2}$ … $\in \mathfrak{A}$，令
 
 $$B_n = A_n \setminus (A_1 \cup \cdots \cup A_{n-1})$$
 
-因为 𝔄 是环（对有限并、对差封闭），每个 Bₙ ∈ 𝔄；而且 Bₙ 两两不交，并且 ⋃Bₙ = ⋃Aₙ。所以只需证 𝔄 对**可数不交并**封闭。
+因为 $\mathfrak{A}$ 是环（对有限并、对差封闭），每个 $B_{n} \in \mathfrak{A}$；而且 $B_{n}$ 两两不交，并且 $\bigcup B_{n} = \bigcup A_{n}$。所以只需证 $\mathfrak{A}$ 对**可数不交并**封闭。
 
-**② 用单调性。** 若 Bₙ 两两不交，则部分并 $$C_n = B_1 \cup \cdots \cup B_n$$ 是递增列，且 Cₙ ∈ 𝔄（环对有限并封闭）。由 𝔄 是单调类，
+**② 用单调性。** 若 $B_{n}$ 两两不交，则部分并 $$C_n = B_1 \cup \cdots \cup B_n$$ 是递增列，且 $C_{n} \in \mathfrak{A}$（环对有限并封闭）。由 $\mathfrak{A}$ 是单调类，
 
 $$\bigcup_n C_n = \bigcup_n B_n = \bigcup_n A_n \in \mathfrak{A}$$
 
-故 𝔄 是可数并封闭的 σ-环。反向（σ-环 ⟹ 单调类）明显，因为递增并、递减交都是可数并/交的特例。∎
+故 $\mathfrak{A}$ 是可数并封闭的 $\sigma$环。反向（$\sigma$环 $\implies$ 单调类）明显，因为递增并、递减交都是可数并/交的特例。∎
 
-> 这条定理把「σ」这件事等价地翻译成了「对两种单调极限封闭」，单调类定理正是靠它工作的。
+> 这条定理把「$\sigma$」这件事等价地翻译成了「对两种单调极限封闭」，单调类定理正是靠它工作的。
 
 #### 定义引用：「基本类」→ 集合族的基本性质　`def-link.fundamental-props`
 
@@ -4149,11 +4147,11 @@ $$\bigcup_n C_n = \bigcup_n B_n = \bigcup_n A_n \in \mathfrak{A}$$
 
 #### 定义引用：「环与代数」→ 集合族的基本性质　`def-link.ring-props`
 
-性质 (2)(3) 是在环 / 代数 / σ-代数的定义上做的。
+性质 (2)(3) 是在环 / 代数 $/ \sigma$代数的定义上做的。
 
 #### 定义引用：「环与代数」→ 环 → σ-环 的判据　`def-link.ring-monotone-thm`
 
-定理的前提与结论都用了「环 / σ-环」的定义。
+定理的前提与结论都用了「环 $/ \sigma$环」的定义。
 
 #### 定义引用：「单调类」→ 环 → σ-环 的判据　`def-link.monotone-thm`
 
@@ -4161,7 +4159,7 @@ $$\bigcup_n C_n = \bigcup_n B_n = \bigcup_n A_n \in \mathfrak{A}$$
 
 #### 定义引用：「生成的 σ-代数」→ 单调类定理　`def-link.generated-monotone`
 
-单调类定理的陈述里出现 ℳ(ℰ) 与 𝔪(ℰ)，正是上一条定义。
+单调类定理的陈述里出现 $\mathcal{M}(\mathcal{E})$ 与 $\mathfrak{m}(\mathcal{E})$，正是上一条定义。
 
 #### 定义引用：「单调类」→ 单调类定理　`def-link.monotone-class-thm`
 
@@ -4169,11 +4167,11 @@ $$\bigcup_n C_n = \bigcup_n B_n = \bigcup_n A_n \in \mathfrak{A}$$
 
 #### 定义引用：「生成的 σ-代数」→ Borel σ-代数　`def-link.generated-borel`
 
-Borel σ-代数就是把「由开集生成」用了一遍。
+$Borel \sigma$代数就是把「由开集生成」用了一遍。
 
 #### 定义引用：「生成的 σ-代数」→ 积 σ-代数　`def-link.generated-product`
 
-积 σ-代数也是「生成」出来的。
+积 $\sigma$代数也是「生成」出来的。
 
 #### 定义引用：「积 σ-代数」→ 可数积的生成集　`def-link.product-generated`
 
@@ -4181,7 +4179,7 @@ Borel σ-代数就是把「由开集生成」用了一遍。
 
 #### 定义引用：「积 σ-代数」→ 积 σ-代数的生成基　`def-link.product-base`
 
-这条命题说的就是把每一维的 ℳ_α 换成生成元后，积 σ-代数不变。
+这条命题说的就是把每一维的 $\mathcal{M}_\alpha$ 换成生成元后，积 $\sigma$代数不变。
 
 #### 定义引用：「生成的 σ-代数」→ 积 σ-代数的生成基　`def-link.generated-product-base`
 
@@ -4189,196 +4187,196 @@ Borel σ-代数就是把「由开集生成」用了一遍。
 
 #### 定义引用：「积 σ-代数」→ 可数积的 Borel 代数　`def-link.product-borel`
 
-推论里左边是积 σ-代数。
+推论里左边是积 $\sigma$代数。
 
 #### 定义引用：「Borel σ-代数」→ 可数积的 Borel 代数　`def-link.borel-borelproduct`
 
-推论里右边是 Borel σ-代数。
+推论里右边是 $Borel \sigma$代数。
 
 #### 定义引用：「环与代数」→ σ-环　`def-link.sigmaring-ring`
 
-σ-环就是把「环」里的有限并升级成可数并，其余（对差封闭）照旧。
+$\sigma$环就是把「环」里的有限并升级成可数并，其余（对差封闭）照旧。
 
 #### 定义引用：「σ-环」→ σ-代数　`def-link.sigmaalgebra-sigmaring`
 
-σ-代数 = σ-环 + X ∈ 𝔄，只多这一条。
+$\sigma$代数 $= \sigma$环 $X \in \mathfrak{A}$，只多这一条。
 
 #### 定义引用：「σ-代数」→ 环 → σ-环 的判据　`def-link.sigmaalgebra-ringmonotone`
 
-这条判据的结论是「𝔄 是 σ-环」；若 𝔄 还含 X，就一并是 σ-代数。
+这条判据的结论是「$\mathfrak{A}$ 是 $\sigma$环」；若 $\mathfrak{A}$ 还含 $X$，就一并是 $\sigma$代数。
 
 #### 定义引用：「σ-代数」→ 单调类定理　`def-link.sigmaalgebra-monotonethm`
 
-单调类定理的两端，一个是由 ℰ 生成的 σ-代数 ℳ(ℰ)、一个是单调类 𝔪(ℰ)。
+单调类定理的两端，一个是由 $\mathcal{E}$ 生成的 $\sigma$代数 $\mathcal{M}(\mathcal{E})$、一个是单调类 $\mathfrak{m}(\mathcal{E})$。
 
 #### 定义引用：「σ-代数」→ 生成的 σ-代数　`def-link.sigmaalgebra-generated`
 
-「生成的 σ-代数」＝ 一切包含 ℰ 的 σ-代数之交。
+「生成的 $\sigma$代数」＝ 一切包含 $\mathcal{E}$ 的 $\sigma$代数之交。
 
 #### 定义引用：「σ-代数」→ Borel σ-代数　`def-link.sigmaalgebra-borel`
 
-Borel σ-代数就是「由开集这个生成元生成的 σ-代数」。
+$Borel \sigma$代数就是「由开集这个生成元生成的 $\sigma$代数」。
 
 #### 定义引用：「σ-代数」→ 积 σ-代数　`def-link.sigmaalgebra-product`
 
-积 σ-代数也只是 σ-代数，生成元换成「矩形」而已。
+积 $\sigma$代数也只是 $\sigma$代数，生成元换成「矩形」而已。
 
 #### 测度 ⟹ 测度的基本性质　`imp.measure-props`
 *测度 ⟹ 单调 / 次可加 / 上下连续*
 
-设 μ 是测度。
+设 $\mu$ 是测度。
 
-**(a) 单调。** 设 E ⊆ F。则 F = E ∪ (F ∖ E)，两项不交，故 μ(F) = μ(E) + μ(F ∖ E) ≥ μ(E)（取值非负）。
+**(a) 单调。** 设 $E \subseteq F$。则 $F = E \cup (F \setminus E)$，两项不交，故 $\mu (F) = \mu (E) + \mu (F \setminus E) \ge \mu (E)$（取值非负）。
 
-**(b) 次可加。** 令 Fⱼ = Eⱼ ∖ (E₁ ∪ ⋯ ∪ E_{j-1})，则 Fⱼ 两两不交、⋃Fⱼ = ⋃Eⱼ 且 Fⱼ ⊆ Eⱼ。由可数可加与 (a)，
+**(b) 次可加。** 令 $F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $F_{j}$ 两两不交、$\bigcup F_{j} = \bigcup E_{j}$ 且 $F_{j} \subseteq E_{j}$。由可数可加与 (a)，
 
 $$\mu(\bigcup_j E_j) = \mu(\bigcup_j F_j) = \sum_j \mu(F_j) \le \sum_j \mu(E_j)$$
 
-**(c) 下连续。** 设 E₁ ⊆ E₂ ⊆ ⋯。令 A₁ = E₁，Aⱼ = Eⱼ ∖ E_{j-1}（j ≥ 2），则 Aⱼ 两两不交且 ⋃Aⱼ = ⋃Eⱼ。由可数可加，
+**(c) 下连续。** 设 $E_{1} \subseteq E_{2} \subseteq \cdots$。令 $A_{1} = E_{1}$，$A_{j} = E_{j} \setminus E_\{j-1\}$（$j \ge 2$），则 $A_{j}$ 两两不交且 $\bigcup A_{j} = \bigcup E_{j}$。由可数可加，
 
 $$\mu(\bigcup_j E_j) = \sum_j \mu(A_j) = \lim_{n\to\infty} \sum_{j=1}^{n} \mu(A_j) = \lim_{n\to\infty} \mu(E_n)$$
 
-**(d) 上连续。** 设 E₁ ⊇ E₂ ⊇ ⋯ 且 μ(E₁) < ∞。令 Fⱼ = E₁ ∖ Eⱼ，则 F₁ ⊆ F₂ ⊆ ⋯ 且 ⋃Fⱼ = E₁ ∖ ⋂Eⱼ。由 (c) 与 (a)，
+**(d) 上连续。** 设 $E_{1} \supseteq E_{2} \supseteq \cdots$ 且 $\mu (E_{1}) < \infty$。令 $F_{j} = E_{1} \setminus E_{j}$，则 $F_{1} \subseteq F_{2} \subseteq \cdots$ 且 $\bigcup F_{j} = E_{1} \setminus \bigcap E_{j}$。由 (c) 与 (a)，
 
 $$\mu(E_1) - \mu(\bigcap_j E_j) = \mu(E_1 \setminus \bigcap_j E_j) = lim_j \mu(F_j) = lim_j ( \mu(E_1) - \mu(E_j) )$$
 
-因为 μ(E₁) < ∞ 是个有限数，可以从两边同时减掉，得 μ(⋂Eⱼ) = lim μ(Eⱼ)。∎
+因为 $\mu (E_{1}) < \infty$ 是个有限数，可以从两边同时减掉，得 $\mu (\bigcap E_{j}) = \lim \mu (E_{j})$。∎
 
-> ⚠ (d) 里的「μ(E₁) < ∞」正是为了让 μ(E₁) 能被减掉。没有它，等式会退化成 ∞ = ∞。
+$>$ ⚠ (d) 里的「$\mu (E_{1}) < \infty$」正是为了让 $\mu (E_{1})$ 能被减掉。没有它，等式会退化成 $\infty = \infty$。
 
 #### 预测度 ⟹ 由预测度诱导外测度　`imp.premeasure-to-outer`
 *预测度 ⟹ 诱导的外测度*
 
-设 𝔄 是代数，μ₀ 是 𝔄 上的预测度。对 A ⊆ X 令
+设 $\mathfrak{A}$ 是代数，$\mu _{0}$ 是 $\mathfrak{A}$ 上的预测度。对 $A \subseteq X$ 令
 
 $$\mu^*(A) = inf \{ \sum_j \mu_0(E_j) : E_j \in \mathfrak{A}, A \subseteq \bigcup_j E_j \}$$
 
-**① 定义合理**：A ⊆ X 且 X ∈ 𝔄，所以总有覆盖，inf 是对非空集合取。
+**① 定义合理**：$A \subseteq X$ 且 $X \in \mathfrak{A}$，所以总有覆盖，inf 是对非空集合取。
 
-**② μ*(∅) = 0**：取 E₁ = ∅、E₂ = E₃ = ⋯ = ∅，则 ∑μ₀(Eⱼ) = 0，故 0 ≤ μ*(∅) ≤ 0。
+**② $\mu$*$(\emptyset ) = 0$**：取 $E_{1} = \emptyset$、$E_{2} = E_{3} = \cdots = \emptyset$，则 $\sum \mu _{0}(E_{j}) = 0$，故 $0 \le \mu$*$(\emptyset ) \le 0$。
 
-**③ 单调**：A ⊆ B 时，B 的每个覆盖也是 A 的覆盖，故 A 的下确界集合更大，μ*(A) ≤ μ*(B)。
+**③ 单调**：$A \subseteq B$ 时，$B$ 的每个覆盖也是 $A$ 的覆盖，故 $A$ 的下确界集合更大，$\mu$*$(A) \le \mu$*(B)。
 
-**④ 可数次可加**：设 Aⱼ ⊆ X。若某个 μ*(Aⱼ) = ∞ 则不等式平凡；否则给定 ε > 0，对每个 j 取 𝔄 中的覆盖 {E_{j,k}}ₖ 使
+**④ 可数次可加**：设 $A_{j} \subseteq X$。若某个 $\mu$*$(A_{j}) = \infty$ 则不等式平凡；否则给定 $\varepsilon > 0$，对每个 $j$ 取 $\mathfrak{A}$ 中的覆盖 $\{E_\{j,k\}\}_{k}$ 使
 
 $$\sum_k \mu_0(E_{j,k}) < \mu^*(A_j) + (\varepsilon/2)^j$$
 
-把 {E_{j,k}}_{j,k} 按 (j, k) 之外再用双射排成一列（可数个可数集之并仍可数），它是 ⋃ⱼ Aⱼ 的一个覆盖，于是
+把 {E_{j,k}}_{j,k} 按 (j, k) 之外再用双射排成一列（可数个可数集之并仍可数），它是 $\bigcup _{j} A_{j}$ 的一个覆盖，于是
 
 $$\mu^*(\bigcup_j A_j) \le \sum_{j,k} \mu_0(E_{j,k}) \le \sum_j \mu^*(A_j) + \varepsilon$$
 
-令 ε → 0 即得。∎
+令 $\varepsilon \to 0$ 即得。∎
 
-> ⚠ ④ 的每一步都只需取**一个**覆盖 —— 这用的是 ℕ 上的可数选择（可以从自然数的良序性显式给出），不需要完整的 AC。
+$>$ ⚠ ④ 的每一步都只需取**一个**覆盖 —— 这用的是 $\mathbb{N}$ 上的可数选择（可以从自然数的良序性显式给出），不需要完整的 AC。
 
 #### 外测度 + μ*-可测集 ⟹ Carathéodory 定理　`imp.outer-carath`
 *外测度 + 可切集 ⟹ σ-代数与完备测度*
 
-设 μ* 是外测度，ℳ = { A : ∀E, μ*(E) = μ*(E∩A) + μ*(E∩Aᶜ) }。
+设 $\mu$* 是外测度，$\mathcal{M} = \{ A : \forall E, \mu$*$(E) = \mu$*$(E\cap A) + \mu$*$(E\cap A^{c}) \}$。
 
-**① ℳ 是代数。** 条件关于 A 与 Aᶜ 对称，故 A ∈ ℳ ⟹ Aᶜ ∈ ℳ；∅ 与 X 显然在 ℳ 中。若 A, B ∈ ℳ，要证 A ∪ B ∈ ℳ：对任意 E，把 E 依 A 切开、再依 B 切开，
+**① $\mathcal{M}$ 是代数。** 条件关于 $A$ 与 $A^{c}$ 对称，故 $A \in \mathcal{M} \implies A^{c} \in \mathcal{M}$；$\emptyset$ 与 $X$ 显然在 $\mathcal{M}$ 中。若 $A, B \in \mathcal{M}$，要证 $A \cup B \in \mathcal{M}$：对任意 $E$，把 $E$ 依 $A$ 切开、再依 $B$ 切开，
 
 $$\mu^*(E) = \mu^*(E\cap A) + \mu^*(E\cap A^c) = \mu^*(E\cap A\cap B) + \mu^*(E\cap A\cap B^c) + \mu^*(E\cap A^c\cap B) + \mu^*(E\cap A^c\cap B^c)$$
 
-而右边前三项合起来 ≥ μ*(E∩(A∪B))（次可加），最后一项 = μ*(E∩(A∪B)ᶜ)。反向不等式由次可加自动成立，故 A ∪ B ∈ ℳ。
+而右边前三项合起来 $\ge \mu$*$(E\cap (A\cup B))$（次可加），最后一项 $= \mu$*$(E\cap (A\cup B)^{c})$。反向不等式由次可加自动成立，故 $A \cup B \in \mathcal{M}$。
 
-**② ℳ 是 σ-代数。** 设 Aⱼ ∈ ℳ 两两不交，A = ⋃Aⱼ。对任意 E 归纳得到
+**② $\mathcal{M}$ 是 $\sigma$代数。** 设 $A_{j} \in \mathcal{M}$ 两两不交，$A = \bigcup A_{j}$。对任意 $E$ 归纳得到
 
 $$\mu^*(E \cap \bigcup_{j\le n} A_j) = \sum_{j\le n} \mu^*(E \cap A_j)$$
 
-（每一步用 Aₙ 把 E 切开，丢掉的那块弃掉即可。）令 n → ∞，用次可加性与单调性，
+（每一步用 $A_{n}$ 把 $E$ 切开，丢掉的那块弃掉即可。）令 $n \to \infty$，用次可加性与单调性，
 
 $$\mu^*(E) = \mu^*(E\cap A) + \mu^*(E\cap A^c)$$
 
-故 A ∈ ℳ。结合 ①，ℳ 是可数并封闭的代数，即 σ-代数（可数不交并由 ②，一般可数并再换成不交并）。
+故 $A \in \mathcal{M}$。结合 ①，$\mathcal{M}$ 是可数并封闭的代数，即 $\sigma$代数（可数不交并由 ②，一般可数并再换成不交并）。
 
-**③ μ*|_ℳ 可加。** 在 ② 里取 E = X、A 换成两两不交的 Aⱼ，得 μ*(⋃Aⱼ) = ∑μ*(Aⱼ)，这正是可数可加；μ*(∅) = 0 由外测度定义给出。
+**③ $\mu$*$|_\mathcal{M}$ 可加。** 在 ② 里取 $E = X$、$A$ 换成两两不交的 $A_{j}$，得 $\mu$*$(\bigcup A_{j}) = \sum \mu$*$(A_{j})$，这正是可数可加；$\mu$*$(\emptyset ) = 0$ 由外测度定义给出。
 
-**④ 完备。** 设 μ*(A) = 0，B ⊆ A。对任意 E，由单调性与次可加，
+**④ 完备。** 设 $\mu$*$(A) = 0$，$B \subseteq A$。对任意 $E$，由单调性与次可加，
 
 $$\mu^*(E) \ge \mu^*(E \cap B^c) \ge \mu^*(E) - \mu^*(E \cap B) \ge \mu^*(E) - \mu^*(A) = \mu^*(E)$$
 
-故 μ*(E) = μ*(E∩B) + μ*(E∩Bᶜ)（注意 μ*(E∩B) ≤ μ*(A) = 0），即 B ∈ ℳ。故 μ*|_ℳ 完备。∎
+故 $\mu$*$(E) = \mu$*$(E\cap B) + \mu$*$(E\cap B^{c})$（注意 $\mu$*$(E\cap B) \le \mu$*$(A) = 0$），即 $B \in \mathcal{M}$。故 $\mu$*$|_\mathcal{M}$ 完备。∎
 
-> 笔记里对这一条写的是「pf. just verify.」—— 确实是纯验证，但要验的东西不少，上面把要点写全了。
+$>$ 笔记里对这一条写的是「pf. just verify.」—— 确实是纯验证，但要验的东西不少，上面把要点写全了。
 
 #### Carathéodory 定理 + 由预测度诱导外测度 ⟹ 预测度还原　`imp.carath-extension`
 *Carathéodory + 预测度 ⟹ 原代数上的值不变*
 
-设 𝔄 是代数，μ₀ 是 𝔄 上的预测度，μ* 是由 μ₀ 诱导的外测度，ℳ 是全体 μ*-可测集。
+设 $\mathfrak{A}$ 是代数，$\mu _{0}$ 是 $\mathfrak{A}$ 上的预测度，$\mu$* 是由 $\mu _{0}$ 诱导的外测度，$\mathcal{M}$ 是全体 $\mu$*-可测集。
 
-**① μ*|_𝔄 ≤ μ₀。** 取 A ∈ 𝔄，则 A ⊆ A 是一个（只含一层的）覆盖，故
+**① $\mu$*$|_\mathfrak{A} \le \mu _{0}$。** 取 $A \in \mathfrak{A}$，则 $A \subseteq A$ 是一个（只含一层的）覆盖，故
 
 $$\mu^*(A) \le \mu_0(A) + 0 + 0 + \cdots = \mu_0(A)$$
 
-**② μ*|_𝔄 ≥ μ₀。** 设 {Eⱼ} ⊆ 𝔄 是 A 的覆盖。令 Fⱼ = Eⱼ ∖ (E₁ ∪ ⋯ ∪ E_{j-1})，则 Fⱼ ∈ 𝔄 两两不交且 ⋃Fⱼ ⊇ A、Fⱼ ⊆ Eⱼ。于是
+**② $\mu$*$|_\mathfrak{A} \ge \mu _{0}$。** 设 $\{E_{j}\} \subseteq \mathfrak{A}$ 是 $A$ 的覆盖。令 $F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $F_{j} \in \mathfrak{A}$ 两两不交且 $\bigcup F_{j} \supseteq A$、$F_{j} \subseteq E_{j}$。于是
 
 $$\mu_0(A) = \mu_0( \bigcup_j (A \cap F_j) ) = \sum_j \mu_0(A \cap F_j) \le \sum_j \mu_0(F_j) \le \sum_j \mu_0(E_j)$$
 
-（第一个等号用 A 是那些不交集合之并；第二个用 μ₀ 可数可加；不等号用单调性。）对所有覆盖取下确界得 μ₀(A) ≤ μ*(A)。
+（第一个等号用 $A$ 是那些不交集合之并；第二个用 $\mu _{0}$ 可数可加；不等号用单调性。）对所有覆盖取下确界得 $\mu _{0}(A) \le \mu$*(A)。
 
-**③ 𝔄 ⊆ ℳ。** 设 A ∈ 𝔄，E ⊆ X，要证 μ*(E) ≥ μ*(E∩A) + μ*(E∩Aᶜ)。给定 ε > 0，取 𝔄 中 {Eⱼ} 覆盖 E 使
+**③ $\mathfrak{A} \subseteq \mathcal{M}$。** 设 $A \in \mathfrak{A}$，$E \subseteq X$，要证 $\mu$*$(E) \ge \mu$*$(E\cap A) + \mu$*$(E\cap A^{c})$。给定 $\varepsilon > 0$，取 $\mathfrak{A}$ 中 $\{E_{j}\}$ 覆盖 $E$ 使
 
 $$\sum_j \mu_0(E_j) < \mu^*(E) + \varepsilon$$
 
-由 ②，μ₀(Eⱼ) = μ*(Eⱼ)；又 𝔄 是代数，Eⱼ ∩ A 与 Eⱼ ∩ Aᶜ 都在 𝔄 中且不交、并为 Eⱼ，于是
+由 ②，$\mu _{0}(E_{j}) = \mu$*$(E_{j})$；又 $\mathfrak{A}$ 是代数，$E_{j} \cap A$ 与 $E_{j} \cap A^{c}$ 都在 $\mathfrak{A}$ 中且不交、并为 $E_{j}$，于是
 
 $$\mu^*(E \cap A) + \mu^*(E \cap A^c) \le \sum_j \mu_0(E_j \cap A) + \sum_j \mu_0(E_j \cap A^c) = \sum_j \mu_0(E_j) < \mu^*(E) + \varepsilon$$
 
-令 ε → 0 即得。所以 𝔄 ⊆ ℳ；而 ℳ 是 σ-代数（Carathéodory），故 ℳ(𝔄) ⊆ ℳ。∎
+令 $\varepsilon \to 0$ 即得。所以 $\mathfrak{A} \subseteq \mathcal{M}$；而 $\mathcal{M}$ 是 $\sigma$代数（Carathéodory），故 $\mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$。∎
 
 #### 预测度还原 ⟹ 扩张的唯一性　`imp.carath-unique`
 *扩张的最大性与 σ-有限唯一性*
 
-沿用上一条的记号，设 ν 是 ℳ(𝔄) 上另一个扩张 μ₀ 的测度。
+沿用上一条的记号，设 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上另一个扩张 $\mu _{0}$ 的测度。
 
-**① ν ≤ μ*。** 设 E ∈ ℳ(𝔄)，{Eⱼ} ⊆ 𝔄 是 E 的覆盖。由 ν 的次可加性与 ν|_𝔄 = μ₀，
+**① $\nu \le \mu$*。** 设 $E \in \mathcal{M}(\mathfrak{A})$，$\{E_{j}\} \subseteq \mathfrak{A}$ 是 $E$ 的覆盖。由 $\nu$ 的次可加性与 $\nu |_\mathfrak{A} = \mu _{0}$，
 
 $$\nu(E) \le \sum_j \nu(E_j) = \sum_j \mu_0(E_j)$$
 
-对所有这样的覆盖取下确界，右边给出 μ*(E) = μ(E)。故 ν(E) ≤ μ(E)。
+对所有这样的覆盖取下确界，右边给出 $\mu$*$(E) = \mu (E)$。故 $\nu (E) \le \mu (E)$。
 
-**② μ(E) < ∞ 时取等。** 此时 n = ν(E) 有限（因为 ν(E) ≤ μ(E) < ∞）—— 但要注意 ν ≤ μ 只在一侧，所以直接两边各取补集：E 可测意味着对任意 F ⊆ X 有 μ(F) = μ(F∩E) + μ(F∖E)，取 F = X 得 μ(X) = μ(E) + μ(X∖E)，**这一步要求 μ(X) < ∞** 才好逐项比较。一般情形下改用 ℳ(𝔄) 中 μ 有限的集合 Eₙ ↑ X 作近似（见下）。
+**② $\mu (E) < \infty$ 时取等。** 此时 $n = \nu (E)$ 有限（因为 $\nu (E) \le \mu (E) < \infty$）—— 但要注意 $\nu \le \mu$ 只在一侧，所以直接两边各取补集：$E$ 可测意味着对任意 $F \subseteq X$ 有 $\mu (F) = \mu (F\cap E) + \mu (F\setminus E)$，取 $F = X$ 得 $\mu (X) = \mu (E) + \mu (X\setminus E)$，**这一步要求 $\mu (X) < \infty$** 才好逐项比较。一般情形下改用 $\mathcal{M}(\mathfrak{A})$ 中 $\mu$ 有限的集合 $E_{n} \uparrow X$ 作近似（见下）。
 
-**③ σ-有限时唯一。** 取 μ-有限的可测集 Eₙ ↑ X（σ-有限的定义）。对每个 Eₙ，用 ② 的论证于 Eₙ ∩ E 上得 ν(E ∩ Eₙ) = μ(E ∩ Eₙ)；令 n → ∞，两侧分别用下连续性（ν 与 μ 都是测度）得到 ν(E) = μ(E)。
+**③ $\sigma$有限时唯一。** 取 $\mu$有限的可测集 $E_{n} \uparrow X$（$\sigma$有限的定义）。对每个 $E_{n}$，用 ② 的论证于 $E_{n} \cap E$ 上得 $\nu (E \cap E_{n}) = \mu (E \cap E_{n})$；令 $n \to \infty$，两侧分别用下连续性（$\nu$ 与 $\mu$ 都是测度）得到 $\nu (E) = \mu (E)$。
 
-故 σ-有限时 ν = μ，扩张唯一。∎
+故 $\sigma$有限时 $\nu = \mu$，扩张唯一。∎
 
-> ⚠ ② 里 μ(E) < ∞ 的等号之所以能成立，用的是「在有限测度的集合上 μ − ν 也是测度」这一点。ℳ(𝔄) 上会出现无穷值，所以只能逐块比较 —— 这正是 σ-有限必不可少的原因。
+$>$ ⚠ ② 里 $\mu (E) < \infty$ 的等号之所以能成立，用的是「在有限测度的集合上 $\mu - \nu$ 也是测度」这一点。$\mathcal{M}(\mathfrak{A})$ 上会出现无穷值，所以只能逐块比较 —— 这正是 $\sigma$有限必不可少的原因。
 
 #### F 给出的预测度 + 扩张的唯一性 ⟹ F ↔ Borel 测度　`imp.ls-premeasure-to-measure`
 *F 的预测度 ⟹ ℝ 上的 Borel 测度*
 
-设 F 递增右连续。由前一条命题，μ₀((a, b]) = F(b) − F(a) 扩充成半开区间生成的代数 𝔄 上的**预测度**。
+设 $F$ 递增右连续。由前一条命题，$\mu _{0}((a, b]) = F(b) - F(a)$ 扩充成半开区间生成的代数 $\mathfrak{A}$ 上的**预测度**。
 
-**① 存在性。** 由 Carathéodory 扩张定理，μ₀ 诱导的外测度限制在 ℳ(𝔄) 上就是一个测度 μ_F，且在 𝔄 上还原成 μ₀。特别地 μ_F((a, b]) = F(b) − F(a)。
+**① 存在性。** 由 Carathéodory 扩张定理，$\mu _{0}$ 诱导的外测度限制在 $\mathcal{M}(\mathfrak{A})$ 上就是一个测度 $\mu _F$，且在 $\mathfrak{A}$ 上还原成 $\mu _{0}$。特别地 $\mu _F((a, b]) = F(b) - F(a)$。
 
-**② 它是 Borel 测度。** 每个开区间 (a, b) 是可数个 (a, b − 1/n] 之并，故属于 ℳ(𝔄)；于是 ℳ(𝔄) 包含 ℝ 的全体开集（ℝ 的开集是可数个开区间之并），从而 𝔅_ℝ ⊆ ℳ(𝔄)。
+**② 它是 Borel 测度。** 每个开区间 (a, b) 是可数个 $(a, b - 1/n]$ 之并，故属于 $\mathcal{M}(\mathfrak{A})$；于是 $\mathcal{M}(\mathfrak{A})$ 包含 $\mathbb{R}$ 的全体开集（$\mathbb{R}$ 的开集是可数个开区间之并），从而 $\mathfrak{B}_\mathbb{R} \subseteq \mathcal{M}(\mathfrak{A})$。
 
-**③ 唯一性。** F 递增实值 ⟹ μ_F((−n, n]) = F(n) − F(−n) < ∞，所以 μ_F 是 σ-有限的（ℝ = ⋃ₙ (−n, n]）。由 σ-有限时的唯一性，扩张唯一。
+**③ 唯一性。** $F$ 递增实值 $\implies \mu _F((-n, n]) = F(n) - F(-n) < \infty$，所以 $\mu _F$ 是 $\sigma$有限的（$\mathbb{R} = \bigcup _{n} (-n, n]$）。由 $\sigma$有限时的唯一性，扩张唯一。
 
-**④ 「差常数」的来源。** μ_F 只看增量：把 F 换成 F + c，对一切 (a, b] 有 F(b) − F(a) 不变，故预测度不变、扩张不变。反过来若 μ_F = μ_G，则对一切 a < b，F(b) − F(a) = G(b) − G(a)，固定 a 即得 F − G 是常数。∎
+**④ 「差常数」的来源。** $\mu _F$ 只看增量：把 $F$ 换成 F + c，对一切 (a, b] 有 $F(b) - F(a)$ 不变，故预测度不变、扩张不变。反过来若 $\mu _F = \mu _G$，则对一切 $a < b$，$F(b) - F(a) = G(b) - G(a)$，固定 $a$ 即得 $F - G$ 是常数。∎
 
 #### 零集与完备 ⟹ 完备化定理　`imp.completion`
 *零集 ⟹ 完备化*
 
-设 (X, ℳ, μ) 是测度空间，ℳ̄ = { E ∪ F : E ∈ ℳ, F ⊆ N 对某个零集 N }。
+设 $(X, \mathcal{M}, \mu )$ 是测度空间，$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M}, F \subseteq N$ 对某个零集 N }。
 
-**① ℳ̄ 是 σ-代数。** 含 X（X ∈ ℳ）。对可数并：⋃(Eⱼ ∪ Fⱼ) = (⋃Eⱼ) ∪ (⋃Fⱼ)，而 ⋃Fⱼ ⊆ ⋃Nⱼ 是零集。对补：E ∪ F 的补是
+**① $\bar{\mathcal{M}}$ 是 $\sigma$代数。** 含 $X$（$X \in \mathcal{M}$）。对可数并：$\bigcup (E_{j} \cup F_{j}) = (\bigcup E_{j}) \cup (\bigcup F_{j})$，而 $\bigcup F_{j} \subseteq \bigcup N_{j}$ 是零集。对补：$E \cup F$ 的补是
 
 $$(E \cup F)^c = (E^c \cap N^c) \cup (E^c \cap N \setminus F)$$
 
-第一块属于 ℳ，第二块含在零集 N 里，故属于 ℳ̄ 的形状。
+第一块属于 $\mathcal{M}$，第二块含在零集 $N$ 里，故属于 $\bar{\mathcal{M}}$ 的形状。
 
-**② μ̄ 良定义。** 设 E₁ ∪ F₁ = E₂ ∪ F₂ 且 Fᵢ ⊆ Nᵢ（零集）。由 E₁ ⊆ E₂ ∪ N₂ 得 μ(E₁) ≤ μ(E₂) + 0，反向同理，故 μ(E₁) = μ(E₂)。
+**② $\bar{\mu}$ 良定义。** 设 $E_{1} \cup F_{1} = E_{2} \cup F_{2}$ 且 $F_{i} \subseteq N_{i}$（零集）。由 $E_{1} \subseteq E_{2} \cup N_{2}$ 得 $\mu (E_{1}) \le \mu (E_{2}) + 0$，反向同理，故 $\mu (E_{1}) = \mu (E_{2})$。
 
-**③ μ̄ 是测度。** 把 𝒩 中集合的子集归入「零的一部分」后，可数可加性与 μ 上的逐一对应（Eⱼ 部分可数可加、Fⱼ 部分含于零集）。
+**③ $\bar{\mu}$ 是测度。** 把 $\mathcal{N}$ 中集合的子集归入「零的一部分」后，可数可加性与 $\mu$ 上的逐一对应（$E_{j}$ 部分可数可加、$F_{j}$ 部分含于零集）。
 
-**④ 完备。** 若 μ̄(E ∪ F) = 0，则 μ(E) = 0，于是 E ∪ F ⊆ E ∪ N 是零集的子集 —— 按 ℳ̄ 的定义它当然还在 ℳ̄ 里，即：**ℳ̄ 中每个零集的子集都可测**。∎
+**④ 完备。** 若 $\bar{\mu}(E \cup F) = 0$，则 $\mu (E) = 0$，于是 $E \cup F \subseteq E \cup N$ 是零集的子集 —— 按 $\bar{\mathcal{M}}$ 的定义它当然还在 $\bar{\mathcal{M}}$ 里，即：**$\bar{\mathcal{M}}$ 中每个零集的子集都可测**。∎
 
 #### 定义引用：「测度」→ 有限 / σ-有限 / 半有限　`def-link.measure-space`
 
-有限 / σ-有限 / 半有限都是在测度的定义上追加条件。
+有限 $/ \sigma$有限 / 半有限都是在测度的定义上追加条件。
 
 #### 定义引用：「预测度」→ 由预测度诱导外测度　`def-link.premeasure-outer`
 
@@ -4390,7 +4388,7 @@ Carathéodory 定理的起点是外测度。
 
 #### 定义引用：「μ*-可测集」→ Carathéodory 定理　`def-link.carathmeasurable-thm`
 
-定理里的 ℳ 就是 μ*-可测集全体。
+定理里的 $\mathcal{M}$ 就是 $\mu$*-可测集全体。
 
 #### 定义引用：「测度」→ 完备化定理　`def-link.measure-completion`
 
@@ -4419,7 +4417,7 @@ Lebesgue–Stieltjes 测度是一种 Borel 测度。
 #### 简单函数 + 简单函数逼近 ⟹ 可测函数的封闭性　`imp.measurable-limit`
 *简单函数逼近 ⟹ 可测函数在极限下封闭*
 
-**① 上确界。** 设 $$f_j$$ 可测。要证 $$sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\infty]$$（a ∈ ℝ）验证：
+**① 上确界。** 设 $$f_j$$ 可测。要证 $$sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\infty]$$（$a \in \mathbb{R}$）验证：
 
 $$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty]) \in \mathcal{M}$$
 
@@ -4429,11 +4427,11 @@ $$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty]) \in \mathcal
 
 **③ 极限。** $$lim inf_j f_j = sup_n \inf_{j \ge n} f_j$$，由 ①② 可测；同理 $$lim sup$$ 可测。当极限存在时两者相等，故极限可测。
 
-**④ 和与积。** 先看 $$f + g$$：对任意 a ∈ ℝ，
+**④ 和与积。** 先看 $$f + g$$：对任意 $a \in \mathbb{R}$，
 
 $$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a - q\} )$$
 
-（左边 ⊆ 右边：取有理数 q 夹在 $$a - g$$ 与 f 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 - f^2 - g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。
+（左边 $\subseteq$ 右边：取有理数 $q$ 夹在 $$a - g$$ 与 $f$ 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 - f^2 - g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。
 
 **⑤ 与简单函数的关系。** 上面 ①~④ 已经把「可测」做成了一个对极限与代数运算封闭的类；而简单函数逼近定理保证**每个非负可测函数都是一列简单函数的逐点极限**，所以这个类是「刚好够用」的：从简单函数出发，取极限就得到全部可测函数。∎
 
@@ -4444,9 +4442,9 @@ $$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a - q\} )$$
 
 设 $$f : X \to Y$$ 连续，即每个开集的原像是开集。
 
-由定义 $$\mathfrak{B}_Y = \mathcal{M}(\{ U \subseteq Y : U\text{ 开} \})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\in \mathfrak{B}_X$$。故 f 可测。∎
+由定义 $$\mathfrak{B}_Y = \mathcal{M}(\{ U \subseteq Y : U\text{ 开} \})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 $U$，$$f^{-1}(U)$$ 是 $X$ 中的开集，因而 $$\in \mathfrak{B}_X$$。故 $f$ 可测。∎
 
-> 复习一下笔记里点的那个坑：**这个论证对 (𝔅, 𝔅) 成立，但对 (ℒ, ℒ) 不成立** —— 因为 ℒ 并不由开集生成，它比 𝔅_ℝ 多了很多非 Borel 的零测集子集。
+$>$ 复习一下笔记里点的那个坑：**这个论证对 $(\mathfrak{B}, \mathfrak{B})$ 成立，但对 $(\mathcal{L}, \mathcal{L})$ 不成立** —— 因为 $\mathcal{L}$ 并不由开集生成，它比 $\mathfrak{B}_\mathbb{R}$ 多了很多非 Borel 的零测集子集。
 
 #### 定义引用：「简单函数」→ 简单函数逼近　`def-link.lplus-simple-approx`
 
@@ -4462,15 +4460,15 @@ $$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a - q\} )$$
 
 #### 定义引用：「积 σ-代数」→ 积空间与实虚部　`def-link.product-sigma-measurable`
 
-这条命题的舞台是积 σ-代数。
+这条命题的舞台是积 $\sigma$代数。
 
 #### 定义引用：「可测函数」→ Lebesgue 可测　`def-link.lebesgue-measurable-def`
 
-Lebesgue / Borel 可测只是把 (ℳ, 𝒩) 取成具体的两对。
+Lebesgue / Borel 可测只是把 $(\mathcal{M}, \mathcal{N})$ 取成具体的两对。
 
 #### 定义引用：「Borel σ-代数」→ Lebesgue 可测　`def-link.borel-lebesgue-measurable`
 
-Borel 可测用的是 𝔅_ℝ 与 𝔅_ℂ。
+Borel 可测用的是 $\mathfrak{B}_\mathbb{R}$ 与 $\mathfrak{B}_\mathbb{C}$。
 
 #### 定义引用：「零集与完备」→ 完备性 ⟺ 不破坏可测性　`def-link.nullset-complete-measurable`
 
@@ -4482,38 +4480,38 @@ Borel 可测用的是 𝔅_ℝ 与 𝔅_ℂ。
 
 #### 定义引用：「测度」→ 可测函数的封闭性　`def-link.measure-closure`
 
-封闭性里的极限都是相对测度 μ 而言的。
+封闭性里的极限都是相对测度 $\mu$ 而言的。
 
 #### 非负函数的积分 + 简单函数积分的性质 ⟹ 单调收敛定理　`imp.mct`
 *非负积分的定义 ⟹ 单调收敛定理*
 
-**① 一个方向是免费的。** 由 fₙ ≤ f 与积分的单调性，∫fₙ ≤ ∫f，故
+**① 一个方向是免费的。** 由 $f_{n} \le f$ 与积分的单调性，$\int f_{n} \le \int f$，故
 
 $$\lim_{n\to\infty} \int f_n \le \int f$$
 
 所以只需证另一边。
 
-**② 用一个简单函数从下面逼近 f。** 给定 ε > 0，由 ∫f 的定义（取上确界）存在简单函数 φ 使
+**② 用一个简单函数从下面逼近 $f$。** 给定 $\varepsilon > 0$，由 $\int f$ 的定义（取上确界）存在简单函数 $\varphi$ 使
 
 $$0 \le \varphi \le f, \quad  \int \varphi \ge \int f - \varepsilon$$
 
-**③ 把 φ 搬进 Eₙ。** 令 $$E_n = \{x : f_n(x) \ge \varphi(x)\}$$。因为 fₙ ↑ f 且 φ ≤ f，集合列 Eₙ 是递增的、且 $$\bigcup_n E_n = X$$。于是
+**③ 把 $\varphi$ 搬进 $E_{n}$。** 令 $$E_n = \{x : f_n(x) \ge \varphi(x)\}$$。因为 $f_{n} \uparrow f$ 且 $\varphi \le f$，集合列 $E_{n}$ 是递增的、且 $$\bigcup_n E_n = X$$。于是
 
 $$\int f_n \ge \int_{E_n} f_n \ge \int_{E_n} \varphi$$
 
-**④ 让 n → ∞。** 由简单函数积分的性质 (d)，$$A \mapsto \int_A \varphi d\mu$$ 是 ℳ 上的一个**测度**；把它用在递增列 Eₙ ↑ X 上，用测度的下连续性：
+**④ 让 $n \to \infty$。** 由简单函数积分的性质 (d)，$$A \mapsto \int_A \varphi d\mu$$ 是 $\mathcal{M}$ 上的一个**测度**；把它用在递增列 $E_{n} \uparrow X$ 上，用测度的下连续性：
 
 $$\lim_{n\to\infty} \int_{E_n} \varphi = \int_X \varphi = \int \varphi$$
 
-所以存在 N 使 n > N 时 $$\int_{E_n} \varphi > \int \varphi - \varepsilon$$，从而
+所以存在 $N$ 使 $n > N$ 时 $$\int_{E_n} \varphi > \int \varphi - \varepsilon$$，从而
 
 $$\int f_n \ge \int \varphi - \varepsilon \ge \int f - 2\varepsilon$$
 
-**⑤ 收尾。** 对一切 n > N 成立，故 $$lim_n \int f_n \ge \int f - 2\varepsilon$$；令 ε → 0 得 $$lim_n \int f_n \ge \int f$$。与 ① 合起来就是等号。∎
+**⑤ 收尾。** 对一切 $n > N$ 成立，故 $$lim_n \int f_n \ge \int f - 2\varepsilon$$；令 $\varepsilon \to 0$ 得 $$lim_n \int f_n \ge \int f$$。与 ① 合起来就是等号。∎
 
-> ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 A ↦ ∫_A φ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 Eₙ 递增到 X 的。
+$>$ ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 $A \mapsto \int _A \varphi$ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 $E_{n}$ 递增到 $X$ 的。
 
-> 「先拿一个简单函数从下面顶住 f，再让 Eₙ 爬上去」—— 这个套路在 Fatou 引理里还会再用一次。
+> 「先拿一个简单函数从下面顶住 $f$，再让 $E_{n}$ 爬上去」—— 这个套路在 Fatou 引理里还会再用一次。
 
 #### 单调收敛定理 ⟹ 逐项积分　`imp.termwise`
 *MCT ⟹ 逐项积分*
@@ -4522,13 +4520,13 @@ $$\int f_n \ge \int \varphi - \varepsilon \ge \int f - 2\varepsilon$$
 
 $$\int (f_1 + f_2) = \lim_{n\to\infty} \int (\varphi_n + \psi_n) = \int f_1 + \int f_2$$
 
-其中用到了 MCT（把 f₁ + f₂ 写成极限）与简单函数积分的可加性 (b)。
+其中用到了 MCT（把 $f_{1} + f_{2}$ 写成极限）与简单函数积分的可加性 (b)。
 
 **② 归纳到有限项。** 逐次用 ① 得到
 
 $$\int \sum_{n=1}^{N} f_n = \sum_{n=1}^{N} \int f_n$$
 
-**③ 让 N → ∞。** 部分和 $$\sum_{n\le N} f_n$$ 是 L⁺ 中的**递增**列，极限正是 $$\sum_{n=1}^{\infty} f_n$$。对部分和列用一次 MCT：
+**③ 让 $N \to \infty$。** 部分和 $$\sum_{n\le N} f_n$$ 是 $L^{+}$ 中的**递增**列，极限正是 $$\sum_{n=1}^{\infty} f_n$$。对部分和列用一次 MCT：
 
 $$\int \sum_{n=1}^{\infty} f_n = \lim_{N\to\infty} \int \sum_{n=1}^{N} f_n = \lim_{N\to\infty} \sum_{n=1}^{N} \int f_n = \sum_{n=1}^{\infty} \int f_n$$
 
@@ -4539,8 +4537,8 @@ $$\int \sum_{n=1}^{\infty} f_n = \lim_{N\to\infty} \int \sum_{n=1}^{N} f_n = \li
 
 设 $$g_n = \inf_{k \ge n} f_k$$，则
 
-· $$g_n \le f_k$$ 对一切 k ≥ n 成立，故 $$\int g_n \le \inf_{k\ge n} \int f_k$$；
-· $$\{g_n\}$$ 是 L⁺ 中的**递增**列（下确界取的集合越来越少），且 $$lim_n g_n = lim inf_k f_k$$。
+$\cdot$ $$g_n \le f_k$$ 对一切 $k \ge n$ 成立，故 $$\int g_n \le \inf_{k\ge n} \int f_k$$；
+$\cdot$ $$\{g_n\}$$ 是 $L^{+}$ 中的**递增**列（下确界取的集合越来越少），且 $$lim_n g_n = lim inf_k f_k$$。
 
 对递增列 $$\{g_n\}$$ 用 MCT：
 
@@ -4548,7 +4546,7 @@ $$\int \liminf_{n\to\infty} f_n = \int \lim_{n\to\infty} g_n = \lim_{n\to\infty}
 
 ∎
 
-> 整个证明就是把「liminf 定义成递增列的上确界」这件事翻译一遍 —— MCT 之外什么都没用。
+$>$ 整个证明就是把「liminf 定义成递增列的上确界」这件事翻译一遍 —— MCT 之外什么都没用。
 
 > Fatou 就是 MCT 在「不单调」情形下的残留物：单调性换成了 liminf。
 
@@ -4557,9 +4555,9 @@ $$\int \liminf_{n\to\infty} f_n = \int \lim_{n\to\infty} g_n = \lim_{n\to\infty}
 
 设 $$f_n \to f$$ a.e.，$$|f_n| \le g \in L^1$$。
 
-**① f ∈ L¹。** 由 $$|f| = lim|f_n| \le g$$（a.e.）得 f 可积。
+**① $f \in L^{1}$。** 由 $$|f| = lim|f_n| \le g$$（a.e.）得 $f$ 可积。
 
-**② 上界方向：$$lim sup_n \int f_n \le \int f$$。** 考虑 $$g - f_n \ge 0$$（因为 |fₙ| ≤ g）。这列非负函数满足
+**② 上界方向：$$lim sup_n \int f_n \le \int f$$。** 考虑 $$g - f_n \ge 0$$（因为 $|f_{n}| \le g$）。这列非负函数满足
 
 $$g - f_n \to g - f\quad  a.e.$$
 
@@ -4575,10 +4573,10 @@ $$\int (g + f) \le lim inf_n \int (g + f_n) = \int g + lim inf_n \int f_n$$
 
 移项得 $$lim inf_n \int f_n \ge \int f$$。
 
-**④** ②与③合起来 $$lim sup \le \int f \le lim inf$$，故极限存在且等于 ∫f。∎
+**④** ②与③合起来 $$lim sup \le \int f \le lim inf$$，故极限存在且等于 $\int f$。∎
 
-> ⭐ 关键在于**控制函数提供的非负性**：$$g \pm  f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 g，这一步就写不出来。
-> 移项之所以合法，是因为 $$g$$ 可积（∫g < ∞）—— 这正是「控制函数必须属于 L¹」而不能只是「有界」的原因。
+$>$ ⭐ 关键在于**控制函数提供的非负性**：$$g \pm  f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 $g$，这一步就写不出来。
+$>$ 移项之所以合法，是因为 $$g$$ 可积（$\int g < \infty$）—— 这正是「控制函数必须属于 $L^{1}$」而不能只是「有界」的原因。
 
 #### 控制收敛定理 ⟹ 交换极限/导数与积分　`imp.differentiate-under-integral`
 *DCT ⟹ 在积分号下求极限与求导*
@@ -4587,16 +4585,16 @@ $$\int (g + f) \le lim inf_n \int (g + f_n) = \int g + lim inf_n \int f_n$$
 
 $$F(t_n) = \int f_n \to \int f(\cdot, t_0) = F(t_0)$$
 
-对一切序列 tₙ 成立，故 $$\lim_{t\to t_0} F(t) = F(t_0)$$。
+对一切序列 $t_{n}$ 成立，故 $$\lim_{t\to t_0} F(t) = F(t_0)$$。
 
 **(b)** 取任意 $$t_n \to t_0$$，令
 
 $$h_n(x) = (f(x, t_n) - f(x, t_0)) / (t_n - t_0)$$
 
-则 $$F'(t_0) = lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = lim_n \int h_n$$。要把它换成 ∫lim hₙ 就够了，而 DCT 正好提供这个能力：
+则 $$F'(t_0) = lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = lim_n \int h_n$$。要把它换成 $\int \lim h_{n}$ 就够了，而 DCT 正好提供这个能力：
 
-· $$h_n \to \partial f / \partial t(x, t_0)$$ 逐点（这是导数的定义）；
-· **控制**：由中值定理，$$|h_n(x)| \le \sup_{t \in [t_0, t_n]} | \partial f / \partial t(x, t) | \le g(x)$$。
+$\cdot$ $$h_n \to \partial f / \partial t(x, t_0)$$ 逐点（这是导数的定义）；
+$\cdot$ **控制**：由中值定理，$$|h_n(x)| \le \sup_{t \in [t_0, t_n]} | \partial f / \partial t(x, t) | \le g(x)$$。
 
 于是
 
@@ -4604,7 +4602,7 @@ $$F'(t_0) = lim_n \int h_n = \int lim_n h_n = \int \partial f / \partial t(x, t_
 
 ∎
 
-> ⚠ (b) 里那个「取 sup 的控制」必须提前假定：如果只对**每个** t 假设有控制，是不够的 —— 需要**同一个 g** 控制整族偏导数。
+$>$ ⚠ (b) 里那个「取 sup 的控制」必须提前假定：如果只对**每个** $t$ 假设有控制，是不够的 —— 需要**同一个 $g$** 控制整族偏导数。
 
 #### 逐项积分 + 积分为零 ⟺ 几乎处处为零 ⟹ L¹ 的逐项积分　`imp.termwise-L1`
 *非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分*
@@ -4615,17 +4613,17 @@ $$F'(t_0) = lim_n \int h_n = \int lim_n h_n = \int \partial f / \partial t(x, t_
 
 $$\int g = \sum_j \int |f_j| < \infty$$
 
-由「积分有限的后果」，g < ∞ a.e.，即 $$\sum_j |f_j(x)| < \infty$$ 对 a.e. x 成立。所以 $$\sum_j f_j(x)$$ 对 a.e. x **绝对收敛**。
+由「积分有限的后果」，$g < \infty \text{a.e.}$，即 $$\sum_j |f_j(x)| < \infty$$ 对 a.e. x 成立。所以 $$\sum_j f_j(x)$$ 对 a.e. x **绝对收敛**。
 
-**② 定义 f。** 令 $$f(x) = \sum_j f_j(x)$$（在收敛的 a.e. 点上），其余点随意取 0。则 $$|f| \le g$$，故 f ∈ L¹。
+**② 定义 $f$。** 令 $$f(x) = \sum_j f_j(x)$$（在收敛的 a.e. 点上），其余点随意取 0。则 $$|f| \le g$$，故 $f \in L^{1}$。
 
 **③ 部分和被控制。** 部分和 $$s_N = \sum_{j\le N} f_j$$ 满足 $$|s_N| \le g \in L^1$$。
 
-**④ 用 DCT。** $$s_N \to f$$ a.e.，且被 g 控制，故
+**④ 用 DCT。** $$s_N \to f$$ a.e.，且被 $g$ 控制，故
 
 $$\int f = \lim_{N\to\infty} \int s_N = \lim_{N\to\infty} \sum_{j\le N} \int f_j = \sum_{j=1}^{\infty} \int f_j$$
 
-（中间一步用 L¹ 的线性。）∎
+（中间一步用 $L^{1}$ 的线性。）∎
 
 #### 积分为零 ⟺ 几乎处处为零 ⟹ 何时两个函数积分处处相同　`imp.integrals-equal-iff`
 *积分为零 ⟹ 用积分识别函数*
@@ -4634,11 +4632,11 @@ $$\int f = \lim_{N\to\infty} \int s_N = \lim_{N\to\infty} \sum_{j\le N} \int f_j
 
 $$(i) \int_E f = \int_E g\quad  \forall E \in \mathcal{M}\quad  \iff\quad  \int_E h = 0\quad  \forall E$$
 
-**(i) ⟹ (ii)**：分别取 $$E = \{h \ge 0\}$$ 与 $$E = \{h < 0\}$$。由 $$\int_E h = 0$$ 且 h 在 E 上不变号，得 $$\{h > 0\}$$ 与 $$\{h < 0\}$$ 都是零集（否则积分为正/负），故 $$\mu(\{h \ne 0\}) = 0$$，于是 $$\int|h| = 0$$。
+**$(i) \implies (ii)$**：分别取 $$E = \{h \ge 0\}$$ 与 $$E = \{h < 0\}$$。由 $$\int_E h = 0$$ 且 $h$ 在 $E$ 上不变号，得 $$\{h > 0\}$$ 与 $$\{h < 0\}$$ 都是零集（否则积分为正/负），故 $$\mu(\{h \ne 0\}) = 0$$，于是 $$\int|h| = 0$$。
 
-**(ii) ⟹ (iii)**：$$\int|h| = 0$$ 配合「积分为零 ⟺ 几乎处处为零」，直接得到 h = 0 a.e.。
+**$(ii) \implies (iii)$**：$$\int|h| = 0$$ 配合「积分为零 $\iff$ 几乎处处为零」，直接得到 $h = 0 \text{a.e.}$。
 
-**(iii) ⟹ (i)**：h = 0 a.e. 时，对任意 E，$$\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎
+**$(iii) \implies (i)$**：$h = 0 \text{a.e.}$ 时，对任意 $E$，$$\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎
 
 #### 定义引用：「简单函数」→ 简单函数的积分　`def-link.simple-integral-def`
 
@@ -4654,27 +4652,27 @@ MCT 是绕着这个定义做的。
 
 #### 定义引用：「L⁺」→ 单调收敛定理　`def-link.lplus-mct`
 
-MCT 对整列都要求在 L⁺ 里。
+MCT 对整列都要求在 $L^{+}$ 里。
 
 #### 定义引用：「L⁺」→ 复函数的积分　`def-link.lplus-complex`
 
-复函数的积分就是把正负部丢回 L⁺ 去算。
+复函数的积分就是把正负部丢回 $L^{+}$ 去算。
 
 #### 定义引用：「L⁺」→ 可积 / L¹　`def-link.lplus-integrable`
 
-可积 ⟺ ∫|f| < ∞，而 |f| ∈ L⁺。
+可积 $\iff \int |f| < \infty$，而 $|f| \in L^{+}$。
 
 #### 定义引用：「可积 / L¹」→ 控制收敛定理　`def-link.integrable-dct`
 
-DCT 的前提与结论都在 L¹ 里。
+DCT 的前提与结论都在 $L^{1}$ 里。
 
 #### 定义引用：「L⁺」→ 控制收敛定理　`def-link.lplus-dct`
 
-DCT 的证明是正负部各用一次 Fatou —— 又回到 L⁺。
+DCT 的证明是正负部各用一次 Fatou —— 又回到 $L^{+}$。
 
 #### 定义引用：「零集与完备」→ 积分为零 ⟺ 几乎处处为零　`def-link.nullset-zeromeasure`
 
-「积分为零 ⟺ 几乎处处为零」里的 a.e. 就是相对于零集说的。
+「积分为零 $\iff$ 几乎处处为零」里的 a.e. 就是相对于零集说的。
 
 #### 定义引用：「测度」→ 逐项积分　`def-link.premeasure-termwise`
 
@@ -4682,11 +4680,11 @@ DCT 的证明是正负部各用一次 Fatou —— 又回到 L⁺。
 
 #### 定义引用：「可积 / L¹」→ L¹ 是向量空间　`def-link.integrable-L1-vectorspace`
 
-这条命题说 L¹ 在代数上是个向量空间。
+这条命题说 $L^{1}$ 在代数上是个向量空间。
 
 #### 定义引用：「可积 / L¹」→ L¹ 里的逼近　`def-link.integrable-approx`
 
-逼近定理是在 L¹ 里说的（用的是 ∫|f − φ| 这个量）。
+逼近定理是在 $L^{1}$ 里说的（用的是 $\int |f - \varphi |$ 这个量）。
 
 #### 定义引用：「简单函数」→ L¹ 里的逼近　`def-link.simple-approx-L1`
 
@@ -4699,7 +4697,7 @@ DCT 的证明是正负部各用一次 Fatou —— 又回到 L⁺。
 #### 依测度 Cauchy ⟹ 依测度 Cauchy ⟹ 收敛　`imp.cauchy-in-measure`
 *依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛*
 
-**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 k 存在 $$N_k$$ 使
+**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 $k$ 存在 $$N_k$$ 使
 
 $$\mu(E_k) \le 2^{-k}, \quad \text{ 其中} E_k = \{x : |f_n(x) - f_{N_k}(x)| \ge 2^{-k}\}\quad  (n \ge N_k)$$
 
@@ -4715,19 +4713,19 @@ $$|g_i(x) - g_j(x)| \le 2^{1-j}$$
 
 所以 $$\{g_j\}$$ 在 $$F_k^c$$ 上**一致收敛**（Cauchy 且界趋于 0）。
 
-**④ 造极限 f。** 令 $$F = \bigcap_k F_k^c$$，则
+**④ 造极限 $f$。** 令 $$F = \bigcap_k F_k^c$$，则
 
 $$\mu(F) = \mu(X \setminus \bigcup_k F_k) \ge \mu(X) - \mu(F_k)\quad  \forall k\quad  \implies\quad  \mu(F^c) = 0$$
 
-在 F 上令 $$f(x) = lim_j g_j(x)$$，在 $$F^c$$ 上任取 0。f 是可测函数（可测函数的极限）。于是 $$g_j \to f$$ **a.e.**
+在 $F$ 上令 $$f(x) = lim_j g_j(x)$$，在 $$F^c$$ 上任取 0。$f$ 是可测函数（可测函数的极限）。于是 $$g_j \to f$$ **a.e.**
 
-**⑤ 换成依测度。** 取定 k，对 $$j \ge k$$、$$x \in F_k^c$$ 有 $$|g_j(x) - f(x)| \le 2^{1-j}$$。于是对任意 δ > 0，
+**⑤ 换成依测度。** 取定 $k$，对 $$j \ge k$$、$$x \in F_k^c$$ 有 $$|g_j(x) - f(x)| \le 2^{1-j}$$。于是对任意 $\delta > 0$，
 
 $$\mu(\{|g_j - f| > \delta\}) \le \mu(F_k) \le 2^{1-k}\quad  (j\text{ 充分大})$$
 
-令 k → ∞ 得 $$g_j \to f$$ 依测度。
+令 $k \to \infty$ 得 $$g_j \to f$$ 依测度。
 
-**⑥ 把 fₙ 也拉进来。** 对任意 ε > 0，
+**⑥ 把 $f_{n}$ 也拉进来。** 对任意 $\varepsilon > 0$，
 
 $$\{|f_n - f| \ge \varepsilon\} \subseteq \{|f_n - g_j| \ge \varepsilon/2\} \cup \{|g_j - f| \ge \varepsilon/2\}$$
 
@@ -4738,36 +4736,36 @@ $$\{|f_n - f| \ge \varepsilon\} \subseteq \{|f_n - g_j| \ge \varepsilon/2\} \cup
 #### 可积 / L¹ ⟹ L¹ 收敛 ⟹ 依测度收敛　`imp.L1-measure`
 *Markov 不等式 ⟹ L¹ 收敛蕴含依测度收敛*
 
-**Markov 不等式**：设 $$g$$ 可测非负，则对任意 ε > 0，
+**Markov 不等式**：设 $$g$$ 可测非负，则对任意 $\varepsilon > 0$，
 
 $$\mu(\{g \ge \varepsilon\}) \le (1/\varepsilon)\cdot\int g d\mu$$
 
 证明：在 $$\{g \ge \varepsilon\}$$ 上有 $$\varepsilon \le g$$，即 $$\varepsilon \chi_{\{g \ge \varepsilon\}} \le g$$；两边积分得 $$\varepsilon\cdot\mu(\{g \ge \varepsilon\}) \le \int g$$。
 
-取 $$g = |f_n - f|$$。给定 δ > 0，
+取 $$g = |f_n - f|$$。给定 $\delta > 0$，
 
 $$\mu(\{|f_n - f| > \delta\}) \le (1/\delta)\cdot\int |f_n - f| d\mu \to 0$$
 
-（最后一步正是 L¹ 收敛的定义。）再对任意 ε > 0 取 n 足够大即可。∎
+（最后一步正是 $L^{1}$ 收敛的定义。）再对任意 $\varepsilon > 0$ 取 $n$ 足够大即可。∎
 
 #### 五种收敛 ⟹ Egorov 定理　`imp.egorov`
 *a.e. 收敛 + 有限测度 ⟹ 近一致*
 
 设 $$f_n \to f$$ a.e.，$$\mu(X) < \infty$$。
 
-**① 收敛点集与坏集合。** 令 $$F = \{x : f_n(x) \to f(x)\}$$，则 $$\mu(F^c) = 0$$。对每个固定的 k ∈ ℕ 令
+**① 收敛点集与坏集合。** 令 $$F = \{x : f_n(x) \to f(x)\}$$，则 $$\mu(F^c) = 0$$。对每个固定的 $k \in \mathbb{N}$ 令
 
 $$E_n(k) = \bigcup_{m \ge n} \{x : |f_m(x) - f(x)| \ge k^{-1}\}$$
 
-（「从第 n 项起还有偏差 ≥ 1/k 的点」）。
+（「从第 $n$ 项起还有偏差 $\ge 1/k$ 的点」）。
 
-**② 对固定 k，$$E_n(k)$$ 随 n 递减，且 $$\bigcap_n E_n(k) = F^c$$。**（若 x 最终偏差都 < 1/k，就不在任何足够靠后的 $$E_n(k)$$ 里。）
+**② 对固定 $k$，$$E_n(k)$$ 随 $n$ 递减，且 $$\bigcap_n E_n(k) = F^c$$。**（若 $x$ 最终偏差都 $< 1/k$，就不在任何足够靠后的 $$E_n(k)$$ 里。）
 
 **③ 用有限测度取极限。** 由 $$\mu(X) < \infty$$ 与测度的上连续性（递减列），
 
 $$\mu(E_n(k)) \to \mu(F^c) = 0\quad  (n \to \infty)$$
 
-**④ 挑出「足够快趋于 0」的那些 n。** 给定 ε > 0，对每个 k 选 $$n_k$$ 使
+**④ 挑出「足够快趋于 0」的那些 $n$。** 给定 $\varepsilon > 0$，对每个 $k$ 选 $$n_k$$ 使
 
 $$\mu(E_{n_k}(k)) < \varepsilon \cdot 2^{-k}$$
 
@@ -4775,26 +4773,26 @@ $$\mu(E_{n_k}(k)) < \varepsilon \cdot 2^{-k}$$
 
 $$\mu(E) \le \sum_k \mu(E_{n_k}(k)) < \varepsilon \cdot \sum_k 2^{-k} = \varepsilon$$
 
-**⑥ 在 $$E^c$$ 上一致收敛。** 取 $$x \notin E$$。对任意 k，$$x \notin E_{n_k}(k)$$，即对一切 $$n \ge n_k$$ 有
+**⑥ 在 $$E^c$$ 上一致收敛。** 取 $$x \notin E$$。对任意 $k$，$$x \notin E_{n_k}(k)$$，即对一切 $$n \ge n_k$$ 有
 
 $$|f_n(x) - f(x)| < k^{-1}$$
 
-这正是「$$f_n \rightrightarrows  f$$ 在 $$E^c$$ 上」的定义（给定精度 $$k^{-1}$$ ≤ ε 后，取 $$N = n_k$$）。∎
+这正是「$$f_n \rightrightarrows  f$$ 在 $$E^c$$ 上」的定义（给定精度 $$k^{-1}$$ $\le \varepsilon$ 后，取 $$N = n_k$$）。∎
 
-> ⚠ ③ 是唯一用到 $$\mu(X) < \infty$$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。
+$>$ ⚠ ③ 是唯一用到 $$\mu(X) < \infty$$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。
 
 #### L¹ 里的逼近 + Egorov 定理 ⟹ Lusin 定理　`imp.lusin`
 *简单函数逼近 + Egorov ⟹ Lusin*
 
-**① 先用简单函数逼近。** 由「L¹ 里的逼近」，取简单函数列 $$\{\varphi_n\}$$ 使 $$\int|f - \varphi_n| \to 0$$；取子列还可保证 $$\varphi_n \to f$$ a.e.（由 L¹ 收敛 ⟹ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。
+**① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $$\{\varphi_n\}$$ 使 $$\int|f - \varphi_n| \to 0$$；取子列还可保证 $$\varphi_n \to f$$ a.e.（由 $L^{1}$ 收敛 $\implies$ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。
 
-**② 先对「指示函数」办到。** 对可测集 A ⊆ [a, b] 与任意 ε > 0，由测度的正则性可找到紧集 E ⊆ A 使 $$\mu(A \setminus E) < \varepsilon$$，于是 $$\chi_A|_{E}$$ 连续（在 E 上恒为 1）。有限多个这样的紧集取交，就能让一整个简单函数在某个紧集上连续。
+**② 先对「指示函数」办到。** 对可测集 $A \subseteq [a, b]$ 与任意 $\varepsilon > 0$，由测度的正则性可找到紧集 $E \subseteq A$ 使 $$\mu(A \setminus E) < \varepsilon$$，于是 $$\chi_A|_{E}$$ 连续（在 $E$ 上恒为 1）。有限多个这样的紧集取交，就能让一整个简单函数在某个紧集上连续。
 
-**③ 用 Egorov 把「几乎处处」升级成「一致」。** 把 ①② 得到的「在紧集上连续」逐步加细：取一列越来越好的紧集，用 Egorov 保证 $$\varphi_n \to f$$ 在某块丢掉任意小测度的集合后**一致**收敛。一致收敛保持连续性，故 f 限制在剩下的那个紧集上连续。
+**③ 用 Egorov 把「几乎处处」升级成「一致」。** 把 ①② 得到的「在紧集上连续」逐步加细：取一列越来越好的紧集，用 Egorov 保证 $$\varphi_n \to f$$ 在某块丢掉任意小测度的集合后**一致**收敛。一致收敛保持连续性，故 $f$ 限制在剩下的那个紧集上连续。
 
-**④ 收尾。** 每一步丢掉的测度都可以预先取得任意小，全部并起来仍小于 ε（把 ε 预先换成 ε/3、ε/9、… 再求和）。于是得到一个紧集 E ⊆ [a, b]，$$\mu(E^c) < \varepsilon$$ 且 $$f|_E$$ 连续。∎
+**④ 收尾。** 每一步丢掉的测度都可以预先取得任意小，全部并起来仍小于 $\varepsilon$（把 $\varepsilon$ 预先换成 $\varepsilon /3$、$\varepsilon /9$、… 再求和）。于是得到一个紧集 $E \subseteq [a, b]$，$$\mu(E^c) < \varepsilon$$ 且 $$f|_E$$ 连续。∎
 
-> ⭐ 核心思想与 Egorov 一样是「**丢掉一小块，换取好性质**」：这次换到的是连续性。
+$>$ ⭐ 核心思想与 Egorov 一样是「**丢掉一小块，换取好性质**」：这次换到的是连续性。
 
 > 笔记里 Lusin 是紧接在 Egorov 之后作为 Cor. 写的，路线也确实是「Egorov + 简单函数逼近」。
 
@@ -4812,7 +4810,7 @@ Egorov 定理说的是其中两种收敛（a.e. 与近一致）的关系。
 
 #### 定义引用：「可积 / L¹」→ L¹ 收敛 ⟹ 依测度收敛　`def-link.integrable-measure`
 
-L¹ 收敛的定义里用到 ∫|fₙ − f|。
+$L^{1}$ 收敛的定义里用到 $\int |f_{n} - f|$。
 
 #### 定义引用：「五种收敛」→ L¹ 收敛 ⟹ 依测度收敛　`def-link.modes-L1`
 
@@ -4825,55 +4823,55 @@ L¹ 收敛的定义里用到 ∫|fₙ − f|。
 #### 预测度 + Carathéodory 定理 ⟹ 乘积测度　`imp.product-measure`
 *矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度*
 
-**① π 是良定义的。** 设 E 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \cap A_k'$$ × $$B_j \cap B_k'$$），π 的值不变 —— 因为 μ、ν 在各自那一侧都是有限可加的。
+**① $\pi$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \cap A_k'$$ $\times$ $$B_j \cap B_k'$$），$\pi$ 的值不变 —— 因为 $\mu$、$\nu$ 在各自那一侧都是有限可加的。
 
-**② π 是 𝒜 上的预测度。** 𝒜 = 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 μ、ν 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。
+**② $\pi$ 是 $\mathcal{A}$ 上的预测度。** $\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\mu$、$\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。
 
-**③ 用 Carathéodory 扩张。** 由「预测度 → 外测度 → 可测集 → 扩张测度」那一整套：π 诱导出 X × Y 上的外测度 μ*，全体 μ*-可测集构成 σ-代数，μ* 在其上成为测度；而代数 𝒜 中每个集合都是 μ*-可测的，且 μ*|_𝒜 = π。
+**③ 用 Carathéodory 扩张。** 由「预测度 $\to$ 外测度 $\to$ 可测集 $\to$ 扩张测度」那一整套：$\pi$ 诱导出 $X \times Y$ 上的外测度 $\mu$*，全体 $\mu$*-可测集构成 $\sigma$代数，$\mu$* 在其上成为测度；而代数 $\mathcal{A}$ 中每个集合都是 $\mu$*-可测的，且 $\mu$*$|_\mathcal{A} = \pi$。
 
-**④ 落到 ℳ ⊗ 𝒩 上。** 𝒜 含所有矩形，故 𝒜 生成 ℳ ⊗ 𝒩 ⊆ (μ*-可测集)；把 μ* 限制在 ℳ ⊗ 𝒩 上，就是所要的测度 μ × ν，它在矩形上取值 $$\mu \times \nu(A \times B) = \mu(A) \nu(B)$$。∎
+**④ 落到 $\mathcal{M} ⊗ \mathcal{N}$ 上。** $\mathcal{A}$ 含所有矩形，故 $\mathcal{A}$ 生成 $\mathcal{M} ⊗ \mathcal{N} \subseteq (\mu$*-可测集)；把 $\mu$* 限制在 $\mathcal{M} ⊗ \mathcal{N}$ 上，就是所要的测度 $\mu \times \nu$，它在矩形上取值 $$\mu \times \nu(A \times B) = \mu(A) \nu(B)$$。∎
 
-> ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。
+$>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。
 
 #### 截口 ⟹ 截口可测　`imp.section-measurable`
 *截口的定义 ⟹ 截口保持可测性*
 
 **(a)** 令 $$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N}\text{ 且} E^y \in \mathcal{M}\quad  \forall(x, y) \in X \times Y\}$$。
 
-- **ℛ 含所有矩形**：若 $$E = A \times B$$，则
+- **$\mathcal{R}$ 含所有矩形**：若 $$E = A \times B$$，则
 
 $$E_x = B\quad  (x \in A), \quad  E_x = \emptyset\quad  (x \notin A)$$
 
-两边都在 𝒩 里（𝒩 含 ∅）；横截口同理。
+两边都在 $\mathcal{N}$ 里（$\mathcal{N}$ 含 $\emptyset$）；横截口同理。
 
-- **ℛ 是 σ-代数**：截口运算保持并、交、补 —— 例如 $$(\bigcup_n E^{(n)})_x = \bigcup_n E^{(n)}_x$$、$$(E^c)_x = (E_x)^c$$（这里用的是 Y 在 X × Y 中的「竖条」补集）。故 ℛ 对可数并与补封闭。
+- **$\mathcal{R}$ 是 $\sigma$代数**：截口运算保持并、交、补 —— 例如 $$(\bigcup_n E^{(n)})_x = \bigcup_n E^{(n)}_x$$、$$(E^c)_x = (E_x)^c$$（这里用的是 $Y$ 在 $X \times Y$ 中的「竖条」补集）。故 $\mathcal{R}$ 对可数并与补封闭。
 
-于是 ℛ ⊇ ℳ(矩形族) = ℳ ⊗ 𝒩，(a) 得证。
+于是 $\mathcal{R} \supseteq \mathcal{M}($矩形族$) = \mathcal{M} ⊗ \mathcal{N}$，(a) 得证。
 
-**(b)** 设 f 是 ℳ⊗𝒩-可测，B ⊆ ℂ 可测。则
+**(b)** 设 $f$ 是 $\mathcal{M}⊗\mathcal{N}$可测，$B \subseteq \mathbb{C}$ 可测。则
 
 $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 
-而 $$f^{-1}(B) \in \mathcal{M} \otimes  \mathcal{N}$$，由 (a) 它的纵截口属于 𝒩，即 $$f_x^{-1}(B) \in \mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎
+而 $$f^{-1}(B) \in \mathcal{M} \otimes  \mathcal{N}$$，由 (a) 它的纵截口属于 $\mathcal{N}$，即 $$f_x^{-1}(B) \in \mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎
 
 #### 单调类引理 + 截口可测 ⟹ 乘积测度由截口给出　`imp.product-sections`
 *单调类引理 ⟹ 乘积测度由截口积分给出*
 
-**① 先设 μ、ν 有限。** 令 $$\mathcal{C} = \{E \in \mathcal{M} \otimes  \mathcal{N} : x \mapsto \nu(E_x)\text{ 可测}, y \mapsto \mu(E^y)\text{ 可测},\text{ 且} \mu\times\nu(E) = \int\nu(E_x)d\mu = \int\mu(E^y)d\nu\}$$。
+**① 先设 $\mu$、$\nu$ 有限。** 令 $$\mathcal{C} = \{E \in \mathcal{M} \otimes  \mathcal{N} : x \mapsto \nu(E_x)\text{ 可测}, y \mapsto \mu(E^y)\text{ 可测},\text{ 且} \mu\times\nu(E) = \int\nu(E_x)d\mu = \int\mu(E^y)d\nu\}$$。
 
-**② 矩形在 𝒞 里。** 若 $$E = A \times B$$，则 $$\nu(E_x) = \chi_A(x)\cdot\nu(B)$$，它是可测的（指示函数 × 常数），且
+**② 矩形在 $\mathcal{C}$ 里。** 若 $$E = A \times B$$，则 $$\nu(E_x) = \chi_A(x)\cdot\nu(B)$$，它是可测的（指示函数 $\times$ 常数），且
 
 $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 
-**③ 𝒞 对递增并封闭。** 若 $$E_1 \subseteq E_2 \subseteq \cdots$$ 都在 𝒞 中、$$E = \bigcup E_n$$：则 $$\nu((E_n)_x) \nearrow  \nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \mapsto \nu(E_x)$$ 可测且 $$\int\nu(E_x)d\mu = lim \int\nu((E_n)_x)d\mu = lim \mu\times\nu(E_n) = \mu\times\nu(E)$$。
+**③ $\mathcal{C}$ 对递增并封闭。** 若 $$E_1 \subseteq E_2 \subseteq \cdots$$ 都在 $\mathcal{C}$ 中、$$E = \bigcup E_n$$：则 $$\nu((E_n)_x) \nearrow  \nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \mapsto \nu(E_x)$$ 可测且 $$\int\nu(E_x)d\mu = lim \int\nu((E_n)_x)d\mu = lim \mu\times\nu(E_n) = \mu\times\nu(E)$$。
 
-**④ 𝒞 对递减交封闭。** 若 $$E_1 \supseteq E_2 \supseteq \cdots$$、$$E = \bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\nu(Y) < \infty$$）得到同样的等式。
+**④ $\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \supseteq E_2 \supseteq \cdots$$、$$E = \bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\nu(Y) < \infty$$）得到同样的等式。
 
-**⑤ 用单调类引理。** 由 ①②③④，𝒞 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 𝒞 含这个代数；由单调类引理，$$\mathfrak{m}(\text{代数}) = \mathcal{M}(\text{代数}) = \mathcal{M} \otimes  \mathcal{N}$$，于是 𝒞 = ℳ ⊗ 𝒩。
+**⑤ 用单调类引理。** 由 ①②③④，$\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\mathcal{C}$ 含这个代数；由单调类引理，$$\mathfrak{m}(\text{代数}) = \mathcal{M}(\text{代数}) = \mathcal{M} \otimes  \mathcal{N}$$，于是 $\mathcal{C} = \mathcal{M} ⊗ \mathcal{N}$。
 
-**⑥ 推广到 σ-有限。** 取 $$X = \bigcup_i X_i$$、$$Y = \bigcup_i Y_i$$（各自测度有限），则 $$X \times Y = \bigcup_i (X_i \times Y_i)$$。对每个 i，把 ⑤ 用在 $$E \cap (X_i \times Y_i)$$ 上（这一步只用到**有限**测度）；再把 i 加起来，用 MCT 对 i 求极限即可。∎
+**⑥ 推广到 $\sigma$有限。** 取 $$X = \bigcup_i X_i$$、$$Y = \bigcup_i Y_i$$（各自测度有限），则 $$X \times Y = \bigcup_i (X_i \times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \cap (X_i \times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎
 
-> ⚠ σ-有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。
+$>$ ⚠ $\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。
 
 #### 乘积测度由截口给出 + 单调收敛定理 ⟹ Fubini–Tonelli　`imp.tonelli`
 *集合版（截口公式）+ MCT ⟹ Tonelli*
@@ -4884,7 +4882,7 @@ $$\int_Y f(x, y) d\nu(y) = \nu(E_x), \quad  \int_X f(x, y) d\mu(x) = \mu(E^y)$$
 
 于是三重等式正是上一条定理的内容。
 
-**② 简单函数。** 由线性推广到 $$f = \sum_j a_j \chi_{E_j}$$（$$a_j \ge 0$$，Eⱼ 不交）。
+**② 简单函数。** 由线性推广到 $$f = \sum_j a_j \chi_{E_j}$$（$$a_j \ge 0$$，$E_{j}$ 不交）。
 
 **③ 非负可测函数。** 取简单函数列 $$\{f_n\} \nearrow  f$$（简单函数逼近定理）。令
 
@@ -4894,7 +4892,7 @@ $$g_n(x) = \int f_n(x, y) d\nu(y), \quad  g(x) = \int f(x, y) d\nu(y)$$
 
 $$\int g d\mu = lim_n \int g_n d\mu$$
 
-再由 ② 对每个 n 的三重等式，
+再由 ② 对每个 $n$ 的三重等式，
 
 $$\int g_n d\mu = \int f_n d(\mu \times \nu)$$
 
@@ -4904,65 +4902,65 @@ $$\int_X ( \int_Y f d\nu ) d\mu = lim_n \int f_n d(\mu \times \nu) = \int f d(\m
 
 （最后一步又用一次 MCT。）另一边对称。**这就是 Tonelli，全程不需要可积性。**
 
-**④ Fubini。** 设 $$f \in L^1(\mu \times \nu)$$。把 f 拆成 $$Re f^+, Re f^-, Im f^+, Im f^-$$ 四个非负部分，对每一部分用 ③。由
+**④ Fubini。** 设 $$f \in L^1(\mu \times \nu)$$。把 $f$ 拆成 $$Re f^+, Re f^-, Im f^+, Im f^-$$ 四个非负部分，对每一部分用 ③。由
 
 $$\int |f| d(\mu \times \nu) < \infty$$
 
-和 ③ 的三重等式，得到 $$\int_X (\int_Y |f| d\nu) d\mu < \infty$$，故 $$\int_Y |f(x, \cdot)| d\nu < \infty$$ 对 **a.e.** x 成立 —— 即 $$f_x \in L^1(\nu)$$ a.e.；同理 $$f^y \in L^1(\mu)$$ a.e.。既然两个累次积分都已经是有限数，就可以直接相减、不再有 ∞ − ∞ 的危险，三重等式对 f 成立。∎
+和 ③ 的三重等式，得到 $$\int_X (\int_Y |f| d\nu) d\mu < \infty$$，故 $$\int_Y |f(x, \cdot)| d\nu < \infty$$ 对 **a.e.** $x$ 成立 —— 即 $$f_x \in L^1(\nu)$$ a.e.；同理 $$f^y \in L^1(\mu)$$ a.e.。既然两个累次积分都已经是有限数，就可以直接相减、不再有 $\infty - \infty$ 的危险，三重等式对 $f$ 成立。∎
 
-> ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。
+$>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。
 
 #### Fubini–Tonelli + 完备化定理 + 乘积测度通常不完备 ⟹ 完备情形的 F–T　`imp.fubini-complete`
 *乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T*
 
-**① 先证 f ≥ 0 的情形。** 由于 λ 是 μ×ν 的完备化，$$\mathcal{L}$$ 中的集合可以写成
+**① 先证 $f \ge 0$ 的情形。** 由于 $\lambda$ 是 $\mu \times \nu$ 的完备化，$$\mathcal{L}$$ 中的集合可以写成
 
 $$E = F \cup G, \quad  F \in \mathcal{M} \otimes  \mathcal{N}, \quad  G \subseteq H, \quad  \mu \times \nu(H) = 0$$
 
 （取不交化后即 $$E = F \sqcup  G$$，于是 $$\chi_E = \chi_F + \chi_G$$。）
 
-**② $$\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（F ∈ ℳ⊗𝒩）。
+**② $$\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \in \mathcal{M}⊗\mathcal{N}$）。
 
-**③ $$\chi_G$$ 那一半也没问题** —— 因为 $$G \subseteq H$$ 而 μ×ν(H) = 0，所以对**每一个** x 都有 $$\nu(G_x) \le \nu(H_x) = 0$$（H 的截口是 ν-零集，这一步用截口公式对 H 本身成立），于是
+**③ $$\chi_G$$ 那一半也没问题** —— 因为 $$G \subseteq H$$ 而 $\mu \times \nu (H) = 0$，所以对**每一个** $x$ 都有 $$\nu(G_x) \le \nu(H_x) = 0$$（$H$ 的截口是 $\nu$零集，这一步用截口公式对 $H$ 本身成立），于是
 
 $$\int \chi_G d\lambda = 0 = \int ( \int \chi_G d\nu ) d\mu$$
 
-两边都是 0。（对 a.e. 的 x，$$G_x$$ 是 ν-零集。）
+两边都是 0。（对 a.e. 的 $x$，$$G_x$$ 是 $\nu$零集。）
 
 **④ 由线性推广到非负简单函数，再用 MCT 推广到一切 $$f \ge 0$$。** 关键点：完备化只多出「含在零集里的部分」，而这部分对积分的贡献恒为 0，所以整段论证不会被破坏。
 
-**⑤ 一般情形**：把 f 拆成 $$Re f^\pm , Im f^\pm $$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎
+**⑤ 一般情形**：把 $f$ 拆成 $$Re f^\pm , Im f^\pm $$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎
 
-> 笔记里的原话把要点概括得很准：**「应该是核心思想，其余都类似。」** —— 核心就是把 E 拆成 F ⊔ G，F 归老定理、G 归「截口都是零集」。
+$>$ 笔记里的原话把要点概括得很准：**「应该是核心思想，其余都类似。」** —— 核心就是把 $E$ 拆成 $F \sqcup G$，$F$ 归老定理、$G$ 归「截口都是零集」。
 
 #### 乘积测度 ⟹ 乘积测度通常不完备　`imp.product-incomplete`
 *乘积测度通常不完备*
 
-取 $$X = Y = [0, 1]$$，μ = ν = Lebesgue 测度（都是完备的）。令
+取 $$X = Y = [0, 1]$$，$\mu = \nu = Lebesgue$ 测度（都是完备的）。令
 
 $$D = \{(x, x) : x \in [0, 1]\}$$
 
-则 D 是闭集，故属于 $$\mathfrak{B}_{[0,1]} \otimes  \mathfrak{B}_{[0,1]}$$；且 $$\mu \times \nu(D)$$ 可以用截口公式算：对每个 x，$$\nu(D_x) = \nu(\{x\}) = 0$$，故
+则 $D$ 是闭集，故属于 $$\mathfrak{B}_{[0,1]} \otimes  \mathfrak{B}_{[0,1]}$$；且 $$\mu \times \nu(D)$$ 可以用截口公式算：对每个 $x$，$$\nu(D_x) = \nu(\{x\}) = 0$$，故
 
 $$\mu \times \nu(D) = \int \nu(D_x) d\mu(x) = 0$$
 
-**关键**：取一个 Lebesgue 测度为 0 但**不可测**（不属 𝔅_{[0,1]}）的子集 $$N \subseteq [0,1]$$，令
+**关键**：取一个 Lebesgue 测度为 0 但**不可测**（不属 $\mathfrak{B}_\{[0,1]\}$）的子集 $$N \subseteq [0,1]$$，令
 
 $$G = \{(x, x) : x \in N\} \subseteq D$$
 
-则 G ⊆ D 而 μ×ν(D) = 0，但 G **不属于** $$\mathfrak{B} \otimes  \mathfrak{B}$$（它的截口给出的正是 N —— 若 $$G \in \mathfrak{B} \otimes  \mathfrak{B}$$，由截口可测性，对每个 x 都有 $$G_x \in \mathfrak{B}$$，而 $$G_x$$ 是 {x} 或 ∅ …… 需要用「G 的截面沿对角线还原出 N」这一论证）。故 μ×ν 不完备。∎
+则 $G \subseteq D$ 而 $\mu \times \nu (D) = 0$，但 $G$ **不属于** $$\mathfrak{B} \otimes  \mathfrak{B}$$（它的截口给出的正是 $N$ —— 若 $$G \in \mathfrak{B} \otimes  \mathfrak{B}$$，由截口可测性，对每个 $x$ 都有 $$G_x \in \mathfrak{B}$$，而 $$G_x$$ 是 {x} 或 $\emptyset$ …… 需要用「$G$ 的截面沿对角线还原出 $N$」这一论证）。故 $\mu \times \nu$ 不完备。∎
 
-> ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。
+$>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。
 
-> 这段论证的方向是对的，但「G ∉ 𝔅 ⊗ 𝔅」那一步的细节（如何从截面还原出 N）笔记里没有展开，我按标准做法补了骨架；如果你想写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。
+> 这段论证的方向是对的，但「$G \notin \mathfrak{B} ⊗ \mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）笔记里没有展开，我按标准做法补了骨架；如果你想写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。
 
 #### 定义引用：「预测度」→ 乘积测度　`def-link.productmeasure-premeasure`
 
-矩形上的 π 就是一个预测度。
+矩形上的 $\pi$ 就是一个预测度。
 
 #### 定义引用：「积 σ-代数」→ 乘积测度　`def-link.productmeasure-sigma`
 
-乘积测度定义在积 σ-代数 ℳ ⊗ 𝒩 上。
+乘积测度定义在积 $\sigma$代数 $\mathcal{M} ⊗ \mathcal{N}$ 上。
 
 #### 定义引用：「截口」→ 截口可测　`def-link.section-props`
 
@@ -4970,11 +4968,11 @@ $$G = \{(x, x) : x \in N\} \subseteq D$$
 
 #### 定义引用：「单调类」→ 单调类引理　`def-link.monotoneclass-lemma`
 
-单调类引理说的正是单调类与 σ-代数何时重合。
+单调类引理说的正是单调类与 $\sigma$代数何时重合。
 
 #### 定义引用：「生成的 σ-代数」→ 单调类引理　`def-link.generated-monotone-lemma`
 
-陈述里用到 𝔪(𝒜) 与 ℳ(𝒜) 两个生成记号。
+陈述里用到 $\mathfrak{m}(\mathcal{A})$ 与 $\mathcal{M}(\mathcal{A})$ 两个生成记号。
 
 #### 定义引用：「乘积测度」→ 乘积测度由截口给出　`def-link.productmeasure-sections-thm`
 
@@ -4986,42 +4984,42 @@ Fubini 的整个陈述都是用截口写的。
 
 #### 定义引用：「乘积测度」→ Fubini–Tonelli　`def-link.productmeasure-fubini`
 
-重积分就是对 μ × ν 积分。
+重积分就是对 $\mu \times \nu$ 积分。
 
 #### 定义引用：「可积 / L¹」→ Fubini–Tonelli　`def-link.integrable-fubini`
 
-Fubini 的 (b) 用的是 L¹(μ×ν)。
+Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 
 #### 定义引用：「乘积测度」→ 完备情形的 F–T　`def-link.productmeasure-complete`
 
-完备情形下先要把 μ × ν 完备化。
+完备情形下先要把 $\mu \times \nu$ 完备化。
 
 #### 定义引用：「零集与完备」→ 完备情形的 F–T　`def-link.completion-fubini`
 
-证明的核心是把集合拆成「属于 ℳ⊗𝒩 的部分」+「含在零集里的部分」。
+证明的核心是把集合拆成「属于 $\mathcal{M}⊗\mathcal{N}$ 的部分」+「含在零集里的部分」。
 
 #### 符号测度 + 正集的封闭性 ⟹ Hahn 分解定理　`imp.hahn`
 *符号测度 + 正集的封闭性 ⟹ Hahn 分解*
 
-**① 先把 ν 的无穷值甩掉。** 不妨设 ν 不取 +∞（若 ν 不取 −∞ 就改证 −ν）。于是 $$\nu(X) < \infty$$ 中的「上方」是安全的。
+**① 先把 $\nu$ 的无穷值甩掉。** 不妨设 $\nu$ 不取 $\infty$（若 $\nu$ 不取 $-\infty$ 就改证 $-\nu$）。于是 $$\nu(X) < \infty$$ 中的「上方」是安全的。
 
 **② 挑一个「最大的正集」。** 令
 
 $$m := sup\{ \nu(E) : E\text{ 是正集} \}, $$
 
-则 $$m < \infty$$（因为 ν 不取 +∞ 而 ν(E) ≤ ν(X) 型估计受控）。取一列正集 $$\{P_j\}$$ 使 $$\nu(P_j) \to m$$，令
+则 $$m < \infty$$（因为 $\nu$ 不取 $\infty$ 而 $\nu (E) \le \nu (X)$ 型估计受控）。取一列正集 $$\{P_j\}$$ 使 $$\nu(P_j) \to m$$，令
 
 $$P = \bigcup_j P_j$$
 
-由正集的可数并仍是正集，P 是正集；且 $$\nu(P) = m$$（正集的不交化 + 可数可加）。
+由正集的可数并仍是正集，$P$ 是正集；且 $$\nu(P) = m$$（正集的不交化 + 可数可加）。
 
-**③ 断言 N = X ∖ P 是负集。** 反设 N 不含负集，即 N 不是负的。要证它会挤出一个比 m 更大的正集。
+**③ 断言 $N = X \setminus P$ 是负集。** 反设 $N$ 不含负集，即 $N$ 不是负的。要证它会挤出一个比 $m$ 更大的正集。
 
-**④ 在 N 里挖出正集。** 若 N 不是负集，则存在可测 $$A \subseteq N$$ 使 $$\nu(A) > 0$$。「A 是正的」就到此结束；否则存在 $$A_1 \subseteq A$$ 使 $$\nu(A_1) < 0$$。取**最小的自然数** $$n$$ 使
+**④ 在 $N$ 里挖出正集。** 若 $N$ 不是负集，则存在可测 $$A \subseteq N$$ 使 $$\nu(A) > 0$$。「$A$ 是正的」就到此结束；否则存在 $$A_1 \subseteq A$$ 使 $$\nu(A_1) < 0$$。取**最小的自然数** $$n$$ 使
 
 $$\nu(A_1) < -1/n$$
 
-（笔记原话：「$$n_1$$ 是使存在负测度集 ≤ −1/n₁ 的最小 n，最靠前」。**取最小**这一步是关键 —— 它保证后面能取极限。）
+（笔记原话：「$$n_1$$ 是使存在负测度集 $\le -1/n_{1}$ 的最小 $n$，最靠前」。**取最小**这一步是关键 —— 它保证后面能取极限。）
 
 再在 $$A \setminus A_1$$ 里重复同样的操作，得到 $$A_2, \ldots $$
 
@@ -5030,49 +5028,49 @@ $$\nu(A_1) < -1/n$$
 
 $$\nu(A) = \nu(B) + \sum_k \nu(A_k)$$
 
-而 $$\sum_k |\nu(A_k)| < \infty$$（因为左边有限），特别地 $$\nu(A_k) \to 0$$，这迫使 $$n_k \to \infty$$，从而对任意 $$F \subseteq B$$：若 $$\nu(F) < -1/n_{k-1}$$，就与 $$n_k$$ 的**最小性**矛盾。于是 $$\nu(F) \ge -1/n_{k-1}$$ 对一切 k 成立，令 k → ∞ 得 $$\nu(F) \ge 0$$。故 B 也是正集。
+而 $$\sum_k |\nu(A_k)| < \infty$$（因为左边有限），特别地 $$\nu(A_k) \to 0$$，这迫使 $$n_k \to \infty$$，从而对任意 $$F \subseteq B$$：若 $$\nu(F) < -1/n_{k-1}$$，就与 $$n_k$$ 的**最小性**矛盾。于是 $$\nu(F) \ge -1/n_{k-1}$$ 对一切 $k$ 成立，令 $k \to \infty$ 得 $$\nu(F) \ge 0$$。故 $B$ 也是正集。
 
-**⑦ 矛盾。** 由 ⑤⑥，A 中含正集 B。于
+**⑦ 矛盾。** 由 ⑤⑥，$A$ 中含正集 $B$。于
 
 $$\nu(B) = \nu(A) - \sum_k \nu(A_k) > 0$$
 
-说明 $$P \cup B$$ 是正集且 $$\nu(P \cup B) = m + \nu(B) > m$$，与 m 的定义矛盾。故 N 必为负集，$$X = P \sqcup  N$$ 就是 Hahn 分解，**存在性得证**。
+说明 $$P \cup B$$ 是正集且 $$\nu(P \cup B) = m + \nu(B) > m$$，与 $m$ 的定义矛盾。故 $N$ 必为负集，$$X = P \sqcup  N$$ 就是 Hahn 分解，**存在性得证**。
 
-**⑧ 唯一性。** 设 $$P' \sqcup  N'$$ 是另一对。则 $$P \setminus P' \subseteq P$$（正集）且 $$\subseteq N'$$（负集），所以它既是正集又是负集 —— 只能是零集；同理 $$P' \setminus P$$ 也是零集。故 $$P \triangle  P' = N \triangle  N'$$ 是 ν-零集。∎
+**⑧ 唯一性。** 设 $$P' \sqcup  N'$$ 是另一对。则 $$P \setminus P' \subseteq P$$（正集）且 $$\subseteq N'$$（负集），所以它既是正集又是负集 —— 只能是零集；同理 $$P' \setminus P$$ 也是零集。故 $$P \triangle  P' = N \triangle  N'$$ 是 $\nu$零集。∎
 
-> ⭐ 笔记里那段「取最小的 n」是整段证明的技术核心：因为 n 取最小，后面才能让 $$\nu(F) \ge -1/n_{k-1}$$ 一路通过 k → ∞ 得到 $$\nu(F) \ge 0$$。
+> ⭐ 笔记里那段「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $$\nu(F) \ge -1/n_{k-1}$$ 一路通过 $k \to \infty$ 得到 $$\nu(F) \ge 0$$。
 
 #### Hahn 分解定理 ⟹ Jordan 分解定理　`imp.jordan`
 *Hahn 分解 ⟹ Jordan 分解*
 
-取 ν 的一个 Hahn 分解 $$X = P \sqcup  N$$（P 正、N 负）。定义
+取 $\nu$ 的一个 Hahn 分解 $$X = P \sqcup  N$$（$P$ 正、$N$ 负）。定义
 
 $$\nu^+(E) := \nu(E \cap P), \quad  \nu^-(E) := -\nu(E \cap N)$$
 
-**① 它们都是测度。** 对 ν⁺：$$\nu^+(\emptyset) = \nu(\emptyset) = 0$$；对不交的 $$\{E_j\}$$，
+**① 它们都是测度。** 对 $\nu ^{+}$：$$\nu^+(\emptyset) = \nu(\emptyset) = 0$$；对不交的 $$\{E_j\}$$，
 
 $$\nu^+( \bigsqcup_j E_j ) = \nu( \bigsqcup_j (E_j \cap P) ) = \sum_j \nu(E_j \cap P) = \sum_j \nu^+(E_j)$$
 
-（右边的每一项都 ≥ 0，因为 $$E_j \cap P$$ 是正集的子集。）ν⁻ 同理。
+（右边的每一项都 $\ge 0$，因为 $$E_j \cap P$$ 是正集的子集。）$\nu ^{-}$ 同理。
 
-**② ν = ν⁺ − ν⁻。** 对任意 E，
+**② $\nu = \nu ^{+} - \nu ^{-}$。** 对任意 $E$，
 
 $$\nu(E) = \nu(E \cap P) + \nu(E \cap N) = \nu^+(E) - \nu^-(E)$$
 
-**③ ν⁺ ⊥ ν⁻。** 取 $$E = P$$、$$F = N$$：P 是 ν⁻-零集（ν⁻(P) = −ν(P ∩ N) = 0），N 是 ν⁺-零集。
+**③ $\nu ^{+} \perp \nu ^{-}$。** 取 $$E = P$$、$$F = N$$：$P$ 是 $\nu ^{-}$零集（$\nu ^{-}(P) = -\nu (P \cap N) = 0$），$N$ 是 $\nu ^{+}$零集。
 
-**④ 至少一个有限。** 由符号测度的定义，ν 至多取到 ±∞ 中的一个：若 ν 不取 +∞ 则 ν⁺ 有限，若 ν 不取 −∞ 则 ν⁻ 有限。
+**④ 至少一个有限。** 由符号测度的定义，$\nu$ 至多取到 $\pm \infty$ 中的一个：若 $\nu$ 不取 $\infty$ 则 $\nu ^{+}$ 有限，若 $\nu$ 不取 $-\infty$ 则 $\nu ^{-}$ 有限。
 
-**⑤ 唯一性。** 设 $$\nu = \mu_1 - \mu_2$$ 也是这种分解（$$\mu_1 \perp  \mu_2$$）。取见证奇异性的划分 $$X = E \sqcup  F$$（E 是 μ₁-零集、F 是 μ₂-零集）。由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $$\mu_1 = \nu^+$$、$$\mu_2 = \nu^-$$。∎
+**⑤ 唯一性。** 设 $$\nu = \mu_1 - \mu_2$$ 也是这种分解（$$\mu_1 \perp  \mu_2$$）。取见证奇异性的划分 $$X = E \sqcup  F$$（$E$ 是 $\mu _{1}$零集、$F$ 是 $\mu _{2}$零集）。由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $$\mu_1 = \nu^+$$、$$\mu_2 = \nu^-$$。∎
 
 #### 绝对连续 ⟹ 绝对连续的 ε–δ 刻画　`imp.ac-epsilon-delta`
 *绝对连续 ⟹ ε–δ 刻画（ν 有限时）*
 
-设 ν 有限且 $$\nu \ll  \mu$$。由「绝对连续与变差」那条命题，可以**不妨设 ν 本身就是正测度**（换成 |ν| 不影响结论）。
+设 $\nu$ 有限且 $$\nu \ll  \mu$$。由「绝对连续与变差」那条命题，可以**不妨设 $\nu$ 本身就是正测度**（换成 $|\nu |$ 不影响结论）。
 
-**(⟸)** 若 μ(E) = 0，则对任意 ε > 0 有 μ(E) < δ，于是 |ν(E)| ≤ ε；令 ε → 0 得 ν(E) = 0。
+**$(\Longleftarrow )$** 若 $\mu (E) = 0$，则对任意 $\varepsilon > 0$ 有 $\mu (E) < \delta$，于是 $|\nu (E)| \le \varepsilon$；令 $\varepsilon \to 0$ 得 $\nu (E) = 0$。
 
-**(⟹) 反证。** 设存在 ε > 0，使对**一切** n 都能找到 $$E_n \in \mathcal{M}$$ 满足
+**$(\implies )$ 反证。** 设存在 $\varepsilon > 0$，使对**一切** $n$ 都能找到 $$E_n \in \mathcal{M}$$ 满足
 
 $$\mu(E_n) < 2^{-n}, \quad  \nu(E_n) \ge \varepsilon$$
 
@@ -5080,38 +5078,38 @@ $$\mu(E_n) < 2^{-n}, \quad  \nu(E_n) \ge \varepsilon$$
 
 $$F_k = \bigcup_{n \ge k} E_n, \quad  F = \bigcap_k F_k$$
 
-则 $$\mu(F_k) \le \sum_{n\ge k} 2^{-n} = 2^{1-k} \to 0$$，由 μ 的下连续性与递减性得 $$\mu(F) = 0$$。
+则 $$\mu(F_k) \le \sum_{n\ge k} 2^{-n} = 2^{1-k} \to 0$$，由 $\mu$ 的下连续性与递减性得 $$\mu(F) = 0$$。
 
-另一方面 $$\nu(F_k) \ge \nu(E_k) \ge \varepsilon$$ 对一切 k 成立；由 ν 有限与测度的下连续性（$$F_k \searrow  F$$，首项有限）得
+另一方面 $$\nu(F_k) \ge \nu(E_k) \ge \varepsilon$$ 对一切 $k$ 成立；由 $\nu$ 有限与测度的下连续性（$$F_k \searrow  F$$，首项有限）得
 
 $$\nu(F) = lim_k \nu(F_k) \ge \varepsilon > 0$$
 
-这与 $$\nu \ll  \mu$$（μ(F) = 0 应推出 ν(F) = 0）矛盾。故这样的 ε 不存在，即对每个 ε > 0 都有对应的 δ。∎
+这与 $$\nu \ll  \mu$$（$\mu (F) = 0$ 应推出 $\nu (F) = 0$）矛盾。故这样的 $\varepsilon$ 不存在，即对每个 $\varepsilon > 0$ 都有对应的 $\delta$。∎
 
-> ⭐ 反证里那个「对一切 n 都能找到」是取出的关键：它把「不连续」翻译成了一列越来越小的坏集合，再用 Borel–Cantelli 型的尾并把它们压成零集。
+$>$ ⭐ 反证里那个「对一切 $n$ 都能找到」是取出的关键：它把「不连续」翻译成了一列越来越小的坏集合，再用 Borel–Cantelli 型的尾并把它们压成零集。
 
 #### 要么奇异、要么有下界 + 单调收敛定理 + 绝对连续与变差 ⟹ Lebesgue–Radon–Nikodym 定理　`imp.lebesgue-rn`
 *「要么奇异、要么有下界」⟹ Lebesgue–Radon–Nikodym*
 
-**I. 先设 ν、μ 都有限，且 ν ≥ 0。**
+**I. 先设 $\nu$、$\mu$ 都有限，且 $\nu \ge 0$。**
 
 **① 造候选函数集。** 令
 
 $$\mathcal{F} := \{ f : X \to [0, +\infty] : \int_E f d\mu \le \nu(E)\quad  \forall E \in \mathcal{M} \}$$
 
-则 $$0 \in \mathcal{F}$$，且 ℱ 对**取大**封闭：若 f, g ∈ ℱ，令 $$A = \{f > g\}$$、$$h = \max_{f, g}$$，则对任意 E，
+则 $$0 \in \mathcal{F}$$，且 $\mathcal{F}$ 对**取大**封闭：若 $f, g \in \mathcal{F}$，令 $$A = \{f > g\}$$、$$h = \max_{f, g}$$，则对任意 $E$，
 
 $$\int_E h d\mu = \int_{E\cap A} f d\mu + \int_{E\setminus A} g d\mu \le \nu(E\cap A) + \nu(E\setminus A) = \nu(E)$$
 
-故 h ∈ ℱ。
+故 $h \in \mathcal{F}$。
 
-**② 取上确界。** 令 $$a := sup\{ \int f d\mu : f \in \mathcal{F} \} \le \nu(X) < \infty$$（这一步用到 ν 有限）。取 $$\{f_n\} \subseteq \mathcal{F}$$ 使 $$\int f_n d\mu \to a$$，令
+**② 取上确界。** 令 $$a := sup\{ \int f d\mu : f \in \mathcal{F} \} \le \nu(X) < \infty$$（这一步用到 $\nu$ 有限）。取 $$\{f_n\} \subseteq \mathcal{F}$$ 使 $$\int f_n d\mu \to a$$，令
 
 $$g_n = \max_{f_1, \ldots , f_n}, \quad  f = sup_n f_n$$
 
 由 ① 每个 $$g_n \in \mathcal{F}$$，且 $$g_n \uparrow  f$$、$$\int g_n d\mu \ge \int f_n d\mu$$，故 $$lim_n \int g_n d\mu = a$$。由 **MCT**，$$f \in \mathcal{F}$$ 且 $$\int f d\mu = a$$。
 
-**③ 断言 $$d\lambda := d\nu - f d\mu$$ 与 μ 奇异。** 反设不然，由**引理**，存在 ε > 0 与 $$E \in \mathcal{M}$$、μ(E) > 0，使 $$\lambda \ge \varepsilon\mu$$ 在 E 上成立，即
+**③ 断言 $$d\lambda := d\nu - f d\mu$$ 与 $\mu$ 奇异。** 反设不然，由**引理**，存在 $\varepsilon > 0$ 与 $$E \in \mathcal{M}$$、$\mu (E) > 0$，使 $$\lambda \ge \varepsilon\mu$$ 在 $E$ 上成立，即
 
 $$\varepsilon \chi_E d\mu \le d\nu - f d\mu\quad  \implies\quad  (f + \varepsilon \chi_E) d\mu \le d\nu$$
 
@@ -5119,27 +5117,27 @@ $$\varepsilon \chi_E d\mu \le d\nu - f d\mu\quad  \implies\quad  (f + \varepsilo
 
 $$\int (f + \varepsilon \chi_E) d\mu = a + \varepsilon\cdot\mu(E) > a$$
 
-与 a 的**上确界**性矛盾。故 λ ⊥ μ，$$\nu = \lambda + (f d\mu)$$ 就是所要的分解。
+与 $a$ 的**上确界**性矛盾。故 $\lambda \perp \mu$，$$\nu = \lambda + (f d\mu)$$ 就是所要的分解。
 
 **④ 唯一性。** 设 $$d\nu = d\lambda' + f' d\mu$$ 是另一种分解。则
 
 $$d\lambda - d\lambda' = (f' - f) d\mu$$
 
-左边与 μ 奇异（两个各与 μ 奇异的测度之差仍与 μ 奇异），右边关于 μ 绝对连续。由「既奇异又绝对连续 ⟹ 等于零」，两边都是 0，即 $$\lambda = \lambda'$$ 且 $$f = f'$$ μ-a.e.。
+左边与 $\mu$ 奇异（两个各与 $\mu$ 奇异的测度之差仍与 $\mu$ 奇异），右边关于 $\mu$ 绝对连续。由「既奇异又绝对连续 $\implies$ 等于零」，两边都是 0，即 $$\lambda = \lambda'$$ 且 $$f = f'$$ $\mu -\text{a.e.}$。
 
-**II. 推广到 σ-有限。** 取 $$X = \bigcup_j A_j$$（$$\mu(A_j) < \infty$$、$$\nu(A_j) < \infty$$）。令
+**II. 推广到 $\sigma$有限。** 取 $$X = \bigcup_j A_j$$（$$\mu(A_j) < \infty$$、$$\nu(A_j) < \infty$$）。令
 
 $$\mu_j(E) := \mu(E \cap A_j), \quad  \nu_j(E) := \nu(E \cap A_j)$$
 
-对每一对 $$(\mu_j, \nu_j)$$ 用 I，得 $$d\nu_j = d\lambda_j + f_j d\mu_j$$。规定 $$\lambda_j(A_j^c) = 0$$、$$f_j = 0$$ 在 $$A_j^c$$ 上，令
+对每一对 $$(\mu_j, \nu_j)$$ 用 $I$，得 $$d\nu_j = d\lambda_j + f_j d\mu_j$$。规定 $$\lambda_j(A_j^c) = 0$$、$$f_j = 0$$ 在 $$A_j^c$$ 上，令
 
 $$\lambda := \sum_j \lambda_j, \quad  f := \sum_j f_j$$
 
-则 $$d\nu = d\lambda + f d\mu$$、$$\lambda \perp  \mu$$，且 dλ、f dμ 都 σ-有限。
+则 $$d\nu = d\lambda + f d\mu$$、$$\lambda \perp  \mu$$，且 $d\lambda$、$f d\mu$ 都 $\sigma$有限。
 
-**III. ν 是符号测度。** 把 I、II 分别用在 $$\nu^+$$ 与 $$\nu^-$$ 上（由「绝对连续与变差」，绝对连续性对变差是逐块的），再把结果相加。∎
+**$III. \nu$ 是符号测度。** 把 $I$、II 分别用在 $$\nu^+$$ 与 $$\nu^-$$ 上（由「绝对连续与变差」，绝对连续性对变差是逐块的），再把结果相加。∎
 
-> ⭐ ③ 那一步是全证明的枢纽：假如 λ 还「留了一点 μ-质量」，就能拿它把 f 往上顶一点、得出比上确界 a 更大的值 —— 于是 λ 只能全部跑到 μ 看不到的地方去，即 λ ⊥ μ。
+> ⭐ ③ 那一步是全证明的枢纽：假如 $\lambda$ 还「留了一点 $\mu$质量」，就能拿它把 $f$ 往上顶一点、得出比上确界 $a$ 更大的值 —— 于是 $\lambda$ 只能全部跑到 $\mu$ 看不到的地方去，即 $\lambda \perp \mu$。
 
 #### 积分给出绝对连续测度 + 何时两个函数积分处处相同 ⟹ RN 导数的链式法则　`imp.rn-chain-rule`
 *换元公式与链式法则*
@@ -5148,16 +5146,16 @@ $$\lambda := \sum_j \lambda_j, \quad  f := \sum_j f_j$$
 
 **(a) 换元公式 $$\int g d\nu = \int g \frac{d\nu}{d\mu} d\mu$$。** 分四步爬：
 
-· $$g = \chi_E$$：左边是 $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu$$（这正是 RN 定理的内容），右边同；
-· g 是简单函数：由线性；
-· $$g \in L^+$$：取简单函数列 $$g_n \uparrow  g$$，两边各用一次 MCT；
-· $$g \in L^1(\nu)$$：拆正负部。
+$\cdot$ $$g = \chi_E$$：左边是 $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu$$（这正是 RN 定理的内容），右边同；
+$\cdot g$ 是简单函数：由线性；
+$\cdot$ $$g \in L^+$$：取简单函数列 $$g_n \uparrow  g$$，两边各用一次 MCT；
+$\cdot$ $$g \in L^1(\nu)$$：拆正负部。
 
-**(b) 链式法则。** 对任意可测 E，用 (a) 两次：
+**(b) 链式法则。** 对任意可测 $E$，用 (a) 两次：
 
 $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda} d\lambda$$
 
-另一方面又有 $$\nu(E) = \int_E \frac{d\nu}{d\lambda} d\lambda$$（因为 ν ≪ λ）。两式对**一切** E 相等，由「用积分识别函数」，两个密度 λ-a.e. 相等：
+另一方面又有 $$\nu(E) = \int_E \frac{d\nu}{d\lambda} d\lambda$$（因为 $\nu \ll \lambda$）。两式对**一切** $E$ 相等，由「用积分识别函数」，两个密度 $\lambda -\text{a.e.}$ 相等：
 
 $$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}\quad  \lambda-a.e.$$
 
@@ -5177,23 +5175,23 @@ Jordan 分解把符号测度拆成两个测度之差。
 
 #### 定义引用：「Hahn 分解定理」→ Jordan 分解定理　`def-link.hahn-jordan`
 
-ν⁺、ν⁻ 的造法直接来自 Hahn 分解的那个划分。
+$\nu ^{+}$、$\nu ^{-}$ 的造法直接来自 Hahn 分解的那个划分。
 
 #### 定义引用：「相互奇异」→ Jordan 分解定理　`def-link.singular-jordan`
 
-Jordan 分解里那个 ν⁺ ⊥ ν⁻ 用的就是相互奇异。
+Jordan 分解里那个 $\nu ^{+} \perp \nu ^{-}$ 用的就是相互奇异。
 
 #### 定义引用：「测度」→ 绝对连续　`def-link.measure-ac`
 
-绝对连续里被参照的 μ 是一个真测度。
+绝对连续里被参照的 $\mu$ 是一个真测度。
 
 #### 定义引用：「Jordan 分解定理」→ 绝对连续与变差　`def-link.variations-ac`
 
-命题是用 ν⁺、ν⁻ 把绝对连续性拆成两半说的。
+命题是用 $\nu ^{+}$、$\nu ^{-}$ 把绝对连续性拆成两半说的。
 
 #### 定义引用：「绝对连续」→ 要么奇异、要么有下界　`def-link.ac-lemma`
 
-引理出场的目的是为 RN 定理准备「ε 下界」。
+引理出场的目的是为 RN 定理准备「$\varepsilon$ 下界」。
 
 #### 定义引用：「相互奇异」→ 要么奇异、要么有下界　`def-link.singular-lemma`
 
@@ -5201,23 +5199,23 @@ Jordan 分解里那个 ν⁺ ⊥ ν⁻ 用的就是相互奇异。
 
 #### 定义引用：「绝对连续」→ Lebesgue–Radon–Nikodym 定理　`def-link.ac-rn`
 
-L–R–N 里那个 ρ ≪ μ 就是绝对连续。
+$L$–$R$–$N$ 里那个 $\rho \ll \mu$ 就是绝对连续。
 
 #### 定义引用：「相互奇异」→ Lebesgue–Radon–Nikodym 定理　`def-link.singular-rn`
 
-同时用到「与 μ 奇异」那一半。
+同时用到「与 $\mu$ 奇异」那一半。
 
 #### 定义引用：「可积 / L¹」→ 积分给出绝对连续测度　`def-link.integral-ac`
 
-「ν 有限 ⟺ f ∈ L¹(μ)」用到可积的定义。
+「$\nu$ 有限 $\iff f \in L^{1}(\mu )$」用到可积的定义。
 
 #### 定义引用：「复测度」→ 复测度的 Radon–Nikodym　`def-link.complex-rn`
 
-这条定理就是复测度版本的 L–R–N。
+这条定理就是复测度版本的 $L$–$R$–$N$。
 
 #### 定义引用：「可积 / L¹」→ 复测度的 Radon–Nikodym　`def-link.integrable-complex-rn`
 
-复情形下密度必须是 L¹ 的。
+复情形下密度必须是 $L^{1}$ 的。
 
 #### 定义引用：「测度」→ 全变差的基本性质　`def-link.measure-totalvariation`
 
@@ -5232,7 +5230,7 @@ $$A_{r_x}|f|(x) > \alpha\quad  \iff\quad  \int_{B(r_x, x)} |f(y)| dy > \alpha\cd
 
 于是 $$\{B(r_x, x)\}_{x \in E_\alpha}$$ 是 $$E_\alpha$$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。
 
-**② 用覆盖引理挑不交子族。** 任取 $$c < m(E_\alpha)$$（先设 m(E_α) < ∞）。由**覆盖引理**，存在 $$x_1, \ldots , x_k \in E_\alpha$$ 使 $$B_j = B(r_{x_j}, x_j)$$ 两两不交，且
+**② 用覆盖引理挑不交子族。** 任取 $$c < m(E_\alpha)$$（先设 $m(E_\alpha ) < \infty$）。由**覆盖引理**，存在 $$x_1, \ldots , x_k \in E_\alpha$$ 使 $$B_j = B(r_{x_j}, x_j)$$ 两两不交，且
 
 $$\sum_j m(B_j) > 3^{-n} c$$
 
@@ -5242,7 +5240,7 @@ $$c < 3^n \sum_j m(B_j) < (3^n/\alpha)\cdot\sum_j \int_{B_j} |f| dy \le (3^n/\al
 
 （最后一步用的是：$$B_j$$ 两两不交，所以把积分加起来不超过整体积分。）
 
-**④ 令 c → m(E_α)。** 得到
+**④ 令 $c \to m(E_\alpha )$。** 得到
 
 $$m(E_\alpha) \le (3^n/\alpha)\cdot\int |f| dy$$
 
@@ -5253,19 +5251,19 @@ $$m(E_\alpha) \le (3^n/\alpha)\cdot\int |f| dy$$
 #### 极大定理 + L¹ 里的逼近 + 平均算子联合连续 ⟹ Lebesgue 微分定理　`imp.lebesgue-differentiation`
 *极大定理 + 连续函数逼近 ⟹ Lebesgue 微分定理*
 
-**① 先局部化。** 由 L¹ₗoc 的定义与测度的可数可加性，只需对每个 $$N \in \mathbb{N}$$ 证明在球 $$\{|x| \le N\}$$ 上几乎处处成立；把 f 换成 $$f\cdot\chi_{B(N+1, 0)}$$ 后即可**设 $$f \in L^1$$**。
+**① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $$N \in \mathbb{N}$$ 证明在球 $$\{|x| \le N\}$$ 上几乎处处成立；把 $f$ 换成 $$f\cdot\chi_{B(N+1, 0)}$$ 后即可**设 $$f \in L^1$$**。
 
-**② 用连续函数逼近。** 给定 $$\varepsilon > 0$$，由「L¹ 里的逼近」，取**连续函数** g 使
+**② 用连续函数逼近。** 给定 $$\varepsilon > 0$$，由「$L^{1}$ 里的逼近」，取**连续函数** $g$ 使
 
 $$\int |g(y) - f(y)| dy < \varepsilon$$
 
-**③ 连续情形是白送的。** 若 g 连续，则对**每一个** x 都有 $$A_r g(x) \to g(x)$$（$$r \to 0$$）—— 因为 g 在 x 附近近似为常数。
+**③ 连续情形是白送的。** 若 $g$ 连续，则对**每一个** $x$ 都有 $$A_r g(x) \to g(x)$$（$$r \to 0$$）—— 因为 $g$ 在 $x$ 附近近似为常数。
 
-**④ 把差值压住。** 对任意 x，
+**④ 把差值压住。** 对任意 $x$，
 
 $$\sup_{r>0} |A_r f(x) - f(x)| = sup_r |A_r(f - g)(x) + (A_r g - g)(x) + (g - f)(x)| \le H(f - g)(x) + |f - g|(x)$$
 
-（第一项用 $$|A_r(f-g)| \le A_r|f-g| \le H(f-g)$$，第二项由 ③ 取 r → 0）。
+（第一项用 $$|A_r(f-g)| \le A_r|f-g| \le H(f-g)$$，第二项由 ③ 取 $r \to 0$）。
 
 **⑤ 估计坏集。** 令
 
@@ -5277,7 +5275,7 @@ $$m(E_\alpha) \le 2\varepsilon / \alpha + 2C\varepsilon / \alpha$$
 
 （第一项用 Markov 不等式，第二项用**极大定理**。）
 
-**⑥ 令 ε → 0。** 右边对**任意** ε > 0 成立，故 $$m(E_\alpha) = 0$$ 对一切 $$\alpha > 0$$ 成立。于是
+**⑥ 令 $\varepsilon \to 0$。** 右边对**任意** $\varepsilon > 0$ 成立，故 $$m(E_\alpha) = 0$$ 对一切 $$\alpha > 0$$ 成立。于是
 
 $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对一切} x \notin \bigcup_{m\in\mathbb{N}} E_{1/m}$$
 
@@ -5288,21 +5286,21 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对一切} x \notin \bigcup_{m\in\mat
 #### Lebesgue 微分定理 ⟹ Lebesgue 集几乎处处　`imp.lebesgue-set`
 *微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处*
 
-**① 对每个复数 c 用一次微分定理。** 固定 $$c \in \mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \notin E_c$$，
+**① 对每个复数 $c$ 用一次微分定理。** 固定 $$c \in \mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $$E_c$$，使对 $$x \notin E_c$$，
 
 $$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - c| dy = |f(x) - c|$$
 
-**② 只取可数多个 c。** 取 ℂ 的一个**可数稠密子集** D（比如 $$\mathbb{Q} + i\mathbb{Q}$$），令
+**② 只取可数多个 $c$。** 取 $\mathbb{C}$ 的一个**可数稠密子集** $D$（比如 $$\mathbb{Q} + i\mathbb{Q}$$），令
 
 $$E = \bigcup_{c \in D} E_c$$
 
 可数多个零集之并仍是零集，故 $$m(E) = 0$$。
 
-**③ 在 E 外验证**。设 $$x \notin E$$，任给 ε > 0，取 $$c \in D$$ 使 $$|f(x) - c| < \varepsilon$$。则
+**③ 在 $E$ 外验证**。设 $$x \notin E$$，任给 $\varepsilon > 0$，取 $$c \in D$$ 使 $$|f(x) - c| < \varepsilon$$。则
 
 $$\frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - c| dy + |f(x) - c|$$
 
-右边第一项由 ①（$$x \notin E_c$$）在 $$r \to 0$$ 时趋于 $$|f(x) - c|$$，于是整个右端的极限 ≤ $$|f(x) - c| + \varepsilon < 2\varepsilon$$。令 ε → 0 得极限为 0，即 $$x \in L_f$$。
+右边第一项由 ①（$$x \notin E_c$$）在 $$r \to 0$$ 时趋于 $$|f(x) - c|$$，于是整个右端的极限 $\le$ $$|f(x) - c| + \varepsilon < 2\varepsilon$$。令 $\varepsilon \to 0$ 得极限为 0，即 $$x \in L_f$$。
 
 故 $$L_f^c \subseteq E$$，从而 $$m(L_f^c) = 0$$。∎
 
@@ -5311,7 +5309,7 @@ $$\frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le \frac{1}{m(B(r,x))} \in
 #### Lebesgue 集几乎处处 + 可缩族 ⟹ 可缩族的微分定理　`imp.differentiation-general`
 *Lebesgue 集 + 可缩条件 ⟹ 一般族的微分定理*
 
-设 $$x \in L_f$$，$$\{E_r\}$$ 可缩地趋于 x，即 $$E_r \subseteq B(r,x)$$ 且 $$m(E_r) > \alpha\cdot m(B(r,x))$$。
+设 $$x \in L_f$$，$$\{E_r\}$$ 可缩地趋于 $x$，即 $$E_r \subseteq B(r,x)$$ 且 $$m(E_r) > \alpha\cdot m(B(r,x))$$。
 
 **① 关键估计（一行）。** 因为 $$E_r \subseteq B(r,x)$$，把积分域放大到球上只会变大；再用 $$m(E_r) > \alpha m(B(r,x))$$ 把分母换小：
 
@@ -5330,9 +5328,9 @@ $$| \frac{1}{m(E_r)} \int_{E_r} f - f(x) | \le \frac{1}{m(E_r)} \int_{E_r} |f(y)
 #### 可缩族的微分定理 + 正则 Borel 测度 + 覆盖引理 ⟹ RN 导数的点态公式　`imp.rn-pointwise`
 *微分定理 + 正则性 ⟹ RN 导数的点态公式*
 
-设 $$d\nu = d\lambda + f\cdot dm$$（$$\lambda \perp  m$$），ν 正则。
+设 $$d\nu = d\lambda + f\cdot dm$$（$$\lambda \perp  m$$），$\nu$ 正则。
 
-**① 先算全变差。** 由全变差的性质，$$d|\nu| = d|\lambda| + |f|\cdot dm$$。既然 ν 正则，|ν| 正则，于是 λ 与 $$f\cdot dm$$ 都正则；由「$$g\cdot dm$$ 正则 ⟺ $$g \in L^1_{loc}$$」得 $$f \in L^1_{loc}$$。
+**① 先算全变差。** 由全变差的性质，$$d|\nu| = d|\lambda| + |f|\cdot dm$$。既然 $\nu$ 正则，$|\nu |$ 正则，于是 $\lambda$ 与 $$f\cdot dm$$ 都正则；由「$$g\cdot dm$$ 正则 $\iff$ $$g \in L^1_{loc}$$」得 $$f \in L^1_{loc}$$。
 
 **② 拆比值。**
 
@@ -5340,21 +5338,21 @@ $$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac{1}{m(E_r)} \int_{E_r} f\cdot
 
 第二项由**可缩族的微分定理**趋于 $$f(x)$$（对 m-a.e. x）。所以只需证第一项趋于 0。
 
-**③ 把 λ 的坏点收集起来。** 不妨设 $$\lambda \ge 0$$，并取 $$A$$ 使 $$\lambda(A) = m(A^c) = 0$$（λ ⊥ m 的见证）。令
+**③ 把 $\lambda$ 的坏点收集起来。** 不妨设 $$\lambda \ge 0$$，并取 $$A$$ 使 $$\lambda(A) = m(A^c) = 0$$（$\lambda \perp m$ 的见证）。令
 
 $$F_k = \{ x \in A : \limsup_{r\to0} \lambda(B(r, x)) / m(B(r, x)) > 1 / k \}$$
 
-**④ 用正则性把 λ 压小。** 给定 ε > 0，由 λ 的正则性（从外面用开集逼近）取开集 $$U \supseteq A$$ 使 $$\lambda(U) < \varepsilon$$（注意 $$\lambda(A) = 0$$，但 U 比 A 大，多出来的部分也可以做得任意小）。
+**④ 用正则性把 $\lambda$ 压小。** 给定 $\varepsilon > 0$，由 $\lambda$ 的正则性（从外面用开集逼近）取开集 $$U \supseteq A$$ 使 $$\lambda(U) < \varepsilon$$（注意 $$\lambda(A) = 0$$，但 $U$ 比 $A$ 大，多出来的部分也可以做得任意小）。
 
-**⑤ 每个坏点配一个小球。** 对 $$x \in F_k$$，由 $$F_k$$ 的定义与 $$B_x \subseteq U$$（在 A 附近取足够小的球即可），存在球 $$B_x$$ 使
+**⑤ 每个坏点配一个小球。** 对 $$x \in F_k$$，由 $$F_k$$ 的定义与 $$B_x \subseteq U$$（在 $A$ 附近取足够小的球即可），存在球 $$B_x$$ 使
 
 $$\lambda(B_x) > (1/k)\cdot m(B_x)$$
 
-**⑥ 覆盖引理再来一次。** 令 $$V_\varepsilon = \bigcup_{x \in F_k} B_x$$（它是 U 中的开集，故 $$\lambda(V_\varepsilon) \le \lambda(U) < \varepsilon$$）。取 $$c < m(V_\varepsilon)$$，由**覆盖引理**挑出不交的 $$B_{x_1}, \ldots , B_{x_j}$$ 使 $$\sum m(B_{x_i}) > 3^{-n} c$$。于是
+**⑥ 覆盖引理再来一次。** 令 $$V_\varepsilon = \bigcup_{x \in F_k} B_x$$（它是 $U$ 中的开集，故 $$\lambda(V_\varepsilon) \le \lambda(U) < \varepsilon$$）。取 $$c < m(V_\varepsilon)$$，由**覆盖引理**挑出不交的 $$B_{x_1}, \ldots , B_{x_j}$$ 使 $$\sum m(B_{x_i}) > 3^{-n} c$$。于是
 
 $$c < 3^n \sum_i m(B_{x_i}) \le 3^n k \sum_i \lambda(B_{x_i}) \le 3^n k\cdot\lambda(V_\varepsilon) \le 3^n k \varepsilon$$
 
-**⑦ 令 ε → 0。** 得 $$m(V_\varepsilon) = 0$$，故某个零集包含了一切 $$F_k$$，即 $$F_k$$ 全是零集，从而 $$\lim_{r\to0} \lambda(B(r,x))/m(B(r,x)) = 0$$ 对 m-a.e. x 成立。
+**⑦ 令 $\varepsilon \to 0$。** 得 $$m(V_\varepsilon) = 0$$，故某个零集包含了一切 $$F_k$$，即 $$F_k$$ 全是零集，从而 $$\lim_{r\to0} \lambda(B(r,x))/m(B(r,x)) = 0$$ 对 m-a.e. x 成立。
 
 **⑧ 从球换到可缩族。** 上面用的是球；要换成一般的可缩族 $$E_r$$，用
 
@@ -5362,27 +5360,27 @@ $$\lambda(E_r) / m(E_r) \le \lambda(B(r,x)) / m(E_r) \le (1/\alpha)\cdot\lambda(
 
 （第二个不等号用了 $$m(E_r) > \alpha m(B(r,x))$$，并且 $$E_r \subseteq B(r,x)$$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎
 
-> ⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 = 质量/体积」的严格版本。
+> ⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 $=$ 质量/体积」的严格版本。
 
 #### 定义引用：「RN 导数与 Lebesgue 分解」→ L¹(ν) 与全变差　`def-link.totalvariation-l1`
 
-dν/d|ν| 就是一个 RN 导数。
+$d\nu /d|\nu |$ 就是一个 RN 导数。
 
 #### 定义引用：「可积 / L¹」→ L¹(ν) 与全变差　`def-link.integrable-l1signed`
 
-L¹(ν) 的定义直接搬用 L¹(|ν|)。
+$L^{1}(\nu )$ 的定义直接搬用 $L^{1}(|\nu |)$。
 
 #### 定义引用：「局部可积」→ 平均算子 Aᵣ　`def-link.locally-integrable-average`
 
-平均算子只在 L¹ₗoc 上定义。
+平均算子只在 $L^{1}_{l}oc$ 上定义。
 
 #### 定义引用：「平均算子 Aᵣ」→ 极大函数　`def-link.average-maximal`
 
-极大函数就是对 Aᵣ|f| 取上确界。
+极大函数就是对 $A_{r}|f|$ 取上确界。
 
 #### 定义引用：「局部可积」→ 极大函数　`def-link.locally-maximal`
 
-极大函数的定义域是 L¹ₗoc。
+极大函数的定义域是 $L^{1}_{l}oc$。
 
 #### 定义引用：「极大函数」→ 极大定理　`def-link.maximal-theorem-lm`
 
@@ -5402,7 +5400,7 @@ L¹(ν) 的定义直接搬用 L¹(|ν|)。
 
 #### 定义引用：「正则 Borel 测度」→ RN 导数的点态公式　`def-link.regular-pointwise`
 
-定理的第一个前提就是 ν 正则。
+定理的第一个前提就是 $\nu$ 正则。
 
 #### 定义引用：「RN 导数与 Lebesgue 分解」→ RN 导数的点态公式　`def-link.rn-pointwise`
 
@@ -5410,22 +5408,22 @@ L¹(ν) 的定义直接搬用 L¹(|ν|)。
 
 #### 定义引用：「局部可积」→ RN 导数的点态公式　`def-link.locally-pointwise`
 
-证明中间要推出 f ∈ L¹ₗoc。
+证明中间要推出 $f \in L^{1}_{l}oc$。
 
 #### T_F ± F 递增 ⟹ BV 的 Jordan 分解　`imp.bv-jordan`
 *T_F ± F 递增 ⟹ BV 的 Jordan 分解*
 
-**(b) 的 (⟸) 方向**：若 $$F = G - H$$（G、H 有界递增），则对任意分划
+**(b) 的 $(\Longleftarrow )$ 方向**：若 $$F = G - H$$（$G$、$H$ 有界递增），则对任意分划
 
 $$\sum|F(x_j) - F(x_{j-1})| \le \sum|G(x_j) - G(x_{j-1})| + \sum|H(x_j) - H(x_{j-1})| = (G(x) - G(-\infty)) + (H(x) - H(-\infty))$$
 
-（递增函数的相邻差非负，可以直接去绝对值。）于是 $$T_F(x) \le (G+H)(x) - (G+H)(-\infty) < \infty$$，F ∈ BV。
+（递增函数的相邻差非负，可以直接去绝对值。）于是 $$T_F(x) \le (G+H)(x) - (G+H)(-\infty) < \infty$$，$F \in BV$。
 
-**(b) 的 (⟹) 方向**：由**引理**，$$T_F + F$$ 与 $$T_F - F$$ 都递增；它们有界（因为 F ∈ BV 且 F 有界）。令
+**(b) 的 $(\implies )$ 方向**：由**引理**，$$T_F + F$$ 与 $$T_F - F$$ 都递增；它们有界（因为 $F \in BV$ 且 $F$ 有界）。令
 
 $$G := (1/2)(T_F + F), \quad  H := (1/2)(T_F - F)$$
 
-则 G、H 有界递增，且
+则 $G$、$H$ 有界递增，且
 
 $$G - H = (1/2)(T_F + F) - (1/2)(T_F - F) = F$$
 
@@ -5433,14 +5431,14 @@ $$G - H = (1/2)(T_F + F) - (1/2)(T_F - F) = F$$
 
 **(a)**：把实部虚部分开即可（$$|Re F| \le |F|$$、$$|F| \le |Re F| + |Im F|$$，两边夹）。∎
 
-> ⭐ 这叫「函数版的 Jordan 分解」，与符号测度的 ν = ν⁺ − ν⁻ 完全平行 —— 事实上两者通过「测度 ↔ NBV」的对应是同一件事。
+> ⭐ 这叫「函数版的 Jordan 分解」，与符号测度的 $\nu = \nu ^{+} - \nu ^{-}$ 完全平行 —— 事实上两者通过「测度 $\leftrightarrow NBV$」的对应是同一件事。
 
 #### BV 的 Jordan 分解 + 单调函数几乎处处可导 ⟹ BV 函数的正则性　`imp.bv-regularity`
 *化归到递增函数 ⟹ BV 的正则性*
 
 由**Jordan 分解**，只需对**有界递增**函数证明这三条 —— 差的性质自动继承。
 
-**(c)** 递增函数 F 在每点都有单侧极限：
+**(c)** 递增函数 $F$ 在每点都有单侧极限：
 
 $$F(x-) = \sup_{y < x} F(y), \quad  F(x+) = \inf_{y > x} F(y)$$
 
@@ -5448,35 +5446,35 @@ $$F(x-) = \sup_{y < x} F(y), \quad  F(x+) = \inf_{y > x} F(y)$$
 
 **(d)** 由**单调函数那条定理**的 (a)：不连续点至多可数。
 
-**(e)** 由同一条定理的 (b)：$$F' = G'$$ a.e.，其中 $$G(x) = F(x+)$$。对 G − H 形式的函数两边相减即可。∎
+**(e)** 由同一条定理的 (b)：$$F' = G'$$ a.e.，其中 $$G(x) = F(x+)$$。对 $G - H$ 形式的函数两边相减即可。∎
 
-> ⭐ 整个证明的模式很典型：**先证明「递增」这个好情形，再用 Jordan 分解把一般情形搬过去**。
+$>$ ⭐ 整个证明的模式很典型：**先证明「递增」这个好情形，再用 Jordan 分解把一般情形搬过去**。
 
 #### 全变差的 NBV 性质 + BV 的 Jordan 分解 ⟹ 测度 ↔ NBV 的一一对应　`imp.borel-nbv`
 *NBV 的性质 ⟹ 测度与函数的一一对应*
 
-**(1) 测度 ⟹ 函数。** 复测度拆成四个正测度 $$\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$$。令
+**(1) 测度 $\implies$ 函数。** 复测度拆成四个正测度 $$\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$$。令
 
 $$F_j^{\pm }(x) := \mu_j^{\pm }((-\infty, x])$$
 
-每个 $$F_j^{\pm }$$ 递增、右连续、$$F_j^{\pm }(-\infty) = 0$$、$$F_j^{\pm }(+\infty) = \mu_j^{\pm }(\mathbb{R}) < \infty$$。于是 F 是四个这样的函数之组合，属于 NBV。
+每个 $$F_j^{\pm }$$ 递增、右连续、$$F_j^{\pm }(-\infty) = 0$$、$$F_j^{\pm }(+\infty) = \mu_j^{\pm }(\mathbb{R}) < \infty$$。于是 $F$ 是四个这样的函数之组合，属于 NBV。
 
-**(2) 函数 ⟹ 测度。** 反之任意 $$F \in NBV$$ 可以写成
+**(2) 函数 $\implies$ 测度。** 反之任意 $$F \in NBV$$ 可以写成
 
 $$F = F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$
 
-（用 NBV 版本的 Jordan 分解，注意右连续与 F(−∞) = 0 都被差保留。）每个递增右连续、F(−∞) = 0 的函数唯一对应一个有限 Borel 测度（取 μ((a,b]) = F(b) − F(a)，由 Lebesgue–Stieltjes 那一套扩张）；四块加起来即得 μ_F。**唯一性**来自「μ 由它在 (−∞, x] 上的值唯一决定」，而后者生成整个 𝔅_ℝ。
+（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；四块加起来即得 $\mu _F$。**唯一性**来自「$\mu$ 由它在 $(-\infty , x]$ 上的值唯一决定」，而后者生成整个 $\mathfrak{B}_\mathbb{R}$。
 
-**(3) |μ_F| = μ_{T_F}。** 由**引理**，$$F \in NBV \implies T_F \in NBV$$，所以 $$\mu_{T_F}$$ 有意义。两边都是 NBV 函数，逐点比较：对任意 x，
+**$(3) |\mu _F| = \mu _\{T_F\}$。** 由**引理**，$$F \in NBV \implies T_F \in NBV$$，所以 $$\mu_{T_F}$$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，
 
 $$\mu_{T_F}((-\infty, x]) = T_F(x) = sup\{ \sum|F(x_j) - F(x_{j-1})| \} = |\mu_F|((-\infty, x])$$
 
-（中间那个等号是 |μ| 的全变差定义 + 测度的可数可加性。）由 (−∞, x] 生成 𝔅_ℝ，两个测度相等。∎
+（中间那个等号是 $|\mu |$ 的全变差定义 + 测度的可数可加性。）由 $(-\infty , x]$ 生成 $\mathfrak{B}_\mathbb{R}$，两个测度相等。∎
 
 #### NBV 函数的导数与测度的关系 + 绝对连续的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续　`imp.ac-measure`
 *μ_F ≪ m 的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续*
 
-**(⟸)** 设 $$\mu_F \ll  m$$。应用测度版绝对连续的 ε–δ 刻画（注意 μ_F 有限，符合前提）：给定 ε > 0 取 δ > 0 使
+**$(\Longleftarrow )$** 设 $$\mu_F \ll  m$$。应用测度版绝对连续的 $\varepsilon$–$\delta$ 刻画（注意 $\mu _F$ 有限，符合前提）：给定 $\varepsilon > 0$ 取 $\delta > 0$ 使
 
 $$m(E) < \delta\quad  \implies\quad  |\mu_F(E)| < \varepsilon$$
 
@@ -5486,26 +5484,26 @@ $$\sum_j |F(b_j) - F(a_j)| = \sum_j |\mu_F((a_j, b_j])| \le |\mu_F|(E) < \vareps
 
 这正是函数绝对连续的定义。
 
-**(⟹)** 设 F 绝对连续，$$E \in \mathfrak{B}_\mathbb{R}$$、$$m(E) = 0$$，要证 $$\mu_F(E) = 0$$。由 μ_F 的正则性取递减开集列 $$U_1 \supset  U_2 \supset  \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$、$$\bigcap_k U_k = E$$。每个 Uₖ 是区间的可数不交并，把函数绝对连续性的条件用在 Uₖ 的有限截断上，得到 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性（递减列，首项有限）得
+**$(\implies )$** 设 $F$ 绝对连续，$$E \in \mathfrak{B}_\mathbb{R}$$、$$m(E) = 0$$，要证 $$\mu_F(E) = 0$$。由 $\mu _F$ 的正则性取递减开集列 $$U_1 \supset  U_2 \supset  \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$、$$\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性（递减列，首项有限）得
 
 $$|\mu_F(E)| = lim_j |\mu_F(U_j)| \le \varepsilon$$
 
-由 ε 任意，$$\mu_F(E) = 0$$。故 $$\mu_F \ll  m$$。∎
+由 $\varepsilon$ 任意，$$\mu_F(E) = 0$$。故 $$\mu_F \ll  m$$。∎
 
 #### AC ⊆ BV + 函数绝对连续 ⟺ 测度绝对连续 + NBV 函数的导数与测度的关系 ⟹ 微积分基本定理（Lebesgue 版）　`imp.ftc`
 *(a) ⟺ (b) ⟺ (c)：微积分基本定理的三条等价*
 
-**(a) ⟹ (b)。** 设 F 绝对连续。由**AC ⊆ BV**，F ∈ BV；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 ⟺ μ_F ≪ m**，写 Lebesgue 分解时奇异部分 λ = 0，于是 $$d\mu_F = f\cdot dm$$，即
+**$(a) \implies (b)$。** 设 $F$ 绝对连续。由**$AC \subseteq BV$**，$F \in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\iff \mu _F \ll m$**，写 Lebesgue 分解时奇异部分 $\lambda = 0$，于是 $$d\mu_F = f\cdot dm$$，即
 
 $$F(x) - F(a) = \int_a^x f(t) dt$$
 
-取 $$f$$ 就是所要的 L¹ 函数。
+取 $$f$$ 就是所要的 $L^{1}$ 函数。
 
-**(b) ⟹ (c)。** 若 $$F(x) - F(a) = \int_a^x f$$，则由积分的绝对连续性，F 绝对连续（这是直接验证）；而由**微分定理**，$$d / dx\int_a^x f = f(x)$$ a.e.，故 $$F' = f$$ a.e.、$$F' \in L^1$$，公式成立。
+**$(b) \implies (c)$。** 若 $$F(x) - F(a) = \int_a^x f$$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$$d / dx\int_a^x f = f(x)$$ a.e.，故 $$F' = f$$ a.e.、$$F' \in L^1$$，公式成立。
 
-**(c) ⟹ (a)。** 由 (c)，F 在 a.e. 意义下等于一个积分的原函数；把 $$F(x) - \int_a^x F'$$ 这个差记作 G，则 G 绝对连续（(b) ⟹ F 的那一段）且 G′ = 0 a.e.；再由 (b) 的构造（μ_G ≪ m 且密度为 F′ − F′ = 0）得 G ≡ 0。故 F 本身绝对连续。∎
+**$(c) \implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $$F(x) - \int_a^x F'$$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \implies F$ 的那一段）且 $G' = 0 \text{a.e.}$；再由 (b) 的构造（$\mu _G \ll m$ 且密度为 $F' - F' = 0$）得 $G \equiv 0$。故 $F$ 本身绝对连续。∎
 
-> ⭐ 最容易错的直觉是「a.e. 可导 + F′ ∈ L¹ 就够」——**Cantor 函数**正是反例：它 a.e. 可导、F′ ≡ 0 ∈ L¹，但 ∫₀¹ F′ = 0 ≠ 1。**绝对连续这一条不能省。**
+$>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**Cantor 函数**正是反例：它 a.e. 可导、$F' \equiv 0 \in L^{1}$，但 $\int _{0}^{1} F' = 0 \ne 1$。**绝对连续这一条不能省。**
 
 > 这条定理是整个「有界变差 / 绝对连续」星团的收官：它把函数侧、积分侧、导数侧三个刻画焊在一起。
 
@@ -5535,7 +5533,7 @@ $$F(x) - F(a) = \int_a^x f(t) dt$$
 
 #### 定义引用：「测度」→ 测度 ↔ NBV 的一一对应　`def-link.measure-nbv-thm`
 
-另一边是 ℝ 上的复 Borel 测度。
+另一边是 $\mathbb{R}$ 上的复 Borel 测度。
 
 #### 定义引用：「绝对连续函数」→ 函数绝对连续 ⟺ 测度绝对连续　`def-link.ac-function-ift`
 
@@ -5551,7 +5549,7 @@ $$F(x) - F(a) = \int_a^x f(t) dt$$
 
 #### 定义引用：「可积 / L¹」→ 微积分基本定理（Lebesgue 版）　`def-link.integrable-ftc`
 
-(b)(c) 里的 f、F′ 都要求在 L¹ 里。
+(b)(c) 里的 $f$、$F'$ 都要求在 $L^{1}$ 里。
 
 #### 定义引用：「NBV」→ 积出来的函数是 AC · NBV　`def-link.nbv-ftc`
 
@@ -5630,7 +5628,7 @@ $$\left\| F - s_n \right\|_p^p = \int |F - s_n|^p \to 0$$
 
 即 $s_n \to F$ 于 $L^p$。故绝对收敛级数都收敛，$L^p$ 完备。∎
 
-> ⭐ 这一段是「用逐点收敛的定理（MCT / DCT）去证范数收敛」的范例：控制函数 $G$ 就是关键桥梁。
+$>$ ⭐ 这一段是「用逐点收敛的定理（MCT / DCT）去证范数收敛」的范例：控制函数 $G$ 就是关键桥梁。
 
 #### Hölder 不等式 + 对偶配对 φ_g ⟹ 有界 ⟹ g ∈ L^q　`imp.bounded-gives-lq`
 *Hölder + 有界性 ⟹ $g \in L^q$*
@@ -5641,7 +5639,7 @@ $$\left\| F - s_n \right\|_p^p = \int |F - s_n|^p \to 0$$
 
 $$\left| \int fg \right| = \lim_n \left| \int f_n g \right| \le M_g(g)$$
 
-**Step 2：$q < \infty$。** 不妨设 $g \ne 0$，且设 $\{g \ne 0\}$ σ-有限（$\mu$ 半有限时这一点自动成立）。
+**Step 2：$q < \infty$。** 不妨设 $g \ne 0$，且设 $\{g \ne 0\}$ $\sigma$有限（$\mu$ 半有限时这一点自动成立）。
 
 先说明**必须**有 $\mu(\{|g| > \varepsilon\}) < \infty$（对一切 $\varepsilon > 0$）：否则设 $E_\varepsilon = \{|g| > \varepsilon\}$ 测度无穷，对任意 $C$ 取 $B \subseteq E_\varepsilon$ 使 $C < \mu(B) < \infty$，令
 
@@ -5659,7 +5657,7 @@ $$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \
 
 （第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $operatorname{sgn}$ 的消失。）故 $\|g\|_q \le M_g(g) < \infty$，$g \in L^q$；反向不等式 $M_g(g) \le \|g\|_q$ 由 Hölder。
 
-**Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。若 $\mu(A) > 0$，由半有限性或 $A \subseteq \{g \ne 0\}$ 的 σ-有限性取 $B \subseteq A$、$0 < \mu(B) < \infty$，令 $f = \mu(B)^{-1} \chi_B \operatorname{sgn} g$，则 $\|f\|_1 = 1$ 而 $\int fg \ge M_\infty(g) + \varepsilon$ —— 矛盾。故 $\mu(A) = 0$，即 $\|g\|_\infty \le M_\infty(g)$；反方向由 Hölder。∎
+**Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。若 $\mu(A) > 0$，由半有限性或 $A \subseteq \{g \ne 0\}$ 的 $\sigma$有限性取 $B \subseteq A$、$0 < \mu(B) < \infty$，令 $f = \mu(B)^{-1} \chi_B \operatorname{sgn} g$，则 $\|f\|_1 = 1$ 而 $\int fg \ge M_\infty(g) + \varepsilon$ —— 矛盾。故 $\mu(A) = 0$，即 $\|g\|_\infty \le M_\infty(g)$；反方向由 Hölder。∎
 
 #### 有界 ⟹ g ∈ L^q + Lebesgue–Radon–Nikodym 定理 + ‖g‖_q = ‖φ_g‖ ⟹ (L^p)* ≅ L^q　`imp.riesz-lp`
 *把泛函变成测度 ⟹ $(L^p)^* \cong L^q$*
@@ -5685,22 +5683,22 @@ $$\Phi(\chi_E) = \int \chi_E g \, d\mu$$
 
 **④ 把 $g$ 提升到 $L^q$。** 由 $\left| \int fg \right| = |\Phi(f)| \le \|\Phi\| \, \|f\|_p$，有界泛函那条命题给出 $g \in L^q$ 且 $\|g\|_q \le \|\Phi\|$。再由稠密性（简单函数在 $L^p$ 稠密、$\Phi$ 连续）得 $\Phi(f) = \int fg$ 对**一切** $f \in L^p$ 成立。
 
-**Step 2：$\mu$ σ-有限。** 取 $\{E_n\} \uparrow$、$0 < \mu(E_n) < \infty$、$X = \bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \in L^q(E_n)$，且
+**Step 2：$\mu$ $\sigma$有限。** 取 $\{E_n\} \uparrow$、$0 < \mu(E_n) < \infty$、$X = \bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \in L^q(E_n)$，且
 
 $$\|g_n\|_q \le \left\| \Phi|_{L^p(E_n)} \right\| \le \|\Phi\|$$
 唯一性（a.e.）给出 $g_n = g_m$ a.e. 于 $E_n$（$n < m$），所以它们拼成一个 a.e. 良定义的 $g$。由 **MCT**，$\|g\|_q = \lim_n \|g_n\|_q \le \|\Phi\|$，故 $g \in L^q$；而对 $f \in L^p$，由 **DCT** $f\chi_{E_n} \to f$ 于 $L^p$，于是 $\Phi(f) = \lim_n \Phi(f\chi_{E_n}) = \lim_n \int_{E_n} fg = \int fg$。
 
-**Step 3：$\mu$ 任意（此时 $p > 1$，故 $q < \infty$）。** 对每个 σ-有限集 $E \subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \in L^q(E)$ 使 $\Phi(f) = \int f g_E$ 对一切 $f \in L^p(E)$ 成立，且 $\|g_E\|_q \le \|\Phi\|$。若 $F \supseteq E$ 也 σ-有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\|g_F\|_q \ge \|g_E\|_q$。令
+**Step 3：$\mu$ 任意（此时 $p > 1$，故 $q < \infty$）。** 对每个 $\sigma$有限集 $E \subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \in L^q(E)$ 使 $\Phi(f) = \int f g_E$ 对一切 $f \in L^p(E)$ 成立，且 $\|g_E\|_q \le \|\Phi\|$。若 $F \supseteq E$ 也 $\sigma$有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\|g_F\|_q \ge \|g_E\|_q$。令
 
 $$M := \sup \{\, \|g_E\|_q : E \text{ 是 }\sigma\text{-有限集} \,\} \le \|\Phi\|$$
 
-取 $\{E_n\}$ 使 $\|g_{E_n}\|_q \to M$，令 $F = \bigcup_n E_n$（仍 σ-有限）。则 $\|g_F\|_q \ge \|g_{E_n}\|_q$ 对一切 $n$ 成立，故 $\|g_F\|_q = M$。
+取 $\{E_n\}$ 使 $\|g_{E_n}\|_q \to M$，令 $F = \bigcup_n E_n$（仍 $\sigma$有限）。则 $\|g_F\|_q \ge \|g_{E_n}\|_q$ 对一切 $n$ 成立，故 $\|g_F\|_q = M$。
 
-**$g_F$ 已经是我们要的那个 $g$**：设 $A \supseteq F$ σ-有限，则
+**$g_F$ 已经是我们要的那个 $g$**：设 $A \supseteq F$ $\sigma$有限，则
 
 $$\int |g_F|^q + \int |g_{A \setminus F}|^q = \int |g_A|^q \le M^q = \int |g_F|^q$$
 
-故 $g_{A \setminus F} = 0$，即 $g_A = g_F$ a.e.。而对 $f \in L^p$，集合 $A := F \cup \{f \ne 0\}$ 是 σ-有限的，于是 $\Phi(f) = \int f g_A = \int f g_F$。取 $g = g_F$ 即可。∎
+故 $g_{A \setminus F} = 0$，即 $g_A = g_F$ a.e.。而对 $f \in L^p$，集合 $A := F \cup \{f \ne 0\}$ 是 $\sigma$有限的，于是 $\Phi(f) = \int f g_A = \int f g_F$。取 $g = g_F$ 即可。∎
 
 > ⭐ Step 1 的核心思想：**把 $L^p$ 上的泛函限制在「特征函数」上，就得到一个测度**，再用 Radon–Nikodym 把测度变成函数。
 
@@ -5710,7 +5708,7 @@ Hölder 不等式两边都是 L^p 范数。
 
 #### 定义引用：「共轭指数」→ Hölder 不等式　`def-link.conjugate-holder`
 
-陈述里那个 1/p + 1/q = 1 就是共轭指数的定义。
+陈述里那个 $1/p + 1/q = 1$ 就是共轭指数的定义。
 
 #### 定义引用：「L^p 范数」→ Minkowski 不等式　`def-link.lp-minkowski`
 
@@ -5722,27 +5720,27 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 #### 定义引用：「本性上界与 L^∞」→ L^∞ 的性质　`def-link.esssup-linf`
 
-整条定理都是在处理 ‖·‖_∞。
+整条定理都是在处理 $‖\cdot ‖_\infty$。
 
 #### 定义引用：「对偶配对 φ_g」→ ‖g‖_q = ‖φ_g‖　`def-link.duality-holder`
 
-命题算的就是 φ_g 的算子范数。
+命题算的就是 $\varphi _g$ 的算子范数。
 
 #### 定义引用：「共轭指数」→ ‖g‖_q = ‖φ_g‖　`def-link.conjugate-duality`
 
-前提是 p、q 共轭。
+前提是 $p$、$q$ 共轭。
 
 #### 定义引用：「对偶配对 φ_g」→ 有界 ⟹ g ∈ L^q　`def-link.duality-bounded`
 
-这条命题说的正是「配对 ∫fg 有界」把 g 逼进 L^q。
+这条命题说的正是「配对 $\int fg$ 有界」把 $g$ 逼进 L^q。
 
 #### 定义引用：「共轭指数」→ (L^p)* ≅ L^q　`def-link.conjugate-riesz`
 
-结论那句话里「q 是共轭指数」。
+结论那句话里「$q$ 是共轭指数」。
 
 #### 定义引用：「对偶配对 φ_g」→ (L^p)* ≅ L^q　`def-link.duality-riesz`
 
-定理说 g ↦ φ_g 是等距同构。
+定理说 $g \mapsto \varphi _g$ 是等距同构。
 
 #### 定义引用：「L^p 范数」→ L^p 自反　`def-link.lp-reflexive`
 
@@ -5750,19 +5748,19 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
-分离公理模式给出的 B = { x ∈ A : φ(x, p) } 恰好是 A 的一个**子集**——"只从 A 里挑元素"正是 ⊆ 的语义。
+分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
 
 #### 定义引用：「子集」→ 幂集公理　`def-link.power-subset`
 
-幂集公理的陈述里直接出现了子集符号：x ∈ 𝒫(A) ⟺ x ⊆ A。
+幂集公理的陈述里直接出现了子集符号：$x \in \mathcal{P}(A) \iff x \subseteq A$。
 
 #### 定义引用：「子集」→ 有限特征　`def-link.finchar-subset`
 
-「X 的每个**有限子集**都属于 𝒜」——有限特征是靠子集概念说出来的。
+「$X$ 的每个**有限子集**都属于 $\mathcal{A}$」——有限特征是靠子集概念说出来的。
 
 #### 定义引用：「有序对」→ 配对公理　`def-link.pair-pairing`
 
-方向相反的一条：有序对 (a, b) = {{a}, {a, b}} 的**构造**要用到配对公理才成为集合。
+方向相反的一条：有序对 $(a, b) = \{\{a\}, \{a, b\}\}$ 的**构造**要用到配对公理才成为集合。
 
 #### 定义引用：「有序对」→ 关系与函数　`def-link.rel-pair`
 
@@ -5770,7 +5768,7 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 #### 定义引用：「有序对」→ 笛卡尔积存在　`def-link.product-pair`
 
-A × B = { (a, b) : a ∈ A, b ∈ B } 中的元素就是有序对。
+$A \times B = \{ (a, b) : a \in A, b \in B \}$ 中的元素就是有序对。
 
 #### 定义引用：「关系与函数」→ 选择函数　`def-link.choicefn-rel`
 
@@ -5778,15 +5776,15 @@ A × B = { (a, b) : a ∈ A, b ∈ B } 中的元素就是有序对。
 
 #### 定义引用：「选择函数」→ 选择公理　`def-link.ac-choicefn`
 
-选择公理的陈述直接使用了「选择函数」这个词：每个 ∅ ∉ F 的集合族都有选择函数。
+选择公理的陈述直接使用了「选择函数」这个词：每个 $\emptyset \notin F$ 的集合族都有选择函数。
 
 #### 定义引用：「偏序集」→ 链　`def-link.chain-poset`
 
-链是偏序集的子集：定义里用到了偏序 ⪯ 与可比性。
+链是偏序集的子集：定义里用到了偏序 $\preceq$ 与可比性。
 
 #### 定义引用：「偏序集」→ 上界与极大元　`def-link.bound-poset`
 
-上界、极大元、最大元都是相对于一个偏序集 (P, ⪯) 而言的。
+上界、极大元、最大元都是相对于一个偏序集 $(P, \preceq )$ 而言的。
 
 #### 定义引用：「偏序集」→ 良序集　`def-link.wellorder-poset`
 
@@ -5798,15 +5796,15 @@ A × B = { (a, b) : a ∈ A, b ∈ B } 中的元素就是有序对。
 
 #### 定义引用：「链」→ 有限特征　`def-link.finchar-chain`
 
-「X 是链 ⟺ X 的每个有限子集是链」——这是链族具有有限特征的原因，也是 Tukey ⟹ Hausdorff 的全部关键。
+「$X$ 是链 $\iff X$ 的每个有限子集是链」——这是链族具有有限特征的原因，也是 $Tukey \implies Hausdorff$ 的全部关键。
 
 #### 定义引用：「偏序集」→ 佐恩引理　`def-link.zorn-poset`
 
-佐恩引理是**关于偏序集**的命题：前提与结论都离不开 ⪯ 与上界。
+佐恩引理是**关于偏序集**的命题：前提与结论都离不开 $\preceq$ 与上界。
 
 #### 定义引用：「链」→ 佐恩引理　`def-link.zorn-chain`
 
-「P 的每个链都有上界」是佐恩引理的核心条件。
+「$P$ 的每个链都有上界」是佐恩引理的核心条件。
 
 #### 定义引用：「上界与极大元」→ 佐恩引理　`def-link.zorn-bound`
 
@@ -5814,7 +5812,7 @@ A × B = { (a, b) : a ∈ A, b ∈ B } 中的元素就是有序对。
 
 #### 定义引用：「偏序集」→ Hausdorff 极大原理　`def-link.hausdorff-poset`
 
-Hausdorff 极大原理陈述在偏序集 (P, ⪯) 上。
+Hausdorff 极大原理陈述在偏序集 $(P, \preceq )$ 上。
 
 #### 定义引用：「链」→ Hausdorff 极大原理　`def-link.hausdorff-chain`
 
@@ -5841,12 +5839,12 @@ Tukey 引理的唯一前提就是「该集合族具有有限特征」。
 
 这两个证明的骨架**一模一样**，只是塞进去的东西不同：
 
-**ω 的构造**：先用幂集公理做出 𝒫(I)；再从里面**筛出**所有归纳子集，取交。
+**$\omega$ 的构造**：先用幂集公理做出 $\mathcal{P}(I)$；再从里面**筛出**所有归纳子集，取交。
 
-**A × B 的构造**：先用幂集公理做出 𝒫(𝒫(A ∪ B))；再从里面**筛出**那些形如 (a,b) 的元素。
+**$A \times B$ 的构造**：先用幂集公理做出 $\mathcal{P}(\mathcal{P}(A \cup B))$；再从里面**筛出**那些形如 (a,b) 的元素。
 
 **共同的招**：集合论里「我想造一个由某种东西组成的集合」时，
-永远不能直接写 `{ x : φ(x) }`（那是罗素悖论）。正确的姿势是两步——
+永远不能直接写 `$\{ x : \varphi (x) \}$`（那是罗素悖论）。正确的姿势是两步——
 **先找一个确定足够大的容器，再用分离公理模式从里面挑**。
 
 💡 看到「想造一个集合但不知道怎么下手」时，回来想想这两步。
@@ -5859,7 +5857,7 @@ Tukey 引理的唯一前提就是「该集合族具有有限特征」。
 **良序**（`def.wellorder`）：要求「每个非空子集都有**最小元**」。
 有了最小元，就能做超限归纳、超限递归 —— 把「一步」规范化，无穷就被结构化了。
 
-**有限特征**（`def.finchar`）：要求「整体属于 𝒜 ⟺ 每个**有限**子集都属于 𝒜」。
+**有限特征**（`def.finchar`）：要求「整体属于 $\mathcal{A} \iff$ 每个**有限**子集都属于 $\mathcal{A}$」。
 于是验证一个无穷对象，只需要逐个检查它的有限片段 —— 无穷被压缩成有限。
 
 **共同的招**：都不去正面描述无穷，而是找一个**有限的抓手**
@@ -5872,8 +5870,8 @@ Tukey 引理的唯一前提就是「该集合族具有有限特征」。
 
 两者都不回答「这个集合里**有什么**」，只回答「**怎么判断**一个东西在不在里面」。
 
-- 分离公理模式：`x ∈ B ⟺ (x ∈ A ∧ φ(x))` —— 给的是**判定条件**，不是元素清单。
-- 有限特征：`X ∈ 𝒜 ⟺ X 的每个有限子集属于 𝒜` —— 同样是判定条件。
+- 分离公理模式：`$x \in B \iff (x \in A \wedge \varphi (x))$` —— 给的是**判定条件**，不是元素清单。
+- 有限特征：`$X \in \mathcal{A} \iff X$ 的每个有限子集属于 $\mathcal{A}$` —— 同样是判定条件。
 
 **为什么这个思路重要**：集合常常是无穷的，没法列举；
 但只要给出判定条件，「这个元素属不属于」就成了一个可回答的问题。
@@ -5889,13 +5887,13 @@ Tukey 引理的唯一前提就是「该集合族具有有限特征」。
 它们是「抽象工具」和「具体落地」的关系。
 
 线性无关性恰好是有限特征的：
-「S 线性无关 ⟺ S 的每个**有限**子集线性无关」——
+「$S$ 线性无关 $\iff S$ 的每个**有限**子集线性无关」——
 这就是 `def.finchar` 的定义，一字不差。
 
 **所以「每个向量空间有基」的证明里，那个「链的并仍线性无关」的关键一步，
 本质上是在验证有限特征在链条下保持。** Tukey 引理正是为此而生的。
 
-💡 这条边是「跨星团」的：序理论 ↔ 抽象代数。
+💡 这条边是「跨星团」的：序理论 $\leftrightarrow$ 抽象代数。
 它不提供新的定理，但它告诉你**两块内容为什么长得像**。
 
 ---
