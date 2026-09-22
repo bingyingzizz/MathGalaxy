@@ -38,3 +38,8 @@ src/data/local/
 # 站点发布暂存目录（属于另一个仓库，不进本仓库）
 dist-site/
 
+# agent 之间留的临时通知 —— 不进 git
+STOP-*
+*-STOP.md
+
+
