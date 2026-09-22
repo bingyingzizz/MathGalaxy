@@ -177,7 +177,9 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ, μ) 是测度空间。令',
         '',
-        '$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}，　\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}，F \\subseteq N 对某个 N \\in \\mathcal{N} \\}$$',
+        '$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}$$',
+        '',
+        '$$\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M},\\ F \\subseteq N,\\ N \\in \\mathcal{N} \\}$$',
         '',
         '则',
         '',

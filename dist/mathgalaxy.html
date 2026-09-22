@@ -886,6 +886,17 @@ window.addEventListener('error', function (e) {
     return String(text || '')
       .replace(/\$\$[\s\S]*?\$\$/g, ' ')
       .replace(/\$[^$\n]*\$/g, ' ')
+      // 标记语法要剥干净 —— 这里是纯文本预览（搜索行、证据链摘要），
+      // 漏了这一步页面上就会直接显示 ** 和 ## 的字面量。
+      // 与 inlineMd 同一套，但这里允许夹一个换行：md() 会把段内换行
+      // 折成空格（para.join(' ')），plain() 拿到的是原文，不放过就会漏 **。
+      // 只放单个 \n，空行（段落断开）仍然不许跨。
+      .replace(/\*\*((?:[^*\n]|\n(?!\n)|\*(?!\*))+?)\*\*/g, '$1')
+      .replace(/\*([^*\n]+)\*/g, '$1')
+      .replace(/`([^`\n]*)`/g, '$1')
+      .replace(/^[ \t]{0,3}#{1,6}[ \t]*/gm, ' ')
+      .replace(/^[ \t]{0,3}>[ \t]?/gm, ' ')
+      .replace(/^[ \t]{0,3}[-*+][ \t]+/gm, ' ')
       .replace(/\\[a-zA-Z]+\*?/g, ' ')
       .replace(/[{}\\]/g, ' ')
       .replace(/\s+/g, ' ')
@@ -5867,7 +5878,9 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ, μ) 是测度空间。令',
         '',
-        '$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}，　\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}，F \\subseteq N 对某个 N \\in \\mathcal{N} \\}$$',
+        '$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}$$',
+        '',
+        '$$\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M},\\ F \\subseteq N,\\ N \\in \\mathcal{N} \\}$$',
         '',
         '则',
         '',

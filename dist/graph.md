@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:05:56.578Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:08:17.426Z
 > 6 星系 / 13 星团 / 180 节点 / 213 连线（强边 209，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
@@ -1009,7 +1009,9 @@ $$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \
 
 设 (X, ℳ, μ) 是测度空间。令
 
-$$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}，　\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M}，F \subseteq N 对某个 N \in \mathcal{N} \}$$
+$$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}$$
+
+$$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M},\ F \subseteq N,\ N \in \mathcal{N} \}$$
 
 则
 
