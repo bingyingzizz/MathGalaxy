@@ -70,7 +70,7 @@
     /* 本帧各层的可见度（0~1），随缩放变化，由 computeLod() 填 */
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
-      nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0
+      nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0, trunkEdge: 0, trunkDim: 1
     };
 
     /* ------------------------------------------------------------------
@@ -117,6 +117,12 @@
       // 主干的名字更早出现：缩小时屏幕上剩下的就是「学习主线」
       lodA.trunkName = smoothstep(tTrunk[0], tTrunk[1], k);
       lodA.nodeEdge = smoothstep(tEdge[0], tEdge[1], k);
+      // 主干内部的边：缩小时先于其它连线出现 —— 全图上也看得见「主线」
+      var tSpine = thr(L.trunkEdgeIn);
+      lodA.trunkEdge = smoothstep(tSpine[0], tSpine[1], k);
+      // 全图时把「不在主干上」的点压暗 → 主线才浮得出来（放大后恢复原样）
+      var tDim = thr(L.trunkDimIn);
+      lodA.trunkDim = 1 - L.trunkDimMax * (1 - smoothstep(tDim[0], tDim[1], k));
       // 星团名：放大到看得见节点名时就退场，避免和节点名打架
       var cNameIn = smoothstep(tCIn[0], tCIn[1], k);
       var cNameOut = smoothstep(tCOut[0], tCOut[1], k);
@@ -315,6 +321,21 @@
       return !!adj && adj.indexOf(id) >= 0;
     }
 
+    /** 这条边的两端是不是都在主干上（= 学习主线的骨架）。结果缓存在边上。 */
+    function isSpine(e) {
+      if (e._spine == null) {
+        var ok = !GU.isWeak(e) && GU.edgeNodes(e).length > 0;
+        if (ok) {
+          GU.edgeNodes(e).forEach(function (id) {
+            var n = view.graph.byId[id];
+            if (!n || !n.trunk) ok = false;
+          });
+        }
+        e._spine = ok;
+      }
+      return e._spine;
+    }
+
     function edgeById(id) {
       for (var i = 0; i < view.visible.length; i++) if (view.visible[i].id === id) return view.visible[i];
       return null;
@@ -478,7 +499,9 @@
       list.forEach(function (g) {
         var e = g.edge;
         var style = T.edgeStyles[e.kind];
-        var a = alphaForEdge(e) * lodA.nodeEdge;
+        var spine = isSpine(e);
+        // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
+        var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
         if (a <= 0.02) return;
 
         var active = isEdgeActive(g);
@@ -486,6 +509,10 @@
           : e.kind === 'equivalence' ? C.edge.equivalenceWidth
             : e.kind === 'analogy' ? T.edgeStyles.analogy.width
               : C.edge.definitionWidth) * (active ? 1.85 : 1);
+
+        // 全图尺度：主干画成一条低调的暖色细线，不抢云雾和装置名
+        var spineOnly = spine && lodA.nodeEdge < 0.9;
+        if (spineOnly) { a *= 0.55 + 0.45 * lodA.nodeEdge; w = 1.25; }
 
         if (e.kind === 'definition' && !C.showDefinitionLines) return;
 
@@ -504,7 +531,9 @@
         ctx.lineWidth = w;
         if (isWeak) ctx.setLineDash(C.analogy.dash);
 
-        if (e.kind === 'definition' || e.kind === 'analogy') {
+        if (spineOnly) {
+          ctx.strokeStyle = U.rgba(T.spineColor || 'B4661A', a);
+        } else if (e.kind === 'definition' || e.kind === 'analogy') {
           var alpha = (style.alpha != null ? style.alpha : 1) * a;
           ctx.strokeStyle = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
         } else {
@@ -575,7 +604,7 @@
       if (!nodeOk(n.id)) return;                 // 被藏起来的点：不画（连线也已一并去掉）
       var p = screenOf(n);
       var r = nodeRadius(n);
-      var a = alphaForNode(n.id) * lodA.nodeDot;
+      var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
       if (a <= 0.02) return;
 
       var st = MG.typeStyle(n.type);
