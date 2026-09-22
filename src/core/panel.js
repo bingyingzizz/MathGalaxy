@@ -61,7 +61,7 @@
 
     function nodeRow(n, prefix, keyword) {
       var st = MG.typeStyle(n.type);
-      var desc = U.plain(n.statement) || U.plain(n.notes) || n.title;
+      var desc = U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title);
       return '<div class="pn-link" data-kind="node" data-id="' + n.id + '">' +
         '<span class="dot" style="background:' + st.color + '"></span>' +
         (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
@@ -83,7 +83,7 @@
       return '<div class="pn-link" data-kind="edge" data-id="' + e.id + '">' +
         '<span class="dot" style="background:' + edgeDot(e) + '"></span>' +
         (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
-        '<span><span class="nm">' + U.escapeHtml(U.truncate(head, 44)) + '</span>' +
+        '<span><span class="nm">' + U.titleHtml(U.truncate(head, 44)) + '</span>' +
         '<div class="ds">' + arrow + ' ' + U.escapeHtml(name) +
         (snippet ? ' · ' + U.escapeHtml(U.truncate(snippet, 48)) : '') + '</div></span>' +
         '</div>';
@@ -127,7 +127,7 @@
       var g = view.graph;
       var html = '';
       html += kindBadge(n.type);
-      html += '<h1 class="pn-h1">' + U.escapeHtml(n.title) + '</h1>';
+      html += '<h1 class="pn-h1">' + U.titleHtml(n.title) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(n.id) + '</div>';
       html += regionChips(n);
 
@@ -191,7 +191,7 @@
 
       html += '<span class="pn-kind" style="background:' + color + '">' +
         '<span class="dot"></span>' + U.escapeHtml(name) + '</span>';
-      html += '<h1 class="pn-h1">' + U.escapeHtml(e.title || shortLabel(e, 120)) + '</h1>';
+      html += '<h1 class="pn-h1">' + U.titleHtml(e.title || shortLabel(e, 120)) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(e.id) + '</div>';
 
       /* 推导图式 */
@@ -238,7 +238,7 @@
         html += section('为什么等价', steps.map(function (p, i) {
           return '<div class="pn-step">' +
             '<div class="pn-step-title"><span class="badge">' + (p.tag || (i + 1)) + '</span>' +
-            U.escapeHtml(p.label || '') + '</div>' +
+            U.titleHtml(p.label || '') + '</div>' +
             '<div class="pn-body">' + U.md(p.text || '') + '</div></div>';
         }).join(''));
       } else if (e.proof) {

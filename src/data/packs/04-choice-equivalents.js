@@ -121,7 +121,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \\implies$ 良序定理」「$AC \\implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。',
-        '**证明思路**（全在 ZF 内）：设 𝒲 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $𝒲 \\subseteq \\mathcal{P}(X \\times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\\alpha$**。若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。故 $\\alpha$ 不能单射进 $X$。',
+        '**证明思路**（全在 ZF 内）：设 $\\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\\mathcal{W} \\subseteq \\mathcal{P}(X \\times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\\alpha$**。若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。故 $\\alpha$ 不能单射进 $X$。',
         '**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\\aleph (X) \\to X$ 的单射，与 $\\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\\alpha < \\aleph (X)$ 处停止。',
         '**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。'
       ].join('\n\n'),
@@ -218,13 +218,13 @@ window.MG = window.MG || {};
             '',
             '$(W_{1}, \\preceq _{1}) \\le (W_{2}, \\preceq _{2}) \\iff W_{1} \\subseteq W_{2}$，$\\preceq _{1} = \\preceq _{2}|W_{1}$，且 $W_{1}$ 是 $(W_{2}, \\preceq _{2})$ 的一个前段。',
             '',
-            '$1. (𝒲, \\le )$ 是偏序集（三条性质直接验证）。',
+            '1. $(\\mathcal{W}, \\le )$ 是偏序集（三条性质直接验证）。',
             '',
-            '2. **每个链有上界**：设 $\\mathcal{D} \\subseteq 𝒲$ 是链。令 $W$* $= \\bigcup \\{ W : (W, \\preceq ) \\in \\mathcal{D} \\}$，在 $W$* 上定义',
+            '2. **每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{W}$ 是链。令 $W^{*} = \\bigcup \\{ W : (W, \\preceq ) \\in \\mathcal{D} \\}$，在 $W^{*}$ 上定义',
             '',
             '$$x \\preceq_* y \\iff\\text{ 存在} (W, \\preceq_W) \\in \\mathcal{D}\\text{ 使} x, y \\in W\\text{ 且} x \\preceq_W y$$',
             '',
-            '因 $\\mathcal{D}$ 是链，这些良序彼此兼容，$\\preceq _$* 是 $W$* 上的良序，且 (W*$\\preceq _$*$) \\in 𝒲$ 是 $\\mathcal{D}$ 的上界。',
+            '因 $\\mathcal{D}$ 是链，这些良序彼此兼容，$\\preceq_*$ 是 $W^{*}$ 上的良序，且 $(W^{*}, \\preceq_*)\\in \\mathcal{W}$ 是 $\\mathcal{D}$ 的上界。',
             '',
             '3. 由佐恩引理，取极大元 $(W, \\preceq )$。',
             '',
@@ -292,7 +292,7 @@ window.MG = window.MG || {};
             '',
             '（最后一个 $\\Longleftarrow$ 方向：任取 $x, y \\in X$，则 {x, y} 是 $X$ 的有限子集，属于 $\\mathcal{C}$，故 $x$ 与 $y$ 可比。）',
             '',
-            '$2. \\mathcal{C}$ 非空（$\\emptyset$ 是链）。由 Tukey 引理，$\\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。',
+            '2. $\\mathcal{C}$ 非空（$\\emptyset$ 是链）。由 Tukey 引理，$\\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。',
             '',
             '3. 若要包含给定的 $C_{0}$：注意 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。对 $\\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。∎'
           ].join('\n')

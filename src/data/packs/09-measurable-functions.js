@@ -42,14 +42,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '可测', '生成元', '复合'],
       statement: [
-        '**(1) 复合**：若 $$f : X \\to Y$$ 是 $(\\mathcal{M}, \\mathcal{N})$可测、$$g : Y \\to Z$$ 是 $(\\mathcal{N}, 𝒪)$可测，则 $$g \\circ  f$$ 是 $(\\mathcal{M}, 𝒪)$可测。',
+        '**(1) 复合**：若 $$f : X \\to Y$$ 是 $(\\mathcal{M}, \\mathcal{N})$可测、$$g : Y \\to Z$$ 是 $(\\mathcal{N}, \\mathcal{O})$可测，则 $$g \\circ  f$$ 是 $(\\mathcal{M}, \\mathcal{O})$可测。',
         '',
         '**(2) 只需验证生成元**：若 $\\mathcal{N} = \\mathcal{M}(\\mathcal{E})$，则',
         '',
         '$$f : X \\to Y\\text{ 可测} \\iff f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{E}$$'
       ].join('\n'),
       notes: [
-        '(1)：对 $E \\in 𝒪$ 有 $$(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。',
+        '(1)：对 $E \\in \\mathcal{O}$ 有 $$(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。',
         '(2) 的 $(\\Longleftarrow )$：令 $\\mathcal{C} = \\{ E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\}$。因为原像保持并、交、补，**$\\mathcal{C}$ 是一个 $\\sigma$代数**；题设说 $\\mathcal{E} \\subseteq \\mathcal{C}$，于是 $\\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即所有可测集的原像都可测。',
         '(2) 是整段里最常用的判定工具：要证 $f$ 可测，只需在一小族生成元上验证 —— 比如 $\\mathbb{R}$ 值函数只需验证 $$f^{-1}((a, \\infty))$$ 可测。'
       ].join('\n\n'),
@@ -139,7 +139,7 @@ window.MG = window.MG || {};
         '- **极限**：若 $$lim_j f_j$$ 逐点存在，则它是可测的。'
       ].join('\n'),
       notes: [
-        '$$sup_j f_j$$ 的关键：$$(sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$$ 是可数并，故可测。（取 $$(a, +\\infty]$$ 这族生成元就够了。）',
+        '$sup_j f_j$ 的关键：$$(sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$$ 是可数并，故可测。（取 $$(a, +\\infty]$$ 这族生成元就够了。）',
         'max 是 sup 的有限特例（把不够的地方补成 $$-\\infty$$）。',
         '极限：$$lim inf_j f_j = sup_n \\inf_{j\\ge n} f_j$$，而 inf 可以由 sup 取负得到（$$inf f_j = -\\sup_{-f_j}$$），所以极限是可测函数经过可数次 sup/inf 得到的。',
         '和与积：把 $$sup_j f_j$$ 的做法搬到 $$\\{f+g > a\\}$$ 上（用有理数把 $$f > q > a - g$$ 拆开），或先对简单函数验证再逼近。',

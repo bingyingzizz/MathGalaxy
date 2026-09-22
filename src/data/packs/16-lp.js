@@ -186,7 +186,7 @@ window.MG = window.MG || {};
       label: '本性上界与 L^∞',
       title: '本性上界 $\\|f\\|_\\infty$ 与空间 $L^\\infty$',
       regions: ['analysis'],
-      tags: ['定义', '$L\\infty$', '本性上界'],
+      tags: ['定义', 'L∞', '本性上界'],
       statement: [
         '定义',
         '',
@@ -211,7 +211,7 @@ window.MG = window.MG || {};
       label: 'L^∞ 的性质',
       title: '定理：$L^\\infty$ 的五条基本性质',
       regions: ['analysis'],
-      tags: ['定理', '$L\\infty$', 'Banach', '一致收敛'],
+      tags: ['定理', 'L∞', 'Banach', '一致收敛'],
       statement: [
         '**(a)** $\\|fg\\|_\\infty \\le \\|f\\|_\\infty \\|g\\|_\\infty$。若 $f \\in L^1$、$g \\in L^\\infty$，则',
         '',
@@ -732,7 +732,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.essential-sup',
       usedBy: 'thm.linf-properties',
-      note: '整条定理都是在处理 $‖\\cdot ‖_\\infty$。'
+      note: '整条定理都是在处理 $\\|\\cdot \\|_\\infty$。'
     },
     {
       id: 'def-link.duality-holder',

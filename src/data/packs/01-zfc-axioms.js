@@ -166,7 +166,7 @@ window.MG = window.MG || {};
       label: '正则公理',
       title: '正则公理 / 基础公理（Axiom of Foundation）',
       regions: ['set-theory'],
-      tags: ['ZFC', '良基', '$\\in$链'],
+      tags: ['ZFC', '良基', '∈-链'],
       statement: [
         '每个非空集合都有「$\\in$极小元」：',
         '',

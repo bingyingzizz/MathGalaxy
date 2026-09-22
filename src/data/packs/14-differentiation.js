@@ -235,7 +235,7 @@ window.MG = window.MG || {};
       notes: [
         '⚠ 注意定义里积的是 $$|f(y) - f(x)|$$（与 $f$ 在该点的值比较），不是 $$|f(y)|$$。',
         '这么定义是为了让「可缩族」版本（下一条定理）能直接用 —— 那里需要的是**局部一致逼近**，而不是简单的平均值收敛。',
-        '$$x \\in L_f$$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个点附近，$f$ 的振荡在平均意义下趋于 0。'
+        '$x \\in L_f$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个点附近，$f$ 的振荡在平均意义下趋于 0。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.4']
     },
@@ -276,7 +276,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '可缩族'],
       statement: [
-        '$$\\mathbb{R}^n$$ 的一族 Borel 子集 $$\\{E_r\\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当',
+        '$\\mathbb{R}^n$ 的一族 Borel 子集 $$\\{E_r\\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当',
         '',
         '$\\cdot$ $$E_r \\subseteq B(r, x)$$ 对每个 $r$ 成立；',
         '$\\cdot$ 存在 $$\\alpha > 0$$，使 $$m(E_r) > \\alpha\\cdot m(B(r, x))$$ 对一切 $r$ 成立。'
@@ -334,7 +334,7 @@ window.MG = window.MG || {};
       notes: [
         '第二条是「从外面用开集逼近」。在 $\\mathbb{R}^{n}$ 上它其实由第一条推出（笔记里专门注了一句 "actually implied by above"）。',
         '**每个正则测度都是 $\\sigma$有限的**（用紧集的可数覆盖）。',
-        '$$f \\in L^+(\\mathbb{R}^n)$$ 时，$$f\\cdot dm$$ 正则 $\\iff$ $$f \\in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。'
+        '$f \\in L^+(\\mathbb{R}^n)$ 时，$$f\\cdot dm$$ 正则 $\\iff$ $$f \\in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §7.2']
     },

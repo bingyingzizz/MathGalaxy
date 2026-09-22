@@ -70,7 +70,7 @@ window.MG = window.MG || {};
       label: 'σ-环',
       title: 'σ-环（σ-Ring）',
       regions: ['analysis'],
-      tags: ['定义', '$\\sigma$环', '集合族'],
+      tags: ['定义', 'σ-环', '集合族'],
       statement: [
         '$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是 $X$ 上的一个 **$\\sigma$环**，当且仅当把「有限」都换成「可数」之后仍封闭：',
         '',
@@ -95,7 +95,7 @@ window.MG = window.MG || {};
       label: 'σ-代数',
       title: 'σ-代数（σ-Algebra）',
       regions: ['analysis'],
-      tags: ['定义', '$\\sigma$代数', '可测空间', '测度论'],
+      tags: ['定义', 'σ-代数', '可测空间', '测度论'],
       statement: [
         '设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个 **$\\sigma$代数**，当且仅当它同时满足三条：',
         '',
@@ -175,7 +175,7 @@ window.MG = window.MG || {};
       label: '环 → σ-环 的判据',
       title: '定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭',
       regions: ['analysis'],
-      tags: ['定理', '环', '单调类', '$\\sigma$环'],
+      tags: ['定理', '环', '单调类', 'σ-环'],
       statement: [
         '设 $\\mathfrak{A}$ 是一个**环**。则下列三条等价：',
         '',
@@ -195,7 +195,7 @@ window.MG = window.MG || {};
       label: '生成的 σ-代数',
       title: '由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)',
       regions: ['analysis'],
-      tags: ['定义', '生成', '$\\sigma$代数', '单调类'],
+      tags: ['定义', '生成', 'σ-代数', '单调类'],
       statement: [
         '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。定义',
         '',

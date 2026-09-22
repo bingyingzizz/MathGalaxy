@@ -96,7 +96,7 @@ window.MG = window.MG || {};
       label: '有限 / σ-有限 / 半有限',
       title: '测度空间的几种「大小」：有限、σ-有限、半有限',
       regions: ['analysis'],
-      tags: ['定义', '$\\sigma$有限', '半有限'],
+      tags: ['定义', 'σ-有限', '半有限'],
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间。',
         '',
@@ -107,7 +107,7 @@ window.MG = window.MG || {};
         '$$\\forall E \\in \\mathcal{M}, \\mu(E) = \\infty \\implies \\exists F \\subseteq E, F \\in \\mathcal{M}, 0 < \\mu(F) < \\infty$$'
       ].join('\n'),
       notes: [
-        '$$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$$，两个箭头都不可逆。',
+        '$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$，两个箭头都不可逆。',
         '$\\sigma$有限是**最常用的技术假设**：$\\mathbb{R}$ 上的 Lebesgue 测度 $\\sigma$有限（$\\mathbb{R} = \\bigcup _{n} [-n, n]$），而计数测度在 $\\mathbb{R}$ 上不是 $\\sigma$有限的。很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\\sigma$有限。',
         '半有限比 $\\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。'
       ].join('\n\n'),
@@ -183,7 +183,7 @@ window.MG = window.MG || {};
         '',
         '则',
         '',
-        '$1. \\bar{\\mathcal{M}}$ 是一个 $\\sigma$代数，且 $\\mathcal{M} \\subseteq \\bar{\\mathcal{M}}$；',
+        '1. $\\bar{\\mathcal{M}}$ 是一个 $\\sigma$代数，且 $\\mathcal{M} \\subseteq \\bar{\\mathcal{M}}$；',
         '2. 令 $$\\bar{\\mu}(E \\cup F) := \\mu(E)$$，它是 $\\bar{\\mathcal{M}}$ 上良定义的测度；',
         '3. $$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是**完备**测度空间，称为 $(X, \\mathcal{M}, \\mu )$ 的**完备化**。'
       ].join('\n'),
@@ -235,7 +235,7 @@ window.MG = window.MG || {};
       notes: [
         '外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。',
         '所以外测度不是测度 —— 它太大了，连 $\\mathcal{P}(X)$ 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。',
-        'Lebesgue 最初构造的就是外测度：$\\mu$*$(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$。'
+        'Lebesgue 最初构造的就是外测度：$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §11', 'Folland, Real Analysis, §1.4']
     },
@@ -253,12 +253,12 @@ window.MG = window.MG || {};
         '',
         '$$\\mu^*(A) := inf \\{ \\sum_{j=1}^{\\infty} \\rho(E_j) : E_j \\in \\mathcal{E}, A \\subseteq \\bigcup_{j=1}^{\\infty} E_j \\}$$',
         '',
-        '（用 $\\mathcal{E}$ 中可数个集合覆盖 $A$，取下确界。）则 $\\mu$\\* 是 $X$ 上的一个**外测度**。'
+        '（用 $\\mathcal{E}$ 中可数个集合覆盖 $A$，取下确界。）则 $\\mu^{*}$ 是 $X$ 上的一个**外测度**。'
       ].join('\n'),
       notes: [
         '这个公式就是「用已知面积的砖块去盖住 $A$，取最省的盖法」—— Lebesgue 外测度正是它的特例（$\\mathcal{E}$ 取开区间，$\\rho$ 取长度）。',
         '为什么要求 $X \\in \\mathcal{E}$：保证 $A \\subseteq X$ 总有覆盖，inf 不是对空集取。',
-        '⚠ 这一步只用到 $\\rho (\\emptyset ) = 0$，**没用到可加性** —— 所以 $\\mu$* 一般并不还原成 $\\rho$。要还原，就得靠 Carathéodory。'
+        '⚠ 这一步只用到 $\\rho (\\emptyset ) = 0$，**没用到可加性** —— 所以 $\\mu^{*}$ 一般并不还原成 $\\rho$。要还原，就得靠 Carathéodory。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §11', 'Folland, Real Analysis, §1.4']
     },
@@ -272,13 +272,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Carathéodory', '可测'],
       statement: [
-        '设 $\\mu$* 是 $X$ 上的外测度。$A \\subseteq X$ 称为 **$\\mu$\\*-可测的**，当且仅当 $A$ 把每个集合都「干净地切成两块」：',
+        '设 $\\mu^{*}$ 是 $X$ 上的外测度。$A \\subseteq X$ 称为 **$\\mu^{*}$-可测的**，当且仅当 $A$ 把每个集合都「干净地切成两块」：',
         '',
         '$$\\mu^*(E) = \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)\\quad  \\forall E \\subseteq X$$'
       ].join('\n'),
       notes: [
-        '因为 $\\mu$* 只有次可加性，永远有 $$\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。',
-        '这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\\mu$* 一个对象，不需要任何拓扑。所以它对任意外测度都能用。',
+        '因为 $\\mu^{*}$ 只有次可加性，永远有 $$\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。',
+        '这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\\mu^{*}$ 一个对象，不需要任何拓扑。所以它对任意外测度都能用。',
         '直观：$A$ 是「可以随便切」的集合。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §11', 'Folland, Real Analysis, Theorem 1.11']
@@ -291,18 +291,18 @@ window.MG = window.MG || {};
       label: 'Carathéodory 定理',
       title: 'Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度',
       regions: ['analysis'],
-      tags: ['定理', 'Carathéodory', '$\\sigma$代数', '完备'],
+      tags: ['定理', 'Carathéodory', 'σ-代数', '完备'],
       statement: [
-        '设 $\\mu$* 是 $X$ 上的外测度，$\\mathcal{M}$ 是全体 $\\mu$\\*-可测集。则',
+        '设 $\\mu^{*}$ 是 $X$ 上的外测度，$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集。则',
         '',
         '1. **$\\mathcal{M}$ 是一个 $\\sigma$代数**；',
-        '2. **$$\\mu^*|_\\mathcal{M}$$ 是 $(X, \\mathcal{M})$ 上的一个测度**（即 $\\mu$* 在 $\\mathcal{M}$ 上真的可加）；',
+        '2. **$$\\mu^*|_\\mathcal{M}$$ 是 $(X, \\mathcal{M})$ 上的一个测度**（即 $\\mu^{*}$ 在 $\\mathcal{M}$ 上真的可加）；',
         '3. 这个测度是**完备**的。'
       ].join('\n'),
       notes: [
         '这是整个测度论构造的枢纽：**外测度不必可加，但它的「可切集合」上就可加了**。',
         '1 的证明是一个冗长的验证（对有限并、补、可数不交并逐一验算），笔记里写「pf. just verify.」。',
-        '3 的完备性来自定义本身：若 $\\mu$*$(A) = 0$ 且 $B \\subseteq A$，则对任意 $E$ 有 $\\mu$*$(E \\cap B) \\le \\mu$*$(B) = 0$ 且 $\\mu$*$(E \\cap B^{c}) \\le \\mu$*(E)，两边一夹就得到 $B$ 满足可测性条件。'
+        '3 的完备性来自定义本身：若 $\\mu^{*}(A) = 0$ 且 $B \\subseteq A$，则对任意 $E$ 有 $\\mu^{*}(E \\cap B) \\le \\mu^{*}(B) = 0$ 且 $\\mu^{*}(E \\cap B^{c}) \\le \\mu^{*}$(E)，两边一夹就得到 $B$ 满足可测性条件。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §11', 'Folland, Real Analysis, Theorem 1.11']
     },
@@ -316,20 +316,20 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'Carathéodory', '扩张'],
       statement: [
-        '设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是**代数**，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的**预测度**，$\\mu$* 是由 $\\mu _{0}$ 诱导的外测度（按上一条命题，取 $\\mathcal{E} = \\mathfrak{A}$、$\\rho = \\mu _{0}$）。则',
+        '设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是**代数**，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的**预测度**，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度（按上一条命题，取 $\\mathcal{E} = \\mathfrak{A}$、$\\rho = \\mu _{0}$）。则',
         '',
         '1. $$\\mu^*|_\\mathfrak{A} = \\mu_0$$',
-        '2. **$\\mathfrak{A}$ 中每个集合都是 $\\mu$\\*-可测的**，因此',
+        '2. **$\\mathfrak{A}$ 中每个集合都是 $\\mu^{*}$-可测的**，因此',
         '',
         '$$\\mathfrak{A} \\subseteq \\mathcal{M}(\\mathfrak{A}) \\subseteq \\mathcal{M}$$',
         '',
-        '（$\\mathcal{M}$ 是全体 $\\mu$\\*-可测集），于是 $\\mu$*$|_\\mathcal{M}$ 是 $\\mu _{0}$ 在 $\\sigma$代数 $\\mathcal{M}(\\mathfrak{A})$ 上的扩张。'
+        '（$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集），于是 $\\mu^{*}|_\\mathcal{M}$ 是 $\\mu _{0}$ 在 $\\sigma$代数 $\\mathcal{M}(\\mathfrak{A})$ 上的扩张。'
       ].join('\n'),
       notes: [
         '这就是「预测度 $\\to$ 外测度 $\\to$ 测度」三步走的收官：**预测度在 $\\sigma$代数的扩张上被完整还原**。',
         '1 的两个方向：$$\\mu^*(A) \\le \\mu_0(A)$$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\\mu _{0}$ 的可数可加性。',
         '2 是技术核心，要在 $\\mathfrak{A}$ 上验证 Carathéodory 的可切性条件。',
-        '笔记里还记了一句：不仅 $\\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\\mathfrak{A}_\\sigma$、$\\mathfrak{A}_\\delta$、$\\mathfrak{A}_\\sigma \\delta$、$\\mathfrak{A}_\\delta \\sigma$ 里的集合也都 $\\mu$\\*-可测 —— 因为 $\\mathcal{M}$ 是 $\\sigma$代数，对这些操作封闭。'
+        '笔记里还记了一句：不仅 $\\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\\mathfrak{A}_\\sigma$、$\\mathfrak{A}_\\delta$、$\\mathfrak{A}_\\sigma \\delta$、$\\mathfrak{A}_\\delta \\sigma$ 里的集合也都 $\\mu^{*}$-可测 —— 因为 $\\mathcal{M}$ 是 $\\sigma$代数，对这些操作封闭。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §12', 'Folland, Real Analysis, Theorem 1.14']
     },
@@ -343,14 +343,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '唯一性', '扩张'],
       statement: [
-        '设 $\\mu _{0}$ 是代数 $\\mathfrak{A}$ 上的预测度，$\\mu := \\mu$*$|_\\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\\nu$ 是 $\\mathcal{M}(\\mathfrak{A})$ 上**另一个**扩张 $\\mu _{0}$ 的测度，则',
+        '设 $\\mu _{0}$ 是代数 $\\mathfrak{A}$ 上的预测度，$\\mu := \\mu^{*}|_\\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\\nu$ 是 $\\mathcal{M}(\\mathfrak{A})$ 上**另一个**扩张 $\\mu _{0}$ 的测度，则',
         '',
         '$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$',
         '',
         '且当 $$\\mu(E) < \\infty$$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $$\\nu = \\mu$$。'
       ].join('\n'),
       notes: [
-        '要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\\mu$* 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu$*。',
+        '要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。',
         '⚠ 不 $\\sigma$有限时唯一性会**失效**：$\\mathbb{R}$ 上取 $\\mathfrak{A} =$ 有限并的半开区间，$\\mu _{0} = Lebesgue$ 长度限制在 $\\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。$\\sigma$有限性正是用来堵住这种漏洞的。',
         '构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 $\\sigma$有限保证唯一**。'
       ].join('\n\n'),
@@ -471,11 +471,11 @@ window.MG = window.MG || {};
         '',
         '**① 定义合理**：$A \\subseteq X$ 且 $X \\in \\mathfrak{A}$，所以总有覆盖，inf 是对非空集合取。',
         '',
-        '**② $\\mu$*$(\\emptyset ) = 0$**：取 $E_{1} = \\emptyset$、$E_{2} = E_{3} = \\cdots = \\emptyset$，则 $\\sum \\mu _{0}(E_{j}) = 0$，故 $0 \\le \\mu$*$(\\emptyset ) \\le 0$。',
+        '**② $\\mu^{*}(\\emptyset ) = 0$**：取 $E_{1} = \\emptyset$、$E_{2} = E_{3} = \\cdots = \\emptyset$，则 $\\sum \\mu _{0}(E_{j}) = 0$，故 $0 \\le \\mu^{*}(\\emptyset ) \\le 0$。',
         '',
-        '**③ 单调**：$A \\subseteq B$ 时，$B$ 的每个覆盖也是 $A$ 的覆盖，故 $A$ 的下确界集合更大，$\\mu$*$(A) \\le \\mu$*(B)。',
+        '**③ 单调**：$A \\subseteq B$ 时，$B$ 的每个覆盖也是 $A$ 的覆盖，故 $A$ 的下确界集合更大，$\\mu^{*}(A) \\le \\mu^{*}$(B)。',
         '',
-        '**④ 可数次可加**：设 $A_{j} \\subseteq X$。若某个 $\\mu$*$(A_{j}) = \\infty$ 则不等式平凡；否则给定 $\\varepsilon > 0$，对每个 $j$ 取 $\\mathfrak{A}$ 中的覆盖 $\\{E_\\{j,k\\}\\}_{k}$ 使',
+        '**④ 可数次可加**：设 $A_{j} \\subseteq X$。若某个 $\\mu^{*}(A_{j}) = \\infty$ 则不等式平凡；否则给定 $\\varepsilon > 0$，对每个 $j$ 取 $\\mathfrak{A}$ 中的覆盖 $\\{E_\\{j,k\\}\\}_{k}$ 使',
         '',
         '$$\\sum_k \\mu_0(E_{j,k}) < \\mu^*(A_j) + (\\varepsilon/2)^j$$',
         '',
@@ -496,13 +496,13 @@ window.MG = window.MG || {};
       target: 'thm.caratheodory',
       title: '外测度 + 可切集 ⟹ σ-代数与完备测度',
       proof: [
-        '设 $\\mu$* 是外测度，$\\mathcal{M} = \\{ A : \\forall E, \\mu$*$(E) = \\mu$*$(E\\cap A) + \\mu$*$(E\\cap A^{c}) \\}$。',
+        '设 $\\mu^{*}$ 是外测度，$\\mathcal{M} = \\{ A : \\forall E, \\mu^{*}(E) = \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c}) \\}$。',
         '',
         '**① $\\mathcal{M}$ 是代数。** 条件关于 $A$ 与 $A^{c}$ 对称，故 $A \\in \\mathcal{M} \\implies A^{c} \\in \\mathcal{M}$；$\\emptyset$ 与 $X$ 显然在 $\\mathcal{M}$ 中。若 $A, B \\in \\mathcal{M}$，要证 $A \\cup B \\in \\mathcal{M}$：对任意 $E$，把 $E$ 依 $A$ 切开、再依 $B$ 切开，',
         '',
         '$$\\mu^*(E) = \\mu^*(E\\cap A) + \\mu^*(E\\cap A^c) = \\mu^*(E\\cap A\\cap B) + \\mu^*(E\\cap A\\cap B^c) + \\mu^*(E\\cap A^c\\cap B) + \\mu^*(E\\cap A^c\\cap B^c)$$',
         '',
-        '而右边前三项合起来 $\\ge \\mu$*$(E\\cap (A\\cup B))$（次可加），最后一项 $= \\mu$*$(E\\cap (A\\cup B)^{c})$。反向不等式由次可加自动成立，故 $A \\cup B \\in \\mathcal{M}$。',
+        '而右边前三项合起来 $\\ge \\mu^{*}(E\\cap (A\\cup B))$（次可加），最后一项 $= \\mu^{*}(E\\cap (A\\cup B)^{c})$。反向不等式由次可加自动成立，故 $A \\cup B \\in \\mathcal{M}$。',
         '',
         '**② $\\mathcal{M}$ 是 $\\sigma$代数。** 设 $A_{j} \\in \\mathcal{M}$ 两两不交，$A = \\bigcup A_{j}$。对任意 $E$ 归纳得到',
         '',
@@ -514,13 +514,13 @@ window.MG = window.MG || {};
         '',
         '故 $A \\in \\mathcal{M}$。结合 ①，$\\mathcal{M}$ 是可数并封闭的代数，即 $\\sigma$代数（可数不交并由 ②，一般可数并再换成不交并）。',
         '',
-        '**③ $\\mu$*$|_\\mathcal{M}$ 可加。** 在 ② 里取 $E = X$、$A$ 换成两两不交的 $A_{j}$，得 $\\mu$*$(\\bigcup A_{j}) = \\sum \\mu$*$(A_{j})$，这正是可数可加；$\\mu$*$(\\emptyset ) = 0$ 由外测度定义给出。',
+        '**③ $\\mu^{*}|_\\mathcal{M}$ 可加。** 在 ② 里取 $E = X$、$A$ 换成两两不交的 $A_{j}$，得 $\\mu^{*}(\\bigcup A_{j}) = \\sum \\mu^{*}(A_{j})$，这正是可数可加；$\\mu^{*}(\\emptyset ) = 0$ 由外测度定义给出。',
         '',
-        '**④ 完备。** 设 $\\mu$*$(A) = 0$，$B \\subseteq A$。对任意 $E$，由单调性与次可加，',
+        '**④ 完备。** 设 $\\mu^{*}(A) = 0$，$B \\subseteq A$。对任意 $E$，由单调性与次可加，',
         '',
         '$$\\mu^*(E) \\ge \\mu^*(E \\cap B^c) \\ge \\mu^*(E) - \\mu^*(E \\cap B) \\ge \\mu^*(E) - \\mu^*(A) = \\mu^*(E)$$',
         '',
-        '故 $\\mu$*$(E) = \\mu$*$(E\\cap B) + \\mu$*$(E\\cap B^{c})$（注意 $\\mu$*$(E\\cap B) \\le \\mu$*$(A) = 0$），即 $B \\in \\mathcal{M}$。故 $\\mu$*$|_\\mathcal{M}$ 完备。∎',
+        '故 $\\mu^{*}(E) = \\mu^{*}(E\\cap B) + \\mu^{*}(E\\cap B^{c})$（注意 $\\mu^{*}(E\\cap B) \\le \\mu^{*}(A) = 0$），即 $B \\in \\mathcal{M}$。故 $\\mu^{*}|_\\mathcal{M}$ 完备。∎',
         '',
         '$>$ 笔记里对这一条写的是「pf. just verify.」—— 确实是纯验证，但要验的东西不少，上面把要点写全了。'
       ].join('\n')
@@ -533,23 +533,23 @@ window.MG = window.MG || {};
       target: 'prop.caratheodory-extension',
       title: 'Carathéodory + 预测度 ⟹ 原代数上的值不变',
       proof: [
-        '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度，$\\mu$* 是由 $\\mu _{0}$ 诱导的外测度，$\\mathcal{M}$ 是全体 $\\mu$*-可测集。',
+        '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度，$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集。',
         '',
-        '**① $\\mu$*$|_\\mathfrak{A} \\le \\mu _{0}$。** 取 $A \\in \\mathfrak{A}$，则 $A \\subseteq A$ 是一个（只含一层的）覆盖，故',
+        '**① $\\mu^{*}|_\\mathfrak{A} \\le \\mu _{0}$。** 取 $A \\in \\mathfrak{A}$，则 $A \\subseteq A$ 是一个（只含一层的）覆盖，故',
         '',
         '$$\\mu^*(A) \\le \\mu_0(A) + 0 + 0 + \\cdots = \\mu_0(A)$$',
         '',
-        '**② $\\mu$*$|_\\mathfrak{A} \\ge \\mu _{0}$。** 设 $\\{E_{j}\\} \\subseteq \\mathfrak{A}$ 是 $A$ 的覆盖。令 $F_{j} = E_{j} \\setminus (E_{1} \\cup \\cdots \\cup E_\\{j-1\\})$，则 $F_{j} \\in \\mathfrak{A}$ 两两不交且 $\\bigcup F_{j} \\supseteq A$、$F_{j} \\subseteq E_{j}$。于是',
+        '**② $\\mu^{*}|_\\mathfrak{A} \\ge \\mu _{0}$。** 设 $\\{E_{j}\\} \\subseteq \\mathfrak{A}$ 是 $A$ 的覆盖。令 $F_{j} = E_{j} \\setminus (E_{1} \\cup \\cdots \\cup E_\\{j-1\\})$，则 $F_{j} \\in \\mathfrak{A}$ 两两不交且 $\\bigcup F_{j} \\supseteq A$、$F_{j} \\subseteq E_{j}$。于是',
         '',
         '$$\\mu_0(A) = \\mu_0( \\bigcup_j (A \\cap F_j) ) = \\sum_j \\mu_0(A \\cap F_j) \\le \\sum_j \\mu_0(F_j) \\le \\sum_j \\mu_0(E_j)$$',
         '',
-        '（第一个等号用 $A$ 是那些不交集合之并；第二个用 $\\mu _{0}$ 可数可加；不等号用单调性。）对所有覆盖取下确界得 $\\mu _{0}(A) \\le \\mu$*(A)。',
+        '（第一个等号用 $A$ 是那些不交集合之并；第二个用 $\\mu _{0}$ 可数可加；不等号用单调性。）对所有覆盖取下确界得 $\\mu _{0}(A) \\le \\mu^{*}$(A)。',
         '',
-        '**③ $\\mathfrak{A} \\subseteq \\mathcal{M}$。** 设 $A \\in \\mathfrak{A}$，$E \\subseteq X$，要证 $\\mu$*$(E) \\ge \\mu$*$(E\\cap A) + \\mu$*$(E\\cap A^{c})$。给定 $\\varepsilon > 0$，取 $\\mathfrak{A}$ 中 $\\{E_{j}\\}$ 覆盖 $E$ 使',
+        '**③ $\\mathfrak{A} \\subseteq \\mathcal{M}$。** 设 $A \\in \\mathfrak{A}$，$E \\subseteq X$，要证 $\\mu^{*}(E) \\ge \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c})$。给定 $\\varepsilon > 0$，取 $\\mathfrak{A}$ 中 $\\{E_{j}\\}$ 覆盖 $E$ 使',
         '',
         '$$\\sum_j \\mu_0(E_j) < \\mu^*(E) + \\varepsilon$$',
         '',
-        '由 ②，$\\mu _{0}(E_{j}) = \\mu$*$(E_{j})$；又 $\\mathfrak{A}$ 是代数，$E_{j} \\cap A$ 与 $E_{j} \\cap A^{c}$ 都在 $\\mathfrak{A}$ 中且不交、并为 $E_{j}$，于是',
+        '由 ②，$\\mu _{0}(E_{j}) = \\mu^{*}(E_{j})$；又 $\\mathfrak{A}$ 是代数，$E_{j} \\cap A$ 与 $E_{j} \\cap A^{c}$ 都在 $\\mathfrak{A}$ 中且不交、并为 $E_{j}$，于是',
         '',
         '$$\\mu^*(E \\cap A) + \\mu^*(E \\cap A^c) \\le \\sum_j \\mu_0(E_j \\cap A) + \\sum_j \\mu_0(E_j \\cap A^c) = \\sum_j \\mu_0(E_j) < \\mu^*(E) + \\varepsilon$$',
         '',
@@ -566,11 +566,11 @@ window.MG = window.MG || {};
       proof: [
         '沿用上一条的记号，设 $\\nu$ 是 $\\mathcal{M}(\\mathfrak{A})$ 上另一个扩张 $\\mu _{0}$ 的测度。',
         '',
-        '**① $\\nu \\le \\mu$*。** 设 $E \\in \\mathcal{M}(\\mathfrak{A})$，$\\{E_{j}\\} \\subseteq \\mathfrak{A}$ 是 $E$ 的覆盖。由 $\\nu$ 的次可加性与 $\\nu |_\\mathfrak{A} = \\mu _{0}$，',
+        '**① $\\nu \\le \\mu^{*}$。** 设 $E \\in \\mathcal{M}(\\mathfrak{A})$，$\\{E_{j}\\} \\subseteq \\mathfrak{A}$ 是 $E$ 的覆盖。由 $\\nu$ 的次可加性与 $\\nu |_\\mathfrak{A} = \\mu _{0}$，',
         '',
         '$$\\nu(E) \\le \\sum_j \\nu(E_j) = \\sum_j \\mu_0(E_j)$$',
         '',
-        '对所有这样的覆盖取下确界，右边给出 $\\mu$*$(E) = \\mu (E)$。故 $\\nu (E) \\le \\mu (E)$。',
+        '对所有这样的覆盖取下确界，右边给出 $\\mu^{*}(E) = \\mu (E)$。故 $\\nu (E) \\le \\mu (E)$。',
         '',
         '**② $\\mu (E) < \\infty$ 时取等。** 此时 $n = \\nu (E)$ 有限（因为 $\\nu (E) \\le \\mu (E) < \\infty$）—— 但要注意 $\\nu \\le \\mu$ 只在一侧，所以直接两边各取补集：$E$ 可测意味着对任意 $F \\subseteq X$ 有 $\\mu (F) = \\mu (F\\cap E) + \\mu (F\\setminus E)$，取 $F = X$ 得 $\\mu (X) = \\mu (E) + \\mu (X\\setminus E)$，**这一步要求 $\\mu (X) < \\infty$** 才好逐项比较。一般情形下改用 $\\mathcal{M}(\\mathfrak{A})$ 中 $\\mu$ 有限的集合 $E_{n} \\uparrow X$ 作近似（见下）。',
         '',
@@ -651,7 +651,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.caratheodory-measurable',
       usedBy: 'thm.caratheodory',
-      note: '定理里的 $\\mathcal{M}$ 就是 $\\mu$*-可测集全体。'
+      note: '定理里的 $\\mathcal{M}$ 就是 $\\mu^{*}$-可测集全体。'
     },
     {
       id: 'def-link.measure-completion',

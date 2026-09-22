@@ -223,7 +223,7 @@ window.MG = window.MG || {};
       label: '绝对连续的 ε–δ 刻画',
       title: '定理（有限情形）：ν ≪ μ ⟺ ∀ε>0 ∃δ>0 ( μ(E)<δ ⟹ |ν(E)|≤ε )',
       regions: ['analysis'],
-      tags: ['定理', '绝对连续', '$\\varepsilon -\\delta$'],
+      tags: ['定理', '绝对连续', 'ε-δ'],
       statement: [
         '设 $\\nu$ 是**有限**符号测度、$\\mu$ 是测度。则',
         '',

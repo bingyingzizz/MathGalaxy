@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:39:57.272Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:55:17.745Z
 > 6 星系 / 13 星团 / 182 节点 / 220 连线（强边 216，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
@@ -303,7 +303,7 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 
 ⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \implies$ 良序定理」「$AC \implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。
 
-**证明思路**（全在 ZF 内）：设 𝒲 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $𝒲 \subseteq \mathcal{P}(X \times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\alpha$**。若 $\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\alpha$，即 $\alpha \in A = \alpha$ —— 与序数不能自属矛盾。故 $\alpha$ 不能单射进 $X$。
+**证明思路**（全在 ZF 内）：设 $\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\mathcal{W} \subseteq \mathcal{P}(X \times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\alpha$**。若 $\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\alpha$，即 $\alpha \in A = \alpha$ —— 与序数不能自属矛盾。故 $\alpha$ 不能单射进 $X$。
 
 **它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\aleph (X) \to X$ 的单射，与 $\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\alpha < \aleph (X)$ 处停止。
 
@@ -1009,7 +1009,7 @@ $$A, B \in \mathcal{M}\text{ 两两不交} \implies \mu(A \cup B) = \mu(A) + \mu
 
 $$\forall E \in \mathcal{M}, \mu(E) = \infty \implies \exists F \subseteq E, F \in \mathcal{M}, 0 < \mu(F) < \infty$$
 
-$$\text{有限} \implies \sigma-\text{有限} \implies\text{ 半有限}$$，两个箭头都不可逆。
+$\text{有限} \implies \sigma-\text{有限} \implies\text{ 半有限}$，两个箭头都不可逆。
 
 $\sigma$有限是**最常用的技术假设**：$\mathbb{R}$ 上的 Lebesgue 测度 $\sigma$有限（$\mathbb{R} = \bigcup _{n} [-n, n]$），而计数测度在 $\mathbb{R}$ 上不是 $\sigma$有限的。很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\sigma$有限。
 
@@ -1069,7 +1069,7 @@ $$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M},\ F \subseteq N,\ N \in \m
 
 则
 
-$1. \bar{\mathcal{M}}$ 是一个 $\sigma$代数，且 $\mathcal{M} \subseteq \bar{\mathcal{M}}$；
+1. $\bar{\mathcal{M}}$ 是一个 $\sigma$代数，且 $\mathcal{M} \subseteq \bar{\mathcal{M}}$；
 2. 令 $$\bar{\mu}(E \cup F) := \mu(E)$$，它是 $\bar{\mathcal{M}}$ 上良定义的测度；
 3. $$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是**完备**测度空间，称为 $(X, \mathcal{M}, \mu )$ 的**完备化**。
 
@@ -1109,7 +1109,7 @@ $$\mu_0(E) := sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty 
 
 所以外测度不是测度 —— 它太大了，连 $\mathcal{P}(X)$ 上都没有可加性。Carathéodory 的想法是在其中挑出一批「表现良好」的集合（下一条定义），外测度在它们上面才变成真正的测度。
 
-Lebesgue 最初构造的就是外测度：$\mu$*$(A) = \inf\{ \sum (b_{n} - a_{n}) : A \subseteq \bigcup (a_{n}, b_{n}) \}$。
+Lebesgue 最初构造的就是外测度：$\mu^{*}(A) = \inf\{ \sum (b_{n} - a_{n}) : A \subseteq \bigcup (a_{n}, b_{n}) \}$。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 
@@ -1120,26 +1120,26 @@ Lebesgue 最初构造的就是外测度：$\mu$*$(A) = \inf\{ \sum (b_{n} - a_{n
 
 $$\mu^*(A) := inf \{ \sum_{j=1}^{\infty} \rho(E_j) : E_j \in \mathcal{E}, A \subseteq \bigcup_{j=1}^{\infty} E_j \}$$
 
-（用 $\mathcal{E}$ 中可数个集合覆盖 $A$，取下确界。）则 $\mu$\* 是 $X$ 上的一个**外测度**。
+（用 $\mathcal{E}$ 中可数个集合覆盖 $A$，取下确界。）则 $\mu^{*}$ 是 $X$ 上的一个**外测度**。
 
 这个公式就是「用已知面积的砖块去盖住 $A$，取最省的盖法」—— Lebesgue 外测度正是它的特例（$\mathcal{E}$ 取开区间，$\rho$ 取长度）。
 
 为什么要求 $X \in \mathcal{E}$：保证 $A \subseteq X$ 总有覆盖，inf 不是对空集取。
 
-⚠ 这一步只用到 $\rho (\emptyset ) = 0$，**没用到可加性** —— 所以 $\mu$* 一般并不还原成 $\rho$。要还原，就得靠 Carathéodory。
+⚠ 这一步只用到 $\rho (\emptyset ) = 0$，**没用到可加性** —— 所以 $\mu^{*}$ 一般并不还原成 $\rho$。要还原，就得靠 Carathéodory。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 
 #### μ*-可测集　`def.caratheodory-measurable`
 *定义*　Carathéodory 可测性（μ*-Measurable Set）
 
-设 $\mu$* 是 $X$ 上的外测度。$A \subseteq X$ 称为 **$\mu$\*-可测的**，当且仅当 $A$ 把每个集合都「干净地切成两块」：
+设 $\mu^{*}$ 是 $X$ 上的外测度。$A \subseteq X$ 称为 **$\mu^{*}$-可测的**，当且仅当 $A$ 把每个集合都「干净地切成两块」：
 
 $$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)\quad  \forall E \subseteq X$$
 
-因为 $\mu$* 只有次可加性，永远有 $$\mu^*(E) \le \mu^*(E \cap A) + \mu^*(E \cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。
+因为 $\mu^{*}$ 只有次可加性，永远有 $$\mu^*(E) \le \mu^*(E \cap A) + \mu^*(E \cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。
 
-这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\mu$* 一个对象，不需要任何拓扑。所以它对任意外测度都能用。
+这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\mu^{*}$ 一个对象，不需要任何拓扑。所以它对任意外测度都能用。
 
 直观：$A$ 是「可以随便切」的集合。
 
@@ -1148,31 +1148,31 @@ $$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)\quad  \forall E \subseteq X$$
 #### Carathéodory 定理　`thm.caratheodory`
 *定理*　Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度
 
-设 $\mu$* 是 $X$ 上的外测度，$\mathcal{M}$ 是全体 $\mu$\*-可测集。则
+设 $\mu^{*}$ 是 $X$ 上的外测度，$\mathcal{M}$ 是全体 $\mu^{*}$-可测集。则
 
 1. **$\mathcal{M}$ 是一个 $\sigma$代数**；
-2. **$$\mu^*|_\mathcal{M}$$ 是 $(X, \mathcal{M})$ 上的一个测度**（即 $\mu$* 在 $\mathcal{M}$ 上真的可加）；
+2. **$$\mu^*|_\mathcal{M}$$ 是 $(X, \mathcal{M})$ 上的一个测度**（即 $\mu^{*}$ 在 $\mathcal{M}$ 上真的可加）；
 3. 这个测度是**完备**的。
 
 这是整个测度论构造的枢纽：**外测度不必可加，但它的「可切集合」上就可加了**。
 
 1 的证明是一个冗长的验证（对有限并、补、可数不交并逐一验算），笔记里写「pf. just verify.」。
 
-3 的完备性来自定义本身：若 $\mu$*$(A) = 0$ 且 $B \subseteq A$，则对任意 $E$ 有 $\mu$*$(E \cap B) \le \mu$*$(B) = 0$ 且 $\mu$*$(E \cap B^{c}) \le \mu$*(E)，两边一夹就得到 $B$ 满足可测性条件。
+3 的完备性来自定义本身：若 $\mu^{*}(A) = 0$ 且 $B \subseteq A$，则对任意 $E$ 有 $\mu^{*}(E \cap B) \le \mu^{*}(B) = 0$ 且 $\mu^{*}(E \cap B^{c}) \le \mu^{*}$(E)，两边一夹就得到 $B$ 满足可测性条件。
 
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
 
 #### 预测度还原　`prop.caratheodory-extension`
 *命题*　命题：从预测度出发做 Carathéodory，原代数上的值不变
 
-设 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是**代数**，$\mu _{0}$ 是 $\mathfrak{A}$ 上的**预测度**，$\mu$* 是由 $\mu _{0}$ 诱导的外测度（按上一条命题，取 $\mathcal{E} = \mathfrak{A}$、$\rho = \mu _{0}$）。则
+设 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是**代数**，$\mu _{0}$ 是 $\mathfrak{A}$ 上的**预测度**，$\mu^{*}$ 是由 $\mu _{0}$ 诱导的外测度（按上一条命题，取 $\mathcal{E} = \mathfrak{A}$、$\rho = \mu _{0}$）。则
 
 1. $$\mu^*|_\mathfrak{A} = \mu_0$$
-2. **$\mathfrak{A}$ 中每个集合都是 $\mu$\*-可测的**，因此
+2. **$\mathfrak{A}$ 中每个集合都是 $\mu^{*}$-可测的**，因此
 
 $$\mathfrak{A} \subseteq \mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$$
 
-（$\mathcal{M}$ 是全体 $\mu$\*-可测集），于是 $\mu$*$|_\mathcal{M}$ 是 $\mu _{0}$ 在 $\sigma$代数 $\mathcal{M}(\mathfrak{A})$ 上的扩张。
+（$\mathcal{M}$ 是全体 $\mu^{*}$-可测集），于是 $\mu^{*}|_\mathcal{M}$ 是 $\mu _{0}$ 在 $\sigma$代数 $\mathcal{M}(\mathfrak{A})$ 上的扩张。
 
 这就是「预测度 $\to$ 外测度 $\to$ 测度」三步走的收官：**预测度在 $\sigma$代数的扩张上被完整还原**。
 
@@ -1180,20 +1180,20 @@ $$\mathfrak{A} \subseteq \mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$$
 
 2 是技术核心，要在 $\mathfrak{A}$ 上验证 Carathéodory 的可切性条件。
 
-笔记里还记了一句：不仅 $\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\mathfrak{A}_\sigma$、$\mathfrak{A}_\delta$、$\mathfrak{A}_\sigma \delta$、$\mathfrak{A}_\delta \sigma$ 里的集合也都 $\mu$\*-可测 —— 因为 $\mathcal{M}$ 是 $\sigma$代数，对这些操作封闭。
+笔记里还记了一句：不仅 $\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\mathfrak{A}_\sigma$、$\mathfrak{A}_\delta$、$\mathfrak{A}_\sigma \delta$、$\mathfrak{A}_\delta \sigma$ 里的集合也都 $\mu^{*}$-可测 —— 因为 $\mathcal{M}$ 是 $\sigma$代数，对这些操作封闭。
 
 参考：Halmos, Measure Theory, §12；Folland, Real Analysis, Theorem 1.14
 
 #### 扩张的唯一性　`thm.caratheodory-uniqueness`
 *定理*　定理：Carathéodory 扩张是最大的，σ-有限时唯一
 
-设 $\mu _{0}$ 是代数 $\mathfrak{A}$ 上的预测度，$\mu := \mu$*$|_\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上**另一个**扩张 $\mu _{0}$ 的测度，则
+设 $\mu _{0}$ 是代数 $\mathfrak{A}$ 上的预测度，$\mu := \mu^{*}|_\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上**另一个**扩张 $\mu _{0}$ 的测度，则
 
 $$\nu(E) \le \mu(E)\quad  \forall E \in \mathcal{M}(\mathfrak{A})$$
 
 且当 $$\mu(E) < \infty$$ 时等号成立；进而，若 $\mu$ 是 $\sigma$有限的，则 $$\nu = \mu$$。
 
-要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\mu$* 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\nu$ 都要满足次可加性，于是 $\nu (A) \le \sum \nu (E_{j}) = \sum \mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\nu \le \mu$*。
+要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\nu$ 都要满足次可加性，于是 $\nu (A) \le \sum \nu (E_{j}) = \sum \mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\nu \le \mu^{*}$。
 
 ⚠ 不 $\sigma$有限时唯一性会**失效**：$\mathbb{R}$ 上取 $\mathfrak{A} =$ 有限并的半开区间，$\mu _{0} = Lebesgue$ 长度限制在 $\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。$\sigma$有限性正是用来堵住这种漏洞的。
 
@@ -1273,13 +1273,13 @@ $$f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{N}$$
 #### 可测性的两条判定准则　`prop.measurable-criterion`
 *命题*　命题：复合保持可测；只需在生成元上验证
 
-**(1) 复合**：若 $$f : X \to Y$$ 是 $(\mathcal{M}, \mathcal{N})$可测、$$g : Y \to Z$$ 是 $(\mathcal{N}, 𝒪)$可测，则 $$g \circ  f$$ 是 $(\mathcal{M}, 𝒪)$可测。
+**(1) 复合**：若 $$f : X \to Y$$ 是 $(\mathcal{M}, \mathcal{N})$可测、$$g : Y \to Z$$ 是 $(\mathcal{N}, \mathcal{O})$可测，则 $$g \circ  f$$ 是 $(\mathcal{M}, \mathcal{O})$可测。
 
 **(2) 只需验证生成元**：若 $\mathcal{N} = \mathcal{M}(\mathcal{E})$，则
 
 $$f : X \to Y\text{ 可测} \iff f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{E}$$
 
-(1)：对 $E \in 𝒪$ 有 $$(g\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。
+(1)：对 $E \in \mathcal{O}$ 有 $$(g\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。
 
 (2) 的 $(\Longleftarrow )$：令 $\mathcal{C} = \{ E \subseteq Y : f^{-1}(E) \in \mathcal{M} \}$。因为原像保持并、交、补，**$\mathcal{C}$ 是一个 $\sigma$代数**；题设说 $\mathcal{E} \subseteq \mathcal{C}$，于是 $\mathcal{M}(\mathcal{E}) \subseteq \mathcal{C}$，即所有可测集的原像都可测。
 
@@ -1349,7 +1349,7 @@ $$\mathfrak{B}_\mathbb{C} = \mathfrak{B}_{\mathbb{R}^2} = \mathfrak{B}_\mathbb{R
 - **有限个取大**：$$f, g$$ 可测 $\implies$ $$\max_{f, g}$$ 可测；
 - **极限**：若 $$lim_j f_j$$ 逐点存在，则它是可测的。
 
-$$sup_j f_j$$ 的关键：$$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty])$$ 是可数并，故可测。（取 $$(a, +\infty]$$ 这族生成元就够了。）
+$sup_j f_j$ 的关键：$$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty])$$ 是可数并，故可测。（取 $$(a, +\infty]$$ 这族生成元就够了。）
 
 max 是 sup 的有限特例（把不够的地方补成 $$-\infty$$）。
 
@@ -1673,7 +1673,7 @@ $$L^1(\mu) = L^1(X, \mathcal{M}, \mu) = L^1(X, \mu)$$
 #### L¹ 是向量空间　`prop.L1-vector-space`
 *命题*　命题：可积函数全体是向量空间，∫ 线性
 
-$$X$$ 上可积的（实值）函数全体构成一个**实向量空间**，并且
+$X$ 上可积的（实值）函数全体构成一个**实向量空间**，并且
 
 $$\int (af + bg) = a\int f + b\int g\quad  \forall a, b \in \mathbb{R}$$
 
@@ -1835,9 +1835,9 @@ $$L^1 \implies\text{ 依测度}$$
 
 ⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。
 
-⚠ **a.e. 收敛与依测度收敛互不包含**：$\text{a.e.} \implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 ⇏ a.e.（见反例 iv）。
+⚠ **a.e. 收敛与依测度收敛互不包含**：$\text{a.e.} \implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 $\nRightarrow$ a.e.（见反例 iv）。
 
-⚠ $L^{1}$ 收敛 ⇏ a.e. 收敛，a.e. 收敛 + 控制函数 $\implies L^{1}$ 收敛（这就是 DCT）。
+⚠ $L^{1}$ 收敛 $\nRightarrow$ a.e. 收敛，a.e. 收敛 + 控制函数 $\implies L^{1}$ 收敛（这就是 DCT）。
 
 参考：Folland, Real Analysis, §2.4
 
@@ -1854,9 +1854,9 @@ $$L^1 \implies\text{ 依测度}$$
 $$f_1 = \chi_{[0,1]}, f_2 = \chi_{[0,1/2]}, f_3 = \chi_{[1/2,1]}, f_4 = \chi_{[0,1/4]}, \cdots$$
 即 $$f_n = \chi_{[j/2^k, (j+1)/2^k]}$$（$$n = 2^k + j$$）：它**依测度**收敛到 0，但对**任何** $$x \in [0,1]$$ 都**不**收敛。
 
-(iii) 是「a.e. 收敛 $⇏ L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
+(iii) 是「a.e. 收敛 $\nRightarrow L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
 
-(iv) 是「依测度收敛 ⇏ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。
+(iv) 是「依测度收敛 $\nRightarrow$ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。
 
 ⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 $L^{1}$ 各自独立。
 
@@ -1965,11 +1965,11 @@ $$\mu \times \nu$$
 
 即**乘积测度**。
 
-$$\pi $$ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。
+$\pi $ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。
 
 **$\sigma$有限的时候一切顺利**：若 $\mu$、$\nu$ 都 $\sigma$有限，则 $\mu \times \nu$ 也 $\sigma$有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。
 
-⚠ 这一步的整个机器（预测度 $\to$ 外测度 $\to Carathéodory$ 扩张 $\to$ 唯一性）就是「测度的构造」那个星团里现成的四件套。
+⚠ 这一步的整个机器（预测度 $\to$ 外测度 $\to$ Carathéodory 扩张 $\to$ 唯一性）就是「测度的构造」那个星团里现成的四件套。
 
 参考：Folland, Real Analysis, §2.5；Halmos, Measure Theory, §35
 
@@ -2690,7 +2690,7 @@ $$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y) - f(x)| d
 
 这么定义是为了让「可缩族」版本（下一条定理）能直接用 —— 那里需要的是**局部一致逼近**，而不是简单的平均值收敛。
 
-$$x \in L_f$$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个点附近，$f$ 的振荡在平均意义下趋于 0。
+$x \in L_f$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个点附近，$f$ 的振荡在平均意义下趋于 0。
 
 参考：Folland, Real Analysis, §3.4
 
@@ -2722,7 +2722,7 @@ $$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le |f(x) - c|
 #### 可缩族　`def.shrinks-nicely`
 *定义*　可缩地趋于 x（Shrinks Nicely）
 
-$$\mathbb{R}^n$$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当
+$\mathbb{R}^n$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当
 
 $\cdot$ $$E_r \subseteq B(r, x)$$ 对每个 $r$ 成立；
 $\cdot$ 存在 $$\alpha > 0$$，使 $$m(E_r) > \alpha\cdot m(B(r, x))$$ 对一切 $r$ 成立。
@@ -2773,7 +2773,7 @@ $\cdot$ $$\nu(E) = inf\{ \nu(U) : U\text{ 开}, E \subseteq U \}$$ 对每个 $$E
 
 **每个正则测度都是 $\sigma$有限的**（用紧集的可数覆盖）。
 
-$$f \in L^+(\mathbb{R}^n)$$ 时，$$f\cdot dm$$ 正则 $\iff$ $$f \in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。
+$f \in L^+(\mathbb{R}^n)$ 时，$$f\cdot dm$$ 正则 $\iff$ $$f \in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。
 
 参考：Folland, Real Analysis, §7.2
 
@@ -2834,7 +2834,7 @@ $$G(x+h) - G(x) = \mu_G((x, x+h])$$
 
 于是差商恰好是 $$\mu_G(E_h)/m(E_h)$$ —— 其中 $$E_h = (x, x+h]$$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\mu _G$ 关于 $m$ 的 RN 导数，即 $G' \text{a.e.}$ 存在。
 
-剩下的部分用一个「夹逼」把 $F' = G'$ 也拿下：令 $H = G - F \ge 0$（跳跃函数），它 a.e. 为 0；再令 $\bar{F}$ 为跳跃的累积函数，则 $\mu _\bar{F}$ 集中在可数集上，故 $\mu _\bar{F} \perp m$，于是 $\bar{F}' = 0 \text{a.e.}$。在 $\bar{F}' = 0$ 的点上用
+剩下的部分用一个「夹逼」把 $F' = G'$ 也拿下：令 $H = G - F \ge 0$（跳跃函数），它 a.e. 为 0；再令 $\bar{F}$ 为跳跃的累积函数，则 $\mu _{\bar{F}}$ 集中在可数集上，故 $\mu _{\bar{F}} \perp m$，于是 $\bar{F}' = 0 \text{a.e.}$。在 $\bar{F}' = 0$ 的点上用
 
 
 
@@ -2853,9 +2853,9 @@ $$0 \le H(x+h) / h \le (\bar{F}(x+h) - \bar{F}(x)) / h\quad  (h > 0)$$
 
 $$T_F(x) := sup \{ \sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \in \mathbb{N}, -\infty < x_0 < \cdots < x_n = x \}$$
 
-$$T_F$$ 是递增的 $$\mathbb{R} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。
+$T_F$ 是递增的 $$\mathbb{R} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。
 
-$$T_F(b) - T_F(a)$$ 称为 $F$ 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。
+$T_F(b) - T_F(a)$ 称为 $F$ 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。
 
 直观：$$T_F(x)$$ 是「沿着图像从 $-\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。
 
@@ -3038,7 +3038,7 @@ $$|\mu_F| = \mu_{T_F}$$
 
 证明思路（笔记里的）：把复测度拆成四个正测度 $$\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$$，各取 $$F_j^{\pm }(x) = \mu_j^{\pm }((-\infty, x])$$ —— 它们递增、右连续、在 $-\infty$ 处为 0、在 $\infty$ 处有限，于是 $F \in NBV$。反方向把 $F \in NBV$ 拆成 $$F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$，每一块配一个测度。
 
-$$|\mu_F| = \mu_{T_F}$$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「$T_F \in NBV$」的用处。
+$|\mu_F| = \mu_{T_F}$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「$T_F \in NBV$」的用处。
 
 参考：Folland, Real Analysis, Theorem 3.29
 
@@ -3697,9 +3697,9 @@ $$\omega = \{ x \in I : \forall J ( J \in S \to x \in J ) \}$$
 
 即 $\omega$ 是所有归纳子集的交。
 
-$4. \omega$ 是归纳集：$\emptyset$ 属于每个 $J \in S$，故 $\emptyset \in \omega$；若 $x \in \omega$，则 $x$ 属于每个 $J \in S$，从而 $x \cup \{x\}$ 属于每个 $J \in S$，故 $x \cup \{x\} \in \omega$。
+4. $\omega$ 是归纳集：$\emptyset$ 属于每个 $J \in S$，故 $\emptyset \in \omega$；若 $x \in \omega$，则 $x$ 属于每个 $J \in S$，从而 $x \cup \{x\}$ 属于每个 $J \in S$，故 $x \cup \{x\} \in \omega$。
 
-$5. \omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \cap I$ 也是归纳集且 $K \cap I \in S$，由 $\omega$ 的定义 $\omega \subseteq K \cap I \subseteq K$。
+5. $\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \cap I$ 也是归纳集且 $K \cap I \in S$，由 $\omega$ 的定义 $\omega \subseteq K \cap I \subseteq K$。
 
 故 $\omega$ 是最小归纳集，即自然数集。∎
 
@@ -3800,13 +3800,13 @@ $$\mathcal{W} = \{ (W, \preceq_W) : W \subseteq X, \preceq_W\text{ 是} W\text{ 
 
 $(W_{1}, \preceq _{1}) \le (W_{2}, \preceq _{2}) \iff W_{1} \subseteq W_{2}$，$\preceq _{1} = \preceq _{2}|W_{1}$，且 $W_{1}$ 是 $(W_{2}, \preceq _{2})$ 的一个前段。
 
-$1. (𝒲, \le )$ 是偏序集（三条性质直接验证）。
+1. $(\mathcal{W}, \le )$ 是偏序集（三条性质直接验证）。
 
-2. **每个链有上界**：设 $\mathcal{D} \subseteq 𝒲$ 是链。令 $W$* $= \bigcup \{ W : (W, \preceq ) \in \mathcal{D} \}$，在 $W$* 上定义
+2. **每个链有上界**：设 $\mathcal{D} \subseteq \mathcal{W}$ 是链。令 $W^{*} = \bigcup \{ W : (W, \preceq ) \in \mathcal{D} \}$，在 $W^{*}$ 上定义
 
 $$x \preceq_* y \iff\text{ 存在} (W, \preceq_W) \in \mathcal{D}\text{ 使} x, y \in W\text{ 且} x \preceq_W y$$
 
-因 $\mathcal{D}$ 是链，这些良序彼此兼容，$\preceq _$* 是 $W$* 上的良序，且 (W*$\preceq _$*$) \in 𝒲$ 是 $\mathcal{D}$ 的上界。
+因 $\mathcal{D}$ 是链，这些良序彼此兼容，$\preceq_*$ 是 $W^{*}$ 上的良序，且 $(W^{*}, \preceq_*)\in \mathcal{W}$ 是 $\mathcal{D}$ 的上界。
 
 3. 由佐恩引理，取极大元 $(W, \preceq )$。
 
@@ -3852,7 +3852,7 @@ $X$ 是链 $\iff X$ 中任两元素可比 $\iff X$ 的每个有限子集是链 $
 
 （最后一个 $\Longleftarrow$ 方向：任取 $x, y \in X$，则 {x, y} 是 $X$ 的有限子集，属于 $\mathcal{C}$，故 $x$ 与 $y$ 可比。）
 
-$2. \mathcal{C}$ 非空（$\emptyset$ 是链）。由 Tukey 引理，$\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。
+2. $\mathcal{C}$ 非空（$\emptyset$ 是链）。由 Tukey 引理，$\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。
 
 3. 若要包含给定的 $C_{0}$：注意 $\mathcal{C}_{0} = \{ C \in \mathcal{C} : C \supseteq C_{0} \}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。对 $\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。∎
 
@@ -3964,7 +3964,7 @@ $$\mathcal{U} = \{ U_n : n \in \mathbb{N} \} \cup \{ X \setminus \{x_n : n \in \
 
 其中 $U_{n}$ 是 ② 中给 $x_{n}$ 的那个邻域（只含有限个 $x_{m}$）。再补上闭集的余集，$\mathcal{U}$ 就是 $X$ 的开覆盖。
 
-**④ 由紧性取有限子覆盖** $𝒱 \subseteq \mathcal{U}$。若 𝒱 包含那个余集，则没盖住任何 $x_{n}$；若只含有限个 $U_{n}$，而每个 $U_{n}$ 只含有限个 $x_{m}$，则 𝒱 总共只盖住**有限多个** $x_{m}$ —— 与 $\{x_{n}\}$ 是无限集矛盾（没有收敛子列迫使它无限）。
+**④ 由紧性取有限子覆盖** $\mathcal{V} \subseteq \mathcal{U}$。若 $\mathcal{V}$ 包含那个余集，则没盖住任何 $x_{n}$；若只含有限个 $U_{n}$，而每个 $U_{n}$ 只含有限个 $x_{m}$，则 $\mathcal{V}$ 总共只盖住**有限多个** $x_{m}$ —— 与 $\{x_{n}\}$ 是无限集矛盾（没有收敛子列迫使它无限）。
 
 故 $\{x_{n}\}$ 必有收敛子列，$X$ 列紧。∎
 
@@ -4253,11 +4253,11 @@ $$\mu^*(A) = inf \{ \sum_j \mu_0(E_j) : E_j \in \mathfrak{A}, A \subseteq \bigcu
 
 **① 定义合理**：$A \subseteq X$ 且 $X \in \mathfrak{A}$，所以总有覆盖，inf 是对非空集合取。
 
-**② $\mu$*$(\emptyset ) = 0$**：取 $E_{1} = \emptyset$、$E_{2} = E_{3} = \cdots = \emptyset$，则 $\sum \mu _{0}(E_{j}) = 0$，故 $0 \le \mu$*$(\emptyset ) \le 0$。
+**② $\mu^{*}(\emptyset ) = 0$**：取 $E_{1} = \emptyset$、$E_{2} = E_{3} = \cdots = \emptyset$，则 $\sum \mu _{0}(E_{j}) = 0$，故 $0 \le \mu^{*}(\emptyset ) \le 0$。
 
-**③ 单调**：$A \subseteq B$ 时，$B$ 的每个覆盖也是 $A$ 的覆盖，故 $A$ 的下确界集合更大，$\mu$*$(A) \le \mu$*(B)。
+**③ 单调**：$A \subseteq B$ 时，$B$ 的每个覆盖也是 $A$ 的覆盖，故 $A$ 的下确界集合更大，$\mu^{*}(A) \le \mu^{*}$(B)。
 
-**④ 可数次可加**：设 $A_{j} \subseteq X$。若某个 $\mu$*$(A_{j}) = \infty$ 则不等式平凡；否则给定 $\varepsilon > 0$，对每个 $j$ 取 $\mathfrak{A}$ 中的覆盖 $\{E_\{j,k\}\}_{k}$ 使
+**④ 可数次可加**：设 $A_{j} \subseteq X$。若某个 $\mu^{*}(A_{j}) = \infty$ 则不等式平凡；否则给定 $\varepsilon > 0$，对每个 $j$ 取 $\mathfrak{A}$ 中的覆盖 $\{E_\{j,k\}\}_{k}$ 使
 
 $$\sum_k \mu_0(E_{j,k}) < \mu^*(A_j) + (\varepsilon/2)^j$$
 
@@ -4272,13 +4272,13 @@ $>$ ⚠ ④ 的每一步都只需取**一个**覆盖 —— 这用的是 $\mathb
 #### 外测度 + μ*-可测集 ⟹ Carathéodory 定理　`imp.outer-carath`
 *外测度 + 可切集 ⟹ σ-代数与完备测度*
 
-设 $\mu$* 是外测度，$\mathcal{M} = \{ A : \forall E, \mu$*$(E) = \mu$*$(E\cap A) + \mu$*$(E\cap A^{c}) \}$。
+设 $\mu^{*}$ 是外测度，$\mathcal{M} = \{ A : \forall E, \mu^{*}(E) = \mu^{*}(E\cap A) + \mu^{*}(E\cap A^{c}) \}$。
 
 **① $\mathcal{M}$ 是代数。** 条件关于 $A$ 与 $A^{c}$ 对称，故 $A \in \mathcal{M} \implies A^{c} \in \mathcal{M}$；$\emptyset$ 与 $X$ 显然在 $\mathcal{M}$ 中。若 $A, B \in \mathcal{M}$，要证 $A \cup B \in \mathcal{M}$：对任意 $E$，把 $E$ 依 $A$ 切开、再依 $B$ 切开，
 
 $$\mu^*(E) = \mu^*(E\cap A) + \mu^*(E\cap A^c) = \mu^*(E\cap A\cap B) + \mu^*(E\cap A\cap B^c) + \mu^*(E\cap A^c\cap B) + \mu^*(E\cap A^c\cap B^c)$$
 
-而右边前三项合起来 $\ge \mu$*$(E\cap (A\cup B))$（次可加），最后一项 $= \mu$*$(E\cap (A\cup B)^{c})$。反向不等式由次可加自动成立，故 $A \cup B \in \mathcal{M}$。
+而右边前三项合起来 $\ge \mu^{*}(E\cap (A\cup B))$（次可加），最后一项 $= \mu^{*}(E\cap (A\cup B)^{c})$。反向不等式由次可加自动成立，故 $A \cup B \in \mathcal{M}$。
 
 **② $\mathcal{M}$ 是 $\sigma$代数。** 设 $A_{j} \in \mathcal{M}$ 两两不交，$A = \bigcup A_{j}$。对任意 $E$ 归纳得到
 
@@ -4290,36 +4290,36 @@ $$\mu^*(E) = \mu^*(E\cap A) + \mu^*(E\cap A^c)$$
 
 故 $A \in \mathcal{M}$。结合 ①，$\mathcal{M}$ 是可数并封闭的代数，即 $\sigma$代数（可数不交并由 ②，一般可数并再换成不交并）。
 
-**③ $\mu$*$|_\mathcal{M}$ 可加。** 在 ② 里取 $E = X$、$A$ 换成两两不交的 $A_{j}$，得 $\mu$*$(\bigcup A_{j}) = \sum \mu$*$(A_{j})$，这正是可数可加；$\mu$*$(\emptyset ) = 0$ 由外测度定义给出。
+**③ $\mu^{*}|_\mathcal{M}$ 可加。** 在 ② 里取 $E = X$、$A$ 换成两两不交的 $A_{j}$，得 $\mu^{*}(\bigcup A_{j}) = \sum \mu^{*}(A_{j})$，这正是可数可加；$\mu^{*}(\emptyset ) = 0$ 由外测度定义给出。
 
-**④ 完备。** 设 $\mu$*$(A) = 0$，$B \subseteq A$。对任意 $E$，由单调性与次可加，
+**④ 完备。** 设 $\mu^{*}(A) = 0$，$B \subseteq A$。对任意 $E$，由单调性与次可加，
 
 $$\mu^*(E) \ge \mu^*(E \cap B^c) \ge \mu^*(E) - \mu^*(E \cap B) \ge \mu^*(E) - \mu^*(A) = \mu^*(E)$$
 
-故 $\mu$*$(E) = \mu$*$(E\cap B) + \mu$*$(E\cap B^{c})$（注意 $\mu$*$(E\cap B) \le \mu$*$(A) = 0$），即 $B \in \mathcal{M}$。故 $\mu$*$|_\mathcal{M}$ 完备。∎
+故 $\mu^{*}(E) = \mu^{*}(E\cap B) + \mu^{*}(E\cap B^{c})$（注意 $\mu^{*}(E\cap B) \le \mu^{*}(A) = 0$），即 $B \in \mathcal{M}$。故 $\mu^{*}|_\mathcal{M}$ 完备。∎
 
 $>$ 笔记里对这一条写的是「pf. just verify.」—— 确实是纯验证，但要验的东西不少，上面把要点写全了。
 
 #### Carathéodory 定理 + 由预测度诱导外测度 ⟹ 预测度还原　`imp.carath-extension`
 *Carathéodory + 预测度 ⟹ 原代数上的值不变*
 
-设 $\mathfrak{A}$ 是代数，$\mu _{0}$ 是 $\mathfrak{A}$ 上的预测度，$\mu$* 是由 $\mu _{0}$ 诱导的外测度，$\mathcal{M}$ 是全体 $\mu$*-可测集。
+设 $\mathfrak{A}$ 是代数，$\mu _{0}$ 是 $\mathfrak{A}$ 上的预测度，$\mu^{*}$ 是由 $\mu _{0}$ 诱导的外测度，$\mathcal{M}$ 是全体 $\mu^{*}$-可测集。
 
-**① $\mu$*$|_\mathfrak{A} \le \mu _{0}$。** 取 $A \in \mathfrak{A}$，则 $A \subseteq A$ 是一个（只含一层的）覆盖，故
+**① $\mu^{*}|_\mathfrak{A} \le \mu _{0}$。** 取 $A \in \mathfrak{A}$，则 $A \subseteq A$ 是一个（只含一层的）覆盖，故
 
 $$\mu^*(A) \le \mu_0(A) + 0 + 0 + \cdots = \mu_0(A)$$
 
-**② $\mu$*$|_\mathfrak{A} \ge \mu _{0}$。** 设 $\{E_{j}\} \subseteq \mathfrak{A}$ 是 $A$ 的覆盖。令 $F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $F_{j} \in \mathfrak{A}$ 两两不交且 $\bigcup F_{j} \supseteq A$、$F_{j} \subseteq E_{j}$。于是
+**② $\mu^{*}|_\mathfrak{A} \ge \mu _{0}$。** 设 $\{E_{j}\} \subseteq \mathfrak{A}$ 是 $A$ 的覆盖。令 $F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $F_{j} \in \mathfrak{A}$ 两两不交且 $\bigcup F_{j} \supseteq A$、$F_{j} \subseteq E_{j}$。于是
 
 $$\mu_0(A) = \mu_0( \bigcup_j (A \cap F_j) ) = \sum_j \mu_0(A \cap F_j) \le \sum_j \mu_0(F_j) \le \sum_j \mu_0(E_j)$$
 
-（第一个等号用 $A$ 是那些不交集合之并；第二个用 $\mu _{0}$ 可数可加；不等号用单调性。）对所有覆盖取下确界得 $\mu _{0}(A) \le \mu$*(A)。
+（第一个等号用 $A$ 是那些不交集合之并；第二个用 $\mu _{0}$ 可数可加；不等号用单调性。）对所有覆盖取下确界得 $\mu _{0}(A) \le \mu^{*}$(A)。
 
-**③ $\mathfrak{A} \subseteq \mathcal{M}$。** 设 $A \in \mathfrak{A}$，$E \subseteq X$，要证 $\mu$*$(E) \ge \mu$*$(E\cap A) + \mu$*$(E\cap A^{c})$。给定 $\varepsilon > 0$，取 $\mathfrak{A}$ 中 $\{E_{j}\}$ 覆盖 $E$ 使
+**③ $\mathfrak{A} \subseteq \mathcal{M}$。** 设 $A \in \mathfrak{A}$，$E \subseteq X$，要证 $\mu^{*}(E) \ge \mu^{*}(E\cap A) + \mu^{*}(E\cap A^{c})$。给定 $\varepsilon > 0$，取 $\mathfrak{A}$ 中 $\{E_{j}\}$ 覆盖 $E$ 使
 
 $$\sum_j \mu_0(E_j) < \mu^*(E) + \varepsilon$$
 
-由 ②，$\mu _{0}(E_{j}) = \mu$*$(E_{j})$；又 $\mathfrak{A}$ 是代数，$E_{j} \cap A$ 与 $E_{j} \cap A^{c}$ 都在 $\mathfrak{A}$ 中且不交、并为 $E_{j}$，于是
+由 ②，$\mu _{0}(E_{j}) = \mu^{*}(E_{j})$；又 $\mathfrak{A}$ 是代数，$E_{j} \cap A$ 与 $E_{j} \cap A^{c}$ 都在 $\mathfrak{A}$ 中且不交、并为 $E_{j}$，于是
 
 $$\mu^*(E \cap A) + \mu^*(E \cap A^c) \le \sum_j \mu_0(E_j \cap A) + \sum_j \mu_0(E_j \cap A^c) = \sum_j \mu_0(E_j) < \mu^*(E) + \varepsilon$$
 
@@ -4330,11 +4330,11 @@ $$\mu^*(E \cap A) + \mu^*(E \cap A^c) \le \sum_j \mu_0(E_j \cap A) + \sum_j \mu_
 
 沿用上一条的记号，设 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上另一个扩张 $\mu _{0}$ 的测度。
 
-**① $\nu \le \mu$*。** 设 $E \in \mathcal{M}(\mathfrak{A})$，$\{E_{j}\} \subseteq \mathfrak{A}$ 是 $E$ 的覆盖。由 $\nu$ 的次可加性与 $\nu |_\mathfrak{A} = \mu _{0}$，
+**① $\nu \le \mu^{*}$。** 设 $E \in \mathcal{M}(\mathfrak{A})$，$\{E_{j}\} \subseteq \mathfrak{A}$ 是 $E$ 的覆盖。由 $\nu$ 的次可加性与 $\nu |_\mathfrak{A} = \mu _{0}$，
 
 $$\nu(E) \le \sum_j \nu(E_j) = \sum_j \mu_0(E_j)$$
 
-对所有这样的覆盖取下确界，右边给出 $\mu$*$(E) = \mu (E)$。故 $\nu (E) \le \mu (E)$。
+对所有这样的覆盖取下确界，右边给出 $\mu^{*}(E) = \mu (E)$。故 $\nu (E) \le \mu (E)$。
 
 **② $\mu (E) < \infty$ 时取等。** 此时 $n = \nu (E)$ 有限（因为 $\nu (E) \le \mu (E) < \infty$）—— 但要注意 $\nu \le \mu$ 只在一侧，所以直接两边各取补集：$E$ 可测意味着对任意 $F \subseteq X$ 有 $\mu (F) = \mu (F\cap E) + \mu (F\setminus E)$，取 $F = X$ 得 $\mu (X) = \mu (E) + \mu (X\setminus E)$，**这一步要求 $\mu (X) < \infty$** 才好逐项比较。一般情形下改用 $\mathcal{M}(\mathfrak{A})$ 中 $\mu$ 有限的集合 $E_{n} \uparrow X$ 作近似（见下）。
 
@@ -4388,7 +4388,7 @@ Carathéodory 定理的起点是外测度。
 
 #### 定义引用：「μ*-可测集」→ Carathéodory 定理　`def-link.carathmeasurable-thm`
 
-定理里的 $\mathcal{M}$ 就是 $\mu$*-可测集全体。
+定理里的 $\mathcal{M}$ 就是 $\mu^{*}$-可测集全体。
 
 #### 定义引用：「测度」→ 完备化定理　`def-link.measure-completion`
 
@@ -4827,9 +4827,9 @@ $L^{1}$ 收敛的定义里用到 $\int |f_{n} - f|$。
 
 **② $\pi$ 是 $\mathcal{A}$ 上的预测度。** $\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\mu$、$\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。
 
-**③ 用 Carathéodory 扩张。** 由「预测度 $\to$ 外测度 $\to$ 可测集 $\to$ 扩张测度」那一整套：$\pi$ 诱导出 $X \times Y$ 上的外测度 $\mu$*，全体 $\mu$*-可测集构成 $\sigma$代数，$\mu$* 在其上成为测度；而代数 $\mathcal{A}$ 中每个集合都是 $\mu$*-可测的，且 $\mu$*$|_\mathcal{A} = \pi$。
+**③ 用 Carathéodory 扩张。** 由「预测度 $\to$ 外测度 $\to$ 可测集 $\to$ 扩张测度」那一整套：$\pi$ 诱导出 $X \times Y$ 上的外测度 $\mu^{*}$，全体 $\mu^{*}$-可测集构成 $\sigma$代数，$\mu^{*}$ 在其上成为测度；而代数 $\mathcal{A}$ 中每个集合都是 $\mu^{*}$-可测的，且 $\mu^{*}|_\mathcal{A} = \pi$。
 
-**④ 落到 $\mathcal{M} ⊗ \mathcal{N}$ 上。** $\mathcal{A}$ 含所有矩形，故 $\mathcal{A}$ 生成 $\mathcal{M} ⊗ \mathcal{N} \subseteq (\mu$*-可测集)；把 $\mu$* 限制在 $\mathcal{M} ⊗ \mathcal{N}$ 上，就是所要的测度 $\mu \times \nu$，它在矩形上取值 $$\mu \times \nu(A \times B) = \mu(A) \nu(B)$$。∎
+**④ 落到 $\mathcal{M} ⊗ \mathcal{N}$ 上。** $\mathcal{A}$ 含所有矩形，故 $\mathcal{A}$ 生成 $\mathcal{M} ⊗ \mathcal{N} \subseteq (\mu^{*}$-可测集)；把 $\mu^{*}$ 限制在 $\mathcal{M} ⊗ \mathcal{N}$ 上，就是所要的测度 $\mu \times \nu$，它在矩形上取值 $$\mu \times \nu(A \times B) = \mu(A) \nu(B)$$。∎
 
 $>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。
 
@@ -5720,7 +5720,7 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 #### 定义引用：「本性上界与 L^∞」→ L^∞ 的性质　`def-link.esssup-linf`
 
-整条定理都是在处理 $‖\cdot ‖_\infty$。
+整条定理都是在处理 $\|\cdot \|_\infty$。
 
 #### 定义引用：「对偶配对 φ_g」→ ‖g‖_q = ‖φ_g‖　`def-link.duality-holder`
 

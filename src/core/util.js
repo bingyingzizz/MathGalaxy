@@ -188,6 +188,29 @@
     return out;
   }
 
+  /* 标题专用渲染：只认 $…$ / $$…$$ 数学，**不**做 markdown（粗体 / 斜体 / 代码）。
+     为什么单独来一个：title 里的 `*` 是常见数学记法（μ*、(L^p)*），
+     走 inlineMd 会被斜体/粗体规则吃掉；而 title 又确实需要能写 LaTeX
+     （L^p、\|f\|_\infty）。所以这里只把公式摘出来交给 KaTeX，其余原样转义。 */
+  function titleHtml(s) {
+    if (!s) return '';
+    var math = [];
+    var raw = String(s).replace(/\$\$([^$\n]+?)\$\$/g, function (m, tex) {
+      math.push(tex);
+      return '\u0000M' + (math.length - 1) + '\u0000';
+    });
+    raw = raw.replace(/\$([^$\n]+?)\$/g, function (m, tex) {
+      math.push(tex);
+      return '\u0000M' + (math.length - 1) + '\u0000';
+    });
+    var out = escapeHtml(raw);
+    return out.replace(/\u0000M(\d+)\u0000/g, function (m, idx) {
+      var tex = math[+idx];
+      if (MG.renderInlineMath) return MG.renderInlineMath(tex);
+      return '<code>' + escapeHtml(tex) + '</code>';
+    });
+  }
+
   function blockMath(tex) {
     if (MG.renderBlockMath) {
       var html = MG.renderBlockMath(tex);
@@ -310,6 +333,7 @@
     plain: plain,
     truncate: truncate,
     md: md,
-    inlineMd: inlineMd
+    inlineMd: inlineMd,
+    titleHtml: titleHtml
   };
 })(typeof window !== 'undefined' ? window : globalThis);

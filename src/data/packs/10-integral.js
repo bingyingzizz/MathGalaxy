@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       label: 'L⁺',
       title: 'L⁺：非负可测函数全体',
       regions: ['analysis'],
-      tags: ['定义', '$L^{+}$'],
+      tags: ['定义', 'L⁺'],
       statement: [
         '固定测度空间 $(X, \\mathcal{M}, \\mu )$。记',
         '',
@@ -240,7 +240,7 @@ window.MG = window.MG || {};
       label: '积分有限的后果',
       title: '命题：∫ f < ∞ 时，f 几乎处处有限、支撑 σ-有限',
       regions: ['analysis'],
-      tags: ['命题', '$\\sigma$有限', '零集'],
+      tags: ['命题', 'σ-有限', '零集'],
       statement: [
         '设 $$f \\in L^+$$ 且 $$\\int f < \\infty$$。则',
         '',
@@ -316,7 +316,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'L¹', '线性'],
       statement: [
-        '$$X$$ 上可积的（实值）函数全体构成一个**实向量空间**，并且',
+        '$X$ 上可积的（实值）函数全体构成一个**实向量空间**，并且',
         '',
         '$$\\int (af + bg) = a\\int f + b\\int g\\quad  \\forall a, b \\in \\mathbb{R}$$',
         '',
@@ -353,7 +353,7 @@ window.MG = window.MG || {};
       label: 'L¹ 函数的支撑 σ-有限',
       title: '命题：f ∈ L¹ ⟹ {f ≠ 0} 是 σ-有限的',
       regions: ['analysis'],
-      tags: ['命题', '$\\sigma$有限', '支撑'],
+      tags: ['命题', 'σ-有限', '支撑'],
       statement: [
         '若 $$f \\in L^1(\\mu)$$，则',
         '',
