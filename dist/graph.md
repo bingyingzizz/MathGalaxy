@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:48:04.174Z
-> 6 星系 / 16 星团 / 214 节点 / 414 连线（强边 406，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T12:04:57.746Z
+> 6 星系 / 16 星团 / 217 节点 / 422 连线（强边 414，弱边 8）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -709,6 +709,70 @@ $$[x_n] + [y_n] := [x_n + y_n], \qquad [x_n] \cdot [y_n] := [x_n y_n]$$
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3；Folland, Real Analysis, §1.5
 
+#### 阿基米德性质　`lem.archimedean`
+*引理*　阿基米德性质与 $\mathbb{Q}$ 的稠密性
+
+设 $K$ 是一个**完备有序域**（比如 $\mathbb{R}$）。则：
+
+**(i) 阿基米德性质**：自然数在 $K$ 中没有上界 ——
+
+$$\forall x \in K,\ \exists n \in \mathbb{N} : n > x$$
+
+**(ii) $\mathbb{Q}$ 在 $K$ 中稠密**：任意两个元素之间都夹着一个有理数 ——
+
+$$\forall x, y \in K,\ x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
+
+（这里的 $\mathbb{Q}$ 指 $\mathbb{Q}$ 在 $K$ 中的嵌入像：$1$ 在 $K$ 中生成 $\mathbb{Z}$，再取分式得到 $\mathbb{Q}$。）
+
+⭐ 两条都是**完备性（确界原理）的推论**，不需要任何别的假设。
+
+它们的用处很大：
+- 证明**完备有序域的唯一性**（$\mathbb{R}$ 的良定义性）时要靠 (ii) —— 有理数在两边都稠密，才能用「有理数的像」去逼近任意元；
+- 分析里所有的「取 $n$ 足够大」「取 $\varepsilon = 1/n$」实质上都是在用 (i)；
+- (ii) 也是「用有理数逼近实数」的许可证：任何实数都是有理数的上确界。
+
+⚠ 完备性 $\implies$ 阿基米德性，但**反过来不成立**：$\mathbb{Q}$ 是阿基米德的，然而不完备。
+⚠ (ii) 中夹着的那个 $q$ 必须**严格**在两个数之间 —— 这正是「稠密」比「有任意接近的有理数」强的地方。
+
+参考：Tao, Analysis I, Ch. 5（实数的构造）；Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 完备有序域的唯一性　`thm.real-unique`
+*定理*　任何两个完备有序域同构（$\mathbb{R}$ 的良定义性）
+
+设 $K$、$K'$ 都是**完备有序域**。则存在**唯一**的双射 $f : K \to K'$，它同时保持加法、乘法与序：
+
+$$f(x + y) = f(x) + f(y), \qquad f(xy) = f(x)\,f(y), \qquad x \le y \iff f(x) \le f(y)$$
+
+也就是说：**在同构意义下只有一个完备有序域** —— 记作 $\mathbb{R}$。
+
+⭐ 这条定理才是「$\mathbb{R}$ 是良定义的」这句话的**内容**：
+
+- **存在性**由「由 Cauchy 列构造 $\mathbb{R}$」给出（造出一个具体模型）；
+- **唯一性**就是这一条（任何两个模型都同构）——所以以后说「实数系」时不必指明用的是哪个构造：戴德金分割造出来的那个、Cauchy 列造出来的那个、以及任何别的模型，全都一样。
+
+证明三步（见边）：把 $1$ 的像固定 $\implies$ $\mathbb{Q}$ 的嵌入像被唯一确定；$\implies$ 用**上确界**把映射推广到整个 $K$（这才是要用完备性的地方）；$\implies$ 唯一性靠「$\mathbb{Q}$ 在 $K$ 中稠密」把两个同构逼成同一个。
+
+⚠ 少任何一条公理，唯一性就没了：$\mathbb{Q}$ 不是唯一的有序域（$\mathbb{Q}(\sqrt{2})$ 是另一个），$\mathbb{Q}$ 与 $\mathbb{Q}(\sqrt 2)$ 作为有序域不同构，两者都满足「有序域」的全部公理。
+
+参考：Tao, Analysis I, Ch. 5（实数的构造）
+
+#### ℝ 不可数　`thm.real-uncountable`
+*定理*　实数集是稠密而不可数的：$|\mathbb{R}| = 2^{\aleph_0}$
+
+**实数集 $\mathbb{R}$ 不可数**：不存在从 $\mathbb{N}$ 到 $\mathbb{R}$ 的满射，即 $\mathbb{R}$ 不能排成一个序列。
+
+更强的结论：
+
+$$|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0} > \aleph_0$$
+
+⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\mathbb{R}$ 可以排成 $x_1, x_2, \dots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。
+
+⚠ 整段证明**只用到 $\mathbb{R}$ 的完备性**（确界原理），不需要基数理论；$|\mathbb{R}| = 2^{\aleph_0}$ 那一半是拿二进制展开与 $\mathcal{P}(\mathbb{N})$ 配对，再引用 Cantor 定理。
+
+**这条定理最反直觉的地方**：$\mathbb{Q}$ 与 $\mathbb{R}$ 都稠密、都可以逼近彼此，但 $\mathbb{Q}$ 可数（排得成一个序列）、$\mathbb{R}$ 不可数。**「稠密」与「一样多」是两回事** —— 这也正是分析必须做实数、不能只做有理数的根本原因。
+
+参考：Tao, Analysis I, Ch. 8（可数性）；Rudin, Principles of Mathematical Analysis, Ch. 2
+
 ## 星系：序理论（Order Theory）
 > 偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。
 
@@ -1181,7 +1245,12 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 
 ⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。
 
-📌 **这三组公理是「公理刻画」，不是构造**：$\mathbb{R}$ 到底存不存在？答案在「由 Cauchy 列构造 $\mathbb{R}$」那一条 —— 有理 Cauchy 列模去零列就是一个模型，而且**任何两个完备有序域同构**，所以「$\mathbb{R}$」是良定义的。（另一条等价的路是戴德金分割。）
+📌 **这三组公理是「公理刻画」，不是构造** —— 所以有件事必须交代清楚：
+
+- **存在性**：答案在「由 Cauchy 列构造 $\mathbb{R}$」那一条 —— 有理 Cauchy 列模去零列就是一个满足这三组公理的模型（另一条等价的路是戴德金分割）；
+- **唯一性**：任何两个完备有序域都同构（见「完备有序域的唯一性」）—— 所以「$\mathbb{R}$」在同构意义下是良定义的，不必指明用的是哪个构造。
+
+📌 由这三条推出来的、后面到处要用的性质：**阿基米德性质**与 **$\mathbb{Q}$ 在 $\mathbb{R}$ 中稠密**（见「阿基米德性质」）；$\mathbb{R}$ 还**不可数**（$|\mathbb{R}| = 2^{\aleph_0}$）—— 「稠密」与「一样多」是两件事。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
@@ -6769,6 +6838,103 @@ Cauchy 列、零列都是**有理数列**：$\varepsilon$ 取正有理数，绝�
 
 $L^1$ 的元素不是函数本身，而是**函数在 a.e. 相等下的等价类** —— 后面 $L^p$、RN 导数用的是同一个手法。
 
+#### 定义引用：「有理数 ℚ」→ 阿基米德性质　`dep.rat-archimedean`
+
+「$\mathbb{Q}$ 在 $K$ 中稠密」里的 $\mathbb{Q}$ 就是有理数集在 $K$ 中的嵌入像。
+
+#### 定义引用：「实数系 ℝ」→ 完备有序域的唯一性　`dep.real-unique`
+
+唯一性定理的陈述里说的「完备有序域」就是这条定义的三组公理。（它回答了「$\mathbb{R}$ 这个记号良不良定义」：存在性由构造给出，唯一性由这条定理给出。）
+
+#### 定义引用：「可数与不可数」→ ℝ 不可数　`dep.countable-uncountable`
+
+定理说的就是「$\mathbb{R}$ **不可数**」。
+
+#### 定义引用：「基数 |A|」→ ℝ 不可数　`dep.cardinal-uncountable`
+
+结论写成基数就是 $|\mathbb{R}| = 2^{\aleph_0} > \aleph_0$。
+
+#### 定义引用：「Cantor 定理」→ ℝ 不可数　`dep.cantor-uncountable`
+
+后半句 $2^{\aleph_0} > \aleph_0$ 用的就是 Cantor 定理（$|A| < |\mathcal{P}(A)|$）。
+
+#### 实数系 ℝ ⟹ 阿基米德性质　`imp.archimedean`
+*完备性 ⟹ 阿基米德性质 + ℚ 稠密*
+
+设 $K$ 是完备有序域（把 $\mathbb{N}$、$\mathbb{Z}$、$\mathbb{Q}$ 按 $1$ 生成的子域嵌进去看）。
+
+**(i) 自然数无上界。** 反设 $\mathbb{N}$ 在 $K$ 中有上界。由**完备性**，$s := \sup \mathbb{N}$ 存在。$s - 1 < s$，故 $s - 1$ 不是上界，于是存在 $n \in \mathbb{N}$ 使 $n > s - 1$。但那样 $n + 1 > s$，而 $n + 1 \in \mathbb{N}$ —— 与 $s$ 是上界矛盾。故
+
+$$\forall x \in K, \exists n \in \mathbb{N}: n > x$$
+
+（顺带一句：若 $x > 0$，把 $n$ 换成 $n + 1$ 还能保证 $n \ge 1$、$1/n < x$。）
+
+**(ii) $\mathbb{Q}$ 稠密。** 设 $x < y$，则 $y - x > 0$。由 (i)（取 $x$ 换成 $1/(y-x)$ 的用法）可取 $n \in \mathbb{N}$，$n \ge 1$，使
+
+$$n (y - x) > 1, \qquad \text{即}\quad \frac{1}{n} < y - x$$
+
+再对实数 $nx$ 用一次 (i) 的整数版本：存在 $m \in \mathbb{Z}$ 使
+
+$$m \le nx < m + 1$$
+
+（「整数版本」：先用 (i) 取 $k > nx$，再从 $\{0, 1, \dots, k\}$ 中取最小的使 $\ge nx$ 的那个。）令 $q := (m+1)/n \in \mathbb{Q}$。则
+
+- $q > x$：由 $nx < m + 1$ 两边除以 $n > 0$；
+- $q < y$：由 $q = \frac{m+1}{n} \le \frac{nx + 1}{n} = x + \frac{1}{n} < x + (y - x) = y$。
+
+故 $x < q < y$，$\mathbb{Q}$ 在 $K$ 中稠密。$\blacksquare$
+
+> ⭐ 注意 (i) 的证明只用了「$\mathbb{N}$ 的每个元都有后继」与「上确界存在」这两件事 —— 这就是为什么**完备性蕴含阿基米德性**。
+
+#### 阿基米德性质 ⟹ 完备有序域的唯一性　`imp.real-unique`
+*ℚ 稠密 ⟹ 完备有序域在同构意义下唯一*
+
+设 $K$、$K'$ 是完备有序域。分三步造出唯一的同构 $f : K \to K'$。
+
+**① $\mathbb{Q}$ 的部分被唯一确定。** 任何保 $1$ 的域同态都把 $\mathbb{Z}$ 送到 $\mathbb{Z}'$：$n \mapsto n'$（加法与乘法都由 $1$ 递推地定出来），再取分式得 $\mathbb{Q} \to \mathbb{Q}'$，记作 $q \mapsto q'$。它保序（$q < r \implies r - q > 0 \implies (r-q)' > 0 \implies q' < r'$）。这一步没有选择的余地。
+
+**② 用上确界把 $f$ 推广出去。** 对 $x \in K$ 定义
+
+$$f(x) := \sup\{\, q' : q \in \mathbb{Q},\ q < x \,\} \in K'$$
+
+这个上确界存在：集合非空（(i) 阿基米德性给出一个 $q < x$）且有上界（取 $r > x$，则所有 $q < x < r$ 满足 $q' < r'$）。于是 $f$ 是**保序**的：
+
+- $x \le y \implies f(x) \le f(y)$：$\{q : q<x\} \subseteq \{q : q<y\}$；
+- $x < y \implies f(x) < f(y)$：由 $\mathbb{Q}$ 稠密取 $q, r$ 使 $x < q < r < y$，则 $f(x) \le q' < r' \le f(y)$。
+
+**保运算**：以加法为例，若 $p < x$、$q < y$，则 $p + q < x + y$，故 $f(x) + f(y) \le f(x+y)$；反向用稠密性：任取 $s < x + y$，取有理数 $u < x$ 使 $s - u < y$，则 $s < u + (s - u) < x + y$ 且 $s' \le f(x) + f(y)$，对一切 $s < x+y$ 取上确界得 $f(x+y) \le f(x) + f(y)$。两边相等。乘法同理（先把正元夹在有理数之间，再用符号规则）。
+
+**满射**：给定 $y' \in K'$，令 $x := \sup\{q \in \mathbb{Q} : q' < y'\}$（同样由阿基米德性与完备性存在）。任取有理数 $p < x < r$，则 $p' \le y' \le r'$；由 $\mathbb{Q}$ 稠密取 $p \nearrow x$、$r \searrow x$ 代入，得 $f(x) = y'$。
+
+**③ 唯一性。** 设 $g : K \to K'$ 也是这样的同构。由 ① 的「没有选择余地」，$g$ 与 $f$ 在 $\mathbb{Q}$ 上一致。任取 $x \in K$，由 $\mathbb{Q}$ 在 $K$ 中**稠密**，$x = \sup\{ q \in \mathbb{Q} : q < x \}$；又 $g$ 保序且把上确界送到上确界（保序双射 + 稠密性），故
+
+$$g(x) = g\big(\sup\{q : q < x\}\big) = \sup\{g(q) : q < x\} = \sup\{q' : q < x\} = f(x)$$
+
+所以 $f = g$：**同构存在且唯一**。$\blacksquare$
+
+> ⭐ 三步里每一步都在用前面的准备：① 只用到「$1$ 生成 $\mathbb{Q}$」；② 才真正用**完备性**（两次取上确界）；③ 用的是**$\mathbb{Q}$ 稠密**。少任何一条，唯一性就不成立。
+
+#### 实数系 ℝ ⟹ ℝ 不可数　`imp.real-uncountable`
+*完备性 ⟹ ℝ 不可数（闭区间套 + 对角线）*
+
+反设 $\mathbb{R} = \{x_1, x_2, x_3, \dots\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。
+
+**① 二分法造出一串闭区间。** 取 $I_0 := [0, 1]$。已知 $I_{n-1} = [a_{n-1}, b_{n-1}]$ 后，令 $m_n := (a_{n-1} + b_{n-1})/2$，取
+
+$$I_n := \begin{cases} [a_{n-1}, m_n], & x_n > m_n \\ [m_n, b_{n-1}], & x_n \le m_n \end{cases}$$
+
+于是 $x_n \notin I_n$，且 $I_0 \supseteq I_1 \supseteq I_2 \supseteq \cdots$，长度 $b_n - a_n = 2^{-n} \to 0$。
+
+**② 完备性给出公共点。** 令 $A := \{a_n\}$。$A$ 非空（$a_0 = 0$）且有上界（$1$ 就是上界），故由**确界原理** $a := \sup A$ 存在。
+
+**$a \in I_n$ 对每个 $n$ 成立**：一方面 $a \ge a_n$（上界）；另一方面对 $k \ge n$ 有 $a_k \le b_k \le b_n$，故 $b_n$ 是 $A$ 的上界，于是 $a \le b_n$。
+
+**③ 矛盾。** 由 ① 知 $x_n \notin I_n$，由 ② 知 $a \in I_n$，所以 $a \ne x_n$ 对**一切** $n$ 成立 —— 但 $a \in \mathbb{R} = \{x_1, x_2, \dots\}$，与序列穷尽了 $\mathbb{R}$ 矛盾。故 $\mathbb{R}$ 不可数。$\blacksquare$
+
+**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\mathbb{R} \hookrightarrow \mathcal{P}(\mathbb{N})$；反过来 $\mathcal{P}(\mathbb{N}) \to \mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0}$。再由 **Cantor 定理** $|\mathcal{P}(\mathbb{N})| > |\mathbb{N}| = \aleph_0$，即
+
+$$|\mathbb{R}| = 2^{\aleph_0} > \aleph_0$$
+
 #### Cauchy 列与零列 ⟹ 由 Cauchy 列构造 ℝ　`imp.real-completion`
 *Cauchy 列模去零列 ⟹ 完备有序域*
 
@@ -7546,7 +7712,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **集合的构造 ↔ 拓扑空间**　3 条节点级连线
 - **拓扑空间 ↔ 度量空间**　3 条节点级连线
 - **数系的构造 ↔ ZFC 公理系统**　2 条节点级连线
-- **关系与选择 ↔ 数系的构造**　4 条节点级连线
+- **关系与选择 ↔ 数系的构造**　7 条节点级连线
+- **实数与区间 ↔ 数系的构造**　4 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **极大原理 ↔ 序结构**　7 条节点级连线
 - **序结构 ↔ 关系与选择**　2 条节点级连线
