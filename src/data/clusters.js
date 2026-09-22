@@ -97,6 +97,12 @@ MG.clusters = [
     name: '符号测度与分解',
     parent: 'analysis',
     desc: '造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。'
+  },
+  {
+    id: 'analysis.differentiation',
+    name: 'ℝⁿ 上的微分',
+    parent: 'analysis',
+    desc: '造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
