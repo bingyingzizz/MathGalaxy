@@ -37,14 +37,16 @@ MG.trunk = [
   'def.function',              //  5 层  函数
   'def.quotient-set',          //  5 层  商集与等价类 —— ℤ、ℚ、ℝ 用的是同一招
   'def.int',                   //  6 层  整数 ℤ = (ℕ×ℕ)/~（差相同）
-  'def.rat',                   //  7 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）
-  'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
-  'def.cauchy-null',           //  9 层  有理 Cauchy 列 / 零列 / 等价
-  'def.real',                  // 10 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
-  'thm.real-ordered-field',    // 11 层  ℝ 是完备有序域（确界原理）—— 性质是定理
-  'def.sup',                   // 11 层  上确界与下确界
-  'def.interval',              // 11 层  区间
-  'def.sequence-limit',        // 11 层  数列极限
+  'def.field',                 //  6 层  域 = 集合 + 两个运算 + 公理（代数语言本身）
+  'def.ordered-field',         //  7 层  有序域 = 域 + 与运算相容的全序
+  'def.rat',                   //  8 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）—— 第一个有序域
+  'def.abs',                   //  9 层  绝对值 —— Cauchy 列的定义就要用它
+  'def.cauchy-null',           // 10 层  有理 Cauchy 列 / 零列 / 等价
+  'def.real',                  // 11 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
+  'thm.real-ordered-field',    // 12 层  ℝ 是完备有序域（确界原理）—— 性质是定理
+  'def.sup',                   // 12 层  上确界与下确界
+  'def.interval',              // 12 层  区间
+  'def.sequence-limit',        // 12 层  数列极限
 
   /* ========================== 二、序与选择（工具） ========================== */
   'def.poset',                 //  5 层  偏序集

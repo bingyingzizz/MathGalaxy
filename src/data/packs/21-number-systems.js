@@ -149,7 +149,7 @@ window.MG = window.MG || {};
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '绝对值', '序'],
       statement: [
-        '设 $K$ 是一个**有序域**（眼下指的是：$\\mathbb{Q}$，以及后面造出来的 $\\mathbb{R}$），$x \\in K$。定义',
+        '设 $K$ 是**有序域**（$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都是），$x \\in K$。定义',
         '',
         '$$|x| := \\begin{cases} x, & x \\ge 0 \\\\ -x, & x < 0 \\end{cases} \\qquad\\text{即}\\qquad |x| = \\max\\{x, -x\\}$$',
         '',
@@ -404,11 +404,46 @@ window.MG = window.MG || {};
       note: '「等价」在这里就是商集意义上的**等价关系**：把同一个实数的不同逼近方式粘成一类。'
     },
     {
-      id: 'dep.rat-abs',
+      id: 'dep.ordered-rat',
       kind: 'definition',
-      definition: 'def.rat',
+      definition: 'def.ordered-field',
+      usedBy: 'def.rat',
+      note: '⭐ 造完 $\\mathbb{Q}$ 的第一件事是**核对它是哪一种结构**：四则运算齐全（域）、序与运算相容（有序域）—— 它是本图里第一个**有序域**。'
+    },
+    {
+      id: 'dep.ordered-abs',
+      kind: 'definition',
+      definition: 'def.ordered-field',
       usedBy: 'def.abs',
-      note: '绝对值的第一批实例落在 $\\mathbb{Q}$ 上 —— 造 $\\mathbb{R}$ 之前，$|x|$ 只能是 $\\mathbb{Q}$ 上的绝对值。'
+      note: '绝对值定义在**有序域**上（$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都是）。'
+    },
+    {
+      id: 'dep.ordered-triangle',
+      kind: 'definition',
+      definition: 'def.ordered-field',
+      usedBy: 'thm.triangle',
+      note: '三角不等式对任意有序域成立 —— 证明只用到分情形与「序与加法相容」。'
+    },
+    {
+      id: 'dep.ordered-realfield',
+      kind: 'definition',
+      definition: 'def.ordered-field',
+      usedBy: 'thm.real-ordered-field',
+      note: '要证的就是「构造出来的 $\\mathbb{R}$ 是一个**完备有序域**」：前两组公理是「有序域」，第三组是不属于这条定义的额外一条。'
+    },
+    {
+      id: 'dep.ordered-archimedean',
+      kind: 'definition',
+      definition: 'def.ordered-field',
+      usedBy: 'lem.archimedean',
+      note: '「$\\mathbb{N}$ 在 $K$ 中无上界」里的 $K$ 是**有序域**（$\\mathbb{N}$ 按 $1$ 生成的子结构嵌在里面）。'
+    },
+    {
+      id: 'dep.ordered-unique',
+      kind: 'definition',
+      definition: 'def.ordered-field',
+      usedBy: 'thm.real-unique',
+      note: '定理说的「完备有序域」就是这条定义再加上完备性。'
     },
     {
       id: 'dep.abs-cauchy-null',
