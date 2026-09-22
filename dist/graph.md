@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:39:40.855Z
-> 6 星系 / 16 星团 / 214 节点 / 413 连线（强边 405，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:48:04.174Z
+> 6 星系 / 16 星团 / 214 节点 / 414 连线（强边 406，弱边 8）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -584,11 +584,11 @@ $$A / \sim\ := \{ [a] : a \in A \}$$
 
 ⭐ 这是数学里「造新对象」最常用的手法：手头只有一类东西，却想得到另一类，就把前者按某个等价关系**粘**起来。本星图里至少四处用到：
 
-- $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/\sim$、$\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$；
+- $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/\sim$、$\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$、$\mathbb{R} = \{$有理 Cauchy 列$\}/\sim$；
 - $L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个）；
 - RN 导数 $d\nu/d\mu$ 也是一个等价类，而不是单个函数。
 
-⚠ 等价类的**代表元不唯一**，所以凡是要在商集上定义的东西（运算、序、范数），都必须先证明「与代表元的选取无关」，也就是**良定义**。这是初学商构造时最容易漏掉的一步。
+⚠ 等价类的**代表元不唯一**，所以凡是要在商集上定义的东西（运算、序、范数），都必须先证明「与代表元的选取无关」，也就是**良定义**。这是商构造最容易漏掉的一步。
 
 参考：Kunen, Set Theory, I.5
 
@@ -648,52 +648,66 @@ $$\frac{a}{b} + \frac{c}{d} := \frac{ad + bc}{bd}, \qquad \frac{a}{b} \cdot \fra
 
 参考：Kunen, Set Theory, I.5
 
-#### 戴德金分割　`def.dedekind-cut`
-*定义*　戴德金分割（Dedekind Cut）
+#### Cauchy 列与零列　`def.cauchy-null`
+*定义*　有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）
 
-$\mathbb{Q}$ 的子集 $\alpha \subseteq \mathbb{Q}$ 是一个**分割**，当且仅当：
+设 $(x_n)$ 是**有理数列**（即函数 $\omega \to \mathbb{Q}$），$|x|$ 是 $\mathbb{Q}$ 上的绝对值，$\varepsilon$ 一律取**正有理数**（此时还不需要实数）。
 
-1. $\alpha \ne \emptyset$ 且 $\alpha \ne \mathbb{Q}$；
-2. **向下封闭**：$q \in \alpha$ 且 $p < q \implies p \in \alpha$；
-3. $\alpha$ 中**没有最大元**。
+$(x_n)$ 是 **Cauchy 列**：
 
-令 $\mathbb{R} := \{ \alpha : \alpha$ 是分割 $\}$，并在其上定义
+$$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \varepsilon$$
 
-$$\alpha \le \beta :\iff \alpha \subseteq \beta$$
+$(x_n)$ 是**零列**：
 
-⭐ 直观：分割就是「把数轴切一刀」的位置 —— $\alpha$ 是切点**左边**的全部有理数。第三条（没有最大元）的意思是「切在缺口上，而不是切在某个有理数上」。
+$$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
 
-**关键在于切点本身不必是有理数**：
+两个 Cauchy 列**等价**：
 
-$$\alpha_{\sqrt{2}} = \{ q \in \mathbb{Q} : q < 0 \text{ 或 } q^2 < 2 \}$$
+$$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ 是零列}$$
 
-这个 $\alpha_{\sqrt{2}}$ 满足三条公理（向下封闭、无最大元，因为它逼近 $\sqrt{2}$ 却取不到），但**没有任何有理数 $q$ 使 $\alpha_q = \alpha_{\sqrt{2}}$** —— 它就是一个新对象。把所有这些「缺口」本身收进来当元素，$\mathbb{R}$ 就造好了。
+（$\sim$ 是等价关系：自反、对称显然，传递由三角不等式。）
 
-⭐ 这个构造**完全不用极限、不用序列、不用距离**，只用一个序关系：所以它属于集合论/序理论，任何有序域都可以照做。
+⭐ **为什么要「模去零列」**：同一个实数有很多种逼近方式 —— 比如 $(1, 1, 1, \dots)$ 与 $(1.1,\ 1.01,\ 1.001,\ \dots)$ 都该代表 $1$，而它们的差是零列。等价类把「同一个数的不同逼近」粘成一件事。
 
-参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+⚠ 这里**只用 $\mathbb{Q}$ 的序与绝对值**（$\varepsilon$ 取正有理数、绝对值是 $\mathbb{Q}$ 上的），所以**不构成循环**：这一步在造出 $\mathbb{R}$ 之前完全说得通。度量空间里那套「距离、Cauchy 列、完备」的语言，正是从这里的做法抽出来的。
 
-#### 由分割构造 ℝ　`thm.real-construction`
-*定理*　戴德金分割全体是一个完备有序域
+三条后面要用的事实：
+- Cauchy 列**有界**；
+- Cauchy 列的**和、差、积仍是 Cauchy 列**；
+- **不是零列的 Cauchy 列，从某一项起 $|x_n| \ge \delta$**（某个正有理数 $\delta$）—— 于是它的倒数（去掉前面有限项）也是 Cauchy 列。第三条是「乘法有逆元」的全部依据。
 
-在 $\mathbb{R} = \{$分割$\}$ 上取上述的序 $\alpha \le \beta \iff \alpha \subseteq \beta$，并定义
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
-$$\alpha + \beta := \{ p + q : p \in \alpha,\ q \in \beta \}, \qquad 0 := \{ q \in \mathbb{Q} : q < 0 \}$$
-$$-\alpha := \{ q \in \mathbb{Q} : \exists r > q,\ -r \notin \alpha \}, \qquad 1 := \{ q \in \mathbb{Q} : q < 1 \}$$
+#### 由 Cauchy 列构造 ℝ　`thm.real-completion`
+*定理*　ℝ := 有理 Cauchy 列 / 零列，是一个完备有序域
 
-乘法按 $\alpha, \beta \ge 0$ 的情形先定义（$\alpha \beta := \{ pq : p \in \alpha, q \in \beta,\ p, q \ge 0 \} \cup \{q < 0\}$），再用符号规则推广。则 $(\mathbb{R}, +, \cdot, \le)$ 是**完备有序域**：
+在 $\{$有理 Cauchy 列$\}$ 上取上述等价关系 $\sim$，令
 
-**(i)** 是一个域；**(ii)** 序与运算相容；**(iii)** 每个**非空有上界**的子集都有**上确界**。
+$$\mathbb{R} := \{ \text{有理 Cauchy 列} \} / \sim$$
 
-⭐ (iii) 的证明只有一行：一族分割 $\{\alpha_i\}_{i \in I}$ 的上确界就是它们的**并** $\bigcup_i \alpha_i$（有上界保证这个并不是 $\mathbb{Q}$ 全体；「向下封闭」与「无最大元」在并之下都保持）。
+元素记作 $[x_n]$。运算**逐项**定义：
 
-也就是说：**$\mathbb{R}$ 的完备性不再是公理，而是「并」这个运算的直接后果。**
+$$[x_n] + [y_n] := [x_n + y_n], \qquad [x_n] \cdot [y_n] := [x_n y_n]$$
 
-⚠ 代价是域运算要逐条验证（结合律、分配律、乘法的符号情形），写起来长，但全是机械的。
+序这样定义：称 $[x_n] > 0$，当且仅当存在**正有理数** $q$ 与 $N$，使 $n \ge N$ 时恒有 $x_n \ge q$；一般的序由 $[y_n] \ge [x_n] :\iff [y_n - x_n] \ge 0$ 给出。
 
-⭐ 另一条同样可行的路是 **Cauchy 列的等价类**（Cantor 的补全）：两条路造出来的东西同构。Cauchy 那条更「度量」，戴德金这条更「序」——本图里两条路都能接上：一条走「完备」与「完备化」，一条走「上确界」。
+则 $(\mathbb{R}, +, \cdot, \le)$ 是**完备有序域**：
 
-参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+**(i)** 是一个域（$0 := [$零列$]$，$1 := [(1,1,1,\dots)]$）；
+**(ii)** 序与运算相容；
+**(iii)** 每个**非空有上界**的子集都有**上确界**。
+
+并且 $\mathbb{Q}$ 通过**常数列** $x \mapsto [(x, x, x, \dots)]$ 保序、保运算地嵌入 $\mathbb{R}$，像在 $\mathbb{R}$ 中稠密。
+
+⭐ 这条路的**一般化就是「度量空间的完备化」**：把 $\mathbb{Q}$ 换成任意度量空间 $(X, d)$，把 $|x_m - x_n|$ 换成 $d(x_m, x_n)$，照样「取 Cauchy 列、模去零列」—— 做法一模一样，证明的每一步都能照搬。反过来说，$\mathbb{R}$ 的构造就是完备化这个构造的**原型**。
+
+(iii) 的走法分两步（见边的证明）：先证**「$\mathbb{R}$ 里每个 Cauchy 列都收敛」**（用对角线法从代表元里抽出一个有理 Cauchy 列），再由 Cauchy 完备推出确界原理（二分法造递增列与递减上界列，夹逼到同一个极限）。
+
+⭐ 与另一条路的对比：戴德金分割只用一个序关系、完全不用序列，代价是要先讨论 $\mathbb{Q}$ 的任意子集；完备化这条路只用到**序列**，代价是商集与等价类要多花笔墨。两条路造出来的 $\mathbb{R}$ 同构，结论一样。
+
+⚠ 常见误解：以为「$\mathbb{R}$ 是 Cauchy 列的集合」。真正取的是**等价类** —— 否则不同的逼近方式会变成不同的「实数」。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3；Folland, Real Analysis, §1.5
 
 ## 星系：序理论（Order Theory）
 > 偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。
@@ -1167,7 +1181,7 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 
 ⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。
 
-📌 **这三组公理是「公理刻画」，不是构造**：$\mathbb{R}$ 到底存不存在？答案在「戴德金分割」那一条 —— 分割全体配上运算与序就是一个模型，而且**任何两个完备有序域同构**，所以「$\mathbb{R}$」是良定义的。（另一条等价的路是 Cauchy 列的等价类。）
+📌 **这三组公理是「公理刻画」，不是构造**：$\mathbb{R}$ 到底存不存在？答案在「由 Cauchy 列构造 $\mathbb{R}$」那一条 —— 有理 Cauchy 列模去零列就是一个模型，而且**任何两个完备有序域同构**，所以「$\mathbb{R}$」是良定义的。（另一条等价的路是戴德金分割。）
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
@@ -6731,19 +6745,23 @@ $\mathbb{Q}$ 建在 $\mathbb{Z} \times (\mathbb{Z}\setminus\{0\})$ 上。
 
 $\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$ —— 同样是**商集**。
 
-#### 定义引用：「子集」→ 戴德金分割　`dep.subset-cut`
+#### 定义引用：「有理数 ℚ」→ Cauchy 列与零列　`dep.rat-cauchy-null`
 
-分割是 $\mathbb{Q}$ 的一个**子集**（还要求向下封闭、没有最大元）。
+Cauchy 列、零列都是**有理数列**：$\varepsilon$ 取正有理数，绝对值也是 $\mathbb{Q}$ 上的 —— 用 $\mathbb{Q}$ 的序与四则运算就够，不必先有 $\mathbb{R}$。
 
-#### 定义引用：「有理数 ℚ」→ 戴德金分割　`dep.rat-cut`
+#### 定义引用：「函数」→ Cauchy 列与零列　`dep.function-cauchy-null`
 
-分割是「把 $\mathbb{Q}$ 切一刀」的位置 —— $\mathbb{Q}$ 的序是它唯一的原料。
+「数列」就是函数 $\omega \to \mathbb{Q}$；下标、子列都是函数语言。
 
-#### 定义引用：「戴德金分割」→ 由分割构造 ℝ　`dep.cut-real-construction`
+#### 定义引用：「商集与等价类」→ Cauchy 列与零列　`dep.quotient-cauchy-null`
 
-定理说的就是「分割全体配上这些运算与序是一个完备有序域」。
+「等价」在这里就是商集意义上的**等价关系**：把同一个实数的不同逼近方式粘成一类。
 
-#### 定义引用：「由分割构造 ℝ」→ 实数系 ℝ　`dep.construction-real`
+#### 定义引用：「Cauchy 列与零列」→ 由 Cauchy 列构造 ℝ　`dep.cauchy-null-completion`
+
+定理取的就是「Cauchy 列模去零列」这些等价类。
+
+#### 定义引用：「由 Cauchy 列构造 ℝ」→ 实数系 ℝ　`dep.completion-real`
 
 ⭐ $\mathbb{R}$ 的**公理刻画**不是凭空的：上面那条构造给出一个满足这三组公理的模型。反过来，任何两个完备有序域都同构（同构唯一性），所以「$\mathbb{R}$」是良定义的。
 
@@ -6751,30 +6769,74 @@ $\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$ —— 同样
 
 $L^1$ 的元素不是函数本身，而是**函数在 a.e. 相等下的等价类** —— 后面 $L^p$、RN 导数用的是同一个手法。
 
-#### 戴德金分割 ⟹ 由分割构造 ℝ　`imp.real-construction`
-*分割全体 ⟹ 完备有序域*
+#### Cauchy 列与零列 ⟹ 由 Cauchy 列构造 ℝ　`imp.real-completion`
+*Cauchy 列模去零列 ⟹ 完备有序域*
 
-**① 序。** $\alpha \le \beta \iff \alpha \subseteq \beta$ 显然是全序：$\subseteq$ 是偏序，而两个分割总有一个包含另一个。
+记 $\mathcal{C}$ 为有理 Cauchy 列的全体。下面把 $\mathbb{R} := \mathcal{C}/\sim$ 逐条查一遍。
 
-  事实上若 $\alpha \not\subseteq \beta$，取 $q \in \alpha \setminus \beta$；对任意 $p \in \beta$，若 $q < p$ 则由 $\beta$ 向下封闭得 $q \in \beta$，矛盾，故 $p < q$，再由 $\alpha$ 向下封闭得 $p \in \alpha$，即 $\beta \subseteq \alpha$。
+**① 运算良定义。** 设 $x \sim x'$、$y \sim y'$（即 $x_n - x'_n$、$y_n - y'_n$ 都是零列）。
 
-**② 加法良定义。** 先验证 $\alpha + \beta$ 仍是分割：非空、非全（取 $p_0 \notin \alpha$、$q_0 \notin \beta$，则 $p_0 + q_0 \notin \alpha + \beta$）、向下封闭、无最大元（$p + q$ 可被 $p' + q$ 超过）。
+加法：$|(x_n + y_n) - (x'_n + y'_n)| \le |x_n - x'_n| + |y_n - y'_n| \to 0$。
 
-**③ 逆元。** $-\alpha := \{ q : \exists r > q, -r \notin \alpha \}$ 是分割，且 $\alpha + (-\alpha) = 0$。（$\subseteq$ 方向：若 $p \in \alpha$、$q \in -\alpha$，取 $r > q$ 使 $-r \notin \alpha$，则 $p < -r$，故 $p + q < 0$。反向靠 $\mathbb{Q}$ 的稠密性逐点逼近。）
+乘法：$x_n y_n - x'_n y'_n = x_n (y_n - y'_n) + y'_n (x_n - x'_n)$，而 Cauchy 列**有界**（设 $|x_n| \le M$、$|y'_n| \le M'$），故两项各自 $\to 0$。
 
-**④ 乘法。** 先在 $\alpha, \beta \ge 0$ 时定义，逐条验证结合律、交换律与分配律（都用 $\mathbb{Q}$ 的对应性质逐点搬运）；再用 $\alpha \beta := -((-\alpha)\beta)$ 之类把符号补全。这一步最长，但全是机械验证。
+**② 域公理。** 结合、交换、分配都是逐项验证后取等价类（$\mathbb{Q}$ 满足，$\mathcal{C}$ 对 $+$、$\cdot$ 封闭）。零元 $0 := [$零列$]$、一 $1 := [(1,1,1,\dots)]$。
 
-**⑤ 完备性（关键一步）。** 设 $S \subseteq \mathbb{R}$ 非空、有上界 $\gamma$。令
+**乘法逆元**是唯一需要想法的地方：设 $x$ 不是零列。因 $x$ 是 Cauchy 列，「不是零列」意味着
 
-$$\sigma := \bigcup_{\alpha \in S} \alpha$$
+$$\exists \varepsilon > 0: \forall N, \exists n \ge N,\ |x_n| \ge \varepsilon$$
 
-  则 $\sigma$ 仍是分割：非空（$S \ne \emptyset$）；$\sigma \ne \mathbb{Q}$（因为每个 $\alpha \subseteq \gamma$，故 $\sigma \subseteq \gamma \subsetneq \mathbb{Q}$）；向下封闭（每个 $\alpha$ 都向下封闭）；无最大元（若 $q \in \sigma$，则 $q \in \alpha$ 对某个 $\alpha \in S$，而 $\alpha$ 无最大元，故有 $q' \in \alpha \subseteq \sigma$ 且 $q' > q$）。
+取这样的 $\varepsilon$，并用 Cauchy 性取 $N_0$ 使 $m, n \ge N_0$ 时 $|x_m - x_n| < \varepsilon/2$；再取 $n_0 \ge N_0$ 使 $|x_{n_0}| \ge \varepsilon$。则对一切 $n \ge N_0$：
 
-  由构造成 $\sigma \supseteq \alpha$ 对一切 $\alpha \in S$，故 $\sigma$ 是上界；而任何上界 $\eta \supseteq \alpha$（$\forall \alpha$）都满足 $\eta \supseteq \sigma$，故 $\sigma$ 是最小上界。即 $\sup S = \sigma$ 存在。$\blacksquare$
+$$|x_n| \ge |x_{n_0}| - |x_n - x_{n_0}| > \varepsilon - \varepsilon/2 = \varepsilon/2$$
 
-> ⭐ 这就是这个构造最漂亮的地方：**完备性不是公理，而是「并」这个运算的直接后果**。
+于是定义 $y_n := 0$（$n < N_0$）、$y_n := 1/x_n$（$n \ge N_0$）。$y$ 是 Cauchy 列，因为
 
-**⑥ 嵌入 $\mathbb{Q}$。** $q \mapsto \{ p : p < q \}$ 是保序、保运算的单射，所以 $\mathbb{Q}$ 可以看成 $\mathbb{R}$ 的稠密子集。
+$$|y_m - y_n| = \frac{|x_m - x_n|}{|x_m|\,|x_n|} \le \frac{4}{\varepsilon^2}\,|x_m - x_n|$$
+
+而 $[x_n y_n] = [(1,1,1,\dots)] = 1$。故每个非零元可逆。
+
+**③ 序良定义 + 全序。** $(y_n - x_n)$ 换成等价的代表元后仍是零列的平移，故「$> 0$」的定义与代表元无关。三种情形恰有一种成立：
+
+- $x$ 是零列 $\implies [x] = 0$；
+- 否！则由 ② 的估计，从某项起 $|x_n| \ge \delta$；再用 Cauchy 性（取 $\varepsilon = \delta$）知符号最终恒定：若某两项异号则 $|x_m - x_n| \ge 2\delta$，矛盾。于是要么最终 $x_n \ge \delta$（正），要么最终 $x_n \le -\delta$（负）。
+
+序与运算的相容性（$\alpha \le \beta \implies \alpha + \gamma \le \beta + \gamma$；$\alpha \ge 0, \beta \ge 0 \implies \alpha\beta \ge 0$）都逐项验证。
+
+**④ 嵌入与稠密。** $x \mapsto [(x,x,x,\dots)]$ 是保序、保运算的单射。稠密：若 $\alpha < \beta$，取代表元 $x \in \alpha$、$y \in \beta$ 与正有理数 $q$ 使最终 $x_n + q \le y_n$，则由 $\mathbb{Q}$ 的稠密性可取有理数 $r$ 夹在中间，常数列 $r$ 满足 $\alpha < [r] < \beta$。
+
+**⑤ $\mathbb{R}$ 完备（Cauchy 完备）。** 设 $(\alpha_k)$ 是 $\mathbb{R}$ 中的 Cauchy 列，$x^{(k)} \in \alpha_k$ 是代表元。对每个 $k$，由 $(x^{(k)}_n)_n$ 的 Cauchy 性取 $N_k$，令
+
+$$y_k := x^{(k)}_{N_k}$$
+
+（对角抽取。）断言 $(y_k)$ 是有理 Cauchy 列：给定 $\varepsilon > 0$，由 $(\alpha_k)$ 的 Cauchy 性取 $K$，使 $k, j \ge K$ 时 $|\alpha_k - \alpha_j| < \varepsilon/3$，即
+
+$$\exists N, \forall n \ge N : |x^{(k)}_n - x^{(j)}_n| < \varepsilon/3$$
+
+再取 $K' \ge K$ 使 $k \ge K'$ 时 $1/k < \varepsilon/3$，并对 $k, j \ge K'$ 取 $n \ge \max(N_k, N_j, N)$：
+
+$$|y_k - y_j| \le |y_k - x^{(k)}_n| + |x^{(k)}_n - x^{(j)}_n| + |x^{(j)}_n - y_j| < \tfrac{\varepsilon}{3} + \tfrac{\varepsilon}{3} + \tfrac{\varepsilon}{3} = \varepsilon$$
+
+于是 $\alpha := [y_k] \in \mathbb{R}$。同一组估计给出 $|\alpha_k - \alpha| \le 2\varepsilon/3$（取 $j$ 充分大），故 $\alpha_k \to \alpha$。**每个 Cauchy 列在 $\mathbb{R}$ 中收敛。**
+
+**⑥ 由 Cauchy 完备推出确界原理。** 设 $S \subseteq \mathbb{R}$ 非空、有上界 $\beta_0$，取 $\alpha_0 \in S$。归纳地造两个数列：已知 $\alpha_{n-1} \in S$ 与上界 $\beta_{n-1}$，取中点 $m_n := (\alpha_{n-1} + \beta_{n-1})/2$：
+
+- 若 $m_n$ 是 $S$ 的上界，则置 $\beta_n := m_n$、$\alpha_n := \alpha_{n-1}$；
+- 否则有 $s \in S$ 使 $s > m_n$，置 $\alpha_n := s$、$\beta_n := \beta_{n-1}$。
+
+于是 $(\alpha_n)$ 递增、$(\beta_n)$ 递减，且
+
+$$\beta_n - \alpha_n = \frac{\beta_0 - \alpha_0}{2^n} \xrightarrow{\ n \to \infty\ } 0$$
+
+两个列都是 Cauchy 列（单调 + 步长趋于 $0$），由 ⑤ 收敛到同一个 $\alpha \in \mathbb{R}$。
+
+**$\alpha$ 是上界**：若不然，存在 $s \in S$ 使 $s > \alpha$。取 $n$ 充分大使 $\beta_n - \alpha_n < s - \alpha$；由 $\alpha_n \to \alpha$ 又有 $\alpha \le \beta_n$ 与 $\alpha_n \le \alpha$，于是 $\alpha_n + (s - \alpha) > \beta_n$，而 $\alpha_n \in S$ 且 $s \in S$ 都是 $\beta_n$ 下面的元素 —— 与「$\beta_n$ 是上界」矛盾。
+
+**$\alpha$ 是最小上界**：任何上界 $\gamma$ 都满足 $\gamma \ge \alpha_n$（$\alpha_n \in S$），取极限得 $\gamma \ge \alpha$。
+
+故 $\alpha = \sup S$ 存在，确界原理成立。$\blacksquare$
+
+> ⭐ 注意 ⑤ 与 ⑥ 的位置：**先有「Cauchy 列收敛」，才有确界原理**。这与戴德金分割那条路的顺序正好相反（那里完备性是「并」的直接后果），两条路殊途同归。
 
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
@@ -7484,7 +7546,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **集合的构造 ↔ 拓扑空间**　3 条节点级连线
 - **拓扑空间 ↔ 度量空间**　3 条节点级连线
 - **数系的构造 ↔ ZFC 公理系统**　2 条节点级连线
-- **关系与选择 ↔ 数系的构造**　2 条节点级连线
+- **关系与选择 ↔ 数系的构造**　4 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **极大原理 ↔ 序结构**　7 条节点级连线
 - **序结构 ↔ 关系与选择**　2 条节点级连线
