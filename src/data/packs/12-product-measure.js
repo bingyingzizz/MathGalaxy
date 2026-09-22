@@ -129,7 +129,7 @@ window.MG = window.MG || {};
         '',
         '于是 $P$ 对 $\\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$ 中所有集合成立。',
         '⚠ 与「测度的构造」里那条「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 + 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。',
-        '📌 笔记第 6 页把这条写得很清楚：标准形式就是「$\\mathcal{A}$ 是代数」这个前提。第 2 页上那条 $\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E})$ 是它的**加强版**（条件松一档，只要求 $\\mathcal{E}$ 的补、并落进 $\\mathfrak{m}(\\mathcal{E})$），见「单调类定理」节点。'
+        '📌 标准形式就是「$\\mathcal{A}$ 是代数」这个前提。而 $\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E})$ 是它的**加强版**（条件松一档，只要求 $\\mathcal{E}$ 的补、并落进 $\\mathfrak{m}(\\mathcal{E})$），见「单调类定理」节点。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37', 'Halmos, Measure Theory, §6']
     },
@@ -225,7 +225,7 @@ window.MG = window.MG || {};
       notes: [
         '为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}⊗\\mathcal{N}$ 里。',
         '代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\\mathcal{L}$ 里多出来的那些集合只在零集上有区别。',
-        '证明的核心（笔记里的原话：「先证 $f \\ge 0$。若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}⊗\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**」）。'
+        '证明的核心：先证 $f \\ge 0$。若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}⊗\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.39']
     },
@@ -243,7 +243,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这就是为什么必须单独有「完备情形的 $F$–$T$」：实际用的时候（比如 $\\mathbb{R}^{2}$ 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 $\\mu \\times \\nu$。',
-        '笔记第 7 页特意把这一句单独写出来（$"Notice that if \\mu , \\nu are complete, \\mu \\times \\nu often incomplete."$），说明这是个容易踩的坑。'
+        '⚠ 容易踩的坑：$\\mu$、$\\nu$ 都完备时 $\\mu \\times \\nu$ 仍然可能**不完备**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.5']
     }
@@ -310,7 +310,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int \\nu(E_x) d\\mu(x) = \\nu(B)\\cdot\\mu(A) = \\mu \\times \\nu(A \\times B)$$',
         '',
-        '**③ $\\mathcal{C}$ 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 $\\mathcal{C}$ 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) \\nearrow  \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = lim \\int\\nu((E_n)_x)d\\mu = lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。',
+        '**③ $\\mathcal{C}$ 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 $\\mathcal{C}$ 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) \\nearrow  \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = \\lim \\int\\nu((E_n)_x)d\\mu = \\lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。',
         '',
         '**④ $\\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。',
         '',
@@ -341,9 +341,9 @@ window.MG = window.MG || {};
         '',
         '$$g_n(x) = \\int f_n(x, y) d\\nu(y), \\quad  g(x) = \\int f(x, y) d\\nu(y)$$',
         '',
-        '由 $$f_n \\uparrow  f$$ 与积分的单调性，$$\\{g_n\\}$$ 递增；由 **MCT**，$$g = lim_n g_n$$ 且',
+        '由 $$f_n \\uparrow  f$$ 与积分的单调性，$$\\{g_n\\}$$ 递增；由 **MCT**，$$g = \\lim_n g_n$$ 且',
         '',
-        '$$\\int g d\\mu = lim_n \\int g_n d\\mu$$',
+        '$$\\int g d\\mu = \\lim_n \\int g_n d\\mu$$',
         '',
         '再由 ② 对每个 $n$ 的三重等式，',
         '',
@@ -351,11 +351,11 @@ window.MG = window.MG || {};
         '',
         '于是',
         '',
-        '$$\\int_X ( \\int_Y f d\\nu ) d\\mu = lim_n \\int f_n d(\\mu \\times \\nu) = \\int f d(\\mu \\times \\nu)$$',
+        '$$\\int_X ( \\int_Y f d\\nu ) d\\mu = \\lim_n \\int f_n d(\\mu \\times \\nu) = \\int f d(\\mu \\times \\nu)$$',
         '',
         '（最后一步又用一次 MCT。）另一边对称。**这就是 Tonelli，全程不需要可积性。**',
         '',
-        '**④ Fubini。** 设 $$f \\in L^1(\\mu \\times \\nu)$$。把 $f$ 拆成 $$Re f^+, Re f^-, Im f^+, Im f^-$$ 四个非负部分，对每一部分用 ③。由',
+        '**④ Fubini。** 设 $$f \\in L^1(\\mu \\times \\nu)$$。把 $f$ 拆成 $$\\operatorname{Re} f^+, \\operatorname{Re} f^-, \\operatorname{Im} f^+, \\operatorname{Im} f^-$$ 四个非负部分，对每一部分用 ③。由',
         '',
         '$$\\int |f| d(\\mu \\times \\nu) < \\infty$$',
         '',
@@ -388,9 +388,9 @@ window.MG = window.MG || {};
         '',
         '**④ 由线性推广到非负简单函数，再用 MCT 推广到一切 $$f \\ge 0$$。** 关键点：完备化只多出「含在零集里的部分」，而这部分对积分的贡献恒为 0，所以整段论证不会被破坏。',
         '',
-        '**⑤ 一般情形**：把 $f$ 拆成 $$Re f^\\pm , Im f^\\pm $$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎',
+        '**⑤ 一般情形**：把 $f$ 拆成 $$\\operatorname{Re} f^\\pm , \\operatorname{Im} f^\\pm $$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎',
         '',
-        '$>$ 笔记里的原话把要点概括得很准：**「应该是核心思想，其余都类似。」** —— 核心就是把 $E$ 拆成 $F \\sqcup G$，$F$ 归老定理、$G$ 归「截口都是零集」。'
+        '$>$ 要点：**核心就是把 $E$ 拆成 $F \\sqcup G$** —— $F$ 归老定理、$G$ 归「截口都是零集」。'
       ].join('\n')
     },
 
@@ -417,7 +417,7 @@ window.MG = window.MG || {};
         '',
         '$>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。'
       ].join('\n'),
-      note: '这段论证的方向是对的，但「$G \\notin \\mathfrak{B} ⊗ \\mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）笔记里没有展开，我按标准做法补了骨架；如果你想写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。'
+      note: '⚠ 「$G \\notin \\mathfrak{B} ⊗ \\mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）这里只给了骨架；要写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。'
     },
 
     /* ------------------------- 定义引用（蓝线） ------------------------- */

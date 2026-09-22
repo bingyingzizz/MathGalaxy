@@ -172,7 +172,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '其实只要 $X$ 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。',
-        '第 1 页笔记里把它和「$X$ 完备」并列写在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\\implies A$ 完备」。'
+        '把它和「$X$ 完备」放在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\\implies A$ 完备」。'
       ].join('\n\n'),
       refs: ['Munkres, Topology, §26']
     },
@@ -194,8 +194,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠ **「$X$ 完备」这个前提不能省。** 理由是中间那一步：$A$ 作为子空间完备 $\\iff A$ 在 $X$ 中闭 —— 这一步要用 $X$ 完备。少了它，$A$ 闭 $A$ 全有界推不出 $A$ 紧。',
-        '这也是 **Heine–Borel** 的推广：$\\mathbb{R}^{n}$ 完备，而在 $\\mathbb{R}^{n}$ 中 $A$ 有界 $\\iff A$ 全有界，于是「有界闭集紧」正是它的特例。',
-        '📌 笔记原稿里这一行是**缩进**写在「Prop. X 完备.」下面、而且**没有自己的 Prop. 前缀** —— 本人 2026-09-22 确认：**「$X$ 完备」就是这条的前提**，两行合起来是一个命题。'
+        '这也是 **Heine–Borel** 的推广：$\\mathbb{R}^{n}$ 完备，而在 $\\mathbb{R}^{n}$ 中 $A$ 有界 $\\iff A$ 全有界，于是「有界闭集紧」正是它的特例。'
       ].join('\n\n'),
       refs: ['Munkres, Topology, §28', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
     }

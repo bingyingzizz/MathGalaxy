@@ -364,7 +364,7 @@ window.MG = window.MG || {};
         '',
         '**① 舞台：部分选择函数全体**。令',
         '',
-        '$$\\mathcal{F} = \\{ f : f\\text{ 是函数}, dom f \\subseteq I,\\text{ 且} \\forall i \\in dom f, f(i) \\in A_i \\}$$',
+        '$$\\mathcal{F} = \\{ f : f\\text{ 是函数}, \\operatorname{dom} f \\subseteq I,\\text{ 且} \\forall i \\in \\operatorname{dom} f, f(i) \\in A_i \\}$$',
         '',
         '按包含关系 $\\subseteq$ 排序。$\\mathcal{F} \\ne \\emptyset$（空函数在 $\\mathcal{F}$ 中），且 $(\\mathcal{F}, \\subseteq )$ 是偏序集。',
         '',

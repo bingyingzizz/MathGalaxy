@@ -37,7 +37,7 @@ window.MG = window.MG || {};
         '',
         '**(a)** $$\\nu \\ll  |\\nu|$$，并且',
         '',
-        '$$| d\\nu / d|\\nu| | = 1\\quad  |\\nu|-a.e.$$',
+        '$$| d\\nu / d|\\nu| | = 1\\quad  |\\nu|-\\text{a.e.}$$',
         '',
         '**(b)** 定义 $$L^1(\\nu) := L^1(|\\nu|)$$。若 $$f \\in L^1(\\nu)$$，则',
         '',
@@ -68,7 +68,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这是 **Vitali 型覆盖引理**的核心估计，极大定理全靠它。',
-        '证明的挑法（笔记里的原话）：先取**半径最大**的球 $$B_1$$；再取与 $$B_1$$ 不交的、半径最大的球 $$B_2$$；依此类推。',
+        '证明的挑法：先取**半径最大**的球 $$B_1$$；再取与 $$B_1$$ 不交的、半径最大的球 $$B_2$$；依此类推。',
         '为什么这样挑就够了：若某个 $$A_i \\in \\mathcal{E}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \\subseteq 3B_j$$，于是 $$K \\subseteq \\bigcup_j 3B_j$$。',
         '剩下的就是计数：',
         '',
@@ -136,7 +136,7 @@ window.MG = window.MG || {};
         '设 $$f \\in L^1_{loc}$$。则 $$A_r f(x)$$ 作为 $$(r, x)$$ 的函数是**联合连续**的。'
       ].join('\n'),
       notes: [
-        '证明的骨架（笔记里写得很细）：把积分写成',
+        '证明的骨架：把积分写成',
         '',
         '$$\\int_{B(r, x)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(r, x)}(y) f(y) dy$$',
         '',
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$。则',
         '',
-        '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对} a.e. x \\in \\mathbb{R}^n$$'
+        '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对} \\text{a.e.} x \\in \\mathbb{R}^n$$'
       ].join('\n'),
       notes: [
         '⭐ 一句话：**可积函数几乎处处等于自己局部平均值的极限**。',
@@ -256,7 +256,7 @@ window.MG = window.MG || {};
         '即：**几乎每个点都是 Lebesgue 点**。'
       ].join('\n'),
       notes: [
-        '证明的思路很巧（笔记里的）：对每个复数 $c$，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$$」。',
+        '证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$$」。',
         '然后取 **$\\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $$E = \\bigcup_{c \\in D} E_c$$（可数并仍是零集）。对 $$x \\notin E$$ 与任意 $\\varepsilon > 0$，取 $$c \\in D$$ 使 $$|f(x) - c| < \\varepsilon$$，于是',
         '',
         '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
@@ -327,12 +327,12 @@ window.MG = window.MG || {};
         '$\\mathbb{R}^{n}$ 上的 Borel 测度 $\\nu$ 是**正则的**，当且仅当',
         '',
         '$\\cdot$ $$\\nu(K) < \\infty$$ 对每个紧集 $K$ 成立；',
-        '$\\cdot$ $$\\nu(E) = inf\\{ \\nu(U) : U\\text{ 开}, E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak{B}_{\\mathbb{R}^n}$$ 成立（**外正则**）。',
+        '$\\cdot$ $$\\nu(E) = \\inf\\{ \\nu(U) : U\\text{ 开}, E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak{B}_{\\mathbb{R}^n}$$ 成立（**外正则**）。',
         '',
         '符号测度或复测度 $\\nu$ 叫正则 $\\iff$ $$|\\nu|$$ 正则。'
       ].join('\n'),
       notes: [
-        '第二条是「从外面用开集逼近」。在 $\\mathbb{R}^{n}$ 上它其实由第一条推出（笔记里专门注了一句 "actually implied by above"）。',
+        '第二条是「从外面用开集逼近」。在 $\\mathbb{R}^{n}$ 上它其实由第一条推出。',
         '**每个正则测度都是 $\\sigma$有限的**（用紧集的可数覆盖）。',
         '$f \\in L^+(\\mathbb{R}^n)$ 时，$$f\\cdot dm$$ 正则 $\\iff$ $$f \\in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。'
       ].join('\n\n'),
@@ -421,7 +421,7 @@ window.MG = window.MG || {};
         '',
         '**④ 把差值压住。** 对任意 $x$，',
         '',
-        '$$\\sup_{r>0} |A_r f(x) - f(x)| = sup_r |A_r(f - g)(x) + (A_r g - g)(x) + (g - f)(x)| \\le H(f - g)(x) + |f - g|(x)$$',
+        '$$\\sup_{r>0} |A_r f(x) - f(x)| = \\sup_r |A_r(f - g)(x) + (A_r g - g)(x) + (g - f)(x)| \\le H(f - g)(x) + |f - g|(x)$$',
         '',
         '（第一项用 $$|A_r(f-g)| \\le A_r|f-g| \\le H(f-g)$$，第二项由 ③ 取 $r \\to 0$）。',
         '',

@@ -157,7 +157,7 @@ window.MG = window.MG || {};
         '',
         '是一个**环**。',
         '',
-        '（编号沿用笔记；第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$环 的判据」里。）'
+        '（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$环 的判据」里。）'
       ].join('\n'),
       notes: [
         '(1)：取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset$ 要能被拆成不交并，只能是空并。',
@@ -230,7 +230,7 @@ window.MG = window.MG || {};
         '**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。',
         '**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。',
         '于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；反向恒成立，两边相等。（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）',
-        '⚠ 笔记原稿这个条件里用的是 **$\\cup$**（本人 2026-09-22 确认）。顺带一提，把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。',
+        '⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。',
         '不论哪个版本，定理的**用法**是一样的：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。',
         '这是测度论里最常用的证明模式之一，后面「唯一性」「可测函数逼近」都会用到它。'
       ].join('\n\n'),
@@ -321,7 +321,7 @@ window.MG = window.MG || {};
         '即：可数积的 $\\sigma$代数，恰好是由全体「矩形」生成的 $\\sigma$代数。'
       ].join('\n'),
       notes: [
-        '笔记里这一条写的是「pf. obvious.」。之所以确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，',
+        '这条确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，',
         '',
         '$$\\prod_{\\alpha \\in A} E_\\alpha = \\bigcap_{\\alpha \\in A} \\pi _\\alpha^{-1}(E_\\alpha)$$',
         '',

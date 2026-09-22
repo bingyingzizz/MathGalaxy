@@ -35,7 +35,7 @@ window.MG = window.MG || {};
         '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),\\text{ 且右边的级数绝对收敛}(\\text{当} |\\nu(\\bigsqcup E_j)| < \\infty\\text{ 时})$$'
       ].join('\n'),
       notes: [
-        '⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $$\\infty - \\infty$$。（笔记里专门在旁边写了「防止重排问题」。）',
+        '⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $$\\infty - \\infty$$。',
         '**例 1**：$\\mu _{1}$、$\\mu _{2}$ 是测度，其中至少一个有限 $\\implies$ $$\\nu = \\mu_1 - \\mu_2$$ 是符号测度。',
         '**例 2**：$$f : X \\to [-\\infty, +\\infty]$$ 可测，且 $$\\int f^+ d\\mu$$、$$\\int f^- d\\mu$$ 中至少一个有限 $\\implies$',
         '',
@@ -378,7 +378,7 @@ window.MG = window.MG || {};
         '',
         '**(b)** 此时 $$\\nu \\ll  \\lambda$$，且**链式法则**成立：',
         '',
-        '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  (\\lambda-a.e.)$$'
+        '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  (\\lambda-\\text{a.e.})$$'
       ].join('\n'),
       notes: [
         '(a) 就是「换元公式」：把对 $\\nu$ 的积分换成对 $\\mu$ 的积分，代价是乘上 RN 导数。它对指示函数成立、于是对简单函数成立、再用单调收敛到 $L^{+}$、最后到 $L^{1}(\\nu )$。',
@@ -402,7 +402,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $$\\mu \\ll  \\lambda$$ 且 $$\\lambda \\ll  \\mu$$（两个 $\\sigma$有限测度互为绝对连续），则',
         '',
-        '$$\\frac{d\\mu}{d\\lambda} \\cdot \\frac{d\\lambda}{d\\mu} = 1\\quad  a.e.$$'
+        '$$\\frac{d\\mu}{d\\lambda} \\cdot \\frac{d\\lambda}{d\\mu} = 1\\quad  \\text{a.e.}$$'
       ].join('\n'),
       notes: '两条链式法则一拼：$$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$$，而 $$d\\mu / d\\mu \\equiv  1$$。',
       refs: ['Folland, Real Analysis, Theorem 3.9']
@@ -476,9 +476,9 @@ window.MG = window.MG || {};
         '$$|\\nu|(E) = \\int_E |f| d\\mu$$'
       ].join('\n'),
       notes: [
-        '(b) 的证法（笔记里）：先取 $$\\rho = |\\nu_1| + |\\nu_2|$$ 把 $\\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\\rho$ 上。于是要证的就是',
+        '(b) 的证法：先取 $$\\rho = |\\nu_1| + |\\nu_2|$$ 把 $\\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\\rho$ 上。于是要证的就是',
         '',
-        '$$|f_1| \\frac{d\\mu_1}{d\\rho} = |f_2| \\frac{d\\mu_2}{d\\rho}\\quad  \\rho-a.e.$$',
+        '$$|f_1| \\frac{d\\mu_1}{d\\rho} = |f_2| \\frac{d\\mu_2}{d\\rho}\\quad  \\rho-\\text{a.e.}$$',
         '',
         '从而 $$|f_1| d\\mu_1 = |f_2| d\\mu_2$$ —— 说明全变差的密度与「用哪个 $\\mu$ 表示 $\\nu$」无关。',
         '由此也得到一个实用的直觉：**全变差就是「把质量取绝对值之后再测一遍」**。'
@@ -500,7 +500,7 @@ window.MG = window.MG || {};
         '',
         '**② 挑一个「最大的正集」。** 令',
         '',
-        '$$m := sup\\{ \\nu(E) : E\\text{ 是正集} \\}, $$',
+        '$$m := \\sup\\{ \\nu(E) : E\\text{ 是正集} \\}, $$',
         '',
         '则 $$m < \\infty$$（因为 $\\nu$ 不取 $\\infty$ 而 $\\nu (E) \\le \\nu (X)$ 型估计受控）。取一列正集 $$\\{P_j\\}$$ 使 $$\\nu(P_j) \\to m$$，令',
         '',
@@ -514,7 +514,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu(A_1) < -1/n$$',
         '',
-        '（笔记原话：「$$n_1$$ 是使存在负测度集 $\\le -1/n_{1}$ 的最小 $n$，最靠前」。**取最小**这一步是关键 —— 它保证后面能取极限。）',
+        '（$n_1$ 取「使存在负测度集 $\\le -1/n_{1}$ 的最小 $n$」。**取最小**这一步是关键 —— 它保证后面能取极限。）',
         '',
         '再在 $$A \\setminus A_1$$ 里重复同样的操作，得到 $$A_2, \\ldots $$',
         '',
@@ -533,7 +533,7 @@ window.MG = window.MG || {};
         '',
         '**⑧ 唯一性。** 设 $$P\' \\sqcup  N\'$$ 是另一对。则 $$P \\setminus P\' \\subseteq P$$（正集）且 $$\\subseteq N\'$$（负集），所以它既是正集又是负集 —— 只能是零集；同理 $$P\' \\setminus P$$ 也是零集。故 $$P \\triangle  P\' = N \\triangle  N\'$$ 是 $\\nu$零集。∎'
       ].join('\n'),
-      note: '⭐ 笔记里那段「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $$\\nu(F) \\ge -1/n_{k-1}$$ 一路通过 $k \\to \\infty$ 得到 $$\\nu(F) \\ge 0$$。'
+      note: '⭐ 「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $$\\nu(F) \\ge -1/n_{k-1}$$ 一路通过 $k \\to \\infty$ 得到 $$\\nu(F) \\ge 0$$。'
     },
 
     {
@@ -588,7 +588,7 @@ window.MG = window.MG || {};
         '',
         '另一方面 $$\\nu(F_k) \\ge \\nu(E_k) \\ge \\varepsilon$$ 对一切 $k$ 成立；由 $\\nu$ 有限与测度的下连续性（$$F_k \\searrow  F$$，首项有限）得',
         '',
-        '$$\\nu(F) = lim_k \\nu(F_k) \\ge \\varepsilon > 0$$',
+        '$$\\nu(F) = \\lim_k \\nu(F_k) \\ge \\varepsilon > 0$$',
         '',
         '这与 $$\\nu \\ll  \\mu$$（$\\mu (F) = 0$ 应推出 $\\nu (F) = 0$）矛盾。故这样的 $\\varepsilon$ 不存在，即对每个 $\\varepsilon > 0$ 都有对应的 $\\delta$。∎',
         '',
@@ -615,11 +615,11 @@ window.MG = window.MG || {};
         '',
         '故 $h \\in \\mathcal{F}$。',
         '',
-        '**② 取上确界。** 令 $$a := sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$$（这一步用到 $\\nu$ 有限）。取 $$\\{f_n\\} \\subseteq \\mathcal{F}$$ 使 $$\\int f_n d\\mu \\to a$$，令',
+        '**② 取上确界。** 令 $$a := \\sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$$（这一步用到 $\\nu$ 有限）。取 $$\\{f_n\\} \\subseteq \\mathcal{F}$$ 使 $$\\int f_n d\\mu \\to a$$，令',
         '',
-        '$$g_n = \\max_{f_1, \\ldots , f_n}, \\quad  f = sup_n f_n$$',
+        '$$g_n = \\max_{f_1, \\ldots , f_n}, \\quad  f = \\sup_n f_n$$',
         '',
-        '由 ① 每个 $$g_n \\in \\mathcal{F}$$，且 $$g_n \\uparrow  f$$、$$\\int g_n d\\mu \\ge \\int f_n d\\mu$$，故 $$lim_n \\int g_n d\\mu = a$$。由 **MCT**，$$f \\in \\mathcal{F}$$ 且 $$\\int f d\\mu = a$$。',
+        '由 ① 每个 $$g_n \\in \\mathcal{F}$$，且 $$g_n \\uparrow  f$$、$$\\int g_n d\\mu \\ge \\int f_n d\\mu$$，故 $$\\lim_n \\int g_n d\\mu = a$$。由 **MCT**，$$f \\in \\mathcal{F}$$ 且 $$\\int f d\\mu = a$$。',
         '',
         '**③ 断言 $$d\\lambda := d\\nu - f d\\mu$$ 与 $\\mu$ 奇异。** 反设不然，由**引理**，存在 $\\varepsilon > 0$ 与 $$E \\in \\mathcal{M}$$、$\\mu (E) > 0$，使 $$\\lambda \\ge \\varepsilon\\mu$$ 在 $E$ 上成立，即',
         '',
@@ -674,7 +674,7 @@ window.MG = window.MG || {};
         '',
         '另一方面又有 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$$（因为 $\\nu \\ll \\lambda$）。两式对**一切** $E$ 相等，由「用积分识别函数」，两个密度 $\\lambda -\\text{a.e.}$ 相等：',
         '',
-        '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  \\lambda-a.e.$$',
+        '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  \\lambda-\\text{a.e.}$$',
         '',
         '∎'
       ].join('\n')

@@ -195,7 +195,7 @@ window.MG = window.MG || {};
       statement: [
         '任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：',
         '',
-        '$$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( f\\text{ 是函数} \\wedge  dom f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$$',
+        '$$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( f\\text{ 是函数} \\wedge  \\operatorname{dom} f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$$',
         '',
         '另一种常见形式（两两不交形式）：若 $F$ 是两两不交的非空集合族，则存在集合 $C$，使对每个 $X \\in F$ 都有 $|C \\cap X| = 1$。',
         '',

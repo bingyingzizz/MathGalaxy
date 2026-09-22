@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '$p = 1$ 就是积分的三角不等式，显然。',
-        '一般 $p$ 的证明（笔记里的原话）：',
+        '一般 $p$ 的证明：',
         '',
         '$$\\int |f+g|^p = \\int |f+g| \\cdot |f+g|^{p-1} \\le \\int (|f| + |g|) |f+g|^{p-1} \\le \\left( \\|f\\|_p + \\|g\\|_p \\right) \\left\\| |f+g|^{p-1} \\right\\|_q$$',
         '',
@@ -169,7 +169,7 @@ window.MG = window.MG || {};
         '设 $1 \\le p < \\infty$。**紧支集的简单函数**在 $L^p$ 中稠密（$p = \\infty$ 时不成立）。'
       ].join('\n'),
       notes: [
-        '证明（笔记里的）：对 $f \\in L^p$，取简单函数列 $\\{f_n\\}$ 使 $f_n \\to f$ a.e. 且 $|f_n| \\le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \\in L^p$，且',
+        '证明：对 $f \\in L^p$，取简单函数列 $\\{f_n\\}$ 使 $f_n \\to f$ a.e. 且 $|f_n| \\le |f|$（简单函数逼近定理给的就是这个形状）。于是 $f_n \\in L^p$，且',
         '',
         '$$|f_n - f|^p \\le 2^p |f|^p \\in L^1$$',
         '',
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
       notes: [
         '⚠ (c) 值得注意：$L^\\infty$ 范数收敛 $=$ **「丢掉一个零集之后一致收敛」** —— 这是 $L^\\infty$ 独有的、比其他 $L^p$ 强得多的性质。',
         '⚠ (e) 与「紧支简单函数在 $L^p$ 稠密」形成对照：$L^\\infty$ 里简单函数够稠密，但**紧支**的就不够（因为 $L^\\infty$ 不看测度大小，只看逐点大小）。',
-        '笔记里给了一句很实用的直觉 ——「**$L^p$ 怎么样失败？**」：',
+        '一个很有用的直觉 ——「**$L^p$ 怎么样失败？**」：',
         '',
         '1. 在某点**增长太快**（局部爆破）；',
         '2. 在无穷远**衰减太慢**。',
@@ -254,7 +254,7 @@ window.MG = window.MG || {};
         '（右边理解为 $\\{ g + h : g \\in L^p,\\ h \\in L^r \\}$。）'
       ].join('\n'),
       notes: [
-        '证明（笔记里的）：取 $f \\in L^q$，按「大」与「小」把它切开 ——',
+        '证明：取 $f \\in L^q$，按「大」与「小」把它切开 ——',
         '',
         '$$E := \\{\\, x : |f(x)| > 1 \\,\\}, \\qquad g := f \\chi_E, \\qquad h := f \\chi_{E^c}$$',
         '',
@@ -644,7 +644,7 @@ window.MG = window.MG || {};
         '',
         '$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M_g(g)$$',
         '',
-        '（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。',
+        '（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。',
         '',
         '**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；反方向由 Hölder。∎'
       ].join('\n')

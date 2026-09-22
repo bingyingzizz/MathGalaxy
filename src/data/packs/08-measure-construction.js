@@ -206,7 +206,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间。定义',
         '',
-        '$$\\mu_0(E) := sup \\{ \\mu(F) : F \\subseteq E, F \\in \\mathcal{M}, \\mu(F) < \\infty \\}$$',
+        '$$\\mu_0(E) := \\sup \\{ \\mu(F) : F \\subseteq E, F \\in \\mathcal{M}, \\mu(F) < \\infty \\}$$',
         '',
         '则 $\\mu _{0}$ 称为 $\\mu$ 的**半有限部分**，它是一个半有限测度，且 $\\mu _{0} \\le \\mu$。'
       ].join('\n'),
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$，$\\emptyset \\in \\mathcal{E}$，$X \\in \\mathcal{E}$，$\\rho : \\mathcal{E} \\to [0, +\\infty ]$ 满足 $\\rho (\\emptyset ) = 0$。对 $A \\subseteq X$ 定义',
         '',
-        '$$\\mu^*(A) := inf \\{ \\sum_{j=1}^{\\infty} \\rho(E_j) : E_j \\in \\mathcal{E}, A \\subseteq \\bigcup_{j=1}^{\\infty} E_j \\}$$',
+        '$$\\mu^*(A) := \\inf \\{ \\sum_{j=1}^{\\infty} \\rho(E_j) : E_j \\in \\mathcal{E}, A \\subseteq \\bigcup_{j=1}^{\\infty} E_j \\}$$',
         '',
         '（用 $\\mathcal{E}$ 中可数个集合覆盖 $A$，取下确界。）则 $\\mu^{*}$ 是 $X$ 上的一个**外测度**。'
       ].join('\n'),
@@ -301,7 +301,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这是整个测度论构造的枢纽：**外测度不必可加，但它的「可切集合」上就可加了**。',
-        '1 的证明是一个冗长的验证（对有限并、补、可数不交并逐一验算），笔记里写「pf. just verify.」。',
+        '1 的证明是一个冗长的验证：对有限并、补、可数不交并逐一验算。',
         '3 的完备性来自定义本身：若 $\\mu^{*}(A) = 0$ 且 $B \\subseteq A$，则对任意 $E$ 有 $\\mu^{*}(E \\cap B) \\le \\mu^{*}(B) = 0$ 且 $\\mu^{*}(E \\cap B^{c}) \\le \\mu^{*}$(E)，两边一夹就得到 $B$ 满足可测性条件。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §11', 'Folland, Real Analysis, Theorem 1.11']
@@ -329,7 +329,7 @@ window.MG = window.MG || {};
         '这就是「预测度 $\\to$ 外测度 $\\to$ 测度」三步走的收官：**预测度在 $\\sigma$代数的扩张上被完整还原**。',
         '1 的两个方向：$$\\mu^*(A) \\le \\mu_0(A)$$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\\mu _{0}$ 的可数可加性。',
         '2 是技术核心，要在 $\\mathfrak{A}$ 上验证 Carathéodory 的可切性条件。',
-        '笔记里还记了一句：不仅 $\\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\\mathfrak{A}_\\sigma$、$\\mathfrak{A}_\\delta$、$\\mathfrak{A}_\\sigma \\delta$、$\\mathfrak{A}_\\delta \\sigma$ 里的集合也都 $\\mu^{*}$-可测 —— 因为 $\\mathcal{M}$ 是 $\\sigma$代数，对这些操作封闭。'
+        '不仅 $\\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\\mathfrak{A}_\\sigma$、$\\mathfrak{A}_\\delta$、$\\mathfrak{A}_\\sigma \\delta$、$\\mathfrak{A}_\\delta \\sigma$ 里的集合也都 $\\mu^{*}$-可测 —— 因为 $\\mathcal{M}$ 是 $\\sigma$代数，对这些操作封闭。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §12', 'Folland, Real Analysis, Theorem 1.14']
     },
@@ -419,7 +419,7 @@ window.MG = window.MG || {};
         '$$m( (a, b] ) = b - a$$'
       ].join('\n'),
       notes: [
-        '若改用左连续的 $F$ 配区间 [a, b)，得到的是同一族测度 —— 只是把「右连续」换成了「左连续」。笔记里专门标注了这一点。',
+        '若改用左连续的 $F$ 配区间 [a, b)，得到的是同一族测度 —— 只是把「右连续」换成了「左连续」。',
         '$\\mu _F$ 的**分布函数**视角：若 $F$ 还满足 $F(-\\infty ) = 0$、$F(+\\infty ) = 1$，那 $F$ 就是一个概率分布的分布函数，$\\mu _F$ 就是对应的概率测度。',
         '这条把「测度」和「函数」这两类对象接了起来：$\\mathbb{R}$ 上（局部有限的）测度 $\\leftrightarrow$ 递增右连续函数（模常数）。后面 Radon–Nikodym 会把「绝对连续」精确地实现为「$F$ 是可积函数的积分」。'
       ].join('\n\n'),
@@ -450,7 +450,7 @@ window.MG = window.MG || {};
         '',
         '**(d) 上连续。** 设 $E_{1} \\supseteq E_{2} \\supseteq \\cdots$ 且 $\\mu (E_{1}) < \\infty$。令 $F_{j} = E_{1} \\setminus E_{j}$，则 $F_{1} \\subseteq F_{2} \\subseteq \\cdots$ 且 $\\bigcup F_{j} = E_{1} \\setminus \\bigcap E_{j}$。由 (c) 与 (a)，',
         '',
-        '$$\\mu(E_1) - \\mu(\\bigcap_j E_j) = \\mu(E_1 \\setminus \\bigcap_j E_j) = lim_j \\mu(F_j) = lim_j ( \\mu(E_1) - \\mu(E_j) )$$',
+        '$$\\mu(E_1) - \\mu(\\bigcap_j E_j) = \\mu(E_1 \\setminus \\bigcap_j E_j) = \\lim_j \\mu(F_j) = \\lim_j ( \\mu(E_1) - \\mu(E_j) )$$',
         '',
         '因为 $\\mu (E_{1}) < \\infty$ 是个有限数，可以从两边同时减掉，得 $\\mu (\\bigcap E_{j}) = \\lim \\mu (E_{j})$。∎',
         '',
@@ -467,7 +467,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度。对 $A \\subseteq X$ 令',
         '',
-        '$$\\mu^*(A) = inf \\{ \\sum_j \\mu_0(E_j) : E_j \\in \\mathfrak{A}, A \\subseteq \\bigcup_j E_j \\}$$',
+        '$$\\mu^*(A) = \\inf \\{ \\sum_j \\mu_0(E_j) : E_j \\in \\mathfrak{A}, A \\subseteq \\bigcup_j E_j \\}$$',
         '',
         '**① 定义合理**：$A \\subseteq X$ 且 $X \\in \\mathfrak{A}$，所以总有覆盖，inf 是对非空集合取。',
         '',
@@ -522,7 +522,7 @@ window.MG = window.MG || {};
         '',
         '故 $\\mu^{*}(E) = \\mu^{*}(E\\cap B) + \\mu^{*}(E\\cap B^{c})$（注意 $\\mu^{*}(E\\cap B) \\le \\mu^{*}(A) = 0$），即 $B \\in \\mathcal{M}$。故 $\\mu^{*}|_\\mathcal{M}$ 完备。∎',
         '',
-        '$>$ 笔记里对这一条写的是「pf. just verify.」—— 确实是纯验证，但要验的东西不少，上面把要点写全了。'
+        '$>$ 这一条是纯验证，但要验的东西不少，上面把要点写全了。'
       ].join('\n')
     },
 

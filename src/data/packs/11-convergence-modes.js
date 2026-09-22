@@ -38,7 +38,7 @@ window.MG = window.MG || {};
       notes: [
         '强弱关系（都能画成箭头）：',
         '',
-        '$$\\text{一致} \\implies\\text{ 近一致} \\implies a.e.$$',
+        '$$\\text{一致} \\implies\\text{ 近一致} \\implies \\text{a.e.}$$',
         '$$\\text{一致} \\implies\\text{ 近一致} \\implies\\text{ 依测度}$$',
         '$$L^1 \\implies\\text{ 依测度}$$',
         '',
@@ -61,7 +61,7 @@ window.MG = window.MG || {};
         '在 $\\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。',
         '',
         '- **(i)** $$f_n = n^{-1} \\chi_{(0, n)}$$：$$f_n \\rightrightarrows  0$$ **一致**收敛。',
-        '- **(ii)** $$f_n = \\chi_{(n, n+1)}$$：$$f_n \\to 0$$ **逐点**（因而 a.e.），但**不一致**（$$sup_x |f_n| = 1$$），也不 $L^{1}$ 收敛（$$\\int f_n = 1 \\nrightarrow  0$$）。',
+        '- **(ii)** $$f_n = \\chi_{(n, n+1)}$$：$$f_n \\to 0$$ **逐点**（因而 a.e.），但**不一致**（$$\\sup_x |f_n| = 1$$），也不 $L^{1}$ 收敛（$$\\int f_n = 1 \\nrightarrow  0$$）。',
         '- **(iii)** $$f_n = n \\chi_{[0, 1/n]}$$：$$f_n \\to 0$$ a.e.（也依测度收敛，因为 $$\\mu(\\{|f_n| > \\delta\\}) = 1/n \\to 0$$），但**不 $L^{1}$ 收敛**（$$\\int f_n = 1$$ 对一切 $n$）。',
         '- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——',
         '',
@@ -113,7 +113,7 @@ window.MG = window.MG || {};
         '',
         '并且存在**子列** $$\\{f_{n_j}\\}$$ 使',
         '',
-        '$$f_{n_j} \\to f\\quad  a.e.$$'
+        '$$f_{n_j} \\to f\\quad  \\text{a.e.}$$'
       ].join('\n'),
       notes: [
         '⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。',
@@ -216,7 +216,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mu(F) = \\mu(X \\setminus \\bigcup_k F_k) \\ge \\mu(X) - \\mu(F_k)\\quad  \\forall k\\quad  \\implies\\quad  \\mu(F^c) = 0$$',
         '',
-        '在 $F$ 上令 $$f(x) = lim_j g_j(x)$$，在 $$F^c$$ 上任取 0。$f$ 是可测函数（可测函数的极限）。于是 $$g_j \\to f$$ **a.e.**',
+        '在 $F$ 上令 $$f(x) = \\lim_j g_j(x)$$，在 $$F^c$$ 上任取 0。$f$ 是可测函数（可测函数的极限）。于是 $$g_j \\to f$$ **a.e.**',
         '',
         '**⑤ 换成依测度。** 取定 $k$，对 $$j \\ge k$$、$$x \\in F_k^c$$ 有 $$|g_j(x) - f(x)| \\le 2^{1-j}$$。于是对任意 $\\delta > 0$，',
         '',
@@ -310,7 +310,7 @@ window.MG = window.MG || {};
         '',
         '$>$ ⭐ 核心思想与 Egorov 一样是「**丢掉一小块，换取好性质**」：这次换到的是连续性。'
       ].join('\n'),
-      note: '笔记里 Lusin 是紧接在 Egorov 之后作为 Cor. 写的，路线也确实是「Egorov + 简单函数逼近」。'
+      note: '路线是「Egorov + 简单函数逼近」。'
     },
 
     /* ------------------------- 定义引用（蓝线） ------------------------- */

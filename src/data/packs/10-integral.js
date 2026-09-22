@@ -83,7 +83,7 @@ window.MG = window.MG || {};
       notes: [
         '(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 $A$）全部免费。',
         '',
-        '⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$lim_n \\int_{E_n} \\varphi = \\int \\varphi$$，用的就是「$A \\mapsto \\int _A \\varphi$ 是测度」加上测度的下连续性（$$E_n \\uparrow  X$$）。',
+        '⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$\\lim_n \\int_{E_n} \\varphi = \\int \\varphi$$，用的就是「$A \\mapsto \\int _A \\varphi$ 是测度」加上测度的下连续性（$$E_n \\uparrow  X$$）。',
         '(a) 里 $c > 0$ 而不是 $c \\ge 0$：因为约定 $0\\cdot \\infty = 0$，$c = 0$ 时左边也自动成立，写成 $c > 0$ 只是为了不啰嗦。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.13']
@@ -100,7 +100,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^+$$。定义',
         '',
-        '$$\\int f d\\mu := sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f, \\varphi\\text{ 是简单函数} \\}$$'
+        '$$\\int f d\\mu := \\sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f, \\varphi\\text{ 是简单函数} \\}$$'
       ].join('\n'),
       notes: [
         '直观：用简单函数从**下面**去顶 $f$，取这些面积的**上确界**。这与 Jordan 测度「从外面盖、从里面填」的做法不同 —— 这里只从里面填。',
@@ -166,7 +166,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^+$$。则',
         '',
-        '$$\\int f d\\mu = 0 \\iff f = 0 \\mu-a.e.$$'
+        '$$\\int f d\\mu = 0 \\iff f = 0 \\mu-\\text{a.e.}$$'
       ].join('\n'),
       notes: [
         '$(\\Longleftarrow )$ 只要 $f$ 在零集外为零，下确界里的每个简单函数 $\\varphi \\le f$ 也几乎处处为零，从而 $\\int \\varphi = 0$。',
@@ -212,7 +212,7 @@ window.MG = window.MG || {};
       notes: [
         '⚠ 注意不等号方向：**下面的**极限在积分外面，得到的**不大于**积分的下极限。也就是说「取极限」会让积分**变小**，不会变大。',
         '这是 MCT 去掉单调性后剩下的东西 —— 单调性一旦丢掉，等号就退化成不等式。',
-        '反向的例子：$$f_n = \\chi_{[n, n+1]}$$（在 $\\mathbb{R}$ 上），则每个 $\\int f_{n} = 1$ 但 $\\int liminf f_{n} = 0$。'
+        '反向的例子：$$f_n = \\chi_{[n, n+1]}$$（在 $\\mathbb{R}$ 上），则每个 $\\int f_{n} = 1$ 但 $\\int \\liminf f_{n} = 0$。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.18']
     },
@@ -230,7 +230,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int f \\le \\liminf_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
-      notes: 'a.e. 收敛时 $$lim inf f_n = f$$，直接套 Fatou 引理即可。'
+      notes: 'a.e. 收敛时 $$\\liminf f_n = f$$，直接套 Fatou 引理即可。'
     },
 
     {
@@ -272,12 +272,12 @@ window.MG = window.MG || {};
         '',
         '$$\\int f := \\int f^+ - \\int f^-$$',
         '',
-        '对复值函数，拆实部虚部：$$\\int f := \\int Re f + i \\int Im f$$（要求两个积分都有意义）。'
+        '对复值函数，拆实部虚部：$$\\int f := \\int \\operatorname{Re} f + i \\int \\operatorname{Im} f$$（要求两个积分都有意义）。'
       ].join('\n'),
       notes: [
         '⚠ 「至少一个有限」是为了避免 $\\infty - \\infty$：那是不定式，必须排除。',
         '若两个都有限，就说 $f$ **可积**（见下一条）。',
-        '对复值函数，$$Re f$$ 与 $$Im f$$ 可积 $\\iff f$ 可积，因为 $$|Re f|, |Im f| \\le |f| \\le |Re f| + |Im f|$$。'
+        '对复值函数，$$\\operatorname{Re} f$$ 与 $$\\operatorname{Im} f$$ 可积 $\\iff f$ 可积，因为 $$|\\operatorname{Re} f|, |\\operatorname{Im} f| \\le |f| \\le |\\operatorname{Re} f| + |\\operatorname{Im} f|$$。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.3']
     },
@@ -342,7 +342,7 @@ window.MG = window.MG || {};
         '',
         '$$| \\int f d\\mu | \\le \\int |f| d\\mu$$'
       ].join('\n'),
-      notes: '复情形：取 $$\\alpha = e^{-i\\theta}$$ 使 $$\\alpha\\int f$$ 是实数且等于 $$|\\int f|$$，则 $$|\\int f| = \\int \\alpha f = \\int Re(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$$。',
+      notes: '复情形：取 $$\\alpha = e^{-i\\theta}$$ 使 $$\\alpha\\int f$$ 是实数且等于 $$|\\int f|$$，则 $$|\\int f| = \\int \\alpha f = \\int \\operatorname{Re}(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$$。',
       refs: ['Folland, Real Analysis, Prop. 2.22']
     },
 
@@ -377,7 +377,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int_E f d\\mu = \\int_E g d\\mu\\quad  \\forall E \\in \\mathcal{M}; $$',
         '$$\\int |f - g| d\\mu = 0; $$',
-        '$$f = g\\quad  \\mu-a.e.$$'
+        '$$f = g\\quad  \\mu-\\text{a.e.}$$'
       ].join('\n'),
       notes: [
         '作用：这类命题就是「用对一切可测集的积分来**识别**函数」。',
@@ -398,7 +398,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\{f_n\\} \\subseteq L^1$$，$$f_n \\to f$$ a.e.，且存在**控制函数** $$g \\in L^1$$ 使',
         '',
-        '$$|f_n| \\le g\\quad  a.e.\\quad  \\forall n$$',
+        '$$|f_n| \\le g\\quad  \\text{a.e.}\\quad  \\forall n$$',
         '',
         '则 $$f \\in L^1$$ 且',
         '',
@@ -459,7 +459,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '意义：**简单函数与连续函数在 $L^{1}$ 里是稠密的**。所以很多命题只要对这两类函数验证就够了，再取极限。',
-        '证明思路（笔记里的）：先把 $f$ 拆成 $\\operatorname{Re} f^{+}$、$\\operatorname{Re} f^{-}$、$\\operatorname{Im} f^{+}$、$\\operatorname{Im} f^{-}$ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；$\\mathbb{R}$ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。',
+        '证明思路：先把 $f$ 拆成 $\\operatorname{Re} f^{+}$、$\\operatorname{Re} f^{-}$、$\\operatorname{Im} f^{+}$、$\\operatorname{Im} f^{-}$ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；$\\mathbb{R}$ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。',
         '⚠ 连续函数那一句**依赖 $\\mu$ 是 Lebesgue–Stieltjes 测度**：换一个任意测度，简单函数的逼近照旧，连续函数的说法就不成立了。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.26']
@@ -526,7 +526,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int f_n \\ge \\int \\varphi - \\varepsilon \\ge \\int f - 2\\varepsilon$$',
         '',
-        '**⑤ 收尾。** 对一切 $n > N$ 成立，故 $$lim_n \\int f_n \\ge \\int f - 2\\varepsilon$$；令 $\\varepsilon \\to 0$ 得 $$lim_n \\int f_n \\ge \\int f$$。与 ① 合起来就是等号。∎',
+        '**⑤ 收尾。** 对一切 $n > N$ 成立，故 $$\\lim_n \\int f_n \\ge \\int f - 2\\varepsilon$$；令 $\\varepsilon \\to 0$ 得 $$\\lim_n \\int f_n \\ge \\int f$$。与 ① 合起来就是等号。∎',
         '',
         '$>$ ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 $A \\mapsto \\int _A \\varphi$ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 $E_{n}$ 递增到 $X$ 的。'
       ].join('\n'),
@@ -568,7 +568,7 @@ window.MG = window.MG || {};
         '设 $$g_n = \\inf_{k \\ge n} f_k$$，则',
         '',
         '$\\cdot$ $$g_n \\le f_k$$ 对一切 $k \\ge n$ 成立，故 $$\\int g_n \\le \\inf_{k\\ge n} \\int f_k$$；',
-        '$\\cdot$ $$\\{g_n\\}$$ 是 $L^{+}$ 中的**递增**列（下确界取的集合越来越少），且 $$lim_n g_n = lim inf_k f_k$$。',
+        '$\\cdot$ $$\\{g_n\\}$$ 是 $L^{+}$ 中的**递增**列（下确界取的集合越来越少），且 $$\\lim_n g_n = \\liminf_k f_k$$。',
         '',
         '对递增列 $$\\{g_n\\}$$ 用 MCT：',
         '',
@@ -590,25 +590,25 @@ window.MG = window.MG || {};
       proof: [
         '设 $$f_n \\to f$$ a.e.，$$|f_n| \\le g \\in L^1$$。',
         '',
-        '**① $f \\in L^{1}$。** 由 $$|f| = lim|f_n| \\le g$$（a.e.）得 $f$ 可积。',
+        '**① $f \\in L^{1}$。** 由 $$|f| = \\lim|f_n| \\le g$$（a.e.）得 $f$ 可积。',
         '',
-        '**② 上界方向：$$lim sup_n \\int f_n \\le \\int f$$。** 考虑 $$g - f_n \\ge 0$$（因为 $|f_{n}| \\le g$）。这列非负函数满足',
+        '**② 上界方向：$$\\limsup_n \\int f_n \\le \\int f$$。** 考虑 $$g - f_n \\ge 0$$（因为 $|f_{n}| \\le g$）。这列非负函数满足',
         '',
-        '$$g - f_n \\to g - f\\quad  a.e.$$',
+        '$$g - f_n \\to g - f\\quad  \\text{a.e.}$$',
         '',
         '对它用 Fatou 引理：',
         '',
-        '$$\\int (g - f) \\le lim inf_n \\int (g - f_n) = \\int g - lim sup_n \\int f_n$$',
+        '$$\\int (g - f) \\le \\liminf_n \\int (g - f_n) = \\int g - \\limsup_n \\int f_n$$',
         '',
-        '（最后一步是因为 $$\\liminf_{-a_n} = -lim sup a_n$$。）移项即得 $$lim sup_n \\int f_n \\le \\int f$$。',
+        '（最后一步是因为 $$\\liminf_{-a_n} = -\\limsup a_n$$。）移项即得 $$\\limsup_n \\int f_n \\le \\int f$$。',
         '',
-        '**③ 下界方向：$$lim inf_n \\int f_n \\ge \\int f$$。** 同样对 $$g + f_n \\ge 0$$ 用 Fatou：',
+        '**③ 下界方向：$$\\liminf_n \\int f_n \\ge \\int f$$。** 同样对 $$g + f_n \\ge 0$$ 用 Fatou：',
         '',
-        '$$\\int (g + f) \\le lim inf_n \\int (g + f_n) = \\int g + lim inf_n \\int f_n$$',
+        '$$\\int (g + f) \\le \\liminf_n \\int (g + f_n) = \\int g + \\liminf_n \\int f_n$$',
         '',
-        '移项得 $$lim inf_n \\int f_n \\ge \\int f$$。',
+        '移项得 $$\\liminf_n \\int f_n \\ge \\int f$$。',
         '',
-        '**④** ②与③合起来 $$lim sup \\le \\int f \\le lim inf$$，故极限存在且等于 $\\int f$。∎',
+        '**④** ②与③合起来 $$\\limsup \\le \\int f \\le \\liminf$$，故极限存在且等于 $\\int f$。∎',
         '',
         '$>$ ⭐ 关键在于**控制函数提供的非负性**：$$g \\pm  f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 $g$，这一步就写不出来。',
         '$>$ 移项之所以合法，是因为 $$g$$ 可积（$\\int g < \\infty$）—— 这正是「控制函数必须属于 $L^{1}$」而不能只是「有界」的原因。'
@@ -632,14 +632,14 @@ window.MG = window.MG || {};
         '',
         '$$h_n(x) = (f(x, t_n) - f(x, t_0)) / (t_n - t_0)$$',
         '',
-        '则 $$F\'(t_0) = lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = lim_n \\int h_n$$。要把它换成 $\\int \\lim h_{n}$ 就够了，而 DCT 正好提供这个能力：',
+        '则 $$F\'(t_0) = \\lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = \\lim_n \\int h_n$$。要把它换成 $\\int \\lim h_{n}$ 就够了，而 DCT 正好提供这个能力：',
         '',
         '$\\cdot$ $$h_n \\to \\partial f / \\partial t(x, t_0)$$ 逐点（这是导数的定义）；',
         '$\\cdot$ **控制**：由中值定理，$$|h_n(x)| \\le \\sup_{t \\in [t_0, t_n]} | \\partial f / \\partial t(x, t) | \\le g(x)$$。',
         '',
         '于是',
         '',
-        '$$F\'(t_0) = lim_n \\int h_n = \\int lim_n h_n = \\int \\partial f / \\partial t(x, t_0) d\\mu(x)$$',
+        '$$F\'(t_0) = \\lim_n \\int h_n = \\int \\lim_n h_n = \\int \\partial f / \\partial t(x, t_0) d\\mu(x)$$',
         '',
         '∎',
         '',
