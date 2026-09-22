@@ -19,12 +19,12 @@ window.MG = window.MG || {};
       statement: [
         '设 A、B 是集合。',
         '',
-        '- **A 是 B 的子集**（记 A ⊆ B）：$$∀x ( x ∈ A → x ∈ B )$$',
+        '- **A 是 B 的子集**（记 A ⊆ B）：$$\\forall x ( x \\in A \\to x \\in B )$$',
         '- **A 是 B 的真子集**（记 A ⊊ B）：A ⊆ B 且 A ≠ B。',
         '',
         '基本性质：⊆ 自反、传递；并且由外延公理，',
         '',
-        '$$A = B ⟺ A ⊆ B ∧ B ⊆ A$$',
+        '$$A = B \\iff A \\subseteq B ∧ B \\subseteq A$$',
         '',
         '这是证明两个集合相等最常用的套路：**两边互包**。'
       ].join('\n'),
@@ -44,13 +44,13 @@ window.MG = window.MG || {};
       statement: [
         'Kuratowski 定义：',
         '',
-        '$$(a, b) := { {a}, {a, b} }$$',
+        '$$(a, b) := \\{ \\{a\\}, \\{a, b\\} \\}$$',
         '',
         '它由配对公理与幂集公理保证是集合。',
         '',
         '**特征性质**（这才是「有序」的全部含义）：',
         '',
-        '$$(a, b) = (c, d) ⟺ a = c ∧ b = d$$',
+        '$$(a, b) = (c, d) \\iff a = c ∧ b = d$$',
         '',
         'n 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。'
       ].join('\n'),
@@ -75,7 +75,7 @@ window.MG = window.MG || {};
         '- **逆** R⁻¹ = { (b, a) : (a, b) ∈ R }。',
         '- **函数** f : A → B 是满足下式的关系 f ⊆ A × B：',
         '',
-        '$$∀a ∈ A, ∃! b ∈ B, (a, b) ∈ f$$',
+        '$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$',
         '',
         '唯一性使 f(a) = b 这个记号不会歧义；此时 dom f = A。'
       ].join('\n'),
@@ -120,7 +120,7 @@ window.MG = window.MG || {};
       statement: [
         '存在一个不含任何元素的集合：',
         '',
-        '$$∃B ∀x ( x ∉ B )$$',
+        '$$\\exists B \\forall x ( x \\notin B )$$',
         '',
         '由外延公理，这样的 B 唯一，记作 ∅。'
       ].join('\n'),
@@ -138,11 +138,11 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定理', '正则公理'],
       statement: [
-        '$$∀A ( A ∉ A )$$',
+        '$$\\forall A ( A \\notin A )$$',
         '',
         '更一般地，正则公理排除了任何有限的 ∈-循环：',
         '',
-        '$$A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀$$'
+        '$$A_0 ∋ A_1 ∋ \\cdots ∋ A_n = A_0$$'
       ].join('\n'),
       notes: '这条定理说明罗素悖论里的「集合 R = { x : x ∉ x }」不可能存在——否则 R ∈ R 与 R ∉ R 同时成立。',
       refs: ['Kunen, Set Theory, I.9']
@@ -160,7 +160,7 @@ window.MG = window.MG || {};
       statement: [
         '存在**最小归纳集** ω：它含有 ∅，对 x ↦ x ∪ {x} 封闭，且含于一切归纳集之中：',
         '',
-        '$$ω = { ∅, {∅}, {∅, {∅}}, {∅, {∅}, {∅, {∅}}}, … }$$',
+        '$$\\omega = \\{ \\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}, \\{\\emptyset, \\{\\emptyset\\}, \\{\\emptyset, \\{\\emptyset\\}\\}\\}, … \\}$$',
         '',
         '把 ∈ 读作 <，⟨ω, ∈⟩ 就是自然数系 ⟨ℕ, <⟩。'
       ].join('\n'),
@@ -180,7 +180,7 @@ window.MG = window.MG || {};
       statement: [
         '任给两个集合，它们的并仍是集合：',
         '',
-        '$$∀a ∀b ∃A ∀x [ x ∈ A ↔ ( x ∈ a ∨ x ∈ b ) ]$$',
+        '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A ↔ ( x \\in a ∨ x \\in b ) ]$$',
         '',
         '记作 a ∪ b。'
       ].join('\n'),
@@ -200,7 +200,7 @@ window.MG = window.MG || {};
       statement: [
         '任给两个集合，全体有序对构成一个集合：',
         '',
-        '$$∀A ∀B ∃C ∀z [ z ∈ C ↔ ∃a ∈ A, ∃b ∈ B, z = (a, b) ]$$',
+        '$$\\forall A \\forall B \\exists C \\forall z [ z \\in C ↔ \\exists a \\in A, \\exists b \\in B, z = (a, b) ]$$',
         '',
         '记作 A × B = { (a, b) : a ∈ A, b ∈ B }。'
       ].join('\n'),
@@ -221,7 +221,7 @@ window.MG = window.MG || {};
         '',
         '取公式 φ(x) :≡ ( x ≠ x )，它是矛盾式。分离公理模式给出集合',
         '',
-        '$$B = { x ∈ a : x ≠ x }$$',
+        '$$B = \\{ x \\in a : x \\ne x \\}$$',
         '',
         '对任意 x，x ∈ B ↔ ( x ∈ a ∧ x ≠ x ) 恒为假，故 B 不含任何元素。',
         '由外延公理，这样的 B 唯一，记作 ∅。∎'
@@ -239,7 +239,7 @@ window.MG = window.MG || {};
         '',
         '由外延公理 {A} ≠ ∅（它含有 A）。对 {A} 用正则公理：存在 x ∈ {A} 使',
         '',
-        '$$x ∩ { A } = ∅$$',
+        '$$x \\cap \\{ A \\} = \\emptyset$$',
         '',
         '而 {A} 只有唯一的元素，故 x = A。于是 A ∩ {A} = ∅。',
         '',
@@ -258,13 +258,13 @@ window.MG = window.MG || {};
         '',
         '2. 由幂集公理，𝒫(I) 是集合；再用分离公理模式取',
         '',
-        '$$S = { J ∈ 𝒫(I) : J 是归纳集 }$$',
+        '$$S = \\{ J \\in \\mathcal{P}(I) : J 是归纳集 \\}$$',
         '',
         'S 非空（I ∈ S）。',
         '',
         '3. 再对 𝒫(I) 用一次分离公理模式，令',
         '',
-        '$$ω = { x ∈ I : ∀J ( J ∈ S → x ∈ J ) }$$',
+        '$$\\omega = \\{ x \\in I : \\forall J ( J \\in S \\to x \\in J ) \\}$$',
         '',
         '即 ω 是所有归纳子集的交。',
         '',
@@ -287,7 +287,7 @@ window.MG = window.MG || {};
         '1. 由配对公理，{ a, b } 是集合。',
         '2. 由并集公理，⋃{ a, b } 是集合，且',
         '',
-        '$$x ∈ ⋃{ a, b } ⟺ ∃Y ( Y ∈ { a, b } ∧ x ∈ Y ) ⟺ ( x ∈ a ∨ x ∈ b )$$',
+        '$$x \\in \\bigcup\\{ a, b \\} \\iff \\exists Y ( Y \\in \\{ a, b \\} ∧ x \\in Y ) \\iff ( x \\in a ∨ x \\in b )$$',
         '',
         '取 A = ⋃{ a, b } 即为所求。∎'
       ].join('\n')
@@ -307,7 +307,7 @@ window.MG = window.MG || {};
         '',
         '3. 由幂集公理，𝒫(𝒫(A ∪ B)) 是集合。用分离公理模式取',
         '',
-        '$$C = { z ∈ 𝒫(𝒫(A ∪ B)) : ∃a ∈ A, ∃b ∈ B, z = (a, b) }$$',
+        '$$C = \\{ z \\in \\mathcal{P}(\\mathcal{P}(A \\cup B)) : \\exists a \\in A, \\exists b \\in B, z = (a, b) \\}$$',
         '',
         '则 C 恰是 A × B：一方面每个 (a, b) 都在 𝒫(𝒫(A ∪ B)) 中，另一方面 z 是不在 A、B 中任意点处取到的有序对时不会被选进来。∎'
       ].join('\n'),

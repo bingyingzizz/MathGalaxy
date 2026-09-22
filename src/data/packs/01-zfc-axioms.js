@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       statement: [
         '集合由它的元素唯一决定：',
         '',
-        '$$∀A ∀B [ ∀x ( x ∈ A ↔ x ∈ B ) → A = B ]$$',
+        '$$\\forall A \\forall B [ \\forall x ( x \\in A ↔ x \\in B ) \\to A = B ]$$',
         '',
         '反方向（A = B → 元素完全相同）由等词逻辑自动成立，所以常写成 ↔。',
         '这条公理保证了「用条件刻画集合」时结果是唯一的，因此 { x ∈ A : φ(x) } 这种写法不会产生歧义。'
@@ -46,7 +46,7 @@ window.MG = window.MG || {};
       statement: [
         '对每个公式 φ(x, p)（其中 B 不出现），下面是一条公理：',
         '',
-        '$$∀p ∀A ∃B ∀x [ x ∈ B ↔ ( x ∈ A ∧ φ(x, p) ) ]$$',
+        '$$\\forall p \\forall A \\exists B \\forall x [ x \\in B ↔ ( x \\in A ∧ \\varphi(x, p) ) ]$$',
         '',
         '由外延公理，这样的 B 唯一，记作 B = { x ∈ A : φ(x, p) }。俗称「子集公理」。'
       ].join('\n'),
@@ -69,7 +69,7 @@ window.MG = window.MG || {};
       statement: [
         '任给两个集合，可以打包成「只含这两个元素的集合」：',
         '',
-        '$$∀a ∀b ∃A ∀x [ x ∈ A ↔ ( x = a ∨ x = b ) ]$$',
+        '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A ↔ ( x = a ∨ x = b ) ]$$',
         '',
         '由外延公理 A 唯一，记作 { a, b }（无序对）。取 a = b 即得单点集 { a }。'
       ].join('\n'),
@@ -89,7 +89,7 @@ window.MG = window.MG || {};
       statement: [
         '一个集合族的所有成员的元素，仍然构成一个集合：',
         '',
-        '$$∀F ∃A ∀x [ x ∈ A ↔ ∃Y ( Y ∈ F ∧ x ∈ Y ) ]$$',
+        '$$\\forall F \\exists A \\forall x [ x \\in A ↔ \\exists Y ( Y \\in F ∧ x \\in Y ) ]$$',
         '',
         '记作 ⋃F。配合配对公理可得二元并 a ∪ b = ⋃{ a, b }。'
       ].join('\n'),
@@ -109,7 +109,7 @@ window.MG = window.MG || {};
       statement: [
         '一个集合的所有子集构成一个集合：',
         '',
-        '$$∀A ∃P ∀x [ x ∈ P ↔ x ⊆ A ]$$',
+        '$$\\forall A \\exists P \\forall x [ x \\in P ↔ x \\subseteq A ]$$',
         '',
         '记作 𝒫(A)（或 P(A)）。Cantor 定理说 |𝒫(A)| > |A|，所以幂集是「造更大的集合」的基本手段。'
       ].join('\n'),
@@ -129,7 +129,7 @@ window.MG = window.MG || {};
       statement: [
         '存在一个「归纳集」——含有 ∅ 且对后继封闭的集合：',
         '',
-        '$$∃I [ ∅ ∈ I ∧ ∀x ( x ∈ I → x ∪ { x } ∈ I ) ]$$',
+        '$$\\exists I [ \\emptyset \\in I ∧ \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$',
         '',
         '其中 ∅ 由分离公理模式得到，x ∪ {x} 由配对公理与并集公理得到。',
         '这条公理宣告了无穷集合的存在，是从中构造自然数集 ω 的唯一来源。'
@@ -150,7 +150,7 @@ window.MG = window.MG || {};
       statement: [
         '若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 φ(x, y, p)（其中 B 不出现）：',
         '',
-        '$$∀p [ ∀x∀y∀z ( φ(x,y,p) ∧ φ(x,z,p) → y = z ) → ∀A ∃B ∀y ( y ∈ B ↔ ∃x ∈ A, φ(x,y,p) ) ]$$',
+        '$$\\forall p [ \\forall x\\forall y\\forall z ( \\varphi(x,y,p) ∧ \\varphi(x,z,p) \\to y = z ) \\to \\forall A \\exists B \\forall y ( y \\in B ↔ \\exists x \\in A, \\varphi(x,y,p) ) ]$$',
         '',
         '它保证了「替换」不会跑出集合论宇宙：像 B 也是集合。'
       ].join('\n'),
@@ -170,11 +170,11 @@ window.MG = window.MG || {};
       statement: [
         '每个非空集合都有「∈-极小元」：',
         '',
-        '$$∀A [ A ≠ ∅ → ∃x ( x ∈ A ∧ x ∩ A = ∅ ) ]$$',
+        '$$\\forall A [ A \\ne \\emptyset \\to \\exists x ( x \\in A ∧ x \\cap A = \\emptyset ) ]$$',
         '',
         '等价说法：∈ 是良基关系，不存在无穷递减链',
         '',
-        '$$x₀ ∋ x₁ ∋ x₂ ∋ ⋯$$'
+        '$$x_0 ∋ x_1 ∋ x_2 ∋ \\cdots$$'
       ].join('\n'),
       notes: [
         '它排除了 A ∈ A 这类循环集合，也排除了「集合的无穷下降」。',
@@ -195,7 +195,7 @@ window.MG = window.MG || {};
       statement: [
         '任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：',
         '',
-        '$$∀F [ ( ∀X ∈ F, X ≠ ∅ ) → ∃f ( f 是函数 ∧ dom f = F ∧ ∀X ∈ F, f(X) ∈ X ) ]$$',
+        '$$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( f 是函数 ∧ dom f = F ∧ \\forall X \\in F, f(X) \\in X ) ]$$',
         '',
         '另一种常见形式（两两不交形式）：若 F 是两两不交的非空集合族，则存在集合 C，使对每个 X ∈ F 都有 |C ∩ X| = 1。',
         '',
@@ -220,11 +220,11 @@ window.MG = window.MG || {};
       proof: [
         '设 φ(x, p) 是不含 B 的公式，A 是任意集合。取公式',
         '',
-        '$$ψ(x, y, p) :≡ ( x = y ∧ φ(x, p) )$$',
+        '$$\\psi(x, y, p) :≡ ( x = y ∧ \\varphi(x, p) )$$',
         '',
         '对任意 x，至多只有一个 y 使 ψ(x, y, p) 成立（因为 x = y 已经确定了 y）。于是替换公理模式给出一个集合',
         '',
-        '$$B = { y : ∃x ∈ A, ψ(x, y, p) } = { x ∈ A : φ(x, p) }$$',
+        '$$B = \\{ y : \\exists x \\in A, \\psi(x, y, p) \\} = \\{ x \\in A : \\varphi(x, p) \\}$$',
         '',
         '这正是分离公理模式所要的 B（外延公理保证唯一）。∎'
       ].join('\n'),

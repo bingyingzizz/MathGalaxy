@@ -64,7 +64,7 @@ window.MG = window.MG || {};
       proof: [
         '设 V ≠ 0 是域 K 上的向量空间，并给定线性无关集 S₀ ⊆ V。令',
         '',
-        '$$𝒜 = { S ⊆ V : S ⊇ S₀ 且 S 线性无关 }$$',
+        '$$\\mathcal{A} = \\{ S \\subseteq V : S \\supseteq S_0 且 S 线性无关 \\}$$',
         '',
         '按包含关系 ⊆ 排序。',
         '',
