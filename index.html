@@ -81,7 +81,7 @@ window.addEventListener('error', function (e) {
 
 <!-- =========================================================================
      底层引擎（与内容无关，一般不需要改）
-     加载顺序：config → util → camera → graph → layout → background
+     加载顺序：config → util → camera → graph → layers → layout → background
                → renderer → interaction → search → panel → visibility → loader → app
      ========================================================================= -->
 <!-- ⚠ KaTeX 必须在 core/util.js 之前加载：util.js 里的行内/块级公式渲染会去问
@@ -93,6 +93,7 @@ window.addEventListener('error', function (e) {
 <script src="src/core/util.js"></script>
 <script src="src/core/camera.js"></script>
 <script src="src/core/graph.js"></script>
+<script src="src/core/layers.js"></script>
 <script src="src/core/layout.js"></script>
 <script src="src/core/background.js"></script>
 <script src="src/core/renderer.js"></script>

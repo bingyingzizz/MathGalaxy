@@ -286,6 +286,35 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 }
 #legend .lg-reset:hover { background: rgba(194, 112, 58, .16); }
 #legend .lg-hint { margin-top: 7px; font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
+
+/* 分层的层号芯片：已展开的层是实心，其余是空心 */
+#legend .lg-layers { gap: 3px 4px; }
+#legend .lg-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 19px;
+  padding: 0 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .55);
+  color: var(--ink-faint);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  user-select: none;
+  transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+#legend .lg-chip:hover { border-color: rgba(20, 22, 28, .3); color: var(--ink); }
+#legend .lg-chip.on {
+  background: rgba(74, 110, 245, .12);
+  border-color: rgba(74, 110, 245, .45);
+  color: #35509B;
+  font-weight: 600;
+}
+#legend .lg-chip-all { padding: 0 7px; }
+#legend .lg-chip-all.on { background: rgba(20, 22, 28, .08); border-color: var(--line-strong); color: var(--ink); }
 /* ---------- 详情面板 ---------- */
 #panel {
   position: fixed;            /* 冗余声明：不依赖 .floating 也一定浮起来 */
@@ -565,7 +594,7 @@ window.addEventListener('error', function (e) {
 
 <!-- =========================================================================
      底层引擎（与内容无关，一般不需要改）
-     加载顺序：config → util → camera → graph → layout → background
+     加载顺序：config → util → camera → graph → layers → layout → background
                → renderer → interaction → search → panel → visibility → loader → app
      ========================================================================= -->
 <!-- ⚠ KaTeX 必须在 core/util.js 之前加载：util.js 里的行内/块级公式渲染会去问
@@ -1588,6 +1617,155 @@ window.addEventListener('error', function (e) {
     visibleEdgesOf: visibleEdgesOf,
     toArray: toArray
   };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 分层（依赖深度）
+   --------------------------------------------------------------------------
+   依赖方向是「前置 → 依赖它的」：
+
+     推出   implication: sources → target
+     定义   definition : definition → usedBy
+     等价   equivalence: 双向（互为等价的点必然同层）
+
+   ⚠️ 等价关系会造成环（{选择公理, 良序定理, 佐恩引理, Hausdorff, Tukey}
+      是一整个环；{紧, 全有界, 列紧, 完备} 也是），所以**不能直接当 DAG 算层号**。
+      做法：Tarjan 缩点 → 在缩点图上算最长路径 → 每个点取它所在分量的层号，
+      等价的那几个自然落在同一层。
+
+   弱边（类比）不参与分层 —— 它不是逻辑依赖。
+
+   层号**不写进内容**：连线一改，层号就该跟着变，所以每次打开现算。
+   算完写在节点上（n.layer）和图对象上（graph.maxLayer / graph.layerSizes），
+   图例的分层开关与详情面板直接用它们。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  function computeLayers(graph) {
+    var nodes = graph.nodes;
+    var n = nodes.length;
+    var index = Object.create(null);
+    nodes.forEach(function (nd, i) { index[nd.id] = i; });
+
+    /* ------------------------------------------- 1. 邻接表（前置 → 后） */
+    var out = [];
+    for (var i = 0; i < n; i++) out.push([]);
+    function link(a, b) {
+      var ia = index[a], ib = index[b];
+      if (ia == null || ib == null || ia === ib) return;
+      out[ia].push(ib);
+    }
+    graph.edges.forEach(function (e) {
+      if (e.kind === 'implication') {
+        (e.sources || []).forEach(function (s) { link(s, e.target); });
+      } else if (e.kind === 'definition') {
+        link(e.definition, e.usedBy);
+      } else if (e.kind === 'equivalence') {
+        link(e.a, e.b); link(e.b, e.a);
+      }
+      /* analogy（弱边）不算 */
+    });
+
+    /* ------------------------------------------- 2. Tarjan 缩点（迭代版） */
+    var idx = new Int32Array(n).fill(-1);
+    var low = new Int32Array(n);
+    var onStk = new Uint8Array(n);
+    var stk = [], compOf = new Int32Array(n).fill(-1), compCount = 0;
+    var counter = 0;
+
+    for (var root = 0; root < n; root++) {
+      if (idx[root] !== -1) continue;
+      var work = [[root, 0]];
+      while (work.length) {
+        var frame = work[work.length - 1];
+        var v = frame[0], pi = frame[1];
+        if (pi === 0) { idx[v] = low[v] = counter++; stk.push(v); onStk[v] = 1; }
+        var ns = out[v];
+        var advanced = false;
+        for (var k = pi; k < ns.length; k++) {
+          var w = ns[k];
+          if (idx[w] === -1) { frame[1] = k + 1; work.push([w, 0]); advanced = true; break; }
+          if (onStk[w] && idx[w] < low[v]) low[v] = idx[w];
+        }
+        if (advanced) continue;
+        frame[1] = ns.length;
+        if (low[v] === idx[v]) {
+          for (;;) {
+            var u = stk.pop();
+            onStk[u] = 0;
+            compOf[u] = compCount;
+            if (u === v) break;
+          }
+          compCount++;
+        }
+        work.pop();
+        if (work.length) {
+          var p = work[work.length - 1][0];
+          if (low[v] < low[p]) low[p] = low[v];
+        }
+      }
+    }
+
+    /* ------------------------------------------- 3. 缩点图 + 最长路径 */
+    var cadj = [];
+    for (i = 0; i < compCount; i++) cadj.push([]);
+    var cin = [];
+    for (i = 0; i < compCount; i++) cin.push([]);
+    var seenEdge = Object.create(null);
+    for (i = 0; i < n; i++) {
+      var ca = compOf[i];
+      for (var j = 0; j < out[i].length; j++) {
+        var cb = compOf[out[i][j]];
+        if (ca === cb) continue;
+        var key = ca + '>' + cb;
+        if (seenEdge[key]) continue;
+        seenEdge[key] = 1;
+        cadj[ca].push(cb);
+        cin[cb].push(ca);
+      }
+    }
+
+    /* 缩点后一定是 DAG → 按拓扑序（用入度做 Kahn）算最长路径 */
+    var clevel = new Int32Array(compCount);
+    var indeg = new Int32Array(compCount);
+    for (i = 0; i < compCount; i++) indeg[i] = cin[i].length;
+    var queue = [];
+    for (i = 0; i < compCount; i++) if (indeg[i] === 0) queue.push(i);
+    var qi = 0;
+    while (qi < queue.length) {
+      var c = queue[qi++];
+      for (j = 0; j < cadj[c].length; j++) {
+        var nx = cadj[c][j];
+        if (clevel[c] + 1 > clevel[nx]) clevel[nx] = clevel[c] + 1;
+        if (--indeg[nx] === 0) queue.push(nx);
+      }
+    }
+
+    /* ------------------------------------------- 4. 写回 */
+    var maxLayer = 0;
+    var sizes = [];
+    nodes.forEach(function (nd, ii) {
+      var lv = clevel[compOf[ii]];
+      nd.layer = lv;
+      if (lv > maxLayer) maxLayer = lv;
+      while (sizes.length <= lv) sizes.push([]);
+      sizes[lv].push(nd);
+    });
+
+    graph.maxLayer = maxLayer;
+    graph.layerSizes = sizes;
+    graph.layerOf = function (id) {
+      var ix = index[id];
+      return ix == null ? null : clevel[compOf[ix]];
+    };
+    return { maxLayer: maxLayer, sizes: sizes, components: compCount };
+  }
+
+  MG.computeLayers = computeLayers;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -3364,6 +3542,19 @@ window.addEventListener('error', function (e) {
       html += kindBadge(n.type);
       html += '<h1 class="pn-h1">' + U.titleHtml(n.title) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(n.id) + '</div>';
+      /* 依赖深度：由连线现算（见 core/layers.js），不写在内容里 */
+      if (typeof n.layer === 'number') {
+        var pre = [], post = [];
+        g.edges.forEach(function (e) {
+          if (e.kind === 'implication') {
+            if (e.target === n.id) pre.push(e); else if (e.sources.indexOf(n.id) >= 0) post.push(e);
+          } else if (e.kind === 'definition') {
+            if (e.usedBy === n.id) pre.push(e); else if (e.definition === n.id) post.push(e);
+          }
+        });
+        html += '<div class="pn-h2">第 ' + n.layer + ' 层（依赖深度）· 它依赖 ' + pre.length +
+          ' 个 · 被 ' + post.length + ' 个依赖</div>';
+      }
       html += regionChips(n);
 
       if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
@@ -13115,6 +13306,26 @@ window.MG = window.MG || {};
       note: '「每个向量空间有基」中的「基」由线性无关与生成两个概念定义。'
     },
 
+    /* ------------------------------------------------------------------
+       外延公理在图上曾经是**孤点**（唯一一条边都没有的节点）——
+       因为「一条 ZF 公理都不加」这条规则。这里只补正文里**明确引用**它的地方，
+       不是把什么都挂到 ZF 上。
+       ------------------------------------------------------------------ */
+    {
+      id: 'def-link.ext-subset',
+      kind: 'definition',
+      definition: 'ax.ext',
+      usedBy: 'def.subset',
+      note: '子集最常用的那条性质——$A = B \\iff A \\subseteq B \\wedge B \\subseteq A$（**两边互包**）——正是**外延公理**的直接推论。'
+    },
+    {
+      id: 'def-link.ext-empty',
+      kind: 'definition',
+      definition: 'ax.ext',
+      usedBy: 'thm.empty',
+      note: '空集的存在由分离公理模式给出，但「这样的集合**至多一个**」靠的是**外延公理**——所以 $\\emptyset$ 这个记号才有意义。'
+    },
+
     /* ==========================================================================
        补漏（2026-09-22）：上面这些是「结论 → 它用到的定义」，但覆盖不全 ——
        有一批定理/命题/推论当时一条入边都没有，结果全都堆在最底层，
@@ -13518,6 +13729,102 @@ window.MG = window.MG || {};
         '💡 这条边是「跨星团」的：序理论 $\\leftrightarrow$ 抽象代数。',
         '它不提供新的定理，但它告诉你**两块内容为什么长得像**。'
       ].join('\n')
+    },
+
+    /* ==========================================================================
+       2026-09-22 深夜补：原来 4 条弱边全在集合论 / 序理论 / 代数那半边，
+       而分析学（测度、积分、L^p、BV，155 个点）**一条弱边都没有** ——
+       「探索」模式点开来，那片最大的星空什么联想都不给。补上下面 4 条。
+       ========================================================================== */
+
+    /* ------------------------------------------------ 「取一切之交」这个模板 */
+    {
+      id: 'ana.generated-closure',
+      kind: 'analogy',
+      a: 'def.generated-sigma',
+      b: 'def.vs',
+      title: '「取一切包含它的 X 之交」——生成同一个模板',
+      note: [
+        '两处都在做同一件事：**给定一点种子，造出包含它的最小结构**。',
+        '',
+        '- **生成的 $\\sigma$-代数**：$\\mathcal{M}(\\mathcal{E}) = \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A} \\supseteq \\mathcal{E},\\ \\mathfrak{A}$ 是 $\\sigma$-代数 $\\}$。',
+        '- **由 $S$ 生成的子空间 / 张成**：$\\operatorname{span} S = \\bigcap \\{ W : W \\supseteq S,\\ W$ 是子空间 $\\}$。',
+        '',
+        '**共同的招**：不直接写「最小的那个」，而是**取一切候选之交** —— 交封闭保证了交出来还是同类结构，',
+        '$\\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就是良定义性证明的全部。',
+        '',
+        '**为什么值得记**：凡是要「造最小的封闭结构」（子群、理想、闭包、$\\sigma$-代数、$\\sigma$-环），',
+        '都是这个模板；反过来，验证一个「包含关系」时，也总是把两边都化成「交」。',
+        '',
+        '💡 跨星团：测度的构造 $\\leftrightarrow$ 抽象代数。'
+      ].join('\n')
+    },
+
+    /* ------------------------------------------------ 「取上确界」这个动作 */
+    {
+      id: 'ana.sup-extension',
+      kind: 'analogy',
+      a: 'thm.mct',
+      b: 'def.series',
+      title: '都是「取上确界」：把无穷一次性握在手里',
+      note: [
+        '两处的定义/证明核心是**同一个动作**：',
+        '',
+        '- **非负项级数**：$\\sum_{n} a_n := \\sup_N s_N$ —— 不去「求极限」，直接取部分和的上确界。',
+        '- **单调收敛定理**：$\\int f = \\lim \\int f_n$，而证明正是把两边都写成 $\\sup$ 再交换（$\\sup$ 与 $\\sup$ 交换，不需要任何条件）。',
+        '',
+        '**共同的招**：只要是**单调递增**的，就不必讨论极限存在性 —— 上确界在 $[0, +\\infty]$ 里永远存在，',
+        '于是「求极限」这一步被绕过去了。这就是为什么 MCT 的证明条件最少、最好用。',
+        '',
+        '**反面**：一旦不再单调（Fatou、控制收敛），就必须补「可积控制」这种额外条件 —— 因为那时取不到 $\\sup$ 了。',
+        '',
+        '💡 看到「极限不知道存不存在」时，先问：能不能改成单调的，然后取上确界？'
+      ].join('\n')
+    },
+
+    /* ------------------------------------------------ 「用一个粗量控制无穷」 */
+    {
+      id: 'ana.coarse-control',
+      kind: 'analogy',
+      a: 'def.maximal-function',
+      b: 'def.finchar',
+      title: '用一个「更粗但可控」的量，把无穷握在手里',
+      note: [
+        '两处都在面对一个无法逐个处理的无穷对象，做法都是**换一个更粗的量去控制它**：',
+        '',
+        '- **极大函数**：逐点值 $f(x)$ 没法控制（可以随便改零集上的取值），改成 $Hf(x) = \\sup_r A_r |f|(x)$ ——',
+        '  它更大、更粗，但**可测**、有极大不等式，于是逐点问题化归为测度估计。',
+        '- **有限特征**：整体 $X \\in \\mathcal{A}$ 没法验证，改成「每个有限子集都行」——',
+        '  条件更粗，但可以用有限手段逐条查。',
+        '',
+        '**共同的招**：**牺牲精度换可控性**。粗的量先拿下，细的问题再还回去',
+        '（极大不等式 $\\to$ Lebesgue 微分定理；有限特征 $\\to$ Tukey 引理）。',
+        '',
+        '💡 卡在「无穷没法遍历」时，问：有没有一个更粗的、可测/可验证的量，能把这件事包住？'
+      ].join('\n')
+    },
+
+    /* ------------------------------------------------ 两种「一次走完无穷」 */
+    {
+      id: 'ana.sup-vs-maximal',
+      kind: 'analogy',
+      a: 'lem.zorn',
+      b: 'def.sup',
+      title: '佐恩引理与确界原理：都是「一次把无穷过程走完」',
+      note: [
+        '两个命题的精神酷似，而且都不是构造性的：',
+        '',
+        '- **确界原理**（$\\mathbb{R}$ 的完备性）：非空有上界的集合，$\\sup S$ **直接存在** —— 不需要你去逼近。',
+        '- **佐恩引理**：每个链有上界的偏序集，**极大元直接存在** —— 不需要你去一步步往上爬。',
+        '',
+        '**共同的招**：把「无限步的过程」压缩成「一个对象的存在性」，然后直接取用它。',
+        '有了它，分析里可以取上确界、代数里可以取极大理想、集合论里可以取极大链。',
+        '',
+        '⚠ 差异也要记住：确界原理是 $\\mathbb{R}$ 的**公理**（或者说它刻画了 $\\mathbb{R}$），',
+        '佐恩引理等价于**选择公理** —— 前者在一个具体的全序集里工作，后者在任意的偏序集里工作，代价是多了一个公理。',
+        '',
+        '💡 这也解释了为什么「实数完备」与「选择公理」在证明里长得像：它们是同一类存在性工具。'
+      ].join('\n')
     }
   ]
 });
@@ -13693,6 +14000,8 @@ window.MG = window.MG || {};
       '第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。'],
     ['def.poset', 'def.real', 'def-dep.poset-real',
       '实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。'],
+    ['def.extended-real', 'def.conjugate-exponents', 'def-dep.extended-conjugate',
+      '共轭指数里 $p = \\infty$ 要配 $q = 1$，约定 $1/\\infty = 0$ —— 用到了**扩充实数**。'],
 
     /* ------------------------------------------- 有界变差与绝对连续 */
     ['def.bounded-variation', 'def.nbv', 'def-dep.bv-nbv',
@@ -13864,6 +14173,7 @@ MG.trunk = [
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
+    MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
     }
@@ -14109,23 +14419,41 @@ MG.trunk = [
 
     vis.onChange(function () { refreshVisible(); renderLegend(); });
 
-    /* ------------------------------------------------------ 主干模式 */
+    /* ------------------------------------------------ 主干模式 / 分层 */
     /*
-      只看主干：内容里用 MG.trunk 列出的那条「学习主线」。
-      实现上不动用户手动的隐藏集合，而是给可见性加一个额外条件
-      （所以关掉主干模式之后，之前手动藏的点还在）。
+      两个都是「额外可见条件」，叠加在用户手动的隐藏集合之上：
+        · 主干模式：只留 MG.trunk 里那条学习主线
+        · 分层：只显示「离地基不超过 k 步」的点（拖到第 k 层）
+      两者都不动用户手动藏的点，关掉之后手动的选择还在。
     */
     var trunkOnly = false;
+    var layerMax = null;              // null = 不限层
+
+    function applyFilter() {
+      if (!trunkOnly && layerMax == null) { vis.setFilter(null); return; }
+      vis.setFilter(function (id) {
+        var n = graph.byId[id];
+        if (!n) return false;
+        if (trunkOnly && !n.trunk) return false;
+        if (layerMax != null && !(n.layer <= layerMax)) return false;
+        return true;
+      });
+    }
 
     function setTrunkOnly(on) {
       trunkOnly = !!on;
-      vis.setFilter(trunkOnly ? function (id) {
-        var n = graph.byId[id];
-        return !!(n && n.trunk);
-      } : null);
+      applyFilter();
       var btn = toolbar.querySelector('[data-act="toggle-trunk"]');
       if (btn) btn.classList.toggle('on', trunkOnly);
       if (trunkOnly) fitAll();          // 主干只有几十个点，直接铺满屏幕
+    }
+
+    /** k = 只显示第 0…k 层；k >= 最大层 或 null = 不限 */
+    function setLayerMax(k) {
+      var max = graph.maxLayer || 0;
+      layerMax = (k == null || k >= max) ? null : Math.max(0, k);
+      applyFilter();
+      if (layerMax != null) fitAll();
     }
 
     /* ---------------------------------------------------------- 交互 */
@@ -14282,6 +14610,24 @@ MG.trunk = [
       }).join('');
 
       var hidden = total - shown;
+
+      /* ---------- 分层开关：点第 k 个芯片 = 只显示 0…k 层 ---------- */
+      var maxLv = graph.maxLayer || 0;
+      var sizes = graph.layerSizes || [];
+      var layerChips = '';
+      for (var lv = 0; lv <= maxLv; lv++) {
+        var llist = sizes[lv] || [];
+        var lon = (layerMax == null) || lv <= layerMax;
+        var lnames = llist.map(function (x) { return x.label; });
+        layerChips += '<span class="lg-chip' + (lon ? ' on' : '') + '" data-layer="' + lv + '" title="' +
+          U.escapeHtml('第 ' + lv + ' 层（' + llist.length + ' 个）：' +
+            (lnames.slice(0, 10).join('、') || '（空）') + (lnames.length > 10 ? ' …' : '')) + '">' +
+          lv + '</span>';
+      }
+      layerChips += '<span class="lg-chip lg-chip-all' + (layerMax == null ? ' on' : '') +
+        '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
+      var layerTitle = '分层 · 显示到第 ' + (layerMax == null ? maxLv : layerMax) + ' 层' +
+        '（' + shown + '/' + total + '）';
       legendEl.innerHTML =
         '<div class="lg-head" data-toggle><b>图例</b>' +
         (hidden
@@ -14293,12 +14639,16 @@ MG.trunk = [
         '<div class="lg-row">' + typeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
         '<div class="lg-row">' + edgeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">' + layerTitle + '</div>' +
+        '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
         '<div class="lg-hint">' +
-        (trunkOnly
-          ? '主干模式：只显示 ' + shown + ' 个主干节点（再点一次工具条的「主干」退出）'
-          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看') +
+        (trunkOnly || layerMax != null
+          ? (trunkOnly ? '主干模式：' : '') +
+            (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
+            '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
+          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
         '</div>' +
         '</div>';
     }
@@ -14307,7 +14657,15 @@ MG.trunk = [
       var t = e.target;
       if (!t.closest) return;
       // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
-      if (t.closest('[data-reset]')) { setTrunkOnly(false); vis.showAll(); return; }
+      if (t.closest('[data-reset]')) { setLayerMax(null); setTrunkOnly(false); vis.showAll(); return; }
+
+      // 分层：点第 k 个芯片 = 显示 0…k 层；「全部」= 不限
+      var lchip = t.closest('[data-layer]');
+      if (lchip) {
+        var lv = lchip.getAttribute('data-layer');
+        setLayerMax(lv === 'all' ? null : parseInt(lv, 10));
+        return;
+      }
       if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
 
       // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）

@@ -48,6 +48,7 @@
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
+    MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
     }
@@ -293,23 +294,41 @@
 
     vis.onChange(function () { refreshVisible(); renderLegend(); });
 
-    /* ------------------------------------------------------ 主干模式 */
+    /* ------------------------------------------------ 主干模式 / 分层 */
     /*
-      只看主干：内容里用 MG.trunk 列出的那条「学习主线」。
-      实现上不动用户手动的隐藏集合，而是给可见性加一个额外条件
-      （所以关掉主干模式之后，之前手动藏的点还在）。
+      两个都是「额外可见条件」，叠加在用户手动的隐藏集合之上：
+        · 主干模式：只留 MG.trunk 里那条学习主线
+        · 分层：只显示「离地基不超过 k 步」的点（拖到第 k 层）
+      两者都不动用户手动藏的点，关掉之后手动的选择还在。
     */
     var trunkOnly = false;
+    var layerMax = null;              // null = 不限层
+
+    function applyFilter() {
+      if (!trunkOnly && layerMax == null) { vis.setFilter(null); return; }
+      vis.setFilter(function (id) {
+        var n = graph.byId[id];
+        if (!n) return false;
+        if (trunkOnly && !n.trunk) return false;
+        if (layerMax != null && !(n.layer <= layerMax)) return false;
+        return true;
+      });
+    }
 
     function setTrunkOnly(on) {
       trunkOnly = !!on;
-      vis.setFilter(trunkOnly ? function (id) {
-        var n = graph.byId[id];
-        return !!(n && n.trunk);
-      } : null);
+      applyFilter();
       var btn = toolbar.querySelector('[data-act="toggle-trunk"]');
       if (btn) btn.classList.toggle('on', trunkOnly);
       if (trunkOnly) fitAll();          // 主干只有几十个点，直接铺满屏幕
+    }
+
+    /** k = 只显示第 0…k 层；k >= 最大层 或 null = 不限 */
+    function setLayerMax(k) {
+      var max = graph.maxLayer || 0;
+      layerMax = (k == null || k >= max) ? null : Math.max(0, k);
+      applyFilter();
+      if (layerMax != null) fitAll();
     }
 
     /* ---------------------------------------------------------- 交互 */
@@ -466,6 +485,24 @@
       }).join('');
 
       var hidden = total - shown;
+
+      /* ---------- 分层开关：点第 k 个芯片 = 只显示 0…k 层 ---------- */
+      var maxLv = graph.maxLayer || 0;
+      var sizes = graph.layerSizes || [];
+      var layerChips = '';
+      for (var lv = 0; lv <= maxLv; lv++) {
+        var llist = sizes[lv] || [];
+        var lon = (layerMax == null) || lv <= layerMax;
+        var lnames = llist.map(function (x) { return x.label; });
+        layerChips += '<span class="lg-chip' + (lon ? ' on' : '') + '" data-layer="' + lv + '" title="' +
+          U.escapeHtml('第 ' + lv + ' 层（' + llist.length + ' 个）：' +
+            (lnames.slice(0, 10).join('、') || '（空）') + (lnames.length > 10 ? ' …' : '')) + '">' +
+          lv + '</span>';
+      }
+      layerChips += '<span class="lg-chip lg-chip-all' + (layerMax == null ? ' on' : '') +
+        '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
+      var layerTitle = '分层 · 显示到第 ' + (layerMax == null ? maxLv : layerMax) + ' 层' +
+        '（' + shown + '/' + total + '）';
       legendEl.innerHTML =
         '<div class="lg-head" data-toggle><b>图例</b>' +
         (hidden
@@ -477,12 +514,16 @@
         '<div class="lg-row">' + typeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
         '<div class="lg-row">' + edgeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">' + layerTitle + '</div>' +
+        '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
         '<div class="lg-hint">' +
-        (trunkOnly
-          ? '主干模式：只显示 ' + shown + ' 个主干节点（再点一次工具条的「主干」退出）'
-          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看') +
+        (trunkOnly || layerMax != null
+          ? (trunkOnly ? '主干模式：' : '') +
+            (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
+            '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
+          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
         '</div>' +
         '</div>';
     }
@@ -491,7 +532,15 @@
       var t = e.target;
       if (!t.closest) return;
       // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
-      if (t.closest('[data-reset]')) { setTrunkOnly(false); vis.showAll(); return; }
+      if (t.closest('[data-reset]')) { setLayerMax(null); setTrunkOnly(false); vis.showAll(); return; }
+
+      // 分层：点第 k 个芯片 = 显示 0…k 层；「全部」= 不限
+      var lchip = t.closest('[data-layer]');
+      if (lchip) {
+        var lv = lchip.getAttribute('data-layer');
+        setLayerMax(lv === 'all' ? null : parseInt(lv, 10));
+        return;
+      }
       if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
 
       // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）

@@ -129,6 +129,19 @@
       html += kindBadge(n.type);
       html += '<h1 class="pn-h1">' + U.titleHtml(n.title) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(n.id) + '</div>';
+      /* 依赖深度：由连线现算（见 core/layers.js），不写在内容里 */
+      if (typeof n.layer === 'number') {
+        var pre = [], post = [];
+        g.edges.forEach(function (e) {
+          if (e.kind === 'implication') {
+            if (e.target === n.id) pre.push(e); else if (e.sources.indexOf(n.id) >= 0) post.push(e);
+          } else if (e.kind === 'definition') {
+            if (e.usedBy === n.id) pre.push(e); else if (e.definition === n.id) post.push(e);
+          }
+        });
+        html += '<div class="pn-h2">第 ' + n.layer + ' 层（依赖深度）· 它依赖 ' + pre.length +
+          ' 个 · 被 ' + post.length + ' 个依赖</div>';
+      }
       html += regionChips(n);
 
       if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');

@@ -167,6 +167,8 @@ window.MG = window.MG || {};
       '第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。'],
     ['def.poset', 'def.real', 'def-dep.poset-real',
       '实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。'],
+    ['def.extended-real', 'def.conjugate-exponents', 'def-dep.extended-conjugate',
+      '共轭指数里 $p = \\infty$ 要配 $q = 1$，约定 $1/\\infty = 0$ —— 用到了**扩充实数**。'],
 
     /* ------------------------------------------- 有界变差与绝对连续 */
     ['def.bounded-variation', 'def.nbv', 'def-dep.bv-nbv',

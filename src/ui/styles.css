@@ -278,6 +278,35 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 }
 #legend .lg-reset:hover { background: rgba(194, 112, 58, .16); }
 #legend .lg-hint { margin-top: 7px; font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
+
+/* 分层的层号芯片：已展开的层是实心，其余是空心 */
+#legend .lg-layers { gap: 3px 4px; }
+#legend .lg-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 19px;
+  padding: 0 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .55);
+  color: var(--ink-faint);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  user-select: none;
+  transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+#legend .lg-chip:hover { border-color: rgba(20, 22, 28, .3); color: var(--ink); }
+#legend .lg-chip.on {
+  background: rgba(74, 110, 245, .12);
+  border-color: rgba(74, 110, 245, .45);
+  color: #35509B;
+  font-weight: 600;
+}
+#legend .lg-chip-all { padding: 0 7px; }
+#legend .lg-chip-all.on { background: rgba(20, 22, 28, .08); border-color: var(--line-strong); color: var(--ink); }
 /* ---------- 详情面板 ---------- */
 #panel {
   position: fixed;            /* 冗余声明：不依赖 .floating 也一定浮起来 */
