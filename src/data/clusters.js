@@ -109,6 +109,12 @@ MG.clusters = [
     name: '有界变差与绝对连续',
     parent: 'analysis',
     desc: '造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。'
+  },
+  {
+    id: 'analysis.lp',
+    name: 'L^p 空间',
+    parent: 'analysis',
+    desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
