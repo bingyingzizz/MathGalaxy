@@ -70,7 +70,8 @@
     /* 本帧各层的可见度（0~1），随缩放变化，由 computeLod() 填 */
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
-      nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0, trunkEdge: 0, trunkDim: 1
+      nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0,
+      trunkEdge: 0, trunkDim: 1, envelope: 0
     };
 
     /* ------------------------------------------------------------------
@@ -123,6 +124,9 @@
       // 全图时把「不在主干上」的点压暗 → 主线才浮得出来（放大后恢复原样）
       var tDim = thr(L.trunkDimIn);
       lodA.trunkDim = 1 - L.trunkDimMax * (1 - smoothstep(tDim[0], tDim[1], k));
+      // 星团包络：中等缩放出现，放大后让位
+      var tEnvIn = thr(L.envelopeIn), tEnvOut = thr(L.envelopeOut);
+      lodA.envelope = smoothstep(tEnvIn[0], tEnvIn[1], k) * (1 - smoothstep(tEnvOut[0], tEnvOut[1], k));
       // 星团名：放大到看得见节点名时就退场，避免和节点名打架
       var cNameIn = smoothstep(tCIn[0], tCIn[1], k);
       var cNameOut = smoothstep(tCOut[0], tCOut[1], k);
@@ -354,7 +358,10 @@
       computeLod();
       nameBoxes.length = 0;
 
-      /* ---------- 0. 星团级粗线（缩小时才出现，整块对整块） ---------- */
+      /* ---------- 0. 星团包络（每个「装置」一圈边界，垫在最底下） ---------- */
+      drawEnvelopes();
+
+      /* ---------- 0b. 星团级粗线（缩小时才出现，整块对整块） ---------- */
       drawClusterLinks();
 
       /* ---------- 1. 节点级连线 ---------- */
@@ -456,6 +463,92 @@
         ctx.quadraticCurveTo(ctl.x, ctl.y, p1.x, p1.y);
         ctx.lineWidth = w;
         ctx.strokeStyle = 'rgba(' + cfgL.color + ',' + (cfgL.alpha * a).toFixed(3) + ')';
+        ctx.stroke();
+      });
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 星团包络 */
+    /**
+     * 给一堆点画一圈闭合的平滑边界：绕一圈取 samples 个方向，
+     * 每个方向取「落在该方向 ±半个扇区内的点」里最远的那个，再外扩 pad；
+     * 半径序列平滑两遍消尖角，最后用二次贝塞尔穿过相邻采样点的中点。
+     * （不做凸包 —— 凸包会把 L 形的团撑肥，贴不住形状。）
+     */
+    function envelopePoints(list, pad, samples, smooth) {
+      var cx = 0, cy = 0;
+      list.forEach(function (n) { cx += n.x; cy += n.y; });
+      cx /= list.length; cy /= list.length;
+
+      var half = Math.PI / samples;
+      var r = [];
+      for (var i = 0; i < samples; i++) {
+        var th = i * 2 * Math.PI / samples;
+        var cos = Math.cos(th), sin = Math.sin(th);
+        var best = 0;
+        list.forEach(function (n) {
+          var dx = n.x - cx, dy = n.y - cy;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 1e-6) return;
+          // 点与这个方向的夹角：用 |cos| 判，超过半个扇区就不算
+          if ((dx * cos + dy * sin) / dist < Math.cos(half)) return;
+          if (dist > best) best = dist;
+        });
+        if (best === 0) {                       // 这个方向没点 → 退回支撑函数
+          list.forEach(function (n) {
+            var v = (n.x - cx) * cos + (n.y - cy) * sin;
+            if (v > best) best = v;
+          });
+        }
+        r.push(best + pad);
+      }
+      for (var s = 0; s < (smooth || 0); s++) {  // 平滑
+        var out = [];
+        for (var j = 0; j < samples; j++) {
+          out.push((r[(j - 1 + samples) % samples] + r[j] * 2 + r[(j + 1) % samples]) / 4);
+        }
+        r = out;
+      }
+      return { cx: cx, cy: cy, r: r, samples: samples };
+    }
+
+    /** 把包络采样点画成一条闭合的平滑曲线 */
+    function traceEnvelope(env, cam) {
+      var N = env.samples;
+      var pt = function (i) {
+        var th = (i % N) * 2 * Math.PI / N;
+        var rr = env.r[((i % N) + N) % N];
+        return cam.toScreen(env.cx + Math.cos(th) * rr, env.cy + Math.sin(th) * rr);
+      };
+      ctx.beginPath();
+      var p0 = pt(0), pN = pt(N - 1);
+      ctx.moveTo((pN.x + p0.x) / 2, (pN.y + p0.y) / 2);
+      for (var i = 0; i < N; i++) {
+        var cur = pt(i), nxt = pt(i + 1);
+        ctx.quadraticCurveTo(cur.x, cur.y, (cur.x + nxt.x) / 2, (cur.y + nxt.y) / 2);
+      }
+      ctx.closePath();
+    }
+
+    function drawEnvelopes() {
+      var a = lodA.envelope;
+      if (a <= 0.02) return;
+      var cfgE = C.envelope;
+      ctx.save();
+      ctx.lineJoin = 'round';
+      (view.graph.clusters || []).forEach(function (c) {
+        if (!c.nodes || !c.nodes.length) return;
+        var list = c.nodes.filter(function (n) { return nodeOk(n.id); });
+        if (list.length < 2) return;              // 一个点画不出包络
+        var env = envelopePoints(list, cfgE.pad, cfgE.samples, cfgE.smooth);
+        var gal = view.graph.galaxyOf ? view.graph.galaxyOf(c) : null;
+        var rgb = U.hexToRgb(c.color || (gal ? gal.color : '#7A8699'));
+
+        traceEnvelope(env, view.cam);
+        ctx.fillStyle = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (cfgE.fillAlpha * a).toFixed(3) + ')';
+        ctx.fill();
+        ctx.lineWidth = cfgE.width;
+        ctx.strokeStyle = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (cfgE.strokeAlpha * a).toFixed(3) + ')';
         ctx.stroke();
       });
       ctx.restore();
