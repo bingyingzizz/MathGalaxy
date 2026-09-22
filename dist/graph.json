@@ -2,19 +2,20 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T12:04:57.746Z",
+  "generated": "2026-09-22T12:17:52.867Z",
   "counts": {
    "regions": 6,
    "clusters": 16,
-   "nodes": 217,
-   "edges": 422,
-   "strong": 414,
+   "nodes": 219,
+   "edges": 427,
+   "strong": 419,
    "weak": 8
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
    "clusterMeaning": "星团 = 为了造出某个「能用的东西」而存在的一整套结果，内部关系密、对外整块连接",
    "contentPolicy": {
+    "constructive": "每一层都由上一层**构造**出来（子集/幂集/笛卡尔积/商集/函数空间……），用到的概念都要在更低的层里有节点；禁止用「满足某组性质的对象（在同构意义下唯一）」引入新东西 —— 那是公理刻画，性质必须作为**定理**从构造里推出来。（例：ℝ 是「有理 Cauchy 列模去零列」造出来的，域/序/确界原理是定理，不是定义。）",
     "dedupe": "同一结论只录一次 —— 内容来自多门课程的笔记，重复的定理已合并成一个节点",
     "mostGeneral": "只保留最通用的版本（条件最弱、结论最强）；特例写在 notes 里，除非它有独立用途",
     "preferGeneral": "同一个结论有多种证法时，保留推广程度最高的那条路径"
@@ -46,7 +47,7 @@
    "en": "Set Theory",
    "desc": "ZFC 公理系统、序数、基数与选择原理。",
    "color": "#4F7CF5",
-   "nodeCount": 43
+   "nodeCount": 46
   },
   {
    "id": "order-theory",
@@ -54,7 +55,7 @@
    "en": "Order Theory",
    "desc": "偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。",
    "color": "#2FA96B",
-   "nodeCount": 12
+   "nodeCount": 11
   },
   {
    "id": "topology",
@@ -78,7 +79,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 159
+   "nodeCount": 161
   }
  ],
  "clusters": [
@@ -146,13 +147,16 @@
    "id": "set.numbers",
    "name": "数系的构造",
    "parent": "set-theory",
-   "desc": "造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后用戴德金分割把 ℚ 补成完备的 ℝ。",
-   "nodeCount": 7,
+   "desc": "造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后把 ℚ 按 Cauchy 列**完备化**成 ℝ。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。",
+   "nodeCount": 10,
    "nodes": [
     "def.int",
     "def.rat",
+    "def.abs",
+    "thm.triangle",
     "def.cauchy-null",
-    "thm.real-completion",
+    "def.real",
+    "thm.real-ordered-field",
     "lem.archimedean",
     "thm.real-unique",
     "thm.real-uncountable"
@@ -231,10 +235,9 @@
    "id": "analysis.real",
    "name": "实数与区间",
    "parent": "analysis",
-   "desc": "造出「实数这根数轴」与在轴上做极限的那套语言：完备有序域 → 区间 → 上确界 → 数列极限/级数 → 连续 → 导数。",
-   "nodeCount": 9,
+   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限/级数 → 连续 → 导数 → 复数。（ℝ 本身的构造在星团「数系的构造」里。）",
+   "nodeCount": 8,
    "nodes": [
-    "def.real",
     "def.extended-real",
     "def.interval",
     "def.sup",
@@ -4294,28 +4297,6 @@
    ]
   },
   {
-   "id": "def.real",
-   "type": "definition",
-   "label": "实数系 ℝ",
-   "title": "实数系 ℝ（完备有序域）",
-   "region": "analysis",
-   "regions": [
-    "analysis",
-    "order-theory"
-   ],
-   "cluster": "analysis.real",
-   "tags": [
-    "定义",
-    "实数",
-    "完备性"
-   ],
-   "statement": "**实数系**是一个集合 $\\mathbb{R}$，带两个运算 $+$、$\\cdot$ 与一个序 $\\le$，满足三组公理：\n\n**(i) 域公理**：$(\\mathbb{R}, +, \\cdot)$ 是域 —— 加减乘除（除以非零元）都封闭，且有结合、交换、分配律。\n\n**(ii) 序公理**：$\\le$ 是全序，且与运算相容：\n$$a \\le b \\implies a + c \\le b + c, \\qquad a \\le b,\\ 0 \\le c \\implies ac \\le bc$$\n\n**(iii) 完备性公理（确界原理）**：$\\mathbb{R}$ 的**每个非空有上界的子集都有上确界**。\n\n这三组公理刻画的 $\\mathbb{R}$ 在同构意义下唯一。",
-   "notes": "⭐ **第 (iii) 条才是分析学的引擎**：没有它，$\\mathbb{Q}$ 也满足前两条，但 $\\{ x \\in \\mathbb{Q} : x^2 < 2 \\}$ 在 $\\mathbb{Q}$ 里没有上确界。\n\n由完备性可以推出分析里最常用的两件事：\n- **单调有界数列收敛**；\n- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。\n\n⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。\n\n📌 **这三组公理是「公理刻画」，不是构造** —— 所以有件事必须交代清楚：\n\n- **存在性**：答案在「由 Cauchy 列构造 $\\mathbb{R}$」那一条 —— 有理 Cauchy 列模去零列就是一个满足这三组公理的模型（另一条等价的路是戴德金分割）；\n- **唯一性**：任何两个完备有序域都同构（见「完备有序域的唯一性」）—— 所以「$\\mathbb{R}$」在同构意义下是良定义的，不必指明用的是哪个构造。\n\n📌 由这三条推出来的、后面到处要用的性质：**阿基米德性质**与 **$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密**（见「阿基米德性质」）；$\\mathbb{R}$ 还**不可数**（$|\\mathbb{R}| = 2^{\\aleph_0}$）—— 「稠密」与「一样多」是两件事。",
-   "refs": [
-    "Rudin, Principles of Mathematical Analysis, Ch. 1"
-   ]
-  },
-  {
    "id": "def.extended-real",
    "type": "definition",
    "label": "扩充实数 [−∞,+∞]",
@@ -4915,6 +4896,50 @@
    ]
   },
   {
+   "id": "def.abs",
+   "type": "definition",
+   "label": "绝对值 |x|",
+   "title": "绝对值 $|x|$（Absolute Value）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory",
+    "analysis"
+   ],
+   "cluster": "set.numbers",
+   "tags": [
+    "定义",
+    "绝对值",
+    "序"
+   ],
+   "statement": "设 $K$ 是一个**有序域**（眼下指的是：$\\mathbb{Q}$，以及后面造出来的 $\\mathbb{R}$），$x \\in K$。定义\n\n$$|x| := \\begin{cases} x, & x \\ge 0 \\\\ -x, & x < 0 \\end{cases} \\qquad\\text{即}\\qquad |x| = \\max\\{x, -x\\}$$\n\n于是 $|x| \\ge 0$ 恒成立，且 $|x| = 0 \\iff x = 0$。",
+   "notes": "⭐ 读法：$|x|$ 是**到原点的距离**，与符号无关。两点之间的距离就是 $|x - y|$ —— 这就是后来**距离空间**里那个距离的原型：把「差」扔掉，只留下「距离」这个概念本身。\n\n立刻能验证的两条（都由定义分情形）：\n- $|-x| = |x|$；\n- $|xy| = |x|\\,|y|$。\n\n⚠ **不等号那一侧的估计不属于定义**：$|x + y| \\le |x| + |y|$ 是一条**定理**（见「三角不等式」）—— 定义里只有分情形，没有不等式。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "thm.triangle",
+   "type": "theorem",
+   "label": "三角不等式",
+   "title": "三角不等式 $|x + y| \\le |x| + |y|$",
+   "region": "set-theory",
+   "regions": [
+    "set-theory",
+    "analysis"
+   ],
+   "cluster": "set.numbers",
+   "tags": [
+    "定理",
+    "不等式",
+    "绝对值"
+   ],
+   "statement": "设 $K$ 是有序域（如 $\\mathbb{Q}$、$\\mathbb{R}$），$x, y \\in K$。则\n\n$$|x + y| \\le |x| + |y|$$\n\n并且由此得到两个常用的变形：\n\n$$\\big| |x| - |y| \\big| \\le |x - y|, \\qquad |x_1 + x_2 + \\cdots + x_n| \\le |x_1| + |x_2| + \\cdots + |x_n|$$\n\n（后者由前者对 $n$ 归纳。）",
+   "notes": "⭐ 这是**一切估计的起点**：Cauchy 列的线性运算、极限的四则运算、级数的比较判别法、距离空间里那条 $d(x, z) \\le d(x, y) + d(y, z)$，归根到底都是它（距离空间那条是把它**取作公理**）。\n\n⚠ 证明只有分情形，没有任何技巧 —— 但**「$a \\le |a|$ 且 $-a \\le |a|$」这两句是全部的关键**：由它得 $-(|x| + |y|) \\le x + y \\le |x| + |y|$，而 $|t| \\le c \\iff -c \\le t \\le c$（$c \\ge 0$）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 1"
+   ]
+  },
+  {
    "id": "def.cauchy-null",
    "type": "definition",
    "label": "Cauchy 列与零列",
@@ -4937,10 +4962,34 @@
    ]
   },
   {
-   "id": "thm.real-completion",
+   "id": "def.real",
+   "type": "definition",
+   "label": "实数系 ℝ",
+   "title": "实数系 $\\mathbb{R}$（由 Cauchy 列构造）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory",
+    "analysis"
+   ],
+   "cluster": "set.numbers",
+   "tags": [
+    "定义",
+    "实数",
+    "商集",
+    "完备化"
+   ],
+   "statement": "记 $\\mathcal{C}$ 为全体**有理 Cauchy 列**，$\\sim$ 是「差为**零列**」这个等价关系（见「Cauchy 列与零列」）。令\n\n$$\\mathbb{R} := \\mathcal{C} / \\sim$$\n\n元素是等价类 $[x_n]$。运算**逐项**定义，序用代表元定义：\n\n$$[x_n] + [y_n] := [x_n + y_n], \\qquad [x_n] \\cdot [y_n] := [x_n y_n]$$\n\n$${}[x_n] > 0 :\\iff \\exists q \\in \\mathbb{Q},\\ q > 0,\\ \\exists N,\\ \\forall n \\ge N : x_n \\ge q$$\n\n（一般的序由 $[y_n] \\ge [x_n] :\\iff [y_n - x_n] \\ge 0$ 给出。）零与一取常数列：\n\n$$0 := [(0,0,0,\\dots)], \\qquad 1 := [(1,1,1,\\dots)]$$\n\n最后，$\\mathbb{Q}$ 通过**常数列**嵌入 $\\mathbb{R}$：\n\n$$q \\mapsto [(q, q, q, \\dots)]$$",
+   "notes": "⭐ **这就是构造**：$\\mathbb{R}$ 不被假定存在，它由**上一层的对象**粘出来 —— 有理数（$\\mathbb{Q}$）$\\to$ 有理数列（函数 $\\omega \\to \\mathbb{Q}$）$\\to$ 其中的 Cauchy 列 $\\to$ 按等价关系取商集。每一步都只用到已经有的东西，一个新的对象都没有凭空进来。\n\n- 元素是**等价类**，不是序列本身；否则同一个数的不同逼近方式会变成不同的实数。\n- 运算与序是**用代表元写出来的**，所以必须验证它们**与代表元的选取无关**（良定义）—— 这是商构造最容易漏的一步。\n\n⭐ 这一手法的**一般化就是「度量空间的完备化」**：把 $\\mathbb{Q}$ 换成任意度量空间 $(X, d)$，把 $|x_m - x_n|$ 换成 $d(x_m, x_n)$，「取 Cauchy 列、模去零列」照搬无误 —— $\\mathbb{R}$ 的构造是它的原型。\n\n📌 **三组性质不在定义里**：域公理、序公理、确界原理都是关于这个构造的**定理**（见「$\\mathbb{R}$ 是完备有序域」）。存在性由构造给出，不需要公理。\n\n📌 另一条路是**戴德金分割**（取 $\\mathbb{Q}$ 的满足「非空、有上界、无最大元」的子集作为元素）：路数不同，造出来的对象同构 —— 见「完备有序域的唯一性」。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3",
+    "Tao, Analysis I, Ch. 5"
+   ]
+  },
+  {
+   "id": "thm.real-ordered-field",
    "type": "theorem",
-   "label": "由 Cauchy 列构造 ℝ",
-   "title": "ℝ := 有理 Cauchy 列 / 零列，是一个完备有序域",
+   "label": "ℝ 是完备有序域",
+   "title": "$\\mathbb{R}$ 是完备有序域（确界原理）",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -4950,14 +4999,14 @@
    "tags": [
     "定理",
     "实数",
-    "完备化",
-    "完备性"
+    "完备性",
+    "确界原理"
    ],
-   "statement": "在 $\\{$有理 Cauchy 列$\\}$ 上取上述等价关系 $\\sim$，令\n\n$$\\mathbb{R} := \\{ \\text{有理 Cauchy 列} \\} / \\sim$$\n\n元素记作 $[x_n]$。运算**逐项**定义：\n\n$$[x_n] + [y_n] := [x_n + y_n], \\qquad [x_n] \\cdot [y_n] := [x_n y_n]$$\n\n序这样定义：称 $[x_n] > 0$，当且仅当存在**正有理数** $q$ 与 $N$，使 $n \\ge N$ 时恒有 $x_n \\ge q$；一般的序由 $[y_n] \\ge [x_n] :\\iff [y_n - x_n] \\ge 0$ 给出。\n\n则 $(\\mathbb{R}, +, \\cdot, \\le)$ 是**完备有序域**：\n\n**(i)** 是一个域（$0 := [$零列$]$，$1 := [(1,1,1,\\dots)]$）；\n**(ii)** 序与运算相容；\n**(iii)** 每个**非空有上界**的子集都有**上确界**。\n\n并且 $\\mathbb{Q}$ 通过**常数列** $x \\mapsto [(x, x, x, \\dots)]$ 保序、保运算地嵌入 $\\mathbb{R}$，像在 $\\mathbb{R}$ 中稠密。",
-   "notes": "⭐ 这条路的**一般化就是「度量空间的完备化」**：把 $\\mathbb{Q}$ 换成任意度量空间 $(X, d)$，把 $|x_m - x_n|$ 换成 $d(x_m, x_n)$，照样「取 Cauchy 列、模去零列」—— 做法一模一样，证明的每一步都能照搬。反过来说，$\\mathbb{R}$ 的构造就是完备化这个构造的**原型**。\n\n(iii) 的走法分两步（见边的证明）：先证**「$\\mathbb{R}$ 里每个 Cauchy 列都收敛」**（用对角线法从代表元里抽出一个有理 Cauchy 列），再由 Cauchy 完备推出确界原理（二分法造递增列与递减上界列，夹逼到同一个极限）。\n\n⭐ 与另一条路的对比：戴德金分割只用一个序关系、完全不用序列，代价是要先讨论 $\\mathbb{Q}$ 的任意子集；完备化这条路只用到**序列**，代价是商集与等价类要多花笔墨。两条路造出来的 $\\mathbb{R}$ 同构，结论一样。\n\n⚠ 常见误解：以为「$\\mathbb{R}$ 是 Cauchy 列的集合」。真正取的是**等价类** —— 否则不同的逼近方式会变成不同的「实数」。",
+   "statement": "上面构造出来的 $(\\mathbb{R}, +, \\cdot, \\le)$ 满足三组性质：\n\n**(i) 域公理**：$(\\mathbb{R}, +, \\cdot)$ 是域 —— 加减乘除（除以非零元）都封闭，且有结合、交换、分配律；\n\n**(ii) 序公理**：$\\le$ 是全序，且与运算相容：\n$$a \\le b \\implies a + c \\le b + c, \\qquad a \\le b,\\ 0 \\le c \\implies ac \\le bc$$\n\n**(iii) 完备性（确界原理）**：$\\mathbb{R}$ 的**每个非空有上界的子集都有上确界**。\n\n此外 $\\mathbb{Q}$ 的嵌入像在 $\\mathbb{R}$ 中**稠密**。",
+   "notes": "⚠ **注意这一条的位置**：它是**定理**，不是定义 —— 先有构造（「实数系 $\\mathbb{R}$」），再证明造出来的东西满足这三组性质。\n\n⭐ **第 (iii) 条才是分析学的引擎**：没有它 $\\mathbb{Q}$ 也满足前两条，但 $\\{ x \\in \\mathbb{Q} : x^2 < 2 \\}$ 在 $\\mathbb{Q}$ 里没有上确界。（$\\mathbb{Q}$ 因此不是完备有序域 —— 这不是缺陷，而正是要把 $\\mathbb{Q}$ 补成 $\\mathbb{R}$ 的理由。）\n\n由 (iii) 推出分析里最常用的两件事：\n- **单调有界数列收敛**；\n- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。\n\n⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。\n\n📌 (iii) 的走法分两步（见边的证明）：先证**「$\\mathbb{R}$ 里每个 Cauchy 列都收敛」**（用对角线法从代表元里抽出一个有理 Cauchy 列），再由 Cauchy 完备推出确界原理（二分法造递增列与递减上界列，夹逼到同一个极限）。\n\n📌 由这三条推出来的、后面到处要用的性质：**阿基米德性质**与 **$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密**（见「阿基米德性质」）；$\\mathbb{R}$ 还**不可数**（$|\\mathbb{R}| = 2^{\\aleph_0}$）—— 「稠密」与「一样多」是两件事。",
    "refs": [
-    "Rudin, Principles of Mathematical Analysis, Ch. 3",
-    "Folland, Real Analysis, §1.5"
+    "Rudin, Principles of Mathematical Analysis, Ch. 1",
+    "Ch. 3"
    ]
   },
   {
@@ -4988,7 +5037,7 @@
    "id": "thm.real-unique",
    "type": "theorem",
    "label": "完备有序域的唯一性",
-   "title": "任何两个完备有序域同构（$\\mathbb{R}$ 的良定义性）",
+   "title": "任何完备有序域都与 $\\mathbb{R}$ 同构（构造无关性）",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -5001,8 +5050,8 @@
     "唯一性",
     "同构"
    ],
-   "statement": "设 $K$、$K'$ 都是**完备有序域**。则存在**唯一**的双射 $f : K \\to K'$，它同时保持加法、乘法与序：\n\n$$f(x + y) = f(x) + f(y), \\qquad f(xy) = f(x)\\,f(y), \\qquad x \\le y \\iff f(x) \\le f(y)$$\n\n也就是说：**在同构意义下只有一个完备有序域** —— 记作 $\\mathbb{R}$。",
-   "notes": "⭐ 这条定理才是「$\\mathbb{R}$ 是良定义的」这句话的**内容**：\n\n- **存在性**由「由 Cauchy 列构造 $\\mathbb{R}$」给出（造出一个具体模型）；\n- **唯一性**就是这一条（任何两个模型都同构）——所以以后说「实数系」时不必指明用的是哪个构造：戴德金分割造出来的那个、Cauchy 列造出来的那个、以及任何别的模型，全都一样。\n\n证明三步（见边）：把 $1$ 的像固定 $\\implies$ $\\mathbb{Q}$ 的嵌入像被唯一确定；$\\implies$ 用**上确界**把映射推广到整个 $K$（这才是要用完备性的地方）；$\\implies$ 唯一性靠「$\\mathbb{Q}$ 在 $K$ 中稠密」把两个同构逼成同一个。\n\n⚠ 少任何一条公理，唯一性就没了：$\\mathbb{Q}$ 不是唯一的有序域（$\\mathbb{Q}(\\sqrt{2})$ 是另一个），$\\mathbb{Q}$ 与 $\\mathbb{Q}(\\sqrt 2)$ 作为有序域不同构，两者都满足「有序域」的全部公理。",
+   "statement": "设 $K$ 是**完备有序域**。则存在**唯一**的双射 $f : \\mathbb{R} \\to K$，它同时保持加法、乘法与序：\n\n$$f(x + y) = f(x) + f(y), \\qquad f(xy) = f(x)\\,f(y), \\qquad x \\le y \\iff f(x) \\le f(y)$$\n\n也就是说：$\\mathbb{R}$ 之外没有别的完备有序域 —— 任何一个都与它同构。",
+   "notes": "⭐ **这条定理说的是「构造之间的一致性」**：$\\mathbb{R}$ 的存在性已经由构造给出（不需要它），它说的是换一条路造 $\\mathbb{R}$（Cauchy 列、戴德金分割、小数展开……）得到的是**同一个对象** —— 所以「$\\mathbb{R}$ 有什么性质」不取决于选了哪条路，两条路造出来的东西可以互相替换。\n\n证明三步（见边）：把 $1$ 的像固定 $\\implies$ $\\mathbb{Q}$ 的嵌入像被唯一确定；$\\implies$ 用**上确界**把映射推广到整个 $K$（这才是要用完备性的地方）；$\\implies$ 唯一性靠「$\\mathbb{Q}$ 在 $K$ 中稠密」把两个同构逼成同一个。\n\n⚠ 少任何一条公理，唯一性就没了：$\\mathbb{Q}$ 不是唯一的有序域（$\\mathbb{Q}(\\sqrt{2})$ 是另一个），$\\mathbb{Q}$ 与 $\\mathbb{Q}(\\sqrt 2)$ 作为有序域不同构，两者都满足「有序域」的全部公理。",
    "refs": [
     "Tao, Analysis I, Ch. 5（实数的构造）"
    ]
@@ -7488,20 +7537,36 @@
    "note": "「等价」在这里就是商集意义上的**等价关系**：把同一个实数的不同逼近方式粘成一类。"
   },
   {
-   "id": "dep.cauchy-null-completion",
+   "id": "dep.rat-abs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rat",
+   "usedBy": "def.abs",
+   "note": "绝对值的第一批实例落在 $\\mathbb{Q}$ 上 —— 造 $\\mathbb{R}$ 之前，$|x|$ 只能是 $\\mathbb{Q}$ 上的绝对值。"
+  },
+  {
+   "id": "dep.abs-cauchy-null",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abs",
+   "usedBy": "def.cauchy-null",
+   "note": "Cauchy 列的定义式 $|x_m - x_n| < \\varepsilon$ 里的 $|\\cdot|$ 就是它，而 $\\varepsilon$ 取**正有理数** —— 这样在造出 $\\mathbb{R}$ 之前就说得通。"
+  },
+  {
+   "id": "dep.cauchy-null-real",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.cauchy-null",
-   "usedBy": "thm.real-completion",
-   "note": "定理取的就是「Cauchy 列模去零列」这些等价类。"
+   "usedBy": "def.real",
+   "note": "⭐ $\\mathbb{R}$ 的元素就是「Cauchy 列模去零列」这些等价类 —— 构造直接踩在它上面。"
   },
   {
-   "id": "dep.completion-real",
+   "id": "dep.quotient-real",
    "kind": "definition",
    "strength": "strong",
-   "definition": "thm.real-completion",
+   "definition": "def.quotient-set",
    "usedBy": "def.real",
-   "note": "⭐ $\\mathbb{R}$ 的**公理刻画**不是凭空的：上面那条构造给出一个满足这三组公理的模型。反过来，任何两个完备有序域都同构（同构唯一性），所以「$\\mathbb{R}$」是良定义的。"
+   "note": "和 $\\mathbb{Z}$、$\\mathbb{Q}$ 是**同一招**：把已有对象按等价关系粘成等价类。整条链 $\\mathbb{N} \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{R}$ 用的都是这一个手法。"
   },
   {
    "id": "dep.quotient-integrable",
@@ -7518,14 +7583,6 @@
    "definition": "def.rat",
    "usedBy": "lem.archimedean",
    "note": "「$\\mathbb{Q}$ 在 $K$ 中稠密」里的 $\\mathbb{Q}$ 就是有理数集在 $K$ 中的嵌入像。"
-  },
-  {
-   "id": "dep.real-unique",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.real",
-   "usedBy": "thm.real-unique",
-   "note": "唯一性定理的陈述里说的「完备有序域」就是这条定义的三组公理。（它回答了「$\\mathbb{R}$ 这个记号良不良定义」：存在性由构造给出，唯一性由这条定理给出。）"
   },
   {
    "id": "dep.countable-uncountable",
@@ -7552,11 +7609,35 @@
    "note": "后半句 $2^{\\aleph_0} > \\aleph_0$ 用的就是 Cantor 定理（$|A| < |\\mathcal{P}(A)|$）。"
   },
   {
-   "id": "imp.archimedean",
+   "id": "imp.triangle",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.abs"
+   ],
+   "target": "thm.triangle",
+   "title": "绝对值的定义 ⟹ 三角不等式",
+   "proof": "设 $x, y \\in K$。先看两个基本事实（都由 $|t| = \\max\\{t, -t\\}$ 直接读出）：\n\n- $t \\le |t|$ 且 $-t \\le |t|$，即 $-|t| \\le t \\le |t|$。\n\n于是\n\n$$x \\le |x|, \\qquad -x \\le |x|, \\qquad y \\le |y|, \\qquad -y \\le |y|$$\n\n两两相加（序与加法相容）：\n\n$$x + y \\le |x| + |y|, \\qquad -(x + y) \\le |x| + |y|$$\n\n即 $-c \\le x + y \\le c$，其中 $c := |x| + |y| \\ge 0$。而\n\n$$-c \\le t \\le c \\iff |t| \\le c \\qquad (c \\ge 0)$$\n\n（$\\impliedby$：由 $t \\le c$ 与 $-t \\le c$ 分别取 $\\max$；$\\implies$：$|t|$ 等于 $t$ 或 $-t$，两种情形都在 $c$ 以下。）取 $t = x + y$ 得\n\n$$|x + y| \\le |x| + |y| \\qquad \\blacksquare$$\n\n**变形。** 在 $|x + y| \\le |x| + |y|$ 中把 $x$ 换成 $x - y$ 得 $|x| \\le |x - y| + |y|$，即 $|x| - |y| \\le |x - y|$；交换 $x, y$ 得另一侧，两者合起来就是 $\\big| |x| - |y| \\big| \\le |x - y|$。$n$ 元版本由归纳：$|x_1 + \\cdots + x_n| \\le |x_1 + \\cdots + x_{n-1}| + |x_n|$。",
+   "note": ""
+  },
+  {
+   "id": "imp.real-ordered-field",
    "kind": "implication",
    "strength": "strong",
    "sources": [
     "def.real"
+   ],
+   "target": "thm.real-ordered-field",
+   "title": "Cauchy 列的等价类 ⟹ 完备有序域",
+   "proof": "记 $\\mathcal{C}$ 为有理 Cauchy 列的全体。下面把 $\\mathbb{R} := \\mathcal{C}/\\sim$ 逐条查一遍。\n\n**① 运算良定义。** 设 $x \\sim x'$、$y \\sim y'$（即 $x_n - x'_n$、$y_n - y'_n$ 都是零列）。\n\n加法：$|(x_n + y_n) - (x'_n + y'_n)| \\le |x_n - x'_n| + |y_n - y'_n| \\to 0$（三角不等式）。\n\n乘法：$x_n y_n - x'_n y'_n = x_n (y_n - y'_n) + y'_n (x_n - x'_n)$，而 Cauchy 列**有界**（设 $|x_n| \\le M$、$|y'_n| \\le M'$），故两项各自 $\\to 0$。\n\n**② 域公理。** 结合、交换、分配都是逐项验证后取等价类（$\\mathbb{Q}$ 满足，$\\mathcal{C}$ 对 $+$、$\\cdot$ 封闭）。零元 $0 := [$零列$]$、一 $1 := [(1,1,1,\\dots)]$。\n\n**乘法逆元**是唯一需要想法的地方：设 $x$ 不是零列。因 $x$ 是 Cauchy 列，「不是零列」意味着\n\n$$\\exists \\varepsilon > 0: \\forall N, \\exists n \\ge N,\\ |x_n| \\ge \\varepsilon$$\n\n取这样的 $\\varepsilon$，并用 Cauchy 性取 $N_0$ 使 $m, n \\ge N_0$ 时 $|x_m - x_n| < \\varepsilon/2$；再取 $n_0 \\ge N_0$ 使 $|x_{n_0}| \\ge \\varepsilon$。则对一切 $n \\ge N_0$：\n\n$$|x_n| \\ge |x_{n_0}| - |x_n - x_{n_0}| > \\varepsilon - \\varepsilon/2 = \\varepsilon/2$$\n\n于是定义 $y_n := 0$（$n < N_0$）、$y_n := 1/x_n$（$n \\ge N_0$）。$y$ 是 Cauchy 列，因为\n\n$$|y_m - y_n| = \\frac{|x_m - x_n|}{|x_m|\\,|x_n|} \\le \\frac{4}{\\varepsilon^2}\\,|x_m - x_n|$$\n\n而 $[x_n y_n] = [(1,1,1,\\dots)] = 1$。故每个非零元可逆。\n\n**③ 序良定义 + 全序。** $(y_n - x_n)$ 换成等价的代表元后仍是零列的平移，故「$> 0$」的定义与代表元无关。三种情形恰有一种成立：\n\n- $x$ 是零列 $\\implies [x] = 0$；\n- 否！则由 ② 的估计，从某项起 $|x_n| \\ge \\delta$；再用 Cauchy 性（取 $\\varepsilon = \\delta$）知符号最终恒定：若某两项异号则 $|x_m - x_n| \\ge 2\\delta$，矛盾。于是要么最终 $x_n \\ge \\delta$（正），要么最终 $x_n \\le -\\delta$（负）。\n\n序与运算的相容性（$\\alpha \\le \\beta \\implies \\alpha + \\gamma \\le \\beta + \\gamma$；$\\alpha \\ge 0, \\beta \\ge 0 \\implies \\alpha\\beta \\ge 0$）都逐项验证。\n\n**④ 嵌入与稠密。** $x \\mapsto [(x,x,x,\\dots)]$ 是保序、保运算的单射。稠密：若 $\\alpha < \\beta$，取代表元 $x \\in \\alpha$、$y \\in \\beta$ 与正有理数 $q$ 使最终 $x_n + q \\le y_n$，则由 $\\mathbb{Q}$ 的稠密性可取有理数 $r$ 夹在中间，常数列 $r$ 满足 $\\alpha < [r] < \\beta$。\n\n**⑤ $\\mathbb{R}$ 完备（Cauchy 完备）。** 设 $(\\alpha_k)$ 是 $\\mathbb{R}$ 中的 Cauchy 列，$x^{(k)} \\in \\alpha_k$ 是代表元。对每个 $k$，由 $(x^{(k)}_n)_n$ 的 Cauchy 性取 $N_k$，令\n\n$$y_k := x^{(k)}_{N_k}$$\n\n（对角抽取。）断言 $(y_k)$ 是有理 Cauchy 列：给定 $\\varepsilon > 0$，由 $(\\alpha_k)$ 的 Cauchy 性取 $K$，使 $k, j \\ge K$ 时 $|\\alpha_k - \\alpha_j| < \\varepsilon/3$，即\n\n$$\\exists N, \\forall n \\ge N : |x^{(k)}_n - x^{(j)}_n| < \\varepsilon/3$$\n\n再取 $K' \\ge K$ 使 $k \\ge K'$ 时 $1/k < \\varepsilon/3$，并对 $k, j \\ge K'$ 取 $n \\ge \\max(N_k, N_j, N)$：\n\n$$|y_k - y_j| \\le |y_k - x^{(k)}_n| + |x^{(k)}_n - x^{(j)}_n| + |x^{(j)}_n - y_j| < \\tfrac{\\varepsilon}{3} + \\tfrac{\\varepsilon}{3} + \\tfrac{\\varepsilon}{3} = \\varepsilon$$\n\n于是 $\\alpha := [y_k] \\in \\mathbb{R}$。同一组估计给出 $|\\alpha_k - \\alpha| \\le 2\\varepsilon/3$（取 $j$ 充分大），故 $\\alpha_k \\to \\alpha$。**每个 Cauchy 列在 $\\mathbb{R}$ 中收敛。**\n\n**⑥ 由 Cauchy 完备推出确界原理。** 设 $S \\subseteq \\mathbb{R}$ 非空、有上界 $\\beta_0$，取 $\\alpha_0 \\in S$。归纳地造两个数列：已知 $\\alpha_{n-1} \\in S$ 与上界 $\\beta_{n-1}$，取中点 $m_n := (\\alpha_{n-1} + \\beta_{n-1})/2$：\n\n- 若 $m_n$ 是 $S$ 的上界，则置 $\\beta_n := m_n$、$\\alpha_n := \\alpha_{n-1}$；\n- 否则有 $s \\in S$ 使 $s > m_n$，置 $\\alpha_n := s$、$\\beta_n := \\beta_{n-1}$。\n\n于是 $(\\alpha_n)$ 递增、$(\\beta_n)$ 递减，且\n\n$$\\beta_n - \\alpha_n = \\frac{\\beta_0 - \\alpha_0}{2^n} \\xrightarrow{\\ n \\to \\infty\\ } 0$$\n\n两个列都是 Cauchy 列（单调 + 步长趋于 $0$），由 ⑤ 收敛到同一个 $\\alpha \\in \\mathbb{R}$。\n\n**$\\alpha$ 是上界**：若不然，存在 $s \\in S$ 使 $s > \\alpha$。取 $n$ 充分大使 $\\beta_n - \\alpha_n < s - \\alpha$；由 $\\alpha_n \\to \\alpha$ 又有 $\\alpha \\le \\beta_n$ 与 $\\alpha_n \\le \\alpha$，于是 $\\alpha_n + (s - \\alpha) > \\beta_n$，而 $\\alpha_n \\in S$ 且 $s \\in S$ 都是 $\\beta_n$ 下面的元素 —— 与「$\\beta_n$ 是上界」矛盾。\n\n**$\\alpha$ 是最小上界**：任何上界 $\\gamma$ 都满足 $\\gamma \\ge \\alpha_n$（$\\alpha_n \\in S$），取极限得 $\\gamma \\ge \\alpha$。\n\n故 $\\alpha = \\sup S$ 存在，确界原理成立。$\\blacksquare$\n\n> ⭐ 注意 ⑤ 与 ⑥ 的位置：**先有「Cauchy 列收敛」，才有确界原理**。戴德金分割那条路的顺序正好相反（那里完备性是「并」的直接后果），两条路殊途同归。",
+   "note": ""
+  },
+  {
+   "id": "imp.archimedean",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.real-ordered-field"
    ],
    "target": "lem.archimedean",
    "title": "完备性 ⟹ 阿基米德性质 + ℚ 稠密",
@@ -7568,11 +7649,12 @@
    "kind": "implication",
    "strength": "strong",
    "sources": [
-    "lem.archimedean"
+    "lem.archimedean",
+    "def.real"
    ],
    "target": "thm.real-unique",
-   "title": "ℚ 稠密 ⟹ 完备有序域在同构意义下唯一",
-   "proof": "设 $K$、$K'$ 是完备有序域。分三步造出唯一的同构 $f : K \\to K'$。\n\n**① $\\mathbb{Q}$ 的部分被唯一确定。** 任何保 $1$ 的域同态都把 $\\mathbb{Z}$ 送到 $\\mathbb{Z}'$：$n \\mapsto n'$（加法与乘法都由 $1$ 递推地定出来），再取分式得 $\\mathbb{Q} \\to \\mathbb{Q}'$，记作 $q \\mapsto q'$。它保序（$q < r \\implies r - q > 0 \\implies (r-q)' > 0 \\implies q' < r'$）。这一步没有选择的余地。\n\n**② 用上确界把 $f$ 推广出去。** 对 $x \\in K$ 定义\n\n$$f(x) := \\sup\\{\\, q' : q \\in \\mathbb{Q},\\ q < x \\,\\} \\in K'$$\n\n这个上确界存在：集合非空（(i) 阿基米德性给出一个 $q < x$）且有上界（取 $r > x$，则所有 $q < x < r$ 满足 $q' < r'$）。于是 $f$ 是**保序**的：\n\n- $x \\le y \\implies f(x) \\le f(y)$：$\\{q : q<x\\} \\subseteq \\{q : q<y\\}$；\n- $x < y \\implies f(x) < f(y)$：由 $\\mathbb{Q}$ 稠密取 $q, r$ 使 $x < q < r < y$，则 $f(x) \\le q' < r' \\le f(y)$。\n\n**保运算**：以加法为例，若 $p < x$、$q < y$，则 $p + q < x + y$，故 $f(x) + f(y) \\le f(x+y)$；反向用稠密性：任取 $s < x + y$，取有理数 $u < x$ 使 $s - u < y$，则 $s < u + (s - u) < x + y$ 且 $s' \\le f(x) + f(y)$，对一切 $s < x+y$ 取上确界得 $f(x+y) \\le f(x) + f(y)$。两边相等。乘法同理（先把正元夹在有理数之间，再用符号规则）。\n\n**满射**：给定 $y' \\in K'$，令 $x := \\sup\\{q \\in \\mathbb{Q} : q' < y'\\}$（同样由阿基米德性与完备性存在）。任取有理数 $p < x < r$，则 $p' \\le y' \\le r'$；由 $\\mathbb{Q}$ 稠密取 $p \\nearrow x$、$r \\searrow x$ 代入，得 $f(x) = y'$。\n\n**③ 唯一性。** 设 $g : K \\to K'$ 也是这样的同构。由 ① 的「没有选择余地」，$g$ 与 $f$ 在 $\\mathbb{Q}$ 上一致。任取 $x \\in K$，由 $\\mathbb{Q}$ 在 $K$ 中**稠密**，$x = \\sup\\{ q \\in \\mathbb{Q} : q < x \\}$；又 $g$ 保序且把上确界送到上确界（保序双射 + 稠密性），故\n\n$$g(x) = g\\big(\\sup\\{q : q < x\\}\\big) = \\sup\\{g(q) : q < x\\} = \\sup\\{q' : q < x\\} = f(x)$$\n\n所以 $f = g$：**同构存在且唯一**。$\\blacksquare$\n\n> ⭐ 三步里每一步都在用前面的准备：① 只用到「$1$ 生成 $\\mathbb{Q}$」；② 才真正用**完备性**（两次取上确界）；③ 用的是**$\\mathbb{Q}$ 稠密**。少任何一条，唯一性就不成立。",
+   "title": "ℚ 稠密 ⟹ 完备有序域与 ℝ 同构",
+   "proof": "设 $K$ 是完备有序域，取 $K' := \\mathbb{R}$（上面构造出来的那个）。分三步造出唯一的同构 $f : K \\to \\mathbb{R}$。\n\n**① $\\mathbb{Q}$ 的部分被唯一确定。** 任何保 $1$ 的域同态都把 $\\mathbb{Z}$ 送到 $\\mathbb{Z}'$：$n \\mapsto n'$（加法与乘法都由 $1$ 递推地定出来），再取分式得 $\\mathbb{Q} \\to \\mathbb{Q}'$，记作 $q \\mapsto q'$。它保序（$q < r \\implies r - q > 0 \\implies (r-q)' > 0 \\implies q' < r'$）。这一步没有选择的余地。\n\n**② 用上确界把 $f$ 推广出去。** 对 $x \\in K$ 定义\n\n$$f(x) := \\sup\\{\\, q' : q \\in \\mathbb{Q},\\ q < x \\,\\} \\in K'$$\n\n这个上确界存在：集合非空（(i) 阿基米德性给出一个 $q < x$）且有上界（取 $r > x$，则所有 $q < x < r$ 满足 $q' < r'$）。于是 $f$ 是**保序**的：\n\n- $x \\le y \\implies f(x) \\le f(y)$：$\\{q : q<x\\} \\subseteq \\{q : q<y\\}$；\n- $x < y \\implies f(x) < f(y)$：由 $\\mathbb{Q}$ 稠密取 $q, r$ 使 $x < q < r < y$，则 $f(x) \\le q' < r' \\le f(y)$。\n\n**保运算**：以加法为例，若 $p < x$、$q < y$，则 $p + q < x + y$，故 $f(x) + f(y) \\le f(x+y)$；反向用稠密性：任取 $s < x + y$，取有理数 $u < x$ 使 $s - u < y$，则 $s < u + (s - u) < x + y$ 且 $s' \\le f(x) + f(y)$，对一切 $s < x+y$ 取上确界得 $f(x+y) \\le f(x) + f(y)$。两边相等。乘法同理（先把正元夹在有理数之间，再用符号规则）。\n\n**满射**：给定 $y' \\in K'$，令 $x := \\sup\\{q \\in \\mathbb{Q} : q' < y'\\}$（同样由阿基米德性与完备性存在）。任取有理数 $p < x < r$，则 $p' \\le y' \\le r'$；由 $\\mathbb{Q}$ 稠密取 $p \\nearrow x$、$r \\searrow x$ 代入，得 $f(x) = y'$。\n\n**③ 唯一性。** 设 $g : K \\to K'$ 也是这样的同构。由 ① 的「没有选择余地」，$g$ 与 $f$ 在 $\\mathbb{Q}$ 上一致。任取 $x \\in K$，由 $\\mathbb{Q}$ 在 $K$ 中**稠密**，$x = \\sup\\{ q \\in \\mathbb{Q} : q < x \\}$；又 $g$ 保序且把上确界送到上确界（保序双射 + 稠密性），故\n\n$$g(x) = g\\big(\\sup\\{q : q < x\\}\\big) = \\sup\\{g(q) : q < x\\} = \\sup\\{q' : q < x\\} = f(x)$$\n\n所以 $f = g$：**同构存在且唯一**。$\\blacksquare$\n\n> ⭐ 三步里每一步都在用前面的准备：① 只用到「$1$ 生成 $\\mathbb{Q}$」；② 才真正用**完备性**（两次取上确界）；③ 用的是**$\\mathbb{Q}$ 稠密**。少任何一条，唯一性就不成立。",
    "note": ""
   },
   {
@@ -7580,23 +7662,11 @@
    "kind": "implication",
    "strength": "strong",
    "sources": [
-    "def.real"
+    "thm.real-ordered-field"
    ],
    "target": "thm.real-uncountable",
-   "title": "完备性 ⟹ ℝ 不可数（闭区间套 + 对角线）",
+   "title": "完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）",
    "proof": "反设 $\\mathbb{R} = \\{x_1, x_2, x_3, \\dots\\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。\n\n**① 二分法造出一串闭区间。** 取 $I_0 := [0, 1]$。已知 $I_{n-1} = [a_{n-1}, b_{n-1}]$ 后，令 $m_n := (a_{n-1} + b_{n-1})/2$，取\n\n$$I_n := \\begin{cases} [a_{n-1}, m_n], & x_n > m_n \\\\ [m_n, b_{n-1}], & x_n \\le m_n \\end{cases}$$\n\n于是 $x_n \\notin I_n$，且 $I_0 \\supseteq I_1 \\supseteq I_2 \\supseteq \\cdots$，长度 $b_n - a_n = 2^{-n} \\to 0$。\n\n**② 完备性给出公共点。** 令 $A := \\{a_n\\}$。$A$ 非空（$a_0 = 0$）且有上界（$1$ 就是上界），故由**确界原理** $a := \\sup A$ 存在。\n\n**$a \\in I_n$ 对每个 $n$ 成立**：一方面 $a \\ge a_n$（上界）；另一方面对 $k \\ge n$ 有 $a_k \\le b_k \\le b_n$，故 $b_n$ 是 $A$ 的上界，于是 $a \\le b_n$。\n\n**③ 矛盾。** 由 ① 知 $x_n \\notin I_n$，由 ② 知 $a \\in I_n$，所以 $a \\ne x_n$ 对**一切** $n$ 成立 —— 但 $a \\in \\mathbb{R} = \\{x_1, x_2, \\dots\\}$，与序列穷尽了 $\\mathbb{R}$ 矛盾。故 $\\mathbb{R}$ 不可数。$\\blacksquare$\n\n**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0}$。再由 **Cantor 定理** $|\\mathcal{P}(\\mathbb{N})| > |\\mathbb{N}| = \\aleph_0$，即\n\n$$|\\mathbb{R}| = 2^{\\aleph_0} > \\aleph_0$$",
-   "note": ""
-  },
-  {
-   "id": "imp.real-completion",
-   "kind": "implication",
-   "strength": "strong",
-   "sources": [
-    "def.cauchy-null"
-   ],
-   "target": "thm.real-completion",
-   "title": "Cauchy 列模去零列 ⟹ 完备有序域",
-   "proof": "记 $\\mathcal{C}$ 为有理 Cauchy 列的全体。下面把 $\\mathbb{R} := \\mathcal{C}/\\sim$ 逐条查一遍。\n\n**① 运算良定义。** 设 $x \\sim x'$、$y \\sim y'$（即 $x_n - x'_n$、$y_n - y'_n$ 都是零列）。\n\n加法：$|(x_n + y_n) - (x'_n + y'_n)| \\le |x_n - x'_n| + |y_n - y'_n| \\to 0$。\n\n乘法：$x_n y_n - x'_n y'_n = x_n (y_n - y'_n) + y'_n (x_n - x'_n)$，而 Cauchy 列**有界**（设 $|x_n| \\le M$、$|y'_n| \\le M'$），故两项各自 $\\to 0$。\n\n**② 域公理。** 结合、交换、分配都是逐项验证后取等价类（$\\mathbb{Q}$ 满足，$\\mathcal{C}$ 对 $+$、$\\cdot$ 封闭）。零元 $0 := [$零列$]$、一 $1 := [(1,1,1,\\dots)]$。\n\n**乘法逆元**是唯一需要想法的地方：设 $x$ 不是零列。因 $x$ 是 Cauchy 列，「不是零列」意味着\n\n$$\\exists \\varepsilon > 0: \\forall N, \\exists n \\ge N,\\ |x_n| \\ge \\varepsilon$$\n\n取这样的 $\\varepsilon$，并用 Cauchy 性取 $N_0$ 使 $m, n \\ge N_0$ 时 $|x_m - x_n| < \\varepsilon/2$；再取 $n_0 \\ge N_0$ 使 $|x_{n_0}| \\ge \\varepsilon$。则对一切 $n \\ge N_0$：\n\n$$|x_n| \\ge |x_{n_0}| - |x_n - x_{n_0}| > \\varepsilon - \\varepsilon/2 = \\varepsilon/2$$\n\n于是定义 $y_n := 0$（$n < N_0$）、$y_n := 1/x_n$（$n \\ge N_0$）。$y$ 是 Cauchy 列，因为\n\n$$|y_m - y_n| = \\frac{|x_m - x_n|}{|x_m|\\,|x_n|} \\le \\frac{4}{\\varepsilon^2}\\,|x_m - x_n|$$\n\n而 $[x_n y_n] = [(1,1,1,\\dots)] = 1$。故每个非零元可逆。\n\n**③ 序良定义 + 全序。** $(y_n - x_n)$ 换成等价的代表元后仍是零列的平移，故「$> 0$」的定义与代表元无关。三种情形恰有一种成立：\n\n- $x$ 是零列 $\\implies [x] = 0$；\n- 否！则由 ② 的估计，从某项起 $|x_n| \\ge \\delta$；再用 Cauchy 性（取 $\\varepsilon = \\delta$）知符号最终恒定：若某两项异号则 $|x_m - x_n| \\ge 2\\delta$，矛盾。于是要么最终 $x_n \\ge \\delta$（正），要么最终 $x_n \\le -\\delta$（负）。\n\n序与运算的相容性（$\\alpha \\le \\beta \\implies \\alpha + \\gamma \\le \\beta + \\gamma$；$\\alpha \\ge 0, \\beta \\ge 0 \\implies \\alpha\\beta \\ge 0$）都逐项验证。\n\n**④ 嵌入与稠密。** $x \\mapsto [(x,x,x,\\dots)]$ 是保序、保运算的单射。稠密：若 $\\alpha < \\beta$，取代表元 $x \\in \\alpha$、$y \\in \\beta$ 与正有理数 $q$ 使最终 $x_n + q \\le y_n$，则由 $\\mathbb{Q}$ 的稠密性可取有理数 $r$ 夹在中间，常数列 $r$ 满足 $\\alpha < [r] < \\beta$。\n\n**⑤ $\\mathbb{R}$ 完备（Cauchy 完备）。** 设 $(\\alpha_k)$ 是 $\\mathbb{R}$ 中的 Cauchy 列，$x^{(k)} \\in \\alpha_k$ 是代表元。对每个 $k$，由 $(x^{(k)}_n)_n$ 的 Cauchy 性取 $N_k$，令\n\n$$y_k := x^{(k)}_{N_k}$$\n\n（对角抽取。）断言 $(y_k)$ 是有理 Cauchy 列：给定 $\\varepsilon > 0$，由 $(\\alpha_k)$ 的 Cauchy 性取 $K$，使 $k, j \\ge K$ 时 $|\\alpha_k - \\alpha_j| < \\varepsilon/3$，即\n\n$$\\exists N, \\forall n \\ge N : |x^{(k)}_n - x^{(j)}_n| < \\varepsilon/3$$\n\n再取 $K' \\ge K$ 使 $k \\ge K'$ 时 $1/k < \\varepsilon/3$，并对 $k, j \\ge K'$ 取 $n \\ge \\max(N_k, N_j, N)$：\n\n$$|y_k - y_j| \\le |y_k - x^{(k)}_n| + |x^{(k)}_n - x^{(j)}_n| + |x^{(j)}_n - y_j| < \\tfrac{\\varepsilon}{3} + \\tfrac{\\varepsilon}{3} + \\tfrac{\\varepsilon}{3} = \\varepsilon$$\n\n于是 $\\alpha := [y_k] \\in \\mathbb{R}$。同一组估计给出 $|\\alpha_k - \\alpha| \\le 2\\varepsilon/3$（取 $j$ 充分大），故 $\\alpha_k \\to \\alpha$。**每个 Cauchy 列在 $\\mathbb{R}$ 中收敛。**\n\n**⑥ 由 Cauchy 完备推出确界原理。** 设 $S \\subseteq \\mathbb{R}$ 非空、有上界 $\\beta_0$，取 $\\alpha_0 \\in S$。归纳地造两个数列：已知 $\\alpha_{n-1} \\in S$ 与上界 $\\beta_{n-1}$，取中点 $m_n := (\\alpha_{n-1} + \\beta_{n-1})/2$：\n\n- 若 $m_n$ 是 $S$ 的上界，则置 $\\beta_n := m_n$、$\\alpha_n := \\alpha_{n-1}$；\n- 否则有 $s \\in S$ 使 $s > m_n$，置 $\\alpha_n := s$、$\\beta_n := \\beta_{n-1}$。\n\n于是 $(\\alpha_n)$ 递增、$(\\beta_n)$ 递减，且\n\n$$\\beta_n - \\alpha_n = \\frac{\\beta_0 - \\alpha_0}{2^n} \\xrightarrow{\\ n \\to \\infty\\ } 0$$\n\n两个列都是 Cauchy 列（单调 + 步长趋于 $0$），由 ⑤ 收敛到同一个 $\\alpha \\in \\mathbb{R}$。\n\n**$\\alpha$ 是上界**：若不然，存在 $s \\in S$ 使 $s > \\alpha$。取 $n$ 充分大使 $\\beta_n - \\alpha_n < s - \\alpha$；由 $\\alpha_n \\to \\alpha$ 又有 $\\alpha \\le \\beta_n$ 与 $\\alpha_n \\le \\alpha$，于是 $\\alpha_n + (s - \\alpha) > \\beta_n$，而 $\\alpha_n \\in S$ 且 $s \\in S$ 都是 $\\beta_n$ 下面的元素 —— 与「$\\beta_n$ 是上界」矛盾。\n\n**$\\alpha$ 是最小上界**：任何上界 $\\gamma$ 都满足 $\\gamma \\ge \\alpha_n$（$\\alpha_n \\in S$），取极限得 $\\gamma \\ge \\alpha$。\n\n故 $\\alpha = \\sup S$ 存在，确界原理成立。$\\blacksquare$\n\n> ⭐ 注意 ⑤ 与 ⑥ 的位置：**先有「Cauchy 列收敛」，才有确界原理**。这与戴德金分割那条路的顺序正好相反（那里完备性是「并」的直接后果），两条路殊途同归。",
    "note": ""
   },
   {
@@ -8360,6 +8430,30 @@
    "note": "外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$。"
   },
   {
+   "id": "def-dep.powerset-outer-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.power-set",
+   "usedBy": "def.outer-measure",
+   "note": "定义域是**幂集** $\\mathcal{P}(X)$ —— 不是某个 $\\sigma$-代数。"
+  },
+  {
+   "id": "def-dep.extreal-outer-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.extended-real",
+   "usedBy": "def.outer-measure",
+   "note": "取值落在**扩充实数** $[0, +\\infty]$ 里：外测度可以取 $+\\infty$（$\\mathbb{R}$ 的 Lebesgue 测度就是）。"
+  },
+  {
+   "id": "def-dep.extreal-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.extended-real",
+   "usedBy": "def.measure",
+   "note": "测度也取值在 $[0, +\\infty]$ 里 —— 「$\\mu$ 是**测度**」这句话里的 $\\mu$ 是映到扩充实数的。"
+  },
+  {
    "id": "def-dep.outer-carath",
    "kind": "definition",
    "strength": "strong",
@@ -8863,6 +8957,13 @@
    "explicit": false
   },
   {
+   "a": "analysis.real",
+   "b": "set.numbers",
+   "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "set.choice",
    "b": "set.construct",
    "count": 5,
@@ -8872,7 +8973,7 @@
   {
    "a": "analysis.measure",
    "b": "analysis.real",
-   "count": 2,
+   "count": 4,
    "label": "",
    "explicit": false
   },
@@ -8893,14 +8994,14 @@
   {
    "a": "analysis.lp",
    "b": "analysis.real",
-   "count": 3,
+   "count": 2,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.measure",
    "b": "set.construct",
-   "count": 6,
+   "count": 7,
    "label": "",
    "explicit": false
   },
@@ -8928,14 +9029,7 @@
   {
    "a": "set.choice",
    "b": "set.numbers",
-   "count": 7,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "analysis.real",
-   "b": "set.numbers",
-   "count": 4,
+   "count": 8,
    "label": "",
    "explicit": false
   },

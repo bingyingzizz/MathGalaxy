@@ -1,10 +1,19 @@
 /* ==========================================================================
    内容包 · 主干（学习主线）
    --------------------------------------------------------------------------
-   这张星图有 182 个节点，初学者打开会不知道从哪儿看起。
-   这里挑出一条**主线**：从最底层的 ZFC / 集合，一路到测度、积分、L^p、RN 定理。
+   这张星图有两百多个节点，初学者打开会不知道从哪儿看起。
+   这里挑出一条**主线**：从最底层的 ZFC 公理，一路造出数系（ℕ → ℤ → ℚ → ℝ），
+   再到测度、积分、L^p、RN 定理。
    主干上的点必须满足「不看它就接不上后面」——它要么是某个概念的入口，
    要么是整条线绕不过去的那一步。
+
+   ⭐⭐ 按内容准则第 ① 条，主干**严格按构造顺序排**：每一条都只用它前面已经出现过的点，
+   新对象必须是**造**出来的，不是「满足某组性质的东西」。所以 ℝ 那一段的顺序是
+   ℕ 存在 → 归纳原理 → 商集 → ℤ → ℚ → 绝对值 → Cauchy 列 → **ℝ（构造）** →
+   **ℝ 是完备有序域（性质，是定理）**，而不是反过来。
+
+   每一段的顺序就是层号（依赖深度）从小到大的顺序 —— 括号里的数字是写那份名单时的
+   层号，层号是运行时算出来的，内容一改就可能变，**以 `bun tools/_layers.mjs` 为准**。
 
    用法：图例上方的工具条点「主干」→ 只留这些点，其余全藏起来。
 
@@ -15,58 +24,69 @@ window.MG = window.MG || {};
 
 MG.trunk = [
 
-  /* ------------------------------------------------ 一、集合与序（地基） */
-  'def.real',                  // 实数系 ℝ —— 分析学的出发点
-  'def.interval',              // 区间
-  'def.sup',                   // 上确界与下确界
-  'def.sequence-limit',        // 数列极限
-  'ax.ext',                    // 外延公理：集合相等靠什么
-  'def.subset',                // 子集
-  'def.power-set',             // 幂集（后面生成的 σ-代数、外测度都踩在它上面）
-  'def.empty',                 // 空集
-  'thm.empty',                 // 空集存在
-  'def.pair',                  // 有序对
-  'def.rel',                   // 关系
-  'def.function',              // 函数
-  'ax.choice',                 // 选择公理
-  'def.poset',                 // 偏序集
-  'def.chain',                 // 链
-  'def.bound',                 // 上界与极大元
-  'lem.zorn',                  // 佐恩引理
+  /* ================= 一、从 ZFC 造出数系（地基，一步一层） ================= */
+  'ax.ext',                    //  0 层  外延公理：集合相等靠什么
+  'def.empty',                 //  0 层  空集 ∅
+  'def.subset',                //  1 层  子集
+  'def.power-set',             //  2 层  幂集 𝒫(X)（生成的 σ-代数、外测度都踩在它上面）
+  'thm.empty',                 //  3 层  空集存在
+  'def.pair',                  //  3 层  有序对
+  'thm.omega',                 //  3 层  自然数集 ℕ 存在（无穷公理 + 分离）
+  'def.rel',                   //  4 层  关系
+  'thm.induction',             //  4 层  归纳原理与递推定义
+  'def.function',              //  5 层  函数
+  'def.quotient-set',          //  5 层  商集与等价类 —— ℤ、ℚ、ℝ 用的是同一招
+  'def.int',                   //  6 层  整数 ℤ = (ℕ×ℕ)/~（差相同）
+  'def.rat',                   //  7 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）
+  'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
+  'def.cauchy-null',           //  9 层  有理 Cauchy 列 / 零列 / 等价
+  'def.real',                  // 10 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
+  'thm.real-ordered-field',    // 11 层  ℝ 是完备有序域（确界原理）—— 性质是定理
+  'def.sup',                   // 11 层  上确界与下确界
+  'def.interval',              // 11 层  区间
+  'def.sequence-limit',        // 11 层  数列极限
 
-  /* -------------------------------------------- 二、测度（分析的地基） */
-  'def.set-ring',              // 环与代数
-  'def.sigma-algebra',         // σ-代数
-  'def.generated-sigma',       // 生成的 σ-代数
-  'def.borel',                 // Borel σ-代数
-  'def.measure',               // 测度
-  'def.null-set',              // 零集与完备
-  'def.ae',                    // 几乎处处
-  'def.outer-measure',         // 外测度
-  'thm.caratheodory',          // Carathéodory 定理
+  /* ========================== 二、序与选择（工具） ========================== */
+  'def.poset',                 //  5 层  偏序集
+  'def.chain',                 //  6 层  链
+  'def.bound',                 //  6 层  上界与极大元
+  'ax.choice',                 //  8 层  选择公理
+  'lem.zorn',                  //  8 层  佐恩引理
 
-  /* ------------------------------------------------------ 三、积分 */
-  'def.measurable-function',   // 可测函数
-  'def.simple-function',       // 简单函数
-  'def.integral-simple',       // 简单函数的积分
-  'def.integral-nonneg',       // 非负函数的积分
-  'thm.mct',                   // 单调收敛定理
-  'lem.fatou',                 // Fatou 引理
-  'thm.dct',                   // 控制收敛定理
-  'def.integrable',            // 可积 / L¹
-  'thm.fubini-tonelli',        // Fubini–Tonelli
+  /* ======================= 三、测度（分析的地基） ======================= */
+  'def.set-ring',              //  2 层  环与代数
+  'def.sigma-algebra',         //  4 层  σ-代数
+  'def.generated-sigma',       //  5 层  生成的 σ-代数
+  'def.borel',                 //  6 层  Borel σ-代数
+  'def.extended-real',         // 11 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
+  'def.measure',               // 12 层  测度
+  'def.outer-measure',         // 12 层  外测度（定义在幂集上，只有次可加性）
+  'def.null-set',              // 13 层  零集与完备
+  'thm.caratheodory',          // 14 层  Carathéodory 定理：外测度 → 测度
+  'def.ae',                    // 14 层  几乎处处
 
-  /* ------------------------------------------ 四、函数空间与微分 */
-  'def.lp-norm',               // L^p 范数
-  'thm.holder',                // Hölder 不等式
-  'thm.lp-banach',             // L^p 是 Banach 空间
-  'thm.riesz-representation-lp', // (L^p)* ≅ L^q
-  'def.locally-integrable',    // 局部可积
-  'def.maximal-function',      // 极大函数
-  'thm.lebesgue-differentiation', // Lebesgue 微分定理
-  'def.bounded-variation',     // 有界变差 BV
-  'def.ac-function',           // 绝对连续函数
-  'def.derivative',            // 导数
-  'thm.ftc-lebesgue',          // 微积分基本定理（Lebesgue 版）
-  'thm.lebesgue-radon-nikodym' // Lebesgue–Radon–Nikodym 定理
+  /* ============================== 四、积分 ============================== */
+  'def.measurable-function',   //  5 层  可测函数
+  'def.simple-function',       //  6 层  简单函数
+  'def.integral-simple',       // 13 层  简单函数的积分
+  'def.integral-nonneg',       // 14 层  非负函数的积分
+  'thm.mct',                   // 15 层  单调收敛定理
+  'def.integrable',            // 16 层  可积 / L¹
+  'lem.fatou',                 // 16 层  Fatou 引理
+  'thm.dct',                   // 17 层  控制收敛定理
+  'thm.fubini-tonelli',        // 17 层  Fubini–Tonelli
+
+  /* ========================= 五、函数空间与微分 ========================= */
+  'def.ac-function',           // 12 层  绝对连续函数
+  'def.derivative',            // 13 层  导数
+  'def.bounded-variation',     // 14 层  有界变差 BV
+  'def.lp-norm',               // 15 层  L^p 范数
+  'thm.holder',                // 16 层  Hölder 不等式
+  'def.locally-integrable',    // 17 层  局部可积
+  'thm.lp-banach',             // 18 层  L^p 是 Banach 空间
+  'thm.ftc-lebesgue',          // 18 层  微积分基本定理（Lebesgue 版）
+  'def.maximal-function',      // 19 层  极大函数
+  'thm.lebesgue-radon-nikodym',// 19 层  Lebesgue–Radon–Nikodym 定理
+  'thm.riesz-representation-lp', // 20 层  (L^p)* ≅ L^q
+  'thm.lebesgue-differentiation' // 21 层  Lebesgue 微分定理
 ];
