@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T10:11:06.131Z
-> 6 星系 / 13 星团 / 182 节点 / 332 连线（强边 328，弱边 4）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T10:28:13.794Z
+> 6 星系 / 14 星团 / 198 节点 / 366 连线（强边 362，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -236,6 +236,65 @@ $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \
 
 参考：Kunen, Set Theory, I.5
 
+#### 并集与交集　`def.union-inter`
+*定义*　并集 / 交集（Union & Intersection）
+
+设 $\mathcal{A}$ 是一族集合（$A$ 的**并**与**交**是它只有两个成员时的特例）：
+
+$$\bigcup \mathcal{A} := \{ x : \exists A \in \mathcal{A},\ x \in A \}$$
+$$\bigcap \mathcal{A} := \{ x : \forall A \in \mathcal{A},\ x \in A \}$$
+
+两个集合的情形记作 $A \cup B$、$A \cap B$；可数族的并、交常记作 $\bigcup_{n} A_n$、$\bigcap_{n} A_n$。
+
+显然 $A \cap B \subseteq A \subseteq A \cup B$。
+
+由并集公理，$\bigcup \mathcal{A}$ 是集合；$\bigcap \mathcal{A}$ 由分离公理模式取出。
+
+⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\sigma$-环、$\sigma$-代数、单调类都是这么定义的）。
+
+⚠ 分配律对任意族都成立：$A \cap \bigcup_i B_i = \bigcup_i (A \cap B_i)$；补与并、交的交换就是 De Morgan 律。
+
+参考：Kunen, Set Theory, I.5
+
+#### 差集与补集　`def.diff-complement`
+*定义*　差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）
+
+设 $A$、$B$、$X$ 是集合且 $A, B \subseteq X$：
+
+- **差集**：$A \setminus B := \{ x \in A : x \notin B \}$；
+- **补集**（相对于 $X$）：$A^{c} := X \setminus A$；
+- **对称差**：$A \triangle B := (A \setminus B) \cup (B \setminus A)$。
+
+基本恒等式：
+
+$$A \setminus B = A \cap B^{c}, \qquad (A^{c})^{c} = A, \qquad (\bigcup_i A_i)^{c} = \bigcap_i A_i^{c}$$
+
+最后一条就是 **De Morgan 律**。
+
+⭐ De Morgan 律是「用差 + 可数并推出可数交」的全部依据：$\bigcap_n A_n = A_1 \setminus \bigcup_{n \ge 2} (A_1 \setminus A_n)$ —— $\sigma$-环只要求对差与可数并封闭，可数交就自动有了。
+
+⚠ **补集必须相对于某个全集 $X$ 才有意义**，这也正是 $\sigma$-代数要含 $X$ 的原因：不含 $X$ 就只剩 $\sigma$-环，补运算落不到里面。
+
+参考：Kunen, Set Theory, I.5
+
+#### 空集 ∅　`def.empty`
+*定义*　空集（Empty Set）
+
+**空集**是不含任何元素的集合：
+
+$$\emptyset := \{ x : x \ne x \}$$
+
+由外延公理，这样的集合至多一个；由分离公理模式（对任一集合 $A$ 取 $\{x \in A : x \ne x\}$），它确实存在。
+
+于是对一切集合 $A$：$\emptyset \subseteq A$（空泛真），且 $\emptyset$ 是 $\subseteq$ 的最小元。
+
+⭐「$\emptyset \in \mathcal{A}$」「$\emptyset \notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\mu(\emptyset) = 0$ 是测度的第一条）。
+
+⚠ 区分 $\emptyset$ 与 $\{\emptyset\}$：后者含一个元素（那个元素是空集），所以 $\{\emptyset\} \ne \emptyset$。
+⚠ $\emptyset \subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \in \emptyset$ 需要检查。
+
+参考：Kunen, Set Theory, I.5
+
 ### 星团：关系与选择
 > 造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。
 
@@ -258,21 +317,39 @@ AC 与 ZF 独立：Gödel (1938) 证明 $Con(ZF) \to Con(ZF + AC)$，Cohen (1963
 
 参考：Jech, The Axiom of Choice；Kunen, Set Theory, I.12
 
-#### 关系与函数　`def.rel`
-*定义*　关系 / 函数（Relation & Function）
+#### 关系　`def.rel`
+*定义*　关系（Relation）
 
 设 $A$、$B$ 是集合。
 
-- **关系** $R$ 由有序对组成；$R \subseteq A \times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。
-- **定义域** $\operatorname{dom} R = \{ a : \exists b (a, b) \in R \}$；**值域** $\operatorname{ran} R = \{ b : \exists a (a, b) \in R \}$。
+**关系** $R$ 由有序对组成；$R \subseteq A \times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。
+
+- **定义域** $\operatorname{dom} R = \{ a : \exists b (a, b) \in R \}$；
+- **值域** $\operatorname{ran} R = \{ b : \exists a (a, b) \in R \}$；
 - **逆** $R^{-1} = \{ (b, a) : (a, b) \in R \}$。
-- **函数** $f : A \to B$ 是满足下式的关系 $f \subseteq A \times B$：
+
+在 ZFC 里关系就是一个集合（由有序对组成），没有额外的原始概念 —— 所以「$\preceq$ 是 $A$ 上的关系」这句话本身是有内容的：它说的是一族有序对。
+
+常见的两类关系：**等价关系**（自反、对称、传递）与**偏序**（自反、反对称、传递）——后者另开一条节点。
+
+参考：Kunen, Set Theory, I.5
+
+#### 函数　`def.function`
+*定义*　函数（Function）
+
+设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \to B$），当且仅当对每个输入恰有一个输出：
 
 $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 
-唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\operatorname{dom} f = A$。
+唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \{ f(a) : a \in A \}$。
 
-在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。
+单射 / 满射 / 双射见另一条节点。
+
+在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。
+
+⚠ 两个容易混的地方：
+- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \to B$（即 $\operatorname{dom} f = A$）。
+- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。
 
 参考：Kunen, Set Theory, I.5
 
@@ -310,6 +387,46 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 **一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。
 
 参考：Hartogs (1915)；Kunen, Set Theory, I.11；Jech, The Axiom of Choice, Ch. 2
+
+#### 单射 / 满射 / 双射　`def.bijection`
+*定义*　单射 / 满射 / 双射（Injective / Surjective / Bijective）
+
+设 $f : A \to B$。
+
+- $f$ **单射**（injective）：$f(a) = f(a') \implies a = a'$，即不同输入给不同输出；
+- $f$ **满射**（surjective）：$\forall b \in B, \exists a \in A : f(a) = b$，即 $f(A) = B$；
+- $f$ **双射**（bijective）：既单又满。
+
+双射 $f : A \to B$ 的**逆** $f^{-1} : B \to A$ 也是双射（把 $f$ 看作关系时，逆关系就是 $f^{-1}$）。
+
+于是「存在双射 $A \to B$」是集合之间的一种等价关系，用来定义**等势**。
+
+⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\alpha \hookrightarrow X$ 不成立」也是同一个句式。
+
+⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \mathbb{R} \to \mathbb{R}$，$x \mapsto x^2$ 既不单也不满；把陪域改成 $[0, \infty)$ 就满了。
+
+参考：Kunen, Set Theory, I.5
+
+#### 可数与不可数　`def.countable`
+*定义*　可数 / 至多可数（Countable）
+
+设 $\mathbb{N} = \{0, 1, 2, \dots\}$ 是自然数集。
+
+集合 $A$ **可数**，当且仅当存在双射 $A \to \mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \dots$，一个不漏、一个不重）。
+
+既有限又可数的情形合起来叫**至多可数**：$A$ 至多可数 $\iff$ 存在单射 $A \to \mathbb{N}$。
+
+不是至多可数的集合叫**不可数**。
+
+⭐ 这一条撑起了两大块内容：
+- **$\sigma$-环 / $\sigma$-代数 / 单调类**：可数并、可数交里的「可数」就是它；
+- **测度的可数可加**：$\mu(\bigcup_n E_n) = \sum_n \mu(E_n)$ 里的下标集要可数。
+
+基本事实：$\mathbb{N} \times \mathbb{N}$ 可数；至多可多个可数集的并仍可数；$\mathbb{R}$ 不可数（Cantor 对角线法）。
+
+⚠ 「可数」不是「数得完」：$\mathbb{N}$ 自己就可数但数不完。
+
+参考：Kunen, Set Theory, I.6
 
 ## 星系：序理论（Order Theory）
 > 偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。
@@ -665,6 +782,203 @@ $V$ 有基；
 
 ## 星系：分析学（Analysis）
 > 极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。
+
+### 星团：实数与区间
+> 造出「实数这根数轴」与在轴上做极限的那套语言：完备有序域 → 区间 → 上确界 → 数列极限/级数 → 连续 → 导数。
+
+#### 实数系 ℝ　`def.real`
+*定义*　实数系 ℝ（完备有序域）
+
+**实数系**是一个集合 $\mathbb{R}$，带两个运算 $+$、$\cdot$ 与一个序 $\le$，满足三组公理：
+
+**(i) 域公理**：$(\mathbb{R}, +, \cdot)$ 是域 —— 加减乘除（除以非零元）都封闭，且有结合、交换、分配律。
+
+**(ii) 序公理**：$\le$ 是全序，且与运算相容：
+$$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$$
+
+**(iii) 完备性公理（确界原理）**：$\mathbb{R}$ 的**每个非空有上界的子集都有上确界**。
+
+这三组公理刻画的 $\mathbb{R}$ 在同构意义下唯一。
+
+⭐ **第 (iii) 条才是分析学的引擎**：没有它，$\mathbb{Q}$ 也满足前两条，但 $\{ x \in \mathbb{Q} : x^2 < 2 \}$ 在 $\mathbb{Q}$ 里没有上确界。
+
+由完备性可以推出分析里最常用的两件事：
+- **单调有界数列收敛**；
+- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。
+
+⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 扩充实数 [−∞,+∞]　`def.extended-real`
+*定义*　扩充实数系 $\overline{\mathbb{R}}$（Extended Reals）
+
+在 $\mathbb{R}$ 上添两个记号 $+\infty$、$-\infty$，得到**扩充实数系**
+
+$$\overline{\mathbb{R}} := \mathbb{R} \cup \{ -\infty, +\infty \}$$
+
+规定 $-\infty < x < +\infty$ 对一切 $x \in \mathbb{R}$ 成立，于是 $\overline{\mathbb{R}}$ 仍是全序集；并约定
+
+$$x + (\pm\infty) = \pm\infty, \qquad 0 \cdot (\pm\infty) = 0$$
+
+而 $\infty - \infty$ 与 $\infty / \infty$ **不定义**。
+
+为什么需要它：测度、积分的取值天然可以是 $\infty$（$\mathbb{R}$ 的 Lebesgue 测度就是 $\infty$），把所有量都放进 $\overline{\mathbb{R}}$，收敛定理（sup、极限）就不必反复讨论「值是不是有限」。
+
+⚠ 约定 $0 \cdot \infty = 0$ 是刻意的：它让「在无穷测度集上取 $0$ 的函数」积分为 $0$。
+⚠ 它不是域：$\infty$ 没有加法逆元。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 区间　`def.interval`
+*定义*　区间（Interval）
+
+$\mathbb{R}$ 的**区间**是满足下式的子集 $I$：
+
+$$a, b \in I,\ a \le x \le b \implies x \in I$$
+
+即「中间不空」。常见的有界区间写成
+
+$$(a, b), \quad [a, b], \quad [a, b), \quad (a, b]$$
+
+按端点是否取到区分；另有 $(-\infty, b)$、$(a, +\infty)$、$\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。
+
+体积就是长度：$m((a, b]) = b - a$。
+
+⭐ **半开区间 $\{ (a, b] : a < b \}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。
+
+为什么要用半开而不是开区间：不交并的长度好算 —— $[a, b) \sqcup [b, c) = [a, c)$ 在开区间上不成立。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 2
+
+#### 上确界与下确界　`def.sup`
+*定义*　上确界 $\sup$ / 下确界 $\inf$（Supremum & Infimum）
+
+设 $S \subseteq \mathbb{R}$，$S \ne \emptyset$。
+
+$u$ 是 $S$ 的**上确界**（记 $\sup S$），当且仅当
+
+- $u$ 是 $S$ 的上界：$\forall s \in S, s \le u$；
+- $u$ 是**最小**的上界：$u \le u'$ 对每个上界 $u'$ 成立。
+
+等价说法：$\forall \varepsilon > 0, \exists s \in S : s > u - \varepsilon$（任意近地逼近）。
+
+**下确界** $\inf S$ 对称地定义（最大下界）。
+
+**确界原理**：$S$ 非空且有上界 $\implies \sup S$ 存在。
+
+⭐ 确界原理与「实数完备性」是一回事：它是 $\mathbb{R}$ 比 $\mathbb{Q}$ 多的那一口气。
+
+⚠ **$\sup S$ 不必属于 $S$**（$\sup (0, 1) = 1$），所以「最大值」与「上确界」要分开 —— 这和偏序集里「最大元 vs 极大元」是两类不同的混淆，别搞混。
+
+这对概念在偏序集里的版本见「上界与极大元」：那里一般不保证上确界存在，$\mathbb{R}$ 的特别之处正是保证了它。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 数列极限　`def.sequence-limit`
+*定义*　数列极限 $x_n \to x$（Limit of a Sequence）
+
+数列 $\{x_n\} \subseteq \mathbb{R}$ **收敛到** $x$（记 $x_n \to x$ 或 $\lim_{n \to \infty} x_n = x$），当且仅当
+
+$$\forall \varepsilon > 0, \exists N, \forall n \ge N : |x_n - x| < \varepsilon$$
+
+即：不管给出多小的 $\varepsilon$，从某一项之后，所有项都落在 $x$ 的 $\varepsilon$ 邻域里。
+
+不收敛的数列叫**发散**。
+
+⭐ 这就是「$\varepsilon$-$N$ 语言」：把「越来越近」翻译成可以逐条检验的条件。整个分析学的证明都建立在这个格式上。
+
+基本性质（都由定义直接验证）：
+- 极限**唯一**；
+- 收敛数列**有界**；
+- 四则运算与极限可交换（分母极限非零时）。
+
+⚠ 「有界」不保证收敛（$(-1)^n$）；「$\varepsilon$ 固定、$N$ 往后」的顺序不能换。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3
+
+#### 级数收敛　`def.series`
+*定义*　级数 $\sum a_n$（Series）
+
+给定数列 $\{a_n\}$，令**部分和** $s_N := \sum_{n=1}^{N} a_n$。
+
+称级数 $\sum_{n=1}^{\infty} a_n$ **收敛**，当且仅当部分和数列 $\{s_N\}$ 收敛，此时记
+
+$$\sum_{n=1}^{\infty} a_n := \lim_{N \to \infty} s_N$$
+
+**非负项级数**（$a_n \ge 0$）特别干净：部分和递增，于是
+
+$$\sum_{n=1}^{\infty} a_n = \sup_N s_N \in [0, +\infty]$$
+
+一定有意义（可能是 $+\infty$）。
+
+⭐ 测度的**可数可加**、积分的**逐项**性质，用的都是非负项级数这一行：非负就不必担心条件收敛与重排。
+
+⚠ 收敛级数**可以重排**的只有绝对收敛的情形；条件收敛的级数重排后可能收敛到别的值（Riemann 重排定理）。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3
+
+#### 连续　`def.continuous`
+*定义*　连续（Continuity）
+
+$f : \mathbb{R} \to \mathbb{R}$ 在 $x_0$ **连续**，当且仅当
+
+$$\forall \varepsilon > 0, \exists \delta > 0 : |x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon$$
+
+等价说法：$\lim_{x \to x_0} f(x) = f(x_0)$（极限存在且等于函数值）。
+
+$f$ **连续**（在 $\mathbb{R}$ 上连续）当且仅当它在每一点连续。
+
+**一致连续**是更强的要求：$\delta$ 只依赖 $\varepsilon$，不依赖 $x_0$。
+
+⭐ 把 $|x - x_0| < \delta$、$|f(x) - f(x_0)| < \varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。
+
+⚠ **连续 $\ne$ 一致连续**：$f(x) = x^2$ 在 $\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\delta$ 越小）。紧区间上两者才重合。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 4
+
+#### 导数　`def.derivative`
+*定义*　导数 $F'$（Derivative）
+
+$F : (a, b) \to \mathbb{C}$ 在 $x_0 \in (a, b)$ **可导**，当且仅当极限
+
+$$F'(x_0) := \lim_{h \to 0} \frac{F(x_0 + h) - F(x_0)}{h}$$
+
+存在（有限）。这个数叫 $F$ 在 $x_0$ 的**导数**。
+
+在 $(a, b)$ 上处处可导，就得到一个函数 $F'$；称 $F$ **可导**。
+
+若不要求极限存在而允许 $\pm\infty$，得到的是**广义导数**，单调函数的导数理论要用它。
+
+⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。
+
+要点（本星图 BV / AC 那一段全靠它们）：
+- 可导 $\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。
+- 单调函数**几乎处处可导**，且 $F' \ge 0$ a.e.。
+- 可导**不保证** $F(b) - F(a) = \int_a^b F'$（Cantor 函数就是反例）；等式成立要加绝对连续。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 5
+
+#### 复数 ℂ　`def.complex`
+*定义*　复数系 $\mathbb{C}$（Complex Numbers）
+
+**复数系** $\mathbb{C} := \mathbb{R}^2$，配以下运算：
+
+$$(a, b) + (c, d) := (a + c, b + d), \qquad (a, b)(c, d) := (ac - bd, ad + bc)$$
+
+记 $i := (0, 1)$，则每个复数唯一地写成 $z = a + bi$（$a, b \in \mathbb{R}$）。
+
+$\bar{z} := a - bi$ 是**共轭**，$|z| := \sqrt{a^2 + b^2}$ 是**模**；并且
+
+$$|zw| = |z|\,|w|, \qquad z \bar{z} = |z|^2$$
+
+于是每个 $z \ne 0$ 都有逆 $z^{-1} = \bar{z}/|z|^2$：$\mathbb{C}$ 是一个域。
+
+⭐ $\mathbb{C}$ 与 $\mathbb{R}^2$ 的区别只在乘法 —— 而正是这个乘法让 $\mathbb{C}$ 成为**代数闭域**（每个多项式都有根），也让复值函数的积分理论比实值情形简洁：$|f|$ 与 $L^p$ 理论的表述不必再分正负部。
+
+本星图里 $\mathbb{C}$ 主要出现在两处：复值函数的积分（拆实部虚部）、复测度（取值在 $\mathbb{C}$ 里，自动有限）。
+
+参考：Rudin, Real and Complex Analysis, Ch. 1
 
 ### 星团：测度的构造
 > 造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。
@@ -1249,6 +1563,24 @@ $\mu _F$ 的**分布函数**视角：若 $F$ 还满足 $F(-\infty ) = 0$、$F(+\
 这条把「测度」和「函数」这两类对象接了起来：$\mathbb{R}$ 上（局部有限的）测度 $\leftrightarrow$ 递增右连续函数（模常数）。后面 Radon–Nikodym 会把「绝对连续」精确地实现为「$F$ 是可积函数的积分」。
 
 参考：Folland, Real Analysis, Theorem 1.16
+
+#### 几乎处处　`def.ae`
+*定义*　几乎处处（Almost Everywhere, a.e.）
+
+设 $(X, \mathcal{M}, \mu)$ 是测度空间。称一个关于点 $x$ 的命题 $P(x)$ **几乎处处成立**（记 a.e.），当且仅当
+
+$$\exists E \in \mathcal{M}:\ \mu(E) = 0 \quad \text{且} \quad \forall x \in X \setminus E,\ P(x)\ \text{成立}$$
+
+即：**使命题不成立的那些点构成一个零集**。
+
+常见的用法：$f = g$ a.e.（$\{f \ne g\}$ 是零集）、$f_n \to f$ a.e.（不收敛的点是零集）、$F' = 0$ a.e.。
+
+⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。
+
+⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\int |f| = 0 \implies f = 0$ a.e.（而不是处处 0）。
+⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。
+
+参考：Rudin, Real and Complex Analysis, Ch. 1
 
 ### 星团：积分
 > 造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。
@@ -5744,6 +6076,134 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 自反性谈的是 L^p 与它的二次对偶。
 
+#### 定义引用：「实数系 ℝ」→ 扩充实数 [−∞,+∞]　`dep.real-extended`
+
+扩充实数就是在 $\mathbb{R}$ 上添两个记号。
+
+#### 定义引用：「实数系 ℝ」→ 区间　`dep.real-interval`
+
+区间是 $\mathbb{R}$ 的全序 $\le$ 说出来的：端点之间的都算数。
+
+#### 定义引用：「实数系 ℝ」→ 上确界与下确界　`dep.real-sup`
+
+上确界用的是 $\mathbb{R}$ 的序与**完备性公理**——确界原理就是完备性。
+
+#### 定义引用：「实数系 ℝ」→ 数列极限　`dep.real-sequence`
+
+极限里的 $|x_n - x| < \varepsilon$ 用的是实数的绝对值与序。
+
+#### 定义引用：「数列极限」→ 级数收敛　`dep.real-series`
+
+级数收敛 = 部分和这个**数列**收敛。
+
+#### 定义引用：「数列极限」→ 连续　`dep.real-continuous`
+
+连续的定义就是「$x \to x_0$ 时 $f(x) \to f(x_0)$」——极限的语言。
+
+#### 定义引用：「数列极限」→ 导数　`dep.real-derivative`
+
+导数是一个**极限**：差商的极限。
+
+#### 定义引用：「连续」→ 导数　`dep.continuous-derivative`
+
+可导 $\implies$ 连续：这一点由导数的定义直接推出来。
+
+#### 定义引用：「实数系 ℝ」→ 复数 ℂ　`dep.real-complex`
+
+$\mathbb{C} = \mathbb{R}^2$，实部虚部都是实数。
+
+#### 定义引用：「上确界与下确界」→ 级数收敛　`dep.sup-series`
+
+非负项级数取的就是部分和的**上确界**。
+
+#### 定义引用：「子集」→ 并集与交集　`dep.subset-union-inter`
+
+两个运算都用 $\subseteq$ 说事（$A \cap B \subseteq A \subseteq A \cup B$）。
+
+#### 定义引用：「子集」→ 差集与补集　`dep.subset-diff`
+
+$A \setminus B \subseteq A$；「含全集 $X$」也是子集关系。
+
+#### 定义引用：「空集 ∅」→ 空集存在　`dep.ext-empty`
+
+「空集存在」证明的就是这条定义里的那个集合确实存在（由分离公理），并且唯一（由外延公理）。
+
+#### 定义引用：「空集 ∅」→ 并集与交集　`dep.empty-union`
+
+$\bigcap \emptyset$ 要注意：它必须相对某个全集才有意义 —— 空集的出现方式常常是这种边角。
+
+#### 定义引用：「函数」→ 单射 / 满射 / 双射　`dep.function-bijection`
+
+单射、满射、双射都是**函数**的性质。
+
+#### 定义引用：「有序对」→ 单射 / 满射 / 双射　`dep.pair-bijection`
+
+判断单射时用的是「$f(a) = f(b) \implies a = b$」，即在有序对层面比较。
+
+#### 定义引用：「单射 / 满射 / 双射」→ 可数与不可数　`dep.bijection-countable`
+
+可数就是「存在双射 $A \to \mathbb{N}$」；至多可数是「存在单射」。
+
+#### 定义引用：「自然数集存在」→ 可数与不可数　`dep.nat-countable`
+
+$\mathbb{N}$ 由无穷公理给出（见「自然数集存在」），可数就是拿它当标尺去量别的集合。
+
+#### 定义引用：「零集与完备」→ 几乎处处　`dep.nullset-ae`
+
+a.e. 的定义就是「例外集是**零集**」。
+
+#### 定义引用：「测度」→ 几乎处处　`dep.measure-ae`
+
+$\mu(E) = 0$ 里的 $\mu$ 是测度；a.e. 是测度空间上的说法。
+
+#### 定义引用：「区间」→ 基本类　`dep.interval-ls`
+
+半开区间族 $\{ (a, b] : a < b \}$ 就是构造 Lebesgue–Stieltjes 测度时用的那个**基本类**。
+
+#### 定义引用：「上确界与下确界」→ 非负函数的积分　`dep.sup-integral-nonneg`
+
+非负函数的积分定义成 $\sup \{ \int \varphi \}$ —— 取的是实数（或 $+\infty$）的上确界。
+
+#### 定义引用：「扩充实数 [−∞,+∞]」→ 测度　`dep.extended-measure`
+
+测度的取值放在 $[0, +\infty]$ 里，正是扩充实数。
+
+#### 定义引用：「实数系 ℝ」→ 距离空间　`dep.real-metric`
+
+距离取值 $d : X \times X \to [0, +\infty) \subseteq \mathbb{R}$，用的是实数的序与绝对值。
+
+#### 定义引用：「区间」→ 绝对连续函数　`dep.interval-bv`
+
+绝对连续的定义里，「任意有限个两两不交的区间」说的就是区间。
+
+#### 定义引用：「导数」→ 有界变差 BV　`dep.derivative-bv`
+
+全变差与 $F'$ 都在讨论函数的**逐点**行为。
+
+#### 定义引用：「导数」→ 单调函数几乎处处可导　`dep.derivative-monotone-thm`
+
+「单调函数几乎处处可导」说的就是这条定义里的导数存在 a.e.。
+
+#### 定义引用：「复数 ℂ」→ 复函数的积分　`dep.complex-integral-complex`
+
+复值函数的积分就是拆成 $\operatorname{Re} f$、$\operatorname{Im} f$ 两个实值积分。
+
+#### 定义引用：「复数 ℂ」→ 复测度　`dep.complex-complex-measure`
+
+复测度取值在 $\mathbb{C}$ 里 —— 所以它自动有限。
+
+#### 定义引用：「复数 ℂ」→ L^p 范数　`dep.complex-lp`
+
+$L^p$ 的元素取复值：$f : X \to \mathbb{C}$。
+
+#### 定义引用：「连续」→ 连续 ⟹ Borel 可测　`dep.continuous-continuous-measurable`
+
+「连续 $\implies$ Borel 可测」要把连续的 $\varepsilon$-$\delta$ 定义翻译成开集的原像。
+
+#### 定义引用：「实数系 ℝ」→ 本性上界与 L^∞　`dep.real-lp`
+
+本性上界是「$\mu(\{|f| > a\}) = 0$ 的那些 $a \ge 0$ 的下确界」——$a$ 是实数。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -5760,7 +6220,7 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 方向相反的一条：有序对 $(a, b) = \{\{a\}, \{a, b\}\}$ 的**构造**要用到配对公理才成为集合。
 
-#### 定义引用：「有序对」→ 关系与函数　`def-link.rel-pair`
+#### 定义引用：「有序对」→ 关系　`def-link.rel-pair`
 
 关系被定义为「有序对的集合」，函数是特殊的关系，因此整个定义都建立在有序对之上。
 
@@ -5768,9 +6228,9 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 $A \times B = \{ (a, b) : a \in A, b \in B \}$ 中的元素就是有序对。
 
-#### 定义引用：「关系与函数」→ 选择函数　`def-link.choicefn-rel`
+#### 定义引用：「函数」→ 选择函数　`def-link.choicefn-rel`
 
-选择函数首先是「函数」，所以定义里用到了关系与函数的概念。
+选择函数首先是一个**函数**：定义里直接要求「$f$ 是函数，$\operatorname{dom} f = F$」。
 
 #### 定义引用：「选择函数」→ 选择公理　`def-link.ac-choicefn`
 
@@ -5980,11 +6440,15 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 前提 $\mu(X) < \infty$ 用的是**有限测度**这个概念。
 
-#### 定义引用：「子集」→ 关系与函数　`def-dep.subset-rel`
+#### 定义引用：「子集」→ 关系　`def-dep.subset-rel`
 
 关系是 $A \times B$ 的**子集**，定义域 $\operatorname{dom} R$ 与值域 $\operatorname{ran} R$ 也都是子集。
 
-#### 定义引用：「关系与函数」→ 偏序集　`def-dep.rel-poset`
+#### 定义引用：「关系」→ 函数　`def-dep.rel-function`
+
+函数是**特殊的关系**：只多要求「每个输入的输出唯一」。
+
+#### 定义引用：「关系」→ 偏序集　`def-dep.rel-poset`
 
 偏序 $\preceq$ 是 $A$ 上的**二元关系**——先有关系，才有「自反、反对称、传递」这三条。
 
@@ -6008,7 +6472,7 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。
 
-#### 定义引用：「关系与函数」→ 距离空间　`def-dep.rel-metric-space`
+#### 定义引用：「函数」→ 距离空间　`def-dep.function-metric-space`
 
 距离 $d : X \times X \to [0, +\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。
 
@@ -6044,7 +6508,7 @@ $\mathfrak{A} \subseteq \mathcal{P}(X)$：基本类首先是一族**子集**。
 
 这条同时定义 $\mathcal{M}(\mathcal{E})$ 与 $\mathfrak{m}(\mathcal{E})$——后者就是**由 $\mathcal{E}$ 生成的单调类**。
 
-#### 定义引用：「关系与函数」→ 积 σ-代数　`def-dep.rel-product-sigma`
+#### 定义引用：「函数」→ 积 σ-代数　`def-dep.function-product-sigma`
 
 投影 $\pi_\alpha$ 是**函数**，柱集 $\pi_\alpha^{-1}(E_\alpha)$ 用的是逆像。
 
@@ -6228,6 +6692,10 @@ Lebesgue 分解 $\nu = \lambda + \rho$ 里的奇异部分要求 $\lambda \perp \
 
 第一条是 $E_r \subseteq B(r, x)$——一个**子集**关系。
 
+#### 定义引用：「偏序集」→ 实数系 ℝ　`def-dep.poset-real`
+
+实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。
+
 #### 定义引用：「有界变差 BV」→ NBV　`def-dep.bv-nbv`
 
 $NBV := \{ F \in BV : F$ 右连续且 $F(-\infty) = 0 \}$，整个定义建立在**有界变差**之上。
@@ -6357,8 +6825,12 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 - **有界变差与绝对连续 ↔ 测度的构造**　2 条节点级连线
 - **有界变差与绝对连续 ↔ 积分**　2 条节点级连线
 - **积分 ↔ L^p 空间**　6 条节点级连线
+- **关系与选择 ↔ 集合的构造**　3 条节点级连线
+- **测度的构造 ↔ 实数与区间**　2 条节点级连线
+- **积分 ↔ 实数与区间**　3 条节点级连线
+- **有界变差与绝对连续 ↔ 实数与区间**　3 条节点级连线
+- **L^p 空间 ↔ 实数与区间**　2 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
-- **关系与选择 ↔ 集合的构造**　2 条节点级连线
 - **极大原理 ↔ 序结构**　7 条节点级连线
 - **序结构 ↔ 关系与选择**　2 条节点级连线
 - **ℝⁿ 上的微分 ↔ 度量空间**　2 条节点级连线

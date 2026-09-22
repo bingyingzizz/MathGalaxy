@@ -70,13 +70,15 @@
     /* 本帧各层的可见度（0~1），随缩放变化，由 computeLod() 填 */
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
-      nodeName: 1, nodeEdge: 1, clusterLink: 0
+      nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0
     };
 
     function computeLod() {
       var k = view.cam.k, L = C.lod;
       lodA.nodeDot = smoothstep(L.nodeDotIn[0], L.nodeDotIn[1], k);
       lodA.nodeName = smoothstep(L.nodeNameIn[0], L.nodeNameIn[1], k);
+      // 主干的名字更早出现：缩小时屏幕上剩下的就是「学习主线」
+      lodA.trunkName = smoothstep(L.trunkNameIn[0], L.trunkNameIn[1], k);
       lodA.nodeEdge = smoothstep(L.nodeEdgeIn[0], L.nodeEdgeIn[1], k);
       // 星团名：放大到看得见节点名时就退场，避免和节点名打架
       var cNameIn = smoothstep(L.clusterNameIn[0], L.clusterNameIn[1], k);
@@ -567,10 +569,13 @@
     }
 
     /* ---------------------------------------------------------- 名称 */
+    function isTrunk(n) { return !!(n && n.trunk); }
+
     function drawLabels() {
       var k = view.cam.k;
       var fs = labelFont();
-      if (lodA.nodeName <= 0.02) { drawKeyLabels(fs); return; }
+      // 连主干的名字都还没到出现的时候 → 只画聚焦/悬停的那一个
+      if (lodA.nodeName <= 0.02 && lodA.trunkName <= 0.02) { drawKeyLabels(fs); return; }
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
       var keepAll = k >= C.node.labelMinZoomAll;
@@ -585,11 +590,16 @@
 
       nodes.forEach(function (n) {
         if (!nodeOk(n.id)) return;
+        var trunk = isTrunk(n);
+        // 主干的名字用更早出现的那条曲线；其余仍按原节奏
+        var nameAlpha = trunk ? Math.max(lodA.nodeName, lodA.trunkName) : lodA.nodeName;
+        if (nameAlpha <= 0.06) return;
         var a = alphaForNode(n.id);
         var isSpecial = (view.focus && view.focus.id === n.id) ||
           (view.hover && view.hover.type === 'node' && view.hover.id === n.id);
         if (a <= 0.06) return;
-        if (!keepAll && !isSpecial && n.degree < 3) return;
+        // 缩小时只画重要的：主干一律画，其余要 degree >= 3
+        if (!keepAll && !isSpecial && !trunk && n.degree < 3) return;
 
         var p = screenOf(n);
         var r = nodeRadius(n);
@@ -608,7 +618,7 @@
         }
         placed.push(box);
 
-        var alpha = a * (isSpecial ? 1 : 0.92 * lodA.nodeName);
+        var alpha = a * (isSpecial ? 1 : 0.92 * nameAlpha);
         ctx.lineWidth = Math.max(2.5, fs * 0.28);
         ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
         ctx.strokeText(text, x, y);
@@ -641,6 +651,7 @@
 
     function labelPriority(n) {
       var s = n.degree * 10;
+      if (n.trunk) s += 400;                       // 主干的名字优先留下（去重叠时赢）
       if (view.focus && view.focus.id === n.id) s += 1000;
       if (view.hover && view.hover.id === n.id) s += 800;
       if (n.type === 'definition') s -= 6;

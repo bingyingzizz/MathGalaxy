@@ -58,28 +58,47 @@ window.MG = window.MG || {};
       refs: ['Kunen, Set Theory, I.5']
     },
 
-    /* -------------------------------------------------- 关系与函数 */
+    /* -------------------------------------------------------- 关系 */
     {
       id: 'def.rel',
       cluster: 'set.choice',
       type: 'definition',
-      label: '关系与函数',
-      title: '关系 / 函数（Relation & Function）',
+      label: '关系',
+      title: '关系（Relation）',
       regions: ['set-theory'],
-      tags: ['定义', '函数'],
+      tags: ['定义', '关系'],
       statement: [
         '设 $A$、$B$ 是集合。',
         '',
-        '- **关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。',
-        '- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；**值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$。',
-        '- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。',
-        '- **函数** $f : A \\to B$ 是满足下式的关系 $f \\subseteq A \\times B$：',
+        '**关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。',
+        '',
+        '- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；',
+        '- **值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$；',
+        '- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。'
+      ].join('\n'),
+      notes: '在 ZFC 里关系就是一个集合（由有序对组成），没有额外的原始概念 —— 所以「$\\preceq$ 是 $A$ 上的关系」这句话本身是有内容的：它说的是一族有序对。\n\n常见的两类关系：**等价关系**（自反、对称、传递）与**偏序**（自反、反对称、传递）——后者另开一条节点。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* -------------------------------------------------------- 函数 */
+    {
+      id: 'def.function',
+      cluster: 'set.choice',
+      type: 'definition',
+      label: '函数',
+      title: '函数（Function）',
+      regions: ['set-theory'],
+      tags: ['定义', '函数'],
+      statement: [
+        '设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \\to B$），当且仅当对每个输入恰有一个输出：',
         '',
         '$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$',
         '',
-        '唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$。'
+        '唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \\{ f(a) : a \\in A \\}$。',
+        '',
+        '单射 / 满射 / 双射见另一条节点。'
       ].join('\n'),
-      notes: '在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。',
+      notes: '在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。\n\n⚠ 两个容易混的地方：\n- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \\to B$（即 $\\operatorname{dom} f = A$）。\n- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。',
       refs: ['Kunen, Set Theory, I.5']
     },
 

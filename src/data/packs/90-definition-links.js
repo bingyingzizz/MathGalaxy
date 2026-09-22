@@ -65,9 +65,9 @@ window.MG = window.MG || {};
     {
       id: 'def-link.choicefn-rel',
       kind: 'definition',
-      definition: 'def.rel',
+      definition: 'def.function',
       usedBy: 'def.choicefn',
-      note: '选择函数首先是「函数」，所以定义里用到了关系与函数的概念。'
+      note: '选择函数首先是一个**函数**：定义里直接要求「$f$ 是函数，$\\operatorname{dom} f = F$」。'
     },
     {
       id: 'def-link.ac-choicefn',

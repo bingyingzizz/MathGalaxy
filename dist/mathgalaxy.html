@@ -544,6 +544,7 @@ window.addEventListener('error', function (e) {
   <button data-act="zoom-out" title="缩小（−）">－</button>
   <button data-act="fit"      title="适配全部节点（0）">⤢</button>
   <span class="tb-sep"></span>
+  <button data-act="toggle-trunk"    class="toggle" title="主干模式：只留学习主线上的节点（缩小时它们的名字也先出现）">主干</button>
   <button data-act="toggle-defs"    class="toggle on" title="显示 / 隐藏「定义引用」蓝线">定义线</button>
   <button data-act="toggle-labels"  class="toggle on" title="显示 / 隐藏节点名称">名称</button>
   <button data-act="toggle-explore" class="toggle" title="探索模式：把「类比」这类弱边提亮（平时压得很淡）">探索</button>
@@ -675,6 +676,7 @@ window.addEventListener('error', function (e) {
       nodeDotIn: [0.14, 0.26],       // 节点圆点淡入（再小就只剩云）
       nodeEdgeIn: [0.40, 0.66],      // 节点级细线淡入
       nodeNameIn: [0.42, 0.62],      // 节点名淡入（0.62 = 全细节）
+      trunkNameIn: [0.16, 0.30],     // 主干节点的名字：更早就出现（缩小时先认主线）
       clusterLinkOut: [0.28, 0.58]   // 星团级粗线淡出（与细线交叉）
     },
 
@@ -1324,6 +1326,13 @@ window.addEventListener('error', function (e) {
     return Array.isArray(v) ? v.slice() : [v];
   }
 
+  /** 主干名单里写了不存在的 id → 提示（改内容时最容易忘的地方） */
+  function graph_trunkWarn(trunkIds, byId, warnings) {
+    trunkIds.forEach(function (id) {
+      if (!byId[id]) warnings.push('主干名单里的节点不存在：' + id);
+    });
+  }
+
   /** 一条边涉及的所有节点 id */
   function edgeNodes(e) {
     if (e.kind === 'equivalence' || e.kind === 'analogy') return [e.a, e.b];
@@ -1393,6 +1402,13 @@ window.addEventListener('error', function (e) {
     var adj = Object.create(null);
     var edgesOf = Object.create(null);
     nodes.forEach(function (n) { adj[n.id] = Object.create(null); edgesOf[n.id] = []; });
+
+    /* ---------------------------------------------------------- 主干 */
+    /* 内容里用 MG.trunk 列出一批 id（学习主线）。这里只打一个标记，
+       剩下的交给引擎：工具条的「主干」按钮会把非主干藏起来。 */
+    var trunkIds = (MG.trunk || []);
+    nodes.forEach(function (n) { n.trunk = trunkIds.indexOf(n.id) >= 0; });
+    graph_trunkWarn(trunkIds, byId, warnings);
 
     edges.forEach(function (e) {
       edgeNodes(e).forEach(function (id) {
@@ -2028,9 +2044,18 @@ window.addEventListener('error', function (e) {
 
   function paintRegion(ctx, region, list, bc) {
     var rgb = U.hexToRgb(region.color);
-    var R = Math.max(bc.cloudRadiusMin,
-      fitRadius(list, bc.cloudRadiusMin, bc.cloudMargin));
-    var cx = region.center.x, cy = region.center.y;   // 星系的云仍以星系中心为心
+    var cx = region.center.x, cy = region.center.y;   // 星系的云以星系中心为心（和星系名一致）
+
+    /* ⚠️ 半径只能按「主要属于这个星系」的点算。
+       跨星系的点（regions 里写了两个）会被布局摆到**另一个**星系那边去，
+       拿它们定半径，一朵云就会撑满整屏 —— 拓扑学只有 12 个成员，其中 4 个
+       是 analysis 那侧的（Borel、积 σ-代数…），曾把整屏糊成粉色。
+       规则与 layout.js 里算 stat.radius 时一致：跨星系的点不参与。 */
+    var core = list.filter(function (n) { return !n.isBorder; });
+    var basis = core.length >= 2 ? core : list;
+    var maxd = 0;
+    basis.forEach(function (n) { maxd = Math.max(maxd, U.dist(n.x, n.y, cx, cy)); });
+    var R = Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin);
     var rand = U.rngFrom(region.id, MG.config.seed);
 
     /* 1) 板块中心的大团雾 —— 界定「这块地方属于谁」 */
@@ -2048,7 +2073,7 @@ window.addEventListener('error', function (e) {
     }
 
     /* 3) 每个（看得见的）节点周围的小斑 —— 让云的形状跟着内容走 */
-    list.forEach(function (n) {
+    basis.forEach(function (n) {
       blob(ctx, rgb, n.x, n.y, R * 0.30, bc.nodeAlpha);
     });
   }
@@ -2162,13 +2187,15 @@ window.addEventListener('error', function (e) {
     /* 本帧各层的可见度（0~1），随缩放变化，由 computeLod() 填 */
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
-      nodeName: 1, nodeEdge: 1, clusterLink: 0
+      nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0
     };
 
     function computeLod() {
       var k = view.cam.k, L = C.lod;
       lodA.nodeDot = smoothstep(L.nodeDotIn[0], L.nodeDotIn[1], k);
       lodA.nodeName = smoothstep(L.nodeNameIn[0], L.nodeNameIn[1], k);
+      // 主干的名字更早出现：缩小时屏幕上剩下的就是「学习主线」
+      lodA.trunkName = smoothstep(L.trunkNameIn[0], L.trunkNameIn[1], k);
       lodA.nodeEdge = smoothstep(L.nodeEdgeIn[0], L.nodeEdgeIn[1], k);
       // 星团名：放大到看得见节点名时就退场，避免和节点名打架
       var cNameIn = smoothstep(L.clusterNameIn[0], L.clusterNameIn[1], k);
@@ -2659,10 +2686,13 @@ window.addEventListener('error', function (e) {
     }
 
     /* ---------------------------------------------------------- 名称 */
+    function isTrunk(n) { return !!(n && n.trunk); }
+
     function drawLabels() {
       var k = view.cam.k;
       var fs = labelFont();
-      if (lodA.nodeName <= 0.02) { drawKeyLabels(fs); return; }
+      // 连主干的名字都还没到出现的时候 → 只画聚焦/悬停的那一个
+      if (lodA.nodeName <= 0.02 && lodA.trunkName <= 0.02) { drawKeyLabels(fs); return; }
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
       var keepAll = k >= C.node.labelMinZoomAll;
@@ -2677,11 +2707,16 @@ window.addEventListener('error', function (e) {
 
       nodes.forEach(function (n) {
         if (!nodeOk(n.id)) return;
+        var trunk = isTrunk(n);
+        // 主干的名字用更早出现的那条曲线；其余仍按原节奏
+        var nameAlpha = trunk ? Math.max(lodA.nodeName, lodA.trunkName) : lodA.nodeName;
+        if (nameAlpha <= 0.06) return;
         var a = alphaForNode(n.id);
         var isSpecial = (view.focus && view.focus.id === n.id) ||
           (view.hover && view.hover.type === 'node' && view.hover.id === n.id);
         if (a <= 0.06) return;
-        if (!keepAll && !isSpecial && n.degree < 3) return;
+        // 缩小时只画重要的：主干一律画，其余要 degree >= 3
+        if (!keepAll && !isSpecial && !trunk && n.degree < 3) return;
 
         var p = screenOf(n);
         var r = nodeRadius(n);
@@ -2700,7 +2735,7 @@ window.addEventListener('error', function (e) {
         }
         placed.push(box);
 
-        var alpha = a * (isSpecial ? 1 : 0.92 * lodA.nodeName);
+        var alpha = a * (isSpecial ? 1 : 0.92 * nameAlpha);
         ctx.lineWidth = Math.max(2.5, fs * 0.28);
         ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
         ctx.strokeText(text, x, y);
@@ -2733,6 +2768,7 @@ window.addEventListener('error', function (e) {
 
     function labelPriority(n) {
       var s = n.degree * 10;
+      if (n.trunk) s += 400;                       // 主干的名字优先留下（去重叠时赢）
       if (view.focus && view.focus.id === n.id) s += 1000;
       if (view.hover && view.hover.id === n.id) s += 800;
       if (n.type === 'definition') s -= 6;
@@ -3517,6 +3553,7 @@ window.addEventListener('error', function (e) {
     var hidden = Object.create(null);       // id → true
     var listeners = [];
     var nodes = graph.nodes;
+    var extraFilter = null;                 // 额外的可见条件（例如「只看主干」）
 
     /* ------------------------------------------------------------ 读写 */
     function read() {
@@ -3550,23 +3587,38 @@ window.addEventListener('error', function (e) {
     }
 
     /* ------------------------------------------------------------ 查询 */
-    function isNodeVisible(id) { return !hidden[id]; }
-    function isNodeHidden(id) { return !!hidden[id]; }
+    function isNodeVisible(id) {
+      if (hidden[id]) return false;
+      if (extraFilter && !extraFilter(id)) return false;
+      return true;
+    }
+    function isNodeHidden(id) { return !isNodeVisible(id); }
 
     function hiddenCount() { return Object.keys(hidden).length; }
 
     function visibleCount() {
       var c = 0;
-      for (var i = 0; i < nodes.length; i++) if (!hidden[nodes[i].id]) c++;
+      for (var i = 0; i < nodes.length; i++) if (isNodeVisible(nodes[i].id)) c++;
       return c;
     }
 
     /** 两个端点都还在，这条线才画 */
     function edgeOk(e) {
       var ids = MG.graphUtil.edgeNodes(e);
-      for (var i = 0; i < ids.length; i++) if (hidden[ids[i]]) return false;
+      for (var i = 0; i < ids.length; i++) if (!isNodeVisible(ids[i])) return false;
       return true;
     }
+
+    /**
+     * 换一个「额外条件」（不动用户手动的隐藏集合）。
+     * 例如「只看主干」：传一个 (id) => 是否主干 的函数；传 null 取消。
+     */
+    function setFilter(fn) {
+      if (extraFilter === fn) return;
+      extraFilter = fn || null;
+      commit();
+    }
+    function hasFilter() { return !!extraFilter; }
 
     /* ------------------------------------------------------------ 改动 */
     function setNode(id, visible) {
@@ -3647,6 +3699,8 @@ window.addEventListener('error', function (e) {
       hiddenCount: hiddenCount,
       visibleCount: visibleCount,
       edgeOk: edgeOk,
+      setFilter: setFilter,
+      hasFilter: hasFilter,
       setNode: setNode,
       setMany: setMany,
       showAll: showAll,
@@ -3895,6 +3949,12 @@ MG.clusters = [
   },
 
   /* ------------------------------------------------ 星系：分析学 */
+  {
+    id: 'analysis.real',
+    name: '实数与区间',
+    parent: 'analysis',
+    desc: '造出「实数这根数轴」与在轴上做极限的那套语言：完备有序域 → 区间 → 上确界 → 数列极限/级数 → 连续 → 导数。'
+  },
   {
     id: 'analysis.measure',
     name: '测度的构造',
@@ -4234,28 +4294,47 @@ window.MG = window.MG || {};
       refs: ['Kunen, Set Theory, I.5']
     },
 
-    /* -------------------------------------------------- 关系与函数 */
+    /* -------------------------------------------------------- 关系 */
     {
       id: 'def.rel',
       cluster: 'set.choice',
       type: 'definition',
-      label: '关系与函数',
-      title: '关系 / 函数（Relation & Function）',
+      label: '关系',
+      title: '关系（Relation）',
       regions: ['set-theory'],
-      tags: ['定义', '函数'],
+      tags: ['定义', '关系'],
       statement: [
         '设 $A$、$B$ 是集合。',
         '',
-        '- **关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。',
-        '- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；**值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$。',
-        '- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。',
-        '- **函数** $f : A \\to B$ 是满足下式的关系 $f \\subseteq A \\times B$：',
+        '**关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。',
+        '',
+        '- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；',
+        '- **值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$；',
+        '- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。'
+      ].join('\n'),
+      notes: '在 ZFC 里关系就是一个集合（由有序对组成），没有额外的原始概念 —— 所以「$\\preceq$ 是 $A$ 上的关系」这句话本身是有内容的：它说的是一族有序对。\n\n常见的两类关系：**等价关系**（自反、对称、传递）与**偏序**（自反、反对称、传递）——后者另开一条节点。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* -------------------------------------------------------- 函数 */
+    {
+      id: 'def.function',
+      cluster: 'set.choice',
+      type: 'definition',
+      label: '函数',
+      title: '函数（Function）',
+      regions: ['set-theory'],
+      tags: ['定义', '函数'],
+      statement: [
+        '设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \\to B$），当且仅当对每个输入恰有一个输出：',
         '',
         '$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$',
         '',
-        '唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$。'
+        '唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \\{ f(a) : a \\in A \\}$。',
+        '',
+        '单射 / 满射 / 双射见另一条节点。'
       ].join('\n'),
-      notes: '在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。',
+      notes: '在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。\n\n⚠ 两个容易混的地方：\n- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \\to B$（即 $\\operatorname{dom} f = A$）。\n- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。',
       refs: ['Kunen, Set Theory, I.5']
     },
 
@@ -11690,6 +11769,641 @@ window.MG = window.MG || {};
 </script>
 <script>
 /* ==========================================================================
+   内容包 · 实数与区间（分析学的地基）
+   --------------------------------------------------------------------------
+   星图原来直接从 ZFC 跳到测度：$\mathbb{R}$、区间、极限、连续、导数
+   一个定义都没写，正文里却到处在用（体检：$\mathbb{R}$ 出现在 25 个节点里、
+   区间 22 个、极限 30 个）。这一包把这块补上 —— 它就是「分析学从哪儿学起」
+   的那一层。
+
+   落点：新星团 analysis.real（实数与区间）。它造出的东西是
+        「实数这根数轴 + 轴上做极限的那套语言」，
+   后面测度、积分、微分全都踩在它上面。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '实数与区间',
+  nodes: [
+
+    /* ------------------------------------------------------------ 实数 */
+    {
+      id: 'def.real',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '实数系 ℝ',
+      title: '实数系 ℝ（完备有序域）',
+      regions: ['analysis', 'order-theory'],
+      tags: ['定义', '实数', '完备性'],
+      statement: [
+        '**实数系**是一个集合 $\\mathbb{R}$，带两个运算 $+$、$\\cdot$ 与一个序 $\\le$，满足三组公理：',
+        '',
+        '**(i) 域公理**：$(\\mathbb{R}, +, \\cdot)$ 是域 —— 加减乘除（除以非零元）都封闭，且有结合、交换、分配律。',
+        '',
+        '**(ii) 序公理**：$\\le$ 是全序，且与运算相容：',
+        '$$a \\le b \\implies a + c \\le b + c, \\qquad a \\le b,\\ 0 \\le c \\implies ac \\le bc$$',
+        '',
+        '**(iii) 完备性公理（确界原理）**：$\\mathbb{R}$ 的**每个非空有上界的子集都有上确界**。',
+        '',
+        '这三组公理刻画的 $\\mathbb{R}$ 在同构意义下唯一。'
+      ].join('\n'),
+      notes: '⭐ **第 (iii) 条才是分析学的引擎**：没有它，$\\mathbb{Q}$ 也满足前两条，但 $\\{ x \\in \\mathbb{Q} : x^2 < 2 \\}$ 在 $\\mathbb{Q}$ 里没有上确界。\n\n由完备性可以推出分析里最常用的两件事：\n- **单调有界数列收敛**；\n- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。\n\n⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1']
+    },
+    {
+      id: 'def.extended-real',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '扩充实数 [−∞,+∞]',
+      title: '扩充实数系 $\\overline{\\mathbb{R}}$（Extended Reals）',
+      regions: ['analysis'],
+      tags: ['定义', '实数'],
+      statement: [
+        '在 $\\mathbb{R}$ 上添两个记号 $+\\infty$、$-\\infty$，得到**扩充实数系**',
+        '',
+        '$$\\overline{\\mathbb{R}} := \\mathbb{R} \\cup \\{ -\\infty, +\\infty \\}$$',
+        '',
+        '规定 $-\\infty < x < +\\infty$ 对一切 $x \\in \\mathbb{R}$ 成立，于是 $\\overline{\\mathbb{R}}$ 仍是全序集；并约定',
+        '',
+        '$$x + (\\pm\\infty) = \\pm\\infty, \\qquad 0 \\cdot (\\pm\\infty) = 0$$',
+        '',
+        '而 $\\infty - \\infty$ 与 $\\infty / \\infty$ **不定义**。'
+      ].join('\n'),
+      notes: '为什么需要它：测度、积分的取值天然可以是 $\\infty$（$\\mathbb{R}$ 的 Lebesgue 测度就是 $\\infty$），把所有量都放进 $\\overline{\\mathbb{R}}$，收敛定理（sup、极限）就不必反复讨论「值是不是有限」。\n\n⚠ 约定 $0 \\cdot \\infty = 0$ 是刻意的：它让「在无穷测度集上取 $0$ 的函数」积分为 $0$。\n⚠ 它不是域：$\\infty$ 没有加法逆元。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1']
+    },
+
+    /* ------------------------------------------------------------ 区间 */
+    {
+      id: 'def.interval',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '区间',
+      title: '区间（Interval）',
+      regions: ['analysis', 'order-theory'],
+      tags: ['定义', '实数'],
+      statement: [
+        '$\\mathbb{R}$ 的**区间**是满足下式的子集 $I$：',
+        '',
+        '$$a, b \\in I,\\ a \\le x \\le b \\implies x \\in I$$',
+        '',
+        '即「中间不空」。常见的有界区间写成',
+        '',
+        '$$(a, b), \\quad [a, b], \\quad [a, b), \\quad (a, b]$$',
+        '',
+        '按端点是否取到区分；另有 $(-\\infty, b)$、$(a, +\\infty)$、$\\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。',
+        '',
+        '体积就是长度：$m((a, b]) = b - a$。'
+      ].join('\n'),
+      notes: '⭐ **半开区间 $\\{ (a, b] : a < b \\}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。\n\n为什么要用半开而不是开区间：不交并的长度好算 —— $[a, b) \\sqcup [b, c) = [a, c)$ 在开区间上不成立。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 2']
+    },
+
+    /* --------------------------------------------------- 上确界 / 下确界 */
+    {
+      id: 'def.sup',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '上确界与下确界',
+      title: '上确界 $\\sup$ / 下确界 $\\inf$（Supremum & Infimum）',
+      regions: ['analysis', 'order-theory'],
+      tags: ['定义', '实数', '完备性'],
+      statement: [
+        '设 $S \\subseteq \\mathbb{R}$，$S \\ne \\emptyset$。',
+        '',
+        '$u$ 是 $S$ 的**上确界**（记 $\\sup S$），当且仅当',
+        '',
+        '- $u$ 是 $S$ 的上界：$\\forall s \\in S, s \\le u$；',
+        '- $u$ 是**最小**的上界：$u \\le u\'$ 对每个上界 $u\'$ 成立。',
+        '',
+        '等价说法：$\\forall \\varepsilon > 0, \\exists s \\in S : s > u - \\varepsilon$（任意近地逼近）。',
+        '',
+        '**下确界** $\\inf S$ 对称地定义（最大下界）。',
+        '',
+        '**确界原理**：$S$ 非空且有上界 $\\implies \\sup S$ 存在。'
+      ].join('\n'),
+      notes: '⭐ 确界原理与「实数完备性」是一回事：它是 $\\mathbb{R}$ 比 $\\mathbb{Q}$ 多的那一口气。\n\n⚠ **$\\sup S$ 不必属于 $S$**（$\\sup (0, 1) = 1$），所以「最大值」与「上确界」要分开 —— 这和偏序集里「最大元 vs 极大元」是两类不同的混淆，别搞混。\n\n这对概念在偏序集里的版本见「上界与极大元」：那里一般不保证上确界存在，$\\mathbb{R}$ 的特别之处正是保证了它。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1']
+    },
+
+    /* ---------------------------------------------------------- 数列极限 */
+    {
+      id: 'def.sequence-limit',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '数列极限',
+      title: '数列极限 $x_n \\to x$（Limit of a Sequence）',
+      regions: ['analysis'],
+      tags: ['定义', '极限'],
+      statement: [
+        '数列 $\\{x_n\\} \\subseteq \\mathbb{R}$ **收敛到** $x$（记 $x_n \\to x$ 或 $\\lim_{n \\to \\infty} x_n = x$），当且仅当',
+        '',
+        '$$\\forall \\varepsilon > 0, \\exists N, \\forall n \\ge N : |x_n - x| < \\varepsilon$$',
+        '',
+        '即：不管给出多小的 $\\varepsilon$，从某一项之后，所有项都落在 $x$ 的 $\\varepsilon$ 邻域里。',
+        '',
+        '不收敛的数列叫**发散**。'
+      ].join('\n'),
+      notes: '⭐ 这就是「$\\varepsilon$-$N$ 语言」：把「越来越近」翻译成可以逐条检验的条件。整个分析学的证明都建立在这个格式上。\n\n基本性质（都由定义直接验证）：\n- 极限**唯一**；\n- 收敛数列**有界**；\n- 四则运算与极限可交换（分母极限非零时）。\n\n⚠ 「有界」不保证收敛（$(-1)^n$）；「$\\varepsilon$ 固定、$N$ 往后」的顺序不能换。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3']
+    },
+    {
+      id: 'def.series',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '级数收敛',
+      title: '级数 $\\sum a_n$（Series）',
+      regions: ['analysis'],
+      tags: ['定义', '极限'],
+      statement: [
+        '给定数列 $\\{a_n\\}$，令**部分和** $s_N := \\sum_{n=1}^{N} a_n$。',
+        '',
+        '称级数 $\\sum_{n=1}^{\\infty} a_n$ **收敛**，当且仅当部分和数列 $\\{s_N\\}$ 收敛，此时记',
+        '',
+        '$$\\sum_{n=1}^{\\infty} a_n := \\lim_{N \\to \\infty} s_N$$',
+        '',
+        '**非负项级数**（$a_n \\ge 0$）特别干净：部分和递增，于是',
+        '',
+        '$$\\sum_{n=1}^{\\infty} a_n = \\sup_N s_N \\in [0, +\\infty]$$',
+        '',
+        '一定有意义（可能是 $+\\infty$）。'
+      ].join('\n'),
+      notes: '⭐ 测度的**可数可加**、积分的**逐项**性质，用的都是非负项级数这一行：非负就不必担心条件收敛与重排。\n\n⚠ 收敛级数**可以重排**的只有绝对收敛的情形；条件收敛的级数重排后可能收敛到别的值（Riemann 重排定理）。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3']
+    },
+
+    /* ------------------------------------------------------- 连续与导数 */
+    {
+      id: 'def.continuous',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '连续',
+      title: '连续（Continuity）',
+      regions: ['analysis', 'topology'],
+      tags: ['定义', '极限', '连续'],
+      statement: [
+        '$f : \\mathbb{R} \\to \\mathbb{R}$ 在 $x_0$ **连续**，当且仅当',
+        '',
+        '$$\\forall \\varepsilon > 0, \\exists \\delta > 0 : |x - x_0| < \\delta \\implies |f(x) - f(x_0)| < \\varepsilon$$',
+        '',
+        '等价说法：$\\lim_{x \\to x_0} f(x) = f(x_0)$（极限存在且等于函数值）。',
+        '',
+        '$f$ **连续**（在 $\\mathbb{R}$ 上连续）当且仅当它在每一点连续。',
+        '',
+        '**一致连续**是更强的要求：$\\delta$ 只依赖 $\\varepsilon$，不依赖 $x_0$。'
+      ].join('\n'),
+      notes: '⭐ 把 $|x - x_0| < \\delta$、$|f(x) - f(x_0)| < \\varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。\n\n⚠ **连续 $\\ne$ 一致连续**：$f(x) = x^2$ 在 $\\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\\delta$ 越小）。紧区间上两者才重合。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 4']
+    },
+    {
+      id: 'def.derivative',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '导数',
+      title: '导数 $F\'$（Derivative）',
+      regions: ['analysis'],
+      tags: ['定义', '导数'],
+      statement: [
+        '$F : (a, b) \\to \\mathbb{C}$ 在 $x_0 \\in (a, b)$ **可导**，当且仅当极限',
+        '',
+        '$$F\'(x_0) := \\lim_{h \\to 0} \\frac{F(x_0 + h) - F(x_0)}{h}$$',
+        '',
+        '存在（有限）。这个数叫 $F$ 在 $x_0$ 的**导数**。',
+        '',
+        '在 $(a, b)$ 上处处可导，就得到一个函数 $F\'$；称 $F$ **可导**。',
+        '',
+        '若不要求极限存在而允许 $\\pm\\infty$，得到的是**广义导数**，单调函数的导数理论要用它。'
+      ].join('\n'),
+      notes: '⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。\n\n要点（本星图 BV / AC 那一段全靠它们）：\n- 可导 $\\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。\n- 单调函数**几乎处处可导**，且 $F\' \\ge 0$ a.e.。\n- 可导**不保证** $F(b) - F(a) = \\int_a^b F\'$（Cantor 函数就是反例）；等式成立要加绝对连续。',
+      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 5']
+    },
+    {
+      id: 'def.complex',
+      cluster: 'analysis.real',
+      type: 'definition',
+      label: '复数 ℂ',
+      title: '复数系 $\\mathbb{C}$（Complex Numbers）',
+      regions: ['analysis', 'algebra'],
+      tags: ['定义', '复数'],
+      statement: [
+        '**复数系** $\\mathbb{C} := \\mathbb{R}^2$，配以下运算：',
+        '',
+        '$$(a, b) + (c, d) := (a + c, b + d), \\qquad (a, b)(c, d) := (ac - bd, ad + bc)$$',
+        '',
+        '记 $i := (0, 1)$，则每个复数唯一地写成 $z = a + bi$（$a, b \\in \\mathbb{R}$）。',
+        '',
+        '$\\bar{z} := a - bi$ 是**共轭**，$|z| := \\sqrt{a^2 + b^2}$ 是**模**；并且',
+        '',
+        '$$|zw| = |z|\\,|w|, \\qquad z \\bar{z} = |z|^2$$',
+        '',
+        '于是每个 $z \\ne 0$ 都有逆 $z^{-1} = \\bar{z}/|z|^2$：$\\mathbb{C}$ 是一个域。'
+      ].join('\n'),
+      notes: '⭐ $\\mathbb{C}$ 与 $\\mathbb{R}^2$ 的区别只在乘法 —— 而正是这个乘法让 $\\mathbb{C}$ 成为**代数闭域**（每个多项式都有根），也让复值函数的积分理论比实值情形简洁：$|f|$ 与 $L^p$ 理论的表述不必再分正负部。\n\n本星图里 $\\mathbb{C}$ 主要出现在两处：复值函数的积分（拆实部虚部）、复测度（取值在 $\\mathbb{C}$ 里，自动有限）。',
+      refs: ['Rudin, Real and Complex Analysis, Ch. 1']
+    }
+  ],
+
+  edges: [
+
+    /* ------------------------------------------- 实数内部：谁依赖谁 */
+    {
+      id: 'dep.real-extended',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.extended-real',
+      note: '扩充实数就是在 $\\mathbb{R}$ 上添两个记号。'
+    },
+    {
+      id: 'dep.real-interval',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.interval',
+      note: '区间是 $\\mathbb{R}$ 的全序 $\\le$ 说出来的：端点之间的都算数。'
+    },
+    {
+      id: 'dep.real-sup',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.sup',
+      note: '上确界用的是 $\\mathbb{R}$ 的序与**完备性公理**——确界原理就是完备性。'
+    },
+    {
+      id: 'dep.real-sequence',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.sequence-limit',
+      note: '极限里的 $|x_n - x| < \\varepsilon$ 用的是实数的绝对值与序。'
+    },
+    {
+      id: 'dep.real-series',
+      kind: 'definition',
+      definition: 'def.sequence-limit',
+      usedBy: 'def.series',
+      note: '级数收敛 = 部分和这个**数列**收敛。'
+    },
+    {
+      id: 'dep.real-continuous',
+      kind: 'definition',
+      definition: 'def.sequence-limit',
+      usedBy: 'def.continuous',
+      note: '连续的定义就是「$x \\to x_0$ 时 $f(x) \\to f(x_0)$」——极限的语言。'
+    },
+    {
+      id: 'dep.real-derivative',
+      kind: 'definition',
+      definition: 'def.sequence-limit',
+      usedBy: 'def.derivative',
+      note: '导数是一个**极限**：差商的极限。'
+    },
+    {
+      id: 'dep.continuous-derivative',
+      kind: 'definition',
+      definition: 'def.continuous',
+      usedBy: 'def.derivative',
+      note: '可导 $\\implies$ 连续：这一点由导数的定义直接推出来。'
+    },
+    {
+      id: 'dep.real-complex',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.complex',
+      note: '$\\mathbb{C} = \\mathbb{R}^2$，实部虚部都是实数。'
+    },
+    {
+      id: 'dep.sup-series',
+      kind: 'definition',
+      definition: 'def.sup',
+      usedBy: 'def.series',
+      note: '非负项级数取的就是部分和的**上确界**。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 补齐「被直接使用却没有定义」的概念
+   --------------------------------------------------------------------------
+   2026-09-22 做了一次体检：拿一份标准概念词表去扫全部正文与证明，
+   找出「出现了、但图里没有节点」的词。结果 36 个，其中被用得最多的几个是
+
+       并/交/差/补 119 个节点 · 几乎处处 66 · 基数/等势 64 · 可数 60
+       连续 56 · 绝对值 40 · 收敛 39 · 空集 38 · 数列极限 30 …
+
+   这一包补掉其中「基础得不能再基础」的几个（实数与区间另开一包）。
+   剩下的（基数/等势、拓扑空间、紧支集、向量空间、域、计数测度、
+   Riemann 积分…）列在 HANDOVER 的待办里，等用户点头再补。
+
+   落点：并/交/差/补/空集 归「集合的构造」，可数/单射满射 归「关系与选择」，
+   几乎处处 归「测度的构造」。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '基础概念补漏',
+  nodes: [
+
+    /* ------------------------------------------------ 集合的运算 */
+    {
+      id: 'def.union-inter',
+      cluster: 'set.construct',
+      type: 'definition',
+      label: '并集与交集',
+      title: '并集 / 交集（Union & Intersection）',
+      regions: ['set-theory'],
+      tags: ['定义', '集合运算'],
+      statement: [
+        '设 $\\mathcal{A}$ 是一族集合（$A$ 的**并**与**交**是它只有两个成员时的特例）：',
+        '',
+        '$$\\bigcup \\mathcal{A} := \\{ x : \\exists A \\in \\mathcal{A},\\ x \\in A \\}$$',
+        '$$\\bigcap \\mathcal{A} := \\{ x : \\forall A \\in \\mathcal{A},\\ x \\in A \\}$$',
+        '',
+        '两个集合的情形记作 $A \\cup B$、$A \\cap B$；可数族的并、交常记作 $\\bigcup_{n} A_n$、$\\bigcap_{n} A_n$。',
+        '',
+        '显然 $A \\cap B \\subseteq A \\subseteq A \\cup B$。'
+      ].join('\n'),
+      notes: '由并集公理，$\\bigcup \\mathcal{A}$ 是集合；$\\bigcap \\mathcal{A}$ 由分离公理模式取出。\n\n⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\\sigma$-环、$\\sigma$-代数、单调类都是这么定义的）。\n\n⚠ 分配律对任意族都成立：$A \\cap \\bigcup_i B_i = \\bigcup_i (A \\cap B_i)$；补与并、交的交换就是 De Morgan 律。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+    {
+      id: 'def.diff-complement',
+      cluster: 'set.construct',
+      type: 'definition',
+      label: '差集与补集',
+      title: '差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）',
+      regions: ['set-theory'],
+      tags: ['定义', '集合运算'],
+      statement: [
+        '设 $A$、$B$、$X$ 是集合且 $A, B \\subseteq X$：',
+        '',
+        '- **差集**：$A \\setminus B := \\{ x \\in A : x \\notin B \\}$；',
+        '- **补集**（相对于 $X$）：$A^{c} := X \\setminus A$；',
+        '- **对称差**：$A \\triangle B := (A \\setminus B) \\cup (B \\setminus A)$。',
+        '',
+        '基本恒等式：',
+        '',
+        '$$A \\setminus B = A \\cap B^{c}, \\qquad (A^{c})^{c} = A, \\qquad (\\bigcup_i A_i)^{c} = \\bigcap_i A_i^{c}$$',
+        '',
+        '最后一条就是 **De Morgan 律**。'
+      ].join('\n'),
+      notes: '⭐ De Morgan 律是「用差 + 可数并推出可数交」的全部依据：$\\bigcap_n A_n = A_1 \\setminus \\bigcup_{n \\ge 2} (A_1 \\setminus A_n)$ —— $\\sigma$-环只要求对差与可数并封闭，可数交就自动有了。\n\n⚠ **补集必须相对于某个全集 $X$ 才有意义**，这也正是 $\\sigma$-代数要含 $X$ 的原因：不含 $X$ 就只剩 $\\sigma$-环，补运算落不到里面。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+    {
+      id: 'def.empty',
+      cluster: 'set.construct',
+      type: 'definition',
+      label: '空集 ∅',
+      title: '空集（Empty Set）',
+      regions: ['set-theory'],
+      tags: ['定义', '空集'],
+      statement: [
+        '**空集**是不含任何元素的集合：',
+        '',
+        '$$\\emptyset := \\{ x : x \\ne x \\}$$',
+        '',
+        '由外延公理，这样的集合至多一个；由分离公理模式（对任一集合 $A$ 取 $\\{x \\in A : x \\ne x\\}$），它确实存在。',
+        '',
+        '于是对一切集合 $A$：$\\emptyset \\subseteq A$（空泛真），且 $\\emptyset$ 是 $\\subseteq$ 的最小元。'
+      ].join('\n'),
+      notes: '⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* ------------------------------------------------ 映射与基数 */
+    {
+      id: 'def.bijection',
+      cluster: 'set.choice',
+      type: 'definition',
+      label: '单射 / 满射 / 双射',
+      title: '单射 / 满射 / 双射（Injective / Surjective / Bijective）',
+      regions: ['set-theory'],
+      tags: ['定义', '函数'],
+      statement: [
+        '设 $f : A \\to B$。',
+        '',
+        '- $f$ **单射**（injective）：$f(a) = f(a\') \\implies a = a\'$，即不同输入给不同输出；',
+        '- $f$ **满射**（surjective）：$\\forall b \\in B, \\exists a \\in A : f(a) = b$，即 $f(A) = B$；',
+        '- $f$ **双射**（bijective）：既单又满。',
+        '',
+        '双射 $f : A \\to B$ 的**逆** $f^{-1} : B \\to A$ 也是双射（把 $f$ 看作关系时，逆关系就是 $f^{-1}$）。',
+        '',
+        '于是「存在双射 $A \\to B$」是集合之间的一种等价关系，用来定义**等势**。'
+      ].join('\n'),
+      notes: '⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\\alpha \\hookrightarrow X$ 不成立」也是同一个句式。\n\n⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \\mathbb{R} \\to \\mathbb{R}$，$x \\mapsto x^2$ 既不单也不满；把陪域改成 $[0, \\infty)$ 就满了。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+    {
+      id: 'def.countable',
+      cluster: 'set.choice',
+      type: 'definition',
+      label: '可数与不可数',
+      title: '可数 / 至多可数（Countable）',
+      regions: ['set-theory'],
+      tags: ['定义', '基数', '可数'],
+      statement: [
+        '设 $\\mathbb{N} = \\{0, 1, 2, \\dots\\}$ 是自然数集。',
+        '',
+        '集合 $A$ **可数**，当且仅当存在双射 $A \\to \\mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \\dots$，一个不漏、一个不重）。',
+        '',
+        '既有限又可数的情形合起来叫**至多可数**：$A$ 至多可数 $\\iff$ 存在单射 $A \\to \\mathbb{N}$。',
+        '',
+        '不是至多可数的集合叫**不可数**。'
+      ].join('\n'),
+      notes: '⭐ 这一条撑起了两大块内容：\n- **$\\sigma$-环 / $\\sigma$-代数 / 单调类**：可数并、可数交里的「可数」就是它；\n- **测度的可数可加**：$\\mu(\\bigcup_n E_n) = \\sum_n \\mu(E_n)$ 里的下标集要可数。\n\n基本事实：$\\mathbb{N} \\times \\mathbb{N}$ 可数；至多可多个可数集的并仍可数；$\\mathbb{R}$ 不可数（Cantor 对角线法）。\n\n⚠ 「可数」不是「数得完」：$\\mathbb{N}$ 自己就可数但数不完。',
+      refs: ['Kunen, Set Theory, I.6']
+    },
+
+    /* -------------------------------------------------- 几乎处处 */
+    {
+      id: 'def.ae',
+      cluster: 'analysis.measure',
+      type: 'definition',
+      label: '几乎处处',
+      title: '几乎处处（Almost Everywhere, a.e.）',
+      regions: ['analysis'],
+      tags: ['定义', '零集'],
+      statement: [
+        '设 $(X, \\mathcal{M}, \\mu)$ 是测度空间。称一个关于点 $x$ 的命题 $P(x)$ **几乎处处成立**（记 a.e.），当且仅当',
+        '',
+        '$$\\exists E \\in \\mathcal{M}:\\ \\mu(E) = 0 \\quad \\text{且} \\quad \\forall x \\in X \\setminus E,\\ P(x)\\ \\text{成立}$$',
+        '',
+        '即：**使命题不成立的那些点构成一个零集**。',
+        '',
+        '常见的用法：$f = g$ a.e.（$\\{f \\ne g\\}$ 是零集）、$f_n \\to f$ a.e.（不收敛的点是零集）、$F\' = 0$ a.e.。'
+      ].join('\n'),
+      notes: '⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。\n\n⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\\int |f| = 0 \\implies f = 0$ a.e.（而不是处处 0）。\n⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。',
+      refs: ['Rudin, Real and Complex Analysis, Ch. 1']
+    }
+  ],
+
+  edges: [
+
+    /* ------------------------------------------------ 集合运算的依赖 */
+    {
+      id: 'dep.subset-union-inter',
+      kind: 'definition',
+      definition: 'def.subset',
+      usedBy: 'def.union-inter',
+      note: '两个运算都用 $\\subseteq$ 说事（$A \\cap B \\subseteq A \\subseteq A \\cup B$）。'
+    },
+    {
+      id: 'dep.subset-diff',
+      kind: 'definition',
+      definition: 'def.subset',
+      usedBy: 'def.diff-complement',
+      note: '$A \\setminus B \\subseteq A$；「含全集 $X$」也是子集关系。'
+    },
+    {
+      id: 'dep.ext-empty',
+      kind: 'definition',
+      definition: 'def.empty',
+      usedBy: 'thm.empty',
+      note: '「空集存在」证明的就是这条定义里的那个集合确实存在（由分离公理），并且唯一（由外延公理）。'
+    },
+    {
+      id: 'dep.empty-union',
+      kind: 'definition',
+      definition: 'def.empty',
+      usedBy: 'def.union-inter',
+      note: '$\\bigcap \\emptyset$ 要注意：它必须相对某个全集才有意义 —— 空集的出现方式常常是这种边角。'
+    },
+
+    /* ------------------------------------------------ 映射与可数 */
+    {
+      id: 'dep.function-bijection',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.bijection',
+      note: '单射、满射、双射都是**函数**的性质。'
+    },
+    {
+      id: 'dep.pair-bijection',
+      kind: 'definition',
+      definition: 'def.pair',
+      usedBy: 'def.bijection',
+      note: '判断单射时用的是「$f(a) = f(b) \\implies a = b$」，即在有序对层面比较。'
+    },
+    {
+      id: 'dep.bijection-countable',
+      kind: 'definition',
+      definition: 'def.bijection',
+      usedBy: 'def.countable',
+      note: '可数就是「存在双射 $A \\to \\mathbb{N}$」；至多可数是「存在单射」。'
+    },
+    {
+      id: 'dep.nat-countable',
+      kind: 'definition',
+      definition: 'thm.omega',
+      usedBy: 'def.countable',
+      note: '$\\mathbb{N}$ 由无穷公理给出（见「自然数集存在」），可数就是拿它当标尺去量别的集合。'
+    },
+
+    /* ------------------------------------------------ 几乎处处 */
+    {
+      id: 'dep.nullset-ae',
+      kind: 'definition',
+      definition: 'def.null-set',
+      usedBy: 'def.ae',
+      note: 'a.e. 的定义就是「例外集是**零集**」。'
+    },
+    {
+      id: 'dep.measure-ae',
+      kind: 'definition',
+      definition: 'def.measure',
+      usedBy: 'def.ae',
+      note: '$\\mu(E) = 0$ 里的 $\\mu$ 是测度；a.e. 是测度空间上的说法。'
+    },
+    {
+      id: 'dep.interval-ls',
+      kind: 'definition',
+      definition: 'def.interval',
+      usedBy: 'def.fundamental-class',
+      note: '半开区间族 $\\{ (a, b] : a < b \\}$ 就是构造 Lebesgue–Stieltjes 测度时用的那个**基本类**。'
+    },
+    {
+      id: 'dep.sup-integral-nonneg',
+      kind: 'definition',
+      definition: 'def.sup',
+      usedBy: 'def.integral-nonneg',
+      note: '非负函数的积分定义成 $\\sup \\{ \\int \\varphi \\}$ —— 取的是实数（或 $+\\infty$）的上确界。'
+    },
+    {
+      id: 'dep.extended-measure',
+      kind: 'definition',
+      definition: 'def.extended-real',
+      usedBy: 'def.measure',
+      note: '测度的取值放在 $[0, +\\infty]$ 里，正是扩充实数。'
+    },
+    {
+      id: 'dep.real-metric',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.metric-space',
+      note: '距离取值 $d : X \\times X \\to [0, +\\infty) \\subseteq \\mathbb{R}$，用的是实数的序与绝对值。'
+    },
+    {
+      id: 'dep.interval-bv',
+      kind: 'definition',
+      definition: 'def.interval',
+      usedBy: 'def.ac-function',
+      note: '绝对连续的定义里，「任意有限个两两不交的区间」说的就是区间。'
+    },
+    {
+      id: 'dep.derivative-bv',
+      kind: 'definition',
+      definition: 'def.derivative',
+      usedBy: 'def.bounded-variation',
+      note: '全变差与 $F\'$ 都在讨论函数的**逐点**行为。'
+    },
+    {
+      id: 'dep.derivative-monotone-thm',
+      kind: 'definition',
+      definition: 'def.derivative',
+      usedBy: 'thm.monotone-differentiable',
+      note: '「单调函数几乎处处可导」说的就是这条定义里的导数存在 a.e.。'
+    },
+    {
+      id: 'dep.complex-integral-complex',
+      kind: 'definition',
+      definition: 'def.complex',
+      usedBy: 'def.integral-complex',
+      note: '复值函数的积分就是拆成 $\\operatorname{Re} f$、$\\operatorname{Im} f$ 两个实值积分。'
+    },
+    {
+      id: 'dep.complex-complex-measure',
+      kind: 'definition',
+      definition: 'def.complex',
+      usedBy: 'def.complex-measure',
+      note: '复测度取值在 $\\mathbb{C}$ 里 —— 所以它自动有限。'
+    },
+    {
+      id: 'dep.complex-lp',
+      kind: 'definition',
+      definition: 'def.complex',
+      usedBy: 'def.lp-norm',
+      note: '$L^p$ 的元素取复值：$f : X \\to \\mathbb{C}$。'
+    },
+    {
+      id: 'dep.continuous-continuous-measurable',
+      kind: 'definition',
+      definition: 'def.continuous',
+      usedBy: 'cor.continuous-measurable',
+      note: '「连续 $\\implies$ Borel 可测」要把连续的 $\\varepsilon$-$\\delta$ 定义翻译成开集的原像。'
+    },
+    {
+      id: 'dep.real-lp',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.essential-sup',
+      note: '本性上界是「$\\mu(\\{|f| > a\\}) = 0$ 的那些 $a \\ge 0$ 的下确界」——$a$ 是实数。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
    内容包 · 定义引用关系（蓝色 50% 线）
    --------------------------------------------------------------------------
    规则：如果某个结论的陈述/构造里出现了某个定义，就用一条蓝线把它们连起来。
@@ -11756,9 +12470,9 @@ window.MG = window.MG || {};
     {
       id: 'def-link.choicefn-rel',
       kind: 'definition',
-      definition: 'def.rel',
+      definition: 'def.function',
       usedBy: 'def.choicefn',
-      note: '选择函数首先是「函数」，所以定义里用到了关系与函数的概念。'
+      note: '选择函数首先是一个**函数**：定义里直接要求「$f$ 是函数，$\\operatorname{dom} f = F$」。'
     },
     {
       id: 'def-link.ac-choicefn',
@@ -12297,6 +13011,8 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 集合的构造（最底层） */
     ['def.subset', 'def.rel', 'def-dep.subset-rel',
       '关系是 $A \\times B$ 的**子集**，定义域 $\\operatorname{dom} R$ 与值域 $\\operatorname{ran} R$ 也都是子集。'],
+    ['def.rel', 'def.function', 'def-dep.rel-function',
+      '函数是**特殊的关系**：只多要求「每个输入的输出唯一」。'],
 
     /* ---------------------------------------------------------- 序结构 */
     ['def.rel', 'def.poset', 'def-dep.rel-poset',
@@ -12315,7 +13031,7 @@ window.MG = window.MG || {};
       '正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。'],
 
     /* -------------------------------------------------------- 度量空间 */
-    ['def.rel', 'def.metric-space', 'def-dep.rel-metric-space',
+    ['def.function', 'def.metric-space', 'def-dep.function-metric-space',
       '距离 $d : X \\times X \\to [0, +\\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。'],
     ['def.metric-space', 'def.complete', 'def-dep.metric-complete',
       'Cauchy 列与收敛都是**关于距离空间** $(X, d)$ 说的。'],
@@ -12335,7 +13051,7 @@ window.MG = window.MG || {};
       '单调类同样是 $\\mathcal{P}(X)$ 的一族**子集**。'],
     ['def.monotone-class', 'def.generated-sigma', 'def-dep.monotone-generated-sigma',
       '这条同时定义 $\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$——后者就是**由 $\\mathcal{E}$ 生成的单调类**。'],
-    ['def.rel', 'def.product-sigma', 'def-dep.rel-product-sigma',
+    ['def.function', 'def.product-sigma', 'def-dep.function-product-sigma',
       '投影 $\\pi_\\alpha$ 是**函数**，柱集 $\\pi_\\alpha^{-1}(E_\\alpha)$ 用的是逆像。'],
 
     /* ------------------------------------------------ 测度的构造：测度本身 */
@@ -12435,6 +13151,8 @@ window.MG = window.MG || {};
       '要求 $\\{ E_r \\}$ 是一族 **Borel 子集**，这样 $m(E_r)$ 才有意义。'],
     ['def.subset', 'def.shrinks-nicely', 'def-dep.subset-shrinks-nicely',
       '第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。'],
+    ['def.poset', 'def.real', 'def-dep.poset-real',
+      '实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。'],
 
     /* ------------------------------------------- 有界变差与绝对连续 */
     ['def.bounded-variation', 'def.nbv', 'def-dep.bv-nbv',
@@ -12476,6 +13194,80 @@ window.MG = window.MG || {};
     edges: edges
   });
 })();
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 主干（学习主线）
+   --------------------------------------------------------------------------
+   这张星图有 182 个节点，初学者打开会不知道从哪儿看起。
+   这里挑出一条**主线**：从最底层的 ZFC / 集合，一路到测度、积分、L^p、RN 定理。
+   主干上的点必须满足「不看它就接不上后面」——它要么是某个概念的入口，
+   要么是整条线绕不过去的那一步。
+
+   用法：图例上方的工具条点「主干」→ 只留这些点，其余全藏起来。
+
+   ⚠️ 加节点/改内容时记得回来看看：新节点要不要进主干、走掉的 id 要删掉。
+      结构上它只影响显示，不影响任何数学内容。
+   ========================================================================== */
+window.MG = window.MG || {};
+
+MG.trunk = [
+
+  /* ------------------------------------------------ 一、集合与序（地基） */
+  'def.real',                  // 实数系 ℝ —— 分析学的出发点
+  'def.interval',              // 区间
+  'def.sup',                   // 上确界与下确界
+  'def.sequence-limit',        // 数列极限
+  'ax.ext',                    // 外延公理：集合相等靠什么
+  'def.subset',                // 子集
+  'def.empty',                 // 空集
+  'thm.empty',                 // 空集存在
+  'def.pair',                  // 有序对
+  'def.rel',                   // 关系
+  'def.function',              // 函数
+  'ax.choice',                 // 选择公理
+  'def.poset',                 // 偏序集
+  'def.chain',                 // 链
+  'def.bound',                 // 上界与极大元
+  'lem.zorn',                  // 佐恩引理
+
+  /* -------------------------------------------- 二、测度（分析的地基） */
+  'def.set-ring',              // 环与代数
+  'def.sigma-algebra',         // σ-代数
+  'def.generated-sigma',       // 生成的 σ-代数
+  'def.borel',                 // Borel σ-代数
+  'def.measure',               // 测度
+  'def.null-set',              // 零集与完备
+  'def.ae',                    // 几乎处处
+  'def.outer-measure',         // 外测度
+  'thm.caratheodory',          // Carathéodory 定理
+
+  /* ------------------------------------------------------ 三、积分 */
+  'def.measurable-function',   // 可测函数
+  'def.simple-function',       // 简单函数
+  'def.integral-simple',       // 简单函数的积分
+  'def.integral-nonneg',       // 非负函数的积分
+  'thm.mct',                   // 单调收敛定理
+  'lem.fatou',                 // Fatou 引理
+  'thm.dct',                   // 控制收敛定理
+  'def.integrable',            // 可积 / L¹
+  'thm.fubini-tonelli',        // Fubini–Tonelli
+
+  /* ------------------------------------------ 四、函数空间与微分 */
+  'def.lp-norm',               // L^p 范数
+  'thm.holder',                // Hölder 不等式
+  'thm.lp-banach',             // L^p 是 Banach 空间
+  'thm.riesz-representation-lp', // (L^p)* ≅ L^q
+  'def.locally-integrable',    // 局部可积
+  'def.maximal-function',      // 极大函数
+  'thm.lebesgue-differentiation', // Lebesgue 微分定理
+  'def.bounded-variation',     // 有界变差 BV
+  'def.ac-function',           // 绝对连续函数
+  'def.derivative',            // 导数
+  'thm.ftc-lebesgue',          // 微积分基本定理（Lebesgue 版）
+  'thm.lebesgue-radon-nikodym' // Lebesgue–Radon–Nikodym 定理
+];
 
 </script>
 
@@ -12776,6 +13568,25 @@ window.MG = window.MG || {};
 
     vis.onChange(function () { refreshVisible(); renderLegend(); });
 
+    /* ------------------------------------------------------ 主干模式 */
+    /*
+      只看主干：内容里用 MG.trunk 列出的那条「学习主线」。
+      实现上不动用户手动的隐藏集合，而是给可见性加一个额外条件
+      （所以关掉主干模式之后，之前手动藏的点还在）。
+    */
+    var trunkOnly = false;
+
+    function setTrunkOnly(on) {
+      trunkOnly = !!on;
+      vis.setFilter(trunkOnly ? function (id) {
+        var n = graph.byId[id];
+        return !!(n && n.trunk);
+      } : null);
+      var btn = toolbar.querySelector('[data-act="toggle-trunk"]');
+      if (btn) btn.classList.toggle('on', trunkOnly);
+      if (trunkOnly) fitAll();          // 主干只有几十个点，直接铺满屏幕
+    }
+
     /* ---------------------------------------------------------- 交互 */
     MG.createInteraction(graphEl, view, {
       draw: function () { requestDraw(); },
@@ -12807,6 +13618,7 @@ window.MG = window.MG || {};
       if (act === 'zoom-in') { cam.zoomBy(C.camera.zoomStep); requestDraw(); }
       else if (act === 'zoom-out') { cam.zoomBy(1 / C.camera.zoomStep); requestDraw(); }
       else if (act === 'fit') { fitAll(); requestDraw(); }
+      else if (act === 'toggle-trunk') { setTrunkOnly(!trunkOnly); }
       else if (act === 'toggle-defs') {
         C.showDefinitionLines = !C.showDefinitionLines;
         btn.classList.toggle('on', C.showDefinitionLines);
@@ -12942,7 +13754,11 @@ window.MG = window.MG || {};
         '<div class="lg-row">' + edgeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
-        '<div class="lg-hint">点色块 = 显示 / 隐藏 · 点名字 = 跳过去看</div>' +
+        '<div class="lg-hint">' +
+        (trunkOnly
+          ? '主干模式：只显示 ' + shown + ' 个主干节点（再点一次工具条的「主干」退出）'
+          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看') +
+        '</div>' +
         '</div>';
     }
 
@@ -12950,7 +13766,7 @@ window.MG = window.MG || {};
       var t = e.target;
       if (!t.closest) return;
       // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
-      if (t.closest('[data-reset]')) { vis.showAll(); return; }
+      if (t.closest('[data-reset]')) { setTrunkOnly(false); vis.showAll(); return; }
       if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
 
       // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）
@@ -13035,9 +13851,9 @@ window.MG = window.MG || {};
         cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
       }
       renderLegend();
-      // 上次藏了一批点 → 开局就只把「还看得见的那些」铺满屏幕
+      // 上次藏了一批点（或开着主干模式）→ 开局就只把「还看得见的那些」铺满屏幕
       var live = visibleNodes();
-      var bb = (vis.hiddenCount() && live.length) ? bboxOf(live) : graph.bbox();
+      var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;

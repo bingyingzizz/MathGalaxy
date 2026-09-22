@@ -21,6 +21,7 @@
     var hidden = Object.create(null);       // id → true
     var listeners = [];
     var nodes = graph.nodes;
+    var extraFilter = null;                 // 额外的可见条件（例如「只看主干」）
 
     /* ------------------------------------------------------------ 读写 */
     function read() {
@@ -54,23 +55,38 @@
     }
 
     /* ------------------------------------------------------------ 查询 */
-    function isNodeVisible(id) { return !hidden[id]; }
-    function isNodeHidden(id) { return !!hidden[id]; }
+    function isNodeVisible(id) {
+      if (hidden[id]) return false;
+      if (extraFilter && !extraFilter(id)) return false;
+      return true;
+    }
+    function isNodeHidden(id) { return !isNodeVisible(id); }
 
     function hiddenCount() { return Object.keys(hidden).length; }
 
     function visibleCount() {
       var c = 0;
-      for (var i = 0; i < nodes.length; i++) if (!hidden[nodes[i].id]) c++;
+      for (var i = 0; i < nodes.length; i++) if (isNodeVisible(nodes[i].id)) c++;
       return c;
     }
 
     /** 两个端点都还在，这条线才画 */
     function edgeOk(e) {
       var ids = MG.graphUtil.edgeNodes(e);
-      for (var i = 0; i < ids.length; i++) if (hidden[ids[i]]) return false;
+      for (var i = 0; i < ids.length; i++) if (!isNodeVisible(ids[i])) return false;
       return true;
     }
+
+    /**
+     * 换一个「额外条件」（不动用户手动的隐藏集合）。
+     * 例如「只看主干」：传一个 (id) => 是否主干 的函数；传 null 取消。
+     */
+    function setFilter(fn) {
+      if (extraFilter === fn) return;
+      extraFilter = fn || null;
+      commit();
+    }
+    function hasFilter() { return !!extraFilter; }
 
     /* ------------------------------------------------------------ 改动 */
     function setNode(id, visible) {
@@ -151,6 +167,8 @@
       hiddenCount: hiddenCount,
       visibleCount: visibleCount,
       edgeOk: edgeOk,
+      setFilter: setFilter,
+      hasFilter: hasFilter,
       setNode: setNode,
       setMany: setMany,
       showAll: showAll,

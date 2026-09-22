@@ -81,6 +81,12 @@ MG.clusters = [
 
   /* ------------------------------------------------ 星系：分析学 */
   {
+    id: 'analysis.real',
+    name: '实数与区间',
+    parent: 'analysis',
+    desc: '造出「实数这根数轴」与在轴上做极限的那套语言：完备有序域 → 区间 → 上确界 → 数列极限/级数 → 连续 → 导数。'
+  },
+  {
     id: 'analysis.measure',
     name: '测度的构造',
     parent: 'analysis',

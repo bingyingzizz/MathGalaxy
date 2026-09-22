@@ -25,6 +25,8 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 集合的构造（最底层） */
     ['def.subset', 'def.rel', 'def-dep.subset-rel',
       '关系是 $A \\times B$ 的**子集**，定义域 $\\operatorname{dom} R$ 与值域 $\\operatorname{ran} R$ 也都是子集。'],
+    ['def.rel', 'def.function', 'def-dep.rel-function',
+      '函数是**特殊的关系**：只多要求「每个输入的输出唯一」。'],
 
     /* ---------------------------------------------------------- 序结构 */
     ['def.rel', 'def.poset', 'def-dep.rel-poset',
@@ -43,7 +45,7 @@ window.MG = window.MG || {};
       '正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。'],
 
     /* -------------------------------------------------------- 度量空间 */
-    ['def.rel', 'def.metric-space', 'def-dep.rel-metric-space',
+    ['def.function', 'def.metric-space', 'def-dep.function-metric-space',
       '距离 $d : X \\times X \\to [0, +\\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。'],
     ['def.metric-space', 'def.complete', 'def-dep.metric-complete',
       'Cauchy 列与收敛都是**关于距离空间** $(X, d)$ 说的。'],
@@ -63,7 +65,7 @@ window.MG = window.MG || {};
       '单调类同样是 $\\mathcal{P}(X)$ 的一族**子集**。'],
     ['def.monotone-class', 'def.generated-sigma', 'def-dep.monotone-generated-sigma',
       '这条同时定义 $\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$——后者就是**由 $\\mathcal{E}$ 生成的单调类**。'],
-    ['def.rel', 'def.product-sigma', 'def-dep.rel-product-sigma',
+    ['def.function', 'def.product-sigma', 'def-dep.function-product-sigma',
       '投影 $\\pi_\\alpha$ 是**函数**，柱集 $\\pi_\\alpha^{-1}(E_\\alpha)$ 用的是逆像。'],
 
     /* ------------------------------------------------ 测度的构造：测度本身 */
@@ -163,6 +165,8 @@ window.MG = window.MG || {};
       '要求 $\\{ E_r \\}$ 是一族 **Borel 子集**，这样 $m(E_r)$ 才有意义。'],
     ['def.subset', 'def.shrinks-nicely', 'def-dep.subset-shrinks-nicely',
       '第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。'],
+    ['def.poset', 'def.real', 'def-dep.poset-real',
+      '实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。'],
 
     /* ------------------------------------------- 有界变差与绝对连续 */
     ['def.bounded-variation', 'def.nbv', 'def-dep.bv-nbv',

@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T10:11:06.131Z",
+  "generated": "2026-09-22T10:28:13.794Z",
   "counts": {
    "regions": 6,
-   "clusters": 13,
-   "nodes": 182,
-   "edges": 332,
-   "strong": 328,
+   "clusters": 14,
+   "nodes": 198,
+   "edges": 366,
+   "strong": 362,
    "weak": 4
   },
   "readingGuide": {
@@ -41,7 +41,7 @@
    "en": "Set Theory",
    "desc": "ZFC 公理系统、序数、基数与选择原理。",
    "color": "#4F7CF5",
-   "nodeCount": 22
+   "nodeCount": 28
   },
   {
    "id": "order-theory",
@@ -49,7 +49,7 @@
    "en": "Order Theory",
    "desc": "偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。",
    "color": "#2FA96B",
-   "nodeCount": 9
+   "nodeCount": 12
   },
   {
    "id": "topology",
@@ -57,7 +57,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；大量定理依赖选择原理。",
    "color": "#D9649F",
-   "nodeCount": 12
+   "nodeCount": 13
   },
   {
    "id": "algebra",
@@ -65,7 +65,7 @@
    "en": "Abstract Algebra",
    "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
    "color": "#E08A3C",
-   "nodeCount": 2
+   "nodeCount": 3
   },
   {
    "id": "analysis",
@@ -73,7 +73,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 144
+   "nodeCount": 154
   }
  ],
  "clusters": [
@@ -101,13 +101,16 @@
    "name": "集合的构造",
    "parent": "set-theory",
    "desc": "造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。",
-   "nodeCount": 5,
+   "nodeCount": 8,
    "nodes": [
     "def.subset",
     "def.pair",
     "thm.empty",
     "thm.binunion",
-    "thm.product"
+    "thm.product",
+    "def.union-inter",
+    "def.diff-complement",
+    "def.empty"
    ]
   },
   {
@@ -115,12 +118,15 @@
    "name": "关系与选择",
    "parent": "set-theory",
    "desc": "造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。",
-   "nodeCount": 4,
+   "nodeCount": 7,
    "nodes": [
     "ax.choice",
     "def.rel",
+    "def.function",
     "def.choicefn",
-    "thm.hartogs"
+    "thm.hartogs",
+    "def.bijection",
+    "def.countable"
    ]
   },
   {
@@ -179,11 +185,29 @@
    ]
   },
   {
+   "id": "analysis.real",
+   "name": "实数与区间",
+   "parent": "analysis",
+   "desc": "造出「实数这根数轴」与在轴上做极限的那套语言：完备有序域 → 区间 → 上确界 → 数列极限/级数 → 连续 → 导数。",
+   "nodeCount": 9,
+   "nodes": [
+    "def.real",
+    "def.extended-real",
+    "def.interval",
+    "def.sup",
+    "def.sequence-limit",
+    "def.series",
+    "def.continuous",
+    "def.derivative",
+    "def.complex"
+   ]
+  },
+  {
    "id": "analysis.measure",
    "name": "测度的构造",
    "parent": "analysis",
    "desc": "造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。",
-   "nodeCount": 31,
+   "nodeCount": 32,
    "nodes": [
     "def.fundamental-class",
     "def.set-ring",
@@ -215,7 +239,8 @@
     "thm.caratheodory-uniqueness",
     "prop.ls-premeasure",
     "thm.ls-exists",
-    "def.lebesgue-stieltjes"
+    "def.lebesgue-stieltjes",
+    "def.ae"
    ]
   },
   {
@@ -606,8 +631,28 @@
   {
    "id": "def.rel",
    "type": "definition",
-   "label": "关系与函数",
-   "title": "关系 / 函数（Relation & Function）",
+   "label": "关系",
+   "title": "关系（Relation）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.choice",
+   "tags": [
+    "定义",
+    "关系"
+   ],
+   "statement": "设 $A$、$B$ 是集合。\n\n**关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。\n\n- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；\n- **值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$；\n- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。",
+   "notes": "在 ZFC 里关系就是一个集合（由有序对组成），没有额外的原始概念 —— 所以「$\\preceq$ 是 $A$ 上的关系」这句话本身是有内容的：它说的是一族有序对。\n\n常见的两类关系：**等价关系**（自反、对称、传递）与**偏序**（自反、反对称、传递）——后者另开一条节点。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.function",
+   "type": "definition",
+   "label": "函数",
+   "title": "函数（Function）",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -617,8 +662,8 @@
     "定义",
     "函数"
    ],
-   "statement": "设 $A$、$B$ 是集合。\n\n- **关系** $R$ 由有序对组成；$R \\subseteq A \\times B$ 表示 $R$ 是 $A$ 到 $B$ 的关系。\n- **定义域** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$；**值域** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$。\n- **逆** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$。\n- **函数** $f : A \\to B$ 是满足下式的关系 $f \\subseteq A \\times B$：\n\n$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$\n\n唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$。",
-   "notes": "在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。",
+   "statement": "设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \\to B$），当且仅当对每个输入恰有一个输出：\n\n$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$\n\n唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \\{ f(a) : a \\in A \\}$。\n\n单射 / 满射 / 双射见另一条节点。",
+   "notes": "在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。\n\n⚠ 两个容易混的地方：\n- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \\to B$（即 $\\operatorname{dom} f = A$）。\n- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。",
    "refs": [
     "Kunen, Set Theory, I.5"
    ]
@@ -4226,6 +4271,315 @@
    "refs": [
     "Folland, Real Analysis, §6.2"
    ]
+  },
+  {
+   "id": "def.real",
+   "type": "definition",
+   "label": "实数系 ℝ",
+   "title": "实数系 ℝ（完备有序域）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "order-theory"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "实数",
+    "完备性"
+   ],
+   "statement": "**实数系**是一个集合 $\\mathbb{R}$，带两个运算 $+$、$\\cdot$ 与一个序 $\\le$，满足三组公理：\n\n**(i) 域公理**：$(\\mathbb{R}, +, \\cdot)$ 是域 —— 加减乘除（除以非零元）都封闭，且有结合、交换、分配律。\n\n**(ii) 序公理**：$\\le$ 是全序，且与运算相容：\n$$a \\le b \\implies a + c \\le b + c, \\qquad a \\le b,\\ 0 \\le c \\implies ac \\le bc$$\n\n**(iii) 完备性公理（确界原理）**：$\\mathbb{R}$ 的**每个非空有上界的子集都有上确界**。\n\n这三组公理刻画的 $\\mathbb{R}$ 在同构意义下唯一。",
+   "notes": "⭐ **第 (iii) 条才是分析学的引擎**：没有它，$\\mathbb{Q}$ 也满足前两条，但 $\\{ x \\in \\mathbb{Q} : x^2 < 2 \\}$ 在 $\\mathbb{Q}$ 里没有上确界。\n\n由完备性可以推出分析里最常用的两件事：\n- **单调有界数列收敛**；\n- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。\n\n⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.extended-real",
+   "type": "definition",
+   "label": "扩充实数 [−∞,+∞]",
+   "title": "扩充实数系 $\\overline{\\mathbb{R}}$（Extended Reals）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "实数"
+   ],
+   "statement": "在 $\\mathbb{R}$ 上添两个记号 $+\\infty$、$-\\infty$，得到**扩充实数系**\n\n$$\\overline{\\mathbb{R}} := \\mathbb{R} \\cup \\{ -\\infty, +\\infty \\}$$\n\n规定 $-\\infty < x < +\\infty$ 对一切 $x \\in \\mathbb{R}$ 成立，于是 $\\overline{\\mathbb{R}}$ 仍是全序集；并约定\n\n$$x + (\\pm\\infty) = \\pm\\infty, \\qquad 0 \\cdot (\\pm\\infty) = 0$$\n\n而 $\\infty - \\infty$ 与 $\\infty / \\infty$ **不定义**。",
+   "notes": "为什么需要它：测度、积分的取值天然可以是 $\\infty$（$\\mathbb{R}$ 的 Lebesgue 测度就是 $\\infty$），把所有量都放进 $\\overline{\\mathbb{R}}$，收敛定理（sup、极限）就不必反复讨论「值是不是有限」。\n\n⚠ 约定 $0 \\cdot \\infty = 0$ 是刻意的：它让「在无穷测度集上取 $0$ 的函数」积分为 $0$。\n⚠ 它不是域：$\\infty$ 没有加法逆元。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.interval",
+   "type": "definition",
+   "label": "区间",
+   "title": "区间（Interval）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "order-theory"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "实数"
+   ],
+   "statement": "$\\mathbb{R}$ 的**区间**是满足下式的子集 $I$：\n\n$$a, b \\in I,\\ a \\le x \\le b \\implies x \\in I$$\n\n即「中间不空」。常见的有界区间写成\n\n$$(a, b), \\quad [a, b], \\quad [a, b), \\quad (a, b]$$\n\n按端点是否取到区分；另有 $(-\\infty, b)$、$(a, +\\infty)$、$\\mathbb{R}$ 等无界区间，以及单点集 $[a, a]$。\n\n体积就是长度：$m((a, b]) = b - a$。",
+   "notes": "⭐ **半开区间 $\\{ (a, b] : a < b \\}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。\n\n为什么要用半开而不是开区间：不交并的长度好算 —— $[a, b) \\sqcup [b, c) = [a, c)$ 在开区间上不成立。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 2"
+   ]
+  },
+  {
+   "id": "def.sup",
+   "type": "definition",
+   "label": "上确界与下确界",
+   "title": "上确界 $\\sup$ / 下确界 $\\inf$（Supremum & Infimum）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "order-theory"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "实数",
+    "完备性"
+   ],
+   "statement": "设 $S \\subseteq \\mathbb{R}$，$S \\ne \\emptyset$。\n\n$u$ 是 $S$ 的**上确界**（记 $\\sup S$），当且仅当\n\n- $u$ 是 $S$ 的上界：$\\forall s \\in S, s \\le u$；\n- $u$ 是**最小**的上界：$u \\le u'$ 对每个上界 $u'$ 成立。\n\n等价说法：$\\forall \\varepsilon > 0, \\exists s \\in S : s > u - \\varepsilon$（任意近地逼近）。\n\n**下确界** $\\inf S$ 对称地定义（最大下界）。\n\n**确界原理**：$S$ 非空且有上界 $\\implies \\sup S$ 存在。",
+   "notes": "⭐ 确界原理与「实数完备性」是一回事：它是 $\\mathbb{R}$ 比 $\\mathbb{Q}$ 多的那一口气。\n\n⚠ **$\\sup S$ 不必属于 $S$**（$\\sup (0, 1) = 1$），所以「最大值」与「上确界」要分开 —— 这和偏序集里「最大元 vs 极大元」是两类不同的混淆，别搞混。\n\n这对概念在偏序集里的版本见「上界与极大元」：那里一般不保证上确界存在，$\\mathbb{R}$ 的特别之处正是保证了它。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.sequence-limit",
+   "type": "definition",
+   "label": "数列极限",
+   "title": "数列极限 $x_n \\to x$（Limit of a Sequence）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "极限"
+   ],
+   "statement": "数列 $\\{x_n\\} \\subseteq \\mathbb{R}$ **收敛到** $x$（记 $x_n \\to x$ 或 $\\lim_{n \\to \\infty} x_n = x$），当且仅当\n\n$$\\forall \\varepsilon > 0, \\exists N, \\forall n \\ge N : |x_n - x| < \\varepsilon$$\n\n即：不管给出多小的 $\\varepsilon$，从某一项之后，所有项都落在 $x$ 的 $\\varepsilon$ 邻域里。\n\n不收敛的数列叫**发散**。",
+   "notes": "⭐ 这就是「$\\varepsilon$-$N$ 语言」：把「越来越近」翻译成可以逐条检验的条件。整个分析学的证明都建立在这个格式上。\n\n基本性质（都由定义直接验证）：\n- 极限**唯一**；\n- 收敛数列**有界**；\n- 四则运算与极限可交换（分母极限非零时）。\n\n⚠ 「有界」不保证收敛（$(-1)^n$）；「$\\varepsilon$ 固定、$N$ 往后」的顺序不能换。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "def.series",
+   "type": "definition",
+   "label": "级数收敛",
+   "title": "级数 $\\sum a_n$（Series）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "极限"
+   ],
+   "statement": "给定数列 $\\{a_n\\}$，令**部分和** $s_N := \\sum_{n=1}^{N} a_n$。\n\n称级数 $\\sum_{n=1}^{\\infty} a_n$ **收敛**，当且仅当部分和数列 $\\{s_N\\}$ 收敛，此时记\n\n$$\\sum_{n=1}^{\\infty} a_n := \\lim_{N \\to \\infty} s_N$$\n\n**非负项级数**（$a_n \\ge 0$）特别干净：部分和递增，于是\n\n$$\\sum_{n=1}^{\\infty} a_n = \\sup_N s_N \\in [0, +\\infty]$$\n\n一定有意义（可能是 $+\\infty$）。",
+   "notes": "⭐ 测度的**可数可加**、积分的**逐项**性质，用的都是非负项级数这一行：非负就不必担心条件收敛与重排。\n\n⚠ 收敛级数**可以重排**的只有绝对收敛的情形；条件收敛的级数重排后可能收敛到别的值（Riemann 重排定理）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "def.continuous",
+   "type": "definition",
+   "label": "连续",
+   "title": "连续（Continuity）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "topology"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "极限",
+    "连续"
+   ],
+   "statement": "$f : \\mathbb{R} \\to \\mathbb{R}$ 在 $x_0$ **连续**，当且仅当\n\n$$\\forall \\varepsilon > 0, \\exists \\delta > 0 : |x - x_0| < \\delta \\implies |f(x) - f(x_0)| < \\varepsilon$$\n\n等价说法：$\\lim_{x \\to x_0} f(x) = f(x_0)$（极限存在且等于函数值）。\n\n$f$ **连续**（在 $\\mathbb{R}$ 上连续）当且仅当它在每一点连续。\n\n**一致连续**是更强的要求：$\\delta$ 只依赖 $\\varepsilon$，不依赖 $x_0$。",
+   "notes": "⭐ 把 $|x - x_0| < \\delta$、$|f(x) - f(x_0)| < \\varepsilon$ 换成距离 $d$，这个定义原封不动地搬到距离空间 —— 这也正是距离空间的定义为什么长成那样。\n\n⚠ **连续 $\\ne$ 一致连续**：$f(x) = x^2$ 在 $\\mathbb{R}$ 上连续但不一致连续（$x$ 越大需要的 $\\delta$ 越小）。紧区间上两者才重合。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "def.derivative",
+   "type": "definition",
+   "label": "导数",
+   "title": "导数 $F'$（Derivative）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "导数"
+   ],
+   "statement": "$F : (a, b) \\to \\mathbb{C}$ 在 $x_0 \\in (a, b)$ **可导**，当且仅当极限\n\n$$F'(x_0) := \\lim_{h \\to 0} \\frac{F(x_0 + h) - F(x_0)}{h}$$\n\n存在（有限）。这个数叫 $F$ 在 $x_0$ 的**导数**。\n\n在 $(a, b)$ 上处处可导，就得到一个函数 $F'$；称 $F$ **可导**。\n\n若不要求极限存在而允许 $\\pm\\infty$，得到的是**广义导数**，单调函数的导数理论要用它。",
+   "notes": "⭐ 微分理论关心的是**逐点**行为，所以定义域常常收缩到 $L^1_{loc}$ 而不是 $L^1$。\n\n要点（本星图 BV / AC 那一段全靠它们）：\n- 可导 $\\implies$ 连续，反之不成立（$|x|$ 在 $0$ 处）。\n- 单调函数**几乎处处可导**，且 $F' \\ge 0$ a.e.。\n- 可导**不保证** $F(b) - F(a) = \\int_a^b F'$（Cantor 函数就是反例）；等式成立要加绝对连续。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "def.complex",
+   "type": "definition",
+   "label": "复数 ℂ",
+   "title": "复数系 $\\mathbb{C}$（Complex Numbers）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "algebra"
+   ],
+   "cluster": "analysis.real",
+   "tags": [
+    "定义",
+    "复数"
+   ],
+   "statement": "**复数系** $\\mathbb{C} := \\mathbb{R}^2$，配以下运算：\n\n$$(a, b) + (c, d) := (a + c, b + d), \\qquad (a, b)(c, d) := (ac - bd, ad + bc)$$\n\n记 $i := (0, 1)$，则每个复数唯一地写成 $z = a + bi$（$a, b \\in \\mathbb{R}$）。\n\n$\\bar{z} := a - bi$ 是**共轭**，$|z| := \\sqrt{a^2 + b^2}$ 是**模**；并且\n\n$$|zw| = |z|\\,|w|, \\qquad z \\bar{z} = |z|^2$$\n\n于是每个 $z \\ne 0$ 都有逆 $z^{-1} = \\bar{z}/|z|^2$：$\\mathbb{C}$ 是一个域。",
+   "notes": "⭐ $\\mathbb{C}$ 与 $\\mathbb{R}^2$ 的区别只在乘法 —— 而正是这个乘法让 $\\mathbb{C}$ 成为**代数闭域**（每个多项式都有根），也让复值函数的积分理论比实值情形简洁：$|f|$ 与 $L^p$ 理论的表述不必再分正负部。\n\n本星图里 $\\mathbb{C}$ 主要出现在两处：复值函数的积分（拆实部虚部）、复测度（取值在 $\\mathbb{C}$ 里，自动有限）。",
+   "refs": [
+    "Rudin, Real and Complex Analysis, Ch. 1"
+   ]
+  },
+  {
+   "id": "def.union-inter",
+   "type": "definition",
+   "label": "并集与交集",
+   "title": "并集 / 交集（Union & Intersection）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定义",
+    "集合运算"
+   ],
+   "statement": "设 $\\mathcal{A}$ 是一族集合（$A$ 的**并**与**交**是它只有两个成员时的特例）：\n\n$$\\bigcup \\mathcal{A} := \\{ x : \\exists A \\in \\mathcal{A},\\ x \\in A \\}$$\n$$\\bigcap \\mathcal{A} := \\{ x : \\forall A \\in \\mathcal{A},\\ x \\in A \\}$$\n\n两个集合的情形记作 $A \\cup B$、$A \\cap B$；可数族的并、交常记作 $\\bigcup_{n} A_n$、$\\bigcap_{n} A_n$。\n\n显然 $A \\cap B \\subseteq A \\subseteq A \\cup B$。",
+   "notes": "由并集公理，$\\bigcup \\mathcal{A}$ 是集合；$\\bigcap \\mathcal{A}$ 由分离公理模式取出。\n\n⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\\sigma$-环、$\\sigma$-代数、单调类都是这么定义的）。\n\n⚠ 分配律对任意族都成立：$A \\cap \\bigcup_i B_i = \\bigcup_i (A \\cap B_i)$；补与并、交的交换就是 De Morgan 律。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.diff-complement",
+   "type": "definition",
+   "label": "差集与补集",
+   "title": "差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定义",
+    "集合运算"
+   ],
+   "statement": "设 $A$、$B$、$X$ 是集合且 $A, B \\subseteq X$：\n\n- **差集**：$A \\setminus B := \\{ x \\in A : x \\notin B \\}$；\n- **补集**（相对于 $X$）：$A^{c} := X \\setminus A$；\n- **对称差**：$A \\triangle B := (A \\setminus B) \\cup (B \\setminus A)$。\n\n基本恒等式：\n\n$$A \\setminus B = A \\cap B^{c}, \\qquad (A^{c})^{c} = A, \\qquad (\\bigcup_i A_i)^{c} = \\bigcap_i A_i^{c}$$\n\n最后一条就是 **De Morgan 律**。",
+   "notes": "⭐ De Morgan 律是「用差 + 可数并推出可数交」的全部依据：$\\bigcap_n A_n = A_1 \\setminus \\bigcup_{n \\ge 2} (A_1 \\setminus A_n)$ —— $\\sigma$-环只要求对差与可数并封闭，可数交就自动有了。\n\n⚠ **补集必须相对于某个全集 $X$ 才有意义**，这也正是 $\\sigma$-代数要含 $X$ 的原因：不含 $X$ 就只剩 $\\sigma$-环，补运算落不到里面。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.empty",
+   "type": "definition",
+   "label": "空集 ∅",
+   "title": "空集（Empty Set）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定义",
+    "空集"
+   ],
+   "statement": "**空集**是不含任何元素的集合：\n\n$$\\emptyset := \\{ x : x \\ne x \\}$$\n\n由外延公理，这样的集合至多一个；由分离公理模式（对任一集合 $A$ 取 $\\{x \\in A : x \\ne x\\}$），它确实存在。\n\n于是对一切集合 $A$：$\\emptyset \\subseteq A$（空泛真），且 $\\emptyset$ 是 $\\subseteq$ 的最小元。",
+   "notes": "⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.bijection",
+   "type": "definition",
+   "label": "单射 / 满射 / 双射",
+   "title": "单射 / 满射 / 双射（Injective / Surjective / Bijective）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.choice",
+   "tags": [
+    "定义",
+    "函数"
+   ],
+   "statement": "设 $f : A \\to B$。\n\n- $f$ **单射**（injective）：$f(a) = f(a') \\implies a = a'$，即不同输入给不同输出；\n- $f$ **满射**（surjective）：$\\forall b \\in B, \\exists a \\in A : f(a) = b$，即 $f(A) = B$；\n- $f$ **双射**（bijective）：既单又满。\n\n双射 $f : A \\to B$ 的**逆** $f^{-1} : B \\to A$ 也是双射（把 $f$ 看作关系时，逆关系就是 $f^{-1}$）。\n\n于是「存在双射 $A \\to B$」是集合之间的一种等价关系，用来定义**等势**。",
+   "notes": "⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\\alpha \\hookrightarrow X$ 不成立」也是同一个句式。\n\n⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \\mathbb{R} \\to \\mathbb{R}$，$x \\mapsto x^2$ 既不单也不满；把陪域改成 $[0, \\infty)$ 就满了。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.countable",
+   "type": "definition",
+   "label": "可数与不可数",
+   "title": "可数 / 至多可数（Countable）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.choice",
+   "tags": [
+    "定义",
+    "基数",
+    "可数"
+   ],
+   "statement": "设 $\\mathbb{N} = \\{0, 1, 2, \\dots\\}$ 是自然数集。\n\n集合 $A$ **可数**，当且仅当存在双射 $A \\to \\mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \\dots$，一个不漏、一个不重）。\n\n既有限又可数的情形合起来叫**至多可数**：$A$ 至多可数 $\\iff$ 存在单射 $A \\to \\mathbb{N}$。\n\n不是至多可数的集合叫**不可数**。",
+   "notes": "⭐ 这一条撑起了两大块内容：\n- **$\\sigma$-环 / $\\sigma$-代数 / 单调类**：可数并、可数交里的「可数」就是它；\n- **测度的可数可加**：$\\mu(\\bigcup_n E_n) = \\sum_n \\mu(E_n)$ 里的下标集要可数。\n\n基本事实：$\\mathbb{N} \\times \\mathbb{N}$ 可数；至多可多个可数集的并仍可数；$\\mathbb{R}$ 不可数（Cantor 对角线法）。\n\n⚠ 「可数」不是「数得完」：$\\mathbb{N}$ 自己就可数但数不完。",
+   "refs": [
+    "Kunen, Set Theory, I.6"
+   ]
+  },
+  {
+   "id": "def.ae",
+   "type": "definition",
+   "label": "几乎处处",
+   "title": "几乎处处（Almost Everywhere, a.e.）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.measure",
+   "tags": [
+    "定义",
+    "零集"
+   ],
+   "statement": "设 $(X, \\mathcal{M}, \\mu)$ 是测度空间。称一个关于点 $x$ 的命题 $P(x)$ **几乎处处成立**（记 a.e.），当且仅当\n\n$$\\exists E \\in \\mathcal{M}:\\ \\mu(E) = 0 \\quad \\text{且} \\quad \\forall x \\in X \\setminus E,\\ P(x)\\ \\text{成立}$$\n\n即：**使命题不成立的那些点构成一个零集**。\n\n常见的用法：$f = g$ a.e.（$\\{f \\ne g\\}$ 是零集）、$f_n \\to f$ a.e.（不收敛的点是零集）、$F' = 0$ a.e.。",
+   "notes": "⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。\n\n⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\\int |f| = 0 \\implies f = 0$ a.e.（而不是处处 0）。\n⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。",
+   "refs": [
+    "Rudin, Real and Complex Analysis, Ch. 1"
+   ]
   }
  ],
  "edges": [
@@ -6128,6 +6482,262 @@
    "note": "自反性谈的是 L^p 与它的二次对偶。"
   },
   {
+   "id": "dep.real-extended",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.extended-real",
+   "note": "扩充实数就是在 $\\mathbb{R}$ 上添两个记号。"
+  },
+  {
+   "id": "dep.real-interval",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.interval",
+   "note": "区间是 $\\mathbb{R}$ 的全序 $\\le$ 说出来的：端点之间的都算数。"
+  },
+  {
+   "id": "dep.real-sup",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.sup",
+   "note": "上确界用的是 $\\mathbb{R}$ 的序与**完备性公理**——确界原理就是完备性。"
+  },
+  {
+   "id": "dep.real-sequence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.sequence-limit",
+   "note": "极限里的 $|x_n - x| < \\varepsilon$ 用的是实数的绝对值与序。"
+  },
+  {
+   "id": "dep.real-series",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sequence-limit",
+   "usedBy": "def.series",
+   "note": "级数收敛 = 部分和这个**数列**收敛。"
+  },
+  {
+   "id": "dep.real-continuous",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sequence-limit",
+   "usedBy": "def.continuous",
+   "note": "连续的定义就是「$x \\to x_0$ 时 $f(x) \\to f(x_0)$」——极限的语言。"
+  },
+  {
+   "id": "dep.real-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sequence-limit",
+   "usedBy": "def.derivative",
+   "note": "导数是一个**极限**：差商的极限。"
+  },
+  {
+   "id": "dep.continuous-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.continuous",
+   "usedBy": "def.derivative",
+   "note": "可导 $\\implies$ 连续：这一点由导数的定义直接推出来。"
+  },
+  {
+   "id": "dep.real-complex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.complex",
+   "note": "$\\mathbb{C} = \\mathbb{R}^2$，实部虚部都是实数。"
+  },
+  {
+   "id": "dep.sup-series",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sup",
+   "usedBy": "def.series",
+   "note": "非负项级数取的就是部分和的**上确界**。"
+  },
+  {
+   "id": "dep.subset-union-inter",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.union-inter",
+   "note": "两个运算都用 $\\subseteq$ 说事（$A \\cap B \\subseteq A \\subseteq A \\cup B$）。"
+  },
+  {
+   "id": "dep.subset-diff",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.diff-complement",
+   "note": "$A \\setminus B \\subseteq A$；「含全集 $X$」也是子集关系。"
+  },
+  {
+   "id": "dep.ext-empty",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.empty",
+   "usedBy": "thm.empty",
+   "note": "「空集存在」证明的就是这条定义里的那个集合确实存在（由分离公理），并且唯一（由外延公理）。"
+  },
+  {
+   "id": "dep.empty-union",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.empty",
+   "usedBy": "def.union-inter",
+   "note": "$\\bigcap \\emptyset$ 要注意：它必须相对某个全集才有意义 —— 空集的出现方式常常是这种边角。"
+  },
+  {
+   "id": "dep.function-bijection",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function",
+   "usedBy": "def.bijection",
+   "note": "单射、满射、双射都是**函数**的性质。"
+  },
+  {
+   "id": "dep.pair-bijection",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.pair",
+   "usedBy": "def.bijection",
+   "note": "判断单射时用的是「$f(a) = f(b) \\implies a = b$」，即在有序对层面比较。"
+  },
+  {
+   "id": "dep.bijection-countable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.bijection",
+   "usedBy": "def.countable",
+   "note": "可数就是「存在双射 $A \\to \\mathbb{N}$」；至多可数是「存在单射」。"
+  },
+  {
+   "id": "dep.nat-countable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.omega",
+   "usedBy": "def.countable",
+   "note": "$\\mathbb{N}$ 由无穷公理给出（见「自然数集存在」），可数就是拿它当标尺去量别的集合。"
+  },
+  {
+   "id": "dep.nullset-ae",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.null-set",
+   "usedBy": "def.ae",
+   "note": "a.e. 的定义就是「例外集是**零集**」。"
+  },
+  {
+   "id": "dep.measure-ae",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.ae",
+   "note": "$\\mu(E) = 0$ 里的 $\\mu$ 是测度；a.e. 是测度空间上的说法。"
+  },
+  {
+   "id": "dep.interval-ls",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.interval",
+   "usedBy": "def.fundamental-class",
+   "note": "半开区间族 $\\{ (a, b] : a < b \\}$ 就是构造 Lebesgue–Stieltjes 测度时用的那个**基本类**。"
+  },
+  {
+   "id": "dep.sup-integral-nonneg",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sup",
+   "usedBy": "def.integral-nonneg",
+   "note": "非负函数的积分定义成 $\\sup \\{ \\int \\varphi \\}$ —— 取的是实数（或 $+\\infty$）的上确界。"
+  },
+  {
+   "id": "dep.extended-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.extended-real",
+   "usedBy": "def.measure",
+   "note": "测度的取值放在 $[0, +\\infty]$ 里，正是扩充实数。"
+  },
+  {
+   "id": "dep.real-metric",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.metric-space",
+   "note": "距离取值 $d : X \\times X \\to [0, +\\infty) \\subseteq \\mathbb{R}$，用的是实数的序与绝对值。"
+  },
+  {
+   "id": "dep.interval-bv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.interval",
+   "usedBy": "def.ac-function",
+   "note": "绝对连续的定义里，「任意有限个两两不交的区间」说的就是区间。"
+  },
+  {
+   "id": "dep.derivative-bv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.derivative",
+   "usedBy": "def.bounded-variation",
+   "note": "全变差与 $F'$ 都在讨论函数的**逐点**行为。"
+  },
+  {
+   "id": "dep.derivative-monotone-thm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.derivative",
+   "usedBy": "thm.monotone-differentiable",
+   "note": "「单调函数几乎处处可导」说的就是这条定义里的导数存在 a.e.。"
+  },
+  {
+   "id": "dep.complex-integral-complex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex",
+   "usedBy": "def.integral-complex",
+   "note": "复值函数的积分就是拆成 $\\operatorname{Re} f$、$\\operatorname{Im} f$ 两个实值积分。"
+  },
+  {
+   "id": "dep.complex-complex-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex",
+   "usedBy": "def.complex-measure",
+   "note": "复测度取值在 $\\mathbb{C}$ 里 —— 所以它自动有限。"
+  },
+  {
+   "id": "dep.complex-lp",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex",
+   "usedBy": "def.lp-norm",
+   "note": "$L^p$ 的元素取复值：$f : X \\to \\mathbb{C}$。"
+  },
+  {
+   "id": "dep.continuous-continuous-measurable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.continuous",
+   "usedBy": "cor.continuous-measurable",
+   "note": "「连续 $\\implies$ Borel 可测」要把连续的 $\\varepsilon$-$\\delta$ 定义翻译成开集的原像。"
+  },
+  {
+   "id": "dep.real-lp",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.real",
+   "usedBy": "def.essential-sup",
+   "note": "本性上界是「$\\mu(\\{|f| > a\\}) = 0$ 的那些 $a \\ge 0$ 的下确界」——$a$ 是实数。"
+  },
+  {
    "id": "def-link.sep-subset",
    "kind": "definition",
    "strength": "strong",
@@ -6179,9 +6789,9 @@
    "id": "def-link.choicefn-rel",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.rel",
+   "definition": "def.function",
    "usedBy": "def.choicefn",
-   "note": "选择函数首先是「函数」，所以定义里用到了关系与函数的概念。"
+   "note": "选择函数首先是一个**函数**：定义里直接要求「$f$ 是函数，$\\operatorname{dom} f = F$」。"
   },
   {
    "id": "def-link.ac-choicefn",
@@ -6644,6 +7254,14 @@
    "note": "关系是 $A \\times B$ 的**子集**，定义域 $\\operatorname{dom} R$ 与值域 $\\operatorname{ran} R$ 也都是子集。"
   },
   {
+   "id": "def-dep.rel-function",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rel",
+   "usedBy": "def.function",
+   "note": "函数是**特殊的关系**：只多要求「每个输入的输出唯一」。"
+  },
+  {
    "id": "def-dep.rel-poset",
    "kind": "definition",
    "strength": "strong",
@@ -6692,10 +7310,10 @@
    "note": "正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。"
   },
   {
-   "id": "def-dep.rel-metric-space",
+   "id": "def-dep.function-metric-space",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.rel",
+   "definition": "def.function",
    "usedBy": "def.metric-space",
    "note": "距离 $d : X \\times X \\to [0, +\\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。"
   },
@@ -6764,10 +7382,10 @@
    "note": "这条同时定义 $\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$——后者就是**由 $\\mathcal{E}$ 生成的单调类**。"
   },
   {
-   "id": "def-dep.rel-product-sigma",
+   "id": "def-dep.function-product-sigma",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.rel",
+   "definition": "def.function",
    "usedBy": "def.product-sigma",
    "note": "投影 $\\pi_\\alpha$ 是**函数**，柱集 $\\pi_\\alpha^{-1}(E_\\alpha)$ 用的是逆像。"
   },
@@ -7132,6 +7750,14 @@
    "note": "第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。"
   },
   {
+   "id": "def-dep.poset-real",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "def.real",
+   "note": "实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。"
+  },
+  {
    "id": "def-dep.bv-nbv",
    "kind": "definition",
    "strength": "strong",
@@ -7307,16 +7933,44 @@
    "explicit": false
   },
   {
-   "a": "order.structure",
+   "a": "set.choice",
    "b": "set.construct",
-   "count": 4,
+   "count": 3,
    "label": "",
    "explicit": false
   },
   {
-   "a": "set.choice",
-   "b": "set.construct",
+   "a": "analysis.measure",
+   "b": "analysis.real",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.integral",
+   "b": "analysis.real",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.bv",
+   "b": "analysis.real",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.lp",
+   "b": "analysis.real",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "order.structure",
+   "b": "set.construct",
+   "count": 4,
    "label": "",
    "explicit": false
   },

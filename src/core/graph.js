@@ -75,6 +75,13 @@
     return Array.isArray(v) ? v.slice() : [v];
   }
 
+  /** 主干名单里写了不存在的 id → 提示（改内容时最容易忘的地方） */
+  function graph_trunkWarn(trunkIds, byId, warnings) {
+    trunkIds.forEach(function (id) {
+      if (!byId[id]) warnings.push('主干名单里的节点不存在：' + id);
+    });
+  }
+
   /** 一条边涉及的所有节点 id */
   function edgeNodes(e) {
     if (e.kind === 'equivalence' || e.kind === 'analogy') return [e.a, e.b];
@@ -144,6 +151,13 @@
     var adj = Object.create(null);
     var edgesOf = Object.create(null);
     nodes.forEach(function (n) { adj[n.id] = Object.create(null); edgesOf[n.id] = []; });
+
+    /* ---------------------------------------------------------- 主干 */
+    /* 内容里用 MG.trunk 列出一批 id（学习主线）。这里只打一个标记，
+       剩下的交给引擎：工具条的「主干」按钮会把非主干藏起来。 */
+    var trunkIds = (MG.trunk || []);
+    nodes.forEach(function (n) { n.trunk = trunkIds.indexOf(n.id) >= 0; });
+    graph_trunkWarn(trunkIds, byId, warnings);
 
     edges.forEach(function (e) {
       edgeNodes(e).forEach(function (id) {

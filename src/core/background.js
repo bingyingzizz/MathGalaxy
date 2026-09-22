@@ -114,9 +114,18 @@
 
   function paintRegion(ctx, region, list, bc) {
     var rgb = U.hexToRgb(region.color);
-    var R = Math.max(bc.cloudRadiusMin,
-      fitRadius(list, bc.cloudRadiusMin, bc.cloudMargin));
-    var cx = region.center.x, cy = region.center.y;   // 星系的云仍以星系中心为心
+    var cx = region.center.x, cy = region.center.y;   // 星系的云以星系中心为心（和星系名一致）
+
+    /* ⚠️ 半径只能按「主要属于这个星系」的点算。
+       跨星系的点（regions 里写了两个）会被布局摆到**另一个**星系那边去，
+       拿它们定半径，一朵云就会撑满整屏 —— 拓扑学只有 12 个成员，其中 4 个
+       是 analysis 那侧的（Borel、积 σ-代数…），曾把整屏糊成粉色。
+       规则与 layout.js 里算 stat.radius 时一致：跨星系的点不参与。 */
+    var core = list.filter(function (n) { return !n.isBorder; });
+    var basis = core.length >= 2 ? core : list;
+    var maxd = 0;
+    basis.forEach(function (n) { maxd = Math.max(maxd, U.dist(n.x, n.y, cx, cy)); });
+    var R = Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin);
     var rand = U.rngFrom(region.id, MG.config.seed);
 
     /* 1) 板块中心的大团雾 —— 界定「这块地方属于谁」 */
@@ -134,7 +143,7 @@
     }
 
     /* 3) 每个（看得见的）节点周围的小斑 —— 让云的形状跟着内容走 */
-    list.forEach(function (n) {
+    basis.forEach(function (n) {
       blob(ctx, rgb, n.x, n.y, R * 0.30, bc.nodeAlpha);
     });
   }

@@ -293,6 +293,25 @@
 
     vis.onChange(function () { refreshVisible(); renderLegend(); });
 
+    /* ------------------------------------------------------ 主干模式 */
+    /*
+      只看主干：内容里用 MG.trunk 列出的那条「学习主线」。
+      实现上不动用户手动的隐藏集合，而是给可见性加一个额外条件
+      （所以关掉主干模式之后，之前手动藏的点还在）。
+    */
+    var trunkOnly = false;
+
+    function setTrunkOnly(on) {
+      trunkOnly = !!on;
+      vis.setFilter(trunkOnly ? function (id) {
+        var n = graph.byId[id];
+        return !!(n && n.trunk);
+      } : null);
+      var btn = toolbar.querySelector('[data-act="toggle-trunk"]');
+      if (btn) btn.classList.toggle('on', trunkOnly);
+      if (trunkOnly) fitAll();          // 主干只有几十个点，直接铺满屏幕
+    }
+
     /* ---------------------------------------------------------- 交互 */
     MG.createInteraction(graphEl, view, {
       draw: function () { requestDraw(); },
@@ -324,6 +343,7 @@
       if (act === 'zoom-in') { cam.zoomBy(C.camera.zoomStep); requestDraw(); }
       else if (act === 'zoom-out') { cam.zoomBy(1 / C.camera.zoomStep); requestDraw(); }
       else if (act === 'fit') { fitAll(); requestDraw(); }
+      else if (act === 'toggle-trunk') { setTrunkOnly(!trunkOnly); }
       else if (act === 'toggle-defs') {
         C.showDefinitionLines = !C.showDefinitionLines;
         btn.classList.toggle('on', C.showDefinitionLines);
@@ -459,7 +479,11 @@
         '<div class="lg-row">' + edgeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
-        '<div class="lg-hint">点色块 = 显示 / 隐藏 · 点名字 = 跳过去看</div>' +
+        '<div class="lg-hint">' +
+        (trunkOnly
+          ? '主干模式：只显示 ' + shown + ' 个主干节点（再点一次工具条的「主干」退出）'
+          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看') +
+        '</div>' +
         '</div>';
     }
 
@@ -467,7 +491,7 @@
       var t = e.target;
       if (!t.closest) return;
       // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
-      if (t.closest('[data-reset]')) { vis.showAll(); return; }
+      if (t.closest('[data-reset]')) { setTrunkOnly(false); vis.showAll(); return; }
       if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
 
       // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）
@@ -552,9 +576,9 @@
         cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
       }
       renderLegend();
-      // 上次藏了一批点 → 开局就只把「还看得见的那些」铺满屏幕
+      // 上次藏了一批点（或开着主干模式）→ 开局就只把「还看得见的那些」铺满屏幕
       var live = visibleNodes();
-      var bb = (vis.hiddenCount() && live.length) ? bboxOf(live) : graph.bbox();
+      var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
