@@ -168,6 +168,294 @@ window.MG = window.MG || {};
       definition: 'def.vs',
       usedBy: 'thm.vsbasis',
       note: '「每个向量空间有基」中的「基」由线性无关与生成两个概念定义。'
+    },
+
+    /* ==========================================================================
+       补漏（2026-09-22）：上面这些是「结论 → 它用到的定义」，但覆盖不全 ——
+       有一批定理/命题/推论当时一条入边都没有，结果全都堆在最底层，
+       分层就看不出来了。下面按同样的规则补齐：陈述里出现了哪个定义，就连哪条。
+       （名字里带 $\sigma$ 有限的，连的是 def.measure-space；
+         带 a.e. / 零集的，连 def.null-set。）
+       ========================================================================== */
+
+    /* ------------------------------------------------ 集合论 / 序理论 */
+    {
+      id: 'def-link.wellorder-hartogs',
+      kind: 'definition',
+      definition: 'def.wellorder',
+      usedBy: 'thm.hartogs',
+      note: 'Hartogs 数取的是「最小的那种**序数**」，而序数就是传递的良序集。'
+    },
+
+    /* ----------------------------------------- 测度的构造：Lebesgue–Stieltjes */
+    {
+      id: 'def-link.premeasure-ls-premeasure',
+      kind: 'definition',
+      definition: 'def.premeasure',
+      usedBy: 'prop.ls-premeasure',
+      note: '命题的结论就是「$\\mu_0$ 是 $\\mathfrak{A}$ 上的一个**预测度**」。'
+    },
+    {
+      id: 'def-link.fundamental-class-ls-premeasure',
+      kind: 'definition',
+      definition: 'def.fundamental-class',
+      usedBy: 'prop.ls-premeasure',
+      note: '半开区间族 $\\{ (a, b] : a < b \\}$ 正是一个**基本类**；取它的有限不交并就得到 $\\mathfrak{A}$。'
+    },
+
+    /* ------------------------------------------------------------ 积分 */
+    {
+      id: 'def-link.integral-simple-props',
+      kind: 'definition',
+      definition: 'def.integral-simple',
+      usedBy: 'prop.simple-integral-props',
+      note: '四条性质都是关于**简单函数的积分** $\\int \\varphi \\, d\\mu$ 的。'
+    },
+    {
+      id: 'def-link.simple-function-props',
+      kind: 'definition',
+      definition: 'def.simple-function',
+      usedBy: 'prop.simple-integral-props',
+      note: '命题谈的对象就是两个简单函数 $\\varphi$、$\\psi$。'
+    },
+    {
+      id: 'def-link.lplus-fatou-cor',
+      kind: 'definition',
+      definition: 'def.lplus',
+      usedBy: 'cor.fatou',
+      note: '$\\{f_n\\} \\subseteq L^+$、$f \\in L^+$：整条推论都活在**非负可测函数**里。'
+    },
+    {
+      id: 'def-link.lplus-finite-integral',
+      kind: 'definition',
+      definition: 'def.lplus',
+      usedBy: 'prop.finite-integral-consequences',
+      note: '前提是 $f \\in L^+$ 且 $\\int f < \\infty$。'
+    },
+    {
+      id: 'def-link.null-set-finite-integral',
+      kind: 'definition',
+      definition: 'def.null-set',
+      usedBy: 'prop.finite-integral-consequences',
+      note: '结论第一条说的是「$\\{x : f(x) = \\infty\\}$ 是**零集**」。'
+    },
+    {
+      id: 'def-link.measure-space-finite-integral',
+      kind: 'definition',
+      definition: 'def.measure-space',
+      usedBy: 'prop.finite-integral-consequences',
+      note: '结论第二条用的是 **$\\sigma$ 有限**这个概念。'
+    },
+    {
+      id: 'def-link.integrable-integral-abs',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'prop.integral-abs-ineq',
+      note: '前提 $f \\in L^1(\\mu)$ 就是**可积**。'
+    },
+    {
+      id: 'def-link.integral-complex-abs',
+      kind: 'definition',
+      definition: 'def.integral-complex',
+      usedBy: 'prop.integral-abs-ineq',
+      note: '$\\int f \\, d\\mu$ 这个记号走的是**复值函数的积分**。'
+    },
+    {
+      id: 'def-link.integrable-L1-support',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'prop.L1-support-sigma-finite',
+      note: '前提就是 $f \\in L^1(\\mu)$。'
+    },
+    {
+      id: 'def-link.measure-space-L1-support',
+      kind: 'definition',
+      definition: 'def.measure-space',
+      usedBy: 'prop.L1-support-sigma-finite',
+      note: '结论说的是 $\\{x : f(x) \\ne 0\\}$ **$\\sigma$ 有限**。'
+    },
+
+    /* -------------------------------------------------- 符号测度与分解 */
+    {
+      id: 'def-link.posneg-positive-closure',
+      kind: 'definition',
+      definition: 'def.positive-negative-null',
+      usedBy: 'prop.positive-set-closure',
+      note: '「正集」就是这一条定义的三种集合之一。'
+    },
+    {
+      id: 'def-link.integrable-ac-integral',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'cor.ac-integral-continuity',
+      note: '前提 $f \\in L^1(\\mu)$；积分 $\\int_E f$ 要可积才有意义。'
+    },
+    {
+      id: 'def-link.ac-integral-continuity',
+      kind: 'definition',
+      definition: 'def.absolute-continuity',
+      usedBy: 'cor.ac-integral-continuity',
+      note: '这条就是「积分关于测度**绝对连续**」的 $\\varepsilon$–$\\delta$ 形式。'
+    },
+    {
+      id: 'def-link.rn-derivative-inverse',
+      kind: 'definition',
+      definition: 'def.rn-derivative',
+      usedBy: 'cor.rn-inverse',
+      note: '两边的 $d\\mu/d\\lambda$ 与 $d\\lambda/d\\mu$ 都是 **RN 导数**。'
+    },
+    {
+      id: 'def-link.ac-rn-inverse',
+      kind: 'definition',
+      definition: 'def.absolute-continuity',
+      usedBy: 'cor.rn-inverse',
+      note: '前提是 $\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu$——**互为绝对连续**。'
+    },
+
+    /* ---------------------------------------------------- ℝⁿ 上的微分 */
+    {
+      id: 'def-link.metric-covering',
+      kind: 'definition',
+      definition: 'def.metric-space',
+      usedBy: 'lem.covering',
+      note: '引理里挑的就是一族**开球** $B_j$——开球是距离空间里的东西。'
+    },
+    {
+      id: 'def-link.measure-covering',
+      kind: 'definition',
+      definition: 'def.measure',
+      usedBy: 'lem.covering',
+      note: '$m(U)$、$\\sum m(B_j)$ 里的 $m$ 是**测度**（Lebesgue 测度）。'
+    },
+    {
+      id: 'def-link.average-operator-continuous',
+      kind: 'definition',
+      definition: 'def.average-operator',
+      usedBy: 'lem.average-continuous',
+      note: '引理说的就是**平均算子** $A_r f(x)$ 关于 $(r, x)$ 的连续性。'
+    },
+    {
+      id: 'def-link.locally-integrable-average-continuous',
+      kind: 'definition',
+      definition: 'def.locally-integrable',
+      usedBy: 'lem.average-continuous',
+      note: '前提 $f \\in L^1_{loc}$——平均算子只对**局部可积**函数定义。'
+    },
+
+    /* ------------------------------------------- 有界变差与绝对连续 */
+    {
+      id: 'def-link.integral-nonneg-monotone-derivative',
+      kind: 'definition',
+      definition: 'def.integral-nonneg',
+      usedBy: 'prop.monotone-integral-derivative',
+      note: '$\\int_a^b F\'$ 里 $F$ 递增所以 $F\' \\ge 0$，走的是**非负函数的积分**。'
+    },
+    {
+      id: 'def-link.nbv-derivative',
+      kind: 'definition',
+      definition: 'def.nbv',
+      usedBy: 'prop.nbv-derivative',
+      note: '前提就是 $F \\in NBV$。'
+    },
+    {
+      id: 'def-link.mutually-singular-nbv-derivative',
+      kind: 'definition',
+      definition: 'def.mutually-singular',
+      usedBy: 'prop.nbv-derivative',
+      note: '结论第一条 $\\mu_F \\perp m$ 用的是**相互奇异**。'
+    },
+    {
+      id: 'def-link.ac-nbv-derivative',
+      kind: 'definition',
+      definition: 'def.absolute-continuity',
+      usedBy: 'prop.nbv-derivative',
+      note: '结论第二条 $\\mu_F \\ll m$ 用的是**绝对连续**。'
+    },
+    {
+      id: 'def-link.rn-derivative-nbv-derivative',
+      kind: 'definition',
+      definition: 'def.rn-derivative',
+      usedBy: 'prop.nbv-derivative',
+      note: '$F(x) = \\int_{-\\infty}^{x} F\'$ 等于说 $F\' $ 就是那个 **RN 导数** $d\\mu_F/dm$。'
+    },
+    {
+      id: 'def-link.ac-function-subset-bv',
+      kind: 'definition',
+      definition: 'def.ac-function',
+      usedBy: 'lem.ac-subset-bv',
+      note: '等式的左边就是**绝对连续函数**全体 $AC([a, b])$。'
+    },
+    {
+      id: 'def-link.bv-subset-bv',
+      kind: 'definition',
+      definition: 'def.bounded-variation',
+      usedBy: 'lem.ac-subset-bv',
+      note: '等式的右边是**有界变差**函数全体 $BV([a, b])$。'
+    },
+
+    /* -------------------------------------------------------- L^p 空间 */
+    {
+      id: 'def-link.conjugate-young',
+      kind: 'definition',
+      definition: 'def.conjugate-exponents',
+      usedBy: 'lem.young-inequality',
+      note: '把 $\\lambda$ 取成 $1/p$，则 $\\lambda$ 与 $1 - \\lambda$ 正是一对**共轭指数**——Young 不等式是 Hölder 的算术底座。'
+    },
+    {
+      id: 'def-link.simple-function-dense',
+      kind: 'definition',
+      definition: 'def.simple-function',
+      usedBy: 'prop.dense-simple-compact-support',
+      note: '被证明稠密的那一族就是**简单函数**（再要求紧支集）。'
+    },
+    {
+      id: 'def-link.lp-norm-dense',
+      kind: 'definition',
+      definition: 'def.lp-norm',
+      usedBy: 'prop.dense-simple-compact-support',
+      note: '「稠密」是在 $L^p$ 里说的，要用 $\\|\\cdot\\|_p$。'
+    },
+    {
+      id: 'def-link.lp-norm-lq-sum',
+      kind: 'definition',
+      definition: 'def.lp-norm',
+      usedBy: 'prop.lq-in-lp-plus-lr',
+      note: '$L^q \\subseteq L^p + L^r$ 里的三个空间都是 $L^p$ 型的。'
+    },
+    {
+      id: 'def-link.lp-norm-interpolation',
+      kind: 'definition',
+      definition: 'def.lp-norm',
+      usedBy: 'prop.lp-inter-lr-in-lq',
+      note: '插值不等式 $\\|f\\|_q \\le \\|f\\|_p^{\\lambda} \\|f\\|_r^{1-\\lambda}$ 全是 $\\|\\cdot\\|_p$ 型的量。'
+    },
+    {
+      id: 'def-link.essential-sup-interpolation',
+      kind: 'definition',
+      definition: 'def.essential-sup',
+      usedBy: 'prop.lp-inter-lr-in-lq',
+      note: '$r = \\infty$ 那一端要把 $\\|\\cdot\\|_r$ 读成**本性上界**。'
+    },
+    {
+      id: 'def-link.lp-norm-ell-p',
+      kind: 'definition',
+      definition: 'def.lp-norm',
+      usedBy: 'prop.ell-p-inclusion',
+      note: '$\\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\\|\\cdot\\|_p$。'
+    },
+    {
+      id: 'def-link.lp-norm-finite',
+      kind: 'definition',
+      definition: 'def.lp-norm',
+      usedBy: 'prop.lp-inclusion-finite',
+      note: '结论 $L^q(\\mu) \\subseteq L^p(\\mu)$ 里的两个空间都是 $L^p$ 型的。'
+    },
+    {
+      id: 'def-link.measure-space-lp-finite',
+      kind: 'definition',
+      definition: 'def.measure-space',
+      usedBy: 'prop.lp-inclusion-finite',
+      note: '前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。'
     }
   ]
 });

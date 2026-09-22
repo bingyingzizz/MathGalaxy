@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T09:11:10.838Z
-> 6 星系 / 13 星团 / 182 节点 / 220 连线（强边 216，弱边 4）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T10:11:06.131Z
+> 6 星系 / 13 星团 / 182 节点 / 332 连线（强边 328，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -5828,6 +5828,454 @@ Tukey 引理的唯一前提就是「该集合族具有有限特征」。
 
 「每个向量空间有基」中的「基」由线性无关与生成两个概念定义。
 
+#### 定义引用：「良序集」→ Hartogs 定理　`def-link.wellorder-hartogs`
+
+Hartogs 数取的是「最小的那种**序数**」，而序数就是传递的良序集。
+
+#### 定义引用：「预测度」→ F 给出的预测度　`def-link.premeasure-ls-premeasure`
+
+命题的结论就是「$\mu_0$ 是 $\mathfrak{A}$ 上的一个**预测度**」。
+
+#### 定义引用：「基本类」→ F 给出的预测度　`def-link.fundamental-class-ls-premeasure`
+
+半开区间族 $\{ (a, b] : a < b \}$ 正是一个**基本类**；取它的有限不交并就得到 $\mathfrak{A}$。
+
+#### 定义引用：「简单函数的积分」→ 简单函数积分的性质　`def-link.integral-simple-props`
+
+四条性质都是关于**简单函数的积分** $\int \varphi \, d\mu$ 的。
+
+#### 定义引用：「简单函数」→ 简单函数积分的性质　`def-link.simple-function-props`
+
+命题谈的对象就是两个简单函数 $\varphi$、$\psi$。
+
+#### 定义引用：「L⁺」→ Fatou 的推论　`def-link.lplus-fatou-cor`
+
+$\{f_n\} \subseteq L^+$、$f \in L^+$：整条推论都活在**非负可测函数**里。
+
+#### 定义引用：「L⁺」→ 积分有限的后果　`def-link.lplus-finite-integral`
+
+前提是 $f \in L^+$ 且 $\int f < \infty$。
+
+#### 定义引用：「零集与完备」→ 积分有限的后果　`def-link.null-set-finite-integral`
+
+结论第一条说的是「$\{x : f(x) = \infty\}$ 是**零集**」。
+
+#### 定义引用：「有限 / σ-有限 / 半有限」→ 积分有限的后果　`def-link.measure-space-finite-integral`
+
+结论第二条用的是 **$\sigma$ 有限**这个概念。
+
+#### 定义引用：「可积 / L¹」→ 积分绝对值不等式　`def-link.integrable-integral-abs`
+
+前提 $f \in L^1(\mu)$ 就是**可积**。
+
+#### 定义引用：「复函数的积分」→ 积分绝对值不等式　`def-link.integral-complex-abs`
+
+$\int f \, d\mu$ 这个记号走的是**复值函数的积分**。
+
+#### 定义引用：「可积 / L¹」→ L¹ 函数的支撑 σ-有限　`def-link.integrable-L1-support`
+
+前提就是 $f \in L^1(\mu)$。
+
+#### 定义引用：「有限 / σ-有限 / 半有限」→ L¹ 函数的支撑 σ-有限　`def-link.measure-space-L1-support`
+
+结论说的是 $\{x : f(x) \ne 0\}$ **$\sigma$ 有限**。
+
+#### 定义引用：「正集 / 负集 / 零集」→ 正集的封闭性　`def-link.posneg-positive-closure`
+
+「正集」就是这一条定义的三种集合之一。
+
+#### 定义引用：「可积 / L¹」→ 积分的绝对连续性　`def-link.integrable-ac-integral`
+
+前提 $f \in L^1(\mu)$；积分 $\int_E f$ 要可积才有意义。
+
+#### 定义引用：「绝对连续」→ 积分的绝对连续性　`def-link.ac-integral-continuity`
+
+这条就是「积分关于测度**绝对连续**」的 $\varepsilon$–$\delta$ 形式。
+
+#### 定义引用：「RN 导数与 Lebesgue 分解」→ 互为绝对连续时导数互逆　`def-link.rn-derivative-inverse`
+
+两边的 $d\mu/d\lambda$ 与 $d\lambda/d\mu$ 都是 **RN 导数**。
+
+#### 定义引用：「绝对连续」→ 互为绝对连续时导数互逆　`def-link.ac-rn-inverse`
+
+前提是 $\mu \ll \lambda$ 且 $\lambda \ll \mu$——**互为绝对连续**。
+
+#### 定义引用：「距离空间」→ 覆盖引理　`def-link.metric-covering`
+
+引理里挑的就是一族**开球** $B_j$——开球是距离空间里的东西。
+
+#### 定义引用：「测度」→ 覆盖引理　`def-link.measure-covering`
+
+$m(U)$、$\sum m(B_j)$ 里的 $m$ 是**测度**（Lebesgue 测度）。
+
+#### 定义引用：「平均算子 Aᵣ」→ 平均算子联合连续　`def-link.average-operator-continuous`
+
+引理说的就是**平均算子** $A_r f(x)$ 关于 $(r, x)$ 的连续性。
+
+#### 定义引用：「局部可积」→ 平均算子联合连续　`def-link.locally-integrable-average-continuous`
+
+前提 $f \in L^1_{loc}$——平均算子只对**局部可积**函数定义。
+
+#### 定义引用：「非负函数的积分」→ 递增函数的导数积分不等式　`def-link.integral-nonneg-monotone-derivative`
+
+$\int_a^b F'$ 里 $F$ 递增所以 $F' \ge 0$，走的是**非负函数的积分**。
+
+#### 定义引用：「NBV」→ NBV 函数的导数与测度的关系　`def-link.nbv-derivative`
+
+前提就是 $F \in NBV$。
+
+#### 定义引用：「相互奇异」→ NBV 函数的导数与测度的关系　`def-link.mutually-singular-nbv-derivative`
+
+结论第一条 $\mu_F \perp m$ 用的是**相互奇异**。
+
+#### 定义引用：「绝对连续」→ NBV 函数的导数与测度的关系　`def-link.ac-nbv-derivative`
+
+结论第二条 $\mu_F \ll m$ 用的是**绝对连续**。
+
+#### 定义引用：「RN 导数与 Lebesgue 分解」→ NBV 函数的导数与测度的关系　`def-link.rn-derivative-nbv-derivative`
+
+$F(x) = \int_{-\infty}^{x} F'$ 等于说 $F' $ 就是那个 **RN 导数** $d\mu_F/dm$。
+
+#### 定义引用：「绝对连续函数」→ AC ⊆ BV　`def-link.ac-function-subset-bv`
+
+等式的左边就是**绝对连续函数**全体 $AC([a, b])$。
+
+#### 定义引用：「有界变差 BV」→ AC ⊆ BV　`def-link.bv-subset-bv`
+
+等式的右边是**有界变差**函数全体 $BV([a, b])$。
+
+#### 定义引用：「共轭指数」→ Young 不等式　`def-link.conjugate-young`
+
+把 $\lambda$ 取成 $1/p$，则 $\lambda$ 与 $1 - \lambda$ 正是一对**共轭指数**——Young 不等式是 Hölder 的算术底座。
+
+#### 定义引用：「简单函数」→ 紧支简单函数稠密　`def-link.simple-function-dense`
+
+被证明稠密的那一族就是**简单函数**（再要求紧支集）。
+
+#### 定义引用：「L^p 范数」→ 紧支简单函数稠密　`def-link.lp-norm-dense`
+
+「稠密」是在 $L^p$ 里说的，要用 $\|\cdot\|_p$。
+
+#### 定义引用：「L^p 范数」→ L^q 落在 L^p + L^r 里　`def-link.lp-norm-lq-sum`
+
+$L^q \subseteq L^p + L^r$ 里的三个空间都是 $L^p$ 型的。
+
+#### 定义引用：「L^p 范数」→ L^p ∩ L^r ⊆ L^q　`def-link.lp-norm-interpolation`
+
+插值不等式 $\|f\|_q \le \|f\|_p^{\lambda} \|f\|_r^{1-\lambda}$ 全是 $\|\cdot\|_p$ 型的量。
+
+#### 定义引用：「本性上界与 L^∞」→ L^p ∩ L^r ⊆ L^q　`def-link.essential-sup-interpolation`
+
+$r = \infty$ 那一端要把 $\|\cdot\|_r$ 读成**本性上界**。
+
+#### 定义引用：「L^p 范数」→ ℓ^p ⊆ ℓ^q　`def-link.lp-norm-ell-p`
+
+$\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
+
+#### 定义引用：「L^p 范数」→ 有限测度时方向反过来　`def-link.lp-norm-finite`
+
+结论 $L^q(\mu) \subseteq L^p(\mu)$ 里的两个空间都是 $L^p$ 型的。
+
+#### 定义引用：「有限 / σ-有限 / 半有限」→ 有限测度时方向反过来　`def-link.measure-space-lp-finite`
+
+前提 $\mu(X) < \infty$ 用的是**有限测度**这个概念。
+
+#### 定义引用：「子集」→ 关系与函数　`def-dep.subset-rel`
+
+关系是 $A \times B$ 的**子集**，定义域 $\operatorname{dom} R$ 与值域 $\operatorname{ran} R$ 也都是子集。
+
+#### 定义引用：「关系与函数」→ 偏序集　`def-dep.rel-poset`
+
+偏序 $\preceq$ 是 $A$ 上的**二元关系**——先有关系，才有「自反、反对称、传递」这三条。
+
+#### 定义引用：「子集」→ 链　`def-dep.subset-chain`
+
+链是 $P$ 的**子集**，只是额外要求两两可比。
+
+#### 定义引用：「子集」→ 上界与极大元　`def-dep.subset-bound`
+
+上界与极大元都是相对于 $S \subseteq P$ 说的，条件用 $\preceq$ 写成。
+
+#### 定义引用：「子集」→ 良序集　`def-dep.subset-wellorder`
+
+「$W$ 的每个非空**子集**都有最小元」——良序性是靠子集量词说出来的。
+
+#### 定义引用：「子集」→ 向量空间的基　`def-dep.subset-vs`
+
+「$S$ 的每个**有限子集**都线性无关」——线性无关性是逐有限子集定义的。
+
+#### 定义引用：「有限特征」→ 向量空间的基　`def-dep.finchar-vs`
+
+正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。
+
+#### 定义引用：「关系与函数」→ 距离空间　`def-dep.rel-metric-space`
+
+距离 $d : X \times X \to [0, +\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。
+
+#### 定义引用：「距离空间」→ 完备　`def-dep.metric-complete`
+
+Cauchy 列与收敛都是**关于距离空间** $(X, d)$ 说的。
+
+#### 定义引用：「距离空间」→ 全有界　`def-dep.metric-totally-bounded`
+
+$\varepsilon$ 网与开球 $B(x, \varepsilon)$ 都定义在距离空间上。
+
+#### 定义引用：「距离空间」→ 列紧　`def-dep.metric-seq-compact`
+
+「子列收敛到 $X$ 中的点」里的收敛，用的就是这个 $d$。
+
+#### 定义引用：「距离空间」→ 紧　`def-dep.metric-compact`
+
+这一条陈述在距离空间 $(X, d)$ 上，开覆盖用的是由 $d$ 诱导的开集。
+
+#### 定义引用：「子集」→ 基本类　`def-dep.subset-fundamental-class`
+
+$\mathfrak{A} \subseteq \mathcal{P}(X)$：基本类首先是一族**子集**。
+
+#### 定义引用：「子集」→ 环与代数　`def-dep.subset-set-ring`
+
+同理，环与代数也是 $\mathcal{P}(X)$ 的一族**子集**。
+
+#### 定义引用：「子集」→ 单调类　`def-dep.subset-monotone-class`
+
+单调类同样是 $\mathcal{P}(X)$ 的一族**子集**。
+
+#### 定义引用：「单调类」→ 生成的 σ-代数　`def-dep.monotone-generated-sigma`
+
+这条同时定义 $\mathcal{M}(\mathcal{E})$ 与 $\mathfrak{m}(\mathcal{E})$——后者就是**由 $\mathcal{E}$ 生成的单调类**。
+
+#### 定义引用：「关系与函数」→ 积 σ-代数　`def-dep.rel-product-sigma`
+
+投影 $\pi_\alpha$ 是**函数**，柱集 $\pi_\alpha^{-1}(E_\alpha)$ 用的是逆像。
+
+#### 定义引用：「σ-代数」→ 测度　`def-dep.sigma-algebra-measure`
+
+测度是定义在**$\sigma$ 代数** $\mathcal{M}$ 上的函数 $\mu : \mathcal{M} \to [0, +\infty]$。
+
+#### 定义引用：「环与代数」→ 预测度　`def-dep.set-ring-premeasure`
+
+预测度的定义域只是一个**环**，不必是 $\sigma$ 代数。
+
+#### 定义引用：「测度」→ 预测度　`def-dep.measure-premeasure`
+
+「仍满足**测度的两条**」——预测度就是把测度的定义域从 $\sigma$ 代数放宽到环。
+
+#### 定义引用：「测度」→ 有限可加测度　`def-dep.measure-finitely-additive`
+
+把测度的**可数**可加降成**有限**可加，就是有限可加测度。
+
+#### 定义引用：「测度」→ 零集与完备　`def-dep.measure-null-set`
+
+$\mu$ 零集是「$\mu(E) = 0$ 的可测集」，$E$ 与 $\mu$ 都来自**测度空间**。
+
+#### 定义引用：「子集」→ 外测度　`def-dep.subset-outer-measure`
+
+外测度定义在**全体子集**上：$\mu^* : \mathcal{P}(X) \to [0, +\infty]$。
+
+#### 定义引用：「外测度」→ μ*-可测集　`def-dep.outer-carath`
+
+「设 $\mu^*$ 是 $X$ 上的**外测度**」——可测性完全由 $\mu^*$ 一个对象定出来。
+
+#### 定义引用：「Borel σ-代数」→ Lebesgue–Stieltjes 测度　`def-dep.borel-lebesgue-stieltjes`
+
+$\mu_F$ 是 $\mathbb{R}$ 上的 **Borel 测度**：定义域是 $\mathfrak{B}_\mathbb{R}$。
+
+#### 定义引用：「Borel σ-代数」→ 正则 Borel 测度　`def-dep.borel-regular`
+
+正则性是**关于 Borel 测度**说的：外正则就是用开集去逼近 Borel 集。
+
+#### 定义引用：「紧」→ 正则 Borel 测度　`def-dep.compact-regular`
+
+第一条要求「$\nu(K) < \infty$ 对每个**紧集** $K$ 成立」。
+
+#### 定义引用：「σ-代数」→ 可测函数　`def-dep.sigma-algebra-measurable-fn`
+
+可测空间 $(X, \mathcal{M})$ 就是「集合 $+$ $\sigma$ 代数」；可测性说的是原像落在 $\mathcal{M}$ 里。
+
+#### 定义引用：「可测函数」→ L⁺　`def-dep.measurable-fn-lplus`
+
+$L^+$ 是「取值在 $[0, +\infty]$ 里的**可测**函数」全体。
+
+#### 定义引用：「测度」→ L⁺　`def-dep.measure-lplus`
+
+$L^+$ 要**先固定一个测度空间** $(X, \mathcal{M}, \mu)$ 才谈得上。
+
+#### 定义引用：「测度」→ 简单函数的积分　`def-dep.measure-integral-simple`
+
+加权和 $\sum_j a_j \, \mu(E_j)$ 里的 $\mu$ 是**测度**。
+
+#### 定义引用：「L⁺」→ 非负函数的积分　`def-dep.lplus-integral-nonneg`
+
+定义写成 $\int f := \sup \{ \int \varphi : 0 \le \varphi \le f \}$，其中 $f \in L^+$。
+
+#### 定义引用：「非负函数的积分」→ 复函数的积分　`def-dep.nonneg-integral-complex`
+
+正负部的积分 $\int f^+$ 与 $\int f^-$ 用的都是**非负函数的积分**。
+
+#### 定义引用：「非负函数的积分」→ 可积 / L¹　`def-dep.nonneg-integral-integrable`
+
+可积的判据 $\int |f| < \infty$ 是一个非负函数的积分。
+
+#### 定义引用：「复函数的积分」→ 可积 / L¹　`def-dep.integral-complex-integrable`
+
+实值情形要先拆成正负部（复函数的积分），再要求这两个积分都有限。
+
+#### 定义引用：「可测函数」→ 五种收敛　`def-dep.measurable-fn-convergence`
+
+五种收敛里的 $f_n$ 与 $f$ 都要求**可测**。
+
+#### 定义引用：「测度」→ 五种收敛　`def-dep.measure-convergence`
+
+a.e. 收敛与依测度收敛里的零集、$\mu(\{\cdots\}) $ 都用**测度**。
+
+#### 定义引用：「可积 / L¹」→ 五种收敛　`def-dep.integrable-convergence`
+
+$L^1$ 收敛是 $\int |f_n - f| \to 0$，用到**可积**这个概念。
+
+#### 定义引用：「可测函数」→ 依测度 Cauchy　`def-dep.measurable-fn-cauchy-in-measure`
+
+依测度 Cauchy 是**可测函数列**的性质。
+
+#### 定义引用：「测度」→ 依测度 Cauchy　`def-dep.measure-cauchy-in-measure`
+
+定义里的 $\mu(\{\cdots\})$ 是测度。
+
+#### 定义引用：「测度」→ 乘积测度　`def-dep.measure-product-measure`
+
+$\mu \times \nu$ 是由两个**测度** $\mu$、$\nu$ 造出来的。
+
+#### 定义引用：「外测度」→ 乘积测度　`def-dep.outer-product-measure`
+
+扩张这一步：$\pi$ **诱导出 $X \times Y$ 上的外测度**，再限制到积 $\sigma$ 代数上。
+
+#### 定义引用：「子集」→ 截口　`def-dep.subset-section`
+
+截口 $E_x = \{ y : (x, y) \in E \}$ 是**子集**（$E \subseteq X \times Y$）。
+
+#### 定义引用：「σ-代数」→ 符号测度　`def-dep.sigma-algebra-signed-measure`
+
+符号测度定义在**可测空间** $(X, \mathcal{M})$ 上。
+
+#### 定义引用：「测度」→ 符号测度　`def-dep.measure-signed-measure`
+
+例 1 直接把符号测度写成两个**测度**之差 $\nu = \mu_1 - \mu_2$。
+
+#### 定义引用：「零集与完备」→ 相互奇异　`def-dep.null-set-mutually-singular`
+
+相互奇异要求「$E$ 是 $\mu$ **零集**、$F$ 是 $\nu$ 零集」。
+
+#### 定义引用：「测度」→ 相互奇异　`def-dep.measure-mutually-singular`
+
+$\mu$ 与 $\nu$ 本身是（符号）**测度**。
+
+#### 定义引用：「零集与完备」→ 绝对连续　`def-dep.null-set-absolute-continuity`
+
+$\nu \ll \mu$ 的定义是「每个 $\mu$ **零集**都是 $\nu$ 零集」。
+
+#### 定义引用：「符号测度」→ 绝对连续　`def-dep.signed-measure-absolute-continuity`
+
+这里的 $\nu$ 是一个**符号测度**。
+
+#### 定义引用：「绝对连续」→ RN 导数与 Lebesgue 分解　`def-dep.ac-rn-derivative`
+
+RN 导数 $d\nu/d\mu$ 就是在 $\nu \ll \mu$ 的前提下取到的那个 $f$。
+
+#### 定义引用：「相互奇异」→ RN 导数与 Lebesgue 分解　`def-dep.mutually-singular-rn-derivative`
+
+Lebesgue 分解 $\nu = \lambda + \rho$ 里的奇异部分要求 $\lambda \perp \mu$。
+
+#### 定义引用：「测度」→ RN 导数与 Lebesgue 分解　`def-dep.measure-rn-derivative`
+
+定理要求 $\nu \ll \mu$ 且两者都 $\sigma$ 有限——$\sigma$ 有限性是关于**测度**的。
+
+#### 定义引用：「σ-代数」→ 复测度　`def-dep.sigma-algebra-complex-measure`
+
+复测度同样定义在**可测空间** $(X, \mathcal{M})$ 上。
+
+#### 定义引用：「测度」→ 复测度　`def-dep.measure-complex-measure`
+
+复测度是照着**测度**改写取值的：$\nu : \mathcal{M} \to \mathbb{C}$。
+
+#### 定义引用：「符号测度」→ 复测度　`def-dep.signed-complex-measure`
+
+注里逐条与**符号测度**对照：复测度自动有限、级数自动绝对收敛。
+
+#### 定义引用：「可测函数」→ 局部可积　`def-dep.measurable-fn-locally-integrable`
+
+局部可积的对象是**可测函数** $f : \mathbb{R}^n \to \mathbb{C}$。
+
+#### 定义引用：「可积 / L¹」→ 局部可积　`def-dep.integrable-locally-integrable`
+
+判据 $\int_K |f| < \infty$ 与 $L^1$ 的可积判据同源，只是把整个空间换成有界可测集 $K$。
+
+#### 定义引用：「测度」→ 平均算子 Aᵣ　`def-dep.measure-average-operator`
+
+平均值里的 $m(B(r, x))$ 是 **Lebesgue 测度**。
+
+#### 定义引用：「局部可积」→ Lebesgue 集　`def-dep.locally-integrable-lebesgue-set`
+
+「设 $f \in L^1_{loc}$」——Lebesgue 集只对**局部可积**函数谈。
+
+#### 定义引用：「平均算子 Aᵣ」→ Lebesgue 集　`def-dep.average-operator-lebesgue-set`
+
+定义里的那个平均 $\frac{1}{m(B)}\int_B |f(y) - f(x)| dy$ 就是**平均算子**的样子。
+
+#### 定义引用：「Borel σ-代数」→ 可缩族　`def-dep.borel-shrinks-nicely`
+
+要求 $\{ E_r \}$ 是一族 **Borel 子集**，这样 $m(E_r)$ 才有意义。
+
+#### 定义引用：「子集」→ 可缩族　`def-dep.subset-shrinks-nicely`
+
+第一条是 $E_r \subseteq B(r, x)$——一个**子集**关系。
+
+#### 定义引用：「有界变差 BV」→ NBV　`def-dep.bv-nbv`
+
+$NBV := \{ F \in BV : F$ 右连续且 $F(-\infty) = 0 \}$，整个定义建立在**有界变差**之上。
+
+#### 定义引用：「Borel σ-代数」→ NBV　`def-dep.borel-nbv`
+
+加这两个条件的目的，是与 $\mathbb{R}$ 上的**复 Borel 测度**一一对应。
+
+#### 定义引用：「可测函数」→ L^p 范数　`def-dep.measurable-fn-lp-norm`
+
+$L^p$ 的元素要求 $f$ **可测**且 $\|f\|_p < \infty$。
+
+#### 定义引用：「测度」→ L^p 范数　`def-dep.measure-lp-norm`
+
+$\|f\|_p$ 里的积分是对**测度** $\mu$ 取的。
+
+#### 定义引用：「非负函数的积分」→ L^p 范数　`def-dep.nonneg-integral-lp-norm`
+
+$\|f\|_p = \left[ \int |f|^p \, d\mu \right]^{1/p}$ 用的是**非负函数的积分**。
+
+#### 定义引用：「测度」→ 本性上界与 L^∞　`def-dep.measure-essential-sup`
+
+定义里出现 $\mu(\{ |f| > a \}) = 0$，用的是**测度**。
+
+#### 定义引用：「零集与完备」→ 本性上界与 L^∞　`def-dep.null-set-essential-sup`
+
+「把 $f$ 在**零集**上的取值统统不算」——这正是本性上界的意思。
+
+#### 定义引用：「可测函数」→ 本性上界与 L^∞　`def-dep.measurable-fn-essential-sup`
+
+$L^\infty$ 的元素是**可测**且本性上界有限的函数。
+
+#### 定义引用：「L^p 范数」→ 对偶配对 φ_g　`def-dep.lp-norm-duality-map`
+
+$\varphi_g$ 定义在 $L^p$ 上，有界性要靠范数 $\|f\|_p$ 来说。
+
+#### 定义引用：「共轭指数」→ 对偶配对 φ_g　`def-dep.conjugate-duality-map`
+
+「设 $p, q$ **共轭**，$g \in L^q$」——共轭指数是这条定义的前提。
+
+#### 定义引用：「复函数的积分」→ 对偶配对 φ_g　`def-dep.integral-complex-duality-map`
+
+$\varphi_g(f) = \int f g \, d\mu$ 本身是一个**积分**。
+
+#### 定义引用：「本性上界与 L^∞」→ 对偶配对 φ_g　`def-dep.essential-sup-duality-map`
+
+$g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -5900,10 +6348,21 @@ Tukey 引理的唯一前提就是「该集合族具有有限特征」。
 
 - **集合的构造 ↔ ZFC 公理系统**　7 条节点级连线
 - **极大原理 ↔ 关系与选择**　3 条节点级连线
-- **积分 ↔ 测度的构造**　16 条节点级连线
-- **积分 ↔ 符号测度与分解**　4 条节点级连线
-- **测度的构造 ↔ 符号测度与分解**　2 条节点级连线
-- **ℝⁿ 上的微分 ↔ 积分**　2 条节点级连线
+- **积分 ↔ 测度的构造**　26 条节点级连线
+- **积分 ↔ 符号测度与分解**　5 条节点级连线
+- **测度的构造 ↔ 符号测度与分解**　10 条节点级连线
+- **ℝⁿ 上的微分 ↔ 积分**　4 条节点级连线
 - **ℝⁿ 上的微分 ↔ 符号测度与分解**　2 条节点级连线
-- **有界变差与绝对连续 ↔ 符号测度与分解**　2 条节点级连线
+- **有界变差与绝对连续 ↔ 符号测度与分解**　5 条节点级连线
+- **有界变差与绝对连续 ↔ 测度的构造**　2 条节点级连线
+- **有界变差与绝对连续 ↔ 积分**　2 条节点级连线
+- **积分 ↔ L^p 空间**　6 条节点级连线
+- **序结构 ↔ 集合的构造**　4 条节点级连线
+- **关系与选择 ↔ 集合的构造**　2 条节点级连线
 - **极大原理 ↔ 序结构**　7 条节点级连线
+- **序结构 ↔ 关系与选择**　2 条节点级连线
+- **ℝⁿ 上的微分 ↔ 度量空间**　2 条节点级连线
+- **ℝⁿ 上的微分 ↔ 测度的构造**　4 条节点级连线
+- **L^p 空间 ↔ 测度的构造**　4 条节点级连线
+- **向量空间的基 ↔ 序结构**　2 条节点级连线
+- **测度的构造 ↔ 集合的构造**　4 条节点级连线

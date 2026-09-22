@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T09:11:10.838Z",
+  "generated": "2026-09-22T10:11:06.131Z",
   "counts": {
    "regions": 6,
    "clusters": 13,
    "nodes": 182,
-   "edges": 220,
-   "strong": 216,
+   "edges": 332,
+   "strong": 328,
    "weak": 4
   },
   "readingGuide": {
@@ -6296,6 +6296,310 @@
    "note": "「每个向量空间有基」中的「基」由线性无关与生成两个概念定义。"
   },
   {
+   "id": "def-link.wellorder-hartogs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.wellorder",
+   "usedBy": "thm.hartogs",
+   "note": "Hartogs 数取的是「最小的那种**序数**」，而序数就是传递的良序集。"
+  },
+  {
+   "id": "def-link.premeasure-ls-premeasure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.premeasure",
+   "usedBy": "prop.ls-premeasure",
+   "note": "命题的结论就是「$\\mu_0$ 是 $\\mathfrak{A}$ 上的一个**预测度**」。"
+  },
+  {
+   "id": "def-link.fundamental-class-ls-premeasure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.fundamental-class",
+   "usedBy": "prop.ls-premeasure",
+   "note": "半开区间族 $\\{ (a, b] : a < b \\}$ 正是一个**基本类**；取它的有限不交并就得到 $\\mathfrak{A}$。"
+  },
+  {
+   "id": "def-link.integral-simple-props",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-simple",
+   "usedBy": "prop.simple-integral-props",
+   "note": "四条性质都是关于**简单函数的积分** $\\int \\varphi \\, d\\mu$ 的。"
+  },
+  {
+   "id": "def-link.simple-function-props",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.simple-function",
+   "usedBy": "prop.simple-integral-props",
+   "note": "命题谈的对象就是两个简单函数 $\\varphi$、$\\psi$。"
+  },
+  {
+   "id": "def-link.lplus-fatou-cor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lplus",
+   "usedBy": "cor.fatou",
+   "note": "$\\{f_n\\} \\subseteq L^+$、$f \\in L^+$：整条推论都活在**非负可测函数**里。"
+  },
+  {
+   "id": "def-link.lplus-finite-integral",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lplus",
+   "usedBy": "prop.finite-integral-consequences",
+   "note": "前提是 $f \\in L^+$ 且 $\\int f < \\infty$。"
+  },
+  {
+   "id": "def-link.null-set-finite-integral",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.null-set",
+   "usedBy": "prop.finite-integral-consequences",
+   "note": "结论第一条说的是「$\\{x : f(x) = \\infty\\}$ 是**零集**」。"
+  },
+  {
+   "id": "def-link.measure-space-finite-integral",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure-space",
+   "usedBy": "prop.finite-integral-consequences",
+   "note": "结论第二条用的是 **$\\sigma$ 有限**这个概念。"
+  },
+  {
+   "id": "def-link.integrable-integral-abs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "prop.integral-abs-ineq",
+   "note": "前提 $f \\in L^1(\\mu)$ 就是**可积**。"
+  },
+  {
+   "id": "def-link.integral-complex-abs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-complex",
+   "usedBy": "prop.integral-abs-ineq",
+   "note": "$\\int f \\, d\\mu$ 这个记号走的是**复值函数的积分**。"
+  },
+  {
+   "id": "def-link.integrable-L1-support",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "prop.L1-support-sigma-finite",
+   "note": "前提就是 $f \\in L^1(\\mu)$。"
+  },
+  {
+   "id": "def-link.measure-space-L1-support",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure-space",
+   "usedBy": "prop.L1-support-sigma-finite",
+   "note": "结论说的是 $\\{x : f(x) \\ne 0\\}$ **$\\sigma$ 有限**。"
+  },
+  {
+   "id": "def-link.posneg-positive-closure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.positive-negative-null",
+   "usedBy": "prop.positive-set-closure",
+   "note": "「正集」就是这一条定义的三种集合之一。"
+  },
+  {
+   "id": "def-link.integrable-ac-integral",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "cor.ac-integral-continuity",
+   "note": "前提 $f \\in L^1(\\mu)$；积分 $\\int_E f$ 要可积才有意义。"
+  },
+  {
+   "id": "def-link.ac-integral-continuity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.absolute-continuity",
+   "usedBy": "cor.ac-integral-continuity",
+   "note": "这条就是「积分关于测度**绝对连续**」的 $\\varepsilon$–$\\delta$ 形式。"
+  },
+  {
+   "id": "def-link.rn-derivative-inverse",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rn-derivative",
+   "usedBy": "cor.rn-inverse",
+   "note": "两边的 $d\\mu/d\\lambda$ 与 $d\\lambda/d\\mu$ 都是 **RN 导数**。"
+  },
+  {
+   "id": "def-link.ac-rn-inverse",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.absolute-continuity",
+   "usedBy": "cor.rn-inverse",
+   "note": "前提是 $\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu$——**互为绝对连续**。"
+  },
+  {
+   "id": "def-link.metric-covering",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "lem.covering",
+   "note": "引理里挑的就是一族**开球** $B_j$——开球是距离空间里的东西。"
+  },
+  {
+   "id": "def-link.measure-covering",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "lem.covering",
+   "note": "$m(U)$、$\\sum m(B_j)$ 里的 $m$ 是**测度**（Lebesgue 测度）。"
+  },
+  {
+   "id": "def-link.average-operator-continuous",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.average-operator",
+   "usedBy": "lem.average-continuous",
+   "note": "引理说的就是**平均算子** $A_r f(x)$ 关于 $(r, x)$ 的连续性。"
+  },
+  {
+   "id": "def-link.locally-integrable-average-continuous",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.locally-integrable",
+   "usedBy": "lem.average-continuous",
+   "note": "前提 $f \\in L^1_{loc}$——平均算子只对**局部可积**函数定义。"
+  },
+  {
+   "id": "def-link.integral-nonneg-monotone-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-nonneg",
+   "usedBy": "prop.monotone-integral-derivative",
+   "note": "$\\int_a^b F'$ 里 $F$ 递增所以 $F' \\ge 0$，走的是**非负函数的积分**。"
+  },
+  {
+   "id": "def-link.nbv-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.nbv",
+   "usedBy": "prop.nbv-derivative",
+   "note": "前提就是 $F \\in NBV$。"
+  },
+  {
+   "id": "def-link.mutually-singular-nbv-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.mutually-singular",
+   "usedBy": "prop.nbv-derivative",
+   "note": "结论第一条 $\\mu_F \\perp m$ 用的是**相互奇异**。"
+  },
+  {
+   "id": "def-link.ac-nbv-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.absolute-continuity",
+   "usedBy": "prop.nbv-derivative",
+   "note": "结论第二条 $\\mu_F \\ll m$ 用的是**绝对连续**。"
+  },
+  {
+   "id": "def-link.rn-derivative-nbv-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rn-derivative",
+   "usedBy": "prop.nbv-derivative",
+   "note": "$F(x) = \\int_{-\\infty}^{x} F'$ 等于说 $F' $ 就是那个 **RN 导数** $d\\mu_F/dm$。"
+  },
+  {
+   "id": "def-link.ac-function-subset-bv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ac-function",
+   "usedBy": "lem.ac-subset-bv",
+   "note": "等式的左边就是**绝对连续函数**全体 $AC([a, b])$。"
+  },
+  {
+   "id": "def-link.bv-subset-bv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.bounded-variation",
+   "usedBy": "lem.ac-subset-bv",
+   "note": "等式的右边是**有界变差**函数全体 $BV([a, b])$。"
+  },
+  {
+   "id": "def-link.conjugate-young",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.conjugate-exponents",
+   "usedBy": "lem.young-inequality",
+   "note": "把 $\\lambda$ 取成 $1/p$，则 $\\lambda$ 与 $1 - \\lambda$ 正是一对**共轭指数**——Young 不等式是 Hölder 的算术底座。"
+  },
+  {
+   "id": "def-link.simple-function-dense",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.simple-function",
+   "usedBy": "prop.dense-simple-compact-support",
+   "note": "被证明稠密的那一族就是**简单函数**（再要求紧支集）。"
+  },
+  {
+   "id": "def-link.lp-norm-dense",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lp-norm",
+   "usedBy": "prop.dense-simple-compact-support",
+   "note": "「稠密」是在 $L^p$ 里说的，要用 $\\|\\cdot\\|_p$。"
+  },
+  {
+   "id": "def-link.lp-norm-lq-sum",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lp-norm",
+   "usedBy": "prop.lq-in-lp-plus-lr",
+   "note": "$L^q \\subseteq L^p + L^r$ 里的三个空间都是 $L^p$ 型的。"
+  },
+  {
+   "id": "def-link.lp-norm-interpolation",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lp-norm",
+   "usedBy": "prop.lp-inter-lr-in-lq",
+   "note": "插值不等式 $\\|f\\|_q \\le \\|f\\|_p^{\\lambda} \\|f\\|_r^{1-\\lambda}$ 全是 $\\|\\cdot\\|_p$ 型的量。"
+  },
+  {
+   "id": "def-link.essential-sup-interpolation",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.essential-sup",
+   "usedBy": "prop.lp-inter-lr-in-lq",
+   "note": "$r = \\infty$ 那一端要把 $\\|\\cdot\\|_r$ 读成**本性上界**。"
+  },
+  {
+   "id": "def-link.lp-norm-ell-p",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lp-norm",
+   "usedBy": "prop.ell-p-inclusion",
+   "note": "$\\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\\|\\cdot\\|_p$。"
+  },
+  {
+   "id": "def-link.lp-norm-finite",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lp-norm",
+   "usedBy": "prop.lp-inclusion-finite",
+   "note": "结论 $L^q(\\mu) \\subseteq L^p(\\mu)$ 里的两个空间都是 $L^p$ 型的。"
+  },
+  {
+   "id": "def-link.measure-space-lp-finite",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure-space",
+   "usedBy": "prop.lp-inclusion-finite",
+   "note": "前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。"
+  },
+  {
    "id": "ana.sep-container",
    "kind": "analogy",
    "strength": "weak",
@@ -6330,6 +6634,598 @@
    "b": "def.vs",
    "title": "「有限特征」这个抽象概念，在向量空间里有一个现成的实例",
    "note": "严格说这不只是类比 —— 它是一个**实例**，但方向不是逻辑蕴含：\n`def.finchar` 不推出 `def.vs`，`def.vs` 也不推出 `def.finchar`；\n它们是「抽象工具」和「具体落地」的关系。\n\n线性无关性恰好是有限特征的：\n「$S$ 线性无关 $\\iff S$ 的每个**有限**子集线性无关」——\n这就是 `def.finchar` 的定义，一字不差。\n\n**所以「每个向量空间有基」的证明里，那个「链的并仍线性无关」的关键一步，\n本质上是在验证有限特征在链条下保持。** Tukey 引理正是为此而生的。\n\n💡 这条边是「跨星团」的：序理论 $\\leftrightarrow$ 抽象代数。\n它不提供新的定理，但它告诉你**两块内容为什么长得像**。"
+  },
+  {
+   "id": "def-dep.subset-rel",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.rel",
+   "note": "关系是 $A \\times B$ 的**子集**，定义域 $\\operatorname{dom} R$ 与值域 $\\operatorname{ran} R$ 也都是子集。"
+  },
+  {
+   "id": "def-dep.rel-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rel",
+   "usedBy": "def.poset",
+   "note": "偏序 $\\preceq$ 是 $A$ 上的**二元关系**——先有关系，才有「自反、反对称、传递」这三条。"
+  },
+  {
+   "id": "def-dep.subset-chain",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.chain",
+   "note": "链是 $P$ 的**子集**，只是额外要求两两可比。"
+  },
+  {
+   "id": "def-dep.subset-bound",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.bound",
+   "note": "上界与极大元都是相对于 $S \\subseteq P$ 说的，条件用 $\\preceq$ 写成。"
+  },
+  {
+   "id": "def-dep.subset-wellorder",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.wellorder",
+   "note": "「$W$ 的每个非空**子集**都有最小元」——良序性是靠子集量词说出来的。"
+  },
+  {
+   "id": "def-dep.subset-vs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.vs",
+   "note": "「$S$ 的每个**有限子集**都线性无关」——线性无关性是逐有限子集定义的。"
+  },
+  {
+   "id": "def-dep.finchar-vs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.finchar",
+   "usedBy": "def.vs",
+   "note": "正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。"
+  },
+  {
+   "id": "def-dep.rel-metric-space",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rel",
+   "usedBy": "def.metric-space",
+   "note": "距离 $d : X \\times X \\to [0, +\\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。"
+  },
+  {
+   "id": "def-dep.metric-complete",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "def.complete",
+   "note": "Cauchy 列与收敛都是**关于距离空间** $(X, d)$ 说的。"
+  },
+  {
+   "id": "def-dep.metric-totally-bounded",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "def.totally-bounded",
+   "note": "$\\varepsilon$ 网与开球 $B(x, \\varepsilon)$ 都定义在距离空间上。"
+  },
+  {
+   "id": "def-dep.metric-seq-compact",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "def.sequentially-compact",
+   "note": "「子列收敛到 $X$ 中的点」里的收敛，用的就是这个 $d$。"
+  },
+  {
+   "id": "def-dep.metric-compact",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "def.compact",
+   "note": "这一条陈述在距离空间 $(X, d)$ 上，开覆盖用的是由 $d$ 诱导的开集。"
+  },
+  {
+   "id": "def-dep.subset-fundamental-class",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.fundamental-class",
+   "note": "$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$：基本类首先是一族**子集**。"
+  },
+  {
+   "id": "def-dep.subset-set-ring",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.set-ring",
+   "note": "同理，环与代数也是 $\\mathcal{P}(X)$ 的一族**子集**。"
+  },
+  {
+   "id": "def-dep.subset-monotone-class",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.monotone-class",
+   "note": "单调类同样是 $\\mathcal{P}(X)$ 的一族**子集**。"
+  },
+  {
+   "id": "def-dep.monotone-generated-sigma",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.monotone-class",
+   "usedBy": "def.generated-sigma",
+   "note": "这条同时定义 $\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$——后者就是**由 $\\mathcal{E}$ 生成的单调类**。"
+  },
+  {
+   "id": "def-dep.rel-product-sigma",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rel",
+   "usedBy": "def.product-sigma",
+   "note": "投影 $\\pi_\\alpha$ 是**函数**，柱集 $\\pi_\\alpha^{-1}(E_\\alpha)$ 用的是逆像。"
+  },
+  {
+   "id": "def-dep.sigma-algebra-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sigma-algebra",
+   "usedBy": "def.measure",
+   "note": "测度是定义在**$\\sigma$ 代数** $\\mathcal{M}$ 上的函数 $\\mu : \\mathcal{M} \\to [0, +\\infty]$。"
+  },
+  {
+   "id": "def-dep.set-ring-premeasure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.set-ring",
+   "usedBy": "def.premeasure",
+   "note": "预测度的定义域只是一个**环**，不必是 $\\sigma$ 代数。"
+  },
+  {
+   "id": "def-dep.measure-premeasure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.premeasure",
+   "note": "「仍满足**测度的两条**」——预测度就是把测度的定义域从 $\\sigma$ 代数放宽到环。"
+  },
+  {
+   "id": "def-dep.measure-finitely-additive",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.finitely-additive",
+   "note": "把测度的**可数**可加降成**有限**可加，就是有限可加测度。"
+  },
+  {
+   "id": "def-dep.measure-null-set",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.null-set",
+   "note": "$\\mu$ 零集是「$\\mu(E) = 0$ 的可测集」，$E$ 与 $\\mu$ 都来自**测度空间**。"
+  },
+  {
+   "id": "def-dep.subset-outer-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.outer-measure",
+   "note": "外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$。"
+  },
+  {
+   "id": "def-dep.outer-carath",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.outer-measure",
+   "usedBy": "def.caratheodory-measurable",
+   "note": "「设 $\\mu^*$ 是 $X$ 上的**外测度**」——可测性完全由 $\\mu^*$ 一个对象定出来。"
+  },
+  {
+   "id": "def-dep.borel-lebesgue-stieltjes",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.borel",
+   "usedBy": "def.lebesgue-stieltjes",
+   "note": "$\\mu_F$ 是 $\\mathbb{R}$ 上的 **Borel 测度**：定义域是 $\\mathfrak{B}_\\mathbb{R}$。"
+  },
+  {
+   "id": "def-dep.borel-regular",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.borel",
+   "usedBy": "def.regular-measure",
+   "note": "正则性是**关于 Borel 测度**说的：外正则就是用开集去逼近 Borel 集。"
+  },
+  {
+   "id": "def-dep.compact-regular",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.compact",
+   "usedBy": "def.regular-measure",
+   "note": "第一条要求「$\\nu(K) < \\infty$ 对每个**紧集** $K$ 成立」。"
+  },
+  {
+   "id": "def-dep.sigma-algebra-measurable-fn",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sigma-algebra",
+   "usedBy": "def.measurable-function",
+   "note": "可测空间 $(X, \\mathcal{M})$ 就是「集合 $+$ $\\sigma$ 代数」；可测性说的是原像落在 $\\mathcal{M}$ 里。"
+  },
+  {
+   "id": "def-dep.measurable-fn-lplus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "def.lplus",
+   "note": "$L^+$ 是「取值在 $[0, +\\infty]$ 里的**可测**函数」全体。"
+  },
+  {
+   "id": "def-dep.measure-lplus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.lplus",
+   "note": "$L^+$ 要**先固定一个测度空间** $(X, \\mathcal{M}, \\mu)$ 才谈得上。"
+  },
+  {
+   "id": "def-dep.measure-integral-simple",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.integral-simple",
+   "note": "加权和 $\\sum_j a_j \\, \\mu(E_j)$ 里的 $\\mu$ 是**测度**。"
+  },
+  {
+   "id": "def-dep.lplus-integral-nonneg",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lplus",
+   "usedBy": "def.integral-nonneg",
+   "note": "定义写成 $\\int f := \\sup \\{ \\int \\varphi : 0 \\le \\varphi \\le f \\}$，其中 $f \\in L^+$。"
+  },
+  {
+   "id": "def-dep.nonneg-integral-complex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-nonneg",
+   "usedBy": "def.integral-complex",
+   "note": "正负部的积分 $\\int f^+$ 与 $\\int f^-$ 用的都是**非负函数的积分**。"
+  },
+  {
+   "id": "def-dep.nonneg-integral-integrable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-nonneg",
+   "usedBy": "def.integrable",
+   "note": "可积的判据 $\\int |f| < \\infty$ 是一个非负函数的积分。"
+  },
+  {
+   "id": "def-dep.integral-complex-integrable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-complex",
+   "usedBy": "def.integrable",
+   "note": "实值情形要先拆成正负部（复函数的积分），再要求这两个积分都有限。"
+  },
+  {
+   "id": "def-dep.measurable-fn-convergence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "def.convergence-modes",
+   "note": "五种收敛里的 $f_n$ 与 $f$ 都要求**可测**。"
+  },
+  {
+   "id": "def-dep.measure-convergence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.convergence-modes",
+   "note": "a.e. 收敛与依测度收敛里的零集、$\\mu(\\{\\cdots\\}) $ 都用**测度**。"
+  },
+  {
+   "id": "def-dep.integrable-convergence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "def.convergence-modes",
+   "note": "$L^1$ 收敛是 $\\int |f_n - f| \\to 0$，用到**可积**这个概念。"
+  },
+  {
+   "id": "def-dep.measurable-fn-cauchy-in-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "def.cauchy-in-measure",
+   "note": "依测度 Cauchy 是**可测函数列**的性质。"
+  },
+  {
+   "id": "def-dep.measure-cauchy-in-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.cauchy-in-measure",
+   "note": "定义里的 $\\mu(\\{\\cdots\\})$ 是测度。"
+  },
+  {
+   "id": "def-dep.measure-product-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.product-measure",
+   "note": "$\\mu \\times \\nu$ 是由两个**测度** $\\mu$、$\\nu$ 造出来的。"
+  },
+  {
+   "id": "def-dep.outer-product-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.outer-measure",
+   "usedBy": "def.product-measure",
+   "note": "扩张这一步：$\\pi$ **诱导出 $X \\times Y$ 上的外测度**，再限制到积 $\\sigma$ 代数上。"
+  },
+  {
+   "id": "def-dep.subset-section",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.section",
+   "note": "截口 $E_x = \\{ y : (x, y) \\in E \\}$ 是**子集**（$E \\subseteq X \\times Y$）。"
+  },
+  {
+   "id": "def-dep.sigma-algebra-signed-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sigma-algebra",
+   "usedBy": "def.signed-measure",
+   "note": "符号测度定义在**可测空间** $(X, \\mathcal{M})$ 上。"
+  },
+  {
+   "id": "def-dep.measure-signed-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.signed-measure",
+   "note": "例 1 直接把符号测度写成两个**测度**之差 $\\nu = \\mu_1 - \\mu_2$。"
+  },
+  {
+   "id": "def-dep.null-set-mutually-singular",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.null-set",
+   "usedBy": "def.mutually-singular",
+   "note": "相互奇异要求「$E$ 是 $\\mu$ **零集**、$F$ 是 $\\nu$ 零集」。"
+  },
+  {
+   "id": "def-dep.measure-mutually-singular",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.mutually-singular",
+   "note": "$\\mu$ 与 $\\nu$ 本身是（符号）**测度**。"
+  },
+  {
+   "id": "def-dep.null-set-absolute-continuity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.null-set",
+   "usedBy": "def.absolute-continuity",
+   "note": "$\\nu \\ll \\mu$ 的定义是「每个 $\\mu$ **零集**都是 $\\nu$ 零集」。"
+  },
+  {
+   "id": "def-dep.signed-measure-absolute-continuity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.signed-measure",
+   "usedBy": "def.absolute-continuity",
+   "note": "这里的 $\\nu$ 是一个**符号测度**。"
+  },
+  {
+   "id": "def-dep.ac-rn-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.absolute-continuity",
+   "usedBy": "def.rn-derivative",
+   "note": "RN 导数 $d\\nu/d\\mu$ 就是在 $\\nu \\ll \\mu$ 的前提下取到的那个 $f$。"
+  },
+  {
+   "id": "def-dep.mutually-singular-rn-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.mutually-singular",
+   "usedBy": "def.rn-derivative",
+   "note": "Lebesgue 分解 $\\nu = \\lambda + \\rho$ 里的奇异部分要求 $\\lambda \\perp \\mu$。"
+  },
+  {
+   "id": "def-dep.measure-rn-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.rn-derivative",
+   "note": "定理要求 $\\nu \\ll \\mu$ 且两者都 $\\sigma$ 有限——$\\sigma$ 有限性是关于**测度**的。"
+  },
+  {
+   "id": "def-dep.sigma-algebra-complex-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sigma-algebra",
+   "usedBy": "def.complex-measure",
+   "note": "复测度同样定义在**可测空间** $(X, \\mathcal{M})$ 上。"
+  },
+  {
+   "id": "def-dep.measure-complex-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.complex-measure",
+   "note": "复测度是照着**测度**改写取值的：$\\nu : \\mathcal{M} \\to \\mathbb{C}$。"
+  },
+  {
+   "id": "def-dep.signed-complex-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.signed-measure",
+   "usedBy": "def.complex-measure",
+   "note": "注里逐条与**符号测度**对照：复测度自动有限、级数自动绝对收敛。"
+  },
+  {
+   "id": "def-dep.measurable-fn-locally-integrable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "def.locally-integrable",
+   "note": "局部可积的对象是**可测函数** $f : \\mathbb{R}^n \\to \\mathbb{C}$。"
+  },
+  {
+   "id": "def-dep.integrable-locally-integrable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "def.locally-integrable",
+   "note": "判据 $\\int_K |f| < \\infty$ 与 $L^1$ 的可积判据同源，只是把整个空间换成有界可测集 $K$。"
+  },
+  {
+   "id": "def-dep.measure-average-operator",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.average-operator",
+   "note": "平均值里的 $m(B(r, x))$ 是 **Lebesgue 测度**。"
+  },
+  {
+   "id": "def-dep.locally-integrable-lebesgue-set",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.locally-integrable",
+   "usedBy": "def.lebesgue-set",
+   "note": "「设 $f \\in L^1_{loc}$」——Lebesgue 集只对**局部可积**函数谈。"
+  },
+  {
+   "id": "def-dep.average-operator-lebesgue-set",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.average-operator",
+   "usedBy": "def.lebesgue-set",
+   "note": "定义里的那个平均 $\\frac{1}{m(B)}\\int_B |f(y) - f(x)| dy$ 就是**平均算子**的样子。"
+  },
+  {
+   "id": "def-dep.borel-shrinks-nicely",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.borel",
+   "usedBy": "def.shrinks-nicely",
+   "note": "要求 $\\{ E_r \\}$ 是一族 **Borel 子集**，这样 $m(E_r)$ 才有意义。"
+  },
+  {
+   "id": "def-dep.subset-shrinks-nicely",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.shrinks-nicely",
+   "note": "第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。"
+  },
+  {
+   "id": "def-dep.bv-nbv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.bounded-variation",
+   "usedBy": "def.nbv",
+   "note": "$NBV := \\{ F \\in BV : F$ 右连续且 $F(-\\infty) = 0 \\}$，整个定义建立在**有界变差**之上。"
+  },
+  {
+   "id": "def-dep.borel-nbv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.borel",
+   "usedBy": "def.nbv",
+   "note": "加这两个条件的目的，是与 $\\mathbb{R}$ 上的**复 Borel 测度**一一对应。"
+  },
+  {
+   "id": "def-dep.measurable-fn-lp-norm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "def.lp-norm",
+   "note": "$L^p$ 的元素要求 $f$ **可测**且 $\\|f\\|_p < \\infty$。"
+  },
+  {
+   "id": "def-dep.measure-lp-norm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.lp-norm",
+   "note": "$\\|f\\|_p$ 里的积分是对**测度** $\\mu$ 取的。"
+  },
+  {
+   "id": "def-dep.nonneg-integral-lp-norm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-nonneg",
+   "usedBy": "def.lp-norm",
+   "note": "$\\|f\\|_p = \\left[ \\int |f|^p \\, d\\mu \\right]^{1/p}$ 用的是**非负函数的积分**。"
+  },
+  {
+   "id": "def-dep.measure-essential-sup",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.essential-sup",
+   "note": "定义里出现 $\\mu(\\{ |f| > a \\}) = 0$，用的是**测度**。"
+  },
+  {
+   "id": "def-dep.null-set-essential-sup",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.null-set",
+   "usedBy": "def.essential-sup",
+   "note": "「把 $f$ 在**零集**上的取值统统不算」——这正是本性上界的意思。"
+  },
+  {
+   "id": "def-dep.measurable-fn-essential-sup",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "def.essential-sup",
+   "note": "$L^\\infty$ 的元素是**可测**且本性上界有限的函数。"
+  },
+  {
+   "id": "def-dep.lp-norm-duality-map",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lp-norm",
+   "usedBy": "def.duality-map",
+   "note": "$\\varphi_g$ 定义在 $L^p$ 上，有界性要靠范数 $\\|f\\|_p$ 来说。"
+  },
+  {
+   "id": "def-dep.conjugate-duality-map",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.conjugate-exponents",
+   "usedBy": "def.duality-map",
+   "note": "「设 $p, q$ **共轭**，$g \\in L^q$」——共轭指数是这条定义的前提。"
+  },
+  {
+   "id": "def-dep.integral-complex-duality-map",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integral-complex",
+   "usedBy": "def.duality-map",
+   "note": "$\\varphi_g(f) = \\int f g \\, d\\mu$ 本身是一个**积分**。"
+  },
+  {
+   "id": "def-dep.essential-sup-duality-map",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.essential-sup",
+   "usedBy": "def.duality-map",
+   "note": "$g \\in L^\\infty$ 那一头（$p = 1$）要用本性上界。"
   }
  ],
  "clusterLinks": [
@@ -6350,28 +7246,28 @@
   {
    "a": "analysis.integral",
    "b": "analysis.measure",
-   "count": 16,
+   "count": 26,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.integral",
    "b": "analysis.signed",
-   "count": 4,
+   "count": 5,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.measure",
    "b": "analysis.signed",
-   "count": 2,
+   "count": 10,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.differentiation",
    "b": "analysis.integral",
-   "count": 2,
+   "count": 4,
    "label": "",
    "explicit": false
   },
@@ -6385,6 +7281,41 @@
   {
    "a": "analysis.bv",
    "b": "analysis.signed",
+   "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.bv",
+   "b": "analysis.measure",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.bv",
+   "b": "analysis.integral",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.integral",
+   "b": "analysis.lp",
+   "count": 6,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "order.structure",
+   "b": "set.construct",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "set.choice",
+   "b": "set.construct",
    "count": 2,
    "label": "",
    "explicit": false
@@ -6393,6 +7324,48 @@
    "a": "order.maximal",
    "b": "order.structure",
    "count": 7,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "order.structure",
+   "b": "set.choice",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.differentiation",
+   "b": "topology.metric",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.differentiation",
+   "b": "analysis.measure",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.lp",
+   "b": "analysis.measure",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "algebra.vectorspace",
+   "b": "order.structure",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measure",
+   "b": "set.construct",
+   "count": 4,
    "label": "",
    "explicit": false
   }
