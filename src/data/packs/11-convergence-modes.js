@@ -27,7 +27,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '收敛', '依测度'],
       statement: [
-        '设 $$f_n, f : X \\to \\mathbb\\{C\\}$$ 可测，X 带测度 μ。',
+        '设 $$f_n, f : X \\to \\mathbb{C}$$ 可测，X 带测度 μ。',
         '',
         '- **一致收敛** $$f_n ⇉ f$$：$$\\forall\\varepsilon > 0, \\exists N > 0, \\forall x \\in X, n > N \\implies |f_n(x) − f(x)| < \\varepsilon$$',
         '- **几乎处处收敛** $$f_n \\to f$$ a.e.：存在零集 E 使 $$f_n(x) \\to f(x)$$ 对一切 $$x \\in X \\setminus E$$ 成立',
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'Lusin', '连续', '紧集'],
       statement: [
-        '设 $$f : [a, b] \\to \\mathbb\\{C\\}$$ 是 Lebesgue 可测的。则对任意 ε > 0，存在**紧集** $$E \\subseteq [a, b]$$ 使',
+        '设 $$f : [a, b] \\to \\mathbb{C}$$ 是 Lebesgue 可测的。则对任意 ε > 0，存在**紧集** $$E \\subseteq [a, b]$$ 使',
         '',
         '$$\\mu(E^c) < \\varepsilon，且 f|_E 连续$$'
       ].join('\n'),

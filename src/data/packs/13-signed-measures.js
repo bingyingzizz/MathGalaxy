@@ -26,11 +26,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '符号测度'],
       statement: [
-        '设 (X, ℳ) 是可测空间。$$\\nu : \\mathcal\\{M\\} \\to [−\\infty, +\\infty]$$ 是**符号测度**，当且仅当',
+        '设 (X, ℳ) 是可测空间。$$\\nu : \\mathcal{M} \\to [−\\infty, +\\infty]$$ 是**符号测度**，当且仅当',
         '',
         '- $$\\nu(\\emptyset) = 0$$；',
         '- $$\\nu$$ **至多取到 ±∞ 中的一个**（不能同时取到 +∞ 与 −∞）；',
-        '- 对两两不交的 $$\\{E_j\\} \\subseteq \\mathcal\\{M\\}$$：',
+        '- 对两两不交的 $$\\{E_j\\} \\subseteq \\mathcal{M}$$：',
         '',
         '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)，且右边的级数绝对收敛（当 |\\nu(\\bigsqcup E_j)| < \\infty 时）$$'
       ].join('\n'),
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '正集', '负集'],
       statement: [
-        '设 ν 是符号测度，$$E \\in \\mathcal\\{M\\}$$。',
+        '设 ν 是符号测度，$$E \\in \\mathcal{M}$$。',
         '',
         '- E 是**正的**：$$\\nu(F) \\ge 0$$ 对一切可测 $$F \\subseteq E$$ 成立；',
         '- E 是**负的**：$$\\nu(F) \\le 0$$ 对一切可测 $$F \\subseteq E$$ 成立；',
@@ -98,7 +98,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Hahn 分解', '正集', '负集'],
       statement: [
-        '设 ν 是 $$(X, \\mathcal\\{M\\})$$ 上的符号测度。则存在 $$P, N \\in \\mathcal\\{M\\}$$ 使',
+        '设 ν 是 $$(X, \\mathcal{M})$$ 上的符号测度。则存在 $$P, N \\in \\mathcal{M}$$ 使',
         '',
         '$$P \\cup N = X，　P \\cap N = \\emptyset，$$',
         '',
@@ -123,7 +123,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '奇异', '垂直'],
       statement: [
-        '两个测度（或符号测度）$$\\mu, \\nu$$ **相互奇异**，记作 $$\\mu ⊥ \\nu$$，当且仅当存在 $$E, F \\in \\mathcal\\{M\\}$$ 使',
+        '两个测度（或符号测度）$$\\mu, \\nu$$ **相互奇异**，记作 $$\\mu ⊥ \\nu$$，当且仅当存在 $$E, F \\in \\mathcal{M}$$ 使',
         '',
         '$$E \\cap F = \\emptyset，　E \\cup F = X，$$',
         '',
@@ -184,7 +184,7 @@ window.MG = window.MG || {};
         '',
         '当且仅当**每个 μ-零集都是 ν-零集**：',
         '',
-        '$$\\forall E \\in \\mathcal\\{M\\}, \\mu(E) = 0 \\implies \\nu(E) = 0$$'
+        '$$\\forall E \\in \\mathcal{M}, \\mu(E) = 0 \\implies \\nu(E) = 0$$'
       ].join('\n'),
       notes: [
         '一句话：**μ 认为「没有」的地方，ν 也必须认为「没有」**。',
@@ -292,7 +292,7 @@ window.MG = window.MG || {};
         '设 ν、μ 都是**有限**测度。则二者必有一个成立：',
         '',
         '- $$\\nu ⊥ \\mu$$；或',
-        '- 存在 $$\\varepsilon > 0$$ 与 $$E \\in \\mathcal\\{M\\}$$，$$\\mu(E) > 0$$，使 $$\\nu \\ge \\varepsilon \\mu$$ 在 E 上成立（即 $$\\nu(F) \\ge \\varepsilon \\mu(F)$$ 对一切可测 $$F \\subseteq E$$）。'
+        '- 存在 $$\\varepsilon > 0$$ 与 $$E \\in \\mathcal{M}$$，$$\\mu(E) > 0$$，使 $$\\nu \\ge \\varepsilon \\mu$$ 在 E 上成立（即 $$\\nu(F) \\ge \\varepsilon \\mu(F)$$ 对一切可测 $$F \\subseteq E$$）。'
       ].join('\n'),
       notes: [
         '这是 Radon–Nikodym 证明里的**关键一步**：它提供了一个「往下顶」的 ε，从而可以造出那个上确界函数 f。',
@@ -345,7 +345,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\nu ≪ \\mu$$（都是 σ-有限的）。取定理里的 $$f$$，称',
         '',
-        '$$f = \\frac\\{d\\nu\\}\\{d\\mu\\}$$',
+        '$$f = \\frac{d\\nu}{d\\mu}$$',
         '',
         '为 ν 关于 μ 的 **Radon–Nikodym 导数**（注意它定义在「μ-本质相同的函数类」上，不是单个函数）。',
         '',
@@ -372,21 +372,21 @@ window.MG = window.MG || {};
         '',
         '$$\\nu ≪ \\mu，　\\mu ≪ \\lambda$$',
         '',
-        '**(a)** 若 $$g \\in L^1(\\nu)$$，则 $$g \\frac\\{d\\nu\\}\\{d\\mu\\} \\in L^1(\\mu)$$，且',
+        '**(a)** 若 $$g \\in L^1(\\nu)$$，则 $$g \\frac{d\\nu}{d\\mu} \\in L^1(\\mu)$$，且',
         '',
-        '$$\\int g d\\nu = \\int g \\frac\\{d\\nu\\}\\{d\\mu\\} d\\mu$$',
+        '$$\\int g d\\nu = \\int g \\frac{d\\nu}{d\\mu} d\\mu$$',
         '',
         '**(b)** 此时 $$\\nu ≪ \\lambda$$，且**链式法则**成立：',
         '',
-        '$$\\frac\\{d\\nu\\}\\{d\\lambda\\} = \\frac\\{d\\nu\\}\\{d\\mu\\} \\cdot \\frac\\{d\\mu\\}\\{d\\lambda\\}　(\\lambda-a.e.)$$'
+        '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}　(\\lambda-a.e.)$$'
       ].join('\n'),
       notes: [
         '(a) 就是「换元公式」：把对 ν 的积分换成对 μ 的积分，代价是乘上 RN 导数。它对指示函数成立、于是对简单函数成立、再用单调收敛到 L⁺、最后到 L¹(ν)。',
         '(b) 的证明用 (a)：对任意可测 E，',
         '',
-        '$$\\nu(E) = \\int_E \\frac\\{d\\nu\\}\\{d\\mu\\} d\\mu = \\int_E \\frac\\{d\\nu\\}\\{d\\mu\\} \\cdot \\frac\\{d\\mu\\}\\{d\\lambda\\} d\\lambda$$',
+        '$$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu = \\int_E \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda} d\\lambda$$',
         '',
-        '两边对照 $$\\nu(E) = \\int_E \\frac\\{d\\nu\\}\\{d\\lambda\\} d\\lambda$$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。'
+        '两边对照 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.9']
     },
@@ -402,9 +402,9 @@ window.MG = window.MG || {};
       statement: [
         '若 $$\\mu ≪ \\lambda$$ 且 $$\\lambda ≪ \\mu$$（两个 σ-有限测度互为绝对连续），则',
         '',
-        '$$\\frac\\{d\\mu\\}\\{d\\lambda\\} \\cdot \\frac\\{d\\lambda\\}\\{d\\mu\\} = 1　a.e.$$'
+        '$$\\frac{d\\mu}{d\\lambda} \\cdot \\frac{d\\lambda}{d\\mu} = 1　a.e.$$'
       ].join('\n'),
-      notes: '两条链式法则一拼：$$d\\mu / d\\mu = \\frac\\{d\\mu\\}\\{d\\lambda\\}\\cdot\\frac\\{d\\lambda\\}\\{d\\mu\\}$$，而 $$d\\mu / d\\mu ≡ 1$$。',
+      notes: '两条链式法则一拼：$$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$$，而 $$d\\mu / d\\mu ≡ 1$$。',
       refs: ['Folland, Real Analysis, Theorem 3.9']
     },
 
@@ -419,13 +419,13 @@ window.MG = window.MG || {};
       statement: [
         '可测空间 (X, ℳ) 上的**复测度**是一个映射',
         '',
-        '$$\\nu : \\mathcal\\{M\\} \\to \\mathbb\\{C\\}$$',
+        '$$\\nu : \\mathcal{M} \\to \\mathbb{C}$$',
         '',
         '满足',
         '',
         '$$\\nu(\\emptyset) = 0，$$',
         '',
-        '且对两两不交的 $$\\{E_j\\} \\subseteq \\mathcal\\{M\\}$$：',
+        '且对两两不交的 $$\\{E_j\\} \\subseteq \\mathcal{M}$$：',
         '',
         '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)，右边的级数绝对收敛$$'
       ].join('\n'),
@@ -469,7 +469,7 @@ window.MG = window.MG || {};
       statement: [
         '设 ν 是复测度（或符号测度），$$|\\nu|$$ 是它的全变差。则',
         '',
-        '**(a)** $$|\\nu(E)| \\le |\\nu|(E)$$ 对一切 $$E \\in \\mathcal\\{M\\}$$ 成立；',
+        '**(a)** $$|\\nu(E)| \\le |\\nu|(E)$$ 对一切 $$E \\in \\mathcal{M}$$ 成立；',
         '',
         '**(b)** 若 $$d\\nu = f d\\mu$$（即 ν ≪ μ）则 $$d|\\nu| = |f| d\\mu$$，即',
         '',
@@ -478,7 +478,7 @@ window.MG = window.MG || {};
       notes: [
         '(b) 的证法（笔记里）：先取 $$\\rho = |\\nu_1| + |\\nu_2|$$ 把 ν 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 ρ 上。于是要证的就是',
         '',
-        '$$|f_1| \\frac\\{d\\mu_1\\}\\{d\\rho\\} = |f_2| \\frac\\{d\\mu_2\\}\\{d\\rho\\}　\\rho-a.e.$$',
+        '$$|f_1| \\frac{d\\mu_1}{d\\rho} = |f_2| \\frac{d\\mu_2}{d\\rho}　\\rho-a.e.$$',
         '',
         '从而 $$|f_1| d\\mu_1 = |f_2| d\\mu_2$$ —— 说明全变差的密度与「用哪个 μ 表示 ν」无关。',
         '由此也得到一个实用的直觉：**全变差就是「把质量取绝对值之后再测一遍」**。'
@@ -576,7 +576,7 @@ window.MG = window.MG || {};
         '',
         '**(⟸)** 若 μ(E) = 0，则对任意 ε > 0 有 μ(E) < δ，于是 |ν(E)| ≤ ε；令 ε → 0 得 ν(E) = 0。',
         '',
-        '**(⟹) 反证。** 设存在 ε > 0，使对**一切** n 都能找到 $$E_n \\in \\mathcal\\{M\\}$$ 满足',
+        '**(⟹) 反证。** 设存在 ε > 0，使对**一切** n 都能找到 $$E_n \\in \\mathcal{M}$$ 满足',
         '',
         '$$\\mu(E_n) < 2^{-n}，　\\nu(E_n) \\ge \\varepsilon$$',
         '',
@@ -607,25 +607,25 @@ window.MG = window.MG || {};
         '',
         '**① 造候选函数集。** 令',
         '',
-        '$$\\mathcal\\{F\\} := \\{ f : X \\to [0, +\\infty] : \\int_E f d\\mu \\le \\nu(E)　\\forall E \\in \\mathcal\\{M\\} \\}$$',
+        '$$\\mathcal{F} := \\{ f : X \\to [0, +\\infty] : \\int_E f d\\mu \\le \\nu(E)　\\forall E \\in \\mathcal{M} \\}$$',
         '',
-        '则 $$0 \\in \\mathcal\\{F\\}$$，且 ℱ 对**取大**封闭：若 f, g ∈ ℱ，令 $$A = \\{f > g\\}$$、$$h = \\max_{f, g}$$，则对任意 E，',
+        '则 $$0 \\in \\mathcal{F}$$，且 ℱ 对**取大**封闭：若 f, g ∈ ℱ，令 $$A = \\{f > g\\}$$、$$h = \\max_{f, g}$$，则对任意 E，',
         '',
         '$$\\int_E h d\\mu = \\int_{E\\cap A} f d\\mu + \\int_{E\\setminus A} g d\\mu \\le \\nu(E\\cap A) + \\nu(E\\setminus A) = \\nu(E)$$',
         '',
         '故 h ∈ ℱ。',
         '',
-        '**② 取上确界。** 令 $$a := sup\\{ \\int f d\\mu : f \\in \\mathcal\\{F\\} \\} \\le \\nu(X) < \\infty$$（这一步用到 ν 有限）。取 $$\\{f_n\\} \\subseteq \\mathcal\\{F\\}$$ 使 $$\\int f_n d\\mu \\to a$$，令',
+        '**② 取上确界。** 令 $$a := sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$$（这一步用到 ν 有限）。取 $$\\{f_n\\} \\subseteq \\mathcal{F}$$ 使 $$\\int f_n d\\mu \\to a$$，令',
         '',
         '$$g_n = \\max_{f_1, …, f_n}，　f = sup_n f_n$$',
         '',
-        '由 ① 每个 $$g_n \\in \\mathcal\\{F\\}$$，且 $$g_n ↑ f$$、$$\\int g_n d\\mu \\ge \\int f_n d\\mu$$，故 $$lim_n \\int g_n d\\mu = a$$。由 **MCT**，$$f \\in \\mathcal\\{F\\}$$ 且 $$\\int f d\\mu = a$$。',
+        '由 ① 每个 $$g_n \\in \\mathcal{F}$$，且 $$g_n ↑ f$$、$$\\int g_n d\\mu \\ge \\int f_n d\\mu$$，故 $$lim_n \\int g_n d\\mu = a$$。由 **MCT**，$$f \\in \\mathcal{F}$$ 且 $$\\int f d\\mu = a$$。',
         '',
-        '**③ 断言 $$d\\lambda := d\\nu − f d\\mu$$ 与 μ 奇异。** 反设不然，由**引理**，存在 ε > 0 与 $$E \\in \\mathcal\\{M\\}$$、μ(E) > 0，使 $$\\lambda \\ge \\varepsilon\\mu$$ 在 E 上成立，即',
+        '**③ 断言 $$d\\lambda := d\\nu − f d\\mu$$ 与 μ 奇异。** 反设不然，由**引理**，存在 ε > 0 与 $$E \\in \\mathcal{M}$$、μ(E) > 0，使 $$\\lambda \\ge \\varepsilon\\mu$$ 在 E 上成立，即',
         '',
         '$$\\varepsilon \\chi_E d\\mu \\le d\\nu − f d\\mu　\\implies　(f + \\varepsilon \\chi_E) d\\mu \\le d\\nu$$',
         '',
-        '于是 $$f + \\varepsilon \\chi_E \\in \\mathcal\\{F\\}$$，但',
+        '于是 $$f + \\varepsilon \\chi_E \\in \\mathcal{F}$$，但',
         '',
         '$$\\int (f + \\varepsilon \\chi_E) d\\mu = a + \\varepsilon\\cdot\\mu(E) > a$$',
         '',
@@ -661,20 +661,20 @@ window.MG = window.MG || {};
       proof: [
         '设 $$\\nu ≪ \\mu ≪ \\lambda$$。',
         '',
-        '**(a) 换元公式 $$\\int g d\\nu = \\int g \\frac\\{d\\nu\\}\\{d\\mu\\} d\\mu$$。** 分四步爬：',
+        '**(a) 换元公式 $$\\int g d\\nu = \\int g \\frac{d\\nu}{d\\mu} d\\mu$$。** 分四步爬：',
         '',
-        '· $$g = \\chi_E$$：左边是 $$\\nu(E) = \\int_E \\frac\\{d\\nu\\}\\{d\\mu\\} d\\mu$$（这正是 RN 定理的内容），右边同；',
+        '· $$g = \\chi_E$$：左边是 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu$$（这正是 RN 定理的内容），右边同；',
         '· g 是简单函数：由线性；',
         '· $$g \\in L^+$$：取简单函数列 $$g_n ↑ g$$，两边各用一次 MCT；',
         '· $$g \\in L^1(\\nu)$$：拆正负部。',
         '',
         '**(b) 链式法则。** 对任意可测 E，用 (a) 两次：',
         '',
-        '$$\\nu(E) = \\int_E \\frac\\{d\\nu\\}\\{d\\mu\\} d\\mu = \\int_E \\frac\\{d\\nu\\}\\{d\\mu\\} \\cdot \\frac\\{d\\mu\\}\\{d\\lambda\\} d\\lambda$$',
+        '$$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu = \\int_E \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda} d\\lambda$$',
         '',
-        '另一方面又有 $$\\nu(E) = \\int_E \\frac\\{d\\nu\\}\\{d\\lambda\\} d\\lambda$$（因为 ν ≪ λ）。两式对**一切** E 相等，由「用积分识别函数」，两个密度 λ-a.e. 相等：',
+        '另一方面又有 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$$（因为 ν ≪ λ）。两式对**一切** E 相等，由「用积分识别函数」，两个密度 λ-a.e. 相等：',
         '',
-        '$$\\frac\\{d\\nu\\}\\{d\\lambda\\} = \\frac\\{d\\nu\\}\\{d\\mu\\} \\cdot \\frac\\{d\\mu\\}\\{d\\lambda\\}　\\lambda-a.e.$$',
+        '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}　\\lambda-a.e.$$',
         '',
         '∎'
       ].join('\n')

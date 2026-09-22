@@ -50,7 +50,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$\\varphi \\in L^+$$ 是简单函数，写成标准形式',
         '',
-        '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}，　a_j \\ge 0，E_j \\in \\mathcal\\{M\\} 两两不交$$',
+        '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}，　a_j \\ge 0，E_j \\in \\mathcal{M} 两两不交$$',
         '',
         '则定义',
         '',
@@ -264,7 +264,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', '复值'],
       statement: [
-        '设 $$f : X \\to \\mathbb\\{R\\}̄$$ 可测，记正部与负部',
+        '设 $$f : X \\to \\mathbb{R}̄$$ 可测，记正部与负部',
         '',
         '$$f^+ = \\max_{f, 0}，　f^- = \\max_{-f, 0}$$',
         '',
@@ -297,7 +297,7 @@ window.MG = window.MG || {};
         '',
         '复值可测 $$f$$ 可积，当且仅当 $$\\int |f| d\\mu < \\infty$$。可积函数全体记作',
         '',
-        '$$L^1(\\mu) = L^1(X, \\mathcal\\{M\\}, \\mu) = L^1(X, \\mu)$$'
+        '$$L^1(\\mu) = L^1(X, \\mathcal{M}, \\mu) = L^1(X, \\mu)$$'
       ].join('\n'),
       notes: [
         '⭐ **可积 ⟺ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 |f| ∈ L⁺，一切非负情形的定理都能直接套用。',
@@ -318,7 +318,7 @@ window.MG = window.MG || {};
       statement: [
         '$$X$$ 上可积的（实值）函数全体构成一个**实向量空间**，并且',
         '',
-        '$$\\int (af + bg) = a\\int f + b\\int g　\\forall a, b \\in \\mathbb\\{R\\}$$',
+        '$$\\int (af + bg) = a\\int f + b\\int g　\\forall a, b \\in \\mathbb{R}$$',
         '',
         '即 $$f \\mapsto \\int f$$ 是线性的。'
       ].join('\n'),
@@ -375,7 +375,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f, g \\in L^1(\\mu)$$。则下列三条等价：',
         '',
-        '$$\\int_E f d\\mu = \\int_E g d\\mu　\\forall E \\in \\mathcal\\{M\\}；$$',
+        '$$\\int_E f d\\mu = \\int_E g d\\mu　\\forall E \\in \\mathcal{M}；$$',
         '$$\\int |f − g| d\\mu = 0；$$',
         '$$f = g　\\mu-a.e.$$'
       ].join('\n'),
@@ -474,7 +474,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'DCT', '求导', '带参变量积分'],
       statement: [
-        '设 $$f : X \\times [a, b] \\to \\mathbb\\{C\\}$$（$$−\\infty < a < b < \\infty$$），$$f(\\cdot, t)$$ 对每个 $$t \\in [a, b]$$ 都可积。记',
+        '设 $$f : X \\times [a, b] \\to \\mathbb{C}$$（$$−\\infty < a < b < \\infty$$），$$f(\\cdot, t)$$ 对每个 $$t \\in [a, b]$$ 都可积。记',
         '',
         '$$F(t) := \\int_X f(x, t) d\\mu(x)$$',
         '',
@@ -683,7 +683,7 @@ window.MG = window.MG || {};
       proof: [
         '记 $$h = f − g \\in L^1$$。三条之间的等价链条是',
         '',
-        '$$(i) \\int_E f = \\int_E g　\\forall E \\in \\mathcal\\{M\\}　\\iff　\\int_E h = 0　\\forall E$$',
+        '$$(i) \\int_E f = \\int_E g　\\forall E \\in \\mathcal{M}　\\iff　\\int_E h = 0　\\forall E$$',
         '',
         '**(i) ⟹ (ii)**：分别取 $$E = \\{h \\ge 0\\}$$ 与 $$E = \\{h < 0\\}$$。由 $$\\int_E h = 0$$ 且 h 在 E 上不变号，得 $$\\{h > 0\\}$$ 与 $$\\{h < 0\\}$$ 都是零集（否则积分为正/负），故 $$\\mu(\\{h \\ne 0\\}) = 0$$，于是 $$\\int|h| = 0$$。',
         '',

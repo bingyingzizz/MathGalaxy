@@ -219,7 +219,7 @@ window.MG = window.MG || {};
         '',
         '**③ 造一个开覆盖。** 取',
         '',
-        '$$𝒰 = \\{ U_n : n \\in \\mathbb\\{N\\} \\} \\cup \\{ X \\setminus \\{x_n : n \\in \\mathbb\\{N\\}\\} \\}$$',
+        '$$𝒰 = \\{ U_n : n \\in \\mathbb{N} \\} \\cup \\{ X \\setminus \\{x_n : n \\in \\mathbb{N}\\} \\}$$',
         '',
         '其中 Uₙ 是 ② 中给 xₙ 的那个邻域（只含有限个 xₘ）。再补上闭集的余集，𝒰 就是 X 的开覆盖。',
         '',

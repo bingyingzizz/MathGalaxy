@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T06:53:46.546Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T06:59:36.340Z
 > 6 星系 / 13 星团 / 180 节点 / 213 连线（强边 209，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
@@ -678,8 +678,8 @@ $$A 紧 \iff A 闭 且 A 全有界$$
 
 设 X 是集合，𝔄 ⊆ 𝒫(X)。𝔄 是 X 上的一个**基本类**，当且仅当
 
-- 对**交**封闭：$$A, B \in \mathfrak\{A\} \implies A \cap B \in \mathfrak\{A\}$$
-- 差可以拆开：$$A, B \in \mathfrak\{A\} \implies A \setminus B 是 \mathfrak\{A\} 中有限多个两两不交集合之并$$
+- 对**交**封闭：$$A, B \in \mathfrak{A} \implies A \cap B \in \mathfrak{A}$$
+- 差可以拆开：$$A, B \in \mathfrak{A} \implies A \setminus B 是 \mathfrak{A} 中有限多个两两不交集合之并$$
 
 它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。
 
@@ -694,10 +694,10 @@ $$A 紧 \iff A 闭 且 A 全有界$$
 
 设 𝔄 ⊆ 𝒫(X) 是 X 的一族子集。
 
-- 𝔄 是**环**（ring）：对有限并封闭，且对差封闭：$$A, B \in \mathfrak\{A\} \implies A \cup B \in \mathfrak\{A\} 且 A \setminus B \in \mathfrak\{A\}$$
-- 𝔄 是**代数**（algebra）：𝔄 是环，且 $$X \in \mathfrak\{A\}$$
+- 𝔄 是**环**（ring）：对有限并封闭，且对差封闭：$$A, B \in \mathfrak{A} \implies A \cup B \in \mathfrak{A} 且 A \setminus B \in \mathfrak{A}$$
+- 𝔄 是**代数**（algebra）：𝔄 是环，且 $$X \in \mathfrak{A}$$
 - 𝔄 是 **σ-环**：对**可数**并封闭，且对差封闭
-- 𝔄 是 **σ-代数**：𝔄 是 σ-环，且 $$X \in \mathfrak\{A\}$$
+- 𝔄 是 **σ-代数**：𝔄 是 σ-环，且 $$X \in \mathfrak{A}$$
 
 等价说法：𝔄 是 σ-代数 ⟺ 𝔄 对**补**封闭且对**可数并**封闭。
 
@@ -714,8 +714,8 @@ $$A 紧 \iff A 闭 且 A 全有界$$
 
 𝔄 ⊆ 𝒫(X) 是**单调类**，当且仅当它对两种单调极限都封闭：
 
-$$\{E_j\}_{j=1}^{\infty} ↗ \implies \bigcup_{j=1}^{\infty} E_j \in \mathfrak\{A\}$$
-$$\{E_j\}_{j=1}^{\infty} ↘ \implies \bigcap_{j=1}^{\infty} E_j \in \mathfrak\{A\}$$
+$$\{E_j\}_{j=1}^{\infty} ↗ \implies \bigcup_{j=1}^{\infty} E_j \in \mathfrak{A}$$
+$$\{E_j\}_{j=1}^{\infty} ↘ \implies \bigcap_{j=1}^{\infty} E_j \in \mathfrak{A}$$
 
 单调类只关心「递增取并、递减取交」这两种极限，**不**要求对有限并、差、补封闭 —— 所以它比 σ-代数弱得多。
 
@@ -734,7 +734,7 @@ $$\{E_j\}_{j=1}^{\infty} ↘ \implies \bigcap_{j=1}^{\infty} E_j \in \mathfrak\{
 
 (5) 若 ℰ 是**基本类**，则
 
-$$\mathfrak\{A\} = \{ \mathcal\{E\} 中有限多个两两不交集合之并 \}$$
+$$\mathfrak{A} = \{ \mathcal{E} 中有限多个两两不交集合之并 \}$$
 
 是一个**环**。
 
@@ -755,7 +755,7 @@ $$\mathfrak\{A\} = \{ \mathcal\{E\} 中有限多个两两不交集合之并 \}$$
 
 设 𝔄 是一个**环**。则下列三条等价：
 
-$$\mathfrak\{A\} 是 \sigma-环 \iff \mathfrak\{A\} 是单调类 \iff \mathfrak\{A\} 对可列不交并封闭$$
+$$\mathfrak{A} 是 \sigma-环 \iff \mathfrak{A} 是单调类 \iff \mathfrak{A} 对可列不交并封闭$$
 
 注意前提「𝔄 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 σ-环。
 
@@ -768,8 +768,8 @@ $$\mathfrak\{A\} 是 \sigma-环 \iff \mathfrak\{A\} 是单调类 \iff \mathfrak\
 
 设 ℰ ⊆ 𝒫(X)。定义
 
-$$\mathcal\{M\}(\mathcal\{E\}) := \bigcap \{ \mathfrak\{A\} : \mathfrak\{A\} 是包含 \mathcal\{E\} 的 \sigma-代数 \}$$
-$$\mathfrak\{m\}(\mathcal\{E\}) := \bigcap \{ \mathfrak\{A\} : \mathfrak\{A\} 是包含 \mathcal\{E\} 的单调类 \}$$
+$$\mathcal{M}(\mathcal{E}) := \bigcap \{ \mathfrak{A} : \mathfrak{A} 是包含 \mathcal{E} 的 \sigma-代数 \}$$
+$$\mathfrak{m}(\mathcal{E}) := \bigcap \{ \mathfrak{A} : \mathfrak{A} 是包含 \mathcal{E} 的单调类 \}$$
 
 ℳ(ℰ) 称为**由 ℰ 生成的 σ-代数**，𝔪(ℰ) 称为由 ℰ 生成的单调类。
 
@@ -784,7 +784,7 @@ $$\mathfrak\{m\}(\mathcal\{E\}) := \bigcap \{ \mathfrak\{A\} : \mathfrak\{A\} �
 
 设 ℰ ⊆ 𝒫(X)。则
 
-$$\mathcal\{M\}(\mathcal\{E\}) = \mathfrak\{m\}(\mathcal\{E\}) \iff \forall A \in \mathcal\{E\} : A^c \in \mathfrak\{m\}(\mathcal\{E\}) 且 \forall A, B \in \mathcal\{E\} : A \cap B \in \mathfrak\{m\}(\mathcal\{E\})$$
+$$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E}) 且 \forall A, B \in \mathcal{E} : A \cap B \in \mathfrak{m}(\mathcal{E})$$
 
 ⚠ **这一条我拿不准，两遍读法一致但含义可疑**，已列入待核对的存疑清单。标准叙述是：**若 ℰ 是一个代数，则 𝔪(ℰ) = ℳ(ℰ)**。笔记里把条件写成「ℰ 中集合的补、以及两两之交都落在 𝔪(ℰ) 里」—— 看着像是把「ℰ 是代数」拆开重述的一个变体，但到底是不是，要本人确认。
 
@@ -799,7 +799,7 @@ $$\mathcal\{M\}(\mathcal\{E\}) = \mathfrak\{m\}(\mathcal\{E\}) \iff \forall A \i
 
 设 X 是拓扑空间。X 上的 **Borel σ-代数**是由全体开集生成的 σ-代数：
 
-$$\mathfrak\{B\}_X := \mathcal\{M\}(\{ U \subseteq X : U 是开集 \})$$
+$$\mathfrak{B}_X := \mathcal{M}(\{ U \subseteq X : U 是开集 \})$$
 
 𝔅_X 中的集合称为 **Borel 集**：开集、闭集、可数个开集之交（G_δ）、可数个闭集之并（F_σ）等都属于 𝔅_X。
 
@@ -814,7 +814,7 @@ $$\mathfrak\{B\}_X := \mathcal\{M\}(\{ U \subseteq X : U 是开集 \})$$
 
 设 { (X_α, ℳ_α) }_{α ∈ A} 是一族可测空间，$$X = \prod_{\alpha \in A} X_\alpha$$，投影 $$π_\alpha : X \to X_\alpha$$。**积 σ-代数**定义为
 
-$$⊗_{\alpha \in A} \mathcal\{M\}_\alpha := \mathcal\{M\}(\{ π_\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal\{M\}_\alpha, \alpha \in A \})$$
+$$⊗_{\alpha \in A} \mathcal{M}_\alpha := \mathcal{M}(\{ π_\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{M}_\alpha, \alpha \in A \})$$
 
 即由全体**柱集**生成的 σ-代数。柱集 π_α⁻¹(E_α) 就是「只对第 α 个坐标提要求」的集合。
 
@@ -829,11 +829,11 @@ $$⊗_{\alpha \in A} \mathcal\{M\}_\alpha := \mathcal\{M\}(\{ π_\alpha^{-1}(E_\
 
 设每个 ℳ_α = ℳ(ℰ_α)（即 ℳ_α 由 ℰ_α 生成）。令
 
-$$\mathcal\{F\} = \{ π_\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal\{E\}_\alpha, \alpha \in A \}$$
+$$\mathcal{F} = \{ π_\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{E}_\alpha, \alpha \in A \}$$
 
 则
 
-$$⊗_{\alpha \in A} \mathcal\{M\}_\alpha = \mathcal\{M\}(\mathcal\{F\})$$
+$$⊗_{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\mathcal{F})$$
 
 意义：算积 σ-代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 ℳ_α 搬进来。
 
@@ -848,7 +848,7 @@ $$⊗_{\alpha \in A} \mathcal\{M\}_\alpha = \mathcal\{M\}(\mathcal\{F\})$$
 
 若指标集 A **可数**，则
 
-$$⊗_{\alpha \in A} \mathcal\{M\}_\alpha = \mathcal\{M\}(\{ \prod_{\alpha \in A} E_\alpha : E_\alpha \in \mathcal\{M\}_\alpha \})$$
+$$⊗_{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\{ \prod_{\alpha \in A} E_\alpha : E_\alpha \in \mathcal{M}_\alpha \})$$
 
 即：可数积的 σ-代数，恰好是由全体「矩形」生成的 σ-代数。
 
@@ -871,11 +871,11 @@ $$\prod_{\alpha \in A} E_\alpha = \bigcap_{\alpha \in A} π_\alpha^{-1}(E_\alpha
 
 设 X₁, X₂, … 是距离空间，$$X = \prod_{j=1}^{\infty} X_j$$ 配以积度量。则
 
-$$⊗_{j=1}^{\infty} \mathfrak\{B\}_{X_j} \subseteq \mathfrak\{B\}_X$$
+$$⊗_{j=1}^{\infty} \mathfrak{B}_{X_j} \subseteq \mathfrak{B}_X$$
 
 且当每个 Xⱼ **可分**时，等号成立：
 
-$$X_j 都可分 \implies ⊗_{j=1}^{\infty} \mathfrak\{B\}_{X_j} = \mathfrak\{B\}_X$$
+$$X_j 都可分 \implies ⊗_{j=1}^{\infty} \mathfrak{B}_{X_j} = \mathfrak{B}_X$$
 
 ⊆ 的原因很直接：投影 πⱼ 连续，所以 πⱼ⁻¹(开集) 是开集，那些柱集都在 𝔅_X 里。
 
@@ -883,7 +883,7 @@ $$X_j 都可分 \implies ⊗_{j=1}^{\infty} \mathfrak\{B\}_{X_j} = \mathfrak\{B\
 
 
 
-$$\{ B(c, r) : c \in C_j, r \in \mathbb\{Q\} \}$$
+$$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
 
 
 
@@ -896,7 +896,7 @@ $$\{ B(c, r) : c \in C_j, r \in \mathbb\{Q\} \}$$
 #### 测度　`def.measure`
 *定义*　测度（Measure）
 
-设 ℳ 是 X 上的 σ-代数。函数 $$\mu : \mathcal\{M\} \to [0, +\infty]$$ 是一个**测度**，当且仅当
+设 ℳ 是 X 上的 σ-代数。函数 $$\mu : \mathcal{M} \to [0, +\infty]$$ 是一个**测度**，当且仅当
 
 - **(i)**　$$\mu(\emptyset) = 0$$
 - **(ii) 可数可加**：若 {Eⱼ} 是 ℳ 中两两不交的集合列，则
@@ -916,7 +916,7 @@ $$\mu( \bigcup_{j=1}^{\infty} E_j ) = \sum_{j=1}^{\infty} \mu(E_j)$$
 #### 预测度　`def.premeasure`
 *定义*　预测度（Premeasure）—— 定义在环上的「测度」
 
-若 ℳ 只是一个**环**（不必是 σ-代数），而 $$\mu : \mathcal\{M\} \to [0, +\infty]$$ 仍满足测度的两条：
+若 ℳ 只是一个**环**（不必是 σ-代数），而 $$\mu : \mathcal{M} \to [0, +\infty]$$ 仍满足测度的两条：
 
 $$\mu(\emptyset) = 0，　\{E_j\} 两两不交 \implies \mu(\bigcup E_j) = \sum \mu(E_j)$$
 
@@ -933,7 +933,7 @@ Carathéodory 扩张定理的作用就是把预测度从环一路提升到生成
 
 若 μ 只满足 (i) 与**有限**可加性：
 
-$$A, B \in \mathcal\{M\} 两两不交 \implies \mu(A \cup B) = \mu(A) + \mu(B)$$
+$$A, B \in \mathcal{M} 两两不交 \implies \mu(A \cup B) = \mu(A) + \mu(B)$$
 （由归纳，可推到任意有限多个不交集合），
 
 则 μ 称为**有限可加测度**。
@@ -953,7 +953,7 @@ $$A, B \in \mathcal\{M\} 两两不交 \implies \mu(A \cup B) = \mu(A) + \mu(B)$$
 - **σ-有限**：X 能写成可数个测度有限的集合之并：$$X = \bigcup_{j=1}^{\infty} E_j，　\mu(E_j) < \infty$$
 - **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：
 
-$$\forall E \in \mathcal\{M\}, \mu(E) = \infty \implies \exists F \subseteq E, F \in \mathcal\{M\}, 0 < \mu(F) < \infty$$
+$$\forall E \in \mathcal{M}, \mu(E) = \infty \implies \exists F \subseteq E, F \in \mathcal{M}, 0 < \mu(F) < \infty$$
 
 $$有限 \implies \sigma-有限 \implies 半有限$$，两个箭头都不可逆。
 
@@ -994,7 +994,7 @@ $$有限 \implies \sigma-有限 \implies 半有限$$，两个箭头都不可逆�
 
 若**零集的每个子集都可测**：
 
-$$\forall E \in \mathcal\{M\}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \mathcal\{M\}$$
+$$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \mathcal{M}$$
 
 则称 μ（或这个测度空间）**完备**。
 
@@ -1009,13 +1009,13 @@ $$\forall E \in \mathcal\{M\}, \forall F \subseteq E : \mu(E) = 0 \implies F \in
 
 设 (X, ℳ, μ) 是测度空间。令
 
-$$\mathcal\{N\} = \{ N \in \mathcal\{M\} : \mu(N) = 0 \}，　\mathcal\{M\}̄ = \{ E \cup F : E \in \mathcal\{M\}，F \subseteq N 对某个 N \in \mathcal\{N\} \}$$
+$$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}，　\mathcal{M}̄ = \{ E \cup F : E \in \mathcal{M}，F \subseteq N 对某个 N \in \mathcal{N} \}$$
 
 则
 
 1. ℳ̄ 是一个 σ-代数，且 ℳ ⊆ ℳ̄；
 2. 令 $$\mū(E \cup F) := \mu(E)$$，它是 ℳ̄ 上良定义的测度；
-3. $$(X, \mathcal\{M\}̄, \mū)$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。
+3. $$(X, \mathcal{M}̄, \mū)$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。
 
 ℳ̄ 的直观：在原来的可测集上「撒一点零集的小碎片」。
 
@@ -1030,7 +1030,7 @@ $$\mathcal\{N\} = \{ N \in \mathcal\{M\} : \mu(N) = 0 \}，　\mathcal\{M\}̄ = 
 
 设 (X, ℳ, μ) 是测度空间。定义
 
-$$\mu_0(E) := sup \{ \mu(F) : F \subseteq E, F \in \mathcal\{M\}, \mu(F) < \infty \}$$
+$$\mu_0(E) := sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty \}$$
 
 则 μ₀ 称为 μ 的**半有限部分**，它是一个半有限测度，且 μ₀ ≤ μ。
 
@@ -1043,7 +1043,7 @@ $$\mu_0(E) := sup \{ \mu(F) : F \subseteq E, F \in \mathcal\{M\}, \mu(F) < \inft
 #### 外测度　`def.outer-measure`
 *定义*　外测度（Outer Measure）
 
-设 X 是非空集合。函数 $$\mu^* : \mathcal\{P\}(X) \to [0, +\infty]$$ 是一个**外测度**，当且仅当
+设 X 是非空集合。函数 $$\mu^* : \mathcal{P}(X) \to [0, +\infty]$$ 是一个**外测度**，当且仅当
 
 - $$\mu^*(\emptyset) = 0$$
 - **单调**：$$A \subseteq B \implies \mu^*(A) \le \mu^*(B)$$
@@ -1062,7 +1062,7 @@ Lebesgue 最初构造的就是外测度：μ*(A) = inf{ ∑(bₙ − aₙ) : A �
 
 设 ℰ ⊆ 𝒫(X)，∅ ∈ ℰ，X ∈ ℰ，ρ : ℰ → [0, +∞] 满足 ρ(∅) = 0。对 A ⊆ X 定义
 
-$$\mu^*(A) := inf \{ \sum_{j=1}^{\infty} \rho(E_j) : E_j \in \mathcal\{E\}, A \subseteq \bigcup_{j=1}^{\infty} E_j \}$$
+$$\mu^*(A) := inf \{ \sum_{j=1}^{\infty} \rho(E_j) : E_j \in \mathcal{E}, A \subseteq \bigcup_{j=1}^{\infty} E_j \}$$
 
 （用 ℰ 中可数个集合覆盖 A，取下确界。）则 μ\* 是 X 上的一个**外测度**。
 
@@ -1095,7 +1095,7 @@ $$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)　\forall E \subseteq X$$
 设 μ* 是 X 上的外测度，ℳ 是全体 μ\*-可测集。则
 
 1. **ℳ 是一个 σ-代数**；
-2. **$$\mu^*|_\mathcal\{M\}$$ 是 (X, ℳ) 上的一个测度**（即 μ* 在 ℳ 上真的可加）；
+2. **$$\mu^*|_\mathcal{M}$$ 是 (X, ℳ) 上的一个测度**（即 μ* 在 ℳ 上真的可加）；
 3. 这个测度是**完备**的。
 
 这是整个测度论构造的枢纽：**外测度不必可加，但它的「可切集合」上就可加了**。
@@ -1111,10 +1111,10 @@ $$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)　\forall E \subseteq X$$
 
 设 𝔄 ⊆ 𝒫(X) 是**代数**，μ₀ 是 𝔄 上的**预测度**，μ* 是由 μ₀ 诱导的外测度（按上一条命题，取 ℰ = 𝔄、ρ = μ₀）。则
 
-1. $$\mu^*|_\mathfrak\{A\} = \mu_0$$
+1. $$\mu^*|_\mathfrak{A} = \mu_0$$
 2. **𝔄 中每个集合都是 μ\*-可测的**，因此
 
-$$\mathfrak\{A\} \subseteq \mathcal\{M\}(\mathfrak\{A\}) \subseteq \mathcal\{M\}$$
+$$\mathfrak{A} \subseteq \mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$$
 
 （ℳ 是全体 μ\*-可测集），于是 μ*|_ℳ 是 μ₀ 在 σ-代数 ℳ(𝔄) 上的扩张。
 
@@ -1133,7 +1133,7 @@ $$\mathfrak\{A\} \subseteq \mathcal\{M\}(\mathfrak\{A\}) \subseteq \mathcal\{M\}
 
 设 μ₀ 是代数 𝔄 上的预测度，μ := μ*|_ℳ 是它经 Carathéodory 得到的扩张。若 ν 是 ℳ(𝔄) 上**另一个**扩张 μ₀ 的测度，则
 
-$$\nu(E) \le \mu(E)　\forall E \in \mathcal\{M\}(\mathfrak\{A\})$$
+$$\nu(E) \le \mu(E)　\forall E \in \mathcal{M}(\mathfrak{A})$$
 
 且当 $$\mu(E) < \infty$$ 时等号成立；进而，若 μ 是 σ-有限的，则 $$\nu = \mu$$。
 
@@ -1148,7 +1148,7 @@ $$\nu(E) \le \mu(E)　\forall E \in \mathcal\{M\}(\mathfrak\{A\})$$
 #### F 给出的预测度　`prop.ls-premeasure`
 *命题*　命题：单调右连续的 F 给出半开区间上的预测度
 
-设 $$F : \mathbb\{R\} \to \mathbb\{R\}$$ 是**递增**且**右连续**的函数。在半开区间的全体上定义
+设 $$F : \mathbb{R} \to \mathbb{R}$$ 是**递增**且**右连续**的函数。在半开区间的全体上定义
 
 $$\mu_0( (a, b] ) = F(b) − F(a)$$
 
@@ -1165,7 +1165,7 @@ $$\mu_0( (a, b] ) = F(b) − F(a)$$
 #### F ↔ Borel 测度　`thm.ls-exists`
 *定理*　定理：每个单调右连续的 F 对应一个 Borel 测度（差常数意义下）
 
-对每个递增右连续的 $$F : \mathbb\{R\} \to \mathbb\{R\}$$，存在 ℝ 上的一个 Borel 测度 μ_F 使
+对每个递增右连续的 $$F : \mathbb{R} \to \mathbb{R}$$，存在 ℝ 上的一个 Borel 测度 μ_F 使
 
 $$\mu_F( (a, b] ) = F(b) − F(a)　\forall a < b$$
 
@@ -1204,13 +1204,13 @@ $$m( (a, b] ) = b − a$$
 
 设 (X, ℳ) 与 (Y, 𝒩) 是可测空间。函数 $$f : X \to Y$$ 是 **(ℳ, 𝒩)-可测的**，当且仅当每个可测集的原像可测：
 
-$$f^{-1}(E) \in \mathcal\{M\}　\forall E \in \mathcal\{N\}$$
+$$f^{-1}(E) \in \mathcal{M}　\forall E \in \mathcal{N}$$
 
 为什么用「原像」而不是「像」：原像对交、并、补全部保持（$$f^{-1}(\bigcup E_i) = \bigcup f^{-1}(E_i)$$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。
 
 等价说法（当 Y 是拓扑空间、𝒩 = 𝔅_Y 时）：f 可测 ⟺ 每个开集的原像可测。
 
-⚠ 「在 E 上可测」是相对说法：$$f$$ 在 E 上可测 ⟺ $$f|_E$$ 关于子空间 σ-代数 $$\mathcal\{M\}_E$$ 可测。
+⚠ 「在 E 上可测」是相对说法：$$f$$ 在 E 上可测 ⟺ $$f|_E$$ 关于子空间 σ-代数 $$\mathcal{M}_E$$ 可测。
 
 参考：Folland, Real Analysis, §2.1；Halmos, Measure Theory, §18
 
@@ -1221,7 +1221,7 @@ $$f^{-1}(E) \in \mathcal\{M\}　\forall E \in \mathcal\{N\}$$
 
 **(2) 只需验证生成元**：若 𝒩 = ℳ(ℰ)，则
 
-$$f : X \to Y 可测 \iff f^{-1}(E) \in \mathcal\{M\}　\forall E \in \mathcal\{E\}$$
+$$f : X \to Y 可测 \iff f^{-1}(E) \in \mathcal{M}　\forall E \in \mathcal{E}$$
 
 (1)：对 E ∈ 𝒪 有 $$(g∘f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。
 
@@ -1234,19 +1234,19 @@ $$f : X \to Y 可测 \iff f^{-1}(E) \in \mathcal\{M\}　\forall E \in \mathcal\{
 #### 连续 ⟹ Borel 可测　`cor.continuous-measurable`
 *推论*　推论：连续函数是 Borel 可测的
 
-设 X, Y 是拓扑空间，各配 Borel σ-代数 $$\mathfrak\{B\}_X, \mathfrak\{B\}_Y$$。则
+设 X, Y 是拓扑空间，各配 Borel σ-代数 $$\mathfrak{B}_X, \mathfrak{B}_Y$$。则
 
-$$f : X \to Y 连续 \implies f 是 (\mathfrak\{B\}_X, \mathfrak\{B\}_Y)-可测的$$
+$$f : X \to Y 连续 \implies f 是 (\mathfrak{B}_X, \mathfrak{B}_Y)-可测的$$
 
 连续的定义就是「开集的原像开」；而开集生成 𝔅_Y，用上一条的判定准则 (2) 立刻得到。
 
 #### Lebesgue 可测　`def.lebesgue-measurable`
 *定义*　Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）
 
-对 $$f : \mathbb\{R\} \to \mathbb\{C\}$$：
+对 $$f : \mathbb{R} \to \mathbb{C}$$：
 
-- 若 f 是 $$(\mathcal\{L\}, \mathfrak\{B\}_\mathbb\{C\})$$-可测，称 f **Lebesgue 可测**（ℒ 是 Lebesgue σ-代数）；
-- 若 f 是 $$(\mathfrak\{B\}_\mathbb\{R\}, \mathfrak\{B\}_\mathbb\{C\})$$-可测，称 f **Borel 可测**。
+- 若 f 是 $$(\mathcal{L}, \mathfrak{B}_\mathbb{C})$$-可测，称 f **Lebesgue 可测**（ℒ 是 Lebesgue σ-代数）；
+- 若 f 是 $$(\mathfrak{B}_\mathbb{R}, \mathfrak{B}_\mathbb{C})$$-可测，称 f **Borel 可测**。
 
 ⚠ **注意这里有个坑：两个 Lebesgue 可测函数的复合不一定 Lebesgue 可测。**
 
@@ -1261,11 +1261,11 @@ $$f : X \to Y 连续 \implies f 是 (\mathfrak\{B\}_X, \mathfrak\{B\}_Y)-可测�
 #### 积空间与实虚部　`prop.measurable-product-and-realimag`
 *命题*　命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测
 
-**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \prod_{\alpha} Y_\alpha$$，$$\mathcal\{N\} = ⊗_{\alpha} \mathcal\{N\}_\alpha$$，$$π_\alpha : Y \to Y_\alpha$$ 是投影。则
+**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \prod_{\alpha} Y_\alpha$$，$$\mathcal{N} = ⊗_{\alpha} \mathcal{N}_\alpha$$，$$π_\alpha : Y \to Y_\alpha$$ 是投影。则
 
 $$f : X \to Y 可测 \iff f_\alpha = π_\alpha ∘ f 可测（\forall\alpha \in A）$$
 
-**(2)** 特别地，$$f : X \to \mathbb\{C\}$$ 可测 ⟺ $$Re f$$ 与 $$Im f$$ 都可测。
+**(2)** 特别地，$$f : X \to \mathbb{C}$$ 可测 ⟺ $$Re f$$ 与 $$Im f$$ 都可测。
 
 (1) 的 (⟹)：投影 π_α 本身可测（π_α⁻¹(E_α) 是柱集），用复合保持。
 
@@ -1275,7 +1275,7 @@ $$f : X \to Y 可测 \iff f_\alpha = π_\alpha ∘ f 可测（\forall\alpha \in 
 
 
 
-$$\mathfrak\{B\}_\mathbb\{C\} = \mathfrak\{B\}_{\mathbb\{R\}^2} = \mathfrak\{B\}_\mathbb\{R\} ⊗ \mathfrak\{B\}_\mathbb\{R\}$$
+$$\mathfrak{B}_\mathbb{C} = \mathfrak{B}_{\mathbb{R}^2} = \mathfrak{B}_\mathbb{R} ⊗ \mathfrak{B}_\mathbb{R}$$
 
 
 
@@ -1308,11 +1308,11 @@ max 是 sup 的有限特例（把不够的地方补成 $$-\infty$$）。
 #### 简单函数　`def.simple-function`
 *定义*　简单函数（Simple Function）
 
-可测函数 $$\varphi : X \to \mathbb\{C\}$$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成
+可测函数 $$\varphi : X \to \mathbb{C}$$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成
 
 $$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}$$
 
-其中 $$a_j \in \mathbb\{C\}$$，$$E_j = \varphi^{-1}(\{a_j\}) \in \mathcal\{M\}$$ 两两不交。
+其中 $$a_j \in \mathbb{C}$$，$$E_j = \varphi^{-1}(\{a_j\}) \in \mathcal{M}$$ 两两不交。
 
 简单函数就是可测版本的「阶梯函数」—— 有限个「台阶」。
 
@@ -1329,7 +1329,7 @@ $$0 \le \varphi_1 \le \varphi_2 \le \cdots \le f，　\varphi_n \to f 逐点，$
 
 并且**在 f 有界的集合上还是一致收敛**。
 
-**(b)** 一般地（$$f : X \to \mathbb\{C\}$$ 可测），可取 $$\{\varphi_n\}$$ 简单使
+**(b)** 一般地（$$f : X \to \mathbb{C}$$ 可测），可取 $$\{\varphi_n\}$$ 简单使
 
 $$0 \le |\varphi_1| \le |\varphi_2| \le \cdots \le |f|，　\varphi_n \to f 逐点$$
 
@@ -1387,13 +1387,13 @@ $$\{f \ne g\} = F$$
 #### 完备化后可改在零集上　`prop.completion-measurable-function`
 *命题*　命题：完备化空间上的可测函数，几乎处处等于一个原空间可测函数
 
-设 (X, ℳ, μ) 是测度空间，$$(X, \mathcal\{M\}̄, \mū)$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\mathcal\{M\}̄$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使
+设 (X, ℳ, μ) 是测度空间，$$(X, \mathcal{M}̄, \mū)$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\mathcal{M}̄$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使
 
 $$f = g　\mū-a.e.$$
 
 直观：完备化只多加了零集的子集，所以 ℳ̄-可测函数与 ℳ-可测函数只差在零集上的取值。
 
-证明思路（笔记里写的）：先看 $$f = \chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \chi_{E′}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\{\varphi_n\} \to f$$，每个 $$\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\psi_n$$。把零集并起来得 $$N \in \mathcal\{M\}$$，$$\mu(N) = 0$$，$$N \supseteq \bigcup E_n$$，令
+证明思路（笔记里写的）：先看 $$f = \chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \chi_{E′}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\{\varphi_n\} \to f$$，每个 $$\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\psi_n$$。把零集并起来得 $$N \in \mathcal{M}$$，$$\mu(N) = 0$$，$$N \supseteq \bigcup E_n$$，令
 
 
 
@@ -1425,7 +1425,7 @@ $$L^+ := \{ f : X \to [0, +\infty] : f 可测 \}$$
 
 设 $$\varphi \in L^+$$ 是简单函数，写成标准形式
 
-$$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}，　a_j \ge 0，E_j \in \mathcal\{M\} 两两不交$$
+$$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}，　a_j \ge 0，E_j \in \mathcal{M} 两两不交$$
 
 则定义
 
@@ -1577,7 +1577,7 @@ a.e. 收敛时 $$lim inf f_n = f$$，直接套 Fatou 引理即可。
 #### 复函数的积分　`def.integral-complex`
 *定义*　复值函数的积分：正负部相减
 
-设 $$f : X \to \mathbb\{R\}̄$$ 可测，记正部与负部
+设 $$f : X \to \mathbb{R}̄$$ 可测，记正部与负部
 
 $$f^+ = \max_{f, 0}，　f^- = \max_{-f, 0}$$
 
@@ -1604,7 +1604,7 @@ $$f 可积 \iff \int |f| d\mu < \infty$$
 
 复值可测 $$f$$ 可积，当且仅当 $$\int |f| d\mu < \infty$$。可积函数全体记作
 
-$$L^1(\mu) = L^1(X, \mathcal\{M\}, \mu) = L^1(X, \mu)$$
+$$L^1(\mu) = L^1(X, \mathcal{M}, \mu) = L^1(X, \mu)$$
 
 ⭐ **可积 ⟺ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 |f| ∈ L⁺，一切非负情形的定理都能直接套用。
 
@@ -1619,7 +1619,7 @@ $$L^1(\mu) = L^1(X, \mathcal\{M\}, \mu) = L^1(X, \mu)$$
 
 $$X$$ 上可积的（实值）函数全体构成一个**实向量空间**，并且
 
-$$\int (af + bg) = a\int f + b\int g　\forall a, b \in \mathbb\{R\}$$
+$$\int (af + bg) = a\int f + b\int g　\forall a, b \in \mathbb{R}$$
 
 即 $$f \mapsto \int f$$ 是线性的。
 
@@ -1656,7 +1656,7 @@ $$\{x : f(x) \ne 0\}$$
 
 设 $$f, g \in L^1(\mu)$$。则下列三条等价：
 
-$$\int_E f d\mu = \int_E g d\mu　\forall E \in \mathcal\{M\}；$$
+$$\int_E f d\mu = \int_E g d\mu　\forall E \in \mathcal{M}；$$
 $$\int |f − g| d\mu = 0；$$
 $$f = g　\mu-a.e.$$
 
@@ -1734,7 +1734,7 @@ $$\int |f − g| d\mu < \varepsilon$$
 #### 交换极限/导数与积分　`thm.differentiate-under-integral`
 *定理*　定理：在积分号下取极限与求导
 
-设 $$f : X \times [a, b] \to \mathbb\{C\}$$（$$−\infty < a < b < \infty$$），$$f(\cdot, t)$$ 对每个 $$t \in [a, b]$$ 都可积。记
+设 $$f : X \times [a, b] \to \mathbb{C}$$（$$−\infty < a < b < \infty$$），$$f(\cdot, t)$$ 对每个 $$t \in [a, b]$$ 都可积。记
 
 $$F(t) := \int_X f(x, t) d\mu(x)$$
 
@@ -1757,7 +1757,7 @@ $$F'(t) = \int_X ∂f / ∂t(x, t) d\mu(x)$$
 #### 五种收敛　`def.convergence-modes`
 *定义*　收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹
 
-设 $$f_n, f : X \to \mathbb\{C\}$$ 可测，X 带测度 μ。
+设 $$f_n, f : X \to \mathbb{C}$$ 可测，X 带测度 μ。
 
 - **一致收敛** $$f_n ⇉ f$$：$$\forall\varepsilon > 0, \exists N > 0, \forall x \in X, n > N \implies |f_n(x) − f(x)| < \varepsilon$$
 - **几乎处处收敛** $$f_n \to f$$ a.e.：存在零集 E 使 $$f_n(x) \to f(x)$$ 对一切 $$x \in X \setminus E$$ 成立
@@ -1874,7 +1874,7 @@ $$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon，且 f_n
 #### Lusin 定理　`cor.lusin`
 *推论*　Lusin 定理：可测函数几乎处处连续
 
-设 $$f : [a, b] \to \mathbb\{C\}$$ 是 Lebesgue 可测的。则对任意 ε > 0，存在**紧集** $$E \subseteq [a, b]$$ 使
+设 $$f : [a, b] \to \mathbb{C}$$ 是 Lebesgue 可测的。则对任意 ε > 0，存在**紧集** $$E \subseteq [a, b]$$ 使
 
 $$\mu(E^c) < \varepsilon，且 f|_E 连续$$
 
@@ -1891,7 +1891,7 @@ $$\mu(E^c) < \varepsilon，且 f|_E 连续$$
 
 设 (X, ℳ, μ) 与 (Y, 𝒩, ν) 是测度空间。
 
-**① 矩形**：形如 $$A \times B$$（$$A \in \mathcal\{M\}$$，$$B \in \mathcal\{N\}$$）的集合叫（可测）矩形。全体矩形**生成** $$\mathcal\{M\} ⊗ \mathcal\{N\}$$。
+**① 矩形**：形如 $$A \times B$$（$$A \in \mathcal{M}$$，$$B \in \mathcal{N}$$）的集合叫（可测）矩形。全体矩形**生成** $$\mathcal{M} ⊗ \mathcal{N}$$。
 
 **② 矩形上的预测度**：令 𝒜 为**矩形的有限不交并**全体。对
 
@@ -1903,7 +1903,7 @@ $$π(E) := \sum_{j=1}^{n} \mu(A_j) \nu(B_j)$$
 
 则 π 是代数 𝒜 上的**预测度**。
 
-**③ 扩张**：π 诱导 X × Y 上的外测度，限制在 $$\mathcal\{M\} ⊗ \mathcal\{N\}$$ 上得到一个测度，记作
+**③ 扩张**：π 诱导 X × Y 上的外测度，限制在 $$\mathcal{M} ⊗ \mathcal{N}$$ 上得到一个测度，记作
 
 $$\mu \times \nu$$
 
@@ -1927,7 +1927,7 @@ $$E^y := \{x \in X : (x, y) \in E\}$$
 
 分别叫 E 在 x 处的**纵截口**与在 y 处的**横截口**。
 
-类似地，对函数 $$f : X \times Y \to \mathbb\{C\}$$ 定义
+类似地，对函数 $$f : X \times Y \to \mathbb{C}$$ 定义
 
 $$f_x(y) := f^y(x) := f(x, y)$$
 
@@ -1940,15 +1940,15 @@ $$f_x(y) := f^y(x) := f(x, y)$$
 #### 截口可测　`prop.section-measurable`
 *命题*　命题：可测集的截口可测，可测函数的截口可测
 
-**(a)** 若 $$E \in \mathcal\{M\} ⊗ \mathcal\{N\}$$，则对一切 $$x \in X$$ 有 $$E_x \in \mathcal\{N\}$$，对一切 $$y \in Y$$ 有 $$E^y \in \mathcal\{M\}$$。
+**(a)** 若 $$E \in \mathcal{M} ⊗ \mathcal{N}$$，则对一切 $$x \in X$$ 有 $$E_x \in \mathcal{N}$$，对一切 $$y \in Y$$ 有 $$E^y \in \mathcal{M}$$。
 
-**(b)** 若 $$f$$ 是 $$\mathcal\{M\} ⊗ \mathcal\{N\}$$-可测的，则对一切 $$x$$ 有 $$f_x$$ 是 $$\mathcal\{N\}$$-可测的，对一切 $$y$$ 有 $$f^y$$ 是 $$\mathcal\{M\}$$-可测的。
+**(b)** 若 $$f$$ 是 $$\mathcal{M} ⊗ \mathcal{N}$$-可测的，则对一切 $$x$$ 有 $$f_x$$ 是 $$\mathcal{N}$$-可测的，对一切 $$y$$ 有 $$f^y$$ 是 $$\mathcal{M}$$-可测的。
 
 证明是一个「先看矩形、再看 σ-代数」的标准套路：令
 
 
 
-$$\mathcal\{R\} = \{E \subseteq X \times Y : E_x \in \mathcal\{N\} 且 E^y \in \mathcal\{M\}　\forall(x, y)\}$$
+$$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N} 且 E^y \in \mathcal{M}　\forall(x, y)\}$$
 
 
 
@@ -1971,7 +1971,7 @@ $$f_x^{-1}(B) = (f^{-1}(B))_x，　f^{y-1}(B) = (f^{-1}(B))^y$$
 
 若 𝒜 是一个**代数**，则由 𝒜 生成的单调类就是由 𝒜 生成的 σ-代数：
 
-$$\mathcal\{A\} 是代数 \implies \mathfrak\{m\}(\mathcal\{A\}) = \mathcal\{M\}(\mathcal\{A\})$$
+$$\mathcal{A} 是代数 \implies \mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$$
 
 ⭐ 这一条是证明「某个 σ-代数里所有集合都满足性质 P」的**标准武器**，用法固定两步：
 
@@ -1994,7 +1994,7 @@ $$\mathcal\{A\} 是代数 \implies \mathfrak\{m\}(\mathcal\{A\}) = \mathcal\{M\}
 #### 乘积测度由截口给出　`thm.product-measure-sections`
 *定理*　定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)
 
-设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是 **σ-有限**的，$$E \in \mathcal\{M\} ⊗ \mathcal\{N\}$$。则
+设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是 **σ-有限**的，$$E \in \mathcal{M} ⊗ \mathcal{N}$$。则
 
 - $$x \mapsto \nu(E_x)$$ 在 X 上可测；
 - $$y \mapsto \mu(E^y)$$ 在 Y 上可测；
@@ -2009,7 +2009,7 @@ $$\mu \times \nu(E) = \int_X \nu(E_x) d\mu(x) = \int_Y \mu(E^y) d\nu(y)$$
 
 
 
-$$\mathcal\{C\} = \{E \in \mathcal\{M\} ⊗ \mathcal\{N\} : 上面两条都成立\}$$
+$$\mathcal{C} = \{E \in \mathcal{M} ⊗ \mathcal{N} : 上面两条都成立\}$$
 
 
 
@@ -2019,7 +2019,7 @@ $$\mathcal\{C\} = \{E \in \mathcal\{M\} ⊗ \mathcal\{N\} : 上面两条都成�
 
 
 
-于是 𝒞 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\mathcal\{M\} ⊗ \mathcal\{N\}$$。
+于是 𝒞 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\mathcal{M} ⊗ \mathcal{N}$$。
 
 最后把「有限」推广到「σ-有限」：取 $$X \times Y = \bigcup (X_i \times Y_i)$$，对每个 $$E \cap (X_i \times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。
 
@@ -2057,9 +2057,9 @@ $$\int f d(\mu \times \nu) = \int_X ( \int_Y f(x, y) d\nu(y) ) d\mu(x) = \int_Y 
 #### 完备情形的 F–T　`thm.fubini-complete`
 *定理*　定理：完备化的乘积测度上，Fubini–Tonelli 仍然成立
 
-设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是**完备**的 σ-有限测度空间，$$(X \times Y, \mathcal\{L\}, \lambda)$$ 是
+设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是**完备**的 σ-有限测度空间，$$(X \times Y, \mathcal{L}, \lambda)$$ 是
 
-$$(X \times Y, \mathcal\{M\} ⊗ \mathcal\{N\}, \mu \times \nu)$$
+$$(X \times Y, \mathcal{M} ⊗ \mathcal{N}, \mu \times \nu)$$
 
 的**完备化**。设 f 是 ℒ-可测的。
 
@@ -2080,7 +2080,7 @@ $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\n
 #### 乘积测度通常不完备　`prop.product-incomplete`
 *命题*　注记：μ、ν 完备时，μ × ν 常常不完备
 
-即使 μ 与 ν 都**完备**，$$\mu \times \nu$$ 也**经常是不完备的**：存在 $$E \in \mathcal\{M\} ⊗ \mathcal\{N\}$$ 使 $$\mu \times \nu(E) = 0$$，但 E 有子集不属于 $$\mathcal\{M\} ⊗ \mathcal\{N\}$$。
+即使 μ 与 ν 都**完备**，$$\mu \times \nu$$ 也**经常是不完备的**：存在 $$E \in \mathcal{M} ⊗ \mathcal{N}$$ 使 $$\mu \times \nu(E) = 0$$，但 E 有子集不属于 $$\mathcal{M} ⊗ \mathcal{N}$$。
 
 这就是为什么必须单独有「完备情形的 F–T」：实际用的时候（比如 ℝ² 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 μ×ν。
 
@@ -2094,11 +2094,11 @@ $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\n
 #### 符号测度　`def.signed-measure`
 *定义*　符号测度（Signed Measure）
 
-设 (X, ℳ) 是可测空间。$$\nu : \mathcal\{M\} \to [−\infty, +\infty]$$ 是**符号测度**，当且仅当
+设 (X, ℳ) 是可测空间。$$\nu : \mathcal{M} \to [−\infty, +\infty]$$ 是**符号测度**，当且仅当
 
 - $$\nu(\emptyset) = 0$$；
 - $$\nu$$ **至多取到 ±∞ 中的一个**（不能同时取到 +∞ 与 −∞）；
-- 对两两不交的 $$\{E_j\} \subseteq \mathcal\{M\}$$：
+- 对两两不交的 $$\{E_j\} \subseteq \mathcal{M}$$：
 
 $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j)，且右边的级数绝对收敛（当 |\nu(\bigsqcup E_j)| < \infty 时）$$
 
@@ -2121,7 +2121,7 @@ $$\nu(E) := \int_E f d\mu$$
 #### 正集 / 负集 / 零集　`def.positive-negative-null`
 *定义*　正集 / 负集 / 零集（Positive, Negative, Null Set）
 
-设 ν 是符号测度，$$E \in \mathcal\{M\}$$。
+设 ν 是符号测度，$$E \in \mathcal{M}$$。
 
 - E 是**正的**：$$\nu(F) \ge 0$$ 对一切可测 $$F \subseteq E$$ 成立；
 - E 是**负的**：$$\nu(F) \le 0$$ 对一切可测 $$F \subseteq E$$ 成立；
@@ -2150,7 +2150,7 @@ $$\nu(E) := \int_E f d\mu$$
 #### Hahn 分解定理　`thm.hahn-decomposition`
 *定理*　Hahn 分解定理（Hahn Decomposition Theorem）
 
-设 ν 是 $$(X, \mathcal\{M\})$$ 上的符号测度。则存在 $$P, N \in \mathcal\{M\}$$ 使
+设 ν 是 $$(X, \mathcal{M})$$ 上的符号测度。则存在 $$P, N \in \mathcal{M}$$ 使
 
 $$P \cup N = X，　P \cap N = \emptyset，$$
 
@@ -2169,7 +2169,7 @@ $$P \cup N = X，　P \cap N = \emptyset，$$
 #### 相互奇异　`def.mutually-singular`
 *定义*　相互奇异 / 互相垂直（Mutually Singular μ ⊥ ν）
 
-两个测度（或符号测度）$$\mu, \nu$$ **相互奇异**，记作 $$\mu ⊥ \nu$$，当且仅当存在 $$E, F \in \mathcal\{M\}$$ 使
+两个测度（或符号测度）$$\mu, \nu$$ **相互奇异**，记作 $$\mu ⊥ \nu$$，当且仅当存在 $$E, F \in \mathcal{M}$$ 使
 
 $$E \cap F = \emptyset，　E \cup F = X，$$
 
@@ -2221,7 +2221,7 @@ $$\nu ≪ \mu，$$
 
 当且仅当**每个 μ-零集都是 ν-零集**：
 
-$$\forall E \in \mathcal\{M\}, \mu(E) = 0 \implies \nu(E) = 0$$
+$$\forall E \in \mathcal{M}, \mu(E) = 0 \implies \nu(E) = 0$$
 
 一句话：**μ 认为「没有」的地方，ν 也必须认为「没有」**。
 
@@ -2299,7 +2299,7 @@ $$\forall\varepsilon > 0, \exists\delta > 0 : \mu(E) < \delta \implies | \int_E 
 设 ν、μ 都是**有限**测度。则二者必有一个成立：
 
 - $$\nu ⊥ \mu$$；或
-- 存在 $$\varepsilon > 0$$ 与 $$E \in \mathcal\{M\}$$，$$\mu(E) > 0$$，使 $$\nu \ge \varepsilon \mu$$ 在 E 上成立（即 $$\nu(F) \ge \varepsilon \mu(F)$$ 对一切可测 $$F \subseteq E$$）。
+- 存在 $$\varepsilon > 0$$ 与 $$E \in \mathcal{M}$$，$$\mu(E) > 0$$，使 $$\nu \ge \varepsilon \mu$$ 在 E 上成立（即 $$\nu(F) \ge \varepsilon \mu(F)$$ 对一切可测 $$F \subseteq E$$）。
 
 这是 Radon–Nikodym 证明里的**关键一步**：它提供了一个「往下顶」的 ε，从而可以造出那个上确界函数 f。
 
@@ -2345,7 +2345,7 @@ $$d\rho = f d\mu$$
 
 设 $$\nu ≪ \mu$$（都是 σ-有限的）。取定理里的 $$f$$，称
 
-$$f = \frac\{d\nu\}\{d\mu\}$$
+$$f = \frac{d\nu}{d\mu}$$
 
 为 ν 关于 μ 的 **Radon–Nikodym 导数**（注意它定义在「μ-本质相同的函数类」上，不是单个函数）。
 
@@ -2366,13 +2366,13 @@ $$f = \frac\{d\nu\}\{d\mu\}$$
 
 $$\nu ≪ \mu，　\mu ≪ \lambda$$
 
-**(a)** 若 $$g \in L^1(\nu)$$，则 $$g \frac\{d\nu\}\{d\mu\} \in L^1(\mu)$$，且
+**(a)** 若 $$g \in L^1(\nu)$$，则 $$g \frac{d\nu}{d\mu} \in L^1(\mu)$$，且
 
-$$\int g d\nu = \int g \frac\{d\nu\}\{d\mu\} d\mu$$
+$$\int g d\nu = \int g \frac{d\nu}{d\mu} d\mu$$
 
 **(b)** 此时 $$\nu ≪ \lambda$$，且**链式法则**成立：
 
-$$\frac\{d\nu\}\{d\lambda\} = \frac\{d\nu\}\{d\mu\} \cdot \frac\{d\mu\}\{d\lambda\}　(\lambda-a.e.)$$
+$$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}　(\lambda-a.e.)$$
 
 (a) 就是「换元公式」：把对 ν 的积分换成对 μ 的积分，代价是乘上 RN 导数。它对指示函数成立、于是对简单函数成立、再用单调收敛到 L⁺、最后到 L¹(ν)。
 
@@ -2380,11 +2380,11 @@ $$\frac\{d\nu\}\{d\lambda\} = \frac\{d\nu\}\{d\mu\} \cdot \frac\{d\mu\}\{d\lambd
 
 
 
-$$\nu(E) = \int_E \frac\{d\nu\}\{d\mu\} d\mu = \int_E \frac\{d\nu\}\{d\mu\} \cdot \frac\{d\mu\}\{d\lambda\} d\lambda$$
+$$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda} d\lambda$$
 
 
 
-两边对照 $$\nu(E) = \int_E \frac\{d\nu\}\{d\lambda\} d\lambda$$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。
+两边对照 $$\nu(E) = \int_E \frac{d\nu}{d\lambda} d\lambda$$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。
 
 参考：Folland, Real Analysis, Theorem 3.9
 
@@ -2393,9 +2393,9 @@ $$\nu(E) = \int_E \frac\{d\nu\}\{d\mu\} d\mu = \int_E \frac\{d\nu\}\{d\mu\} \cdo
 
 若 $$\mu ≪ \lambda$$ 且 $$\lambda ≪ \mu$$（两个 σ-有限测度互为绝对连续），则
 
-$$\frac\{d\mu\}\{d\lambda\} \cdot \frac\{d\lambda\}\{d\mu\} = 1　a.e.$$
+$$\frac{d\mu}{d\lambda} \cdot \frac{d\lambda}{d\mu} = 1　a.e.$$
 
-两条链式法则一拼：$$d\mu / d\mu = \frac\{d\mu\}\{d\lambda\}\cdot\frac\{d\lambda\}\{d\mu\}$$，而 $$d\mu / d\mu ≡ 1$$。
+两条链式法则一拼：$$d\mu / d\mu = \frac{d\mu}{d\lambda}\cdot\frac{d\lambda}{d\mu}$$，而 $$d\mu / d\mu ≡ 1$$。
 
 参考：Folland, Real Analysis, Theorem 3.9
 
@@ -2404,13 +2404,13 @@ $$\frac\{d\mu\}\{d\lambda\} \cdot \frac\{d\lambda\}\{d\mu\} = 1　a.e.$$
 
 可测空间 (X, ℳ) 上的**复测度**是一个映射
 
-$$\nu : \mathcal\{M\} \to \mathbb\{C\}$$
+$$\nu : \mathcal{M} \to \mathbb{C}$$
 
 满足
 
 $$\nu(\emptyset) = 0，$$
 
-且对两两不交的 $$\{E_j\} \subseteq \mathcal\{M\}$$：
+且对两两不交的 $$\{E_j\} \subseteq \mathcal{M}$$：
 
 $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j)，右边的级数绝对收敛$$
 
@@ -2440,7 +2440,7 @@ $$d\nu = d\lambda + f d\mu，　\lambda ⊥ \mu，$$
 
 设 ν 是复测度（或符号测度），$$|\nu|$$ 是它的全变差。则
 
-**(a)** $$|\nu(E)| \le |\nu|(E)$$ 对一切 $$E \in \mathcal\{M\}$$ 成立；
+**(a)** $$|\nu(E)| \le |\nu|(E)$$ 对一切 $$E \in \mathcal{M}$$ 成立；
 
 **(b)** 若 $$d\nu = f d\mu$$（即 ν ≪ μ）则 $$d|\nu| = |f| d\mu$$，即
 
@@ -2450,7 +2450,7 @@ $$|\nu|(E) = \int_E |f| d\mu$$
 
 
 
-$$|f_1| \frac\{d\mu_1\}\{d\rho\} = |f_2| \frac\{d\mu_2\}\{d\rho\}　\rho-a.e.$$
+$$|f_1| \frac{d\mu_1}{d\rho} = |f_2| \frac{d\mu_2}{d\rho}　\rho-a.e.$$
 
 
 
@@ -2489,7 +2489,7 @@ $$| \int f d\nu | \le \int |f| d|\nu|$$
 #### 覆盖引理　`lem.covering`
 *引理*　覆盖引理：开球族里能挑出不交子族，三倍膨胀仍覆盖
 
-设 ℰ 是一族 ℝⁿ 中的开球，$$U = \bigcup\mathcal\{E\}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, …, B_k$$ 使
+设 ℰ 是一族 ℝⁿ 中的开球，$$U = \bigcup\mathcal{E}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, …, B_k$$ 使
 
 $$\sum_{j=1}^{k} m(B_j) > 3^{-n} c$$
 
@@ -2497,7 +2497,7 @@ $$\sum_{j=1}^{k} m(B_j) > 3^{-n} c$$
 
 证明的挑法（笔记里的原话）：先取**半径最大**的球 $$B_1$$；再取与 $$B_1$$ 不交的、半径最大的球 $$B_2$$；依此类推。
 
-为什么这样挑就够了：若某个 $$A_i \in \mathcal\{E\}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \subseteq 3B_j$$，于是 $$K \subseteq \bigcup_j 3B_j$$。
+为什么这样挑就够了：若某个 $$A_i \in \mathcal{E}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \subseteq 3B_j$$，于是 $$K \subseteq \bigcup_j 3B_j$$。
 
 剩下的就是计数：
 
@@ -2514,11 +2514,11 @@ $$c < m(K) \le 3^n \sum_j m(B_j)　\implies　\sum_j m(B_j) > 3^{-n} c$$
 #### 局部可积　`def.locally-integrable`
 *定义*　局部可积函数 L¹ₗoc
 
-可测函数 $$f : \mathbb\{R\}^n \to \mathbb\{C\}$$ 是**局部可积的**，当且仅当
+可测函数 $$f : \mathbb{R}^n \to \mathbb{C}$$ 是**局部可积的**，当且仅当
 
-$$\int_K |f(x)| dx < \infty　对每个有界可测集 K \subseteq \mathbb\{R\}^n$$
+$$\int_K |f(x)| dx < \infty　对每个有界可测集 K \subseteq \mathbb{R}^n$$
 
-局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\mathbb\{R\}^n)$$）。
+局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\mathbb{R}^n)$$）。
 
 直觉：$$f$$ 可能「在无穷远处爆掉」，但在每个有限范围里都还好。
 
@@ -2531,9 +2531,9 @@ $$\int_K |f(x)| dx < \infty　对每个有界可测集 K \subseteq \mathbb\{R\}^
 #### 平均算子 Aᵣ　`def.average-operator`
 *定义*　平均算子（Averaging Operator Aᵣ f）
 
-设 $$f \in L^1_{loc}$$，$$x \in \mathbb\{R\}^n$$，$$r > 0$$。定义
+设 $$f \in L^1_{loc}$$，$$x \in \mathbb{R}^n$$，$$r > 0$$。定义
 
-$$A_r f(x) := \frac\{1\}\{m(B(r, x))\} \int_{B(r, x)} f(y) dy$$
+$$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
 
 即 f 在以 x 为心、r 为半径的球上的**平均值**。
 
@@ -2552,7 +2552,7 @@ $$A_r f(x) := \frac\{1\}\{m(B(r, x))\} \int_{B(r, x)} f(y) dy$$
 
 
 
-$$\int_{B(r, x)} f(y) dy = \int_{\mathbb\{R\}^n} \chi_{B(r, x)}(y) f(y) dy$$
+$$\int_{B(r, x)} f(y) dy = \int_{\mathbb{R}^n} \chi_{B(r, x)}(y) f(y) dy$$
 
 
 
@@ -2579,7 +2579,7 @@ $$\int_{B(r, x)} f(y) dy = \int_{\mathbb\{R\}^n} \chi_{B(r, x)}(y) f(y) dy$$
 
 设 $$f \in L^1_{loc}$$。定义
 
-$$Hf(x) := \sup_{r > 0} \frac\{1\}\{m(B(r, x))\} \int_{B(r, x)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
+$$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
 
 称为 f 的 **Hardy–Littlewood 极大函数**。
 
@@ -2611,7 +2611,7 @@ $$m(\{x : Hf(x) > \alpha\}) \le (C/\alpha)\cdot\int |f(x)| dx$$
 
 设 $$f \in L^1_{loc}$$。则
 
-$$\lim_{r\to0} A_r f(x) = f(x)　对 a.e. x \in \mathbb\{R\}^n$$
+$$\lim_{r\to0} A_r f(x) = f(x)　对 a.e. x \in \mathbb{R}^n$$
 
 ⭐ 一句话：**可积函数几乎处处等于自己局部平均值的极限**。
 
@@ -2626,7 +2626,7 @@ $$\lim_{r\to0} A_r f(x) = f(x)　对 a.e. x \in \mathbb\{R\}^n$$
 
 设 $$f \in L^1_{loc}$$。定义
 
-$$L_f := \{ x : \lim_{r\to0} \frac\{1\}\{m(B(r, x))\} \int_{B(r, x)} |f(y) − f(x)| dy = 0 \}$$
+$$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y) − f(x)| dy = 0 \}$$
 
 称为 f 的 **Lebesgue 集**。
 
@@ -2653,7 +2653,7 @@ $$m(L_f^c) = 0$$
 
 
 
-$$\lim_{r\to0} \frac\{1\}\{m(B(r,x))\} \int_{B(r,x)} |f(y) − f(x)| dy \le |f(x) − c| + \varepsilon < 2\varepsilon$$
+$$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) − f(x)| dy \le |f(x) − c| + \varepsilon < 2\varepsilon$$
 
 
 
@@ -2666,7 +2666,7 @@ $$\lim_{r\to0} \frac\{1\}\{m(B(r,x))\} \int_{B(r,x)} |f(y) − f(x)| dy \le |f(x
 #### 可缩族　`def.shrinks-nicely`
 *定义*　可缩地趋于 x（Shrinks Nicely）
 
-$$\mathbb\{R\}^n$$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当
+$$\mathbb{R}^n$$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当
 
 · $$E_r \subseteq B(r, x)$$ 对每个 r 成立；
 · 存在 $$\alpha > 0$$，使 $$m(E_r) > \alpha\cdot m(B(r, x))$$ 对一切 r 成立。
@@ -2686,14 +2686,14 @@ $$\mathbb\{R\}^n$$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋�
 
 设 $$f \in L^1_{loc}$$，$$x \in L_f$$。则对**每一个**可缩地趋于 x 的族 $$\{E_r\}_{r>0}$$：
 
-$$\lim_{r\to0} \frac\{1\}\{m(E_r)\} \int_{E_r} |f(y) − f(x)| dy = 0，$$
-$$\lim_{r\to0} \frac\{1\}\{m(E_r)\} \int_{E_r} f(y) dy = f(x)$$
+$$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} |f(y) − f(x)| dy = 0，$$
+$$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} f(y) dy = f(x)$$
 
 证明是一行估计：由 $$E_r \subseteq B(r,x)$$ 与 $$m(E_r) > \alpha m(B(r,x))$$，
 
 
 
-$$\frac\{1\}\{m(E_r)\} \int_{E_r} |f − f(x)| \le \frac\{1\}\{m(E_r)\} \int_{B(r,x)} |f − f(x)| \le (1/\alpha)\cdot m(B(r,x)) \int_{B(r,x)} |f − f(x)|$$
+$$\frac{1}{m(E_r)} \int_{E_r} |f − f(x)| \le \frac{1}{m(E_r)} \int_{B(r,x)} |f − f(x)| \le (1/\alpha)\cdot m(B(r,x)) \int_{B(r,x)} |f − f(x)|$$
 
 
 
@@ -2709,7 +2709,7 @@ $$\frac\{1\}\{m(E_r)\} \int_{E_r} |f − f(x)| \le \frac\{1\}\{m(E_r)\} \int_{B(
 ℝⁿ 上的 Borel 测度 ν 是**正则的**，当且仅当
 
 · $$\nu(K) < \infty$$ 对每个紧集 K 成立；
-· $$\nu(E) = inf\{ \nu(U) : U 开，E \subseteq U \}$$ 对每个 $$E \in \mathfrak\{B\}_{\mathbb\{R\}^n}$$ 成立（**外正则**）。
+· $$\nu(E) = inf\{ \nu(U) : U 开，E \subseteq U \}$$ 对每个 $$E \in \mathfrak{B}_{\mathbb{R}^n}$$ 成立（**外正则**）。
 
 符号测度或复测度 ν 叫正则 ⟺ $$|\nu|$$ 正则。
 
@@ -2717,14 +2717,14 @@ $$\frac\{1\}\{m(E_r)\} \int_{E_r} |f − f(x)| \le \frac\{1\}\{m(E_r)\} \int_{B(
 
 **每个正则测度都是 σ-有限的**（用紧集的可数覆盖）。
 
-$$f \in L^+(\mathbb\{R\}^n)$$ 时，$$f\cdot dm$$ 正则 ⟺ $$f \in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。
+$$f \in L^+(\mathbb{R}^n)$$ 时，$$f\cdot dm$$ 正则 ⟺ $$f \in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。
 
 参考：Folland, Real Analysis, §7.2
 
 #### RN 导数的点态公式　`thm.rn-pointwise`
 *定理*　定理：ν(Eᵣ)/m(Eᵣ) → f(x) a.e.，其中 dν = dλ + f dm
 
-设 ν 是 ℝⁿ 上的**正则**符号/复 Borel 测度，$$d\nu = d\lambda + f\cdot dm$$ 是它关于 Lebesgue 测度 m 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \in \mathbb\{R\}^n$$，
+设 ν 是 ℝⁿ 上的**正则**符号/复 Borel 测度，$$d\nu = d\lambda + f\cdot dm$$ 是它关于 Lebesgue 测度 m 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \in \mathbb{R}^n$$，
 
 $$\lim_{r\to0} \nu(E_r) / m(E_r) = f(x)$$
 
@@ -2744,7 +2744,7 @@ $$f(x) = \lim_{r\to0} \nu(B(r, x)) / m(B(r, x))$$
 
 
 
-$$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac\{1\}\{m(E_r)\} \int_{E_r} f\cdot dm$$
+$$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac{1}{m(E_r)} \int_{E_r} f\cdot dm$$
 
 
 
@@ -2758,7 +2758,7 @@ $$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac\{1\}\{m(E_r)\} \int_{E_r} f\
 #### 单调函数几乎处处可导　`thm.monotone-differentiable`
 *定理*　定理：单调函数几乎处处可导，且不连续点可数
 
-设 $$F : \mathbb\{R\} \to \mathbb\{R\}$$ 递增，$$G(x) := F(x+)$$（右极限）。则
+设 $$F : \mathbb{R} \to \mathbb{R}$$ 递增，$$G(x) := F(x+)$$（右极限）。则
 
 **(a)** F 的不连续点至多可数；
 
@@ -2793,11 +2793,11 @@ $$0 \le H(x+h) / h \le (F̄(x+h) − F̄(x)) / h　(h > 0)$$
 #### 有界变差 BV　`def.bounded-variation`
 *定义*　全变差与有界变差函数（Total Variation, BV）
 
-设 $$F : \mathbb\{R\} \to \mathbb\{C\}$$。定义它的**全变差函数**
+设 $$F : \mathbb{R} \to \mathbb{C}$$。定义它的**全变差函数**
 
-$$T_F(x) := sup \{ \sum_{j=1}^{n} |F(x_j) − F(x_{j-1})| : n \in \mathbb\{N\}, −\infty < x_0 < \cdots < x_n = x \}$$
+$$T_F(x) := sup \{ \sum_{j=1}^{n} |F(x_j) − F(x_{j-1})| : n \in \mathbb{N}, −\infty < x_0 < \cdots < x_n = x \}$$
 
-$$T_F$$ 是递增的 $$\mathbb\{R\} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 F 是**有界变差的**，这类函数全体记作 **BV**。
+$$T_F$$ 是递增的 $$\mathbb{R} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 F 是**有界变差的**，这类函数全体记作 **BV**。
 
 $$T_F(b) − T_F(a)$$ 称为 F 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。
 
@@ -2812,7 +2812,7 @@ $$T_F(b) − T_F(a)$$ 称为 F 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有
 #### BV 的例子与基本性质　`prop.bv-examples`
 *命题*　命题：BV 的几个例子与封闭性
 
-1. 若 $$F : \mathbb\{R\} \to \mathbb\{R\}$$ **有界递增**，则 $$F \in BV$$（此时 $$T_F = F − F(-\infty)$$）。
+1. 若 $$F : \mathbb{R} \to \mathbb{R}$$ **有界递增**，则 $$F \in BV$$（此时 $$T_F = F − F(-\infty)$$）。
 
 2. $$BV$$ 是 ℂ-向量空间。
 
@@ -2858,7 +2858,7 @@ $$T_F(y) ± F(y) \ge \sum_j |F(x_j) − F(x_{j−1})| + (F(y) − F(x)) ± F(x) 
 
 **(a)** $$F \in BV \iff Re F \in BV 且 Im F \in BV$$。
 
-**(b)** 设 $$F : \mathbb\{R\} \to \mathbb\{R\}$$。则
+**(b)** 设 $$F : \mathbb{R} \to \mathbb{R}$$。则
 
 $$F \in BV \iff F = G − H，其中 G, H 都是有界递增函数$$
 
@@ -2883,7 +2883,7 @@ $$F = (1/2)(T_F + F) − (1/2)(T_F − F)$$
 
 设 $$F \in BV$$。则
 
-**(c)** 对每个 $$x \in \mathbb\{R\}$$，$$F(x+)$$ 与 $$F(x−)$$ 都存在；$$F(±\infty)$$ 也存在；
+**(c)** 对每个 $$x \in \mathbb{R}$$，$$F(x+)$$ 与 $$F(x−)$$ 都存在；$$F(±\infty)$$ 也存在；
 
 **(d)** F 的不连续点至多可数；
 
@@ -3009,7 +3009,7 @@ $$\mu_F ≪ m \iff F(x) = \int_{-\infty}^{x} F′(t) dt$$
 #### 绝对连续函数　`def.ac-function`
 *定义*　绝对连续函数 AC（Absolutely Continuous Function）
 
-函数 $$F : [a, b] \to \mathbb\{C\}$$ 是**绝对连续的**，当且仅当
+函数 $$F : [a, b] \to \mathbb{C}$$ 是**绝对连续的**，当且仅当
 
 $$\forall\varepsilon > 0, \exists\delta > 0 : 任意有限个两两不交的区间 (a_j, b_j) \subseteq [a, b] 满足 \sum(b_j − a_j) < \delta，就一定有 \sum|F(b_j) − F(a_j)| < \varepsilon$$
 
@@ -3028,7 +3028,7 @@ $$F 绝对连续 \iff \mu_F ≪ m$$
 
 **(⟸)** 由测度的绝对连续的 ε–δ 刻画：$$\mu_F ≪ m$$ 给出「$$m(E) < \delta \implies |\mu_F(E)| < \varepsilon$$」。取 E 为区间的有限不交并，就直接得到函数版的绝对连续性。
 
-**(⟹)** 设 $$E \in \mathfrak\{B\}_\mathbb\{R\}$$ 且 $$m(E) = 0$$。要证 $$\mu_F(E) = 0$$。取递减开集列 $$U_1 ⊃ U_2 ⊃ \cdots ⊃ E$$ 使 $$m(U_k) < \delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \delta$$ 得 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性与 $$\bigcap U_k = E$$ 得 $$|\mu_F(E)| \le \varepsilon$$。由 ε 任意，$$\mu_F(E) = 0$$。∎
+**(⟹)** 设 $$E \in \mathfrak{B}_\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\mu_F(E) = 0$$。取递减开集列 $$U_1 ⊃ U_2 ⊃ \cdots ⊃ E$$ 使 $$m(U_k) < \delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \delta$$ 得 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性与 $$\bigcap U_k = E$$ 得 $$|\mu_F(E)| \le \varepsilon$$。由 ε 任意，$$\mu_F(E) = 0$$。∎
 
 ⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。
 
@@ -3067,7 +3067,7 @@ $$AC([a, b]) \subseteq BV([a, b])$$
 #### 微积分基本定理（Lebesgue 版）　`thm.ftc-lebesgue`
 *定理*　定理（TFAE）：绝对连续 ⟺ 是 L¹ 函数的积分 ⟺ 导数的积分还原
 
-设 $$F : [a, b] \to \mathbb\{C\}$$，区间紧。则下列三条**彼此等价**：
+设 $$F : [a, b] \to \mathbb{C}$$，区间紧。则下列三条**彼此等价**：
 
 **(a)** F 在 $$[a, b]$$ 上**绝对连续**；
 
@@ -3095,13 +3095,13 @@ $$F(x) − F(a) = \int_a^x F′(t) dt$$
 #### L^p 范数　`def.lp-norm`
 *定义*　L^p 范数与 L^p 空间
 
-固定测度空间 $(X, \mathcal\{M\}, \mu)$。对可测 $f$ 与 $0 < p < \infty$ 定义
+固定测度空间 $(X, \mathcal{M}, \mu)$。对可测 $f$ 与 $0 < p < \infty$ 定义
 
 $$\|f\|_p := \left[ \int |f|^p \, d\mu \right]^{1/p}$$
 
 以及
 
-$$L^p(X, \mathcal\{M\}, \mu) := \{\, f : X \to \mathbb\{C\} : f \text\{ 可测\},\ \|f\|_p < \infty \,\}$$
+$$L^p(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f\|_p < \infty \,\}$$
 
 基本事实（都可直接验证）：
 
@@ -3145,7 +3145,7 @@ $$\log\!\left( \lambda a + (1-\lambda) b \right) \ge \lambda \log a + (1-\lambda
 #### Hölder 不等式　`thm.holder`
 *定理*　Hölder 不等式
 
-设 $1 < p < \infty$，$q$ 是 $p$ 的**共轭指数**：$\dfrac\{1\}\{p\} + \dfrac\{1\}\{q\} = 1$。则对可测 $f, g$：
+设 $1 < p < \infty$，$q$ 是 $p$ 的**共轭指数**：$\dfrac{1}\{p\} + \dfrac{1}\{q\} = 1$。则对可测 $f, g$：
 
 $$\|fg\|_1 \le \|f\|_p \, \|g\|_q$$
 
@@ -3155,11 +3155,11 @@ $$\|fg\|_1 \le \|f\|_p \, \|g\|_q$$
 
 
 
-$$|fg| \le \frac\{|f|^p\}\{p\} + \frac\{|g|^q\}\{q\}$$
+$$|fg| \le \frac{|f|^p}\{p\} + \frac{|g|^q}\{q\}$$
 
 
 
-两边积分即得 $\|fg\|_1 \le \frac\{1\}\{p\} + \frac\{1\}\{q\} = 1$。一般情形把 $f, g$ 各自归一化。
+两边积分即得 $\|fg\|_1 \le \frac{1}\{p\} + \frac{1}\{q\} = 1$。一般情形把 $f, g$ 各自归一化。
 
 ⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。
 
@@ -3201,7 +3201,7 @@ $$\left\| |f+g|^{p-1} \right\|_q^{\,q} = \int |f+g|^{(p-1)q} = \int |f+g|^p$$
 #### L^p 是 Banach 空间　`thm.lp-banach`
 *定理*　定理（Riesz–Fischer）：$1 \le p < \infty$ 时 $L^p$ 完备
 
-设 $1 \le p < \infty$。则 $L^p(X, \mathcal\{M\}, \mu)$ 关于范数 $\|\cdot\|_p$ 是**完备**的，即它是一个 **Banach 空间**。
+设 $1 \le p < \infty$。则 $L^p(X, \mathcal{M}, \mu)$ 关于范数 $\|\cdot\|_p$ 是**完备**的，即它是一个 **Banach 空间**。
 
 证明用的判据是：**赋范线性空间完备 $\iff$ 绝对收敛的无穷级数收敛**。
 
@@ -3258,7 +3258,7 @@ $$\|f\|_\infty := \inf \{\, a \ge 0 : \mu(\{\, |f| > a \,\}) = 0 \,\}$$
 （把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \|f\|_\infty$ 本身就有 $\mu(\{|f| > a\}) = 0$。
 
 $$
-L^\infty(X, \mathcal\{M\}, \mu) := \{\, f : X \to \mathbb\{C\} : f \text\{ 可测\},\ \|f\|_\infty < \infty \,\}
+L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f\|_\infty < \infty \,\}
 $$
 
 等价说法：$\|f\|_\infty \le M \iff |f(x)| \le M$ 对 a.e. $x$ 成立。
@@ -3274,11 +3274,11 @@ $$
 
 **(a)** $\|fg\|_\infty \le \|f\|_\infty \|g\|_\infty$。若 $f \in L^1$、$g \in L^\infty$，则
 
-$$\|fg\|_1 = \|f\|_1 \|g\|_\infty \iff |g(x)| = \|g\|_\infty \text\{ a.e. on \} \{f \ne 0\}$$
+$$\|fg\|_1 = \|f\|_1 \|g\|_\infty \iff |g(x)| = \|g\|_\infty \text{ a.e. on } \{f \ne 0\}$$
 
 **(b)** $\|\cdot\|_\infty$ 是 $L^\infty$ 上的**范数**。
 
-**(c)** $\|f_n - f\|_\infty \to 0 \iff$ 存在 $E \in \mathcal\{M\}$、$\mu(E^c) = 0$，使 $f_n \to f$ **在 $E$ 上一致收敛**。
+**(c)** $\|f_n - f\|_\infty \to 0 \iff$ 存在 $E \in \mathcal{M}$、$\mu(E^c) = 0$，使 $f_n \to f$ **在 $E$ 上一致收敛**。
 
 **(d)** $L^\infty$ 是 **Banach 空间**。
 
@@ -3342,7 +3342,7 @@ $$\|f\|_q \le \|f\|_p^{\lambda} \, \|f\|_r^{1-\lambda}$$
 
 其中 $\lambda \in (0,1)$ 由下式确定：
 
-$$\frac\{1\}\{q\} = \frac\{\lambda\}\{p\} + \frac\{1-\lambda\}\{r\} \qquad \Longleftrightarrow \qquad \lambda = \frac\{\,q^{-1} - r^{-1}\,\}\{p^{-1} - r^{-1}\}$$
+$$\frac{1}\{q\} = \frac{\lambda}\{p\} + \frac{1-\lambda}\{r\} \qquad \Longleftrightarrow \qquad \lambda = \frac{\,q^{-1} - r^{-1}\,}\{p^{-1} - r^{-1}\}$$
 
 这是 **Riesz–Thorin 插值定理**的初等特例：$L^q$ 范数被两端的 $L^p$、$L^r$ 范数「对数凸」地控制住。
 
@@ -3433,11 +3433,11 @@ $$\|f\|_p^p = \int |f|^p \cdot 1 \le \big\| |f|^p \big\|_{q/p} \, \|1\|_{q/(q-p)
 
 设 $1 \le p \le \infty$。称 $q$ 是 $p$ 的**共轭指数**，当且仅当
 
-$$\frac\{1\}\{p\} + \frac\{1\}\{q\} = 1$$
+$$\frac{1}\{p\} + \frac{1}\{q\} = 1$$
 
 （约定 $1/\infty = 0$，于是 $p = 1$ 对应 $q = \infty$，$p = \infty$ 对应 $q = 1$。）
 
-由对称性 $\dfrac\{1\}\{q\} + \dfrac\{1\}\{p\} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。
+由对称性 $\dfrac{1}\{q\} + \dfrac{1}\{p\} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。
 
 $p = 2$ 时 $q = 2$：**$L^2$ 是自共轭的** —— 这是 Hilbert 空间理论的起点。
 
@@ -3486,34 +3486,34 @@ $$L^q \longrightarrow (L^p)^*, \qquad g \mapsto \varphi_g$$
 
 
 
-$$f := \frac\{|g|^{q-1} \operatorname\{sgn\} g\}\{\|g\|_q^{\,q-1}\}$$
+$$f := \frac{|g|^{q-1} \operatorname{sgn} g}\{\|g\|_q^{\,q-1}\}$$
 
 
 
-直接算得 $\|f\|_p^p = \dfrac\{\int |g|^q\}\{\int |g|^q\} = 1$，于是
+直接算得 $\|f\|_p^p = \dfrac{\int |g|^q}\{\int |g|^q\} = 1$，于是
 
 
 
 $$\|\varphi_g\| \ge \int fg = \|g\|_q$$
 
-**$q = 1$ 时**取 $f = \operatorname\{sgn\} g$（范数 1），得 $\int fg = \|g\|_1$。
+**$q = 1$ 时**取 $f = \operatorname{sgn} g$（范数 1），得 $\int fg = \|g\|_1$。
 
 **$q = \infty$ 时**要用到半有限性：对任意 $\varepsilon > 0$，集合 $A = \{|g(x)| > \|g\|_\infty - \varepsilon\}$ 有正测度；由半有限性取 $B \subseteq A$ 使 $0 < \mu(B) < \infty$，令
 
 
 
-$$f := \mu(B)^{-1} \chi_B \operatorname\{sgn\} g$$
+$$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 
 
 
-则 $\|f\|_1 = 1$ 而 $\|\varphi_g\| \ge \int fg = \dfrac\{1\}\{\mu(B)\} \int_B |g| \ge \|g\|_\infty - \varepsilon$。由 $\varepsilon$ 任意即得。∎
+则 $\|f\|_1 = 1$ 而 $\|\varphi_g\| \ge \int fg = \dfrac{1}\{\mu(B)\} \int_B |g| \ge \|g\|_\infty - \varepsilon$。由 $\varepsilon$ 任意即得。∎
 
 参考：Folland, Real Analysis, Prop. 6.8
 
 #### 有界 ⟹ g ∈ L^q　`prop.bounded-functional-gives-lq`
 *命题*　命题：若 f ↦ ∫fg 在简单函数上有界，则 g ∈ L^q
 
-设 $g$ 在 $(X, \mathcal\{M\})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^1$。记
+设 $g$ 在 $(X, \mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^1$。记
 
 $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 \,\right\}$$
 
@@ -3904,7 +3904,7 @@ $$\mathcal{A} = \{ S \subseteq V : S \supseteq S_0 且 S 线性无关 \}$$
 
 **③ 造一个开覆盖。** 取
 
-$$𝒰 = \{ U_n : n \in \mathbb\{N\} \} \cup \{ X \setminus \{x_n : n \in \mathbb\{N\}\} \}$$
+$$𝒰 = \{ U_n : n \in \mathbb{N} \} \cup \{ X \setminus \{x_n : n \in \mathbb{N}\} \}$$
 
 其中 Uₙ 是 ② 中给 xₙ 的那个邻域（只含有限个 xₘ）。再补上闭集的余集，𝒰 就是 X 的开覆盖。
 
@@ -4079,7 +4079,7 @@ $$B_n = A_n \setminus (A_1 \cup \cdots \cup A_{n-1})$$
 
 **② 用单调性。** 若 Bₙ 两两不交，则部分并 $$C_n = B_1 \cup \cdots \cup B_n$$ 是递增列，且 Cₙ ∈ 𝔄（环对有限并封闭）。由 𝔄 是单调类，
 
-$$\bigcup_n C_n = \bigcup_n B_n = \bigcup_n A_n \in \mathfrak\{A\}$$
+$$\bigcup_n C_n = \bigcup_n B_n = \bigcup_n A_n \in \mathfrak{A}$$
 
 故 𝔄 是可数并封闭的 σ-环。反向（σ-环 ⟹ 单调类）明显，因为递增并、递减交都是可数并/交的特例。∎
 
@@ -4165,7 +4165,7 @@ $$\mu(E_1) − \mu(\bigcap_j E_j) = \mu(E_1 \setminus \bigcap_j E_j) = lim_j \mu
 
 设 𝔄 是代数，μ₀ 是 𝔄 上的预测度。对 A ⊆ X 令
 
-$$\mu^*(A) = inf \{ \sum_j \mu_0(E_j) : E_j \in \mathfrak\{A\}, A \subseteq \bigcup_j E_j \}$$
+$$\mu^*(A) = inf \{ \sum_j \mu_0(E_j) : E_j \in \mathfrak{A}, A \subseteq \bigcup_j E_j \}$$
 
 **① 定义合理**：A ⊆ X 且 X ∈ 𝔄，所以总有覆盖，inf 是对非空集合取。
 
@@ -4335,7 +4335,7 @@ Lebesgue–Stieltjes 测度是一种 Borel 测度。
 
 **① 上确界。** 设 $$f_j$$ 可测。要证 $$sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\infty]$$（a ∈ ℝ）验证：
 
-$$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty]) \in \mathcal\{M\}$$
+$$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty]) \in \mathcal{M}$$
 
 是可数并，故可测。
 
@@ -4345,7 +4345,7 @@ $$(sup_j f_j)^{-1}((a, +\infty]) = \bigcup_j f_j^{-1}((a, +\infty]) \in \mathcal
 
 **④ 和与积。** 先看 $$f + g$$：对任意 a ∈ ℝ，
 
-$$\{f + g > a\} = \bigcup_{q \in \mathbb\{Q\}} ( \{f > q\} \cap \{g > a − q\} )$$
+$$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a − q\} )$$
 
 （左边 ⊆ 右边：取有理数 q 夹在 $$a − g$$ 与 f 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 − f^2 − g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。
 
@@ -4358,7 +4358,7 @@ $$\{f + g > a\} = \bigcup_{q \in \mathbb\{Q\}} ( \{f > q\} \cap \{g > a − q\} 
 
 设 $$f : X \to Y$$ 连续，即每个开集的原像是开集。
 
-由定义 $$\mathfrak\{B\}_Y = \mathcal\{M\}(\{ U \subseteq Y : U 开 \})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\in \mathfrak\{B\}_X$$。故 f 可测。∎
+由定义 $$\mathfrak{B}_Y = \mathcal{M}(\{ U \subseteq Y : U 开 \})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\in \mathfrak{B}_X$$。故 f 可测。∎
 
 > 复习一下笔记里点的那个坑：**这个论证对 (𝔅, 𝔅) 成立，但对 (ℒ, ℒ) 不成立** —— 因为 ℒ 并不由开集生成，它比 𝔅_ℝ 多了很多非 Borel 的零测集子集。
 
@@ -4546,7 +4546,7 @@ $$\int f = \lim_{N\to\infty} \int s_N = \lim_{N\to\infty} \sum_{j\le N} \int f_j
 
 记 $$h = f − g \in L^1$$。三条之间的等价链条是
 
-$$(i) \int_E f = \int_E g　\forall E \in \mathcal\{M\}　\iff　\int_E h = 0　\forall E$$
+$$(i) \int_E f = \int_E g　\forall E \in \mathcal{M}　\iff　\int_E h = 0　\forall E$$
 
 **(i) ⟹ (ii)**：分别取 $$E = \{h \ge 0\}$$ 与 $$E = \{h < 0\}$$。由 $$\int_E h = 0$$ 且 h 在 E 上不变号，得 $$\{h > 0\}$$ 与 $$\{h < 0\}$$ 都是零集（否则积分为正/负），故 $$\mu(\{h \ne 0\}) = 0$$，于是 $$\int|h| = 0$$。
 
@@ -4752,7 +4752,7 @@ L¹ 收敛的定义里用到 ∫|fₙ − f|。
 #### 截口 ⟹ 截口可测　`imp.section-measurable`
 *截口的定义 ⟹ 截口保持可测性*
 
-**(a)** 令 $$\mathcal\{R\} = \{E \subseteq X \times Y : E_x \in \mathcal\{N\} 且 E^y \in \mathcal\{M\}　\forall(x, y) \in X \times Y\}$$。
+**(a)** 令 $$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N} 且 E^y \in \mathcal{M}　\forall(x, y) \in X \times Y\}$$。
 
 - **ℛ 含所有矩形**：若 $$E = A \times B$$，则
 
@@ -4768,12 +4768,12 @@ $$E_x = B　(x \in A)，　E_x = \emptyset　(x \notin A)$$
 
 $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 
-而 $$f^{-1}(B) \in \mathcal\{M\} ⊗ \mathcal\{N\}$$，由 (a) 它的纵截口属于 𝒩，即 $$f_x^{-1}(B) \in \mathcal\{N\}$$。所以 $$f_x$$ 可测。横截口同理。∎
+而 $$f^{-1}(B) \in \mathcal{M} ⊗ \mathcal{N}$$，由 (a) 它的纵截口属于 𝒩，即 $$f_x^{-1}(B) \in \mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎
 
 #### 单调类引理 + 截口可测 ⟹ 乘积测度由截口给出　`imp.product-sections`
 *单调类引理 ⟹ 乘积测度由截口积分给出*
 
-**① 先设 μ、ν 有限。** 令 $$\mathcal\{C\} = \{E \in \mathcal\{M\} ⊗ \mathcal\{N\} : x \mapsto \nu(E_x) 可测，y \mapsto \mu(E^y) 可测，且 \mu\times\nu(E) = \int\nu(E_x)d\mu = \int\mu(E^y)d\nu\}$$。
+**① 先设 μ、ν 有限。** 令 $$\mathcal{C} = \{E \in \mathcal{M} ⊗ \mathcal{N} : x \mapsto \nu(E_x) 可测，y \mapsto \mu(E^y) 可测，且 \mu\times\nu(E) = \int\nu(E_x)d\mu = \int\mu(E^y)d\nu\}$$。
 
 **② 矩形在 𝒞 里。** 若 $$E = A \times B$$，则 $$\nu(E_x) = \chi_A(x)\cdot\nu(B)$$，它是可测的（指示函数 × 常数），且
 
@@ -4783,7 +4783,7 @@ $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 
 **④ 𝒞 对递减交封闭。** 若 $$E_1 \supseteq E_2 \supseteq \cdots$$、$$E = \bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\nu(Y) < \infty$$）得到同样的等式。
 
-**⑤ 用单调类引理。** 由 ①②③④，𝒞 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 𝒞 含这个代数；由单调类引理，$$\mathfrak\{m\}(代数) = \mathcal\{M\}(代数) = \mathcal\{M\} ⊗ \mathcal\{N\}$$，于是 𝒞 = ℳ ⊗ 𝒩。
+**⑤ 用单调类引理。** 由 ①②③④，𝒞 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 𝒞 含这个代数；由单调类引理，$$\mathfrak{m}(代数) = \mathcal{M}(代数) = \mathcal{M} ⊗ \mathcal{N}$$，于是 𝒞 = ℳ ⊗ 𝒩。
 
 **⑥ 推广到 σ-有限。** 取 $$X = \bigcup_i X_i$$、$$Y = \bigcup_i Y_i$$（各自测度有限），则 $$X \times Y = \bigcup_i (X_i \times Y_i)$$。对每个 i，把 ⑤ 用在 $$E \cap (X_i \times Y_i)$$ 上（这一步只用到**有限**测度）；再把 i 加起来，用 MCT 对 i 求极限即可。∎
 
@@ -4792,7 +4792,7 @@ $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 #### 乘积测度由截口给出 + 单调收敛定理 ⟹ Fubini–Tonelli　`imp.tonelli`
 *集合版（截口公式）+ MCT ⟹ Tonelli*
 
-**① 指示函数。** 取 $$f = \chi_E$$（$$E \in \mathcal\{M\} ⊗ \mathcal\{N\}$$）。此时
+**① 指示函数。** 取 $$f = \chi_E$$（$$E \in \mathcal{M} ⊗ \mathcal{N}$$）。此时
 
 $$\int_Y f(x, y) d\nu(y) = \nu(E_x)，　\int_X f(x, y) d\mu(x) = \mu(E^y)$$
 
@@ -4829,9 +4829,9 @@ $$\int |f| d(\mu \times \nu) < \infty$$
 #### Fubini–Tonelli + 完备化定理 + 乘积测度通常不完备 ⟹ 完备情形的 F–T　`imp.fubini-complete`
 *乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T*
 
-**① 先证 f ≥ 0 的情形。** 由于 λ 是 μ×ν 的完备化，$$\mathcal\{L\}$$ 中的集合可以写成
+**① 先证 f ≥ 0 的情形。** 由于 λ 是 μ×ν 的完备化，$$\mathcal{L}$$ 中的集合可以写成
 
-$$E = F \cup G，　F \in \mathcal\{M\} ⊗ \mathcal\{N\}，　G \subseteq H，　\mu \times \nu(H) = 0$$
+$$E = F \cup G，　F \in \mathcal{M} ⊗ \mathcal{N}，　G \subseteq H，　\mu \times \nu(H) = 0$$
 
 （取不交化后即 $$E = F ⊔ G$$，于是 $$\chi_E = \chi_F + \chi_G$$。）
 
@@ -4856,7 +4856,7 @@ $$\int \chi_G d\lambda = 0 = \int ( \int \chi_G d\nu ) d\mu$$
 
 $$D = \{(x, x) : x \in [0, 1]\}$$
 
-则 D 是闭集，故属于 $$\mathfrak\{B\}_{[0,1]} ⊗ \mathfrak\{B\}_{[0,1]}$$；且 $$\mu \times \nu(D)$$ 可以用截口公式算：对每个 x，$$\nu(D_x) = \nu(\{x\}) = 0$$，故
+则 D 是闭集，故属于 $$\mathfrak{B}_{[0,1]} ⊗ \mathfrak{B}_{[0,1]}$$；且 $$\mu \times \nu(D)$$ 可以用截口公式算：对每个 x，$$\nu(D_x) = \nu(\{x\}) = 0$$，故
 
 $$\mu \times \nu(D) = \int \nu(D_x) d\mu(x) = 0$$
 
@@ -4864,7 +4864,7 @@ $$\mu \times \nu(D) = \int \nu(D_x) d\mu(x) = 0$$
 
 $$G = \{(x, x) : x \in N\} \subseteq D$$
 
-则 G ⊆ D 而 μ×ν(D) = 0，但 G **不属于** $$\mathfrak\{B\} ⊗ \mathfrak\{B\}$$（它的截口给出的正是 N —— 若 $$G \in \mathfrak\{B\} ⊗ \mathfrak\{B\}$$，由截口可测性，对每个 x 都有 $$G_x \in \mathfrak\{B\}$$，而 $$G_x$$ 是 {x} 或 ∅ …… 需要用「G 的截面沿对角线还原出 N」这一论证）。故 μ×ν 不完备。∎
+则 G ⊆ D 而 μ×ν(D) = 0，但 G **不属于** $$\mathfrak{B} ⊗ \mathfrak{B}$$（它的截口给出的正是 N —— 若 $$G \in \mathfrak{B} ⊗ \mathfrak{B}$$，由截口可测性，对每个 x 都有 $$G_x \in \mathfrak{B}$$，而 $$G_x$$ 是 {x} 或 ∅ …… 需要用「G 的截面沿对角线还原出 N」这一论证）。故 μ×ν 不完备。∎
 
 > ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。
 
@@ -4986,7 +4986,7 @@ $$\nu(E) = \nu(E \cap P) + \nu(E \cap N) = \nu^+(E) − \nu^-(E)$$
 
 **(⟸)** 若 μ(E) = 0，则对任意 ε > 0 有 μ(E) < δ，于是 |ν(E)| ≤ ε；令 ε → 0 得 ν(E) = 0。
 
-**(⟹) 反证。** 设存在 ε > 0，使对**一切** n 都能找到 $$E_n \in \mathcal\{M\}$$ 满足
+**(⟹) 反证。** 设存在 ε > 0，使对**一切** n 都能找到 $$E_n \in \mathcal{M}$$ 满足
 
 $$\mu(E_n) < 2^{-n}，　\nu(E_n) \ge \varepsilon$$
 
@@ -5011,25 +5011,25 @@ $$\nu(F) = lim_k \nu(F_k) \ge \varepsilon > 0$$
 
 **① 造候选函数集。** 令
 
-$$\mathcal\{F\} := \{ f : X \to [0, +\infty] : \int_E f d\mu \le \nu(E)　\forall E \in \mathcal\{M\} \}$$
+$$\mathcal{F} := \{ f : X \to [0, +\infty] : \int_E f d\mu \le \nu(E)　\forall E \in \mathcal{M} \}$$
 
-则 $$0 \in \mathcal\{F\}$$，且 ℱ 对**取大**封闭：若 f, g ∈ ℱ，令 $$A = \{f > g\}$$、$$h = \max_{f, g}$$，则对任意 E，
+则 $$0 \in \mathcal{F}$$，且 ℱ 对**取大**封闭：若 f, g ∈ ℱ，令 $$A = \{f > g\}$$、$$h = \max_{f, g}$$，则对任意 E，
 
 $$\int_E h d\mu = \int_{E\cap A} f d\mu + \int_{E\setminus A} g d\mu \le \nu(E\cap A) + \nu(E\setminus A) = \nu(E)$$
 
 故 h ∈ ℱ。
 
-**② 取上确界。** 令 $$a := sup\{ \int f d\mu : f \in \mathcal\{F\} \} \le \nu(X) < \infty$$（这一步用到 ν 有限）。取 $$\{f_n\} \subseteq \mathcal\{F\}$$ 使 $$\int f_n d\mu \to a$$，令
+**② 取上确界。** 令 $$a := sup\{ \int f d\mu : f \in \mathcal{F} \} \le \nu(X) < \infty$$（这一步用到 ν 有限）。取 $$\{f_n\} \subseteq \mathcal{F}$$ 使 $$\int f_n d\mu \to a$$，令
 
 $$g_n = \max_{f_1, …, f_n}，　f = sup_n f_n$$
 
-由 ① 每个 $$g_n \in \mathcal\{F\}$$，且 $$g_n ↑ f$$、$$\int g_n d\mu \ge \int f_n d\mu$$，故 $$lim_n \int g_n d\mu = a$$。由 **MCT**，$$f \in \mathcal\{F\}$$ 且 $$\int f d\mu = a$$。
+由 ① 每个 $$g_n \in \mathcal{F}$$，且 $$g_n ↑ f$$、$$\int g_n d\mu \ge \int f_n d\mu$$，故 $$lim_n \int g_n d\mu = a$$。由 **MCT**，$$f \in \mathcal{F}$$ 且 $$\int f d\mu = a$$。
 
-**③ 断言 $$d\lambda := d\nu − f d\mu$$ 与 μ 奇异。** 反设不然，由**引理**，存在 ε > 0 与 $$E \in \mathcal\{M\}$$、μ(E) > 0，使 $$\lambda \ge \varepsilon\mu$$ 在 E 上成立，即
+**③ 断言 $$d\lambda := d\nu − f d\mu$$ 与 μ 奇异。** 反设不然，由**引理**，存在 ε > 0 与 $$E \in \mathcal{M}$$、μ(E) > 0，使 $$\lambda \ge \varepsilon\mu$$ 在 E 上成立，即
 
 $$\varepsilon \chi_E d\mu \le d\nu − f d\mu　\implies　(f + \varepsilon \chi_E) d\mu \le d\nu$$
 
-于是 $$f + \varepsilon \chi_E \in \mathcal\{F\}$$，但
+于是 $$f + \varepsilon \chi_E \in \mathcal{F}$$，但
 
 $$\int (f + \varepsilon \chi_E) d\mu = a + \varepsilon\cdot\mu(E) > a$$
 
@@ -5060,20 +5060,20 @@ $$\lambda := \sum_j \lambda_j，　f := \sum_j f_j$$
 
 设 $$\nu ≪ \mu ≪ \lambda$$。
 
-**(a) 换元公式 $$\int g d\nu = \int g \frac\{d\nu\}\{d\mu\} d\mu$$。** 分四步爬：
+**(a) 换元公式 $$\int g d\nu = \int g \frac{d\nu}{d\mu} d\mu$$。** 分四步爬：
 
-· $$g = \chi_E$$：左边是 $$\nu(E) = \int_E \frac\{d\nu\}\{d\mu\} d\mu$$（这正是 RN 定理的内容），右边同；
+· $$g = \chi_E$$：左边是 $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu$$（这正是 RN 定理的内容），右边同；
 · g 是简单函数：由线性；
 · $$g \in L^+$$：取简单函数列 $$g_n ↑ g$$，两边各用一次 MCT；
 · $$g \in L^1(\nu)$$：拆正负部。
 
 **(b) 链式法则。** 对任意可测 E，用 (a) 两次：
 
-$$\nu(E) = \int_E \frac\{d\nu\}\{d\mu\} d\mu = \int_E \frac\{d\nu\}\{d\mu\} \cdot \frac\{d\mu\}\{d\lambda\} d\lambda$$
+$$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda} d\lambda$$
 
-另一方面又有 $$\nu(E) = \int_E \frac\{d\nu\}\{d\lambda\} d\lambda$$（因为 ν ≪ λ）。两式对**一切** E 相等，由「用积分识别函数」，两个密度 λ-a.e. 相等：
+另一方面又有 $$\nu(E) = \int_E \frac{d\nu}{d\lambda} d\lambda$$（因为 ν ≪ λ）。两式对**一切** E 相等，由「用积分识别函数」，两个密度 λ-a.e. 相等：
 
-$$\frac\{d\nu\}\{d\lambda\} = \frac\{d\nu\}\{d\mu\} \cdot \frac\{d\mu\}\{d\lambda\}　\lambda-a.e.$$
+$$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}　\lambda-a.e.$$
 
 ∎
 
@@ -5152,7 +5152,7 @@ $$\sum_j m(B_j) > 3^{-n} c$$
 
 **③ 把测度换成积分。** 由 ① 里每个球的超额不等式，
 
-$$c < 3^n \sum_j m(B_j) < (3^n/\alpha)\cdot\sum_j \int_{B_j} |f| dy \le (3^n/\alpha)\cdot\int_{\mathbb\{R\}^n} |f| dy$$
+$$c < 3^n \sum_j m(B_j) < (3^n/\alpha)\cdot\sum_j \int_{B_j} |f| dy \le (3^n/\alpha)\cdot\int_{\mathbb{R}^n} |f| dy$$
 
 （最后一步用的是：$$B_j$$ 两两不交，所以把积分加起来不超过整体积分。）
 
@@ -5167,7 +5167,7 @@ $$m(E_\alpha) \le (3^n/\alpha)\cdot\int |f| dy$$
 #### 极大定理 + L¹ 里的逼近 + 平均算子联合连续 ⟹ Lebesgue 微分定理　`imp.lebesgue-differentiation`
 *极大定理 + 连续函数逼近 ⟹ Lebesgue 微分定理*
 
-**① 先局部化。** 由 L¹ₗoc 的定义与测度的可数可加性，只需对每个 $$N \in \mathbb\{N\}$$ 证明在球 $$\{|x| \le N\}$$ 上几乎处处成立；把 f 换成 $$f\cdot\chi_{B(N+1, 0)}$$ 后即可**设 $$f \in L^1$$**。
+**① 先局部化。** 由 L¹ₗoc 的定义与测度的可数可加性，只需对每个 $$N \in \mathbb{N}$$ 证明在球 $$\{|x| \le N\}$$ 上几乎处处成立；把 f 换成 $$f\cdot\chi_{B(N+1, 0)}$$ 后即可**设 $$f \in L^1$$**。
 
 **② 用连续函数逼近。** 给定 $$\varepsilon > 0$$，由「L¹ 里的逼近」，取**连续函数** g 使
 
@@ -5193,7 +5193,7 @@ $$m(E_\alpha) \le 2\varepsilon / \alpha + 2C\varepsilon / \alpha$$
 
 **⑥ 令 ε → 0。** 右边对**任意** ε > 0 成立，故 $$m(E_\alpha) = 0$$ 对一切 $$\alpha > 0$$ 成立。于是
 
-$$\lim_{r\to0} A_r f(x) = f(x)　对一切 x \notin \bigcup_{m\in\mathbb\{N\}} E_{1/m}$$
+$$\lim_{r\to0} A_r f(x) = f(x)　对一切 x \notin \bigcup_{m\in\mathbb{N}} E_{1/m}$$
 
 而右边是可数个零集之并，仍是零集。∎
 
@@ -5202,11 +5202,11 @@ $$\lim_{r\to0} A_r f(x) = f(x)　对一切 x \notin \bigcup_{m\in\mathbb\{N\}} E
 #### Lebesgue 微分定理 ⟹ Lebesgue 集几乎处处　`imp.lebesgue-set`
 *微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处*
 
-**① 对每个复数 c 用一次微分定理。** 固定 $$c \in \mathbb\{C\}$$，把微分定理用在函数 $$h(x) = |f(x) − c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \notin E_c$$，
+**① 对每个复数 c 用一次微分定理。** 固定 $$c \in \mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) − c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \notin E_c$$，
 
-$$\lim_{r\to0} \frac\{1\}\{m(B(r,x))\} \int_{B(r,x)} |f(y) − c| dy = |f(x) − c|$$
+$$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) − c| dy = |f(x) − c|$$
 
-**② 只取可数多个 c。** 取 ℂ 的一个**可数稠密子集** D（比如 $$\mathbb\{Q\} + i\mathbb\{Q\}$$），令
+**② 只取可数多个 c。** 取 ℂ 的一个**可数稠密子集** D（比如 $$\mathbb{Q} + i\mathbb{Q}$$），令
 
 $$E = \bigcup_{c \in D} E_c$$
 
@@ -5214,7 +5214,7 @@ $$E = \bigcup_{c \in D} E_c$$
 
 **③ 在 E 外验证**。设 $$x \notin E$$，任给 ε > 0，取 $$c \in D$$ 使 $$|f(x) − c| < \varepsilon$$。则
 
-$$\frac\{1\}\{m(B(r,x))\} \int_{B(r,x)} |f(y) − f(x)| dy \le \frac\{1\}\{m(B(r,x))\} \int_{B(r,x)} |f(y) − c| dy + |f(x) − c|$$
+$$\frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) − f(x)| dy \le \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) − c| dy + |f(x) − c|$$
 
 右边第一项由 ①（$$x \notin E_c$$）在 $$r \to 0$$ 时趋于 $$|f(x) − c|$$，于是整个右端的极限 ≤ $$|f(x) − c| + \varepsilon < 2\varepsilon$$。令 ε → 0 得极限为 0，即 $$x \in L_f$$。
 
@@ -5229,15 +5229,15 @@ $$\frac\{1\}\{m(B(r,x))\} \int_{B(r,x)} |f(y) − f(x)| dy \le \frac\{1\}\{m(B(r
 
 **① 关键估计（一行）。** 因为 $$E_r \subseteq B(r,x)$$，把积分域放大到球上只会变大；再用 $$m(E_r) > \alpha m(B(r,x))$$ 把分母换小：
 
-$$\frac\{1\}\{m(E_r)\} \int_{E_r} |f(y) − f(x)| dy \le \frac\{1\}\{m(E_r)\} \int_{B(r,x)} |f(y) − f(x)| dy \le (1/\alpha)\cdot m(B(r,x)) \int_{B(r,x)} |f(y) − f(x)| dy$$
+$$\frac{1}{m(E_r)} \int_{E_r} |f(y) − f(x)| dy \le \frac{1}{m(E_r)} \int_{B(r,x)} |f(y) − f(x)| dy \le (1/\alpha)\cdot m(B(r,x)) \int_{B(r,x)} |f(y) − f(x)| dy$$
 
 **② 收尾。** 由 $$x \in L_f$$ 的定义，最右边当 $$r \to 0$$ 时趋于 0。故第一个极限为 0。
 
 **③ 第二个极限。** 由
 
-$$| \frac\{1\}\{m(E_r)\} \int_{E_r} f − f(x) | \le \frac\{1\}\{m(E_r)\} \int_{E_r} |f(y) − f(x)| dy \to 0$$
+$$| \frac{1}{m(E_r)} \int_{E_r} f − f(x) | \le \frac{1}{m(E_r)} \int_{E_r} |f(y) − f(x)| dy \to 0$$
 
-即得 $$\frac\{1\}\{m(E_r)\} \int_{E_r} f dy \to f(x)$$。∎
+即得 $$\frac{1}{m(E_r)} \int_{E_r} f dy \to f(x)$$。∎
 
 > 全部难度都被「把 L_f 的定义写成 $$\int|f(y) − f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。
 
@@ -5250,7 +5250,7 @@ $$| \frac\{1\}\{m(E_r)\} \int_{E_r} f − f(x) | \le \frac\{1\}\{m(E_r)\} \int_{
 
 **② 拆比值。**
 
-$$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac\{1\}\{m(E_r)\} \int_{E_r} f\cdot dm$$
+$$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac{1}{m(E_r)} \int_{E_r} f\cdot dm$$
 
 第二项由**可缩族的微分定理**趋于 $$f(x)$$（对 m-a.e. x）。所以只需证第一项趋于 0。
 
@@ -5373,7 +5373,7 @@ $$F(x-) = \sup_{y < x} F(y)，　F(x+) = \inf_{y > x} F(y)$$
 
 $$F_j^{±}(x) := \mu_j^{±}((-\infty, x])$$
 
-每个 $$F_j^{±}$$ 递增、右连续、$$F_j^{±}(-\infty) = 0$$、$$F_j^{±}(+\infty) = \mu_j^{±}(\mathbb\{R\}) < \infty$$。于是 F 是四个这样的函数之组合，属于 NBV。
+每个 $$F_j^{±}$$ 递增、右连续、$$F_j^{±}(-\infty) = 0$$、$$F_j^{±}(+\infty) = \mu_j^{±}(\mathbb{R}) < \infty$$。于是 F 是四个这样的函数之组合，属于 NBV。
 
 **(2) 函数 ⟹ 测度。** 反之任意 $$F \in NBV$$ 可以写成
 
@@ -5400,7 +5400,7 @@ $$\sum_j |F(b_j) − F(a_j)| = \sum_j |\mu_F((a_j, b_j])| \le |\mu_F|(E) < \vare
 
 这正是函数绝对连续的定义。
 
-**(⟹)** 设 F 绝对连续，$$E \in \mathfrak\{B\}_\mathbb\{R\}$$、$$m(E) = 0$$，要证 $$\mu_F(E) = 0$$。由 μ_F 的正则性取递减开集列 $$U_1 ⊃ U_2 ⊃ \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$、$$\bigcap_k U_k = E$$。每个 Uₖ 是区间的可数不交并，把函数绝对连续性的条件用在 Uₖ 的有限截断上，得到 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性（递减列，首项有限）得
+**(⟹)** 设 F 绝对连续，$$E \in \mathfrak{B}_\mathbb{R}$$、$$m(E) = 0$$，要证 $$\mu_F(E) = 0$$。由 μ_F 的正则性取递减开集列 $$U_1 ⊃ U_2 ⊃ \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$、$$\bigcap_k U_k = E$$。每个 Uₖ 是区间的可数不交并，把函数绝对连续性的条件用在 Uₖ 的有限截断上，得到 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性（递减列，首项有限）得
 
 $$|\mu_F(E)| = lim_j |\mu_F(U_j)| \le \varepsilon$$
 
@@ -5476,21 +5476,21 @@ $$F(x) − F(a) = \int_a^x f(t) dt$$
 
 **① 先设 $\|f\|_p = \|g\|_q = 1$。** 在 Young 不等式里取
 
-$$a = |f(x)|^p, \qquad b = |g(x)|^q, \qquad \lambda = \frac\{1\}\{p\}, \qquad 1 - \lambda = \frac\{1\}\{q\}$$
+$$a = |f(x)|^p, \qquad b = |g(x)|^q, \qquad \lambda = \frac{1}\{p\}, \qquad 1 - \lambda = \frac{1}\{q\}$$
 
 得逐点不等式
 
-$$|f(x)g(x)| \le \frac\{|f(x)|^p\}\{p\} + \frac\{|g(x)|^q\}\{q\}$$
+$$|f(x)g(x)| \le \frac{|f(x)|^p}\{p\} + \frac{|g(x)|^q}\{q\}$$
 
 **② 积分。**
 
-$$\int |fg| \le \frac\{1\}\{p\} \int |f|^p + \frac\{1\}\{q\} \int |g|^q = \frac\{1\}\{p\} + \frac\{1\}\{q\} = 1$$
+$$\int |fg| \le \frac{1}\{p\} \int |f|^p + \frac{1}\{q\} \int |g|^q = \frac{1}\{p\} + \frac{1}\{q\} = 1$$
 
 **③ 一般情形。** 若 $\|f\|_p$、$\|g\|_q$ 都非零，把 $f / \|f\|_p$ 与 $g / \|g\|_q$ 代进去再用齐次性。若有一个为零，则 $fg = 0$ a.e.，两边都是 0。∎
 
 **④ 取等条件。** 回看 ②：等号成立要求 ① 里每一步都取等，即 $a = b$ a.e.（Young 不等式的取等条件），也就是
 
-$$|f|^p = |g|^q \quad \text\{a.e.\}$$
+$$|f|^p = |g|^q \quad \text{a.e.}$$
 在归一化之后；还原到一般情形就是「$|f|^p$ 与 $|g|^q$ 成比例 a.e.」。
 
 #### Hölder 不等式 ⟹ Minkowski 不等式　`imp.minkowski`
@@ -5559,21 +5559,21 @@ $$\left| \int fg \right| = \lim_n \left| \int f_n g \right| \le M_g(g)$$
 
 先说明**必须**有 $\mu(\{|g| > \varepsilon\}) < \infty$（对一切 $\varepsilon > 0$）：否则设 $E_\varepsilon = \{|g| > \varepsilon\}$ 测度无穷，对任意 $C$ 取 $B \subseteq E_\varepsilon$ 使 $C < \mu(B) < \infty$，令
 
-$$f = \mu(B)^{-1/q} \chi_B \operatorname\{sgn\} g, \qquad \|f\|_p = 1$$
+$$f = \mu(B)^{-1/q} \chi_B \operatorname{sgn} g, \qquad \|f\|_p = 1$$
 
 则 $\left| \int fg \right| = \mu(B)^{-1/q} \int_B |g| > \varepsilon \, \mu(B)^{1/p} > \varepsilon C^{1/p}$，令 $C \to \infty$ 就与 $M_g(g) < \infty$ 矛盾。
 
 于是可取 $\{E_n\} \uparrow \{g \ne 0\}$，$\mu(E_n) < \infty$；再取简单 $\varphi_n \to g$、$|\varphi_n| \le |g|$，令 $g_n := \varphi_n \chi_{E_n}$，则 $g_n \to g$、$|g_n| \le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。令
 
-$$f_n := \frac\{|g_n|^{q-1} \operatorname\{sgn\} g_n\}\{\|g_n\|_q^{\,q-1}\}, \qquad \|f_n\|_p = 1$$
+$$f_n := \frac{|g_n|^{q-1} \operatorname{sgn} g_n}\{\|g_n\|_q^{\,q-1}\}, \qquad \|f_n\|_p = 1$$
 
 则 $f_n$ 有限支，由 Step 1 可用。于是
 
 $$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \lim_n \int f_n g \le M_g(g)$$
 
-（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $operatorname\{sgn\}$ 的消失。）故 $\|g\|_q \le M_g(g) < \infty$，$g \in L^q$；反向不等式 $M_g(g) \le \|g\|_q$ 由 Hölder。
+（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $operatorname{sgn}$ 的消失。）故 $\|g\|_q \le M_g(g) < \infty$，$g \in L^q$；反向不等式 $M_g(g) \le \|g\|_q$ 由 Hölder。
 
-**Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。若 $\mu(A) > 0$，由半有限性或 $A \subseteq \{g \ne 0\}$ 的 σ-有限性取 $B \subseteq A$、$0 < \mu(B) < \infty$，令 $f = \mu(B)^{-1} \chi_B \operatorname\{sgn\} g$，则 $\|f\|_1 = 1$ 而 $\int fg \ge M_\infty(g) + \varepsilon$ —— 矛盾。故 $\mu(A) = 0$，即 $\|g\|_\infty \le M_\infty(g)$；反方向由 Hölder。∎
+**Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。若 $\mu(A) > 0$，由半有限性或 $A \subseteq \{g \ne 0\}$ 的 σ-有限性取 $B \subseteq A$、$0 < \mu(B) < \infty$，令 $f = \mu(B)^{-1} \chi_B \operatorname{sgn} g$，则 $\|f\|_1 = 1$ 而 $\int fg \ge M_\infty(g) + \varepsilon$ —— 矛盾。故 $\mu(A) = 0$，即 $\|g\|_\infty \le M_\infty(g)$；反方向由 Hölder。∎
 
 #### 有界 ⟹ g ∈ L^q + Lebesgue–Radon–Nikodym 定理 + ‖g‖_q = ‖φ_g‖ ⟹ (L^p)* ≅ L^q　`imp.riesz-lp`
 *把泛函变成测度 ⟹ $(L^p)^* \cong L^q$*
@@ -5582,7 +5582,7 @@ $$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \
 
 **Step 1：先设 $\mu$ 有限。** 此时所有简单函数都在 $L^p$ 里。定义
 
-$$\nu(E) := \Phi(\chi_E) \qquad (E \in \mathcal\{M\})$$
+$$\nu(E) := \Phi(\chi_E) \qquad (E \in \mathcal{M})$$
 
 **① $\nu$ 是复测度。** 设 $E = \bigsqcup_j E_j$，则 $\chi_E = \sum_{j} \chi_{E_j}$。而
 
@@ -5606,7 +5606,7 @@ $$\|g_n\|_q \le \left\| \Phi|_{L^p(E_n)} \right\| \le \|\Phi\|$$
 
 **Step 3：$\mu$ 任意（此时 $p > 1$，故 $q < \infty$）。** 对每个 σ-有限集 $E \subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \in L^q(E)$ 使 $\Phi(f) = \int f g_E$ 对一切 $f \in L^p(E)$ 成立，且 $\|g_E\|_q \le \|\Phi\|$。若 $F \supseteq E$ 也 σ-有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\|g_F\|_q \ge \|g_E\|_q$。令
 
-$$M := \sup \{\, \|g_E\|_q : E \text\{ 是 \sigma-有限集\} \,\} \le \|\Phi\|$$
+$$M := \sup \{\, \|g_E\|_q : E \text{ 是 \sigma-有限集} \,\} \le \|\Phi\|$$
 
 取 $\{E_n\}$ 使 $\|g_{E_n}\|_q \to M$，令 $F = \bigcup_n E_n$（仍 σ-有限）。则 $\|g_F\|_q \ge \|g_{E_n}\|_q$ 对一切 $n$ 成立，故 $\|g_F\|_q = M$。
 

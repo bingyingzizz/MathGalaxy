@@ -62,14 +62,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '覆盖', 'Vitali'],
       statement: [
-        '设 ℰ 是一族 ℝⁿ 中的开球，$$U = \\bigcup\\mathcal\\{E\\}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, …, B_k$$ 使',
+        '设 ℰ 是一族 ℝⁿ 中的开球，$$U = \\bigcup\\mathcal{E}$$。若 $$c < m(U)$$，则存在 ℰ 中**两两不交**的球 $$B_1, …, B_k$$ 使',
         '',
         '$$\\sum_{j=1}^{k} m(B_j) > 3^{-n} c$$'
       ].join('\n'),
       notes: [
         '这是 **Vitali 型覆盖引理**的核心估计，极大定理全靠它。',
         '证明的挑法（笔记里的原话）：先取**半径最大**的球 $$B_1$$；再取与 $$B_1$$ 不交的、半径最大的球 $$B_2$$；依此类推。',
-        '为什么这样挑就够了：若某个 $$A_i \\in \\mathcal\\{E\\}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \\subseteq 3B_j$$，于是 $$K \\subseteq \\bigcup_j 3B_j$$。',
+        '为什么这样挑就够了：若某个 $$A_i \\in \\mathcal{E}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \\subseteq 3B_j$$，于是 $$K \\subseteq \\bigcup_j 3B_j$$。',
         '剩下的就是计数：',
         '',
         '$$c < m(K) \\le 3^n \\sum_j m(B_j)　\\implies　\\sum_j m(B_j) > 3^{-n} c$$',
@@ -88,11 +88,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '局部可积'],
       statement: [
-        '可测函数 $$f : \\mathbb\\{R\\}^n \\to \\mathbb\\{C\\}$$ 是**局部可积的**，当且仅当',
+        '可测函数 $$f : \\mathbb{R}^n \\to \\mathbb{C}$$ 是**局部可积的**，当且仅当',
         '',
-        '$$\\int_K |f(x)| dx < \\infty　对每个有界可测集 K \\subseteq \\mathbb\\{R\\}^n$$',
+        '$$\\int_K |f(x)| dx < \\infty　对每个有界可测集 K \\subseteq \\mathbb{R}^n$$',
         '',
-        '局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\\mathbb\\{R\\}^n)$$）。'
+        '局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\\mathbb{R}^n)$$）。'
       ].join('\n'),
       notes: [
         '直觉：$$f$$ 可能「在无穷远处爆掉」，但在每个有限范围里都还好。',
@@ -111,9 +111,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '平均算子'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$，$$x \\in \\mathbb\\{R\\}^n$$，$$r > 0$$。定义',
+        '设 $$f \\in L^1_{loc}$$，$$x \\in \\mathbb{R}^n$$，$$r > 0$$。定义',
         '',
-        '$$A_r f(x) := \\frac\\{1\\}\\{m(B(r, x))\\} \\int_{B(r, x)} f(y) dy$$',
+        '$$A_r f(x) := \\frac{1}{m(B(r, x))} \\int_{B(r, x)} f(y) dy$$',
         '',
         '即 f 在以 x 为心、r 为半径的球上的**平均值**。'
       ].join('\n'),
@@ -138,7 +138,7 @@ window.MG = window.MG || {};
       notes: [
         '证明的骨架（笔记里写得很细）：把积分写成',
         '',
-        '$$\\int_{B(r, x)} f(y) dy = \\int_{\\mathbb\\{R\\}^n} \\chi_{B(r, x)}(y) f(y) dy$$',
+        '$$\\int_{B(r, x)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(r, x)}(y) f(y) dy$$',
         '',
         '于是只需证 $$\\chi_{B(r,x)} \\to \\chi_{B(r_0,x_0)}$$（当 $$(r,x) \\to (r_0,x_0)$$）在足够好的意义上成立，再用 DCT。',
         '分两块看（取目标点 $$(r_0, x_0)$$）：',
@@ -163,7 +163,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$。定义',
         '',
-        '$$Hf(x) := \\sup_{r > 0} \\frac\\{1\\}\\{m(B(r, x))\\} \\int_{B(r, x)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
+        '$$Hf(x) := \\sup_{r > 0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
         '',
         '称为 f 的 **Hardy–Littlewood 极大函数**。'
       ].join('\n'),
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$。则',
         '',
-        '$$\\lim_{r\\to0} A_r f(x) = f(x)　对 a.e. x \\in \\mathbb\\{R\\}^n$$'
+        '$$\\lim_{r\\to0} A_r f(x) = f(x)　对 a.e. x \\in \\mathbb{R}^n$$'
       ].join('\n'),
       notes: [
         '⭐ 一句话：**可积函数几乎处处等于自己局部平均值的极限**。',
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$。定义',
         '',
-        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac\\{1\\}\\{m(B(r, x))\\} \\int_{B(r, x)} |f(y) − f(x)| dy = 0 \\}$$',
+        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y) − f(x)| dy = 0 \\}$$',
         '',
         '称为 f 的 **Lebesgue 集**。'
       ].join('\n'),
@@ -259,7 +259,7 @@ window.MG = window.MG || {};
         '证明的思路很巧（笔记里的）：对每个复数 c，把微分定理用在函数 $$|f(x) − c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\\lim_{1/m(B)}\\int|f(y) − c|dy = |f(x) − c|$$」。',
         '然后取 **ℂ 的一个可数稠密子集 D**，令 $$E = \\bigcup_{c \\in D} E_c$$（可数并仍是零集）。对 $$x \\notin E$$ 与任意 ε > 0，取 $$c \\in D$$ 使 $$|f(x) − c| < \\varepsilon$$，于是',
         '',
-        '$$\\lim_{r\\to0} \\frac\\{1\\}\\{m(B(r,x))\\} \\int_{B(r,x)} |f(y) − f(x)| dy \\le |f(x) − c| + \\varepsilon < 2\\varepsilon$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − f(x)| dy \\le |f(x) − c| + \\varepsilon < 2\\varepsilon$$',
         '',
         '令 ε → 0 即得。∎',
         '⭐ 「取一个可数稠密子集」这一步是可数性技巧的典型用法：把不可数多个条件化归成可数多个零集之并。'
@@ -276,7 +276,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '可缩族'],
       statement: [
-        '$$\\mathbb\\{R\\}^n$$ 的一族 Borel 子集 $$\\{E_r\\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当',
+        '$$\\mathbb{R}^n$$ 的一族 Borel 子集 $$\\{E_r\\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当',
         '',
         '· $$E_r \\subseteq B(r, x)$$ 对每个 r 成立；',
         '· 存在 $$\\alpha > 0$$，使 $$m(E_r) > \\alpha\\cdot m(B(r, x))$$ 对一切 r 成立。'
@@ -301,13 +301,13 @@ window.MG = window.MG || {};
       statement: [
         '设 $$f \\in L^1_{loc}$$，$$x \\in L_f$$。则对**每一个**可缩地趋于 x 的族 $$\\{E_r\\}_{r>0}$$：',
         '',
-        '$$\\lim_{r\\to0} \\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} |f(y) − f(x)| dy = 0，$$',
-        '$$\\lim_{r\\to0} \\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} f(y) dy = f(x)$$'
+        '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} |f(y) − f(x)| dy = 0，$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} f(y) dy = f(x)$$'
       ].join('\n'),
       notes: [
         '证明是一行估计：由 $$E_r \\subseteq B(r,x)$$ 与 $$m(E_r) > \\alpha m(B(r,x))$$，',
         '',
-        '$$\\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} |f − f(x)| \\le \\frac\\{1\\}\\{m(E_r)\\} \\int_{B(r,x)} |f − f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f − f(x)|$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f − f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f − f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f − f(x)|$$',
         '',
         '而最右边由「$$x \\in L_f$$」趋于 0。∎',
         '⭐ 全部难度都在把 L_f 的定义选对（用 $$|f(y) − f(x)|$$ 而不是 $$|f(y)|$$）—— 选对之后这一步就是白送的。'
@@ -327,14 +327,14 @@ window.MG = window.MG || {};
         'ℝⁿ 上的 Borel 测度 ν 是**正则的**，当且仅当',
         '',
         '· $$\\nu(K) < \\infty$$ 对每个紧集 K 成立；',
-        '· $$\\nu(E) = inf\\{ \\nu(U) : U 开，E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak\\{B\\}_{\\mathbb\\{R\\}^n}$$ 成立（**外正则**）。',
+        '· $$\\nu(E) = inf\\{ \\nu(U) : U 开，E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak{B}_{\\mathbb{R}^n}$$ 成立（**外正则**）。',
         '',
         '符号测度或复测度 ν 叫正则 ⟺ $$|\\nu|$$ 正则。'
       ].join('\n'),
       notes: [
         '第二条是「从外面用开集逼近」。在 ℝⁿ 上它其实由第一条推出（笔记里专门注了一句 "actually implied by above"）。',
         '**每个正则测度都是 σ-有限的**（用紧集的可数覆盖）。',
-        '$$f \\in L^+(\\mathbb\\{R\\}^n)$$ 时，$$f\\cdot dm$$ 正则 ⟺ $$f \\in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。'
+        '$$f \\in L^+(\\mathbb{R}^n)$$ 时，$$f\\cdot dm$$ 正则 ⟺ $$f \\in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §7.2']
     },
@@ -348,7 +348,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'RN 导数', '点态', '正则'],
       statement: [
-        '设 ν 是 ℝⁿ 上的**正则**符号/复 Borel 测度，$$d\\nu = d\\lambda + f\\cdot dm$$ 是它关于 Lebesgue 测度 m 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \\in \\mathbb\\{R\\}^n$$，',
+        '设 ν 是 ℝⁿ 上的**正则**符号/复 Borel 测度，$$d\\nu = d\\lambda + f\\cdot dm$$ 是它关于 Lebesgue 测度 m 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \\in \\mathbb{R}^n$$，',
         '',
         '$$\\lim_{r\\to0} \\nu(E_r) / m(E_r) = f(x)$$',
         '',
@@ -362,7 +362,7 @@ window.MG = window.MG || {};
         '这正是微积分里「密度 = 质量 / 体积」的严格版本，也是「RN 导数是导数的推广」这一说法的根据。',
         '证明的思路：先验证 $$d|\\nu| = d|\\lambda| + |f| dm$$，于是 λ 与 f dm 都正则、特别地 $$f \\in L^1_{loc}$$；把比值拆成',
         '',
-        '$$\\nu(E_r) / m(E_r) = \\lambda(E_r) / m(E_r) + \\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} f\\cdot dm$$',
+        '$$\\nu(E_r) / m(E_r) = \\lambda(E_r) / m(E_r) + \\frac{1}{m(E_r)} \\int_{E_r} f\\cdot dm$$',
         '',
         '第二项由微分定理趋于 f(x)。第一项要证它是 0，用一个「分块 + 覆盖引理 + λ(A) = m(Aᶜ) = 0」的论证把坏集压成零测。'
       ].join('\n\n'),
@@ -391,7 +391,7 @@ window.MG = window.MG || {};
         '',
         '**③ 把测度换成积分。** 由 ① 里每个球的超额不等式，',
         '',
-        '$$c < 3^n \\sum_j m(B_j) < (3^n/\\alpha)\\cdot\\sum_j \\int_{B_j} |f| dy \\le (3^n/\\alpha)\\cdot\\int_{\\mathbb\\{R\\}^n} |f| dy$$',
+        '$$c < 3^n \\sum_j m(B_j) < (3^n/\\alpha)\\cdot\\sum_j \\int_{B_j} |f| dy \\le (3^n/\\alpha)\\cdot\\int_{\\mathbb{R}^n} |f| dy$$',
         '',
         '（最后一步用的是：$$B_j$$ 两两不交，所以把积分加起来不超过整体积分。）',
         '',
@@ -411,7 +411,7 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-differentiation',
       title: '极大定理 + 连续函数逼近 ⟹ Lebesgue 微分定理',
       proof: [
-        '**① 先局部化。** 由 L¹ₗoc 的定义与测度的可数可加性，只需对每个 $$N \\in \\mathbb\\{N\\}$$ 证明在球 $$\\{|x| \\le N\\}$$ 上几乎处处成立；把 f 换成 $$f\\cdot\\chi_{B(N+1, 0)}$$ 后即可**设 $$f \\in L^1$$**。',
+        '**① 先局部化。** 由 L¹ₗoc 的定义与测度的可数可加性，只需对每个 $$N \\in \\mathbb{N}$$ 证明在球 $$\\{|x| \\le N\\}$$ 上几乎处处成立；把 f 换成 $$f\\cdot\\chi_{B(N+1, 0)}$$ 后即可**设 $$f \\in L^1$$**。',
         '',
         '**② 用连续函数逼近。** 给定 $$\\varepsilon > 0$$，由「L¹ 里的逼近」，取**连续函数** g 使',
         '',
@@ -437,7 +437,7 @@ window.MG = window.MG || {};
         '',
         '**⑥ 令 ε → 0。** 右边对**任意** ε > 0 成立，故 $$m(E_\\alpha) = 0$$ 对一切 $$\\alpha > 0$$ 成立。于是',
         '',
-        '$$\\lim_{r\\to0} A_r f(x) = f(x)　对一切 x \\notin \\bigcup_{m\\in\\mathbb\\{N\\}} E_{1/m}$$',
+        '$$\\lim_{r\\to0} A_r f(x) = f(x)　对一切 x \\notin \\bigcup_{m\\in\\mathbb{N}} E_{1/m}$$',
         '',
         '而右边是可数个零集之并，仍是零集。∎'
       ].join('\n'),
@@ -451,11 +451,11 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-set-full',
       title: '微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处',
       proof: [
-        '**① 对每个复数 c 用一次微分定理。** 固定 $$c \\in \\mathbb\\{C\\}$$，把微分定理用在函数 $$h(x) = |f(x) − c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
+        '**① 对每个复数 c 用一次微分定理。** 固定 $$c \\in \\mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) − c|$$ 上（它是 L¹ₗoc 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
         '',
-        '$$\\lim_{r\\to0} \\frac\\{1\\}\\{m(B(r,x))\\} \\int_{B(r,x)} |f(y) − c| dy = |f(x) − c|$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − c| dy = |f(x) − c|$$',
         '',
-        '**② 只取可数多个 c。** 取 ℂ 的一个**可数稠密子集** D（比如 $$\\mathbb\\{Q\\} + i\\mathbb\\{Q\\}$$），令',
+        '**② 只取可数多个 c。** 取 ℂ 的一个**可数稠密子集** D（比如 $$\\mathbb{Q} + i\\mathbb{Q}$$），令',
         '',
         '$$E = \\bigcup_{c \\in D} E_c$$',
         '',
@@ -463,7 +463,7 @@ window.MG = window.MG || {};
         '',
         '**③ 在 E 外验证**。设 $$x \\notin E$$，任给 ε > 0，取 $$c \\in D$$ 使 $$|f(x) − c| < \\varepsilon$$。则',
         '',
-        '$$\\frac\\{1\\}\\{m(B(r,x))\\} \\int_{B(r,x)} |f(y) − f(x)| dy \\le \\frac\\{1\\}\\{m(B(r,x))\\} \\int_{B(r,x)} |f(y) − c| dy + |f(x) − c|$$',
+        '$$\\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − f(x)| dy \\le \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) − c| dy + |f(x) − c|$$',
         '',
         '右边第一项由 ①（$$x \\notin E_c$$）在 $$r \\to 0$$ 时趋于 $$|f(x) − c|$$，于是整个右端的极限 ≤ $$|f(x) − c| + \\varepsilon < 2\\varepsilon$$。令 ε → 0 得极限为 0，即 $$x \\in L_f$$。',
         '',
@@ -483,15 +483,15 @@ window.MG = window.MG || {};
         '',
         '**① 关键估计（一行）。** 因为 $$E_r \\subseteq B(r,x)$$，把积分域放大到球上只会变大；再用 $$m(E_r) > \\alpha m(B(r,x))$$ 把分母换小：',
         '',
-        '$$\\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} |f(y) − f(x)| dy \\le \\frac\\{1\\}\\{m(E_r)\\} \\int_{B(r,x)} |f(y) − f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) − f(x)| dy$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) − f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f(y) − f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) − f(x)| dy$$',
         '',
         '**② 收尾。** 由 $$x \\in L_f$$ 的定义，最右边当 $$r \\to 0$$ 时趋于 0。故第一个极限为 0。',
         '',
         '**③ 第二个极限。** 由',
         '',
-        '$$| \\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} f − f(x) | \\le \\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} |f(y) − f(x)| dy \\to 0$$',
+        '$$| \\frac{1}{m(E_r)} \\int_{E_r} f − f(x) | \\le \\frac{1}{m(E_r)} \\int_{E_r} |f(y) − f(x)| dy \\to 0$$',
         '',
-        '即得 $$\\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} f dy \\to f(x)$$。∎'
+        '即得 $$\\frac{1}{m(E_r)} \\int_{E_r} f dy \\to f(x)$$。∎'
       ].join('\n'),
       note: '全部难度都被「把 L_f 的定义写成 $$\\int|f(y) − f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。'
     },
@@ -509,7 +509,7 @@ window.MG = window.MG || {};
         '',
         '**② 拆比值。**',
         '',
-        '$$\\nu(E_r) / m(E_r) = \\lambda(E_r) / m(E_r) + \\frac\\{1\\}\\{m(E_r)\\} \\int_{E_r} f\\cdot dm$$',
+        '$$\\nu(E_r) / m(E_r) = \\lambda(E_r) / m(E_r) + \\frac{1}{m(E_r)} \\int_{E_r} f\\cdot dm$$',
         '',
         '第二项由**可缩族的微分定理**趋于 $$f(x)$$（对 m-a.e. x）。所以只需证第一项趋于 0。',
         '',

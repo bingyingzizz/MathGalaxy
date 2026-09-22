@@ -23,8 +23,8 @@ window.MG = window.MG || {};
       statement: [
         '设 X 是集合，𝔄 ⊆ 𝒫(X)。𝔄 是 X 上的一个**基本类**，当且仅当',
         '',
-        '- 对**交**封闭：$$A, B \\in \\mathfrak\\{A\\} \\implies A \\cap B \\in \\mathfrak\\{A\\}$$',
-        '- 差可以拆开：$$A, B \\in \\mathfrak\\{A\\} \\implies A \\setminus B 是 \\mathfrak\\{A\\} 中有限多个两两不交集合之并$$'
+        '- 对**交**封闭：$$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$$',
+        '- 差可以拆开：$$A, B \\in \\mathfrak{A} \\implies A \\setminus B 是 \\mathfrak{A} 中有限多个两两不交集合之并$$'
       ].join('\n'),
       notes: [
         '它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。',
@@ -45,10 +45,10 @@ window.MG = window.MG || {};
       statement: [
         '设 𝔄 ⊆ 𝒫(X) 是 X 的一族子集。',
         '',
-        '- 𝔄 是**环**（ring）：对有限并封闭，且对差封闭：$$A, B \\in \\mathfrak\\{A\\} \\implies A \\cup B \\in \\mathfrak\\{A\\} 且 A \\setminus B \\in \\mathfrak\\{A\\}$$',
-        '- 𝔄 是**代数**（algebra）：𝔄 是环，且 $$X \\in \\mathfrak\\{A\\}$$',
+        '- 𝔄 是**环**（ring）：对有限并封闭，且对差封闭：$$A, B \\in \\mathfrak{A} \\implies A \\cup B \\in \\mathfrak{A} 且 A \\setminus B \\in \\mathfrak{A}$$',
+        '- 𝔄 是**代数**（algebra）：𝔄 是环，且 $$X \\in \\mathfrak{A}$$',
         '- 𝔄 是 **σ-环**：对**可数**并封闭，且对差封闭',
-        '- 𝔄 是 **σ-代数**：𝔄 是 σ-环，且 $$X \\in \\mathfrak\\{A\\}$$',
+        '- 𝔄 是 **σ-代数**：𝔄 是 σ-环，且 $$X \\in \\mathfrak{A}$$',
         '',
         '等价说法：𝔄 是 σ-代数 ⟺ 𝔄 对**补**封闭且对**可数并**封闭。'
       ].join('\n'),
@@ -71,8 +71,8 @@ window.MG = window.MG || {};
       statement: [
         '𝔄 ⊆ 𝒫(X) 是**单调类**，当且仅当它对两种单调极限都封闭：',
         '',
-        '$$\\{E_j\\}_{j=1}^{\\infty} ↗ \\implies \\bigcup_{j=1}^{\\infty} E_j \\in \\mathfrak\\{A\\}$$',
-        '$$\\{E_j\\}_{j=1}^{\\infty} ↘ \\implies \\bigcap_{j=1}^{\\infty} E_j \\in \\mathfrak\\{A\\}$$'
+        '$$\\{E_j\\}_{j=1}^{\\infty} ↗ \\implies \\bigcup_{j=1}^{\\infty} E_j \\in \\mathfrak{A}$$',
+        '$$\\{E_j\\}_{j=1}^{\\infty} ↘ \\implies \\bigcap_{j=1}^{\\infty} E_j \\in \\mathfrak{A}$$'
       ].join('\n'),
       notes: [
         '单调类只关心「递增取并、递减取交」这两种极限，**不**要求对有限并、差、补封闭 —— 所以它比 σ-代数弱得多。',
@@ -98,7 +98,7 @@ window.MG = window.MG || {};
         '',
         '(5) 若 ℰ 是**基本类**，则',
         '',
-        '$$\\mathfrak\\{A\\} = \\{ \\mathcal\\{E\\} 中有限多个两两不交集合之并 \\}$$',
+        '$$\\mathfrak{A} = \\{ \\mathcal{E} 中有限多个两两不交集合之并 \\}$$',
         '',
         '是一个**环**。',
         '',
@@ -124,7 +124,7 @@ window.MG = window.MG || {};
       statement: [
         '设 𝔄 是一个**环**。则下列三条等价：',
         '',
-        '$$\\mathfrak\\{A\\} 是 \\sigma-环 \\iff \\mathfrak\\{A\\} 是单调类 \\iff \\mathfrak\\{A\\} 对可列不交并封闭$$'
+        '$$\\mathfrak{A} 是 \\sigma-环 \\iff \\mathfrak{A} 是单调类 \\iff \\mathfrak{A} 对可列不交并封闭$$'
       ].join('\n'),
       notes: [
         '注意前提「𝔄 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 σ-环。',
@@ -144,8 +144,8 @@ window.MG = window.MG || {};
       statement: [
         '设 ℰ ⊆ 𝒫(X)。定义',
         '',
-        '$$\\mathcal\\{M\\}(\\mathcal\\{E\\}) := \\bigcap \\{ \\mathfrak\\{A\\} : \\mathfrak\\{A\\} 是包含 \\mathcal\\{E\\} 的 \\sigma-代数 \\}$$',
-        '$$\\mathfrak\\{m\\}(\\mathcal\\{E\\}) := \\bigcap \\{ \\mathfrak\\{A\\} : \\mathfrak\\{A\\} 是包含 \\mathcal\\{E\\} 的单调类 \\}$$',
+        '$$\\mathcal{M}(\\mathcal{E}) := \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A} 是包含 \\mathcal{E} 的 \\sigma-代数 \\}$$',
+        '$$\\mathfrak{m}(\\mathcal{E}) := \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A} 是包含 \\mathcal{E} 的单调类 \\}$$',
         '',
         'ℳ(ℰ) 称为**由 ℰ 生成的 σ-代数**，𝔪(ℰ) 称为由 ℰ 生成的单调类。'
       ].join('\n'),
@@ -167,7 +167,7 @@ window.MG = window.MG || {};
       statement: [
         '设 ℰ ⊆ 𝒫(X)。则',
         '',
-        '$$\\mathcal\\{M\\}(\\mathcal\\{E\\}) = \\mathfrak\\{m\\}(\\mathcal\\{E\\}) \\iff \\forall A \\in \\mathcal\\{E\\} : A^c \\in \\mathfrak\\{m\\}(\\mathcal\\{E\\}) 且 \\forall A, B \\in \\mathcal\\{E\\} : A \\cap B \\in \\mathfrak\\{m\\}(\\mathcal\\{E\\})$$'
+        '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E}) 且 \\forall A, B \\in \\mathcal{E} : A \\cap B \\in \\mathfrak{m}(\\mathcal{E})$$'
       ].join('\n'),
       notes: [
         '⚠ **这一条我拿不准，两遍读法一致但含义可疑**，已列入待核对的存疑清单。标准叙述是：**若 ℰ 是一个代数，则 𝔪(ℰ) = ℳ(ℰ)**。笔记里把条件写成「ℰ 中集合的补、以及两两之交都落在 𝔪(ℰ) 里」—— 看着像是把「ℰ 是代数」拆开重述的一个变体，但到底是不是，要本人确认。',
@@ -188,7 +188,7 @@ window.MG = window.MG || {};
       statement: [
         '设 X 是拓扑空间。X 上的 **Borel σ-代数**是由全体开集生成的 σ-代数：',
         '',
-        '$$\\mathfrak\\{B\\}_X := \\mathcal\\{M\\}(\\{ U \\subseteq X : U 是开集 \\})$$',
+        '$$\\mathfrak{B}_X := \\mathcal{M}(\\{ U \\subseteq X : U 是开集 \\})$$',
         '',
         '𝔅_X 中的集合称为 **Borel 集**：开集、闭集、可数个开集之交（G_δ）、可数个闭集之并（F_σ）等都属于 𝔅_X。'
       ].join('\n'),
@@ -210,7 +210,7 @@ window.MG = window.MG || {};
       statement: [
         '设 { (X_α, ℳ_α) }_{α ∈ A} 是一族可测空间，$$X = \\prod_{\\alpha \\in A} X_\\alpha$$，投影 $$π_\\alpha : X \\to X_\\alpha$$。**积 σ-代数**定义为',
         '',
-        '$$⊗_{\\alpha \\in A} \\mathcal\\{M\\}_\\alpha := \\mathcal\\{M\\}(\\{ π_\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal\\{M\\}_\\alpha, \\alpha \\in A \\})$$'
+        '$$⊗_{\\alpha \\in A} \\mathcal{M}_\\alpha := \\mathcal{M}(\\{ π_\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{M}_\\alpha, \\alpha \\in A \\})$$'
       ].join('\n'),
       notes: [
         '即由全体**柱集**生成的 σ-代数。柱集 π_α⁻¹(E_α) 就是「只对第 α 个坐标提要求」的集合。',
@@ -231,11 +231,11 @@ window.MG = window.MG || {};
       statement: [
         '设每个 ℳ_α = ℳ(ℰ_α)（即 ℳ_α 由 ℰ_α 生成）。令',
         '',
-        '$$\\mathcal\\{F\\} = \\{ π_\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal\\{E\\}_\\alpha, \\alpha \\in A \\}$$',
+        '$$\\mathcal{F} = \\{ π_\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{E}_\\alpha, \\alpha \\in A \\}$$',
         '',
         '则',
         '',
-        '$$⊗_{\\alpha \\in A} \\mathcal\\{M\\}_\\alpha = \\mathcal\\{M\\}(\\mathcal\\{F\\})$$'
+        '$$⊗_{\\alpha \\in A} \\mathcal{M}_\\alpha = \\mathcal{M}(\\mathcal{F})$$'
       ].join('\n'),
       notes: [
         '意义：算积 σ-代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 ℳ_α 搬进来。',
@@ -256,7 +256,7 @@ window.MG = window.MG || {};
       statement: [
         '若指标集 A **可数**，则',
         '',
-        '$$⊗_{\\alpha \\in A} \\mathcal\\{M\\}_\\alpha = \\mathcal\\{M\\}(\\{ \\prod_{\\alpha \\in A} E_\\alpha : E_\\alpha \\in \\mathcal\\{M\\}_\\alpha \\})$$',
+        '$$⊗_{\\alpha \\in A} \\mathcal{M}_\\alpha = \\mathcal{M}(\\{ \\prod_{\\alpha \\in A} E_\\alpha : E_\\alpha \\in \\mathcal{M}_\\alpha \\})$$',
         '',
         '即：可数积的 σ-代数，恰好是由全体「矩形」生成的 σ-代数。'
       ].join('\n'),
@@ -282,17 +282,17 @@ window.MG = window.MG || {};
       statement: [
         '设 X₁, X₂, … 是距离空间，$$X = \\prod_{j=1}^{\\infty} X_j$$ 配以积度量。则',
         '',
-        '$$⊗_{j=1}^{\\infty} \\mathfrak\\{B\\}_{X_j} \\subseteq \\mathfrak\\{B\\}_X$$',
+        '$$⊗_{j=1}^{\\infty} \\mathfrak{B}_{X_j} \\subseteq \\mathfrak{B}_X$$',
         '',
         '且当每个 Xⱼ **可分**时，等号成立：',
         '',
-        '$$X_j 都可分 \\implies ⊗_{j=1}^{\\infty} \\mathfrak\\{B\\}_{X_j} = \\mathfrak\\{B\\}_X$$'
+        '$$X_j 都可分 \\implies ⊗_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_X$$'
       ].join('\n'),
       notes: [
         '⊆ 的原因很直接：投影 πⱼ 连续，所以 πⱼ⁻¹(开集) 是开集，那些柱集都在 𝔅_X 里。',
         '反方向登场的又是「可分」：Xⱼ 可分时取可数稠密集 Cⱼ，则',
         '',
-        '$$\\{ B(c, r) : c \\in C_j, r \\in \\mathbb\\{Q\\} \\}$$',
+        '$$\\{ B(c, r) : c \\in C_j, r \\in \\mathbb{Q} \\}$$',
         '',
         '是 Xⱼ 的**可数**拓扑基，它已经生成 𝔅_{Xⱼ}。于是 X 的拓扑基由这些基的有限积组成，仍然可数，从而 𝔅_X ⊆ ⊗𝔅_{Xⱼ}。',
         '⚠ 可分性不能省：ℝ^ℝ（不可数积）上，积 σ-代数真包含于 Borel σ-代数。'
@@ -321,7 +321,7 @@ window.MG = window.MG || {};
         '',
         '**② 用单调性。** 若 Bₙ 两两不交，则部分并 $$C_n = B_1 \\cup \\cdots \\cup B_n$$ 是递增列，且 Cₙ ∈ 𝔄（环对有限并封闭）。由 𝔄 是单调类，',
         '',
-        '$$\\bigcup_n C_n = \\bigcup_n B_n = \\bigcup_n A_n \\in \\mathfrak\\{A\\}$$',
+        '$$\\bigcup_n C_n = \\bigcup_n B_n = \\bigcup_n A_n \\in \\mathfrak{A}$$',
         '',
         '故 𝔄 是可数并封闭的 σ-环。反向（σ-环 ⟹ 单调类）明显，因为递增并、递减交都是可数并/交的特例。∎'
       ].join('\n'),

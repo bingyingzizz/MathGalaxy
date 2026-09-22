@@ -30,7 +30,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '单调函数', '可导'],
       statement: [
-        '设 $$F : \\mathbb\\{R\\} \\to \\mathbb\\{R\\}$$ 递增，$$G(x) := F(x+)$$（右极限）。则',
+        '设 $$F : \\mathbb{R} \\to \\mathbb{R}$$ 递增，$$G(x) := F(x+)$$（右极限）。则',
         '',
         '**(a)** F 的不连续点至多可数；',
         '',
@@ -63,11 +63,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '全变差', 'BV'],
       statement: [
-        '设 $$F : \\mathbb\\{R\\} \\to \\mathbb\\{C\\}$$。定义它的**全变差函数**',
+        '设 $$F : \\mathbb{R} \\to \\mathbb{C}$$。定义它的**全变差函数**',
         '',
-        '$$T_F(x) := sup \\{ \\sum_{j=1}^{n} |F(x_j) − F(x_{j-1})| : n \\in \\mathbb\\{N\\}, −\\infty < x_0 < \\cdots < x_n = x \\}$$',
+        '$$T_F(x) := sup \\{ \\sum_{j=1}^{n} |F(x_j) − F(x_{j-1})| : n \\in \\mathbb{N}, −\\infty < x_0 < \\cdots < x_n = x \\}$$',
         '',
-        '$$T_F$$ 是递增的 $$\\mathbb\\{R\\} \\to [0, +\\infty]$$。若 $$T_F(+\\infty) < +\\infty$$，称 F 是**有界变差的**，这类函数全体记作 **BV**。',
+        '$$T_F$$ 是递增的 $$\\mathbb{R} \\to [0, +\\infty]$$。若 $$T_F(+\\infty) < +\\infty$$，称 F 是**有界变差的**，这类函数全体记作 **BV**。',
         '',
         '$$T_F(b) − T_F(a)$$ 称为 F 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。'
       ].join('\n'),
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'BV', '例子'],
       statement: [
-        '1. 若 $$F : \\mathbb\\{R\\} \\to \\mathbb\\{R\\}$$ **有界递增**，则 $$F \\in BV$$（此时 $$T_F = F − F(-\\infty)$$）。',
+        '1. 若 $$F : \\mathbb{R} \\to \\mathbb{R}$$ **有界递增**，则 $$F \\in BV$$（此时 $$T_F = F − F(-\\infty)$$）。',
         '',
         '2. $$BV$$ 是 ℂ-向量空间。',
         '',
@@ -143,7 +143,7 @@ window.MG = window.MG || {};
       statement: [
         '**(a)** $$F \\in BV \\iff Re F \\in BV 且 Im F \\in BV$$。',
         '',
-        '**(b)** 设 $$F : \\mathbb\\{R\\} \\to \\mathbb\\{R\\}$$。则',
+        '**(b)** 设 $$F : \\mathbb{R} \\to \\mathbb{R}$$。则',
         '',
         '$$F \\in BV \\iff F = G − H，其中 G, H 都是有界递增函数$$'
       ].join('\n'),
@@ -170,7 +170,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $$F \\in BV$$。则',
         '',
-        '**(c)** 对每个 $$x \\in \\mathbb\\{R\\}$$，$$F(x+)$$ 与 $$F(x−)$$ 都存在；$$F(±\\infty)$$ 也存在；',
+        '**(c)** 对每个 $$x \\in \\mathbb{R}$$，$$F(x+)$$ 与 $$F(x−)$$ 都存在；$$F(±\\infty)$$ 也存在；',
         '',
         '**(d)** F 的不连续点至多可数；',
         '',
@@ -318,7 +318,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '绝对连续', 'AC'],
       statement: [
-        '函数 $$F : [a, b] \\to \\mathbb\\{C\\}$$ 是**绝对连续的**，当且仅当',
+        '函数 $$F : [a, b] \\to \\mathbb{C}$$ 是**绝对连续的**，当且仅当',
         '',
         '$$\\forall\\varepsilon > 0, \\exists\\delta > 0 : 任意有限个两两不交的区间 (a_j, b_j) \\subseteq [a, b] 满足 \\sum(b_j − a_j) < \\delta，就一定有 \\sum|F(b_j) − F(a_j)| < \\varepsilon$$'
       ].join('\n'),
@@ -344,7 +344,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**(⟸)** 由测度的绝对连续的 ε–δ 刻画：$$\\mu_F ≪ m$$ 给出「$$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$$」。取 E 为区间的有限不交并，就直接得到函数版的绝对连续性。',
-        '**(⟹)** 设 $$E \\in \\mathfrak\\{B\\}_\\mathbb\\{R\\}$$ 且 $$m(E) = 0$$。要证 $$\\mu_F(E) = 0$$。取递减开集列 $$U_1 ⊃ U_2 ⊃ \\cdots ⊃ E$$ 使 $$m(U_k) < \\delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \\delta$$ 得 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性与 $$\\bigcap U_k = E$$ 得 $$|\\mu_F(E)| \\le \\varepsilon$$。由 ε 任意，$$\\mu_F(E) = 0$$。∎',
+        '**(⟹)** 设 $$E \\in \\mathfrak{B}_\\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\\mu_F(E) = 0$$。取递减开集列 $$U_1 ⊃ U_2 ⊃ \\cdots ⊃ E$$ 使 $$m(U_k) < \\delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \\delta$$ 得 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性与 $$\\bigcap U_k = E$$ 得 $$|\\mu_F(E)| \\le \\varepsilon$$。由 ε 任意，$$\\mu_F(E) = 0$$。∎',
         '⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -401,7 +401,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微积分基本定理', 'AC', 'NCT'],
       statement: [
-        '设 $$F : [a, b] \\to \\mathbb\\{C\\}$$，区间紧。则下列三条**彼此等价**：',
+        '设 $$F : [a, b] \\to \\mathbb{C}$$，区间紧。则下列三条**彼此等价**：',
         '',
         '**(a)** F 在 $$[a, b]$$ 上**绝对连续**；',
         '',
@@ -487,7 +487,7 @@ window.MG = window.MG || {};
         '',
         '$$F_j^{±}(x) := \\mu_j^{±}((-\\infty, x])$$',
         '',
-        '每个 $$F_j^{±}$$ 递增、右连续、$$F_j^{±}(-\\infty) = 0$$、$$F_j^{±}(+\\infty) = \\mu_j^{±}(\\mathbb\\{R\\}) < \\infty$$。于是 F 是四个这样的函数之组合，属于 NBV。',
+        '每个 $$F_j^{±}$$ 递增、右连续、$$F_j^{±}(-\\infty) = 0$$、$$F_j^{±}(+\\infty) = \\mu_j^{±}(\\mathbb{R}) < \\infty$$。于是 F 是四个这样的函数之组合，属于 NBV。',
         '',
         '**(2) 函数 ⟹ 测度。** 反之任意 $$F \\in NBV$$ 可以写成',
         '',
@@ -520,7 +520,7 @@ window.MG = window.MG || {};
         '',
         '这正是函数绝对连续的定义。',
         '',
-        '**(⟹)** 设 F 绝对连续，$$E \\in \\mathfrak\\{B\\}_\\mathbb\\{R\\}$$、$$m(E) = 0$$，要证 $$\\mu_F(E) = 0$$。由 μ_F 的正则性取递减开集列 $$U_1 ⊃ U_2 ⊃ \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$、$$\\bigcap_k U_k = E$$。每个 Uₖ 是区间的可数不交并，把函数绝对连续性的条件用在 Uₖ 的有限截断上，得到 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性（递减列，首项有限）得',
+        '**(⟹)** 设 F 绝对连续，$$E \\in \\mathfrak{B}_\\mathbb{R}$$、$$m(E) = 0$$，要证 $$\\mu_F(E) = 0$$。由 μ_F 的正则性取递减开集列 $$U_1 ⊃ U_2 ⊃ \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$、$$\\bigcap_k U_k = E$$。每个 Uₖ 是区间的可数不交并，把函数绝对连续性的条件用在 Uₖ 的有限截断上，得到 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性（递减列，首项有限）得',
         '',
         '$$|\\mu_F(E)| = lim_j |\\mu_F(U_j)| \\le \\varepsilon$$',
         '',

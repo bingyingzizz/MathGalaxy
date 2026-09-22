@@ -23,12 +23,12 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ) 与 (Y, 𝒩) 是可测空间。函数 $$f : X \\to Y$$ 是 **(ℳ, 𝒩)-可测的**，当且仅当每个可测集的原像可测：',
         '',
-        '$$f^{-1}(E) \\in \\mathcal\\{M\\}　\\forall E \\in \\mathcal\\{N\\}$$'
+        '$$f^{-1}(E) \\in \\mathcal{M}　\\forall E \\in \\mathcal{N}$$'
       ].join('\n'),
       notes: [
         '为什么用「原像」而不是「像」：原像对交、并、补全部保持（$$f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。',
         '等价说法（当 Y 是拓扑空间、𝒩 = 𝔅_Y 时）：f 可测 ⟺ 每个开集的原像可测。',
-        '⚠ 「在 E 上可测」是相对说法：$$f$$ 在 E 上可测 ⟺ $$f|_E$$ 关于子空间 σ-代数 $$\\mathcal\\{M\\}_E$$ 可测。'
+        '⚠ 「在 E 上可测」是相对说法：$$f$$ 在 E 上可测 ⟺ $$f|_E$$ 关于子空间 σ-代数 $$\\mathcal{M}_E$$ 可测。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1', 'Halmos, Measure Theory, §18']
     },
@@ -46,7 +46,7 @@ window.MG = window.MG || {};
         '',
         '**(2) 只需验证生成元**：若 𝒩 = ℳ(ℰ)，则',
         '',
-        '$$f : X \\to Y 可测 \\iff f^{-1}(E) \\in \\mathcal\\{M\\}　\\forall E \\in \\mathcal\\{E\\}$$'
+        '$$f : X \\to Y 可测 \\iff f^{-1}(E) \\in \\mathcal{M}　\\forall E \\in \\mathcal{E}$$'
       ].join('\n'),
       notes: [
         '(1)：对 E ∈ 𝒪 有 $$(g∘f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。',
@@ -65,9 +65,9 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['推论', '连续', 'Borel'],
       statement: [
-        '设 X, Y 是拓扑空间，各配 Borel σ-代数 $$\\mathfrak\\{B\\}_X, \\mathfrak\\{B\\}_Y$$。则',
+        '设 X, Y 是拓扑空间，各配 Borel σ-代数 $$\\mathfrak{B}_X, \\mathfrak{B}_Y$$。则',
         '',
-        '$$f : X \\to Y 连续 \\implies f 是 (\\mathfrak\\{B\\}_X, \\mathfrak\\{B\\}_Y)-可测的$$'
+        '$$f : X \\to Y 连续 \\implies f 是 (\\mathfrak{B}_X, \\mathfrak{B}_Y)-可测的$$'
       ].join('\n'),
       notes: '连续的定义就是「开集的原像开」；而开集生成 𝔅_Y，用上一条的判定准则 (2) 立刻得到。'
     },
@@ -81,10 +81,10 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue 可测', 'Borel'],
       statement: [
-        '对 $$f : \\mathbb\\{R\\} \\to \\mathbb\\{C\\}$$：',
+        '对 $$f : \\mathbb{R} \\to \\mathbb{C}$$：',
         '',
-        '- 若 f 是 $$(\\mathcal\\{L\\}, \\mathfrak\\{B\\}_\\mathbb\\{C\\})$$-可测，称 f **Lebesgue 可测**（ℒ 是 Lebesgue σ-代数）；',
-        '- 若 f 是 $$(\\mathfrak\\{B\\}_\\mathbb\\{R\\}, \\mathfrak\\{B\\}_\\mathbb\\{C\\})$$-可测，称 f **Borel 可测**。'
+        '- 若 f 是 $$(\\mathcal{L}, \\mathfrak{B}_\\mathbb{C})$$-可测，称 f **Lebesgue 可测**（ℒ 是 Lebesgue σ-代数）；',
+        '- 若 f 是 $$(\\mathfrak{B}_\\mathbb{R}, \\mathfrak{B}_\\mathbb{C})$$-可测，称 f **Borel 可测**。'
       ].join('\n'),
       notes: [
         '⚠ **注意这里有个坑：两个 Lebesgue 可测函数的复合不一定 Lebesgue 可测。**',
@@ -104,18 +104,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '积空间', '实部虚部'],
       statement: [
-        '**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \\prod_{\\alpha} Y_\\alpha$$，$$\\mathcal\\{N\\} = ⊗_{\\alpha} \\mathcal\\{N\\}_\\alpha$$，$$π_\\alpha : Y \\to Y_\\alpha$$ 是投影。则',
+        '**(1)** 设 (X, ℳ)、(Y_α, 𝒩_α) (α ∈ A) 是可测空间，$$Y = \\prod_{\\alpha} Y_\\alpha$$，$$\\mathcal{N} = ⊗_{\\alpha} \\mathcal{N}_\\alpha$$，$$π_\\alpha : Y \\to Y_\\alpha$$ 是投影。则',
         '',
         '$$f : X \\to Y 可测 \\iff f_\\alpha = π_\\alpha ∘ f 可测（\\forall\\alpha \\in A）$$',
         '',
-        '**(2)** 特别地，$$f : X \\to \\mathbb\\{C\\}$$ 可测 ⟺ $$Re f$$ 与 $$Im f$$ 都可测。'
+        '**(2)** 特别地，$$f : X \\to \\mathbb{C}$$ 可测 ⟺ $$Re f$$ 与 $$Im f$$ 都可测。'
       ].join('\n'),
       notes: [
         '(1) 的 (⟹)：投影 π_α 本身可测（π_α⁻¹(E_α) 是柱集），用复合保持。',
         '(1) 的 (⟸)：只要证柱集的原像可测 —— 而 $$f^{-1}(π_\\alpha^{-1}(E_\\alpha)) = f_\\alpha^{-1}(E_\\alpha)$$ 可测 —— 再由积 σ-代数由柱集生成、用判定准则 (2)。',
         '(2) 的证明用了一个干净的事实：**ℂ 的 Borel σ-代数与 ℝ² 的 Borel σ-代数是同一个**：',
         '',
-        '$$\\mathfrak\\{B\\}_\\mathbb\\{C\\} = \\mathfrak\\{B\\}_{\\mathbb\\{R\\}^2} = \\mathfrak\\{B\\}_\\mathbb\\{R\\} ⊗ \\mathfrak\\{B\\}_\\mathbb\\{R\\}$$',
+        '$$\\mathfrak{B}_\\mathbb{C} = \\mathfrak{B}_{\\mathbb{R}^2} = \\mathfrak{B}_\\mathbb{R} ⊗ \\mathfrak{B}_\\mathbb{R}$$',
         '',
         '于是 (2) 就是 (1) 在 A = {1, 2} 时的特例。'
       ].join('\n\n'),
@@ -157,11 +157,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '简单函数'],
       statement: [
-        '可测函数 $$\\varphi : X \\to \\mathbb\\{C\\}$$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成',
+        '可测函数 $$\\varphi : X \\to \\mathbb{C}$$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成',
         '',
         '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}$$',
         '',
-        '其中 $$a_j \\in \\mathbb\\{C\\}$$，$$E_j = \\varphi^{-1}(\\{a_j\\}) \\in \\mathcal\\{M\\}$$ 两两不交。'
+        '其中 $$a_j \\in \\mathbb{C}$$，$$E_j = \\varphi^{-1}(\\{a_j\\}) \\in \\mathcal{M}$$ 两两不交。'
       ].join('\n'),
       notes: [
         '简单函数就是可测版本的「阶梯函数」—— 有限个「台阶」。',
@@ -185,7 +185,7 @@ window.MG = window.MG || {};
         '',
         '并且**在 f 有界的集合上还是一致收敛**。',
         '',
-        '**(b)** 一般地（$$f : X \\to \\mathbb\\{C\\}$$ 可测），可取 $$\\{\\varphi_n\\}$$ 简单使',
+        '**(b)** 一般地（$$f : X \\to \\mathbb{C}$$ 可测），可取 $$\\{\\varphi_n\\}$$ 简单使',
         '',
         '$$0 \\le |\\varphi_1| \\le |\\varphi_2| \\le \\cdots \\le |f|，　\\varphi_n \\to f 逐点$$'
       ].join('\n'),
@@ -242,13 +242,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '完备化', '可测函数'],
       statement: [
-        '设 (X, ℳ, μ) 是测度空间，$$(X, \\mathcal\\{M\\}̄, \\mū)$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\\mathcal\\{M\\}̄$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使',
+        '设 (X, ℳ, μ) 是测度空间，$$(X, \\mathcal{M}̄, \\mū)$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\\mathcal{M}̄$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使',
         '',
         '$$f = g　\\mū-a.e.$$'
       ].join('\n'),
       notes: [
         '直观：完备化只多加了零集的子集，所以 ℳ̄-可测函数与 ℳ-可测函数只差在零集上的取值。',
-        '证明思路（笔记里写的）：先看 $$f = \\chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \\chi_{E′}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\\{\\varphi_n\\} \\to f$$，每个 $$\\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\\psi_n$$。把零集并起来得 $$N \\in \\mathcal\\{M\\}$$，$$\\mu(N) = 0$$，$$N \\supseteq \\bigcup E_n$$，令',
+        '证明思路（笔记里写的）：先看 $$f = \\chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \\chi_{E′}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\\{\\varphi_n\\} \\to f$$，每个 $$\\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\\psi_n$$。把零集并起来得 $$N \\in \\mathcal{M}$$，$$\\mu(N) = 0$$，$$N \\supseteq \\bigcup E_n$$，令',
         '',
         '$$g = lim_n \\chi_{N^c} \\cdot \\varphi_n$$',
         '',
@@ -269,7 +269,7 @@ window.MG = window.MG || {};
       proof: [
         '**① 上确界。** 设 $$f_j$$ 可测。要证 $$sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\\infty]$$（a ∈ ℝ）验证：',
         '',
-        '$$(sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty]) \\in \\mathcal\\{M\\}$$',
+        '$$(sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty]) \\in \\mathcal{M}$$',
         '',
         '是可数并，故可测。',
         '',
@@ -279,7 +279,7 @@ window.MG = window.MG || {};
         '',
         '**④ 和与积。** 先看 $$f + g$$：对任意 a ∈ ℝ，',
         '',
-        '$$\\{f + g > a\\} = \\bigcup_{q \\in \\mathbb\\{Q\\}} ( \\{f > q\\} \\cap \\{g > a − q\\} )$$',
+        '$$\\{f + g > a\\} = \\bigcup_{q \\in \\mathbb{Q}} ( \\{f > q\\} \\cap \\{g > a − q\\} )$$',
         '',
         '（左边 ⊆ 右边：取有理数 q 夹在 $$a − g$$ 与 f 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 − f^2 − g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。',
         '',
@@ -297,7 +297,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $$f : X \\to Y$$ 连续，即每个开集的原像是开集。',
         '',
-        '由定义 $$\\mathfrak\\{B\\}_Y = \\mathcal\\{M\\}(\\{ U \\subseteq Y : U 开 \\})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\\in \\mathfrak\\{B\\}_X$$。故 f 可测。∎',
+        '由定义 $$\\mathfrak{B}_Y = \\mathcal{M}(\\{ U \\subseteq Y : U 开 \\})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 U，$$f^{-1}(U)$$ 是 X 中的开集，因而 $$\\in \\mathfrak{B}_X$$。故 f 可测。∎',
         '',
         '> 复习一下笔记里点的那个坑：**这个论证对 (𝔅, 𝔅) 成立，但对 (ℒ, ℒ) 不成立** —— 因为 ℒ 并不由开集生成，它比 𝔅_ℝ 多了很多非 Borel 的零测集子集。'
       ].join('\n')
