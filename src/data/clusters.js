@@ -91,6 +91,12 @@ MG.clusters = [
     name: '积分',
     parent: 'analysis',
     desc: '造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。'
+  },
+  {
+    id: 'analysis.signed',
+    name: '符号测度与分解',
+    parent: 'analysis',
+    desc: '造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
