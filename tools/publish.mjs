@@ -16,8 +16,11 @@
      bun tools/publish.mjs --stage      只组装到本地 dist-site/（离线可用）
      bun tools/publish.mjs --site <仓库>  换一个站点仓库（默认 <user>.github.io）
 
-   注意：站点是**公开**的。src/data/local/ 里的私人笔记不会进 dist，
-        所以也不会被发布 —— 但你自己心里要有数。
+   本脚本不依赖 shell 的命令查找：bun 直接用「正在跑本脚本的那个 bun」，
+   git 按「PATH → 常见安装位置」解析。要覆盖就设环境变量 MG_BUN / MG_GIT。
+
+   注意：站点是**公开**的，发布的是 dist/ 的产物（星图 + 给 AI 的接口文件）。
+        私人物料（_pdf/、_tools/）不进 dist，所以不会被发布。
    ========================================================================== */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -37,6 +40,39 @@ const LIVE_URL = SITE_REPO === `${USER}.github.io`
   ? `https://${USER}.github.io/`
   : `https://${USER}.github.io/${SITE_REPO}/`;
 
+/* ------------------------------------------------------- 找 bun / git */
+/**
+ * 解析外部命令的位置，按「环境变量 → PATH → 常见安装位置」的顺序来。
+ *
+ * 为什么不直接用裸名字去 spawn：命令查找依赖环境 —— 比如本机 shell 的
+ * PATHEXT 是坏的（只有 .CPL），`where git` / `Get-Command git` 都找不到，
+ * 虽然 spawn 恰好还能找到。自己解析一次，行为可预期，找不到时也能给出
+ * 「照着做就能修好」的提示，而不是让 build / push 莫名其妙地失败。
+ */
+function findExe(envVar, exeName, candidates) {
+  const custom = process.env[envVar];
+  if (custom) return fs.existsSync(custom) ? custom : null;
+  if (spawnSync(exeName, ['--version'], { stdio: 'ignore' }).status === 0) return exeName;
+  for (const c of candidates) if (c && fs.existsSync(c)) return c;
+  return null;
+}
+
+// 我们自己就跑在 bun 上 → process.execPath 就是 bun 本身，最可靠
+const BUN = process.env.MG_BUN || process.execPath || 'bun';
+const GIT = findExe('MG_GIT', 'git', [
+  'C:\\Program Files\\Git\\cmd\\git.exe',
+  'C:\\Program Files (x86)\\Git\\cmd\\git.exe',
+  process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Programs', 'Git', 'cmd', 'git.exe'),
+  'H:\\Git\\cmd\\git.exe',                       // ← 本机的 git 装在 H: 盘
+]);
+
+if (!GIT) {
+  console.error('找不到 git。装一个，或用环境变量指定，例如：');
+  console.error('  set MG_GIT=H:\\Git\\cmd\\git.exe');
+  process.exit(1);
+}
+console.log(`   工具链：bun=${BUN}　git=${GIT}`);
+
 /* ---------------------------------------------------------------- 构建 */
 function run(cmd, argv, cwd, quiet = false) {
   const r = spawnSync(cmd, argv, { cwd, stdio: quiet ? 'ignore' : 'inherit' });
@@ -44,7 +80,7 @@ function run(cmd, argv, cwd, quiet = false) {
 }
 
 console.log('① 先跑一遍构建…');
-if (!run('bun', [path.join(ROOT, 'tools', 'build.mjs')], ROOT)) {
+if (!run(BUN, [path.join(ROOT, 'tools', 'build.mjs')], ROOT)) {
   console.error('构建失败'); process.exit(1);
 }
 
@@ -163,18 +199,18 @@ console.log('③ 推送到站点仓库…');
 const gitOk = (() => {
   if (!fs.existsSync(path.join(STAGE, '.git'))) {
     fs.mkdirSync(STAGE, { recursive: true });
-    if (!run('git', ['init', '-b', 'main'], STAGE, true)) return false;
+    if (!run(GIT, ['init', '-b', 'main'], STAGE, true)) return false;
   }
-  run('git', ['remote', 'remove', 'origin'], STAGE, true);
-  if (!run('git', ['remote', 'add', 'origin', SITE_URL], STAGE, true)) return false;
-  if (!run('git', ['add', '-A'], STAGE, true)) return false;
-  run('git', ['commit', '-m', `发布：${new Date().toISOString().slice(0, 16).replace('T', ' ')}`], STAGE, true);
+  run(GIT, ['remote', 'remove', 'origin'], STAGE, true);
+  if (!run(GIT, ['remote', 'add', 'origin', SITE_URL], STAGE, true)) return false;
+  if (!run(GIT, ['add', '-A'], STAGE, true)) return false;
+  run(GIT, ['commit', '-m', `发布：${new Date().toISOString().slice(0, 16).replace('T', ' ')}`], STAGE, true);
   return true;
 })();
 
 if (!gitOk) { console.error('git 准备失败'); process.exit(1); }
 
-const pushed = run('git', ['push', '-u', 'origin', 'main', '--force'], STAGE);
+const pushed = run(GIT, ['push', '-u', 'origin', 'main', '--force'], STAGE);
 if (pushed) {
   console.log(`\n✅ 已推送。等 GitHub 构建约 1 分钟后访问：\n   ${LIVE_URL}`);
   console.log(`   ${LIVE_URL}mathgalaxy/   ← 数学星图`);

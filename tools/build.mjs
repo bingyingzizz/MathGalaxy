@@ -14,6 +14,9 @@
      bun tools/build.mjs            全部产出
      bun tools/build.mjs --json     只出 JSON/MD/llms.txt
      bun tools/build.mjs --html     只出单文件 HTML
+
+   注：meta.generated 只在**内容真的变了**时才更新 —— 所以「没改内容、只是
+       重跑了一次 build」不会让纳入 git 的 dist/ 变脏。
    ========================================================================== */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,6 +25,30 @@ import vm from 'node:vm';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
+
+/* ------------------------------------------------------------ 时间戳策略 */
+/** 去掉时间戳后再序列化 —— 用来判断「除时间戳以外，内容有没有变」 */
+function withoutStamp(d) {
+  const copy = JSON.parse(JSON.stringify(d));
+  if (copy.meta) delete copy.meta.generated;
+  return JSON.stringify(copy);
+}
+
+/**
+ * meta.generated 取什么值：内容没变就**沿用上一次的值**。
+ *
+ * 为什么：dist/ 是纳入 git 的产物，而构建时刻每次都不同。若每次都盖新时间戳，
+ * 那么「什么都没改、只是重跑了一次 build」也会让工作区变脏 —— 那是噪声，
+ * 而且会掩盖真正的改动。沿用之后，这个字段的含义变成「这份内容最后变化的时刻」：
+ * 只有真的改了 src/data/，dist/ 才会变脏（那时本来就应该提交它）。
+ */
+function stableStamp(file, data) {
+  try {
+    const prev = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (withoutStamp(prev) === withoutStamp(data)) return prev.meta.generated;
+  } catch { /* 文件不存在或读坏了 → 就当是新内容 */ }
+  return new Date().toISOString();
+}
 
 /* ---------------------------------------------------------------- 载入内容 */
 /** 造一个最小的 window，把引擎和内容脚本按顺序跑起来（不碰 DOM 的那部分） */
@@ -376,6 +403,8 @@ if (graph.warnings.length) {
 
 if (doJSON) {
   const data = exportJSON(MG, graph);
+  // 内容没变就沿用旧时间戳 —— 否则每次构建都会把 git 工作区弄脏
+  data.meta.generated = stableStamp(path.join(DIST, 'graph.json'), data);
   fs.writeFileSync(path.join(DIST, 'graph.json'), JSON.stringify(data, null, 1), 'utf8');
   console.log('  → dist/graph.json');
 
