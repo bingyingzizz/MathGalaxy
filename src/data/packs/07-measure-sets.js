@@ -221,6 +221,31 @@ window.MG = window.MG || {};
     },
 
     {
+      id: 'prop.product-sigma-base',
+      cluster: 'analysis.measure',
+      type: 'proposition',
+      label: '积 σ-代数的生成基',
+      title: '命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变',
+      regions: ['analysis'],
+      tags: ['命题', '积', '生成'],
+      statement: [
+        '设每个 ℳ_α = ℳ(ℰ_α)（即 ℳ_α 由 ℰ_α 生成）。令',
+        '',
+        '$$ℱ = { π_α^{-1}(E_α) : E_α ∈ ℰ_α, α ∈ A }$$',
+        '',
+        '则',
+        '',
+        '$$⊗_{α ∈ A} ℳ_α = ℳ(ℱ)$$'
+      ].join('\n'),
+      notes: [
+        '意义：算积 σ-代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 ℳ_α 搬进来。',
+        '典型用法：ℝ 上取 ℰ = 半开区间 { (a, b] }（它生成 𝔅_ℝ），于是 𝔅_ℝ ⊗ 𝔅_ℝ 已经由形如 (a, b] × (c, d] 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。',
+        '证明是「生成」的通用套路：两边都等于「包含 ℱ 的最小 σ-代数」，各自验证 ℱ ⊆ 一边、另一边 ⊆ ℱ。'
+      ].join('\n\n'),
+      refs: ['Folland, Real Analysis, §2.1']
+    },
+
+    {
       id: 'prop.product-sigma-generated',
       cluster: 'analysis.measure',
       type: 'proposition',
@@ -366,6 +391,20 @@ window.MG = window.MG || {};
       definition: 'def.product-sigma',
       usedBy: 'prop.product-sigma-generated',
       note: '这条命题比较「柱集生成」与「矩形生成」。'
+    },
+    {
+      id: 'def-link.product-base',
+      kind: 'definition',
+      definition: 'def.product-sigma',
+      usedBy: 'prop.product-sigma-base',
+      note: '这条命题说的就是把每一维的 ℳ_α 换成生成元后，积 σ-代数不变。'
+    },
+    {
+      id: 'def-link.generated-product-base',
+      kind: 'definition',
+      definition: 'def.generated-sigma',
+      usedBy: 'prop.product-sigma-base',
+      note: '整条命题就是在操作「生成」。'
     },
     {
       id: 'def-link.product-borel',

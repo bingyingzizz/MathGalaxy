@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T06:00:52.922Z",
+  "generated": "2026-09-22T06:01:30.290Z",
   "counts": {
    "regions": 6,
    "clusters": 8,
-   "nodes": 66,
-   "edges": 82,
-   "strong": 78,
+   "nodes": 67,
+   "edges": 84,
+   "strong": 80,
    "weak": 4
   },
   "readingGuide": {
@@ -73,7 +73,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 28
+   "nodeCount": 29
   }
  ],
  "clusters": [
@@ -183,7 +183,7 @@
    "name": "测度的构造",
    "parent": "analysis",
    "desc": "造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。",
-   "nodeCount": 28,
+   "nodeCount": 29,
    "nodes": [
     "def.fundamental-class",
     "def.set-ring",
@@ -194,6 +194,7 @@
     "thm.monotone-class",
     "def.borel",
     "def.product-sigma",
+    "prop.product-sigma-base",
     "prop.product-sigma-generated",
     "cor.borel-product",
     "def.measure",
@@ -1213,6 +1214,27 @@
    ]
   },
   {
+   "id": "prop.product-sigma-base",
+   "type": "proposition",
+   "label": "积 σ-代数的生成基",
+   "title": "命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.measure",
+   "tags": [
+    "命题",
+    "积",
+    "生成"
+   ],
+   "statement": "设每个 ℳ_α = ℳ(ℰ_α)（即 ℳ_α 由 ℰ_α 生成）。令\n\n$$ℱ = { π_α^{-1}(E_α) : E_α ∈ ℰ_α, α ∈ A }$$\n\n则\n\n$$⊗_{α ∈ A} ℳ_α = ℳ(ℱ)$$",
+   "notes": "意义：算积 σ-代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 ℳ_α 搬进来。\n\n典型用法：ℝ 上取 ℰ = 半开区间 { (a, b] }（它生成 𝔅_ℝ），于是 𝔅_ℝ ⊗ 𝔅_ℝ 已经由形如 (a, b] × (c, d] 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。\n\n证明是「生成」的通用套路：两边都等于「包含 ℱ 的最小 σ-代数」，各自验证 ℱ ⊆ 一边、另一边 ⊆ ℱ。",
+   "refs": [
+    "Folland, Real Analysis, §2.1"
+   ]
+  },
+  {
    "id": "prop.product-sigma-generated",
    "type": "proposition",
    "label": "可数积的生成集",
@@ -2050,6 +2072,22 @@
    "definition": "def.product-sigma",
    "usedBy": "prop.product-sigma-generated",
    "note": "这条命题比较「柱集生成」与「矩形生成」。"
+  },
+  {
+   "id": "def-link.product-base",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-sigma",
+   "usedBy": "prop.product-sigma-base",
+   "note": "这条命题说的就是把每一维的 ℳ_α 换成生成元后，积 σ-代数不变。"
+  },
+  {
+   "id": "def-link.generated-product-base",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.generated-sigma",
+   "usedBy": "prop.product-sigma-base",
+   "note": "整条命题就是在操作「生成」。"
   },
   {
    "id": "def-link.product-borel",
