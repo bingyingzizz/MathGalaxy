@@ -22,6 +22,7 @@ MG.trunk = [
   'def.sequence-limit',        // 数列极限
   'ax.ext',                    // 外延公理：集合相等靠什么
   'def.subset',                // 子集
+  'def.power-set',             // 幂集（后面生成的 σ-代数、外测度都踩在它上面）
   'def.empty',                 // 空集
   'thm.empty',                 // 空集存在
   'def.pair',                  // 有序对

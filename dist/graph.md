@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T10:28:13.794Z
-> 6 星系 / 14 星团 / 198 节点 / 366 连线（强边 362，弱边 4）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:00:44.542Z
+> 6 星系 / 15 星团 / 209 节点 / 392 连线（强边 388，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -295,6 +295,28 @@ $$\emptyset := \{ x : x \ne x \}$$
 
 参考：Kunen, Set Theory, I.5
 
+#### 幂集 𝒫(X)　`def.power-set`
+*定义*　幂集（Power Set）
+
+设 $X$ 是集合。$X$ 的**幂集**是「$X$ 的全部子集」装成的集合：
+
+$$\mathcal{P}(X) := \{ A : A \subseteq X \}$$
+
+于是 $A \in \mathcal{P}(X) \iff A \subseteq X$，且 $\mathcal{P}(X)$ 自己的元素都是集合。
+
+由**幂集公理**，$\mathcal{P}(X)$ 确实是集合；由外延公理它唯一。
+
+有限情形的元素个数：$|X| = n \implies |\mathcal{P}(X)| = 2^{n}$（每个元素「取或不取」）。
+
+⭐ 幂集是「把性质变成对象」的那一步：想谈「$X$ 的所有子集」这件事本身（而不是逐个谈），就得有幂集。$\mathcal{P}(X)$ 同时是几个重要构造的舞台：
+- 外测度定义在**全体子集**上：$\mu^* : \mathcal{P}(X) \to [0, +\infty]$；
+- 环、$\sigma$-代数、单调类都是 $\mathcal{P}(X)$ 的某一族子集；
+- 生成的 $\sigma$-代数取的就是「一切包含 $\mathcal{E}$ 的 $\sigma$-代数之交」，而 $\mathcal{P}(X)$ 保证这个交不空。
+
+⚠ $\emptyset \in \mathcal{P}(X)$ 且 $X \in \mathcal{P}(X)$ 对一切 $X$ 成立 —— 幂集从来不是空的。
+
+参考：Kunen, Set Theory, I.5
+
 ### 星团：关系与选择
 > 造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。
 
@@ -427,6 +449,97 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 ⚠ 「可数」不是「数得完」：$\mathbb{N}$ 自己就可数但数不完。
 
 参考：Kunen, Set Theory, I.6
+
+#### 等势　`def.equinumerous`
+*定义*　等势（Equinumerous）
+
+集合 $A$ 与 $B$ **等势**（记 $|A| = |B|$ 或 $A \approx B$），当且仅当存在**双射**
+
+$$f : A \to B$$
+
+「等势」是集合之间的一种等价关系：自反（恒等映射）、对称（逆映射）、传递（合成）。
+
+⭐ 这是**比较大小的正确方式**：不去数个数（无限集数不完），而是问「能不能一一配对」。
+
+经典结果：
+- $\mathbb{N}$ 与 $\mathbb{Q}$、$\mathbb{N} \times \mathbb{N}$ 都等势（可数）；
+- $(0, 1)$ 与 $\mathbb{R}$ 等势（$x \mapsto \tan \pi(x - 1/2)$ 之类）；
+- $\mathbb{N}$ 与 $\mathbb{R}$ **不等势**（Cantor 定理）。
+
+⚠ $A \subseteq B$ 与「等势」无关：$\mathbb{N} \subsetneq \mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\iff$ 无限）。
+
+参考：Kunen, Set Theory, I.6
+
+#### 基数 |A|　`def.cardinal`
+*定义*　基数与基数的比较（Cardinality）
+
+等势把「所有集合」分成一个个类。「集合 $A$ 的**基数**」$|A|$ 指的就是 $A$ 所在的这个等势类 —— 它衡量 $A$ 有多大，而不关心 $A$ 的元素是什么。
+
+比较两个基数：
+
+- $|A| \le |B|$：存在**单射** $A \to B$；
+- $|A| = |B|$：存在**双射** $A \to B$（等势）；
+- $|A| < |B|$：$|A| \le |B|$ 但 $|A| \ne |B|$。
+
+若 $|A| \le |B|$ 且 $|B| \le |A|$，则 $|A| = |B|$（Schröder–Bernstein 定理）。
+
+⭐ 记号的用法：$|\mathbb{N}| = \aleph_0$（可数无限），$|\mathbb{R}| = 2^{\aleph_0}$，且 $\aleph_0 < 2^{\aleph_0}$。
+
+⚠ 严格说来「等势类」不是集合（它是真类），所以 ZFC 里的通行做法是：先有**序数**，再用良序定理（$\iff$ AC）取每个等势类里最小的那个序数作代表，那个序数就叫基数。
+> 本星图只用到「$|A| \le |B|$ 靠单射、$|A| = |B|$ 靠双射」这两件事 —— 它们不需要选代表就能用。
+
+⚠ 任意两个基数**不一定可比**，这正是**基数可比定理**（要用 AC）的内容。
+
+参考：Kunen, Set Theory, I.6
+
+#### Cantor 定理　`thm.cantor`
+*定理*　Cantor 定理：$|A| < |\mathcal{P}(A)|$
+
+对任意集合 $A$：
+
+$$|A| < |\mathcal{P}(A)|$$
+
+也就是说：**不存在**从 $A$ 到 $\mathcal{P}(A)$ 的满射（当然也不存在双射），但 $a \mapsto \{a\}$ 是单射。
+
+⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。于是
+
+$$\aleph_0 < 2^{\aleph_0} < 2^{2^{\aleph_0}} < \cdots$$
+
+取 $A = \mathbb{N}$ 就得到「$\mathbb{R}$ 不可数」（$|\mathbb{R}| = 2^{\aleph_0}$）。
+
+证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \{ a \in A : a \notin f(a) \}$ 不在 $f$ 的像里。这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。
+
+参考：Kunen, Set Theory, I.6
+
+#### Schröder–Bernstein 定理　`thm.schroder-bernstein`
+*定理*　Schröder–Bernstein 定理
+
+若存在单射 $f : A \to B$ 与单射 $g : B \to A$，则存在**双射** $A \to B$，即
+
+$$|A| \le |B| \ \text{且}\ |B| \le |A| \implies |A| = |B|$$
+
+⭐ 它的价值在于**省事**：要证两个集合等势，只要各造一个方向的单射，不必显式写出那个双射。（对比：Cantor 定理的另一条路 —— 有单射无满射 —— 用的是对称的说法。）
+
+⚠ 它**不需要**选择公理：证明是构造性的（见边的证明），这也是它比「任意两个基数可比」好用的地方。
+
+参考：Kunen, Set Theory, I.6
+
+#### 基数可比定理　`thm.cardinal-comparable`
+*定理*　基数可比定理（需要选择公理）
+
+在**选择公理**下：对任意两个集合 $A$、$B$，必有
+
+$$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
+
+即任意两个基数都可以比较大小。
+
+⭐ 这条是「基数排序」的许可证：没有它，连「$A$ 比 $B$ 大」这句话都可能毫无意义。
+
+证明路线（见边）：**良序定理**把 $A$、$B$ 都良序化 $\to$ 对应的序数可以比较 $\to$ 于是有一个方向能放进单射。所以这条定理与 AC、良序定理是同一件事的三种说法。
+
+⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。
+
+参考：Jech, The Axiom of Choice, Ch. 3
 
 ## 星系：序理论（Order Theory）
 > 偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。
@@ -599,6 +712,98 @@ Tukey 引理的好处是「免验证」：只要目标族具有有限特征，�
 
 ## 星系：拓扑学（Topology）
 > 开集、连续、紧致与连通；大量定理依赖选择原理。
+
+### 星团：拓扑空间
+> 造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。
+
+#### 拓扑空间与开集　`def.topology`
+*定义*　拓扑空间 / 开集（Topological Space）
+
+设 $X$ 是集合，$\mathcal{T} \subseteq \mathcal{P}(X)$ 是 $X$ 的一族子集。$(X, \mathcal{T})$ 是一个**拓扑空间**，$\mathcal{T}$ 叫作 $X$ 上的一个**拓扑**，当且仅当：
+
+1. **含两端**：$\emptyset \in \mathcal{T}$ 且 $X \in \mathcal{T}$；
+2. **任意并封闭**：$\{ U_i \}_{i \in I} \subseteq \mathcal{T} \implies \bigcup_{i \in I} U_i \in \mathcal{T}$（$I$ 任意，可以不可数）；
+3. **有限交封闭**：$U, V \in \mathcal{T} \implies U \cap V \in \mathcal{T}$。
+
+$\mathcal{T}$ 的成员称为**开集**，它们的补集称为**闭集**。
+
+⭐ 这三条公理是把「实数上开区间的性质」抽象出来的结果：任意多个开集并起来还是开集，但只有**有限**个开集交起来才保证是开集（$\bigcap_n (-1/n, 1/n) = \{0\}$ 不是开集）。
+
+这套语言的好处是**只留下「哪些集合算开」这一件事**，于是距离、度量、坐标全都可以扔掉 —— 连续、紧、连通、极限这些概念照样能说。
+
+⚠ 同一集合上可以有多个不同的拓扑；比较时用「更细 / 更粗」而不是大小。
+
+参考：Munkres, Topology, Ch. 2
+
+#### 闭集与闭包　`def.closed-set`
+*定义*　闭集 / 闭包 / 稠密（Closed Set, Closure）
+
+设 $(X, \mathcal{T})$ 是拓扑空间。
+
+- $F \subseteq X$ 是**闭集**：$X \setminus F$ 是开集；
+- $A \subseteq X$ 的**闭包** $\operatorname{cl} A$：一切包含 $A$ 的闭集之交（最小的那个闭集）；
+- $A$ **稠密**：$\operatorname{cl} A = X$；
+- $x$ 的**邻域**：任何含 $x$ 的开集（的包含者）。
+
+由 De Morgan 律，开集的三条公理翻译成闭集就是：$\emptyset, X$ 闭；**任意**交闭；**有限**并闭。
+
+⭐ 开与闭不是互斥的：$\emptyset$ 与 $X$ 既开又闭；在 $\mathbb{R}$ 里 $[0, 1]$ 是闭的，$[0, 1)$ 既不开也不闭。
+
+闭包是「把极限点都收进来」：在距离空间里 $\operatorname{cl} A$ 恰好是「$A$ 中某个序列的极限」全体。
+
+参考：Munkres, Topology, Ch. 2
+
+#### 基与子基　`def.topology-base`
+*定义*　拓扑的基 / 子基（Basis, Subbasis）
+
+设 $(X, \mathcal{T})$ 是拓扑空间，$\mathcal{B} \subseteq \mathcal{T}$。$\mathcal{B}$ 是拓扑 $\mathcal{T}$ 的一组**基**，当且仅当每个开集都是 $\mathcal{B}$ 中若干成员之并；等价条件：
+
+1. $\bigcup \mathcal{B} = X$；
+2. 对 $B_1, B_2 \in \mathcal{B}$ 与 $x \in B_1 \cap B_2$，存在 $B_3 \in \mathcal{B}$ 使 $x \in B_3 \subseteq B_1 \cap B_2$。
+
+$\mathcal{S} \subseteq \mathcal{P}(X)$ 是**子基**，当且仅当它的**有限交**全体构成一组基。
+
+⭐ 基的用处：**只需在基上验证，就自动对一切开集成立**。
+- 距离空间里：开球全体构成一组基；
+- $\mathbb{R}$ 上：开区间构成一组基；半开区间 $\{ (a, b] \}$ 也是（这一条在构造 Lebesgue–Stieltjes 测度时更好用）；
+- 积拓扑、$\sigma$-代数的「柱集」也是同一套路：先定一组好用的集合，再取它生成的东西。
+
+⚠ 基不是唯一的：同一个拓扑可以有很多组基。
+
+参考：Munkres, Topology, Ch. 2
+
+#### 连续映射　`def.continuous-map`
+*定义*　连续映射（Continuous Map）
+
+设 $X$、$Y$ 是拓扑空间。映射 $f : X \to Y$ **连续**，当且仅当**每个开集的原像是开集**：
+
+$$V \in \mathcal{T}_Y \implies f^{-1}(V) \in \mathcal{T}_X$$
+
+只需对某一组**基**（或子基）验证即可。
+
+连续的复合仍连续：$f$、$g$ 连续 $\implies g \circ f$ 连续。
+
+⭐ 这条定义是 $\varepsilon$-$\delta$ 的**抽象化**：在距离空间里，「$f^{-1}(V)$ 开」与「$\varepsilon$ 给出 $\delta$」逐字等价 —— 因为开球就是 $\varepsilon$ 邻域。所以「连续」是拓扑性质，跟具体距离无关。
+
+⚠ 用**原像**而不是像：原像对并、交、补全部保持，像没有这些性质。这与可测函数的定义（$f^{-1}(E) \in \mathcal{M}$）是同一个套路。
+
+参考：Munkres, Topology, Ch. 2
+
+#### 同胚　`def.homeomorphism`
+*定义*　同胚（Homeomorphism）
+
+设 $X$、$Y$ 是拓扑空间。$f : X \to Y$ 是**同胚**，当且仅当
+
+- $f$ 是双射；
+- $f$ 与 $f^{-1}$ 都连续。
+
+此时记 $X \cong Y$，称两个空间**同胚**。「同胚」是拓扑空间之间的等价关系（恒等、逆、复合都保持）。
+
+⭐ 同胚 = 「拓扑上分不出来」：一切**拓扑性质**（紧性、连通性、Hausdorff、闭包）都保持不变。
+
+⚠ 反过来也要当心：**度量性质在同胚下会变**。$\mathbb{R}$ 与开区间 $(0, 1)$ 同胚（$x \mapsto \frac{1}{2} + \frac{1}{\pi}\arctan x$），但前者完备、后者不完备 —— 这就是「完备性不是拓扑性质」的经典例子，也是距离空间里「紧 / 闭」与「完备 / 全有界」两类性质的分界线。
+
+参考：Munkres, Topology, Ch. 2
 
 ### 星团：度量空间
 > 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
@@ -6204,6 +6409,165 @@ $L^p$ 的元素取复值：$f : X \to \mathbb{C}$。
 
 本性上界是「$\mu(\{|f| > a\}) = 0$ 的那些 $a \ge 0$ 的下确界」——$a$ 是实数。
 
+#### 定义引用：「子集」→ 幂集 𝒫(X)　`dep.subset-powerset`
+
+幂集的元素就是**子集**：$A \in \mathcal{P}(X) \iff A \subseteq X$。
+
+#### 定义引用：「单射 / 满射 / 双射」→ 等势　`dep.bijection-equinumerous`
+
+等势的定义就是「存在**双射**」。
+
+#### 定义引用：「等势」→ 基数 |A|　`dep.equinumerous-cardinal`
+
+基数就是等势类：先有「等势」，才谈得上「$A$ 有多大」。
+
+#### 定义引用：「等势」→ 可数与不可数　`dep.equinumerous-countable`
+
+可数 = 与 $\mathbb{N}$ **等势**；至多可数 = 能单射进 $\mathbb{N}$。
+
+#### 定义引用：「基数 |A|」→ Cantor 定理　`dep.cardinal-cantor`
+
+「$|A| < |\mathcal{P}(A)|$」是一个关于**基数**的比较。
+
+#### 定义引用：「幂集 𝒫(X)」→ Cantor 定理　`dep.powerset-cantor`
+
+定理讲的就是 $A$ 与它的**幂集**的大小关系。
+
+#### 定义引用：「单射 / 满射 / 双射」→ Schröder–Bernstein 定理　`dep.bijection-sb`
+
+前提与结论都由**单射 / 双射**写成。
+
+#### 定义引用：「基数 |A|」→ 基数可比定理　`dep.cardinal-comparable-thm`
+
+「任意两个基数可比」是关于**基数**的命题。
+
+#### 定义引用：「幂集 𝒫(X)」→ 生成的 σ-代数　`dep.powerset-generated-sigma`
+
+「$\mathcal{E} \subseteq \mathcal{P}(X)$」「一切包含 $\mathcal{E}$ 的 $\sigma$-代数之交」都要在**幂集**里取。
+
+#### 定义引用：「幂集 𝒫(X)」→ 外测度　`dep.powerset-outer-measure`
+
+外测度定义在**全体子集**上：$\mu^* : \mathcal{P}(X) \to [0, +\infty]$。
+
+#### 幂集 𝒫(X) ⟹ Cantor 定理　`imp.cantor`
+*幂集 ⟹ Cantor 定理（对角线法）*
+
+**① $|A| \le |\mathcal{P}(A)|$。** 映射 $a \mapsto \{a\}$ 是单射：$\{a\} = \{a'\} \implies a = a'$。
+
+**② 不存在满射 $f : A \to \mathcal{P}(A)$。** 反设存在。令
+
+$$D := \{ a \in A : a \notin f(a) \}$$
+
+这是 $A$ 的一个子集，所以 $D \in \mathcal{P}(A)$。由满射性，存在 $a_0 \in A$ 使 $f(a_0) = D$。
+
+**③ 矛盾。** 看 $a_0$ 属不属于 $D$：
+
+- 若 $a_0 \in D$：由 $D$ 的定义 $a_0 \notin f(a_0) = D$，矛盾；
+- 若 $a_0 \notin D = f(a_0)$：那么 $a_0$ 满足「$a \notin f(a)$」，按定义又该有 $a_0 \in D$，矛盾。
+
+两边都不成立，故不存在满射。结合 ① 得 $|A| < |\mathcal{P}(A)|$。$\blacksquare$
+
+> $D$ 之所以叫「对角集」：把 $A$ 排成行、把 $\mathcal{P}(A)$ 排成列，「$a \in f(a)$」是一张表，$D$ 取的是这张表的**对角线**再逐格取反。
+
+#### 单射 / 满射 / 双射 ⟹ Schröder–Bernstein 定理　`imp.schroder-bernstein`
+*两个方向的单射 ⟹ 双射*
+
+设 $f : A \to B$、$g : B \to A$ 都是单射。把 $A$ 分成两半，一半用 $f$、一半用 $g^{-1}$，拼出一个双射。
+
+**① 造一串集合。** 令
+
+$$A_0 := A \setminus g(B), \qquad A_{n+1} := g(f(A_n))$$
+
+（直观：$A_0$ 是「$B$ 管不到」的那部分，剩下的在 $f$ 与 $g$ 之间来回倒。）令
+
+$$A^{*} := \bigcup_{n=0}^{\infty} A_n, \qquad A^{\sharp} := A \setminus A^{*}$$
+
+**② 定义 $h : A \to B$。**
+
+$$h(a) := \begin{cases} f(a), & a \in A^{*} \\ g^{-1}(a), & a \in A^{\sharp} \end{cases}$$
+
+要说明：$a \in A^{\sharp}$ 时 $a \in g(B)$，所以 $g^{-1}(a)$ 有意义。事实上若 $a \notin g(B)$ 则 $a \in A_0 \subseteq A^{*}$，与 $a \in A^{\sharp}$ 矛盾。
+
+**③ $h$ 是单射。** 分三种情况：同在 $A^{*}$ 上由 $f$ 单射；同在 $A^{\sharp}$ 上由 $g$ 单射；一边一个时，$h(A^{*}) = f(A^{*})$ 而
+
+$$f(A^{*}) = \bigcup_{n} f(A_n) = \bigcup_{n} g^{-1}(A_{n+1}) \subseteq g^{-1}(A^{*} \setminus A_0)$$
+
+与 $h(A^{\sharp}) = g^{-1}(A^{\sharp})$ 不相交 —— 因为 $A^{\sharp} \cap (A^{*} \setminus A_0) = \emptyset$。
+
+**④ $h$ 是满射。** 若 $b \in B$：令 $a = g(b) \in A$。若 $a \in A^{\sharp}$，则 $h(a) = g^{-1}(a) = b$；若 $a \in A^{*}$，则 $a \in A_n$ 对某个 $n \ge 1$（因为 $a = g(b)$ 落在 $g(B)$ 里），于是 $a = g(f(a'))$ 对某个 $a' \in A_{n-1} \subseteq A^{*}$，由 $g$ 单射得 $f(a') = b$，即 $h(a') = b$。
+
+综上 $h$ 是双射，故 $|A| = |B|$。$\blacksquare$
+
+#### 良序定理 ⟹ 基数可比定理　`imp.cardinal-comparable`
+*良序定理 ⟹ 任意两个基数可比*
+
+设 $A$、$B$ 是任意两个集合。
+
+**① 良序化。** 由**良序定理**，$A$ 上有一个良序 $\preceq_A$、$B$ 上有一个良序 $\preceq_B$。
+
+**② 换成序数。** 每个良序集序同构于唯一的一个序数，记作 $\alpha$、$\beta$。于是只需比较两个序数。
+
+**③ 序数可比。** 对任意两个序数 $\alpha$、$\beta$，总有 $\alpha \in \beta$、$\alpha = \beta$、$\beta \in \alpha$ 三者之一成立（这一步是序数理论的基本事实，用的是良序性）。
+
+- 若 $\alpha \subseteq \beta$：序同构给出单射 $A \to B$，于是 $|A| \le |B|$；
+- 若 $\beta \subseteq \alpha$：同理 $|B| \le |A|$。
+
+所以必有 $|A| \le |B|$ 或 $|B| \le |A|$。$\blacksquare$
+
+> 反过来说：**基数可比定理 $\implies$ 良序定理**（取 $A$、$B$ 中能单射进另一个的那个方向，可以良序化较小的集合，再把良序搬到较大集合上）。所以它与 AC、良序定理、佐恩引理是同一件事。
+
+#### 定义引用：「幂集 𝒫(X)」→ 拓扑空间与开集　`dep.powerset-topology`
+
+拓扑是**幂集**的一族子集：$\mathcal{T} \subseteq \mathcal{P}(X)$。
+
+#### 定义引用：「子集」→ 拓扑空间与开集　`dep.subset-topology`
+
+「开集是 $X$ 的子集」「$\mathcal{T}$ 作为集合族」都是子集关系。
+
+#### 定义引用：「拓扑空间与开集」→ 闭集与闭包　`dep.topology-closed`
+
+闭集定义成**开集**的补，开集的性质靠 De Morgan 律翻译过去。
+
+#### 定义引用：「差集与补集」→ 闭集与闭包　`dep.diff-complement-closed`
+
+「补集」这条定义是闭集定义的直接依据。
+
+#### 定义引用：「拓扑空间与开集」→ 基与子基　`dep.topology-base`
+
+基是**开集族**里挑了「表现良好」的一部分：每个开集都由它并出来。
+
+#### 定义引用：「拓扑空间与开集」→ 连续映射　`dep.topology-continuous-map`
+
+连续映射说的是「$\mathcal{T}_Y$ 里每个开集的原像落在 $\mathcal{T}_X$ 里」。
+
+#### 定义引用：「单射 / 满射 / 双射」→ 同胚　`dep.bijection-homeo`
+
+同胚首先是**双射**，再要求两个方向都连续。
+
+#### 定义引用：「连续映射」→ 同胚　`dep.continuous-map-homeo`
+
+「$f$ 与 $f^{-1}$ 都连续」用的是**连续映射**。
+
+#### 定义引用：「拓扑空间与开集」→ 距离空间　`dep.topology-metric`
+
+$d$ 诱导出的那族开集（开球之并）就是这条定义里的拓扑：三条公理逐条可验（任意并由球的定义封闭，有限交由三角不等式保证）。所以**每个距离空间都是拓扑空间**，反之不成立。
+
+#### 定义引用：「拓扑空间与开集」→ Borel σ-代数　`dep.topology-borel`
+
+Borel $\sigma$-代数就是「设 $X$ 是**拓扑空间**，取全体开集生成的 $\sigma$-代数」。
+
+#### 定义引用：「拓扑空间与开集」→ 连续　`dep.topology-engine-continuous`
+
+$\varepsilon$-$\delta$ 那套是**拓扑版连续**在实数（或距离空间）上的展开形式：开球就是 $\varepsilon$ 邻域。
+
+#### 定义引用：「闭集与闭包」→ 紧子集是闭的　`dep.closed-set-compact-closed`
+
+「紧子集是闭的」里的「闭」就是这条定义的闭集。
+
+#### 定义引用：「基与子基」→ 距离空间　`dep.base-metric`
+
+距离空间里「开球全体构成这个拓扑的一组**基**」——这就是基的定义的一个标准例子。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -6815,7 +7179,7 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 ## 星团级连接（整块对整块）
 
 - **集合的构造 ↔ ZFC 公理系统**　7 条节点级连线
-- **极大原理 ↔ 关系与选择**　3 条节点级连线
+- **极大原理 ↔ 关系与选择**　4 条节点级连线
 - **积分 ↔ 测度的构造**　26 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
 - **测度的构造 ↔ 符号测度与分解**　10 条节点级连线
@@ -6825,11 +7189,14 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 - **有界变差与绝对连续 ↔ 测度的构造**　2 条节点级连线
 - **有界变差与绝对连续 ↔ 积分**　2 条节点级连线
 - **积分 ↔ L^p 空间**　6 条节点级连线
-- **关系与选择 ↔ 集合的构造**　3 条节点级连线
+- **关系与选择 ↔ 集合的构造**　5 条节点级连线
 - **测度的构造 ↔ 实数与区间**　2 条节点级连线
 - **积分 ↔ 实数与区间**　3 条节点级连线
 - **有界变差与绝对连续 ↔ 实数与区间**　3 条节点级连线
 - **L^p 空间 ↔ 实数与区间**　2 条节点级连线
+- **测度的构造 ↔ 集合的构造**　6 条节点级连线
+- **集合的构造 ↔ 拓扑空间**　3 条节点级连线
+- **拓扑空间 ↔ 度量空间**　3 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **极大原理 ↔ 序结构**　7 条节点级连线
 - **序结构 ↔ 关系与选择**　2 条节点级连线
@@ -6837,4 +7204,3 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 - **ℝⁿ 上的微分 ↔ 测度的构造**　4 条节点级连线
 - **L^p 空间 ↔ 测度的构造**　4 条节点级连线
 - **向量空间的基 ↔ 序结构**　2 条节点级连线
-- **测度的构造 ↔ 集合的构造**　4 条节点级连线

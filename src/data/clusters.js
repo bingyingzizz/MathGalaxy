@@ -73,6 +73,12 @@ MG.clusters = [
 
   /* ------------------------------------------------ 星系：拓扑学 */
   {
+    id: 'topology.general',
+    name: '拓扑空间',
+    parent: 'topology',
+    desc: '造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。'
+  },
+  {
     id: 'topology.metric',
     name: '度量空间',
     parent: 'topology',
