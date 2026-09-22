@@ -2,7 +2,7 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T08:20:08.358Z",
+  "generated": "2026-09-22T09:11:10.838Z",
   "counts": {
    "regions": 6,
    "clusters": 13,
@@ -3903,8 +3903,8 @@
     "Hölder",
     "共轭指数"
    ],
-   "statement": "设 $1 < p < \\infty$，$q$ 是 $p$ 的**共轭指数**：$\\dfrac{1}\\{p\\} + \\dfrac{1}\\{q\\} = 1$。则对可测 $f, g$：\n\n$$\\|fg\\|_1 \\le \\|f\\|_p \\, \\|g\\|_q$$",
-   "notes": "**取等条件**：等号成立 $\\iff$ $|f|^p$ 与 $|g|^q$ 成比例 a.e.（即 $\\alpha |f|^p = \\beta |g|^q$ a.e.）。\n\n证明：先设 $\\|f\\|_p = \\|g\\|_q = 1$。由 Young 不等式，把 $\\lambda = 1/p$、$a = |f|^p$、$b = |g|^q$ 代进去得\n\n\n\n$$|fg| \\le \\frac{|f|^p}\\{p\\} + \\frac{|g|^q}\\{q\\}$$\n\n\n\n两边积分即得 $\\|fg\\|_1 \\le \\frac{1}\\{p\\} + \\frac{1}\\{q\\} = 1$。一般情形把 $f, g$ 各自归一化。\n\n⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。\n\n$p = 1$ 时共轭指数是 $q = \\infty$，此时 $\\|fg\\|_1 \\le \\|f\\|_1 \\|g\\|_\\infty$（见 $L^\\infty$ 那一节）。",
+   "statement": "设 $1 < p < \\infty$，$q$ 是 $p$ 的**共轭指数**：$\\dfrac{1}{p} + \\dfrac{1}{q} = 1$。则对可测 $f, g$：\n\n$$\\|fg\\|_1 \\le \\|f\\|_p \\, \\|g\\|_q$$",
+   "notes": "**取等条件**：等号成立 $\\iff$ $|f|^p$ 与 $|g|^q$ 成比例 a.e.（即 $\\alpha |f|^p = \\beta |g|^q$ a.e.）。\n\n证明：先设 $\\|f\\|_p = \\|g\\|_q = 1$。由 Young 不等式，把 $\\lambda = 1/p$、$a = |f|^p$、$b = |g|^q$ 代进去得\n\n\n\n$$|fg| \\le \\frac{|f|^p}{p} + \\frac{|g|^q}{q}$$\n\n\n\n两边积分即得 $\\|fg\\|_1 \\le \\frac{1}{p} + \\frac{1}{q} = 1$。一般情形把 $f, g$ 各自归一化。\n\n⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。\n\n$p = 1$ 时共轭指数是 $q = \\infty$，此时 $\\|fg\\|_1 \\le \\|f\\|_1 \\|g\\|_\\infty$（见 $L^\\infty$ 那一节）。",
    "refs": [
     "Folland, Real Analysis, Theorem 6.2"
    ]
@@ -4052,7 +4052,7 @@
     "插值",
     "Riesz–Thorin 初等版"
    ],
-   "statement": "设 $0 < p < q < r \\le \\infty$。若 $f \\in L^p \\cap L^r$，则 $f \\in L^q$，且\n\n$$\\|f\\|_q \\le \\|f\\|_p^{\\lambda} \\, \\|f\\|_r^{1-\\lambda}$$\n\n其中 $\\lambda \\in (0,1)$ 由下式确定：\n\n$$\\frac{1}\\{q\\} = \\frac{\\lambda}\\{p\\} + \\frac{1-\\lambda}\\{r\\} \\qquad \\Longleftrightarrow \\qquad \\lambda = \\frac{\\,q^{-1} - r^{-1}\\,}\\{p^{-1} - r^{-1}\\}$$",
+   "statement": "设 $0 < p < q < r \\le \\infty$。若 $f \\in L^p \\cap L^r$，则 $f \\in L^q$，且\n\n$$\\|f\\|_q \\le \\|f\\|_p^{\\lambda} \\, \\|f\\|_r^{1-\\lambda}$$\n\n其中 $\\lambda \\in (0,1)$ 由下式确定：\n\n$$\\frac{1}{q} = \\frac{\\lambda}{p} + \\frac{1-\\lambda}{r} \\qquad \\Longleftrightarrow \\qquad \\lambda = \\frac{\\,q^{-1} - r^{-1}\\,}{p^{-1} - r^{-1}}$$",
    "notes": "这是 **Riesz–Thorin 插值定理**的初等特例：$L^q$ 范数被两端的 $L^p$、$L^r$ 范数「对数凸」地控制住。\n\n证明：$r = \\infty$ 的情形最干净 —— 此时 $\\lambda = p/q$，从 $|f|^q \\le \\|f\\|_\\infty^{\\,q-p} |f|^p$ 出发，\n\n\n\n$$\\|f\\|_q \\le \\|f\\|_p^{p/q} \\|f\\|_\\infty^{1-p/q} = \\|f\\|_p^{\\lambda} \\|f\\|_\\infty^{1-\\lambda}$$\n\n一般 $r < \\infty$ 时对\n\n\n\n$$|f|^q = |f|^{\\lambda q} \\cdot |f|^{(1-\\lambda)q}$$\n\n用 Hölder，指数取 $p/(\\lambda q)$ 与 $r/((1-\\lambda)q)$（它们的倒数和恰好是 $1$，这正是 $\\lambda$ 的定义），得到\n\n\n\n$$\\|f\\|_q^q \\le \\left[ \\int |f|^p \\right]^{\\lambda q/p} \\left[ \\int |f|^r \\right]^{(1-\\lambda)q/r} = \\|f\\|_p^{\\lambda q} \\|f\\|_r^{(1-\\lambda)q}$$\n\n两边开 $q$ 次方即可。∎",
    "refs": [
     "Folland, Real Analysis, Prop. 6.4"
@@ -4115,8 +4115,8 @@
     "共轭",
     "对偶"
    ],
-   "statement": "设 $1 \\le p \\le \\infty$。称 $q$ 是 $p$ 的**共轭指数**，当且仅当\n\n$$\\frac{1}\\{p\\} + \\frac{1}\\{q\\} = 1$$\n\n（约定 $1/\\infty = 0$，于是 $p = 1$ 对应 $q = \\infty$，$p = \\infty$ 对应 $q = 1$。）",
-   "notes": "由对称性 $\\dfrac{1}\\{q\\} + \\dfrac{1}\\{p\\} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。\n\n$p = 2$ 时 $q = 2$：**$L^2$ 是自共轭的** —— 这是 Hilbert 空间理论的起点。\n\n⭐ 共轭指数的意义：Hölder 不等式说 $L^p$ 与 $L^q$ 之间有一对「配对」$\\int fg$；而下面的对偶定理说这个配对**恰好就是 $L^p$ 的整个对偶空间**。",
+   "statement": "设 $1 \\le p \\le \\infty$。称 $q$ 是 $p$ 的**共轭指数**，当且仅当\n\n$$\\frac{1}{p} + \\frac{1}{q} = 1$$\n\n（约定 $1/\\infty = 0$，于是 $p = 1$ 对应 $q = \\infty$，$p = \\infty$ 对应 $q = 1$。）",
+   "notes": "由对称性 $\\dfrac{1}{q} + \\dfrac{1}{p} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。\n\n$p = 2$ 时 $q = 2$：**$L^2$ 是自共轭的** —— 这是 Hilbert 空间理论的起点。\n\n⭐ 共轭指数的意义：Hölder 不等式说 $L^p$ 与 $L^q$ 之间有一对「配对」$\\int fg$；而下面的对偶定理说这个配对**恰好就是 $L^p$ 的整个对偶空间**。",
    "refs": [
     "Folland, Real Analysis, §6.2"
    ]
@@ -4158,7 +4158,7 @@
     "对偶"
    ],
    "statement": "设 $p, q$ 共轭。则\n\n- 若 $1 \\le q < \\infty$，$g \\in L^q$，就有 $\\|\\varphi_g\\| = \\|g\\|_q$；\n- 若 $\\mu$ 是**半有限**的，$q = \\infty$ 时同样成立。",
-   "notes": "证明的要点是**构造一个把 $\\varphi_g$ 的范数顶满的 $f$**。\n\n\n\n**$q < \\infty$ 时**：由 Hölder 已有 $\\|\\varphi_g\\| \\le \\|g\\|_q$；反向取\n\n\n\n$$f := \\frac{|g|^{q-1} \\operatorname{sgn} g}\\{\\|g\\|_q^{\\,q-1}\\}$$\n\n\n\n直接算得 $\\|f\\|_p^p = \\dfrac{\\int |g|^q}\\{\\int |g|^q\\} = 1$，于是\n\n\n\n$$\\|\\varphi_g\\| \\ge \\int fg = \\|g\\|_q$$\n\n**$q = 1$ 时**取 $f = \\operatorname{sgn} g$（范数 1），得 $\\int fg = \\|g\\|_1$。\n\n**$q = \\infty$ 时**要用到半有限性：对任意 $\\varepsilon > 0$，集合 $A = \\{|g(x)| > \\|g\\|_\\infty - \\varepsilon\\}$ 有正测度；由半有限性取 $B \\subseteq A$ 使 $0 < \\mu(B) < \\infty$，令\n\n\n\n$$f := \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$$\n\n\n\n则 $\\|f\\|_1 = 1$ 而 $\\|\\varphi_g\\| \\ge \\int fg = \\dfrac{1}\\{\\mu(B)\\} \\int_B |g| \\ge \\|g\\|_\\infty - \\varepsilon$。由 $\\varepsilon$ 任意即得。∎",
+   "notes": "证明的要点是**构造一个把 $\\varphi_g$ 的范数顶满的 $f$**。\n\n\n\n**$q < \\infty$ 时**：由 Hölder 已有 $\\|\\varphi_g\\| \\le \\|g\\|_q$；反向取\n\n\n\n$$f := \\frac{|g|^{q-1} \\operatorname{sgn} g}{\\|g\\|_q^{\\,q-1}}$$\n\n\n\n直接算得 $\\|f\\|_p^p = \\dfrac{\\int |g|^q}{\\int |g|^q} = 1$，于是\n\n\n\n$$\\|\\varphi_g\\| \\ge \\int fg = \\|g\\|_q$$\n\n**$q = 1$ 时**取 $f = \\operatorname{sgn} g$（范数 1），得 $\\int fg = \\|g\\|_1$。\n\n**$q = \\infty$ 时**要用到半有限性：对任意 $\\varepsilon > 0$，集合 $A = \\{|g(x)| > \\|g\\|_\\infty - \\varepsilon\\}$ 有正测度；由半有限性取 $B \\subseteq A$ 使 $0 < \\mu(B) < \\infty$，令\n\n\n\n$$f := \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$$\n\n\n\n则 $\\|f\\|_1 = 1$ 而 $\\|\\varphi_g\\| \\ge \\int fg = \\dfrac{1}{\\mu(B)} \\int_B |g| \\ge \\|g\\|_\\infty - \\varepsilon$。由 $\\varepsilon$ 任意即得。∎",
    "refs": [
     "Folland, Real Analysis, Prop. 6.8"
    ]
@@ -5983,7 +5983,7 @@
    ],
    "target": "thm.holder",
    "title": "Young 不等式 ⟹ Hölder 不等式",
-   "proof": "**① 先设 $\\|f\\|_p = \\|g\\|_q = 1$。** 在 Young 不等式里取\n\n$$a = |f(x)|^p, \\qquad b = |g(x)|^q, \\qquad \\lambda = \\frac{1}\\{p\\}, \\qquad 1 - \\lambda = \\frac{1}\\{q\\}$$\n\n得逐点不等式\n\n$$|f(x)g(x)| \\le \\frac{|f(x)|^p}\\{p\\} + \\frac{|g(x)|^q}\\{q\\}$$\n\n**② 积分。**\n\n$$\\int |fg| \\le \\frac{1}\\{p\\} \\int |f|^p + \\frac{1}\\{q\\} \\int |g|^q = \\frac{1}\\{p\\} + \\frac{1}\\{q\\} = 1$$\n\n**③ 一般情形。** 若 $\\|f\\|_p$、$\\|g\\|_q$ 都非零，把 $f / \\|f\\|_p$ 与 $g / \\|g\\|_q$ 代进去再用齐次性。若有一个为零，则 $fg = 0$ a.e.，两边都是 0。∎\n\n**④ 取等条件。** 回看 ②：等号成立要求 ① 里每一步都取等，即 $a = b$ a.e.（Young 不等式的取等条件），也就是\n\n$$|f|^p = |g|^q \\quad \\text{a.e.}$$\n在归一化之后；还原到一般情形就是「$|f|^p$ 与 $|g|^q$ 成比例 a.e.」。",
+   "proof": "**① 先设 $\\|f\\|_p = \\|g\\|_q = 1$。** 在 Young 不等式里取\n\n$$a = |f(x)|^p, \\qquad b = |g(x)|^q, \\qquad \\lambda = \\frac{1}{p}, \\qquad 1 - \\lambda = \\frac{1}{q}$$\n\n得逐点不等式\n\n$$|f(x)g(x)| \\le \\frac{|f(x)|^p}{p} + \\frac{|g(x)|^q}{q}$$\n\n**② 积分。**\n\n$$\\int |fg| \\le \\frac{1}{p} \\int |f|^p + \\frac{1}{q} \\int |g|^q = \\frac{1}{p} + \\frac{1}{q} = 1$$\n\n**③ 一般情形。** 若 $\\|f\\|_p$、$\\|g\\|_q$ 都非零，把 $f / \\|f\\|_p$ 与 $g / \\|g\\|_q$ 代进去再用齐次性。若有一个为零，则 $fg = 0$ a.e.，两边都是 0。∎\n\n**④ 取等条件。** 回看 ②：等号成立要求 ① 里每一步都取等，即 $a = b$ a.e.（Young 不等式的取等条件），也就是\n\n$$|f|^p = |g|^q \\quad \\text{a.e.}$$\n在归一化之后；还原到一般情形就是「$|f|^p$ 与 $|g|^q$ 成比例 a.e.」。",
    "note": ""
   },
   {
@@ -6022,7 +6022,7 @@
    ],
    "target": "prop.bounded-functional-gives-lq",
    "title": "Hölder + 有界性 ⟹ $g \\in L^q$",
-   "proof": "**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M_g(g)$。**\n\n设 $f$ 有限支可测、$\\|f\\|_p = 1$。取**有限支简单函数列** $\\{f_n\\} \\to f$ a.e.，且 $|f_n| \\le |f|$、$|f_n| \\le \\|f\\|_\\infty \\chi_E$（$E$ 是 $f$ 的支集，有限测度）。由 **DCT**，\n\n$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M_g(g)$$\n\n**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ $\\sigma$有限（$\\mu$ 半有限时这一点自动成立）。\n\n先说明**必须**有 $\\mu(\\{|g| > \\varepsilon\\}) < \\infty$（对一切 $\\varepsilon > 0$）：否则设 $E_\\varepsilon = \\{|g| > \\varepsilon\\}$ 测度无穷，对任意 $C$ 取 $B \\subseteq E_\\varepsilon$ 使 $C < \\mu(B) < \\infty$，令\n\n$$f = \\mu(B)^{-1/q} \\chi_B \\operatorname{sgn} g, \\qquad \\|f\\|_p = 1$$\n\n则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M_g(g) < \\infty$ 矛盾。\n\n于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。令\n\n$$f_n := \\frac{|g_n|^{q-1} \\operatorname{sgn} g_n}\\{\\|g_n\\|_q^{\\,q-1}\\}, \\qquad \\|f_n\\|_p = 1$$\n\n则 $f_n$ 有限支，由 Step 1 可用。于是\n\n$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M_g(g)$$\n\n（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。\n\n**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；反方向由 Hölder。∎",
+   "proof": "**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M_g(g)$。**\n\n设 $f$ 有限支可测、$\\|f\\|_p = 1$。取**有限支简单函数列** $\\{f_n\\} \\to f$ a.e.，且 $|f_n| \\le |f|$、$|f_n| \\le \\|f\\|_\\infty \\chi_E$（$E$ 是 $f$ 的支集，有限测度）。由 **DCT**，\n\n$$\\left| \\int fg \\right| = \\lim_n \\left| \\int f_n g \\right| \\le M_g(g)$$\n\n**Step 2：$q < \\infty$。** 不妨设 $g \\ne 0$，且设 $\\{g \\ne 0\\}$ $\\sigma$有限（$\\mu$ 半有限时这一点自动成立）。\n\n先说明**必须**有 $\\mu(\\{|g| > \\varepsilon\\}) < \\infty$（对一切 $\\varepsilon > 0$）：否则设 $E_\\varepsilon = \\{|g| > \\varepsilon\\}$ 测度无穷，对任意 $C$ 取 $B \\subseteq E_\\varepsilon$ 使 $C < \\mu(B) < \\infty$，令\n\n$$f = \\mu(B)^{-1/q} \\chi_B \\operatorname{sgn} g, \\qquad \\|f\\|_p = 1$$\n\n则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M_g(g) < \\infty$ 矛盾。\n\n于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。令\n\n$$f_n := \\frac{|g_n|^{q-1} \\operatorname{sgn} g_n}{\\|g_n\\|_q^{\\,q-1}}, \\qquad \\|f_n\\|_p = 1$$\n\n则 $f_n$ 有限支，由 Step 1 可用。于是\n\n$$\\|g\\|_q \\le \\lim_n \\|g_n\\|_q = \\lim_n \\int f_n g_n \\le \\lim_n \\int |f_n g| = \\lim_n \\int f_n g \\le M_g(g)$$\n\n（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。\n\n**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；反方向由 Hölder。∎",
    "note": ""
   },
   {

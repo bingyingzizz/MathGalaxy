@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T08:20:08.358Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T09:11:10.838Z
 > 6 星系 / 13 星团 / 182 节点 / 220 连线（强边 216，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
@@ -3199,7 +3199,7 @@ $$\log\!\left( \lambda a + (1-\lambda) b \right) \ge \lambda \log a + (1-\lambda
 #### Hölder 不等式　`thm.holder`
 *定理*　Hölder 不等式
 
-设 $1 < p < \infty$，$q$ 是 $p$ 的**共轭指数**：$\dfrac{1}\{p\} + \dfrac{1}\{q\} = 1$。则对可测 $f, g$：
+设 $1 < p < \infty$，$q$ 是 $p$ 的**共轭指数**：$\dfrac{1}{p} + \dfrac{1}{q} = 1$。则对可测 $f, g$：
 
 $$\|fg\|_1 \le \|f\|_p \, \|g\|_q$$
 
@@ -3209,11 +3209,11 @@ $$\|fg\|_1 \le \|f\|_p \, \|g\|_q$$
 
 
 
-$$|fg| \le \frac{|f|^p}\{p\} + \frac{|g|^q}\{q\}$$
+$$|fg| \le \frac{|f|^p}{p} + \frac{|g|^q}{q}$$
 
 
 
-两边积分即得 $\|fg\|_1 \le \frac{1}\{p\} + \frac{1}\{q\} = 1$。一般情形把 $f, g$ 各自归一化。
+两边积分即得 $\|fg\|_1 \le \frac{1}{p} + \frac{1}{q} = 1$。一般情形把 $f, g$ 各自归一化。
 
 ⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。
 
@@ -3396,7 +3396,7 @@ $$\|f\|_q \le \|f\|_p^{\lambda} \, \|f\|_r^{1-\lambda}$$
 
 其中 $\lambda \in (0,1)$ 由下式确定：
 
-$$\frac{1}\{q\} = \frac{\lambda}\{p\} + \frac{1-\lambda}\{r\} \qquad \Longleftrightarrow \qquad \lambda = \frac{\,q^{-1} - r^{-1}\,}\{p^{-1} - r^{-1}\}$$
+$$\frac{1}{q} = \frac{\lambda}{p} + \frac{1-\lambda}{r} \qquad \Longleftrightarrow \qquad \lambda = \frac{\,q^{-1} - r^{-1}\,}{p^{-1} - r^{-1}}$$
 
 这是 **Riesz–Thorin 插值定理**的初等特例：$L^q$ 范数被两端的 $L^p$、$L^r$ 范数「对数凸」地控制住。
 
@@ -3487,11 +3487,11 @@ $$\|f\|_p^p = \int |f|^p \cdot 1 \le \big\| |f|^p \big\|_{q/p} \, \|1\|_{q/(q-p)
 
 设 $1 \le p \le \infty$。称 $q$ 是 $p$ 的**共轭指数**，当且仅当
 
-$$\frac{1}\{p\} + \frac{1}\{q\} = 1$$
+$$\frac{1}{p} + \frac{1}{q} = 1$$
 
 （约定 $1/\infty = 0$，于是 $p = 1$ 对应 $q = \infty$，$p = \infty$ 对应 $q = 1$。）
 
-由对称性 $\dfrac{1}\{q\} + \dfrac{1}\{p\} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。
+由对称性 $\dfrac{1}{q} + \dfrac{1}{p} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。
 
 $p = 2$ 时 $q = 2$：**$L^2$ 是自共轭的** —— 这是 Hilbert 空间理论的起点。
 
@@ -3540,11 +3540,11 @@ $$L^q \longrightarrow (L^p)^*, \qquad g \mapsto \varphi_g$$
 
 
 
-$$f := \frac{|g|^{q-1} \operatorname{sgn} g}\{\|g\|_q^{\,q-1}\}$$
+$$f := \frac{|g|^{q-1} \operatorname{sgn} g}{\|g\|_q^{\,q-1}}$$
 
 
 
-直接算得 $\|f\|_p^p = \dfrac{\int |g|^q}\{\int |g|^q\} = 1$，于是
+直接算得 $\|f\|_p^p = \dfrac{\int |g|^q}{\int |g|^q} = 1$，于是
 
 
 
@@ -3560,7 +3560,7 @@ $$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 
 
 
-则 $\|f\|_1 = 1$ 而 $\|\varphi_g\| \ge \int fg = \dfrac{1}\{\mu(B)\} \int_B |g| \ge \|g\|_\infty - \varepsilon$。由 $\varepsilon$ 任意即得。∎
+则 $\|f\|_1 = 1$ 而 $\|\varphi_g\| \ge \int fg = \dfrac{1}{\mu(B)} \int_B |g| \ge \|g\|_\infty - \varepsilon$。由 $\varepsilon$ 任意即得。∎
 
 参考：Folland, Real Analysis, Prop. 6.8
 
@@ -5558,15 +5558,15 @@ $>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**C
 
 **① 先设 $\|f\|_p = \|g\|_q = 1$。** 在 Young 不等式里取
 
-$$a = |f(x)|^p, \qquad b = |g(x)|^q, \qquad \lambda = \frac{1}\{p\}, \qquad 1 - \lambda = \frac{1}\{q\}$$
+$$a = |f(x)|^p, \qquad b = |g(x)|^q, \qquad \lambda = \frac{1}{p}, \qquad 1 - \lambda = \frac{1}{q}$$
 
 得逐点不等式
 
-$$|f(x)g(x)| \le \frac{|f(x)|^p}\{p\} + \frac{|g(x)|^q}\{q\}$$
+$$|f(x)g(x)| \le \frac{|f(x)|^p}{p} + \frac{|g(x)|^q}{q}$$
 
 **② 积分。**
 
-$$\int |fg| \le \frac{1}\{p\} \int |f|^p + \frac{1}\{q\} \int |g|^q = \frac{1}\{p\} + \frac{1}\{q\} = 1$$
+$$\int |fg| \le \frac{1}{p} \int |f|^p + \frac{1}{q} \int |g|^q = \frac{1}{p} + \frac{1}{q} = 1$$
 
 **③ 一般情形。** 若 $\|f\|_p$、$\|g\|_q$ 都非零，把 $f / \|f\|_p$ 与 $g / \|g\|_q$ 代进去再用齐次性。若有一个为零，则 $fg = 0$ a.e.，两边都是 0。∎
 
@@ -5647,7 +5647,7 @@ $$f = \mu(B)^{-1/q} \chi_B \operatorname{sgn} g, \qquad \|f\|_p = 1$$
 
 于是可取 $\{E_n\} \uparrow \{g \ne 0\}$，$\mu(E_n) < \infty$；再取简单 $\varphi_n \to g$、$|\varphi_n| \le |g|$，令 $g_n := \varphi_n \chi_{E_n}$，则 $g_n \to g$、$|g_n| \le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。令
 
-$$f_n := \frac{|g_n|^{q-1} \operatorname{sgn} g_n}\{\|g_n\|_q^{\,q-1}\}, \qquad \|f_n\|_p = 1$$
+$$f_n := \frac{|g_n|^{q-1} \operatorname{sgn} g_n}{\|g_n\|_q^{\,q-1}}, \qquad \|f_n\|_p = 1$$
 
 则 $f_n$ 有限支，由 Step 1 可用。于是
 
