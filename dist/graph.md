@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:26:55.418Z
-> 6 星系 / 15 星团 / 208 节点 / 400 连线（强边 392，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:39:40.855Z
+> 6 星系 / 16 星团 / 214 节点 / 413 连线（强边 405，弱边 8）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -154,6 +154,30 @@ $$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyse
 把 $\in$ 读作 $<$，$\langle \omega , \in \rangle$ 就是自然数系 $\langle \mathbb{N}, <\rangle$。
 
 $\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。
+
+参考：Kunen, Set Theory, I.5
+
+#### 归纳原理与递推定义　`thm.induction`
+*定理*　归纳原理 / 递推定义（Induction & Recursion）
+
+设 $\omega$ 是最小归纳集（即 $\mathbb{N}$）。
+
+**(i) 归纳原理**：若 $S \subseteq \omega$ 满足
+
+$$\emptyset \in S, \qquad x \in S \implies x \cup \{x\} \in S$$
+
+则 $S = \omega$。
+
+**(ii) 递推定义**：给定集合 $A$、元素 $a_0 \in A$ 与函数 $F : A \to A$，存在**唯一**的函数 $g : \omega \to A$ 使
+
+$$g(\emptyset) = a_0, \qquad g(x \cup \{x\}) = F(g(x)) \quad \forall x \in \omega$$
+
+⭐ **归纳原理管证明，递推定义管构造** —— 两者是一件事的两面，都来自「$\omega$ 是最小归纳集」这一条。
+
+$\mathbb{N}$ 上的加法、乘法、序，以及后面 $\mathbb{Z}$、$\mathbb{Q}$ 的运算，全都是用递推定义出来、再用归纳原理验证性质的。
+
+⚠ **归纳原理只对 $\omega$ 成立**；换成一般的良序集要做**超限归纳 / 超限递归**。
+⚠ 递推定义要用「函数 $F$」而不是「一句话」，否则会掉进「用未定义的东西定义自己」的坑。
 
 参考：Kunen, Set Theory, I.5
 
@@ -540,6 +564,136 @@ $$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
 ⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。
 
 参考：Jech, The Axiom of Choice, Ch. 3
+
+#### 商集与等价类　`def.quotient-set`
+*定义*　商集 / 等价类（Quotient Set）
+
+设 $\sim$ 是集合 $A$ 上的一个**等价关系**。对 $a \in A$，称
+
+$$[a] := \{ b \in A : b \sim a \}$$
+
+为 $a$ 的**等价类**；称
+
+$$A / \sim\ := \{ [a] : a \in A \}$$
+
+为 $A$ 关于 $\sim$ 的**商集**。三条基本事实：
+
+- $a \in [a]$；
+- $[a] = [b] \iff a \sim b$；
+- 不同的等价类**两两不交**，且全体之并恰为 $A$ —— 也就是说，等价关系把 $A$ **划分**成一块块。
+
+⭐ 这是数学里「造新对象」最常用的手法：手头只有一类东西，却想得到另一类，就把前者按某个等价关系**粘**起来。本星图里至少四处用到：
+
+- $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/\sim$、$\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$；
+- $L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个）；
+- RN 导数 $d\nu/d\mu$ 也是一个等价类，而不是单个函数。
+
+⚠ 等价类的**代表元不唯一**，所以凡是要在商集上定义的东西（运算、序、范数），都必须先证明「与代表元的选取无关」，也就是**良定义**。这是初学商构造时最容易漏掉的一步。
+
+参考：Kunen, Set Theory, I.5
+
+### 星团：数系的构造
+> 造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后用戴德金分割把 ℚ 补成完备的 ℝ。
+
+#### 整数 ℤ　`def.int`
+*定义*　整数 $\mathbb{Z}$（由 $\mathbb{N} \times \mathbb{N}$ 构造）
+
+在 $\mathbb{N} \times \mathbb{N}$ 上定义
+
+$$(a, b) \sim (c, d) :\iff a + d = b + c$$
+
+（直观：$(a, b)$ 代表 $a - b$；这条等价关系说的正是「差相同」。）它确实是一个等价关系。令
+
+$$\mathbb{Z} := (\mathbb{N} \times \mathbb{N}) / \sim$$
+
+元素记作 $[a, b]$（即 $a - b$）。$\mathbb{Z}$ 上的**运算与序**（都要先验证与代表元无关）：
+
+$$[a, b] + [c, d] := [a + c,\ b + d]$$
+$$[a, b] \cdot [c, d] := [ac + bd,\ ad + bc]$$
+$$[a, b] \le [c, d] :\iff a + d \le b + c$$
+
+其中加法与序来自 $\mathbb{N}$ 的加法与序，乘法的写法是照着 $(a - b)(c - d) = ac + bd - (ad + bc)$ 抄的。
+
+⭐ 动机一句话：**$\mathbb{N}$ 里减法学不通**（$3 - 5$ 不存在），但「$3 - 5$」这个**对**总有意义 —— 于是把「差」本身当成新对象。
+
+副产品：$\mathbb{Z}$ 有加法零元 $[0, 0] = 0$ 与加法逆元 $-[a, b] = [b, a]$ —— 这正是 $\mathbb{N}$ 缺的东西。
+
+⚠ $\mathbb{Z}$ 里 $\mathbb{N}$ 是通过 $a \mapsto [a, 0]$ **嵌进去**的（单射且保持运算与序），所以写 $3 \in \mathbb{Z}$ 时用的是这个嵌入 —— 这一步不能省。
+
+参考：Kunen, Set Theory, I.5
+
+#### 有理数 ℚ　`def.rat`
+*定义*　有理数 $\mathbb{Q}$（由 $\mathbb{Z} \times (\mathbb{Z}\setminus\{0\})$ 构造）
+
+在 $\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})$ 上定义
+
+$$(a, b) \sim (c, d) :\iff ad = bc$$
+
+（直观：$(a, b)$ 代表 $a/b$；这条等价关系说的正是「分数值相同」。）令
+
+$$\mathbb{Q} := (\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})) / \sim$$
+
+元素记作 $a/b$。运算与序：
+
+$$\frac{a}{b} + \frac{c}{d} := \frac{ad + bc}{bd}, \qquad \frac{a}{b} \cdot \frac{c}{d} := \frac{ac}{bd}, \qquad \frac{a}{b} \le \frac{c}{d} :\iff ad \le bc \quad (b, d > 0)$$
+
+于是 $\mathbb{Q}$ 是一个**有序域**：四则运算齐全，且与序相容。
+
+⭐ 动机同上：**$\mathbb{Z}$ 里除法学不通**（$1/2$ 不存在），但「分子分母的对」总有意义。
+
+⚠ 分母取自 $\mathbb{Z} \setminus \{0\}$ —— 「$0$ 不能作分母」在这里**不是一条约定，而是构造的一部分**：分母的集合里根本没有 $0$。
+⚠ 记号 $a/b$ 会让人以为「$a/b$ 是一个函数值」，其实它是**等价类**；这正好解释了为什么 $\frac{1}{2} = \frac{2}{4}$：它们是同一个等价类的两个代表元。
+
+⭐ **到此为止四则运算齐全了，但序还不完备**：$\{q \in \mathbb{Q} : q^2 < 2\}$ 有上界（比如 $2$）却在 $\mathbb{Q}$ 里没有上确界。这正是 $\mathbb{R}$ 要补的那一口气。
+
+参考：Kunen, Set Theory, I.5
+
+#### 戴德金分割　`def.dedekind-cut`
+*定义*　戴德金分割（Dedekind Cut）
+
+$\mathbb{Q}$ 的子集 $\alpha \subseteq \mathbb{Q}$ 是一个**分割**，当且仅当：
+
+1. $\alpha \ne \emptyset$ 且 $\alpha \ne \mathbb{Q}$；
+2. **向下封闭**：$q \in \alpha$ 且 $p < q \implies p \in \alpha$；
+3. $\alpha$ 中**没有最大元**。
+
+令 $\mathbb{R} := \{ \alpha : \alpha$ 是分割 $\}$，并在其上定义
+
+$$\alpha \le \beta :\iff \alpha \subseteq \beta$$
+
+⭐ 直观：分割就是「把数轴切一刀」的位置 —— $\alpha$ 是切点**左边**的全部有理数。第三条（没有最大元）的意思是「切在缺口上，而不是切在某个有理数上」。
+
+**关键在于切点本身不必是有理数**：
+
+$$\alpha_{\sqrt{2}} = \{ q \in \mathbb{Q} : q < 0 \text{ 或 } q^2 < 2 \}$$
+
+这个 $\alpha_{\sqrt{2}}$ 满足三条公理（向下封闭、无最大元，因为它逼近 $\sqrt{2}$ 却取不到），但**没有任何有理数 $q$ 使 $\alpha_q = \alpha_{\sqrt{2}}$** —— 它就是一个新对象。把所有这些「缺口」本身收进来当元素，$\mathbb{R}$ 就造好了。
+
+⭐ 这个构造**完全不用极限、不用序列、不用距离**，只用一个序关系：所以它属于集合论/序理论，任何有序域都可以照做。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 由分割构造 ℝ　`thm.real-construction`
+*定理*　戴德金分割全体是一个完备有序域
+
+在 $\mathbb{R} = \{$分割$\}$ 上取上述的序 $\alpha \le \beta \iff \alpha \subseteq \beta$，并定义
+
+$$\alpha + \beta := \{ p + q : p \in \alpha,\ q \in \beta \}, \qquad 0 := \{ q \in \mathbb{Q} : q < 0 \}$$
+$$-\alpha := \{ q \in \mathbb{Q} : \exists r > q,\ -r \notin \alpha \}, \qquad 1 := \{ q \in \mathbb{Q} : q < 1 \}$$
+
+乘法按 $\alpha, \beta \ge 0$ 的情形先定义（$\alpha \beta := \{ pq : p \in \alpha, q \in \beta,\ p, q \ge 0 \} \cup \{q < 0\}$），再用符号规则推广。则 $(\mathbb{R}, +, \cdot, \le)$ 是**完备有序域**：
+
+**(i)** 是一个域；**(ii)** 序与运算相容；**(iii)** 每个**非空有上界**的子集都有**上确界**。
+
+⭐ (iii) 的证明只有一行：一族分割 $\{\alpha_i\}_{i \in I}$ 的上确界就是它们的**并** $\bigcup_i \alpha_i$（有上界保证这个并不是 $\mathbb{Q}$ 全体；「向下封闭」与「无最大元」在并之下都保持）。
+
+也就是说：**$\mathbb{R}$ 的完备性不再是公理，而是「并」这个运算的直接后果。**
+
+⚠ 代价是域运算要逐条验证（结合律、分配律、乘法的符号情形），写起来长，但全是机械的。
+
+⭐ 另一条同样可行的路是 **Cauchy 列的等价类**（Cantor 的补全）：两条路造出来的东西同构。Cauchy 那条更「度量」，戴德金这条更「序」——本图里两条路都能接上：一条走「完备」与「完备化」，一条走「上确界」。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 ## 星系：序理论（Order Theory）
 > 偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。
@@ -1012,6 +1166,8 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 - **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。
 
 ⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。
+
+📌 **这三组公理是「公理刻画」，不是构造**：$\mathbb{R}$ 到底存不存在？答案在「戴德金分割」那一条 —— 分割全体配上运算与序就是一个模型，而且**任何两个完备有序域同构**，所以「$\mathbb{R}$」是良定义的。（另一条等价的路是 Cauchy 列的等价类。）
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
@@ -6547,6 +6703,79 @@ $\varepsilon$-$\delta$ 那套是**拓扑版连续**在实数（或距离空间�
 
 距离空间里「开球全体构成这个拓扑的一组**基**」——这就是基的定义的一个标准例子。
 
+#### 定义引用：「关系」→ 商集与等价类　`dep.rel-quotient`
+
+商集是拿**等价关系**做出来的 —— 先有关系，才谈得上等价类。
+
+#### 定义引用：「自然数集存在」→ 归纳原理与递推定义　`dep.omega-induction`
+
+归纳原理与递推定义都来自「$\omega$ 是**最小归纳集**」这一条。
+
+#### 定义引用：「自然数集存在」→ 整数 ℤ　`dep.omega-int`
+
+$\mathbb{Z}$ 建在 $\mathbb{N} \times \mathbb{N}$ 上，运算与序都来自 $\mathbb{N}$。
+
+#### 定义引用：「商集与等价类」→ 整数 ℤ　`dep.quotient-int`
+
+$\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/\sim$ —— 一个**商集**。
+
+#### 定义引用：「归纳原理与递推定义」→ 整数 ℤ　`dep.induction-int`
+
+加法、乘法、序的**良定义**都要用归纳/递推来验。
+
+#### 定义引用：「整数 ℤ」→ 有理数 ℚ　`dep.int-rat`
+
+$\mathbb{Q}$ 建在 $\mathbb{Z} \times (\mathbb{Z}\setminus\{0\})$ 上。
+
+#### 定义引用：「商集与等价类」→ 有理数 ℚ　`dep.quotient-rat`
+
+$\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$ —— 同样是**商集**。
+
+#### 定义引用：「子集」→ 戴德金分割　`dep.subset-cut`
+
+分割是 $\mathbb{Q}$ 的一个**子集**（还要求向下封闭、没有最大元）。
+
+#### 定义引用：「有理数 ℚ」→ 戴德金分割　`dep.rat-cut`
+
+分割是「把 $\mathbb{Q}$ 切一刀」的位置 —— $\mathbb{Q}$ 的序是它唯一的原料。
+
+#### 定义引用：「戴德金分割」→ 由分割构造 ℝ　`dep.cut-real-construction`
+
+定理说的就是「分割全体配上这些运算与序是一个完备有序域」。
+
+#### 定义引用：「由分割构造 ℝ」→ 实数系 ℝ　`dep.construction-real`
+
+⭐ $\mathbb{R}$ 的**公理刻画**不是凭空的：上面那条构造给出一个满足这三组公理的模型。反过来，任何两个完备有序域都同构（同构唯一性），所以「$\mathbb{R}$」是良定义的。
+
+#### 定义引用：「商集与等价类」→ 可积 / L¹　`dep.quotient-integrable`
+
+$L^1$ 的元素不是函数本身，而是**函数在 a.e. 相等下的等价类** —— 后面 $L^p$、RN 导数用的是同一个手法。
+
+#### 戴德金分割 ⟹ 由分割构造 ℝ　`imp.real-construction`
+*分割全体 ⟹ 完备有序域*
+
+**① 序。** $\alpha \le \beta \iff \alpha \subseteq \beta$ 显然是全序：$\subseteq$ 是偏序，而两个分割总有一个包含另一个。
+
+  事实上若 $\alpha \not\subseteq \beta$，取 $q \in \alpha \setminus \beta$；对任意 $p \in \beta$，若 $q < p$ 则由 $\beta$ 向下封闭得 $q \in \beta$，矛盾，故 $p < q$，再由 $\alpha$ 向下封闭得 $p \in \alpha$，即 $\beta \subseteq \alpha$。
+
+**② 加法良定义。** 先验证 $\alpha + \beta$ 仍是分割：非空、非全（取 $p_0 \notin \alpha$、$q_0 \notin \beta$，则 $p_0 + q_0 \notin \alpha + \beta$）、向下封闭、无最大元（$p + q$ 可被 $p' + q$ 超过）。
+
+**③ 逆元。** $-\alpha := \{ q : \exists r > q, -r \notin \alpha \}$ 是分割，且 $\alpha + (-\alpha) = 0$。（$\subseteq$ 方向：若 $p \in \alpha$、$q \in -\alpha$，取 $r > q$ 使 $-r \notin \alpha$，则 $p < -r$，故 $p + q < 0$。反向靠 $\mathbb{Q}$ 的稠密性逐点逼近。）
+
+**④ 乘法。** 先在 $\alpha, \beta \ge 0$ 时定义，逐条验证结合律、交换律与分配律（都用 $\mathbb{Q}$ 的对应性质逐点搬运）；再用 $\alpha \beta := -((-\alpha)\beta)$ 之类把符号补全。这一步最长，但全是机械验证。
+
+**⑤ 完备性（关键一步）。** 设 $S \subseteq \mathbb{R}$ 非空、有上界 $\gamma$。令
+
+$$\sigma := \bigcup_{\alpha \in S} \alpha$$
+
+  则 $\sigma$ 仍是分割：非空（$S \ne \emptyset$）；$\sigma \ne \mathbb{Q}$（因为每个 $\alpha \subseteq \gamma$，故 $\sigma \subseteq \gamma \subsetneq \mathbb{Q}$）；向下封闭（每个 $\alpha$ 都向下封闭）；无最大元（若 $q \in \sigma$，则 $q \in \alpha$ 对某个 $\alpha \in S$，而 $\alpha$ 无最大元，故有 $q' \in \alpha \subseteq \sigma$ 且 $q' > q$）。
+
+  由构造成 $\sigma \supseteq \alpha$ 对一切 $\alpha \in S$，故 $\sigma$ 是上界；而任何上界 $\eta \supseteq \alpha$（$\forall \alpha$）都满足 $\eta \supseteq \sigma$，故 $\sigma$ 是最小上界。即 $\sup S = \sigma$ 存在。$\blacksquare$
+
+> ⭐ 这就是这个构造最漂亮的地方：**完备性不是公理，而是「并」这个运算的直接后果**。
+
+**⑥ 嵌入 $\mathbb{Q}$。** $q \mapsto \{ p : p < q \}$ 是保序、保运算的单射，所以 $\mathbb{Q}$ 可以看成 $\mathbb{R}$ 的稠密子集。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -7254,6 +7483,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **测度的构造 ↔ 集合的构造**　6 条节点级连线
 - **集合的构造 ↔ 拓扑空间**　3 条节点级连线
 - **拓扑空间 ↔ 度量空间**　3 条节点级连线
+- **数系的构造 ↔ ZFC 公理系统**　2 条节点级连线
+- **关系与选择 ↔ 数系的构造**　2 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **极大原理 ↔ 序结构**　7 条节点级连线
 - **序结构 ↔ 关系与选择**　2 条节点级连线
