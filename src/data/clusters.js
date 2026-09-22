@@ -85,6 +85,12 @@ MG.clusters = [
     name: '测度的构造',
     parent: 'analysis',
     desc: '造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。'
+  },
+  {
+    id: 'analysis.integral',
+    name: '积分',
+    parent: 'analysis',
+    desc: '造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
