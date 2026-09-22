@@ -73,21 +73,58 @@
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0
     };
 
+    /* ------------------------------------------------------------------
+       LOD 阈值换算（写法见 config.lod 的注释）
+         { rel: [a,b] } → 乘以「适配全部」的缩放 k₀
+         { px:  [a,b] } → 屏幕上相邻两点的像素距离 ÷ idealDist
+       ------------------------------------------------------------------ */
+    var fitKCache = 0, fitKKey = '';
+
+    /** 「适配全部」时相机该停在哪 —— 和 cam.fit() 用同一套公式 */
+    function fitZoom() {
+      var bb = view.graph.bbox();
+      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, W, H].join(',');
+      if (key === fitKKey) return fitKCache;
+      var pad = Math.min(C.camera.fitPadding, Math.min(W, H) * 0.18);
+      var aw = Math.max(40, W - pad * 2), ah = Math.max(40, H - pad * 2);
+      var w = Math.max(1, bb.maxX - bb.minX), h = Math.max(1, bb.maxY - bb.minY);
+      fitKCache = U.clamp(Math.min(aw / w, ah / h),
+        Math.max(C.camera.minZoom, C.camera.fitMinZoom),
+        Math.min(C.camera.maxZoom, C.camera.maxFitZoom));
+      fitKKey = key;
+      return fitKCache;
+    }
+
+    /** 把 config 里的阈值写法换算成绝对 k */
+    function thr(spec) {
+      if (spec.px) {
+        var d = C.layout.idealDist || 120;
+        return [spec.px[0] / d, spec.px[1] / d];
+      }
+      var k0 = fitZoom();
+      return [spec.rel[0] * k0, spec.rel[1] * k0];
+    }
+
     function computeLod() {
       var k = view.cam.k, L = C.lod;
-      lodA.nodeDot = smoothstep(L.nodeDotIn[0], L.nodeDotIn[1], k);
-      lodA.nodeName = smoothstep(L.nodeNameIn[0], L.nodeNameIn[1], k);
+      var tDot = thr(L.nodeDotIn), tEdge = thr(L.nodeEdgeIn), tName = thr(L.nodeNameIn);
+      var tTrunk = thr(L.trunkNameIn), tGal = thr(L.galaxyNameIn);
+      var tCIn = thr(L.clusterNameIn), tCOut = thr(L.clusterNameOut);
+      var tCLink = thr(L.clusterLinkOut);
+
+      lodA.nodeDot = smoothstep(tDot[0], tDot[1], k);
+      lodA.nodeName = smoothstep(tName[0], tName[1], k);
       // 主干的名字更早出现：缩小时屏幕上剩下的就是「学习主线」
-      lodA.trunkName = smoothstep(L.trunkNameIn[0], L.trunkNameIn[1], k);
-      lodA.nodeEdge = smoothstep(L.nodeEdgeIn[0], L.nodeEdgeIn[1], k);
+      lodA.trunkName = smoothstep(tTrunk[0], tTrunk[1], k);
+      lodA.nodeEdge = smoothstep(tEdge[0], tEdge[1], k);
       // 星团名：放大到看得见节点名时就退场，避免和节点名打架
-      var cNameIn = smoothstep(L.clusterNameIn[0], L.clusterNameIn[1], k);
-      var cNameOut = smoothstep(L.clusterNameOut[0], L.clusterNameOut[1], k);
+      var cNameIn = smoothstep(tCIn[0], tCIn[1], k);
+      var cNameOut = smoothstep(tCOut[0], tCOut[1], k);
       lodA.clusterName = cNameIn * (1 - cNameOut);
-      // 星系名：最小的时候出现，星团名一出来就让它退场
-      lodA.galaxyName = (1 - cNameIn) * smoothstep(L.galaxyNameIn[0], L.galaxyNameIn[1], k);
+      // 星系名：最小的时候出现，星团名起来之后压掉一部分（但不清零，留个方位感）
+      lodA.galaxyName = (1 - (L.galaxyNameHold || 0) * cNameIn) * smoothstep(tGal[0], tGal[1], k);
       // 星团级粗线与节点级细线交叉淡入淡出
-      lodA.clusterLink = 1 - smoothstep(L.clusterLinkOut[0], L.clusterLinkOut[1], k);
+      lodA.clusterLink = 1 - smoothstep(tCLink[0], tCLink[1], k);
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -110,6 +147,7 @@
       r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
       if (node && node.degree >= 5) r *= 1.22;      // 枢纽节点稍大一点
       else if (node && node.degree >= 3) r *= 1.1;
+      if (node && node.isHub) r *= 1.32;            // 星团的中心天体：再大一圈
       return r;
     }
 
@@ -283,6 +321,9 @@
     }
 
     /* ============================================================ 绘制 */
+    /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
+    var nameBoxes = [];
+
     function draw() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
@@ -290,6 +331,7 @@
       var geoms = buildGeometry();
       var cam = view.cam;
       computeLod();
+      nameBoxes.length = 0;
 
       /* ---------- 0. 星团级粗线（缩小时才出现，整块对整块） ---------- */
       drawClusterLinks();
@@ -358,6 +400,7 @@
         });
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
+        nameBoxes.push({ x0: p.x - bw / 2, y0: p.y - bh / 2, x1: p.x + bw / 2, y1: p.y + bh / 2 });
       });
       ctx.restore();
     }
@@ -426,6 +469,7 @@
         ctx.fillStyle = 'rgba(30,32,40,0.90)';
         ctx.fillText(text, p.x, p.y + 0.5);
         ctx.globalAlpha = 1;
+        nameBoxes.push({ x0: p.x - bw / 2, y0: p.y - bh / 2, x1: p.x + bw / 2, y1: p.y + bh / 2 });
       });
       ctx.restore();
     }
@@ -565,6 +609,13 @@
         ctx.lineWidth = isFocus ? 2 : 1.4;
         ctx.strokeStyle = U.rgba(st.color, (isFocus ? 0.95 : 0.55) * a);
         ctx.stroke();
+      } else if (n.isHub) {
+        // 星团的中心天体：外面套一道细环，全图尺度上也认得出「这个装置的核心」
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + 3.0, 0, Math.PI * 2);
+        ctx.lineWidth = 1.25;
+        ctx.strokeStyle = U.rgba(st.color, 0.6 * a);
+        ctx.stroke();
       }
     }
 
@@ -579,7 +630,8 @@
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
       var keepAll = k >= C.node.labelMinZoomAll;
-      var placed = [];
+      // 星系名 / 装置名先占位（它们在上面已经画过了）—— 节点名不许压上去
+      var placed = nameBoxes.slice();
       var nodes = view.graph.nodes.slice().sort(function (a, b) {
         return labelPriority(b) - labelPriority(a);
       });

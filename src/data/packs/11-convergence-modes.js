@@ -20,7 +20,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.convergence-modes',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '五种收敛',
       title: '收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹',
@@ -51,7 +51,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.convergence-counterexamples',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '四个标准反例',
       title: '命题：四个标准反例（把各种收敛区分开）',
@@ -78,7 +78,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.cauchy-in-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '依测度 Cauchy',
       title: '依测度 Cauchy 序列',
@@ -100,7 +100,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.cauchy-in-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'theorem',
       label: '依测度 Cauchy ⟹ 收敛',
       title: '定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛',
@@ -125,7 +125,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.L1-implies-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: 'L¹ 收敛 ⟹ 依测度收敛',
       title: '命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）',
@@ -146,7 +146,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.egorov',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'theorem',
       label: 'Egorov 定理',
       title: 'Egorov 定理：a.e. 收敛 ⟹ 近一致',
@@ -167,7 +167,7 @@ window.MG = window.MG || {};
 
     {
       id: 'cor.lusin',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'corollary',
       label: 'Lusin 定理',
       title: 'Lusin 定理：可测函数几乎处处连续',

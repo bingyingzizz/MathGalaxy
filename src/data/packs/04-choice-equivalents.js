@@ -16,7 +16,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.wellordering',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'theorem',
       label: '良序定理',
       title: '良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）',
@@ -42,7 +42,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.zorn',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'lemma',
       label: '佐恩引理',
       title: '佐恩引理（Zorn\'s Lemma）',
@@ -65,7 +65,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.hausdorff',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
       title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）',
@@ -87,7 +87,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.tukey',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'lemma',
       label: 'Tukey 引理',
       title: 'Tukey 引理（Tukey\'s Lemma / Teichmüller–Tukey）',
@@ -108,7 +108,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.hartogs',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Hartogs 定理',
       title: 'Hartogs 定理（Hartogs\' Theorem, 1915）—— ZF 中即可证明',

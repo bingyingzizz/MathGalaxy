@@ -14,7 +14,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.fundamental-class',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '基本类',
       title: '基本类（Fundamental Class）',
@@ -36,7 +36,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.set-ring',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '环与代数',
       title: '环与代数（Ring, Algebra）',
@@ -65,7 +65,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.sigma-ring',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: 'σ-环',
       title: 'σ-环（σ-Ring）',
@@ -90,7 +90,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.sigma-algebra',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: 'σ-代数',
       title: 'σ-代数（σ-Algebra）',
@@ -117,7 +117,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.monotone-class',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '单调类',
       title: '单调类（Monotone Class）',
@@ -138,7 +138,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.set-class-properties',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'proposition',
       label: '集合族的基本性质',
       title: '命题：基本类 / 环 / σ-代数的几条基本性质',
@@ -170,7 +170,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.ring-monotone-sigma',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'theorem',
       label: '环 → σ-环 的判据',
       title: '定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭',
@@ -190,7 +190,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.generated-sigma',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '生成的 σ-代数',
       title: '由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)',
@@ -213,7 +213,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.monotone-class',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'theorem',
       label: '单调类定理',
       title: '单调类定理（Monotone Class Theorem）',
@@ -241,7 +241,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.borel',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: 'Borel σ-代数',
       title: 'Borel σ-代数（Borel σ-Algebra 𝔅_X）',
@@ -263,7 +263,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.product-sigma',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'definition',
       label: '积 σ-代数',
       title: '积 σ-代数（Product σ-Algebra）',
@@ -284,7 +284,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.product-sigma-base',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '积 σ-代数的生成基',
       title: '命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变',
@@ -309,7 +309,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.product-sigma-generated',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '可数积的生成集',
       title: '命题：指标集可数时，积 σ-代数由「矩形」生成',
@@ -335,7 +335,7 @@ window.MG = window.MG || {};
 
     {
       id: 'cor.borel-product',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'corollary',
       label: '可数积的 Borel 代数',
       title: '推论：可数积距离空间的 Borel σ-代数（可分时相等）',

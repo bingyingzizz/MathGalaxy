@@ -189,7 +189,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'def.complex',
-      cluster: 'analysis.real',
+      cluster: 'set.numbers',
       type: 'definition',
       label: '复数 ℂ',
       title: '复数系 $\\mathbb{C}$（Complex Numbers）',

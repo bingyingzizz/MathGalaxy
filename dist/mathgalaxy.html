@@ -644,7 +644,11 @@ window.addEventListener('error', function (e) {
       wheelGain: 0.0016,          // 滚轮灵敏度
       fitPadding: 130,
       maxFitZoom: 1.25,
-      fitMinZoom: 0.24,           // 「适配全部」的下限：窗口太窄时宁可出血，也别缩成一粒灰
+      /* ⚠️ 这是「别缩成一粒灰」的下限，但它会**夹住「适配全部」**：
+         夹住的时候内容就出血，适配全部名不副实。所以它必须 ≤ 内容真正需要的
+         缩放。内容以后再涨，先来看这个数 —— 现在 221 个点时实际需要 ≈0.20，
+         涨到上千个点会掉到 0.07 上下，那时 minZoom 也要一起降。 */
+      fitMinZoom: 0.10,
       animateMs: 420              // 相机平移动画时长
     },
 
@@ -657,8 +661,11 @@ window.addEventListener('error', function (e) {
       ringWidth: 2.0,
       labelOffset: 13,            // 文字在节点下方多远（世界单位）
       labelSize: 14,              // 字号（缩放 1 时）
-      labelMinZoom: 0.22,         // 低于此缩放干脆不画名称
-      labelMinZoomAll: 0.55,      // 低于此缩放只画重要节点的名称并自动去重叠
+      labelMinZoom: 0.22,         // （当前未使用，留着是为了别的分支/实验）
+      /* 低于此缩放只画「主干 + degree ≥ 3」的名字，并自动去重叠。
+         和上面 lod.nodeNameIn 的 px 阈值对应：60/120=0.50 开始出现、100/120≈0.83 全亮，
+         取中间偏后一点当闸门。改 idealDist 或 nodeNameIn 时要一起看。 */
+      labelMinZoomAll: 0.66,
       labelPad: 3,
       glow: true
     },
@@ -694,19 +701,36 @@ window.addEventListener('error', function (e) {
        多尺度（LOD）：星系 → 星团 → 恒星
        缩小时只看见星系和「整块对整块」的粗连线；
        放大时节点名、节点级细线才逐层淡入。两条曲线交叉淡入淡出。
+
+       ⚠️⚠️ 阈值有两种写法（2026-09-22 重写，别改回绝对 k）：
+         { rel: [a, b] } —— 乘以「适配全部」时的缩放 k₀ 的倍率。
+             结构性的东西（星系名 / 装置名 / 团级粗线）用它：
+             **内容再涨，1× 全图看到的那一层骨架永远一样。**
+         { px:  [a, b] } —— 「屏幕上相邻两点相距多少像素」。
+             节点级的东西（点 / 细线 / 名字）用它：布局里相连节点的世界距离
+             是固定的 layout.idealDist，所以换算成 k = px / idealDist 是
+             **与内容多少无关**的绝对量。
+
+       为什么必须这么写：旧写法全是绝对 k，是按「content 铺满 ≈ k 0.62」标定的
+       （那是内容只有几十个点的时候）。内容长到 3118×2721 之后「适配全部」
+       只剩 k≈0.20，所有曲线都还没起步 —— 全图就只剩云和圆点，一条推导线都不画，
+       装置名也不出。**内容会长大，绝对值就会过期。**（铁律 4 的坑）
+
+       各区间重叠 → 交叉淡入淡出，不会突然跳变。
        ------------------------------------------------------------------ */
-    /* 阈值要和「适配全部」时的实际缩放对上：
-       1600×900 下 content 铺满 ≈ k 0.62，所以 0.62 往上必须是「全细节」。
-       各区间重叠 → 交叉淡入淡出，不会突然跳变。                          */
     lod: {
-      galaxyNameIn: [0.05, 0.16],    // 星系名淡入（最小的时候只看见它）
-      clusterNameIn: [0.24, 0.40],   // 星团名淡入
-      clusterNameOut: [0.44, 0.60],  // 星团名淡出，让位给节点名
-      nodeDotIn: [0.14, 0.26],       // 节点圆点淡入（再小就只剩云）
-      nodeEdgeIn: [0.40, 0.66],      // 节点级细线淡入
-      nodeNameIn: [0.42, 0.62],      // 节点名淡入（0.62 = 全细节）
-      trunkNameIn: [0.16, 0.30],     // 主干节点的名字：更早就出现（缩小时先认主线）
-      clusterLinkOut: [0.28, 0.58]   // 星团级粗线淡出（与细线交叉）
+      /* —— 结构性：倍率 × k₀ —— */
+      galaxyNameIn:   { rel: [0.25, 0.85] },  // 星系名：全图就亮
+      galaxyNameHold: 0.50,                   // 装置名出来时，星系名最多压掉多少
+      clusterNameIn:  { rel: [0.45, 1.15] },  // 装置名：全图就基本全亮，放大后让位给节点名
+      clusterNameOut: { rel: [2.00, 3.60] },
+      clusterLinkOut: { rel: [1.00, 2.80] },  // 团级粗线：全图最亮，放大后退场
+      trunkNameIn:    { rel: [0.85, 1.05] },  // 主干名：全图就全亮（去重叠会筛掉挤的）
+
+      /* —— 节点级：屏幕上相邻两点的像素距离 —— */
+      nodeDotIn:  { px: [8, 20] },            // 圆点：几乎一直在
+      nodeEdgeIn: { px: [36, 66] },           // 节点级细线
+      nodeNameIn: { px: [60, 100] }           // 节点名：相邻够 60px 才出现
     },
 
     /* 星团（一套自足的装置，内部关系密、对外整块连接） */
@@ -1487,6 +1511,22 @@ window.addEventListener('error', function (e) {
     });
     graph.clusters = clusters;
     graph.clusterById = clusterById;
+
+    /* 星团的「中心天体」（clusters.js 里的 hub 字段）。
+       它是这个装置要造出来的那个东西 —— 画亮核 / 定中心 / 分尺度展开都靠它。
+       写错 id 或者写到别的团里，都在这里提示（跟主干名单一样容易忘）。 */
+    clusters.forEach(function (c) {
+      c.hubObj = null;
+      if (!c.hub) return;
+      var h = byId[c.hub];
+      if (!h) { warnings.push('星团 ' + c.id + ' 的 hub 指向不存在的节点：' + c.hub); return; }
+      if (h.cluster !== c.id) {
+        warnings.push('星团 ' + c.id + ' 的 hub 不属于本团：' + c.hub + '（实际在 ' + h.cluster + '）');
+        return;
+      }
+      c.hubObj = h;
+      h.isHub = true;
+    });
 
     /** 星团所属星系对象 */
     graph.galaxyOf = function (c) {
@@ -2368,21 +2408,58 @@ window.addEventListener('error', function (e) {
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0
     };
 
+    /* ------------------------------------------------------------------
+       LOD 阈值换算（写法见 config.lod 的注释）
+         { rel: [a,b] } → 乘以「适配全部」的缩放 k₀
+         { px:  [a,b] } → 屏幕上相邻两点的像素距离 ÷ idealDist
+       ------------------------------------------------------------------ */
+    var fitKCache = 0, fitKKey = '';
+
+    /** 「适配全部」时相机该停在哪 —— 和 cam.fit() 用同一套公式 */
+    function fitZoom() {
+      var bb = view.graph.bbox();
+      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, W, H].join(',');
+      if (key === fitKKey) return fitKCache;
+      var pad = Math.min(C.camera.fitPadding, Math.min(W, H) * 0.18);
+      var aw = Math.max(40, W - pad * 2), ah = Math.max(40, H - pad * 2);
+      var w = Math.max(1, bb.maxX - bb.minX), h = Math.max(1, bb.maxY - bb.minY);
+      fitKCache = U.clamp(Math.min(aw / w, ah / h),
+        Math.max(C.camera.minZoom, C.camera.fitMinZoom),
+        Math.min(C.camera.maxZoom, C.camera.maxFitZoom));
+      fitKKey = key;
+      return fitKCache;
+    }
+
+    /** 把 config 里的阈值写法换算成绝对 k */
+    function thr(spec) {
+      if (spec.px) {
+        var d = C.layout.idealDist || 120;
+        return [spec.px[0] / d, spec.px[1] / d];
+      }
+      var k0 = fitZoom();
+      return [spec.rel[0] * k0, spec.rel[1] * k0];
+    }
+
     function computeLod() {
       var k = view.cam.k, L = C.lod;
-      lodA.nodeDot = smoothstep(L.nodeDotIn[0], L.nodeDotIn[1], k);
-      lodA.nodeName = smoothstep(L.nodeNameIn[0], L.nodeNameIn[1], k);
+      var tDot = thr(L.nodeDotIn), tEdge = thr(L.nodeEdgeIn), tName = thr(L.nodeNameIn);
+      var tTrunk = thr(L.trunkNameIn), tGal = thr(L.galaxyNameIn);
+      var tCIn = thr(L.clusterNameIn), tCOut = thr(L.clusterNameOut);
+      var tCLink = thr(L.clusterLinkOut);
+
+      lodA.nodeDot = smoothstep(tDot[0], tDot[1], k);
+      lodA.nodeName = smoothstep(tName[0], tName[1], k);
       // 主干的名字更早出现：缩小时屏幕上剩下的就是「学习主线」
-      lodA.trunkName = smoothstep(L.trunkNameIn[0], L.trunkNameIn[1], k);
-      lodA.nodeEdge = smoothstep(L.nodeEdgeIn[0], L.nodeEdgeIn[1], k);
+      lodA.trunkName = smoothstep(tTrunk[0], tTrunk[1], k);
+      lodA.nodeEdge = smoothstep(tEdge[0], tEdge[1], k);
       // 星团名：放大到看得见节点名时就退场，避免和节点名打架
-      var cNameIn = smoothstep(L.clusterNameIn[0], L.clusterNameIn[1], k);
-      var cNameOut = smoothstep(L.clusterNameOut[0], L.clusterNameOut[1], k);
+      var cNameIn = smoothstep(tCIn[0], tCIn[1], k);
+      var cNameOut = smoothstep(tCOut[0], tCOut[1], k);
       lodA.clusterName = cNameIn * (1 - cNameOut);
-      // 星系名：最小的时候出现，星团名一出来就让它退场
-      lodA.galaxyName = (1 - cNameIn) * smoothstep(L.galaxyNameIn[0], L.galaxyNameIn[1], k);
+      // 星系名：最小的时候出现，星团名起来之后压掉一部分（但不清零，留个方位感）
+      lodA.galaxyName = (1 - (L.galaxyNameHold || 0) * cNameIn) * smoothstep(tGal[0], tGal[1], k);
       // 星团级粗线与节点级细线交叉淡入淡出
-      lodA.clusterLink = 1 - smoothstep(L.clusterLinkOut[0], L.clusterLinkOut[1], k);
+      lodA.clusterLink = 1 - smoothstep(tCLink[0], tCLink[1], k);
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -2405,6 +2482,7 @@ window.addEventListener('error', function (e) {
       r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
       if (node && node.degree >= 5) r *= 1.22;      // 枢纽节点稍大一点
       else if (node && node.degree >= 3) r *= 1.1;
+      if (node && node.isHub) r *= 1.32;            // 星团的中心天体：再大一圈
       return r;
     }
 
@@ -2578,6 +2656,9 @@ window.addEventListener('error', function (e) {
     }
 
     /* ============================================================ 绘制 */
+    /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
+    var nameBoxes = [];
+
     function draw() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
@@ -2585,6 +2666,7 @@ window.addEventListener('error', function (e) {
       var geoms = buildGeometry();
       var cam = view.cam;
       computeLod();
+      nameBoxes.length = 0;
 
       /* ---------- 0. 星团级粗线（缩小时才出现，整块对整块） ---------- */
       drawClusterLinks();
@@ -2653,6 +2735,7 @@ window.addEventListener('error', function (e) {
         });
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
+        nameBoxes.push({ x0: p.x - bw / 2, y0: p.y - bh / 2, x1: p.x + bw / 2, y1: p.y + bh / 2 });
       });
       ctx.restore();
     }
@@ -2721,6 +2804,7 @@ window.addEventListener('error', function (e) {
         ctx.fillStyle = 'rgba(30,32,40,0.90)';
         ctx.fillText(text, p.x, p.y + 0.5);
         ctx.globalAlpha = 1;
+        nameBoxes.push({ x0: p.x - bw / 2, y0: p.y - bh / 2, x1: p.x + bw / 2, y1: p.y + bh / 2 });
       });
       ctx.restore();
     }
@@ -2860,6 +2944,13 @@ window.addEventListener('error', function (e) {
         ctx.lineWidth = isFocus ? 2 : 1.4;
         ctx.strokeStyle = U.rgba(st.color, (isFocus ? 0.95 : 0.55) * a);
         ctx.stroke();
+      } else if (n.isHub) {
+        // 星团的中心天体：外面套一道细环，全图尺度上也认得出「这个装置的核心」
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + 3.0, 0, Math.PI * 2);
+        ctx.lineWidth = 1.25;
+        ctx.strokeStyle = U.rgba(st.color, 0.6 * a);
+        ctx.stroke();
       }
     }
 
@@ -2874,7 +2965,8 @@ window.addEventListener('error', function (e) {
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
       var keepAll = k >= C.node.labelMinZoomAll;
-      var placed = [];
+      // 星系名 / 装置名先占位（它们在上面已经画过了）—— 节点名不许压上去
+      var placed = nameBoxes.slice();
       var nodes = view.graph.nodes.slice().sort(function (a, b) {
         return labelPriority(b) - labelPriority(a);
       });
@@ -4067,6 +4159,11 @@ MG.regions = [
        它内部的关系再密也无所谓 —— 那是它的私事。
        例：测度论整套构造只为了做出 Lebesgue 积分；局部化整套只为了做出 W⁻¹C。
 
+     ★⛔ 星团**不按课程 / 讲义 / 笔记来源分**。
+       同一个东西几门课都讲 → 它只属于「它在数学上属于的那个装置」。
+       按来源分会出现「积分这个团里混进可测函数和乘积测度」这种事，
+       那样星团就不能回答「这是干什么用的」，整张图就没意义了。
+
      ★ 星团是「对外连接的单位」。
        跨星团的连线是整块对整块的（引擎会自动把节点级连线聚合成星团级粗线），
        你不需要、也不应该去逐点连。
@@ -4076,11 +4173,21 @@ MG.regions = [
        ② 内部几乎不和外面打交道，对外只需要一两个入口；
        ③ 你能用一句话说清它「造出了什么」。
 
+     ★ 尺度：星团里不要塞 40 个点以上。一个团跨十几个层号，多半是两个装置
+       被糊在一起了 —— 拆开。（反例：「积分」曾经是 45 个点、跨 18 层，
+       其实里面混着可测函数、乘积测度、收敛类型三套东西。）
+
    字段：
      id       全局唯一，建议 <星系id>.<名字>
      name     显示名（放大到中等缩放时出现在星团中央）
      parent   所属星系 id（必须是 regions.js 里有的）
      color    可选；不写就继承星系颜色
+     hub      **这个星团「要造出来的那个东西」的节点 id**。
+              它是这个装置的中心天体：画亮核、定中心、分尺度展开都靠它。
+              判据：这个装置是为了做出什么而存在的？那个东西就是 hub。
+              （不是「层号最小的那个」—— 那是入口，不是中心。例：积分的 hub 是
+              「可积 / L¹」，不是「简单函数的积分」。）
+              不写 = 这个团还没定中心，引擎把它画成散着的点。
      desc     一句话说明「它造出了什么」
 
    节点侧：在 node 上写 cluster: '<星团 id>' 即归属；不写就直属于星系。
@@ -4094,25 +4201,36 @@ MG.clusters = [
     id: 'set.zfc',
     name: 'ZFC 公理系统',
     parent: 'set-theory',
+    hub: 'ax.ext',
     desc: '造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。'
   },
   {
     id: 'set.construct',
     name: '集合的构造',
     parent: 'set-theory',
-    desc: '造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。'
+    hub: 'def.subset',
+    desc: '造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。'
   },
   {
-    id: 'set.choice',
-    name: '关系与选择',
+    id: 'set.rel',
+    name: '关系与函数',
     parent: 'set-theory',
-    desc: '造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。'
+    hub: 'def.function',
+    desc: '造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。'
+  },
+  {
+    id: 'set.cardinal',
+    name: '基数与等势',
+    parent: 'set-theory',
+    hub: 'def.cardinal',
+    desc: '造出「集合有多大」这把尺子：等势 → 基数 → 可数与不可数 → Cantor 定理 → 基数可比。'
   },
   {
     id: 'set.numbers',
     name: '数系的构造',
     parent: 'set-theory',
-    desc: '造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后把 ℚ 按 Cauchy 列**完备化**成 ℝ。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。'
+    hub: 'def.real',
+    desc: '造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。'
   },
 
   /* ------------------------------------------------ 星系：序理论 */
@@ -4120,13 +4238,15 @@ MG.clusters = [
     id: 'order.structure',
     name: '序结构',
     parent: 'order-theory',
+    hub: 'def.poset',
     desc: '造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。'
   },
   {
-    id: 'order.maximal',
-    name: '极大原理',
+    id: 'order.choice',
+    name: '选择原理',
     parent: 'order-theory',
-    desc: '造出存在性证明的万能发动机：佐恩引理、Hausdorff 极大原理、Tukey 引理。'
+    hub: 'ax.choice',
+    desc: '造出存在性证明的万能发动机：选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理。五个说法是一个强连通块，永远同层。'
   },
 
   /* ------------------------------------------------ 星系：抽象代数 */
@@ -4134,12 +4254,14 @@ MG.clusters = [
     id: 'algebra.structures',
     name: '代数结构',
     parent: 'algebra',
+    hub: 'def.field',
     desc: '造出代数语言本身：**域** = 集合 + 两个运算 + 公理，**有序域** = 域 + 与运算相容的全序。ℚ 与 ℝ 都是实例。（代数学的笔记进来后这一团扩容：群 / 环 / 模。）'
   },
   {
     id: 'algebra.vectorspace',
     name: '向量空间的基',
     parent: 'algebra',
+    hub: 'def.vs',
     desc: '造出线性代数的地基：每个向量空间都有基。'
   },
 
@@ -4148,56 +4270,86 @@ MG.clusters = [
     id: 'topology.general',
     name: '拓扑空间',
     parent: 'topology',
+    hub: 'def.topology',
     desc: '造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。'
   },
   {
     id: 'topology.metric',
     name: '度量空间',
     parent: 'topology',
+    hub: 'def.metric-space',
     desc: '造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。'
   },
 
   /* ------------------------------------------------ 星系：分析学 */
   {
     id: 'analysis.real',
-    name: '实数与区间',
+    name: '实数与极限',
     parent: 'analysis',
-    desc: '在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限/级数 → 连续 → 导数 → 复数。（ℝ 本身的构造在星团「数系的构造」里。）'
+    hub: 'def.sup',
+    desc: '在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）'
+  },
+  {
+    id: 'analysis.setclass',
+    name: '集合族与 σ-代数',
+    parent: 'analysis',
+    hub: 'def.sigma-algebra',
+    desc: '造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。'
   },
   {
     id: 'analysis.measure',
     name: '测度的构造',
     parent: 'analysis',
-    desc: '造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。'
+    hub: 'def.measure',
+    desc: '造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。'
+  },
+  {
+    id: 'analysis.measurable',
+    name: '可测函数与收敛',
+    parent: 'analysis',
+    hub: 'def.measurable-function',
+    desc: '造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。'
   },
   {
     id: 'analysis.integral',
     name: '积分',
     parent: 'analysis',
-    desc: '造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。'
+    hub: 'def.integrable',
+    desc: '造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。'
+  },
+  {
+    id: 'analysis.product',
+    name: '乘积测度与 Fubini',
+    parent: 'analysis',
+    hub: 'def.product-measure',
+    desc: '造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。'
   },
   {
     id: 'analysis.signed',
     name: '符号测度与分解',
     parent: 'analysis',
+    hub: 'def.signed-measure',
     desc: '造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。'
   },
   {
     id: 'analysis.differentiation',
-    name: 'ℝⁿ 上的微分',
+    name: '微分定理',
     parent: 'analysis',
+    hub: 'def.maximal-function',
     desc: '造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。'
   },
   {
     id: 'analysis.bv',
     name: '有界变差与绝对连续',
     parent: 'analysis',
+    hub: 'def.bounded-variation',
     desc: '造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。'
   },
   {
     id: 'analysis.lp',
     name: 'L^p 空间',
     parent: 'analysis',
+    hub: 'def.lp-norm',
     desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
   }
 
@@ -4394,7 +4546,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 选择 */
     {
       id: 'ax.choice',
-      cluster: 'set.choice',
+      cluster: 'order.choice',
       type: 'axiom',
       label: '选择公理',
       title: '选择公理（Axiom of Choice, AC）',
@@ -4506,7 +4658,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------------- 关系 */
     {
       id: 'def.rel',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '关系',
       title: '关系（Relation）',
@@ -4528,7 +4680,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------------- 函数 */
     {
       id: 'def.function',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '函数',
       title: '函数（Function）',
@@ -4550,7 +4702,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 选择函数 */
     {
       id: 'def.choicefn',
-      cluster: 'set.choice',
+      cluster: 'order.choice',
       type: 'definition',
       label: '选择函数',
       title: '选择函数（Choice Function）',
@@ -4615,7 +4767,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 自然数集 */
     {
       id: 'thm.omega',
-      cluster: 'set.zfc',
+      cluster: 'set.numbers',
       type: 'theorem',
       label: '自然数集存在',
       title: '自然数集 ω 存在',
@@ -4938,7 +5090,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.wellordering',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'theorem',
       label: '良序定理',
       title: '良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）',
@@ -4964,7 +5116,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.zorn',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'lemma',
       label: '佐恩引理',
       title: '佐恩引理（Zorn\'s Lemma）',
@@ -4987,7 +5139,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.hausdorff',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
       title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）',
@@ -5009,7 +5161,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.tukey',
-      cluster: 'order.maximal',
+      cluster: 'order.choice',
       type: 'lemma',
       label: 'Tukey 引理',
       title: 'Tukey 引理（Tukey\'s Lemma / Teichmüller–Tukey）',
@@ -5030,7 +5182,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.hartogs',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Hartogs 定理',
       title: 'Hartogs 定理（Hartogs\' Theorem, 1915）—— ZF 中即可证明',
@@ -5864,7 +6016,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.fundamental-class',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '基本类',
       title: '基本类（Fundamental Class）',
@@ -5886,7 +6038,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.set-ring',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '环与代数',
       title: '环与代数（Ring, Algebra）',
@@ -5915,7 +6067,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.sigma-ring',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: 'σ-环',
       title: 'σ-环（σ-Ring）',
@@ -5940,7 +6092,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.sigma-algebra',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: 'σ-代数',
       title: 'σ-代数（σ-Algebra）',
@@ -5967,7 +6119,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.monotone-class',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '单调类',
       title: '单调类（Monotone Class）',
@@ -5988,7 +6140,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.set-class-properties',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'proposition',
       label: '集合族的基本性质',
       title: '命题：基本类 / 环 / σ-代数的几条基本性质',
@@ -6020,7 +6172,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.ring-monotone-sigma',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'theorem',
       label: '环 → σ-环 的判据',
       title: '定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭',
@@ -6040,7 +6192,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.generated-sigma',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: '生成的 σ-代数',
       title: '由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)',
@@ -6063,7 +6215,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.monotone-class',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'theorem',
       label: '单调类定理',
       title: '单调类定理（Monotone Class Theorem）',
@@ -6091,7 +6243,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.borel',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.setclass',
       type: 'definition',
       label: 'Borel σ-代数',
       title: 'Borel σ-代数（Borel σ-Algebra 𝔅_X）',
@@ -6113,7 +6265,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.product-sigma',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'definition',
       label: '积 σ-代数',
       title: '积 σ-代数（Product σ-Algebra）',
@@ -6134,7 +6286,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.product-sigma-base',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '积 σ-代数的生成基',
       title: '命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变',
@@ -6159,7 +6311,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.product-sigma-generated',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '可数积的生成集',
       title: '命题：指标集可数时，积 σ-代数由「矩形」生成',
@@ -6185,7 +6337,7 @@ window.MG = window.MG || {};
 
     {
       id: 'cor.borel-product',
-      cluster: 'analysis.measure',
+      cluster: 'analysis.product',
       type: 'corollary',
       label: '可数积的 Borel 代数',
       title: '推论：可数积距离空间的 Borel σ-代数（可分时相等）',
@@ -7106,7 +7258,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.measurable-function',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '可测函数',
       title: '可测函数（Measurable Function）',
@@ -7127,7 +7279,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.measurable-criterion',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '可测性的两条判定准则',
       title: '命题：复合保持可测；只需在生成元上验证',
@@ -7150,7 +7302,7 @@ window.MG = window.MG || {};
 
     {
       id: 'cor.continuous-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'corollary',
       label: '连续 ⟹ Borel 可测',
       title: '推论：连续函数是 Borel 可测的',
@@ -7166,7 +7318,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.lebesgue-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: 'Lebesgue 可测',
       title: 'Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）',
@@ -7189,7 +7341,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.measurable-product-and-realimag',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '积空间与实虚部',
       title: '命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测',
@@ -7216,7 +7368,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.measurable-closure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '可测函数的封闭性',
       title: '命题：可测函数对和、积、sup、max、极限封闭',
@@ -7242,7 +7394,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.simple-function',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '简单函数',
       title: '简单函数（Simple Function）',
@@ -7264,7 +7416,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.simple-approximation',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'theorem',
       label: '简单函数逼近',
       title: '定理：可测函数都是简单函数列的极限',
@@ -7297,7 +7449,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.complete-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '完备性 ⟺ 不破坏可测性',
       title: '命题：μ 完备 ⟺ 几乎处处相等 / 几乎处处收敛不破坏可测性',
@@ -7327,7 +7479,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.completion-measurable-function',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '完备化后可改在零集上',
       title: '命题：完备化空间上的可测函数，几乎处处等于一个原空间可测函数',
@@ -8285,7 +8437,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.convergence-modes',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '五种收敛',
       title: '收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹',
@@ -8316,7 +8468,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.convergence-counterexamples',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '四个标准反例',
       title: '命题：四个标准反例（把各种收敛区分开）',
@@ -8343,7 +8495,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.cauchy-in-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '依测度 Cauchy',
       title: '依测度 Cauchy 序列',
@@ -8365,7 +8517,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.cauchy-in-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'theorem',
       label: '依测度 Cauchy ⟹ 收敛',
       title: '定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛',
@@ -8390,7 +8542,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.L1-implies-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: 'L¹ 收敛 ⟹ 依测度收敛',
       title: '命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）',
@@ -8411,7 +8563,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.egorov',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'theorem',
       label: 'Egorov 定理',
       title: 'Egorov 定理：a.e. 收敛 ⟹ 近一致',
@@ -8432,7 +8584,7 @@ window.MG = window.MG || {};
 
     {
       id: 'cor.lusin',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'corollary',
       label: 'Lusin 定理',
       title: 'Lusin 定理：可测函数几乎处处连续',
@@ -8646,7 +8798,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.product-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'definition',
       label: '乘积测度',
       title: '乘积测度（Product Measure μ × ν）',
@@ -8683,7 +8835,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.section',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'definition',
       label: '截口',
       title: '截口（Section）Eₓ 与 Eʸ',
@@ -8710,7 +8862,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.section-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '截口可测',
       title: '命题：可测集的截口可测，可测函数的截口可测',
@@ -8739,7 +8891,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.product-measure-sections',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'theorem',
       label: '乘积测度由截口给出',
       title: '定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)',
@@ -8772,7 +8924,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.fubini-tonelli',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'theorem',
       label: 'Fubini–Tonelli',
       title: 'Fubini–Tonelli 定理（重积分可交换次序）',
@@ -8806,7 +8958,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.fubini-complete',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'theorem',
       label: '完备情形的 F–T',
       title: '定理：完备化的乘积测度上，Fubini–Tonelli 仍然成立',
@@ -8835,7 +8987,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.product-incomplete',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '乘积测度通常不完备',
       title: '注记：μ、ν 完备时，μ × ν 常常不完备',
@@ -12145,7 +12297,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'def.complex',
-      cluster: 'analysis.real',
+      cluster: 'set.numbers',
       type: 'definition',
       label: '复数 ℂ',
       title: '复数系 $\\mathbb{C}$（Complex Numbers）',
@@ -12339,7 +12491,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 映射与基数 */
     {
       id: 'def.bijection',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '单射 / 满射 / 双射',
       title: '单射 / 满射 / 双射（Injective / Surjective / Bijective）',
@@ -12361,7 +12513,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'def.countable',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'definition',
       label: '可数与不可数',
       title: '可数 / 至多可数（Countable）',
@@ -12611,7 +12763,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 等势 */
     {
       id: 'def.equinumerous',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'definition',
       label: '等势',
       title: '等势（Equinumerous）',
@@ -12631,7 +12783,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 基数 */
     {
       id: 'def.cardinal',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'definition',
       label: '基数 |A|',
       title: '基数与基数的比较（Cardinality）',
@@ -12655,7 +12807,7 @@ window.MG = window.MG || {};
     /* --------------------------------------------------- Cantor 定理 */
     {
       id: 'thm.cantor',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Cantor 定理',
       title: 'Cantor 定理：$|A| < |\\mathcal{P}(A)|$',
@@ -12675,7 +12827,7 @@ window.MG = window.MG || {};
     /* --------------------------------------------- Schröder–Bernstein */
     {
       id: 'thm.schroder-bernstein',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Schröder–Bernstein 定理',
       title: 'Schröder–Bernstein 定理',
@@ -12693,7 +12845,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 基数可比定理 */
     {
       id: 'thm.cardinal-comparable',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: '基数可比定理',
       title: '基数可比定理（需要选择公理）',
@@ -13135,7 +13287,7 @@ window.MG = window.MG || {};
     /* --------------------------------------------------- 通用工具：商集 */
     {
       id: 'def.quotient-set',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '商集与等价类',
       title: '商集 / 等价类（Quotient Set）',
@@ -13163,7 +13315,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------- 自然数上的归纳法 */
     {
       id: 'thm.induction',
-      cluster: 'set.zfc',
+      cluster: 'set.numbers',
       type: 'theorem',
       label: '归纳原理与递推定义',
       title: '归纳原理 / 递推定义（Induction & Recursion）',

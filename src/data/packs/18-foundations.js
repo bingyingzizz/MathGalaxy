@@ -90,7 +90,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 映射与基数 */
     {
       id: 'def.bijection',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '单射 / 满射 / 双射',
       title: '单射 / 满射 / 双射（Injective / Surjective / Bijective）',
@@ -112,7 +112,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'def.countable',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'definition',
       label: '可数与不可数',
       title: '可数 / 至多可数（Countable）',

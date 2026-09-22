@@ -208,6 +208,22 @@
     graph.clusters = clusters;
     graph.clusterById = clusterById;
 
+    /* 星团的「中心天体」（clusters.js 里的 hub 字段）。
+       它是这个装置要造出来的那个东西 —— 画亮核 / 定中心 / 分尺度展开都靠它。
+       写错 id 或者写到别的团里，都在这里提示（跟主干名单一样容易忘）。 */
+    clusters.forEach(function (c) {
+      c.hubObj = null;
+      if (!c.hub) return;
+      var h = byId[c.hub];
+      if (!h) { warnings.push('星团 ' + c.id + ' 的 hub 指向不存在的节点：' + c.hub); return; }
+      if (h.cluster !== c.id) {
+        warnings.push('星团 ' + c.id + ' 的 hub 不属于本团：' + c.hub + '（实际在 ' + h.cluster + '）');
+        return;
+      }
+      c.hubObj = h;
+      h.isHub = true;
+    });
+
     /** 星团所属星系对象 */
     graph.galaxyOf = function (c) {
       return (c && c.parent && graph.regionById[c.parent]) || null;

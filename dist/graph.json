@@ -2,10 +2,10 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T12:25:43.507Z",
+  "generated": "2026-09-22T13:16:39.664Z",
   "counts": {
    "regions": 6,
-   "clusters": 17,
+   "clusters": 21,
    "nodes": 221,
    "edges": 436,
    "strong": 428,
@@ -88,7 +88,7 @@
    "name": "ZFC 公理系统",
    "parent": "set-theory",
    "desc": "造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。",
-   "nodeCount": 11,
+   "nodeCount": 9,
    "nodes": [
     "ax.ext",
     "ax.sep",
@@ -98,16 +98,14 @@
     "ax.inf",
     "ax.repl",
     "ax.found",
-    "thm.noself",
-    "thm.omega",
-    "thm.induction"
+    "thm.noself"
    ]
   },
   {
    "id": "set.construct",
    "name": "集合的构造",
    "parent": "set-theory",
-   "desc": "造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。",
+   "desc": "造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。",
    "nodeCount": 9,
    "nodes": [
     "def.subset",
@@ -122,34 +120,44 @@
    ]
   },
   {
-   "id": "set.choice",
-   "name": "关系与选择",
+   "id": "set.rel",
+   "name": "关系与函数",
    "parent": "set-theory",
-   "desc": "造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。",
-   "nodeCount": 13,
+   "desc": "造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。",
+   "nodeCount": 4,
    "nodes": [
-    "ax.choice",
     "def.rel",
     "def.function",
-    "def.choicefn",
-    "thm.hartogs",
     "def.bijection",
+    "def.quotient-set"
+   ]
+  },
+  {
+   "id": "set.cardinal",
+   "name": "基数与等势",
+   "parent": "set-theory",
+   "desc": "造出「集合有多大」这把尺子：等势 → 基数 → 可数与不可数 → Cantor 定理 → 基数可比。",
+   "nodeCount": 7,
+   "nodes": [
+    "thm.hartogs",
     "def.countable",
     "def.equinumerous",
     "def.cardinal",
     "thm.cantor",
     "thm.schroder-bernstein",
-    "thm.cardinal-comparable",
-    "def.quotient-set"
+    "thm.cardinal-comparable"
    ]
   },
   {
    "id": "set.numbers",
    "name": "数系的构造",
    "parent": "set-theory",
-   "desc": "造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后把 ℚ 按 Cauchy 列**完备化**成 ℝ。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。",
-   "nodeCount": 10,
+   "desc": "造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。",
+   "nodeCount": 13,
    "nodes": [
+    "thm.omega",
+    "def.complex",
+    "thm.induction",
     "def.int",
     "def.rat",
     "def.abs",
@@ -177,12 +185,14 @@
    ]
   },
   {
-   "id": "order.maximal",
-   "name": "极大原理",
+   "id": "order.choice",
+   "name": "选择原理",
    "parent": "order-theory",
-   "desc": "造出存在性证明的万能发动机：佐恩引理、Hausdorff 极大原理、Tukey 引理。",
-   "nodeCount": 4,
+   "desc": "造出存在性证明的万能发动机：选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理。五个说法是一个强连通块，永远同层。",
+   "nodeCount": 6,
    "nodes": [
+    "ax.choice",
+    "def.choicefn",
     "thm.wellordering",
     "lem.zorn",
     "thm.hausdorff",
@@ -244,10 +254,10 @@
   },
   {
    "id": "analysis.real",
-   "name": "实数与区间",
+   "name": "实数与极限",
    "parent": "analysis",
-   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限/级数 → 连续 → 导数 → 复数。（ℝ 本身的构造在星团「数系的构造」里。）",
-   "nodeCount": 8,
+   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）",
+   "nodeCount": 7,
    "nodes": [
     "def.extended-real",
     "def.interval",
@@ -255,16 +265,15 @@
     "def.sequence-limit",
     "def.series",
     "def.continuous",
-    "def.derivative",
-    "def.complex"
+    "def.derivative"
    ]
   },
   {
-   "id": "analysis.measure",
-   "name": "测度的构造",
+   "id": "analysis.setclass",
+   "name": "集合族与 σ-代数",
    "parent": "analysis",
-   "desc": "造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。",
-   "nodeCount": 32,
+   "desc": "造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。",
+   "nodeCount": 10,
    "nodes": [
     "def.fundamental-class",
     "def.set-ring",
@@ -275,11 +284,16 @@
     "thm.ring-monotone-sigma",
     "def.generated-sigma",
     "thm.monotone-class",
-    "def.borel",
-    "def.product-sigma",
-    "prop.product-sigma-base",
-    "prop.product-sigma-generated",
-    "cor.borel-product",
+    "def.borel"
+   ]
+  },
+  {
+   "id": "analysis.measure",
+   "name": "测度的构造",
+   "parent": "analysis",
+   "desc": "造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。",
+   "nodeCount": 18,
+   "nodes": [
     "def.measure",
     "def.premeasure",
     "def.finitely-additive",
@@ -301,11 +315,11 @@
    ]
   },
   {
-   "id": "analysis.integral",
-   "name": "积分",
+   "id": "analysis.measurable",
+   "name": "可测函数与收敛",
    "parent": "analysis",
-   "desc": "造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。",
-   "nodeCount": 45,
+   "desc": "造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。",
+   "nodeCount": 17,
    "nodes": [
     "def.measurable-function",
     "prop.measurable-criterion",
@@ -317,6 +331,22 @@
     "thm.simple-approximation",
     "prop.complete-measurable",
     "prop.completion-measurable-function",
+    "def.convergence-modes",
+    "prop.convergence-counterexamples",
+    "def.cauchy-in-measure",
+    "thm.cauchy-in-measure",
+    "prop.L1-implies-measure",
+    "thm.egorov",
+    "cor.lusin"
+   ]
+  },
+  {
+   "id": "analysis.integral",
+   "name": "积分",
+   "parent": "analysis",
+   "desc": "造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。",
+   "nodeCount": 21,
+   "nodes": [
     "def.lplus",
     "def.integral-simple",
     "prop.simple-integral-props",
@@ -337,14 +367,20 @@
     "thm.dct",
     "thm.termwise-L1",
     "thm.approximation-L1",
-    "thm.differentiate-under-integral",
-    "def.convergence-modes",
-    "prop.convergence-counterexamples",
-    "def.cauchy-in-measure",
-    "thm.cauchy-in-measure",
-    "prop.L1-implies-measure",
-    "thm.egorov",
-    "cor.lusin",
+    "thm.differentiate-under-integral"
+   ]
+  },
+  {
+   "id": "analysis.product",
+   "name": "乘积测度与 Fubini",
+   "parent": "analysis",
+   "desc": "造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。",
+   "nodeCount": 11,
+   "nodes": [
+    "def.product-sigma",
+    "prop.product-sigma-base",
+    "prop.product-sigma-generated",
+    "cor.borel-product",
     "def.product-measure",
     "def.section",
     "prop.section-measurable",
@@ -384,7 +420,7 @@
   },
   {
    "id": "analysis.differentiation",
-   "name": "ℝⁿ 上的微分",
+   "name": "微分定理",
    "parent": "analysis",
    "desc": "造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。",
    "nodeCount": 14,
@@ -631,7 +667,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "order.choice",
    "tags": [
     "ZFC",
     "选择",
@@ -693,7 +729,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.rel",
    "tags": [
     "定义",
     "关系"
@@ -713,7 +749,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.rel",
    "tags": [
     "定义",
     "函数"
@@ -733,7 +769,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "order.choice",
    "tags": [
     "定义",
     "选择"
@@ -792,7 +828,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.zfc",
+   "cluster": "set.numbers",
    "tags": [
     "定理",
     "自然数",
@@ -957,7 +993,7 @@
     "set-theory",
     "order-theory"
    ],
-   "cluster": "order.maximal",
+   "cluster": "order.choice",
    "tags": [
     "ZFC",
     "等价命题",
@@ -980,7 +1016,7 @@
     "order-theory",
     "set-theory"
    ],
-   "cluster": "order.maximal",
+   "cluster": "order.choice",
    "tags": [
     "ZFC",
     "等价命题",
@@ -1002,7 +1038,7 @@
    "regions": [
     "order-theory"
    ],
-   "cluster": "order.maximal",
+   "cluster": "order.choice",
    "tags": [
     "ZFC",
     "等价命题",
@@ -1025,7 +1061,7 @@
    "regions": [
     "order-theory"
    ],
-   "cluster": "order.maximal",
+   "cluster": "order.choice",
    "tags": [
     "ZFC",
     "等价命题",
@@ -1047,7 +1083,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "ZF",
     "序数",
@@ -1287,7 +1323,7 @@
     "analysis",
     "set-theory"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "集合族",
@@ -1308,7 +1344,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "环",
@@ -1330,7 +1366,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "σ-环",
@@ -1351,7 +1387,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "σ-代数",
@@ -1375,7 +1411,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "单调类"
@@ -1395,7 +1431,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "命题",
     "基本类",
@@ -1417,7 +1453,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定理",
     "环",
@@ -1439,7 +1475,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "生成",
@@ -1462,7 +1498,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定理",
     "单调类",
@@ -1485,7 +1521,7 @@
     "analysis",
     "topology"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.setclass",
    "tags": [
     "定义",
     "Borel",
@@ -1507,7 +1543,7 @@
     "analysis",
     "topology"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.product",
    "tags": [
     "定义",
     "积",
@@ -1528,7 +1564,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.product",
    "tags": [
     "命题",
     "积",
@@ -1549,7 +1585,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.product",
    "tags": [
     "命题",
     "积",
@@ -1571,7 +1607,7 @@
     "analysis",
     "topology"
    ],
-   "cluster": "analysis.measure",
+   "cluster": "analysis.product",
    "tags": [
     "推论",
     "Borel",
@@ -1960,7 +1996,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定义",
     "可测函数"
@@ -1981,7 +2017,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "命题",
     "可测",
@@ -2004,7 +2040,7 @@
     "analysis",
     "topology"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "推论",
     "连续",
@@ -2023,7 +2059,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定义",
     "Lebesgue 可测",
@@ -2044,7 +2080,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "命题",
     "积空间",
@@ -2065,7 +2101,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "命题",
     "封闭性",
@@ -2087,7 +2123,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定义",
     "简单函数"
@@ -2107,7 +2143,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定理",
     "简单函数",
@@ -2128,7 +2164,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "命题",
     "完备",
@@ -2149,7 +2185,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "命题",
     "完备化",
@@ -2606,7 +2642,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定义",
     "收敛",
@@ -2627,7 +2663,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "反例",
     "收敛",
@@ -2648,7 +2684,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定义",
     "Cauchy",
@@ -2669,7 +2705,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定理",
     "依测度",
@@ -2691,7 +2727,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "命题",
     "L¹",
@@ -2713,7 +2749,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "定理",
     "Egorov",
@@ -2735,7 +2771,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.measurable",
    "tags": [
     "推论",
     "Lusin",
@@ -2757,7 +2793,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "定义",
     "乘积测度",
@@ -2780,7 +2816,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "定义",
     "截口"
@@ -2800,7 +2836,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "命题",
     "截口",
@@ -2821,7 +2857,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "定理",
     "乘积测度",
@@ -2842,7 +2878,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "定理",
     "Fubini",
@@ -2864,7 +2900,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "定理",
     "Fubini",
@@ -2885,7 +2921,7 @@
    "regions": [
     "analysis"
    ],
-   "cluster": "analysis.integral",
+   "cluster": "analysis.product",
    "tags": [
     "注记",
     "完备",
@@ -4462,7 +4498,7 @@
     "analysis",
     "algebra"
    ],
-   "cluster": "analysis.real",
+   "cluster": "set.numbers",
    "tags": [
     "定义",
     "复数"
@@ -4542,7 +4578,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.rel",
    "tags": [
     "定义",
     "函数"
@@ -4562,7 +4598,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "定义",
     "基数",
@@ -4623,7 +4659,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "定义",
     "基数"
@@ -4643,7 +4679,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "定义",
     "基数"
@@ -4663,7 +4699,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "定理",
     "基数",
@@ -4684,7 +4720,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "定理",
     "基数"
@@ -4704,7 +4740,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.cardinal",
    "tags": [
     "定理",
     "基数",
@@ -4831,7 +4867,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.choice",
+   "cluster": "set.rel",
    "tags": [
     "定义",
     "等价类",
@@ -4852,7 +4888,7 @@
    "regions": [
     "set-theory"
    ],
-   "cluster": "set.zfc",
+   "cluster": "set.numbers",
    "tags": [
     "定理",
     "归纳",
@@ -9011,21 +9047,70 @@
   {
    "a": "set.construct",
    "b": "set.zfc",
-   "count": 10,
+   "count": 9,
    "label": "",
    "explicit": false
   },
   {
-   "a": "order.maximal",
-   "b": "set.choice",
-   "count": 4,
+   "a": "order.choice",
+   "b": "set.cardinal",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.product",
+   "b": "analysis.setclass",
+   "count": 6,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measure",
+   "b": "analysis.setclass",
+   "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measurable",
+   "b": "analysis.setclass",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measurable",
+   "b": "analysis.measure",
+   "count": 6,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.integral",
+   "b": "analysis.measurable",
+   "count": 8,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.integral",
    "b": "analysis.measure",
-   "count": 26,
+   "count": 8,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measure",
+   "b": "analysis.product",
+   "count": 6,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.integral",
+   "b": "analysis.product",
+   "count": 2,
    "label": "",
    "explicit": false
   },
@@ -9039,14 +9124,14 @@
   {
    "a": "analysis.measure",
    "b": "analysis.signed",
-   "count": 10,
+   "count": 8,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.differentiation",
    "b": "analysis.integral",
-   "count": 4,
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -9061,13 +9146,6 @@
    "a": "analysis.bv",
    "b": "analysis.signed",
    "count": 5,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "analysis.bv",
-   "b": "analysis.measure",
-   "count": 2,
    "label": "",
    "explicit": false
   },
@@ -9081,27 +9159,34 @@
   {
    "a": "analysis.integral",
    "b": "analysis.lp",
-   "count": 6,
+   "count": 3,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.real",
    "b": "set.numbers",
-   "count": 5,
+   "count": 4,
    "label": "",
    "explicit": false
   },
   {
-   "a": "set.choice",
-   "b": "set.construct",
-   "count": 5,
+   "a": "set.construct",
+   "b": "set.rel",
+   "count": 3,
    "label": "",
    "explicit": false
   },
   {
-   "a": "analysis.measure",
-   "b": "analysis.real",
+   "a": "set.cardinal",
+   "b": "set.rel",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "set.cardinal",
+   "b": "set.numbers",
    "count": 4,
    "label": "",
    "explicit": false
@@ -9109,7 +9194,14 @@
   {
    "a": "analysis.integral",
    "b": "analysis.real",
-   "count": 4,
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measure",
+   "b": "analysis.real",
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -9122,15 +9214,29 @@
   },
   {
    "a": "analysis.lp",
-   "b": "analysis.real",
+   "b": "set.numbers",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "set.cardinal",
+   "b": "set.construct",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.setclass",
+   "b": "set.construct",
+   "count": 4,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.measure",
    "b": "set.construct",
-   "count": 7,
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -9150,15 +9256,8 @@
   },
   {
    "a": "set.numbers",
-   "b": "set.zfc",
-   "count": 2,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "set.choice",
-   "b": "set.numbers",
-   "count": 8,
+   "b": "set.rel",
+   "count": 5,
    "label": "",
    "explicit": false
   },
@@ -9177,16 +9276,9 @@
    "explicit": false
   },
   {
-   "a": "order.maximal",
+   "a": "order.choice",
    "b": "order.structure",
    "count": 7,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "order.structure",
-   "b": "set.choice",
-   "count": 2,
    "label": "",
    "explicit": false
   },
@@ -9200,7 +9292,14 @@
   {
    "a": "analysis.differentiation",
    "b": "analysis.measure",
-   "count": 4,
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.lp",
+   "b": "analysis.measurable",
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -9214,6 +9313,20 @@
   {
    "a": "algebra.vectorspace",
    "b": "order.structure",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.differentiation",
+   "b": "analysis.setclass",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.setclass",
+   "b": "analysis.signed",
    "count": 2,
    "label": "",
    "explicit": false

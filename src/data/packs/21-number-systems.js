@@ -30,7 +30,7 @@ window.MG = window.MG || {};
     /* --------------------------------------------------- 通用工具：商集 */
     {
       id: 'def.quotient-set',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '商集与等价类',
       title: '商集 / 等价类（Quotient Set）',
@@ -58,7 +58,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------- 自然数上的归纳法 */
     {
       id: 'thm.induction',
-      cluster: 'set.zfc',
+      cluster: 'set.numbers',
       type: 'theorem',
       label: '归纳原理与递推定义',
       title: '归纳原理 / 递推定义（Induction & Recursion）',

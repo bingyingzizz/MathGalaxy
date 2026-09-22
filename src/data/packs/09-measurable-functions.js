@@ -14,7 +14,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.measurable-function',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '可测函数',
       title: '可测函数（Measurable Function）',
@@ -35,7 +35,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.measurable-criterion',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '可测性的两条判定准则',
       title: '命题：复合保持可测；只需在生成元上验证',
@@ -58,7 +58,7 @@ window.MG = window.MG || {};
 
     {
       id: 'cor.continuous-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'corollary',
       label: '连续 ⟹ Borel 可测',
       title: '推论：连续函数是 Borel 可测的',
@@ -74,7 +74,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.lebesgue-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: 'Lebesgue 可测',
       title: 'Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）',
@@ -97,7 +97,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.measurable-product-and-realimag',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '积空间与实虚部',
       title: '命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测',
@@ -124,7 +124,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.measurable-closure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '可测函数的封闭性',
       title: '命题：可测函数对和、积、sup、max、极限封闭',
@@ -150,7 +150,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.simple-function',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'definition',
       label: '简单函数',
       title: '简单函数（Simple Function）',
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.simple-approximation',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'theorem',
       label: '简单函数逼近',
       title: '定理：可测函数都是简单函数列的极限',
@@ -205,7 +205,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.complete-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '完备性 ⟺ 不破坏可测性',
       title: '命题：μ 完备 ⟺ 几乎处处相等 / 几乎处处收敛不破坏可测性',
@@ -235,7 +235,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.completion-measurable-function',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.measurable',
       type: 'proposition',
       label: '完备化后可改在零集上',
       title: '命题：完备化空间上的可测函数，几乎处处等于一个原空间可测函数',

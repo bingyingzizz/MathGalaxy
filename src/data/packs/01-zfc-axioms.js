@@ -186,7 +186,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 选择 */
     {
       id: 'ax.choice',
-      cluster: 'set.choice',
+      cluster: 'order.choice',
       type: 'axiom',
       label: '选择公理',
       title: '选择公理（Axiom of Choice, AC）',

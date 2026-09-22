@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T12:25:43.507Z
-> 6 星系 / 17 星团 / 221 节点 / 436 连线（强边 428，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T13:16:39.664Z
+> 6 星系 / 21 星团 / 221 节点 / 436 连线（强边 428，弱边 8）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -144,45 +144,8 @@ $$A_0 \ni  A_1 \ni  \cdots \ni  A_n = A_0$$
 
 参考：Kunen, Set Theory, I.9
 
-#### 自然数集存在　`thm.omega`
-*定理*　自然数集 ω 存在
-
-存在**最小归纳集** $\omega$：它含有 $\emptyset$，对 $x \mapsto x \cup \{x\}$ 封闭，且含于一切归纳集之中：
-
-$$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}, \ldots  \}$$
-
-把 $\in$ 读作 $<$，$\langle \omega , \in \rangle$ 就是自然数系 $\langle \mathbb{N}, <\rangle$。
-
-$\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。
-
-参考：Kunen, Set Theory, I.5
-
-#### 归纳原理与递推定义　`thm.induction`
-*定理*　归纳原理 / 递推定义（Induction & Recursion）
-
-设 $\omega$ 是最小归纳集（即 $\mathbb{N}$）。
-
-**(i) 归纳原理**：若 $S \subseteq \omega$ 满足
-
-$$\emptyset \in S, \qquad x \in S \implies x \cup \{x\} \in S$$
-
-则 $S = \omega$。
-
-**(ii) 递推定义**：给定集合 $A$、元素 $a_0 \in A$ 与函数 $F : A \to A$，存在**唯一**的函数 $g : \omega \to A$ 使
-
-$$g(\emptyset) = a_0, \qquad g(x \cup \{x\}) = F(g(x)) \quad \forall x \in \omega$$
-
-⭐ **归纳原理管证明，递推定义管构造** —— 两者是一件事的两面，都来自「$\omega$ 是最小归纳集」这一条。
-
-$\mathbb{N}$ 上的加法、乘法、序，以及后面 $\mathbb{Z}$、$\mathbb{Q}$ 的运算，全都是用递推定义出来、再用归纳原理验证性质的。
-
-⚠ **归纳原理只对 $\omega$ 成立**；换成一般的良序集要做**超限归纳 / 超限递归**。
-⚠ 递推定义要用「函数 $F$」而不是「一句话」，否则会掉进「用未定义的东西定义自己」的坑。
-
-参考：Kunen, Set Theory, I.5
-
 ### 星团：集合的构造
-> 造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。
+> 造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。
 
 #### 子集　`def.subset`
 *定义*　子集 / 真子集（Subset）
@@ -341,27 +304,8 @@ $$\mathcal{P}(X) := \{ A : A \subseteq X \}$$
 
 参考：Kunen, Set Theory, I.5
 
-### 星团：关系与选择
-> 造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。
-
-#### 选择公理　`ax.choice`
-*公理*　选择公理（Axiom of Choice, AC）
-
-任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：
-
-$$\forall F [ ( \forall X \in F, X \ne \emptyset ) \to \exists f ( f\text{ 是函数} \wedge  \operatorname{dom} f = F \wedge  \forall X \in F, f(X) \in X ) ]$$
-
-另一种常见形式（两两不交形式）：若 $F$ 是两两不交的非空集合族，则存在集合 $C$，使对每个 $X \in F$ 都有 $|C \cap X| = 1$。
-
-选择函数 $f$ 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。
-
-AC 与 ZF 独立：Gödel (1938) 证明 $Con(ZF) \to Con(ZF + AC)$，Cohen (1963) 证明 $Con(ZF) \to Con(ZF + \neg AC)$。
-
-它是本星系里大量命题的枢纽——佐恩引理、良序定理、Hausdorff 极大原理、Tukey 引理都与它等价。
-
-有限个非空集合可以逐个挑选，这正是 AC 只在无穷情形才显出力量的原因。
-
-参考：Jech, The Axiom of Choice；Kunen, Set Theory, I.12
+### 星团：关系与函数
+> 造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。
 
 #### 关系　`def.rel`
 *定义*　关系（Relation）
@@ -399,41 +343,6 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 
 参考：Kunen, Set Theory, I.5
 
-#### 选择函数　`def.choicefn`
-*定义*　选择函数（Choice Function）
-
-设 $F$ 是一个集合族，且 $\emptyset \notin F$。
-
-$f$ 是 $F$ 的**选择函数**，当且仅当
-
-$f$ 是函数，$\operatorname{dom} f = F$；
-$\forall X \in F, f(X) \in X$。
-
-即：$f$ 从 $F$ 的每一个成员里各挑出一个元素。
-
-于是选择公理可以简洁地写成：**每个满足 $\emptyset \notin F$ 的集合族 $F$ 都有选择函数**。
-
-若 $F$ 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。
-
-参考：Jech, The Axiom of Choice
-
-#### Hartogs 定理　`thm.hartogs`
-*定理*　Hartogs 定理（Hartogs' Theorem, 1915）—— ZF 中即可证明
-
-对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。
-
-$$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 且} \alpha = \aleph(X)\text{ 时}: \forall\beta < \alpha, \beta \hookrightarrow  X\text{ 成立}$$
-
-⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \implies$ 良序定理」「$AC \implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。
-
-**证明思路**（全在 ZF 内）：设 $\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\mathcal{W} \subseteq \mathcal{P}(X \times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\alpha$**。若 $\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\alpha$，即 $\alpha \in A = \alpha$ —— 与序数不能自属矛盾。故 $\alpha$ 不能单射进 $X$。
-
-**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\aleph (X) \to X$ 的单射，与 $\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\alpha < \aleph (X)$ 处停止。
-
-**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。
-
-参考：Hartogs (1915)；Kunen, Set Theory, I.11；Jech, The Axiom of Choice, Ch. 2
-
 #### 单射 / 满射 / 双射　`def.bijection`
 *定义*　单射 / 满射 / 双射（Injective / Surjective / Bijective）
 
@@ -452,6 +361,53 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 ⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \mathbb{R} \to \mathbb{R}$，$x \mapsto x^2$ 既不单也不满；把陪域改成 $[0, \infty)$ 就满了。
 
 参考：Kunen, Set Theory, I.5
+
+#### 商集与等价类　`def.quotient-set`
+*定义*　商集 / 等价类（Quotient Set）
+
+设 $\sim$ 是集合 $A$ 上的一个**等价关系**。对 $a \in A$，称
+
+$$[a] := \{ b \in A : b \sim a \}$$
+
+为 $a$ 的**等价类**；称
+
+$$A / \sim\ := \{ [a] : a \in A \}$$
+
+为 $A$ 关于 $\sim$ 的**商集**。三条基本事实：
+
+- $a \in [a]$；
+- $[a] = [b] \iff a \sim b$；
+- 不同的等价类**两两不交**，且全体之并恰为 $A$ —— 也就是说，等价关系把 $A$ **划分**成一块块。
+
+⭐ 这是数学里「造新对象」最常用的手法：手头只有一类东西，却想得到另一类，就把前者按某个等价关系**粘**起来。本星图里至少四处用到：
+
+- $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/\sim$、$\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$、$\mathbb{R} = \{$有理 Cauchy 列$\}/\sim$；
+- $L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个）；
+- RN 导数 $d\nu/d\mu$ 也是一个等价类，而不是单个函数。
+
+⚠ 等价类的**代表元不唯一**，所以凡是要在商集上定义的东西（运算、序、范数），都必须先证明「与代表元的选取无关」，也就是**良定义**。这是商构造最容易漏掉的一步。
+
+参考：Kunen, Set Theory, I.5
+
+### 星团：基数与等势
+> 造出「集合有多大」这把尺子：等势 → 基数 → 可数与不可数 → Cantor 定理 → 基数可比。
+
+#### Hartogs 定理　`thm.hartogs`
+*定理*　Hartogs 定理（Hartogs' Theorem, 1915）—— ZF 中即可证明
+
+对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。
+
+$$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 且} \alpha = \aleph(X)\text{ 时}: \forall\beta < \alpha, \beta \hookrightarrow  X\text{ 成立}$$
+
+⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \implies$ 良序定理」「$AC \implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。
+
+**证明思路**（全在 ZF 内）：设 $\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\mathcal{W} \subseteq \mathcal{P}(X \times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\alpha$**。若 $\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\alpha$，即 $\alpha \in A = \alpha$ —— 与序数不能自属矛盾。故 $\alpha$ 不能单射进 $X$。
+
+**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\aleph (X) \to X$ 的单射，与 $\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\alpha < \aleph (X)$ 处停止。
+
+**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。
+
+参考：Hartogs (1915)；Kunen, Set Theory, I.11；Jech, The Axiom of Choice, Ch. 2
 
 #### 可数与不可数　`def.countable`
 *定义*　可数 / 至多可数（Countable）
@@ -565,35 +521,68 @@ $$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
 
 参考：Jech, The Axiom of Choice, Ch. 3
 
-#### 商集与等价类　`def.quotient-set`
-*定义*　商集 / 等价类（Quotient Set）
+### 星团：数系的构造
+> 造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。
 
-设 $\sim$ 是集合 $A$ 上的一个**等价关系**。对 $a \in A$，称
+#### 自然数集存在　`thm.omega`
+*定理*　自然数集 ω 存在
 
-$$[a] := \{ b \in A : b \sim a \}$$
+存在**最小归纳集** $\omega$：它含有 $\emptyset$，对 $x \mapsto x \cup \{x\}$ 封闭，且含于一切归纳集之中：
 
-为 $a$ 的**等价类**；称
+$$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}, \ldots  \}$$
 
-$$A / \sim\ := \{ [a] : a \in A \}$$
+把 $\in$ 读作 $<$，$\langle \omega , \in \rangle$ 就是自然数系 $\langle \mathbb{N}, <\rangle$。
 
-为 $A$ 关于 $\sim$ 的**商集**。三条基本事实：
-
-- $a \in [a]$；
-- $[a] = [b] \iff a \sim b$；
-- 不同的等价类**两两不交**，且全体之并恰为 $A$ —— 也就是说，等价关系把 $A$ **划分**成一块块。
-
-⭐ 这是数学里「造新对象」最常用的手法：手头只有一类东西，却想得到另一类，就把前者按某个等价关系**粘**起来。本星图里至少四处用到：
-
-- $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/\sim$、$\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$、$\mathbb{R} = \{$有理 Cauchy 列$\}/\sim$；
-- $L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个）；
-- RN 导数 $d\nu/d\mu$ 也是一个等价类，而不是单个函数。
-
-⚠ 等价类的**代表元不唯一**，所以凡是要在商集上定义的东西（运算、序、范数），都必须先证明「与代表元的选取无关」，也就是**良定义**。这是商构造最容易漏掉的一步。
+$\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。
 
 参考：Kunen, Set Theory, I.5
 
-### 星团：数系的构造
-> 造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后把 ℚ 按 Cauchy 列**完备化**成 ℝ。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。
+#### 复数 ℂ　`def.complex`
+*定义*　复数系 $\mathbb{C}$（Complex Numbers）
+
+**复数系** $\mathbb{C} := \mathbb{R}^2$，配以下运算：
+
+$$(a, b) + (c, d) := (a + c, b + d), \qquad (a, b)(c, d) := (ac - bd, ad + bc)$$
+
+记 $i := (0, 1)$，则每个复数唯一地写成 $z = a + bi$（$a, b \in \mathbb{R}$）。
+
+$\bar{z} := a - bi$ 是**共轭**，$|z| := \sqrt{a^2 + b^2}$ 是**模**；并且
+
+$$|zw| = |z|\,|w|, \qquad z \bar{z} = |z|^2$$
+
+于是每个 $z \ne 0$ 都有逆 $z^{-1} = \bar{z}/|z|^2$：$\mathbb{C}$ 是一个域。
+
+⭐ $\mathbb{C}$ 与 $\mathbb{R}^2$ 的区别只在乘法 —— 而正是这个乘法让 $\mathbb{C}$ 成为**代数闭域**（每个多项式都有根），也让复值函数的积分理论比实值情形简洁：$|f|$ 与 $L^p$ 理论的表述不必再分正负部。
+
+⚠ **$\mathbb{C}$ 是有序域之外的东西**：它上面**没有**与运算相容的全序。若不然，由 $1 = 1^2 > 0$ 得 $-1 < 0$；可是 $i \ne 0$，而有序域里**平方元非负**，$i^2 = -1$ 应当 $\ge 0$ —— 矛盾。
+
+本星图里 $\mathbb{C}$ 主要出现在两处：复值函数的积分（拆实部虚部）、复测度（取值在 $\mathbb{C}$ 里，自动有限）。
+
+参考：Rudin, Real and Complex Analysis, Ch. 1
+
+#### 归纳原理与递推定义　`thm.induction`
+*定理*　归纳原理 / 递推定义（Induction & Recursion）
+
+设 $\omega$ 是最小归纳集（即 $\mathbb{N}$）。
+
+**(i) 归纳原理**：若 $S \subseteq \omega$ 满足
+
+$$\emptyset \in S, \qquad x \in S \implies x \cup \{x\} \in S$$
+
+则 $S = \omega$。
+
+**(ii) 递推定义**：给定集合 $A$、元素 $a_0 \in A$ 与函数 $F : A \to A$，存在**唯一**的函数 $g : \omega \to A$ 使
+
+$$g(\emptyset) = a_0, \qquad g(x \cup \{x\}) = F(g(x)) \quad \forall x \in \omega$$
+
+⭐ **归纳原理管证明，递推定义管构造** —— 两者是一件事的两面，都来自「$\omega$ 是最小归纳集」这一条。
+
+$\mathbb{N}$ 上的加法、乘法、序，以及后面 $\mathbb{Z}$、$\mathbb{Q}$ 的运算，全都是用递推定义出来、再用归纳原理验证性质的。
+
+⚠ **归纳原理只对 $\omega$ 成立**；换成一般的良序集要做**超限归纳 / 超限递归**。
+⚠ 递推定义要用「函数 $F$」而不是「一句话」，否则会掉进「用未定义的东西定义自己」的坑。
+
+参考：Kunen, Set Theory, I.5
 
 #### 整数 ℤ　`def.int`
 *定义*　整数 $\mathbb{Z}$（由 $\mathbb{N} \times \mathbb{N}$ 构造）
@@ -941,8 +930,45 @@ $$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
 
 参考：Jech, The Axiom of Choice, Ch. 2
 
-### 星团：极大原理
-> 造出存在性证明的万能发动机：佐恩引理、Hausdorff 极大原理、Tukey 引理。
+### 星团：选择原理
+> 造出存在性证明的万能发动机：选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理。五个说法是一个强连通块，永远同层。
+
+#### 选择公理　`ax.choice`
+*公理*　选择公理（Axiom of Choice, AC）
+
+任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：
+
+$$\forall F [ ( \forall X \in F, X \ne \emptyset ) \to \exists f ( f\text{ 是函数} \wedge  \operatorname{dom} f = F \wedge  \forall X \in F, f(X) \in X ) ]$$
+
+另一种常见形式（两两不交形式）：若 $F$ 是两两不交的非空集合族，则存在集合 $C$，使对每个 $X \in F$ 都有 $|C \cap X| = 1$。
+
+选择函数 $f$ 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。
+
+AC 与 ZF 独立：Gödel (1938) 证明 $Con(ZF) \to Con(ZF + AC)$，Cohen (1963) 证明 $Con(ZF) \to Con(ZF + \neg AC)$。
+
+它是本星系里大量命题的枢纽——佐恩引理、良序定理、Hausdorff 极大原理、Tukey 引理都与它等价。
+
+有限个非空集合可以逐个挑选，这正是 AC 只在无穷情形才显出力量的原因。
+
+参考：Jech, The Axiom of Choice；Kunen, Set Theory, I.12
+
+#### 选择函数　`def.choicefn`
+*定义*　选择函数（Choice Function）
+
+设 $F$ 是一个集合族，且 $\emptyset \notin F$。
+
+$f$ 是 $F$ 的**选择函数**，当且仅当
+
+$f$ 是函数，$\operatorname{dom} f = F$；
+$\forall X \in F, f(X) \in X$。
+
+即：$f$ 从 $F$ 的每一个成员里各挑出一个元素。
+
+于是选择公理可以简洁地写成：**每个满足 $\emptyset \notin F$ 的集合族 $F$ 都有选择函数**。
+
+若 $F$ 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。
+
+参考：Jech, The Axiom of Choice
 
 #### 良序定理　`thm.wellordering`
 *定理*　良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）
@@ -1332,8 +1358,8 @@ $V$ 有基；
 ## 星系：分析学（Analysis）
 > 极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。
 
-### 星团：实数与区间
-> 在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限/级数 → 连续 → 导数 → 复数。（ℝ 本身的构造在星团「数系的构造」里。）
+### 星团：实数与极限
+> 在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）
 
 #### 扩充实数 [−∞,+∞]　`def.extended-real`
 *定义*　扩充实数系 $\overline{\mathbb{R}}$（Extended Reals）
@@ -1484,31 +1510,8 @@ $$F'(x_0) := \lim_{h \to 0} \frac{F(x_0 + h) - F(x_0)}{h}$$
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
-#### 复数 ℂ　`def.complex`
-*定义*　复数系 $\mathbb{C}$（Complex Numbers）
-
-**复数系** $\mathbb{C} := \mathbb{R}^2$，配以下运算：
-
-$$(a, b) + (c, d) := (a + c, b + d), \qquad (a, b)(c, d) := (ac - bd, ad + bc)$$
-
-记 $i := (0, 1)$，则每个复数唯一地写成 $z = a + bi$（$a, b \in \mathbb{R}$）。
-
-$\bar{z} := a - bi$ 是**共轭**，$|z| := \sqrt{a^2 + b^2}$ 是**模**；并且
-
-$$|zw| = |z|\,|w|, \qquad z \bar{z} = |z|^2$$
-
-于是每个 $z \ne 0$ 都有逆 $z^{-1} = \bar{z}/|z|^2$：$\mathbb{C}$ 是一个域。
-
-⭐ $\mathbb{C}$ 与 $\mathbb{R}^2$ 的区别只在乘法 —— 而正是这个乘法让 $\mathbb{C}$ 成为**代数闭域**（每个多项式都有根），也让复值函数的积分理论比实值情形简洁：$|f|$ 与 $L^p$ 理论的表述不必再分正负部。
-
-⚠ **$\mathbb{C}$ 是有序域之外的东西**：它上面**没有**与运算相容的全序。若不然，由 $1 = 1^2 > 0$ 得 $-1 < 0$；可是 $i \ne 0$，而有序域里**平方元非负**，$i^2 = -1$ 应当 $\ge 0$ —— 矛盾。
-
-本星图里 $\mathbb{C}$ 主要出现在两处：复值函数的积分（拆实部虚部）、复测度（取值在 $\mathbb{C}$ 里，自动有限）。
-
-参考：Rudin, Real and Complex Analysis, Ch. 1
-
-### 星团：测度的构造
-> 造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。
+### 星团：集合族与 σ-代数
+> 造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。
 
 #### 基本类　`def.fundamental-class`
 *定义*　基本类（Fundamental Class）
@@ -1706,89 +1709,8 @@ $\mathbb{R}$ 上 $\mathfrak{B}_\mathbb{R}$ 也可以由半开区间 $\{ (a, b] :
 
 参考：Folland, Real Analysis, §1.2
 
-#### 积 σ-代数　`def.product-sigma`
-*定义*　积 σ-代数（Product σ-Algebra）
-
-设 $\{ (X_\alpha , \mathcal{M}_\alpha ) \}_\{\alpha \in A\}$ 是一族可测空间，$$X = \prod_{\alpha \in A} X_\alpha$$，投影 $$\pi _\alpha : X \to X_\alpha$$。**积 $\sigma$代数**定义为
-
-$$\otimes _{\alpha \in A} \mathcal{M}_\alpha := \mathcal{M}(\{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{M}_\alpha, \alpha \in A \})$$
-
-即由全体**柱集**生成的 $\sigma$代数。柱集 $\pi _\alpha ^{-1}(E_\alpha )$ 就是「只对第 $\alpha$ 个坐标提要求」的集合。
-
-⚠ 一般**不能**定义成「$\prod E_\alpha$ 的全体生成的 $\sigma$代数」—— 那只在**可数**指标集时等价（见下一条）。
-
-这样定义的原因：投影 $\pi _\alpha$ 应当是可测的，而 $\sigma$代数要对逆像封闭 —— 取最小的那一个就够了。
-
-参考：Folland, Real Analysis, §2.1
-
-#### 积 σ-代数的生成基　`prop.product-sigma-base`
-*命题*　命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变
-
-设每个 $\mathcal{M}_\alpha = \mathcal{M}(\mathcal{E}_\alpha )$（即 $\mathcal{M}_\alpha$ 由 $\mathcal{E}_\alpha$ 生成）。令
-
-$$\mathcal{F} = \{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{E}_\alpha, \alpha \in A \}$$
-
-则
-
-$$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\mathcal{F})$$
-
-意义：算积 $\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\mathcal{M}_\alpha$ 搬进来。
-
-典型用法：$\mathbb{R}$ 上取 $\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\mathfrak{B}_\mathbb{R}$），于是 $\mathfrak{B}_\mathbb{R} ⊗ \mathfrak{B}_\mathbb{R}$ 已经由形如 $(a, b] \times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。
-
-证明是「生成」的通用套路：两边都等于「包含 $\mathcal{F}$ 的最小 $\sigma$代数」，各自验证 $\mathcal{F} \subseteq$ 一边、另一边 $\subseteq \mathcal{F}$。
-
-参考：Folland, Real Analysis, §2.1
-
-#### 可数积的生成集　`prop.product-sigma-generated`
-*命题*　命题：指标集可数时，积 σ-代数由「矩形」生成
-
-若指标集 $A$ **可数**，则
-
-$$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\{ \prod_{\alpha \in A} E_\alpha : E_\alpha \in \mathcal{M}_\alpha \})$$
-
-即：可数积的 $\sigma$代数，恰好是由全体「矩形」生成的 $\sigma$代数。
-
-这条确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，
-
-
-
-$$\prod_{\alpha \in A} E_\alpha = \bigcap_{\alpha \in A} \pi _\alpha^{-1}(E_\alpha)$$
-
-
-
-而柱集本来就已经在 $\sigma$代数里了，矩形自然也就在里面；反过来柱集是矩形（其余坐标取全空间）的特例。
-
-⚠ 该结论对**不可数**的 $A$ **不成立** —— 这就是为什么定义必须用柱集而不是矩形。
-
-参考：Folland, Real Analysis, §2.1
-
-#### 可数积的 Borel 代数　`cor.borel-product`
-*推论*　推论：可数积距离空间的 Borel σ-代数（可分时相等）
-
-设 $X_{1}, X_{2}$ … 是距离空间，$$X = \prod_{j=1}^{\infty} X_j$$ 配以积度量。则
-
-$$\otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} \subseteq \mathfrak{B}_X$$
-
-且当每个 $X_{j}$ **可分**时，等号成立：
-
-$$X_j\text{ 都可分} \implies \otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} = \mathfrak{B}_X$$
-
-$\subseteq$ 的原因很直接：投影 $\pi _{j}$ 连续，所以 $\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\mathfrak{B}_X$ 里。
-
-反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则
-
-
-
-$$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
-
-
-
-是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\mathfrak{B}_\{X_{j}\}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\mathfrak{B}_X \subseteq ⊗\mathfrak{B}_\{X_{j}\}$。
-
-⚠ 可分性不能省：$\mathbb{R}^\mathbb{R}$（不可数积）上，积 $\sigma$代数真包含于 $Borel \sigma$代数。
-
-参考：Folland, Real Analysis, §2.1
+### 星团：测度的构造
+> 造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。
 
 #### 测度　`def.measure`
 *定义*　测度（Measure）
@@ -2113,8 +2035,8 @@ $$\exists E \in \mathcal{M}:\ \mu(E) = 0 \quad \text{且} \quad \forall x \in X 
 
 参考：Rudin, Real and Complex Analysis, Ch. 1
 
-### 星团：积分
-> 造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。
+### 星团：可测函数与收敛
+> 造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。
 
 #### 可测函数　`def.measurable-function`
 *定义*　可测函数（Measurable Function）
@@ -2321,6 +2243,141 @@ $$g = \lim_n \chi_{N^c} \cdot \varphi_n$$
 则 $$g = f$$ 在 $$N^c$$ 上成立，且 $$g$$ 是 $\mathcal{M}$可测的。
 
 参考：Folland, Real Analysis, Prop. 2.12
+
+#### 五种收敛　`def.convergence-modes`
+*定义*　收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹
+
+设 $$f_n, f : X \to \mathbb{C}$$ 可测，$X$ 带测度 $\mu$。
+
+- **一致收敛** $$f_n \rightrightarrows  f$$：$$\forall\varepsilon > 0, \exists N > 0, \forall x \in X, n > N \implies |f_n(x) - f(x)| < \varepsilon$$
+- **几乎处处收敛** $$f_n \to f$$ a.e.：存在零集 $E$ 使 $$f_n(x) \to f(x)$$ 对一切 $$x \in X \setminus E$$ 成立
+- **依测度收敛** $$f_n \to f$$ 依测度：$$\forall\varepsilon > 0, \forall\delta > 0, \exists N, \forall n > N : \mu(\{x : |f_n(x) - f(x)| > \delta\}) < \varepsilon$$
+- **$L^{1}$ 收敛**：$$\int |f_n - f| d\mu \to 0$$
+- **近一致收敛**：$$\forall\varepsilon > 0$$，存在 $E$ 使 $$\mu(E) < \varepsilon$$ 且 $$f_n \rightrightarrows  f$$ 在 $$E^c$$ 上一致
+
+强弱关系（都能画成箭头）：
+
+
+
+$$\text{一致} \implies\text{ 近一致} \implies \text{a.e.}$$
+
+$$\text{一致} \implies\text{ 近一致} \implies\text{ 依测度}$$
+
+$$L^1 \implies\text{ 依测度}$$
+
+
+
+⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。
+
+⚠ **a.e. 收敛与依测度收敛互不包含**：$\text{a.e.} \implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 $\nRightarrow$ a.e.（见反例 iv）。
+
+⚠ $L^{1}$ 收敛 $\nRightarrow$ a.e. 收敛，a.e. 收敛 + 控制函数 $\implies L^{1}$ 收敛（这就是 DCT）。
+
+参考：Folland, Real Analysis, §2.4
+
+#### 四个标准反例　`prop.convergence-counterexamples`
+*命题*　命题：四个标准反例（把各种收敛区分开）
+
+在 $\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。
+
+- **(i)** $$f_n = n^{-1} \chi_{(0, n)}$$：$$f_n \rightrightarrows  0$$ **一致**收敛。
+- **(ii)** $$f_n = \chi_{(n, n+1)}$$：$$f_n \to 0$$ **逐点**（因而 a.e.），但**不一致**（$$\sup_x |f_n| = 1$$），也不 $L^{1}$ 收敛（$$\int f_n = 1 \nrightarrow  0$$）。
+- **(iii)** $$f_n = n \chi_{[0, 1/n]}$$：$$f_n \to 0$$ a.e.（也依测度收敛，因为 $$\mu(\{|f_n| > \delta\}) = 1/n \to 0$$），但**不 $L^{1}$ 收敛**（$$\int f_n = 1$$ 对一切 $n$）。
+- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——
+
+$$f_1 = \chi_{[0,1]}, f_2 = \chi_{[0,1/2]}, f_3 = \chi_{[1/2,1]}, f_4 = \chi_{[0,1/4]}, \cdots$$
+即 $$f_n = \chi_{[j/2^k, (j+1)/2^k]}$$（$$n = 2^k + j$$）：它**依测度**收敛到 0，但对**任何** $$x \in [0,1]$$ 都**不**收敛。
+
+(iii) 是「a.e. 收敛 $\nRightarrow L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
+
+(iv) 是「依测度收敛 $\nRightarrow$ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。
+
+⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 $L^{1}$ 各自独立。
+
+参考：Folland, Real Analysis, §2.4
+
+#### 依测度 Cauchy　`def.cauchy-in-measure`
+*定义*　依测度 Cauchy 序列
+
+可测函数列 $$\{f_n\}$$ 是**依测度 Cauchy 的**，当且仅当
+
+$$\forall\varepsilon > 0, \mu(\{x : |f_n(x) - f_m(x)| \ge \varepsilon\}) \to 0\quad  (m, n \to \infty)$$
+
+即：在测度意义下，下标够大之后各项彼此越来越近。
+
+**依测度 $Cauchy \iff$ 依测度收敛**：两个方向都能证（收敛 $\implies Cauchy$ 由三角不等式；$Cauchy \implies$ 收敛就是下一条定理）。
+
+这是「依测度」这个拓扑的一个好处：它**完备**。相比之下 a.e. 收敛既不强也不完备，$L^{1}$ 收敛则完备（Riesz–Fischer）。
+
+参考：Folland, Real Analysis, §2.4
+
+#### 依测度 Cauchy ⟹ 收敛　`thm.cauchy-in-measure`
+*定理*　定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛
+
+若 $$\{f_n\}$$ 依测度 Cauchy，则存在可测函数 $$f$$ 使
+
+$$f_n \to f\text{ 依测度}, $$
+
+并且存在**子列** $$\{f_{n_j}\}$$ 使
+
+$$f_{n_j} \to f\quad  \text{a.e.}$$
+
+⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。
+
+证明的工具是 Borel–Cantelli 型的推理：造出 $$\sum_k \mu(E_k) < \infty$$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。
+
+这也是 Riesz 定理（a.e. 收敛 $\iff$ 依测度收敛 + 子列）的那一半。
+
+参考：Folland, Real Analysis, Theorem 2.30
+
+#### L¹ 收敛 ⟹ 依测度收敛　`prop.L1-implies-measure`
+*命题*　命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）
+
+若 $$f_n \to f$$ 于 $$L^1$$，则 $$f_n \to f$$ 依测度：
+
+$$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
+
+工具是 **Markov（Chebyshev）不等式**：$$
+\mu(\{|g| \ge \varepsilon\}) \le (1/\varepsilon)\cdot\int |g| d\mu$$
+
+（因为 $$\varepsilon \chi_{\{|g| \ge \varepsilon\}} \le |g|$$，两边积分即可。）取 $$g = f_n - f$$ 就得到结论。
+
+⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 $L^{1}$ 收敛。
+
+参考：Folland, Real Analysis, Prop. 2.29
+
+#### Egorov 定理　`thm.egorov`
+*定理*　Egorov 定理：a.e. 收敛 ⟹ 近一致
+
+设 $$\mu(X) < \infty$$，且 $$f_n \to f$$ a.e.。则 $$f_n \to f$$ **近一致**：
+
+$$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ 且} f_n \rightrightarrows  f\text{ 在} X \setminus E\text{ 上一致}$$
+
+⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。
+
+⚠ **「$$\mu(X) < \infty$$」不能省。** 反例：$$f_n = \chi_{(n, n+1)}$$ 在 $\mathbb{R}$ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 $\sup = 1$，无法一致收敛。
+
+这是「丢掉小集合换取好性质」这一类结论的模板（Lusin 定理也是这个模式）。
+
+参考：Folland, Real Analysis, Theorem 2.33
+
+#### Lusin 定理　`cor.lusin`
+*推论*　Lusin 定理：可测函数几乎处处连续
+
+设 $$f : [a, b] \to \mathbb{C}$$ 是 Lebesgue 可测的。则对任意 $\varepsilon > 0$，存在**紧集** $$E \subseteq [a, b]$$ 使
+
+$$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
+
+⭐ 「可测」这个条件看起来很弱，但 Lusin 说：可测函数差一点就是**连续**函数 —— 只要允许把定义域挖掉一小块。
+
+与 Egorov 的分工：Egorov 说「一列函数」几乎一致收敛，Lusin 说「一个函数」几乎连续。两者都是「丢掉小集合换取正则性」。
+
+⚠ 挖掉的那块必须容许是开集，剩下的必须是**紧**集（在 [a,b] 上紧 $\iff$ 有界闭），不能只是可测集。
+
+参考：Folland, Real Analysis, Theorem 2.34
+
+### 星团：积分
+> 造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。
 
 #### L⁺　`def.lplus`
 *定义*　L⁺：非负可测函数全体
@@ -2671,137 +2728,92 @@ $$F'(t) = \int_X \partial f / \partial t(x, t) d\mu(x)$$
 
 参考：Folland, Real Analysis, Theorem 2.27
 
-#### 五种收敛　`def.convergence-modes`
-*定义*　收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹
+### 星团：乘积测度与 Fubini
+> 造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。
 
-设 $$f_n, f : X \to \mathbb{C}$$ 可测，$X$ 带测度 $\mu$。
+#### 积 σ-代数　`def.product-sigma`
+*定义*　积 σ-代数（Product σ-Algebra）
 
-- **一致收敛** $$f_n \rightrightarrows  f$$：$$\forall\varepsilon > 0, \exists N > 0, \forall x \in X, n > N \implies |f_n(x) - f(x)| < \varepsilon$$
-- **几乎处处收敛** $$f_n \to f$$ a.e.：存在零集 $E$ 使 $$f_n(x) \to f(x)$$ 对一切 $$x \in X \setminus E$$ 成立
-- **依测度收敛** $$f_n \to f$$ 依测度：$$\forall\varepsilon > 0, \forall\delta > 0, \exists N, \forall n > N : \mu(\{x : |f_n(x) - f(x)| > \delta\}) < \varepsilon$$
-- **$L^{1}$ 收敛**：$$\int |f_n - f| d\mu \to 0$$
-- **近一致收敛**：$$\forall\varepsilon > 0$$，存在 $E$ 使 $$\mu(E) < \varepsilon$$ 且 $$f_n \rightrightarrows  f$$ 在 $$E^c$$ 上一致
+设 $\{ (X_\alpha , \mathcal{M}_\alpha ) \}_\{\alpha \in A\}$ 是一族可测空间，$$X = \prod_{\alpha \in A} X_\alpha$$，投影 $$\pi _\alpha : X \to X_\alpha$$。**积 $\sigma$代数**定义为
 
-强弱关系（都能画成箭头）：
+$$\otimes _{\alpha \in A} \mathcal{M}_\alpha := \mathcal{M}(\{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{M}_\alpha, \alpha \in A \})$$
+
+即由全体**柱集**生成的 $\sigma$代数。柱集 $\pi _\alpha ^{-1}(E_\alpha )$ 就是「只对第 $\alpha$ 个坐标提要求」的集合。
+
+⚠ 一般**不能**定义成「$\prod E_\alpha$ 的全体生成的 $\sigma$代数」—— 那只在**可数**指标集时等价（见下一条）。
+
+这样定义的原因：投影 $\pi _\alpha$ 应当是可测的，而 $\sigma$代数要对逆像封闭 —— 取最小的那一个就够了。
+
+参考：Folland, Real Analysis, §2.1
+
+#### 积 σ-代数的生成基　`prop.product-sigma-base`
+*命题*　命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变
+
+设每个 $\mathcal{M}_\alpha = \mathcal{M}(\mathcal{E}_\alpha )$（即 $\mathcal{M}_\alpha$ 由 $\mathcal{E}_\alpha$ 生成）。令
+
+$$\mathcal{F} = \{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{E}_\alpha, \alpha \in A \}$$
+
+则
+
+$$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\mathcal{F})$$
+
+意义：算积 $\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\mathcal{M}_\alpha$ 搬进来。
+
+典型用法：$\mathbb{R}$ 上取 $\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\mathfrak{B}_\mathbb{R}$），于是 $\mathfrak{B}_\mathbb{R} ⊗ \mathfrak{B}_\mathbb{R}$ 已经由形如 $(a, b] \times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。
+
+证明是「生成」的通用套路：两边都等于「包含 $\mathcal{F}$ 的最小 $\sigma$代数」，各自验证 $\mathcal{F} \subseteq$ 一边、另一边 $\subseteq \mathcal{F}$。
+
+参考：Folland, Real Analysis, §2.1
+
+#### 可数积的生成集　`prop.product-sigma-generated`
+*命题*　命题：指标集可数时，积 σ-代数由「矩形」生成
+
+若指标集 $A$ **可数**，则
+
+$$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\{ \prod_{\alpha \in A} E_\alpha : E_\alpha \in \mathcal{M}_\alpha \})$$
+
+即：可数积的 $\sigma$代数，恰好是由全体「矩形」生成的 $\sigma$代数。
+
+这条确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，
 
 
 
-$$\text{一致} \implies\text{ 近一致} \implies \text{a.e.}$$
-
-$$\text{一致} \implies\text{ 近一致} \implies\text{ 依测度}$$
-
-$$L^1 \implies\text{ 依测度}$$
+$$\prod_{\alpha \in A} E_\alpha = \bigcap_{\alpha \in A} \pi _\alpha^{-1}(E_\alpha)$$
 
 
 
-⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。
+而柱集本来就已经在 $\sigma$代数里了，矩形自然也就在里面；反过来柱集是矩形（其余坐标取全空间）的特例。
 
-⚠ **a.e. 收敛与依测度收敛互不包含**：$\text{a.e.} \implies$ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 $\nRightarrow$ a.e.（见反例 iv）。
+⚠ 该结论对**不可数**的 $A$ **不成立** —— 这就是为什么定义必须用柱集而不是矩形。
 
-⚠ $L^{1}$ 收敛 $\nRightarrow$ a.e. 收敛，a.e. 收敛 + 控制函数 $\implies L^{1}$ 收敛（这就是 DCT）。
+参考：Folland, Real Analysis, §2.1
 
-参考：Folland, Real Analysis, §2.4
+#### 可数积的 Borel 代数　`cor.borel-product`
+*推论*　推论：可数积距离空间的 Borel σ-代数（可分时相等）
 
-#### 四个标准反例　`prop.convergence-counterexamples`
-*命题*　命题：四个标准反例（把各种收敛区分开）
+设 $X_{1}, X_{2}$ … 是距离空间，$$X = \prod_{j=1}^{\infty} X_j$$ 配以积度量。则
 
-在 $\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。
+$$\otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} \subseteq \mathfrak{B}_X$$
 
-- **(i)** $$f_n = n^{-1} \chi_{(0, n)}$$：$$f_n \rightrightarrows  0$$ **一致**收敛。
-- **(ii)** $$f_n = \chi_{(n, n+1)}$$：$$f_n \to 0$$ **逐点**（因而 a.e.），但**不一致**（$$\sup_x |f_n| = 1$$），也不 $L^{1}$ 收敛（$$\int f_n = 1 \nrightarrow  0$$）。
-- **(iii)** $$f_n = n \chi_{[0, 1/n]}$$：$$f_n \to 0$$ a.e.（也依测度收敛，因为 $$\mu(\{|f_n| > \delta\}) = 1/n \to 0$$），但**不 $L^{1}$ 收敛**（$$\int f_n = 1$$ 对一切 $n$）。
-- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——
+且当每个 $X_{j}$ **可分**时，等号成立：
 
-$$f_1 = \chi_{[0,1]}, f_2 = \chi_{[0,1/2]}, f_3 = \chi_{[1/2,1]}, f_4 = \chi_{[0,1/4]}, \cdots$$
-即 $$f_n = \chi_{[j/2^k, (j+1)/2^k]}$$（$$n = 2^k + j$$）：它**依测度**收敛到 0，但对**任何** $$x \in [0,1]$$ 都**不**收敛。
+$$X_j\text{ 都可分} \implies \otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} = \mathfrak{B}_X$$
 
-(iii) 是「a.e. 收敛 $\nRightarrow L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
+$\subseteq$ 的原因很直接：投影 $\pi _{j}$ 连续，所以 $\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\mathfrak{B}_X$ 里。
 
-(iv) 是「依测度收敛 $\nRightarrow$ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。
+反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则
 
-⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 $L^{1}$ 各自独立。
 
-参考：Folland, Real Analysis, §2.4
 
-#### 依测度 Cauchy　`def.cauchy-in-measure`
-*定义*　依测度 Cauchy 序列
+$$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
 
-可测函数列 $$\{f_n\}$$ 是**依测度 Cauchy 的**，当且仅当
 
-$$\forall\varepsilon > 0, \mu(\{x : |f_n(x) - f_m(x)| \ge \varepsilon\}) \to 0\quad  (m, n \to \infty)$$
 
-即：在测度意义下，下标够大之后各项彼此越来越近。
+是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\mathfrak{B}_\{X_{j}\}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\mathfrak{B}_X \subseteq ⊗\mathfrak{B}_\{X_{j}\}$。
 
-**依测度 $Cauchy \iff$ 依测度收敛**：两个方向都能证（收敛 $\implies Cauchy$ 由三角不等式；$Cauchy \implies$ 收敛就是下一条定理）。
+⚠ 可分性不能省：$\mathbb{R}^\mathbb{R}$（不可数积）上，积 $\sigma$代数真包含于 $Borel \sigma$代数。
 
-这是「依测度」这个拓扑的一个好处：它**完备**。相比之下 a.e. 收敛既不强也不完备，$L^{1}$ 收敛则完备（Riesz–Fischer）。
-
-参考：Folland, Real Analysis, §2.4
-
-#### 依测度 Cauchy ⟹ 收敛　`thm.cauchy-in-measure`
-*定理*　定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛
-
-若 $$\{f_n\}$$ 依测度 Cauchy，则存在可测函数 $$f$$ 使
-
-$$f_n \to f\text{ 依测度}, $$
-
-并且存在**子列** $$\{f_{n_j}\}$$ 使
-
-$$f_{n_j} \to f\quad  \text{a.e.}$$
-
-⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。
-
-证明的工具是 Borel–Cantelli 型的推理：造出 $$\sum_k \mu(E_k) < \infty$$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。
-
-这也是 Riesz 定理（a.e. 收敛 $\iff$ 依测度收敛 + 子列）的那一半。
-
-参考：Folland, Real Analysis, Theorem 2.30
-
-#### L¹ 收敛 ⟹ 依测度收敛　`prop.L1-implies-measure`
-*命题*　命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）
-
-若 $$f_n \to f$$ 于 $$L^1$$，则 $$f_n \to f$$ 依测度：
-
-$$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
-
-工具是 **Markov（Chebyshev）不等式**：$$
-\mu(\{|g| \ge \varepsilon\}) \le (1/\varepsilon)\cdot\int |g| d\mu$$
-
-（因为 $$\varepsilon \chi_{\{|g| \ge \varepsilon\}} \le |g|$$，两边积分即可。）取 $$g = f_n - f$$ 就得到结论。
-
-⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 $L^{1}$ 收敛。
-
-参考：Folland, Real Analysis, Prop. 2.29
-
-#### Egorov 定理　`thm.egorov`
-*定理*　Egorov 定理：a.e. 收敛 ⟹ 近一致
-
-设 $$\mu(X) < \infty$$，且 $$f_n \to f$$ a.e.。则 $$f_n \to f$$ **近一致**：
-
-$$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ 且} f_n \rightrightarrows  f\text{ 在} X \setminus E\text{ 上一致}$$
-
-⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。
-
-⚠ **「$$\mu(X) < \infty$$」不能省。** 反例：$$f_n = \chi_{(n, n+1)}$$ 在 $\mathbb{R}$ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 $\sup = 1$，无法一致收敛。
-
-这是「丢掉小集合换取好性质」这一类结论的模板（Lusin 定理也是这个模式）。
-
-参考：Folland, Real Analysis, Theorem 2.33
-
-#### Lusin 定理　`cor.lusin`
-*推论*　Lusin 定理：可测函数几乎处处连续
-
-设 $$f : [a, b] \to \mathbb{C}$$ 是 Lebesgue 可测的。则对任意 $\varepsilon > 0$，存在**紧集** $$E \subseteq [a, b]$$ 使
-
-$$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
-
-⭐ 「可测」这个条件看起来很弱，但 Lusin 说：可测函数差一点就是**连续**函数 —— 只要允许把定义域挖掉一小块。
-
-与 Egorov 的分工：Egorov 说「一列函数」几乎一致收敛，Lusin 说「一个函数」几乎连续。两者都是「丢掉小集合换取正则性」。
-
-⚠ 挖掉的那块必须容许是开集，剩下的必须是**紧**集（在 [a,b] 上紧 $\iff$ 有界闭），不能只是可测集。
-
-参考：Folland, Real Analysis, Theorem 2.34
+参考：Folland, Real Analysis, §2.1
 
 #### 乘积测度　`def.product-measure`
 *定义*　乘积测度（Product Measure μ × ν）
@@ -3352,7 +3364,7 @@ $$|f_1| \frac{d\mu_1}{d\rho} = |f_2| \frac{d\mu_2}{d\rho}\quad  \rho-\text{a.e.}
 
 参考：Folland, Real Analysis, §3.3；Rudin, Real and Complex Analysis, Ch. 6
 
-### 星团：ℝⁿ 上的微分
+### 星团：微分定理
 > 造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。
 
 #### L¹(ν) 与全变差　`prop.L1-signed`
@@ -7852,33 +7864,44 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 
 ## 星团级连接（整块对整块）
 
-- **集合的构造 ↔ ZFC 公理系统**　10 条节点级连线
-- **极大原理 ↔ 关系与选择**　4 条节点级连线
-- **积分 ↔ 测度的构造**　26 条节点级连线
+- **集合的构造 ↔ ZFC 公理系统**　9 条节点级连线
+- **选择原理 ↔ 基数与等势**　2 条节点级连线
+- **乘积测度与 Fubini ↔ 集合族与 σ-代数**　6 条节点级连线
+- **测度的构造 ↔ 集合族与 σ-代数**　5 条节点级连线
+- **可测函数与收敛 ↔ 集合族与 σ-代数**　2 条节点级连线
+- **可测函数与收敛 ↔ 测度的构造**　6 条节点级连线
+- **积分 ↔ 可测函数与收敛**　8 条节点级连线
+- **积分 ↔ 测度的构造**　8 条节点级连线
+- **测度的构造 ↔ 乘积测度与 Fubini**　6 条节点级连线
+- **积分 ↔ 乘积测度与 Fubini**　2 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
-- **测度的构造 ↔ 符号测度与分解**　10 条节点级连线
-- **ℝⁿ 上的微分 ↔ 积分**　4 条节点级连线
-- **ℝⁿ 上的微分 ↔ 符号测度与分解**　2 条节点级连线
+- **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
+- **微分定理 ↔ 积分**　3 条节点级连线
+- **微分定理 ↔ 符号测度与分解**　2 条节点级连线
 - **有界变差与绝对连续 ↔ 符号测度与分解**　5 条节点级连线
-- **有界变差与绝对连续 ↔ 测度的构造**　2 条节点级连线
 - **有界变差与绝对连续 ↔ 积分**　2 条节点级连线
-- **积分 ↔ L^p 空间**　6 条节点级连线
-- **实数与区间 ↔ 数系的构造**　5 条节点级连线
-- **关系与选择 ↔ 集合的构造**　5 条节点级连线
-- **测度的构造 ↔ 实数与区间**　4 条节点级连线
-- **积分 ↔ 实数与区间**　4 条节点级连线
-- **有界变差与绝对连续 ↔ 实数与区间**　3 条节点级连线
-- **L^p 空间 ↔ 实数与区间**　2 条节点级连线
-- **测度的构造 ↔ 集合的构造**　7 条节点级连线
+- **积分 ↔ L^p 空间**　3 条节点级连线
+- **实数与极限 ↔ 数系的构造**　4 条节点级连线
+- **集合的构造 ↔ 关系与函数**　3 条节点级连线
+- **基数与等势 ↔ 关系与函数**　4 条节点级连线
+- **基数与等势 ↔ 数系的构造**　4 条节点级连线
+- **积分 ↔ 实数与极限**　2 条节点级连线
+- **测度的构造 ↔ 实数与极限**　3 条节点级连线
+- **有界变差与绝对连续 ↔ 实数与极限**　3 条节点级连线
+- **L^p 空间 ↔ 数系的构造**　2 条节点级连线
+- **基数与等势 ↔ 集合的构造**　2 条节点级连线
+- **集合族与 σ-代数 ↔ 集合的构造**　4 条节点级连线
+- **测度的构造 ↔ 集合的构造**　3 条节点级连线
 - **集合的构造 ↔ 拓扑空间**　3 条节点级连线
 - **拓扑空间 ↔ 度量空间**　3 条节点级连线
-- **数系的构造 ↔ ZFC 公理系统**　2 条节点级连线
-- **关系与选择 ↔ 数系的构造**　8 条节点级连线
+- **数系的构造 ↔ 关系与函数**　5 条节点级连线
 - **代数结构 ↔ 数系的构造**　6 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
-- **极大原理 ↔ 序结构**　7 条节点级连线
-- **序结构 ↔ 关系与选择**　2 条节点级连线
-- **ℝⁿ 上的微分 ↔ 度量空间**　2 条节点级连线
-- **ℝⁿ 上的微分 ↔ 测度的构造**　4 条节点级连线
+- **选择原理 ↔ 序结构**　7 条节点级连线
+- **微分定理 ↔ 度量空间**　2 条节点级连线
+- **微分定理 ↔ 测度的构造**　2 条节点级连线
+- **L^p 空间 ↔ 可测函数与收敛**　3 条节点级连线
 - **L^p 空间 ↔ 测度的构造**　4 条节点级连线
 - **向量空间的基 ↔ 序结构**　2 条节点级连线
+- **微分定理 ↔ 集合族与 σ-代数**　2 条节点级连线
+- **集合族与 σ-代数 ↔ 符号测度与分解**　2 条节点级连线

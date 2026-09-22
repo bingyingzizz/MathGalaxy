@@ -40,7 +40,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 等势 */
     {
       id: 'def.equinumerous',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'definition',
       label: '等势',
       title: '等势（Equinumerous）',
@@ -60,7 +60,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 基数 */
     {
       id: 'def.cardinal',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'definition',
       label: '基数 |A|',
       title: '基数与基数的比较（Cardinality）',
@@ -84,7 +84,7 @@ window.MG = window.MG || {};
     /* --------------------------------------------------- Cantor 定理 */
     {
       id: 'thm.cantor',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Cantor 定理',
       title: 'Cantor 定理：$|A| < |\\mathcal{P}(A)|$',
@@ -104,7 +104,7 @@ window.MG = window.MG || {};
     /* --------------------------------------------- Schröder–Bernstein */
     {
       id: 'thm.schroder-bernstein',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Schröder–Bernstein 定理',
       title: 'Schröder–Bernstein 定理',
@@ -122,7 +122,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 基数可比定理 */
     {
       id: 'thm.cardinal-comparable',
-      cluster: 'set.choice',
+      cluster: 'set.cardinal',
       type: 'theorem',
       label: '基数可比定理',
       title: '基数可比定理（需要选择公理）',

@@ -61,7 +61,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------------- 关系 */
     {
       id: 'def.rel',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '关系',
       title: '关系（Relation）',
@@ -83,7 +83,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------------------- 函数 */
     {
       id: 'def.function',
-      cluster: 'set.choice',
+      cluster: 'set.rel',
       type: 'definition',
       label: '函数',
       title: '函数（Function）',
@@ -105,7 +105,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 选择函数 */
     {
       id: 'def.choicefn',
-      cluster: 'set.choice',
+      cluster: 'order.choice',
       type: 'definition',
       label: '选择函数',
       title: '选择函数（Choice Function）',
@@ -170,7 +170,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 自然数集 */
     {
       id: 'thm.omega',
-      cluster: 'set.zfc',
+      cluster: 'set.numbers',
       type: 'theorem',
       label: '自然数集存在',
       title: '自然数集 ω 存在',

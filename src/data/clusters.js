@@ -7,6 +7,11 @@
        它内部的关系再密也无所谓 —— 那是它的私事。
        例：测度论整套构造只为了做出 Lebesgue 积分；局部化整套只为了做出 W⁻¹C。
 
+     ★⛔ 星团**不按课程 / 讲义 / 笔记来源分**。
+       同一个东西几门课都讲 → 它只属于「它在数学上属于的那个装置」。
+       按来源分会出现「积分这个团里混进可测函数和乘积测度」这种事，
+       那样星团就不能回答「这是干什么用的」，整张图就没意义了。
+
      ★ 星团是「对外连接的单位」。
        跨星团的连线是整块对整块的（引擎会自动把节点级连线聚合成星团级粗线），
        你不需要、也不应该去逐点连。
@@ -16,11 +21,21 @@
        ② 内部几乎不和外面打交道，对外只需要一两个入口；
        ③ 你能用一句话说清它「造出了什么」。
 
+     ★ 尺度：星团里不要塞 40 个点以上。一个团跨十几个层号，多半是两个装置
+       被糊在一起了 —— 拆开。（反例：「积分」曾经是 45 个点、跨 18 层，
+       其实里面混着可测函数、乘积测度、收敛类型三套东西。）
+
    字段：
      id       全局唯一，建议 <星系id>.<名字>
      name     显示名（放大到中等缩放时出现在星团中央）
      parent   所属星系 id（必须是 regions.js 里有的）
      color    可选；不写就继承星系颜色
+     hub      **这个星团「要造出来的那个东西」的节点 id**。
+              它是这个装置的中心天体：画亮核、定中心、分尺度展开都靠它。
+              判据：这个装置是为了做出什么而存在的？那个东西就是 hub。
+              （不是「层号最小的那个」—— 那是入口，不是中心。例：积分的 hub 是
+              「可积 / L¹」，不是「简单函数的积分」。）
+              不写 = 这个团还没定中心，引擎把它画成散着的点。
      desc     一句话说明「它造出了什么」
 
    节点侧：在 node 上写 cluster: '<星团 id>' 即归属；不写就直属于星系。
@@ -34,25 +49,36 @@ MG.clusters = [
     id: 'set.zfc',
     name: 'ZFC 公理系统',
     parent: 'set-theory',
+    hub: 'ax.ext',
     desc: '造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。'
   },
   {
     id: 'set.construct',
     name: '集合的构造',
     parent: 'set-theory',
-    desc: '造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。'
+    hub: 'def.subset',
+    desc: '造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。'
   },
   {
-    id: 'set.choice',
-    name: '关系与选择',
+    id: 'set.rel',
+    name: '关系与函数',
     parent: 'set-theory',
-    desc: '造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。'
+    hub: 'def.function',
+    desc: '造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。'
+  },
+  {
+    id: 'set.cardinal',
+    name: '基数与等势',
+    parent: 'set-theory',
+    hub: 'def.cardinal',
+    desc: '造出「集合有多大」这把尺子：等势 → 基数 → 可数与不可数 → Cantor 定理 → 基数可比。'
   },
   {
     id: 'set.numbers',
     name: '数系的构造',
     parent: 'set-theory',
-    desc: '造出数本身：ℕ → ℤ → ℚ → ℝ，每一步都是同一招 —— 把已有对象按等价关系粘成等价类；最后把 ℚ 按 Cauchy 列**完备化**成 ℝ。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。'
+    hub: 'def.real',
+    desc: '造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。'
   },
 
   /* ------------------------------------------------ 星系：序理论 */
@@ -60,13 +86,15 @@ MG.clusters = [
     id: 'order.structure',
     name: '序结构',
     parent: 'order-theory',
+    hub: 'def.poset',
     desc: '造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。'
   },
   {
-    id: 'order.maximal',
-    name: '极大原理',
+    id: 'order.choice',
+    name: '选择原理',
     parent: 'order-theory',
-    desc: '造出存在性证明的万能发动机：佐恩引理、Hausdorff 极大原理、Tukey 引理。'
+    hub: 'ax.choice',
+    desc: '造出存在性证明的万能发动机：选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理。五个说法是一个强连通块，永远同层。'
   },
 
   /* ------------------------------------------------ 星系：抽象代数 */
@@ -74,12 +102,14 @@ MG.clusters = [
     id: 'algebra.structures',
     name: '代数结构',
     parent: 'algebra',
+    hub: 'def.field',
     desc: '造出代数语言本身：**域** = 集合 + 两个运算 + 公理，**有序域** = 域 + 与运算相容的全序。ℚ 与 ℝ 都是实例。（代数学的笔记进来后这一团扩容：群 / 环 / 模。）'
   },
   {
     id: 'algebra.vectorspace',
     name: '向量空间的基',
     parent: 'algebra',
+    hub: 'def.vs',
     desc: '造出线性代数的地基：每个向量空间都有基。'
   },
 
@@ -88,56 +118,86 @@ MG.clusters = [
     id: 'topology.general',
     name: '拓扑空间',
     parent: 'topology',
+    hub: 'def.topology',
     desc: '造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。'
   },
   {
     id: 'topology.metric',
     name: '度量空间',
     parent: 'topology',
+    hub: 'def.metric-space',
     desc: '造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。'
   },
 
   /* ------------------------------------------------ 星系：分析学 */
   {
     id: 'analysis.real',
-    name: '实数与区间',
+    name: '实数与极限',
     parent: 'analysis',
-    desc: '在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限/级数 → 连续 → 导数 → 复数。（ℝ 本身的构造在星团「数系的构造」里。）'
+    hub: 'def.sup',
+    desc: '在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）'
+  },
+  {
+    id: 'analysis.setclass',
+    name: '集合族与 σ-代数',
+    parent: 'analysis',
+    hub: 'def.sigma-algebra',
+    desc: '造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。'
   },
   {
     id: 'analysis.measure',
     name: '测度的构造',
     parent: 'analysis',
-    desc: '造出「测度」这个对象本身：σ-代数 → 预测度 → 外测度 → Carathéodory 扩张 → Lebesgue–Stieltjes 测度。'
+    hub: 'def.measure',
+    desc: '造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。'
+  },
+  {
+    id: 'analysis.measurable',
+    name: '可测函数与收敛',
+    parent: 'analysis',
+    hub: 'def.measurable-function',
+    desc: '造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。'
   },
   {
     id: 'analysis.integral',
     name: '积分',
     parent: 'analysis',
-    desc: '造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。'
+    hub: 'def.integrable',
+    desc: '造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。'
+  },
+  {
+    id: 'analysis.product',
+    name: '乘积测度与 Fubini',
+    parent: 'analysis',
+    hub: 'def.product-measure',
+    desc: '造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。'
   },
   {
     id: 'analysis.signed',
     name: '符号测度与分解',
     parent: 'analysis',
+    hub: 'def.signed-measure',
     desc: '造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。'
   },
   {
     id: 'analysis.differentiation',
-    name: 'ℝⁿ 上的微分',
+    name: '微分定理',
     parent: 'analysis',
+    hub: 'def.maximal-function',
     desc: '造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。'
   },
   {
     id: 'analysis.bv',
     name: '有界变差与绝对连续',
     parent: 'analysis',
+    hub: 'def.bounded-variation',
     desc: '造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。'
   },
   {
     id: 'analysis.lp',
     name: 'L^p 空间',
     parent: 'analysis',
+    hub: 'def.lp-norm',
     desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
   }
 

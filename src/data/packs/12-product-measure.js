@@ -18,7 +18,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.product-measure',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'definition',
       label: '乘积测度',
       title: '乘积测度（Product Measure μ × ν）',
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.section',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'definition',
       label: '截口',
       title: '截口（Section）Eₓ 与 Eʸ',
@@ -82,7 +82,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.section-measurable',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '截口可测',
       title: '命题：可测集的截口可测，可测函数的截口可测',
@@ -111,7 +111,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.product-measure-sections',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'theorem',
       label: '乘积测度由截口给出',
       title: '定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)',
@@ -144,7 +144,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.fubini-tonelli',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'theorem',
       label: 'Fubini–Tonelli',
       title: 'Fubini–Tonelli 定理（重积分可交换次序）',
@@ -178,7 +178,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.fubini-complete',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'theorem',
       label: '完备情形的 F–T',
       title: '定理：完备化的乘积测度上，Fubini–Tonelli 仍然成立',
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.product-incomplete',
-      cluster: 'analysis.integral',
+      cluster: 'analysis.product',
       type: 'proposition',
       label: '乘积测度通常不完备',
       title: '注记：μ、ν 完备时，μ × ν 常常不完备',
