@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T06:13:18.962Z",
+  "generated": "2026-09-22T06:17:17.362Z",
   "counts": {
    "regions": 6,
    "clusters": 9,
-   "nodes": 98,
-   "edges": 116,
-   "strong": 112,
+   "nodes": 113,
+   "edges": 143,
+   "strong": 139,
    "weak": 4
   },
   "readingGuide": {
@@ -73,7 +73,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 60
+   "nodeCount": 75
   }
  ],
  "clusters": [
@@ -221,7 +221,7 @@
    "name": "积分",
    "parent": "analysis",
    "desc": "造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。",
-   "nodeCount": 31,
+   "nodeCount": 46,
    "nodes": [
     "def.measurable-function",
     "prop.measurable-criterion",
@@ -253,7 +253,22 @@
     "thm.dct",
     "thm.termwise-L1",
     "thm.approximation-L1",
-    "thm.differentiate-under-integral"
+    "thm.differentiate-under-integral",
+    "def.convergence-modes",
+    "prop.convergence-counterexamples",
+    "def.cauchy-in-measure",
+    "thm.cauchy-in-measure",
+    "prop.L1-implies-measure",
+    "thm.egorov",
+    "cor.lusin",
+    "def.product-measure",
+    "def.section",
+    "prop.section-measurable",
+    "lem.monotone-class-lemma",
+    "thm.product-measure-sections",
+    "thm.fubini-tonelli",
+    "thm.fubini-complete",
+    "prop.product-incomplete"
    ]
   }
  ],
@@ -1930,7 +1945,7 @@
     "积分",
     "简单函数"
    ],
-   "statement": "设 $$φ ∈ L⁺$$ 是简单函数，写成标准形式\n\n$$φ = ∑_{j=1}^{n} a_j χ_{E_j}，　a_j ≥ 0，E_j ∈ ℳ 两两不交$$\n\n则定义\n\n$$∫ φ dμ := ∑_{j=1}^{n} a_j μ(E_j)$$",
+   "statement": "设 $$φ ∈ L⁺$$ 是简单函数，写成标准形式\n\n$$φ = ∑_{j=1}^{n} aⱼ χ_{Eⱼ}，　aⱼ ≥ 0，Eⱼ ∈ ℳ 两两不交$$\n\n则定义\n\n$$∫ φ dμ := ∑_{j=1}^{n} aⱼ μ(Eⱼ)$$",
    "notes": "这就是「面积 = 各层高度 × 各层测度」—— 完全照着 Riemann 和的样子写，只是把区间换成了可测集。\n\n要检查**良定义**：同一个 φ 可以写成不同的标准形式（比如把某个 Eⱼ 再拆开），但由 μ 的有限可加性，结果一样。\n\n约定 $$0 · ∞ = 0$$：这一步很关键 —— 它让「在无穷测度集上取 0 的函数」积分为 0，符合直觉。",
    "refs": [
     "Folland, Real Analysis, §2.2"
@@ -1953,7 +1968,7 @@
     "单调"
    ],
    "statement": "设 $$φ, ψ$$ 是简单函数。\n\n- **(a)** $$c > 0 ⟹ ∫ cφ = c∫ φ$$\n- **(b)** $$∫ (φ + ψ) = ∫ φ + ∫ ψ$$\n- **(c)** $$φ ≤ ψ ⟹ ∫ φ ≤ ∫ ψ$$\n- **(d)** $$A ↦ ∫_A φ dμ$$ 是 ℳ 上的**测度**。",
-   "notes": "(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 A）全部免费。\n\n\n\n⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$lim_n ∫_{E_n} φ = ∫ φ$$，用的就是「A ↦ ∫_A φ 是测度」加上测度的下连续性（$$E_n ↑ X$$）。\n\n(a) 里 c > 0 而不是 c ≥ 0：因为约定 0·∞ = 0，c = 0 时左边也自动成立，写成 c > 0 只是为了不啰嗦。",
+   "notes": "(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 A）全部免费。\n\n\n\n⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$limₙ ∫_{Eₙ} φ = ∫ φ$$，用的就是「A ↦ ∫_A φ 是测度」加上测度的下连续性（$$Eₙ ↑ X$$）。\n\n(a) 里 c > 0 而不是 c ≥ 0：因为约定 0·∞ = 0，c = 0 时左边也自动成立，写成 c > 0 只是为了不啰嗦。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.13"
    ]
@@ -1994,7 +2009,7 @@
     "MCT",
     "收敛"
    ],
-   "statement": "设 $${f_n} ⊆ L⁺$$ 满足\n\n$$f_1 ≤ f_2 ≤ ⋯，　f_n ↑ f 逐点，$$\n\n则\n\n$$∫ f = lim_{n→∞} ∫ f_n$$",
+   "statement": "设 $${fₙ} ⊆ L⁺$$ 满足\n\n$$f₁ ≤ f₂ ≤ ⋯，　fₙ ↑ f 逐点，$$\n\n则\n\n$$∫ f = lim_{n→∞} ∫ fₙ$$",
    "notes": "⭐ 这是整个 Lebesgue 积分理论的**发动机**：后面的逐项积分、Fatou、DCT 全都是它的推论。\n\n对比 Riemann 积分：那里「积分与极限交换」需要一致收敛这样强的条件；这里只要**单调**就够了 —— 这就是 Lebesgue 积分的全部好处。\n\n⚠ 两者都可能是 +∞，等式在扩充意义下理解。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.14"
@@ -2015,8 +2030,8 @@
     "逐项积分",
     "级数"
    ],
-   "statement": "设 $${f_n} ⊆ L⁺$$，则\n\n$$∫ ∑_{n=1}^{∞} f_n = ∑_{n=1}^{∞} ∫ f_n$$",
-   "notes": "（现在 $f_n ≥ 0$，所以两边都可能是 +∞；结论等价于：不可能出现「逐项积分发散而整体积分有限」的怪事。）\n\n用法上这就是**无条件地交换 ∫ 和 ∑**，不需要控制函数 —— 代价是要求非负。有正有负时必须换 DCT。",
+   "statement": "设 $${fₙ} ⊆ L⁺$$，则\n\n$$∫ ∑_{n=1}^{∞} fₙ = ∑_{n=1}^{∞} ∫ fₙ$$",
+   "notes": "（现在 $fₙ ≥ 0$，所以两边都可能是 +∞；结论等价于：不可能出现「逐项积分发散而整体积分有限」的怪事。）\n\n用法上这就是**无条件地交换 ∫ 和 ∑**，不需要控制函数 —— 代价是要求非负。有正有负时必须换 DCT。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.15"
    ]
@@ -2037,7 +2052,7 @@
     "几乎处处"
    ],
    "statement": "设 $$f ∈ L⁺$$。则\n\n$$∫ f dμ = 0 ⟺ f = 0 μ-a.e.$$",
-   "notes": "(⟸) 只要 f 在零集外为零，下确界里的每个简单函数 φ ≤ f 也几乎处处为零，从而 ∫φ = 0。\n\n(⟹) 记 $$A_n = {f > 1/n}$$，则 $$(1/n)·μ(Aₙ) ≤ ∫ f = 0$$，故 μ(Aₙ) = 0；而 $${f > 0} = ⋃_n A_n$$ 是零测的。\n\n⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 L¹ 里「f = g」按 a.e. 理解的原因。",
+   "notes": "(⟸) 只要 f 在零集外为零，下确界里的每个简单函数 φ ≤ f 也几乎处处为零，从而 ∫φ = 0。\n\n(⟹) 记 $$Aₙ = {f > 1/n}$$，则 $$(1/n)·μ(Aₙ) ≤ ∫ f = 0$$，故 μ(Aₙ) = 0；而 $${f > 0} = ⋃ₙ Aₙ$$ 是零测的。\n\n⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 L¹ 里「f = g」按 a.e. 理解的原因。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.16"
    ]
@@ -2057,7 +2072,7 @@
     "MCT",
     "几乎处处"
    ],
-   "statement": "设 $${f_n} ⊆ L⁺$$，$$f ∈ L⁺$$。若对**几乎处处的** x 有\n\n$$f_n(x) ↑ f(x)，$$\n\n则\n\n$$∫ f = lim_{n→∞} ∫ f_n$$",
+   "statement": "设 $${fₙ} ⊆ L⁺$$，$$f ∈ L⁺$$。若对**几乎处处的** x 有\n\n$$fₙ(x) ↑ f(x)，$$\n\n则\n\n$$∫ f = lim_{n→∞} ∫ fₙ$$",
    "notes": "把例外集 N（μ(N) = 0）上的值全部改掉不影响任何一边的积分：左边用「积分为零 ⟺ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。",
    "refs": []
   },
@@ -2076,8 +2091,8 @@
     "Fatou",
     "liminf"
    ],
-   "statement": "设 $${f_n} ⊆ L⁺$$，则\n\n$$∫ lim inf_{n→∞} f_n ≤ lim inf_{n→∞} ∫ f_n$$",
-   "notes": "⚠ 注意不等号方向：**下面的**极限在积分外面，得到的**不大于**积分的下极限。也就是说「取极限」会让积分**变小**，不会变大。\n\n这是 MCT 去掉单调性后剩下的东西 —— 单调性一旦丢掉，等号就退化成不等式。\n\n反向的例子：$$f_n = χ_{[n, n+1]}$$（在 ℝ 上），则每个 ∫fₙ = 1 但 ∫liminf fₙ = 0。",
+   "statement": "设 $${fₙ} ⊆ L⁺$$，则\n\n$$∫ lim inf_{n→∞} fₙ ≤ lim inf_{n→∞} ∫ fₙ$$",
+   "notes": "⚠ 注意不等号方向：**下面的**极限在积分外面，得到的**不大于**积分的下极限。也就是说「取极限」会让积分**变小**，不会变大。\n\n这是 MCT 去掉单调性后剩下的东西 —— 单调性一旦丢掉，等号就退化成不等式。\n\n反向的例子：$$fₙ = χ_{[n, n+1]}$$（在 ℝ 上），则每个 ∫fₙ = 1 但 ∫liminf fₙ = 0。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.18"
    ]
@@ -2097,8 +2112,8 @@
     "Fatou",
     "几乎处处"
    ],
-   "statement": "设 $${f_n} ⊆ L⁺$$，$$f ∈ L⁺$$，且 $$f_n → f$$ a.e.。则\n\n$$∫ f ≤ lim inf_{n→∞} ∫ f_n$$",
-   "notes": "a.e. 收敛时 $$lim inf f_n = f$$，直接套 Fatou 引理即可。",
+   "statement": "设 $${fₙ} ⊆ L⁺$$，$$f ∈ L⁺$$，且 $$fₙ → f$$ a.e.。则\n\n$$∫ f ≤ lim inf_{n→∞} ∫ fₙ$$",
+   "notes": "a.e. 收敛时 $$lim inf fₙ = f$$，直接套 Fatou 引理即可。",
    "refs": []
   },
   {
@@ -2117,7 +2132,7 @@
     "零集"
    ],
    "statement": "设 $$f ∈ L⁺$$ 且 $$∫ f < ∞$$。则\n\n- $${x : f(x) = ∞}$$ 是零集；\n- $${x : f(x) > 0}$$ 是 **σ-有限**的（即它是可数个有限测度集之并）。",
-   "notes": "第一条：若 $$μ({f = ∞}) > 0$$，则对每个 n 有 $$∫f ≥ n·μ({f=∞})$$，让 n → ∞ 得 ∫f = ∞。\n\n第二条：$${f > 0} = ⋃_n {f > 1/n}$$，而 $$μ({f > 1/n}) ≤ n∫f < ∞$$ —— 所以是**可数**个有限测度集之并。\n\n⭐ 这条解释了为什么「L¹ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 σ-有限假设。",
+   "notes": "第一条：若 $$μ({f = ∞}) > 0$$，则对每个 n 有 $$∫f ≥ n·μ({f=∞})$$，让 n → ∞ 得 ∫f = ∞。\n\n第二条：$${f > 0} = ⋃ₙ {f > 1/n}$$，而 $$μ({f > 1/n}) ≤ n∫f < ∞$$ —— 所以是**可数**个有限测度集之并。\n\n⭐ 这条解释了为什么「L¹ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 σ-有限假设。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.20"
    ]
@@ -2137,7 +2152,7 @@
     "积分",
     "复值"
    ],
-   "statement": "设 $$f : X → ℝ̄$$ 可测，记正部与负部\n\n$$f^+ = max(f, 0)，　f^- = max(-f, 0)$$\n\n（两者都属于 L⁺，且 $$f = f^+ − f^-$$、$$|f| = f^+ + f^-$$。）若 $$∫f^+$$ 与 $$∫f^-$$ 中**至少一个有限**，定义\n\n$$∫ f := ∫ f^+ − ∫ f^-$$\n\n对复值函数，拆实部虚部：$$∫ f := ∫ Re f + i ∫ Im f$$（要求两个积分都有意义）。",
+   "statement": "设 $$f : X → ℝ̄$$ 可测，记正部与负部\n\n$$f⁺ = max(f, 0)，　f⁻ = max(-f, 0)$$\n\n（两者都属于 L⁺，且 $$f = f⁺ − f⁻$$、$$|f| = f⁺ + f⁻$$。）若 $$∫f⁺$$ 与 $$∫f⁻$$ 中**至少一个有限**，定义\n\n$$∫ f := ∫ f⁺ − ∫ f⁻$$\n\n对复值函数，拆实部虚部：$$∫ f := ∫ Re f + i ∫ Im f$$（要求两个积分都有意义）。",
    "notes": "⚠ 「至少一个有限」是为了避免 ∞ − ∞：那是不定式，必须排除。\n\n若两个都有限，就说 f **可积**（见下一条）。\n\n对复值函数，$$Re f$$ 与 $$Im f$$ 可积 ⟺ f 可积，因为 $$|Re f|, |Im f| ≤ |f| ≤ |Re f| + |Im f|$$。",
    "refs": [
     "Folland, Real Analysis, §2.3"
@@ -2158,7 +2173,7 @@
     "L¹",
     "可积"
    ],
-   "statement": "实值可测 $$f$$ **可积**，当且仅当 $$∫f^+ < ∞$$ 且 $$∫f^- < ∞$$。等价地：\n\n$$f 可积 ⟺ ∫ |f| dμ < ∞$$\n\n复值可测 $$f$$ 可积，当且仅当 $$∫ |f| dμ < ∞$$。可积函数全体记作\n\n$$L¹(μ) = L¹(X, ℳ, μ) = L¹(X, μ)$$",
+   "statement": "实值可测 $$f$$ **可积**，当且仅当 $$∫f⁺ < ∞$$ 且 $$∫f⁻ < ∞$$。等价地：\n\n$$f 可积 ⟺ ∫ |f| dμ < ∞$$\n\n复值可测 $$f$$ 可积，当且仅当 $$∫ |f| dμ < ∞$$。可积函数全体记作\n\n$$L¹(μ) = L¹(X, ℳ, μ) = L¹(X, μ)$$",
    "notes": "⭐ **可积 ⟺ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 |f| ∈ L⁺，一切非负情形的定理都能直接套用。\n\n（对比 Riemann 反常积分：那里 $$∫f$$ 收敛而 $$∫|f|$$ 发散是可能的，叫条件收敛。）\n\n⚠ 严格说 L¹ 的元素是**函数的等价类**（a.e. 相等视为同一个），所以「∫|f| = 0 ⟹ f = 0」要在 a.e. 意义下读。这是后面 Lp 空间成为赋范空间的关键一步。",
    "refs": [
     "Folland, Real Analysis, §2.3"
@@ -2260,7 +2275,7 @@
     "DCT",
     "控制函数"
    ],
-   "statement": "设 $${f_n} ⊆ L¹$$，$$f_n → f$$ a.e.，且存在**控制函数** $$g ∈ L¹$$ 使\n\n$$|f_n| ≤ g　a.e.　∀n$$\n\n则 $$f ∈ L¹$$ 且\n\n$$∫ f = lim_{n→∞} ∫ f_n$$",
+   "statement": "设 $${fₙ} ⊆ L¹$$，$$fₙ → f$$ a.e.，且存在**控制函数** $$g ∈ L¹$$ 使\n\n$$|fₙ| ≤ g　a.e.　∀n$$\n\n则 $$f ∈ L¹$$ 且\n\n$$∫ f = lim_{n→∞} ∫ fₙ$$",
    "notes": "⭐ 这是实际计算里**用得最多**的收敛定理。三个条件缺一不可：\n\n\n\n· a.e. 收敛 —— 不能去掉（$$χ_{[n,n+1]}$$ 反例）；\n\n· 控制函数 g ∈ L¹ —— 不能去掉（$$nχ_{[0,1/n]}$$ 在 [0,1] 上每点趋于 0，但积分为 1）；\n\n· 必须是**可积**的 g，光是「有界」不够（在无穷测度空间上）。\n\n\n\n为什么叫「控制」：g 把所有 fₙ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.24"
@@ -2281,7 +2296,7 @@
     "逐项积分",
     "L¹"
    ],
-   "statement": "设 $${f_j} ⊆ L¹$$ 满足\n\n$$∑_{j=1}^{∞} ∫ |f_j| dμ < ∞$$\n\n则 $$∑_j f_j$$ 几乎处处收敛到一个 $$L¹$$ 中的函数，并且可以逐项积分：\n\n$$∫ ∑_{j=1}^{∞} f_j = ∑_{j=1}^{∞} ∫ f_j$$",
+   "statement": "设 $${fⱼ} ⊆ L¹$$ 满足\n\n$$∑_{j=1}^{∞} ∫ |fⱼ| dμ < ∞$$\n\n则 $$∑ⱼ fⱼ$$ 几乎处处收敛到一个 $$L¹$$ 中的函数，并且可以逐项积分：\n\n$$∫ ∑_{j=1}^{∞} fⱼ = ∑_{j=1}^{∞} ∫ fⱼ$$",
    "notes": "与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** Σ∫|fⱼ| < ∞ —— 用可积性换来「允许有正有负」。\n\n这是 Fubini–Tonelli 定理证明里的关键工具。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.25"
@@ -2303,7 +2318,7 @@
     "简单函数",
     "连续函数"
    ],
-   "statement": "设 $$f ∈ L¹(μ)$$。则对任意 ε > 0，存在简单函数 $$φ = ∑_j a_j χ_{E_j}$$ 使\n\n$$∫ |f − φ| dμ < ε$$\n\n进一步，若 μ 是 **ℝ 上的 Lebesgue–Stieltjes 测度**，还可以要求 Eⱼ 是开区间的有限并；甚至可以取一个**连续函数** g（在某个有界区间外恒为 0）使\n\n$$∫ |f − g| dμ < ε$$",
+   "statement": "设 $$f ∈ L¹(μ)$$。则对任意 ε > 0，存在简单函数 $$φ = ∑ⱼ aⱼ χ_{Eⱼ}$$ 使\n\n$$∫ |f − φ| dμ < ε$$\n\n进一步，若 μ 是 **ℝ 上的 Lebesgue–Stieltjes 测度**，还可以要求 Eⱼ 是开区间的有限并；甚至可以取一个**连续函数** g（在某个有界区间外恒为 0）使\n\n$$∫ |f − g| dμ < ε$$",
    "notes": "意义：**简单函数与连续函数在 L¹ 里是稠密的**。所以很多命题只要对这两类函数验证就够了，再取极限。\n\n证明思路（笔记里的）：先把 f 拆成 Re f⁺、Re f⁻、Im f⁺、Im f⁻ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；ℝ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。\n\n⚠ 连续函数那一句**依赖 μ 是 Lebesgue–Stieltjes 测度**：换一个任意测度，简单函数的逼近照旧，连续函数的说法就不成立了。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.26"
@@ -2325,10 +2340,332 @@
     "求导",
     "带参变量积分"
    ],
-   "statement": "设 $$f : X × [a, b] → ℂ$$（$$−∞ < a < b < ∞$$），$$f(·, t)$$ 对每个 $$t ∈ [a, b]$$ 都可积。记\n\n$$F(t) := ∫_X f(x, t) dμ(x)$$\n\n**(a) 连续性**：若存在 $$g ∈ L¹(μ)$$ 使 $$|f(x, t)| ≤ g(x)$$ 对一切 $$x, t$$ 成立，且对每个 x 有 $$lim_{t→t_0} f(x, t) = f(x, t_0)$$，则\n\n$$lim_{t→t_0} F(t) = F(t_0)$$\n\n**(b) 求导**：若 $$∂f / ∂t$$ 处处存在，且存在 $$g ∈ L¹(μ)$$ 使 $$| ∂f / ∂t(x, t) | ≤ g(x)$$ 对一切 $$x, t$$ 成立，则 F 可微，且\n\n$$F'(t) = ∫_X ∂f / ∂t(x, t) dμ(x)$$",
+   "statement": "设 $$f : X × [a, b] → ℂ$$（$$−∞ < a < b < ∞$$），$$f(·, t)$$ 对每个 $$t ∈ [a, b]$$ 都可积。记\n\n$$F(t) := ∫_X f(x, t) dμ(x)$$\n\n**(a) 连续性**：若存在 $$g ∈ L¹(μ)$$ 使 $$|f(x, t)| ≤ g(x)$$ 对一切 $$x, t$$ 成立，且对每个 x 有 $$lim_{t→t₀} f(x, t) = f(x, t₀)$$，则\n\n$$lim_{t→t₀} F(t) = F(t₀)$$\n\n**(b) 求导**：若 $$∂f / ∂t$$ 处处存在，且存在 $$g ∈ L¹(μ)$$ 使 $$| ∂f / ∂t(x, t) | ≤ g(x)$$ 对一切 $$x, t$$ 成立，则 F 可微，且\n\n$$F'(t) = ∫_X ∂f / ∂t(x, t) dμ(x)$$",
    "notes": "两个控制条件都是「用同一个 g 控制一整族函数」—— 这正是 DCT 的标准用法。\n\n⚠ g 必须属于 L¹（不能只是「局部有界」）。\n\n这是「带参变量积分」的两个基本定理：连续性可以交换极限与积分，可导性可以交换导数与积分。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.27"
+   ]
+  },
+  {
+   "id": "def.convergence-modes",
+   "type": "definition",
+   "label": "五种收敛",
+   "title": "收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定义",
+    "收敛",
+    "依测度"
+   ],
+   "statement": "设 $$fₙ, f : X → ℂ$$ 可测，X 带测度 μ。\n\n- **一致收敛** $$fₙ ⇉ f$$：$$∀ε > 0, ∃N > 0, ∀x ∈ X, n > N ⟹ |fₙ(x) − f(x)| < ε$$\n- **几乎处处收敛** $$fₙ → f$$ a.e.：存在零集 E 使 $$fₙ(x) → f(x)$$ 对一切 $$x ∈ X ∖ E$$ 成立\n- **依测度收敛** $$fₙ → f$$ 依测度：$$∀ε > 0, ∀δ > 0, ∃N, ∀n > N : μ({x : |fₙ(x) − f(x)| > δ}) < ε$$\n- **L¹ 收敛**：$$∫ |fₙ − f| dμ → 0$$\n- **近一致收敛**：$$∀ε > 0$$，存在 E 使 $$μ(E) < ε$$ 且 $$fₙ ⇉ f$$ 在 $$Eᶜ$$ 上一致",
+   "notes": "强弱关系（都能画成箭头）：\n\n\n\n$$一致 ⟹ 近一致 ⟹ a.e.$$\n\n$$一致 ⟹ 近一致 ⟹ 依测度$$\n\n$$L¹ ⟹ 依测度$$\n\n\n\n⚠ 「依测度收敛」是最温和的一个：它不要求任何一处真的收敛，只要求「收敛失败的区域」越来越小。\n\n⚠ **a.e. 收敛与依测度收敛互不包含**：a.e. ⟹ 依测度在**有限测度**空间上成立（Egorov 的推论），反过来依测度 ⇏ a.e.（见反例 iv）。\n\n⚠ L¹ 收敛 ⇏ a.e. 收敛，a.e. 收敛 + 控制函数 ⟹ L¹ 收敛（这就是 DCT）。",
+   "refs": [
+    "Folland, Real Analysis, §2.4"
+   ]
+  },
+  {
+   "id": "prop.convergence-counterexamples",
+   "type": "proposition",
+   "label": "四个标准反例",
+   "title": "命题：四个标准反例（把各种收敛区分开）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "反例",
+    "收敛",
+    "依测度"
+   ],
+   "statement": "在 ℝ（或 [0, 1]）上取 Lebesgue 测度。\n\n- **(i)** $$fₙ = n⁻¹ χ_{(0, n)}$$：$$fₙ ⇉ 0$$ **一致**收敛。\n- **(ii)** $$fₙ = χ_{(n, n+1)}$$：$$fₙ → 0$$ **逐点**（因而 a.e.），但**不一致**（$$supₓ |fₙ| = 1$$），也不 L¹ 收敛（$$∫fₙ = 1 ↛ 0$$）。\n- **(iii)** $$fₙ = n χ_{[0, 1/n]}$$：$$fₙ → 0$$ a.e.（也依测度收敛，因为 $$μ({|fₙ| > δ}) = 1/n → 0$$），但**不 L¹ 收敛**（$$∫ fₙ = 1$$ 对一切 n）。\n- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——\n\n$$f₁ = χ_{[0,1]}，f₂ = χ_{[0,1/2]}，f₃ = χ_{[1/2,1]}，f_4 = χ_{[0,1/4]}，⋯$$\n即 $$fₙ = χ_{[j/2ᵏ, (j+1)/2ᵏ]}$$（$$n = 2ᵏ + j$$）：它**依测度**收敛到 0，但对**任何** $$x ∈ [0,1]$$ 都**不**收敛。",
+   "notes": "(iii) 是「a.e. 收敛 ⇏ L¹ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。\n\n(iv) 是「依测度收敛 ⇏ a.e. 收敛」的标准反例。它的机制很值得记住：**每次取一个越来越窄的区间，但位置不停地搬家** —— 质量在每一处都只停留一瞬间，所以每点都不收敛，但「出错集合」的测度趋于 0。\n\n⭐ 这四个例子基本覆盖了所有反方向的护栏：一致最强、依测度最弱、a.e. 与 L¹ 各自独立。",
+   "refs": [
+    "Folland, Real Analysis, §2.4"
+   ]
+  },
+  {
+   "id": "def.cauchy-in-measure",
+   "type": "definition",
+   "label": "依测度 Cauchy",
+   "title": "依测度 Cauchy 序列",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定义",
+    "Cauchy",
+    "依测度"
+   ],
+   "statement": "可测函数列 $${fₙ}$$ 是**依测度 Cauchy 的**，当且仅当\n\n$$∀ε > 0, μ({x : |fₙ(x) − fₘ(x)| ≥ ε}) → 0　(m, n → ∞)$$\n\n即：在测度意义下，下标够大之后各项彼此越来越近。",
+   "notes": "**依测度 Cauchy ⟺ 依测度收敛**：两个方向都能证（收敛 ⟹ Cauchy 由三角不等式；Cauchy ⟹ 收敛就是下一条定理）。\n\n这是「依测度」这个拓扑的一个好处：它**完备**。相比之下 a.e. 收敛既不强也不完备，L¹ 收敛则完备（Riesz–Fischer）。",
+   "refs": [
+    "Folland, Real Analysis, §2.4"
+   ]
+  },
+  {
+   "id": "thm.cauchy-in-measure",
+   "type": "theorem",
+   "label": "依测度 Cauchy ⟹ 收敛",
+   "title": "定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定理",
+    "依测度",
+    "子列",
+    "Borel–Cantelli"
+   ],
+   "statement": "若 $${fₙ}$$ 依测度 Cauchy，则存在可测函数 $$f$$ 使\n\n$$fₙ → f 依测度，$$\n\n并且存在**子列** $${f_{nⱼ}}$$ 使\n\n$$f_{nⱼ} → f　a.e.$$",
+   "notes": "⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。\n\n证明的工具是 Borel–Cantelli 型的推理：造出 $$∑ₖ μ(Eₖ) < ∞$$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。\n\n这也是 Riesz 定理（a.e. 收敛 ⟺ 依测度收敛 + 子列）的那一半。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.30"
+   ]
+  },
+  {
+   "id": "prop.L1-implies-measure",
+   "type": "proposition",
+   "label": "L¹ 收敛 ⟹ 依测度收敛",
+   "title": "命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "命题",
+    "L¹",
+    "依测度",
+    "Markov"
+   ],
+   "statement": "若 $$fₙ → f$$ 于 $$L¹$$，则 $$fₙ → f$$ 依测度：\n\n$$∫ |fₙ − f| → 0 ⟹ fₙ → f 依测度$$",
+   "notes": "工具是 **Markov（Chebyshev）不等式**：$$\nμ({|g| ≥ ε}) ≤ 1 / ε ∫ |g| dμ$$\n\n（因为 $$ε χ_{{|g| ≥ ε}} ≤ |g|$$，两边积分即可。）取 $$g = fₙ − f$$ 就得到结论。\n\n⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 L¹ 收敛。",
+   "refs": [
+    "Folland, Real Analysis, Prop. 2.29"
+   ]
+  },
+  {
+   "id": "thm.egorov",
+   "type": "theorem",
+   "label": "Egorov 定理",
+   "title": "Egorov 定理：a.e. 收敛 ⟹ 近一致",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定理",
+    "Egorov",
+    "近一致",
+    "有限测度"
+   ],
+   "statement": "设 $$μ(X) < ∞$$，且 $$fₙ → f$$ a.e.。则 $$fₙ → f$$ **近一致**：\n\n$$∀ε > 0, ∃E ⊆ X : μ(E) < ε，且 fₙ ⇉ f 在 X ∖ E 上一致$$",
+   "notes": "⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。\n\n⚠ **「$$μ(X) < ∞$$」不能省。** 反例：$$fₙ = χ_{(n, n+1)}$$ 在 ℝ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 sup = 1，无法一致收敛。\n\n这是「丢掉小集合换取好性质」这一类结论的模板（Lusin 定理也是这个模式）。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.33"
+   ]
+  },
+  {
+   "id": "cor.lusin",
+   "type": "corollary",
+   "label": "Lusin 定理",
+   "title": "Lusin 定理：可测函数几乎处处连续",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "推论",
+    "Lusin",
+    "连续",
+    "紧集"
+   ],
+   "statement": "设 $$f : [a, b] → ℂ$$ 是 Lebesgue 可测的。则对任意 ε > 0，存在**紧集** $$E ⊆ [a, b]$$ 使\n\n$$μ(Eᶜ) < ε，且 f|_E 连续$$",
+   "notes": "⭐ 「可测」这个条件看起来很弱，但 Lusin 说：可测函数差一点就是**连续**函数 —— 只要允许把定义域挖掉一小块。\n\n与 Egorov 的分工：Egorov 说「一列函数」几乎一致收敛，Lusin 说「一个函数」几乎连续。两者都是「丢掉小集合换取正则性」。\n\n⚠ 挖掉的那块必须容许是开集，剩下的必须是**紧**集（在 [a,b] 上紧 ⟺ 有界闭），不能只是可测集。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.34"
+   ]
+  },
+  {
+   "id": "def.product-measure",
+   "type": "definition",
+   "label": "乘积测度",
+   "title": "乘积测度（Product Measure μ × ν）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定义",
+    "乘积测度",
+    "矩形",
+    "Carathéodory"
+   ],
+   "statement": "设 (X, ℳ, μ) 与 (Y, 𝒩, ν) 是测度空间。\n\n**① 矩形**：形如 $$A × B$$（$$A ∈ ℳ$$，$$B ∈ 𝒩$$）的集合叫（可测）矩形。全体矩形**生成** $$ℳ ⊗ 𝒩$$。\n\n**② 矩形上的预测度**：令 𝒜 为**矩形的有限不交并**全体。对\n\n$$E = ⨆_{j=1}^{n} (Aⱼ × Bⱼ)$$\n\n定义\n\n$$π(E) := ∑_{j=1}^{n} μ(Aⱼ) ν(Bⱼ)$$\n\n则 π 是代数 𝒜 上的**预测度**。\n\n**③ 扩张**：π 诱导 X × Y 上的外测度，限制在 $$ℳ ⊗ 𝒩$$ 上得到一个测度，记作\n\n$$μ × ν$$\n\n即**乘积测度**。",
+   "notes": "$$π$$ 的良定义要检查（同一个 E 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。\n\n**σ-有限的时候一切顺利**：若 μ、ν 都 σ-有限，则 μ×ν 也 σ-有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。\n\n⚠ 这一步的整个机器（预测度 → 外测度 → Carathéodory 扩张 → 唯一性）就是「测度的构造」那个星团里现成的四件套。",
+   "refs": [
+    "Folland, Real Analysis, §2.5",
+    "Halmos, Measure Theory, §35"
+   ]
+  },
+  {
+   "id": "def.section",
+   "type": "definition",
+   "label": "截口",
+   "title": "截口（Section）Eₓ 与 Eʸ",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定义",
+    "截口"
+   ],
+   "statement": "设 $$E ⊆ X × Y$$。对 $$x ∈ X$$、$$y ∈ Y$$ 定义\n\n$$Eₓ := {y ∈ Y : (x, y) ∈ E}$$\n$$Eʸ := {x ∈ X : (x, y) ∈ E}$$\n\n分别叫 E 在 x 处的**纵截口**与在 y 处的**横截口**。\n\n类似地，对函数 $$f : X × Y → ℂ$$ 定义\n\n$$fₓ(y) := fʸ(x) := f(x, y)$$",
+   "notes": "直观：把平面图形用一根竖线（或横线）切一刀，切出来的那条线段就是截口。\n\n截口是 Fubini 定理的语言：重积分 $$∬ f d(μ × ν)$$ 就是「先沿截口积一次，再把各条截口的积分对另一变量积一次」。",
+   "refs": [
+    "Folland, Real Analysis, §2.5"
+   ]
+  },
+  {
+   "id": "prop.section-measurable",
+   "type": "proposition",
+   "label": "截口可测",
+   "title": "命题：可测集的截口可测，可测函数的截口可测",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "命题",
+    "截口",
+    "可测"
+   ],
+   "statement": "**(a)** 若 $$E ∈ ℳ ⊗ 𝒩$$，则对一切 $$x ∈ X$$ 有 $$Eₓ ∈ 𝒩$$，对一切 $$y ∈ Y$$ 有 $$Eʸ ∈ ℳ$$。\n\n**(b)** 若 $$f$$ 是 $$ℳ ⊗ 𝒩$$-可测的，则对一切 $$x$$ 有 $$fₓ$$ 是 $$𝒩$$-可测的，对一切 $$y$$ 有 $$fʸ$$ 是 $$ℳ$$-可测的。",
+   "notes": "证明是一个「先看矩形、再看 σ-代数」的标准套路：令\n\n\n\n$$ℛ = {E ⊆ X × Y : Eₓ ∈ 𝒩 且 Eʸ ∈ ℳ　∀(x, y)}$$\n\n\n\n则 ℛ 包含所有矩形，而且**ℛ 是一个 σ-代数**（截口运算保持并、交、补）。于是 ℛ ⊇ ℳ ⊗ 𝒩。\n\n(b) 由 (a) 与两条恒等式得到：\n\n\n\n$$fₓ⁻¹(B) = (f⁻¹(B))ₓ，　fʸ⁻¹(B) = (f⁻¹(B))ʸ$$\n\n\n\n⚠ 注意 (b) 说的是「**每一个** x 都行」，而 Fubini 定理里只能保证「几乎每一个」—— 那是因为 Fubini 还要它可积。",
+   "refs": [
+    "Folland, Real Analysis, Prop. 2.34"
+   ]
+  },
+  {
+   "id": "lem.monotone-class-lemma",
+   "type": "lemma",
+   "label": "单调类引理",
+   "title": "单调类引理（Monotone Class Lemma）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "引理",
+    "单调类",
+    "代数"
+   ],
+   "statement": "若 𝒜 是一个**代数**，则由 𝒜 生成的单调类就是由 𝒜 生成的 σ-代数：\n\n$$𝒜 是代数 ⟹ 𝔪(𝒜) = ℳ(𝒜)$$",
+   "notes": "⭐ 这一条是证明「某个 σ-代数里所有集合都满足性质 P」的**标准武器**，用法固定两步：\n\n\n\n1. 验证 P 对所有矩形（或 𝒜 中元素）成立；\n\n2. 验证「满足 P 的集合」构成一个含 𝒜 的**单调类**。\n\n\n\n于是 P 对 𝔪(𝒜) = ℳ(𝒜) 中所有集合成立。\n\n⚠ 与「测度的构造」里那条「环 → σ-环 的判据」是姊妹结果：那条说环 + 单调 ⟹ σ-环，这条说代数 ⟹ 单调类与 σ-代数重合。\n\n📌 笔记第 6 页把这条写得很清楚，正好也印证了第 2 页上那条「ℳ(ℰ) = 𝔪(ℰ)」的存疑 —— 标准形式就是「𝒜 是代数」这个前提。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.37",
+    "Halmos, Measure Theory, §6"
+   ]
+  },
+  {
+   "id": "thm.product-measure-sections",
+   "type": "theorem",
+   "label": "乘积测度由截口给出",
+   "title": "定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定理",
+    "乘积测度",
+    "截口"
+   ],
+   "statement": "设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是 **σ-有限**的，$$E ∈ ℳ ⊗ 𝒩$$。则\n\n- $$x ↦ ν(Eₓ)$$ 在 X 上可测；\n- $$y ↦ μ(Eʸ)$$ 在 Y 上可测；\n\n并且\n\n$$μ × ν(E) = ∫_X ν(Eₓ) dμ(x) = ∫_Y μ(Eʸ) dν(y)$$",
+   "notes": "这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。\n\n证明的结构：先设 μ、ν **有限**，令\n\n\n\n$$𝒞 = {E ∈ ℳ ⊗ 𝒩 : 上面两条都成立}$$\n\n\n\n- 矩形 $$E = A × B$$：$$ν(Eₓ) = χ_A(x) ν(B)$$，立刻成立；\n\n- 𝒞 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；\n\n\n\n于是 𝒞 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$ℳ ⊗ 𝒩$$。\n\n最后把「有限」推广到「σ-有限」：取 $$X × Y = ⋃ (Xᵢ × Yᵢ)$$，对每个 $$E ∩ (Xᵢ × Yᵢ)$$ 用已经证好的有限情形，再用 MCT 求和。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.36"
+   ]
+  },
+  {
+   "id": "thm.fubini-tonelli",
+   "type": "theorem",
+   "label": "Fubini–Tonelli",
+   "title": "Fubini–Tonelli 定理（重积分可交换次序）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定理",
+    "Fubini",
+    "Tonelli",
+    "重积分"
+   ],
+   "statement": "设 (X, ℳ, μ)、(Y, 𝒩, ν) 是 **σ-有限**的测度空间。\n\n**(a) Tonelli（非负情形，无附加条件）**：若 $$f ∈ L⁺(X × Y)$$，则\n\n$$∫ fₓ dν ∈ L⁺(X)，　∫ fʸ dμ ∈ L⁺(Y)$$\n\n且\n\n$$∫ f d(μ × ν) = ∫_X ( ∫_Y f(x, y) dν(y) ) dμ(x) = ∫_Y ( ∫_X f(x, y) dμ(x) ) dν(y)$$\n\n**(b) Fubini（可积情形）**：若 $$f ∈ L¹(μ × ν)$$，则\n\n- $$fₓ ∈ L¹(ν)$$ 对 a.e. x 成立，$$fʸ ∈ L¹(μ)$$ 对 a.e. y 成立；\n- $$∫ fₓ dν ∈ L¹(μ)$$、$$∫ fʸ dμ ∈ L¹(ν)$$（都在 a.e. 意义下有定义）；\n- 上面那两个三重等式同样成立。",
+   "notes": "⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 f 可积，于是可以放心换序。\n\n**Fubini 则必须假定可积** —— 否则一边是 +∞、一边是 −∞，换序会出事。\n\n⚠ 反例（不是可积但累次积分不等）：在 [0,1]² 上取 $$f(x, y) = (x² − y²) / (x² + y²)³$$ 之类，两个累次积分会互为相反数。\n\n⚠ σ-有限不能省：在「ℝ 上的计数测度 × Lebesgue 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.37"
+   ]
+  },
+  {
+   "id": "thm.fubini-complete",
+   "type": "theorem",
+   "label": "完备情形的 F–T",
+   "title": "定理：完备化的乘积测度上，Fubini–Tonelli 仍然成立",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "定理",
+    "Fubini",
+    "完备化"
+   ],
+   "statement": "设 (X, ℳ, μ)、(Y, 𝒩, ν) 都是**完备**的 σ-有限测度空间，$$(X × Y, ℒ, λ)$$ 是\n\n$$(X × Y, ℳ ⊗ 𝒩, μ × ν)$$\n\n的**完备化**。设 f 是 ℒ-可测的。\n\n- 若 $$f ≥ 0$$ 或 $$f ∈ L¹(λ)$$：$$fₓ$$ 对 a.e. x 是 𝒩-可测的，$$fʸ$$ 对 a.e. y 是 ℳ-可测的；\n- 若 $$f ∈ L¹(λ)$$：$$fₓ$$、$$fʸ$$ 对 a.e. 的 x、y 可积；并且 $$x ↦ ∫ fₓ dν$$、$$y ↦ ∫ fʸ dμ$$ 可测；\n- 此时\n\n$$∫ f dλ = ∫_X ( ∫_Y f dν ) dμ = ∫_Y ( ∫_X f dμ ) dν$$",
+   "notes": "为什么需要这一条：**μ×ν 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 λ 里，而不是 ℳ⊗𝒩 里。\n\n代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 ℒ 里多出来的那些集合只在零集上有区别。\n\n证明的核心（笔记里的原话：「先证 f ≥ 0。若 f = χ_E，E = F ∪ G 其中 F ∈ ℳ⊗𝒩、G ⊆ H 且 μ×ν(H) = 0，设不交并，则 f = χ_F + χ_G。χ_F ✓（归 Fubini–Tonelli），χ_G ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**」）。",
+   "refs": [
+    "Folland, Real Analysis, Theorem 2.39"
+   ]
+  },
+  {
+   "id": "prop.product-incomplete",
+   "type": "proposition",
+   "label": "乘积测度通常不完备",
+   "title": "注记：μ、ν 完备时，μ × ν 常常不完备",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.integral",
+   "tags": [
+    "注记",
+    "完备",
+    "乘积测度"
+   ],
+   "statement": "即使 μ 与 ν 都**完备**，$$μ × ν$$ 也**经常是不完备的**：存在 $$E ∈ ℳ ⊗ 𝒩$$ 使 $$μ × ν(E) = 0$$，但 E 有子集不属于 $$ℳ ⊗ 𝒩$$。",
+   "notes": "这就是为什么必须单独有「完备情形的 F–T」：实际用的时候（比如 ℝ² 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 μ×ν。\n\n笔记第 7 页特意把这一句单独写出来（\"Notice that if μ, ν are complete, μ × ν often incomplete.\"），说明这是个容易踩的坑。",
+   "refs": [
+    "Folland, Real Analysis, §2.5"
    ]
   }
  ],
@@ -3065,7 +3402,7 @@
    ],
    "target": "thm.mct",
    "title": "非负积分的定义 ⟹ 单调收敛定理",
-   "proof": "**① 一个方向是免费的。** 由 fₙ ≤ f 与积分的单调性，∫fₙ ≤ ∫f，故\n\n$$lim_{n→∞} ∫ f_n ≤ ∫ f$$\n\n所以只需证另一边。\n\n**② 用一个简单函数从下面逼近 f。** 给定 ε > 0，由 ∫f 的定义（取上确界）存在简单函数 φ 使\n\n$$0 ≤ φ ≤ f，　∫ φ ≥ ∫ f − ε$$\n\n**③ 把 φ 搬进 Eₙ。** 令 $$E_n = {x : f_n(x) ≥ φ(x)}$$。因为 fₙ ↑ f 且 φ ≤ f，集合列 Eₙ 是递增的、且 $$⋃_n E_n = X$$。于是\n\n$$∫ f_n ≥ ∫_{E_n} f_n ≥ ∫_{E_n} φ$$\n\n**④ 让 n → ∞。** 由简单函数积分的性质 (d)，$$A ↦ ∫_A φ dμ$$ 是 ℳ 上的一个**测度**；把它用在递增列 Eₙ ↑ X 上，用测度的下连续性：\n\n$$lim_{n→∞} ∫_{E_n} φ = ∫_X φ = ∫ φ$$\n\n所以存在 N 使 n > N 时 $$∫_{E_n} φ > ∫ φ − ε$$，从而\n\n$$∫ f_n ≥ ∫ φ − ε ≥ ∫ f − 2ε$$\n\n**⑤ 收尾。** 对一切 n > N 成立，故 $$lim_n ∫ f_n ≥ ∫ f − 2ε$$；令 ε → 0 得 $$lim_n ∫ f_n ≥ ∫ f$$。与 ① 合起来就是等号。∎\n\n> ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 A ↦ ∫_A φ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 Eₙ 递增到 X 的。",
+   "proof": "**① 一个方向是免费的。** 由 fₙ ≤ f 与积分的单调性，∫fₙ ≤ ∫f，故\n\n$$lim_{n→∞} ∫ fₙ ≤ ∫ f$$\n\n所以只需证另一边。\n\n**② 用一个简单函数从下面逼近 f。** 给定 ε > 0，由 ∫f 的定义（取上确界）存在简单函数 φ 使\n\n$$0 ≤ φ ≤ f，　∫ φ ≥ ∫ f − ε$$\n\n**③ 把 φ 搬进 Eₙ。** 令 $$Eₙ = {x : fₙ(x) ≥ φ(x)}$$。因为 fₙ ↑ f 且 φ ≤ f，集合列 Eₙ 是递增的、且 $$⋃ₙ Eₙ = X$$。于是\n\n$$∫ fₙ ≥ ∫_{Eₙ} fₙ ≥ ∫_{Eₙ} φ$$\n\n**④ 让 n → ∞。** 由简单函数积分的性质 (d)，$$A ↦ ∫_A φ dμ$$ 是 ℳ 上的一个**测度**；把它用在递增列 Eₙ ↑ X 上，用测度的下连续性：\n\n$$lim_{n→∞} ∫_{Eₙ} φ = ∫_X φ = ∫ φ$$\n\n所以存在 N 使 n > N 时 $$∫_{Eₙ} φ > ∫ φ − ε$$，从而\n\n$$∫ fₙ ≥ ∫ φ − ε ≥ ∫ f − 2ε$$\n\n**⑤ 收尾。** 对一切 n > N 成立，故 $$limₙ ∫ fₙ ≥ ∫ f − 2ε$$；令 ε → 0 得 $$limₙ ∫ fₙ ≥ ∫ f$$。与 ① 合起来就是等号。∎\n\n> ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 A ↦ ∫_A φ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 Eₙ 递增到 X 的。",
    "note": "「先拿一个简单函数从下面顶住 f，再让 Eₙ 爬上去」—— 这个套路在 Fatou 引理里还会再用一次。"
   },
   {
@@ -3077,7 +3414,7 @@
    ],
    "target": "thm.termwise-integration",
    "title": "MCT ⟹ 逐项积分",
-   "proof": "**① 先看两项。** 由非负性，$${f_1 ∧ n}$$、$${f_2 ∧ n}$$ 都是简单函数列的极限（简单函数逼近定理），于是\n\n$$∫ (f_1 + f_2) = lim_{n→∞} ∫ (φ_n + ψ_n) = ∫ f_1 + ∫ f_2$$\n\n其中用到了 MCT（把 f₁ + f₂ 写成极限）与简单函数积分的可加性 (b)。\n\n**② 归纳到有限项。** 逐次用 ① 得到\n\n$$∫ ∑_{n=1}^{N} f_n = ∑_{n=1}^{N} ∫ f_n$$\n\n**③ 让 N → ∞。** 部分和 $$∑_{n≤N} f_n$$ 是 L⁺ 中的**递增**列，极限正是 $$∑_{n=1}^{∞} f_n$$。对部分和列用一次 MCT：\n\n$$∫ ∑_{n=1}^{∞} f_n = lim_{N→∞} ∫ ∑_{n=1}^{N} f_n = lim_{N→∞} ∑_{n=1}^{N} ∫ f_n = ∑_{n=1}^{∞} ∫ f_n$$\n\n∎",
+   "proof": "**① 先看两项。** 由非负性，$${f₁ ∧ n}$$、$${f₂ ∧ n}$$ 都是简单函数列的极限（简单函数逼近定理），于是\n\n$$∫ (f₁ + f₂) = lim_{n→∞} ∫ (φₙ + ψₙ) = ∫ f₁ + ∫ f₂$$\n\n其中用到了 MCT（把 f₁ + f₂ 写成极限）与简单函数积分的可加性 (b)。\n\n**② 归纳到有限项。** 逐次用 ① 得到\n\n$$∫ ∑_{n=1}^{N} fₙ = ∑_{n=1}^{N} ∫ fₙ$$\n\n**③ 让 N → ∞。** 部分和 $$∑_{n≤N} fₙ$$ 是 L⁺ 中的**递增**列，极限正是 $$∑_{n=1}^{∞} fₙ$$。对部分和列用一次 MCT：\n\n$$∫ ∑_{n=1}^{∞} fₙ = lim_{N→∞} ∫ ∑_{n=1}^{N} fₙ = lim_{N→∞} ∑_{n=1}^{N} ∫ fₙ = ∑_{n=1}^{∞} ∫ fₙ$$\n\n∎",
    "note": ""
   },
   {
@@ -3089,7 +3426,7 @@
    ],
    "target": "lem.fatou",
    "title": "MCT ⟹ Fatou 引理",
-   "proof": "设 $$g_n = inf_{k ≥ n} f_k$$，则\n\n· $$g_n ≤ f_k$$ 对一切 k ≥ n 成立，故 $$∫ g_n ≤ inf_{k≥n} ∫ f_k$$；\n· $${g_n}$$ 是 L⁺ 中的**递增**列（下确界取的集合越来越少），且 $$lim_n g_n = lim inf_k f_k$$。\n\n对递增列 $${g_n}$$ 用 MCT：\n\n$$∫ lim inf_{n→∞} f_n = ∫ lim_{n→∞} g_n = lim_{n→∞} ∫ g_n ≤ lim_{n→∞} inf_{k ≥ n} ∫ f_k = lim inf_{n→∞} ∫ f_n$$\n\n∎\n\n> 整个证明就是把「liminf 定义成递增列的上确界」这件事翻译一遍 —— MCT 之外什么都没用。",
+   "proof": "设 $$gₙ = inf_{k ≥ n} fₖ$$，则\n\n· $$gₙ ≤ fₖ$$ 对一切 k ≥ n 成立，故 $$∫ gₙ ≤ inf_{k≥n} ∫ fₖ$$；\n· $${gₙ}$$ 是 L⁺ 中的**递增**列（下确界取的集合越来越少），且 $$limₙ gₙ = lim infₖ fₖ$$。\n\n对递增列 $${gₙ}$$ 用 MCT：\n\n$$∫ lim inf_{n→∞} fₙ = ∫ lim_{n→∞} gₙ = lim_{n→∞} ∫ gₙ ≤ lim_{n→∞} inf_{k ≥ n} ∫ fₖ = lim inf_{n→∞} ∫ fₙ$$\n\n∎\n\n> 整个证明就是把「liminf 定义成递增列的上确界」这件事翻译一遍 —— MCT 之外什么都没用。",
    "note": "Fatou 就是 MCT 在「不单调」情形下的残留物：单调性换成了 liminf。"
   },
   {
@@ -3101,7 +3438,7 @@
    ],
    "target": "thm.dct",
    "title": "Fatou ⟹ 控制收敛定理",
-   "proof": "设 $$f_n → f$$ a.e.，$$|f_n| ≤ g ∈ L¹$$。\n\n**① f ∈ L¹。** 由 $$|f| = lim|f_n| ≤ g$$（a.e.）得 f 可积。\n\n**② 上界方向：$$lim sup_n ∫ f_n ≤ ∫ f$$。** 考虑 $$g − f_n ≥ 0$$（因为 |fₙ| ≤ g）。这列非负函数满足\n\n$$g − f_n → g − f　a.e.$$\n\n对它用 Fatou 引理：\n\n$$∫ (g − f) ≤ lim inf_n ∫ (g − f_n) = ∫ g − lim sup_n ∫ f_n$$\n\n（最后一步是因为 $$lim inf(-a_n) = -lim sup a_n$$。）移项即得 $$lim sup_n ∫ f_n ≤ ∫ f$$。\n\n**③ 下界方向：$$lim inf_n ∫ f_n ≥ ∫ f$$。** 同样对 $$g + f_n ≥ 0$$ 用 Fatou：\n\n$$∫ (g + f) ≤ lim inf_n ∫ (g + f_n) = ∫ g + lim inf_n ∫ f_n$$\n\n移项得 $$lim inf_n ∫ f_n ≥ ∫ f$$。\n\n**④** ②与③合起来 $$lim sup ≤ ∫f ≤ lim inf$$，故极限存在且等于 ∫f。∎\n\n> ⭐ 关键在于**控制函数提供的非负性**：$$g ± f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 g，这一步就写不出来。\n> 移项之所以合法，是因为 $$g$$ 可积（∫g < ∞）—— 这正是「控制函数必须属于 L¹」而不能只是「有界」的原因。",
+   "proof": "设 $$fₙ → f$$ a.e.，$$|fₙ| ≤ g ∈ L¹$$。\n\n**① f ∈ L¹。** 由 $$|f| = lim|fₙ| ≤ g$$（a.e.）得 f 可积。\n\n**② 上界方向：$$lim supₙ ∫ fₙ ≤ ∫ f$$。** 考虑 $$g − fₙ ≥ 0$$（因为 |fₙ| ≤ g）。这列非负函数满足\n\n$$g − fₙ → g − f　a.e.$$\n\n对它用 Fatou 引理：\n\n$$∫ (g − f) ≤ lim infₙ ∫ (g − fₙ) = ∫ g − lim supₙ ∫ fₙ$$\n\n（最后一步是因为 $$lim inf(-aₙ) = -lim sup aₙ$$。）移项即得 $$lim supₙ ∫ fₙ ≤ ∫ f$$。\n\n**③ 下界方向：$$lim infₙ ∫ fₙ ≥ ∫ f$$。** 同样对 $$g + fₙ ≥ 0$$ 用 Fatou：\n\n$$∫ (g + f) ≤ lim infₙ ∫ (g + fₙ) = ∫ g + lim infₙ ∫ fₙ$$\n\n移项得 $$lim infₙ ∫ fₙ ≥ ∫ f$$。\n\n**④** ②与③合起来 $$lim sup ≤ ∫f ≤ lim inf$$，故极限存在且等于 ∫f。∎\n\n> ⭐ 关键在于**控制函数提供的非负性**：$$g ± fₙ$$ 都是非负的，于是 Fatou 可以直接用。没有 g，这一步就写不出来。\n> 移项之所以合法，是因为 $$g$$ 可积（∫g < ∞）—— 这正是「控制函数必须属于 L¹」而不能只是「有界」的原因。",
    "note": ""
   },
   {
@@ -3113,7 +3450,7 @@
    ],
    "target": "thm.differentiate-under-integral",
    "title": "DCT ⟹ 在积分号下求极限与求导",
-   "proof": "**(a)** 取任意 $$t_n → t_0$$，令 $$f_n(x) = f(x, t_n)$$。由题设 $$|f_n| ≤ g ∈ L¹$$、且 $$f_n → f(x,t_0)$$ 逐点，DCT 直接给出\n\n$$F(t_n) = ∫ f_n → ∫ f(·, t_0) = F(t_0)$$\n\n对一切序列 tₙ 成立，故 $$lim_{t→t_0} F(t) = F(t_0)$$。\n\n**(b)** 取任意 $$t_n → t_0$$，令\n\n$$h_n(x) = (f(x, t_n) − f(x, t_0)) / (t_n − t_0)$$\n\n则 $$F'(t_0) = lim_n (F(t_n) − F(t_0)) / (t_n − t_0) = lim_n ∫ h_n$$。要把它换成 ∫lim hₙ 就够了，而 DCT 正好提供这个能力：\n\n· $$h_n → ∂f / ∂t(x, t_0)$$ 逐点（这是导数的定义）；\n· **控制**：由中值定理，$$|h_n(x)| ≤ sup_{t ∈ [t_0, t_n]} | ∂f / ∂t(x, t) | ≤ g(x)$$。\n\n于是\n\n$$F'(t_0) = lim_n ∫ h_n = ∫ lim_n h_n = ∫ ∂f / ∂t(x, t_0) dμ(x)$$\n\n∎\n\n> ⚠ (b) 里那个「取 sup 的控制」必须提前假定：如果只对**每个** t 假设有控制，是不够的 —— 需要**同一个 g** 控制整族偏导数。",
+   "proof": "**(a)** 取任意 $$tₙ → t₀$$，令 $$fₙ(x) = f(x, tₙ)$$。由题设 $$|fₙ| ≤ g ∈ L¹$$、且 $$fₙ → f(x,t₀)$$ 逐点，DCT 直接给出\n\n$$F(tₙ) = ∫ fₙ → ∫ f(·, t₀) = F(t₀)$$\n\n对一切序列 tₙ 成立，故 $$lim_{t→t₀} F(t) = F(t₀)$$。\n\n**(b)** 取任意 $$tₙ → t₀$$，令\n\n$$hₙ(x) = (f(x, tₙ) − f(x, t₀)) / (tₙ − t₀)$$\n\n则 $$F'(t₀) = limₙ (F(tₙ) − F(t₀)) / (tₙ − t₀) = limₙ ∫ hₙ$$。要把它换成 ∫lim hₙ 就够了，而 DCT 正好提供这个能力：\n\n· $$hₙ → ∂f / ∂t(x, t₀)$$ 逐点（这是导数的定义）；\n· **控制**：由中值定理，$$|hₙ(x)| ≤ sup_{t ∈ [t₀, tₙ]} | ∂f / ∂t(x, t) | ≤ g(x)$$。\n\n于是\n\n$$F'(t₀) = limₙ ∫ hₙ = ∫ limₙ hₙ = ∫ ∂f / ∂t(x, t₀) dμ(x)$$\n\n∎\n\n> ⚠ (b) 里那个「取 sup 的控制」必须提前假定：如果只对**每个** t 假设有控制，是不够的 —— 需要**同一个 g** 控制整族偏导数。",
    "note": ""
   },
   {
@@ -3126,7 +3463,7 @@
    ],
    "target": "thm.termwise-L1",
    "title": "非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分",
-   "proof": "设 $$∑_j ∫ |f_j| < ∞$$。\n\n**① 绝对收敛 a.e.。** 令 $$g = ∑_j |f_j| ∈ L⁺$$。由非负函数的逐项积分，\n\n$$∫ g = ∑_j ∫ |f_j| < ∞$$\n\n由「积分有限的后果」，g < ∞ a.e.，即 $$∑_j |f_j(x)| < ∞$$ 对 a.e. x 成立。所以 $$∑_j f_j(x)$$ 对 a.e. x **绝对收敛**。\n\n**② 定义 f。** 令 $$f(x) = ∑_j f_j(x)$$（在收敛的 a.e. 点上），其余点随意取 0。则 $$|f| ≤ g$$，故 f ∈ L¹。\n\n**③ 部分和被控制。** 部分和 $$s_N = ∑_{j≤N} f_j$$ 满足 $$|s_N| ≤ g ∈ L¹$$。\n\n**④ 用 DCT。** $$s_N → f$$ a.e.，且被 g 控制，故\n\n$$∫ f = lim_{N→∞} ∫ s_N = lim_{N→∞} ∑_{j≤N} ∫ f_j = ∑_{j=1}^{∞} ∫ f_j$$\n\n（中间一步用 L¹ 的线性。）∎",
+   "proof": "设 $$∑ⱼ ∫ |fⱼ| < ∞$$。\n\n**① 绝对收敛 a.e.。** 令 $$g = ∑ⱼ |fⱼ| ∈ L⁺$$。由非负函数的逐项积分，\n\n$$∫ g = ∑ⱼ ∫ |fⱼ| < ∞$$\n\n由「积分有限的后果」，g < ∞ a.e.，即 $$∑ⱼ |fⱼ(x)| < ∞$$ 对 a.e. x 成立。所以 $$∑ⱼ fⱼ(x)$$ 对 a.e. x **绝对收敛**。\n\n**② 定义 f。** 令 $$f(x) = ∑ⱼ fⱼ(x)$$（在收敛的 a.e. 点上），其余点随意取 0。则 $$|f| ≤ g$$，故 f ∈ L¹。\n\n**③ 部分和被控制。** 部分和 $$s_N = ∑_{j≤N} fⱼ$$ 满足 $$|s_N| ≤ g ∈ L¹$$。\n\n**④ 用 DCT。** $$s_N → f$$ a.e.，且被 g 控制，故\n\n$$∫ f = lim_{N→∞} ∫ s_N = lim_{N→∞} ∑_{j≤N} ∫ fⱼ = ∑_{j=1}^{∞} ∫ fⱼ$$\n\n（中间一步用 L¹ 的线性。）∎",
    "note": ""
   },
   {
@@ -3252,6 +3589,268 @@
    "definition": "def.null-set",
    "usedBy": "cor.mct-ae",
    "note": "「a.e. 版本」的意思就是把零集上的例外丢掉。"
+  },
+  {
+   "id": "imp.cauchy-in-measure",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.cauchy-in-measure"
+   ],
+   "target": "thm.cauchy-in-measure",
+   "title": "依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛",
+   "proof": "**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 k 存在 $$Nₖ$$ 使\n\n$$μ(Eₖ) ≤ 2⁻ᵏ，　其中 Eₖ = {x : |fₙ(x) − f_{Nₖ}(x)| ≥ 2⁻ᵏ}　(n ≥ Nₖ)$$\n\n不妨取 $$N₁ < N₂ < ⋯$$。记 $$gⱼ = f_{Nⱼ}$$。\n\n**② 让坏集合的尾并收敛。** 令\n\n$$Fₖ = ⋃_{j ≥ k} Eⱼ，　则 μ(Fₖ) ≤ ∑_{j≥k} 2⁻ʲ = 2^{1−k} → 0$$\n\n**③ 在 $$Fₖᶜ$$ 上一致 Cauchy。** 若 $$x ∉ Fₖ$$，则对一切 $$i ≥ j ≥ k$$ 有 $$x ∉ Eⱼ$$，于是\n\n$$|gᵢ(x) − gⱼ(x)| ≤ 2^{1−j}$$\n\n所以 $${gⱼ}$$ 在 $$Fₖᶜ$$ 上**一致收敛**（Cauchy 且界趋于 0）。\n\n**④ 造极限 f。** 令 $$F = ⋂ₖ Fₖᶜ$$，则\n\n$$μ(F) = μ(X ∖ ⋃ₖ Fₖ) ≥ μ(X) − μ(Fₖ)　∀k　⟹　μ(Fᶜ) = 0$$\n\n在 F 上令 $$f(x) = limⱼ gⱼ(x)$$，在 $$Fᶜ$$ 上任取 0。f 是可测函数（可测函数的极限）。于是 $$gⱼ → f$$ **a.e.**\n\n**⑤ 换成依测度。** 取定 k，对 $$j ≥ k$$、$$x ∈ Fₖᶜ$$ 有 $$|gⱼ(x) − f(x)| ≤ 2^{1−j}$$。于是对任意 δ > 0，\n\n$$μ({|gⱼ − f| > δ}) ≤ μ(Fₖ) ≤ 2^{1−k}　(j 充分大)$$\n\n令 k → ∞ 得 $$gⱼ → f$$ 依测度。\n\n**⑥ 把 fₙ 也拉进来。** 对任意 ε > 0，\n\n$${|fₙ − f| ≥ ε} ⊆ {|fₙ − gⱼ| ≥ ε/2} ∪ {|gⱼ − f| ≥ ε/2}$$\n\n右边第一项由 Cauchy 性（取 $$gⱼ = f_{Nⱼ}$$ 足够靠后）任意小，第二项由 ⑤ 任意小。故 $$fₙ → f$$ 依测度。∎",
+   "note": "② 里 $$∑ 2⁻ᵏ < ∞$$ 是关键 —— 正是这一条让「坏集合的尾并」趋于零，也就是 Borel–Cantelli 的精神。"
+  },
+  {
+   "id": "imp.L1-measure",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.integrable"
+   ],
+   "target": "prop.L1-implies-measure",
+   "title": "Markov 不等式 ⟹ L¹ 收敛蕴含依测度收敛",
+   "proof": "**Markov 不等式**：设 $$g$$ 可测非负，则对任意 ε > 0，\n\n$$μ({g ≥ ε}) ≤ 1 / ε ∫ g dμ$$\n\n证明：在 $${g ≥ ε}$$ 上有 $$ε ≤ g$$，即 $$ε χ_{{g ≥ ε}} ≤ g$$；两边积分得 $$ε·μ({g ≥ ε}) ≤ ∫ g$$。\n\n取 $$g = |fₙ − f|$$。给定 δ > 0，\n\n$$μ({|fₙ − f| > δ}) ≤ 1 / δ ∫ |fₙ − f| dμ → 0$$\n\n（最后一步正是 L¹ 收敛的定义。）再对任意 ε > 0 取 n 足够大即可。∎",
+   "note": ""
+  },
+  {
+   "id": "imp.egorov",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.convergence-modes"
+   ],
+   "target": "thm.egorov",
+   "title": "a.e. 收敛 + 有限测度 ⟹ 近一致",
+   "proof": "设 $$fₙ → f$$ a.e.，$$μ(X) < ∞$$。\n\n**① 收敛点集与坏集合。** 令 $$F = {x : fₙ(x) → f(x)}$$，则 $$μ(Fᶜ) = 0$$。对每个固定的 k ∈ ℕ 令\n\n$$Eₙ(k) = ⋃_{m ≥ n} {x : |fₘ(x) − f(x)| ≥ k⁻¹}$$\n\n（「从第 n 项起还有偏差 ≥ 1/k 的点」）。\n\n**② 对固定 k，$$Eₙ(k)$$ 随 n 递减，且 $$⋂ₙ Eₙ(k) = Fᶜ$$。**（若 x 最终偏差都 < 1/k，就不在任何足够靠后的 $$Eₙ(k)$$ 里。）\n\n**③ 用有限测度取极限。** 由 $$μ(X) < ∞$$ 与测度的上连续性（递减列），\n\n$$μ(Eₙ(k)) → μ(Fᶜ) = 0　(n → ∞)$$\n\n**④ 挑出「足够快趋于 0」的那些 n。** 给定 ε > 0，对每个 k 选 $$nₖ$$ 使\n\n$$μ(E_{nₖ}(k)) < ε · 2⁻ᵏ$$\n\n**⑤ 并起来。** 令 $$E = ⋃ₖ E_{nₖ}(k)$$。则\n\n$$μ(E) ≤ ∑ₖ μ(E_{nₖ}(k)) < ε · ∑ₖ 2⁻ᵏ = ε$$\n\n**⑥ 在 $$Eᶜ$$ 上一致收敛。** 取 $$x ∉ E$$。对任意 k，$$x ∉ E_{nₖ}(k)$$，即对一切 $$n ≥ nₖ$$ 有\n\n$$|fₙ(x) − f(x)| < k⁻¹$$\n\n这正是「$$fₙ ⇉ f$$ 在 $$Eᶜ$$ 上」的定义（给定精度 $$k⁻¹$$ ≤ ε 后，取 $$N = nₖ$$）。∎\n\n> ⚠ ③ 是唯一用到 $$μ(X) < ∞$$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。",
+   "note": ""
+  },
+  {
+   "id": "imp.lusin",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.approximation-L1",
+    "thm.egorov"
+   ],
+   "target": "cor.lusin",
+   "title": "简单函数逼近 + Egorov ⟹ Lusin",
+   "proof": "**① 先用简单函数逼近。** 由「L¹ 里的逼近」，取简单函数列 $${φₙ}$$ 使 $$∫|f − φₙ| → 0$$；取子列还可保证 $$φₙ → f$$ a.e.（由 L¹ 收敛 ⟹ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。\n\n**② 先对「指示函数」办到。** 对可测集 A ⊆ [a, b] 与任意 ε > 0，由测度的正则性可找到紧集 E ⊆ A 使 $$μ(A ∖ E) < ε$$，于是 $$χ_A|_{E}$$ 连续（在 E 上恒为 1）。有限多个这样的紧集取交，就能让一整个简单函数在某个紧集上连续。\n\n**③ 用 Egorov 把「几乎处处」升级成「一致」。** 把 ①② 得到的「在紧集上连续」逐步加细：取一列越来越好的紧集，用 Egorov 保证 $$φₙ → f$$ 在某块丢掉任意小测度的集合后**一致**收敛。一致收敛保持连续性，故 f 限制在剩下的那个紧集上连续。\n\n**④ 收尾。** 每一步丢掉的测度都可以预先取得任意小，全部并起来仍小于 ε（把 ε 预先换成 ε/3、ε/9、… 再求和）。于是得到一个紧集 E ⊆ [a, b]，$$μ(Eᶜ) < ε$$ 且 $$f|_E$$ 连续。∎\n\n> ⭐ 核心思想与 Egorov 一样是「**丢掉一小块，换取好性质**」：这次换到的是连续性。",
+   "note": "笔记里 Lusin 是紧接在 Egorov 之后作为 Cor. 写的，路线也确实是「Egorov + 简单函数逼近」。"
+  },
+  {
+   "id": "def-link.modes-counterexamples",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.convergence-modes",
+   "usedBy": "prop.convergence-counterexamples",
+   "note": "四个反例各自击破一种收敛的逆命题。"
+  },
+  {
+   "id": "def-link.modes-egorov",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.convergence-modes",
+   "usedBy": "thm.egorov",
+   "note": "Egorov 定理说的是其中两种收敛（a.e. 与近一致）的关系。"
+  },
+  {
+   "id": "def-link.cauchy-thm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cauchy-in-measure",
+   "usedBy": "thm.cauchy-in-measure",
+   "note": "定理把「依测度 Cauchy」升级成「依测度收敛 + a.e. 子列」。"
+  },
+  {
+   "id": "def-link.integrable-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "prop.L1-implies-measure",
+   "note": "L¹ 收敛的定义里用到 ∫|fₙ − f|。"
+  },
+  {
+   "id": "def-link.modes-L1",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.convergence-modes",
+   "usedBy": "prop.L1-implies-measure",
+   "note": "两种收敛的定义直接对照。"
+  },
+  {
+   "id": "def-link.measure-egorov",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "thm.egorov",
+   "note": "证明的 ③ 靠测度的上连续性，而那是可数可加性的推论。"
+  },
+  {
+   "id": "imp.product-measure",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.premeasure",
+    "thm.caratheodory"
+   ],
+   "target": "def.product-measure",
+   "title": "矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度",
+   "proof": "**① π 是良定义的。** 设 E 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$Aⱼ ∩ Aₖ′$$ × $$Bⱼ ∩ Bₖ′$$），π 的值不变 —— 因为 μ、ν 在各自那一侧都是有限可加的。\n\n**② π 是 𝒜 上的预测度。** 𝒜 = 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 μ、ν 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。\n\n**③ 用 Carathéodory 扩张。** 由「预测度 → 外测度 → 可测集 → 扩张测度」那一整套：π 诱导出 X × Y 上的外测度 μ*，全体 μ*-可测集构成 σ-代数，μ* 在其上成为测度；而代数 𝒜 中每个集合都是 μ*-可测的，且 μ*|_𝒜 = π。\n\n**④ 落到 ℳ ⊗ 𝒩 上。** 𝒜 含所有矩形，故 𝒜 生成 ℳ ⊗ 𝒩 ⊆ (μ*-可测集)；把 μ* 限制在 ℳ ⊗ 𝒩 上，就是所要的测度 μ × ν，它在矩形上取值 $$μ × ν(A × B) = μ(A) ν(B)$$。∎\n\n> ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。",
+   "note": ""
+  },
+  {
+   "id": "imp.section-measurable",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.section"
+   ],
+   "target": "prop.section-measurable",
+   "title": "截口的定义 ⟹ 截口保持可测性",
+   "proof": "**(a)** 令 $$ℛ = {E ⊆ X × Y : Eₓ ∈ 𝒩 且 Eʸ ∈ ℳ　∀(x, y) ∈ X × Y}$$。\n\n- **ℛ 含所有矩形**：若 $$E = A × B$$，则\n\n$$Eₓ = B　(x ∈ A)，　Eₓ = ∅　(x ∉ A)$$\n\n两边都在 𝒩 里（𝒩 含 ∅）；横截口同理。\n\n- **ℛ 是 σ-代数**：截口运算保持并、交、补 —— 例如 $$(⋃ₙ E^{(n)})ₓ = ⋃ₙ E^{(n)}ₓ$$、$$(Eᶜ)ₓ = (Eₓ)ᶜ$$（这里用的是 Y 在 X × Y 中的「竖条」补集）。故 ℛ 对可数并与补封闭。\n\n于是 ℛ ⊇ ℳ(矩形族) = ℳ ⊗ 𝒩，(a) 得证。\n\n**(b)** 设 f 是 ℳ⊗𝒩-可测，B ⊆ ℂ 可测。则\n\n$$fₓ⁻¹(B) = {y : f(x, y) ∈ B} = (f⁻¹(B))ₓ$$\n\n而 $$f⁻¹(B) ∈ ℳ ⊗ 𝒩$$，由 (a) 它的纵截口属于 𝒩，即 $$fₓ⁻¹(B) ∈ 𝒩$$。所以 $$fₓ$$ 可测。横截口同理。∎",
+   "note": ""
+  },
+  {
+   "id": "imp.product-sections",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "lem.monotone-class-lemma",
+    "prop.section-measurable"
+   ],
+   "target": "thm.product-measure-sections",
+   "title": "单调类引理 ⟹ 乘积测度由截口积分给出",
+   "proof": "**① 先设 μ、ν 有限。** 令 $$𝒞 = {E ∈ ℳ ⊗ 𝒩 : x ↦ ν(Eₓ) 可测，y ↦ μ(Eʸ) 可测，且 μ×ν(E) = ∫ν(Eₓ)dμ = ∫μ(Eʸ)dν}$$。\n\n**② 矩形在 𝒞 里。** 若 $$E = A × B$$，则 $$ν(Eₓ) = χ_A(x)·ν(B)$$，它是可测的（指示函数 × 常数），且\n\n$$∫ ν(Eₓ) dμ(x) = ν(B)·μ(A) = μ × ν(A × B)$$\n\n**③ 𝒞 对递增并封闭。** 若 $$E₁ ⊆ E₂ ⊆ ⋯$$ 都在 𝒞 中、$$E = ⋃ Eₙ$$：则 $$ν((Eₙ)ₓ) ↗ ν(Eₓ)$$（测度的下连续性），由 MCT 得 $$x ↦ ν(Eₓ)$$ 可测且 $$∫ν(Eₓ)dμ = lim ∫ν((Eₙ)ₓ)dμ = lim μ×ν(Eₙ) = μ×ν(E)$$。\n\n**④ 𝒞 对递减交封闭。** 若 $$E₁ ⊇ E₂ ⊇ ⋯$$、$$E = ⋂Eₙ$$：因为测度有限，可以用 DCT（控制函数是常数 $$ν(Y) < ∞$$）得到同样的等式。\n\n**⑤ 用单调类引理。** 由 ①②③④，𝒞 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 𝒞 含这个代数；由单调类引理，$$𝔪(代数) = ℳ(代数) = ℳ ⊗ 𝒩$$，于是 𝒞 = ℳ ⊗ 𝒩。\n\n**⑥ 推广到 σ-有限。** 取 $$X = ⋃ᵢ Xᵢ$$、$$Y = ⋃ᵢ Yᵢ$$（各自测度有限），则 $$X × Y = ⋃ᵢ (Xᵢ × Yᵢ)$$。对每个 i，把 ⑤ 用在 $$E ∩ (Xᵢ × Yᵢ)$$ 上（这一步只用到**有限**测度）；再把 i 加起来，用 MCT 对 i 求极限即可。∎\n\n> ⚠ σ-有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。",
+   "note": ""
+  },
+  {
+   "id": "imp.tonelli",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.product-measure-sections",
+    "thm.mct"
+   ],
+   "target": "thm.fubini-tonelli",
+   "title": "集合版（截口公式）+ MCT ⟹ Tonelli",
+   "proof": "**① 指示函数。** 取 $$f = χ_E$$（$$E ∈ ℳ ⊗ 𝒩$$）。此时\n\n$$∫_Y f(x, y) dν(y) = ν(Eₓ)，　∫_X f(x, y) dμ(x) = μ(Eʸ)$$\n\n于是三重等式正是上一条定理的内容。\n\n**② 简单函数。** 由线性推广到 $$f = ∑ⱼ aⱼ χ_{Eⱼ}$$（$$aⱼ ≥ 0$$，Eⱼ 不交）。\n\n**③ 非负可测函数。** 取简单函数列 $${fₙ} ↗ f$$（简单函数逼近定理）。令\n\n$$gₙ(x) = ∫ fₙ(x, y) dν(y)，　g(x) = ∫ f(x, y) dν(y)$$\n\n由 $$fₙ ↑ f$$ 与积分的单调性，$${gₙ}$$ 递增；由 **MCT**，$$g = limₙ gₙ$$ 且\n\n$$∫ g dμ = limₙ ∫ gₙ dμ$$\n\n再由 ② 对每个 n 的三重等式，\n\n$$∫ gₙ dμ = ∫ fₙ d(μ × ν)$$\n\n于是\n\n$$∫_X ( ∫_Y f dν ) dμ = limₙ ∫ fₙ d(μ × ν) = ∫ f d(μ × ν)$$\n\n（最后一步又用一次 MCT。）另一边对称。**这就是 Tonelli，全程不需要可积性。**\n\n**④ Fubini。** 设 $$f ∈ L¹(μ × ν)$$。把 f 拆成 $$Re f⁺、Re f⁻、Im f⁺、Im f⁻$$ 四个非负部分，对每一部分用 ③。由\n\n$$∫ |f| d(μ × ν) < ∞$$\n\n和 ③ 的三重等式，得到 $$∫_X (∫_Y |f| dν) dμ < ∞$$，故 $$∫_Y |f(x, ·)| dν < ∞$$ 对 **a.e.** x 成立 —— 即 $$fₓ ∈ L¹(ν)$$ a.e.；同理 $$fʸ ∈ L¹(μ)$$ a.e.。既然两个累次积分都已经是有限数，就可以直接相减、不再有 ∞ − ∞ 的危险，三重等式对 f 成立。∎\n\n> ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。",
+   "note": ""
+  },
+  {
+   "id": "imp.fubini-complete",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.fubini-tonelli",
+    "thm.completion",
+    "prop.product-incomplete"
+   ],
+   "target": "thm.fubini-complete",
+   "title": "乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T",
+   "proof": "**① 先证 f ≥ 0 的情形。** 由于 λ 是 μ×ν 的完备化，$$ℒ$$ 中的集合可以写成\n\n$$E = F ∪ G，　F ∈ ℳ ⊗ 𝒩，　G ⊆ H，　μ × ν(H) = 0$$\n\n（取不交化后即 $$E = F ⊔ G$$，于是 $$χ_E = χ_F + χ_G$$。）\n\n**② $$χ_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（F ∈ ℳ⊗𝒩）。\n\n**③ $$χ_G$$ 那一半也没问题** —— 因为 $$G ⊆ H$$ 而 μ×ν(H) = 0，所以对**每一个** x 都有 $$ν(Gₓ) ≤ ν(Hₓ) = 0$$（H 的截口是 ν-零集，这一步用截口公式对 H 本身成立），于是\n\n$$∫ χ_G dλ = 0 = ∫ ( ∫ χ_G dν ) dμ$$\n\n两边都是 0。（对 a.e. 的 x，$$Gₓ$$ 是 ν-零集。）\n\n**④ 由线性推广到非负简单函数，再用 MCT 推广到一切 $$f ≥ 0$$。** 关键点：完备化只多出「含在零集里的部分」，而这部分对积分的贡献恒为 0，所以整段论证不会被破坏。\n\n**⑤ 一般情形**：把 f 拆成 $$Re f^±、Im f^±$$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎\n\n> 笔记里的原话把要点概括得很准：**「应该是核心思想，其余都类似。」** —— 核心就是把 E 拆成 F ⊔ G，F 归老定理、G 归「截口都是零集」。",
+   "note": ""
+  },
+  {
+   "id": "imp.product-incomplete",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.product-measure"
+   ],
+   "target": "prop.product-incomplete",
+   "title": "乘积测度通常不完备",
+   "proof": "取 $$X = Y = [0, 1]$$，μ = ν = Lebesgue 测度（都是完备的）。令\n\n$$D = {(x, x) : x ∈ [0, 1]}$$\n\n则 D 是闭集，故属于 $$𝔅_{[0,1]} ⊗ 𝔅_{[0,1]}$$；且 $$μ × ν(D)$$ 可以用截口公式算：对每个 x，$$ν(Dₓ) = ν({x}) = 0$$，故\n\n$$μ × ν(D) = ∫ ν(Dₓ) dμ(x) = 0$$\n\n**关键**：取一个 Lebesgue 测度为 0 但**不可测**（不属 𝔅_{[0,1]}）的子集 $$N ⊆ [0,1]$$，令\n\n$$G = {(x, x) : x ∈ N} ⊆ D$$\n\n则 G ⊆ D 而 μ×ν(D) = 0，但 G **不属于** $$𝔅 ⊗ 𝔅$$（它的截口给出的正是 N —— 若 $$G ∈ 𝔅 ⊗ 𝔅$$，由截口可测性，对每个 x 都有 $$Gₓ ∈ 𝔅$$，而 $$Gₓ$$ 是 {x} 或 ∅ …… 需要用「G 的截面沿对角线还原出 N」这一论证）。故 μ×ν 不完备。∎\n\n> ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。",
+   "note": "这段论证的方向是对的，但「G ∉ 𝔅 ⊗ 𝔅」那一步的细节（如何从截面还原出 N）笔记里没有展开，我按标准做法补了骨架；如果你想写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。"
+  },
+  {
+   "id": "def-link.productmeasure-premeasure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.premeasure",
+   "usedBy": "def.product-measure",
+   "note": "矩形上的 π 就是一个预测度。"
+  },
+  {
+   "id": "def-link.productmeasure-sigma",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-sigma",
+   "usedBy": "def.product-measure",
+   "note": "乘积测度定义在积 σ-代数 ℳ ⊗ 𝒩 上。"
+  },
+  {
+   "id": "def-link.section-props",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.section",
+   "usedBy": "prop.section-measurable",
+   "note": "直接验证截口的运算性质。"
+  },
+  {
+   "id": "def-link.monotoneclass-lemma",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.monotone-class",
+   "usedBy": "lem.monotone-class-lemma",
+   "note": "单调类引理说的正是单调类与 σ-代数何时重合。"
+  },
+  {
+   "id": "def-link.generated-monotone-lemma",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.generated-sigma",
+   "usedBy": "lem.monotone-class-lemma",
+   "note": "陈述里用到 𝔪(𝒜) 与 ℳ(𝒜) 两个生成记号。"
+  },
+  {
+   "id": "def-link.productmeasure-sections-thm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-measure",
+   "usedBy": "thm.product-measure-sections",
+   "note": "定理算的就是乘积测度。"
+  },
+  {
+   "id": "def-link.section-fubini",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.section",
+   "usedBy": "thm.fubini-tonelli",
+   "note": "Fubini 的整个陈述都是用截口写的。"
+  },
+  {
+   "id": "def-link.productmeasure-fubini",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-measure",
+   "usedBy": "thm.fubini-tonelli",
+   "note": "重积分就是对 μ × ν 积分。"
+  },
+  {
+   "id": "def-link.integrable-fubini",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "thm.fubini-tonelli",
+   "note": "Fubini 的 (b) 用的是 L¹(μ×ν)。"
+  },
+  {
+   "id": "def-link.productmeasure-complete",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-measure",
+   "usedBy": "thm.fubini-complete",
+   "note": "完备情形下先要把 μ × ν 完备化。"
+  },
+  {
+   "id": "def-link.completion-fubini",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.null-set",
+   "usedBy": "thm.fubini-complete",
+   "note": "证明的核心是把集合拆成「属于 ℳ⊗𝒩 的部分」+「含在零集里的部分」。"
   },
   {
    "id": "def-link.sep-subset",
@@ -3476,7 +4075,7 @@
   {
    "a": "analysis.integral",
    "b": "analysis.measure",
-   "count": 8,
+   "count": 16,
    "label": "",
    "explicit": false
   },
