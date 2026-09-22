@@ -264,7 +264,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', '复值'],
       statement: [
-        '设 $$f : X \\to \\mathbb{R}̄$$ 可测，记正部与负部',
+        '设 $$f : X \\to \\bar{\\mathbb{R}}$$ 可测，记正部与负部',
         '',
         '$$f^+ = \\max_{f, 0}，　f^- = \\max_{-f, 0}$$',
         '',

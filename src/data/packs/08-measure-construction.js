@@ -177,13 +177,13 @@ window.MG = window.MG || {};
       statement: [
         '设 (X, ℳ, μ) 是测度空间。令',
         '',
-        '$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}，　\\mathcal{M}̄ = \\{ E \\cup F : E \\in \\mathcal{M}，F \\subseteq N 对某个 N \\in \\mathcal{N} \\}$$',
+        '$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}，　\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}，F \\subseteq N 对某个 N \\in \\mathcal{N} \\}$$',
         '',
         '则',
         '',
         '1. ℳ̄ 是一个 σ-代数，且 ℳ ⊆ ℳ̄；',
-        '2. 令 $$\\mū(E \\cup F) := \\mu(E)$$，它是 ℳ̄ 上良定义的测度；',
-        '3. $$(X, \\mathcal{M}̄, \\mū)$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。'
+        '2. 令 $$\\bar{\\mu}(E \\cup F) := \\mu(E)$$，它是 ℳ̄ 上良定义的测度；',
+        '3. $$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。'
       ].join('\n'),
       notes: [
         'ℳ̄ 的直观：在原来的可测集上「撒一点零集的小碎片」。',

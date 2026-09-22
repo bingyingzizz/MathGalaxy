@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T06:59:36.340Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T07:05:56.578Z
 > 6 星系 / 13 星团 / 180 节点 / 213 连线（强边 209，弱边 4）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
@@ -1009,13 +1009,13 @@ $$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \
 
 设 (X, ℳ, μ) 是测度空间。令
 
-$$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}，　\mathcal{M}̄ = \{ E \cup F : E \in \mathcal{M}，F \subseteq N 对某个 N \in \mathcal{N} \}$$
+$$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}，　\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M}，F \subseteq N 对某个 N \in \mathcal{N} \}$$
 
 则
 
 1. ℳ̄ 是一个 σ-代数，且 ℳ ⊆ ℳ̄；
-2. 令 $$\mū(E \cup F) := \mu(E)$$，它是 ℳ̄ 上良定义的测度；
-3. $$(X, \mathcal{M}̄, \mū)$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。
+2. 令 $$\bar{\mu}(E \cup F) := \mu(E)$$，它是 ℳ̄ 上良定义的测度；
+3. $$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。
 
 ℳ̄ 的直观：在原来的可测集上「撒一点零集的小碎片」。
 
@@ -1387,9 +1387,9 @@ $$\{f \ne g\} = F$$
 #### 完备化后可改在零集上　`prop.completion-measurable-function`
 *命题*　命题：完备化空间上的可测函数，几乎处处等于一个原空间可测函数
 
-设 (X, ℳ, μ) 是测度空间，$$(X, \mathcal{M}̄, \mū)$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\mathcal{M}̄$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使
+设 (X, ℳ, μ) 是测度空间，$$(X, \bar{\mathcal{M}}, \bar{\mu})$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\bar{\mathcal{M}}$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使
 
-$$f = g　\mū-a.e.$$
+$$f = g　\bar{\mu}-a.e.$$
 
 直观：完备化只多加了零集的子集，所以 ℳ̄-可测函数与 ℳ-可测函数只差在零集上的取值。
 
@@ -1577,7 +1577,7 @@ a.e. 收敛时 $$lim inf f_n = f$$，直接套 Fatou 引理即可。
 #### 复函数的积分　`def.integral-complex`
 *定义*　复值函数的积分：正负部相减
 
-设 $$f : X \to \mathbb{R}̄$$ 可测，记正部与负部
+设 $$f : X \to \bar{\mathbb{R}}$$ 可测，记正部与负部
 
 $$f^+ = \max_{f, 0}，　f^- = \max_{-f, 0}$$
 
@@ -5606,7 +5606,7 @@ $$\|g_n\|_q \le \left\| \Phi|_{L^p(E_n)} \right\| \le \|\Phi\|$$
 
 **Step 3：$\mu$ 任意（此时 $p > 1$，故 $q < \infty$）。** 对每个 σ-有限集 $E \subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \in L^q(E)$ 使 $\Phi(f) = \int f g_E$ 对一切 $f \in L^p(E)$ 成立，且 $\|g_E\|_q \le \|\Phi\|$。若 $F \supseteq E$ 也 σ-有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\|g_F\|_q \ge \|g_E\|_q$。令
 
-$$M := \sup \{\, \|g_E\|_q : E \text{ 是 \sigma-有限集} \,\} \le \|\Phi\|$$
+$$M := \sup \{\, \|g_E\|_q : E \text{ 是 }\sigma\text{-有限集} \,\} \le \|\Phi\|$$
 
 取 $\{E_n\}$ 使 $\|g_{E_n}\|_q \to M$，令 $F = \bigcup_n E_n$（仍 σ-有限）。则 $\|g_F\|_q \ge \|g_{E_n}\|_q$ 对一切 $n$ 成立，故 $\|g_F\|_q = M$。
 

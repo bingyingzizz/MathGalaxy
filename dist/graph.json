@@ -2,7 +2,7 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T06:59:36.340Z",
+  "generated": "2026-09-22T07:05:56.578Z",
   "counts": {
    "regions": 6,
    "clusters": 13,
@@ -1580,7 +1580,7 @@
     "完备化",
     "零集"
    ],
-   "statement": "设 (X, ℳ, μ) 是测度空间。令\n\n$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}，　\\mathcal{M}̄ = \\{ E \\cup F : E \\in \\mathcal{M}，F \\subseteq N 对某个 N \\in \\mathcal{N} \\}$$\n\n则\n\n1. ℳ̄ 是一个 σ-代数，且 ℳ ⊆ ℳ̄；\n2. 令 $$\\mū(E \\cup F) := \\mu(E)$$，它是 ℳ̄ 上良定义的测度；\n3. $$(X, \\mathcal{M}̄, \\mū)$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。",
+   "statement": "设 (X, ℳ, μ) 是测度空间。令\n\n$$\\mathcal{N} = \\{ N \\in \\mathcal{M} : \\mu(N) = 0 \\}，　\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}，F \\subseteq N 对某个 N \\in \\mathcal{N} \\}$$\n\n则\n\n1. ℳ̄ 是一个 σ-代数，且 ℳ ⊆ ℳ̄；\n2. 令 $$\\bar{\\mu}(E \\cup F) := \\mu(E)$$，它是 ℳ̄ 上良定义的测度；\n3. $$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是**完备**测度空间，称为 (X, ℳ, μ) 的**完备化**。",
    "notes": "ℳ̄ 的直观：在原来的可测集上「撒一点零集的小碎片」。\n\n**良定义是要检查的**：E ∪ F 的写法不唯一，若 E₁ ∪ F₁ = E₂ ∪ F₂，要证明 μ(E₁) = μ(E₂)。做法是用 E₁ ⊆ E₂ ∪ N₂（N₂ 零集）得 μ(E₁) ≤ μ(E₂)，反向同理。\n\n⚠ 完备化是「把零集的子集塞进来」，代价是 σ-代数变大、测度不变。",
    "refs": [
     "Halmos, Measure Theory, §13",
@@ -2007,7 +2007,7 @@
     "完备化",
     "可测函数"
    ],
-   "statement": "设 (X, ℳ, μ) 是测度空间，$$(X, \\mathcal{M}̄, \\mū)$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\\mathcal{M}̄$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使\n\n$$f = g　\\mū-a.e.$$",
+   "statement": "设 (X, ℳ, μ) 是测度空间，$$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\\bar{\\mathcal{M}}$$-可测的函数，则存在 **ℳ-可测**的函数 $$g$$ 使\n\n$$f = g　\\bar{\\mu}-a.e.$$",
    "notes": "直观：完备化只多加了零集的子集，所以 ℳ̄-可测函数与 ℳ-可测函数只差在零集上的取值。\n\n证明思路（笔记里写的）：先看 $$f = \\chi_E$$ 的情形（此时 E = E′ ∪ F，E′ ∈ ℳ、F 含于零集，取 $$g = \\chi_{E′}$$）；对 ℳ-可测的简单函数显然；一般情形取简单函数列 $$\\{\\varphi_n\\} \\to f$$，每个 $$\\varphi_n$$ 在某个 ℳ̄-零集 $$E_n$$ 外等于一个 ℳ-可测的 $$\\psi_n$$。把零集并起来得 $$N \\in \\mathcal{M}$$，$$\\mu(N) = 0$$，$$N \\supseteq \\bigcup E_n$$，令\n\n\n\n$$g = lim_n \\chi_{N^c} \\cdot \\varphi_n$$\n\n\n\n则 $$g = f$$ 在 $$N^c$$ 上成立，且 $$g$$ 是 ℳ-可测的。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.12"
@@ -2255,7 +2255,7 @@
     "积分",
     "复值"
    ],
-   "statement": "设 $$f : X \\to \\mathbb{R}̄$$ 可测，记正部与负部\n\n$$f^+ = \\max_{f, 0}，　f^- = \\max_{-f, 0}$$\n\n（两者都属于 L⁺，且 $$f = f^+ − f^-$$、$$|f| = f^+ + f^-$$。）若 $$\\int f^+$$ 与 $$\\int f^-$$ 中**至少一个有限**，定义\n\n$$\\int f := \\int f^+ − \\int f^-$$\n\n对复值函数，拆实部虚部：$$\\int f := \\int Re f + i \\int Im f$$（要求两个积分都有意义）。",
+   "statement": "设 $$f : X \\to \\bar{\\mathbb{R}}$$ 可测，记正部与负部\n\n$$f^+ = \\max_{f, 0}，　f^- = \\max_{-f, 0}$$\n\n（两者都属于 L⁺，且 $$f = f^+ − f^-$$、$$|f| = f^+ + f^-$$。）若 $$\\int f^+$$ 与 $$\\int f^-$$ 中**至少一个有限**，定义\n\n$$\\int f := \\int f^+ − \\int f^-$$\n\n对复值函数，拆实部虚部：$$\\int f := \\int Re f + i \\int Im f$$（要求两个积分都有意义）。",
    "notes": "⚠ 「至少一个有限」是为了避免 ∞ − ∞：那是不定式，必须排除。\n\n若两个都有限，就说 f **可积**（见下一条）。\n\n对复值函数，$$Re f$$ 与 $$Im f$$ 可积 ⟺ f 可积，因为 $$|Re f|, |Im f| \\le |f| \\le |Re f| + |Im f|$$。",
    "refs": [
     "Folland, Real Analysis, §2.3"
@@ -5934,7 +5934,7 @@
    ],
    "target": "thm.riesz-representation-lp",
    "title": "把泛函变成测度 ⟹ $(L^p)^* \\cong L^q$",
-   "proof": "设 $1 < p < \\infty$、$\\Phi \\in (L^p)^*$。\n\n**Step 1：先设 $\\mu$ 有限。** 此时所有简单函数都在 $L^p$ 里。定义\n\n$$\\nu(E) := \\Phi(\\chi_E) \\qquad (E \\in \\mathcal{M})$$\n\n**① $\\nu$ 是复测度。** 设 $E = \\bigsqcup_j E_j$，则 $\\chi_E = \\sum_{j} \\chi_{E_j}$。而\n\n$$\\left\\| \\chi_E - \\sum_{j \\le n} \\chi_{E_j} \\right\\|_p = \\left\\| \\sum_{j > n} \\chi_{E_j} \\right\\|_p = \\mu\\left( \\bigsqcup_{j>n} E_j \\right)^{1/p} \\to 0$$\n\n由 $\\Phi$ 的连续性，$\\nu(E) = \\sum_j \\nu(E_j)$ —— 正是复测度的定义。\n\n**② $\\nu \\ll \\mu$。** 若 $\\mu(E) = 0$，则 $\\chi_E = 0$ 于 $L^p$，故 $\\nu(E) = 0$。\n\n**③ 用 Radon–Nikodym。** 存在 $g \\in L^1(\\mu)$ 使 $\\nu(E) = \\int_E g \\, d\\mu$，即\n\n$$\\Phi(\\chi_E) = \\int \\chi_E g \\, d\\mu$$\n对一切简单函数 $f$ 就有 $\\Phi(f) = \\int fg \\, d\\mu$（线性）。\n\n**④ 把 $g$ 提升到 $L^q$。** 由 $\\left| \\int fg \\right| = |\\Phi(f)| \\le \\|\\Phi\\| \\, \\|f\\|_p$，有界泛函那条命题给出 $g \\in L^q$ 且 $\\|g\\|_q \\le \\|\\Phi\\|$。再由稠密性（简单函数在 $L^p$ 稠密、$\\Phi$ 连续）得 $\\Phi(f) = \\int fg$ 对**一切** $f \\in L^p$ 成立。\n\n**Step 2：$\\mu$ σ-有限。** 取 $\\{E_n\\} \\uparrow$、$0 < \\mu(E_n) < \\infty$、$X = \\bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \\in L^q(E_n)$，且\n\n$$\\|g_n\\|_q \\le \\left\\| \\Phi|_{L^p(E_n)} \\right\\| \\le \\|\\Phi\\|$$\n唯一性（a.e.）给出 $g_n = g_m$ a.e. 于 $E_n$（$n < m$），所以它们拼成一个 a.e. 良定义的 $g$。由 **MCT**，$\\|g\\|_q = \\lim_n \\|g_n\\|_q \\le \\|\\Phi\\|$，故 $g \\in L^q$；而对 $f \\in L^p$，由 **DCT** $f\\chi_{E_n} \\to f$ 于 $L^p$，于是 $\\Phi(f) = \\lim_n \\Phi(f\\chi_{E_n}) = \\lim_n \\int_{E_n} fg = \\int fg$。\n\n**Step 3：$\\mu$ 任意（此时 $p > 1$，故 $q < \\infty$）。** 对每个 σ-有限集 $E \\subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \\in L^q(E)$ 使 $\\Phi(f) = \\int f g_E$ 对一切 $f \\in L^p(E)$ 成立，且 $\\|g_E\\|_q \\le \\|\\Phi\\|$。若 $F \\supseteq E$ 也 σ-有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\\|g_F\\|_q \\ge \\|g_E\\|_q$。令\n\n$$M := \\sup \\{\\, \\|g_E\\|_q : E \\text{ 是 \\sigma-有限集} \\,\\} \\le \\|\\Phi\\|$$\n\n取 $\\{E_n\\}$ 使 $\\|g_{E_n}\\|_q \\to M$，令 $F = \\bigcup_n E_n$（仍 σ-有限）。则 $\\|g_F\\|_q \\ge \\|g_{E_n}\\|_q$ 对一切 $n$ 成立，故 $\\|g_F\\|_q = M$。\n\n**$g_F$ 已经是我们要的那个 $g$**：设 $A \\supseteq F$ σ-有限，则\n\n$$\\int |g_F|^q + \\int |g_{A \\setminus F}|^q = \\int |g_A|^q \\le M^q = \\int |g_F|^q$$\n\n故 $g_{A \\setminus F} = 0$，即 $g_A = g_F$ a.e.。而对 $f \\in L^p$，集合 $A := F \\cup \\{f \\ne 0\\}$ 是 σ-有限的，于是 $\\Phi(f) = \\int f g_A = \\int f g_F$。取 $g = g_F$ 即可。∎",
+   "proof": "设 $1 < p < \\infty$、$\\Phi \\in (L^p)^*$。\n\n**Step 1：先设 $\\mu$ 有限。** 此时所有简单函数都在 $L^p$ 里。定义\n\n$$\\nu(E) := \\Phi(\\chi_E) \\qquad (E \\in \\mathcal{M})$$\n\n**① $\\nu$ 是复测度。** 设 $E = \\bigsqcup_j E_j$，则 $\\chi_E = \\sum_{j} \\chi_{E_j}$。而\n\n$$\\left\\| \\chi_E - \\sum_{j \\le n} \\chi_{E_j} \\right\\|_p = \\left\\| \\sum_{j > n} \\chi_{E_j} \\right\\|_p = \\mu\\left( \\bigsqcup_{j>n} E_j \\right)^{1/p} \\to 0$$\n\n由 $\\Phi$ 的连续性，$\\nu(E) = \\sum_j \\nu(E_j)$ —— 正是复测度的定义。\n\n**② $\\nu \\ll \\mu$。** 若 $\\mu(E) = 0$，则 $\\chi_E = 0$ 于 $L^p$，故 $\\nu(E) = 0$。\n\n**③ 用 Radon–Nikodym。** 存在 $g \\in L^1(\\mu)$ 使 $\\nu(E) = \\int_E g \\, d\\mu$，即\n\n$$\\Phi(\\chi_E) = \\int \\chi_E g \\, d\\mu$$\n对一切简单函数 $f$ 就有 $\\Phi(f) = \\int fg \\, d\\mu$（线性）。\n\n**④ 把 $g$ 提升到 $L^q$。** 由 $\\left| \\int fg \\right| = |\\Phi(f)| \\le \\|\\Phi\\| \\, \\|f\\|_p$，有界泛函那条命题给出 $g \\in L^q$ 且 $\\|g\\|_q \\le \\|\\Phi\\|$。再由稠密性（简单函数在 $L^p$ 稠密、$\\Phi$ 连续）得 $\\Phi(f) = \\int fg$ 对**一切** $f \\in L^p$ 成立。\n\n**Step 2：$\\mu$ σ-有限。** 取 $\\{E_n\\} \\uparrow$、$0 < \\mu(E_n) < \\infty$、$X = \\bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \\in L^q(E_n)$，且\n\n$$\\|g_n\\|_q \\le \\left\\| \\Phi|_{L^p(E_n)} \\right\\| \\le \\|\\Phi\\|$$\n唯一性（a.e.）给出 $g_n = g_m$ a.e. 于 $E_n$（$n < m$），所以它们拼成一个 a.e. 良定义的 $g$。由 **MCT**，$\\|g\\|_q = \\lim_n \\|g_n\\|_q \\le \\|\\Phi\\|$，故 $g \\in L^q$；而对 $f \\in L^p$，由 **DCT** $f\\chi_{E_n} \\to f$ 于 $L^p$，于是 $\\Phi(f) = \\lim_n \\Phi(f\\chi_{E_n}) = \\lim_n \\int_{E_n} fg = \\int fg$。\n\n**Step 3：$\\mu$ 任意（此时 $p > 1$，故 $q < \\infty$）。** 对每个 σ-有限集 $E \\subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \\in L^q(E)$ 使 $\\Phi(f) = \\int f g_E$ 对一切 $f \\in L^p(E)$ 成立，且 $\\|g_E\\|_q \\le \\|\\Phi\\|$。若 $F \\supseteq E$ 也 σ-有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\\|g_F\\|_q \\ge \\|g_E\\|_q$。令\n\n$$M := \\sup \\{\\, \\|g_E\\|_q : E \\text{ 是 }\\sigma\\text{-有限集} \\,\\} \\le \\|\\Phi\\|$$\n\n取 $\\{E_n\\}$ 使 $\\|g_{E_n}\\|_q \\to M$，令 $F = \\bigcup_n E_n$（仍 σ-有限）。则 $\\|g_F\\|_q \\ge \\|g_{E_n}\\|_q$ 对一切 $n$ 成立，故 $\\|g_F\\|_q = M$。\n\n**$g_F$ 已经是我们要的那个 $g$**：设 $A \\supseteq F$ σ-有限，则\n\n$$\\int |g_F|^q + \\int |g_{A \\setminus F}|^q = \\int |g_A|^q \\le M^q = \\int |g_F|^q$$\n\n故 $g_{A \\setminus F} = 0$，即 $g_A = g_F$ a.e.。而对 $f \\in L^p$，集合 $A := F \\cup \\{f \\ne 0\\}$ 是 σ-有限的，于是 $\\Phi(f) = \\int f g_A = \\int f g_F$。取 $g = g_F$ 即可。∎",
    "note": "⭐ Step 1 的核心思想：**把 $L^p$ 上的泛函限制在「特征函数」上，就得到一个测度**，再用 Radon–Nikodym 把测度变成函数。"
   },
   {
