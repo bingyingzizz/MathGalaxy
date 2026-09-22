@@ -2,18 +2,23 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-22T11:13:28.939Z",
+  "generated": "2026-09-22T11:26:55.418Z",
   "counts": {
    "regions": 6,
    "clusters": 15,
-   "nodes": 209,
-   "edges": 399,
-   "strong": 391,
+   "nodes": 208,
+   "edges": 400,
+   "strong": 392,
    "weak": 8
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
    "clusterMeaning": "星团 = 为了造出某个「能用的东西」而存在的一整套结果，内部关系密、对外整块连接",
+   "contentPolicy": {
+    "dedupe": "同一结论只录一次 —— 内容来自多门课程的笔记，重复的定理已合并成一个节点",
+    "mostGeneral": "只保留最通用的版本（条件最弱、结论最强）；特例写在 notes 里，除非它有独立用途",
+    "preferGeneral": "同一个结论有多种证法时，保留推广程度最高的那条路径"
+   },
    "edgeKind": {
     "implication": "推出（有向，sources → target）",
     "equivalence": "等价（无向，proofs 是两个方向的证明）",
@@ -73,7 +78,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 155
+   "nodeCount": 154
   }
  ],
  "clusters": [
@@ -268,7 +273,7 @@
    "name": "积分",
    "parent": "analysis",
    "desc": "造出 Lebesgue 积分：简单函数的加权和 → 非负函数的 sup → 单调收敛定理想把它撑到极限。",
-   "nodeCount": 46,
+   "nodeCount": 45,
    "nodes": [
     "def.measurable-function",
     "prop.measurable-criterion",
@@ -311,7 +316,6 @@
     "def.product-measure",
     "def.section",
     "prop.section-measurable",
-    "lem.monotone-class-lemma",
     "thm.product-measure-sections",
     "thm.fubini-tonelli",
     "thm.fubini-complete",
@@ -1433,9 +1437,10 @@
     "生成"
    ],
    "statement": "设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。则\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\text{ 且} \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
-   "notes": "**这条比教科书上的标准版更强，而且是对的。** 标准版（Halmos §6）要求 $\\mathcal{E}$ 本身是一个**代数**；这里只要求 $\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行 —— 条件松了一档。证明仍是单调类定理那三步，只是把「$\\mathcal{E}$ 是代数」换成这两条：\n\n**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。\n\n**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。\n\n**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。\n\n于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；反向恒成立，两边相等。（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）\n\n⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。\n\n不论哪个版本，定理的**用法**是一样的：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。\n\n这是测度论里最常用的证明模式之一，后面「唯一性」「可测函数逼近」都会用到它。",
+   "notes": "**这一条是「标准版 + 加强版」合起来的那一个版本。**\n\n**标准版**（Halmos §6 / Folland 2.37）：$\\mathcal{A}$ 是**代数** $\\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$。\n\n上面陈述的是**加强版**：把「$\\mathcal{E}$ 是代数」换成两条更弱的条件——$\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行。证明仍是单调类定理那三步：\n\n**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。\n\n**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。\n\n**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。\n\n于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；反向恒成立，两边相等。（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）\n\n⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。\n\n**用法**（不论哪个版本都一样）：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。\n\n⚠ 与「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 $+$ 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。",
    "refs": [
-    "Halmos, Measure Theory, §6"
+    "Halmos, Measure Theory, §6",
+    "Folland, Real Analysis, Theorem 2.37"
    ]
   },
   {
@@ -2776,28 +2781,6 @@
    ]
   },
   {
-   "id": "lem.monotone-class-lemma",
-   "type": "lemma",
-   "label": "单调类引理",
-   "title": "单调类引理（Monotone Class Lemma）",
-   "region": "analysis",
-   "regions": [
-    "analysis"
-   ],
-   "cluster": "analysis.integral",
-   "tags": [
-    "引理",
-    "单调类",
-    "代数"
-   ],
-   "statement": "若 $\\mathcal{A}$ 是一个**代数**，则由 $\\mathcal{A}$ 生成的单调类就是由 $\\mathcal{A}$ 生成的 $\\sigma$代数：\n\n$$\\mathcal{A}\\text{ 是代数} \\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$$",
-   "notes": "⭐ 这一条是证明「某个 $\\sigma$代数里所有集合都满足性质 $P$」的**标准武器**，用法固定两步：\n\n\n\n1. 验证 $P$ 对所有矩形（或 $\\mathcal{A}$ 中元素）成立；\n\n2. 验证「满足 $P$ 的集合」构成一个含 $\\mathcal{A}$ 的**单调类**。\n\n\n\n于是 $P$ 对 $\\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$ 中所有集合成立。\n\n⚠ 与「测度的构造」里那条「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 + 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。\n\n📌 标准形式就是「$\\mathcal{A}$ 是代数」这个前提。而 $\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E})$ 是它的**加强版**（条件松一档，只要求 $\\mathcal{E}$ 的补、并落进 $\\mathfrak{m}(\\mathcal{E})$），见「单调类定理」节点。",
-   "refs": [
-    "Folland, Real Analysis, Theorem 2.37",
-    "Halmos, Measure Theory, §6"
-   ]
-  },
-  {
    "id": "thm.product-measure-sections",
    "type": "theorem",
    "label": "乘积测度由截口给出",
@@ -2813,7 +2796,7 @@
     "截口"
    ],
    "statement": "设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是 **$\\sigma$有限**的，$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$。则\n\n- $$x \\mapsto \\nu(E_x)$$ 在 $X$ 上可测；\n- $$y \\mapsto \\mu(E^y)$$ 在 $Y$ 上可测；\n\n并且\n\n$$\\mu \\times \\nu(E) = \\int_X \\nu(E_x) d\\mu(x) = \\int_Y \\mu(E^y) d\\nu(y)$$",
-   "notes": "这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。\n\n证明的结构：先设 $\\mu$、$\\nu$ **有限**，令\n\n\n\n$$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} :\\text{ 上面两条都成立}\\}$$\n\n\n\n- 矩形 $$E = A \\times B$$：$$\\nu(E_x) = \\chi_A(x) \\nu(B)$$，立刻成立；\n\n$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；\n\n\n\n于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。\n\n最后把「有限」推广到「$\\sigma$有限」：取 $$X \\times Y = \\bigcup (X_i \\times Y_i)$$，对每个 $$E \\cap (X_i \\times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。",
+   "notes": "这是 Fubini 定理的「集合版本」—— 把函数换成指示函数就是 Fubini。\n\n证明的结构：先设 $\\mu$、$\\nu$ **有限**，令\n\n\n\n$$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} :\\text{ 上面两条都成立}\\}$$\n\n\n\n- 矩形 $$E = A \\times B$$：$$\\nu(E_x) = \\chi_A(x) \\nu(B)$$，立刻成立；\n\n$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；\n\n\n\n于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。\n\n最后把「有限」推广到「$\\sigma$有限」：取 $$X \\times Y = \\bigcup (X_i \\times Y_i)$$，对每个 $$E \\cap (X_i \\times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.36"
    ]
@@ -2835,7 +2818,7 @@
     "重积分"
    ],
    "statement": "设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 是 **$\\sigma$有限**的测度空间。\n\n**(a) Tonelli（非负情形，无附加条件）**：若 $$f \\in L^+(X \\times Y)$$，则\n\n$$\\int f_x d\\nu \\in L^+(X), \\quad  \\int f^y d\\mu \\in L^+(Y)$$\n\n且\n\n$$\\int f d(\\mu \\times \\nu) = \\int_X ( \\int_Y f(x, y) d\\nu(y) ) d\\mu(x) = \\int_Y ( \\int_X f(x, y) d\\mu(x) ) d\\nu(y)$$\n\n**(b) Fubini（可积情形）**：若 $$f \\in L^1(\\mu \\times \\nu)$$，则\n\n- $$f_x \\in L^1(\\nu)$$ 对 a.e. x 成立，$$f^y \\in L^1(\\mu)$$ 对 a.e. y 成立；\n- $$\\int f_x d\\nu \\in L^1(\\mu)$$、$$\\int f^y d\\mu \\in L^1(\\nu)$$（都在 a.e. 意义下有定义）；\n- 上面那两个三重等式同样成立。",
-   "notes": "⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。\n\n**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。\n\n⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。\n\n⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。",
+   "notes": "⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。\n\n**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。\n\n⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。\n\n⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.37"
    ]
@@ -5934,12 +5917,12 @@
    "kind": "implication",
    "strength": "strong",
    "sources": [
-    "lem.monotone-class-lemma",
+    "thm.monotone-class",
     "prop.section-measurable"
    ],
    "target": "thm.product-measure-sections",
-   "title": "单调类引理 ⟹ 乘积测度由截口积分给出",
-   "proof": "**① 先设 $\\mu$、$\\nu$ 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。\n\n**② 矩形在 $\\mathcal{C}$ 里。** 若 $$E = A \\times B$$，则 $$\\nu(E_x) = \\chi_A(x)\\cdot\\nu(B)$$，它是可测的（指示函数 $\\times$ 常数），且\n\n$$\\int \\nu(E_x) d\\mu(x) = \\nu(B)\\cdot\\mu(A) = \\mu \\times \\nu(A \\times B)$$\n\n**③ $\\mathcal{C}$ 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 $\\mathcal{C}$ 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) \\nearrow  \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = \\lim \\int\\nu((E_n)_x)d\\mu = \\lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。\n\n**④ $\\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。\n\n**⑤ 用单调类引理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类引理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} ⊗ \\mathcal{N}$。\n\n**⑥ 推广到 $\\sigma$有限。** 取 $$X = \\bigcup_i X_i$$、$$Y = \\bigcup_i Y_i$$（各自测度有限），则 $$X \\times Y = \\bigcup_i (X_i \\times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \\cap (X_i \\times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎\n\n$>$ ⚠ $\\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。",
+   "title": "单调类定理 ⟹ 乘积测度由截口积分给出",
+   "proof": "**① 先设 $\\mu$、$\\nu$ 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。\n\n**② 矩形在 $\\mathcal{C}$ 里。** 若 $$E = A \\times B$$，则 $$\\nu(E_x) = \\chi_A(x)\\cdot\\nu(B)$$，它是可测的（指示函数 $\\times$ 常数），且\n\n$$\\int \\nu(E_x) d\\mu(x) = \\nu(B)\\cdot\\mu(A) = \\mu \\times \\nu(A \\times B)$$\n\n**③ $\\mathcal{C}$ 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 $\\mathcal{C}$ 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) \\nearrow  \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = \\lim \\int\\nu((E_n)_x)d\\mu = \\lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。\n\n**④ $\\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。\n\n**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} ⊗ \\mathcal{N}$。\n\n**⑥ 推广到 $\\sigma$有限。** 取 $$X = \\bigcup_i X_i$$、$$Y = \\bigcup_i Y_i$$（各自测度有限），则 $$X \\times Y = \\bigcup_i (X_i \\times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \\cap (X_i \\times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎\n\n$>$ ⚠ $\\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。",
    "note": ""
   },
   {
@@ -6010,16 +5993,16 @@
    "kind": "definition",
    "strength": "strong",
    "definition": "def.monotone-class",
-   "usedBy": "lem.monotone-class-lemma",
-   "note": "单调类引理说的正是单调类与 $\\sigma$代数何时重合。"
+   "usedBy": "thm.product-measure-sections",
+   "note": "截口公式的证明走的正是单调类定理：先验证矩形成立，再说明「满足它的集合」构成一个单调类。"
   },
   {
    "id": "def-link.generated-monotone-lemma",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.generated-sigma",
-   "usedBy": "lem.monotone-class-lemma",
-   "note": "陈述里用到 $\\mathfrak{m}(\\mathcal{A})$ 与 $\\mathcal{M}(\\mathcal{A})$ 两个生成记号。"
+   "usedBy": "thm.monotone-class",
+   "note": "定理的陈述里用到 $\\mathfrak{m}(\\mathcal{E})$ 与 $\\mathcal{M}(\\mathcal{E})$ 两个生成记号。"
   },
   {
    "id": "def-link.productmeasure-sections-thm",
@@ -7233,9 +7216,17 @@
    "id": "def-link.pair-pairing",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.pair",
-   "usedBy": "ax.pair",
-   "note": "方向相反的一条：有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$ 的**构造**要用到配对公理才成为集合。"
+   "definition": "ax.pair",
+   "usedBy": "def.pair",
+   "note": "有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$ 的**构造**要用到**配对公理**，它才成为集合。"
+  },
+  {
+   "id": "def-link.pair-power",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "ax.power",
+   "usedBy": "def.pair",
+   "note": "同一个构造也要用到**幂集公理**：$\\{a, b\\}$ 的幂集里才装得下 $\\{\\{a\\}, \\{a, b\\}\\}$。"
   },
   {
    "id": "def-link.rel-pair",
@@ -8386,7 +8377,7 @@
   {
    "a": "set.construct",
    "b": "set.zfc",
-   "count": 9,
+   "count": 10,
    "label": "",
    "explicit": false
   },

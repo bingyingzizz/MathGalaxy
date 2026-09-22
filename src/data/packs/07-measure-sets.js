@@ -225,16 +225,18 @@ window.MG = window.MG || {};
         '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\text{ 且} \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$'
       ].join('\n'),
       notes: [
-        '**这条比教科书上的标准版更强，而且是对的。** 标准版（Halmos §6）要求 $\\mathcal{E}$ 本身是一个**代数**；这里只要求 $\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行 —— 条件松了一档。证明仍是单调类定理那三步，只是把「$\\mathcal{E}$ 是代数」换成这两条：',
+        '**这一条是「标准版 + 加强版」合起来的那一个版本。**',
+        '**标准版**（Halmos §6 / Folland 2.37）：$\\mathcal{A}$ 是**代数** $\\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$。',
+        '上面陈述的是**加强版**：把「$\\mathcal{E}$ 是代数」换成两条更弱的条件——$\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行。证明仍是单调类定理那三步：',
         '**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。',
         '**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。',
         '**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。',
         '于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；反向恒成立，两边相等。（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）',
         '⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。',
-        '不论哪个版本，定理的**用法**是一样的：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。',
-        '这是测度论里最常用的证明模式之一，后面「唯一性」「可测函数逼近」都会用到它。'
+        '**用法**（不论哪个版本都一样）：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。',
+        '⚠ 与「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 $+$ 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。'
       ].join('\n\n'),
-      refs: ['Halmos, Measure Theory, §6']
+      refs: ['Halmos, Measure Theory, §6', 'Folland, Real Analysis, Theorem 2.37']
     },
 
     {

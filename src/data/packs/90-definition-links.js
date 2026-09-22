@@ -42,9 +42,16 @@ window.MG = window.MG || {};
     {
       id: 'def-link.pair-pairing',
       kind: 'definition',
-      definition: 'def.pair',
-      usedBy: 'ax.pair',
-      note: '方向相反的一条：有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$ 的**构造**要用到配对公理才成为集合。'
+      definition: 'ax.pair',
+      usedBy: 'def.pair',
+      note: '有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$ 的**构造**要用到**配对公理**，它才成为集合。'
+    },
+    {
+      id: 'def-link.pair-power',
+      kind: 'definition',
+      definition: 'ax.power',
+      usedBy: 'def.pair',
+      note: '同一个构造也要用到**幂集公理**：$\\{a, b\\}$ 的幂集里才装得下 $\\{\\{a\\}, \\{a, b\\}\\}$。'
     },
     {
       id: 'def-link.rel-pair',

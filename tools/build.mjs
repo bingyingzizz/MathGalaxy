@@ -110,6 +110,11 @@ function exportJSON(MG, graph) {
       readingGuide: {
         layers: '星系(region) → 星团(cluster) → 恒星(node)',
         clusterMeaning: '星团 = 为了造出某个「能用的东西」而存在的一整套结果，内部关系密、对外整块连接',
+        contentPolicy: {
+          dedupe: '同一结论只录一次 —— 内容来自多门课程的笔记，重复的定理已合并成一个节点',
+          mostGeneral: '只保留最通用的版本（条件最弱、结论最强）；特例写在 notes 里，除非它有独立用途',
+          preferGeneral: '同一个结论有多种证法时，保留推广程度最高的那条路径',
+        },
         edgeKind: {
           implication: '推出（有向，sources → target）',
           equivalence: '等价（无向，proofs 是两个方向的证明）',
@@ -332,6 +337,21 @@ function exportLlmsTxt(data, base = '') {
   内部关系密无所谓，对外整块连接。
 - **节点**：${data.meta.counts.nodes} 条具体的数学内容
 
+## 内容准则（读这份数据时要知道的约定）
+
+- **同一结论只收一份**：内容来自多门课程的笔记，同一个定理的重复版本**已经合并**，
+  不要因为「某某课程里还有一个版本」就以为缺了。
+- **只保留最通用的版本**：条件最弱、结论最强的那个；特例写在节点的 \`notes\` 里
+  （例：Nakayama 引理的「局部环」版是「理想含于 Jacobson 根」版的特例，只收后者）。
+- **优先保留推广程度高的证明/办法**：同一个结论有多种证法时，收能推广的那条路径。
+
+## 分层（依赖深度）
+
+每个节点都有依赖深度：从最底层的 ZF 公理与集合概念算起，顺着
+「前置 → 依赖它的」最长路径数层号。可以当成「学习顺序」用：
+第 0 层是公理与最原始的概念，层号越大越靠后。等价的命题（选择公理那一条链、
+紧性那一条链）算同一层。
+
 ## 连线：先看强弱
 
 | strength | kind | 含义 | 什么时候用 |
@@ -355,7 +375,8 @@ function exportLlmsTxt(data, base = '') {
 \`id\`（稳定标识，引用时用它）、\`type\`、\`label\`、\`title\`、
 \`region\`/\`cluster\`（归属）、\`statement\`（陈述）、\`notes\`（说明）、\`refs\`
 
-公式用 **Unicode 数学符号**书写（∀ ∃ ∈ ⊆ ⟺ ⟹ ⪯），不是 LaTeX。
+公式用 **LaTeX** 书写（\`$…$\` 行内、\`$$…$$\` 块级），由 KaTeX 渲染。
+例外：\`label\` / \`tags\` / \`refs\` 是纯文本，里面不会出现 \`$\`。
 `;
 }
 

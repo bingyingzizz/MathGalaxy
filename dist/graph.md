@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:13:28.939Z
-> 6 星系 / 15 星团 / 209 节点 / 399 连线（强边 391，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-09-22T11:26:55.418Z
+> 6 星系 / 15 星团 / 208 节点 / 400 连线（强边 392，弱边 8）
 
 **怎么用这份文件**：直接整份喂给 AI 即可当数据库。
 
@@ -1347,7 +1347,11 @@ $\mathcal{M}(\mathcal{E})$ 称为**由 $\mathcal{E}$ 生成的 $\sigma$代数**�
 
 $$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\text{ 且} \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
 
-**这条比教科书上的标准版更强，而且是对的。** 标准版（Halmos §6）要求 $\mathcal{E}$ 本身是一个**代数**；这里只要求 $\mathcal{E}$ 中集合的**补**与**并**落进 $\mathfrak{m}(\mathcal{E})$ 就行 —— 条件松了一档。证明仍是单调类定理那三步，只是把「$\mathcal{E}$ 是代数」换成这两条：
+**这一条是「标准版 + 加强版」合起来的那一个版本。**
+
+**标准版**（Halmos §6 / Folland 2.37）：$\mathcal{A}$ 是**代数** $\implies \mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$。
+
+上面陈述的是**加强版**：把「$\mathcal{E}$ 是代数」换成两条更弱的条件——$\mathcal{E}$ 中集合的**补**与**并**落进 $\mathfrak{m}(\mathcal{E})$ 就行。证明仍是单调类定理那三步：
 
 **①** 令 $\mathcal{K}_{1} = \{A \in \mathfrak{m} : A^{c} \in \mathfrak{m}\}$。它含 $\mathcal{E}$（第一条条件），且本身是单调类（$\mathfrak{m}$ 单调 $\implies$ 极限仍在 $\mathfrak{m}$；补用一次递减极限）$\implies \mathcal{K}_{1} = \mathfrak{m}$，即 $\mathfrak{m}$ 对**补**封闭。
 
@@ -1359,11 +1363,11 @@ $$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathc
 
 ⚠ 把 $\cup$ 换成 $\cap$ 或 $\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。
 
-不论哪个版本，定理的**用法**是一样的：要证某个性质对 $\mathcal{M}(\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\mathcal{E}$ 的单调类，它 $\supseteq \mathfrak{m}(\mathcal{E}) = \mathcal{M}(\mathcal{E})$。
+**用法**（不论哪个版本都一样）：要证某个性质对 $\mathcal{M}(\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\mathcal{E}$ 的单调类，它 $\supseteq \mathfrak{m}(\mathcal{E}) = \mathcal{M}(\mathcal{E})$。测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。
 
-这是测度论里最常用的证明模式之一，后面「唯一性」「可测函数逼近」都会用到它。
+⚠ 与「环 $\to \sigma$环 的判据」是姊妹结果：那条说环 $+$ 单调 $\implies \sigma$环，这条说代数 $\implies$ 单调类与 $\sigma$代数重合。
 
-参考：Halmos, Measure Theory, §6
+参考：Halmos, Measure Theory, §6；Folland, Real Analysis, Theorem 2.37
 
 #### Borel σ-代数　`def.borel`
 *定义*　Borel σ-代数（Borel σ-Algebra 𝔅_X）
@@ -2557,31 +2561,6 @@ $$f_x^{-1}(B) = (f^{-1}(B))_x, \quad  f^{y-1}(B) = (f^{-1}(B))^y$$
 
 参考：Folland, Real Analysis, Prop. 2.34
 
-#### 单调类引理　`lem.monotone-class-lemma`
-*引理*　单调类引理（Monotone Class Lemma）
-
-若 $\mathcal{A}$ 是一个**代数**，则由 $\mathcal{A}$ 生成的单调类就是由 $\mathcal{A}$ 生成的 $\sigma$代数：
-
-$$\mathcal{A}\text{ 是代数} \implies \mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$$
-
-⭐ 这一条是证明「某个 $\sigma$代数里所有集合都满足性质 $P$」的**标准武器**，用法固定两步：
-
-
-
-1. 验证 $P$ 对所有矩形（或 $\mathcal{A}$ 中元素）成立；
-
-2. 验证「满足 $P$ 的集合」构成一个含 $\mathcal{A}$ 的**单调类**。
-
-
-
-于是 $P$ 对 $\mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$ 中所有集合成立。
-
-⚠ 与「测度的构造」里那条「环 $\to \sigma$环 的判据」是姊妹结果：那条说环 + 单调 $\implies \sigma$环，这条说代数 $\implies$ 单调类与 $\sigma$代数重合。
-
-📌 标准形式就是「$\mathcal{A}$ 是代数」这个前提。而 $\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E})$ 是它的**加强版**（条件松一档，只要求 $\mathcal{E}$ 的补、并落进 $\mathfrak{m}(\mathcal{E})$），见「单调类定理」节点。
-
-参考：Folland, Real Analysis, Theorem 2.37；Halmos, Measure Theory, §6
-
 #### 乘积测度由截口给出　`thm.product-measure-sections`
 *定理*　定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)
 
@@ -2610,7 +2589,7 @@ $\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（
 
 
 
-于是 $\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\mathcal{M} \otimes  \mathcal{N}$$。
+于是 $\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $$\mathcal{M} \otimes  \mathcal{N}$$。
 
 最后把「有限」推广到「$\sigma$有限」：取 $$X \times Y = \bigcup (X_i \times Y_i)$$，对每个 $$E \cap (X_i \times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。
 
@@ -2641,7 +2620,7 @@ $$\int f d(\mu \times \nu) = \int_X ( \int_Y f(x, y) d\nu(y) ) d\mu(x) = \int_Y 
 
 ⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。
 
-⚠ $\sigma$有限不能省：在「$\mathbb{R}$ 上的计数测度 $\times Lebesgue$ 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。
+⚠ $\sigma$有限不能省：在「$\mathbb{R}$ 上的计数测度 $\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。
 
 参考：Folland, Real Analysis, Theorem 2.37
 
@@ -5389,8 +5368,8 @@ $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 
 而 $$f^{-1}(B) \in \mathcal{M} \otimes  \mathcal{N}$$，由 (a) 它的纵截口属于 $\mathcal{N}$，即 $$f_x^{-1}(B) \in \mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎
 
-#### 单调类引理 + 截口可测 ⟹ 乘积测度由截口给出　`imp.product-sections`
-*单调类引理 ⟹ 乘积测度由截口积分给出*
+#### 单调类定理 + 截口可测 ⟹ 乘积测度由截口给出　`imp.product-sections`
+*单调类定理 ⟹ 乘积测度由截口积分给出*
 
 **① 先设 $\mu$、$\nu$ 有限。** 令 $$\mathcal{C} = \{E \in \mathcal{M} \otimes  \mathcal{N} : x \mapsto \nu(E_x)\text{ 可测}, y \mapsto \mu(E^y)\text{ 可测},\text{ 且} \mu\times\nu(E) = \int\nu(E_x)d\mu = \int\mu(E^y)d\nu\}$$。
 
@@ -5402,7 +5381,7 @@ $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 
 **④ $\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \supseteq E_2 \supseteq \cdots$$、$$E = \bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\nu(Y) < \infty$$）得到同样的等式。
 
-**⑤ 用单调类引理。** 由 ①②③④，$\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\mathcal{C}$ 含这个代数；由单调类引理，$$\mathfrak{m}(\text{代数}) = \mathcal{M}(\text{代数}) = \mathcal{M} \otimes  \mathcal{N}$$，于是 $\mathcal{C} = \mathcal{M} ⊗ \mathcal{N}$。
+**⑤ 用单调类定理。** 由 ①②③④，$\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\mathcal{C}$ 含这个代数；由单调类定理，$$\mathfrak{m}(\text{代数}) = \mathcal{M}(\text{代数}) = \mathcal{M} \otimes  \mathcal{N}$$，于是 $\mathcal{C} = \mathcal{M} ⊗ \mathcal{N}$。
 
 **⑥ 推广到 $\sigma$有限。** 取 $$X = \bigcup_i X_i$$、$$Y = \bigcup_i Y_i$$（各自测度有限），则 $$X \times Y = \bigcup_i (X_i \times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \cap (X_i \times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎
 
@@ -5501,13 +5480,13 @@ $>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而�
 
 直接验证截口的运算性质。
 
-#### 定义引用：「单调类」→ 单调类引理　`def-link.monotoneclass-lemma`
+#### 定义引用：「单调类」→ 乘积测度由截口给出　`def-link.monotoneclass-lemma`
 
-单调类引理说的正是单调类与 $\sigma$代数何时重合。
+截口公式的证明走的正是单调类定理：先验证矩形成立，再说明「满足它的集合」构成一个单调类。
 
-#### 定义引用：「生成的 σ-代数」→ 单调类引理　`def-link.generated-monotone-lemma`
+#### 定义引用：「生成的 σ-代数」→ 单调类定理　`def-link.generated-monotone-lemma`
 
-陈述里用到 $\mathfrak{m}(\mathcal{A})$ 与 $\mathcal{M}(\mathcal{A})$ 两个生成记号。
+定理的陈述里用到 $\mathfrak{m}(\mathcal{E})$ 与 $\mathcal{M}(\mathcal{E})$ 两个生成记号。
 
 #### 定义引用：「乘积测度」→ 乘积测度由截口给出　`def-link.productmeasure-sections-thm`
 
@@ -6580,9 +6559,13 @@ $\varepsilon$-$\delta$ 那套是**拓扑版连续**在实数（或距离空间�
 
 「$X$ 的每个**有限子集**都属于 $\mathcal{A}$」——有限特征是靠子集概念说出来的。
 
-#### 定义引用：「有序对」→ 配对公理　`def-link.pair-pairing`
+#### 定义引用：「配对公理」→ 有序对　`def-link.pair-pairing`
 
-方向相反的一条：有序对 $(a, b) = \{\{a\}, \{a, b\}\}$ 的**构造**要用到配对公理才成为集合。
+有序对 $(a, b) = \{\{a\}, \{a, b\}\}$ 的**构造**要用到**配对公理**，它才成为集合。
+
+#### 定义引用：「幂集公理」→ 有序对　`def-link.pair-power`
+
+同一个构造也要用到**幂集公理**：$\{a, b\}$ 的幂集里才装得下 $\{\{a\}, \{a, b\}\}$。
 
 #### 定义引用：「有序对」→ 关系　`def-link.rel-pair`
 
@@ -7252,7 +7235,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 
 ## 星团级连接（整块对整块）
 
-- **集合的构造 ↔ ZFC 公理系统**　9 条节点级连线
+- **集合的构造 ↔ ZFC 公理系统**　10 条节点级连线
 - **极大原理 ↔ 关系与选择**　4 条节点级连线
 - **积分 ↔ 测度的构造**　26 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线

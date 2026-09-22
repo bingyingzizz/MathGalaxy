@@ -5,7 +5,7 @@
 
    三步：
      ① 矩形上的预测度 π  ──Carathéodory──▶  乘积测度 μ×ν
-     ② 截口 Eₓ、Eʸ     ──▶  乘积测度由截口的积分给出（靠单调类引理）
+     ② 截口 Eₓ、Eʸ     ──▶  乘积测度由截口的积分给出（靠单调类定理）
      ③ Fubini–Tonelli    ──▶  重积分可以交换次序
 
    ⚠ 全程 σ-有限是硬条件；μ、ν 完备时 μ×ν 反而**常常不完备**（最后一节）。
@@ -108,31 +108,6 @@ window.MG = window.MG || {};
       refs: ['Folland, Real Analysis, Prop. 2.34']
     },
 
-    {
-      id: 'lem.monotone-class-lemma',
-      cluster: 'analysis.integral',
-      type: 'lemma',
-      label: '单调类引理',
-      title: '单调类引理（Monotone Class Lemma）',
-      regions: ['analysis'],
-      tags: ['引理', '单调类', '代数'],
-      statement: [
-        '若 $\\mathcal{A}$ 是一个**代数**，则由 $\\mathcal{A}$ 生成的单调类就是由 $\\mathcal{A}$ 生成的 $\\sigma$代数：',
-        '',
-        '$$\\mathcal{A}\\text{ 是代数} \\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$$'
-      ].join('\n'),
-      notes: [
-        '⭐ 这一条是证明「某个 $\\sigma$代数里所有集合都满足性质 $P$」的**标准武器**，用法固定两步：',
-        '',
-        '1. 验证 $P$ 对所有矩形（或 $\\mathcal{A}$ 中元素）成立；',
-        '2. 验证「满足 $P$ 的集合」构成一个含 $\\mathcal{A}$ 的**单调类**。',
-        '',
-        '于是 $P$ 对 $\\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$ 中所有集合成立。',
-        '⚠ 与「测度的构造」里那条「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 + 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。',
-        '📌 标准形式就是「$\\mathcal{A}$ 是代数」这个前提。而 $\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E})$ 是它的**加强版**（条件松一档，只要求 $\\mathcal{E}$ 的补、并落进 $\\mathfrak{m}(\\mathcal{E})$），见「单调类定理」节点。'
-      ].join('\n\n'),
-      refs: ['Folland, Real Analysis, Theorem 2.37', 'Halmos, Measure Theory, §6']
-    },
 
     {
       id: 'thm.product-measure-sections',
@@ -161,7 +136,7 @@ window.MG = window.MG || {};
         '- 矩形 $$E = A \\times B$$：$$\\nu(E_x) = \\chi_A(x) \\nu(B)$$，立刻成立；',
         '$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；',
         '',
-        '于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类引理升级到整个 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。',
+        '于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。',
         '最后把「有限」推广到「$\\sigma$有限」：取 $$X \\times Y = \\bigcup (X_i \\times Y_i)$$，对每个 $$E \\cap (X_i \\times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.36']
@@ -196,7 +171,7 @@ window.MG = window.MG || {};
         '⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。',
         '**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。',
         '⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。',
-        '⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类引理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。'
+        '⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37']
     },
@@ -300,9 +275,9 @@ window.MG = window.MG || {};
     {
       id: 'imp.product-sections',
       kind: 'implication',
-      sources: ['lem.monotone-class-lemma', 'prop.section-measurable'],
+      sources: ['thm.monotone-class', 'prop.section-measurable'],
       target: 'thm.product-measure-sections',
-      title: '单调类引理 ⟹ 乘积测度由截口积分给出',
+      title: '单调类定理 ⟹ 乘积测度由截口积分给出',
       proof: [
         '**① 先设 $\\mu$、$\\nu$ 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。',
         '',
@@ -314,7 +289,7 @@ window.MG = window.MG || {};
         '',
         '**④ $\\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。',
         '',
-        '**⑤ 用单调类引理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类引理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} ⊗ \\mathcal{N}$。',
+        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} ⊗ \\mathcal{N}$。',
         '',
         '**⑥ 推广到 $\\sigma$有限。** 取 $$X = \\bigcup_i X_i$$、$$Y = \\bigcup_i Y_i$$（各自测度有限），则 $$X \\times Y = \\bigcup_i (X_i \\times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \\cap (X_i \\times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎',
         '',
@@ -446,15 +421,15 @@ window.MG = window.MG || {};
       id: 'def-link.monotoneclass-lemma',
       kind: 'definition',
       definition: 'def.monotone-class',
-      usedBy: 'lem.monotone-class-lemma',
-      note: '单调类引理说的正是单调类与 $\\sigma$代数何时重合。'
+      usedBy: 'thm.product-measure-sections',
+      note: '截口公式的证明走的正是单调类定理：先验证矩形成立，再说明「满足它的集合」构成一个单调类。'
     },
     {
       id: 'def-link.generated-monotone-lemma',
       kind: 'definition',
       definition: 'def.generated-sigma',
-      usedBy: 'lem.monotone-class-lemma',
-      note: '陈述里用到 $\\mathfrak{m}(\\mathcal{A})$ 与 $\\mathcal{M}(\\mathcal{A})$ 两个生成记号。'
+      usedBy: 'thm.monotone-class',
+      note: '定理的陈述里用到 $\\mathfrak{m}(\\mathcal{E})$ 与 $\\mathcal{M}(\\mathcal{E})$ 两个生成记号。'
     },
     {
       id: 'def-link.productmeasure-sections-thm',
