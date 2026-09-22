@@ -151,9 +151,15 @@
   /*  支持： ## 标题 / 段落 / - 列表 / 1. 列表 / > 引用 / **粗** / *斜* /
              `行内代码` / ```代码块``` / $行内公式$ / $$独立公式$$        */
   function inlineMd(s) {
-    // 行内公式 $...$ 先摘出来（避免被 HTML 转义），最后再交给 KaTeX / 等宽显示
+    // 公式先摘出来（避免被 HTML 转义），最后再交给 KaTeX / 等宽显示
+    // ⚠ 顺序要紧：先吃掉 $$...$$，再处理单 $。否则单 $ 规则会把行内的
+    //   $$x$$ 拆成「$ + $x$ + $」，在页面上漏出两个 $ 号。
     var math = [];
-    var raw = String(s).replace(/\$([^$\n]+?)\$/g, function (m, tex) {
+    var raw = String(s).replace(/\$\$([^$\n]+?)\$\$/g, function (m, tex) {
+      math.push(tex);
+      return '\u0000M' + (math.length - 1) + '\u0000';
+    });
+    raw = raw.replace(/\$([^$\n]+?)\$/g, function (m, tex) {
       math.push(tex);
       return '\u0000M' + (math.length - 1) + '\u0000';
     });
@@ -164,7 +170,9 @@
       return '<code>' + escapeHtml(tex) + '</code>';
     });
     out = out.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
-    out = out.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+    // 粗体：内容里允许出现单个 *（数学记号里 μ^*、f^* 很常见），
+    // 只把 ** 当成定界符，别被里面那个 * 打断。
+    out = out.replace(/\*\*((?:[^*\n]|\*(?!\*))+?)\*\*/g, '<strong>$1</strong>');
     out = out.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>');
     return out;
   }
