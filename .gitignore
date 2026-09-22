@@ -34,3 +34,7 @@ src/data/local/
 
 # 或者更保守一点：整个外部内容包目录都不进 Git（取消下一行注释）
 # src/data/external/
+
+# 站点发布暂存目录（属于另一个仓库，不进本仓库）
+dist-site/
+
