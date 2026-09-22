@@ -51,9 +51,13 @@
       proofs: e.proofs || null,
       note: e.note || '',
       pack: packName,
-      label: e.label || ''
+      label: e.label || '',
+      /* 强弱：可以在数据里显式覆盖，否则按 kind 查表（见 config 的 edgeStrength） */
+      strength: e.strength || null
     };
-    if (e.kind === 'equivalence') {
+    if (e.kind === 'analogy') {
+      edge.a = e.a || e.from; edge.b = e.b || e.to;
+    } else if (e.kind === 'equivalence') {
       edge.a = e.a; edge.b = e.b;
     } else if (e.kind === 'definition') {
       edge.definition = e.definition || e.a;
@@ -73,17 +77,30 @@
 
   /** 一条边涉及的所有节点 id */
   function edgeNodes(e) {
-    if (e.kind === 'equivalence') return [e.a, e.b];
+    if (e.kind === 'equivalence' || e.kind === 'analogy') return [e.a, e.b];
     if (e.kind === 'definition') return [e.definition, e.usedBy];
     return e.sources.concat([e.target]);
   }
 
   /** 一条边的「主目标」（用于箭头方向 / 排序） */
   function edgeTarget(e) {
-    if (e.kind === 'equivalence') return e.b;
+    if (e.kind === 'equivalence' || e.kind === 'analogy') return e.b;
     if (e.kind === 'definition') return e.usedBy;
     return e.target;
   }
+
+  /**
+   * 强边 / 弱边。
+   * strong = 标准逻辑关系（推出、等价、定义依赖）—— 查证明走这些
+   * weak   = 类比 / 思想相通 —— 只在探索模式里出现
+   */
+  function strengthOf(e) {
+    if (e.strength) return e.strength;
+    var tbl = (MG.theme && MG.theme.edgeStrength) || {};
+    return tbl[e.kind] || 'strong';
+  }
+
+  function isWeak(e) { return strengthOf(e) === 'weak'; }
 
   /* ------------------------------------------------------------------ 构建 */
   function buildGraph(packs, regions, clusterDefs) {
@@ -297,6 +314,8 @@
   MG.graphUtil = {
     edgeNodes: edgeNodes,
     edgeTarget: edgeTarget,
+    strengthOf: strengthOf,
+    isWeak: isWeak,
     visibleEdges: visibleEdges,
     visibleEdgesOf: visibleEdgesOf,
     toArray: toArray

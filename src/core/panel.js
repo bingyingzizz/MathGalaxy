@@ -72,7 +72,9 @@
 
     function edgeRow(e, keyword) {
       var name = T.edgeNames[e.kind] || e.kind;
-      var arrow = e.kind === 'implication' ? '⟹' : (e.kind === 'equivalence' ? '⟺' : '·');
+      var arrow = e.kind === 'implication' ? '⟹'
+        : e.kind === 'equivalence' ? '⟺'
+          : e.kind === 'analogy' ? '～' : '·';
       var head = e.title || shortLabel(e, 40);
       var snippet = '';
       if (e.proof) snippet = U.plain(e.proof);
@@ -95,6 +97,9 @@
 
     function shortLabel(e, n) {
       var g = view.graph;
+      if (e.kind === 'analogy') {
+        return U.truncate(lbl(g, e.a) + ' ～ ' + lbl(g, e.b), n);
+      }
       if (e.kind === 'equivalence') {
         return U.truncate(lbl(g, e.a) + ' ⟺ ' + lbl(g, e.b), n);
       }
@@ -135,13 +140,15 @@
       }
 
       /* 相关连线 */
-      var out = [], inc = [], eqs = [], defs = [], users = [];
+      var out = [], inc = [], eqs = [], defs = [], users = [], anas = [];
       (g.edgesOf[n.id] || []).forEach(function (e) {
         if (e.kind === 'implication') {
           if (e.target === n.id) inc.push(edgeRow(e, '被推出'));
           else out.push(edgeRow(e, '推出'));
         } else if (e.kind === 'equivalence') {
           eqs.push(edgeRow(e, '等价'));
+        } else if (e.kind === 'analogy') {
+          anas.push(edgeRow(e, '类比'));
         } else if (e.kind === 'definition') {
           if (e.usedBy === n.id) {
             var d = g.byId[e.definition];
@@ -158,6 +165,11 @@
         listOrNone(inc, '暂无（可能是原始公理或定义）'));
       html += section('等价命题（' + eqs.length + '）',
         listOrNone(eqs, '暂无'));
+      if (anas.length) {
+        html += section('类比 / 思想相通（' + anas.length + '）',
+          '<div class="pn-hint">⚠️ 弱边：不是逻辑蕴含，只提供联想线索</div>' +
+          listOrNone(anas, '暂无'));
+      }
       if (MG.config.highlightDefinitions) {
         html += section('陈述中用到的定义（' + defs.length + '）',
           listOrNone(defs, '暂无'));
@@ -192,9 +204,10 @@
           '<span class="arrow">⟹</span>' +
           '<span class="pn-link" data-kind="node" data-id="' + e.target + '" style="display:inline-flex;padding:0"><b>' +
           U.escapeHtml(lbl(g, e.target)) + '</b></span>';
-      } else if (e.kind === 'equivalence') {
+      } else if (e.kind === 'equivalence' || e.kind === 'analogy') {
         gph = '<span class="pn-link" data-kind="node" data-id="' + e.a + '" style="display:inline-flex;padding:0"><b>' +
-          U.escapeHtml(lbl(g, e.a)) + '</b></span><span class="arrow">⟺</span>' +
+          U.escapeHtml(lbl(g, e.a)) + '</b></span>' +
+          '<span class="arrow">' + (e.kind === 'analogy' ? '～' : '⟺') + '</span>' +
           '<span class="pn-link" data-kind="node" data-id="' + e.b + '" style="display:inline-flex;padding:0"><b>' +
           U.escapeHtml(lbl(g, e.b)) + '</b></span>';
       } else {

@@ -173,7 +173,7 @@
 
       }
 
-      if (e.kind === 'equivalence') {
+      if (e.kind === 'equivalence' || e.kind === 'analogy') {
         var na = byId[e.a], nb = byId[e.b];
         if (!na || !nb) return null;
         var Pa = screenOf(na), Pb = screenOf(nb);
@@ -182,7 +182,9 @@
         var w = trimTo(Pb, Pa, r2 + 1.5);
         var seg = [{ x: q.x, y: q.y }, { x: w.x, y: w.y }];
         polys.push(seg);
-        glyph = { x: (q.x + w.x) / 2, y: (q.y + w.y) / 2, text: '⟺' };
+        if (e.kind === 'equivalence') {
+          glyph = { x: (q.x + w.x) / 2, y: (q.y + w.y) / 2, text: '⟺' };
+        }
         ends = [e.a, e.b];
         return { edge: e, quads: [], polys: polys, arrow: null, glyph: glyph, ends: ends };
       }
@@ -273,13 +275,15 @@
       drawClusterLinks();
 
       /* ---------- 1. 节点级连线 ---------- */
-      var defs = [], eqs = [], imps = [];
+      var defs = [], eqs = [], imps = [], anas = [];
       geoms.forEach(function (g) {
         if (g.edge.kind === 'definition') defs.push(g);
         else if (g.edge.kind === 'equivalence') eqs.push(g);
+        else if (g.edge.kind === 'analogy') anas.push(g);
         else imps.push(g);
       });
 
+      drawEdges(anas);          // 弱边垫在最底下（平时几乎看不见）
       drawEdges(defs);
       drawEdges(eqs);
       drawEdges(imps);
@@ -413,16 +417,27 @@
         var active = isEdgeActive(g);
         var w = (e.kind === 'implication' ? C.edge.implicationWidth
           : e.kind === 'equivalence' ? C.edge.equivalenceWidth
-            : C.edge.definitionWidth) * (active ? 1.85 : 1);
+            : e.kind === 'analogy' ? T.edgeStyles.analogy.width
+              : C.edge.definitionWidth) * (active ? 1.85 : 1);
 
         if (e.kind === 'definition' && !C.showDefinitionLines) return;
+
+        // 弱边：不开探索模式时压得很淡，开了才提亮
+        var isWeak = GU.isWeak(e);
+        if (isWeak) {
+          var base = C.exploreMode ? C.analogy.exploreAlpha : C.analogy.dimAlpha;
+          a = a * (base / (style.alpha || 1));
+          if (a <= 0.02) return;
+          w *= active ? 1.6 : 1;
+        }
 
         ctx.save();
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.lineWidth = w;
+        if (isWeak) ctx.setLineDash(C.analogy.dash);
 
-        if (e.kind === 'definition') {
+        if (e.kind === 'definition' || e.kind === 'analogy') {
           var alpha = (style.alpha != null ? style.alpha : 1) * a;
           ctx.strokeStyle = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
         } else {
@@ -630,6 +645,8 @@
       var hitEdge = null, hitD = Infinity;
       list.forEach(function (g) {
         if (g.edge.kind === 'definition' && !C.showDefinitionLines) return;
+        // 弱边没开探索模式时不响应点击（它本来就几乎看不见）
+        if (GU.isWeak(g.edge) && !C.exploreMode) return;
         var a = alphaForEdge(g.edge);
         if (a <= 0.06) return;
         g.polys.forEach(function (pts) {

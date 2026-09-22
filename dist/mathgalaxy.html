@@ -1,0 +1,5430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>数学星图 · Math Galaxy</title>
+<meta name="description" content="可交互的数学知识星图：定理 / 定义 / 引理 按数学板块聚簇，箭头表示推出，黑线表示等价，蓝线表示定义引用。" />
+<style>
+/* ==========================================================================
+   数学星图 · 界面样式
+   只负责「浮动 UI」（搜索框 / 工具条 / 图例 / 详情面板），
+   星图本体全部画在 canvas 上。
+   ========================================================================== */
+
+:root {
+  --bg: #ffffff;
+  --ink: #1c1c1e;
+  --ink-soft: #5b6068;
+  --ink-faint: #9aa0a8;
+  --line: rgba(20, 22, 28, 0.10);
+  --line-strong: rgba(20, 22, 28, 0.18);
+  --glass: rgba(255, 255, 255, 0.86);
+  --shadow-sm: 0 1px 2px rgba(16, 20, 30, .06), 0 4px 14px rgba(16, 20, 30, .08);
+  --shadow-md: 0 2px 6px rgba(16, 20, 30, .08), 0 18px 46px rgba(16, 20, 30, .14);
+  --radius: 12px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- 画布 ---------- */
+#viewport { position: fixed; inset: 0; }
+#viewport canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;          /* 自己处理双指缩放 */
+}
+#layer-cloud { z-index: 0; }
+#layer-graph { z-index: 1; cursor: grab; }
+#layer-graph.dragging { cursor: grabbing; }
+#layer-graph.pointing { cursor: pointer; }
+
+/* ---------- 浮动 UI 通用 ---------- */
+.floating {
+  position: fixed;
+  z-index: 10;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- 搜索 ---------- */
+#search-box {
+  top: 14px;
+  left: 14px;
+  width: 340px;
+  max-width: calc(100vw - 28px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  height: 40px;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+#search-box.active { box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+.search-icon { display: flex; color: var(--ink-faint); flex: none; }
+.search-icon svg { fill: currentColor; }
+#search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+}
+#search-input::placeholder { color: var(--ink-faint); }
+.search-kbd {
+  flex: none;
+  font: 11px/1 var(--mono);
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+#search-box.active .search-kbd { opacity: .35; }
+
+#search-results {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 0;
+  right: 0;
+  max-height: min(56vh, 460px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 5px;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+#search-results.hidden { display: none; }
+
+.sr-item {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1.35;
+}
+.sr-item:hover, .sr-item.active { background: rgba(20, 22, 28, .055); }
+.sr-dot {
+  flex: none;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  transform: translateY(-1px);
+}
+.sr-title { font-weight: 600; flex: none; white-space: nowrap; }
+.sr-sub {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--ink-faint);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sr-region {
+  flex: none;
+  margin-left: auto;
+  max-width: 90px;
+  font-size: 11px;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1px 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sr-empty { padding: 12px 10px; color: var(--ink-faint); font-size: 13px; }
+.sr-group {
+  padding: 8px 10px 3px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ink-faint);
+}
+mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; }
+
+/* ---------- 工具条 ---------- */
+#toolbar {
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+}
+#toolbar button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 13px;
+  height: 30px;
+  min-width: 30px;
+  flex: 0 0 auto;             /* 不要被压扁——放不下就换行 */
+  padding: 0 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .14s ease, color .14s ease;
+  white-space: nowrap;
+}
+#toolbar button:hover { background: rgba(20, 22, 28, .06); color: var(--ink); }
+#toolbar button:active { background: rgba(20, 22, 28, .11); }
+#toolbar button.toggle { font-size: 12px; padding: 0 8px; color: var(--ink-faint); }
+#toolbar button.toggle.on {
+  color: var(--ink);
+  background: rgba(20, 22, 28, .07);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.tb-sep { width: 1px; height: 18px; background: var(--line-strong); margin: 0 4px; }
+
+/* ---------- 图例 ---------- */
+#legend {
+  left: 14px;
+  bottom: 14px;
+  padding: 10px 12px;
+  max-width: 300px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+#legend .lg-title {
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--ink-faint);
+  margin: 2px 0 5px;
+}
+#legend .lg-row { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+#legend .lg-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+/* 星团：缩进一层，视觉上从属于上面的星系 */
+#legend .lg-kids {
+  display: flex; flex-wrap: wrap; gap: 3px 12px;
+  flex-basis: 100%;                 /* 总是另起一行，层级才看得出来 */
+  margin: 3px 0 4px 15px; padding-left: 9px;
+  border-left: 2px solid var(--line);
+}
+#legend .lg-kids .lg-item { font-size: 11.5px; }
+#legend .lg-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+#legend .lg-swatch { width: 15px; height: 9px; border-radius: 3px; flex: none; }
+#legend .lg-line { width: 16px; height: 0; border-top-width: 2px; border-top-style: solid; flex: none; }
+#legend .lg-group + .lg-group { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+#legend.collapsed .lg-body { display: none; }
+#legend .lg-head { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+#legend .lg-head b { font-weight: 600; color: var(--ink); font-size: 12.5px; }
+#legend .lg-caret { font-size: 9px; color: var(--ink-faint); transition: transform .18s ease; }
+#legend.collapsed .lg-caret { transform: rotate(-90deg); }
+#legend .lg-body { margin-top: 7px; }
+
+/* ---------- 详情面板 ---------- */
+#panel {
+  position: fixed;            /* 冗余声明：不依赖 .floating 也一定浮起来 */
+  top: 66px;
+  right: 14px;
+  bottom: 14px;
+  width: 400px;
+  max-width: calc(100vw - 28px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 20px 30px;
+  transform-origin: top right;
+  animation: panel-in .18s cubic-bezier(.2,.8,.3,1);
+}
+#panel.hidden { display: none; }
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(-6px) scale(.985); }
+  to   { opacity: 1; transform: none; }
+}
+#panel-close {
+  position: absolute;
+  top: 10px; right: 12px;
+  width: 26px; height: 26px;
+  border: 0; border-radius: 7px;
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 18px; line-height: 1;
+  cursor: pointer;
+}
+#panel-close:hover { background: rgba(20, 22, 28, .07); color: var(--ink); }
+
+.pn-kind {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11.5px; font-weight: 600;
+  padding: 3px 9px 3px 7px;
+  border-radius: 20px;
+  color: #fff;
+  margin-bottom: 9px;
+}
+.pn-kind .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.85); }
+.pn-h1 { font-size: 19px; font-weight: 650; line-height: 1.35; margin: 0 34px 4px 0; letter-spacing: -.01em; }
+.pn-h2 { font-size: 12px; color: var(--ink-faint); margin: 0 0 3px; font-family: var(--mono); word-break: break-all; }
+.pn-regions { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+.pn-chip {
+  font-size: 11.5px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+}
+.pn-chip:hover { background: rgba(20, 22, 28, .05); }
+.pn-chip .lg-swatch { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; transform: translateY(1px); }
+
+.pn-sec { margin-top: 18px; }
+.pn-sec > h4 {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-faint); margin: 0 0 8px; font-weight: 600;
+}
+.pn-body { font-size: 13.5px; line-height: 1.72; color: #24272e; }
+.pn-body p { margin: 0 0 9px; }
+.pn-body ul, .pn-body ol { margin: 0 0 9px; padding-left: 1.35em; }
+.pn-body li { margin: 3px 0; }
+.pn-body strong { font-weight: 650; }
+.pn-body em { font-style: italic; color: var(--ink-soft); }
+.pn-body h5 { font-size: 13px; margin: 14px 0 6px; font-weight: 650; }
+.pn-body blockquote {
+  margin: 0 0 9px; padding: 2px 0 2px 11px;
+  border-left: 2px solid var(--line-strong); color: var(--ink-soft);
+}
+.pn-body code {
+  font-family: var(--mono); font-size: .88em;
+  background: rgba(20, 22, 28, .06);
+  padding: 1px 5px; border-radius: 5px;
+}
+.pn-body pre {
+  font-family: var(--mono); font-size: 12px; line-height: 1.6;
+  background: rgba(20, 22, 28, .045);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 11px 12px;
+  overflow-x: auto;
+  margin: 0 0 10px;
+}
+.pn-body pre code { background: none; padding: 0; font-size: inherit; }
+
+/* 数学：优先用 KaTeX，退化时用等宽公式块 */
+/* 公式块：优先用系统里的数学字体，保证 ∀∃∈⊆⟺⪯ 这类符号好看 */
+.math-block {
+  display: block;
+  font-family: "Cambria Math", "Latin Modern Math", "STIX Two Math",
+               "Times New Roman", Georgia, "Songti SC", "SimSun", serif;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: .01em;
+  background: rgba(74, 110, 245, .055);
+  border: 1px solid rgba(74, 110, 245, .16);
+  border-radius: 9px;
+  padding: 10px 14px;
+  margin: 0 0 10px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.katex-block { margin: 2px 0 12px; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+.katex { font-size: 1.02em; }
+
+/* 链接列表（推出 / 被推出 / 等价 / 定义） */
+.pn-list { display: flex; flex-direction: column; gap: 2px; }
+.pn-link {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1.45;
+}
+.pn-link:hover { background: rgba(20, 22, 28, .055); }
+.pn-link .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; transform: translateY(-1px); }
+.pn-link .kw { color: var(--ink-faint); font-size: 12px; flex: none; }
+.pn-link .nm { font-weight: 600; }
+.pn-link > span:last-child { min-width: 0; flex: 1 1 auto; }
+.pn-link .ds {
+  color: var(--ink-faint); font-size: 12px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pn-none { color: var(--ink-faint); font-size: 12.5px; font-style: italic; }
+.pn-hint {
+  font-size: 11.5px; line-height: 1.55;
+  color: #7a5cd6;
+  background: rgba(138, 106, 214, .09);
+  border: 1px solid rgba(138, 106, 214, .22);
+  border-radius: 7px;
+  padding: 5px 9px;
+  margin-bottom: 7px;
+}
+
+.pn-arith {
+  font-size: 13px; line-height: 1.6;
+  padding: 9px 11px; border-radius: 9px;
+  background: rgba(20, 22, 28, .04);
+  border: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+.pn-arith .arrow { color: var(--ink-faint); margin: 0 7px; }
+.pn-step { margin-bottom: 14px; }
+.pn-step:last-child { margin-bottom: 0; }
+.pn-step-title {
+  font-size: 12.5px; font-weight: 650; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 7px;
+}
+.pn-step-title .badge {
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 1px 6px; border-radius: 5px;
+  background: rgba(20, 22, 28, .07); color: var(--ink-soft);
+}
+.pn-note {
+  font-size: 12.5px; color: var(--ink-soft); line-height: 1.65;
+  border-left: 2px solid var(--line-strong);
+  padding-left: 10px; margin-top: 12px;
+}
+
+/* ---------- 底部提示 ---------- */
+#hint {
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--ink-faint);
+  border-radius: 20px;
+  pointer-events: none;
+  transition: opacity .5s ease;
+  white-space: nowrap;
+}
+#hint.fade { opacity: 0; }
+
+/* ---------- 小屏适配 ---------- */
+@media (max-width: 820px) {
+  #search-box { width: calc(100vw - 28px); }
+  #toolbar {
+    top: 62px;
+    right: 14px;
+    left: 14px;
+    max-width: none;
+    flex-wrap: wrap;              /* 窄屏放不下就换行，别溢出屏幕 */
+    justify-content: flex-end;
+  }
+  #toolbar button { height: 28px; padding: 0 8px; }
+  #panel {
+    top: auto; left: 0; right: 0; bottom: 0;
+    width: auto; max-width: none;
+    max-height: 62vh;
+    border-radius: 16px 16px 0 0;
+    padding-bottom: 22px;
+  }
+  #legend { display: none; }
+  #hint { display: none; }
+}
+
+</style>
+
+<!-- 出错兜底：任何脚本报错都直接在页面上显示出来，而不是留一片白屏 -->
+<script>
+window.__mgFatal = function (err) {
+  var msg = (err && (err.stack || err.message)) || String(err || '未知错误');
+  if (window.console) console.error('[数学星图]', err);
+  var show = function () {
+    if (document.getElementById('mg-fatal')) return;
+    var box = document.createElement('div');
+    box.id = 'mg-fatal';
+    box.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;max-height:50vh;' +
+      'overflow:auto;z-index:99;background:#fff;border:1px solid rgba(200,60,60,.35);' +
+      'border-left:3px solid #D0483C;border-radius:10px;padding:14px 16px;' +
+      'box-shadow:0 12px 40px rgba(0,0,0,.16);white-space:pre-wrap;' +
+      'font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;color:#3a2020';
+    box.textContent = '数学星图出错了（多半是某个内容包写错了）：\n\n' + msg;
+    document.body.appendChild(box);
+  };
+  if (document.body) show(); else document.addEventListener('DOMContentLoaded', show);
+};
+window.addEventListener('error', function (e) {
+  // 资源（图片/字体）加载失败不算，只管脚本本身的错误
+  if (e.target && e.target !== window && e.target.tagName) return;
+  window.__mgFatal(e.error || e.message || '脚本执行出错');
+}, true);
+</script>
+</head>
+<body>
+
+<!-- ===== 画布层 ===== -->
+<div id="viewport" aria-hidden="true">
+  <canvas id="layer-cloud"></canvas>
+  <canvas id="layer-graph"></canvas>
+</div>
+
+<!-- ===== 左上角：搜索 ===== -->
+<div id="search-box" class="floating">
+  <span class="search-icon" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="14" height="14"><path d="M7 1a6 6 0 1 0 3.7 10.7l3.3 3.3 1-1-3.3-3.3A6 6 0 0 0 7 1Zm0 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/></svg>
+  </span>
+  <input id="search-input" type="text" placeholder="搜索节点：定理 / 定义 / 关键词…"
+         autocomplete="off" autocorrect="off" spellcheck="false" />
+  <kbd class="search-kbd">/</kbd>
+  <div id="search-results" class="hidden" role="listbox"></div>
+</div>
+
+<!-- ===== 右上角：工具条 ===== -->
+<div id="toolbar" class="floating">
+  <button data-act="zoom-in"  title="放大（+）">＋</button>
+  <button data-act="zoom-out" title="缩小（−）">－</button>
+  <button data-act="fit"      title="适配全部节点（0）">⤢</button>
+  <span class="tb-sep"></span>
+  <button data-act="toggle-defs"    class="toggle on" title="显示 / 隐藏「定义引用」蓝线">定义线</button>
+  <button data-act="toggle-labels"  class="toggle on" title="显示 / 隐藏节点名称">名称</button>
+  <button data-act="toggle-explore" class="toggle" title="探索模式：把「类比」这类弱边提亮（平时压得很淡）">探索</button>
+  <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移">滚轮·缩放</button>
+</div>
+
+<!-- ===== 左下角：图例 ===== -->
+<div id="legend" class="floating"></div>
+
+<!-- ===== 右侧：详情面板 ===== -->
+<aside id="panel" class="floating hidden" aria-live="polite">
+  <button id="panel-close" title="关闭（Esc）">×</button>
+  <div id="panel-body"></div>
+</aside>
+
+<!-- ===== 底部提示 ===== -->
+<div id="hint" class="floating">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导</div>
+
+<!-- =========================================================================
+     底层引擎（与内容无关，一般不需要改）
+     加载顺序：config → util → camera → graph → layout → background
+               → renderer → interaction → search → panel → loader → app
+     ========================================================================= -->
+<script>
+/* ==========================================================================
+   数学星图 · 全局配置与主题
+   --------------------------------------------------------------------------
+   想改颜色、大小、手感，只改这个文件。
+   想加数学内容，去 src/data/ 。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  /* ---------------------------------------------------------------- 配置 */
+  MG.config = {
+    seed: 20240607,               // 布局随机种子（固定 → 每次打开星图长得一样）
+
+    /* 力导向布局参数（世界坐标 ≈ 1 单位 ≈ 1 像素 @ 缩放 1） */
+    layout: {
+      iterations: 700,
+      idealDist: 120,             // 节点理想间距 k
+      repulsion: 0.12,            // 斥力系数（力 = repulsion · k² / d）
+      spring: 0.9,                // 有连线节点之间的弹簧强度
+      springMax: 22,              // 弹簧力上限（防止跨半个星图的长边把节点拽飞）
+      springLenFactor: 1.15,      // 弹簧自然长度 = idealDist × 该系数
+      anchorPull: 0.35,           // 把节点拉回「初始匀布位置」的力（保住板块结构与均匀感）
+      borderPull: 0.45,           // 跨板块节点的锚定更硬 → 稳定停留在交界带
+      capacityFactor: 1.30,       // 板块可用地盘半径 = √(节点数/π) × idealDist × 该系数
+      minGap: 64,                 // 节点最小间距（硬碰撞）
+      temp0: 62,                  // 初始温度（同时是每步位移上限）
+      temp1: 0.5,                 // 终止温度
+      maxStep: 26
+    },
+
+    /* 相机 */
+    camera: {
+      minZoom: 0.10,
+      maxZoom: 8,
+      zoomStep: 1.22,             // 按钮 / 键盘缩放的倍率
+      wheelGain: 0.0016,          // 滚轮灵敏度
+      fitPadding: 130,
+      maxFitZoom: 1.25,
+      fitMinZoom: 0.24,           // 「适配全部」的下限：窗口太窄时宁可出血，也别缩成一粒灰
+      animateMs: 420              // 相机平移动画时长
+    },
+
+    /* 节点 */
+    node: {
+      baseRadius: 8.5,
+      minRadius: 3.0,
+      maxRadius: 26,
+      radiusPower: 0.62,          // 半径随缩放增长指数（<1 → 缩小时仍看得见）
+      ringWidth: 2.0,
+      labelOffset: 13,            // 文字在节点下方多远（世界单位）
+      labelSize: 14,              // 字号（缩放 1 时）
+      labelMinZoom: 0.22,         // 低于此缩放干脆不画名称
+      labelMinZoomAll: 0.55,      // 低于此缩放只画重要节点的名称并自动去重叠
+      labelPad: 3,
+      glow: true
+    },
+
+    /* 连线 */
+    edge: {
+      hitTolerance: 8,            // 点击连线命中容差（屏幕像素）
+      implicationWidth: 1.7,
+      equivalenceWidth: 2.1,
+      definitionWidth: 1.15,
+      defCurvature: 0.17,         // 定义线弯曲程度（避免与直线重叠）
+      mergeOffset: 52,            // 多前提箭头汇聚点距离目标多远（世界单位）
+      arrowSize: 9.5,             // 箭头长度（屏幕像素，随缩放轻微变化）
+      equivalenceGlyph: 0.7       // 大于该缩放时在等价线中点画 ⟺
+    },
+
+    /* 电子云背景 */
+    background: {
+      texScale: 0.42,             // 世界坐标 → 纹理像素
+      blobsPerRegion: 15,         // 每个板块的云朵数
+      blobAlpha: 0.075,           // 单朵云的基础不透明度（多朵叠加后会更深）
+      centerAlpha: 0.065,         // 板块中心大团雾
+      nodeAlpha: 0.050,           // 每个节点周围的小团雾
+      spread: 0.72,               // 云朵分布半径 / 板块半径
+      blobRadiusMin: 0.30,
+      blobRadiusMax: 0.50,
+      cloudMargin: 110,           // 板块云半径 = 专属节点最大离心距 + 该余量
+      cloudRadiusMin: 200,
+      dilate: 1.45                // 纹理画布在内容范围外多留的边距
+    },
+
+    /* ------------------------------------------------------------------
+       多尺度（LOD）：星系 → 星团 → 恒星
+       缩小时只看见星系和「整块对整块」的粗连线；
+       放大时节点名、节点级细线才逐层淡入。两条曲线交叉淡入淡出。
+       ------------------------------------------------------------------ */
+    /* 阈值要和「适配全部」时的实际缩放对上：
+       1600×900 下 content 铺满 ≈ k 0.62，所以 0.62 往上必须是「全细节」。
+       各区间重叠 → 交叉淡入淡出，不会突然跳变。                          */
+    lod: {
+      galaxyNameIn: [0.05, 0.16],    // 星系名淡入（最小的时候只看见它）
+      clusterNameIn: [0.24, 0.40],   // 星团名淡入
+      clusterNameOut: [0.44, 0.60],  // 星团名淡出，让位给节点名
+      nodeDotIn: [0.14, 0.26],       // 节点圆点淡入（再小就只剩云）
+      nodeEdgeIn: [0.40, 0.66],      // 节点级细线淡入
+      nodeNameIn: [0.42, 0.62],      // 节点名淡入（0.62 = 全细节）
+      clusterLinkOut: [0.28, 0.58]   // 星团级粗线淡出（与细线交叉）
+    },
+
+    /* 星团（一套自足的装置，内部关系密、对外整块连接） */
+    cluster: {
+      gap: 1.62,            // 星团之间的间距系数（越大越松）
+      minRadius: 92,        // 星团最小可用半径
+      nodeSpread: 0.80,     // 节点在星团圆盘里铺开的比例
+      cloudPadding: 76,     // 星团云比节点分布外扩多少（世界单位）
+      cloudMinRadius: 130,
+      cloudAlpha: 0.085,    // 星团云不透明度（叠在星系云上，形成"更密的结"）
+      labelSize: 13.5,
+      labelOffset: 0,       // 星团名放在星团中心上方
+      namePad: 6            // 星团名底下那块底色的内边距
+    },
+
+    /* 星团级连线（自动从节点级连线聚合出来，不需要手写） */
+    clusterLink: {
+      minEdges: 2,          // 两个星团之间至少这么多条节点连线才画
+      widthMin: 1.6,
+      widthMax: 7.5,
+      color: '86, 104, 140',
+      alpha: 0.30,
+      curve: 0.10           // 弯曲程度，避免和节点级连线重叠
+    },
+
+    /* 聚焦模式：点击节点后，只保留它和它的邻居 */
+    focus: {
+      hideUnrelated: false,       // true → 无关节点/连线彻底不画；false → 压得很淡（保留方位感）
+      dimNodeAlpha: 0.09,
+      dimEdgeAlpha: 0.05,
+      dimLabelAlpha: 0.10
+    },
+
+    /* 弱边（类比）的显示 */
+    analogy: {
+      dimAlpha: 0.10,       // 关掉探索模式时弱边压到多淡
+      exploreAlpha: 0.55,
+      dash: [5, 5]
+    },
+
+    /* 开关默认值 */
+    exploreMode: false,     // true → 打开弱边（探索模式）
+    showDefinitionLines: true,
+    showLabels: true,
+    wheelZooms: true,             // false → 滚轮平移（触控板手感）
+    hideParallelImplications: true, // 已有等价线时不再叠画同对节点的箭头
+    highlightDefinitions: true    // 面板上把「定义引用」单独分组
+  };
+
+  /* ---------------------------------------------------------------- 主题 */
+  MG.theme = {
+    /* 图例里节点类型的显示顺序（也是「重要程度」的排序依据） */
+    typeOrder: ['axiom', 'definition', 'theorem', 'lemma', 'proposition', 'corollary', 'example'],
+
+    /* 节点类型 → 颜色。改这里即可换配色。 */
+    nodeTypes: {
+      axiom:       { name: '公理',  color: '#7A5CD6', short: '公理' },
+      definition:  { name: '定义',  color: '#8B93A7', short: '定义' },
+      theorem:     { name: '定理',  color: '#2F9E63', short: '定理' },
+      lemma:       { name: '引理',  color: '#E08434', short: '引理' },
+      proposition: { name: '命题',  color: '#12A0B8', short: '命题' },
+      corollary:   { name: '推论',  color: '#3A7BD5', short: '推论' },
+      example:     { name: '例',    color: '#A79BC4', short: '例' }
+    },
+
+    /* 边的视觉 */
+    edgeStyles: {
+      implication: { color: '#1C1C1E', width: 1.7, dashed: false },
+      equivalence: { color: '#1C1C1E', width: 2.1, dashed: false },
+      definition:  { color: '60, 112, 245', width: 1.15, alpha: 0.5, dashed: false },
+      analogy:     { color: '138, 106, 214', width: 1.5, alpha: 0.55, dashed: true }
+    },
+
+    /* 边的中文名 */
+    edgeNames: {
+      implication: '推出',
+      equivalence: '等价',
+      definition:  '定义引用',
+      analogy:     '类比'
+    },
+
+    /* ------------------------------------------------------------------
+       边的「强弱」—— 决定 AI 和人检索时的信噪比
+         strong：标准逻辑关系。查证明、做推理只走这些，不会跑偏。
+         weak  ：类比 / 思想相通 / 跨领域触发。不是逻辑蕴含，
+                 只在「卡住了、想找远房关系」时开探索模式用。
+       每一层尺度都有自己的强边和弱边（节点级 / 星团级 / 星系级）。
+       ------------------------------------------------------------------ */
+    edgeStrength: {
+      implication: 'strong',
+      equivalence: 'strong',
+      definition:  'strong',
+      analogy:     'weak'
+    },
+
+    font: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif',
+    monoFont: 'ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace',
+
+    ink: '#1C1C1E',
+    inkSoft: '#6B7178',
+    inkFaint: '#A5ABB3',
+    labelHalo: 'rgba(255,255,255,0.92)'
+  };
+
+  /** 取节点类型样式（未知类型回落到 definition） */
+  MG.typeStyle = function (type) {
+    return MG.theme.nodeTypes[type] || MG.theme.nodeTypes.definition;
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 工具函数
+   随机数（可复现）、几何、文本 / Markdown 渲染
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  /* ------------------------------------------------------------ 可复现随机 */
+  function hashString(str) {
+    var h = 2166136261 >>> 0;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+
+  function mulberry32(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /** 由一个字符串派生一个稳定的 0~1 随机函数 */
+  function rngFrom(str, salt) {
+    return mulberry32(hashString(String(str) + '#' + (salt || 0)));
+  }
+
+  /* ---------------------------------------------------------------- 数学 */
+  function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function dist(ax, ay, bx, by) { var dx = ax - bx, dy = ay - by; return Math.sqrt(dx * dx + dy * dy); }
+  function dist2(ax, ay, bx, by) { var dx = ax - bx, dy = ay - by; return dx * dx + dy * dy; }
+
+  /** 点到线段距离 */
+  function pointSegDist(px, py, ax, ay, bx, by) {
+    var vx = bx - ax, vy = by - ay;
+    var wx = px - ax, wy = py - ay;
+    var len2 = vx * vx + vy * vy;
+    var t = len2 > 1e-9 ? (wx * vx + wy * vy) / len2 : 0;
+    t = clamp(t, 0, 1);
+    return Math.sqrt(dist2(px, py, ax + t * vx, ay + t * vy));
+  }
+
+  /** 二次贝塞尔上一点 */
+  function quadPoint(p0, p1, p2, t) {
+    var u = 1 - t;
+    return {
+      x: u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
+      y: u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y
+    };
+  }
+
+  /** 把二次贝塞尔按段采样为折线（用于命中检测） */
+  function flattenQuad(p0, p1, p2, segments) {
+    var pts = [];
+    var n = segments || 14;
+    for (var i = 0; i <= n; i++) pts.push(quadPoint(p0, p1, p2, i / n));
+    return pts;
+  }
+
+  /** 点到折线的最短距离 */
+  function pointPolylineDist(px, py, pts) {
+    var best = Infinity;
+    for (var i = 0; i < pts.length - 1; i++) {
+      var d = pointSegDist(px, py, pts[i].x, pts[i].y, pts[i + 1].x, pts[i + 1].y);
+      if (d < best) best = d;
+    }
+    return best;
+  }
+
+  /** 以 (cx,cy) 为中心、垂直于 a→b 方向偏移 offset 的控制点 */
+  function perpControl(ax, ay, bx, by, offset) {
+    var mx = (ax + bx) / 2, my = (ay + by) / 2;
+    var dx = bx - ax, dy = by - ay;
+    var len = Math.sqrt(dx * dx + dy * dy) || 1;
+    return { x: mx + (-dy / len) * offset, y: my + (dx / len) * offset };
+  }
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+  /* ---------------------------------------------------------------- 颜色 */
+  var _rgbCache = Object.create(null);
+
+  /** '#rrggbb' / '#rgb' / '12,34,56' → {r,g,b} */
+  function hexToRgb(color) {
+    if (_rgbCache[color]) return _rgbCache[color];
+    var out = { r: 0, g: 0, b: 0 };
+    if (!color) return out;
+    var m = String(color).trim();
+    if (m.charAt(0) === '#') {
+      var h = m.slice(1);
+      if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+      out = { r: parseInt(h.slice(0, 2), 16), g: parseInt(h.slice(2, 4), 16), b: parseInt(h.slice(4, 6), 16) };
+    } else if (m.indexOf(',') >= 0) {
+      var p = m.split(',').map(function (v) { return parseFloat(v); });
+      out = { r: p[0] || 0, g: p[1] || 0, b: p[2] || 0 };
+    }
+    _rgbCache[color] = out;
+    return out;
+  }
+
+  /** 把颜色 + 不透明度转成 rgba() 字符串 */
+  function rgba(color, alpha) {
+    if (alpha == null || alpha >= 1) return color;
+    var c = hexToRgb(color);
+    return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + alpha + ')';
+  }
+
+  /** 加白（模拟电子云淡化效果） */
+  function mixWithWhite(color, amount) {
+    var c = hexToRgb(color);
+    var f = clamp(amount, 0, 1);
+    return 'rgb(' + Math.round(lerp(255, c.r, f)) + ',' +
+      Math.round(lerp(255, c.g, f)) + ',' + Math.round(lerp(255, c.b, f)) + ')';
+  }
+
+  /* ---------------------------------------------------------------- 文本 */
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  /** 取纯文本（去掉 LaTeX 记号），用于搜索与摘要 */
+  function plain(text) {
+    return String(text || '')
+      .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+      .replace(/\$[^$\n]*\$/g, ' ')
+      .replace(/\\[a-zA-Z]+\*?/g, ' ')
+      .replace(/[{}\\]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function truncate(s, n) {
+    s = String(s || '');
+    return s.length > n ? s.slice(0, n - 1) + '…' : s;
+  }
+
+  /* ------------------------------------------- 极简 Markdown → HTML ------ */
+  /*  支持： ## 标题 / 段落 / - 列表 / 1. 列表 / > 引用 / **粗** / *斜* /
+             `行内代码` / ```代码块``` / $行内公式$ / $$独立公式$$        */
+  function inlineMd(s) {
+    // 行内公式 $...$ 先摘出来（避免被 HTML 转义），最后再交给 KaTeX / 等宽显示
+    var math = [];
+    var raw = String(s).replace(/\$([^$\n]+?)\$/g, function (m, tex) {
+      math.push(tex);
+      return '\u0000M' + (math.length - 1) + '\u0000';
+    });
+    var out = escapeHtml(raw);
+    out = out.replace(/\u0000M(\d+)\u0000/g, function (m, idx) {
+      var tex = math[+idx];
+      if (MG.renderInlineMath) return MG.renderInlineMath(tex);
+      return '<code>' + escapeHtml(tex) + '</code>';
+    });
+    out = out.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+    out = out.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+    out = out.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>');
+    return out;
+  }
+
+  function blockMath(tex) {
+    if (MG.renderBlockMath) {
+      var html = MG.renderBlockMath(tex);
+      if (html) return html;
+    }
+    return '<div class="math-block">' + escapeHtml(tex.trim()) + '</div>';
+  }
+
+  function md(text) {
+    if (!text) return '';
+    var lines = String(text).replace(/\r\n?/g, '\n').split('\n');
+    var html = [];
+    var i = 0;
+    var para = [];
+
+    function flushPara() {
+      if (!para.length) return;
+      html.push('<p>' + inlineMd(para.join(' ')) + '</p>');
+      para = [];
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+
+      // 独立公式块 $$ ... $$
+      if (/^\s*\$\$/.test(line)) {
+        flushPara();
+        var buf = [];
+        var first = line.replace(/^\s*\$\$\s?/, '');
+        if (/\$\$\s*$/.test(first) && first.replace(/\$\$\s*$/, '').trim() !== '') {
+          html.push(blockMath(first.replace(/\$\$\s*$/, '')));
+          i++; continue;
+        }
+        if (first.trim()) buf.push(first);
+        i++;
+        while (i < lines.length && !/\$\$\s*$/.test(lines[i])) { buf.push(lines[i]); i++; }
+        if (i < lines.length) { buf.push(lines[i].replace(/\$\$\s*$/, '')); i++; }
+        html.push(blockMath(buf.join('\n')));
+        continue;
+      }
+
+      // 代码块
+      if (/^\s*```/.test(line)) {
+        flushPara();
+        var code = [];
+        i++;
+        while (i < lines.length && !/^\s*```/.test(lines[i])) { code.push(lines[i]); i++; }
+        i++;
+        html.push('<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>');
+        continue;
+      }
+
+      // 标题
+      var h = line.match(/^\s*(#{2,5})\s+(.*)$/);
+      if (h) { flushPara(); html.push('<h5>' + inlineMd(h[2]) + '</h5>'); i++; continue; }
+
+      // 引用
+      if (/^\s*>\s?/.test(line)) {
+        flushPara();
+        var quote = [];
+        while (i < lines.length && /^\s*>\s?/.test(lines[i])) {
+          quote.push(lines[i].replace(/^\s*>\s?/, '')); i++;
+        }
+        html.push('<blockquote>' + inlineMd(quote.join(' ')) + '</blockquote>');
+        continue;
+      }
+
+      // 无序列表
+      if (/^\s*[-*+]\s+/.test(line)) {
+        flushPara();
+        var ul = [];
+        while (i < lines.length && /^\s*[-*+]\s+/.test(lines[i])) {
+          ul.push('<li>' + inlineMd(lines[i].replace(/^\s*[-*+]\s+/, '')) + '</li>'); i++;
+        }
+        html.push('<ul>' + ul.join('') + '</ul>');
+        continue;
+      }
+
+      // 有序列表
+      if (/^\s*\d+[.)]\s+/.test(line)) {
+        flushPara();
+        var ol = [];
+        while (i < lines.length && /^\s*\d+[.)]\s+/.test(lines[i])) {
+          ol.push('<li>' + inlineMd(lines[i].replace(/^\s*\d+[.)]\s+/, '')) + '</li>'); i++;
+        }
+        html.push('<ol>' + ol.join('') + '</ol>');
+        continue;
+      }
+
+      if (!line.trim()) { flushPara(); i++; continue; }
+
+      para.push(line.trim());
+      i++;
+    }
+    flushPara();
+    return html.join('');
+  }
+
+  /* ---------------------------------------------------------------- 导出 */
+  MG.util = {
+    hashString: hashString,
+    mulberry32: mulberry32,
+    rngFrom: rngFrom,
+    clamp: clamp,
+    lerp: lerp,
+    dist: dist,
+    dist2: dist2,
+    pointSegDist: pointSegDist,
+    pointPolylineDist: pointPolylineDist,
+    quadPoint: quadPoint,
+    flattenQuad: flattenQuad,
+    perpControl: perpControl,
+    hexToRgb: hexToRgb,
+    rgba: rgba,
+    mixWithWhite: mixWithWhite,
+    easeOutCubic: easeOutCubic,
+    easeInOutCubic: easeInOutCubic,
+    escapeHtml: escapeHtml,
+    escapeRegExp: escapeRegExp,
+    plain: plain,
+    truncate: truncate,
+    md: md,
+    inlineMd: inlineMd
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 相机（缩放 / 平移 / 坐标变换 / 动画）
+   世界坐标 → 屏幕坐标：  sx = wx * k + tx
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+  var CFG = MG.config.camera;
+
+  function createCamera() {
+    var cam = {
+      k: 1, tx: 0, ty: 0,
+      viewW: 1, viewH: 1,
+
+      /* 记录当前动画状态 */
+      _anim: null,
+
+      setViewport: function (w, h) {
+        cam.viewW = w; cam.viewH = h;
+      },
+
+      toScreen: function (wx, wy) {
+        return { x: wx * cam.k + cam.tx, y: wy * cam.k + cam.ty };
+      },
+
+      toWorld: function (sx, sy) {
+        return { x: (sx - cam.tx) / cam.k, y: (sy - cam.ty) / cam.k };
+      },
+
+      /** 世界长度 → 屏幕长度 */
+      scale: function (len) { return len * cam.k; },
+
+      /** 以屏幕点 (sx,sy) 为锚点缩放到 newK */
+      zoomTo: function (newK, sx, sy) {
+        var k2 = U.clamp(newK, CFG.minZoom, CFG.maxZoom);
+        if (k2 === cam.k) return false;
+        var w = cam.toWorld(sx, sy);
+        cam.k = k2;
+        cam.tx = sx - w.x * cam.k;
+        cam.ty = sy - w.y * cam.k;
+        return true;
+      },
+
+      /** 相对缩放（factor > 1 放大） */
+      zoomBy: function (factor, sx, sy) {
+        if (sx == null) { sx = cam.viewW / 2; sy = cam.viewH / 2; }
+        return cam.zoomTo(cam.k * factor, sx, sy);
+      },
+
+      /** 平移（屏幕像素） */
+      panBy: function (dx, dy) {
+        cam.tx += dx; cam.ty += dy;
+        cam._anim = null;
+      },
+
+      /** 把世界坐标点移到屏幕中心 */
+      centerOn: function (wx, wy) {
+        cam.tx = cam.viewW / 2 - wx * cam.k;
+        cam.ty = cam.viewH / 2 - wy * cam.k;
+      },
+
+      /** 让世界矩形 bbox 适配视口 */
+      fit: function (bbox, padding) {
+        var pad = padding == null ? CFG.fitPadding : padding;
+        // 小屏幕上别让留白吃掉整个视野
+        pad = Math.min(pad, Math.min(cam.viewW, cam.viewH) * 0.18);
+        var w = Math.max(1, bbox.maxX - bbox.minX);
+        var h = Math.max(1, bbox.maxY - bbox.minY);
+        var availW = Math.max(40, cam.viewW - pad * 2);
+        var availH = Math.max(40, cam.viewH - pad * 2);
+        var k = Math.min(availW / w, availH / h);
+        k = U.clamp(k, Math.max(CFG.minZoom, CFG.fitMinZoom),
+          Math.min(CFG.maxZoom, CFG.maxFitZoom));
+        cam.k = k;
+        cam.centerOn((bbox.minX + bbox.maxX) / 2, (bbox.minY + bbox.maxY) / 2);
+      },
+
+      /* --------------------------------------------------------- 动画 */
+      /** 平滑移动到目标视角；target = {k, cx, cy}（cx,cy 为世界中心） */
+      animateTo: function (target, ms) {
+        var k0 = cam.k, tx0 = cam.tx, ty0 = cam.ty;
+        var k1 = U.clamp(target.k == null ? cam.k : target.k, CFG.minZoom, CFG.maxZoom);
+        var tx1 = target.cx != null ? cam.viewW / 2 - target.cx * k1 : cam.tx;
+        var ty1 = target.cy != null ? cam.viewH / 2 - target.cy * k1 : cam.ty;
+        cam._anim = { t0: now(), dur: ms == null ? CFG.animateMs : ms, k0: k0, tx0: tx0, ty0: ty0, k1: k1, tx1: tx1, ty1: ty1 };
+      },
+
+      stopAnimation: function () { cam._anim = null; },
+
+      /** 每帧调用；返回 true 表示还在动画中 */
+      tick: function () {
+        var a = cam._anim;
+        if (!a) return false;
+        var p = U.clamp((now() - a.t0) / a.dur, 0, 1);
+        var e = U.easeInOutCubic(p);
+        cam.k = U.lerp(a.k0, a.k1, e);
+        cam.tx = U.lerp(a.tx0, a.tx1, e);
+        cam.ty = U.lerp(a.ty0, a.ty1, e);
+        if (p >= 1) cam._anim = null;
+        return true;
+      },
+
+      get animating() { return !!cam._anim; }
+    };
+    return cam;
+  }
+
+  function now() {
+    return (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+  }
+
+  MG.createCamera = createCamera;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 图模型
+   --------------------------------------------------------------------------
+   把「数据包（packs）」合并成一张图，并建立索引：
+     graph.nodes      节点数组（含 x, y 布局坐标）
+     graph.byId       节点字典
+     graph.edges      边数组（规范化后）
+     graph.adj[id]    邻居 id 集合
+     graph.edgesOf[id] 与某节点相连的边
+
+   —— 边（edge）数据结构 ——
+   1) 推出：{ kind:'implication', sources:['a','b'], target:'c', title, proof }
+      sources 可以是 1 个或多个（多个 = 几个结论合起来推出）。
+   2) 等价：{ kind:'equivalence', a:'x', b:'y',
+              proofs:[{ label:'x ⇒ y', text:'…' }, { label:'y ⇒ x', text:'…' }] }
+   3) 定义引用：{ kind:'definition', definition:'defId', usedBy:'nodeId', note }
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+
+  function normNode(n, packName) {
+    if (!n || !n.id) throw new Error('[' + packName + '] 节点缺少 id：' + JSON.stringify(n));
+    var node = {
+      id: n.id,
+      type: n.type || 'definition',
+      label: n.label || n.title || n.id,
+      title: n.title || n.label || n.id,
+      regions: toArray(n.regions || n.region),
+      cluster: n.cluster || null,        // 所属星团 id（可省略 → 直接属于星系）
+      tags: toArray(n.tags),
+      statement: n.statement || '',
+      notes: n.notes || '',
+      refs: toArray(n.refs),
+      pack: packName,
+      /* 布局结果 */
+      x: 0, y: 0,
+      pinned: n.pinned || null
+    };
+    return node;
+  }
+
+  function normEdge(e, packName) {
+    if (!e || !e.kind) throw new Error('[' + packName + '] 边缺少 kind：' + JSON.stringify(e));
+    var edge = {
+      id: e.id || null,
+      kind: e.kind,
+      title: e.title || '',
+      proof: e.proof || '',
+      proofs: e.proofs || null,
+      note: e.note || '',
+      pack: packName,
+      label: e.label || '',
+      /* 强弱：可以在数据里显式覆盖，否则按 kind 查表（见 config 的 edgeStrength） */
+      strength: e.strength || null
+    };
+    if (e.kind === 'analogy') {
+      edge.a = e.a || e.from; edge.b = e.b || e.to;
+    } else if (e.kind === 'equivalence') {
+      edge.a = e.a; edge.b = e.b;
+    } else if (e.kind === 'definition') {
+      edge.definition = e.definition || e.a;
+      edge.usedBy = e.usedBy || e.b;
+    } else { // implication（默认）
+      edge.kind = 'implication';
+      edge.sources = toArray(e.sources || e.from);
+      edge.target = e.target || e.to;
+    }
+    return edge;
+  }
+
+  function toArray(v) {
+    if (v == null) return [];
+    return Array.isArray(v) ? v.slice() : [v];
+  }
+
+  /** 一条边涉及的所有节点 id */
+  function edgeNodes(e) {
+    if (e.kind === 'equivalence' || e.kind === 'analogy') return [e.a, e.b];
+    if (e.kind === 'definition') return [e.definition, e.usedBy];
+    return e.sources.concat([e.target]);
+  }
+
+  /** 一条边的「主目标」（用于箭头方向 / 排序） */
+  function edgeTarget(e) {
+    if (e.kind === 'equivalence' || e.kind === 'analogy') return e.b;
+    if (e.kind === 'definition') return e.usedBy;
+    return e.target;
+  }
+
+  /**
+   * 强边 / 弱边。
+   * strong = 标准逻辑关系（推出、等价、定义依赖）—— 查证明走这些
+   * weak   = 类比 / 思想相通 —— 只在探索模式里出现
+   */
+  function strengthOf(e) {
+    if (e.strength) return e.strength;
+    var tbl = (MG.theme && MG.theme.edgeStrength) || {};
+    return tbl[e.kind] || 'strong';
+  }
+
+  function isWeak(e) { return strengthOf(e) === 'weak'; }
+
+  /* ------------------------------------------------------------------ 构建 */
+  function buildGraph(packs, regions, clusterDefs) {
+    var nodes = [], edges = [], byId = Object.create(null);
+    var warnings = [];
+
+    packs.forEach(function (pack) {
+      var name = pack.name || 'pack';
+      (pack.nodes || []).forEach(function (raw) {
+        var n = normNode(raw, name);
+        if (byId[n.id]) { warnings.push('重复的节点 id，后者被忽略：' + n.id); return; }
+        byId[n.id] = n;
+        nodes.push(n);
+      });
+    });
+
+    var autoId = 0;
+    packs.forEach(function (pack) {
+      var name = pack.name || 'pack';
+      (pack.edges || []).forEach(function (raw) {
+        if (raw && raw.kind === 'cluster-link') return;  // 星团连线请写在 pack.clusterLinks
+        var e = normEdge(raw, name);
+        e.id = e.id || ('e' + (++autoId) + ':' + e.kind);
+        edges.push(e);
+      });
+    });
+
+    /* 校验 + 去重 */
+    var kept = [];
+    edges.forEach(function (e) {
+      var ids = edgeNodes(e);
+      var ok = true;
+      ids.forEach(function (id) {
+        if (!byId[id]) { ok = false; warnings.push('边 ' + e.id + ' 指向不存在的节点：' + id); }
+      });
+      if (!ok) return;
+      kept.push(e);
+    });
+    edges = kept;
+
+    var adj = Object.create(null);
+    var edgesOf = Object.create(null);
+    nodes.forEach(function (n) { adj[n.id] = Object.create(null); edgesOf[n.id] = []; });
+
+    edges.forEach(function (e) {
+      edgeNodes(e).forEach(function (id) {
+        edgesOf[id].push(e);
+        edgeNodes(e).forEach(function (other) {
+          if (other !== id) adj[id][other] = true;
+        });
+      });
+    });
+
+    /* 相邻表转数组 */
+    var adjList = Object.create(null);
+    Object.keys(adj).forEach(function (id) { adjList[id] = Object.keys(adj[id]); });
+
+    var graph = {
+      nodes: nodes,
+      edges: edges,
+      byId: byId,
+      regions: regions || [],
+      regionById: Object.create(null),
+      adj: adjList,
+      edgesOf: edgesOf,
+      warnings: warnings,
+      edgeNodes: edgeNodes,
+      edgeTarget: edgeTarget
+    };
+
+    graph.regions.forEach(function (r) { graph.regionById[r.id] = r; });
+
+    /* ---------------------------------------------------------- 星团索引 */
+    /* 星团 = 星系内部一套「自足的装置」。节点写 cluster 字段即归属；
+       不写就直属于星系。星团的 parent 指向它所属的星系。            */
+    var clusters = (clusterDefs || []).slice();
+    var clusterById = Object.create(null);
+    clusters.forEach(function (c) {
+      clusterById[c.id] = c;
+      c.nodes = [];
+      c.region = null;
+    });
+    nodes.forEach(function (n) {
+      var co = n.cluster ? clusterById[n.cluster] : null;
+      if (n.cluster && !co) {
+        warnings.push('节点 ' + n.id + ' 指向不存在的星团：' + n.cluster);
+      }
+      n.clusterObj = co || null;
+      if (co) co.nodes.push(n);
+    });
+    graph.clusters = clusters;
+    graph.clusterById = clusterById;
+
+    /** 星团所属星系对象 */
+    graph.galaxyOf = function (c) {
+      return (c && c.parent && graph.regionById[c.parent]) || null;
+    };
+
+    /**
+     * 星团之间的连线。
+     *  · 自动聚合：两个星团之间有几条节点级连线，就累积几条
+     *  · 显式声明：数据里写 { kind:'cluster-link', a:'团id', b:'团id', label }
+     * 两种合并，显式的权重更高。
+     */
+    graph.buildClusterLinks = function () {
+      var tally = Object.create(null);
+
+      function bump(a, b, w, extra) {
+        if (!a || !b || a === b) return;
+        var key = a < b ? a + '|' + b : b + '|' + a;
+        if (!tally[key]) tally[key] = { a: a < b ? a : b, b: a < b ? b : a, count: 0, links: [] };
+        tally[key].count += w;
+        if (extra) tally[key].links.push(extra);
+      }
+
+      edges.forEach(function (e) {
+        var cs = [];
+        edgeNodes(e).forEach(function (id) {
+          var n = byId[id];
+          if (n && n.clusterObj && cs.indexOf(n.clusterObj.id) < 0) cs.push(n.clusterObj.id);
+        });
+        for (var i = 0; i < cs.length; i++) {
+          for (var j = i + 1; j < cs.length; j++) {
+            // 每对星团之间计入一次（一条边只算一次）
+            bump(cs[i], cs[j], 1, { kind: e.kind, id: e.id });
+          }
+        }
+      });
+
+      // 显式星团连线
+      packs.forEach(function (pack) {
+        (pack.clusterLinks || []).forEach(function (l, k) {
+          var a = l.a || l.from, b = l.b || l.to;
+          if (!clusterById[a] || !clusterById[b]) {
+            warnings.push('星团连线指向不存在的星团：' + a + ' / ' + b);
+            return;
+          }
+          var key = a < b ? a + '|' + b : b + '|' + a;
+          if (!tally[key]) tally[key] = { a: a < b ? a : b, b: a < b ? b : a, count: 0, links: [] };
+          tally[key].count += l.weight || 4;
+          tally[key].explicit = true;
+          tally[key].label = l.label || tally[key].label;
+          tally[key].note = l.note || tally[key].note;
+        });
+      });
+
+      return Object.keys(tally).map(function (k) { return tally[k]; });
+    };
+
+    graph.clusterLinks = graph.buildClusterLinks();
+
+    /* 每个节点真正「用到的定义」（蓝线另一头是定义节点） */
+    graph.definitionsOf = function (id) {
+      return edgesOf[id].filter(function (e) { return e.kind === 'definition'; })
+        .map(function (e) { return e.definition === id ? e.usedBy : e.definition; });
+    };
+    graph.usersOf = function (id) {
+      return edgesOf[id].filter(function (e) { return e.kind === 'definition'; })
+        .map(function (e) { return e.definition === id ? e.usedBy : e.definition; });
+    };
+
+    graph.bbox = function () {
+      if (!nodes.length) return { minX: -1, minY: -1, maxX: 1, maxY: 1 };
+      var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      nodes.forEach(function (n) {
+        if (n.x < minX) minX = n.x; if (n.x > maxX) maxX = n.x;
+        if (n.y < minY) minY = n.y; if (n.y > maxY) maxY = n.y;
+      });
+      return { minX: minX, minY: minY, maxX: maxX, maxY: maxY };
+    };
+
+    return graph;
+  }
+
+  /**
+   * 实际参与绘制的边。
+   * —— 若 A、B 之间已有「等价」黑线，默认不再叠画 A↔B 的箭头（视觉太挤），
+   *    被隐藏箭头上的推导过程会自动合并进等价线的详情里。
+   */
+  function visibleEdges(graph) {
+    var defsOn = MG.config.showDefinitionLines;
+    var hideParallel = MG.config.hideParallelImplications;
+
+    var eqPairs = Object.create(null);
+    if (hideParallel) {
+      graph.edges.forEach(function (e) {
+        if (e.kind !== 'equivalence') return;
+        eqPairs[e.a + '|' + e.b] = true;
+        eqPairs[e.b + '|' + e.a] = true;
+      });
+    }
+
+    return graph.edges.filter(function (e) {
+      if (e.kind === 'definition' && !defsOn) return false;
+      if (e.kind === 'implication' && hideParallel) {
+        var a = e.sources[0], b = e.target;
+        if (e.sources.length === 1 && eqPairs[a + '|' + b]) return false;
+        if (eqPairs[b + '|' + a]) return false;
+      }
+      return true;
+    });
+  }
+
+  /** 与某个节点相连、且当前可见的边 */
+  function visibleEdgesOf(graph, id, visible) {
+    var set = visible || visibleEdges(graph);
+    return set.filter(function (e) { return edgeNodes(e).indexOf(id) >= 0; });
+  }
+
+  MG.buildGraph = buildGraph;
+  MG.graphUtil = {
+    edgeNodes: edgeNodes,
+    edgeTarget: edgeTarget,
+    strengthOf: strengthOf,
+    isWeak: isWeak,
+    visibleEdges: visibleEdges,
+    visibleEdgesOf: visibleEdgesOf,
+    toArray: toArray
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 布局求解（三层：星系 → 星团 → 恒星）
+   --------------------------------------------------------------------------
+   1) 星系：regions.js 里声明的中心 + 半径
+   2) 星团：把一套「自足的装置」的节点聚成一团圆盘，多个星团在星系内按环状排布
+   3) 恒星：节点在所属星团的圆盘里用向日葵螺旋匀布
+
+   跨板块（多 region）的节点会被推向「朝着另一个星系」的那一侧边缘，
+   于是仍然满足「内容交叉的节点落在边界上」。
+
+   全程使用固定随机种子 → 每次打开星图长得一模一样。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+
+  var GOLDEN = Math.PI * (3 - Math.sqrt(5)); // ≈ 2.39996，向日葵螺旋的转角
+
+  /** 一个圆盘里放 count 个点，需要多大半径 */
+  function discRadius(count, factor) {
+    var ideal = MG.config.layout.idealDist;
+    return Math.sqrt(Math.max(count, 1) / Math.PI) * ideal * (factor || 1);
+  }
+
+  /** 节点的归属点（跨板块 → 按半径加权的交界点）；没有星团时才用得上 */
+  function regionTarget(node, graph) {
+    var rs = [];
+    node.regions.forEach(function (id) { if (graph.regionById[id]) rs.push(graph.regionById[id]); });
+    if (!rs.length) return { x: 0, y: 0 };
+    if (rs.length === 1) return { x: rs[0].center.x, y: rs[0].center.y };
+    var wsum = 0, x = 0, y = 0;
+    rs.forEach(function (r) { wsum += r.radius; x += r.center.x * r.radius; y += r.center.y * r.radius; });
+    return { x: x / wsum, y: y / wsum };
+  }
+
+  /* ==================================================================== */
+  function computeLayout(graph) {
+    var cfg = MG.config.layout;
+    var ccfg = MG.config.cluster;
+    var nodes = graph.nodes;
+    if (!nodes.length) return;
+
+    /* -------------------------------------------------------- 0. 准备 */
+    nodes.forEach(function (n) {
+      n.target = regionTarget(n, graph);
+      n.regionObjs = n.regions.map(function (id) { return graph.regionById[id]; }).filter(Boolean);
+      n.isBorder = n.regionObjs.length > 1;
+      n.degree = (graph.adj[n.id] || []).length;
+      n.galaxy = n.clusterObj ? graph.galaxyOf(n.clusterObj) : (n.regionObjs[0] || null);
+    });
+
+    graph.regions.forEach(function (r) {
+      r._cap = Math.max(discRadius(nodes.filter(function (n) { return n.regions.indexOf(r.id) >= 0; }).length,
+        cfg.capacityFactor), 140);
+    });
+
+    /* -------------------------------------------- 1. 星团在星系内排布 */
+    var liveClusters = [];
+    graph.clusters.forEach(function (c) {
+      c.nodes = c.nodes.filter(function (n) { return nodes.indexOf(n) >= 0; });
+      if (!c.nodes.length) { c.center = null; c._cap = 0; return; }
+      c._cap = Math.max(discRadius(c.nodes.length, 1.26), ccfg.minRadius);
+      var g = graph.galaxyOf(c);
+      c.center = g ? { x: g.center.x, y: g.center.y } : { x: 0, y: 0 };
+      liveClusters.push(c);
+    });
+
+    graph.regions.forEach(function (reg) {
+      var mine = liveClusters.filter(function (c) { return c.parent === reg.id; });
+      if (!mine.length) return;
+      // 大的排前面，视觉上更像"星系核 + 外环"
+      mine.sort(function (a, b) { return b.nodes.length - a.nodes.length; });
+      var maxCap = 0;
+      mine.forEach(function (c) { maxCap = Math.max(maxCap, c._cap); });
+
+      if (mine.length === 1) {
+        mine[0].center = { x: reg.center.x, y: reg.center.y };
+        return;
+      }
+      var ringR = Math.max(maxCap * 1.05, reg._cap * (0.34 + 0.05 * Math.min(mine.length, 6)));
+      var phase = (U.hashString(reg.id) % 628) / 100;
+      mine.forEach(function (c, i) {
+        var th = phase + i * (Math.PI * 2 / mine.length);
+        // 团越大，稍微往外挪一点，避免挤在一起
+        var rr = ringR + c._cap * 0.18;
+        c.center = { x: reg.center.x + Math.cos(th) * rr, y: reg.center.y + Math.sin(th) * rr };
+      });
+      // 星系圆盘要装得下所有星团
+      reg._cap = Math.max(reg._cap, ringR + maxCap * 1.15 + 60);
+    });
+
+    /* ------------------------------------------------ 2. 节点锚点 */
+    var buckets = Object.create(null);   // 无星团节点按星系分桶
+    var borders = [], orphans = [];
+
+    // 2a. 有星团的节点：在星团圆盘内螺旋 → 再按「另一个星系」的方向往外推
+    liveClusters.forEach(function (c) {
+      var list = c.nodes.slice().sort(function (a, b) {
+        if (b.degree !== a.degree) return b.degree - a.degree;
+        return a.id < b.id ? -1 : 1;
+      });
+      var n = list.length;
+      var R = Math.max(c._cap * ccfg.nodeSpread, 46);
+      var phase = (U.hashString(c.id) % 628) / 100;
+      list.forEach(function (node, i) {
+        var rr = R * Math.sqrt((i + 0.42) / n);
+        var th = i * GOLDEN + phase;
+        var x = c.center.x + Math.cos(th) * rr;
+        var y = c.center.y + Math.sin(th) * rr;
+
+        // 跨板块：朝「另一个星系」那一侧挪，落在交界带
+        if (node.isBorder) {
+          var others = node.regionObjs.filter(function (r) { return r.id !== c.parent; });
+          if (others.length) {
+            var t = others[0].center;
+            var dx = t.x - c.center.x, dy = t.y - c.center.y;
+            var L = Math.sqrt(dx * dx + dy * dy) || 1;
+            var push = c._cap * 0.62;
+            x += (dx / L) * push;
+            y += (dy / L) * push;
+          }
+        }
+        node.anchor = { x: x, y: y };
+      });
+    });
+
+    // 2b. 没有星团的节点：还在星系圆盘里铺（老逻辑）
+    nodes.forEach(function (n) {
+      if (n.clusterObj) return;
+      if (!n.regionObjs.length) { orphans.push(n); return; }
+      if (n.isBorder) { borders.push(n); return; }
+      var rid = n.regionObjs[0].id;
+      (buckets[rid] = buckets[rid] || []).push(n);
+    });
+
+    Object.keys(buckets).forEach(function (rid) {
+      var region = graph.regionById[rid];
+      var list = buckets[rid].slice().sort(function (a, b) {
+        if (b.degree !== a.degree) return b.degree - a.degree;
+        return a.id < b.id ? -1 : 1;
+      });
+      var n = list.length;
+      var R = Math.max(region._cap * 0.8, 60);
+      var phase = (U.hashString(rid) % 628) / 100;
+      list.forEach(function (node, i) {
+        var rr = R * Math.sqrt((i + 0.42) / n);
+        var th = i * GOLDEN + phase;
+        node.anchor = { x: region.center.x + rr * Math.cos(th), y: region.center.y + rr * Math.sin(th) };
+      });
+    });
+
+    // 2c. 跨星系又没星团：沿「星系连线的法向」错开（老逻辑）
+    borders.sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+    borders.forEach(function (node, i) {
+      var ordered = node.regionObjs.slice().sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+      var first = ordered[0], last = ordered[ordered.length - 1];
+      var dx = last.center.x - first.center.x, dy = last.center.y - first.center.y;
+      var len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var nx = -dy / len, ny = dx / len;
+      var side = (i % 2 === 0) ? 1 : -1;
+      var rank = Math.floor(i / 2) + 1;
+      var off = side * (44 + rank * 52);
+      var along = ((i % 3) - 1) * 40;
+      node.anchor = {
+        x: node.target.x + nx * off + (dx / len) * along,
+        y: node.target.y + ny * off + (dy / len) * along
+      };
+    });
+
+    orphans.sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+    orphans.forEach(function (node, i) {
+      node.anchor = { x: -180 + (i % 5) * 120, y: 820 + Math.floor(i / 5) * 120 };
+    });
+
+    nodes.forEach(function (n) { if (n.anchor) { n.x = n.anchor.x; n.y = n.anchor.y; } });
+
+    /* ---------------------------------------------------- 3. 松弛 */
+    var k = cfg.idealDist;
+    var cutoff = k * 2.4, cutoff2 = cutoff * cutoff;
+    var springLen = k * cfg.springLenFactor;
+
+    var pairs = [];
+    graph.edges.forEach(function (e) {
+      var ids = MG.graphUtil.edgeNodes(e);
+      var w = e.kind === 'implication' ? 1 : (e.kind === 'equivalence' ? 1.15 : 0.35);
+      for (var a = 0; a < ids.length; a++) {
+        for (var b = a + 1; b < ids.length; b++) {
+          var ia = indexOf(nodes, ids[a]), ib = indexOf(nodes, ids[b]);
+          if (ia < 0 || ib < 0) continue;
+          pairs.push([ia, ib, w]);
+        }
+      }
+    });
+
+    var N = nodes.length;
+    var disp = new Float64Array(N * 2);
+    var i, j, dx, dy, d, d2, f, ux, uy, step, n;
+
+    for (var iter = 0; iter < cfg.iterations; iter++) {
+      var t = iter / Math.max(1, cfg.iterations - 1);
+      var temp = U.lerp(cfg.temp0, cfg.temp1, t * t);
+      for (i = 0; i < N * 2; i++) disp[i] = 0;
+
+      /* 3a. 排斥 */
+      for (i = 0; i < N; i++) {
+        var ni = nodes[i];
+        for (j = i + 1; j < N; j++) {
+          var nj = nodes[j];
+          dx = ni.x - nj.x; dy = ni.y - nj.y;
+          d2 = dx * dx + dy * dy;
+          if (d2 < 1e-6) { dx = 0.7 + (i - j) * 0.13; dy = 0.4; d2 = dx * dx + dy * dy; }
+          if (d2 > cutoff2) continue;
+          d = Math.sqrt(d2);
+          f = (k * k / d) * cfg.repulsion;
+          ux = dx / d; uy = dy / d;
+          disp[i * 2] += ux * f; disp[i * 2 + 1] += uy * f;
+          disp[j * 2] -= ux * f; disp[j * 2 + 1] -= uy * f;
+        }
+      }
+
+      /* 3b. 弹簧 */
+      for (var s = 0; s < pairs.length; s++) {
+        i = pairs[s][0]; j = pairs[s][1];
+        dx = nodes[i].x - nodes[j].x; dy = nodes[i].y - nodes[j].y;
+        d = Math.sqrt(dx * dx + dy * dy) || 1;
+        f = ((d - springLen) / d) * cfg.spring * pairs[s][2] * k * 0.55;
+        if (f > cfg.springMax) f = cfg.springMax;
+        else if (f < -cfg.springMax) f = -cfg.springMax;
+        disp[i * 2] -= (dx / d) * f; disp[i * 2 + 1] -= (dy / d) * f;
+        disp[j * 2] += (dx / d) * f; disp[j * 2 + 1] += (dy / d) * f;
+      }
+
+      /* 3c. 锚点拉力 + 星团软边界 */
+      for (i = 0; i < N; i++) {
+        n = nodes[i];
+        if (n.pinned || !n.anchor) continue;
+        f = n.isBorder ? cfg.borderPull : cfg.anchorPull;
+        disp[i * 2] += (n.anchor.x - n.x) * f;
+        disp[i * 2 + 1] += (n.anchor.y - n.y) * f;
+
+        // 星团软墙：别飘出自己的星团
+        if (n.clusterObj && n.clusterObj.center) {
+          var cx = n.clusterObj.center.x, cy = n.clusterObj.center.y;
+          var vx = n.x - cx, vy = n.y - cy;
+          var vd = Math.sqrt(vx * vx + vy * vy) || 1;
+          var lim = n.clusterObj._cap * 1.28 + 30;
+          if (vd > lim) {
+            var pull = (vd - lim) * 0.10;
+            disp[i * 2] -= (vx / vd) * pull;
+            disp[i * 2 + 1] -= (vy / vd) * pull;
+          }
+        }
+      }
+
+      /* 3d. 应用位移 */
+      var cap = Math.max(temp, 0.05);
+      for (i = 0; i < N; i++) {
+        if (nodes[i].pinned) continue;
+        var px = disp[i * 2], py = disp[i * 2 + 1];
+        var pl = Math.sqrt(px * px + py * py);
+        if (pl < 1e-9) continue;
+        step = Math.min(pl, cap);
+        nodes[i].x += (px / pl) * step;
+        nodes[i].y += (py / pl) * step;
+      }
+
+      /* 3e. 硬性碰撞 */
+      if (iter > cfg.iterations * 0.3) {
+        var minGap = cfg.minGap;
+        for (i = 0; i < N; i++) {
+          for (j = i + 1; j < N; j++) {
+            dx = nodes[j].x - nodes[i].x; dy = nodes[j].y - nodes[i].y;
+            d2 = dx * dx + dy * dy;
+            if (d2 >= minGap * minGap || d2 < 1e-9) continue;
+            d = Math.sqrt(d2);
+            var push = (minGap - d) / 2;
+            var qx = (dx / d) * push, qy = (dy / d) * push;
+            nodes[j].x += qx; nodes[j].y += qy;
+            nodes[i].x -= qx; nodes[i].y -= qy;
+          }
+        }
+      }
+    }
+
+    /* -------------------------------------------- 4. 云统计（星系 / 星团） */
+    var bc = MG.config.background;
+    graph.regions.forEach(function (r) {
+      var list = nodes.filter(function (nd) { return nd.regions.indexOf(r.id) >= 0; });
+      if (!list.length) { r.stat = null; return; }
+      var singles = list.filter(function (nd) { return !nd.isBorder; });
+      var basis = singles.length >= 2 ? singles : list;
+      var cx = r.center.x, cy = r.center.y, maxd = 0;
+      basis.forEach(function (nd) { maxd = Math.max(maxd, U.dist(nd.x, nd.y, cx, cy)); });
+      r.stat = {
+        cx: cx, cy: cy, count: list.length,
+        radius: Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin)
+      };
+    });
+
+    graph.clusters.forEach(function (c) {
+      if (!c.nodes.length) { c.stat = null; return; }
+      var cx = 0, cy = 0;
+      c.nodes.forEach(function (nd) { cx += nd.x; cy += nd.y; });
+      cx /= c.nodes.length; cy /= c.nodes.length;
+      var maxd = 0;
+      c.nodes.forEach(function (nd) { maxd = Math.max(maxd, U.dist(nd.x, nd.y, cx, cy)); });
+      c.stat = {
+        cx: cx, cy: cy, count: c.nodes.length,
+        radius: Math.max(ccfg.cloudMinRadius, maxd + ccfg.cloudPadding)
+      };
+      c.center = { x: cx, y: cy };   // 用实际重心，便于画星团级连线
+    });
+
+    /* ------------------------------------------------ 5. 内容包围盒 */
+    graph.bbox = function () {
+      var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      nodes.forEach(function (nd) {
+        if (nd.x < minX) minX = nd.x;
+        if (nd.x > maxX) maxX = nd.x;
+        if (nd.y < minY) minY = nd.y;
+        if (nd.y > maxY) maxY = nd.y;
+      });
+      if (!nodes.length) return { minX: -1, minY: -1, maxX: 1, maxY: 1 };
+      return { minX: minX, minY: minY, maxX: maxX, maxY: maxY };
+    };
+  }
+
+  function indexOf(arr, v) { for (var i = 0; i < arr.length; i++) if (arr[i].id === v) return i; return -1; }
+
+  MG.computeLayout = computeLayout;
+  MG.regionTarget = regionTarget;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 电子云背景
+   --------------------------------------------------------------------------
+   每个数学板块（region）在背景里渲染一团半透明彩色云雾：
+     · 一朵中心大雾 + 若干随机分布的软斑 + 每个节点周围的小斑
+     · 越靠近板块边界越淡（斑块本身是径向渐变，中心浓、边缘透明）
+     · 整块云先画在世界坐标的一张离屏纹理上，再随相机一起缩放绘制
+       → 拖动/缩放时只做一次 drawImage，性能稳定
+   页面大背景仍然是纯白。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+
+  /** 建一张覆盖全部内容的云雾纹理 */
+  function buildTexture(graph) {
+    var bc = MG.config.background;
+    var bb = graph.bbox();
+
+    var pad = 300;
+    var minX = bb.minX - pad, minY = bb.minY - pad;
+    var maxX = bb.maxX + pad, maxY = bb.maxY + pad;
+    var w = (maxX - minX) * bc.dilate;
+    var h = (maxY - minY) * bc.dilate;
+    minX -= (w - (maxX - minX)) / 2;
+    minY -= (h - (maxY - minY)) / 2;
+
+    var scale = bc.texScale;
+    var cv = document.createElement('canvas');
+    cv.width = Math.max(64, Math.round(w * scale));
+    cv.height = Math.max(64, Math.round(h * scale));
+    var ctx = cv.getContext('2d');
+
+    // 世界坐标 → 纹理像素
+    ctx.setTransform(scale, 0, 0, scale, -minX * scale, -minY * scale);
+
+    var drawn = 0;
+    (graph.regions || []).forEach(function (region) {
+      if (!region.stat) return;                       // 空星系不画云
+      drawn++;
+      paintRegion(ctx, region, graph, bc);
+    });
+
+    // 星团：在星系云之上再叠一层更小更浓的云 → 看起来像星云里更密的结
+    var cdrawn = 0;
+    (graph.clusters || []).forEach(function (c) {
+      if (!c.stat) return;
+      cdrawn++;
+      paintCluster(ctx, c, graph, bc);
+    });
+
+    return {
+      canvas: cv,
+      x: minX, y: minY, w: w, h: h,
+      scale: scale,
+      regions: drawn,
+      clusters: cdrawn
+    };
+  }
+
+  /** 星团的云：比星系云更小、更浓，用星团自己的颜色（没写就继承星系） */
+  function paintCluster(ctx, c, graph, bc) {
+    var cc = MG.config.cluster;
+    var galaxy = graph.galaxyOf ? graph.galaxyOf(c) : null;
+    var color = c.color || (galaxy ? galaxy.color : '#7A8699');
+    var rgb = U.hexToRgb(color);
+    var st = c.stat;
+    var R = st.radius;
+    var rand = U.rngFrom(c.id, MG.config.seed);
+
+    blob(ctx, rgb, st.cx, st.cy, R * 0.98, cc.cloudAlpha * 1.15);
+
+    for (var i = 0; i < 7; i++) {
+      var ang = rand() * Math.PI * 2;
+      var rad = Math.sqrt(rand()) * R * 0.62;
+      var br = R * U.lerp(0.34, 0.56, rand());
+      blob(ctx, rgb, st.cx + Math.cos(ang) * rad, st.cy + Math.sin(ang) * rad,
+        br, cc.cloudAlpha * U.lerp(0.6, 1.15, rand()));
+    }
+
+    c.nodes.forEach(function (n) {
+      blob(ctx, rgb, n.x, n.y, R * 0.24, cc.cloudAlpha * 0.8);
+    });
+  }
+
+  function paintRegion(ctx, region, graph, bc) {
+    var st = region.stat;
+    var rgb = U.hexToRgb(region.color);
+    var R = st.radius;
+    var rand = U.rngFrom(region.id, MG.config.seed);
+
+    /* 1) 板块中心的大团雾 —— 界定「这块地方属于谁」 */
+    blob(ctx, rgb, st.cx, st.cy, R, bc.centerAlpha * 1.15);
+
+    /* 2) 随机软斑 —— 让云看起来不规整 */
+    for (var i = 0; i < bc.blobsPerRegion; i++) {
+      var ang = rand() * Math.PI * 2;
+      var rad = Math.sqrt(rand()) * R * bc.spread;
+      var x = st.cx + Math.cos(ang) * rad;
+      var y = st.cy + Math.sin(ang) * rad;
+      var br = R * U.lerp(bc.blobRadiusMin, bc.blobRadiusMax, rand());
+      var a = bc.blobAlpha * U.lerp(0.55, 1.25, rand());
+      blob(ctx, rgb, x, y, br, a);
+    }
+
+    /* 3) 每个节点周围的小斑 —— 让云的形状跟着内容走 */
+    graph.nodes.forEach(function (n) {
+      if (n.regions.indexOf(region.id) < 0) return;
+      blob(ctx, rgb, n.x, n.y, R * 0.30, bc.nodeAlpha);
+    });
+  }
+
+  function blob(ctx, rgb, x, y, r, alpha) {
+    if (r <= 0 || alpha <= 0) return;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0.00, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha).toFixed(4) + ')');
+    g.addColorStop(0.42, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha * 0.62).toFixed(4) + ')');
+    g.addColorStop(0.74, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha * 0.22).toFixed(4) + ')');
+    g.addColorStop(1.00, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  /** 按相机把云雾纹理画到屏幕（白底由页面提供） */
+  function draw(ctx, cam, tex, dpr) {
+    dpr = dpr || 1;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    if (!tex) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var sx = tex.x * cam.k + cam.tx;
+    var sy = tex.y * cam.k + cam.ty;
+    var sw = tex.w * cam.k;
+    var sh = tex.h * cam.k;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(tex.canvas, sx, sy, sw, sh);
+  }
+
+  MG.background = {
+    buildTexture: buildTexture,
+    draw: draw
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 前景渲染器（节点 / 连线 / 名称）
+   --------------------------------------------------------------------------
+   三种连线的画法：
+     · 推出 implication  —— 黑色箭头，箭头指向被推出的结论；
+                            多个前提时先汇聚到一点，再射向结论。
+     · 等价 equivalence  —— 黑色直线，无箭头。
+     · 定义引用 definition —— 蓝色（不透明度 50%）细线；同一直线上有多条时
+                              会弯曲错开，避免糊成一团。
+   全部在屏幕坐标里绘制，因此线宽 / 字号 / 箭头大小都可控。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+  var C = MG.config;
+  var T = MG.theme;
+  var GU = MG.graphUtil;
+
+  /* --------------------------------------------------------- 光晕精灵缓存 */
+  var glowCache = Object.create(null);
+  function glowSprite(color) {
+    if (glowCache[color]) return glowCache[color];
+    var S = 96;
+    var cv = document.createElement('canvas');
+    cv.width = cv.height = S;
+    var g2 = cv.getContext('2d');
+    var rgb = U.hexToRgb(color);
+    var g = g2.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+    g.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.34)');
+    g.addColorStop(0.35, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.17)');
+    g.addColorStop(0.7, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.04)');
+    g.addColorStop(1, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
+    g2.fillStyle = g;
+    g2.fillRect(0, 0, S, S);
+    glowCache[color] = cv;
+    return cv;
+  }
+
+  /* ------------------------------------------------------------ 文本量缓存 */
+  var textCache = Object.create(null);
+  function measure(ctx, text, font) {
+    var key = font + '|' + text;
+    var w = textCache[key];
+    if (w == null) {
+      var old = ctx.font;
+      ctx.font = font;
+      w = ctx.measureText(text).width;
+      ctx.font = old;
+      textCache[key] = w;
+    }
+    return w;
+  }
+
+  /* ------------------------------------------------------------ LOD 工具 */
+  function smoothstep(e0, e1, x) {
+    if (e1 === e0) return x < e0 ? 0 : 1;
+    var t = U.clamp((x - e0) / (e1 - e0), 0, 1);
+    return t * t * (3 - 2 * t);
+  }
+
+  /* ======================================================================= */
+  function createRenderer(canvas, view) {
+    var ctx = canvas.getContext('2d');
+    var dpr = 1;
+    var W = 0, H = 0;
+    var geomCache = null;      // 本帧的连线几何
+    var nodeCache = Object.create(null);
+
+    /* 本帧各层的可见度（0~1），随缩放变化，由 computeLod() 填 */
+    var lodA = {
+      galaxyName: 1, clusterName: 1, nodeDot: 1,
+      nodeName: 1, nodeEdge: 1, clusterLink: 0
+    };
+
+    function computeLod() {
+      var k = view.cam.k, L = C.lod;
+      lodA.nodeDot = smoothstep(L.nodeDotIn[0], L.nodeDotIn[1], k);
+      lodA.nodeName = smoothstep(L.nodeNameIn[0], L.nodeNameIn[1], k);
+      lodA.nodeEdge = smoothstep(L.nodeEdgeIn[0], L.nodeEdgeIn[1], k);
+      // 星团名：放大到看得见节点名时就退场，避免和节点名打架
+      var cNameIn = smoothstep(L.clusterNameIn[0], L.clusterNameIn[1], k);
+      var cNameOut = smoothstep(L.clusterNameOut[0], L.clusterNameOut[1], k);
+      lodA.clusterName = cNameIn * (1 - cNameOut);
+      // 星系名：最小的时候出现，星团名一出来就让它退场
+      lodA.galaxyName = (1 - cNameIn) * smoothstep(L.galaxyNameIn[0], L.galaxyNameIn[1], k);
+      // 星团级粗线与节点级细线交叉淡入淡出
+      lodA.clusterLink = 1 - smoothstep(L.clusterLinkOut[0], L.clusterLinkOut[1], k);
+    }
+
+    /* ------------------------------------------------------------ 尺寸 */
+    function resize() {
+      dpr = Math.min(global.devicePixelRatio || 1, 2.5);
+      var rect = canvas.getBoundingClientRect();
+      var w = Math.max(1, Math.round(rect.width || global.innerWidth));
+      var h = Math.max(1, Math.round(rect.height || global.innerHeight));
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      W = w; H = h;
+      view.cam.setViewport(W, H);
+      invalidate();
+      return { w: W, h: H, dpr: dpr };
+    }
+
+    /* -------------------------------------------------------- 尺寸计算 */
+    function nodeRadius(node) {
+      var r = C.node.baseRadius * Math.pow(view.cam.k, C.node.radiusPower);
+      r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
+      if (node && node.degree >= 5) r *= 1.22;      // 枢纽节点稍大一点
+      else if (node && node.degree >= 3) r *= 1.1;
+      return r;
+    }
+
+    function labelFont() {
+      var fs = U.clamp(C.node.labelSize * Math.pow(view.cam.k, 0.5), 9.5, 21);
+      return fs;
+    }
+
+    /* ------------------------------------------------------ 连线几何 */
+    var geomCam = { k: -1, tx: 0, ty: 0 };
+
+    function buildGeometry() {
+      var cam = view.cam;
+      var geom = Object.create(null);
+      var list = [];
+
+      view.visible.forEach(function (e) {
+        var g = computeEdge(e, cam);
+        if (g) { geom[e.id] = g; list.push(g); }
+      });
+      geomCache = geom;
+      geomCam = { k: cam.k, tx: cam.tx, ty: cam.ty };
+      return list;
+    }
+
+    /** 保证命中检测用的是当前相机下的几何 */
+    function ensureGeom() {
+      var cam = view.cam;
+      if (!geomCache || geomCam.k !== cam.k || geomCam.tx !== cam.tx || geomCam.ty !== cam.ty) {
+        buildGeometry();
+      }
+    }
+
+    function screenOf(n) { return view.cam.toScreen(n.x, n.y); }
+
+    function trimTo(from, to, r) {
+      var dx = to.x - from.x, dy = to.y - from.y;
+      var d = Math.sqrt(dx * dx + dy * dy) || 1;
+      return { x: from.x + (dx / d) * r, y: from.y + (dy / d) * r, ux: dx / d, uy: dy / d, len: d };
+    }
+
+    function computeEdge(e, cam) {
+      var byId = view.graph.byId;
+      var quads = [], polys = [], arrow = null, glyph = null, ends = [];
+
+      if (e.kind === 'definition') {
+        var dn = byId[e.definition], un = byId[e.usedBy];
+        if (!dn || !un) return null;
+        var A = screenOf(dn), B = screenOf(un);
+        var ra = nodeRadius(dn), rb = nodeRadius(un);
+        var len = U.dist(A.x, A.y, B.x, B.y);
+        if (len < 1) return null;
+        var bend = (dn.id < un.id ? 1 : -1) * Math.min(len * C.edge.defCurvature, 90);
+        var ctl = U.perpControl(A.x, A.y, B.x, B.y, bend);
+        // 按控制点方向把端点缩到圆外
+        var a2 = trimTo(A, ctl, ra + 1.5);
+        var b2 = trimTo(B, ctl, rb + 1.5);
+        var p0 = { x: a2.x, y: a2.y }, p2 = { x: b2.x, y: b2.y };
+        quads.push({ p0: p0, p1: ctl, p2: p2 });
+        polys.push(U.flattenQuad(p0, ctl, p2, 16));
+        ends = [dn.id, un.id];
+        return { edge: e, quads: quads, polys: polys, arrow: null, glyph: null, ends: ends };
+
+      }
+
+      if (e.kind === 'equivalence' || e.kind === 'analogy') {
+        var na = byId[e.a], nb = byId[e.b];
+        if (!na || !nb) return null;
+        var Pa = screenOf(na), Pb = screenOf(nb);
+        var r1 = nodeRadius(na), r2 = nodeRadius(nb);
+        var q = trimTo(Pa, Pb, r1 + 1.5);
+        var w = trimTo(Pb, Pa, r2 + 1.5);
+        var seg = [{ x: q.x, y: q.y }, { x: w.x, y: w.y }];
+        polys.push(seg);
+        if (e.kind === 'equivalence') {
+          glyph = { x: (q.x + w.x) / 2, y: (q.y + w.y) / 2, text: '⟺' };
+        }
+        ends = [e.a, e.b];
+        return { edge: e, quads: [], polys: polys, arrow: null, glyph: glyph, ends: ends };
+      }
+
+      /* implication */
+      var tg = byId[e.target];
+      if (!tg) return null;
+      var srcs = e.sources.map(function (id) { return byId[id]; }).filter(Boolean);
+      if (!srcs.length) return null;
+      var Pt = screenOf(tg), rt = nodeRadius(tg);
+      var wc = { x: 0, y: 0 };
+
+      if (srcs.length === 1) {
+        var s0 = screenOf(srcs[0]);
+        var rs0 = nodeRadius(srcs[0]);
+        var dir = trimTo(Pt, s0, rt + 5);              // 从目标朝源方向退开
+        var back = trimTo(s0, Pt, rs0 + 1.5);
+        polys.push([{ x: back.x, y: back.y }, { x: dir.x, y: dir.y }]);
+        arrow = { x: dir.x, y: dir.y, angle: Math.atan2(-dir.uy, -dir.ux) };
+        ends = [srcs[0].id, tg.id];
+      } else {
+        // 多前提：先汇聚到一点，再射向结论
+        srcs.forEach(function (s) { var p = screenOf(s); wc.x += p.x; wc.y += p.y; });
+        wc.x /= srcs.length; wc.y /= srcs.length;
+        var ddx = wc.x - Pt.x, ddy = wc.y - Pt.y;
+        var dl = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
+        var off = Math.min(C.edge.mergeOffset * cam.k, dl * 0.45);
+        var J = { x: Pt.x + (ddx / dl) * off, y: Pt.y + (ddy / dl) * off };
+        srcs.forEach(function (s) {
+          var Ps = screenOf(s), rsp = nodeRadius(s);
+          var st = trimTo(Ps, J, rsp + 1.5);
+          var en = trimTo(J, Ps, 7);
+          polys.push([{ x: st.x, y: st.y }, { x: en.x, y: en.y }]);
+          ends.push(s.id);
+        });
+        var tip = trimTo(Pt, J, rt + 5);
+        polys.push([{ x: J.x, y: J.y }, { x: tip.x, y: tip.y }]);
+        arrow = { x: tip.x, y: tip.y, angle: Math.atan2(-tip.uy, -tip.ux) };
+        ends.push(tg.id);
+      }
+      return { edge: e, quads: quads, polys: polys, arrow: arrow, glyph: null, ends: ends };
+    }
+
+    /* -------------------------------------------------------- 可见性权重 */
+    /** 返回 0~1：聚焦模式下不相关的节点/边会被压暗 */
+    function dimNode() { return C.focus.hideUnrelated ? 0 : C.focus.dimNodeAlpha; }
+    function dimEdge() { return C.focus.hideUnrelated ? 0 : C.focus.dimEdgeAlpha; }
+
+    function alphaForNode(id) {
+      var f = view.focus;
+      if (!f) return 1;
+      if (f.type === 'node') return (id === f.id || isNeighbor(id, f.id)) ? 1 : dimNode();
+      if (f.type === 'edge') {
+        var e = edgeById(f.id);
+        return (e && GU.edgeNodes(e).indexOf(id) >= 0) ? 1 : dimNode();
+      }
+      return 1;
+    }
+
+    function alphaForEdge(e) {
+      var f = view.focus;
+      if (!f) return 1;
+      if (f.type === 'node') return GU.edgeNodes(e).indexOf(f.id) >= 0 ? 1 : dimEdge();
+      if (f.type === 'edge') return e.id === f.id ? 1 : dimEdge();
+      return 1;
+    }
+
+    function isNeighbor(id, of) {
+      var adj = view.graph.adj[of];
+      return !!adj && adj.indexOf(id) >= 0;
+    }
+
+    function edgeById(id) {
+      for (var i = 0; i < view.visible.length; i++) if (view.visible[i].id === id) return view.visible[i];
+      return null;
+    }
+
+    /* ============================================================ 绘制 */
+    function draw() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      var geoms = buildGeometry();
+      var cam = view.cam;
+      computeLod();
+
+      /* ---------- 0. 星团级粗线（缩小时才出现，整块对整块） ---------- */
+      drawClusterLinks();
+
+      /* ---------- 1. 节点级连线 ---------- */
+      var defs = [], eqs = [], imps = [], anas = [];
+      geoms.forEach(function (g) {
+        if (g.edge.kind === 'definition') defs.push(g);
+        else if (g.edge.kind === 'equivalence') eqs.push(g);
+        else if (g.edge.kind === 'analogy') anas.push(g);
+        else imps.push(g);
+      });
+
+      drawEdges(anas);          // 弱边垫在最底下（平时几乎看不见）
+      drawEdges(defs);
+      drawEdges(eqs);
+      drawEdges(imps);
+      geoms.forEach(function (g) { if (g.arrow) drawArrow(g); });
+
+      /* ---------- 2. 节点 ---------- */
+      if (lodA.nodeDot > 0.02) {
+        view.graph.nodes.forEach(function (n) { drawNode(n); });
+      }
+
+      /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
+      if (lodA.galaxyName > 0.02) drawGalaxyNames();
+      if (lodA.clusterName > 0.02) drawClusterNames();
+      if (C.showLabels) drawLabels();
+    }
+
+    /* ------------------------------------------------ 星系名 */
+    function drawGalaxyNames() {
+      var a = lodA.galaxyName;
+      var fs = U.clamp(15 * Math.pow(view.cam.k, 0.30), 13, 34);
+      ctx.save();
+      ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      (view.graph.regions || []).forEach(function (r) {
+        if (!r.stat || !r.name) return;
+        var p = view.cam.toScreen(r.stat.cx, r.stat.cy);
+        if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
+        var text = r.name;
+        var tw = ctx.measureText(text).width;
+        var ls = fs * 0.18;
+        var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
+        ctx.globalAlpha = a;
+        ctx.fillStyle = 'rgba(255,255,255,0.86)';
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, p.y - bh / 2, bw, bh, bh / 2);
+        else ctx.rect(p.x - bw / 2, p.y - bh / 2, bw, bh);
+        ctx.fill();
+        ctx.strokeStyle = U.rgba(r.color, 0.55);
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        // 手动加字距
+        var chars = text.split('');
+        var total = tw + ls * (chars.length - 1);
+        var cx = p.x - total / 2;
+        ctx.fillStyle = 'rgba(26,28,34,0.92)';
+        ctx.textAlign = 'left';
+        chars.forEach(function (ch) {
+          ctx.fillText(ch, cx, p.y + 0.5);
+          cx += ctx.measureText(ch).width + ls;
+        });
+        ctx.textAlign = 'center';
+        ctx.globalAlpha = 1;
+      });
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 星团级连线 */
+    function drawClusterLinks() {
+      var a = lodA.clusterLink;
+      if (a <= 0.02) return;
+      var links = view.graph.clusterLinks || [];
+      if (!links.length) return;
+      var cfgL = C.clusterLink;
+      var maxCount = 1;
+      links.forEach(function (l) { if (l.count > maxCount) maxCount = l.count; });
+
+      ctx.save();
+      ctx.lineCap = 'round';
+      links.forEach(function (l) {
+        if (l.count < cfgL.minEdges) return;
+        var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
+        if (!A || !B || !A.stat || !B.stat) return;
+        var p0 = view.cam.toScreen(A.stat.cx, A.stat.cy);
+        var p1 = view.cam.toScreen(B.stat.cx, B.stat.cy);
+        var len = U.dist(p0.x, p0.y, p1.x, p1.y);
+        if (len < 2) return;
+        var t = Math.min(1, l.count / Math.max(2, maxCount));
+        var w = U.lerp(cfgL.widthMin, cfgL.widthMax, Math.sqrt(t)) * Math.min(1.4, Math.max(0.6, view.cam.k));
+        var bend = (l.a < l.b ? 1 : -1) * len * cfgL.curve;
+        var ctl = U.perpControl(p0.x, p0.y, p1.x, p1.y, bend);
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.quadraticCurveTo(ctl.x, ctl.y, p1.x, p1.y);
+        ctx.lineWidth = w;
+        ctx.strokeStyle = 'rgba(' + cfgL.color + ',' + (cfgL.alpha * a).toFixed(3) + ')';
+        ctx.stroke();
+      });
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 星团名 */
+    function drawClusterNames() {
+      var a = lodA.clusterName;
+      var fs = U.clamp(C.cluster.labelSize * Math.pow(view.cam.k, 0.42), 11, 26);
+      ctx.save();
+      ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      (view.graph.clusters || []).forEach(function (c) {
+        if (!c.stat || !c.name) return;
+        var p = view.cam.toScreen(c.stat.cx, c.stat.cy);
+        if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
+        var text = c.name;
+        var tw = ctx.measureText(text).width;
+        var pad = C.cluster.namePad;
+        var bw = tw + pad * 2, bh = fs + 9;
+        ctx.globalAlpha = a;
+        ctx.fillStyle = 'rgba(255,255,255,0.88)';
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, p.y - bh / 2, bw, bh, bh / 2);
+        else ctx.rect(p.x - bw / 2, p.y - bh / 2, bw, bh);
+        ctx.fill();
+        var g = view.graph.galaxyOf(c);
+        if (g) { ctx.strokeStyle = U.rgba(g.color, 0.5); ctx.lineWidth = 1.2; ctx.stroke(); }
+        // 深色字，保证在云上读得清
+        ctx.fillStyle = 'rgba(30,32,40,0.90)';
+        ctx.fillText(text, p.x, p.y + 0.5);
+        ctx.globalAlpha = 1;
+      });
+      ctx.restore();
+    }
+
+    function drawEdges(list) {
+      list.forEach(function (g) {
+        var e = g.edge;
+        var style = T.edgeStyles[e.kind];
+        var a = alphaForEdge(e) * lodA.nodeEdge;
+        if (a <= 0.02) return;
+
+        var active = isEdgeActive(g);
+        var w = (e.kind === 'implication' ? C.edge.implicationWidth
+          : e.kind === 'equivalence' ? C.edge.equivalenceWidth
+            : e.kind === 'analogy' ? T.edgeStyles.analogy.width
+              : C.edge.definitionWidth) * (active ? 1.85 : 1);
+
+        if (e.kind === 'definition' && !C.showDefinitionLines) return;
+
+        // 弱边：不开探索模式时压得很淡，开了才提亮
+        var isWeak = GU.isWeak(e);
+        if (isWeak) {
+          var base = C.exploreMode ? C.analogy.exploreAlpha : C.analogy.dimAlpha;
+          a = a * (base / (style.alpha || 1));
+          if (a <= 0.02) return;
+          w *= active ? 1.6 : 1;
+        }
+
+        ctx.save();
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = w;
+        if (isWeak) ctx.setLineDash(C.analogy.dash);
+
+        if (e.kind === 'definition' || e.kind === 'analogy') {
+          var alpha = (style.alpha != null ? style.alpha : 1) * a;
+          ctx.strokeStyle = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
+        } else {
+          ctx.strokeStyle = U.rgba(style.color, a);
+        }
+
+        ctx.beginPath();
+        g.polys.forEach(function (pts, i) {
+          if (g.quads[i]) {
+            var q = g.quads[i];
+            ctx.moveTo(q.p0.x, q.p0.y);
+            ctx.quadraticCurveTo(q.p1.x, q.p1.y, q.p2.x, q.p2.y);
+          } else {
+            ctx.moveTo(pts[0].x, pts[0].y);
+            for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
+          }
+        });
+        ctx.stroke();
+
+        // 等价线中点画一个 ⟺（用白色描边做底，而不是白方块，免得在云上留个补丁）
+        if (g.glyph && cam_eqVisible()) {
+          ctx.font = '600 ' + Math.round(U.clamp(13 * Math.pow(view.cam.k, 0.4), 11, 18)) + 'px ' + T.font;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.lineWidth = 3.5;
+          ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
+          ctx.strokeText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
+          ctx.fillStyle = U.rgba(T.edgeStyles.equivalence.color, 0.92 * a);
+          ctx.fillText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
+        }
+        ctx.restore();
+      });
+    }
+
+    function cam_eqVisible() { return view.cam.k >= C.edge.equivalenceGlyph; }
+
+    function isEdgeActive(g) {
+      var e = g.edge;
+      if (view.hover && view.hover.type === 'edge' && view.hover.id === e.id) return true;
+      if (view.focus && view.focus.type === 'edge' && view.focus.id === e.id) return true;
+      if (view.focus && view.focus.type === 'node' && GU.edgeNodes(e).indexOf(view.focus.id) >= 0) return true;
+      if (view.hover && view.hover.type === 'node' && GU.edgeNodes(e).indexOf(view.hover.id) >= 0) return true;
+      return false;
+    }
+
+    function drawArrow(g) {
+      var e = g.edge;
+      var a = alphaForEdge(e) * lodA.nodeEdge;
+      if (a <= 0.02) return;
+      var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
+      var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(ang);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-sz, sz * 0.42);
+      ctx.lineTo(-sz * 0.72, 0);
+      ctx.lineTo(-sz, -sz * 0.42);
+      ctx.closePath();
+      ctx.fillStyle = U.rgba(T.edgeStyles.implication.color, a);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    /* ---------------------------------------------------------- 节点 */
+    function drawNode(n) {
+      var p = screenOf(n);
+      var r = nodeRadius(n);
+      var a = alphaForNode(n.id) * lodA.nodeDot;
+      if (a <= 0.02) return;
+
+      var st = MG.typeStyle(n.type);
+      var isFocus = view.focus && view.focus.type === 'node' && view.focus.id === n.id;
+      var isHover = (view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
+        (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
+          GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
+
+      // 光晕
+      if (C.node.glow) {
+        var gs = glowSprite(st.color);
+        var gsz = r * 5.4;
+        ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
+        ctx.drawImage(gs, p.x - gsz / 2, p.y - gsz / 2, gsz, gsz);
+        ctx.globalAlpha = 1;
+      }
+
+      // 实心点 + 白圈
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = U.rgba(st.color, a);
+      ctx.fill();
+      ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, view.cam.k + 0.35));
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
+      ctx.stroke();
+
+      // 选中 / 悬停的外环
+      if (isFocus || isHover) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + 5.5, 0, Math.PI * 2);
+        ctx.lineWidth = isFocus ? 2 : 1.4;
+        ctx.strokeStyle = U.rgba(st.color, (isFocus ? 0.95 : 0.55) * a);
+        ctx.stroke();
+      }
+    }
+
+    /* ---------------------------------------------------------- 名称 */
+    function drawLabels() {
+      var k = view.cam.k;
+      var fs = labelFont();
+      if (lodA.nodeName <= 0.02) { drawKeyLabels(fs); return; }
+
+      // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
+      var keepAll = k >= C.node.labelMinZoomAll;
+      var placed = [];
+      var nodes = view.graph.nodes.slice().sort(function (a, b) {
+        return labelPriority(b) - labelPriority(a);
+      });
+
+      ctx.font = '600 ' + fs + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+
+      nodes.forEach(function (n) {
+        var a = alphaForNode(n.id);
+        var isSpecial = (view.focus && view.focus.id === n.id) ||
+          (view.hover && view.hover.type === 'node' && view.hover.id === n.id);
+        if (a <= 0.06) return;
+        if (!keepAll && !isSpecial && n.degree < 3) return;
+
+        var p = screenOf(n);
+        var r = nodeRadius(n);
+        var text = n.label;
+        var tw = measure(ctx, text, ctx.font);
+        var x = p.x, y = p.y + r + C.node.labelOffset * Math.max(k, 0.62);
+        var box = { x0: x - tw / 2 - C.node.labelPad, y0: y - 1, x1: x + tw / 2 + C.node.labelPad, y1: y + fs + 2 };
+
+        if (!isSpecial) {
+          var hit = false;
+          for (var i = 0; i < placed.length; i++) {
+            var b = placed[i];
+            if (box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0) { hit = true; break; }
+          }
+          if (hit) return;
+        }
+        placed.push(box);
+
+        var alpha = a * (isSpecial ? 1 : 0.92 * lodA.nodeName);
+        ctx.lineWidth = Math.max(2.5, fs * 0.28);
+        ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
+        ctx.strokeText(text, x, y);
+        ctx.fillStyle = isSpecial ? U.rgba(MG.typeStyle(n.type).color, alpha) : 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
+        ctx.fillText(text, x, y);
+      });
+    }
+
+    /** 缩得太小时只画关键节点的名字 */
+    function drawKeyLabels(fs) {
+      var special = [];
+      if (view.focus && view.focus.type === 'node') special.push(view.focus.id);
+      if (view.hover && view.hover.type === 'node') special.push(view.hover.id);
+      if (!special.length) return;
+      ctx.font = '600 ' + Math.max(fs, 12) + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      special.forEach(function (id) {
+        var n = view.graph.byId[id];
+        if (!n) return;
+        var p = screenOf(n), r = nodeRadius(n);
+        var y = p.y + r + 10;
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = T.labelHalo;
+        ctx.strokeText(n.label, p.x, y);
+        ctx.fillStyle = T.ink;
+        ctx.fillText(n.label, p.x, y);
+      });
+    }
+
+    function labelPriority(n) {
+      var s = n.degree * 10;
+      if (view.focus && view.focus.id === n.id) s += 1000;
+      if (view.hover && view.hover.id === n.id) s += 800;
+      if (n.type === 'definition') s -= 6;
+      return s;
+    }
+
+    /* ========================================================== 命中检测 */
+    function hitTest(sx, sy) {
+      ensureGeom();
+      // 先节点
+      var best = null, bestD = Infinity;
+      view.graph.nodes.forEach(function (n) {
+        var a = alphaForNode(n.id);
+        if (a <= 0.06) return;
+        var p = screenOf(n);
+        var r = nodeRadius(n) + 9;      // 给触摸留点余量
+        var d = U.dist(sx, sy, p.x, p.y);
+        if (d <= r && d < bestD) { bestD = d; best = { type: 'node', id: n.id }; }
+      });
+      if (best) return best;
+
+      // 再连线
+      var tol = C.edge.hitTolerance;
+      var list = geomCache ? Object.keys(geomCache).map(function (k) { return geomCache[k]; }) : [];
+      var hitEdge = null, hitD = Infinity;
+      list.forEach(function (g) {
+        if (g.edge.kind === 'definition' && !C.showDefinitionLines) return;
+        // 弱边没开探索模式时不响应点击（它本来就几乎看不见）
+        if (GU.isWeak(g.edge) && !C.exploreMode) return;
+        var a = alphaForEdge(g.edge);
+        if (a <= 0.06) return;
+        g.polys.forEach(function (pts) {
+          var d = U.pointPolylineDist(sx, sy, pts);
+          if (d < tol && d < hitD) { hitD = d; hitEdge = g.edge.id; }
+        });
+        if (g.arrow) {
+          var d2 = U.dist(sx, sy, g.arrow.x, g.arrow.y);
+          if (d2 < tol + 6 && d2 < hitD) { hitD = d2; hitEdge = g.edge.id; }
+        }
+      });
+      return hitEdge ? { type: 'edge', id: hitEdge } : null;
+    }
+
+    function invalidate() { geomCache = null; }
+
+    return {
+      resize: resize,
+      draw: draw,
+      hitTest: hitTest,
+      invalidate: invalidate,
+      nodeRadius: nodeRadius,
+      screenOf: screenOf,
+      get size() { return { w: W, h: H }; }
+    };
+  }
+
+  MG.createRenderer = createRenderer;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 交互
+   --------------------------------------------------------------------------
+   · 拖拽平移
+   · 滚轮缩放（可在工具条里切成「滚轮平移」，照顾触控板）
+   · 双指捏合缩放 + 双指拖动
+   · 悬停高亮、点击选中
+   命中检测交给 renderer（节点 → 优先；连线 → 次之）。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+  var C = MG.config;
+
+  function createInteraction(canvas, view, hooks) {
+    var pointers = new Map();
+    var mode = 'idle';
+    var downAt = null;       // 屏幕坐标
+    var downTime = 0;
+    var moved = false;
+    var lastPinch = null;
+    var hoverDirty = false;
+    var rafPending = false;
+
+    function localPos(e) {
+      var r = canvas.getBoundingClientRect();
+      return { x: e.clientX - r.left, y: e.clientY - r.top };
+    }
+
+    function requestDraw() {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(function () { rafPending = false; hooks.draw(); });
+    }
+
+    /* ------------------------------------------------------- 指针按下 */
+    function onPointerDown(e) {
+      if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return;
+      canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId);
+      var p = localPos(e);
+      pointers.set(e.pointerId, p);
+      view.cam.stopAnimation();
+
+      if (pointers.size === 1) {
+        mode = 'pan';
+        downAt = p;
+        lastPoint = p;           // 平移增量的基准点
+        downTime = performance.now ? performance.now() : Date.now();
+        moved = false;
+      } else if (pointers.size === 2) {
+        mode = 'pinch';
+        moved = true;
+        lastPinch = pinchState();
+      }
+      requestDraw();
+    }
+
+    function pinchState() {
+      var pts = Array.from(pointers.values());
+      if (pts.length < 2) return null;
+      var a = pts[0], b = pts[1];
+      return {
+        d: Math.max(1, U.dist(a.x, a.y, b.x, b.y)),
+        cx: (a.x + b.x) / 2,
+        cy: (a.y + b.y) / 2
+      };
+    }
+
+    /* ------------------------------------------------------- 指针移动 */
+    function onPointerMove(e) {
+      var p = localPos(e);
+
+      if (pointers.has(e.pointerId)) pointers.set(e.pointerId, p);
+
+      if (mode === 'pinch' && pointers.size >= 2) {
+        var now = pinchState();
+        if (lastPinch && now) {
+          view.cam.panBy(now.cx - lastPinch.cx, now.cy - lastPinch.cy);
+          view.cam.zoomBy(now.d / lastPinch.d, now.cx, now.cy);
+          lastPinch = now;
+        }
+        requestDraw();
+        scheduleHover(p);
+        return;
+      }
+
+      if (mode === 'pan' && pointers.size === 1 && pointers.has(e.pointerId)) {
+        var dx = p.x - lastPoint.x, dy = p.y - lastPoint.y;
+        if (!moved && Math.abs(p.x - downAt.x) + Math.abs(p.y - downAt.y) > 4) {
+          moved = true;
+          canvas.classList.add('dragging');
+        }
+        if (moved) { view.cam.panBy(dx, dy); lastPoint = p; requestDraw(); }
+        return;
+      }
+
+      scheduleHover(p);
+    }
+
+    var lastPoint = { x: 0, y: 0 };
+    var hoverPos = { x: 0, y: 0 };
+
+    function scheduleHover(p) {
+      hoverPos = p;
+      if (hoverDirty) return;
+      hoverDirty = true;
+      requestAnimationFrame(function () {
+        hoverDirty = false;
+        if (mode === 'pinch') return;
+        if (mode === 'pan' && moved) { applyHover(null); return; }  // 拖拽时不谈悬停
+        var hit = hooks.hitTest(hoverPos.x, hoverPos.y);
+        applyHover(hit);
+      });
+    }
+
+    function applyHover(hit) {
+      var cur = view.hover;
+      var same = (cur == null && hit == null) ||
+        (cur && hit && cur.type === hit.type && cur.id === hit.id);
+      canvas.classList.toggle('pointing', !!hit);
+      if (same) return;
+      view.hover = hit;
+      hooks.onHover && hooks.onHover(hit);
+      requestDraw();
+    }
+
+    /* ------------------------------------------------------- 指针抬起 */
+    function onPointerUp(e) {
+      var p = localPos(e);
+      var wasMode = mode;
+      pointers.delete(e.pointerId);
+      canvas.releasePointerCapture && canvas.releasePointerCapture(e.pointerId);
+
+      if (pointers.size === 0) {
+        canvas.classList.remove('dragging');
+        if (mode === 'pan' && !moved) {
+          var dt = (performance.now ? performance.now() : Date.now()) - downTime;
+          if (dt < 700) {
+            var hit = hooks.hitTest(p.x, p.y);
+            hooks.onPick && hooks.onPick(hit);
+          }
+        }
+        mode = 'idle';
+        lastPinch = null;
+        scheduleHover(p);
+      } else if (pointers.size === 1) {
+        mode = 'pan';
+        lastPoint = Array.from(pointers.values())[0];
+        downAt = lastPoint;
+        moved = true;
+        lastPinch = null;
+      } else {
+        mode = 'idle';
+      }
+      requestDraw();
+      return wasMode;
+    }
+
+    function onPointerCancel(e) {
+      pointers.delete(e.pointerId);
+      if (pointers.size === 0) { mode = 'idle'; canvas.classList.remove('dragging'); }
+      lastPinch = pinchState();
+    }
+
+    /* ------------------------------------------------------------ 滚轮 */
+    function onWheel(e) {
+      e.preventDefault();
+      var p = localPos(e);
+      var isPinch = e.ctrlKey || e.metaKey;   // 触控板捏合 → 浏览器给的是 ctrl+wheel
+      var zoom = isPinch || C.wheelZooms;
+
+      if (zoom) {
+        // 归一化不同设备的 delta
+        var unit = e.deltaMode === 1 ? 16 : (e.deltaMode === 2 ? 400 : 1);
+        var d = e.deltaY * unit;
+        var factor = Math.exp(-d * C.camera.wheelGain);
+        view.cam.stopAnimation();
+        if (view.cam.zoomBy(factor, p.x, p.y)) requestDraw();
+      } else {
+        var unit2 = e.deltaMode === 1 ? 16 : (e.deltaMode === 2 ? 400 : 1);
+        view.cam.panBy(-e.deltaX * unit2, -e.deltaY * unit2);
+        requestDraw();
+      }
+    }
+
+    /* --------------------------------------------------------- 绑定 */
+    canvas.addEventListener('pointerdown', onPointerDown);
+    canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerup', onPointerUp);
+    canvas.addEventListener('pointercancel', onPointerCancel);
+    canvas.addEventListener('pointerleave', function () { applyHover(null); });
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+    canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+    return {
+      destroy: function () {
+        canvas.removeEventListener('pointerdown', onPointerDown);
+        canvas.removeEventListener('pointermove', onPointerMove);
+        canvas.removeEventListener('pointerup', onPointerUp);
+        canvas.removeEventListener('pointercancel', onPointerCancel);
+        canvas.removeEventListener('wheel', onWheel);
+      }
+    };
+  }
+
+  MG.createInteraction = createInteraction;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 搜索
+   --------------------------------------------------------------------------
+   在左上角输入框里搜：节点名称 / 英文名 / id / 标签 / 陈述正文 / 板块名。
+   键盘：↑ ↓ 选择，Enter 跳转，Esc 清空。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+
+  function createSearch(box, input, results, view, hooks) {
+    var items = [];
+    var active = -1;
+    var open = false;
+
+    /* --------------------------------------------------------- 建立索引 */
+    var index = [];
+    function reindex() {
+      index = view.graph.nodes.map(function (n) {
+        var regions = n.regions.map(function (r) {
+          var reg = view.graph.regionById[r];
+          return reg ? (reg.name + ' ' + (reg.en || '')) : r;
+        }).join(' ');
+        var st = U.plain(n.statement);
+        var nt = U.plain(n.notes);
+        var hay = [
+          n.label, n.title, n.id, n.type, MG.typeStyle(n.type).name,
+          (n.tags || []).join(' '), regions, st, nt
+        ].join('\n').toLowerCase();
+        return { node: n, hay: hay, label: n.label, title: n.title, st: st };
+      });
+    }
+
+    /* ----------------------------------------------------------- 打分 */
+    function score(entry, q) {
+      var label = entry.label.toLowerCase();
+      var title = entry.title.toLowerCase();
+      var s = 0;
+      if (label === q) s += 1000;
+      if (label.indexOf(q) === 0) s += 500;
+      if (label.indexOf(q) >= 0) s += 260;
+      if (title.indexOf(q) >= 0) s += 150;
+      if (entry.node.id.toLowerCase().indexOf(q) >= 0) s += 120;
+      if ((entry.node.tags || []).join(' ').toLowerCase().indexOf(q) >= 0) s += 110;
+      if (entry.node.type.toLowerCase().indexOf(q) >= 0) s += 60;
+      var i = entry.hay.indexOf(q);
+      if (i >= 0) s += 40;
+      if (s > 0) s += Math.min(20, entry.node.degree || 0);
+      return s;
+    }
+
+    function run(q) {
+      q = q.trim().toLowerCase();
+      items = [];
+      if (!q) { render(); return; }
+
+      var hits = [];
+      index.forEach(function (e) { var s = score(e, q); if (s > 0) hits.push({ e: e, s: s }); });
+      hits.sort(function (a, b) { return b.s - a.s; });
+      hits.slice(0, 14).forEach(function (h) {
+        items.push({ kind: 'node', id: h.e.node.id, label: h.e.label, sub: subOf(h.e), q: q, node: h.e.node });
+      });
+
+      // 板块也当作一种结果
+      view.graph.regions.forEach(function (r) {
+        if (!r.stat) return;
+        if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
+          items.push({ kind: 'region', id: r.id, label: r.name, sub: r.stat.count + ' 个节点', q: q });
+        }
+      });
+
+      active = items.length ? 0 : -1;
+      render();
+    }
+
+    function subOf(e) {
+      var st = e.st || U.plain(e.title);
+      return U.truncate(st || MG.typeStyle(e.node.type).name, 64);
+    }
+
+    function mark(text, q) {
+      if (!q) return U.escapeHtml(text);
+      var i = text.toLowerCase().indexOf(q);
+      if (i < 0) return U.escapeHtml(text);
+      return U.escapeHtml(text.slice(0, i)) + '<mark>' +
+        U.escapeHtml(text.slice(i, i + q.length)) + '</mark>' +
+        U.escapeHtml(text.slice(i + q.length));
+    }
+
+    function render() {
+      if (!items.length) {
+        var v = input.value.trim();
+        results.innerHTML = v
+          ? '<div class="sr-empty">没有找到「' + U.escapeHtml(v) + '」相关的节点</div>'
+          : '';
+        open = !!v;
+      } else {
+        results.innerHTML = items.map(function (it, i) {
+          var color = it.kind === 'region'
+            ? (view.graph.regionById[it.id] || {}).color || '#ccc'
+            : MG.typeStyle(it.node.type).color;
+          var tagText = it.kind === 'region' ? '板块' : MG.typeStyle(it.node.type).name;
+          var regionName = '';
+          if (it.kind === 'node' && it.node.regions.length) {
+            var r0 = view.graph.regionById[it.node.regions[0]];
+            if (r0) regionName = r0.name;
+          }
+          return '<div class="sr-item' + (i === active ? ' active' : '') + '" data-i="' + i + '">' +
+            '<span class="sr-dot" style="background:' + color + '"></span>' +
+            '<span class="sr-title">' + mark(it.label, it.q) + '</span>' +
+            '<span class="sr-sub">' + U.escapeHtml(tagText) + ' · ' + U.escapeHtml(it.sub) + '</span>' +
+            (regionName ? '<span class="sr-region">' + U.escapeHtml(regionName) + '</span>' : '<span class="sr-region">' + U.escapeHtml(tagText) + '</span>') +
+            '</div>';
+        }).join('');
+        open = true;
+      }
+      results.classList.toggle('hidden', !open);
+      box.classList.toggle('active', open);
+    }
+
+    function choose(i) {
+      var it = items[i];
+      if (!it) return;
+      if (it.kind === 'region') hooks.onRegion && hooks.onRegion(it.id);
+      else hooks.onNode && hooks.onNode(it.id);
+      close();
+    }
+
+    function close() {
+      open = false;
+      active = -1;
+      results.classList.add('hidden');
+      box.classList.remove('active');
+    }
+
+    function clear() {
+      input.value = '';
+      items = [];
+      close();
+    }
+
+    /* ---------------------------------------------------------- 事件 */
+    input.addEventListener('input', function () { run(input.value); });
+    input.addEventListener('focus', function () {
+      box.classList.add('active');
+      if (input.value.trim()) run(input.value);
+    });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        if (!items.length) return;
+        e.preventDefault();
+        active = (active + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+        open = true;
+        render();
+        var el = results.querySelector('.sr-item.active');
+        if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        choose(active < 0 ? 0 : active);
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        if (input.value) clear(); else { close(); input.blur(); }
+      }
+    });
+    input.addEventListener('blur', function () { setTimeout(close, 140); });
+
+    results.addEventListener('mousedown', function (e) {
+      var el = e.target.closest ? e.target.closest('.sr-item') : null;
+      if (!el) return;
+      e.preventDefault();
+      choose(parseInt(el.getAttribute('data-i'), 10));
+    });
+
+    document.addEventListener('mousedown', function (e) {
+      if (!box.contains(e.target)) close();
+    });
+
+    return {
+      reindex: reindex,
+      clear: clear,
+      close: close,
+      focus: function () { input.focus(); input.select(); }
+    };
+  }
+
+  MG.createSearch = createSearch;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 详情面板
+   --------------------------------------------------------------------------
+   点节点 → 显示类型 / 板块 / 陈述 / 说明 + 相关连线（可点击跳转）
+   点连线 → 显示推导过程（推出 / 等价 / 定义引用）
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+  var T = MG.theme;
+  var GU = MG.graphUtil;
+
+  function createPanel(panelEl, bodyEl, closeBtn, view, hooks) {
+    var current = null;
+
+    function hide() {
+      current = null;
+      panelEl.classList.add('hidden');
+      hooks.onClose && hooks.onClose();
+    }
+
+    function show(what) {
+      current = what;
+      panelEl.classList.remove('hidden');
+      panelEl.scrollTop = 0;
+      if (what.type === 'node') renderNode(view.graph.byId[what.id]);
+      else renderEdge(findEdge(what.id));
+    }
+
+    function findEdge(id) {
+      for (var i = 0; i < view.graph.edges.length; i++) if (view.graph.edges[i].id === id) return view.graph.edges[i];
+      return null;
+    }
+
+    /* ------------------------------------------------------------ 零件 */
+    function kindBadge(type) {
+      var st = MG.typeStyle(type);
+      return '<span class="pn-kind" style="background:' + st.color + '">' +
+        '<span class="dot"></span>' + U.escapeHtml(st.name) + '</span>';
+    }
+
+    function regionChips(node) {
+      if (!node.regions.length && !node.clusterObj) return '';
+      var head = '';
+      if (node.clusterObj) {
+        var g = view.graph.galaxyOf ? view.graph.galaxyOf(node.clusterObj) : null;
+        var col = node.clusterObj.color || (g ? g.color : '#8892A0');
+        head = '<span class="pn-chip" data-cluster="' + node.clusterObj.id + '">' +
+          '<span class="lg-swatch" style="background:' + U.mixWithWhite(col, 0.62) + '"></span>' +
+          U.escapeHtml(node.clusterObj.name) + '</span>';
+      }
+      return '<div class="pn-regions">' + head + node.regions.map(function (rid) {
+        var r = view.graph.regionById[rid];
+        if (!r) return '';
+        return '<span class="pn-chip" data-region="' + r.id + '">' +
+          '<span class="lg-swatch" style="background:' + r.color + '"></span>' +
+          U.escapeHtml(r.name) + '</span>';
+      }).join('') + '</div>';
+    }
+
+    function nodeRow(n, prefix, keyword) {
+      var st = MG.typeStyle(n.type);
+      var desc = U.plain(n.statement) || U.plain(n.notes) || n.title;
+      return '<div class="pn-link" data-kind="node" data-id="' + n.id + '">' +
+        '<span class="dot" style="background:' + st.color + '"></span>' +
+        (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
+        '<span><span class="nm">' + U.escapeHtml(n.label) + '</span>' +
+        '<div class="ds">' + U.escapeHtml(U.truncate(desc, 56)) + '</div></span>' +
+        '</div>';
+    }
+
+    function edgeRow(e, keyword) {
+      var name = T.edgeNames[e.kind] || e.kind;
+      var arrow = e.kind === 'implication' ? '⟹'
+        : e.kind === 'equivalence' ? '⟺'
+          : e.kind === 'analogy' ? '～' : '·';
+      var head = e.title || shortLabel(e, 40);
+      var snippet = '';
+      if (e.proof) snippet = U.plain(e.proof);
+      else if (e.proofs && e.proofs.length) snippet = e.proofs.map(function (p) { return p.label; }).join(' / ');
+      else if (e.note) snippet = U.plain(e.note);
+      return '<div class="pn-link" data-kind="edge" data-id="' + e.id + '">' +
+        '<span class="dot" style="background:' + edgeDot(e) + '"></span>' +
+        (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
+        '<span><span class="nm">' + U.escapeHtml(U.truncate(head, 44)) + '</span>' +
+        '<div class="ds">' + arrow + ' ' + U.escapeHtml(name) +
+        (snippet ? ' · ' + U.escapeHtml(U.truncate(snippet, 48)) : '') + '</div></span>' +
+        '</div>';
+    }
+
+    function edgeDot(e) {
+      if (e.kind === 'definition') return 'rgba(60,112,245,0.75)';
+      if (e.kind === 'equivalence') return '#1C1C1E';
+      return '#1C1C1E';
+    }
+
+    function shortLabel(e, n) {
+      var g = view.graph;
+      if (e.kind === 'analogy') {
+        return U.truncate(lbl(g, e.a) + ' ～ ' + lbl(g, e.b), n);
+      }
+      if (e.kind === 'equivalence') {
+        return U.truncate(lbl(g, e.a) + ' ⟺ ' + lbl(g, e.b), n);
+      }
+      if (e.kind === 'definition') {
+        return U.truncate('「' + lbl(g, e.definition) + '」→ ' + lbl(g, e.usedBy), n);
+      }
+      var s = e.sources.map(function (id) { return lbl(g, id); }).join(' + ');
+      return U.truncate(s + ' ⟹ ' + lbl(g, e.target), n);
+    }
+
+    function lbl(g, id) { var n = g.byId[id]; return n ? n.label : id; }
+
+    function section(title, html) {
+      return '<div class="pn-sec"><h4>' + U.escapeHtml(title) + '</h4>' + html + '</div>';
+    }
+
+    function listOrNone(rows, emptyText) {
+      if (!rows.length) return '<div class="pn-none">' + U.escapeHtml(emptyText) + '</div>';
+      return '<div class="pn-list">' + rows.join('') + '</div>';
+    }
+
+    /* -------------------------------------------------------- 节点面板 */
+    function renderNode(n) {
+      if (!n) { hide(); return; }
+      var g = view.graph;
+      var html = '';
+      html += kindBadge(n.type);
+      html += '<h1 class="pn-h1">' + U.escapeHtml(n.title) + '</h1>';
+      html += '<div class="pn-h2">' + U.escapeHtml(n.id) + '</div>';
+      html += regionChips(n);
+
+      if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
+      if (n.notes) html += section('说明 / 备注', '<div class="pn-body">' + U.md(n.notes) + '</div>');
+      if (n.refs && n.refs.length) {
+        html += section('参考', '<div class="pn-body"><ul>' + n.refs.map(function (r) {
+          return '<li>' + U.escapeHtml(r) + '</li>';
+        }).join('') + '</ul></div>');
+      }
+
+      /* 相关连线 */
+      var out = [], inc = [], eqs = [], defs = [], users = [], anas = [];
+      (g.edgesOf[n.id] || []).forEach(function (e) {
+        if (e.kind === 'implication') {
+          if (e.target === n.id) inc.push(edgeRow(e, '被推出'));
+          else out.push(edgeRow(e, '推出'));
+        } else if (e.kind === 'equivalence') {
+          eqs.push(edgeRow(e, '等价'));
+        } else if (e.kind === 'analogy') {
+          anas.push(edgeRow(e, '类比'));
+        } else if (e.kind === 'definition') {
+          if (e.usedBy === n.id) {
+            var d = g.byId[e.definition];
+            if (d) defs.push(nodeRow(d, '定义', ''));
+          } else {
+            users.push(edgeRow(e, '用于'));
+          }
+        }
+      });
+
+      html += section('由本节点推出的结论（' + out.length + '）',
+        listOrNone(out, '暂无'));
+      html += section('推出本节点的结论（' + inc.length + '）',
+        listOrNone(inc, '暂无（可能是原始公理或定义）'));
+      html += section('等价命题（' + eqs.length + '）',
+        listOrNone(eqs, '暂无'));
+      if (anas.length) {
+        html += section('类比 / 思想相通（' + anas.length + '）',
+          '<div class="pn-hint">⚠️ 弱边：不是逻辑蕴含，只提供联想线索</div>' +
+          listOrNone(anas, '暂无'));
+      }
+      if (MG.config.highlightDefinitions) {
+        html += section('陈述中用到的定义（' + defs.length + '）',
+          listOrNone(defs, '暂无'));
+        if (users.length) {
+          html += section('本定义被以下结论引用（' + users.length + '）',
+            listOrNone(users, '暂无'));
+        }
+      }
+      bodyEl.innerHTML = html;
+    }
+
+    /* -------------------------------------------------------- 连线面板 */
+    function renderEdge(e) {
+      if (!e) { hide(); return; }
+      var g = view.graph;
+      var name = T.edgeNames[e.kind] || e.kind;
+      var color = e.kind === 'definition' ? '#3C70F5' : '#1C1C1E';
+      var html = '';
+
+      html += '<span class="pn-kind" style="background:' + color + '">' +
+        '<span class="dot"></span>' + U.escapeHtml(name) + '</span>';
+      html += '<h1 class="pn-h1">' + U.escapeHtml(e.title || shortLabel(e, 120)) + '</h1>';
+      html += '<div class="pn-h2">' + U.escapeHtml(e.id) + '</div>';
+
+      /* 推导图式 */
+      var gph = '';
+      if (e.kind === 'implication') {
+        gph = e.sources.map(function (id) {
+          return '<span class="pn-link" data-kind="node" data-id="' + id + '" style="display:inline-flex;padding:0"><b>' +
+            U.escapeHtml(lbl(g, id)) + '</b></span>';
+        }).join('<span class="arrow">+</span>') +
+          '<span class="arrow">⟹</span>' +
+          '<span class="pn-link" data-kind="node" data-id="' + e.target + '" style="display:inline-flex;padding:0"><b>' +
+          U.escapeHtml(lbl(g, e.target)) + '</b></span>';
+      } else if (e.kind === 'equivalence' || e.kind === 'analogy') {
+        gph = '<span class="pn-link" data-kind="node" data-id="' + e.a + '" style="display:inline-flex;padding:0"><b>' +
+          U.escapeHtml(lbl(g, e.a)) + '</b></span>' +
+          '<span class="arrow">' + (e.kind === 'analogy' ? '～' : '⟺') + '</span>' +
+          '<span class="pn-link" data-kind="node" data-id="' + e.b + '" style="display:inline-flex;padding:0"><b>' +
+          U.escapeHtml(lbl(g, e.b)) + '</b></span>';
+      } else {
+        gph = '「<b>' + U.escapeHtml(lbl(g, e.definition)) + '</b>」 出现在 ' +
+          '<span class="pn-link" data-kind="node" data-id="' + e.usedBy + '" style="display:inline-flex;padding:0"><b>' +
+          U.escapeHtml(lbl(g, e.usedBy)) + '</b></span> 的陈述中';
+      }
+      html += '<div class="pn-arith">' + gph + '</div>';
+
+      /* 过程：等价线会把「被它遮住的同向箭头」的证明也一并列出来 */
+      var steps = [];
+      if (e.kind === 'equivalence') {
+        (e.proofs || []).forEach(function (p) {
+          steps.push({ label: p.label || '', text: p.text || '' });
+        });
+        if (MG.config.hideParallelImplications) {
+          view.graph.edges.forEach(function (o) {
+            if (o.kind !== 'implication' || o.sources.length !== 1) return;
+            var s = o.sources[0];
+            if ((s === e.a && o.target === e.b) || (s === e.b && o.target === e.a)) {
+              steps.push({ label: o.title || (lbl(g, s) + ' ⇒ ' + lbl(g, o.target)), text: o.proof || '', tag: '箭头' });
+            }
+          });
+        }
+      }
+
+      if (steps.length) {
+        html += section('为什么等价', steps.map(function (p, i) {
+          return '<div class="pn-step">' +
+            '<div class="pn-step-title"><span class="badge">' + (p.tag || (i + 1)) + '</span>' +
+            U.escapeHtml(p.label || '') + '</div>' +
+            '<div class="pn-body">' + U.md(p.text || '') + '</div></div>';
+        }).join(''));
+      } else if (e.proof) {
+        html += section(e.kind === 'implication' ? '推导过程' : '说明', '<div class="pn-body">' + U.md(e.proof) + '</div>');
+      } else if (e.kind === 'definition') {
+        var d = g.byId[e.definition];
+        html += section('说明', '<div class="pn-body">' +
+          U.md(e.note || ('该结论的陈述中使用了定义「' + lbl(g, e.definition) + '」。')) + '</div>');
+        if (d && d.statement) {
+          html += section('定义原文 · ' + d.label, '<div class="pn-body">' + U.md(d.statement) + '</div>');
+        }
+      }
+
+      if (e.note && e.proofs) {
+        html += '<div class="pn-note">' + U.md(e.note) + '</div>';
+      } else if (e.note && e.proof) {
+        html += '<div class="pn-note">' + U.md(e.note) + '</div>';
+      }
+
+      bodyEl.innerHTML = html;
+    }
+
+    /* ----------------------------------------------------------- 事件 */
+    bodyEl.addEventListener('click', function (ev) {
+      var cchip = ev.target.closest ? ev.target.closest('[data-cluster]') : null;
+      if (cchip) {
+        hooks.onCluster && hooks.onCluster(cchip.getAttribute('data-cluster'));
+        return;
+      }
+      var chip = ev.target.closest ? ev.target.closest('[data-region]') : null;
+      if (chip) {
+        hooks.onRegion && hooks.onRegion(chip.getAttribute('data-region'));
+        return;
+      }
+      var row = ev.target.closest ? ev.target.closest('[data-kind][data-id]') : null;
+      if (!row) return;
+      var kind = row.getAttribute('data-kind');
+      var id = row.getAttribute('data-id');
+      if (kind === 'node') hooks.onGoto && hooks.onGoto({ type: 'node', id: id });
+      else hooks.onGoto && hooks.onGoto({ type: 'edge', id: id });
+    });
+
+    closeBtn.addEventListener('click', hide);
+
+    return {
+      show: show,
+      hide: hide,
+      get current() { return current; }
+    };
+  }
+
+  MG.createPanel = createPanel;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 外部内容包加载器（为「GitHub 多端同步 / PDF 笔记导入」预留）
+   --------------------------------------------------------------------------
+   页面里写死的 packs（src/data/packs/*.js）是「本地内容」；
+   这里负责把「外部内容」也并进来，二者的数据结构完全一样：
+
+     外部目录结构（默认 src/data/external/）：
+       external/
+         index.json          ← 内容包清单 { "packs": ["my-notes.json", ...] }
+         my-notes.json       ← { "name": "…", "nodes": [...], "edges": [...] }
+
+   用 file:// 直接打开网页时浏览器会禁止 fetch，此时静默跳过（不影响使用）；
+   想要多端同步 / 导入 PDF 笔记，用本地服务器打开即可：
+       python -m http.server 8000      →  http://localhost:8000
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  var DEFAULT_BASE = 'src/data/external/';
+
+  function fetchJSON(url) {
+    if (typeof fetch !== 'function') return Promise.resolve(null);
+    return fetch(url, { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) return null;
+      return r.json();
+    }).catch(function () { return null; });
+  }
+
+  /**
+   * 尝试加载外部内容包。
+   * @returns {Promise<{packs: Array, base: string, loaded: number}>}
+   */
+  function loadExternal(base) {
+    base = base || DEFAULT_BASE;
+    return fetchJSON(base + 'index.json').then(function (manifest) {
+      if (!manifest || !manifest.packs || !manifest.packs.length) {
+        return { packs: [], base: base, loaded: 0 };
+      }
+      return Promise.all(manifest.packs.map(function (f) {
+        return fetchJSON(base + f).then(function (p) {
+          if (!p) return null;
+          p.name = p.name || f;
+          return p;
+        });
+      })).then(function (list) {
+        var packs = list.filter(Boolean);
+        return { packs: packs, base: base, loaded: packs.length };
+      });
+    }).catch(function () {
+      return { packs: [], base: base, loaded: 0 };
+    });
+  }
+
+  /** 把任意 JSON 对象当作一个内容包校验（供将来的导入功能使用） */
+  function validatePack(p) {
+    var errs = [];
+    if (!p || typeof p !== 'object') return { ok: false, errs: ['不是对象'] };
+    if (!Array.isArray(p.nodes)) errs.push('缺少 nodes 数组');
+    if (p.edges && !Array.isArray(p.edges)) errs.push('edges 必须是数组');
+    (p.nodes || []).forEach(function (n, i) {
+      if (!n.id) errs.push('第 ' + i + ' 个节点缺少 id');
+      if (!n.label && !n.title) errs.push('节点 ' + n.id + ' 缺少 label/title');
+    });
+    return { ok: errs.length === 0, errs: errs };
+  }
+
+  MG.loader = {
+    loadExternal: loadExternal,
+    validatePack: validatePack,
+    DEFAULT_BASE: DEFAULT_BASE
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+
+<!-- =========================================================================
+     内容层（数学板块 + 节点 + 连线）
+     新增内容只需在下面加/改 src/data/ 里的文件，不用碰引擎。
+     ========================================================================= -->
+<script>
+/* ==========================================================================
+   数学星图 · 板块（数学领域）定义
+   --------------------------------------------------------------------------
+   center  板块中心的世界坐标（星图上的大致方位）
+   radius  板块半径（用来判断跨板块节点的交界点、以及云的基准大小）
+   color   背景电子云的颜色；越靠近边缘越淡，页面大背景仍是白色
+   ========================================================================== */
+window.MG = window.MG || {};
+
+MG.regions = [
+  {
+    id: 'logic',
+    name: '数理逻辑',
+    en: 'Mathematical Logic',
+    color: '#8A63E8',
+    center: { x: -1150, y: -700 },
+    radius: 460,
+    desc: '一阶语言、形式系统、可计算性与模型论。'
+  },
+  {
+    id: 'set-theory',
+    name: '集合论',
+    en: 'Set Theory',
+    color: '#4F7CF5',
+    center: { x: -480, y: -120 },
+    radius: 660,
+    desc: 'ZFC 公理系统、序数、基数与选择原理。'
+  },
+  {
+    id: 'order-theory',
+    name: '序理论',
+    en: 'Order Theory',
+    color: '#2FA96B',
+    center: { x: 440, y: -170 },
+    radius: 560,
+    desc: '偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。'
+  },
+  {
+    id: 'topology',
+    name: '拓扑学',
+    en: 'Topology',
+    color: '#D9649F',
+    center: { x: 1220, y: -660 },
+    radius: 460,
+    desc: '开集、连续、紧致与连通；大量定理依赖选择原理。'
+  },
+  {
+    id: 'algebra',
+    name: '抽象代数',
+    en: 'Abstract Algebra',
+    color: '#E08A3C',
+    center: { x: 960, y: 430 },
+    radius: 500,
+    desc: '群、环、域、模与线性代数；佐恩引理的经典应用场。'
+  },
+  {
+    id: 'analysis',
+    name: '分析学',
+    en: 'Analysis',
+    color: '#3AA8D8',
+    center: { x: -420, y: 720 },
+    radius: 500,
+    desc: '极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。'
+  }
+];
+
+</script>
+<script>
+/* ==========================================================================
+   数学星图 · 星团定义（星系内部的「一套自足的装置」）
+   --------------------------------------------------------------------------
+   分类哲学：
+
+     ★ 星团 = 为了造出某个「能用的东西」而存在的一整套结果。
+       它内部的关系再密也无所谓 —— 那是它的私事。
+       例：测度论整套构造只为了做出 Lebesgue 积分；局部化整套只为了做出 W⁻¹C。
+
+     ★ 星团是「对外连接的单位」。
+       跨星团的连线是整块对整块的（引擎会自动把节点级连线聚合成星团级粗线），
+       你不需要、也不应该去逐点连。
+
+     ★ 判据（满足两条以上就是独立星团）：
+       ① 有一条清晰的「主线」——从基础概念推到一个标志性结果；
+       ② 内部几乎不和外面打交道，对外只需要一两个入口；
+       ③ 你能用一句话说清它「造出了什么」。
+
+   字段：
+     id       全局唯一，建议 <星系id>.<名字>
+     name     显示名（放大到中等缩放时出现在星团中央）
+     parent   所属星系 id（必须是 regions.js 里有的）
+     color    可选；不写就继承星系颜色
+     desc     一句话说明「它造出了什么」
+
+   节点侧：在 node 上写 cluster: '<星团 id>' 即归属；不写就直属于星系。
+   ========================================================================== */
+window.MG = window.MG || {};
+
+MG.clusters = [
+
+  /* ------------------------------------------------ 星系：集合论 */
+  {
+    id: 'set.zfc',
+    name: 'ZFC 公理系统',
+    parent: 'set-theory',
+    desc: '造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。'
+  },
+  {
+    id: 'set.construct',
+    name: '集合的构造',
+    parent: 'set-theory',
+    desc: '造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。'
+  },
+  {
+    id: 'set.choice',
+    name: '关系与选择',
+    parent: 'set-theory',
+    desc: '造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。'
+  },
+
+  /* ------------------------------------------------ 星系：序理论 */
+  {
+    id: 'order.structure',
+    name: '序结构',
+    parent: 'order-theory',
+    desc: '造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。'
+  },
+  {
+    id: 'order.maximal',
+    name: '极大原理',
+    parent: 'order-theory',
+    desc: '造出存在性证明的万能发动机：佐恩引理、Hausdorff 极大原理、Tukey 引理。'
+  },
+
+  /* ------------------------------------------------ 星系：抽象代数 */
+  {
+    id: 'algebra.vectorspace',
+    name: '向量空间的基',
+    parent: 'algebra',
+    desc: '造出线性代数的地基：每个向量空间都有基。'
+  }
+
+  /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
+];
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · ZFC 公理系统（9 条）
+   --------------------------------------------------------------------------
+   一个「包」= 若干节点 + 若干连线。可以自由增删、拆分成更多文件。
+   节点字段说明见 README.md「怎么加内容」一节。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: 'ZFC 公理系统',
+  nodes: [
+
+    /* ---------------------------------------------------------- 外延 */
+    {
+      id: 'ax.ext',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '外延公理',
+      title: '外延公理（Axiom of Extensionality）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '集合相等'],
+      statement: [
+        '集合由它的元素唯一决定：',
+        '',
+        '$$∀A ∀B [ ∀x ( x ∈ A ↔ x ∈ B ) → A = B ]$$',
+        '',
+        '反方向（A = B → 元素完全相同）由等词逻辑自动成立，所以常写成 ↔。',
+        '这条公理保证了「用条件刻画集合」时结果是唯一的，因此 { x ∈ A : φ(x) } 这种写法不会产生歧义。'
+      ].join('\n'),
+      notes: [
+        '它是「集合」这个名字的全部含义：一个集合 = 一个外延（一堆元素），与「怎么描述它」无关。',
+        '去掉它，就可以有元素完全相同却彼此不同的对象（例如带原子 ur-element 的集合论）。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.2', 'Jech, Set Theory, 1.2']
+    },
+
+    /* ---------------------------------------------------------- 分离 */
+    {
+      id: 'ax.sep',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '分离公理模式',
+      title: '分离公理模式（Axiom Schema of Separation）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '子集', '公理模式'],
+      statement: [
+        '对每个公式 φ(x, p)（其中 B 不出现），下面是一条公理：',
+        '',
+        '$$∀p ∀A ∃B ∀x [ x ∈ B ↔ ( x ∈ A ∧ φ(x, p) ) ]$$',
+        '',
+        '由外延公理，这样的 B 唯一，记作 B = { x ∈ A : φ(x, p) }。俗称「子集公理」。'
+      ].join('\n'),
+      notes: [
+        '它是**公理模式**而不是单条公理：每取一个公式 φ 就得到一条公理，ZFC 因此有无穷多条公理。',
+        '限制 `x ∈ A` 是关键——不能写成 { x : x ∉ x }，否则就是罗素悖论。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.4']
+    },
+
+    /* ---------------------------------------------------------- 配对 */
+    {
+      id: 'ax.pair',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '配对公理',
+      title: '配对公理（Axiom of Pairing）',
+      regions: ['set-theory'],
+      tags: ['ZFC'],
+      statement: [
+        '任给两个集合，可以打包成「只含这两个元素的集合」：',
+        '',
+        '$$∀a ∀b ∃A ∀x [ x ∈ A ↔ ( x = a ∨ x = b ) ]$$',
+        '',
+        '由外延公理 A 唯一，记作 { a, b }（无序对）。取 a = b 即得单点集 { a }。'
+      ].join('\n'),
+      notes: '有了配对公理，「{a, b}」才是集合；它也是构造有序对 (a,b) = {{a},{a,b}} 的第一步。',
+      refs: ['Kunen, Set Theory, I.3']
+    },
+
+    /* ---------------------------------------------------------- 并集 */
+    {
+      id: 'ax.union',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '并集公理',
+      title: '并集公理（Axiom of Union）',
+      regions: ['set-theory'],
+      tags: ['ZFC'],
+      statement: [
+        '一个集合族的所有成员的元素，仍然构成一个集合：',
+        '',
+        '$$∀F ∃A ∀x [ x ∈ A ↔ ∃Y ( Y ∈ F ∧ x ∈ Y ) ]$$',
+        '',
+        '记作 ⋃F。配合配对公理可得二元并 a ∪ b = ⋃{ a, b }。'
+      ].join('\n'),
+      notes: '注意 ⋃F 是「F 中元素的元素」，不是 F 自身；⋃{a,b} = a ∪ b 正是我们要的二元并。',
+      refs: ['Kunen, Set Theory, I.3']
+    },
+
+    /* ---------------------------------------------------------- 幂集 */
+    {
+      id: 'ax.power',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '幂集公理',
+      title: '幂集公理（Axiom of Power Set）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '子集'],
+      statement: [
+        '一个集合的所有子集构成一个集合：',
+        '',
+        '$$∀A ∃P ∀x [ x ∈ P ↔ x ⊆ A ]$$',
+        '',
+        '记作 𝒫(A)（或 P(A)）。Cantor 定理说 |𝒫(A)| > |A|，所以幂集是「造更大的集合」的基本手段。'
+      ].join('\n'),
+      notes: '它是笛卡尔积 A × B 存在性的关键：{{a},{a,b}} 落在 𝒫(𝒫(A ∪ B)) 里。',
+      refs: ['Kunen, Set Theory, I.3']
+    },
+
+    /* ---------------------------------------------------------- 无穷 */
+    {
+      id: 'ax.inf',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '无穷公理',
+      title: '无穷公理（Axiom of Infinity）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '归纳集', '自然数'],
+      statement: [
+        '存在一个「归纳集」——含有 ∅ 且对后继封闭的集合：',
+        '',
+        '$$∃I [ ∅ ∈ I ∧ ∀x ( x ∈ I → x ∪ { x } ∈ I ) ]$$',
+        '',
+        '其中 ∅ 由分离公理模式得到，x ∪ {x} 由配对公理与并集公理得到。',
+        '这条公理宣告了无穷集合的存在，是从中构造自然数集 ω 的唯一来源。'
+      ].join('\n'),
+      notes: '没有它，V_ω 就是一个模型，所有集合都有限，算术只能在有界范围内进行。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* ---------------------------------------------------------- 替换 */
+    {
+      id: 'ax.repl',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '替换公理模式',
+      title: '替换公理模式（Axiom Schema of Replacement）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '公理模式', '函数'],
+      statement: [
+        '若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 φ(x, y, p)（其中 B 不出现）：',
+        '',
+        '$$∀p [ ∀x∀y∀z ( φ(x,y,p) ∧ φ(x,z,p) → y = z ) → ∀A ∃B ∀y ( y ∈ B ↔ ∃x ∈ A, φ(x,y,p) ) ]$$',
+        '',
+        '它保证了「替换」不会跑出集合论宇宙：像 B 也是集合。'
+      ].join('\n'),
+      notes: '替换公理模式是 Z 与 ZF 的分水岭。由它（加上任取一个集合 A）可以推出分离公理模式。',
+      refs: ['Kunen, Set Theory, I.6']
+    },
+
+    /* ---------------------------------------------------------- 正则 */
+    {
+      id: 'ax.found',
+      cluster: 'set.zfc',
+      type: 'axiom',
+      label: '正则公理',
+      title: '正则公理 / 基础公理（Axiom of Foundation）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '良基', '∈-链'],
+      statement: [
+        '每个非空集合都有「∈-极小元」：',
+        '',
+        '$$∀A [ A ≠ ∅ → ∃x ( x ∈ A ∧ x ∩ A = ∅ ) ]$$',
+        '',
+        '等价说法：∈ 是良基关系，不存在无穷递减链',
+        '',
+        '$$x₀ ∋ x₁ ∋ x₂ ∋ ⋯$$'
+      ].join('\n'),
+      notes: [
+        '它排除了 A ∈ A 这类循环集合，也排除了「集合的无穷下降」。',
+        '正则公理等价于「集合论宇宙 V 是累积层级 ⋃α Vα」，这条公理让 ∈-归纳法成为合法的证明方法。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.9']
+    },
+
+    /* ---------------------------------------------------------- 选择 */
+    {
+      id: 'ax.choice',
+      cluster: 'set.choice',
+      type: 'axiom',
+      label: '选择公理',
+      title: '选择公理（Axiom of Choice, AC）',
+      regions: ['set-theory'],
+      tags: ['ZFC', '选择', '等价命题'],
+      statement: [
+        '任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：',
+        '',
+        '$$∀F [ ( ∀X ∈ F, X ≠ ∅ ) → ∃f ( f 是函数 ∧ dom f = F ∧ ∀X ∈ F, f(X) ∈ X ) ]$$',
+        '',
+        '另一种常见形式（两两不交形式）：若 F 是两两不交的非空集合族，则存在集合 C，使对每个 X ∈ F 都有 |C ∩ X| = 1。',
+        '',
+        '选择函数 f 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。'
+      ].join('\n'),
+      notes: [
+        'AC 与 ZF 独立：Gödel (1938) 证明 Con(ZF) → Con(ZF + AC)，Cohen (1963) 证明 Con(ZF) → Con(ZF + ¬AC)。',
+        '它是本星系里大量命题的枢纽——佐恩引理、良序定理、Hausdorff 极大原理、Tukey 引理都与它等价。',
+        '有限个非空集合可以逐个挑选，这正是 AC 只在无穷情形才显出力量的原因。'
+      ].join('\n\n'),
+      refs: ['Jech, The Axiom of Choice', 'Kunen, Set Theory, I.12']
+    }
+  ],
+
+  edges: [
+    {
+      id: 'imp.repl-to-sep',
+      kind: 'implication',
+      sources: ['ax.repl'],
+      target: 'ax.sep',
+      title: '替换公理模式 ⇒ 分离公理模式',
+      proof: [
+        '设 φ(x, p) 是不含 B 的公式，A 是任意集合。取公式',
+        '',
+        '$$ψ(x, y, p) :≡ ( x = y ∧ φ(x, p) )$$',
+        '',
+        '对任意 x，至多只有一个 y 使 ψ(x, y, p) 成立（因为 x = y 已经确定了 y）。于是替换公理模式给出一个集合',
+        '',
+        '$$B = { y : ∃x ∈ A, ψ(x, y, p) } = { x ∈ A : φ(x, p) }$$',
+        '',
+        '这正是分离公理模式所要的 B（外延公理保证唯一）。∎'
+      ].join('\n'),
+      note: '所以 ZF 里其实只需要「替换 + 一个集合存在」就够了，教材仍保留分离公理是为了方便陈述与使用。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 集合论基本定义与定理
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '集合论基本定义与定理',
+  nodes: [
+
+    /* -------------------------------------------------------- 子集 */
+    {
+      id: 'def.subset',
+      cluster: 'set.construct',
+      type: 'definition',
+      label: '子集',
+      title: '子集 / 真子集（Subset）',
+      regions: ['set-theory'],
+      tags: ['定义', '包含关系'],
+      statement: [
+        '设 A、B 是集合。',
+        '',
+        '- **A 是 B 的子集**（记 A ⊆ B）：$$∀x ( x ∈ A → x ∈ B )$$',
+        '- **A 是 B 的真子集**（记 A ⊊ B）：A ⊆ B 且 A ≠ B。',
+        '',
+        '基本性质：⊆ 自反、传递；并且由外延公理，',
+        '',
+        '$$A = B ⟺ A ⊆ B ∧ B ⊆ A$$',
+        '',
+        '这是证明两个集合相等最常用的套路：**两边互包**。'
+      ].join('\n'),
+      notes: '∅ ⊆ A 对一切 A 成立（空泛真）。',
+      refs: ['Kunen, Set Theory, I.2']
+    },
+
+    /* ------------------------------------------------------ 有序对 */
+    {
+      id: 'def.pair',
+      cluster: 'set.construct',
+      type: 'definition',
+      label: '有序对',
+      title: '有序对（Ordered Pair, Kuratowski）',
+      regions: ['set-theory'],
+      tags: ['定义', 'Kuratowski'],
+      statement: [
+        'Kuratowski 定义：',
+        '',
+        '$$(a, b) := { {a}, {a, b} }$$',
+        '',
+        '它由配对公理与幂集公理保证是集合。',
+        '',
+        '**特征性质**（这才是「有序」的全部含义）：',
+        '',
+        '$$(a, b) = (c, d) ⟺ a = c ∧ b = d$$',
+        '',
+        'n 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。'
+      ].join('\n'),
+      notes: '用集合「编码」有序对之后，关系、函数、序型等等才都能在 ZFC 内部说清楚。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* -------------------------------------------------- 关系与函数 */
+    {
+      id: 'def.rel',
+      cluster: 'set.choice',
+      type: 'definition',
+      label: '关系与函数',
+      title: '关系 / 函数（Relation & Function）',
+      regions: ['set-theory'],
+      tags: ['定义', '函数'],
+      statement: [
+        '设 A、B 是集合。',
+        '',
+        '- **关系** R 由有序对组成；R ⊆ A × B 表示 R 是 A 到 B 的关系。',
+        '- **定义域** dom R = { a : ∃b (a, b) ∈ R }；**值域** ran R = { b : ∃a (a, b) ∈ R }。',
+        '- **逆** R⁻¹ = { (b, a) : (a, b) ∈ R }。',
+        '- **函数** f : A → B 是满足下式的关系 f ⊆ A × B：',
+        '',
+        '$$∀a ∈ A, ∃! b ∈ B, (a, b) ∈ f$$',
+        '',
+        '唯一性使 f(a) = b 这个记号不会歧义；此时 dom f = A。'
+      ].join('\n'),
+      notes: '在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* ---------------------------------------------------- 选择函数 */
+    {
+      id: 'def.choicefn',
+      cluster: 'set.choice',
+      type: 'definition',
+      label: '选择函数',
+      title: '选择函数（Choice Function）',
+      regions: ['set-theory'],
+      tags: ['定义', '选择'],
+      statement: [
+        '设 F 是一个集合族，且 ∅ ∉ F。',
+        '',
+        'f 是 F 的**选择函数**，当且仅当',
+        '',
+        '- f 是函数，dom f = F；',
+        '- ∀X ∈ F, f(X) ∈ X。',
+        '',
+        '即：f 从 F 的每一个成员里各挑出一个元素。',
+        '',
+        '于是选择公理可以简洁地写成：**每个满足 ∅ ∉ F 的集合族 F 都有选择函数**。'
+      ].join('\n'),
+      notes: '若 F 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。',
+      refs: ['Jech, The Axiom of Choice']
+    },
+
+    /* -------------------------------------------------- 空集存在 */
+    {
+      id: 'thm.empty',
+      cluster: 'set.construct',
+      type: 'theorem',
+      label: '空集存在',
+      title: '空集存在且唯一',
+      regions: ['set-theory'],
+      tags: ['定理'],
+      statement: [
+        '存在一个不含任何元素的集合：',
+        '',
+        '$$∃B ∀x ( x ∉ B )$$',
+        '',
+        '由外延公理，这样的 B 唯一，记作 ∅。'
+      ].join('\n'),
+      notes: '∅ 是 ∈-关系的最小元，也是 ⊆-关系的最小元：∅ ⊆ A 对一切 A 成立。',
+      refs: ['Kunen, Set Theory, I.4']
+    },
+
+    /* ------------------------------------------------ 无自属集合 */
+    {
+      id: 'thm.noself',
+      cluster: 'set.zfc',
+      type: 'theorem',
+      label: '无自属集合',
+      title: '任何集合都不属于自身',
+      regions: ['set-theory'],
+      tags: ['定理', '正则公理'],
+      statement: [
+        '$$∀A ( A ∉ A )$$',
+        '',
+        '更一般地，正则公理排除了任何有限的 ∈-循环：',
+        '',
+        '$$A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀$$'
+      ].join('\n'),
+      notes: '这条定理说明罗素悖论里的「集合 R = { x : x ∉ x }」不可能存在——否则 R ∈ R 与 R ∉ R 同时成立。',
+      refs: ['Kunen, Set Theory, I.9']
+    },
+
+    /* ------------------------------------------------ 自然数集 */
+    {
+      id: 'thm.omega',
+      cluster: 'set.zfc',
+      type: 'theorem',
+      label: '自然数集存在',
+      title: '自然数集 ω 存在',
+      regions: ['set-theory'],
+      tags: ['定理', '自然数', '序数'],
+      statement: [
+        '存在**最小归纳集** ω：它含有 ∅，对 x ↦ x ∪ {x} 封闭，且含于一切归纳集之中：',
+        '',
+        '$$ω = { ∅, {∅}, {∅, {∅}}, {∅, {∅}, {∅, {∅}}}, … }$$',
+        '',
+        '把 ∈ 读作 <，⟨ω, ∈⟩ 就是自然数系 ⟨ℕ, <⟩。'
+      ].join('\n'),
+      notes: 'ω 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。',
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* ---------------------------------------------------- 二元并 */
+    {
+      id: 'thm.binunion',
+      cluster: 'set.construct',
+      type: 'theorem',
+      label: '二元并存在',
+      title: '二元并 a ∪ b 存在',
+      regions: ['set-theory'],
+      tags: ['定理'],
+      statement: [
+        '任给两个集合，它们的并仍是集合：',
+        '',
+        '$$∀a ∀b ∃A ∀x [ x ∈ A ↔ ( x ∈ a ∨ x ∈ b ) ]$$',
+        '',
+        '记作 a ∪ b。'
+      ].join('\n'),
+      notes: 'a ∪ b 是包含 a 与 b 的最小集合（⊆-意义下）。',
+      refs: ['Kunen, Set Theory, I.3']
+    },
+
+    /* -------------------------------------------------- 笛卡尔积 */
+    {
+      id: 'thm.product',
+      cluster: 'set.construct',
+      type: 'theorem',
+      label: '笛卡尔积存在',
+      title: '笛卡尔积 A × B 存在',
+      regions: ['set-theory'],
+      tags: ['定理', '有序对'],
+      statement: [
+        '任给两个集合，全体有序对构成一个集合：',
+        '',
+        '$$∀A ∀B ∃C ∀z [ z ∈ C ↔ ∃a ∈ A, ∃b ∈ B, z = (a, b) ]$$',
+        '',
+        '记作 A × B = { (a, b) : a ∈ A, b ∈ B }。'
+      ].join('\n'),
+      notes: '它是「关系」「函数」得以定义为集合的前提：没有 A × B，就没有 R ⊆ A × B 这个说法。',
+      refs: ['Kunen, Set Theory, I.5']
+    }
+  ],
+
+  edges: [
+    {
+      id: 'imp.sep-to-empty',
+      kind: 'implication',
+      sources: ['ax.sep'],
+      target: 'thm.empty',
+      title: '分离公理模式 ⇒ 空集存在',
+      proof: [
+        '取任意集合 a（一阶逻辑的论域非空，故这样的 a 存在；在 ZF 中也可由无穷公理提供）。',
+        '',
+        '取公式 φ(x) :≡ ( x ≠ x )，它是矛盾式。分离公理模式给出集合',
+        '',
+        '$$B = { x ∈ a : x ≠ x }$$',
+        '',
+        '对任意 x，x ∈ B ↔ ( x ∈ a ∧ x ≠ x ) 恒为假，故 B 不含任何元素。',
+        '由外延公理，这样的 B 唯一，记作 ∅。∎'
+      ].join('\n'),
+      note: '严格地说，「论域非空」是一阶逻辑的约定，不属于 ZF 公理。若不喜欢这个约定，也可以先由无穷公理取出一个集合再分离。'
+    },
+    {
+      id: 'imp.found-to-noself',
+      kind: 'implication',
+      sources: ['ax.found', 'ax.pair'],
+      target: 'thm.noself',
+      title: '正则公理 + 配对公理 ⇒ A ∉ A',
+      proof: [
+        '反设存在集合 A 使 A ∈ A。由配对公理取 a = b = A，得单点集 {A}。',
+        '',
+        '由外延公理 {A} ≠ ∅（它含有 A）。对 {A} 用正则公理：存在 x ∈ {A} 使',
+        '',
+        '$$x ∩ { A } = ∅$$',
+        '',
+        '而 {A} 只有唯一的元素，故 x = A。于是 A ∩ {A} = ∅。',
+        '',
+        '但由假设 A ∈ A 且 A ∈ {A}，所以 A ∈ A ∩ {A}，与 A ∩ {A} = ∅ 矛盾。故 A ∉ A。∎'
+      ].join('\n'),
+      note: '把同样的论证用在任意有限 ∈-循环 A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀ 上，取集合 {A₀, …, Aₙ₋₁}（可由配对公理反复构造），也能得到矛盾。'
+    },
+    {
+      id: 'imp.inf-to-omega',
+      kind: 'implication',
+      sources: ['ax.inf', 'ax.power', 'ax.sep'],
+      target: 'thm.omega',
+      title: '无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在',
+      proof: [
+        '1. 由无穷公理取一个归纳集 I。称 J ⊆ I 是**归纳的**，若 ∅ ∈ J 且 ∀x (x ∈ J → x ∪ {x} ∈ J)。',
+        '',
+        '2. 由幂集公理，𝒫(I) 是集合；再用分离公理模式取',
+        '',
+        '$$S = { J ∈ 𝒫(I) : J 是归纳集 }$$',
+        '',
+        'S 非空（I ∈ S）。',
+        '',
+        '3. 再对 𝒫(I) 用一次分离公理模式，令',
+        '',
+        '$$ω = { x ∈ I : ∀J ( J ∈ S → x ∈ J ) }$$',
+        '',
+        '即 ω 是所有归纳子集的交。',
+        '',
+        '4. ω 是归纳集：∅ 属于每个 J ∈ S，故 ∅ ∈ ω；若 x ∈ ω，则 x 属于每个 J ∈ S，从而 x ∪ {x} 属于每个 J ∈ S，故 x ∪ {x} ∈ ω。',
+        '',
+        '5. ω 含于一切归纳集：若 K 是归纳集，则 K ∩ I 也是归纳集且 K ∩ I ∈ S，由 ω 的定义 ω ⊆ K ∩ I ⊆ K。',
+        '',
+        '故 ω 是最小归纳集，即自然数集。∎'
+      ].join('\n')
+    },
+    {
+      id: 'imp.binunion',
+      kind: 'implication',
+      sources: ['ax.pair', 'ax.union'],
+      target: 'thm.binunion',
+      title: '配对公理 + 并集公理 ⇒ 二元并存在',
+      proof: [
+        '任给 a、b。',
+        '',
+        '1. 由配对公理，{ a, b } 是集合。',
+        '2. 由并集公理，⋃{ a, b } 是集合，且',
+        '',
+        '$$x ∈ ⋃{ a, b } ⟺ ∃Y ( Y ∈ { a, b } ∧ x ∈ Y ) ⟺ ( x ∈ a ∨ x ∈ b )$$',
+        '',
+        '取 A = ⋃{ a, b } 即为所求。∎'
+      ].join('\n')
+    },
+    {
+      id: 'imp.product',
+      kind: 'implication',
+      sources: ['ax.power', 'ax.pair', 'ax.union', 'ax.sep'],
+      target: 'thm.product',
+      title: '幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在',
+      proof: [
+        '任给 A、B。',
+        '',
+        '1. 由配对公理与并集公理，A ∪ B 是集合。',
+        '',
+        '2. 对任意 a ∈ A、b ∈ B，Kuratowski 有序对 (a, b) = {{a}, {a, b}}。其中 {a} ⊆ A ∪ B，{a, b} ⊆ A ∪ B，所以 {a}, {a, b} ∈ 𝒫(A ∪ B)，进而 (a, b) ∈ 𝒫(𝒫(A ∪ B))。',
+        '',
+        '3. 由幂集公理，𝒫(𝒫(A ∪ B)) 是集合。用分离公理模式取',
+        '',
+        '$$C = { z ∈ 𝒫(𝒫(A ∪ B)) : ∃a ∈ A, ∃b ∈ B, z = (a, b) }$$',
+        '',
+        '则 C 恰是 A × B：一方面每个 (a, b) 都在 𝒫(𝒫(A ∪ B)) 中，另一方面 z 是不在 A、B 中任意点处取到的有序对时不会被选进来。∎'
+      ].join('\n'),
+      note: '这个证明展示了一个典型套路：先用幂集「造一个足够大的容器」，再用分离公理模式「筛出真正想要的东西」。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 序理论定义
+   （佐恩引理、Hausdorff 极大原理、Tukey 引理、良序定理在 04 包里）
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '序理论基本定义',
+  nodes: [
+
+    {
+      id: 'def.poset',
+      cluster: 'order.structure',
+      type: 'definition',
+      label: '偏序集',
+      title: '偏序集 / 全序集（Partially Ordered Set）',
+      regions: ['order-theory'],
+      tags: ['定义', '序'],
+      statement: [
+        '设 ⪯ 是集合 A 上的二元关系。⪯ 是 **A 上的偏序**，当且仅当：',
+        '',
+        '- **自反**：∀x ∈ A, x ⪯ x；',
+        '- **反对称**：∀x, y ∈ A ( x ⪯ y ∧ y ⪯ x → x = y )；',
+        '- **传递**：∀x, y, z ∈ A ( x ⪯ y ∧ y ⪯ z → x ⪯ z )。',
+        '',
+        '若还满足 **可比性** ∀x, y ∈ A ( x ⪯ y ∨ y ⪯ x )，则 ⪯ 称为 **A 上的全序**（线性序），(A, ⪯) 称为全序集。',
+        '',
+        '称 (A, ⪯) 为**偏序集**。由 ⪯ 定义**严格序**：$$x ≺ y :⟺ x ⪯ y ∧ x ≠ y$$'
+      ].join('\n'),
+      notes: [
+        '典型例子：⟨𝒫(S), ⊆⟩ 是偏序集但不是全序集；⟨ℝ, ≤⟩ 是全序集。',
+        '反对称性是说：只允许「相等」这一种互相 ≤ 的方式，所以偏序可以看成「≤ 的抽象」。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.11', 'Davey & Priestley, Introduction to Lattices and Order']
+    },
+
+    {
+      id: 'def.chain',
+      cluster: 'order.structure',
+      type: 'definition',
+      label: '链',
+      title: '链 / 反链（Chain / Antichain）',
+      regions: ['order-theory'],
+      tags: ['定义', '链'],
+      statement: [
+        '设 (P, ⪯) 是偏序集，C ⊆ P。',
+        '',
+        '**C 是链**（也叫全序子集），当且仅当 C 中任意两个元素都可比：',
+        '',
+        '$$∀x, y ∈ C ( x ⪯ y ∨ y ⪯ x )$$',
+        '',
+        '**C 是反链**，当且仅当 C 中任意两个不同元素都不可比。',
+        '',
+        '约定：∅ 与单点集都算链。'
+      ].join('\n'),
+      notes: '「链」这个词是佐恩引理、Hausdorff 极大原理的中心概念——它们说的都是「链能长到多大」。',
+      refs: ['Kunen, Set Theory, I.11']
+    },
+
+    {
+      id: 'def.bound',
+      cluster: 'order.structure',
+      type: 'definition',
+      label: '上界与极大元',
+      title: '上界 / 上确界 / 极大元（Bound & Maximal Element）',
+      regions: ['order-theory'],
+      tags: ['定义', '上界', '极大元'],
+      statement: [
+        '设 (P, ⪯) 是偏序集，S ⊆ P，u, m ∈ P。',
+        '',
+        '- **u 是 S 的上界**：∀s ∈ S, s ⪯ u。',
+        '- **u 是 S 的上确界**（记 sup S）：u 是上界，且 u ⪯ 每一个上界。',
+        '- **m 是 P 的极大元**：$$∀x ∈ P ( m ⪯ x → x = m )$$，即没有比 m 更大的元素。',
+        '- **m 是 P 的最大元**：∀x ∈ P, x ⪯ m，即 m 比所有元素都大。',
+        '',
+        '⚠ **极大元 ≠ 最大元。**'
+      ].join('\n'),
+      notes: [
+        '例子：P = { {1}, {2} } 按 ⊆ 排序。两个元素都是极大元（谁也包不住谁），但没有最大元。',
+        '在**全序**集里两者才重合。偏序集里「极大」只要求「上面没有别人」，不要求「下面有所有人」。',
+        '佐恩引理保证的是极大元，而不是最大元——这一点在应用时最容易出错。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.11']
+    },
+
+    {
+      id: 'def.wellorder',
+      cluster: 'order.structure',
+      type: 'definition',
+      label: '良序集',
+      title: '良序集（Well-Ordered Set）',
+      regions: ['order-theory'],
+      tags: ['定义', '良序', '超限归纳'],
+      statement: [
+        '全序集 (W, ⪯) 是**良序的**，当且仅当 W 的每个非空子集都有最小元：',
+        '',
+        '$$∀S ⊆ W ( S ≠ ∅ → ∃m ∈ S, ∀s ∈ S, m ⪯ s )$$',
+        '',
+        '等价于：不存在无穷严格递减链 w₀ ≻ w₁ ≻ w₂ ≻ ⋯。',
+        '',
+        '良序集上可以做**超限归纳**与**超限递归**；每个良序集序同构于唯一的一个序数。'
+      ].join('\n'),
+      notes: '⟨ℕ, ≤⟩ 是良序的；⟨ℤ, ≤⟩、⟨ℝ, ≤⟩ 不是（ℝ 的某些非空子集没有最小元）。',
+      refs: ['Kunen, Set Theory, I.11']
+    },
+
+    {
+      id: 'def.finchar',
+      cluster: 'order.structure',
+      type: 'definition',
+      label: '有限特征',
+      title: '有限特征族（Family of Finite Character）',
+      regions: ['order-theory'],
+      tags: ['定义', '有限特征', 'Tukey'],
+      statement: [
+        '集合族 𝒜 具有**有限特征**，当且仅当对任意集合 X：',
+        '',
+        '$$X ∈ 𝒜 ⟺ X 的每个有限子集都属于 𝒜$$',
+        '',
+        '也就是说：「局部地看起来像 𝒜 的成员」⟹「整体就是 𝒜 的成员」。'
+      ].join('\n'),
+      notes: [
+        '典型例子：',
+        '- 偏序集 P 的**链族**（X 是链 ⟺ X 的每个二元子集可比）；',
+        '- 向量空间的**线性无关子集族**；',
+        '- 某个滤子之上的**滤子族**。',
+        '',
+        '有限特征是 Tukey 引理的用武之地：只要目标族具有有限特征，极大元就自动存在（在 AC 之下）。'
+      ].join('\n\n'),
+      refs: ['Jech, The Axiom of Choice, Ch. 2']
+    }
+  ],
+
+  edges: []
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 选择原理的几个经典等价形式
+   --------------------------------------------------------------------------
+   选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理
+   它们两两之间用「等价」黑线相连，点击黑线可以看到两个方向的证明。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '选择原理的等价形式',
+  nodes: [
+
+    {
+      id: 'thm.wellordering',
+      cluster: 'order.maximal',
+      type: 'theorem',
+      label: '良序定理',
+      title: '良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）',
+      // 既是集合论的定理，也是序理论的定理 → 落在两块的边界上
+      regions: ['set-theory', 'order-theory'],
+      tags: ['ZFC', '等价命题', '选择'],
+      statement: [
+        '每个集合都能被赋予一个良序：',
+        '',
+        '$$∀X ∃⪯ ( ⪯ 是 X 上的良序关系 )$$',
+        '',
+        '换句话说：任何集合 X 都与某个序数等势。',
+        '',
+        '特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。'
+      ].join('\n'),
+      notes: [
+        'Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公理，这也是 AC 第一次登场。',
+        '由良序定理可立刻得到**基数可比定理**：任意两个集合的基数都可比较大小。',
+        '在 ZF 中不能证明它；但由它和 ZF 可推出 AC，所以两者等价。'
+      ].join('\n\n'),
+      refs: ['Zermelo (1904)', 'Kunen, Set Theory, I.12']
+    },
+
+    {
+      id: 'lem.zorn',
+      cluster: 'order.maximal',
+      type: 'lemma',
+      label: '佐恩引理',
+      title: '佐恩引理（Zorn\'s Lemma）',
+      // 表面是序理论陈述，主要用途却在集合论/代数 → 边界节点
+      regions: ['order-theory', 'set-theory'],
+      tags: ['ZFC', '等价命题', '极大原理'],
+      statement: [
+        '设 (P, ⪯) 是**非空**偏序集。若 P 的每个链在 P 中都有上界，则 P 有**极大元**。',
+        '',
+        '$$P ≠ ∅ ∧ ( ∀C ⊆ P, C 是链 → ∃u ∈ P, u 是 C 的上界 ) ⟹ ∃m ∈ P, m 是极大元$$'
+      ].join('\n'),
+      notes: [
+        '两个条件都不可省：空偏序集没有极大元；"每个链有上界"保证不了「最大元」——只能保证极大元。',
+        '它是「存在性证明的万能发动机」：向量空间有基、环有极大理想、紧致性定理、Hahn–Banach 定理……全都靠它。',
+        '名字有历史偶然性：Zorn 1940 年代把它推广开来，Kuratowski 1922 年已证过等价形式，所以也叫 Kuratowski–Zorn 引理。',
+        '⚠ 非构造性：得到的是「存在一个极大元」，通常无法给出具体是哪一个。'
+      ].join('\n\n'),
+      refs: ['Zorn (1935)', 'Kunen, Set Theory, I.12']
+    },
+
+    {
+      id: 'thm.hausdorff',
+      cluster: 'order.maximal',
+      type: 'theorem',
+      label: 'Hausdorff 极大原理',
+      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）',
+      regions: ['order-theory'],
+      tags: ['ZFC', '等价命题', '极大原理', '链'],
+      statement: [
+        '设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。则存在 P 的**极大链** M 使 C₀ ⊆ M。',
+        '',
+        '其中「极大链」指在包含关系 ⊆ 下极大的链：若 M ⊆ M′ ⊆ P 且 M′ 也是链，则 M′ = M。',
+        '',
+        '取 C₀ = ∅ 即得：**每个非空偏序集都有极大链。**'
+      ].join('\n'),
+      notes: [
+        '形式上它比佐恩引理更早（Hausdorff, 1914），并且与佐恩引理等价。',
+        '极大链的存在性正是「从下往上一点点加元素直到加不动」这一直觉的严格化。'
+      ].join('\n\n'),
+      refs: ['Hausdorff (1914)', 'Kunen, Set Theory, I.12']
+    },
+
+    {
+      id: 'lem.tukey',
+      cluster: 'order.maximal',
+      type: 'lemma',
+      label: 'Tukey 引理',
+      title: 'Tukey 引理（Tukey\'s Lemma / Teichmüller–Tukey）',
+      regions: ['order-theory'],
+      tags: ['ZFC', '等价命题', '有限特征'],
+      statement: [
+        '设 𝒜 是**具有有限特征的非空集合族**，则 (𝒜, ⊆) 有极大元。',
+        '',
+        '即：存在 A ∈ 𝒜，使得不存在 B ∈ 𝒜 满足 A ⊊ B。'
+      ].join('\n'),
+      notes: [
+        'Tukey 引理的好处是「免验证」：只要目标族具有有限特征，就可以跳过「每个链都有上界」这一繁琐检查。',
+        '例：线性无关集族具有有限特征（X 线性无关 ⟺ X 的每个有限子集线性无关），所以「线性无关集可扩充为极大线性无关集」自动成立。',
+        '等价形式：Teichmüller (1939) 与 Tukey (1940) 都独立陈述过它。'
+      ].join('\n\n'),
+      refs: ['Tukey (1940)', 'Jech, The Axiom of Choice, Ch. 2']
+    }
+  ],
+
+  edges: [
+
+    /* ================================================== AC ⟺ 良序定理 */
+    {
+      id: 'eq.ac-wo',
+      kind: 'equivalence',
+      a: 'ax.choice',
+      b: 'thm.wellordering',
+      title: '选择公理 ⟺ 良序定理',
+      proofs: [
+        {
+          label: '选择公理 ⇒ 良序定理',
+          text: [
+            '设 X 是集合。X = ∅ 时平凡，以下设 X ≠ ∅。',
+            '',
+            '1. 由 AC，非空子集族 𝒫(X) ∖ {∅} 有选择函数 g，即 g(S) ∈ S 对每个非空 S ⊆ X 成立。',
+            '',
+            '2. 用超限递归定义一列元素：对序数 α，只要余集非空就令',
+            '',
+            '$$F(α) = g( X ∖ { F(β) : β < α } )$$',
+            '',
+            '一旦余集为空就停止。',
+            '',
+            '3. 过程一定会停：取 X 的 **Hartogs 数** ℵ(X)，即最小的不能单射进 X 的序数（Hartogs 定理保证它存在，且不需要 AC）。若对一切 α < ℵ(X) 过程都没停，则 F 是 ℵ(X) 到 X 的单射，与 ℵ(X) 的定义矛盾。故存在序数 γ 使 F : γ → X 是双射。',
+            '',
+            '4. 把 γ 上的序经 F 搬到 X 上：',
+            '',
+            '$$x ⪯ y :⟺ F⁻¹(x) ≤ F⁻¹(y)$$',
+            '',
+            '因为序数在 ∈／≤ 下是良序的，X 上这个序也是良序。∎'
+          ].join('\n')
+        },
+        {
+          label: '良序定理 ⇒ 选择公理',
+          text: [
+            '设 F 是一族非空集合（即 ∅ ∉ F）。',
+            '',
+            '1. 由良序定理，取 U = ⋃F 的一个良序 ⪯。',
+            '',
+            '2. 对每个 X ∈ F：X ≠ ∅ 且 X ⊆ U，所以 X 是 U 的非空子集，有 ⪯-最小元 m(X)。',
+            '',
+            '3. 定义 f(X) = m(X)（X 唯一确定 m(X)，故这是一个函数）。则 dom f = F 且 f(X) ∈ X 对一切 X ∈ F 成立，即 f 是 F 的选择函数。',
+            '',
+            '由 F 的任意性，AC 成立。∎'
+          ].join('\n')
+        }
+      ],
+      note: '这是整张星图里最关键的一条等价链的起点：AC 给「挑选」，良序给「最小」，两者互为表里。'
+    },
+
+    /* ============================================ 良序定理 ⟺ 佐恩引理 */
+    {
+      id: 'eq.wo-zorn',
+      kind: 'equivalence',
+      a: 'thm.wellordering',
+      b: 'lem.zorn',
+      title: '良序定理 ⟺ 佐恩引理',
+      proofs: [
+        {
+          label: '良序定理 ⇒ 佐恩引理',
+          text: [
+            '设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。由良序定理，取 P 上的一个良序 ≤（与 ⪯ 无关）。',
+            '',
+            '用超限递归沿 ≤ 构造 P 的一个 ⪯-链 C：',
+            '',
+            '- 记 U(C) = { u ∈ P : u 是 C 的 ⪯-上界 }。',
+            '- 若 U(C) 中存在元素有 ⪯-严格上界，就取其中 ≤-最小的那个 v，令 C ← C ∪ {v}；',
+            '- 否则停止。',
+            '',
+            '**为什么必停**：每步都往 C 里加入一个不属于 C 的元素，所以若在任意序数处都不停，就会得到从「全体序数」到 P 的单射。由替换公理模式，全体序数会是一个集合的像，即序数全体构成集合——这与 Burali-Forti 悖论矛盾。故递归在某个序数 β 处停止。',
+            '',
+            '**停止时 C 有上界**：C 是 ⪯-链，由题设 U(C) ≠ ∅，取 u ∈ U(C)。',
+            '',
+            '**u 是极大元**：若存在 w ∈ P 使 u ≺ w，则 w ≻ u ⪰ c（∀c ∈ C），故 w ∈ U(C) 是有严格上界的元素，与「停止条件」矛盾。',
+            '',
+            '故 u 是 P 的 ⪯-极大元。∎'
+          ].join('\n')
+        },
+        {
+          label: '佐恩引理 ⇒ 良序定理',
+          text: [
+            '设 X 是集合。考虑「X 的部分良序」全体：',
+            '',
+            '$$𝒲 = { (W, ⪯_W) : W ⊆ X, ⪯_W 是 W 上的良序 }$$',
+            '',
+            '按**初始段延拓**排序：',
+            '',
+            '(W₁, ⪯₁) ≤ (W₂, ⪯₂) ⟺ W₁ ⊆ W₂，⪯₁ = ⪯₂|W₁，且 W₁ 是 (W₂, ⪯₂) 的一个前段。',
+            '',
+            '1. (𝒲, ≤) 是偏序集（三条性质直接验证）。',
+            '',
+            '2. **每个链有上界**：设 𝒟 ⊆ 𝒲 是链。令 W* = ⋃{ W : (W, ⪯) ∈ 𝒟 }，在 W* 上定义',
+            '',
+            '$$x ⪯_* y ⟺ 存在 (W, ⪯_W) ∈ 𝒟 使 x, y ∈ W 且 x ⪯_W y$$',
+            '',
+            '因 𝒟 是链，这些良序彼此兼容，⪯_* 是 W* 上的良序，且 (W*, ⪯_*) ∈ 𝒲 是 𝒟 的上界。',
+            '',
+            '3. 由佐恩引理，取极大元 (W, ⪯)。',
+            '',
+            '4. 若 W ≠ X，取 x ∈ X ∖ W，在 W ∪ {x} 上定义序：保留 W 上的 ⪯，并令所有 w ∈ W 都 ⪯ x（把 x 放在最顶端）。这仍是良序，而且是 (W, ⪯) 的严格延拓，与极大性矛盾。故 W = X，即 X 被良序化。∎'
+          ].join('\n')
+        }
+      ]
+    },
+
+    /* ====================================== 佐恩引理 ⟺ Hausdorff 极大原理 */
+    {
+      id: 'eq.zorn-hausdorff',
+      kind: 'equivalence',
+      a: 'lem.zorn',
+      b: 'thm.hausdorff',
+      title: '佐恩引理 ⟺ Hausdorff 极大原理',
+      proofs: [
+        {
+          label: '佐恩引理 ⇒ Hausdorff 极大原理',
+          text: [
+            '设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。令',
+            '',
+            '$$𝒞 = { C ⊆ P : C 是链 }$$',
+            '',
+            '按包含关系 ⊆ 排序。给定 C₀ 时改用 𝒞₀ = { C ∈ 𝒞 : C ⊇ C₀ }，它非空（C₀ ∈ 𝒞₀）。',
+            '',
+            '1. **𝒞₀ 中每个链有上界**：设 𝒟 ⊆ 𝒞₀ 是（⊆-）链，即 𝒟 是一族两两可比较的链。令 U = ⋃𝒟。任取 x, y ∈ U，则有 D₁, D₂ ∈ 𝒟 使 x ∈ D₁、y ∈ D₂；因 𝒟 是链，不妨设 D₁ ⊆ D₂，于是 x, y ∈ D₂，而 D₂ 是链，故 x 与 y 可比。所以 U 是链。又每个 D ∈ 𝒟 都 ⊇ C₀，故 U ⊇ C₀，即 U ∈ 𝒞₀，它是 𝒟 的上界。',
+            '',
+            '2. 由佐恩引理，𝒞₀ 有极大元 M。M 是包含 C₀ 的链，且不能再变大，即 M 是包含 C₀ 的极大链。∎'
+          ].join('\n')
+        },
+        {
+          label: 'Hausdorff 极大原理 ⇒ 佐恩引理',
+          text: [
+            '设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。',
+            '',
+            '1. 由 Hausdorff 极大原理（取 C₀ = ∅），P 存在极大链 M。',
+            '',
+            '2. M 是链，故由题设有上界 u ∈ P。',
+            '',
+            '3. **断言 u 是极大元**：若不然，存在 v ∈ P 使 u ≺ v。则 M ∪ {v} 仍是链——任取 m ∈ M，由 m ⪯ u ≺ v 及传递性得 m ⪯ v，故 m 与 v 可比。于是 M ⊊ M ∪ {v} 是一个更大的链，与 M 的极大性矛盾。',
+            '',
+            '故 u 是 P 的极大元。∎'
+          ].join('\n')
+        }
+      ]
+    },
+
+    /* ======================================= Hausdorff 极大原理 ⟺ Tukey 引理 */
+    {
+      id: 'eq.hausdorff-tukey',
+      kind: 'equivalence',
+      a: 'thm.hausdorff',
+      b: 'lem.tukey',
+      title: 'Hausdorff 极大原理 ⟺ Tukey 引理',
+      proofs: [
+        {
+          label: 'Tukey 引理 ⇒ Hausdorff 极大原理',
+          text: [
+            '设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。令 𝒞 = { C ⊆ P : C 是链 }。',
+            '',
+            '1. **𝒞 具有有限特征**：对任意 X ⊆ P，',
+            '',
+            'X 是链 ⟺ X 中任两元素可比 ⟺ X 的每个有限子集是链 ⟺ X 的每个有限子集属于 𝒞。',
+            '',
+            '（最后一个 ⟸ 方向：任取 x, y ∈ X，则 {x, y} 是 X 的有限子集，属于 𝒞，故 x 与 y 可比。）',
+            '',
+            '2. 𝒞 非空（∅ 是链）。由 Tukey 引理，𝒞 有极大元 M，即 P 的极大链。',
+            '',
+            '3. 若要包含给定的 C₀：注意 𝒞₀ = { C ∈ 𝒞 : C ⊇ C₀ } 同样具有有限特征——「X 含 C₀ 且 X 的每个有限子集是链」正是有限特征的形状（含 C₀ 是整体性质，不对有限子集设限）。对 𝒞₀ 用 Tukey 引理即得包含 C₀ 的极大链。∎'
+          ].join('\n')
+        },
+        {
+          label: 'Hausdorff 极大原理 ⇒ Tukey 引理',
+          text: [
+            '设 𝒜 是具有有限特征的非空集合族。把 Hausdorff 极大原理用在偏序集 (𝒜, ⊆) 上，得到 𝒜 的一个**极大链** 𝒞（即 𝒜 中一族在 ⊆ 下两两可比较、且不能再扩大成员的子族）。',
+            '',
+            '令',
+            '',
+            '$$U = ⋃ { A : A ∈ 𝒞 }$$',
+            '',
+            '1. **U ∈ 𝒜**：由有限特征，只需证 U 的每个有限子集属于 𝒜。设 S ⊆ U 有限，则每个 s ∈ S 落在某个 A_s ∈ 𝒞 中；𝒞 是 ⊆-链而 S 有限，故其中必有最大的 A₀ 包含 S（即 S ⊆ A₀）。因为 A₀ ∈ 𝒜 且 𝒜 具有有限特征，A₀ 的每个有限子集都属于 𝒜，特别地 S ∈ 𝒜。故 U 的每个有限子集属于 𝒜，从而 U ∈ 𝒜。',
+            '',
+            '2. **U 是极大元**：若存在 B ∈ 𝒜 使 U ⊊ B，则 𝒞 ∪ {B} 仍是 ⊆-链（每个 A ∈ 𝒞 满足 A ⊆ U ⊆ B），与 𝒞 的极大性矛盾。',
+            '',
+            '故 U 是 (𝒜, ⊆) 的极大元。∎'
+          ].join('\n')
+        }
+      ],
+      note: '这一对证明很典型：先看出「链」这个概念本身具有有限特征，就把 Hausdorff 原理换成了用起来更省事的 Tukey 引理。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 代数示例（示范「别的板块引用序理论结论」的跨板块连线）
+   --------------------------------------------------------------------------
+   这一包是整个示例里唯一不属于集合论/序理论的内容，
+   用来展示：不同板块各自成云、而跨板块的结论会被拉到两块交界处。
+   如果暂时不需要，直接把这个 <script> 去掉即可。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '代数示例：向量空间的基',
+  nodes: [
+
+    {
+      id: 'def.vs',
+      cluster: 'algebra.vectorspace',
+      type: 'definition',
+      label: '向量空间的基',
+      title: '向量空间 / 线性无关 / 基',
+      regions: ['algebra'],
+      tags: ['定义', '线性代数'],
+      statement: [
+        '设 K 是域，V 是 K 上的向量空间，S ⊆ V。',
+        '',
+        '- **S 线性无关**：S 的每个有限子集都线性无关，即不存在不全为零的 c₁,…,cₙ ∈ K 使 c₁v₁ + ⋯ + cₙvₙ = 0。',
+        '- **S 生成 V**：V 中每个向量都是 S 中有限多个向量的线性组合。',
+        '- **S 是 V 的基**：S 既线性无关又生成 V。',
+        '',
+        '注意线性无关性是**逐有限子集**定义的性质——这正是它「具有有限特征」的原因。'
+      ].join('\n'),
+      notes: '等价说法：S 是基 ⟺ V 中每个向量都能唯一地写成 S 的有限线性组合。',
+      refs: ['Lang, Linear Algebra']
+    },
+
+    {
+      id: 'thm.vsbasis',
+      cluster: 'algebra.vectorspace',
+      type: 'theorem',
+      label: '每个向量空间有基',
+      title: '每个向量空间都有基（Zorn 引理的经典应用）',
+      regions: ['algebra'],
+      tags: ['定理', '应用', 'Zorn'],
+      statement: [
+        '设 V 是域 K 上的向量空间。则',
+        '',
+        '- V 有基；',
+        '- 更精确地：V 的任一线性无关子集都能扩充成 V 的一个基，任一生成集都含有一个基。'
+      ].join('\n'),
+      notes: [
+        '在 ZF 中此命题与 AC 等价——去掉 AC，可以构造出没有基的向量空间。',
+        '这是「序理论的结论在代数里落地」的标准范例，也是本星图上跨板块连线的一个实例。'
+      ].join('\n\n'),
+      refs: ['Lang, Linear Algebra', 'Brunner, The Axiom of Choice in Topology']
+    }
+  ],
+
+  edges: [
+    {
+      id: 'imp.zorn-to-basis',
+      kind: 'implication',
+      sources: ['lem.zorn'],
+      target: 'thm.vsbasis',
+      title: '佐恩引理 ⇒ 每个向量空间有基',
+      proof: [
+        '设 V ≠ 0 是域 K 上的向量空间，并给定线性无关集 S₀ ⊆ V。令',
+        '',
+        '$$𝒜 = { S ⊆ V : S ⊇ S₀ 且 S 线性无关 }$$',
+        '',
+        '按包含关系 ⊆ 排序。',
+        '',
+        '1. **𝒜 ≠ ∅**：S₀ ∈ 𝒜。',
+        '',
+        '2. **每个链有上界**：设 𝒟 ⊆ 𝒜 是 ⊆-链，令 U = ⋃𝒟。要证 U 线性无关，只需证 U 的每个有限子集线性无关：取有限子集 {v₁, …, vₙ} ⊆ U，每个 vᵢ 属于某个 Dᵢ ∈ 𝒟；𝒟 是链且只有有限多个 Dᵢ，故其中有一个最大的 D 包含全部 vᵢ，即 {v₁, …, vₙ} ⊆ D。而 D 线性无关，故它的子集 {v₁, …, vₙ} 也线性无关。因此 U 线性无关，U ∈ 𝒜，它是 𝒟 的上界。',
+        '',
+        '3. 由佐恩引理，𝒜 有极大元 B。B 是含 S₀ 的线性无关集，且在「含 S₀ 的线性无关集」中极大。',
+        '',
+        '4. **B 生成 V**：若存在 v ∈ V 不在 B 的张成空间 span(B) 中，则 B ∪ {v} 仍线性无关（否则 v 可写成 B 中有限多个向量的线性组合，与 v ∉ span(B) 矛盾），且严格大于 B，与 B 的极大性矛盾。故 span(B) = V，即 B 是 V 的基。取 S₀ = ∅ 得「V 有基」。∎'
+      ].join('\n'),
+      note: '同样的套路可以证明：每个环有极大理想、每个域上每个模有极大无关组、每个偏序集有极大反链。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 定义引用关系（蓝色 50% 线）
+   --------------------------------------------------------------------------
+   规则：如果某个结论的陈述/构造里出现了某个定义，就用一条蓝线把它们连起来。
+   集中放在这个文件里，方便统一检查「哪些结论引用了哪些定义」。
+
+   字段：definition = 定义节点的 id；usedBy = 用到它的那个节点 id。
+   点击蓝线可以看到这条引用关系的具体说明。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '定义引用关系',
+  nodes: [],
+
+  edges: [
+
+    /* ---------------------------------------------------------- 子集 */
+    {
+      id: 'def-link.sep-subset',
+      kind: 'definition',
+      definition: 'def.subset',
+      usedBy: 'ax.sep',
+      note: '分离公理模式给出的 B = { x ∈ A : φ(x, p) } 恰好是 A 的一个**子集**——"只从 A 里挑元素"正是 ⊆ 的语义。'
+    },
+    {
+      id: 'def-link.power-subset',
+      kind: 'definition',
+      definition: 'def.subset',
+      usedBy: 'ax.power',
+      note: '幂集公理的陈述里直接出现了子集符号：x ∈ 𝒫(A) ⟺ x ⊆ A。'
+    },
+    {
+      id: 'def-link.finchar-subset',
+      kind: 'definition',
+      definition: 'def.subset',
+      usedBy: 'def.finchar',
+      note: '「X 的每个**有限子集**都属于 𝒜」——有限特征是靠子集概念说出来的。'
+    },
+
+    /* -------------------------------------------------------- 有序对 */
+    {
+      id: 'def-link.pair-pairing',
+      kind: 'definition',
+      definition: 'def.pair',
+      usedBy: 'ax.pair',
+      note: '方向相反的一条：有序对 (a, b) = {{a}, {a, b}} 的**构造**要用到配对公理才成为集合。'
+    },
+    {
+      id: 'def-link.rel-pair',
+      kind: 'definition',
+      definition: 'def.pair',
+      usedBy: 'def.rel',
+      note: '关系被定义为「有序对的集合」，函数是特殊的关系，因此整个定义都建立在有序对之上。'
+    },
+    {
+      id: 'def-link.product-pair',
+      kind: 'definition',
+      definition: 'def.pair',
+      usedBy: 'thm.product',
+      note: 'A × B = { (a, b) : a ∈ A, b ∈ B } 中的元素就是有序对。'
+    },
+
+    /* ---------------------------------------------------- 关系与函数 */
+    {
+      id: 'def-link.choicefn-rel',
+      kind: 'definition',
+      definition: 'def.rel',
+      usedBy: 'def.choicefn',
+      note: '选择函数首先是「函数」，所以定义里用到了关系与函数的概念。'
+    },
+    {
+      id: 'def-link.ac-choicefn',
+      kind: 'definition',
+      definition: 'def.choicefn',
+      usedBy: 'ax.choice',
+      note: '选择公理的陈述直接使用了「选择函数」这个词：每个 ∅ ∉ F 的集合族都有选择函数。'
+    },
+
+    /* ---------------------------------------------------------- 序 */
+    {
+      id: 'def-link.chain-poset',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'def.chain',
+      note: '链是偏序集的子集：定义里用到了偏序 ⪯ 与可比性。'
+    },
+    {
+      id: 'def-link.bound-poset',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'def.bound',
+      note: '上界、极大元、最大元都是相对于一个偏序集 (P, ⪯) 而言的。'
+    },
+    {
+      id: 'def-link.wellorder-poset',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'def.wellorder',
+      note: '良序集首先是全序集（从而也是偏序集），只是在它上面加了「非空子集有最小元」。'
+    },
+    {
+      id: 'def-link.finchar-poset',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'def.finchar',
+      note: '有限特征的最典型例子就是「偏序集的链族」，定义条目里举了这个例子。'
+    },
+    {
+      id: 'def-link.finchar-chain',
+      kind: 'definition',
+      definition: 'def.chain',
+      usedBy: 'def.finchar',
+      note: '「X 是链 ⟺ X 的每个有限子集是链」——这是链族具有有限特征的原因，也是 Tukey ⟹ Hausdorff 的全部关键。'
+    },
+    {
+      id: 'def-link.zorn-poset',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'lem.zorn',
+      note: '佐恩引理是**关于偏序集**的命题：前提与结论都离不开 ⪯ 与上界。'
+    },
+    {
+      id: 'def-link.zorn-chain',
+      kind: 'definition',
+      definition: 'def.chain',
+      usedBy: 'lem.zorn',
+      note: '「P 的每个链都有上界」是佐恩引理的核心条件。'
+    },
+    {
+      id: 'def-link.zorn-bound',
+      kind: 'definition',
+      definition: 'def.bound',
+      usedBy: 'lem.zorn',
+      note: '条件用的是「上界」，结论用的是「极大元」——特别要注意不是「最大元」。'
+    },
+    {
+      id: 'def-link.hausdorff-poset',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'thm.hausdorff',
+      note: 'Hausdorff 极大原理陈述在偏序集 (P, ⪯) 上。'
+    },
+    {
+      id: 'def-link.hausdorff-chain',
+      kind: 'definition',
+      definition: 'def.chain',
+      usedBy: 'thm.hausdorff',
+      note: '整条原理就是在说「链可以长到极大」。'
+    },
+    {
+      id: 'def-link.tukey-finchar',
+      kind: 'definition',
+      definition: 'def.finchar',
+      usedBy: 'lem.tukey',
+      note: 'Tukey 引理的唯一前提就是「该集合族具有有限特征」。'
+    },
+    {
+      id: 'def-link.wo-wellorder',
+      kind: 'definition',
+      definition: 'def.wellorder',
+      usedBy: 'thm.wellordering',
+      note: '良序定理断言「每个集合都能被良序化」，用到的正是良序集这个概念。'
+    },
+    {
+      id: 'def-link.basis-vs',
+      kind: 'definition',
+      definition: 'def.vs',
+      usedBy: 'thm.vsbasis',
+      note: '「每个向量空间有基」中的「基」由线性无关与生成两个概念定义。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 类比（弱边）
+   --------------------------------------------------------------------------
+   弱边是**没有逻辑蕴含关系**的「思想相通」。它的用处只有一个：
+
+     卡住了、想找远房灵感的时候，沿着它跳到另一个领域去看看。
+
+   ⚠️ 判据（必须同时满足，否则不要加）：
+     ① 两个结论之间**没有**推出 / 等价 / 定义依赖关系（有的话就写成强边）；
+     ② 相通之处能一句话说清，而且**说得出具体是什么**（不是「都很难」这种废话）；
+     ③ 这个类比**能帮你解决问题**——看到一个，能想起另一个的招。
+
+   写法：{ kind:'analogy', a:'节点id', b:'节点id', title, note }
+   强弱由 kind 自动决定（见 config.js 的 theme.edgeStrength），不用手写。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '类比（弱边）',
+  nodes: [],
+
+  edges: [
+
+    /* ------------------------------------------------ 证明模板的类比 */
+    {
+      id: 'ana.sep-container',
+      kind: 'analogy',
+      a: 'thm.product',
+      b: 'thm.omega',
+      title: '「幂集造容器 + 分离筛内容」——同一个证明模板',
+      note: [
+        '这两个证明的骨架**一模一样**，只是塞进去的东西不同：',
+        '',
+        '**ω 的构造**：先用幂集公理做出 𝒫(I)；再从里面**筛出**所有归纳子集，取交。',
+        '',
+        '**A × B 的构造**：先用幂集公理做出 𝒫(𝒫(A ∪ B))；再从里面**筛出**那些形如 (a,b) 的元素。',
+        '',
+        '**共同的招**：集合论里「我想造一个由某种东西组成的集合」时，',
+        '永远不能直接写 `{ x : φ(x) }`（那是罗素悖论）。正确的姿势是两步——',
+        '**先找一个确定足够大的容器，再用分离公理模式从里面挑**。',
+        '',
+        '💡 看到「想造一个集合但不知道怎么下手」时，回来想想这两步。'
+      ].join('\n')
+    },
+
+    /* ------------------------------------------------ 控制无穷的手法 */
+    {
+      id: 'ana.tame-infinite',
+      kind: 'analogy',
+      a: 'def.finchar',
+      b: 'def.wellorder',
+      title: '两种「用有限/最小的东西控制无穷」的手法',
+      note: [
+        '两个定义都在回答同一个问题：**面对一个无穷对象，怎么下手？**',
+        '',
+        '**良序**（`def.wellorder`）：要求「每个非空子集都有**最小元**」。',
+        '有了最小元，就能做超限归纳、超限递归 —— 把「一步」规范化，无穷就被结构化了。',
+        '',
+        '**有限特征**（`def.finchar`）：要求「整体属于 𝒜 ⟺ 每个**有限**子集都属于 𝒜」。',
+        '于是验证一个无穷对象，只需要逐个检查它的有限片段 —— 无穷被压缩成有限。',
+        '',
+        '**共同的招**：都不去正面描述无穷，而是找一个**有限的抓手**',
+        '（一个最小元 / 一个有限子集），让无穷变得可验证、可操作。',
+        '',
+        '💡 这个招在数学里到处都是（紧致性、有限生成、可数逼近……）。'
+      ].join('\n')
+    },
+
+    /* ------------------------------------------------ 筛选条件式的定义 */
+    {
+      id: 'ana.filter-sieve',
+      kind: 'analogy',
+      a: 'ax.sep',
+      b: 'def.finchar',
+      title: '「不描述整体，只给一个筛子」',
+      note: [
+        '两者都不回答「这个集合里**有什么**」，只回答「**怎么判断**一个东西在不在里面」。',
+        '',
+        '- 分离公理模式：`x ∈ B ⟺ (x ∈ A ∧ φ(x))` —— 给的是**判定条件**，不是元素清单。',
+        '- 有限特征：`X ∈ 𝒜 ⟺ X 的每个有限子集属于 𝒜` —— 同样是判定条件。',
+        '',
+        '**为什么这个思路重要**：集合常常是无穷的，没法列举；',
+        '但只要给出判定条件，「这个元素属不属于」就成了一个可回答的问题。',
+        '数学里绝大多数「定义」本质上都是这一类 —— 给条件，不给清单。',
+        '',
+        '💡 读一个新定义时，先问自己：它给的是**构造**还是**判定条件**？'
+      ].join('\n')
+    },
+
+    /* ------------------------------------------------ 跨星团的类比 */
+    {
+      id: 'ana.maximal-apparatus',
+      kind: 'analogy',
+      a: 'def.finchar',
+      b: 'def.vs',
+      title: '「有限特征」这个抽象概念，在向量空间里有一个现成的实例',
+      note: [
+        '严格说这不只是类比 —— 它是一个**实例**，但方向不是逻辑蕴含：',
+        '`def.finchar` 不推出 `def.vs`，`def.vs` 也不推出 `def.finchar`；',
+        '它们是「抽象工具」和「具体落地」的关系。',
+        '',
+        '线性无关性恰好是有限特征的：',
+        '「S 线性无关 ⟺ S 的每个**有限**子集线性无关」——',
+        '这就是 `def.finchar` 的定义，一字不差。',
+        '',
+        '**所以「每个向量空间有基」的证明里，那个「链的并仍线性无关」的关键一步，',
+        '本质上是在验证有限特征在链条下保持。** Tukey 引理正是为此而生的。',
+        '',
+        '💡 这条边是「跨星团」的：序理论 ↔ 抽象代数。',
+        '它不提供新的定理，但它告诉你**两块内容为什么长得像**。'
+      ].join('\n')
+    }
+  ]
+});
+
+</script>
+
+<!-- 启动 -->
+<script>
+/* ==========================================================================
+   数学星图 · 应用装配
+   --------------------------------------------------------------------------
+   把「数据（MG.packs / MG.regions）」与「引擎」接起来：
+   建图 → 布局 → 相机 → 渲染 → 交互 → 搜索 → 面板 → 工具条
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+  var U = MG.util;
+  var C = MG.config;
+  var T = MG.theme;
+  var GU = MG.graphUtil;
+
+  /* ------------------------------------------------------- KaTeX（可选） */
+  /* 若页面里引入了 KaTeX，$…$ 与 $$…$$ 就会自动渲染；没有则原样显示。 */
+  function hookKatex() {
+    if (typeof global.katex === 'undefined') return;
+    MG.renderInlineMath = function (tex) {
+      try { return global.katex.renderToString(tex, { throwOnError: false }); }
+      catch (e) { return '<code>' + U.escapeHtml(tex) + '</code>'; }
+    };
+    MG.renderBlockMath = function (tex) {
+      try {
+        return '<div class="katex-block">' +
+          global.katex.renderToString(tex, { displayMode: true, throwOnError: false }) + '</div>';
+      } catch (e) { return null; }
+    };
+  }
+
+  function boot() {
+    hookKatex();
+
+    var graphEl = document.getElementById('layer-graph');
+    var cloudEl = document.getElementById('layer-cloud');
+    var cloudCtx = cloudEl.getContext('2d');
+    var searchBox = document.getElementById('search-box');
+    var searchInput = document.getElementById('search-input');
+    var searchResults = document.getElementById('search-results');
+    var toolbar = document.getElementById('toolbar');
+    var legendEl = document.getElementById('legend');
+    var panelEl = document.getElementById('panel');
+    var panelBody = document.getElementById('panel-body');
+    var panelClose = document.getElementById('panel-close');
+    var hintEl = document.getElementById('hint');
+
+    /* ------------------------------------------------------------ 建图 */
+    var localPacks = (MG.packs || []).slice();
+    var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
+    MG.computeLayout(graph);
+    if (graph.warnings.length) {
+      console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
+    }
+
+    /* ------------------------------------------------------------ 状态 */
+    var view = {
+      graph: graph,
+      cam: null,
+      visible: MG.graphUtil.visibleEdges(graph),
+      focus: null,
+      hover: null
+    };
+    var cam = MG.createCamera();
+    view.cam = cam;
+
+    var renderer = MG.createRenderer(graphEl, view);
+    var cloudTex = null;
+    var dpr = 1;
+    var rafId = 0;
+    var dirty = true;
+
+    /* -------------------------------------------------------- 绘制循环 */
+    function requestDraw() {
+      dirty = true;
+      if (!rafId) rafId = requestAnimationFrame(frame);
+    }
+
+    function frame() {
+      rafId = 0;
+      var animating = cam.tick();
+      if (dirty || animating) {
+        MG.background.draw(cloudCtx, cam, cloudTex, dpr);
+        renderer.draw();
+        dirty = false;
+      }
+      if (animating) requestDraw();
+    }
+
+    /* ------------------------------------------------------------ 尺寸 */
+    function resize() {
+      var s = renderer.resize();
+      dpr = s.dpr;
+      cloudEl.width = Math.round(s.w * dpr);
+      cloudEl.height = Math.round(s.h * dpr);
+      requestDraw();
+    }
+    global.addEventListener('resize', resize);
+
+    /* -------------------------------------------------- 聚焦 / 面板 */
+    var panelOpen = false;
+
+    /** 面板遮住的屏幕区域：宽屏是右侧抽屉，窄屏是底部抽屉 */
+    function panelInset() {
+      if (!panelOpen) return { x: 0, y: 0 };
+      if (global.innerWidth > 820) return { x: 414, y: 0 };
+      return { x: 0, y: Math.min(cam.viewH * 0.62, Math.max(80, cam.viewH - 120)) };
+    }
+
+    /** 把一个世界坐标点换算成「可见区正中」所需的相机中心 */
+    function centerTargetFor(pt, k) {
+      k = k || cam.k;
+      var inset = panelInset();
+      return { cx: pt.x + (inset.x / 2) / k, cy: pt.y + (inset.y / 2) / k };
+    }
+
+    function focusNode(id, opts) {
+      opts = opts || {};
+      if (view.focus && view.focus.type === 'node' && view.focus.id === id && !opts.force) {
+        clearFocus();       // 再点一次同一个节点 = 取消聚焦
+        panel.hide();
+        return;
+      }
+      view.focus = { type: 'node', id: id };
+      panel.show({ type: 'node', id: id });
+      panelOpen = true;
+      if (opts.center !== false) centerOn(id);
+      requestDraw();
+      hideHint();
+    }
+
+    function focusEdge(id, opts) {
+      opts = opts || {};
+      view.focus = { type: 'edge', id: id };
+      panel.show({ type: 'edge', id: id });
+      panelOpen = true;
+      var e = findEdge(id);
+      if (e && opts.center !== false) {
+        var pts = MG.graphUtil.edgeNodes(e);
+        var mid = { x: 0, y: 0 }, cnt = 0;
+        pts.forEach(function (nid) {
+          var nd = graph.byId[nid];
+          if (nd) { mid.x += nd.x; mid.y += nd.y; cnt++; }
+        });
+        if (cnt) { mid.x /= cnt; mid.y /= cnt; ensureCenter(mid); }
+      }
+      requestDraw();
+      hideHint();
+    }
+
+    function findEdge(id) {
+      for (var i = 0; i < graph.edges.length; i++) if (graph.edges[i].id === id) return graph.edges[i];
+      return null;
+    }
+
+    function clearFocus() {
+      view.focus = null;
+      requestDraw();
+    }
+
+    /** 若某个点不在安全视野内，平滑移到中心（避开右侧面板） */
+    function centerOn(id) {
+      var n = graph.byId[id];
+      if (n) ensureCenter(n);
+    }
+
+    function ensureCenter(pt) {
+      var inset = panelInset();
+      var p = cam.toScreen(pt.x, pt.y);
+      var outside = p.x < 90 || p.x > cam.viewW - 90 - inset.x ||
+        p.y < 110 || p.y > cam.viewH - 90 - inset.y;
+      if (!outside) return;
+      cam.animateTo(centerTargetFor(pt));
+    }
+
+    function bboxOf(list) {
+      var bb = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+      list.forEach(function (n) {
+        bb.minX = Math.min(bb.minX, n.x); bb.maxX = Math.max(bb.maxX, n.x);
+        bb.minY = Math.min(bb.minY, n.y); bb.maxY = Math.max(bb.maxY, n.y);
+      });
+      return bb;
+    }
+
+    /** 让一个世界矩形铺满可视区（右侧留给面板），返回相机目标 */
+    function targetFor(bb, padding, maxZoom) {
+      var inset = panelInset();
+      // 小屏幕上把留白收窄，否则整张图会缩得看不动
+      var pad = Math.min(padding, Math.min(cam.viewW, cam.viewH) * 0.18);
+      var w = Math.max(40, bb.maxX - bb.minX);
+      var h = Math.max(40, bb.maxY - bb.minY);
+      var availW = Math.max(80, cam.viewW - pad * 2 - inset.x);
+      var availH = Math.max(80, cam.viewH - pad * 2 - inset.y);
+      var k = U.clamp(Math.min(availW / w, availH / h),
+        Math.max(C.camera.minZoom, C.camera.fitMinZoom),
+        Math.min(C.camera.maxZoom, maxZoom == null ? C.camera.maxFitZoom : maxZoom));
+      var base = centerTargetFor({ x: (bb.minX + bb.maxX) / 2, y: (bb.minY + bb.maxY) / 2 }, k);
+      return { k: k, cx: base.cx, cy: base.cy };
+    }
+
+    /** 适配到某个星系 */
+    function fitRegion(rid) {
+      var list = graph.nodes.filter(function (n) { return n.regions.indexOf(rid) >= 0; });
+      if (!list.length) return;
+      cam.animateTo(targetFor(bboxOf(list), 170, 1.35));
+      requestDraw();
+    }
+
+    /** 适配到某个星团 */
+    function fitCluster(cid) {
+      var c = graph.clusterById[cid];
+      if (!c || !c.nodes || !c.nodes.length) return;
+      cam.animateTo(targetFor(bboxOf(c.nodes), 190, 1.7));
+      requestDraw();
+    }
+
+    function fitAll() {
+      cam.animateTo(targetFor(graph.bbox(), C.camera.fitPadding));
+      requestDraw();
+    }
+
+    /* ---------------------------------------------------------- 面板 */
+    var panel = MG.createPanel(panelEl, panelBody, panelClose, view, {
+      onGoto: function (hit) {
+        if (hit.type === 'node') focusNode(hit.id, { force: true });
+        else focusEdge(hit.id, { force: true });
+      },
+      onRegion: function (rid) { fitRegion(rid); },
+      onCluster: function (cid) { fitCluster(cid); },
+      onClose: function () { panelOpen = false; requestDraw(); }
+    });
+
+    /* ---------------------------------------------------------- 交互 */
+    MG.createInteraction(graphEl, view, {
+      draw: function () { requestDraw(); },
+      hitTest: function (x, y) { return renderer.hitTest(x, y); },
+      onPick: function (hit) {
+        if (!hit) {            // 点空白：回到全图并收起面板
+          clearFocus();
+          panel.hide();
+          return;
+        }
+        if (hit.type === 'node') focusNode(hit.id);
+        else focusEdge(hit.id);
+      },
+      onHover: function () { hideHintSoon(); }
+    });
+
+    /* ---------------------------------------------------------- 搜索 */
+    var search = MG.createSearch(searchBox, searchInput, searchResults, view, {
+      onNode: function (id) { focusNode(id, { force: true }); },
+      onRegion: function (rid) { fitRegion(rid); }
+    });
+    search.reindex();
+
+    /* -------------------------------------------------------- 工具条 */
+    toolbar.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('button') : null;
+      if (!btn) return;
+      var act = btn.getAttribute('data-act');
+      if (act === 'zoom-in') { cam.zoomBy(C.camera.zoomStep); requestDraw(); }
+      else if (act === 'zoom-out') { cam.zoomBy(1 / C.camera.zoomStep); requestDraw(); }
+      else if (act === 'fit') { fitAll(); requestDraw(); }
+      else if (act === 'toggle-defs') {
+        C.showDefinitionLines = !C.showDefinitionLines;
+        btn.classList.toggle('on', C.showDefinitionLines);
+        refreshVisible();
+      } else if (act === 'toggle-explore') {
+        C.exploreMode = !C.exploreMode;
+        btn.classList.toggle('on', C.exploreMode);
+        renderLegend();
+        requestDraw();
+      } else if (act === 'toggle-labels') {
+        C.showLabels = !C.showLabels;
+        btn.classList.toggle('on', C.showLabels);
+        requestDraw();
+      } else if (act === 'toggle-wheel') {
+        C.wheelZooms = !C.wheelZooms;
+        btn.classList.toggle('on', C.wheelZooms);
+        btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
+      }
+    });
+
+    function refreshVisible() {
+      view.visible = MG.graphUtil.visibleEdges(graph);
+      renderer.invalidate();
+      requestDraw();
+    }
+
+    /* ---------------------------------------------------------- 图例 */
+    function renderLegend() {
+      var regions = graph.regions || [];
+      var types = T.typeOrder || Object.keys(T.nodeTypes || {});
+      var live = regions.filter(function (r) { return r.stat; });
+      var typeRows = types.filter(function (t) { return T.nodeTypes[t]; }).map(function (t) {
+        var st = T.nodeTypes[t];
+        return '<span class="lg-item"><span class="lg-dot" style="background:' + st.color + '"></span>' + st.name + '</span>';
+      }).join('');
+
+      var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
+      var edgeRows =
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>推出 →<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>定义引用<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        (weakCount
+          ? '<span class="lg-item" style="opacity:' + (C.exploreMode ? 1 : 0.45) + '">' +
+            '<span class="lg-line" style="border-top-color:rgba(138,106,214,.7);border-top-width:2px;border-top-style:dashed"></span>' +
+            '类比<em style="color:#A5ABB3;font-style:normal">·弱 ' + weakCount + ' 条' +
+            (C.exploreMode ? '' : '（点右上角「探索」显示）') + '</em></span>'
+          : '');
+
+      // 星系 + 它下面的星团（缩进一层）
+      var regionRows = live.map(function (r) {
+        var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
+        var head = '<span class="lg-item" data-region="' + r.id + '" style="cursor:pointer">' +
+          '<span class="lg-swatch" style="background:' + U.mixWithWhite(r.color, 0.45) + '"></span>' +
+          '<b style="font-weight:600">' + r.name + '</b>' +
+          '<span style="color:#A5ABB3">·' + r.stat.count + '</span></span>';
+        if (!mine.length) return head;
+        var kids = mine.map(function (c) {
+          return '<span class="lg-item" data-cluster="' + c.id + '" style="cursor:pointer">' +
+            '<span class="lg-swatch" style="background:' + U.mixWithWhite(c.color || r.color, 0.62) +
+            ';width:11px;height:11px;border-radius:50%"></span>' +
+            c.name + '<span style="color:#A5ABB3">·' + c.stat.count + '</span></span>';
+        }).join('');
+        return head + '<span class="lg-kids">' + kids + '</span>';
+      }).join('');
+
+      legendEl.innerHTML =
+        '<div class="lg-head" data-toggle><b>图例</b><span class="lg-caret">▼</span></div>' +
+        '<div class="lg-body">' +
+        '<div class="lg-group"><div class="lg-title">节点（' + graph.nodes.length + '）</div><div class="lg-row">' + typeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div><div class="lg-row">' + edgeRows + '</div></div>' +
+        '<div class="lg-group"><div class="lg-title">数学板块</div><div class="lg-row">' + regionRows + '</div></div>' +
+        '</div>';
+    }
+
+    legendEl.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('[data-toggle]')) {
+        legendEl.classList.toggle('collapsed');
+        return;
+      }
+      var cchip = e.target.closest ? e.target.closest('[data-cluster]') : null;
+      if (cchip) { fitCluster(cchip.getAttribute('data-cluster')); return; }
+      var chip = e.target.closest ? e.target.closest('[data-region]') : null;
+      if (chip) fitRegion(chip.getAttribute('data-region'));
+    });
+
+    /* ---------------------------------------------------------- 键盘 */
+    document.addEventListener('keydown', function (e) {
+      var tag = (e.target.tagName || '').toLowerCase();
+      var typing = tag === 'input' || tag === 'textarea' || e.target.isContentEditable;
+      if (e.key === 'Escape') {
+        if (typing) return;
+        search.close();
+        panel.hide();
+        clearFocus();
+        return;
+      }
+      if (typing) return;
+      if (e.key === '/' ) { e.preventDefault(); search.focus(); return; }
+      if (e.key === '+' || e.key === '=') { e.preventDefault(); cam.zoomBy(C.camera.zoomStep); requestDraw(); }
+      else if (e.key === '-' || e.key === '_') { e.preventDefault(); cam.zoomBy(1 / C.camera.zoomStep); requestDraw(); }
+      else if (e.key === '0') { e.preventDefault(); fitAll(); requestDraw(); }
+      else if (e.key.indexOf('Arrow') === 0) {
+        e.preventDefault();
+        var step = 90;
+        if (e.key === 'ArrowLeft') cam.panBy(step, 0);
+        if (e.key === 'ArrowRight') cam.panBy(-step, 0);
+        if (e.key === 'ArrowUp') cam.panBy(0, step);
+        if (e.key === 'ArrowDown') cam.panBy(0, -step);
+        cam.stopAnimation();
+        requestDraw();
+      }
+    });
+
+    /* ------------------------------------------------------------ 提示 */
+    var hintTimer = null, hintGone = false;
+    function hideHint() { if (!hintGone) { hintGone = true; hintEl.classList.add('fade'); } }
+    function hideHintSoon() {
+      if (hintTimer || hintGone) return;
+      hintTimer = setTimeout(hideHint, 9000);
+    }
+    hideHintSoon();
+
+    /* ------------------------------------------------------------ 启动 */
+    /** 深链：#n=<节点id>  #e=<连线id>  #r=<星系id>  #c=<星团id> */
+    function applyHash() {
+      var h = String(global.location.hash || '').replace(/^#/, '');
+      var m = h.match(/^([necr])=(.+)$/);
+      if (!m) return false;
+      var id = decodeURIComponent(m[2]).trim();
+      if (m[1] === 'n' && graph.byId[id]) { focusNode(id, { force: true }); return true; }
+      if (m[1] === 'e' && findEdge(id)) { focusEdge(id, { force: true }); return true; }
+      if (m[1] === 'r' && graph.regionById[id]) { fitRegion(id); return true; }
+      if (m[1] === 'c' && graph.clusterById[id] && graph.clusterById[id].nodes.length) {
+        fitCluster(id); return true;
+      }
+      return false;
+    }
+
+    function start() {
+      resize();
+      cloudTex = MG.background.buildTexture(graph);
+      renderLegend();
+      var bb = graph.bbox();
+      cam.fit(bb, C.camera.fitPadding);
+      var fitK = cam.k;
+      var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
+      if (!applyHash()) {
+        // 初始视角：先稍微留白，再平滑推进到「全部适配」
+        cam.k = fitK * 0.72;
+        cam.centerOn(cx, cy);
+        cam.animateTo({ k: fitK, cx: cx, cy: cy }, 700);
+      }
+      requestDraw();
+    }
+
+    start();
+
+    /* ------------------------------------------------ 外部内容包（可选） */
+    if (MG.loader) {
+      MG.loader.loadExternal().then(function (res) {
+        if (!res || !res.packs.length) return;
+        res.packs.forEach(function (p) {
+          var v = MG.loader.validatePack(p);
+          if (!v.ok) { console.warn('[数学星图] 外部内容包有问题：', p.name, v.errs); }
+        });
+        var packs = localPacks.concat(res.packs);
+        graph = MG.buildGraph(packs, MG.regions, MG.clusters);
+        MG.computeLayout(graph);
+        view.graph = graph;
+        view.visible = MG.graphUtil.visibleEdges(graph);
+        renderer.invalidate();
+        cloudTex = MG.background.buildTexture(graph);
+        search.reindex();
+        renderLegend();
+        start();
+        console.info('[数学星图] 已并入 ' + res.loaded + ' 个外部内容包。');
+      });
+    }
+
+    /* 方便在控制台里调试：MG.app.graph / MG.app.cam */
+    MG.app = {
+      view: view, cam: cam, renderer: renderer, search: search,
+      focusNode: focusNode, focusEdge: focusEdge, fitAll: fitAll, fitRegion: fitRegion,
+      clearFocus: clearFocus,
+      requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次
+      rebuild: function () { start(); },
+      get graph() { return view.graph; },
+      get packs() { return (MG.packs || []); }
+    };
+  }
+
+  /* ------------------------------------------------------ 出错时的兜底 */
+  /* 万一某个数据包写错了，至少让人看见「哪儿错了」，而不是一片白屏。 */
+  function fatal(err) {
+    console.error('[数学星图] 启动失败：', err);
+    if (typeof global.__mgFatal === 'function') { global.__mgFatal(err); return; }
+    if (document.getElementById('mg-fatal')) return;
+    var box = document.createElement('div');
+    box.id = 'mg-fatal';
+    box.style.cssText =
+      'position:fixed;inset:auto 16px 16px 16px;max-height:50vh;overflow:auto;z-index:99;' +
+      'background:#fff;border:1px solid rgba(200,60,60,.35);border-left:3px solid #D0483C;' +
+      'border-radius:10px;padding:14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.16);' +
+      'font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;color:#3a2020;white-space:pre-wrap';
+    box.textContent = '数学星图启动出错（多半是某个内容包写错了）：\n\n' +
+      ((err && (err.stack || err.message)) || String(err));
+    document.body.appendChild(box);
+  }
+
+  function safeBoot() {
+    try { boot(); } catch (err) { fatal(err); }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safeBoot);
+  } else {
+    safeBoot();
+  }
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+</body>
+</html>

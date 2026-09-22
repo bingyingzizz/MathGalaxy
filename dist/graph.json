@@ -1,0 +1,1156 @@
+{
+ "meta": {
+  "name": "数学星图 MathGalaxy",
+  "schema": "mathgalaxy/v1",
+  "generated": "2026-09-22T02:18:56.356Z",
+  "counts": {
+   "regions": 6,
+   "clusters": 6,
+   "nodes": 29,
+   "edges": 36,
+   "strong": 32,
+   "weak": 4
+  },
+  "readingGuide": {
+   "layers": "星系(region) → 星团(cluster) → 恒星(node)",
+   "clusterMeaning": "星团 = 为了造出某个「能用的东西」而存在的一整套结果，内部关系密、对外整块连接",
+   "edgeKind": {
+    "implication": "推出（有向，sources → target）",
+    "equivalence": "等价（无向，proofs 是两个方向的证明）",
+    "definition": "定义引用（无向，某结论的陈述里用到了某定义）",
+    "analogy": "类比（无向，思想相通但不是逻辑蕴含）"
+   },
+   "edgeStrength": {
+    "strong": "标准逻辑关系 —— 查证明、做推理时只走这些",
+    "weak": "类比/思想相通 —— 只在「卡住了、想找远房关系」时探索用"
+   }
+  }
+ },
+ "regions": [
+  {
+   "id": "logic",
+   "name": "数理逻辑",
+   "en": "Mathematical Logic",
+   "desc": "一阶语言、形式系统、可计算性与模型论。",
+   "color": "#8A63E8",
+   "nodeCount": 0
+  },
+  {
+   "id": "set-theory",
+   "name": "集合论",
+   "en": "Set Theory",
+   "desc": "ZFC 公理系统、序数、基数与选择原理。",
+   "color": "#4F7CF5",
+   "nodeCount": 20
+  },
+  {
+   "id": "order-theory",
+   "name": "序理论",
+   "en": "Order Theory",
+   "desc": "偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。",
+   "color": "#2FA96B",
+   "nodeCount": 9
+  },
+  {
+   "id": "topology",
+   "name": "拓扑学",
+   "en": "Topology",
+   "desc": "开集、连续、紧致与连通；大量定理依赖选择原理。",
+   "color": "#D9649F",
+   "nodeCount": 0
+  },
+  {
+   "id": "algebra",
+   "name": "抽象代数",
+   "en": "Abstract Algebra",
+   "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
+   "color": "#E08A3C",
+   "nodeCount": 2
+  },
+  {
+   "id": "analysis",
+   "name": "分析学",
+   "en": "Analysis",
+   "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
+   "color": "#3AA8D8",
+   "nodeCount": 0
+  }
+ ],
+ "clusters": [
+  {
+   "id": "set.zfc",
+   "name": "ZFC 公理系统",
+   "parent": "set-theory",
+   "desc": "造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。",
+   "nodeCount": 10,
+   "nodes": [
+    "ax.ext",
+    "ax.sep",
+    "ax.pair",
+    "ax.union",
+    "ax.power",
+    "ax.inf",
+    "ax.repl",
+    "ax.found",
+    "thm.noself",
+    "thm.omega"
+   ]
+  },
+  {
+   "id": "set.construct",
+   "name": "集合的构造",
+   "parent": "set-theory",
+   "desc": "造出日常要用的零件：空集、二元并、笛卡尔积、子集与有序对。",
+   "nodeCount": 5,
+   "nodes": [
+    "def.subset",
+    "def.pair",
+    "thm.empty",
+    "thm.binunion",
+    "thm.product"
+   ]
+  },
+  {
+   "id": "set.choice",
+   "name": "关系与选择",
+   "parent": "set-theory",
+   "desc": "造出「从无穷族里同时挑元素」的工具：关系、函数、选择函数。",
+   "nodeCount": 3,
+   "nodes": [
+    "ax.choice",
+    "def.rel",
+    "def.choicefn"
+   ]
+  },
+  {
+   "id": "order.structure",
+   "name": "序结构",
+   "parent": "order-theory",
+   "desc": "造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。",
+   "nodeCount": 5,
+   "nodes": [
+    "def.poset",
+    "def.chain",
+    "def.bound",
+    "def.wellorder",
+    "def.finchar"
+   ]
+  },
+  {
+   "id": "order.maximal",
+   "name": "极大原理",
+   "parent": "order-theory",
+   "desc": "造出存在性证明的万能发动机：佐恩引理、Hausdorff 极大原理、Tukey 引理。",
+   "nodeCount": 4,
+   "nodes": [
+    "thm.wellordering",
+    "lem.zorn",
+    "thm.hausdorff",
+    "lem.tukey"
+   ]
+  },
+  {
+   "id": "algebra.vectorspace",
+   "name": "向量空间的基",
+   "parent": "algebra",
+   "desc": "造出线性代数的地基：每个向量空间都有基。",
+   "nodeCount": 2,
+   "nodes": [
+    "def.vs",
+    "thm.vsbasis"
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "id": "ax.ext",
+   "type": "axiom",
+   "label": "外延公理",
+   "title": "外延公理（Axiom of Extensionality）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC",
+    "集合相等"
+   ],
+   "statement": "集合由它的元素唯一决定：\n\n$$∀A ∀B [ ∀x ( x ∈ A ↔ x ∈ B ) → A = B ]$$\n\n反方向（A = B → 元素完全相同）由等词逻辑自动成立，所以常写成 ↔。\n这条公理保证了「用条件刻画集合」时结果是唯一的，因此 { x ∈ A : φ(x) } 这种写法不会产生歧义。",
+   "notes": "它是「集合」这个名字的全部含义：一个集合 = 一个外延（一堆元素），与「怎么描述它」无关。\n\n去掉它，就可以有元素完全相同却彼此不同的对象（例如带原子 ur-element 的集合论）。",
+   "refs": [
+    "Kunen, Set Theory, I.2",
+    "Jech, Set Theory, 1.2"
+   ]
+  },
+  {
+   "id": "ax.sep",
+   "type": "axiom",
+   "label": "分离公理模式",
+   "title": "分离公理模式（Axiom Schema of Separation）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC",
+    "子集",
+    "公理模式"
+   ],
+   "statement": "对每个公式 φ(x, p)（其中 B 不出现），下面是一条公理：\n\n$$∀p ∀A ∃B ∀x [ x ∈ B ↔ ( x ∈ A ∧ φ(x, p) ) ]$$\n\n由外延公理，这样的 B 唯一，记作 B = { x ∈ A : φ(x, p) }。俗称「子集公理」。",
+   "notes": "它是**公理模式**而不是单条公理：每取一个公式 φ 就得到一条公理，ZFC 因此有无穷多条公理。\n\n限制 `x ∈ A` 是关键——不能写成 { x : x ∉ x }，否则就是罗素悖论。",
+   "refs": [
+    "Kunen, Set Theory, I.4"
+   ]
+  },
+  {
+   "id": "ax.pair",
+   "type": "axiom",
+   "label": "配对公理",
+   "title": "配对公理（Axiom of Pairing）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC"
+   ],
+   "statement": "任给两个集合，可以打包成「只含这两个元素的集合」：\n\n$$∀a ∀b ∃A ∀x [ x ∈ A ↔ ( x = a ∨ x = b ) ]$$\n\n由外延公理 A 唯一，记作 { a, b }（无序对）。取 a = b 即得单点集 { a }。",
+   "notes": "有了配对公理，「{a, b}」才是集合；它也是构造有序对 (a,b) = {{a},{a,b}} 的第一步。",
+   "refs": [
+    "Kunen, Set Theory, I.3"
+   ]
+  },
+  {
+   "id": "ax.union",
+   "type": "axiom",
+   "label": "并集公理",
+   "title": "并集公理（Axiom of Union）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC"
+   ],
+   "statement": "一个集合族的所有成员的元素，仍然构成一个集合：\n\n$$∀F ∃A ∀x [ x ∈ A ↔ ∃Y ( Y ∈ F ∧ x ∈ Y ) ]$$\n\n记作 ⋃F。配合配对公理可得二元并 a ∪ b = ⋃{ a, b }。",
+   "notes": "注意 ⋃F 是「F 中元素的元素」，不是 F 自身；⋃{a,b} = a ∪ b 正是我们要的二元并。",
+   "refs": [
+    "Kunen, Set Theory, I.3"
+   ]
+  },
+  {
+   "id": "ax.power",
+   "type": "axiom",
+   "label": "幂集公理",
+   "title": "幂集公理（Axiom of Power Set）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC",
+    "子集"
+   ],
+   "statement": "一个集合的所有子集构成一个集合：\n\n$$∀A ∃P ∀x [ x ∈ P ↔ x ⊆ A ]$$\n\n记作 𝒫(A)（或 P(A)）。Cantor 定理说 |𝒫(A)| > |A|，所以幂集是「造更大的集合」的基本手段。",
+   "notes": "它是笛卡尔积 A × B 存在性的关键：{{a},{a,b}} 落在 𝒫(𝒫(A ∪ B)) 里。",
+   "refs": [
+    "Kunen, Set Theory, I.3"
+   ]
+  },
+  {
+   "id": "ax.inf",
+   "type": "axiom",
+   "label": "无穷公理",
+   "title": "无穷公理（Axiom of Infinity）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC",
+    "归纳集",
+    "自然数"
+   ],
+   "statement": "存在一个「归纳集」——含有 ∅ 且对后继封闭的集合：\n\n$$∃I [ ∅ ∈ I ∧ ∀x ( x ∈ I → x ∪ { x } ∈ I ) ]$$\n\n其中 ∅ 由分离公理模式得到，x ∪ {x} 由配对公理与并集公理得到。\n这条公理宣告了无穷集合的存在，是从中构造自然数集 ω 的唯一来源。",
+   "notes": "没有它，V_ω 就是一个模型，所有集合都有限，算术只能在有界范围内进行。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "ax.repl",
+   "type": "axiom",
+   "label": "替换公理模式",
+   "title": "替换公理模式（Axiom Schema of Replacement）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC",
+    "公理模式",
+    "函数"
+   ],
+   "statement": "若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 φ(x, y, p)（其中 B 不出现）：\n\n$$∀p [ ∀x∀y∀z ( φ(x,y,p) ∧ φ(x,z,p) → y = z ) → ∀A ∃B ∀y ( y ∈ B ↔ ∃x ∈ A, φ(x,y,p) ) ]$$\n\n它保证了「替换」不会跑出集合论宇宙：像 B 也是集合。",
+   "notes": "替换公理模式是 Z 与 ZF 的分水岭。由它（加上任取一个集合 A）可以推出分离公理模式。",
+   "refs": [
+    "Kunen, Set Theory, I.6"
+   ]
+  },
+  {
+   "id": "ax.found",
+   "type": "axiom",
+   "label": "正则公理",
+   "title": "正则公理 / 基础公理（Axiom of Foundation）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "ZFC",
+    "良基",
+    "∈-链"
+   ],
+   "statement": "每个非空集合都有「∈-极小元」：\n\n$$∀A [ A ≠ ∅ → ∃x ( x ∈ A ∧ x ∩ A = ∅ ) ]$$\n\n等价说法：∈ 是良基关系，不存在无穷递减链\n\n$$x₀ ∋ x₁ ∋ x₂ ∋ ⋯$$",
+   "notes": "它排除了 A ∈ A 这类循环集合，也排除了「集合的无穷下降」。\n\n正则公理等价于「集合论宇宙 V 是累积层级 ⋃α Vα」，这条公理让 ∈-归纳法成为合法的证明方法。",
+   "refs": [
+    "Kunen, Set Theory, I.9"
+   ]
+  },
+  {
+   "id": "ax.choice",
+   "type": "axiom",
+   "label": "选择公理",
+   "title": "选择公理（Axiom of Choice, AC）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.choice",
+   "tags": [
+    "ZFC",
+    "选择",
+    "等价命题"
+   ],
+   "statement": "任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：\n\n$$∀F [ ( ∀X ∈ F, X ≠ ∅ ) → ∃f ( f 是函数 ∧ dom f = F ∧ ∀X ∈ F, f(X) ∈ X ) ]$$\n\n另一种常见形式（两两不交形式）：若 F 是两两不交的非空集合族，则存在集合 C，使对每个 X ∈ F 都有 |C ∩ X| = 1。\n\n选择函数 f 就是「同时挑元素」的工具；AC 断言这种同时挑选永远做得到。",
+   "notes": "AC 与 ZF 独立：Gödel (1938) 证明 Con(ZF) → Con(ZF + AC)，Cohen (1963) 证明 Con(ZF) → Con(ZF + ¬AC)。\n\n它是本星系里大量命题的枢纽——佐恩引理、良序定理、Hausdorff 极大原理、Tukey 引理都与它等价。\n\n有限个非空集合可以逐个挑选，这正是 AC 只在无穷情形才显出力量的原因。",
+   "refs": [
+    "Jech, The Axiom of Choice",
+    "Kunen, Set Theory, I.12"
+   ]
+  },
+  {
+   "id": "def.subset",
+   "type": "definition",
+   "label": "子集",
+   "title": "子集 / 真子集（Subset）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定义",
+    "包含关系"
+   ],
+   "statement": "设 A、B 是集合。\n\n- **A 是 B 的子集**（记 A ⊆ B）：$$∀x ( x ∈ A → x ∈ B )$$\n- **A 是 B 的真子集**（记 A ⊊ B）：A ⊆ B 且 A ≠ B。\n\n基本性质：⊆ 自反、传递；并且由外延公理，\n\n$$A = B ⟺ A ⊆ B ∧ B ⊆ A$$\n\n这是证明两个集合相等最常用的套路：**两边互包**。",
+   "notes": "∅ ⊆ A 对一切 A 成立（空泛真）。",
+   "refs": [
+    "Kunen, Set Theory, I.2"
+   ]
+  },
+  {
+   "id": "def.pair",
+   "type": "definition",
+   "label": "有序对",
+   "title": "有序对（Ordered Pair, Kuratowski）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定义",
+    "Kuratowski"
+   ],
+   "statement": "Kuratowski 定义：\n\n$$(a, b) := { {a}, {a, b} }$$\n\n它由配对公理与幂集公理保证是集合。\n\n**特征性质**（这才是「有序」的全部含义）：\n\n$$(a, b) = (c, d) ⟺ a = c ∧ b = d$$\n\nn 元组递归定义为 (a₁, …, aₙ) = ( (a₁, …, aₙ₋₁), aₙ )。",
+   "notes": "用集合「编码」有序对之后，关系、函数、序型等等才都能在 ZFC 内部说清楚。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.rel",
+   "type": "definition",
+   "label": "关系与函数",
+   "title": "关系 / 函数（Relation & Function）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.choice",
+   "tags": [
+    "定义",
+    "函数"
+   ],
+   "statement": "设 A、B 是集合。\n\n- **关系** R 由有序对组成；R ⊆ A × B 表示 R 是 A 到 B 的关系。\n- **定义域** dom R = { a : ∃b (a, b) ∈ R }；**值域** ran R = { b : ∃a (a, b) ∈ R }。\n- **逆** R⁻¹ = { (b, a) : (a, b) ∈ R }。\n- **函数** f : A → B 是满足下式的关系 f ⊆ A × B：\n\n$$∀a ∈ A, ∃! b ∈ B, (a, b) ∈ f$$\n\n唯一性使 f(a) = b 这个记号不会歧义；此时 dom f = A。",
+   "notes": "在 ZFC 里「函数就是一种特殊的关系，关系就是一种特殊的集合」——没有额外的原始概念。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.choicefn",
+   "type": "definition",
+   "label": "选择函数",
+   "title": "选择函数（Choice Function）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.choice",
+   "tags": [
+    "定义",
+    "选择"
+   ],
+   "statement": "设 F 是一个集合族，且 ∅ ∉ F。\n\nf 是 F 的**选择函数**，当且仅当\n\n- f 是函数，dom f = F；\n- ∀X ∈ F, f(X) ∈ X。\n\n即：f 从 F 的每一个成员里各挑出一个元素。\n\n于是选择公理可以简洁地写成：**每个满足 ∅ ∉ F 的集合族 F 都有选择函数**。",
+   "notes": "若 F 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。",
+   "refs": [
+    "Jech, The Axiom of Choice"
+   ]
+  },
+  {
+   "id": "thm.empty",
+   "type": "theorem",
+   "label": "空集存在",
+   "title": "空集存在且唯一",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定理"
+   ],
+   "statement": "存在一个不含任何元素的集合：\n\n$$∃B ∀x ( x ∉ B )$$\n\n由外延公理，这样的 B 唯一，记作 ∅。",
+   "notes": "∅ 是 ∈-关系的最小元，也是 ⊆-关系的最小元：∅ ⊆ A 对一切 A 成立。",
+   "refs": [
+    "Kunen, Set Theory, I.4"
+   ]
+  },
+  {
+   "id": "thm.noself",
+   "type": "theorem",
+   "label": "无自属集合",
+   "title": "任何集合都不属于自身",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "定理",
+    "正则公理"
+   ],
+   "statement": "$$∀A ( A ∉ A )$$\n\n更一般地，正则公理排除了任何有限的 ∈-循环：\n\n$$A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀$$",
+   "notes": "这条定理说明罗素悖论里的「集合 R = { x : x ∉ x }」不可能存在——否则 R ∈ R 与 R ∉ R 同时成立。",
+   "refs": [
+    "Kunen, Set Theory, I.9"
+   ]
+  },
+  {
+   "id": "thm.omega",
+   "type": "theorem",
+   "label": "自然数集存在",
+   "title": "自然数集 ω 存在",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.zfc",
+   "tags": [
+    "定理",
+    "自然数",
+    "序数"
+   ],
+   "statement": "存在**最小归纳集** ω：它含有 ∅，对 x ↦ x ∪ {x} 封闭，且含于一切归纳集之中：\n\n$$ω = { ∅, {∅}, {∅, {∅}}, {∅, {∅}, {∅, {∅}}}, … }$$\n\n把 ∈ 读作 <，⟨ω, ∈⟩ 就是自然数系 ⟨ℕ, <⟩。",
+   "notes": "ω 同时也是最小的极限序数。构造它需要无穷公理 + 幂集公理 + 分离公理模式三者合力。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "thm.binunion",
+   "type": "theorem",
+   "label": "二元并存在",
+   "title": "二元并 a ∪ b 存在",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定理"
+   ],
+   "statement": "任给两个集合，它们的并仍是集合：\n\n$$∀a ∀b ∃A ∀x [ x ∈ A ↔ ( x ∈ a ∨ x ∈ b ) ]$$\n\n记作 a ∪ b。",
+   "notes": "a ∪ b 是包含 a 与 b 的最小集合（⊆-意义下）。",
+   "refs": [
+    "Kunen, Set Theory, I.3"
+   ]
+  },
+  {
+   "id": "thm.product",
+   "type": "theorem",
+   "label": "笛卡尔积存在",
+   "title": "笛卡尔积 A × B 存在",
+   "region": "set-theory",
+   "regions": [
+    "set-theory"
+   ],
+   "cluster": "set.construct",
+   "tags": [
+    "定理",
+    "有序对"
+   ],
+   "statement": "任给两个集合，全体有序对构成一个集合：\n\n$$∀A ∀B ∃C ∀z [ z ∈ C ↔ ∃a ∈ A, ∃b ∈ B, z = (a, b) ]$$\n\n记作 A × B = { (a, b) : a ∈ A, b ∈ B }。",
+   "notes": "它是「关系」「函数」得以定义为集合的前提：没有 A × B，就没有 R ⊆ A × B 这个说法。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.poset",
+   "type": "definition",
+   "label": "偏序集",
+   "title": "偏序集 / 全序集（Partially Ordered Set）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.structure",
+   "tags": [
+    "定义",
+    "序"
+   ],
+   "statement": "设 ⪯ 是集合 A 上的二元关系。⪯ 是 **A 上的偏序**，当且仅当：\n\n- **自反**：∀x ∈ A, x ⪯ x；\n- **反对称**：∀x, y ∈ A ( x ⪯ y ∧ y ⪯ x → x = y )；\n- **传递**：∀x, y, z ∈ A ( x ⪯ y ∧ y ⪯ z → x ⪯ z )。\n\n若还满足 **可比性** ∀x, y ∈ A ( x ⪯ y ∨ y ⪯ x )，则 ⪯ 称为 **A 上的全序**（线性序），(A, ⪯) 称为全序集。\n\n称 (A, ⪯) 为**偏序集**。由 ⪯ 定义**严格序**：$$x ≺ y :⟺ x ⪯ y ∧ x ≠ y$$",
+   "notes": "典型例子：⟨𝒫(S), ⊆⟩ 是偏序集但不是全序集；⟨ℝ, ≤⟩ 是全序集。\n\n反对称性是说：只允许「相等」这一种互相 ≤ 的方式，所以偏序可以看成「≤ 的抽象」。",
+   "refs": [
+    "Kunen, Set Theory, I.11",
+    "Davey & Priestley, Introduction to Lattices and Order"
+   ]
+  },
+  {
+   "id": "def.chain",
+   "type": "definition",
+   "label": "链",
+   "title": "链 / 反链（Chain / Antichain）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.structure",
+   "tags": [
+    "定义",
+    "链"
+   ],
+   "statement": "设 (P, ⪯) 是偏序集，C ⊆ P。\n\n**C 是链**（也叫全序子集），当且仅当 C 中任意两个元素都可比：\n\n$$∀x, y ∈ C ( x ⪯ y ∨ y ⪯ x )$$\n\n**C 是反链**，当且仅当 C 中任意两个不同元素都不可比。\n\n约定：∅ 与单点集都算链。",
+   "notes": "「链」这个词是佐恩引理、Hausdorff 极大原理的中心概念——它们说的都是「链能长到多大」。",
+   "refs": [
+    "Kunen, Set Theory, I.11"
+   ]
+  },
+  {
+   "id": "def.bound",
+   "type": "definition",
+   "label": "上界与极大元",
+   "title": "上界 / 上确界 / 极大元（Bound & Maximal Element）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.structure",
+   "tags": [
+    "定义",
+    "上界",
+    "极大元"
+   ],
+   "statement": "设 (P, ⪯) 是偏序集，S ⊆ P，u, m ∈ P。\n\n- **u 是 S 的上界**：∀s ∈ S, s ⪯ u。\n- **u 是 S 的上确界**（记 sup S）：u 是上界，且 u ⪯ 每一个上界。\n- **m 是 P 的极大元**：$$∀x ∈ P ( m ⪯ x → x = m )$$，即没有比 m 更大的元素。\n- **m 是 P 的最大元**：∀x ∈ P, x ⪯ m，即 m 比所有元素都大。\n\n⚠ **极大元 ≠ 最大元。**",
+   "notes": "例子：P = { {1}, {2} } 按 ⊆ 排序。两个元素都是极大元（谁也包不住谁），但没有最大元。\n\n在**全序**集里两者才重合。偏序集里「极大」只要求「上面没有别人」，不要求「下面有所有人」。\n\n佐恩引理保证的是极大元，而不是最大元——这一点在应用时最容易出错。",
+   "refs": [
+    "Kunen, Set Theory, I.11"
+   ]
+  },
+  {
+   "id": "def.wellorder",
+   "type": "definition",
+   "label": "良序集",
+   "title": "良序集（Well-Ordered Set）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.structure",
+   "tags": [
+    "定义",
+    "良序",
+    "超限归纳"
+   ],
+   "statement": "全序集 (W, ⪯) 是**良序的**，当且仅当 W 的每个非空子集都有最小元：\n\n$$∀S ⊆ W ( S ≠ ∅ → ∃m ∈ S, ∀s ∈ S, m ⪯ s )$$\n\n等价于：不存在无穷严格递减链 w₀ ≻ w₁ ≻ w₂ ≻ ⋯。\n\n良序集上可以做**超限归纳**与**超限递归**；每个良序集序同构于唯一的一个序数。",
+   "notes": "⟨ℕ, ≤⟩ 是良序的；⟨ℤ, ≤⟩、⟨ℝ, ≤⟩ 不是（ℝ 的某些非空子集没有最小元）。",
+   "refs": [
+    "Kunen, Set Theory, I.11"
+   ]
+  },
+  {
+   "id": "def.finchar",
+   "type": "definition",
+   "label": "有限特征",
+   "title": "有限特征族（Family of Finite Character）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.structure",
+   "tags": [
+    "定义",
+    "有限特征",
+    "Tukey"
+   ],
+   "statement": "集合族 𝒜 具有**有限特征**，当且仅当对任意集合 X：\n\n$$X ∈ 𝒜 ⟺ X 的每个有限子集都属于 𝒜$$\n\n也就是说：「局部地看起来像 𝒜 的成员」⟹「整体就是 𝒜 的成员」。",
+   "notes": "典型例子：\n\n- 偏序集 P 的**链族**（X 是链 ⟺ X 的每个二元子集可比）；\n\n- 向量空间的**线性无关子集族**；\n\n- 某个滤子之上的**滤子族**。\n\n\n\n有限特征是 Tukey 引理的用武之地：只要目标族具有有限特征，极大元就自动存在（在 AC 之下）。",
+   "refs": [
+    "Jech, The Axiom of Choice, Ch. 2"
+   ]
+  },
+  {
+   "id": "thm.wellordering",
+   "type": "theorem",
+   "label": "良序定理",
+   "title": "良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory",
+    "order-theory"
+   ],
+   "cluster": "order.maximal",
+   "tags": [
+    "ZFC",
+    "等价命题",
+    "选择"
+   ],
+   "statement": "每个集合都能被赋予一个良序：\n\n$$∀X ∃⪯ ( ⪯ 是 X 上的良序关系 )$$\n\n换句话说：任何集合 X 都与某个序数等势。\n\n特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。",
+   "notes": "Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公理，这也是 AC 第一次登场。\n\n由良序定理可立刻得到**基数可比定理**：任意两个集合的基数都可比较大小。\n\n在 ZF 中不能证明它；但由它和 ZF 可推出 AC，所以两者等价。",
+   "refs": [
+    "Zermelo (1904)",
+    "Kunen, Set Theory, I.12"
+   ]
+  },
+  {
+   "id": "lem.zorn",
+   "type": "lemma",
+   "label": "佐恩引理",
+   "title": "佐恩引理（Zorn's Lemma）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory",
+    "set-theory"
+   ],
+   "cluster": "order.maximal",
+   "tags": [
+    "ZFC",
+    "等价命题",
+    "极大原理"
+   ],
+   "statement": "设 (P, ⪯) 是**非空**偏序集。若 P 的每个链在 P 中都有上界，则 P 有**极大元**。\n\n$$P ≠ ∅ ∧ ( ∀C ⊆ P, C 是链 → ∃u ∈ P, u 是 C 的上界 ) ⟹ ∃m ∈ P, m 是极大元$$",
+   "notes": "两个条件都不可省：空偏序集没有极大元；\"每个链有上界\"保证不了「最大元」——只能保证极大元。\n\n它是「存在性证明的万能发动机」：向量空间有基、环有极大理想、紧致性定理、Hahn–Banach 定理……全都靠它。\n\n名字有历史偶然性：Zorn 1940 年代把它推广开来，Kuratowski 1922 年已证过等价形式，所以也叫 Kuratowski–Zorn 引理。\n\n⚠ 非构造性：得到的是「存在一个极大元」，通常无法给出具体是哪一个。",
+   "refs": [
+    "Zorn (1935)",
+    "Kunen, Set Theory, I.12"
+   ]
+  },
+  {
+   "id": "thm.hausdorff",
+   "type": "theorem",
+   "label": "Hausdorff 极大原理",
+   "title": "Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.maximal",
+   "tags": [
+    "ZFC",
+    "等价命题",
+    "极大原理",
+    "链"
+   ],
+   "statement": "设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。则存在 P 的**极大链** M 使 C₀ ⊆ M。\n\n其中「极大链」指在包含关系 ⊆ 下极大的链：若 M ⊆ M′ ⊆ P 且 M′ 也是链，则 M′ = M。\n\n取 C₀ = ∅ 即得：**每个非空偏序集都有极大链。**",
+   "notes": "形式上它比佐恩引理更早（Hausdorff, 1914），并且与佐恩引理等价。\n\n极大链的存在性正是「从下往上一点点加元素直到加不动」这一直觉的严格化。",
+   "refs": [
+    "Hausdorff (1914)",
+    "Kunen, Set Theory, I.12"
+   ]
+  },
+  {
+   "id": "lem.tukey",
+   "type": "lemma",
+   "label": "Tukey 引理",
+   "title": "Tukey 引理（Tukey's Lemma / Teichmüller–Tukey）",
+   "region": "order-theory",
+   "regions": [
+    "order-theory"
+   ],
+   "cluster": "order.maximal",
+   "tags": [
+    "ZFC",
+    "等价命题",
+    "有限特征"
+   ],
+   "statement": "设 𝒜 是**具有有限特征的非空集合族**，则 (𝒜, ⊆) 有极大元。\n\n即：存在 A ∈ 𝒜，使得不存在 B ∈ 𝒜 满足 A ⊊ B。",
+   "notes": "Tukey 引理的好处是「免验证」：只要目标族具有有限特征，就可以跳过「每个链都有上界」这一繁琐检查。\n\n例：线性无关集族具有有限特征（X 线性无关 ⟺ X 的每个有限子集线性无关），所以「线性无关集可扩充为极大线性无关集」自动成立。\n\n等价形式：Teichmüller (1939) 与 Tukey (1940) 都独立陈述过它。",
+   "refs": [
+    "Tukey (1940)",
+    "Jech, The Axiom of Choice, Ch. 2"
+   ]
+  },
+  {
+   "id": "def.vs",
+   "type": "definition",
+   "label": "向量空间的基",
+   "title": "向量空间 / 线性无关 / 基",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.vectorspace",
+   "tags": [
+    "定义",
+    "线性代数"
+   ],
+   "statement": "设 K 是域，V 是 K 上的向量空间，S ⊆ V。\n\n- **S 线性无关**：S 的每个有限子集都线性无关，即不存在不全为零的 c₁,…,cₙ ∈ K 使 c₁v₁ + ⋯ + cₙvₙ = 0。\n- **S 生成 V**：V 中每个向量都是 S 中有限多个向量的线性组合。\n- **S 是 V 的基**：S 既线性无关又生成 V。\n\n注意线性无关性是**逐有限子集**定义的性质——这正是它「具有有限特征」的原因。",
+   "notes": "等价说法：S 是基 ⟺ V 中每个向量都能唯一地写成 S 的有限线性组合。",
+   "refs": [
+    "Lang, Linear Algebra"
+   ]
+  },
+  {
+   "id": "thm.vsbasis",
+   "type": "theorem",
+   "label": "每个向量空间有基",
+   "title": "每个向量空间都有基（Zorn 引理的经典应用）",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.vectorspace",
+   "tags": [
+    "定理",
+    "应用",
+    "Zorn"
+   ],
+   "statement": "设 V 是域 K 上的向量空间。则\n\n- V 有基；\n- 更精确地：V 的任一线性无关子集都能扩充成 V 的一个基，任一生成集都含有一个基。",
+   "notes": "在 ZF 中此命题与 AC 等价——去掉 AC，可以构造出没有基的向量空间。\n\n这是「序理论的结论在代数里落地」的标准范例，也是本星图上跨板块连线的一个实例。",
+   "refs": [
+    "Lang, Linear Algebra",
+    "Brunner, The Axiom of Choice in Topology"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "id": "imp.repl-to-sep",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "ax.repl"
+   ],
+   "target": "ax.sep",
+   "title": "替换公理模式 ⇒ 分离公理模式",
+   "proof": "设 φ(x, p) 是不含 B 的公式，A 是任意集合。取公式\n\n$$ψ(x, y, p) :≡ ( x = y ∧ φ(x, p) )$$\n\n对任意 x，至多只有一个 y 使 ψ(x, y, p) 成立（因为 x = y 已经确定了 y）。于是替换公理模式给出一个集合\n\n$$B = { y : ∃x ∈ A, ψ(x, y, p) } = { x ∈ A : φ(x, p) }$$\n\n这正是分离公理模式所要的 B（外延公理保证唯一）。∎",
+   "note": "所以 ZF 里其实只需要「替换 + 一个集合存在」就够了，教材仍保留分离公理是为了方便陈述与使用。"
+  },
+  {
+   "id": "imp.sep-to-empty",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "ax.sep"
+   ],
+   "target": "thm.empty",
+   "title": "分离公理模式 ⇒ 空集存在",
+   "proof": "取任意集合 a（一阶逻辑的论域非空，故这样的 a 存在；在 ZF 中也可由无穷公理提供）。\n\n取公式 φ(x) :≡ ( x ≠ x )，它是矛盾式。分离公理模式给出集合\n\n$$B = { x ∈ a : x ≠ x }$$\n\n对任意 x，x ∈ B ↔ ( x ∈ a ∧ x ≠ x ) 恒为假，故 B 不含任何元素。\n由外延公理，这样的 B 唯一，记作 ∅。∎",
+   "note": "严格地说，「论域非空」是一阶逻辑的约定，不属于 ZF 公理。若不喜欢这个约定，也可以先由无穷公理取出一个集合再分离。"
+  },
+  {
+   "id": "imp.found-to-noself",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "ax.found",
+    "ax.pair"
+   ],
+   "target": "thm.noself",
+   "title": "正则公理 + 配对公理 ⇒ A ∉ A",
+   "proof": "反设存在集合 A 使 A ∈ A。由配对公理取 a = b = A，得单点集 {A}。\n\n由外延公理 {A} ≠ ∅（它含有 A）。对 {A} 用正则公理：存在 x ∈ {A} 使\n\n$$x ∩ { A } = ∅$$\n\n而 {A} 只有唯一的元素，故 x = A。于是 A ∩ {A} = ∅。\n\n但由假设 A ∈ A 且 A ∈ {A}，所以 A ∈ A ∩ {A}，与 A ∩ {A} = ∅ 矛盾。故 A ∉ A。∎",
+   "note": "把同样的论证用在任意有限 ∈-循环 A₀ ∋ A₁ ∋ ⋯ ∋ Aₙ = A₀ 上，取集合 {A₀, …, Aₙ₋₁}（可由配对公理反复构造），也能得到矛盾。"
+  },
+  {
+   "id": "imp.inf-to-omega",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "ax.inf",
+    "ax.power",
+    "ax.sep"
+   ],
+   "target": "thm.omega",
+   "title": "无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在",
+   "proof": "1. 由无穷公理取一个归纳集 I。称 J ⊆ I 是**归纳的**，若 ∅ ∈ J 且 ∀x (x ∈ J → x ∪ {x} ∈ J)。\n\n2. 由幂集公理，𝒫(I) 是集合；再用分离公理模式取\n\n$$S = { J ∈ 𝒫(I) : J 是归纳集 }$$\n\nS 非空（I ∈ S）。\n\n3. 再对 𝒫(I) 用一次分离公理模式，令\n\n$$ω = { x ∈ I : ∀J ( J ∈ S → x ∈ J ) }$$\n\n即 ω 是所有归纳子集的交。\n\n4. ω 是归纳集：∅ 属于每个 J ∈ S，故 ∅ ∈ ω；若 x ∈ ω，则 x 属于每个 J ∈ S，从而 x ∪ {x} 属于每个 J ∈ S，故 x ∪ {x} ∈ ω。\n\n5. ω 含于一切归纳集：若 K 是归纳集，则 K ∩ I 也是归纳集且 K ∩ I ∈ S，由 ω 的定义 ω ⊆ K ∩ I ⊆ K。\n\n故 ω 是最小归纳集，即自然数集。∎",
+   "note": ""
+  },
+  {
+   "id": "imp.binunion",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "ax.pair",
+    "ax.union"
+   ],
+   "target": "thm.binunion",
+   "title": "配对公理 + 并集公理 ⇒ 二元并存在",
+   "proof": "任给 a、b。\n\n1. 由配对公理，{ a, b } 是集合。\n2. 由并集公理，⋃{ a, b } 是集合，且\n\n$$x ∈ ⋃{ a, b } ⟺ ∃Y ( Y ∈ { a, b } ∧ x ∈ Y ) ⟺ ( x ∈ a ∨ x ∈ b )$$\n\n取 A = ⋃{ a, b } 即为所求。∎",
+   "note": ""
+  },
+  {
+   "id": "imp.product",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "ax.power",
+    "ax.pair",
+    "ax.union",
+    "ax.sep"
+   ],
+   "target": "thm.product",
+   "title": "幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在",
+   "proof": "任给 A、B。\n\n1. 由配对公理与并集公理，A ∪ B 是集合。\n\n2. 对任意 a ∈ A、b ∈ B，Kuratowski 有序对 (a, b) = {{a}, {a, b}}。其中 {a} ⊆ A ∪ B，{a, b} ⊆ A ∪ B，所以 {a}, {a, b} ∈ 𝒫(A ∪ B)，进而 (a, b) ∈ 𝒫(𝒫(A ∪ B))。\n\n3. 由幂集公理，𝒫(𝒫(A ∪ B)) 是集合。用分离公理模式取\n\n$$C = { z ∈ 𝒫(𝒫(A ∪ B)) : ∃a ∈ A, ∃b ∈ B, z = (a, b) }$$\n\n则 C 恰是 A × B：一方面每个 (a, b) 都在 𝒫(𝒫(A ∪ B)) 中，另一方面 z 是不在 A、B 中任意点处取到的有序对时不会被选进来。∎",
+   "note": "这个证明展示了一个典型套路：先用幂集「造一个足够大的容器」，再用分离公理模式「筛出真正想要的东西」。"
+  },
+  {
+   "id": "eq.ac-wo",
+   "kind": "equivalence",
+   "strength": "strong",
+   "a": "ax.choice",
+   "b": "thm.wellordering",
+   "title": "选择公理 ⟺ 良序定理",
+   "note": "这是整张星图里最关键的一条等价链的起点：AC 给「挑选」，良序给「最小」，两者互为表里。",
+   "proofs": [
+    {
+     "label": "选择公理 ⇒ 良序定理",
+     "text": "设 X 是集合。X = ∅ 时平凡，以下设 X ≠ ∅。\n\n1. 由 AC，非空子集族 𝒫(X) ∖ {∅} 有选择函数 g，即 g(S) ∈ S 对每个非空 S ⊆ X 成立。\n\n2. 用超限递归定义一列元素：对序数 α，只要余集非空就令\n\n$$F(α) = g( X ∖ { F(β) : β < α } )$$\n\n一旦余集为空就停止。\n\n3. 过程一定会停：取 X 的 **Hartogs 数** ℵ(X)，即最小的不能单射进 X 的序数（Hartogs 定理保证它存在，且不需要 AC）。若对一切 α < ℵ(X) 过程都没停，则 F 是 ℵ(X) 到 X 的单射，与 ℵ(X) 的定义矛盾。故存在序数 γ 使 F : γ → X 是双射。\n\n4. 把 γ 上的序经 F 搬到 X 上：\n\n$$x ⪯ y :⟺ F⁻¹(x) ≤ F⁻¹(y)$$\n\n因为序数在 ∈／≤ 下是良序的，X 上这个序也是良序。∎"
+    },
+    {
+     "label": "良序定理 ⇒ 选择公理",
+     "text": "设 F 是一族非空集合（即 ∅ ∉ F）。\n\n1. 由良序定理，取 U = ⋃F 的一个良序 ⪯。\n\n2. 对每个 X ∈ F：X ≠ ∅ 且 X ⊆ U，所以 X 是 U 的非空子集，有 ⪯-最小元 m(X)。\n\n3. 定义 f(X) = m(X)（X 唯一确定 m(X)，故这是一个函数）。则 dom f = F 且 f(X) ∈ X 对一切 X ∈ F 成立，即 f 是 F 的选择函数。\n\n由 F 的任意性，AC 成立。∎"
+    }
+   ]
+  },
+  {
+   "id": "eq.wo-zorn",
+   "kind": "equivalence",
+   "strength": "strong",
+   "a": "thm.wellordering",
+   "b": "lem.zorn",
+   "title": "良序定理 ⟺ 佐恩引理",
+   "note": "",
+   "proofs": [
+    {
+     "label": "良序定理 ⇒ 佐恩引理",
+     "text": "设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。由良序定理，取 P 上的一个良序 ≤（与 ⪯ 无关）。\n\n用超限递归沿 ≤ 构造 P 的一个 ⪯-链 C：\n\n- 记 U(C) = { u ∈ P : u 是 C 的 ⪯-上界 }。\n- 若 U(C) 中存在元素有 ⪯-严格上界，就取其中 ≤-最小的那个 v，令 C ← C ∪ {v}；\n- 否则停止。\n\n**为什么必停**：每步都往 C 里加入一个不属于 C 的元素，所以若在任意序数处都不停，就会得到从「全体序数」到 P 的单射。由替换公理模式，全体序数会是一个集合的像，即序数全体构成集合——这与 Burali-Forti 悖论矛盾。故递归在某个序数 β 处停止。\n\n**停止时 C 有上界**：C 是 ⪯-链，由题设 U(C) ≠ ∅，取 u ∈ U(C)。\n\n**u 是极大元**：若存在 w ∈ P 使 u ≺ w，则 w ≻ u ⪰ c（∀c ∈ C），故 w ∈ U(C) 是有严格上界的元素，与「停止条件」矛盾。\n\n故 u 是 P 的 ⪯-极大元。∎"
+    },
+    {
+     "label": "佐恩引理 ⇒ 良序定理",
+     "text": "设 X 是集合。考虑「X 的部分良序」全体：\n\n$$𝒲 = { (W, ⪯_W) : W ⊆ X, ⪯_W 是 W 上的良序 }$$\n\n按**初始段延拓**排序：\n\n(W₁, ⪯₁) ≤ (W₂, ⪯₂) ⟺ W₁ ⊆ W₂，⪯₁ = ⪯₂|W₁，且 W₁ 是 (W₂, ⪯₂) 的一个前段。\n\n1. (𝒲, ≤) 是偏序集（三条性质直接验证）。\n\n2. **每个链有上界**：设 𝒟 ⊆ 𝒲 是链。令 W* = ⋃{ W : (W, ⪯) ∈ 𝒟 }，在 W* 上定义\n\n$$x ⪯_* y ⟺ 存在 (W, ⪯_W) ∈ 𝒟 使 x, y ∈ W 且 x ⪯_W y$$\n\n因 𝒟 是链，这些良序彼此兼容，⪯_* 是 W* 上的良序，且 (W*, ⪯_*) ∈ 𝒲 是 𝒟 的上界。\n\n3. 由佐恩引理，取极大元 (W, ⪯)。\n\n4. 若 W ≠ X，取 x ∈ X ∖ W，在 W ∪ {x} 上定义序：保留 W 上的 ⪯，并令所有 w ∈ W 都 ⪯ x（把 x 放在最顶端）。这仍是良序，而且是 (W, ⪯) 的严格延拓，与极大性矛盾。故 W = X，即 X 被良序化。∎"
+    }
+   ]
+  },
+  {
+   "id": "eq.zorn-hausdorff",
+   "kind": "equivalence",
+   "strength": "strong",
+   "a": "lem.zorn",
+   "b": "thm.hausdorff",
+   "title": "佐恩引理 ⟺ Hausdorff 极大原理",
+   "note": "",
+   "proofs": [
+    {
+     "label": "佐恩引理 ⇒ Hausdorff 极大原理",
+     "text": "设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。令\n\n$$𝒞 = { C ⊆ P : C 是链 }$$\n\n按包含关系 ⊆ 排序。给定 C₀ 时改用 𝒞₀ = { C ∈ 𝒞 : C ⊇ C₀ }，它非空（C₀ ∈ 𝒞₀）。\n\n1. **𝒞₀ 中每个链有上界**：设 𝒟 ⊆ 𝒞₀ 是（⊆-）链，即 𝒟 是一族两两可比较的链。令 U = ⋃𝒟。任取 x, y ∈ U，则有 D₁, D₂ ∈ 𝒟 使 x ∈ D₁、y ∈ D₂；因 𝒟 是链，不妨设 D₁ ⊆ D₂，于是 x, y ∈ D₂，而 D₂ 是链，故 x 与 y 可比。所以 U 是链。又每个 D ∈ 𝒟 都 ⊇ C₀，故 U ⊇ C₀，即 U ∈ 𝒞₀，它是 𝒟 的上界。\n\n2. 由佐恩引理，𝒞₀ 有极大元 M。M 是包含 C₀ 的链，且不能再变大，即 M 是包含 C₀ 的极大链。∎"
+    },
+    {
+     "label": "Hausdorff 极大原理 ⇒ 佐恩引理",
+     "text": "设 (P, ⪯) 是非空偏序集，且 P 的每个链都有上界。\n\n1. 由 Hausdorff 极大原理（取 C₀ = ∅），P 存在极大链 M。\n\n2. M 是链，故由题设有上界 u ∈ P。\n\n3. **断言 u 是极大元**：若不然，存在 v ∈ P 使 u ≺ v。则 M ∪ {v} 仍是链——任取 m ∈ M，由 m ⪯ u ≺ v 及传递性得 m ⪯ v，故 m 与 v 可比。于是 M ⊊ M ∪ {v} 是一个更大的链，与 M 的极大性矛盾。\n\n故 u 是 P 的极大元。∎"
+    }
+   ]
+  },
+  {
+   "id": "eq.hausdorff-tukey",
+   "kind": "equivalence",
+   "strength": "strong",
+   "a": "thm.hausdorff",
+   "b": "lem.tukey",
+   "title": "Hausdorff 极大原理 ⟺ Tukey 引理",
+   "note": "这一对证明很典型：先看出「链」这个概念本身具有有限特征，就把 Hausdorff 原理换成了用起来更省事的 Tukey 引理。",
+   "proofs": [
+    {
+     "label": "Tukey 引理 ⇒ Hausdorff 极大原理",
+     "text": "设 (P, ⪯) 是偏序集，C₀ ⊆ P 是链。令 𝒞 = { C ⊆ P : C 是链 }。\n\n1. **𝒞 具有有限特征**：对任意 X ⊆ P，\n\nX 是链 ⟺ X 中任两元素可比 ⟺ X 的每个有限子集是链 ⟺ X 的每个有限子集属于 𝒞。\n\n（最后一个 ⟸ 方向：任取 x, y ∈ X，则 {x, y} 是 X 的有限子集，属于 𝒞，故 x 与 y 可比。）\n\n2. 𝒞 非空（∅ 是链）。由 Tukey 引理，𝒞 有极大元 M，即 P 的极大链。\n\n3. 若要包含给定的 C₀：注意 𝒞₀ = { C ∈ 𝒞 : C ⊇ C₀ } 同样具有有限特征——「X 含 C₀ 且 X 的每个有限子集是链」正是有限特征的形状（含 C₀ 是整体性质，不对有限子集设限）。对 𝒞₀ 用 Tukey 引理即得包含 C₀ 的极大链。∎"
+    },
+    {
+     "label": "Hausdorff 极大原理 ⇒ Tukey 引理",
+     "text": "设 𝒜 是具有有限特征的非空集合族。把 Hausdorff 极大原理用在偏序集 (𝒜, ⊆) 上，得到 𝒜 的一个**极大链** 𝒞（即 𝒜 中一族在 ⊆ 下两两可比较、且不能再扩大成员的子族）。\n\n令\n\n$$U = ⋃ { A : A ∈ 𝒞 }$$\n\n1. **U ∈ 𝒜**：由有限特征，只需证 U 的每个有限子集属于 𝒜。设 S ⊆ U 有限，则每个 s ∈ S 落在某个 A_s ∈ 𝒞 中；𝒞 是 ⊆-链而 S 有限，故其中必有最大的 A₀ 包含 S（即 S ⊆ A₀）。因为 A₀ ∈ 𝒜 且 𝒜 具有有限特征，A₀ 的每个有限子集都属于 𝒜，特别地 S ∈ 𝒜。故 U 的每个有限子集属于 𝒜，从而 U ∈ 𝒜。\n\n2. **U 是极大元**：若存在 B ∈ 𝒜 使 U ⊊ B，则 𝒞 ∪ {B} 仍是 ⊆-链（每个 A ∈ 𝒞 满足 A ⊆ U ⊆ B），与 𝒞 的极大性矛盾。\n\n故 U 是 (𝒜, ⊆) 的极大元。∎"
+    }
+   ]
+  },
+  {
+   "id": "imp.zorn-to-basis",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "lem.zorn"
+   ],
+   "target": "thm.vsbasis",
+   "title": "佐恩引理 ⇒ 每个向量空间有基",
+   "proof": "设 V ≠ 0 是域 K 上的向量空间，并给定线性无关集 S₀ ⊆ V。令\n\n$$𝒜 = { S ⊆ V : S ⊇ S₀ 且 S 线性无关 }$$\n\n按包含关系 ⊆ 排序。\n\n1. **𝒜 ≠ ∅**：S₀ ∈ 𝒜。\n\n2. **每个链有上界**：设 𝒟 ⊆ 𝒜 是 ⊆-链，令 U = ⋃𝒟。要证 U 线性无关，只需证 U 的每个有限子集线性无关：取有限子集 {v₁, …, vₙ} ⊆ U，每个 vᵢ 属于某个 Dᵢ ∈ 𝒟；𝒟 是链且只有有限多个 Dᵢ，故其中有一个最大的 D 包含全部 vᵢ，即 {v₁, …, vₙ} ⊆ D。而 D 线性无关，故它的子集 {v₁, …, vₙ} 也线性无关。因此 U 线性无关，U ∈ 𝒜，它是 𝒟 的上界。\n\n3. 由佐恩引理，𝒜 有极大元 B。B 是含 S₀ 的线性无关集，且在「含 S₀ 的线性无关集」中极大。\n\n4. **B 生成 V**：若存在 v ∈ V 不在 B 的张成空间 span(B) 中，则 B ∪ {v} 仍线性无关（否则 v 可写成 B 中有限多个向量的线性组合，与 v ∉ span(B) 矛盾），且严格大于 B，与 B 的极大性矛盾。故 span(B) = V，即 B 是 V 的基。取 S₀ = ∅ 得「V 有基」。∎",
+   "note": "同样的套路可以证明：每个环有极大理想、每个域上每个模有极大无关组、每个偏序集有极大反链。"
+  },
+  {
+   "id": "def-link.sep-subset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "ax.sep",
+   "note": "分离公理模式给出的 B = { x ∈ A : φ(x, p) } 恰好是 A 的一个**子集**——\"只从 A 里挑元素\"正是 ⊆ 的语义。"
+  },
+  {
+   "id": "def-link.power-subset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "ax.power",
+   "note": "幂集公理的陈述里直接出现了子集符号：x ∈ 𝒫(A) ⟺ x ⊆ A。"
+  },
+  {
+   "id": "def-link.finchar-subset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subset",
+   "usedBy": "def.finchar",
+   "note": "「X 的每个**有限子集**都属于 𝒜」——有限特征是靠子集概念说出来的。"
+  },
+  {
+   "id": "def-link.pair-pairing",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.pair",
+   "usedBy": "ax.pair",
+   "note": "方向相反的一条：有序对 (a, b) = {{a}, {a, b}} 的**构造**要用到配对公理才成为集合。"
+  },
+  {
+   "id": "def-link.rel-pair",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.pair",
+   "usedBy": "def.rel",
+   "note": "关系被定义为「有序对的集合」，函数是特殊的关系，因此整个定义都建立在有序对之上。"
+  },
+  {
+   "id": "def-link.product-pair",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.pair",
+   "usedBy": "thm.product",
+   "note": "A × B = { (a, b) : a ∈ A, b ∈ B } 中的元素就是有序对。"
+  },
+  {
+   "id": "def-link.choicefn-rel",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.rel",
+   "usedBy": "def.choicefn",
+   "note": "选择函数首先是「函数」，所以定义里用到了关系与函数的概念。"
+  },
+  {
+   "id": "def-link.ac-choicefn",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.choicefn",
+   "usedBy": "ax.choice",
+   "note": "选择公理的陈述直接使用了「选择函数」这个词：每个 ∅ ∉ F 的集合族都有选择函数。"
+  },
+  {
+   "id": "def-link.chain-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "def.chain",
+   "note": "链是偏序集的子集：定义里用到了偏序 ⪯ 与可比性。"
+  },
+  {
+   "id": "def-link.bound-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "def.bound",
+   "note": "上界、极大元、最大元都是相对于一个偏序集 (P, ⪯) 而言的。"
+  },
+  {
+   "id": "def-link.wellorder-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "def.wellorder",
+   "note": "良序集首先是全序集（从而也是偏序集），只是在它上面加了「非空子集有最小元」。"
+  },
+  {
+   "id": "def-link.finchar-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "def.finchar",
+   "note": "有限特征的最典型例子就是「偏序集的链族」，定义条目里举了这个例子。"
+  },
+  {
+   "id": "def-link.finchar-chain",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.chain",
+   "usedBy": "def.finchar",
+   "note": "「X 是链 ⟺ X 的每个有限子集是链」——这是链族具有有限特征的原因，也是 Tukey ⟹ Hausdorff 的全部关键。"
+  },
+  {
+   "id": "def-link.zorn-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "lem.zorn",
+   "note": "佐恩引理是**关于偏序集**的命题：前提与结论都离不开 ⪯ 与上界。"
+  },
+  {
+   "id": "def-link.zorn-chain",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.chain",
+   "usedBy": "lem.zorn",
+   "note": "「P 的每个链都有上界」是佐恩引理的核心条件。"
+  },
+  {
+   "id": "def-link.zorn-bound",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.bound",
+   "usedBy": "lem.zorn",
+   "note": "条件用的是「上界」，结论用的是「极大元」——特别要注意不是「最大元」。"
+  },
+  {
+   "id": "def-link.hausdorff-poset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.poset",
+   "usedBy": "thm.hausdorff",
+   "note": "Hausdorff 极大原理陈述在偏序集 (P, ⪯) 上。"
+  },
+  {
+   "id": "def-link.hausdorff-chain",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.chain",
+   "usedBy": "thm.hausdorff",
+   "note": "整条原理就是在说「链可以长到极大」。"
+  },
+  {
+   "id": "def-link.tukey-finchar",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.finchar",
+   "usedBy": "lem.tukey",
+   "note": "Tukey 引理的唯一前提就是「该集合族具有有限特征」。"
+  },
+  {
+   "id": "def-link.wo-wellorder",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.wellorder",
+   "usedBy": "thm.wellordering",
+   "note": "良序定理断言「每个集合都能被良序化」，用到的正是良序集这个概念。"
+  },
+  {
+   "id": "def-link.basis-vs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.vs",
+   "usedBy": "thm.vsbasis",
+   "note": "「每个向量空间有基」中的「基」由线性无关与生成两个概念定义。"
+  },
+  {
+   "id": "ana.sep-container",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "thm.product",
+   "b": "thm.omega",
+   "title": "「幂集造容器 + 分离筛内容」——同一个证明模板",
+   "note": "这两个证明的骨架**一模一样**，只是塞进去的东西不同：\n\n**ω 的构造**：先用幂集公理做出 𝒫(I)；再从里面**筛出**所有归纳子集，取交。\n\n**A × B 的构造**：先用幂集公理做出 𝒫(𝒫(A ∪ B))；再从里面**筛出**那些形如 (a,b) 的元素。\n\n**共同的招**：集合论里「我想造一个由某种东西组成的集合」时，\n永远不能直接写 `{ x : φ(x) }`（那是罗素悖论）。正确的姿势是两步——\n**先找一个确定足够大的容器，再用分离公理模式从里面挑**。\n\n💡 看到「想造一个集合但不知道怎么下手」时，回来想想这两步。"
+  },
+  {
+   "id": "ana.tame-infinite",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.finchar",
+   "b": "def.wellorder",
+   "title": "两种「用有限/最小的东西控制无穷」的手法",
+   "note": "两个定义都在回答同一个问题：**面对一个无穷对象，怎么下手？**\n\n**良序**（`def.wellorder`）：要求「每个非空子集都有**最小元**」。\n有了最小元，就能做超限归纳、超限递归 —— 把「一步」规范化，无穷就被结构化了。\n\n**有限特征**（`def.finchar`）：要求「整体属于 𝒜 ⟺ 每个**有限**子集都属于 𝒜」。\n于是验证一个无穷对象，只需要逐个检查它的有限片段 —— 无穷被压缩成有限。\n\n**共同的招**：都不去正面描述无穷，而是找一个**有限的抓手**\n（一个最小元 / 一个有限子集），让无穷变得可验证、可操作。\n\n💡 这个招在数学里到处都是（紧致性、有限生成、可数逼近……）。"
+  },
+  {
+   "id": "ana.filter-sieve",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "ax.sep",
+   "b": "def.finchar",
+   "title": "「不描述整体，只给一个筛子」",
+   "note": "两者都不回答「这个集合里**有什么**」，只回答「**怎么判断**一个东西在不在里面」。\n\n- 分离公理模式：`x ∈ B ⟺ (x ∈ A ∧ φ(x))` —— 给的是**判定条件**，不是元素清单。\n- 有限特征：`X ∈ 𝒜 ⟺ X 的每个有限子集属于 𝒜` —— 同样是判定条件。\n\n**为什么这个思路重要**：集合常常是无穷的，没法列举；\n但只要给出判定条件，「这个元素属不属于」就成了一个可回答的问题。\n数学里绝大多数「定义」本质上都是这一类 —— 给条件，不给清单。\n\n💡 读一个新定义时，先问自己：它给的是**构造**还是**判定条件**？"
+  },
+  {
+   "id": "ana.maximal-apparatus",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.finchar",
+   "b": "def.vs",
+   "title": "「有限特征」这个抽象概念，在向量空间里有一个现成的实例",
+   "note": "严格说这不只是类比 —— 它是一个**实例**，但方向不是逻辑蕴含：\n`def.finchar` 不推出 `def.vs`，`def.vs` 也不推出 `def.finchar`；\n它们是「抽象工具」和「具体落地」的关系。\n\n线性无关性恰好是有限特征的：\n「S 线性无关 ⟺ S 的每个**有限**子集线性无关」——\n这就是 `def.finchar` 的定义，一字不差。\n\n**所以「每个向量空间有基」的证明里，那个「链的并仍线性无关」的关键一步，\n本质上是在验证有限特征在链条下保持。** Tukey 引理正是为此而生的。\n\n💡 这条边是「跨星团」的：序理论 ↔ 抽象代数。\n它不提供新的定理，但它告诉你**两块内容为什么长得像**。"
+  }
+ ],
+ "clusterLinks": [
+  {
+   "a": "set.construct",
+   "b": "set.zfc",
+   "count": 7,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "order.maximal",
+   "b": "order.structure",
+   "count": 7,
+   "label": "",
+   "explicit": false
+  }
+ ]
+}

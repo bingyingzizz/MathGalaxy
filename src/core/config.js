@@ -132,7 +132,15 @@
       dimLabelAlpha: 0.10
     },
 
+    /* 弱边（类比）的显示 */
+    analogy: {
+      dimAlpha: 0.10,       // 关掉探索模式时弱边压到多淡
+      exploreAlpha: 0.55,
+      dash: [5, 5]
+    },
+
     /* 开关默认值 */
+    exploreMode: false,     // true → 打开弱边（探索模式）
     showDefinitionLines: true,
     showLabels: true,
     wheelZooms: true,             // false → 滚轮平移（触控板手感）
@@ -160,14 +168,30 @@
     edgeStyles: {
       implication: { color: '#1C1C1E', width: 1.7, dashed: false },
       equivalence: { color: '#1C1C1E', width: 2.1, dashed: false },
-      definition:  { color: '60, 112, 245', width: 1.15, alpha: 0.5, dashed: false }
+      definition:  { color: '60, 112, 245', width: 1.15, alpha: 0.5, dashed: false },
+      analogy:     { color: '138, 106, 214', width: 1.5, alpha: 0.55, dashed: true }
     },
 
     /* 边的中文名 */
     edgeNames: {
       implication: '推出',
       equivalence: '等价',
-      definition:  '定义引用'
+      definition:  '定义引用',
+      analogy:     '类比'
+    },
+
+    /* ------------------------------------------------------------------
+       边的「强弱」—— 决定 AI 和人检索时的信噪比
+         strong：标准逻辑关系。查证明、做推理只走这些，不会跑偏。
+         weak  ：类比 / 思想相通 / 跨领域触发。不是逻辑蕴含，
+                 只在「卡住了、想找远房关系」时开探索模式用。
+       每一层尺度都有自己的强边和弱边（节点级 / 星团级 / 星系级）。
+       ------------------------------------------------------------------ */
+    edgeStrength: {
+      implication: 'strong',
+      equivalence: 'strong',
+      definition:  'strong',
+      analogy:     'weak'
     },
 
     font: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif',

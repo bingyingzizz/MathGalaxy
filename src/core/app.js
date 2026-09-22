@@ -10,6 +10,7 @@
   var U = MG.util;
   var C = MG.config;
   var T = MG.theme;
+  var GU = MG.graphUtil;
 
   /* ------------------------------------------------------- KaTeX（可选） */
   /* 若页面里引入了 KaTeX，$…$ 与 $$…$$ 就会自动渲染；没有则原样显示。 */
@@ -263,6 +264,11 @@
         C.showDefinitionLines = !C.showDefinitionLines;
         btn.classList.toggle('on', C.showDefinitionLines);
         refreshVisible();
+      } else if (act === 'toggle-explore') {
+        C.exploreMode = !C.exploreMode;
+        btn.classList.toggle('on', C.exploreMode);
+        renderLegend();
+        requestDraw();
       } else if (act === 'toggle-labels') {
         C.showLabels = !C.showLabels;
         btn.classList.toggle('on', C.showLabels);
@@ -290,10 +296,17 @@
         return '<span class="lg-item"><span class="lg-dot" style="background:' + st.color + '"></span>' + st.name + '</span>';
       }).join('');
 
+      var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
       var edgeRows =
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价</span>' +
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px;position:relative"></span>推出 →</span>' +
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>定义引用</span>';
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>推出 →<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>定义引用<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        (weakCount
+          ? '<span class="lg-item" style="opacity:' + (C.exploreMode ? 1 : 0.45) + '">' +
+            '<span class="lg-line" style="border-top-color:rgba(138,106,214,.7);border-top-width:2px;border-top-style:dashed"></span>' +
+            '类比<em style="color:#A5ABB3;font-style:normal">·弱 ' + weakCount + ' 条' +
+            (C.exploreMode ? '' : '（点右上角「探索」显示）') + '</em></span>'
+          : '');
 
       // 星系 + 它下面的星团（缩进一层）
       var regionRows = live.map(function (r) {

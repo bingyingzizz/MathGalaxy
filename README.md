@@ -222,6 +222,138 @@ src/
 
 ---
 
+## 在手机上看（Android / iOS）
+
+### 方案 A：单个 HTML 文件（推荐，零依赖）
+
+```bash
+bun tools/build.mjs --html     # 产出 dist/mathgalaxy.html（约 210 KB）
+```
+
+这个文件**把所有 CSS / JS / 数据全内联进去了**，是真正自包含的。
+拷到手机（微信传给自己 / 网盘 / 数据线），用浏览器打开即可：
+
+| 平台 | 怎么开 |
+|---|---|
+| **Android** | 文件管理器 → 找到 `mathgalaxy.html` → 「用浏览器打开」。或者丢进 Chrome 直接输 `file:///sdcard/Download/mathgalaxy.html` |
+| **iOS** | 存到「文件」App → 点一下 → 用 Safari 打开。或者存进「快捷指令」做成一键入口 |
+
+**优点**：不需要服务器、不需要网络、不需要代理。地铁上也能看。
+**缺点**：是快照，电脑上改了内容要重新 build 再传一次。
+
+### 方案 B：GitHub Pages（有网址，手机随时刷）
+
+实测 **`*.github.io` 国内直连可用**（不用挂代理），所以这是最舒服的方案。
+
+⚠️ 但有个限制：**GitHub Pages 在 Free 账号下只能从 public 仓库发布**。
+私有仓库要发 Pages 得是 Pro。所以两条路：
+
+1. **把 `MathGalaxy` 改成 public**，Settings → Pages → Source 选 `main` / `root`
+   → 网址 `https://bingyingzizz.github.io/MathGalaxy/`
+2. **源码保持私有，另开一个 public 的「发布仓库」**（推荐）：
+   只把 `dist/` 里的产物推过去。源码和笔记不进公开仓库。
+
+```bash
+# 发布仓库的做法（示例）
+cd /d H:\MathGalaxy
+git subtree push --prefix dist publishing main     # 或者单独建个 repo，只拷 dist 过去
+```
+
+> 顺带一提，`raw.githubusercontent.com` 实测**国内直连不通**，
+> 所以别指望让手机上的 AI 直接抓 GitHub 上的文件——见下面第 3 节。
+
+### 方案 C：局域网（临时看一眼）
+
+电脑上跑个静态服务器，手机连同一个 WiFi：
+
+```bash
+cd /d H:\MathGalaxy
+C:\Users\MSI\.cherrystudio\bin\uv.exe run --with httpie python -m http.server 8000
+# 或 H:\anaconda\python.exe -m http.server 8000
+```
+
+手机浏览器开 `http://<电脑局域网IP>:8000`（本机是 `10.172.115.122`）。
+
+---
+
+## 在别的设备上「添加内容」
+
+先说结论：**手机上「看」很容易，「写」不现实**——内容是一堆 JS 对象，
+在手机输入法里写 `{ id: 'thm.xxx', ... }` 是折磨。
+
+推荐的工作流：
+
+| 场景 | 做法 |
+|---|---|
+| **主力** | 电脑上写 → `git push` → 需要时 `bun tools/build.mjs --html` 重新生成单文件传到手机 |
+| **手机上改一两个错字** | GitHub 网页版/App 直接改 `src/data/packs/*.js`，改完 commit（手机能开 github.com 的话） |
+| **手机上记零散想法** | 先记在备忘录，回头批量整理进内容包 |
+
+真要做得更顺，可以后面加一个「本地编辑模式」（页面里直接改节点、导出 patch），
+但现在**没必要**——内容维护本来就该在电脑上做。
+
+---
+
+## 给 AI 用：把星图当数据库
+
+```bash
+bun tools/build.mjs            # 产出全部
+```
+
+| 产物 | 用途 |
+|---|---|
+| **`dist/graph.json`**（52 KB） | 完整机器可读导出。AI 解析这个最准 |
+| **`dist/graph.md`**（38 KB，917 行） | 同一份内容的 Markdown，**直接粘给任何 AI 聊天窗口就能用** |
+| **`llms.txt`**（仓库根 + `dist/`） | 遵循 [llms.txt](https://llmstxt.org/) 约定，AI 工具会自动找这个文件 |
+| `dist/mathgalaxy.html` | 人看的可视化页面 |
+
+**日常最省事的用法**：把 `dist/graph.md` 整个拖进对话，然后问
+「良序定理依赖哪些结论？」「把佐恩引理的证明展开」——它就是一份自带全部证明的数学笔记。
+
+JSON 里每条边都带 `strength` 和 `proof`，节点带稳定的 `id`，
+所以 AI 可以做**精确的图检索**，而不是靠语义猜。
+
+---
+
+## ⭐ 强弱边：给 AI 的两种检索模式
+
+> 这个想法来自另一位 AI 的建议，我认为是对的，而且和三层尺度天然吻合。
+
+**问题**：如果所有连线平权，检索时信噪比会很差——
+「用类比触发的联想」和「严格的逻辑推出」混在一起，AI 分不清哪个能当依据。
+
+**解法**：给每条边一个 `strength`。
+
+| strength | kind | 含义 | AI 什么时候用 |
+|---|---|---|---|
+| **strong** | `implication` | A ⟹ B，带证明 | 查证明、做推理 —— **日常只走这些** |
+| **strong** | `equivalence` | A ⟺ B，带双向证明 | 换等价形式 |
+| **strong** | `definition` | 某结论用到了某定义 | 梳理概念依赖 |
+| **weak** | `analogy` | 思想相通 / 证明技巧相同 | **只在卡住时**找远房灵感 |
+
+**两种模式**：
+
+- **常规模式**：只走 strong 边。信噪比高，答案可靠。
+- **探索模式**：允许走 weak 边。网页右上角有「探索」按钮，打开后虚线（紫色）出现。
+
+**关键是 AI 侧要明说边界**：走弱边得到的结果，回报时必须标注
+「以下是联想线索，不是逻辑结论」。`llms.txt` 里我把这条写成了硬要求。
+
+**怎么加一条弱边**（`src/data/packs/91-analogies.js`），判据三条缺一不可：
+
+1. 两者之间**没有**推出 / 等价 / 定义依赖（有的话就写成强边）；
+2. 相通之处**说得出具体是什么**（不是「都很难」这种废话）；
+3. 这个类比**能帮你解决问题** —— 看到一个，能想起另一个的招。
+
+现有的 4 条弱边（可直接当范例读）：
+
+- `thm.product` ～ `thm.omega`：同一个证明模板「幂集造容器 + 分离筛内容」
+- `def.finchar` ～ `def.wellorder`：两种「用有限/最小的东西控制无穷」的手法
+- `ax.sep` ～ `def.finchar`：「不描述整体，只给一个筛子」
+- `def.finchar` ～ `def.vs`：抽象工具与它在向量空间里的具体实例（**跨星团**）
+
+---
+
 ## 版本管理 / 多端同步
 
 这个文件夹**已经是一个 Git 仓库**了（分支 `main`，已完成首次提交），
