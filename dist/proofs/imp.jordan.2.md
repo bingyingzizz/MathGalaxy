@@ -1,4 +1,4 @@
-# Hahn 分解 ⟹ Jordan 分解
+# Hahn 分解 $\implies$ Jordan 分解
 `imp.jordan` · 推出 · strong 边 · 根 `../`
 
 `thm.hahn-decomposition` Hahn 分解定理 → `thm.jordan-decomposition` Jordan 分解定理

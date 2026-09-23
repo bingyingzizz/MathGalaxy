@@ -1,4 +1,4 @@
-# 依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛
+# 依测度 Cauchy $\implies$ 依测度收敛且有一子列 a.e. 收敛
 `imp.cauchy-in-measure` · 推出 · strong 边 · 根 `../`
 
 `def.cauchy-in-measure` 依测度 Cauchy → `thm.cauchy-in-measure` 依测度 Cauchy ⟹ 收敛

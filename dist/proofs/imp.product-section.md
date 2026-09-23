@@ -1,4 +1,4 @@
-# 笛卡尔积存在 ⟹ 可以谈截口
+# 笛卡尔积存在 $\implies$ 可以谈截口
 `imp.product-section` · 推出 · strong 边 · 根 `../`
 
 `thm.product` 笛卡尔积存在 → `def.section` 截口

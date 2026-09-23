@@ -1,4 +1,4 @@
-# MCT ⟹ 逐项积分
+# MCT $\implies$ 逐项积分
 `imp.termwise` · 推出 · strong 边 · 根 `../`
 
 `thm.mct` 单调收敛定理 → `thm.termwise-integration` 逐项积分

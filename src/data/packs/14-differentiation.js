@@ -29,7 +29,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'proposition',
       label: 'L¹(ν) 与全变差',
-      title: '命题：符号测度的 L¹(ν) = L¹(|ν|)，以及几条基本不等式',
+      title: '命题：符号测度的 $L^{1}(\\nu) = L^{1}(|\\nu|)$，以及几条基本不等式',
       regions: ['analysis'],
       tags: ['命题', 'L¹', '全变差'],
       statement: [
@@ -84,7 +84,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '局部可积',
-      title: '局部可积函数 L¹ₗoc',
+      title: '局部可积函数 $L^{1}_{\\text{loc}}$',
       regions: ['analysis'],
       tags: ['定义', '局部可积'],
       statement: [
@@ -107,7 +107,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '平均算子 Aᵣ',
-      title: '平均算子（Averaging Operator Aᵣ f）',
+      title: '平均算子（Averaging Operator $A_{r} f$）',
       regions: ['analysis'],
       tags: ['定义', '平均算子'],
       statement: [
@@ -129,7 +129,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'lemma',
       label: '平均算子联合连续',
-      title: '引理：Aᵣ f(x) 关于 (r, x) 联合连续',
+      title: '引理：$A_{r} f(x)$ 关于 (r, x) 联合连续',
       regions: ['analysis'],
       tags: ['引理', '连续', 'DCT'],
       statement: [
@@ -201,7 +201,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'theorem',
       label: 'Lebesgue 微分定理',
-      title: 'Lebesgue 微分定理：Aᵣ f(x) → f(x) a.e.',
+      title: 'Lebesgue 微分定理：$A_{r} f(x) \\to f(x) \\text{a.e.}$',
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue 微分', 'a.e.'],
       statement: [
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: 'Lebesgue 集',
-      title: 'Lebesgue 集 L_f',
+      title: 'Lebesgue 集 $L_f$',
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue 集'],
       statement: [
@@ -245,7 +245,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'theorem',
       label: 'Lebesgue 集几乎处处',
-      title: '定理：f ∈ L¹ₗoc ⟹ m(L_fᶜ) = 0',
+      title: '定理：$f \\in L^{1}_{\\text{loc}} \\implies m(L_f^{c}) = 0$',
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue 集'],
       statement: [
@@ -344,7 +344,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'theorem',
       label: 'RN 导数的点态公式',
-      title: '定理：ν(Eᵣ)/m(Eᵣ) → f(x) a.e.，其中 dν = dλ + f dm',
+      title: '定理：$\\nu(E_{r})/m(E_{r}) \\to f(x) \\text{a.e.}$，其中 $d\\nu = d\\lambda + f dm$',
       regions: ['analysis'],
       tags: ['定理', 'RN 导数', '点态', '正则'],
       statement: [
@@ -377,7 +377,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.covering', 'def.maximal-function'],
       target: 'thm.maximal-theorem',
-      title: '覆盖引理 ⟹ 极大定理',
+      title: '覆盖引理 $\\implies$ 极大定理',
       proof: [
         '**① 把坏集换成球族。** 令 $$E_\\alpha = \\{x : Hf(x) > \\alpha\\}$$。对每个 $$x \\in E_\\alpha$$，由 Hf 的定义（上确界）存在 $$r_x > 0$$ 使',
         '',
@@ -409,7 +409,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.maximal-theorem', 'thm.approximation-L1', 'lem.average-continuous'],
       target: 'thm.lebesgue-differentiation',
-      title: '极大定理 + 连续函数逼近 ⟹ Lebesgue 微分定理',
+      title: '极大定理 + 连续函数逼近 $\\implies$ Lebesgue 微分定理',
       proof: [
         '**① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $$N \\in \\mathbb{N}$$ 证明在球 $$\\{|x| \\le N\\}$$ 上几乎处处成立；把 $f$ 换成 $$f\\cdot\\chi_{B(N+1, 0)}$$ 后即可**设 $$f \\in L^1$$**。',
         '',
@@ -449,7 +449,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.lebesgue-differentiation'],
       target: 'thm.lebesgue-set-full',
-      title: '微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处',
+      title: '微分定理 + 可数稠密子集 $\\implies$ Lebesgue 集几乎处处',
       proof: [
         '**① 对每个复数 $c$ 用一次微分定理。** 固定 $$c \\in \\mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
         '',
@@ -477,7 +477,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.lebesgue-set-full', 'def.shrinks-nicely'],
       target: 'thm.differentiation-general',
-      title: 'Lebesgue 集 + 可缩条件 ⟹ 一般族的微分定理',
+      title: 'Lebesgue 集 + 可缩条件 $\\implies$ 一般族的微分定理',
       proof: [
         '设 $$x \\in L_f$$，$$\\{E_r\\}$$ 可缩地趋于 $x$，即 $$E_r \\subseteq B(r,x)$$ 且 $$m(E_r) > \\alpha\\cdot m(B(r,x))$$。',
         '',
@@ -501,7 +501,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.differentiation-general', 'def.regular-measure', 'lem.covering'],
       target: 'thm.rn-pointwise',
-      title: '微分定理 + 正则性 ⟹ RN 导数的点态公式',
+      title: '微分定理 + 正则性 $\\implies RN$ 导数的点态公式',
       proof: [
         '设 $$d\\nu = d\\lambda + f\\cdot dm$$（$$\\lambda \\perp  m$$），$\\nu$ 正则。',
         '',

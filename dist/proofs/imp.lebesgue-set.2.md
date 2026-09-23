@@ -1,4 +1,4 @@
-# 微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处
+# 微分定理 + 可数稠密子集 $\implies$ Lebesgue 集几乎处处
 `imp.lebesgue-set` · 推出 · strong 边 · 根 `../`
 
 `thm.lebesgue-differentiation` Lebesgue 微分定理 → `thm.lebesgue-set-full` Lebesgue 集几乎处处

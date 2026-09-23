@@ -1,4 +1,4 @@
-# 列紧 ⟹ 全有界
+# 列紧 $\implies$ 全有界
 `imp.seqcompact-totbdd` · 推出 · strong 边 · 根 `../`
 
 `def.sequentially-compact` 列紧 → `def.totally-bounded` 全有界

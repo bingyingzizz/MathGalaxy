@@ -1,4 +1,4 @@
-# 完备 + 全有界 ⟹ 列紧（对角线法）
+# 完备 + 全有界 $\implies$ 列紧（对角线法）
 `imp.complete-totbdd-seqcompact` · 推出 · strong 边 · 根 `../`
 
 `def.complete` 完备 + `def.totally-bounded` 全有界 → `def.sequentially-compact` 列紧

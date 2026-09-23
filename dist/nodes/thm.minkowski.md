@@ -7,7 +7,7 @@ layer 19 · 定理 · L^p 空间 · 分析学
 $$\|f + g\|_p \le \|f\|_p + \|g\|_p$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.holder` Hölder 不等式：Hölder 不等式 ⟹ Minkowski 不等式　proofs/imp.minkowski.md
+- `thm.holder` Hölder 不等式：Hölder 不等式 $\implies$ Minkowski 不等式　proofs/imp.minkowski.md
 - `def.lp-norm` L^p 范数：用到了定义 L^p 范数　proofs/def-link.lp-minkowski.md
 
 ## 它能推出什么 / 谁在用它

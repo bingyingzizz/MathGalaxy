@@ -1,4 +1,4 @@
-# a.e. 收敛 + 有限测度 ⟹ 近一致
+# a.e. 收敛 + 有限测度 $\implies$ 近一致
 `imp.egorov` · 推出 · strong 边 · 根 `../`
 
 `def.convergence-modes` 五种收敛 → `thm.egorov` Egorov 定理

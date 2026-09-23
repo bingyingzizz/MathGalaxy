@@ -1,4 +1,4 @@
-# 选择公理 ⟺ 良序定理
+# 选择公理 $\iff$ 良序定理
 `eq.ac-wo` · 等价 · strong 边 · 根 `../`
 
 `ax.choice` 选择公理 → `thm.wellordering` 良序定理

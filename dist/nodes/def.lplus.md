@@ -1,10 +1,8 @@
 # L⁺　`def.lplus`
-L⁺：非负可测函数全体
+$L^{+}$：非负可测函数全体
 layer 14 · 定义 · 积分 · 分析学
 
 固定测度空间 $(X, \mathcal{M}, \mu )$。记
-
-$$L^+ := \{ f : X \to [0, +\infty] : f\text{ 可测} \}$$
 > 陈述续见 `nodes/def.lplus.2.md`
 
 
@@ -18,6 +16,7 @@ $$L^+ := \{ f : X \to [0, +\infty] : f\text{ 可测} \}$$
 - 被 `def.integrable` 可积 / L¹ 用
 - 被 `thm.dct` 控制收敛定理 用
 - 被 `cor.fatou` Fatou 的推论 用
+- 被 `prop.finite-integral-consequences` 积分有限的后果 用
 
 refs: Folland, Real Analysis, §2.2
 

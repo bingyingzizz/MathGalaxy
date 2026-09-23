@@ -1,7 +1,9 @@
-# 依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛
+# 依测度 Cauchy $\implies$ 依测度收敛且有一子列 a.e. 收敛
 `imp.cauchy-in-measure` · 推出 · strong 边 · 根 `../`
 
 `def.cauchy-in-measure` 依测度 Cauchy → `thm.cauchy-in-measure` 依测度 Cauchy ⟹ 收敛
+
+**⑥ 把 $f_{n}$ 也拉进来。** 对任意 $\varepsilon > 0$，
 
 $$\{|f_n - f| \ge \varepsilon\} \subseteq \{|f_n - g_j| \ge \varepsilon/2\} \cup \{|g_j - f| \ge \varepsilon/2\}$$
 

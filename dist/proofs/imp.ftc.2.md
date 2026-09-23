@@ -1,4 +1,4 @@
-# (a) ⟺ (b) ⟺ (c)：微积分基本定理的三条等价
+# $(a) \iff (b) \iff (c)$：微积分基本定理的三条等价
 `imp.ftc` · 推出 · strong 边 · 根 `../`
 
 `lem.ac-subset-bv` AC ⊆ BV + `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续 + `prop.nbv-derivative` NBV 函数的导数与测度的关系 → `thm.ftc-lebesgue` 微积分基本定理（Lebesgue 版）

@@ -1,4 +1,4 @@
-# 测度 ⟹ 单调 / 次可加 / 上下连续
+# 测度 $\implies$ 单调 / 次可加 / 上下连续
 `imp.measure-props` · 推出 · strong 边 · 根 `../`
 
 `def.measure` 测度 → `prop.measure-basic` 测度的基本性质

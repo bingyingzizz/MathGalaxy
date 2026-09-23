@@ -1,4 +1,4 @@
-# Fatou 引理 ⟹ a.e. 版本的 Fatou
+# Fatou 引理 $\implies \text{a.e.}$ 版本的 Fatou
 `imp.fatou-corollary` · 推出 · strong 边 · 根 `../`
 
 `lem.fatou` Fatou 引理 → `cor.fatou` Fatou 的推论

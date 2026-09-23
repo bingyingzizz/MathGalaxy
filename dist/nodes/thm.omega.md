@@ -1,5 +1,5 @@
 # 自然数集存在　`thm.omega`
-自然数集 ω 存在
+自然数集 $\omega$ 存在
 layer 5 · 定理 · 数系的构造 · 集合论
 
 存在**最小归纳集** $\omega$：它含有 $\emptyset$，对 $x \mapsto x \cup \{x\}$ 封闭，且含于一切归纳集之中：
@@ -9,7 +9,7 @@ $$\omega = \{ \emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyse
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.inf` 无穷公理 + `ax.power` 幂集公理 + `ax.sep` 分离公理模式：无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在　proofs/imp.inf-to-omega.md
+- `ax.inf` 无穷公理 + `ax.power` 幂集公理 + `ax.sep` 分离公理模式：无穷公理 + 幂集公理 + 分离公理模式 $\implies \omega$ 存在　proofs/imp.inf-to-omega.md
 - `thm.product` 笛卡尔积存在：「幂集造容器 + 分离筛内容」——同一个证明模板　proofs/ana.sep-container.md
 
 ## 它能推出什么 / 谁在用它

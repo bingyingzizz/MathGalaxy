@@ -1,4 +1,4 @@
-# 列紧 ⟹ 完备
+# 列紧 $\implies$ 完备
 `imp.seqcompact-complete` · 推出 · strong 边 · 根 `../`
 
 `def.sequentially-compact` 列紧 → `def.complete` 完备

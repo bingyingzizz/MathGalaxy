@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - `def.abs` 绝对值 |x|：用到了定义 绝对值 |x|　proofs/dep.abs-cauchy-null.md
+
+> 续见 `nodes/def.cauchy-null.4.md`

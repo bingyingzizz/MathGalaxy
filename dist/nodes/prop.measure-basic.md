@@ -7,7 +7,7 @@ layer 14 · 命题 · 测度的构造 · 分析学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.measure` 测度：测度 ⟹ 单调 / 次可加 / 上下连续　proofs/imp.measure-props.md
+- `def.measure` 测度：测度 $\implies$ 单调 / 次可加 / 上下连续　proofs/imp.measure-props.md
 - `def.measure` 测度：用到了定义 测度　proofs/def-link.measure-basic-props.md
 
 refs: Halmos, Measure Theory, §9；Folland, Real Analysis, Prop. 1.3

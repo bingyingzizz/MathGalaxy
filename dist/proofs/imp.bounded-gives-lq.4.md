@@ -1,4 +1,4 @@
-# Hölder + 有界性 ⟹ $g \in L^q$
+# Hölder + 有界性 $\implies$ $g \in L^q$
 `imp.bounded-gives-lq` · 推出 · strong 边 · 根 `../`
 
 `thm.holder` Hölder 不等式 + `def.duality-map` 对偶配对 φ_g → `prop.bounded-functional-gives-lq` 有界 ⟹ g ∈ L^q

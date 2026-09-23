@@ -1,4 +1,4 @@
-# 佐恩引理 ⇒ 每个向量空间有基
+# 佐恩引理 $\implies$ 每个向量空间有基
 `imp.zorn-to-basis` · 推出 · strong 边 · 根 `../`
 
 `lem.zorn` 佐恩引理 → `thm.vsbasis` 每个向量空间有基

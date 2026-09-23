@@ -7,7 +7,7 @@ layer 18 · 引理 · 积分 · 分析学
 $$\int \liminf_{n\to\infty} f_n \le \liminf_{n\to\infty} \int f_n$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.mct` 单调收敛定理：MCT ⟹ Fatou 引理　proofs/imp.fatou.md
+- `thm.mct` 单调收敛定理：MCT $\implies$ Fatou 引理　proofs/imp.fatou.md
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.dct` 控制收敛定理

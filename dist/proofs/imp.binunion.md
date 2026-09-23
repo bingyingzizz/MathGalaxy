@@ -1,4 +1,4 @@
-# 配对公理 + 并集公理 ⇒ 二元并存在
+# 配对公理 + 并集公理 $\implies$ 二元并存在
 `imp.binunion` · 推出 · strong 边 · 根 `../`
 
 `ax.pair` 配对公理 + `ax.union` 并集公理 → `thm.binunion` 二元并存在

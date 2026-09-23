@@ -1,4 +1,4 @@
-# Young 不等式 ⟹ Hölder 不等式
+# Young 不等式 $\implies$ Hölder 不等式
 `imp.holder` · 推出 · strong 边 · 根 `../`
 
 `lem.young-inequality` Young 不等式 → `thm.holder` Hölder 不等式

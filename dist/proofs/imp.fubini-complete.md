@@ -1,4 +1,4 @@
-# 乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T
+# 乘积测度通常不完备 $\implies$ 必须补一条完备情形的 F–T
 `imp.fubini-complete` · 推出 · strong 边 · 根 `../`
 
 `thm.fubini-tonelli` Fubini–Tonelli + `thm.completion` 完备化定理 + `prop.product-incomplete` 乘积测度通常不完备 → `thm.fubini-complete` 完备情形的 F–T

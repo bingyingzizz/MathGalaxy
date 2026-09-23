@@ -9,7 +9,7 @@ layer 13 · 定理 · 数系的构造 · 分析学+集合论
 $$|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0} > \aleph_0$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.real-ordered-field` ℝ 是完备有序域：完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）　proofs/imp.real-uncountable.md
+- `thm.real-ordered-field` ℝ 是完备有序域：完备性（确界原理）$\implies \mathbb{R}$ 不可数（闭区间套 + 对角线）　proofs/imp.real-uncountable.md
 - `def.countable` 可数与不可数：用到了定义 可数与不可数　proofs/dep.countable-uncountable.md
 - `def.cardinal` 基数 |A|：用到了定义 基数 |A|　proofs/dep.cardinal-uncountable.md
 - `thm.cantor` Cantor 定理：用到了定义 Cantor 定理　proofs/dep.cantor-uncountable.md

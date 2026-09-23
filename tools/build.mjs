@@ -1073,14 +1073,15 @@ function assertNotation(MG, graph) {
 
   const fields = N.bareUnicode || {};
   const bodyFields = fields.body || [];
-  const titleFields = fields.title || [];
   const bad = new Set([...(fields.chars || '')]);
+  /* ⭐ 「术语前缀」豁免：`σ-代数`、`σ-有限`、`μ-零集` 这类「希腊字母 + - + 词」
+     是中文术语的一部分，保留 Unicode（用户拍板）。扫描前先把它们挖掉。 */
+  const exceptRx = fields.except ? new RegExp(fields.except, 'g') : null;
   const banned = (N.banned || []).map(b => ({ ...b, rx: new RegExp(b.re, 'g') }));
 
   const items = [];   // { id, field, text }
   for (const n of graph.nodes) {
     for (const f of bodyFields) if (n[f]) items.push({ id: n.id, field: f, text: n[f] });
-    for (const f of titleFields) if (n[f]) items.push({ id: n.id, field: f, text: n[f], warn: true });
   }
   for (const e of graph.edges) {
     if (e.proof) items.push({ id: e.id, field: 'proof', text: e.proof });
@@ -1091,18 +1092,16 @@ function assertNotation(MG, graph) {
         if (t) items.push({ id: e.id, field: 'proofs', text: t });
       }
     }
-    if (e.title) items.push({ id: e.id, field: 'title', text: e.title, warn: true });
+    if (e.title) items.push({ id: e.id, field: 'title', text: e.title });
   }
 
-  /* ① 裸 Unicode 数学符号（正文 = 硬失败；title = 已知老账，只汇总一行） */
+  /* ① 公式之外的裸 Unicode 数学符号 → 硬失败 */
   const bodyHits = new Map();      // '字符' → { count, where }
-  const titleItems = new Set();
-  const titleChars = new Set();
   for (const it of items) {
-    const plain = stripMath(it.text);
+    let plain = stripMath(it.text);
+    if (exceptRx) plain = plain.replace(exceptRx, ' ');
     for (const ch of new Set(plain)) {
       if (!bad.has(ch)) continue;
-      if (it.warn) { titleItems.add(it.id); titleChars.add(ch); continue; }
       const cur = bodyHits.get(ch) || { count: 0, where: it.id + '.' + it.field };
       cur.count += 1;
       bodyHits.set(ch, cur);
@@ -1111,10 +1110,6 @@ function assertNotation(MG, graph) {
   for (const [ch, h] of bodyHits) {
     errs.push(`记号：${h.where} 等 ${h.count} 处出现裸 Unicode 数学符号「${ch}」` +
       `—— 要写成 $…$ 里的 LaTeX（详见 dist/notation.md）`);
-  }
-  if (titleItems.size) {
-    console.log(`    ⚠ 记号（警告）：title 里有裸 Unicode 数学记号，涉及 ${titleItems.size} 个节点 / ${titleChars.size} 种符号` +
-      `（${[...titleChars].join(' ')}）—— 已知老账，见 notation.md 的 backlog`);
   }
 
   /* ② 禁用写法 */

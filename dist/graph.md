@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-23T10:42:17.420Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-23T10:58:31.598Z
 > 6 星系 / 23 星团 / 230 节点 / 485 连线（强边 477，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -300,7 +300,7 @@ $\emptyset$ 是 $\in$ 关系的最小元，也是 $\subseteq$ 关系的最小元
 参考：Kunen, Set Theory, I.4
 
 #### 二元并存在　`thm.binunion`
-*定理*　二元并 a ∪ b 存在
+*定理*　二元并 $a \cup b$ 存在
 
 任给两个集合，它们的并仍是集合：
 
@@ -313,7 +313,7 @@ $a \cup b$ 是包含 $a$ 与 $b$ 的最小集合（$\subseteq$意义下）。
 参考：Kunen, Set Theory, I.3
 
 #### 笛卡尔积存在　`thm.product`
-*定理*　笛卡尔积 A × B 存在
+*定理*　笛卡尔积 $A \times B$ 存在
 
 任给两个集合，全体有序对构成一个集合：
 
@@ -629,7 +629,7 @@ $$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
 > 造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。
 
 #### 自然数集存在　`thm.omega`
-*定理*　自然数集 ω 存在
+*定理*　自然数集 $\omega$ 存在
 
 存在**最小归纳集** $\omega$：它含有 $\emptyset$，对 $x \mapsto x \cup \{x\}$ 封闭，且含于一切归纳集之中：
 
@@ -1406,7 +1406,7 @@ $$\forall\{U_i\}_{i \in I} (\text{ 每个} U_i\text{ 开且} X = \bigcup_{i \in 
 参考：Munkres, Topology, §26
 
 #### 紧的三个等价刻画　`thm.metric-compact-equiv`
-*定理*　度量空间中：紧 ⟺ 列紧 ⟺ 完备 + 全有界
+*定理*　度量空间中：紧 $\iff$ 列紧 $\iff$ 完备 + 全有界
 
 设 (X, d) 是距离空间。则下列三条**彼此等价**：
 
@@ -1450,7 +1450,7 @@ $$A\text{ 紧} \implies A\text{ 是} X\text{ 中的闭集}$$
 参考：Munkres, Topology, §26
 
 #### 子集的紧性刻画　`prop.subset-compact-equiv`
-*命题*　命题：X 完备时，A 紧 ⟺ A 闭且全有界
+*命题*　命题：X 完备时，A 紧 $\iff A$ 闭且全有界
 
 设 (X, d) 是**完备**的距离空间，$A \subseteq X$。则
 
@@ -1831,7 +1831,7 @@ $$\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \
 参考：Halmos, Measure Theory, §4
 
 #### 环 → σ-环 的判据　`thm.ring-monotone-sigma`
-*定理*　定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭
+*定理*　定理：环是 σ-环 $\iff$ 它是单调类 $\iff$ 它对可数不交并封闭
 
 设 $\mathfrak{A}$ 是一个**环**。则下列三条等价：
 
@@ -1844,7 +1844,7 @@ $$\mathfrak{A}\text{ 是} \sigma-\text{环} \iff \mathfrak{A}\text{ 是单调类
 参考：Halmos, Measure Theory, §6
 
 #### 生成的 σ-代数　`def.generated-sigma`
-*定义*　由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)
+*定义*　由 $\mathcal{E}$ 生成的 σ-代数 / 单调类：$\mathcal{M}(\mathcal{E})$ 与 $\mathfrak{m}(\mathcal{E})$
 
 设 $\mathcal{E} \subseteq \mathcal{P}(X)$。定义
 
@@ -1889,7 +1889,7 @@ $$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathc
 参考：Halmos, Measure Theory, §6；Folland, Real Analysis, Theorem 2.37
 
 #### Borel σ-代数　`def.borel`
-*定义*　Borel σ-代数（Borel σ-Algebra 𝔅_X）
+*定义*　Borel σ-代数（Borel σ-Algebra $\mathfrak{B}_X$）
 
 设 $X$ 是拓扑空间。$X$ 上的 **$Borel \sigma$代数**是由全体开集生成的 $\sigma$代数：
 
@@ -2073,7 +2073,7 @@ Lebesgue 最初构造的就是外测度：$\mu^{*}(A) = \inf\{ \sum (b_{n} - a_{
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 
 #### 由预测度诱导外测度　`prop.outer-measure-induced`
-*命题*　命题：从 ℰ 上的 ρ 诱导出一个外测度
+*命题*　命题：从 $\mathcal{E}$ 上的 $\rho$ 诱导出一个外测度
 
 设 $\mathcal{E} \subseteq \mathcal{P}(X)$，$\emptyset \in \mathcal{E}$，$X \in \mathcal{E}$，$\rho : \mathcal{E} \to [0, +\infty ]$ 满足 $\rho (\emptyset ) = 0$。对 $A \subseteq X$ 定义
 
@@ -2090,7 +2090,7 @@ $$\mu^*(A) := \inf \{ \sum_{j=1}^{\infty} \rho(E_j) : E_j \in \mathcal{E}, A \su
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 
 #### μ*-可测集　`def.caratheodory-measurable`
-*定义*　Carathéodory 可测性（μ*-Measurable Set）
+*定义*　Carathéodory 可测性（$\mu^{*}$-Measurable Set）
 
 设 $\mu^{*}$ 是 $X$ 上的外测度。$A \subseteq X$ 称为 **$\mu^{*}$-可测的**，当且仅当 $A$ 把每个集合都「干净地切成两块」：
 
@@ -2105,7 +2105,7 @@ $$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)\quad  \forall E \subseteq X$$
 参考：Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
 
 #### Carathéodory 定理　`thm.caratheodory`
-*定理*　Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度
+*定理*　Carathéodory 定理：$\mu^{*}$-可测集构成 σ-代数，$\mu^{*}$ 在其上是完备测度
 
 设 $\mu^{*}$ 是 $X$ 上的外测度，$\mathcal{M}$ 是全体 $\mu^{*}$-可测集。则
 
@@ -2195,7 +2195,7 @@ $$\mu_F( (a, b] ) = F(b) - F(a)\quad  \forall a < b$$
 参考：Folland, Real Analysis, Theorem 1.16
 
 #### Lebesgue–Stieltjes 测度　`def.lebesgue-stieltjes`
-*定义*　Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure μ_F）
+*定义*　Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure $\mu_F$）
 
 由递增右连续函数 $F$ 按上一条定理得到的 Borel 测度 $$\mu_F$$ 称为 **$F$ 的 Lebesgue–Stieltjes 测度**。
 
@@ -2294,7 +2294,7 @@ $$f : X \to Y\text{ 连续} \implies f\text{ 是} (\mathfrak{B}_X, \mathfrak{B}_
 参考：Folland, Real Analysis, §2.1
 
 #### 积空间与实虚部　`prop.measurable-product-and-realimag`
-*命题*　命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测
+*命题*　命题：可测函数到积空间；f 可测 $\iff$ 实部虚部可测
 
 **(1)** 设 $(X, \mathcal{M})$、$(Y_\alpha , \mathcal{N}_\alpha ) (\alpha \in A)$ 是可测空间，$$Y = \prod_{\alpha} Y_\alpha$$，$$\mathcal{N} = \otimes _{\alpha} \mathcal{N}_\alpha$$，$$\pi _\alpha : Y \to Y_\alpha$$ 是投影。则
 
@@ -2389,7 +2389,7 @@ $$\varphi_n = \psi_n^+ - \psi_n^- + i(\zeta _n^+ - \zeta _n^-)$$
 参考：Folland, Real Analysis, Theorem 2.10
 
 #### 完备性 ⟺ 不破坏可测性　`prop.complete-measurable`
-*命题*　命题：μ 完备 ⟺ 几乎处处相等 / 几乎处处收敛不破坏可测性
+*命题*　命题：$\mu$ 完备 $\iff$ 几乎处处相等 / 几乎处处收敛不破坏可测性
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间。则 $\mu$ **完备**当且仅当下面两条都成立：
 
@@ -2441,7 +2441,7 @@ $$g = \lim_n \chi_{N^c} \cdot \varphi_n$$
 参考：Folland, Real Analysis, Prop. 2.12
 
 #### 五种收敛　`def.convergence-modes`
-*定义*　收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹
+*定义*　收敛的类型：一致 / 近一致 / a.e. / 依测度 / $L^{1}$
 
 设 $$f_n, f : X \to \mathbb{C}$$ 可测，$X$ 带测度 $\mu$。
 
@@ -2527,7 +2527,7 @@ $$f_{n_j} \to f\quad  \text{a.e.}$$
 参考：Folland, Real Analysis, Theorem 2.30
 
 #### L¹ 收敛 ⟹ 依测度收敛　`prop.L1-implies-measure`
-*命题*　命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）
+*命题*　命题：$L^{1}$ 收敛蕴含依测度收敛（Markov 不等式）
 
 若 $$f_n \to f$$ 于 $$L^1$$，则 $$f_n \to f$$ 依测度：
 
@@ -2543,7 +2543,7 @@ $$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
 参考：Folland, Real Analysis, Prop. 2.29
 
 #### Egorov 定理　`thm.egorov`
-*定理*　Egorov 定理：a.e. 收敛 ⟹ 近一致
+*定理*　Egorov 定理：a.e. 收敛 $\implies$ 近一致
 
 设 $$\mu(X) < \infty$$，且 $$f_n \to f$$ a.e.。则 $$f_n \to f$$ **近一致**：
 
@@ -2576,7 +2576,7 @@ $$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
 > 造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。
 
 #### L⁺　`def.lplus`
-*定义*　L⁺：非负可测函数全体
+*定义*　$L^{+}$：非负可测函数全体
 
 固定测度空间 $(X, \mathcal{M}, \mu )$。记
 
@@ -2677,7 +2677,7 @@ $$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int f_n$$
 参考：Folland, Real Analysis, Theorem 2.15
 
 #### 积分为零 ⟺ 几乎处处为零　`prop.integral-zero-iff`
-*命题*　命题：∫ f = 0 ⟺ f = 0 a.e.
+*命题*　命题：$\int f = 0 \iff f = 0 \text{a.e.}$
 
 设 $$f \in L^+$$。则
 
@@ -2722,7 +2722,7 @@ $$\int \liminf_{n\to\infty} f_n \le \liminf_{n\to\infty} \int f_n$$
 参考：Folland, Real Analysis, Theorem 2.18
 
 #### Fatou 的推论　`cor.fatou`
-*推论*　推论：fₙ → f a.e. ⟹ ∫ f ≤ lim ∫ fₙ
+*推论*　推论：$f_{n} \to f \text{a.e.} \implies \int f \le \lim \int f_{n}$
 
 设 $$\{f_n\} \subseteq L^+$$，$$f \in L^+$$，且 $$f_n \to f$$ a.e.。则
 
@@ -2733,7 +2733,7 @@ a.e. 收敛时 $$\liminf f_n = f$$，直接套 Fatou 引理即可。
 参考：Folland, Real Analysis, §2.2；Rudin, Real and Complex Analysis, Ch. 1
 
 #### 积分有限的后果　`prop.finite-integral-consequences`
-*命题*　命题：∫ f < ∞ 时，f 几乎处处有限、支撑 σ-有限
+*命题*　命题：$\int f < \infty$ 时，f 几乎处处有限、支撑 σ-有限
 
 设 $$f \in L^+$$ 且 $$\int f < \infty$$。则
 
@@ -2770,7 +2770,7 @@ $$\int f := \int f^+ - \int f^-$$
 参考：Folland, Real Analysis, §2.3
 
 #### 可积 / L¹　`def.integrable`
-*定义*　可积函数与 L¹ 空间
+*定义*　可积函数与 $L^{1}$ 空间
 
 实值可测 $$f$$ **可积**，当且仅当 $$\int f^+ < \infty$$ 且 $$\int f^- < \infty$$。等价地：
 
@@ -2789,7 +2789,7 @@ $$L^1(\mu) = L^1(X, \mathcal{M}, \mu) = L^1(X, \mu)$$
 参考：Folland, Real Analysis, §2.3
 
 #### L¹ 是向量空间　`prop.L1-vector-space`
-*命题*　命题：可积函数全体是向量空间，∫ 线性
+*命题*　命题：可积函数全体是向量空间，$\int$ 线性
 
 $X$ 上可积的（实值）函数全体构成一个**实向量空间**，并且
 
@@ -2804,7 +2804,7 @@ $$\int (af + bg) = a\int f + b\int g\quad  \forall a, b \in \mathbb{R}$$
 参考：Folland, Real Analysis, Prop. 2.21
 
 #### 积分绝对值不等式　`prop.integral-abs-ineq`
-*命题*　命题：|∫ f| ≤ ∫ |f|
+*命题*　命题：$|\int f| \le \int |f|$
 
 设 $$f \in L^1(\mu)$$，则
 
@@ -2815,7 +2815,7 @@ $$| \int f d\mu | \le \int |f| d\mu$$
 参考：Folland, Real Analysis, Prop. 2.22
 
 #### L¹ 函数的支撑 σ-有限　`prop.L1-support-sigma-finite`
-*命题*　命题：f ∈ L¹ ⟹ {f ≠ 0} 是 σ-有限的
+*命题*　命题：$f \in L^{1} \implies \{f \ne 0\}$ 是 σ-有限的
 
 若 $$f \in L^1(\mu)$$，则
 
@@ -2828,7 +2828,7 @@ $$\{x : f(x) \ne 0\}$$
 参考：Folland, Real Analysis, §2.3
 
 #### 何时两个函数积分处处相同　`prop.integrals-equal-iff`
-*命题*　命题：∫_E f = ∫_E g 对一切 E ⟺ f = g a.e.
+*命题*　命题：$\int_E f = \int_E g$ 对一切 $E \iff f = g \text{a.e.}$
 
 设 $$f, g \in L^1(\mu)$$。则下列三条等价：
 
@@ -2872,7 +2872,7 @@ $\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度�
 参考：Folland, Real Analysis, Theorem 2.24
 
 #### L¹ 的逐项积分　`thm.termwise-L1`
-*定理*　定理：Σ∫|fⱼ| < ∞ ⟹ Σfⱼ 几乎处处收敛且可逐项积分
+*定理*　定理：$\sum\int|f_{j}| < \infty \implies \sum f_{j}$ 几乎处处收敛且可逐项积分
 
 设 $$\{f_j\} \subseteq L^1$$ 满足
 
@@ -2889,7 +2889,7 @@ $$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j$$
 参考：Folland, Real Analysis, Theorem 2.25
 
 #### L¹ 里的逼近　`thm.approximation-L1`
-*定理*　定理：L¹ 中可用简单函数 / 连续函数逼近
+*定理*　定理：$L^{1}$ 中可用简单函数 / 连续函数逼近
 
 设 $$f \in L^1(\mu)$$。则对任意 $\varepsilon > 0$，存在简单函数 $$\varphi = \sum_j a_j \chi_{E_j}$$ 使
 
@@ -3018,7 +3018,7 @@ $$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
 参考：Folland, Real Analysis, §2.1
 
 #### 乘积测度　`def.product-measure`
-*定义*　乘积测度（Product Measure μ × ν）
+*定义*　乘积测度（Product Measure $\mu \times \nu$）
 
 设 $(X, \mathcal{M}, \mu )$ 与 $(Y, \mathcal{N}, \nu )$ 是测度空间。
 
@@ -3049,7 +3049,7 @@ $\mu_{0} $ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不�
 参考：Folland, Real Analysis, §2.5；Halmos, Measure Theory, §35
 
 #### 截口　`def.section`
-*定义*　截口（Section）Eₓ 与 Eʸ
+*定义*　截口（Section）$E_{x}$ 与 $E^{y}$
 
 设 $$E \subseteq X \times Y$$。对 $$x \in X$$、$$y \in Y$$ 定义
 
@@ -3098,7 +3098,7 @@ $$f_x^{-1}(B) = (f^{-1}(B))_x, \quad  f^{y-1}(B) = (f^{-1}(B))^y$$
 参考：Folland, Real Analysis, Prop. 2.34
 
 #### 乘积测度由截口给出　`thm.product-measure-sections`
-*定理*　定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)
+*定理*　定理：$\mu \times \nu(E) = \int \nu(E_{x}) d\mu(x) = \int \mu(E^{y}) d\nu(y)$
 
 设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是 **$\sigma$有限**的，$$E \in \mathcal{M} \otimes  \mathcal{N}$$。则
 
@@ -3184,7 +3184,7 @@ $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\n
 参考：Folland, Real Analysis, Theorem 2.39
 
 #### 乘积测度通常不完备　`prop.product-incomplete`
-*命题*　注记：μ、ν 完备时，μ × ν 常常不完备
+*命题*　注记：$\mu$、$\nu$ 完备时，$\mu \times \nu$ 常常不完备
 
 即使 $\mu$ 与 $\nu$ 都**完备**，$$\mu \times \nu$$ 也**经常是不完备的**：存在 $$E \in \mathcal{M} \otimes  \mathcal{N}$$ 使 $$\mu \times \nu(E) = 0$$，但 $E$ 有子集不属于 $$\mathcal{M} \otimes  \mathcal{N}$$。
 
@@ -3273,7 +3273,7 @@ $$P \cup N = X, \quad  P \cap N = \emptyset, $$
 参考：Folland, Real Analysis, Theorem 3.3；Halmos, Measure Theory, §29
 
 #### 相互奇异　`def.mutually-singular`
-*定义*　相互奇异 / 互相垂直（Mutually Singular μ ⊥ ν）
+*定义*　相互奇异 / 互相垂直（Mutually Singular $\mu \perp \nu$）
 
 两个测度（或符号测度）$$\mu, \nu$$ **相互奇异**，记作 $$\mu \perp  \nu$$，当且仅当存在 $$E, F \in \mathcal{M}$$ 使
 
@@ -3319,7 +3319,7 @@ $$|\nu| := \nu^+ + \nu^-$$
 参考：Folland, Real Analysis, Theorem 3.4
 
 #### 绝对连续　`def.absolute-continuity`
-*定义*　绝对连续（Absolute Continuity ν ≪ μ）
+*定义*　绝对连续（Absolute Continuity $\nu \ll \mu$）
 
 设 $\mu$ 是 $(X, \mathcal{M})$ 上的测度、$\nu$ 是符号测度。称 $\nu$ **关于 $\mu$ 绝对连续**，记作
 
@@ -3338,7 +3338,7 @@ $$\forall E \in \mathcal{M}, \mu(E) = 0 \implies \nu(E) = 0$$
 参考：Folland, Real Analysis, §3.2
 
 #### 绝对连续与变差　`prop.ac-and-variations`
-*命题*　命题：ν ≪ μ ⟺ |ν| ≪ μ ⟺ ν⁺、ν⁻ ≪ μ；ν ⊥ μ 且 ν ≪ μ ⟹ ν = 0
+*命题*　命题：$\nu \ll \mu \iff |\nu| \ll \mu \iff \nu^{+}$、$\nu^{-} \ll \mu$；$\nu \perp \mu$ 且 $\nu \ll \mu \implies \nu = 0$
 
 设 $\mu$ 是测度，$\nu$ 是符号测度。则
 
@@ -3353,7 +3353,7 @@ $$\nu \ll  \mu \iff |\nu| \ll  \mu \iff \nu^+ \ll  \mu\text{ 且} \nu^- \ll  \mu
 参考：Folland, Real Analysis, Prop. 3.5
 
 #### 绝对连续的 ε–δ 刻画　`thm.ac-epsilon-delta`
-*定理*　定理（有限情形）：ν ≪ μ ⟺ ∀ε>0 ∃δ>0 ( μ(E)<δ ⟹ |ν(E)|≤ε )
+*定理*　定理（有限情形）：$\nu \ll \mu \iff \forall\varepsilon>0 \exists\delta>0$ ( $\mu(E)<\delta \implies |\nu(E)|\le\varepsilon$ )
 
 设 $\nu$ 是**有限**符号测度、$\mu$ 是测度。则
 
@@ -3368,7 +3368,7 @@ $$\nu \ll  \mu \iff \forall\varepsilon > 0, \exists\delta > 0 : \mu(E) < \delta 
 参考：Folland, Real Analysis, Prop. 3.5
 
 #### 积分给出绝对连续测度　`prop.integral-gives-ac`
-*命题*　命题：ν(E) = ∫_E f dμ 关于 μ 绝对连续
+*命题*　命题：$\nu(E) = \int_E f d\mu$ 关于 $\mu$ 绝对连续
 
 设 $\mu$ 是测度，$$f$$ 是广义 $\mu$可积函数，定义
 
@@ -3389,7 +3389,7 @@ $$\nu(E) = \int_E f d\mu\quad  \iff\quad  d\nu = f d\mu$$
 参考：Folland, Real Analysis, §3.2
 
 #### 积分的绝对连续性　`cor.ac-integral-continuity`
-*推论*　推论：∫_E f dμ 在小测度集上任意小
+*推论*　推论：$\int_E f d\mu$ 在小测度集上任意小
 
 设 $$f \in L^1(\mu)$$。则
 
@@ -3424,7 +3424,7 @@ $N$ 是每个 $$\nu - n^{-1}\mu$$ 的负集，于是 $$0 \le \nu(N) \le n^{-1} \
 参考：Folland, Real Analysis, Lemma 3.8
 
 #### Lebesgue–Radon–Nikodym 定理　`thm.lebesgue-radon-nikodym`
-*定理*　Lebesgue–Radon–Nikodym 定理：ν = λ + ρ，λ ⊥ μ，ρ ≪ μ
+*定理*　Lebesgue–Radon–Nikodym 定理：$\nu = \lambda + \rho$，$\lambda \perp \mu$，$\rho \ll \mu$
 
 设 $\nu$ 是 **$\sigma$有限**符号测度、$\mu$ 是 **$\sigma$有限**正测度，都在 $(X, \mathcal{M})$ 上。则存在**唯一**的一对 $\sigma$有限符号测度 $\lambda$、$\rho$ 使
 
@@ -3447,7 +3447,7 @@ $$d\rho = f d\mu$$
 参考：Folland, Real Analysis, Theorem 3.8
 
 #### RN 导数与 Lebesgue 分解　`def.rn-derivative`
-*定义*　Radon–Nikodym 导数 dν/dμ 与 Lebesgue 分解
+*定义*　Radon–Nikodym 导数 $d\nu/d\mu$ 与 Lebesgue 分解
 
 设 $$\nu \ll  \mu$$（都是 $\sigma$有限的）。取定理里的 $$f$$，称
 
@@ -3495,7 +3495,7 @@ $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{
 参考：Folland, Real Analysis, Theorem 3.9
 
 #### 互为绝对连续时导数互逆　`cor.rn-inverse`
-*推论*　推论：μ ≪ λ 且 λ ≪ μ ⟹ (dμ/dλ)(dλ/dμ) = 1
+*推论*　推论：$\mu \ll \lambda$ 且 $\lambda \ll \mu \implies (d\mu/d\lambda)(d\lambda/d\mu) = 1$
 
 若 $$\mu \ll  \lambda$$ 且 $$\lambda \ll  \mu$$（两个 $\sigma$有限测度互为绝对连续），则
 
@@ -3527,7 +3527,7 @@ $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 参考：Folland, Real Analysis, §3.3
 
 #### 复测度的 Radon–Nikodym　`thm.rn-complex`
-*定理*　定理：复测度的 ν = λ + f dμ 分解
+*定理*　定理：复测度的 $\nu = \lambda + f d\mu$ 分解
 
 设 $\nu$ 是复测度、$\mu$ 是 **$\sigma$有限**测度。则存在复测度 $\lambda$ 与 $$f \in L^1(\mu)$$ 使
 
@@ -3542,7 +3542,7 @@ $$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
 参考：Folland, Real Analysis, Theorem 3.11
 
 #### 全变差的基本性质　`prop.total-variation-basics`
-*命题*　命题：|ν(E)| ≤ |ν|(E)，且 d|ν| = |f| dμ
+*命题*　命题：$|\nu(E)| \le |\nu|(E)$，且 $d|\nu| = |f| d\mu$
 
 设 $\nu$ 是复测度（或符号测度），$$|\nu|$$ 是它的全变差。则
 
@@ -3570,7 +3570,7 @@ $$|f_1| \frac{d\mu_1}{d\rho} = |f_2| \frac{d\mu_2}{d\rho}\quad  \rho-\text{a.e.}
 > 造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。
 
 #### L¹(ν) 与全变差　`prop.L1-signed`
-*命题*　命题：符号测度的 L¹(ν) = L¹(|ν|)，以及几条基本不等式
+*命题*　命题：符号测度的 $L^{1}(\nu) = L^{1}(|\nu|)$，以及几条基本不等式
 
 设 $\nu$ 是符号测度或复测度。
 
@@ -3618,7 +3618,7 @@ $$c < m(K) \le 3^n \sum_j m(B_j)\quad  \implies\quad  \sum_j m(B_j) > 3^{-n} c$$
 参考：Folland, Real Analysis, Lemma 3.15
 
 #### 局部可积　`def.locally-integrable`
-*定义*　局部可积函数 L¹ₗoc
+*定义*　局部可积函数 $L^{1}_{\text{loc}}$
 
 可测函数 $$f : \mathbb{R}^n \to \mathbb{C}$$ 是**局部可积的**，当且仅当
 
@@ -3635,7 +3635,7 @@ $$\int_K |f(x)| dx < \infty\quad \text{ 对每个有界可测集} K \subseteq \m
 参考：Folland, Real Analysis, §3.4
 
 #### 平均算子 Aᵣ　`def.average-operator`
-*定义*　平均算子（Averaging Operator Aᵣ f）
+*定义*　平均算子（Averaging Operator $A_{r} f$）
 
 设 $$f \in L^1_{loc}$$，$$x \in \mathbb{R}^n$$，$$r > 0$$。定义
 
@@ -3650,7 +3650,7 @@ $$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
 参考：Folland, Real Analysis, §3.4
 
 #### 平均算子联合连续　`lem.average-continuous`
-*引理*　引理：Aᵣ f(x) 关于 (r, x) 联合连续
+*引理*　引理：$A_{r} f(x)$ 关于 (r, x) 联合连续
 
 设 $$f \in L^1_{loc}$$。则 $$A_r f(x)$$ 作为 $$(r, x)$$ 的函数是**联合连续**的。
 
@@ -3713,7 +3713,7 @@ $$m(\{x : Hf(x) > \alpha\}) \le (C/\alpha)\cdot\int |f(x)| dx$$
 参考：Folland, Real Analysis, Theorem 3.17
 
 #### Lebesgue 微分定理　`thm.lebesgue-differentiation`
-*定理*　Lebesgue 微分定理：Aᵣ f(x) → f(x) a.e.
+*定理*　Lebesgue 微分定理：$A_{r} f(x) \to f(x) \text{a.e.}$
 
 设 $$f \in L^1_{loc}$$。则
 
@@ -3728,7 +3728,7 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对} \text{a.e.} x \in \mathbb{R}^n$$
 参考：Folland, Real Analysis, Theorem 3.18
 
 #### Lebesgue 集　`def.lebesgue-set`
-*定义*　Lebesgue 集 L_f
+*定义*　Lebesgue 集 $L_f$
 
 设 $$f \in L^1_{loc}$$。定义
 
@@ -3745,7 +3745,7 @@ $x \in L_f$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个�
 参考：Folland, Real Analysis, §3.4
 
 #### Lebesgue 集几乎处处　`thm.lebesgue-set-full`
-*定理*　定理：f ∈ L¹ₗoc ⟹ m(L_fᶜ) = 0
+*定理*　定理：$f \in L^{1}_{\text{loc}} \implies m(L_f^{c}) = 0$
 
 若 $$f \in L^1_{loc}$$，则
 
@@ -3828,7 +3828,7 @@ $f \in L^+(\mathbb{R}^n)$ 时，$$f\cdot dm$$ 正则 $\iff$ $$f \in L^1_{loc}$$ 
 参考：Folland, Real Analysis, §7.2
 
 #### RN 导数的点态公式　`thm.rn-pointwise`
-*定理*　定理：ν(Eᵣ)/m(Eᵣ) → f(x) a.e.，其中 dν = dλ + f dm
+*定理*　定理：$\nu(E_{r})/m(E_{r}) \to f(x) \text{a.e.}$，其中 $d\nu = d\lambda + f dm$
 
 设 $\nu$ 是 $\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$$d\nu = d\lambda + f\cdot dm$$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \in \mathbb{R}^n$$，
 
@@ -3937,7 +3937,7 @@ $T_F(b) - T_F(a)$ 称为 $F$ 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有�
 参考：Folland, Real Analysis, §3.5
 
 #### T_F ± F 递增　`lem.variation-monotone`
-*引理*　引理：实值 BV 函数的 T_F + F 与 T_F − F 都递增
+*引理*　引理：实值 BV 函数的 $T_F + F$ 与 $T_F - F$ 都递增
 
 设 $F$ 是**实值**有界变差函数。则
 
@@ -3960,7 +3960,7 @@ $$T_F(y) \pm  F(y) \ge \sum_j |F(x_j) - F(x_{j-1})| + (F(y) - F(x)) \pm  F(x) \g
 参考：Folland, Real Analysis, Theorem 3.27
 
 #### BV 的 Jordan 分解　`thm.bv-jordan`
-*定理*　定理：F ∈ BV ⟺ F = G − H（G、H 有界递增）
+*定理*　定理：$F \in BV \iff F = G - H$（G、H 有界递增）
 
 **(a)** $$F \in BV \iff \operatorname{Re} F \in BV\text{ 且} \operatorname{Im} F \in BV$$。
 
@@ -4002,7 +4002,7 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 参考：Folland, Real Analysis, Theorem 3.27
 
 #### NBV　`def.nbv`
-*定义*　NBV：右连续且 F(−∞) = 0 的有界变差函数
+*定义*　NBV：右连续且 $F(-\infty) = 0$ 的有界变差函数
 
 $$NBV := \{ F \in BV : F\text{ 右连续},\text{ 且} F(-\infty) = 0 \}$$
 
@@ -4019,7 +4019,7 @@ $$F(x) = \mu((-\infty, x])$$
 参考：Folland, Real Analysis, Theorem 3.29
 
 #### 全变差的 NBV 性质　`lem.nbv-variation`
-*引理*　引理：T_F(−∞) = 0；F 右连续 ⟹ T_F 右连续
+*引理*　引理：$T_F(-\infty) = 0$；F 右连续 $\implies T_F$ 右连续
 
 设 $$F \in BV$$。则
 
@@ -4043,7 +4043,7 @@ $$(3/2)\alpha - \varepsilon \le T_F(x+h) - T_F(x) < \varepsilon + \alpha$$
 参考：Folland, Real Analysis, Lemma 3.30
 
 #### 递增函数的导数积分不等式　`prop.monotone-integral-derivative`
-*命题*　命题：∫ₐᵇ F′ ≤ F(b) − F(a)
+*命题*　命题：$\int_{a}^{b} F' \le F(b) - F(a)$
 
 设 $$F \nearrow $$ 递增，$$G(x) = F(x+)$$（右连续递增）。则
 
@@ -4093,7 +4093,7 @@ $|\mu_F| = \mu_{T_F}$ 这一条说的是：**取全变差（函数侧）与取�
 参考：Folland, Real Analysis, Theorem 3.29
 
 #### NBV 函数的导数与测度的关系　`prop.nbv-derivative`
-*命题*　命题：μ_F ⊥ m ⟺ F′ = 0 a.e.；μ_F ≪ m ⟺ F(x) = ∫_{−∞}ˣ F′
+*命题*　命题：$\mu_F \perp m \iff F' = 0 \text{a.e.}$；$\mu_F \ll m \iff F(x) = \int_{-\infty}^{x} F'$
 
 设 $$F \in NBV$$。则 $$F' \in L^1(m)$$，并且
 
@@ -4126,7 +4126,7 @@ $$\forall\varepsilon > 0, \exists\delta > 0 :\text{ 任意有限个两两不交�
 参考：Folland, Real Analysis, §3.5
 
 #### 函数绝对连续 ⟺ 测度绝对连续　`prop.ac-iff-measure-ac`
-*命题*　命题：F 绝对连续 ⟺ μ_F ≪ m
+*命题*　命题：F 绝对连续 $\iff \mu_F \ll m$
 
 设 $$F \in NBV$$。则
 
@@ -4141,7 +4141,7 @@ $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 参考：Folland, Real Analysis, Theorem 3.35
 
 #### 积出来的函数是 AC · NBV　`cor.integral-is-ac-nbv`
-*推论*　推论：f ∈ L¹(m) ⟹ F(x) = ∫_{−∞}ˣ f 是 AC、NBV；反之亦然
+*推论*　推论：$f \in L^{1}(m) \implies F(x) = \int_{-\infty}^{x} f$ 是 AC、NBV；反之亦然
 
 **(1)** 若 $$f \in L^1(m)$$，则
 
@@ -4171,7 +4171,7 @@ $$AC([a, b]) \subseteq BV([a, b])$$
 参考：Folland, Real Analysis, §3.5
 
 #### 微积分基本定理（Lebesgue 版）　`thm.ftc-lebesgue`
-*定理*　定理（TFAE）：绝对连续 ⟺ 是 L¹ 函数的积分 ⟺ 导数的积分还原
+*定理*　定理（TFAE）：绝对连续 $\iff$ 是 $L^{1}$ 函数的积分 $\iff$ 导数的积分还原
 
 设 $$F : [a, b] \to \mathbb{C}$$，区间紧。则下列三条**彼此等价**：
 
@@ -4199,7 +4199,7 @@ $$F(x) - F(a) = \int_a^x F'(t) dt$$
 > 造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。
 
 #### L^p 范数　`def.lp-norm`
-*定义*　L^p 范数与 L^p 空间
+*定义*　$L^p$ 范数与 $L^p$ 空间
 
 固定测度空间 $(X, \mathcal{M}, \mu)$。对可测 $f$ 与 $0 < p < \infty$ 定义
 
@@ -4228,7 +4228,7 @@ $$L^p(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f
 参考：Folland, Real Analysis, §6.1
 
 #### Young 不等式　`lem.young-inequality`
-*引理*　Young 不等式（a^λ · b^(1−λ) ≤ λa + (1−λ)b）
+*引理*　Young 不等式（$a^\lambda \cdot b^{1-\lambda} \le \lambda a + (1-\lambda)b$）
 
 设 $a \ge 0$，$b \ge 0$，$0 < \lambda < 1$。则
 
@@ -4409,7 +4409,7 @@ $$\|fg\|_1 = \|f\|_1 \|g\|_\infty \iff |g(x)| = \|g\|_\infty \text{ a.e. on } \{
 参考：Folland, Real Analysis, §6.1
 
 #### L^q 落在 L^p + L^r 里　`prop.lq-in-lp-plus-lr`
-*命题*　命题：L^q ⊆ L^p + L^r（0 < p < q < r ≤ ∞）
+*命题*　命题：$L^q \subseteq L^p + L^r$（$0 < p < q < r \le \infty$）
 
 设 $0 < p < q < r \le \infty$。则
 
@@ -4440,7 +4440,7 @@ $$|g|^p = |f|^p \chi_E \le |f|^q \chi_E, \qquad |h|^r = |f|^r \chi_{E^c} \le |f|
 参考：Folland, Real Analysis, Prop. 6.4
 
 #### L^p ∩ L^r ⊆ L^q　`prop.lp-inter-lr-in-lq`
-*命题*　命题（插值）：L^p ∩ L^r ⊆ L^q
+*命题*　命题（插值）：$L^p \cap L^r \subseteq L^q$
 
 设 $0 < p < q < r \le \infty$。若 $f \in L^p \cap L^r$，则 $f \in L^q$，且
 
@@ -4475,7 +4475,7 @@ $$\|f\|_q^q \le \left[ \int |f|^p \right]^{\lambda q/p} \left[ \int |f|^r \right
 参考：Folland, Real Analysis, Prop. 6.4
 
 #### ℓ^p ⊆ ℓ^q　`prop.ell-p-inclusion`
-*命题*　命题（只有衰减的场合）：ℓ^p ⊆ ℓ^q（0 < p < q ≤ ∞）
+*命题*　命题（只有衰减的场合）：$\ell^p \subseteq \ell^q$（$0 < p < q \le \infty$）
 
 设 $0 < p < q \le \infty$，$A$ 是任意指标集。则
 
@@ -4502,7 +4502,7 @@ $$\|f\|_q \le \|f\|_p^{p/q} \|f\|_\infty^{1-p/q} \le \|f\|_p$$
 参考：Folland, Real Analysis, §6.1
 
 #### 有限测度时方向反过来　`prop.lp-inclusion-finite`
-*命题*　命题（只有爆破的场合）：μ(X) < ∞ 时 L^p(μ) ⊇ L^q(μ)
+*命题*　命题（只有爆破的场合）：$\mu(X) < \infty$ 时 $L^p(\mu) \supseteq L^q(\mu)$
 
 设 $\mu(X) < \infty$，$0 < p < q \le \infty$。则
 
@@ -4552,7 +4552,7 @@ $p = 2$ 时 $q = 2$：**$L^2$ 是自共轭的** —— 这是 Hilbert 空间理�
 参考：Folland, Real Analysis, §6.2
 
 #### 对偶配对 φ_g　`def.duality-map`
-*定义*　由 g 给出的线性泛函 φ_g(f) = ∫ f·g
+*定义*　由 g 给出的线性泛函 $\varphi_g(f) = \int f\cdot g$
 
 设 $p, q$ 共轭，$g \in L^q$。定义 $L^p$ 上的线性泛函
 
@@ -4577,7 +4577,7 @@ $$L^q \longrightarrow (L^p)^*, \qquad g \mapsto \varphi_g$$
 参考：Folland, Real Analysis, §6.2
 
 #### ‖g‖_q = ‖φ_g‖　`prop.duality-isometry`
-*命题*　命题：‖φ_g‖ = ‖g‖_q（μ 半有限时也含 q = ∞）
+*命题*　命题：$\|\varphi_g\| = \|g\|_q$（$\mu$ 半有限时也含 $q = \infty$）
 
 设 $p, q$ 共轭。则
 
@@ -4617,7 +4617,7 @@ $$f := \mu(B)^{-1} \chi_B \operatorname{sgn} g$$
 参考：Folland, Real Analysis, Prop. 6.8
 
 #### 有界 ⟹ g ∈ L^q　`prop.bounded-functional-gives-lq`
-*命题*　命题：若 f ↦ ∫fg 在简单函数上有界，则 g ∈ L^q
+*命题*　命题：若 $f \mapsto \int fg$ 在简单函数上有界，则 $g \in L^q$
 
 设 $g$ 在 $(X, \mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^1$。记
 
@@ -4639,7 +4639,7 @@ $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 
 参考：Folland, Real Analysis, Theorem 6.14
 
 #### (L^p)* ≅ L^q　`thm.riesz-representation-lp`
-*定理*　定理（Riesz 表示）：1 < p < ∞ 时 (L^p)* ≅ L^q
+*定理*　定理（Riesz 表示）：$1 < p < \infty$ 时 $(L^p)^{*} \cong L^q$
 
 设 $1 < p < \infty$，$q$ 是共轭指数。则对每个 $\Phi \in (L^p)^*$，存在**唯一**（a.e.）的 $g \in L^q$ 使
 
@@ -4664,7 +4664,7 @@ $p = 1$、$\mu$ $\sigma$有限时结论同样成立（$(L^1)^* \cong L^\infty$�
 参考：Folland, Real Analysis, Theorem 6.15
 
 #### L^p 自反　`cor.lp-reflexive`
-*推论*　推论：1 < p < ∞ 时 L^p ≅ (L^p)**
+*推论*　推论：$1 < p < \infty$ 时 $L^p \cong (L^p)^{**}$
 
 设 $1 < p < \infty$。则
 
@@ -4687,7 +4687,7 @@ $$L^p \cong (L^p)^{**}$$
 ### 强边（标准逻辑关系）
 
 #### 替换公理模式 ⟹ 分离公理模式　`imp.repl-to-sep`
-*替换公理模式 ⇒ 分离公理模式*
+*替换公理模式 $\implies$ 分离公理模式*
 
 设 $\varphi (x, p)$ 是不含 $B$ 的公式，$A$ 是任意集合。取公式
 
@@ -4702,7 +4702,7 @@ $$B = \{ y : \exists x \in A, \psi(x, y, p) \} = \{ x \in A : \varphi(x, p) \}$$
 > 所以 ZF 里其实只需要「替换 + 一个集合存在」就够了，教材仍保留分离公理是为了方便陈述与使用。
 
 #### 分离公理模式 ⟹ 空集存在　`imp.sep-to-empty`
-*分离公理模式 ⇒ 空集存在*
+*分离公理模式 $\implies$ 空集存在*
 
 取任意集合 $a$（一阶逻辑的论域非空，故这样的 $a$ 存在；在 ZF 中也可由无穷公理提供）。
 
@@ -4716,7 +4716,7 @@ $$B = \{ x \in a : x \ne x \}$$
 > 严格地说，「论域非空」是一阶逻辑的约定，不属于 ZF 公理。若不喜欢这个约定，也可以先由无穷公理取出一个集合再分离。
 
 #### 正则公理 + 配对公理 ⟹ 无自属集合　`imp.found-to-noself`
-*正则公理 + 配对公理 ⇒ A ∉ A*
+*正则公理 + 配对公理 $\implies A \notin A$*
 
 反设存在集合 $A$ 使 $A \in A$。由配对公理取 $a = b = A$，得单点集 {A}。
 
@@ -4731,7 +4731,7 @@ $$x \cap \{ A \} = \emptyset$$
 > 把同样的论证用在任意有限 $\in$循环 $A_{0} \ni A_{1} \ni \cdots \ni A_{n} = A_{0}$ 上，取集合 $\{A_{0}$ …$A_{n-1}\}$（可由配对公理反复构造），也能得到矛盾。
 
 #### 无穷公理 + 幂集公理 + 分离公理模式 ⟹ 自然数集存在　`imp.inf-to-omega`
-*无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在*
+*无穷公理 + 幂集公理 + 分离公理模式 $\implies \omega$ 存在*
 
 1. 由无穷公理取一个归纳集 $I$。称 $J \subseteq I$ 是**归纳的**，若 $\emptyset \in J$ 且 $\forall x (x \in J \to x \cup \{x\} \in J)$。
 
@@ -4754,7 +4754,7 @@ $$\omega = \{ x \in I : \forall J ( J \in S \to x \in J ) \}$$
 故 $\omega$ 是最小归纳集，即自然数集。∎
 
 #### 配对公理 + 并集公理 ⟹ 二元并存在　`imp.binunion`
-*配对公理 + 并集公理 ⇒ 二元并存在*
+*配对公理 + 并集公理 $\implies$ 二元并存在*
 
 任给 $a$、$b$。
 
@@ -4766,7 +4766,7 @@ $$x \in \bigcup\{ a, b \} \iff \exists Y ( Y \in \{ a, b \} \wedge  x \in Y ) \i
 取 $A = \bigcup \{ a, b \}$ 即为所求。∎
 
 #### 幂集公理 + 配对公理 + 并集公理 + 分离公理模式 ⟹ 笛卡尔积存在　`imp.product`
-*幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在*
+*幂集 + 配对 + 并集 + 分离公理模式 $\implies A \times B$ 存在*
 
 任给 $A$、$B$。
 
@@ -4783,7 +4783,7 @@ $$C = \{ z \in \mathcal{P}(\mathcal{P}(A \cup B)) : \exists a \in A, \exists b \
 > 这个证明展示了一个典型套路：先用幂集「造一个足够大的容器」，再用分离公理模式「筛出真正想要的东西」。
 
 #### 选择公理 ⟺ 良序定理　`eq.ac-wo`
-*选择公理 ⟺ 良序定理*
+*选择公理 $\iff$ 良序定理*
 
 **选择公理 ⇒ 良序定理（路线 1⟹4）**
 
@@ -4820,7 +4820,7 @@ $$a \preceq b :\iff x^{-1}(a) \le x^{-1}(b)$$
 > 这是整张星图里最关键的一条等价链的起点：AC 给「挑选」，良序给「最小」，两者互为表里。
 
 #### 良序定理 ⟺ 佐恩引理　`eq.wo-zorn`
-*良序定理 ⟺ 佐恩引理*
+*良序定理 $\iff$ 佐恩引理*
 
 **良序定理 ⇒ 佐恩引理**
 
@@ -4863,7 +4863,7 @@ $$x \preceq_* y \iff\text{ 存在} (W, \preceq_W) \in \mathcal{D}\text{ 使} x, 
 4. 若 $W \ne X$，取 $x \in X \setminus W$，在 $W \cup \{x\}$ 上定义序：保留 $W$ 上的 $\preceq$，并令所有 $w \in W$ 都 $\preceq x$（把 $x$ 放在最顶端）。这仍是良序，而且是 $(W, \preceq )$ 的严格延拓，与极大性矛盾。故 $W = X$，即 $X$ 被良序化。∎
 
 #### 佐恩引理 ⟺ Hausdorff 极大原理　`eq.zorn-hausdorff`
-*佐恩引理 ⟺ Hausdorff 极大原理*
+*佐恩引理 $\iff$ Hausdorff 极大原理*
 
 **佐恩引理 ⇒ Hausdorff 极大原理（路线 2⟹3）**
 
@@ -4890,7 +4890,7 @@ $$\mathcal{C} = \{ C \subseteq P : C\text{ 是链} \}$$
 故 $u$ 是 $P$ 的极大元。∎
 
 #### Hausdorff 极大原理 ⟺ Tukey 引理　`eq.hausdorff-tukey`
-*Hausdorff 极大原理 ⟺ Tukey 引理*
+*Hausdorff 极大原理 $\iff$ Tukey 引理*
 
 **Tukey 引理 ⇒ Hausdorff 极大原理**
 
@@ -4923,7 +4923,7 @@ $$U = \bigcup \{ A : A \in \mathcal{C} \}$$
 > 这一对证明很典型：先看出「链」这个概念本身具有有限特征，就把 Hausdorff 原理换成了用起来更省事的 Tukey 引理。
 
 #### 选择公理 + Hartogs 定理 ⟹ 佐恩引理　`imp.hartogs-zorn`
-*选择公理 + Hartogs 定理 ⟹ 佐恩引理（路线 1⟹2）*
+*选择公理 + Hartogs 定理 $\implies$ 佐恩引理（路线 $1\implies2$）*
 
 设 $(P, \preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。
 
@@ -4952,7 +4952,7 @@ $>$ 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停
 > 比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。
 
 #### 佐恩引理 ⟹ 选择公理　`imp.zorn-choice`
-*佐恩引理 ⟹ 选择公理（路线 2⟹1）*
+*佐恩引理 $\implies$ 选择公理（路线 $2\implies1$）*
 
 设 $\{A_i\}_\{i \in I\}$ 是一族非空集合。要对它造出一个选择函数。
 
@@ -4981,7 +4981,7 @@ $$f' = f \cup \{ (i_0, a) \}$$
 > 「按包含序取极大元，再证明它已经没法再大」—— 这是用佐恩引理造存在性对象的典型手法。
 
 #### 佐恩引理 ⟹ 每个向量空间有基　`imp.zorn-to-basis`
-*佐恩引理 ⇒ 每个向量空间有基*
+*佐恩引理 $\implies$ 每个向量空间有基*
 
 设 $V \ne 0$ 是域 $K$ 上的向量空间，并给定线性无关集 $S_{0} \subseteq V$。令
 
@@ -5000,7 +5000,7 @@ $$\mathcal{A} = \{ S \subseteq V : S \supseteq S_0\text{ 且} S\text{ 线性无�
 > 同样的套路可以证明：每个环有极大理想、每个域上每个模有极大无关组、每个偏序集有极大反链。
 
 #### 紧 ⟹ 列紧　`imp.compact-seqcompact`
-*紧 ⟹ 列紧*
+*紧 $\implies$ 列紧*
 
 设 $\{x_{n}\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。
 
@@ -5021,7 +5021,7 @@ $$\mathcal{U} = \{ U_n : n \in \mathbb{N} \} \cup \{ X \setminus \{x_n : n \in \
 > 只有这一步不需要选择公理。
 
 #### 列紧 ⟹ 全有界　`imp.seqcompact-totbdd`
-*列紧 ⟹ 全有界*
+*列紧 $\implies$ 全有界*
 
 证明逆否：若 $X$ 不全有界，则存在一个没有收敛子列的序列。
 
@@ -5042,7 +5042,7 @@ $>$ ⚠ ② 是「取了一个点才能决定下一个点在哪」的递归选�
 > 顺带得到一个常用的推论：**列紧 $\implies$ 有界**（因为全有界 $\implies$ 有界）。
 
 #### 列紧 ⟹ 完备　`imp.seqcompact-complete`
-*列紧 ⟹ 完备*
+*列紧 $\implies$ 完备*
 
 设 $X$ 列紧，$\{x_{n}\}$ 是 $X$ 中的 Cauchy 列。
 
@@ -5057,7 +5057,7 @@ $$d(x_n, x) \le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \varepsilon/2 + \varepsilon/2 
 > 和「紧 $\implies$ 完备」是同一个套路，只是把「紧」换成它的直接推论「列紧」。
 
 #### 列紧 ⟹ 紧　`imp.seqcompact-compact`
-*列紧 ⟹ 紧*
+*列紧 $\implies$ 紧*
 
 用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。
 
@@ -5088,7 +5088,7 @@ $$d(y, x) \le d(y, x_k) + d(x_k, x) < 1/k + r/2 < r$$
 > 「坏球」这一招的直觉是：让一串被架空的小球缩到一个极限点，再用极限点的开邻域一口吞掉它。整段只用全有界，没用选择公理。
 
 #### 紧 ⟹ 完备　`imp.compact-complete`
-*紧 ⟹ 完备*
+*紧 $\implies$ 完备*
 
 设 $X$ 紧，$\{x_{n}\}$ 是 $X$ 中的 Cauchy 列。要证它收敛。
 
@@ -5103,7 +5103,7 @@ $$d(x_n, x) \le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \varepsilon/2 + \varepsilon/2 
 > 关键引理：「Cauchy 列 + 有一个收敛子列 $\implies$ 收敛」，这在任何度量空间里都对。
 
 #### 紧 ⟹ 全有界　`imp.compact-totbdd`
-*紧 ⟹ 全有界*
+*紧 $\implies$ 全有界*
 
 给定 $\varepsilon > 0$。考虑开球族
 
@@ -5118,7 +5118,7 @@ $$X = B(x_1, \varepsilon) \cup \cdots \cup B(x_n, \varepsilon)$$
 $>$ 注意这条证明只用了「开球盖住自己」这一点 —— 它说明紧 $\implies$ 全有界几乎不需要任何技术。真正难的方向是下一条。
 
 #### 完备 + 全有界 ⟹ 列紧　`imp.complete-totbdd-seqcompact`
-*完备 + 全有界 ⟹ 列紧（对角线法）*
+*完备 + 全有界 $\implies$ 列紧（对角线法）*
 
 设 $X$ 完备且全有界，$\{x_{n}\}$ 是 $X$ 中任一序列。要抽出一个收敛子列。
 
@@ -5173,7 +5173,7 @@ $$d(y_k, y_l) < 2/K$$
 ⚠ 这条命题的**前提**就是「$X$ 完备」，所以它引用完备的定义。
 
 #### 环与代数 + 单调类 ⟹ 环 → σ-环 的判据　`imp.ring-monotone-sigma`
-*环 + 单调类 ⟹ σ-环*
+*环 + 单调类 $\implies$ σ-环*
 
 设 $\mathfrak{A}$ 是环，且是单调类。要证它对**可数并**封闭。
 
@@ -5272,7 +5272,7 @@ $Borel \sigma$代数就是「由开集这个生成元生成的 $\sigma$代数」
 积 $\sigma$代数也只是 $\sigma$代数，生成元换成「矩形」而已。
 
 #### 测度 ⟹ 测度的基本性质　`imp.measure-props`
-*测度 ⟹ 单调 / 次可加 / 上下连续*
+*测度 $\implies$ 单调 / 次可加 / 上下连续*
 
 设 $\mu$ 是测度。
 
@@ -5295,7 +5295,7 @@ $$\mu(E_1) - \mu(\bigcap_j E_j) = \mu(E_1 \setminus \bigcap_j E_j) = \lim_j \mu(
 $>$ ⚠ (d) 里的「$\mu (E_{1}) < \infty$」正是为了让 $\mu (E_{1})$ 能被减掉。没有它，等式会退化成 $\infty = \infty$。
 
 #### 预测度 ⟹ 由预测度诱导外测度　`imp.premeasure-to-outer`
-*预测度 ⟹ 诱导的外测度*
+*预测度 $\implies$ 诱导的外测度*
 
 设 $\mathfrak{A}$ 是代数，$\mu _{0}$ 是 $\mathfrak{A}$ 上的预测度。对 $A \subseteq X$ 令
 
@@ -5320,7 +5320,7 @@ $$\mu^*(\bigcup_j A_j) \le \sum_{j,k} \mu_0(E_{j,k}) \le \sum_j \mu^*(A_j) + \va
 $>$ ⚠ ④ 的每一步都只需取**一个**覆盖 —— 这用的是 $\mathbb{N}$ 上的可数选择（可以从自然数的良序性显式给出），不需要完整的 AC。
 
 #### 外测度 + μ*-可测集 ⟹ Carathéodory 定理　`imp.outer-carath`
-*外测度 + 可切集 ⟹ σ-代数与完备测度*
+*外测度 + 可切集 $\implies$ σ-代数与完备测度*
 
 设 $\mu^{*}$ 是外测度，$\mathcal{M} = \{ A : \forall E, \mu^{*}(E) = \mu^{*}(E\cap A) + \mu^{*}(E\cap A^{c}) \}$。
 
@@ -5351,7 +5351,7 @@ $$\mu^*(E) \ge \mu^*(E \cap B^c) \ge \mu^*(E) - \mu^*(E \cap B) \ge \mu^*(E) - \
 $>$ 这一条是纯验证，但要验的东西不少，上面把要点写全了。
 
 #### Carathéodory 定理 + 由预测度诱导外测度 ⟹ 预测度还原　`imp.carath-extension`
-*Carathéodory + 预测度 ⟹ 原代数上的值不变*
+*Carathéodory + 预测度 $\implies$ 原代数上的值不变*
 
 设 $\mathfrak{A}$ 是代数，$\mu _{0}$ 是 $\mathfrak{A}$ 上的预测度，$\mu^{*}$ 是由 $\mu _{0}$ 诱导的外测度，$\mathcal{M}$ 是全体 $\mu^{*}$-可测集。
 
@@ -5395,7 +5395,7 @@ $$\nu(E) \le \sum_j \nu(E_j) = \sum_j \mu_0(E_j)$$
 $>$ ⚠ ② 里 $\mu (E) < \infty$ 的等号之所以能成立，用的是「在有限测度的集合上 $\mu - \nu$ 也是测度」这一点。$\mathcal{M}(\mathfrak{A})$ 上会出现无穷值，所以只能逐块比较 —— 这正是 $\sigma$有限必不可少的原因。
 
 #### F 给出的预测度 + 扩张的唯一性 ⟹ F ↔ Borel 测度　`imp.ls-premeasure-to-measure`
-*F 的预测度 ⟹ ℝ 上的 Borel 测度*
+*F 的预测度 $\implies \mathbb{R}$ 上的 Borel 测度*
 
 设 $F$ 递增右连续。由前一条命题，$\mu _{0}((a, b]) = F(b) - F(a)$ 扩充成半开区间生成的代数 $\mathfrak{A}$ 上的**预测度**。
 
@@ -5408,7 +5408,7 @@ $>$ ⚠ ② 里 $\mu (E) < \infty$ 的等号之所以能成立，用的是「在
 **④ 「差常数」的来源。** $\mu _F$ 只看增量：把 $F$ 换成 F + c，对一切 (a, b] 有 $F(b) - F(a)$ 不变，故预测度不变、扩张不变。反过来若 $\mu _F = \mu _G$，则对一切 $a < b$，$F(b) - F(a) = G(b) - G(a)$，固定 $a$ 即得 $F - G$ 是常数。∎
 
 #### 零集与完备 ⟹ 完备化定理　`imp.completion`
-*零集 ⟹ 完备化*
+*零集 $\implies$ 完备化*
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间，$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M}, F \subseteq N$ 对某个零集 N }。
 
@@ -5465,7 +5465,7 @@ Lebesgue–Stieltjes 测度是一种 Borel 测度。
 这几条性质都是测度定义（可数可加）的直接推论。
 
 #### 简单函数 + 简单函数逼近 ⟹ 可测函数的封闭性　`imp.measurable-limit`
-*简单函数逼近 ⟹ 可测函数在极限下封闭*
+*简单函数逼近 $\implies$ 可测函数在极限下封闭*
 
 **① 上确界。** 设 $$f_j$$ 可测。要证 $$\sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\infty]$$（$a \in \mathbb{R}$）验证：
 
@@ -5488,7 +5488,7 @@ $$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a - q\} )$$
 > 这条是把「sup 可测、max 可测、极限可测、和积可测」几条合并成的总纲 —— 单独看每一条都很碎，合起来才是它的分量。
 
 #### 可测性的两条判定准则 ⟹ 连续 ⟹ Borel 可测　`imp.continuous-borel`
-*连续 ⟹ Borel 可测*
+*连续 $\implies$ Borel 可测*
 
 设 $$f : X \to Y$$ 连续，即每个开集的原像是开集。
 
@@ -5497,7 +5497,7 @@ $$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a - q\} )$$
 $>$ 注意这个坑：**这个论证对 $(\mathfrak{B}, \mathfrak{B})$ 成立，但对 $(\mathcal{L}, \mathcal{L})$ 不成立** —— 因为 $\mathcal{L}$ 并不由开集生成，它比 $\mathfrak{B}_\mathbb{R}$ 多了很多非 Borel 的零测集子集。
 
 #### 完备化定理 ⟹ 完备化后可改在零集上　`imp.completion-measurable-function`
-*完备化定理 ⟹ 完备空间上的可测函数可改在零集上*
+*完备化定理 $\implies$ 完备空间上的可测函数可改在零集上*
 
 完备化 $(X, \bar{\mathcal{M}}, \bar{\mu})$ 相对 $(X, \mathcal{M}, \mu)$ 只多做了一件事：**把零集的子集也收进 $\sigma$代数**。所以两个 $\sigma$代数只在零集上不同。
 
@@ -5542,7 +5542,7 @@ Borel 可测用的是 $\mathfrak{B}_\mathbb{R}$ 与 $\mathfrak{B}_\mathbb{C}$。
 封闭性里的极限都是相对测度 $\mu$ 而言的。
 
 #### 非负函数的积分 + 简单函数积分的性质 ⟹ 单调收敛定理　`imp.mct`
-*非负积分的定义 ⟹ 单调收敛定理*
+*非负积分的定义 $\implies$ 单调收敛定理*
 
 **① 一个方向是免费的。** 由 $f_{n} \le f$ 与积分的单调性，$\int f_{n} \le \int f$，故
 
@@ -5573,7 +5573,7 @@ $>$ ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 
 > 「先拿一个简单函数从下面顶住 $f$，再让 $E_{n}$ 爬上去」—— 这个套路在 Fatou 引理里还会再用一次。
 
 #### 单调收敛定理 ⟹ 逐项积分　`imp.termwise`
-*MCT ⟹ 逐项积分*
+*MCT $\implies$ 逐项积分*
 
 **① 先看两项。** 由非负性，$$\{f_1 \wedge  n\}$$、$$\{f_2 \wedge  n\}$$ 都是简单函数列的极限（简单函数逼近定理），于是
 
@@ -5592,7 +5592,7 @@ $$\int \sum_{n=1}^{\infty} f_n = \lim_{N\to\infty} \int \sum_{n=1}^{N} f_n = \li
 ∎
 
 #### 单调收敛定理 ⟹ Fatou 引理　`imp.fatou`
-*MCT ⟹ Fatou 引理*
+*MCT $\implies$ Fatou 引理*
 
 设 $$g_n = \inf_{k \ge n} f_k$$，则
 
@@ -5610,7 +5610,7 @@ $>$ 整个证明就是把「liminf 定义成递增列的上确界」这件事翻
 > Fatou 就是 MCT 在「不单调」情形下的残留物：单调性换成了 liminf。
 
 #### Fatou 引理 ⟹ 控制收敛定理　`imp.dct`
-*Fatou ⟹ 控制收敛定理*
+*Fatou $\implies$ 控制收敛定理*
 
 设 $$f_n \to f$$ a.e.，$$|f_n| \le g \in L^1$$。
 
@@ -5638,7 +5638,7 @@ $>$ ⭐ 关键在于**控制函数提供的非负性**：$$g \pm  f_n$$ 都是�
 $>$ 移项之所以合法，是因为 $$g$$ 可积（$\int g < \infty$）—— 这正是「控制函数必须属于 $L^{1}$」而不能只是「有界」的原因。
 
 #### 控制收敛定理 ⟹ 交换极限/导数与积分　`imp.differentiate-under-integral`
-*DCT ⟹ 在积分号下求极限与求导*
+*DCT $\implies$ 在积分号下求极限与求导*
 
 **(a)** 取任意 $$t_n \to t_0$$，令 $$f_n(x) = f(x, t_n)$$。由题设 $$|f_n| \le g \in L^1$$、且 $$f_n \to f(x,t_0)$$ 逐点，DCT 直接给出
 
@@ -5664,7 +5664,7 @@ $$F'(t_0) = \lim_n \int h_n = \int \lim_n h_n = \int \partial f / \partial t(x, 
 $>$ ⚠ (b) 里那个「取 sup 的控制」必须提前假定：如果只对**每个** $t$ 假设有控制，是不够的 —— 需要**同一个 $g$** 控制整族偏导数。
 
 #### 逐项积分 + 积分为零 ⟺ 几乎处处为零 ⟹ L¹ 的逐项积分　`imp.termwise-L1`
-*非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分*
+*非负逐项积分 + 零集判定 $\implies L^{1}$ 的逐项积分*
 
 设 $$\sum_j \int |f_j| < \infty$$。
 
@@ -5685,7 +5685,7 @@ $$\int f = \lim_{N\to\infty} \int s_N = \lim_{N\to\infty} \sum_{j\le N} \int f_j
 （中间一步用 $L^{1}$ 的线性。）∎
 
 #### 积分为零 ⟺ 几乎处处为零 ⟹ 何时两个函数积分处处相同　`imp.integrals-equal-iff`
-*积分为零 ⟹ 用积分识别函数*
+*积分为零 $\implies$ 用积分识别函数*
 
 记 $$h = f - g \in L^1$$。三条之间的等价链条是
 
@@ -5698,7 +5698,7 @@ $$(i) \int_E f = \int_E g\quad  \forall E \in \mathcal{M}\quad  \iff\quad  \int_
 **$(iii) \implies (i)$**：$h = 0 \text{a.e.}$ 时，对任意 $E$，$$\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎
 
 #### Fatou 引理 ⟹ Fatou 的推论　`imp.fatou-corollary`
-*Fatou 引理 ⟹ a.e. 版本的 Fatou*
+*Fatou 引理 $\implies \text{a.e.}$ 版本的 Fatou*
 
 把 Fatou 引理用在 $\liminf f_n$ 上：a.e. 收敛时 $\liminf_n f_n = f$，于是 $\int f = \int \liminf f_n \le \liminf \int f_n$。∎
 
@@ -5759,7 +5759,7 @@ DCT 的证明是正负部各用一次 Fatou —— 又回到 $L^{+}$。
 「a.e. 版本」的意思就是把零集上的例外丢掉。
 
 #### 依测度 Cauchy ⟹ 依测度 Cauchy ⟹ 收敛　`imp.cauchy-in-measure`
-*依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛*
+*依测度 Cauchy $\implies$ 依测度收敛且有一子列 a.e. 收敛*
 
 **① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 $k$ 存在 $$N_k$$ 使
 
@@ -5798,7 +5798,7 @@ $$\{|f_n - f| \ge \varepsilon\} \subseteq \{|f_n - g_j| \ge \varepsilon/2\} \cup
 > ② 里 $$\sum 2^{-k} < \infty$$ 是关键 —— 正是这一条让「坏集合的尾并」趋于零，也就是 Borel–Cantelli 的精神。
 
 #### 可积 / L¹ ⟹ L¹ 收敛 ⟹ 依测度收敛　`imp.L1-measure`
-*Markov 不等式 ⟹ L¹ 收敛蕴含依测度收敛*
+*Markov 不等式 $\implies L^{1}$ 收敛蕴含依测度收敛*
 
 **Markov 不等式**：设 $$g$$ 可测非负，则对任意 $\varepsilon > 0$，
 
@@ -5813,7 +5813,7 @@ $$\mu(\{|f_n - f| > \delta\}) \le (1/\delta)\cdot\int |f_n - f| d\mu \to 0$$
 （最后一步正是 $L^{1}$ 收敛的定义。）再对任意 $\varepsilon > 0$ 取 $n$ 足够大即可。∎
 
 #### 五种收敛 ⟹ Egorov 定理　`imp.egorov`
-*a.e. 收敛 + 有限测度 ⟹ 近一致*
+*a.e. 收敛 + 有限测度 $\implies$ 近一致*
 
 设 $$f_n \to f$$ a.e.，$$\mu(X) < \infty$$。
 
@@ -5846,7 +5846,7 @@ $$|f_n(x) - f(x)| < k^{-1}$$
 $>$ ⚠ ③ 是唯一用到 $$\mu(X) < \infty$$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。
 
 #### L¹ 里的逼近 + Egorov 定理 ⟹ Lusin 定理　`imp.lusin`
-*简单函数逼近 + Egorov ⟹ Lusin*
+*简单函数逼近 + Egorov $\implies$ Lusin*
 
 **① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $$\{\varphi_n\}$$ 使 $$\int|f - \varphi_n| \to 0$$；取子列还可保证 $$\varphi_n \to f$$ a.e.（由 $L^{1}$ 收敛 $\implies$ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。
 
@@ -5885,7 +5885,7 @@ $L^{1}$ 收敛的定义里用到 $\int |f_{n} - f|$。
 证明的 ③ 靠测度的上连续性，而那是可数可加性的推论。
 
 #### 预测度 + Carathéodory 定理 ⟹ 乘积测度　`imp.product-measure`
-*矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度*
+*矩形上的预测度 $\implies$ Carathéodory 扩张得到乘积测度*
 
 **① $\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \cap A_k'$$ $\times$ $$B_j \cap B_k'$$），$\mu_{0}$ 的值不变 —— 因为 $\mu$、$\nu$ 在各自那一侧都是有限可加的。
 
@@ -5898,7 +5898,7 @@ $L^{1}$ 收敛的定义里用到 $\int |f_{n} - f|$。
 $>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。
 
 #### 截口 ⟹ 截口可测　`imp.section-measurable`
-*截口的定义 ⟹ 截口保持可测性*
+*截口的定义 $\implies$ 截口保持可测性*
 
 **(a)** 令 $$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N}\text{ 且} E^y \in \mathcal{M}\quad  \forall(x, y) \in X \times Y\}$$。
 
@@ -5919,7 +5919,7 @@ $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 而 $$f^{-1}(B) \in \mathcal{M} \otimes  \mathcal{N}$$，由 (a) 它的纵截口属于 $\mathcal{N}$，即 $$f_x^{-1}(B) \in \mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎
 
 #### 单调类定理 + 截口可测 ⟹ 乘积测度由截口给出　`imp.product-sections`
-*单调类定理 ⟹ 乘积测度由截口积分给出*
+*单调类定理 $\implies$ 乘积测度由截口积分给出*
 
 **① 先设 $\mu$、$\nu$ 有限。** 令 $$\mathcal{C} = \{E \in \mathcal{M} \otimes  \mathcal{N} : x \mapsto \nu(E_x)\text{ 可测}, y \mapsto \mu(E^y)\text{ 可测},\text{ 且} \mu\times\nu(E) = \int\nu(E_x)d\mu = \int\mu(E^y)d\nu\}$$。
 
@@ -5938,7 +5938,7 @@ $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 $>$ ⚠ $\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。
 
 #### 乘积测度由截口给出 + 单调收敛定理 ⟹ Fubini–Tonelli　`imp.tonelli`
-*集合版（截口公式）+ MCT ⟹ Tonelli*
+*集合版（截口公式）+ MCT $\implies$ Tonelli*
 
 **① 指示函数。** 取 $$f = \chi_E$$（$$E \in \mathcal{M} \otimes  \mathcal{N}$$）。此时
 
@@ -5975,7 +5975,7 @@ $$\int |f| d(\mu \times \nu) < \infty$$
 $>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。
 
 #### Fubini–Tonelli + 完备化定理 + 乘积测度通常不完备 ⟹ 完备情形的 F–T　`imp.fubini-complete`
-*乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T*
+*乘积测度通常不完备 $\implies$ 必须补一条完备情形的 F–T*
 
 **① 先证 $f \ge 0$ 的情形。** 由于 $\lambda$ 是 $\mu \times \nu$ 的完备化，$$\mathcal{L}$$ 中的集合可以写成
 
@@ -6071,7 +6071,7 @@ Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 截口的第二半是对**函数** $f : X \times Y \to \mathbb{C}$ 定义 $f_x(y) := f(x, y)$。
 
 #### 笛卡尔积存在 ⟹ 截口　`imp.product-section`
-*笛卡尔积存在 ⟹ 可以谈截口*
+*笛卡尔积存在 $\implies$ 可以谈截口*
 
 截口是 $X \times Y$ 的子集 $E$ 的属性，所以先要有 $X \times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。
 
@@ -6084,7 +6084,7 @@ Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 前提 $E \in \mathcal{M} \otimes \mathcal{N}$ 里的 $\otimes$ 就是**积 $\sigma$-代数**。
 
 #### 符号测度 + 正集的封闭性 ⟹ Hahn 分解定理　`imp.hahn`
-*符号测度 + 正集的封闭性 ⟹ Hahn 分解*
+*符号测度 + 正集的封闭性 $\implies$ Hahn 分解*
 
 **① 先把 $\nu$ 的无穷值甩掉。** 不妨设 $\nu$ 不取 $\infty$（若 $\nu$ 不取 $-\infty$ 就改证 $-\nu$）。于是 $$\nu(X) < \infty$$ 中的「上方」是安全的。
 
@@ -6126,7 +6126,7 @@ $$\nu(B) = \nu(A) - \sum_k \nu(A_k) > 0$$
 > ⭐ 「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $$\nu(F) \ge -1/n_{k-1}$$ 一路通过 $k \to \infty$ 得到 $$\nu(F) \ge 0$$。
 
 #### Hahn 分解定理 ⟹ Jordan 分解定理　`imp.jordan`
-*Hahn 分解 ⟹ Jordan 分解*
+*Hahn 分解 $\implies$ Jordan 分解*
 
 取 $\nu$ 的一个 Hahn 分解 $$X = P \sqcup  N$$（$P$ 正、$N$ 负）。定义
 
@@ -6149,7 +6149,7 @@ $$\nu(E) = \nu(E \cap P) + \nu(E \cap N) = \nu^+(E) - \nu^-(E)$$
 **⑤ 唯一性。** 设 $$\nu = \mu_1 - \mu_2$$ 也是这种分解（$$\mu_1 \perp  \mu_2$$）。取见证奇异性的划分 $$X = E \sqcup  F$$（$E$ 是 $\mu _{1}$零集、$F$ 是 $\mu _{2}$零集）。由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $$\mu_1 = \nu^+$$、$$\mu_2 = \nu^-$$。∎
 
 #### 绝对连续 ⟹ 绝对连续的 ε–δ 刻画　`imp.ac-epsilon-delta`
-*绝对连续 ⟹ ε–δ 刻画（ν 有限时）*
+*绝对连续 $\implies \varepsilon$–$\delta$ 刻画（$\nu$ 有限时）*
 
 设 $\nu$ 有限且 $$\nu \ll  \mu$$。由「绝对连续与变差」那条命题，可以**不妨设 $\nu$ 本身就是正测度**（换成 $|\nu |$ 不影响结论）。
 
@@ -6174,7 +6174,7 @@ $$\nu(F) = \lim_k \nu(F_k) \ge \varepsilon > 0$$
 $>$ ⭐ 反证里那个「对一切 $n$ 都能找到」是取出的关键：它把「不连续」翻译成了一列越来越小的坏集合，再用 Borel–Cantelli 型的尾并把它们压成零集。
 
 #### 要么奇异、要么有下界 + 单调收敛定理 + 绝对连续与变差 ⟹ Lebesgue–Radon–Nikodym 定理　`imp.lebesgue-rn`
-*「要么奇异、要么有下界」⟹ Lebesgue–Radon–Nikodym*
+*「要么奇异、要么有下界」$\implies$ Lebesgue–Radon–Nikodym*
 
 **I. 先设 $\nu$、$\mu$ 都有限，且 $\nu \ge 0$。**
 
@@ -6247,7 +6247,7 @@ $$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}\quad  \l
 ∎
 
 #### 积分给出绝对连续测度 ⟹ 积分的绝对连续性　`imp.integral-ac-continuity`
-*积分给出绝对连续测度 ⟹ 积分的绝对连续性*
+*积分给出绝对连续测度 $\implies$ 积分的绝对连续性*
 
 把「积分给出绝对连续测度」与绝对连续的 $\varepsilon$–$\delta$ 刻画拼起来即可：$\mu(E) < \delta \implies \nu(E) = \int_E f \, d\mu < \varepsilon$。∎
 
@@ -6312,7 +6312,7 @@ $L$–$R$–$N$ 里那个 $\rho \ll \mu$ 就是绝对连续。
 全变差本身是一个测度。
 
 #### 覆盖引理 + 极大函数 ⟹ 极大定理　`imp.maximal-theorem`
-*覆盖引理 ⟹ 极大定理*
+*覆盖引理 $\implies$ 极大定理*
 
 **① 把坏集换成球族。** 令 $$E_\alpha = \{x : Hf(x) > \alpha\}$$。对每个 $$x \in E_\alpha$$，由 Hf 的定义（上确界）存在 $$r_x > 0$$ 使
 
@@ -6339,7 +6339,7 @@ $$m(E_\alpha) \le (3^n/\alpha)\cdot\int |f| dy$$
 > ⭐ 整段只有一个「魔法」：覆盖引理保证挑出来的不交球虽然装不满 $$E_\alpha$$，但总测度至少是 $$3^{-n}$$ 倍 —— 恰好够用。
 
 #### 极大定理 + L¹ 里的逼近 + 平均算子联合连续 ⟹ Lebesgue 微分定理　`imp.lebesgue-differentiation`
-*极大定理 + 连续函数逼近 ⟹ Lebesgue 微分定理*
+*极大定理 + 连续函数逼近 $\implies$ Lebesgue 微分定理*
 
 **① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $$N \in \mathbb{N}$$ 证明在球 $$\{|x| \le N\}$$ 上几乎处处成立；把 $f$ 换成 $$f\cdot\chi_{B(N+1, 0)}$$ 后即可**设 $$f \in L^1$$**。
 
@@ -6374,7 +6374,7 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对一切} x \notin \bigcup_{m\in\mat
 > ⭐ 这是分析里最漂亮的标准套路之一：**用「连续函数是稠密的」把问题搬到好情形，再用极大不等式把误差控制住**。两边一夹，坏集测度为零。
 
 #### Lebesgue 微分定理 ⟹ Lebesgue 集几乎处处　`imp.lebesgue-set`
-*微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处*
+*微分定理 + 可数稠密子集 $\implies$ Lebesgue 集几乎处处*
 
 **① 对每个复数 $c$ 用一次微分定理。** 固定 $$c \in \mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $$E_c$$，使对 $$x \notin E_c$$，
 
@@ -6397,7 +6397,7 @@ $$\frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le \frac{1}{m(B(r,x))} \in
 > ⭐ 「把不可数条件化归成可数」这一步是可数性论证的典型手笔，和 Borel–Cantelli 是同一种精神。
 
 #### Lebesgue 集几乎处处 + 可缩族 ⟹ 可缩族的微分定理　`imp.differentiation-general`
-*Lebesgue 集 + 可缩条件 ⟹ 一般族的微分定理*
+*Lebesgue 集 + 可缩条件 $\implies$ 一般族的微分定理*
 
 设 $$x \in L_f$$，$$\{E_r\}$$ 可缩地趋于 $x$，即 $$E_r \subseteq B(r,x)$$ 且 $$m(E_r) > \alpha\cdot m(B(r,x))$$。
 
@@ -6416,7 +6416,7 @@ $$| \frac{1}{m(E_r)} \int_{E_r} f - f(x) | \le \frac{1}{m(E_r)} \int_{E_r} |f(y)
 > 全部难度都被「把 L_f 的定义写成 $$\int|f(y) - f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。
 
 #### 可缩族的微分定理 + 正则 Borel 测度 + 覆盖引理 ⟹ RN 导数的点态公式　`imp.rn-pointwise`
-*微分定理 + 正则性 ⟹ RN 导数的点态公式*
+*微分定理 + 正则性 $\implies RN$ 导数的点态公式*
 
 设 $$d\nu = d\lambda + f\cdot dm$$（$$\lambda \perp  m$$），$\nu$ 正则。
 
@@ -6501,7 +6501,7 @@ $L^{1}(\nu )$ 的定义直接搬用 $L^{1}(|\nu |)$。
 证明中间要推出 $f \in L^{1}_{l}oc$。
 
 #### T_F ± F 递增 ⟹ BV 的 Jordan 分解　`imp.bv-jordan`
-*T_F ± F 递增 ⟹ BV 的 Jordan 分解*
+*$T_F \pm F$ 递增 $\implies BV$ 的 Jordan 分解*
 
 **(b) 的 $(\Longleftarrow )$ 方向**：若 $$F = G - H$$（$G$、$H$ 有界递增），则对任意分划
 
@@ -6524,7 +6524,7 @@ $$G - H = (1/2)(T_F + F) - (1/2)(T_F - F) = F$$
 > ⭐ 这叫「函数版的 Jordan 分解」，与符号测度的 $\nu = \nu ^{+} - \nu ^{-}$ 完全平行 —— 事实上两者通过「测度 $\leftrightarrow NBV$」的对应是同一件事。
 
 #### BV 的 Jordan 分解 + 单调函数几乎处处可导 ⟹ BV 函数的正则性　`imp.bv-regularity`
-*化归到递增函数 ⟹ BV 的正则性*
+*化归到递增函数 $\implies BV$ 的正则性*
 
 由**Jordan 分解**，只需对**有界递增**函数证明这三条 —— 差的性质自动继承。
 
@@ -6541,7 +6541,7 @@ $$F(x-) = \sup_{y < x} F(y), \quad  F(x+) = \inf_{y > x} F(y)$$
 $>$ ⭐ 整个证明的模式很典型：**先证明「递增」这个好情形，再用 Jordan 分解把一般情形搬过去**。
 
 #### 全变差的 NBV 性质 + BV 的 Jordan 分解 ⟹ 测度 ↔ NBV 的一一对应　`imp.borel-nbv`
-*NBV 的性质 ⟹ 测度与函数的一一对应*
+*NBV 的性质 $\implies$ 测度与函数的一一对应*
 
 **(1) 测度 $\implies$ 函数。** 复测度拆成四个正测度 $$\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$$。令
 
@@ -6562,7 +6562,7 @@ $$\mu_{T_F}((-\infty, x]) = T_F(x) = \sup\{ \sum|F(x_j) - F(x_{j-1})| \} = |\mu_
 （中间那个等号是 $|\mu |$ 的全变差定义 + 测度的可数可加性。）由 $(-\infty , x]$ 生成 $\mathfrak{B}_\mathbb{R}$，两个测度相等。∎
 
 #### NBV 函数的导数与测度的关系 + 绝对连续的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续　`imp.ac-measure`
-*μ_F ≪ m 的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续*
+*$\mu_F \ll m$ 的 $\varepsilon$–$\delta$ 刻画 $\implies$ 函数绝对连续 $\iff$ 测度绝对连续*
 
 **$(\Longleftarrow )$** 设 $$\mu_F \ll  m$$。应用测度版绝对连续的 $\varepsilon$–$\delta$ 刻画（注意 $\mu _F$ 有限，符合前提）：给定 $\varepsilon > 0$ 取 $\delta > 0$ 使
 
@@ -6581,7 +6581,7 @@ $$|\mu_F(E)| = \lim_j |\mu_F(U_j)| \le \varepsilon$$
 由 $\varepsilon$ 任意，$$\mu_F(E) = 0$$。故 $$\mu_F \ll  m$$。∎
 
 #### AC ⊆ BV + 函数绝对连续 ⟺ 测度绝对连续 + NBV 函数的导数与测度的关系 ⟹ 微积分基本定理（Lebesgue 版）　`imp.ftc`
-*(a) ⟺ (b) ⟺ (c)：微积分基本定理的三条等价*
+*$(a) \iff (b) \iff (c)$：微积分基本定理的三条等价*
 
 **$(a) \implies (b)$。** 设 $F$ 绝对连续。由**$AC \subseteq BV$**，$F \in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\iff \mu _F \ll m$**，写 Lebesgue 分解时奇异部分 $\lambda = 0$，于是 $$d\mu_F = f\cdot dm$$，即
 
@@ -6646,7 +6646,7 @@ $>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**C
 推论同时落在 NBV 与 AC 的交里。
 
 #### Young 不等式 ⟹ Hölder 不等式　`imp.holder`
-*Young 不等式 ⟹ Hölder 不等式*
+*Young 不等式 $\implies$ Hölder 不等式*
 
 **① 先设 $\|f\|_p = \|g\|_q = 1$。** 在 Young 不等式里取
 
@@ -6668,7 +6668,7 @@ $$|f|^p = |g|^q \quad \text{a.e.}$$
 在归一化之后；还原到一般情形就是「$|f|^p$ 与 $|g|^q$ 成比例 a.e.」。
 
 #### Hölder 不等式 ⟹ Minkowski 不等式　`imp.minkowski`
-*Hölder 不等式 ⟹ Minkowski 不等式*
+*Hölder 不等式 $\implies$ Minkowski 不等式*
 
 **① 拆开。** 对 $p > 1$，
 
@@ -6691,7 +6691,7 @@ $p = 1$ 时直接由逐点不等式 $|f+g| \le |f| + |g|$ 积分得到。∎
 > ⭐ 注意「约掉」那一步：正是 $1/p + 1/q = 1$ 保证 $p - p/q = 1$，否则会留下一个顽固的指数。
 
 #### Minkowski 不等式 + 单调收敛定理 + 控制收敛定理 ⟹ L^p 是 Banach 空间　`imp.lp-banach`
-*三角不等式 + MCT + DCT ⟹ $L^p$ 完备*
+*三角不等式 + MCT + DCT $\implies$ $L^p$ 完备*
 
 **① 换成级数。** 赋范线性空间完备 $\iff$ 每个**绝对收敛**的级数都收敛（标准判据）。所以设 $\{f_k\} \subseteq L^p$ 且
 
@@ -6721,7 +6721,7 @@ $$\left\| F - s_n \right\|_p^p = \int |F - s_n|^p \to 0$$
 $>$ ⭐ 这一段是「用逐点收敛的定理（MCT / DCT）去证范数收敛」的范例：控制函数 $G$ 就是关键桥梁。
 
 #### Hölder 不等式 + 对偶配对 φ_g ⟹ 有界 ⟹ g ∈ L^q　`imp.bounded-gives-lq`
-*Hölder + 有界性 ⟹ $g \in L^q$*
+*Hölder + 有界性 $\implies$ $g \in L^q$*
 
 **Step 1：有限支可测的 $f$ 也满足 $|\int fg| \le M_g(g)$。**
 
@@ -6750,7 +6750,7 @@ $$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \
 **Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。若 $\mu(A) > 0$，由半有限性或 $A \subseteq \{g \ne 0\}$ 的 $\sigma$有限性取 $B \subseteq A$、$0 < \mu(B) < \infty$，令 $f = \mu(B)^{-1} \chi_B \operatorname{sgn} g$，则 $\|f\|_1 = 1$ 而 $\int fg \ge M_\infty(g) + \varepsilon$ —— 矛盾。故 $\mu(A) = 0$，即 $\|g\|_\infty \le M_\infty(g)$；反方向由 Hölder。∎
 
 #### 有界 ⟹ g ∈ L^q + Lebesgue–Radon–Nikodym 定理 + ‖g‖_q = ‖φ_g‖ ⟹ (L^p)* ≅ L^q　`imp.riesz-lp`
-*把泛函变成测度 ⟹ $(L^p)^* \cong L^q$*
+*把泛函变成测度 $\implies$ $(L^p)^* \cong L^q$*
 
 设 $1 < p < \infty$、$\Phi \in (L^p)^*$。
 
@@ -7001,7 +7001,7 @@ $L^p$ 的元素取复值：$f : X \to \mathbb{C}$。
 外测度定义在**全体子集**上：$\mu^* : \mathcal{P}(X) \to [0, +\infty]$。
 
 #### 幂集 𝒫(X) ⟹ Cantor 定理　`imp.cantor`
-*幂集 ⟹ Cantor 定理（对角线法）*
+*幂集 $\implies$ Cantor 定理（对角线法）*
 
 **① $|A| \le |\mathcal{P}(A)|$。** 映射 $a \mapsto \{a\}$ 是单射：$\{a\} = \{a'\} \implies a = a'$。
 
@@ -7021,7 +7021,7 @@ $$D := \{ a \in A : a \notin f(a) \}$$
 > $D$ 之所以叫「对角集」：把 $A$ 排成行、把 $\mathcal{P}(A)$ 排成列，「$a \in f(a)$」是一张表，$D$ 取的是这张表的**对角线**再逐格取反。
 
 #### 单射 / 满射 / 双射 ⟹ Schröder–Bernstein 定理　`imp.schroder-bernstein`
-*两个方向的单射 ⟹ 双射*
+*两个方向的单射 $\implies$ 双射*
 
 设 $f : A \to B$、$g : B \to A$ 都是单射。把 $A$ 分成两半，一半用 $f$、一半用 $g^{-1}$，拼出一个双射。
 
@@ -7050,7 +7050,7 @@ $$f(A^{*}) = \bigcup_{n} f(A_n) = \bigcup_{n} g^{-1}(A_{n+1}) \subseteq g^{-1}(A
 综上 $h$ 是双射，故 $|A| = |B|$。$\blacksquare$
 
 #### 良序定理 ⟹ 基数可比定理　`imp.cardinal-comparable`
-*良序定理 ⟹ 任意两个基数可比*
+*良序定理 $\implies$ 任意两个基数可比*
 
 设 $A$、$B$ 是任意两个集合。
 
@@ -7216,7 +7216,7 @@ $L^1$ 的元素不是函数本身，而是**函数在 a.e. 相等下的等价类
 后半句 $2^{\aleph_0} > \aleph_0$ 用的就是 Cantor 定理（$|A| < |\mathcal{P}(A)|$）。
 
 #### 绝对值 |x| ⟹ 三角不等式　`imp.triangle`
-*绝对值的定义 ⟹ 三角不等式*
+*绝对值的定义 $\implies$ 三角不等式*
 
 设 $x, y \in K$。先看两个基本事实（都由 $|t| = \max\{t, -t\}$ 直接读出）：
 
@@ -7241,12 +7241,12 @@ $$|x + y| \le |x| + |y| \qquad \blacksquare$$
 **变形。** 在 $|x + y| \le |x| + |y|$ 中把 $x$ 换成 $x - y$ 得 $|x| \le |x - y| + |y|$，即 $|x| - |y| \le |x - y|$；交换 $x, y$ 得另一侧，两者合起来就是 $\big| |x| - |y| \big| \le |x - y|$。$n$ 元版本由归纳：$|x_1 + \cdots + x_n| \le |x_1 + \cdots + x_{n-1}| + |x_n|$。
 
 #### 三角不等式 ⟹ Cauchy 列与零列　`imp.triangle-cauchy`
-*三角不等式 ⟹ 零列关系是等价关系*
+*三角不等式 $\implies$ 零列关系是等价关系*
 
 自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \sim (y_n)$、$(y_n) \sim (z_n)$，则 $|x_n - z_n| \le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \sim (z_n)$。没有这一条，$\mathbb{R}$ 就没法定义成商集。∎
 
 #### 实数系 ℝ ⟹ ℝ 是完备有序域　`imp.real-ordered-field`
-*Cauchy 列的等价类 ⟹ 完备有序域*
+*Cauchy 列的等价类 $\implies$ 完备有序域*
 
 记 $\mathcal{C}$ 为有理 Cauchy 列的全体。下面把 $\mathbb{R} := \mathcal{C}/\sim$ 逐条查一遍。
 
@@ -7315,7 +7315,7 @@ $$\beta_n - \alpha_n = \frac{\beta_0 - \alpha_0}{2^n} \xrightarrow{\ n \to \inft
 > ⭐ 注意 ⑤ 与 ⑥ 的位置：**先有「Cauchy 列收敛」，才有确界原理**。戴德金分割那条路的顺序正好相反（那里完备性是「并」的直接后果），两条路殊途同归。
 
 #### ℝ 是完备有序域 ⟹ 阿基米德性质　`imp.archimedean`
-*完备性 ⟹ 阿基米德性质 + ℚ 稠密*
+*完备性 $\implies$ 阿基米德性质 + $\mathbb{Q}$ 稠密*
 
 设 $K$ 是完备有序域（把 $\mathbb{N}$、$\mathbb{Z}$、$\mathbb{Q}$ 按 $1$ 生成的子域嵌进去看）。
 
@@ -7343,7 +7343,7 @@ $$m \le nx < m + 1$$
 > ⭐ 注意 (i) 的证明只用了「$\mathbb{N}$ 的每个元都有后继」与「上确界存在」这两件事 —— 这就是为什么**完备性蕴含阿基米德性**。
 
 #### 阿基米德性质 + 实数系 ℝ ⟹ 完备有序域的唯一性　`imp.real-unique`
-*ℚ 稠密 ⟹ 完备有序域与 ℝ 同构*
+*$\mathbb{Q}$ 稠密 $\implies$ 完备有序域与 $\mathbb{R}$ 同构*
 
 设 $K$ 是完备有序域，取 $K' := \mathbb{R}$（上面构造出来的那个）。分三步造出唯一的同构 $f : K \to \mathbb{R}$。
 
@@ -7371,7 +7371,7 @@ $$g(x) = g\big(\sup\{q : q < x\}\big) = \sup\{g(q) : q < x\} = \sup\{q' : q < x\
 > ⭐ 三步里每一步都在用前面的准备：① 只用到「$1$ 生成 $\mathbb{Q}$」；② 才真正用**完备性**（两次取上确界）；③ 用的是**$\mathbb{Q}$ 稠密**。少任何一条，唯一性就不成立。
 
 #### ℝ 是完备有序域 ⟹ ℝ 不可数　`imp.real-uncountable`
-*完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）*
+*完备性（确界原理）$\implies \mathbb{R}$ 不可数（闭区间套 + 对角线）*
 
 反设 $\mathbb{R} = \{x_1, x_2, x_3, \ldots\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。
 
@@ -7436,7 +7436,7 @@ Hartogs 定理陈述里的「不能单射进 $X$ 的序数」直接用到序数�
 证明良序定理时用超限递归沿良序一步步往下取元素。
 
 #### 良序集 ⟹ 超限递归　`imp.recursion-wellorder`
-*良序性 ⇒ 递归定理*
+*良序性 $\implies$ 递归定理*
 
 设 $(W, \preceq )$ 是良序集，$G$ 任给。记 $W_{< w} = \{ v \in W : v \prec w \}$。
 
@@ -7461,7 +7461,7 @@ $$R = \{ (w, y) : \text{存在函数} f \text{ 定义在} W_{< w} \text{ 上、�
 > ① 是唯一性、②③ 是存在性。整个证明里**只用**了良序性、幂集公理和分离公理模式 —— 没有用到选择公理。这是它能在 ZF 里安全使用的原因。
 
 #### 序数 + 正则公理 ⟹ 序数可比　`imp.ordinal-trichotomy`
-*序数的定义 ⇒ 三歧性*
+*序数的定义 $\implies$ 三歧性*
 
 设 $\alpha, \beta$ 是序数。
 
@@ -7481,7 +7481,7 @@ $$R = \{ (w, y) : \text{存在函数} f \text{ 定义在} W_{< w} \text{ 上、�
 > ② 是全部关键：「序数之间 $\subset$ 就是 $\in$」。它让序数的比较退化成集合的属于关系。
 
 #### 超限递归 + 替换公理模式 + 正则公理 + 序数可比 ⟹ 良序集的序型　`imp.wellorder-ordinal`
-*递归定理 + 替换公理 ⇒ 每个良序集有唯一序型*
+*递归定理 + 替换公理 $\implies$ 每个良序集有唯一序型*
 
 设 $(W, \preceq )$ 是良序集。
 
@@ -7507,7 +7507,7 @@ $$F(w) = \{ F(v) : v \prec w \}, \qquad \forall w \in W$$
 > 整个证明只用 **ZF**（递归定理 + 替换公理 + 三歧性），不要选择公理。这正是 Hartogs 定理能在 ZF 里成立的原因之一。
 
 #### 序数 + 序数可比 ⟹ 序数全体是真类　`imp.burali-forti`
-*序数的定义 + 三歧性 ⇒ 序数全体是真类*
+*序数的定义 + 三歧性 $\implies$ 序数全体是真类*
 
 反设 $\mathrm{On}$ 是一个集合。
 

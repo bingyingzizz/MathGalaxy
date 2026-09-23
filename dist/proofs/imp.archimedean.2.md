@@ -1,7 +1,9 @@
-# 完备性 ⟹ 阿基米德性质 + ℚ 稠密
+# 完备性 $\implies$ 阿基米德性质 + $\mathbb{Q}$ 稠密
 `imp.archimedean` · 推出 · strong 边 · 根 `../`
 
 `thm.real-ordered-field` ℝ 是完备有序域 → `lem.archimedean` 阿基米德性质
+
+$$m \le nx < m + 1$$
 
 （「整数版本」：先用 (i) 取 $k > nx$，再从 $\{0, 1, \ldots, k\}$ 中取最小的使 $\ge nx$ 的那个。）令 $q := (m+1)/n \in \mathbb{Q}$。则
 

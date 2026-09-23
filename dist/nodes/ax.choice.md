@@ -11,8 +11,8 @@ $$\forall F [ ( \forall X \in F, X \ne \emptyset ) \to \exists f ( f\text{ 是�
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.zorn` 佐恩引理：佐恩引理 ⟹ 选择公理（路线 2⟹1）　proofs/imp.zorn-choice.md
-- `thm.wellordering` 良序定理：选择公理 ⟺ 良序定理　proofs/eq.ac-wo.md
+- `lem.zorn` 佐恩引理：佐恩引理 $\implies$ 选择公理（路线 $2\implies1$）　proofs/imp.zorn-choice.md
+- `thm.wellordering` 良序定理：选择公理 $\iff$ 良序定理　proofs/eq.ac-wo.md
 - `def.choicefn` 选择函数：用到了定义 选择函数　proofs/def-link.ac-choicefn.md
 
 ## 它能推出什么 / 谁在用它

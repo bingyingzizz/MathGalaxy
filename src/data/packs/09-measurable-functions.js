@@ -101,7 +101,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'proposition',
       label: '积空间与实虚部',
-      title: '命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测',
+      title: '命题：可测函数到积空间；f 可测 $\\iff$ 实部虚部可测',
       regions: ['analysis'],
       tags: ['命题', '积空间', '实部虚部'],
       statement: [
@@ -209,7 +209,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'proposition',
       label: '完备性 ⟺ 不破坏可测性',
-      title: '命题：μ 完备 ⟺ 几乎处处相等 / 几乎处处收敛不破坏可测性',
+      title: '命题：$\\mu$ 完备 $\\iff$ 几乎处处相等 / 几乎处处收敛不破坏可测性',
       regions: ['analysis'],
       tags: ['命题', '完备', '几乎处处'],
       statement: [
@@ -266,7 +266,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.simple-function', 'thm.simple-approximation'],
       target: 'prop.measurable-closure',
-      title: '简单函数逼近 ⟹ 可测函数在极限下封闭',
+      title: '简单函数逼近 $\\implies$ 可测函数在极限下封闭',
       proof: [
         '**① 上确界。** 设 $$f_j$$ 可测。要证 $$\\sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\\infty]$$（$a \\in \\mathbb{R}$）验证：',
         '',
@@ -294,7 +294,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.measurable-criterion'],
       target: 'cor.continuous-measurable',
-      title: '连续 ⟹ Borel 可测',
+      title: '连续 $\\implies$ Borel 可测',
       proof: [
         '设 $$f : X \\to Y$$ 连续，即每个开集的原像是开集。',
         '',
@@ -309,7 +309,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.completion'],
       target: 'prop.completion-measurable-function',
-      title: '完备化定理 ⟹ 完备空间上的可测函数可改在零集上',
+      title: '完备化定理 $\\implies$ 完备空间上的可测函数可改在零集上',
       proof: [
         '完备化 $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 相对 $(X, \\mathcal{M}, \\mu)$ 只多做了一件事：**把零集的子集也收进 $\\sigma$代数**。所以两个 $\\sigma$代数只在零集上不同。',
         '',

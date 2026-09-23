@@ -1,4 +1,4 @@
-# 绝对连续 ⟹ ε–δ 刻画（ν 有限时）
+# 绝对连续 $\implies \varepsilon$–$\delta$ 刻画（$\nu$ 有限时）
 `imp.ac-epsilon-delta` · 推出 · strong 边 · 根 `../`
 
 `def.absolute-continuity` 绝对连续 → `thm.ac-epsilon-delta` 绝对连续的 ε–δ 刻画

@@ -510,7 +510,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.abs'],
       target: 'thm.triangle',
-      title: '绝对值的定义 ⟹ 三角不等式',
+      title: '绝对值的定义 $\\implies$ 三角不等式',
       proof: [
         '设 $x, y \\in K$。先看两个基本事实（都由 $|t| = \\max\\{t, -t\\}$ 直接读出）：',
         '',
@@ -540,7 +540,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.triangle'],
       target: 'def.cauchy-null',
-      title: '三角不等式 ⟹ 零列关系是等价关系',
+      title: '三角不等式 $\\implies$ 零列关系是等价关系',
       proof: '自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \\sim (y_n)$、$(y_n) \\sim (z_n)$，则 $|x_n - z_n| \\le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \\sim (z_n)$。没有这一条，$\\mathbb{R}$ 就没法定义成商集。∎'
     },
     {
@@ -548,7 +548,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.real'],
       target: 'thm.real-ordered-field',
-      title: 'Cauchy 列的等价类 ⟹ 完备有序域',
+      title: 'Cauchy 列的等价类 $\\implies$ 完备有序域',
       proof: [
         '记 $\\mathcal{C}$ 为有理 Cauchy 列的全体。下面把 $\\mathbb{R} := \\mathcal{C}/\\sim$ 逐条查一遍。',
         '',
@@ -622,7 +622,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.real-ordered-field'],
       target: 'lem.archimedean',
-      title: '完备性 ⟹ 阿基米德性质 + ℚ 稠密',
+      title: '完备性 $\\implies$ 阿基米德性质 + $\\mathbb{Q}$ 稠密',
       proof: [
         '设 $K$ 是完备有序域（把 $\\mathbb{N}$、$\\mathbb{Z}$、$\\mathbb{Q}$ 按 $1$ 生成的子域嵌进去看）。',
         '',
@@ -655,7 +655,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.archimedean', 'def.real'],
       target: 'thm.real-unique',
-      title: 'ℚ 稠密 ⟹ 完备有序域与 ℝ 同构',
+      title: '$\\mathbb{Q}$ 稠密 $\\implies$ 完备有序域与 $\\mathbb{R}$ 同构',
       proof: [
         '设 $K$ 是完备有序域，取 $K\' := \\mathbb{R}$（上面构造出来的那个）。分三步造出唯一的同构 $f : K \\to \\mathbb{R}$。',
         '',
@@ -688,7 +688,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.real-ordered-field'],
       target: 'thm.real-uncountable',
-      title: '完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）',
+      title: '完备性（确界原理）$\\implies \\mathbb{R}$ 不可数（闭区间套 + 对角线）',
       proof: [
         '反设 $\\mathbb{R} = \\{x_1, x_2, x_3, \\ldots\\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。',
         '',

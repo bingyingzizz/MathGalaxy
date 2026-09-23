@@ -9,7 +9,7 @@ $$F(t) := \int_X f(x, t) d\mu(x)$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.dct` 控制收敛定理：DCT ⟹ 在积分号下求极限与求导　proofs/imp.differentiate-under-integral.md
+- `thm.dct` 控制收敛定理：DCT $\implies$ 在积分号下求极限与求导　proofs/imp.differentiate-under-integral.md
 
 refs: Folland, Real Analysis, Theorem 2.27
 

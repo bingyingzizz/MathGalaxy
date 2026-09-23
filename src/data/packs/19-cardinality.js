@@ -222,7 +222,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.power-set'],
       target: 'thm.cantor',
-      title: '幂集 ⟹ Cantor 定理（对角线法）',
+      title: '幂集 $\\implies$ Cantor 定理（对角线法）',
       proof: [
         '**① $|A| \\le |\\mathcal{P}(A)|$。** 映射 $a \\mapsto \\{a\\}$ 是单射：$\\{a\\} = \\{a\'\\} \\implies a = a\'$。',
         '',
@@ -247,7 +247,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.bijection'],
       target: 'thm.schroder-bernstein',
-      title: '两个方向的单射 ⟹ 双射',
+      title: '两个方向的单射 $\\implies$ 双射',
       proof: [
         '设 $f : A \\to B$、$g : B \\to A$ 都是单射。把 $A$ 分成两半，一半用 $f$、一半用 $g^{-1}$，拼出一个双射。',
         '',
@@ -281,7 +281,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.wellordering'],
       target: 'thm.cardinal-comparable',
-      title: '良序定理 ⟹ 任意两个基数可比',
+      title: '良序定理 $\\implies$ 任意两个基数可比',
       proof: [
         '设 $A$、$B$ 是任意两个集合。',
         '',

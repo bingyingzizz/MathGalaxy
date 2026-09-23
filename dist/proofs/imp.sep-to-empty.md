@@ -1,4 +1,4 @@
-# 分离公理模式 ⇒ 空集存在
+# 分离公理模式 $\implies$ 空集存在
 `imp.sep-to-empty` · 推出 · strong 边 · 根 `../`
 
 `ax.sep` 分离公理模式 → `thm.empty` 空集存在

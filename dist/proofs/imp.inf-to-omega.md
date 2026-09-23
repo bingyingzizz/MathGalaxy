@@ -1,4 +1,4 @@
-# 无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在
+# 无穷公理 + 幂集公理 + 分离公理模式 $\implies \omega$ 存在
 `imp.inf-to-omega` · 推出 · strong 边 · 根 `../`
 
 `ax.inf` 无穷公理 + `ax.power` 幂集公理 + `ax.sep` 分离公理模式 → `thm.omega` 自然数集存在

@@ -1,4 +1,4 @@
-# 两个方向的单射 ⟹ 双射
+# 两个方向的单射 $\implies$ 双射
 `imp.schroder-bernstein` · 推出 · strong 边 · 根 `../`
 
 `def.bijection` 单射 / 满射 / 双射 → `thm.schroder-bernstein` Schröder–Bernstein 定理

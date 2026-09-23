@@ -11,7 +11,7 @@ $$F(w) = G\big( F \upharpoonright W_{< w} \big), \qquad \forall w \in W$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.wellorder` 良序集：良序性 ⇒ 递归定理　proofs/imp.recursion-wellorder.md
+- `def.wellorder` 良序集：良序性 $\implies$ 递归定理　proofs/imp.recursion-wellorder.md
 - `def.wellorder` 良序集：用到了定义 良序集　proofs/def-link.wellorder-recursion.md
 
 ## 它能推出什么 / 谁在用它

@@ -13,7 +13,7 @@ $$\int f_x d\nu \in L^+(X), \quad  \int f^y d\mu \in L^+(Y)$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.product-measure-sections` 乘积测度由截口给出 + `thm.mct` 单调收敛定理：集合版（截口公式）+ MCT ⟹ Tonelli　proofs/imp.tonelli.md
+- `thm.product-measure-sections` 乘积测度由截口给出 + `thm.mct` 单调收敛定理：集合版（截口公式）+ MCT $\implies$ Tonelli　proofs/imp.tonelli.md
 - `def.section` 截口：用到了定义 截口　proofs/def-link.section-fubini.md
 - `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-fubini.md
 - `def.integrable` 可积 / L¹：用到了定义 可积 / L¹　proofs/def-link.integrable-fubini.md

@@ -1,4 +1,4 @@
-# 替换公理模式 ⇒ 分离公理模式
+# 替换公理模式 $\implies$ 分离公理模式
 `imp.repl-to-sep` · 推出 · strong 边 · 根 `../`
 
 `ax.repl` 替换公理模式 → `ax.sep` 分离公理模式

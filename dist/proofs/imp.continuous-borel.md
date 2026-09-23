@@ -1,4 +1,4 @@
-# 连续 ⟹ Borel 可测
+# 连续 $\implies$ Borel 可测
 `imp.continuous-borel` · 推出 · strong 边 · 根 `../`
 
 `prop.measurable-criterion` 可测性的两条判定准则 → `cor.continuous-measurable` 连续 ⟹ Borel 可测

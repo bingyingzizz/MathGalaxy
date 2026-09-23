@@ -1,4 +1,4 @@
-# 零集 ⟹ 完备化
+# 零集 $\implies$ 完备化
 `imp.completion` · 推出 · strong 边 · 根 `../`
 
 `def.null-set` 零集与完备 → `thm.completion` 完备化定理

@@ -1,4 +1,4 @@
-# 简单函数逼近 ⟹ 可测函数在极限下封闭
+# 简单函数逼近 $\implies$ 可测函数在极限下封闭
 `imp.measurable-limit` · 推出 · strong 边 · 根 `../`
 
 `def.simple-function` 简单函数 + `thm.simple-approximation` 简单函数逼近 → `prop.measurable-closure` 可测函数的封闭性

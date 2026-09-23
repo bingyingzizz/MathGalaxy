@@ -1,4 +1,4 @@
-# 三角不等式 + MCT + DCT ⟹ $L^p$ 完备
+# 三角不等式 + MCT + DCT $\implies$ $L^p$ 完备
 `imp.lp-banach` · 推出 · strong 边 · 根 `../`
 
 `thm.minkowski` Minkowski 不等式 + `thm.mct` 单调收敛定理 + `thm.dct` 控制收敛定理 → `thm.lp-banach` L^p 是 Banach 空间

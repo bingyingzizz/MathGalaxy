@@ -225,7 +225,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.wellorder'],
       target: 'thm.recursion-wellorder',
-      title: '良序性 ⇒ 递归定理',
+      title: '良序性 $\\implies$ 递归定理',
       proof: [
         '设 $(W, \\preceq )$ 是良序集，$G$ 任给。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。',
         '',
@@ -255,7 +255,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.ordinal', 'ax.found'],
       target: 'thm.ordinal-trichotomy',
-      title: '序数的定义 ⇒ 三歧性',
+      title: '序数的定义 $\\implies$ 三歧性',
       proof: [
         '设 $\\alpha, \\beta$ 是序数。',
         '',
@@ -280,7 +280,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.recursion-wellorder', 'ax.repl', 'ax.found', 'thm.ordinal-trichotomy'],
       target: 'thm.wellorder-ordinal',
-      title: '递归定理 + 替换公理 ⇒ 每个良序集有唯一序型',
+      title: '递归定理 + 替换公理 $\\implies$ 每个良序集有唯一序型',
       proof: [
         '设 $(W, \\preceq )$ 是良序集。',
         '',
@@ -311,7 +311,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.ordinal', 'thm.ordinal-trichotomy'],
       target: 'thm.burali-forti',
-      title: '序数的定义 + 三歧性 ⇒ 序数全体是真类',
+      title: '序数的定义 + 三歧性 $\\implies$ 序数全体是真类',
       proof: [
         '反设 $\\mathrm{On}$ 是一个集合。',
         '',

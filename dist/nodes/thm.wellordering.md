@@ -11,8 +11,8 @@ $$\forall X \exists\preceq ( \preceq\text{ 是} X\text{ 上的良序关系} )$$
 特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.choice` 选择公理：选择公理 ⟺ 良序定理　proofs/eq.ac-wo.md
-- `lem.zorn` 佐恩引理：良序定理 ⟺ 佐恩引理　proofs/eq.wo-zorn.md
+- `ax.choice` 选择公理：选择公理 $\iff$ 良序定理　proofs/eq.ac-wo.md
+- `lem.zorn` 佐恩引理：良序定理 $\iff$ 佐恩引理　proofs/eq.wo-zorn.md
 - `thm.recursion-wellorder` 超限递归：用到了定义 超限递归　proofs/def-link.recursion-wellordering.md
 - `def.wellorder` 良序集：用到了定义 良序集　proofs/def-link.wo-wellorder.md
 

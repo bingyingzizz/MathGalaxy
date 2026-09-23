@@ -8,7 +8,7 @@ $V$ 有基；
 - 更精确地：$V$ 的任一线性无关子集都能扩充成 $V$ 的一个基，任一生成集都含有一个基。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.zorn` 佐恩引理：佐恩引理 ⇒ 每个向量空间有基　proofs/imp.zorn-to-basis.md
+- `lem.zorn` 佐恩引理：佐恩引理 $\implies$ 每个向量空间有基　proofs/imp.zorn-to-basis.md
 - `def.vs` 向量空间的基：用到了定义 向量空间的基　proofs/def-link.basis-vs.md
 
 refs: Lang, Linear Algebra；Brunner, The Axiom of Choice in Topology

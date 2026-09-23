@@ -7,7 +7,7 @@ layer 4 · 公理 · ZFC 公理系统 · 集合论
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.repl` 替换公理模式：替换公理模式 ⇒ 分离公理模式　proofs/imp.repl-to-sep.md
+- `ax.repl` 替换公理模式：替换公理模式 $\implies$ 分离公理模式　proofs/imp.repl-to-sep.md
 - `def.formula` 公式：用到了定义 公式　proofs/def-link.formula-sep.md
 - `def.subset` 子集：用到了定义 子集　proofs/def-link.sep-subset.md
 - `def.finchar` 有限特征：「不描述整体，只给一个筛子」　proofs/ana.filter-sieve.md

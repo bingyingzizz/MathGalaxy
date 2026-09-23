@@ -13,7 +13,7 @@ $$F(x) = \mu_F((-\infty, x])$$
 $$|\mu_F| = \mu_{T_F}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.nbv-variation` 全变差的 NBV 性质 + `thm.bv-jordan` BV 的 Jordan 分解：NBV 的性质 ⟹ 测度与函数的一一对应　proofs/imp.borel-nbv.md
+- `lem.nbv-variation` 全变差的 NBV 性质 + `thm.bv-jordan` BV 的 Jordan 分解：NBV 的性质 $\implies$ 测度与函数的一一对应　proofs/imp.borel-nbv.md
 - `def.bounded-variation` 有界变差 BV：用到了定义 有界变差 BV　proofs/def-link.bv-nbv-thm.md
 - `def.measure` 测度：用到了定义 测度　proofs/def-link.measure-nbv-thm.md
 

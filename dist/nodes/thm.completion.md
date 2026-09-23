@@ -13,7 +13,7 @@ $$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M},\ F \subseteq N,\ N \in \m
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.null-set` 零集与完备：零集 ⟹ 完备化　proofs/imp.completion.md
+- `def.null-set` 零集与完备：零集 $\implies$ 完备化　proofs/imp.completion.md
 - `def.measure` 测度：用到了定义 测度　proofs/def-link.measure-completion.md
 - `def.null-set` 零集与完备：用到了定义 零集与完备　proofs/def-link.null-completion.md
 

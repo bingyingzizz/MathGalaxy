@@ -1,4 +1,4 @@
-# 良序性 ⇒ 递归定理
+# 良序性 $\implies$ 递归定理
 `imp.recursion-wellorder` · 推出 · strong 边 · 根 `../`
 
 `def.wellorder` 良序集 → `thm.recursion-wellorder` 超限递归

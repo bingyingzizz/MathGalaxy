@@ -7,8 +7,8 @@ layer 13 · 定义 · 度量空间 · 拓扑学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.compact` 紧：紧 ⟹ 列紧　proofs/imp.compact-seqcompact.md
-- `def.complete` 完备 + `def.totally-bounded` 全有界：完备 + 全有界 ⟹ 列紧（对角线法）　proofs/imp.complete-totbdd-seqcompact.md
+- `def.compact` 紧：紧 $\implies$ 列紧　proofs/imp.compact-seqcompact.md
+- `def.complete` 完备 + `def.totally-bounded` 全有界：完备 + 全有界 $\implies$ 列紧（对角线法）　proofs/imp.complete-totbdd-seqcompact.md
 - `def.metric-space` 距离空间：用到了定义 距离空间　proofs/def-dep.metric-seq-compact.md
 
 ## 它能推出什么 / 谁在用它

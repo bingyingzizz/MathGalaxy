@@ -216,7 +216,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.repl'],
       target: 'ax.sep',
-      title: '替换公理模式 ⇒ 分离公理模式',
+      title: '替换公理模式 $\\implies$ 分离公理模式',
       proof: [
         '设 $\\varphi (x, p)$ 是不含 $B$ 的公式，$A$ 是任意集合。取公式',
         '',

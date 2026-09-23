@@ -1,4 +1,4 @@
-# Hölder 不等式 ⟹ Minkowski 不等式
+# Hölder 不等式 $\implies$ Minkowski 不等式
 `imp.minkowski` · 推出 · strong 边 · 根 `../`
 
 `thm.holder` Hölder 不等式 → `thm.minkowski` Minkowski 不等式

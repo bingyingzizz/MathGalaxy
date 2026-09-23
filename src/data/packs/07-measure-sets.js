@@ -173,7 +173,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'theorem',
       label: '环 → σ-环 的判据',
-      title: '定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭',
+      title: '定理：环是 σ-环 $\\iff$ 它是单调类 $\\iff$ 它对可数不交并封闭',
       regions: ['analysis'],
       tags: ['定理', '环', '单调类', 'σ-环'],
       statement: [
@@ -193,7 +193,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '生成的 σ-代数',
-      title: '由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)',
+      title: '由 $\\mathcal{E}$ 生成的 σ-代数 / 单调类：$\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$',
       regions: ['analysis'],
       tags: ['定义', '生成', 'σ-代数', '单调类'],
       statement: [
@@ -244,7 +244,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: 'Borel σ-代数',
-      title: 'Borel σ-代数（Borel σ-Algebra 𝔅_X）',
+      title: 'Borel σ-代数（Borel σ-Algebra $\\mathfrak{B}_X$）',
       regions: ['analysis', 'topology'],
       tags: ['定义', 'Borel', '拓扑'],
       statement: [
@@ -371,7 +371,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.set-ring', 'def.monotone-class'],
       target: 'thm.ring-monotone-sigma',
-      title: '环 + 单调类 ⟹ σ-环',
+      title: '环 + 单调类 $\\implies$ σ-环',
       proof: [
         '设 $\\mathfrak{A}$ 是环，且是单调类。要证它对**可数并**封闭。',
         '',

@@ -1,4 +1,4 @@
-# 良序定理 ⟹ 任意两个基数可比
+# 良序定理 $\implies$ 任意两个基数可比
 `imp.cardinal-comparable` · 推出 · strong 边 · 根 `../`
 
 `thm.wellordering` 良序定理 → `thm.cardinal-comparable` 基数可比定理

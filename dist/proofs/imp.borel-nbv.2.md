@@ -1,4 +1,4 @@
-# NBV 的性质 ⟹ 测度与函数的一一对应
+# NBV 的性质 $\implies$ 测度与函数的一一对应
 `imp.borel-nbv` · 推出 · strong 边 · 根 `../`
 
 `lem.nbv-variation` 全变差的 NBV 性质 + `thm.bv-jordan` BV 的 Jordan 分解 → `thm.borel-measure-nbv` 测度 ↔ NBV 的一一对应

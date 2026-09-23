@@ -1,4 +1,4 @@
-# 符号测度 + 正集的封闭性 ⟹ Hahn 分解
+# 符号测度 + 正集的封闭性 $\implies$ Hahn 分解
 `imp.hahn` · 推出 · strong 边 · 根 `../`
 
 `def.signed-measure` 符号测度 + `prop.positive-set-closure` 正集的封闭性 → `thm.hahn-decomposition` Hahn 分解定理

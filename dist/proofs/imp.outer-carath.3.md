@@ -1,4 +1,4 @@
-# 外测度 + 可切集 ⟹ σ-代数与完备测度
+# 外测度 + 可切集 $\implies$ σ-代数与完备测度
 `imp.outer-carath` · 推出 · strong 边 · 根 `../`
 
 `def.outer-measure` 外测度 + `def.caratheodory-measurable` μ*-可测集 → `thm.caratheodory` Carathéodory 定理

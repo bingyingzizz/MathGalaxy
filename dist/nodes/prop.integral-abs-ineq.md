@@ -1,5 +1,5 @@
 # 积分绝对值不等式　`prop.integral-abs-ineq`
-命题：|∫ f| ≤ ∫ |f|
+命题：$|\int f| \le \int |f|$
 layer 19 · 命题 · 积分 · 分析学
 
 设 $$f \in L^1(\mu)$$，则

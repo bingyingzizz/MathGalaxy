@@ -1,4 +1,4 @@
-# 积分给出绝对连续测度 ⟹ 积分的绝对连续性
+# 积分给出绝对连续测度 $\implies$ 积分的绝对连续性
 `imp.integral-ac-continuity` · 推出 · strong 边 · 根 `../`
 
 `prop.integral-gives-ac` 积分给出绝对连续测度 → `cor.ac-integral-continuity` 积分的绝对连续性

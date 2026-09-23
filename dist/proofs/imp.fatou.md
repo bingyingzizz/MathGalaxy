@@ -1,4 +1,4 @@
-# MCT ⟹ Fatou 引理
+# MCT $\implies$ Fatou 引理
 `imp.fatou` · 推出 · strong 边 · 根 `../`
 
 `thm.mct` 单调收敛定理 → `lem.fatou` Fatou 引理

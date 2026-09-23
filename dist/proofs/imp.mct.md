@@ -1,4 +1,4 @@
-# 非负积分的定义 ⟹ 单调收敛定理
+# 非负积分的定义 $\implies$ 单调收敛定理
 `imp.mct` · 推出 · strong 边 · 根 `../`
 
 `def.integral-nonneg` 非负函数的积分 + `prop.simple-integral-props` 简单函数积分的性质 → `thm.mct` 单调收敛定理

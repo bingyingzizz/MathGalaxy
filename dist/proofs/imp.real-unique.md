@@ -1,4 +1,4 @@
-# ℚ 稠密 ⟹ 完备有序域与 ℝ 同构
+# $\mathbb{Q}$ 稠密 $\implies$ 完备有序域与 $\mathbb{R}$ 同构
 `imp.real-unique` · 推出 · strong 边 · 根 `../`
 
 `lem.archimedean` 阿基米德性质 + `def.real` 实数系 ℝ → `thm.real-unique` 完备有序域的唯一性

@@ -7,7 +7,7 @@ layer 18 · 定理 · L^p 空间 · 分析学
 $$\|fg\|_1 \le \|f\|_p \, \|g\|_q$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.young-inequality` Young 不等式：Young 不等式 ⟹ Hölder 不等式　proofs/imp.holder.md
+- `lem.young-inequality` Young 不等式：Young 不等式 $\implies$ Hölder 不等式　proofs/imp.holder.md
 - `def.lp-norm` L^p 范数：用到了定义 L^p 范数　proofs/def-link.lp-holder.md
 - `def.conjugate-exponents` 共轭指数：用到了定义 共轭指数　proofs/def-link.conjugate-holder.md
 

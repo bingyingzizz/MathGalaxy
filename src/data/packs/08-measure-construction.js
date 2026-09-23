@@ -245,7 +245,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'proposition',
       label: '由预测度诱导外测度',
-      title: '命题：从 ℰ 上的 ρ 诱导出一个外测度',
+      title: '命题：从 $\\mathcal{E}$ 上的 $\\rho$ 诱导出一个外测度',
       regions: ['analysis'],
       tags: ['命题', '外测度', '覆盖'],
       statement: [
@@ -268,7 +268,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: 'μ*-可测集',
-      title: 'Carathéodory 可测性（μ*-Measurable Set）',
+      title: 'Carathéodory 可测性（$\\mu^{*}$-Measurable Set）',
       regions: ['analysis'],
       tags: ['定义', 'Carathéodory', '可测'],
       statement: [
@@ -289,7 +289,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'theorem',
       label: 'Carathéodory 定理',
-      title: 'Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度',
+      title: 'Carathéodory 定理：$\\mu^{*}$-可测集构成 σ-代数，$\\mu^{*}$ 在其上是完备测度',
       regions: ['analysis'],
       tags: ['定理', 'Carathéodory', 'σ-代数', '完备'],
       statement: [
@@ -408,7 +408,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: 'Lebesgue–Stieltjes 测度',
-      title: 'Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure μ_F）',
+      title: 'Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure $\\mu_F$）',
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue–Stieltjes', 'Lebesgue 测度'],
       statement: [
@@ -434,7 +434,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.measure'],
       target: 'prop.measure-basic',
-      title: '测度 ⟹ 单调 / 次可加 / 上下连续',
+      title: '测度 $\\implies$ 单调 / 次可加 / 上下连续',
       proof: [
         '设 $\\mu$ 是测度。',
         '',
@@ -463,7 +463,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.premeasure'],
       target: 'prop.outer-measure-induced',
-      title: '预测度 ⟹ 诱导的外测度',
+      title: '预测度 $\\implies$ 诱导的外测度',
       proof: [
         '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度。对 $A \\subseteq X$ 令',
         '',
@@ -494,7 +494,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.outer-measure', 'def.caratheodory-measurable'],
       target: 'thm.caratheodory',
-      title: '外测度 + 可切集 ⟹ σ-代数与完备测度',
+      title: '外测度 + 可切集 $\\implies$ σ-代数与完备测度',
       proof: [
         '设 $\\mu^{*}$ 是外测度，$\\mathcal{M} = \\{ A : \\forall E, \\mu^{*}(E) = \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c}) \\}$。',
         '',
@@ -531,7 +531,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.caratheodory', 'prop.outer-measure-induced'],
       target: 'prop.caratheodory-extension',
-      title: 'Carathéodory + 预测度 ⟹ 原代数上的值不变',
+      title: 'Carathéodory + 预测度 $\\implies$ 原代数上的值不变',
       proof: [
         '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度，$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集。',
         '',
@@ -587,7 +587,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.ls-premeasure', 'thm.caratheodory-uniqueness'],
       target: 'thm.ls-exists',
-      title: 'F 的预测度 ⟹ ℝ 上的 Borel 测度',
+      title: 'F 的预测度 $\\implies \\mathbb{R}$ 上的 Borel 测度',
       proof: [
         '设 $F$ 递增右连续。由前一条命题，$\\mu _{0}((a, b]) = F(b) - F(a)$ 扩充成半开区间生成的代数 $\\mathfrak{A}$ 上的**预测度**。',
         '',
@@ -606,7 +606,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.null-set'],
       target: 'thm.completion',
-      title: '零集 ⟹ 完备化',
+      title: '零集 $\\implies$ 完备化',
       proof: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}, F \\subseteq N$ 对某个零集 N }。',
         '',

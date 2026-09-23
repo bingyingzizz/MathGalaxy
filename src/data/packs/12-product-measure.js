@@ -21,7 +21,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'definition',
       label: '乘积测度',
-      title: '乘积测度（Product Measure μ × ν）',
+      title: '乘积测度（Product Measure $\\mu \\times \\nu$）',
       regions: ['analysis'],
       tags: ['定义', '乘积测度', '矩形', 'Carathéodory'],
       statement: [
@@ -58,7 +58,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'definition',
       label: '截口',
-      title: '截口（Section）Eₓ 与 Eʸ',
+      title: '截口（Section）$E_{x}$ 与 $E^{y}$',
       regions: ['analysis'],
       tags: ['定义', '截口'],
       statement: [
@@ -114,7 +114,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'theorem',
       label: '乘积测度由截口给出',
-      title: '定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)',
+      title: '定理：$\\mu \\times \\nu(E) = \\int \\nu(E_{x}) d\\mu(x) = \\int \\mu(E^{y}) d\\nu(y)$',
       regions: ['analysis'],
       tags: ['定理', '乘积测度', '截口'],
       statement: [
@@ -210,7 +210,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'proposition',
       label: '乘积测度通常不完备',
-      title: '注记：μ、ν 完备时，μ × ν 常常不完备',
+      title: '注记：$\\mu$、$\\nu$ 完备时，$\\mu \\times \\nu$ 常常不完备',
       regions: ['analysis'],
       tags: ['注记', '完备', '乘积测度'],
       statement: [
@@ -231,7 +231,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.premeasure', 'thm.caratheodory'],
       target: 'def.product-measure',
-      title: '矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度',
+      title: '矩形上的预测度 $\\implies$ Carathéodory 扩张得到乘积测度',
       proof: [
         '**① $\\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k\'$$ $\\times$ $$B_j \\cap B_k\'$$），$\\mu_{0}$ 的值不变 —— 因为 $\\mu$、$\\nu$ 在各自那一侧都是有限可加的。',
         '',
@@ -250,7 +250,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.section'],
       target: 'prop.section-measurable',
-      title: '截口的定义 ⟹ 截口保持可测性',
+      title: '截口的定义 $\\implies$ 截口保持可测性',
       proof: [
         '**(a)** 令 $$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y) \\in X \\times Y\\}$$。',
         '',
@@ -277,7 +277,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.monotone-class', 'prop.section-measurable'],
       target: 'thm.product-measure-sections',
-      title: '单调类定理 ⟹ 乘积测度由截口积分给出',
+      title: '单调类定理 $\\implies$ 乘积测度由截口积分给出',
       proof: [
         '**① 先设 $\\mu$、$\\nu$ 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。',
         '',
@@ -302,7 +302,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.product-measure-sections', 'thm.mct'],
       target: 'thm.fubini-tonelli',
-      title: '集合版（截口公式）+ MCT ⟹ Tonelli',
+      title: '集合版（截口公式）+ MCT $\\implies$ Tonelli',
       proof: [
         '**① 指示函数。** 取 $$f = \\chi_E$$（$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$）。此时',
         '',
@@ -345,7 +345,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.fubini-tonelli', 'thm.completion', 'prop.product-incomplete'],
       target: 'thm.fubini-complete',
-      title: '乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T',
+      title: '乘积测度通常不完备 $\\implies$ 必须补一条完备情形的 F–T',
       proof: [
         '**① 先证 $f \\ge 0$ 的情形。** 由于 $\\lambda$ 是 $\\mu \\times \\nu$ 的完备化，$$\\mathcal{L}$$ 中的集合可以写成',
         '',
@@ -494,7 +494,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.product'],
       target: 'def.section',
-      title: '笛卡尔积存在 ⟹ 可以谈截口',
+      title: '笛卡尔积存在 $\\implies$ 可以谈截口',
       proof: '截口是 $X \\times Y$ 的子集 $E$ 的属性，所以先要有 $X \\times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。'
     },
 

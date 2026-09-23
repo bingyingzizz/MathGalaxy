@@ -11,7 +11,7 @@ $$|f_n| \le g\quad  \text{a.e.}\quad  \forall n$$
 $$\int f = \lim_{n\to\infty} \int f_n$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.fatou` Fatou 引理：Fatou ⟹ 控制收敛定理　proofs/imp.dct.md
+- `lem.fatou` Fatou 引理：Fatou $\implies$ 控制收敛定理　proofs/imp.dct.md
 - `def.integrable` 可积 / L¹：用到了定义 可积 / L¹　proofs/def-link.integrable-dct.md
 - `def.lplus` L⁺：用到了定义 L⁺　proofs/def-link.lplus-dct.md
 

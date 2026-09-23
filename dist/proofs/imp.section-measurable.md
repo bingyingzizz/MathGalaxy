@@ -1,4 +1,4 @@
-# 截口的定义 ⟹ 截口保持可测性
+# 截口的定义 $\implies$ 截口保持可测性
 `imp.section-measurable` · 推出 · strong 边 · 根 `../`
 
 `def.section` 截口 → `prop.section-measurable` 截口可测

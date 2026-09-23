@@ -1,4 +1,4 @@
-# 紧 ⟹ 全有界
+# 紧 $\implies$ 全有界
 `imp.compact-totbdd` · 推出 · strong 边 · 根 `../`
 
 `def.compact` 紧 → `def.totally-bounded` 全有界

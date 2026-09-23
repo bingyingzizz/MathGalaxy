@@ -1,4 +1,4 @@
-# 正则公理 + 配对公理 ⇒ A ∉ A
+# 正则公理 + 配对公理 $\implies A \notin A$
 `imp.found-to-noself` · 推出 · strong 边 · 根 `../`
 
 `ax.found` 正则公理 + `ax.pair` 配对公理 → `thm.noself` 无自属集合

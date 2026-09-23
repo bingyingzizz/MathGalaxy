@@ -1,4 +1,4 @@
-# 序数的定义 ⇒ 三歧性
+# 序数的定义 $\implies$ 三歧性
 `imp.ordinal-trichotomy` · 推出 · strong 边 · 根 `../`
 
 `def.ordinal` 序数 + `ax.found` 正则公理 → `thm.ordinal-trichotomy` 序数可比

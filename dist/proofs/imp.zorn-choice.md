@@ -1,4 +1,4 @@
-# 佐恩引理 ⟹ 选择公理（路线 2⟹1）
+# 佐恩引理 $\implies$ 选择公理（路线 $2\implies1$）
 `imp.zorn-choice` · 推出 · strong 边 · 根 `../`
 
 `lem.zorn` 佐恩引理 → `ax.choice` 选择公理

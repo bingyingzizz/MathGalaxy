@@ -11,7 +11,7 @@ $$f_n \to f\text{ 依测度}, $$
 $$f_{n_j} \to f\quad  \text{a.e.}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.cauchy-in-measure` 依测度 Cauchy：依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛　proofs/imp.cauchy-in-measure.md
+- `def.cauchy-in-measure` 依测度 Cauchy：依测度 Cauchy $\implies$ 依测度收敛且有一子列 a.e. 收敛　proofs/imp.cauchy-in-measure.md
 - `def.cauchy-in-measure` 依测度 Cauchy：用到了定义 依测度 Cauchy　proofs/def-link.cauchy-thm.md
 - `def.ae` 几乎处处：用到了定义 几乎处处　proofs/def-link.ae-cauchy-in-measure.md
 

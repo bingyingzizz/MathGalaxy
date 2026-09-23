@@ -1,4 +1,4 @@
-# 三角不等式 ⟹ 零列关系是等价关系
+# 三角不等式 $\implies$ 零列关系是等价关系
 `imp.triangle-cauchy` · 推出 · strong 边 · 根 `../`
 
 `thm.triangle` 三角不等式 → `def.cauchy-null` Cauchy 列与零列

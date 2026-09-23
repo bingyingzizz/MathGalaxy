@@ -111,7 +111,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'lemma',
       label: 'T_F ± F 递增',
-      title: '引理：实值 BV 函数的 T_F + F 与 T_F − F 都递增',
+      title: '引理：实值 BV 函数的 $T_F + F$ 与 $T_F - F$ 都递增',
       regions: ['analysis'],
       tags: ['引理', '全变差', '递增'],
       statement: [
@@ -137,7 +137,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'theorem',
       label: 'BV 的 Jordan 分解',
-      title: '定理：F ∈ BV ⟺ F = G − H（G、H 有界递增）',
+      title: '定理：$F \\in BV \\iff F = G - H$（G、H 有界递增）',
       regions: ['analysis'],
       tags: ['定理', 'BV', 'Jordan 分解'],
       statement: [
@@ -188,7 +188,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'definition',
       label: 'NBV',
-      title: 'NBV：右连续且 F(−∞) = 0 的有界变差函数',
+      title: 'NBV：右连续且 $F(-\\infty) = 0$ 的有界变差函数',
       regions: ['analysis'],
       tags: ['定义', 'NBV'],
       statement: [
@@ -209,7 +209,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'lemma',
       label: '全变差的 NBV 性质',
-      title: '引理：T_F(−∞) = 0；F 右连续 ⟹ T_F 右连续',
+      title: '引理：$T_F(-\\infty) = 0$；F 右连续 $\\implies T_F$ 右连续',
       regions: ['analysis'],
       tags: ['引理', '全变差', 'NBV'],
       statement: [
@@ -235,7 +235,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'proposition',
       label: '递增函数的导数积分不等式',
-      title: '命题：∫ₐᵇ F′ ≤ F(b) − F(a)',
+      title: '命题：$\\int_{a}^{b} F\' \\le F(b) - F(a)$',
       regions: ['analysis'],
       tags: ['命题', '递增', '积分', '导数'],
       statement: [
@@ -290,7 +290,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'proposition',
       label: 'NBV 函数的导数与测度的关系',
-      title: '命题：μ_F ⊥ m ⟺ F′ = 0 a.e.；μ_F ≪ m ⟺ F(x) = ∫_{−∞}ˣ F′',
+      title: '命题：$\\mu_F \\perp m \\iff F\' = 0 \\text{a.e.}$；$\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F\'$',
       regions: ['analysis'],
       tags: ['命题', 'NBV', 'RN 导数'],
       statement: [
@@ -334,7 +334,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'proposition',
       label: '函数绝对连续 ⟺ 测度绝对连续',
-      title: '命题：F 绝对连续 ⟺ μ_F ≪ m',
+      title: '命题：F 绝对连续 $\\iff \\mu_F \\ll m$',
       regions: ['analysis'],
       tags: ['命题', '绝对连续', 'μ_F ≪ m'],
       statement: [
@@ -355,7 +355,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'corollary',
       label: '积出来的函数是 AC · NBV',
-      title: '推论：f ∈ L¹(m) ⟹ F(x) = ∫_{−∞}ˣ f 是 AC、NBV；反之亦然',
+      title: '推论：$f \\in L^{1}(m) \\implies F(x) = \\int_{-\\infty}^{x} f$ 是 AC、NBV；反之亦然',
       regions: ['analysis'],
       tags: ['推论', 'AC', 'NBV', '基本定理'],
       statement: [
@@ -397,7 +397,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'theorem',
       label: '微积分基本定理（Lebesgue 版）',
-      title: '定理（TFAE）：绝对连续 ⟺ 是 L¹ 函数的积分 ⟺ 导数的积分还原',
+      title: '定理（TFAE）：绝对连续 $\\iff$ 是 $L^{1}$ 函数的积分 $\\iff$ 导数的积分还原',
       regions: ['analysis'],
       tags: ['定理', '微积分基本定理', 'AC', 'NCT'],
       statement: [
@@ -430,7 +430,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.variation-monotone'],
       target: 'thm.bv-jordan',
-      title: 'T_F ± F 递增 ⟹ BV 的 Jordan 分解',
+      title: '$T_F \\pm F$ 递增 $\\implies BV$ 的 Jordan 分解',
       proof: [
         '**(b) 的 $(\\Longleftarrow )$ 方向**：若 $$F = G - H$$（$G$、$H$ 有界递增），则对任意分划',
         '',
@@ -458,7 +458,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.bv-jordan', 'thm.monotone-differentiable'],
       target: 'prop.bv-regularity',
-      title: '化归到递增函数 ⟹ BV 的正则性',
+      title: '化归到递增函数 $\\implies BV$ 的正则性',
       proof: [
         '由**Jordan 分解**，只需对**有界递增**函数证明这三条 —— 差的性质自动继承。',
         '',
@@ -481,7 +481,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.nbv-variation', 'thm.bv-jordan'],
       target: 'thm.borel-measure-nbv',
-      title: 'NBV 的性质 ⟹ 测度与函数的一一对应',
+      title: 'NBV 的性质 $\\implies$ 测度与函数的一一对应',
       proof: [
         '**(1) 测度 $\\implies$ 函数。** 复测度拆成四个正测度 $$\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$$。令',
         '',
@@ -508,7 +508,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.nbv-derivative', 'thm.ac-epsilon-delta'],
       target: 'prop.ac-iff-measure-ac',
-      title: 'μ_F ≪ m 的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续',
+      title: '$\\mu_F \\ll m$ 的 $\\varepsilon$–$\\delta$ 刻画 $\\implies$ 函数绝对连续 $\\iff$ 测度绝对连续',
       proof: [
         '**$(\\Longleftarrow )$** 设 $$\\mu_F \\ll  m$$。应用测度版绝对连续的 $\\varepsilon$–$\\delta$ 刻画（注意 $\\mu _F$ 有限，符合前提）：给定 $\\varepsilon > 0$ 取 $\\delta > 0$ 使',
         '',
@@ -533,7 +533,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.ac-subset-bv', 'prop.ac-iff-measure-ac', 'prop.nbv-derivative'],
       target: 'thm.ftc-lebesgue',
-      title: '(a) ⟺ (b) ⟺ (c)：微积分基本定理的三条等价',
+      title: '$(a) \\iff (b) \\iff (c)$：微积分基本定理的三条等价',
       proof: [
         '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $$d\\mu_F = f\\cdot dm$$，即',
         '',

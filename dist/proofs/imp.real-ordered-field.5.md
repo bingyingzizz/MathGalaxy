@@ -1,4 +1,4 @@
-# Cauchy 列的等价类 ⟹ 完备有序域
+# Cauchy 列的等价类 $\implies$ 完备有序域
 `imp.real-ordered-field` · 推出 · strong 边 · 根 `../`
 
 `def.real` 实数系 ℝ → `thm.real-ordered-field` ℝ 是完备有序域

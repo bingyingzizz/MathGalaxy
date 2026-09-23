@@ -137,7 +137,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'ax.choice',
       b: 'thm.wellordering',
-      title: '选择公理 ⟺ 良序定理',
+      title: '选择公理 $\\iff$ 良序定理',
       proofs: [
         {
           label: '选择公理 ⇒ 良序定理（路线 1⟹4）',
@@ -185,7 +185,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'thm.wellordering',
       b: 'lem.zorn',
-      title: '良序定理 ⟺ 佐恩引理',
+      title: '良序定理 $\\iff$ 佐恩引理',
       proofs: [
         {
           label: '良序定理 ⇒ 佐恩引理',
@@ -240,7 +240,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'lem.zorn',
       b: 'thm.hausdorff',
-      title: '佐恩引理 ⟺ Hausdorff 极大原理',
+      title: '佐恩引理 $\\iff$ Hausdorff 极大原理',
       proofs: [
         {
           label: '佐恩引理 ⇒ Hausdorff 极大原理（路线 2⟹3）',
@@ -279,7 +279,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'thm.hausdorff',
       b: 'lem.tukey',
-      title: 'Hausdorff 极大原理 ⟺ Tukey 引理',
+      title: 'Hausdorff 极大原理 $\\iff$ Tukey 引理',
       proofs: [
         {
           label: 'Tukey 引理 ⇒ Hausdorff 极大原理',
@@ -323,7 +323,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.choice', 'thm.hartogs'],
       target: 'lem.zorn',
-      title: '选择公理 + Hartogs 定理 ⟹ 佐恩引理（路线 1⟹2）',
+      title: '选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）',
       proof: [
         '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。',
         '',
@@ -358,7 +358,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.zorn'],
       target: 'ax.choice',
-      title: '佐恩引理 ⟹ 选择公理（路线 2⟹1）',
+      title: '佐恩引理 $\\implies$ 选择公理（路线 $2\\implies1$）',
       proof: [
         '设 $\\{A_i\\}_\\{i \\in I\\}$ 是一族非空集合。要对它造出一个选择函数。',
         '',

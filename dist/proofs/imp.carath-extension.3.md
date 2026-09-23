@@ -1,4 +1,4 @@
-# Carathéodory + 预测度 ⟹ 原代数上的值不变
+# Carathéodory + 预测度 $\implies$ 原代数上的值不变
 `imp.carath-extension` · 推出 · strong 边 · 根 `../`
 
 `thm.caratheodory` Carathéodory 定理 + `prop.outer-measure-induced` 由预测度诱导外测度 → `prop.caratheodory-extension` 预测度还原

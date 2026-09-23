@@ -1,7 +1,9 @@
-# 覆盖引理 ⟹ 极大定理
+# 覆盖引理 $\implies$ 极大定理
 `imp.maximal-theorem` · 推出 · strong 边 · 根 `../`
 
 `lem.covering` 覆盖引理 + `def.maximal-function` 极大函数 → `thm.maximal-theorem` 极大定理
+
+**③ 把测度换成积分。** 由 ① 里每个球的超额不等式，
 
 $$c < 3^n \sum_j m(B_j) < (3^n/\alpha)\cdot\sum_j \int_{B_j} |f| dy \le (3^n/\alpha)\cdot\int_{\mathbb{R}^n} |f| dy$$
 

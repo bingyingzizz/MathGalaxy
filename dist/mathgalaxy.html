@@ -4686,7 +4686,9 @@ MG.notation = {
     { id: 'R10', title: 'label / tags / refs 是纯文本',
       text: '⛔ 绝不能含 `$`（label 还直接画在画布上）。**可留 Unicode** —— 画布上没有 KaTeX，留 Unicode 才一致。' },
     { id: 'R11', title: 'title 里的公式也用 $…$',
-      text: '`title` 走 `U.titleHtml()`，认 `$…$`。混着写一样的字体问题。（⚠ 目前是**警告级**，见 backlog）' },
+      text: '`title` 走 `U.titleHtml()`，认 `$…$`。混着写会有和正文一样的字体问题。' +
+        '⚠️ **例外**：**术语前缀保留 Unicode** —— `σ-代数`、`σ-有限`、`σ-环`、`μ-零集` ' +
+        '这类「希腊字母 + `-` + 词」是中文术语的一部分，当公式看反而怪（用户拍板）。' },
     { id: 'R12', title: '行内公式不写在行首',
       text: '中文段落里 `$…$` 前面要有中文或标点。' },
   ],
@@ -4863,7 +4865,7 @@ MG.notation = {
     { g: 'measure', tex: '\\ll',      uni: '≪', name: '绝对连续' },
     { g: 'measure', tex: '\\perp',    uni: '⊥', name: '奇异 / 互相垂直' },
     { g: 'measure', tex: '\\sigma',   uni: 'σ', name: '前缀：σ-环 / σ-代数 / σ-有限',
-      note: '作为中文术语前缀时写成 `$\\sigma$-代数`' },
+      note: '正文里写 `$\\sigma$代数`；`title` 里作为**中文术语前缀**保留 Unicode（`σ-代数`）—— 用户拍板' },
     { g: 'measure', tex: '\\mathfrak{B}', uni: '𝔅', name: 'Borel σ-代数' },
 
     /* -------- 积分与函数空间 -------- */
@@ -4902,14 +4904,17 @@ MG.notation = {
 
   /* ------------------------------------------------- 机器可查的规则 */
   checks: {
-    /* ⛔ 正文里不许出现裸 Unicode 数学符号（要写成 $…$ 里的 LaTeX） */
+    /* ⛔ 正文与 title 里都不许出现裸 Unicode 数学符号（要写成 $…$ 里的 LaTeX）。
+       ⚠️ `title` 里的**术语前缀**是例外：`σ-代数`、`μ-零集` 保留 Unicode（见 R11）——
+       那个例外由工具（`_tools/notation/sweep-titles.mjs`）在执行时排除，检查器不区分。 */
     bareUnicode: {
-      body: ['statement', 'notes', 'proof', 'proofs', 'note'],
-      title: ['title'],
+      body: ['statement', 'notes', 'proof', 'proofs', 'note', 'title'],
       labelOk: ['label', 'tags', 'refs'],
       chars: '∈∉⊆⊂⊇⊃∪∩∖×∅∀∃¬∧∨⟹⟸⟺⇒⇐⇔≤≥≠≈≅≃→↦←↔⟨⟩∑∏∫∂∞' +
              'ℝℂℚℤℕσμλφϕεϵθαβγδρτωΩΦΨΣΛΔ‖∥⋂⋃⊕⊗⊔·⋯′' +
              '¹²³⁰ⁿ₀₁₂ₙᵏᵢⱼ𝒜ℳℰ𝒫',
+      /* ⭐ 豁免：术语前缀（`σ-代数`、`σ-有限`、`μ-零集`…）保留 Unicode，扫描前挖掉 */
+      except: '[σμλφεδ]-[A-Za-z\\u4e00-\\u9fff]',
     },
     /* ⛔ 禁用写法 → 构建失败 */
     banned: [
@@ -4936,8 +4941,6 @@ MG.notation = {
 
   /* ------------------------------------------------------- 已知老账 */
   backlog: [
-    { id: 'titles', what: '`title` 里仍有裸 Unicode 数学记号（`title` 也渲染 $…$，' +
-        '所以有和正文一样的字体问题）。当前只报**警告**，未批量清理。' },
     { id: 'dollars', what: '正文里有把 `$$…$$` 当行内公式用的地方（`tools/_dollarcheck.mjs`）。' },
   ],
 };
@@ -5162,7 +5165,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.repl'],
       target: 'ax.sep',
-      title: '替换公理模式 ⇒ 分离公理模式',
+      title: '替换公理模式 $\\implies$ 分离公理模式',
       proof: [
         '设 $\\varphi (x, p)$ 是不含 $B$ 的公式，$A$ 是任意集合。取公式',
         '',
@@ -5356,7 +5359,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'theorem',
       label: '自然数集存在',
-      title: '自然数集 ω 存在',
+      title: '自然数集 $\\omega$ 存在',
       regions: ['set-theory'],
       tags: ['定理', '自然数', '序数'],
       statement: [
@@ -5376,7 +5379,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'theorem',
       label: '二元并存在',
-      title: '二元并 a ∪ b 存在',
+      title: '二元并 $a \\cup b$ 存在',
       regions: ['set-theory'],
       tags: ['定理'],
       statement: [
@@ -5396,7 +5399,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'theorem',
       label: '笛卡尔积存在',
-      title: '笛卡尔积 A × B 存在',
+      title: '笛卡尔积 $A \\times B$ 存在',
       regions: ['set-theory'],
       tags: ['定理', '有序对'],
       statement: [
@@ -5417,7 +5420,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.sep'],
       target: 'thm.empty',
-      title: '分离公理模式 ⇒ 空集存在',
+      title: '分离公理模式 $\\implies$ 空集存在',
       proof: [
         '取任意集合 $a$（一阶逻辑的论域非空，故这样的 $a$ 存在；在 ZF 中也可由无穷公理提供）。',
         '',
@@ -5435,7 +5438,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.found', 'ax.pair'],
       target: 'thm.noself',
-      title: '正则公理 + 配对公理 ⇒ A ∉ A',
+      title: '正则公理 + 配对公理 $\\implies A \\notin A$',
       proof: [
         '反设存在集合 $A$ 使 $A \\in A$。由配对公理取 $a = b = A$，得单点集 {A}。',
         '',
@@ -5454,7 +5457,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.inf', 'ax.power', 'ax.sep'],
       target: 'thm.omega',
-      title: '无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在',
+      title: '无穷公理 + 幂集公理 + 分离公理模式 $\\implies \\omega$ 存在',
       proof: [
         '1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。',
         '',
@@ -5482,7 +5485,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.pair', 'ax.union'],
       target: 'thm.binunion',
-      title: '配对公理 + 并集公理 ⇒ 二元并存在',
+      title: '配对公理 + 并集公理 $\\implies$ 二元并存在',
       proof: [
         '任给 $a$、$b$。',
         '',
@@ -5499,7 +5502,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.power', 'ax.pair', 'ax.union', 'ax.sep'],
       target: 'thm.product',
-      title: '幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在',
+      title: '幂集 + 配对 + 并集 + 分离公理模式 $\\implies A \\times B$ 存在',
       proof: [
         '任给 $A$、$B$。',
         '',
@@ -5802,7 +5805,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'ax.choice',
       b: 'thm.wellordering',
-      title: '选择公理 ⟺ 良序定理',
+      title: '选择公理 $\\iff$ 良序定理',
       proofs: [
         {
           label: '选择公理 ⇒ 良序定理（路线 1⟹4）',
@@ -5850,7 +5853,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'thm.wellordering',
       b: 'lem.zorn',
-      title: '良序定理 ⟺ 佐恩引理',
+      title: '良序定理 $\\iff$ 佐恩引理',
       proofs: [
         {
           label: '良序定理 ⇒ 佐恩引理',
@@ -5905,7 +5908,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'lem.zorn',
       b: 'thm.hausdorff',
-      title: '佐恩引理 ⟺ Hausdorff 极大原理',
+      title: '佐恩引理 $\\iff$ Hausdorff 极大原理',
       proofs: [
         {
           label: '佐恩引理 ⇒ Hausdorff 极大原理（路线 2⟹3）',
@@ -5944,7 +5947,7 @@ window.MG = window.MG || {};
       kind: 'equivalence',
       a: 'thm.hausdorff',
       b: 'lem.tukey',
-      title: 'Hausdorff 极大原理 ⟺ Tukey 引理',
+      title: 'Hausdorff 极大原理 $\\iff$ Tukey 引理',
       proofs: [
         {
           label: 'Tukey 引理 ⇒ Hausdorff 极大原理',
@@ -5988,7 +5991,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.choice', 'thm.hartogs'],
       target: 'lem.zorn',
-      title: '选择公理 + Hartogs 定理 ⟹ 佐恩引理（路线 1⟹2）',
+      title: '选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）',
       proof: [
         '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。',
         '',
@@ -6023,7 +6026,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.zorn'],
       target: 'ax.choice',
-      title: '佐恩引理 ⟹ 选择公理（路线 2⟹1）',
+      title: '佐恩引理 $\\implies$ 选择公理（路线 $2\\implies1$）',
       proof: [
         '设 $\\{A_i\\}_\\{i \\in I\\}$ 是一族非空集合。要对它造出一个选择函数。',
         '',
@@ -6118,7 +6121,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.zorn'],
       target: 'thm.vsbasis',
-      title: '佐恩引理 ⇒ 每个向量空间有基',
+      title: '佐恩引理 $\\implies$ 每个向量空间有基',
       proof: [
         '设 $V \\ne 0$ 是域 $K$ 上的向量空间，并给定线性无关集 $S_{0} \\subseteq V$。令',
         '',
@@ -6276,7 +6279,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'theorem',
       label: '紧的三个等价刻画',
-      title: '度量空间中：紧 ⟺ 列紧 ⟺ 完备 + 全有界',
+      title: '度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
       regions: ['topology'],
       tags: ['定理', '紧', '列紧', '完备', '全有界'],
       statement: [
@@ -6325,7 +6328,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'proposition',
       label: '子集的紧性刻画',
-      title: '命题：X 完备时，A 紧 ⟺ A 闭且全有界',
+      title: '命题：X 完备时，A 紧 $\\iff A$ 闭且全有界',
       regions: ['topology'],
       tags: ['命题', '紧', '闭', '全有界'],
       statement: [
@@ -6351,7 +6354,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.compact'],
       target: 'def.sequentially-compact',
-      title: '紧 ⟹ 列紧',
+      title: '紧 $\\implies$ 列紧',
       proof: [
         '设 $\\{x_{n}\\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。',
         '',
@@ -6378,7 +6381,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.sequentially-compact'],
       target: 'def.totally-bounded',
-      title: '列紧 ⟹ 全有界',
+      title: '列紧 $\\implies$ 全有界',
       proof: [
         '证明逆否：若 $X$ 不全有界，则存在一个没有收敛子列的序列。',
         '',
@@ -6405,7 +6408,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.sequentially-compact'],
       target: 'def.complete',
-      title: '列紧 ⟹ 完备',
+      title: '列紧 $\\implies$ 完备',
       proof: [
         '设 $X$ 列紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。',
         '',
@@ -6426,7 +6429,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.sequentially-compact'],
       target: 'def.compact',
-      title: '列紧 ⟹ 紧',
+      title: '列紧 $\\implies$ 紧',
       proof: [
         '用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。',
         '',
@@ -6463,7 +6466,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.compact'],
       target: 'def.complete',
-      title: '紧 ⟹ 完备',
+      title: '紧 $\\implies$ 完备',
       proof: [
         '设 $X$ 紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。要证它收敛。',
         '',
@@ -6484,7 +6487,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.compact'],
       target: 'def.totally-bounded',
-      title: '紧 ⟹ 全有界',
+      title: '紧 $\\implies$ 全有界',
       proof: [
         '给定 $\\varepsilon > 0$。考虑开球族',
         '',
@@ -6506,7 +6509,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.complete', 'def.totally-bounded'],
       target: 'def.sequentially-compact',
-      title: '完备 + 全有界 ⟹ 列紧（对角线法）',
+      title: '完备 + 全有界 $\\implies$ 列紧（对角线法）',
       proof: [
         '设 $X$ 完备且全有界，$\\{x_{n}\\}$ 是 $X$ 中任一序列。要抽出一个收敛子列。',
         '',
@@ -6766,7 +6769,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'theorem',
       label: '环 → σ-环 的判据',
-      title: '定理：环是 σ-环 ⟺ 它是单调类 ⟺ 它对可数不交并封闭',
+      title: '定理：环是 σ-环 $\\iff$ 它是单调类 $\\iff$ 它对可数不交并封闭',
       regions: ['analysis'],
       tags: ['定理', '环', '单调类', 'σ-环'],
       statement: [
@@ -6786,7 +6789,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '生成的 σ-代数',
-      title: '由 ℰ 生成的 σ-代数 / 单调类：ℳ(ℰ) 与 𝔪(ℰ)',
+      title: '由 $\\mathcal{E}$ 生成的 σ-代数 / 单调类：$\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$',
       regions: ['analysis'],
       tags: ['定义', '生成', 'σ-代数', '单调类'],
       statement: [
@@ -6837,7 +6840,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: 'Borel σ-代数',
-      title: 'Borel σ-代数（Borel σ-Algebra 𝔅_X）',
+      title: 'Borel σ-代数（Borel σ-Algebra $\\mathfrak{B}_X$）',
       regions: ['analysis', 'topology'],
       tags: ['定义', 'Borel', '拓扑'],
       statement: [
@@ -6964,7 +6967,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.set-ring', 'def.monotone-class'],
       target: 'thm.ring-monotone-sigma',
-      title: '环 + 单调类 ⟹ σ-环',
+      title: '环 + 单调类 $\\implies$ σ-环',
       proof: [
         '设 $\\mathfrak{A}$ 是环，且是单调类。要证它对**可数并**封闭。',
         '',
@@ -7378,7 +7381,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'proposition',
       label: '由预测度诱导外测度',
-      title: '命题：从 ℰ 上的 ρ 诱导出一个外测度',
+      title: '命题：从 $\\mathcal{E}$ 上的 $\\rho$ 诱导出一个外测度',
       regions: ['analysis'],
       tags: ['命题', '外测度', '覆盖'],
       statement: [
@@ -7401,7 +7404,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: 'μ*-可测集',
-      title: 'Carathéodory 可测性（μ*-Measurable Set）',
+      title: 'Carathéodory 可测性（$\\mu^{*}$-Measurable Set）',
       regions: ['analysis'],
       tags: ['定义', 'Carathéodory', '可测'],
       statement: [
@@ -7422,7 +7425,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'theorem',
       label: 'Carathéodory 定理',
-      title: 'Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度',
+      title: 'Carathéodory 定理：$\\mu^{*}$-可测集构成 σ-代数，$\\mu^{*}$ 在其上是完备测度',
       regions: ['analysis'],
       tags: ['定理', 'Carathéodory', 'σ-代数', '完备'],
       statement: [
@@ -7541,7 +7544,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: 'Lebesgue–Stieltjes 测度',
-      title: 'Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure μ_F）',
+      title: 'Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure $\\mu_F$）',
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue–Stieltjes', 'Lebesgue 测度'],
       statement: [
@@ -7567,7 +7570,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.measure'],
       target: 'prop.measure-basic',
-      title: '测度 ⟹ 单调 / 次可加 / 上下连续',
+      title: '测度 $\\implies$ 单调 / 次可加 / 上下连续',
       proof: [
         '设 $\\mu$ 是测度。',
         '',
@@ -7596,7 +7599,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.premeasure'],
       target: 'prop.outer-measure-induced',
-      title: '预测度 ⟹ 诱导的外测度',
+      title: '预测度 $\\implies$ 诱导的外测度',
       proof: [
         '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度。对 $A \\subseteq X$ 令',
         '',
@@ -7627,7 +7630,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.outer-measure', 'def.caratheodory-measurable'],
       target: 'thm.caratheodory',
-      title: '外测度 + 可切集 ⟹ σ-代数与完备测度',
+      title: '外测度 + 可切集 $\\implies$ σ-代数与完备测度',
       proof: [
         '设 $\\mu^{*}$ 是外测度，$\\mathcal{M} = \\{ A : \\forall E, \\mu^{*}(E) = \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c}) \\}$。',
         '',
@@ -7664,7 +7667,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.caratheodory', 'prop.outer-measure-induced'],
       target: 'prop.caratheodory-extension',
-      title: 'Carathéodory + 预测度 ⟹ 原代数上的值不变',
+      title: 'Carathéodory + 预测度 $\\implies$ 原代数上的值不变',
       proof: [
         '设 $\\mathfrak{A}$ 是代数，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的预测度，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度，$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集。',
         '',
@@ -7720,7 +7723,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.ls-premeasure', 'thm.caratheodory-uniqueness'],
       target: 'thm.ls-exists',
-      title: 'F 的预测度 ⟹ ℝ 上的 Borel 测度',
+      title: 'F 的预测度 $\\implies \\mathbb{R}$ 上的 Borel 测度',
       proof: [
         '设 $F$ 递增右连续。由前一条命题，$\\mu _{0}((a, b]) = F(b) - F(a)$ 扩充成半开区间生成的代数 $\\mathfrak{A}$ 上的**预测度**。',
         '',
@@ -7739,7 +7742,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.null-set'],
       target: 'thm.completion',
-      title: '零集 ⟹ 完备化',
+      title: '零集 $\\implies$ 完备化',
       proof: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}, F \\subseteq N$ 对某个零集 N }。',
         '',
@@ -7936,7 +7939,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'proposition',
       label: '积空间与实虚部',
-      title: '命题：可测函数到积空间；f 可测 ⟺ 实部虚部可测',
+      title: '命题：可测函数到积空间；f 可测 $\\iff$ 实部虚部可测',
       regions: ['analysis'],
       tags: ['命题', '积空间', '实部虚部'],
       statement: [
@@ -8044,7 +8047,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'proposition',
       label: '完备性 ⟺ 不破坏可测性',
-      title: '命题：μ 完备 ⟺ 几乎处处相等 / 几乎处处收敛不破坏可测性',
+      title: '命题：$\\mu$ 完备 $\\iff$ 几乎处处相等 / 几乎处处收敛不破坏可测性',
       regions: ['analysis'],
       tags: ['命题', '完备', '几乎处处'],
       statement: [
@@ -8101,7 +8104,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.simple-function', 'thm.simple-approximation'],
       target: 'prop.measurable-closure',
-      title: '简单函数逼近 ⟹ 可测函数在极限下封闭',
+      title: '简单函数逼近 $\\implies$ 可测函数在极限下封闭',
       proof: [
         '**① 上确界。** 设 $$f_j$$ 可测。要证 $$\\sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\\infty]$$（$a \\in \\mathbb{R}$）验证：',
         '',
@@ -8129,7 +8132,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.measurable-criterion'],
       target: 'cor.continuous-measurable',
-      title: '连续 ⟹ Borel 可测',
+      title: '连续 $\\implies$ Borel 可测',
       proof: [
         '设 $$f : X \\to Y$$ 连续，即每个开集的原像是开集。',
         '',
@@ -8144,7 +8147,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.completion'],
       target: 'prop.completion-measurable-function',
-      title: '完备化定理 ⟹ 完备空间上的可测函数可改在零集上',
+      title: '完备化定理 $\\implies$ 完备空间上的可测函数可改在零集上',
       proof: [
         '完备化 $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 相对 $(X, \\mathcal{M}, \\mu)$ 只多做了一件事：**把零集的子集也收进 $\\sigma$代数**。所以两个 $\\sigma$代数只在零集上不同。',
         '',
@@ -8247,7 +8250,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'definition',
       label: 'L⁺',
-      title: 'L⁺：非负可测函数全体',
+      title: '$L^{+}$：非负可测函数全体',
       regions: ['analysis'],
       tags: ['定义', 'L⁺'],
       statement: [
@@ -8385,7 +8388,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '积分为零 ⟺ 几乎处处为零',
-      title: '命题：∫ f = 0 ⟺ f = 0 a.e.',
+      title: '命题：$\\int f = 0 \\iff f = 0 \\text{a.e.}$',
       regions: ['analysis'],
       tags: ['命题', '零集', '几乎处处'],
       statement: [
@@ -8448,7 +8451,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'corollary',
       label: 'Fatou 的推论',
-      title: '推论：fₙ → f a.e. ⟹ ∫ f ≤ lim ∫ fₙ',
+      title: '推论：$f_{n} \\to f \\text{a.e.} \\implies \\int f \\le \\lim \\int f_{n}$',
       regions: ['analysis'],
       tags: ['推论', 'Fatou', '几乎处处'],
       statement: [
@@ -8465,7 +8468,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '积分有限的后果',
-      title: '命题：∫ f < ∞ 时，f 几乎处处有限、支撑 σ-有限',
+      title: '命题：$\\int f < \\infty$ 时，f 几乎处处有限、支撑 σ-有限',
       regions: ['analysis'],
       tags: ['命题', 'σ-有限', '零集'],
       statement: [
@@ -8514,7 +8517,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'definition',
       label: '可积 / L¹',
-      title: '可积函数与 L¹ 空间',
+      title: '可积函数与 $L^{1}$ 空间',
       regions: ['analysis'],
       tags: ['定义', 'L¹', '可积'],
       statement: [
@@ -8539,7 +8542,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: 'L¹ 是向量空间',
-      title: '命题：可积函数全体是向量空间，∫ 线性',
+      title: '命题：可积函数全体是向量空间，$\\int$ 线性',
       regions: ['analysis'],
       tags: ['命题', 'L¹', '线性'],
       statement: [
@@ -8561,7 +8564,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '积分绝对值不等式',
-      title: '命题：|∫ f| ≤ ∫ |f|',
+      title: '命题：$|\\int f| \\le \\int |f|$',
       regions: ['analysis'],
       tags: ['命题', '三角不等式'],
       statement: [
@@ -8578,7 +8581,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: 'L¹ 函数的支撑 σ-有限',
-      title: '命题：f ∈ L¹ ⟹ {f ≠ 0} 是 σ-有限的',
+      title: '命题：$f \\in L^{1} \\implies \\{f \\ne 0\\}$ 是 σ-有限的',
       regions: ['analysis'],
       tags: ['命题', 'σ-有限', '支撑'],
       statement: [
@@ -8597,7 +8600,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '何时两个函数积分处处相同',
-      title: '命题：∫_E f = ∫_E g 对一切 E ⟺ f = g a.e.',
+      title: '命题：$\\int_E f = \\int_E g$ 对一切 $E \\iff f = g \\text{a.e.}$',
       regions: ['analysis'],
       tags: ['命题', '几乎处处', '可测集'],
       statement: [
@@ -8649,7 +8652,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: 'L¹ 的逐项积分',
-      title: '定理：Σ∫|fⱼ| < ∞ ⟹ Σfⱼ 几乎处处收敛且可逐项积分',
+      title: '定理：$\\sum\\int|f_{j}| < \\infty \\implies \\sum f_{j}$ 几乎处处收敛且可逐项积分',
       regions: ['analysis'],
       tags: ['定理', '逐项积分', 'L¹'],
       statement: [
@@ -8673,7 +8676,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: 'L¹ 里的逼近',
-      title: '定理：L¹ 中可用简单函数 / 连续函数逼近',
+      title: '定理：$L^{1}$ 中可用简单函数 / 连续函数逼近',
       regions: ['analysis'],
       tags: ['定理', '逼近', '简单函数', '连续函数'],
       statement: [
@@ -8730,7 +8733,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.integral-nonneg', 'prop.simple-integral-props'],
       target: 'thm.mct',
-      title: '非负积分的定义 ⟹ 单调收敛定理',
+      title: '非负积分的定义 $\\implies$ 单调收敛定理',
       proof: [
         '**① 一个方向是免费的。** 由 $f_{n} \\le f$ 与积分的单调性，$\\int f_{n} \\le \\int f$，故',
         '',
@@ -8766,7 +8769,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.mct'],
       target: 'thm.termwise-integration',
-      title: 'MCT ⟹ 逐项积分',
+      title: 'MCT $\\implies$ 逐项积分',
       proof: [
         '**① 先看两项。** 由非负性，$$\\{f_1 \\wedge  n\\}$$、$$\\{f_2 \\wedge  n\\}$$ 都是简单函数列的极限（简单函数逼近定理），于是',
         '',
@@ -8791,7 +8794,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.mct'],
       target: 'lem.fatou',
-      title: 'MCT ⟹ Fatou 引理',
+      title: 'MCT $\\implies$ Fatou 引理',
       proof: [
         '设 $$g_n = \\inf_{k \\ge n} f_k$$，则',
         '',
@@ -8814,7 +8817,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.fatou'],
       target: 'thm.dct',
-      title: 'Fatou ⟹ 控制收敛定理',
+      title: 'Fatou $\\implies$ 控制收敛定理',
       proof: [
         '设 $$f_n \\to f$$ a.e.，$$|f_n| \\le g \\in L^1$$。',
         '',
@@ -8848,7 +8851,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.dct'],
       target: 'thm.differentiate-under-integral',
-      title: 'DCT ⟹ 在积分号下求极限与求导',
+      title: 'DCT $\\implies$ 在积分号下求极限与求导',
       proof: [
         '**(a)** 取任意 $$t_n \\to t_0$$，令 $$f_n(x) = f(x, t_n)$$。由题设 $$|f_n| \\le g \\in L^1$$、且 $$f_n \\to f(x,t_0)$$ 逐点，DCT 直接给出',
         '',
@@ -8880,7 +8883,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.termwise-integration', 'prop.integral-zero-iff'],
       target: 'thm.termwise-L1',
-      title: '非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分',
+      title: '非负逐项积分 + 零集判定 $\\implies L^{1}$ 的逐项积分',
       proof: [
         '设 $$\\sum_j \\int |f_j| < \\infty$$。',
         '',
@@ -8907,7 +8910,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.integral-zero-iff'],
       target: 'prop.integrals-equal-iff',
-      title: '积分为零 ⟹ 用积分识别函数',
+      title: '积分为零 $\\implies$ 用积分识别函数',
       proof: [
         '记 $$h = f - g \\in L^1$$。三条之间的等价链条是',
         '',
@@ -8926,7 +8929,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.fatou'],
       target: 'cor.fatou',
-      title: 'Fatou 引理 ⟹ a.e. 版本的 Fatou',
+      title: 'Fatou 引理 $\\implies \\text{a.e.}$ 版本的 Fatou',
       proof: '把 Fatou 引理用在 $\\liminf f_n$ 上：a.e. 收敛时 $\\liminf_n f_n = f$，于是 $\\int f = \\int \\liminf f_n \\le \\liminf \\int f_n$。∎'
     },
 
@@ -9059,7 +9062,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: '五种收敛',
-      title: '收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹',
+      title: '收敛的类型：一致 / 近一致 / a.e. / 依测度 / $L^{1}$',
       regions: ['analysis'],
       tags: ['定义', '收敛', '依测度'],
       statement: [
@@ -9164,7 +9167,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'proposition',
       label: 'L¹ 收敛 ⟹ 依测度收敛',
-      title: '命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）',
+      title: '命题：$L^{1}$ 收敛蕴含依测度收敛（Markov 不等式）',
       regions: ['analysis'],
       tags: ['命题', 'L¹', '依测度', 'Markov'],
       statement: [
@@ -9185,7 +9188,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'theorem',
       label: 'Egorov 定理',
-      title: 'Egorov 定理：a.e. 收敛 ⟹ 近一致',
+      title: 'Egorov 定理：a.e. 收敛 $\\implies$ 近一致',
       regions: ['analysis'],
       tags: ['定理', 'Egorov', '近一致', '有限测度'],
       statement: [
@@ -9230,7 +9233,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.cauchy-in-measure'],
       target: 'thm.cauchy-in-measure',
-      title: '依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛',
+      title: '依测度 Cauchy $\\implies$ 依测度收敛且有一子列 a.e. 收敛',
       proof: [
         '**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 $k$ 存在 $$N_k$$ 使',
         '',
@@ -9274,7 +9277,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.integrable'],
       target: 'prop.L1-implies-measure',
-      title: 'Markov 不等式 ⟹ L¹ 收敛蕴含依测度收敛',
+      title: 'Markov 不等式 $\\implies L^{1}$ 收敛蕴含依测度收敛',
       proof: [
         '**Markov 不等式**：设 $$g$$ 可测非负，则对任意 $\\varepsilon > 0$，',
         '',
@@ -9295,7 +9298,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.convergence-modes'],
       target: 'thm.egorov',
-      title: 'a.e. 收敛 + 有限测度 ⟹ 近一致',
+      title: 'a.e. 收敛 + 有限测度 $\\implies$ 近一致',
       proof: [
         '设 $$f_n \\to f$$ a.e.，$$\\mu(X) < \\infty$$。',
         '',
@@ -9334,7 +9337,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.approximation-L1', 'thm.egorov'],
       target: 'cor.lusin',
-      title: '简单函数逼近 + Egorov ⟹ Lusin',
+      title: '简单函数逼近 + Egorov $\\implies$ Lusin',
       proof: [
         '**① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $$\\{\\varphi_n\\}$$ 使 $$\\int|f - \\varphi_n| \\to 0$$；取子列还可保证 $$\\varphi_n \\to f$$ a.e.（由 $L^{1}$ 收敛 $\\implies$ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。',
         '',
@@ -9420,7 +9423,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'definition',
       label: '乘积测度',
-      title: '乘积测度（Product Measure μ × ν）',
+      title: '乘积测度（Product Measure $\\mu \\times \\nu$）',
       regions: ['analysis'],
       tags: ['定义', '乘积测度', '矩形', 'Carathéodory'],
       statement: [
@@ -9457,7 +9460,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'definition',
       label: '截口',
-      title: '截口（Section）Eₓ 与 Eʸ',
+      title: '截口（Section）$E_{x}$ 与 $E^{y}$',
       regions: ['analysis'],
       tags: ['定义', '截口'],
       statement: [
@@ -9513,7 +9516,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'theorem',
       label: '乘积测度由截口给出',
-      title: '定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)',
+      title: '定理：$\\mu \\times \\nu(E) = \\int \\nu(E_{x}) d\\mu(x) = \\int \\mu(E^{y}) d\\nu(y)$',
       regions: ['analysis'],
       tags: ['定理', '乘积测度', '截口'],
       statement: [
@@ -9609,7 +9612,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.product',
       type: 'proposition',
       label: '乘积测度通常不完备',
-      title: '注记：μ、ν 完备时，μ × ν 常常不完备',
+      title: '注记：$\\mu$、$\\nu$ 完备时，$\\mu \\times \\nu$ 常常不完备',
       regions: ['analysis'],
       tags: ['注记', '完备', '乘积测度'],
       statement: [
@@ -9630,7 +9633,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.premeasure', 'thm.caratheodory'],
       target: 'def.product-measure',
-      title: '矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度',
+      title: '矩形上的预测度 $\\implies$ Carathéodory 扩张得到乘积测度',
       proof: [
         '**① $\\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k\'$$ $\\times$ $$B_j \\cap B_k\'$$），$\\mu_{0}$ 的值不变 —— 因为 $\\mu$、$\\nu$ 在各自那一侧都是有限可加的。',
         '',
@@ -9649,7 +9652,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.section'],
       target: 'prop.section-measurable',
-      title: '截口的定义 ⟹ 截口保持可测性',
+      title: '截口的定义 $\\implies$ 截口保持可测性',
       proof: [
         '**(a)** 令 $$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y) \\in X \\times Y\\}$$。',
         '',
@@ -9676,7 +9679,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.monotone-class', 'prop.section-measurable'],
       target: 'thm.product-measure-sections',
-      title: '单调类定理 ⟹ 乘积测度由截口积分给出',
+      title: '单调类定理 $\\implies$ 乘积测度由截口积分给出',
       proof: [
         '**① 先设 $\\mu$、$\\nu$ 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。',
         '',
@@ -9701,7 +9704,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.product-measure-sections', 'thm.mct'],
       target: 'thm.fubini-tonelli',
-      title: '集合版（截口公式）+ MCT ⟹ Tonelli',
+      title: '集合版（截口公式）+ MCT $\\implies$ Tonelli',
       proof: [
         '**① 指示函数。** 取 $$f = \\chi_E$$（$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$）。此时',
         '',
@@ -9744,7 +9747,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.fubini-tonelli', 'thm.completion', 'prop.product-incomplete'],
       target: 'thm.fubini-complete',
-      title: '乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T',
+      title: '乘积测度通常不完备 $\\implies$ 必须补一条完备情形的 F–T',
       proof: [
         '**① 先证 $f \\ge 0$ 的情形。** 由于 $\\lambda$ 是 $\\mu \\times \\nu$ 的完备化，$$\\mathcal{L}$$ 中的集合可以写成',
         '',
@@ -9893,7 +9896,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.product'],
       target: 'def.section',
-      title: '笛卡尔积存在 ⟹ 可以谈截口',
+      title: '笛卡尔积存在 $\\implies$ 可以谈截口',
       proof: '截口是 $X \\times Y$ 的子集 $E$ 的属性，所以先要有 $X \\times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。'
     },
 
@@ -10038,7 +10041,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '相互奇异',
-      title: '相互奇异 / 互相垂直（Mutually Singular μ ⊥ ν）',
+      title: '相互奇异 / 互相垂直（Mutually Singular $\\mu \\perp \\nu$）',
       regions: ['analysis'],
       tags: ['定义', '奇异', '垂直'],
       statement: [
@@ -10093,7 +10096,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '绝对连续',
-      title: '绝对连续（Absolute Continuity ν ≪ μ）',
+      title: '绝对连续（Absolute Continuity $\\nu \\ll \\mu$）',
       regions: ['analysis'],
       tags: ['定义', '绝对连续'],
       statement: [
@@ -10118,7 +10121,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'proposition',
       label: '绝对连续与变差',
-      title: '命题：ν ≪ μ ⟺ |ν| ≪ μ ⟺ ν⁺、ν⁻ ≪ μ；ν ⊥ μ 且 ν ≪ μ ⟹ ν = 0',
+      title: '命题：$\\nu \\ll \\mu \\iff |\\nu| \\ll \\mu \\iff \\nu^{+}$、$\\nu^{-} \\ll \\mu$；$\\nu \\perp \\mu$ 且 $\\nu \\ll \\mu \\implies \\nu = 0$',
       regions: ['analysis'],
       tags: ['命题', '绝对连续', '变差', '奇异'],
       statement: [
@@ -10140,7 +10143,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: '绝对连续的 ε–δ 刻画',
-      title: '定理（有限情形）：ν ≪ μ ⟺ ∀ε>0 ∃δ>0 ( μ(E)<δ ⟹ |ν(E)|≤ε )',
+      title: '定理（有限情形）：$\\nu \\ll \\mu \\iff \\forall\\varepsilon>0 \\exists\\delta>0$ ( $\\mu(E)<\\delta \\implies |\\nu(E)|\\le\\varepsilon$ )',
       regions: ['analysis'],
       tags: ['定理', '绝对连续', 'ε-δ'],
       statement: [
@@ -10161,7 +10164,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'proposition',
       label: '积分给出绝对连续测度',
-      title: '命题：ν(E) = ∫_E f dμ 关于 μ 绝对连续',
+      title: '命题：$\\nu(E) = \\int_E f d\\mu$ 关于 $\\mu$ 绝对连续',
       regions: ['analysis'],
       tags: ['命题', '绝对连续', '积分'],
       statement: [
@@ -10187,7 +10190,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'corollary',
       label: '积分的绝对连续性',
-      title: '推论：∫_E f dμ 在小测度集上任意小',
+      title: '推论：$\\int_E f d\\mu$ 在小测度集上任意小',
       regions: ['analysis'],
       tags: ['推论', '绝对连续', 'L¹'],
       statement: [
@@ -10230,7 +10233,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: 'Lebesgue–Radon–Nikodym 定理',
-      title: 'Lebesgue–Radon–Nikodym 定理：ν = λ + ρ，λ ⊥ μ，ρ ≪ μ',
+      title: 'Lebesgue–Radon–Nikodym 定理：$\\nu = \\lambda + \\rho$，$\\lambda \\perp \\mu$，$\\rho \\ll \\mu$',
       regions: ['analysis'],
       tags: ['定理', 'Radon-Nikodym', 'Lebesgue 分解'],
       statement: [
@@ -10258,7 +10261,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: 'RN 导数与 Lebesgue 分解',
-      title: 'Radon–Nikodym 导数 dν/dμ 与 Lebesgue 分解',
+      title: 'Radon–Nikodym 导数 $d\\nu/d\\mu$ 与 Lebesgue 分解',
       regions: ['analysis'],
       tags: ['定义', 'RN 导数', 'Lebesgue 分解'],
       statement: [
@@ -10315,7 +10318,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'corollary',
       label: '互为绝对连续时导数互逆',
-      title: '推论：μ ≪ λ 且 λ ≪ μ ⟹ (dμ/dλ)(dλ/dμ) = 1',
+      title: '推论：$\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu \\implies (d\\mu/d\\lambda)(d\\lambda/d\\mu) = 1$',
       regions: ['analysis'],
       tags: ['推论', 'RN 导数'],
       statement: [
@@ -10360,7 +10363,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: '复测度的 Radon–Nikodym',
-      title: '定理：复测度的 ν = λ + f dμ 分解',
+      title: '定理：复测度的 $\\nu = \\lambda + f d\\mu$ 分解',
       regions: ['analysis'],
       tags: ['定理', 'Radon-Nikodym', '复测度'],
       statement: [
@@ -10382,7 +10385,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'proposition',
       label: '全变差的基本性质',
-      title: '命题：|ν(E)| ≤ |ν|(E)，且 d|ν| = |f| dμ',
+      title: '命题：$|\\nu(E)| \\le |\\nu|(E)$，且 $d|\\nu| = |f| d\\mu$',
       regions: ['analysis'],
       tags: ['命题', '全变差', '复测度'],
       statement: [
@@ -10413,7 +10416,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.signed-measure', 'prop.positive-set-closure'],
       target: 'thm.hahn-decomposition',
-      title: '符号测度 + 正集的封闭性 ⟹ Hahn 分解',
+      title: '符号测度 + 正集的封闭性 $\\implies$ Hahn 分解',
       proof: [
         '**① 先把 $\\nu$ 的无穷值甩掉。** 不妨设 $\\nu$ 不取 $\\infty$（若 $\\nu$ 不取 $-\\infty$ 就改证 $-\\nu$）。于是 $$\\nu(X) < \\infty$$ 中的「上方」是安全的。',
         '',
@@ -10460,7 +10463,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.hahn-decomposition'],
       target: 'thm.jordan-decomposition',
-      title: 'Hahn 分解 ⟹ Jordan 分解',
+      title: 'Hahn 分解 $\\implies$ Jordan 分解',
       proof: [
         '取 $\\nu$ 的一个 Hahn 分解 $$X = P \\sqcup  N$$（$P$ 正、$N$ 负）。定义',
         '',
@@ -10489,7 +10492,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.absolute-continuity'],
       target: 'thm.ac-epsilon-delta',
-      title: '绝对连续 ⟹ ε–δ 刻画（ν 有限时）',
+      title: '绝对连续 $\\implies \\varepsilon$–$\\delta$ 刻画（$\\nu$ 有限时）',
       proof: [
         '设 $\\nu$ 有限且 $$\\nu \\ll  \\mu$$。由「绝对连续与变差」那条命题，可以**不妨设 $\\nu$ 本身就是正测度**（换成 $|\\nu |$ 不影响结论）。',
         '',
@@ -10520,7 +10523,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.singular-or-lower-bound', 'thm.mct', 'prop.ac-and-variations'],
       target: 'thm.lebesgue-radon-nikodym',
-      title: '「要么奇异、要么有下界」⟹ Lebesgue–Radon–Nikodym',
+      title: '「要么奇异、要么有下界」$\\implies$ Lebesgue–Radon–Nikodym',
       proof: [
         '**I. 先设 $\\nu$、$\\mu$ 都有限，且 $\\nu \\ge 0$。**',
         '',
@@ -10604,7 +10607,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.integral-gives-ac'],
       target: 'cor.ac-integral-continuity',
-      title: '积分给出绝对连续测度 ⟹ 积分的绝对连续性',
+      title: '积分给出绝对连续测度 $\\implies$ 积分的绝对连续性',
       proof: '把「积分给出绝对连续测度」与绝对连续的 $\\varepsilon$–$\\delta$ 刻画拼起来即可：$\\mu(E) < \\delta \\implies \\nu(E) = \\int_E f \\, d\\mu < \\varepsilon$。∎'
     },
 
@@ -10750,7 +10753,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'proposition',
       label: 'L¹(ν) 与全变差',
-      title: '命题：符号测度的 L¹(ν) = L¹(|ν|)，以及几条基本不等式',
+      title: '命题：符号测度的 $L^{1}(\\nu) = L^{1}(|\\nu|)$，以及几条基本不等式',
       regions: ['analysis'],
       tags: ['命题', 'L¹', '全变差'],
       statement: [
@@ -10805,7 +10808,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '局部可积',
-      title: '局部可积函数 L¹ₗoc',
+      title: '局部可积函数 $L^{1}_{\\text{loc}}$',
       regions: ['analysis'],
       tags: ['定义', '局部可积'],
       statement: [
@@ -10828,7 +10831,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '平均算子 Aᵣ',
-      title: '平均算子（Averaging Operator Aᵣ f）',
+      title: '平均算子（Averaging Operator $A_{r} f$）',
       regions: ['analysis'],
       tags: ['定义', '平均算子'],
       statement: [
@@ -10850,7 +10853,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'lemma',
       label: '平均算子联合连续',
-      title: '引理：Aᵣ f(x) 关于 (r, x) 联合连续',
+      title: '引理：$A_{r} f(x)$ 关于 (r, x) 联合连续',
       regions: ['analysis'],
       tags: ['引理', '连续', 'DCT'],
       statement: [
@@ -10922,7 +10925,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'theorem',
       label: 'Lebesgue 微分定理',
-      title: 'Lebesgue 微分定理：Aᵣ f(x) → f(x) a.e.',
+      title: 'Lebesgue 微分定理：$A_{r} f(x) \\to f(x) \\text{a.e.}$',
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue 微分', 'a.e.'],
       statement: [
@@ -10943,7 +10946,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: 'Lebesgue 集',
-      title: 'Lebesgue 集 L_f',
+      title: 'Lebesgue 集 $L_f$',
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue 集'],
       statement: [
@@ -10966,7 +10969,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'theorem',
       label: 'Lebesgue 集几乎处处',
-      title: '定理：f ∈ L¹ₗoc ⟹ m(L_fᶜ) = 0',
+      title: '定理：$f \\in L^{1}_{\\text{loc}} \\implies m(L_f^{c}) = 0$',
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue 集'],
       statement: [
@@ -11065,7 +11068,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'theorem',
       label: 'RN 导数的点态公式',
-      title: '定理：ν(Eᵣ)/m(Eᵣ) → f(x) a.e.，其中 dν = dλ + f dm',
+      title: '定理：$\\nu(E_{r})/m(E_{r}) \\to f(x) \\text{a.e.}$，其中 $d\\nu = d\\lambda + f dm$',
       regions: ['analysis'],
       tags: ['定理', 'RN 导数', '点态', '正则'],
       statement: [
@@ -11098,7 +11101,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.covering', 'def.maximal-function'],
       target: 'thm.maximal-theorem',
-      title: '覆盖引理 ⟹ 极大定理',
+      title: '覆盖引理 $\\implies$ 极大定理',
       proof: [
         '**① 把坏集换成球族。** 令 $$E_\\alpha = \\{x : Hf(x) > \\alpha\\}$$。对每个 $$x \\in E_\\alpha$$，由 Hf 的定义（上确界）存在 $$r_x > 0$$ 使',
         '',
@@ -11130,7 +11133,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.maximal-theorem', 'thm.approximation-L1', 'lem.average-continuous'],
       target: 'thm.lebesgue-differentiation',
-      title: '极大定理 + 连续函数逼近 ⟹ Lebesgue 微分定理',
+      title: '极大定理 + 连续函数逼近 $\\implies$ Lebesgue 微分定理',
       proof: [
         '**① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $$N \\in \\mathbb{N}$$ 证明在球 $$\\{|x| \\le N\\}$$ 上几乎处处成立；把 $f$ 换成 $$f\\cdot\\chi_{B(N+1, 0)}$$ 后即可**设 $$f \\in L^1$$**。',
         '',
@@ -11170,7 +11173,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.lebesgue-differentiation'],
       target: 'thm.lebesgue-set-full',
-      title: '微分定理 + 可数稠密子集 ⟹ Lebesgue 集几乎处处',
+      title: '微分定理 + 可数稠密子集 $\\implies$ Lebesgue 集几乎处处',
       proof: [
         '**① 对每个复数 $c$ 用一次微分定理。** 固定 $$c \\in \\mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
         '',
@@ -11198,7 +11201,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.lebesgue-set-full', 'def.shrinks-nicely'],
       target: 'thm.differentiation-general',
-      title: 'Lebesgue 集 + 可缩条件 ⟹ 一般族的微分定理',
+      title: 'Lebesgue 集 + 可缩条件 $\\implies$ 一般族的微分定理',
       proof: [
         '设 $$x \\in L_f$$，$$\\{E_r\\}$$ 可缩地趋于 $x$，即 $$E_r \\subseteq B(r,x)$$ 且 $$m(E_r) > \\alpha\\cdot m(B(r,x))$$。',
         '',
@@ -11222,7 +11225,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.differentiation-general', 'def.regular-measure', 'lem.covering'],
       target: 'thm.rn-pointwise',
-      title: '微分定理 + 正则性 ⟹ RN 导数的点态公式',
+      title: '微分定理 + 正则性 $\\implies RN$ 导数的点态公式',
       proof: [
         '设 $$d\\nu = d\\lambda + f\\cdot dm$$（$$\\lambda \\perp  m$$），$\\nu$ 正则。',
         '',
@@ -11462,7 +11465,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'lemma',
       label: 'T_F ± F 递增',
-      title: '引理：实值 BV 函数的 T_F + F 与 T_F − F 都递增',
+      title: '引理：实值 BV 函数的 $T_F + F$ 与 $T_F - F$ 都递增',
       regions: ['analysis'],
       tags: ['引理', '全变差', '递增'],
       statement: [
@@ -11488,7 +11491,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'theorem',
       label: 'BV 的 Jordan 分解',
-      title: '定理：F ∈ BV ⟺ F = G − H（G、H 有界递增）',
+      title: '定理：$F \\in BV \\iff F = G - H$（G、H 有界递增）',
       regions: ['analysis'],
       tags: ['定理', 'BV', 'Jordan 分解'],
       statement: [
@@ -11539,7 +11542,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'definition',
       label: 'NBV',
-      title: 'NBV：右连续且 F(−∞) = 0 的有界变差函数',
+      title: 'NBV：右连续且 $F(-\\infty) = 0$ 的有界变差函数',
       regions: ['analysis'],
       tags: ['定义', 'NBV'],
       statement: [
@@ -11560,7 +11563,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'lemma',
       label: '全变差的 NBV 性质',
-      title: '引理：T_F(−∞) = 0；F 右连续 ⟹ T_F 右连续',
+      title: '引理：$T_F(-\\infty) = 0$；F 右连续 $\\implies T_F$ 右连续',
       regions: ['analysis'],
       tags: ['引理', '全变差', 'NBV'],
       statement: [
@@ -11586,7 +11589,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'proposition',
       label: '递增函数的导数积分不等式',
-      title: '命题：∫ₐᵇ F′ ≤ F(b) − F(a)',
+      title: '命题：$\\int_{a}^{b} F\' \\le F(b) - F(a)$',
       regions: ['analysis'],
       tags: ['命题', '递增', '积分', '导数'],
       statement: [
@@ -11641,7 +11644,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'proposition',
       label: 'NBV 函数的导数与测度的关系',
-      title: '命题：μ_F ⊥ m ⟺ F′ = 0 a.e.；μ_F ≪ m ⟺ F(x) = ∫_{−∞}ˣ F′',
+      title: '命题：$\\mu_F \\perp m \\iff F\' = 0 \\text{a.e.}$；$\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F\'$',
       regions: ['analysis'],
       tags: ['命题', 'NBV', 'RN 导数'],
       statement: [
@@ -11685,7 +11688,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'proposition',
       label: '函数绝对连续 ⟺ 测度绝对连续',
-      title: '命题：F 绝对连续 ⟺ μ_F ≪ m',
+      title: '命题：F 绝对连续 $\\iff \\mu_F \\ll m$',
       regions: ['analysis'],
       tags: ['命题', '绝对连续', 'μ_F ≪ m'],
       statement: [
@@ -11706,7 +11709,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'corollary',
       label: '积出来的函数是 AC · NBV',
-      title: '推论：f ∈ L¹(m) ⟹ F(x) = ∫_{−∞}ˣ f 是 AC、NBV；反之亦然',
+      title: '推论：$f \\in L^{1}(m) \\implies F(x) = \\int_{-\\infty}^{x} f$ 是 AC、NBV；反之亦然',
       regions: ['analysis'],
       tags: ['推论', 'AC', 'NBV', '基本定理'],
       statement: [
@@ -11748,7 +11751,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'theorem',
       label: '微积分基本定理（Lebesgue 版）',
-      title: '定理（TFAE）：绝对连续 ⟺ 是 L¹ 函数的积分 ⟺ 导数的积分还原',
+      title: '定理（TFAE）：绝对连续 $\\iff$ 是 $L^{1}$ 函数的积分 $\\iff$ 导数的积分还原',
       regions: ['analysis'],
       tags: ['定理', '微积分基本定理', 'AC', 'NCT'],
       statement: [
@@ -11781,7 +11784,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.variation-monotone'],
       target: 'thm.bv-jordan',
-      title: 'T_F ± F 递增 ⟹ BV 的 Jordan 分解',
+      title: '$T_F \\pm F$ 递增 $\\implies BV$ 的 Jordan 分解',
       proof: [
         '**(b) 的 $(\\Longleftarrow )$ 方向**：若 $$F = G - H$$（$G$、$H$ 有界递增），则对任意分划',
         '',
@@ -11809,7 +11812,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.bv-jordan', 'thm.monotone-differentiable'],
       target: 'prop.bv-regularity',
-      title: '化归到递增函数 ⟹ BV 的正则性',
+      title: '化归到递增函数 $\\implies BV$ 的正则性',
       proof: [
         '由**Jordan 分解**，只需对**有界递增**函数证明这三条 —— 差的性质自动继承。',
         '',
@@ -11832,7 +11835,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.nbv-variation', 'thm.bv-jordan'],
       target: 'thm.borel-measure-nbv',
-      title: 'NBV 的性质 ⟹ 测度与函数的一一对应',
+      title: 'NBV 的性质 $\\implies$ 测度与函数的一一对应',
       proof: [
         '**(1) 测度 $\\implies$ 函数。** 复测度拆成四个正测度 $$\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$$。令',
         '',
@@ -11859,7 +11862,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.nbv-derivative', 'thm.ac-epsilon-delta'],
       target: 'prop.ac-iff-measure-ac',
-      title: 'μ_F ≪ m 的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续',
+      title: '$\\mu_F \\ll m$ 的 $\\varepsilon$–$\\delta$ 刻画 $\\implies$ 函数绝对连续 $\\iff$ 测度绝对连续',
       proof: [
         '**$(\\Longleftarrow )$** 设 $$\\mu_F \\ll  m$$。应用测度版绝对连续的 $\\varepsilon$–$\\delta$ 刻画（注意 $\\mu _F$ 有限，符合前提）：给定 $\\varepsilon > 0$ 取 $\\delta > 0$ 使',
         '',
@@ -11884,7 +11887,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.ac-subset-bv', 'prop.ac-iff-measure-ac', 'prop.nbv-derivative'],
       target: 'thm.ftc-lebesgue',
-      title: '(a) ⟺ (b) ⟺ (c)：微积分基本定理的三条等价',
+      title: '$(a) \\iff (b) \\iff (c)$：微积分基本定理的三条等价',
       proof: [
         '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $$d\\mu_F = f\\cdot dm$$，即',
         '',
@@ -12018,7 +12021,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'definition',
       label: 'L^p 范数',
-      title: 'L^p 范数与 L^p 空间',
+      title: '$L^p$ 范数与 $L^p$ 空间',
       regions: ['analysis'],
       tags: ['定义', 'Lp', '范数'],
       statement: [
@@ -12048,7 +12051,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'lemma',
       label: 'Young 不等式',
-      title: 'Young 不等式（a^λ · b^(1−λ) ≤ λa + (1−λ)b）',
+      title: 'Young 不等式（$a^\\lambda \\cdot b^{1-\\lambda} \\le \\lambda a + (1-\\lambda)b$）',
       regions: ['analysis'],
       tags: ['引理', 'Young', '凸性'],
       statement: [
@@ -12236,7 +12239,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: 'L^q 落在 L^p + L^r 里',
-      title: '命题：L^q ⊆ L^p + L^r（0 < p < q < r ≤ ∞）',
+      title: '命题：$L^q \\subseteq L^p + L^r$（$0 < p < q < r \\le \\infty$）',
       regions: ['analysis'],
       tags: ['命题', '插值', '分解'],
       statement: [
@@ -12266,7 +12269,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: 'L^p ∩ L^r ⊆ L^q',
-      title: '命题（插值）：L^p ∩ L^r ⊆ L^q',
+      title: '命题（插值）：$L^p \\cap L^r \\subseteq L^q$',
       regions: ['analysis'],
       tags: ['命题', '插值', 'Riesz–Thorin 初等版'],
       statement: [
@@ -12299,7 +12302,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: 'ℓ^p ⊆ ℓ^q',
-      title: '命题（只有衰减的场合）：ℓ^p ⊆ ℓ^q（0 < p < q ≤ ∞）',
+      title: '命题（只有衰减的场合）：$\\ell^p \\subseteq \\ell^q$（$0 < p < q \\le \\infty$）',
       regions: ['analysis'],
       tags: ['命题', '序列空间', '包含'],
       statement: [
@@ -12326,7 +12329,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: '有限测度时方向反过来',
-      title: '命题（只有爆破的场合）：μ(X) < ∞ 时 L^p(μ) ⊇ L^q(μ)',
+      title: '命题（只有爆破的场合）：$\\mu(X) < \\infty$ 时 $L^p(\\mu) \\supseteq L^q(\\mu)$',
       regions: ['analysis'],
       tags: ['命题', '有限测度', '包含'],
       statement: [
@@ -12379,7 +12382,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'definition',
       label: '对偶配对 φ_g',
-      title: '由 g 给出的线性泛函 φ_g(f) = ∫ f·g',
+      title: '由 g 给出的线性泛函 $\\varphi_g(f) = \\int f\\cdot g$',
       regions: ['analysis'],
       tags: ['定义', '对偶', '线性泛函'],
       statement: [
@@ -12405,7 +12408,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: '‖g‖_q = ‖φ_g‖',
-      title: '命题：‖φ_g‖ = ‖g‖_q（μ 半有限时也含 q = ∞）',
+      title: '命题：$\\|\\varphi_g\\| = \\|g\\|_q$（$\\mu$ 半有限时也含 $q = \\infty$）',
       regions: ['analysis'],
       tags: ['命题', '等距', '对偶'],
       statement: [
@@ -12439,7 +12442,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: '有界 ⟹ g ∈ L^q',
-      title: '命题：若 f ↦ ∫fg 在简单函数上有界，则 g ∈ L^q',
+      title: '命题：若 $f \\mapsto \\int fg$ 在简单函数上有界，则 $g \\in L^q$',
       regions: ['analysis'],
       tags: ['命题', '有界泛函', 'L^q'],
       statement: [
@@ -12467,7 +12470,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'theorem',
       label: '(L^p)* ≅ L^q',
-      title: '定理（Riesz 表示）：1 < p < ∞ 时 (L^p)* ≅ L^q',
+      title: '定理（Riesz 表示）：$1 < p < \\infty$ 时 $(L^p)^{*} \\cong L^q$',
       regions: ['analysis'],
       tags: ['定理', 'Riesz 表示', '对偶', '等距同构'],
       statement: [
@@ -12495,7 +12498,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'corollary',
       label: 'L^p 自反',
-      title: '推论：1 < p < ∞ 时 L^p ≅ (L^p)**',
+      title: '推论：$1 < p < \\infty$ 时 $L^p \\cong (L^p)^{**}$',
       regions: ['analysis'],
       tags: ['推论', '自反', '对偶'],
       statement: [
@@ -12521,7 +12524,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.young-inequality'],
       target: 'thm.holder',
-      title: 'Young 不等式 ⟹ Hölder 不等式',
+      title: 'Young 不等式 $\\implies$ Hölder 不等式',
       proof: [
         '**① 先设 $\\|f\\|_p = \\|g\\|_q = 1$。** 在 Young 不等式里取',
         '',
@@ -12549,7 +12552,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.holder'],
       target: 'thm.minkowski',
-      title: 'Hölder 不等式 ⟹ Minkowski 不等式',
+      title: 'Hölder 不等式 $\\implies$ Minkowski 不等式',
       proof: [
         '**① 拆开。** 对 $p > 1$，',
         '',
@@ -12577,7 +12580,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.minkowski', 'thm.mct', 'thm.dct'],
       target: 'thm.lp-banach',
-      title: '三角不等式 + MCT + DCT ⟹ $L^p$ 完备',
+      title: '三角不等式 + MCT + DCT $\\implies$ $L^p$ 完备',
       proof: [
         '**① 换成级数。** 赋范线性空间完备 $\\iff$ 每个**绝对收敛**的级数都收敛（标准判据）。所以设 $\\{f_k\\} \\subseteq L^p$ 且',
         '',
@@ -12613,7 +12616,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.holder', 'def.duality-map'],
       target: 'prop.bounded-functional-gives-lq',
-      title: 'Hölder + 有界性 ⟹ $g \\in L^q$',
+      title: 'Hölder + 有界性 $\\implies$ $g \\in L^q$',
       proof: [
         '**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M_g(g)$。**',
         '',
@@ -12648,7 +12651,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.bounded-functional-gives-lq', 'thm.lebesgue-radon-nikodym', 'prop.duality-isometry'],
       target: 'thm.riesz-representation-lp',
-      title: '把泛函变成测度 ⟹ $(L^p)^* \\cong L^q$',
+      title: '把泛函变成测度 $\\implies$ $(L^p)^* \\cong L^q$',
       proof: [
         '设 $1 < p < \\infty$、$\\Phi \\in (L^p)^*$。',
         '',
@@ -13579,7 +13582,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.power-set'],
       target: 'thm.cantor',
-      title: '幂集 ⟹ Cantor 定理（对角线法）',
+      title: '幂集 $\\implies$ Cantor 定理（对角线法）',
       proof: [
         '**① $|A| \\le |\\mathcal{P}(A)|$。** 映射 $a \\mapsto \\{a\\}$ 是单射：$\\{a\\} = \\{a\'\\} \\implies a = a\'$。',
         '',
@@ -13604,7 +13607,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.bijection'],
       target: 'thm.schroder-bernstein',
-      title: '两个方向的单射 ⟹ 双射',
+      title: '两个方向的单射 $\\implies$ 双射',
       proof: [
         '设 $f : A \\to B$、$g : B \\to A$ 都是单射。把 $A$ 分成两半，一半用 $f$、一半用 $g^{-1}$，拼出一个双射。',
         '',
@@ -13638,7 +13641,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.wellordering'],
       target: 'thm.cardinal-comparable',
-      title: '良序定理 ⟹ 任意两个基数可比',
+      title: '良序定理 $\\implies$ 任意两个基数可比',
       proof: [
         '设 $A$、$B$ 是任意两个集合。',
         '',
@@ -14401,7 +14404,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.abs'],
       target: 'thm.triangle',
-      title: '绝对值的定义 ⟹ 三角不等式',
+      title: '绝对值的定义 $\\implies$ 三角不等式',
       proof: [
         '设 $x, y \\in K$。先看两个基本事实（都由 $|t| = \\max\\{t, -t\\}$ 直接读出）：',
         '',
@@ -14431,7 +14434,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.triangle'],
       target: 'def.cauchy-null',
-      title: '三角不等式 ⟹ 零列关系是等价关系',
+      title: '三角不等式 $\\implies$ 零列关系是等价关系',
       proof: '自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \\sim (y_n)$、$(y_n) \\sim (z_n)$，则 $|x_n - z_n| \\le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \\sim (z_n)$。没有这一条，$\\mathbb{R}$ 就没法定义成商集。∎'
     },
     {
@@ -14439,7 +14442,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.real'],
       target: 'thm.real-ordered-field',
-      title: 'Cauchy 列的等价类 ⟹ 完备有序域',
+      title: 'Cauchy 列的等价类 $\\implies$ 完备有序域',
       proof: [
         '记 $\\mathcal{C}$ 为有理 Cauchy 列的全体。下面把 $\\mathbb{R} := \\mathcal{C}/\\sim$ 逐条查一遍。',
         '',
@@ -14513,7 +14516,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.real-ordered-field'],
       target: 'lem.archimedean',
-      title: '完备性 ⟹ 阿基米德性质 + ℚ 稠密',
+      title: '完备性 $\\implies$ 阿基米德性质 + $\\mathbb{Q}$ 稠密',
       proof: [
         '设 $K$ 是完备有序域（把 $\\mathbb{N}$、$\\mathbb{Z}$、$\\mathbb{Q}$ 按 $1$ 生成的子域嵌进去看）。',
         '',
@@ -14546,7 +14549,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.archimedean', 'def.real'],
       target: 'thm.real-unique',
-      title: 'ℚ 稠密 ⟹ 完备有序域与 ℝ 同构',
+      title: '$\\mathbb{Q}$ 稠密 $\\implies$ 完备有序域与 $\\mathbb{R}$ 同构',
       proof: [
         '设 $K$ 是完备有序域，取 $K\' := \\mathbb{R}$（上面构造出来的那个）。分三步造出唯一的同构 $f : K \\to \\mathbb{R}$。',
         '',
@@ -14579,7 +14582,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.real-ordered-field'],
       target: 'thm.real-uncountable',
-      title: '完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）',
+      title: '完备性（确界原理）$\\implies \\mathbb{R}$ 不可数（闭区间套 + 对角线）',
       proof: [
         '反设 $\\mathbb{R} = \\{x_1, x_2, x_3, \\ldots\\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。',
         '',
@@ -14935,7 +14938,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.wellorder'],
       target: 'thm.recursion-wellorder',
-      title: '良序性 ⇒ 递归定理',
+      title: '良序性 $\\implies$ 递归定理',
       proof: [
         '设 $(W, \\preceq )$ 是良序集，$G$ 任给。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。',
         '',
@@ -14965,7 +14968,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.ordinal', 'ax.found'],
       target: 'thm.ordinal-trichotomy',
-      title: '序数的定义 ⇒ 三歧性',
+      title: '序数的定义 $\\implies$ 三歧性',
       proof: [
         '设 $\\alpha, \\beta$ 是序数。',
         '',
@@ -14990,7 +14993,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.recursion-wellorder', 'ax.repl', 'ax.found', 'thm.ordinal-trichotomy'],
       target: 'thm.wellorder-ordinal',
-      title: '递归定理 + 替换公理 ⇒ 每个良序集有唯一序型',
+      title: '递归定理 + 替换公理 $\\implies$ 每个良序集有唯一序型',
       proof: [
         '设 $(W, \\preceq )$ 是良序集。',
         '',
@@ -15021,7 +15024,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.ordinal', 'thm.ordinal-trichotomy'],
       target: 'thm.burali-forti',
-      title: '序数的定义 + 三歧性 ⇒ 序数全体是真类',
+      title: '序数的定义 + 三歧性 $\\implies$ 序数全体是真类',
       proof: [
         '反设 $\\mathrm{On}$ 是一个集合。',
         '',

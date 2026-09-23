@@ -1,4 +1,4 @@
-# 积分为零 ⟹ 用积分识别函数
+# 积分为零 $\implies$ 用积分识别函数
 `imp.integrals-equal-iff` · 推出 · strong 边 · 根 `../`
 
 `prop.integral-zero-iff` 积分为零 ⟺ 几乎处处为零 → `prop.integrals-equal-iff` 何时两个函数积分处处相同

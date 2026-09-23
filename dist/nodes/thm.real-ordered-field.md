@@ -12,7 +12,7 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.real` 实数系 ℝ：Cauchy 列的等价类 ⟹ 完备有序域　proofs/imp.real-ordered-field.md
+- `def.real` 实数系 ℝ：Cauchy 列的等价类 $\implies$ 完备有序域　proofs/imp.real-ordered-field.md
 - `def.ordered-field` 有序域：用到了定义 有序域　proofs/dep.ordered-realfield.md
 - `def.bound` 界与确界：用到了定义 界与确界　proofs/def-link.sup-real-ordered-field.md
 

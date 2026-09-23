@@ -1,4 +1,4 @@
-# 紧 ⟹ 完备
+# 紧 $\implies$ 完备
 `imp.compact-complete` · 推出 · strong 边 · 根 `../`
 
 `def.compact` 紧 → `def.complete` 完备

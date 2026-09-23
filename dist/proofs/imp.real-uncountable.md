@@ -1,4 +1,4 @@
-# 完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）
+# 完备性（确界原理）$\implies \mathbb{R}$ 不可数（闭区间套 + 对角线）
 `imp.real-uncountable` · 推出 · strong 边 · 根 `../`
 
 `thm.real-ordered-field` ℝ 是完备有序域 → `thm.real-uncountable` ℝ 不可数
@@ -12,7 +12,5 @@ $$I_n := \begin{cases} [a_{n-1}, m_n], & x_n > m_n \\ [m_n, b_{n-1}], & x_n \le 
 于是 $x_n \notin I_n$，且 $I_0 \supseteq I_1 \supseteq I_2 \supseteq \cdots$，长度 $b_n - a_n = 2^{-n} \to 0$。
 
 **② 完备性给出公共点。** 令 $A := \{a_n\}$。$A$ 非空（$a_0 = 0$）且有上界（$1$ 就是上界），故由**确界原理** $a := \sup A$ 存在。
-
-**$a \in I_n$ 对每个 $n$ 成立**：一方面 $a \ge a_n$（上界）；另一方面对 $k \ge n$ 有 $a_k \le b_k \le b_n$，故 $b_n$ 是 $A$ 的上界，于是 $a \le b_n$。
 
 > 续见 proofs/imp.real-uncountable.2.md

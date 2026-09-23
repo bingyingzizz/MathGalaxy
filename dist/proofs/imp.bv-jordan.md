@@ -1,4 +1,4 @@
-# T_F ± F 递增 ⟹ BV 的 Jordan 分解
+# $T_F \pm F$ 递增 $\implies BV$ 的 Jordan 分解
 `imp.bv-jordan` · 推出 · strong 边 · 根 `../`
 
 `lem.variation-monotone` T_F ± F 递增 → `thm.bv-jordan` BV 的 Jordan 分解

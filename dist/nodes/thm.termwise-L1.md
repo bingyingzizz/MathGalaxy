@@ -1,5 +1,5 @@
 # L¹ 的逐项积分　`thm.termwise-L1`
-定理：Σ∫|fⱼ| < ∞ ⟹ Σfⱼ 几乎处处收敛且可逐项积分
+定理：$\sum\int|f_{j}| < \infty \implies \sum f_{j}$ 几乎处处收敛且可逐项积分
 layer 19 · 定理 · 积分 · 分析学
 
 设 $$\{f_j\} \subseteq L^1$$ 满足
@@ -7,7 +7,7 @@ layer 19 · 定理 · 积分 · 分析学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.termwise-integration` 逐项积分 + `prop.integral-zero-iff` 积分为零 ⟺ 几乎处处为零：非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分　proofs/imp.termwise-L1.md
+- `thm.termwise-integration` 逐项积分 + `prop.integral-zero-iff` 积分为零 ⟺ 几乎处处为零：非负逐项积分 + 零集判定 $\implies L^{1}$ 的逐项积分　proofs/imp.termwise-L1.md
 
 refs: Folland, Real Analysis, Theorem 2.25
 

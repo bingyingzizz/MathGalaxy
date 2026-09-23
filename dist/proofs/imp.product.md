@@ -1,4 +1,4 @@
-# 幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在
+# 幂集 + 配对 + 并集 + 分离公理模式 $\implies A \times B$ 存在
 `imp.product` · 推出 · strong 边 · 根 `../`
 
 `ax.power` 幂集公理 + `ax.pair` 配对公理 + `ax.union` 并集公理 + `ax.sep` 分离公理模式 → `thm.product` 笛卡尔积存在

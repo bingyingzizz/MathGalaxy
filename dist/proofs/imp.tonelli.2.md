@@ -1,4 +1,4 @@
-# 集合版（截口公式）+ MCT ⟹ Tonelli
+# 集合版（截口公式）+ MCT $\implies$ Tonelli
 `imp.tonelli` · 推出 · strong 边 · 根 `../`
 
 `thm.product-measure-sections` 乘积测度由截口给出 + `thm.mct` 单调收敛定理 → `thm.fubini-tonelli` Fubini–Tonelli

@@ -1,4 +1,4 @@
-# 良序定理 ⟺ 佐恩引理
+# 良序定理 $\iff$ 佐恩引理
 `eq.wo-zorn` · 等价 · strong 边 · 根 `../`
 
 `thm.wellordering` 良序定理 → `lem.zorn` 佐恩引理

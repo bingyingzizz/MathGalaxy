@@ -9,7 +9,7 @@ $$f(x + y) = f(x) + f(y), \qquad f(xy) = f(x)\,f(y), \qquad x \le y \iff f(x) \l
 也就是说：$\mathbb{R}$ 之外没有别的完备有序域 —— 任何一个都与它同构。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.archimedean` 阿基米德性质 + `def.real` 实数系 ℝ：ℚ 稠密 ⟹ 完备有序域与 ℝ 同构　proofs/imp.real-unique.md
+- `lem.archimedean` 阿基米德性质 + `def.real` 实数系 ℝ：$\mathbb{Q}$ 稠密 $\implies$ 完备有序域与 $\mathbb{R}$ 同构　proofs/imp.real-unique.md
 - `def.ordered-field` 有序域：用到了定义 有序域　proofs/dep.ordered-unique.md
 
 refs: Tao, Analysis I, Ch. 5（实数的构造）

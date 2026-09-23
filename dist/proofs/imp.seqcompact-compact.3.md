@@ -1,4 +1,4 @@
-# 列紧 ⟹ 紧
+# 列紧 $\implies$ 紧
 `imp.seqcompact-compact` · 推出 · strong 边 · 根 `../`
 
 `def.sequentially-compact` 列紧 → `def.compact` 紧

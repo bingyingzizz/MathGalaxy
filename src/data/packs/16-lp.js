@@ -25,7 +25,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'definition',
       label: 'L^p 范数',
-      title: 'L^p 范数与 L^p 空间',
+      title: '$L^p$ 范数与 $L^p$ 空间',
       regions: ['analysis'],
       tags: ['定义', 'Lp', '范数'],
       statement: [
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'lemma',
       label: 'Young 不等式',
-      title: 'Young 不等式（a^λ · b^(1−λ) ≤ λa + (1−λ)b）',
+      title: 'Young 不等式（$a^\\lambda \\cdot b^{1-\\lambda} \\le \\lambda a + (1-\\lambda)b$）',
       regions: ['analysis'],
       tags: ['引理', 'Young', '凸性'],
       statement: [
@@ -243,7 +243,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: 'L^q 落在 L^p + L^r 里',
-      title: '命题：L^q ⊆ L^p + L^r（0 < p < q < r ≤ ∞）',
+      title: '命题：$L^q \\subseteq L^p + L^r$（$0 < p < q < r \\le \\infty$）',
       regions: ['analysis'],
       tags: ['命题', '插值', '分解'],
       statement: [
@@ -273,7 +273,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: 'L^p ∩ L^r ⊆ L^q',
-      title: '命题（插值）：L^p ∩ L^r ⊆ L^q',
+      title: '命题（插值）：$L^p \\cap L^r \\subseteq L^q$',
       regions: ['analysis'],
       tags: ['命题', '插值', 'Riesz–Thorin 初等版'],
       statement: [
@@ -306,7 +306,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: 'ℓ^p ⊆ ℓ^q',
-      title: '命题（只有衰减的场合）：ℓ^p ⊆ ℓ^q（0 < p < q ≤ ∞）',
+      title: '命题（只有衰减的场合）：$\\ell^p \\subseteq \\ell^q$（$0 < p < q \\le \\infty$）',
       regions: ['analysis'],
       tags: ['命题', '序列空间', '包含'],
       statement: [
@@ -333,7 +333,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: '有限测度时方向反过来',
-      title: '命题（只有爆破的场合）：μ(X) < ∞ 时 L^p(μ) ⊇ L^q(μ)',
+      title: '命题（只有爆破的场合）：$\\mu(X) < \\infty$ 时 $L^p(\\mu) \\supseteq L^q(\\mu)$',
       regions: ['analysis'],
       tags: ['命题', '有限测度', '包含'],
       statement: [
@@ -386,7 +386,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'definition',
       label: '对偶配对 φ_g',
-      title: '由 g 给出的线性泛函 φ_g(f) = ∫ f·g',
+      title: '由 g 给出的线性泛函 $\\varphi_g(f) = \\int f\\cdot g$',
       regions: ['analysis'],
       tags: ['定义', '对偶', '线性泛函'],
       statement: [
@@ -412,7 +412,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: '‖g‖_q = ‖φ_g‖',
-      title: '命题：‖φ_g‖ = ‖g‖_q（μ 半有限时也含 q = ∞）',
+      title: '命题：$\\|\\varphi_g\\| = \\|g\\|_q$（$\\mu$ 半有限时也含 $q = \\infty$）',
       regions: ['analysis'],
       tags: ['命题', '等距', '对偶'],
       statement: [
@@ -446,7 +446,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'proposition',
       label: '有界 ⟹ g ∈ L^q',
-      title: '命题：若 f ↦ ∫fg 在简单函数上有界，则 g ∈ L^q',
+      title: '命题：若 $f \\mapsto \\int fg$ 在简单函数上有界，则 $g \\in L^q$',
       regions: ['analysis'],
       tags: ['命题', '有界泛函', 'L^q'],
       statement: [
@@ -474,7 +474,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'theorem',
       label: '(L^p)* ≅ L^q',
-      title: '定理（Riesz 表示）：1 < p < ∞ 时 (L^p)* ≅ L^q',
+      title: '定理（Riesz 表示）：$1 < p < \\infty$ 时 $(L^p)^{*} \\cong L^q$',
       regions: ['analysis'],
       tags: ['定理', 'Riesz 表示', '对偶', '等距同构'],
       statement: [
@@ -502,7 +502,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'corollary',
       label: 'L^p 自反',
-      title: '推论：1 < p < ∞ 时 L^p ≅ (L^p)**',
+      title: '推论：$1 < p < \\infty$ 时 $L^p \\cong (L^p)^{**}$',
       regions: ['analysis'],
       tags: ['推论', '自反', '对偶'],
       statement: [
@@ -528,7 +528,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.young-inequality'],
       target: 'thm.holder',
-      title: 'Young 不等式 ⟹ Hölder 不等式',
+      title: 'Young 不等式 $\\implies$ Hölder 不等式',
       proof: [
         '**① 先设 $\\|f\\|_p = \\|g\\|_q = 1$。** 在 Young 不等式里取',
         '',
@@ -556,7 +556,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.holder'],
       target: 'thm.minkowski',
-      title: 'Hölder 不等式 ⟹ Minkowski 不等式',
+      title: 'Hölder 不等式 $\\implies$ Minkowski 不等式',
       proof: [
         '**① 拆开。** 对 $p > 1$，',
         '',
@@ -584,7 +584,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.minkowski', 'thm.mct', 'thm.dct'],
       target: 'thm.lp-banach',
-      title: '三角不等式 + MCT + DCT ⟹ $L^p$ 完备',
+      title: '三角不等式 + MCT + DCT $\\implies$ $L^p$ 完备',
       proof: [
         '**① 换成级数。** 赋范线性空间完备 $\\iff$ 每个**绝对收敛**的级数都收敛（标准判据）。所以设 $\\{f_k\\} \\subseteq L^p$ 且',
         '',
@@ -620,7 +620,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.holder', 'def.duality-map'],
       target: 'prop.bounded-functional-gives-lq',
-      title: 'Hölder + 有界性 ⟹ $g \\in L^q$',
+      title: 'Hölder + 有界性 $\\implies$ $g \\in L^q$',
       proof: [
         '**Step 1：有限支可测的 $f$ 也满足 $|\\int fg| \\le M_g(g)$。**',
         '',
@@ -655,7 +655,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.bounded-functional-gives-lq', 'thm.lebesgue-radon-nikodym', 'prop.duality-isometry'],
       target: 'thm.riesz-representation-lp',
-      title: '把泛函变成测度 ⟹ $(L^p)^* \\cong L^q$',
+      title: '把泛函变成测度 $\\implies$ $(L^p)^* \\cong L^q$',
       proof: [
         '设 $1 < p < \\infty$、$\\Phi \\in (L^p)^*$。',
         '',

@@ -1,4 +1,4 @@
-# 预测度 ⟹ 诱导的外测度
+# 预测度 $\implies$ 诱导的外测度
 `imp.premeasure-to-outer` · 推出 · strong 边 · 根 `../`
 
 `def.premeasure` 预测度 → `prop.outer-measure-induced` 由预测度诱导外测度

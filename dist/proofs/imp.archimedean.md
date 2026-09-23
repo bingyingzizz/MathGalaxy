@@ -1,4 +1,4 @@
-# 完备性 ⟹ 阿基米德性质 + ℚ 稠密
+# 完备性 $\implies$ 阿基米德性质 + $\mathbb{Q}$ 稠密
 `imp.archimedean` · 推出 · strong 边 · 根 `../`
 
 `thm.real-ordered-field` ℝ 是完备有序域 → `lem.archimedean` 阿基米德性质
@@ -16,7 +16,5 @@ $$\forall x \in K, \exists n \in \mathbb{N}: n > x$$
 $$n (y - x) > 1, \qquad \text{即}\quad \frac{1}{n} < y - x$$
 
 再对实数 $nx$ 用一次 (i) 的整数版本：存在 $m \in \mathbb{Z}$ 使
-
-$$m \le nx < m + 1$$
 
 > 续见 proofs/imp.archimedean.2.md

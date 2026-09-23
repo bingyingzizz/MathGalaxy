@@ -1,4 +1,4 @@
-# 「要么奇异、要么有下界」⟹ Lebesgue–Radon–Nikodym
+# 「要么奇异、要么有下界」$\implies$ Lebesgue–Radon–Nikodym
 `imp.lebesgue-rn` · 推出 · strong 边 · 根 `../`
 
 `lem.singular-or-lower-bound` 要么奇异、要么有下界 + `thm.mct` 单调收敛定理 + `prop.ac-and-variations` 绝对连续与变差 → `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理

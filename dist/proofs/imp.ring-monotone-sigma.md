@@ -1,4 +1,4 @@
-# 环 + 单调类 ⟹ σ-环
+# 环 + 单调类 $\implies$ σ-环
 `imp.ring-monotone-sigma` · 推出 · strong 边 · 根 `../`
 
 `def.set-ring` 环与代数 + `def.monotone-class` 单调类 → `thm.ring-monotone-sigma` 环 → σ-环 的判据

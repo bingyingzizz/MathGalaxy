@@ -1,4 +1,4 @@
-# 非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分
+# 非负逐项积分 + 零集判定 $\implies L^{1}$ 的逐项积分
 `imp.termwise-L1` · 推出 · strong 边 · 根 `../`
 
 `thm.termwise-integration` 逐项积分 + `prop.integral-zero-iff` 积分为零 ⟺ 几乎处处为零 → `thm.termwise-L1` L¹ 的逐项积分

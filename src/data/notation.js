@@ -88,7 +88,9 @@ MG.notation = {
     { id: 'R10', title: 'label / tags / refs 是纯文本',
       text: '⛔ 绝不能含 `$`（label 还直接画在画布上）。**可留 Unicode** —— 画布上没有 KaTeX，留 Unicode 才一致。' },
     { id: 'R11', title: 'title 里的公式也用 $…$',
-      text: '`title` 走 `U.titleHtml()`，认 `$…$`。混着写一样的字体问题。（⚠ 目前是**警告级**，见 backlog）' },
+      text: '`title` 走 `U.titleHtml()`，认 `$…$`。混着写会有和正文一样的字体问题。' +
+        '⚠️ **例外**：**术语前缀保留 Unicode** —— `σ-代数`、`σ-有限`、`σ-环`、`μ-零集` ' +
+        '这类「希腊字母 + `-` + 词」是中文术语的一部分，当公式看反而怪（用户拍板）。' },
     { id: 'R12', title: '行内公式不写在行首',
       text: '中文段落里 `$…$` 前面要有中文或标点。' },
   ],
@@ -265,7 +267,7 @@ MG.notation = {
     { g: 'measure', tex: '\\ll',      uni: '≪', name: '绝对连续' },
     { g: 'measure', tex: '\\perp',    uni: '⊥', name: '奇异 / 互相垂直' },
     { g: 'measure', tex: '\\sigma',   uni: 'σ', name: '前缀：σ-环 / σ-代数 / σ-有限',
-      note: '作为中文术语前缀时写成 `$\\sigma$-代数`' },
+      note: '正文里写 `$\\sigma$代数`；`title` 里作为**中文术语前缀**保留 Unicode（`σ-代数`）—— 用户拍板' },
     { g: 'measure', tex: '\\mathfrak{B}', uni: '𝔅', name: 'Borel σ-代数' },
 
     /* -------- 积分与函数空间 -------- */
@@ -304,14 +306,17 @@ MG.notation = {
 
   /* ------------------------------------------------- 机器可查的规则 */
   checks: {
-    /* ⛔ 正文里不许出现裸 Unicode 数学符号（要写成 $…$ 里的 LaTeX） */
+    /* ⛔ 正文与 title 里都不许出现裸 Unicode 数学符号（要写成 $…$ 里的 LaTeX）。
+       ⚠️ `title` 里的**术语前缀**是例外：`σ-代数`、`μ-零集` 保留 Unicode（见 R11）——
+       那个例外由工具（`_tools/notation/sweep-titles.mjs`）在执行时排除，检查器不区分。 */
     bareUnicode: {
-      body: ['statement', 'notes', 'proof', 'proofs', 'note'],
-      title: ['title'],
+      body: ['statement', 'notes', 'proof', 'proofs', 'note', 'title'],
       labelOk: ['label', 'tags', 'refs'],
       chars: '∈∉⊆⊂⊇⊃∪∩∖×∅∀∃¬∧∨⟹⟸⟺⇒⇐⇔≤≥≠≈≅≃→↦←↔⟨⟩∑∏∫∂∞' +
              'ℝℂℚℤℕσμλφϕεϵθαβγδρτωΩΦΨΣΛΔ‖∥⋂⋃⊕⊗⊔·⋯′' +
              '¹²³⁰ⁿ₀₁₂ₙᵏᵢⱼ𝒜ℳℰ𝒫',
+      /* ⭐ 豁免：术语前缀（`σ-代数`、`σ-有限`、`μ-零集`…）保留 Unicode，扫描前挖掉 */
+      except: '[σμλφεδ]-[A-Za-z\\u4e00-\\u9fff]',
     },
     /* ⛔ 禁用写法 → 构建失败 */
     banned: [
@@ -338,8 +343,6 @@ MG.notation = {
 
   /* ------------------------------------------------------- 已知老账 */
   backlog: [
-    { id: 'titles', what: '`title` 里仍有裸 Unicode 数学记号（`title` 也渲染 $…$，' +
-        '所以有和正文一样的字体问题）。当前只报**警告**，未批量清理。' },
     { id: 'dollars', what: '正文里有把 `$$…$$` 当行内公式用的地方（`tools/_dollarcheck.mjs`）。' },
   ],
 };

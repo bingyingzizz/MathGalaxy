@@ -7,7 +7,7 @@ layer 22 · 定理 · 微分定理 · 分析学
 $$m(\{x : Hf(x) > \alpha\}) \le (C/\alpha)\cdot\int |f(x)| dx$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.covering` 覆盖引理 + `def.maximal-function` 极大函数：覆盖引理 ⟹ 极大定理　proofs/imp.maximal-theorem.md
+- `lem.covering` 覆盖引理 + `def.maximal-function` 极大函数：覆盖引理 $\implies$ 极大定理　proofs/imp.maximal-theorem.md
 - `def.maximal-function` 极大函数：用到了定义 极大函数　proofs/def-link.maximal-theorem-lm.md
 
 ## 它能推出什么 / 谁在用它

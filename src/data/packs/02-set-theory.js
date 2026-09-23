@@ -173,7 +173,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'theorem',
       label: '自然数集存在',
-      title: '自然数集 ω 存在',
+      title: '自然数集 $\\omega$ 存在',
       regions: ['set-theory'],
       tags: ['定理', '自然数', '序数'],
       statement: [
@@ -193,7 +193,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'theorem',
       label: '二元并存在',
-      title: '二元并 a ∪ b 存在',
+      title: '二元并 $a \\cup b$ 存在',
       regions: ['set-theory'],
       tags: ['定理'],
       statement: [
@@ -213,7 +213,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'theorem',
       label: '笛卡尔积存在',
-      title: '笛卡尔积 A × B 存在',
+      title: '笛卡尔积 $A \\times B$ 存在',
       regions: ['set-theory'],
       tags: ['定理', '有序对'],
       statement: [
@@ -234,7 +234,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.sep'],
       target: 'thm.empty',
-      title: '分离公理模式 ⇒ 空集存在',
+      title: '分离公理模式 $\\implies$ 空集存在',
       proof: [
         '取任意集合 $a$（一阶逻辑的论域非空，故这样的 $a$ 存在；在 ZF 中也可由无穷公理提供）。',
         '',
@@ -252,7 +252,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.found', 'ax.pair'],
       target: 'thm.noself',
-      title: '正则公理 + 配对公理 ⇒ A ∉ A',
+      title: '正则公理 + 配对公理 $\\implies A \\notin A$',
       proof: [
         '反设存在集合 $A$ 使 $A \\in A$。由配对公理取 $a = b = A$，得单点集 {A}。',
         '',
@@ -271,7 +271,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.inf', 'ax.power', 'ax.sep'],
       target: 'thm.omega',
-      title: '无穷公理 + 幂集公理 + 分离公理模式 ⇒ ω 存在',
+      title: '无穷公理 + 幂集公理 + 分离公理模式 $\\implies \\omega$ 存在',
       proof: [
         '1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。',
         '',
@@ -299,7 +299,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.pair', 'ax.union'],
       target: 'thm.binunion',
-      title: '配对公理 + 并集公理 ⇒ 二元并存在',
+      title: '配对公理 + 并集公理 $\\implies$ 二元并存在',
       proof: [
         '任给 $a$、$b$。',
         '',
@@ -316,7 +316,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['ax.power', 'ax.pair', 'ax.union', 'ax.sep'],
       target: 'thm.product',
-      title: '幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在',
+      title: '幂集 + 配对 + 并集 + 分离公理模式 $\\implies A \\times B$ 存在',
       proof: [
         '任给 $A$、$B$。',
         '',

@@ -11,7 +11,7 @@ $$(X \times Y, \mathcal{M} \otimes  \mathcal{N}, \mu \times \nu)$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.fubini-tonelli` Fubini–Tonelli + `thm.completion` 完备化定理 + `prop.product-incomplete` 乘积测度通常不完备：乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T　proofs/imp.fubini-complete.md
+- `thm.fubini-tonelli` Fubini–Tonelli + `thm.completion` 完备化定理 + `prop.product-incomplete` 乘积测度通常不完备：乘积测度通常不完备 $\implies$ 必须补一条完备情形的 F–T　proofs/imp.fubini-complete.md
 - `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-complete.md
 - `def.null-set` 零集与完备：用到了定义 零集与完备　proofs/def-link.completion-fubini.md
 

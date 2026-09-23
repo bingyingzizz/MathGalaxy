@@ -1,7 +1,9 @@
-# 「要么奇异、要么有下界」⟹ Lebesgue–Radon–Nikodym
+# 「要么奇异、要么有下界」$\implies$ Lebesgue–Radon–Nikodym
 `imp.lebesgue-rn` · 推出 · strong 边 · 根 `../`
 
 `lem.singular-or-lower-bound` 要么奇异、要么有下界 + `thm.mct` 单调收敛定理 + `prop.ac-and-variations` 绝对连续与变差 → `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理
+
+$$\mu_j(E) := \mu(E \cap A_j), \quad  \nu_j(E) := \nu(E \cap A_j)$$
 
 对每一对 $$(\mu_j, \nu_j)$$ 用 $I$，得 $$d\nu_j = d\lambda_j + f_j d\mu_j$$。规定 $$\lambda_j(A_j^c) = 0$$、$$f_j = 0$$ 在 $$A_j^c$$ 上，令
 

@@ -1,4 +1,4 @@
-# Lebesgue 集 + 可缩条件 ⟹ 一般族的微分定理
+# Lebesgue 集 + 可缩条件 $\implies$ 一般族的微分定理
 `imp.differentiation-general` · 推出 · strong 边 · 根 `../`
 
 `thm.lebesgue-set-full` Lebesgue 集几乎处处 + `def.shrinks-nicely` 可缩族 → `thm.differentiation-general` 可缩族的微分定理

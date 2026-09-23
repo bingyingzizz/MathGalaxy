@@ -11,7 +11,7 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \vare
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.triangle` 三角不等式：三角不等式 ⟹ 零列关系是等价关系　proofs/imp.triangle-cauchy.md
+- `thm.triangle` 三角不等式：三角不等式 $\implies$ 零列关系是等价关系　proofs/imp.triangle-cauchy.md
 - `def.rat` 有理数 ℚ：用到了定义 有理数 ℚ　proofs/dep.rat-cauchy-null.md
 - `def.function` 函数：用到了定义 函数　proofs/dep.function-cauchy-null.md
 - `def.quotient-set` 商集与等价类：用到了定义 商集与等价类　proofs/dep.quotient-cauchy-null.md
@@ -19,7 +19,7 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \vare
 - …另有入边，续页见 `nodes/def.cauchy-null.3.md`
 
 ## 它能推出什么 / 谁在用它
-- 被 `def.real` 实数系 ℝ 用
+- …另有出边，续页见 `nodes/def.cauchy-null.4.md`
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

@@ -13,7 +13,7 @@ $$\forall x \in K,\ \exists n \in \mathbb{N} : n > x$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.real-ordered-field` ℝ 是完备有序域：完备性 ⟹ 阿基米德性质 + ℚ 稠密　proofs/imp.archimedean.md
+- `thm.real-ordered-field` ℝ 是完备有序域：完备性 $\implies$ 阿基米德性质 + $\mathbb{Q}$ 稠密　proofs/imp.archimedean.md
 - `def.ordered-field` 有序域：用到了定义 有序域　proofs/dep.ordered-archimedean.md
 - `def.rat` 有理数 ℚ：用到了定义 有理数 ℚ　proofs/dep.rat-archimedean.md
 

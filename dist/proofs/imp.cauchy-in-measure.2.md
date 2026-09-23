@@ -1,4 +1,4 @@
-# 依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛
+# 依测度 Cauchy $\implies$ 依测度收敛且有一子列 a.e. 收敛
 `imp.cauchy-in-measure` · 推出 · strong 边 · 根 `../`
 
 `def.cauchy-in-measure` 依测度 Cauchy → `thm.cauchy-in-measure` 依测度 Cauchy ⟹ 收敛
@@ -14,7 +14,5 @@ $$\mu(F) = \mu(X \setminus \bigcup_k F_k) \ge \mu(X) - \mu(F_k)\quad  \forall k\
 $$\mu(\{|g_j - f| > \delta\}) \le \mu(F_k) \le 2^{1-k}\quad  (j\text{ 充分大})$$
 
 令 $k \to \infty$ 得 $$g_j \to f$$ 依测度。
-
-**⑥ 把 $f_{n}$ 也拉进来。** 对任意 $\varepsilon > 0$，
 
 > 续见 proofs/imp.cauchy-in-measure.3.md

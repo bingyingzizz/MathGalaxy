@@ -1,5 +1,5 @@
 # 乘积测度由截口给出　`thm.product-measure-sections`
-定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)
+定理：$\mu \times \nu(E) = \int \nu(E_{x}) d\mu(x) = \int \mu(E^{y}) d\nu(y)$
 layer 17 · 定理 · 乘积测度与 Fubini · 分析学
 
 设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是 **$\sigma$有限**的，$$E \in \mathcal{M} \otimes  \mathcal{N}$$。则
@@ -12,7 +12,7 @@ layer 17 · 定理 · 乘积测度与 Fubini · 分析学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.monotone-class` 单调类定理 + `prop.section-measurable` 截口可测：单调类定理 ⟹ 乘积测度由截口积分给出　proofs/imp.product-sections.md
+- `thm.monotone-class` 单调类定理 + `prop.section-measurable` 截口可测：单调类定理 $\implies$ 乘积测度由截口积分给出　proofs/imp.product-sections.md
 - `def.monotone-class` 单调类：用到了定义 单调类　proofs/def-link.monotoneclass-lemma.md
 - `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-sections-thm.md
 

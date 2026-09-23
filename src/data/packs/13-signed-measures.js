@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '相互奇异',
-      title: '相互奇异 / 互相垂直（Mutually Singular μ ⊥ ν）',
+      title: '相互奇异 / 互相垂直（Mutually Singular $\\mu \\perp \\nu$）',
       regions: ['analysis'],
       tags: ['定义', '奇异', '垂直'],
       statement: [
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '绝对连续',
-      title: '绝对连续（Absolute Continuity ν ≪ μ）',
+      title: '绝对连续（Absolute Continuity $\\nu \\ll \\mu$）',
       regions: ['analysis'],
       tags: ['定义', '绝对连续'],
       statement: [
@@ -199,7 +199,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'proposition',
       label: '绝对连续与变差',
-      title: '命题：ν ≪ μ ⟺ |ν| ≪ μ ⟺ ν⁺、ν⁻ ≪ μ；ν ⊥ μ 且 ν ≪ μ ⟹ ν = 0',
+      title: '命题：$\\nu \\ll \\mu \\iff |\\nu| \\ll \\mu \\iff \\nu^{+}$、$\\nu^{-} \\ll \\mu$；$\\nu \\perp \\mu$ 且 $\\nu \\ll \\mu \\implies \\nu = 0$',
       regions: ['analysis'],
       tags: ['命题', '绝对连续', '变差', '奇异'],
       statement: [
@@ -221,7 +221,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: '绝对连续的 ε–δ 刻画',
-      title: '定理（有限情形）：ν ≪ μ ⟺ ∀ε>0 ∃δ>0 ( μ(E)<δ ⟹ |ν(E)|≤ε )',
+      title: '定理（有限情形）：$\\nu \\ll \\mu \\iff \\forall\\varepsilon>0 \\exists\\delta>0$ ( $\\mu(E)<\\delta \\implies |\\nu(E)|\\le\\varepsilon$ )',
       regions: ['analysis'],
       tags: ['定理', '绝对连续', 'ε-δ'],
       statement: [
@@ -242,7 +242,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'proposition',
       label: '积分给出绝对连续测度',
-      title: '命题：ν(E) = ∫_E f dμ 关于 μ 绝对连续',
+      title: '命题：$\\nu(E) = \\int_E f d\\mu$ 关于 $\\mu$ 绝对连续',
       regions: ['analysis'],
       tags: ['命题', '绝对连续', '积分'],
       statement: [
@@ -268,7 +268,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'corollary',
       label: '积分的绝对连续性',
-      title: '推论：∫_E f dμ 在小测度集上任意小',
+      title: '推论：$\\int_E f d\\mu$ 在小测度集上任意小',
       regions: ['analysis'],
       tags: ['推论', '绝对连续', 'L¹'],
       statement: [
@@ -311,7 +311,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: 'Lebesgue–Radon–Nikodym 定理',
-      title: 'Lebesgue–Radon–Nikodym 定理：ν = λ + ρ，λ ⊥ μ，ρ ≪ μ',
+      title: 'Lebesgue–Radon–Nikodym 定理：$\\nu = \\lambda + \\rho$，$\\lambda \\perp \\mu$，$\\rho \\ll \\mu$',
       regions: ['analysis'],
       tags: ['定理', 'Radon-Nikodym', 'Lebesgue 分解'],
       statement: [
@@ -339,7 +339,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: 'RN 导数与 Lebesgue 分解',
-      title: 'Radon–Nikodym 导数 dν/dμ 与 Lebesgue 分解',
+      title: 'Radon–Nikodym 导数 $d\\nu/d\\mu$ 与 Lebesgue 分解',
       regions: ['analysis'],
       tags: ['定义', 'RN 导数', 'Lebesgue 分解'],
       statement: [
@@ -396,7 +396,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'corollary',
       label: '互为绝对连续时导数互逆',
-      title: '推论：μ ≪ λ 且 λ ≪ μ ⟹ (dμ/dλ)(dλ/dμ) = 1',
+      title: '推论：$\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu \\implies (d\\mu/d\\lambda)(d\\lambda/d\\mu) = 1$',
       regions: ['analysis'],
       tags: ['推论', 'RN 导数'],
       statement: [
@@ -441,7 +441,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: '复测度的 Radon–Nikodym',
-      title: '定理：复测度的 ν = λ + f dμ 分解',
+      title: '定理：复测度的 $\\nu = \\lambda + f d\\mu$ 分解',
       regions: ['analysis'],
       tags: ['定理', 'Radon-Nikodym', '复测度'],
       statement: [
@@ -463,7 +463,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'proposition',
       label: '全变差的基本性质',
-      title: '命题：|ν(E)| ≤ |ν|(E)，且 d|ν| = |f| dμ',
+      title: '命题：$|\\nu(E)| \\le |\\nu|(E)$，且 $d|\\nu| = |f| d\\mu$',
       regions: ['analysis'],
       tags: ['命题', '全变差', '复测度'],
       statement: [
@@ -494,7 +494,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.signed-measure', 'prop.positive-set-closure'],
       target: 'thm.hahn-decomposition',
-      title: '符号测度 + 正集的封闭性 ⟹ Hahn 分解',
+      title: '符号测度 + 正集的封闭性 $\\implies$ Hahn 分解',
       proof: [
         '**① 先把 $\\nu$ 的无穷值甩掉。** 不妨设 $\\nu$ 不取 $\\infty$（若 $\\nu$ 不取 $-\\infty$ 就改证 $-\\nu$）。于是 $$\\nu(X) < \\infty$$ 中的「上方」是安全的。',
         '',
@@ -541,7 +541,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.hahn-decomposition'],
       target: 'thm.jordan-decomposition',
-      title: 'Hahn 分解 ⟹ Jordan 分解',
+      title: 'Hahn 分解 $\\implies$ Jordan 分解',
       proof: [
         '取 $\\nu$ 的一个 Hahn 分解 $$X = P \\sqcup  N$$（$P$ 正、$N$ 负）。定义',
         '',
@@ -570,7 +570,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.absolute-continuity'],
       target: 'thm.ac-epsilon-delta',
-      title: '绝对连续 ⟹ ε–δ 刻画（ν 有限时）',
+      title: '绝对连续 $\\implies \\varepsilon$–$\\delta$ 刻画（$\\nu$ 有限时）',
       proof: [
         '设 $\\nu$ 有限且 $$\\nu \\ll  \\mu$$。由「绝对连续与变差」那条命题，可以**不妨设 $\\nu$ 本身就是正测度**（换成 $|\\nu |$ 不影响结论）。',
         '',
@@ -601,7 +601,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.singular-or-lower-bound', 'thm.mct', 'prop.ac-and-variations'],
       target: 'thm.lebesgue-radon-nikodym',
-      title: '「要么奇异、要么有下界」⟹ Lebesgue–Radon–Nikodym',
+      title: '「要么奇异、要么有下界」$\\implies$ Lebesgue–Radon–Nikodym',
       proof: [
         '**I. 先设 $\\nu$、$\\mu$ 都有限，且 $\\nu \\ge 0$。**',
         '',
@@ -685,7 +685,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.integral-gives-ac'],
       target: 'cor.ac-integral-continuity',
-      title: '积分给出绝对连续测度 ⟹ 积分的绝对连续性',
+      title: '积分给出绝对连续测度 $\\implies$ 积分的绝对连续性',
       proof: '把「积分给出绝对连续测度」与绝对连续的 $\\varepsilon$–$\\delta$ 刻画拼起来即可：$\\mu(E) < \\delta \\implies \\nu(E) = \\int_E f \\, d\\mu < \\varepsilon$。∎'
     },
 

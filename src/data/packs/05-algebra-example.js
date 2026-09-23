@@ -60,7 +60,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.zorn'],
       target: 'thm.vsbasis',
-      title: '佐恩引理 ⇒ 每个向量空间有基',
+      title: '佐恩引理 $\\implies$ 每个向量空间有基',
       proof: [
         '设 $V \\ne 0$ 是域 $K$ 上的向量空间，并给定线性无关集 $S_{0} \\subseteq V$。令',
         '',

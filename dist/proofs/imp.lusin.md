@@ -1,4 +1,4 @@
-# 简单函数逼近 + Egorov ⟹ Lusin
+# 简单函数逼近 + Egorov $\implies$ Lusin
 `imp.lusin` · 推出 · strong 边 · 根 `../`
 
 `thm.approximation-L1` L¹ 里的逼近 + `thm.egorov` Egorov 定理 → `cor.lusin` Lusin 定理

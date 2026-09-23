@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: '五种收敛',
-      title: '收敛的类型：一致 / 近一致 / a.e. / 依测度 / L¹',
+      title: '收敛的类型：一致 / 近一致 / a.e. / 依测度 / $L^{1}$',
       regions: ['analysis'],
       tags: ['定义', '收敛', '依测度'],
       statement: [
@@ -128,7 +128,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'proposition',
       label: 'L¹ 收敛 ⟹ 依测度收敛',
-      title: '命题：L¹ 收敛蕴含依测度收敛（Markov 不等式）',
+      title: '命题：$L^{1}$ 收敛蕴含依测度收敛（Markov 不等式）',
       regions: ['analysis'],
       tags: ['命题', 'L¹', '依测度', 'Markov'],
       statement: [
@@ -149,7 +149,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'theorem',
       label: 'Egorov 定理',
-      title: 'Egorov 定理：a.e. 收敛 ⟹ 近一致',
+      title: 'Egorov 定理：a.e. 收敛 $\\implies$ 近一致',
       regions: ['analysis'],
       tags: ['定理', 'Egorov', '近一致', '有限测度'],
       statement: [
@@ -194,7 +194,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.cauchy-in-measure'],
       target: 'thm.cauchy-in-measure',
-      title: '依测度 Cauchy ⟹ 依测度收敛且有一子列 a.e. 收敛',
+      title: '依测度 Cauchy $\\implies$ 依测度收敛且有一子列 a.e. 收敛',
       proof: [
         '**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 $k$ 存在 $$N_k$$ 使',
         '',
@@ -238,7 +238,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.integrable'],
       target: 'prop.L1-implies-measure',
-      title: 'Markov 不等式 ⟹ L¹ 收敛蕴含依测度收敛',
+      title: 'Markov 不等式 $\\implies L^{1}$ 收敛蕴含依测度收敛',
       proof: [
         '**Markov 不等式**：设 $$g$$ 可测非负，则对任意 $\\varepsilon > 0$，',
         '',
@@ -259,7 +259,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.convergence-modes'],
       target: 'thm.egorov',
-      title: 'a.e. 收敛 + 有限测度 ⟹ 近一致',
+      title: 'a.e. 收敛 + 有限测度 $\\implies$ 近一致',
       proof: [
         '设 $$f_n \\to f$$ a.e.，$$\\mu(X) < \\infty$$。',
         '',
@@ -298,7 +298,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.approximation-L1', 'thm.egorov'],
       target: 'cor.lusin',
-      title: '简单函数逼近 + Egorov ⟹ Lusin',
+      title: '简单函数逼近 + Egorov $\\implies$ Lusin',
       proof: [
         '**① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $$\\{\\varphi_n\\}$$ 使 $$\\int|f - \\varphi_n| \\to 0$$；取子列还可保证 $$\\varphi_n \\to f$$ a.e.（由 $L^{1}$ 收敛 $\\implies$ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。',
         '',

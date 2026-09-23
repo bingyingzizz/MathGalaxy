@@ -133,7 +133,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'theorem',
       label: '紧的三个等价刻画',
-      title: '度量空间中：紧 ⟺ 列紧 ⟺ 完备 + 全有界',
+      title: '度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
       regions: ['topology'],
       tags: ['定理', '紧', '列紧', '完备', '全有界'],
       statement: [
@@ -182,7 +182,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'proposition',
       label: '子集的紧性刻画',
-      title: '命题：X 完备时，A 紧 ⟺ A 闭且全有界',
+      title: '命题：X 完备时，A 紧 $\\iff A$ 闭且全有界',
       regions: ['topology'],
       tags: ['命题', '紧', '闭', '全有界'],
       statement: [
@@ -208,7 +208,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.compact'],
       target: 'def.sequentially-compact',
-      title: '紧 ⟹ 列紧',
+      title: '紧 $\\implies$ 列紧',
       proof: [
         '设 $\\{x_{n}\\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。',
         '',
@@ -235,7 +235,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.sequentially-compact'],
       target: 'def.totally-bounded',
-      title: '列紧 ⟹ 全有界',
+      title: '列紧 $\\implies$ 全有界',
       proof: [
         '证明逆否：若 $X$ 不全有界，则存在一个没有收敛子列的序列。',
         '',
@@ -262,7 +262,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.sequentially-compact'],
       target: 'def.complete',
-      title: '列紧 ⟹ 完备',
+      title: '列紧 $\\implies$ 完备',
       proof: [
         '设 $X$ 列紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。',
         '',
@@ -283,7 +283,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.sequentially-compact'],
       target: 'def.compact',
-      title: '列紧 ⟹ 紧',
+      title: '列紧 $\\implies$ 紧',
       proof: [
         '用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。',
         '',
@@ -320,7 +320,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.compact'],
       target: 'def.complete',
-      title: '紧 ⟹ 完备',
+      title: '紧 $\\implies$ 完备',
       proof: [
         '设 $X$ 紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。要证它收敛。',
         '',
@@ -341,7 +341,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.compact'],
       target: 'def.totally-bounded',
-      title: '紧 ⟹ 全有界',
+      title: '紧 $\\implies$ 全有界',
       proof: [
         '给定 $\\varepsilon > 0$。考虑开球族',
         '',
@@ -363,7 +363,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.complete', 'def.totally-bounded'],
       target: 'def.sequentially-compact',
-      title: '完备 + 全有界 ⟹ 列紧（对角线法）',
+      title: '完备 + 全有界 $\\implies$ 列紧（对角线法）',
       proof: [
         '设 $X$ 完备且全有界，$\\{x_{n}\\}$ 是 $X$ 中任一序列。要抽出一个收敛子列。',
         '',

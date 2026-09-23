@@ -1,4 +1,4 @@
-# DCT ⟹ 在积分号下求极限与求导
+# DCT $\implies$ 在积分号下求极限与求导
 `imp.differentiate-under-integral` · 推出 · strong 边 · 根 `../`
 
 `thm.dct` 控制收敛定理 → `thm.differentiate-under-integral` 交换极限/导数与积分

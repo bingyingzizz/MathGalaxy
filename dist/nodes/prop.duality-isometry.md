@@ -1,5 +1,5 @@
 # ‖g‖_q = ‖φ_g‖　`prop.duality-isometry`
-命题：‖φ_g‖ = ‖g‖_q（μ 半有限时也含 q = ∞）
+命题：$\|\varphi_g\| = \|g\|_q$（$\mu$ 半有限时也含 $q = \infty$）
 layer 19 · 命题 · L^p 空间 · 分析学
 
 设 $p, q$ 共轭。则

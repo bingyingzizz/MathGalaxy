@@ -1,4 +1,4 @@
-# 单调类定理 ⟹ 乘积测度由截口积分给出
+# 单调类定理 $\implies$ 乘积测度由截口积分给出
 `imp.product-sections` · 推出 · strong 边 · 根 `../`
 
 `thm.monotone-class` 单调类定理 + `prop.section-measurable` 截口可测 → `thm.product-measure-sections` 乘积测度由截口给出

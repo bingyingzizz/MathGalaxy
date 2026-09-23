@@ -1,4 +1,4 @@
-# Markov 不等式 ⟹ L¹ 收敛蕴含依测度收敛
+# Markov 不等式 $\implies L^{1}$ 收敛蕴含依测度收敛
 `imp.L1-measure` · 推出 · strong 边 · 根 `../`
 
 `def.integrable` 可积 / L¹ → `prop.L1-implies-measure` L¹ 收敛 ⟹ 依测度收敛

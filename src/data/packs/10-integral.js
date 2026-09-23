@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'definition',
       label: 'L⁺',
-      title: 'L⁺：非负可测函数全体',
+      title: '$L^{+}$：非负可测函数全体',
       regions: ['analysis'],
       tags: ['定义', 'L⁺'],
       statement: [
@@ -160,7 +160,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '积分为零 ⟺ 几乎处处为零',
-      title: '命题：∫ f = 0 ⟺ f = 0 a.e.',
+      title: '命题：$\\int f = 0 \\iff f = 0 \\text{a.e.}$',
       regions: ['analysis'],
       tags: ['命题', '零集', '几乎处处'],
       statement: [
@@ -223,7 +223,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'corollary',
       label: 'Fatou 的推论',
-      title: '推论：fₙ → f a.e. ⟹ ∫ f ≤ lim ∫ fₙ',
+      title: '推论：$f_{n} \\to f \\text{a.e.} \\implies \\int f \\le \\lim \\int f_{n}$',
       regions: ['analysis'],
       tags: ['推论', 'Fatou', '几乎处处'],
       statement: [
@@ -240,7 +240,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '积分有限的后果',
-      title: '命题：∫ f < ∞ 时，f 几乎处处有限、支撑 σ-有限',
+      title: '命题：$\\int f < \\infty$ 时，f 几乎处处有限、支撑 σ-有限',
       regions: ['analysis'],
       tags: ['命题', 'σ-有限', '零集'],
       statement: [
@@ -289,7 +289,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'definition',
       label: '可积 / L¹',
-      title: '可积函数与 L¹ 空间',
+      title: '可积函数与 $L^{1}$ 空间',
       regions: ['analysis'],
       tags: ['定义', 'L¹', '可积'],
       statement: [
@@ -314,7 +314,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: 'L¹ 是向量空间',
-      title: '命题：可积函数全体是向量空间，∫ 线性',
+      title: '命题：可积函数全体是向量空间，$\\int$ 线性',
       regions: ['analysis'],
       tags: ['命题', 'L¹', '线性'],
       statement: [
@@ -336,7 +336,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '积分绝对值不等式',
-      title: '命题：|∫ f| ≤ ∫ |f|',
+      title: '命题：$|\\int f| \\le \\int |f|$',
       regions: ['analysis'],
       tags: ['命题', '三角不等式'],
       statement: [
@@ -353,7 +353,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: 'L¹ 函数的支撑 σ-有限',
-      title: '命题：f ∈ L¹ ⟹ {f ≠ 0} 是 σ-有限的',
+      title: '命题：$f \\in L^{1} \\implies \\{f \\ne 0\\}$ 是 σ-有限的',
       regions: ['analysis'],
       tags: ['命题', 'σ-有限', '支撑'],
       statement: [
@@ -372,7 +372,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'proposition',
       label: '何时两个函数积分处处相同',
-      title: '命题：∫_E f = ∫_E g 对一切 E ⟺ f = g a.e.',
+      title: '命题：$\\int_E f = \\int_E g$ 对一切 $E \\iff f = g \\text{a.e.}$',
       regions: ['analysis'],
       tags: ['命题', '几乎处处', '可测集'],
       statement: [
@@ -424,7 +424,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: 'L¹ 的逐项积分',
-      title: '定理：Σ∫|fⱼ| < ∞ ⟹ Σfⱼ 几乎处处收敛且可逐项积分',
+      title: '定理：$\\sum\\int|f_{j}| < \\infty \\implies \\sum f_{j}$ 几乎处处收敛且可逐项积分',
       regions: ['analysis'],
       tags: ['定理', '逐项积分', 'L¹'],
       statement: [
@@ -448,7 +448,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: 'L¹ 里的逼近',
-      title: '定理：L¹ 中可用简单函数 / 连续函数逼近',
+      title: '定理：$L^{1}$ 中可用简单函数 / 连续函数逼近',
       regions: ['analysis'],
       tags: ['定理', '逼近', '简单函数', '连续函数'],
       statement: [
@@ -505,7 +505,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['def.integral-nonneg', 'prop.simple-integral-props'],
       target: 'thm.mct',
-      title: '非负积分的定义 ⟹ 单调收敛定理',
+      title: '非负积分的定义 $\\implies$ 单调收敛定理',
       proof: [
         '**① 一个方向是免费的。** 由 $f_{n} \\le f$ 与积分的单调性，$\\int f_{n} \\le \\int f$，故',
         '',
@@ -541,7 +541,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.mct'],
       target: 'thm.termwise-integration',
-      title: 'MCT ⟹ 逐项积分',
+      title: 'MCT $\\implies$ 逐项积分',
       proof: [
         '**① 先看两项。** 由非负性，$$\\{f_1 \\wedge  n\\}$$、$$\\{f_2 \\wedge  n\\}$$ 都是简单函数列的极限（简单函数逼近定理），于是',
         '',
@@ -566,7 +566,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.mct'],
       target: 'lem.fatou',
-      title: 'MCT ⟹ Fatou 引理',
+      title: 'MCT $\\implies$ Fatou 引理',
       proof: [
         '设 $$g_n = \\inf_{k \\ge n} f_k$$，则',
         '',
@@ -589,7 +589,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.fatou'],
       target: 'thm.dct',
-      title: 'Fatou ⟹ 控制收敛定理',
+      title: 'Fatou $\\implies$ 控制收敛定理',
       proof: [
         '设 $$f_n \\to f$$ a.e.，$$|f_n| \\le g \\in L^1$$。',
         '',
@@ -623,7 +623,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.dct'],
       target: 'thm.differentiate-under-integral',
-      title: 'DCT ⟹ 在积分号下求极限与求导',
+      title: 'DCT $\\implies$ 在积分号下求极限与求导',
       proof: [
         '**(a)** 取任意 $$t_n \\to t_0$$，令 $$f_n(x) = f(x, t_n)$$。由题设 $$|f_n| \\le g \\in L^1$$、且 $$f_n \\to f(x,t_0)$$ 逐点，DCT 直接给出',
         '',
@@ -655,7 +655,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['thm.termwise-integration', 'prop.integral-zero-iff'],
       target: 'thm.termwise-L1',
-      title: '非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分',
+      title: '非负逐项积分 + 零集判定 $\\implies L^{1}$ 的逐项积分',
       proof: [
         '设 $$\\sum_j \\int |f_j| < \\infty$$。',
         '',
@@ -682,7 +682,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['prop.integral-zero-iff'],
       target: 'prop.integrals-equal-iff',
-      title: '积分为零 ⟹ 用积分识别函数',
+      title: '积分为零 $\\implies$ 用积分识别函数',
       proof: [
         '记 $$h = f - g \\in L^1$$。三条之间的等价链条是',
         '',
@@ -701,7 +701,7 @@ window.MG = window.MG || {};
       kind: 'implication',
       sources: ['lem.fatou'],
       target: 'cor.fatou',
-      title: 'Fatou 引理 ⟹ a.e. 版本的 Fatou',
+      title: 'Fatou 引理 $\\implies \\text{a.e.}$ 版本的 Fatou',
       proof: '把 Fatou 引理用在 $\\liminf f_n$ 上：a.e. 收敛时 $\\liminf_n f_n = f$，于是 $\\int f = \\int \\liminf f_n \\le \\liminf \\int f_n$。∎'
     },
 

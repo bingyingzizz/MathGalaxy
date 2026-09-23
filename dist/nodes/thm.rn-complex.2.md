@@ -2,6 +2,6 @@
 根 `../`　·　第 1 页 `nodes/thm.rn-complex.md`
 
 ## 陈述（续）
+\mu)$$ 使
 $$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
-
 且在 a.e. 意义下唯一。

@@ -1,4 +1,4 @@
-# 完备化定理 ⟹ 完备空间上的可测函数可改在零集上
+# 完备化定理 $\implies$ 完备空间上的可测函数可改在零集上
 `imp.completion-measurable-function` · 推出 · strong 边 · 根 `../`
 
 `thm.completion` 完备化定理 → `prop.completion-measurable-function` 完备化后可改在零集上

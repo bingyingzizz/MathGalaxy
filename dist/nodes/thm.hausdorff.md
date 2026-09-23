@@ -7,8 +7,8 @@ layer 9 · 定理 · 选择原理 · 序理论
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.zorn` 佐恩引理：佐恩引理 ⟺ Hausdorff 极大原理　proofs/eq.zorn-hausdorff.md
-- `lem.tukey` Tukey 引理：Hausdorff 极大原理 ⟺ Tukey 引理　proofs/eq.hausdorff-tukey.md
+- `lem.zorn` 佐恩引理：佐恩引理 $\iff$ Hausdorff 极大原理　proofs/eq.zorn-hausdorff.md
+- `lem.tukey` Tukey 引理：Hausdorff 极大原理 $\iff$ Tukey 引理　proofs/eq.hausdorff-tukey.md
 - `def.poset` 偏序集：用到了定义 偏序集　proofs/def-link.hausdorff-poset.md
 - `def.chain` 链：用到了定义 链　proofs/def-link.hausdorff-chain.md
 

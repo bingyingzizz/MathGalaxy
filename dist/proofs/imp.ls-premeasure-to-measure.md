@@ -1,4 +1,4 @@
-# F 的预测度 ⟹ ℝ 上的 Borel 测度
+# F 的预测度 $\implies \mathbb{R}$ 上的 Borel 测度
 `imp.ls-premeasure-to-measure` · 推出 · strong 边 · 根 `../`
 
 `prop.ls-premeasure` F 给出的预测度 + `thm.caratheodory-uniqueness` 扩张的唯一性 → `thm.ls-exists` F ↔ Borel 测度

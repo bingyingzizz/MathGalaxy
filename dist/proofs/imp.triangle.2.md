@@ -1,4 +1,4 @@
-# 绝对值的定义 ⟹ 三角不等式
+# 绝对值的定义 $\implies$ 三角不等式
 `imp.triangle` · 推出 · strong 边 · 根 `../`
 
 `def.abs` 绝对值 |x| → `thm.triangle` 三角不等式

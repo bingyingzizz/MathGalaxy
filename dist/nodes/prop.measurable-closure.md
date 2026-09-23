@@ -10,7 +10,7 @@ layer 14 · 命题 · 可测函数与收敛 · 分析学
 - **极限**：若 $$\lim_j f_j$$ 逐点存在，则它是可测的。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.simple-function` 简单函数 + `thm.simple-approximation` 简单函数逼近：简单函数逼近 ⟹ 可测函数在极限下封闭　proofs/imp.measurable-limit.md
+- `def.simple-function` 简单函数 + `thm.simple-approximation` 简单函数逼近：简单函数逼近 $\implies$ 可测函数在极限下封闭　proofs/imp.measurable-limit.md
 - `def.measure` 测度：用到了定义 测度　proofs/def-link.measure-closure.md
 
 refs: Folland, Real Analysis, Prop. 2.7

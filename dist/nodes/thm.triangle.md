@@ -13,7 +13,7 @@ $$\big| |x| - |y| \big| \le |x - y|, \qquad |x_1 + x_2 + \cdots + x_n| \le |x_1|
 （后者由前者对 $n$ 归纳。）
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.abs` 绝对值 |x|：绝对值的定义 ⟹ 三角不等式　proofs/imp.triangle.md
+- `def.abs` 绝对值 |x|：绝对值的定义 $\implies$ 三角不等式　proofs/imp.triangle.md
 - `def.ordered-field` 有序域：用到了定义 有序域　proofs/dep.ordered-triangle.md
 
 ## 它能推出什么 / 谁在用它

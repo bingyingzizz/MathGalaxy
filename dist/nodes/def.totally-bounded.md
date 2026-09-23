@@ -9,8 +9,8 @@ $$\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n \in X : X = \bi
 等价说法：对每个 $\varepsilon > 0$，$X$ 都能被**有限个**半径 $\varepsilon$ 的开球盖住。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.sequentially-compact` 列紧：列紧 ⟹ 全有界　proofs/imp.seqcompact-totbdd.md
-- `def.compact` 紧：紧 ⟹ 全有界　proofs/imp.compact-totbdd.md
+- `def.sequentially-compact` 列紧：列紧 $\implies$ 全有界　proofs/imp.seqcompact-totbdd.md
+- `def.compact` 紧：紧 $\implies$ 全有界　proofs/imp.compact-totbdd.md
 - `def.metric-space` 距离空间：用到了定义 距离空间　proofs/def-dep.metric-totally-bounded.md
 
 ## 它能推出什么 / 谁在用它

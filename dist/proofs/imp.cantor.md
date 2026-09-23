@@ -1,4 +1,4 @@
-# 幂集 ⟹ Cantor 定理（对角线法）
+# 幂集 $\implies$ Cantor 定理（对角线法）
 `imp.cantor` · 推出 · strong 边 · 根 `../`
 
 `def.power-set` 幂集 𝒫(X) → `thm.cantor` Cantor 定理

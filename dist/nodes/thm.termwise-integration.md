@@ -7,7 +7,7 @@ layer 18 · 定理 · 积分 · 分析学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.mct` 单调收敛定理：MCT ⟹ 逐项积分　proofs/imp.termwise.md
+- `thm.mct` 单调收敛定理：MCT $\implies$ 逐项积分　proofs/imp.termwise.md
 - `def.measure` 测度：用到了定义 测度　proofs/def-link.premeasure-termwise.md
 
 ## 它能推出什么 / 谁在用它

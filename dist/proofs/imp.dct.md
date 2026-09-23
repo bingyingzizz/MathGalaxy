@@ -1,4 +1,4 @@
-# Fatou ⟹ 控制收敛定理
+# Fatou $\implies$ 控制收敛定理
 `imp.dct` · 推出 · strong 边 · 根 `../`
 
 `lem.fatou` Fatou 引理 → `thm.dct` 控制收敛定理

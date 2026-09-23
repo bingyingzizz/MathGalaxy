@@ -1,4 +1,4 @@
-# 化归到递增函数 ⟹ BV 的正则性
+# 化归到递增函数 $\implies BV$ 的正则性
 `imp.bv-regularity` · 推出 · strong 边 · 根 `../`
 
 `thm.bv-jordan` BV 的 Jordan 分解 + `thm.monotone-differentiable` 单调函数几乎处处可导 → `prop.bv-regularity` BV 函数的正则性
