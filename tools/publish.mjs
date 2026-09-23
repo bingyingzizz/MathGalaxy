@@ -104,7 +104,14 @@ if (noBuild) {
 
 /* ---------------------------------------------------------------- 组装 */
 console.log('② 组装站点…');
-fs.rmSync(STAGE, { recursive: true, force: true });
+// ⚠️ Windows 上 dist-site 可能正被别的东西占着（比如拿 _tools/site-srv.mjs
+// 起服务在验证产物）：删到一半会抛 EBUSY。重试几次；目录本身删不掉也**不算失败** ——
+// 里面的内容已经清干净了，紧接着就会重新铺一遍。
+try {
+  fs.rmSync(STAGE, { recursive: true, force: true, maxRetries: 6, retryDelay: 180 });
+} catch (e) {
+  console.log(`   ⚠️ dist-site 目录删不干净（${e.code || e.message}）—— 继续，内容会整个覆盖`);
+}
 fs.mkdirSync(path.join(STAGE, 'assets'), { recursive: true });
 fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 
