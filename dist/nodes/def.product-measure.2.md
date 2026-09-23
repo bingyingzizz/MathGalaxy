@@ -11,7 +11,7 @@ $$E = \bigsqcup_{j=1}^{n} (A_j \times B_j)$$
 $$\mu_{0} (E) := \sum_{j=1}^{n} \mu(A_j) \nu(B_j)$$
 
 则 $\mu_{0}$ 是代数 $\mathcal{A}$ 上的**预测度**。
-**③ 扩张**：$\mu_{0}$ 诱导 $X \times Y$ 上的外测度，限制在 $$\mathcal{M} \otimes  \mathcal{N}$$ 上得到一个测度，记作
+**③ 扩张**：$\mu_{0}$ 诱导 $X \times Y$ 上的外测度，限制在 $\mathcal{M} \otimes  \mathcal{N}$ 上得到一个测度，记作
 
 $$\mu \times \nu$$
 

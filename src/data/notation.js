@@ -318,6 +318,12 @@ MG.notation = {
       /* ⭐ 豁免：术语前缀（`σ-代数`、`σ-有限`、`μ-零集`…）保留 Unicode，扫描前挖掉 */
       except: '[σμλφεδ]-[A-Za-z\\u4e00-\\u9fff]',
     },
+    /* ⛔ 行内 `$$…$$` —— 见 R2。渲染上和 `$…$` 一模一样（`inlineMd` 走同一个
+       `renderInlineMath`），所以判据不是「好不好看」，而是「别让产物在标准
+       Markdown 渲染器里被当成独立公式块、把句子切断」。 */
+    inlineDollars: {
+      fields: ['statement', 'notes', 'proof', 'proofs', 'note', 'title'],
+    },
     /* ⛔ 禁用写法 → 构建失败 */
     banned: [
       { re: '\\\\subsetneq', fix: '\\\\subset',
@@ -342,7 +348,7 @@ MG.notation = {
   },
 
   /* ------------------------------------------------------- 已知老账 */
-  backlog: [
-    { id: 'dollars', what: '正文里有把 `$$…$$` 当行内公式用的地方（`tools/_dollarcheck.mjs`）。' },
-  ],
+  /* ⭐ 现在是**空的** —— 两笔老账（title 裸 Unicode、行内 $$…$$）都清了。
+     再加内容时如果又出现，`build.mjs` 会直接拦下来，别往这里塞回来。 */
+  backlog: [],
 };

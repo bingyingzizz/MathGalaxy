@@ -10,7 +10,7 @@ $$\nu : \mathcal{M} \to \mathbb{C}$$
 
 $$\nu(\emptyset) = 0, $$
 
-且对两两不交的 $$\{E_j\} \subseteq \mathcal{M}$$：
+且对两两不交的 $\{E_j\} \subseteq \mathcal{M}$：
 
 $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 

@@ -4,7 +4,7 @@ layer 14 · 定义 · 测度的构造 · 分析学
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间，$E \in \mathcal{M}$。
 
-若 $$\mu(E) = 0$$，则称 $E$ 是 **$\mu$零集**（$\mu -null set$）。
+若 $\mu(E) = 0$，则称 $E$ 是 **$\mu$零集**（$\mu -null set$）。
 
 若**零集的每个子集都可测**：
 

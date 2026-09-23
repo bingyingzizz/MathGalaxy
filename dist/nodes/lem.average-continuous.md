@@ -2,7 +2,7 @@
 引理：$A_{r} f(x)$ 关于 (r, x) 联合连续
 layer 21 · 引理 · 微分定理 · 分析学
 
-设 $$f \in L^1_{loc}$$。则 $$A_r f(x)$$ 作为 $$(r, x)$$ 的函数是**联合连续**的。
+设 $f \in L^1_{loc}$。则 $A_r f(x)$ 作为 $(r, x)$ 的函数是**联合连续**的。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.average-operator` 平均算子 Aᵣ：用到了定义 平均算子 Aᵣ　proofs/def-link.average-operator-continuous.md

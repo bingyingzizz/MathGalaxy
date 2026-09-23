@@ -2,10 +2,10 @@
 可缩地趋于 x（Shrinks Nicely）
 layer 14 · 定义 · 微分定理 · 分析学
 
-$\mathbb{R}^n$ 的一族 Borel 子集 $$\{E_r\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当
+$\mathbb{R}^n$ 的一族 Borel 子集 $\{E_r\}_{r > 0}$ 叫**可缩地趋于 $x$**，当且仅当
 
-$\cdot$ $$E_r \subseteq B(r, x)$$ 对每个 $r$ 成立；
-$\cdot$ 存在 $$\alpha > 0$$，使 $$m(E_r) > \alpha\cdot m(B(r, x))$$ 对一切 $r$ 成立。
+$\cdot$ $E_r \subseteq B(r, x)$ 对每个 $r$ 成立；
+$\cdot$ 存在 $\alpha > 0$，使 $m(E_r) > \alpha\cdot m(B(r, x))$ 对一切 $r$ 成立。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.borel` Borel σ-代数：用到了定义 Borel σ-代数　proofs/def-dep.borel-shrinks-nicely.md

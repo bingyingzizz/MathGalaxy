@@ -6,11 +6,11 @@ layer 20 · 命题 · 符号测度与分解 · 分析学
 
 $$\nu \ll  \mu, \quad  \mu \ll  \lambda$$
 
-**(a)** 若 $$g \in L^1(\nu)$$，则 $$g \frac{d\nu}{d\mu} \in L^1(\mu)$$，且
+**(a)** 若 $g \in L^1(\nu)$，则 $g \frac{d\nu}{d\mu} \in L^1(\mu)$，且
 
 $$\int g d\nu = \int g \frac{d\nu}{d\mu} d\mu$$
 
-**(b)** 此时 $$\nu \ll  \lambda$$，且**链式法则**成立：
+**(b)** 此时 $\nu \ll  \lambda$，且**链式法则**成立：
 > 陈述续见 `nodes/prop.rn-chain-rule.2.md`
 
 

@@ -2,9 +2,9 @@
 测度（Measure）
 layer 13 · 定义 · 测度的构造 · 分析学
 
-设 $\mathcal{M}$ 是 $X$ 上的 $\sigma$代数。函数 $$\mu : \mathcal{M} \to [0, +\infty]$$ 是一个**测度**，当且仅当
+设 $\mathcal{M}$ 是 $X$ 上的 $\sigma$代数。函数 $\mu : \mathcal{M} \to [0, +\infty]$ 是一个**测度**，当且仅当
 
-- **(i)**　$$\mu(\emptyset) = 0$$
+- **(i)**　$\mu(\emptyset) = 0$
 - **(ii) 可数可加**：若 $\{E_{j}\}$ 是 $\mathcal{M}$ 中两两不交的集合列，则
 
 $$\mu( \bigcup_{j=1}^{\infty} E_j ) = \sum_{j=1}^{\infty} \mu(E_j)$$

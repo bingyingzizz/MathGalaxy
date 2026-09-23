@@ -2,7 +2,7 @@
 Hardy–Littlewood 极大函数 Hf
 layer 21 · 定义 · 微分定理 · 分析学
 
-设 $$f \in L^1_{loc}$$。定义
+设 $f \in L^1_{loc}$。定义
 
 $$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
 

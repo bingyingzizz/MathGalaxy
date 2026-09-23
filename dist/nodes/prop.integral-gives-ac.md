@@ -2,7 +2,7 @@
 命题：$\nu(E) = \int_E f d\mu$ 关于 $\mu$ 绝对连续
 layer 19 · 命题 · 符号测度与分解 · 分析学
 
-设 $\mu$ 是测度，$$f$$ 是广义 $\mu$可积函数，定义
+设 $\mu$ 是测度，$f$ 是广义 $\mu$可积函数，定义
 
 $$\nu(E) := \int_E f d\mu$$
 > 陈述续见 `nodes/prop.integral-gives-ac.2.md`

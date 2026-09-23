@@ -2,7 +2,7 @@
 可测函数（Measurable Function）
 layer 6 · 定义 · 可测函数与收敛 · 分析学
 
-设 $(X, \mathcal{M})$ 与 $(Y, \mathcal{N})$ 是可测空间。函数 $$f : X \to Y$$ 是 **$(\mathcal{M}, \mathcal{N})$可测的**，当且仅当每个可测集的原像可测：
+设 $(X, \mathcal{M})$ 与 $(Y, \mathcal{N})$ 是可测空间。函数 $f : X \to Y$ 是 **$(\mathcal{M}, \mathcal{N})$可测的**，当且仅当每个可测集的原像可测：
 
 $$f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{N}$$
 

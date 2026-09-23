@@ -2,7 +2,7 @@
 命题：$L^{1}$ 收敛蕴含依测度收敛（Markov 不等式）
 layer 20 · 命题 · 可测函数与收敛 · 分析学
 
-若 $$f_n \to f$$ 于 $$L^1$$，则 $$f_n \to f$$ 依测度：
+若 $f_n \to f$ 于 $L^1$，则 $f_n \to f$ 依测度：
 
 $$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
 

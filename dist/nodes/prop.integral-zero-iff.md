@@ -2,7 +2,7 @@
 命题：$\int f = 0 \iff f = 0 \text{a.e.}$
 layer 16 · 命题 · 积分 · 分析学
 
-设 $$f \in L^+$$。则
+设 $f \in L^+$。则
 
 $$\int f d\mu = 0 \iff f = 0 \mu-\text{a.e.}$$
 

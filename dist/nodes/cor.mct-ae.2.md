@@ -2,7 +2,7 @@
 根 `../`　·　第 1 页 `nodes/cor.mct-ae.md`
 
 ## 陈述（续）
-** $x$ 有
+ $x$ 有
 $$f_n(x) \uparrow  f(x), $$
 
 则

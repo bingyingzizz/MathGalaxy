@@ -9,7 +9,7 @@ $$d\mu_G = d\lambda + f\cdot dm, \quad  f = \lim \mu_G(E_h) / m(E_h)\quad  \text
 
 
 
-而差商恰好是那个比值，所以 $$f = G' = F'$$ a.e.。于是
+而差商恰好是那个比值，所以 $f = G' = F'$ a.e.。于是
 
 
 

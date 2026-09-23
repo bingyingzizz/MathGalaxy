@@ -2,7 +2,7 @@
 命题：$\mu_F \perp m \iff F' = 0 \text{a.e.}$；$\mu_F \ll m \iff F(x) = \int_{-\infty}^{x} F'$
 layer 19 · 命题 · 有界变差与绝对连续 · 分析学
 
-设 $$F \in NBV$$。则 $$F' \in L^1(m)$$，并且
+设 $F \in NBV$。则 $F' \in L^1(m)$，并且
 
 $$\mu_F \perp  m \iff F' = 0\quad  \text{a.e.}$$
 $$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$

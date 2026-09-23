@@ -13,7 +13,7 @@ $$\lim_{n\to\infty} \int f_n \le \int f$$
 
 $$0 \le \varphi \le f, \quad  \int \varphi \ge \int f - \varepsilon$$
 
-**③ 把 $\varphi$ 搬进 $E_{n}$。** 令 $$E_n = \{x : f_n(x) \ge \varphi(x)\}$$。因为 $f_{n} \uparrow f$ 且 $\varphi \le f$，集合列 $E_{n}$ 是递增的、且 $$\bigcup_n E_n = X$$。于是
+**③ 把 $\varphi$ 搬进 $E_{n}$。** 令 $E_n = \{x : f_n(x) \ge \varphi(x)\}$。因为 $f_{n} \uparrow f$ 且 $\varphi \le f$，集合列 $E_{n}$ 是递增的、且 $\bigcup_n E_n = X$。于是
 
 $$\int f_n \ge \int_{E_n} f_n \ge \int_{E_n} \varphi$$
 

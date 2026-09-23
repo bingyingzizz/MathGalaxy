@@ -2,7 +2,7 @@
 积 σ-代数（Product σ-Algebra）
 layer 6 · 定义 · 乘积测度与 Fubini · 分析学+拓扑学
 
-设 $\{ (X_\alpha , \mathcal{M}_\alpha ) \}_\{\alpha \in A\}$ 是一族可测空间，$$X = \prod_{\alpha \in A} X_\alpha$$，投影 $$\pi _\alpha : X \to X_\alpha$$。**积 $\sigma$代数**定义为
+设 $\{ (X_\alpha , \mathcal{M}_\alpha ) \}_\{\alpha \in A\}$ 是一族可测空间，$X = \prod_{\alpha \in A} X_\alpha$，投影 $\pi _\alpha : X \to X_\alpha$。**积 $\sigma$代数**定义为
 > 陈述续见 `nodes/def.product-sigma.2.md`
 
 

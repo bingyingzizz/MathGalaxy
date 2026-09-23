@@ -4,8 +4,8 @@ layer 14 · 定义 · 测度的构造 · 分析学
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间。
 
-- **有限**：$$\mu(X) < \infty$$
-- **$\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$$X = \bigcup_{j=1}^{\infty} E_j, \quad  \mu(E_j) < \infty$$
+- **有限**：$\mu(X) < \infty$
+- **$\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$X = \bigcup_{j=1}^{\infty} E_j, \quad  \mu(E_j) < \infty$
 - **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：
 > 陈述续见 `nodes/def.measure-space.2.md`
 

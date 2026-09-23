@@ -2,7 +2,7 @@
 全变差与有界变差函数（Total Variation, BV）
 layer 15 · 定义 · 有界变差与绝对连续 · 分析学
 
-设 $$F : \mathbb{R} \to \mathbb{C}$$。定义它的**全变差函数**
+设 $F : \mathbb{R} \to \mathbb{C}$。定义它的**全变差函数**
 
 $$T_F(x) := \sup \{ \sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \in \mathbb{N}, -\infty < x_0 < \cdots < x_n = x \}$$
 > 陈述续见 `nodes/def.bounded-variation.2.md`

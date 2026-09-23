@@ -2,7 +2,7 @@
 定理：每个单调右连续的 F 对应一个 Borel 测度（差常数意义下）
 layer 18 · 定理 · 测度的构造 · 分析学
 
-对每个递增右连续的 $$F : \mathbb{R} \to \mathbb{R}$$，存在 $\mathbb{R}$ 上的一个 Borel 测度 $\mu _F$ 使
+对每个递增右连续的 $F : \mathbb{R} \to \mathbb{R}$，存在 $\mathbb{R}$ 上的一个 Borel 测度 $\mu _F$ 使
 
 $$\mu_F( (a, b] ) = F(b) - F(a)\quad  \forall a < b$$
 

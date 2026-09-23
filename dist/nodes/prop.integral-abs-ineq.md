@@ -2,7 +2,7 @@
 命题：$|\int f| \le \int |f|$
 layer 19 · 命题 · 积分 · 分析学
 
-设 $$f \in L^1(\mu)$$，则
+设 $f \in L^1(\mu)$，则
 
 $$| \int f d\mu | \le \int |f| d\mu$$
 
@@ -13,4 +13,4 @@ $$| \int f d\mu | \le \int |f| d\mu$$
 refs: Folland, Real Analysis, Prop. 2.22
 
 ## 说明
-复情形：取 $$\alpha = e^{-i\theta}$$ 使 $$\alpha\int f$$ 是实数且等于 $$|\int f|$$，则 $$|\int f| = \int \alpha f = \int \operatorname{Re}(\alpha f) \le \int|\alpha f| = \int|f|$$。
+复情形：取 $\alpha = e^{-i\theta}$ 使 $\alpha\int f$ 是实数且等于 $|\int f|$，则 $|\int f| = \int \alpha f = \int \operatorname{Re}(\alpha f) \le \int|\alpha f| = \int|f|$。

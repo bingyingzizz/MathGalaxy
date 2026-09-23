@@ -4,7 +4,7 @@ layer 19 · 定理 · 乘积测度与 Fubini · 分析学
 
 设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 是 **$\sigma$有限**的测度空间。
 
-**(a) Tonelli（非负情形，无附加条件）**：若 $$f \in L^+(X \times Y)$$，则
+**(a) Tonelli（非负情形，无附加条件）**：若 $f \in L^+(X \times Y)$，则
 
 $$\int f_x d\nu \in L^+(X), \quad  \int f^y d\mu \in L^+(Y)$$
 

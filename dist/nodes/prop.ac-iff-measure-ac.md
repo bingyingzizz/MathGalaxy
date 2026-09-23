@@ -2,7 +2,7 @@
 命题：F 绝对连续 $\iff \mu_F \ll m$
 layer 20 · 命题 · 有界变差与绝对连续 · 分析学
 
-设 $$F \in NBV$$。则
+设 $F \in NBV$。则
 
 $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 

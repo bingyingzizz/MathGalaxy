@@ -7,7 +7,7 @@ $$\int_E h d\mu = \int_{E\cap A} f d\mu + \int_{E\setminus A} g d\mu \le \nu(E\c
 
 故 $h \in \mathcal{F}$。
 
-**② 取上确界。** 令 $$a := \sup\{ \int f d\mu : f \in \mathcal{F} \} \le \nu(X) < \infty$$（这一步用到 $\nu$ 有限）。取 $$\{f_n\} \subseteq \mathcal{F}$$ 使 $$\int f_n d\mu \to a$$，令
+**② 取上确界。** 令 $a := \sup\{ \int f d\mu : f \in \mathcal{F} \} \le \nu(X) < \infty$（这一步用到 $\nu$ 有限）。取 $\{f_n\} \subseteq \mathcal{F}$ 使 $\int f_n d\mu \to a$，令
 
 $$g_n = \max_{f_1, \ldots , f_n}, \quad  f = \sup_n f_n$$
 

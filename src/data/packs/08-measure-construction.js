@@ -27,9 +27,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '测度', '可数可加'],
       statement: [
-        '设 $\\mathcal{M}$ 是 $X$ 上的 $\\sigma$代数。函数 $$\\mu : \\mathcal{M} \\to [0, +\\infty]$$ 是一个**测度**，当且仅当',
+        '设 $\\mathcal{M}$ 是 $X$ 上的 $\\sigma$代数。函数 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 是一个**测度**，当且仅当',
         '',
-        '- **(i)**　$$\\mu(\\emptyset) = 0$$',
+        '- **(i)**　$\\mu(\\emptyset) = 0$',
         '- **(ii) 可数可加**：若 $\\{E_{j}\\}$ 是 $\\mathcal{M}$ 中两两不交的集合列，则',
         '',
         '$$\\mu( \\bigcup_{j=1}^{\\infty} E_j ) = \\sum_{j=1}^{\\infty} \\mu(E_j)$$',
@@ -53,7 +53,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '预测度', '环'],
       statement: [
-        '若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $$\\mu : \\mathcal{M} \\to [0, +\\infty]$$ 仍满足测度的两条：',
+        '若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 仍满足测度的两条：',
         '',
         '$$\\mu(\\emptyset) = 0, \\quad  \\{E_j\\}\\text{ 两两不交} \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
         '',
@@ -100,8 +100,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间。',
         '',
-        '- **有限**：$$\\mu(X) < \\infty$$',
-        '- **$\\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$$X = \\bigcup_{j=1}^{\\infty} E_j, \\quad  \\mu(E_j) < \\infty$$',
+        '- **有限**：$\\mu(X) < \\infty$',
+        '- **$\\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$X = \\bigcup_{j=1}^{\\infty} E_j, \\quad  \\mu(E_j) < \\infty$',
         '- **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：',
         '',
         '$$\\forall E \\in \\mathcal{M}, \\mu(E) = \\infty \\implies \\exists F \\subseteq E, F \\in \\mathcal{M}, 0 < \\mu(F) < \\infty$$'
@@ -125,10 +125,10 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，以下集合都取自 $\\mathcal{M}$。',
         '',
-        '- **(a) 单调**：$$E \\subseteq F \\implies \\mu(E) \\le \\mu(F)$$',
-        '- **(b) 次可加**：$$\\mu( \\bigcup_j E_j ) \\le \\sum_j \\mu(E_j)$$（不要求不交）',
-        '- **(c) 下连续**：$$E_1 \\subseteq E_2 \\subseteq \\cdots \\implies \\mu( \\bigcup_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$',
-        '- **(d) 上连续**：$$\\mu(E_1) < \\infty, \\quad  E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$'
+        '- **(a) 单调**：$E \\subseteq F \\implies \\mu(E) \\le \\mu(F)$',
+        '- **(b) 次可加**：$\\mu( \\bigcup_j E_j ) \\le \\sum_j \\mu(E_j)$（不要求不交）',
+        '- **(c) 下连续**：$E_1 \\subseteq E_2 \\subseteq \\cdots \\implies \\mu( \\bigcup_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$',
+        '- **(d) 上连续**：$\\mu(E_1) < \\infty, \\quad  E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$'
       ].join('\n'),
       notes: [
         '(a)：把 $F$ 拆成 $F = E \\cup (F \\setminus E)$ 用可数可加（把余下的位置补 $\\emptyset$）。',
@@ -151,7 +151,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$E \\in \\mathcal{M}$。',
         '',
-        '若 $$\\mu(E) = 0$$，则称 $E$ 是 **$\\mu$零集**（$\\mu -null set$）。',
+        '若 $\\mu(E) = 0$，则称 $E$ 是 **$\\mu$零集**（$\\mu -null set$）。',
         '',
         '若**零集的每个子集都可测**：',
         '',
@@ -184,8 +184,8 @@ window.MG = window.MG || {};
         '则',
         '',
         '1. $\\bar{\\mathcal{M}}$ 是一个 $\\sigma$代数，且 $\\mathcal{M} \\subseteq \\bar{\\mathcal{M}}$；',
-        '2. 令 $$\\bar{\\mu}(E \\cup F) := \\mu(E)$$，它是 $\\bar{\\mathcal{M}}$ 上良定义的测度；',
-        '3. $$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是**完备**测度空间，称为 $(X, \\mathcal{M}, \\mu )$ 的**完备化**。'
+        '2. 令 $\\bar{\\mu}(E \\cup F) := \\mu(E)$，它是 $\\bar{\\mathcal{M}}$ 上良定义的测度；',
+        '3. $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 是**完备**测度空间，称为 $(X, \\mathcal{M}, \\mu )$ 的**完备化**。'
       ].join('\n'),
       notes: [
         '$\\bar{\\mathcal{M}}$ 的直观：在原来的可测集上「撒一点零集的小碎片」。',
@@ -226,11 +226,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '外测度', '次可加'],
       statement: [
-        '设 $X$ 是非空集合。函数 $$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$$ 是一个**外测度**，当且仅当',
+        '设 $X$ 是非空集合。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当',
         '',
-        '- $$\\mu^*(\\emptyset) = 0$$',
-        '- **单调**：$$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$$',
-        '- **可数次可加**：$$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$$'
+        '- $\\mu^*(\\emptyset) = 0$',
+        '- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$',
+        '- **可数次可加**：$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$'
       ].join('\n'),
       notes: [
         '外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。',
@@ -277,7 +277,7 @@ window.MG = window.MG || {};
         '$$\\mu^*(E) = \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)\\quad  \\forall E \\subseteq X$$'
       ].join('\n'),
       notes: [
-        '因为 $\\mu^{*}$ 只有次可加性，永远有 $$\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。',
+        '因为 $\\mu^{*}$ 只有次可加性，永远有 $\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。',
         '这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\\mu^{*}$ 一个对象，不需要任何拓扑。所以它对任意外测度都能用。',
         '直观：$A$ 是「可以随便切」的集合。'
       ].join('\n\n'),
@@ -296,7 +296,7 @@ window.MG = window.MG || {};
         '设 $\\mu^{*}$ 是 $X$ 上的外测度，$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集。则',
         '',
         '1. **$\\mathcal{M}$ 是一个 $\\sigma$代数**；',
-        '2. **$$\\mu^*|_\\mathcal{M}$$ 是 $(X, \\mathcal{M})$ 上的一个测度**（即 $\\mu^{*}$ 在 $\\mathcal{M}$ 上真的可加）；',
+        '2. **$\\mu^*|_\\mathcal{M}$ 是 $(X, \\mathcal{M})$ 上的一个测度**（即 $\\mu^{*}$ 在 $\\mathcal{M}$ 上真的可加）；',
         '3. 这个测度是**完备**的。'
       ].join('\n'),
       notes: [
@@ -318,7 +318,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是**代数**，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的**预测度**，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度（按上一条命题，取 $\\mathcal{E} = \\mathfrak{A}$、$\\rho = \\mu _{0}$）。则',
         '',
-        '1. $$\\mu^*|_\\mathfrak{A} = \\mu_0$$',
+        '1. $\\mu^*|_\\mathfrak{A} = \\mu_0$',
         '2. **$\\mathfrak{A}$ 中每个集合都是 $\\mu^{*}$-可测的**，因此',
         '',
         '$$\\mathfrak{A} \\subseteq \\mathcal{M}(\\mathfrak{A}) \\subseteq \\mathcal{M}$$',
@@ -327,7 +327,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这就是「预测度 $\\to$ 外测度 $\\to$ 测度」三步走的收官：**预测度在 $\\sigma$代数的扩张上被完整还原**。',
-        '1 的两个方向：$$\\mu^*(A) \\le \\mu_0(A)$$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\\mu _{0}$ 的可数可加性。',
+        '1 的两个方向：$\\mu^*(A) \\le \\mu_0(A)$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\\mu _{0}$ 的可数可加性。',
         '2 是技术核心，要在 $\\mathfrak{A}$ 上验证 Carathéodory 的可切性条件。',
         '不仅 $\\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\\mathfrak{A}_\\sigma$、$\\mathfrak{A}_\\delta$、$\\mathfrak{A}_\\sigma \\delta$、$\\mathfrak{A}_\\delta \\sigma$ 里的集合也都 $\\mu^{*}$-可测 —— 因为 $\\mathcal{M}$ 是 $\\sigma$代数，对这些操作封闭。'
       ].join('\n\n'),
@@ -347,7 +347,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$',
         '',
-        '且当 $$\\mu(E) < \\infty$$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $$\\nu = \\mu$$。'
+        '且当 $\\mu(E) < \\infty$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $\\nu = \\mu$。'
       ].join('\n'),
       notes: [
         '要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。',
@@ -366,7 +366,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'Lebesgue–Stieltjes', '预测度'],
       statement: [
-        '设 $$F : \\mathbb{R} \\to \\mathbb{R}$$ 是**递增**且**右连续**的函数。在半开区间的全体上定义',
+        '设 $F : \\mathbb{R} \\to \\mathbb{R}$ 是**递增**且**右连续**的函数。在半开区间的全体上定义',
         '',
         '$$\\mu_0( (a, b] ) = F(b) - F(a)$$',
         '',
@@ -389,7 +389,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue–Stieltjes', 'Borel'],
       statement: [
-        '对每个递增右连续的 $$F : \\mathbb{R} \\to \\mathbb{R}$$，存在 $\\mathbb{R}$ 上的一个 Borel 测度 $\\mu _F$ 使',
+        '对每个递增右连续的 $F : \\mathbb{R} \\to \\mathbb{R}$，存在 $\\mathbb{R}$ 上的一个 Borel 测度 $\\mu _F$ 使',
         '',
         '$$\\mu_F( (a, b] ) = F(b) - F(a)\\quad  \\forall a < b$$',
         '',
@@ -412,9 +412,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue–Stieltjes', 'Lebesgue 测度'],
       statement: [
-        '由递增右连续函数 $F$ 按上一条定理得到的 Borel 测度 $$\\mu_F$$ 称为 **$F$ 的 Lebesgue–Stieltjes 测度**。',
+        '由递增右连续函数 $F$ 按上一条定理得到的 Borel 测度 $\\mu_F$ 称为 **$F$ 的 Lebesgue–Stieltjes 测度**。',
         '',
-        '特别地，取 $$F(x) = x$$，得到的 $\\mu _F$ 就是 $\\mathbb{R}$ 上的 **Lebesgue 测度** $m$：',
+        '特别地，取 $F(x) = x$，得到的 $\\mu _F$ 就是 $\\mathbb{R}$ 上的 **Lebesgue 测度** $m$：',
         '',
         '$$m( (a, b] ) = b - a$$'
       ].join('\n'),

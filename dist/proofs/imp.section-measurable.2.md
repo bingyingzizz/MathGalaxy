@@ -7,4 +7,4 @@
 
 $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 
-而 $$f^{-1}(B) \in \mathcal{M} \otimes  \mathcal{N}$$，由 (a) 它的纵截口属于 $\mathcal{N}$，即 $$f_x^{-1}(B) \in \mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎
+而 $f^{-1}(B) \in \mathcal{M} \otimes  \mathcal{N}$，由 (a) 它的纵截口属于 $\mathcal{N}$，即 $f_x^{-1}(B) \in \mathcal{N}$。所以 $f_x$ 可测。横截口同理。∎

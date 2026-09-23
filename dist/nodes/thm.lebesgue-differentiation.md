@@ -2,7 +2,7 @@
 Lebesgue 微分定理：$A_{r} f(x) \to f(x) \text{a.e.}$
 layer 23 · 定理 · 微分定理 · 分析学
 
-设 $$f \in L^1_{loc}$$。则
+设 $f \in L^1_{loc}$。则
 
 $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对} \text{a.e.} x \in \mathbb{R}^n$$
 

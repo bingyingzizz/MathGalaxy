@@ -2,7 +2,7 @@
 命题：复合保持可测；只需在生成元上验证
 layer 7 · 命题 · 可测函数与收敛 · 分析学
 
-**(1) 复合**：若 $$f : X \to Y$$ 是 $(\mathcal{M}, \mathcal{N})$可测、$$g : Y \to Z$$ 是 $(\mathcal{N}, \mathcal{O})$可测，则 $$g \circ  f$$ 是 $(\mathcal{M}, \mathcal{O})$可测。
+**(1) 复合**：若 $f : X \to Y$ 是 $(\mathcal{M}, \mathcal{N})$可测、$g : Y \to Z$ 是 $(\mathcal{N}, \mathcal{O})$可测，则 $g \circ  f$ 是 $(\mathcal{M}, \mathcal{O})$可测。
 
 **(2) 只需验证生成元**：若 $\mathcal{N} = \mathcal{M}(\mathcal{E})$，则
 > 陈述续见 `nodes/prop.measurable-criterion.2.md`

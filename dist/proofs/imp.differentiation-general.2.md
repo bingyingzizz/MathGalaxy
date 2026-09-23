@@ -5,6 +5,6 @@
 
 $$| \frac{1}{m(E_r)} \int_{E_r} f - f(x) | \le \frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy \to 0$$
 
-即得 $$\frac{1}{m(E_r)} \int_{E_r} f dy \to f(x)$$。∎
+即得 $\frac{1}{m(E_r)} \int_{E_r} f dy \to f(x)$。∎
 
-> 全部难度都被「把 L_f 的定义写成 $$\int|f(y) - f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。
+> 全部难度都被「把 L_f 的定义写成 $\int|f(y) - f(x)|$」吸收掉了 —— 这也解释了为什么定义要那么写。

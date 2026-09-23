@@ -2,11 +2,11 @@
 外测度（Outer Measure）
 layer 13 · 定义 · 测度的构造 · 分析学
 
-设 $X$ 是非空集合。函数 $$\mu^* : \mathcal{P}(X) \to [0, +\infty]$$ 是一个**外测度**，当且仅当
+设 $X$ 是非空集合。函数 $\mu^* : \mathcal{P}(X) \to [0, +\infty]$ 是一个**外测度**，当且仅当
 
-- $$\mu^*(\emptyset) = 0$$
-- **单调**：$$A \subseteq B \implies \mu^*(A) \le \mu^*(B)$$
-- **可数次可加**：$$\mu^*( \bigcup_{j=1}^{\infty} A_j ) \le \sum_{j=1}^{\infty} \mu^*(A_j)$$
+- $\mu^*(\emptyset) = 0$
+- **单调**：$A \subseteq B \implies \mu^*(A) \le \mu^*(B)$
+- **可数次可加**：$\mu^*( \bigcup_{j=1}^{\infty} A_j ) \le \sum_{j=1}^{\infty} \mu^*(A_j)$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.power-set` 幂集 𝒫(X)：用到了定义 幂集 𝒫(X)　proofs/dep.powerset-outer-measure.md

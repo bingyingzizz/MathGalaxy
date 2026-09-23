@@ -2,7 +2,7 @@
 推论：$\mu \ll \lambda$ 且 $\lambda \ll \mu \implies (d\mu/d\lambda)(d\lambda/d\mu) = 1$
 layer 17 · 推论 · 符号测度与分解 · 分析学
 
-若 $$\mu \ll  \lambda$$ 且 $$\lambda \ll  \mu$$（两个 $\sigma$有限测度互为绝对连续），则
+若 $\mu \ll  \lambda$ 且 $\lambda \ll  \mu$（两个 $\sigma$有限测度互为绝对连续），则
 > 陈述续见 `nodes/cor.rn-inverse.2.md`
 
 
@@ -13,4 +13,4 @@ layer 17 · 推论 · 符号测度与分解 · 分析学
 refs: Folland, Real Analysis, Theorem 3.9
 
 ## 说明
-两条链式法则一拼：$$d\mu / d\mu = \frac{d\mu}{d\lambda}\cdot\frac{d\lambda}{d\mu}$$，而 $$d\mu / d\mu \equiv  1$$。
+两条链式法则一拼：$d\mu / d\mu = \frac{d\mu}{d\lambda}\cdot\frac{d\lambda}{d\mu}$，而 $d\mu / d\mu \equiv  1$。

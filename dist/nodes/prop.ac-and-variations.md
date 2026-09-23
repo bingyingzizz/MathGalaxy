@@ -6,7 +6,7 @@ layer 19 · 命题 · 符号测度与分解 · 分析学
 
 $$\nu \ll  \mu \iff |\nu| \ll  \mu \iff \nu^+ \ll  \mu\text{ 且} \nu^- \ll  \mu$$
 
-并且：若同时有 $$\nu \perp  \mu$$ 与 $$\nu \ll  \mu$$，则 $$\nu = 0$$。
+并且：若同时有 $\nu \perp  \mu$ 与 $\nu \ll  \mu$，则 $\nu = 0$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `thm.jordan-decomposition` Jordan 分解定理：用到了定义 Jordan 分解定理　proofs/def-link.variations-ac.md

@@ -2,11 +2,11 @@
 控制收敛定理（DCT, Dominated Convergence Theorem）
 layer 19 · 定理 · 积分 · 分析学
 
-设 $$\{f_n\} \subseteq L^1$$，$$f_n \to f$$ a.e.，且存在**控制函数** $$g \in L^1$$ 使
+设 $\{f_n\} \subseteq L^1$，$f_n \to f$ a.e.，且存在**控制函数** $g \in L^1$ 使
 
 $$|f_n| \le g\quad  \text{a.e.}\quad  \forall n$$
 
-则 $$f \in L^1$$ 且
+则 $f \in L^1$ 且
 
 $$\int f = \lim_{n\to\infty} \int f_n$$
 

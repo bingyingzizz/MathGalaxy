@@ -4,8 +4,8 @@ layer 16 · 引理 · 符号测度与分解 · 分析学
 
 设 $\nu$、$\mu$ 都是**有限**测度。则二者必有一个成立：
 
-- $$\nu \perp  \mu$$；或
-- 存在 $$\varepsilon > 0$$ 与 $$E \in \mathcal{M}$$，$$\mu(E) > 0$$，使 $$\nu \ge \varepsilon \mu$$ 在 $E$ 上成立（即 $$\nu(F) \ge \varepsilon \mu(F)$$ 对一切可测 $$F \subseteq E$$）。
+- $\nu \perp  \mu$；或
+- 存在 $\varepsilon > 0$ 与 $E \in \mathcal{M}$，$\mu(E) > 0$，使 $\nu \ge \varepsilon \mu$ 在 $E$ 上成立（即 $\nu(F) \ge \varepsilon \mu(F)$ 对一切可测 $F \subseteq E$）。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.absolute-continuity` 绝对连续：用到了定义 绝对连续　proofs/def-link.ac-lemma.md

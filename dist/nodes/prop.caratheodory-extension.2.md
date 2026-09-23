@@ -2,7 +2,7 @@
 根 `../`　·　第 1 页 `nodes/prop.caratheodory-extension.md`
 
 ## 陈述（续）
-1. $$\mu^*|_\mathfrak{A} = \mu_0$$
+1. $\mu^*|_\mathfrak{A} = \mu_0$
 2. **$\mathfrak{A}$ 中每个集合都是 $\mu^{*}$-可测的**，因此
 
 $$\mathfrak{A} \subseteq \mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$$

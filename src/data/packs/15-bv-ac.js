@@ -30,7 +30,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '单调函数', '可导'],
       statement: [
-        '设 $$F : \\mathbb{R} \\to \\mathbb{R}$$ 递增，$$G(x) := F(x+)$$（右极限）。则',
+        '设 $F : \\mathbb{R} \\to \\mathbb{R}$ 递增，$G(x) := F(x+)$（右极限）。则',
         '',
         '**(a)** $F$ 的不连续点至多可数；',
         '',
@@ -39,12 +39,12 @@ window.MG = window.MG || {};
         '$$F\' = G\'\\quad  \\text{a.e.}$$'
       ].join('\n'),
       notes: [
-        '(a)：每个不连续点 $x$ 对应一个「跳跃区间」$$(F(x-), F(x+))$$，这些区间两两不交；每个区间里取一个有理数，得到一个到 $\\mathbb{Q}$ 的单射。故不连续点至多可数。',
+        '(a)：每个不连续点 $x$ 对应一个「跳跃区间」$(F(x-), F(x+))$，这些区间两两不交；每个区间里取一个有理数，得到一个到 $\\mathbb{Q}$ 的单射。故不连续点至多可数。',
         '(b) 的路线很漂亮：$G$ 右连续递增，于是它诱导一个正则 Borel 测度 $\\mu _G$。对 $h > 0$ 有',
         '',
         '$$G(x+h) - G(x) = \\mu_G((x, x+h])$$',
         '',
-        '于是差商恰好是 $$\\mu_G(E_h)/m(E_h)$$ —— 其中 $$E_h = (x, x+h]$$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\\mu _G$ 关于 $m$ 的 RN 导数，即 $G\' \\text{a.e.}$ 存在。',
+        '于是差商恰好是 $\\mu_G(E_h)/m(E_h)$ —— 其中 $E_h = (x, x+h]$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\\mu _G$ 关于 $m$ 的 RN 导数，即 $G\' \\text{a.e.}$ 存在。',
         '剩下的部分用一个「夹逼」把 $F\' = G\'$ 也拿下：令 $H = G - F \\ge 0$（跳跃函数），它 a.e. 为 0；再令 $\\bar{F}$ 为跳跃的累积函数，则 $\\mu _{\\bar{F}}$ 集中在可数集上，故 $\\mu _{\\bar{F}} \\perp m$，于是 $\\bar{F}\' = 0 \\text{a.e.}$。在 $\\bar{F}\' = 0$ 的点上用',
         '',
         '$$0 \\le H(x+h) / h \\le (\\bar{F}(x+h) - \\bar{F}(x)) / h\\quad  (h > 0)$$',
@@ -63,18 +63,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '全变差', 'BV'],
       statement: [
-        '设 $$F : \\mathbb{R} \\to \\mathbb{C}$$。定义它的**全变差函数**',
+        '设 $F : \\mathbb{R} \\to \\mathbb{C}$。定义它的**全变差函数**',
         '',
         '$$T_F(x) := \\sup \\{ \\sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \\in \\mathbb{N}, -\\infty < x_0 < \\cdots < x_n = x \\}$$',
         '',
-        '$T_F$ 是递增的 $$\\mathbb{R} \\to [0, +\\infty]$$。若 $$T_F(+\\infty) < +\\infty$$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。',
+        '$T_F$ 是递增的 $\\mathbb{R} \\to [0, +\\infty]$。若 $T_F(+\\infty) < +\\infty$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。',
         '',
-        '$T_F(b) - T_F(a)$ 称为 $F$ 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。'
+        '$T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。'
       ].join('\n'),
       notes: [
-        '直观：$$T_F(x)$$ 是「沿着图像从 $-\\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。',
-        '两个自然的映射：**投射** $$BV \\to BV([a,b])$$，$$f \\mapsto f|_{[a,b]}$$；**嵌入** $$BV([a,b]) \\to BV$$，$$f \\mapsto \\{ f(x) (x \\in [a,b]); f(b) (x > b); f(a) (x < a) \\}$$。',
-        '⚠ 全变差用的是**每一段的绝对差之和**，所以振荡太厉害的（比如 $$x \\sin(1/x)$$ 在 0 附近）就要仔细算 —— 见例子节点。'
+        '直观：$T_F(x)$ 是「沿着图像从 $-\\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。',
+        '两个自然的映射：**投射** $BV \\to BV([a,b])$，$f \\mapsto f|_{[a,b]}$；**嵌入** $BV([a,b]) \\to BV$，$f \\mapsto \\{ f(x) (x \\in [a,b]); f(b) (x > b); f(a) (x < a) \\}$。',
+        '⚠ 全变差用的是**每一段的绝对差之和**，所以振荡太厉害的（比如 $x \\sin(1/x)$ 在 0 附近）就要仔细算 —— 见例子节点。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.5', 'Rudin, Real and Complex Analysis, Ch. 7']
     },
@@ -88,19 +88,19 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'BV', '例子'],
       statement: [
-        '1. 若 $$F : \\mathbb{R} \\to \\mathbb{R}$$ **有界递增**，则 $$F \\in BV$$（此时 $$T_F = F - F(-\\infty)$$）。',
+        '1. 若 $F : \\mathbb{R} \\to \\mathbb{R}$ **有界递增**，则 $F \\in BV$（此时 $T_F = F - F(-\\infty)$）。',
         '',
-        '2. $$BV$$ 是 $\\mathbb{C}$向量空间。',
+        '2. $BV$ 是 $\\mathbb{C}$向量空间。',
         '',
-        '3. 若 $F$ 实可微且 $F\'$ 有界，则对一切 $$-\\infty < a < b < \\infty$$ 有 $$F \\in BV([a,b])$$。',
+        '3. 若 $F$ 实可微且 $F\'$ 有界，则对一切 $-\\infty < a < b < \\infty$ 有 $F \\in BV([a,b])$。',
         '',
-        '4. $$F(x) = \\sin x$$：对任何紧区间 $$[a,b]$$，$$F \\in BV([a,b])$$。',
+        '4. $F(x) = \\sin x$：对任何紧区间 $[a,b]$，$F \\in BV([a,b])$。',
         '',
-        '5. $$F(x) = xsin(1/x)$$（$$x \\ne 0$$），$$F(0) = 0$$：若 $$0 \\in [a,b]$$，则 $$F \\in BV([a,b])$$。'
+        '5. $F(x) = xsin(1/x)$（$x \\ne 0$），$F(0) = 0$：若 $0 \\in [a,b]$，则 $F \\in BV([a,b])$。'
       ].join('\n'),
       notes: [
         '第 4、5 两个例子是「振荡型」的：函数本身有界、但导数在某个点附近爆掉或无限振荡。它们仍然有界变差 —— 说明**BV 比「$C^{1}$」宽得多**。',
-        '一个标准的**反例**（不属于 BV）：$$F(x) = \\sin(1/x)$$（$$x \\ne 0$$）、$$F(0) = 0$$ —— 它在 0 附近无限次振荡且振幅不衰减，全变差发散。',
+        '一个标准的**反例**（不属于 BV）：$F(x) = \\sin(1/x)$（$x \\ne 0$）、$F(0) = 0$ —— 它在 0 附近无限次振荡且振幅不衰减，全变差发散。',
         '⭐ 记住这条分界线：**振幅不衰减的振荡 $\\implies$ 不是 BV**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.5']
@@ -122,12 +122,12 @@ window.MG = window.MG || {};
         '都是**递增**函数。'
       ].join('\n'),
       notes: [
-        '证明：设 $x < y$，任给 $\\varepsilon > 0$，取分划 $$x_0 < \\cdots < x_n = x$$ 使 $$\\sum|F(x_j) - F(x_{j-1})| \\ge T_F(x) - \\varepsilon$$，再补上点 $y$ 与 $x$ 之间的比较：',
+        '证明：设 $x < y$，任给 $\\varepsilon > 0$，取分划 $x_0 < \\cdots < x_n = x$ 使 $\\sum|F(x_j) - F(x_{j-1})| \\ge T_F(x) - \\varepsilon$，再补上点 $y$ 与 $x$ 之间的比较：',
         '',
         '$$T_F(y) \\pm  F(y) \\ge \\sum_j |F(x_j) - F(x_{j-1})| + (F(y) - F(x)) \\pm  F(x) \\ge T_F(x) - \\varepsilon \\pm  F(x)$$',
         '',
-        '由 $\\varepsilon$ 任意即得 $$T_F(y) \\pm  F(y) \\ge T_F(x) \\pm  F(x)$$。∎',
-        '⭐ 这条是下一条「BV 的 Jordan 分解」的全部技术内容：一旦知道 $$T_F \\pm  F$$ 递增，就能把 $F$ 写成一增一减。'
+        '由 $\\varepsilon$ 任意即得 $T_F(y) \\pm  F(y) \\ge T_F(x) \\pm  F(x)$。∎',
+        '⭐ 这条是下一条「BV 的 Jordan 分解」的全部技术内容：一旦知道 $T_F \\pm  F$ 递增，就能把 $F$ 写成一增一减。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.27']
     },
@@ -141,9 +141,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'BV', 'Jordan 分解'],
       statement: [
-        '**(a)** $$F \\in BV \\iff \\operatorname{Re} F \\in BV\\text{ 且} \\operatorname{Im} F \\in BV$$。',
+        '**(a)** $F \\in BV \\iff \\operatorname{Re} F \\in BV\\text{ 且} \\operatorname{Im} F \\in BV$。',
         '',
-        '**(b)** 设 $$F : \\mathbb{R} \\to \\mathbb{R}$$。则',
+        '**(b)** 设 $F : \\mathbb{R} \\to \\mathbb{R}$。则',
         '',
         '$$F \\in BV \\iff F = G - H,\\text{ 其中} G, H\\text{ 都是有界递增函数}$$'
       ].join('\n'),
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
         '$$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$',
         '',
         '前一项叫 $F$ 的**正变差**，后一项叫**负变差** —— 名字与符号测度的 $\\nu ^{+}$、$\\nu ^{-}$ 完全对应。',
-        '由引理，$$T_F \\pm  F$$ 递增；而「有界」来自 $F \\in BV$。',
+        '由引理，$T_F \\pm  F$ 递增；而「有界」来自 $F \\in BV$。',
         '⭐ 意义：**BV 函数 $=$ 两个有界递增函数之差**。于是关于 BV 的一切都能化归到「递增函数」这个好处理的情形。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.27']
@@ -168,13 +168,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'BV', '正则性'],
       statement: [
-        '设 $$F \\in BV$$。则',
+        '设 $F \\in BV$。则',
         '',
-        '**(c)** 对每个 $$x \\in \\mathbb{R}$$，$$F(x+)$$ 与 $$F(x-)$$ 都存在；$$F(\\pm \\infty)$$ 也存在；',
+        '**(c)** 对每个 $x \\in \\mathbb{R}$，$F(x+)$ 与 $F(x-)$ 都存在；$F(\\pm \\infty)$ 也存在；',
         '',
         '**(d)** $F$ 的不连续点至多可数；',
         '',
-        '**(e)** 令 $$G(x) = F(x+)$$，则 $$F\'$$ 与 $$G\'$$ 处处存在且相等（a.e.）。'
+        '**(e)** 令 $G(x) = F(x+)$，则 $F\'$ 与 $G\'$ 处处存在且相等（a.e.）。'
       ].join('\n'),
       notes: [
         '全部由「$F = G - H$」化归到递增函数：递增函数的单侧极限显然存在；不连续点可数由单调函数那条定理；a.e. 可导也由那条定理（差的导数 $=$ 导数的差）。',
@@ -213,18 +213,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '全变差', 'NBV'],
       statement: [
-        '设 $$F \\in BV$$。则',
+        '设 $F \\in BV$。则',
         '',
-        '- $$T_F(-\\infty) = 0$$；',
-        '- 若 $F$ **右连续**，则 $$T_F$$ 也右连续。'
+        '- $T_F(-\\infty) = 0$；',
+        '- 若 $F$ **右连续**，则 $T_F$ 也右连续。'
       ].join('\n'),
       notes: [
-        '第一部分：给定 $\\varepsilon > 0$ 与 $x$，取分划使 $$\\sum \\ge T_F(x) - \\varepsilon$$；于是对 $$y \\le x_0$$ 有 $$T_F(y) \\le \\varepsilon$$。由 $\\varepsilon$ 任意，$$T_F(-\\infty) = 0$$。',
-        '第二部分：设 $$\\alpha = T_F(x+) - T_F(x)$$。由 $F$ 右连续，对充分小的 $h$ 有 $$|F(x+h) - F(x)| < \\varepsilon$$ 且 $$T_F(x+h) - T_F(x+) < \\varepsilon$$；再从两边各取分划夹住，得到',
+        '第一部分：给定 $\\varepsilon > 0$ 与 $x$，取分划使 $\\sum \\ge T_F(x) - \\varepsilon$；于是对 $y \\le x_0$ 有 $T_F(y) \\le \\varepsilon$。由 $\\varepsilon$ 任意，$T_F(-\\infty) = 0$。',
+        '第二部分：设 $\\alpha = T_F(x+) - T_F(x)$。由 $F$ 右连续，对充分小的 $h$ 有 $|F(x+h) - F(x)| < \\varepsilon$ 且 $T_F(x+h) - T_F(x+) < \\varepsilon$；再从两边各取分划夹住，得到',
         '',
         '$$(3/2)\\alpha - \\varepsilon \\le T_F(x+h) - T_F(x) < \\varepsilon + \\alpha$$',
         '',
-        '于是 $$\\alpha < 4\\varepsilon$$，由 $\\varepsilon$ 任意得 $\\alpha = 0$。∎',
+        '于是 $\\alpha < 4\\varepsilon$，由 $\\varepsilon$ 任意得 $\\alpha = 0$。∎',
         '⭐ 这条保证「全变差」这个操作**保持 NBV**：$F \\in NBV \\implies T_F \\in NBV$，正是下一条定理里 $|\\mu _F| = \\mu _\\{T_F\\}$ 的根据。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.30']
@@ -239,7 +239,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '递增', '积分', '导数'],
       statement: [
-        '设 $$F \\nearrow $$ 递增，$$G(x) = F(x+)$$（右连续递增）。则',
+        '设 $F \\nearrow $ 递增，$G(x) = F(x+)$（右连续递增）。则',
         '',
         '$$\\int_a^b F\' \\le F(b) - F(a)$$'
       ].join('\n'),
@@ -248,7 +248,7 @@ window.MG = window.MG || {};
         '',
         '$$d\\mu_G = d\\lambda + f\\cdot dm, \\quad  f = \\lim \\mu_G(E_h) / m(E_h)\\quad  \\text{a.e.}$$',
         '',
-        '而差商恰好是那个比值，所以 $$f = G\' = F\'$$ a.e.。于是',
+        '而差商恰好是那个比值，所以 $f = G\' = F\'$ a.e.。于是',
         '',
         '$$\\int_a^b F\' = \\int_a^b f\\cdot dm \\le \\int_a^b d\\mu_G = G(b) - G(a) \\le F(b) - F(a)$$',
         '',
@@ -267,9 +267,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Riesz 表示', 'Borel 测度', 'NBV'],
       statement: [
-        '**(1)** 若 $\\mu$ 是 $\\mathbb{R}$ 上的复 Borel 测度，$$F(x) := \\mu((-\\infty, x])$$，则 $$F \\in NBV$$。',
+        '**(1)** 若 $\\mu$ 是 $\\mathbb{R}$ 上的复 Borel 测度，$F(x) := \\mu((-\\infty, x])$，则 $F \\in NBV$。',
         '',
-        '**(2)** 反之，若 $$F \\in NBV$$，则存在**唯一**的复 Borel 测度 $$\\mu_F$$ 使',
+        '**(2)** 反之，若 $F \\in NBV$，则存在**唯一**的复 Borel 测度 $\\mu_F$ 使',
         '',
         '$$F(x) = \\mu_F((-\\infty, x])$$',
         '',
@@ -279,7 +279,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这是 **Riesz 表示定理**在实数轴上的形式：测度与一类函数一一对应。',
-        '证明思路：把复测度拆成四个正测度 $$\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$$，各取 $$F_j^{\\pm }(x) = \\mu_j^{\\pm }((-\\infty, x])$$ —— 它们递增、右连续、在 $-\\infty$ 处为 0、在 $\\infty$ 处有限，于是 $F \\in NBV$。反方向把 $F \\in NBV$ 拆成 $$F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$，每一块配一个测度。',
+        '证明思路：把复测度拆成四个正测度 $\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$，各取 $F_j^{\\pm }(x) = \\mu_j^{\\pm }((-\\infty, x])$ —— 它们递增、右连续、在 $-\\infty$ 处为 0、在 $\\infty$ 处有限，于是 $F \\in NBV$。反方向把 $F \\in NBV$ 拆成 $F_1^+ - F_1^- + i(F_2^+ - F_2^-)$，每一块配一个测度。',
         '$|\\mu_F| = \\mu_{T_F}$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「$T_F \\in NBV$」的用处。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.29']
@@ -294,16 +294,16 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'NBV', 'RN 导数'],
       statement: [
-        '设 $$F \\in NBV$$。则 $$F\' \\in L^1(m)$$，并且',
+        '设 $F \\in NBV$。则 $F\' \\in L^1(m)$，并且',
         '',
         '$$\\mu_F \\perp  m \\iff F\' = 0\\quad  \\text{a.e.}$$',
         '$$\\mu_F \\ll  m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$'
       ].join('\n'),
       notes: [
-        '证明：写 $$d\\mu_F = d\\lambda + f\\cdot dm$$（Lebesgue 分解），由测度那条定理 $$f = F\'$$ a.e.。于是',
+        '证明：写 $d\\mu_F = d\\lambda + f\\cdot dm$（Lebesgue 分解），由测度那条定理 $f = F\'$ a.e.。于是',
         '',
-        '$\\cdot$ $$\\mu_F \\perp  m$$ 意味着绝对连续部为零，即 $f = 0 \\implies F\' = 0 \\text{a.e.}$；',
-        '$\\cdot$ $$\\mu_F \\ll  m$$ 意味着 $\\lambda = 0$，于是 $$F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F\'\\cdot dt$$。',
+        '$\\cdot$ $\\mu_F \\perp  m$ 意味着绝对连续部为零，即 $f = 0 \\implies F\' = 0 \\text{a.e.}$；',
+        '$\\cdot$ $\\mu_F \\ll  m$ 意味着 $\\lambda = 0$，于是 $F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F\'\\cdot dt$。',
         '⭐ 这一条就是「微积分基本定理」的测度版：**能不能把函数积回来，取决于 $\\mu _F$ 是否绝对连续**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -318,13 +318,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '绝对连续', 'AC'],
       statement: [
-        '函数 $$F : [a, b] \\to \\mathbb{C}$$ 是**绝对连续的**，当且仅当',
+        '函数 $F : [a, b] \\to \\mathbb{C}$ 是**绝对连续的**，当且仅当',
         '',
         '$$\\forall\\varepsilon > 0, \\exists\\delta > 0 :\\text{ 任意有限个两两不交的区间} (a_j, b_j) \\subseteq [a, b]\\text{ 满足} \\sum(b_j - a_j) < \\delta,\\text{ 就一定有} \\sum|F(b_j) - F(a_j)| < \\varepsilon$$'
       ].join('\n'),
       notes: [
         '⚠ 注意与「一致连续」的区别：一致连续是**单个**小区间上控制振幅，而绝对连续要求**任意多个小区间合起来**也能控制 —— 这正是为了堵住 Cantor 函数那种「在零测集上爬升」的情形。',
-        '记号：$$AC([a, b])$$ 表示 $$[a,b]$$ 上绝对连续的函数全体。'
+        '记号：$AC([a, b])$ 表示 $[a,b]$ 上绝对连续的函数全体。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.5']
     },
@@ -338,13 +338,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '绝对连续', 'μ_F ≪ m'],
       statement: [
-        '设 $$F \\in NBV$$。则',
+        '设 $F \\in NBV$。则',
         '',
         '$$F\\text{ 绝对连续} \\iff \\mu_F \\ll  m$$'
       ].join('\n'),
       notes: [
-        '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$$\\mu_F \\ll  m$$ 给出「$$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
-        '**$(\\implies )$** 设 $$E \\in \\mathfrak{B}_\\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\\mu_F(E) = 0$$。取递减开集列 $$U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \\delta$$ 得 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性与 $$\\bigcap U_k = E$$ 得 $$|\\mu_F(E)| \\le \\varepsilon$$。由 $\\varepsilon$ 任意，$$\\mu_F(E) = 0$$。∎',
+        '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$\\mu_F \\ll  m$ 给出「$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
+        '**$(\\implies )$** 设 $E \\in \\mathfrak{B}_\\mathbb{R}$ 且 $m(E) = 0$。要证 $\\mu_F(E) = 0$。取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$（由正则性）。每个 $U_k$ 是区间的可数不交并，由函数的绝对连续性与 $m(U_k) < \\delta$ 得 $|\\mu_F(U_j)| < \\varepsilon$；再由测度的上连续性与 $\\bigcap U_k = E$ 得 $|\\mu_F(E)| \\le \\varepsilon$。由 $\\varepsilon$ 任意，$\\mu_F(E) = 0$。∎',
         '⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -359,13 +359,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'AC', 'NBV', '基本定理'],
       statement: [
-        '**(1)** 若 $$f \\in L^1(m)$$，则',
+        '**(1)** 若 $f \\in L^1(m)$，则',
         '',
         '$$F(x) := \\int_{-\\infty}^{x} f(t) dt$$',
         '',
-        '属于 $$AC \\cap NBV$$。',
+        '属于 $AC \\cap NBV$。',
         '',
-        '**(2)** 反之，若 $$F \\in NBV$$ 且绝对连续，则 $$F\' \\in L^1(m)$$ 且',
+        '**(2)** 反之，若 $F \\in NBV$ 且绝对连续，则 $F\' \\in L^1(m)$ 且',
         '',
         '$$F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$'
       ].join('\n'),
@@ -401,15 +401,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微积分基本定理', 'AC', 'NCT'],
       statement: [
-        '设 $$F : [a, b] \\to \\mathbb{C}$$，区间紧。则下列三条**彼此等价**：',
+        '设 $F : [a, b] \\to \\mathbb{C}$，区间紧。则下列三条**彼此等价**：',
         '',
-        '**(a)** $F$ 在 $$[a, b]$$ 上**绝对连续**；',
+        '**(a)** $F$ 在 $[a, b]$ 上**绝对连续**；',
         '',
-        '**(b)** 存在 $$f \\in L^1([a, b])$$ 使',
+        '**(b)** 存在 $f \\in L^1([a, b])$ 使',
         '',
         '$$F(x) - F(a) = \\int_a^x f(t) dt\\quad  \\forall x \\in [a, b]$$',
         '',
-        '**(c)** $F$ **a.e. 可导**、$$F\' \\in L^1([a, b])$$，且',
+        '**(c)** $F$ **a.e. 可导**、$F\' \\in L^1([a, b])$，且',
         '',
         '$$F(x) - F(a) = \\int_a^x F\'(t) dt$$'
       ].join('\n'),
@@ -432,13 +432,13 @@ window.MG = window.MG || {};
       target: 'thm.bv-jordan',
       title: '$T_F \\pm F$ 递增 $\\implies BV$ 的 Jordan 分解',
       proof: [
-        '**(b) 的 $(\\Longleftarrow )$ 方向**：若 $$F = G - H$$（$G$、$H$ 有界递增），则对任意分划',
+        '**(b) 的 $(\\Longleftarrow )$ 方向**：若 $F = G - H$（$G$、$H$ 有界递增），则对任意分划',
         '',
         '$$\\sum|F(x_j) - F(x_{j-1})| \\le \\sum|G(x_j) - G(x_{j-1})| + \\sum|H(x_j) - H(x_{j-1})| = (G(x) - G(-\\infty)) + (H(x) - H(-\\infty))$$',
         '',
-        '（递增函数的相邻差非负，可以直接去绝对值。）于是 $$T_F(x) \\le (G+H)(x) - (G+H)(-\\infty) < \\infty$$，$F \\in BV$。',
+        '（递增函数的相邻差非负，可以直接去绝对值。）于是 $T_F(x) \\le (G+H)(x) - (G+H)(-\\infty) < \\infty$，$F \\in BV$。',
         '',
-        '**(b) 的 $(\\implies )$ 方向**：由**引理**，$$T_F + F$$ 与 $$T_F - F$$ 都递增；它们有界（因为 $F \\in BV$ 且 $F$ 有界）。令',
+        '**(b) 的 $(\\implies )$ 方向**：由**引理**，$T_F + F$ 与 $T_F - F$ 都递增；它们有界（因为 $F \\in BV$ 且 $F$ 有界）。令',
         '',
         '$$G := (1/2)(T_F + F), \\quad  H := (1/2)(T_F - F)$$',
         '',
@@ -448,7 +448,7 @@ window.MG = window.MG || {};
         '',
         '∎',
         '',
-        '**(a)**：把实部虚部分开即可（$$|\\operatorname{Re} F| \\le |F|$$、$$|F| \\le |\\operatorname{Re} F| + |\\operatorname{Im} F|$$，两边夹）。∎'
+        '**(a)**：把实部虚部分开即可（$|\\operatorname{Re} F| \\le |F|$、$|F| \\le |\\operatorname{Re} F| + |\\operatorname{Im} F|$，两边夹）。∎'
       ].join('\n'),
       note: '⭐ 这叫「函数版的 Jordan 分解」，与符号测度的 $\\nu = \\nu ^{+} - \\nu ^{-}$ 完全平行 —— 事实上两者通过「测度 $\\leftrightarrow NBV$」的对应是同一件事。'
     },
@@ -466,11 +466,11 @@ window.MG = window.MG || {};
         '',
         '$$F(x-) = \\sup_{y < x} F(y), \\quad  F(x+) = \\inf_{y > x} F(y)$$',
         '',
-        '（递增数列的有界单调收敛定理。）同理 $$F(\\pm \\infty) = \\sup/\\inf$$ 也存在。',
+        '（递增数列的有界单调收敛定理。）同理 $F(\\pm \\infty) = \\sup/\\inf$ 也存在。',
         '',
         '**(d)** 由**单调函数那条定理**的 (a)：不连续点至多可数。',
         '',
-        '**(e)** 由同一条定理的 (b)：$$F\' = G\'$$ a.e.，其中 $$G(x) = F(x+)$$。对 $G - H$ 形式的函数两边相减即可。∎',
+        '**(e)** 由同一条定理的 (b)：$F\' = G\'$ a.e.，其中 $G(x) = F(x+)$。对 $G - H$ 形式的函数两边相减即可。∎',
         '',
         '$>$ ⭐ 整个证明的模式很典型：**先证明「递增」这个好情形，再用 Jordan 分解把一般情形搬过去**。'
       ].join('\n')
@@ -483,19 +483,19 @@ window.MG = window.MG || {};
       target: 'thm.borel-measure-nbv',
       title: 'NBV 的性质 $\\implies$ 测度与函数的一一对应',
       proof: [
-        '**(1) 测度 $\\implies$ 函数。** 复测度拆成四个正测度 $$\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$$。令',
+        '**(1) 测度 $\\implies$ 函数。** 复测度拆成四个正测度 $\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$。令',
         '',
         '$$F_j^{\\pm }(x) := \\mu_j^{\\pm }((-\\infty, x])$$',
         '',
-        '每个 $$F_j^{\\pm }$$ 递增、右连续、$$F_j^{\\pm }(-\\infty) = 0$$、$$F_j^{\\pm }(+\\infty) = \\mu_j^{\\pm }(\\mathbb{R}) < \\infty$$。于是 $F$ 是四个这样的函数之组合，属于 NBV。',
+        '每个 $F_j^{\\pm }$ 递增、右连续、$F_j^{\\pm }(-\\infty) = 0$、$F_j^{\\pm }(+\\infty) = \\mu_j^{\\pm }(\\mathbb{R}) < \\infty$。于是 $F$ 是四个这样的函数之组合，属于 NBV。',
         '',
-        '**(2) 函数 $\\implies$ 测度。** 反之任意 $$F \\in NBV$$ 可以写成',
+        '**(2) 函数 $\\implies$ 测度。** 反之任意 $F \\in NBV$ 可以写成',
         '',
         '$$F = F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$',
         '',
         '（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；四块加起来即得 $\\mu _F$。**唯一性**来自「$\\mu$ 由它在 $(-\\infty , x]$ 上的值唯一决定」，而后者生成整个 $\\mathfrak{B}_\\mathbb{R}$。',
         '',
-        '**$(3) |\\mu _F| = \\mu _\\{T_F\\}$。** 由**引理**，$$F \\in NBV \\implies T_F \\in NBV$$，所以 $$\\mu_{T_F}$$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
+        '**$(3) |\\mu _F| = \\mu _\\{T_F\\}$。** 由**引理**，$F \\in NBV \\implies T_F \\in NBV$，所以 $\\mu_{T_F}$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
         '',
         '$$\\mu_{T_F}((-\\infty, x]) = T_F(x) = \\sup\\{ \\sum|F(x_j) - F(x_{j-1})| \\} = |\\mu_F|((-\\infty, x])$$',
         '',
@@ -510,21 +510,21 @@ window.MG = window.MG || {};
       target: 'prop.ac-iff-measure-ac',
       title: '$\\mu_F \\ll m$ 的 $\\varepsilon$–$\\delta$ 刻画 $\\implies$ 函数绝对连续 $\\iff$ 测度绝对连续',
       proof: [
-        '**$(\\Longleftarrow )$** 设 $$\\mu_F \\ll  m$$。应用测度版绝对连续的 $\\varepsilon$–$\\delta$ 刻画（注意 $\\mu _F$ 有限，符合前提）：给定 $\\varepsilon > 0$ 取 $\\delta > 0$ 使',
+        '**$(\\Longleftarrow )$** 设 $\\mu_F \\ll  m$。应用测度版绝对连续的 $\\varepsilon$–$\\delta$ 刻画（注意 $\\mu _F$ 有限，符合前提）：给定 $\\varepsilon > 0$ 取 $\\delta > 0$ 使',
         '',
         '$$m(E) < \\delta\\quad  \\implies\\quad  |\\mu_F(E)| < \\varepsilon$$',
         '',
-        '现在取有限个两两不交的区间 $$(a_j, b_j) \\subseteq [a, b]$$ 且 $$\\sum(b_j - a_j) < \\delta$$，令 $$E = \\bigsqcup_j (a_j, b_j)$$。则 $$m(E) < \\delta$$，于是',
+        '现在取有限个两两不交的区间 $(a_j, b_j) \\subseteq [a, b]$ 且 $\\sum(b_j - a_j) < \\delta$，令 $E = \\bigsqcup_j (a_j, b_j)$。则 $m(E) < \\delta$，于是',
         '',
         '$$\\sum_j |F(b_j) - F(a_j)| = \\sum_j |\\mu_F((a_j, b_j])| \\le |\\mu_F|(E) < \\varepsilon$$',
         '',
         '这正是函数绝对连续的定义。',
         '',
-        '**$(\\implies )$** 设 $F$ 绝对连续，$$E \\in \\mathfrak{B}_\\mathbb{R}$$、$$m(E) = 0$$，要证 $$\\mu_F(E) = 0$$。由 $\\mu _F$ 的正则性取递减开集列 $$U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$、$$\\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性（递减列，首项有限）得',
+        '**$(\\implies )$** 设 $F$ 绝对连续，$E \\in \\mathfrak{B}_\\mathbb{R}$、$m(E) = 0$，要证 $\\mu_F(E) = 0$。由 $\\mu _F$ 的正则性取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$、$\\bigcap_k U_k = E$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $|\\mu_F(U_j)| < \\varepsilon$；再由测度的上连续性（递减列，首项有限）得',
         '',
         '$$|\\mu_F(E)| = \\lim_j |\\mu_F(U_j)| \\le \\varepsilon$$',
         '',
-        '由 $\\varepsilon$ 任意，$$\\mu_F(E) = 0$$。故 $$\\mu_F \\ll  m$$。∎'
+        '由 $\\varepsilon$ 任意，$\\mu_F(E) = 0$。故 $\\mu_F \\ll  m$。∎'
       ].join('\n')
     },
 
@@ -535,15 +535,15 @@ window.MG = window.MG || {};
       target: 'thm.ftc-lebesgue',
       title: '$(a) \\iff (b) \\iff (c)$：微积分基本定理的三条等价',
       proof: [
-        '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $$d\\mu_F = f\\cdot dm$$，即',
+        '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $d\\mu_F = f\\cdot dm$，即',
         '',
         '$$F(x) - F(a) = \\int_a^x f(t) dt$$',
         '',
-        '取 $$f$$ 就是所要的 $L^{1}$ 函数。',
+        '取 $f$ 就是所要的 $L^{1}$ 函数。',
         '',
-        '**$(b) \\implies (c)$。** 若 $$F(x) - F(a) = \\int_a^x f$$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$$d / dx\\int_a^x f = f(x)$$ a.e.，故 $$F\' = f$$ a.e.、$$F\' \\in L^1$$，公式成立。',
+        '**$(b) \\implies (c)$。** 若 $F(x) - F(a) = \\int_a^x f$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$d / dx\\int_a^x f = f(x)$ a.e.，故 $F\' = f$ a.e.、$F\' \\in L^1$，公式成立。',
         '',
-        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $$F(x) - \\int_a^x F\'$$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。故 $F$ 本身绝对连续。∎',
+        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $F(x) - \\int_a^x F\'$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。故 $F$ 本身绝对连续。∎',
         '',
         '$>$ ⭐ 最容易错的直觉是「a.e. 可导 $F\' \\in L^{1}$ 就够」——**Cantor 函数**正是反例：它 a.e. 可导、$F\' \\equiv 0 \\in L^{1}$，但 $\\int _{0}^{1} F\' = 0 \\ne 1$。**绝对连续这一条不能省。**'
       ].join('\n'),

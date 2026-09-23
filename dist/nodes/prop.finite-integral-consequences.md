@@ -2,10 +2,10 @@
 命题：$\int f < \infty$ 时，f 几乎处处有限、支撑 σ-有限
 layer 15 · 命题 · 积分 · 分析学
 
-设 $$f \in L^+$$ 且 $$\int f < \infty$$。则
+设 $f \in L^+$ 且 $\int f < \infty$。则
 
-- $$\{x : f(x) = \infty\}$$ 是零集；
-- $$\{x : f(x) > 0\}$$ 是 **$\sigma$有限**的（即它是可数个有限测度集之并）。
+- $\{x : f(x) = \infty\}$ 是零集；
+- $\{x : f(x) > 0\}$ 是 **$\sigma$有限**的（即它是可数个有限测度集之并）。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.lplus` L⁺：用到了定义 L⁺　proofs/def-link.lplus-finite-integral.md

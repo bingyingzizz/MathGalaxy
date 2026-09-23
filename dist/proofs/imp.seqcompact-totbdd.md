@@ -11,7 +11,7 @@
 
 $$x_{n+1} \in X \setminus \bigcup_{i=1}^{n} B(x_i, \varepsilon_0)$$
 
-于是任何两个不同的项都满足 $$m \ne n \implies d(x_m, x_n) \ge \varepsilon_0$$
+于是任何两个不同的项都满足 $m \ne n \implies d(x_m, x_n) \ge \varepsilon_0$
 
 **③ 它没有收敛子列。** 任何子列中任意两项距离都 $\ge \varepsilon _{0}$，所以它不是 Cauchy 列；而度量空间里收敛必 Cauchy，故它不收敛。
 

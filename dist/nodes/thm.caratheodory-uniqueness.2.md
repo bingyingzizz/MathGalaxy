@@ -4,4 +4,4 @@
 ## 陈述（续）
 $$\nu(E) \le \mu(E)\quad  \forall E \in \mathcal{M}(\mathfrak{A})$$
 
-且当 $$\mu(E) < \infty$$ 时等号成立；进而，若 $\mu$ 是 $\sigma$有限的，则 $$\nu = \mu$$。
+且当 $\mu(E) < \infty$ 时等号成立；进而，若 $\mu$ 是 $\sigma$有限的，则 $\nu = \mu$。

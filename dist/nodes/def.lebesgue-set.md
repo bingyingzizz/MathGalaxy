@@ -2,7 +2,7 @@
 Lebesgue 集 $L_f$
 layer 21 · 定义 · 微分定理 · 分析学
 
-设 $$f \in L^1_{loc}$$。定义
+设 $f \in L^1_{loc}$。定义
 
 $$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y) - f(x)| dy = 0 \}$$
 

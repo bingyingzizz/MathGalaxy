@@ -4,7 +4,7 @@ layer 16 · 定义 · 乘积测度与 Fubini · 分析学
 
 设 $(X, \mathcal{M}, \mu )$ 与 $(Y, \mathcal{N}, \nu )$ 是测度空间。
 
-**① 矩形**：形如 $$A \times B$$（$$A \in \mathcal{M}$$，$$B \in \mathcal{N}$$）的集合叫（可测）矩形。全体矩形**生成** $$\mathcal{M} \otimes  \mathcal{N}$$。
+**① 矩形**：形如 $A \times B$（$A \in \mathcal{M}$，$B \in \mathcal{N}$）的集合叫（可测）矩形。全体矩形**生成** $\mathcal{M} \otimes  \mathcal{N}$。
 > 陈述续见 `nodes/def.product-measure.2.md`
 
 

@@ -2,7 +2,7 @@
 预测度（Premeasure）—— 定义在环上的「测度」
 layer 14 · 定义 · 测度的构造 · 分析学
 
-若 $\mathcal{M}$ 只是一个**环**（不必是 $\sigma$代数），而 $$\mu : \mathcal{M} \to [0, +\infty]$$ 仍满足测度的两条：
+若 $\mathcal{M}$ 只是一个**环**（不必是 $\sigma$代数），而 $\mu : \mathcal{M} \to [0, +\infty]$ 仍满足测度的两条：
 
 $$\mu(\emptyset) = 0, \quad  \{E_j\}\text{ 两两不交} \implies \mu(\bigcup E_j) = \sum \mu(E_j)$$
 

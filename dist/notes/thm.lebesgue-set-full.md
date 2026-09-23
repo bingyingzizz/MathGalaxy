@@ -1,9 +1,9 @@
 # Lebesgue 集几乎处处　`thm.lebesgue-set-full`　·　说明
 根 `../`
 
-证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\lim_{1/m(B)}\int|f(y) - c|dy = |f(x) - c|$$」。
+证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $|f(x) - c|$ 上，得到「除一个零集 $E_c$ 外，$\lim_{1/m(B)}\int|f(y) - c|dy = |f(x) - c|$」。
 
-然后取 **$\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $$E = \bigcup_{c \in D} E_c$$（可数并仍是零集）。对 $$x \notin E$$ 与任意 $\varepsilon > 0$，取 $$c \in D$$ 使 $$|f(x) - c| < \varepsilon$$，于是
+然后取 **$\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $E = \bigcup_{c \in D} E_c$（可数并仍是零集）。对 $x \notin E$ 与任意 $\varepsilon > 0$，取 $c \in D$ 使 $|f(x) - c| < \varepsilon$，于是
 
 
 

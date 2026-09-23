@@ -2,7 +2,7 @@
 定理：对可缩族，Lebesgue 微分定理仍然成立
 layer 25 · 定理 · 微分定理 · 分析学
 
-设 $$f \in L^1_{loc}$$，$$x \in L_f$$。则对**每一个**可缩地趋于 $x$ 的族 $$\{E_r\}_{r>0}$$：
+设 $f \in L^1_{loc}$，$x \in L_f$。则对**每一个**可缩地趋于 $x$ 的族 $\{E_r\}_{r>0}$：
 
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy = 0, $$
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} f(y) dy = f(x)$$

@@ -59,10 +59,10 @@ preceq )$
 **。由 $
 \preceq$
  定义**严格
-序**：$$x
- \prec y
- :\iff x
- \preceq
- y \wedg
-e  x \ne
- y$$
+序**：$x 
+\prec y 
+:\iff x 
+\preceq 
+y \wedge
+  x \ne 
+y$

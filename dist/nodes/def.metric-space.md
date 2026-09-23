@@ -4,9 +4,9 @@ layer 12 · 定义 · 度量空间 · 拓扑学
 
 **距离空间**是一对 (X, d)：$X$ 是集合，$d : X \times X \to [0, +\infty )$ 是 $X$ 上的**距离**，满足
 
-- **非退化**：$$d(x, y) = 0 \iff x = y$$
-- **对称**：$$d(x, y) = d(y, x)$$
-- **三角不等式**：$$d(x, z) \le d(x, y) + d(y, z)$$
+- **非退化**：$d(x, y) = 0 \iff x = y$
+- **对称**：$d(x, y) = d(y, x)$
+- **三角不等式**：$d(x, z) \le d(x, y) + d(y, z)$
 > 陈述续见 `nodes/def.metric-space.2.md`
 
 
@@ -19,6 +19,7 @@ layer 12 · 定义 · 度量空间 · 拓扑学
 ## 它能推出什么 / 谁在用它
 - 被 `lem.covering` 覆盖引理 用
 - 被 `cor.borel-product` 可数积的 Borel 代数 用
+- 被 `def.complete` 完备 用
 
 - …另有出边，续页见 `nodes/def.metric-space.3.md`
 

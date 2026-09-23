@@ -4,4 +4,4 @@
 ## 陈述（续）
 $$f : X \to Y\text{ 可测} \iff f_\alpha = \pi _\alpha \circ  f\text{ 可测}(\forall\alpha \in A)$$
 
-**(2)** 特别地，$$f : X \to \mathbb{C}$$ 可测 $\iff$ $$\operatorname{Re} f$$ 与 $$\operatorname{Im} f$$ 都可测。
+**(2)** 特别地，$f : X \to \mathbb{C}$ 可测 $\iff$ $\operatorname{Re} f$ 与 $\operatorname{Im} f$ 都可测。

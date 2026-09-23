@@ -2,7 +2,7 @@
 命题：简单函数积分的四条基本性质
 layer 16 · 命题 · 积分 · 分析学
 
-设 $$\varphi, \psi$$ 是简单函数。
+设 $\varphi, \psi$ 是简单函数。
 > 陈述续见 `nodes/prop.simple-integral-props.2.md`
 
 

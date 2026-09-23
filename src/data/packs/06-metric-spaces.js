@@ -26,13 +26,13 @@ window.MG = window.MG || {};
       statement: [
         '**距离空间**是一对 (X, d)：$X$ 是集合，$d : X \\times X \\to [0, +\\infty )$ 是 $X$ 上的**距离**，满足',
         '',
-        '- **非退化**：$$d(x, y) = 0 \\iff x = y$$',
-        '- **对称**：$$d(x, y) = d(y, x)$$',
-        '- **三角不等式**：$$d(x, z) \\le d(x, y) + d(y, z)$$',
+        '- **非退化**：$d(x, y) = 0 \\iff x = y$',
+        '- **对称**：$d(x, y) = d(y, x)$',
+        '- **三角不等式**：$d(x, z) \\le d(x, y) + d(y, z)$',
         '',
-        '由 $d$ 定义**开球** $$B(x, r) = \\{ y \\in X : d(x, y) < r \\}$$，并规定 $U \\subseteq X$ 是开集 $\\iff U$ 是若干开球之并。这样 $X$ 上就有了一个拓扑。',
+        '由 $d$ 定义**开球** $B(x, r) = \\{ y \\in X : d(x, y) < r \\}$，并规定 $U \\subseteq X$ 是开集 $\\iff U$ 是若干开球之并。这样 $X$ 上就有了一个拓扑。',
         '',
-        '给定 $\\varepsilon > 0$，称 $D \\subseteq X$ 是一个 **$\\varepsilon$网**，若 $$\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$$'
+        '给定 $\\varepsilon > 0$，称 $D \\subseteq X$ 是一个 **$\\varepsilon$网**，若 $\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$'
       ].join('\n'),
       notes: [
         '开球全体构成这个拓扑的一组**基**。度量空间自动是第一可数、正规（因而 Hausdorff）的。',
@@ -245,7 +245,7 @@ window.MG = window.MG || {};
         '',
         '$$x_{n+1} \\in X \\setminus \\bigcup_{i=1}^{n} B(x_i, \\varepsilon_0)$$',
         '',
-        '于是任何两个不同的项都满足 $$m \\ne n \\implies d(x_m, x_n) \\ge \\varepsilon_0$$',
+        '于是任何两个不同的项都满足 $m \\ne n \\implies d(x_m, x_n) \\ge \\varepsilon_0$',
         '',
         '**③ 它没有收敛子列。** 任何子列中任意两项距离都 $\\ge \\varepsilon _{0}$，所以它不是 Cauchy 列；而度量空间里收敛必 Cauchy，故它不收敛。',
         '',

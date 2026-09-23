@@ -2,7 +2,7 @@
 Egorov 定理：a.e. 收敛 $\implies$ 近一致
 layer 20 · 定理 · 可测函数与收敛 · 分析学
 
-设 $$\mu(X) < \infty$$，且 $$f_n \to f$$ a.e.。则 $$f_n \to f$$ **近一致**：
+设 $\mu(X) < \infty$，且 $f_n \to f$ a.e.。则 $f_n \to f$ **近一致**：
 
 $$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ 且} f_n \rightrightarrows  f\text{ 在} X \setminus E\text{ 上一致}$$
 

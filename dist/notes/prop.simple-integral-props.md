@@ -5,6 +5,6 @@
 
 
 
-⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$\lim_n \int_{E_n} \varphi = \int \varphi$$，用的就是「$A \mapsto \int _A \varphi$ 是测度」加上测度的下连续性（$$E_n \uparrow  X$$）。
+⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $\lim_n \int_{E_n} \varphi = \int \varphi$，用的就是「$A \mapsto \int _A \varphi$ 是测度」加上测度的下连续性（$E_n \uparrow  X$）。
 
 (a) 里 $c > 0$ 而不是 $c \ge 0$：因为约定 $0\cdot \infty = 0$，$c = 0$ 时左边也自动成立，写成 $c > 0$ 只是为了不啰嗦。

@@ -2,11 +2,11 @@
 局部可积函数 $L^{1}_{\text{loc}}$
 layer 19 · 定义 · 微分定理 · 分析学
 
-可测函数 $$f : \mathbb{R}^n \to \mathbb{C}$$ 是**局部可积的**，当且仅当
+可测函数 $f : \mathbb{R}^n \to \mathbb{C}$ 是**局部可积的**，当且仅当
 
 $$\int_K |f(x)| dx < \infty\quad \text{ 对每个有界可测集} K \subseteq \mathbb{R}^n$$
 
-局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\mathbb{R}^n)$$）。
+局部可积函数全体记作 $L^1_{loc}$（或 $L^1_{loc}(\mathbb{R}^n)$）。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.measurable-function` 可测函数：用到了定义 可测函数　proofs/def-dep.measurable-fn-locally-integrable.md

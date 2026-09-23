@@ -11,4 +11,4 @@ $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{
 
 
 
-两边对照 $$\nu(E) = \int_E \frac{d\nu}{d\lambda} d\lambda$$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。
+两边对照 $\nu(E) = \int_E \frac{d\nu}{d\lambda} d\lambda$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。

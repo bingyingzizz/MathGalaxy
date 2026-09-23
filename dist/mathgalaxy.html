@@ -4916,6 +4916,12 @@ MG.notation = {
       /* ⭐ 豁免：术语前缀（`σ-代数`、`σ-有限`、`μ-零集`…）保留 Unicode，扫描前挖掉 */
       except: '[σμλφεδ]-[A-Za-z\\u4e00-\\u9fff]',
     },
+    /* ⛔ 行内 `$$…$$` —— 见 R2。渲染上和 `$…$` 一模一样（`inlineMd` 走同一个
+       `renderInlineMath`），所以判据不是「好不好看」，而是「别让产物在标准
+       Markdown 渲染器里被当成独立公式块、把句子切断」。 */
+    inlineDollars: {
+      fields: ['statement', 'notes', 'proof', 'proofs', 'note', 'title'],
+    },
     /* ⛔ 禁用写法 → 构建失败 */
     banned: [
       { re: '\\\\subsetneq', fix: '\\\\subset',
@@ -4940,9 +4946,9 @@ MG.notation = {
   },
 
   /* ------------------------------------------------------- 已知老账 */
-  backlog: [
-    { id: 'dollars', what: '正文里有把 `$$…$$` 当行内公式用的地方（`tools/_dollarcheck.mjs`）。' },
-  ],
+  /* ⭐ 现在是**空的** —— 两笔老账（title 裸 Unicode、行内 $$…$$）都清了。
+     再加内容时如果又出现，`build.mjs` 会直接拦下来，别往这里塞回来。 */
+  backlog: [],
 };
 
 </script>
@@ -5205,7 +5211,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $A$、$B$ 是集合。',
         '',
-        '- **$A$ 是 $B$ 的子集**（记 $A \\subseteq B$）：$$\\forall x ( x \\in A \\to x \\in B )$$',
+        '- **$A$ 是 $B$ 的子集**（记 $A \\subseteq B$）：$\\forall x ( x \\in A \\to x \\in B )$',
         '- **$A$ 是 $B$ 的真子集**（记 $A \\subset B$）：$A \\subseteq B$ 且 $A \\ne B$。',
         '',
         '基本性质：$\\subseteq$ 自反、传递；并且由外延公理，',
@@ -5550,7 +5556,7 @@ window.MG = window.MG || {};
         '',
         '若还满足 **可比性** $\\forall x, y \\in A ( x \\preceq y \\vee y \\preceq x )$，则 $\\preceq$ 称为 **$A$ 上的全序**（线性序），$(A, \\preceq )$ 称为全序集。',
         '',
-        '称 $(A, \\preceq )$ 为**偏序集**。由 $\\preceq$ 定义**严格序**：$$x \\prec y :\\iff x \\preceq y \\wedge  x \\ne y$$'
+        '称 $(A, \\preceq )$ 为**偏序集**。由 $\\preceq$ 定义**严格序**：$x \\prec y :\\iff x \\preceq y \\wedge  x \\ne y$'
       ].join('\n'),
       notes: [
         '典型例子：$\\langle \\mathcal{P}(S), \\subseteq \\rangle$ 是偏序集但不是全序集；$\\langle \\mathbb{R}, \\le \\rangle$ 是全序集。',
@@ -6172,13 +6178,13 @@ window.MG = window.MG || {};
       statement: [
         '**距离空间**是一对 (X, d)：$X$ 是集合，$d : X \\times X \\to [0, +\\infty )$ 是 $X$ 上的**距离**，满足',
         '',
-        '- **非退化**：$$d(x, y) = 0 \\iff x = y$$',
-        '- **对称**：$$d(x, y) = d(y, x)$$',
-        '- **三角不等式**：$$d(x, z) \\le d(x, y) + d(y, z)$$',
+        '- **非退化**：$d(x, y) = 0 \\iff x = y$',
+        '- **对称**：$d(x, y) = d(y, x)$',
+        '- **三角不等式**：$d(x, z) \\le d(x, y) + d(y, z)$',
         '',
-        '由 $d$ 定义**开球** $$B(x, r) = \\{ y \\in X : d(x, y) < r \\}$$，并规定 $U \\subseteq X$ 是开集 $\\iff U$ 是若干开球之并。这样 $X$ 上就有了一个拓扑。',
+        '由 $d$ 定义**开球** $B(x, r) = \\{ y \\in X : d(x, y) < r \\}$，并规定 $U \\subseteq X$ 是开集 $\\iff U$ 是若干开球之并。这样 $X$ 上就有了一个拓扑。',
         '',
-        '给定 $\\varepsilon > 0$，称 $D \\subseteq X$ 是一个 **$\\varepsilon$网**，若 $$\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$$'
+        '给定 $\\varepsilon > 0$，称 $D \\subseteq X$ 是一个 **$\\varepsilon$网**，若 $\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$'
       ].join('\n'),
       notes: [
         '开球全体构成这个拓扑的一组**基**。度量空间自动是第一可数、正规（因而 Hausdorff）的。',
@@ -6391,7 +6397,7 @@ window.MG = window.MG || {};
         '',
         '$$x_{n+1} \\in X \\setminus \\bigcup_{i=1}^{n} B(x_i, \\varepsilon_0)$$',
         '',
-        '于是任何两个不同的项都满足 $$m \\ne n \\implies d(x_m, x_n) \\ge \\varepsilon_0$$',
+        '于是任何两个不同的项都满足 $m \\ne n \\implies d(x_m, x_n) \\ge \\varepsilon_0$',
         '',
         '**③ 它没有收敛子列。** 任何子列中任意两项距离都 $\\ge \\varepsilon _{0}$，所以它不是 Cauchy 列；而度量空间里收敛必 Cauchy，故它不收敛。',
         '',
@@ -6619,8 +6625,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个**基本类**，当且仅当',
         '',
-        '- 对**交**封闭：$$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$$',
-        '- 差可以拆开：$$A, B \\in \\mathfrak{A} \\implies A \\setminus B\\text{ 是} \\mathfrak{A}\\text{ 中有限多个两两不交集合之并}$$'
+        '- 对**交**封闭：$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$',
+        '- 差可以拆开：$A, B \\in \\mathfrak{A} \\implies A \\setminus B\\text{ 是} \\mathfrak{A}\\text{ 中有限多个两两不交集合之并}$'
       ].join('\n'),
       notes: [
         '它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。',
@@ -6652,7 +6658,7 @@ window.MG = window.MG || {};
         '**代数 $=$ 环 $X \\in \\mathfrak{A}$**。「把整个 $X$ 放进去」是唯一的差别。'
       ].join('\n'),
       notes: [
-        '环加上 $X \\in \\mathfrak{A}$ 之后，差就自动升级成补：$$A^c = X \\setminus A \\in \\mathfrak{A}$$。所以**代数**也等价于「对有限并、对补封闭」。',
+        '环加上 $X \\in \\mathfrak{A}$ 之后，差就自动升级成补：$A^c = X \\setminus A \\in \\mathfrak{A}$。所以**代数**也等价于「对有限并、对补封闭」。',
         '⚠ 这里的「环」是**集合环**（ring of sets），和抽象代数里的 ring 只是同名，毫无关系。',
         '把「有限」都升级成「可数」，就得到 **$\\sigma$环** 与 **$\\sigma$代数** —— 另开两条节点写。'
       ].join('\n\n'),
@@ -6670,15 +6676,15 @@ window.MG = window.MG || {};
       statement: [
         '$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是 $X$ 上的一个 **$\\sigma$环**，当且仅当把「有限」都换成「可数」之后仍封闭：',
         '',
-        '- 对**可数并**封闭：$$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$$',
-        '- 对**差**封闭：$$A, B \\in \\mathfrak{A} \\implies A \\setminus B \\in \\mathfrak{A}$$',
+        '- 对**可数并**封闭：$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$',
+        '- 对**差**封闭：$A, B \\in \\mathfrak{A} \\implies A \\setminus B \\in \\mathfrak{A}$',
         '',
         '**$\\sigma$环 $=$ 环 + 可数并**。它**不要求**含 $X$ —— 这正是它与 $\\sigma$代数的唯一差别。'
       ].join('\n'),
       notes: [
         '不含 $X$ 的后果是实质的：$\\sigma$环里集合的并可能仍是一个真子集，补运算也落不到里面。',
         '典型例子：$X = \\mathbb{R}$ 上「全体可数集」是 $\\sigma$环，不是 $\\sigma$代数 —— 它的元素之并（如 $\\mathbb{R} \\setminus \\mathbb{Q}$）不在里面。',
-        '由差 + 可数并，**可数交**自动可用：$$\\bigcap_n A_n = A_1 \\setminus \\bigcup_{n \\ge 2} (A_1 \\setminus A_n)$$。',
+        '由差 + 可数并，**可数交**自动可用：$\\bigcap_n A_n = A_1 \\setminus \\bigcup_{n \\ge 2} (A_1 \\setminus A_n)$。',
         '与单调类的关系：**环是 $\\sigma$环 $\\iff$ 它是单调类 $\\iff$ 它对可数不交并封闭**。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §4']
@@ -6695,15 +6701,15 @@ window.MG = window.MG || {};
       statement: [
         '设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个 **$\\sigma$代数**，当且仅当它同时满足三条：',
         '',
-        '1. **含全集**：$$X \\in \\mathfrak{A}$$',
-        '2. **对补封闭**：$$A \\in \\mathfrak{A} \\implies A^c := X \\setminus A \\in \\mathfrak{A}$$',
-        '3. **对可数并封闭**：$$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$$',
+        '1. **含全集**：$X \\in \\mathfrak{A}$',
+        '2. **对补封闭**：$A \\in \\mathfrak{A} \\implies A^c := X \\setminus A \\in \\mathfrak{A}$',
+        '3. **对可数并封闭**：$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$',
         '',
-        '二元组 $$(X, \\mathfrak{A})$$ 称为**可测空间**（measurable space），$\\mathfrak{A}$ 的元素称为**可测集**（measurable set）。'
+        '二元组 $(X, \\mathfrak{A})$ 称为**可测空间**（measurable space），$\\mathfrak{A}$ 的元素称为**可测集**（measurable set）。'
       ].join('\n'),
       notes: [
         '三条是配套的，缺一不可：只留 (2)(3) 就是**$\\sigma$环**；把 (3) 降成「有限并」就是**代数**。',
-        '由 (2)(3) 用 De Morgan 立得对**可数交**封闭：$$\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$$。于是有限并、有限交、差、对称差全都可用 —— 真正超出「代数」的，只有**可数**这一件事。',
+        '由 (2)(3) 用 De Morgan 立得对**可数交**封闭：$\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$。于是有限并、有限交、差、对称差全都可用 —— 真正超出「代数」的，只有**可数**这一件事。',
         '⚠ 方向不能反：$\\sigma$代数一定是代数，代数不一定是 $\\sigma$代数。反例：$X = \\mathbb{R}$ 上「有限集与余有限集」全体是代数，而 $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ 是其中可数多个元素的并、本身既非有限也非余有限，所以那个代数不封闭于可数并。',
         '记号里的「$\\sigma$」表示**可数**（取自德文 Summe / 法文 somme 的首字母），和标准差那个 $\\sigma$ 无关。',
         '为什么非要有它：测度的可数可加性 $\\mu (\\bigcup A_{n}) = \\sum \\mu (A_{n})$ 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。'
@@ -6866,7 +6872,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定义', '积', '柱集'],
       statement: [
-        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$$X = \\prod_{\\alpha \\in A} X_\\alpha$$，投影 $$\\pi _\\alpha : X \\to X_\\alpha$$。**积 $\\sigma$代数**定义为',
+        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$X = \\prod_{\\alpha \\in A} X_\\alpha$，投影 $\\pi _\\alpha : X \\to X_\\alpha$。**积 $\\sigma$代数**定义为',
         '',
         '$$\\otimes _{\\alpha \\in A} \\mathcal{M}_\\alpha := \\mathcal{M}(\\{ \\pi _\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{M}_\\alpha, \\alpha \\in A \\})$$'
       ].join('\n'),
@@ -6938,7 +6944,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['推论', 'Borel', '积', '可分'],
       statement: [
-        '设 $X_{1}, X_{2}$ … 是距离空间，$$X = \\prod_{j=1}^{\\infty} X_j$$ 配以积度量。则',
+        '设 $X_{1}, X_{2}$ … 是距离空间，$X = \\prod_{j=1}^{\\infty} X_j$ 配以积度量。则',
         '',
         '$$\\otimes _{j=1}^{\\infty} \\mathfrak{B}_{X_j} \\subseteq \\mathfrak{B}_X$$',
         '',
@@ -6977,7 +6983,7 @@ window.MG = window.MG || {};
         '',
         '因为 $\\mathfrak{A}$ 是环（对有限并、对差封闭），每个 $B_{n} \\in \\mathfrak{A}$；而且 $B_{n}$ 两两不交，并且 $\\bigcup B_{n} = \\bigcup A_{n}$。所以只需证 $\\mathfrak{A}$ 对**可数不交并**封闭。',
         '',
-        '**② 用单调性。** 若 $B_{n}$ 两两不交，则部分并 $$C_n = B_1 \\cup \\cdots \\cup B_n$$ 是递增列，且 $C_{n} \\in \\mathfrak{A}$（环对有限并封闭）。由 $\\mathfrak{A}$ 是单调类，',
+        '**② 用单调性。** 若 $B_{n}$ 两两不交，则部分并 $C_n = B_1 \\cup \\cdots \\cup B_n$ 是递增列，且 $C_{n} \\in \\mathfrak{A}$（环对有限并封闭）。由 $\\mathfrak{A}$ 是单调类，',
         '',
         '$$\\bigcup_n C_n = \\bigcup_n B_n = \\bigcup_n A_n \\in \\mathfrak{A}$$',
         '',
@@ -7163,9 +7169,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '测度', '可数可加'],
       statement: [
-        '设 $\\mathcal{M}$ 是 $X$ 上的 $\\sigma$代数。函数 $$\\mu : \\mathcal{M} \\to [0, +\\infty]$$ 是一个**测度**，当且仅当',
+        '设 $\\mathcal{M}$ 是 $X$ 上的 $\\sigma$代数。函数 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 是一个**测度**，当且仅当',
         '',
-        '- **(i)**　$$\\mu(\\emptyset) = 0$$',
+        '- **(i)**　$\\mu(\\emptyset) = 0$',
         '- **(ii) 可数可加**：若 $\\{E_{j}\\}$ 是 $\\mathcal{M}$ 中两两不交的集合列，则',
         '',
         '$$\\mu( \\bigcup_{j=1}^{\\infty} E_j ) = \\sum_{j=1}^{\\infty} \\mu(E_j)$$',
@@ -7189,7 +7195,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '预测度', '环'],
       statement: [
-        '若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $$\\mu : \\mathcal{M} \\to [0, +\\infty]$$ 仍满足测度的两条：',
+        '若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 仍满足测度的两条：',
         '',
         '$$\\mu(\\emptyset) = 0, \\quad  \\{E_j\\}\\text{ 两两不交} \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
         '',
@@ -7236,8 +7242,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间。',
         '',
-        '- **有限**：$$\\mu(X) < \\infty$$',
-        '- **$\\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$$X = \\bigcup_{j=1}^{\\infty} E_j, \\quad  \\mu(E_j) < \\infty$$',
+        '- **有限**：$\\mu(X) < \\infty$',
+        '- **$\\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$X = \\bigcup_{j=1}^{\\infty} E_j, \\quad  \\mu(E_j) < \\infty$',
         '- **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：',
         '',
         '$$\\forall E \\in \\mathcal{M}, \\mu(E) = \\infty \\implies \\exists F \\subseteq E, F \\in \\mathcal{M}, 0 < \\mu(F) < \\infty$$'
@@ -7261,10 +7267,10 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，以下集合都取自 $\\mathcal{M}$。',
         '',
-        '- **(a) 单调**：$$E \\subseteq F \\implies \\mu(E) \\le \\mu(F)$$',
-        '- **(b) 次可加**：$$\\mu( \\bigcup_j E_j ) \\le \\sum_j \\mu(E_j)$$（不要求不交）',
-        '- **(c) 下连续**：$$E_1 \\subseteq E_2 \\subseteq \\cdots \\implies \\mu( \\bigcup_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$',
-        '- **(d) 上连续**：$$\\mu(E_1) < \\infty, \\quad  E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$$'
+        '- **(a) 单调**：$E \\subseteq F \\implies \\mu(E) \\le \\mu(F)$',
+        '- **(b) 次可加**：$\\mu( \\bigcup_j E_j ) \\le \\sum_j \\mu(E_j)$（不要求不交）',
+        '- **(c) 下连续**：$E_1 \\subseteq E_2 \\subseteq \\cdots \\implies \\mu( \\bigcup_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$',
+        '- **(d) 上连续**：$\\mu(E_1) < \\infty, \\quad  E_1 \\supseteq E_2 \\supseteq \\cdots \\implies \\mu( \\bigcap_j E_j ) = \\lim_{j\\to\\infty} \\mu(E_j)$'
       ].join('\n'),
       notes: [
         '(a)：把 $F$ 拆成 $F = E \\cup (F \\setminus E)$ 用可数可加（把余下的位置补 $\\emptyset$）。',
@@ -7287,7 +7293,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$E \\in \\mathcal{M}$。',
         '',
-        '若 $$\\mu(E) = 0$$，则称 $E$ 是 **$\\mu$零集**（$\\mu -null set$）。',
+        '若 $\\mu(E) = 0$，则称 $E$ 是 **$\\mu$零集**（$\\mu -null set$）。',
         '',
         '若**零集的每个子集都可测**：',
         '',
@@ -7320,8 +7326,8 @@ window.MG = window.MG || {};
         '则',
         '',
         '1. $\\bar{\\mathcal{M}}$ 是一个 $\\sigma$代数，且 $\\mathcal{M} \\subseteq \\bar{\\mathcal{M}}$；',
-        '2. 令 $$\\bar{\\mu}(E \\cup F) := \\mu(E)$$，它是 $\\bar{\\mathcal{M}}$ 上良定义的测度；',
-        '3. $$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是**完备**测度空间，称为 $(X, \\mathcal{M}, \\mu )$ 的**完备化**。'
+        '2. 令 $\\bar{\\mu}(E \\cup F) := \\mu(E)$，它是 $\\bar{\\mathcal{M}}$ 上良定义的测度；',
+        '3. $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 是**完备**测度空间，称为 $(X, \\mathcal{M}, \\mu )$ 的**完备化**。'
       ].join('\n'),
       notes: [
         '$\\bar{\\mathcal{M}}$ 的直观：在原来的可测集上「撒一点零集的小碎片」。',
@@ -7362,11 +7368,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '外测度', '次可加'],
       statement: [
-        '设 $X$ 是非空集合。函数 $$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$$ 是一个**外测度**，当且仅当',
+        '设 $X$ 是非空集合。函数 $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ 是一个**外测度**，当且仅当',
         '',
-        '- $$\\mu^*(\\emptyset) = 0$$',
-        '- **单调**：$$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$$',
-        '- **可数次可加**：$$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$$'
+        '- $\\mu^*(\\emptyset) = 0$',
+        '- **单调**：$A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$',
+        '- **可数次可加**：$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$'
       ].join('\n'),
       notes: [
         '外测度定义在**全体**子集上（$\\mathcal{P}(X)$，不是某个 $\\sigma$代数），代价是它只有**次**可加性。',
@@ -7413,7 +7419,7 @@ window.MG = window.MG || {};
         '$$\\mu^*(E) = \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)\\quad  \\forall E \\subseteq X$$'
       ].join('\n'),
       notes: [
-        '因为 $\\mu^{*}$ 只有次可加性，永远有 $$\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。',
+        '因为 $\\mu^{*}$ 只有次可加性，永远有 $\\mu^*(E) \\le \\mu^*(E \\cap A) + \\mu^*(E \\cap A^c)$。所以这个定义实际上只要求**反向的不等式**：$A$ 不「吃掉」任何东西。',
         '这个定义初看很怪（为什么不用开集、闭集之类的直观条件？）—— 它的妙处是**完全内蕴**：只需要 $\\mu^{*}$ 一个对象，不需要任何拓扑。所以它对任意外测度都能用。',
         '直观：$A$ 是「可以随便切」的集合。'
       ].join('\n\n'),
@@ -7432,7 +7438,7 @@ window.MG = window.MG || {};
         '设 $\\mu^{*}$ 是 $X$ 上的外测度，$\\mathcal{M}$ 是全体 $\\mu^{*}$-可测集。则',
         '',
         '1. **$\\mathcal{M}$ 是一个 $\\sigma$代数**；',
-        '2. **$$\\mu^*|_\\mathcal{M}$$ 是 $(X, \\mathcal{M})$ 上的一个测度**（即 $\\mu^{*}$ 在 $\\mathcal{M}$ 上真的可加）；',
+        '2. **$\\mu^*|_\\mathcal{M}$ 是 $(X, \\mathcal{M})$ 上的一个测度**（即 $\\mu^{*}$ 在 $\\mathcal{M}$ 上真的可加）；',
         '3. 这个测度是**完备**的。'
       ].join('\n'),
       notes: [
@@ -7454,7 +7460,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是**代数**，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的**预测度**，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度（按上一条命题，取 $\\mathcal{E} = \\mathfrak{A}$、$\\rho = \\mu _{0}$）。则',
         '',
-        '1. $$\\mu^*|_\\mathfrak{A} = \\mu_0$$',
+        '1. $\\mu^*|_\\mathfrak{A} = \\mu_0$',
         '2. **$\\mathfrak{A}$ 中每个集合都是 $\\mu^{*}$-可测的**，因此',
         '',
         '$$\\mathfrak{A} \\subseteq \\mathcal{M}(\\mathfrak{A}) \\subseteq \\mathcal{M}$$',
@@ -7463,7 +7469,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这就是「预测度 $\\to$ 外测度 $\\to$ 测度」三步走的收官：**预测度在 $\\sigma$代数的扩张上被完整还原**。',
-        '1 的两个方向：$$\\mu^*(A) \\le \\mu_0(A)$$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\\mu _{0}$ 的可数可加性。',
+        '1 的两个方向：$\\mu^*(A) \\le \\mu_0(A)$ 是直接的（$A$ 自己被 $A$ 覆盖）；反向要用 $\\mu _{0}$ 的可数可加性。',
         '2 是技术核心，要在 $\\mathfrak{A}$ 上验证 Carathéodory 的可切性条件。',
         '不仅 $\\mathfrak{A}$ 本身，连它做可数并、可数交（以及反复做）得到的 $\\mathfrak{A}_\\sigma$、$\\mathfrak{A}_\\delta$、$\\mathfrak{A}_\\sigma \\delta$、$\\mathfrak{A}_\\delta \\sigma$ 里的集合也都 $\\mu^{*}$-可测 —— 因为 $\\mathcal{M}$ 是 $\\sigma$代数，对这些操作封闭。'
       ].join('\n\n'),
@@ -7483,7 +7489,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu(E) \\le \\mu(E)\\quad  \\forall E \\in \\mathcal{M}(\\mathfrak{A})$$',
         '',
-        '且当 $$\\mu(E) < \\infty$$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $$\\nu = \\mu$$。'
+        '且当 $\\mu(E) < \\infty$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $\\nu = \\mu$。'
       ].join('\n'),
       notes: [
         '要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。',
@@ -7502,7 +7508,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'Lebesgue–Stieltjes', '预测度'],
       statement: [
-        '设 $$F : \\mathbb{R} \\to \\mathbb{R}$$ 是**递增**且**右连续**的函数。在半开区间的全体上定义',
+        '设 $F : \\mathbb{R} \\to \\mathbb{R}$ 是**递增**且**右连续**的函数。在半开区间的全体上定义',
         '',
         '$$\\mu_0( (a, b] ) = F(b) - F(a)$$',
         '',
@@ -7525,7 +7531,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue–Stieltjes', 'Borel'],
       statement: [
-        '对每个递增右连续的 $$F : \\mathbb{R} \\to \\mathbb{R}$$，存在 $\\mathbb{R}$ 上的一个 Borel 测度 $\\mu _F$ 使',
+        '对每个递增右连续的 $F : \\mathbb{R} \\to \\mathbb{R}$，存在 $\\mathbb{R}$ 上的一个 Borel 测度 $\\mu _F$ 使',
         '',
         '$$\\mu_F( (a, b] ) = F(b) - F(a)\\quad  \\forall a < b$$',
         '',
@@ -7548,9 +7554,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue–Stieltjes', 'Lebesgue 测度'],
       statement: [
-        '由递增右连续函数 $F$ 按上一条定理得到的 Borel 测度 $$\\mu_F$$ 称为 **$F$ 的 Lebesgue–Stieltjes 测度**。',
+        '由递增右连续函数 $F$ 按上一条定理得到的 Borel 测度 $\\mu_F$ 称为 **$F$ 的 Lebesgue–Stieltjes 测度**。',
         '',
-        '特别地，取 $$F(x) = x$$，得到的 $\\mu _F$ 就是 $\\mathbb{R}$ 上的 **Lebesgue 测度** $m$：',
+        '特别地，取 $F(x) = x$，得到的 $\\mu _F$ 就是 $\\mathbb{R}$ 上的 **Lebesgue 测度** $m$：',
         '',
         '$$m( (a, b] ) = b - a$$'
       ].join('\n'),
@@ -7859,14 +7865,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '可测函数'],
       statement: [
-        '设 $(X, \\mathcal{M})$ 与 $(Y, \\mathcal{N})$ 是可测空间。函数 $$f : X \\to Y$$ 是 **$(\\mathcal{M}, \\mathcal{N})$可测的**，当且仅当每个可测集的原像可测：',
+        '设 $(X, \\mathcal{M})$ 与 $(Y, \\mathcal{N})$ 是可测空间。函数 $f : X \\to Y$ 是 **$(\\mathcal{M}, \\mathcal{N})$可测的**，当且仅当每个可测集的原像可测：',
         '',
         '$$f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{N}$$'
       ].join('\n'),
       notes: [
-        '为什么用「原像」而不是「像」：原像对交、并、补全部保持（$$f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。',
+        '为什么用「原像」而不是「像」：原像对交、并、补全部保持（$f^{-1}(\\bigcup E_i) = \\bigcup f^{-1}(E_i)$ 等），像是没有这些好性质的。所以可测性是「拉回」过去的条件。',
         '等价说法（当 $Y$ 是拓扑空间、$\\mathcal{N} = \\mathfrak{B}_Y$ 时）：$f$ 可测 $\\iff$ 每个开集的原像可测。',
-        '⚠ 「在 $E$ 上可测」是相对说法：$$f$$ 在 $E$ 上可测 $\\iff$ $$f|_E$$ 关于子空间 $\\sigma$代数 $$\\mathcal{M}_E$$ 可测。'
+        '⚠ 「在 $E$ 上可测」是相对说法：$f$ 在 $E$ 上可测 $\\iff$ $f|_E$ 关于子空间 $\\sigma$代数 $\\mathcal{M}_E$ 可测。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1', 'Halmos, Measure Theory, §18']
     },
@@ -7880,16 +7886,16 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '可测', '生成元', '复合'],
       statement: [
-        '**(1) 复合**：若 $$f : X \\to Y$$ 是 $(\\mathcal{M}, \\mathcal{N})$可测、$$g : Y \\to Z$$ 是 $(\\mathcal{N}, \\mathcal{O})$可测，则 $$g \\circ  f$$ 是 $(\\mathcal{M}, \\mathcal{O})$可测。',
+        '**(1) 复合**：若 $f : X \\to Y$ 是 $(\\mathcal{M}, \\mathcal{N})$可测、$g : Y \\to Z$ 是 $(\\mathcal{N}, \\mathcal{O})$可测，则 $g \\circ  f$ 是 $(\\mathcal{M}, \\mathcal{O})$可测。',
         '',
         '**(2) 只需验证生成元**：若 $\\mathcal{N} = \\mathcal{M}(\\mathcal{E})$，则',
         '',
         '$$f : X \\to Y\\text{ 可测} \\iff f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{E}$$'
       ].join('\n'),
       notes: [
-        '(1)：对 $E \\in \\mathcal{O}$ 有 $$(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$$，两层都可测。',
+        '(1)：对 $E \\in \\mathcal{O}$ 有 $(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$，两层都可测。',
         '(2) 的 $(\\Longleftarrow )$：令 $\\mathcal{C} = \\{ E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\}$。因为原像保持并、交、补，**$\\mathcal{C}$ 是一个 $\\sigma$代数**；题设说 $\\mathcal{E} \\subseteq \\mathcal{C}$，于是 $\\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即所有可测集的原像都可测。',
-        '(2) 是整段里最常用的判定工具：要证 $f$ 可测，只需在一小族生成元上验证 —— 比如 $\\mathbb{R}$ 值函数只需验证 $$f^{-1}((a, \\infty))$$ 可测。'
+        '(2) 是整段里最常用的判定工具：要证 $f$ 可测，只需在一小族生成元上验证 —— 比如 $\\mathbb{R}$ 值函数只需验证 $f^{-1}((a, \\infty))$ 可测。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.1']
     },
@@ -7903,7 +7909,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['推论', '连续', 'Borel'],
       statement: [
-        '设 X, Y 是拓扑空间，各配 $Borel \\sigma$代数 $$\\mathfrak{B}_X, \\mathfrak{B}_Y$$。则',
+        '设 X, Y 是拓扑空间，各配 $Borel \\sigma$代数 $\\mathfrak{B}_X, \\mathfrak{B}_Y$。则',
         '',
         '$$f : X \\to Y\\text{ 连续} \\implies f\\text{ 是} (\\mathfrak{B}_X, \\mathfrak{B}_Y)-\\text{可测的}$$'
       ].join('\n'),
@@ -7920,15 +7926,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue 可测', 'Borel'],
       statement: [
-        '对 $$f : \\mathbb{R} \\to \\mathbb{C}$$：',
+        '对 $f : \\mathbb{R} \\to \\mathbb{C}$：',
         '',
-        '- 若 $f$ 是 $$(\\mathcal{L}, \\mathfrak{B}_\\mathbb{C})$$-可测，称 $f$ **Lebesgue 可测**（$\\mathcal{L}$ 是 $Lebesgue \\sigma$代数）；',
-        '- 若 $f$ 是 $$(\\mathfrak{B}_\\mathbb{R}, \\mathfrak{B}_\\mathbb{C})$$-可测，称 $f$ **Borel 可测**。'
+        '- 若 $f$ 是 $(\\mathcal{L}, \\mathfrak{B}_\\mathbb{C})$-可测，称 $f$ **Lebesgue 可测**（$\\mathcal{L}$ 是 $Lebesgue \\sigma$代数）；',
+        '- 若 $f$ 是 $(\\mathfrak{B}_\\mathbb{R}, \\mathfrak{B}_\\mathbb{C})$-可测，称 $f$ **Borel 可测**。'
       ].join('\n'),
       notes: [
         '⚠ **注意这里有个坑：两个 Lebesgue 可测函数的复合不一定 Lebesgue 可测。**',
         '',
-        '原因：复合要跑通 (1) 需要中间那个 $\\sigma$代数配合，而 $\\mathcal{L}$ 严格大于 $\\mathfrak{B}_\\mathbb{R}$。取 $f : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测、$g : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测，则 $$g\\circ f$$ 关于 $\\mathcal{L}$ 未必可测 —— 因为 $$g^{-1}$$ 只能保证把 $\\mathfrak{B}_\\mathbb{R}$ 里的集合拉回 $\\mathcal{L}$，而 $$f^{-1}$$ 需要在 $\\mathbb{R}$ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。',
+        '原因：复合要跑通 (1) 需要中间那个 $\\sigma$代数配合，而 $\\mathcal{L}$ 严格大于 $\\mathfrak{B}_\\mathbb{R}$。取 $f : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测、$g : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测，则 $g\\circ f$ 关于 $\\mathcal{L}$ 未必可测 —— 因为 $g^{-1}$ 只能保证把 $\\mathfrak{B}_\\mathbb{R}$ 里的集合拉回 $\\mathcal{L}$，而 $f^{-1}$ 需要在 $\\mathbb{R}$ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。',
         '标准修法：让中间那个函数 Borel 可测。若 $g$ 是 Borel 可测、$f$ 是 Lebesgue 可测，则 $g\\circ f$ 是 Lebesgue 可测的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1']
@@ -7943,15 +7949,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '积空间', '实部虚部'],
       statement: [
-        '**(1)** 设 $(X, \\mathcal{M})$、$(Y_\\alpha , \\mathcal{N}_\\alpha ) (\\alpha \\in A)$ 是可测空间，$$Y = \\prod_{\\alpha} Y_\\alpha$$，$$\\mathcal{N} = \\otimes _{\\alpha} \\mathcal{N}_\\alpha$$，$$\\pi _\\alpha : Y \\to Y_\\alpha$$ 是投影。则',
+        '**(1)** 设 $(X, \\mathcal{M})$、$(Y_\\alpha , \\mathcal{N}_\\alpha ) (\\alpha \\in A)$ 是可测空间，$Y = \\prod_{\\alpha} Y_\\alpha$，$\\mathcal{N} = \\otimes _{\\alpha} \\mathcal{N}_\\alpha$，$\\pi _\\alpha : Y \\to Y_\\alpha$ 是投影。则',
         '',
         '$$f : X \\to Y\\text{ 可测} \\iff f_\\alpha = \\pi _\\alpha \\circ  f\\text{ 可测}(\\forall\\alpha \\in A)$$',
         '',
-        '**(2)** 特别地，$$f : X \\to \\mathbb{C}$$ 可测 $\\iff$ $$\\operatorname{Re} f$$ 与 $$\\operatorname{Im} f$$ 都可测。'
+        '**(2)** 特别地，$f : X \\to \\mathbb{C}$ 可测 $\\iff$ $\\operatorname{Re} f$ 与 $\\operatorname{Im} f$ 都可测。'
       ].join('\n'),
       notes: [
         '(1) 的 $(\\implies )$：投影 $\\pi _\\alpha$ 本身可测（$\\pi _\\alpha ^{-1}(E_\\alpha )$ 是柱集），用复合保持。',
-        '(1) 的 $(\\Longleftarrow )$：只要证柱集的原像可测 —— 而 $$f^{-1}(\\pi _\\alpha^{-1}(E_\\alpha)) = f_\\alpha^{-1}(E_\\alpha)$$ 可测 —— 再由积 $\\sigma$代数由柱集生成、用判定准则 (2)。',
+        '(1) 的 $(\\Longleftarrow )$：只要证柱集的原像可测 —— 而 $f^{-1}(\\pi _\\alpha^{-1}(E_\\alpha)) = f_\\alpha^{-1}(E_\\alpha)$ 可测 —— 再由积 $\\sigma$代数由柱集生成、用判定准则 (2)。',
         '(2) 的证明用了一个干净的事实：**$\\mathbb{C}$ 的 $Borel \\sigma$代数与 $\\mathbb{R}^{2}$ 的 $Borel \\sigma$代数是同一个**：',
         '',
         '$$\\mathfrak{B}_\\mathbb{C} = \\mathfrak{B}_{\\mathbb{R}^2} = \\mathfrak{B}_\\mathbb{R} \\otimes  \\mathfrak{B}_\\mathbb{R}$$',
@@ -7972,16 +7978,16 @@ window.MG = window.MG || {};
       statement: [
         '以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。',
         '',
-        '- **和与积**：$$f + g$$、$$fg$$ 可测；',
-        '- **逐点上确界**：$$\\{f_j\\}$$ 可测 $\\implies$ $$\\sup_j f_j$$ 可测；',
-        '- **有限个取大**：$$f, g$$ 可测 $\\implies$ $$\\max_{f, g}$$ 可测；',
-        '- **极限**：若 $$\\lim_j f_j$$ 逐点存在，则它是可测的。'
+        '- **和与积**：$f + g$、$fg$ 可测；',
+        '- **逐点上确界**：$\\{f_j\\}$ 可测 $\\implies$ $\\sup_j f_j$ 可测；',
+        '- **有限个取大**：$f, g$ 可测 $\\implies$ $\\max_{f, g}$ 可测；',
+        '- **极限**：若 $\\lim_j f_j$ 逐点存在，则它是可测的。'
       ].join('\n'),
       notes: [
-        '$\\sup_j f_j$ 的关键：$$(\\sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$$ 是可数并，故可测。（取 $$(a, +\\infty]$$ 这族生成元就够了。）',
-        'max 是 sup 的有限特例（把不够的地方补成 $$-\\infty$$）。',
-        '极限：$$\\liminf_j f_j = \\sup_n \\inf_{j\\ge n} f_j$$，而 inf 可以由 sup 取负得到（$$\\inf f_j = -\\sup_{-f_j}$$），所以极限是可测函数经过可数次 sup/inf 得到的。',
-        '和与积：把 $$\\sup_j f_j$$ 的做法搬到 $$\\{f+g > a\\}$$ 上（用有理数把 $$f > q > a - g$$ 拆开），或先对简单函数验证再逼近。',
+        '$\\sup_j f_j$ 的关键：$(\\sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty])$ 是可数并，故可测。（取 $(a, +\\infty]$ 这族生成元就够了。）',
+        'max 是 sup 的有限特例（把不够的地方补成 $-\\infty$）。',
+        '极限：$\\liminf_j f_j = \\sup_n \\inf_{j\\ge n} f_j$，而 inf 可以由 sup 取负得到（$\\inf f_j = -\\sup_{-f_j}$），所以极限是可测函数经过可数次 sup/inf 得到的。',
+        '和与积：把 $\\sup_j f_j$ 的做法搬到 $\\{f+g > a\\}$ 上（用有理数把 $f > q > a - g$ 拆开），或先对简单函数验证再逼近。',
         '⭐ 这条命题是**整个积分理论的地基**：它保证「可测函数取极限之后仍然可测」，而后面 MCT / Fatou / DCT 全都是在取极限。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.7']
@@ -7996,11 +8002,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '简单函数'],
       statement: [
-        '可测函数 $$\\varphi : X \\to \\mathbb{C}$$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成',
+        '可测函数 $\\varphi : X \\to \\mathbb{C}$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成',
         '',
         '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}$$',
         '',
-        '其中 $$a_j \\in \\mathbb{C}$$，$$E_j = \\varphi^{-1}(\\{a_j\\}) \\in \\mathcal{M}$$ 两两不交。'
+        '其中 $a_j \\in \\mathbb{C}$，$E_j = \\varphi^{-1}(\\{a_j\\}) \\in \\mathcal{M}$ 两两不交。'
       ].join('\n'),
       notes: [
         '简单函数就是可测版本的「阶梯函数」—— 有限个「台阶」。',
@@ -8018,24 +8024,24 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '简单函数', '逼近'],
       statement: [
-        '**(a)** 若 $$f : X \\to [0, +\\infty]$$ 可测，则存在简单函数列 $$\\{\\varphi_n\\}$$ 使',
+        '**(a)** 若 $f : X \\to [0, +\\infty]$ 可测，则存在简单函数列 $\\{\\varphi_n\\}$ 使',
         '',
         '$$0 \\le \\varphi_1 \\le \\varphi_2 \\le \\cdots \\le f, \\quad  \\varphi_n \\to f\\text{ 逐点}, $$',
         '',
         '并且**在 $f$ 有界的集合上还是一致收敛**。',
         '',
-        '**(b)** 一般地（$$f : X \\to \\mathbb{C}$$ 可测），可取 $$\\{\\varphi_n\\}$$ 简单使',
+        '**(b)** 一般地（$f : X \\to \\mathbb{C}$ 可测），可取 $\\{\\varphi_n\\}$ 简单使',
         '',
         '$$0 \\le |\\varphi_1| \\le |\\varphi_2| \\le \\cdots \\le |f|, \\quad  \\varphi_n \\to f\\text{ 逐点}$$'
       ].join('\n'),
       notes: [
-        '(a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $$2^{-n}$$ 切碎，超过 $n$ 的部分一律抹成 $n$ ——',
+        '(a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $2^{-n}$ 切碎，超过 $n$ 的部分一律抹成 $n$ ——',
         '',
         '$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n-1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}, $$',
         '$$E_n^k = f^{-1}((k\\cdot2^{-n}, (k+1)\\cdot2^{-n}]), \\quad  F_n = f^{-1}((n, +\\infty])$$',
         '',
         '每一层都是可测集的原像，所以 $\\varphi _{n}$ 是简单函数；$n$ 越大格子越细、天花板越高，于是单调递增地爬到 $f$。',
-        '(b) 把 $$f = g + ih$$ 拆成 $$g = g^+ - g^-$$、$$h = h^+ - h^-$$，对四个非负部分用 (a)：',
+        '(b) 把 $f = g + ih$ 拆成 $g = g^+ - g^-$、$h = h^+ - h^-$，对四个非负部分用 (a)：',
         '',
         '$$\\varphi_n = \\psi_n^+ - \\psi_n^- + i(\\zeta _n^+ - \\zeta _n^-)$$'
       ].join('\n\n'),
@@ -8053,9 +8059,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间。则 $\\mu$ **完备**当且仅当下面两条都成立：',
         '',
-        '**(a)** $$f$$ 可测且 $$f = g$$ $\\mu -\\text{a.e.} \\implies$ $$g$$ 可测；',
+        '**(a)** $f$ 可测且 $f = g$ $\\mu -\\text{a.e.} \\implies$ $g$ 可测；',
         '',
-        '**(b)** 每个 $$f_n$$ 可测且 $$f_n \\to f$$ $\\mu -\\text{a.e.} \\implies$ $$f$$ 可测。'
+        '**(b)** 每个 $f_n$ 可测且 $f_n \\to f$ $\\mu -\\text{a.e.} \\implies$ $f$ 可测。'
       ].join('\n'),
       notes: [
         '$(\\implies )$ 是完备性的直接好处：重新定义零集上的值不改变可测性。',
@@ -8063,11 +8069,11 @@ window.MG = window.MG || {};
         '',
         '$$f \\equiv  0, \\quad  g = \\chi_F$$',
         '',
-        '则 $$f$$ 可测、$$f = g$$ 在 $E$ 外处处成立（即 a.e.），但',
+        '则 $f$ 可测、$f = g$ 在 $E$ 外处处成立（即 a.e.），但',
         '',
         '$$\\{f \\ne g\\} = F$$',
         '',
-        '不可测，所以 $$g^{-1}((0, +\\infty]) = F$$ 不可测，$g$ 不可测。(a) 失败 $\\implies \\mu$ 不完备。'
+        '不可测，所以 $g^{-1}((0, +\\infty]) = F$ 不可测，$g$ 不可测。(a) 失败 $\\implies \\mu$ 不完备。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.11']
     },
@@ -8081,17 +8087,17 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '完备化', '可测函数'],
       statement: [
-        '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$$ 是它的完备化（见「完备化定理」）。若 $$f$$ 是 $$\\bar{\\mathcal{M}}$$-可测的函数，则存在 **$\\mathcal{M}$可测**的函数 $$g$$ 使',
+        '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 是它的完备化（见「完备化定理」）。若 $f$ 是 $\\bar{\\mathcal{M}}$-可测的函数，则存在 **$\\mathcal{M}$可测**的函数 $g$ 使',
         '',
         '$$f = g\\quad  \\bar{\\mu}-\\text{a.e.}$$'
       ].join('\n'),
       notes: [
         '直观：完备化只多加了零集的子集，所以 $\\bar{\\mathcal{M}}$可测函数与 $\\mathcal{M}$可测函数只差在零集上的取值。',
-        '证明思路：先看 $$f = \\chi_E$$ 的情形（此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于零集，取 $$g = \\chi_{E\'}$$）；对 $\\mathcal{M}$可测的简单函数显然；一般情形取简单函数列 $$\\{\\varphi_n\\} \\to f$$，每个 $$\\varphi_n$$ 在某个 $\\bar{\\mathcal{M}}$零集 $$E_n$$ 外等于一个 $\\mathcal{M}$可测的 $$\\psi_n$$。把零集并起来得 $$N \\in \\mathcal{M}$$，$$\\mu(N) = 0$$，$$N \\supseteq \\bigcup E_n$$，令',
+        '证明思路：先看 $f = \\chi_E$ 的情形（此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于零集，取 $g = \\chi_{E\'}$）；对 $\\mathcal{M}$可测的简单函数显然；一般情形取简单函数列 $\\{\\varphi_n\\} \\to f$，每个 $\\varphi_n$ 在某个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于一个 $\\mathcal{M}$可测的 $\\psi_n$。把零集并起来得 $N \\in \\mathcal{M}$，$\\mu(N) = 0$，$N \\supseteq \\bigcup E_n$，令',
         '',
         '$$g = \\lim_n \\chi_{N^c} \\cdot \\varphi_n$$',
         '',
-        '则 $$g = f$$ 在 $$N^c$$ 上成立，且 $$g$$ 是 $\\mathcal{M}$可测的。'
+        '则 $g = f$ 在 $N^c$ 上成立，且 $g$ 是 $\\mathcal{M}$可测的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.12']
     }
@@ -8106,21 +8112,21 @@ window.MG = window.MG || {};
       target: 'prop.measurable-closure',
       title: '简单函数逼近 $\\implies$ 可测函数在极限下封闭',
       proof: [
-        '**① 上确界。** 设 $$f_j$$ 可测。要证 $$\\sup_j f_j$$ 可测。由判定准则 (2)，只需对生成元 $$(a, +\\infty]$$（$a \\in \\mathbb{R}$）验证：',
+        '**① 上确界。** 设 $f_j$ 可测。要证 $\\sup_j f_j$ 可测。由判定准则 (2)，只需对生成元 $(a, +\\infty]$（$a \\in \\mathbb{R}$）验证：',
         '',
         '$$(\\sup_j f_j)^{-1}((a, +\\infty]) = \\bigcup_j f_j^{-1}((a, +\\infty]) \\in \\mathcal{M}$$',
         '',
         '是可数并，故可测。',
         '',
-        '**② 下确界。** $$\\inf_j f_j = -\\sup_j(-f_j)$$，而取负保持可测性，故 inf 也可测。',
+        '**② 下确界。** $\\inf_j f_j = -\\sup_j(-f_j)$，而取负保持可测性，故 inf 也可测。',
         '',
-        '**③ 极限。** $$\\liminf_j f_j = \\sup_n \\inf_{j \\ge n} f_j$$，由 ①② 可测；同理 $$\\limsup$$ 可测。当极限存在时两者相等，故极限可测。',
+        '**③ 极限。** $\\liminf_j f_j = \\sup_n \\inf_{j \\ge n} f_j$，由 ①② 可测；同理 $\\limsup$ 可测。当极限存在时两者相等，故极限可测。',
         '',
-        '**④ 和与积。** 先看 $$f + g$$：对任意 $a \\in \\mathbb{R}$，',
+        '**④ 和与积。** 先看 $f + g$：对任意 $a \\in \\mathbb{R}$，',
         '',
         '$$\\{f + g > a\\} = \\bigcup_{q \\in \\mathbb{Q}} ( \\{f > q\\} \\cap \\{g > a - q\\} )$$',
         '',
-        '（左边 $\\subseteq$ 右边：取有理数 $q$ 夹在 $$a - g$$ 与 $f$ 之间；反向显然。）右边是可数并交，故可测。积 $$fg$$ 由 $$fg = ((f+g)^2 - f^2 - g^2) / 2$$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。',
+        '（左边 $\\subseteq$ 右边：取有理数 $q$ 夹在 $a - g$ 与 $f$ 之间；反向显然。）右边是可数并交，故可测。积 $fg$ 由 $fg = ((f+g)^2 - f^2 - g^2) / 2$ 化归（对非负情形直接验证，一般情形先做正负部分分解）。',
         '',
         '**⑤ 与简单函数的关系。** 上面 ①~④ 已经把「可测」做成了一个对极限与代数运算封闭的类；而简单函数逼近定理保证**每个非负可测函数都是一列简单函数的逐点极限**，所以这个类是「刚好够用」的：从简单函数出发，取极限就得到全部可测函数。∎'
       ].join('\n'),
@@ -8134,9 +8140,9 @@ window.MG = window.MG || {};
       target: 'cor.continuous-measurable',
       title: '连续 $\\implies$ Borel 可测',
       proof: [
-        '设 $$f : X \\to Y$$ 连续，即每个开集的原像是开集。',
+        '设 $f : X \\to Y$ 连续，即每个开集的原像是开集。',
         '',
-        '由定义 $$\\mathfrak{B}_Y = \\mathcal{M}(\\{ U \\subseteq Y : U\\text{ 开} \\})$$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 $U$，$$f^{-1}(U)$$ 是 $X$ 中的开集，因而 $$\\in \\mathfrak{B}_X$$。故 $f$ 可测。∎',
+        '由定义 $\\mathfrak{B}_Y = \\mathcal{M}(\\{ U \\subseteq Y : U\\text{ 开} \\})$，用判定准则 (2)：只需对生成元（开集）验证原像可测。对开集 $U$，$f^{-1}(U)$ 是 $X$ 中的开集，因而 $\\in \\mathfrak{B}_X$。故 $f$ 可测。∎',
         '',
         '$>$ 注意这个坑：**这个论证对 $(\\mathfrak{B}, \\mathfrak{B})$ 成立，但对 $(\\mathcal{L}, \\mathcal{L})$ 不成立** —— 因为 $\\mathcal{L}$ 并不由开集生成，它比 $\\mathfrak{B}_\\mathbb{R}$ 多了很多非 Borel 的零测集子集。'
       ].join('\n')
@@ -8153,7 +8159,7 @@ window.MG = window.MG || {};
         '',
         '先取 $f = \\chi_E$：此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于某个 $\\mathcal{M}$零集，取 $g = \\chi_{E\'}$ 即有 $f = g$ a.e.。对 $\\mathcal{M}$可测的简单函数显然成立（有限线性组合）。',
         '',
-        '一般情形取简单函数列 $\\varphi_n \\to f$，每个 $\\varphi_n$ 在一个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于某个 $\\mathcal{M}$可测的 $\\psi_n$。把 $$N := \\bigcup_n E_n$$ 并起来（可数并仍是零集），令 $g := \\lim_n \\chi_{N^c} \\cdot \\varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\\mathcal{M}$可测函数的极限仍 $\\mathcal{M}$可测。∎'
+        '一般情形取简单函数列 $\\varphi_n \\to f$，每个 $\\varphi_n$ 在一个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于某个 $\\mathcal{M}$可测的 $\\psi_n$。把 $N := \\bigcup_n E_n$ 并起来（可数并仍是零集），令 $g := \\lim_n \\chi_{N^c} \\cdot \\varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\\mathcal{M}$可测函数的极限仍 $\\mathcal{M}$可测。∎'
       ].join('\n')
     },
 
@@ -8276,7 +8282,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', '简单函数'],
       statement: [
-        '设 $$\\varphi \\in L^+$$ 是简单函数，写成标准形式',
+        '设 $\\varphi \\in L^+$ 是简单函数，写成标准形式',
         '',
         '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}, \\quad  a_j \\ge 0, E_j \\in \\mathcal{M}\\text{ 两两不交}$$',
         '',
@@ -8287,7 +8293,7 @@ window.MG = window.MG || {};
       notes: [
         '这就是「面积 $=$ 各层高度 $\\times$ 各层测度」—— 完全照着 Riemann 和的样子写，只是把区间换成了可测集。',
         '要检查**良定义**：同一个 $\\varphi$ 可以写成不同的标准形式（比如把某个 $E_{j}$ 再拆开），但由 $\\mu$ 的有限可加性，结果一样。',
-        '约定 $$0 \\cdot \\infty = 0$$：这一步很关键 —— 它让「在无穷测度集上取 0 的函数」积分为 0，符合直觉。'
+        '约定 $0 \\cdot \\infty = 0$：这一步很关键 —— 它让「在无穷测度集上取 0 的函数」积分为 0，符合直觉。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.2']
     },
@@ -8301,17 +8307,17 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '积分', '线性', '单调'],
       statement: [
-        '设 $$\\varphi, \\psi$$ 是简单函数。',
+        '设 $\\varphi, \\psi$ 是简单函数。',
         '',
-        '- **(a)** $$c > 0 \\implies \\int c\\varphi = c\\int \\varphi$$',
-        '- **(b)** $$\\int (\\varphi + \\psi) = \\int \\varphi + \\int \\psi$$',
-        '- **(c)** $$\\varphi \\le \\psi \\implies \\int \\varphi \\le \\int \\psi$$',
-        '- **(d)** $$A \\mapsto \\int_A \\varphi d\\mu$$ 是 $\\mathcal{M}$ 上的**测度**。'
+        '- **(a)** $c > 0 \\implies \\int c\\varphi = c\\int \\varphi$',
+        '- **(b)** $\\int (\\varphi + \\psi) = \\int \\varphi + \\int \\psi$',
+        '- **(c)** $\\varphi \\le \\psi \\implies \\int \\varphi \\le \\int \\psi$',
+        '- **(d)** $A \\mapsto \\int_A \\varphi d\\mu$ 是 $\\mathcal{M}$ 上的**测度**。'
       ].join('\n'),
       notes: [
         '(d) 是这一组里最有用的：它把「对简单函数积分」变成了「一个测度」，于是可数可加性、单调连续性（关于 $A$）全部免费。',
         '',
-        '⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $$\\lim_n \\int_{E_n} \\varphi = \\int \\varphi$$，用的就是「$A \\mapsto \\int _A \\varphi$ 是测度」加上测度的下连续性（$$E_n \\uparrow  X$$）。',
+        '⚠ 后面 MCT 的证明正是**靠 (d)**：证明里要断言 $\\lim_n \\int_{E_n} \\varphi = \\int \\varphi$，用的就是「$A \\mapsto \\int _A \\varphi$ 是测度」加上测度的下连续性（$E_n \\uparrow  X$）。',
         '(a) 里 $c > 0$ 而不是 $c \\ge 0$：因为约定 $0\\cdot \\infty = 0$，$c = 0$ 时左边也自动成立，写成 $c > 0$ 只是为了不啰嗦。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.13']
@@ -8326,7 +8332,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', 'sup'],
       statement: [
-        '设 $$f \\in L^+$$。定义',
+        '设 $f \\in L^+$。定义',
         '',
         '$$\\int f d\\mu := \\sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f, \\varphi\\text{ 是简单函数} \\}$$'
       ].join('\n'),
@@ -8347,7 +8353,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'MCT', '收敛'],
       statement: [
-        '设 $$\\{f_n\\} \\subseteq L^+$$ 满足',
+        '设 $\\{f_n\\} \\subseteq L^+$ 满足',
         '',
         '$$f_1 \\le f_2 \\le \\cdots, \\quad  f_n \\uparrow  f\\text{ 逐点}, $$',
         '',
@@ -8372,7 +8378,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '逐项积分', '级数'],
       statement: [
-        '设 $$\\{f_n\\} \\subseteq L^+$$，则',
+        '设 $\\{f_n\\} \\subseteq L^+$，则',
         '',
         '$$\\int \\sum_{n=1}^{\\infty} f_n = \\sum_{n=1}^{\\infty} \\int f_n$$'
       ].join('\n'),
@@ -8392,13 +8398,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '零集', '几乎处处'],
       statement: [
-        '设 $$f \\in L^+$$。则',
+        '设 $f \\in L^+$。则',
         '',
         '$$\\int f d\\mu = 0 \\iff f = 0 \\mu-\\text{a.e.}$$'
       ].join('\n'),
       notes: [
         '$(\\Longleftarrow )$ 只要 $f$ 在零集外为零，下确界里的每个简单函数 $\\varphi \\le f$ 也几乎处处为零，从而 $\\int \\varphi = 0$。',
-        '$(\\implies )$ 记 $$A_n = \\{f > 1/n\\}$$，则 $$(1/n)\\cdot\\mu(A_n) \\le \\int f = 0$$，故 $\\mu (A_{n}) = 0$；而 $$\\{f > 0\\} = \\bigcup_n A_n$$ 是零测的。',
+        '$(\\implies )$ 记 $A_n = \\{f > 1/n\\}$，则 $(1/n)\\cdot\\mu(A_n) \\le \\int f = 0$，故 $\\mu (A_{n}) = 0$；而 $\\{f > 0\\} = \\bigcup_n A_n$ 是零测的。',
         '⭐ 这条把「积分」与「几乎处处」这两个概念绑在一起了 —— 它是 $L^{1}$ 里「$f = g$」按 a.e. 理解的原因。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.16']
@@ -8413,7 +8419,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'MCT', '几乎处处'],
       statement: [
-        '设 $$\\{f_n\\} \\subseteq L^+$$，$$f \\in L^+$$。若对**几乎处处的** $x$ 有',
+        '设 $\\{f_n\\} \\subseteq L^+$，$f \\in L^+$。若对**几乎处处的** $x$ 有',
         '',
         '$$f_n(x) \\uparrow  f(x), $$',
         '',
@@ -8434,14 +8440,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', 'Fatou', 'liminf'],
       statement: [
-        '设 $$\\{f_n\\} \\subseteq L^+$$，则',
+        '设 $\\{f_n\\} \\subseteq L^+$，则',
         '',
         '$$\\int \\liminf_{n\\to\\infty} f_n \\le \\liminf_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
       notes: [
         '⚠ 注意不等号方向：**下面的**极限在积分外面，得到的**不大于**积分的下极限。也就是说「取极限」会让积分**变小**，不会变大。',
         '这是 MCT 去掉单调性后剩下的东西 —— 单调性一旦丢掉，等号就退化成不等式。',
-        '反向的例子：$$f_n = \\chi_{[n, n+1]}$$（在 $\\mathbb{R}$ 上），则每个 $\\int f_{n} = 1$ 但 $\\int \\liminf f_{n} = 0$。'
+        '反向的例子：$f_n = \\chi_{[n, n+1]}$（在 $\\mathbb{R}$ 上），则每个 $\\int f_{n} = 1$ 但 $\\int \\liminf f_{n} = 0$。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.18']
     },
@@ -8455,11 +8461,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'Fatou', '几乎处处'],
       statement: [
-        '设 $$\\{f_n\\} \\subseteq L^+$$，$$f \\in L^+$$，且 $$f_n \\to f$$ a.e.。则',
+        '设 $\\{f_n\\} \\subseteq L^+$，$f \\in L^+$，且 $f_n \\to f$ a.e.。则',
         '',
         '$$\\int f \\le \\liminf_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
-      notes: 'a.e. 收敛时 $$\\liminf f_n = f$$，直接套 Fatou 引理即可。',
+      notes: 'a.e. 收敛时 $\\liminf f_n = f$，直接套 Fatou 引理即可。',
       refs: ['Folland, Real Analysis, §2.2', 'Rudin, Real and Complex Analysis, Ch. 1']
     },
 
@@ -8472,14 +8478,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'σ-有限', '零集'],
       statement: [
-        '设 $$f \\in L^+$$ 且 $$\\int f < \\infty$$。则',
+        '设 $f \\in L^+$ 且 $\\int f < \\infty$。则',
         '',
-        '- $$\\{x : f(x) = \\infty\\}$$ 是零集；',
-        '- $$\\{x : f(x) > 0\\}$$ 是 **$\\sigma$有限**的（即它是可数个有限测度集之并）。'
+        '- $\\{x : f(x) = \\infty\\}$ 是零集；',
+        '- $\\{x : f(x) > 0\\}$ 是 **$\\sigma$有限**的（即它是可数个有限测度集之并）。'
       ].join('\n'),
       notes: [
-        '第一条：若 $$\\mu(\\{f = \\infty\\}) > 0$$，则对每个 $n$ 有 $$\\int f \\ge n\\cdot\\mu(\\{f=\\infty\\})$$，让 $n \\to \\infty$ 得 $\\int f = \\infty$。',
-        '第二条：$$\\{f > 0\\} = \\bigcup_n \\{f > 1/n\\}$$，而 $$\\mu(\\{f > 1/n\\}) \\le n\\int f < \\infty$$ —— 所以是**可数**个有限测度集之并。',
+        '第一条：若 $\\mu(\\{f = \\infty\\}) > 0$，则对每个 $n$ 有 $\\int f \\ge n\\cdot\\mu(\\{f=\\infty\\})$，让 $n \\to \\infty$ 得 $\\int f = \\infty$。',
+        '第二条：$\\{f > 0\\} = \\bigcup_n \\{f > 1/n\\}$，而 $\\mu(\\{f > 1/n\\}) \\le n\\int f < \\infty$ —— 所以是**可数**个有限测度集之并。',
         '⭐ 这条解释了为什么「$L^{1}$ 里的函数几乎处处有限」是免费的，也预告了 Lp 空间里的 $\\sigma$有限假设。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.20']
@@ -8494,20 +8500,20 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', '复值'],
       statement: [
-        '设 $$f : X \\to \\overline{\\mathbb{R}}$$ 可测，记正部与负部',
+        '设 $f : X \\to \\overline{\\mathbb{R}}$ 可测，记正部与负部',
         '',
         '$$f^+ = \\max_{f, 0}, \\quad  f^- = \\max_{-f, 0}$$',
         '',
-        '（两者都属于 $L^{+}$，且 $$f = f^+ - f^-$$、$$|f| = f^+ + f^-$$。）若 $$\\int f^+$$ 与 $$\\int f^-$$ 中**至少一个有限**，定义',
+        '（两者都属于 $L^{+}$，且 $f = f^+ - f^-$、$|f| = f^+ + f^-$。）若 $\\int f^+$ 与 $\\int f^-$ 中**至少一个有限**，定义',
         '',
         '$$\\int f := \\int f^+ - \\int f^-$$',
         '',
-        '对复值函数，拆实部虚部：$$\\int f := \\int \\operatorname{Re} f + i \\int \\operatorname{Im} f$$（要求两个积分都有意义）。'
+        '对复值函数，拆实部虚部：$\\int f := \\int \\operatorname{Re} f + i \\int \\operatorname{Im} f$（要求两个积分都有意义）。'
       ].join('\n'),
       notes: [
         '⚠ 「至少一个有限」是为了避免 $\\infty - \\infty$：那是不定式，必须排除。',
         '若两个都有限，就说 $f$ **可积**（见下一条）。',
-        '对复值函数，$$\\operatorname{Re} f$$ 与 $$\\operatorname{Im} f$$ 可积 $\\iff f$ 可积，因为 $$|\\operatorname{Re} f|, |\\operatorname{Im} f| \\le |f| \\le |\\operatorname{Re} f| + |\\operatorname{Im} f|$$。'
+        '对复值函数，$\\operatorname{Re} f$ 与 $\\operatorname{Im} f$ 可积 $\\iff f$ 可积，因为 $|\\operatorname{Re} f|, |\\operatorname{Im} f| \\le |f| \\le |\\operatorname{Re} f| + |\\operatorname{Im} f|$。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.3']
     },
@@ -8521,17 +8527,17 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'L¹', '可积'],
       statement: [
-        '实值可测 $$f$$ **可积**，当且仅当 $$\\int f^+ < \\infty$$ 且 $$\\int f^- < \\infty$$。等价地：',
+        '实值可测 $f$ **可积**，当且仅当 $\\int f^+ < \\infty$ 且 $\\int f^- < \\infty$。等价地：',
         '',
         '$$f\\text{ 可积} \\iff \\int |f| d\\mu < \\infty$$',
         '',
-        '复值可测 $$f$$ 可积，当且仅当 $$\\int |f| d\\mu < \\infty$$。可积函数全体记作',
+        '复值可测 $f$ 可积，当且仅当 $\\int |f| d\\mu < \\infty$。可积函数全体记作',
         '',
         '$$L^1(\\mu) = L^1(X, \\mathcal{M}, \\mu) = L^1(X, \\mu)$$'
       ].join('\n'),
       notes: [
         '⭐ **可积 $\\iff$ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 $|f| \\in L^{+}$，一切非负情形的定理都能直接套用。',
-        '（对比 Riemann 反常积分：那里 $$\\int f$$ 收敛而 $$\\int|f|$$ 发散是可能的，叫条件收敛。）',
+        '（对比 Riemann 反常积分：那里 $\\int f$ 收敛而 $\\int|f|$ 发散是可能的，叫条件收敛。）',
         '⚠ 严格说 $L^{1}$ 的元素是**函数的等价类**（a.e. 相等视为同一个），所以「$\\int |f| = 0 \\implies f = 0$」要在 a.e. 意义下读。这是后面 Lp 空间成为赋范空间的关键一步。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.3']
@@ -8550,7 +8556,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int (af + bg) = a\\int f + b\\int g\\quad  \\forall a, b \\in \\mathbb{R}$$',
         '',
-        '即 $$f \\mapsto \\int f$$ 是线性的。'
+        '即 $f \\mapsto \\int f$ 是线性的。'
       ].join('\n'),
       notes: [
         '「是向量空间」要在 a.e. 意义下理解（两个 a.e. 相等的可积函数看作同一个元素）。',
@@ -8568,11 +8574,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '三角不等式'],
       statement: [
-        '设 $$f \\in L^1(\\mu)$$，则',
+        '设 $f \\in L^1(\\mu)$，则',
         '',
         '$$| \\int f d\\mu | \\le \\int |f| d\\mu$$'
       ].join('\n'),
-      notes: '复情形：取 $$\\alpha = e^{-i\\theta}$$ 使 $$\\alpha\\int f$$ 是实数且等于 $$|\\int f|$$，则 $$|\\int f| = \\int \\alpha f = \\int \\operatorname{Re}(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$$。',
+      notes: '复情形：取 $\\alpha = e^{-i\\theta}$ 使 $\\alpha\\int f$ 是实数且等于 $|\\int f|$，则 $|\\int f| = \\int \\alpha f = \\int \\operatorname{Re}(\\alpha f) \\le \\int|\\alpha f| = \\int|f|$。',
       refs: ['Folland, Real Analysis, Prop. 2.22']
     },
 
@@ -8585,7 +8591,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'σ-有限', '支撑'],
       statement: [
-        '若 $$f \\in L^1(\\mu)$$，则',
+        '若 $f \\in L^1(\\mu)$，则',
         '',
         '$$\\{x : f(x) \\ne 0\\}$$',
         '',
@@ -8604,7 +8610,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '几乎处处', '可测集'],
       statement: [
-        '设 $$f, g \\in L^1(\\mu)$$。则下列三条等价：',
+        '设 $f, g \\in L^1(\\mu)$。则下列三条等价：',
         '',
         '$$\\int_E f d\\mu = \\int_E g d\\mu\\quad  \\forall E \\in \\mathcal{M}; $$',
         '$$\\int |f - g| d\\mu = 0; $$',
@@ -8627,19 +8633,19 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'DCT', '控制函数'],
       statement: [
-        '设 $$\\{f_n\\} \\subseteq L^1$$，$$f_n \\to f$$ a.e.，且存在**控制函数** $$g \\in L^1$$ 使',
+        '设 $\\{f_n\\} \\subseteq L^1$，$f_n \\to f$ a.e.，且存在**控制函数** $g \\in L^1$ 使',
         '',
         '$$|f_n| \\le g\\quad  \\text{a.e.}\\quad  \\forall n$$',
         '',
-        '则 $$f \\in L^1$$ 且',
+        '则 $f \\in L^1$ 且',
         '',
         '$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
       notes: [
         '⭐ 这是实际计算里**用得最多**的收敛定理。三个条件缺一不可：',
         '',
-        '$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（$$\\chi_{[n,n+1]}$$ 反例）；',
-        '$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$$n\\chi_{[0,1/n]}$$ 在 [0,1] 上每点趋于 0，但积分为 1）；',
+        '$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（$\\chi_{[n,n+1]}$ 反例）；',
+        '$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$n\\chi_{[0,1/n]}$ 在 [0,1] 上每点趋于 0，但积分为 1）；',
         '$\\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。',
         '',
         '为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。'
@@ -8656,11 +8662,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '逐项积分', 'L¹'],
       statement: [
-        '设 $$\\{f_j\\} \\subseteq L^1$$ 满足',
+        '设 $\\{f_j\\} \\subseteq L^1$ 满足',
         '',
         '$$\\sum_{j=1}^{\\infty} \\int |f_j| d\\mu < \\infty$$',
         '',
-        '则 $$\\sum_j f_j$$ 几乎处处收敛到一个 $$L^1$$ 中的函数，并且可以逐项积分：',
+        '则 $\\sum_j f_j$ 几乎处处收敛到一个 $L^1$ 中的函数，并且可以逐项积分：',
         '',
         '$$\\int \\sum_{j=1}^{\\infty} f_j = \\sum_{j=1}^{\\infty} \\int f_j$$'
       ].join('\n'),
@@ -8680,7 +8686,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '逼近', '简单函数', '连续函数'],
       statement: [
-        '设 $$f \\in L^1(\\mu)$$。则对任意 $\\varepsilon > 0$，存在简单函数 $$\\varphi = \\sum_j a_j \\chi_{E_j}$$ 使',
+        '设 $f \\in L^1(\\mu)$。则对任意 $\\varepsilon > 0$，存在简单函数 $\\varphi = \\sum_j a_j \\chi_{E_j}$ 使',
         '',
         '$$\\int |f - \\varphi| d\\mu < \\varepsilon$$',
         '',
@@ -8705,15 +8711,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'DCT', '求导', '带参变量积分'],
       statement: [
-        '设 $$f : X \\times [a, b] \\to \\mathbb{C}$$（$$-\\infty < a < b < \\infty$$），$$f(\\cdot, t)$$ 对每个 $$t \\in [a, b]$$ 都可积。记',
+        '设 $f : X \\times [a, b] \\to \\mathbb{C}$（$-\\infty < a < b < \\infty$），$f(\\cdot, t)$ 对每个 $t \\in [a, b]$ 都可积。记',
         '',
         '$$F(t) := \\int_X f(x, t) d\\mu(x)$$',
         '',
-        '**(a) 连续性**：若存在 $$g \\in L^1(\\mu)$$ 使 $$|f(x, t)| \\le g(x)$$ 对一切 $$x, t$$ 成立，且对每个 $x$ 有 $$\\lim_{t\\to t_0} f(x, t) = f(x, t_0)$$，则',
+        '**(a) 连续性**：若存在 $g \\in L^1(\\mu)$ 使 $|f(x, t)| \\le g(x)$ 对一切 $x, t$ 成立，且对每个 $x$ 有 $\\lim_{t\\to t_0} f(x, t) = f(x, t_0)$，则',
         '',
         '$$\\lim_{t\\to t_0} F(t) = F(t_0)$$',
         '',
-        '**(b) 求导**：若 $$\\partial f / \\partial t$$ 处处存在，且存在 $$g \\in L^1(\\mu)$$ 使 $$| \\partial f / \\partial t(x, t) | \\le g(x)$$ 对一切 $$x, t$$ 成立，则 $F$ 可微，且',
+        '**(b) 求导**：若 $\\partial f / \\partial t$ 处处存在，且存在 $g \\in L^1(\\mu)$ 使 $| \\partial f / \\partial t(x, t) | \\le g(x)$ 对一切 $x, t$ 成立，则 $F$ 可微，且',
         '',
         '$$F\'(t) = \\int_X \\partial f / \\partial t(x, t) d\\mu(x)$$'
       ].join('\n'),
@@ -8745,19 +8751,19 @@ window.MG = window.MG || {};
         '',
         '$$0 \\le \\varphi \\le f, \\quad  \\int \\varphi \\ge \\int f - \\varepsilon$$',
         '',
-        '**③ 把 $\\varphi$ 搬进 $E_{n}$。** 令 $$E_n = \\{x : f_n(x) \\ge \\varphi(x)\\}$$。因为 $f_{n} \\uparrow f$ 且 $\\varphi \\le f$，集合列 $E_{n}$ 是递增的、且 $$\\bigcup_n E_n = X$$。于是',
+        '**③ 把 $\\varphi$ 搬进 $E_{n}$。** 令 $E_n = \\{x : f_n(x) \\ge \\varphi(x)\\}$。因为 $f_{n} \\uparrow f$ 且 $\\varphi \\le f$，集合列 $E_{n}$ 是递增的、且 $\\bigcup_n E_n = X$。于是',
         '',
         '$$\\int f_n \\ge \\int_{E_n} f_n \\ge \\int_{E_n} \\varphi$$',
         '',
-        '**④ 让 $n \\to \\infty$。** 由简单函数积分的性质 (d)，$$A \\mapsto \\int_A \\varphi d\\mu$$ 是 $\\mathcal{M}$ 上的一个**测度**；把它用在递增列 $E_{n} \\uparrow X$ 上，用测度的下连续性：',
+        '**④ 让 $n \\to \\infty$。** 由简单函数积分的性质 (d)，$A \\mapsto \\int_A \\varphi d\\mu$ 是 $\\mathcal{M}$ 上的一个**测度**；把它用在递增列 $E_{n} \\uparrow X$ 上，用测度的下连续性：',
         '',
         '$$\\lim_{n\\to\\infty} \\int_{E_n} \\varphi = \\int_X \\varphi = \\int \\varphi$$',
         '',
-        '所以存在 $N$ 使 $n > N$ 时 $$\\int_{E_n} \\varphi > \\int \\varphi - \\varepsilon$$，从而',
+        '所以存在 $N$ 使 $n > N$ 时 $\\int_{E_n} \\varphi > \\int \\varphi - \\varepsilon$，从而',
         '',
         '$$\\int f_n \\ge \\int \\varphi - \\varepsilon \\ge \\int f - 2\\varepsilon$$',
         '',
-        '**⑤ 收尾。** 对一切 $n > N$ 成立，故 $$\\lim_n \\int f_n \\ge \\int f - 2\\varepsilon$$；令 $\\varepsilon \\to 0$ 得 $$\\lim_n \\int f_n \\ge \\int f$$。与 ① 合起来就是等号。∎',
+        '**⑤ 收尾。** 对一切 $n > N$ 成立，故 $\\lim_n \\int f_n \\ge \\int f - 2\\varepsilon$；令 $\\varepsilon \\to 0$ 得 $\\lim_n \\int f_n \\ge \\int f$。与 ① 合起来就是等号。∎',
         '',
         '$>$ ⭐ 整段证明只用了两样东西：**简单函数积分的 (d)**（把 $A \\mapsto \\int _A \\varphi$ 当作测度）和**积分的单调性**。单调性假设就是用来保证 ③ 里的 $E_{n}$ 递增到 $X$ 的。'
       ].join('\n'),
@@ -8771,7 +8777,7 @@ window.MG = window.MG || {};
       target: 'thm.termwise-integration',
       title: 'MCT $\\implies$ 逐项积分',
       proof: [
-        '**① 先看两项。** 由非负性，$$\\{f_1 \\wedge  n\\}$$、$$\\{f_2 \\wedge  n\\}$$ 都是简单函数列的极限（简单函数逼近定理），于是',
+        '**① 先看两项。** 由非负性，$\\{f_1 \\wedge  n\\}$、$\\{f_2 \\wedge  n\\}$ 都是简单函数列的极限（简单函数逼近定理），于是',
         '',
         '$$\\int (f_1 + f_2) = \\lim_{n\\to\\infty} \\int (\\varphi_n + \\psi_n) = \\int f_1 + \\int f_2$$',
         '',
@@ -8781,7 +8787,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int \\sum_{n=1}^{N} f_n = \\sum_{n=1}^{N} \\int f_n$$',
         '',
-        '**③ 让 $N \\to \\infty$。** 部分和 $$\\sum_{n\\le N} f_n$$ 是 $L^{+}$ 中的**递增**列，极限正是 $$\\sum_{n=1}^{\\infty} f_n$$。对部分和列用一次 MCT：',
+        '**③ 让 $N \\to \\infty$。** 部分和 $\\sum_{n\\le N} f_n$ 是 $L^{+}$ 中的**递增**列，极限正是 $\\sum_{n=1}^{\\infty} f_n$。对部分和列用一次 MCT：',
         '',
         '$$\\int \\sum_{n=1}^{\\infty} f_n = \\lim_{N\\to\\infty} \\int \\sum_{n=1}^{N} f_n = \\lim_{N\\to\\infty} \\sum_{n=1}^{N} \\int f_n = \\sum_{n=1}^{\\infty} \\int f_n$$',
         '',
@@ -8796,12 +8802,12 @@ window.MG = window.MG || {};
       target: 'lem.fatou',
       title: 'MCT $\\implies$ Fatou 引理',
       proof: [
-        '设 $$g_n = \\inf_{k \\ge n} f_k$$，则',
+        '设 $g_n = \\inf_{k \\ge n} f_k$，则',
         '',
-        '$\\cdot$ $$g_n \\le f_k$$ 对一切 $k \\ge n$ 成立，故 $$\\int g_n \\le \\inf_{k\\ge n} \\int f_k$$；',
-        '$\\cdot$ $$\\{g_n\\}$$ 是 $L^{+}$ 中的**递增**列（下确界取的集合越来越少），且 $$\\lim_n g_n = \\liminf_k f_k$$。',
+        '$\\cdot$ $g_n \\le f_k$ 对一切 $k \\ge n$ 成立，故 $\\int g_n \\le \\inf_{k\\ge n} \\int f_k$；',
+        '$\\cdot$ $\\{g_n\\}$ 是 $L^{+}$ 中的**递增**列（下确界取的集合越来越少），且 $\\lim_n g_n = \\liminf_k f_k$。',
         '',
-        '对递增列 $$\\{g_n\\}$$ 用 MCT：',
+        '对递增列 $\\{g_n\\}$ 用 MCT：',
         '',
         '$$\\int \\liminf_{n\\to\\infty} f_n = \\int \\lim_{n\\to\\infty} g_n = \\lim_{n\\to\\infty} \\int g_n \\le \\lim_{n\\to\\infty} \\inf_{k \\ge n} \\int f_k = \\liminf_{n\\to\\infty} \\int f_n$$',
         '',
@@ -8819,11 +8825,11 @@ window.MG = window.MG || {};
       target: 'thm.dct',
       title: 'Fatou $\\implies$ 控制收敛定理',
       proof: [
-        '设 $$f_n \\to f$$ a.e.，$$|f_n| \\le g \\in L^1$$。',
+        '设 $f_n \\to f$ a.e.，$|f_n| \\le g \\in L^1$。',
         '',
-        '**① $f \\in L^{1}$。** 由 $$|f| = \\lim|f_n| \\le g$$（a.e.）得 $f$ 可积。',
+        '**① $f \\in L^{1}$。** 由 $|f| = \\lim|f_n| \\le g$（a.e.）得 $f$ 可积。',
         '',
-        '**② 上界方向：$$\\limsup_n \\int f_n \\le \\int f$$。** 考虑 $$g - f_n \\ge 0$$（因为 $|f_{n}| \\le g$）。这列非负函数满足',
+        '**② 上界方向：$\\limsup_n \\int f_n \\le \\int f$。** 考虑 $g - f_n \\ge 0$（因为 $|f_{n}| \\le g$）。这列非负函数满足',
         '',
         '$$g - f_n \\to g - f\\quad  \\text{a.e.}$$',
         '',
@@ -8831,18 +8837,18 @@ window.MG = window.MG || {};
         '',
         '$$\\int (g - f) \\le \\liminf_n \\int (g - f_n) = \\int g - \\limsup_n \\int f_n$$',
         '',
-        '（最后一步是因为 $$\\liminf_{-a_n} = -\\limsup a_n$$。）移项即得 $$\\limsup_n \\int f_n \\le \\int f$$。',
+        '（最后一步是因为 $\\liminf_{-a_n} = -\\limsup a_n$。）移项即得 $\\limsup_n \\int f_n \\le \\int f$。',
         '',
-        '**③ 下界方向：$$\\liminf_n \\int f_n \\ge \\int f$$。** 同样对 $$g + f_n \\ge 0$$ 用 Fatou：',
+        '**③ 下界方向：$\\liminf_n \\int f_n \\ge \\int f$。** 同样对 $g + f_n \\ge 0$ 用 Fatou：',
         '',
         '$$\\int (g + f) \\le \\liminf_n \\int (g + f_n) = \\int g + \\liminf_n \\int f_n$$',
         '',
-        '移项得 $$\\liminf_n \\int f_n \\ge \\int f$$。',
+        '移项得 $\\liminf_n \\int f_n \\ge \\int f$。',
         '',
-        '**④** ②与③合起来 $$\\limsup \\le \\int f \\le \\liminf$$，故极限存在且等于 $\\int f$。∎',
+        '**④** ②与③合起来 $\\limsup \\le \\int f \\le \\liminf$，故极限存在且等于 $\\int f$。∎',
         '',
-        '$>$ ⭐ 关键在于**控制函数提供的非负性**：$$g \\pm  f_n$$ 都是非负的，于是 Fatou 可以直接用。没有 $g$，这一步就写不出来。',
-        '$>$ 移项之所以合法，是因为 $$g$$ 可积（$\\int g < \\infty$）—— 这正是「控制函数必须属于 $L^{1}$」而不能只是「有界」的原因。'
+        '$>$ ⭐ 关键在于**控制函数提供的非负性**：$g \\pm  f_n$ 都是非负的，于是 Fatou 可以直接用。没有 $g$，这一步就写不出来。',
+        '$>$ 移项之所以合法，是因为 $g$ 可积（$\\int g < \\infty$）—— 这正是「控制函数必须属于 $L^{1}$」而不能只是「有界」的原因。'
       ].join('\n')
     },
 
@@ -8853,20 +8859,20 @@ window.MG = window.MG || {};
       target: 'thm.differentiate-under-integral',
       title: 'DCT $\\implies$ 在积分号下求极限与求导',
       proof: [
-        '**(a)** 取任意 $$t_n \\to t_0$$，令 $$f_n(x) = f(x, t_n)$$。由题设 $$|f_n| \\le g \\in L^1$$、且 $$f_n \\to f(x,t_0)$$ 逐点，DCT 直接给出',
+        '**(a)** 取任意 $t_n \\to t_0$，令 $f_n(x) = f(x, t_n)$。由题设 $|f_n| \\le g \\in L^1$、且 $f_n \\to f(x,t_0)$ 逐点，DCT 直接给出',
         '',
         '$$F(t_n) = \\int f_n \\to \\int f(\\cdot, t_0) = F(t_0)$$',
         '',
-        '对一切序列 $t_{n}$ 成立，故 $$\\lim_{t\\to t_0} F(t) = F(t_0)$$。',
+        '对一切序列 $t_{n}$ 成立，故 $\\lim_{t\\to t_0} F(t) = F(t_0)$。',
         '',
-        '**(b)** 取任意 $$t_n \\to t_0$$，令',
+        '**(b)** 取任意 $t_n \\to t_0$，令',
         '',
         '$$h_n(x) = (f(x, t_n) - f(x, t_0)) / (t_n - t_0)$$',
         '',
-        '则 $$F\'(t_0) = \\lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = \\lim_n \\int h_n$$。要把它换成 $\\int \\lim h_{n}$ 就够了，而 DCT 正好提供这个能力：',
+        '则 $F\'(t_0) = \\lim_n (F(t_n) - F(t_0)) / (t_n - t_0) = \\lim_n \\int h_n$。要把它换成 $\\int \\lim h_{n}$ 就够了，而 DCT 正好提供这个能力：',
         '',
-        '$\\cdot$ $$h_n \\to \\partial f / \\partial t(x, t_0)$$ 逐点（这是导数的定义）；',
-        '$\\cdot$ **控制**：由中值定理，$$|h_n(x)| \\le \\sup_{t \\in [t_0, t_n]} | \\partial f / \\partial t(x, t) | \\le g(x)$$。',
+        '$\\cdot$ $h_n \\to \\partial f / \\partial t(x, t_0)$ 逐点（这是导数的定义）；',
+        '$\\cdot$ **控制**：由中值定理，$|h_n(x)| \\le \\sup_{t \\in [t_0, t_n]} | \\partial f / \\partial t(x, t) | \\le g(x)$。',
         '',
         '于是',
         '',
@@ -8885,19 +8891,19 @@ window.MG = window.MG || {};
       target: 'thm.termwise-L1',
       title: '非负逐项积分 + 零集判定 $\\implies L^{1}$ 的逐项积分',
       proof: [
-        '设 $$\\sum_j \\int |f_j| < \\infty$$。',
+        '设 $\\sum_j \\int |f_j| < \\infty$。',
         '',
-        '**① 绝对收敛 a.e.。** 令 $$g = \\sum_j |f_j| \\in L^+$$。由非负函数的逐项积分，',
+        '**① 绝对收敛 a.e.。** 令 $g = \\sum_j |f_j| \\in L^+$。由非负函数的逐项积分，',
         '',
         '$$\\int g = \\sum_j \\int |f_j| < \\infty$$',
         '',
-        '由「积分有限的后果」，$g < \\infty \\text{a.e.}$，即 $$\\sum_j |f_j(x)| < \\infty$$ 对 a.e. x 成立。所以 $$\\sum_j f_j(x)$$ 对 a.e. x **绝对收敛**。',
+        '由「积分有限的后果」，$g < \\infty \\text{a.e.}$，即 $\\sum_j |f_j(x)| < \\infty$ 对 a.e. x 成立。所以 $\\sum_j f_j(x)$ 对 a.e. x **绝对收敛**。',
         '',
-        '**② 定义 $f$。** 令 $$f(x) = \\sum_j f_j(x)$$（在收敛的 a.e. 点上），其余点随意取 0。则 $$|f| \\le g$$，故 $f \\in L^{1}$。',
+        '**② 定义 $f$。** 令 $f(x) = \\sum_j f_j(x)$（在收敛的 a.e. 点上），其余点随意取 0。则 $|f| \\le g$，故 $f \\in L^{1}$。',
         '',
-        '**③ 部分和被控制。** 部分和 $$s_N = \\sum_{j\\le N} f_j$$ 满足 $$|s_N| \\le g \\in L^1$$。',
+        '**③ 部分和被控制。** 部分和 $s_N = \\sum_{j\\le N} f_j$ 满足 $|s_N| \\le g \\in L^1$。',
         '',
-        '**④ 用 DCT。** $$s_N \\to f$$ a.e.，且被 $g$ 控制，故',
+        '**④ 用 DCT。** $s_N \\to f$ a.e.，且被 $g$ 控制，故',
         '',
         '$$\\int f = \\lim_{N\\to\\infty} \\int s_N = \\lim_{N\\to\\infty} \\sum_{j\\le N} \\int f_j = \\sum_{j=1}^{\\infty} \\int f_j$$',
         '',
@@ -8912,15 +8918,15 @@ window.MG = window.MG || {};
       target: 'prop.integrals-equal-iff',
       title: '积分为零 $\\implies$ 用积分识别函数',
       proof: [
-        '记 $$h = f - g \\in L^1$$。三条之间的等价链条是',
+        '记 $h = f - g \\in L^1$。三条之间的等价链条是',
         '',
         '$$(i) \\int_E f = \\int_E g\\quad  \\forall E \\in \\mathcal{M}\\quad  \\iff\\quad  \\int_E h = 0\\quad  \\forall E$$',
         '',
-        '**$(i) \\implies (ii)$**：分别取 $$E = \\{h \\ge 0\\}$$ 与 $$E = \\{h < 0\\}$$。由 $$\\int_E h = 0$$ 且 $h$ 在 $E$ 上不变号，得 $$\\{h > 0\\}$$ 与 $$\\{h < 0\\}$$ 都是零集（否则积分为正/负），故 $$\\mu(\\{h \\ne 0\\}) = 0$$，于是 $$\\int|h| = 0$$。',
+        '**$(i) \\implies (ii)$**：分别取 $E = \\{h \\ge 0\\}$ 与 $E = \\{h < 0\\}$。由 $\\int_E h = 0$ 且 $h$ 在 $E$ 上不变号，得 $\\{h > 0\\}$ 与 $\\{h < 0\\}$ 都是零集（否则积分为正/负），故 $\\mu(\\{h \\ne 0\\}) = 0$，于是 $\\int|h| = 0$。',
         '',
-        '**$(ii) \\implies (iii)$**：$$\\int|h| = 0$$ 配合「积分为零 $\\iff$ 几乎处处为零」，直接得到 $h = 0 \\text{a.e.}$。',
+        '**$(ii) \\implies (iii)$**：$\\int|h| = 0$ 配合「积分为零 $\\iff$ 几乎处处为零」，直接得到 $h = 0 \\text{a.e.}$。',
         '',
-        '**$(iii) \\implies (i)$**：$h = 0 \\text{a.e.}$ 时，对任意 $E$，$$\\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎'
+        '**$(iii) \\implies (i)$**：$h = 0 \\text{a.e.}$ 时，对任意 $E$，$\\int_E h$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎'
       ].join('\n')
     },
 
@@ -9066,13 +9072,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '收敛', '依测度'],
       statement: [
-        '设 $$f_n, f : X \\to \\mathbb{C}$$ 可测，$X$ 带测度 $\\mu$。',
+        '设 $f_n, f : X \\to \\mathbb{C}$ 可测，$X$ 带测度 $\\mu$。',
         '',
-        '- **一致收敛** $$f_n \\rightrightarrows  f$$：$$\\forall\\varepsilon > 0, \\exists N > 0, \\forall x \\in X, n > N \\implies |f_n(x) - f(x)| < \\varepsilon$$',
-        '- **几乎处处收敛** $$f_n \\to f$$ a.e.：存在零集 $E$ 使 $$f_n(x) \\to f(x)$$ 对一切 $$x \\in X \\setminus E$$ 成立',
-        '- **依测度收敛** $$f_n \\to f$$ 依测度：$$\\forall\\varepsilon > 0, \\forall\\delta > 0, \\exists N, \\forall n > N : \\mu(\\{x : |f_n(x) - f(x)| > \\delta\\}) < \\varepsilon$$',
-        '- **$L^{1}$ 收敛**：$$\\int |f_n - f| d\\mu \\to 0$$',
-        '- **近一致收敛**：$$\\forall\\varepsilon > 0$$，存在 $E$ 使 $$\\mu(E) < \\varepsilon$$ 且 $$f_n \\rightrightarrows  f$$ 在 $$E^c$$ 上一致'
+        '- **一致收敛** $f_n \\rightrightarrows  f$：$\\forall\\varepsilon > 0, \\exists N > 0, \\forall x \\in X, n > N \\implies |f_n(x) - f(x)| < \\varepsilon$',
+        '- **几乎处处收敛** $f_n \\to f$ a.e.：存在零集 $E$ 使 $f_n(x) \\to f(x)$ 对一切 $x \\in X \\setminus E$ 成立',
+        '- **依测度收敛** $f_n \\to f$ 依测度：$\\forall\\varepsilon > 0, \\forall\\delta > 0, \\exists N, \\forall n > N : \\mu(\\{x : |f_n(x) - f(x)| > \\delta\\}) < \\varepsilon$',
+        '- **$L^{1}$ 收敛**：$\\int |f_n - f| d\\mu \\to 0$',
+        '- **近一致收敛**：$\\forall\\varepsilon > 0$，存在 $E$ 使 $\\mu(E) < \\varepsilon$ 且 $f_n \\rightrightarrows  f$ 在 $E^c$ 上一致'
       ].join('\n'),
       notes: [
         '强弱关系（都能画成箭头）：',
@@ -9099,13 +9105,13 @@ window.MG = window.MG || {};
       statement: [
         '在 $\\mathbb{R}$（或 [0, 1]）上取 Lebesgue 测度。',
         '',
-        '- **(i)** $$f_n = n^{-1} \\chi_{(0, n)}$$：$$f_n \\rightrightarrows  0$$ **一致**收敛。',
-        '- **(ii)** $$f_n = \\chi_{(n, n+1)}$$：$$f_n \\to 0$$ **逐点**（因而 a.e.），但**不一致**（$$\\sup_x |f_n| = 1$$），也不 $L^{1}$ 收敛（$$\\int f_n = 1 \\nrightarrow  0$$）。',
-        '- **(iii)** $$f_n = n \\chi_{[0, 1/n]}$$：$$f_n \\to 0$$ a.e.（也依测度收敛，因为 $$\\mu(\\{|f_n| > \\delta\\}) = 1/n \\to 0$$），但**不 $L^{1}$ 收敛**（$$\\int f_n = 1$$ 对一切 $n$）。',
+        '- **(i)** $f_n = n^{-1} \\chi_{(0, n)}$：$f_n \\rightrightarrows  0$ **一致**收敛。',
+        '- **(ii)** $f_n = \\chi_{(n, n+1)}$：$f_n \\to 0$ **逐点**（因而 a.e.），但**不一致**（$\\sup_x |f_n| = 1$），也不 $L^{1}$ 收敛（$\\int f_n = 1 \\nrightarrow  0$）。',
+        '- **(iii)** $f_n = n \\chi_{[0, 1/n]}$：$f_n \\to 0$ a.e.（也依测度收敛，因为 $\\mu(\\{|f_n| > \\delta\\}) = 1/n \\to 0$），但**不 $L^{1}$ 收敛**（$\\int f_n = 1$ 对一切 $n$）。',
         '- **(iv) 二进制填充**：把右下角越来越小的区间排成一列 ——',
         '',
         '$$f_1 = \\chi_{[0,1]}, f_2 = \\chi_{[0,1/2]}, f_3 = \\chi_{[1/2,1]}, f_4 = \\chi_{[0,1/4]}, \\cdots$$',
-        '即 $$f_n = \\chi_{[j/2^k, (j+1)/2^k]}$$（$$n = 2^k + j$$）：它**依测度**收敛到 0，但对**任何** $$x \\in [0,1]$$ 都**不**收敛。'
+        '即 $f_n = \\chi_{[j/2^k, (j+1)/2^k]}$（$n = 2^k + j$）：它**依测度**收敛到 0，但对**任何** $x \\in [0,1]$ 都**不**收敛。'
       ].join('\n'),
       notes: [
         '(iii) 是「a.e. 收敛 $\\nRightarrow L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。',
@@ -9124,7 +9130,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Cauchy', '依测度'],
       statement: [
-        '可测函数列 $$\\{f_n\\}$$ 是**依测度 Cauchy 的**，当且仅当',
+        '可测函数列 $\\{f_n\\}$ 是**依测度 Cauchy 的**，当且仅当',
         '',
         '$$\\forall\\varepsilon > 0, \\mu(\\{x : |f_n(x) - f_m(x)| \\ge \\varepsilon\\}) \\to 0\\quad  (m, n \\to \\infty)$$',
         '',
@@ -9146,17 +9152,17 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '依测度', '子列', 'Borel–Cantelli'],
       statement: [
-        '若 $$\\{f_n\\}$$ 依测度 Cauchy，则存在可测函数 $$f$$ 使',
+        '若 $\\{f_n\\}$ 依测度 Cauchy，则存在可测函数 $f$ 使',
         '',
         '$$f_n \\to f\\text{ 依测度}, $$',
         '',
-        '并且存在**子列** $$\\{f_{n_j}\\}$$ 使',
+        '并且存在**子列** $\\{f_{n_j}\\}$ 使',
         '',
         '$$f_{n_j} \\to f\\quad  \\text{a.e.}$$'
       ].join('\n'),
       notes: [
         '⭐ 这是「依测度收敛」最有用的性质：**收敛本身不保证任何一处真的收敛，但总能抽出一列几乎处处收敛的子列**。',
-        '证明的工具是 Borel–Cantelli 型的推理：造出 $$\\sum_k \\mu(E_k) < \\infty$$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。',
+        '证明的工具是 Borel–Cantelli 型的推理：造出 $\\sum_k \\mu(E_k) < \\infty$ 的一族「坏集合」，则几乎每个点只落进有限多个坏集合。',
         '这也是 Riesz 定理（a.e. 收敛 $\\iff$ 依测度收敛 + 子列）的那一半。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.30']
@@ -9171,13 +9177,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'L¹', '依测度', 'Markov'],
       statement: [
-        '若 $$f_n \\to f$$ 于 $$L^1$$，则 $$f_n \\to f$$ 依测度：',
+        '若 $f_n \\to f$ 于 $L^1$，则 $f_n \\to f$ 依测度：',
         '',
         '$$\\int |f_n - f| \\to 0 \\implies f_n \\to f\\text{ 依测度}$$'
       ].join('\n'),
       notes: [
-        '工具是 **Markov（Chebyshev）不等式**：$$\n\\mu(\\{|g| \\ge \\varepsilon\\}) \\le (1/\\varepsilon)\\cdot\\int |g| d\\mu$$',
-        '（因为 $$\\varepsilon \\chi_{\\{|g| \\ge \\varepsilon\\}} \\le |g|$$，两边积分即可。）取 $$g = f_n - f$$ 就得到结论。',
+        '工具是 **Markov（Chebyshev）不等式**：$\n\\mu(\\{|g| \\ge \\varepsilon\\}) \\le (1/\\varepsilon)\\cdot\\int |g| d\\mu$',
+        '（因为 $\\varepsilon \\chi_{\\{|g| \\ge \\varepsilon\\}} \\le |g|$，两边积分即可。）取 $g = f_n - f$ 就得到结论。',
         '⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 $L^{1}$ 收敛。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.29']
@@ -9192,13 +9198,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Egorov', '近一致', '有限测度'],
       statement: [
-        '设 $$\\mu(X) < \\infty$$，且 $$f_n \\to f$$ a.e.。则 $$f_n \\to f$$ **近一致**：',
+        '设 $\\mu(X) < \\infty$，且 $f_n \\to f$ a.e.。则 $f_n \\to f$ **近一致**：',
         '',
         '$$\\forall\\varepsilon > 0, \\exists E \\subseteq X : \\mu(E) < \\varepsilon,\\text{ 且} f_n \\rightrightarrows  f\\text{ 在} X \\setminus E\\text{ 上一致}$$'
       ].join('\n'),
       notes: [
         '⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。',
-        '⚠ **「$$\\mu(X) < \\infty$$」不能省。** 反例：$$f_n = \\chi_{(n, n+1)}$$ 在 $\\mathbb{R}$ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 $\\sup = 1$，无法一致收敛。',
+        '⚠ **「$\\mu(X) < \\infty$」不能省。** 反例：$f_n = \\chi_{(n, n+1)}$ 在 $\\mathbb{R}$ 上，a.e. 收敛到 0，但丢掉任何有限测度的集合后，剩下的部分仍有 $\\sup = 1$，无法一致收敛。',
         '这是「丢掉小集合换取好性质」这一类结论的模板（Lusin 定理也是这个模式）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.33']
@@ -9213,7 +9219,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'Lusin', '连续', '紧集'],
       statement: [
-        '设 $$f : [a, b] \\to \\mathbb{C}$$ 是 Lebesgue 可测的。则对任意 $\\varepsilon > 0$，存在**紧集** $$E \\subseteq [a, b]$$ 使',
+        '设 $f : [a, b] \\to \\mathbb{C}$ 是 Lebesgue 可测的。则对任意 $\\varepsilon > 0$，存在**紧集** $E \\subseteq [a, b]$ 使',
         '',
         '$$\\mu(E^c) < \\varepsilon,\\text{ 且} f|_E\\text{ 连续}$$'
       ].join('\n'),
@@ -9235,41 +9241,41 @@ window.MG = window.MG || {};
       target: 'thm.cauchy-in-measure',
       title: '依测度 Cauchy $\\implies$ 依测度收敛且有一子列 a.e. 收敛',
       proof: [
-        '**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 $k$ 存在 $$N_k$$ 使',
+        '**① 先抽子列，使「坏集合」的总测度有限。** 由 Cauchy 性，对每个 $k$ 存在 $N_k$ 使',
         '',
         '$$\\mu(E_k) \\le 2^{-k}, \\quad \\text{ 其中} E_k = \\{x : |f_n(x) - f_{N_k}(x)| \\ge 2^{-k}\\}\\quad  (n \\ge N_k)$$',
         '',
-        '不妨取 $$N_1 < N_2 < \\cdots$$。记 $$g_j = f_{N_j}$$。',
+        '不妨取 $N_1 < N_2 < \\cdots$。记 $g_j = f_{N_j}$。',
         '',
         '**② 让坏集合的尾并收敛。** 令',
         '',
         '$$F_k = \\bigcup_{j \\ge k} E_j, \\quad \\text{ 则} \\mu(F_k) \\le \\sum_{j\\ge k} 2^{-j} = 2^{1-k} \\to 0$$',
         '',
-        '**③ 在 $$F_k^c$$ 上一致 Cauchy。** 若 $$x \\notin F_k$$，则对一切 $$i \\ge j \\ge k$$ 有 $$x \\notin E_j$$，于是',
+        '**③ 在 $F_k^c$ 上一致 Cauchy。** 若 $x \\notin F_k$，则对一切 $i \\ge j \\ge k$ 有 $x \\notin E_j$，于是',
         '',
         '$$|g_i(x) - g_j(x)| \\le 2^{1-j}$$',
         '',
-        '所以 $$\\{g_j\\}$$ 在 $$F_k^c$$ 上**一致收敛**（Cauchy 且界趋于 0）。',
+        '所以 $\\{g_j\\}$ 在 $F_k^c$ 上**一致收敛**（Cauchy 且界趋于 0）。',
         '',
-        '**④ 造极限 $f$。** 令 $$F = \\bigcap_k F_k^c$$，则',
+        '**④ 造极限 $f$。** 令 $F = \\bigcap_k F_k^c$，则',
         '',
         '$$\\mu(F) = \\mu(X \\setminus \\bigcup_k F_k) \\ge \\mu(X) - \\mu(F_k)\\quad  \\forall k\\quad  \\implies\\quad  \\mu(F^c) = 0$$',
         '',
-        '在 $F$ 上令 $$f(x) = \\lim_j g_j(x)$$，在 $$F^c$$ 上任取 0。$f$ 是可测函数（可测函数的极限）。于是 $$g_j \\to f$$ **a.e.**',
+        '在 $F$ 上令 $f(x) = \\lim_j g_j(x)$，在 $F^c$ 上任取 0。$f$ 是可测函数（可测函数的极限）。于是 $g_j \\to f$ **a.e.**',
         '',
-        '**⑤ 换成依测度。** 取定 $k$，对 $$j \\ge k$$、$$x \\in F_k^c$$ 有 $$|g_j(x) - f(x)| \\le 2^{1-j}$$。于是对任意 $\\delta > 0$，',
+        '**⑤ 换成依测度。** 取定 $k$，对 $j \\ge k$、$x \\in F_k^c$ 有 $|g_j(x) - f(x)| \\le 2^{1-j}$。于是对任意 $\\delta > 0$，',
         '',
         '$$\\mu(\\{|g_j - f| > \\delta\\}) \\le \\mu(F_k) \\le 2^{1-k}\\quad  (j\\text{ 充分大})$$',
         '',
-        '令 $k \\to \\infty$ 得 $$g_j \\to f$$ 依测度。',
+        '令 $k \\to \\infty$ 得 $g_j \\to f$ 依测度。',
         '',
         '**⑥ 把 $f_{n}$ 也拉进来。** 对任意 $\\varepsilon > 0$，',
         '',
         '$$\\{|f_n - f| \\ge \\varepsilon\\} \\subseteq \\{|f_n - g_j| \\ge \\varepsilon/2\\} \\cup \\{|g_j - f| \\ge \\varepsilon/2\\}$$',
         '',
-        '右边第一项由 Cauchy 性（取 $$g_j = f_{N_j}$$ 足够靠后）任意小，第二项由 ⑤ 任意小。故 $$f_n \\to f$$ 依测度。∎'
+        '右边第一项由 Cauchy 性（取 $g_j = f_{N_j}$ 足够靠后）任意小，第二项由 ⑤ 任意小。故 $f_n \\to f$ 依测度。∎'
       ].join('\n'),
-      note: '② 里 $$\\sum 2^{-k} < \\infty$$ 是关键 —— 正是这一条让「坏集合的尾并」趋于零，也就是 Borel–Cantelli 的精神。'
+      note: '② 里 $\\sum 2^{-k} < \\infty$ 是关键 —— 正是这一条让「坏集合的尾并」趋于零，也就是 Borel–Cantelli 的精神。'
     },
 
     {
@@ -9279,13 +9285,13 @@ window.MG = window.MG || {};
       target: 'prop.L1-implies-measure',
       title: 'Markov 不等式 $\\implies L^{1}$ 收敛蕴含依测度收敛',
       proof: [
-        '**Markov 不等式**：设 $$g$$ 可测非负，则对任意 $\\varepsilon > 0$，',
+        '**Markov 不等式**：设 $g$ 可测非负，则对任意 $\\varepsilon > 0$，',
         '',
         '$$\\mu(\\{g \\ge \\varepsilon\\}) \\le (1/\\varepsilon)\\cdot\\int g d\\mu$$',
         '',
-        '证明：在 $$\\{g \\ge \\varepsilon\\}$$ 上有 $$\\varepsilon \\le g$$，即 $$\\varepsilon \\chi_{\\{g \\ge \\varepsilon\\}} \\le g$$；两边积分得 $$\\varepsilon\\cdot\\mu(\\{g \\ge \\varepsilon\\}) \\le \\int g$$。',
+        '证明：在 $\\{g \\ge \\varepsilon\\}$ 上有 $\\varepsilon \\le g$，即 $\\varepsilon \\chi_{\\{g \\ge \\varepsilon\\}} \\le g$；两边积分得 $\\varepsilon\\cdot\\mu(\\{g \\ge \\varepsilon\\}) \\le \\int g$。',
         '',
-        '取 $$g = |f_n - f|$$。给定 $\\delta > 0$，',
+        '取 $g = |f_n - f|$。给定 $\\delta > 0$，',
         '',
         '$$\\mu(\\{|f_n - f| > \\delta\\}) \\le (1/\\delta)\\cdot\\int |f_n - f| d\\mu \\to 0$$',
         '',
@@ -9300,35 +9306,35 @@ window.MG = window.MG || {};
       target: 'thm.egorov',
       title: 'a.e. 收敛 + 有限测度 $\\implies$ 近一致',
       proof: [
-        '设 $$f_n \\to f$$ a.e.，$$\\mu(X) < \\infty$$。',
+        '设 $f_n \\to f$ a.e.，$\\mu(X) < \\infty$。',
         '',
-        '**① 收敛点集与坏集合。** 令 $$F = \\{x : f_n(x) \\to f(x)\\}$$，则 $$\\mu(F^c) = 0$$。对每个固定的 $k \\in \\mathbb{N}$ 令',
+        '**① 收敛点集与坏集合。** 令 $F = \\{x : f_n(x) \\to f(x)\\}$，则 $\\mu(F^c) = 0$。对每个固定的 $k \\in \\mathbb{N}$ 令',
         '',
         '$$E_n(k) = \\bigcup_{m \\ge n} \\{x : |f_m(x) - f(x)| \\ge k^{-1}\\}$$',
         '',
         '（「从第 $n$ 项起还有偏差 $\\ge 1/k$ 的点」）。',
         '',
-        '**② 对固定 $k$，$$E_n(k)$$ 随 $n$ 递减，且 $$\\bigcap_n E_n(k) = F^c$$。**（若 $x$ 最终偏差都 $< 1/k$，就不在任何足够靠后的 $$E_n(k)$$ 里。）',
+        '**② 对固定 $k$，$E_n(k)$ 随 $n$ 递减，且 $\\bigcap_n E_n(k) = F^c$。**（若 $x$ 最终偏差都 $< 1/k$，就不在任何足够靠后的 $E_n(k)$ 里。）',
         '',
-        '**③ 用有限测度取极限。** 由 $$\\mu(X) < \\infty$$ 与测度的上连续性（递减列），',
+        '**③ 用有限测度取极限。** 由 $\\mu(X) < \\infty$ 与测度的上连续性（递减列），',
         '',
         '$$\\mu(E_n(k)) \\to \\mu(F^c) = 0\\quad  (n \\to \\infty)$$',
         '',
-        '**④ 挑出「足够快趋于 0」的那些 $n$。** 给定 $\\varepsilon > 0$，对每个 $k$ 选 $$n_k$$ 使',
+        '**④ 挑出「足够快趋于 0」的那些 $n$。** 给定 $\\varepsilon > 0$，对每个 $k$ 选 $n_k$ 使',
         '',
         '$$\\mu(E_{n_k}(k)) < \\varepsilon \\cdot 2^{-k}$$',
         '',
-        '**⑤ 并起来。** 令 $$E = \\bigcup_k E_{n_k}(k)$$。则',
+        '**⑤ 并起来。** 令 $E = \\bigcup_k E_{n_k}(k)$。则',
         '',
         '$$\\mu(E) \\le \\sum_k \\mu(E_{n_k}(k)) < \\varepsilon \\cdot \\sum_k 2^{-k} = \\varepsilon$$',
         '',
-        '**⑥ 在 $$E^c$$ 上一致收敛。** 取 $$x \\notin E$$。对任意 $k$，$$x \\notin E_{n_k}(k)$$，即对一切 $$n \\ge n_k$$ 有',
+        '**⑥ 在 $E^c$ 上一致收敛。** 取 $x \\notin E$。对任意 $k$，$x \\notin E_{n_k}(k)$，即对一切 $n \\ge n_k$ 有',
         '',
         '$$|f_n(x) - f(x)| < k^{-1}$$',
         '',
-        '这正是「$$f_n \\rightrightarrows  f$$ 在 $$E^c$$ 上」的定义（给定精度 $$k^{-1}$$ $\\le \\varepsilon$ 后，取 $$N = n_k$$）。∎',
+        '这正是「$f_n \\rightrightarrows  f$ 在 $E^c$ 上」的定义（给定精度 $k^{-1}$ $\\le \\varepsilon$ 后，取 $N = n_k$）。∎',
         '',
-        '$>$ ⚠ ③ 是唯一用到 $$\\mu(X) < \\infty$$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。'
+        '$>$ ⚠ ③ 是唯一用到 $\\mu(X) < \\infty$ 的地方（递减列的上连续性需要首项有限）。少了它这一步就不成立，反例见节点正文。'
       ].join('\n')
     },
 
@@ -9339,13 +9345,13 @@ window.MG = window.MG || {};
       target: 'cor.lusin',
       title: '简单函数逼近 + Egorov $\\implies$ Lusin',
       proof: [
-        '**① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $$\\{\\varphi_n\\}$$ 使 $$\\int|f - \\varphi_n| \\to 0$$；取子列还可保证 $$\\varphi_n \\to f$$ a.e.（由 $L^{1}$ 收敛 $\\implies$ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。',
+        '**① 先用简单函数逼近。** 由「$L^{1}$ 里的逼近」，取简单函数列 $\\{\\varphi_n\\}$ 使 $\\int|f - \\varphi_n| \\to 0$；取子列还可保证 $\\varphi_n \\to f$ a.e.（由 $L^{1}$ 收敛 $\\implies$ 依测度收敛 + 抽 a.e. 子列）。而简单函数是有限个可测集的特征函数之和。',
         '',
-        '**② 先对「指示函数」办到。** 对可测集 $A \\subseteq [a, b]$ 与任意 $\\varepsilon > 0$，由测度的正则性可找到紧集 $E \\subseteq A$ 使 $$\\mu(A \\setminus E) < \\varepsilon$$，于是 $$\\chi_A|_{E}$$ 连续（在 $E$ 上恒为 1）。有限多个这样的紧集取交，就能让一整个简单函数在某个紧集上连续。',
+        '**② 先对「指示函数」办到。** 对可测集 $A \\subseteq [a, b]$ 与任意 $\\varepsilon > 0$，由测度的正则性可找到紧集 $E \\subseteq A$ 使 $\\mu(A \\setminus E) < \\varepsilon$，于是 $\\chi_A|_{E}$ 连续（在 $E$ 上恒为 1）。有限多个这样的紧集取交，就能让一整个简单函数在某个紧集上连续。',
         '',
-        '**③ 用 Egorov 把「几乎处处」升级成「一致」。** 把 ①② 得到的「在紧集上连续」逐步加细：取一列越来越好的紧集，用 Egorov 保证 $$\\varphi_n \\to f$$ 在某块丢掉任意小测度的集合后**一致**收敛。一致收敛保持连续性，故 $f$ 限制在剩下的那个紧集上连续。',
+        '**③ 用 Egorov 把「几乎处处」升级成「一致」。** 把 ①② 得到的「在紧集上连续」逐步加细：取一列越来越好的紧集，用 Egorov 保证 $\\varphi_n \\to f$ 在某块丢掉任意小测度的集合后**一致**收敛。一致收敛保持连续性，故 $f$ 限制在剩下的那个紧集上连续。',
         '',
-        '**④ 收尾。** 每一步丢掉的测度都可以预先取得任意小，全部并起来仍小于 $\\varepsilon$（把 $\\varepsilon$ 预先换成 $\\varepsilon /3$、$\\varepsilon /9$、… 再求和）。于是得到一个紧集 $E \\subseteq [a, b]$，$$\\mu(E^c) < \\varepsilon$$ 且 $$f|_E$$ 连续。∎',
+        '**④ 收尾。** 每一步丢掉的测度都可以预先取得任意小，全部并起来仍小于 $\\varepsilon$（把 $\\varepsilon$ 预先换成 $\\varepsilon /3$、$\\varepsilon /9$、… 再求和）。于是得到一个紧集 $E \\subseteq [a, b]$，$\\mu(E^c) < \\varepsilon$ 且 $f|_E$ 连续。∎',
         '',
         '$>$ ⭐ 核心思想与 Egorov 一样是「**丢掉一小块，换取好性质**」：这次换到的是连续性。'
       ].join('\n'),
@@ -9429,7 +9435,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$ 与 $(Y, \\mathcal{N}, \\nu )$ 是测度空间。',
         '',
-        '**① 矩形**：形如 $$A \\times B$$（$$A \\in \\mathcal{M}$$，$$B \\in \\mathcal{N}$$）的集合叫（可测）矩形。全体矩形**生成** $$\\mathcal{M} \\otimes  \\mathcal{N}$$。',
+        '**① 矩形**：形如 $A \\times B$（$A \\in \\mathcal{M}$，$B \\in \\mathcal{N}$）的集合叫（可测）矩形。全体矩形**生成** $\\mathcal{M} \\otimes  \\mathcal{N}$。',
         '',
         '**② 矩形上的预测度**：令 $\\mathcal{A}$ 为**矩形的有限不交并**全体。对',
         '',
@@ -9441,7 +9447,7 @@ window.MG = window.MG || {};
         '',
         '则 $\\mu_{0}$ 是代数 $\\mathcal{A}$ 上的**预测度**。',
         '',
-        '**③ 扩张**：$\\mu_{0}$ 诱导 $X \\times Y$ 上的外测度，限制在 $$\\mathcal{M} \\otimes  \\mathcal{N}$$ 上得到一个测度，记作',
+        '**③ 扩张**：$\\mu_{0}$ 诱导 $X \\times Y$ 上的外测度，限制在 $\\mathcal{M} \\otimes  \\mathcal{N}$ 上得到一个测度，记作',
         '',
         '$$\\mu \\times \\nu$$',
         '',
@@ -9464,20 +9470,20 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '截口'],
       statement: [
-        '设 $$E \\subseteq X \\times Y$$。对 $$x \\in X$$、$$y \\in Y$$ 定义',
+        '设 $E \\subseteq X \\times Y$。对 $x \\in X$、$y \\in Y$ 定义',
         '',
         '$$E_x := \\{y \\in Y : (x, y) \\in E\\}$$',
         '$$E^y := \\{x \\in X : (x, y) \\in E\\}$$',
         '',
         '分别叫 $E$ 在 $x$ 处的**纵截口**与在 $y$ 处的**横截口**。',
         '',
-        '类似地，对函数 $$f : X \\times Y \\to \\mathbb{C}$$ 定义',
+        '类似地，对函数 $f : X \\times Y \\to \\mathbb{C}$ 定义',
         '',
         '$$f_x(y) := f^y(x) := f(x, y)$$'
       ].join('\n'),
       notes: [
         '直观：把平面图形用一根竖线（或横线）切一刀，切出来的那条线段就是截口。',
-        '截口是 Fubini 定理的语言：重积分 $$\\iint f d(\\mu \\times \\nu)$$ 就是「先沿截口积一次，再把各条截口的积分对另一变量积一次」。'
+        '截口是 Fubini 定理的语言：重积分 $\\iint f d(\\mu \\times \\nu)$ 就是「先沿截口积一次，再把各条截口的积分对另一变量积一次」。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.5']
     },
@@ -9491,9 +9497,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '截口', '可测'],
       statement: [
-        '**(a)** 若 $$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$，则对一切 $$x \\in X$$ 有 $$E_x \\in \\mathcal{N}$$，对一切 $$y \\in Y$$ 有 $$E^y \\in \\mathcal{M}$$。',
+        '**(a)** 若 $E \\in \\mathcal{M} \\otimes  \\mathcal{N}$，则对一切 $x \\in X$ 有 $E_x \\in \\mathcal{N}$，对一切 $y \\in Y$ 有 $E^y \\in \\mathcal{M}$。',
         '',
-        '**(b)** 若 $$f$$ 是 $$\\mathcal{M} \\otimes  \\mathcal{N}$$-可测的，则对一切 $$x$$ 有 $$f_x$$ 是 $$\\mathcal{N}$$-可测的，对一切 $$y$$ 有 $$f^y$$ 是 $$\\mathcal{M}$$-可测的。'
+        '**(b)** 若 $f$ 是 $\\mathcal{M} \\otimes  \\mathcal{N}$-可测的，则对一切 $x$ 有 $f_x$ 是 $\\mathcal{N}$-可测的，对一切 $y$ 有 $f^y$ 是 $\\mathcal{M}$-可测的。'
       ].join('\n'),
       notes: [
         '证明是一个「先看矩形、再看 $\\sigma$代数」的标准套路：令',
@@ -9520,10 +9526,10 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '乘积测度', '截口'],
       statement: [
-        '设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是 **$\\sigma$有限**的，$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$。则',
+        '设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是 **$\\sigma$有限**的，$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$。则',
         '',
-        '- $$x \\mapsto \\nu(E_x)$$ 在 $X$ 上可测；',
-        '- $$y \\mapsto \\mu(E^y)$$ 在 $Y$ 上可测；',
+        '- $x \\mapsto \\nu(E_x)$ 在 $X$ 上可测；',
+        '- $y \\mapsto \\mu(E^y)$ 在 $Y$ 上可测；',
         '',
         '并且',
         '',
@@ -9535,11 +9541,11 @@ window.MG = window.MG || {};
         '',
         '$$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} :\\text{ 上面两条都成立}\\}$$',
         '',
-        '- 矩形 $$E = A \\times B$$：$$\\nu(E_x) = \\chi_A(x) \\nu(B)$$，立刻成立；',
+        '- 矩形 $E = A \\times B$：$\\nu(E_x) = \\chi_A(x) \\nu(B)$，立刻成立；',
         '$\\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（用 DCT）；',
         '',
-        '于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。',
-        '最后把「有限」推广到「$\\sigma$有限」：取 $$X \\times Y = \\bigcup (X_i \\times Y_i)$$，对每个 $$E \\cap (X_i \\times Y_i)$$ 用已经证好的有限情形，再用 MCT 求和。'
+        '于是 $\\mathcal{C}$ 是一个**单调类**，含所有矩形。矩形族生成的代数由矩形构成，再由单调类定理升级到整个 $\\mathcal{M} \\otimes  \\mathcal{N}$。',
+        '最后把「有限」推广到「$\\sigma$有限」：取 $X \\times Y = \\bigcup (X_i \\times Y_i)$，对每个 $E \\cap (X_i \\times Y_i)$ 用已经证好的有限情形，再用 MCT 求和。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.36']
     },
@@ -9555,7 +9561,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 是 **$\\sigma$有限**的测度空间。',
         '',
-        '**(a) Tonelli（非负情形，无附加条件）**：若 $$f \\in L^+(X \\times Y)$$，则',
+        '**(a) Tonelli（非负情形，无附加条件）**：若 $f \\in L^+(X \\times Y)$，则',
         '',
         '$$\\int f_x d\\nu \\in L^+(X), \\quad  \\int f^y d\\mu \\in L^+(Y)$$',
         '',
@@ -9563,16 +9569,16 @@ window.MG = window.MG || {};
         '',
         '$$\\int f d(\\mu \\times \\nu) = \\int_X ( \\int_Y f(x, y) d\\nu(y) ) d\\mu(x) = \\int_Y ( \\int_X f(x, y) d\\mu(x) ) d\\nu(y)$$',
         '',
-        '**(b) Fubini（可积情形）**：若 $$f \\in L^1(\\mu \\times \\nu)$$，则',
+        '**(b) Fubini（可积情形）**：若 $f \\in L^1(\\mu \\times \\nu)$，则',
         '',
-        '- $$f_x \\in L^1(\\nu)$$ 对 a.e. x 成立，$$f^y \\in L^1(\\mu)$$ 对 a.e. y 成立；',
-        '- $$\\int f_x d\\nu \\in L^1(\\mu)$$、$$\\int f^y d\\mu \\in L^1(\\nu)$$（都在 a.e. 意义下有定义）；',
+        '- $f_x \\in L^1(\\nu)$ 对 a.e. x 成立，$f^y \\in L^1(\\mu)$ 对 a.e. y 成立；',
+        '- $\\int f_x d\\nu \\in L^1(\\mu)$、$\\int f^y d\\mu \\in L^1(\\nu)$（都在 a.e. 意义下有定义）；',
         '- 上面那两个三重等式同样成立。'
       ].join('\n'),
       notes: [
         '⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。',
         '**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。',
-        '⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $$f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$$ 之类，两个累次积分会互为相反数。',
+        '⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$ 之类，两个累次积分会互为相反数。',
         '⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37']
@@ -9587,14 +9593,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Fubini', '完备化'],
       statement: [
-        '设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是**完备**的 $\\sigma$有限测度空间，$$(X \\times Y, \\mathcal{L}, \\lambda)$$ 是',
+        '设 $(X, \\mathcal{M}, \\mu )$、$(Y, \\mathcal{N}, \\nu )$ 都是**完备**的 $\\sigma$有限测度空间，$(X \\times Y, \\mathcal{L}, \\lambda)$ 是',
         '',
         '$$(X \\times Y, \\mathcal{M} \\otimes  \\mathcal{N}, \\mu \\times \\nu)$$',
         '',
         '的**完备化**。设 $f$ 是 $\\mathcal{L}$可测的。',
         '',
-        '- 若 $$f \\ge 0$$ 或 $$f \\in L^1(\\lambda)$$：$$f_x$$ 对 a.e. x 是 $\\mathcal{N}$可测的，$$f^y$$ 对 a.e. y 是 $\\mathcal{M}$可测的；',
-        '- 若 $$f \\in L^1(\\lambda)$$：$$f_x$$、$$f^y$$ 对 a.e. 的 $x$、$y$ 可积；并且 $$x \\mapsto \\int f_x d\\nu$$、$$y \\mapsto \\int f^y d\\mu$$ 可测；',
+        '- 若 $f \\ge 0$ 或 $f \\in L^1(\\lambda)$：$f_x$ 对 a.e. x 是 $\\mathcal{N}$可测的，$f^y$ 对 a.e. y 是 $\\mathcal{M}$可测的；',
+        '- 若 $f \\in L^1(\\lambda)$：$f_x$、$f^y$ 对 a.e. 的 $x$、$y$ 可积；并且 $x \\mapsto \\int f_x d\\nu$、$y \\mapsto \\int f^y d\\mu$ 可测；',
         '- 此时',
         '',
         '$$\\int f d\\lambda = \\int_X ( \\int_Y f d\\nu ) d\\mu = \\int_Y ( \\int_X f d\\mu ) d\\nu$$'
@@ -9616,7 +9622,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['注记', '完备', '乘积测度'],
       statement: [
-        '即使 $\\mu$ 与 $\\nu$ 都**完备**，$$\\mu \\times \\nu$$ 也**经常是不完备的**：存在 $$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$ 使 $$\\mu \\times \\nu(E) = 0$$，但 $E$ 有子集不属于 $$\\mathcal{M} \\otimes  \\mathcal{N}$$。'
+        '即使 $\\mu$ 与 $\\nu$ 都**完备**，$\\mu \\times \\nu$ 也**经常是不完备的**：存在 $E \\in \\mathcal{M} \\otimes  \\mathcal{N}$ 使 $\\mu \\times \\nu(E) = 0$，但 $E$ 有子集不属于 $\\mathcal{M} \\otimes  \\mathcal{N}$。'
       ].join('\n'),
       notes: [
         '这就是为什么必须单独有「完备情形的 $F$–$T$」：实际用的时候（比如 $\\mathbb{R}^{2}$ 上的 Lebesgue 测度）我们手里的往往是**完备化之后**的测度，而不是原始的 $\\mu \\times \\nu$。',
@@ -9635,13 +9641,13 @@ window.MG = window.MG || {};
       target: 'def.product-measure',
       title: '矩形上的预测度 $\\implies$ Carathéodory 扩张得到乘积测度',
       proof: [
-        '**① $\\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k\'$$ $\\times$ $$B_j \\cap B_k\'$$），$\\mu_{0}$ 的值不变 —— 因为 $\\mu$、$\\nu$ 在各自那一侧都是有限可加的。',
+        '**① $\\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$A_j \\cap A_k\'$ $\\times$ $B_j \\cap B_k\'$），$\\mu_{0}$ 的值不变 —— 因为 $\\mu$、$\\nu$ 在各自那一侧都是有限可加的。',
         '',
         '**② $\\mu_{0}$ 是 $\\mathcal{A}$ 上的预测度。** $\\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\\mu$、$\\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。',
         '',
         '**③ 用 Carathéodory 扩张。** 由「预测度 $\\to$ 外测度 $\\to$ 可测集 $\\to$ 扩张测度」那一整套：$\\mu_{0}$ 诱导出 $X \\times Y$ 上的外测度 $\\mu^{*}$，全体 $\\mu^{*}$-可测集构成 $\\sigma$代数，$\\mu^{*}$ 在其上成为测度；而代数 $\\mathcal{A}$ 中每个集合都是 $\\mu^{*}$-可测的，且 $\\mu^{*}|_\\mathcal{A} = \\mu_{0}$。',
         '',
-        '**④ 落到 $\\mathcal{M} \\otimes \\mathcal{N}$ 上。** $\\mathcal{A}$ 含所有矩形，故 $\\mathcal{A}$ 生成 $\\mathcal{M} \\otimes \\mathcal{N} \\subseteq (\\mu^{*}$-可测集)；把 $\\mu^{*}$ 限制在 $\\mathcal{M} \\otimes \\mathcal{N}$ 上，就是所要的测度 $\\mu \\times \\nu$，它在矩形上取值 $$\\mu \\times \\nu(A \\times B) = \\mu(A) \\nu(B)$$。∎',
+        '**④ 落到 $\\mathcal{M} \\otimes \\mathcal{N}$ 上。** $\\mathcal{A}$ 含所有矩形，故 $\\mathcal{A}$ 生成 $\\mathcal{M} \\otimes \\mathcal{N} \\subseteq (\\mu^{*}$-可测集)；把 $\\mu^{*}$ 限制在 $\\mathcal{M} \\otimes \\mathcal{N}$ 上，就是所要的测度 $\\mu \\times \\nu$，它在矩形上取值 $\\mu \\times \\nu(A \\times B) = \\mu(A) \\nu(B)$。∎',
         '',
         '$>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。'
       ].join('\n')
@@ -9654,15 +9660,15 @@ window.MG = window.MG || {};
       target: 'prop.section-measurable',
       title: '截口的定义 $\\implies$ 截口保持可测性',
       proof: [
-        '**(a)** 令 $$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y) \\in X \\times Y\\}$$。',
+        '**(a)** 令 $\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y) \\in X \\times Y\\}$。',
         '',
-        '- **$\\mathcal{R}$ 含所有矩形**：若 $$E = A \\times B$$，则',
+        '- **$\\mathcal{R}$ 含所有矩形**：若 $E = A \\times B$，则',
         '',
         '$$E_x = B\\quad  (x \\in A), \\quad  E_x = \\emptyset\\quad  (x \\notin A)$$',
         '',
         '两边都在 $\\mathcal{N}$ 里（$\\mathcal{N}$ 含 $\\emptyset$）；横截口同理。',
         '',
-        '- **$\\mathcal{R}$ 是 $\\sigma$代数**：截口运算保持并、交、补 —— 例如 $$(\\bigcup_n E^{(n)})_x = \\bigcup_n E^{(n)}_x$$、$$(E^c)_x = (E_x)^c$$（这里用的是 $Y$ 在 $X \\times Y$ 中的「竖条」补集）。故 $\\mathcal{R}$ 对可数并与补封闭。',
+        '- **$\\mathcal{R}$ 是 $\\sigma$代数**：截口运算保持并、交、补 —— 例如 $(\\bigcup_n E^{(n)})_x = \\bigcup_n E^{(n)}_x$、$(E^c)_x = (E_x)^c$（这里用的是 $Y$ 在 $X \\times Y$ 中的「竖条」补集）。故 $\\mathcal{R}$ 对可数并与补封闭。',
         '',
         '于是 $\\mathcal{R} \\supseteq \\mathcal{M}($矩形族$) = \\mathcal{M} \\otimes \\mathcal{N}$，(a) 得证。',
         '',
@@ -9670,7 +9676,7 @@ window.MG = window.MG || {};
         '',
         '$$f_x^{-1}(B) = \\{y : f(x, y) \\in B\\} = (f^{-1}(B))_x$$',
         '',
-        '而 $$f^{-1}(B) \\in \\mathcal{M} \\otimes  \\mathcal{N}$$，由 (a) 它的纵截口属于 $\\mathcal{N}$，即 $$f_x^{-1}(B) \\in \\mathcal{N}$$。所以 $$f_x$$ 可测。横截口同理。∎'
+        '而 $f^{-1}(B) \\in \\mathcal{M} \\otimes  \\mathcal{N}$，由 (a) 它的纵截口属于 $\\mathcal{N}$，即 $f_x^{-1}(B) \\in \\mathcal{N}$。所以 $f_x$ 可测。横截口同理。∎'
       ].join('\n')
     },
 
@@ -9681,19 +9687,19 @@ window.MG = window.MG || {};
       target: 'thm.product-measure-sections',
       title: '单调类定理 $\\implies$ 乘积测度由截口积分给出',
       proof: [
-        '**① 先设 $\\mu$、$\\nu$ 有限。** 令 $$\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$$。',
+        '**① 先设 $\\mu$、$\\nu$ 有限。** 令 $\\mathcal{C} = \\{E \\in \\mathcal{M} \\otimes  \\mathcal{N} : x \\mapsto \\nu(E_x)\\text{ 可测}, y \\mapsto \\mu(E^y)\\text{ 可测},\\text{ 且} \\mu\\times\\nu(E) = \\int\\nu(E_x)d\\mu = \\int\\mu(E^y)d\\nu\\}$。',
         '',
-        '**② 矩形在 $\\mathcal{C}$ 里。** 若 $$E = A \\times B$$，则 $$\\nu(E_x) = \\chi_A(x)\\cdot\\nu(B)$$，它是可测的（指示函数 $\\times$ 常数），且',
+        '**② 矩形在 $\\mathcal{C}$ 里。** 若 $E = A \\times B$，则 $\\nu(E_x) = \\chi_A(x)\\cdot\\nu(B)$，它是可测的（指示函数 $\\times$ 常数），且',
         '',
         '$$\\int \\nu(E_x) d\\mu(x) = \\nu(B)\\cdot\\mu(A) = \\mu \\times \\nu(A \\times B)$$',
         '',
-        '**③ $\\mathcal{C}$ 对递增并封闭。** 若 $$E_1 \\subseteq E_2 \\subseteq \\cdots$$ 都在 $\\mathcal{C}$ 中、$$E = \\bigcup E_n$$：则 $$\\nu((E_n)_x) \\nearrow  \\nu(E_x)$$（测度的下连续性），由 MCT 得 $$x \\mapsto \\nu(E_x)$$ 可测且 $$\\int\\nu(E_x)d\\mu = \\lim \\int\\nu((E_n)_x)d\\mu = \\lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$$。',
+        '**③ $\\mathcal{C}$ 对递增并封闭。** 若 $E_1 \\subseteq E_2 \\subseteq \\cdots$ 都在 $\\mathcal{C}$ 中、$E = \\bigcup E_n$：则 $\\nu((E_n)_x) \\nearrow  \\nu(E_x)$（测度的下连续性），由 MCT 得 $x \\mapsto \\nu(E_x)$ 可测且 $\\int\\nu(E_x)d\\mu = \\lim \\int\\nu((E_n)_x)d\\mu = \\lim \\mu\\times\\nu(E_n) = \\mu\\times\\nu(E)$。',
         '',
-        '**④ $\\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。',
+        '**④ $\\mathcal{C}$ 对递减交封闭。** 若 $E_1 \\supseteq E_2 \\supseteq \\cdots$、$E = \\bigcap E_n$：因为测度有限，可以用 DCT（控制函数是常数 $\\nu(Y) < \\infty$）得到同样的等式。',
         '',
-        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} \\otimes \\mathcal{N}$。',
+        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$，于是 $\\mathcal{C} = \\mathcal{M} \\otimes \\mathcal{N}$。',
         '',
-        '**⑥ 推广到 $\\sigma$有限。** 取 $$X = \\bigcup_i X_i$$、$$Y = \\bigcup_i Y_i$$（各自测度有限），则 $$X \\times Y = \\bigcup_i (X_i \\times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \\cap (X_i \\times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎',
+        '**⑥ 推广到 $\\sigma$有限。** 取 $X = \\bigcup_i X_i$、$Y = \\bigcup_i Y_i$（各自测度有限），则 $X \\times Y = \\bigcup_i (X_i \\times Y_i)$。对每个 $i$，把 ⑤ 用在 $E \\cap (X_i \\times Y_i)$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎',
         '',
         '$>$ ⚠ $\\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。'
       ].join('\n')
@@ -9706,19 +9712,19 @@ window.MG = window.MG || {};
       target: 'thm.fubini-tonelli',
       title: '集合版（截口公式）+ MCT $\\implies$ Tonelli',
       proof: [
-        '**① 指示函数。** 取 $$f = \\chi_E$$（$$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$$）。此时',
+        '**① 指示函数。** 取 $f = \\chi_E$（$E \\in \\mathcal{M} \\otimes  \\mathcal{N}$）。此时',
         '',
         '$$\\int_Y f(x, y) d\\nu(y) = \\nu(E_x), \\quad  \\int_X f(x, y) d\\mu(x) = \\mu(E^y)$$',
         '',
         '于是三重等式正是上一条定理的内容。',
         '',
-        '**② 简单函数。** 由线性推广到 $$f = \\sum_j a_j \\chi_{E_j}$$（$$a_j \\ge 0$$，$E_{j}$ 不交）。',
+        '**② 简单函数。** 由线性推广到 $f = \\sum_j a_j \\chi_{E_j}$（$a_j \\ge 0$，$E_{j}$ 不交）。',
         '',
-        '**③ 非负可测函数。** 取简单函数列 $$\\{f_n\\} \\nearrow  f$$（简单函数逼近定理）。令',
+        '**③ 非负可测函数。** 取简单函数列 $\\{f_n\\} \\nearrow  f$（简单函数逼近定理）。令',
         '',
         '$$g_n(x) = \\int f_n(x, y) d\\nu(y), \\quad  g(x) = \\int f(x, y) d\\nu(y)$$',
         '',
-        '由 $$f_n \\uparrow  f$$ 与积分的单调性，$$\\{g_n\\}$$ 递增；由 **MCT**，$$g = \\lim_n g_n$$ 且',
+        '由 $f_n \\uparrow  f$ 与积分的单调性，$\\{g_n\\}$ 递增；由 **MCT**，$g = \\lim_n g_n$ 且',
         '',
         '$$\\int g d\\mu = \\lim_n \\int g_n d\\mu$$',
         '',
@@ -9732,11 +9738,11 @@ window.MG = window.MG || {};
         '',
         '（最后一步又用一次 MCT。）另一边对称。**这就是 Tonelli，全程不需要可积性。**',
         '',
-        '**④ Fubini。** 设 $$f \\in L^1(\\mu \\times \\nu)$$。把 $f$ 拆成 $$\\operatorname{Re} f^+, \\operatorname{Re} f^-, \\operatorname{Im} f^+, \\operatorname{Im} f^-$$ 四个非负部分，对每一部分用 ③。由',
+        '**④ Fubini。** 设 $f \\in L^1(\\mu \\times \\nu)$。把 $f$ 拆成 $\\operatorname{Re} f^+, \\operatorname{Re} f^-, \\operatorname{Im} f^+, \\operatorname{Im} f^-$ 四个非负部分，对每一部分用 ③。由',
         '',
         '$$\\int |f| d(\\mu \\times \\nu) < \\infty$$',
         '',
-        '和 ③ 的三重等式，得到 $$\\int_X (\\int_Y |f| d\\nu) d\\mu < \\infty$$，故 $$\\int_Y |f(x, \\cdot)| d\\nu < \\infty$$ 对 **a.e.** $x$ 成立 —— 即 $$f_x \\in L^1(\\nu)$$ a.e.；同理 $$f^y \\in L^1(\\mu)$$ a.e.。既然两个累次积分都已经是有限数，就可以直接相减、不再有 $\\infty - \\infty$ 的危险，三重等式对 $f$ 成立。∎',
+        '和 ③ 的三重等式，得到 $\\int_X (\\int_Y |f| d\\nu) d\\mu < \\infty$，故 $\\int_Y |f(x, \\cdot)| d\\nu < \\infty$ 对 **a.e.** $x$ 成立 —— 即 $f_x \\in L^1(\\nu)$ a.e.；同理 $f^y \\in L^1(\\mu)$ a.e.。既然两个累次积分都已经是有限数，就可以直接相减、不再有 $\\infty - \\infty$ 的危险，三重等式对 $f$ 成立。∎',
         '',
         '$>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。'
       ].join('\n')
@@ -9749,23 +9755,23 @@ window.MG = window.MG || {};
       target: 'thm.fubini-complete',
       title: '乘积测度通常不完备 $\\implies$ 必须补一条完备情形的 F–T',
       proof: [
-        '**① 先证 $f \\ge 0$ 的情形。** 由于 $\\lambda$ 是 $\\mu \\times \\nu$ 的完备化，$$\\mathcal{L}$$ 中的集合可以写成',
+        '**① 先证 $f \\ge 0$ 的情形。** 由于 $\\lambda$ 是 $\\mu \\times \\nu$ 的完备化，$\\mathcal{L}$ 中的集合可以写成',
         '',
         '$$E = F \\cup G, \\quad  F \\in \\mathcal{M} \\otimes  \\mathcal{N}, \\quad  G \\subseteq H, \\quad  \\mu \\times \\nu(H) = 0$$',
         '',
-        '（取不交化后即 $$E = F \\sqcup  G$$，于是 $$\\chi_E = \\chi_F + \\chi_G$$。）',
+        '（取不交化后即 $E = F \\sqcup  G$，于是 $\\chi_E = \\chi_F + \\chi_G$。）',
         '',
-        '**② $$\\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \\in \\mathcal{M}\\otimes\\mathcal{N}$）。',
+        '**② $\\chi_F$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \\in \\mathcal{M}\\otimes\\mathcal{N}$）。',
         '',
-        '**③ $$\\chi_G$$ 那一半也没问题** —— 因为 $$G \\subseteq H$$ 而 $\\mu \\times \\nu (H) = 0$，所以对**每一个** $x$ 都有 $$\\nu(G_x) \\le \\nu(H_x) = 0$$（$H$ 的截口是 $\\nu$零集，这一步用截口公式对 $H$ 本身成立），于是',
+        '**③ $\\chi_G$ 那一半也没问题** —— 因为 $G \\subseteq H$ 而 $\\mu \\times \\nu (H) = 0$，所以对**每一个** $x$ 都有 $\\nu(G_x) \\le \\nu(H_x) = 0$（$H$ 的截口是 $\\nu$零集，这一步用截口公式对 $H$ 本身成立），于是',
         '',
         '$$\\int \\chi_G d\\lambda = 0 = \\int ( \\int \\chi_G d\\nu ) d\\mu$$',
         '',
-        '两边都是 0。（对 a.e. 的 $x$，$$G_x$$ 是 $\\nu$零集。）',
+        '两边都是 0。（对 a.e. 的 $x$，$G_x$ 是 $\\nu$零集。）',
         '',
-        '**④ 由线性推广到非负简单函数，再用 MCT 推广到一切 $$f \\ge 0$$。** 关键点：完备化只多出「含在零集里的部分」，而这部分对积分的贡献恒为 0，所以整段论证不会被破坏。',
+        '**④ 由线性推广到非负简单函数，再用 MCT 推广到一切 $f \\ge 0$。** 关键点：完备化只多出「含在零集里的部分」，而这部分对积分的贡献恒为 0，所以整段论证不会被破坏。',
         '',
-        '**⑤ 一般情形**：把 $f$ 拆成 $$\\operatorname{Re} f^\\pm , \\operatorname{Im} f^\\pm $$ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎',
+        '**⑤ 一般情形**：把 $f$ 拆成 $\\operatorname{Re} f^\\pm , \\operatorname{Im} f^\\pm $ 四个非负部分，逐块用 ④ —— 但此时所有断言都退化成「对 a.e. 的 x / y」，因为零集上的截口行为不再逐一可控。∎',
         '',
         '$>$ 要点：**核心就是把 $E$ 拆成 $F \\sqcup G$** —— $F$ 归老定理、$G$ 归「截口都是零集」。'
       ].join('\n')
@@ -9778,19 +9784,19 @@ window.MG = window.MG || {};
       target: 'prop.product-incomplete',
       title: '乘积测度通常不完备',
       proof: [
-        '取 $$X = Y = [0, 1]$$，$\\mu = \\nu = Lebesgue$ 测度（都是完备的）。令',
+        '取 $X = Y = [0, 1]$，$\\mu = \\nu = Lebesgue$ 测度（都是完备的）。令',
         '',
         '$$D = \\{(x, x) : x \\in [0, 1]\\}$$',
         '',
-        '则 $D$ 是闭集，故属于 $$\\mathfrak{B}_{[0,1]} \\otimes  \\mathfrak{B}_{[0,1]}$$；且 $$\\mu \\times \\nu(D)$$ 可以用截口公式算：对每个 $x$，$$\\nu(D_x) = \\nu(\\{x\\}) = 0$$，故',
+        '则 $D$ 是闭集，故属于 $\\mathfrak{B}_{[0,1]} \\otimes  \\mathfrak{B}_{[0,1]}$；且 $\\mu \\times \\nu(D)$ 可以用截口公式算：对每个 $x$，$\\nu(D_x) = \\nu(\\{x\\}) = 0$，故',
         '',
         '$$\\mu \\times \\nu(D) = \\int \\nu(D_x) d\\mu(x) = 0$$',
         '',
-        '**关键**：取一个 Lebesgue 测度为 0 但**不可测**（不属 $\\mathfrak{B}_\\{[0,1]\\}$）的子集 $$N \\subseteq [0,1]$$，令',
+        '**关键**：取一个 Lebesgue 测度为 0 但**不可测**（不属 $\\mathfrak{B}_\\{[0,1]\\}$）的子集 $N \\subseteq [0,1]$，令',
         '',
         '$$G = \\{(x, x) : x \\in N\\} \\subseteq D$$',
         '',
-        '则 $G \\subseteq D$ 而 $\\mu \\times \\nu (D) = 0$，但 $G$ **不属于** $$\\mathfrak{B} \\otimes  \\mathfrak{B}$$（它的截口给出的正是 $N$ —— 若 $$G \\in \\mathfrak{B} \\otimes  \\mathfrak{B}$$，由截口可测性，对每个 $x$ 都有 $$G_x \\in \\mathfrak{B}$$，而 $$G_x$$ 是 {x} 或 $\\emptyset$ …… 需要用「$G$ 的截面沿对角线还原出 $N$」这一论证）。故 $\\mu \\times \\nu$ 不完备。∎',
+        '则 $G \\subseteq D$ 而 $\\mu \\times \\nu (D) = 0$，但 $G$ **不属于** $\\mathfrak{B} \\otimes  \\mathfrak{B}$（它的截口给出的正是 $N$ —— 若 $G \\in \\mathfrak{B} \\otimes  \\mathfrak{B}$，由截口可测性，对每个 $x$ 都有 $G_x \\in \\mathfrak{B}$，而 $G_x$ 是 {x} 或 $\\emptyset$ …… 需要用「$G$ 的截面沿对角线还原出 $N$」这一论证）。故 $\\mu \\times \\nu$ 不完备。∎',
         '',
         '$>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。'
       ].join('\n'),
@@ -9948,18 +9954,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '符号测度'],
       statement: [
-        '设 $(X, \\mathcal{M})$ 是可测空间。$$\\nu : \\mathcal{M} \\to [-\\infty, +\\infty]$$ 是**符号测度**，当且仅当',
+        '设 $(X, \\mathcal{M})$ 是可测空间。$\\nu : \\mathcal{M} \\to [-\\infty, +\\infty]$ 是**符号测度**，当且仅当',
         '',
-        '- $$\\nu(\\emptyset) = 0$$；',
-        '- $$\\nu$$ **至多取到 $\\pm \\infty$ 中的一个**（不能同时取到 $\\infty$ 与 $-\\infty$）；',
-        '- 对两两不交的 $$\\{E_j\\} \\subseteq \\mathcal{M}$$：',
+        '- $\\nu(\\emptyset) = 0$；',
+        '- $\\nu$ **至多取到 $\\pm \\infty$ 中的一个**（不能同时取到 $\\infty$ 与 $-\\infty$）；',
+        '- 对两两不交的 $\\{E_j\\} \\subseteq \\mathcal{M}$：',
         '',
         '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),\\text{ 且右边的级数绝对收敛}(\\text{当} |\\nu(\\bigsqcup E_j)| < \\infty\\text{ 时})$$'
       ].join('\n'),
       notes: [
-        '⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $$\\infty - \\infty$$。',
-        '**例 1**：$\\mu _{1}$、$\\mu _{2}$ 是测度，其中至少一个有限 $\\implies$ $$\\nu = \\mu_1 - \\mu_2$$ 是符号测度。',
-        '**例 2**：$$f : X \\to [-\\infty, +\\infty]$$ 可测，且 $$\\int f^+ d\\mu$$、$$\\int f^- d\\mu$$ 中至少一个有限 $\\implies$',
+        '⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $\\infty - \\infty$。',
+        '**例 1**：$\\mu _{1}$、$\\mu _{2}$ 是测度，其中至少一个有限 $\\implies$ $\\nu = \\mu_1 - \\mu_2$ 是符号测度。',
+        '**例 2**：$f : X \\to [-\\infty, +\\infty]$ 可测，且 $\\int f^+ d\\mu$、$\\int f^- d\\mu$ 中至少一个有限 $\\implies$',
         '',
         '$$\\nu(E) := \\int_E f d\\mu$$',
         '',
@@ -9977,15 +9983,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '正集', '负集'],
       statement: [
-        '设 $\\nu$ 是符号测度，$$E \\in \\mathcal{M}$$。',
+        '设 $\\nu$ 是符号测度，$E \\in \\mathcal{M}$。',
         '',
-        '$E$ 是**正的**：$$\\nu(F) \\ge 0$$ 对一切可测 $$F \\subseteq E$$ 成立；',
-        '$E$ 是**负的**：$$\\nu(F) \\le 0$$ 对一切可测 $$F \\subseteq E$$ 成立；',
-        '$E$ 是**零的**：$$\\nu(F) = 0$$ 对一切可测 $$F \\subseteq E$$ 成立。'
+        '$E$ 是**正的**：$\\nu(F) \\ge 0$ 对一切可测 $F \\subseteq E$ 成立；',
+        '$E$ 是**负的**：$\\nu(F) \\le 0$ 对一切可测 $F \\subseteq E$ 成立；',
+        '$E$ 是**零的**：$\\nu(F) = 0$ 对一切可测 $F \\subseteq E$ 成立。'
       ].join('\n'),
       notes: [
         '⚠ 注意「正集」不是「$\\nu (E) > 0$ 的集合」—— 它要求 **$E$ 的每一个可测子集**都非负。',
-        '⚠ 与 $\\mu$零集区分：这里的「零集」是关于符号测度 $\\nu$ 说的（$$\\nu(F) = 0$$），不是关于测度 $\\mu$ 的。'
+        '⚠ 与 $\\mu$零集区分：这里的「零集」是关于符号测度 $\\nu$ 说的（$\\nu(F) = 0$），不是关于测度 $\\mu$ 的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.1']
     },
@@ -10006,7 +10012,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '第一条由定义直接得到。',
-        '第二条是 Hahn 分解证明里反复用到的技术步骤：把可数多个正集 $P_1, P_2, \\ldots $ 不交化（$$P_j\' = P_j \\setminus \\bigcup_{i<j} P_i$$，正集之差仍是正集），再用可数可加性逐块验证。'
+        '第二条是 Hahn 分解证明里反复用到的技术步骤：把可数多个正集 $P_1, P_2, \\ldots $ 不交化（$P_j\' = P_j \\setminus \\bigcup_{i<j} P_i$，正集之差仍是正集），再用可数可加性逐块验证。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.1']
     },
@@ -10020,13 +10026,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Hahn 分解', '正集', '负集'],
       statement: [
-        '设 $\\nu$ 是 $$(X, \\mathcal{M})$$ 上的符号测度。则存在 $$P, N \\in \\mathcal{M}$$ 使',
+        '设 $\\nu$ 是 $(X, \\mathcal{M})$ 上的符号测度。则存在 $P, N \\in \\mathcal{M}$ 使',
         '',
         '$$P \\cup N = X, \\quad  P \\cap N = \\emptyset, $$',
         '',
         '其中 **$P$ 是正集、$N$ 是负集**。',
         '',
-        '若 $$P\', N\'$$ 是另一对这样的集合，则 $$P \\triangle  P\' = N \\triangle  N\'$$ 是 $\\nu$零集。'
+        '若 $P\', N\'$ 是另一对这样的集合，则 $P \\triangle  P\' = N \\triangle  N\'$ 是 $\\nu$零集。'
       ].join('\n'),
       notes: [
         '这就是「把空间按符号一刀切开」：$\\nu$ 在 $P$ 上非负、在 $N$ 上非正。',
@@ -10045,7 +10051,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '奇异', '垂直'],
       statement: [
-        '两个测度（或符号测度）$$\\mu, \\nu$$ **相互奇异**，记作 $$\\mu \\perp  \\nu$$，当且仅当存在 $$E, F \\in \\mathcal{M}$$ 使',
+        '两个测度（或符号测度）$\\mu, \\nu$ **相互奇异**，记作 $\\mu \\perp  \\nu$，当且仅当存在 $E, F \\in \\mathcal{M}$ 使',
         '',
         '$$E \\cap F = \\emptyset, \\quad  E \\cup F = X, $$',
         '',
@@ -10054,7 +10060,7 @@ window.MG = window.MG || {};
       notes: [
         '直观：两个测度「住在不相交的地方」—— 空间可以切成两块，一块完全没有 $\\mu$ 的质量，另一块完全没有 $\\nu$ 的质量。',
         '典型例子：Lebesgue 测度与「Dirac 测度 $\\delta _{0}$」相互奇异（取 $E = \\mathbb{R}\\setminus \\{0\\}$，$F = \\{0\\}$）；而任何绝对连续的测度与 Dirac 测度不奇异。',
-        '⚠ 与「绝对连续」是一对对偶概念：$$\\nu \\ll  \\mu$$ 说「$\\nu$ 的质量都在 $\\mu$ 给得出质量的地方」，$$\\nu \\perp  \\mu$$ 说「$\\nu$ 的质量都在 $\\mu$ 没有质量的地方」。'
+        '⚠ 与「绝对连续」是一对对偶概念：$\\nu \\ll  \\mu$ 说「$\\nu$ 的质量都在 $\\mu$ 给得出质量的地方」，$\\nu \\perp  \\mu$ 说「$\\nu$ 的质量都在 $\\mu$ 没有质量的地方」。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.2']
     },
@@ -10068,20 +10074,20 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Jordan 分解', '全变差'],
       statement: [
-        '设 $\\nu$ 是符号测度。则存在**测度** $$\\mu_1, \\mu_2$$ 使',
+        '设 $\\nu$ 是符号测度。则存在**测度** $\\mu_1, \\mu_2$ 使',
         '',
         '$$\\nu = \\mu_1 - \\mu_2, \\quad  \\mu_1 \\perp  \\mu_2, $$',
         '',
         '且其中**至少一个是有限的**。这样的分解是唯一的。',
         '',
-        '具体地，取 $\\nu$ 的一个 Hahn 分解 $$X = P \\sqcup  N$$，令',
+        '具体地，取 $\\nu$ 的一个 Hahn 分解 $X = P \\sqcup  N$，令',
         '',
         '$$\\nu^+ := \\nu(\\cdot \\cap P), \\quad  \\nu^- := -\\nu(\\cdot \\cap N)$$',
         '',
-        '则 $$\\nu = \\nu^+ - \\nu^-$$ 且 $$\\nu^+ \\perp  \\nu^-$$。'
+        '则 $\\nu = \\nu^+ - \\nu^-$ 且 $\\nu^+ \\perp  \\nu^-$。'
       ].join('\n'),
       notes: [
-        '**正变差** $$\\nu^+$$、**负变差** $$\\nu^-$$ 都是真测度；两者之和叫**全变差**：',
+        '**正变差** $\\nu^+$、**负变差** $\\nu^-$ 都是真测度；两者之和叫**全变差**：',
         '',
         '$$|\\nu| := \\nu^+ + \\nu^-$$',
         '',
@@ -10110,8 +10116,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '一句话：**$\\mu$ 认为「没有」的地方，$\\nu$ 也必须认为「没有」**。',
-        '⚠ 注意这里 $\\mu (E) = 0$ 用的是 $\\mu$（正测度），而 $\\nu (E) = 0$ 用的是符号测度；等价说法是 $$|\\nu|(E) = 0$$。',
-        '显然 $$\\mu \\ll  |\\mu|$$ 且 $$|\\mu| \\ll  \\mu$$（对测度 $\\mu$ 自身而言）。'
+        '⚠ 注意这里 $\\mu (E) = 0$ 用的是 $\\mu$（正测度），而 $\\nu (E) = 0$ 用的是符号测度；等价说法是 $|\\nu|(E) = 0$。',
+        '显然 $\\mu \\ll  |\\mu|$ 且 $|\\mu| \\ll  \\mu$（对测度 $\\mu$ 自身而言）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.2']
     },
@@ -10129,7 +10135,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu \\ll  \\mu \\iff |\\nu| \\ll  \\mu \\iff \\nu^+ \\ll  \\mu\\text{ 且} \\nu^- \\ll  \\mu$$',
         '',
-        '并且：若同时有 $$\\nu \\perp  \\mu$$ 与 $$\\nu \\ll  \\mu$$，则 $$\\nu = 0$$。'
+        '并且：若同时有 $\\nu \\perp  \\mu$ 与 $\\nu \\ll  \\mu$，则 $\\nu = 0$。'
       ].join('\n'),
       notes: [
         '后半句「既奇异又绝对连续 $\\implies$ 等于零」是结构定理的**起始点**：Radon–Nikodym 要说的正是「一般情形下 $\\nu$ 就是这两部分之和」。',
@@ -10153,7 +10159,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '把「零集上为零」升级成了定量的「小测度上小值」—— 这正是绝对连续这个名字里「连续」两个字的来源。',
-        '⚠ 「$\\nu$ 有限」不能省：否则 $$\\delta$$ 卡不住（例如 $\\mu = Lebesgue$ 测度、$$\\nu(E) = \\int_E 1/x$$ 这类）。',
+        '⚠ 「$\\nu$ 有限」不能省：否则 $\\delta$ 卡不住（例如 $\\mu = Lebesgue$ 测度、$\\nu(E) = \\int_E 1/x$ 这类）。',
         '（$\\Longleftarrow$）方向很直接：$\\mu (E) = 0$ 时对一切 $\\varepsilon$ 都有 $|\\nu (E)| \\le \\varepsilon$，故 $\\nu (E) = 0$。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 3.5']
@@ -10168,11 +10174,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '绝对连续', '积分'],
       statement: [
-        '设 $\\mu$ 是测度，$$f$$ 是广义 $\\mu$可积函数，定义',
+        '设 $\\mu$ 是测度，$f$ 是广义 $\\mu$可积函数，定义',
         '',
         '$$\\nu(E) := \\int_E f d\\mu$$',
         '',
-        '则 $\\nu$ 是符号测度，且 $$\\nu \\ll  \\mu$$。并且',
+        '则 $\\nu$ 是符号测度，且 $\\nu \\ll  \\mu$。并且',
         '',
         '$$\\nu\\text{ 有限} \\iff f \\in L^1(\\mu)$$'
       ].join('\n'),
@@ -10194,7 +10200,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', '绝对连续', 'L¹'],
       statement: [
-        '设 $$f \\in L^1(\\mu)$$。则',
+        '设 $f \\in L^1(\\mu)$。则',
         '',
         '$$\\forall\\varepsilon > 0, \\exists\\delta > 0 : \\mu(E) < \\delta \\implies | \\int_E f d\\mu | < \\varepsilon$$'
       ].join('\n'),
@@ -10213,17 +10219,17 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\nu$、$\\mu$ 都是**有限**测度。则二者必有一个成立：',
         '',
-        '- $$\\nu \\perp  \\mu$$；或',
-        '- 存在 $$\\varepsilon > 0$$ 与 $$E \\in \\mathcal{M}$$，$$\\mu(E) > 0$$，使 $$\\nu \\ge \\varepsilon \\mu$$ 在 $E$ 上成立（即 $$\\nu(F) \\ge \\varepsilon \\mu(F)$$ 对一切可测 $$F \\subseteq E$$）。'
+        '- $\\nu \\perp  \\mu$；或',
+        '- 存在 $\\varepsilon > 0$ 与 $E \\in \\mathcal{M}$，$\\mu(E) > 0$，使 $\\nu \\ge \\varepsilon \\mu$ 在 $E$ 上成立（即 $\\nu(F) \\ge \\varepsilon \\mu(F)$ 对一切可测 $F \\subseteq E$）。'
       ].join('\n'),
       notes: [
         '这是 Radon–Nikodym 证明里的**关键一步**：它提供了一个「往下顶」的 $\\varepsilon$，从而可以造出那个上确界函数 $f$。',
-        '证明用的手法很典型：对每个 $n$，取 $$\\nu - n^{-1} \\mu$$ 的一个 Hahn 分解 $$X = P_n \\sqcup  N_n$$。令',
+        '证明用的手法很典型：对每个 $n$，取 $\\nu - n^{-1} \\mu$ 的一个 Hahn 分解 $X = P_n \\sqcup  N_n$。令',
         '',
         '$$P = \\bigcup_n P_n, \\quad  N = \\bigcap_n N_n$$',
         '',
-        '$N$ 是每个 $$\\nu - n^{-1}\\mu$$ 的负集，于是 $$0 \\le \\nu(N) \\le n^{-1} \\mu(N)$$ 对一切 $n$ 成立，令 $n \\to \\infty$ 得 $\\nu (N) = 0$。',
-        '于是若 $\\mu (P) = 0$，则 $\\nu \\perp \\mu$（取 $E = P$、$F = N$）；若 $\\mu (P) > 0$，则某个 $n$ 有 $\\mu (P_{n}) > 0$，而 $P_{n}$ 是 $$\\nu - n^{-1}\\mu$$ 的正集，即 $\\nu \\ge n^{-1} \\mu$ 在 $P_{n}$ 上成立。∎'
+        '$N$ 是每个 $\\nu - n^{-1}\\mu$ 的负集，于是 $0 \\le \\nu(N) \\le n^{-1} \\mu(N)$ 对一切 $n$ 成立，令 $n \\to \\infty$ 得 $\\nu (N) = 0$。',
+        '于是若 $\\mu (P) = 0$，则 $\\nu \\perp \\mu$（取 $E = P$、$F = N$）；若 $\\mu (P) > 0$，则某个 $n$ 有 $\\mu (P_{n}) > 0$，而 $P_{n}$ 是 $\\nu - n^{-1}\\mu$ 的正集，即 $\\nu \\ge n^{-1} \\mu$ 在 $P_{n}$ 上成立。∎'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.8']
     },
@@ -10241,17 +10247,17 @@ window.MG = window.MG || {};
         '',
         '$$\\lambda \\perp  \\mu, \\quad  \\rho \\ll  \\mu, \\quad  \\nu = \\lambda + \\rho$$',
         '',
-        '且 $$\\rho$$ 可以写成积分：存在广义 $\\mu$可积函数 $$f$$ 使',
+        '且 $\\rho$ 可以写成积分：存在广义 $\\mu$可积函数 $f$ 使',
         '',
         '$$d\\rho = f d\\mu$$',
         '',
-        '任何两个这样的 $$f$$ 都在 $\\mu -\\text{a.e.}$ 意义下相等。'
+        '任何两个这样的 $f$ 都在 $\\mu -\\text{a.e.}$ 意义下相等。'
       ].join('\n'),
       notes: [
         '⭐ 这是整个符号测度理论的**结构定理**：任何 $\\nu$ 都能唯一拆成「与 $\\mu$ 奇异的部分」+「关于 $\\mu$ 绝对连续的部分」。',
-        '特别地，**当 $\\nu \\ll \\mu$ 时**，$$\\lambda = 0$$，于是 $$d\\nu = f d\\mu$$ —— 这就是通常说的 **Radon–Nikodym 定理**。',
+        '特别地，**当 $\\nu \\ll \\mu$ 时**，$\\lambda = 0$，于是 $d\\nu = f d\\mu$ —— 这就是通常说的 **Radon–Nikodym 定理**。',
         '⚠ $\\sigma$有限不能省（对 $\\nu$ 和 $\\mu$ 都要）。',
-        '证明的三步（下一段箭头里展开）：$I. \\nu$、$\\mu$ 有限；II. 用 $\\sigma$有限切成有限块；$III. \\nu$ 是符号测度时分别对 $$\\nu^+, \\nu^-$$ 做。'
+        '证明的三步（下一段箭头里展开）：$I. \\nu$、$\\mu$ 有限；II. 用 $\\sigma$有限切成有限块；$III. \\nu$ 是符号测度时分别对 $\\nu^+, \\nu^-$ 做。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.8']
     },
@@ -10265,16 +10271,16 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'RN 导数', 'Lebesgue 分解'],
       statement: [
-        '设 $$\\nu \\ll  \\mu$$（都是 $\\sigma$有限的）。取定理里的 $$f$$，称',
+        '设 $\\nu \\ll  \\mu$（都是 $\\sigma$有限的）。取定理里的 $f$，称',
         '',
         '$$f = \\frac{d\\nu}{d\\mu}$$',
         '',
         '为 $\\nu$ 关于 $\\mu$ 的 **Radon–Nikodym 导数**（注意它定义在「$\\mu$本质相同的函数类」上，不是单个函数）。',
         '',
-        '一般的分解 $$\\nu = \\lambda + \\rho$$（$$\\lambda \\perp  \\mu$$，$$\\rho \\ll  \\mu$$）称为 $\\nu$ 关于 $\\mu$ 的 **Lebesgue 分解**。'
+        '一般的分解 $\\nu = \\lambda + \\rho$（$\\lambda \\perp  \\mu$，$\\rho \\ll  \\mu$）称为 $\\nu$ 关于 $\\mu$ 的 **Lebesgue 分解**。'
       ].join('\n'),
       notes: [
-        '记号的用意：$$d\\nu = f d\\mu$$ 看起来就像两个「微分」的商。',
+        '记号的用意：$d\\nu = f d\\mu$ 看起来就像两个「微分」的商。',
         '⚠ 「$\\mu$本质相同」$= \\mu -\\text{a.e.}$ 相等 —— 这是 RN 导数唯一的**唯一性**内容：它不是一个函数，而是一个等价类。',
         '术语提醒：「Lebesgue 分解」这个名字在两个地方出现 —— 这里指的是 $\\nu$ 拆成奇异部分 + 绝对连续部分。'
       ].join('\n\n'),
@@ -10294,11 +10300,11 @@ window.MG = window.MG || {};
         '',
         '$$\\nu \\ll  \\mu, \\quad  \\mu \\ll  \\lambda$$',
         '',
-        '**(a)** 若 $$g \\in L^1(\\nu)$$，则 $$g \\frac{d\\nu}{d\\mu} \\in L^1(\\mu)$$，且',
+        '**(a)** 若 $g \\in L^1(\\nu)$，则 $g \\frac{d\\nu}{d\\mu} \\in L^1(\\mu)$，且',
         '',
         '$$\\int g d\\nu = \\int g \\frac{d\\nu}{d\\mu} d\\mu$$',
         '',
-        '**(b)** 此时 $$\\nu \\ll  \\lambda$$，且**链式法则**成立：',
+        '**(b)** 此时 $\\nu \\ll  \\lambda$，且**链式法则**成立：',
         '',
         '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  (\\lambda-\\text{a.e.})$$'
       ].join('\n'),
@@ -10308,7 +10314,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu = \\int_E \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda} d\\lambda$$',
         '',
-        '两边对照 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。'
+        '两边对照 $\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$ 即得（「用积分识别函数」那条命题正是用来做这一步的）。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.9']
     },
@@ -10322,11 +10328,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'RN 导数'],
       statement: [
-        '若 $$\\mu \\ll  \\lambda$$ 且 $$\\lambda \\ll  \\mu$$（两个 $\\sigma$有限测度互为绝对连续），则',
+        '若 $\\mu \\ll  \\lambda$ 且 $\\lambda \\ll  \\mu$（两个 $\\sigma$有限测度互为绝对连续），则',
         '',
         '$$\\frac{d\\mu}{d\\lambda} \\cdot \\frac{d\\lambda}{d\\mu} = 1\\quad  \\text{a.e.}$$'
       ].join('\n'),
-      notes: '两条链式法则一拼：$$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$$，而 $$d\\mu / d\\mu \\equiv  1$$。',
+      notes: '两条链式法则一拼：$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$，而 $d\\mu / d\\mu \\equiv  1$。',
       refs: ['Folland, Real Analysis, Theorem 3.9']
     },
 
@@ -10347,7 +10353,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu(\\emptyset) = 0, $$',
         '',
-        '且对两两不交的 $$\\{E_j\\} \\subseteq \\mathcal{M}$$：',
+        '且对两两不交的 $\\{E_j\\} \\subseteq \\mathcal{M}$：',
         '',
         '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),\\text{ 右边的级数绝对收敛}$$'
       ].join('\n'),
@@ -10367,7 +10373,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Radon-Nikodym', '复测度'],
       statement: [
-        '设 $\\nu$ 是复测度、$\\mu$ 是 **$\\sigma$有限**测度。则存在复测度 $\\lambda$ 与 $$f \\in L^1(\\mu)$$ 使',
+        '设 $\\nu$ 是复测度、$\\mu$ 是 **$\\sigma$有限**测度。则存在复测度 $\\lambda$ 与 $f \\in L^1(\\mu)$ 使',
         '',
         '$$d\\nu = d\\lambda + f d\\mu, \\quad  \\lambda \\perp  \\mu, $$',
         '',
@@ -10375,7 +10381,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '复测度可以拆成实部与虚部、各自再用符号测度的版本 —— 这是把上一套结论搬到复情形的标准做法。',
-        '⚠ 这里 $$f \\in L^1(\\mu)$$ 而不再是「广义可积」：因为复测度有限，$$f$$ 必须真可积。'
+        '⚠ 这里 $f \\in L^1(\\mu)$ 而不再是「广义可积」：因为复测度有限，$f$ 必须真可积。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.11']
     },
@@ -10389,20 +10395,20 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '全变差', '复测度'],
       statement: [
-        '设 $\\nu$ 是复测度（或符号测度），$$|\\nu|$$ 是它的全变差。则',
+        '设 $\\nu$ 是复测度（或符号测度），$|\\nu|$ 是它的全变差。则',
         '',
-        '**(a)** $$|\\nu(E)| \\le |\\nu|(E)$$ 对一切 $$E \\in \\mathcal{M}$$ 成立；',
+        '**(a)** $|\\nu(E)| \\le |\\nu|(E)$ 对一切 $E \\in \\mathcal{M}$ 成立；',
         '',
-        '**(b)** 若 $$d\\nu = f d\\mu$$（即 $\\nu \\ll \\mu$）则 $$d|\\nu| = |f| d\\mu$$，即',
+        '**(b)** 若 $d\\nu = f d\\mu$（即 $\\nu \\ll \\mu$）则 $d|\\nu| = |f| d\\mu$，即',
         '',
         '$$|\\nu|(E) = \\int_E |f| d\\mu$$'
       ].join('\n'),
       notes: [
-        '(b) 的证法：先取 $$\\rho = |\\nu_1| + |\\nu_2|$$ 把 $\\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\\rho$ 上。于是要证的就是',
+        '(b) 的证法：先取 $\\rho = |\\nu_1| + |\\nu_2|$ 把 $\\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\\rho$ 上。于是要证的就是',
         '',
         '$$|f_1| \\frac{d\\mu_1}{d\\rho} = |f_2| \\frac{d\\mu_2}{d\\rho}\\quad  \\rho-\\text{a.e.}$$',
         '',
-        '从而 $$|f_1| d\\mu_1 = |f_2| d\\mu_2$$ —— 说明全变差的密度与「用哪个 $\\mu$ 表示 $\\nu$」无关。',
+        '从而 $|f_1| d\\mu_1 = |f_2| d\\mu_2$ —— 说明全变差的密度与「用哪个 $\\mu$ 表示 $\\nu$」无关。',
         '由此也得到一个实用的直觉：**全变差就是「把质量取绝对值之后再测一遍」**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.3', 'Rudin, Real and Complex Analysis, Ch. 6']
@@ -10418,44 +10424,44 @@ window.MG = window.MG || {};
       target: 'thm.hahn-decomposition',
       title: '符号测度 + 正集的封闭性 $\\implies$ Hahn 分解',
       proof: [
-        '**① 先把 $\\nu$ 的无穷值甩掉。** 不妨设 $\\nu$ 不取 $\\infty$（若 $\\nu$ 不取 $-\\infty$ 就改证 $-\\nu$）。于是 $$\\nu(X) < \\infty$$ 中的「上方」是安全的。',
+        '**① 先把 $\\nu$ 的无穷值甩掉。** 不妨设 $\\nu$ 不取 $\\infty$（若 $\\nu$ 不取 $-\\infty$ 就改证 $-\\nu$）。于是 $\\nu(X) < \\infty$ 中的「上方」是安全的。',
         '',
         '**② 挑一个「最大的正集」。** 令',
         '',
         '$$m := \\sup\\{ \\nu(E) : E\\text{ 是正集} \\}, $$',
         '',
-        '则 $$m < \\infty$$（因为 $\\nu$ 不取 $\\infty$ 而 $\\nu (E) \\le \\nu (X)$ 型估计受控）。取一列正集 $$\\{P_j\\}$$ 使 $$\\nu(P_j) \\to m$$，令',
+        '则 $m < \\infty$（因为 $\\nu$ 不取 $\\infty$ 而 $\\nu (E) \\le \\nu (X)$ 型估计受控）。取一列正集 $\\{P_j\\}$ 使 $\\nu(P_j) \\to m$，令',
         '',
         '$$P = \\bigcup_j P_j$$',
         '',
-        '由正集的可数并仍是正集，$P$ 是正集；且 $$\\nu(P) = m$$（正集的不交化 + 可数可加）。',
+        '由正集的可数并仍是正集，$P$ 是正集；且 $\\nu(P) = m$（正集的不交化 + 可数可加）。',
         '',
         '**③ 断言 $N = X \\setminus P$ 是负集。** 反设 $N$ 不含负集，即 $N$ 不是负的。要证它会挤出一个比 $m$ 更大的正集。',
         '',
-        '**④ 在 $N$ 里挖出正集。** 若 $N$ 不是负集，则存在可测 $$A \\subseteq N$$ 使 $$\\nu(A) > 0$$。「$A$ 是正的」就到此结束；否则存在 $$A_1 \\subseteq A$$ 使 $$\\nu(A_1) < 0$$。取**最小的自然数** $$n$$ 使',
+        '**④ 在 $N$ 里挖出正集。** 若 $N$ 不是负集，则存在可测 $A \\subseteq N$ 使 $\\nu(A) > 0$。「$A$ 是正的」就到此结束；否则存在 $A_1 \\subseteq A$ 使 $\\nu(A_1) < 0$。取**最小的自然数** $n$ 使',
         '',
         '$$\\nu(A_1) < -1/n$$',
         '',
         '（$n_1$ 取「使存在负测度集 $\\le -1/n_{1}$ 的最小 $n$」。**取最小**这一步是关键 —— 它保证后面能取极限。）',
         '',
-        '再在 $$A \\setminus A_1$$ 里重复同样的操作，得到 $$A_2, \\ldots $$',
+        '再在 $A \\setminus A_1$ 里重复同样的操作，得到 $A_2, \\ldots $',
         '',
-        '**⑤ 若操作终止**，剩下的 $$B = A \\setminus \\bigcup_k A_k$$ 就是正集（因为已经没有负子集可以挖了）。',
-        '**⑥ 若操作不终止**，取 $$B = A \\setminus \\bigcup_k A_k$$。由可数可加性',
+        '**⑤ 若操作终止**，剩下的 $B = A \\setminus \\bigcup_k A_k$ 就是正集（因为已经没有负子集可以挖了）。',
+        '**⑥ 若操作不终止**，取 $B = A \\setminus \\bigcup_k A_k$。由可数可加性',
         '',
         '$$\\nu(A) = \\nu(B) + \\sum_k \\nu(A_k)$$',
         '',
-        '而 $$\\sum_k |\\nu(A_k)| < \\infty$$（因为左边有限），特别地 $$\\nu(A_k) \\to 0$$，这迫使 $$n_k \\to \\infty$$，从而对任意 $$F \\subseteq B$$：若 $$\\nu(F) < -1/n_{k-1}$$，就与 $$n_k$$ 的**最小性**矛盾。于是 $$\\nu(F) \\ge -1/n_{k-1}$$ 对一切 $k$ 成立，令 $k \\to \\infty$ 得 $$\\nu(F) \\ge 0$$。故 $B$ 也是正集。',
+        '而 $\\sum_k |\\nu(A_k)| < \\infty$（因为左边有限），特别地 $\\nu(A_k) \\to 0$，这迫使 $n_k \\to \\infty$，从而对任意 $F \\subseteq B$：若 $\\nu(F) < -1/n_{k-1}$，就与 $n_k$ 的**最小性**矛盾。于是 $\\nu(F) \\ge -1/n_{k-1}$ 对一切 $k$ 成立，令 $k \\to \\infty$ 得 $\\nu(F) \\ge 0$。故 $B$ 也是正集。',
         '',
         '**⑦ 矛盾。** 由 ⑤⑥，$A$ 中含正集 $B$。于',
         '',
         '$$\\nu(B) = \\nu(A) - \\sum_k \\nu(A_k) > 0$$',
         '',
-        '说明 $$P \\cup B$$ 是正集且 $$\\nu(P \\cup B) = m + \\nu(B) > m$$，与 $m$ 的定义矛盾。故 $N$ 必为负集，$$X = P \\sqcup  N$$ 就是 Hahn 分解，**存在性得证**。',
+        '说明 $P \\cup B$ 是正集且 $\\nu(P \\cup B) = m + \\nu(B) > m$，与 $m$ 的定义矛盾。故 $N$ 必为负集，$X = P \\sqcup  N$ 就是 Hahn 分解，**存在性得证**。',
         '',
-        '**⑧ 唯一性。** 设 $$P\' \\sqcup  N\'$$ 是另一对。则 $$P \\setminus P\' \\subseteq P$$（正集）且 $$\\subseteq N\'$$（负集），所以它既是正集又是负集 —— 只能是零集；同理 $$P\' \\setminus P$$ 也是零集。故 $$P \\triangle  P\' = N \\triangle  N\'$$ 是 $\\nu$零集。∎'
+        '**⑧ 唯一性。** 设 $P\' \\sqcup  N\'$ 是另一对。则 $P \\setminus P\' \\subseteq P$（正集）且 $\\subseteq N\'$（负集），所以它既是正集又是负集 —— 只能是零集；同理 $P\' \\setminus P$ 也是零集。故 $P \\triangle  P\' = N \\triangle  N\'$ 是 $\\nu$零集。∎'
       ].join('\n'),
-      note: '⭐ 「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $$\\nu(F) \\ge -1/n_{k-1}$$ 一路通过 $k \\to \\infty$ 得到 $$\\nu(F) \\ge 0$$。'
+      note: '⭐ 「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $\\nu(F) \\ge -1/n_{k-1}$ 一路通过 $k \\to \\infty$ 得到 $\\nu(F) \\ge 0$。'
     },
 
     {
@@ -10465,25 +10471,25 @@ window.MG = window.MG || {};
       target: 'thm.jordan-decomposition',
       title: 'Hahn 分解 $\\implies$ Jordan 分解',
       proof: [
-        '取 $\\nu$ 的一个 Hahn 分解 $$X = P \\sqcup  N$$（$P$ 正、$N$ 负）。定义',
+        '取 $\\nu$ 的一个 Hahn 分解 $X = P \\sqcup  N$（$P$ 正、$N$ 负）。定义',
         '',
         '$$\\nu^+(E) := \\nu(E \\cap P), \\quad  \\nu^-(E) := -\\nu(E \\cap N)$$',
         '',
-        '**① 它们都是测度。** 对 $\\nu ^{+}$：$$\\nu^+(\\emptyset) = \\nu(\\emptyset) = 0$$；对不交的 $$\\{E_j\\}$$，',
+        '**① 它们都是测度。** 对 $\\nu ^{+}$：$\\nu^+(\\emptyset) = \\nu(\\emptyset) = 0$；对不交的 $\\{E_j\\}$，',
         '',
         '$$\\nu^+( \\bigsqcup_j E_j ) = \\nu( \\bigsqcup_j (E_j \\cap P) ) = \\sum_j \\nu(E_j \\cap P) = \\sum_j \\nu^+(E_j)$$',
         '',
-        '（右边的每一项都 $\\ge 0$，因为 $$E_j \\cap P$$ 是正集的子集。）$\\nu ^{-}$ 同理。',
+        '（右边的每一项都 $\\ge 0$，因为 $E_j \\cap P$ 是正集的子集。）$\\nu ^{-}$ 同理。',
         '',
         '**② $\\nu = \\nu ^{+} - \\nu ^{-}$。** 对任意 $E$，',
         '',
         '$$\\nu(E) = \\nu(E \\cap P) + \\nu(E \\cap N) = \\nu^+(E) - \\nu^-(E)$$',
         '',
-        '**③ $\\nu ^{+} \\perp \\nu ^{-}$。** 取 $$E = P$$、$$F = N$$：$P$ 是 $\\nu ^{-}$零集（$\\nu ^{-}(P) = -\\nu (P \\cap N) = 0$），$N$ 是 $\\nu ^{+}$零集。',
+        '**③ $\\nu ^{+} \\perp \\nu ^{-}$。** 取 $E = P$、$F = N$：$P$ 是 $\\nu ^{-}$零集（$\\nu ^{-}(P) = -\\nu (P \\cap N) = 0$），$N$ 是 $\\nu ^{+}$零集。',
         '',
         '**④ 至少一个有限。** 由符号测度的定义，$\\nu$ 至多取到 $\\pm \\infty$ 中的一个：若 $\\nu$ 不取 $\\infty$ 则 $\\nu ^{+}$ 有限，若 $\\nu$ 不取 $-\\infty$ 则 $\\nu ^{-}$ 有限。',
         '',
-        '**⑤ 唯一性。** 设 $$\\nu = \\mu_1 - \\mu_2$$ 也是这种分解（$$\\mu_1 \\perp  \\mu_2$$）。取见证奇异性的划分 $$X = E \\sqcup  F$$（$E$ 是 $\\mu _{1}$零集、$F$ 是 $\\mu _{2}$零集）。由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $$\\mu_1 = \\nu^+$$、$$\\mu_2 = \\nu^-$$。∎'
+        '**⑤ 唯一性。** 设 $\\nu = \\mu_1 - \\mu_2$ 也是这种分解（$\\mu_1 \\perp  \\mu_2$）。取见证奇异性的划分 $X = E \\sqcup  F$（$E$ 是 $\\mu _{1}$零集、$F$ 是 $\\mu _{2}$零集）。由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $\\mu_1 = \\nu^+$、$\\mu_2 = \\nu^-$。∎'
       ].join('\n')
     },
 
@@ -10494,11 +10500,11 @@ window.MG = window.MG || {};
       target: 'thm.ac-epsilon-delta',
       title: '绝对连续 $\\implies \\varepsilon$–$\\delta$ 刻画（$\\nu$ 有限时）',
       proof: [
-        '设 $\\nu$ 有限且 $$\\nu \\ll  \\mu$$。由「绝对连续与变差」那条命题，可以**不妨设 $\\nu$ 本身就是正测度**（换成 $|\\nu |$ 不影响结论）。',
+        '设 $\\nu$ 有限且 $\\nu \\ll  \\mu$。由「绝对连续与变差」那条命题，可以**不妨设 $\\nu$ 本身就是正测度**（换成 $|\\nu |$ 不影响结论）。',
         '',
         '**$(\\Longleftarrow )$** 若 $\\mu (E) = 0$，则对任意 $\\varepsilon > 0$ 有 $\\mu (E) < \\delta$，于是 $|\\nu (E)| \\le \\varepsilon$；令 $\\varepsilon \\to 0$ 得 $\\nu (E) = 0$。',
         '',
-        '**$(\\implies )$ 反证。** 设存在 $\\varepsilon > 0$，使对**一切** $n$ 都能找到 $$E_n \\in \\mathcal{M}$$ 满足',
+        '**$(\\implies )$ 反证。** 设存在 $\\varepsilon > 0$，使对**一切** $n$ 都能找到 $E_n \\in \\mathcal{M}$ 满足',
         '',
         '$$\\mu(E_n) < 2^{-n}, \\quad  \\nu(E_n) \\ge \\varepsilon$$',
         '',
@@ -10506,13 +10512,13 @@ window.MG = window.MG || {};
         '',
         '$$F_k = \\bigcup_{n \\ge k} E_n, \\quad  F = \\bigcap_k F_k$$',
         '',
-        '则 $$\\mu(F_k) \\le \\sum_{n\\ge k} 2^{-n} = 2^{1-k} \\to 0$$，由 $\\mu$ 的下连续性与递减性得 $$\\mu(F) = 0$$。',
+        '则 $\\mu(F_k) \\le \\sum_{n\\ge k} 2^{-n} = 2^{1-k} \\to 0$，由 $\\mu$ 的下连续性与递减性得 $\\mu(F) = 0$。',
         '',
-        '另一方面 $$\\nu(F_k) \\ge \\nu(E_k) \\ge \\varepsilon$$ 对一切 $k$ 成立；由 $\\nu$ 有限与测度的下连续性（$$F_k \\searrow  F$$，首项有限）得',
+        '另一方面 $\\nu(F_k) \\ge \\nu(E_k) \\ge \\varepsilon$ 对一切 $k$ 成立；由 $\\nu$ 有限与测度的下连续性（$F_k \\searrow  F$，首项有限）得',
         '',
         '$$\\nu(F) = \\lim_k \\nu(F_k) \\ge \\varepsilon > 0$$',
         '',
-        '这与 $$\\nu \\ll  \\mu$$（$\\mu (F) = 0$ 应推出 $\\nu (F) = 0$）矛盾。故这样的 $\\varepsilon$ 不存在，即对每个 $\\varepsilon > 0$ 都有对应的 $\\delta$。∎',
+        '这与 $\\nu \\ll  \\mu$（$\\mu (F) = 0$ 应推出 $\\nu (F) = 0$）矛盾。故这样的 $\\varepsilon$ 不存在，即对每个 $\\varepsilon > 0$ 都有对应的 $\\delta$。∎',
         '',
         '$>$ ⭐ 反证里那个「对一切 $n$ 都能找到」是取出的关键：它把「不连续」翻译成了一列越来越小的坏集合，再用 Borel–Cantelli 型的尾并把它们压成零集。'
       ].join('\n')
@@ -10531,45 +10537,45 @@ window.MG = window.MG || {};
         '',
         '$$\\mathcal{F} := \\{ f : X \\to [0, +\\infty] : \\int_E f d\\mu \\le \\nu(E)\\quad  \\forall E \\in \\mathcal{M} \\}$$',
         '',
-        '则 $$0 \\in \\mathcal{F}$$，且 $\\mathcal{F}$ 对**取大**封闭：若 $f, g \\in \\mathcal{F}$，令 $$A = \\{f > g\\}$$、$$h = \\max_{f, g}$$，则对任意 $E$，',
+        '则 $0 \\in \\mathcal{F}$，且 $\\mathcal{F}$ 对**取大**封闭：若 $f, g \\in \\mathcal{F}$，令 $A = \\{f > g\\}$、$h = \\max_{f, g}$，则对任意 $E$，',
         '',
         '$$\\int_E h d\\mu = \\int_{E\\cap A} f d\\mu + \\int_{E\\setminus A} g d\\mu \\le \\nu(E\\cap A) + \\nu(E\\setminus A) = \\nu(E)$$',
         '',
         '故 $h \\in \\mathcal{F}$。',
         '',
-        '**② 取上确界。** 令 $$a := \\sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$$（这一步用到 $\\nu$ 有限）。取 $$\\{f_n\\} \\subseteq \\mathcal{F}$$ 使 $$\\int f_n d\\mu \\to a$$，令',
+        '**② 取上确界。** 令 $a := \\sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$（这一步用到 $\\nu$ 有限）。取 $\\{f_n\\} \\subseteq \\mathcal{F}$ 使 $\\int f_n d\\mu \\to a$，令',
         '',
         '$$g_n = \\max_{f_1, \\ldots , f_n}, \\quad  f = \\sup_n f_n$$',
         '',
-        '由 ① 每个 $$g_n \\in \\mathcal{F}$$，且 $$g_n \\uparrow  f$$、$$\\int g_n d\\mu \\ge \\int f_n d\\mu$$，故 $$\\lim_n \\int g_n d\\mu = a$$。由 **MCT**，$$f \\in \\mathcal{F}$$ 且 $$\\int f d\\mu = a$$。',
+        '由 ① 每个 $g_n \\in \\mathcal{F}$，且 $g_n \\uparrow  f$、$\\int g_n d\\mu \\ge \\int f_n d\\mu$，故 $\\lim_n \\int g_n d\\mu = a$。由 **MCT**，$f \\in \\mathcal{F}$ 且 $\\int f d\\mu = a$。',
         '',
-        '**③ 断言 $$d\\lambda := d\\nu - f d\\mu$$ 与 $\\mu$ 奇异。** 反设不然，由**引理**，存在 $\\varepsilon > 0$ 与 $$E \\in \\mathcal{M}$$、$\\mu (E) > 0$，使 $$\\lambda \\ge \\varepsilon\\mu$$ 在 $E$ 上成立，即',
+        '**③ 断言 $d\\lambda := d\\nu - f d\\mu$ 与 $\\mu$ 奇异。** 反设不然，由**引理**，存在 $\\varepsilon > 0$ 与 $E \\in \\mathcal{M}$、$\\mu (E) > 0$，使 $\\lambda \\ge \\varepsilon\\mu$ 在 $E$ 上成立，即',
         '',
         '$$\\varepsilon \\chi_E d\\mu \\le d\\nu - f d\\mu\\quad  \\implies\\quad  (f + \\varepsilon \\chi_E) d\\mu \\le d\\nu$$',
         '',
-        '于是 $$f + \\varepsilon \\chi_E \\in \\mathcal{F}$$，但',
+        '于是 $f + \\varepsilon \\chi_E \\in \\mathcal{F}$，但',
         '',
         '$$\\int (f + \\varepsilon \\chi_E) d\\mu = a + \\varepsilon\\cdot\\mu(E) > a$$',
         '',
-        '与 $a$ 的**上确界**性矛盾。故 $\\lambda \\perp \\mu$，$$\\nu = \\lambda + (f d\\mu)$$ 就是所要的分解。',
+        '与 $a$ 的**上确界**性矛盾。故 $\\lambda \\perp \\mu$，$\\nu = \\lambda + (f d\\mu)$ 就是所要的分解。',
         '',
-        '**④ 唯一性。** 设 $$d\\nu = d\\lambda\' + f\' d\\mu$$ 是另一种分解。则',
+        '**④ 唯一性。** 设 $d\\nu = d\\lambda\' + f\' d\\mu$ 是另一种分解。则',
         '',
         '$$d\\lambda - d\\lambda\' = (f\' - f) d\\mu$$',
         '',
-        '左边与 $\\mu$ 奇异（两个各与 $\\mu$ 奇异的测度之差仍与 $\\mu$ 奇异），右边关于 $\\mu$ 绝对连续。由「既奇异又绝对连续 $\\implies$ 等于零」，两边都是 0，即 $$\\lambda = \\lambda\'$$ 且 $$f = f\'$$ $\\mu -\\text{a.e.}$。',
+        '左边与 $\\mu$ 奇异（两个各与 $\\mu$ 奇异的测度之差仍与 $\\mu$ 奇异），右边关于 $\\mu$ 绝对连续。由「既奇异又绝对连续 $\\implies$ 等于零」，两边都是 0，即 $\\lambda = \\lambda\'$ 且 $f = f\'$ $\\mu -\\text{a.e.}$。',
         '',
-        '**II. 推广到 $\\sigma$有限。** 取 $$X = \\bigcup_j A_j$$（$$\\mu(A_j) < \\infty$$、$$\\nu(A_j) < \\infty$$）。令',
+        '**II. 推广到 $\\sigma$有限。** 取 $X = \\bigcup_j A_j$（$\\mu(A_j) < \\infty$、$\\nu(A_j) < \\infty$）。令',
         '',
         '$$\\mu_j(E) := \\mu(E \\cap A_j), \\quad  \\nu_j(E) := \\nu(E \\cap A_j)$$',
         '',
-        '对每一对 $$(\\mu_j, \\nu_j)$$ 用 $I$，得 $$d\\nu_j = d\\lambda_j + f_j d\\mu_j$$。规定 $$\\lambda_j(A_j^c) = 0$$、$$f_j = 0$$ 在 $$A_j^c$$ 上，令',
+        '对每一对 $(\\mu_j, \\nu_j)$ 用 $I$，得 $d\\nu_j = d\\lambda_j + f_j d\\mu_j$。规定 $\\lambda_j(A_j^c) = 0$、$f_j = 0$ 在 $A_j^c$ 上，令',
         '',
         '$$\\lambda := \\sum_j \\lambda_j, \\quad  f := \\sum_j f_j$$',
         '',
-        '则 $$d\\nu = d\\lambda + f d\\mu$$、$$\\lambda \\perp  \\mu$$，且 $d\\lambda$、$f d\\mu$ 都 $\\sigma$有限。',
+        '则 $d\\nu = d\\lambda + f d\\mu$、$\\lambda \\perp  \\mu$，且 $d\\lambda$、$f d\\mu$ 都 $\\sigma$有限。',
         '',
-        '**$III. \\nu$ 是符号测度。** 把 $I$、II 分别用在 $$\\nu^+$$ 与 $$\\nu^-$$ 上（由「绝对连续与变差」，绝对连续性对变差是逐块的），再把结果相加。∎'
+        '**$III. \\nu$ 是符号测度。** 把 $I$、II 分别用在 $\\nu^+$ 与 $\\nu^-$ 上（由「绝对连续与变差」，绝对连续性对变差是逐块的），再把结果相加。∎'
       ].join('\n'),
       note: '⭐ ③ 那一步是全证明的枢纽：假如 $\\lambda$ 还「留了一点 $\\mu$质量」，就能拿它把 $f$ 往上顶一点、得出比上确界 $a$ 更大的值 —— 于是 $\\lambda$ 只能全部跑到 $\\mu$ 看不到的地方去，即 $\\lambda \\perp \\mu$。'
     },
@@ -10581,20 +10587,20 @@ window.MG = window.MG || {};
       target: 'prop.rn-chain-rule',
       title: '换元公式与链式法则',
       proof: [
-        '设 $$\\nu \\ll  \\mu \\ll  \\lambda$$。',
+        '设 $\\nu \\ll  \\mu \\ll  \\lambda$。',
         '',
-        '**(a) 换元公式 $$\\int g d\\nu = \\int g \\frac{d\\nu}{d\\mu} d\\mu$$。** 分四步爬：',
+        '**(a) 换元公式 $\\int g d\\nu = \\int g \\frac{d\\nu}{d\\mu} d\\mu$。** 分四步爬：',
         '',
-        '$\\cdot$ $$g = \\chi_E$$：左边是 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu$$（这正是 RN 定理的内容），右边同；',
+        '$\\cdot$ $g = \\chi_E$：左边是 $\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu$（这正是 RN 定理的内容），右边同；',
         '$\\cdot g$ 是简单函数：由线性；',
-        '$\\cdot$ $$g \\in L^+$$：取简单函数列 $$g_n \\uparrow  g$$，两边各用一次 MCT；',
-        '$\\cdot$ $$g \\in L^1(\\nu)$$：拆正负部。',
+        '$\\cdot$ $g \\in L^+$：取简单函数列 $g_n \\uparrow  g$，两边各用一次 MCT；',
+        '$\\cdot$ $g \\in L^1(\\nu)$：拆正负部。',
         '',
         '**(b) 链式法则。** 对任意可测 $E$，用 (a) 两次：',
         '',
         '$$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu = \\int_E \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda} d\\lambda$$',
         '',
-        '另一方面又有 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$$（因为 $\\nu \\ll \\lambda$）。两式对**一切** $E$ 相等，由「用积分识别函数」，两个密度 $\\lambda -\\text{a.e.}$ 相等：',
+        '另一方面又有 $\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$（因为 $\\nu \\ll \\lambda$）。两式对**一切** $E$ 相等，由「用积分识别函数」，两个密度 $\\lambda -\\text{a.e.}$ 相等：',
         '',
         '$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  \\lambda-\\text{a.e.}$$',
         '',
@@ -10759,18 +10765,18 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\nu$ 是符号测度或复测度。',
         '',
-        '**(a)** $$\\nu \\ll  |\\nu|$$，并且',
+        '**(a)** $\\nu \\ll  |\\nu|$，并且',
         '',
         '$$| d\\nu / d|\\nu| | = 1\\quad  |\\nu|-\\text{a.e.}$$',
         '',
-        '**(b)** 定义 $$L^1(\\nu) := L^1(|\\nu|)$$。若 $$f \\in L^1(\\nu)$$，则',
+        '**(b)** 定义 $L^1(\\nu) := L^1(|\\nu|)$。若 $f \\in L^1(\\nu)$，则',
         '',
         '$$| \\int f d\\nu | \\le \\int |f| d|\\nu|$$',
         '',
-        '**(c)** $$|\\nu_1 + \\nu_2| \\le |\\nu_1| + |\\nu_2|$$（即全变差满足三角不等式）。'
+        '**(c)** $|\\nu_1 + \\nu_2| \\le |\\nu_1| + |\\nu_2|$（即全变差满足三角不等式）。'
       ].join('\n'),
       notes: [
-        '(a) 的来源：$$d\\nu = g\\cdot d|\\nu|$$ 对某个 $g$ 成立（Radon–Nikodym），且 $|g| = 1 \\text{a.e.}$ —— 因为全变差本来就是「把质量取绝对值」得到的。',
+        '(a) 的来源：$d\\nu = g\\cdot d|\\nu|$ 对某个 $g$ 成立（Radon–Nikodym），且 $|g| = 1 \\text{a.e.}$ —— 因为全变差本来就是「把质量取绝对值」得到的。',
         '(b) 说明**积分理论对符号测度不需要重写**：把 $|\\nu |$ 当作底层的真测度，一切照旧。',
         '(c) 让「全变差」成为一个范数，这正是把测度空间看作 Banach 空间的起点。'
       ].join('\n\n'),
@@ -10786,14 +10792,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '覆盖', 'Vitali'],
       statement: [
-        '设 $\\mathcal{E}$ 是一族 $\\mathbb{R}^{n}$ 中的开球，$$U = \\bigcup\\mathcal{E}$$。若 $$c < m(U)$$，则存在 $\\mathcal{E}$ 中**两两不交**的球 $$B_1, \\ldots , B_k$$ 使',
+        '设 $\\mathcal{E}$ 是一族 $\\mathbb{R}^{n}$ 中的开球，$U = \\bigcup\\mathcal{E}$。若 $c < m(U)$，则存在 $\\mathcal{E}$ 中**两两不交**的球 $B_1, \\ldots , B_k$ 使',
         '',
         '$$\\sum_{j=1}^{k} m(B_j) > 3^{-n} c$$'
       ].join('\n'),
       notes: [
         '这是 **Vitali 型覆盖引理**的核心估计，极大定理全靠它。',
-        '证明的挑法：先取**半径最大**的球 $$B_1$$；再取与 $$B_1$$ 不交的、半径最大的球 $$B_2$$；依此类推。',
-        '为什么这样挑就够了：若某个 $$A_i \\in \\mathcal{E}$$ 没被取到，则必有某个 $$B_j$$ 与它相交 —— 取**下标最小**的那个 $$B_j$$。由挑选规则，$$A_i$$ 的半径不超过 $$B_j$$ 的半径（否则取 $$B_j$$ 时就会取到 $$A_i$$ 了）。把 $$B_j$$ 的半径放大 3 倍，就有 $$A_i \\subseteq 3B_j$$，于是 $$K \\subseteq \\bigcup_j 3B_j$$。',
+        '证明的挑法：先取**半径最大**的球 $B_1$；再取与 $B_1$ 不交的、半径最大的球 $B_2$；依此类推。',
+        '为什么这样挑就够了：若某个 $A_i \\in \\mathcal{E}$ 没被取到，则必有某个 $B_j$ 与它相交 —— 取**下标最小**的那个 $B_j$。由挑选规则，$A_i$ 的半径不超过 $B_j$ 的半径（否则取 $B_j$ 时就会取到 $A_i$ 了）。把 $B_j$ 的半径放大 3 倍，就有 $A_i \\subseteq 3B_j$，于是 $K \\subseteq \\bigcup_j 3B_j$。',
         '剩下的就是计数：',
         '',
         '$$c < m(K) \\le 3^n \\sum_j m(B_j)\\quad  \\implies\\quad  \\sum_j m(B_j) > 3^{-n} c$$',
@@ -10812,15 +10818,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '局部可积'],
       statement: [
-        '可测函数 $$f : \\mathbb{R}^n \\to \\mathbb{C}$$ 是**局部可积的**，当且仅当',
+        '可测函数 $f : \\mathbb{R}^n \\to \\mathbb{C}$ 是**局部可积的**，当且仅当',
         '',
         '$$\\int_K |f(x)| dx < \\infty\\quad \\text{ 对每个有界可测集} K \\subseteq \\mathbb{R}^n$$',
         '',
-        '局部可积函数全体记作 $$L^1_{loc}$$（或 $$L^1_{loc}(\\mathbb{R}^n)$$）。'
+        '局部可积函数全体记作 $L^1_{loc}$（或 $L^1_{loc}(\\mathbb{R}^n)$）。'
       ].join('\n'),
       notes: [
-        '直觉：$$f$$ 可能「在无穷远处爆掉」，但在每个有限范围里都还好。',
-        '例：常函数 1 属于 $L^{1}_{l}oc$ 但不属于 $L^{1}(\\mathbb{R}^{n})$；$$1/|x|$$ 在 $\\mathbb{R}^{n}$ 上属于 $L^{1}_{l}oc$（$n \\ge 2$ 时不属于 $L^{1}$）。',
+        '直觉：$f$ 可能「在无穷远处爆掉」，但在每个有限范围里都还好。',
+        '例：常函数 1 属于 $L^{1}_{l}oc$ 但不属于 $L^{1}(\\mathbb{R}^{n})$；$1/|x|$ 在 $\\mathbb{R}^{n}$ 上属于 $L^{1}_{l}oc$（$n \\ge 2$ 时不属于 $L^{1}$）。',
         '⚠ 微分理论里必须是 $L^{1}_{l}oc$ 而不是 $L^{1}$：因为讨论的是**逐点**行为，而局部信息就够。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.4']
@@ -10835,14 +10841,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '平均算子'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$，$$x \\in \\mathbb{R}^n$$，$$r > 0$$。定义',
+        '设 $f \\in L^1_{loc}$，$x \\in \\mathbb{R}^n$，$r > 0$。定义',
         '',
         '$$A_r f(x) := \\frac{1}{m(B(r, x))} \\int_{B(r, x)} f(y) dy$$',
         '',
         '即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。'
       ].join('\n'),
       notes: [
-        '这是「把函数抹平」的算子：$$A_r f$$ 是 $f$ 的连续化版本（见下一条），$r \\to 0$ 时应当回到 $f$ 本身 —— 而那正是 Lebesgue 微分定理要说的事。',
+        '这是「把函数抹平」的算子：$A_r f$ 是 $f$ 的连续化版本（见下一条），$r \\to 0$ 时应当回到 $f$ 本身 —— 而那正是 Lebesgue 微分定理要说的事。',
         '⚠ 注意积分是**对 Lebesgue 测度 $m$** 取的，跟这一段的符号测度 $\\nu$ 无关。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.4']
@@ -10857,21 +10863,21 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '连续', 'DCT'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$。则 $$A_r f(x)$$ 作为 $$(r, x)$$ 的函数是**联合连续**的。'
+        '设 $f \\in L^1_{loc}$。则 $A_r f(x)$ 作为 $(r, x)$ 的函数是**联合连续**的。'
       ].join('\n'),
       notes: [
         '证明的骨架：把积分写成',
         '',
         '$$\\int_{B(r, x)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(r, x)}(y) f(y) dy$$',
         '',
-        '于是只需证 $$\\chi_{B(r,x)} \\to \\chi_{B(r_0,x_0)}$$（当 $$(r,x) \\to (r_0,x_0)$$）在足够好的意义上成立，再用 DCT。',
-        '分两块看（取目标点 $$(r_0, x_0)$$）：',
+        '于是只需证 $\\chi_{B(r,x)} \\to \\chi_{B(r_0,x_0)}$（当 $(r,x) \\to (r_0,x_0)$）在足够好的意义上成立，再用 DCT。',
+        '分两块看（取目标点 $(r_0, x_0)$）：',
         '',
-        '$\\cdot$ 若 $$y$$ 在球内：$$\\varepsilon := r_0 - |y - x_0| > 0$$；当 $$|x - x_0| < \\varepsilon/2$$ 且 $$|r - r_0| < \\varepsilon/2$$ 时 $$|y - x| < r$$，故 $$\\chi = 1$$；',
-        '$\\cdot$ 若 $$y$$ 在球外：$$\\varepsilon := |y - x_0| - r_0 > 0$$；同样的小扰动下 $$|y - x| > r$$，故 $$\\chi = 0$$。',
+        '$\\cdot$ 若 $y$ 在球内：$\\varepsilon := r_0 - |y - x_0| > 0$；当 $|x - x_0| < \\varepsilon/2$ 且 $|r - r_0| < \\varepsilon/2$ 时 $|y - x| < r$，故 $\\chi = 1$；',
+        '$\\cdot$ 若 $y$ 在球外：$\\varepsilon := |y - x_0| - r_0 > 0$；同样的小扰动下 $|y - x| > r$，故 $\\chi = 0$。',
         '',
         '两边合起来说明：对**几乎处处的** $y$（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。',
-        '控制函数取 $$\\chi_{B(r_0+1, x_0)}(y)\\cdot|f(y)| \\in L^1$$，由 **DCT** 得连续性。∎'
+        '控制函数取 $\\chi_{B(r_0+1, x_0)}(y)\\cdot|f(y)| \\in L^1$，由 **DCT** 得连续性。∎'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.16']
     },
@@ -10885,15 +10891,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '极大函数', 'Hardy-Littlewood'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$。定义',
+        '设 $f \\in L^1_{loc}$。定义',
         '',
         '$$Hf(x) := \\sup_{r > 0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
         '',
         '称为 $f$ 的 **Hardy–Littlewood 极大函数**。'
       ].join('\n'),
       notes: [
-        '直觉：$$Hf(x)$$ 是「$f$ 在 $x$ 附近所有尺度上的平均值里最大的那个」。',
-        '它当然比 $f$ 大（$$Hf \\ge |f|$$ a.e.，因为可以取 $r \\to 0$），但好处是它**可测**：对每个固定的 $r$，$$x \\mapsto A_r|f|(x)$$ 可测（由联合连续性更强），而可数个可测函数的上确界仍可测。',
+        '直觉：$Hf(x)$ 是「$f$ 在 $x$ 附近所有尺度上的平均值里最大的那个」。',
+        '它当然比 $f$ 大（$Hf \\ge |f|$ a.e.，因为可以取 $r \\to 0$），但好处是它**可测**：对每个固定的 $r$，$x \\mapsto A_r|f|(x)$ 可测（由联合连续性更强），而可数个可测函数的上确界仍可测。',
         '⭐ 极大函数是微分理论里的「万能控制函数」：它把一个逐点问题化归成一个关于测度的估计问题，而那个估计就是下一条的极大不等式。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.4']
@@ -10908,13 +10914,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '极大不等式', '弱型'],
       statement: [
-        '存在常数 $$C > 0$$（只依赖维数 $n$），使对一切 $$f \\in L^1$$ 与一切 $$\\alpha > 0$$：',
+        '存在常数 $C > 0$（只依赖维数 $n$），使对一切 $f \\in L^1$ 与一切 $\\alpha > 0$：',
         '',
         '$$m(\\{x : Hf(x) > \\alpha\\}) \\le (C/\\alpha)\\cdot\\int |f(x)| dx$$'
       ].join('\n'),
       notes: [
-        '这叫**弱 (1,1) 型**不等式：不能保证 $$Hf \\in L^1$$（事实上一般不是），但能保证它的**分布函数**被 $$1/\\alpha$$ 控制。',
-        '在 $\\mathbb{R}^{n}$ 里 $$C = 3^n$$（这正是覆盖引理里那个膨胀因子）。',
+        '这叫**弱 (1,1) 型**不等式：不能保证 $Hf \\in L^1$（事实上一般不是），但能保证它的**分布函数**被 $1/\\alpha$ 控制。',
+        '在 $\\mathbb{R}^{n}$ 里 $C = 3^n$（这正是覆盖引理里那个膨胀因子）。',
         '⭐ 它的角色：**「平均值的例外集是小的」** —— 于是一切逐点收敛问题都可以用「例外集测度 $\\to 0$」来解决。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.17']
@@ -10929,7 +10935,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue 微分', 'a.e.'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$。则',
+        '设 $f \\in L^1_{loc}$。则',
         '',
         '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对} \\text{a.e.} x \\in \\mathbb{R}^n$$'
       ].join('\n'),
@@ -10950,14 +10956,14 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue 集'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$。定义',
+        '设 $f \\in L^1_{loc}$。定义',
         '',
         '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y) - f(x)| dy = 0 \\}$$',
         '',
         '称为 $f$ 的 **Lebesgue 集**。'
       ].join('\n'),
       notes: [
-        '⚠ 注意定义里积的是 $$|f(y) - f(x)|$$（与 $f$ 在该点的值比较），不是 $$|f(y)|$$。',
+        '⚠ 注意定义里积的是 $|f(y) - f(x)|$（与 $f$ 在该点的值比较），不是 $|f(y)|$。',
         '这么定义是为了让「可缩族」版本（下一条定理）能直接用 —— 那里需要的是**局部一致逼近**，而不是简单的平均值收敛。',
         '$x \\in L_f$ 常被说成「$x$ 是 $f$ 的 Lebesgue 点」。直觉：在这个点附近，$f$ 的振荡在平均意义下趋于 0。'
       ].join('\n\n'),
@@ -10973,15 +10979,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Lebesgue 集'],
       statement: [
-        '若 $$f \\in L^1_{loc}$$，则',
+        '若 $f \\in L^1_{loc}$，则',
         '',
         '$$m(L_f^c) = 0$$',
         '',
         '即：**几乎每个点都是 Lebesgue 点**。'
       ].join('\n'),
       notes: [
-        '证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $$|f(x) - c|$$ 上，得到「除一个零集 $$E_c$$ 外，$$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$$」。',
-        '然后取 **$\\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $$E = \\bigcup_{c \\in D} E_c$$（可数并仍是零集）。对 $$x \\notin E$$ 与任意 $\\varepsilon > 0$，取 $$c \\in D$$ 使 $$|f(x) - c| < \\varepsilon$$，于是',
+        '证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $|f(x) - c|$ 上，得到「除一个零集 $E_c$ 外，$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$」。',
+        '然后取 **$\\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $E = \\bigcup_{c \\in D} E_c$（可数并仍是零集）。对 $x \\notin E$ 与任意 $\\varepsilon > 0$，取 $c \\in D$ 使 $|f(x) - c| < \\varepsilon$，于是',
         '',
         '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
         '',
@@ -11000,15 +11006,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '可缩族'],
       statement: [
-        '$\\mathbb{R}^n$ 的一族 Borel 子集 $$\\{E_r\\}_{r > 0}$$ 叫**可缩地趋于 $$x$$**，当且仅当',
+        '$\\mathbb{R}^n$ 的一族 Borel 子集 $\\{E_r\\}_{r > 0}$ 叫**可缩地趋于 $x$**，当且仅当',
         '',
-        '$\\cdot$ $$E_r \\subseteq B(r, x)$$ 对每个 $r$ 成立；',
-        '$\\cdot$ 存在 $$\\alpha > 0$$，使 $$m(E_r) > \\alpha\\cdot m(B(r, x))$$ 对一切 $r$ 成立。'
+        '$\\cdot$ $E_r \\subseteq B(r, x)$ 对每个 $r$ 成立；',
+        '$\\cdot$ 存在 $\\alpha > 0$，使 $m(E_r) > \\alpha\\cdot m(B(r, x))$ 对一切 $r$ 成立。'
       ].join('\n'),
       notes: [
-        '两个条件的含义：**装得进去**（$$E_r$$ 在球里）、**不能太瘪**（体积至少是球的 $\\alpha$ 倍）。',
-        '典型例子：取 $$E_r = B(r, x)$$ 本身（$\\alpha = 1$）；或取 $$E_r$$ 为球内某个固定形状（如立方体）按比例缩放。',
-        '反例：$$E_r$$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 $x$。',
+        '两个条件的含义：**装得进去**（$E_r$ 在球里）、**不能太瘪**（体积至少是球的 $\\alpha$ 倍）。',
+        '典型例子：取 $E_r = B(r, x)$ 本身（$\\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。',
+        '反例：$E_r$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 $x$。',
         '⭐ 引入这个概念是为了让微分定理**不依赖球的形状**：只要不瘪，结论照旧。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.4']
@@ -11023,18 +11029,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微分', '可缩族'],
       statement: [
-        '设 $$f \\in L^1_{loc}$$，$$x \\in L_f$$。则对**每一个**可缩地趋于 $x$ 的族 $$\\{E_r\\}_{r>0}$$：',
+        '设 $f \\in L^1_{loc}$，$x \\in L_f$。则对**每一个**可缩地趋于 $x$ 的族 $\\{E_r\\}_{r>0}$：',
         '',
         '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy = 0, $$',
         '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} f(y) dy = f(x)$$'
       ].join('\n'),
       notes: [
-        '证明是一行估计：由 $$E_r \\subseteq B(r,x)$$ 与 $$m(E_r) > \\alpha m(B(r,x))$$，',
+        '证明是一行估计：由 $E_r \\subseteq B(r,x)$ 与 $m(E_r) > \\alpha m(B(r,x))$，',
         '',
         '$$\\frac{1}{m(E_r)} \\int_{E_r} |f - f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f - f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f - f(x)|$$',
         '',
-        '而最右边由「$$x \\in L_f$$」趋于 0。∎',
-        '⭐ 全部难度都在把 L_f 的定义选对（用 $$|f(y) - f(x)|$$ 而不是 $$|f(y)|$$）—— 选对之后这一步就是白送的。'
+        '而最右边由「$x \\in L_f$」趋于 0。∎',
+        '⭐ 全部难度都在把 L_f 的定义选对（用 $|f(y) - f(x)|$ 而不是 $|f(y)|$）—— 选对之后这一步就是白送的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.21']
     },
@@ -11050,15 +11056,15 @@ window.MG = window.MG || {};
       statement: [
         '$\\mathbb{R}^{n}$ 上的 Borel 测度 $\\nu$ 是**正则的**，当且仅当',
         '',
-        '$\\cdot$ $$\\nu(K) < \\infty$$ 对每个紧集 $K$ 成立；',
-        '$\\cdot$ $$\\nu(E) = \\inf\\{ \\nu(U) : U\\text{ 开}, E \\subseteq U \\}$$ 对每个 $$E \\in \\mathfrak{B}_{\\mathbb{R}^n}$$ 成立（**外正则**）。',
+        '$\\cdot$ $\\nu(K) < \\infty$ 对每个紧集 $K$ 成立；',
+        '$\\cdot$ $\\nu(E) = \\inf\\{ \\nu(U) : U\\text{ 开}, E \\subseteq U \\}$ 对每个 $E \\in \\mathfrak{B}_{\\mathbb{R}^n}$ 成立（**外正则**）。',
         '',
-        '符号测度或复测度 $\\nu$ 叫正则 $\\iff$ $$|\\nu|$$ 正则。'
+        '符号测度或复测度 $\\nu$ 叫正则 $\\iff$ $|\\nu|$ 正则。'
       ].join('\n'),
       notes: [
         '第二条是「从外面用开集逼近」。在 $\\mathbb{R}^{n}$ 上它其实由第一条推出。',
         '**每个正则测度都是 $\\sigma$有限的**（用紧集的可数覆盖）。',
-        '$f \\in L^+(\\mathbb{R}^n)$ 时，$$f\\cdot dm$$ 正则 $\\iff$ $$f \\in L^1_{loc}$$ —— 这条把「正则」与「局部可积」接了起来。'
+        '$f \\in L^+(\\mathbb{R}^n)$ 时，$f\\cdot dm$ 正则 $\\iff$ $f \\in L^1_{loc}$ —— 这条把「正则」与「局部可积」接了起来。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §7.2']
     },
@@ -11072,11 +11078,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'RN 导数', '点态', '正则'],
       statement: [
-        '设 $\\nu$ 是 $\\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$$d\\nu = d\\lambda + f\\cdot dm$$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $$x \\in \\mathbb{R}^n$$，',
+        '设 $\\nu$ 是 $\\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$d\\nu = d\\lambda + f\\cdot dm$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $x \\in \\mathbb{R}^n$，',
         '',
         '$$\\lim_{r\\to0} \\nu(E_r) / m(E_r) = f(x)$$',
         '',
-        '对**每一个**可缩地趋于 $x$ 的族 $$\\{E_r\\}_{r>0}$$ 成立。'
+        '对**每一个**可缩地趋于 $x$ 的族 $\\{E_r\\}_{r>0}$ 成立。'
       ].join('\n'),
       notes: [
         '⭐ 这条定理把 Radon–Nikodym 导数从「抽象的存在物」变成了**可以逐点算出来的极限**：',
@@ -11084,7 +11090,7 @@ window.MG = window.MG || {};
         '$$f(x) = \\lim_{r\\to0} \\nu(B(r, x)) / m(B(r, x))$$',
         '',
         '这正是微积分里「密度 $=$ 质量 / 体积」的严格版本，也是「RN 导数是导数的推广」这一说法的根据。',
-        '证明的思路：先验证 $$d|\\nu| = d|\\lambda| + |f| dm$$，于是 $\\lambda$ 与 f dm 都正则、特别地 $$f \\in L^1_{loc}$$；把比值拆成',
+        '证明的思路：先验证 $d|\\nu| = d|\\lambda| + |f| dm$，于是 $\\lambda$ 与 f dm 都正则、特别地 $f \\in L^1_{loc}$；把比值拆成',
         '',
         '$$\\nu(E_r) / m(E_r) = \\lambda(E_r) / m(E_r) + \\frac{1}{m(E_r)} \\int_{E_r} f\\cdot dm$$',
         '',
@@ -11103,13 +11109,13 @@ window.MG = window.MG || {};
       target: 'thm.maximal-theorem',
       title: '覆盖引理 $\\implies$ 极大定理',
       proof: [
-        '**① 把坏集换成球族。** 令 $$E_\\alpha = \\{x : Hf(x) > \\alpha\\}$$。对每个 $$x \\in E_\\alpha$$，由 Hf 的定义（上确界）存在 $$r_x > 0$$ 使',
+        '**① 把坏集换成球族。** 令 $E_\\alpha = \\{x : Hf(x) > \\alpha\\}$。对每个 $x \\in E_\\alpha$，由 Hf 的定义（上确界）存在 $r_x > 0$ 使',
         '',
         '$$A_{r_x}|f|(x) > \\alpha\\quad  \\iff\\quad  \\int_{B(r_x, x)} |f(y)| dy > \\alpha\\cdot m(B(r_x, x))$$',
         '',
-        '于是 $$\\{B(r_x, x)\\}_{x \\in E_\\alpha}$$ 是 $$E_\\alpha$$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
+        '于是 $\\{B(r_x, x)\\}_{x \\in E_\\alpha}$ 是 $E_\\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
         '',
-        '**② 用覆盖引理挑不交子族。** 任取 $$c < m(E_\\alpha)$$（先设 $m(E_\\alpha ) < \\infty$）。由**覆盖引理**，存在 $$x_1, \\ldots , x_k \\in E_\\alpha$$ 使 $$B_j = B(r_{x_j}, x_j)$$ 两两不交，且',
+        '**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\\alpha)$（先设 $m(E_\\alpha ) < \\infty$）。由**覆盖引理**，存在 $x_1, \\ldots , x_k \\in E_\\alpha$ 使 $B_j = B(r_{x_j}, x_j)$ 两两不交，且',
         '',
         '$$\\sum_j m(B_j) > 3^{-n} c$$',
         '',
@@ -11117,15 +11123,15 @@ window.MG = window.MG || {};
         '',
         '$$c < 3^n \\sum_j m(B_j) < (3^n/\\alpha)\\cdot\\sum_j \\int_{B_j} |f| dy \\le (3^n/\\alpha)\\cdot\\int_{\\mathbb{R}^n} |f| dy$$',
         '',
-        '（最后一步用的是：$$B_j$$ 两两不交，所以把积分加起来不超过整体积分。）',
+        '（最后一步用的是：$B_j$ 两两不交，所以把积分加起来不超过整体积分。）',
         '',
         '**④ 令 $c \\to m(E_\\alpha )$。** 得到',
         '',
         '$$m(E_\\alpha) \\le (3^n/\\alpha)\\cdot\\int |f| dy$$',
         '',
-        '即 $$C = 3^n$$。∎'
+        '即 $C = 3^n$。∎'
       ].join('\n'),
-      note: '⭐ 整段只有一个「魔法」：覆盖引理保证挑出来的不交球虽然装不满 $$E_\\alpha$$，但总测度至少是 $$3^{-n}$$ 倍 —— 恰好够用。'
+      note: '⭐ 整段只有一个「魔法」：覆盖引理保证挑出来的不交球虽然装不满 $E_\\alpha$，但总测度至少是 $3^{-n}$ 倍 —— 恰好够用。'
     },
 
     {
@@ -11135,31 +11141,31 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-differentiation',
       title: '极大定理 + 连续函数逼近 $\\implies$ Lebesgue 微分定理',
       proof: [
-        '**① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $$N \\in \\mathbb{N}$$ 证明在球 $$\\{|x| \\le N\\}$$ 上几乎处处成立；把 $f$ 换成 $$f\\cdot\\chi_{B(N+1, 0)}$$ 后即可**设 $$f \\in L^1$$**。',
+        '**① 先局部化。** 由 $L^{1}_{l}oc$ 的定义与测度的可数可加性，只需对每个 $N \\in \\mathbb{N}$ 证明在球 $\\{|x| \\le N\\}$ 上几乎处处成立；把 $f$ 换成 $f\\cdot\\chi_{B(N+1, 0)}$ 后即可**设 $f \\in L^1$**。',
         '',
-        '**② 用连续函数逼近。** 给定 $$\\varepsilon > 0$$，由「$L^{1}$ 里的逼近」，取**连续函数** $g$ 使',
+        '**② 用连续函数逼近。** 给定 $\\varepsilon > 0$，由「$L^{1}$ 里的逼近」，取**连续函数** $g$ 使',
         '',
         '$$\\int |g(y) - f(y)| dy < \\varepsilon$$',
         '',
-        '**③ 连续情形是白送的。** 若 $g$ 连续，则对**每一个** $x$ 都有 $$A_r g(x) \\to g(x)$$（$$r \\to 0$$）—— 因为 $g$ 在 $x$ 附近近似为常数。',
+        '**③ 连续情形是白送的。** 若 $g$ 连续，则对**每一个** $x$ 都有 $A_r g(x) \\to g(x)$（$r \\to 0$）—— 因为 $g$ 在 $x$ 附近近似为常数。',
         '',
         '**④ 把差值压住。** 对任意 $x$，',
         '',
         '$$\\sup_{r>0} |A_r f(x) - f(x)| = \\sup_r |A_r(f - g)(x) + (A_r g - g)(x) + (g - f)(x)| \\le H(f - g)(x) + |f - g|(x)$$',
         '',
-        '（第一项用 $$|A_r(f-g)| \\le A_r|f-g| \\le H(f-g)$$，第二项由 ③ 取 $r \\to 0$）。',
+        '（第一项用 $|A_r(f-g)| \\le A_r|f-g| \\le H(f-g)$，第二项由 ③ 取 $r \\to 0$）。',
         '',
         '**⑤ 估计坏集。** 令',
         '',
         '$$E_\\alpha = \\{x : \\sup_{r>0} |A_r f(x) - f(x)| > \\alpha\\}$$',
         '',
-        '由 ④，$$E_\\alpha \\subseteq F_{\\alpha/2} \\cup \\{x : H(f-g)(x) > \\alpha/2\\}$$，其中 $$F_{\\alpha/2} = \\{|f - g| > \\alpha/2\\}$$。于是',
+        '由 ④，$E_\\alpha \\subseteq F_{\\alpha/2} \\cup \\{x : H(f-g)(x) > \\alpha/2\\}$，其中 $F_{\\alpha/2} = \\{|f - g| > \\alpha/2\\}$。于是',
         '',
         '$$m(E_\\alpha) \\le 2\\varepsilon / \\alpha + 2C\\varepsilon / \\alpha$$',
         '',
         '（第一项用 Markov 不等式，第二项用**极大定理**。）',
         '',
-        '**⑥ 令 $\\varepsilon \\to 0$。** 右边对**任意** $\\varepsilon > 0$ 成立，故 $$m(E_\\alpha) = 0$$ 对一切 $$\\alpha > 0$$ 成立。于是',
+        '**⑥ 令 $\\varepsilon \\to 0$。** 右边对**任意** $\\varepsilon > 0$ 成立，故 $m(E_\\alpha) = 0$ 对一切 $\\alpha > 0$ 成立。于是',
         '',
         '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对一切} x \\notin \\bigcup_{m\\in\\mathbb{N}} E_{1/m}$$',
         '',
@@ -11175,23 +11181,23 @@ window.MG = window.MG || {};
       target: 'thm.lebesgue-set-full',
       title: '微分定理 + 可数稠密子集 $\\implies$ Lebesgue 集几乎处处',
       proof: [
-        '**① 对每个复数 $c$ 用一次微分定理。** 固定 $$c \\in \\mathbb{C}$$，把微分定理用在函数 $$h(x) = |f(x) - c|$$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $$E_c$$，使对 $$x \\notin E_c$$，',
+        '**① 对每个复数 $c$ 用一次微分定理。** 固定 $c \\in \\mathbb{C}$，把微分定理用在函数 $h(x) = |f(x) - c|$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $E_c$，使对 $x \\notin E_c$，',
         '',
         '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy = |f(x) - c|$$',
         '',
-        '**② 只取可数多个 $c$。** 取 $\\mathbb{C}$ 的一个**可数稠密子集** $D$（比如 $$\\mathbb{Q} + i\\mathbb{Q}$$），令',
+        '**② 只取可数多个 $c$。** 取 $\\mathbb{C}$ 的一个**可数稠密子集** $D$（比如 $\\mathbb{Q} + i\\mathbb{Q}$），令',
         '',
         '$$E = \\bigcup_{c \\in D} E_c$$',
         '',
-        '可数多个零集之并仍是零集，故 $$m(E) = 0$$。',
+        '可数多个零集之并仍是零集，故 $m(E) = 0$。',
         '',
-        '**③ 在 $E$ 外验证**。设 $$x \\notin E$$，任给 $\\varepsilon > 0$，取 $$c \\in D$$ 使 $$|f(x) - c| < \\varepsilon$$。则',
+        '**③ 在 $E$ 外验证**。设 $x \\notin E$，任给 $\\varepsilon > 0$，取 $c \\in D$ 使 $|f(x) - c| < \\varepsilon$。则',
         '',
         '$$\\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy + |f(x) - c|$$',
         '',
-        '右边第一项由 ①（$$x \\notin E_c$$）在 $$r \\to 0$$ 时趋于 $$|f(x) - c|$$，于是整个右端的极限 $\\le$ $$|f(x) - c| + \\varepsilon < 2\\varepsilon$$。令 $\\varepsilon \\to 0$ 得极限为 0，即 $$x \\in L_f$$。',
+        '右边第一项由 ①（$x \\notin E_c$）在 $r \\to 0$ 时趋于 $|f(x) - c|$，于是整个右端的极限 $\\le$ $|f(x) - c| + \\varepsilon < 2\\varepsilon$。令 $\\varepsilon \\to 0$ 得极限为 0，即 $x \\in L_f$。',
         '',
-        '故 $$L_f^c \\subseteq E$$，从而 $$m(L_f^c) = 0$$。∎'
+        '故 $L_f^c \\subseteq E$，从而 $m(L_f^c) = 0$。∎'
       ].join('\n'),
       note: '⭐ 「把不可数条件化归成可数」这一步是可数性论证的典型手笔，和 Borel–Cantelli 是同一种精神。'
     },
@@ -11203,21 +11209,21 @@ window.MG = window.MG || {};
       target: 'thm.differentiation-general',
       title: 'Lebesgue 集 + 可缩条件 $\\implies$ 一般族的微分定理',
       proof: [
-        '设 $$x \\in L_f$$，$$\\{E_r\\}$$ 可缩地趋于 $x$，即 $$E_r \\subseteq B(r,x)$$ 且 $$m(E_r) > \\alpha\\cdot m(B(r,x))$$。',
+        '设 $x \\in L_f$，$\\{E_r\\}$ 可缩地趋于 $x$，即 $E_r \\subseteq B(r,x)$ 且 $m(E_r) > \\alpha\\cdot m(B(r,x))$。',
         '',
-        '**① 关键估计（一行）。** 因为 $$E_r \\subseteq B(r,x)$$，把积分域放大到球上只会变大；再用 $$m(E_r) > \\alpha m(B(r,x))$$ 把分母换小：',
+        '**① 关键估计（一行）。** 因为 $E_r \\subseteq B(r,x)$，把积分域放大到球上只会变大；再用 $m(E_r) > \\alpha m(B(r,x))$ 把分母换小：',
         '',
         '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f(y) - f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) - f(x)| dy$$',
         '',
-        '**② 收尾。** 由 $$x \\in L_f$$ 的定义，最右边当 $$r \\to 0$$ 时趋于 0。故第一个极限为 0。',
+        '**② 收尾。** 由 $x \\in L_f$ 的定义，最右边当 $r \\to 0$ 时趋于 0。故第一个极限为 0。',
         '',
         '**③ 第二个极限。** 由',
         '',
         '$$| \\frac{1}{m(E_r)} \\int_{E_r} f - f(x) | \\le \\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\to 0$$',
         '',
-        '即得 $$\\frac{1}{m(E_r)} \\int_{E_r} f dy \\to f(x)$$。∎'
+        '即得 $\\frac{1}{m(E_r)} \\int_{E_r} f dy \\to f(x)$。∎'
       ].join('\n'),
-      note: '全部难度都被「把 L_f 的定义写成 $$\\int|f(y) - f(x)|$$」吸收掉了 —— 这也解释了为什么定义要那么写。'
+      note: '全部难度都被「把 L_f 的定义写成 $\\int|f(y) - f(x)|$」吸收掉了 —— 这也解释了为什么定义要那么写。'
     },
 
     {
@@ -11227,37 +11233,37 @@ window.MG = window.MG || {};
       target: 'thm.rn-pointwise',
       title: '微分定理 + 正则性 $\\implies RN$ 导数的点态公式',
       proof: [
-        '设 $$d\\nu = d\\lambda + f\\cdot dm$$（$$\\lambda \\perp  m$$），$\\nu$ 正则。',
+        '设 $d\\nu = d\\lambda + f\\cdot dm$（$\\lambda \\perp  m$），$\\nu$ 正则。',
         '',
-        '**① 先算全变差。** 由全变差的性质，$$d|\\nu| = d|\\lambda| + |f|\\cdot dm$$。既然 $\\nu$ 正则，$|\\nu |$ 正则，于是 $\\lambda$ 与 $$f\\cdot dm$$ 都正则；由「$$g\\cdot dm$$ 正则 $\\iff$ $$g \\in L^1_{loc}$$」得 $$f \\in L^1_{loc}$$。',
+        '**① 先算全变差。** 由全变差的性质，$d|\\nu| = d|\\lambda| + |f|\\cdot dm$。既然 $\\nu$ 正则，$|\\nu |$ 正则，于是 $\\lambda$ 与 $f\\cdot dm$ 都正则；由「$g\\cdot dm$ 正则 $\\iff$ $g \\in L^1_{loc}$」得 $f \\in L^1_{loc}$。',
         '',
         '**② 拆比值。**',
         '',
         '$$\\nu(E_r) / m(E_r) = \\lambda(E_r) / m(E_r) + \\frac{1}{m(E_r)} \\int_{E_r} f\\cdot dm$$',
         '',
-        '第二项由**可缩族的微分定理**趋于 $$f(x)$$（对 m-a.e. x）。所以只需证第一项趋于 0。',
+        '第二项由**可缩族的微分定理**趋于 $f(x)$（对 m-a.e. x）。所以只需证第一项趋于 0。',
         '',
-        '**③ 把 $\\lambda$ 的坏点收集起来。** 不妨设 $$\\lambda \\ge 0$$，并取 $$A$$ 使 $$\\lambda(A) = m(A^c) = 0$$（$\\lambda \\perp m$ 的见证）。令',
+        '**③ 把 $\\lambda$ 的坏点收集起来。** 不妨设 $\\lambda \\ge 0$，并取 $A$ 使 $\\lambda(A) = m(A^c) = 0$（$\\lambda \\perp m$ 的见证）。令',
         '',
         '$$F_k = \\{ x \\in A : \\limsup_{r\\to0} \\lambda(B(r, x)) / m(B(r, x)) > 1 / k \\}$$',
         '',
-        '**④ 用正则性把 $\\lambda$ 压小。** 给定 $\\varepsilon > 0$，由 $\\lambda$ 的正则性（从外面用开集逼近）取开集 $$U \\supseteq A$$ 使 $$\\lambda(U) < \\varepsilon$$（注意 $$\\lambda(A) = 0$$，但 $U$ 比 $A$ 大，多出来的部分也可以做得任意小）。',
+        '**④ 用正则性把 $\\lambda$ 压小。** 给定 $\\varepsilon > 0$，由 $\\lambda$ 的正则性（从外面用开集逼近）取开集 $U \\supseteq A$ 使 $\\lambda(U) < \\varepsilon$（注意 $\\lambda(A) = 0$，但 $U$ 比 $A$ 大，多出来的部分也可以做得任意小）。',
         '',
-        '**⑤ 每个坏点配一个小球。** 对 $$x \\in F_k$$，由 $$F_k$$ 的定义与 $$B_x \\subseteq U$$（在 $A$ 附近取足够小的球即可），存在球 $$B_x$$ 使',
+        '**⑤ 每个坏点配一个小球。** 对 $x \\in F_k$，由 $F_k$ 的定义与 $B_x \\subseteq U$（在 $A$ 附近取足够小的球即可），存在球 $B_x$ 使',
         '',
         '$$\\lambda(B_x) > (1/k)\\cdot m(B_x)$$',
         '',
-        '**⑥ 覆盖引理再来一次。** 令 $$V_\\varepsilon = \\bigcup_{x \\in F_k} B_x$$（它是 $U$ 中的开集，故 $$\\lambda(V_\\varepsilon) \\le \\lambda(U) < \\varepsilon$$）。取 $$c < m(V_\\varepsilon)$$，由**覆盖引理**挑出不交的 $$B_{x_1}, \\ldots , B_{x_j}$$ 使 $$\\sum m(B_{x_i}) > 3^{-n} c$$。于是',
+        '**⑥ 覆盖引理再来一次。** 令 $V_\\varepsilon = \\bigcup_{x \\in F_k} B_x$（它是 $U$ 中的开集，故 $\\lambda(V_\\varepsilon) \\le \\lambda(U) < \\varepsilon$）。取 $c < m(V_\\varepsilon)$，由**覆盖引理**挑出不交的 $B_{x_1}, \\ldots , B_{x_j}$ 使 $\\sum m(B_{x_i}) > 3^{-n} c$。于是',
         '',
         '$$c < 3^n \\sum_i m(B_{x_i}) \\le 3^n k \\sum_i \\lambda(B_{x_i}) \\le 3^n k\\cdot\\lambda(V_\\varepsilon) \\le 3^n k \\varepsilon$$',
         '',
-        '**⑦ 令 $\\varepsilon \\to 0$。** 得 $$m(V_\\varepsilon) = 0$$，故某个零集包含了一切 $$F_k$$，即 $$F_k$$ 全是零集，从而 $$\\lim_{r\\to0} \\lambda(B(r,x))/m(B(r,x)) = 0$$ 对 m-a.e. x 成立。',
+        '**⑦ 令 $\\varepsilon \\to 0$。** 得 $m(V_\\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\\lim_{r\\to0} \\lambda(B(r,x))/m(B(r,x)) = 0$ 对 m-a.e. x 成立。',
         '',
-        '**⑧ 从球换到可缩族。** 上面用的是球；要换成一般的可缩族 $$E_r$$，用',
+        '**⑧ 从球换到可缩族。** 上面用的是球；要换成一般的可缩族 $E_r$，用',
         '',
         '$$\\lambda(E_r) / m(E_r) \\le \\lambda(B(r,x)) / m(E_r) \\le (1/\\alpha)\\cdot\\lambda(B(r,x)) / m(B(r,x)) \\to 0$$',
         '',
-        '（第二个不等号用了 $$m(E_r) > \\alpha m(B(r,x))$$，并且 $$E_r \\subseteq B(r,x)$$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎'
+        '（第二个不等号用了 $m(E_r) > \\alpha m(B(r,x))$，并且 $E_r \\subseteq B(r,x)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎'
       ].join('\n'),
       note: '⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 $=$ 质量/体积」的严格版本。'
     },
@@ -11384,7 +11390,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '单调函数', '可导'],
       statement: [
-        '设 $$F : \\mathbb{R} \\to \\mathbb{R}$$ 递增，$$G(x) := F(x+)$$（右极限）。则',
+        '设 $F : \\mathbb{R} \\to \\mathbb{R}$ 递增，$G(x) := F(x+)$（右极限）。则',
         '',
         '**(a)** $F$ 的不连续点至多可数；',
         '',
@@ -11393,12 +11399,12 @@ window.MG = window.MG || {};
         '$$F\' = G\'\\quad  \\text{a.e.}$$'
       ].join('\n'),
       notes: [
-        '(a)：每个不连续点 $x$ 对应一个「跳跃区间」$$(F(x-), F(x+))$$，这些区间两两不交；每个区间里取一个有理数，得到一个到 $\\mathbb{Q}$ 的单射。故不连续点至多可数。',
+        '(a)：每个不连续点 $x$ 对应一个「跳跃区间」$(F(x-), F(x+))$，这些区间两两不交；每个区间里取一个有理数，得到一个到 $\\mathbb{Q}$ 的单射。故不连续点至多可数。',
         '(b) 的路线很漂亮：$G$ 右连续递增，于是它诱导一个正则 Borel 测度 $\\mu _G$。对 $h > 0$ 有',
         '',
         '$$G(x+h) - G(x) = \\mu_G((x, x+h])$$',
         '',
-        '于是差商恰好是 $$\\mu_G(E_h)/m(E_h)$$ —— 其中 $$E_h = (x, x+h]$$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\\mu _G$ 关于 $m$ 的 RN 导数，即 $G\' \\text{a.e.}$ 存在。',
+        '于是差商恰好是 $\\mu_G(E_h)/m(E_h)$ —— 其中 $E_h = (x, x+h]$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\\mu _G$ 关于 $m$ 的 RN 导数，即 $G\' \\text{a.e.}$ 存在。',
         '剩下的部分用一个「夹逼」把 $F\' = G\'$ 也拿下：令 $H = G - F \\ge 0$（跳跃函数），它 a.e. 为 0；再令 $\\bar{F}$ 为跳跃的累积函数，则 $\\mu _{\\bar{F}}$ 集中在可数集上，故 $\\mu _{\\bar{F}} \\perp m$，于是 $\\bar{F}\' = 0 \\text{a.e.}$。在 $\\bar{F}\' = 0$ 的点上用',
         '',
         '$$0 \\le H(x+h) / h \\le (\\bar{F}(x+h) - \\bar{F}(x)) / h\\quad  (h > 0)$$',
@@ -11417,18 +11423,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '全变差', 'BV'],
       statement: [
-        '设 $$F : \\mathbb{R} \\to \\mathbb{C}$$。定义它的**全变差函数**',
+        '设 $F : \\mathbb{R} \\to \\mathbb{C}$。定义它的**全变差函数**',
         '',
         '$$T_F(x) := \\sup \\{ \\sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \\in \\mathbb{N}, -\\infty < x_0 < \\cdots < x_n = x \\}$$',
         '',
-        '$T_F$ 是递增的 $$\\mathbb{R} \\to [0, +\\infty]$$。若 $$T_F(+\\infty) < +\\infty$$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。',
+        '$T_F$ 是递增的 $\\mathbb{R} \\to [0, +\\infty]$。若 $T_F(+\\infty) < +\\infty$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。',
         '',
-        '$T_F(b) - T_F(a)$ 称为 $F$ 在 $$[a, b]$$ 上的全变差；$$[a,b]$$ 上有界变差的函数全体记作 $$BV([a, b])$$。'
+        '$T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变差的函数全体记作 $BV([a, b])$。'
       ].join('\n'),
       notes: [
-        '直观：$$T_F(x)$$ 是「沿着图像从 $-\\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。',
-        '两个自然的映射：**投射** $$BV \\to BV([a,b])$$，$$f \\mapsto f|_{[a,b]}$$；**嵌入** $$BV([a,b]) \\to BV$$，$$f \\mapsto \\{ f(x) (x \\in [a,b]); f(b) (x > b); f(a) (x < a) \\}$$。',
-        '⚠ 全变差用的是**每一段的绝对差之和**，所以振荡太厉害的（比如 $$x \\sin(1/x)$$ 在 0 附近）就要仔细算 —— 见例子节点。'
+        '直观：$T_F(x)$ 是「沿着图像从 $-\\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。',
+        '两个自然的映射：**投射** $BV \\to BV([a,b])$，$f \\mapsto f|_{[a,b]}$；**嵌入** $BV([a,b]) \\to BV$，$f \\mapsto \\{ f(x) (x \\in [a,b]); f(b) (x > b); f(a) (x < a) \\}$。',
+        '⚠ 全变差用的是**每一段的绝对差之和**，所以振荡太厉害的（比如 $x \\sin(1/x)$ 在 0 附近）就要仔细算 —— 见例子节点。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.5', 'Rudin, Real and Complex Analysis, Ch. 7']
     },
@@ -11442,19 +11448,19 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'BV', '例子'],
       statement: [
-        '1. 若 $$F : \\mathbb{R} \\to \\mathbb{R}$$ **有界递增**，则 $$F \\in BV$$（此时 $$T_F = F - F(-\\infty)$$）。',
+        '1. 若 $F : \\mathbb{R} \\to \\mathbb{R}$ **有界递增**，则 $F \\in BV$（此时 $T_F = F - F(-\\infty)$）。',
         '',
-        '2. $$BV$$ 是 $\\mathbb{C}$向量空间。',
+        '2. $BV$ 是 $\\mathbb{C}$向量空间。',
         '',
-        '3. 若 $F$ 实可微且 $F\'$ 有界，则对一切 $$-\\infty < a < b < \\infty$$ 有 $$F \\in BV([a,b])$$。',
+        '3. 若 $F$ 实可微且 $F\'$ 有界，则对一切 $-\\infty < a < b < \\infty$ 有 $F \\in BV([a,b])$。',
         '',
-        '4. $$F(x) = \\sin x$$：对任何紧区间 $$[a,b]$$，$$F \\in BV([a,b])$$。',
+        '4. $F(x) = \\sin x$：对任何紧区间 $[a,b]$，$F \\in BV([a,b])$。',
         '',
-        '5. $$F(x) = xsin(1/x)$$（$$x \\ne 0$$），$$F(0) = 0$$：若 $$0 \\in [a,b]$$，则 $$F \\in BV([a,b])$$。'
+        '5. $F(x) = xsin(1/x)$（$x \\ne 0$），$F(0) = 0$：若 $0 \\in [a,b]$，则 $F \\in BV([a,b])$。'
       ].join('\n'),
       notes: [
         '第 4、5 两个例子是「振荡型」的：函数本身有界、但导数在某个点附近爆掉或无限振荡。它们仍然有界变差 —— 说明**BV 比「$C^{1}$」宽得多**。',
-        '一个标准的**反例**（不属于 BV）：$$F(x) = \\sin(1/x)$$（$$x \\ne 0$$）、$$F(0) = 0$$ —— 它在 0 附近无限次振荡且振幅不衰减，全变差发散。',
+        '一个标准的**反例**（不属于 BV）：$F(x) = \\sin(1/x)$（$x \\ne 0$）、$F(0) = 0$ —— 它在 0 附近无限次振荡且振幅不衰减，全变差发散。',
         '⭐ 记住这条分界线：**振幅不衰减的振荡 $\\implies$ 不是 BV**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.5']
@@ -11476,12 +11482,12 @@ window.MG = window.MG || {};
         '都是**递增**函数。'
       ].join('\n'),
       notes: [
-        '证明：设 $x < y$，任给 $\\varepsilon > 0$，取分划 $$x_0 < \\cdots < x_n = x$$ 使 $$\\sum|F(x_j) - F(x_{j-1})| \\ge T_F(x) - \\varepsilon$$，再补上点 $y$ 与 $x$ 之间的比较：',
+        '证明：设 $x < y$，任给 $\\varepsilon > 0$，取分划 $x_0 < \\cdots < x_n = x$ 使 $\\sum|F(x_j) - F(x_{j-1})| \\ge T_F(x) - \\varepsilon$，再补上点 $y$ 与 $x$ 之间的比较：',
         '',
         '$$T_F(y) \\pm  F(y) \\ge \\sum_j |F(x_j) - F(x_{j-1})| + (F(y) - F(x)) \\pm  F(x) \\ge T_F(x) - \\varepsilon \\pm  F(x)$$',
         '',
-        '由 $\\varepsilon$ 任意即得 $$T_F(y) \\pm  F(y) \\ge T_F(x) \\pm  F(x)$$。∎',
-        '⭐ 这条是下一条「BV 的 Jordan 分解」的全部技术内容：一旦知道 $$T_F \\pm  F$$ 递增，就能把 $F$ 写成一增一减。'
+        '由 $\\varepsilon$ 任意即得 $T_F(y) \\pm  F(y) \\ge T_F(x) \\pm  F(x)$。∎',
+        '⭐ 这条是下一条「BV 的 Jordan 分解」的全部技术内容：一旦知道 $T_F \\pm  F$ 递增，就能把 $F$ 写成一增一减。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.27']
     },
@@ -11495,9 +11501,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'BV', 'Jordan 分解'],
       statement: [
-        '**(a)** $$F \\in BV \\iff \\operatorname{Re} F \\in BV\\text{ 且} \\operatorname{Im} F \\in BV$$。',
+        '**(a)** $F \\in BV \\iff \\operatorname{Re} F \\in BV\\text{ 且} \\operatorname{Im} F \\in BV$。',
         '',
-        '**(b)** 设 $$F : \\mathbb{R} \\to \\mathbb{R}$$。则',
+        '**(b)** 设 $F : \\mathbb{R} \\to \\mathbb{R}$。则',
         '',
         '$$F \\in BV \\iff F = G - H,\\text{ 其中} G, H\\text{ 都是有界递增函数}$$'
       ].join('\n'),
@@ -11507,7 +11513,7 @@ window.MG = window.MG || {};
         '$$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$',
         '',
         '前一项叫 $F$ 的**正变差**，后一项叫**负变差** —— 名字与符号测度的 $\\nu ^{+}$、$\\nu ^{-}$ 完全对应。',
-        '由引理，$$T_F \\pm  F$$ 递增；而「有界」来自 $F \\in BV$。',
+        '由引理，$T_F \\pm  F$ 递增；而「有界」来自 $F \\in BV$。',
         '⭐ 意义：**BV 函数 $=$ 两个有界递增函数之差**。于是关于 BV 的一切都能化归到「递增函数」这个好处理的情形。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.27']
@@ -11522,13 +11528,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'BV', '正则性'],
       statement: [
-        '设 $$F \\in BV$$。则',
+        '设 $F \\in BV$。则',
         '',
-        '**(c)** 对每个 $$x \\in \\mathbb{R}$$，$$F(x+)$$ 与 $$F(x-)$$ 都存在；$$F(\\pm \\infty)$$ 也存在；',
+        '**(c)** 对每个 $x \\in \\mathbb{R}$，$F(x+)$ 与 $F(x-)$ 都存在；$F(\\pm \\infty)$ 也存在；',
         '',
         '**(d)** $F$ 的不连续点至多可数；',
         '',
-        '**(e)** 令 $$G(x) = F(x+)$$，则 $$F\'$$ 与 $$G\'$$ 处处存在且相等（a.e.）。'
+        '**(e)** 令 $G(x) = F(x+)$，则 $F\'$ 与 $G\'$ 处处存在且相等（a.e.）。'
       ].join('\n'),
       notes: [
         '全部由「$F = G - H$」化归到递增函数：递增函数的单侧极限显然存在；不连续点可数由单调函数那条定理；a.e. 可导也由那条定理（差的导数 $=$ 导数的差）。',
@@ -11567,18 +11573,18 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '全变差', 'NBV'],
       statement: [
-        '设 $$F \\in BV$$。则',
+        '设 $F \\in BV$。则',
         '',
-        '- $$T_F(-\\infty) = 0$$；',
-        '- 若 $F$ **右连续**，则 $$T_F$$ 也右连续。'
+        '- $T_F(-\\infty) = 0$；',
+        '- 若 $F$ **右连续**，则 $T_F$ 也右连续。'
       ].join('\n'),
       notes: [
-        '第一部分：给定 $\\varepsilon > 0$ 与 $x$，取分划使 $$\\sum \\ge T_F(x) - \\varepsilon$$；于是对 $$y \\le x_0$$ 有 $$T_F(y) \\le \\varepsilon$$。由 $\\varepsilon$ 任意，$$T_F(-\\infty) = 0$$。',
-        '第二部分：设 $$\\alpha = T_F(x+) - T_F(x)$$。由 $F$ 右连续，对充分小的 $h$ 有 $$|F(x+h) - F(x)| < \\varepsilon$$ 且 $$T_F(x+h) - T_F(x+) < \\varepsilon$$；再从两边各取分划夹住，得到',
+        '第一部分：给定 $\\varepsilon > 0$ 与 $x$，取分划使 $\\sum \\ge T_F(x) - \\varepsilon$；于是对 $y \\le x_0$ 有 $T_F(y) \\le \\varepsilon$。由 $\\varepsilon$ 任意，$T_F(-\\infty) = 0$。',
+        '第二部分：设 $\\alpha = T_F(x+) - T_F(x)$。由 $F$ 右连续，对充分小的 $h$ 有 $|F(x+h) - F(x)| < \\varepsilon$ 且 $T_F(x+h) - T_F(x+) < \\varepsilon$；再从两边各取分划夹住，得到',
         '',
         '$$(3/2)\\alpha - \\varepsilon \\le T_F(x+h) - T_F(x) < \\varepsilon + \\alpha$$',
         '',
-        '于是 $$\\alpha < 4\\varepsilon$$，由 $\\varepsilon$ 任意得 $\\alpha = 0$。∎',
+        '于是 $\\alpha < 4\\varepsilon$，由 $\\varepsilon$ 任意得 $\\alpha = 0$。∎',
         '⭐ 这条保证「全变差」这个操作**保持 NBV**：$F \\in NBV \\implies T_F \\in NBV$，正是下一条定理里 $|\\mu _F| = \\mu _\\{T_F\\}$ 的根据。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.30']
@@ -11593,7 +11599,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '递增', '积分', '导数'],
       statement: [
-        '设 $$F \\nearrow $$ 递增，$$G(x) = F(x+)$$（右连续递增）。则',
+        '设 $F \\nearrow $ 递增，$G(x) = F(x+)$（右连续递增）。则',
         '',
         '$$\\int_a^b F\' \\le F(b) - F(a)$$'
       ].join('\n'),
@@ -11602,7 +11608,7 @@ window.MG = window.MG || {};
         '',
         '$$d\\mu_G = d\\lambda + f\\cdot dm, \\quad  f = \\lim \\mu_G(E_h) / m(E_h)\\quad  \\text{a.e.}$$',
         '',
-        '而差商恰好是那个比值，所以 $$f = G\' = F\'$$ a.e.。于是',
+        '而差商恰好是那个比值，所以 $f = G\' = F\'$ a.e.。于是',
         '',
         '$$\\int_a^b F\' = \\int_a^b f\\cdot dm \\le \\int_a^b d\\mu_G = G(b) - G(a) \\le F(b) - F(a)$$',
         '',
@@ -11621,9 +11627,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'Riesz 表示', 'Borel 测度', 'NBV'],
       statement: [
-        '**(1)** 若 $\\mu$ 是 $\\mathbb{R}$ 上的复 Borel 测度，$$F(x) := \\mu((-\\infty, x])$$，则 $$F \\in NBV$$。',
+        '**(1)** 若 $\\mu$ 是 $\\mathbb{R}$ 上的复 Borel 测度，$F(x) := \\mu((-\\infty, x])$，则 $F \\in NBV$。',
         '',
-        '**(2)** 反之，若 $$F \\in NBV$$，则存在**唯一**的复 Borel 测度 $$\\mu_F$$ 使',
+        '**(2)** 反之，若 $F \\in NBV$，则存在**唯一**的复 Borel 测度 $\\mu_F$ 使',
         '',
         '$$F(x) = \\mu_F((-\\infty, x])$$',
         '',
@@ -11633,7 +11639,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这是 **Riesz 表示定理**在实数轴上的形式：测度与一类函数一一对应。',
-        '证明思路：把复测度拆成四个正测度 $$\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$$，各取 $$F_j^{\\pm }(x) = \\mu_j^{\\pm }((-\\infty, x])$$ —— 它们递增、右连续、在 $-\\infty$ 处为 0、在 $\\infty$ 处有限，于是 $F \\in NBV$。反方向把 $F \\in NBV$ 拆成 $$F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$，每一块配一个测度。',
+        '证明思路：把复测度拆成四个正测度 $\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$，各取 $F_j^{\\pm }(x) = \\mu_j^{\\pm }((-\\infty, x])$ —— 它们递增、右连续、在 $-\\infty$ 处为 0、在 $\\infty$ 处有限，于是 $F \\in NBV$。反方向把 $F \\in NBV$ 拆成 $F_1^+ - F_1^- + i(F_2^+ - F_2^-)$，每一块配一个测度。',
         '$|\\mu_F| = \\mu_{T_F}$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「$T_F \\in NBV$」的用处。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.29']
@@ -11648,16 +11654,16 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'NBV', 'RN 导数'],
       statement: [
-        '设 $$F \\in NBV$$。则 $$F\' \\in L^1(m)$$，并且',
+        '设 $F \\in NBV$。则 $F\' \\in L^1(m)$，并且',
         '',
         '$$\\mu_F \\perp  m \\iff F\' = 0\\quad  \\text{a.e.}$$',
         '$$\\mu_F \\ll  m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$'
       ].join('\n'),
       notes: [
-        '证明：写 $$d\\mu_F = d\\lambda + f\\cdot dm$$（Lebesgue 分解），由测度那条定理 $$f = F\'$$ a.e.。于是',
+        '证明：写 $d\\mu_F = d\\lambda + f\\cdot dm$（Lebesgue 分解），由测度那条定理 $f = F\'$ a.e.。于是',
         '',
-        '$\\cdot$ $$\\mu_F \\perp  m$$ 意味着绝对连续部为零，即 $f = 0 \\implies F\' = 0 \\text{a.e.}$；',
-        '$\\cdot$ $$\\mu_F \\ll  m$$ 意味着 $\\lambda = 0$，于是 $$F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F\'\\cdot dt$$。',
+        '$\\cdot$ $\\mu_F \\perp  m$ 意味着绝对连续部为零，即 $f = 0 \\implies F\' = 0 \\text{a.e.}$；',
+        '$\\cdot$ $\\mu_F \\ll  m$ 意味着 $\\lambda = 0$，于是 $F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F\'\\cdot dt$。',
         '⭐ 这一条就是「微积分基本定理」的测度版：**能不能把函数积回来，取决于 $\\mu _F$ 是否绝对连续**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -11672,13 +11678,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '绝对连续', 'AC'],
       statement: [
-        '函数 $$F : [a, b] \\to \\mathbb{C}$$ 是**绝对连续的**，当且仅当',
+        '函数 $F : [a, b] \\to \\mathbb{C}$ 是**绝对连续的**，当且仅当',
         '',
         '$$\\forall\\varepsilon > 0, \\exists\\delta > 0 :\\text{ 任意有限个两两不交的区间} (a_j, b_j) \\subseteq [a, b]\\text{ 满足} \\sum(b_j - a_j) < \\delta,\\text{ 就一定有} \\sum|F(b_j) - F(a_j)| < \\varepsilon$$'
       ].join('\n'),
       notes: [
         '⚠ 注意与「一致连续」的区别：一致连续是**单个**小区间上控制振幅，而绝对连续要求**任意多个小区间合起来**也能控制 —— 这正是为了堵住 Cantor 函数那种「在零测集上爬升」的情形。',
-        '记号：$$AC([a, b])$$ 表示 $$[a,b]$$ 上绝对连续的函数全体。'
+        '记号：$AC([a, b])$ 表示 $[a,b]$ 上绝对连续的函数全体。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §3.5']
     },
@@ -11692,13 +11698,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '绝对连续', 'μ_F ≪ m'],
       statement: [
-        '设 $$F \\in NBV$$。则',
+        '设 $F \\in NBV$。则',
         '',
         '$$F\\text{ 绝对连续} \\iff \\mu_F \\ll  m$$'
       ].join('\n'),
       notes: [
-        '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$$\\mu_F \\ll  m$$ 给出「$$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
-        '**$(\\implies )$** 设 $$E \\in \\mathfrak{B}_\\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\\mu_F(E) = 0$$。取递减开集列 $$U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \\delta$$ 得 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性与 $$\\bigcap U_k = E$$ 得 $$|\\mu_F(E)| \\le \\varepsilon$$。由 $\\varepsilon$ 任意，$$\\mu_F(E) = 0$$。∎',
+        '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$\\mu_F \\ll  m$ 给出「$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
+        '**$(\\implies )$** 设 $E \\in \\mathfrak{B}_\\mathbb{R}$ 且 $m(E) = 0$。要证 $\\mu_F(E) = 0$。取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$（由正则性）。每个 $U_k$ 是区间的可数不交并，由函数的绝对连续性与 $m(U_k) < \\delta$ 得 $|\\mu_F(U_j)| < \\varepsilon$；再由测度的上连续性与 $\\bigcap U_k = E$ 得 $|\\mu_F(E)| \\le \\varepsilon$。由 $\\varepsilon$ 任意，$\\mu_F(E) = 0$。∎',
         '⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -11713,13 +11719,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['推论', 'AC', 'NBV', '基本定理'],
       statement: [
-        '**(1)** 若 $$f \\in L^1(m)$$，则',
+        '**(1)** 若 $f \\in L^1(m)$，则',
         '',
         '$$F(x) := \\int_{-\\infty}^{x} f(t) dt$$',
         '',
-        '属于 $$AC \\cap NBV$$。',
+        '属于 $AC \\cap NBV$。',
         '',
-        '**(2)** 反之，若 $$F \\in NBV$$ 且绝对连续，则 $$F\' \\in L^1(m)$$ 且',
+        '**(2)** 反之，若 $F \\in NBV$ 且绝对连续，则 $F\' \\in L^1(m)$ 且',
         '',
         '$$F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$'
       ].join('\n'),
@@ -11755,15 +11761,15 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微积分基本定理', 'AC', 'NCT'],
       statement: [
-        '设 $$F : [a, b] \\to \\mathbb{C}$$，区间紧。则下列三条**彼此等价**：',
+        '设 $F : [a, b] \\to \\mathbb{C}$，区间紧。则下列三条**彼此等价**：',
         '',
-        '**(a)** $F$ 在 $$[a, b]$$ 上**绝对连续**；',
+        '**(a)** $F$ 在 $[a, b]$ 上**绝对连续**；',
         '',
-        '**(b)** 存在 $$f \\in L^1([a, b])$$ 使',
+        '**(b)** 存在 $f \\in L^1([a, b])$ 使',
         '',
         '$$F(x) - F(a) = \\int_a^x f(t) dt\\quad  \\forall x \\in [a, b]$$',
         '',
-        '**(c)** $F$ **a.e. 可导**、$$F\' \\in L^1([a, b])$$，且',
+        '**(c)** $F$ **a.e. 可导**、$F\' \\in L^1([a, b])$，且',
         '',
         '$$F(x) - F(a) = \\int_a^x F\'(t) dt$$'
       ].join('\n'),
@@ -11786,13 +11792,13 @@ window.MG = window.MG || {};
       target: 'thm.bv-jordan',
       title: '$T_F \\pm F$ 递增 $\\implies BV$ 的 Jordan 分解',
       proof: [
-        '**(b) 的 $(\\Longleftarrow )$ 方向**：若 $$F = G - H$$（$G$、$H$ 有界递增），则对任意分划',
+        '**(b) 的 $(\\Longleftarrow )$ 方向**：若 $F = G - H$（$G$、$H$ 有界递增），则对任意分划',
         '',
         '$$\\sum|F(x_j) - F(x_{j-1})| \\le \\sum|G(x_j) - G(x_{j-1})| + \\sum|H(x_j) - H(x_{j-1})| = (G(x) - G(-\\infty)) + (H(x) - H(-\\infty))$$',
         '',
-        '（递增函数的相邻差非负，可以直接去绝对值。）于是 $$T_F(x) \\le (G+H)(x) - (G+H)(-\\infty) < \\infty$$，$F \\in BV$。',
+        '（递增函数的相邻差非负，可以直接去绝对值。）于是 $T_F(x) \\le (G+H)(x) - (G+H)(-\\infty) < \\infty$，$F \\in BV$。',
         '',
-        '**(b) 的 $(\\implies )$ 方向**：由**引理**，$$T_F + F$$ 与 $$T_F - F$$ 都递增；它们有界（因为 $F \\in BV$ 且 $F$ 有界）。令',
+        '**(b) 的 $(\\implies )$ 方向**：由**引理**，$T_F + F$ 与 $T_F - F$ 都递增；它们有界（因为 $F \\in BV$ 且 $F$ 有界）。令',
         '',
         '$$G := (1/2)(T_F + F), \\quad  H := (1/2)(T_F - F)$$',
         '',
@@ -11802,7 +11808,7 @@ window.MG = window.MG || {};
         '',
         '∎',
         '',
-        '**(a)**：把实部虚部分开即可（$$|\\operatorname{Re} F| \\le |F|$$、$$|F| \\le |\\operatorname{Re} F| + |\\operatorname{Im} F|$$，两边夹）。∎'
+        '**(a)**：把实部虚部分开即可（$|\\operatorname{Re} F| \\le |F|$、$|F| \\le |\\operatorname{Re} F| + |\\operatorname{Im} F|$，两边夹）。∎'
       ].join('\n'),
       note: '⭐ 这叫「函数版的 Jordan 分解」，与符号测度的 $\\nu = \\nu ^{+} - \\nu ^{-}$ 完全平行 —— 事实上两者通过「测度 $\\leftrightarrow NBV$」的对应是同一件事。'
     },
@@ -11820,11 +11826,11 @@ window.MG = window.MG || {};
         '',
         '$$F(x-) = \\sup_{y < x} F(y), \\quad  F(x+) = \\inf_{y > x} F(y)$$',
         '',
-        '（递增数列的有界单调收敛定理。）同理 $$F(\\pm \\infty) = \\sup/\\inf$$ 也存在。',
+        '（递增数列的有界单调收敛定理。）同理 $F(\\pm \\infty) = \\sup/\\inf$ 也存在。',
         '',
         '**(d)** 由**单调函数那条定理**的 (a)：不连续点至多可数。',
         '',
-        '**(e)** 由同一条定理的 (b)：$$F\' = G\'$$ a.e.，其中 $$G(x) = F(x+)$$。对 $G - H$ 形式的函数两边相减即可。∎',
+        '**(e)** 由同一条定理的 (b)：$F\' = G\'$ a.e.，其中 $G(x) = F(x+)$。对 $G - H$ 形式的函数两边相减即可。∎',
         '',
         '$>$ ⭐ 整个证明的模式很典型：**先证明「递增」这个好情形，再用 Jordan 分解把一般情形搬过去**。'
       ].join('\n')
@@ -11837,19 +11843,19 @@ window.MG = window.MG || {};
       target: 'thm.borel-measure-nbv',
       title: 'NBV 的性质 $\\implies$ 测度与函数的一一对应',
       proof: [
-        '**(1) 测度 $\\implies$ 函数。** 复测度拆成四个正测度 $$\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$$。令',
+        '**(1) 测度 $\\implies$ 函数。** 复测度拆成四个正测度 $\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$。令',
         '',
         '$$F_j^{\\pm }(x) := \\mu_j^{\\pm }((-\\infty, x])$$',
         '',
-        '每个 $$F_j^{\\pm }$$ 递增、右连续、$$F_j^{\\pm }(-\\infty) = 0$$、$$F_j^{\\pm }(+\\infty) = \\mu_j^{\\pm }(\\mathbb{R}) < \\infty$$。于是 $F$ 是四个这样的函数之组合，属于 NBV。',
+        '每个 $F_j^{\\pm }$ 递增、右连续、$F_j^{\\pm }(-\\infty) = 0$、$F_j^{\\pm }(+\\infty) = \\mu_j^{\\pm }(\\mathbb{R}) < \\infty$。于是 $F$ 是四个这样的函数之组合，属于 NBV。',
         '',
-        '**(2) 函数 $\\implies$ 测度。** 反之任意 $$F \\in NBV$$ 可以写成',
+        '**(2) 函数 $\\implies$ 测度。** 反之任意 $F \\in NBV$ 可以写成',
         '',
         '$$F = F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$',
         '',
         '（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；四块加起来即得 $\\mu _F$。**唯一性**来自「$\\mu$ 由它在 $(-\\infty , x]$ 上的值唯一决定」，而后者生成整个 $\\mathfrak{B}_\\mathbb{R}$。',
         '',
-        '**$(3) |\\mu _F| = \\mu _\\{T_F\\}$。** 由**引理**，$$F \\in NBV \\implies T_F \\in NBV$$，所以 $$\\mu_{T_F}$$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
+        '**$(3) |\\mu _F| = \\mu _\\{T_F\\}$。** 由**引理**，$F \\in NBV \\implies T_F \\in NBV$，所以 $\\mu_{T_F}$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
         '',
         '$$\\mu_{T_F}((-\\infty, x]) = T_F(x) = \\sup\\{ \\sum|F(x_j) - F(x_{j-1})| \\} = |\\mu_F|((-\\infty, x])$$',
         '',
@@ -11864,21 +11870,21 @@ window.MG = window.MG || {};
       target: 'prop.ac-iff-measure-ac',
       title: '$\\mu_F \\ll m$ 的 $\\varepsilon$–$\\delta$ 刻画 $\\implies$ 函数绝对连续 $\\iff$ 测度绝对连续',
       proof: [
-        '**$(\\Longleftarrow )$** 设 $$\\mu_F \\ll  m$$。应用测度版绝对连续的 $\\varepsilon$–$\\delta$ 刻画（注意 $\\mu _F$ 有限，符合前提）：给定 $\\varepsilon > 0$ 取 $\\delta > 0$ 使',
+        '**$(\\Longleftarrow )$** 设 $\\mu_F \\ll  m$。应用测度版绝对连续的 $\\varepsilon$–$\\delta$ 刻画（注意 $\\mu _F$ 有限，符合前提）：给定 $\\varepsilon > 0$ 取 $\\delta > 0$ 使',
         '',
         '$$m(E) < \\delta\\quad  \\implies\\quad  |\\mu_F(E)| < \\varepsilon$$',
         '',
-        '现在取有限个两两不交的区间 $$(a_j, b_j) \\subseteq [a, b]$$ 且 $$\\sum(b_j - a_j) < \\delta$$，令 $$E = \\bigsqcup_j (a_j, b_j)$$。则 $$m(E) < \\delta$$，于是',
+        '现在取有限个两两不交的区间 $(a_j, b_j) \\subseteq [a, b]$ 且 $\\sum(b_j - a_j) < \\delta$，令 $E = \\bigsqcup_j (a_j, b_j)$。则 $m(E) < \\delta$，于是',
         '',
         '$$\\sum_j |F(b_j) - F(a_j)| = \\sum_j |\\mu_F((a_j, b_j])| \\le |\\mu_F|(E) < \\varepsilon$$',
         '',
         '这正是函数绝对连续的定义。',
         '',
-        '**$(\\implies )$** 设 $F$ 绝对连续，$$E \\in \\mathfrak{B}_\\mathbb{R}$$、$$m(E) = 0$$，要证 $$\\mu_F(E) = 0$$。由 $\\mu _F$ 的正则性取递减开集列 $$U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$、$$\\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性（递减列，首项有限）得',
+        '**$(\\implies )$** 设 $F$ 绝对连续，$E \\in \\mathfrak{B}_\\mathbb{R}$、$m(E) = 0$，要证 $\\mu_F(E) = 0$。由 $\\mu _F$ 的正则性取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$、$\\bigcap_k U_k = E$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $|\\mu_F(U_j)| < \\varepsilon$；再由测度的上连续性（递减列，首项有限）得',
         '',
         '$$|\\mu_F(E)| = \\lim_j |\\mu_F(U_j)| \\le \\varepsilon$$',
         '',
-        '由 $\\varepsilon$ 任意，$$\\mu_F(E) = 0$$。故 $$\\mu_F \\ll  m$$。∎'
+        '由 $\\varepsilon$ 任意，$\\mu_F(E) = 0$。故 $\\mu_F \\ll  m$。∎'
       ].join('\n')
     },
 
@@ -11889,15 +11895,15 @@ window.MG = window.MG || {};
       target: 'thm.ftc-lebesgue',
       title: '$(a) \\iff (b) \\iff (c)$：微积分基本定理的三条等价',
       proof: [
-        '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $$d\\mu_F = f\\cdot dm$$，即',
+        '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $d\\mu_F = f\\cdot dm$，即',
         '',
         '$$F(x) - F(a) = \\int_a^x f(t) dt$$',
         '',
-        '取 $$f$$ 就是所要的 $L^{1}$ 函数。',
+        '取 $f$ 就是所要的 $L^{1}$ 函数。',
         '',
-        '**$(b) \\implies (c)$。** 若 $$F(x) - F(a) = \\int_a^x f$$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$$d / dx\\int_a^x f = f(x)$$ a.e.，故 $$F\' = f$$ a.e.、$$F\' \\in L^1$$，公式成立。',
+        '**$(b) \\implies (c)$。** 若 $F(x) - F(a) = \\int_a^x f$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$d / dx\\int_a^x f = f(x)$ a.e.，故 $F\' = f$ a.e.、$F\' \\in L^1$，公式成立。',
         '',
-        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $$F(x) - \\int_a^x F\'$$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。故 $F$ 本身绝对连续。∎',
+        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $F(x) - \\int_a^x F\'$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。故 $F$ 本身绝对连续。∎',
         '',
         '$>$ ⭐ 最容易错的直觉是「a.e. 可导 $F\' \\in L^{1}$ 就够」——**Cantor 函数**正是反例：它 a.e. 可导、$F\' \\equiv 0 \\in L^{1}$，但 $\\int _{0}^{1} F\' = 0 \\ne 1$。**绝对连续这一条不能省。**'
       ].join('\n'),
@@ -13457,7 +13463,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：**不存在**从 $A$ 到 $\\mathcal{P}(A)$ 的满射（当然也不存在双射），但 $a \\mapsto \\{a\\}$ 是单射。'
       ].join('\n'),
-      notes: '⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。于是\n\n$$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$|\\mathbb{R}| = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。',
+      notes: '⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。于是\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$|\\mathbb{R}| = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。',
       refs: ['Kunen, Set Theory, I.6']
     },
 

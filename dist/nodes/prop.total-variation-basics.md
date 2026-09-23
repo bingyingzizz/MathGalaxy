@@ -2,11 +2,11 @@
 命题：$|\nu(E)| \le |\nu|(E)$，且 $d|\nu| = |f| d\mu$
 layer 16 · 命题 · 符号测度与分解 · 分析学
 
-设 $\nu$ 是复测度（或符号测度），$$|\nu|$$ 是它的全变差。则
+设 $\nu$ 是复测度（或符号测度），$|\nu|$ 是它的全变差。则
 
-**(a)** $$|\nu(E)| \le |\nu|(E)$$ 对一切 $$E \in \mathcal{M}$$ 成立；
+**(a)** $|\nu(E)| \le |\nu|(E)$ 对一切 $E \in \mathcal{M}$ 成立；
 
-**(b)** 若 $$d\nu = f d\mu$$（即 $\nu \ll \mu$）则 $$d|\nu| = |f| d\mu$$，即
+**(b)** 若 $d\nu = f d\mu$（即 $\nu \ll \mu$）则 $d|\nu| = |f| d\mu$，即
 > 陈述续见 `nodes/prop.total-variation-basics.2.md`
 
 

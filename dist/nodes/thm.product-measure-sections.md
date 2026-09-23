@@ -2,10 +2,10 @@
 定理：$\mu \times \nu(E) = \int \nu(E_{x}) d\mu(x) = \int \mu(E^{y}) d\nu(y)$
 layer 17 · 定理 · 乘积测度与 Fubini · 分析学
 
-设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是 **$\sigma$有限**的，$$E \in \mathcal{M} \otimes  \mathcal{N}$$。则
+设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是 **$\sigma$有限**的，$E \in \mathcal{M} \otimes  \mathcal{N}$。则
 
-- $$x \mapsto \nu(E_x)$$ 在 $X$ 上可测；
-- $$y \mapsto \mu(E^y)$$ 在 $Y$ 上可测；
+- $x \mapsto \nu(E_x)$ 在 $X$ 上可测；
+- $y \mapsto \mu(E^y)$ 在 $Y$ 上可测；
 
 并且
 > 陈述续见 `nodes/thm.product-measure-sections.2.md`

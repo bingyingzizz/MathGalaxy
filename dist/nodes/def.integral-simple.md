@@ -2,7 +2,7 @@
 简单函数的积分：加权和
 layer 15 · 定义 · 积分 · 分析学
 
-设 $$\varphi \in L^+$$ 是简单函数，写成标准形式
+设 $\varphi \in L^+$ 是简单函数，写成标准形式
 
 $$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}, \quad  a_j \ge 0, E_j \in \mathcal{M}\text{ 两两不交}$$
 

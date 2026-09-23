@@ -2,7 +2,7 @@
 平均算子（Averaging Operator $A_{r} f$）
 layer 20 · 定义 · 微分定理 · 分析学
 
-设 $$f \in L^1_{loc}$$，$$x \in \mathbb{R}^n$$，$$r > 0$$。定义
+设 $f \in L^1_{loc}$，$x \in \mathbb{R}^n$，$r > 0$。定义
 > 陈述续见 `nodes/def.average-operator.2.md`
 
 
@@ -18,6 +18,6 @@ layer 20 · 定义 · 微分定理 · 分析学
 refs: Folland, Real Analysis, §3.4
 
 ## 说明
-这是「把函数抹平」的算子：$$A_r f$$ 是 $f$ 的连续化版本（见下一条），$r \to 0$ 时应当回到 $f$ 本身 —— 而那正是 Lebesgue 微分定理要说的事。
+这是「把函数抹平」的算子：$A_r f$ 是 $f$ 的连续化版本（见下一条），$r \to 0$ 时应当回到 $f$ 本身 —— 而那正是 Lebesgue 微分定理要说的事。
 
 ⚠ 注意积分是**对 Lebesgue 测度 $m$** 取的，跟这一段的符号测度 $\nu$ 无关。

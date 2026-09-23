@@ -2,13 +2,13 @@
 Radon–Nikodym 导数 $d\nu/d\mu$ 与 Lebesgue 分解
 layer 16 · 定义 · 符号测度与分解 · 分析学
 
-设 $$\nu \ll  \mu$$（都是 $\sigma$有限的）。取定理里的 $$f$$，称
+设 $\nu \ll  \mu$（都是 $\sigma$有限的）。取定理里的 $f$，称
 
 $$f = \frac{d\nu}{d\mu}$$
 
 为 $\nu$ 关于 $\mu$ 的 **Radon–Nikodym 导数**（注意它定义在「$\mu$本质相同的函数类」上，不是单个函数）。
 
-一般的分解 $$\nu = \lambda + \rho$$（$$\lambda \perp  \mu$$，$$\rho \ll  \mu$$）称为 $\nu$ 关于 $\mu$ 的 **Lebesgue 分解**。
+一般的分解 $\nu = \lambda + \rho$（$\lambda \perp  \mu$，$\rho \ll  \mu$）称为 $\nu$ 关于 $\mu$ 的 **Lebesgue 分解**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.absolute-continuity` 绝对连续：用到了定义 绝对连续　proofs/def-dep.ac-rn-derivative.md

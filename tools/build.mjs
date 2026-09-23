@@ -949,7 +949,8 @@ function exportNotation(MG, base = '') {
   L.push('');
   L.push('## 已知老账');
   L.push('');
-  for (const b of (N.backlog || [])) L.push(`- ${b.what}`);
+  if ((N.backlog || []).length) { for (const b of N.backlog) L.push(`- ${b.what}`); }
+  else L.push('（当前没有 —— title 的裸 Unicode 与行内 `$$…$$` 都已清掉，构建拦着不再复发。）');
   L.push('');
   L.push('## 用法');
   L.push('');
@@ -996,7 +997,8 @@ function exportNotationFull(MG) {
   }
   L.push('## 已知老账');
   L.push('');
-  for (const b of (N.backlog || [])) L.push(`- ${b.what}`);
+  if ((N.backlog || []).length) { for (const b of N.backlog) L.push(`- ${b.what}`); }
+  else L.push('（当前没有 —— title 的裸 Unicode 与行内 `$$…$$` 都已清掉，构建拦着不再复发。）');
   L.push('');
   L.push('## 怎么执行');
   L.push('');
@@ -1112,7 +1114,31 @@ function assertNotation(MG, graph) {
       `—— 要写成 $…$ 里的 LaTeX（详见 dist/notation.md）`);
   }
 
-  /* ② 禁用写法 */
+  /* ② 行内 `$$…$$`（R2）—— 渲染上和 `$…$` 没差别，但产物喂给标准 Markdown
+        渲染器时 `$$` 是「独立公式块」的信号，会把句子切断。 */
+  const inlineFields = (N.inlineDollars && N.inlineDollars.fields) || [];
+  if (inlineFields.length) {
+    const hits = [];
+    for (const it of items) {
+      if (!inlineFields.includes(it.field)) continue;
+      for (const ln of String(it.text).split('\n')) {
+        const parts = ln.split('$$');
+        if (parts.length === 1 || parts.length % 2 === 0) continue;   // 奇数个 = 跨行公式
+        for (let k = 0; k < (parts.length - 1) / 2; k++) {
+          if (parts[2 * k].trim() !== '' || parts[2 * k + 2].trim() !== '') {
+            hits.push(`${it.id}.${it.field}`);
+            break;
+          }
+        }
+      }
+    }
+    if (hits.length) {
+      errs.push(`记号：${hits.slice(0, 4).join('、')}${hits.length > 4 ? ` 等 ${hits.length} 处` : ''}` +
+        ` 把 \`$$…$$\` 当行内公式用 —— 行内的写成 \`$…$\`，\`$$…$$\` 只留给独立成行的公式（R2）`);
+    }
+  }
+
+  /* ③ 禁用写法 */
   for (const b of banned) {
     const found = [];
     for (const it of items) {

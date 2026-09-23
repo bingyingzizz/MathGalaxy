@@ -2,7 +2,7 @@
 非负可测函数的积分：从下面取上确界
 layer 16 · 定义 · 积分 · 分析学
 
-设 $$f \in L^+$$。定义
+设 $f \in L^+$。定义
 
 $$\int f d\mu := \sup \{ \int \varphi d\mu : 0 \le \varphi \le f, \varphi\text{ 是简单函数} \}$$
 

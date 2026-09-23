@@ -2,11 +2,11 @@
 符号测度（Signed Measure）
 layer 14 · 定义 · 符号测度与分解 · 分析学
 
-设 $(X, \mathcal{M})$ 是可测空间。$$\nu : \mathcal{M} \to [-\infty, +\infty]$$ 是**符号测度**，当且仅当
+设 $(X, \mathcal{M})$ 是可测空间。$\nu : \mathcal{M} \to [-\infty, +\infty]$ 是**符号测度**，当且仅当
 
-- $$\nu(\emptyset) = 0$$；
-- $$\nu$$ **至多取到 $\pm \infty$ 中的一个**（不能同时取到 $\infty$ 与 $-\infty$）；
-- 对两两不交的 $$\{E_j\} \subseteq \mathcal{M}$$：
+- $\nu(\emptyset) = 0$；
+- $\nu$ **至多取到 $\pm \infty$ 中的一个**（不能同时取到 $\infty$ 与 $-\infty$）；
+- 对两两不交的 $\{E_j\} \subseteq \mathcal{M}$：
 > 陈述续见 `nodes/def.signed-measure.2.md`
 
 

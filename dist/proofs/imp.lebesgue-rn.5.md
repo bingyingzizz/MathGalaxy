@@ -5,8 +5,10 @@
 
 $$d\lambda - d\lambda' = (f' - f) d\mu$$
 
-左边与 $\mu$ 奇异（两个各与 $\mu$ 奇异的测度之差仍与 $\mu$ 奇异），右边关于 $\mu$ 绝对连续。由「既奇异又绝对连续 $\implies$ 等于零」，两边都是 0，即 $$\lambda = \lambda'$$ 且 $$f = f'$$ $\mu -\text{a.e.}$。
+左边与 $\mu$ 奇异（两个各与 $\mu$ 奇异的测度之差仍与 $\mu$ 奇异），右边关于 $\mu$ 绝对连续。由「既奇异又绝对连续 $\implies$ 等于零」，两边都是 0，即 $\lambda = \lambda'$ 且 $f = f'$ $\mu -\text{a.e.}$。
 
-**II. 推广到 $\sigma$有限。** 取 $$X = \bigcup_j A_j$$（$$\mu(A_j) < \infty$$、$$\nu(A_j) < \infty$$）。令
+**II. 推广到 $\sigma$有限。** 取 $X = \bigcup_j A_j$（$\mu(A_j) < \infty$、$\nu(A_j) < \infty$）。令
+
+$$\mu_j(E) := \mu(E \cap A_j), \quad  \nu_j(E) := \nu(E \cap A_j)$$
 
 > 续见 proofs/imp.lebesgue-rn.6.md

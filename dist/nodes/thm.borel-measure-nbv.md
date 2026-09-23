@@ -2,9 +2,9 @@
 定理：$\mathbb{R}$ 上的复 Borel 测度 $\longleftrightarrow$ NBV 函数
 layer 18 · 定理 · 有界变差与绝对连续 · 分析学
 
-**(1)** 若 $\mu$ 是 $\mathbb{R}$ 上的复 Borel 测度，$$F(x) := \mu((-\infty, x])$$，则 $$F \in NBV$$。
+**(1)** 若 $\mu$ 是 $\mathbb{R}$ 上的复 Borel 测度，$F(x) := \mu((-\infty, x])$，则 $F \in NBV$。
 
-**(2)** 反之，若 $$F \in NBV$$，则存在**唯一**的复 Borel 测度 $$\mu_F$$ 使
+**(2)** 反之，若 $F \in NBV$，则存在**唯一**的复 Borel 测度 $\mu_F$ 使
 
 $$F(x) = \mu_F((-\infty, x])$$
 

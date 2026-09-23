@@ -9,6 +9,6 @@
 
 $$\mathcal{F} := \{ f : X \to [0, +\infty] : \int_E f d\mu \le \nu(E)\quad  \forall E \in \mathcal{M} \}$$
 
-则 $$0 \in \mathcal{F}$$，且 $\mathcal{F}$ 对**取大**封闭：若 $f, g \in \mathcal{F}$，令 $$A = \{f > g\}$$、$$h = \max_{f, g}$$，则对任意 $E$，
+则 $0 \in \mathcal{F}$，且 $\mathcal{F}$ 对**取大**封闭：若 $f, g \in \mathcal{F}$，令 $A = \{f > g\}$、$h = \max_{f, g}$，则对任意 $E$，
 
 > 续见 proofs/imp.lebesgue-rn.2.md

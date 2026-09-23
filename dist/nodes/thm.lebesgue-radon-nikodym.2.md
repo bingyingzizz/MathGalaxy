@@ -4,8 +4,8 @@
 ## 陈述（续）
 $$\lambda \perp  \mu, \quad  \rho \ll  \mu, \quad  \nu = \lambda + \rho$$
 
-且 $$\rho$$ 可以写成积分：存在广义 $\mu$可积函数 $$f$$ 使
+且 $\rho$ 可以写成积分：存在广义 $\mu$可积函数 $f$ 使
 
 $$d\rho = f d\mu$$
 
-任何两个这样的 $$f$$ 都在 $\mu -\text{a.e.}$ 意义下相等。
+任何两个这样的 $f$ 都在 $\mu -\text{a.e.}$ 意义下相等。

@@ -18,4 +18,4 @@ refs: Folland, Real Analysis, Lemma 3.1
 ## 说明
 第一条由定义直接得到。
 
-第二条是 Hahn 分解证明里反复用到的技术步骤：把可数多个正集 $P_1, P_2, \ldots $ 不交化（$$P_j' = P_j \setminus \bigcup_{i<j} P_i$$，正集之差仍是正集），再用可数可加性逐块验证。
+第二条是 Hahn 分解证明里反复用到的技术步骤：把可数多个正集 $P_1, P_2, \ldots $ 不交化（$P_j' = P_j \setminus \bigcup_{i<j} P_i$，正集之差仍是正集），再用可数可加性逐块验证。

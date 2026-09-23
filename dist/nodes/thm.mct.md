@@ -2,7 +2,7 @@
 单调收敛定理（MCT, Monotone Convergence Theorem）
 layer 17 · 定理 · 积分 · 分析学
 
-设 $$\{f_n\} \subseteq L^+$$ 满足
+设 $\{f_n\} \subseteq L^+$ 满足
 
 $$f_1 \le f_2 \le \cdots, \quad  f_n \uparrow  f\text{ 逐点}, $$
 

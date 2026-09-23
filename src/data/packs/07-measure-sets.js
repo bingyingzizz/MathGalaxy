@@ -23,8 +23,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个**基本类**，当且仅当',
         '',
-        '- 对**交**封闭：$$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$$',
-        '- 差可以拆开：$$A, B \\in \\mathfrak{A} \\implies A \\setminus B\\text{ 是} \\mathfrak{A}\\text{ 中有限多个两两不交集合之并}$$'
+        '- 对**交**封闭：$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$',
+        '- 差可以拆开：$A, B \\in \\mathfrak{A} \\implies A \\setminus B\\text{ 是} \\mathfrak{A}\\text{ 中有限多个两两不交集合之并}$'
       ].join('\n'),
       notes: [
         '它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。',
@@ -56,7 +56,7 @@ window.MG = window.MG || {};
         '**代数 $=$ 环 $X \\in \\mathfrak{A}$**。「把整个 $X$ 放进去」是唯一的差别。'
       ].join('\n'),
       notes: [
-        '环加上 $X \\in \\mathfrak{A}$ 之后，差就自动升级成补：$$A^c = X \\setminus A \\in \\mathfrak{A}$$。所以**代数**也等价于「对有限并、对补封闭」。',
+        '环加上 $X \\in \\mathfrak{A}$ 之后，差就自动升级成补：$A^c = X \\setminus A \\in \\mathfrak{A}$。所以**代数**也等价于「对有限并、对补封闭」。',
         '⚠ 这里的「环」是**集合环**（ring of sets），和抽象代数里的 ring 只是同名，毫无关系。',
         '把「有限」都升级成「可数」，就得到 **$\\sigma$环** 与 **$\\sigma$代数** —— 另开两条节点写。'
       ].join('\n\n'),
@@ -74,15 +74,15 @@ window.MG = window.MG || {};
       statement: [
         '$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是 $X$ 上的一个 **$\\sigma$环**，当且仅当把「有限」都换成「可数」之后仍封闭：',
         '',
-        '- 对**可数并**封闭：$$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$$',
-        '- 对**差**封闭：$$A, B \\in \\mathfrak{A} \\implies A \\setminus B \\in \\mathfrak{A}$$',
+        '- 对**可数并**封闭：$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$',
+        '- 对**差**封闭：$A, B \\in \\mathfrak{A} \\implies A \\setminus B \\in \\mathfrak{A}$',
         '',
         '**$\\sigma$环 $=$ 环 + 可数并**。它**不要求**含 $X$ —— 这正是它与 $\\sigma$代数的唯一差别。'
       ].join('\n'),
       notes: [
         '不含 $X$ 的后果是实质的：$\\sigma$环里集合的并可能仍是一个真子集，补运算也落不到里面。',
         '典型例子：$X = \\mathbb{R}$ 上「全体可数集」是 $\\sigma$环，不是 $\\sigma$代数 —— 它的元素之并（如 $\\mathbb{R} \\setminus \\mathbb{Q}$）不在里面。',
-        '由差 + 可数并，**可数交**自动可用：$$\\bigcap_n A_n = A_1 \\setminus \\bigcup_{n \\ge 2} (A_1 \\setminus A_n)$$。',
+        '由差 + 可数并，**可数交**自动可用：$\\bigcap_n A_n = A_1 \\setminus \\bigcup_{n \\ge 2} (A_1 \\setminus A_n)$。',
         '与单调类的关系：**环是 $\\sigma$环 $\\iff$ 它是单调类 $\\iff$ 它对可数不交并封闭**。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §4']
@@ -99,15 +99,15 @@ window.MG = window.MG || {};
       statement: [
         '设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个 **$\\sigma$代数**，当且仅当它同时满足三条：',
         '',
-        '1. **含全集**：$$X \\in \\mathfrak{A}$$',
-        '2. **对补封闭**：$$A \\in \\mathfrak{A} \\implies A^c := X \\setminus A \\in \\mathfrak{A}$$',
-        '3. **对可数并封闭**：$$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$$',
+        '1. **含全集**：$X \\in \\mathfrak{A}$',
+        '2. **对补封闭**：$A \\in \\mathfrak{A} \\implies A^c := X \\setminus A \\in \\mathfrak{A}$',
+        '3. **对可数并封闭**：$A_1, A_2, \\ldots \\in \\mathfrak{A} \\implies \\bigcup_{n=1}^{\\infty} A_n \\in \\mathfrak{A}$',
         '',
-        '二元组 $$(X, \\mathfrak{A})$$ 称为**可测空间**（measurable space），$\\mathfrak{A}$ 的元素称为**可测集**（measurable set）。'
+        '二元组 $(X, \\mathfrak{A})$ 称为**可测空间**（measurable space），$\\mathfrak{A}$ 的元素称为**可测集**（measurable set）。'
       ].join('\n'),
       notes: [
         '三条是配套的，缺一不可：只留 (2)(3) 就是**$\\sigma$环**；把 (3) 降成「有限并」就是**代数**。',
-        '由 (2)(3) 用 De Morgan 立得对**可数交**封闭：$$\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$$。于是有限并、有限交、差、对称差全都可用 —— 真正超出「代数」的，只有**可数**这一件事。',
+        '由 (2)(3) 用 De Morgan 立得对**可数交**封闭：$\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$。于是有限并、有限交、差、对称差全都可用 —— 真正超出「代数」的，只有**可数**这一件事。',
         '⚠ 方向不能反：$\\sigma$代数一定是代数，代数不一定是 $\\sigma$代数。反例：$X = \\mathbb{R}$ 上「有限集与余有限集」全体是代数，而 $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ 是其中可数多个元素的并、本身既非有限也非余有限，所以那个代数不封闭于可数并。',
         '记号里的「$\\sigma$」表示**可数**（取自德文 Summe / 法文 somme 的首字母），和标准差那个 $\\sigma$ 无关。',
         '为什么非要有它：测度的可数可加性 $\\mu (\\bigcup A_{n}) = \\sum \\mu (A_{n})$ 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。'
@@ -270,7 +270,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定义', '积', '柱集'],
       statement: [
-        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$$X = \\prod_{\\alpha \\in A} X_\\alpha$$，投影 $$\\pi _\\alpha : X \\to X_\\alpha$$。**积 $\\sigma$代数**定义为',
+        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$X = \\prod_{\\alpha \\in A} X_\\alpha$，投影 $\\pi _\\alpha : X \\to X_\\alpha$。**积 $\\sigma$代数**定义为',
         '',
         '$$\\otimes _{\\alpha \\in A} \\mathcal{M}_\\alpha := \\mathcal{M}(\\{ \\pi _\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{M}_\\alpha, \\alpha \\in A \\})$$'
       ].join('\n'),
@@ -342,7 +342,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['推论', 'Borel', '积', '可分'],
       statement: [
-        '设 $X_{1}, X_{2}$ … 是距离空间，$$X = \\prod_{j=1}^{\\infty} X_j$$ 配以积度量。则',
+        '设 $X_{1}, X_{2}$ … 是距离空间，$X = \\prod_{j=1}^{\\infty} X_j$ 配以积度量。则',
         '',
         '$$\\otimes _{j=1}^{\\infty} \\mathfrak{B}_{X_j} \\subseteq \\mathfrak{B}_X$$',
         '',
@@ -381,7 +381,7 @@ window.MG = window.MG || {};
         '',
         '因为 $\\mathfrak{A}$ 是环（对有限并、对差封闭），每个 $B_{n} \\in \\mathfrak{A}$；而且 $B_{n}$ 两两不交，并且 $\\bigcup B_{n} = \\bigcup A_{n}$。所以只需证 $\\mathfrak{A}$ 对**可数不交并**封闭。',
         '',
-        '**② 用单调性。** 若 $B_{n}$ 两两不交，则部分并 $$C_n = B_1 \\cup \\cdots \\cup B_n$$ 是递增列，且 $C_{n} \\in \\mathfrak{A}$（环对有限并封闭）。由 $\\mathfrak{A}$ 是单调类，',
+        '**② 用单调性。** 若 $B_{n}$ 两两不交，则部分并 $C_n = B_1 \\cup \\cdots \\cup B_n$ 是递增列，且 $C_{n} \\in \\mathfrak{A}$（环对有限并封闭）。由 $\\mathfrak{A}$ 是单调类，',
         '',
         '$$\\bigcup_n C_n = \\bigcup_n B_n = \\bigcup_n A_n \\in \\mathfrak{A}$$',
         '',

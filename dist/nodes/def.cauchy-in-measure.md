@@ -2,7 +2,7 @@
 依测度 Cauchy 序列
 layer 14 · 定义 · 可测函数与收敛 · 分析学
 
-可测函数列 $$\{f_n\}$$ 是**依测度 Cauchy 的**，当且仅当
+可测函数列 $\{f_n\}$ 是**依测度 Cauchy 的**，当且仅当
 
 $$\forall\varepsilon > 0, \mu(\{x : |f_n(x) - f_m(x)| \ge \varepsilon\}) \to 0\quad  (m, n \to \infty)$$
 
