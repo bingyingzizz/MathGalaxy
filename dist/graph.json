@@ -2,7 +2,7 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-23T08:23:24.003Z",
+  "generated": "2026-09-23T08:33:51.363Z",
   "counts": {
    "regions": 6,
    "clusters": 23,
@@ -166,7 +166,7 @@
    "name": "数系的构造",
    "parent": "set-theory",
    "desc": "造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。",
-   "nodeCount": 13,
+   "nodeCount": 12,
    "nodes": [
     "thm.omega",
     "def.complex",
@@ -177,7 +177,6 @@
     "thm.triangle",
     "def.cauchy-null",
     "def.real",
-    "thm.real-ordered-field",
     "lem.archimedean",
     "thm.real-unique",
     "thm.real-uncountable"
@@ -284,15 +283,16 @@
    "id": "analysis.real",
    "name": "实数与极限",
    "parent": "analysis",
-   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。（ℝ、ℂ 与确界原理都在「数系的构造」里。）",
-   "nodeCount": 6,
+   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）",
+   "nodeCount": 7,
    "nodes": [
     "def.extended-real",
     "def.interval",
     "def.sequence-limit",
     "def.series",
     "def.continuous",
-    "def.derivative"
+    "def.derivative",
+    "thm.real-ordered-field"
    ]
   },
   {
@@ -5275,7 +5275,7 @@
     "set-theory",
     "analysis"
    ],
-   "cluster": "set.numbers",
+   "cluster": "analysis.real",
    "layer": 12,
    "tags": [
     "定理",
@@ -10109,7 +10109,14 @@
   {
    "a": "analysis.real",
    "b": "set.numbers",
-   "count": 3,
+   "count": 6,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.real",
+   "b": "order.structure",
+   "count": 2,
    "label": "",
    "explicit": false
   },
@@ -10200,7 +10207,7 @@
   {
    "a": "algebra.structures",
    "b": "set.numbers",
-   "count": 6,
+   "count": 5,
    "label": "",
    "explicit": false
   },
@@ -10271,13 +10278,6 @@
    "a": "analysis.lp",
    "b": "analysis.measure",
    "count": 4,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "order.structure",
-   "b": "set.numbers",
-   "count": 2,
    "label": "",
    "explicit": false
   },

@@ -243,7 +243,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.real-ordered-field',
-      cluster: 'set.numbers',
+      cluster: 'analysis.real',
       type: 'theorem',
       label: 'ℝ 是完备有序域',
       title: '$\\mathbb{R}$ 是完备有序域（确界原理）',
