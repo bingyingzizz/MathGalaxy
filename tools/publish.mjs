@@ -5,15 +5,26 @@
    产出站点结构（dist-site/），然后推到站点仓库。
 
      <user>.github.io/                ← 个人网站根
-       index.html                     ← 首页（占位，随便改）
-       assets/site.css
+       index.html                     ← 首页（模板在 site/index.html）
+       read.html                      ← 阅读页（模板在 site/read.html）
+       assets/site.css  read.css
        mathgalaxy/
          index.html                   ← 数学星图（自包含单文件）
          graph.json  graph.md  llms.txt   ← 给 AI 的接口文件
 
+   站点自己的 HTML / CSS 都在 **site/** 里，这个脚本只干三件事：
+     ① 把 dist/ 的产物摆到该在的位置；
+     ② 把 {{占位符}} 换成真数字（规模、更新日期、链接）；
+     ③ 把「怎么读这张图」那几份 .md/.txt 在**构建期**渲染成 HTML 塞进 read.html。
+   为什么第 ③ 步不在浏览器里做：那样双击 dist-site/index.html 就打不开阅读页
+   （file:// 下 fetch 被拦），而站点必须能离线双击打开。
+
    用法：
      bun tools/publish.mjs              组装 + 推送
      bun tools/publish.mjs --stage      只组装到本地 dist-site/（离线可用）
+     bun tools/publish.mjs --stage --no-build
+                                        跳过完整重建，拿现有 dist/ 直接组装
+                                        （改站点样式时用；内容改动别走这条路）
      bun tools/publish.mjs --site <仓库>  换一个站点仓库（默认 <user>.github.io）
 
    本脚本不依赖 shell 的命令查找：bun 直接用「正在跑本脚本的那个 bun」，
@@ -25,13 +36,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { renderDoc, esc } from './md.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const STAGE = path.join(ROOT, 'dist-site');
+const SITE = path.join(ROOT, 'site');
 
 const args = process.argv.slice(2);
 const onlyStage = args.includes('--stage');
+const noBuild = args.includes('--no-build');
 const siteArg = args.indexOf('--site');
 const USER = process.env.MG_USER || 'bingyingzizz';
 const SITE_REPO = siteArg >= 0 ? args[siteArg + 1] : `${USER}.github.io`;
@@ -79,9 +93,13 @@ function run(cmd, argv, cwd, quiet = false) {
   return r.status === 0;
 }
 
-console.log('① 先跑一遍构建…');
-if (!run(BUN, [path.join(ROOT, 'tools', 'build.mjs')], ROOT)) {
-  console.error('构建失败'); process.exit(1);
+if (noBuild) {
+  console.log('① 跳过构建（--no-build）：直接拿现有 dist/ 组装');
+} else {
+  console.log('① 先跑一遍构建…');
+  if (!run(BUN, [path.join(ROOT, 'tools', 'build.mjs')], ROOT)) {
+    console.error('构建失败'); process.exit(1);
+  }
 }
 
 /* ---------------------------------------------------------------- 组装 */
@@ -123,106 +141,82 @@ if (fs.existsSync(fontSrc)) {
   console.log(`   KaTeX 字体：${nf} 个 woff2 → mathgalaxy/fonts/`);
 }
 
-// 首页样式
-fs.writeFileSync(path.join(STAGE, 'assets', 'site.css'), `/* 个人站点 · 全局样式（随便改） */
-:root{
-  --ink:#1c1c1e; --soft:#5b6068; --faint:#9aa0a8;
-  --line:rgba(20,22,28,.10); --accent:#4f7cf5;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
-         "Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+/* -------------------------------------------------------- 站点页面（site/） */
+// 站点自己的样式 / 图标，原样搬过去
+const assetDir = path.join(SITE, 'assets');
+for (const f of fs.readdirSync(assetDir)) {
+  fs.copyFileSync(path.join(assetDir, f), path.join(STAGE, 'assets', f));
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#fff;color:var(--ink);font-family:var(--font);
-  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:720px;margin:0 auto;padding:clamp(40px,10vh,120px) 24px 80px}
-h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;margin:0 0 6px}
-.sub{color:var(--soft);margin:0 0 40px;font-size:15px}
-h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
-  margin:44px 0 14px;font-weight:600}
-.card{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:14px;
-  margin-bottom:12px;transition:.16s;color:inherit}
-.card:hover{border-color:rgba(20,22,28,.22);box-shadow:0 6px 24px rgba(16,20,30,.07);
-  text-decoration:none;transform:translateY(-1px)}
-.card b{display:block;font-size:16.5px;margin-bottom:3px}
-.card span{color:var(--soft);font-size:13.5px}
-footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
-  color:var(--faint);font-size:13px}
-`);
 
-// 首页 —— 规模与「最近更新」都从构建产物里读，不手写（免得又对不上）
+// 规模与「最近更新」都从构建产物里读，不手写（免得又对不上）
 const distMeta = JSON.parse(fs.readFileSync(path.join(DIST, 'graph.json'), 'utf8')).meta;
 const cnt = distMeta.counts;
 const updated = String(distMeta.generated).slice(0, 10);
-const idxPath = path.join(STAGE, 'index.html');
-fs.writeFileSync(idxPath, `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${USER}</title>
-<meta name="description" content="个人站点">
-<link rel="stylesheet" href="assets/site.css">
-</head>
-<body>
-<div class="wrap">
+const REPO_URL = `https://github.com/${USER}/MathGalaxy`;
+const SITE_REPO_URL = `https://github.com/${USER}/${SITE_REPO}`;
 
-  <!-- ⬇︎⬇︎ 这里换成你自己的名字和一句话介绍 ⬇︎⬇︎ -->
-  <h1>${USER}</h1>
-  <p class="sub">数学笔记与一些别的</p>
-  <!-- ⬆︎⬆︎ -->
+/**
+ * 填 {{占位符}}。填完还残留**已知名字**的占位符 = 模板和脚本对不上，
+ * 直接失败 —— 否则 {{COUNTS}} 会原样发到线上，这种事语法上完全看不出来。
+ */
+const KNOWN = ['USER', 'COUNTS', 'STRONG_WEAK', 'UPDATED', 'REPO', 'SITE_REPO', 'NAV', 'DOCS'];
+function fill(tpl, map, name) {
+  const out = tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : m));
+  const left = [...new Set(out.match(new RegExp('\\{\\{(' + KNOWN.join('|') + ')\\}\\}', 'g')) || [])];
+  if (left.length) throw new Error(`${name}：模板里还有没被替换的占位符 ${left.join(' ')}`);
+  return out;
+}
+const readSite = (f) => fs.readFileSync(path.join(SITE, f), 'utf8');
 
-  <h2>项目</h2>
+// 首页
+fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
+  USER,
+  COUNTS: `${cnt.regions} 星系 / ${cnt.clusters} 星团 / ${cnt.nodes} 节点 / ${cnt.edges} 连线`,
+  STRONG_WEAK: `强边 ${cnt.strong}，弱边 ${cnt.weak}`,
+  UPDATED: updated,
+  REPO: REPO_URL,
+  SITE_REPO: SITE_REPO_URL,
+}, 'site/index.html'));
 
-  <a class="card" href="mathgalaxy/">
-    <b>数学星图 · MathGalaxy</b>
-    <span>可交互的数学知识图谱 —— 定理、定义、引理按「星系 / 星团 / 恒星」三层组织，
-    箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。<br>
-    当前 ${cnt.regions} 星系 / ${cnt.clusters} 星团 / ${cnt.nodes} 节点 / ${cnt.edges} 连线
-    （强边 ${cnt.strong}，弱边 ${cnt.weak}）。</span>
-  </a>
+/* ---------------------------- 阅读页：把 .md/.txt 在构建期渲染成静态 HTML */
+// 以前这三张卡片直接链到 mathgalaxy/*.md —— 浏览器只当纯文本吐出来，又生硬又没排版。
+// 现在渲染成站内的阅读页：同一份内容，排好版，切换有动画；原件仍然在 mathgalaxy/ 下
+// 原封不动地躺着（AI 要读的还是它们）。
+const DOCS = [
+  { id: 'reading', file: 'reading.md', nav: '读图指南',   sub: '三层 / 四种边 / 层号' },
+  { id: 'llms',    file: 'llms.txt',   nav: '检索协议',   sub: '给 AI 的入口' },
+  { id: 'policy',  file: 'policy.md',  nav: '内容准则',   sub: '这张图为什么这么长' },
+  { id: 'hubs',    file: 'hubs.md',    nav: '枢纽定理榜', sub: '哪些东西是地基' },
+];
 
-  <h2>怎么读这张图</h2>
-  <a class="card" href="mathgalaxy/llms.txt">
-    <b>检索协议 · llms.txt</b>
-    <span>给 AI 的入口，也是给人看的地图：先读目录、再读星团清单、最后读单个节点。
-    里面写清了三层各是什么、四种边各是什么意思、依赖深度怎么当学习顺序用。
-    要跟着图一步一步走，从这里开始。</span>
-  </a>
-  <a class="card" href="mathgalaxy/policy.md">
-    <b>内容准则 · policy.md</b>
-    <span>这张图为什么这么长出来的：每一层都由上一层构造出来、同一结论只收一份、
-    只保留最通用的版本、星团按「装置」分不按课程分。</span>
-  </a>
-  <a class="card" href="mathgalaxy/hubs.md">
-    <b>枢纽定理榜 · hubs.md</b>
-    <span>按被引用次数排序 —— 哪些东西是真正的地基，值得优先学熟。</span>
-  </a>
+const navHtml = DOCS.map((d) =>
+  `    <a href="#${d.id}" data-doc="${d.id}"><b>${esc(d.nav)}</b><span>${esc(d.sub)}</span></a>`
+).join('\n');
 
-  <h2>全量下载（给 AI 的 bulk 导出）</h2>
-  <a class="card" href="mathgalaxy/graph.md">
-    <b>graph.md</b>
-    <span>整张星图的 Markdown 全量导出（约 420 KB）。适合一次下载、本地处理；
-    ⛔ 不适合让 AI 单次抓取 —— 抓取工具有长度上限，只会返回开头一小段。</span>
-  </a>
-  <a class="card" href="mathgalaxy/graph.json">
-    <b>graph.json</b>
-    <span>机器可读的全量版本（约 550 KB），每条边带 strength（强边 / 弱边）与完整证明。
-    同样只适合下载，不适合单次抓取。</span>
-  </a>
+const docsHtml = DOCS.map((d) => {
+  const src = path.join(DIST, d.file);
+  if (!fs.existsSync(src)) throw new Error(`阅读页要用的 dist/${d.file} 不在，先检查构建`);
+  const { title, html } = renderDoc(fs.readFileSync(src, 'utf8'));
+  if (!title) throw new Error(`dist/${d.file} 的第一行不是 # 标题，阅读页取不到标题`);
+  return [
+    `    <section class="doc" id="${d.id}" data-title="${esc(d.nav)}" data-raw="mathgalaxy/${d.file}">`,
+    `      <h1 class="stag">${esc(title)}</h1>`,
+    `      <div class="body">`,
+    html.split('\n').map((l) => '        ' + l).join('\n'),
+    `      </div>`,
+    `    </section>`,
+  ].join('\n');
+}).join('\n\n');
 
-  <footer>
-    最近更新：${updated} ·
-    由 <a href="https://github.com/${USER}/MathGalaxy">MathGalaxy</a> 生成 ·
-    <a href="https://github.com/${USER}/${SITE_REPO}">本站源码</a>
-  </footer>
+fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
+  USER,
+  UPDATED: updated,
+  NAV: navHtml,
+  DOCS: docsHtml,
+}, 'site/read.html'));
+console.log(`   阅读页：${DOCS.map((d) => d.file).join(' · ')} → read.html`);
 
-</div>
-</body>
-</html>
-`);
-
+/* ------------------------------------------------------------ 收尾文件 */
 fs.writeFileSync(path.join(STAGE, '.nojekyll'), '');   // 别让 Jekyll 处理
 fs.writeFileSync(path.join(STAGE, 'README.md'),
   `# ${SITE_REPO}\n\n本站由 \`MathGalaxy/tools/publish.mjs\` 自动生成，**不要手改这里**。\n\n` +

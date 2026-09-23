@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-site="{{USER}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>怎么读这张图 · {{USER}}</title>
+<meta name="description" content="数学星图：结构、检索协议、内容准则、枢纽定理榜">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M9 9 23 15 12 24' stroke='%234f7cf5' stroke-width='1.7' fill='none' opacity='.5'/><circle cx='9' cy='9' r='3.2' fill='%234f7cf5'/><circle cx='23' cy='15' r='3.2' fill='%234f7cf5'/><circle cx='12' cy='24' r='3.2' fill='%234f7cf5'/></svg>">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/read.css">
+<script>document.documentElement.classList.add('js');</script>
+<noscript><style>.doc{display:block!important}</style></noscript>
+</head>
+<body class="reader">
+
+<header class="rhead">
+  <div class="in">
+    <a class="back" href="./">← {{USER}}</a>
+    <span class="sp"></span>
+    <a class="mini" href="mathgalaxy/">数学星图 →</a>
+    <a class="mini" id="raw" href="mathgalaxy/reading.md" target="_blank" rel="noopener">原文 ↗</a>
+  </div>
+</header>
+
+<div class="rlayout">
+
+  <nav class="side" aria-label="文档">
+    <p>怎么读这张图</p>
+{{NAV}}
+  </nav>
+
+  <main class="rbody">
+{{DOCS}}
+
+    <p class="rfoot">
+      这四份东西同时也是 <b>AI 的检索入口</b>：原件就在
+      <code>mathgalaxy/</code> 下（<code>.md</code> / <code>.txt</code>），
+      可以直接把 URL 丢给 AI，不需要打开这个页面。<br>
+      最近更新：{{UPDATED}}
+    </p>
+  </main>
+
+</div>
+
+<script>
+/* 阅读页只做三件事：按 hash 切换文档、给每块内容排错峰进场的延迟、更新顶栏的「原文」链接。
+   正文是构建期就渲染好的静态 HTML —— 打开即读，不依赖任何脚本。 */
+(function () {
+  var SITE = document.documentElement.dataset.site || '';
+  var secs = [].slice.call(document.querySelectorAll('.doc'));
+  var navs = [].slice.call(document.querySelectorAll('.side a'));
+  var raw = document.getElementById('raw');
+  var ids = secs.map(function (s) { return s.id; });
+
+  function target() {
+    var h = location.hash.replace(/^#/, '');
+    return ids.indexOf(h) >= 0 ? h : ids[0];
+  }
+
+  // 重放进场动画：先摘掉 .run，强制一次重排，再挂回去
+  function replay(sec) {
+    var els = [].slice.call(sec.querySelectorAll('.stag'));
+    els.forEach(function (el) { el.classList.remove('run'); });
+    void sec.offsetWidth;
+    els.forEach(function (el, i) {
+      el.style.animationDelay = Math.min(i, 12) * 45 + 'ms';
+      el.classList.add('run');
+    });
+  }
+
+  function show(id, first) {
+    secs.forEach(function (s) {
+      s.classList.toggle('on', s.id === id);
+      var h = s.querySelector('h1');
+      if (h) h.style.viewTransitionName = '';   // doc-hero 同时只能有一个主人
+    });
+    navs.forEach(function (a) {
+      a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'true' : 'false');
+    });
+    var sec = document.getElementById(id);
+    var h1 = sec.querySelector('h1');
+    if (h1) h1.style.viewTransitionName = 'doc-hero';
+    if (raw) raw.href = sec.dataset.raw;
+    document.title = sec.dataset.title + ' · ' + SITE;
+    replay(sec);
+    if (!first) window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('hashchange', function () { show(target(), false); });
+  show(target(), true);
+})();
+</script>
+</body>
+</html>
