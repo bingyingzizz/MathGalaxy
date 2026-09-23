@@ -1,10 +1,10 @@
 # 记号表 · 字母约定
 根 `../`　·　索引 `notation.md`
 
-- `\alpha` α　**序数 / 指标** — 局部义：`analysis.differentiation` 里是阈值；`analysis.integral` 里是复相位 $e^{-i\theta}$
+- `\alpha` α　**序数 / 指标** — 局部义：微分里是阈值，积分里是复相位
 - `\beta` β　**序数（配 $\alpha$）**
 - `\gamma` γ　**序数（配 $\alpha$、$\beta$）/ 一般函数**
-- `\pi` π　**投影 $\pi_{\alpha}$** — ⚠ 只在 `set.cardinal`、`topology.general` 里表圆周率
+- `\pi` π　**投影 $\pi_{\alpha}$**
 - `\theta` θ　**角度**
 - `\tau` τ　**停时 / 一般函数（罕见）**
 - `\zeta` ζ　**（罕见）**

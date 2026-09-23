@@ -1,10 +1,6 @@
 # 记号表 · 通用规则
 根 `../`　·　索引 `notation.md`
 
-`\sup \inf \lim \liminf \limsup \max \min \ker \dim \exp \log \sin \cos`。有参数的多字母算子名用 `\operatorname{dom}`、`\operatorname{ran}`、`\operatorname{ot}`、`\operatorname{Re}`；无参数的名词用 `\mathrm{On}`、`\mathrm{ZFC}`。
-
-## R6　中文夹在公式里用 \text{}
-
 `\text{ 是} X \text{上的}` —— 前后补空格，别和数学挤在一起。
 
 ## R7　省略号显式写
@@ -21,6 +17,12 @@
 
 ## R10　label / tags / refs 是纯文本
 
-⛔ 绝不能含 `$`（label 还直接画在画布上）。**可留 Unicode** —— 画布上没有 KaTeX，留 Unicode 才一致。
+不能含 `$`：label 直接画在画布上，那里没有 KaTeX，所以留 Unicode。
+
+## R11　title 里的公式也用 $…$
+
+`title` 走 `U.titleHtml()`，认 `$…$`。混着写会有和正文一样的字体问题。**例外**：`σ-代数`、`σ-有限`、`σ-环`、`μ-零集` 这类「希腊字母 + `-` + 词」的术语前缀保留 Unicode。
+
+## R12　行内公式不写在行首
 
 > 续见 notation/0-rules.3.md

@@ -934,7 +934,7 @@ function exportNotation(MG, base = '') {
   L.push('');
   L.push(N.intro || '');
   L.push('');
-  L.push('## 铁律（用户拍板）');
+  L.push('## 铁律');
   L.push('');
   for (const r of (N.rulings || [])) L.push(`- **${r.id}** ${r.text}`);
   L.push('');
@@ -947,14 +947,9 @@ function exportNotation(MG, base = '') {
   L.push('');
   for (const g of (N.groups || [])) L.push(`- \`${base}notation/${g.id}.md\` ${g.name} ${nb(g)}`);
   L.push('');
-  L.push('## 已知老账');
-  L.push('');
-  if ((N.backlog || []).length) { for (const b of N.backlog) L.push(`- ${b.what}`); }
-  else L.push('（当前没有 —— title 的裸 Unicode 与行内 `$$…$$` 都已清掉，构建拦着不再复发。）');
-  L.push('');
   L.push('## 用法');
   L.push('');
-  L.push('不合规的先转写再进 `src/data/packs/`；正文出现裸 Unicode 数学符号或禁用写法时构建**直接失败**。');
+  L.push('新内容先按本表转写再进 `src/data/packs/`。写法不合规时构建会直接失败。');
   L.push('');
   return L.join('\n') + '\n';
 }
@@ -971,13 +966,11 @@ function exportNotationFull(MG) {
   L.push('');
   L.push(N.intro || '');
   L.push('');
-  L.push(`> 真源 \`src/data/notation.js\` · 版本 v${N.version || 1} · 更新 ${N.updated || ''}`);
-  L.push('');
-  L.push('## 铁律（用户拍板）');
+  L.push('## 铁律');
   L.push('');
   for (const r of (N.rulings || [])) L.push(`- **${r.id}** ${r.text}`);
   L.push('');
-  L.push('## 通用规则 R 系列');
+  L.push('## 通用规则');
   L.push('');
   for (const r of (N.rules || [])) {
     L.push(`### ${r.id}　${r.title}`);
@@ -995,17 +988,6 @@ function exportNotationFull(MG) {
     }
     L.push('');
   }
-  L.push('## 已知老账');
-  L.push('');
-  if ((N.backlog || []).length) { for (const b of N.backlog) L.push(`- ${b.what}`); }
-  else L.push('（当前没有 —— title 的裸 Unicode 与行内 `$$…$$` 都已清掉，构建拦着不再复发。）');
-  L.push('');
-  L.push('## 怎么执行');
-  L.push('');
-  L.push('- `bun tools/build.mjs` —— 正文出现裸 Unicode 数学符号、或表里的禁用写法时**直接失败**。');
-  L.push('- `bun tools/_notationcheck.mjs` —— 详细报告（按节点 / 字段），另有启发式警告与「用到了却没规则」。');
-  L.push('- 新内容进来**先过此表**：不合规的先转写，再进 `src/data/packs/`。');
-  L.push('');
   return L.join('\n');
 }
 
