@@ -15,9 +15,4 @@ $$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
 
 refs: Jech, The Axiom of Choice, Ch. 3
 
-## 说明
-⭐ 这条是「基数排序」的许可证：没有它，连「$A$ 比 $B$ 大」这句话都可能毫无意义。
-
-证明路线（见边）：**良序定理**把 $A$、$B$ 都良序化 $\to$ 对应的序数可以比较 $\to$ 于是有一个方向能放进单射。所以这条定理与 AC、良序定理是同一件事的三种说法。
-
-⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。
+> 说明见 `notes/thm.cardinal-comparable.md`

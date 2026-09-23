@@ -11,8 +11,8 @@ $$(a, b) \sim (c, d) :\iff ad = bc$$
 $$\mathbb{Q} := (\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})) / \sim$$
 
 元素记作 $a/b$。运算与序：
+> 陈述续见 `nodes/def.rat.2.md`
 
-> 陈述续见 nodes/def.rat.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.int` 整数 ℤ：用到了定义 整数 ℤ　proofs/dep.int-rat.md

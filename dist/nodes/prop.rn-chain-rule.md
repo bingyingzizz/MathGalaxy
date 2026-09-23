@@ -11,11 +11,11 @@ $$\nu \ll  \mu, \quad  \mu \ll  \lambda$$
 $$\int g d\nu = \int g \frac{d\nu}{d\mu} d\mu$$
 
 **(b)** 此时 $$\nu \ll  \lambda$$，且**链式法则**成立：
+> 陈述续见 `nodes/prop.rn-chain-rule.2.md`
 
-$$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}\quad  (\lambda-\text{a.e.})$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `prop.integral-gives-ac+prop.integrals-equal-iff` prop.integral-gives-ac+prop.integrals-equal-iff：换元公式与链式法则　proofs/imp.rn-chain-rule.md
+- `prop.integral-gives-ac` 积分给出绝对连续测度 + `prop.integrals-equal-iff` 何时两个函数积分处处相同：换元公式与链式法则　proofs/imp.rn-chain-rule.md
 
 refs: Folland, Real Analysis, Theorem 3.9
 

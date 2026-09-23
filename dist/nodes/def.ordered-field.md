@@ -5,10 +5,8 @@ layer 7 · 定义 · 代数结构 · 抽象代数+序理论
 设 $(F, +, \cdot)$ 是**域**，$\le$ 是 $F$ 上的**全序**（偏序，且任意两元可比）。若 $\le$ 与两个运算**相容**：
 
 $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$$
+> 陈述续见 `nodes/def.ordered-field.2.md`
 
-则称 $(F, +, \cdot, \le)$ 是一个**有序域**。照搬 $\mathbb{Q}$ 上的说法：$a > 0$ 叫**正元**，$a < 0$ 叫**负元**；两者拼起来就是绝对值
-
-> 陈述续见 nodes/def.ordered-field.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.field` 域：用到了定义 域　proofs/dep.field-ordered.md

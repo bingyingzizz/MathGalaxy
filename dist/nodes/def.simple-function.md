@@ -3,10 +3,8 @@
 layer 6 · 定义 · 可测函数与收敛 · 分析学
 
 可测函数 $$\varphi : X \to \mathbb{C}$$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成
+> 陈述续见 `nodes/def.simple-function.2.md`
 
-$$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}$$
-
-其中 $$a_j \in \mathbb{C}$$，$$E_j = \varphi^{-1}(\{a_j\}) \in \mathcal{M}$$ 两两不交。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.measurable-function` 可测函数：用到了定义 可测函数　proofs/def-link.measurable-simple.md
@@ -17,9 +15,10 @@ $$\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}$$
 - 被 `def.integral-simple` 简单函数的积分 用
 - 被 `thm.approximation-L1` L¹ 里的逼近 用
 - 被 `prop.simple-integral-props` 简单函数积分的性质 用
-- 被 `prop.dense-simple-compact-support` 紧支简单函数稠密 用
 
 refs: Folland, Real Analysis, §2.2
+
+- …另有出边，续页见 `nodes/def.simple-function.3.md`
 
 ## 说明
 简单函数就是可测版本的「阶梯函数」—— 有限个「台阶」。

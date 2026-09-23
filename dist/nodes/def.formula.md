@@ -3,10 +3,8 @@
 layer 1 · 定义 · 一阶语言与公式 · 数理逻辑
 
 （在给定的**一阶语言** $\mathcal{L}$ 里）**公式**就是按语法规则 3 生成的表达式，即
+> 陈述续见 `nodes/def.formula.2.md`
 
-$$\varphi ::= R(t_{1}, \dots, t_{n}) \;\mid\; \neg \varphi \;\mid\; (\varphi \wedge \psi) \;\mid\; (\varphi \vee \psi) \;\mid\; (\varphi \to \psi) \;\mid\; \forall v_{i} \varphi \;\mid\; \exists v_{i} \varphi$$
-
-> 陈述续见 nodes/def.formula.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.first-order-language` 一阶语言：用到了定义 一阶语言　proofs/dep.lang-formula.md

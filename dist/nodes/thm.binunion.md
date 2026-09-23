@@ -9,7 +9,7 @@ $$\forall a \forall b \exists A \forall x [ x \in A \leftrightarrow  ( x \in a \
 记作 $a \cup b$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.pair+ax.union` ax.pair+ax.union：配对公理 + 并集公理 ⇒ 二元并存在　proofs/imp.binunion.md
+- `ax.pair` 配对公理 + `ax.union` 并集公理：配对公理 + 并集公理 ⇒ 二元并存在　proofs/imp.binunion.md
 
 refs: Kunen, Set Theory, I.3
 

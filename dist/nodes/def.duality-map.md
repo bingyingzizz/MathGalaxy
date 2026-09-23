@@ -16,7 +16,8 @@ $$\varphi_g(f) := \int f g \, d\mu$$
 - ⇒ `prop.bounded-functional-gives-lq` 有界 ⟹ g ∈ L^q
 - 被 `prop.duality-isometry` ‖g‖_q = ‖φ_g‖ 用
 - 被 `prop.bounded-functional-gives-lq` 有界 ⟹ g ∈ L^q 用
-- 被 `thm.riesz-representation-lp` (L^p)* ≅ L^q 用
+
+- …另有出边，续页见 `nodes/def.duality-map.2.md`
 
 refs: Folland, Real Analysis, §6.2
 

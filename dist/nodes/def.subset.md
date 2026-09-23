@@ -24,13 +24,10 @@ $$A = B \iff A \subseteq B \wedge  B \subseteq A$$
 - 被 `ax.sep` 分离公理模式 用
 - 被 `ax.power` 幂集公理 用
 - 被 `def.finchar` 有限特征 用
-- 被 `def.rel` 关系 用
-- 被 `def.chain` 链 用
-- 被 `def.bound` 上界与极大元 用
-- 被 `def.wellorder` 良序集 用
-- …另有 7 条（见 graph.json）
 
 refs: Kunen, Set Theory, I.2
+
+- …另有出边，续页见 `nodes/def.subset.2.md`
 
 ## 说明
 $\emptyset \subseteq A$ 对一切 $A$ 成立（空泛真）。

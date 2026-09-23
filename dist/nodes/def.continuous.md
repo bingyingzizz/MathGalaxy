@@ -9,8 +9,8 @@ $$\forall \varepsilon > 0, \exists \delta > 0 : |x - x_0| < \delta \implies |f(x
 等价说法：$\lim_{x \to x_0} f(x) = f(x_0)$（极限存在且等于函数值）。
 
 $f$ **连续**（在 $\mathbb{R}$ 上连续）当且仅当它在每一点连续。
+> 陈述续见 `nodes/def.continuous.2.md`
 
-**一致连续**是更强的要求：$\delta$ 只依赖 $\varepsilon$，不依赖 $x_0$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sequence-limit` 数列极限：用到了定义 数列极限　proofs/dep.real-continuous.md

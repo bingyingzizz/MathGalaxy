@@ -8,11 +8,11 @@ layer 16 · 定理 · 乘积测度与 Fubini · 分析学
 - $$y \mapsto \mu(E^y)$$ 在 $Y$ 上可测；
 
 并且
+> 陈述续见 `nodes/thm.product-measure-sections.2.md`
 
-$$\mu \times \nu(E) = \int_X \nu(E_x) d\mu(x) = \int_Y \mu(E^y) d\nu(y)$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.monotone-class+prop.section-measurable` thm.monotone-class+prop.section-measurable：单调类定理 ⟹ 乘积测度由截口积分给出　proofs/imp.product-sections.md
+- `thm.monotone-class` 单调类定理 + `prop.section-measurable` 截口可测：单调类定理 ⟹ 乘积测度由截口积分给出　proofs/imp.product-sections.md
 - `def.monotone-class` 单调类：用到了定义 单调类　proofs/def-link.monotoneclass-lemma.md
 - `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-sections-thm.md
 

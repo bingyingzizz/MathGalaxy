@@ -20,9 +20,4 @@ $$\frac{1}{p} + \frac{1}{q} = 1$$
 
 refs: Folland, Real Analysis, §6.2
 
-## 说明
-由对称性 $\dfrac{1}{q} + \dfrac{1}{p} = 1$，所以「共轭」是相互的：$p$ 与 $q$ 互为共轭。
-
-$p = 2$ 时 $q = 2$：**$L^2$ 是自共轭的** —— 这是 Hilbert 空间理论的起点。
-
-⭐ 共轭指数的意义：Hölder 不等式说 $L^p$ 与 $L^q$ 之间有一对「配对」$\int fg$；而下面的对偶定理说这个配对**恰好就是 $L^p$ 的整个对偶空间**。
+> 说明见 `notes/def.conjugate-exponents.md`

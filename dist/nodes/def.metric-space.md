@@ -7,16 +7,21 @@ layer 11 · 定义 · 度量空间 · 拓扑学
 - **非退化**：$$d(x, y) = 0 \iff x = y$$
 - **对称**：$$d(x, y) = d(y, x)$$
 - **三角不等式**：$$d(x, z) \le d(x, y) + d(y, z)$$
+> 陈述续见 `nodes/def.metric-space.2.md`
 
-由 $d$ 定义**开球** $$B(x, r) = \{ y \in X : d(x, y) < r \}$$，并规定 $U \subseteq X$ 是开集 $\iff U$ 是若干开球之并。这样 $X$ 上就有了一个拓扑。
-
-> 陈述续见 nodes/def.metric-space.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.real` 实数系 ℝ：用到了定义 实数系 ℝ　proofs/dep.real-metric.md
 - `def.topology` 拓扑空间与开集：用到了定义 拓扑空间与开集　proofs/dep.topology-metric.md
 - `def.topology-base` 基与子基：用到了定义 基与子基　proofs/dep.base-metric.md
 - `def.function` 函数：用到了定义 函数　proofs/def-dep.function-metric-space.md
+
+## 它能推出什么 / 谁在用它
+- 被 `lem.covering` 覆盖引理 用
+- 被 `def.complete` 完备 用
+- 被 `def.totally-bounded` 全有界 用
+
+- …另有出边，续页见 `nodes/def.metric-space.3.md`
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 2；Munkres, Topology, §20
 

@@ -3,15 +3,11 @@
 layer 17 · 定理 · 积分 · 分析学
 
 设 $$\{f_j\} \subseteq L^1$$ 满足
+> 陈述续见 `nodes/thm.termwise-L1.2.md`
 
-$$\sum_{j=1}^{\infty} \int |f_j| d\mu < \infty$$
-
-则 $$\sum_j f_j$$ 几乎处处收敛到一个 $$L^1$$ 中的函数，并且可以逐项积分：
-
-$$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.termwise-integration+prop.integral-zero-iff` thm.termwise-integration+prop.integral-zero-iff：非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分　proofs/imp.termwise-L1.md
+- `thm.termwise-integration` 逐项积分 + `prop.integral-zero-iff` 积分为零 ⟺ 几乎处处为零：非负逐项积分 + 零集判定 ⟹ L¹ 的逐项积分　proofs/imp.termwise-L1.md
 
 refs: Folland, Real Analysis, Theorem 2.25
 

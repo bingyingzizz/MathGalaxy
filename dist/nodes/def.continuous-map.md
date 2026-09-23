@@ -18,7 +18,4 @@ $$V \in \mathcal{T}_Y \implies f^{-1}(V) \in \mathcal{T}_X$$
 
 refs: Munkres, Topology, Ch. 2
 
-## 说明
-⭐ 这条定义是 $\varepsilon$-$\delta$ 的**抽象化**：在距离空间里，「$f^{-1}(V)$ 开」与「$\varepsilon$ 给出 $\delta$」逐字等价 —— 因为开球就是 $\varepsilon$ 邻域。所以「连续」是拓扑性质，跟具体距离无关。
-
-⚠ 用**原像**而不是像：原像对并、交、补全部保持，像没有这些性质。这与可测函数的定义（$f^{-1}(E) \in \mathcal{M}$）是同一个套路。
+> 说明见 `notes/def.continuous-map.md`

@@ -3,10 +3,8 @@
 layer 18 · 定义 · 微分定理 · 分析学
 
 设 $$f \in L^1_{loc}$$，$$x \in \mathbb{R}^n$$，$$r > 0$$。定义
+> 陈述续见 `nodes/def.average-operator.2.md`
 
-$$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
-
-即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.locally-integrable` 局部可积：用到了定义 局部可积　proofs/def-link.locally-integrable-average.md

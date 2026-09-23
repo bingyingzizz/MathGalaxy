@@ -19,7 +19,8 @@ $$\forall X \exists\preceq ( \preceq\text{ 是} X\text{ 上的良序关系} )$$
 ## 它能推出什么 / 谁在用它
 - ⟺ `ax.choice` 选择公理
 - ⟺ `lem.zorn` 佐恩引理
-- ⇒ `thm.cardinal-comparable` 基数可比定理
+
+- …另有出边，续页见 `nodes/thm.wellordering.2.md`
 
 refs: Zermelo (1904)；Kunen, Set Theory, I.12
 

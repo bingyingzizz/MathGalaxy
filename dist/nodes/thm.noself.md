@@ -9,7 +9,7 @@ $$\forall A ( A \notin A )$$
 $$A_0 \ni  A_1 \ni  \cdots \ni  A_n = A_0$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.found+ax.pair` ax.found+ax.pair：正则公理 + 配对公理 ⇒ A ∉ A　proofs/imp.found-to-noself.md
+- `ax.found` 正则公理 + `ax.pair` 配对公理：正则公理 + 配对公理 ⇒ A ∉ A　proofs/imp.found-to-noself.md
 
 refs: Kunen, Set Theory, I.9
 

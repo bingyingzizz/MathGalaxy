@@ -7,8 +7,8 @@ layer 16 · 命题 · L^p 空间 · 分析学
 $$\|f\|_q \le \|f\|_p^{\lambda} \, \|f\|_r^{1-\lambda}$$
 
 其中 $\lambda \in (0,1)$ 由下式确定：
+> 陈述续见 `nodes/prop.lp-inter-lr-in-lq.2.md`
 
-$$\frac{1}{q} = \frac{\lambda}{p} + \frac{1-\lambda}{r} \qquad \Longleftrightarrow \qquad \lambda = \frac{\,q^{-1} - r^{-1}\,}{p^{-1} - r^{-1}}$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.lp-norm` L^p 范数：用到了定义 L^p 范数　proofs/def-link.lp-norm-interpolation.md

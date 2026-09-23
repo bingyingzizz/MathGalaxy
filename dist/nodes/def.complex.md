@@ -9,10 +9,8 @@ $$(a, b) + (c, d) := (a + c, b + d), \qquad (a, b)(c, d) := (ac - bd, ad + bc)$$
 记 $i := (0, 1)$，则每个复数唯一地写成 $z = a + bi$（$a, b \in \mathbb{R}$）。
 
 $\bar{z} := a - bi$ 是**共轭**，$|z| := \sqrt{a^2 + b^2}$ 是**模**；并且
+> 陈述续见 `nodes/def.complex.2.md`
 
-$$|zw| = |z|\,|w|, \qquad z \bar{z} = |z|^2$$
-
-于是每个 $z \ne 0$ 都有逆 $z^{-1} = \bar{z}/|z|^2$：$\mathbb{C}$ 是一个域。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.real` 实数系 ℝ：用到了定义 实数系 ℝ　proofs/dep.real-complex.md

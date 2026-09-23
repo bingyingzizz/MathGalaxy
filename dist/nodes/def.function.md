@@ -23,9 +23,4 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 
 refs: Kunen, Set Theory, I.5
 
-## 说明
-在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。
-
-⚠ 两个容易混的地方：
-- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \to B$（即 $\operatorname{dom} f = A$）。
-- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。
+> 说明见 `notes/def.function.md`

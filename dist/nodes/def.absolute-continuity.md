@@ -19,8 +19,8 @@ $$\forall E \in \mathcal{M}, \mu(E) = 0 \implies \nu(E) = 0$$
 - ⇒ `thm.ac-epsilon-delta` 绝对连续的 ε–δ 刻画
 - 被 `lem.singular-or-lower-bound` 要么奇异、要么有下界 用
 - 被 `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理 用
-- 被 `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续 用
-- …另有 4 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.absolute-continuity.2.md`
 
 refs: Folland, Real Analysis, §3.2
 

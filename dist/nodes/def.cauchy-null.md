@@ -7,18 +7,17 @@ layer 9 · 定义 · 数系的构造 · 集合论+分析学
 $(x_n)$ 是 **Cauchy 列**：
 
 $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \varepsilon$$
+> 陈述续见 `nodes/def.cauchy-null.2.md`
 
-$(x_n)$ 是**零列**：
-
-$$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
-
-> 陈述续见 nodes/def.cauchy-null.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.rat` 有理数 ℚ：用到了定义 有理数 ℚ　proofs/dep.rat-cauchy-null.md
 - `def.function` 函数：用到了定义 函数　proofs/dep.function-cauchy-null.md
 - `def.quotient-set` 商集与等价类：用到了定义 商集与等价类　proofs/dep.quotient-cauchy-null.md
 - `def.abs` 绝对值 |x|：用到了定义 绝对值 |x|　proofs/dep.abs-cauchy-null.md
+
+## 它能推出什么 / 谁在用它
+- 被 `def.real` 实数系 ℝ 用
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

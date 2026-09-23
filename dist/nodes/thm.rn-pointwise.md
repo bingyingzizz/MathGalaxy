@@ -9,10 +9,11 @@ $$\lim_{r\to0} \nu(E_r) / m(E_r) = f(x)$$
 对**每一个**可缩地趋于 $x$ 的族 $$\{E_r\}_{r>0}$$ 成立。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.differentiation-general+def.regular-measure+lem.covering` thm.differentiation-general+def.regular-measure+lem.covering：微分定理 + 正则性 ⟹ RN 导数的点态公式　proofs/imp.rn-pointwise.md
+- `thm.differentiation-general` 可缩族的微分定理 + `def.regular-measure` 正则 Borel 测度 + `lem.covering` 覆盖引理：微分定理 + 正则性 ⟹ RN 导数的点态公式　proofs/imp.rn-pointwise.md
 - `def.regular-measure` 正则 Borel 测度：用到了定义 正则 Borel 测度　proofs/def-link.regular-pointwise.md
 - `def.rn-derivative` RN 导数与 Lebesgue 分解：用到了定义 RN 导数与 Lebesgue 分解　proofs/def-link.rn-pointwise.md
-- …另有 1 条入边
+
+- …另有入边，续页见 `nodes/thm.rn-pointwise.2.md`
 
 refs: Folland, Real Analysis, Theorem 3.22
 

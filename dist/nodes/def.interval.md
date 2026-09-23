@@ -23,7 +23,4 @@ $$(a, b), \quad [a, b], \quad [a, b), \quad (a, b]$$
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 2
 
-## 说明
-⭐ **半开区间 $\{ (a, b] : a < b \}$ 是构造 Lebesgue–Stieltjes 测度时的起点**：它本身只是一个基本类，做有限不交并就得到环，长度在那个环上已经是预测度。
-
-为什么要用半开而不是开区间：不交并的长度好算 —— $[a, b) \sqcup [b, c) = [a, c)$ 在开区间上不成立。
+> 说明见 `notes/def.interval.md`

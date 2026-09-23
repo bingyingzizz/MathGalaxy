@@ -9,7 +9,7 @@ $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \
 记作 $A \times B = \{ (a, b) : a \in A, b \in B \}$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.power+ax.pair+ax.union+ax.sep` ax.power+ax.pair+ax.union+ax.sep：幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在　proofs/imp.product.md
+- `ax.power` 幂集公理 + `ax.pair` 配对公理 + `ax.union` 并集公理 + `ax.sep` 分离公理模式：幂集 + 配对 + 并集 + 分离公理模式 ⇒ A × B 存在　proofs/imp.product.md
 - `def.pair` 有序对：用到了定义 有序对　proofs/def-link.product-pair.md
 - `thm.omega` 自然数集存在：「幂集造容器 + 分离筛内容」——同一个证明模板　proofs/ana.sep-container.md
 

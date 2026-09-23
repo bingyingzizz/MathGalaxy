@@ -16,9 +16,4 @@ $$f = g\quad  \mu-\text{a.e.}$$
 
 refs: Folland, Real Analysis, Cor. 2.23
 
-## 说明
-作用：这类命题就是「用对一切可测集的积分来**识别**函数」。
-
-后面 Radon–Nikodym 定理的**唯一性**部分正是用的这一条 —— 两个密度给出同一个测度，就必须 a.e. 相等。
-
-（$E$ 取遍 $\mathcal{M}$ 而不是只取 $X$，是关键：只对 $X$ 相等是不够的。）
+> 说明见 `notes/prop.integrals-equal-iff.md`

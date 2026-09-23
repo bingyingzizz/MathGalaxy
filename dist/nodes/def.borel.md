@@ -16,8 +16,8 @@ $\mathfrak{B}_X$ 中的集合称为 **Borel 集**：开集、闭集、可数个�
 ## 它能推出什么 / 谁在用它
 - 被 `cor.borel-product` 可数积的 Borel 代数 用
 - 被 `thm.ls-exists` F ↔ Borel 测度 用
-- 被 `def.lebesgue-measurable` Lebesgue 可测 用
-- …另有 4 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.borel.2.md`
 
 refs: Folland, Real Analysis, §1.2
 

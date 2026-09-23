@@ -357,6 +357,35 @@ const aiCost = s => s.length + (s.match(AI_ESCAPABLE) || []).length;
 const aiBytes = s => Buffer.byteLength(s, 'utf8');
 const aiFits = s => aiBytes(s) <= AI_MAXB && aiCost(s) <= AI_ESC;
 
+/* 节点文件里两个小节的名字 —— 续页要沿用同一套标题，跳转行也按它定位 */
+const SEC_IN = '## 为什么成立（入边，证明在 proofs/）';
+const SEC_OUT = '## 它能推出什么 / 谁在用它';
+const SEC_STMT = '陈述（续）';
+/** 小节名去掉 `## ` 前缀 —— 续页的标题自己会加一个，不去就变成「## ## …」 */
+const secName = s => String(s).replace(/^##\s*/, '');
+
+/** 把塞不进节点第 1 页的内容按小节打包成续页。
+    规则：换小节一定另起一页（页首标题才诚实）；同一小节超预算也另起。 */
+function packPages(node, items, budget) {
+  const pages = [];
+  let cur = null;
+  const headOf = (k, sec) => `# ${node.label}　\`${node.id}\`　·　续页（第 ${k} 页）\n` +
+    `根 \`../\`　·　第 1 页 \`nodes/${node.id}.md\`\n\n## ${secName(sec)}${sec === SEC_STMT ? '' : '（续）'}\n`;
+  for (const it of items) {
+    if (cur && it.sec !== cur.sec) { pages.push(cur); cur = null; }
+    const k = pages.length + 2;
+    if (!cur) cur = { sec: it.sec, lines: [] };
+    const size = aiBytes(headOf(k, it.sec) + cur.lines.map(l => l + '\n').join('') + it.text + '\n');
+    if (cur.lines.length && size > budget) {
+      pages.push(cur);
+      cur = { sec: it.sec, lines: [] };
+    }
+    cur.lines.push(it.text);
+  }
+  if (cur) pages.push(cur);
+  return pages;
+}
+
 /** 一条边的正文：证明（implication / equivalence）或说明（definition / analogy） */
 function edgeBody(e) {
   if (e.kind === 'implication') return (e.proof || '').trim();
@@ -451,6 +480,7 @@ function exportAIProducts(MG, graph, data) {
 
   /* ------------------------------------------------------- 节点文件 */
   const notesOut = [];
+  const pagesOf = new Map();       // 节点 id → 它的每一页正文（用来做「邻居是否都可达」的断言）
   for (const n of graph.nodes) {
     const head = `# ${n.label}　\`${n.id}\`\n${n.title}\n` +
       `layer ${n.layer} · ${typeName(n.type)} · ${n.cluster ? cname(n.cluster) : '—'} · ` +
@@ -458,85 +488,130 @@ function exportAIProducts(MG, graph, data) {
     const refs = (n.refs || []).length ? `\nrefs: ${n.refs.join('；')}\n` : '';
     const notes = (n.notes || '').trim();
     const notesPtr = notes ? `\n> 说明见 \`notes/${n.id}.md\`\n` : '';
-    const stmtPtr = `\n> 陈述续见 nodes/${n.id}.2.md\n`;
 
-    /* 陈述：留出 refs + 说明指针 + 邻接（约 400 B）的位子 */
+    /* ⚠️ 预算一律**拼接后实测**，不要预测 —— 2026-09-23 连着踩了两轮：
+       ① 「说明塞得下就内联」是在跳转行之前判的，跳转行一加就顶破；
+       ② 先扣 refs 再扣说明再扣邻接，一路减法下来和实际拼出来的长度对不上。
+       现在改成：每次要加东西就先拼一遍、量一遍。 */
+    const JUMP_RESERVE = 190;      // 最多三条「续页跳转」的位子
+
+    // 说明：只有确实短小的才内联（这一步不看陈述，避免循环依赖）
+    const notesInline = !!notes && aiBytes(notes) <= 300 &&
+      aiBytes(head + refs) + aiBytes(notes) + 760 <= AI_MAXB;
+    const notesTail = !notes ? '' : (notesInline ? '\n## 说明\n' + notes + '\n' : notesPtr);
+    const mandatoryTail = refs + notesTail;
+
     const stmtChunks = aiChunk((n.statement || '').trim(), head, refs,
-      aiBytes(refs) + aiBytes(notesPtr) + 400);
+      aiBytes(mandatoryTail) + JUMP_RESERVE + 320);
 
-    let text = head + stmtChunks[0] + '\n' + (stmtChunks.length > 1 ? stmtPtr : '');
+    let text = head + stmtChunks[0] + '\n';
+    const canAdd = extra => aiBytes(text + extra + mandatoryTail) + JUMP_RESERVE <= AI_MAXB;
+    const over = [];               // 塞不下的内容 → 续页
 
-    /* 入边：一行一条，正文都在 proofs/（贪心，塞不下就报数） */
+    /* 入边：它为什么成立 —— 一行一条，正文都在 proofs/ */
     const ins = (inc.get(n.id) || []).slice().sort((a, b) => {
       const rank = e => (e.kind === 'implication' ? 0 : e.kind === 'equivalence' ? 1 : 2);
       return rank(a) - rank(b);
     });
     if (ins.length) {
       const lines = ins.map(e => {
-        const isDef = e.kind === 'definition';
-        const from = e.kind === 'implication' ? (e.sources || []).join('+')
-          : isDef ? e.definition : (e.a === n.id ? e.b : e.a);
-        const ttl = isDef ? `用到了定义 ${label(e.definition)}` : (e.title || e.id);
-        return `- \`${from}\` ${label(from)}：${ttl}　proofs/${e.id}.md`;
+        const ids = e.kind === 'implication' ? (e.sources || [])
+          : e.kind === 'definition' ? [e.definition]
+          : [e.a === n.id ? e.b : e.a];
+        // 每个 id 都单独包反引号 —— 多来源的边也要能逐个 id 复制
+        const from = ids.map(s => '`' + s + '` ' + label(s)).join(' + ');
+        const ttl = e.kind === 'definition' ? `用到了定义 ${label(e.definition)}` : (e.title || e.id);
+        return `- ${from}：${ttl}　proofs/${e.id}.md`;
       });
-      let sec = '## 为什么成立（入边，证明在 proofs/）\n';
+      let sec = SEC_IN + '\n';
       let shown = 0;
-      const room = aiBytes(text + refs + notesPtr + '\n');
       for (const l of lines) {
-        if (aiBytes(sec + l + '\n') + room > AI_MAXB - 90) break;
+        if (!canAdd('\n' + sec + l + '\n')) break;
         sec += l + '\n'; shown++;
       }
-      if (shown) {
-        if (shown < lines.length) sec += `- …另有 ${lines.length - shown} 条入边\n`;
-        text += '\n' + sec;
-      } else {
-        text += `\n## 为什么成立\n有 ${lines.length} 条入边，见 graph.json\n`;
-      }
+      if (shown) text += '\n' + sec;
+      for (let i = shown; i < lines.length; i++) over.push({ sec: SEC_IN, text: lines[i] });
     }
 
     /* 出边：它能推出什么 / 谁在用它 */
-    const outs = (out.get(n.id) || []).map(e => {
+    const ous = (out.get(n.id) || []).map(e => {
       if (e.kind === 'implication') return `- ⇒ \`${e.target}\` ${label(e.target)}`;
       if (e.kind === 'definition') return `- 被 \`${e.usedBy}\` ${label(e.usedBy)} 用`;
       if (e.kind === 'analogy') return `- ～弱边 \`${e.a === n.id ? e.b : e.a}\` ${label(e.a === n.id ? e.b : e.a)}`;
       return `- ⟺ \`${e.a === n.id ? e.b : e.a}\` ${label(e.a === n.id ? e.b : e.a)}`;
     });
-    if (outs.length) {
-      let sec = '## 它能推出什么 / 谁在用它\n';
+    if (ous.length) {
+      let sec = SEC_OUT + '\n';
       let shown = 0;
-      const room = aiBytes(text + refs + notesPtr + '\n');
-      for (const l of outs) {
-        if (aiBytes(sec + l + '\n') + room > AI_MAXB - 90) break;
+      for (const l of ous) {
+        if (!canAdd('\n' + sec + l + '\n')) break;
         sec += l + '\n'; shown++;
       }
-      if (shown) {
-        if (shown < outs.length) sec += `- …另有 ${outs.length - shown} 条（见 graph.json）\n`;
-        text += '\n' + sec;
-      }
+      if (shown) text += '\n' + sec;
+      for (let i = shown; i < ous.length; i++) over.push({ sec: SEC_OUT, text: ous[i] });
     }
 
-    text += refs;
+    /* ------------------------------------------------ 续页 */
+    /* ⚠️ 绝不写「见 graph.json」—— 那是 550 KB 的 bulk 文件，AI 单次抓取
+       只会拿到开头，等于把读者推进坑里。塞不下的一律**续页**承载，
+       命名与 proofs/ 同一套：第 1 页 <base>.md、第 k 页 <base>.<k>.md。 */
+    const items = [];
+    stmtChunks.slice(1).forEach(c => items.push({ sec: SEC_STMT, text: c }));
+    const pages = packPages(n, items.concat(over), AI_MAXB - 90);
+    const firstOf = {};
+    pages.forEach((p, i) => { if (firstOf[p.sec] == null) firstOf[p.sec] = i + 2; });
 
-    /* 说明：塞得下就内联，塞不下外置（太长再分段） */
-    if (notes) {
-      if (aiFits(text + '\n## 说明\n' + notes + '\n')) {
-        text += '\n## 说明\n' + notes + '\n';
+    text += mandatoryTail;
+
+    // 第 1 页的跳转行：路径一定指向真实存在的那一页
+    const jump = [];
+    if (firstOf[SEC_STMT] != null) {
+      jump.push([SEC_STMT, `> 陈述续见 \`nodes/${n.id}.${firstOf[SEC_STMT]}.md\``]);
+    }
+    if (firstOf[SEC_IN] != null) {
+      jump.push([SEC_IN, `- …另有入边，续页见 \`nodes/${n.id}.${firstOf[SEC_IN]}.md\``]);
+    }
+    if (firstOf[SEC_OUT] != null) {
+      jump.push([SEC_OUT, `- …另有出边，续页见 \`nodes/${n.id}.${firstOf[SEC_OUT]}.md\``]);
+    }
+    for (const [sec, line] of jump) {
+      if (sec === SEC_STMT) {
+        const anchor = head + stmtChunks[0];
+        if (text.startsWith(anchor)) {
+          text = anchor + '\n' + line + '\n' + text.slice(anchor.length);
+        }
+      } else if (text.includes(sec + '\n')) {
+        const i = text.indexOf(sec + '\n');
+        let at = text.indexOf('\n## ', i + sec.length + 1);
+        if (at < 0) at = text.indexOf('\nrefs:', i);
+        if (at < 0) at = text.length;
+        text = text.slice(0, at) + '\n' + line + '\n' + text.slice(at);
       } else {
-        notesOut.push(n.id);
-        text += notesPtr;
-        emitChunks(files, 'notes', n.id, `# ${n.label}　\`${n.id}\`　·　说明\n根 \`../\`\n\n`, notes, '', 120);
+        // 本节一行都没内联：把标题和跳转一起补在 refs 前（或末尾）
+        const at = text.indexOf('\nrefs:') < 0 ? text.length : text.indexOf('\nrefs:');
+        text = text.slice(0, at) + `\n${sec}\n${line}\n` + text.slice(at);
       }
     }
-    files.push({ path: `nodes/${n.id}.md`, text });
+    if (!notesInline && notes) {
+      notesOut.push(n.id);
+      emitChunks(files, 'notes', n.id, `# ${n.label}　\`${n.id}\`　·　说明\n根 \`../\`\n\n`, notes, '', 120);
+    }
 
-    stmtChunks.slice(1).forEach((c, i) => {
-      files.push({
-        path: `nodes/${n.id}.${i + 2}.md`,
-        text: `# ${n.label}　\`${n.id}\`　·　陈述续（${i + 2}/${stmtChunks.length}）\n根 \`../\`\n\n${c}\n` +
-          (i + 2 < stmtChunks.length ? `\n> 续见 nodes/${n.id}.${i + 3}.md\n` : ''),
-      });
+    files.push({ path: `nodes/${n.id}.md`, text });
+    const texts = [text];
+    pages.forEach((p, i) => {
+      const k = i + 2;
+      let t = `# ${n.label}　\`${n.id}\`　·　续页（第 ${k} 页）\n` +
+        `根 \`../\`　·　第 1 页 \`nodes/${n.id}.md\`` +
+        (k > 2 ? `　·　上一页 \`nodes/${n.id}.${k - 1}.md\`` : '') + '\n\n' +
+        `## ${secName(p.sec)}${p.sec === SEC_STMT ? '' : '（续）'}\n` + p.lines.join('\n') + '\n';
+      if (i < pages.length - 1) t += `\n> 续见 \`nodes/${n.id}.${k + 1}.md\`\n`;
+      texts.push(t);
+      files.push({ path: `nodes/${n.id}.${k}.md`, text: t });
     });
+    pagesOf.set(n.id, texts);
   }
+
 
   /* ------------------------------------------------------------ 目录 */
   /* ⚠️ 目录用**纯文本 .md**，不用 JSON —— 实测 JSON 标点密集，854 B 就被截断。 */
@@ -556,51 +631,127 @@ function exportAIProducts(MG, graph, data) {
   });
 
   for (const { r, cs } of regions) {
+    const lines = cs.map(c => `- ${c.id}　${c.name}　中心天体 ${c.hub}　${c.nodes.length} 点`);
+    const head1 = `# ${r.name}（${r.id}）· 星团目录\n\n${r.desc}\n\n`;
     const parts = [];
-    let cur = `# ${r.name}（${r.id}）· 星团目录\n\n${r.desc}\n\n`;
-    for (const c of cs) {
-      const line = `- ${c.id}　${c.name}　中心天体 ${c.hub}　${c.nodes.length} 点\n`;
-      if (aiBytes(cur + line) > AI_MAXB - 100 && parts.length < 9) { parts.push(cur); cur = ''; }
-      cur += line;
+    let cur = '';
+    for (const l of lines) {
+      if (cur && aiBytes(head1 + cur + l + '\n') > AI_MAXB - 150) { parts.push(cur); cur = ''; }
+      cur += l + '\n';
     }
-    parts.push(cur);
+    if (cur) parts.push(cur);
+    const N = parts.length;
     parts.forEach((t, i) => {
-      files.push({
-        path: `index/${r.id}${i ? '.' + (i + 1) : ''}.md`,
-        text: t + (i < parts.length - 1 ? `\n（续见 index/${r.id}.${i + 2}.md）\n` : ''),
-      });
+      const k = i + 1;
+      const head = k === 1
+        ? head1.replace('\n\n', `\n第 1/${N} 页　·　根 \`../\`\n\n`)
+        : `# ${r.name}（${r.id}）· 星团目录（第 ${k}/${N} 页）\n` +
+          `根 \`../\`　·　第 1 页 \`index/${r.id}.md\`` +
+          (k > 2 ? `　·　上一页 \`index/${r.id}.${k - 1}.md\`` : '') + '\n\n';
+      let text = head + t;
+      if (r.desc && k === 1) { /* desc 已在 head1 里 */ }
+      if (k < N) text += `\n> 续见 \`index/${r.id}.${k + 1}.md\`\n`;
+      files.push({ path: `index/${r.id}${k > 1 ? '.' + k : ''}.md`, text });
     });
   }
 
-  /* 团清单：节点多就分段 */
+  /* 团清单 · 节点多就分页
+     ⚠️ 分页**必须**给每一页不同的文件名（第 1 页 <c>.md、第 k 页 <c>.<k>.md，
+     与 proofs/ 同一套）。2026-09-23 踩过：写在 forEach 里时路径没带页码，
+     后一页把前一页**覆盖**掉 —— analysis.measure 的 18 个节点只剩最后 2 个，
+     而且第 1 页（入口）根本不存在，AI 顺着协议读到这里就断了。 */
   for (const c of graph.clusters) {
     if (!c.nodes.length) continue;
-    const head = `# ${c.name}（${c.id}）· 节点清单\n\n${c.desc}\n` +
-      `中心天体 ${c.hub}　·　${c.nodes.length} 个节点　·　根 \`../\`\n\n`;
     const lines = c.nodes.slice().sort((a, b) => a.layer - b.layer)
       .map(n => `- ${n.id}　${n.label}　layer ${n.layer}`);
+    const head1 = `# ${c.name}（${c.id}）· 节点清单\n\n${c.desc}\n` +
+      `中心天体 ${c.hub}　·　${c.nodes.length} 个节点　·　根 \`../\`\n\n`;
     const chunks = [];
     let cur = '';
     for (const l of lines) {
-      if (cur && aiBytes(head + cur + l + '\n') > AI_MAXB - 150) { chunks.push(cur); cur = ''; }
+      if (cur && aiBytes(head1 + cur + l + '\n') > AI_MAXB - 150) { chunks.push(cur); cur = ''; }
       cur += l + '\n';
     }
     if (cur) chunks.push(cur);
+    const N = chunks.length;
     chunks.forEach((t, i) => {
-      files.push({
-        path: `index/${c.id}.md`,
-        text: (i ? `# ${c.name}（${c.id}）· 节点清单（${i + 1}/${chunks.length}）\n\n` : head) + t +
-          (i < chunks.length - 1 ? `\n（续见 index/${c.id}.${i + 2}.md）\n` : ''),
-      });
+      const k = i + 1;
+      const head = k === 1
+        ? `# ${c.name}（${c.id}）· 节点清单（第 1/${N} 页）\n\n${c.desc}\n` +
+          `中心天体 ${c.hub}　·　${c.nodes.length} 个节点　·　根 \`../\`` +
+          (N > 1 ? `　·　续页 \`index/${c.id}.2.md\`` : '') + '\n\n'
+        : `# ${c.name}（${c.id}）· 节点清单（第 ${k}/${N} 页）\n` +
+          `根 \`../\`　·　第 1 页 \`index/${c.id}.md\`` +
+          (k > 2 ? `　·　上一页 \`index/${c.id}.${k - 1}.md\`` : '') + '\n\n';
+      let text = head + t;
+      if (k < N) text += `\n> 续见 \`index/${c.id}.${k + 1}.md\`\n`;
+      files.push({ path: `index/${c.id}${k > 1 ? '.' + k : ''}.md`, text });
     });
   }
 
-  return { files, notesOut };
+  return { files, notesOut, pagesOf };
 }
 
-
-function assertAI(MG, graph, files) {
+/* ==========================================================================
+   断言：产物体积、路径唯一、跳转有效、邻居可达
+   ========================================================================== */
+function assertAI(MG, graph, files, pagesOf) {
   const errs = [];
+
+  /* ① 路径必须唯一 —— 分页写错路径时后一页会**覆盖**前一页，
+        这是最隐蔽的一类 bug（2026-09-23 踩过：团清单只剩最后一页）。 */
+  const seen = new Set();
+  for (const f of files) {
+    if (seen.has(f.path)) errs.push(`产物路径重复（后写的会盖掉前面的）：${f.path}`);
+    seen.add(f.path);
+  }
+
+  /* ② 不许把 AI 指回 bulk 文件，也不许出现「…另有 N 条」却不给去路 */
+  for (const f of files) {
+    if (/见\s*`?graph\.(json|md)/.test(f.text)) {
+      errs.push(`产物指向 bulk 文件（AI 单次抓不到）：${f.path}`);
+    }
+    if (/另有 \d+ 条/.test(f.text) && !/见\s*`?(nodes|index|notes|proofs)\//.test(f.text)) {
+      errs.push(`「…另有 N 条」没给出去路：${f.path}`);
+    }
+  }
+
+  /* ③ 分页里的跳转必须真的存在（写错页码 / 漏生成都要报） */
+  const paths = new Set(files.map(f => f.path));
+  for (const f of files) {
+    for (const m of f.text.matchAll(/`((?:nodes|index|notes|proofs)\/[^`]+\.md)`/g)) {
+      if (/[<>]/.test(m[1])) continue;                 // `index/<星团id>.md` 这种是占位写法，不是真路径
+      if (!paths.has(m[1])) errs.push(`${f.path} 指向不存在的文件：${m[1]}`);
+    }
+  }
+
+  /* ④ 每个节点页面上必须能看到它的**全部**邻居 id ——
+        出边/入边被截断却没人管，就等于「顺着图走」走不下去。 */
+  if (pagesOf) {
+    const ids = new Set(graph.nodes.map(n => n.id));
+    const neigh = new Map();
+    const add = (a, b) => {
+      if (!neigh.has(a)) neigh.set(a, new Set());
+      neigh.get(a).add(b);
+    };
+    for (const e of graph.edges) {
+      if (e.kind === 'implication') {
+        (e.sources || []).forEach(s => { add(s, e.target); add(e.target, s); });
+      } else if (e.kind === 'definition') { add(e.definition, e.usedBy); add(e.usedBy, e.definition); }
+      else { add(e.a, e.b); add(e.b, e.a); }
+    }
+    for (const n of graph.nodes) {
+      const pages = pagesOf.get(n.id) || [];
+      const all = pages.join('\n');
+      for (const nb of (neigh.get(n.id) || [])) {
+        if (!ids.has(nb)) continue;
+        if (!all.includes('`' + nb + '`')) {
+          errs.push(`节点 ${n.id} 的页面上找不到邻居 ${nb}（走到这里就断了）`);
+        }
+      }
+    }
+  }
+
   for (const f of files) {
     const c = aiCost(f.text), b = aiBytes(f.text);
     if (b > AI_MAXB || c > AI_ESC) {
@@ -639,30 +790,31 @@ function exportLlmsTxt(data, base = '') {
   const live = base === '' ? '线上：https://bingyingzizz.github.io/mathgalaxy/\n' : '';
   return `# 数学星图 MathGalaxy
 
-可检索的数学知识图谱：节点是定理 / 定义 / 引理，边是它们之间的逻辑关系。
-**给 AI 用：按下面协议取数据，不要单次抓 graph.json。**
+可检索的数学知识图谱：节点是定理 / 定义 / 引理，边是它们的逻辑关系。
+**给 AI 用：按协议取数据，不要单次抓 graph.json。**
 ${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。
 数据根 = 本文件所在目录。${live}
 
 ## 检索协议
 
 1. \`${base}index.md\` —— 星系 → 星团 id。
-2. \`${base}index/<星系id>.md\` —— 星系里的星团（名字、中心天体、点数）。
+2. \`${base}index/<星系id>.md\` —— 该星系的星团（名字、中心天体、点数）。
 3. \`${base}index/<星团id>.md\` —— 该团节点清单（id / 名称 / 层号）。
-4. \`${base}nodes/<节点id>.md\` —— 陈述 + 出入边（每条都带证明的路径）。
-   说明在 \`notes/<节点id>.md\`，一条边的正文在 \`proofs/<边id>.md\`。
-顺着节点文件里的 id 继续读，就是沿图走。
+4. \`${base}nodes/<节点id>.md\` —— 陈述 + 出入边（每条带证明路径）。
+   说明在 \`notes/<节点id>.md\`，边的正文在 \`proofs/<边id>.md\`。
+顺着 id 继续读就是沿图走。
 
-⚠ **单次抓取只有约 1000 词元**（中文约 1.2 KB），而且抓取工具会转义
-\`# * [ ] \\\` _ ~\` 这些字符。产物都按这个尺度切过。
+⚠ **单次抓取只有约 1000 词元**（中文约 1.2 KB），抓取工具还会转义
+\`# * [ ] \\\` _ ~\`。产物都按这个尺度切过：**放不下的分页成
+\`<路径>.2.md\`**，第 1 页永远是 \`<路径>.md\`，每页头部都写了
+「第 1 页 / 上一页」在哪。
 \`${base}graph.json\` / \`${base}graph.md\` 是 550 / 430 KB 的全量导出：
-**只用来下载，不要用来检索**（单次只会返回开头一小段）。
+**只用来下载，不要用来检索**。
 
 ## 其它
 
-\`${base}reading.md\` 结构、边、分层 · \`${base}policy.md\` 内容准则 ·
-\`${base}hubs.md\` 枢纽定理榜。
-公式是 LaTeX，KaTeX 渲染；\`label\` \`tags\` \`refs\` 是纯文本。
+\`${base}reading.md\` 结构/边/分层 · \`${base}policy.md\` 准则 · \`${base}hubs.md\` 枢纽榜。
+LaTeX 由 KaTeX 渲染；\`label\` 等字段是纯文本。
 `;
 }
 
@@ -838,8 +990,8 @@ if (doJSON) {
   // 早期版本产出过 JSON 版索引；抓取工具对 JSON 不友好，已改成纯文本 .md。
   // 这里主动清掉，免得旧的留在 dist/ 里被当成产物发布。
   fs.rmSync(path.join(DIST, 'index.json'), { force: true });
-  const { files, notesOut } = exportAIProducts(MG, graph, data);
-  const errs = assertAI(MG, graph, files);
+  const { files, notesOut, pagesOf } = exportAIProducts(MG, graph, data);
+  const errs = assertAI(MG, graph, files, pagesOf);
   // 给 AI 看的说明文档也必须在一次抓取之内
   for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md']) {
     const p = path.join(DIST, extra);

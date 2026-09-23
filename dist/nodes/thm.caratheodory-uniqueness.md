@@ -3,10 +3,8 @@
 layer 16 · 定理 · 测度的构造 · 分析学
 
 设 $\mu _{0}$ 是代数 $\mathfrak{A}$ 上的预测度，$\mu := \mu^{*}|_\mathcal{M}$ 是它经 Carathéodory 得到的扩张。若 $\nu$ 是 $\mathcal{M}(\mathfrak{A})$ 上**另一个**扩张 $\mu _{0}$ 的测度，则
+> 陈述续见 `nodes/thm.caratheodory-uniqueness.2.md`
 
-$$\nu(E) \le \mu(E)\quad  \forall E \in \mathcal{M}(\mathfrak{A})$$
-
-且当 $$\mu(E) < \infty$$ 时等号成立；进而，若 $\mu$ 是 $\sigma$有限的，则 $$\nu = \mu$$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `prop.caratheodory-extension` 预测度还原：扩张的最大性与 σ-有限唯一性　proofs/imp.carath-unique.md

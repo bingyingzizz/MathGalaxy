@@ -17,9 +17,8 @@ $$f = \frac{d\nu}{d\mu}$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.L1-signed` L¹(ν) 与全变差 用
-- 被 `thm.rn-pointwise` RN 导数的点态公式 用
-- 被 `cor.rn-inverse` 互为绝对连续时导数互逆 用
-- …另有 1 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.rn-derivative.2.md`
 
 refs: Folland, Real Analysis, §3.2
 

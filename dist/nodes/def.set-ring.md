@@ -9,10 +9,8 @@ $\mathfrak{A}$ 是**环**（ring），当且仅当它对有限并封闭、且对
 $$A, B \in \mathfrak{A} \implies A \cup B \in \mathfrak{A}, \quad A \setminus B \in \mathfrak{A}$$
 
 $\mathfrak{A}$ 是**代数**（algebra），当且仅当 $\mathfrak{A}$ 是环、且含全集：
+> 陈述续见 `nodes/def.set-ring.2.md`
 
-$$X \in \mathfrak{A}$$
-
-**代数 $=$ 环 $X \in \mathfrak{A}$**。「把整个 $X$ 放进去」是唯一的差别。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.subset` 子集：用到了定义 子集　proofs/def-dep.subset-set-ring.md

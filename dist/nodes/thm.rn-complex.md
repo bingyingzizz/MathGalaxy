@@ -3,10 +3,8 @@
 layer 17 · 定理 · 符号测度与分解 · 分析学
 
 设 $\nu$ 是复测度、$\mu$ 是 **$\sigma$有限**测度。则存在复测度 $\lambda$ 与 $$f \in L^1(\mu)$$ 使
+> 陈述续见 `nodes/thm.rn-complex.2.md`
 
-$$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
-
-且在 a.e. 意义下唯一。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.complex-measure` 复测度：用到了定义 复测度　proofs/def-link.complex-rn.md

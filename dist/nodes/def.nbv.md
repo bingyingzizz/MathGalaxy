@@ -15,13 +15,4 @@ $$NBV := \{ F \in BV : F\text{ 右连续},\text{ 且} F(-\infty) = 0 \}$$
 
 refs: Folland, Real Analysis, Theorem 3.29
 
-## 说明
-为什么要加这两个条件：因为下一条定理要建立**$\mathbb{R}$ 上的复 Borel 测度 $\leftrightarrow NBV$** 的一一对应，而对应式是
-
-
-
-$$F(x) = \mu((-\infty, x])$$
-
-
-
-右边那个函数自动右连续、且在 $-\infty$ 处为 0。把左边限制成 NBV，对应才是**双射**而不是满射。
+> 说明见 `notes/def.nbv.md`

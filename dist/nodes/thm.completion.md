@@ -9,8 +9,8 @@ $$\mathcal{N} = \{ N \in \mathcal{M} : \mu(N) = 0 \}$$
 $$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M},\ F \subseteq N,\ N \in \mathcal{N} \}$$
 
 则
+> 陈述续见 `nodes/thm.completion.2.md`
 
-> 陈述续见 nodes/thm.completion.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.null-set` 零集与完备：零集 ⟹ 完备化　proofs/imp.completion.md

@@ -1,4 +1,4 @@
-# 微分定理（analysis.differentiation）· 节点清单
+# 微分定理（analysis.differentiation）· 节点清单（第 1/1 页）
 
 造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。
 中心天体 def.maximal-function　·　14 个节点　·　根 `../`

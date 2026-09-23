@@ -7,8 +7,8 @@ layer 7 · 命题 · 乘积测度与 Fubini · 分析学
 $$\mathcal{F} = \{ \pi _\alpha^{-1}(E_\alpha) : E_\alpha \in \mathcal{E}_\alpha, \alpha \in A \}$$
 
 则
+> 陈述续见 `nodes/prop.product-sigma-base.2.md`
 
-$$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\mathcal{F})$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.product-sigma` 积 σ-代数：用到了定义 积 σ-代数　proofs/def-link.product-base.md

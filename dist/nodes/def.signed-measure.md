@@ -7,8 +7,8 @@ layer 13 · 定义 · 符号测度与分解 · 分析学
 - $$\nu(\emptyset) = 0$$；
 - $$\nu$$ **至多取到 $\pm \infty$ 中的一个**（不能同时取到 $\infty$ 与 $-\infty$）；
 - 对两两不交的 $$\{E_j\} \subseteq \mathcal{M}$$：
+> 陈述续见 `nodes/def.signed-measure.2.md`
 
-$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 且右边的级数绝对收敛}(\text{当} |\nu(\bigsqcup E_j)| < \infty\text{ 时})$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sigma-algebra` σ-代数：用到了定义 σ-代数　proofs/def-dep.sigma-algebra-signed-measure.md
@@ -19,7 +19,7 @@ $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 且右边的级数绝对收敛
 - 被 `def.positive-negative-null` 正集 / 负集 / 零集 用
 - 被 `thm.jordan-decomposition` Jordan 分解定理 用
 - 被 `def.absolute-continuity` 绝对连续 用
-- …另有 1 条（见 graph.json）
+- 被 `def.complex-measure` 复测度 用
 
 refs: Folland, Real Analysis, §3.1；Halmos, Measure Theory, §28
 

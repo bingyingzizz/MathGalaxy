@@ -8,8 +8,8 @@ layer 12 · 定义 · 测度的构造 · 分析学
 - **(ii) 可数可加**：若 $\{E_{j}\}$ 是 $\mathcal{M}$ 中两两不交的集合列，则
 
 $$\mu( \bigcup_{j=1}^{\infty} E_j ) = \sum_{j=1}^{\infty} \mu(E_j)$$
+> 陈述续见 `nodes/def.measure.2.md`
 
-$(X, \mathcal{M}, \mu )$ 称为**测度空间**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.extended-real` 扩充实数 [−∞,+∞]：用到了定义 扩充实数 [−∞,+∞]　proofs/dep.extended-measure.md
@@ -19,8 +19,8 @@ $(X, \mathcal{M}, \mu )$ 称为**测度空间**。
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.measure-basic` 测度的基本性质
 - 被 `def.measure-space` 有限 / σ-有限 / 半有限 用
-- 被 `thm.completion` 完备化定理 用
-- …另有 25 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.measure.3.md`
 
 refs: Halmos, Measure Theory, §9；Folland, Real Analysis, §1.2
 

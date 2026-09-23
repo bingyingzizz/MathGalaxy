@@ -3,10 +3,8 @@
 layer 3 · 公理 · ZFC 公理系统 · 集合论
 
 若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 $\varphi (x, y, p)$（其中 $B$ 不出现）：
+> 陈述续见 `nodes/ax.repl.2.md`
 
-$$\forall p [ \forall x\forall y\forall z ( \varphi(x,y,p) \wedge  \varphi(x,z,p) \to y = z ) \to \forall A \exists B \forall y ( y \in B \leftrightarrow  \exists x \in A, \varphi(x,y,p) ) ]$$
-
-它保证了「替换」不会跑出集合论宇宙：像 $B$ 也是集合。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.formula` 公式：用到了定义 公式　proofs/def-link.formula-repl.md

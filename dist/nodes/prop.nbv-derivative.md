@@ -15,7 +15,8 @@ $$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续
-- ⇒ `thm.ftc-lebesgue` 微积分基本定理（Lebesgue 版）
+
+- …另有出边，续页见 `nodes/prop.nbv-derivative.2.md`
 
 refs: Folland, Real Analysis, Theorem 3.35
 

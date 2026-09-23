@@ -15,7 +15,7 @@ $$(L^p)^* \cong L^q$$
 特别地，$p = 2$ 时 $L^2$ 自对偶。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `prop.bounded-functional-gives-lq+thm.lebesgue-radon-nikodym+prop.duality-isometry` prop.bounded-functional-gives-lq+thm.lebesgue-radon-nikodym+prop.duality-isometry：把泛函变成测度 ⟹ $(L^p)^* \cong L^q$　proofs/imp.riesz-lp.md
+- `prop.bounded-functional-gives-lq` 有界 ⟹ g ∈ L^q + `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理 + `prop.duality-isometry` ‖g‖_q = ‖φ_g‖：把泛函变成测度 ⟹ $(L^p)^* \cong L^q$　proofs/imp.riesz-lp.md
 - `def.conjugate-exponents` 共轭指数：用到了定义 共轭指数　proofs/def-link.conjugate-riesz.md
 - `def.duality-map` 对偶配对 φ_g：用到了定义 对偶配对 φ_g　proofs/def-link.duality-riesz.md
 

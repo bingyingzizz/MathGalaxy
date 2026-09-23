@@ -11,7 +11,7 @@ $$P \cup N = X, \quad  P \cap N = \emptyset, $$
 若 $$P', N'$$ 是另一对这样的集合，则 $$P \triangle  P' = N \triangle  N'$$ 是 $\nu$零集。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.signed-measure+prop.positive-set-closure` def.signed-measure+prop.positive-set-closure：符号测度 + 正集的封闭性 ⟹ Hahn 分解　proofs/imp.hahn.md
+- `def.signed-measure` 符号测度 + `prop.positive-set-closure` 正集的封闭性：符号测度 + 正集的封闭性 ⟹ Hahn 分解　proofs/imp.hahn.md
 - `def.positive-negative-null` 正集 / 负集 / 零集：用到了定义 正集 / 负集 / 零集　proofs/def-link.positive-hahn.md
 
 ## 它能推出什么 / 谁在用它

@@ -3,15 +3,8 @@
 layer 2 · 定义 · 乘积测度与 Fubini · 分析学
 
 设 $$E \subseteq X \times Y$$。对 $$x \in X$$、$$y \in Y$$ 定义
+> 陈述续见 `nodes/def.section.2.md`
 
-$$E_x := \{y \in Y : (x, y) \in E\}$$
-$$E^y := \{x \in X : (x, y) \in E\}$$
-
-分别叫 $E$ 在 $x$ 处的**纵截口**与在 $y$ 处的**横截口**。
-
-类似地，对函数 $$f : X \times Y \to \mathbb{C}$$ 定义
-
-$$f_x(y) := f^y(x) := f(x, y)$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.subset` 子集：用到了定义 子集　proofs/def-dep.subset-section.md

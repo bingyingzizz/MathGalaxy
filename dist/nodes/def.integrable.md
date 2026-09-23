@@ -18,9 +18,8 @@ $$L^1(\mu) = L^1(X, \mathcal{M}, \mu) = L^1(X, \mu)$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `thm.dct` 控制收敛定理 用
-- 被 `prop.L1-vector-space` L¹ 是向量空间 用
-- 被 `thm.approximation-L1` L¹ 里的逼近 用
-- …另有 12 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.integrable.2.md`
 
 refs: Folland, Real Analysis, §2.3
 

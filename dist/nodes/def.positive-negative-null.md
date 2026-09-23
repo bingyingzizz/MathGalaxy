@@ -3,10 +3,8 @@
 layer 14 · 定义 · 符号测度与分解 · 分析学
 
 设 $\nu$ 是符号测度，$$E \in \mathcal{M}$$。
+> 陈述续见 `nodes/def.positive-negative-null.2.md`
 
-$E$ 是**正的**：$$\nu(F) \ge 0$$ 对一切可测 $$F \subseteq E$$ 成立；
-$E$ 是**负的**：$$\nu(F) \le 0$$ 对一切可测 $$F \subseteq E$$ 成立；
-$E$ 是**零的**：$$\nu(F) = 0$$ 对一切可测 $$F \subseteq E$$ 成立。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.signed-measure` 符号测度：用到了定义 符号测度　proofs/def-link.signed-positive.md

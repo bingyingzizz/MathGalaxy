@@ -9,16 +9,17 @@ layer 17 · 定理 · 乘积测度与 Fubini · 分析学
 $$\int f_x d\nu \in L^+(X), \quad  \int f^y d\mu \in L^+(Y)$$
 
 且
+> 陈述续见 `nodes/thm.fubini-tonelli.2.md`
 
-$$\int f d(\mu \times \nu) = \int_X ( \int_Y f(x, y) d\nu(y) ) d\mu(x) = \int_Y ( \int_X f(x, y) d\mu(x) ) d\nu(y)$$
-
-> 陈述续见 nodes/thm.fubini-tonelli.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.product-measure-sections+thm.mct` thm.product-measure-sections+thm.mct：集合版（截口公式）+ MCT ⟹ Tonelli　proofs/imp.tonelli.md
+- `thm.product-measure-sections` 乘积测度由截口给出 + `thm.mct` 单调收敛定理：集合版（截口公式）+ MCT ⟹ Tonelli　proofs/imp.tonelli.md
 - `def.section` 截口：用到了定义 截口　proofs/def-link.section-fubini.md
 - `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-fubini.md
 - `def.integrable` 可积 / L¹：用到了定义 可积 / L¹　proofs/def-link.integrable-fubini.md
+
+## 它能推出什么 / 谁在用它
+- ⇒ `thm.fubini-complete` 完备情形的 F–T
 
 refs: Folland, Real Analysis, Theorem 2.37
 

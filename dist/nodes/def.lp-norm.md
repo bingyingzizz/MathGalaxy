@@ -21,8 +21,8 @@ $$L^p(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f
 - 被 `thm.minkowski` Minkowski 不等式 用
 - 被 `thm.lp-banach` L^p 是 Banach 空间 用
 - 被 `cor.lp-reflexive` L^p 自反 用
-- 被 `prop.dense-simple-compact-support` 紧支简单函数稠密 用
-- …另有 5 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.lp-norm.2.md`
 
 refs: Folland, Real Analysis, §6.1
 

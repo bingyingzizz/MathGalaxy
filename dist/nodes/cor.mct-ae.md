@@ -2,13 +2,9 @@
 推论：单调收敛定理的几乎处处版本
 layer 14 · 推论 · 积分 · 分析学
 
-设 $$\{f_n\} \subseteq L^+$$，$$f \in L^+$$。若对**几乎处处的** $x$ 有
+设 $$\{f_n\} \subseteq L^+$$，$$f \in L^+$$。若对**几乎处处的
+> 陈述续见 `nodes/cor.mct-ae.2.md`
 
-$$f_n(x) \uparrow  f(x), $$
-
-则
-
-$$\int f = \lim_{n\to\infty} \int f_n$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.null-set` 零集与完备：用到了定义 零集与完备　proofs/def-link.nullset-ae-mct.md

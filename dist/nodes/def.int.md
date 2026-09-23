@@ -11,17 +11,16 @@ $$(a, b) \sim (c, d) :\iff a + d = b + c$$
 $$\mathbb{Z} := (\mathbb{N} \times \mathbb{N}) / \sim$$
 
 元素记作 $[a, b]$（即 $a - b$）。$\mathbb{Z}$ 上的**运算与序**（都要先验证与代表元无关）：
+> 陈述续见 `nodes/def.int.2.md`
 
-$$[a, b] + [c, d] := [a + c,\ b + d]$$
-$$[a, b] \cdot [c, d] := [ac + bd,\ ad + bc]$$
-$$[a, b] \le [c, d] :\iff a + d \le b + c$$
-
-> 陈述续见 nodes/def.int.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `thm.omega` 自然数集存在：用到了定义 自然数集存在　proofs/dep.omega-int.md
 - `def.quotient-set` 商集与等价类：用到了定义 商集与等价类　proofs/dep.quotient-int.md
 - `thm.induction` 归纳原理与递推定义：用到了定义 归纳原理与递推定义　proofs/dep.induction-int.md
+
+## 它能推出什么 / 谁在用它
+- 被 `def.rat` 有理数 ℚ 用
 
 refs: Kunen, Set Theory, I.5
 

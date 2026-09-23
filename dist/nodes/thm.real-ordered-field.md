@@ -8,10 +8,8 @@ layer 11 · 定理 · 数系的构造 · 集合论+分析学
 
 **(ii) 序公理**：$\le$ 是全序，且与运算相容：
 $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$$
+> 陈述续见 `nodes/thm.real-ordered-field.2.md`
 
-**(iii) 完备性（确界原理）**：$\mathbb{R}$ 的**每个非空有上界的子集都有上确界**。
-
-此外 $\mathbb{Q}$ 的嵌入像在 $\mathbb{R}$ 中**稠密**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.real` 实数系 ℝ：Cauchy 列的等价类 ⟹ 完备有序域　proofs/imp.real-ordered-field.md

@@ -8,8 +8,8 @@ layer 6 · 定义 · 序结构 · 序理论
 - **$u$ 是 $S$ 的上确界**（记 sup S）：$u$ 是上界，且 $u \preceq$ 每一个上界。
 - **$m$ 是 $P$ 的极大元**：$$\forall x \in P ( m \preceq x \to x = m )$$，即没有比 $m$ 更大的元素。
 - **$m$ 是 $P$ 的最大元**：$\forall x \in P, x \preceq m$，即 $m$ 比所有元素都大。
+> 陈述续见 `nodes/def.bound.2.md`
 
-⚠ **极大元 $\ne$ 最大元。**
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.poset` 偏序集：用到了定义 偏序集　proofs/def-link.bound-poset.md

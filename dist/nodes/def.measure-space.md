@@ -7,8 +7,8 @@ layer 13 · 定义 · 测度的构造 · 分析学
 - **有限**：$$\mu(X) < \infty$$
 - **$\sigma$有限**：$X$ 能写成可数个测度有限的集合之并：$$X = \bigcup_{j=1}^{\infty} E_j, \quad  \mu(E_j) < \infty$$
 - **半有限**：每个无穷测度的集合里都藏着正有限测度的子集：
+> 陈述续见 `nodes/def.measure-space.2.md`
 
-$$\forall E \in \mathcal{M}, \mu(E) = \infty \implies \exists F \subseteq E, F \in \mathcal{M}, 0 < \mu(F) < \infty$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.measure` 测度：用到了定义 测度　proofs/def-link.measure-space.md

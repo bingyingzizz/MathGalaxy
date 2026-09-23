@@ -9,10 +9,8 @@ layer 12 · 引理 · 数系的构造 · 集合论+分析学
 $$\forall x \in K,\ \exists n \in \mathbb{N} : n > x$$
 
 **(ii) $\mathbb{Q}$ 在 $K$ 中稠密**：任意两个元素之间都夹着一个有理数 ——
+> 陈述续见 `nodes/lem.archimedean.2.md`
 
-$$\forall x, y \in K,\ x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
-
-> 陈述续见 nodes/lem.archimedean.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `thm.real-ordered-field` ℝ 是完备有序域：完备性 ⟹ 阿基米德性质 + ℚ 稠密　proofs/imp.archimedean.md

@@ -7,11 +7,11 @@ layer 18 · 定理 · 乘积测度与 Fubini · 分析学
 $$(X \times Y, \mathcal{M} \otimes  \mathcal{N}, \mu \times \nu)$$
 
 的**完备化**。设 $f$ 是 $\mathcal{L}$可测的。
+> 陈述续见 `nodes/thm.fubini-complete.2.md`
 
-> 陈述续见 nodes/thm.fubini-complete.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.fubini-tonelli+thm.completion+prop.product-incomplete` thm.fubini-tonelli+thm.completion+prop.product-incomplete：乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T　proofs/imp.fubini-complete.md
+- `thm.fubini-tonelli` Fubini–Tonelli + `thm.completion` 完备化定理 + `prop.product-incomplete` 乘积测度通常不完备：乘积测度通常不完备 ⟹ 必须补一条完备情形的 F–T　proofs/imp.fubini-complete.md
 - `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-complete.md
 - `def.null-set` 零集与完备：用到了定义 零集与完备　proofs/def-link.completion-fubini.md
 

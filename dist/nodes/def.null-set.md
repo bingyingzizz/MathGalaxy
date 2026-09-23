@@ -22,9 +22,8 @@ $$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \
 - 被 `prop.completion-measurable-function` 完备化后可改在零集上 用
 - 被 `prop.integral-zero-iff` 积分为零 ⟺ 几乎处处为零 用
 - 被 `cor.mct-ae` MCT（a.e. 版本） 用
-- 被 `thm.fubini-complete` 完备情形的 F–T 用
-- 被 `def.ae` 几乎处处 用
-- …另有 4 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.null-set.2.md`
 
 refs: Halmos, Measure Theory, §11
 

@@ -11,7 +11,7 @@ $$f_1 \le f_2 \le \cdots, \quad  f_n \uparrow  f\text{ 逐点}, $$
 $$\int f = \lim_{n\to\infty} \int f_n$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.integral-nonneg+prop.simple-integral-props` def.integral-nonneg+prop.simple-integral-props：非负积分的定义 ⟹ 单调收敛定理　proofs/imp.mct.md
+- `def.integral-nonneg` 非负函数的积分 + `prop.simple-integral-props` 简单函数积分的性质：非负积分的定义 ⟹ 单调收敛定理　proofs/imp.mct.md
 - `def.integral-nonneg` 非负函数的积分：用到了定义 非负函数的积分　proofs/def-link.mct-nonneg.md
 - `def.lplus` L⁺：用到了定义 L⁺　proofs/def-link.lplus-mct.md
 - `def.series` 级数收敛：都是「取上确界」：把无穷一次性握在手里　proofs/ana.sup-extension.md
@@ -20,9 +20,8 @@ $$\int f = \lim_{n\to\infty} \int f_n$$
 - ⇒ `thm.termwise-integration` 逐项积分
 - ⇒ `lem.fatou` Fatou 引理
 - ⇒ `thm.fubini-tonelli` Fubini–Tonelli
-- ⇒ `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理
-- ⇒ `thm.lp-banach` L^p 是 Banach 空间
-- ～弱边 `def.series` 级数收敛
+
+- …另有出边，续页见 `nodes/thm.mct.2.md`
 
 refs: Folland, Real Analysis, Theorem 2.14
 

@@ -18,7 +18,8 @@ $$f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{N}$$
 - 被 `def.cauchy-in-measure` 依测度 Cauchy 用
 - 被 `def.locally-integrable` 局部可积 用
 - 被 `def.lp-norm` L^p 范数 用
-- 被 `def.essential-sup` 本性上界与 L^∞ 用
+
+- …另有出边，续页见 `nodes/def.measurable-function.2.md`
 
 refs: Folland, Real Analysis, §2.1；Halmos, Measure Theory, §18
 

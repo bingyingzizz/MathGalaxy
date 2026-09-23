@@ -3,8 +3,8 @@
 layer 4 · 定义 · 集合族与 σ-代数 · 分析学
 
 设 $X$ 是集合，$\mathfrak{A} \subseteq \mathcal{P}(X)$。$\mathfrak{A}$ 是 $X$ 上的一个 **$\sigma$代数**，当且仅当它同时满足三条：
+> 陈述续见 `nodes/def.sigma-algebra.2.md`
 
-> 陈述续见 nodes/def.sigma-algebra.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sigma-ring` σ-环：用到了定义 σ-环　proofs/def-link.sigmaalgebra-sigmaring.md

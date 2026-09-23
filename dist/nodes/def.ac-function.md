@@ -16,7 +16,4 @@ $$\forall\varepsilon > 0, \exists\delta > 0 :\text{ 任意有限个两两不交�
 
 refs: Folland, Real Analysis, §3.5
 
-## 说明
-⚠ 注意与「一致连续」的区别：一致连续是**单个**小区间上控制振幅，而绝对连续要求**任意多个小区间合起来**也能控制 —— 这正是为了堵住 Cantor 函数那种「在零测集上爬升」的情形。
-
-记号：$$AC([a, b])$$ 表示 $$[a,b]$$ 上绝对连续的函数全体。
+> 说明见 `notes/def.ac-function.md`

@@ -10,10 +10,8 @@ $u$ 是 $S$ 的**上确界**（记 $\sup S$），当且仅当
 - $u$ 是**最小**的上界：$u \le u'$ 对每个上界 $u'$ 成立。
 
 等价说法：$\forall \varepsilon > 0, \exists s \in S : s > u - \varepsilon$（任意近地逼近）。
+> 陈述续见 `nodes/def.sup.2.md`
 
-**下确界** $\inf S$ 对称地定义（最大下界）。
-
-**确界原理**：$S$ 非空且有上界 $\implies \sup S$ 存在。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.real` 实数系 ℝ：用到了定义 实数系 ℝ　proofs/dep.real-sup.md

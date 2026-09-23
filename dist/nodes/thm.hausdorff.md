@@ -3,10 +3,8 @@ Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）
 layer 9 · 定理 · 选择原理 · 序理论
 
 设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则存在 $P$ 的**极大链** $M$ 使 $C_{0} \subseteq M$。
+> 陈述续见 `nodes/thm.hausdorff.2.md`
 
-其中「极大链」指在包含关系 $\subseteq$ 下极大的链：若 $M \subseteq M' \subseteq P$ 且 $M'$ 也是链，则 $M' = M$。
-
-取 $C_{0} = \emptyset$ 即得：**每个非空偏序集都有极大链。**
 
 ## 为什么成立（入边，证明在 proofs/）
 - `lem.zorn` 佐恩引理：佐恩引理 ⟺ Hausdorff 极大原理　proofs/eq.zorn-hausdorff.md

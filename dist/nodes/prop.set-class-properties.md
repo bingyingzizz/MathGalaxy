@@ -13,8 +13,8 @@ $(3) \mathfrak{A}$ 是 $\sigma$代数 $\iff \mathfrak{A}$ 对**可数并**与**�
 $$\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \}$$
 
 是一个**环**。
+> 陈述续见 `nodes/prop.set-class-properties.2.md`
 
-（第 (4) 条因为本身是一条定理，单独列在「环 $\implies \sigma$环 的判据」里。）
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.fundamental-class` 基本类：用到了定义 基本类　proofs/def-link.fundamental-props.md

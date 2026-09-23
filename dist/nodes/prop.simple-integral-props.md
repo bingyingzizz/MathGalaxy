@@ -3,11 +3,8 @@
 layer 14 · 命题 · 积分 · 分析学
 
 设 $$\varphi, \psi$$ 是简单函数。
+> 陈述续见 `nodes/prop.simple-integral-props.2.md`
 
-- **(a)** $$c > 0 \implies \int c\varphi = c\int \varphi$$
-- **(b)** $$\int (\varphi + \psi) = \int \varphi + \int \psi$$
-- **(c)** $$\varphi \le \psi \implies \int \varphi \le \int \psi$$
-- **(d)** $$A \mapsto \int_A \varphi d\mu$$ 是 $\mathcal{M}$ 上的**测度**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.integral-simple` 简单函数的积分：用到了定义 简单函数的积分　proofs/def-link.integral-simple-props.md

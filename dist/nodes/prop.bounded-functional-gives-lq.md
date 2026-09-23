@@ -7,14 +7,11 @@ layer 17 · 命题 · L^p 空间 · 分析学
 $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 \,\right\}$$
 
 （$\Sigma$ $=$ 有限支集简单函数全体。）若 $M_g(g) < \infty$，且
+> 陈述续见 `nodes/prop.bounded-functional-gives-lq.2.md`
 
-- $\{x : g(x) \ne 0\}$ 是 **$\sigma$有限** 的，**或**
-- $\mu$ 是**半有限**的，
-
-则 $g \in L^q$，且 $M_g(g) = \|g\|_q$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.holder+def.duality-map` thm.holder+def.duality-map：Hölder + 有界性 ⟹ $g \in L^q$　proofs/imp.bounded-gives-lq.md
+- `thm.holder` Hölder 不等式 + `def.duality-map` 对偶配对 φ_g：Hölder + 有界性 ⟹ $g \in L^q$　proofs/imp.bounded-gives-lq.md
 - `def.duality-map` 对偶配对 φ_g：用到了定义 对偶配对 φ_g　proofs/def-link.duality-bounded.md
 
 ## 它能推出什么 / 谁在用它

@@ -5,10 +5,8 @@ layer 14 · 定义 · 有界变差与绝对连续 · 分析学
 设 $$F : \mathbb{R} \to \mathbb{C}$$。定义它的**全变差函数**
 
 $$T_F(x) := \sup \{ \sum_{j=1}^{n} |F(x_j) - F(x_{j-1})| : n \in \mathbb{N}, -\infty < x_0 < \cdots < x_n = x \}$$
+> 陈述续见 `nodes/def.bounded-variation.2.md`
 
-$T_F$ 是递增的 $$\mathbb{R} \to [0, +\infty]$$。若 $$T_F(+\infty) < +\infty$$，称 $F$ 是**有界变差的**，这类函数全体记作 **BV**。
-
-> 陈述续见 nodes/def.bounded-variation.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.derivative` 导数：用到了定义 导数　proofs/dep.derivative-bv.md

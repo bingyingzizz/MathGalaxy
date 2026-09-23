@@ -3,8 +3,8 @@
 layer 13 · 命题 · 测度的构造 · 分析学
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间，以下集合都取自 $\mathcal{M}$。
+> 陈述续见 `nodes/prop.measure-basic.2.md`
 
-> 陈述续见 nodes/prop.measure-basic.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.measure` 测度：测度 ⟹ 单调 / 次可加 / 上下连续　proofs/imp.measure-props.md

@@ -5,10 +5,8 @@ layer 0 · 公理 · ZFC 公理系统 · 集合论
 每个非空集合都有「$\in$极小元」：
 
 $$\forall A [ A \ne \emptyset \to \exists x ( x \in A \wedge  x \cap A = \emptyset ) ]$$
+> 陈述续见 `nodes/ax.found.2.md`
 
-等价说法：$\in$ 是良基关系，不存在无穷递减链
-
-$$x_0 \ni  x_1 \ni  x_2 \ni  \cdots$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.noself` 无自属集合

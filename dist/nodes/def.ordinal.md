@@ -6,8 +6,8 @@ layer 7 · 定义 · 序数与超限 · 集合论
 
 1. **$\alpha$ 是传递的**：$\forall x \in \alpha,\; x \subseteq \alpha$（元素的元素仍是元素）；
 2. **$\in$ 在 $\alpha$ 上是良序**：把 $\in$ 限制到 $\alpha$ 上，$\alpha$ 成为**良序集** —— 即对任意 $x, y \in \alpha$，$x \in y$、$x = y$、$y \in x$ 恰有一个成立，且 $\alpha$ 的每个非空子集有 $\in$-最小元。
+> 陈述续见 `nodes/def.ordinal.2.md`
 
-> 陈述续见 nodes/def.ordinal.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.wellorder` 良序集：用到了定义 良序集　proofs/dep.wellorder-ordinal.md

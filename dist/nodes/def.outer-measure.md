@@ -16,9 +16,8 @@ layer 12 · 定义 · 测度的构造 · 分析学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.caratheodory` Carathéodory 定理
-- 被 `thm.caratheodory` Carathéodory 定理 用
-- 被 `def.caratheodory-measurable` μ*-可测集 用
-- …另有 1 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.outer-measure.2.md`
 
 refs: Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
 

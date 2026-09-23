@@ -9,8 +9,8 @@ layer 6 · 定义 · 关系与函数 · 集合论
 - $f$ **双射**（bijective）：既单又满。
 
 双射 $f : A \to B$ 的**逆** $f^{-1} : B \to A$ 也是双射（把 $f$ 看作关系时，逆关系就是 $f^{-1}$）。
+> 陈述续见 `nodes/def.bijection.2.md`
 
-于是「存在双射 $A \to B$」是集合之间的一种等价关系，用来定义**等势**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.function` 函数：用到了定义 函数　proofs/dep.function-bijection.md
@@ -21,7 +21,8 @@ layer 6 · 定义 · 关系与函数 · 集合论
 - 被 `def.equinumerous` 等势 用
 - 被 `thm.schroder-bernstein` Schröder–Bernstein 定理 用
 - ⇒ `thm.schroder-bernstein` Schröder–Bernstein 定理
-- …另有 1 条（见 graph.json）
+
+- …另有出边，续页见 `nodes/def.bijection.3.md`
 
 refs: Kunen, Set Theory, I.5
 

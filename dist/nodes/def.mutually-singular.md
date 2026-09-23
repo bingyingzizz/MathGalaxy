@@ -17,7 +17,8 @@ $$E \cap F = \emptyset, \quad  E \cup F = X, $$
 - 被 `lem.singular-or-lower-bound` 要么奇异、要么有下界 用
 - 被 `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理 用
 - 被 `prop.nbv-derivative` NBV 函数的导数与测度的关系 用
-- 被 `def.rn-derivative` RN 导数与 Lebesgue 分解 用
+
+- …另有出边，续页见 `nodes/def.mutually-singular.2.md`
 
 refs: Folland, Real Analysis, §3.2
 

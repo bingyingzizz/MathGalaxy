@@ -7,10 +7,8 @@ layer 7 · 定理 · 序数与超限 · 集合论
 $$F(w) = G\big( F \upharpoonright W_{< w} \big), \qquad \forall w \in W$$
 
 也就是说：**每一步只依赖前面已经取到的值**。
+> 陈述续见 `nodes/thm.recursion-wellorder.2.md`
 
-**推论（超限归纳）**：若 $S \subseteq W$ 且 $\forall w \in W\; ( W_{< w} \subseteq S \to w \in S )$，则 $S = W$。
-
-> 陈述续见 nodes/thm.recursion-wellorder.2.md
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.wellorder` 良序集：良序性 ⇒ 递归定理　proofs/imp.recursion-wellorder.md

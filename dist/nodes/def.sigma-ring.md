@@ -6,8 +6,8 @@ $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 上的一个 **$\sigma$环**，�
 
 - 对**可数并**封闭：$$A_1, A_2, \ldots \in \mathfrak{A} \implies \bigcup_{n=1}^{\infty} A_n \in \mathfrak{A}$$
 - 对**差**封闭：$$A, B \in \mathfrak{A} \implies A \setminus B \in \mathfrak{A}$$
+> 陈述续见 `nodes/def.sigma-ring.2.md`
 
-**$\sigma$环 $=$ 环 + 可数并**。它**不要求**含 $X$ —— 这正是它与 $\sigma$代数的唯一差别。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.set-ring` 环与代数：用到了定义 环与代数　proofs/def-link.sigmaring-ring.md

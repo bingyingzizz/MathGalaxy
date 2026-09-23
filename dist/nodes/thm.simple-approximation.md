@@ -9,8 +9,8 @@ $$0 \le \varphi_1 \le \varphi_2 \le \cdots \le f, \quad  \varphi_n \to f\text{ �
 并且**在 $f$ 有界的集合上还是一致收敛**。
 
 **(b)** 一般地（$$f : X \to \mathbb{C}$$ 可测），可取 $$\{\varphi_n\}$$ 简单使
+> 陈述续见 `nodes/thm.simple-approximation.2.md`
 
-$$0 \le |\varphi_1| \le |\varphi_2| \le \cdots \le |f|, \quad  \varphi_n \to f\text{ 逐点}$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.simple-function` 简单函数：用到了定义 简单函数　proofs/def-link.lplus-simple-approx.md

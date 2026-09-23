@@ -13,7 +13,4 @@ $$\int (af + bg) = a\int f + b\int g\quad  \forall a, b \in \mathbb{R}$$
 
 refs: Folland, Real Analysis, Prop. 2.21
 
-## 说明
-「是向量空间」要在 a.e. 意义下理解（两个 a.e. 相等的可积函数看作同一个元素）。
-
-线性来自正负部分解后对简单函数的 (a)(b) 逐条验证 —— 这条本身不深，但它是 $L^{1}$ 成为**赋范空间**的第一步，后面 Lp 空间整套理论都从这儿开始。
+> 说明见 `notes/prop.L1-vector-space.md`

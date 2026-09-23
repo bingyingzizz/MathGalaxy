@@ -14,8 +14,13 @@ $$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
 - `def.chain` 链：用到了定义 链　proofs/def-link.finchar-chain.md
 - `def.wellorder` 良序集：两种「用有限/最小的东西控制无穷」的手法　proofs/ana.tame-infinite.md
 - `ax.sep` 分离公理模式：「不描述整体，只给一个筛子」　proofs/ana.filter-sieve.md
-- `def.vs` 向量空间的基：「有限特征」这个抽象概念，在向量空间里有一个现成的实例　proofs/ana.maximal-apparatus.md
-- …另有 1 条入边
+
+- …另有入边，续页见 `nodes/def.finchar.2.md`
+
+## 它能推出什么 / 谁在用它
+- 被 `lem.tukey` Tukey 引理 用
+
+- …另有出边，续页见 `nodes/def.finchar.3.md`
 
 refs: Jech, The Axiom of Choice, Ch. 2
 

@@ -1,5 +1,21 @@
-# 可测函数与收敛（analysis.measurable）· 节点清单（2/2）
+# 可测函数与收敛（analysis.measurable）· 节点清单（第 1/2 页）
 
-- prop.L1-implies-measure　L¹ 收敛 ⟹ 依测度收敛　layer 18
-- thm.egorov　Egorov 定理　layer 18
-- cor.lusin　Lusin 定理　layer 19
+造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。
+中心天体 def.measurable-function　·　17 个节点　·　根 `../`　·　续页 `index/analysis.measurable.2.md`
+
+- def.measurable-function　可测函数　layer 5
+- prop.measurable-criterion　可测性的两条判定准则　layer 6
+- def.simple-function　简单函数　layer 6
+- def.lebesgue-measurable　Lebesgue 可测　layer 7
+- prop.measurable-product-and-realimag　积空间与实虚部　layer 7
+- thm.simple-approximation　简单函数逼近　layer 7
+- cor.continuous-measurable　连续 ⟹ Borel 可测　layer 13
+- prop.measurable-closure　可测函数的封闭性　layer 13
+- def.cauchy-in-measure　依测度 Cauchy　layer 13
+- prop.complete-measurable　完备性 ⟺ 不破坏可测性　layer 14
+- prop.completion-measurable-function　完备化后可改在零集上　layer 14
+- thm.cauchy-in-measure　依测度 Cauchy ⟹ 收敛　layer 14
+- def.convergence-modes　五种收敛　layer 17
+- prop.convergence-counterexamples　四个标准反例　layer 18
+
+> 续见 `index/analysis.measurable.2.md`

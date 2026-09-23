@@ -1,5 +1,10 @@
-# Cauchy 列与零列　`def.cauchy-null`　·　陈述续（2/2）
-根 `../`
+# Cauchy 列与零列　`def.cauchy-null`　·　续页（第 2 页）
+根 `../`　·　第 1 页 `nodes/def.cauchy-null.md`
+
+## 陈述（续）
+$(x_n)$ 是**零列**：
+
+$$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
 
 两个 Cauchy 列**等价**：
 

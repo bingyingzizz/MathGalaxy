@@ -3,10 +3,8 @@
 layer 14 · 定义 · 测度的构造 · 分析学
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间。定义
+> 陈述续见 `nodes/def.semifinite-part.2.md`
 
-$$\mu_0(E) := \sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty \}$$
-
-则 $\mu _{0}$ 称为 $\mu$ 的**半有限部分**，它是一个半有限测度，且 $\mu _{0} \le \mu$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.measure-space` 有限 / σ-有限 / 半有限：用到了定义 有限 / σ-有限 / 半有限　proofs/def-link.semifinite-measure-space.md

@@ -19,8 +19,8 @@ $$\int f := \int f^+ - \int f^-$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.integral-abs-ineq` 积分绝对值不等式 用
-- 被 `def.integrable` 可积 / L¹ 用
-- 被 `def.duality-map` 对偶配对 φ_g 用
+
+- …另有出边，续页见 `nodes/def.integral-complex.2.md`
 
 refs: Folland, Real Analysis, §2.3
 

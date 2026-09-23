@@ -2,17 +2,9 @@
 级数 $\sum a_n$（Series）
 layer 12 · 定义 · 实数与极限 · 分析学
 
-给定数列 $\{a_n\}$，令**部分和** $s_N := \sum_{n=1}^{N} a_n$。
+给定数列 $\{a_n\}$，令**部分和** $s_N := \su
+> 陈述续见 `nodes/def.series.2.md`
 
-称级数 $\sum_{n=1}^{\infty} a_n$ **收敛**，当且仅当部分和数列 $\{s_N\}$ 收敛，此时记
-
-$$\sum_{n=1}^{\infty} a_n := \lim_{N \to \infty} s_N$$
-
-**非负项级数**（$a_n \ge 0$）特别干净：部分和递增，于是
-
-$$\sum_{n=1}^{\infty} a_n = \sup_N s_N \in [0, +\infty]$$
-
-一定有意义（可能是 $+\infty$）。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sequence-limit` 数列极限：用到了定义 数列极限　proofs/dep.real-series.md
@@ -24,4 +16,7 @@ $$\sum_{n=1}^{\infty} a_n = \sup_N s_N \in [0, +\infty]$$
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 
-> 说明见 `notes/def.series.md`
+## 说明
+⭐ 测度的**可数可加**、积分的**逐项**性质，用的都是非负项级数这一行：非负就不必担心条件收敛与重排。
+
+⚠ 收敛级数**可以重排**的只有绝对收敛的情形；条件收敛的级数重排后可能收敛到别的值（Riemann 重排定理）。

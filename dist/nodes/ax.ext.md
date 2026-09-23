@@ -3,11 +3,8 @@
 layer 0 · 公理 · ZFC 公理系统 · 集合论
 
 集合由它的元素唯一决定：
+> 陈述续见 `nodes/ax.ext.2.md`
 
-$$\forall A \forall B [ \forall x ( x \in A \leftrightarrow  x \in B ) \to A = B ]$$
-
-反方向（$A = B \to$ 元素完全相同）由等词逻辑自动成立，所以常写成 $\leftrightarrow$。
-这条公理保证了「用条件刻画集合」时结果是唯一的，因此 $\{ x \in A : \varphi (x) \}$ 这种写法不会产生歧义。
 
 ## 它能推出什么 / 谁在用它
 - 被 `def.subset` 子集 用

@@ -3,8 +3,8 @@
 layer 16 · 定理 · 积分 · 分析学
 
 设 $$\{f_n\} \subseteq L^+$$，则
+> 陈述续见 `nodes/thm.termwise-integration.2.md`
 
-$$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int f_n$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `thm.mct` 单调收敛定理：MCT ⟹ 逐项积分　proofs/imp.termwise.md

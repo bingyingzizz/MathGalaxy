@@ -9,7 +9,7 @@ $$\mu_F( (a, b] ) = F(b) - F(a)\quad  \forall a < b$$
 且这样的 $\mu _F$ 与 $F$ 的对应在**相差一个常数**的意义下是一一的。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `prop.ls-premeasure+thm.caratheodory-uniqueness` prop.ls-premeasure+thm.caratheodory-uniqueness：F 的预测度 ⟹ ℝ 上的 Borel 测度　proofs/imp.ls-premeasure-to-measure.md
+- `prop.ls-premeasure` F 给出的预测度 + `thm.caratheodory-uniqueness` 扩张的唯一性：F 的预测度 ⟹ ℝ 上的 Borel 测度　proofs/imp.ls-premeasure-to-measure.md
 - `def.borel` Borel σ-代数：用到了定义 Borel σ-代数　proofs/def-link.borel-ls.md
 
 refs: Folland, Real Analysis, Theorem 1.16

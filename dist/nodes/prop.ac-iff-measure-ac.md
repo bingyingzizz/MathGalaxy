@@ -7,7 +7,7 @@ layer 17 · 命题 · 有界变差与绝对连续 · 分析学
 $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `prop.nbv-derivative+thm.ac-epsilon-delta` prop.nbv-derivative+thm.ac-epsilon-delta：μ_F ≪ m 的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续　proofs/imp.ac-measure.md
+- `prop.nbv-derivative` NBV 函数的导数与测度的关系 + `thm.ac-epsilon-delta` 绝对连续的 ε–δ 刻画：μ_F ≪ m 的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续　proofs/imp.ac-measure.md
 - `def.ac-function` 绝对连续函数：用到了定义 绝对连续函数　proofs/def-link.ac-function-ift.md
 - `def.absolute-continuity` 绝对连续：用到了定义 绝对连续　proofs/def-link.ac-measure-ift.md
 
