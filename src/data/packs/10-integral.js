@@ -193,7 +193,8 @@ window.MG = window.MG || {};
         '',
         '$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
-      notes: '把例外集 $N$（$\\mu (N) = 0$）上的值全部改掉不影响任何一边的积分：左边用「积分为零 $\\iff$ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。'
+      notes: '把例外集 $N$（$\\mu (N) = 0$）上的值全部改掉不影响任何一边的积分：左边用「积分为零 $\\iff$ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。',
+      refs: ['Folland, Real Analysis, §2.2', 'Rudin, Real and Complex Analysis, Ch. 1']
     },
 
     {
@@ -230,7 +231,8 @@ window.MG = window.MG || {};
         '',
         '$$\\int f \\le \\liminf_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
-      notes: 'a.e. 收敛时 $$\\liminf f_n = f$$，直接套 Fatou 引理即可。'
+      notes: 'a.e. 收敛时 $$\\liminf f_n = f$$，直接套 Fatou 引理即可。',
+      refs: ['Folland, Real Analysis, §2.2', 'Rudin, Real and Complex Analysis, Ch. 1']
     },
 
     {
@@ -361,7 +363,8 @@ window.MG = window.MG || {};
         '',
         '是 $\\sigma$有限的。'
       ].join('\n'),
-      notes: '把「积分有限的后果」分别用到 |f| 上即可：$\\{f \\ne 0\\} = \\{|f| > 0\\}$。'
+      notes: '把「积分有限的后果」分别用到 |f| 上即可：$\\{f \\ne 0\\} = \\{|f| > 0\\}$。',
+      refs: ['Folland, Real Analysis, §2.3']
     },
 
     {

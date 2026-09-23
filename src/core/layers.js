@@ -139,6 +139,13 @@
       var ix = index[id];
       return ix == null ? null : clevel[compOf[ix]];
     };
+    /* 缩点后所属的强连通分量编号。用途：判断一条边的两端是不是「同一个等价类」
+       —— 同一个分量里的边不该拉开层号（等价链就是这种情况）。
+       构建脚本的「层号与边方向不矛盾」校验要靠它。 */
+    graph.componentOf = function (id) {
+      var ix = index[id];
+      return ix == null ? null : compOf[ix];
+    };
     return { maxLayer: maxLayer, sizes: sizes, components: compCount };
   }
 

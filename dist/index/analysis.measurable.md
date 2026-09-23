@@ -1,0 +1,5 @@
+# 可测函数与收敛（analysis.measurable）· 节点清单（2/2）
+
+- prop.L1-implies-measure　L¹ 收敛 ⟹ 依测度收敛　layer 18
+- thm.egorov　Egorov 定理　layer 18
+- cor.lusin　Lusin 定理　layer 19

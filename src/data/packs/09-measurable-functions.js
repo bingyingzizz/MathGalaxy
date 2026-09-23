@@ -69,7 +69,8 @@ window.MG = window.MG || {};
         '',
         '$$f : X \\to Y\\text{ 连续} \\implies f\\text{ 是} (\\mathfrak{B}_X, \\mathfrak{B}_Y)-\\text{可测的}$$'
       ].join('\n'),
-      notes: '连续的定义就是「开集的原像开」；而开集生成 $\\mathfrak{B}_Y$，用上一条的判定准则 (2) 立刻得到。'
+      notes: '连续的定义就是「开集的原像开」；而开集生成 $\\mathfrak{B}_Y$，用上一条的判定准则 (2) 立刻得到。',
+      refs: ['Folland, Real Analysis, §2.1', 'Halmos, Measure Theory, §18']
     },
 
     {

@@ -92,9 +92,22 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
-for (const f of ['graph.json', 'graph.md', 'llms.txt']) {
-  fs.copyFileSync(path.join(DIST, f), path.join(STAGE, 'mathgalaxy', f));
+for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'index.md']) {
+  const src = path.join(DIST, f);
+  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
+
+// AI 按需检索的产物：每团一份清单、每节点一个文件、边的正文。
+// ⚠️ 这些是「拆分过的图」，加起来比 graph.json 还大 —— 但**单个文件都很小**，
+// 所以 AI 能一次读完一个；而 graph.json 单次抓取只能拿到开头一小段。
+let aiFiles = 0;
+for (const d of ['index', 'nodes', 'proofs', 'notes']) {
+  const src = path.join(DIST, d);
+  if (!fs.existsSync(src)) continue;
+  fs.cpSync(src, path.join(STAGE, 'mathgalaxy', d), { recursive: true });
+  aiFiles += fs.readdirSync(src).length;
+}
+console.log(`   按需检索产物：${aiFiles} 个文件 → mathgalaxy/{index,nodes,proofs,notes}/`);
 
 // KaTeX 字体：单文件里的 CSS 是**内联**的，而里面的 url(fonts/…) 是相对
 // 「加载这个 CSS 的页面」解析的 —— 也就是相对 mathgalaxy/index.html。
@@ -138,7 +151,10 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
   color:var(--faint);font-size:13px}
 `);
 
-// 首页
+// 首页 —— 规模与「最近更新」都从构建产物里读，不手写（免得又对不上）
+const distMeta = JSON.parse(fs.readFileSync(path.join(DIST, 'graph.json'), 'utf8')).meta;
+const cnt = distMeta.counts;
+const updated = String(distMeta.generated).slice(0, 10);
 const idxPath = path.join(STAGE, 'index.html');
 fs.writeFileSync(idxPath, `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -162,24 +178,42 @@ fs.writeFileSync(idxPath, `<!DOCTYPE html>
   <a class="card" href="mathgalaxy/">
     <b>数学星图 · MathGalaxy</b>
     <span>可交互的数学知识图谱 —— 定理、定义、引理按「星系 / 星团 / 恒星」三层组织，
-    箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。</span>
+    箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。<br>
+    当前 ${cnt.regions} 星系 / ${cnt.clusters} 星团 / ${cnt.nodes} 节点 / ${cnt.edges} 连线
+    （强边 ${cnt.strong}，弱边 ${cnt.weak}）。</span>
   </a>
 
-  <h2>给 AI 的入口</h2>
+  <h2>怎么读这张图</h2>
+  <a class="card" href="mathgalaxy/llms.txt">
+    <b>检索协议 · llms.txt</b>
+    <span>给 AI 的入口，也是给人看的地图：先读目录、再读星团清单、最后读单个节点。
+    里面写清了三层各是什么、四种边各是什么意思、依赖深度怎么当学习顺序用。
+    要跟着图一步一步走，从这里开始。</span>
+  </a>
+  <a class="card" href="mathgalaxy/policy.md">
+    <b>内容准则 · policy.md</b>
+    <span>这张图为什么这么长出来的：每一层都由上一层构造出来、同一结论只收一份、
+    只保留最通用的版本、星团按「装置」分不按课程分。</span>
+  </a>
+  <a class="card" href="mathgalaxy/hubs.md">
+    <b>枢纽定理榜 · hubs.md</b>
+    <span>按被引用次数排序 —— 哪些东西是真正的地基，值得优先学熟。</span>
+  </a>
+
+  <h2>全量下载（给 AI 的 bulk 导出）</h2>
   <a class="card" href="mathgalaxy/graph.md">
     <b>graph.md</b>
-    <span>整张星图的 Markdown 全量导出，可直接喂给任何 AI 当数学数据库</span>
+    <span>整张星图的 Markdown 全量导出（约 420 KB）。适合一次下载、本地处理；
+    ⛔ 不适合让 AI 单次抓取 —— 抓取工具有长度上限，只会返回开头一小段。</span>
   </a>
   <a class="card" href="mathgalaxy/graph.json">
     <b>graph.json</b>
-    <span>机器可读版本，每条边带 strength（强边/弱边）与完整证明</span>
-  </a>
-  <a class="card" href="mathgalaxy/llms.txt">
-    <b>llms.txt</b>
-    <span>遵循 llms.txt 约定，说明了两种检索模式该怎么用</span>
+    <span>机器可读的全量版本（约 550 KB），每条边带 strength（强边 / 弱边）与完整证明。
+    同样只适合下载，不适合单次抓取。</span>
   </a>
 
   <footer>
+    最近更新：${updated} ·
     由 <a href="https://github.com/${USER}/MathGalaxy">MathGalaxy</a> 生成 ·
     <a href="https://github.com/${USER}/${SITE_REPO}">本站源码</a>
   </footer>

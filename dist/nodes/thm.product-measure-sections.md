@@ -1,0 +1,24 @@
+# 乘积测度由截口给出　`thm.product-measure-sections`
+定理：μ × ν(E) = ∫ ν(Eₓ) dμ(x) = ∫ μ(Eʸ) dν(y)
+layer 16 · 定理 · 乘积测度与 Fubini · 分析学
+
+设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 都是 **$\sigma$有限**的，$$E \in \mathcal{M} \otimes  \mathcal{N}$$。则
+
+- $$x \mapsto \nu(E_x)$$ 在 $X$ 上可测；
+- $$y \mapsto \mu(E^y)$$ 在 $Y$ 上可测；
+
+并且
+
+$$\mu \times \nu(E) = \int_X \nu(E_x) d\mu(x) = \int_Y \mu(E^y) d\nu(y)$$
+
+## 为什么成立（入边，证明在 proofs/）
+- `thm.monotone-class+prop.section-measurable` thm.monotone-class+prop.section-measurable：单调类定理 ⟹ 乘积测度由截口积分给出　proofs/imp.product-sections.md
+- `def.monotone-class` 单调类：用到了定义 单调类　proofs/def-link.monotoneclass-lemma.md
+- `def.product-measure` 乘积测度：用到了定义 乘积测度　proofs/def-link.productmeasure-sections-thm.md
+
+## 它能推出什么 / 谁在用它
+- ⇒ `thm.fubini-tonelli` Fubini–Tonelli
+
+refs: Folland, Real Analysis, Theorem 2.36
+
+> 说明见 `notes/thm.product-measure-sections.md`

@@ -1826,6 +1826,13 @@ window.addEventListener('error', function (e) {
       var ix = index[id];
       return ix == null ? null : clevel[compOf[ix]];
     };
+    /* 缩点后所属的强连通分量编号。用途：判断一条边的两端是不是「同一个等价类」
+       —— 同一个分量里的边不该拉开层号（等价链就是这种情况）。
+       构建脚本的「层号与边方向不矛盾」校验要靠它。 */
+    graph.componentOf = function (id) {
+      var ix = index[id];
+      return ix == null ? null : compOf[ix];
+    };
     return { maxLayer: maxLayer, sizes: sizes, components: compCount };
   }
 
@@ -4245,7 +4252,7 @@ MG.regions = [
     color: '#8A63E8',
     center: { x: -1150, y: -700 },
     radius: 460,
-    desc: '一阶语言、形式系统、可计算性与模型论。'
+    desc: '一阶语言、公式与满足关系；形式系统、可计算性与模型论待补。'
   },
   {
     id: 'set-theory',
@@ -4342,6 +4349,15 @@ window.MG = window.MG || {};
 
 MG.clusters = [
 
+  /* ------------------------------------------------ 星系：数理逻辑 */
+  {
+    id: 'logic.fol',
+    name: '一阶语言与公式',
+    parent: 'logic',
+    hub: 'def.first-order-language',
+    desc: '造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。（形式系统、可计算性、模型论待补。）'
+  },
+
   /* ------------------------------------------------ 星系：集合论 */
   {
     id: 'set.zfc',
@@ -4377,6 +4393,13 @@ MG.clusters = [
     parent: 'set-theory',
     hub: 'def.real',
     desc: '造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。'
+  },
+  {
+    id: 'set.ordinal',
+    name: '序数与超限',
+    parent: 'set-theory',
+    hub: 'def.ordinal',
+    desc: '造出「无穷有多长」这把尺子：良序集的序型 → von Neumann 序数（传递的良序集）→ 三歧性 → 超限递归 / 超限归纳，顺带发现序数全体是真类。'
   },
 
   /* ------------------------------------------------ 星系：序理论 */
@@ -5178,11 +5201,9 @@ window.MG = window.MG || {};
         '',
         '$$\\forall S \\subseteq W ( S \\ne \\emptyset \\to \\exists m \\in S, \\forall s \\in S, m \\preceq s )$$',
         '',
-        '等价于：不存在无穷严格递减链 $w_{0} \\succ w_{1} \\succ w_{2} \\succ \\cdots$。',
-        '',
-        '良序集上可以做**超限归纳**与**超限递归**；每个良序集序同构于唯一的一个序数。'
+        '等价于：不存在无穷严格递减链 $w_{0} \\succ w_{1} \\succ w_{2} \\succ \\cdots$。'
       ].join('\n'),
-      notes: '$\\langle \\mathbb{N}, \\le \\rangle$ 是良序的；$\\langle \\mathbb{Z}, \\le \\rangle$、$\\langle \\mathbb{R}, \\le \\rangle$ 不是（$\\mathbb{R}$ 的某些非空子集没有最小元）。',
+      notes: '⭐ **良序的用处只有一个：让「下一步」有定义。** 每一步之前的部分有头有尾，于是可以做**超限归纳**（证明）与**超限递归**（构造）—— 见「良序集上的递归定理」。\n\n⭐ 每个良序集都**序同构于唯一的一个序数**（见「良序集的序型」），那个序数就是它的「长度」。于是「两个良序集谁更长」变成「两个序数谁大」，而序数的大小就是 $\\in$。\n\n$\\langle \\mathbb{N}, \\le \\rangle$ 是良序的；$\\langle \\mathbb{Z}, \\le \\rangle$、$\\langle \\mathbb{R}, \\le \\rangle$ 不是（$\\mathbb{R}$ 的某些非空子集没有最小元）。',
       refs: ['Kunen, Set Theory, I.11']
     },
 
@@ -7459,7 +7480,8 @@ window.MG = window.MG || {};
         '',
         '$$f : X \\to Y\\text{ 连续} \\implies f\\text{ 是} (\\mathfrak{B}_X, \\mathfrak{B}_Y)-\\text{可测的}$$'
       ].join('\n'),
-      notes: '连续的定义就是「开集的原像开」；而开集生成 $\\mathfrak{B}_Y$，用上一条的判定准则 (2) 立刻得到。'
+      notes: '连续的定义就是「开集的原像开」；而开集生成 $\\mathfrak{B}_Y$，用上一条的判定准则 (2) 立刻得到。',
+      refs: ['Folland, Real Analysis, §2.1', 'Halmos, Measure Theory, §18']
     },
 
     {
@@ -7957,7 +7979,8 @@ window.MG = window.MG || {};
         '',
         '$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
-      notes: '把例外集 $N$（$\\mu (N) = 0$）上的值全部改掉不影响任何一边的积分：左边用「积分为零 $\\iff$ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。'
+      notes: '把例外集 $N$（$\\mu (N) = 0$）上的值全部改掉不影响任何一边的积分：左边用「积分为零 $\\iff$ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。',
+      refs: ['Folland, Real Analysis, §2.2', 'Rudin, Real and Complex Analysis, Ch. 1']
     },
 
     {
@@ -7994,7 +8017,8 @@ window.MG = window.MG || {};
         '',
         '$$\\int f \\le \\liminf_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
-      notes: 'a.e. 收敛时 $$\\liminf f_n = f$$，直接套 Fatou 引理即可。'
+      notes: 'a.e. 收敛时 $$\\liminf f_n = f$$，直接套 Fatou 引理即可。',
+      refs: ['Folland, Real Analysis, §2.2', 'Rudin, Real and Complex Analysis, Ch. 1']
     },
 
     {
@@ -8125,7 +8149,8 @@ window.MG = window.MG || {};
         '',
         '是 $\\sigma$有限的。'
       ].join('\n'),
-      notes: '把「积分有限的后果」分别用到 |f| 上即可：$\\{f \\ne 0\\} = \\{|f| > 0\\}$。'
+      notes: '把「积分有限的后果」分别用到 |f| 上即可：$\\{f \\ne 0\\} = \\{|f| > 0\\}$。',
+      refs: ['Folland, Real Analysis, §2.3']
     },
 
     {
@@ -14213,6 +14238,542 @@ window.MG = window.MG || {};
 </script>
 <script>
 /* ==========================================================================
+   内容包 · 序数与超限
+   --------------------------------------------------------------------------
+   这一包补的是全图最大的一处「用到了却没节点」：**序数**被 8 个节点的正文和
+   6 条边的证明引用（Hartogs 定理、基数可比定理、AC ⟹ 良序定理、AC ⟹ 佐恩引理），
+   而序数本身一直没有节点。
+
+   构造路线（内容准则第 ① 条）—— 每一步都只用已经有的东西：
+
+       良序集（已有）───→ 良序集上的递归定理 ───→ 序数（传递的良序集）
+                              ↘ 序数的三歧性 ───→ 每个良序集有唯一序型
+                                             └──→ 序数全体是真类
+
+   ⭐ 序数**不是**用「满足某组性质的对象（在同构意义下唯一）」引入的 —— 它是一个
+      **精选代表**：每个良序集恰好同构于一个序数，而「序型」（同构类）本身是真类、
+      取不出来。这正是准则第 ① 条「具体对象必须构造」的正面例子。
+
+   ⚠️ 与既有内容的接口：`def.wellorder` 的陈述里原先写着「每个良序集序同构于唯一的
+      一个序数」—— 那是一条**定理**，已经挪到本包的 `thm.wellorder-ordinal`，
+      否则会连出「良序集 ↺ 序数」的环（Tarjan 缩点后两者同层）。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '序数与超限',
+
+  nodes: [
+
+    /* ---------------------------------------------------------- 序同构 */
+    {
+      id: 'def.order-iso',
+      cluster: 'order.structure',
+      type: 'definition',
+      label: '序同构',
+      title: '序同构与序型（Order Isomorphism）',
+      regions: ['order-theory'],
+      tags: ['定义', '序', '序同构', '序型'],
+      statement: [
+        '设 $(A, \\preceq )$ 与 $(B, \\sqsubseteq )$ 是**偏序集**。双射 $f : A \\to B$ 称为**序同构**，当且仅当',
+        '',
+        '$$\\forall a, b \\in A\\; ( a \\preceq b \\iff f(a) \\sqsubseteq f(b) )$$',
+        '',
+        '即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \\cong B$；互相序同构的良序集归为一类，这一类叫一个**序型**。'
+      ].join('\n'),
+      notes: '⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。\n\n⚠ 「序型」本身**不是集合**：所有良序集的序型凑在一起构成真类，取不出来。这正是要引入**序数**的直接动机。',
+      refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.2']
+    },
+
+    /* ------------------------------------------------------------ 序数 */
+    {
+      id: 'def.ordinal',
+      cluster: 'set.ordinal',
+      type: 'definition',
+      label: '序数',
+      title: '序数（von Neumann Ordinal）',
+      regions: ['set-theory'],
+      tags: ['定义', '序数', '传递集', '良序'],
+      statement: [
+        '集合 $\\alpha$ 称为**序数**（von Neumann 序数），当且仅当：',
+        '',
+        '1. **$\\alpha$ 是传递的**：$\\forall x \\in \\alpha,\\; x \\subseteq \\alpha$（元素的元素仍是元素）；',
+        '2. **$\\in$ 在 $\\alpha$ 上是良序**：把 $\\in$ 限制到 $\\alpha$ 上，$\\alpha$ 成为**良序集** —— 即对任意 $x, y \\in \\alpha$，$x \\in y$、$x = y$、$y \\in x$ 恰有一个成立，且 $\\alpha$ 的每个非空子集有 $\\in$-最小元。',
+        '',
+        '由传递性，$\\alpha$ 的**每个元素本身也是序数**。约定：$0 := \\emptyset$，**后继序数** $\\alpha + 1 := \\alpha \\cup \\{ \\alpha \\}$；不含最大元的非零序数叫**极限序数**，$\\omega$ 是最小的极限序数。序数全体记作 $\\mathrm{On}$。',
+        '',
+        '开头的几个：$\\emptyset,\\ \\{ \\emptyset \\},\\ \\{ \\emptyset, \\{ \\emptyset \\} \\},\\ \\dots$，即 $0, 1, 2, \\dots$；接着是 $\\omega,\\ \\omega + 1,\\ \\omega + 2,\\ \\dots,\\ \\omega + \\omega,\\ \\dots$'
+      ].join('\n'),
+      notes: [
+        '⭐⭐ **格式还是「集合 + 关系 + 公理」**：序数不是凭空的对象 —— 一个**传递集**，配上 $\\in$ 这个**现成的**关系，就定出了一个序数。判别一个集合是不是序数，就是核对这两条。',
+        '⭐⭐ **为什么不让「序型」当对象** —— 这是本包最要紧的一步：序型是同构类，而所有良序集的序型构成真类，取不出来（见「序数全体是真类」）。序数绕开了这件事：它给每个序型挑了一个**具体的代表**，就是一个传递的良序集。于是「序型之间的比较」变成「$\\in$ 的比较」，可以真刀真枪地算。',
+        '⚠ **$\\alpha \\in \\beta$ 与 $\\alpha < \\beta$ 是同一件事**：序数上的 $\\in$ 就是它的序。写 $\\alpha < \\beta$ 时，背后用的其实是 $\\in$。',
+        '⚠ 序数不只是「$\\mathbb{N}$ 的推广」。$\\omega$ 之后的序数一个比一个长，但它们的**大小**（基数）可以一直停在 $\\aleph_0$ —— 在序数里，「更长」与「更大」是两件事。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.2']
+    },
+
+    /* ------------------------------------------ 良序集上的递归定理 */
+    {
+      id: 'thm.recursion-wellorder',
+      cluster: 'set.ordinal',
+      type: 'theorem',
+      label: '超限递归',
+      title: '良序集上的递归定理（含超限归纳）',
+      regions: ['set-theory'],
+      tags: ['定理', '良序', '超限递归', '超限归纳', 'ZF'],
+      statement: [
+        '设 $(W, \\preceq )$ 是**良序集**，$G$ 是任给的函数（可以取在一整个真类上）。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。则存在**唯一**的函数 $F$ 定义在 $W$ 上，使',
+        '',
+        '$$F(w) = G\\big( F \\upharpoonright W_{< w} \\big), \\qquad \\forall w \\in W$$',
+        '',
+        '也就是说：**每一步只依赖前面已经取到的值**。',
+        '',
+        '**推论（超限归纳）**：若 $S \\subseteq W$ 且 $\\forall w \\in W\\; ( W_{< w} \\subseteq S \\to w \\in S )$，则 $S = W$。',
+        '',
+        '取 $W = \\omega$ 就是 $\\mathbb{N}$ 上的**递推定义**与**数学归纳法**；取 $W$ 为一个**序数**就是**超限递归**与**超限归纳**。'
+      ].join('\n'),
+      notes: [
+        '⭐⭐ 这是「**在无穷上做构造**」的许可证。在此之前，能用来造东西的只有有限的几步（配对、并、幂集、分离、替换）；要造出一整族互相依赖的对象，靠的就是这一条。它也是「良序」这个词真正的用途 —— 良序保证每一步之前的部分**有头有尾**，递归才停得下来。',
+        '⭐ **为什么收「良序集」版而不是「序数」版**：$\\omega$ 上的递推、序数上的超限递归都是它的特例，所以只收最通用的一条。（例外：$\\mathbb{N}$ 上的数学归纳法另有更直接的来路 —— 它来自「$\\omega$ 是最小归纳集」，不需要良序性的一般理论，所以那个节点保留。）',
+        '⚠ 递归式右边给的是「前面全部取值」这个**函数** $F \\upharpoonright W_{< w}$，而不是一句话。写成一句话就会掉进「用未定义的东西定义自己」的坑。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.9', 'Jech, Set Theory, 2.3']
+    },
+
+    /* -------------------------------------------------------- 三歧性 */
+    {
+      id: 'thm.ordinal-trichotomy',
+      cluster: 'set.ordinal',
+      type: 'theorem',
+      label: '序数可比',
+      title: '序数的三歧性：$\\in$ 在 $\\mathrm{On}$ 上是良序',
+      regions: ['set-theory'],
+      tags: ['定理', '序数', '可比', 'ZF'],
+      statement: [
+        '对任意两个序数 $\\alpha, \\beta$，下式**恰有一个**成立：',
+        '',
+        '$$\\alpha \\in \\beta, \\qquad \\alpha = \\beta, \\qquad \\beta \\in \\alpha$$',
+        '',
+        '特别地，$\\in$ 在序数全体上是**良序**：任意非空的一族序数都有最小元。'
+      ].join('\n'),
+      notes: [
+        '⭐ 三歧性使序数可以当「坐标」用：任意两个**良序集**的序型一定可比，而且**不需要选择公理**。',
+        '⚠ 这与「任意两个**基数**可比」完全是两件事，后者要用 AC（见「基数可比定理」）。差别在于序数**自带**一个良序 —— 就是 $\\in$；而一般的集合没有先验的良序，要给它找一个，那正是良序定理（$\\iff$ 选择公理）的内容。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.11']
+    },
+
+    /* -------------------------------------------------------- 序型 */
+    {
+      id: 'thm.wellorder-ordinal',
+      cluster: 'set.ordinal',
+      type: 'theorem',
+      label: '良序集的序型',
+      title: '每个良序集序同构于唯一的序数',
+      regions: ['set-theory'],
+      tags: ['定理', '序数', '序型', '序同构', 'ZF'],
+      statement: [
+        '设 $(W, \\preceq )$ 是**良序集**。则存在**唯一**的序数 $\\alpha$，使 $(W, \\preceq )$ 与 $(\\alpha, \\in)$ **序同构**。这个 $\\alpha$ 称为 $W$ 的**序型**，记作 $\\mathrm{ot}(W) = \\alpha$。'
+      ].join('\n'),
+      notes: [
+        '⭐⭐ 这一条就是「序数」这个东西真正被**造出来**的地方：序数不是先验摆在那里的，它由「每个良序集对应的那个规范良序集」给出 —— 而那个规范集是由**递归定理**一步步算出来的。',
+        '⭐ 于是「$W$ 有多长」变成「$\\mathrm{ot}(W)$ 是哪个序数」，两个良序集比长短变成比 $\\in$ —— 这就是三歧性的用处。',
+        '⚠ **唯一性**这一半要用到三歧性：两个序数若互相序同构，就必须相等。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.3']
+    },
+
+    /* --------------------------------------------------- 真类 */
+    {
+      id: 'thm.burali-forti',
+      cluster: 'set.ordinal',
+      type: 'theorem',
+      label: '序数全体是真类',
+      title: 'Burali–Forti：序数全体不构成集合',
+      regions: ['set-theory'],
+      tags: ['定理', '序数', '真类', '悖论', 'ZF'],
+      statement: [
+        '序数全体 $\\mathrm{On}$ **不构成集合**（它是一个**真类**）：不存在一个集合，它的元素恰好是全部序数。'
+      ].join('\n'),
+      notes: [
+        '证明只有一行：若 $\\mathrm{On}$ 是集合，则它是**传递的**（序数的元素还是序数），$\\in$ 在它上面是**良序**（三歧性给出可比性），于是 $\\mathrm{On}$ 本身就是一个序数，从而 $\\mathrm{On} \\in \\mathrm{On}$ —— 与序数不能自属矛盾（$\\in$ 在序数上是良序，不允许 $\\in$-循环）。',
+        '⭐ 这正是 **Hartogs 定理**的另一面：序数多到装不进任何集合。「存在不能单射进 $X$ 的序数」与「序数全体是真类」说的是同一件事。',
+        '⚠ 与 Russell 悖论的关系：两者都是「把某个『全体』当成集合」引起的矛盾。在 ZFC 里它们的解决方式也一样 —— 那个「全体」是真类，不是集合，因此分离公理模式根本无从下手。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.2']
+    }
+  ],
+
+  edges: [
+
+    /* ------------------------------------------------ 定义依赖骨架 */
+    {
+      id: 'dep.poset-order-iso',
+      kind: 'definition',
+      definition: 'def.poset',
+      usedBy: 'def.order-iso',
+      note: '序同构是**偏序集**之间的映射：先有偏序，才谈得上保序。'
+    },
+    {
+      id: 'dep.wellorder-ordinal',
+      kind: 'definition',
+      definition: 'def.wellorder',
+      usedBy: 'def.ordinal',
+      note: '序数的第二条要求是「$\\in$ 在 $\\alpha$ 上是**良序**」—— 先有良序集这个概念，才能说传递集上的 $\\in$ 是不是良序。'
+    },
+    {
+      id: 'def-link.wellorder-recursion',
+      kind: 'definition',
+      definition: 'def.wellorder',
+      usedBy: 'thm.recursion-wellorder',
+      note: '递归定理的舞台是**良序集**：每一步之前的部分必须是有头有尾的，递归才停得下来。'
+    },
+    {
+      id: 'def-link.ordinal-hartogs',
+      kind: 'definition',
+      definition: 'def.ordinal',
+      usedBy: 'thm.hartogs',
+      note: 'Hartogs 定理陈述里的「不能单射进 $X$ 的序数」直接用到序数。'
+    },
+    {
+      id: 'def-link.ordinal-cardinal-comparable',
+      kind: 'definition',
+      definition: 'def.ordinal',
+      usedBy: 'thm.cardinal-comparable',
+      note: '基数可比定理的证明路线是「先良序化 $\\to$ 换成序数 $\\to$ 序数一定可比」，落点正是序数。'
+    },
+    {
+      id: 'def-link.ordinal-cardinal',
+      kind: 'definition',
+      definition: 'def.ordinal',
+      usedBy: 'def.cardinal',
+      note: '严格说来「等势类」是真类，通行做法是取每个等势类里最小的**序数**作代表 —— 那个序数才叫基数。（本图的 $|A|$ 只用到单射/双射，所以这条依赖是概念上的，不是定义上的。）'
+    },
+    {
+      id: 'def-link.recursion-wellordering',
+      kind: 'definition',
+      definition: 'thm.recursion-wellorder',
+      usedBy: 'thm.wellordering',
+      note: '证明良序定理时用超限递归沿良序一步步往下取元素。'
+    },
+
+    /* ------------------------------------------------------ 推出 */
+    {
+      id: 'imp.recursion-wellorder',
+      kind: 'implication',
+      sources: ['def.wellorder'],
+      target: 'thm.recursion-wellorder',
+      title: '良序性 ⇒ 递归定理',
+      proof: [
+        '设 $(W, \\preceq )$ 是良序集，$G$ 任给。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。',
+        '',
+        '**① 初始段上的解至多一个。** 设 $w \\in W$，$f, g$ 都是 $W_{< w}$ 上满足递归式的函数。反设 $f \\ne g$，取最小的 $v \\prec w$ 使 $f(v) \\ne g(v)$（这一步用的是**良序性**：$\\{ u \\prec w : f(u) \\ne g(u) \\}$ 非空故有最小元）。于是在 $W_{< v}$ 上 $f$ 与 $g$ 相同，从而',
+        '',
+        '$$f(v) = G\\big( f \\upharpoonright W_{< v} \\big) = G\\big( g \\upharpoonright W_{< v} \\big) = g(v)$$',
+        '',
+        '矛盾。故 $W_{< w}$ 上至多一个解，且这个解唯一确定。',
+        '',
+        '**② 构造候选关系的集合。** 令',
+        '',
+        '$$R = \\{ (w, y) : \\text{存在函数} f \\text{ 定义在} W_{< w} \\text{ 上、满足递归式，且} y = G(f) \\}$$',
+        '',
+        '它是集合：候选的 $f$ 都是 $W_{< w} \\times V$ 的子集，先由幂集公理拿到 $\\mathcal{P}(W \\times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。',
+        '',
+        '**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \\notin \\mathrm{dom}\\, R$。则 $W_{< w} \\subseteq \\mathrm{dom}\\, R$，于是 $f := R \\upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \\prec w$，由 $v \\in \\mathrm{dom}\\, R$ 及单值性得 $f(v) = G(f \\upharpoonright W_{< v})$）。于是 $(w, G(f)) \\in R$，与 $w \\notin \\mathrm{dom}\\, R$ 矛盾。',
+        '',
+        '故 $R$ 就是所求的函数 $F$，由 ① 唯一。',
+        '',
+        '**④ 超限归纳。** 设 $W \\setminus S$ 非空，取它的最小元 $w$。则 $W_{< w} \\subseteq S$，由假设 $w \\in S$，矛盾。故 $S = W$。∎'
+      ].join('\n'),
+      note: '① 是唯一性、②③ 是存在性。整个证明里**只用**了良序性、幂集公理和分离公理模式 —— 没有用到选择公理。这是它能在 ZF 里安全使用的原因。'
+    },
+
+    {
+      id: 'imp.ordinal-trichotomy',
+      kind: 'implication',
+      sources: ['def.ordinal', 'ax.found'],
+      target: 'thm.ordinal-trichotomy',
+      title: '序数的定义 ⇒ 三歧性',
+      proof: [
+        '设 $\\alpha, \\beta$ 是序数。',
+        '',
+        '**① 序数的元素是序数。** 若 $\\gamma \\in \\alpha$：$\\gamma \\subseteq \\alpha$（$\\alpha$ 传递），故 $\\gamma$ 传递（$\\gamma$ 的元素属于 $\\alpha$，而 $\\alpha$ 传递）；又 $\\in$ 在 $\\gamma$ 上继承 $\\alpha$ 上的良序性，故 $\\gamma$ 是序数。',
+        '',
+        '**② 若 $\\beta \\subsetneq \\alpha$ 则 $\\beta \\in \\alpha$。** 取 $b$ 为 $\\alpha \\setminus \\beta$ 的 $\\in$-最小元。断言 $\\beta = b$。',
+        '　$\\subseteq$：设 $x \\in \\beta$。由 $\\beta \\subseteq \\alpha$ 有 $x \\in \\alpha$，故 $x, b \\in \\alpha$；由 $\\in$ 在 $\\alpha$ 上的**三歧性**（良序蕴含全序），$x \\in b$、$x = b$、$b \\in x$ 恰有一个成立。后两种都会给出 $b \\in \\beta$（$x = b$ 直接，$b \\in x$ 用 $\\beta$ 传递），与 $b$ 的取法矛盾。故 $x \\in b$。',
+        '　$\\supseteq$：设 $x \\in b$。由 $\\alpha$ 传递得 $x \\in \\alpha$。若 $x \\in \\alpha \\setminus \\beta$，则 $x \\in b$ 与 $b$ 的最小性矛盾（$x \\in b$ 即 $x$ 比 $b$ 小）。故 $x \\in \\beta$。',
+        '　于是 $\\beta = b$，而 $b \\in \\alpha$，即 $\\beta \\in \\alpha$。',
+        '',
+        '**③ 三歧性。** 若 $\\alpha \\ne \\beta$，则 $\\alpha \\subseteq \\beta$ 与 $\\beta \\subseteq \\alpha$ 不能同时成立。不妨设 $\\beta \\nsubseteq \\alpha$，则 $\\beta \\setminus \\alpha \\ne \\emptyset$，故 $\\beta \\subsetneq \\alpha$ 不成立，由 ② 得 $\\alpha \\in \\beta$。对调 $\\alpha, \\beta$ 同理。',
+        '',
+        '**④ 三者不相容。** 若 $\\alpha \\in \\beta$ 且 $\\beta \\in \\alpha$，则由传递性 $\\alpha \\in \\alpha$，与 $\\in$ 在 $\\alpha$ 上是良序（无 $\\in$-循环）矛盾。又 $\\alpha \\in \\beta$ 与 $\\alpha = \\beta$ 显然不相容。',
+        '',
+        '**⑤ $\\in$ 是良序。** 可比性已得；非空序数集合 $S$ 取 $\\alpha \\in S$，若 $\\alpha$ 不是 $\\in$-最小元，则 $\\alpha \\cap S$ 是集合，由正则公理有 $\\in$-最小元 $m$，而 $m$ 也是 $S$ 的 $\\in$-最小元。∎'
+      ].join('\n'),
+      note: '② 是全部关键：「序数之间 $\\subsetneq$ 就是 $\\in$」。它让序数的比较退化成集合的属于关系。'
+    },
+
+    {
+      id: 'imp.wellorder-ordinal',
+      kind: 'implication',
+      sources: ['thm.recursion-wellorder', 'ax.repl', 'ax.found', 'thm.ordinal-trichotomy'],
+      target: 'thm.wellorder-ordinal',
+      title: '递归定理 + 替换公理 ⇒ 每个良序集有唯一序型',
+      proof: [
+        '设 $(W, \\preceq )$ 是良序集。',
+        '',
+        '**① 造出函数。** 由**递归定理**（取 $G(f) = \\mathrm{ran}\\, f$，即「前面全部取值的值域」）得到唯一的 $F$ 定义在 $W$ 上，使',
+        '',
+        '$$F(w) = \\{ F(v) : v \\prec w \\}, \\qquad \\forall w \\in W$$',
+        '',
+        '每个 $F(w)$ 都是集合 —— 由**替换公理模式**，$\\{ F(v) : v \\prec w \\}$ 是某个集合的像。',
+        '',
+        '**② $F$ 保序。** 若 $v \\prec w$，则 $F(v) \\in \\{ F(u) : u \\prec w \\} = F(w)$。反过来若 $F(v) \\in F(w)$，则 $F(v) = F(u)$ 对某个 $u \\prec w$；再由 ③ 的单射性得 $v = u \\prec w$。',
+        '',
+        '**③ $F$ 是单射。** 反设存在 $v \\ne w$ 使 $F(v) = F(w)$；由于 $\\preceq$ 是全序，不妨 $v \\prec w$。由 ② 得 $F(v) \\in F(w) = F(v)$，即 $F(v) \\in F(v)$ —— 与「任何集合都不属于自身」（正则公理的推论）矛盾。（这一步是真正用到**正则公理**的地方。）',
+        '',
+        '**④ $\\alpha := \\mathrm{ran}\\, F$ 是序数。** 由替换公理模式，$\\alpha = \\{ F(w) : w \\in W \\}$ 是集合。**传递性**：若 $x \\in F(w)$，则 $x = F(v)$ 对某个 $v \\prec w$，故 $x \\in \\alpha$。**$\\in$ 良序**：$\\alpha$ 上的 $\\in$ 经 ②③ 就是 $(W, \\prec)$ 的序（$x \\in y \\iff F^{-1}(x) \\prec F^{-1}(y)$），良序性原样搬过来。',
+        '',
+        '**⑤ 于是 $F$ 是 $(W, \\preceq ) \\to (\\alpha, \\in)$ 的序同构**，故 $W$ 的序型 $\\alpha$ 存在。',
+        '',
+        '**⑥ 唯一性。** 设 $\\alpha, \\beta$ 都是 $W$ 的序型，则 $(\\alpha, \\in) \\cong (\\beta, \\in)$。由**三歧性**，$\\alpha \\in \\beta$、$\\alpha = \\beta$、$\\beta \\in \\alpha$ 恰有一个成立。若 $\\alpha \\in \\beta$：由 $\\beta$ 传递得 $\\alpha \\subseteq \\beta$，且 $\\alpha = \\{ x \\in \\beta : x \\in \\alpha \\}$ 是 $\\beta$ 的**真**初始段。把两个序同构接起来，得到 $(\\alpha, \\in)$ 与自己的真初始段序同构 —— 而**良序集不能与自己的真初始段序同构**（见下），矛盾。故 $\\alpha \\notin \\beta$；交换 $\\alpha, \\beta$ 同理得 $\\beta \\notin \\alpha$。于是只能 $\\alpha = \\beta$。',
+        '',
+        '**引理**（上一步用到）：良序集 $(L, \\prec)$ 不可能与它的真初始段 $L_{< a} = \\{ x \\in L : x \\prec a \\}$ 序同构。',
+        '证：设 $h : L \\to L_{< a}$ 是序同构。对 $x \\prec a$ 用**超限归纳**：若 $\\forall y \\prec x,\\ h(y) = y$，则 $h(x)$ 是 $L_{< a}$ 中大于一切 $h(y) = y\\ (y \\prec x)$ 的最小元，也就是「大于一切 $y \\prec x$ 的最小元」，即 $h(x) = x$（序同构把「小于 $x$ 的全部元素」映成「小于 $h(x)$ 的全部元素」）。故 $h$ 在 $L_{< a}$ 上恒等；于是 $h(a)$ 是 $L_{< a}$ 中大于一切 $y \\prec a$ 的最小元，即 $h(a) = a$ —— 但 $h(a) \\in L_{< a}$ 意为 $h(a) \\prec a$，矛盾。∎'
+      ].join('\n'),
+      note: '整个证明只用 **ZF**（递归定理 + 替换公理 + 三歧性），不要选择公理。这正是 Hartogs 定理能在 ZF 里成立的原因之一。'
+    },
+
+    {
+      id: 'imp.burali-forti',
+      kind: 'implication',
+      sources: ['def.ordinal', 'thm.ordinal-trichotomy'],
+      target: 'thm.burali-forti',
+      title: '序数的定义 + 三歧性 ⇒ 序数全体是真类',
+      proof: [
+        '反设 $\\mathrm{On}$ 是一个集合。',
+        '',
+        '**① $\\mathrm{On}$ 传递。** 若 $x \\in \\mathrm{On}$，则 $x$ 是序数，而序数的元素还是序数（见三歧性的证明 ①），故 $x \\subseteq \\mathrm{On}$。',
+        '',
+        '**② $\\in$ 在 $\\mathrm{On}$ 上良序。** 可比性来自三歧性；$\\mathrm{On}$ 的非空子集 $S$ 取 $\\alpha \\in S$，若 $\\alpha$ 不是 $\\in$-最小元，则由正则公理 $\\alpha \\cap S$ 有 $\\in$-最小元，它也是 $S$ 的 $\\in$-最小元。',
+        '',
+        '**③ 于是 $\\mathrm{On}$ 是序数。** ①② 正是序数定义的两条。',
+        '',
+        '**④ 矛盾。** $\\mathrm{On}$ 是序数故 $\\mathrm{On} \\in \\mathrm{On}$，与 $\\in$ 在 $\\mathrm{On}$ 上良序（无 $\\in$-循环）矛盾。∎'
+      ].join('\n'),
+      note: '「序数全体」是**真类**而不是集合 —— 所以分离公理模式不能用在它身上。这正是 ZFC 处理 Russell 悖论、Burali–Forti 悖论的统一办法。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 一阶语言与公式
+   --------------------------------------------------------------------------
+   逻辑星系一直是空的，而它在图上并不是「还没写到的位置」—— 它是**被用到却没节点**
+   的位置：分离公理模式与替换公理模式都是**公理模式**，写的是
+
+       对每个公式 $\varphi (x, p)$（其中 $B$ 不出现），下面是一条公理
+
+   可是「公式」和「一阶语言」在图里从来没有节点。也就是说，星图上最底层的两条
+   公理依赖着一个不存在的概念。这一包补上它。
+
+   ⭐ 这一包是内容准则第 ① 条的**唯一一处豁免**，而且必须豁免：
+      一阶语言是**元层**的 —— 它是写公理用的那门语言，比 ZFC 本身更原始。
+      若要「由更下面的东西造出来」，就必须先在 ZFC 内部把符号和公式编码成集合，
+      那需要先有 ZFC 的公理，而公理模式又需要公式 —— 直接成环。
+      所以它跟 ZF 公理同在最底层，不往上连依赖边（见各节点的 notes）。
+
+   构造路线：
+
+       符号表 ──→ 一阶语言 ──→ 项与公式 ──→ 代入
+                                    └────→ 满足关系 $\models$
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '一阶语言与公式',
+
+  nodes: [
+
+    /* ------------------------------------------------------ 一阶语言 */
+    {
+      id: 'def.first-order-language',
+      cluster: 'logic.fol',
+      type: 'definition',
+      label: '一阶语言',
+      title: '一阶语言 $\\mathcal{L}$（First-Order Language）',
+      regions: ['logic'],
+      tags: ['定义', '逻辑', '一阶语言', '语法'],
+      statement: [
+        '**一阶语言** $\\mathcal{L}$ 由一张**符号表**给定，符号分两类：',
+        '',
+        '- **逻辑符号**（所有一阶语言共用）：可数多个**变元** $v_{0}, v_{1}, v_{2}, \\dots$；连接词 $\\neg$；量词 $\\forall$；等号 $=$；括号。',
+        '- **非逻辑符号**（每个语言自己的）：**常元符号**、**$n$ 元函数符号**、**$n$ 元关系符号**，每一种都带一个确定的元数 $n$。',
+        '',
+        '由符号表，用三条**语法规则**生成全部的**项**与**公式**：',
+        '',
+        '1. 变元、常元符号是**项**；若 $f$ 是 $n$ 元函数符号而 $t_{1}, \\dots, t_{n}$ 是项，则 $f(t_{1}, \\dots, t_{n})$ 是项；',
+        '2. 若 $R$ 是 $n$ 元关系符号而 $t_{1}, \\dots, t_{n}$ 是项，则 $R(t_{1}, \\dots, t_{n})$ 是**原子公式**；',
+        '3. **公式**由原子公式出发，经 $\\neg$、$\\wedge$、$\\vee$、$\\to$、$\\forall v_{i}$、$\\exists v_{i}$ 反复组合而成。',
+        '',
+        '例：$\\mathcal{L} = \\{ \\in \\}$（$\\in$ 是一个二元关系符号）就是**集合论的语言** —— ZFC 的全部公理都写在这门语言里。'
+      ].join('\n'),
+      notes: [
+        '⭐⭐ **这是星图里唯一的「原始层」对象。** 别的东西都是「由更下面的东西造出来」的，一阶语言不是 —— 它是**写公理用的那门语言**，比 ZFC 本身更原始。所以它跟 ZF 公理同在最底下的几层，**不往上连依赖边**：真要连，「公式」就得先在 ZFC 内部由集合造出来，而那要用 ZFC 的公理，可公理模式本身又需要公式 —— 直接成环。',
+        '⭐ **在 ZFC 内部也能把它形式化**：把符号编码成集合、把公式编码成有限序列，「$\\varphi$ 是公式」于是成为 ZFC 里的一条性质。那是元数学的进一步工作，本图不展开。（这个方向正是 Gödel 不完备定理的入口。）',
+        '⚠ **语言与结构要分开**：$\\mathcal{L} = \\{ \\in \\}$ 只规定了有哪些符号，还没说变元往哪里跑 —— 那是**满足关系**要说的事。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.2', 'Enderton, A Mathematical Introduction to Logic, Ch. 1']
+    },
+
+    /* -------------------------------------------------------- 公式 */
+    {
+      id: 'def.formula',
+      cluster: 'logic.fol',
+      type: 'definition',
+      label: '公式',
+      title: '项与公式 / 语句（Formula, Sentence）',
+      regions: ['logic'],
+      tags: ['定义', '逻辑', '公式', '自由变元', '语句'],
+      statement: [
+        '（在给定的**一阶语言** $\\mathcal{L}$ 里）**公式**就是按语法规则 3 生成的表达式，即',
+        '',
+        '$$\\varphi ::= R(t_{1}, \\dots, t_{n}) \\;\\mid\\; \\neg \\varphi \\;\\mid\\; (\\varphi \\wedge \\psi) \\;\\mid\\; (\\varphi \\vee \\psi) \\;\\mid\\; (\\varphi \\to \\psi) \\;\\mid\\; \\forall v_{i} \\varphi \\;\\mid\\; \\exists v_{i} \\varphi$$',
+        '',
+        '其中 $R$ 遍历 $\\mathcal{L}$ 的关系符号，$t_{j}$ 遍历项（严格说这是一条**归纳定义**：公式全体是「含全部原子公式、并对上述运算封闭」的**最小**集合）。',
+        '',
+        '变元在 $\\forall v_{i}$、$\\exists v_{i}$ 的辖域内出现叫**约束出现**，否则叫**自由出现**；没有自由变元的公式叫**语句**（闭公式）。',
+        '',
+        '公式的**复杂度**（连接词与量词的个数）可以做归纳 —— 这是「对公式作归纳」的依据。'
+      ].join('\n'),
+      notes: [
+        '⭐ **「$\\varphi (x, p)$」这种写法在说什么**：它表示 $\\varphi$ 是一个公式，且其中的自由变元都在 $\\{ x, p \\}$ 里（未必都用上）。分离公理模式里写的「对每个公式 $\\varphi$（$B$ 不出现）」说的就是这种约定 —— **公式是元数学概念，不是 ZFC 的对象**，所以「不出现」才是一句关于符号串的话。',
+        '⭐ **归纳定义 = 最小集合**：这句话背后用的是 $\\mathbb{N}$ 上的归纳（见「归纳原理与递推定义」）。同时它也是「公式的复杂度可以做归纳」的原因 —— 两者是同一件事的两面。',
+        '⚠ **只留一部分原始符号**：$\\exists$ 是 $\\neg \\forall \\neg$ 的缩写，$\\vee$、$\\to$ 也可由 $\\neg, \\wedge$ 定义。原始符号越少，语法规则和后续的证明就越短，代价是写公式时多几层括号。',
+        '⚠ 「变元换成项」的操作是**代入**，它有个必须小心的坑（变元捕获），单独一个节点。'
+      ].join('\n\n'),
+      refs: ['Enderton, A Mathematical Introduction to Logic, Ch. 1', 'Kunen, Set Theory, I.2']
+    },
+
+    /* -------------------------------------------------------- 代入 */
+    {
+      id: 'def.substitution',
+      cluster: 'logic.fol',
+      type: 'definition',
+      label: '代入',
+      title: '代入 $\\varphi (x/t)$（Substitution）',
+      regions: ['logic'],
+      tags: ['定义', '逻辑', '代入', '变元捕获'],
+      statement: [
+        '设 $x$ 是变元，$t$ 是项，$\\varphi$ 是公式。把 $\\varphi$ 中 $x$ 的**自由出现**全部换成 $t$，得到的公式记作',
+        '',
+        '$$\\varphi (x/t)$$',
+        '',
+        '称为 $t$ 对 $x$ 的**代入**（约束出现不动 —— 它们被量词管着）。',
+        '',
+        '⚠ 代入要求 $t$ 对 $\\varphi$ 中的 $x$ 是**可代入的**：$t$ 里出现的变元不会在代入后被 $\\varphi$ 里的量词「抓走」。这叫**变元捕获**。'
+      ].join('\n'),
+      notes: [
+        '⚠ **捕获是什么样**：取 $\\varphi = \\exists y\\, (y > x)$、$t = y$。直接代入得 $\\exists y\\, (y > y)$ —— 语义完全变了（原来「存在比 $x$ 大的数」，现在成了假命题）。这时要说「$t$ 对 $\\varphi$ 中的 $x$ 不可代入」。',
+        '⭐ **代入在图上不是花边**：**替换公理模式**的整个内容就是「用一个公式 $\\varphi (x, y, p)$ 把 $A$ 中每个 $x$ 的像收集起来」，那里做的正是代入。',
+        '⚠ 避免捕获的标准做法是先把冲突的约束变元**改名**（$\\alpha$-换名），再代入。这是逻辑教科书写起来最啰嗦、却绕不过去的一步。'
+      ].join('\n\n'),
+      refs: ['Enderton, A Mathematical Introduction to Logic, §2.4']
+    },
+
+    /* ------------------------------------------------------ 满足关系 */
+    {
+      id: 'def.satisfaction',
+      cluster: 'logic.fol',
+      type: 'definition',
+      label: '满足关系',
+      title: '结构与满足关系 $\\models$（Tarski）',
+      regions: ['logic'],
+      tags: ['定义', '逻辑', '模型论', 'Tarski', '语义'],
+      statement: [
+        '设 $\\mathcal{L}$ 是**一阶语言**。$\\mathcal{L}$ 的一个**结构** $\\mathfrak{A}$ 指：一个非空集合 $A$（**论域**），连同每个常元符号、$n$ 元函数符号、$n$ 元关系符号在 $A$ 上的**解释**。再给定一个**赋值** $s$（给每个变元指定 $A$ 中一个元素）。',
+        '',
+        '**满足关系** $\\mathfrak{A} \\models \\varphi [s]$（「$\\varphi$ 在 $\\mathfrak{A}$ 中关于赋值 $s$ 成立」）按公式的复杂度**递归定义**：',
+        '',
+        '- **原子公式**：按符号的解释直接算，例如 $\\mathfrak{A} \\models R(t_{1}, \\dots, t_{n})[s]$ 当且仅当 $(t_{1}^{\\mathfrak{A}}[s], \\dots, t_{n}^{\\mathfrak{A}}[s]) \\in R^{\\mathfrak{A}}$；',
+        '- $\\mathfrak{A} \\models \\neg \\varphi [s]$，当且仅当 $\\mathfrak{A} \\models \\varphi [s]$ **不**成立；',
+        '- $\\mathfrak{A} \\models (\\varphi \\wedge \\psi)[s]$，当且仅当两者都成立；',
+        '- $\\mathfrak{A} \\models \\forall v_{i} \\varphi [s]$，当且仅当对**每个** $a \\in A$ 都有 $\\mathfrak{A} \\models \\varphi [s(v_{i} \\mapsto a)]$。',
+        '',
+        '当 $\\varphi$ 是**语句**（无自由变元）时，$\\mathfrak{A} \\models \\varphi$ 与赋值 $s$ 无关，直接说 $\\varphi$ 在 $\\mathfrak{A}$ 中**成立**，记 $\\mathfrak{A} \\models \\varphi$。'
+      ].join('\n'),
+      notes: [
+        '⭐ **这个递归定义有根据**：它是按公式的**复杂度**递归的，而复杂度能递归的依据是公式由语法规则**归纳生成**（见「公式」）。语义建立在语法之上 —— 这是这门课的第一条纪律。',
+        '⭐ $\\models$ 是「$\\varphi$ 在 $\\mathfrak{A}$ 里为真」的严格含义。整个模型论从这里开始：紧性、完备性、Löwenheim–Skolem 说的都是 $\\models$ 与**可证明性** $\\vdash$ 的关系。',
+        '⚠ **$\\models$ 与 $\\vdash$ 是两回事**：前者是**语义**（在结构里为真），后者是**语法**（由公理按规则形式推出）。一阶逻辑的完备性定理说的正是两者在一阶情形下重合 —— 那也是「$\\mathrm{ZFC} \\vdash \\varphi$ 与 $\\mathrm{ZFC} \\models \\varphi$ 可以混着用」的依据。'
+      ].join('\n\n'),
+      refs: ['Enderton, A Mathematical Introduction to Logic, §2.2', 'Marker, Model Theory: An Introduction, §1.1']
+    }
+  ],
+
+  edges: [
+
+    /* ------------------------------------------------ 定义依赖骨架 */
+    {
+      id: 'dep.lang-formula',
+      kind: 'definition',
+      definition: 'def.first-order-language',
+      usedBy: 'def.formula',
+      note: '公式是**某个语言**的公式：先有符号表，才有那三条语法规则。'
+    },
+    {
+      id: 'dep.formula-substitution',
+      kind: 'definition',
+      definition: 'def.formula',
+      usedBy: 'def.substitution',
+      note: '代入是作用在**公式**上的操作（只换自由出现）。'
+    },
+    {
+      id: 'dep.lang-satisfaction',
+      kind: 'definition',
+      definition: 'def.first-order-language',
+      usedBy: 'def.satisfaction',
+      note: '满足关系必须相对**一门语言**（决定有哪些符号）和一个结构来说。'
+    },
+    {
+      id: 'dep.formula-satisfaction',
+      kind: 'definition',
+      definition: 'def.formula',
+      usedBy: 'def.satisfaction',
+      note: '$\\models$ 按**公式的复杂度**递归定义 —— 没有「公式由语法规则生成」这件事，这个递归就没有落脚点。'
+    },
+
+    /* ------------------------------------ 公理模式用到的逻辑概念 */
+    {
+      id: 'def-link.formula-sep',
+      kind: 'definition',
+      definition: 'def.formula',
+      usedBy: 'ax.sep',
+      note: '分离公理模式写的是「对**每个公式** $\\varphi (x, p)$（其中 $B$ 不出现），下面是一条公理」—— 它是公理**模式**而不是单条公理，正在于它要对每个公式都发一条。'
+    },
+    {
+      id: 'def-link.formula-repl',
+      kind: 'definition',
+      definition: 'def.formula',
+      usedBy: 'ax.repl',
+      note: '替换公理模式同样是「对每个公式一条公理」。'
+    },
+    {
+      id: 'def-link.substitution-repl',
+      kind: 'definition',
+      definition: 'def.substitution',
+      usedBy: 'ax.repl',
+      note: '替换公理模式把 $A$ 中每个 $x$ 在公式 $\\varphi (x, y, p)$ 下的像收集起来 —— 这一步做的就是**代入**。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
    内容包 · 定义引用关系（蓝色 50% 线）
    --------------------------------------------------------------------------
    规则：如果某个结论的陈述/构造里出现了某个定义，就用一条蓝线把它们连起来。
@@ -15146,13 +15707,19 @@ window.MG = window.MG || {};
    主干上的点必须满足「不看它就接不上后面」——它要么是某个概念的入口，
    要么是整条线绕不过去的那一步。
 
-   ⭐⭐ 按内容准则第 ① 条，主干**严格按构造顺序排**：每一条都只用它前面已经出现过的点，
-   新对象必须是**造**出来的，不是「满足某组性质的东西」。所以 ℝ 那一段的顺序是
+   ⭐⭐ 按内容准则第 ① 条，主干按**构造顺序**排：新对象必须是**造**出来的，
+   不是「满足某组性质的东西」。所以 ℝ 那一段的顺序是
    ℕ 存在 → 归纳原理 → 商集 → ℤ → ℚ → 绝对值 → Cauchy 列 → **ℝ（构造）** →
    **ℝ 是完备有序域（性质，是定理）**，而不是反过来。
 
-   每一段的顺序就是层号（依赖深度）从小到大的顺序 —— 括号里的数字是写那份名单时的
-   层号，层号是运行时算出来的，内容一改就可能变，**以 `bun tools/_layers.mjs` 为准**。
+   ⚠️ 但主干是**分段**的（一、数系；二、序与选择；三、测度；四、积分；五、函数空间），
+   段与段之间是主题切换 —— 所以**段内**层号递增，**跨段会回跳**（第二段是「工具箱」，
+   层号从 2 层重新开始），段内也会有几处前向引用（数系那一段用到了第二段的偏序集）。
+   **不要为了「全局层号单调」去重排**，那会把这条主线拆散。
+   自检：`bun tools/_trunkcheck.mjs`（id 存在性 + 前向依赖分类）。
+
+   括号里的数字是**当前**层号（依赖深度）。层号是运行时算出来的、内容一改就变，
+   **以 `bun tools/_layers.mjs` 为准**；`_trunkcheck.mjs --apply` 可以刷新这些数字。
 
    用法：图例上方的工具条点「主干」→ 只留这些点，其余全藏起来。
 
@@ -15168,31 +15735,31 @@ MG.trunk = [
   'def.empty',                 //  0 层  空集 ∅
   'def.subset',                //  1 层  子集
   'def.power-set',             //  2 层  幂集 𝒫(X)（生成的 σ-代数、外测度都踩在它上面）
-  'thm.empty',                 //  3 层  空集存在
+  'thm.empty',                 //  5 层  空集存在
   'def.pair',                  //  3 层  有序对
-  'thm.omega',                 //  3 层  自然数集 ℕ 存在（无穷公理 + 分离）
+  'thm.omega',                 //  5 层  自然数集 ℕ 存在（无穷公理 + 分离）
   'def.rel',                   //  4 层  关系
-  'thm.induction',             //  4 层  归纳原理与递推定义
+  'thm.induction',             //  6 层  归纳原理与递推定义
   'def.function',              //  5 层  函数
   'def.quotient-set',          //  5 层  商集与等价类 —— ℤ、ℚ、ℝ 用的是同一招
-  'def.int',                   //  6 层  整数 ℤ = (ℕ×ℕ)/~（差相同）
+  'def.int',                   //  7 层  整数 ℤ = (ℕ×ℕ)/~（差相同）
   'def.field',                 //  6 层  域 = 集合 + 两个运算 + 公理（代数语言本身）
   'def.ordered-field',         //  7 层  有序域 = 域 + 与运算相容的全序
   'def.rat',                   //  8 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）—— 第一个有序域
-  'def.abs',                   //  9 层  绝对值 —— Cauchy 列的定义就要用它
-  'def.cauchy-null',           // 10 层  有理 Cauchy 列 / 零列 / 等价
-  'def.real',                  // 11 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
-  'thm.real-ordered-field',    // 12 层  ℝ 是完备有序域（确界原理）—— 性质是定理
-  'def.sup',                   // 12 层  上确界与下确界
-  'def.interval',              // 12 层  区间
-  'def.sequence-limit',        // 12 层  数列极限
+  'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
+  'def.cauchy-null',           //  9 层  有理 Cauchy 列 / 零列 / 等价
+  'def.real',                  // 10 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
+  'thm.real-ordered-field',    // 11 层  ℝ 是完备有序域（确界原理）—— 性质是定理
+  'def.sup',                   // 11 层  上确界与下确界
+  'def.interval',              // 11 层  区间
+  'def.sequence-limit',        // 11 层  数列极限
 
   /* ========================== 二、序与选择（工具） ========================== */
   'def.poset',                 //  5 层  偏序集
   'def.chain',                 //  6 层  链
   'def.bound',                 //  6 层  上界与极大元
-  'ax.choice',                 //  8 层  选择公理
-  'lem.zorn',                  //  8 层  佐恩引理
+  'ax.choice',                 //  9 层  选择公理
+  'lem.zorn',                  //  9 层  佐恩引理
 
   /* ======================= 三、测度（分析的地基） ======================= */
   'def.set-ring',              //  2 层  环与代数

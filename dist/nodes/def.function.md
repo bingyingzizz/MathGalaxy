@@ -1,0 +1,31 @@
+# 函数　`def.function`
+函数（Function）
+layer 5 · 定义 · 关系与函数 · 集合论
+
+设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \to B$），当且仅当对每个输入恰有一个输出：
+
+$$\forall a \in A, \exists! b \in B, (a, b) \in f$$
+
+唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \{ f(a) : a \in A \}$。
+
+单射 / 满射 / 双射见另一条节点。
+
+## 为什么成立（入边，证明在 proofs/）
+- `def.rel` 关系：用到了定义 关系　proofs/def-dep.rel-function.md
+
+## 它能推出什么 / 谁在用它
+- 被 `def.bijection` 单射 / 满射 / 双射 用
+- 被 `def.cauchy-null` Cauchy 列与零列 用
+- 被 `def.field` 域 用
+- 被 `def.choicefn` 选择函数 用
+- 被 `def.metric-space` 距离空间 用
+- 被 `def.product-sigma` 积 σ-代数 用
+
+refs: Kunen, Set Theory, I.5
+
+## 说明
+在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。
+
+⚠ 两个容易混的地方：
+- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \to B$（即 $\operatorname{dom} f = A$）。
+- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。
