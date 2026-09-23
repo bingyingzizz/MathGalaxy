@@ -78,7 +78,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: 'Lebesgue 可测',
-      title: 'Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）',
+      title: 'Lebesgue 可测 / Borel 可测（$\\mathbb{R} \\to \\mathbb{C}$ 的情形）',
       regions: ['analysis'],
       tags: ['定义', 'Lebesgue 可测', 'Borel'],
       statement: [
@@ -132,7 +132,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '封闭性', 'sup', '极限'],
       statement: [
-        '以下都设函数取值在 $\\bar{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。',
+        '以下都设函数取值在 $\\overline{\\mathbb{R}} = [-\\infty , +\\infty ]$ 或 $\\mathbb{C}$ 中，且可测。',
         '',
         '- **和与积**：$$f + g$$、$$fg$$ 可测；',
         '- **逐点上确界**：$$\\{f_j\\}$$ 可测 $\\implies$ $$\\sup_j f_j$$ 可测；',

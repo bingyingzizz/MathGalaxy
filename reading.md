@@ -25,3 +25,5 @@
 
 `id` `type` `label` `title` `region` `cluster` `layer`
 `statement` `notes` `refs`；节点用 `id` 引用，深链 `#n=<节点id>`。
+
+记号见 `dist/notation.md`。

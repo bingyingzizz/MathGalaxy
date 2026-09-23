@@ -3,7 +3,7 @@
 
 `def.section` 截口 → `prop.section-measurable` 截口可测
 
-**(b)** 设 $f$ 是 $\mathcal{M}⊗\mathcal{N}$可测，$B \subseteq \mathbb{C}$ 可测。则
+**(b)** 设 $f$ 是 $\mathcal{M}\otimes\mathcal{N}$可测，$B \subseteq \mathbb{C}$ 可测。则
 
 $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 

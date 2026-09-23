@@ -266,7 +266,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', '复值'],
       statement: [
-        '设 $$f : X \\to \\bar{\\mathbb{R}}$$ 可测，记正部与负部',
+        '设 $$f : X \\to \\overline{\\mathbb{R}}$$ 可测，记正部与负部',
         '',
         '$$f^+ = \\max_{f, 0}, \\quad  f^- = \\max_{-f, 0}$$',
         '',
@@ -437,7 +437,7 @@ window.MG = window.MG || {};
         '$$\\int \\sum_{j=1}^{\\infty} f_j = \\sum_{j=1}^{\\infty} \\int f_j$$'
       ].join('\n'),
       notes: [
-        '与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\\Sigma \\int |f_{j}| < \\infty$ —— 用可积性换来「允许有正有负」。',
+        '与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\\sum \\int |f_{j}| < \\infty$ —— 用可积性换来「允许有正有负」。',
         '这是 Fubini–Tonelli 定理证明里的关键工具。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.25']

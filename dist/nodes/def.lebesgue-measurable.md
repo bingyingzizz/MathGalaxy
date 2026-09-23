@@ -1,5 +1,5 @@
 # Lebesgue 可测　`def.lebesgue-measurable`
-Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）
+Lebesgue 可测 / Borel 可测（$\mathbb{R} \to \mathbb{C}$ 的情形）
 layer 7 · 定义 · 可测函数与收敛 · 分析学
 
 对 $$f : \mathbb{R} \to \mathbb{C}$$：

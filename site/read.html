@@ -8,6 +8,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M9 9 23 15 12 24' stroke='%234f7cf5' stroke-width='1.7' fill='none' opacity='.5'/><circle cx='9' cy='9' r='3.2' fill='%234f7cf5'/><circle cx='23' cy='15' r='3.2' fill='%234f7cf5'/><circle cx='12' cy='24' r='3.2' fill='%234f7cf5'/></svg>">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/read.css">
+<link rel="stylesheet" href="assets/katex.min.css">
+<script src="assets/katex.min.js"></script>
 <script>document.documentElement.classList.add('js');</script>
 <noscript><style>.doc{display:block!important}</style></noscript>
 </head>
@@ -33,7 +35,7 @@
 {{DOCS}}
 
     <p class="rfoot">
-      这四份东西同时也是 <b>AI 的检索入口</b>：原件就在
+      这几份东西同时也是 <b>AI 的检索入口</b>：原件就在
       <code>mathgalaxy/</code> 下（<code>.md</code> / <code>.txt</code>），
       可以直接把 URL 丢给 AI，不需要打开这个页面。<br>
       最近更新：{{UPDATED}}
@@ -88,6 +90,42 @@
 
   window.addEventListener('hashchange', function () { show(target(), false); });
   show(target(), true);
+})();
+
+/* 行内数学：正文里写成 $…$ 的地方交给 KaTeX 渲染。
+   ⚠️ 只走**文本节点**（TreeWalker），不碰 innerHTML —— 否则会破坏构建期排好的 HTML。
+   ⚠️ `<code>` / `<pre>` 里的 $ 不处理（那是原文里的 LaTeX 源码，就该原样显示）。
+   只在加载时跑一遍：所有文档的 section 一开始就都在 DOM 里（靠 class 切换显隐）。 */
+(function () {
+  if (!window.katex) return;
+  var RE = /\$([^$\n]+?)\$/g;
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+  var nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(function (node) {
+    var txt = node.nodeValue;
+    if (txt.indexOf('$') < 0) return;
+    var p = node.parentNode;
+    if (!p || p.closest('code, pre, script, style, .katex')) return;
+    var frag = document.createDocumentFragment();
+    var last = 0, m, hit = false;
+    RE.lastIndex = 0;
+    while ((m = RE.exec(txt))) {
+      hit = true;
+      if (m.index > last) frag.appendChild(document.createTextNode(txt.slice(last, m.index)));
+      var span = document.createElement('span');
+      try {
+        span.innerHTML = katex.renderToString(m[1], { throwOnError: false, displayMode: false });
+      } catch (e) {
+        span.textContent = m[0];
+      }
+      frag.appendChild(span);
+      last = m.index + m[0].length;
+    }
+    if (!hit) return;
+    if (last < txt.length) frag.appendChild(document.createTextNode(txt.slice(last)));
+    p.replaceChild(frag, node);
+  });
 })();
 </script>
 </body>

@@ -20,7 +20,7 @@ window.MG = window.MG || {};
         '设 $A$、$B$ 是集合。',
         '',
         '- **$A$ 是 $B$ 的子集**（记 $A \\subseteq B$）：$$\\forall x ( x \\in A \\to x \\in B )$$',
-        '- **$A$ 是 $B$ 的真子集**（记 $A \\subsetneq B$）：$A \\subseteq B$ 且 $A \\ne B$。',
+        '- **$A$ 是 $B$ 的真子集**（记 $A \\subset B$）：$A \\subseteq B$ 且 $A \\ne B$。',
         '',
         '基本性质：$\\subseteq$ 自反、传递；并且由外延公理，',
         '',

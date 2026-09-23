@@ -63,7 +63,7 @@ window.MG = window.MG || {};
         '',
         '由传递性，$\\alpha$ 的**每个元素本身也是序数**。约定：$0 := \\emptyset$，**后继序数** $\\alpha + 1 := \\alpha \\cup \\{ \\alpha \\}$；不含最大元的非零序数叫**极限序数**，$\\omega$ 是最小的极限序数。序数全体记作 $\\mathrm{On}$。',
         '',
-        '开头的几个：$\\emptyset,\\ \\{ \\emptyset \\},\\ \\{ \\emptyset, \\{ \\emptyset \\} \\},\\ \\dots$，即 $0, 1, 2, \\dots$；接着是 $\\omega,\\ \\omega + 1,\\ \\omega + 2,\\ \\dots,\\ \\omega + \\omega,\\ \\dots$'
+        '开头的几个：$\\emptyset,\\ \\{ \\emptyset \\},\\ \\{ \\emptyset, \\{ \\emptyset \\} \\},\\ \\ldots$，即 $0, 1, 2, \\ldots$；接着是 $\\omega,\\ \\omega + 1,\\ \\omega + 2,\\ \\ldots,\\ \\omega + \\omega,\\ \\ldots$'
       ].join('\n'),
       notes: [
         '⭐⭐ **格式还是「集合 + 关系 + 公理」**：序数不是凭空的对象 —— 一个**传递集**，配上 $\\in$ 这个**现成的**关系，就定出了一个序数。判别一个集合是不是序数，就是核对这两条。',
@@ -135,11 +135,11 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定理', '序数', '序型', '序同构', 'ZF'],
       statement: [
-        '设 $(W, \\preceq )$ 是**良序集**。则存在**唯一**的序数 $\\alpha$，使 $(W, \\preceq )$ 与 $(\\alpha, \\in)$ **序同构**。这个 $\\alpha$ 称为 $W$ 的**序型**，记作 $\\mathrm{ot}(W) = \\alpha$。'
+        '设 $(W, \\preceq )$ 是**良序集**。则存在**唯一**的序数 $\\alpha$，使 $(W, \\preceq )$ 与 $(\\alpha, \\in)$ **序同构**。这个 $\\alpha$ 称为 $W$ 的**序型**，记作 $\\operatorname{ot}(W) = \\alpha$。'
       ].join('\n'),
       notes: [
         '⭐⭐ 这一条就是「序数」这个东西真正被**造出来**的地方：序数不是先验摆在那里的，它由「每个良序集对应的那个规范良序集」给出 —— 而那个规范集是由**递归定理**一步步算出来的。',
-        '⭐ 于是「$W$ 有多长」变成「$\\mathrm{ot}(W)$ 是哪个序数」，两个良序集比长短变成比 $\\in$ —— 这就是三歧性的用处。',
+        '⭐ 于是「$W$ 有多长」变成「$\\operatorname{ot}(W)$ 是哪个序数」，两个良序集比长短变成比 $\\in$ —— 这就是三歧性的用处。',
         '⚠ **唯一性**这一半要用到三歧性：两个序数若互相序同构，就必须相等。'
       ].join('\n\n'),
       refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.3']
@@ -241,7 +241,7 @@ window.MG = window.MG || {};
         '',
         '它是集合：候选的 $f$ 都是 $W_{< w} \\times V$ 的子集，先由幂集公理拿到 $\\mathcal{P}(W \\times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。',
         '',
-        '**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \\notin \\mathrm{dom}\\, R$。则 $W_{< w} \\subseteq \\mathrm{dom}\\, R$，于是 $f := R \\upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \\prec w$，由 $v \\in \\mathrm{dom}\\, R$ 及单值性得 $f(v) = G(f \\upharpoonright W_{< v})$）。于是 $(w, G(f)) \\in R$，与 $w \\notin \\mathrm{dom}\\, R$ 矛盾。',
+        '**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \\notin \\operatorname{dom}\\, R$。则 $W_{< w} \\subseteq \\operatorname{dom}\\, R$，于是 $f := R \\upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \\prec w$，由 $v \\in \\operatorname{dom}\\, R$ 及单值性得 $f(v) = G(f \\upharpoonright W_{< v})$）。于是 $(w, G(f)) \\in R$，与 $w \\notin \\operatorname{dom}\\, R$ 矛盾。',
         '',
         '故 $R$ 就是所求的函数 $F$，由 ① 唯一。',
         '',
@@ -261,18 +261,18 @@ window.MG = window.MG || {};
         '',
         '**① 序数的元素是序数。** 若 $\\gamma \\in \\alpha$：$\\gamma \\subseteq \\alpha$（$\\alpha$ 传递），故 $\\gamma$ 传递（$\\gamma$ 的元素属于 $\\alpha$，而 $\\alpha$ 传递）；又 $\\in$ 在 $\\gamma$ 上继承 $\\alpha$ 上的良序性，故 $\\gamma$ 是序数。',
         '',
-        '**② 若 $\\beta \\subsetneq \\alpha$ 则 $\\beta \\in \\alpha$。** 取 $b$ 为 $\\alpha \\setminus \\beta$ 的 $\\in$-最小元。断言 $\\beta = b$。',
+        '**② 若 $\\beta \\subset \\alpha$ 则 $\\beta \\in \\alpha$。** 取 $b$ 为 $\\alpha \\setminus \\beta$ 的 $\\in$-最小元。断言 $\\beta = b$。',
         '　$\\subseteq$：设 $x \\in \\beta$。由 $\\beta \\subseteq \\alpha$ 有 $x \\in \\alpha$，故 $x, b \\in \\alpha$；由 $\\in$ 在 $\\alpha$ 上的**三歧性**（良序蕴含全序），$x \\in b$、$x = b$、$b \\in x$ 恰有一个成立。后两种都会给出 $b \\in \\beta$（$x = b$ 直接，$b \\in x$ 用 $\\beta$ 传递），与 $b$ 的取法矛盾。故 $x \\in b$。',
         '　$\\supseteq$：设 $x \\in b$。由 $\\alpha$ 传递得 $x \\in \\alpha$。若 $x \\in \\alpha \\setminus \\beta$，则 $x \\in b$ 与 $b$ 的最小性矛盾（$x \\in b$ 即 $x$ 比 $b$ 小）。故 $x \\in \\beta$。',
         '　于是 $\\beta = b$，而 $b \\in \\alpha$，即 $\\beta \\in \\alpha$。',
         '',
-        '**③ 三歧性。** 若 $\\alpha \\ne \\beta$，则 $\\alpha \\subseteq \\beta$ 与 $\\beta \\subseteq \\alpha$ 不能同时成立。不妨设 $\\beta \\nsubseteq \\alpha$，则 $\\beta \\setminus \\alpha \\ne \\emptyset$，故 $\\beta \\subsetneq \\alpha$ 不成立，由 ② 得 $\\alpha \\in \\beta$。对调 $\\alpha, \\beta$ 同理。',
+        '**③ 三歧性。** 若 $\\alpha \\ne \\beta$，则 $\\alpha \\subseteq \\beta$ 与 $\\beta \\subseteq \\alpha$ 不能同时成立。不妨设 $\\beta \\nsubseteq \\alpha$，则 $\\beta \\setminus \\alpha \\ne \\emptyset$，故 $\\beta \\subset \\alpha$ 不成立，由 ② 得 $\\alpha \\in \\beta$。对调 $\\alpha, \\beta$ 同理。',
         '',
         '**④ 三者不相容。** 若 $\\alpha \\in \\beta$ 且 $\\beta \\in \\alpha$，则由传递性 $\\alpha \\in \\alpha$，与 $\\in$ 在 $\\alpha$ 上是良序（无 $\\in$-循环）矛盾。又 $\\alpha \\in \\beta$ 与 $\\alpha = \\beta$ 显然不相容。',
         '',
         '**⑤ $\\in$ 是良序。** 可比性已得；非空序数集合 $S$ 取 $\\alpha \\in S$，若 $\\alpha$ 不是 $\\in$-最小元，则 $\\alpha \\cap S$ 是集合，由正则公理有 $\\in$-最小元 $m$，而 $m$ 也是 $S$ 的 $\\in$-最小元。∎'
       ].join('\n'),
-      note: '② 是全部关键：「序数之间 $\\subsetneq$ 就是 $\\in$」。它让序数的比较退化成集合的属于关系。'
+      note: '② 是全部关键：「序数之间 $\\subset$ 就是 $\\in$」。它让序数的比较退化成集合的属于关系。'
     },
 
     {
@@ -284,7 +284,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $(W, \\preceq )$ 是良序集。',
         '',
-        '**① 造出函数。** 由**递归定理**（取 $G(f) = \\mathrm{ran}\\, f$，即「前面全部取值的值域」）得到唯一的 $F$ 定义在 $W$ 上，使',
+        '**① 造出函数。** 由**递归定理**（取 $G(f) = \\operatorname{ran}\\, f$，即「前面全部取值的值域」）得到唯一的 $F$ 定义在 $W$ 上，使',
         '',
         '$$F(w) = \\{ F(v) : v \\prec w \\}, \\qquad \\forall w \\in W$$',
         '',
@@ -294,7 +294,7 @@ window.MG = window.MG || {};
         '',
         '**③ $F$ 是单射。** 反设存在 $v \\ne w$ 使 $F(v) = F(w)$；由于 $\\preceq$ 是全序，不妨 $v \\prec w$。由 ② 得 $F(v) \\in F(w) = F(v)$，即 $F(v) \\in F(v)$ —— 与「任何集合都不属于自身」（正则公理的推论）矛盾。（这一步是真正用到**正则公理**的地方。）',
         '',
-        '**④ $\\alpha := \\mathrm{ran}\\, F$ 是序数。** 由替换公理模式，$\\alpha = \\{ F(w) : w \\in W \\}$ 是集合。**传递性**：若 $x \\in F(w)$，则 $x = F(v)$ 对某个 $v \\prec w$，故 $x \\in \\alpha$。**$\\in$ 良序**：$\\alpha$ 上的 $\\in$ 经 ②③ 就是 $(W, \\prec)$ 的序（$x \\in y \\iff F^{-1}(x) \\prec F^{-1}(y)$），良序性原样搬过来。',
+        '**④ $\\alpha := \\operatorname{ran}\\, F$ 是序数。** 由替换公理模式，$\\alpha = \\{ F(w) : w \\in W \\}$ 是集合。**传递性**：若 $x \\in F(w)$，则 $x = F(v)$ 对某个 $v \\prec w$，故 $x \\in \\alpha$。**$\\in$ 良序**：$\\alpha$ 上的 $\\in$ 经 ②③ 就是 $(W, \\prec)$ 的序（$x \\in y \\iff F^{-1}(x) \\prec F^{-1}(y)$），良序性原样搬过来。',
         '',
         '**⑤ 于是 $F$ 是 $(W, \\preceq ) \\to (\\alpha, \\in)$ 的序同构**，故 $W$ 的序型 $\\alpha$ 存在。',
         '',

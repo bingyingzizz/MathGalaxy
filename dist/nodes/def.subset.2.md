@@ -2,7 +2,6 @@
 根 `../`　·　第 1 页 `nodes/def.subset.md`
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 `def.rel` 关系 用
 - 被 `def.chain` 链 用
 - 被 `def.bound` 界与确界 用
 - 被 `def.wellorder` 良序集 用

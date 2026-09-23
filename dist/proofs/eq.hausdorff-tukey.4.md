@@ -3,7 +3,7 @@
 
 `thm.hausdorff` Hausdorff 极大原理 → `lem.tukey` Tukey 引理
 
-2. **$U$ 是极大元**：若存在 $B \in \mathcal{A}$ 使 $U \subsetneq B$，则 $\mathcal{C} \cup \{B\}$ 仍是 $\subseteq$链（每个 $A \in \mathcal{C}$ 满足 $A \subseteq U \subseteq B$），与 $\mathcal{C}$ 的极大性矛盾。
+2. **$U$ 是极大元**：若存在 $B \in \mathcal{A}$ 使 $U \subset B$，则 $\mathcal{C} \cup \{B\}$ 仍是 $\subseteq$链（每个 $A \in \mathcal{C}$ 满足 $A \subseteq U \subseteq B$），与 $\mathcal{C}$ 的极大性矛盾。
 
 故 $U$ 是 $(\mathcal{A}, \subseteq )$ 的极大元。∎
 

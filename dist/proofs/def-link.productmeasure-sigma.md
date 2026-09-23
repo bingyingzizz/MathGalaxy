@@ -3,4 +3,4 @@
 
 `def.product-sigma` 积 σ-代数 → `def.product-measure` 乘积测度
 
-乘积测度定义在积 $\sigma$代数 $\mathcal{M} ⊗ \mathcal{N}$ 上。
+乘积测度定义在积 $\sigma$代数 $\mathcal{M} \otimes \mathcal{N}$ 上。

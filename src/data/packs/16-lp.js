@@ -42,10 +42,10 @@ window.MG = window.MG || {};
         '',
         '- $\\|f\\|_p = 0 \\iff f = 0$ a.e.；',
         '- $\\|cf\\|_p = |c| \\, \\|f\\|_p$；',
-        '- $f, g \\in L^p \\Rightarrow f + g \\in L^p$（这一步用 $|f+g|^p \\le 2^p(|f|^p + |g|^p)$）。',
+        '- $f, g \\in L^p \\implies f + g \\in L^p$（这一步用 $|f+g|^p \\le 2^p(|f|^p + |g|^p)$）。',
         '',
         '⚠ **$p < 1$ 时三角不等式失效**，所以那时 $L^p$ 只是拟范数空间（虽然它仍然是完备的）。',
-        '和 $L^1$ 一样，$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），这正是 $\\|f\\|_p = 0 \\Rightarrow f = 0$ 得以成立的前提。'
+        '和 $L^1$ 一样，$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），这正是 $\\|f\\|_p = 0 \\implies f = 0$ 得以成立的前提。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §6.1']
     },
@@ -145,7 +145,7 @@ window.MG = window.MG || {};
         '设 $\\{f_k\\} \\subseteq L^p$ 且 $\\sum_{k} \\|f_k\\|_p = B < \\infty$。只要证明 $\\sum_k f_k$ 在 $L^p$ 范数下收敛即可。',
         '技巧在于把「逐点收敛」与「范数收敛」分开处理：令 $G_n = \\sum_{k \\le n} |f_k|$、$G = \\sum_k |f_k|$，则由 MCT',
         '',
-        '$$\\|G_n\\|_p \\le \\sum_{k \\le n} \\|f_k\\|_p \\le B \\quad \\Rightarrow \\quad \\int G^p = \\lim_n \\int G_n^p \\le B^p$$',
+        '$$\\|G_n\\|_p \\le \\sum_{k \\le n} \\|f_k\\|_p \\le B \\quad \\implies \\quad \\int G^p = \\lim_n \\int G_n^p \\le B^p$$',
         '',
         '故 $G \\in L^p$、特别地 $G < \\infty$ a.e.，于是 $\\sum_k f_k$ **a.e. 绝对收敛**。记极限为 $F$。',
         '再用一次 DCT 拿下范数收敛：$\\left| F - \\sum_{k \\le n} f_k \\right|^p \\le (2G)^p \\in L^1$，故',
@@ -283,7 +283,7 @@ window.MG = window.MG || {};
         '',
         '其中 $\\lambda \\in (0,1)$ 由下式确定：',
         '',
-        '$$\\frac{1}{q} = \\frac{\\lambda}{p} + \\frac{1-\\lambda}{r} \\qquad \\Longleftrightarrow \\qquad \\lambda = \\frac{\\,q^{-1} - r^{-1}\\,}{p^{-1} - r^{-1}}$$'
+        '$$\\frac{1}{q} = \\frac{\\lambda}{p} + \\frac{1-\\lambda}{r} \\qquad \\iff \\qquad \\lambda = \\frac{\\,q^{-1} - r^{-1}\\,}{p^{-1} - r^{-1}}$$'
       ].join('\n'),
       notes: [
         '这是 **Riesz–Thorin 插值定理**的初等特例：$L^q$ 范数被两端的 $L^p$、$L^r$ 范数「对数凸」地控制住。',

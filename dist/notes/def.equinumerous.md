@@ -8,4 +8,4 @@
 - $(0, 1)$ 与 $\mathbb{R}$ 等势（$x \mapsto \tan \pi(x - 1/2)$ 之类）；
 - $\mathbb{N}$ 与 $\mathbb{R}$ **不等势**（Cantor 定理）。
 
-⚠ $A \subseteq B$ 与「等势」无关：$\mathbb{N} \subsetneq \mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\iff$ 无限）。
+⚠ $A \subseteq B$ 与「等势」无关：$\mathbb{N} \subset \mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\iff$ 无限）。

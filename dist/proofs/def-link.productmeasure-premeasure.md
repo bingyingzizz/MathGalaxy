@@ -3,4 +3,4 @@
 
 `def.premeasure` 预测度 → `def.product-measure` 乘积测度
 
-矩形上的 $\pi$ 就是一个预测度。
+矩形上的 $\mu_{0}$ 就是一个预测度。

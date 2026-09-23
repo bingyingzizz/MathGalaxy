@@ -3,7 +3,7 @@
 
 `lem.zorn` 佐恩引理 → `ax.choice` 选择公理
 
-仍是 $\mathcal{F}$ 中的元素（$i_{0} \notin \operatorname{dom} f$，不破坏函数性），且 $f \subsetneq f'$ —— 与 $f$ 的极大性矛盾。故 $\operatorname{dom} f = I$。
+仍是 $\mathcal{F}$ 中的元素（$i_{0} \notin \operatorname{dom} f$，不破坏函数性），且 $f \subset f'$ —— 与 $f$ 的极大性矛盾。故 $\operatorname{dom} f = I$。
 
 **⑤** 于是 $f : I \to \bigcup _\{i \in I\} A_i$ 且 $f(i) \in A_i$ 对一切 $i$ 成立，即 $f$ 是这族集合的选择函数。由族的任意性，AC 成立。∎
 

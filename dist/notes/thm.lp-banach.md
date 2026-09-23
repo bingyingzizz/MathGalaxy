@@ -9,7 +9,7 @@
 
 
 
-$$\|G_n\|_p \le \sum_{k \le n} \|f_k\|_p \le B \quad \Rightarrow \quad \int G^p = \lim_n \int G_n^p \le B^p$$
+$$\|G_n\|_p \le \sum_{k \le n} \|f_k\|_p \le B \quad \implies \quad \int G^p = \lim_n \int G_n^p \le B^p$$
 
 
 

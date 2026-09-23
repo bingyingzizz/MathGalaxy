@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-23T08:33:51.363Z
+> 由 `tools/build.mjs` 自动生成于 2026-09-23T10:42:17.420Z
 > 6 星系 / 23 星团 / 230 节点 / 485 连线（强边 477，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -26,13 +26,13 @@
 
 **一阶语言** $\mathcal{L}$ 由一张**符号表**给定，符号分两类：
 
-- **逻辑符号**（所有一阶语言共用）：可数多个**变元** $v_{0}, v_{1}, v_{2}, \dots$；连接词 $\neg$；量词 $\forall$；等号 $=$；括号。
+- **逻辑符号**（所有一阶语言共用）：可数多个**变元** $v_{0}, v_{1}, v_{2}, \ldots$；连接词 $\neg$；量词 $\forall$；等号 $=$；括号。
 - **非逻辑符号**（每个语言自己的）：**常元符号**、**$n$ 元函数符号**、**$n$ 元关系符号**，每一种都带一个确定的元数 $n$。
 
 由符号表，用三条**语法规则**生成全部的**项**与**公式**：
 
-1. 变元、常元符号是**项**；若 $f$ 是 $n$ 元函数符号而 $t_{1}, \dots, t_{n}$ 是项，则 $f(t_{1}, \dots, t_{n})$ 是项；
-2. 若 $R$ 是 $n$ 元关系符号而 $t_{1}, \dots, t_{n}$ 是项，则 $R(t_{1}, \dots, t_{n})$ 是**原子公式**；
+1. 变元、常元符号是**项**；若 $f$ 是 $n$ 元函数符号而 $t_{1}, \ldots, t_{n}$ 是项，则 $f(t_{1}, \ldots, t_{n})$ 是项；
+2. 若 $R$ 是 $n$ 元关系符号而 $t_{1}, \ldots, t_{n}$ 是项，则 $R(t_{1}, \ldots, t_{n})$ 是**原子公式**；
 3. **公式**由原子公式出发，经 $\neg$、$\wedge$、$\vee$、$\to$、$\forall v_{i}$、$\exists v_{i}$ 反复组合而成。
 
 例：$\mathcal{L} = \{ \in \}$（$\in$ 是一个二元关系符号）就是**集合论的语言** —— ZFC 的全部公理都写在这门语言里。
@@ -50,7 +50,7 @@
 
 （在给定的**一阶语言** $\mathcal{L}$ 里）**公式**就是按语法规则 3 生成的表达式，即
 
-$$\varphi ::= R(t_{1}, \dots, t_{n}) \;\mid\; \neg \varphi \;\mid\; (\varphi \wedge \psi) \;\mid\; (\varphi \vee \psi) \;\mid\; (\varphi \to \psi) \;\mid\; \forall v_{i} \varphi \;\mid\; \exists v_{i} \varphi$$
+$$\varphi ::= R(t_{1}, \ldots, t_{n}) \;\mid\; \neg \varphi \;\mid\; (\varphi \wedge \psi) \;\mid\; (\varphi \vee \psi) \;\mid\; (\varphi \to \psi) \;\mid\; \forall v_{i} \varphi \;\mid\; \exists v_{i} \varphi$$
 
 其中 $R$ 遍历 $\mathcal{L}$ 的关系符号，$t_{j}$ 遍历项（严格说这是一条**归纳定义**：公式全体是「含全部原子公式、并对上述运算封闭」的**最小**集合）。
 
@@ -94,7 +94,7 @@ $$\varphi (x/t)$$
 
 **满足关系** $\mathfrak{A} \models \varphi [s]$（「$\varphi$ 在 $\mathfrak{A}$ 中关于赋值 $s$ 成立」）按公式的复杂度**递归定义**：
 
-- **原子公式**：按符号的解释直接算，例如 $\mathfrak{A} \models R(t_{1}, \dots, t_{n})[s]$ 当且仅当 $(t_{1}^{\mathfrak{A}}[s], \dots, t_{n}^{\mathfrak{A}}[s]) \in R^{\mathfrak{A}}$；
+- **原子公式**：按符号的解释直接算，例如 $\mathfrak{A} \models R(t_{1}, \ldots, t_{n})[s]$ 当且仅当 $(t_{1}^{\mathfrak{A}}[s], \ldots, t_{n}^{\mathfrak{A}}[s]) \in R^{\mathfrak{A}}$；
 - $\mathfrak{A} \models \neg \varphi [s]$，当且仅当 $\mathfrak{A} \models \varphi [s]$ **不**成立；
 - $\mathfrak{A} \models (\varphi \wedge \psi)[s]$，当且仅当两者都成立；
 - $\mathfrak{A} \models \forall v_{i} \varphi [s]$，当且仅当对**每个** $a \in A$ 都有 $\mathfrak{A} \models \varphi [s(v_{i} \mapsto a)]$。
@@ -227,7 +227,7 @@ $$x_0 \ni  x_1 \ni  x_2 \ni  \cdots$$
 
 它排除了 $A \in A$ 这类循环集合，也排除了「集合的无穷下降」。
 
-正则公理等价于「集合论宇宙 $V$ 是累积层级 $\bigcup \alpha V\alpha$」，这条公理让 $\in$归纳法成为合法的证明方法。
+正则公理等价于「集合论宇宙 $V$ 是累积层级 $\bigcup_{\alpha} V_\alpha$」，这条公理让 $\in$归纳法成为合法的证明方法。
 
 参考：Kunen, Set Theory, I.9
 
@@ -253,7 +253,7 @@ $$A_0 \ni  A_1 \ni  \cdots \ni  A_n = A_0$$
 设 $A$、$B$ 是集合。
 
 - **$A$ 是 $B$ 的子集**（记 $A \subseteq B$）：$$\forall x ( x \in A \to x \in B )$$
-- **$A$ 是 $B$ 的真子集**（记 $A \subsetneq B$）：$A \subseteq B$ 且 $A \ne B$。
+- **$A$ 是 $B$ 的真子集**（记 $A \subset B$）：$A \subseteq B$ 且 $A \ne B$。
 
 基本性质：$\subseteq$ 自反、传递；并且由外延公理，
 
@@ -516,9 +516,9 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 #### 可数与不可数　`def.countable`
 *定义*　可数 / 至多可数（Countable）
 
-设 $\mathbb{N} = \{0, 1, 2, \dots\}$ 是自然数集。
+设 $\mathbb{N} = \{0, 1, 2, \ldots\}$ 是自然数集。
 
-集合 $A$ **可数**，当且仅当存在双射 $A \to \mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \dots$，一个不漏、一个不重）。
+集合 $A$ **可数**，当且仅当存在双射 $A \to \mathbb{N}$（即能把 $A$ 排成一个无穷序列 $a_0, a_1, a_2, \ldots$，一个不漏、一个不重）。
 
 既有限又可数的情形合起来叫**至多可数**：$A$ 至多可数 $\iff$ 存在单射 $A \to \mathbb{N}$。
 
@@ -550,7 +550,7 @@ $$f : A \to B$$
 - $(0, 1)$ 与 $\mathbb{R}$ 等势（$x \mapsto \tan \pi(x - 1/2)$ 之类）；
 - $\mathbb{N}$ 与 $\mathbb{R}$ **不等势**（Cantor 定理）。
 
-⚠ $A \subseteq B$ 与「等势」无关：$\mathbb{N} \subsetneq \mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\iff$ 无限）。
+⚠ $A \subseteq B$ 与「等势」无关：$\mathbb{N} \subset \mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\iff$ 无限）。
 
 参考：Kunen, Set Theory, I.6
 
@@ -798,7 +798,7 @@ $$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ 是零列}$$
 
 （$\sim$ 是等价关系：自反、对称显然，传递由三角不等式。）
 
-⭐ **为什么要「模去零列」**：同一个实数有很多种逼近方式 —— 比如 $(1, 1, 1, \dots)$ 与 $(1.1,\ 1.01,\ 1.001,\ \dots)$ 都该代表 $1$，而它们的差是零列。等价类把「同一个数的不同逼近」粘成一件事。
+⭐ **为什么要「模去零列」**：同一个实数有很多种逼近方式 —— 比如 $(1, 1, 1, \ldots)$ 与 $(1.1,\ 1.01,\ 1.001,\ \ldots)$ 都该代表 $1$，而它们的差是零列。等价类把「同一个数的不同逼近」粘成一件事。
 
 ⚠ 这里**只用 $\mathbb{Q}$ 的序与绝对值**（$\varepsilon$ 取正有理数、绝对值是 $\mathbb{Q}$ 上的），所以**不构成循环**：这一步在造出 $\mathbb{R}$ 之前完全说得通。度量空间里那套「距离、Cauchy 列、完备」的语言，正是从这里的做法抽出来的。
 
@@ -824,11 +824,11 @@ $${}[x_n] > 0 :\iff \exists q \in \mathbb{Q},\ q > 0,\ \exists N,\ \forall n \ge
 
 （一般的序由 $[y_n] \ge [x_n] :\iff [y_n - x_n] \ge 0$ 给出。）零与一取常数列：
 
-$$0 := [(0,0,0,\dots)], \qquad 1 := [(1,1,1,\dots)]$$
+$$0 := [(0,0,0,\ldots)], \qquad 1 := [(1,1,1,\ldots)]$$
 
 最后，$\mathbb{Q}$ 通过**常数列**嵌入 $\mathbb{R}$：
 
-$$q \mapsto [(q, q, q, \dots)]$$
+$$q \mapsto [(q, q, q, \ldots)]$$
 
 ⭐ **这就是构造**：$\mathbb{R}$ 不被假定存在，它由**上一层的对象**粘出来 —— 有理数（$\mathbb{Q}$）$\to$ 有理数列（函数 $\omega \to \mathbb{Q}$）$\to$ 其中的 Cauchy 列 $\to$ 按等价关系取商集。每一步都只用到已经有的东西，一个新的对象都没有凭空进来。
 
@@ -896,7 +896,7 @@ $$f(x + y) = f(x) + f(y), \qquad f(xy) = f(x)\,f(y), \qquad x \le y \iff f(x) \l
 
 $$|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0} > \aleph_0$$
 
-⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\mathbb{R}$ 可以排成 $x_1, x_2, \dots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。
+⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\mathbb{R}$ 可以排成 $x_1, x_2, \ldots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。
 
 ⚠ 整段证明**只用到 $\mathbb{R}$ 的完备性**（确界原理），不需要基数理论；$|\mathbb{R}| = 2^{\aleph_0}$ 那一半是拿二进制展开与 $\mathcal{P}(\mathbb{N})$ 配对，再引用 Cantor 定理。
 
@@ -917,7 +917,7 @@ $$|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0} > \aleph_0$$
 
 由传递性，$\alpha$ 的**每个元素本身也是序数**。约定：$0 := \emptyset$，**后继序数** $\alpha + 1 := \alpha \cup \{ \alpha \}$；不含最大元的非零序数叫**极限序数**，$\omega$ 是最小的极限序数。序数全体记作 $\mathrm{On}$。
 
-开头的几个：$\emptyset,\ \{ \emptyset \},\ \{ \emptyset, \{ \emptyset \} \},\ \dots$，即 $0, 1, 2, \dots$；接着是 $\omega,\ \omega + 1,\ \omega + 2,\ \dots,\ \omega + \omega,\ \dots$
+开头的几个：$\emptyset,\ \{ \emptyset \},\ \{ \emptyset, \{ \emptyset \} \},\ \ldots$，即 $0, 1, 2, \ldots$；接着是 $\omega,\ \omega + 1,\ \omega + 2,\ \ldots,\ \omega + \omega,\ \ldots$
 
 ⭐⭐ **格式还是「集合 + 关系 + 公理」**：序数不是凭空的对象 —— 一个**传递集**，配上 $\in$ 这个**现成的**关系，就定出了一个序数。判别一个集合是不是序数，就是核对这两条。
 
@@ -968,11 +968,11 @@ $$\alpha \in \beta, \qquad \alpha = \beta, \qquad \beta \in \alpha$$
 #### 良序集的序型　`thm.wellorder-ordinal`
 *定理*　每个良序集序同构于唯一的序数
 
-设 $(W, \preceq )$ 是**良序集**。则存在**唯一**的序数 $\alpha$，使 $(W, \preceq )$ 与 $(\alpha, \in)$ **序同构**。这个 $\alpha$ 称为 $W$ 的**序型**，记作 $\mathrm{ot}(W) = \alpha$。
+设 $(W, \preceq )$ 是**良序集**。则存在**唯一**的序数 $\alpha$，使 $(W, \preceq )$ 与 $(\alpha, \in)$ **序同构**。这个 $\alpha$ 称为 $W$ 的**序型**，记作 $\operatorname{ot}(W) = \alpha$。
 
 ⭐⭐ 这一条就是「序数」这个东西真正被**造出来**的地方：序数不是先验摆在那里的，它由「每个良序集对应的那个规范良序集」给出 —— 而那个规范集是由**递归定理**一步步算出来的。
 
-⭐ 于是「$W$ 有多长」变成「$\mathrm{ot}(W)$ 是哪个序数」，两个良序集比长短变成比 $\in$ —— 这就是三歧性的用处。
+⭐ 于是「$W$ 有多长」变成「$\operatorname{ot}(W)$ 是哪个序数」，两个良序集比长短变成比 $\in$ —— 这就是三歧性的用处。
 
 ⚠ **唯一性**这一半要用到三歧性：两个序数若互相序同构，就必须相等。
 
@@ -1214,7 +1214,7 @@ $$P \ne \emptyset \wedge  ( \forall C \subseteq P, C\text{ 是链} \to \exists u
 
 设 $\mathcal{A}$ 是**具有有限特征的非空集合族**，则 $(\mathcal{A}, \subseteq )$ 有极大元。
 
-即：存在 $A \in \mathcal{A}$，使得不存在 $B \in \mathcal{A}$ 满足 $A \subsetneq B$。
+即：存在 $A \in \mathcal{A}$，使得不存在 $B \in \mathcal{A}$ 满足 $A \subset B$。
 
 Tukey 引理的好处是「免验证」：只要目标族具有有限特征，就可以跳过「每个链都有上界」这一繁琐检查。
 
@@ -1785,7 +1785,7 @@ $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 上的一个 **$\sigma$环**，�
 
 记号里的「$\sigma$」表示**可数**（取自德文 Summe / 法文 somme 的首字母），和标准差那个 $\sigma$ 无关。
 
-为什么非要有它：测度的可数可加性 $\mu (\bigcup A_{n}) = \Sigma \mu (A_{n})$ 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。
+为什么非要有它：测度的可数可加性 $\mu (\bigcup A_{n}) = \sum \mu (A_{n})$ 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。
 
 参考：Halmos, Measure Theory, §4；Folland, Real Analysis, §1.2；Rudin, Real and Complex Analysis, Ch. 1
 
@@ -1988,7 +1988,7 @@ $\sigma$有限是**最常用的技术假设**：$\mathbb{R}$ 上的 Lebesgue 测
 
 (a)：把 $F$ 拆成 $F = E \cup (F \setminus E)$ 用可数可加（把余下的位置补 $\emptyset$）。
 
-(b)：把 $\bigcup E_{j}$ 改成不交并：$F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $\mu (\bigcup E_{j}) = \Sigma \mu (F_{j}) \le \Sigma \mu (E_{j})$。
+(b)：把 $\bigcup E_{j}$ 改成不交并：$F_{j} = E_{j} \setminus (E_{1} \cup \cdots \cup E_\{j-1\})$，则 $\mu (\bigcup E_{j}) = \sum \mu (F_{j}) \le \sum \mu (E_{j})$。
 
 (c)：令 $A_{j} = E_{j} \setminus E_\{j-1\}$（$E_{0} = \emptyset$），则 $\bigcup E_{j}$ 是 $A_{j}$ 的不交并，而 $\mu (E_{n}) = \sum _\{j\le n\} \mu (A_{j})$ —— 两边取极限即可。
 
@@ -2276,7 +2276,7 @@ $$f : X \to Y\text{ 连续} \implies f\text{ 是} (\mathfrak{B}_X, \mathfrak{B}_
 参考：Folland, Real Analysis, §2.1；Halmos, Measure Theory, §18
 
 #### Lebesgue 可测　`def.lebesgue-measurable`
-*定义*　Lebesgue 可测 / Borel 可测（ℝ → ℂ 的情形）
+*定义*　Lebesgue 可测 / Borel 可测（$\mathbb{R} \to \mathbb{C}$ 的情形）
 
 对 $$f : \mathbb{R} \to \mathbb{C}$$：
 
@@ -2321,7 +2321,7 @@ $$\mathfrak{B}_\mathbb{C} = \mathfrak{B}_{\mathbb{R}^2} = \mathfrak{B}_\mathbb{R
 #### 可测函数的封闭性　`prop.measurable-closure`
 *命题*　命题：可测函数对和、积、sup、max、极限封闭
 
-以下都设函数取值在 $\bar{\mathbb{R}} = [-\infty , +\infty ]$ 或 $\mathbb{C}$ 中，且可测。
+以下都设函数取值在 $\overline{\mathbb{R}} = [-\infty , +\infty ]$ 或 $\mathbb{C}$ 中，且可测。
 
 - **和与积**：$$f + g$$、$$fg$$ 可测；
 - **逐点上确界**：$$\{f_j\}$$ 可测 $\implies$ $$\sup_j f_j$$ 可测；
@@ -2751,7 +2751,7 @@ a.e. 收敛时 $$\liminf f_n = f$$，直接套 Fatou 引理即可。
 #### 复函数的积分　`def.integral-complex`
 *定义*　复值函数的积分：正负部相减
 
-设 $$f : X \to \bar{\mathbb{R}}$$ 可测，记正部与负部
+设 $$f : X \to \overline{\mathbb{R}}$$ 可测，记正部与负部
 
 $$f^+ = \max_{f, 0}, \quad  f^- = \max_{-f, 0}$$
 
@@ -2882,7 +2882,7 @@ $$\sum_{j=1}^{\infty} \int |f_j| d\mu < \infty$$
 
 $$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j$$
 
-与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\Sigma \int |f_{j}| < \infty$ —— 用可积性换来「允许有正有负」。
+与「非负函数逐项积分」的区别：那里不需要任何收敛性假设（非负性保证了没有抵消），这里**需要** $\sum \int |f_{j}| < \infty$ —— 用可积性换来「允许有正有负」。
 
 这是 Fubini–Tonelli 定理证明里的关键工具。
 
@@ -2961,7 +2961,7 @@ $$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\mathcal{F})$$
 
 意义：算积 $\sigma$代数时，**每一维只需要拿一个生成元族就够了**，不必把整个 $\mathcal{M}_\alpha$ 搬进来。
 
-典型用法：$\mathbb{R}$ 上取 $\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\mathfrak{B}_\mathbb{R}$），于是 $\mathfrak{B}_\mathbb{R} ⊗ \mathfrak{B}_\mathbb{R}$ 已经由形如 $(a, b] \times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。
+典型用法：$\mathbb{R}$ 上取 $\mathcal{E} =$ 半开区间 { (a, b] }（它生成 $\mathfrak{B}_\mathbb{R}$），于是 $\mathfrak{B}_\mathbb{R} \otimes \mathfrak{B}_\mathbb{R}$ 已经由形如 $(a, b] \times (c, d]$ 的矩形生成 —— 这正是后面 Fubini 定理要用的事实。
 
 证明是「生成」的通用套路：两边都等于「包含 $\mathcal{F}$ 的最小 $\sigma$代数」，各自验证 $\mathcal{F} \subseteq$ 一边、另一边 $\subseteq \mathcal{F}$。
 
@@ -3011,7 +3011,7 @@ $$\{ B(c, r) : c \in C_j, r \in \mathbb{Q} \}$$
 
 
 
-是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\mathfrak{B}_\{X_{j}\}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\mathfrak{B}_X \subseteq ⊗\mathfrak{B}_\{X_{j}\}$。
+是 $X_{j}$ 的**可数**拓扑基，它已经生成 $\mathfrak{B}_\{X_{j}\}$。于是 $X$ 的拓扑基由这些基的有限积组成，仍然可数，从而 $\mathfrak{B}_X \subseteq \otimes\mathfrak{B}_\{X_{j}\}$。
 
 ⚠ 可分性不能省：$\mathbb{R}^\mathbb{R}$（不可数积）上，积 $\sigma$代数真包含于 $Borel \sigma$代数。
 
@@ -3030,17 +3030,17 @@ $$E = \bigsqcup_{j=1}^{n} (A_j \times B_j)$$
 
 定义
 
-$$\pi (E) := \sum_{j=1}^{n} \mu(A_j) \nu(B_j)$$
+$$\mu_{0} (E) := \sum_{j=1}^{n} \mu(A_j) \nu(B_j)$$
 
-则 $\pi$ 是代数 $\mathcal{A}$ 上的**预测度**。
+则 $\mu_{0}$ 是代数 $\mathcal{A}$ 上的**预测度**。
 
-**③ 扩张**：$\pi$ 诱导 $X \times Y$ 上的外测度，限制在 $$\mathcal{M} \otimes  \mathcal{N}$$ 上得到一个测度，记作
+**③ 扩张**：$\mu_{0}$ 诱导 $X \times Y$ 上的外测度，限制在 $$\mathcal{M} \otimes  \mathcal{N}$$ 上得到一个测度，记作
 
 $$\mu \times \nu$$
 
 即**乘积测度**。
 
-$\pi $ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。
+$\mu_{0} $ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。
 
 **$\sigma$有限的时候一切顺利**：若 $\mu$、$\nu$ 都 $\sigma$有限，则 $\mu \times \nu$ 也 $\sigma$有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。
 
@@ -3083,7 +3083,7 @@ $$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N}\text{ 且} E^y \i
 
 
 
-则 $\mathcal{R}$ 包含所有矩形，而且**$\mathcal{R}$ 是一个 $\sigma$代数**（截口运算保持并、交、补）。于是 $\mathcal{R} \supseteq \mathcal{M} ⊗ \mathcal{N}$。
+则 $\mathcal{R}$ 包含所有矩形，而且**$\mathcal{R}$ 是一个 $\sigma$代数**（截口运算保持并、交、补）。于是 $\mathcal{R} \supseteq \mathcal{M} \otimes \mathcal{N}$。
 
 (b) 由 (a) 与两条恒等式得到：
 
@@ -3175,11 +3175,11 @@ $$(X \times Y, \mathcal{M} \otimes  \mathcal{N}, \mu \times \nu)$$
 
 $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\nu$$
 
-为什么需要这一条：**$\mu \times \nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\lambda$ 里，而不是 $\mathcal{M}⊗\mathcal{N}$ 里。
+为什么需要这一条：**$\mu \times \nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\lambda$ 里，而不是 $\mathcal{M}\otimes\mathcal{N}$ 里。
 
 代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\mathcal{L}$ 里多出来的那些集合只在零集上有区别。
 
-证明的核心：先证 $f \ge 0$。若 $f = \chi _E$，$E = F \cup G$ 其中 $F \in \mathcal{M}⊗\mathcal{N}$、$G \subseteq H$ 且 $\mu \times \nu (H) = 0$，设不交并，则 $f = \chi _F + \chi _G$。$\chi _F$ ✓（归 Fubini–Tonelli），$\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**。
+证明的核心：先证 $f \ge 0$。若 $f = \chi _E$，$E = F \cup G$ 其中 $F \in \mathcal{M}\otimes\mathcal{N}$、$G \subseteq H$ 且 $\mu \times \nu (H) = 0$，设不交并，则 $f = \chi _F + \chi _G$。$\chi _F$ ✓（归 Fubini–Tonelli），$\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**。
 
 参考：Folland, Real Analysis, Theorem 2.39
 
@@ -4072,7 +4072,7 @@ $$\int_a^b F' = \int_a^b f\cdot dm \le \int_a^b d\mu_G = G(b) - G(a) \le F(b) - 
 参考：Folland, Real Analysis, Theorem 3.28
 
 #### 测度 ↔ NBV 的一一对应　`thm.borel-measure-nbv`
-*定理*　定理：ℝ 上的复 Borel 测度 ⟷ NBV 函数
+*定理*　定理：$\mathbb{R}$ 上的复 Borel 测度 $\longleftrightarrow$ NBV 函数
 
 **(1)** 若 $\mu$ 是 $\mathbb{R}$ 上的复 Borel 测度，$$F(x) := \mu((-\infty, x])$$，则 $$F \in NBV$$。
 
@@ -4134,7 +4134,7 @@ $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 
 **$(\Longleftarrow )$** 由测度的绝对连续的 $\varepsilon$–$\delta$ 刻画：$$\mu_F \ll  m$$ 给出「$$m(E) < \delta \implies |\mu_F(E)| < \varepsilon$$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。
 
-**$(\implies )$** 设 $$E \in \mathfrak{B}_\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\mu_F(E) = 0$$。取递减开集列 $$U_1 \supset  U_2 \supset  \cdots \supset  E$$ 使 $$m(U_k) < \delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \delta$$ 得 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性与 $$\bigcap U_k = E$$ 得 $$|\mu_F(E)| \le \varepsilon$$。由 $\varepsilon$ 任意，$$\mu_F(E) = 0$$。∎
+**$(\implies )$** 设 $$E \in \mathfrak{B}_\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\mu_F(E) = 0$$。取递减开集列 $$U_1 \supseteq U_2 \supseteq \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \delta$$ 得 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性与 $$\bigcap U_k = E$$ 得 $$|\mu_F(E)| \le \varepsilon$$。由 $\varepsilon$ 任意，$$\mu_F(E) = 0$$。∎
 
 ⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。
 
@@ -4217,13 +4217,13 @@ $$L^p(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f
 
 - $\|cf\|_p = |c| \, \|f\|_p$；
 
-- $f, g \in L^p \Rightarrow f + g \in L^p$（这一步用 $|f+g|^p \le 2^p(|f|^p + |g|^p)$）。
+- $f, g \in L^p \implies f + g \in L^p$（这一步用 $|f+g|^p \le 2^p(|f|^p + |g|^p)$）。
 
 
 
 ⚠ **$p < 1$ 时三角不等式失效**，所以那时 $L^p$ 只是拟范数空间（虽然它仍然是完备的）。
 
-和 $L^1$ 一样，$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），这正是 $\|f\|_p = 0 \Rightarrow f = 0$ 得以成立的前提。
+和 $L^1$ 一样，$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），这正是 $\|f\|_p = 0 \implies f = 0$ 得以成立的前提。
 
 参考：Folland, Real Analysis, §6.1
 
@@ -4317,7 +4317,7 @@ $$\left\| |f+g|^{p-1} \right\|_q^{\,q} = \int |f+g|^{(p-1)q} = \int |f+g|^p$$
 
 
 
-$$\|G_n\|_p \le \sum_{k \le n} \|f_k\|_p \le B \quad \Rightarrow \quad \int G^p = \lim_n \int G_n^p \le B^p$$
+$$\|G_n\|_p \le \sum_{k \le n} \|f_k\|_p \le B \quad \implies \quad \int G^p = \lim_n \int G_n^p \le B^p$$
 
 
 
@@ -4448,7 +4448,7 @@ $$\|f\|_q \le \|f\|_p^{\lambda} \, \|f\|_r^{1-\lambda}$$
 
 其中 $\lambda \in (0,1)$ 由下式确定：
 
-$$\frac{1}{q} = \frac{\lambda}{p} + \frac{1-\lambda}{r} \qquad \Longleftrightarrow \qquad \lambda = \frac{\,q^{-1} - r^{-1}\,}{p^{-1} - r^{-1}}$$
+$$\frac{1}{q} = \frac{\lambda}{p} + \frac{1-\lambda}{r} \qquad \iff \qquad \lambda = \frac{\,q^{-1} - r^{-1}\,}{p^{-1} - r^{-1}}$$
 
 这是 **Riesz–Thorin 插值定理**的初等特例：$L^q$ 范数被两端的 $L^p$、$L^r$ 范数「对数凸」地控制住。
 
@@ -4885,7 +4885,7 @@ $$\mathcal{C} = \{ C \subseteq P : C\text{ 是链} \}$$
 
 2. M 是链，故由题设有上界 $u \in P$。
 
-3. **断言 $u$ 是极大元**：若不然，存在 $v \in P$ 使 $u \prec v$。则 $M \cup \{v\}$ 仍是链——任取 $m \in M$，由 $m \preceq u \prec v$ 及传递性得 $m \preceq v$，故 $m$ 与 $v$ 可比。于是 $M \subsetneq M \cup \{v\}$ 是一个更大的链，与 $M$ 的极大性矛盾。
+3. **断言 $u$ 是极大元**：若不然，存在 $v \in P$ 使 $u \prec v$。则 $M \cup \{v\}$ 仍是链——任取 $m \in M$，由 $m \preceq u \prec v$ 及传递性得 $m \preceq v$，故 $m$ 与 $v$ 可比。于是 $M \subset M \cup \{v\}$ 是一个更大的链，与 $M$ 的极大性矛盾。
 
 故 $u$ 是 $P$ 的极大元。∎
 
@@ -4916,7 +4916,7 @@ $$U = \bigcup \{ A : A \in \mathcal{C} \}$$
 
 1. **$U \in \mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\mathcal{A}$。设 $S \subseteq U$ 有限，则每个 $s \in S$ 落在某个 $A_s \in \mathcal{C}$ 中；$\mathcal{C}$ 是 $\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \subseteq A_{0}$）。因为 $A_{0} \in \mathcal{A}$ 且 $\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\mathcal{A}$，特别地 $S \in \mathcal{A}$。故 $U$ 的每个有限子集属于 $\mathcal{A}$，从而 $U \in \mathcal{A}$。
 
-2. **$U$ 是极大元**：若存在 $B \in \mathcal{A}$ 使 $U \subsetneq B$，则 $\mathcal{C} \cup \{B\}$ 仍是 $\subseteq$链（每个 $A \in \mathcal{C}$ 满足 $A \subseteq U \subseteq B$），与 $\mathcal{C}$ 的极大性矛盾。
+2. **$U$ 是极大元**：若存在 $B \in \mathcal{A}$ 使 $U \subset B$，则 $\mathcal{C} \cup \{B\}$ 仍是 $\subseteq$链（每个 $A \in \mathcal{C}$ 满足 $A \subseteq U \subseteq B$），与 $\mathcal{C}$ 的极大性矛盾。
 
 故 $U$ 是 $(\mathcal{A}, \subseteq )$ 的极大元。∎
 
@@ -4974,7 +4974,7 @@ $f$ 是 $\mathcal{D}$ 的上界：$f \supseteq g$ 对一切 $g \in \mathcal{D}$ 
 
 $$f' = f \cup \{ (i_0, a) \}$$
 
-仍是 $\mathcal{F}$ 中的元素（$i_{0} \notin \operatorname{dom} f$，不破坏函数性），且 $f \subsetneq f'$ —— 与 $f$ 的极大性矛盾。故 $\operatorname{dom} f = I$。
+仍是 $\mathcal{F}$ 中的元素（$i_{0} \notin \operatorname{dom} f$，不破坏函数性），且 $f \subset f'$ —— 与 $f$ 的极大性矛盾。故 $\operatorname{dom} f = I$。
 
 **⑤** 于是 $f : I \to \bigcup _\{i \in I\} A_i$ 且 $f(i) \in A_i$ 对一切 $i$ 成立，即 $f$ 是这族集合的选择函数。由族的任意性，AC 成立。∎
 
@@ -5887,13 +5887,13 @@ $L^{1}$ 收敛的定义里用到 $\int |f_{n} - f|$。
 #### 预测度 + Carathéodory 定理 ⟹ 乘积测度　`imp.product-measure`
 *矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度*
 
-**① $\pi$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \cap A_k'$$ $\times$ $$B_j \cap B_k'$$），$\pi$ 的值不变 —— 因为 $\mu$、$\nu$ 在各自那一侧都是有限可加的。
+**① $\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \cap A_k'$$ $\times$ $$B_j \cap B_k'$$），$\mu_{0}$ 的值不变 —— 因为 $\mu$、$\nu$ 在各自那一侧都是有限可加的。
 
-**② $\pi$ 是 $\mathcal{A}$ 上的预测度。** $\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\mu$、$\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。
+**② $\mu_{0}$ 是 $\mathcal{A}$ 上的预测度。** $\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\mu$、$\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。
 
-**③ 用 Carathéodory 扩张。** 由「预测度 $\to$ 外测度 $\to$ 可测集 $\to$ 扩张测度」那一整套：$\pi$ 诱导出 $X \times Y$ 上的外测度 $\mu^{*}$，全体 $\mu^{*}$-可测集构成 $\sigma$代数，$\mu^{*}$ 在其上成为测度；而代数 $\mathcal{A}$ 中每个集合都是 $\mu^{*}$-可测的，且 $\mu^{*}|_\mathcal{A} = \pi$。
+**③ 用 Carathéodory 扩张。** 由「预测度 $\to$ 外测度 $\to$ 可测集 $\to$ 扩张测度」那一整套：$\mu_{0}$ 诱导出 $X \times Y$ 上的外测度 $\mu^{*}$，全体 $\mu^{*}$-可测集构成 $\sigma$代数，$\mu^{*}$ 在其上成为测度；而代数 $\mathcal{A}$ 中每个集合都是 $\mu^{*}$-可测的，且 $\mu^{*}|_\mathcal{A} = \mu_{0}$。
 
-**④ 落到 $\mathcal{M} ⊗ \mathcal{N}$ 上。** $\mathcal{A}$ 含所有矩形，故 $\mathcal{A}$ 生成 $\mathcal{M} ⊗ \mathcal{N} \subseteq (\mu^{*}$-可测集)；把 $\mu^{*}$ 限制在 $\mathcal{M} ⊗ \mathcal{N}$ 上，就是所要的测度 $\mu \times \nu$，它在矩形上取值 $$\mu \times \nu(A \times B) = \mu(A) \nu(B)$$。∎
+**④ 落到 $\mathcal{M} \otimes \mathcal{N}$ 上。** $\mathcal{A}$ 含所有矩形，故 $\mathcal{A}$ 生成 $\mathcal{M} \otimes \mathcal{N} \subseteq (\mu^{*}$-可测集)；把 $\mu^{*}$ 限制在 $\mathcal{M} \otimes \mathcal{N}$ 上，就是所要的测度 $\mu \times \nu$，它在矩形上取值 $$\mu \times \nu(A \times B) = \mu(A) \nu(B)$$。∎
 
 $>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。
 
@@ -5910,9 +5910,9 @@ $$E_x = B\quad  (x \in A), \quad  E_x = \emptyset\quad  (x \notin A)$$
 
 - **$\mathcal{R}$ 是 $\sigma$代数**：截口运算保持并、交、补 —— 例如 $$(\bigcup_n E^{(n)})_x = \bigcup_n E^{(n)}_x$$、$$(E^c)_x = (E_x)^c$$（这里用的是 $Y$ 在 $X \times Y$ 中的「竖条」补集）。故 $\mathcal{R}$ 对可数并与补封闭。
 
-于是 $\mathcal{R} \supseteq \mathcal{M}($矩形族$) = \mathcal{M} ⊗ \mathcal{N}$，(a) 得证。
+于是 $\mathcal{R} \supseteq \mathcal{M}($矩形族$) = \mathcal{M} \otimes \mathcal{N}$，(a) 得证。
 
-**(b)** 设 $f$ 是 $\mathcal{M}⊗\mathcal{N}$可测，$B \subseteq \mathbb{C}$ 可测。则
+**(b)** 设 $f$ 是 $\mathcal{M}\otimes\mathcal{N}$可测，$B \subseteq \mathbb{C}$ 可测。则
 
 $$f_x^{-1}(B) = \{y : f(x, y) \in B\} = (f^{-1}(B))_x$$
 
@@ -5931,7 +5931,7 @@ $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 
 **④ $\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \supseteq E_2 \supseteq \cdots$$、$$E = \bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\nu(Y) < \infty$$）得到同样的等式。
 
-**⑤ 用单调类定理。** 由 ①②③④，$\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\mathcal{C}$ 含这个代数；由单调类定理，$$\mathfrak{m}(\text{代数}) = \mathcal{M}(\text{代数}) = \mathcal{M} \otimes  \mathcal{N}$$，于是 $\mathcal{C} = \mathcal{M} ⊗ \mathcal{N}$。
+**⑤ 用单调类定理。** 由 ①②③④，$\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\mathcal{C}$ 含这个代数；由单调类定理，$$\mathfrak{m}(\text{代数}) = \mathcal{M}(\text{代数}) = \mathcal{M} \otimes  \mathcal{N}$$，于是 $\mathcal{C} = \mathcal{M} \otimes \mathcal{N}$。
 
 **⑥ 推广到 $\sigma$有限。** 取 $$X = \bigcup_i X_i$$、$$Y = \bigcup_i Y_i$$（各自测度有限），则 $$X \times Y = \bigcup_i (X_i \times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \cap (X_i \times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎
 
@@ -5983,7 +5983,7 @@ $$E = F \cup G, \quad  F \in \mathcal{M} \otimes  \mathcal{N}, \quad  G \subsete
 
 （取不交化后即 $$E = F \sqcup  G$$，于是 $$\chi_E = \chi_F + \chi_G$$。）
 
-**② $$\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \in \mathcal{M}⊗\mathcal{N}$）。
+**② $$\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \in \mathcal{M}\otimes\mathcal{N}$）。
 
 **③ $$\chi_G$$ 那一半也没问题** —— 因为 $$G \subseteq H$$ 而 $\mu \times \nu (H) = 0$，所以对**每一个** $x$ 都有 $$\nu(G_x) \le \nu(H_x) = 0$$（$H$ 的截口是 $\nu$零集，这一步用截口公式对 $H$ 本身成立），于是
 
@@ -6016,15 +6016,15 @@ $$G = \{(x, x) : x \in N\} \subseteq D$$
 
 $>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。
 
-> ⚠ 「$G \notin \mathfrak{B} ⊗ \mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）这里只给了骨架；要写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。
+> ⚠ 「$G \notin \mathfrak{B} \otimes \mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）这里只给了骨架；要写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。
 
 #### 定义引用：「预测度」→ 乘积测度　`def-link.productmeasure-premeasure`
 
-矩形上的 $\pi$ 就是一个预测度。
+矩形上的 $\mu_{0}$ 就是一个预测度。
 
 #### 定义引用：「积 σ-代数」→ 乘积测度　`def-link.productmeasure-sigma`
 
-乘积测度定义在积 $\sigma$代数 $\mathcal{M} ⊗ \mathcal{N}$ 上。
+乘积测度定义在积 $\sigma$代数 $\mathcal{M} \otimes \mathcal{N}$ 上。
 
 #### 定义引用：「截口」→ 截口可测　`def-link.section-props`
 
@@ -6060,7 +6060,7 @@ Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 
 #### 定义引用：「零集与完备」→ 完备情形的 F–T　`def-link.completion-fubini`
 
-证明的核心是把集合拆成「属于 $\mathcal{M}⊗\mathcal{N}$ 的部分」+「含在零集里的部分」。
+证明的核心是把集合拆成「属于 $\mathcal{M}\otimes\mathcal{N}$ 的部分」+「含在零集里的部分」。
 
 #### 定义引用：「有序对」→ 截口　`def-link.pair-section`
 
@@ -6574,7 +6574,7 @@ $$\sum_j |F(b_j) - F(a_j)| = \sum_j |\mu_F((a_j, b_j])| \le |\mu_F|(E) < \vareps
 
 这正是函数绝对连续的定义。
 
-**$(\implies )$** 设 $F$ 绝对连续，$$E \in \mathfrak{B}_\mathbb{R}$$、$$m(E) = 0$$，要证 $$\mu_F(E) = 0$$。由 $\mu _F$ 的正则性取递减开集列 $$U_1 \supset  U_2 \supset  \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$、$$\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性（递减列，首项有限）得
+**$(\implies )$** 设 $F$ 绝对连续，$$E \in \mathfrak{B}_\mathbb{R}$$、$$m(E) = 0$$，要证 $$\mu_F(E) = 0$$。由 $\mu _F$ 的正则性取递减开集列 $$U_1 \supseteq U_2 \supseteq \cdots \supseteq E$$ 使 $$m(U_k) < \delta$$、$$\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\mu_F(U_j)| < \varepsilon$$；再由测度的上连续性（递减列，首项有限）得
 
 $$|\mu_F(E)| = \lim_j |\mu_F(U_j)| \le \varepsilon$$
 
@@ -7234,7 +7234,7 @@ $$x + y \le |x| + |y|, \qquad -(x + y) \le |x| + |y|$$
 
 $$-c \le t \le c \iff |t| \le c \qquad (c \ge 0)$$
 
-（$\impliedby$：由 $t \le c$ 与 $-t \le c$ 分别取 $\max$；$\implies$：$|t|$ 等于 $t$ 或 $-t$，两种情形都在 $c$ 以下。）取 $t = x + y$ 得
+（$\Longleftarrow$：由 $t \le c$ 与 $-t \le c$ 分别取 $\max$；$\implies$：$|t|$ 等于 $t$ 或 $-t$，两种情形都在 $c$ 以下。）取 $t = x + y$ 得
 
 $$|x + y| \le |x| + |y| \qquad \blacksquare$$
 
@@ -7256,7 +7256,7 @@ $$|x + y| \le |x| + |y| \qquad \blacksquare$$
 
 乘法：$x_n y_n - x'_n y'_n = x_n (y_n - y'_n) + y'_n (x_n - x'_n)$，而 Cauchy 列**有界**（设 $|x_n| \le M$、$|y'_n| \le M'$），故两项各自 $\to 0$。
 
-**② 域公理。** 结合、交换、分配都是逐项验证后取等价类（$\mathbb{Q}$ 满足，$\mathcal{C}$ 对 $+$、$\cdot$ 封闭）。零元 $0 := [$零列$]$、一 $1 := [(1,1,1,\dots)]$。
+**② 域公理。** 结合、交换、分配都是逐项验证后取等价类（$\mathbb{Q}$ 满足，$\mathcal{C}$ 对 $+$、$\cdot$ 封闭）。零元 $0 := [$零列$]$、一 $1 := [(1,1,1,\ldots)]$。
 
 **乘法逆元**是唯一需要想法的地方：设 $x$ 不是零列。因 $x$ 是 Cauchy 列，「不是零列」意味着
 
@@ -7270,7 +7270,7 @@ $$|x_n| \ge |x_{n_0}| - |x_n - x_{n_0}| > \varepsilon - \varepsilon/2 = \varepsi
 
 $$|y_m - y_n| = \frac{|x_m - x_n|}{|x_m|\,|x_n|} \le \frac{4}{\varepsilon^2}\,|x_m - x_n|$$
 
-而 $[x_n y_n] = [(1,1,1,\dots)] = 1$。故每个非零元可逆。
+而 $[x_n y_n] = [(1,1,1,\ldots)] = 1$。故每个非零元可逆。
 
 **③ 序良定义 + 全序。** $(y_n - x_n)$ 换成等价的代表元后仍是零列的平移，故「$> 0$」的定义与代表元无关。三种情形恰有一种成立：
 
@@ -7279,7 +7279,7 @@ $$|y_m - y_n| = \frac{|x_m - x_n|}{|x_m|\,|x_n|} \le \frac{4}{\varepsilon^2}\,|x
 
 序与运算的相容性（$\alpha \le \beta \implies \alpha + \gamma \le \beta + \gamma$；$\alpha \ge 0, \beta \ge 0 \implies \alpha\beta \ge 0$）都逐项验证。
 
-**④ 嵌入与稠密。** $x \mapsto [(x,x,x,\dots)]$ 是保序、保运算的单射。稠密：若 $\alpha < \beta$，取代表元 $x \in \alpha$、$y \in \beta$ 与正有理数 $q$ 使最终 $x_n + q \le y_n$，则由 $\mathbb{Q}$ 的稠密性可取有理数 $r$ 夹在中间，常数列 $r$ 满足 $\alpha < [r] < \beta$。
+**④ 嵌入与稠密。** $x \mapsto [(x,x,x,\ldots)]$ 是保序、保运算的单射。稠密：若 $\alpha < \beta$，取代表元 $x \in \alpha$、$y \in \beta$ 与正有理数 $q$ 使最终 $x_n + q \le y_n$，则由 $\mathbb{Q}$ 的稠密性可取有理数 $r$ 夹在中间，常数列 $r$ 满足 $\alpha < [r] < \beta$。
 
 **⑤ $\mathbb{R}$ 完备（Cauchy 完备）。** 设 $(\alpha_k)$ 是 $\mathbb{R}$ 中的 Cauchy 列，$x^{(k)} \in \alpha_k$ 是代表元。对每个 $k$，由 $(x^{(k)}_n)_n$ 的 Cauchy 性取 $N_k$，令
 
@@ -7333,7 +7333,7 @@ $$n (y - x) > 1, \qquad \text{即}\quad \frac{1}{n} < y - x$$
 
 $$m \le nx < m + 1$$
 
-（「整数版本」：先用 (i) 取 $k > nx$，再从 $\{0, 1, \dots, k\}$ 中取最小的使 $\ge nx$ 的那个。）令 $q := (m+1)/n \in \mathbb{Q}$。则
+（「整数版本」：先用 (i) 取 $k > nx$，再从 $\{0, 1, \ldots, k\}$ 中取最小的使 $\ge nx$ 的那个。）令 $q := (m+1)/n \in \mathbb{Q}$。则
 
 - $q > x$：由 $nx < m + 1$ 两边除以 $n > 0$；
 - $q < y$：由 $q = \frac{m+1}{n} \le \frac{nx + 1}{n} = x + \frac{1}{n} < x + (y - x) = y$。
@@ -7373,7 +7373,7 @@ $$g(x) = g\big(\sup\{q : q < x\}\big) = \sup\{g(q) : q < x\} = \sup\{q' : q < x\
 #### ℝ 是完备有序域 ⟹ ℝ 不可数　`imp.real-uncountable`
 *完备性（确界原理）⟹ ℝ 不可数（闭区间套 + 对角线）*
 
-反设 $\mathbb{R} = \{x_1, x_2, x_3, \dots\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。
+反设 $\mathbb{R} = \{x_1, x_2, x_3, \ldots\}$ 可以排成一个序列。下面造一个不属于这个序列的实数。
 
 **① 二分法造出一串闭区间。** 取 $I_0 := [0, 1]$。已知 $I_{n-1} = [a_{n-1}, b_{n-1}]$ 后，令 $m_n := (a_{n-1} + b_{n-1})/2$，取
 
@@ -7385,7 +7385,7 @@ $$I_n := \begin{cases} [a_{n-1}, m_n], & x_n > m_n \\ [m_n, b_{n-1}], & x_n \le 
 
 **$a \in I_n$ 对每个 $n$ 成立**：一方面 $a \ge a_n$（上界）；另一方面对 $k \ge n$ 有 $a_k \le b_k \le b_n$，故 $b_n$ 是 $A$ 的上界，于是 $a \le b_n$。
 
-**③ 矛盾。** 由 ① 知 $x_n \notin I_n$，由 ② 知 $a \in I_n$，所以 $a \ne x_n$ 对**一切** $n$ 成立 —— 但 $a \in \mathbb{R} = \{x_1, x_2, \dots\}$，与序列穷尽了 $\mathbb{R}$ 矛盾。故 $\mathbb{R}$ 不可数。$\blacksquare$
+**③ 矛盾。** 由 ① 知 $x_n \notin I_n$，由 ② 知 $a \in I_n$，所以 $a \ne x_n$ 对**一切** $n$ 成立 —— 但 $a \in \mathbb{R} = \{x_1, x_2, \ldots\}$，与序列穷尽了 $\mathbb{R}$ 矛盾。故 $\mathbb{R}$ 不可数。$\blacksquare$
 
 **④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\mathbb{R} \hookrightarrow \mathcal{P}(\mathbb{N})$；反过来 $\mathcal{P}(\mathbb{N}) \to \mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0}$。再由 **Cantor 定理** $|\mathcal{P}(\mathbb{N})| > |\mathbb{N}| = \aleph_0$，即
 
@@ -7452,7 +7452,7 @@ $$R = \{ (w, y) : \text{存在函数} f \text{ 定义在} W_{< w} \text{ 上、�
 
 它是集合：候选的 $f$ 都是 $W_{< w} \times V$ 的子集，先由幂集公理拿到 $\mathcal{P}(W \times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。
 
-**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \notin \mathrm{dom}\, R$。则 $W_{< w} \subseteq \mathrm{dom}\, R$，于是 $f := R \upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \prec w$，由 $v \in \mathrm{dom}\, R$ 及单值性得 $f(v) = G(f \upharpoonright W_{< v})$）。于是 $(w, G(f)) \in R$，与 $w \notin \mathrm{dom}\, R$ 矛盾。
+**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \notin \operatorname{dom}\, R$。则 $W_{< w} \subseteq \operatorname{dom}\, R$，于是 $f := R \upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \prec w$，由 $v \in \operatorname{dom}\, R$ 及单值性得 $f(v) = G(f \upharpoonright W_{< v})$）。于是 $(w, G(f)) \in R$，与 $w \notin \operatorname{dom}\, R$ 矛盾。
 
 故 $R$ 就是所求的函数 $F$，由 ① 唯一。
 
@@ -7467,25 +7467,25 @@ $$R = \{ (w, y) : \text{存在函数} f \text{ 定义在} W_{< w} \text{ 上、�
 
 **① 序数的元素是序数。** 若 $\gamma \in \alpha$：$\gamma \subseteq \alpha$（$\alpha$ 传递），故 $\gamma$ 传递（$\gamma$ 的元素属于 $\alpha$，而 $\alpha$ 传递）；又 $\in$ 在 $\gamma$ 上继承 $\alpha$ 上的良序性，故 $\gamma$ 是序数。
 
-**② 若 $\beta \subsetneq \alpha$ 则 $\beta \in \alpha$。** 取 $b$ 为 $\alpha \setminus \beta$ 的 $\in$-最小元。断言 $\beta = b$。
+**② 若 $\beta \subset \alpha$ 则 $\beta \in \alpha$。** 取 $b$ 为 $\alpha \setminus \beta$ 的 $\in$-最小元。断言 $\beta = b$。
 　$\subseteq$：设 $x \in \beta$。由 $\beta \subseteq \alpha$ 有 $x \in \alpha$，故 $x, b \in \alpha$；由 $\in$ 在 $\alpha$ 上的**三歧性**（良序蕴含全序），$x \in b$、$x = b$、$b \in x$ 恰有一个成立。后两种都会给出 $b \in \beta$（$x = b$ 直接，$b \in x$ 用 $\beta$ 传递），与 $b$ 的取法矛盾。故 $x \in b$。
 　$\supseteq$：设 $x \in b$。由 $\alpha$ 传递得 $x \in \alpha$。若 $x \in \alpha \setminus \beta$，则 $x \in b$ 与 $b$ 的最小性矛盾（$x \in b$ 即 $x$ 比 $b$ 小）。故 $x \in \beta$。
 　于是 $\beta = b$，而 $b \in \alpha$，即 $\beta \in \alpha$。
 
-**③ 三歧性。** 若 $\alpha \ne \beta$，则 $\alpha \subseteq \beta$ 与 $\beta \subseteq \alpha$ 不能同时成立。不妨设 $\beta \nsubseteq \alpha$，则 $\beta \setminus \alpha \ne \emptyset$，故 $\beta \subsetneq \alpha$ 不成立，由 ② 得 $\alpha \in \beta$。对调 $\alpha, \beta$ 同理。
+**③ 三歧性。** 若 $\alpha \ne \beta$，则 $\alpha \subseteq \beta$ 与 $\beta \subseteq \alpha$ 不能同时成立。不妨设 $\beta \nsubseteq \alpha$，则 $\beta \setminus \alpha \ne \emptyset$，故 $\beta \subset \alpha$ 不成立，由 ② 得 $\alpha \in \beta$。对调 $\alpha, \beta$ 同理。
 
 **④ 三者不相容。** 若 $\alpha \in \beta$ 且 $\beta \in \alpha$，则由传递性 $\alpha \in \alpha$，与 $\in$ 在 $\alpha$ 上是良序（无 $\in$-循环）矛盾。又 $\alpha \in \beta$ 与 $\alpha = \beta$ 显然不相容。
 
 **⑤ $\in$ 是良序。** 可比性已得；非空序数集合 $S$ 取 $\alpha \in S$，若 $\alpha$ 不是 $\in$-最小元，则 $\alpha \cap S$ 是集合，由正则公理有 $\in$-最小元 $m$，而 $m$ 也是 $S$ 的 $\in$-最小元。∎
 
-> ② 是全部关键：「序数之间 $\subsetneq$ 就是 $\in$」。它让序数的比较退化成集合的属于关系。
+> ② 是全部关键：「序数之间 $\subset$ 就是 $\in$」。它让序数的比较退化成集合的属于关系。
 
 #### 超限递归 + 替换公理模式 + 正则公理 + 序数可比 ⟹ 良序集的序型　`imp.wellorder-ordinal`
 *递归定理 + 替换公理 ⇒ 每个良序集有唯一序型*
 
 设 $(W, \preceq )$ 是良序集。
 
-**① 造出函数。** 由**递归定理**（取 $G(f) = \mathrm{ran}\, f$，即「前面全部取值的值域」）得到唯一的 $F$ 定义在 $W$ 上，使
+**① 造出函数。** 由**递归定理**（取 $G(f) = \operatorname{ran}\, f$，即「前面全部取值的值域」）得到唯一的 $F$ 定义在 $W$ 上，使
 
 $$F(w) = \{ F(v) : v \prec w \}, \qquad \forall w \in W$$
 
@@ -7495,7 +7495,7 @@ $$F(w) = \{ F(v) : v \prec w \}, \qquad \forall w \in W$$
 
 **③ $F$ 是单射。** 反设存在 $v \ne w$ 使 $F(v) = F(w)$；由于 $\preceq$ 是全序，不妨 $v \prec w$。由 ② 得 $F(v) \in F(w) = F(v)$，即 $F(v) \in F(v)$ —— 与「任何集合都不属于自身」（正则公理的推论）矛盾。（这一步是真正用到**正则公理**的地方。）
 
-**④ $\alpha := \mathrm{ran}\, F$ 是序数。** 由替换公理模式，$\alpha = \{ F(w) : w \in W \}$ 是集合。**传递性**：若 $x \in F(w)$，则 $x = F(v)$ 对某个 $v \prec w$，故 $x \in \alpha$。**$\in$ 良序**：$\alpha$ 上的 $\in$ 经 ②③ 就是 $(W, \prec)$ 的序（$x \in y \iff F^{-1}(x) \prec F^{-1}(y)$），良序性原样搬过来。
+**④ $\alpha := \operatorname{ran}\, F$ 是序数。** 由替换公理模式，$\alpha = \{ F(w) : w \in W \}$ 是集合。**传递性**：若 $x \in F(w)$，则 $x = F(v)$ 对某个 $v \prec w$，故 $x \in \alpha$。**$\in$ 良序**：$\alpha$ 上的 $\in$ 经 ②③ 就是 $(W, \prec)$ 的序（$x \in y \iff F^{-1}(x) \prec F^{-1}(y)$），良序性原样搬过来。
 
 **⑤ 于是 $F$ 是 $(W, \preceq ) \to (\alpha, \in)$ 的序同构**，故 $W$ 的序型 $\alpha$ 存在。
 
@@ -7811,7 +7811,7 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 #### 定义引用：「距离空间」→ 可数积的 Borel 代数　`def-link.metric-borel-product`
 
-设 $X_1, X_2, \dots$ 是**距离空间**，$X = \prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。
+设 $X_1, X_2, \ldots$ 是**距离空间**，$X = \prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。
 
 #### 定义引用：「符号测度」→ 全变差的基本性质　`def-link.signed-total-variation`
 
@@ -8047,7 +8047,7 @@ $\mu \times \nu$ 是由两个**测度** $\mu$、$\nu$ 造出来的。
 
 #### 定义引用：「外测度」→ 乘积测度　`def-dep.outer-product-measure`
 
-扩张这一步：$\pi$ **诱导出 $X \times Y$ 上的外测度**，再限制到积 $\sigma$ 代数上。
+扩张这一步：$\mu_{0}$ **诱导出 $X \times Y$ 上的外测度**，再限制到积 $\sigma$ 代数上。
 
 #### 定义引用：「子集」→ 截口　`def-dep.subset-section`
 

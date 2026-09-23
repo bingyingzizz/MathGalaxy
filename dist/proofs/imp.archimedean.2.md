@@ -3,7 +3,7 @@
 
 `thm.real-ordered-field` ℝ 是完备有序域 → `lem.archimedean` 阿基米德性质
 
-（「整数版本」：先用 (i) 取 $k > nx$，再从 $\{0, 1, \dots, k\}$ 中取最小的使 $\ge nx$ 的那个。）令 $q := (m+1)/n \in \mathbb{Q}$。则
+（「整数版本」：先用 (i) 取 $k > nx$，再从 $\{0, 1, \ldots, k\}$ 中取最小的使 $\ge nx$ 的那个。）令 $q := (m+1)/n \in \mathbb{Q}$。则
 
 - $q > x$：由 $nx < m + 1$ 两边除以 $n > 0$；
 - $q < y$：由 $q = \frac{m+1}{n} \le \frac{nx + 1}{n} = x + \frac{1}{n} < x + (y - x) = y$。

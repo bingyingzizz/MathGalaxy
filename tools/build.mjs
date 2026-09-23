@@ -69,7 +69,7 @@ function loadMG() {
   const files = [
     'core/config.js', 'core/util.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
     'core/layers.js',
-    'data/regions.js', 'data/clusters.js',
+    'data/regions.js', 'data/clusters.js', 'data/notation.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -804,16 +804,16 @@ ${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连�
    说明在 \`notes/<节点id>.md\`，边的正文在 \`proofs/<边id>.md\`。
 顺着 id 继续读就是沿图走。
 
-⚠ **单次抓取只有约 1000 词元**（中文约 1.2 KB），抓取工具还会转义
+⚠ **单次抓取只有约 1000 词元**，抓取工具还会转义
 \`# * [ ] \\\` _ ~\`。产物都按这个尺度切过：**放不下的分页成
-\`<路径>.2.md\`**，第 1 页永远是 \`<路径>.md\`，每页头部都写了
-「第 1 页 / 上一页」在哪。
+\`<路径>.2.md\`**，第 1 页永远是 \`<路径>.md\`，页头写了上下页在哪。
 \`${base}graph.json\` / \`${base}graph.md\` 是 550 / 430 KB 的全量导出：
 **只用来下载，不要用来检索**。
 
 ## 其它
 
-\`${base}reading.md\` 结构/边/分层 · \`${base}policy.md\` 准则 · \`${base}hubs.md\` 枢纽榜。
+\`${base}reading.md\` 结构/边 · \`${base}policy.md\` 准则 · \`${base}hubs.md\` 枢纽 · \
+\`${base}notation.md\` 记号表。
 LaTeX 由 KaTeX 渲染；\`label\` 等字段是纯文本。
 `;
 }
@@ -847,6 +847,8 @@ function exportReading(data, base = '') {
 
 \`id\` \`type\` \`label\` \`title\` \`region\` \`cluster\` \`layer\`
 \`statement\` \`notes\` \`refs\`；节点用 \`id\` 引用，深链 \`#n=<节点id>\`。
+
+记号见 \`${base}notation.md\`。
 `;
 }
 
@@ -858,17 +860,17 @@ function exportPolicy(data, base = '') {
 
 新对象必须由**已经有的东西**造出来（子集、幂集、笛卡尔积、商集、函数空间……）。
 
-- ⛔ **禁止**用「满足某组性质的对象（在同构意义下唯一）」引入新东西 —— 那是
-  **公理刻画**，它悄悄假设了存在性。判据：这句话是在**定义一个新对象**，
+- ⛔ **禁止**用「满足某组性质的对象（同构意义下唯一）」引入新东西 —— 那是
+  **公理刻画**，悄悄假设了存在性。判据：这句话在**定义新对象**，
   还是在**陈述已有对象的性质**？
 - ⛔ **性质是定理，不是定义**：造出来之后，再把性质作为带证明的定理挂上去。
-- ⭐ **唯一的豁免**：一阶语言与公式（\`def.first-order-language\`、\`def.formula\`）
-  是**元层**对象 —— 写公理用的那门语言，比 ZFC 更原始，不从更低层构造。
-- **自查抓手**：「用到了却没节点」「用到了却没连边」都算违规。
+- ⭐ **唯一豁免**：一阶语言与公式（\`def.first-order-language\`、\`def.formula\`）
+  是**元层**对象，比 ZFC 更原始。
+- **自查抓手**：「用到了却没节点 / 没连边」都违规。
 
 ## 二、同一结论只收一份
 
-多门课程里重复的定理**已经合并**。判据：**A 能一句话说成 B（或 B 的特例）就不是两个节点。**
+重复的定理**已合并**。判据：**A 能一句话说成 B（或特例）就不是两个节点。**
 
 ## 三、只保留最通用的版本
 
@@ -877,6 +879,10 @@ function exportPolicy(data, base = '') {
 ## 四、星团按「装置」分，不按课程分
 
 星团 = 为了造出某个「能用的东西」而存在的一整套结果；一个团别超 40 点。
+
+## 五、记号
+
+见 \`notation.md\`；新内容先按它转写再进 packs/。
 `;
 }
 
@@ -915,6 +921,217 @@ function exportHubs(MG, graph, data) {
   return L.join('\n') + '\n';
 }
 
+
+/* ---------------------------------------------------------- notation.md */
+/* 记号对照表产物。真源在 `src/data/notation.js` —— 这里只是把它排版出来。
+   为什么必须分页：整张表 100 多条，远超单次抓取上限（1300 B），
+   所以索引只放「规则标题 + 分组目录」，条目按组切开。 */
+function exportNotation(MG, base = '') {
+  const N = MG.notation || { rules: [], rulings: [], groups: [], entries: [] };
+  const nb = g => (N.entries || []).filter(e => e.g === g.id).length;
+  const L = [];
+  L.push('# 数学星图 · 记号对照表');
+  L.push('');
+  L.push(N.intro || '');
+  L.push('');
+  L.push('## 铁律（用户拍板）');
+  L.push('');
+  for (const r of (N.rulings || [])) L.push(`- **${r.id}** ${r.text}`);
+  L.push('');
+  L.push('## 通用规则');
+  L.push('');
+  L.push(`R1–R${(N.rules || []).length}（LaTeX 写法 / 对象语言⟷元语言 / 算子 / 省略号 / ` +
+    `上下划线 / 方向标记 / label / title）全文 \`${base}notation/0-rules.md\``);
+  L.push('');
+  L.push('## 记号条目（按分组）');
+  L.push('');
+  for (const g of (N.groups || [])) L.push(`- \`${base}notation/${g.id}.md\` ${g.name} ${nb(g)}`);
+  L.push('');
+  L.push('## 已知老账');
+  L.push('');
+  for (const b of (N.backlog || [])) L.push(`- ${b.what}`);
+  L.push('');
+  L.push('## 用法');
+  L.push('');
+  L.push('不合规的先转写再进 `src/data/packs/`；正文出现裸 Unicode 数学符号或禁用写法时构建**直接失败**。');
+  L.push('');
+  return L.join('\n') + '\n';
+}
+
+/** 人读的一整篇记号表（站点阅读页用）。
+    ⚠️ 与 AI 产物 `notation.md` + `notation/*.md` **故意是两种形状**：
+    抓取工具一次只给 ~1300 B，所以给 AI 的必须切页；给人读的要连成一整篇。
+    两种需求不同，各自演化 —— 和 `tools/md.mjs` 不复用 `util.md()` 是同一个道理。
+    它不参与 AI 体积断言（不进 files 清单）。 */
+function exportNotationFull(MG) {
+  const N = MG.notation || {};
+  const L = [];
+  L.push('# 数学星图 · 记号对照表');
+  L.push('');
+  L.push(N.intro || '');
+  L.push('');
+  L.push(`> 真源 \`src/data/notation.js\` · 版本 v${N.version || 1} · 更新 ${N.updated || ''}`);
+  L.push('');
+  L.push('## 铁律（用户拍板）');
+  L.push('');
+  for (const r of (N.rulings || [])) L.push(`- **${r.id}** ${r.text}`);
+  L.push('');
+  L.push('## 通用规则 R 系列');
+  L.push('');
+  for (const r of (N.rules || [])) {
+    L.push(`### ${r.id}　${r.title}`);
+    L.push('');
+    L.push(r.text);
+    L.push('');
+  }
+  L.push('## 记号条目');
+  L.push('');
+  for (const g of (N.groups || [])) {
+    L.push(`### ${g.name}`);
+    L.push('');
+    for (const e of (N.entries || []).filter(x => x.g === g.id)) {
+      L.push(`- \`${e.tex}\`${e.uni ? ' ' + e.uni : ''}　**${nameOf(e)}**${e.note ? ' — ' + e.note : ''}`);
+    }
+    L.push('');
+  }
+  L.push('## 已知老账');
+  L.push('');
+  for (const b of (N.backlog || [])) L.push(`- ${b.what}`);
+  L.push('');
+  L.push('## 怎么执行');
+  L.push('');
+  L.push('- `bun tools/build.mjs` —— 正文出现裸 Unicode 数学符号、或表里的禁用写法时**直接失败**。');
+  L.push('- `bun tools/_notationcheck.mjs` —— 详细报告（按节点 / 字段），另有启发式警告与「用到了却没规则」。');
+  L.push('- 新内容进来**先过此表**：不合规的先转写，再进 `src/data/packs/`。');
+  L.push('');
+  return L.join('\n');
+}
+
+/** 通用规则全文（会超 1300 B，交给 emitChunks 分页） */
+function notationRulesBody(N) {
+  const L = [];
+  for (const r of (N.rules || [])) {
+    L.push(`## ${r.id}　${r.title}`);
+    L.push('');
+    L.push(r.text);
+    L.push('');
+  }
+  return L;
+}
+
+/** 条目名字里可能自带 **强调** —— 外层还要再包一层粗体，不剥掉就会渲染成
+    `*<strong>*包含</strong>...**` 这种破相。剥掉后统一整名加粗。 */
+const nameOf = e => String(e.name || '').replace(/\*\*/g, '');
+
+/** 一个分组的条目正文 */
+function notationGroupBody(N, g) {
+  const L = [];
+  for (const e of (N.entries || []).filter(x => x.g === g.id)) {
+    const uni = e.uni ? ` ${e.uni}` : '';
+    const note = e.note ? ` — ${e.note}` : '';
+    L.push(`- \`${e.tex}\`${uni}　**${nameOf(e)}**${note}`);
+  }
+  return L;
+}
+
+/** 把记号表写成 dist/notation.md + dist/notation/*.md，返回产物清单 */
+function exportNotationProducts(MG, base = '') {
+  const N = MG.notation || {};
+  const files = [];
+  const dir = 'notation';
+  const mkHead = (title, page, from) => `# ${title}\n` +
+    `根 \`${from}\`　·　索引 \`notation.md\`${page ? `　·　第 ${page} 页` : ''}\n\n`;
+
+  /* 通用规则 */
+  {
+    const head = mkHead('记号表 · 通用规则', 0, '../');
+    const tail = '索引 `notation.md`（三份铁律 + 分组目录）。';
+    emitChunks(files, dir, '0-rules', head, notationRulesBody(N).join('\n'), tail);
+  }
+  /* 各分组 */
+  for (const g of (N.groups || [])) {
+    const head = mkHead(`记号表 · ${g.name}`, 0, '../');
+    const tail = '索引 `notation.md`（三份铁律 + 分组目录）。';
+    emitChunks(files, dir, g.id, head, notationGroupBody(N, g).join('\n'), tail);
+  }
+  return files;
+}
+
+/* ------------------------------------------------- 记号表的硬断言 */
+/** 剥掉公式与代码，只留「普通文字」—— 裸 Unicode 检查要在公式之外做 */
+function stripMath(s) {
+  return String(s)
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$[^$\n]*?\$/g, ' ')
+    .replace(/`[^`\n]*?`/g, ' ');
+}
+
+function assertNotation(MG, graph) {
+  const N = (MG.notation && MG.notation.checks) || {};
+  const errs = [];
+  if (!MG.notation) return errs;
+
+  const fields = N.bareUnicode || {};
+  const bodyFields = fields.body || [];
+  const titleFields = fields.title || [];
+  const bad = new Set([...(fields.chars || '')]);
+  const banned = (N.banned || []).map(b => ({ ...b, rx: new RegExp(b.re, 'g') }));
+
+  const items = [];   // { id, field, text }
+  for (const n of graph.nodes) {
+    for (const f of bodyFields) if (n[f]) items.push({ id: n.id, field: f, text: n[f] });
+    for (const f of titleFields) if (n[f]) items.push({ id: n.id, field: f, text: n[f], warn: true });
+  }
+  for (const e of graph.edges) {
+    if (e.proof) items.push({ id: e.id, field: 'proof', text: e.proof });
+    if (e.note) items.push({ id: e.id, field: 'note', text: e.note });
+    if (Array.isArray(e.proofs)) {
+      for (const p of e.proofs) {
+        const t = typeof p === 'string' ? p : (p && p.text);
+        if (t) items.push({ id: e.id, field: 'proofs', text: t });
+      }
+    }
+    if (e.title) items.push({ id: e.id, field: 'title', text: e.title, warn: true });
+  }
+
+  /* ① 裸 Unicode 数学符号（正文 = 硬失败；title = 已知老账，只汇总一行） */
+  const bodyHits = new Map();      // '字符' → { count, where }
+  const titleItems = new Set();
+  const titleChars = new Set();
+  for (const it of items) {
+    const plain = stripMath(it.text);
+    for (const ch of new Set(plain)) {
+      if (!bad.has(ch)) continue;
+      if (it.warn) { titleItems.add(it.id); titleChars.add(ch); continue; }
+      const cur = bodyHits.get(ch) || { count: 0, where: it.id + '.' + it.field };
+      cur.count += 1;
+      bodyHits.set(ch, cur);
+    }
+  }
+  for (const [ch, h] of bodyHits) {
+    errs.push(`记号：${h.where} 等 ${h.count} 处出现裸 Unicode 数学符号「${ch}」` +
+      `—— 要写成 $…$ 里的 LaTeX（详见 dist/notation.md）`);
+  }
+  if (titleItems.size) {
+    console.log(`    ⚠ 记号（警告）：title 里有裸 Unicode 数学记号，涉及 ${titleItems.size} 个节点 / ${titleChars.size} 种符号` +
+      `（${[...titleChars].join(' ')}）—— 已知老账，见 notation.md 的 backlog`);
+  }
+
+  /* ② 禁用写法 */
+  for (const b of banned) {
+    const found = [];
+    for (const it of items) {
+      b.rx.lastIndex = 0;
+      if (b.rx.test(it.text)) found.push(`${it.id}.${it.field}`);
+    }
+    if (found.length) {
+      const want = b.fix.replace(/\\\\\\\\/g, '\\');
+      errs.push(`记号：${found.slice(0, 4).join('、')}${found.length > 4 ? ` 等 ${found.length} 处` : ''}` +
+        ` 用了禁用写法${b.why ? `（${b.why}）` : ''} —— 应为 \`${want}\``);
+    }
+  }
+  return errs;
+}
 
 /* ---------------------------------------------------------------- 单文件 HTML */
 function buildSingleFile() {
@@ -984,16 +1201,27 @@ if (doJSON) {
   console.log('  → dist/hubs.md');
 
   /* ---------------------------------------------- AI 按需检索产物 */
-  for (const d of ['nodes', 'proofs', 'notes', 'index']) {
+  for (const d of ['nodes', 'proofs', 'notes', 'index', 'notation']) {
     fs.rmSync(path.join(DIST, d), { recursive: true, force: true });
   }
   // 早期版本产出过 JSON 版索引；抓取工具对 JSON 不友好，已改成纯文本 .md。
   // 这里主动清掉，免得旧的留在 dist/ 里被当成产物发布。
   fs.rmSync(path.join(DIST, 'index.json'), { force: true });
   const { files, notesOut, pagesOf } = exportAIProducts(MG, graph, data);
+
+  /* ------------------------------------------------- 记号对照表产物 */
+  /* 真源是 src/data/notation.js —— 这里只把它排版成「一次抓得完」的分页产物。 */
+  fs.writeFileSync(path.join(DIST, 'notation.md'), exportNotation(MG), 'utf8');
+  fs.writeFileSync(path.join(ROOT, 'notation.md'), exportNotation(MG, 'dist/'), 'utf8');
+  fs.writeFileSync(path.join(DIST, 'notation-full.md'), exportNotationFull(MG), 'utf8');
+  const notationFiles = exportNotationProducts(MG);
+  for (const f of notationFiles) files.push(f);   // 一起过体积断言，一起落盘
+  console.log(`  → dist/notation.md + notation/*.md（${notationFiles.length} 页）+ notation.md`);
+
   const errs = assertAI(MG, graph, files, pagesOf);
+  errs.push(...assertNotation(MG, graph));
   // 给 AI 看的说明文档也必须在一次抓取之内
-  for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md']) {
+  for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md']) {
     const p = path.join(DIST, extra);
     if (!fs.existsSync(p)) continue;
     const t = fs.readFileSync(p, 'utf8');
@@ -1022,7 +1250,7 @@ if (doJSON) {
     process.exit(1);
   }
   console.log(`  ✓ 断言通过：每个产物 ≤ ${AI_MAXB} B / 转义后 ${AI_ESC} 字符、非单行、` +
-    `等价边两端同层、层号与边方向一致`);
+    `等价边两端同层、层号与边方向一致、正文记号合规`);
 }
 
 if (doHTML) {

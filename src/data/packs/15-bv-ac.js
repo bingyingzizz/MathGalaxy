@@ -263,7 +263,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'theorem',
       label: '测度 ↔ NBV 的一一对应',
-      title: '定理：ℝ 上的复 Borel 测度 ⟷ NBV 函数',
+      title: '定理：$\\mathbb{R}$ 上的复 Borel 测度 $\\longleftrightarrow$ NBV 函数',
       regions: ['analysis'],
       tags: ['定理', 'Riesz 表示', 'Borel 测度', 'NBV'],
       statement: [
@@ -344,7 +344,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$$\\mu_F \\ll  m$$ 给出「$$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
-        '**$(\\implies )$** 设 $$E \\in \\mathfrak{B}_\\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\\mu_F(E) = 0$$。取递减开集列 $$U_1 \\supset  U_2 \\supset  \\cdots \\supset  E$$ 使 $$m(U_k) < \\delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \\delta$$ 得 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性与 $$\\bigcap U_k = E$$ 得 $$|\\mu_F(E)| \\le \\varepsilon$$。由 $\\varepsilon$ 任意，$$\\mu_F(E) = 0$$。∎',
+        '**$(\\implies )$** 设 $$E \\in \\mathfrak{B}_\\mathbb{R}$$ 且 $$m(E) = 0$$。要证 $$\\mu_F(E) = 0$$。取递减开集列 $$U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$（由正则性）。每个 $$U_k$$ 是区间的可数不交并，由函数的绝对连续性与 $$m(U_k) < \\delta$$ 得 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性与 $$\\bigcap U_k = E$$ 得 $$|\\mu_F(E)| \\le \\varepsilon$$。由 $\\varepsilon$ 任意，$$\\mu_F(E) = 0$$。∎',
         '⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -520,7 +520,7 @@ window.MG = window.MG || {};
         '',
         '这正是函数绝对连续的定义。',
         '',
-        '**$(\\implies )$** 设 $F$ 绝对连续，$$E \\in \\mathfrak{B}_\\mathbb{R}$$、$$m(E) = 0$$，要证 $$\\mu_F(E) = 0$$。由 $\\mu _F$ 的正则性取递减开集列 $$U_1 \\supset  U_2 \\supset  \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$、$$\\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性（递减列，首项有限）得',
+        '**$(\\implies )$** 设 $F$ 绝对连续，$$E \\in \\mathfrak{B}_\\mathbb{R}$$、$$m(E) = 0$$，要证 $$\\mu_F(E) = 0$$。由 $\\mu _F$ 的正则性取递减开集列 $$U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$$ 使 $$m(U_k) < \\delta$$、$$\\bigcap_k U_k = E$$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $$|\\mu_F(U_j)| < \\varepsilon$$；再由测度的上连续性（递减列，首项有限）得',
         '',
         '$$|\\mu_F(E)| = \\lim_j |\\mu_F(U_j)| \\le \\varepsilon$$',
         '',

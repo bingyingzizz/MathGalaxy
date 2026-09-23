@@ -19,7 +19,7 @@ $$x + y \le |x| + |y|, \qquad -(x + y) \le |x| + |y|$$
 
 $$-c \le t \le c \iff |t| \le c \qquad (c \ge 0)$$
 
-（$\impliedby$：由 $t \le c$ 与 $-t \le c$ 分别取 $\max$；$\implies$：$|t|$ 等于 $t$ 或 $-t$，两种情形都在 $c$ 以下。）取 $t = x + y$ 得
+（$\Longleftarrow$：由 $t \le c$ 与 $-t \le c$ 分别取 $\max$；$\implies$：$|t|$ 等于 $t$ 或 $-t$，两种情形都在 $c$ 以下。）取 $t = x + y$ 得
 
 $$|x + y| \le |x| + |y| \qquad \blacksquare$$
 

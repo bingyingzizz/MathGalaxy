@@ -40,6 +40,7 @@ import { renderDoc, esc } from './md.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const DIST = path.join(ROOT, 'dist');
+const SRC = path.join(ROOT, 'src');
 const STAGE = path.join(ROOT, 'dist-site');
 const SITE = path.join(ROOT, 'site');
 
@@ -117,7 +118,8 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
-for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'index.md']) {
+for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'index.md',
+                 'notation.md', 'notation-full.md']) {
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
@@ -126,7 +128,7 @@ for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md'
 // ⚠️ 这些是「拆分过的图」，加起来比 graph.json 还大 —— 但**单个文件都很小**，
 // 所以 AI 能一次读完一个；而 graph.json 单次抓取只能拿到开头一小段。
 let aiFiles = 0;
-for (const d of ['index', 'nodes', 'proofs', 'notes']) {
+for (const d of ['index', 'nodes', 'proofs', 'notes', 'notation']) {
   const src = path.join(DIST, d);
   if (!fs.existsSync(src)) continue;
   fs.cpSync(src, path.join(STAGE, 'mathgalaxy', d), { recursive: true });
@@ -154,6 +156,21 @@ const assetDir = path.join(SITE, 'assets');
 for (const f of fs.readdirSync(assetDir)) {
   fs.copyFileSync(path.join(assetDir, f), path.join(STAGE, 'assets', f));
 }
+
+// 阅读页也要渲染 LaTeX（记号对照表里全是 $…$）。
+// KaTeX 的 CSS 用 url(fonts/…) 找字体，是相对**它自己**解析的 ⇒ 字体要放在 assets/fonts/。
+const katexFiles = ['katex.min.js', 'katex.min.css'];
+for (const f of katexFiles) {
+  fs.copyFileSync(path.join(SRC, 'ui', f), path.join(STAGE, 'assets', f));
+}
+const katexFontSrc = path.join(SRC, 'ui', 'fonts');
+const katexFontDst = path.join(STAGE, 'assets', 'fonts');
+fs.mkdirSync(katexFontDst, { recursive: true });
+let kf = 0;
+for (const f of fs.readdirSync(katexFontSrc)) {
+  if (f.endsWith('.woff2')) { fs.copyFileSync(path.join(katexFontSrc, f), path.join(katexFontDst, f)); kf++; }
+}
+console.log(`   阅读页 KaTeX：${katexFiles.join(' + ')} + ${kf} 个 woff2 → assets/`);
 
 // 规模与「最近更新」都从构建产物里读，不手写（免得又对不上）
 const distMeta = JSON.parse(fs.readFileSync(path.join(DIST, 'graph.json'), 'utf8')).meta;
@@ -190,10 +207,11 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
 // 现在渲染成站内的阅读页：同一份内容，排好版，切换有动画；原件仍然在 mathgalaxy/ 下
 // 原封不动地躺着（AI 要读的还是它们）。
 const DOCS = [
-  { id: 'reading', file: 'reading.md', nav: '读图指南',   sub: '三层 / 四种边 / 层号' },
-  { id: 'llms',    file: 'llms.txt',   nav: '检索协议',   sub: '给 AI 的入口' },
-  { id: 'policy',  file: 'policy.md',  nav: '内容准则',   sub: '这张图为什么这么长' },
-  { id: 'hubs',    file: 'hubs.md',    nav: '枢纽定理榜', sub: '哪些东西是地基' },
+  { id: 'reading',  file: 'reading.md',       nav: '读图指南',   sub: '三层 / 四种边 / 层号' },
+  { id: 'notation', file: 'notation-full.md', nav: '记号对照表', sub: '包含 / 真包含 / 补集 / 字母谁是谁' },
+  { id: 'llms',     file: 'llms.txt',         nav: '检索协议',   sub: '给 AI 的入口' },
+  { id: 'policy',   file: 'policy.md',        nav: '内容准则',   sub: '这张图为什么这么长' },
+  { id: 'hubs',     file: 'hubs.md',          nav: '枢纽定理榜', sub: '哪些东西是地基' },
 ];
 
 const navHtml = DOCS.map((d) =>

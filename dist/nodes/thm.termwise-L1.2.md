@@ -4,5 +4,5 @@
 ## 陈述（续）
 $$\sum_{j=1}^{\infty} \int |f_j| d\mu < \infty$$
 则 $$\sum_j f_j$$ 几乎处处收敛到一个 $$L^1$$ 中的函数，并且可以逐项积分：
-$$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f
-_j$$
+$$\int \sum_{j=1}^{\infty} f_j = \sum_{j=1}^{\infty} \int f_j
+$$

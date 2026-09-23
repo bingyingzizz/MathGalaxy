@@ -35,18 +35,18 @@ window.MG = window.MG || {};
         '',
         '定义',
         '',
-        '$$\\pi (E) := \\sum_{j=1}^{n} \\mu(A_j) \\nu(B_j)$$',
+        '$$\\mu_{0} (E) := \\sum_{j=1}^{n} \\mu(A_j) \\nu(B_j)$$',
         '',
-        '则 $\\pi$ 是代数 $\\mathcal{A}$ 上的**预测度**。',
+        '则 $\\mu_{0}$ 是代数 $\\mathcal{A}$ 上的**预测度**。',
         '',
-        '**③ 扩张**：$\\pi$ 诱导 $X \\times Y$ 上的外测度，限制在 $$\\mathcal{M} \\otimes  \\mathcal{N}$$ 上得到一个测度，记作',
+        '**③ 扩张**：$\\mu_{0}$ 诱导 $X \\times Y$ 上的外测度，限制在 $$\\mathcal{M} \\otimes  \\mathcal{N}$$ 上得到一个测度，记作',
         '',
         '$$\\mu \\times \\nu$$',
         '',
         '即**乘积测度**。'
       ].join('\n'),
       notes: [
-        '$\\pi $ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。',
+        '$\\mu_{0} $ 的良定义要检查（同一个 $E$ 可以拆成不同的矩形不交并）—— 这正是要把「矩形」换成「矩形的**不交**并」的原因：不交并之下加法好验。',
         '**$\\sigma$有限的时候一切顺利**：若 $\\mu$、$\\nu$ 都 $\\sigma$有限，则 $\\mu \\times \\nu$ 也 $\\sigma$有限，而且由 Carathéodory 唯一性，这样造出来的测度是唯一的。',
         '⚠ 这一步的整个机器（预测度 $\\to$ 外测度 $\\to$ Carathéodory 扩张 $\\to$ 唯一性）就是「测度的构造」那个星团里现成的四件套。'
       ].join('\n\n'),
@@ -98,7 +98,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y)\\}$$',
         '',
-        '则 $\\mathcal{R}$ 包含所有矩形，而且**$\\mathcal{R}$ 是一个 $\\sigma$代数**（截口运算保持并、交、补）。于是 $\\mathcal{R} \\supseteq \\mathcal{M} ⊗ \\mathcal{N}$。',
+        '则 $\\mathcal{R}$ 包含所有矩形，而且**$\\mathcal{R}$ 是一个 $\\sigma$代数**（截口运算保持并、交、补）。于是 $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$。',
         '(b) 由 (a) 与两条恒等式得到：',
         '',
         '$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$',
@@ -198,9 +198,9 @@ window.MG = window.MG || {};
         '$$\\int f d\\lambda = \\int_X ( \\int_Y f d\\nu ) d\\mu = \\int_Y ( \\int_X f d\\mu ) d\\nu$$'
       ].join('\n'),
       notes: [
-        '为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}⊗\\mathcal{N}$ 里。',
+        '为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}\\otimes\\mathcal{N}$ 里。',
         '代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\\mathcal{L}$ 里多出来的那些集合只在零集上有区别。',
-        '证明的核心：先证 $f \\ge 0$。若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}⊗\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**。'
+        '证明的核心：先证 $f \\ge 0$。若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.39']
     },
@@ -233,13 +233,13 @@ window.MG = window.MG || {};
       target: 'def.product-measure',
       title: '矩形上的预测度 ⟹ Carathéodory 扩张得到乘积测度',
       proof: [
-        '**① $\\pi$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k\'$$ $\\times$ $$B_j \\cap B_k\'$$），$\\pi$ 的值不变 —— 因为 $\\mu$、$\\nu$ 在各自那一侧都是有限可加的。',
+        '**① $\\mu_{0}$ 是良定义的。** 设 $E$ 有两种矩形不交并的写法。把两边的矩形再交叉细分成最小的那些块（$$A_j \\cap A_k\'$$ $\\times$ $$B_j \\cap B_k\'$$），$\\mu_{0}$ 的值不变 —— 因为 $\\mu$、$\\nu$ 在各自那一侧都是有限可加的。',
         '',
-        '**② $\\pi$ 是 $\\mathcal{A}$ 上的预测度。** $\\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\\mu$、$\\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。',
+        '**② $\\mu_{0}$ 是 $\\mathcal{A}$ 上的预测度。** $\\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\\mu$、$\\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。',
         '',
-        '**③ 用 Carathéodory 扩张。** 由「预测度 $\\to$ 外测度 $\\to$ 可测集 $\\to$ 扩张测度」那一整套：$\\pi$ 诱导出 $X \\times Y$ 上的外测度 $\\mu^{*}$，全体 $\\mu^{*}$-可测集构成 $\\sigma$代数，$\\mu^{*}$ 在其上成为测度；而代数 $\\mathcal{A}$ 中每个集合都是 $\\mu^{*}$-可测的，且 $\\mu^{*}|_\\mathcal{A} = \\pi$。',
+        '**③ 用 Carathéodory 扩张。** 由「预测度 $\\to$ 外测度 $\\to$ 可测集 $\\to$ 扩张测度」那一整套：$\\mu_{0}$ 诱导出 $X \\times Y$ 上的外测度 $\\mu^{*}$，全体 $\\mu^{*}$-可测集构成 $\\sigma$代数，$\\mu^{*}$ 在其上成为测度；而代数 $\\mathcal{A}$ 中每个集合都是 $\\mu^{*}$-可测的，且 $\\mu^{*}|_\\mathcal{A} = \\mu_{0}$。',
         '',
-        '**④ 落到 $\\mathcal{M} ⊗ \\mathcal{N}$ 上。** $\\mathcal{A}$ 含所有矩形，故 $\\mathcal{A}$ 生成 $\\mathcal{M} ⊗ \\mathcal{N} \\subseteq (\\mu^{*}$-可测集)；把 $\\mu^{*}$ 限制在 $\\mathcal{M} ⊗ \\mathcal{N}$ 上，就是所要的测度 $\\mu \\times \\nu$，它在矩形上取值 $$\\mu \\times \\nu(A \\times B) = \\mu(A) \\nu(B)$$。∎',
+        '**④ 落到 $\\mathcal{M} \\otimes \\mathcal{N}$ 上。** $\\mathcal{A}$ 含所有矩形，故 $\\mathcal{A}$ 生成 $\\mathcal{M} \\otimes \\mathcal{N} \\subseteq (\\mu^{*}$-可测集)；把 $\\mu^{*}$ 限制在 $\\mathcal{M} \\otimes \\mathcal{N}$ 上，就是所要的测度 $\\mu \\times \\nu$，它在矩形上取值 $$\\mu \\times \\nu(A \\times B) = \\mu(A) \\nu(B)$$。∎',
         '',
         '$>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。'
       ].join('\n')
@@ -262,9 +262,9 @@ window.MG = window.MG || {};
         '',
         '- **$\\mathcal{R}$ 是 $\\sigma$代数**：截口运算保持并、交、补 —— 例如 $$(\\bigcup_n E^{(n)})_x = \\bigcup_n E^{(n)}_x$$、$$(E^c)_x = (E_x)^c$$（这里用的是 $Y$ 在 $X \\times Y$ 中的「竖条」补集）。故 $\\mathcal{R}$ 对可数并与补封闭。',
         '',
-        '于是 $\\mathcal{R} \\supseteq \\mathcal{M}($矩形族$) = \\mathcal{M} ⊗ \\mathcal{N}$，(a) 得证。',
+        '于是 $\\mathcal{R} \\supseteq \\mathcal{M}($矩形族$) = \\mathcal{M} \\otimes \\mathcal{N}$，(a) 得证。',
         '',
-        '**(b)** 设 $f$ 是 $\\mathcal{M}⊗\\mathcal{N}$可测，$B \\subseteq \\mathbb{C}$ 可测。则',
+        '**(b)** 设 $f$ 是 $\\mathcal{M}\\otimes\\mathcal{N}$可测，$B \\subseteq \\mathbb{C}$ 可测。则',
         '',
         '$$f_x^{-1}(B) = \\{y : f(x, y) \\in B\\} = (f^{-1}(B))_x$$',
         '',
@@ -289,7 +289,7 @@ window.MG = window.MG || {};
         '',
         '**④ $\\mathcal{C}$ 对递减交封闭。** 若 $$E_1 \\supseteq E_2 \\supseteq \\cdots$$、$$E = \\bigcap E_n$$：因为测度有限，可以用 DCT（控制函数是常数 $$\\nu(Y) < \\infty$$）得到同样的等式。',
         '',
-        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} ⊗ \\mathcal{N}$。',
+        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$$，于是 $\\mathcal{C} = \\mathcal{M} \\otimes \\mathcal{N}$。',
         '',
         '**⑥ 推广到 $\\sigma$有限。** 取 $$X = \\bigcup_i X_i$$、$$Y = \\bigcup_i Y_i$$（各自测度有限），则 $$X \\times Y = \\bigcup_i (X_i \\times Y_i)$$。对每个 $i$，把 ⑤ 用在 $$E \\cap (X_i \\times Y_i)$$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎',
         '',
@@ -353,7 +353,7 @@ window.MG = window.MG || {};
         '',
         '（取不交化后即 $$E = F \\sqcup  G$$，于是 $$\\chi_E = \\chi_F + \\chi_G$$。）',
         '',
-        '**② $$\\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \\in \\mathcal{M}⊗\\mathcal{N}$）。',
+        '**② $$\\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \\in \\mathcal{M}\\otimes\\mathcal{N}$）。',
         '',
         '**③ $$\\chi_G$$ 那一半也没问题** —— 因为 $$G \\subseteq H$$ 而 $\\mu \\times \\nu (H) = 0$，所以对**每一个** $x$ 都有 $$\\nu(G_x) \\le \\nu(H_x) = 0$$（$H$ 的截口是 $\\nu$零集，这一步用截口公式对 $H$ 本身成立），于是',
         '',
@@ -392,7 +392,7 @@ window.MG = window.MG || {};
         '',
         '$>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。'
       ].join('\n'),
-      note: '⚠ 「$G \\notin \\mathfrak{B} ⊗ \\mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）这里只给了骨架；要写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。'
+      note: '⚠ 「$G \\notin \\mathfrak{B} \\otimes \\mathfrak{B}$」那一步的细节（如何从截面还原出 $N$）这里只给了骨架；要写严格版，建议改用「对角线论证 + Fubini 定理给矛盾」的路线。'
     },
 
     /* ------------------------- 定义引用（蓝线） ------------------------- */
@@ -401,14 +401,14 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.premeasure',
       usedBy: 'def.product-measure',
-      note: '矩形上的 $\\pi$ 就是一个预测度。'
+      note: '矩形上的 $\\mu_{0}$ 就是一个预测度。'
     },
     {
       id: 'def-link.productmeasure-sigma',
       kind: 'definition',
       definition: 'def.product-sigma',
       usedBy: 'def.product-measure',
-      note: '乘积测度定义在积 $\\sigma$代数 $\\mathcal{M} ⊗ \\mathcal{N}$ 上。'
+      note: '乘积测度定义在积 $\\sigma$代数 $\\mathcal{M} \\otimes \\mathcal{N}$ 上。'
     },
     {
       id: 'def-link.section-props',
@@ -471,7 +471,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.null-set',
       usedBy: 'thm.fubini-complete',
-      note: '证明的核心是把集合拆成「属于 $\\mathcal{M}⊗\\mathcal{N}$ 的部分」+「含在零集里的部分」。'
+      note: '证明的核心是把集合拆成「属于 $\\mathcal{M}\\otimes\\mathcal{N}$ 的部分」+「含在零集里的部分」。'
     },
 
     /* ---- 截口本身的前置：它建在「函数」「有序对」「笛卡尔积」之上 ---- */

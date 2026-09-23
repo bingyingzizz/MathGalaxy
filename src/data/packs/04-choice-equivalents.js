@@ -96,7 +96,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{A}$ 是**具有有限特征的非空集合族**，则 $(\\mathcal{A}, \\subseteq )$ 有极大元。',
         '',
-        '即：存在 $A \\in \\mathcal{A}$，使得不存在 $B \\in \\mathcal{A}$ 满足 $A \\subsetneq B$。'
+        '即：存在 $A \\in \\mathcal{A}$，使得不存在 $B \\in \\mathcal{A}$ 满足 $A \\subset B$。'
       ].join('\n'),
       notes: [
         'Tukey 引理的好处是「免验证」：只要目标族具有有限特征，就可以跳过「每个链都有上界」这一繁琐检查。',
@@ -265,7 +265,7 @@ window.MG = window.MG || {};
             '',
             '2. M 是链，故由题设有上界 $u \\in P$。',
             '',
-            '3. **断言 $u$ 是极大元**：若不然，存在 $v \\in P$ 使 $u \\prec v$。则 $M \\cup \\{v\\}$ 仍是链——任取 $m \\in M$，由 $m \\preceq u \\prec v$ 及传递性得 $m \\preceq v$，故 $m$ 与 $v$ 可比。于是 $M \\subsetneq M \\cup \\{v\\}$ 是一个更大的链，与 $M$ 的极大性矛盾。',
+            '3. **断言 $u$ 是极大元**：若不然，存在 $v \\in P$ 使 $u \\prec v$。则 $M \\cup \\{v\\}$ 仍是链——任取 $m \\in M$，由 $m \\preceq u \\prec v$ 及传递性得 $m \\preceq v$，故 $m$ 与 $v$ 可比。于是 $M \\subset M \\cup \\{v\\}$ 是一个更大的链，与 $M$ 的极大性矛盾。',
             '',
             '故 $u$ 是 $P$ 的极大元。∎'
           ].join('\n')
@@ -308,7 +308,7 @@ window.MG = window.MG || {};
             '',
             '1. **$U \\in \\mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\\mathcal{A}$。设 $S \\subseteq U$ 有限，则每个 $s \\in S$ 落在某个 $A_s \\in \\mathcal{C}$ 中；$\\mathcal{C}$ 是 $\\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \\subseteq A_{0}$）。因为 $A_{0} \\in \\mathcal{A}$ 且 $\\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\\mathcal{A}$，特别地 $S \\in \\mathcal{A}$。故 $U$ 的每个有限子集属于 $\\mathcal{A}$，从而 $U \\in \\mathcal{A}$。',
             '',
-            '2. **$U$ 是极大元**：若存在 $B \\in \\mathcal{A}$ 使 $U \\subsetneq B$，则 $\\mathcal{C} \\cup \\{B\\}$ 仍是 $\\subseteq$链（每个 $A \\in \\mathcal{C}$ 满足 $A \\subseteq U \\subseteq B$），与 $\\mathcal{C}$ 的极大性矛盾。',
+            '2. **$U$ 是极大元**：若存在 $B \\in \\mathcal{A}$ 使 $U \\subset B$，则 $\\mathcal{C} \\cup \\{B\\}$ 仍是 $\\subseteq$链（每个 $A \\in \\mathcal{C}$ 满足 $A \\subseteq U \\subseteq B$），与 $\\mathcal{C}$ 的极大性矛盾。',
             '',
             '故 $U$ 是 $(\\mathcal{A}, \\subseteq )$ 的极大元。∎'
           ].join('\n')
@@ -380,7 +380,7 @@ window.MG = window.MG || {};
         '',
         '$$f\' = f \\cup \\{ (i_0, a) \\}$$',
         '',
-        '仍是 $\\mathcal{F}$ 中的元素（$i_{0} \\notin \\operatorname{dom} f$，不破坏函数性），且 $f \\subsetneq f\'$ —— 与 $f$ 的极大性矛盾。故 $\\operatorname{dom} f = I$。',
+        '仍是 $\\mathcal{F}$ 中的元素（$i_{0} \\notin \\operatorname{dom} f$，不破坏函数性），且 $f \\subset f\'$ —— 与 $f$ 的极大性矛盾。故 $\\operatorname{dom} f = I$。',
         '',
         '**⑤** 于是 $f : I \\to \\bigcup _\\{i \\in I\\} A_i$ 且 $f(i) \\in A_i$ 对一切 $i$ 成立，即 $f$ 是这族集合的选择函数。由族的任意性，AC 成立。∎'
       ].join('\n'),

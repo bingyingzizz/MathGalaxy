@@ -9,7 +9,7 @@ $$E = F \cup G, \quad  F \in \mathcal{M} \otimes  \mathcal{N}, \quad  G \subsete
 
 （取不交化后即 $$E = F \sqcup  G$$，于是 $$\chi_E = \chi_F + \chi_G$$。）
 
-**② $$\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \in \mathcal{M}⊗\mathcal{N}$）。
+**② $$\chi_F$$ 那一半没问题** —— 直接归 Fubini–Tonelli（$F \in \mathcal{M}\otimes\mathcal{N}$）。
 
 **③ $$\chi_G$$ 那一半也没问题** —— 因为 $$G \subseteq H$$ 而 $\mu \times \nu (H) = 0$，所以对**每一个** $x$ 都有 $$\nu(G_x) \le \nu(H_x) = 0$$（$H$ 的截口是 $\nu$零集，这一步用截口公式对 $H$ 本身成立），于是
 

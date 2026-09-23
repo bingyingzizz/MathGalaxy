@@ -513,7 +513,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.metric-space',
       usedBy: 'cor.borel-product',
-      note: '设 $X_1, X_2, \\dots$ 是**距离空间**，$X = \\prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。'
+      note: '设 $X_1, X_2, \\ldots$ 是**距离空间**，$X = \\prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。'
     },
     {
       id: 'def-link.signed-total-variation',

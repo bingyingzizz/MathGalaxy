@@ -126,7 +126,7 @@ window.MG = window.MG || {};
     ['def.measure', 'def.product-measure', 'def-dep.measure-product-measure',
       '$\\mu \\times \\nu$ 是由两个**测度** $\\mu$、$\\nu$ 造出来的。'],
     ['def.outer-measure', 'def.product-measure', 'def-dep.outer-product-measure',
-      '扩张这一步：$\\pi$ **诱导出 $X \\times Y$ 上的外测度**，再限制到积 $\\sigma$ 代数上。'],
+      '扩张这一步：$\\mu_{0}$ **诱导出 $X \\times Y$ 上的外测度**，再限制到积 $\\sigma$ 代数上。'],
     ['def.subset', 'def.section', 'def-dep.subset-section',
       '截口 $E_x = \\{ y : (x, y) \\in E \\}$ 是**子集**（$E \\subseteq X \\times Y$）。'],
 
