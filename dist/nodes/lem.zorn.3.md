@@ -6,4 +6,4 @@
 - ⟺ `thm.hausdorff` Hausdorff 极大原理
 - ⇒ `ax.choice` 选择公理
 - ⇒ `thm.vsbasis` 每个向量空间有基
-- ～弱边 `def.sup` 上确界与下确界
+- ～弱边 `thm.real-ordered-field` ℝ 是完备有序域

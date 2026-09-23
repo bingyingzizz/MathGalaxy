@@ -1,11 +1,10 @@
 # 实数与极限（analysis.real）· 节点清单（第 1/1 页）
 
-在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）
-中心天体 def.sup　·　7 个节点　·　根 `../`
+在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。（ℝ、ℂ 与确界原理都在「数系的构造」里。）
+中心天体 def.sequence-limit　·　6 个节点　·　根 `../`
 
 - def.extended-real　扩充实数 [−∞,+∞]　layer 12
 - def.interval　区间　layer 12
-- def.sup　上确界与下确界　layer 12
 - def.sequence-limit　数列极限　layer 12
 - def.series　级数收敛　layer 13
 - def.continuous　连续　layer 13

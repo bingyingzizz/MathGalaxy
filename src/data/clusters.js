@@ -150,8 +150,8 @@ MG.clusters = [
     id: 'analysis.real',
     name: '实数与极限',
     parent: 'analysis',
-    hub: 'def.sup',
-    desc: '在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）'
+    hub: 'def.sequence-limit',
+    desc: '在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。（ℝ、ℂ 与确界原理都在「数系的构造」里。）'
   },
   {
     id: 'analysis.setclass',

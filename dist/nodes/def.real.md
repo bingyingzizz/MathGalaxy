@@ -18,8 +18,8 @@ $$\mathbb{R} := \mathcal{C} / \sim$$
 ## 它能推出什么 / 谁在用它
 - 被 `def.extended-real` 扩充实数 [−∞,+∞] 用
 - 被 `def.interval` 区间 用
-- 被 `def.sup` 上确界与下确界 用
 - 被 `def.sequence-limit` 数列极限 用
+- 被 `def.complex` 复数 ℂ 用
 
 - …另有出边，续页见 `nodes/def.real.3.md`
 

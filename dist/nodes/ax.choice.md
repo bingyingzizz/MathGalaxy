@@ -19,6 +19,8 @@ $$\forall F [ ( \forall X \in F, X \ne \emptyset ) \to \exists f ( f\text{ 是�
 - ⟺ `thm.wellordering` 良序定理
 - ⇒ `lem.zorn` 佐恩引理
 
+- …另有出边，续页见 `nodes/ax.choice.3.md`
+
 refs: Jech, The Axiom of Choice；Kunen, Set Theory, I.12
 
 > 说明见 `notes/ax.choice.md`

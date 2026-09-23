@@ -14,6 +14,6 @@
 - **4** `prop.section-measurable` 截口可测 · layer 7 · 乘积测度与 Fubini
 - **4** `thm.wellordering` 良序定理 · layer 9 · 选择原理
 - **4** `thm.hausdorff` Hausdorff 极大原理 · layer 9 · 选择原理
-- **4** `def.metric-space` 距离空间 · layer 12 · 度量空间
+- **4** `thm.cardinal-comparable` 基数可比定理 · layer 10 · 基数与等势
 
-（231 个节点里 224 个带强边入边，列了前 11 个；完整清单见 `graph.json`。）
+（230 个节点里 223 个带强边入边，列了前 11 个；完整清单见 `graph.json`。）

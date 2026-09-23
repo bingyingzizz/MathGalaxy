@@ -4,7 +4,7 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 `def.rel` 关系 用
 - 被 `def.chain` 链 用
-- 被 `def.bound` 上界与极大元 用
+- 被 `def.bound` 界与确界 用
 - 被 `def.wellorder` 良序集 用
 - 被 `def.vs` 向量空间的基 用
 - 被 `def.fundamental-class` 基本类 用

@@ -15,5 +15,4 @@ $$\exists B \forall x ( x \notin B )$$
 
 refs: Kunen, Set Theory, I.4
 
-## 说明
-$\emptyset$ 是 $\in$关系的最小元，也是 $\subseteq$关系的最小元：$\emptyset \subseteq A$ 对一切 $A$ 成立。
+> 说明见 `notes/thm.empty.md`

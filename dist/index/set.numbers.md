@@ -12,7 +12,7 @@
 - def.cauchy-null　Cauchy 列与零列　layer 10
 - def.real　实数系 ℝ　layer 11
 - def.complex　复数 ℂ　layer 12
-- thm.real-ordered-field　ℝ 是完备有序域　layer 13
-- lem.archimedean　阿基米德性质　layer 14
-- thm.real-uncountable　ℝ 不可数　layer 14
-- thm.real-unique　完备有序域的唯一性　layer 15
+- thm.real-ordered-field　ℝ 是完备有序域　layer 12
+- lem.archimedean　阿基米德性质　layer 13
+- thm.real-uncountable　ℝ 不可数　layer 13
+- thm.real-unique　完备有序域的唯一性　layer 14

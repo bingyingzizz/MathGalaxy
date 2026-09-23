@@ -13,7 +13,7 @@ layer 5 · 定义 · 序结构 · 序理论
 - 被 `def.ordered-field` 有序域 用
 - 被 `def.order-iso` 序同构 用
 - 被 `def.chain` 链 用
-- 被 `def.bound` 上界与极大元 用
+- 被 `def.bound` 界与确界 用
 - 被 `def.wellorder` 良序集 用
 - 被 `def.finchar` 有限特征 用
 - 被 `lem.zorn` 佐恩引理 用

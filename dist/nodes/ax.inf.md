@@ -6,7 +6,7 @@ layer 0 · 公理 · ZFC 公理系统 · 集合论
 
 $$\exists I [ \emptyset \in I \wedge  \forall x ( x \in I \to x \cup \{ x \} \in I ) ]$$
 
-其中 $\emptyset$ 由分离公理模式得到，$x \cup \{x\}$ 由配对公理与并集公理得到。
+公理本身只要求 $I$ **非空**且对后继封闭；写成 $\emptyset \in I$ 只是为了好看，$\emptyset$ 是原始对象（见「空集」）。
 这条公理宣告了无穷集合的存在，是从中构造自然数集 $\omega$ 的唯一来源。
 
 ## 它能推出什么 / 谁在用它
@@ -14,5 +14,4 @@ $$\exists I [ \emptyset \in I \wedge  \forall x ( x \in I \to x \cup \{ x \} \in
 
 refs: Kunen, Set Theory, I.5
 
-## 说明
-没有它，$V_\omega$ 就是一个模型，所有集合都有限，算术只能在有界范围内进行。
+> 说明见 `notes/ax.inf.md`

@@ -34,7 +34,7 @@ MG.trunk = [
   'ax.ext',                    //  0 层  外延公理：集合相等靠什么
   'def.empty',                 //  0 层  空集 ∅
   'def.subset',                //  1 层  子集
-  'def.power-set',             //  2 层  幂集 𝒫(X)（生成的 σ-代数、外测度都踩在它上面）
+  'def.power-set',             //  3 层  幂集 𝒫(X)（生成的 σ-代数、外测度都踩在它上面）
   'thm.empty',                 //  5 层  空集存在
   'def.pair',                  //  3 层  有序对
   'thm.omega',                 //  5 层  自然数集 ℕ 存在（无穷公理 + 分离）
@@ -49,8 +49,7 @@ MG.trunk = [
   'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
   'def.cauchy-null',           // 10 层  有理 Cauchy 列 / 零列 / 等价
   'def.real',                  // 11 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
-  'def.sup',                   // 12 层  上确界与下确界
-  'thm.real-ordered-field',    // 13 层  ℝ 是完备有序域（确界原理）—— 性质是定理，结论用 sup 写
+  'thm.real-ordered-field',    // 12 层  ℝ 是完备有序域 —— 性质是定理，含**确界原理**
   'def.interval',              // 12 层  区间
   'def.sequence-limit',        // 12 层  数列极限
 

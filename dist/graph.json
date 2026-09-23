@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-23T08:14:10.535Z",
+  "generated": "2026-09-23T08:23:24.003Z",
   "counts": {
    "regions": 6,
    "clusters": 23,
-   "nodes": 231,
-   "edges": 484,
-   "strong": 476,
+   "nodes": 230,
+   "edges": 485,
+   "strong": 477,
    "weak": 8
   },
   "readingGuide": {
@@ -55,7 +55,7 @@
    "en": "Order Theory",
    "desc": "偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。",
    "color": "#2FA96B",
-   "nodeCount": 13
+   "nodeCount": 12
   },
   {
    "id": "topology",
@@ -79,7 +79,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 161
+   "nodeCount": 160
   }
  ],
  "clusters": [
@@ -284,12 +284,11 @@
    "id": "analysis.real",
    "name": "实数与极限",
    "parent": "analysis",
-   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 上确界 → 数列极限与级数 → 连续 → 导数。（ℝ 本身的构造在「数系的构造」里，ℂ 也在那里。）",
-   "nodeCount": 7,
+   "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。（ℝ、ℂ 与确界原理都在「数系的构造」里。）",
+   "nodeCount": 6,
    "nodes": [
     "def.extended-real",
     "def.interval",
-    "def.sup",
     "def.sequence-limit",
     "def.series",
     "def.continuous",
@@ -644,8 +643,8 @@
     "归纳集",
     "自然数"
    ],
-   "statement": "存在一个「归纳集」——含有 $\\emptyset$ 且对后继封闭的集合：\n\n$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\n其中 $\\emptyset$ 由分离公理模式得到，$x \\cup \\{x\\}$ 由配对公理与并集公理得到。\n这条公理宣告了无穷集合的存在，是从中构造自然数集 $\\omega$ 的唯一来源。",
-   "notes": "没有它，$V_\\omega$ 就是一个模型，所有集合都有限，算术只能在有界范围内进行。",
+   "statement": "存在一个「归纳集」——含有 $\\emptyset$ 且对后继封闭的集合：\n\n$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\n公理本身只要求 $I$ **非空**且对后继封闭；写成 $\\emptyset \\in I$ 只是为了好看，$\\emptyset$ 是原始对象（见「空集」）。\n这条公理宣告了无穷集合的存在，是从中构造自然数集 $\\omega$ 的唯一来源。",
+   "notes": "没有它，$V_\\omega$ 就是一个模型，所有集合都有限，算术只能在有界范围内进行。\n\n记号方面：$x \\cup \\{x\\}$ 由配对公理与并集公理写出来，它们与这条公理、以及 $\\emptyset$，都在同一层地基上 —— 地基内部的相互引用不画成依赖边。",
    "refs": [
     "Kunen, Set Theory, I.5"
    ]
@@ -837,7 +836,7 @@
     "定理"
    ],
    "statement": "存在一个不含任何元素的集合：\n\n$$\\exists B \\forall x ( x \\notin B )$$\n\n由外延公理，这样的 $B$ 唯一，记作 $\\emptyset$。",
-   "notes": "$\\emptyset$ 是 $\\in$关系的最小元，也是 $\\subseteq$关系的最小元：$\\emptyset \\subseteq A$ 对一切 $A$ 成立。",
+   "notes": "$\\emptyset$ 是 $\\in$ 关系的最小元，也是 $\\subseteq$ 关系的最小元：$\\emptyset \\subseteq A$ 对一切 $A$ 成立。\n\n⭐ 这条定理的意义：**不把 $\\emptyset$ 当原始对象**，只用分离公理模式（对任一集合 $A$ 取 $\\{x \\in A : x \\ne x\\}$）也能把它造出来 —— 所以「空集」在 ZF 里不是一条额外的假设。",
    "refs": [
     "Kunen, Set Theory, I.4"
    ]
@@ -972,8 +971,8 @@
   {
    "id": "def.bound",
    "type": "definition",
-   "label": "上界与极大元",
-   "title": "上界 / 上确界 / 极大元（Bound & Maximal Element）",
+   "label": "界与确界",
+   "title": "上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -983,12 +982,15 @@
    "tags": [
     "定义",
     "上界",
+    "下界",
+    "上确界",
     "极大元"
    ],
-   "statement": "设 $(P, \\preceq )$ 是偏序集，$S \\subseteq P$，$u, m \\in P$。\n\n- **$u$ 是 $S$ 的上界**：$\\forall s \\in S, s \\preceq u$。\n- **$u$ 是 $S$ 的上确界**（记 sup S）：$u$ 是上界，且 $u \\preceq$ 每一个上界。\n- **$m$ 是 $P$ 的极大元**：$$\\forall x \\in P ( m \\preceq x \\to x = m )$$，即没有比 $m$ 更大的元素。\n- **$m$ 是 $P$ 的最大元**：$\\forall x \\in P, x \\preceq m$，即 $m$ 比所有元素都大。\n\n⚠ **极大元 $\\ne$ 最大元。**",
-   "notes": "例子：$P = \\{ \\{1\\}, \\{2\\} \\}$ 按 $\\subseteq$ 排序。两个元素都是极大元（谁也包不住谁），但没有最大元。\n\n在**全序**集里两者才重合。偏序集里「极大」只要求「上面没有别人」，不要求「下面有所有人」。\n\n佐恩引理保证的是极大元，而不是最大元——这一点在应用时最容易出错。",
+   "statement": "设 $(P, \\preceq )$ 是偏序集，$S \\subseteq P$，$u, l, m \\in P$。\n\n- **$u$ 是 $S$ 的上界**：$\\forall s \\in S, s \\preceq u$。\n- **$l$ 是 $S$ 的下界**：$\\forall s \\in S, l \\preceq s$。\n- **$u$ 是 $S$ 的上确界**（记 $\\sup S$）：$u$ 是上界，且 $u \\preceq$ 每一个上界 —— 即**最小**的上界。\n- **$l$ 是 $S$ 的下确界**（记 $\\inf S$）：$l$ 是下界，且每一个下界 $\\preceq l$ —— 即**最大**的下界。\n- **$m$ 是 $P$ 的极大元**：$\\forall x \\in P ( m \\preceq x \\to x = m )$，即没有比 $m$ 更大的元素。\n- **$m$ 是 $P$ 的最大元**：$\\forall x \\in P, x \\preceq m$，即 $m$ 比所有元素都大。\n\n把 $\\preceq$ 换成 $\\succeq$，前四条里的「上 / 大 / 极大」就变成「下 / 小 / 极小」。\n\n⚠ **极大元 $\\ne$ 最大元**；**$\\sup S$ 不必属于 $S$**（$\\sup (0, 1) = 1$）—— 这是两组容易混的东西。\n\n偏序集里一般不保证 $\\sup$ 存在；$\\mathbb{R}$ 的特别之处正是**保证它存在**，那就是**确界原理**（见「$\\mathbb{R}$ 是完备有序域」）。",
+   "notes": "例子：$P = \\{ \\{1\\}, \\{2\\} \\}$ 按 $\\subseteq$ 排序。两个元素都是极大元（谁也包不住谁），但没有最大元。\n\n在**全序**集里两者才重合。偏序集里「极大」只要求「上面没有别人」，不要求「下面有所有人」。\n\n佐恩引理保证的是极大元，而不是最大元——这一点在应用时最容易出错。\n\n在 $\\mathbb{R}$ 上 $u = \\sup S$ 有一个只用序的等价说法：$\\forall \\varepsilon > 0, \\exists s \\in S : s > u - \\varepsilon$（任意近地逼近，但不必取到）。",
    "refs": [
-    "Kunen, Set Theory, I.11"
+    "Kunen, Set Theory, I.11",
+    "Rudin, Principles of Mathematical Analysis, Ch. 1"
    ]
   },
   {
@@ -4608,29 +4610,6 @@
    ]
   },
   {
-   "id": "def.sup",
-   "type": "definition",
-   "label": "上确界与下确界",
-   "title": "上确界 $\\sup$ / 下确界 $\\inf$（Supremum & Infimum）",
-   "region": "analysis",
-   "regions": [
-    "analysis",
-    "order-theory"
-   ],
-   "cluster": "analysis.real",
-   "layer": 12,
-   "tags": [
-    "定义",
-    "实数",
-    "完备性"
-   ],
-   "statement": "设 $S \\subseteq \\mathbb{R}$，$S \\ne \\emptyset$。\n\n$u$ 是 $S$ 的**上确界**（记 $\\sup S$），当且仅当\n\n- $u$ 是 $S$ 的上界：$\\forall s \\in S, s \\le u$；\n- $u$ 是**最小**的上界：$u \\le u'$ 对每个上界 $u'$ 成立。\n\n等价说法：$\\forall \\varepsilon > 0, \\exists s \\in S : s > u - \\varepsilon$（任意近地逼近）。\n\n**下确界** $\\inf S$ 对称地定义（最大下界）。\n\n**确界原理**：$S$ 非空且有上界 $\\implies \\sup S$ 存在。",
-   "notes": "⭐ 确界原理与「实数完备性」是一回事：它是 $\\mathbb{R}$ 比 $\\mathbb{Q}$ 多的那一口气。\n\n⚠ **$\\sup S$ 不必属于 $S$**（$\\sup (0, 1) = 1$），所以「最大值」与「上确界」要分开 —— 这和偏序集里「最大元 vs 极大元」是两类不同的混淆，别搞混。\n\n这对概念在偏序集里的版本见「上界与极大元」：那里一般不保证上确界存在，$\\mathbb{R}$ 的特别之处正是保证了它。",
-   "refs": [
-    "Rudin, Principles of Mathematical Analysis, Ch. 1"
-   ]
-  },
-  {
    "id": "def.sequence-limit",
    "type": "definition",
    "label": "数列极限",
@@ -4795,8 +4774,8 @@
     "定义",
     "空集"
    ],
-   "statement": "**空集**是不含任何元素的集合：\n\n$$\\emptyset := \\{ x : x \\ne x \\}$$\n\n由外延公理，这样的集合至多一个；由分离公理模式（对任一集合 $A$ 取 $\\{x \\in A : x \\ne x\\}$），它确实存在。\n\n于是对一切集合 $A$：$\\emptyset \\subseteq A$（空泛真），且 $\\emptyset$ 是 $\\subseteq$ 的最小元。",
-   "notes": "⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。",
+   "statement": "**空集**是不含任何元素的集合，记作 $\\emptyset$：\n\n$$\\emptyset := \\{ x : x \\ne x \\}$$\n\n「$x \\ne x$」对任何 $x$ 都不成立，所以这个集合里一个元素也没有。它是**语言里就给出的原始对象**，与外延公理、一阶语言同级。\n\n于是对一切集合 $A$：$\\emptyset \\subseteq A$（空泛真），且 $\\emptyset$ 是 $\\subseteq$ 的最小元。",
+   "notes": "⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 外延公理给的是「**至多**一个」；真正「存在」的那一半是分开来的，见「空集存在」。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。",
    "refs": [
     "Kunen, Set Theory, I.5"
    ]
@@ -4875,7 +4854,7 @@
     "set-theory"
    ],
    "cluster": "set.construct",
-   "layer": 2,
+   "layer": 3,
    "tags": [
     "定义",
     "幂集"
@@ -5003,7 +4982,7 @@
     "topology"
    ],
    "cluster": "topology.general",
-   "layer": 3,
+   "layer": 4,
    "tags": [
     "定义",
     "拓扑",
@@ -5025,7 +5004,7 @@
     "topology"
    ],
    "cluster": "topology.general",
-   "layer": 4,
+   "layer": 5,
    "tags": [
     "定义",
     "拓扑",
@@ -5047,7 +5026,7 @@
     "topology"
    ],
    "cluster": "topology.general",
-   "layer": 4,
+   "layer": 5,
    "tags": [
     "定义",
     "拓扑",
@@ -5070,7 +5049,7 @@
     "analysis"
    ],
    "cluster": "topology.general",
-   "layer": 4,
+   "layer": 5,
    "tags": [
     "定义",
     "拓扑",
@@ -5297,7 +5276,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 13,
+   "layer": 12,
    "tags": [
     "定理",
     "实数",
@@ -5322,7 +5301,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 14,
+   "layer": 13,
    "tags": [
     "引理",
     "阿基米德",
@@ -5347,7 +5326,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 15,
+   "layer": 14,
    "tags": [
     "定理",
     "实数",
@@ -5371,7 +5350,7 @@
     "set-theory"
    ],
    "cluster": "set.numbers",
-   "layer": 14,
+   "layer": 13,
    "tags": [
     "定理",
     "实数",
@@ -7673,14 +7652,6 @@
    "note": "区间是 $\\mathbb{R}$ 的全序 $\\le$ 说出来的：端点之间的都算数。"
   },
   {
-   "id": "dep.real-sup",
-   "kind": "definition",
-   "strength": "strong",
-   "definition": "def.real",
-   "usedBy": "def.sup",
-   "note": "上确界用的是 $\\mathbb{R}$ 的序与**完备性公理**——确界原理就是完备性。"
-  },
-  {
    "id": "dep.real-sequence",
    "kind": "definition",
    "strength": "strong",
@@ -7732,7 +7703,7 @@
    "id": "dep.sup-series",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.sup",
+   "definition": "def.bound",
    "usedBy": "def.series",
    "note": "非负项级数取的就是部分和的**上确界**。"
   },
@@ -7758,7 +7729,7 @@
    "strength": "strong",
    "definition": "def.empty",
    "usedBy": "thm.empty",
-   "note": "「空集存在」证明的就是这条定义里的那个集合确实存在（由分离公理），并且唯一（由外延公理）。"
+   "note": "$\\emptyset$ 先作为原始对象给出；这条定理说明**不把它当原始对象、只靠分离公理模式**也能得到同一个集合，并由外延公理知它唯一。"
   },
   {
    "id": "dep.empty-union",
@@ -7828,7 +7799,7 @@
    "id": "dep.sup-integral-nonneg",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.sup",
+   "definition": "def.bound",
    "usedBy": "def.integral-nonneg",
    "note": "非负函数的积分定义成 $\\sup \\{ \\int \\varphi \\}$ —— 取的是实数（或 $+\\infty$）的上确界。"
   },
@@ -9094,9 +9065,25 @@
    "id": "def-link.sup-real-ordered-field",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.sup",
+   "definition": "def.bound",
    "usedBy": "thm.real-ordered-field",
    "note": "**(iii) 完备性（确界原理）**说的正是「每个非空有上界的子集都有**上确界**」—— 结论是用 $\\sup$ 写出来的。"
+  },
+  {
+   "id": "def-link.power-powerset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "ax.power",
+   "usedBy": "def.power-set",
+   "note": "**幂集公理**才是「$\\mathcal{P}(X)$ 是一个集合」的依据 —— 陈述里那句「由幂集公理，$\\mathcal{P}(X)$ 确实是集合」说的就是它。"
+  },
+  {
+   "id": "def-link.choice-cardinal-comparable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "ax.choice",
+   "usedBy": "thm.cardinal-comparable",
+   "note": "基数可比定理的前提里点名了**选择公理**：没有它，两个基数未必比得出大小。"
   },
   {
    "id": "def-link.metric-borel-product",
@@ -9278,9 +9265,9 @@
    "kind": "analogy",
    "strength": "weak",
    "a": "lem.zorn",
-   "b": "def.sup",
+   "b": "thm.real-ordered-field",
    "title": "佐恩引理与确界原理：都是「一次把无穷过程走完」",
-   "note": "两个命题的精神酷似，而且都不是构造性的：\n\n- **确界原理**（$\\mathbb{R}$ 的完备性）：非空有上界的集合，$\\sup S$ **直接存在** —— 不需要你去逼近。\n- **佐恩引理**：每个链有上界的偏序集，**极大元直接存在** —— 不需要你去一步步往上爬。\n\n**共同的招**：把「无限步的过程」压缩成「一个对象的存在性」，然后直接取用它。\n有了它，分析里可以取上确界、代数里可以取极大理想、集合论里可以取极大链。\n\n⚠ 差异也要记住：确界原理是 $\\mathbb{R}$ 的**公理**（或者说它刻画了 $\\mathbb{R}$），\n佐恩引理等价于**选择公理** —— 前者在一个具体的全序集里工作，后者在任意的偏序集里工作，代价是多了一个公理。\n\n💡 这也解释了为什么「实数完备」与「选择公理」在证明里长得像：它们是同一类存在性工具。"
+   "note": "两个命题的精神酷似，而且都不是构造性的：\n\n- **确界原理**（$\\mathbb{R}$ 的完备性）：非空有上界的集合，$\\sup S$ **直接存在** —— 不需要你去逼近。\n- **佐恩引理**：每个链有上界的偏序集，**极大元直接存在** —— 不需要你去一步步往上爬。\n\n**共同的招**：把「无限步的过程」压缩成「一个对象的存在性」，然后直接取用它。\n有了它，分析里可以取上确界、代数里可以取极大理想、集合论里可以取极大链。\n\n⚠ 差异也要记住：确界原理是 $\\mathbb{R}$ 的**完备性**，由 $\\mathbb{R}$ 的构造证出来，\n佐恩引理等价于**选择公理** —— 前者在一个具体的全序集里工作，后者在任意的偏序集里工作，代价是多了一个公理。\n\n💡 这也解释了为什么「实数完备」与「选择公理」在证明里长得像：它们是同一类存在性工具。"
   },
   {
    "id": "def-dep.subset-rel",
@@ -9975,14 +9962,14 @@
   {
    "a": "set.construct",
    "b": "set.zfc",
-   "count": 9,
+   "count": 10,
    "label": "",
    "explicit": false
   },
   {
    "a": "order.choice",
    "b": "set.cardinal",
-   "count": 2,
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -10122,7 +10109,7 @@
   {
    "a": "analysis.real",
    "b": "set.numbers",
-   "count": 5,
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -10144,13 +10131,6 @@
    "a": "set.cardinal",
    "b": "set.numbers",
    "count": 4,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "analysis.integral",
-   "b": "analysis.real",
-   "count": 2,
    "label": "",
    "explicit": false
   },
@@ -10291,6 +10271,13 @@
    "a": "analysis.lp",
    "b": "analysis.measure",
    "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "order.structure",
+   "b": "set.numbers",
+   "count": 2,
    "label": "",
    "explicit": false
   },

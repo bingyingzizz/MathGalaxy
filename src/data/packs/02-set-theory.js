@@ -143,7 +143,7 @@ window.MG = window.MG || {};
         '',
         '由外延公理，这样的 $B$ 唯一，记作 $\\emptyset$。'
       ].join('\n'),
-      notes: '$\\emptyset$ 是 $\\in$关系的最小元，也是 $\\subseteq$关系的最小元：$\\emptyset \\subseteq A$ 对一切 $A$ 成立。',
+      notes: '$\\emptyset$ 是 $\\in$ 关系的最小元，也是 $\\subseteq$ 关系的最小元：$\\emptyset \\subseteq A$ 对一切 $A$ 成立。\n\n⭐ 这条定理的意义：**不把 $\\emptyset$ 当原始对象**，只用分离公理模式（对任一集合 $A$ 取 $\\{x \\in A : x \\ne x\\}$）也能把它造出来 —— 所以「空集」在 ZF 里不是一条额外的假设。',
       refs: ['Kunen, Set Theory, I.4']
     },
 

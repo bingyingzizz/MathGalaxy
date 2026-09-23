@@ -69,33 +69,6 @@ window.MG = window.MG || {};
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 2']
     },
 
-    /* --------------------------------------------------- 上确界 / 下确界 */
-    {
-      id: 'def.sup',
-      cluster: 'analysis.real',
-      type: 'definition',
-      label: '上确界与下确界',
-      title: '上确界 $\\sup$ / 下确界 $\\inf$（Supremum & Infimum）',
-      regions: ['analysis', 'order-theory'],
-      tags: ['定义', '实数', '完备性'],
-      statement: [
-        '设 $S \\subseteq \\mathbb{R}$，$S \\ne \\emptyset$。',
-        '',
-        '$u$ 是 $S$ 的**上确界**（记 $\\sup S$），当且仅当',
-        '',
-        '- $u$ 是 $S$ 的上界：$\\forall s \\in S, s \\le u$；',
-        '- $u$ 是**最小**的上界：$u \\le u\'$ 对每个上界 $u\'$ 成立。',
-        '',
-        '等价说法：$\\forall \\varepsilon > 0, \\exists s \\in S : s > u - \\varepsilon$（任意近地逼近）。',
-        '',
-        '**下确界** $\\inf S$ 对称地定义（最大下界）。',
-        '',
-        '**确界原理**：$S$ 非空且有上界 $\\implies \\sup S$ 存在。'
-      ].join('\n'),
-      notes: '⭐ 确界原理与「实数完备性」是一回事：它是 $\\mathbb{R}$ 比 $\\mathbb{Q}$ 多的那一口气。\n\n⚠ **$\\sup S$ 不必属于 $S$**（$\\sup (0, 1) = 1$），所以「最大值」与「上确界」要分开 —— 这和偏序集里「最大元 vs 极大元」是两类不同的混淆，别搞混。\n\n这对概念在偏序集里的版本见「上界与极大元」：那里一般不保证上确界存在，$\\mathbb{R}$ 的特别之处正是保证了它。',
-      refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1']
-    },
-
     /* ---------------------------------------------------------- 数列极限 */
     {
       id: 'def.sequence-limit',
@@ -231,13 +204,6 @@ window.MG = window.MG || {};
       note: '区间是 $\\mathbb{R}$ 的全序 $\\le$ 说出来的：端点之间的都算数。'
     },
     {
-      id: 'dep.real-sup',
-      kind: 'definition',
-      definition: 'def.real',
-      usedBy: 'def.sup',
-      note: '上确界用的是 $\\mathbb{R}$ 的序与**完备性公理**——确界原理就是完备性。'
-    },
-    {
       id: 'dep.real-sequence',
       kind: 'definition',
       definition: 'def.real',
@@ -282,7 +248,7 @@ window.MG = window.MG || {};
     {
       id: 'dep.sup-series',
       kind: 'definition',
-      definition: 'def.sup',
+      definition: 'def.bound',
       usedBy: 'def.series',
       note: '非负项级数取的就是部分和的**上确界**。'
     }

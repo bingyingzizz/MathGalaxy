@@ -8,7 +8,7 @@ $$\int f d\mu := \sup \{ \int \varphi d\mu : 0 \le \varphi \le f, \varphi\text{ 
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.integral-simple` 简单函数的积分：用到了定义 简单函数的积分　proofs/def-link.nonneg-simple.md
-- `def.sup` 上确界与下确界：用到了定义 上确界与下确界　proofs/dep.sup-integral-nonneg.md
+- `def.bound` 界与确界：用到了定义 界与确界　proofs/dep.sup-integral-nonneg.md
 - `def.lplus` L⁺：用到了定义 L⁺　proofs/def-dep.lplus-integral-nonneg.md
 
 ## 它能推出什么 / 谁在用它

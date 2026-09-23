@@ -12,6 +12,7 @@ $$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
 - `thm.wellordering` 良序定理：良序定理 ⟹ 任意两个基数可比　proofs/imp.cardinal-comparable.md
 - `def.cardinal` 基数 |A|：用到了定义 基数 |A|　proofs/dep.cardinal-comparable-thm.md
 - `def.ordinal` 序数：用到了定义 序数　proofs/def-link.ordinal-cardinal-comparable.md
+- `ax.choice` 选择公理：用到了定义 选择公理　proofs/def-link.choice-cardinal-comparable.md
 
 refs: Jech, The Axiom of Choice, Ch. 3
 

@@ -3,7 +3,7 @@
 
 极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。
 
-- analysis.real　实数与极限　中心天体 def.sup　7 点
+- analysis.real　实数与极限　中心天体 def.sequence-limit　6 点
 - analysis.setclass　集合族与 σ-代数　中心天体 def.sigma-algebra　10 点
 - analysis.measure　测度的构造　中心天体 def.measure　18 点
 - analysis.measurable　可测函数与收敛　中心天体 def.measurable-function　17 点

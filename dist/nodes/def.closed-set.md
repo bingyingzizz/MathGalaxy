@@ -1,6 +1,6 @@
 # 闭集与闭包　`def.closed-set`
 闭集 / 闭包 / 稠密（Closed Set, Closure）
-layer 4 · 定义 · 拓扑空间 · 拓扑学
+layer 5 · 定义 · 拓扑空间 · 拓扑学
 
 设 $(X, \mathcal{T})$ 是拓扑空间。
 > 陈述续见 `nodes/def.closed-set.2.md`

@@ -75,15 +75,15 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定义', '空集'],
       statement: [
-        '**空集**是不含任何元素的集合：',
+        '**空集**是不含任何元素的集合，记作 $\\emptyset$：',
         '',
         '$$\\emptyset := \\{ x : x \\ne x \\}$$',
         '',
-        '由外延公理，这样的集合至多一个；由分离公理模式（对任一集合 $A$ 取 $\\{x \\in A : x \\ne x\\}$），它确实存在。',
+        '「$x \\ne x$」对任何 $x$ 都不成立，所以这个集合里一个元素也没有。它是**语言里就给出的原始对象**，与外延公理、一阶语言同级。',
         '',
         '于是对一切集合 $A$：$\\emptyset \\subseteq A$（空泛真），且 $\\emptyset$ 是 $\\subseteq$ 的最小元。'
       ].join('\n'),
-      notes: '⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。',
+      notes: '⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 外延公理给的是「**至多**一个」；真正「存在」的那一半是分开来的，见「空集存在」。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。',
       refs: ['Kunen, Set Theory, I.5']
     },
 
@@ -176,7 +176,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.empty',
       usedBy: 'thm.empty',
-      note: '「空集存在」证明的就是这条定义里的那个集合确实存在（由分离公理），并且唯一（由外延公理）。'
+      note: '$\\emptyset$ 先作为原始对象给出；这条定理说明**不把它当原始对象、只靠分离公理模式**也能得到同一个集合，并由外延公理知它唯一。'
     },
     {
       id: 'dep.empty-union',
@@ -241,7 +241,7 @@ window.MG = window.MG || {};
     {
       id: 'dep.sup-integral-nonneg',
       kind: 'definition',
-      definition: 'def.sup',
+      definition: 'def.bound',
       usedBy: 'def.integral-nonneg',
       note: '非负函数的积分定义成 $\\sup \\{ \\int \\varphi \\}$ —— 取的是实数（或 $+\\infty$）的上确界。'
     },

@@ -5,7 +5,7 @@
 
 - def.poset　偏序集　layer 5
 - def.chain　链　layer 6
-- def.bound　上界与极大元　layer 6
+- def.bound　界与确界　layer 6
 - def.wellorder　良序集　layer 6
 - def.order-iso　序同构　layer 6
 - def.finchar　有限特征　layer 7

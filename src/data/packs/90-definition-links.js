@@ -488,9 +488,23 @@ window.MG = window.MG || {};
     {
       id: 'def-link.sup-real-ordered-field',
       kind: 'definition',
-      definition: 'def.sup',
+      definition: 'def.bound',
       usedBy: 'thm.real-ordered-field',
       note: '**(iii) 完备性（确界原理）**说的正是「每个非空有上界的子集都有**上确界**」—— 结论是用 $\\sup$ 写出来的。'
+    },
+    {
+      id: 'def-link.power-powerset',
+      kind: 'definition',
+      definition: 'ax.power',
+      usedBy: 'def.power-set',
+      note: '**幂集公理**才是「$\\mathcal{P}(X)$ 是一个集合」的依据 —— 陈述里那句「由幂集公理，$\\mathcal{P}(X)$ 确实是集合」说的就是它。'
+    },
+    {
+      id: 'def-link.choice-cardinal-comparable',
+      kind: 'definition',
+      definition: 'ax.choice',
+      usedBy: 'thm.cardinal-comparable',
+      note: '基数可比定理的前提里点名了**选择公理**：没有它，两个基数未必比得出大小。'
     },
 
     /* ------------------------------------------------ 补漏：用到了却没连边 */

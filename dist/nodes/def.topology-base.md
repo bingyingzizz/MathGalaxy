@@ -1,6 +1,6 @@
 # 基与子基　`def.topology-base`
 拓扑的基 / 子基（Basis, Subbasis）
-layer 4 · 定义 · 拓扑空间 · 拓扑学
+layer 5 · 定义 · 拓扑空间 · 拓扑学
 
 设 $(X, \mathcal{T})$ 是拓扑空间，$\mathcal{B} \subseteq \mathcal{T}$。$\mathcal{B}$ 是拓扑 $\mathcal{T}$ 的一组**基**，当且仅当每个开集都是 $\mathcal{B}$ 中若干成员之并；等价条件：
 

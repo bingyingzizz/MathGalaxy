@@ -15,6 +15,7 @@ $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 - ⇒ `thm.omega` 自然数集存在
 - ⇒ `thm.product` 笛卡尔积存在
 - 被 `def.pair` 有序对 用
+- 被 `def.power-set` 幂集 𝒫(X) 用
 
 refs: Kunen, Set Theory, I.3
 

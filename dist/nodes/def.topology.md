@@ -1,6 +1,6 @@
 # 拓扑空间与开集　`def.topology`
 拓扑空间 / 开集（Topological Space）
-layer 3 · 定义 · 拓扑空间 · 拓扑学
+layer 4 · 定义 · 拓扑空间 · 拓扑学
 
 设 $X$ 是集合，$\mathcal{T} \subseteq \mathcal{P}(X)$ 是 $X$ 的一族子集。$(X, \mathcal{T})$ 是一个**拓扑空间**，$\mathcal{T}$ 叫作 $X$ 上的一个**拓扑**，当且仅当：
 > 陈述续见 `nodes/def.topology.2.md`

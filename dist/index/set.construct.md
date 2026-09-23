@@ -8,7 +8,7 @@
 - thm.binunion　二元并存在　layer 1
 - def.union-inter　并集与交集　layer 2
 - def.diff-complement　差集与补集　layer 2
-- def.power-set　幂集 𝒫(X)　layer 2
 - def.pair　有序对　layer 3
+- def.power-set　幂集 𝒫(X)　layer 3
 - thm.empty　空集存在　layer 5
 - thm.product　笛卡尔积存在　layer 5
