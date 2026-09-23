@@ -407,11 +407,14 @@
         var tw = ctx.measureText(text).width;
         var ls = fs * 0.18;
         var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
+        // 星系名之间也尽量不叠（它们最先占位，所以通常就在原位）
+        var slot = placeName(p.x, p.y, bw, bh);
+        var cy = slot ? slot.y : p.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.86)';
         ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, p.y - bh / 2, bw, bh, bh / 2);
-        else ctx.rect(p.x - bw / 2, p.y - bh / 2, bw, bh);
+        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);
+        else ctx.rect(p.x - bw / 2, cy - bh / 2, bw, bh);
         ctx.fill();
         ctx.strokeStyle = U.rgba(r.color, 0.55);
         ctx.lineWidth = 1.5;
@@ -423,12 +426,12 @@
         ctx.fillStyle = 'rgba(26,28,34,0.92)';
         ctx.textAlign = 'left';
         chars.forEach(function (ch) {
-          ctx.fillText(ch, cx, p.y + 0.5);
+          ctx.fillText(ch, cx, cy + 0.5);
           cx += ctx.measureText(ch).width + ls;
         });
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
-        nameBoxes.push({ x0: p.x - bw / 2, y0: p.y - bh / 2, x1: p.x + bw / 2, y1: p.y + bh / 2 });
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2 });
       });
       ctx.restore();
     }
@@ -555,6 +558,24 @@
     }
 
     /* ------------------------------------------------ 星团名 */
+    /** 给一个名字找位置：先试原位，再试上下几个偏移；都不行就返回 null。
+        依据是 nameBoxes（星系名 → 装置名 → 节点名，按这个优先级依次占位）。 */
+    function placeName(cx, cy, bw, bh) {
+      var step = bh + 6;
+      var gaps = [0, -step, step, -2 * step, 2 * step];
+      for (var gi = 0; gi < gaps.length; gi++) {
+        var y = cy + gaps[gi];
+        var box = { x0: cx - bw / 2, y0: y - bh / 2, x1: cx + bw / 2, y1: y + bh / 2 };
+        var hit = false;
+        for (var i = 0; i < nameBoxes.length; i++) {
+          var b = nameBoxes[i];
+          if (box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0) { hit = true; break; }
+        }
+        if (!hit) return { y: y, box: box };
+      }
+      return null;
+    }
+
     function drawClusterNames() {
       var a = lodA.clusterName;
       var fs = U.clamp(C.cluster.labelSize * Math.pow(view.cam.k, 0.42), 11, 26);
@@ -571,19 +592,25 @@
         var tw = ctx.measureText(text).width;
         var pad = C.cluster.namePad;
         var bw = tw + pad * 2, bh = fs + 9;
+        // ⚠️ 装置名之间也要互相避让：两个团挨得近时（比如「代数结构」与
+        //    「向量空间的基」）名字会直接叠在一起，读不清。放不下就不画 ——
+        //    包络还在，放大一点名字自然回来。
+        var slot = placeName(p.x, p.y, bw, bh);
+        if (!slot) return;
+        var y = slot.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.88)';
         ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, p.y - bh / 2, bw, bh, bh / 2);
-        else ctx.rect(p.x - bw / 2, p.y - bh / 2, bw, bh);
+        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, y - bh / 2, bw, bh, bh / 2);
+        else ctx.rect(p.x - bw / 2, y - bh / 2, bw, bh);
         ctx.fill();
         var g = view.graph.galaxyOf(c);
         if (g) { ctx.strokeStyle = U.rgba(g.color, 0.5); ctx.lineWidth = 1.2; ctx.stroke(); }
         // 深色字，保证在云上读得清
         ctx.fillStyle = 'rgba(30,32,40,0.90)';
-        ctx.fillText(text, p.x, p.y + 0.5);
+        ctx.fillText(text, p.x, y + 0.5);
         ctx.globalAlpha = 1;
-        nameBoxes.push({ x0: p.x - bw / 2, y0: p.y - bh / 2, x1: p.x + bw / 2, y1: p.y + bh / 2 });
+        nameBoxes.push(slot.box);
       });
       ctx.restore();
     }
