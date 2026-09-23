@@ -111,7 +111,7 @@ window.MG = window.MG || {};
         '',
         '$$\\forall A \\exists P \\forall x [ x \\in P \\leftrightarrow  x \\subseteq A ]$$',
         '',
-        '记作 $\\mathcal{P}(A)$（或 P(A)）。Cantor 定理说 $|\\mathcal{P}(A)| > |A|$，所以幂集是「造更大的集合」的基本手段。'
+        '记作 $\\mathcal{P}(A)$（或 P(A)）。它把「$A$ 的所有子集」这件事本身变成一个集合 —— 幂集是「造更大的集合」的基本手段。'
       ].join('\n'),
       notes: '它是笛卡尔积 $A \\times B$ 存在性的关键：{{a},{a,b}} 落在 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 里。',
       refs: ['Kunen, Set Theory, I.3']

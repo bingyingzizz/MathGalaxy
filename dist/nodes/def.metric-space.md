@@ -1,6 +1,6 @@
 # 距离空间　`def.metric-space`
 距离空间 / 度量空间（Metric Space）
-layer 11 · 定义 · 度量空间 · 拓扑学
+layer 12 · 定义 · 度量空间 · 拓扑学
 
 **距离空间**是一对 (X, d)：$X$ 是集合，$d : X \times X \to [0, +\infty )$ 是 $X$ 上的**距离**，满足
 
@@ -18,8 +18,7 @@ layer 11 · 定义 · 度量空间 · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - 被 `lem.covering` 覆盖引理 用
-- 被 `def.complete` 完备 用
-- 被 `def.totally-bounded` 全有界 用
+- 被 `cor.borel-product` 可数积的 Borel 代数 用
 
 - …另有出边，续页见 `nodes/def.metric-space.3.md`
 

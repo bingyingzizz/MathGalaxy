@@ -1,12 +1,15 @@
 # 截口　`def.section`
 截口（Section）Eₓ 与 Eʸ
-layer 2 · 定义 · 乘积测度与 Fubini · 分析学
+layer 6 · 定义 · 乘积测度与 Fubini · 分析学
 
 设 $$E \subseteq X \times Y$$。对 $$x \in X$$、$$y \in Y$$ 定义
 > 陈述续见 `nodes/def.section.2.md`
 
 
 ## 为什么成立（入边，证明在 proofs/）
+- `thm.product` 笛卡尔积存在：笛卡尔积存在 ⟹ 可以谈截口　proofs/imp.product-section.md
+- `def.pair` 有序对：用到了定义 有序对　proofs/def-link.pair-section.md
+- `def.function` 函数：用到了定义 函数　proofs/def-link.function-section.md
 - `def.subset` 子集：用到了定义 子集　proofs/def-dep.subset-section.md
 
 ## 它能推出什么 / 谁在用它

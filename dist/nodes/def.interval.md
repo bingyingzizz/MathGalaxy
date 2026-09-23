@@ -1,6 +1,6 @@
 # 区间　`def.interval`
 区间（Interval）
-layer 11 · 定义 · 实数与极限 · 分析学+序理论
+layer 12 · 定义 · 实数与极限 · 分析学+序理论
 
 $\mathbb{R}$ 的**区间**是满足下式的子集 $I$：
 

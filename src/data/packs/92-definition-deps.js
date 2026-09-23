@@ -202,7 +202,21 @@ window.MG = window.MG || {};
     ['def.integral-complex', 'def.duality-map', 'def-dep.integral-complex-duality-map',
       '$\\varphi_g(f) = \\int f g \\, d\\mu$ 本身是一个**积分**。'],
     ['def.essential-sup', 'def.duality-map', 'def-dep.essential-sup-duality-map',
-      '$g \\in L^\\infty$ 那一头（$p = 1$）要用本性上界。']
+      '$g \\in L^\\infty$ 那一头（$p = 1$）要用本性上界。'],
+
+    /* ------------------------------------------------ 补漏：用到了却没连边 */
+    ['def.function', 'def.measurable-function', 'def-dep.function-measurable-function',
+      '可测性的载体是**函数** $f : X \\to Y$ —— 先有函数，才谈得上「每个可测集的原像可测」。'],
+    ['def.signed-measure', 'def.regular-measure', 'def-dep.signed-regular-measure',
+      '「**符号测度** $\\nu$ 叫正则 $\\iff$ $|\\nu|$ 正则」—— 正则性是借助符号测度说的。'],
+    ['def.complex-measure', 'def.regular-measure', 'def-dep.complex-regular-measure',
+      '同一条对**复测度**再说一遍。'],
+    ['def.metric-space', 'def.shrinks-nicely', 'def-dep.metric-shrinks-nicely',
+      '「$E_r \\subseteq B(r, x)$」里的 $B(r, x)$ 是**距离空间**里的球。'],
+    ['def.measure', 'def.shrinks-nicely', 'def-dep.measure-shrinks-nicely',
+      '「$m(E_r) > \\alpha \\cdot m(B(r, x))$」里的 $m$ 是一个**测度**。'],
+    ['def.lplus', 'def.integral-simple', 'def-dep.lplus-integral-simple',
+      '标准形式写的是「$\\varphi \\in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。']
 
   ];
 

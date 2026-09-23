@@ -19,6 +19,7 @@ $n$ 元组递归定义为 $(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$
 - `ax.power` 幂集公理：用到了定义 幂集公理　proofs/def-link.pair-power.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `def.section` 截口 用
 - 被 `def.bijection` 单射 / 满射 / 双射 用
 - 被 `def.rel` 关系 用
 - 被 `thm.product` 笛卡尔积存在 用

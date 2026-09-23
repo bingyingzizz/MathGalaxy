@@ -1,6 +1,6 @@
 # Lebesgue–Radon–Nikodym 定理　`thm.lebesgue-radon-nikodym`
 Lebesgue–Radon–Nikodym 定理：ν = λ + ρ，λ ⊥ μ，ρ ≪ μ
-layer 19 · 定理 · 符号测度与分解 · 分析学
+layer 20 · 定理 · 符号测度与分解 · 分析学
 
 设 $\nu$ 是 **$\sigma$有限**符号测度、$\mu$ 是 **$\sigma$有限**正测度，都在 $(X, \mathcal{M})$ 上。则存在**唯一**的一对 $\sigma$有限符号测度 $\lambda$、$\rho$ 使
 

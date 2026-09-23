@@ -1,6 +1,6 @@
 # NBV 函数的导数与测度的关系　`prop.nbv-derivative`
 命题：μ_F ⊥ m ⟺ F′ = 0 a.e.；μ_F ≪ m ⟺ F(x) = ∫_{−∞}ˣ F′
-layer 16 · 命题 · 有界变差与绝对连续 · 分析学
+layer 19 · 命题 · 有界变差与绝对连续 · 分析学
 
 设 $$F \in NBV$$。则 $$F' \in L^1(m)$$，并且
 
@@ -12,10 +12,9 @@ $$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$
 - `def.mutually-singular` 相互奇异：用到了定义 相互奇异　proofs/def-link.mutually-singular-nbv-derivative.md
 - `def.absolute-continuity` 绝对连续：用到了定义 绝对连续　proofs/def-link.ac-nbv-derivative.md
 - `def.rn-derivative` RN 导数与 Lebesgue 分解：用到了定义 RN 导数与 Lebesgue 分解　proofs/def-link.rn-derivative-nbv-derivative.md
+- `def.integrable` 可积 / L¹：用到了定义 可积 / L¹　proofs/def-link.integrable-nbv-derivative.md
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续
-
 - …另有出边，续页见 `nodes/prop.nbv-derivative.2.md`
 
 refs: Folland, Real Analysis, Theorem 3.35

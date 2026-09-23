@@ -1,6 +1,6 @@
 # 绝对连续　`def.absolute-continuity`
 绝对连续（Absolute Continuity ν ≪ μ）
-layer 14 · 定义 · 符号测度与分解 · 分析学
+layer 15 · 定义 · 符号测度与分解 · 分析学
 
 设 $\mu$ 是 $(X, \mathcal{M})$ 上的测度、$\nu$ 是符号测度。称 $\nu$ **关于 $\mu$ 绝对连续**，记作
 

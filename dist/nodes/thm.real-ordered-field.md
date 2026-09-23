@@ -1,6 +1,6 @@
 # ℝ 是完备有序域　`thm.real-ordered-field`
 $\mathbb{R}$ 是完备有序域（确界原理）
-layer 11 · 定理 · 数系的构造 · 集合论+分析学
+layer 13 · 定理 · 数系的构造 · 集合论+分析学
 
 上面构造出来的 $(\mathbb{R}, +, \cdot, \le)$ 满足三组性质：
 
@@ -14,10 +14,12 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.real` 实数系 ℝ：Cauchy 列的等价类 ⟹ 完备有序域　proofs/imp.real-ordered-field.md
 - `def.ordered-field` 有序域：用到了定义 有序域　proofs/dep.ordered-realfield.md
+- `def.sup` 上确界与下确界：用到了定义 上确界与下确界　proofs/def-link.sup-real-ordered-field.md
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `lem.archimedean` 阿基米德性质
-- ⇒ `thm.real-uncountable` ℝ 不可数
+
+- …另有出边，续页见 `nodes/thm.real-ordered-field.3.md`
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 1；Ch. 3
 

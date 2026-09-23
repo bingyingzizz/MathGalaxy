@@ -47,12 +47,12 @@ MG.trunk = [
   'def.ordered-field',         //  7 层  有序域 = 域 + 与运算相容的全序
   'def.rat',                   //  8 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）—— 第一个有序域
   'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
-  'def.cauchy-null',           //  9 层  有理 Cauchy 列 / 零列 / 等价
-  'def.real',                  // 10 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
-  'thm.real-ordered-field',    // 11 层  ℝ 是完备有序域（确界原理）—— 性质是定理
-  'def.sup',                   // 11 层  上确界与下确界
-  'def.interval',              // 11 层  区间
-  'def.sequence-limit',        // 11 层  数列极限
+  'def.cauchy-null',           // 10 层  有理 Cauchy 列 / 零列 / 等价
+  'def.real',                  // 11 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
+  'def.sup',                   // 12 层  上确界与下确界
+  'thm.real-ordered-field',    // 13 层  ℝ 是完备有序域（确界原理）—— 性质是定理，结论用 sup 写
+  'def.interval',              // 12 层  区间
+  'def.sequence-limit',        // 12 层  数列极限
 
   /* ========================== 二、序与选择（工具） ========================== */
   'def.poset',                 //  5 层  偏序集
@@ -66,35 +66,35 @@ MG.trunk = [
   'def.sigma-algebra',         //  4 层  σ-代数
   'def.generated-sigma',       //  5 层  生成的 σ-代数
   'def.borel',                 //  6 层  Borel σ-代数
-  'def.extended-real',         // 11 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
-  'def.measure',               // 12 层  测度
-  'def.outer-measure',         // 12 层  外测度（定义在幂集上，只有次可加性）
-  'def.null-set',              // 13 层  零集与完备
-  'thm.caratheodory',          // 14 层  Carathéodory 定理：外测度 → 测度
-  'def.ae',                    // 14 层  几乎处处
+  'def.extended-real',         // 12 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
+  'def.measure',               // 13 层  测度
+  'def.outer-measure',         // 13 层  外测度（定义在幂集上，只有次可加性）
+  'def.null-set',              // 14 层  零集与完备
+  'thm.caratheodory',          // 15 层  Carathéodory 定理：外测度 → 测度
+  'def.ae',                    // 15 层  几乎处处
 
   /* ============================== 四、积分 ============================== */
-  'def.measurable-function',   //  5 层  可测函数
-  'def.simple-function',       //  6 层  简单函数
-  'def.integral-simple',       // 13 层  简单函数的积分
-  'def.integral-nonneg',       // 14 层  非负函数的积分
-  'thm.mct',                   // 15 层  单调收敛定理
-  'def.integrable',            // 16 层  可积 / L¹
-  'lem.fatou',                 // 16 层  Fatou 引理
-  'thm.dct',                   // 17 层  控制收敛定理
-  'thm.fubini-tonelli',        // 17 层  Fubini–Tonelli
+  'def.measurable-function',   //  6 层  可测函数
+  'def.simple-function',       //  7 层  简单函数
+  'def.integral-simple',       // 15 层  简单函数的积分
+  'def.integral-nonneg',       // 16 层  非负函数的积分
+  'thm.mct',                   // 17 层  单调收敛定理
+  'def.integrable',            // 18 层  可积 / L¹
+  'lem.fatou',                 // 18 层  Fatou 引理
+  'thm.dct',                   // 19 层  控制收敛定理
+  'thm.fubini-tonelli',        // 19 层  Fubini–Tonelli
 
   /* ========================= 五、函数空间与微分 ========================= */
-  'def.ac-function',           // 12 层  绝对连续函数
-  'def.derivative',            // 13 层  导数
-  'def.bounded-variation',     // 14 层  有界变差 BV
-  'def.lp-norm',               // 15 层  L^p 范数
-  'thm.holder',                // 16 层  Hölder 不等式
-  'def.locally-integrable',    // 17 层  局部可积
-  'thm.lp-banach',             // 18 层  L^p 是 Banach 空间
-  'thm.ftc-lebesgue',          // 18 层  微积分基本定理（Lebesgue 版）
-  'def.maximal-function',      // 19 层  极大函数
-  'thm.lebesgue-radon-nikodym',// 19 层  Lebesgue–Radon–Nikodym 定理
-  'thm.riesz-representation-lp', // 20 层  (L^p)* ≅ L^q
+  'def.ac-function',           // 13 层  绝对连续函数
+  'def.derivative',            // 14 层  导数
+  'def.bounded-variation',     // 15 层  有界变差 BV
+  'def.lp-norm',               // 17 层  L^p 范数
+  'thm.holder',                // 18 层  Hölder 不等式
+  'def.locally-integrable',    // 19 层  局部可积
+  'thm.lp-banach',             // 20 层  L^p 是 Banach 空间
+  'thm.ftc-lebesgue',          // 21 层  微积分基本定理（Lebesgue 版）
+  'def.maximal-function',      // 21 层  极大函数
+  'thm.lebesgue-radon-nikodym',// 20 层  Lebesgue–Radon–Nikodym 定理
+  'thm.riesz-representation-lp', // 21 层  (L^p)* ≅ L^q
   'thm.lebesgue-differentiation' // 21 层  Lebesgue 微分定理
 ];

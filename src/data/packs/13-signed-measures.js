@@ -680,6 +680,15 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
+    {
+      id: 'imp.integral-ac-continuity',
+      kind: 'implication',
+      sources: ['prop.integral-gives-ac'],
+      target: 'cor.ac-integral-continuity',
+      title: '积分给出绝对连续测度 ⟹ 积分的绝对连续性',
+      proof: '把「积分给出绝对连续测度」与绝对连续的 $\\varepsilon$–$\\delta$ 刻画拼起来即可：$\\mu(E) < \\delta \\implies \\nu(E) = \\int_E f \\, d\\mu < \\varepsilon$。∎'
+    },
+
     /* ------------------------- 定义引用（蓝线） ------------------------- */
     {
       id: 'def-link.signed-positive',

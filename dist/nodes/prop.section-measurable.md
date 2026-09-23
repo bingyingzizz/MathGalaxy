@@ -1,6 +1,6 @@
 # 截口可测　`prop.section-measurable`
 命题：可测集的截口可测，可测函数的截口可测
-layer 3 · 命题 · 乘积测度与 Fubini · 分析学
+layer 7 · 命题 · 乘积测度与 Fubini · 分析学
 
 **(a)** 若 $$E \in \mathcal{M} \otimes  \mathcal{N}$$，则对一切 $$x \in X$$ 有 $$E_x \in \mathcal{N}$$，对一切 $$y \in Y$$ 有 $$E^y \in \mathcal{M}$$。
 
@@ -9,9 +9,11 @@ layer 3 · 命题 · 乘积测度与 Fubini · 分析学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.section` 截口：截口的定义 ⟹ 截口保持可测性　proofs/imp.section-measurable.md
 - `def.section` 截口：用到了定义 截口　proofs/def-link.section-props.md
+- `def.measurable-function` 可测函数：用到了定义 可测函数　proofs/def-link.measurable-function-section-measurable.md
+- `def.product-sigma` 积 σ-代数：用到了定义 积 σ-代数　proofs/def-link.product-sigma-section-measurable.md
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.product-measure-sections` 乘积测度由截口给出
+- …另有出边，续页见 `nodes/prop.section-measurable.2.md`
 
 refs: Folland, Real Analysis, Prop. 2.34
 

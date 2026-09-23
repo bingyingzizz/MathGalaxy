@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 `def.product-measure` 乘积测度 用
+- 被 `prop.section-measurable` 截口可测 用

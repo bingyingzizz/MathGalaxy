@@ -7,3 +7,4 @@
 - 被 `def.average-operator` 平均算子 Aᵣ 用
 - 被 `def.lp-norm` L^p 范数 用
 - 被 `def.essential-sup` 本性上界与 L^∞ 用
+- 被 `def.shrinks-nicely` 可缩族 用

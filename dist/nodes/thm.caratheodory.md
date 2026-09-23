@@ -1,6 +1,6 @@
 # Carathéodory 定理　`thm.caratheodory`
 Carathéodory 定理：μ*-可测集构成 σ-代数，μ* 在其上是完备测度
-layer 14 · 定理 · 测度的构造 · 分析学
+layer 15 · 定理 · 测度的构造 · 分析学
 
 设 $\mu^{*}$ 是 $X$ 上的外测度，$\mathcal{M}$ 是全体 $\mu^{*}$-可测集。则
 

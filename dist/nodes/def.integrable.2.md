@@ -14,5 +14,10 @@
 - 被 `prop.integral-abs-ineq` 积分绝对值不等式 用
 - 被 `prop.L1-support-sigma-finite` L¹ 函数的支撑 σ-有限 用
 - 被 `cor.ac-integral-continuity` 积分的绝对连续性 用
+- 被 `prop.integrals-equal-iff` 何时两个函数积分处处相同 用
+- 被 `thm.linf-properties` L^∞ 的性质 用
+- 被 `prop.nbv-derivative` NBV 函数的导数与测度的关系 用
+- 被 `cor.integral-is-ac-nbv` 积出来的函数是 AC · NBV 用
 - 被 `def.convergence-modes` 五种收敛 用
-- 被 `def.locally-integrable` 局部可积 用
+
+> 续见 `nodes/def.integrable.3.md`

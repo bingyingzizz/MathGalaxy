@@ -6,7 +6,7 @@ layer 6 · 定义 · 序结构 · 序理论
 
 $$\forall a, b \in A\; ( a \preceq b \iff f(a) \sqsubseteq f(b) )$$
 
-即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \cong B$；互相序同构的良序集归为一类，这一类叫一个**序型**。
+即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \cong B$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.poset` 偏序集：用到了定义 偏序集　proofs/dep.poset-order-iso.md

@@ -1,6 +1,6 @@
 # 符号测度　`def.signed-measure`
 符号测度（Signed Measure）
-layer 13 · 定义 · 符号测度与分解 · 分析学
+layer 14 · 定义 · 符号测度与分解 · 分析学
 
 设 $(X, \mathcal{M})$ 是可测空间。$$\nu : \mathcal{M} \to [-\infty, +\infty]$$ 是**符号测度**，当且仅当
 
@@ -18,8 +18,9 @@ layer 13 · 定义 · 符号测度与分解 · 分析学
 - ⇒ `thm.hahn-decomposition` Hahn 分解定理
 - 被 `def.positive-negative-null` 正集 / 负集 / 零集 用
 - 被 `thm.jordan-decomposition` Jordan 分解定理 用
-- 被 `def.absolute-continuity` 绝对连续 用
-- 被 `def.complex-measure` 复测度 用
+- 被 `prop.total-variation-basics` 全变差的基本性质 用
+
+- …另有出边，续页见 `nodes/def.signed-measure.3.md`
 
 refs: Folland, Real Analysis, §3.1；Halmos, Measure Theory, §28
 

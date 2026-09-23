@@ -1,12 +1,13 @@
 # 积分的绝对连续性　`cor.ac-integral-continuity`
 推论：∫_E f dμ 在小测度集上任意小
-layer 17 · 推论 · 符号测度与分解 · 分析学
+layer 20 · 推论 · 符号测度与分解 · 分析学
 
 设 $$f \in L^1(\mu)$$。则
 
 $$\forall\varepsilon > 0, \exists\delta > 0 : \mu(E) < \delta \implies | \int_E f d\mu | < \varepsilon$$
 
 ## 为什么成立（入边，证明在 proofs/）
+- `prop.integral-gives-ac` 积分给出绝对连续测度：积分给出绝对连续测度 ⟹ 积分的绝对连续性　proofs/imp.integral-ac-continuity.md
 - `def.integrable` 可积 / L¹：用到了定义 可积 / L¹　proofs/def-link.integrable-ac-integral.md
 - `def.absolute-continuity` 绝对连续：用到了定义 绝对连续　proofs/def-link.ac-integral-continuity.md
 

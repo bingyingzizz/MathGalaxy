@@ -1,6 +1,6 @@
 # 复测度　`def.complex-measure`
 复测度（Complex Measure）
-layer 14 · 定义 · 符号测度与分解 · 分析学
+layer 15 · 定义 · 符号测度与分解 · 分析学
 
 可测空间 $(X, \mathcal{M})$ 上的**复测度**是一个映射
 
@@ -22,6 +22,9 @@ $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `thm.rn-complex` 复测度的 Radon–Nikodym 用
+- 被 `prop.total-variation-basics` 全变差的基本性质 用
+
+- …另有出边，续页见 `nodes/def.complex-measure.2.md`
 
 refs: Folland, Real Analysis, §3.3
 

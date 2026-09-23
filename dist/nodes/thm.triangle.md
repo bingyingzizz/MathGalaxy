@@ -16,6 +16,9 @@ $$\big| |x| - |y| \big| \le |x - y|, \qquad |x_1 + x_2 + \cdots + x_n| \le |x_1|
 - `def.abs` 绝对值 |x|：绝对值的定义 ⟹ 三角不等式　proofs/imp.triangle.md
 - `def.ordered-field` 有序域：用到了定义 有序域　proofs/dep.ordered-triangle.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `def.cauchy-null` Cauchy 列与零列
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 1
 
 > 说明见 `notes/thm.triangle.md`

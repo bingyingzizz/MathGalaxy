@@ -4709,7 +4709,7 @@ window.MG = window.MG || {};
         '',
         '$$\\forall A \\exists P \\forall x [ x \\in P \\leftrightarrow  x \\subseteq A ]$$',
         '',
-        '记作 $\\mathcal{P}(A)$（或 P(A)）。Cantor 定理说 $|\\mathcal{P}(A)| > |A|$，所以幂集是「造更大的集合」的基本手段。'
+        '记作 $\\mathcal{P}(A)$（或 P(A)）。它把「$A$ 的所有子集」这件事本身变成一个集合 —— 幂集是「造更大的集合」的基本手段。'
       ].join('\n'),
       notes: '它是笛卡尔积 $A \\times B$ 存在性的关键：{{a},{a,b}} 落在 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 里。',
       refs: ['Kunen, Set Theory, I.3']
@@ -7784,6 +7784,21 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
+    {
+      id: 'imp.completion-measurable-function',
+      kind: 'implication',
+      sources: ['thm.completion'],
+      target: 'prop.completion-measurable-function',
+      title: '完备化定理 ⟹ 完备空间上的可测函数可改在零集上',
+      proof: [
+        '完备化 $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 相对 $(X, \\mathcal{M}, \\mu)$ 只多做了一件事：**把零集的子集也收进 $\\sigma$代数**。所以两个 $\\sigma$代数只在零集上不同。',
+        '',
+        '先取 $f = \\chi_E$：此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于某个 $\\mathcal{M}$零集，取 $g = \\chi_{E\'}$ 即有 $f = g$ a.e.。对 $\\mathcal{M}$可测的简单函数显然成立（有限线性组合）。',
+        '',
+        '一般情形取简单函数列 $\\varphi_n \\to f$，每个 $\\varphi_n$ 在一个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于某个 $\\mathcal{M}$可测的 $\\psi_n$。把 $$N := \\bigcup_n E_n$$ 并起来（可数并仍是零集），令 $g := \\lim_n \\chi_{N^c} \\cdot \\varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\\mathcal{M}$可测函数的极限仍 $\\mathcal{M}$可测。∎'
+      ].join('\n')
+    },
+
     /* ------------------------- 定义引用（蓝线） ------------------------- */
     {
       id: 'def-link.lplus-simple-approx',
@@ -8549,6 +8564,15 @@ window.MG = window.MG || {};
         '',
         '**$(iii) \\implies (i)$**：$h = 0 \\text{a.e.}$ 时，对任意 $E$，$$\\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎'
       ].join('\n')
+    },
+
+    {
+      id: 'imp.fatou-corollary',
+      kind: 'implication',
+      sources: ['lem.fatou'],
+      target: 'cor.fatou',
+      title: 'Fatou 引理 ⟹ a.e. 版本的 Fatou',
+      proof: '把 Fatou 引理用在 $\\liminf f_n$ 上：a.e. 收敛时 $\\liminf_n f_n = f$，于是 $\\int f = \\int \\liminf f_n \\le \\liminf \\int f_n$。∎'
     },
 
     /* ------------------------- 定义引用（蓝线） ------------------------- */
@@ -9492,6 +9516,46 @@ window.MG = window.MG || {};
       definition: 'def.null-set',
       usedBy: 'thm.fubini-complete',
       note: '证明的核心是把集合拆成「属于 $\\mathcal{M}⊗\\mathcal{N}$ 的部分」+「含在零集里的部分」。'
+    },
+
+    /* ---- 截口本身的前置：它建在「函数」「有序对」「笛卡尔积」之上 ---- */
+    {
+      id: 'def-link.pair-section',
+      kind: 'definition',
+      definition: 'def.pair',
+      usedBy: 'def.section',
+      note: '集合构造式 $E_x = \\{ y : (x, y) \\in E \\}$ 里写的就是**有序对** $(x, y)$。'
+    },
+    {
+      id: 'def-link.function-section',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.section',
+      note: '截口的第二半是对**函数** $f : X \\times Y \\to \\mathbb{C}$ 定义 $f_x(y) := f(x, y)$。'
+    },
+    {
+      id: 'imp.product-section',
+      kind: 'implication',
+      sources: ['thm.product'],
+      target: 'def.section',
+      title: '笛卡尔积存在 ⟹ 可以谈截口',
+      proof: '截口是 $X \\times Y$ 的子集 $E$ 的属性，所以先要有 $X \\times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。'
+    },
+
+    /* ---- 截口可测的两条前置 ---- */
+    {
+      id: 'def-link.measurable-function-section-measurable',
+      kind: 'definition',
+      definition: 'def.measurable-function',
+      usedBy: 'prop.section-measurable',
+      note: '**(b)** 说的正是「可测**函数**的截口仍可测」。'
+    },
+    {
+      id: 'def-link.product-sigma-section-measurable',
+      kind: 'definition',
+      definition: 'def.product-sigma',
+      usedBy: 'prop.section-measurable',
+      note: '前提 $E \\in \\mathcal{M} \\otimes \\mathcal{N}$ 里的 $\\otimes$ 就是**积 $\\sigma$-代数**。'
     }
   ]
 });
@@ -10178,6 +10242,15 @@ window.MG = window.MG || {};
         '',
         '∎'
       ].join('\n')
+    },
+
+    {
+      id: 'imp.integral-ac-continuity',
+      kind: 'implication',
+      sources: ['prop.integral-gives-ac'],
+      target: 'cor.ac-integral-continuity',
+      title: '积分给出绝对连续测度 ⟹ 积分的绝对连续性',
+      proof: '把「积分给出绝对连续测度」与绝对连续的 $\\varepsilon$–$\\delta$ 刻画拼起来即可：$\\mu(E) < \\delta \\implies \\nu(E) = \\int_E f \\, d\\mu < \\varepsilon$。∎'
     },
 
     /* ------------------------- 定义引用（蓝线） ------------------------- */
@@ -14033,6 +14106,14 @@ window.MG = window.MG || {};
       ].join('\n')
     },
     {
+      id: 'imp.triangle-cauchy',
+      kind: 'implication',
+      sources: ['thm.triangle'],
+      target: 'def.cauchy-null',
+      title: '三角不等式 ⟹ 零列关系是等价关系',
+      proof: '自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \\sim (y_n)$、$(y_n) \\sim (z_n)$，则 $|x_n - z_n| \\le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \\sim (z_n)$。没有这一条，$\\mathbb{R}$ 就没法定义成商集。∎'
+    },
+    {
       id: 'imp.real-ordered-field',
       kind: 'implication',
       sources: ['def.real'],
@@ -14348,9 +14429,9 @@ window.MG = window.MG || {};
         '',
         '$$\\forall a, b \\in A\\; ( a \\preceq b \\iff f(a) \\sqsubseteq f(b) )$$',
         '',
-        '即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \\cong B$；互相序同构的良序集归为一类，这一类叫一个**序型**。'
+        '即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \\cong B$。'
       ].join('\n'),
-      notes: '⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。\n\n⚠ 「序型」本身**不是集合**：所有良序集的序型凑在一起构成真类，取不出来。这正是要引入**序数**的直接动机。',
+      notes: '⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。\n\n⚠ **序型**是序同构给出的等价类。良序集的序型**不是集合**：所有良序集的序型凑在一起构成真类，用一个具体的代表来替代它 —— 那就是序数。',
       refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.2']
     },
 
@@ -14400,7 +14481,7 @@ window.MG = window.MG || {};
         '',
         '**推论（超限归纳）**：若 $S \\subseteq W$ 且 $\\forall w \\in W\\; ( W_{< w} \\subseteq S \\to w \\in S )$，则 $S = W$。',
         '',
-        '取 $W = \\omega$ 就是 $\\mathbb{N}$ 上的**递推定义**与**数学归纳法**；取 $W$ 为一个**序数**就是**超限递归**与**超限归纳**。'
+        '取 $W = \\omega$，就是 $\\mathbb{N}$ 上的**递推定义**与**数学归纳法**；$W$ 取任意良序集，就是**超限递归**与**超限归纳**。'
       ].join('\n'),
       notes: [
         '⭐⭐ 这是「**在无穷上做构造**」的许可证。在此之前，能用来造东西的只有有限的几步（配对、并、幂集、分离、替换）；要造出一整族互相依赖的对象，靠的就是这一条。它也是「良序」这个词真正的用途 —— 良序保证每一步之前的部分**有头有尾**，递归才停得下来。',
@@ -15327,6 +15408,114 @@ window.MG = window.MG || {};
       definition: 'def.measure-space',
       usedBy: 'prop.lp-inclusion-finite',
       note: '前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。'
+    },
+
+    {
+      id: 'def-link.sup-real-ordered-field',
+      kind: 'definition',
+      definition: 'def.sup',
+      usedBy: 'thm.real-ordered-field',
+      note: '**(iii) 完备性（确界原理）**说的正是「每个非空有上界的子集都有**上确界**」—— 结论是用 $\\sup$ 写出来的。'
+    },
+
+    /* ------------------------------------------------ 补漏：用到了却没连边 */
+    {
+      id: 'def-link.metric-borel-product',
+      kind: 'definition',
+      definition: 'def.metric-space',
+      usedBy: 'cor.borel-product',
+      note: '设 $X_1, X_2, \\dots$ 是**距离空间**，$X = \\prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。'
+    },
+    {
+      id: 'def-link.signed-total-variation',
+      kind: 'definition',
+      definition: 'def.signed-measure',
+      usedBy: 'prop.total-variation-basics',
+      note: '设 $\\nu$ 是**符号测度**，$|\\nu|$ 是它的全变差。'
+    },
+    {
+      id: 'def-link.complex-total-variation',
+      kind: 'definition',
+      definition: 'def.complex-measure',
+      usedBy: 'prop.total-variation-basics',
+      note: '同一条命题对**复测度**也适用（全变差对两者定义一致）。'
+    },
+    {
+      id: 'def-link.ae-mct-ae',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'cor.mct-ae',
+      note: '前提放宽成「对**几乎处处**的 $x$ 有 $f_n \\uparrow f$」—— 这就是这条推论与 MCT 的唯一区别。'
+    },
+    {
+      id: 'def-link.ae-integral-zero',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'prop.integral-zero-iff',
+      note: '结论「$f = 0$ **几乎处处**」里的 a.e. 就是它。'
+    },
+    {
+      id: 'def-link.ae-complete-measurable',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'prop.complete-measurable',
+      note: '**(a)** 的 $f = g$ 与 **(b)** 的 $f_n \\to f$ 都是在 **a.e.** 意义下说的。'
+    },
+    {
+      id: 'def-link.ae-completion-measurable-fn',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'prop.completion-measurable-function',
+      note: '结论 $f = g$ 是 $\\bar{\\mu}$-**a.e.** 成立的。'
+    },
+    {
+      id: 'def-link.ae-cauchy-in-measure',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'thm.cauchy-in-measure',
+      note: '结论里抽出的子列是**几乎处处**收敛的。'
+    },
+    {
+      id: 'def-link.ae-monotone-differentiable',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'thm.monotone-differentiable',
+      note: '结论是 $F$ 与 $G$ 都 **a.e. 可导**且导数 a.e. 相等。'
+    },
+    {
+      id: 'def-link.ae-fatou',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'cor.fatou',
+      note: '前提「$f_n \\to f$ **a.e.**」与 Fatou 引理的差别就在这里。'
+    },
+    {
+      id: 'def-link.integrable-integrals-equal',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'prop.integrals-equal-iff',
+      note: '前提 $f, g \\in L^1(\\mu)$ 说的是两个函数都**可积**。'
+    },
+    {
+      id: 'def-link.integrable-linf',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'thm.linf-properties',
+      note: '**(a)** 里出现的 $f \\in L^1$ 就是**可积**。'
+    },
+    {
+      id: 'def-link.integrable-nbv-derivative',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'prop.nbv-derivative',
+      note: '结论 $F\' \\in L^1(m)$ 说的是**可积**。'
+    },
+    {
+      id: 'def-link.integrable-integral-is-ac-nbv',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'cor.integral-is-ac-nbv',
+      note: '**(1)** 的前提 $f \\in L^1(m)$ 是**可积**。'
     }
   ]
 });
@@ -15750,7 +15939,21 @@ window.MG = window.MG || {};
     ['def.integral-complex', 'def.duality-map', 'def-dep.integral-complex-duality-map',
       '$\\varphi_g(f) = \\int f g \\, d\\mu$ 本身是一个**积分**。'],
     ['def.essential-sup', 'def.duality-map', 'def-dep.essential-sup-duality-map',
-      '$g \\in L^\\infty$ 那一头（$p = 1$）要用本性上界。']
+      '$g \\in L^\\infty$ 那一头（$p = 1$）要用本性上界。'],
+
+    /* ------------------------------------------------ 补漏：用到了却没连边 */
+    ['def.function', 'def.measurable-function', 'def-dep.function-measurable-function',
+      '可测性的载体是**函数** $f : X \\to Y$ —— 先有函数，才谈得上「每个可测集的原像可测」。'],
+    ['def.signed-measure', 'def.regular-measure', 'def-dep.signed-regular-measure',
+      '「**符号测度** $\\nu$ 叫正则 $\\iff$ $|\\nu|$ 正则」—— 正则性是借助符号测度说的。'],
+    ['def.complex-measure', 'def.regular-measure', 'def-dep.complex-regular-measure',
+      '同一条对**复测度**再说一遍。'],
+    ['def.metric-space', 'def.shrinks-nicely', 'def-dep.metric-shrinks-nicely',
+      '「$E_r \\subseteq B(r, x)$」里的 $B(r, x)$ 是**距离空间**里的球。'],
+    ['def.measure', 'def.shrinks-nicely', 'def-dep.measure-shrinks-nicely',
+      '「$m(E_r) > \\alpha \\cdot m(B(r, x))$」里的 $m$ 是一个**测度**。'],
+    ['def.lplus', 'def.integral-simple', 'def-dep.lplus-integral-simple',
+      '标准形式写的是「$\\varphi \\in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。']
 
   ];
 
@@ -15816,12 +16019,12 @@ MG.trunk = [
   'def.ordered-field',         //  7 层  有序域 = 域 + 与运算相容的全序
   'def.rat',                   //  8 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）—— 第一个有序域
   'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
-  'def.cauchy-null',           //  9 层  有理 Cauchy 列 / 零列 / 等价
-  'def.real',                  // 10 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
-  'thm.real-ordered-field',    // 11 层  ℝ 是完备有序域（确界原理）—— 性质是定理
-  'def.sup',                   // 11 层  上确界与下确界
-  'def.interval',              // 11 层  区间
-  'def.sequence-limit',        // 11 层  数列极限
+  'def.cauchy-null',           // 10 层  有理 Cauchy 列 / 零列 / 等价
+  'def.real',                  // 11 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
+  'def.sup',                   // 12 层  上确界与下确界
+  'thm.real-ordered-field',    // 13 层  ℝ 是完备有序域（确界原理）—— 性质是定理，结论用 sup 写
+  'def.interval',              // 12 层  区间
+  'def.sequence-limit',        // 12 层  数列极限
 
   /* ========================== 二、序与选择（工具） ========================== */
   'def.poset',                 //  5 层  偏序集
@@ -15835,36 +16038,36 @@ MG.trunk = [
   'def.sigma-algebra',         //  4 层  σ-代数
   'def.generated-sigma',       //  5 层  生成的 σ-代数
   'def.borel',                 //  6 层  Borel σ-代数
-  'def.extended-real',         // 11 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
-  'def.measure',               // 12 层  测度
-  'def.outer-measure',         // 12 层  外测度（定义在幂集上，只有次可加性）
-  'def.null-set',              // 13 层  零集与完备
-  'thm.caratheodory',          // 14 层  Carathéodory 定理：外测度 → 测度
-  'def.ae',                    // 14 层  几乎处处
+  'def.extended-real',         // 12 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
+  'def.measure',               // 13 层  测度
+  'def.outer-measure',         // 13 层  外测度（定义在幂集上，只有次可加性）
+  'def.null-set',              // 14 层  零集与完备
+  'thm.caratheodory',          // 15 层  Carathéodory 定理：外测度 → 测度
+  'def.ae',                    // 15 层  几乎处处
 
   /* ============================== 四、积分 ============================== */
-  'def.measurable-function',   //  5 层  可测函数
-  'def.simple-function',       //  6 层  简单函数
-  'def.integral-simple',       // 13 层  简单函数的积分
-  'def.integral-nonneg',       // 14 层  非负函数的积分
-  'thm.mct',                   // 15 层  单调收敛定理
-  'def.integrable',            // 16 层  可积 / L¹
-  'lem.fatou',                 // 16 层  Fatou 引理
-  'thm.dct',                   // 17 层  控制收敛定理
-  'thm.fubini-tonelli',        // 17 层  Fubini–Tonelli
+  'def.measurable-function',   //  6 层  可测函数
+  'def.simple-function',       //  7 层  简单函数
+  'def.integral-simple',       // 15 层  简单函数的积分
+  'def.integral-nonneg',       // 16 层  非负函数的积分
+  'thm.mct',                   // 17 层  单调收敛定理
+  'def.integrable',            // 18 层  可积 / L¹
+  'lem.fatou',                 // 18 层  Fatou 引理
+  'thm.dct',                   // 19 层  控制收敛定理
+  'thm.fubini-tonelli',        // 19 层  Fubini–Tonelli
 
   /* ========================= 五、函数空间与微分 ========================= */
-  'def.ac-function',           // 12 层  绝对连续函数
-  'def.derivative',            // 13 层  导数
-  'def.bounded-variation',     // 14 层  有界变差 BV
-  'def.lp-norm',               // 15 层  L^p 范数
-  'thm.holder',                // 16 层  Hölder 不等式
-  'def.locally-integrable',    // 17 层  局部可积
-  'thm.lp-banach',             // 18 层  L^p 是 Banach 空间
-  'thm.ftc-lebesgue',          // 18 层  微积分基本定理（Lebesgue 版）
-  'def.maximal-function',      // 19 层  极大函数
-  'thm.lebesgue-radon-nikodym',// 19 层  Lebesgue–Radon–Nikodym 定理
-  'thm.riesz-representation-lp', // 20 层  (L^p)* ≅ L^q
+  'def.ac-function',           // 13 层  绝对连续函数
+  'def.derivative',            // 14 层  导数
+  'def.bounded-variation',     // 15 层  有界变差 BV
+  'def.lp-norm',               // 17 层  L^p 范数
+  'thm.holder',                // 18 层  Hölder 不等式
+  'def.locally-integrable',    // 19 层  局部可积
+  'thm.lp-banach',             // 20 层  L^p 是 Banach 空间
+  'thm.ftc-lebesgue',          // 21 层  微积分基本定理（Lebesgue 版）
+  'def.maximal-function',      // 21 层  极大函数
+  'thm.lebesgue-radon-nikodym',// 20 层  Lebesgue–Radon–Nikodym 定理
+  'thm.riesz-representation-lp', // 21 层  (L^p)* ≅ L^q
   'thm.lebesgue-differentiation' // 21 层  Lebesgue 微分定理
 ];
 

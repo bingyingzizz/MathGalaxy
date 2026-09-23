@@ -1,6 +1,6 @@
 # ℓ^p ⊆ ℓ^q　`prop.ell-p-inclusion`
 命题（只有衰减的场合）：ℓ^p ⊆ ℓ^q（0 < p < q ≤ ∞）
-layer 16 · 命题 · L^p 空间 · 分析学
+layer 18 · 命题 · L^p 空间 · 分析学
 
 设 $0 < p < q \le \infty$，$A$ 是任意指标集。则
 

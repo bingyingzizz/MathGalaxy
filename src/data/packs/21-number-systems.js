@@ -536,6 +536,14 @@ window.MG = window.MG || {};
       ].join('\n')
     },
     {
+      id: 'imp.triangle-cauchy',
+      kind: 'implication',
+      sources: ['thm.triangle'],
+      target: 'def.cauchy-null',
+      title: '三角不等式 ⟹ 零列关系是等价关系',
+      proof: '自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \\sim (y_n)$、$(y_n) \\sim (z_n)$，则 $|x_n - z_n| \\le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \\sim (z_n)$。没有这一条，$\\mathbb{R}$ 就没法定义成商集。∎'
+    },
+    {
       id: 'imp.real-ordered-field',
       kind: 'implication',
       sources: ['def.real'],

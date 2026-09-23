@@ -1,6 +1,6 @@
 # 上确界与下确界　`def.sup`
 上确界 $\sup$ / 下确界 $\inf$（Supremum & Infimum）
-layer 11 · 定义 · 实数与极限 · 分析学+序理论
+layer 12 · 定义 · 实数与极限 · 分析学+序理论
 
 设 $S \subseteq \mathbb{R}$，$S \ne \emptyset$。
 
@@ -20,6 +20,7 @@ $u$ 是 $S$ 的**上确界**（记 $\sup S$），当且仅当
 ## 它能推出什么 / 谁在用它
 - 被 `def.series` 级数收敛 用
 - 被 `def.integral-nonneg` 非负函数的积分 用
+- 被 `thm.real-ordered-field` ℝ 是完备有序域 用
 - ～弱边 `lem.zorn` 佐恩引理
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 1

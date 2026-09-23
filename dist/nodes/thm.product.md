@@ -14,6 +14,7 @@ $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \
 - `thm.omega` 自然数集存在：「幂集造容器 + 分离筛内容」——同一个证明模板　proofs/ana.sep-container.md
 
 ## 它能推出什么 / 谁在用它
+- ⇒ `def.section` 截口
 - ～弱边 `thm.omega` 自然数集存在
 
 refs: Kunen, Set Theory, I.5

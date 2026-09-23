@@ -14,12 +14,14 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 - `def.rel` 关系：用到了定义 关系　proofs/def-dep.rel-function.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `def.section` 截口 用
 - 被 `def.bijection` 单射 / 满射 / 双射 用
 - 被 `def.cauchy-null` Cauchy 列与零列 用
 - 被 `def.field` 域 用
 - 被 `def.choicefn` 选择函数 用
 - 被 `def.metric-space` 距离空间 用
 - 被 `def.product-sigma` 积 σ-代数 用
+- 被 `def.measurable-function` 可测函数 用
 
 refs: Kunen, Set Theory, I.5
 

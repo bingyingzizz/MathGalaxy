@@ -1,6 +1,6 @@
 # 递增函数的导数积分不等式　`prop.monotone-integral-derivative`
 命题：∫ₐᵇ F′ ≤ F(b) − F(a)
-layer 15 · 命题 · 有界变差与绝对连续 · 分析学
+layer 17 · 命题 · 有界变差与绝对连续 · 分析学
 
 设 $$F \nearrow $$ 递增，$$G(x) = F(x+)$$（右连续递增）。则
 

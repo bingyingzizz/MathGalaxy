@@ -1,6 +1,6 @@
 # 积分给出绝对连续测度　`prop.integral-gives-ac`
 命题：ν(E) = ∫_E f dμ 关于 μ 绝对连续
-layer 17 · 命题 · 符号测度与分解 · 分析学
+layer 19 · 命题 · 符号测度与分解 · 分析学
 
 设 $\mu$ 是测度，$$f$$ 是广义 $\mu$可积函数，定义
 
@@ -13,6 +13,7 @@ $$\nu(E) := \int_E f d\mu$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.rn-chain-rule` RN 导数的链式法则
+- ⇒ `cor.ac-integral-continuity` 积分的绝对连续性
 
 refs: Folland, Real Analysis, §3.2
 

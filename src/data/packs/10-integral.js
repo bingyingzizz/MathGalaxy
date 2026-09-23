@@ -696,6 +696,15 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
+    {
+      id: 'imp.fatou-corollary',
+      kind: 'implication',
+      sources: ['lem.fatou'],
+      target: 'cor.fatou',
+      title: 'Fatou 引理 ⟹ a.e. 版本的 Fatou',
+      proof: '把 Fatou 引理用在 $\\liminf f_n$ 上：a.e. 收敛时 $\\liminf_n f_n = f$，于是 $\\int f = \\int \\liminf f_n \\le \\liminf \\int f_n$。∎'
+    },
+
     /* ------------------------- 定义引用（蓝线） ------------------------- */
     {
       id: 'def-link.simple-integral-def',

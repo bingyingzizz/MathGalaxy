@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-09-23T06:00:00.333Z
-> 6 星系 / 23 星团 / 231 节点 / 454 连线（强边 446，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-09-23T08:14:10.535Z
+> 6 星系 / 23 星团 / 231 节点 / 484 连线（强边 476，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -179,7 +179,7 @@ $$\forall F \exists A \forall x [ x \in A \leftrightarrow  \exists Y ( Y \in F \
 
 $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 
-记作 $\mathcal{P}(A)$（或 P(A)）。Cantor 定理说 $|\mathcal{P}(A)| > |A|$，所以幂集是「造更大的集合」的基本手段。
+记作 $\mathcal{P}(A)$（或 P(A)）。它把「$A$ 的所有子集」这件事本身变成一个集合 —— 幂集是「造更大的集合」的基本手段。
 
 它是笛卡尔积 $A \times B$ 存在性的关键：{{a},{a,b}} 落在 $\mathcal{P}(\mathcal{P}(A \cup B))$ 里。
 
@@ -964,7 +964,7 @@ $$F(w) = G\big( F \upharpoonright W_{< w} \big), \qquad \forall w \in W$$
 
 **推论（超限归纳）**：若 $S \subseteq W$ 且 $\forall w \in W\; ( W_{< w} \subseteq S \to w \in S )$，则 $S = W$。
 
-取 $W = \omega$ 就是 $\mathbb{N}$ 上的**递推定义**与**数学归纳法**；取 $W$ 为一个**序数**就是**超限递归**与**超限归纳**。
+取 $W = \omega$，就是 $\mathbb{N}$ 上的**递推定义**与**数学归纳法**；$W$ 取任意良序集，就是**超限递归**与**超限归纳**。
 
 ⭐⭐ 这是「**在无穷上做构造**」的许可证。在此之前，能用来造东西的只有有限的几步（配对、并、幂集、分离、替换）；要造出一整族互相依赖的对象，靠的就是这一条。它也是「良序」这个词真正的用途 —— 良序保证每一步之前的部分**有头有尾**，递归才停得下来。
 
@@ -1124,13 +1124,13 @@ $$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
 
 $$\forall a, b \in A\; ( a \preceq b \iff f(a) \sqsubseteq f(b) )$$
 
-即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \cong B$；互相序同构的良序集归为一类，这一类叫一个**序型**。
+即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \cong B$。
 
 ⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。
 
 ⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。
 
-⚠ 「序型」本身**不是集合**：所有良序集的序型凑在一起构成真类，取不出来。这正是要引入**序数**的直接动机。
+⚠ **序型**是序同构给出的等价类。良序集的序型**不是集合**：所有良序集的序型凑在一起构成真类，用一个具体的代表来替代它 —— 那就是序数。
 
 参考：Kunen, Set Theory, I.11；Jech, Set Theory, 2.2
 
@@ -5506,6 +5506,15 @@ $$\{f + g > a\} = \bigcup_{q \in \mathbb{Q}} ( \{f > q\} \cap \{g > a - q\} )$$
 
 $>$ 注意这个坑：**这个论证对 $(\mathfrak{B}, \mathfrak{B})$ 成立，但对 $(\mathcal{L}, \mathcal{L})$ 不成立** —— 因为 $\mathcal{L}$ 并不由开集生成，它比 $\mathfrak{B}_\mathbb{R}$ 多了很多非 Borel 的零测集子集。
 
+#### 完备化定理 ⟹ 完备化后可改在零集上　`imp.completion-measurable-function`
+*完备化定理 ⟹ 完备空间上的可测函数可改在零集上*
+
+完备化 $(X, \bar{\mathcal{M}}, \bar{\mu})$ 相对 $(X, \mathcal{M}, \mu)$ 只多做了一件事：**把零集的子集也收进 $\sigma$代数**。所以两个 $\sigma$代数只在零集上不同。
+
+先取 $f = \chi_E$：此时 $E = E' \cup F$，$E' \in \mathcal{M}$、$F$ 含于某个 $\mathcal{M}$零集，取 $g = \chi_{E'}$ 即有 $f = g$ a.e.。对 $\mathcal{M}$可测的简单函数显然成立（有限线性组合）。
+
+一般情形取简单函数列 $\varphi_n \to f$，每个 $\varphi_n$ 在一个 $\bar{\mathcal{M}}$零集 $E_n$ 外等于某个 $\mathcal{M}$可测的 $\psi_n$。把 $$N := \bigcup_n E_n$$ 并起来（可数并仍是零集），令 $g := \lim_n \chi_{N^c} \cdot \varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\mathcal{M}$可测函数的极限仍 $\mathcal{M}$可测。∎
+
 #### 定义引用：「简单函数」→ 简单函数逼近　`def-link.lplus-simple-approx`
 
 逼近定理的结论就是「可测函数是简单函数列的极限」。
@@ -5697,6 +5706,11 @@ $$(i) \int_E f = \int_E g\quad  \forall E \in \mathcal{M}\quad  \iff\quad  \int_
 **$(ii) \implies (iii)$**：$$\int|h| = 0$$ 配合「积分为零 $\iff$ 几乎处处为零」，直接得到 $h = 0 \text{a.e.}$。
 
 **$(iii) \implies (i)$**：$h = 0 \text{a.e.}$ 时，对任意 $E$，$$\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎
+
+#### Fatou 引理 ⟹ Fatou 的推论　`imp.fatou-corollary`
+*Fatou 引理 ⟹ a.e. 版本的 Fatou*
+
+把 Fatou 引理用在 $\liminf f_n$ 上：a.e. 收敛时 $\liminf_n f_n = f$，于是 $\int f = \int \liminf f_n \le \liminf \int f_n$。∎
 
 #### 定义引用：「简单函数」→ 简单函数的积分　`def-link.simple-integral-def`
 
@@ -6058,6 +6072,27 @@ Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 
 证明的核心是把集合拆成「属于 $\mathcal{M}⊗\mathcal{N}$ 的部分」+「含在零集里的部分」。
 
+#### 定义引用：「有序对」→ 截口　`def-link.pair-section`
+
+集合构造式 $E_x = \{ y : (x, y) \in E \}$ 里写的就是**有序对** $(x, y)$。
+
+#### 定义引用：「函数」→ 截口　`def-link.function-section`
+
+截口的第二半是对**函数** $f : X \times Y \to \mathbb{C}$ 定义 $f_x(y) := f(x, y)$。
+
+#### 笛卡尔积存在 ⟹ 截口　`imp.product-section`
+*笛卡尔积存在 ⟹ 可以谈截口*
+
+截口是 $X \times Y$ 的子集 $E$ 的属性，所以先要有 $X \times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。
+
+#### 定义引用：「可测函数」→ 截口可测　`def-link.measurable-function-section-measurable`
+
+**(b)** 说的正是「可测**函数**的截口仍可测」。
+
+#### 定义引用：「积 σ-代数」→ 截口可测　`def-link.product-sigma-section-measurable`
+
+前提 $E \in \mathcal{M} \otimes \mathcal{N}$ 里的 $\otimes$ 就是**积 $\sigma$-代数**。
+
 #### 符号测度 + 正集的封闭性 ⟹ Hahn 分解定理　`imp.hahn`
 *符号测度 + 正集的封闭性 ⟹ Hahn 分解*
 
@@ -6220,6 +6255,11 @@ $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{
 $$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}\quad  \lambda-\text{a.e.}$$
 
 ∎
+
+#### 积分给出绝对连续测度 ⟹ 积分的绝对连续性　`imp.integral-ac-continuity`
+*积分给出绝对连续测度 ⟹ 积分的绝对连续性*
+
+把「积分给出绝对连续测度」与绝对连续的 $\varepsilon$–$\delta$ 刻画拼起来即可：$\mu(E) < \delta \implies \nu(E) = \int_E f \, d\mu < \varepsilon$。∎
 
 #### 定义引用：「符号测度」→ 正集 / 负集 / 零集　`def-link.signed-positive`
 
@@ -7214,6 +7254,11 @@ $$|x + y| \le |x| + |y| \qquad \blacksquare$$
 
 **变形。** 在 $|x + y| \le |x| + |y|$ 中把 $x$ 换成 $x - y$ 得 $|x| \le |x - y| + |y|$，即 $|x| - |y| \le |x - y|$；交换 $x, y$ 得另一侧，两者合起来就是 $\big| |x| - |y| \big| \le |x - y|$。$n$ 元版本由归纳：$|x_1 + \cdots + x_n| \le |x_1 + \cdots + x_{n-1}| + |x_n|$。
 
+#### 三角不等式 ⟹ Cauchy 列与零列　`imp.triangle-cauchy`
+*三角不等式 ⟹ 零列关系是等价关系*
+
+自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \sim (y_n)$、$(y_n) \sim (z_n)$，则 $|x_n - z_n| \le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \sim (z_n)$。没有这一条，$\mathbb{R}$ 就没法定义成商集。∎
+
 #### 实数系 ℝ ⟹ ℝ 是完备有序域　`imp.real-ordered-field`
 *Cauchy 列的等价类 ⟹ 完备有序域*
 
@@ -7766,6 +7811,66 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 前提 $\mu(X) < \infty$ 用的是**有限测度**这个概念。
 
+#### 定义引用：「上确界与下确界」→ ℝ 是完备有序域　`def-link.sup-real-ordered-field`
+
+**(iii) 完备性（确界原理）**说的正是「每个非空有上界的子集都有**上确界**」—— 结论是用 $\sup$ 写出来的。
+
+#### 定义引用：「距离空间」→ 可数积的 Borel 代数　`def-link.metric-borel-product`
+
+设 $X_1, X_2, \dots$ 是**距离空间**，$X = \prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。
+
+#### 定义引用：「符号测度」→ 全变差的基本性质　`def-link.signed-total-variation`
+
+设 $\nu$ 是**符号测度**，$|\nu|$ 是它的全变差。
+
+#### 定义引用：「复测度」→ 全变差的基本性质　`def-link.complex-total-variation`
+
+同一条命题对**复测度**也适用（全变差对两者定义一致）。
+
+#### 定义引用：「几乎处处」→ MCT（a.e. 版本）　`def-link.ae-mct-ae`
+
+前提放宽成「对**几乎处处**的 $x$ 有 $f_n \uparrow f$」—— 这就是这条推论与 MCT 的唯一区别。
+
+#### 定义引用：「几乎处处」→ 积分为零 ⟺ 几乎处处为零　`def-link.ae-integral-zero`
+
+结论「$f = 0$ **几乎处处**」里的 a.e. 就是它。
+
+#### 定义引用：「几乎处处」→ 完备性 ⟺ 不破坏可测性　`def-link.ae-complete-measurable`
+
+**(a)** 的 $f = g$ 与 **(b)** 的 $f_n \to f$ 都是在 **a.e.** 意义下说的。
+
+#### 定义引用：「几乎处处」→ 完备化后可改在零集上　`def-link.ae-completion-measurable-fn`
+
+结论 $f = g$ 是 $\bar{\mu}$-**a.e.** 成立的。
+
+#### 定义引用：「几乎处处」→ 依测度 Cauchy ⟹ 收敛　`def-link.ae-cauchy-in-measure`
+
+结论里抽出的子列是**几乎处处**收敛的。
+
+#### 定义引用：「几乎处处」→ 单调函数几乎处处可导　`def-link.ae-monotone-differentiable`
+
+结论是 $F$ 与 $G$ 都 **a.e. 可导**且导数 a.e. 相等。
+
+#### 定义引用：「几乎处处」→ Fatou 的推论　`def-link.ae-fatou`
+
+前提「$f_n \to f$ **a.e.**」与 Fatou 引理的差别就在这里。
+
+#### 定义引用：「可积 / L¹」→ 何时两个函数积分处处相同　`def-link.integrable-integrals-equal`
+
+前提 $f, g \in L^1(\mu)$ 说的是两个函数都**可积**。
+
+#### 定义引用：「可积 / L¹」→ L^∞ 的性质　`def-link.integrable-linf`
+
+**(a)** 里出现的 $f \in L^1$ 就是**可积**。
+
+#### 定义引用：「可积 / L¹」→ NBV 函数的导数与测度的关系　`def-link.integrable-nbv-derivative`
+
+结论 $F' \in L^1(m)$ 说的是**可积**。
+
+#### 定义引用：「可积 / L¹」→ 积出来的函数是 AC · NBV　`def-link.integrable-integral-is-ac-nbv`
+
+**(1)** 的前提 $f \in L^1(m)$ 是**可积**。
+
 #### 定义引用：「子集」→ 关系　`def-dep.subset-rel`
 
 关系是 $A \times B$ 的**子集**，定义域 $\operatorname{dom} R$ 与值域 $\operatorname{ran} R$ 也都是子集。
@@ -8086,6 +8191,30 @@ $\varphi_g(f) = \int f g \, d\mu$ 本身是一个**积分**。
 
 $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 
+#### 定义引用：「函数」→ 可测函数　`def-dep.function-measurable-function`
+
+可测性的载体是**函数** $f : X \to Y$ —— 先有函数，才谈得上「每个可测集的原像可测」。
+
+#### 定义引用：「符号测度」→ 正则 Borel 测度　`def-dep.signed-regular-measure`
+
+「**符号测度** $\nu$ 叫正则 $\iff$ $|\nu|$ 正则」—— 正则性是借助符号测度说的。
+
+#### 定义引用：「复测度」→ 正则 Borel 测度　`def-dep.complex-regular-measure`
+
+同一条对**复测度**再说一遍。
+
+#### 定义引用：「距离空间」→ 可缩族　`def-dep.metric-shrinks-nicely`
+
+「$E_r \subseteq B(r, x)$」里的 $B(r, x)$ 是**距离空间**里的球。
+
+#### 定义引用：「测度」→ 可缩族　`def-dep.measure-shrinks-nicely`
+
+「$m(E_r) > \alpha \cdot m(B(r, x))$」里的 $m$ 是一个**测度**。
+
+#### 定义引用：「L⁺」→ 简单函数的积分　`def-dep.lplus-integral-simple`
+
+标准形式写的是「$\varphi \in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -8222,20 +8351,24 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **选择原理 ↔ 基数与等势**　2 条节点级连线
 - **乘积测度与 Fubini ↔ 集合族与 σ-代数**　6 条节点级连线
 - **测度的构造 ↔ 集合族与 σ-代数**　5 条节点级连线
+- **可测函数与收敛 ↔ 测度的构造**　10 条节点级连线
+- **可测函数与收敛 ↔ 乘积测度与 Fubini**　2 条节点级连线
 - **可测函数与收敛 ↔ 集合族与 σ-代数**　2 条节点级连线
-- **可测函数与收敛 ↔ 测度的构造**　6 条节点级连线
 - **积分 ↔ 可测函数与收敛**　8 条节点级连线
-- **积分 ↔ 测度的构造**　8 条节点级连线
+- **积分 ↔ 测度的构造**　11 条节点级连线
 - **测度的构造 ↔ 乘积测度与 Fubini**　6 条节点级连线
 - **积分 ↔ 乘积测度与 Fubini**　2 条节点级连线
+- **乘积测度与 Fubini ↔ 集合的构造**　3 条节点级连线
+- **乘积测度与 Fubini ↔ 关系与函数**　2 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
 - **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
 - **微分定理 ↔ 积分**　3 条节点级连线
-- **微分定理 ↔ 符号测度与分解**　2 条节点级连线
+- **微分定理 ↔ 符号测度与分解**　4 条节点级连线
 - **有界变差与绝对连续 ↔ 符号测度与分解**　5 条节点级连线
-- **有界变差与绝对连续 ↔ 积分**　2 条节点级连线
-- **积分 ↔ L^p 空间**　3 条节点级连线
-- **实数与极限 ↔ 数系的构造**　4 条节点级连线
+- **有界变差与绝对连续 ↔ 测度的构造**　2 条节点级连线
+- **有界变差与绝对连续 ↔ 积分**　4 条节点级连线
+- **积分 ↔ L^p 空间**　4 条节点级连线
+- **实数与极限 ↔ 数系的构造**　5 条节点级连线
 - **集合的构造 ↔ 关系与函数**　3 条节点级连线
 - **基数与等势 ↔ 关系与函数**　4 条节点级连线
 - **基数与等势 ↔ 数系的构造**　4 条节点级连线
@@ -8256,8 +8389,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **一阶语言与公式 ↔ ZFC 公理系统**　3 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
-- **微分定理 ↔ 度量空间**　2 条节点级连线
-- **微分定理 ↔ 测度的构造**　2 条节点级连线
+- **微分定理 ↔ 度量空间**　3 条节点级连线
+- **微分定理 ↔ 测度的构造**　3 条节点级连线
 - **L^p 空间 ↔ 可测函数与收敛**　3 条节点级连线
 - **L^p 空间 ↔ 测度的构造**　4 条节点级连线
 - **向量空间的基 ↔ 序结构**　2 条节点级连线

@@ -472,6 +472,46 @@ window.MG = window.MG || {};
       definition: 'def.null-set',
       usedBy: 'thm.fubini-complete',
       note: '证明的核心是把集合拆成「属于 $\\mathcal{M}⊗\\mathcal{N}$ 的部分」+「含在零集里的部分」。'
+    },
+
+    /* ---- 截口本身的前置：它建在「函数」「有序对」「笛卡尔积」之上 ---- */
+    {
+      id: 'def-link.pair-section',
+      kind: 'definition',
+      definition: 'def.pair',
+      usedBy: 'def.section',
+      note: '集合构造式 $E_x = \\{ y : (x, y) \\in E \\}$ 里写的就是**有序对** $(x, y)$。'
+    },
+    {
+      id: 'def-link.function-section',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.section',
+      note: '截口的第二半是对**函数** $f : X \\times Y \\to \\mathbb{C}$ 定义 $f_x(y) := f(x, y)$。'
+    },
+    {
+      id: 'imp.product-section',
+      kind: 'implication',
+      sources: ['thm.product'],
+      target: 'def.section',
+      title: '笛卡尔积存在 ⟹ 可以谈截口',
+      proof: '截口是 $X \\times Y$ 的子集 $E$ 的属性，所以先要有 $X \\times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。'
+    },
+
+    /* ---- 截口可测的两条前置 ---- */
+    {
+      id: 'def-link.measurable-function-section-measurable',
+      kind: 'definition',
+      definition: 'def.measurable-function',
+      usedBy: 'prop.section-measurable',
+      note: '**(b)** 说的正是「可测**函数**的截口仍可测」。'
+    },
+    {
+      id: 'def-link.product-sigma-section-measurable',
+      kind: 'definition',
+      definition: 'def.product-sigma',
+      usedBy: 'prop.section-measurable',
+      note: '前提 $E \\in \\mathcal{M} \\otimes \\mathcal{N}$ 里的 $\\otimes$ 就是**积 $\\sigma$-代数**。'
     }
   ]
 });

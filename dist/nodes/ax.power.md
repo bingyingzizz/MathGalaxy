@@ -6,7 +6,7 @@ layer 2 · 公理 · ZFC 公理系统 · 集合论
 
 $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 
-记作 $\mathcal{P}(A)$（或 P(A)）。Cantor 定理说 $|\mathcal{P}(A)| > |A|$，所以幂集是「造更大的集合」的基本手段。
+记作 $\mathcal{P}(A)$（或 P(A)）。它把「$A$ 的所有子集」这件事本身变成一个集合 —— 幂集是「造更大的集合」的基本手段。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.subset` 子集：用到了定义 子集　proofs/def-link.power-subset.md

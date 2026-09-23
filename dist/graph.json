@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-09-23T06:00:00.333Z",
+  "generated": "2026-09-23T08:14:10.535Z",
   "counts": {
    "regions": 6,
    "clusters": 23,
    "nodes": 231,
-   "edges": 454,
-   "strong": 446,
+   "edges": 484,
+   "strong": 476,
    "weak": 8
   },
   "readingGuide": {
@@ -622,7 +622,7 @@
     "ZFC",
     "子集"
    ],
-   "statement": "一个集合的所有子集构成一个集合：\n\n$$\\forall A \\exists P \\forall x [ x \\in P \\leftrightarrow  x \\subseteq A ]$$\n\n记作 $\\mathcal{P}(A)$（或 P(A)）。Cantor 定理说 $|\\mathcal{P}(A)| > |A|$，所以幂集是「造更大的集合」的基本手段。",
+   "statement": "一个集合的所有子集构成一个集合：\n\n$$\\forall A \\exists P \\forall x [ x \\in P \\leftrightarrow  x \\subseteq A ]$$\n\n记作 $\\mathcal{P}(A)$（或 P(A)）。它把「$A$ 的所有子集」这件事本身变成一个集合 —— 幂集是「造更大的集合」的基本手段。",
    "notes": "它是笛卡尔积 $A \\times B$ 存在性的关键：{{a},{a,b}} 落在 $\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 里。",
    "refs": [
     "Kunen, Set Theory, I.3"
@@ -1209,7 +1209,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "度量",
@@ -1232,7 +1232,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "完备",
@@ -1254,7 +1254,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "全有界",
@@ -1276,7 +1276,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "列紧",
@@ -1298,7 +1298,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "紧",
@@ -1320,7 +1320,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "紧",
@@ -1344,7 +1344,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "紧",
@@ -1366,7 +1366,7 @@
     "topology"
    ],
    "cluster": "topology.metric",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "紧",
@@ -1391,7 +1391,7 @@
     "set-theory"
    ],
    "cluster": "analysis.setclass",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "集合族",
@@ -1504,7 +1504,7 @@
     "analysis"
    ],
    "cluster": "analysis.setclass",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "基本类",
@@ -1688,7 +1688,7 @@
     "topology"
    ],
    "cluster": "analysis.product",
-   "layer": 7,
+   "layer": 13,
    "tags": [
     "推论",
     "Borel",
@@ -1711,7 +1711,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "测度",
@@ -1734,7 +1734,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "预测度",
@@ -1757,7 +1757,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "有限可加"
@@ -1778,7 +1778,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "σ-有限",
@@ -1800,7 +1800,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "单调性",
@@ -1824,7 +1824,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "零集",
@@ -1846,7 +1846,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "完备化",
@@ -1869,7 +1869,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "半有限"
@@ -1890,7 +1890,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "外测度",
@@ -1913,7 +1913,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "外测度",
@@ -1936,7 +1936,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "Carathéodory",
@@ -1959,7 +1959,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "Carathéodory",
@@ -1983,7 +1983,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "Carathéodory",
@@ -2006,7 +2006,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "唯一性",
@@ -2029,7 +2029,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "Lebesgue–Stieltjes",
@@ -2051,7 +2051,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "Lebesgue–Stieltjes",
@@ -2073,7 +2073,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "Lebesgue–Stieltjes",
@@ -2095,7 +2095,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 5,
+   "layer": 6,
    "tags": [
     "定义",
     "可测函数"
@@ -2117,7 +2117,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 6,
+   "layer": 7,
    "tags": [
     "命题",
     "可测",
@@ -2141,7 +2141,7 @@
     "topology"
    ],
    "cluster": "analysis.measurable",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "推论",
     "连续",
@@ -2208,7 +2208,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "封闭性",
@@ -2231,7 +2231,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 6,
+   "layer": 7,
    "tags": [
     "定义",
     "简单函数"
@@ -2252,7 +2252,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 7,
+   "layer": 8,
    "tags": [
     "定理",
     "简单函数",
@@ -2274,7 +2274,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "命题",
     "完备",
@@ -2296,7 +2296,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "命题",
     "完备化",
@@ -2318,7 +2318,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "L⁺"
@@ -2339,7 +2339,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 13,
+   "layer": 15,
    "tags": [
     "定义",
     "积分",
@@ -2361,7 +2361,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "命题",
     "积分",
@@ -2384,7 +2384,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "定义",
     "积分",
@@ -2406,7 +2406,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 15,
+   "layer": 17,
    "tags": [
     "定理",
     "MCT",
@@ -2428,7 +2428,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "定理",
     "逐项积分",
@@ -2450,7 +2450,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "命题",
     "零集",
@@ -2472,7 +2472,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "推论",
     "MCT",
@@ -2495,7 +2495,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "引理",
     "Fatou",
@@ -2517,7 +2517,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 14,
+   "layer": 19,
    "tags": [
     "推论",
     "Fatou",
@@ -2540,7 +2540,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "σ-有限",
@@ -2562,7 +2562,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 15,
+   "layer": 17,
    "tags": [
     "定义",
     "积分",
@@ -2584,7 +2584,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "定义",
     "L¹",
@@ -2606,7 +2606,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "L¹",
@@ -2628,7 +2628,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "三角不等式"
@@ -2649,7 +2649,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "σ-有限",
@@ -2671,7 +2671,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 15,
+   "layer": 19,
    "tags": [
     "命题",
     "几乎处处",
@@ -2693,7 +2693,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定理",
     "DCT",
@@ -2715,7 +2715,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定理",
     "逐项积分",
@@ -2737,7 +2737,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定理",
     "逼近",
@@ -2760,7 +2760,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定理",
     "DCT",
@@ -2783,7 +2783,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定义",
     "收敛",
@@ -2805,7 +2805,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "反例",
     "收敛",
@@ -2827,7 +2827,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "Cauchy",
@@ -2849,7 +2849,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "定理",
     "依测度",
@@ -2872,7 +2872,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "命题",
     "L¹",
@@ -2895,7 +2895,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定理",
     "Egorov",
@@ -2918,7 +2918,7 @@
     "analysis"
    ],
    "cluster": "analysis.measurable",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "推论",
     "Lusin",
@@ -2941,7 +2941,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "乘积测度",
@@ -2965,7 +2965,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 2,
+   "layer": 6,
    "tags": [
     "定义",
     "截口"
@@ -2986,7 +2986,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 3,
+   "layer": 7,
    "tags": [
     "命题",
     "截口",
@@ -3008,7 +3008,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "乘积测度",
@@ -3030,7 +3030,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定理",
     "Fubini",
@@ -3053,7 +3053,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定理",
     "Fubini",
@@ -3075,7 +3075,7 @@
     "analysis"
    ],
    "cluster": "analysis.product",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "注记",
     "完备",
@@ -3097,7 +3097,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "符号测度"
@@ -3119,7 +3119,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "正集",
@@ -3141,7 +3141,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "正集"
@@ -3162,7 +3162,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "Hahn 分解",
@@ -3186,7 +3186,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "奇异",
@@ -3208,7 +3208,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "Jordan 分解",
@@ -3230,7 +3230,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "绝对连续"
@@ -3251,7 +3251,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "命题",
     "绝对连续",
@@ -3274,7 +3274,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "绝对连续",
@@ -3296,7 +3296,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "绝对连续",
@@ -3318,7 +3318,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "推论",
     "绝对连续",
@@ -3340,7 +3340,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "引理",
     "奇异",
@@ -3362,7 +3362,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 19,
+   "layer": 20,
    "tags": [
     "定理",
     "Radon-Nikodym",
@@ -3384,7 +3384,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "RN 导数",
@@ -3406,7 +3406,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "命题",
     "RN 导数",
@@ -3428,7 +3428,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "推论",
     "RN 导数"
@@ -3449,7 +3449,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "复测度"
@@ -3470,7 +3470,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定理",
     "Radon-Nikodym",
@@ -3492,7 +3492,7 @@
     "analysis"
    ],
    "cluster": "analysis.signed",
-   "layer": 13,
+   "layer": 16,
    "tags": [
     "命题",
     "全变差",
@@ -3515,7 +3515,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "L¹",
@@ -3537,7 +3537,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "引理",
     "覆盖",
@@ -3559,7 +3559,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定义",
     "局部可积"
@@ -3580,7 +3580,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定义",
     "平均算子"
@@ -3601,7 +3601,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "引理",
     "连续",
@@ -3623,7 +3623,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "定义",
     "极大函数",
@@ -3645,7 +3645,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 20,
+   "layer": 22,
    "tags": [
     "定理",
     "极大不等式",
@@ -3667,7 +3667,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 21,
+   "layer": 23,
    "tags": [
     "定理",
     "Lebesgue 微分",
@@ -3689,7 +3689,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 19,
+   "layer": 21,
    "tags": [
     "定义",
     "Lebesgue 集"
@@ -3710,7 +3710,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 22,
+   "layer": 24,
    "tags": [
     "定理",
     "Lebesgue 集"
@@ -3731,7 +3731,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 7,
+   "layer": 14,
    "tags": [
     "定义",
     "可缩族"
@@ -3752,7 +3752,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 23,
+   "layer": 25,
    "tags": [
     "定理",
     "微分",
@@ -3774,7 +3774,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 13,
+   "layer": 16,
    "tags": [
     "定义",
     "正则",
@@ -3796,7 +3796,7 @@
     "analysis"
    ],
    "cluster": "analysis.differentiation",
-   "layer": 24,
+   "layer": 26,
    "tags": [
     "定理",
     "RN 导数",
@@ -3819,7 +3819,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 14,
+   "layer": 16,
    "tags": [
     "定理",
     "单调函数",
@@ -3841,7 +3841,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "全变差",
@@ -3864,7 +3864,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "BV",
@@ -3886,7 +3886,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "引理",
     "全变差",
@@ -3908,7 +3908,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "BV",
@@ -3930,7 +3930,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "命题",
     "BV",
@@ -3952,7 +3952,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "NBV"
@@ -3973,7 +3973,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "引理",
     "全变差",
@@ -3995,7 +3995,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 15,
+   "layer": 17,
    "tags": [
     "命题",
     "递增",
@@ -4018,7 +4018,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "Riesz 表示",
@@ -4041,7 +4041,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "命题",
     "NBV",
@@ -4063,7 +4063,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "绝对连续",
@@ -4085,7 +4085,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 17,
+   "layer": 20,
    "tags": [
     "命题",
     "绝对连续",
@@ -4107,7 +4107,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 16,
+   "layer": 19,
    "tags": [
     "推论",
     "AC",
@@ -4130,7 +4130,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "引理",
     "AC",
@@ -4152,7 +4152,7 @@
     "analysis"
    ],
    "cluster": "analysis.bv",
-   "layer": 18,
+   "layer": 21,
    "tags": [
     "定理",
     "微积分基本定理",
@@ -4175,7 +4175,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 15,
+   "layer": 17,
    "tags": [
     "定义",
     "Lp",
@@ -4197,7 +4197,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "引理",
     "Young",
@@ -4219,7 +4219,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "定理",
     "Hölder",
@@ -4241,7 +4241,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "定理",
     "Minkowski",
@@ -4263,7 +4263,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 18,
+   "layer": 20,
    "tags": [
     "定理",
     "Banach",
@@ -4286,7 +4286,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "命题",
     "稠密",
@@ -4308,7 +4308,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "L∞",
@@ -4330,7 +4330,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 15,
+   "layer": 19,
    "tags": [
     "定理",
     "L∞",
@@ -4353,7 +4353,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "命题",
     "插值",
@@ -4375,7 +4375,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "命题",
     "插值",
@@ -4397,7 +4397,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "命题",
     "序列空间",
@@ -4419,7 +4419,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "命题",
     "有限测度",
@@ -4441,7 +4441,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "共轭",
@@ -4463,7 +4463,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "定义",
     "对偶",
@@ -4485,7 +4485,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "等距",
@@ -4507,7 +4507,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "命题",
     "有界泛函",
@@ -4529,7 +4529,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 20,
+   "layer": 21,
    "tags": [
     "定理",
     "Riesz 表示",
@@ -4552,7 +4552,7 @@
     "analysis"
    ],
    "cluster": "analysis.lp",
-   "layer": 16,
+   "layer": 18,
    "tags": [
     "推论",
     "自反",
@@ -4574,7 +4574,7 @@
     "analysis"
    ],
    "cluster": "analysis.real",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "实数"
@@ -4596,7 +4596,7 @@
     "order-theory"
    ],
    "cluster": "analysis.real",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "实数"
@@ -4618,7 +4618,7 @@
     "order-theory"
    ],
    "cluster": "analysis.real",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "实数",
@@ -4640,7 +4640,7 @@
     "analysis"
    ],
    "cluster": "analysis.real",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "极限"
@@ -4661,7 +4661,7 @@
     "analysis"
    ],
    "cluster": "analysis.real",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "极限"
@@ -4683,7 +4683,7 @@
     "topology"
    ],
    "cluster": "analysis.real",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "极限",
@@ -4705,7 +4705,7 @@
     "analysis"
    ],
    "cluster": "analysis.real",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "导数"
@@ -4727,7 +4727,7 @@
     "algebra"
    ],
    "cluster": "set.numbers",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "复数"
@@ -4854,7 +4854,7 @@
     "analysis"
    ],
    "cluster": "analysis.measure",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "零集"
@@ -5249,7 +5249,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "Cauchy 列",
@@ -5272,7 +5272,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "实数",
@@ -5297,7 +5297,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 11,
+   "layer": 13,
    "tags": [
     "定理",
     "实数",
@@ -5322,7 +5322,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 12,
+   "layer": 14,
    "tags": [
     "引理",
     "阿基米德",
@@ -5347,7 +5347,7 @@
     "analysis"
    ],
    "cluster": "set.numbers",
-   "layer": 13,
+   "layer": 15,
    "tags": [
     "定理",
     "实数",
@@ -5371,7 +5371,7 @@
     "set-theory"
    ],
    "cluster": "set.numbers",
-   "layer": 12,
+   "layer": 14,
    "tags": [
     "定理",
     "实数",
@@ -5450,8 +5450,8 @@
     "序同构",
     "序型"
    ],
-   "statement": "设 $(A, \\preceq )$ 与 $(B, \\sqsubseteq )$ 是**偏序集**。双射 $f : A \\to B$ 称为**序同构**，当且仅当\n\n$$\\forall a, b \\in A\\; ( a \\preceq b \\iff f(a) \\sqsubseteq f(b) )$$\n\n即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \\cong B$；互相序同构的良序集归为一类，这一类叫一个**序型**。",
-   "notes": "⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。\n\n⚠ 「序型」本身**不是集合**：所有良序集的序型凑在一起构成真类，取不出来。这正是要引入**序数**的直接动机。",
+   "statement": "设 $(A, \\preceq )$ 与 $(B, \\sqsubseteq )$ 是**偏序集**。双射 $f : A \\to B$ 称为**序同构**，当且仅当\n\n$$\\forall a, b \\in A\\; ( a \\preceq b \\iff f(a) \\sqsubseteq f(b) )$$\n\n即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \\cong B$。",
+   "notes": "⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。\n\n⚠ **序型**是序同构给出的等价类。良序集的序型**不是集合**：所有良序集的序型凑在一起构成真类，用一个具体的代表来替代它 —— 那就是序数。",
    "refs": [
     "Kunen, Set Theory, I.11",
     "Jech, Set Theory, 2.2"
@@ -5499,7 +5499,7 @@
     "超限归纳",
     "ZF"
    ],
-   "statement": "设 $(W, \\preceq )$ 是**良序集**，$G$ 是任给的函数（可以取在一整个真类上）。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。则存在**唯一**的函数 $F$ 定义在 $W$ 上，使\n\n$$F(w) = G\\big( F \\upharpoonright W_{< w} \\big), \\qquad \\forall w \\in W$$\n\n也就是说：**每一步只依赖前面已经取到的值**。\n\n**推论（超限归纳）**：若 $S \\subseteq W$ 且 $\\forall w \\in W\\; ( W_{< w} \\subseteq S \\to w \\in S )$，则 $S = W$。\n\n取 $W = \\omega$ 就是 $\\mathbb{N}$ 上的**递推定义**与**数学归纳法**；取 $W$ 为一个**序数**就是**超限递归**与**超限归纳**。",
+   "statement": "设 $(W, \\preceq )$ 是**良序集**，$G$ 是任给的函数（可以取在一整个真类上）。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。则存在**唯一**的函数 $F$ 定义在 $W$ 上，使\n\n$$F(w) = G\\big( F \\upharpoonright W_{< w} \\big), \\qquad \\forall w \\in W$$\n\n也就是说：**每一步只依赖前面已经取到的值**。\n\n**推论（超限归纳）**：若 $S \\subseteq W$ 且 $\\forall w \\in W\\; ( W_{< w} \\subseteq S \\to w \\in S )$，则 $S = W$。\n\n取 $W = \\omega$，就是 $\\mathbb{N}$ 上的**递推定义**与**数学归纳法**；$W$ 取任意良序集，就是**超限递归**与**超限归纳**。",
    "notes": "⭐⭐ 这是「**在无穷上做构造**」的许可证。在此之前，能用来造东西的只有有限的几步（配对、并、幂集、分离、替换）；要造出一整族互相依赖的对象，靠的就是这一条。它也是「良序」这个词真正的用途 —— 良序保证每一步之前的部分**有头有尾**，递归才停得下来。\n\n⭐ **为什么收「良序集」版而不是「序数」版**：$\\omega$ 上的递推、序数上的超限递归都是它的特例，所以只收最通用的一条。（例外：$\\mathbb{N}$ 上的数学归纳法另有更直接的来路 —— 它来自「$\\omega$ 是最小归纳集」，不需要良序性的一般理论，所以那个节点保留。）\n\n⚠ 递归式右边给的是「前面全部取值」这个**函数** $F \\upharpoonright W_{< w}$，而不是一句话。写成一句话就会掉进「用未定义的东西定义自己」的坑。",
    "refs": [
     "Kunen, Set Theory, I.9",
@@ -6385,6 +6385,18 @@
    "note": ""
   },
   {
+   "id": "imp.completion-measurable-function",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.completion"
+   ],
+   "target": "prop.completion-measurable-function",
+   "title": "完备化定理 ⟹ 完备空间上的可测函数可改在零集上",
+   "proof": "完备化 $(X, \\bar{\\mathcal{M}}, \\bar{\\mu})$ 相对 $(X, \\mathcal{M}, \\mu)$ 只多做了一件事：**把零集的子集也收进 $\\sigma$代数**。所以两个 $\\sigma$代数只在零集上不同。\n\n先取 $f = \\chi_E$：此时 $E = E' \\cup F$，$E' \\in \\mathcal{M}$、$F$ 含于某个 $\\mathcal{M}$零集，取 $g = \\chi_{E'}$ 即有 $f = g$ a.e.。对 $\\mathcal{M}$可测的简单函数显然成立（有限线性组合）。\n\n一般情形取简单函数列 $\\varphi_n \\to f$，每个 $\\varphi_n$ 在一个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于某个 $\\mathcal{M}$可测的 $\\psi_n$。把 $$N := \\bigcup_n E_n$$ 并起来（可数并仍是零集），令 $g := \\lim_n \\chi_{N^c} \\cdot \\varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\\mathcal{M}$可测函数的极限仍 $\\mathcal{M}$可测。∎",
+   "note": ""
+  },
+  {
    "id": "def-link.lplus-simple-approx",
    "kind": "definition",
    "strength": "strong",
@@ -6540,6 +6552,18 @@
    "target": "prop.integrals-equal-iff",
    "title": "积分为零 ⟹ 用积分识别函数",
    "proof": "记 $$h = f - g \\in L^1$$。三条之间的等价链条是\n\n$$(i) \\int_E f = \\int_E g\\quad  \\forall E \\in \\mathcal{M}\\quad  \\iff\\quad  \\int_E h = 0\\quad  \\forall E$$\n\n**$(i) \\implies (ii)$**：分别取 $$E = \\{h \\ge 0\\}$$ 与 $$E = \\{h < 0\\}$$。由 $$\\int_E h = 0$$ 且 $h$ 在 $E$ 上不变号，得 $$\\{h > 0\\}$$ 与 $$\\{h < 0\\}$$ 都是零集（否则积分为正/负），故 $$\\mu(\\{h \\ne 0\\}) = 0$$，于是 $$\\int|h| = 0$$。\n\n**$(ii) \\implies (iii)$**：$$\\int|h| = 0$$ 配合「积分为零 $\\iff$ 几乎处处为零」，直接得到 $h = 0 \\text{a.e.}$。\n\n**$(iii) \\implies (i)$**：$h = 0 \\text{a.e.}$ 时，对任意 $E$，$$\\int_E h$$ 的简单函数逼近里可以整体避开零集，故积分为 0。∎",
+   "note": ""
+  },
+  {
+   "id": "imp.fatou-corollary",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "lem.fatou"
+   ],
+   "target": "cor.fatou",
+   "title": "Fatou 引理 ⟹ a.e. 版本的 Fatou",
+   "proof": "把 Fatou 引理用在 $\\liminf f_n$ 上：a.e. 收敛时 $\\liminf_n f_n = f$，于是 $\\int f = \\int \\liminf f_n \\le \\liminf \\int f_n$。∎",
    "note": ""
   },
   {
@@ -6917,6 +6941,50 @@
    "note": "证明的核心是把集合拆成「属于 $\\mathcal{M}⊗\\mathcal{N}$ 的部分」+「含在零集里的部分」。"
   },
   {
+   "id": "def-link.pair-section",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.pair",
+   "usedBy": "def.section",
+   "note": "集合构造式 $E_x = \\{ y : (x, y) \\in E \\}$ 里写的就是**有序对** $(x, y)$。"
+  },
+  {
+   "id": "def-link.function-section",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function",
+   "usedBy": "def.section",
+   "note": "截口的第二半是对**函数** $f : X \\times Y \\to \\mathbb{C}$ 定义 $f_x(y) := f(x, y)$。"
+  },
+  {
+   "id": "imp.product-section",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.product"
+   ],
+   "target": "def.section",
+   "title": "笛卡尔积存在 ⟹ 可以谈截口",
+   "proof": "截口是 $X \\times Y$ 的子集 $E$ 的属性，所以先要有 $X \\times Y$ 这个集合本身 —— 这正是笛卡尔积存在定理给的。",
+   "note": ""
+  },
+  {
+   "id": "def-link.measurable-function-section-measurable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measurable-function",
+   "usedBy": "prop.section-measurable",
+   "note": "**(b)** 说的正是「可测**函数**的截口仍可测」。"
+  },
+  {
+   "id": "def-link.product-sigma-section-measurable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-sigma",
+   "usedBy": "prop.section-measurable",
+   "note": "前提 $E \\in \\mathcal{M} \\otimes \\mathcal{N}$ 里的 $\\otimes$ 就是**积 $\\sigma$-代数**。"
+  },
+  {
    "id": "imp.hahn",
    "kind": "implication",
    "strength": "strong",
@@ -6978,6 +7046,18 @@
    "target": "prop.rn-chain-rule",
    "title": "换元公式与链式法则",
    "proof": "设 $$\\nu \\ll  \\mu \\ll  \\lambda$$。\n\n**(a) 换元公式 $$\\int g d\\nu = \\int g \\frac{d\\nu}{d\\mu} d\\mu$$。** 分四步爬：\n\n$\\cdot$ $$g = \\chi_E$$：左边是 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu$$（这正是 RN 定理的内容），右边同；\n$\\cdot g$ 是简单函数：由线性；\n$\\cdot$ $$g \\in L^+$$：取简单函数列 $$g_n \\uparrow  g$$，两边各用一次 MCT；\n$\\cdot$ $$g \\in L^1(\\nu)$$：拆正负部。\n\n**(b) 链式法则。** 对任意可测 $E$，用 (a) 两次：\n\n$$\\nu(E) = \\int_E \\frac{d\\nu}{d\\mu} d\\mu = \\int_E \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda} d\\lambda$$\n\n另一方面又有 $$\\nu(E) = \\int_E \\frac{d\\nu}{d\\lambda} d\\lambda$$（因为 $\\nu \\ll \\lambda$）。两式对**一切** $E$ 相等，由「用积分识别函数」，两个密度 $\\lambda -\\text{a.e.}$ 相等：\n\n$$\\frac{d\\nu}{d\\lambda} = \\frac{d\\nu}{d\\mu} \\cdot \\frac{d\\mu}{d\\lambda}\\quad  \\lambda-\\text{a.e.}$$\n\n∎",
+   "note": ""
+  },
+  {
+   "id": "imp.integral-ac-continuity",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "prop.integral-gives-ac"
+   ],
+   "target": "cor.ac-integral-continuity",
+   "title": "积分给出绝对连续测度 ⟹ 积分的绝对连续性",
+   "proof": "把「积分给出绝对连续测度」与绝对连续的 $\\varepsilon$–$\\delta$ 刻画拼起来即可：$\\mu(E) < \\delta \\implies \\nu(E) = \\int_E f \\, d\\mu < \\varepsilon$。∎",
    "note": ""
   },
   {
@@ -8257,6 +8337,18 @@
    "note": ""
   },
   {
+   "id": "imp.triangle-cauchy",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.triangle"
+   ],
+   "target": "def.cauchy-null",
+   "title": "三角不等式 ⟹ 零列关系是等价关系",
+   "proof": "自反、对称直接由定义读出；**传递**要三角不等式：若 $(x_n) \\sim (y_n)$、$(y_n) \\sim (z_n)$，则 $|x_n - z_n| \\le |x_n - y_n| + |y_n - z_n|$，右边两项都是零列，故 $(x_n) \\sim (z_n)$。没有这一条，$\\mathbb{R}$ 就没法定义成商集。∎",
+   "note": ""
+  },
+  {
    "id": "imp.real-ordered-field",
    "kind": "implication",
    "strength": "strong",
@@ -8999,6 +9091,126 @@
    "note": "前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。"
   },
   {
+   "id": "def-link.sup-real-ordered-field",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sup",
+   "usedBy": "thm.real-ordered-field",
+   "note": "**(iii) 完备性（确界原理）**说的正是「每个非空有上界的子集都有**上确界**」—— 结论是用 $\\sup$ 写出来的。"
+  },
+  {
+   "id": "def-link.metric-borel-product",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "cor.borel-product",
+   "note": "设 $X_1, X_2, \\dots$ 是**距离空间**，$X = \\prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。"
+  },
+  {
+   "id": "def-link.signed-total-variation",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.signed-measure",
+   "usedBy": "prop.total-variation-basics",
+   "note": "设 $\\nu$ 是**符号测度**，$|\\nu|$ 是它的全变差。"
+  },
+  {
+   "id": "def-link.complex-total-variation",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex-measure",
+   "usedBy": "prop.total-variation-basics",
+   "note": "同一条命题对**复测度**也适用（全变差对两者定义一致）。"
+  },
+  {
+   "id": "def-link.ae-mct-ae",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "cor.mct-ae",
+   "note": "前提放宽成「对**几乎处处**的 $x$ 有 $f_n \\uparrow f$」—— 这就是这条推论与 MCT 的唯一区别。"
+  },
+  {
+   "id": "def-link.ae-integral-zero",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "prop.integral-zero-iff",
+   "note": "结论「$f = 0$ **几乎处处**」里的 a.e. 就是它。"
+  },
+  {
+   "id": "def-link.ae-complete-measurable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "prop.complete-measurable",
+   "note": "**(a)** 的 $f = g$ 与 **(b)** 的 $f_n \\to f$ 都是在 **a.e.** 意义下说的。"
+  },
+  {
+   "id": "def-link.ae-completion-measurable-fn",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "prop.completion-measurable-function",
+   "note": "结论 $f = g$ 是 $\\bar{\\mu}$-**a.e.** 成立的。"
+  },
+  {
+   "id": "def-link.ae-cauchy-in-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "thm.cauchy-in-measure",
+   "note": "结论里抽出的子列是**几乎处处**收敛的。"
+  },
+  {
+   "id": "def-link.ae-monotone-differentiable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "thm.monotone-differentiable",
+   "note": "结论是 $F$ 与 $G$ 都 **a.e. 可导**且导数 a.e. 相等。"
+  },
+  {
+   "id": "def-link.ae-fatou",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ae",
+   "usedBy": "cor.fatou",
+   "note": "前提「$f_n \\to f$ **a.e.**」与 Fatou 引理的差别就在这里。"
+  },
+  {
+   "id": "def-link.integrable-integrals-equal",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "prop.integrals-equal-iff",
+   "note": "前提 $f, g \\in L^1(\\mu)$ 说的是两个函数都**可积**。"
+  },
+  {
+   "id": "def-link.integrable-linf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "thm.linf-properties",
+   "note": "**(a)** 里出现的 $f \\in L^1$ 就是**可积**。"
+  },
+  {
+   "id": "def-link.integrable-nbv-derivative",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "prop.nbv-derivative",
+   "note": "结论 $F' \\in L^1(m)$ 说的是**可积**。"
+  },
+  {
+   "id": "def-link.integrable-integral-is-ac-nbv",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.integrable",
+   "usedBy": "cor.integral-is-ac-nbv",
+   "note": "**(1)** 的前提 $f \\in L^1(m)$ 是**可积**。"
+  },
+  {
    "id": "ana.sep-container",
    "kind": "analogy",
    "strength": "weak",
@@ -9709,6 +9921,54 @@
    "definition": "def.essential-sup",
    "usedBy": "def.duality-map",
    "note": "$g \\in L^\\infty$ 那一头（$p = 1$）要用本性上界。"
+  },
+  {
+   "id": "def-dep.function-measurable-function",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function",
+   "usedBy": "def.measurable-function",
+   "note": "可测性的载体是**函数** $f : X \\to Y$ —— 先有函数，才谈得上「每个可测集的原像可测」。"
+  },
+  {
+   "id": "def-dep.signed-regular-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.signed-measure",
+   "usedBy": "def.regular-measure",
+   "note": "「**符号测度** $\\nu$ 叫正则 $\\iff$ $|\\nu|$ 正则」—— 正则性是借助符号测度说的。"
+  },
+  {
+   "id": "def-dep.complex-regular-measure",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex-measure",
+   "usedBy": "def.regular-measure",
+   "note": "同一条对**复测度**再说一遍。"
+  },
+  {
+   "id": "def-dep.metric-shrinks-nicely",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.metric-space",
+   "usedBy": "def.shrinks-nicely",
+   "note": "「$E_r \\subseteq B(r, x)$」里的 $B(r, x)$ 是**距离空间**里的球。"
+  },
+  {
+   "id": "def-dep.measure-shrinks-nicely",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.measure",
+   "usedBy": "def.shrinks-nicely",
+   "note": "「$m(E_r) > \\alpha \\cdot m(B(r, x))$」里的 $m$ 是一个**测度**。"
+  },
+  {
+   "id": "def-dep.lplus-integral-simple",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.lplus",
+   "usedBy": "def.integral-simple",
+   "note": "标准形式写的是「$\\varphi \\in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。"
   }
  ],
  "clusterLinks": [
@@ -9742,15 +10002,22 @@
   },
   {
    "a": "analysis.measurable",
-   "b": "analysis.setclass",
+   "b": "analysis.measure",
+   "count": 10,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.measurable",
+   "b": "analysis.product",
    "count": 2,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.measurable",
-   "b": "analysis.measure",
-   "count": 6,
+   "b": "analysis.setclass",
+   "count": 2,
    "label": "",
    "explicit": false
   },
@@ -9764,7 +10031,7 @@
   {
    "a": "analysis.integral",
    "b": "analysis.measure",
-   "count": 8,
+   "count": 11,
    "label": "",
    "explicit": false
   },
@@ -9783,6 +10050,20 @@
    "explicit": false
   },
   {
+   "a": "analysis.product",
+   "b": "set.construct",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.product",
+   "b": "set.rel",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "analysis.integral",
    "b": "analysis.signed",
    "count": 5,
@@ -9806,7 +10087,7 @@
   {
    "a": "analysis.differentiation",
    "b": "analysis.signed",
-   "count": 2,
+   "count": 4,
    "label": "",
    "explicit": false
   },
@@ -9819,22 +10100,29 @@
   },
   {
    "a": "analysis.bv",
-   "b": "analysis.integral",
+   "b": "analysis.measure",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.bv",
+   "b": "analysis.integral",
+   "count": 4,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.integral",
    "b": "analysis.lp",
-   "count": 3,
+   "count": 4,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.real",
    "b": "set.numbers",
-   "count": 4,
+   "count": 5,
    "label": "",
    "explicit": false
   },
@@ -9981,14 +10269,14 @@
   {
    "a": "analysis.differentiation",
    "b": "topology.metric",
-   "count": 2,
+   "count": 3,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.differentiation",
    "b": "analysis.measure",
-   "count": 2,
+   "count": 3,
    "label": "",
    "explicit": false
   },

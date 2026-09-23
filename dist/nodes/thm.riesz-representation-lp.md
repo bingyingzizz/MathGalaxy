@@ -1,6 +1,6 @@
 # (L^p)* ≅ L^q　`thm.riesz-representation-lp`
 定理（Riesz 表示）：1 < p < ∞ 时 (L^p)* ≅ L^q
-layer 20 · 定理 · L^p 空间 · 分析学
+layer 21 · 定理 · L^p 空间 · 分析学
 
 设 $1 < p < \infty$，$q$ 是共轭指数。则对每个 $\Phi \in (L^p)^*$，存在**唯一**（a.e.）的 $g \in L^q$ 使
 

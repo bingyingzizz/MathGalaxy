@@ -1,6 +1,6 @@
 # L^p 自反　`cor.lp-reflexive`
 推论：1 < p < ∞ 时 L^p ≅ (L^p)**
-layer 16 · 推论 · L^p 空间 · 分析学
+layer 18 · 推论 · L^p 空间 · 分析学
 
 设 $1 < p < \infty$。则
 

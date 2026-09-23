@@ -483,6 +483,114 @@ window.MG = window.MG || {};
       definition: 'def.measure-space',
       usedBy: 'prop.lp-inclusion-finite',
       note: '前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。'
+    },
+
+    {
+      id: 'def-link.sup-real-ordered-field',
+      kind: 'definition',
+      definition: 'def.sup',
+      usedBy: 'thm.real-ordered-field',
+      note: '**(iii) 完备性（确界原理）**说的正是「每个非空有上界的子集都有**上确界**」—— 结论是用 $\\sup$ 写出来的。'
+    },
+
+    /* ------------------------------------------------ 补漏：用到了却没连边 */
+    {
+      id: 'def-link.metric-borel-product',
+      kind: 'definition',
+      definition: 'def.metric-space',
+      usedBy: 'cor.borel-product',
+      note: '设 $X_1, X_2, \\dots$ 是**距离空间**，$X = \\prod_j X_j$ 配以积度量 —— 投影连续、球与可分性都在距离空间里说。'
+    },
+    {
+      id: 'def-link.signed-total-variation',
+      kind: 'definition',
+      definition: 'def.signed-measure',
+      usedBy: 'prop.total-variation-basics',
+      note: '设 $\\nu$ 是**符号测度**，$|\\nu|$ 是它的全变差。'
+    },
+    {
+      id: 'def-link.complex-total-variation',
+      kind: 'definition',
+      definition: 'def.complex-measure',
+      usedBy: 'prop.total-variation-basics',
+      note: '同一条命题对**复测度**也适用（全变差对两者定义一致）。'
+    },
+    {
+      id: 'def-link.ae-mct-ae',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'cor.mct-ae',
+      note: '前提放宽成「对**几乎处处**的 $x$ 有 $f_n \\uparrow f$」—— 这就是这条推论与 MCT 的唯一区别。'
+    },
+    {
+      id: 'def-link.ae-integral-zero',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'prop.integral-zero-iff',
+      note: '结论「$f = 0$ **几乎处处**」里的 a.e. 就是它。'
+    },
+    {
+      id: 'def-link.ae-complete-measurable',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'prop.complete-measurable',
+      note: '**(a)** 的 $f = g$ 与 **(b)** 的 $f_n \\to f$ 都是在 **a.e.** 意义下说的。'
+    },
+    {
+      id: 'def-link.ae-completion-measurable-fn',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'prop.completion-measurable-function',
+      note: '结论 $f = g$ 是 $\\bar{\\mu}$-**a.e.** 成立的。'
+    },
+    {
+      id: 'def-link.ae-cauchy-in-measure',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'thm.cauchy-in-measure',
+      note: '结论里抽出的子列是**几乎处处**收敛的。'
+    },
+    {
+      id: 'def-link.ae-monotone-differentiable',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'thm.monotone-differentiable',
+      note: '结论是 $F$ 与 $G$ 都 **a.e. 可导**且导数 a.e. 相等。'
+    },
+    {
+      id: 'def-link.ae-fatou',
+      kind: 'definition',
+      definition: 'def.ae',
+      usedBy: 'cor.fatou',
+      note: '前提「$f_n \\to f$ **a.e.**」与 Fatou 引理的差别就在这里。'
+    },
+    {
+      id: 'def-link.integrable-integrals-equal',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'prop.integrals-equal-iff',
+      note: '前提 $f, g \\in L^1(\\mu)$ 说的是两个函数都**可积**。'
+    },
+    {
+      id: 'def-link.integrable-linf',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'thm.linf-properties',
+      note: '**(a)** 里出现的 $f \\in L^1$ 就是**可积**。'
+    },
+    {
+      id: 'def-link.integrable-nbv-derivative',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'prop.nbv-derivative',
+      note: '结论 $F\' \\in L^1(m)$ 说的是**可积**。'
+    },
+    {
+      id: 'def-link.integrable-integral-is-ac-nbv',
+      kind: 'definition',
+      definition: 'def.integrable',
+      usedBy: 'cor.integral-is-ac-nbv',
+      note: '**(1)** 的前提 $f \\in L^1(m)$ 是**可积**。'
     }
   ]
 });

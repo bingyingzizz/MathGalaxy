@@ -11,3 +11,5 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
 $$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ 是零列}$$
 
 （$\sim$ 是等价关系：自反、对称显然，传递由三角不等式。）
+
+> 续见 `nodes/def.cauchy-null.3.md`

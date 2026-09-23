@@ -9,10 +9,10 @@
 - def.rat　有理数 ℚ　layer 8
 - def.abs　绝对值 |x|　layer 8
 - thm.triangle　三角不等式　layer 9
-- def.cauchy-null　Cauchy 列与零列　layer 9
-- def.real　实数系 ℝ　layer 10
-- def.complex　复数 ℂ　layer 11
-- thm.real-ordered-field　ℝ 是完备有序域　layer 11
-- lem.archimedean　阿基米德性质　layer 12
-- thm.real-uncountable　ℝ 不可数　layer 12
-- thm.real-unique　完备有序域的唯一性　layer 13
+- def.cauchy-null　Cauchy 列与零列　layer 10
+- def.real　实数系 ℝ　layer 11
+- def.complex　复数 ℂ　layer 12
+- thm.real-ordered-field　ℝ 是完备有序域　layer 13
+- lem.archimedean　阿基米德性质　layer 14
+- thm.real-uncountable　ℝ 不可数　layer 14
+- thm.real-unique　完备有序域的唯一性　layer 15
