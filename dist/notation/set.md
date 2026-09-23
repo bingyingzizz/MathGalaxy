@@ -23,6 +23,7 @@
 - `\supset` ⊃　**反向真包含**
 - `\cup` ∪　**二元并**
 - `\cap` ∩　**二元交**
-- 
+- `\setminus` ∖　**差集**
+- `A
 
 > 续见 notation/set.2.md

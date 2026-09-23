@@ -15,4 +15,4 @@
 - `\mathcal{K}` 𝒦　**证明内局部：单调类定理里的试探集族**
 - `\mathrm{ZFC}` ZFC　**公理系统名（名词 → `\mathrm{}`）**
 
-索引 `notation.md`（三份铁律 + 分组目录）。
+索引 `notation.md`。

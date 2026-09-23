@@ -14,4 +14,4 @@
 - `\Sigma` Σ　**有限支集简单函数全体（`analysis.lp` 局部）**
 - `\partial f / \partial t`　**偏导**
 
-索引 `notation.md`（三份铁律 + 分组目录）。
+索引 `notation.md`。

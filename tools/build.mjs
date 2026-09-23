@@ -927,29 +927,14 @@ function exportHubs(MG, graph, data) {
    为什么必须分页：整张表 100 多条，远超单次抓取上限（1300 B），
    所以索引只放「规则标题 + 分组目录」，条目按组切开。 */
 function exportNotation(MG, base = '') {
-  const N = MG.notation || { rules: [], rulings: [], groups: [], entries: [] };
+  const N = MG.notation || { groups: [], entries: [] };
   const nb = g => (N.entries || []).filter(e => e.g === g.id).length;
   const L = [];
   L.push('# 数学星图 · 记号对照表');
   L.push('');
   L.push(N.intro || '');
   L.push('');
-  L.push('## 铁律');
-  L.push('');
-  for (const r of (N.rulings || [])) L.push(`- **${r.id}** ${r.text}`);
-  L.push('');
-  L.push('## 通用规则');
-  L.push('');
-  L.push(`R1–R${(N.rules || []).length}（LaTeX 写法 / 对象语言⟷元语言 / 算子 / 省略号 / ` +
-    `上下划线 / 方向标记 / label / title）全文 \`${base}notation/0-rules.md\``);
-  L.push('');
-  L.push('## 记号条目（按分组）');
-  L.push('');
   for (const g of (N.groups || [])) L.push(`- \`${base}notation/${g.id}.md\` ${g.name} ${nb(g)}`);
-  L.push('');
-  L.push('## 用法');
-  L.push('');
-  L.push('新内容先按本表转写再进 `src/data/packs/`。写法不合规时构建会直接失败。');
   L.push('');
   return L.join('\n') + '\n';
 }
@@ -965,20 +950,6 @@ function exportNotationFull(MG) {
   L.push('# 数学星图 · 记号对照表');
   L.push('');
   L.push(N.intro || '');
-  L.push('');
-  L.push('## 铁律');
-  L.push('');
-  for (const r of (N.rulings || [])) L.push(`- **${r.id}** ${r.text}`);
-  L.push('');
-  L.push('## 通用规则');
-  L.push('');
-  for (const r of (N.rules || [])) {
-    L.push(`### ${r.id}　${r.title}`);
-    L.push('');
-    L.push(r.text);
-    L.push('');
-  }
-  L.push('## 记号条目');
   L.push('');
   for (const g of (N.groups || [])) {
     L.push(`### ${g.name}`);
@@ -1026,16 +997,10 @@ function exportNotationProducts(MG, base = '') {
   const mkHead = (title, page, from) => `# ${title}\n` +
     `根 \`${from}\`　·　索引 \`notation.md\`${page ? `　·　第 ${page} 页` : ''}\n\n`;
 
-  /* 通用规则 */
-  {
-    const head = mkHead('记号表 · 通用规则', 0, '../');
-    const tail = '索引 `notation.md`（三份铁律 + 分组目录）。';
-    emitChunks(files, dir, '0-rules', head, notationRulesBody(N).join('\n'), tail);
-  }
   /* 各分组 */
   for (const g of (N.groups || [])) {
     const head = mkHead(`记号表 · ${g.name}`, 0, '../');
-    const tail = '索引 `notation.md`（三份铁律 + 分组目录）。';
+    const tail = '索引 `notation.md`。';
     emitChunks(files, dir, g.id, head, notationGroupBody(N, g).join('\n'), tail);
   }
   return files;

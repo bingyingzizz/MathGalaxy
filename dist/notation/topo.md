@@ -8,4 +8,4 @@
 - `B(x, \varepsilon)`　**开球**
 - `\mathfrak{B}_X` 𝔅_X　**Borel σ-代数**
 
-索引 `notation.md`（三份铁律 + 分组目录）。
+索引 `notation.md`。

@@ -1,8 +1,7 @@
 # 记号表 · 逻辑与集合
 根 `../`　·　索引 `notation.md`
 
-`\setminus` ∖　**差集**
-- `A^{c}` Aᶜ　**补集（相对全集 $X$）**
+^{c}` Aᶜ　**补集（相对全集 $X$）**
 - `\bigcup` ⋃　**族的并**
 - `\bigcap` ⋂　**族的交**
 - `\bigsqcup` ⨆　**可数不交并**
@@ -19,4 +18,4 @@
 - `\hookrightarrow` ↪　**单射**
 - `\upharpoonright` ↾　**限制 $f \upharpoonright A$**
 
-索引 `notation.md`（三份铁律 + 分组目录）。
+索引 `notation.md`。

@@ -23,6 +23,6 @@
 - `\operatorname{Re}` Re　**实部**
 - `\operatorname{Im}` Im　**虚部**
 - `\bar{z}` z̄　**共轭**
-- `f_n \upa
+- `f_n \uparrow f` ↑　*
 
 > 续见 notation/num.2.md
