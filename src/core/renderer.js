@@ -152,12 +152,33 @@
     }
 
     /* -------------------------------------------------------- 尺寸计算 */
+    /** 半径倍率：按「是不是中心天体 / 度数多大」分档。
+        分档表在 config.js 的 node.sizeTiers —— 那里写了为什么不再用
+        ×1.32 / ×1.22 那种「叠乘」写法（差距太小，看不出层级）。 */
+    function sizeMul(node) {
+      if (!node) return 1;
+      var t = C.node.sizeTiers;
+      if (!t) {
+        // 没有分档表时的老行为（保底）
+        var m = 1;
+        if (node.degree >= 5) m *= 1.22; else if (node.degree >= 3) m *= 1.1;
+        if (node.isHub) m *= 1.32;
+        return m;
+      }
+      if (node.isHub) return t.hub;
+      var d = node.degree || 0;
+      for (var i = 0; i < t.byDegree.length; i++) {
+        if (d >= t.byDegree[i][0]) return t.byDegree[i][1];
+      }
+      return 1;
+    }
+
     function nodeRadius(node) {
       var r = C.node.baseRadius * Math.pow(view.cam.k, C.node.radiusPower);
       r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
-      if (node && node.degree >= 5) r *= 1.22;      // 枢纽节点稍大一点
-      else if (node && node.degree >= 3) r *= 1.1;
-      if (node && node.isHub) r *= 1.32;            // 星团的中心天体：再大一圈
+      r *= sizeMul(node);
+      // 放大之后也要有上限，否则高缩放下中心天体会顶到邻居
+      if (C.node.sizeClamp) r = Math.min(r, C.node.sizeClamp);
       return r;
     }
 

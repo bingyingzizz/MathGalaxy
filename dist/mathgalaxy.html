@@ -667,7 +667,28 @@ window.addEventListener('error', function (e) {
          取中间偏后一点当闸门。改 idealDist 或 nodeNameIn 时要一起看。 */
       labelMinZoomAll: 0.66,
       labelPad: 3,
-      glow: true
+      glow: true,
+
+      /* 半径分层：让「中心天体 / 枢纽」与「边角小点」一眼分得开。
+         ------------------------------------------------------------------
+         ⚠️ 2026-09-23 实测：改之前 hub 只 ×1.32、degree ≥5 只 ×1.22、
+         ≥3 只 ×1.1，**全图极差只有 1.61 倍**。于是「四个标准反例」（degree 1）
+         和「单射/满射/双射」（degree 7）之间只差 1.22 倍 —— 肉眼几乎分不出，
+         用户直接指出「那四个反例看起来快和单射满射双射一样大了」。
+         所以改成**分档**：hub 一档、按度数分五档、叶子单独压小。
+         极差从 1.61× 拉到 2.6×（叶子 0.78 ↔ 中心天体 2.05）。 */
+      sizeTiers: {
+        hub: 2.05,              // 星团的中心天体（clusters.js 里手定的 hub）
+        byDegree: [             // [最低度数, 倍率]，从上往下取第一个命中
+          [12, 1.60],
+          [8, 1.42],
+          [5, 1.26],
+          [3, 1.10],
+          [2, 0.95],
+          [0, 0.78]             // 叶子：只有一条边的边角小点
+        ]
+      },
+      sizeClamp: 33             // 放大之后的最终上限（世界单位）；minGap 是 64，不会撞
     },
 
     /* 连线 */
@@ -2518,12 +2539,33 @@ window.addEventListener('error', function (e) {
     }
 
     /* -------------------------------------------------------- 尺寸计算 */
+    /** 半径倍率：按「是不是中心天体 / 度数多大」分档。
+        分档表在 config.js 的 node.sizeTiers —— 那里写了为什么不再用
+        ×1.32 / ×1.22 那种「叠乘」写法（差距太小，看不出层级）。 */
+    function sizeMul(node) {
+      if (!node) return 1;
+      var t = C.node.sizeTiers;
+      if (!t) {
+        // 没有分档表时的老行为（保底）
+        var m = 1;
+        if (node.degree >= 5) m *= 1.22; else if (node.degree >= 3) m *= 1.1;
+        if (node.isHub) m *= 1.32;
+        return m;
+      }
+      if (node.isHub) return t.hub;
+      var d = node.degree || 0;
+      for (var i = 0; i < t.byDegree.length; i++) {
+        if (d >= t.byDegree[i][0]) return t.byDegree[i][1];
+      }
+      return 1;
+    }
+
     function nodeRadius(node) {
       var r = C.node.baseRadius * Math.pow(view.cam.k, C.node.radiusPower);
       r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
-      if (node && node.degree >= 5) r *= 1.22;      // 枢纽节点稍大一点
-      else if (node && node.degree >= 3) r *= 1.1;
-      if (node && node.isHub) r *= 1.32;            // 星团的中心天体：再大一圈
+      r *= sizeMul(node);
+      // 放大之后也要有上限，否则高缩放下中心天体会顶到邻居
+      if (C.node.sizeClamp) r = Math.min(r, C.node.sizeClamp);
       return r;
     }
 
