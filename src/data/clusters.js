@@ -118,8 +118,8 @@ MG.clusters = [
     id: 'algebra.structures',
     name: '代数结构',
     parent: 'algebra',
-    hub: 'def.field',
-    desc: '造出代数语言本身：**域** = 集合 + 两个运算 + 公理，**有序域** = 域 + 与运算相容的全序。ℚ 与 ℝ 都是实例。（代数学的笔记进来后这一团扩容：群 / 环 / 模。）'
+    hub: 'def.group',
+    desc: '造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。'
   },
   {
     id: 'algebra.vectorspace',
@@ -153,10 +153,10 @@ MG.clusters = [
   },
   {
     id: 'topo.cg',
-    name: '紧生成空间',
+    name: '紧生成空间与弱 Hausdorff',
     parent: 'topology',
     hub: 'def.compactly-generated',
-    desc: '造出「由紧 Hausdorff 空间测试出来的拓扑」：紧生成空间，以及它是拓扑空间范畴的余反射子范畴。'
+    desc: '造出「乘积好用的拓扑空间范畴」：紧生成空间（$k$-空间）→ $k$-拓扑与 $k$-化 → 商映射与积 → 紧开拓扑 → 弱 Hausdorff → $\\mathrm{CGWH}$ 是反射子范畴。'
   },
 
   /* ------------------------------------------------ 星系：分析学 */

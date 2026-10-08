@@ -431,8 +431,8 @@ MG.aliases = {
     { id: 'def.topos-morphism', aka: ['拓扑斯的态射', 'geometric morphism', '几何态射', '拉回函子', '推前函子'] },
 
     /* 紧生成空间 */
-    { id: 'def.compactly-generated', aka: ['紧生成空间', 'compactly generated', 'k-space', 'k-空间', 'k化'] },
-    { id: 'prop.cg-coreflective', aka: ['紧生成空间是余反射的', 'kification'] },
+    { id: 'def.compactly-generated', aka: ['紧生成空间', 'compactly generated', 'k-space', 'k-空间', 'k空间', 'k化', '紧生成'] },
+    { id: 'prop.cg-coreflective', aka: ['紧生成空间是余反射的', 'kification', '紧生成是余反射子范畴', 'k 是右伴随'] },
 
     /* 凝聚态集 */
     { id: 'def.chaus-pretopos', aka: ['CHaus 是预拓扑斯'] },
@@ -460,6 +460,33 @@ MG.aliases = {
     { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠'] },
+
+    /* 紧生成空间与弱 Hausdorff */
+    { id: 'ex.cg-examples', aka: ['紧生成空间的例子', '局部紧空间是紧生成的', 'R^I 不紧生成'] },
+    { id: 'prop.cg-equivalent-conditions', aka: ['紧生成空间的等价刻画', 'k-空间等价条件'] },
+    { id: 'def.k-topology', aka: ['k-拓扑', 'k拓扑', 'k-开', 'k-闭', 'k-化', 'k-ification', 'kX'] },
+    { id: 'prop.ktx-colimit', aka: ['kX 是余极限'] },
+    { id: 'thm.quotient-product', aka: ['商映射乘局部紧', '商映射与积', 'quotient map product', '局部紧因子'] },
+    { id: 'cor.cg-product', aka: ['紧生成空间对积封闭', 'CG 对有限积封闭'] },
+    { id: 'prop.k-product', aka: ['k-化与积交换', 'k(X×Y)'] },
+    { id: 'def.compact-open-topology', aka: ['紧开拓扑', 'compact-open topology', '函数空间拓扑', 'W_{S,V}'] },
+    { id: 'prop.compact-open-discrete', aka: ['离散时函数空间是积空间'] },
+    { id: 'def.weak-hausdorff', aka: ['弱 Hausdorff', 'weak Hausdorff', '弱豪斯多夫'] },
+    { id: 'prop.weak-hausdorff-basic', aka: ['弱 Hausdorff 的性质', '对角 k-闭'] },
+    { id: 'prop.cgwh-fiber-product', aka: ['紧块的纤维积', 'fiber product compact'] },
+    { id: 'prop.cg-kclosed-quotient', aka: ['k-闭等价关系', '弱 Hausdorff 商'] },
+    { id: 'thm.cgwh-reflective', aka: ['CGWH', 'CGWH 是反射子范畴', '紧生成弱 Hausdorff', '弱 Hausdorff 化'] },
+    { id: 'prop.cgwh-closed', aka: ['CGWH 的子空间', 'CGWH 的滤过余极限'] },
+    { id: 'prop.cg-function-space', aka: ['函数空间弱 Hausdorff', 'kC(X,Y)'] },
+
+    /* 群与第一同构定理 */
+    { id: 'def.group', aka: ['群', 'group', '阿贝尔群', '交换群', 'Abelian group'] },
+    { id: 'def.subgroup', aka: ['子群', 'subgroup'] },
+    { id: 'def.normal-subgroup', aka: ['正规子群', 'normal subgroup', '陪集', 'coset'] },
+    { id: 'def.quotient-group', aka: ['商群', 'quotient group', 'G/N', '商映射'] },
+    { id: 'def.group-hom', aka: ['群同态', 'group homomorphism', '核', 'kernel', '像', 'image'] },
+    { id: 'thm.first-iso', aka: ['Noether 第一同构定理', '第一同构定理', '同构定理', 'first isomorphism theorem', 'Noether'] },
+    { id: 'def.product-topology', aka: ['积拓扑', 'product topology', '乘积空间', '投影'] },
 
     /* 同调代数 */
     { id: 'def.cochain-complex', aka: ['复形', 'complex', '上链复形', 'cochain complex', '链复形', '微分'] },
@@ -632,5 +659,14 @@ MG.aliases = {
     { q: '层的张量积怎么算', to: ['def.tensor-abelian-sheaf', 'def.internal-hom', 'thm.sheafification'] },
     { q: '为什么凝聚态阿贝尔群可以做代数', to: ['def.tensor-abelian-sheaf', 'thm.condab-ab', 'def.condensed-abelian-group'] },
     { q: '什么是平坦对象', to: ['def.flat-abelian-sheaf', 'def.tensor-abelian-sheaf', 'def.abelian-category'] },
+    { q: '商映射乘局部紧是什么定理', to: ['thm.quotient-product', 'cor.cg-product', 'def.quotient-topology'] },
+    { q: '什么是k拓扑', to: ['def.k-topology', 'def.compactly-generated', 'prop.cg-coreflective'] },
+    { q: '哪些空间是紧生成的', to: ['def.compactly-generated', 'ex.cg-examples', 'prop.cg-equivalent-conditions'] },
+    { q: '什么是弱 Hausdorff', to: ['def.weak-hausdorff', 'prop.weak-hausdorff-basic', 'thm.cgwh-reflective'] },
+    { q: '紧开拓扑是什么', to: ['def.compact-open-topology', 'prop.cg-function-space', 'def.compactly-generated'] },
+    { q: 'Noether 第一同构定理', to: ['thm.first-iso', 'def.quotient-group', 'def.group-hom'] },
+    { q: '商群是什么', to: ['def.quotient-group', 'def.normal-subgroup', 'def.quotient-set'] },
+    { q: '核为什么是正规子群', to: ['def.group-hom', 'def.normal-subgroup', 'thm.first-iso'] },
+    { q: '积拓扑是什么', to: ['def.product-topology', 'def.quotient-topology', 'def.compactly-generated'] },
   ],
 };

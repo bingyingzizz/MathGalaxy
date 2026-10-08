@@ -83,7 +83,7 @@
       return '<div class="pn-link" data-kind="edge" data-id="' + e.id + '">' +
         '<span class="dot" style="background:' + edgeDot(e) + '"></span>' +
         (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
-        '<span><span class="nm">' + U.titleHtml(U.truncate(head, 44)) + '</span>' +
+        '<span><span class="nm">' + U.titleHtml(head) + '</span>' +
         '<div class="ds">' + arrow + ' ' + U.escapeHtml(name) +
         (snippet ? ' · ' + U.escapeHtml(U.truncate(snippet, 48)) : '') + '</div></span>' +
         '</div>';

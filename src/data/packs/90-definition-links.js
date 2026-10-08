@@ -1486,6 +1486,101 @@ window.MG = window.MG || {};
       definition: 'def.abelian-category',
       usedBy: 'thm.topos-abelian-grothendieck',
       note: '结论的一部分是「$\\mathcal{T}(\\mathbf{Ab})$ 是**阿贝尔**范畴」。'
+    },
+
+    /* ------------------------------- 紧生成空间与弱 Hausdorff（18 条那一批） */
+    {
+      id: 'def-dep.cg-quotient-locally-compact',
+      kind: 'definition',
+      definition: 'def.quotient-topology',
+      usedBy: 'thm.quotient-product',
+      note: '定理说的是**商映射** —— 也就是商拓扑那条满射。'
+    },
+    {
+      id: 'def-dep.cg-product-top',
+      kind: 'definition',
+      definition: 'def.product-topology',
+      usedBy: 'thm.quotient-product',
+      note: '结论说的是**乘积空间** $X \\times Z \\to Y \\times Z$。'
+    },
+    {
+      id: 'def-dep.cg-hausdorff-cgprod',
+      kind: 'definition',
+      definition: 'def.hausdorff',
+      usedBy: 'cor.cg-product',
+      note: '推论里的因子 $Y$ 要求**局部紧 Hausdorff**。'
+    },
+    {
+      id: 'def-dep.cg-kproduct',
+      kind: 'definition',
+      definition: 'def.k-topology',
+      usedBy: 'prop.k-product',
+      note: '式子里两边的 $k$ 都是**$k$-化**。'
+    },
+    {
+      id: 'def-dep.cg-ktx-quotient',
+      kind: 'definition',
+      definition: 'def.quotient-topology',
+      usedBy: 'prop.cg-kclosed-quotient',
+      note: '命题说的是**商空间** $X/R$。'
+    },
+    {
+      id: 'def-dep.weakhaus-diagonal',
+      kind: 'definition',
+      definition: 'def.product-topology',
+      usedBy: 'prop.weak-hausdorff-basic',
+      note: '对角 $\\Delta_{X}$ 住在**乘积** $X \\times X$ 里。'
+    },
+    {
+      id: 'def-dep.cgwh-cg',
+      kind: 'definition',
+      definition: 'def.compactly-generated',
+      usedBy: 'thm.cgwh-reflective',
+      note: '$\\mathrm{CGWH}$ 是在**紧生成**之上再加弱 Hausdorff。'
+    },
+    {
+      id: 'def-dep.funcspace-compactopen',
+      kind: 'definition',
+      definition: 'def.compact-open-topology',
+      usedBy: 'prop.cg-function-space',
+      note: '命题里的 $kC(X, Y)$ 就是**紧开拓扑**再取 $k$-化。'
+    },
+
+    /* ---------------------------------------------- 群与第一同构定理 */
+    {
+      id: 'def-dep.firstiso-quotient-group',
+      kind: 'definition',
+      definition: 'def.quotient-group',
+      usedBy: 'thm.first-iso',
+      note: '定理左端的 $G/\\ker\\varphi$ 是**商群**。'
+    },
+    {
+      id: 'def-dep.firstiso-kernel',
+      kind: 'definition',
+      definition: 'def.group-hom',
+      usedBy: 'thm.first-iso',
+      note: '核与像都是**群同态**的概念。'
+    },
+    {
+      id: 'def-dep.firstiso-normal',
+      kind: 'definition',
+      definition: 'def.normal-subgroup',
+      usedBy: 'thm.first-iso',
+      note: '核是**正规**子群 —— 这正是它能被商掉的理由。'
+    },
+    {
+      id: 'def-dep.quotient-group-normal',
+      kind: 'definition',
+      definition: 'def.normal-subgroup',
+      usedBy: 'def.quotient-group',
+      note: '商群只对**正规**子群有定义。'
+    },
+    {
+      id: 'def-dep.grouphom-subgroup',
+      kind: 'definition',
+      definition: 'def.subgroup',
+      usedBy: 'def.group-hom',
+      note: '核与像都是**子群**。'
     }
   ]
 });
