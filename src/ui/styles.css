@@ -523,6 +523,15 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
     border-radius: 16px 16px 0 0;
     padding-bottom: 22px;
   }
-  #legend { display: none; }
+  /* ⚠️ 别再像以前那样把图例整个 display:none —— 节点 / 连线 / 板块的显示开关、
+     「只看子图」的跳数与「退出」全在里面，藏了就再也拿不回来。
+     窄屏改成「默认折成一条」：JS 在进入窄屏时加 .collapsed。 */
+  #legend {
+    right: auto;
+    left: 14px;
+    max-width: min(300px, calc(100vw - 28px));
+    max-height: 52vh;
+    z-index: 11;              /* 压在详情面板（底部抽屉）之上，随时够得着 */
+  }
   #hint { display: none; }
 }

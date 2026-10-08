@@ -628,6 +628,19 @@
       if (chip) toggleList(regionNodes(chip.getAttribute('data-vr')));
     });
 
+    /* 窄屏（竖屏手机 / 窄窗口）默认把图例**折起来**，而不是藏掉。
+       ⚠️ 阈值必须和 styles.css 里那条 @media 保持一致。
+       ⚠️ 只在「刚进入窄屏」时折一次 —— 每次都折的话，用户自己展开完一动窗口又没了。 */
+    var NARROW_W = 820;
+    var wasNarrow = null;
+    function syncNarrowLegend() {
+      var now = window.innerWidth <= NARROW_W;
+      if (now && wasNarrow !== true) legendEl.classList.add('collapsed');
+      wasNarrow = now;
+    }
+    syncNarrowLegend();
+    window.addEventListener('resize', syncNarrowLegend);
+
     /* ---------------------------------------------------------- 键盘 */
     document.addEventListener('keydown', function (e) {
       var tag = (e.target.tagName || '').toLowerCase();
