@@ -10,10 +10,10 @@
 - 数理逻辑　`dist/alias/logic.md` 0 问法　·　`dist/alias/aka/logic.md` 4 别名
 - 集合论　`dist/alias/set-theory.md` 20 问法　·　`dist/alias/aka/set-theory.md` 52 别名
 - 序理论　`dist/alias/order-theory.md` 8 问法　·　`dist/alias/aka/order-theory.md` 12 别名
-- 拓扑学　`dist/alias/topology.md` 23 问法　·　`dist/alias/aka/topology.md` 60 别名
-- 抽象代数　`dist/alias/algebra.md` 5 问法　·　`dist/alias/aka/algebra.md` 11 别名
+- 拓扑学　`dist/alias/topology.md` 28 问法　·　`dist/alias/aka/topology.md` 67 别名
+- 抽象代数　`dist/alias/algebra.md` 8 问法　·　`dist/alias/aka/algebra.md` 14 别名
 - 分析学　`dist/alias/analysis.md` 41 问法　·　`dist/alias/aka/analysis.md` 160 别名
-- 范畴论　`dist/alias/category.md` 37 问法　·　`dist/alias/aka/category.md` 82 别名
-- 同调代数　`dist/alias/homology.md` 16 问法　·　`dist/alias/aka/homology.md` 23 别名
-- 凝聚态数学　`dist/alias/condensed.md` 8 问法　·　`dist/alias/aka/condensed.md` 16 别名
+- 范畴论　`dist/alias/category.md` 39 问法　·　`dist/alias/aka/category.md` 84 别名
+- 同调代数　`dist/alias/homology.md` 19 问法　·　`dist/alias/aka/homology.md` 24 别名
+- 凝聚态数学　`dist/alias/condensed.md` 11 问法　·　`dist/alias/aka/condensed.md` 23 别名
 

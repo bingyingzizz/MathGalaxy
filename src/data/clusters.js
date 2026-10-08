@@ -340,6 +340,13 @@ MG.clusters = [
     parent: 'condensed',
     hub: 'def.condensed-abelian-group',
     desc: '在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。'
+  },
+  {
+    id: 'cond.topo',
+    name: '拓扑阿贝尔群',
+    parent: 'condensed',
+    hub: 'thm.pontryagin-van-kampen',
+    desc: '造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
