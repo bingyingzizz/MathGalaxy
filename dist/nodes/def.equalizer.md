@@ -11,4 +11,9 @@ $$\ker(f,g) \longrightarrow X \overset{f}{\underset{g}{\rightrightarrows}} Y \lo
 ## 为什么成立（入边，证明在 proofs/）
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-equalizer.md
 
+## 它能推出什么 / 谁在用它
+- 被 `def.regular-epi` 正则满态射 用
+- 被 `prop.sheaf-mono-epi-iso` 层中单满即同构 用
+- 被 `def.effective-equivalence` 有效等价关系 用
+
 > 说明见 `notes/def.equalizer.md`

@@ -13,4 +13,7 @@ $$\varinjlim : \mathbf{Set}^{I} \longrightarrow \mathbf{Set}$$
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-filtered.md
 - `def.commutative-diagram` 交换图：用到了定义 交换图　proofs/def-dep.diagram-filtered.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.site-properties` site 的层范畴的好性质
+
 > 说明见 `notes/prop.filtered-exact.md`

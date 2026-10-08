@@ -9,3 +9,4 @@
 - cat.yoneda　预层与米田　中心天体 lem.yoneda　10 点
 - cat.adjoint　伴随与反射　中心天体 def.adjoint　13 点
 - cat.chaus　紧 Haus 与 Stone　中心天体 prop.chaus-reflective　18 点
+- cat.sheaf　层与拓扑　中心天体 def.sheaf　18 点

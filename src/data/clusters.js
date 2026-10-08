@@ -259,6 +259,13 @@ MG.clusters = [
     parent: 'category',
     hub: 'prop.chaus-reflective',
     desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → Stone 空间 = 投射有限空间 → Gleason 定理。'
+  },
+  {
+    id: 'cat.sheaf',
+    name: '层与拓扑',
+    parent: 'category',
+    hub: 'def.sheaf',
+    desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
