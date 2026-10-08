@@ -9,5 +9,5 @@
 - `dist/notation/measure.md` 测度与 σ-代数 24
 - `dist/notation/integral.md` 积分与函数空间 12
 - `dist/notation/layout.md` 排版与箭头 9
-- `dist/notation/letters.md` 字母约定 18
+- `dist/notation/letters.md` 字母约定 19
 

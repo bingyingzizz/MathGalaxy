@@ -19,5 +19,8 @@ layer 15 · 定义 · 拓扑斯 · 范畴论
 - 被 `prop.pretopos-factorization` 满-单分解 用
 - 被 `def.precanonical-topology` 预标准拓扑 用
 - 被 `def.topos` 拓扑斯 用
+- 被 `def.chaus-pretopos` CHaus 是预拓扑斯 用
 
 > 说明见 `notes/def.pretopos.md`
+
+- …另有出边，续页见 `nodes/def.pretopos.2.md`

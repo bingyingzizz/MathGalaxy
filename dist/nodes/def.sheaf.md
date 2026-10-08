@@ -19,9 +19,9 @@ $$\operatorname{Hom}(h_{X}, F) \longrightarrow \operatorname{Hom}(R, F)$$
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.sheaf-descent` 层的下降条件
 - ⇒ `prop.topos-sheaf-limits` 拓扑斯上的层即保极限的预层
+- ⇒ `prop.cond-epi` 凝聚态集满态射的判据
 - 被 `thm.sheaf-descent` 层的下降条件 用
 - 被 `def.cech-functor` Čech 函子 用
-- 被 `prop.sheaf-epi-criterion` 满态射的局部判据 用
 
 > 说明见 `notes/def.sheaf.md`
 

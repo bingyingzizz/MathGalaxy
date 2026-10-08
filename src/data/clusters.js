@@ -273,6 +273,20 @@ MG.clusters = [
     parent: 'category',
     hub: 'def.topos',
     desc: '造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。'
+  },
+  {
+    id: 'cat.cg',
+    name: '紧生成空间',
+    parent: 'category',
+    hub: 'def.compactly-generated',
+    desc: '造出「由紧 Hausdorff 空间测试出来的拓扑」：紧生成空间，以及它是拓扑空间范畴的余反射子范畴。'
+  },
+  {
+    id: 'cond',
+    name: '凝聚态集',
+    parent: 'category',
+    hub: 'def.condensed-set',
+    desc: '造出终点站：紧 Hausdorff 空间上的层就是凝聚态集，换到自由对象上退化成「保有限积」，再往上走凝聚态阿贝尔群。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

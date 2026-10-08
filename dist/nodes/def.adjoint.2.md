@@ -14,3 +14,6 @@
 - 被 `ex.kan-extension` Kan 延拓的两个例子 用
 - 被 `prop.chaus-reflective` 紧 Haus 是反射子范畴 用
 - 被 `def.topos-morphism` 拓扑斯的态射 用
+- 被 `def.chaus-pretopos` CHaus 是预拓扑斯 用
+- 被 `prop.cg-coreflective` 紧生成空间是余反射子范畴 用
+- 被 `prop.condab-tensor` CondAb 上的张量与内 Hom 用

@@ -15,6 +15,9 @@ layer 15 · 定义 · 紧 Haus 与 Stone · 范畴论+拓扑学
 - `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-free-presentation.md
 
 ## 它能推出什么 / 谁在用它
+- ⇒ `thm.cond-topos` Cond 是拓扑斯
+- ⇒ `thm.cond-equiv-fchaus` Cond 即 FCHaus 上的层
+- ⇒ `prop.cond-epi` 凝聚态集满态射的判据
 - 被 `cor.chaus-free-presentation` 紧 Haus 都有自由表示 用
 
 > 说明见 `notes/def.free-presentation.md`

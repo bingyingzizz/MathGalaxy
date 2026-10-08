@@ -16,3 +16,6 @@ layer 17 · 定理 · 拓扑斯 · 范畴论
 - `def.representable` 表示函子：用到了定义 表示函子　proofs/def-dep.representable-giraud.md
 
 > 说明见 `notes/thm.giraud.md`
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 `nodes/thm.giraud.2.md`

@@ -4,3 +4,5 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 `prop.topos-sheaf-limits` 拓扑斯上的层即保极限的预层 用
 - 被 `def.topos-morphism` 拓扑斯的态射 用
+- 被 `def.compactly-generated` 紧生成空间 用
+- 被 `prop.condab-section` 截面函子保极限余极限 用
