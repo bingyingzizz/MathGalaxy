@@ -68,13 +68,12 @@ window.MG = window.MG || {};
         '',
         '按包含关系 $\\subseteq$ 排序。',
         '',
-        '1. **$\\mathcal{A} \\ne \\emptyset$**：$S_{0} \\in \\mathcal{A}$。',
-        '',
-        '2. **每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{A}$ 是 $\\subseteq$链，令 $U = \\bigcup \\mathcal{D}$。要证 $U$ 线性无关，只需证 $U$ 的每个有限子集线性无关：取有限子集 $\\{v_{1}$ …$v_{n}\\} \\subseteq U$，每个 $v_{i}$ 属于某个 $D_{i} \\in \\mathcal{D}$；$\\mathcal{D}$ 是链且只有有限多个 $D_{i}$，故其中有一个最大的 $D$ 包含全部 $v_{i}$，即 $\\{v_{1}$ …$v_{n}\\} \\subseteq D$。而 $D$ 线性无关，故它的子集 $\\{v_{1}$ …$v_{n}\\}$ 也线性无关。因此 $U$ 线性无关，$U \\in \\mathcal{A}$，它是 $\\mathcal{D}$ 的上界。',
-        '',
-        '3. 由佐恩引理，$\\mathcal{A}$ 有极大元 $B$。$B$ 是含 $S_{0}$ 的线性无关集，且在「含 $S_{0}$ 的线性无关集」中极大。',
-        '',
-        '4. **$B$ 生成 $V$**：若存在 $v \\in V$ 不在 $B$ 的张成空间 span(B) 中，则 $B \\cup \\{v\\}$ 仍线性无关（否则 $v$ 可写成 $B$ 中有限多个向量的线性组合，与 $v \\notin \\operatorname{span}(B)$ 矛盾），且严格大于 $B$，与 $B$ 的极大性矛盾。故 $\\operatorname{span}(B) = V$，即 $B$ 是 $V$ 的基。取 $S_{0} = \\emptyset$ 得「$V$ 有基」。∎'
+        [
+          '1. **$\\mathcal{A} \\ne \\emptyset$**：$S_{0} \\in \\mathcal{A}$。',
+          '2. **每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{A}$ 是 $\\subseteq$链，令 $U = \\bigcup \\mathcal{D}$。要证 $U$ 线性无关，只需证 $U$ 的每个有限子集线性无关：取有限子集 $\\{v_{1}$ …$v_{n}\\} \\subseteq U$，每个 $v_{i}$ 属于某个 $D_{i} \\in \\mathcal{D}$；$\\mathcal{D}$ 是链且只有有限多个 $D_{i}$，故其中有一个最大的 $D$ 包含全部 $v_{i}$，即 $\\{v_{1}$ …$v_{n}\\} \\subseteq D$。而 $D$ 线性无关，故它的子集 $\\{v_{1}$ …$v_{n}\\}$ 也线性无关。因此 $U$ 线性无关，$U \\in \\mathcal{A}$，它是 $\\mathcal{D}$ 的上界。',
+          '3. 由佐恩引理，$\\mathcal{A}$ 有极大元 $B$。$B$ 是含 $S_{0}$ 的线性无关集，且在「含 $S_{0}$ 的线性无关集」中极大。',
+          '4. **$B$ 生成 $V$**：若存在 $v \\in V$ 不在 $B$ 的张成空间 span(B) 中，则 $B \\cup \\{v\\}$ 仍线性无关（否则 $v$ 可写成 $B$ 中有限多个向量的线性组合，与 $v \\notin \\operatorname{span}(B)$ 矛盾），且严格大于 $B$，与 $B$ 的极大性矛盾。故 $\\operatorname{span}(B) = V$，即 $B$ 是 $V$ 的基。取 $S_{0} = \\emptyset$ 得「$V$ 有基」。∎',
+        ].join('\n'),
       ].join('\n'),
       note: '同样的套路可以证明：每个环有极大理想、每个域上每个模有极大无关组、每个偏序集有极大反链。'
     }

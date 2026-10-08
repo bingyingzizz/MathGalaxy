@@ -318,6 +318,13 @@ MG.clusters = [
     hub: 'def.spectral-sequence',
     desc: '造出「逐层逼近同调」的工具：带过滤的对象 → 关联分次 → 谱序列从 $E_{r}$ 页逐页算到 $E_{\\infty}$。'
   },
+  {
+    id: 'hom.sheaf',
+    name: '阿贝尔层',
+    parent: 'homology',
+    hub: 'def.abelian-sheaf',
+    desc: '造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。'
+  },
 
   /* ------------------------------------------------ 星系：凝聚态数学 */
   {

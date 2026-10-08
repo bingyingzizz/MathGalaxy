@@ -273,9 +273,10 @@ window.MG = window.MG || {};
       target: 'thm.omega',
       title: '无穷公理 + 幂集公理 + 分离公理模式 $\\implies \\omega$ 存在',
       proof: [
-        '1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。',
-        '',
-        '2. 由幂集公理，$\\mathcal{P}(I)$ 是集合；再用分离公理模式取',
+        [
+          '1. 由无穷公理取一个归纳集 $I$。称 $J \\subseteq I$ 是**归纳的**，若 $\\emptyset \\in J$ 且 $\\forall x (x \\in J \\to x \\cup \\{x\\} \\in J)$。',
+          '2. 由幂集公理，$\\mathcal{P}(I)$ 是集合；再用分离公理模式取',
+        ].join('\n'),
         '',
         '$$S = \\{ J \\in \\mathcal{P}(I) : J\\text{ 是归纳集} \\}$$',
         '',
@@ -287,9 +288,10 @@ window.MG = window.MG || {};
         '',
         '即 $\\omega$ 是所有归纳子集的交。',
         '',
-        '4. $\\omega$ 是归纳集：$\\emptyset$ 属于每个 $J \\in S$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个 $J \\in S$，从而 $x \\cup \\{x\\}$ 属于每个 $J \\in S$，故 $x \\cup \\{x\\} \\in \\omega$。',
-        '',
-        '5. $\\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\in S$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。',
+        [
+          '4. $\\omega$ 是归纳集：$\\emptyset$ 属于每个 $J \\in S$，故 $\\emptyset \\in \\omega$；若 $x \\in \\omega$，则 $x$ 属于每个 $J \\in S$，从而 $x \\cup \\{x\\}$ 属于每个 $J \\in S$，故 $x \\cup \\{x\\} \\in \\omega$。',
+          '5. $\\omega$ 含于一切归纳集：若 $K$ 是归纳集，则 $K \\cap I$ 也是归纳集且 $K \\cap I \\in S$，由 $\\omega$ 的定义 $\\omega \\subseteq K \\cap I \\subseteq K$。',
+        ].join('\n'),
         '',
         '故 $\\omega$ 是最小归纳集，即自然数集。∎'
       ].join('\n')
@@ -320,11 +322,11 @@ window.MG = window.MG || {};
       proof: [
         '任给 $A$、$B$。',
         '',
-        '1. 由配对公理与并集公理，$A \\cup B$ 是集合。',
-        '',
-        '2. 对任意 $a \\in A$、$b \\in B$，Kuratowski 有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$。其中 $\\{a\\} \\subseteq A \\cup B$，$\\{a, b\\} \\subseteq A \\cup B$，所以 $\\{a\\}, \\{a, b\\} \\in \\mathcal{P}(A \\cup B)$，进而 $(a, b) \\in \\mathcal{P}(\\mathcal{P}(A \\cup B))$。',
-        '',
-        '3. 由幂集公理，$\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 是集合。用分离公理模式取',
+        [
+          '1. 由配对公理与并集公理，$A \\cup B$ 是集合。',
+          '2. 对任意 $a \\in A$、$b \\in B$，Kuratowski 有序对 $(a, b) = \\{\\{a\\}, \\{a, b\\}\\}$。其中 $\\{a\\} \\subseteq A \\cup B$，$\\{a, b\\} \\subseteq A \\cup B$，所以 $\\{a\\}, \\{a, b\\} \\in \\mathcal{P}(A \\cup B)$，进而 $(a, b) \\in \\mathcal{P}(\\mathcal{P}(A \\cup B))$。',
+          '3. 由幂集公理，$\\mathcal{P}(\\mathcal{P}(A \\cup B))$ 是集合。用分离公理模式取',
+        ].join('\n'),
         '',
         '$$C = \\{ z \\in \\mathcal{P}(\\mathcal{P}(A \\cup B)) : \\exists a \\in A, \\exists b \\in B, z = (a, b) \\}$$',
         '',

@@ -144,17 +144,19 @@ window.MG = window.MG || {};
           text: [
             '设 $X$ 是集合。$X = \\emptyset$ 时平凡，以下设 $X \\ne \\emptyset$。',
             '',
-            '1. 由 AC，非空子集族 $\\mathcal{P}(X) \\setminus \\{\\emptyset \\}$ 上有选择函数 $\\varphi$，即 $\\varphi (A) \\in A$ 对每个非空 $A \\subseteq X$ 成立。',
-            '',
-            '2. 用超限递归往下取元素：对序数 $\\alpha$，只要余集非空就令',
+            [
+              '1. 由 AC，非空子集族 $\\mathcal{P}(X) \\setminus \\{\\emptyset \\}$ 上有选择函数 $\\varphi$，即 $\\varphi (A) \\in A$ 对每个非空 $A \\subseteq X$ 成立。',
+              '2. 用超限递归往下取元素：对序数 $\\alpha$，只要余集非空就令',
+            ].join('\n'),
             '',
             '$$x(\\alpha) = \\varphi( X \\setminus \\{ x(\\beta) : \\beta < \\alpha \\} )$$',
             '',
             '一旦余集为空就停止。',
             '',
-            '3. **过程一定会停**：取 $X$ 的 **Hartogs 数** $\\aleph (X)$，即最小的不能单射进 $X$ 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。若对一切 $\\alpha < \\aleph (X)$ 过程都没停，则 $\\alpha \\mapsto x(\\alpha )$ 就是 $\\aleph (X)$ 到 $X$ 的单射，与 $\\aleph (X)$ 的定义矛盾。故存在序数 $\\gamma$ 使 $x : \\gamma \\to X$ 是双射。',
-            '',
-            '4. 把 $\\gamma$ 上的序经 $x$ 搬到 $X$ 上：',
+            [
+              '3. **过程一定会停**：取 $X$ 的 **Hartogs 数** $\\aleph (X)$，即最小的不能单射进 $X$ 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。若对一切 $\\alpha < \\aleph (X)$ 过程都没停，则 $\\alpha \\mapsto x(\\alpha )$ 就是 $\\aleph (X)$ 到 $X$ 的单射，与 $\\aleph (X)$ 的定义矛盾。故存在序数 $\\gamma$ 使 $x : \\gamma \\to X$ 是双射。',
+              '4. 把 $\\gamma$ 上的序经 $x$ 搬到 $X$ 上：',
+            ].join('\n'),
             '',
             '$$a \\preceq b :\\iff x^{-1}(a) \\le x^{-1}(b)$$',
             '',
@@ -166,11 +168,11 @@ window.MG = window.MG || {};
           text: [
             '设 $F$ 是一族非空集合（即 $\\emptyset \\notin F$）。',
             '',
-            '1. 由良序定理，取 $U = \\bigcup F$ 的一个良序 $\\preceq$。',
-            '',
-            '2. 对每个 $X \\in F$：$X \\ne \\emptyset$ 且 $X \\subseteq U$，所以 $X$ 是 $U$ 的非空子集，有 $\\preceq$最小元 m(X)。',
-            '',
-            '3. 定义 $f(X) = m(X)$（$X$ 唯一确定 m(X)，故这是一个函数）。则 $\\operatorname{dom} f = F$ 且 $f(X) \\in X$ 对一切 $X \\in F$ 成立，即 $f$ 是 $F$ 的选择函数。',
+            [
+              '1. 由良序定理，取 $U = \\bigcup F$ 的一个良序 $\\preceq$。',
+              '2. 对每个 $X \\in F$：$X \\ne \\emptyset$ 且 $X \\subseteq U$，所以 $X$ 是 $U$ 的非空子集，有 $\\preceq$最小元 m(X)。',
+              '3. 定义 $f(X) = m(X)$（$X$ 唯一确定 m(X)，故这是一个函数）。则 $\\operatorname{dom} f = F$ 且 $f(X) \\in X$ 对一切 $X \\in F$ 成立，即 $f$ 是 $F$ 的选择函数。',
+            ].join('\n'),
             '',
             '由 $F$ 的任意性，AC 成立。∎'
           ].join('\n')
@@ -218,17 +220,19 @@ window.MG = window.MG || {};
             '',
             '$(W_{1}, \\preceq _{1}) \\le (W_{2}, \\preceq _{2}) \\iff W_{1} \\subseteq W_{2}$，$\\preceq _{1} = \\preceq _{2}|W_{1}$，且 $W_{1}$ 是 $(W_{2}, \\preceq _{2})$ 的一个前段。',
             '',
-            '1. $(\\mathcal{W}, \\le )$ 是偏序集（三条性质直接验证）。',
-            '',
-            '2. **每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{W}$ 是链。令 $W^{*} = \\bigcup \\{ W : (W, \\preceq ) \\in \\mathcal{D} \\}$，在 $W^{*}$ 上定义',
+            [
+              '1. $(\\mathcal{W}, \\le )$ 是偏序集（三条性质直接验证）。',
+              '2. **每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{W}$ 是链。令 $W^{*} = \\bigcup \\{ W : (W, \\preceq ) \\in \\mathcal{D} \\}$，在 $W^{*}$ 上定义',
+            ].join('\n'),
             '',
             '$$x \\preceq_* y \\iff\\text{ 存在} (W, \\preceq_W) \\in \\mathcal{D}\\text{ 使} x, y \\in W\\text{ 且} x \\preceq_W y$$',
             '',
             '因 $\\mathcal{D}$ 是链，这些良序彼此兼容，$\\preceq_*$ 是 $W^{*}$ 上的良序，且 $(W^{*}, \\preceq_*)\\in \\mathcal{W}$ 是 $\\mathcal{D}$ 的上界。',
             '',
-            '3. 由佐恩引理，取极大元 $(W, \\preceq )$。',
-            '',
-            '4. 若 $W \\ne X$，取 $x \\in X \\setminus W$，在 $W \\cup \\{x\\}$ 上定义序：保留 $W$ 上的 $\\preceq$，并令所有 $w \\in W$ 都 $\\preceq x$（把 $x$ 放在最顶端）。这仍是良序，而且是 $(W, \\preceq )$ 的严格延拓，与极大性矛盾。故 $W = X$，即 $X$ 被良序化。∎'
+            [
+              '3. 由佐恩引理，取极大元 $(W, \\preceq )$。',
+              '4. 若 $W \\ne X$，取 $x \\in X \\setminus W$，在 $W \\cup \\{x\\}$ 上定义序：保留 $W$ 上的 $\\preceq$，并令所有 $w \\in W$ 都 $\\preceq x$（把 $x$ 放在最顶端）。这仍是良序，而且是 $(W, \\preceq )$ 的严格延拓，与极大性矛盾。故 $W = X$，即 $X$ 被良序化。∎',
+            ].join('\n'),
           ].join('\n')
         }
       ]
@@ -251,9 +255,10 @@ window.MG = window.MG || {};
             '',
             '按包含关系 $\\subseteq$ 排序。给定 $C_{0}$ 时改用 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$，它非空（$C_{0} \\in \\mathcal{C}_{0}$）。',
             '',
-            '1. **$\\mathcal{C}_{0}$ 中每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{C}_{0}$ 是（$\\subseteq$）链，即 $\\mathcal{D}$ 是一族两两可比较的链。令 $U = \\bigcup \\mathcal{D}$。任取 $x, y \\in U$，则有 $D_{1}, D_{2} \\in \\mathcal{D}$ 使 $x \\in D_{1}$、$y \\in D_{2}$；因 $\\mathcal{D}$ 是链，不妨设 $D_{1} \\subseteq D_{2}$，于是 $x, y \\in D_{2}$，而 $D_{2}$ 是链，故 $x$ 与 $y$ 可比。所以 $U$ 是链。又每个 $D \\in \\mathcal{D}$ 都 $\\supseteq C_{0}$，故 $U \\supseteq C_{0}$，即 $U \\in \\mathcal{C}_{0}$，它是 $\\mathcal{D}$ 的上界。',
-            '',
-            '2. 由佐恩引理，$\\mathcal{C}_{0}$ 有极大元 $M$。$M$ 是包含 $C_{0}$ 的链，且不能再变大，即 $M$ 是包含 $C_{0}$ 的极大链。∎'
+            [
+              '1. **$\\mathcal{C}_{0}$ 中每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{C}_{0}$ 是（$\\subseteq$）链，即 $\\mathcal{D}$ 是一族两两可比较的链。令 $U = \\bigcup \\mathcal{D}$。任取 $x, y \\in U$，则有 $D_{1}, D_{2} \\in \\mathcal{D}$ 使 $x \\in D_{1}$、$y \\in D_{2}$；因 $\\mathcal{D}$ 是链，不妨设 $D_{1} \\subseteq D_{2}$，于是 $x, y \\in D_{2}$，而 $D_{2}$ 是链，故 $x$ 与 $y$ 可比。所以 $U$ 是链。又每个 $D \\in \\mathcal{D}$ 都 $\\supseteq C_{0}$，故 $U \\supseteq C_{0}$，即 $U \\in \\mathcal{C}_{0}$，它是 $\\mathcal{D}$ 的上界。',
+              '2. 由佐恩引理，$\\mathcal{C}_{0}$ 有极大元 $M$。$M$ 是包含 $C_{0}$ 的链，且不能再变大，即 $M$ 是包含 $C_{0}$ 的极大链。∎',
+            ].join('\n'),
           ].join('\n')
         },
         {
@@ -261,11 +266,11 @@ window.MG = window.MG || {};
           text: [
             '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。',
             '',
-            '1. 由 Hausdorff 极大原理（取 $C_{0} = \\emptyset$），$P$ 存在极大链 $M$。',
-            '',
-            '2. M 是链，故由题设有上界 $u \\in P$。',
-            '',
-            '3. **断言 $u$ 是极大元**：若不然，存在 $v \\in P$ 使 $u \\prec v$。则 $M \\cup \\{v\\}$ 仍是链——任取 $m \\in M$，由 $m \\preceq u \\prec v$ 及传递性得 $m \\preceq v$，故 $m$ 与 $v$ 可比。于是 $M \\subset M \\cup \\{v\\}$ 是一个更大的链，与 $M$ 的极大性矛盾。',
+            [
+              '1. 由 Hausdorff 极大原理（取 $C_{0} = \\emptyset$），$P$ 存在极大链 $M$。',
+              '2. M 是链，故由题设有上界 $u \\in P$。',
+              '3. **断言 $u$ 是极大元**：若不然，存在 $v \\in P$ 使 $u \\prec v$。则 $M \\cup \\{v\\}$ 仍是链——任取 $m \\in M$，由 $m \\preceq u \\prec v$ 及传递性得 $m \\preceq v$，故 $m$ 与 $v$ 可比。于是 $M \\subset M \\cup \\{v\\}$ 是一个更大的链，与 $M$ 的极大性矛盾。',
+            ].join('\n'),
             '',
             '故 $u$ 是 $P$ 的极大元。∎'
           ].join('\n')
@@ -292,9 +297,10 @@ window.MG = window.MG || {};
             '',
             '（最后一个 $\\Longleftarrow$ 方向：任取 $x, y \\in X$，则 {x, y} 是 $X$ 的有限子集，属于 $\\mathcal{C}$，故 $x$ 与 $y$ 可比。）',
             '',
-            '2. $\\mathcal{C}$ 非空（$\\emptyset$ 是链）。由 Tukey 引理，$\\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。',
-            '',
-            '3. 若要包含给定的 $C_{0}$：注意 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。对 $\\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。∎'
+            [
+              '2. $\\mathcal{C}$ 非空（$\\emptyset$ 是链）。由 Tukey 引理，$\\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。',
+              '3. 若要包含给定的 $C_{0}$：注意 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。对 $\\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。∎',
+            ].join('\n'),
           ].join('\n')
         },
         {
@@ -306,9 +312,10 @@ window.MG = window.MG || {};
             '',
             '$$U = \\bigcup \\{ A : A \\in \\mathcal{C} \\}$$',
             '',
-            '1. **$U \\in \\mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\\mathcal{A}$。设 $S \\subseteq U$ 有限，则每个 $s \\in S$ 落在某个 $A_s \\in \\mathcal{C}$ 中；$\\mathcal{C}$ 是 $\\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \\subseteq A_{0}$）。因为 $A_{0} \\in \\mathcal{A}$ 且 $\\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\\mathcal{A}$，特别地 $S \\in \\mathcal{A}$。故 $U$ 的每个有限子集属于 $\\mathcal{A}$，从而 $U \\in \\mathcal{A}$。',
-            '',
-            '2. **$U$ 是极大元**：若存在 $B \\in \\mathcal{A}$ 使 $U \\subset B$，则 $\\mathcal{C} \\cup \\{B\\}$ 仍是 $\\subseteq$链（每个 $A \\in \\mathcal{C}$ 满足 $A \\subseteq U \\subseteq B$），与 $\\mathcal{C}$ 的极大性矛盾。',
+            [
+              '1. **$U \\in \\mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\\mathcal{A}$。设 $S \\subseteq U$ 有限，则每个 $s \\in S$ 落在某个 $A_s \\in \\mathcal{C}$ 中；$\\mathcal{C}$ 是 $\\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \\subseteq A_{0}$）。因为 $A_{0} \\in \\mathcal{A}$ 且 $\\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\\mathcal{A}$，特别地 $S \\in \\mathcal{A}$。故 $U$ 的每个有限子集属于 $\\mathcal{A}$，从而 $U \\in \\mathcal{A}$。',
+              '2. **$U$ 是极大元**：若存在 $B \\in \\mathcal{A}$ 使 $U \\subset B$，则 $\\mathcal{C} \\cup \\{B\\}$ 仍是 $\\subseteq$链（每个 $A \\in \\mathcal{C}$ 满足 $A \\subseteq U \\subseteq B$），与 $\\mathcal{C}$ 的极大性矛盾。',
+            ].join('\n'),
             '',
             '故 $U$ 是 $(\\mathcal{A}, \\subseteq )$ 的极大元。∎'
           ].join('\n')

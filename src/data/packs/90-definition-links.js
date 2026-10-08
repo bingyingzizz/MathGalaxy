@@ -1304,13 +1304,6 @@ window.MG = window.MG || {};
       note: '命题说的是**紧生成空间**是余反射子范畴。'
     },
     {
-      id: 'def-dep.condab-tensor',
-      kind: 'definition',
-      definition: 'def.condensed-abelian-group',
-      usedBy: 'prop.condab-tensor',
-      note: '两个双函子定义在**凝聚态阿贝尔群**范畴上。'
-    },
-    {
       id: 'def-dep.adjoint-cg-coreflective',
       kind: 'definition',
       definition: 'def.adjoint',
@@ -1365,13 +1358,6 @@ window.MG = window.MG || {};
       definition: 'def.projective-object',
       usedBy: 'prop.condab-generated',
       note: '生成元取的是**有限表现的投射**对象。'
-    },
-    {
-      id: 'def-dep.adjoint-condab-tensor',
-      kind: 'definition',
-      definition: 'def.adjoint',
-      usedBy: 'prop.condab-tensor',
-      note: '$\\otimes_{\\mathbb{Z}}$ 与内部 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随**。'
     },
     {
       id: 'def-dep.complex-additive',
@@ -1463,6 +1449,43 @@ window.MG = window.MG || {};
       definition: 'def.ab-axioms',
       usedBy: 'thm.condab-ab',
       note: 'AB6 与 AB4\\* 的含义见「Grothendieck 的 AB 公理」那条。'
+    },
+
+    /* ---------------------------------- 拓扑斯上的阿贝尔群是 Grothendieck 范畴 */
+    {
+      id: 'def-dep.topos-abelian-grothendieck',
+      kind: 'definition',
+      definition: 'def.topos',
+      usedBy: 'thm.topos-abelian-grothendieck',
+      note: '定理对**拓扑斯** $\\mathcal{T}$ 上的阿贝尔层说话。'
+    },
+    {
+      id: 'def-dep.abelsh-grothendieck',
+      kind: 'definition',
+      definition: 'def.abelian-sheaf',
+      usedBy: 'thm.topos-abelian-grothendieck',
+      note: '$\\mathcal{T}(\\mathbf{Ab})$ 就是 $\\mathcal{T}$ 上的**阿贝尔层**范畴。'
+    },
+    {
+      id: 'def-dep.grothendieck-topos-ab',
+      kind: 'definition',
+      definition: 'def.grothendieck-category',
+      usedBy: 'thm.topos-abelian-grothendieck',
+      note: '结论是「$\\mathcal{T}(\\mathbf{Ab})$ 是 **Grothendieck 范畴**」。'
+    },
+    {
+      id: 'def-dep.generator-topos-ab',
+      kind: 'definition',
+      definition: 'def.generator',
+      usedBy: 'thm.topos-abelian-grothendieck',
+      note: '小生成元集取 $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$，$S$ 是 $\\mathcal{T}$ 的生成元集。'
+    },
+    {
+      id: 'def-dep.abeliancat-topos-ab',
+      kind: 'definition',
+      definition: 'def.abelian-category',
+      usedBy: 'thm.topos-abelian-grothendieck',
+      note: '结论的一部分是「$\\mathcal{T}(\\mathbf{Ab})$ 是**阿贝尔**范畴」。'
     }
   ]
 });

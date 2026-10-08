@@ -117,6 +117,7 @@ MG.trunk = [
   'def.sheaf',                 // 15 层  层（能粘的预层）
   'def.topos',                 // 16 层  拓扑斯（几何的代数替身）
   'def.condensed-set',         // 16 层  凝聚态集 = CHaus 上的层
+  'def.abelian-sheaf',         // 16 层  阿贝尔层（层里的阿贝尔群）
   'def.condensed-abelian-group', // 17 层  凝聚态阿贝尔群
 
   /* ==================== 八、同调代数（复形这套机器） ==================== */

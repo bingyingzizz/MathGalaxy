@@ -452,7 +452,14 @@ MG.aliases = {
     { id: 'thm.condab-ab', aka: ['CondAb 满足 AB6', 'AB4*', 'AB 公理'] },
     { id: 'lem.stonean-projective', aka: ['Stonean 给出投射对象'] },
     { id: 'prop.condab-generated', aka: ['CondAb 的生成元'] },
-    { id: 'prop.condab-tensor', aka: ['CondAb 的张量积', 'Tensor', '内 Hom', 'internal hom', '封闭张量结构'] },
+
+    /* 阿贝尔层 */
+    { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
+    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群'] },
+    { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴'] },
+    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom'] },
+    { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构'] },
+    { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠'] },
 
     /* 同调代数 */
     { id: 'def.cochain-complex', aka: ['复形', 'complex', '上链复形', 'cochain complex', '链复形', '微分'] },
@@ -606,7 +613,7 @@ MG.aliases = {
     { q: '凝聚态集是什么', to: ['def.condensed-set', 'def.chaus', 'def.sheaf'] },
     { q: '凝聚态集为什么是拓扑斯', to: ['thm.cond-topos', 'def.condensed-set', 'thm.giraud'] },
     { q: '凝聚态集合普通拓扑空间什么关系', to: ['thm.top-cond-adjoint', 'def.underlying-topological-space', 'def.compactly-generated'] },
-    { q: '凝聚态阿贝尔群是什么', to: ['def.condensed-abelian-group', 'prop.condab-section', 'prop.condab-tensor'] },
+    { q: '凝聚态阿贝尔群是什么', to: ['def.condensed-abelian-group', 'def.abelian-sheaf', 'prop.condab-section'] },
     { q: '什么是紧生成空间', to: ['def.compactly-generated', 'prop.cg-coreflective', 'def.underlying-topological-space'] },
     { q: '凝聚态数学是干什么的', to: ['def.condensed-set', 'def.condensed-abelian-group', 'thm.cond-topos'] },
 
@@ -619,5 +626,11 @@ MG.aliases = {
     { q: '什么是拟同构', to: ['def.quasi-iso', 'def.cohomology', 'def.homotopy-category'] },
     { q: '谱序列是什么', to: ['def.spectral-sequence', 'def.filtration', 'def.cohomology'] },
     { q: '内射对象怎么判断', to: ['prop.injective-criterion', 'def.projective-object', 'def.mono'] },
+    { q: '什么是阿贝尔层', to: ['def.abelian-sheaf', 'def.presheaf-valued', 'def.sheaf'] },
+    { q: '拓扑斯上的阿贝尔群是什么范畴', to: ['thm.topos-abelian-grothendieck', 'def.abelian-sheaf', 'def.grothendieck-category'] },
+    { q: '什么是内 Hom', to: ['def.internal-hom', 'def.tensor-abelian-sheaf', 'def.adjoint'] },
+    { q: '层的张量积怎么算', to: ['def.tensor-abelian-sheaf', 'def.internal-hom', 'thm.sheafification'] },
+    { q: '为什么凝聚态阿贝尔群可以做代数', to: ['def.tensor-abelian-sheaf', 'thm.condab-ab', 'def.condensed-abelian-group'] },
+    { q: '什么是平坦对象', to: ['def.flat-abelian-sheaf', 'def.tensor-abelian-sheaf', 'def.abelian-category'] },
   ],
 };

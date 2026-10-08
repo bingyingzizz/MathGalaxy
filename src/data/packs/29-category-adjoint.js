@@ -33,13 +33,17 @@ window.MG = window.MG || {};
         '一句话：**两个方向之间的翻译互为最佳**。从左边绕（先 $F$ 再射出去）与从右边绕（先射出去再 $G$）得到的东西一样多 —— 而且是**自然**一样多。',
         '例：',
         '',
-        '- 遗忘函子 $\\mathbf{Top} \\to \\mathbf{Set}$ 有左右**两个**伴随：左伴随是**离散拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(S_{d}, X) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(S, F(X))$），右伴随是**平凡拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(X, S_{t}) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(F(X), S)$）。',
-        '- 遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的左伴随是**自由阿贝尔群**：$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathbb{Z}^{(X)}, M) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, \\operatorname{forget} M)$。**自由是遗忘的左伴随**。',
+        [
+          '- 遗忘函子 $\\mathbf{Top} \\to \\mathbf{Set}$ 有左右**两个**伴随：左伴随是**离散拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(S_{d}, X) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(S, F(X))$），右伴随是**平凡拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(X, S_{t}) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(F(X), S)$）。',
+          '- 遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的左伴随是**自由阿贝尔群**：$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathbb{Z}^{(X)}, M) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, \\operatorname{forget} M)$。**自由是遗忘的左伴随**。',
+        ].join('\n'),
         '',
         '两条运算规则：',
         '',
-        '- **对偶**：$F \\dashv G$ $\\iff$ $G^{\\mathrm{op}} \\dashv F^{\\mathrm{op}}$（在 $\\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}^{\\mathrm{op}}$ 上）。',
-        '- **复合**：$F \\dashv G$ 且 $F\' \\dashv G\'$ $\\implies$ $F\' \\circ F \\dashv G \\circ G\'$，因为',
+        [
+          '- **对偶**：$F \\dashv G$ $\\iff$ $G^{\\mathrm{op}} \\dashv F^{\\mathrm{op}}$（在 $\\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}^{\\mathrm{op}}$ 上）。',
+          '- **复合**：$F \\dashv G$ 且 $F\' \\dashv G\'$ $\\implies$ $F\' \\circ F \\dashv G \\circ G\'$，因为',
+        ].join('\n'),
         '',
         '  $$\\operatorname{Hom}(F\'F(X), Y) \\cong \\operatorname{Hom}(F(X), G\'(Y)) \\cong \\operatorname{Hom}(X, GG\'(Y))$$'
       ].join('\n\n')
@@ -228,10 +232,12 @@ window.MG = window.MG || {};
         '一句话：**反射子范畴是「所有对象都能最佳逼近到它里面」的满子范畴**。$F$ 把 $X$ 送去它里面最接近 $X$ 的那个对象。',
         '例：',
         '',
-        '- $\\mathbf{Ab}$ 是 $\\mathbf{Grp}$ 的反射子范畴：$F : \\mathbf{Grp} \\to \\mathbf{Ab}$，$G \\mapsto G/[G,G]$，且 $\\operatorname{Hom}_{\\mathbf{Ab}}(G/[G,G], G\') \\cong \\operatorname{Hom}_{\\mathbf{Grp}}(G, G\')$。',
-        '- $\\mathbf{Grp}$ 同时是 $\\mathbf{Mon}$ 的反射子范畴与余反射子范畴：右伴随把幺半群送到它的**可逆元群** $M^{\\times}$。',
-        '- $\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴。',
-        '- 离散空间范畴在 $\\mathbf{Top}$ 中是反射的，平凡拓扑空间范畴在 $\\mathbf{Top}$ 中是余反射的。'
+        [
+          '- $\\mathbf{Ab}$ 是 $\\mathbf{Grp}$ 的反射子范畴：$F : \\mathbf{Grp} \\to \\mathbf{Ab}$，$G \\mapsto G/[G,G]$，且 $\\operatorname{Hom}_{\\mathbf{Ab}}(G/[G,G], G\') \\cong \\operatorname{Hom}_{\\mathbf{Grp}}(G, G\')$。',
+          '- $\\mathbf{Grp}$ 同时是 $\\mathbf{Mon}$ 的反射子范畴与余反射子范畴：右伴随把幺半群送到它的**可逆元群** $M^{\\times}$。',
+          '- $\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴。',
+          '- 离散空间范畴在 $\\mathbf{Top}$ 中是反射的，平凡拓扑空间范畴在 $\\mathbf{Top}$ 中是余反射的。',
+        ].join('\n'),
       ].join('\n\n')
     },
 

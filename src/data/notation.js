@@ -276,6 +276,8 @@ MG.notation = {
       note: '只用在交换图的 $\\begin{array}$ 里给边注（如 $\\downarrow\\scriptstyle{f}$）压字号，正文里不用。' },
     { g: 'layout', tex: '\\xrightarrow{f}, \\xleftarrow{g}', uni: '→f／←g', name: '带标签的箭头',
       note: '交换图里把态射名字写在箭头上 / 下。' },
+    { g: 'layout', tex: '\\mapsto, \\longmapsto', uni: '↦ ／ ⟼', name: '元素映射',
+      note: '写明「把元素送到哪儿」用 $\\mapsto$；定义一条长链条（比如预层的取值）用 $\\longmapsto$。' },
     { g: 'layout', tex: '\\downarrow, \\uparrow', uni: '↓ ↑', name: '竖直箭头',
       note: '交换图里竖边的方向。' },
     { g: 'layout', tex: '\\varinjlim, \\varprojlim', uni: 'lim→／lim←', name: '余极限 / 极限',

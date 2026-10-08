@@ -226,18 +226,15 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '阿贝尔群', '层'],
       statement: [
-        '**凝聚态阿贝尔群**是 $\\mathbf{CHaus}$ 上的阿贝尔群值层。四种说法给出同一个范畴：',
+        '**凝聚态阿贝尔群**就是 $\\mathrm{Cond}$ 上的**阿贝尔层**。四种说法给出同一个范畴：',
         '',
         '$$\\mathrm{Ab}(\\mathrm{Cond}) \\;\\simeq\\; \\mathrm{Cond}(\\mathrm{Ab}) \\;\\simeq\\; \\widehat{\\mathbf{CHaus}}(\\mathrm{Ab}) \\;\\simeq\\; \\widehat{\\mathbf{FCHaus}}(\\mathrm{Ab})$$',
         '',
         '记作 $\\mathrm{CondAb}$。'
       ].join('\n'),
       notes: [
-        '阿贝尔群值层的定义是逐点检验的：预层 $M : \\mathbf{CHaus}^{\\mathrm{op}} \\to \\mathbf{Ab}$ 是层 $\\iff$ 对每个 $A \\in \\mathbf{Ab}$，集合值预层',
-        '',
-        '$$X \\mapsto \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(A, M(X)\\bigr)$$',
-        '',
-        '是层。**等价地（更好用）**：$M$ 是凝聚态阿贝尔群 $\\iff$ 它**保有限积**；再等价地：把 $M$ 忘成集合值预层之后是层 —— 因为遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 保极限。',
+        '一般定义见「阿贝尔层」—— 凝聚态阿贝尔群就是 $\\mathcal{T} = \\mathrm{Cond}$ 的那个特例。',
+        '在紧 Hausdorff 这个场地里层条件可以化简：**$M$ 是凝聚态阿贝尔群 $\\iff$ 它保有限积**（一般拓扑斯上没有这么干净的判据）。',
         '记号：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) := \\operatorname{Hom}_{\\mathrm{CondAb}}(M, N)$。'
       ].join('\n\n')
     },
@@ -298,7 +295,7 @@ window.MG = window.MG || {};
         '**Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。'
       ].join('\n'),
       notes: [
-        '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是。',
+        '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）。',
         '两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\\***（有所有极限）；而且它**有足够多的内射对象**。',
         '「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。'
       ].join('\n\n')
@@ -314,7 +311,7 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '同调代数', '正合'],
       statement: '$\\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\\***。',
-      notes: '推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。\n\n这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。'
+      notes: '推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。\n\n「是 Grothendieck 范畴」那一半其实对**任意**拓扑斯都成立（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）；这里真正多出来的是 **AB6 与 AB4\\*** —— 一般拓扑斯上的阿贝尔群并不同时具备这两条。\n\n这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。'
     },
 
     /* ------------------------------------------------ Stonean 给投射对象 */
@@ -342,27 +339,6 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '生成元', '投射'],
       statement: '$\\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特别地，它有足够多的投射对象。'
-    },
-
-    /* ------------------------------------------------ 张量与内 Hom */
-    {
-      id: 'prop.condab-tensor',
-      cluster: 'cond.ab',
-      type: 'proposition',
-      label: 'CondAb 上的张量与内 Hom',
-      title: '$\\mathrm{CondAb}$ 上的 $\\otimes_{\\mathbb{Z}}$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}$',
-      regions: ['condensed'],
-      tags: ['凝聚态', '张量积', '伴随'],
-      statement: [
-        '$\\mathrm{CondAb}$ 上存在两个双函子 $\\operatorname{Hom}_{\\mathbb{Z}}$ 与 $\\otimes_{\\mathbb{Z}}$，使',
-        '',
-        '$$\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\cdot) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}(M, N)$$',
-        '',
-        '并且',
-        '',
-        '$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M \\otimes_{\\mathbb{Z}} N,\\ P\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M,\\ \\operatorname{Hom}_{\\mathbb{Z}}(N, P)\\bigr)$$'
-      ].join('\n'),
-      notes: '即 $\\otimes_{\\mathbb{Z}}$ 与内部的 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随** —— 所以 $\\mathrm{CondAb}$ 是一个**封闭对称幺半**范畴（特别地，它富集在自己上面）。\n\n所以它不只是一个阿贝尔范畴，还带着一套封闭的张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。\n\n⚠️ 注意 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\cdot)$ 自然是一个**紧生成拓扑空间**，但它**不是拓扑阿贝尔群** —— 因为紧生成空间对（拓扑空间的）积不封闭。'
     }
   ],
 
