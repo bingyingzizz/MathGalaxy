@@ -15,5 +15,9 @@ $$\ker(f,g) \longrightarrow X \overset{f}{\underset{g}{\rightrightarrows}} Y \lo
 - 被 `def.regular-epi` 正则满态射 用
 - 被 `prop.sheaf-mono-epi-iso` 层中单满即同构 用
 - 被 `def.effective-equivalence` 有效等价关系 用
+- 被 `prop.complex-additive` 复形范畴是加法范畴 用
+- 被 `def.cohomology` 同调 用
 
 > 说明见 `notes/def.equalizer.md`
+
+- …另有出边，续页见 `nodes/def.equalizer.2.md`

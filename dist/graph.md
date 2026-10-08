@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:13:57.593Z
-> 7 星系 / 33 星团 / 355 节点 / 772 连线（强边 764，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:17:15.797Z
+> 7 星系 / 34 星团 / 371 节点 / 801 连线（强边 793，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -6453,6 +6453,223 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(M \otimes_{\mathbb{Z}} N,\ P\bigr) \;\con
 
 所以 $\mathrm{CondAb}$ 不只是一个阿贝尔范畴，它还带着一套**封闭的**张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。
 
+### 星团：同调代数
+> 造出「复形」这套机器：复形 → 同伦 → 同伦范畴 → 映射锥与导出三角 → 同调与长正合列 → 拟同构 → 内射对象 → 谱序列。
+
+#### 上链复形　`def.cochain-complex`
+*定义*　复形（Complex）
+
+设 $\mathcal{C}$ 是加法范畴。$\mathcal{C}$ 中的**（长）序列**是有序集 $(\mathbb{Z}, \le)$ 上的图
+
+$$\cdots \longrightarrow K^{n-1} \xrightarrow{\ d^{n-1}\ } K^{n} \xrightarrow{\ d^{n}\ } K^{n+1} \longrightarrow \cdots$$
+
+若对每个 $n$ 都有 $d^{n} \circ d^{n-1} = 0$，则称 $K$ 是一个**（上）链复形**，$d$ 叫**微分**。把箭头反向（或等价地在 $\mathcal{C}^{\mathrm{op}}$ 里取）得**链复形**，记 $K_{n} := K^{-n}$、$d_{n} := d^{-n}$。
+
+$K$ 叫**下有界**（$n \ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。相应地记复形范畴为 $\mathcal{C}(\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\mathcal{C}^{+}(\mathcal{C})$、$\mathcal{C}^{-}(\mathcal{C})$、$\mathcal{C}^{b}(\mathcal{C})$；同伦范畴那边同样加 $+$ $-$ $b$。
+
+例：$K$ 是（半）单纯对象时，令 $d^{n} := \sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。
+
+#### 复形范畴是加法范畴　`prop.complex-additive`
+*命题*　复形范畴的性质
+
+复形构成 $\mathcal{C}$ 的**加法满子范畴** $\mathcal{C}(\mathcal{C})$：
+
+- 双积**逐项**取：$(K \oplus L)^{n} := K^{n} \oplus L^{n}$，$d_{K \oplus L} := d_{K} \oplus d_{L}$；
+- 核与余核也**逐项**取：$(\ker f)^{n} = \ker f^{n}$，$d_{\ker f} := d_{K}|_{\ker f^{n}}$；
+- $\mathcal{C}(\mathcal{C})$ 中的**极限与余极限逐项计算**。
+
+「逐项计算」是函子范畴的通用事实：$\mathcal{C}(\mathcal{C})$ 是 $\operatorname{Hom}((\mathbb{Z},\le), \mathcal{C})$ 的满子范畴，一切构造都在每个 $n$ 上分别做，然后再验证微分与它们相容。这条让后面所有关于复形的极限/余极限都不必单独证明。
+
+#### 同伦　`def.homotopy`
+*定义*　同伦（Homotopy）
+
+复形态射 $f, g : K \to L$ 叫**同伦的**，如果存在一族态射
+
+$$s^{n} : K^{n} \longrightarrow L^{n-1}$$
+
+使得对每个 $n$，
+
+$$f^{n} - g^{n} \;=\; s^{n+1} \circ d_{K}^{n} + d_{L}^{n-1} \circ s^{n}$$
+
+记 $f \sim g$，$s$ 叫一个**同伦**。与 $0$ 同伦的态射叫**零伦的**。
+
+零伦态射构成 $\operatorname{Hom}_{\mathcal{C}(\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \sim g$ 时 $h \circ f \circ k \sim h \circ g \circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。
+
+#### 同伦范畴　`def.homotopy-category`
+*定义*　同伦范畴（Homotopy Category）
+
+**同伦范畴** $\mathbf{K}(\mathcal{C})$ 的对象与 $\mathcal{C}(\mathcal{C})$ 相同，态射取
+
+$$\operatorname{Hom}_{\mathbf{K}(\mathcal{C})}(K, L) \;:=\; \operatorname{Hom}_{\mathcal{C}(\mathcal{C})}(K, L) \big/ \{\text{零伦态射}\}$$
+
+其中的同构叫**同伦等价**；在 $\mathbf{K}(\mathcal{C})$ 中变成 $0$ 的复形叫**同伦平凡的**。
+
+等价的说法：$f : K \to L$ 是同伦等价 $\iff$ 存在 $g : L \to K$ 使 $g \circ f \sim 1_{K}$、$f \circ g \sim 1_{L}$；$K$ 同伦平凡 $\iff$ $1_{K} \sim 0_{K}$。
+
+$\mathbf{K}(\mathcal{C})$ 是**加法范畴**，且 $\mathcal{C}(\mathcal{C}) \to \mathbf{K}(\mathcal{C})$ 加法；任何加法函子 $F : \mathcal{C} \to \mathcal{C}'$ 诱导 $\mathbf{K}(\mathcal{C}) \to \mathbf{K}(\mathcal{C}')$。
+
+为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。
+
+#### 映射锥　`def.mapping-cone`
+*定义*　映射锥与位移（Mapping Cone）
+
+态射 $f : K \to L$ 的**映射锥**是复形
+
+$$M(f)^{n} := K^{n+1} \oplus L^{n}, \qquad d^{n} := \begin{pmatrix} -d_{K}^{n+1} & 0 \\ f^{n+1} & d_{L}^{n} \end{pmatrix}$$
+
+（矩阵满足 $d^{2} = 0$，只需 $f$ 与微分交换）。$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。
+
+用处：给出短正合列 $0 \to L \to M(f) \to K[1] \to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。
+
+#### 导出三角　`def.distinguished-triangle`
+*定义*　导出三角（Distinguished Triangle）
+
+$\mathbf{K}(\mathcal{C})$ 中的**导出三角**是形状为
+
+$$K \longrightarrow L \longrightarrow M \longrightarrow K[1]$$
+
+的图。它叫**导出的**，如果它在 $\mathbf{K}(\mathcal{C})$ 中同构于某个映射锥三角
+
+$$K \xrightarrow{\ f\ } L \longrightarrow M(f) \longrightarrow K[1]$$
+
+三角之间的**态射**是一族映射 $(u, v, w, u[1])$，使所有方块交换。
+
+导出三角是「短正合列」的**同伦版**：它不要求 $M$ 是商，只要求 $K \to L \to M \to K[1]$ 在形状上接得上。加上位移这一步之后，一个态射就能嵌进一条任意长度的序列里 —— 这正是三角范畴要的形式。
+
+#### 三角的旋转与延拓　`prop.triangle-rotation`
+*命题*　导出三角的基本性质
+
+在 $\mathbf{K}(\mathcal{C})$ 中：
+
+1. $K \xrightarrow{\ 1\ } K \to 0 \to K[1]$ 是导出三角；
+2. **旋转**：若 $K \to L \to M \to K[1]$ 导出，则 $L \to M \to K[1] \to L[1]$ 也导出；
+3. 任意 $f : K \to L$ 都能（**不唯一**地）嵌入一个导出三角；
+4. 导出三角之间的态射可以（**不唯一**地）延拓。
+
+推论：**映射锥在 $\mathbf{K}(\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\mathbf{K}(\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。
+
+#### 三角态射的性质　`lem.triangle-morphism`
+*引理*　导出三角之间态射的性质
+
+设 $(u, v, w)$ 是 $\mathbf{K}(\mathcal{C})$ 中导出三角之间的态射。则
+
+1. $w^{2} = 0$（把 $w$ 沿三角的旋转接起来复合两次）；
+2. 若 $u, v$ 都是**同伦等价**，则 $w$ 也是。
+
+第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。第 1 条说明三角之间的态射被前两步控制得很紧 —— 这正是三角范畴公理里那条最不明显的要求的来源。
+
+#### 同调　`def.cohomology`
+*定义*　同调（Cohomology）
+
+设 $\mathcal{A}$ 是阿贝尔范畴，$K$ 是 $\mathcal{A}$ 中的上链复形。$K$ 的**第 $n$ 阶同调**是
+
+$$H^{n}(K) \;:=\; Z^{n}(K) \big/ B^{n}(K) \;=\; \ker d^{n} \big/ \operatorname{im} d^{n-1}$$
+
+链复形 $K_{n}$ 的第 $n$ 阶同调取它在 $\mathcal{A}^{\mathrm{op}}$ 中的 $(1-n)$ 阶上同调。
+
+例：$H^{n}(K[k]) = H^{n+k}(K)$；$M \in \mathcal{A}$ 时 $H^{0}([M]) = M$、其余为 $0$；$H^{0}([M \to N]) = \ker f$、$H^{1}([M \to N]) = \operatorname{coker} f$。
+
+$H^{n}$ 是**函子**，但它是**加法而不正合**的 —— 同调不可交换性是整个同调代数的起点。
+
+#### 同调的短正合列　`prop.cohomology-exact-sequence`
+*命题*　把同调夹在两个余核 / 核之间
+
+设 $K$ 是复形。则对每个 $k$ 有正合列
+
+$$0 \longrightarrow H^{k}(K) \longrightarrow \operatorname{coker} d^{k-1} \longrightarrow \ker d^{k+1} \longrightarrow H^{k+1}(K) \longrightarrow 0$$
+
+也就是 $0 \to Z^{k}/B^{k} \to K^{k}/B^{k} \to Z^{k+1} \to Z^{k+1}/B^{k+1} \to 0$。这条把「同调」拆成两段：**先取余核去掉上一步的像，再取核挑出闭链，最后取商** —— 于是复形里的信息被一层层剥出来。
+
+#### 上同调函子　`def.cohomological-functor`
+*定义*　上同调函子（Cohomological Functor）
+
+设 $\mathcal{C}$ 是加法范畴、$\mathcal{A}$ 是阿贝尔范畴。函子 $F : \mathbf{K}(\mathcal{C}) \to \mathcal{A}$ 叫**上同调函子**，如果对每个导出三角 $K \to L \to M \to K[1]$，序列
+
+$$FK \longrightarrow FL \longrightarrow FM$$
+
+正合。
+
+上同调函子把导出三角变成一条**长正合列**：反复旋转三角、每次用一次正合性、再拼接，就得到 $\cdots \to F(K[n]) \to F(L[n]) \to F(M[n]) \to F(K[n+1]) \to \cdots$。
+
+例：固定 $K$ 之后，$\operatorname{Hom}_{\mathbf{K}(\mathcal{C})}(K, -)$ 是上同调函子 —— 这就是同调代数里那些「长正合列」的总来源。
+
+#### 长正合列　`thm.long-exact`
+*定理*　短正合列给出长正合列（蛇引理）
+
+设 $\mathcal{A}$ 是阿贝尔范畴，$0 \to K \to L \to M \to 0$ 是复形的短正合列。则存在**长正合列**
+
+$$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}(K) \to \cdots$$
+
+其中 $\delta$ 叫**连接同态**。
+
+推论：$H^{n} : \mathbf{K}(\mathcal{A}) \to \mathcal{A}$ 是**上同调函子**。
+
+#### 拟同构　`def.quasi-iso`
+*定义*　拟同构与零调复形（Quasi-Isomorphism）
+
+复形态射 $f : K \to L$ 叫**拟同构**，如果对每个 $n$，$H^{n}(f)$ 都是同构。复形 $K$ 叫**零调的**，如果 $H^{n}(K) = 0$ 对所有 $n$。
+
+注意：$K \to L$ 拟同构 $\iff$ $L \to K$ 拟同构（「拟同构」是双向的说法，虽然映射只有一个方向）；$K$ 零调 $\iff$ $[0] \to K$ 拟同构 $\iff$ $K \to [0]$ 拟同构。
+
+两条命题：（1）若 $K \to L \to M \to$ 是导出三角，则 $f$ 是拟同构 $\iff$ $M$ 零调；（2）对三角态射 $(u, v, w)$，$u, v$ 是拟同构 $\iff$ $w$ 是拟同构。
+
+拟同构是「在 $\mathbf{K}(\mathcal{C})$ 里不是同构，但同调上看不出差别」的映射 —— 把拟同构反过来形式地变成同构，就得到**导出范畴**。
+
+#### 内射对象的判据　`prop.injective-criterion`
+*命题*　内射对象的四条等价说法
+
+设 $\mathcal{A}$ 是阿贝尔范畴，$I \in \mathcal{A}$。下列等价：
+
+1. $I$ 是**内射对象**；
+2. 每个单态射 $I \rightarrowtail M$ 都有**收缩** $M \to I$；
+3. 函子 $\operatorname{Hom}_{\mathcal{A}}(-, I)$ **正合**；
+4. 每个短正合列 $0 \to I \to M \to M'' \to 0$ 都**分裂**。
+
+进一步：若 $0 \to M' \to M \to M'' \to 0$ 正合且 $M'$ 内射，则
+
+$$M \text{ 内射} \iff M'' \text{ 内射}$$
+
+证明用一张 $3 \times 3$ 的 $\operatorname{Hom}$ 图表：把短正合列 $0 \to A \to B \to C \to 0$ 用 $\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \to \ker f \to \ker g \to \ker h \to \operatorname{coker} f \to \operatorname{coker} g \to 0$，再看出第一行与第三行都是正合的，于是 $\ker g = \operatorname{coker} g = 0$。
+
+#### 过滤　`def.filtration`
+*定义*　过滤（Filtration）
+
+设 $\mathcal{A}$ 是阿贝尔范畴。$M \in \mathcal{A}$ 上的（**递降**）**过滤**是 $M$ 的子对象沿 $(\mathbb{Z}, \ge)$ 的图：
+
+$$\cdots \subseteq F^{n}M \subseteq F^{n+1}M \subseteq \cdots \subseteq M$$
+
+总假定过滤是**穷尽的**（$\bigcup_{n} F^{n}M = M$）与**分离的**（$\bigcap_{n} F^{n}M = 0$）；若 $n \ll 0$ 时 $F^{n}M = M$ 且 $n \gg 0$ 时 $F^{n}M = 0$，叫**有限的**。带过滤的对象构成范畴 $\mathbf{F}(\mathcal{A})$，**关联分次**记 $\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。
+
+命题：$\mathbf{F}(\mathcal{C}(\mathcal{A})) \cong \mathcal{C}(\mathbf{F}(\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。
+
+#### 谱序列　`def.spectral-sequence`
+*定义*　谱序列（Spectral Sequence）
+
+**谱序列**由两部分组成：
+
+1. 一族复形 $E^{p,q}_{r}$（$p, q, r \in \mathbb{Z}$，$r \ge r_{0}$），微分
+
+$$d^{p,q}_{r} : E^{p,q}_{r} \longrightarrow E^{p+r,\, q-r+1}_{r}$$
+
+使得 $E^{p,q}_{r+1} \cong H^{p,q}(E_{r}) = \ker d^{p,q}_{r} / \operatorname{im} d^{p-r,\, q+r-1}_{r}$；
+2. 一族**带过滤**的对象 $H^{n}$（$n \in \mathbb{Z}$），使得对每个 $p, q$ 与所有充分大的 $r$，
+
+$$\operatorname{Gr}^{p} H^{p+q} \;\cong\; E^{p,q}_{r}$$
+
+仅当 $p, q \ge 0$ 时 $E^{p,q}_{r}$ 才可能非零的，叫**第一象限**谱序列。
+
+从哪来：给复形 $K$ 一个过滤 $F^{p}K$，同调上的过滤由
+
+
+
+$$F^{p}H^{n} := \operatorname{im}\bigl(H^{n}(F^{p}K) \to H^{n}(K)\bigr)$$
+
+
+
+继承。于是每根 $H^{n}$ 上都有一串 $H^{n} \supseteq \cdots \supseteq F^{p}H^{n} \supseteq F^{p+1}H^{n} \supseteq \cdots \supseteq 0$。
+
+谱序列说的就是：**对充分大的 $r$，$E_{r}$ 页稳定下来，恰好等于这个过滤的关联分次**。所以它是「从过滤的复形一层层逼近同调」的工具 —— 直接算 $H^{n}$ 太难时，就把 $H^{n}$ 拆成容易算的那些碎片。
+
 ---
 
 ## 全部连线（含推导过程）
@@ -9942,6 +10159,62 @@ $$\operatorname{Hom}_{\mathrm{Cond}}(\underline{X}, \underline{Y}) \;\cong\; \op
 
 > 一句话记住：**「拓扑空间 $\to$ 凝聚态集」这件事丢掉的东西，正好就是 $k$-化丢掉的东西。** 所以在 $k\mathbf{Top}$ 上它不丢信息。
 
+#### 映射锥 + 导出三角 ⟹ 三角的旋转与延拓　`imp.triangle-rotation`
+*映射锥 $\implies$ 三角可旋转、可延拓*
+
+**旋转。** 不妨设 $M = M(f)$，即三角是 $K \xrightarrow{\ f\ } L \to M(f) \to K[1]$。要证 $L \to M(f) \to K[1] \to L[1]$ 导出。把 $g : L \to M(f)$ 取成含入 $(0, 1)^{\mathrm{T}}$，则它的映射锥是
+
+$$M(g)^{n} = L^{n+1} \oplus M(f)^{n} = L^{n+1} \oplus K^{n+1} \oplus L^{n}$$
+
+再给出 $K[1]$ 与 $M(g)$ 之间的两个互逆（同伦意义下）映射 $\varphi, \psi$，以及同伦 $s$ 使 $s \circ \varphi \sim 1$。逐项算完即得两个三角在同伦范畴里同构，于是旋转后的三角也是导出的。∎
+
+**反复旋转**就得到整条长序列 $\cdots \to K \to L \to M \to K[1] \to L[1] \to \cdots$。∎
+
+**延拓。** 给定 $f : K \to L$，直接取三角 $K \to L \to M(f) \to K[1]$ 即得第 3 条。
+
+给定三角态射的左边两步 $u : K' \to K''$、$v : L' \to L''$，先把 $f'$ 与 $f''$ 都取成映射锥的形式。要造 $w$，令其矩阵形式为
+
+$$w := \begin{pmatrix} s^{n+1} & v^{n} \end{pmatrix} : K'^{n+1} \oplus L'^{n} \longrightarrow K''^{n+1} \oplus L''^{n}$$
+
+其中 $s$ 是 $v \circ f' - f'' \circ u$ 的一个同伦（它零伦来自三角的交换性）。逐项验证 $w \circ d = d \circ w$ 即可，这一步用到同伦方程本身。∎
+
+**推论（映射锥唯一）。** 两个都是 $f$ 的锥的三角都是导出的，于是它们之间有一个「前两步都是恒等」的三角态射；由「前两步同伦等价则第三步也同伦等价」（下一条引理），这两个锥同伦等价。∎
+
+> 证明的模式很固定：**先把三角摆成映射锥的样子，然后矩阵硬算**。同伦范畴里所有三角的定理都是这么来的。
+
+#### 导出三角 + 同调 + 三角的旋转与延拓 ⟹ 长正合列　`imp.long-exact`
+*短正合列 $\implies$ 长正合列*
+
+设 $0 \to K \xrightarrow{\ f\ } L \xrightarrow{\ g\ } M \to 0$ 是复形的短正合列。
+
+**第一步：短正合列给出导出三角。** 考虑 $f$ 的映射锥的含入 $L \to M(f)$。由 $g \circ f = 0$ 与短正合列的泛性质，有一条自然映射
+
+$$M(f) \longrightarrow M, \qquad (k^{n+1}, l^{n}) \mapsto g^{n}(l^{n})$$
+
+它是复形态射（与微分交换，因为 $g \circ d_{L} = d_{M} \circ g$ 且 $g \circ f = 0$）。由短正合列上逐项的正合性（五引理），这条映射是**拟同构**，于是三角
+
+$$K \xrightarrow{\ f\ } L \xrightarrow{\ g\ } M \xrightarrow{\ \delta\ } K[1]$$
+
+在 $\mathbf{K}(\mathcal{A})$ 中是**导出的**。∎
+
+**第二步：旋转并取同调。** 把上一步的三角反复旋转，得到一族导出三角
+
+$$K[n] \to L[n] \to M[n] \to K[n+1], \qquad (n \in \mathbb{Z})$$
+
+对每个这样的三角作用同调函子 $H^{0}$：因为 $H^{0}$ 是上同调函子，序列
+
+$$H^{0}(K[n]) \to H^{0}(L[n]) \to H^{0}(M[n])$$
+
+正合，而 $H^{0}(K[n]) = H^{n}(K)$（位移的性质）。把这些正合的三项片段在连接同态 $\delta$ 处首尾相接，就得到长正合列
+
+$$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}(K) \to \cdots$$
+
+∎
+
+**连接同态 $\delta$ 是从哪来的。** 它就是三角里的第三条腿 $M \to K[1]$ 取同调之后的样子：一个 $H^{n}(M) \to H^{n+1}(K)$ 的映射，把「$M$ 里的元素」送上「$K$ 的下一个同调」。它之所以存在，唯一的原因就是**映射锥给了第三条腿** —— 短正合列本身只给出前两条腿。∎
+
+> 经典证明用蛇引理，这里用映射锥 + 旋转。两条路都通，但后者的好处是：**连接同态是什么**这件事，一眼就能看出来。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -11618,6 +11891,114 @@ Grothendieck 范畴 = AB5 范畴**加一个生成元**。
 
 $\otimes_{\mathbb{Z}}$ 与内部 $\operatorname{Hom}_{\mathbb{Z}}$ **互为伴随**。
 
+#### 定义引用：「交换图」→ 上链复形　`def-dep.diagram-complex`
+
+一个（长）序列就是**有序集上的图** $(\mathbb{Z}, \le) \to \mathcal{C}$。
+
+#### 定义引用：「函子」→ 上链复形　`def-dep.functor-complex`
+
+序列作为图就是**函子**；「复形」是加上 $d \circ d = 0$ 之后的那个。
+
+#### 定义引用：「范畴」→ 上链复形　`def-dep.category-complex`
+
+复形定义在**加法范畴** $\mathcal{C}$ 上，微分是范畴里的态射。
+
+#### 定义引用：「上链复形」→ 复形范畴是加法范畴　`def-dep.complex-additive`
+
+命题说的是**复形**构成的那个范畴。
+
+#### 定义引用：「等化子 / 余等化子」→ 复形范畴是加法范畴　`def-dep.equalizer-complex-additive`
+
+核与余核都是**逐项**取出来的。
+
+#### 定义引用：「上链复形」→ 同伦　`def-dep.complex-homotopy`
+
+同伦是**复形态射**之间的一种关系。
+
+#### 定义引用：「同伦」→ 同伦范畴　`def-dep.homotopy-homotopy-category`
+
+同伦范畴就是把**同伦**这件事商掉。
+
+#### 定义引用：「范畴」→ 同伦范畴　`def-dep.category-homotopy-category`
+
+$\mathbf{K}(\mathcal{C})$ 本身是一个**范畴**（还是加法范畴）。
+
+#### 定义引用：「上链复形」→ 映射锥　`def-dep.complex-mapping-cone`
+
+映射锥是一个**复形**，它的微分靠拼接造出来。
+
+#### 定义引用：「纤维积 / 纤维余积」→ 映射锥　`def-dep.fibered-mapping-cone`
+
+映射锥逐项取的是 $K^{n+1} \oplus L^{n}$ —— 加法范畴里的**双积**。
+
+#### 定义引用：「映射锥」→ 导出三角　`def-dep.mapping-cone-triangle`
+
+导出三角的定义就是「同构于某个**映射锥**三角」。
+
+#### 定义引用：「导出三角」→ 三角的旋转与延拓　`def-dep.triangle-rotation`
+
+命题说的是**导出三角**的基本性质。
+
+#### 定义引用：「导出三角」→ 三角态射的性质　`def-dep.triangle-morphism`
+
+引理说的是**导出三角**之间态射的性质。
+
+#### 定义引用：「同伦」→ 三角态射的性质　`def-dep.homotopy-triangle-morphism`
+
+「$u, v$ 是同伦等价则 $w$ 也是」里的比较用的是**同伦**。
+
+#### 定义引用：「上链复形」→ 同调　`def-dep.complex-cohomology`
+
+同调是**复形**的 $\ker d^{n} / \operatorname{im} d^{n-1}$。
+
+#### 定义引用：「等化子 / 余等化子」→ 同调　`def-dep.equalizer-cohomology`
+
+同调里出现的 $\ker$ 与 $\operatorname{im}$ 是**等化子**与**像**。
+
+#### 定义引用：「等化子 / 余等化子」→ 同调的短正合列　`def-dep.equalizer-cohomology-sequence`
+
+这条正合列把同调夹在**余核**与**核**之间。
+
+#### 定义引用：「同调」→ 上同调函子　`def-dep.cohomology-functor`
+
+上同调函子是把导出三角变成**正合列**的那些函子。
+
+#### 定义引用：「导出三角」→ 上同调函子　`def-dep.triangle-cohomological`
+
+定义里的正合性条件就是针对**导出三角**说的。
+
+#### 定义引用：「同调」→ 长正合列　`def-dep.cohomology-long-exact`
+
+长正合列里跑的是**同调**。
+
+#### 定义引用：「等化子 / 余等化子」→ 长正合列　`def-dep.equalizer-long-exact`
+
+「正合列」本身就是一句关于**核与像**的话。
+
+#### 定义引用：「同调」→ 拟同构　`def-dep.cohomology-quasi-iso`
+
+拟同构说的是「**同调**全都是同构」。
+
+#### 定义引用：「单态射 / 满态射」→ 内射对象的判据　`def-dep.mono-injective-criterion`
+
+「每个**单态射**都有收缩」是等价条件之一。
+
+#### 定义引用：「伴随函子」→ 内射对象的判据　`def-dep.adjoint-injective-criterion`
+
+「$\operatorname{Hom}(-, I)$ **正合**」说的是这个函子保正合列 —— 与伴随性相关的那条刻画。
+
+#### 定义引用：「子对象」→ 过滤　`def-dep.subobject-filtration`
+
+过滤是一族**子对象** $F^{n}M \subseteq M$。
+
+#### 定义引用：「上链复形」→ 谱序列　`def-dep.complex-spectral-sequence`
+
+谱序列从**复形**的过滤出发，逐层算它的同调。
+
+#### 定义引用：「过滤」→ 谱序列　`def-dep.filtration-spectral-sequence`
+
+谱序列的第二部分是**带过滤**的同调对象。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -11828,3 +12209,5 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 拓扑斯**　7 条节点级连线
 - **拓扑斯 ↔ 预层与米田**　2 条节点级连线
 - **伴随与反射 ↔ 凝聚态集**　2 条节点级连线
+- **同调代数 ↔ 图与极限**　8 条节点级连线
+- **范畴与图 ↔ 同调代数**　2 条节点级连线

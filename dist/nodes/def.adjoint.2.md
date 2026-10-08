@@ -17,3 +17,4 @@
 - 被 `def.chaus-pretopos` CHaus 是预拓扑斯 用
 - 被 `prop.cg-coreflective` 紧生成空间是余反射子范畴 用
 - 被 `prop.condab-tensor` CondAb 上的张量与内 Hom 用
+- 被 `prop.injective-criterion` 内射对象的判据 用

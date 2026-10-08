@@ -9,3 +9,5 @@
 - 被 `def.adjoint` 伴随函子 用
 - 被 `def.chaus` 紧 Hausdorff 空间范畴 用
 - 被 `def.pretopology` 预拓扑 用
+- 被 `def.cochain-complex` 上链复形 用
+- 被 `def.homotopy-category` 同伦范畴 用

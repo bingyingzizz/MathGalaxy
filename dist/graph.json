@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-08T09:13:57.593Z",
+  "generated": "2026-10-08T09:17:15.797Z",
   "counts": {
    "regions": 7,
-   "clusters": 33,
-   "nodes": 355,
-   "edges": 772,
-   "strong": 764,
+   "clusters": 34,
+   "nodes": 371,
+   "edges": 801,
+   "strong": 793,
    "weak": 8
   },
   "readingGuide": {
@@ -87,7 +87,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论、拓扑斯与凝聚态数学。",
    "color": "#B03A5B",
-   "nodeCount": 120
+   "nodeCount": 136
   }
  ],
  "clusters": [
@@ -741,6 +741,31 @@
     "lem.stonean-projective",
     "prop.condab-generated",
     "prop.condab-tensor"
+   ]
+  },
+  {
+   "id": "cat.homology",
+   "name": "同调代数",
+   "parent": "category",
+   "desc": "造出「复形」这套机器：复形 → 同伦 → 同伦范畴 → 映射锥与导出三角 → 同调与长正合列 → 拟同构 → 内射对象 → 谱序列。",
+   "nodeCount": 16,
+   "nodes": [
+    "def.cochain-complex",
+    "prop.complex-additive",
+    "def.homotopy",
+    "def.homotopy-category",
+    "def.mapping-cone",
+    "def.distinguished-triangle",
+    "prop.triangle-rotation",
+    "lem.triangle-morphism",
+    "def.cohomology",
+    "prop.cohomology-exact-sequence",
+    "def.cohomological-functor",
+    "thm.long-exact",
+    "def.quasi-iso",
+    "prop.injective-criterion",
+    "def.filtration",
+    "def.spectral-sequence"
    ]
   }
  ],
@@ -8409,6 +8434,325 @@
    "statement": "$\\mathrm{CondAb}$ 上存在两个双函子 $\\operatorname{Hom}_{\\mathbb{Z}}$ 与 $\\otimes_{\\mathbb{Z}}$，使\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\cdot) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}(M, N)$$\n\n并且\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M \\otimes_{\\mathbb{Z}} N,\\ P\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M,\\ \\operatorname{Hom}_{\\mathbb{Z}}(N, P)\\bigr)$$",
    "notes": "即 $\\otimes_{\\mathbb{Z}}$ 与内部的 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随**。\n\n所以 $\\mathrm{CondAb}$ 不只是一个阿贝尔范畴，它还带着一套**封闭的**张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。",
    "refs": []
+  },
+  {
+   "id": "def.cochain-complex",
+   "type": "definition",
+   "label": "上链复形",
+   "title": "复形（Complex）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 10,
+   "tags": [
+    "同调代数",
+    "复形",
+    "微分"
+   ],
+   "statement": "设 $\\mathcal{C}$ 是加法范畴。$\\mathcal{C}$ 中的**（长）序列**是有序集 $(\\mathbb{Z}, \\le)$ 上的图\n\n$$\\cdots \\longrightarrow K^{n-1} \\xrightarrow{\\ d^{n-1}\\ } K^{n} \\xrightarrow{\\ d^{n}\\ } K^{n+1} \\longrightarrow \\cdots$$\n\n若对每个 $n$ 都有 $d^{n} \\circ d^{n-1} = 0$，则称 $K$ 是一个**（上）链复形**，$d$ 叫**微分**。把箭头反向（或等价地在 $\\mathcal{C}^{\\mathrm{op}}$ 里取）得**链复形**，记 $K_{n} := K^{-n}$、$d_{n} := d^{-n}$。",
+   "notes": "$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；同伦范畴那边同样加 $+$ $-$ $b$。\n\n例：$K$ 是（半）单纯对象时，令 $d^{n} := \\sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。",
+   "refs": []
+  },
+  {
+   "id": "prop.complex-additive",
+   "type": "proposition",
+   "label": "复形范畴是加法范畴",
+   "title": "复形范畴的性质",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 13,
+   "tags": [
+    "同调代数",
+    "加法范畴",
+    "逐项计算"
+   ],
+   "statement": "复形构成 $\\mathcal{C}$ 的**加法满子范畴** $\\mathcal{C}(\\mathcal{C})$：\n\n- 双积**逐项**取：$(K \\oplus L)^{n} := K^{n} \\oplus L^{n}$，$d_{K \\oplus L} := d_{K} \\oplus d_{L}$；\n- 核与余核也**逐项**取：$(\\ker f)^{n} = \\ker f^{n}$，$d_{\\ker f} := d_{K}|_{\\ker f^{n}}$；\n- $\\mathcal{C}(\\mathcal{C})$ 中的**极限与余极限逐项计算**。",
+   "notes": "「逐项计算」是函子范畴的通用事实：$\\mathcal{C}(\\mathcal{C})$ 是 $\\operatorname{Hom}((\\mathbb{Z},\\le), \\mathcal{C})$ 的满子范畴，一切构造都在每个 $n$ 上分别做，然后再验证微分与它们相容。这条让后面所有关于复形的极限/余极限都不必单独证明。",
+   "refs": []
+  },
+  {
+   "id": "def.homotopy",
+   "type": "definition",
+   "label": "同伦",
+   "title": "同伦（Homotopy）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 11,
+   "tags": [
+    "同调代数",
+    "同伦",
+    "零伦"
+   ],
+   "statement": "复形态射 $f, g : K \\to L$ 叫**同伦的**，如果存在一族态射\n\n$$s^{n} : K^{n} \\longrightarrow L^{n-1}$$\n\n使得对每个 $n$，\n\n$$f^{n} - g^{n} \\;=\\; s^{n+1} \\circ d_{K}^{n} + d_{L}^{n-1} \\circ s^{n}$$\n\n记 $f \\sim g$，$s$ 叫一个**同伦**。与 $0$ 同伦的态射叫**零伦的**。",
+   "notes": "零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。",
+   "refs": []
+  },
+  {
+   "id": "def.homotopy-category",
+   "type": "definition",
+   "label": "同伦范畴",
+   "title": "同伦范畴（Homotopy Category）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 12,
+   "tags": [
+    "同调代数",
+    "同伦范畴"
+   ],
+   "statement": "**同伦范畴** $\\mathbf{K}(\\mathcal{C})$ 的对象与 $\\mathcal{C}(\\mathcal{C})$ 相同，态射取\n\n$$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, L) \\;:=\\; \\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L) \\big/ \\{\\text{零伦态射}\\}$$\n\n其中的同构叫**同伦等价**；在 $\\mathbf{K}(\\mathcal{C})$ 中变成 $0$ 的复形叫**同伦平凡的**。",
+   "notes": "等价的说法：$f : K \\to L$ 是同伦等价 $\\iff$ 存在 $g : L \\to K$ 使 $g \\circ f \\sim 1_{K}$、$f \\circ g \\sim 1_{L}$；$K$ 同伦平凡 $\\iff$ $1_{K} \\sim 0_{K}$。\n\n$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}')$。\n\n为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。",
+   "refs": []
+  },
+  {
+   "id": "def.mapping-cone",
+   "type": "definition",
+   "label": "映射锥",
+   "title": "映射锥与位移（Mapping Cone）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 13,
+   "tags": [
+    "同调代数",
+    "映射锥",
+    "位移"
+   ],
+   "statement": "态射 $f : K \\to L$ 的**映射锥**是复形\n\n$$M(f)^{n} := K^{n+1} \\oplus L^{n}, \\qquad d^{n} := \\begin{pmatrix} -d_{K}^{n+1} & 0 \\\\ f^{n+1} & d_{L}^{n} \\end{pmatrix}$$\n\n（矩阵满足 $d^{2} = 0$，只需 $f$ 与微分交换）。$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。",
+   "notes": "用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。",
+   "refs": []
+  },
+  {
+   "id": "def.distinguished-triangle",
+   "type": "definition",
+   "label": "导出三角",
+   "title": "导出三角（Distinguished Triangle）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 14,
+   "tags": [
+    "同调代数",
+    "三角",
+    "映射锥"
+   ],
+   "statement": "$\\mathbf{K}(\\mathcal{C})$ 中的**导出三角**是形状为\n\n$$K \\longrightarrow L \\longrightarrow M \\longrightarrow K[1]$$\n\n的图。它叫**导出的**，如果它在 $\\mathbf{K}(\\mathcal{C})$ 中同构于某个映射锥三角\n\n$$K \\xrightarrow{\\ f\\ } L \\longrightarrow M(f) \\longrightarrow K[1]$$\n\n三角之间的**态射**是一族映射 $(u, v, w, u[1])$，使所有方块交换。",
+   "notes": "导出三角是「短正合列」的**同伦版**：它不要求 $M$ 是商，只要求 $K \\to L \\to M \\to K[1]$ 在形状上接得上。加上位移这一步之后，一个态射就能嵌进一条任意长度的序列里 —— 这正是三角范畴要的形式。",
+   "refs": []
+  },
+  {
+   "id": "prop.triangle-rotation",
+   "type": "proposition",
+   "label": "三角的旋转与延拓",
+   "title": "导出三角的基本性质",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 15,
+   "tags": [
+    "同调代数",
+    "三角",
+    "旋转"
+   ],
+   "statement": "在 $\\mathbf{K}(\\mathcal{C})$ 中：\n\n1. $K \\xrightarrow{\\ 1\\ } K \\to 0 \\to K[1]$ 是导出三角；\n2. **旋转**：若 $K \\to L \\to M \\to K[1]$ 导出，则 $L \\to M \\to K[1] \\to L[1]$ 也导出；\n3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；\n4. 导出三角之间的态射可以（**不唯一**地）延拓。",
+   "notes": "推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。",
+   "refs": []
+  },
+  {
+   "id": "lem.triangle-morphism",
+   "type": "lemma",
+   "label": "三角态射的性质",
+   "title": "导出三角之间态射的性质",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 15,
+   "tags": [
+    "同调代数",
+    "三角",
+    "同伦"
+   ],
+   "statement": "设 $(u, v, w)$ 是 $\\mathbf{K}(\\mathcal{C})$ 中导出三角之间的态射。则\n\n1. $w^{2} = 0$（把 $w$ 沿三角的旋转接起来复合两次）；\n2. 若 $u, v$ 都是**同伦等价**，则 $w$ 也是。",
+   "notes": "第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。第 1 条说明三角之间的态射被前两步控制得很紧 —— 这正是三角范畴公理里那条最不明显的要求的来源。",
+   "refs": []
+  },
+  {
+   "id": "def.cohomology",
+   "type": "definition",
+   "label": "同调",
+   "title": "同调（Cohomology）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 13,
+   "tags": [
+    "同调代数",
+    "同调",
+    "复形"
+   ],
+   "statement": "设 $\\mathcal{A}$ 是阿贝尔范畴，$K$ 是 $\\mathcal{A}$ 中的上链复形。$K$ 的**第 $n$ 阶同调**是\n\n$$H^{n}(K) \\;:=\\; Z^{n}(K) \\big/ B^{n}(K) \\;=\\; \\ker d^{n} \\big/ \\operatorname{im} d^{n-1}$$\n\n链复形 $K_{n}$ 的第 $n$ 阶同调取它在 $\\mathcal{A}^{\\mathrm{op}}$ 中的 $(1-n)$ 阶上同调。",
+   "notes": "例：$H^{n}(K[k]) = H^{n+k}(K)$；$M \\in \\mathcal{A}$ 时 $H^{0}([M]) = M$、其余为 $0$；$H^{0}([M \\to N]) = \\ker f$、$H^{1}([M \\to N]) = \\operatorname{coker} f$。\n\n$H^{n}$ 是**函子**，但它是**加法而不正合**的 —— 同调不可交换性是整个同调代数的起点。",
+   "refs": []
+  },
+  {
+   "id": "prop.cohomology-exact-sequence",
+   "type": "proposition",
+   "label": "同调的短正合列",
+   "title": "把同调夹在两个余核 / 核之间",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 13,
+   "tags": [
+    "同调代数",
+    "同调",
+    "正合列"
+   ],
+   "statement": "设 $K$ 是复形。则对每个 $k$ 有正合列\n\n$$0 \\longrightarrow H^{k}(K) \\longrightarrow \\operatorname{coker} d^{k-1} \\longrightarrow \\ker d^{k+1} \\longrightarrow H^{k+1}(K) \\longrightarrow 0$$",
+   "notes": "也就是 $0 \\to Z^{k}/B^{k} \\to K^{k}/B^{k} \\to Z^{k+1} \\to Z^{k+1}/B^{k+1} \\to 0$。这条把「同调」拆成两段：**先取余核去掉上一步的像，再取核挑出闭链，最后取商** —— 于是复形里的信息被一层层剥出来。",
+   "refs": []
+  },
+  {
+   "id": "def.cohomological-functor",
+   "type": "definition",
+   "label": "上同调函子",
+   "title": "上同调函子（Cohomological Functor）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 15,
+   "tags": [
+    "同调代数",
+    "上同调函子",
+    "正合"
+   ],
+   "statement": "设 $\\mathcal{C}$ 是加法范畴、$\\mathcal{A}$ 是阿贝尔范畴。函子 $F : \\mathbf{K}(\\mathcal{C}) \\to \\mathcal{A}$ 叫**上同调函子**，如果对每个导出三角 $K \\to L \\to M \\to K[1]$，序列\n\n$$FK \\longrightarrow FL \\longrightarrow FM$$\n\n正合。",
+   "notes": "上同调函子把导出三角变成一条**长正合列**：反复旋转三角、每次用一次正合性、再拼接，就得到 $\\cdots \\to F(K[n]) \\to F(L[n]) \\to F(M[n]) \\to F(K[n+1]) \\to \\cdots$。\n\n例：固定 $K$ 之后，$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, -)$ 是上同调函子 —— 这就是同调代数里那些「长正合列」的总来源。",
+   "refs": []
+  },
+  {
+   "id": "thm.long-exact",
+   "type": "theorem",
+   "label": "长正合列",
+   "title": "短正合列给出长正合列（蛇引理）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 16,
+   "tags": [
+    "同调代数",
+    "长正合列",
+    "蛇引理"
+   ],
+   "statement": "设 $\\mathcal{A}$ 是阿贝尔范畴，$0 \\to K \\to L \\to M \\to 0$ 是复形的短正合列。则存在**长正合列**\n\n$$\\cdots \\to H^{n}(K) \\to H^{n}(L) \\to H^{n}(M) \\xrightarrow{\\ \\delta\\ } H^{n+1}(K) \\to \\cdots$$\n\n其中 $\\delta$ 叫**连接同态**。\n\n推论：$H^{n} : \\mathbf{K}(\\mathcal{A}) \\to \\mathcal{A}$ 是**上同调函子**。",
+   "notes": "",
+   "refs": []
+  },
+  {
+   "id": "def.quasi-iso",
+   "type": "definition",
+   "label": "拟同构",
+   "title": "拟同构与零调复形（Quasi-Isomorphism）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 14,
+   "tags": [
+    "同调代数",
+    "拟同构",
+    "零调"
+   ],
+   "statement": "复形态射 $f : K \\to L$ 叫**拟同构**，如果对每个 $n$，$H^{n}(f)$ 都是同构。复形 $K$ 叫**零调的**，如果 $H^{n}(K) = 0$ 对所有 $n$。",
+   "notes": "注意：$K \\to L$ 拟同构 $\\iff$ $L \\to K$ 拟同构（「拟同构」是双向的说法，虽然映射只有一个方向）；$K$ 零调 $\\iff$ $[0] \\to K$ 拟同构 $\\iff$ $K \\to [0]$ 拟同构。\n\n两条命题：（1）若 $K \\to L \\to M \\to$ 是导出三角，则 $f$ 是拟同构 $\\iff$ $M$ 零调；（2）对三角态射 $(u, v, w)$，$u, v$ 是拟同构 $\\iff$ $w$ 是拟同构。\n\n拟同构是「在 $\\mathbf{K}(\\mathcal{C})$ 里不是同构，但同调上看不出差别」的映射 —— 把拟同构反过来形式地变成同构，就得到**导出范畴**。",
+   "refs": []
+  },
+  {
+   "id": "prop.injective-criterion",
+   "type": "proposition",
+   "label": "内射对象的判据",
+   "title": "内射对象的四条等价说法",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 14,
+   "tags": [
+    "同调代数",
+    "内射对象",
+    "正合"
+   ],
+   "statement": "设 $\\mathcal{A}$ 是阿贝尔范畴，$I \\in \\mathcal{A}$。下列等价：\n\n1. $I$ 是**内射对象**；\n2. 每个单态射 $I \\rightarrowtail M$ 都有**收缩** $M \\to I$；\n3. 函子 $\\operatorname{Hom}_{\\mathcal{A}}(-, I)$ **正合**；\n4. 每个短正合列 $0 \\to I \\to M \\to M'' \\to 0$ 都**分裂**。\n\n进一步：若 $0 \\to M' \\to M \\to M'' \\to 0$ 正合且 $M'$ 内射，则\n\n$$M \\text{ 内射} \\iff M'' \\text{ 内射}$$",
+   "notes": "证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。",
+   "refs": []
+  },
+  {
+   "id": "def.filtration",
+   "type": "definition",
+   "label": "过滤",
+   "title": "过滤（Filtration）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 15,
+   "tags": [
+    "同调代数",
+    "过滤",
+    "关联分次"
+   ],
+   "statement": "设 $\\mathcal{A}$ 是阿贝尔范畴。$M \\in \\mathcal{A}$ 上的（**递降**）**过滤**是 $M$ 的子对象沿 $(\\mathbb{Z}, \\ge)$ 的图：\n\n$$\\cdots \\subseteq F^{n}M \\subseteq F^{n+1}M \\subseteq \\cdots \\subseteq M$$\n\n总假定过滤是**穷尽的**（$\\bigcup_{n} F^{n}M = M$）与**分离的**（$\\bigcap_{n} F^{n}M = 0$）；若 $n \\ll 0$ 时 $F^{n}M = M$ 且 $n \\gg 0$ 时 $F^{n}M = 0$，叫**有限的**。带过滤的对象构成范畴 $\\mathbf{F}(\\mathcal{A})$，**关联分次**记 $\\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。",
+   "notes": "命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。",
+   "refs": []
+  },
+  {
+   "id": "def.spectral-sequence",
+   "type": "definition",
+   "label": "谱序列",
+   "title": "谱序列（Spectral Sequence）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 16,
+   "tags": [
+    "同调代数",
+    "谱序列",
+    "过滤"
+   ],
+   "statement": "**谱序列**由两部分组成：\n\n1. 一族复形 $E^{p,q}_{r}$（$p, q, r \\in \\mathbb{Z}$，$r \\ge r_{0}$），微分\n\n$$d^{p,q}_{r} : E^{p,q}_{r} \\longrightarrow E^{p+r,\\, q-r+1}_{r}$$\n\n使得 $E^{p,q}_{r+1} \\cong H^{p,q}(E_{r}) = \\ker d^{p,q}_{r} / \\operatorname{im} d^{p-r,\\, q+r-1}_{r}$；\n2. 一族**带过滤**的对象 $H^{n}$（$n \\in \\mathbb{Z}$），使得对每个 $p, q$ 与所有充分大的 $r$，\n\n$$\\operatorname{Gr}^{p} H^{p+q} \\;\\cong\\; E^{p,q}_{r}$$\n\n仅当 $p, q \\ge 0$ 时 $E^{p,q}_{r}$ 才可能非零的，叫**第一象限**谱序列。",
+   "notes": "从哪来：给复形 $K$ 一个过滤 $F^{p}K$，同调上的过滤由\n\n\n\n$$F^{p}H^{n} := \\operatorname{im}\\bigl(H^{n}(F^{p}K) \\to H^{n}(K)\\bigr)$$\n\n\n\n继承。于是每根 $H^{n}$ 上都有一串 $H^{n} \\supseteq \\cdots \\supseteq F^{p}H^{n} \\supseteq F^{p+1}H^{n} \\supseteq \\cdots \\supseteq 0$。\n\n谱序列说的就是：**对充分大的 $r$，$E_{r}$ 页稳定下来，恰好等于这个过滤的关联分次**。所以它是「从过滤的复形一层层逼近同调」的工具 —— 直接算 $H^{n}$ 太难时，就把 $H^{n}$ 拆成容易算的那些碎片。",
+   "refs": []
   }
  ],
  "edges": [
@@ -11726,6 +12070,33 @@
    "title": "$\\mathbf{Top} \\to \\mathrm{Cond}$ 忠实、限制到 $k\\mathbf{Top}$ 全忠实",
    "proof": "**$\\underline{X}$ 是凝聚态集。** 对任一点集 $S$，$\\underline{X}(S) = C(S, X)$；$C(-, X)$ 把 $\\mathbf{CHaus}$ 里的**有限不交并**变成有限积、把**商**变成核（连续映射在无交并上与商上都是逐块决定的）。由凝聚态集的两条判据，$\\underline{X}$ 是凝聚态集。∎\n\n**伴随。** 函子 $X \\mapsto \\underline{X}$ 与 $Z \\mapsto Z(\\cdot)$ 之间要给出\n\n$$\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, Z) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Top}}\\bigl(X, Z(\\cdot)\\bigr)$$\n\n而 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, Z) = \\operatorname{Nat}(C(-,X), Z)$，按米田式的计算，它正是「在 $S = \\ast$ 处的取值」加上自然性 —— 也就是 $Z(\\cdot) = Z(\\ast)$ 上的一个元素，并且与所有 $\\underline{X}(S) = C(S,X)$ 相容。这恰恰是「从 $X$ 出发的连续映射」，两边一一对应。∎\n\n**忠实。** 由上面的伴随式取 $Z = \\underline{Y}$：\n\n$$\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Top}}\\bigl(X, \\underline{Y}(\\cdot)\\bigr)$$\n\n而关键的一步是：**$\\underline{Y}(\\cdot) \\cong kY$**（把 $Y$ 换成它的 $k$-化，拓扑可能变细）。于是\n\n$$\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Top}}(X, kY) \\;\\cong\\; \\operatorname{Hom}_{k\\mathbf{Top}}(kX, kY)$$\n\n（最后一个同构因为 $k\\mathbf{Top}$ 是余反射子范畴，$k$ 是含入的右伴随：$kX$ 处的映射等同于一切从 $X$ 出发射入紧生成空间的映射。）\n\n当 $X$ 本身紧生成时 $kX = X$，上式就是 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) \\cong \\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$，逐对 $X, Y$ 都是双射 —— **限制到 $k\\mathbf{Top}$ 上全忠实**。对一般 $X$，$X \\to kX$ 是同一集合上的恒等映射，所以函子在态射层仍是单射 —— **在 $\\mathbf{Top}$ 上忠实**。∎",
    "note": "一句话记住：**「拓扑空间 $\\to$ 凝聚态集」这件事丢掉的东西，正好就是 $k$-化丢掉的东西。** 所以在 $k\\mathbf{Top}$ 上它不丢信息。"
+  },
+  {
+   "id": "imp.triangle-rotation",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.mapping-cone",
+    "def.distinguished-triangle"
+   ],
+   "target": "prop.triangle-rotation",
+   "title": "映射锥 $\\implies$ 三角可旋转、可延拓",
+   "proof": "**旋转。** 不妨设 $M = M(f)$，即三角是 $K \\xrightarrow{\\ f\\ } L \\to M(f) \\to K[1]$。要证 $L \\to M(f) \\to K[1] \\to L[1]$ 导出。把 $g : L \\to M(f)$ 取成含入 $(0, 1)^{\\mathrm{T}}$，则它的映射锥是\n\n$$M(g)^{n} = L^{n+1} \\oplus M(f)^{n} = L^{n+1} \\oplus K^{n+1} \\oplus L^{n}$$\n\n再给出 $K[1]$ 与 $M(g)$ 之间的两个互逆（同伦意义下）映射 $\\varphi, \\psi$，以及同伦 $s$ 使 $s \\circ \\varphi \\sim 1$。逐项算完即得两个三角在同伦范畴里同构，于是旋转后的三角也是导出的。∎\n\n**反复旋转**就得到整条长序列 $\\cdots \\to K \\to L \\to M \\to K[1] \\to L[1] \\to \\cdots$。∎\n\n**延拓。** 给定 $f : K \\to L$，直接取三角 $K \\to L \\to M(f) \\to K[1]$ 即得第 3 条。\n\n给定三角态射的左边两步 $u : K' \\to K''$、$v : L' \\to L''$，先把 $f'$ 与 $f''$ 都取成映射锥的形式。要造 $w$，令其矩阵形式为\n\n$$w := \\begin{pmatrix} s^{n+1} & v^{n} \\end{pmatrix} : K'^{n+1} \\oplus L'^{n} \\longrightarrow K''^{n+1} \\oplus L''^{n}$$\n\n其中 $s$ 是 $v \\circ f' - f'' \\circ u$ 的一个同伦（它零伦来自三角的交换性）。逐项验证 $w \\circ d = d \\circ w$ 即可，这一步用到同伦方程本身。∎\n\n**推论（映射锥唯一）。** 两个都是 $f$ 的锥的三角都是导出的，于是它们之间有一个「前两步都是恒等」的三角态射；由「前两步同伦等价则第三步也同伦等价」（下一条引理），这两个锥同伦等价。∎",
+   "note": "证明的模式很固定：**先把三角摆成映射锥的样子，然后矩阵硬算**。同伦范畴里所有三角的定理都是这么来的。"
+  },
+  {
+   "id": "imp.long-exact",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.distinguished-triangle",
+    "def.cohomology",
+    "prop.triangle-rotation"
+   ],
+   "target": "thm.long-exact",
+   "title": "短正合列 $\\implies$ 长正合列",
+   "proof": "设 $0 \\to K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\to 0$ 是复形的短正合列。\n\n**第一步：短正合列给出导出三角。** 考虑 $f$ 的映射锥的含入 $L \\to M(f)$。由 $g \\circ f = 0$ 与短正合列的泛性质，有一条自然映射\n\n$$M(f) \\longrightarrow M, \\qquad (k^{n+1}, l^{n}) \\mapsto g^{n}(l^{n})$$\n\n它是复形态射（与微分交换，因为 $g \\circ d_{L} = d_{M} \\circ g$ 且 $g \\circ f = 0$）。由短正合列上逐项的正合性（五引理），这条映射是**拟同构**，于是三角\n\n$$K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ \\delta\\ } K[1]$$\n\n在 $\\mathbf{K}(\\mathcal{A})$ 中是**导出的**。∎\n\n**第二步：旋转并取同调。** 把上一步的三角反复旋转，得到一族导出三角\n\n$$K[n] \\to L[n] \\to M[n] \\to K[n+1], \\qquad (n \\in \\mathbb{Z})$$\n\n对每个这样的三角作用同调函子 $H^{0}$：因为 $H^{0}$ 是上同调函子，序列\n\n$$H^{0}(K[n]) \\to H^{0}(L[n]) \\to H^{0}(M[n])$$\n\n正合，而 $H^{0}(K[n]) = H^{n}(K)$（位移的性质）。把这些正合的三项片段在连接同态 $\\delta$ 处首尾相接，就得到长正合列\n\n$$\\cdots \\to H^{n}(K) \\to H^{n}(L) \\to H^{n}(M) \\xrightarrow{\\ \\delta\\ } H^{n+1}(K) \\to \\cdots$$\n\n∎\n\n**连接同态 $\\delta$ 是从哪来的。** 它就是三角里的第三条腿 $M \\to K[1]$ 取同调之后的样子：一个 $H^{n}(M) \\to H^{n+1}(K)$ 的映射，把「$M$ 里的元素」送上「$K$ 的下一个同调」。它之所以存在，唯一的原因就是**映射锥给了第三条腿** —— 短正合列本身只给出前两条腿。∎",
+   "note": "经典证明用蛇引理，这里用映射锥 + 旋转。两条路都通，但后者的好处是：**连接同态是什么**这件事，一眼就能看出来。"
   },
   {
    "id": "def-link.sep-subset",
@@ -15150,6 +15521,222 @@
    "definition": "def.adjoint",
    "usedBy": "prop.condab-tensor",
    "note": "$\\otimes_{\\mathbb{Z}}$ 与内部 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随**。"
+  },
+  {
+   "id": "def-dep.diagram-complex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.commutative-diagram",
+   "usedBy": "def.cochain-complex",
+   "note": "一个（长）序列就是**有序集上的图** $(\\mathbb{Z}, \\le) \\to \\mathcal{C}$。"
+  },
+  {
+   "id": "def-dep.functor-complex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.functor",
+   "usedBy": "def.cochain-complex",
+   "note": "序列作为图就是**函子**；「复形」是加上 $d \\circ d = 0$ 之后的那个。"
+  },
+  {
+   "id": "def-dep.category-complex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.cochain-complex",
+   "note": "复形定义在**加法范畴** $\\mathcal{C}$ 上，微分是范畴里的态射。"
+  },
+  {
+   "id": "def-dep.complex-additive",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cochain-complex",
+   "usedBy": "prop.complex-additive",
+   "note": "命题说的是**复形**构成的那个范畴。"
+  },
+  {
+   "id": "def-dep.equalizer-complex-additive",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.equalizer",
+   "usedBy": "prop.complex-additive",
+   "note": "核与余核都是**逐项**取出来的。"
+  },
+  {
+   "id": "def-dep.complex-homotopy",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cochain-complex",
+   "usedBy": "def.homotopy",
+   "note": "同伦是**复形态射**之间的一种关系。"
+  },
+  {
+   "id": "def-dep.homotopy-homotopy-category",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.homotopy",
+   "usedBy": "def.homotopy-category",
+   "note": "同伦范畴就是把**同伦**这件事商掉。"
+  },
+  {
+   "id": "def-dep.category-homotopy-category",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.homotopy-category",
+   "note": "$\\mathbf{K}(\\mathcal{C})$ 本身是一个**范畴**（还是加法范畴）。"
+  },
+  {
+   "id": "def-dep.complex-mapping-cone",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cochain-complex",
+   "usedBy": "def.mapping-cone",
+   "note": "映射锥是一个**复形**，它的微分靠拼接造出来。"
+  },
+  {
+   "id": "def-dep.fibered-mapping-cone",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.fibered-product",
+   "usedBy": "def.mapping-cone",
+   "note": "映射锥逐项取的是 $K^{n+1} \\oplus L^{n}$ —— 加法范畴里的**双积**。"
+  },
+  {
+   "id": "def-dep.mapping-cone-triangle",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.mapping-cone",
+   "usedBy": "def.distinguished-triangle",
+   "note": "导出三角的定义就是「同构于某个**映射锥**三角」。"
+  },
+  {
+   "id": "def-dep.triangle-rotation",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.distinguished-triangle",
+   "usedBy": "prop.triangle-rotation",
+   "note": "命题说的是**导出三角**的基本性质。"
+  },
+  {
+   "id": "def-dep.triangle-morphism",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.distinguished-triangle",
+   "usedBy": "lem.triangle-morphism",
+   "note": "引理说的是**导出三角**之间态射的性质。"
+  },
+  {
+   "id": "def-dep.homotopy-triangle-morphism",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.homotopy",
+   "usedBy": "lem.triangle-morphism",
+   "note": "「$u, v$ 是同伦等价则 $w$ 也是」里的比较用的是**同伦**。"
+  },
+  {
+   "id": "def-dep.complex-cohomology",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cochain-complex",
+   "usedBy": "def.cohomology",
+   "note": "同调是**复形**的 $\\ker d^{n} / \\operatorname{im} d^{n-1}$。"
+  },
+  {
+   "id": "def-dep.equalizer-cohomology",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.equalizer",
+   "usedBy": "def.cohomology",
+   "note": "同调里出现的 $\\ker$ 与 $\\operatorname{im}$ 是**等化子**与**像**。"
+  },
+  {
+   "id": "def-dep.equalizer-cohomology-sequence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.equalizer",
+   "usedBy": "prop.cohomology-exact-sequence",
+   "note": "这条正合列把同调夹在**余核**与**核**之间。"
+  },
+  {
+   "id": "def-dep.cohomology-functor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cohomology",
+   "usedBy": "def.cohomological-functor",
+   "note": "上同调函子是把导出三角变成**正合列**的那些函子。"
+  },
+  {
+   "id": "def-dep.triangle-cohomological",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.distinguished-triangle",
+   "usedBy": "def.cohomological-functor",
+   "note": "定义里的正合性条件就是针对**导出三角**说的。"
+  },
+  {
+   "id": "def-dep.cohomology-long-exact",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cohomology",
+   "usedBy": "thm.long-exact",
+   "note": "长正合列里跑的是**同调**。"
+  },
+  {
+   "id": "def-dep.equalizer-long-exact",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.equalizer",
+   "usedBy": "thm.long-exact",
+   "note": "「正合列」本身就是一句关于**核与像**的话。"
+  },
+  {
+   "id": "def-dep.cohomology-quasi-iso",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cohomology",
+   "usedBy": "def.quasi-iso",
+   "note": "拟同构说的是「**同调**全都是同构」。"
+  },
+  {
+   "id": "def-dep.mono-injective-criterion",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.mono",
+   "usedBy": "prop.injective-criterion",
+   "note": "「每个**单态射**都有收缩」是等价条件之一。"
+  },
+  {
+   "id": "def-dep.adjoint-injective-criterion",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.adjoint",
+   "usedBy": "prop.injective-criterion",
+   "note": "「$\\operatorname{Hom}(-, I)$ **正合**」说的是这个函子保正合列 —— 与伴随性相关的那条刻画。"
+  },
+  {
+   "id": "def-dep.subobject-filtration",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.subobject",
+   "usedBy": "def.filtration",
+   "note": "过滤是一族**子对象** $F^{n}M \\subseteq M$。"
+  },
+  {
+   "id": "def-dep.complex-spectral-sequence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cochain-complex",
+   "usedBy": "def.spectral-sequence",
+   "note": "谱序列从**复形**的过滤出发，逐层算它的同调。"
+  },
+  {
+   "id": "def-dep.filtration-spectral-sequence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.filtration",
+   "usedBy": "def.spectral-sequence",
+   "note": "谱序列的第二部分是**带过滤**的同调对象。"
   }
  ],
  "clusterLinks": [
@@ -15695,6 +16282,20 @@
   {
    "a": "cat.adjoint",
    "b": "cond",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.homology",
+   "b": "cat.limit",
+   "count": 8,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.basic",
+   "b": "cat.homology",
    "count": 2,
    "label": "",
    "explicit": false

@@ -287,6 +287,13 @@ MG.clusters = [
     parent: 'category',
     hub: 'def.condensed-set',
     desc: '造出终点站：紧 Hausdorff 空间上的层就是凝聚态集，换到自由对象上退化成「保有限积」，再往上走凝聚态阿贝尔群。'
+  },
+  {
+    id: 'cat.homology',
+    name: '同调代数',
+    parent: 'category',
+    hub: 'def.cochain-complex',
+    desc: '造出「复形」这套机器：复形 → 同伦 → 同伦范畴 → 映射锥与导出三角 → 同调与长正合列 → 拟同构 → 内射对象 → 谱序列。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

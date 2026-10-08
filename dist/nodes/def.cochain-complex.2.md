@@ -1,0 +1,7 @@
+# 上链复形　`def.cochain-complex`　·　续页（第 2 页）
+根 `../`　·　第 1 页 `nodes/def.cochain-complex.md`
+
+## 它能推出什么 / 谁在用它（续）
+- 被 `def.mapping-cone` 映射锥 用
+- 被 `def.cohomology` 同调 用
+- 被 `def.spectral-sequence` 谱序列 用

@@ -8,3 +8,4 @@
 - 被 `prop.subobject-lattice` 子对象构成有界格 用
 - 被 `prop.quasi-compact-properties` 拟紧的性质 用
 - 被 `def.quasi-separated` 拟分离对象 用
+- 被 `def.mapping-cone` 映射锥 用
