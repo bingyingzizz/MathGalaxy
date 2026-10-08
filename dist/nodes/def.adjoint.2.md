@@ -12,3 +12,4 @@
 - 被 `def.reflective-subcategory` 反射子范畴 用
 - 被 `def.kan-extension` Kan 延拓 用
 - 被 `ex.kan-extension` Kan 延拓的两个例子 用
+- 被 `prop.chaus-reflective` 紧 Haus 是反射子范畴 用

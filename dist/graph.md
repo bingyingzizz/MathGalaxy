@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:59:49.659Z
-> 7 星系 / 28 星团 / 276 节点 / 610 连线（强边 602，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:04:37.115Z
+> 7 星系 / 29 星团 / 299 节点 / 662 连线（强边 654，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -1318,6 +1318,59 @@ $$V \in \mathcal{T}_Y \implies f^{-1}(V) \in \mathcal{T}_X$$
 ⚠ 反过来也要当心：**度量性质在同胚下会变**。$\mathbb{R}$ 与开区间 $(0, 1)$ 同胚（$x \mapsto \frac{1}{2} + \frac{1}{\pi}\arctan x$），但前者完备、后者不完备 —— 这就是「完备性不是拓扑性质」的经典例子，也是距离空间里「紧 / 闭」与「完备 / 全有界」两类性质的分界线。
 
 参考：Munkres, Topology, Ch. 2
+
+#### 子空间拓扑　`def.subspace-topology`
+*定义*　子空间拓扑（Subspace Topology）
+
+设 $(X, \mathcal{T})$ 是拓扑空间，$Y \subseteq X$。$Y$ 上的**子空间拓扑**取
+
+$$\mathcal{T}_{Y} := \{\, U \cap Y : U \in \mathcal{T} \,\}$$
+
+这样得到的拓扑是使含入映射 $Y \hookrightarrow X$ 连续的最粗拓扑。
+
+直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \subseteq \mathbb{R}$ 在自身中是闭的，在 $\mathbb{R}$ 中不是。
+
+#### 商拓扑　`def.quotient-topology`
+*定义*　商拓扑（Quotient Topology）
+
+设 $(X, \mathcal{T})$ 是拓扑空间，$\pi : X \twoheadrightarrow Y$ 是满射。$Y$ 上的**商拓扑**取
+
+$$\mathcal{T}_{Y} := \{\, V \subseteq Y : \pi^{-1}(V) \in \mathcal{T} \,\}$$
+
+这是使 $\pi$ 连续的最细拓扑；带这个拓扑的 $Y$ 叫 $X$ 的**商空间**。
+
+直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。
+
+商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。
+
+#### Hausdorff 空间　`def.hausdorff`
+*定义*　Hausdorff 空间 / $T_{2}$（Hausdorff Space）
+
+拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：
+
+$$\forall x \ne y \in X,\ \exists U \ni x,\ V \ni y \ \text{开},\quad U \cap V = \emptyset$$
+
+一句话：**极限唯一**。序列只要收敛就只能收敛到一个点 —— 这正是分析里默认的那种空间。
+
+更强的分离性是**正规**（$T_{4}$）：任意两个不交闭集可被开集分开。紧 Hausdorff 空间是正规的（证明用两次紧性造开覆盖再取有限子覆盖）。
+
+$T_{3}$（正则）与 $T_{3.5}$（Tychonoff）夹在中间：$T_{3.5}$ 说的是**不同的点可以被连续函数分离开**，也就是「连续函数足够多」这一条。Stone–Čech 紧化的单射性要求的正是它。
+
+#### 连通与连通分量　`def.connected`
+*定义*　连通空间与连通分量（Connectedness）
+
+拓扑空间 $X$ 叫**不连通的**，如果它可以写成两个不交非空开集之并 $X = U \sqcup V$；否则叫**连通的**。
+
+固定 $x \in X$，包含 $x$ 的**连通分量** $C(x)$ 是所有含 $x$ 的连通子集的并 —— 它本身连通，且是极大的。
+
+连通分量构成 $X$ 的一个划分，且每个分量都是闭的。**既开又闭**的子集（记作**闭开集**）与连通性是同一件事的两面：$X$ 连通当且仅当它的闭开子集只有 $\emptyset$ 与 $X$ 本身 —— 所以「有没有非平凡的闭开集」就是「能不能断开」。
+
+#### 闭开集　`def.clopen`
+*定义*　闭开集（Clopen Set）
+
+$X$ 的子集 $K$ 叫**闭开集**，如果它同时是开集与闭集。等价地：$K$ 与它的补 $K^{c}$ 都是开集，即 $X = K \sqcup K^{c}$ 是一个不交非空开集之并（$K$ 非平凡时）。
+
+闭开集在一般的拓扑空间里是「稀有物种」：在 $\mathbb{R}$、$[0,1]$ 这类连通空间里只有 $\emptyset$ 与全空间。**闭开集越多，空间越碎** —— 全不连通说的就是「闭开集多到能分开任何两个点」；投射有限空间则是「闭开集构成一组基」。
 
 ### 星团：度量空间
 > 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
@@ -5518,6 +5571,194 @@ $$\varinjlim_{i} (X_{i} \times Y_{i}) \;\cong\; \bigl(\varinjlim_{i} X_{i}\bigr)
 
 这条为什么重要：后面谈层的时候，层化是拿滤过余极限配出来的，而**只有滤过余极限不破坏有限极限**，这套构造才能与有限极限（也就是把拓扑信息编码进去的那个部分）相安无事。
 
+### 星团：紧 Haus 与 Stone
+> 造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → Stone 空间 = 投射有限空间 → Gleason 定理。
+
+#### 紧 Hausdorff 空间范畴　`def.chaus`
+*定义*　紧 Hausdorff 空间范畴 $\mathbf{CHaus}$
+
+**紧 Hausdorff 空间**是既紧又 Hausdorff 的拓扑空间。以它们为对象、连续映射为态射，得到范畴 $\mathbf{CHaus}$。含入函子记 $\mathbf{CHaus} \hookrightarrow \mathbf{Top}$。
+
+紧跟 Hausdorff 放在一起是一件很划算的事：**紧 Hausdorff 是正则的、正规的**，而且从紧空间到 Hausdorff 空间的连续双射自动是同胚。很多在 $\mathbf{Top}$ 里要额外假设的东西，在这里是免费的。
+
+$\mathbf{CHaus}$ 里**任意极限存在**，并且就是 $\mathbf{Top}$ 里算完之后那个结果（见「紧 Haus 是反射子范畴」那条）。
+
+#### 紧 Haus 是反射子范畴　`prop.chaus-reflective`
+*命题*　Stone–Čech 紧化：$\mathbf{CHaus}$ 是 $\mathbf{Top}$ 的反射子范畴
+
+$\mathbf{CHaus}$ 是 $\mathbf{Top}$ 的**反射子范畴**，反射叫 **Stone–Čech 紧化**：
+
+$$\beta : \mathbf{Top} \longrightarrow \mathbf{CHaus}, \qquad X \mapsto \beta X$$
+
+即对每个 $X \in \mathbf{Top}$ 与每个紧 Hausdorff 空间 $K$，
+
+$$\operatorname{Hom}_{\mathbf{CHaus}}\bigl(\beta X,\ K\bigr) \;\cong\; \operatorname{Hom}_{\mathbf{Top}}\bigl(X,\ K\bigr)$$
+
+而且含入 $X \to \beta X$ 在 $X$ 本身紧 Hausdorff 时是同构。
+
+构造：把 $X$ 送进 Tychonoff 方块
+
+
+
+$$e_{X} : X \longrightarrow [0,1]^{C(X,[0,1])}, \qquad x \mapsto (f(x))_{f}$$
+
+
+
+再取闭包 $\beta X := \overline{e_{X}(X)}$。方块紧 Hausdorff，闭子集因而也紧 Hausdorff。
+
+⭐ **$e_{X}$ 是单射 $\iff$ $X$ 是 Tychonoff（$T_{3.5}$）空间** —— 即连续函数多到能分开不同的点。所以对于一般拓扑空间，$\beta X$ 是把「连续函数看得出的信息」全部收进来之后的紧化。
+
+推论：**紧 Hausdorff 空间的任意极限自动是紧 Hausdorff 的**。这是反射子范畴对极限封闭的一般结论在这里的样子 —— 以后在 $\mathbf{CHaus}$ 里取极限，不必再回头验紧性与 Hausdorff 性。
+
+#### 满射的极小闭子集　`lem.minimal-closed-surjection`
+*引理*　满连续映射的极小闭子集
+
+设 $f : S \to T$ 是紧 Hausdorff 空间之间的连续满射。则存在**极小**的闭子集 $S' \subseteq S$，使限制 $f|_{S'}$ 仍然是满射。
+
+证明用佐恩引理：把「$f$ 在其上满」的闭子集族按**反包含**排序，链的上界取交 —— 紧性保证交出来的闭子集仍然满（若非满，剩下的那个紧集会被一列越来越小的闭集挖空，与有限交性质矛盾）。于是有极大元，在原序下就是极小闭子集。
+
+#### 自由紧 Hausdorff 空间　`def.free-compact-hausdorff`
+*定义*　自由紧 Hausdorff 空间（Free Compact Hausdorff Space）
+
+**自由紧 Hausdorff 空间**就是某个离散空间 $I$ 的 Stone–Čech 紧化 $F \cong \beta I$。称 $I$ 是 $F$ 的一组**基**：此时
+
+$$\operatorname{Hom}_{\mathbf{CHaus}}(F, S) \;\cong\; \operatorname{Hom}_{\mathbf{Top}}(I, S) \;=\; S^{I}$$
+
+即连续映射 $F \to S$ 与 $S$ 中一族点 $(t_{i})_{i \in I}$ 一一对应。这族点使 $F \to S$ 成为满射时，叫 $F$ 的**生成元**。
+
+「自由」两个字在这里的含义和自由群、自由模完全一样：**在 $I$ 上没有任何约束**（$I$ 是离散的，所以从 $I$ 出发的映射随便给点就是连续的），于是「$F$ 到别处的映射」与「$I$ 上的一族点」是一回事。
+
+#### 紧 Haus 是自由的商　`prop.chaus-quotient-of-free`
+*命题*　每个紧 Hausdorff 空间都是自由紧 Hausdorff 空间的商
+
+每个紧 Hausdorff 空间 $S$ 都是某个自由紧 Hausdorff 空间的**连续满像**：取 $S$ 上的离散拓扑，则
+
+$$F := \beta\, S^{\mathrm{disc}} \longrightarrow S$$
+
+是连续满射。
+
+恒等映射 $S^{\mathrm{disc}} \to S$ 连续（离散拓扑最细），沿它的 Stone–Čech 泛性质给出 $\beta S^{\mathrm{disc}} \to S$。既然 $S^{\mathrm{disc}} \to S$ 已经是满射，而紧空间的连续满像 $\beta S^{\mathrm{disc}} \to S$ 作用在稠密的 $S^{\mathrm{disc}}$ 上已经覆盖了 $S$，满射性就跟着来了。
+
+#### 投射 / 内射对象　`def.projective-object`
+*定义*　投射对象与内射对象（Projective / Injective Object）
+
+范畴 $\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果对每个满态射 $A \twoheadrightarrow B$ 与每个 $P \to B$，都存在提升 $P \to A$ 使三角形交换：
+
+$$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadrightarrow & B \end{array}$$
+
+对偶地，$I$ 叫**内射的**，如果对每个单态射 $A \rightarrowtail B$ 与每个 $A \to I$，都存在延拓 $B \to I$。
+
+「投射」这个名字来自模论：$R\text{-}\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。
+
+在 $\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。
+
+#### 自由紧 Haus 是投射对象　`prop.free-projective`
+*命题*　自由紧 Hausdorff 空间是 $\mathbf{CHaus}$ 的投射对象
+
+自由紧 Hausdorff 空间是 $\mathbf{CHaus}$ 中的投射对象。
+
+设 $F \cong \beta I$，给定满态射 $T \twoheadrightarrow S$ 与 $F \to S$。由自由性，$F \to S$ 等同于 $I$ 上的一族点，于是 $I \to T$ 就是一个集合层的提升（$I$ 离散、$\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\beta I$ 的泛性质把它变回 $F \to T$，而它自动与原有映射相容。∎
+
+#### 自由表示　`def.free-presentation`
+*定义*　自由表示（Free Presentation）
+
+紧 Hausdorff 空间之间的连续满射 $F \twoheadrightarrow S$ 叫 $S$ 的**自由表示**，如果
+
+1. $F$ 是自由紧 Hausdorff 空间；
+2. $F \to S$ 是满态射；
+3. 令 $R := F \times_{S} F$，则 $F \to R$ 是满态射。
+
+此时 $S \cong \operatorname{coker}(R \rightrightarrows F)$。
+
+对照集合里的那件事：对 $f : X \to Y$，令 $R := X \times_{Y} X = \{(x_{1},x_{2}) : f(x_{1}) = f(x_{2})\}$（「像相同的点对」），则 $X/R \cong \operatorname{im} f$（**Noether 第一同构定理**）；反过来，给定 $X$ 上的等价关系 $R$，把 $Y := X/R$，就有 $R = X \times_{Y} X$。
+
+自由表示就是把这件事搬进 $\mathbf{CHaus}$：$R$ 是「把像相同的点粘起来」那个等价关系，而第三条要求 $R$ 自己也能由一个自由紧 Hausdorff 空间满射过来 —— 于是整个 $S$ 由自由对象经过一次余等化子造出来。
+
+$\mathbf{CHaus}$ 里有余等化子，所以 $\operatorname{coker}(R \rightrightarrows F)$ 存在；它就是商空间 $F/R$。
+
+#### 紧 Haus 都有自由表示　`cor.chaus-free-presentation`
+*推论*　每个紧 Hausdorff 空间都有自由表示
+
+每个紧 Hausdorff 空间 $S$ 都有自由表示。
+
+取 $F = \beta S^{\mathrm{disc}}$（前一条命题：$F \twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \times_{S} S$ 再做一次，得到 $F' \twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎
+
+#### 连通分量是闭开邻域之交　`prop.component-clopen`
+*命题*　紧 Hausdorff 空间中连通分量 = 闭开邻域之交
+
+设 $S$ 是紧 Hausdorff 空间，$x \in S$。则 $x$ 的连通分量等于一切包含 $x$ 的闭开集之交：
+
+$$C(x) \;=\; \bigcap \{\, K \subseteq S : K \text{ 闭开},\ x \in K \,\}$$
+
+证明见边上那条推导。要点是「**紧 Hausdorff 里有无穷多闭开集可用**」：紧 Hausdorff 空间是正规的（$T_{4}$），所以两个不交闭集能被开集分开，而紧性又把「开集分开」升级成「闭开集分开」。这条把 $\pi_{0}$ 这个反射函子变得可算：连通分量不是抽象地取出来的，而是闭开集的交。
+
+#### 全不连通与 Stone 空间　`def.stone-space`
+*定义*　Stone 空间与 Stonean 空间（Stone / Stonean Space）
+
+- $X$ **全不连通**（totally disconnected），如果其中每个连通分量都是单点；
+- $X$ **极端不连通**（extremally disconnected），如果任一开集的**闭包仍是闭开集**；
+- **Stone 空间** = 全不连通的紧 Hausdorff 空间；
+- **Stonean 空间** = 极端不连通的紧 Hausdorff 空间。
+
+记 $\pi_{0}(X) := \{\, C(x) : x \in X \,\}$ 为连通分量的集合，并赋予它**商拓扑**；$x \mapsto C(x)$ 给出连续映射 $X \to \pi_{0}(X)$。
+
+两个字面上很像的条件分居两端：**全不连通**说「碎到每个分量只剩一个点」，**极端不连通**说「开集的闭包不再长大」。后者更强 —— 极端不连通的 $T_{1}$ 空间必全不连通。
+
+#### 极端不连通的基本性质　`prop.stonean-basic`
+*命题*　极端不连通的性质
+
+**(a)** 若 $X$ 极端不连通，则任意两个不交开集 $U, V$ 的闭包仍不交：$\overline{U} \cap \overline{V} = \emptyset$。
+
+**(b)** 极端不连通的 Hausdorff 空间是**全不连通**的。
+
+**(a)** 反证：若 $\overline{U} \cap \overline{V}$ 非空，取其中的点 $x$。因为 $X$ 极端不连通，$\overline{U}$ 与 $\overline{V}$ 都是闭开的，于是它们与自己的内部的关系逼出矛盾 —— 具体地说，$x$ 的每个邻域都要同时碰到 $U$ 与 $V$，而这两个闭开集又把 $x$ 与「另一个」隔开。
+
+**(b)** 设 $x \ne y$。Hausdorff 性给出分离它们的开集 $U \ni x$、$V \ni y$，由 (a) 得两个不交的闭开集把 $x$ 与 $y$ 隔开，于是 $C(x) \subseteq U \not\ni y$，$y \notin C(x)$。所以每个连通分量是单点。
+
+#### 全不连通空间是反射子范畴　`prop.td-reflective`
+*命题*　全不连通空间是 $\mathbf{Top}$ 的反射子范畴
+
+全不连通空间构成的范畴是 $\mathbf{Top}$ 的**反射子范畴**，反射是
+
+$$\pi_{0} : \mathbf{Top} \longrightarrow \mathbf{Top}_{\mathrm{td}}, \qquad X \mapsto \pi_{0}(X)$$
+
+并且 $X \to \pi_{0}(X)$ 是同构 $\iff$ $X$ 全不连通。
+
+推论：**全不连通空间的任意极限仍是全不连通的** —— 因为 $\pi_{0}$ 作为反射（一个左伴随）保余极限，而含入函子保极限。这条与「$\mathbf{CHaus}$ 对极限封闭」叠起来，就是 Stone 空间与 Stonean 空间各自对极限封闭。
+
+#### Stone 空间是 CHaus 的反射子范畴　`prop.stone-reflective`
+*命题*　Stone 空间是 $\mathbf{CHaus}$ 的反射子范畴
+
+Stone 空间构成的范畴是 $\mathbf{CHaus}$ 的反射子范畴。
+
+推论：**Stone 空间的任意极限仍是 Stone 空间**。把这条与「全不连通空间对极限封闭」并排看，就能读出 Stone 空间的双重身份：它既是「紧 Hausdorff 里全不连通的那些」，也是「紧 Hausdorff 这个反射子范畴里再反射一次剩下的那些」。
+
+#### 投射有限空间　`def.profinite`
+*定义*　投射有限空间（Profinite Space）
+
+**投射有限空间**是有限离散空间沿一个**有向**系统取极限得到的拓扑空间：
+
+$$X \;=\; \varprojlim_{i \in I} X_{i}, \qquad X_{i} \text{ 有限离散},\quad I \text{ 有向}$$
+
+「pro-finite」= 有限者的投射极限。直观上它是「越来越细的有限分辨率」堆出来的对象：$X_{i}$ 是第 $i$ 层分辨率下的样子，$I$ 有向保证任意两层分辨率都能同时加细。
+
+#### Stone ⟺ 投射有限　`thm.stone-profinite`
+*定理*　Stone 空间 $\iff$ 投射有限空间
+
+拓扑空间是 Stone 空间 $\iff$ 它是投射有限空间。
+
+#### Gleason 定理　`thm.gleason`
+*定理*　Gleason 定理：$\mathbf{CHaus}$ 的投射对象
+
+$\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。
+
+#### Stonean 是收缩核　`cor.stonean-retract`
+*推论*　Stonean 空间 = 自由紧 Hausdorff 空间的收缩核
+
+Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续映射 $r : X \to A$ 使 $r|_{A} = 1_{A}$（这样的 $A$ 叫 $X$ 的收缩核）。
+
+这条把 Gleason 定理翻译成了一句「具体拓扑」的话：投射性 = 收缩核。与模论里「投射模 = 自由模的直和项」完全平行 —— 两者都是「投射 = 从自由对象上切一块下来」。
+
 ---
 
 ## 全部连线（含推导过程）
@@ -7957,6 +8198,34 @@ $\varepsilon$-$\delta$ 那套是**拓扑版连续**在实数（或距离空间�
 
 距离空间里「开球全体构成这个拓扑的一组**基**」——这就是基的定义的一个标准例子。
 
+#### 定义引用：「拓扑空间与开集」→ 子空间拓扑　`dep.topology-subspace`
+
+子空间拓扑是拿**大空间的拓扑**里的开集与 $Y$ 求交得到的。
+
+#### 定义引用：「子集」→ 子空间拓扑　`dep.subset-subspace`
+
+$Y \subseteq X$ —— 先有子集，才谈得上它上面的子空间拓扑。
+
+#### 定义引用：「拓扑空间与开集」→ 商拓扑　`dep.topology-quotient`
+
+商拓扑问的是商集的哪些子集**拉回去是开的**，判断依据仍是大空间的拓扑。
+
+#### 定义引用：「函数」→ 商拓扑　`dep.function-quotient`
+
+商拓扑是先有一个**满射** $\pi : X \twoheadrightarrow Y$，再反过来给 $Y$ 装拓扑。
+
+#### 定义引用：「拓扑空间与开集」→ Hausdorff 空间　`dep.topology-hausdorff`
+
+「两个点可被**开集**分开」——开集是拓扑的一部分。
+
+#### 定义引用：「拓扑空间与开集」→ 连通与连通分量　`dep.topology-connected`
+
+「不能写成两个不交非空**开集**之并」是拿拓扑说出来的。
+
+#### 定义引用：「闭集与闭包」→ 闭开集　`dep.topology-clopen`
+
+闭开集 = **开集** 且 **闭集**，两个概念各占一半。
+
 #### 定义引用：「关系」→ 商集与等价类　`dep.rel-quotient`
 
 商集是拿**等价关系**做出来的 —— 先有关系，才谈得上等价类。
@@ -8629,6 +8898,94 @@ $$\operatorname{Hom}(F_{!}1_{\mathcal{C}},\ G) \;\cong\; \operatorname{Hom}(1_{\
 
 > 看完这两条，前面那些定义就串成一条线了：**极限与余极限是「沿到终范畴的函子」延拓，伴随是「沿函数子本身」延拓**。
 
+#### 紧 Hausdorff 空间范畴 + 紧 ⟹ 紧 Haus 是反射子范畴　`imp.stone-cech`
+*构造 $\beta X$ 并验证泛性质*
+
+**构造。** 把 $X$ 送进 Tychonoff 方块：
+
+$$e_{X} : X \to [0,1]^{C(X,[0,1])}, \qquad x \mapsto (f(x))_{f \in C(X,[0,1])}$$
+
+每个分量 $x \mapsto f(x)$ 连续，所以 $e_{X}$ 连续（到积空间的映射连续 $\iff$ 每个分量连续）。由 Tychonoff 定理方块紧，取闭包
+
+$$\beta X := \overline{e_{X}(X)} \subseteq [0,1]^{C(X,[0,1])}$$
+
+闭子集紧、方块 Hausdorff 而子空间 Hausdorff，所以 $\beta X \in \mathbf{CHaus}$。
+
+**函子性。** 连续映射 $\varphi : X \to Y$ 诱导 $C(Y,[0,1]) \to C(X,[0,1])$（$g \mapsto g \circ \varphi$），进而诱导方块的映射 $[0,1]^{C(X,[0,1])} \to [0,1]^{C(Y,[0,1])}$；它把 $e_{X}(X)$ 送到 $e_{Y}(Y)$，于是把闭包送到闭包，得到 $\beta\varphi : \beta X \to \beta Y$。
+
+**泛性质。** 设 $K \in \mathbf{CHaus}$，$f : X \to K$ 连续。紧 Hausdorff 空间是 $T_{3.5}$ 的（不同的点可被连续函数分离），所以 $e_{K} : K \to [0,1]^{C(K,[0,1])}$ 是单射；把 $K$ 看成那个方块里的子空间，目标就变成「造一个 $\widehat{f}$ 使右下三角交换」：
+
+$$\begin{array}{ccc} X & \xrightarrow{\ e_{X}\ } & \beta X \subseteq [0,1]^{C(X,[0,1])} \\ & \searrow\scriptstyle{f} & \downarrow\scriptstyle{\widehat{f}} \\ & & K \subseteq [0,1]^{C(K,[0,1])} \end{array}$$
+
+用分量定义 $\widehat{f}$：对每个 $g \in C(K,[0,1])$，令第 $g$ 个分量为
+
+$$(\pi_{g} \circ \widehat{f}) := \pi_{g \circ f} : [0,1]^{C(X,[0,1])} \longrightarrow [0,1]$$
+
+即「把第 $g$ 个坐标读成 $g \circ f$ 那个坐标」。每个分量连续，所以 $\widehat{f}$ 连续；在 $e_{X}(x)$ 上验证：
+
+$$\bigl(\pi_{g} \circ \widehat{f}\bigr)\bigl(e_{X}(x)\bigr) = (g \circ f)(x) = \pi_{g}\bigl(j_{K}(f(x))\bigr)$$
+
+所以 $\widehat{f} \circ e_{X} = j_{K} \circ f$，即 $f = \widehat{f} \circ e_{X}$（把 $K$ 与它在方块里的像等同）。
+
+**落回 $K$ 里。** 还差 $\widehat{f}(\beta X) \subseteq j_{K}(K)$。只需在稠密的 $e_{X}(X)$ 上验：由上式 $\widehat{f}(e_{X}(x)) = j_{K}(f(x)) \in j_{K}(K)$。而 $j_{K}(K)$ 在方块里是紧的因而闭，取闭包即得 $\widehat{f}(\beta X) \subseteq j_{K}(K)$。
+
+**唯一性。** 两个这样的 $\widehat{f}$ 在稠密的 $e_{X}(X)$ 上相等，而目标是 Hausdorff，所以处处相等。∎
+
+> 关键只有两处：**Tychonoff 定理**给出紧性，**$T_{3.5}$ 性**保证 $e_{K}$ 是单射（否则「落回 $K$ 里」那一步没意义）。
+
+#### 连通与连通分量 + 闭开集 + 紧 Hausdorff 空间范畴 ⟹ 连通分量是闭开邻域之交　`imp.component-clopen`
+*紧 Hausdorff 中连通分量是闭开邻域之交*
+
+记 $C := \bigcap \{K : K \text{ 闭开},\ x \in K\}$。
+
+**$C(x) \subseteq C$。** 每个含 $x$ 的闭开集 $K$ 都是既不空又不全的开集，所以 $x$ 的连通分量只能整个落在 $K$ 里或整个落在 $K$ 外；既然 $x \in K$，就有 $C(x) \subseteq K$。对一切这样的 $K$ 取交即得。
+
+**$C$ 连通。** 反设 $C = F \sqcup G$，其中 $F, G$ 在 $C$ 中闭、不交、非空，并设 $x \in F$。$C$ 是闭集之交因而闭，于是 $F, G$ 在 $S$ 中闭。紧 Hausdorff 空间正规，取不交开集 $U \supseteq F$、$V \supseteq G$。令 $K := (U \cup V)^{c}$，它闭且 $K \cap C = \emptyset$。
+
+由 $C$ 的定义与 $K \cap C = \emptyset$，存在含 $x$ 的闭开集 $H$ 使 $H \cap K = \emptyset$，即 $H \subseteq U \cup V$。于是 $H \cap U$ 与 $H \cap V$ 都是 $H$ 中的闭开集（$U, V$ 不交故各自的补在 $H$ 中开），进而在 $S$ 中闭开（$H$ 闭开）。其中 $H \cap U \ni x$，所以由 $C$ 的定义 $C \subseteq H \cap U \subseteq U$，从而 $C \cap V = \emptyset$，与 $G \subseteq C \cap V$ 非空矛盾。∎
+
+> 这一步是后面 Stone 对偶与 $\mathrm{Cond}$ 里「连通分量可控」的来源：在 $\mathbf{CHaus}$ 里，连通分量由**闭开集**这个可以自由摆弄的族描述出来。
+
+#### 全不连通与 Stone 空间 + 投射有限空间 + Stone 空间是 CHaus 的反射子范畴 + 基与子基 ⟹ Stone ⟺ 投射有限　`imp.stone-profinite`
+*Stone 空间 $\iff$ 投射有限空间*
+
+**（$\Longleftarrow$）** 投射有限空间是 Stone 空间的有向极限。Stone 空间对极限封闭（Stone 空间是反射子范畴的推论），而有限离散空间显然是 Stone 空间，所以极限仍是 Stone。∎
+
+**（$\Longrightarrow$）** 设 $S$ 是 Stone 空间。先证**闭开集构成拓扑基**。
+
+取 $x \in S$ 与开邻域 $O \ni x$。令 $\mathcal{F} = \{K : K \text{ 闭开},\ x \in K\} \cup \{\, O^{c} \,\}$，则 $\bigcap \mathcal{F} = \emptyset$：$O^{c}$ 与「含 $x$ 的闭开集」的交为空，因为 $x \notin O^{c}$。由 $S$ 紧，存在有限个 $K_{1}, \ldots, K_{n}$ 使
+
+$$(K_{1} \cap \ldots \cap K_{n}) \cap O^{c} = \emptyset$$
+
+令 $U := K_{1} \cap \ldots \cap K_{n}$，它是闭开的、含 $x$、且 $U \subseteq O$。所以闭开集构成基。
+
+现在看**有限闭开划分**的集合：$\mathcal{E} := \{\, E \subseteq \operatorname{Open}(S) \setminus \{\emptyset\} : E \text{ 有限},\ E \text{ 中元素两两不交且闭开},\ \bigcup E = S \,\}$，按「加细」构成一个逆向系统（加细是部分序，任意两个划分都有公共加细，所以它是有向的）。每个划分 $E$ 给出商映射 $S \to E$（送 $x$ 到包含它的那一块），目标有限离散。
+
+由此得到连续映射 $S \to \varprojlim_{E} E$。它是**连续双射**：闭开集构成基保证任何两个单点都能被某个划分分开（单射），而满射性由每块都非空得到。紧空间到 Hausdorff 空间的连续双射是同胚，于是 $S \cong \varprojlim_{E} E$，即 $S$ 投射有限。∎
+
+> 两头各用了一条前面的结论：正向用**闭开集构成基**（这是「全不连通 + 紧」的直接后果），反向用 **Stone 空间对极限封闭**。
+
+#### 投射 / 内射对象 + 全不连通与 Stone 空间 + 紧 Hausdorff 空间范畴 ⟹ Gleason 定理　`imp.gleason`
+*投射对象 $\iff$ Stonean 空间*
+
+**（投射 $\Longrightarrow$ Stonean）** 设 $S$ 是 $\mathbf{CHaus}$ 的投射对象，要证 $S$ 极端不连通，即任一开集 $U$ 的闭包闭开。
+
+令 $F := U^{c}$，考虑 $p : U \sqcup F \to S$（$U \sqcup F$ 取不交并拓扑，$p$ 在 $U$ 与 $F$ 上取含入）—— 它是连续满射。由投射性，$p$ 有连续截面 $s : S \to U \sqcup F$，即 $p \circ s = 1_{S}$。
+
+于是 $s(U) \subseteq U$ 且 $p(s(U)) = U$；又 $p(F) \cap U = \emptyset$ 迫使 $s(U) \subseteq U$。开集在连续映射下的原像开：$U = s^{-1}(U)$ 是开的；再由 $s^{-1}(F) = U^{c}$ 也开可得 $U$ 闭。所以 $U$ 闭开，$S$ 极端不连通。∎
+
+**（Stonean $\Longrightarrow$ 投射）** 因为 $\mathbf{CHaus}$ 有纤维积、满态射在这里是「universal」的，投射性等价于「每个满态射都有截面」。所以只要证：$S$ Stonean 时每个满态射 $f : T \to S$ 都有截面。
+
+由「满射有极小闭子集」那条引理，可以设 $f$ 在**极小**意义下满：即没有真闭子集 $T' \subset T$ 使 $f|_{T'}$ 满。我们来证这样的 $f$ 是单射。
+
+反设 $x \ne x' \in T$ 且 $f(x) = f(x')$。取不交邻域 $U \ni x$、$U' \ni x'$。$f$ 是闭映射（紧到 Hausdorff 的连续映射把闭集送到闭集），所以 $S_{1} := f(U^{c})$ 与 $S_{1}' := f(U'^{c})$ 是 $S$ 中的闭集。由 $f$ 的极小满性，$f|_{U^{c}}$ 与 $f|_{U'^{c}}$ 都不满，故 $S_{1}, S_{1}' \subset S$；于是它们各自的补 $V := S \setminus S_{1}$、$V' := S \setminus S_{1}'$ 是非空开集，且 $V \subseteq f(U)$、$V' \subseteq f(U')$。
+
+$f(x) = f(x') \in V \cap V'$，所以 $V \cap V' \ne \emptyset$。又 $U, U'$ 不交，故 $f(U) \cap f(U')$ 中的点只有可能来自交叠，于是 $V \cap V' \subseteq \overline{f(U)} \cap \overline{f(U')}$。而 $V \cap V'$ 非空是开集、$S$ 极端不连通意味着不交开集的闭包不交（前一条性质），矛盾。
+
+所以 $f$ 是单射，从而是同胚，于是它有截面。∎
+
+> 两个方向用的是**同一条投射性**的两种面貌：一面是「把对象从它的两块拼回来」（$U \sqcup F \to S$ 有截面），另一面是「每个满射有截面」。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -9024,6 +9381,42 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 #### 定义引用：「极限」→ 滤过余极限正合　`def-link.limit-filtered`
 
 「正合」说的是滤过余极限保持**有限极限**。
+
+#### 定义引用：「紧」→ 紧 Haus 是反射子范畴　`def-link.compact-stonecech`
+
+Stone–Čech 紧化的构造跑在 **Tychonoff 方块**里；闭包紧、方块紧，用的都是紧性。
+
+#### 定义引用：「紧」→ 满射的极小闭子集　`def-link.compact-minimal-closed`
+
+极小闭子集的存在性用的是**紧性**（有限交性质）。
+
+#### 定义引用：「投射 / 内射对象」→ Gleason 定理　`def-link.projective-gleason`
+
+Gleason 定理把 $\mathbf{CHaus}$ 的**投射对象**认了出来。
+
+#### 定义引用：「全不连通与 Stone 空间」→ Gleason 定理　`def-link.stone-gleason`
+
+认出来的那批是 **Stonean 空间**。
+
+#### 定义引用：「投射有限空间」→ Stone ⟺ 投射有限　`def-link.profinite-stone`
+
+定理说 Stone 空间与**投射有限空间**是同一批。
+
+#### 定义引用：「全不连通与 Stone 空间」→ Stone ⟺ 投射有限　`def-link.stone-profinite`
+
+定理的左边是 **Stone 空间**。
+
+#### 定义引用：「连通与连通分量」→ 连通分量是闭开邻域之交　`def-link.connected-component-clopen`
+
+命题算的是**连通分量**。
+
+#### 定义引用：「闭开集」→ 连通分量是闭开邻域之交　`def-link.clopen-component`
+
+连通分量被写成一切含 $x$ 的**闭开集**之交。
+
+#### 定义引用：「闭开集」→ 极端不连通的基本性质　`def-link.clopen-stonean-basic`
+
+极端不连通的表述与推论都落在**闭开集**上。
 
 #### 定义引用：「子集」→ 关系　`def-dep.subset-rel`
 
@@ -9749,6 +10142,134 @@ $\alpha : F \implies p_{!}F \circ p$ 与 $\gamma$ 都是**自然变换**。
 
 余极限函子 $\varinjlim : \mathbf{Set}^{I} \to \mathbf{Set}$ 的定义域是**图范畴**。
 
+#### 定义引用：「紧」→ 紧 Hausdorff 空间范畴　`def-dep.compact-chaus`
+
+紧 Hausdorff 空间就是**紧**空间再加上 Hausdorff 性。
+
+#### 定义引用：「Hausdorff 空间」→ 紧 Hausdorff 空间范畴　`def-dep.hausdorff-chaus`
+
+「Hausdorff」那一半来自分离公理。
+
+#### 定义引用：「范畴」→ 紧 Hausdorff 空间范畴　`def-dep.category-chaus`
+
+把它们收成一个**范畴**：对象是空间，态射是连续映射。
+
+#### 定义引用：「伴随函子」→ 紧 Haus 是反射子范畴　`def-dep.adjoint-chaus-reflective`
+
+「$\mathbf{CHaus}$ 是**反射子范畴**」的意思就是含入函子有左伴随。
+
+#### 定义引用：「紧」→ 紧 Haus 是反射子范畴　`def-dep.compact-stonecech`
+
+Stone–Čech 紧化的构造跑在 **Tychonoff 方块**里，紧性由 Tychonoff 定理给出。
+
+#### 定义引用：「Hausdorff 空间」→ 紧 Haus 是反射子范畴　`def-dep.hausdorff-stonecech`
+
+$e_{K}$ 是单射那一步用的是**紧 Hausdorff 空间是 $T_{3.5}$ 的**。
+
+#### 定义引用：「紧」→ 满射的极小闭子集　`def-dep.compact-minimal`
+
+极小闭子集存在用的是**紧性**（有限交性质）。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 自由紧 Hausdorff 空间　`def-dep.chaus-free`
+
+自由紧 Hausdorff 空间是 $\mathbf{CHaus}$ 里的对象：$F \cong \beta I$。
+
+#### 定义引用：「自由紧 Hausdorff 空间」→ 紧 Haus 是自由的商　`def-dep.free-chaus-quotient`
+
+命题说的商空间正是从**自由紧 Hausdorff 空间** $\beta S^{\mathrm{disc}}$ 商出来的。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧 Haus 是自由的商　`def-dep.chaus-quotient-free`
+
+命题说的对象是 $\mathbf{CHaus}$ 中的空间。
+
+#### 定义引用：「单态射 / 满态射」→ 投射 / 内射对象　`def-dep.mono-projective`
+
+投射性的定义要求「**满态射**有提升」，内射性对偶地要求「**单态射**有延拓」—— 纯箭头语言。
+
+#### 定义引用：「投射 / 内射对象」→ 自由紧 Haus 是投射对象　`def-dep.projective-free`
+
+命题的结论是「自由紧 Hausdorff 空间是**投射对象**」。
+
+#### 定义引用：「自由紧 Hausdorff 空间」→ 自由紧 Haus 是投射对象　`def-dep.free-projective`
+
+命题谈的是**自由紧 Hausdorff 空间**。
+
+#### 定义引用：「纤维积 / 纤维余积」→ 自由表示　`def-dep.fibered-free-presentation`
+
+$R := F \times_{S} F$ 是一个**纤维积**。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 自由表示　`def-dep.chaus-free-presentation`
+
+自由表示是 $\mathbf{CHaus}$ 里的一个满射三元组。
+
+#### 定义引用：「自由表示」→ 紧 Haus 都有自由表示　`def-dep.free-presentation-cor`
+
+推论说每个对象都**有**自由表示。
+
+#### 定义引用：「连通与连通分量」→ 连通分量是闭开邻域之交　`def-dep.connected-component-clopen`
+
+命题算的是**连通分量**。
+
+#### 定义引用：「闭开集」→ 连通分量是闭开邻域之交　`def-dep.clopen-component`
+
+连通分量被写成一切含 $x$ 的**闭开集**之交。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 连通分量是闭开邻域之交　`def-dep.chaus-component`
+
+证明里用到紧 Hausdorff 空间是**正规**的。
+
+#### 定义引用：「连通与连通分量」→ 全不连通与 Stone 空间　`def-dep.connected-stone`
+
+「**全不连通**」说的是每个连通分量都是单点。
+
+#### 定义引用：「闭开集」→ 全不连通与 Stone 空间　`def-dep.clopen-stone`
+
+「**极端不连通**」说的是任一开集的闭包仍是闭开集。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 全不连通与 Stone 空间　`def-dep.chaus-stone`
+
+Stone 空间与 Stonean 空间分别是「全不连通」与「极端不连通」再加**紧 Hausdorff**。
+
+#### 定义引用：「闭开集」→ 极端不连通的基本性质　`def-dep.clopen-stonean-basic`
+
+两条性质说的都是**闭开集**与闭包的关系。
+
+#### 定义引用：「全不连通与 Stone 空间」→ 极端不连通的基本性质　`def-dep.stone-stonean-basic`
+
+命题谈的是**极端不连通**（以及由它推出的全不连通）。
+
+#### 定义引用：「极限」→ 投射有限空间　`def-dep.limit-profinite`
+
+投射有限空间是有限离散空间沿有向系统的**极限**。
+
+#### 定义引用：「投射 / 内射对象」→ Gleason 定理　`def-dep.projective-gleason`
+
+Gleason 定理把 $\mathbf{CHaus}$ 的**投射对象**认了出来。
+
+#### 定义引用：「全不连通与 Stone 空间」→ Gleason 定理　`def-dep.stone-gleason`
+
+认出的是 **Stonean 空间**。
+
+#### 定义引用：「投射有限空间」→ Stone ⟺ 投射有限　`def-dep.profinite-stone`
+
+定理说的是 Stone 空间与**投射有限空间**是同一批空间。
+
+#### 定义引用：「全不连通与 Stone 空间」→ Stone 空间是 CHaus 的反射子范畴　`def-dep.stone-reflective`
+
+「Stone 空间」是**全不连通的紧 Hausdorff 空间**。
+
+#### 定义引用：「全不连通与 Stone 空间」→ 全不连通空间是反射子范畴　`def-dep.stone-td-reflective`
+
+全不连通是 Stone 空间定义里的一半。
+
+#### 定义引用：「连通与连通分量」→ 全不连通空间是反射子范畴　`def-dep.connected-td-reflective`
+
+反射 $\pi_{0}$ 就是把每个点送到它的**连通分量**。
+
+#### 定义引用：「Gleason 定理」→ Stonean 是收缩核　`def-dep.gleason-retract`
+
+推论把 Gleason 定理翻译成「Stonean = **收缩核**」。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -9913,7 +10434,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **基数与等势 ↔ 集合的构造**　2 条节点级连线
 - **集合族与 σ-代数 ↔ 集合的构造**　4 条节点级连线
 - **测度的构造 ↔ 集合的构造**　3 条节点级连线
-- **集合的构造 ↔ 拓扑空间**　3 条节点级连线
+- **集合的构造 ↔ 拓扑空间**　4 条节点级连线
+- **关系与函数 ↔ 拓扑空间**　2 条节点级连线
 - **拓扑空间 ↔ 度量空间**　3 条节点级连线
 - **数系的构造 ↔ 关系与函数**　5 条节点级连线
 - **代数结构 ↔ 数系的构造**　5 条节点级连线
@@ -9924,6 +10446,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **伴随与反射 ↔ 预层与米田**　3 条节点级连线
 - **伴随与反射 ↔ 图与极限**　18 条节点级连线
 - **伴随与反射 ↔ 函子与自然变换**　8 条节点级连线
+- **紧 Haus 与 Stone ↔ 度量空间**　6 条节点级连线
+- **紧 Haus 与 Stone ↔ 拓扑空间**　13 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -9944,3 +10468,4 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 集合的构造**　2 条节点级连线
 - **范畴与图 ↔ 预层与米田**　2 条节点级连线
 - **伴随与反射 ↔ 关系与函数**　2 条节点级连线
+- **紧 Haus 与 Stone ↔ 图与极限**　3 条节点级连线

@@ -20,3 +20,4 @@
 - 被 `prop.reflective-limits` 反射子范畴里的极限 用
 - 被 `ex.kan-extension` Kan 延拓的两个例子 用
 - 被 `prop.filtered-exact` 滤过余极限正合 用
+- 被 `def.profinite` 投射有限空间 用

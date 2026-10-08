@@ -747,6 +747,69 @@ window.MG = window.MG || {};
       definition: 'def.limit',
       usedBy: 'prop.filtered-exact',
       note: '「正合」说的是滤过余极限保持**有限极限**。'
+    },
+    {
+      id: 'def-link.compact-stonecech',
+      kind: 'definition',
+      definition: 'def.compact',
+      usedBy: 'prop.chaus-reflective',
+      note: 'Stone–Čech 紧化的构造跑在 **Tychonoff 方块**里；闭包紧、方块紧，用的都是紧性。'
+    },
+    {
+      id: 'def-link.compact-minimal-closed',
+      kind: 'definition',
+      definition: 'def.compact',
+      usedBy: 'lem.minimal-closed-surjection',
+      note: '极小闭子集的存在性用的是**紧性**（有限交性质）。'
+    },
+    {
+      id: 'def-link.projective-gleason',
+      kind: 'definition',
+      definition: 'def.projective-object',
+      usedBy: 'thm.gleason',
+      note: 'Gleason 定理把 $\\mathbf{CHaus}$ 的**投射对象**认了出来。'
+    },
+    {
+      id: 'def-link.stone-gleason',
+      kind: 'definition',
+      definition: 'def.stone-space',
+      usedBy: 'thm.gleason',
+      note: '认出来的那批是 **Stonean 空间**。'
+    },
+    {
+      id: 'def-link.profinite-stone',
+      kind: 'definition',
+      definition: 'def.profinite',
+      usedBy: 'thm.stone-profinite',
+      note: '定理说 Stone 空间与**投射有限空间**是同一批。'
+    },
+    {
+      id: 'def-link.stone-profinite',
+      kind: 'definition',
+      definition: 'def.stone-space',
+      usedBy: 'thm.stone-profinite',
+      note: '定理的左边是 **Stone 空间**。'
+    },
+    {
+      id: 'def-link.connected-component-clopen',
+      kind: 'definition',
+      definition: 'def.connected',
+      usedBy: 'prop.component-clopen',
+      note: '命题算的是**连通分量**。'
+    },
+    {
+      id: 'def-link.clopen-component',
+      kind: 'definition',
+      definition: 'def.clopen',
+      usedBy: 'prop.component-clopen',
+      note: '连通分量被写成一切含 $x$ 的**闭开集**之交。'
+    },
+    {
+      id: 'def-link.clopen-stonean-basic',
+      kind: 'definition',
+      definition: 'def.clopen',
+      usedBy: 'prop.stonean-basic',
+      note: '极端不连通的表述与推论都落在**闭开集**上。'
     }
   ]
 });

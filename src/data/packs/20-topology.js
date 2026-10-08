@@ -122,6 +122,93 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: '⭐ 同胚 = 「拓扑上分不出来」：一切**拓扑性质**（紧性、连通性、Hausdorff、闭包）都保持不变。\n\n⚠ 反过来也要当心：**度量性质在同胚下会变**。$\\mathbb{R}$ 与开区间 $(0, 1)$ 同胚（$x \\mapsto \\frac{1}{2} + \\frac{1}{\\pi}\\arctan x$），但前者完备、后者不完备 —— 这就是「完备性不是拓扑性质」的经典例子，也是距离空间里「紧 / 闭」与「完备 / 全有界」两类性质的分界线。',
       refs: ['Munkres, Topology, Ch. 2']
+    },
+
+    /* ------------------------------------------------ 子空间与商拓扑 */
+    {
+      id: 'def.subspace-topology',
+      cluster: 'topology.general',
+      type: 'definition',
+      label: '子空间拓扑',
+      title: '子空间拓扑（Subspace Topology）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '子空间'],
+      statement: [
+        '设 $(X, \\mathcal{T})$ 是拓扑空间，$Y \\subseteq X$。$Y$ 上的**子空间拓扑**取',
+        '',
+        '$$\\mathcal{T}_{Y} := \\{\\, U \\cap Y : U \\in \\mathcal{T} \\,\\}$$',
+        '',
+        '这样得到的拓扑是使含入映射 $Y \\hookrightarrow X$ 连续的最粗拓扑。'
+      ].join('\n'),
+      notes: '直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。'
+    },
+    {
+      id: 'def.quotient-topology',
+      cluster: 'topology.general',
+      type: 'definition',
+      label: '商拓扑',
+      title: '商拓扑（Quotient Topology）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '商'],
+      statement: [
+        '设 $(X, \\mathcal{T})$ 是拓扑空间，$\\pi : X \\twoheadrightarrow Y$ 是满射。$Y$ 上的**商拓扑**取',
+        '',
+        '$$\\mathcal{T}_{Y} := \\{\\, V \\subseteq Y : \\pi^{-1}(V) \\in \\mathcal{T} \\,\\}$$',
+        '',
+        '这是使 $\\pi$ 连续的最细拓扑；带这个拓扑的 $Y$ 叫 $X$ 的**商空间**。'
+      ].join('\n'),
+      notes: '直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。\n\n商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。'
+    },
+
+    /* ------------------------------------------------------ 分离公理 */
+    {
+      id: 'def.hausdorff',
+      cluster: 'topology.general',
+      type: 'definition',
+      label: 'Hausdorff 空间',
+      title: 'Hausdorff 空间 / $T_{2}$（Hausdorff Space）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '分离公理'],
+      statement: [
+        '拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：',
+        '',
+        '$$\\forall x \\ne y \\in X,\\ \\exists U \\ni x,\\ V \\ni y \\ \\text{开},\\quad U \\cap V = \\emptyset$$'
+      ].join('\n'),
+      notes: [
+        '一句话：**极限唯一**。序列只要收敛就只能收敛到一个点 —— 这正是分析里默认的那种空间。',
+        '更强的分离性是**正规**（$T_{4}$）：任意两个不交闭集可被开集分开。紧 Hausdorff 空间是正规的（证明用两次紧性造开覆盖再取有限子覆盖）。',
+        '$T_{3}$（正则）与 $T_{3.5}$（Tychonoff）夹在中间：$T_{3.5}$ 说的是**不同的点可以被连续函数分离开**，也就是「连续函数足够多」这一条。Stone–Čech 紧化的单射性要求的正是它。'
+      ].join('\n\n')
+    },
+
+    /* ---------------------------------------------------------- 连通 */
+    {
+      id: 'def.connected',
+      cluster: 'topology.general',
+      type: 'definition',
+      label: '连通与连通分量',
+      title: '连通空间与连通分量（Connectedness）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '连通'],
+      statement: [
+        '拓扑空间 $X$ 叫**不连通的**，如果它可以写成两个不交非空开集之并 $X = U \\sqcup V$；否则叫**连通的**。',
+        '',
+        '固定 $x \\in X$，包含 $x$ 的**连通分量** $C(x)$ 是所有含 $x$ 的连通子集的并 —— 它本身连通，且是极大的。'
+      ].join('\n'),
+      notes: '连通分量构成 $X$ 的一个划分，且每个分量都是闭的。**既开又闭**的子集（记作**闭开集**）与连通性是同一件事的两面：$X$ 连通当且仅当它的闭开子集只有 $\\emptyset$ 与 $X$ 本身 —— 所以「有没有非平凡的闭开集」就是「能不能断开」。'
+    },
+    {
+      id: 'def.clopen',
+      cluster: 'topology.general',
+      type: 'definition',
+      label: '闭开集',
+      title: '闭开集（Clopen Set）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '闭开集'],
+      statement: [
+        '$X$ 的子集 $K$ 叫**闭开集**，如果它同时是开集与闭集。等价地：$K$ 与它的补 $K^{c}$ 都是开集，即 $X = K \\sqcup K^{c}$ 是一个不交非空开集之并（$K$ 非平凡时）。'
+      ].join('\n'),
+      notes: '闭开集在一般的拓扑空间里是「稀有物种」：在 $\\mathbb{R}$、$[0,1]$ 这类连通空间里只有 $\\emptyset$ 与全空间。**闭开集越多，空间越碎** —— 全不连通说的就是「闭开集多到能分开任何两个点」；投射有限空间则是「闭开集构成一组基」。'
     }
   ],
 
@@ -220,6 +307,55 @@ window.MG = window.MG || {};
       definition: 'def.topology-base',
       usedBy: 'def.metric-space',
       note: '距离空间里「开球全体构成这个拓扑的一组**基**」——这就是基的定义的一个标准例子。'
+    },
+    {
+      id: 'dep.topology-subspace',
+      kind: 'definition',
+      definition: 'def.topology',
+      usedBy: 'def.subspace-topology',
+      note: '子空间拓扑是拿**大空间的拓扑**里的开集与 $Y$ 求交得到的。'
+    },
+    {
+      id: 'dep.subset-subspace',
+      kind: 'definition',
+      definition: 'def.subset',
+      usedBy: 'def.subspace-topology',
+      note: '$Y \\subseteq X$ —— 先有子集，才谈得上它上面的子空间拓扑。'
+    },
+    {
+      id: 'dep.topology-quotient',
+      kind: 'definition',
+      definition: 'def.topology',
+      usedBy: 'def.quotient-topology',
+      note: '商拓扑问的是商集的哪些子集**拉回去是开的**，判断依据仍是大空间的拓扑。'
+    },
+    {
+      id: 'dep.function-quotient',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.quotient-topology',
+      note: '商拓扑是先有一个**满射** $\\pi : X \\twoheadrightarrow Y$，再反过来给 $Y$ 装拓扑。'
+    },
+    {
+      id: 'dep.topology-hausdorff',
+      kind: 'definition',
+      definition: 'def.topology',
+      usedBy: 'def.hausdorff',
+      note: '「两个点可被**开集**分开」——开集是拓扑的一部分。'
+    },
+    {
+      id: 'dep.topology-connected',
+      kind: 'definition',
+      definition: 'def.topology',
+      usedBy: 'def.connected',
+      note: '「不能写成两个不交非空**开集**之并」是拿拓扑说出来的。'
+    },
+    {
+      id: 'dep.topology-clopen',
+      kind: 'definition',
+      definition: 'def.closed-set',
+      usedBy: 'def.clopen',
+      note: '闭开集 = **开集** 且 **闭集**，两个概念各占一半。'
     }
   ]
 });

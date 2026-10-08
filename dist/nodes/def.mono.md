@@ -16,5 +16,6 @@ $$i \circ f = i \circ g \;\Longrightarrow\; f = g$$
 - 被 `def.subobject` 子对象 用
 - 被 `def.image` 像 / 余像 用
 - 被 `lem.presheaf-mono-pointwise` 预层态射的单满按点检验 用
+- 被 `def.projective-object` 投射 / 内射对象 用
 
 > 说明见 `notes/def.mono.md`

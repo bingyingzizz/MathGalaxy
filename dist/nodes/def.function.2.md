@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.function.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `def.graph-morphism` 图的态射 用
 - 被 `def.functor` 函子 用
 - 被 `def.simplicial` 单纯对象 用
 - 被 `def.cone` 锥 用

@@ -16,5 +16,6 @@ $$\begin{array}{ccc} X_1 \times_{X_0} X_2 & \longrightarrow & X_2 \\ \downarrow 
 - 被 `def.mono` 单态射 / 满态射 用
 - 被 `def.subobject` 子对象 用
 - 被 `prop.slice-cartesian` 切片方块是笛卡尔的 用
+- 被 `def.free-presentation` 自由表示 用
 
 > 说明见 `notes/def.fibered-product.md`

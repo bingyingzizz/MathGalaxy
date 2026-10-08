@@ -252,6 +252,13 @@ MG.clusters = [
     parent: 'category',
     hub: 'def.adjoint',
     desc: '造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。'
+  },
+  {
+    id: 'cat.chaus',
+    name: '紧 Haus 与 Stone',
+    parent: 'category',
+    hub: 'prop.chaus-reflective',
+    desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → Stone 空间 = 投射有限空间 → Gleason 定理。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
