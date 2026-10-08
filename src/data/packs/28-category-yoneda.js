@@ -191,13 +191,11 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '切片', '拉回'],
       statement: [
-        '设 $\\varphi : T \\implies T\'$ 是预层之间的自然变换。则它诱导的方块',
+        '设 $\\varphi : T \\implies T\'$ 是预层之间的自然变换。则它诱导的方块是**笛卡尔的**。',
         '',
-        '$$\\begin{array}{ccc} \\mathcal{C}_{T} & \\longrightarrow & \\mathcal{C}_{T\'} \\\\ \\downarrow & & \\downarrow \\\\ \\mathcal{C} & \\xrightarrow{\\ 1\\ } & \\mathcal{C} \\end{array}$$',
-        '',
-        '是**笛卡尔的**。'
+        '这个方块把两件事接在一起：**切片范畴到预层范畴 $\\widehat{\\mathcal{C}}$ 的嵌入**，与**范畴 $\\mathcal{C}$ 到预层范畴 $\\widehat{\\mathcal{C}}$ 的 Yoneda 嵌入**。'
       ].join('\n'),
-      notes: '把预层 $T\'$ 沿 $\\varphi$ 拉回到 $T$ 上，拉回来的元素范畴正是 $\\mathcal{C}_{T}$ —— 「限制由一个自然变换给出」这件事，在范畴层面就是一次拉回。'
+      notes: '「把一个预层沿自然变换拉回」有两层说法：在切片范畴这一侧，是 $\\mathcal{C}_{T}$ 落在 $\\mathcal{C}_{T\'}$ 上；在范畴这一侧，是 $\\mathcal{C}$ 沿 Yoneda 嵌进 $\\widehat{\\mathcal{C}}$ 之后的那个方块。两个说法给出同一个笛卡尔方块 —— 这就是切片范畴存在的意义：**给预层配一个自带 Yoneda 嵌入的指标范畴**。'
     },
 
     /* ------------------------------------------------------ 稠密性定理 */

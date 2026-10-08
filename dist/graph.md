@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:17:15.797Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:39:00.431Z
 > 7 星系 / 34 星团 / 371 节点 / 801 连线（强边 793，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -5292,13 +5292,11 @@ $$\bigl\{(X, s) : X \in \mathcal{C},\ s \in T(X)\bigr\}$$
 #### 切片方块是笛卡尔的　`prop.slice-cartesian`
 *命题*　切片范畴与拉回
 
-设 $\varphi : T \implies T'$ 是预层之间的自然变换。则它诱导的方块
+设 $\varphi : T \implies T'$ 是预层之间的自然变换。则它诱导的方块是**笛卡尔的**。
 
-$$\begin{array}{ccc} \mathcal{C}_{T} & \longrightarrow & \mathcal{C}_{T'} \\ \downarrow & & \downarrow \\ \mathcal{C} & \xrightarrow{\ 1\ } & \mathcal{C} \end{array}$$
+这个方块把两件事接在一起：**切片范畴到预层范畴 $\widehat{\mathcal{C}}$ 的嵌入**，与**范畴 $\mathcal{C}$ 到预层范畴 $\widehat{\mathcal{C}}$ 的 Yoneda 嵌入**。
 
-是**笛卡尔的**。
-
-把预层 $T'$ 沿 $\varphi$ 拉回到 $T$ 上，拉回来的元素范畴正是 $\mathcal{C}_{T}$ —— 「限制由一个自然变换给出」这件事，在范畴层面就是一次拉回。
+「把一个预层沿自然变换拉回」有两层说法：在切片范畴这一侧，是 $\mathcal{C}_{T}$ 落在 $\mathcal{C}_{T'}$ 上；在范畴这一侧，是 $\mathcal{C}$ 沿 Yoneda 嵌进 $\widehat{\mathcal{C}}$ 之后的那个方块。两个说法给出同一个笛卡尔方块 —— 这就是切片范畴存在的意义：**给预层配一个自带 Yoneda 嵌入的指标范畴**。
 
 #### 稠密性定理　`thm.density`
 *定理*　稠密性定理（Density Theorem）
@@ -6287,7 +6285,7 @@ $$\mathrm{Cond} \;:=\; \widehat{\mathbf{CHaus}}$$
 
 **例 1. 拓扑空间给凝聚态集。** 任一拓扑空间 $X$ 给出凝聚态集 $\underline{X}(S) := C(S, X) = \operatorname{Hom}_{\mathbf{Top}}(S, X)$ —— 从 $S$ 到 $X$ 的连续映射全体。
 
-**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\underline{X}(\beta\mathbb{N})$ 恰好是「**收敛序列 $(x_{n})_{n \ge 1}$ 连同指定的极限 $x_{\infty}$**」的集合 —— 因为从 $\beta\mathbb{N}$ 到 $X$ 的连续映射，恰好由「$\mathbb{N}$ 上的像」加上「聚点的像」决定。
+**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\underline{X}(\bar{\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \ge 1}$ 连同指定的极限 $x_{\infty}$**」的集合 —— 因为 $\bar{\mathbb{N}}$ 是 $\mathbb{N}$ 的紧化，从它到 $X$ 的连续映射恰好由「$\mathbb{N}$ 上的像」加上「新添进去那些点上的像」决定，而后者给出的正是**极限**。
 
 **例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \mathbb{R}) / C(S, \mathbb{R}^{\mathrm{disc}})$。
 
