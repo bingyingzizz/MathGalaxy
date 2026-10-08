@@ -41,8 +41,8 @@ MG.regions = [
     en: 'Topology',
     color: '#D9649F',
     center: { x: 1220, y: -660 },
-    radius: 460,
-    desc: '开集、连续、紧致与连通；大量定理依赖选择原理。'
+    radius: 560,
+    desc: '开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。'
   },
   {
     id: 'algebra',
@@ -68,7 +68,25 @@ MG.regions = [
     en: 'Category Theory',
     color: '#B03A5B',
     center: { x: 1600, y: 1250 },
-    radius: 560,
-    desc: '范畴、函子、自然变换、极限与伴随；再往上走到层论、拓扑斯与凝聚态数学。'
+    radius: 520,
+    desc: '范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。'
+  },
+  {
+    id: 'homology',
+    name: '同调代数',
+    en: 'Homological Algebra',
+    color: '#C89A2B',
+    center: { x: 2250, y: 120 },
+    radius: 480,
+    desc: '加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。'
+  },
+  {
+    id: 'condensed',
+    name: '凝聚态数学',
+    en: 'Condensed Mathematics',
+    color: '#1F8A70',
+    center: { x: 450, y: 1900 },
+    radius: 500,
+    desc: '把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。'
   }
 ];

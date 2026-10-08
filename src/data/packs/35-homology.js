@@ -16,11 +16,11 @@ window.MG = window.MG || {};
     /* ------------------------------------ 加法 / 阿贝尔范畴（地基） */
     {
       id: 'def.abelian-category',
-      cluster: 'cat.homology',
+      cluster: 'hom.ab',
       type: 'definition',
       label: '加法 / 阿贝尔范畴',
       title: '加法范畴与阿贝尔范畴（Additive / Abelian Category）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '阿贝尔范畴', '加法范畴'],
       statement: [
         '- **预加法范畴**（$\\mathbf{Ab}$-范畴）是每个 $\\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；',
@@ -44,11 +44,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 复形 */
     {
       id: 'def.cochain-complex',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'definition',
       label: '上链复形',
       title: '复形（Complex）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '复形', '微分'],
       statement: [
         '设 $\\mathcal{C}$ 是加法范畴。$\\mathcal{C}$ 中的**（长）序列**是有序集 $(\\mathbb{Z}, \\le)$ 上的图',
@@ -66,11 +66,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 复形是加法的 */
     {
       id: 'prop.complex-additive',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'proposition',
       label: '复形范畴是加法范畴',
       title: '复形范畴的性质',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '加法范畴', '逐项计算'],
       statement: [
         '复形构成 $\\mathcal{C}$ 的**加法满子范畴** $\\mathcal{C}(\\mathcal{C})$：',
@@ -85,11 +85,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 同伦 */
     {
       id: 'def.homotopy',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'definition',
       label: '同伦',
       title: '同伦（Homotopy）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '同伦', '零伦'],
       statement: [
         '复形态射 $f, g : K \\to L$ 叫**同伦的**，如果存在一族态射',
@@ -108,11 +108,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 同伦范畴 */
     {
       id: 'def.homotopy-category',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'definition',
       label: '同伦范畴',
       title: '同伦范畴（Homotopy Category）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '同伦范畴'],
       statement: [
         '**同伦范畴** $\\mathbf{K}(\\mathcal{C})$ 的对象与 $\\mathcal{C}(\\mathcal{C})$ 相同，态射取',
@@ -131,11 +131,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 映射锥 */
     {
       id: 'def.mapping-cone',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'definition',
       label: '映射锥',
       title: '映射锥与位移（Mapping Cone）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '映射锥', '位移'],
       statement: [
         '态射 $f : K \\to L$ 的**映射锥**是复形',
@@ -150,11 +150,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 导出三角 */
     {
       id: 'def.distinguished-triangle',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'definition',
       label: '导出三角',
       title: '导出三角（Distinguished Triangle）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '三角', '映射锥'],
       statement: [
         '$\\mathbf{K}(\\mathcal{C})$ 中的**导出三角**是形状为',
@@ -173,11 +173,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------ 三角的旋转与延拓 */
     {
       id: 'prop.triangle-rotation',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'proposition',
       label: '三角的旋转与延拓',
       title: '导出三角的基本性质',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '三角', '旋转'],
       statement: [
         '在 $\\mathbf{K}(\\mathcal{C})$ 中：',
@@ -193,11 +193,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------- 三角态射的性质 */
     {
       id: 'lem.triangle-morphism',
-      cluster: 'cat.homology',
+      cluster: 'hom.complex',
       type: 'lemma',
       label: '三角态射的性质',
       title: '导出三角之间态射的性质',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '三角', '同伦'],
       statement: [
         '设 $(u, v, w)$ 是 $\\mathbf{K}(\\mathcal{C})$ 中导出三角之间的态射。则',
@@ -211,11 +211,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------------------- 同调 */
     {
       id: 'def.cohomology',
-      cluster: 'cat.homology',
+      cluster: 'hom.cohomology',
       type: 'definition',
       label: '同调',
       title: '同调（Cohomology）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '同调', '复形'],
       statement: [
         '设 $\\mathcal{A}$ 是阿贝尔范畴，$K$ 是 $\\mathcal{A}$ 中的上链复形。$K$ 的**第 $n$ 阶同调**是',
@@ -233,11 +233,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------- 同调的短正合列 */
     {
       id: 'prop.cohomology-exact-sequence',
-      cluster: 'cat.homology',
+      cluster: 'hom.cohomology',
       type: 'proposition',
       label: '同调的短正合列',
       title: '把同调夹在两个余核 / 核之间',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '同调', '正合列'],
       statement: [
         '设 $K$ 是复形。则对每个 $k$ 有正合列',
@@ -250,11 +250,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 上同调函子 */
     {
       id: 'def.cohomological-functor',
-      cluster: 'cat.homology',
+      cluster: 'hom.cohomology',
       type: 'definition',
       label: '上同调函子',
       title: '上同调函子（Cohomological Functor）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '上同调函子', '正合'],
       statement: [
         '设 $\\mathcal{C}$ 是加法范畴、$\\mathcal{A}$ 是阿贝尔范畴。函子 $F : \\mathbf{K}(\\mathcal{C}) \\to \\mathcal{A}$ 叫**上同调函子**，如果对每个导出三角 $K \\to L \\to M \\to K[1]$，序列',
@@ -269,11 +269,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 长正合列 */
     {
       id: 'thm.long-exact',
-      cluster: 'cat.homology',
+      cluster: 'hom.cohomology',
       type: 'theorem',
       label: '长正合列',
       title: '短正合列给出长正合列（蛇引理）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '长正合列', '蛇引理'],
       statement: [
         '设 $\\mathcal{A}$ 是阿贝尔范畴，$0 \\to K \\to L \\to M \\to 0$ 是复形的短正合列。则存在**长正合列**',
@@ -289,11 +289,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 拟同构 */
     {
       id: 'def.quasi-iso',
-      cluster: 'cat.homology',
+      cluster: 'hom.cohomology',
       type: 'definition',
       label: '拟同构',
       title: '拟同构与零调复形（Quasi-Isomorphism）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '拟同构', '零调'],
       statement: [
         '复形态射 $f : K \\to L$ 叫**拟同构**，如果对每个 $n$，$H^{n}(f)$ 都是同构。复形 $K$ 叫**零调的**，如果 $H^{n}(K) = 0$ 对所有 $n$。'
@@ -308,11 +308,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------------- 内射对象 */
     {
       id: 'prop.injective-criterion',
-      cluster: 'cat.homology',
+      cluster: 'hom.cohomology',
       type: 'proposition',
       label: '内射对象的判据',
       title: '内射对象的四条等价说法',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '内射对象', '正合'],
       statement: [
         '设 $\\mathcal{A}$ 是阿贝尔范畴，$I \\in \\mathcal{A}$。下列等价：',
@@ -332,11 +332,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 过滤 */
     {
       id: 'def.filtration',
-      cluster: 'cat.homology',
+      cluster: 'hom.spectral',
       type: 'definition',
       label: '过滤',
       title: '过滤（Filtration）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '过滤', '关联分次'],
       statement: [
         '设 $\\mathcal{A}$ 是阿贝尔范畴。$M \\in \\mathcal{A}$ 上的（**递降**）**过滤**是 $M$ 的子对象沿 $(\\mathbb{Z}, \\ge)$ 的图：',
@@ -351,11 +351,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 谱序列 */
     {
       id: 'def.spectral-sequence',
-      cluster: 'cat.homology',
+      cluster: 'hom.spectral',
       type: 'definition',
       label: '谱序列',
       title: '谱序列（Spectral Sequence）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', '谱序列', '过滤'],
       statement: [
         '**谱序列**由两部分组成：',

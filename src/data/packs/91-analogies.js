@@ -21,6 +21,31 @@ window.MG = window.MG || {};
 
   edges: [
 
+    /* -------------------------------------------- 嵌入一个更好的世界 */
+    {
+      id: 'ana.embed-better-world',
+      kind: 'analogy',
+      a: 'prop.yoneda-embedding',
+      b: 'prop.chaus-reflective',
+      title: '米田嵌入与 Stone–Čech 紧化：都是「嵌进一个大得多的世界」',
+      note: [
+        '两件事在数学上没有谁推出谁（一个是范畴嵌入，一个是拓扑紧化），但**招数是同一个**：',
+        '**手上这个对象缺东西，就先把它嵌进一个大环境，在那里把活干完，再回到原地。**',
+        '',
+        '**米田嵌入**：$\\mathcal{C} \\hookrightarrow \\widehat{\\mathcal{C}}$。',
+        '$\\mathcal{C}$ 里可能连两个对象的积都没有；$\\widehat{\\mathcal{C}}$ 里**什么极限余极限都有**。',
+        '所以在 $\\mathcal{C}$ 里造不出来的东西，搬到 $\\widehat{\\mathcal{C}}$ 里造（稠密性定理就是把它拆成 $h_{X}$ 的余极限）。',
+        '',
+        '**Stone–Čech 紧化**：$X \\hookrightarrow \\beta X$。',
+        '$X$ 可能不紧、不 Hausdorff，连连续函数都少得可怜；',
+        '$\\beta X$ 里**紧 Hausdorff 的一切好性质都有**（Tychonoff 方块给的）。',
+        '所以在 $X$ 上做不到的分析，搬到 $\\beta X$ 上做（凝聚态集就是拿 $\\beta X$ 当探针）。',
+        '',
+        '**共同的招**：不要在原环境里硬造；先找（或造）一个「什么都不缺」的大环境，嵌进去，干完再拉回来。',
+        '💡 卡在「这个范畴 / 这个空间里根本没有我要的那个东西」时，回来想想这两条。'
+      ].join('\n')
+    },
+
     /* ------------------------------------------------ 证明模板的类比 */
     {
       id: 'ana.sep-container',

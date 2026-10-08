@@ -16,11 +16,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ CHaus 是预拓扑斯 */
     {
       id: 'def.chaus-pretopos',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'theorem',
       label: 'CHaus 是预拓扑斯',
       title: '$\\mathbf{CHaus}$ 是预拓扑斯',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', 'CHaus', '预拓扑斯'],
       statement: [
         '在 $\\mathbf{CHaus}$ 中：',
@@ -46,11 +46,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 凝聚态集 */
     {
       id: 'def.condensed-set',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'definition',
       label: '凝聚态集',
       title: '凝聚态集（Condensed Set）',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '层', '定义'],
       statement: [
         '**凝聚态集**是 $\\mathbf{CHaus}$ 上的（集合值）**层**。其范畴记',
@@ -70,11 +70,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 凝聚态集的刻画 */
     {
       id: 'prop.condensed-criterion',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'proposition',
       label: '凝聚态集的刻画',
       title: '预层是凝聚态集的两条判据',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '层', '判据'],
       statement: [
         '$\\mathbf{CHaus}$ 上的集合预层 $X$ 是凝聚态集 $\\iff$',
@@ -99,11 +99,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Cond 是拓扑斯 */
     {
       id: 'thm.cond-topos',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'theorem',
       label: 'Cond 是拓扑斯',
       title: '凝聚态集的范畴是拓扑斯',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '拓扑斯'],
       statement: '**凝聚态集的范畴 $\\mathrm{Cond}$ 是拓扑斯。**'
     },
@@ -111,11 +111,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- FCHaus 上的预拓扑 */
     {
       id: 'prop.fchaus-pretopology',
-      cluster: 'cond',
-      type: 'definition',
+      cluster: 'cond.set',
+      type: 'proposition',
       label: 'FCHaus 上的预拓扑',
       title: '有限不交并给出自由紧 Hausforff 空间上的预拓扑',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '自由', '预拓扑'],
       statement: [
         '记 $\\mathbf{FCHaus}$ 为**自由紧 Hausdorff 空间**（即 $\\beta I$）构成的满子范畴。$\\mathbf{FCHaus}$ 中的对象都是 $\\mathrm{Cond}$ 的**投射对象**，满射 $S \\to S\'$ 总有截面 —— 于是**有限不交并给出 $\\mathbf{FCHaus}$ 上的一个预拓扑**。'
@@ -126,11 +126,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------- FCHaus 上层的判据 */
     {
       id: 'prop.fchaus-sheaf',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'proposition',
       label: 'FCHaus 上层的判据',
       title: '自由紧 Hausforff 空间上的层 $\\iff$ 保有限积',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '自由', '层'],
       statement: '设 $X$ 是 $\\mathbf{FCHaus}$ 上的集合预层。则 $X$ 是层 $\\iff$ $X$ **保有限积**。'
     },
@@ -138,11 +138,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Cond ≅ FCHaus */
     {
       id: 'thm.cond-equiv-fchaus',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'theorem',
       label: 'Cond 即 FCHaus 上的层',
       title: '$\\mathrm{Cond} \\simeq \\widehat{\\mathbf{FCHaus}}$',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '等价', '自由'],
       statement: [
         '$\\mathbf{CHaus}$ 上的层与 $\\mathbf{FCHaus}$ 上的层是**同一个范畴**：',
@@ -155,11 +155,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 满态射的判据 */
     {
       id: 'prop.cond-epi',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'proposition',
       label: '凝聚态集满态射的判据',
       title: '凝聚态集的满态射',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
       statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。'
     },
@@ -167,11 +167,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 足够多投射对象 */
     {
       id: 'prop.cond-projectives',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'proposition',
       label: 'Cond 有足够多投射对象',
       title: '$\\mathrm{Cond}$ 的投射对象',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '投射对象'],
       statement: [
         '自由紧 Hausdorff 空间（看作凝聚态集）都是**投射对象**；并且 $\\mathrm{Cond}$ 有**足够多的投射对象**。'
@@ -181,11 +181,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 底拓扑空间 */
     {
       id: 'def.underlying-topological-space',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'definition',
       label: '底拓扑空间',
       title: '凝聚态集的底拓扑空间',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '拓扑空间'],
       statement: [
         '凝聚态集 $X$ 的**底拓扑空间** $X(\\cdot)$ 取集合 $X(\\ast)$（在单点空间处的截面），并赋予使所有映射',
@@ -200,11 +200,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Top ↔ Cond */
     {
       id: 'thm.top-cond-adjoint',
-      cluster: 'cond',
+      cluster: 'cond.set',
       type: 'theorem',
       label: 'Top 与 Cond 的伴随',
       title: '$\\mathbf{Top} \\to \\mathrm{Cond}$ 与它的伴随',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '伴随', '紧生成'],
       statement: [
         '函子',
@@ -219,11 +219,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- 凝聚态阿贝尔群 */
     {
       id: 'def.condensed-abelian-group',
-      cluster: 'cond',
+      cluster: 'cond.ab',
       type: 'definition',
       label: '凝聚态阿贝尔群',
       title: '凝聚态阿贝尔群（Condensed Abelian Group）',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '阿贝尔群', '层'],
       statement: [
         '**凝聚态阿贝尔群**是 $\\mathbf{CHaus}$ 上的阿贝尔群值层。四种说法给出同一个范畴：',
@@ -245,11 +245,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 截面函子 */
     {
       id: 'prop.condab-section',
-      cluster: 'cond',
+      cluster: 'cond.ab',
       type: 'proposition',
       label: '截面函子保极限余极限',
       title: '截面函子 $\\Gamma(F, -)$',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '截面', '正合'],
       statement: [
         '设 $F \\in \\mathbf{FCHaus}$。则**截面函子**',
@@ -264,11 +264,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Grothendieck 范畴 */
     {
       id: 'def.ab-axioms',
-      cluster: 'cond',
+      cluster: 'hom.ab',
       type: 'definition',
       label: 'Grothendieck 的 AB 公理',
       title: 'Grothendieck 的 AB 公理（AB1–AB6）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['同调代数', 'AB 公理', '正合'],
       statement: [
         '范畴 $\\mathcal{C}$ 的**正合性等级**（Grothendieck 的 AB 公理）逐条加强如下：',
@@ -288,11 +288,11 @@ window.MG = window.MG || {};
     },
     {
       id: 'def.grothendieck-category',
-      cluster: 'cond',
+      cluster: 'hom.ab',
       type: 'definition',
       label: 'Grothendieck 范畴',
       title: 'Grothendieck 范畴（Grothendieck Category）',
-      regions: ['category'],
+      regions: ['homology'],
       tags: ['范畴论', '同调代数', '生成元'],
       statement: [
         '**Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。'
@@ -307,11 +307,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ CondAb 的 AB 公理 */
     {
       id: 'thm.condab-ab',
-      cluster: 'cond',
+      cluster: 'cond.ab',
       type: 'theorem',
       label: 'CondAb 满足 AB6 与 AB4*',
       title: '$\\mathrm{CondAb}$ 的 AB 公理',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '同调代数', '正合'],
       statement: '$\\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\\***。',
       notes: '推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。\n\n这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。'
@@ -320,11 +320,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Stonean 给投射对象 */
     {
       id: 'lem.stonean-projective',
-      cluster: 'cond',
+      cluster: 'cond.ab',
       type: 'lemma',
       label: 'Stonean 给出有限表现投射对象',
       title: 'Stonean 空间给出有限表现的投射对象',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', 'Stonean', '投射'],
       statement: [
         '设 $F$ 是**自由紧 Hausdorff 空间**（更一般地，**Stonean 空间**）。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。'
@@ -335,11 +335,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ CondAb 的生成元 */
     {
       id: 'prop.condab-generated',
-      cluster: 'cond',
+      cluster: 'cond.ab',
       type: 'proposition',
       label: 'CondAb 由有限表现投射对象生成',
       title: '$\\mathrm{CondAb}$ 的生成元',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '生成元', '投射'],
       statement: '$\\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特别地，它有足够多的投射对象。'
     },
@@ -347,11 +347,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 张量与内 Hom */
     {
       id: 'prop.condab-tensor',
-      cluster: 'cond',
+      cluster: 'cond.ab',
       type: 'proposition',
       label: 'CondAb 上的张量与内 Hom',
       title: '$\\mathrm{CondAb}$ 上的 $\\otimes_{\\mathbb{Z}}$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}$',
-      regions: ['category', 'topology'],
+      regions: ['condensed'],
       tags: ['凝聚态', '张量积', '伴随'],
       statement: [
         '$\\mathrm{CondAb}$ 上存在两个双函子 $\\operatorname{Hom}_{\\mathbb{Z}}$ 与 $\\otimes_{\\mathbb{Z}}$，使',

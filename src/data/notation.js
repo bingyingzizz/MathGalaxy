@@ -104,6 +104,7 @@ MG.notation = {
     { id: 'measure', name: '测度与 σ-代数' },
     { id: 'integral',name: '积分与函数空间' },
     { id: 'layout',  name: '排版与箭头' },
+    { id: 'cat',     name: '范畴与同调' },
     { id: 'letters', name: '字母约定' },
   ],
 
@@ -153,7 +154,8 @@ MG.notation = {
     { g: 'set', tex: '\\times',       uni: '×', name: '笛卡尔积 / 乘积' },
     { g: 'set', tex: '\\{ x : \\ldots \\}', uni: '', name: '集合描述' },
     { g: 'set', tex: '\\rightrightarrows', uni: '⇉', name: '一致收敛' },
-    { g: 'set', tex: '\\hookrightarrow', uni: '↪', name: '单射' },
+    { g: 'set', tex: '\\hookrightarrow', uni: '↪', name: '单射 / 嵌入',
+      note: '两种意思都在用：集合论里读「单射」，范畴论里读「**嵌入**」（子范畴进大范畴、Yoneda 嵌入、切片范畴的嵌入）。' },
     { g: 'set', tex: '\\upharpoonright', uni: '↾', name: '限制 $f \\upharpoonright A$' },
 
     /* -------- 序、基数与序数 -------- */
@@ -284,6 +286,29 @@ MG.notation = {
       note: '集合的余积写 $\\coprod$，加法群的余积写 $\\bigoplus$，两个空间的不交并写 $\\sqcup$。' },
     { g: 'layout', tex: '\\underline{E}',  uni: 'E̲', name: '常预层 / 强调',
       note: '常预层 $\\underline{E}$ 取常值 $E$。' },
+
+    /* -------- 范畴与同调 -------- */
+    { g: 'cat', tex: '\\mathcal{C}', uni: '𝒞', name: '一般的范畴；预层范畴写 $\\widehat{\\mathcal{C}}$，拓扑斯写 $\\mathcal{T}$' },
+    { g: 'cat', tex: '\\widehat{\\mathcal{C}}', uni: 'Ĉ', name: '预层范畴 $\\operatorname{Hom}(\\mathcal{C}^{\\mathrm{op}}, \\mathbf{Set})$' },
+    { g: 'cat', tex: '\\mathcal{T}', uni: '𝒯', name: '拓扑斯' },
+    { g: 'cat', tex: 'h^{X}, h_{X}', uni: 'h^X／h_X', name: '可表示函子 / 可表示预层',
+      note: '**上标记协变** $h^{X} = \\operatorname{Hom}_{\\mathcal{C}}(X, -)$；**下标记预层** $h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$。米田引理用上标，米田嵌入用下标。' },
+    { g: 'cat', tex: 'h : \\mathcal{C} \\to \\widehat{\\mathcal{C}}', uni: 'h', name: '米田嵌入 $X \\mapsto h_{X}$' },
+    { g: 'cat', tex: '\\mathcal{C}/T', uni: '𝒞/T', name: '预层 $T$ 的切片范畴；遗忘函子写 $j_{T}$' },
+    { g: 'cat', tex: 'h_{X} \\downarrow T', uni: '', name: '逗号范畴（切片范畴就是它）' },
+    { g: 'cat', tex: '\\sharp', uni: '♯', name: '层化 $T \\mapsto T^{\\sharp}$',
+      note: '写在右上角：$T^{\\sharp}$ 是 $T$ 的层化。' },
+    { g: 'cat', tex: '\\mathbf{K}(\\mathcal{C})', uni: 'K(C)', name: '复形的同伦范畴',
+      note: '上加 $+$ / $-$ / $b$ 表示下有界 / 上有界 / 有界。' },
+    { g: 'cat', tex: 'M(f)', uni: 'M(f)', name: '态射 $f$ 的映射锥' },
+    { g: 'cat', tex: 'K[k]', uni: 'K[k]', name: '复形的 $k$-位移' },
+    { g: 'cat', tex: 'F^{n}M,\\ \\operatorname{Gr}^{n}M', uni: 'F^n／Gr^n', name: '过滤与关联分次' },
+    { g: 'cat', tex: 'E^{p,q}_{r}', uni: 'E^p,q_r', name: '谱序列的第 $r$ 页' },
+    { g: 'cat', tex: '\\mathrm{Cond},\\ \\mathrm{CondAb}', uni: 'Cond／CondAb', name: '凝聚态集 / 凝聚态阿贝尔群' },
+    { g: 'cat', tex: '\\bar{\\mathbb{N}}', uni: 'ℕ̄', name: '$\\mathbb{N}$ 的**一点紧化**',
+      note: '从 $\\bar{\\mathbb{N}}$ 到 $X$ 的连续映射 = 「收敛序列连同指定的极限」。' },
+    { g: 'cat', tex: '\\mathrm{AB1} \\cdots \\mathrm{AB6}', uni: 'AB1–AB6', name: 'Grothendieck 的正合性等级',
+      note: 'AB1 预阿贝尔 · AB2 阿贝尔 · AB3 有余极限 · AB4 余积正合 · AB5 滤过余极限正合 · AB6 滤过余极限与积交换。带星号的是对偶。' },
 
     /* -------- 字母约定 -------- */
     { g: 'letters', tex: '\\alpha',   uni: 'α', name: '序数 / 指标',

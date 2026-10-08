@@ -215,7 +215,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 单态射 */
     {
       id: 'def.mono',
-      cluster: 'cat.limit',
+      cluster: 'cat.structure',
       type: 'definition',
       label: '单态射 / 满态射',
       title: '单态射与满态射（Monomorphism / Epimorphism）',
@@ -236,7 +236,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 子对象 */
     {
       id: 'def.subobject',
-      cluster: 'cat.limit',
+      cluster: 'cat.structure',
       type: 'definition',
       label: '子对象',
       title: '子对象（Subobject）',
@@ -283,7 +283,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------------- 像 */
     {
       id: 'def.image',
-      cluster: 'cat.limit',
+      cluster: 'cat.structure',
       type: 'definition',
       label: '像 / 余像',
       title: '像与余像（Image / Coimage）',
@@ -307,7 +307,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 元素范畴 */
     {
       id: 'def.elements-category',
-      cluster: 'cat.limit',
+      cluster: 'cat.structure',
       type: 'definition',
       label: '元素范畴',
       title: '元素范畴（Category of Elements）',

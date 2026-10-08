@@ -16,11 +16,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 紧 Haus 范畴 */
     {
       id: 'def.chaus',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'definition',
       label: '紧 Hausdorff 空间范畴',
       title: '紧 Hausdorff 空间范畴 $\\mathbf{CHaus}$',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '紧', 'Hausdorff'],
       statement: [
         '**紧 Hausdorff 空间**是既紧又 Hausdorff 的拓扑空间。以它们为对象、连续映射为态射，得到范畴 $\\mathbf{CHaus}$。含入函子记 $\\mathbf{CHaus} \\hookrightarrow \\mathbf{Top}$。'
@@ -34,11 +34,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------ CHaus 是反射子范畴 */
     {
       id: 'prop.chaus-reflective',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: '紧 Haus 是反射子范畴',
-      title: 'Stone–Čech 紧化：$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴',
-      regions: ['category', 'topology'],
+      title: 'Stone–Čech 紧化',
+      regions: ['topology'],
       tags: ['范畴论', 'Stone–Čech', '反射'],
       statement: [
         '$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的**反射子范畴**，反射叫 **Stone–Čech 紧化**：',
@@ -65,11 +65,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- 极小闭子集引理 */
     {
       id: 'lem.minimal-closed-surjection',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'lemma',
       label: '满射的极小闭子集',
       title: '满连续映射的极小闭子集',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '紧', '佐恩引理'],
       statement: [
         '设 $f : S \\to T$ 是紧 Hausdorff 空间之间的连续满射。则存在**极小**的闭子集 $S\' \\subseteq S$，使限制 $f|_{S\'}$ 仍然是满射。'
@@ -80,11 +80,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 自由紧 Haus */
     {
       id: 'def.free-compact-hausdorff',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'definition',
       label: '自由紧 Hausdorff 空间',
       title: '自由紧 Hausdorff 空间（Free Compact Hausdorff Space）',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '自由', 'Stone–Čech'],
       statement: [
         '**自由紧 Hausdorff 空间**就是某个离散空间 $I$ 的 Stone–Čech 紧化 $F \\cong \\beta I$。称 $I$ 是 $F$ 的一组**基**：此时',
@@ -99,11 +99,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------- CHaus 是自由的商 */
     {
       id: 'prop.chaus-quotient-of-free',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: '紧 Haus 是自由的商',
       title: '每个紧 Hausdorff 空间都是自由紧 Hausdorff 空间的商',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '商', '自由'],
       statement: [
         '每个紧 Hausdorff 空间 $S$ 都是某个自由紧 Hausdorff 空间的**连续满像**：取 $S$ 上的离散拓扑，则',
@@ -118,11 +118,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 投射对象 */
     {
       id: 'def.projective-object',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'definition',
       label: '投射 / 内射对象',
       title: '投射对象与内射对象（Projective / Injective Object）',
-      regions: ['category'],
+      regions: ['topology'],
       tags: ['范畴论', '投射', '提升'],
       statement: [
         '范畴 $\\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果函子 $h_{P} = \\operatorname{Hom}_{\\mathcal{C}}(P, -)$ **保持满态射**。对偶地，$I$ 叫**内射的**，如果 $h^{I}$ 把单态射送到满态射。',
@@ -143,11 +143,11 @@ window.MG = window.MG || {};
     /* ----------------------------------------- 自由紧 Haus 是投射的 */
     {
       id: 'prop.free-projective',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: '自由紧 Haus 是投射对象',
       title: '自由紧 Hausdorff 空间是 $\\mathbf{CHaus}$ 的投射对象',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '投射', '自由'],
       statement: '自由紧 Hausdorff 空间是 $\\mathbf{CHaus}$ 中的投射对象。',
       notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。∎'
@@ -156,11 +156,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 自由表示 */
     {
       id: 'def.free-presentation',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'definition',
       label: '自由表示',
       title: '自由表示（Free Presentation）',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '商', '等价关系'],
       statement: [
         '紧 Hausdorff 空间之间的连续满射 $F \\twoheadrightarrow S$ 叫 $S$ 的**自由表示**，如果',
@@ -181,11 +181,11 @@ window.MG = window.MG || {};
     /* --------------------------------------------- 自由表示的存在性 */
     {
       id: 'cor.chaus-free-presentation',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'corollary',
       label: '紧 Haus 都有自由表示',
       title: '每个紧 Hausdorff 空间都有自由表示',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '自由表示', '存在性'],
       statement: '每个紧 Hausdorff 空间 $S$ 都有自由表示。',
       notes: '取 $F = \\beta S^{\\mathrm{disc}}$（前一条命题：$F \\twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \\times_{S} S$ 再做一次，得到 $F\' \\twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎'
@@ -194,11 +194,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------ 连通分量是闭开之交 */
     {
       id: 'prop.component-clopen',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: '连通分量是闭开邻域之交',
       title: '紧 Hausdorff 空间中连通分量 = 闭开邻域之交',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '连通分量', '闭开集'],
       statement: [
         '设 $S$ 是紧 Hausdorff 空间，$x \\in S$。则 $x$ 的连通分量等于一切包含 $x$ 的闭开集之交：',
@@ -211,11 +211,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------- 全不连通 / 极端不连通 */
     {
       id: 'def.stone-space',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'definition',
       label: '全不连通与 Stone 空间',
       title: 'Stone 空间与 Stonean 空间（Stone / Stonean Space）',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', 'Stone', '不连通'],
       statement: [
         '- $X$ **全不连通**（totally disconnected），如果其中每个连通分量都是单点；',
@@ -232,11 +232,11 @@ window.MG = window.MG || {};
     /* -------------------------------------------- 极端不连通的性质 */
     {
       id: 'prop.stonean-basic',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: '极端不连通的基本性质',
       title: '极端不连通的性质',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '极端不连通', '闭包'],
       statement: [
         '**(a)** 若 $X$ 极端不连通，则任意两个不交开集 $U, V$ 的闭包仍不交：$\\overline{U} \\cap \\overline{V} = \\emptyset$。',
@@ -249,11 +249,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------- 全不连通是反射子范畴 */
     {
       id: 'prop.td-reflective',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: '全不连通空间是反射子范畴',
       title: '全不连通空间是 $\\mathbf{Top}$ 的反射子范畴',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '反射', '连通分量'],
       statement: [
         '全不连通空间构成的范畴是 $\\mathbf{Top}$ 的**反射子范畴**，反射是',
@@ -268,11 +268,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- Stone 是反射的 */
     {
       id: 'prop.stone-reflective',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'proposition',
       label: 'Stone 空间是 CHaus 的反射子范畴',
       title: 'Stone 空间是 $\\mathbf{CHaus}$ 的反射子范畴',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', 'Stone', '反射'],
       statement: 'Stone 空间构成的范畴是 $\\mathbf{CHaus}$ 的反射子范畴。',
       notes: '推论：**Stone 空间的任意极限仍是 Stone 空间**。把这条与「全不连通空间对极限封闭」并排看，就能读出 Stone 空间的双重身份：它既是「紧 Hausdorff 里全不连通的那些」，也是「紧 Hausdorff 这个反射子范畴里再反射一次剩下的那些」。'
@@ -281,11 +281,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 投射有限 */
     {
       id: 'def.profinite',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'definition',
       label: '投射有限空间',
       title: '投射有限空间（Profinite Space）',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '投射有限', '有向极限'],
       statement: [
         '**投射有限空间**是有限离散空间沿一个**有向**系统取极限得到的拓扑空间：',
@@ -298,11 +298,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- Stone ⟺ 投射有限 */
     {
       id: 'thm.stone-profinite',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'theorem',
       label: 'Stone ⟺ 投射有限',
       title: 'Stone 空间 $\\iff$ 投射有限空间',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', 'Stone', '投射有限'],
       statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。'
     },
@@ -310,11 +310,11 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- Gleason */
     {
       id: 'thm.gleason',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'theorem',
       label: 'Gleason 定理',
       title: 'Gleason 定理：$\\mathbf{CHaus}$ 的投射对象',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', 'Gleason', '投射对象'],
       statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。'
     },
@@ -322,11 +322,11 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Stonean 是收缩核 */
     {
       id: 'cor.stonean-retract',
-      cluster: 'cat.chaus',
+      cluster: 'topo.chaus',
       type: 'corollary',
       label: 'Stonean 是收缩核',
       title: 'Stonean 空间 = 自由紧 Hausdorff 空间的收缩核',
-      regions: ['category', 'topology'],
+      regions: ['topology'],
       tags: ['范畴论', '收缩核', 'Stonean'],
       statement: [
         'Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续映射 $r : X \\to A$ 使 $r|_{A} = 1_{A}$（这样的 $A$ 叫 $X$ 的收缩核）。'

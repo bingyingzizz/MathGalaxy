@@ -144,6 +144,20 @@ MG.clusters = [
     hub: 'def.metric-space',
     desc: '造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。'
   },
+  {
+    id: 'topo.chaus',
+    name: '紧 Haus 与 Stone',
+    parent: 'topology',
+    hub: 'prop.chaus-reflective',
+    desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → Stone 空间 = 投射有限空间 → Gleason 定理。'
+  },
+  {
+    id: 'topo.cg',
+    name: '紧生成空间',
+    parent: 'topology',
+    hub: 'def.compactly-generated',
+    desc: '造出「由紧 Hausdorff 空间测试出来的拓扑」：紧生成空间，以及它是拓扑空间范畴的余反射子范畴。'
+  },
 
   /* ------------------------------------------------ 星系：分析学 */
   {
@@ -237,7 +251,14 @@ MG.clusters = [
     name: '图与极限',
     parent: 'category',
     hub: 'def.limit',
-    desc: '造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子，再落回子对象与像。'
+    desc: '造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子。'
+  },
+  {
+    id: 'cat.structure',
+    name: '单满、子对象与像',
+    parent: 'category',
+    hub: 'def.subobject',
+    desc: '造出「用箭头替代元素」这套语言：可消性（单 / 满）→ 子对象 → 像与余像 → 泛元素。'
   },
   {
     id: 'cat.yoneda',
@@ -254,13 +275,6 @@ MG.clusters = [
     desc: '造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。'
   },
   {
-    id: 'cat.chaus',
-    name: '紧 Haus 与 Stone',
-    parent: 'category',
-    hub: 'prop.chaus-reflective',
-    desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → Stone 空间 = 投射有限空间 → Gleason 定理。'
-  },
-  {
     id: 'cat.sheaf',
     name: '层与拓扑',
     parent: 'category',
@@ -274,26 +288,51 @@ MG.clusters = [
     hub: 'def.topos',
     desc: '造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。'
   },
+
+  /* ------------------------------------------------ 星系：同调代数 */
   {
-    id: 'cat.cg',
-    name: '紧生成空间',
-    parent: 'category',
-    hub: 'def.compactly-generated',
-    desc: '造出「由紧 Hausdorff 空间测试出来的拓扑」：紧生成空间，以及它是拓扑空间范畴的余反射子范畴。'
+    id: 'hom.ab',
+    name: '加法与阿贝尔范畴',
+    parent: 'homology',
+    hub: 'def.abelian-category',
+    desc: '造出做同调代数的场地：预加法 / 加法范畴 → 预阿贝尔 → 阿贝尔范畴 → AB 公理 → Grothendieck 范畴。'
   },
   {
-    id: 'cond',
+    id: 'hom.complex',
+    name: '复形与导出三角',
+    parent: 'homology',
+    hub: 'def.distinguished-triangle',
+    desc: '造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。'
+  },
+  {
+    id: 'hom.cohomology',
+    name: '同调与正合列',
+    parent: 'homology',
+    hub: 'def.cohomology',
+    desc: '造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。'
+  },
+  {
+    id: 'hom.spectral',
+    name: '过滤与谱序列',
+    parent: 'homology',
+    hub: 'def.spectral-sequence',
+    desc: '造出「逐层逼近同调」的工具：带过滤的对象 → 关联分次 → 谱序列从 $E_{r}$ 页逐页算到 $E_{\\infty}$。'
+  },
+
+  /* ------------------------------------------------ 星系：凝聚态数学 */
+  {
+    id: 'cond.set',
     name: '凝聚态集',
-    parent: 'category',
+    parent: 'condensed',
     hub: 'def.condensed-set',
-    desc: '造出终点站：紧 Hausdorff 空间上的层就是凝聚态集，换到自由对象上退化成「保有限积」，再往上走凝聚态阿贝尔群。'
+    desc: '造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。'
   },
   {
-    id: 'cat.homology',
-    name: '同调代数',
-    parent: 'category',
-    hub: 'def.cochain-complex',
-    desc: '造出「复形」这套机器：复形 → 同伦 → 同伦范畴 → 映射锥与导出三角 → 同调与长正合列 → 拟同构 → 内射对象 → 谱序列。'
+    id: 'cond.ab',
+    name: '凝聚态阿贝尔群',
+    parent: 'condensed',
+    hub: 'def.condensed-abelian-group',
+    desc: '在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

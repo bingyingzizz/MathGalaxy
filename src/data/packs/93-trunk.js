@@ -95,5 +95,33 @@ MG.trunk = [
   'def.maximal-function',      // 21 层  极大函数
   'thm.lebesgue-radon-nikodym',// 20 层  Lebesgue–Radon–Nikodym 定理
   'thm.riesz-representation-lp', // 21 层  (L^p)* ≅ L^q
-  'thm.lebesgue-differentiation' // 21 层  Lebesgue 微分定理
+  'thm.lebesgue-differentiation', // 21 层  Lebesgue 微分定理
+
+  /* ================= 六、范畴与函子（换一套语言） ================= */
+  /* 前五段都在「集合 + 元素」的语言里做数学。这一条新主线（六 / 七 / 八 三段）
+     把语言换成「范畴 + 箭头」，最后落到紧 Hausdorff 空间上的层。
+     拆成三段只是为了让**段内层号单调**（依赖深度会上下跳，但学习顺序不会）。 */
+  'def.category',              //  7 层  范畴（本线的入口）
+  'def.functor',               //  8 层  函子
+  'def.natural-transformation',//  9 层  自然变换（函子之间的翻译）
+  'def.commutative-diagram',   //  9 层  交换图（图 = 函子）
+  'def.adjoint',               //  9 层  伴随（两个方向互为最佳）
+  'def.presheaf',              //  9 层  预层（反变函子）
+  'def.limit',                 // 11 层  极限（泛锥）
+  'def.representable',         // 12 层  表示函子（万有元素）
+  'lem.yoneda',                // 13 层  米田引理（自然变换集 ≅ F(X)）
+
+  /* ============ 七、覆盖、层与凝聚态（新语言长出的东西） ============ */
+  'def.grothendieck-topology', // 14 层  Grothendieck 拓扑（什么算覆盖）
+  'def.chaus',                 // 14 层  紧 Hausdorff 空间范畴（下一步的场地）
+  'def.sheaf',                 // 15 层  层（能粘的预层）
+  'def.topos',                 // 16 层  拓扑斯（几何的代数替身）
+  'def.condensed-set',         // 16 层  凝聚态集 = CHaus 上的层
+  'def.condensed-abelian-group', // 17 层  凝聚态阿贝尔群
+
+  /* ==================== 八、同调代数（复形这套机器） ==================== */
+  'def.cochain-complex',       // 10 层  复形（两两复合为零）
+  'def.cohomology',            // 13 层  同调（把复形读成不变量）
+  'def.abelian-category',      // 16 层  阿贝尔范畴（做同调代数的场地）
+  'thm.long-exact'             // 16 层  长正合列
 ];
