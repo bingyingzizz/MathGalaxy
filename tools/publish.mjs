@@ -42,7 +42,7 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const SRC = path.join(ROOT, 'src');
 /* 组装目录。默认 `dist-site/`；`MG_STAGE` 可以换到别的盘 ——
-   ⚠️ 见下面「清空」那段的说明：本机 H: 盘跑 git 特别慢，换到 C: 上能快 50 倍。 */
+   ⚠️ 见下面「清空」那段的说明：本机 `H:` 是**机械硬盘**，跑 git 比 `C:`（NVMe）慢。 */
 const STAGE = process.env.MG_STAGE ? path.resolve(process.env.MG_STAGE) : path.join(ROOT, 'dist-site');
 const SITE = path.join(ROOT, 'site');
 
@@ -111,12 +111,14 @@ console.log('② 组装站点…');
 // 起服务在验证产物）：删到一半会抛 EBUSY。重试几次；删不掉也**不算失败** ——
 // 里面的内容已经清干净了，紧接着就会重新铺一遍。
 //
-// ⚠️⚠️ 清空时**必须留下 `.git`**。实测本机 `H:` 盘写 git 松散对象比 `C:` 慢约 50 倍
-// （200 个文件跑 `git add`：H: 51 秒 / C: 1 秒；两块都是本地 NTFS，普通文件写入都快，
-// 所以不是盘坏，是 git 那个「一堆小文件」的写模式在 H: 上吃亏）。
-// 把 `.git` 一起删掉 = 每次发布都从零写 1300 个对象 ≈ 9 分钟；中途超时被杀还会
-// 留下 `index.lock`，下一次直接 `fatal: Unable to create index.lock`。
-// 留着对象库，后续发布只写「这次变了的那几个」，几秒钟的事。
+// ⚠️⚠️ 清空时**必须留下 `.git`**。冷仓库每次都要重写 1300 个对象，纯属白干。
+// 本机 `H:` 是**机械硬盘（WDC WD40EZRZ, SATA）**，`C:` 是 NVMe SSD ——
+// 200 个文件跑 `git add`：H: 约 4 秒 / C: 约 1 秒，这是机械盘的正常差距。
+// ⛔ 2026-10-08 这里曾写着「H: 慢 50 倍」，那是**误判**：当时测到 51.5 秒，
+//    真凶是 Steam 正在下载、把这块机械盘占满。加一条：排除后台 I/O 之前，
+//    别把「慢」归给盘。把 `.git` 一起删掉还会因中途超时留下 `index.lock`，
+//    下一次直接 `fatal: Unable to create index.lock`。
+// 留着对象库，后续发布只写「这次变了的那几个」。
 fs.mkdirSync(STAGE, { recursive: true });
 for (const e of fs.readdirSync(STAGE, { withFileTypes: true })) {
   if (e.name === '.git') continue;
