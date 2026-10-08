@@ -119,7 +119,7 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
 for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'index.md',
-                 'notation.md', 'notation-full.md']) {
+                 'notation.md', 'notation-full.md', 'alias.md']) {
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
@@ -128,7 +128,7 @@ for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md'
 // ⚠️ 这些是「拆分过的图」，加起来比 graph.json 还大 —— 但**单个文件都很小**，
 // 所以 AI 能一次读完一个；而 graph.json 单次抓取只能拿到开头一小段。
 let aiFiles = 0;
-for (const d of ['index', 'nodes', 'proofs', 'notes', 'notation']) {
+for (const d of ['index', 'nodes', 'proofs', 'notes', 'notation', 'alias']) {
   const src = path.join(DIST, d);
   if (!fs.existsSync(src)) continue;
   fs.cpSync(src, path.join(STAGE, 'mathgalaxy', d), { recursive: true });
