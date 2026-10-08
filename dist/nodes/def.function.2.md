@@ -7,3 +7,5 @@
 - 被 `def.cone` 锥 用
 - 被 `def.elements-category` 元素范畴 用
 - 被 `def.representable` 表示函子 用
+- 被 `def.adjoint` 伴随函子 用
+- 被 `def.comma-category` 逗号范畴 用

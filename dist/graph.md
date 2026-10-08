@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:57:12.255Z
-> 7 星系 / 27 星团 / 263 节点 / 562 连线（强边 554，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:59:49.659Z
+> 7 星系 / 28 星团 / 276 节点 / 610 连线（强边 602，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -5267,6 +5267,257 @@ $$T \;\cong\; \varinjlim_{(X, s) \in \mathcal{C}_{T}} h_{X}$$
 
 （$\Longleftarrow$）方向是显然的：逐点单射的族当然左可消。（$\Longrightarrow$）方向要用米田引理，见边上那条推导。
 
+### 星团：伴随与反射
+> 造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。
+
+#### 伴随函子　`def.adjoint`
+*定义*　伴随函子（Adjoint Functors）
+
+设 $F : \mathcal{C} \to \mathcal{D}$、$G : \mathcal{D} \to \mathcal{C}$ 是一对函子。$(F, G)$ 叫一对**伴随函子**，如果存在自然同构
+
+$$\operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ Y\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G(Y)\bigr) \qquad (X \in \mathcal{C},\ Y \in \mathcal{D})$$
+
+这时记 $F \dashv G$：$F$ 叫 $G$ 的**左伴随**，$G$ 叫 $F$ 的**右伴随**。
+
+一句话：**两个方向之间的翻译互为最佳**。从左边绕（先 $F$ 再射出去）与从右边绕（先射出去再 $G$）得到的东西一样多 —— 而且是**自然**一样多。
+
+例：
+
+
+
+- 遗忘函子 $\mathbf{Top} \to \mathbf{Set}$ 有左右**两个**伴随：左伴随是**离散拓扑**（$\operatorname{Hom}_{\mathbf{Top}}(S_{d}, X) \cong \operatorname{Hom}_{\mathbf{Set}}(S, F(X))$），右伴随是**平凡拓扑**（$\operatorname{Hom}_{\mathbf{Top}}(X, S_{t}) \cong \operatorname{Hom}_{\mathbf{Set}}(F(X), S)$）。
+
+- 遗忘函子 $\mathbf{Ab} \to \mathbf{Set}$ 的左伴随是**自由阿贝尔群**：$\operatorname{Hom}_{\mathbf{Ab}}(\mathbb{Z}^{(X)}, M) \cong \operatorname{Hom}_{\mathbf{Set}}(X, \operatorname{forget} M)$。**自由是遗忘的左伴随**。
+
+
+
+两条运算规则：
+
+
+
+- **对偶**：$F \dashv G$ $\iff$ $G^{\mathrm{op}} \dashv F^{\mathrm{op}}$（在 $\mathcal{C}^{\mathrm{op}} \to \mathcal{D}^{\mathrm{op}}$ 上）。
+
+- **复合**：$F \dashv G$ 且 $F' \dashv G'$ $\implies$ $F' \circ F \dashv G \circ G'$，因为
+
+
+
+  $$\operatorname{Hom}(F'F(X), Y) \cong \operatorname{Hom}(F(X), G'(Y)) \cong \operatorname{Hom}(X, GG'(Y))$$
+
+#### 单位与余单位　`def.adjunction-unit`
+*定义*　单位与余单位（Unit and Counit）
+
+设 $F \dashv G$，记那个自然同构为
+
+$$\Phi_{X, Y} : \operatorname{Hom}_{\mathcal{D}}\bigl(F(X), Y\bigr) \longrightarrow \operatorname{Hom}_{\mathcal{C}}\bigl(X, G(Y)\bigr)$$
+
+把它在两个「恒等态射」上取值，得到两个自然变换：
+
+$$\eta_{X} := \Phi_{X, F(X)}(1_{F(X)}) : X \to G F(X) \qquad (\textbf{单位})$$
+
+$$\varepsilon_{Y} := \Phi_{G(Y), Y}^{-1}(1_{G(Y)}) : F G(Y) \to Y \qquad (\textbf{余单位})$$
+
+它们满足**三角等式**
+
+$$\varepsilon_{F(X)} \circ F(\eta_{X}) = 1_{F(X)}, \qquad G(\varepsilon_{Y}) \circ \eta_{G(Y)} = 1_{G(Y)}$$
+
+反过来，给定 $\eta : 1_{\mathcal{C}} \implies G \circ F$ 与 $\varepsilon : F \circ G \implies 1_{\mathcal{D}}$ 满足这两条，就唯一决定了一对伴随。
+
+一句话：**单位是「把自己送进去」，余单位是「把别人接回来」**，三角等式保证两个方向互不打架。
+
+⚠️ **单位与余单位一般不一定是同构**，这是伴随与「范畴等价」最大的差别。它们同时同构时，才是等价。
+
+由 $\Phi$ 反解两边的公式：$\Phi_{X,Y}(f) = G(f) \circ \eta_{X}$，$\Phi^{-1}_{X,Y}(g) = \varepsilon_{Y} \circ F(g)$。
+
+#### 右伴随存在的判据　`thm.right-adjoint-criterion`
+*定理*　右伴随存在 $\iff$ 可表示
+
+函子 $F : \mathcal{C} \to \mathcal{D}$ 有右伴随 $\iff$ 对每个 $Y \in \mathcal{D}$，函子
+
+$$\operatorname{Hom}_{\mathcal{D}}\bigl(F(-),\ Y\bigr) : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$$
+
+都可表示。
+
+这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。证明见边上的推导。
+
+#### 全忠实与单位　`prop.adjoint-full-faithful`
+*命题*　全忠实 $\iff$ 单位（余单位）是同构
+
+设 $F \dashv G$，单位 $\eta$、余单位 $\varepsilon$。则
+
+$$F \text{ 全忠实} \iff \eta \text{ 是同构}, \qquad G \text{ 全忠实} \iff \varepsilon \text{ 是同构}$$
+
+所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。
+
+这也是**反射**与**余反射**的分界线：反射说的是「含入函子有左伴随」，而含入函子总是全忠实的（满子范畴），所以反射的余单位一定是同构。
+
+#### 极限即伴随　`prop.limit-adjoint`
+*命题*　极限 $\iff$ 常图函子有伴随
+
+$\mathcal{C}$ 中所有以 $I$ 为索引的极限存在 $\iff$ 常图函子 $\Delta : \mathcal{C} \to \mathcal{C}^{I}$ 有**右伴随**，且该右伴随由
+
+$$D \mapsto \lim D$$
+
+给出。对偶地，所有以 $I$ 为索引的余极限存在 $\iff$ $\Delta$ 有左伴随，由 $D \mapsto \operatorname{colim} D$ 给出。
+
+证明就是极限的定义本身：
+
+
+
+$$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta X, D) \;\cong\; \operatorname{Hom}_{\mathcal{C}}(X, \lim D)$$
+
+
+
+左边正是「锥」的集合，右边是「射入极限的态射」的集合。逐字对照伴随的定义，两边是同一句话。
+
+所以「这个范畴有没有极限」问的就是「$\Delta$ 有没有伴」—— 后面凡是要造伴随，几乎都能化归成造某种极限。
+
+#### 右伴随保极限　`thm.right-adjoint-preserves-limits`
+*定理*　右伴随保持所有极限
+
+设 $F \dashv G$。则 $G$ **保持所有（在 $\mathcal{D}$ 中存在的）极限**：对每个图 $D : I \to \mathcal{D}$，
+
+$$G\bigl(\lim D\bigr) \;\cong\; \lim\, (G \circ D)$$
+
+对偶地：**左伴随保持所有余极限**。
+
+这条是判断「某函子不可能是右伴随」最快的办法 —— 只要它不保某个极限（比如不保积），就直接出局。反过来，它也解释了为什么遗忘函子总能当右伴随：遗忘函子通常保极限（结构是逐点定义的）。
+
+#### 伴随函子定理　`thm.saft`
+*定理*　伴随函子定理（SAFT）
+
+设 $\mathcal{D}$ 是**小**且**完备**的范畴。则函子 $G : \mathcal{D} \to \mathcal{C}$ 有左伴随 $\iff$ $G$ 保持所有极限。
+
+左伴随由一个极限的构造给出：
+
+$$F(X) \;=\; \varprojlim_{(Y,\, f) \in (X \downarrow G)} Y$$
+
+**保极限是唯一的障碍**。这与「右伴随保极限」合起来就是一条完整的判据：保极限既是必要条件，在完备的小范畴上也是充分条件。
+
+构造的含义：把 $X$ 映射进 $G$ 的像的所有方式组成一个范畴 $X \downarrow G$，在其中取极限 —— $F(X)$ 是 $\mathcal{D}$ 中「最接近」$X$ 的对象。所有 $X \to G(Y)$ 都能被整理成 $X \to G(F(X)) \to G(Y)$。
+
+证明见边上的推导。
+
+#### 逗号范畴　`def.comma-category`
+*定义*　逗号范畴（Comma Category）
+
+设 $G : \mathcal{D} \to \mathcal{C}$ 是函子，$X \in \mathcal{C}$。**逗号范畴** $X \downarrow G$ 以
+
+$$\bigl\{(Y, f) : Y \in \mathcal{D},\ f : X \to G(Y)\bigr\}$$
+
+为对象，从 $(Y, f)$ 到 $(Y', f')$ 的态射取使 $G(g) \circ f = f'$ 的 $g : Y \to Y'$。
+
+它是「**把 $X$ 映射进 $G$ 的像**」的全部方式组成的范畴。把箭头反向得 $F \downarrow Y$，拼起来得 $F \downarrow G$。
+
+预层的切片范畴、元素范畴都是它的特例。凡是要在某个函子外面「挂一个外部对象」再取最优的情形，用的都是它。
+
+#### 反射子范畴　`def.reflective-subcategory`
+*定义*　反射子范畴（Reflective Subcategory）
+
+满子范畴 $\mathcal{C}' \subseteq \mathcal{C}$ 叫**反射的**，如果含入函子 $\mathcal{C}' \hookrightarrow \mathcal{C}$ 有左伴随；这个左伴随叫**反射**。对偶的说法是**余反射的**。
+
+函子 $F : \mathcal{C} \to \mathcal{C}'$ 是反射 $\iff$
+
+$$\operatorname{Hom}_{\mathcal{C}}\bigl(F(X),\ X'\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ X'\bigr) \qquad (X' \in \mathcal{C}')$$
+
+一句话：**反射子范畴是「所有对象都能最佳逼近到它里面」的满子范畴**。$F$ 把 $X$ 送去它里面最接近 $X$ 的那个对象。
+
+例：
+
+
+
+- $\mathbf{Ab}$ 是 $\mathbf{Grp}$ 的反射子范畴：$F : \mathbf{Grp} \to \mathbf{Ab}$，$G \mapsto G/[G,G]$，且 $\operatorname{Hom}_{\mathbf{Ab}}(G/[G,G], G') \cong \operatorname{Hom}_{\mathbf{Grp}}(G, G')$。
+
+- $\mathbf{Grp}$ 同时是 $\mathbf{Mon}$ 的反射子范畴与余反射子范畴：右伴随把幺半群送到它的**可逆元群** $M^{\times}$。
+
+- $\mathbf{CHaus}$ 是 $\mathbf{Top}$ 的反射子范畴。
+
+- 离散空间范畴在 $\mathbf{Top}$ 中是反射的，平凡拓扑空间范畴在 $\mathbf{Top}$ 中是余反射的。
+
+#### 反射子范畴里的极限　`prop.reflective-limits`
+*命题*　反射子范畴中的极限与余极限
+
+设 $\mathcal{C}'$ 是 $\mathcal{C}$ 的反射子范畴，反射记为 $F : \mathcal{C} \to \mathcal{C}'$。若 $\mathcal{C}'$ 中的图 $D'$ 在 $\mathcal{C}$ 中有极限（余极限），则它在 $\mathcal{C}'$ 中也有：
+
+- 余极限等于 $F\bigl(\operatorname{colim}_{\mathcal{C}} D'\bigr)$；
+- 极限就等于 $\operatorname{lim}_{\mathcal{C}} D'$ 本身（它自动落在 $\mathcal{C}'$ 里）。
+
+也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。
+
+#### Kan 延拓　`def.kan-extension`
+*定义*　Kan 延拓（Kan Extension）
+
+设 $p : \mathcal{C} \to \mathcal{C}'$ 是小范畴之间的函子，$F : \mathcal{C} \to \mathcal{D}$。$F$ 沿 $p$ 的**左 Kan 延拓**是一个函子 $p_{!}F : \mathcal{C}' \to \mathcal{D}$ 连同一个自然变换
+
+$$\alpha : F \implies p_{!}F \circ p$$
+
+使得对任意 $G : \mathcal{C}' \to \mathcal{D}$ 与任意 $\gamma : F \implies G \circ p$，存在**唯一**的 $\widetilde{\gamma} : p_{!}F \implies G$ 使
+
+$$\gamma = (\widetilde{\gamma} \circ p) \circ \alpha$$
+
+等价地说：
+
+$$\operatorname{Hom}(p_{!}F,\ G) \;\cong\; \operatorname{Hom}(F,\ G \circ p)$$
+
+即 $p_{!}$ 是预复合函子 $p^{*} = (-) \circ p$ 的**左伴随**。箭头反向得**右 Kan 延拓** $p_{*} \dashv p^{*}$。
+
+回答的问题是：**能不能把 $F$ 延拓到 $\mathcal{C}'$ 上？** 左 Kan 延拓是 $F$ 的**最优左近似扩张** —— 它不要求 $F$ 真能延拓，只要求「在 $\mathcal{C}$ 上与 $F$ 一致」的函子里，它最贴合。
+
+与伴随逐条对照：
+
+
+
+| 伴随 $L \dashv R$ | $p_{!} \dashv p^{*}$ |
+
+| --- | --- |
+
+| 单位 $\eta_{A} : A \to R L A$ | $\alpha : F \implies p^{*}(p_{!}F)$ |
+
+| $f : A \to R B$ | $\gamma : F \implies p^{*}(G)$ |
+
+| $g : L A \to B$ | $\widetilde{\gamma} : p_{!}F \implies G$ |
+
+| $f = R(g) \circ \eta_{A}$ | $\gamma = p^{*}(\widetilde{\gamma}) \circ \alpha$ |
+
+
+
+所以 Kan 延拓不是新东西，它只是把伴随的公式换了个方向用。
+
+#### Kan 延拓的两个例子　`ex.kan-extension`
+*命题*　余极限与右伴随都是 Kan 延拓
+
+**(1)** 图 $D : I \to \mathcal{C}$ 有余极限 $X$ $\iff$ 沿投影 $p : I \to \mathbf{1}$ 的左 Kan 延拓 $p_{!}D : \mathbf{1} \to \mathcal{C}$ 存在，且取值为
+
+$$(p_{!}D)(\ast) = \varinjlim_{i \in I} D(i) = X$$
+
+**(2)** 函子 $F : \mathcal{C} \to \mathcal{D}$ 有右伴随 $G$ $\iff$ 恒等函子 $1_{\mathcal{C}}$ 沿 $F$ 的左 Kan 延拓存在，且此时
+
+$$G = F_{!}1_{\mathcal{C}}, \qquad \operatorname{Hom}(F_{!}1_{\mathcal{C}},\ G) \cong \operatorname{Hom}(1_{\mathcal{C}},\ G \circ F)$$
+
+右边那个对应的 $1_{\mathcal{C}} \implies G \circ F$ 正是**单位** $\eta$。
+
+两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。
+
+#### 滤过余极限正合　`prop.filtered-exact`
+*命题*　滤过余极限正合（$\mathbf{Set}$ 中）
+
+在 $\mathbf{Set}$ 中，**滤过余极限正合**：$I$ 是滤过范畴时，余极限函子
+
+$$\varinjlim : \mathbf{Set}^{I} \longrightarrow \mathbf{Set}$$
+
+保持所有有限极限。
+
+「正合」在这里就一句话：滤过余极限与有限极限**可以交换**。最基本的例子是它保持有限积：
+
+
+
+$$\varinjlim_{i} (X_{i} \times Y_{i}) \;\cong\; \bigl(\varinjlim_{i} X_{i}\bigr) \times \bigl(\varinjlim_{i} Y_{i}\bigr)$$
+
+
+
+做法是两边都取代表元再比对：$mathbf{Set}$ 里滤过余极限的元素恰好是某个指标处的元素，所以「一边一个代表元」可以上升到「同一个指标处的一对」。
+
+这条为什么重要：后面谈层的时候，层化是拿滤过余极限配出来的，而**只有滤过余极限不破坏有限极限**，这套构造才能与有限极限（也就是把拓扑信息编码进去的那个部分）相安无事。
+
 ---
 
 ## 全部连线（含推导过程）
@@ -8245,6 +8496,139 @@ $$(\varphi \circ f)_{Y}(\psi) = \varphi_{Y}\bigl(T(\psi)(a)\bigr) = T'(\psi)\big
 
 > 这里能看到米田引理的典型用法：**要把「元素层」的问题搬到「箭头层」，就先让元素变成 $h_{X}$ 到 $T$ 的箭头**。
 
+#### 伴随函子 + 表示函子 ⟹ 右伴随存在的判据　`imp.adjoint-criterion`
+*伴随 $\implies$ 右伴随存在的判据*
+
+**（$\Longrightarrow$）** 设 $F \dashv G$。则对每个 $Y \in \mathcal{D}$，
+
+$$\operatorname{Hom}_{\mathcal{D}}(F(-), Y) \;\cong\; \operatorname{Hom}_{\mathcal{C}}(-, G(Y))$$
+
+右边是可表示函子，所以左边可表示。∎
+
+**（$\Longleftarrow$）** 设对每个 $Y$ 都能挑到一个 $G(Y) \in \mathcal{C}$ 与自然同构
+
+$$\alpha_{Y} : \operatorname{Hom}_{\mathcal{D}}(F(-), Y) \longrightarrow \operatorname{Hom}_{\mathcal{C}}(-, G(Y))$$
+
+只在对象层拼出 $G$ 还不够，还要在态射层给出 $G(g)$。给定 $g : Y \to Z$，考虑复合
+
+$$\operatorname{Hom}_{\mathcal{C}}(-, G(Y)) \xrightarrow{\ \alpha_{Y}^{-1}\ } \operatorname{Hom}_{\mathcal{D}}(F(-), Y) \xrightarrow{\ g \circ -\ } \operatorname{Hom}_{\mathcal{D}}(F(-), Z) \xrightarrow{\ \alpha_{Z}\ } \operatorname{Hom}_{\mathcal{C}}(-, G(Z))$$
+
+这是一条从可表示函子 $\operatorname{Hom}_{\mathcal{C}}(-, G(Y))$ 到 $\operatorname{Hom}_{\mathcal{C}}(-, G(Z))$ 的自然变换。由米田引理，它由唯一的态射
+
+$$G(g) : G(Y) \to G(Z)$$
+
+给出。于是 $G$ 在态射层也定义好了。
+
+**$G$ 是函子。** 把 $G$ 的定义在 $g = 1_{Y}$ 处取出来：由于 $\alpha_{Y}^{-1}(1_{Y})$ 就是恒等截面，对应的态射是 $G(1_{Y}) = 1_{G(Y)}$。再取 $g \circ h$，三段拼接与先拼后作用给出同一个自然变换，用米田引理的双射唯一性得 $G(g \circ h) = G(g) \circ G(h)$。
+
+**$\alpha$ 是自然的。** $G$ 的定义本身就让下面的方块交换（左边取 $g \circ -$，右边取 $- \circ G(g)$）：
+
+$$\begin{array}{ccc} \operatorname{Hom}(F(-), Y) & \xrightarrow{\ \alpha_{Y}\ } & \operatorname{Hom}(-, G(Y)) \\ \downarrow\scriptstyle{g \circ -} & & \downarrow\scriptstyle{- \circ G(g)} \\ \operatorname{Hom}(F(-), Z) & \xrightarrow{\ \alpha_{Z}\ } & \operatorname{Hom}(-, G(Z)) \end{array}$$
+
+于是每个 $\alpha_{Y}$ 都是自然同构，$F \dashv G$。∎
+
+> 这条把「造右伴随」化归成「对每个 $Y$ 找一个表示对象」。米田引理在这里做了关键一步：**态射层的 $G(g)$ 是从自然变换里读出来的**，不用自己拼。
+
+#### 伴随函子 + 极限 ⟹ 右伴随保极限　`imp.right-adjoint-limits`
+*伴随 $\implies$ 右伴随保极限*
+
+设 $F \dashv G$，$D : I \to \mathcal{D}$ 有极限。对任意 $X \in \mathcal{C}$，把伴随的同构一路用下去：
+
+$$\operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G(\lim D)\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ \lim D\bigr)$$
+
+再用 $\lim D$ 的泛性质（锥与射入极限的态射一一对应）：
+
+$$\operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ \lim D\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{D}^{I}}\bigl(\Delta F(X),\ D\bigr) \;\cong\; \varprojlim_{i} \operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ D(i)\bigr)$$
+
+把最后一个同构的每一项再用一次伴随：
+
+$$\varprojlim_{i} \operatorname{Hom}_{\mathcal{D}}(F(X), D(i)) \;\cong\; \varprojlim_{i} \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G D(i)\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ \lim (G \circ D)\bigr)$$
+
+于是 $\operatorname{Hom}_{\mathcal{C}}(-, G(\lim D))$ 与 $\operatorname{Hom}_{\mathcal{C}}(-, \lim (G \circ D))$ 是同一个函子的两个表示；由米田引理（表示对象在同构意义下唯一），
+
+$$G(\lim D) \;\cong\; \lim (G \circ D)$$
+
+∎。对偶地左伴随保余极限。
+
+> 整个证明只用了两样东西：**伴随的同构**与**极限的泛性质**。这就是为什么这条定理几乎不需要任何额外假设。
+
+#### 极限 + 逗号范畴 ⟹ 伴随函子定理　`imp.saft`
+*保极限 $\implies$ 有左伴随*
+
+设 $\mathcal{D}$ 小且完备，$G : \mathcal{D} \to \mathcal{C}$ 保极限。要造 $F \dashv G$。
+
+**构造。** 固定 $X \in \mathcal{C}$，考虑逗号范畴 $X \downarrow G$（对象是 $f : X \to G(Y)$）。它由 $\mathcal{D}$ 的一个小图指标化，而 $\mathcal{D}$ 完备，所以下面这个极限存在：
+
+$$F(X) := \varprojlim_{(Y, f) \in (X \downarrow G)} Y$$
+
+**单位。** 投影给出 $\pi_{(Y,f)} : F(X) \to Y$。特别地取 $(Y,f) = (G(Y), \cdot)$ 这一类里的项 —— 更直接地，把 $G$ 作用上去并用 $G$ 保极限：
+
+$$G(F(X)) = G\Bigl(\varprojlim_{(Y,f)} Y\Bigr) \cong \varprojlim_{(Y,f)} G(Y)$$
+
+而 $X \to G(Y)$ 这一族随 $(Y,f)$ 变动是相容的（这正是逗号范畴态射的定义），于是它们拼成一个锥，泛性给出
+
+$$\eta_{X} : X \longrightarrow G(F(X))$$
+
+**伴随同构。** 对任意 $Y_{0} \in \mathcal{D}$，定义
+
+$$\varphi : \operatorname{Hom}_{\mathcal{D}}\bigl(F(X), Y_{0}\bigr) \longrightarrow \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G(Y_{0})\bigr), \qquad \varphi \mapsto G(\varphi) \circ \eta_{X}$$
+
+**满（造逆）。** 给定 $f : X \to G(Y_{0})$，则 $(Y_{0}, f)$ 是 $X \downarrow G$ 的一个对象，于是有投影 $\pi_{(Y_{0}, f)} : F(X) \to Y_{0}$。由 $\eta_{X}$ 的构造，$G(\pi_{(Y_{0},f)}) \circ \eta_{X} = f$，所以 $\varphi(\pi_{(Y_{0},f)}) = f$。
+
+**单。** 设 $\varphi(u) = \varphi(v)$，其中 $u, v : F(X) \to Y_{0}$。要证 $u = v$。
+
+由 $\mathcal{D}$ 有小极限，取 $(Y_{0}, f)$ 处的投影 $\pi = \pi_{(Y_{0}, f)}$。由于 $F(X)$ 是那个极限，$u = v$ 当且仅当 $u \circ \pi = v \circ \pi$。而 $\pi$ 是 $f$ 处的那一项，$u \circ \pi$ 与 $v \circ \pi$ 都是 $F(X) \to Y_{0}$，且
+
+$$G(u \circ \pi) \circ \eta_{X} = G(u) \circ G(\pi) \circ \eta_{X} = G(u) \circ f = G(u) \circ \varphi(v) \circ \eta_{X}$$
+
+用 $\varphi$ 沿 $\eta$ 的互逆性（并用 $G$ 保极限把极限拉回去）得到 $u \circ \pi = v \circ \pi$，于是 $u = v$。
+
+**自然性**由两边各自对 $Y_{0}$ 的自然性逐项核对，略。这样 $\varphi$ 是自然同构，$F \dashv G$。∎
+
+**（$\Longrightarrow$）** 反方向就是「右伴随保极限」那条定理。∎
+
+> 这条定理是前半张图的分水岭：**从「保极限」这个可检验的条件，直接造出一个左伴随**。代价是要求 $\mathcal{D}$ 小且完备（否则那个极限不一定存在）。
+
+#### 单位与余单位 + 忠实 / 满 / 全忠实 ⟹ 全忠实与单位　`imp.adjoint-ff`
+*单位同构 $\implies$ 左伴随全忠实*
+
+设 $F \dashv G$。对 $X, Y \in \mathcal{C}$，串起伴随的同构：
+
+$$\operatorname{Hom}_{\mathcal{C}}(X, Y) \xrightarrow{\ F\ } \operatorname{Hom}_{\mathcal{D}}\bigl(F(X), F(Y)\bigr) \xrightarrow{\ \Phi_{X, F(Y)}\ } \operatorname{Hom}_{\mathcal{C}}\bigl(X, G F(Y)\bigr)$$
+
+第二个箭头是双射，且复合把 $f$ 送到 $G F(f) \circ \eta_{X}$（这是 $\Phi$ 的显式公式）。所以第一个箭头（即 $F$ 在 Hom 集上的作用）是双射当且仅当
+
+$$\operatorname{Hom}_{\mathcal{C}}(X, Y) \xrightarrow{\ \eta_{X} \ \circ\, -\ } \operatorname{Hom}_{\mathcal{C}}\bigl(X, G F(Y)\bigr)$$
+
+是双射，当且仅当 $\eta_{X}$ 是同构（取 $Y$ 使 $GF(Y)$ 覆盖所需的目标即可）。
+
+$X$ 任意，所以 $F$ 全忠实 $\iff$ 每个 $\eta_{X}$ 是同构，即 $\eta$ 是自然同构。∎
+
+对偶地（把整个论证在 $\mathcal{C}^{\mathrm{op}} \to \mathcal{D}^{\mathrm{op}}$ 上重做，或直接交换 $F, G$ 与 $\eta, \varepsilon$ 的角色）得到 $G$ 全忠实 $\iff \varepsilon$ 是同构。∎
+
+> 把「函子在 Hom 集上双双是双射」这件事，换成了「一个自然变换处处可逆」—— 后者的检查量小得多。
+
+#### Kan 延拓 + 极限 + 伴随函子 ⟹ Kan 延拓的两个例子　`imp.kan-unifies`
+*Kan 延拓 $\implies$ 余极限与右伴随都是它的特例*
+
+**(1)** 取 $p : I \to \mathbf{1}$ 为到终范畴的唯一函子。则预复合 $p^{*} : \mathcal{C}^{\mathbf{1}} \to \mathcal{C}^{I}$ 就是常图函子 $\Delta$。于是
+
+$$\operatorname{Hom}(p_{!}D,\ G) \;\cong\; \operatorname{Hom}(D,\ G \circ p) \;=\; \operatorname{Hom}_{\mathcal{C}^{I}}\bigl(D,\ \Delta G(\ast)\bigr)$$
+
+右边正是「$D$ 到常图 $G(\ast)$ 的余锥」的集合。由余极限的泛性质（锥函子被 $\operatorname{colim} D$ 表示），能表示这个函子的只有一个对象：
+
+$$(p_{!}D)(\ast) \;=\; \varinjlim_{i \in I} D(i)$$
+
+所以 $p_{!}D$ 存在 $\iff D$ 有余极限。∎
+
+**(2)** 取 $p = F : \mathcal{C} \to \mathcal{D}$、$F$ 位置的函子取恒等函子 $1_{\mathcal{C}}$。左 Kan 延拓的泛性质给出
+
+$$\operatorname{Hom}(F_{!}1_{\mathcal{C}},\ G) \;\cong\; \operatorname{Hom}(1_{\mathcal{C}},\ G \circ F)$$
+
+右边只有「$1_{\mathcal{C}}$ 到 $G \circ F$ 的全部自然变换」一个元素（取 $1_{\mathcal{C}}$ 的像即得），所以左侧 $F_{!}1_{\mathcal{C}}$ 到每个 $G$ 的态射也恰好只有一个 —— 这正是「$F_{!}1_{\mathcal{C}}$ 是 $\operatorname{Hom}(1_{\mathcal{C}}, - \circ F)$ 的表示对象」的说法，而那个表示对象就是左伴随。记 $G = F_{!}1_{\mathcal{C}}$，同构两侧的形状恰好就是伴随的定义，对应的自然变换 $1_{\mathcal{C}} \implies G \circ F$ 就是单位 $\eta$。∎
+
+> 看完这两条，前面那些定义就串成一条线了：**极限与余极限是「沿到终范畴的函子」延拓，伴随是「沿函数子本身」延拓**。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -8596,6 +8980,50 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 #### 定义引用：「预层」→ 预层态射的单满按点检验　`def-link.presheaf-mono-pointwise`
 
 被检验的 $\varphi : T \implies T'$ 是**预层**之间的自然变换。
+
+#### 定义引用：「伴随函子」→ 右伴随保极限　`def-link.adjoint-preserves-limits`
+
+定理的前提就是一对**伴随函子** $F \dashv G$。
+
+#### 定义引用：「极限」→ 右伴随保极限　`def-link.limit-preserves-limits`
+
+结论是 $G(\lim D) \cong \lim (G \circ D)$ —— 两边都是**极限**。
+
+#### 定义引用：「表示函子」→ 右伴随存在的判据　`def-link.representable-adjoint-criterion`
+
+判据的右边说的是 $\operatorname{Hom}_{\mathcal{D}}(F(-), Y)$ **可表示**。
+
+#### 定义引用：「极限」→ 极限即伴随　`def-link.limit-adjoint-criterion`
+
+命题把「所有**极限**存在」与「$\Delta$ 有右伴随」说成一回事。
+
+#### 定义引用：「极限」→ 伴随函子定理　`def-link.limit-saft`
+
+前提的「完备」与「**保极限**」，以及构造 $F(X)$ 用的那个极限。
+
+#### 定义引用：「逗号范畴」→ 伴随函子定理　`def-link.comma-saft`
+
+构造 $F(X)$ 时指标跑在**逗号范畴** $X \downarrow G$ 上。
+
+#### 定义引用：「极限」→ 反射子范畴里的极限　`def-link.limit-reflective`
+
+命题谈的是**反射子范畴**中的极限与余极限能不能落回来。
+
+#### 定义引用：「Kan 延拓」→ Kan 延拓的两个例子　`def-link.kan-ex`
+
+两个例子说的都是「某个东西等于一个**左 Kan 延拓**」。
+
+#### 定义引用：「伴随函子」→ Kan 延拓的两个例子　`def-link.adjoint-kan-ex`
+
+**(2)** 说右伴随就是 $1_{\mathcal{C}}$ 沿 $F$ 的 Kan 延拓 —— 右边是一个**伴随**。
+
+#### 定义引用：「极限」→ Kan 延拓的两个例子　`def-link.limit-kan-ex`
+
+**(1)** 说余极限是沿 $I \to \mathbf{1}$ 的 Kan 延拓。
+
+#### 定义引用：「极限」→ 滤过余极限正合　`def-link.limit-filtered`
+
+「正合」说的是滤过余极限保持**有限极限**。
 
 #### 定义引用：「子集」→ 关系　`def-dep.subset-rel`
 
@@ -9193,6 +9621,134 @@ $\operatorname{Hom}_{\mathcal{C}}(X, -)$ 是对**范畴** $\mathcal{C}$ 取的 H
 
 结论里的单态射是范畴论意义下的**可消性**，不是逐点单射。
 
+#### 定义引用：「函子」→ 伴随函子　`def-dep.functor-adjoint`
+
+伴随是**两个函子**之间的关系，两边各放一个方向。
+
+#### 定义引用：「范畴」→ 伴随函子　`def-dep.category-adjoint`
+
+$\operatorname{Hom}_{\mathcal{D}}(F(X), Y)$ 与 $\operatorname{Hom}_{\mathcal{C}}(X, G(Y))$ 是对两个**范畴**取的 Hom 集。
+
+#### 定义引用：「函数」→ 伴随函子　`def-dep.function-adjoint`
+
+伴随的同构逐对对象给一个**双射**，其底层是函数。
+
+#### 定义引用：「伴随函子」→ 单位与余单位　`def-dep.adjoint-unit`
+
+单位与余单位是把伴随的同构 $\Phi$ 在两个**恒等态射**上取值得到的，先有伴随才有它们。
+
+#### 定义引用：「自然变换」→ 单位与余单位　`def-dep.nat-unit`
+
+单位与余单位本身都是**自然变换**，三角等式也是自然性方块拼出来的。
+
+#### 定义引用：「伴随函子」→ 右伴随存在的判据　`def-dep.adjoint-criterion`
+
+判据说的正是「$F$ 有没有**右伴随**」。
+
+#### 定义引用：「表示函子」→ 右伴随存在的判据　`def-dep.representable-adjoint-criterion`
+
+判据的右端是「$\operatorname{Hom}_{\mathcal{D}}(F(-), Y)$ **可表示**」。
+
+#### 定义引用：「伴随函子」→ 全忠实与单位　`def-dep.adjoint-ff`
+
+命题谈的是**伴随**里左（右）伴随的那个函子。
+
+#### 定义引用：「忠实 / 满 / 全忠实」→ 全忠实与单位　`def-dep.ff-adjoint`
+
+「$F$ **全忠实**」用的是忠实与满的定义。
+
+#### 定义引用：「单位与余单位」→ 全忠实与单位　`def-dep.unit-adjoint-ff`
+
+命题的另一边是「**单位** $\eta$ 是同构」。
+
+#### 定义引用：「极限」→ 极限即伴随　`def-dep.limit-adjoint`
+
+命题说的是「所有 $I$ 形状的**极限**存在」。
+
+#### 定义引用：「交换图」→ 极限即伴随　`def-dep.diagram-limit-adjoint`
+
+命题里的 $\Delta : \mathcal{C} \to \mathcal{C}^{I}$ 是**常图函子**，$\mathcal{C}^{I}$ 是图范畴。
+
+#### 定义引用：「伴随函子」→ 右伴随保极限　`def-dep.adjoint-preserves`
+
+定理的前提是一对**伴随** $F \dashv G$。
+
+#### 定义引用：「极限」→ 右伴随保极限　`def-dep.limit-preserves`
+
+定理的结论是 $G$ 保持**极限**。
+
+#### 定义引用：「伴随函子」→ 伴随函子定理　`def-dep.adjoint-saft`
+
+SAFT 的结论是「$G$ 有**左伴随**」。
+
+#### 定义引用：「极限」→ 伴随函子定理　`def-dep.limit-saft`
+
+前提里的「完备」与「保极限」都是关于**极限**的；构造 $F(X)$ 也是取一个极限。
+
+#### 定义引用：「逗号范畴」→ 伴随函子定理　`def-dep.comma-saft`
+
+构造 $F(X) = \varprojlim_{(Y,f) \in (X \downarrow G)} Y$ 跑在**逗号范畴** $X \downarrow G$ 上。
+
+#### 定义引用：「函数」→ 逗号范畴　`def-dep.function-comma`
+
+逗号范畴的对象是 $(Y, f)$，其中 $f : X \to G(Y)$ 是一个**映射**。
+
+#### 定义引用：「函子」→ 逗号范畴　`def-dep.functor-comma`
+
+$G$ 是**函子**，$X \downarrow G$ 是绕着它搭起来的。
+
+#### 定义引用：「元素范畴」→ 逗号范畴　`def-dep.el-comma`
+
+元素范畴是**逗号范畴**的特例：把 $G$ 取成 $mathbf{1} \to mathbf{Set}$。
+
+#### 定义引用：「伴随函子」→ 反射子范畴　`def-dep.adjoint-reflective`
+
+反射的定义就是「**含入函子有左伴随**」。
+
+#### 定义引用：「忠实 / 满 / 全忠实」→ 反射子范畴　`def-dep.ff-reflective`
+
+反射说的是**满子范畴**，「满」正是函子全忠实里的一半。
+
+#### 定义引用：「反射子范畴」→ 反射子范畴里的极限　`def-dep.reflective-limits`
+
+命题谈的是**反射子范畴**里的极限与余极限。
+
+#### 定义引用：「极限」→ 反射子范畴里的极限　`def-dep.limit-reflective`
+
+命题的结论是「在 $\mathcal{C}$ 里有的**极限**（余极限）在 $\mathcal{C}'$ 里也有」。
+
+#### 定义引用：「伴随函子」→ Kan 延拓　`def-dep.adjoint-kan`
+
+左 Kan 延拓的定义就是「$p_{!}$ 是预复合函子的**左伴随**」—— 一个伴随同构。
+
+#### 定义引用：「函子」→ Kan 延拓　`def-dep.functor-kan`
+
+$p$、$F$、$p_{!}F$、$G$ 都是**函子**。
+
+#### 定义引用：「自然变换」→ Kan 延拓　`def-dep.nat-kan`
+
+$\alpha : F \implies p_{!}F \circ p$ 与 $\gamma$ 都是**自然变换**。
+
+#### 定义引用：「Kan 延拓」→ Kan 延拓的两个例子　`def-dep.kan-ex`
+
+两个例子都是「某个东西等于**左 Kan 延拓**」。
+
+#### 定义引用：「极限」→ Kan 延拓的两个例子　`def-dep.limit-kan-ex`
+
+**(1)** 说余极限是沿 $I \to \mathbf{1}$ 的左 Kan 延拓。
+
+#### 定义引用：「伴随函子」→ Kan 延拓的两个例子　`def-dep.adjoint-kan-ex`
+
+**(2)** 说右伴随是 $1_{\mathcal{C}}$ 沿 $F$ 的左 Kan 延拓。
+
+#### 定义引用：「极限」→ 滤过余极限正合　`def-dep.limit-filtered`
+
+结论说滤过余极限保持**有限极限** —— 「正合」是相对极限说的。
+
+#### 定义引用：「交换图」→ 滤过余极限正合　`def-dep.diagram-filtered`
+
+余极限函子 $\varinjlim : \mathbf{Set}^{I} \to \mathbf{Set}$ 的定义域是**图范畴**。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -9365,6 +9921,9 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **基数与等势 ↔ 序数与超限**　3 条节点级连线
 - **序数与超限 ↔ ZFC 公理系统**　2 条节点级连线
 - **一阶语言与公式 ↔ ZFC 公理系统**　3 条节点级连线
+- **伴随与反射 ↔ 预层与米田**　3 条节点级连线
+- **伴随与反射 ↔ 图与极限**　18 条节点级连线
+- **伴随与反射 ↔ 函子与自然变换**　8 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -9384,3 +9943,4 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 关系与函数**　3 条节点级连线
 - **图与极限 ↔ 集合的构造**　2 条节点级连线
 - **范畴与图 ↔ 预层与米田**　2 条节点级连线
+- **伴随与反射 ↔ 关系与函数**　2 条节点级连线

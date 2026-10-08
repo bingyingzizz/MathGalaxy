@@ -26,3 +26,5 @@ $$G(f) \circ \alpha_X = \alpha_Y \circ F(f)$$
 - 被 `prop.yoneda-embedding` 米田嵌入 用
 
 > 说明见 `notes/def.natural-transformation.md`
+
+- …另有出边，续页见 `nodes/def.natural-transformation.2.md`

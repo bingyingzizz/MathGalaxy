@@ -17,5 +17,6 @@ $$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
 ## 它能推出什么 / 谁在用它
 - 被 `def.representable` 表示函子 用
 - 被 `def.slice-category` 切片范畴 用
+- 被 `def.comma-category` 逗号范畴 用
 
 > 说明见 `notes/def.elements-category.md`

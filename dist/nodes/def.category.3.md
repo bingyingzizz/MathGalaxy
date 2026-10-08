@@ -6,3 +6,4 @@
 - 被 `def.limit` 极限 用
 - 被 `def.presheaf` 预层 用
 - 被 `def.representable` 表示函子 用
+- 被 `def.adjoint` 伴随函子 用

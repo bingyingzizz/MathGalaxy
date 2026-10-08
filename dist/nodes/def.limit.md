@@ -18,10 +18,10 @@ $$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.category-limit.md
 
 ## 它能推出什么 / 谁在用它
+- ⇒ `thm.right-adjoint-preserves-limits` 右伴随保极限
+- ⇒ `thm.saft` 伴随函子定理
+- ⇒ `ex.kan-extension` Kan 延拓的两个例子
 - 被 `prop.yoneda-embedding` 米田嵌入 用
-- 被 `thm.density` 稠密性定理 用
-- 被 `def.final-initial` 终对象 / 始对象 用
-- 被 `def.product` 积 / 余积 用
 
 > 说明见 `notes/def.limit.md`
 

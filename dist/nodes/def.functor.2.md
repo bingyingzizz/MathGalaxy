@@ -7,3 +7,6 @@
 - 被 `def.presheaf-cat` 预层范畴 用
 - 被 `def.representable` 表示函子 用
 - 被 `lem.yoneda` 米田引理 用
+- 被 `def.adjoint` 伴随函子 用
+- 被 `def.comma-category` 逗号范畴 用
+- 被 `def.kan-extension` Kan 延拓 用

@@ -670,6 +670,83 @@ window.MG = window.MG || {};
       definition: 'def.presheaf',
       usedBy: 'lem.presheaf-mono-pointwise',
       note: '被检验的 $\\varphi : T \\implies T\'$ 是**预层**之间的自然变换。'
+    },
+    {
+      id: 'def-link.adjoint-preserves-limits',
+      kind: 'definition',
+      definition: 'def.adjoint',
+      usedBy: 'thm.right-adjoint-preserves-limits',
+      note: '定理的前提就是一对**伴随函子** $F \\dashv G$。'
+    },
+    {
+      id: 'def-link.limit-preserves-limits',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'thm.right-adjoint-preserves-limits',
+      note: '结论是 $G(\\lim D) \\cong \\lim (G \\circ D)$ —— 两边都是**极限**。'
+    },
+    {
+      id: 'def-link.representable-adjoint-criterion',
+      kind: 'definition',
+      definition: 'def.representable',
+      usedBy: 'thm.right-adjoint-criterion',
+      note: '判据的右边说的是 $\\operatorname{Hom}_{\\mathcal{D}}(F(-), Y)$ **可表示**。'
+    },
+    {
+      id: 'def-link.limit-adjoint-criterion',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'prop.limit-adjoint',
+      note: '命题把「所有**极限**存在」与「$\\Delta$ 有右伴随」说成一回事。'
+    },
+    {
+      id: 'def-link.limit-saft',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'thm.saft',
+      note: '前提的「完备」与「**保极限**」，以及构造 $F(X)$ 用的那个极限。'
+    },
+    {
+      id: 'def-link.comma-saft',
+      kind: 'definition',
+      definition: 'def.comma-category',
+      usedBy: 'thm.saft',
+      note: '构造 $F(X)$ 时指标跑在**逗号范畴** $X \\downarrow G$ 上。'
+    },
+    {
+      id: 'def-link.limit-reflective',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'prop.reflective-limits',
+      note: '命题谈的是**反射子范畴**中的极限与余极限能不能落回来。'
+    },
+    {
+      id: 'def-link.kan-ex',
+      kind: 'definition',
+      definition: 'def.kan-extension',
+      usedBy: 'ex.kan-extension',
+      note: '两个例子说的都是「某个东西等于一个**左 Kan 延拓**」。'
+    },
+    {
+      id: 'def-link.adjoint-kan-ex',
+      kind: 'definition',
+      definition: 'def.adjoint',
+      usedBy: 'ex.kan-extension',
+      note: '**(2)** 说右伴随就是 $1_{\\mathcal{C}}$ 沿 $F$ 的 Kan 延拓 —— 右边是一个**伴随**。'
+    },
+    {
+      id: 'def-link.limit-kan-ex',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'ex.kan-extension',
+      note: '**(1)** 说余极限是沿 $I \\to \\mathbf{1}$ 的 Kan 延拓。'
+    },
+    {
+      id: 'def-link.limit-filtered',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'prop.filtered-exact',
+      note: '「正合」说的是滤过余极限保持**有限极限**。'
     }
   ]
 });

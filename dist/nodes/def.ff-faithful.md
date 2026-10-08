@@ -17,7 +17,11 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\ma
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `def.cat-equivalence` 范畴等价
+- ⇒ `prop.adjoint-full-faithful` 全忠实与单位
 - 被 `prop.yoneda-embedding` 米田嵌入 用
 - 被 `prop.yoneda-embedding` 米田嵌入 用
+- 被 `prop.adjoint-full-faithful` 全忠实与单位 用
 
 > 说明见 `notes/def.ff-faithful.md`
+
+- …另有出边，续页见 `nodes/def.ff-faithful.2.md`

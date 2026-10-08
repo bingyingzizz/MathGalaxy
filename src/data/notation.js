@@ -261,7 +261,7 @@ MG.notation = {
     { g: 'integral', tex: 'L^{p}, L^{q}', uni: '', name: 'L^p 空间（$p, q$ 共轭指数）' },
     { g: 'integral', tex: 'Hf',       uni: 'Hf', name: '极大函数' },
     { g: 'integral', tex: 'd\\nu / d\\mu', uni: '', name: 'Radon–Nikodym 导数' },
-    { g: 'integral', tex: '\\Phi',    uni: 'Φ', name: '连续线性泛函 $\\Phi \\in (L^{p})^{*}$' },
+    { g: 'integral', tex: '\\Phi',    uni: 'Φ', name: '连续线性泛函 $\\Phi \\in (L^{p})^{*}$；**范畴论里作伴随的双射** $\\Phi_{X,Y}$' },
     { g: 'integral', tex: '\\Sigma',  uni: 'Σ', name: '有限支集简单函数全体（`analysis.lp` 局部）' },
     { g: 'integral', tex: '\\partial f / \\partial t', uni: '', name: '偏导' },
 
@@ -276,6 +276,8 @@ MG.notation = {
       note: '交换图里竖边的方向。' },
     { g: 'layout', tex: '\\varinjlim, \\varprojlim', uni: 'lim→／lim←', name: '余极限 / 极限',
       note: '带指标的极限写作 $\\varinjlim_{(X,s)} h_{X}$；不带指标时可以用 $\\lim$、$\\operatorname{colim}$。' },
+    { g: 'layout', tex: '\\dashv',  uni: '⊣', name: '左伴随 $F \\dashv G$',
+      note: '写 $F \\dashv G$ 表示 $F$ 是 $G$ 的**左**伴随。箭头朝右也朝下，别写成 $\\vdash$（那是有穷逻辑的可推导）。' },
     { g: 'layout', tex: '\\coprod, \\bigoplus', uni: '∐ ∐', name: '余积 / 直和',
       note: '集合的余积写 $\\coprod$，加法群的余积写 $\\bigoplus$。' },
     { g: 'layout', tex: '\\underline{E}',  uni: 'E̲', name: '常预层 / 强调',
