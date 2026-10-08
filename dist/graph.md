@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:52:45.372Z
-> 7 星系 / 26 星团 / 253 节点 / 528 连线（强边 520，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:57:12.255Z
+> 7 星系 / 27 星团 / 263 节点 / 562 连线（强边 554，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -5112,6 +5112,161 @@ $$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
 
 例：$\mathbb{Z}$ 是环范畴的始对象，所以说它「在所有环里泛」；空图上的泛锥就是终对象；极限就是锥范畴的终对象。
 
+### 星团：预层与米田
+> 造出「表示」这套语言：预层范畴是落点，米田引理说自然变换集与 $F(X)$ 一一对应，稠密性定理说每个预层都是可表示预层的余极限。
+
+#### 预层　`def.presheaf`
+*定义*　预层（Presheaf）
+
+范畴 $\mathcal{C}$ 上的**（集合值）预层**是函子
+
+$$T : \mathcal{C}^{\mathrm{op}} \longrightarrow \mathbf{Set}$$
+
+预层之间的**态射**就是它们之间的自然变换。记法：对态射 $f : Y \to X$ 记 $f^{-1} = T(f) : T(X) \to T(Y)$；对 $s \in T(X)$ 记 $s|_Y = f^{-1}(s)$。
+
+直白的说法：**每个对象指定一个数据，每条态射指定一个「限制」**。反变是为了让「更小的对象拿到更多的数据」—— 越往子结构走，限制越多。
+
+例：
+
+
+
+- 偏序集上：对每个 $i$ 给一个 $T_i$，对 $i \le j$ 给「限制」$T_j \to T_i$（把反对称性去掉，预序集上同样成立）。
+
+- 拓扑空间上：$\operatorname{Open}(X)$ 是开集范畴（态射是含入），预层给每个开集 $u$ 一个 $T(u)$，给 $u' \subseteq u$ 一个「限制」$T(u) \to T(u')$，$s \mapsto s|_{u'}$。连续函数预层 $C^{0}$、光滑函数预层 $C^{\infty}$、常预层 $\underline{E}$（$\underline{E}(u) = E$，限制取恒等）、常函数预层都是。
+
+- 固定 $X \in \mathcal{C}$：$h_{X} : Y \mapsto \operatorname{Hom}_{\mathcal{C}}(Y, X)$ 是预层，叫**可表示预层**。
+
+#### 预层范畴　`def.presheaf-cat`
+*定义*　预层范畴（Category of Presheaves）
+
+$\mathcal{C}$ 上全体预层以自然变换为态射，组成范畴
+
+$$\widehat{\mathcal{C}} := \operatorname{Hom}(\mathcal{C}^{\mathrm{op}}, \mathbf{Set})$$
+
+它是函子范畴，所以极限与余极限**逐点**算 —— 后面所有关于 $\widehat{\mathcal{C}}$ 的构造都从这里出发。
+
+几个小例子：$\widehat{\emptyset} = \mathbf{1}$（空范畴到 $\mathbf{Set}$ 的唯一函子）；$\widehat{\mathbf{1}} \simeq \mathbf{Set}$（选一个对象、一个集合）；$G$ 是幺半群时 $\widehat{G} \simeq G\text{-}\mathbf{Set}$（带 $G$ 作用的集合，且映射与 $G$ 中每个元素的平移相容）。
+
+#### 表示函子　`def.representable`
+*定义*　表示函子与万有元素（Representable Functor）
+
+设 $F : \mathcal{C} \to \mathbf{Set}$ 是函子。
+
+**（一）万有元素。** 对象 $X \in \mathcal{C}$ 连同一个元素 $s \in F(X)$ 叫对 $F$ **万有**，如果
+
+$$\forall Y \in \mathcal{C},\ \forall t \in F(Y),\ \exists! \, f : X \to Y,\qquad F(f)(s) = t$$
+
+这时也说 $F$ 被 $(X, s)$ **表示**。
+
+**（二）可表示。** 若 $F \cong \operatorname{Hom}_{\mathcal{C}}(X, -)$，就说 $F$ 被 $X$ **表示**，$X$ 叫 $F$ 的**表示对象**。
+
+一句话：**$F$ 的全部数据都由 $X$ 上的一个元素 $s$ 生成**。给定任何别的 $t$，都有唯一的 $f$ 把 $s$ 推过去变成它 —— 所以别处的元素不是随便来的，是被 $s$ 推出来的。
+
+等价的说法：$(X, s)$ 万有 $\iff$ $(X, s)$ 是元素范畴 $\operatorname{el}(F)$ 的始对象 —— 「泛」这个字在这一层和上一层的用法是同一个。
+
+例：
+
+
+
+- $k \in \operatorname{Ob}(\mathbf{CRng})$，$F : k\text{-}\mathbf{Alg} \to \mathbf{Set}$ 是遗忘函子。$(k[t],\ t)$ 表示 $F$：对 $A \in k\text{-}\mathbf{Alg}$ 与 $a \in F(A)$，令 $t \mapsto a$ 诱导出唯一的 $k$-代数同态 $k[t] \to A$。
+
+- $F : \mathbf{Ring} \to \mathbf{Set}$ 取常值单点集。$\mathbb{Z}$ 表示 $F$：每个环都有唯一的 $\mathbb{Z} \to R$。
+
+- 固定拓扑空间 $X$ 与子空间 $Y \subseteq X$，反变函子
+
+
+
+  $$F : \mathbf{Top}^{\mathrm{op}} \to \mathbf{Set}, \qquad Z \mapsto \{\, f : Z \to X \ \mid\ f \text{ 连续且 } f(Z) \subseteq Y \,\}$$
+
+
+
+  被 $F(Y)$ 里那个自然元素 $i : Y \rightarrowtail X$ 表示。
+
+#### 米田引理　`lem.yoneda`
+*引理*　米田引理（Yoneda Lemma）
+
+设 $F : \mathcal{C} \to \mathbf{Set}$ 是函子，$X \in \mathcal{C}$，并记
+
+$$h^{X} = \operatorname{Hom}_{\mathcal{C}}(X, -) : \mathcal{C} \to \mathbf{Set}$$
+
+则存在自然双射
+
+$$\operatorname{Hom}(h^{X}, F) \;\cong\; F(X), \qquad \alpha \mapsto \alpha_{X}(1_{X})$$
+
+即「全体自然变换」与「$F(X)$ 的元素」一一对应。
+
+这个双射在两**边**都自然：对 $F$（自然变换）自然，对 $X$（态射）也自然。两头都自然，才是这条引理真正有分量的地方。
+
+它把「$h^{X}$ 到 $F$ 的所有自然变换」这个原则上无从下手的集合，压成了 $F(X)$ 里的**一个元素**。后面凡是遇到「自然变换不好数」的地方，基本都是靠这一步救场。
+
+对偶形式：$T$ 是预层（$T : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$）、$h_{X} = \operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\operatorname{Hom}(h_{X}, T) \cong T(X)$。两式只是把 $\mathcal{C}$ 换成 $\mathcal{C}^{\mathrm{op}}$，所以后面的推导两套都用。
+
+#### 表示的两个定义等价　`thm.represented-criterion`
+*定理*　表示 $\iff$ 与 $h^{X}$ 同构
+
+函子 $F : \mathcal{C} \to \mathbf{Set}$ 被 $X \in \mathcal{C}$ 表示 $\iff$ $h^{X} \cong F$。
+
+也就是说，「存在万有元素 $(X, s)$」与「$F$ 同构于 $\operatorname{Hom}_{\mathcal{C}}(X, -)$」是同一件事。
+
+这条把「表示」的两种说法接上了：万有元素是**元素层**的说法，$h^{X} \cong F$ 是**函子层**的说法。实际验证时常走前者（挑出那个 $s$ 就完事），实际使用时常走后者（同构可以直接搬运算）。
+
+#### 米田嵌入　`prop.yoneda-embedding`
+*命题*　米田嵌入（Yoneda Embedding）
+
+对应
+
+$$\delta : \mathcal{C} \longrightarrow \widehat{\mathcal{C}}, \qquad X \mapsto h_{X} = \operatorname{Hom}_{\mathcal{C}}(-, X)$$
+
+是一个**全忠实**函子，并且**保持所有极限**。
+
+全忠实说的是 $\operatorname{Hom}_{\widehat{\mathcal{C}}}(h_{X}, h_{Y}) \cong \operatorname{Hom}_{\mathcal{C}}(X, Y)$ —— 用 $h_{X}$ 互相之间的箭头完全复刻了 $X$ 之间的箭头，一点不多一点不少。
+
+把 $\mathcal{C}$ 嵌进 $\widehat{\mathcal{C}}$ 之后，$\mathcal{C}$ 里的问题就搬到了一个**有所有极限与余极限**的范畴里去解 —— 这是「补全一个范畴」的标准做法。
+
+#### 切片范畴　`def.slice-category`
+*定义*　预层的切片范畴（Category of Elements）
+
+设 $T \in \widehat{\mathcal{C}}$。$T$ 的**切片范畴** $\mathcal{C}_{T}$ 以
+
+$$\bigl\{(X, s) : X \in \mathcal{C},\ s \in T(X)\bigr\}$$
+
+为对象，从 $(X, s)$ 到 $(X', s')$ 的态射取使 $T(f)(s') = s$ 的 $f : X \to X'$。
+
+这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $\mathcal{C}_{T} \to \mathcal{C}$ 把 $(X, s)$ 送回 $X$。
+
+它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\mathcal{C}_{T}$ 上。
+
+#### 切片方块是笛卡尔的　`prop.slice-cartesian`
+*命题*　切片范畴与拉回
+
+设 $\varphi : T \implies T'$ 是预层之间的自然变换。则它诱导的方块
+
+$$\begin{array}{ccc} \mathcal{C}_{T} & \longrightarrow & \mathcal{C}_{T'} \\ \downarrow & & \downarrow \\ \mathcal{C} & \xrightarrow{\ 1\ } & \mathcal{C} \end{array}$$
+
+是**笛卡尔的**。
+
+把预层 $T'$ 沿 $\varphi$ 拉回到 $T$ 上，拉回来的元素范畴正是 $\mathcal{C}_{T}$ —— 「限制由一个自然变换给出」这件事，在范畴层面就是一次拉回。
+
+#### 稠密性定理　`thm.density`
+*定理*　稠密性定理（Density Theorem）
+
+$\widehat{\mathcal{C}}$ 中的每个预层 $T$ 都是**可表示预层的余极限**：
+
+$$T \;\cong\; \varinjlim_{(X, s) \in \mathcal{C}_{T}} h_{X}$$
+
+指标跑在切片范畴 $\mathcal{C}_{T}$ 上：$T$ 的每个元素 $(X, s)$ 贡献一个 $h_{X}$，$T$ 就是它们的余极限。
+
+所以 $\widehat{\mathcal{C}}$ 是「由可表示预层自由生成的」—— 可表示预层是它的一块块砖。后面说到「预层范畴是所有可表示预层的余极限闭包」时，说的就是这一条。
+
+#### 预层态射的单满按点检验　`lem.presheaf-mono-pointwise`
+*引理*　预层是逐点算的
+
+预层态射 $\varphi : T \implies T'$ 在 $\widehat{\mathcal{C}}$ 中是单态射（满态射）$\iff$ 对每个 $X \in \mathcal{C}$，$\varphi_{X} : T(X) \to T'(X)$ 是单射（满射）。
+
+一句话：**预层的性质按点检验**。$\widehat{\mathcal{C}}$ 里的一切都是逐点定义的，单满不例外。
+
+（$\Longleftarrow$）方向是显然的：逐点单射的族当然左可消。（$\Longrightarrow$）方向要用米田引理，见边上那条推导。
+
 ---
 
 ## 全部连线（含推导过程）
@@ -8014,6 +8169,82 @@ $$f = \beta_B \circ G(h) \circ \beta_A^{-1} : A \to B$$
 
 > 这条把「范畴等价」这件看起来要靠造函子的事，换成了两个**可以逐点检查**的条件：Hom 集上双射 + 对象层差一个同构。实际用的时候几乎都走这一条。
 
+#### 米田引理 ⟹ 表示的两个定义等价　`imp.yoneda-criterion`
+*米田引理 $\implies$ 表示的两个定义等价*
+
+**（$\Longleftarrow$）** 设 $h^{X} \cong F$，取一个自然同构 $\alpha : h^{X} \implies F$。由米田引理，$\alpha$ 由元素 $s = \alpha_{X}(1_{X}) \in F(X)$ 决定；反过来，给定 $s$ 也能定义出 $\alpha$。
+
+要证 $(X, s)$ 万有。固定 $Y$，则由 $\alpha$ 是自然同构，$\alpha_{Y} : \operatorname{Hom}_{\mathcal{C}}(X, Y) \to F(Y)$ 是双射。对任意 $t \in F(Y)$，记 $f = \alpha_{Y}^{-1}(t)$，即 $\alpha_{Y}(f) = t$。
+
+再用 $\alpha$ 的自然性（取 $f : X \to Y$）：
+
+$$\alpha_{Y}(f) = F(f)\bigl(\alpha_{X}(1_{X})\bigr) = F(f)(s)$$
+
+于是 $F(f)(s) = t$，且 $f$ 由 $\alpha_{Y}^{-1}$ 唯一确定。这就是万有元素的条件。∎
+
+**（$\Longrightarrow$）** 反过来设 $(X, s)$ 万有。对每个 $Y$ 定义
+
+$$\alpha_{Y} : \operatorname{Hom}_{\mathcal{C}}(X, Y) \to F(Y), \qquad f \mapsto F(f)(s)$$
+
+万有性说的正是「对每个 $t \in F(Y)$ 存在唯一 $f$ 使 $F(f)(s) = t$」，所以每个 $\alpha_{Y}$ 都是双射。剩下要检查的只有自然性：对 $g : Y \to Z$，两个复合 $\alpha_{Z} \circ \operatorname{Hom}(X, g)$ 与 $F(g) \circ \alpha_{Y}$ 都把那片 $f : X \to Y$ 送到 $F(g \circ f)(s)$，所以相等。于是 $\alpha : h^{X} \implies F$ 是自然同构，$h^{X} \cong F$。∎
+
+> 这条的意义在于：**要证明一个函子可表示，只要找到那个万有元素**，同构自动就有了。
+
+#### 米田引理 ⟹ 米田嵌入　`imp.yoneda-embedding`
+*米田引理 $\implies$ 米田嵌入全忠实、保极限*
+
+**全忠实。** 取预层的对偶形式（把 $\mathcal{C}$ 换成 $\mathcal{C}^{\mathrm{op}}$）：对 $T = h_{Y}$ 与 $X \in \mathcal{C}$ 有
+
+$$\operatorname{Hom}_{\widehat{\mathcal{C}}}(h_{X}, h_{Y}) \cong h_{Y}(X) = \operatorname{Hom}_{\mathcal{C}}(X, Y)$$
+
+这恰是 $\delta$ 在 Hom 集上诱导的映射，所以它逐对是双射，$\delta$ 全忠实。∎
+
+**保持所有极限。** 设 $D : I \to \mathcal{C}$ 有极限。$\widehat{\mathcal{C}}$ 是函子范畴，其中的极限**逐点**计算，于是对每个 $Z \in \mathcal{C}$，
+
+$$\Bigl(\varprojlim_{i} h_{D(i)}\Bigr)(Z) = \varprojlim_{i} \operatorname{Hom}_{\mathcal{C}}(Z, D(i)) \cong \operatorname{Hom}_{\mathcal{C}}\Bigl(Z, \varprojlim_{i} D(i)\Bigr) = h_{\lim D}(Z)$$
+
+中间那一步是「协变 $\operatorname{Hom}(Z, -)$ 保持极限」。逐点同构即同构，所以 $\delta(\lim D) \cong \lim \delta \circ D$。∎
+
+> 两个结论同出一源：**$h_{X}$ 到别处的箭头，就是 $X$ 处的元素**。
+
+#### 米田引理 + 切片范畴 ⟹ 稠密性定理　`imp.density`
+*米田引理 $\implies$ 稠密性定理*
+
+对每个 $(X, s) \in \mathcal{C}_{T}$，由 $s \in T(X)$ 与米田引理的对偶形式，有唯一对应的自然变换
+
+$$\alpha^{s} : h_{X} \implies T, \qquad \alpha^{s}_{Y} : \operatorname{Hom}_{\mathcal{C}}(Y, X) \to T(Y),\quad \psi \mapsto T(\psi)(s)$$
+
+切片范畴里的态射恰好是让这些 $\alpha^{s}$ 彼此相容的那些 $f$，所以 $\{\alpha^{s}\}_{(X,s)}$ 构成一个余锥，诱导出
+
+$$\Theta : \varinjlim_{(X, s) \in \mathcal{C}_{T}} h_{X} \longrightarrow T$$
+
+要证 $\Theta$ 是同构。逐点检验：对 $Y \in \mathcal{C}$，
+
+$$\Bigl(\varinjlim_{(X,s)} h_{X}\Bigr)(Y) = \varinjlim_{(X,s)} \operatorname{Hom}_{\mathcal{C}}(Y, X) \longrightarrow T(Y)$$
+
+而右边这个集合正是「以 $(X, s)$ 为指标、把每个 $\psi : Y \to X$ 送到 $T(\psi)(s) \in T(Y)$」的余极限。取 $(X, s) = (Y, t)$ 与 $\psi = 1_{Y}$，这一项的像就是 $t$ 本身；反过来，自然性 $T(\psi)(s) \in T(Y)$ 说明每一项都已经落在 $T(Y)$ 里。于是对每个 $t \in T(Y)$ 都有来源，且不同的 $t$ 给出不同的项 —— 逐点双射。∎
+
+> 把这条和米田引理并排看：米田说「$h_{X}$ 到 $T$ 的箭头 = $T$ 在 $X$ 处的元素」，稠密性把它反过来用 —— 既然元素就是箭头，那么全部元素（即 $\mathcal{C}_{T}$）就决定了 $T$ 自己。
+
+#### 米田引理 ⟹ 预层态射的单满按点检验　`imp.presheaf-mono`
+*米田引理 $\implies$ 单态射逐点检验*
+
+只需做（$\Longrightarrow$）方向。设 $\varphi : T \implies T'$ 是单态射，固定 $X$，设 $a, b \in T(X)$ 且 $\varphi_{X}(a) = \varphi_{X}(b)$。
+
+由米田引理的对偶形式，$a, b$ 各自对应一个自然变换 $f, g : h_{X} \implies T$，即在每个 $Y$ 处
+
+$$f_{Y}, g_{Y} : \operatorname{Hom}_{\mathcal{C}}(Y, X) \to T(Y), \qquad \psi \mapsto T(\psi)(a) \ \text{或}\ T(\psi)(b)$$
+
+对任意 $\psi : Y \to X$，用 $\varphi$ 的自然性：
+
+$$(\varphi \circ f)_{Y}(\psi) = \varphi_{Y}\bigl(T(\psi)(a)\bigr) = T'(\psi)\bigl(\varphi_{X}(a)\bigr) = T'(\psi)\bigl(\varphi_{X}(b)\bigr) = (\varphi \circ g)_{Y}(\psi)$$
+
+所以 $\varphi \circ f = \varphi \circ g$。又 $\varphi$ 是单态射，左可消，得 $f = g$。最后取 $Y = X$ 与 $\psi = 1_{X}$，就是 $a = b$。∎
+
+满态射的情形对偶（把范畴换成 $\mathcal{C}^{\mathrm{op}}$）。∎
+
+> 这里能看到米田引理的典型用法：**要把「元素层」的问题搬到「箭头层」，就先让元素变成 $h_{X}$ 到 $T$ 的箭头**。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -8329,6 +8560,42 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 #### 定义引用：「可积 / L¹」→ 积出来的函数是 AC · NBV　`def-link.integrable-integral-is-ac-nbv`
 
 **(1)** 的前提 $f \in L^1(m)$ 是**可积**。
+
+#### 定义引用：「单态射 / 满态射」→ 预层态射的单满按点检验　`def-link.mono-presheaf-mono`
+
+结论说的「$\varphi$ 是**单态射**（满态射）」是范畴论意义下的可消性，不是逐点单射 —— 逐点单射正是要证的内容。
+
+#### 定义引用：「极限」→ 米田嵌入　`def-link.limit-yoneda-embedding`
+
+「$\delta$ **保持所有极限**」里的极限是**泛锥**那个极限。
+
+#### 定义引用：「极限」→ 稠密性定理　`def-link.limit-density`
+
+稠密性定理说 $T$ 是可表示预层的**余极限**。
+
+#### 定义引用：「纤维积 / 纤维余积」→ 切片方块是笛卡尔的　`def-link.fibered-product-slice`
+
+结论说那个方块是**笛卡尔的** —— 这正是纤维积定义里的说法。
+
+#### 定义引用：「忠实 / 满 / 全忠实」→ 米田嵌入　`def-link.ff-faithful-yoneda-embedding`
+
+「$\delta$ 是**全忠实**函子」用的正是忠实与满的定义。
+
+#### 定义引用：「表示函子」→ 米田引理　`def-link.representable-yoneda`
+
+引理里的 $h^{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$ 正是那个**可表示函子**。
+
+#### 定义引用：「表示函子」→ 表示的两个定义等价　`def-link.representable-criterion`
+
+定理的左右两边都是「被 $X$ **表示**」这件事的说法。
+
+#### 定义引用：「切片范畴」→ 稠密性定理　`def-link.slice-category-density`
+
+稠密性定理里的余极限正是**跑在切片范畴 $\mathcal{C}_{T}$ 上**的。
+
+#### 定义引用：「预层」→ 预层态射的单满按点检验　`def-link.presheaf-mono-pointwise`
+
+被检验的 $\varphi : T \implies T'$ 是**预层**之间的自然变换。
 
 #### 定义引用：「子集」→ 关系　`def-dep.subset-rel`
 
@@ -8842,6 +9109,90 @@ $\Delta$ 的态射是**单调映射** $[n] \to [m]$，面映射与退化映射�
 
 「泛 = 辅助范畴的始 / 终对象」正是锥的「泛」的来源：极限就是锥范畴的终对象。
 
+#### 定义引用：「函子」→ 预层　`def-dep.functor-presheaf`
+
+预层按定义就是一个**反变函子** $T : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$。
+
+#### 定义引用：「范畴」→ 预层　`def-dep.category-presheaf`
+
+$\mathcal{C}^{\mathrm{op}}$ 与 $\mathbf{Set}$ 都是**范畴**，反变说的是复合的次序被翻过来。
+
+#### 定义引用：「自然变换」→ 预层范畴　`def-dep.nat-presheafcat`
+
+$\widehat{\mathcal{C}}$ 的态射就是预层之间的**自然变换**。
+
+#### 定义引用：「函子」→ 预层范畴　`def-dep.functor-presheafcat`
+
+预层范畴是**函子范畴** $\operatorname{Hom}(\mathcal{C}^{\mathrm{op}}, \mathbf{Set})$。
+
+#### 定义引用：「函子」→ 表示函子　`def-dep.functor-representable`
+
+被表示的东西 $F$ 本身就是一个**函子** $\mathcal{C} \to \mathbf{Set}$。
+
+#### 定义引用：「范畴」→ 表示函子　`def-dep.category-representable`
+
+$\operatorname{Hom}_{\mathcal{C}}(X, -)$ 是对**范畴** $\mathcal{C}$ 取的 Hom 函子。
+
+#### 定义引用：「函数」→ 表示函子　`def-dep.function-representable`
+
+万有条件里的 $\exists! f : X \to Y$ 与 $F(f)(s) = t$ 都是**函数**层的话。
+
+#### 定义引用：「自然变换」→ 表示函子　`def-dep.nat-representable`
+
+第二种定义写的是 $F \cong \operatorname{Hom}_{\mathcal{C}}(X, -)$，这个 $\cong$ 是**自然同构**。
+
+#### 定义引用：「元素范畴」→ 表示函子　`def-dep.el-representable`
+
+万有元素 $(X, s)$ 就是**元素范畴** $\operatorname{el}(F)$ 的始对象。
+
+#### 定义引用：「元素范畴」→ 切片范畴　`def-dep.el-slice`
+
+切片范畴就是**元素范畴**搬到预层上：把 $T(X)$ 的元素当元素。
+
+#### 定义引用：「预层」→ 切片范畴　`def-dep.presheaf-slice`
+
+切片范畴的**指标是 $T$ 的截面** $s \in T(X)$，没有预层就没有这些截面。
+
+#### 定义引用：「表示函子」→ 米田引理　`def-dep.representable-yoneda`
+
+引理里的 $h^{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$ 正是那个**可表示函子**。
+
+#### 定义引用：「自然变换」→ 米田引理　`def-dep.nat-yoneda`
+
+引理数的是 $h^{X}$ 到 $F$ 的**自然变换**全体。
+
+#### 定义引用：「函子」→ 米田引理　`def-dep.functor-yoneda`
+
+引理对**任意函子** $F : \mathcal{C} \to \mathbf{Set}$ 成立。
+
+#### 定义引用：「表示函子」→ 表示的两个定义等价　`def-dep.representable-criterion`
+
+定理的左右两边都是「被 $X$ **表示**」这件事的不同说法。
+
+#### 定义引用：「自然变换」→ 米田嵌入　`def-dep.nat-yoneda-embedding`
+
+全忠实说的是**自然变换集** $\operatorname{Hom}_{\widehat{\mathcal{C}}}(h_{X}, h_{Y})$ 与 $\operatorname{Hom}_{\mathcal{C}}(X, Y)$ 的双射。
+
+#### 定义引用：「忠实 / 满 / 全忠实」→ 米田嵌入　`def-dep.ff-yoneda-embedding`
+
+「$\delta$ 是**全忠实**函子」用的正是忠实与满的定义。
+
+#### 定义引用：「切片范畴」→ 稠密性定理　`def-dep.slice-density`
+
+稠密性定理里的余极限跑在**切片范畴** $\mathcal{C}_{T}$ 上。
+
+#### 定义引用：「纤维积 / 纤维余积」→ 切片方块是笛卡尔的　`def-dep.fibered-slice`
+
+「那个方块是**笛卡尔的**」正是纤维积定义里的说法。
+
+#### 定义引用：「预层」→ 预层态射的单满按点检验　`def-dep.presheaf-mono`
+
+被检验的 $\varphi : T \implies T'$ 是**预层**之间的自然变换。
+
+#### 定义引用：「单态射 / 满态射」→ 预层态射的单满按点检验　`def-dep.mono-presheaf-mono`
+
+结论里的单态射是范畴论意义下的**可消性**，不是逐点单射。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -9020,6 +9371,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **微分定理 ↔ 测度的构造**　3 条节点级连线
 - **L^p 空间 ↔ 可测函数与收敛**　3 条节点级连线
 - **L^p 空间 ↔ 测度的构造**　4 条节点级连线
+- **图与极限 ↔ 预层与米田**　8 条节点级连线
+- **函子与自然变换 ↔ 预层与米田**　10 条节点级连线
 - **向量空间的基 ↔ 序结构**　2 条节点级连线
 - **微分定理 ↔ 集合族与 σ-代数**　2 条节点级连线
 - **集合族与 σ-代数 ↔ 符号测度与分解**　2 条节点级连线
@@ -9030,3 +9383,4 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **范畴与图 ↔ 图与极限**　2 条节点级连线
 - **图与极限 ↔ 关系与函数**　3 条节点级连线
 - **图与极限 ↔ 集合的构造**　2 条节点级连线
+- **范畴与图 ↔ 预层与米田**　2 条节点级连线

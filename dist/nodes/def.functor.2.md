@@ -3,3 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 `def.commutative-diagram` 交换图 用
+- 被 `def.presheaf` 预层 用
+- 被 `def.presheaf-cat` 预层范畴 用
+- 被 `def.representable` 表示函子 用
+- 被 `lem.yoneda` 米田引理 用

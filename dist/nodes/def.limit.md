@@ -18,10 +18,10 @@ $$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.category-limit.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.yoneda-embedding` 米田嵌入 用
+- 被 `thm.density` 稠密性定理 用
 - 被 `def.final-initial` 终对象 / 始对象 用
 - 被 `def.product` 积 / 余积 用
-- 被 `def.fibered-product` 纤维积 / 纤维余积 用
-- 被 `def.equalizer` 等化子 / 余等化子 用
 
 > 说明见 `notes/def.limit.md`
 

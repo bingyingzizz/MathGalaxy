@@ -145,6 +145,16 @@
 - `\Sigma` Σ　**有限支集简单函数全体（`analysis.lp` 局部）**
 - `\partial f / \partial t`　**偏导**
 
+### 排版与箭头
+
+- `\bigl( \bigr)` （ ）　**按内容伸缩的括号** — **成对写**，别只写左边。
+- `\Bigl( \Bigr)` （ ）　**按内容伸缩的括号（大一号）** — 里外两层时，外层用 `\Bigl \Bigr`、内层用 `\bigl \bigr`。
+- `\xrightarrow{f}, \xleftarrow{g}` →f／←g　**带标签的箭头** — 交换图里把态射名字写在箭头上 / 下。
+- `\downarrow, \uparrow` ↓ ↑　**竖直箭头** — 交换图里竖边的方向。
+- `\varinjlim, \varprojlim` lim→／lim←　**余极限 / 极限** — 带指标的极限写作 $\varinjlim_{(X,s)} h_{X}$；不带指标时可以用 $\lim$、$\operatorname{colim}$。
+- `\coprod, \bigoplus` ∐ ∐　**余积 / 直和** — 集合的余积写 $\coprod$，加法群的余积写 $\bigoplus$。
+- `\underline{E}` E̲　**常预层 / 强调** — 常预层 $\underline{E}$ 取常值 $E$。
+
 ### 字母约定
 
 - `\alpha` α　**序数 / 指标** — 局部义：微分里是阈值，积分里是复相位
@@ -162,4 +172,6 @@
 - `\mathcal{K}` 𝒦　**证明内局部：单调类定理里的试探集族**
 - `\Delta` Δ　**分析里作对称差 / 增量（局部）；范畴论里作单纯形范畴、常图函子 $\Delta X$**
 - `\rightarrowtail` ↣　**单态射 / 嵌入（范畴论）**
+- `h^{X}, h_{X}` h^X／h_X　**可表示函子 / 可表示预层（范畴论）** — **上标记协变** $h^{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$；**下标记预层** $h_{X} = \operatorname{Hom}_{\mathcal{C}}(-, X)$。米田引理用上标，米田嵌入用下标。
+- `\Theta` Θ　**证明内局部：余极限到 $T$ 的那一个态射**
 - `\mathrm{ZFC}` ZFC　**公理系统名（名词 → `\mathrm{}`）**

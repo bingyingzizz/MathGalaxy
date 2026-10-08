@@ -623,11 +623,12 @@ function exportAIProducts(MG, graph, data) {
   files.push({
     path: 'index.md',
     text: `# 数学星图 · 目录\n\n` +
-      `数据根 = 本文件所在目录。下一步：读 \`index/<星团id>.md\` 拿节点清单。\n` +
+      `数据根 = 本目录。下一步：读 \`index/<星团id>.md\` 拿节点清单。\n` +
+      `星团的名字见 \`index/<星系id>.md\`（那页还有中心天体与点数）。\n` +
       `规模：${data.meta.counts.regions} 星系 / ${data.meta.counts.clusters} 星团 / ` +
       `${data.meta.counts.nodes} 节点 / ${data.meta.counts.edges} 连线。\n\n` +
       regions.map(({ r, cs }) =>
-        `## ${r.name}（${r.id}）\n` + cs.map(c => `- ${c.id}　${c.name}`).join('\n')).join('\n\n') + '\n',
+        `## ${r.name}（${r.id}）\n` + cs.map(c => c.id).join('　')).join('\n\n') + '\n',
   });
 
   for (const { r, cs } of regions) {

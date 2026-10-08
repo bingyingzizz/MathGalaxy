@@ -6,3 +6,4 @@
 - 被 `def.simplicial` 单纯对象 用
 - 被 `def.cone` 锥 用
 - 被 `def.elements-category` 元素范畴 用
+- 被 `def.representable` 表示函子 用

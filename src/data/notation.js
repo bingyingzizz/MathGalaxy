@@ -103,6 +103,7 @@ MG.notation = {
     { id: 'topo',    name: '拓扑与度量' },
     { id: 'measure', name: '测度与 σ-代数' },
     { id: 'integral',name: '积分与函数空间' },
+    { id: 'layout',  name: '排版与箭头' },
     { id: 'letters', name: '字母约定' },
   ],
 
@@ -264,6 +265,22 @@ MG.notation = {
     { g: 'integral', tex: '\\Sigma',  uni: 'Σ', name: '有限支集简单函数全体（`analysis.lp` 局部）' },
     { g: 'integral', tex: '\\partial f / \\partial t', uni: '', name: '偏导' },
 
+    /* -------- 排版与箭头 -------- */
+    { g: 'layout', tex: '\\bigl( \\bigr)',  uni: '（ ）', name: '按内容伸缩的括号',
+      note: '**成对写**，别只写左边。' },
+    { g: 'layout', tex: '\\Bigl( \\Bigr)',  uni: '（ ）', name: '按内容伸缩的括号（大一号）',
+      note: '里外两层时，外层用 `\\Bigl \\Bigr`、内层用 `\\bigl \\bigr`。' },
+    { g: 'layout', tex: '\\xrightarrow{f}, \\xleftarrow{g}', uni: '→f／←g', name: '带标签的箭头',
+      note: '交换图里把态射名字写在箭头上 / 下。' },
+    { g: 'layout', tex: '\\downarrow, \\uparrow', uni: '↓ ↑', name: '竖直箭头',
+      note: '交换图里竖边的方向。' },
+    { g: 'layout', tex: '\\varinjlim, \\varprojlim', uni: 'lim→／lim←', name: '余极限 / 极限',
+      note: '带指标的极限写作 $\\varinjlim_{(X,s)} h_{X}$；不带指标时可以用 $\\lim$、$\\operatorname{colim}$。' },
+    { g: 'layout', tex: '\\coprod, \\bigoplus', uni: '∐ ∐', name: '余积 / 直和',
+      note: '集合的余积写 $\\coprod$，加法群的余积写 $\\bigoplus$。' },
+    { g: 'layout', tex: '\\underline{E}',  uni: 'E̲', name: '常预层 / 强调',
+      note: '常预层 $\\underline{E}$ 取常值 $E$。' },
+
     /* -------- 字母约定 -------- */
     { g: 'letters', tex: '\\alpha',   uni: 'α', name: '序数 / 指标',
       note: '局部义：微分里是阈值，积分里是复相位' },
@@ -281,6 +298,9 @@ MG.notation = {
     { g: 'letters', tex: '\\mathcal{K}', uni: '𝒦', name: '证明内局部：单调类定理里的试探集族' },
     { g: 'letters', tex: '\\Delta', uni: 'Δ', name: '分析里作对称差 / 增量（局部）；**范畴论里作单纯形范畴、常图函子 $\\Delta X$**' },
     { g: 'letters', tex: '\\rightarrowtail', uni: '↣', name: '单态射 / 嵌入（范畴论）' },
+    { g: 'letters', tex: 'h^{X}, h_{X}', uni: 'h^X／h_X', name: '可表示函子 / 可表示预层（范畴论）',
+      note: '**上标记协变** $h^{X} = \\operatorname{Hom}_{\\mathcal{C}}(X, -)$；**下标记预层** $h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$。米田引理用上标，米田嵌入用下标。' },
+    { g: 'letters', tex: '\\Theta',   uni: 'Θ', name: '证明内局部：余极限到 $T$ 的那一个态射' },
     { g: 'letters', tex: '\\mathrm{ZFC}', uni: 'ZFC', name: '公理系统名（名词 → `\\mathrm{}`）' },
   ],
 

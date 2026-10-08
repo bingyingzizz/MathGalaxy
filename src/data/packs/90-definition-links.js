@@ -605,6 +605,71 @@ window.MG = window.MG || {};
       definition: 'def.integrable',
       usedBy: 'cor.integral-is-ac-nbv',
       note: '**(1)** 的前提 $f \\in L^1(m)$ 是**可积**。'
+    },
+
+    /* ------------------------------------------------ 星系：范畴论 */
+    {
+      id: 'def-link.mono-presheaf-mono',
+      kind: 'definition',
+      definition: 'def.mono',
+      usedBy: 'lem.presheaf-mono-pointwise',
+      note: '结论说的「$\\varphi$ 是**单态射**（满态射）」是范畴论意义下的可消性，不是逐点单射 —— 逐点单射正是要证的内容。'
+    },
+    {
+      id: 'def-link.limit-yoneda-embedding',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'prop.yoneda-embedding',
+      note: '「$\\delta$ **保持所有极限**」里的极限是**泛锥**那个极限。'
+    },
+    {
+      id: 'def-link.limit-density',
+      kind: 'definition',
+      definition: 'def.limit',
+      usedBy: 'thm.density',
+      note: '稠密性定理说 $T$ 是可表示预层的**余极限**。'
+    },
+    {
+      id: 'def-link.fibered-product-slice',
+      kind: 'definition',
+      definition: 'def.fibered-product',
+      usedBy: 'prop.slice-cartesian',
+      note: '结论说那个方块是**笛卡尔的** —— 这正是纤维积定义里的说法。'
+    },
+    {
+      id: 'def-link.ff-faithful-yoneda-embedding',
+      kind: 'definition',
+      definition: 'def.ff-faithful',
+      usedBy: 'prop.yoneda-embedding',
+      note: '「$\\delta$ 是**全忠实**函子」用的正是忠实与满的定义。'
+    },
+    {
+      id: 'def-link.representable-yoneda',
+      kind: 'definition',
+      definition: 'def.representable',
+      usedBy: 'lem.yoneda',
+      note: '引理里的 $h^{X} = \\operatorname{Hom}_{\\mathcal{C}}(X, -)$ 正是那个**可表示函子**。'
+    },
+    {
+      id: 'def-link.representable-criterion',
+      kind: 'definition',
+      definition: 'def.representable',
+      usedBy: 'thm.represented-criterion',
+      note: '定理的左右两边都是「被 $X$ **表示**」这件事的说法。'
+    },
+    {
+      id: 'def-link.slice-category-density',
+      kind: 'definition',
+      definition: 'def.slice-category',
+      usedBy: 'thm.density',
+      note: '稠密性定理里的余极限正是**跑在切片范畴 $\\mathcal{C}_{T}$ 上**的。'
+    },
+    {
+      id: 'def-link.presheaf-mono-pointwise',
+      kind: 'definition',
+      definition: 'def.presheaf',
+      usedBy: 'lem.presheaf-mono-pointwise',
+      note: '被检验的 $\\varphi : T \\implies T\'$ 是**预层**之间的自然变换。'
     }
   ]
 });

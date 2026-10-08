@@ -1,0 +1,8 @@
+# 表示函子　`def.representable`　·　续页（第 3 页）
+根 `../`　·　第 1 页 `nodes/def.representable.md`　·　上一页 `nodes/def.representable.2.md`
+
+## 它能推出什么 / 谁在用它（续）
+- 被 `lem.yoneda` 米田引理 用
+- 被 `thm.represented-criterion` 表示的两个定义等价 用
+- 被 `lem.yoneda` 米田引理 用
+- 被 `thm.represented-criterion` 表示的两个定义等价 用

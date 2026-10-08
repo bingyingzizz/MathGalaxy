@@ -16,6 +16,6 @@
 - `\mathcal{K}` 𝒦　**证明内局部：单调类定理里的试探集族**
 - `\Delta` Δ　**分析里作对称差 / 增量（局部）；范畴论里作单纯形范畴、常图函子 $\Delta X$**
 - `\rightarrowtail` ↣　**单态射 / 嵌入（范畴论）**
-- `\mathrm{ZFC}` ZFC　**公
+- `h^{X}, h_{X}` h^X／h_X
 
 > 续见 notation/letters.2.md

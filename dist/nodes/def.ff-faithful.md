@@ -17,5 +17,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\ma
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `def.cat-equivalence` 范畴等价
+- 被 `prop.yoneda-embedding` 米田嵌入 用
+- 被 `prop.yoneda-embedding` 米田嵌入 用
 
 > 说明见 `notes/def.ff-faithful.md`

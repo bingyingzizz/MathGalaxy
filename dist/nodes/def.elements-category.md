@@ -14,4 +14,8 @@ $$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
 - `def.function` 函数：用到了定义 函数　proofs/def-dep.function-el.md
 - `def.cone` 锥：用到了定义 锥　proofs/def-dep.cone-el.md
 
+## 它能推出什么 / 谁在用它
+- 被 `def.representable` 表示函子 用
+- 被 `def.slice-category` 切片范畴 用
+
 > 说明见 `notes/def.elements-category.md`
