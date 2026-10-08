@@ -74,6 +74,8 @@ html, body {
   gap: 8px;
   padding: 0 10px;
   height: 40px;
+  /* 要比 #legend 高：图例贴在左下角、能长很高，结果下拉是浮层，得压住它 */
+  z-index: 12;
   transition: box-shadow .18s ease, border-color .18s ease;
 }
 #search-box.active { box-shadow: var(--shadow-md); border-color: var(--line-strong); }
@@ -207,7 +209,8 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   bottom: 14px;
   padding: 10px 12px;
   max-width: 300px;
-  max-height: calc(100vh - 28px);   /* 窗口太矮时自己滚，别让顶跑出屏幕 */
+  /* 窗口太矮时自己滚；顶上给搜索框留出 14 + 40 + 14 的位置，别把搜索框压住 */
+  max-height: calc(100vh - 82px);
   overflow-y: auto;
   overscroll-behavior: contain;
   font-size: 12px;

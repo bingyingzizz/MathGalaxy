@@ -69,7 +69,7 @@ function loadMG() {
   const files = [
     'core/config.js', 'core/util.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
     'core/layers.js',
-    'data/regions.js', 'data/clusters.js', 'data/notation.js',
+    'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/notation.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -790,13 +790,14 @@ function exportLlmsTxt(data, base = '') {
   const live = base === '' ? '线上：https://bingyingzizz.github.io/mathgalaxy/\n' : '';
   return `# 数学星图 MathGalaxy
 
-可检索的数学知识图谱：节点是定理 / 定义 / 引理，边是它们的逻辑关系。
+可检索的数学知识图谱：节点是定理/定义/引理，边是逻辑关系。
 **给 AI 用：按协议取数据，不要单次抓 graph.json。**
 ${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。
 数据根 = 本文件所在目录。${live}
 
 ## 检索协议
 
+0. \`${base}alias.md\` —— 大白话 / 英文名 → 节点 id。
 1. \`${base}index.md\` —— 星系 → 星团 id。
 2. \`${base}index/<星系id>.md\` —— 该星系的星团（名字、中心天体、点数）。
 3. \`${base}index/<星团id>.md\` —— 该团节点清单（id / 名称 / 层号）。
@@ -804,10 +805,10 @@ ${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连�
    说明在 \`notes/<节点id>.md\`，边的正文在 \`proofs/<边id>.md\`。
 顺着 id 继续读就是沿图走。
 
-⚠ **单次抓取只有约 1000 词元**，抓取工具还会转义
+⚠ **单次抓取约 1000 词元**，抓取工具还会转义
 \`# * [ ] \\\` _ ~\`。产物都按这个尺度切过：**放不下的分页成
-\`<路径>.2.md\`**，第 1 页永远是 \`<路径>.md\`，页头写了上下页在哪。
-\`${base}graph.json\` / \`${base}graph.md\` 是 550 / 430 KB 的全量导出：
+\`<路径>.2.md\`**，首页永远是 \`<路径>.md\`。
+\`${base}graph.json\` / \`${base}graph.md\` 是几百 KB 的全量导出：
 **只用来下载，不要用来检索**。
 
 ## 其它
@@ -1006,6 +1007,110 @@ function exportNotationProducts(MG, base = '') {
   return files;
 }
 
+/* -------------------------------------------------------- alias.md */
+/* 别名与问法索引。真源在 `src/data/aliases.js` —— 这里只把它排版出来。
+   给 AI 的用处：把「大白话 / 英文名 / 老名字」换成节点 id，
+   它不用先猜中文术语再去 `index/` 里碰运气。
+   为什么按星系切页：整表远超单次抓取上限，而 AI 通常只关心一个星系。 */
+function aliasFilter(A, graph, regionId) {
+  const inRegion = id => {
+    const n = graph.byId[id];
+    return !!(n && (n.regions || []).indexOf(regionId) >= 0);
+  };
+  return {
+    hooks: (A.hooks || []).filter(h => (h.to || []).some(inRegion)),
+    nodes: (A.nodes || []).filter(r => inRegion(r.id)),
+  };
+}
+
+function exportAlias(MG, graph, base = '') {
+  const A = MG.aliases || { nodes: [], hooks: [] };
+  const L = [];
+  L.push('# 数学星图 · 别名与问法索引');
+  L.push('');
+  L.push(A.intro || '');
+  L.push('');
+  L.push('用别的叫法（英文名 / 老名字 / 大白话）查不到东西时，先来这里换节点 id。');
+  L.push('');
+  L.push('`alias/<星系id>.md` 是**问法**（一句人话 → 节点 id）；');
+  L.push('`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）。');
+  L.push('');
+  for (const r of graph.regions) {
+    const f = aliasFilter(A, graph, r.id);
+    if (!f.nodes.length && !f.hooks.length) continue;
+    L.push(`- ${r.name}　\`${base}alias/${r.id}.md\` ${f.hooks.length} 问法　·　` +
+      `\`${base}alias/aka/${r.id}.md\` ${f.nodes.length} 别名`);
+  }
+  L.push('');
+  return L.join('\n') + '\n';
+}
+
+/* ⚠️ 问法与别名**分两个文件**：问法是个短表（一个星系一两页就完），
+   别名是所有节点的别的叫法，能摊到十几页。挤在一页里，AI 为了找一句问法
+   得把十几页别名一起翻完。 */
+function aliasHookBody(A, graph, regionId) {
+  return aliasFilter(A, graph, regionId).hooks
+    .map(h => `- ${h.q} → ${(h.to || []).join(' ')}`).join('\n\n');
+}
+
+function aliasAkaBody(A, graph, regionId) {
+  return aliasFilter(A, graph, regionId).nodes
+    .map(r => `- ${(r.aka || []).join(' | ')} → ${r.id}`).join('\n\n');
+}
+
+function exportAliasProducts(MG, graph) {
+  const A = MG.aliases || {};
+  const files = [];
+  for (const r of graph.regions) {
+    const f = aliasFilter(A, graph, r.id);
+    if (f.hooks.length) {
+      const head = `# 问法 → 节点 · ${r.name}\n` +
+        `根 \`../\`　·　索引 \`../alias.md\`　·　别名在 \`aka/${r.id}.md\`\n\n`;
+      emitChunks(files, 'alias', r.id, head, aliasHookBody(A, graph, r.id), '见 `../alias.md`。');
+    }
+    if (f.nodes.length) {
+      const head = `# 别名 → 节点 · ${r.name}\n` +
+        `根 \`../../\`　·　索引 \`../../alias.md\`　·　问法在 \`../${r.id}.md\`\n\n`;
+      emitChunks(files, 'alias/aka', r.id, head, aliasAkaBody(A, graph, r.id), '见 `../../alias.md`。');
+    }
+  }
+  return files;
+}
+
+/* -------------------------------------------------------- 别名表断言 */
+function assertAliases(MG, graph) {
+  const A = MG.aliases;
+  if (!A) return ['别名表：`src/data/aliases.js` 没有挂上（index.html 少了 <script>？）'];
+  const errs = [];
+  const ids = graph.byId;
+  const seenNode = new Set();
+  for (const r of (A.nodes || [])) {
+    if (!r.id) { errs.push('别名表：有条目没写 id'); continue; }
+    if (!ids[r.id]) errs.push(`别名表：条目指向不存在的节点 \`${r.id}\``);
+    if (seenNode.has(r.id)) errs.push(`别名表：节点 \`${r.id}\` 重复登记`);
+    seenNode.add(r.id);
+    if (!(r.aka || []).length) errs.push(`别名表：\`${r.id}\` 的 aka 是空的`);
+    for (const a of (r.aka || [])) {
+      if (!String(a).trim()) errs.push(`别名表：\`${r.id}\` 有空别名`);
+      if (String(a).includes('$')) {
+        errs.push(`别名表：\`${r.id}\` 的别名含 \`$\` —— aka 与 label 一样是纯文本：${a}`);
+      }
+    }
+  }
+  const seenQ = new Set();
+  for (const h of (A.hooks || [])) {
+    if (!h.q) { errs.push('别名表：有问题钩子没写 q'); continue; }
+    if (seenQ.has(h.q)) errs.push(`别名表：问法重复 —— ${h.q}`);
+    seenQ.add(h.q);
+    if (String(h.q).includes('$')) errs.push(`别名表：问法含 \`$\`：${h.q}`);
+    if (!(h.to || []).length) errs.push(`别名表：问法「${h.q}」没有 to`);
+    for (const t of (h.to || [])) {
+      if (!ids[t]) errs.push(`别名表：问法「${h.q}」指向不存在的节点 \`${t}\``);
+    }
+  }
+  return errs;
+}
+
 /* ------------------------------------------------- 记号表的硬断言 */
 /** 剥掉公式与代码，只留「普通文字」—— 裸 Unicode 检查要在公式之外做 */
 function stripMath(s) {
@@ -1169,7 +1274,7 @@ if (doJSON) {
   console.log('  → dist/hubs.md');
 
   /* ---------------------------------------------- AI 按需检索产物 */
-  for (const d of ['nodes', 'proofs', 'notes', 'index', 'notation']) {
+  for (const d of ['nodes', 'proofs', 'notes', 'index', 'notation', 'alias']) {
     fs.rmSync(path.join(DIST, d), { recursive: true, force: true });
   }
   // 早期版本产出过 JSON 版索引；抓取工具对 JSON 不友好，已改成纯文本 .md。
@@ -1186,10 +1291,19 @@ if (doJSON) {
   for (const f of notationFiles) files.push(f);   // 一起过体积断言，一起落盘
   console.log(`  → dist/notation.md + notation/*.md（${notationFiles.length} 页）+ notation.md`);
 
+  /* ------------------------------------------------------ 别名表产物 */
+  /* 真源是 src/data/aliases.js —— 别名与问法两边共用同一份数据。 */
+  fs.writeFileSync(path.join(DIST, 'alias.md'), exportAlias(MG, graph), 'utf8');
+  fs.writeFileSync(path.join(ROOT, 'alias.md'), exportAlias(MG, graph, 'dist/'), 'utf8');
+  const aliasFiles = exportAliasProducts(MG, graph);
+  for (const f of aliasFiles) files.push(f);
+  console.log(`  → dist/alias.md + alias/*.md（${aliasFiles.length} 页）+ alias.md`);
+
   const errs = assertAI(MG, graph, files, pagesOf);
   errs.push(...assertNotation(MG, graph));
+  errs.push(...assertAliases(MG, graph));
   // 给 AI 看的说明文档也必须在一次抓取之内
-  for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md']) {
+  for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md', 'alias.md']) {
     const p = path.join(DIST, extra);
     if (!fs.existsSync(p)) continue;
     const t = fs.readFileSync(p, 'utf8');
