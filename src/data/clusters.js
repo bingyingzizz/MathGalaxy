@@ -215,6 +215,15 @@ MG.clusters = [
     parent: 'analysis',
     hub: 'def.lp-norm',
     desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
+  },
+
+  /* ------------------------------------------------ 星系：范畴论 */
+  {
+    id: 'cat.basic',
+    name: '范畴与图',
+    parent: 'category',
+    hub: 'def.category',
+    desc: '造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

@@ -216,7 +216,29 @@ window.MG = window.MG || {};
     ['def.measure', 'def.shrinks-nicely', 'def-dep.measure-shrinks-nicely',
       '「$m(E_r) > \\alpha \\cdot m(B(r, x))$」里的 $m$ 是一个**测度**。'],
     ['def.lplus', 'def.integral-simple', 'def-dep.lplus-integral-simple',
-      '标准形式写的是「$\\varphi \\in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。']
+      '标准形式写的是「$\\varphi \\in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。'],
+
+    /* --------------------------------------------------- 范畴论（地基） */
+    ['def.power-set', 'def.universe', 'def-dep.power-universe',
+      '宇宙的第三条要求 $x \\in U \\implies \\mathcal{P}(x) \\in U$，用的就是**幂集**。'],
+    ['def.union-inter', 'def.universe', 'def-dep.union-universe',
+      '第四条 $\\bigcup_{t \\in p} f(t) \\in U$ 用的是**并集**（指标集是 $U$ 里的一个集合，所以这里要的是「沿一个集合取并」）。'],
+    ['def.pair', 'def.graph', 'def-dep.pair-graph',
+      '四元组 $(V, E, s, t)$ 是**嵌套的有序对** —— 有序对是它的载体，先有有序对才写得下四元组。'],
+    ['def.function', 'def.graph', 'def-dep.function-graph',
+      '起点映射与终点映射 $s, t : E \\to V$ 是两个**函数**。'],
+    ['def.graph', 'def.graph-morphism', 'def-dep.graph-graph-morphism',
+      '图的态射是**图之间**的 —— 先有图这个对象。'],
+    ['def.function', 'def.graph-morphism', 'def-dep.function-graph-morphism',
+      '图的态射是一**对函数** $(\\varphi_1, \\varphi_2)$，再加上两条交换性等式。'],
+    ['def.graph', 'def.category', 'def-dep.graph-category',
+      '范畴是一个六元组，其中 $(\\mathcal{O}, M, s, t)$ **是一个图** —— 图是范畴的骨架，复合与单位是额外加上去的。'],
+    ['thm.product', 'def.category', 'def-dep.product-category',
+      '复合 $\\circ$ 是从 $M \\times M$ 里抠出来的那部分出发的，要先有**笛卡尔积**。'],
+    ['def.subset', 'def.category', 'def-dep.subset-category',
+      '$M \\times_{s,t} M = \\{ (f,g) \\in M \\times M : s(f) = t(g) \\}$ 是 $M \\times M$ 的一个**子集**。'],
+    ['def.category', 'def.section-retraction', 'def-dep.category-section',
+      '截面与收缩说的是范畴里**态射与单位态射**之间的关系，没有范畴就无从说起。']
 
   ];
 

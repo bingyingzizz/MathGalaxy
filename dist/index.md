@@ -1,7 +1,7 @@
 # 数学星图 · 目录
 
 数据根 = 本文件所在目录。下一步：读 `index/<星团id>.md` 拿节点清单。
-规模：6 星系 / 23 星团 / 230 节点 / 485 连线。
+规模：7 星系 / 24 星团 / 235 节点 / 495 连线。
 
 ## 数理逻辑（logic）
 - logic.fol　一阶语言与公式
@@ -37,3 +37,6 @@
 - analysis.differentiation　微分定理
 - analysis.bv　有界变差与绝对连续
 - analysis.lp　L^p 空间
+
+## 范畴论（category）
+- cat.basic　范畴与图

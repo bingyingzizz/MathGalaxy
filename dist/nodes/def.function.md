@@ -22,6 +22,8 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 - 被 `def.metric-space` 距离空间 用
 - 被 `def.product-sigma` 积 σ-代数 用
 - 被 `def.measurable-function` 可测函数 用
+- 被 `def.graph` 图 用
+- 被 `def.graph-morphism` 图的态射 用
 
 refs: Kunen, Set Theory, I.5
 

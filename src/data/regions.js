@@ -61,5 +61,14 @@ MG.regions = [
     center: { x: -420, y: 720 },
     radius: 500,
     desc: '极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。'
+  },
+  {
+    id: 'category',
+    name: '范畴论',
+    en: 'Category Theory',
+    color: '#B03A5B',
+    center: { x: 1600, y: 1250 },
+    radius: 560,
+    desc: '范畴、函子、自然变换、极限与伴随；再往上走到层论、拓扑斯与凝聚态数学。'
   }
 ];

@@ -12,3 +12,4 @@
 - 被 `def.outer-measure` 外测度 用
 - 被 `def.section` 截口 用
 - 被 `def.shrinks-nicely` 可缩族 用
+- 被 `def.category` 范畴 用
