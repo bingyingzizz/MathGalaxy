@@ -14,6 +14,8 @@ $$\forall f : Y \to X,\ \forall Z \in \mathcal{C}, \qquad \operatorname{Hom}_{\m
 - `def.sieve` 筛：用到了定义 筛　proofs/def-dep.sieve-canonical.md
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.disjoint-universal` 不交万有余积与次标准拓扑 用
+- ⇒ `thm.giraud` Giraud 定理
 
 > 说明见 `notes/def.canonical-topology.md`
+
+- …另有出边，续页见 `nodes/def.canonical-topology.2.md`

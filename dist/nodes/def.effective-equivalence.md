@@ -15,6 +15,9 @@ $$R \;\cong\; X \times_{\overline{X}} X, \qquad \overline{X} := \operatorname{co
 - `def.fibered-product` 纤维积 / 纤维余积：用到了定义 纤维积 / 纤维余积　proofs/def-dep.fibered-effective.md
 
 ## 它能推出什么 / 谁在用它
+- ⇒ `prop.pretopos-factorization` 满-单分解
 - 被 `prop.sheafify-equivalence` 层化与等价关系交换 用
 
 > 说明见 `notes/def.effective-equivalence.md`
+
+- …另有出边，续页见 `nodes/def.effective-equivalence.2.md`

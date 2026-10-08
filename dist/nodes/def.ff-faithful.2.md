@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 `def.reflective-subcategory` 反射子范畴 用
+- 被 `def.generator` 生成元集 用

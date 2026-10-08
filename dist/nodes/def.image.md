@@ -14,4 +14,7 @@ $$\operatorname{coim} f \longrightarrow \operatorname{im} f$$
 - `def.subobject` 子对象：用到了定义 子对象　proofs/def-dep.subobject-image.md
 - `def.mono` 单态射 / 满态射：用到了定义 单态射 / 满态射　proofs/def-dep.mono-image.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.pretopos-factorization` 满-单分解 用
+
 > 说明见 `notes/def.image.md`

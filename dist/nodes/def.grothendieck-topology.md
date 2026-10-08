@@ -21,3 +21,5 @@ layer 14 · 定义 · 层与拓扑 · 范畴论
 - 被 `def.canonical-topology` 标准拓扑 用
 
 > 说明见 `notes/def.grothendieck-topology.md`
+
+- …另有出边，续页见 `nodes/def.grothendieck-topology.3.md`

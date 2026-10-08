@@ -5,3 +5,6 @@
 - 被 `thm.sheaf-descent` 层的下降条件 用
 - 被 `def.universal-colimit` 万有关系 用
 - 被 `def.effective-equivalence` 有效等价关系 用
+- 被 `prop.subobject-lattice` 子对象构成有界格 用
+- 被 `prop.quasi-compact-properties` 拟紧的性质 用
+- 被 `def.quasi-separated` 拟分离对象 用

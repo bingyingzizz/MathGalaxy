@@ -13,6 +13,7 @@ layer 13 · 定义 · 层与拓扑 · 范畴论
 - ⇒ `prop.site-properties` site 的层范畴的好性质
 - 被 `prop.site-properties` site 的层范畴的好性质 用
 - 被 `prop.disjoint-universal` 不交万有余积与次标准拓扑 用
+- 被 `def.pretopos` 预拓扑斯 用
 
 ## 说明
 「万有」= **拉回之后还在**：不管把整个图沿什么映射拉回去，性质都保持。这三条是把「集合里那些显然的好性质」翻译成范畴语言的样板 —— 它们在 $\mathbf{Set}$ 里不出问题，但换一个范畴就未必，所以必须写下来。

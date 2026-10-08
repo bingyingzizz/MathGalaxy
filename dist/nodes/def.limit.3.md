@@ -22,3 +22,5 @@
 - 被 `prop.filtered-exact` 滤过余极限正合 用
 - 被 `def.profinite` 投射有限空间 用
 - 被 `def.sheaf` 层 用
+
+> 续见 `nodes/def.limit.4.md`

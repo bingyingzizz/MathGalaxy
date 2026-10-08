@@ -14,5 +14,6 @@ $$Y \cap Z := Y \times_{X} Z, \qquad f^{-1}(Y) := Y \times_{X} X'$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `def.image` 像 / 余像 用
+- 被 `prop.subobject-lattice` 子对象构成有界格 用
 
 > 说明见 `notes/def.subobject.md`

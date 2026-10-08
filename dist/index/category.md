@@ -10,3 +10,4 @@
 - cat.adjoint　伴随与反射　中心天体 def.adjoint　13 点
 - cat.chaus　紧 Haus 与 Stone　中心天体 prop.chaus-reflective　18 点
 - cat.sheaf　层与拓扑　中心天体 def.sheaf　18 点
+- cat.topos　拓扑斯　中心天体 def.topos　18 点

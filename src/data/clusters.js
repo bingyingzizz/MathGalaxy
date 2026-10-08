@@ -266,6 +266,13 @@ MG.clusters = [
     parent: 'category',
     hub: 'def.sheaf',
     desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。'
+  },
+  {
+    id: 'cat.topos',
+    name: '拓扑斯',
+    parent: 'category',
+    hub: 'def.topos',
+    desc: '造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
