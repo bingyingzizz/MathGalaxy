@@ -18,5 +18,7 @@ $$G(f) \circ \alpha_X = \alpha_Y \circ F(f)$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `def.cat-equivalence` 范畴等价 用
+- 被 `def.cone` 锥 用
+- 被 `thm.lim-functor` 极限的函子性 用
 
 > 说明见 `notes/def.natural-transformation.md`

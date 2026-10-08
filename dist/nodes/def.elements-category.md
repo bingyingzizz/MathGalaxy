@@ -1,0 +1,17 @@
+# 元素范畴　`def.elements-category`
+元素范畴（Category of Elements）
+layer 11 · 定义 · 图与极限 · 范畴论
+
+函子 $F : \mathcal{C} \to \mathbf{Set}$ 的**元素范畴** $\operatorname{el}(F)$ 以
+
+$$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
+
+为对象，从 $(Y, t)$ 到 $(Z, u)$ 的态射取使 $F(f)(t) = u$ 的 $f : Y \to Z$。
+
+称 $(X, s)$ 是 $F$ 的**泛元素**，如果它是 $\operatorname{el}(F)$ 的始对象。
+
+## 为什么成立（入边，证明在 proofs/）
+- `def.function` 函数：用到了定义 函数　proofs/def-dep.function-el.md
+- `def.cone` 锥：用到了定义 锥　proofs/def-dep.cone-el.md
+
+> 说明见 `notes/def.elements-category.md`

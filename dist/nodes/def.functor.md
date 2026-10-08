@@ -24,3 +24,5 @@ $$F(1_X) = 1_{F(X)}, \qquad F(g \circ f) = F(g) \circ F(f)$$
 - 被 `def.cat-equivalence` 范畴等价 用
 
 > 说明见 `notes/def.functor.md`
+
+- …另有出边，续页见 `nodes/def.functor.2.md`

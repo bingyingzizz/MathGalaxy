@@ -9,11 +9,13 @@
 - `\theta` θ　**角度**
 - `\tau` τ　**停时 / 一般函数（罕见）**
 - `\zeta` ζ　**（罕见）**
-- `\mathcal{C}` 𝒞　**证明内局部：Cauchy 列全体 / 递升集合族**
+- `\mathcal{C}` 𝒞　**证明内局部：Cauchy 列全体 / 递升集合族；范畴论里作范畴**
 - `\mathcal{F}` ℱ　**证明内局部：部分选择函数全体 / 生成元族**
 - `\mathcal{U}, \mathcal{V}`　**证明内局部：开覆盖 / 有限子覆盖**
-- `\mathcal{D}` 𝒟　**证明内局部：链的族**
+- `\mathcal{D}` 𝒟　**证明内局部：链的族；范畴论里作范畴**
 - `\mathcal{K}` 𝒦　**证明内局部：单调类定理里的试探集族**
-- `\mathrm{ZFC}` ZFC　**公理系统名（名词 → `\mathrm{}`）**
+- `\Delta` Δ　**分析里作对称差 / 增量（局部）；范畴论里作单纯形范畴、常图函子 $\Delta X$**
+- `\rightarrowtail` ↣　**单态射 / 嵌入（范畴论）**
+- `\mathrm{ZFC}` ZFC　**公
 
-索引 `notation.md`。
+> 续见 notation/letters.2.md

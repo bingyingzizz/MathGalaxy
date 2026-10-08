@@ -231,6 +231,13 @@ MG.clusters = [
     parent: 'category',
     hub: 'def.natural-transformation',
     desc: '造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。'
+  },
+  {
+    id: 'cat.limit',
+    name: '图与极限',
+    parent: 'category',
+    hub: 'def.limit',
+    desc: '造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子，再落回子对象与像。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

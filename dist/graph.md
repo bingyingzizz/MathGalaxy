@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:47:25.317Z
-> 7 星系 / 25 星团 / 240 节点 / 504 连线（强边 496，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:52:45.372Z
+> 7 星系 / 26 星团 / 253 节点 / 528 连线（强边 520，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -4905,6 +4905,213 @@ $$F \circ G \cong 1_{\mathcal{C}'}, \qquad G \circ F \cong 1_{\mathcal{C}}$$
 
 在等价之下，「两个范畴是不是同一个」这个问题被替换成「能不能互相翻译而不丢结构」—— 范畴论后面所有「$\mathcal{C}$ 与 $\mathcal{C}'$ 一样」的说法，用的都是这个意思。
 
+### 星团：图与极限
+> 造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子，再落回子对象与像。
+
+#### 交换图　`def.commutative-diagram`
+*定义*　交换图（Commutative Diagram）
+
+设 $I$ 是一个**小范畴**（只有一个小集合那么多对象与态射）。$\mathcal{C}$ 中**以 $I$ 为索引范畴的图**（也叫 $I$ 上的交换图）就是一个函子
+
+$$D : I \longrightarrow \mathcal{C}$$
+
+所有这样的图以自然变换为态射，组成范畴
+
+$$\mathcal{C}^{I} := \operatorname{Hom}(I, \mathcal{C})$$
+
+之所以叫「交换图」，是因为 $I$ 里的复合 $\beta \circ \alpha$ 被 $D$ 送到 $\mathcal{C}$ 里的复合 $D(\beta) \circ D(\alpha)$ —— 函子的定义里已经写死了两个复合相等，所以图上沿不同路径走结果一样，这正是「交换」。
+
+$I$ 叫**索引范畴**：它只规定图的形状，不规定内容。
+
+沿一个函子 $\lambda : I \to J$ 预复合，得到**重索引** $\lambda^{*} : \mathcal{C}^{J} \to \mathcal{C}^{I}$：把 $J$ 形状的图截成 $I$ 形状的图。特别地，到终范畴的唯一函子 $I \to \mathbf{1}$ 诱导**常图函子** $\Delta : \mathcal{C} \longrightarrow \mathcal{C}^{I}$，它把对象 $X$ 送到「每个位置都是 $X$、每条箭头都是 $1_X$」的常图。
+
+#### 单纯对象　`def.simplicial`
+*定义*　单纯对象（Simplicial Object）
+
+**单纯形范畴** $\Delta$ 的对象是
+
+$$[0], \ [1], \ [2], \ \ldots, \ [n], \ \ldots$$
+
+而 $[n] \to [m]$ 的态射取全体**单调映射**（不要求 $n \le m$，也不要求严格）。$\Delta$ 的全体态射由两类生成：
+
+- **面映射** $\delta^{i} : [n-1] \to [n]$：跳过第 $i$ 个点（$i = 0, \ldots, n$）；
+- **退化映射** $\sigma^{i} : [n] \to [n-1]$：重复第 $i$ 个点。
+
+只保留面映射的子范畴记 $\Delta_{\mathrm{inj}}$，只保留退化映射的记 $\Delta_{\mathrm{surj}}$。$\mathcal{C}$ 中的**单纯对象**是图
+
+$$X : \Delta^{\mathrm{op}} \longrightarrow \mathcal{C}$$
+
+只保留面映射的图（$\Delta_{\mathrm{inj}}^{\mathrm{op}} \to \mathcal{C}$）叫**半单纯对象**。
+
+把 $[n]$ 画成一个顶点数 $n+1$ 的标准单纯形，面映射就是「贴一个面」，退化映射就是「把一个顶点压扁」。于是 $\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\Delta^{\mathrm{op}} \to \mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。
+
+取 $\mathcal{C} = \mathbf{Set}$，$X([n])$ 就是「$n$ 维单纯形的集合」，$X(\delta^i)$ 给出「第 $i$ 个面」，$X(\sigma^i)$ 给出「退化」。
+
+#### 锥　`def.cone`
+*定义*　锥与余锥（Cone / Cocone）
+
+设 $D : I \to \mathcal{C}$ 是一个图。$D$ 上的**锥**是一个对象 $X \in \mathcal{C}$ 连同一族态射
+
+$$p_i : X \longrightarrow D(i) \qquad (i \in I)$$
+
+使得对 $I$ 中每条 $\alpha : i \to j$ 都有
+
+$$D(\alpha) \circ p_i = p_j$$
+
+等价地说，锥就是从常图 $\Delta X$ 到 $D$ 的一个自然变换。把其中的箭头全部反向，得到**余锥**。
+
+直观：$X$ 站在图外面，往 $D$ 的每个位置上各投一束光，而且要求投影之间彼此相容（先投影再走图中的箭头，与直接投影到终点，结果一样）。
+
+$X$ 固定时，$D$ 上的锥恰好是自然变换集 $\operatorname{Nat}(\Delta X, D)$，所以「锥」不是新东西，只是把自然变换换了个说法。
+
+#### 极限　`def.limit`
+*定义*　极限与余极限（Limit / Colimit）
+
+图 $D : I \to \mathcal{C}$ 的**极限**是对 $D$ 上的锥具有泛性质的那一个：锥 $(\lim D,\ p_i)$ 使得对任意锥 $(Y,\ g_i)$，存在**唯一**的态射 $g : Y \to \lim D$ 使
+
+$$p_i \circ g = g_i \qquad (i \in I)$$
+
+等价地，锥函子被 $\lim D$ 表示：
+
+$$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}_{\mathcal{C}}(Y, \lim D)$$
+
+对偶地，$D$ 的**余极限** $\operatorname{colim} D$ 满足 $\operatorname{Hom}_{\mathcal{C}^{I}}(D, \Delta Y) \cong \operatorname{Hom}_{\mathcal{C}}(\operatorname{colim} D, Y)$。$I$ 有限时叫**有限极限**。
+
+泛性质的含义只有一句：**任何别的锥都唯一地穿过它**。所以极限一旦存在，就在同构意义下唯一 —— 不必挑一个具体构造，用哪个都行。
+
+两个等价的写法：「泛锥」与「$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta -, D)$ 可被表示」。后者把极限变成了一条可计算的同构。
+
+「泛」还可以说得更彻底：极限就是锥范畴里的**终对象**（见「元素范畴」）。这一句话在后面反复出现。
+
+#### 终对象 / 始对象　`def.final-initial`
+*定义*　终对象与始对象（Terminal / Initial Object）
+
+$\mathcal{C}$ 的**终对象** $\mathbf{1}_{\mathcal{C}}$ 是空图 $\emptyset \to \mathcal{C}$ 的极限，**始对象** $\mathbf{0}_{\mathcal{C}}$ 是它的余极限。用同构集来刻画：
+
+$$\operatorname{Hom}_{\mathcal{C}}(X, \mathbf{1}_{\mathcal{C}}) = \{*\}, \qquad \operatorname{Hom}_{\mathcal{C}}(\mathbf{0}_{\mathcal{C}}, X) = \{*\}$$
+
+（对每个对象 $X$ 都恰好只有一个态射）。二者同时存在且同构时，叫**零对象**。
+
+例：在 $\mathbf{Set}$ 里 $\mathbf{0} = \emptyset$（射入 $X$ 的映射只有空映射）、$\mathbf{1} = \{\emptyset\}$（射入单点集的映射唯一）。在 $\mathbf{Top}$ 里相同。在 $\mathbf{Ab}$ 里两者都是 $\{0\}$。
+
+另一头：$\mathbb{Z}$ 是环范畴的始对象 —— 每个环都有唯一的 $\mathbb{Z} \to R$。所以说 $\mathbb{Z}$「在所有环里泛」，说的正是这件事。
+
+#### 积 / 余积　`def.product`
+*定义*　积与余积（Product / Coproduct）
+
+取 $I$ 为**离散范畴**（只有对象，没有非恒等的态射），图 $D : I \to \mathcal{C}$ 就只是一族对象 $(X_i)_{i \in I}$。它的极限叫**积** $\prod_{i} X_i$，余极限叫**余积** $\coprod_{i} X_i$。泛性质写成同构集就是
+
+$$\operatorname{Hom}_{\mathcal{C}}\Bigl(Y, \prod_{i} X_i\Bigr) \;\cong\; \prod_{i} \operatorname{Hom}_{\mathcal{C}}(Y, X_i)$$
+
+一句话：**积就是「一个映射 = 一族映射」**。射入积的映射与「分别射入每个分量的映射组成的族」一一对应，投影 $p_i$ 就是取出第 $i$ 个分量。
+
+例：$\mathbf{Set}$ 里积是笛卡尔积，余积是无交并；$\mathbf{Top}$ 里积取**乘积拓扑**（使它成为积的最粗的拓扑），余积取**不交并拓扑**（最细的那个）；$\mathbf{Ab}$ 里积是直积 $\prod_i A_i$，余积是直和 $\bigoplus_i A_i$。
+
+#### 纤维积 / 纤维余积　`def.fibered-product`
+*定义*　纤维积与纤维余积（Pullback / Pushout）
+
+形状为 $X_1 \xrightarrow{f_1} X_0 \xleftarrow{f_2} X_2$ 的图的极限叫**纤维积**，记 $X_1 \times_{X_0} X_2$，也叫 $f_1$ 沿 $f_2$ 的**拉回**。它补成一个交换方块
+
+$$\begin{array}{ccc} X_1 \times_{X_0} X_2 & \longrightarrow & X_2 \\ \downarrow & & \downarrow f_2 \\ X_1 & \xrightarrow{f_1} & X_0 \end{array}$$
+
+这样的方块叫**笛卡尔的**。对偶地，图的余极限叫**纤维余积**，也叫**推出**。
+
+直观：拉回是「在底 $X_0$ 上匹配之后的积」—— 解方程 $f_1(x_1) = f_2(x_2)$；推出是「把 $X_1, X_2$ 在 $X_0$ 的像上粘起来」。
+
+例（$\mathbf{Set}$）：
+
+
+
+$$X_1 \times_{X_0} X_2 = \{(x_1, x_2) \in X_1 \times X_2 : f_1(x_1) = f_2(x_2)\}, \qquad X_1 \cup_{X_0} X_2 = (X_1 \sqcup X_2)/\!\sim$$
+
+
+
+其中 $\sim$ 由 $f_1(x_0) \sim f_2(x_0)$（$x_0 \in X_0$）生成。$\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。
+
+$\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \to S$、$g: Y \to S$ 拼成 $\varphi : X \oplus Y \to S$，$(x,y) \mapsto f(x) - g(y)$，则推出 $= \operatorname{coker} \varphi$、拉回 $= \ker \varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。
+
+#### 等化子 / 余等化子　`def.equalizer`
+*定义*　等化子与余等化子（Equalizer / Coequalizer）
+
+平行对 $f, g : X \rightrightarrows Y$ 的极限叫**等化子**，记 $\operatorname{eq}(f,g) = \ker(f,g)$；余极限叫**余等化子**，记 $\operatorname{coker}(f,g)$。它们接成
+
+$$\ker(f,g) \longrightarrow X \overset{f}{\underset{g}{\rightrightarrows}} Y \longrightarrow \operatorname{coker}(f,g)$$
+
+且中间的 $\ker(f,g) \to X$ 是单态射、右端的 $Y \to \operatorname{coker}(f,g)$ 是满态射。这一段叫**左正合**。
+
+直观：等化子是 $X$ 里「被 $f$ 与 $g$ 送到同一处」的那一部分；余等化子是 $Y$ 里「把 $f(x)$ 与 $g(x)$ 粘起来」的商。
+
+例：$\mathbf{Set}$ 里 $\ker(f,g) = \{x \in X : f(x) = g(x)\}$，$\operatorname{coker}(f,g) = Y/\!\sim$（$\sim$ 由 $f(x) \sim g(x)$ 生成）。$\mathbf{Top}$ 里加子空间 / 商拓扑。$\mathbf{Ab}$ 里 $\ker(f,g) = \ker(f - g)$ —— 两个映射的等化子退化成**一个**映射的核，这正是「核」这个名字的来源。
+
+#### 单态射 / 满态射　`def.mono`
+*定义*　单态射与满态射（Monomorphism / Epimorphism）
+
+态射 $i : Y \to X$ 叫**单态射**（mono），如果对任意对象 $Z$ 与任意 $f, g : Z \to Y$，
+
+$$i \circ f = i \circ g \;\Longrightarrow\; f = g$$
+
+（左可消）。等价地：方块 $Y \to Y \times_X Y$ 是笛卡尔的，即 $Y \cong Y \times_X Y$，其中 $Y \times_X Y$ 是沿 $i$ 的两个拉回。把箭头全部反向，得到**满态射**（epi，右可消）。
+
+在 $\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射（后者要用选择公理）。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\mathbb{Z} \to \mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。
+
+#### 子对象　`def.subobject`
+*定义*　子对象（Subobject）
+
+把单态射 $Y \rightarrowtail X$ 看作 $X$ 的一个**子对象**，记 $Y \subseteq X$。两个子对象的**交**与原像都用拉回定义：
+
+$$Y \cap Z := Y \times_{X} Z, \qquad f^{-1}(Y) := Y \times_{X} X'$$
+
+（对 $Y, Z \subseteq X$ 与任意 $f : X' \to X$；存在时才有定义）。
+
+把「子集」换成「单态射」，好处是不再依赖元素 —— 于是这套语言可以照搬到没有元素的范畴里去。「交」变成拉回、「原像」也变成拉回，两种操作合成了一个：$Y \cap Z$ 解的是「既在 $Y$ 里又在 $Z$ 里」的部分，$f^{-1}(Y)$ 解的是「$y = f(x)$ 有解」的部分。
+
+#### 极限的函子性　`thm.lim-functor`
+*定理*　极限是函子（Limits as a Functor）
+
+设 $\mathcal{C}$ 具有所有以 $I$ 为索引的极限。给定图 $F, G : I \to \mathcal{C}$ 与自然变换 $\alpha : F \implies G$，族
+
+$$\{\, \alpha_i \circ \pi^{F}_{i} : \lim F \to G(i) \,\}_{i \in I}$$
+
+是 $\lim F$ 到 $G$ 的一个锥，于是泛性给出**唯一**的态射
+
+$$\lim \alpha : \lim F \longrightarrow \lim G, \qquad \pi^{G}_{i} \circ \lim \alpha = \alpha_i \circ \pi^{F}_{i}$$
+
+这样得到的 $\lim : \mathcal{C}^{I} \to \mathcal{C}$ 是一个函子。
+
+这就是「泛性」的标准用法：**先造一个锥，再让唯一性把态射免费送上门**。极限的对象层是构造，态射层是泛性，两者合起来才是函子。
+
+有了它，「$\lim$ 保持某个性质」才说得通 —— 后面讨论「某个函子保极限」时，正是拿这个函子去做文章。
+
+#### 像 / 余像　`def.image`
+*定义*　像与余像（Image / Coimage）
+
+态射 $f : X \to Y$ 的**像** $\operatorname{im} f$ 是 $Y$ 的一个子对象，它在一切分解 $f : X \to I \rightarrowtail Y$ 组成的范畴中是**始对象**（即：任何别的分解都唯一地穿过它）。对偶地，$\operatorname{coim} f$ 是分解 $X \twoheadrightarrow I \to Y$ 的余泛对象。
+
+总有一个态射
+
+$$\operatorname{coim} f \longrightarrow \operatorname{im} f$$
+
+它是同构时，称 $f$ 是**严格的**（strict）。
+
+在 $\mathbf{Set}$、$\mathbf{Ab}$、$\mathbf{Top}$ 这些范畴里 $\operatorname{coim} f \to \operatorname{im} f$ 总是同构，所以平时不必区分两者；一般范畴里则不然。
+
+与 $\mathbf{Set}$ 里「像就是 $\{f(x)\}$」相比，这里多出来的东西是**泛性**：像不再是一堆点的集合，而是「最小的那个可以穿过它的中间对象」。子对象、单态射、像三者连在一起看，就是「把元素语言换成箭头语言」的样例。
+
+#### 元素范畴　`def.elements-category`
+*定义*　元素范畴（Category of Elements）
+
+函子 $F : \mathcal{C} \to \mathbf{Set}$ 的**元素范畴** $\operatorname{el}(F)$ 以
+
+$$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
+
+为对象，从 $(Y, t)$ 到 $(Z, u)$ 的态射取使 $F(f)(t) = u$ 的 $f : Y \to Z$。
+
+称 $(X, s)$ 是 $F$ 的**泛元素**，如果它是 $\operatorname{el}(F)$ 的始对象。
+
+这条把「**泛**」这个字一次说清：**泛 = 某个辅助范畴里的始对象（或终对象）**。于是「泛锥」「泛分解」「泛元素」其实是同一句套话的三次应用。
+
+例：$\mathbb{Z}$ 是环范畴的始对象，所以说它「在所有环里泛」；空图上的泛锥就是终对象；极限就是锥范畴的终对象。
+
 ---
 
 ## 全部连线（含推导过程）
@@ -8539,6 +8746,102 @@ $M \times_{s,t} M = \{ (f,g) \in M \times M : s(f) = t(g) \}$ 是 $M \times M$ �
 
 等价要求两个复合**自然同构**于恒等函子，这个「$\cong$」只有靠自然变换才说得出来。
 
+#### 定义引用：「函子」→ 交换图　`def-dep.functor-diagram`
+
+一张图就是一个**函子** $D : I \to \mathcal{C}$，索引范畴 $I$ 是它的定义域。
+
+#### 定义引用：「范畴」→ 交换图　`def-dep.category-diagram`
+
+索引范畴与靶都是**范畴** —— 图这个概念整个建立在范畴之上。
+
+#### 定义引用：「交换图」→ 单纯对象　`def-dep.diagram-simplicial`
+
+单纯对象就是一个图 $\Delta^{\mathrm{op}} \to \mathcal{C}$ —— 只不过索引范畴换成了**单纯形范畴** $\Delta$。
+
+#### 定义引用：「函数」→ 单纯对象　`def-dep.function-simplicial`
+
+$\Delta$ 的态射是**单调映射** $[n] \to [m]$，面映射与退化映射是两类基本映射（跳过一点 / 重复一点）。
+
+#### 定义引用：「函数」→ 锥　`def-dep.function-cone`
+
+锥是一**族**态射 $p_i : X \to D(i)$，族的底层是一个以 $I$ 的对象为定义域的函数。
+
+#### 定义引用：「自然变换」→ 锥　`def-dep.nat-cone`
+
+锥就是常图到 $D$ 的**自然变换** $\Delta X \implies D$，相容性条件正是自然性方块。
+
+#### 定义引用：「交换图」→ 极限　`def-dep.diagram-limit`
+
+极限是**图**的极限 —— 先有图，才谈得上它的泛锥。
+
+#### 定义引用：「锥」→ 极限　`def-dep.cone-limit`
+
+极限的定义是「**泛锥**」：锥是原料，泛性质是筛选条件。
+
+#### 定义引用：「范畴」→ 极限　`def-dep.category-limit`
+
+泛锥的**唯一性**是范畴里的唯一性，分解 $p_i \circ g = g_i$ 也是范畴里的等式。
+
+#### 定义引用：「空集 ∅」→ 终对象 / 始对象　`def-dep.empty-final`
+
+终对象是**空图**的极限 —— 索引范畴取空集时，图上没有位置可投，锥就只剩一个对象。
+
+#### 定义引用：「极限」→ 终对象 / 始对象　`def-dep.limit-final`
+
+终对象与始对象分别是空图上极限与余极限的**特例**，泛性质原样搬过来就是 $\operatorname{Hom}$ 集单点。
+
+#### 定义引用：「极限」→ 积 / 余积　`def-dep.limit-product`
+
+积是**离散范畴**上的极限：索引范畴里没有非恒等态射，相容性条件就自动消失了。
+
+#### 定义引用：「笛卡尔积存在」→ 积 / 余积　`def-dep.product-set`
+
+在 $\mathbf{Set}$ 里范畴论意义下的积就是**笛卡尔积** —— 同一件东西的两个名字。
+
+#### 定义引用：「极限」→ 纤维积 / 纤维余积　`def-dep.limit-fibered`
+
+纤维积是形状为 $X_1 \to X_0 \leftarrow X_2$ 的图的极限。
+
+#### 定义引用：「极限」→ 等化子 / 余等化子　`def-dep.limit-equalizer`
+
+等化子是**平行对** $f, g : X \rightrightarrows Y$ 的极限。
+
+#### 定义引用：「纤维积 / 纤维余积」→ 单态射 / 满态射　`def-dep.fibered-mono`
+
+单态射的等价条件 $Y \cong Y \times_X Y$ 用的正是沿 $i$ 的**纤维积**。
+
+#### 定义引用：「单态射 / 满态射」→ 子对象　`def-dep.mono-subobject`
+
+子对象就是一个**单态射** $Y \rightarrowtail X$ —— 用「可以嵌入」代替「是子集」。
+
+#### 定义引用：「纤维积 / 纤维余积」→ 子对象　`def-dep.fibered-subobject`
+
+子对象的**交**与**原像**都是用纤维积（拉回）定义的。
+
+#### 定义引用：「极限」→ 极限的函子性　`def-dep.limit-functoriality`
+
+函子性说的是极限在**图与图之间**如何变化，前提是这些极限都存在。
+
+#### 定义引用：「自然变换」→ 极限的函子性　`def-dep.nat-limfunctor`
+
+输入是一个**自然变换** $\alpha : F \implies G$，输出是极限之间的唯一态射。
+
+#### 定义引用：「子对象」→ 像 / 余像　`def-dep.subobject-image`
+
+像被定义为 $Y$ 的**子对象**，即一个单态射 $I \rightarrowtail Y$。
+
+#### 定义引用：「单态射 / 满态射」→ 像 / 余像　`def-dep.mono-image`
+
+「$I$ 是 $Y$ 的子对象」这句话里的 $I \to Y$ 是**单态射**。
+
+#### 定义引用：「函数」→ 元素范畴　`def-dep.function-el`
+
+元素范畴的对象是 $(Y, t)$，$t \in F(Y)$；把 $F$ 看成函数之后「元素」才有意义。
+
+#### 定义引用：「锥」→ 元素范畴　`def-dep.cone-el`
+
+「泛 = 辅助范畴的始 / 终对象」正是锥的「泛」的来源：极限就是锥范畴的终对象。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -8723,3 +9026,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **范畴与图 ↔ 集合的构造**　5 条节点级连线
 - **范畴与图 ↔ 关系与函数**　2 条节点级连线
 - **范畴与图 ↔ 函子与自然变换**　2 条节点级连线
+- **函子与自然变换 ↔ 图与极限**　3 条节点级连线
+- **范畴与图 ↔ 图与极限**　2 条节点级连线
+- **图与极限 ↔ 关系与函数**　3 条节点级连线
+- **图与极限 ↔ 集合的构造**　2 条节点级连线

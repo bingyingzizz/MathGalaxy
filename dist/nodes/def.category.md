@@ -25,3 +25,5 @@ $$M \times_{s,t} M = \{ (f, g) \in M \times M : s(f) = t(g) \}$$
 - 被 `def.natural-transformation` 自然变换 用
 
 > 说明见 `notes/def.category.md`
+
+- …另有出边，续页见 `nodes/def.category.3.md`
