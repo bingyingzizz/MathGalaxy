@@ -295,6 +295,80 @@
         .map(function (e) { return e.definition === id ? e.usedBy : e.definition; });
     };
 
+    /* ------------------------------------------------------- 子图 / 闭包 */
+    /**
+     * 「只看这个子图」：从一个节点沿强边走一圈，取回它的骨架。
+     *
+     *   dir  'deps'  它靠什么撑起来（沿依赖往回走）
+     *        'users' 谁在用它（沿依赖往前走）
+     *        'both'  两边都要
+     *   hops      走几跳（默认 2）
+     *   skipBase  跳过「地基」（layer ≤ baseMax 的点），既不显示也不穿透 ——
+     *             它们几乎出现在每一个闭包里，留着只会把骨架淹掉
+     *   weak      要不要带弱边（默认不带；弱边连分层都不参与，更不该混进骨架）
+     *
+     * ⚠️ 方向必须按各 kind 的真实字段来 —— 四种边的形状**不一样**：
+     *      implication  sources[] → target     target 依赖 sources
+     *      definition   definition → usedBy    usedBy 依赖 definition
+     *                   ★ `usedBy` 是**字符串**不是数组，写成 concat/展开会按下标拆开
+     *      equivalence  双向
+     *      analogy      无向，且属弱边
+     */
+    function neighboursOf(id, dir, includeWeak) {
+      var out = [];
+      (edgesOf[id] || []).forEach(function (e) {
+        if (e.kind === 'implication') {
+          if (dir !== 'users' && e.target === id) out = out.concat(e.sources);
+          if (dir !== 'deps' && e.sources.indexOf(id) >= 0) out.push(e.target);
+        } else if (e.kind === 'definition') {
+          if (dir !== 'users' && e.usedBy === id) out.push(e.definition);
+          if (dir !== 'deps' && e.definition === id) out.push(e.usedBy);
+        } else if (e.kind === 'equivalence') {
+          out.push(e.a === id ? e.b : e.a);
+        } else if (includeWeak && e.kind === 'analogy') {
+          out.push(e.a === id ? e.b : e.a);
+        }
+      });
+      return out;
+    }
+
+    graph.subgraph = function (seedId, opts) {
+      opts = opts || {};
+      var dir = opts.dir || 'deps';
+      var hops = opts.hops == null ? 2 : opts.hops;
+      var baseMax = opts.baseMax == null ? 2 : opts.baseMax;
+      var skipBase = opts.skipBase !== false;
+      var includeWeak = !!opts.weak;
+
+      var inSet = Object.create(null);
+      var byHop = [];
+      if (!byId[seedId]) {
+        return { seed: seedId, dir: dir, hops: hops, ids: inSet, count: 0, byHop: byHop };
+      }
+      inSet[seedId] = 1;
+      var frontier = [seedId];
+      for (var h = 0; h < hops; h++) {
+        var next = [];
+        for (var i = 0; i < frontier.length; i++) {
+          var list = neighboursOf(frontier[i], dir, includeWeak);
+          for (var j = 0; j < list.length; j++) {
+            var id = list[j];
+            if (!byId[id] || inSet[id]) continue;
+            if (skipBase && byId[id].layer <= baseMax) continue;
+            inSet[id] = 1;
+            next.push(id);
+          }
+        }
+        byHop.push(next.length);
+        if (!next.length) break;
+        frontier = next;
+      }
+      return {
+        seed: seedId, dir: dir, hops: hops, baseMax: baseMax, skipBase: skipBase,
+        ids: inSet, count: Object.keys(inSet).length, byHop: byHop
+      };
+    };
+
     graph.bbox = function () {
       if (!nodes.length) return { minX: -1, minY: -1, maxX: 1, maxY: 1 };
       var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;

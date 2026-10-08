@@ -142,6 +142,12 @@
         html += '<div class="pn-h2">第 ' + n.layer + ' 层（依赖深度）· 它依赖 ' + pre.length +
           ' 个 · 被 ' + post.length + ' 个依赖</div>';
       }
+      /* 「只看这个子图」的入口。真正的开关状态在图例里（不另开窗口）。 */
+      html += '<div class="pn-btns">' +
+        '<button class="pn-btn" data-sub="deps" title="只留下它依赖的东西 —— 看它是靠什么撑起来的">只看它靠什么</button>' +
+        '<button class="pn-btn" data-sub="users" title="只留下用到它的东西">只看谁用它</button>' +
+        '<button class="pn-btn" data-sub="both" title="两个方向都要">看它周围</button>' +
+        '</div>';
       html += regionChips(n);
 
       if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
@@ -276,6 +282,15 @@
 
     /* ----------------------------------------------------------- 事件 */
     bodyEl.addEventListener('click', function (ev) {
+      /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
+         按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
+      var subBtn = ev.target.closest ? ev.target.closest('[data-sub]') : null;
+      if (subBtn) {
+        if (current && current.type === 'node') {
+          hooks.onSubgraph && hooks.onSubgraph(current.id, subBtn.getAttribute('data-sub'));
+        }
+        return;
+      }
       var cchip = ev.target.closest ? ev.target.closest('[data-cluster]') : null;
       if (cchip) {
         hooks.onCluster && hooks.onCluster(cchip.getAttribute('data-cluster'));

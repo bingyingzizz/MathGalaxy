@@ -258,6 +258,7 @@
       },
       onRegion: function (rid) { fitRegion(rid); },
       onCluster: function (cid) { fitCluster(cid); },
+      onSubgraph: function (id, dir) { setSubgraph(id, dir); },
       onClose: function () { panelOpen = false; requestDraw(); }
     });
 
@@ -304,15 +305,45 @@
     var trunkOnly = false;
     var layerMax = null;              // null = 不限层
 
+    /* 「只看子图」：从某个节点沿依赖走几跳，只留下那一圈骨架。
+       入口在节点面板的三个按钮上，开关状态在图例里（不另开窗口）。 */
+    var subSeed = null;               // null = 不启用
+    var subDir = 'deps';              // deps | users | both
+    var subHops = 2;
+    var subSkipBase = true;           // 跳过第 0–2 层的「地基」
+    var subIds = null;                // id → 1
+    var subCount = 0;
+    var SUB_DIR_NAME = { deps: '它靠什么', users: '谁用它', both: '它周围' };
+
     function applyFilter() {
-      if (!trunkOnly && layerMax == null) { vis.setFilter(null); return; }
+      if (!trunkOnly && layerMax == null && !subIds) { vis.setFilter(null); return; }
       vis.setFilter(function (id) {
         var n = graph.byId[id];
         if (!n) return false;
+        if (subIds && !subIds[id]) return false;
         if (trunkOnly && !n.trunk) return false;
         if (layerMax != null && !(n.layer <= layerMax)) return false;
         return true;
       });
+    }
+
+    function setSubgraph(id, dir, hops) {
+      if (id == null) { clearSubgraph(); return; }
+      if (dir) subDir = dir;
+      if (hops != null) subHops = hops;
+      var r = graph.subgraph(id, { dir: subDir, hops: subHops, skipBase: subSkipBase });
+      subSeed = id; subIds = r.ids; subCount = r.count;
+      applyFilter();
+      renderLegend();
+      fitAll();                       // 子图通常只有几十个点，直接铺满屏幕
+    }
+
+    function clearSubgraph() {
+      if (!subSeed) return;
+      subSeed = null; subIds = null; subCount = 0;
+      applyFilter();
+      renderLegend();
+      fitAll();                       // 「退出」说好的是「回全图」，相机也得回去
     }
 
     function setTrunkOnly(on) {
@@ -503,6 +534,25 @@
         '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
       var layerTitle = '分层 · 显示到第 ' + (layerMax == null ? maxLv : layerMax) + ' 层' +
         '（' + shown + '/' + total + '）';
+
+      /* ---------- 子图开关：只在子图模式开着时出现 ---------- */
+      var subChips = '';
+      if (subSeed) {
+        for (var sl = 1; sl <= 3; sl++) {
+          subChips += '<span class="lg-chip' + (sl === subHops ? ' on' : '') +
+            '" data-subhops="' + sl + '" title="沿依赖走 ' + sl + ' 跳">' + sl + '</span>';
+        }
+      }
+      var subGroup = subSeed
+        ? '<div class="lg-group"><div class="lg-title">只看子图 · ' +
+            U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) + '（' + subCount + ' 个点）</div>' +
+          '<div class="lg-row lg-layers">' + subChips +
+          '<span class="lg-chip' + (subSkipBase ? ' on' : '') + '" data-subbase ' +
+            'title="跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有">跳地基</span>' +
+          '<button class="lg-reset" data-subclear title="退出子图，恢复全图">退出</button>' +
+          '</div></div>'
+        : '';
+
       legendEl.innerHTML =
         '<div class="lg-head" data-toggle><b>图例</b>' +
         (hidden
@@ -516,14 +566,19 @@
         '<div class="lg-row">' + edgeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">' + layerTitle + '</div>' +
         '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
+        subGroup +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
         '<div class="lg-hint">' +
-        (trunkOnly || layerMax != null
-          ? (trunkOnly ? '主干模式：' : '') +
-            (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
-            '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
-          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
+        (subSeed
+          ? '子图模式：「' + U.escapeHtml(graph.byId[subSeed] ? graph.byId[subSeed].label : subSeed) +
+            '」' + U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) +
+            '，共 ' + subCount + ' 个点（点数字改跳数，「退出」回全图）'
+          : trunkOnly || layerMax != null
+            ? (trunkOnly ? '主干模式：' : '') +
+              (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
+              '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
+            : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
         '</div>' +
         '</div>';
     }
@@ -532,7 +587,15 @@
       var t = e.target;
       if (!t.closest) return;
       // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
-      if (t.closest('[data-reset]')) { setLayerMax(null); setTrunkOnly(false); vis.showAll(); return; }
+      if (t.closest('[data-reset]')) {
+        setLayerMax(null); setTrunkOnly(false); clearSubgraph(); vis.showAll(); return;
+      }
+
+      // 子图：改跳数 / 开关「跳地基」/ 退出
+      var sh = t.closest('[data-subhops]');
+      if (sh) { setSubgraph(subSeed, subDir, parseInt(sh.getAttribute('data-subhops'), 10)); return; }
+      if (t.closest('[data-subbase]')) { subSkipBase = !subSkipBase; setSubgraph(subSeed, subDir); return; }
+      if (t.closest('[data-subclear]')) { clearSubgraph(); return; }
 
       // 分层：点第 k 个芯片 = 显示 0…k 层；「全部」= 不限
       var lchip = t.closest('[data-layer]');

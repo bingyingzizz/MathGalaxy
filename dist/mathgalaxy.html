@@ -82,6 +82,8 @@ html, body {
   gap: 8px;
   padding: 0 10px;
   height: 40px;
+  /* 要比 #legend 高：图例贴在左下角、能长很高，结果下拉是浮层，得压住它 */
+  z-index: 12;
   transition: box-shadow .18s ease, border-color .18s ease;
 }
 #search-box.active { box-shadow: var(--shadow-md); border-color: var(--line-strong); }
@@ -215,7 +217,8 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   bottom: 14px;
   padding: 10px 12px;
   max-width: 300px;
-  max-height: calc(100vh - 28px);   /* 窗口太矮时自己滚，别让顶跑出屏幕 */
+  /* 窗口太矮时自己滚；顶上给搜索框留出 14 + 40 + 14 的位置，别把搜索框压住 */
+  max-height: calc(100vh - 82px);
   overflow-y: auto;
   overscroll-behavior: contain;
   font-size: 12px;
@@ -357,6 +360,23 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 .pn-kind .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.85); }
 .pn-h1 { font-size: 19px; font-weight: 650; line-height: 1.35; margin: 0 34px 4px 0; letter-spacing: -.01em; }
 .pn-h2 { font-size: 12px; color: var(--ink-faint); margin: 0 0 3px; font-family: var(--mono); word-break: break-all; }
+
+/* 「只看这个子图」的三个入口按钮（开关状态在图例里） */
+.pn-btns { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 11px; }
+.pn-btn {
+  appearance: none;
+  font: inherit;
+  font-size: 11.5px;
+  line-height: 1.5;
+  padding: 3px 10px;
+  border: 1px solid rgba(74, 110, 245, .38);
+  border-radius: 20px;
+  background: rgba(74, 110, 245, .06);
+  color: #35509B;
+  cursor: pointer;
+  transition: background .14s ease, border-color .14s ease;
+}
+.pn-btn:hover { background: rgba(74, 110, 245, .14); border-color: rgba(74, 110, 245, .5); }
 .pn-regions { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
 .pn-chip {
   font-size: 11.5px;
@@ -1642,6 +1662,80 @@ window.addEventListener('error', function (e) {
     graph.usersOf = function (id) {
       return edgesOf[id].filter(function (e) { return e.kind === 'definition'; })
         .map(function (e) { return e.definition === id ? e.usedBy : e.definition; });
+    };
+
+    /* ------------------------------------------------------- 子图 / 闭包 */
+    /**
+     * 「只看这个子图」：从一个节点沿强边走一圈，取回它的骨架。
+     *
+     *   dir  'deps'  它靠什么撑起来（沿依赖往回走）
+     *        'users' 谁在用它（沿依赖往前走）
+     *        'both'  两边都要
+     *   hops      走几跳（默认 2）
+     *   skipBase  跳过「地基」（layer ≤ baseMax 的点），既不显示也不穿透 ——
+     *             它们几乎出现在每一个闭包里，留着只会把骨架淹掉
+     *   weak      要不要带弱边（默认不带；弱边连分层都不参与，更不该混进骨架）
+     *
+     * ⚠️ 方向必须按各 kind 的真实字段来 —— 四种边的形状**不一样**：
+     *      implication  sources[] → target     target 依赖 sources
+     *      definition   definition → usedBy    usedBy 依赖 definition
+     *                   ★ `usedBy` 是**字符串**不是数组，写成 concat/展开会按下标拆开
+     *      equivalence  双向
+     *      analogy      无向，且属弱边
+     */
+    function neighboursOf(id, dir, includeWeak) {
+      var out = [];
+      (edgesOf[id] || []).forEach(function (e) {
+        if (e.kind === 'implication') {
+          if (dir !== 'users' && e.target === id) out = out.concat(e.sources);
+          if (dir !== 'deps' && e.sources.indexOf(id) >= 0) out.push(e.target);
+        } else if (e.kind === 'definition') {
+          if (dir !== 'users' && e.usedBy === id) out.push(e.definition);
+          if (dir !== 'deps' && e.definition === id) out.push(e.usedBy);
+        } else if (e.kind === 'equivalence') {
+          out.push(e.a === id ? e.b : e.a);
+        } else if (includeWeak && e.kind === 'analogy') {
+          out.push(e.a === id ? e.b : e.a);
+        }
+      });
+      return out;
+    }
+
+    graph.subgraph = function (seedId, opts) {
+      opts = opts || {};
+      var dir = opts.dir || 'deps';
+      var hops = opts.hops == null ? 2 : opts.hops;
+      var baseMax = opts.baseMax == null ? 2 : opts.baseMax;
+      var skipBase = opts.skipBase !== false;
+      var includeWeak = !!opts.weak;
+
+      var inSet = Object.create(null);
+      var byHop = [];
+      if (!byId[seedId]) {
+        return { seed: seedId, dir: dir, hops: hops, ids: inSet, count: 0, byHop: byHop };
+      }
+      inSet[seedId] = 1;
+      var frontier = [seedId];
+      for (var h = 0; h < hops; h++) {
+        var next = [];
+        for (var i = 0; i < frontier.length; i++) {
+          var list = neighboursOf(frontier[i], dir, includeWeak);
+          for (var j = 0; j < list.length; j++) {
+            var id = list[j];
+            if (!byId[id] || inSet[id]) continue;
+            if (skipBase && byId[id].layer <= baseMax) continue;
+            inSet[id] = 1;
+            next.push(id);
+          }
+        }
+        byHop.push(next.length);
+        if (!next.length) break;
+        frontier = next;
+      }
+      return {
+        seed: seedId, dir: dir, hops: hops, baseMax: baseMax, skipBase: skipBase,
+        ids: inSet, count: Object.keys(inSet).length, byHop: byHop
+      };
     };
 
     graph.bbox = function () {
@@ -4049,6 +4143,12 @@ window.addEventListener('error', function (e) {
         html += '<div class="pn-h2">第 ' + n.layer + ' 层（依赖深度）· 它依赖 ' + pre.length +
           ' 个 · 被 ' + post.length + ' 个依赖</div>';
       }
+      /* 「只看这个子图」的入口。真正的开关状态在图例里（不另开窗口）。 */
+      html += '<div class="pn-btns">' +
+        '<button class="pn-btn" data-sub="deps" title="只留下它依赖的东西 —— 看它是靠什么撑起来的">只看它靠什么</button>' +
+        '<button class="pn-btn" data-sub="users" title="只留下用到它的东西">只看谁用它</button>' +
+        '<button class="pn-btn" data-sub="both" title="两个方向都要">看它周围</button>' +
+        '</div>';
       html += regionChips(n);
 
       if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
@@ -4183,6 +4283,15 @@ window.addEventListener('error', function (e) {
 
     /* ----------------------------------------------------------- 事件 */
     bodyEl.addEventListener('click', function (ev) {
+      /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
+         按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
+      var subBtn = ev.target.closest ? ev.target.closest('[data-sub]') : null;
+      if (subBtn) {
+        if (current && current.type === 'node') {
+          hooks.onSubgraph && hooks.onSubgraph(current.id, subBtn.getAttribute('data-sub'));
+        }
+        return;
+      }
       var cchip = ev.target.closest ? ev.target.closest('[data-cluster]') : null;
       if (cchip) {
         hooks.onCluster && hooks.onCluster(cchip.getAttribute('data-cluster'));
@@ -17229,6 +17338,7 @@ MG.trunk = [
       },
       onRegion: function (rid) { fitRegion(rid); },
       onCluster: function (cid) { fitCluster(cid); },
+      onSubgraph: function (id, dir) { setSubgraph(id, dir); },
       onClose: function () { panelOpen = false; requestDraw(); }
     });
 
@@ -17275,15 +17385,45 @@ MG.trunk = [
     var trunkOnly = false;
     var layerMax = null;              // null = 不限层
 
+    /* 「只看子图」：从某个节点沿依赖走几跳，只留下那一圈骨架。
+       入口在节点面板的三个按钮上，开关状态在图例里（不另开窗口）。 */
+    var subSeed = null;               // null = 不启用
+    var subDir = 'deps';              // deps | users | both
+    var subHops = 2;
+    var subSkipBase = true;           // 跳过第 0–2 层的「地基」
+    var subIds = null;                // id → 1
+    var subCount = 0;
+    var SUB_DIR_NAME = { deps: '它靠什么', users: '谁用它', both: '它周围' };
+
     function applyFilter() {
-      if (!trunkOnly && layerMax == null) { vis.setFilter(null); return; }
+      if (!trunkOnly && layerMax == null && !subIds) { vis.setFilter(null); return; }
       vis.setFilter(function (id) {
         var n = graph.byId[id];
         if (!n) return false;
+        if (subIds && !subIds[id]) return false;
         if (trunkOnly && !n.trunk) return false;
         if (layerMax != null && !(n.layer <= layerMax)) return false;
         return true;
       });
+    }
+
+    function setSubgraph(id, dir, hops) {
+      if (id == null) { clearSubgraph(); return; }
+      if (dir) subDir = dir;
+      if (hops != null) subHops = hops;
+      var r = graph.subgraph(id, { dir: subDir, hops: subHops, skipBase: subSkipBase });
+      subSeed = id; subIds = r.ids; subCount = r.count;
+      applyFilter();
+      renderLegend();
+      fitAll();                       // 子图通常只有几十个点，直接铺满屏幕
+    }
+
+    function clearSubgraph() {
+      if (!subSeed) return;
+      subSeed = null; subIds = null; subCount = 0;
+      applyFilter();
+      renderLegend();
+      fitAll();                       // 「退出」说好的是「回全图」，相机也得回去
     }
 
     function setTrunkOnly(on) {
@@ -17474,6 +17614,25 @@ MG.trunk = [
         '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
       var layerTitle = '分层 · 显示到第 ' + (layerMax == null ? maxLv : layerMax) + ' 层' +
         '（' + shown + '/' + total + '）';
+
+      /* ---------- 子图开关：只在子图模式开着时出现 ---------- */
+      var subChips = '';
+      if (subSeed) {
+        for (var sl = 1; sl <= 3; sl++) {
+          subChips += '<span class="lg-chip' + (sl === subHops ? ' on' : '') +
+            '" data-subhops="' + sl + '" title="沿依赖走 ' + sl + ' 跳">' + sl + '</span>';
+        }
+      }
+      var subGroup = subSeed
+        ? '<div class="lg-group"><div class="lg-title">只看子图 · ' +
+            U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) + '（' + subCount + ' 个点）</div>' +
+          '<div class="lg-row lg-layers">' + subChips +
+          '<span class="lg-chip' + (subSkipBase ? ' on' : '') + '" data-subbase ' +
+            'title="跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有">跳地基</span>' +
+          '<button class="lg-reset" data-subclear title="退出子图，恢复全图">退出</button>' +
+          '</div></div>'
+        : '';
+
       legendEl.innerHTML =
         '<div class="lg-head" data-toggle><b>图例</b>' +
         (hidden
@@ -17487,14 +17646,19 @@ MG.trunk = [
         '<div class="lg-row">' + edgeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">' + layerTitle + '</div>' +
         '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
+        subGroup +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
         '<div class="lg-hint">' +
-        (trunkOnly || layerMax != null
-          ? (trunkOnly ? '主干模式：' : '') +
-            (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
-            '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
-          : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
+        (subSeed
+          ? '子图模式：「' + U.escapeHtml(graph.byId[subSeed] ? graph.byId[subSeed].label : subSeed) +
+            '」' + U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) +
+            '，共 ' + subCount + ' 个点（点数字改跳数，「退出」回全图）'
+          : trunkOnly || layerMax != null
+            ? (trunkOnly ? '主干模式：' : '') +
+              (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
+              '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
+            : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
         '</div>' +
         '</div>';
     }
@@ -17503,7 +17667,15 @@ MG.trunk = [
       var t = e.target;
       if (!t.closest) return;
       // ⚠️ 恢复按钮就在「点一下折叠」的标题栏里 → 必须先判它，否则会变成折叠
-      if (t.closest('[data-reset]')) { setLayerMax(null); setTrunkOnly(false); vis.showAll(); return; }
+      if (t.closest('[data-reset]')) {
+        setLayerMax(null); setTrunkOnly(false); clearSubgraph(); vis.showAll(); return;
+      }
+
+      // 子图：改跳数 / 开关「跳地基」/ 退出
+      var sh = t.closest('[data-subhops]');
+      if (sh) { setSubgraph(subSeed, subDir, parseInt(sh.getAttribute('data-subhops'), 10)); return; }
+      if (t.closest('[data-subbase]')) { subSkipBase = !subSkipBase; setSubgraph(subSeed, subDir); return; }
+      if (t.closest('[data-subclear]')) { clearSubgraph(); return; }
 
       // 分层：点第 k 个芯片 = 显示 0…k 层；「全部」= 不限
       var lchip = t.closest('[data-layer]');
