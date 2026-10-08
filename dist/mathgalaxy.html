@@ -23780,15 +23780,16 @@ MG.trunk = [
   'def.function',              //  5 层  函数
   'def.quotient-set',          //  5 层  商集与等价类 —— ℤ、ℚ、ℝ 用的是同一招
   'def.int',                   //  7 层  整数 ℤ = (ℕ×ℕ)/~（差相同）
-  'def.field',                 //  6 层  域 = 集合 + 两个运算 + 公理（代数语言本身）
-  'def.ordered-field',         //  7 层  有序域 = 域 + 与运算相容的全序
-  'def.rat',                   //  8 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）—— 第一个有序域
-  'def.abs',                   //  8 层  绝对值 —— Cauchy 列的定义就要用它
-  'def.cauchy-null',           // 10 层  有理 Cauchy 列 / 零列 / 等价
-  'def.real',                  // 11 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
-  'thm.real-ordered-field',    // 12 层  ℝ 是完备有序域 —— 性质是定理，含**确界原理**
-  'def.interval',              // 12 层  区间
-  'def.sequence-limit',        // 12 层  数列极限
+  'def.group',                 //  6 层  群 = 集合 + 运算 + 公理（代数语言本身）
+  'def.field',                 //  7 层  域 = 两个阿贝尔群 + 分配律
+  'def.ordered-field',         //  8 层  有序域 = 域 + 与运算相容的全序
+  'def.rat',                   //  9 层  有理数 ℚ = (ℤ×(ℤ∖{0}))/~（分数值相同）—— 第一个有序域
+  'def.abs',                   //  9 层  绝对值 —— Cauchy 列的定义就要用它
+  'def.cauchy-null',           // 11 层  有理 Cauchy 列 / 零列 / 等价
+  'def.real',                  // 12 层  实数 ℝ：由 Cauchy 列**构造**（不是公理刻画）
+  'thm.real-ordered-field',    // 13 层  ℝ 是完备有序域 —— 性质是定理，含**确界原理**
+  'def.interval',              // 13 层  区间
+  'def.sequence-limit',        // 13 层  数列极限
 
   /* ========================== 二、序与选择（工具） ========================== */
   'def.poset',                 //  5 层  偏序集
@@ -23802,37 +23803,37 @@ MG.trunk = [
   'def.sigma-algebra',         //  4 层  σ-代数
   'def.generated-sigma',       //  5 层  生成的 σ-代数
   'def.borel',                 //  6 层  Borel σ-代数
-  'def.extended-real',         // 12 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
-  'def.measure',               // 13 层  测度
-  'def.outer-measure',         // 13 层  外测度（定义在幂集上，只有次可加性）
-  'def.null-set',              // 14 层  零集与完备
-  'thm.caratheodory',          // 15 层  Carathéodory 定理：外测度 → 测度
-  'def.ae',                    // 15 层  几乎处处
+  'def.extended-real',         // 13 层  扩充实数 [−∞,+∞] —— 测度的取值落在这里
+  'def.measure',               // 14 层  测度
+  'def.outer-measure',         // 14 层  外测度（定义在幂集上，只有次可加性）
+  'def.null-set',              // 15 层  零集与完备
+  'thm.caratheodory',          // 16 层  Carathéodory 定理：外测度 → 测度
+  'def.ae',                    // 16 层  几乎处处
 
   /* ============================== 四、积分 ============================== */
   'def.measurable-function',   //  6 层  可测函数
   'def.simple-function',       //  7 层  简单函数
-  'def.integral-simple',       // 15 层  简单函数的积分
-  'def.integral-nonneg',       // 16 层  非负函数的积分
-  'thm.mct',                   // 17 层  单调收敛定理
-  'def.integrable',            // 18 层  可积 / L¹
-  'lem.fatou',                 // 18 层  Fatou 引理
-  'thm.dct',                   // 19 层  控制收敛定理
-  'thm.fubini-tonelli',        // 19 层  Fubini–Tonelli
+  'def.integral-simple',       // 16 层  简单函数的积分
+  'def.integral-nonneg',       // 17 层  非负函数的积分
+  'thm.mct',                   // 18 层  单调收敛定理
+  'def.integrable',            // 19 层  可积 / L¹
+  'lem.fatou',                 // 19 层  Fatou 引理
+  'thm.dct',                   // 20 层  控制收敛定理
+  'thm.fubini-tonelli',        // 20 层  Fubini–Tonelli
 
   /* ========================= 五、函数空间与微分 ========================= */
-  'def.ac-function',           // 13 层  绝对连续函数
-  'def.derivative',            // 14 层  导数
-  'def.bounded-variation',     // 15 层  有界变差 BV
-  'def.lp-norm',               // 17 层  L^p 范数
-  'thm.holder',                // 18 层  Hölder 不等式
-  'def.locally-integrable',    // 19 层  局部可积
-  'thm.lp-banach',             // 20 层  L^p 是 Banach 空间
-  'thm.ftc-lebesgue',          // 21 层  微积分基本定理（Lebesgue 版）
-  'def.maximal-function',      // 21 层  极大函数
-  'thm.lebesgue-radon-nikodym',// 20 层  Lebesgue–Radon–Nikodym 定理
-  'thm.riesz-representation-lp', // 21 层  (L^p)* ≅ L^q
-  'thm.lebesgue-differentiation', // 21 层  Lebesgue 微分定理
+  'def.ac-function',           // 14 层  绝对连续函数
+  'def.derivative',            // 15 层  导数
+  'def.bounded-variation',     // 16 层  有界变差 BV
+  'def.lp-norm',               // 18 层  L^p 范数
+  'thm.holder',                // 19 层  Hölder 不等式
+  'def.locally-integrable',    // 20 层  局部可积
+  'thm.lp-banach',             // 21 层  L^p 是 Banach 空间
+  'thm.ftc-lebesgue',          // 22 层  微积分基本定理（Lebesgue 版）
+  'def.maximal-function',      // 22 层  极大函数
+  'thm.lebesgue-radon-nikodym',// 21 层  Lebesgue–Radon–Nikodym 定理
+  'thm.riesz-representation-lp', // 22 层  (L^p)* ≅ L^q
+  'thm.lebesgue-differentiation', // 24 层  Lebesgue 微分定理
 
   /* ================= 六、范畴与函子（换一套语言） ================= */
   /* 前五段都在「集合 + 元素」的语言里做数学。这一条新主线（六 / 七 / 八 三段）
@@ -23850,9 +23851,10 @@ MG.trunk = [
 
   /* ============ 七、覆盖、层与凝聚态（新语言长出的东西） ============ */
   'def.grothendieck-topology', // 14 层  Grothendieck 拓扑（什么算覆盖）
-  'def.chaus',                 // 14 层  紧 Hausdorff 空间范畴（下一步的场地）
+  'def.chaus',                 // 15 层  紧 Hausdorff 空间范畴（下一步的场地）
   'def.sheaf',                 // 15 层  层（能粘的预层）
   'def.topos',                 // 16 层  拓扑斯（几何的代数替身）
+  'def.compactly-generated',   //    层  紧生成空间（底拓扑空间的场地）
   'def.condensed-set',         // 16 层  凝聚态集 = CHaus 上的层
   'def.abelian-sheaf',         // 16 层  阿贝尔层（层里的阿贝尔群）
   'def.condensed-abelian-group', // 17 层  凝聚态阿贝尔群
