@@ -41,7 +41,9 @@ import { renderDoc, esc } from './md.mjs';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const SRC = path.join(ROOT, 'src');
-const STAGE = path.join(ROOT, 'dist-site');
+/* 组装目录。默认 `dist-site/`；`MG_STAGE` 可以换到别的盘 ——
+   ⚠️ 见下面「清空」那段的说明：本机 H: 盘跑 git 特别慢，换到 C: 上能快 50 倍。 */
+const STAGE = process.env.MG_STAGE ? path.resolve(process.env.MG_STAGE) : path.join(ROOT, 'dist-site');
 const SITE = path.join(ROOT, 'site');
 
 const args = process.argv.slice(2);
@@ -106,12 +108,23 @@ if (noBuild) {
 /* ---------------------------------------------------------------- 组装 */
 console.log('② 组装站点…');
 // ⚠️ Windows 上 dist-site 可能正被别的东西占着（比如拿 _tools/site-srv.mjs
-// 起服务在验证产物）：删到一半会抛 EBUSY。重试几次；目录本身删不掉也**不算失败** ——
+// 起服务在验证产物）：删到一半会抛 EBUSY。重试几次；删不掉也**不算失败** ——
 // 里面的内容已经清干净了，紧接着就会重新铺一遍。
-try {
-  fs.rmSync(STAGE, { recursive: true, force: true, maxRetries: 6, retryDelay: 180 });
-} catch (e) {
-  console.log(`   ⚠️ dist-site 目录删不干净（${e.code || e.message}）—— 继续，内容会整个覆盖`);
+//
+// ⚠️⚠️ 清空时**必须留下 `.git`**。实测本机 `H:` 盘写 git 松散对象比 `C:` 慢约 50 倍
+// （200 个文件跑 `git add`：H: 51 秒 / C: 1 秒；两块都是本地 NTFS，普通文件写入都快，
+// 所以不是盘坏，是 git 那个「一堆小文件」的写模式在 H: 上吃亏）。
+// 把 `.git` 一起删掉 = 每次发布都从零写 1300 个对象 ≈ 9 分钟；中途超时被杀还会
+// 留下 `index.lock`，下一次直接 `fatal: Unable to create index.lock`。
+// 留着对象库，后续发布只写「这次变了的那几个」，几秒钟的事。
+fs.mkdirSync(STAGE, { recursive: true });
+for (const e of fs.readdirSync(STAGE, { withFileTypes: true })) {
+  if (e.name === '.git') continue;
+  try {
+    fs.rmSync(path.join(STAGE, e.name), { recursive: true, force: true, maxRetries: 6, retryDelay: 180 });
+  } catch (err) {
+    console.log(`   ⚠️ dist-site/${e.name} 删不干净（${err.code || err.message}）—— 继续，内容会整个覆盖`);
+  }
 }
 fs.mkdirSync(path.join(STAGE, 'assets'), { recursive: true });
 fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
@@ -250,11 +263,12 @@ fs.writeFileSync(path.join(STAGE, 'README.md'),
 const files = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+    if (e.name === '.git') continue;                 // 版本库不算「站点文件」
     const p = path.join(d, e.name);
     if (e.isDirectory()) walk(p); else files.push(path.relative(STAGE, p));
   }
 })(STAGE);
-console.log(`   组装完成：${files.length} 个文件 → dist-site/`);
+console.log(`   组装完成：${files.length} 个文件 → ${path.relative(ROOT, STAGE) || STAGE}/`);
 
 if (onlyStage) {
   console.log(`\n只组装（--stage）。上线后地址：${LIVE_URL}`);
