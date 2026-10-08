@@ -4,7 +4,7 @@ layer 13 · 定义 · 同调代数 · 范畴论
 
 态射 $f : K \to L$ 的**映射锥**是复形
 
-$$M(f)^{n} := K^{n+1} \oplus L^{n}, \qquad d^{n} := \begin{pmatrix} -d_{K}^{n+1} & 0 \\ f^{n+1} & d_{L}^{n} \end{pmatrix}$$
+$$M(f)^{n} := K^{n+1} \oplus L^{n}, \qquad d^{n} := \begin{pmatrix} -d^{n+1} & 0 \\ f^{n} & d^{n} \end{pmatrix}$$
 > 陈述续见 `nodes/def.mapping-cone.2.md`
 
 

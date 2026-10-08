@@ -125,14 +125,17 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '投射', '提升'],
       statement: [
-        '范畴 $\\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果对每个满态射 $A \\twoheadrightarrow B$ 与每个 $P \\to B$，都存在提升 $P \\to A$ 使三角形交换：',
+        '范畴 $\\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果函子 $h_{P} = \\operatorname{Hom}_{\\mathcal{C}}(P, -)$ **保持满态射**。对偶地，$I$ 叫**内射的**，如果 $h^{I}$ 把单态射送到满态射。',
+        '',
+        '展开成提升条件就是：对每个满态射 $A \\twoheadrightarrow B$ 与每个 $P \\to B$，都存在提升 $P \\to A$ 使三角形交换：',
         '',
         '$$\\begin{array}{ccc} & P & \\\\ \\swarrow & \\downarrow & \\searrow \\\\ A & \\twoheadrightarrow & B \\end{array}$$',
         '',
-        '对偶地，$I$ 叫**内射的**，如果对每个单态射 $A \\rightarrowtail B$ 与每个 $A \\to I$，都存在延拓 $B \\to I$。'
+        '对偶地，$I$ 内射说的是每个 $A \\rightarrowtail B$ 与每个 $A \\to I$ 都能延拓成 $B \\to I$。'
       ].join('\n'),
       notes: [
         '「投射」这个名字来自模论：$R\\text{-}\\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。',
+        '两条立刻可用的推论：**$P$ 投射时任何满态射 $Y \\twoheadrightarrow P$ 都有截面**；**若 $X \\to Y$ 有收缩而 $Y$ 投射，则 $X$ 也投射**（内射的情形对偶）。',
         '在 $\\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \\twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。'
       ].join('\n\n')
     },

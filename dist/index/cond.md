@@ -1,9 +1,8 @@
 # 凝聚态集（cond）· 节点清单（第 1/2 页）
 
 造出终点站：紧 Hausdorff 空间上的层就是凝聚态集，换到自由对象上退化成「保有限积」，再往上走凝聚态阿贝尔群。
-中心天体 def.condensed-set　·　18 个节点　·　根 `../`　·　续页 `index/cond.2.md`
+中心天体 def.condensed-set　·　19 个节点　·　根 `../`　·　续页 `index/cond.2.md`
 
-- def.grothendieck-category　Grothendieck 范畴　layer 11
 - prop.cond-projectives　Cond 有足够多投射对象　layer 15
 - def.underlying-topological-space　底拓扑空间　layer 15
 - prop.condab-generated　CondAb 由有限表现投射对象生成　layer 15
@@ -17,5 +16,6 @@
 - prop.condensed-criterion　凝聚态集的刻画　layer 17
 - thm.cond-equiv-fchaus　Cond 即 FCHaus 上的层　layer 17
 - thm.top-cond-adjoint　Top 与 Cond 的伴随　layer 17
+- def.condensed-abelian-group　凝聚态阿贝尔群　layer 17
 
 > 续见 `index/cond.2.md`

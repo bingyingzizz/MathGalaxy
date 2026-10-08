@@ -165,19 +165,23 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '切片范畴',
-      title: '预层的切片范畴（Category of Elements）',
+      title: '预层的切片范畴（Slice Category）',
       regions: ['category'],
       tags: ['范畴论', '切片', '元素范畴'],
       statement: [
-        '设 $T \\in \\widehat{\\mathcal{C}}$。$T$ 的**切片范畴** $\\mathcal{C}_{T}$ 以',
+        '设 $\\mathcal{C}$ 是范畴，$T$ 是 $\\mathcal{C}$ 上的预层。**切片范畴** $\\mathcal{C}/T$（也记 $\\mathcal{C}_{T}$）定义如下：',
         '',
-        '$$\\bigl\\{(X, s) : X \\in \\mathcal{C},\\ s \\in T(X)\\bigr\\}$$',
+        '1. 对象是「$\\mathcal{C}$ 的对象 $X$ 加上一个截面 $s \\in T(X)$」组成的对 $(X, s)$；',
+        '2. 从 $(X, s)$ 到 $(X\', s\')$ 的态射是使 $T(f)(s\') = s$ 的 $f : X \\to X\'$。',
         '',
-        '为对象，从 $(X, s)$ 到 $(X\', s\')$ 的态射取使 $T(f)(s\') = s$ 的 $f : X \\to X\'$。'
+        '它带一个明显的**遗忘函子** $j_{T} : \\mathcal{C}/T \\to \\mathcal{C}$。用逗号范畴的说法：',
+        '',
+        '$$\\mathcal{C}/T \\;\\cong\\; \\bigl(\\mathcal{C} \\subseteq \\widehat{\\mathcal{C}}\\bigr) \\Big\\downarrow \\bigl(\\mathbf{1} \\xrightarrow{\\ T\\ } \\widehat{\\mathcal{C}}\\bigr)$$'
       ].join('\n'),
       notes: [
-        '这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $\\mathcal{C}_{T} \\to \\mathcal{C}$ 把 $(X, s)$ 送回 $X$。',
-        '它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\\mathcal{C}_{T}$ 上。'
+        '这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $j_{T}$ 把 $(X, s)$ 送回 $X$。',
+        '⭐ 逗号范畴的写法把它的身份说清了：它是**预层 $T$ 沿着 Yoneda 嵌入往回拉**得到的那个范畴 —— 一边是 $\\mathcal{C} \\hookrightarrow \\widehat{\\mathcal{C}}$，一边是 $\\mathbf{1} \\xrightarrow{T} \\widehat{\\mathcal{C}}$。它也解释了为什么 $X \\in \\mathcal{C}$ 时 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$。',
+        '它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\\mathcal{C}/T$ 上（稠密性定理就是这么用的）。'
       ].join('\n\n')
     },
 
@@ -186,16 +190,18 @@ window.MG = window.MG || {};
       id: 'prop.slice-cartesian',
       cluster: 'cat.yoneda',
       type: 'proposition',
-      label: '切片方块是笛卡尔的',
-      title: '切片范畴与拉回',
+      label: '切片范畴是拉回',
+      title: '切片范畴的方块是笛卡尔的',
       regions: ['category'],
-      tags: ['范畴论', '切片', '拉回'],
+      tags: ['范畴论', '切片', '拉回', '米田嵌入'],
       statement: [
-        '设 $\\varphi : T \\implies T\'$ 是预层之间的自然变换。则它诱导的方块是**笛卡尔的**。',
+        '对任取的一个预层，下面这个方块',
         '',
-        '这个方块把两件事接在一起：**切片范畴到预层范畴 $\\widehat{\\mathcal{C}}$ 的嵌入**，与**范畴 $\\mathcal{C}$ 到预层范畴 $\\widehat{\\mathcal{C}}$ 的 Yoneda 嵌入**。'
+        '$$\\begin{array}{ccc} \\mathcal{C}/T & \\longrightarrow & \\widehat{\\mathcal{C}}/T \\\\ \\big\\downarrow{\\scriptstyle{j_{T}}} & & \\big\\downarrow \\\\ \\mathcal{C} & \\xrightarrow{\\ y\\ } & \\widehat{\\mathcal{C}} \\end{array}$$',
+        '',
+        '是**笛卡尔的**。这里上面一行是**切片范畴之间的嵌入**（把 $(X, s)$ 送到 $(h_{X},\\ s : h_{X} \\to T)$），下面一行是**范畴 $\\mathcal{C}$ 到预层范畴 $\\widehat{\\mathcal{C}}$ 的 Yoneda 嵌入**，两条竖边是两个遗忘函子。'
       ].join('\n'),
-      notes: '「把一个预层沿自然变换拉回」有两层说法：在切片范畴这一侧，是 $\\mathcal{C}_{T}$ 落在 $\\mathcal{C}_{T\'}$ 上；在范畴这一侧，是 $\\mathcal{C}$ 沿 Yoneda 嵌进 $\\widehat{\\mathcal{C}}$ 之后的那个方块。两个说法给出同一个笛卡尔方块 —— 这就是切片范畴存在的意义：**给预层配一个自带 Yoneda 嵌入的指标范畴**。'
+      notes: '也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'
     },
 
     /* ------------------------------------------------------ 稠密性定理 */

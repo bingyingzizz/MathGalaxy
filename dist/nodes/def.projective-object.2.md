@@ -1,7 +1,7 @@
 # 投射 / 内射对象　`def.projective-object`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.projective-object.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.cond-projectives` Cond 有足够多投射对象 用
-- 被 `lem.stonean-projective` Stonean 给出有限表现投射对象 用
-- 被 `prop.condab-generated` CondAb 由有限表现投射对象生成 用
+## 陈述（续）
+对偶地，$I$ 内射说的是每个 $A \rightarrowtail B$ 与每个 $A \to I$ 都能延拓成 $B \to I$。
+
+> 续见 `nodes/def.projective-object.3.md`

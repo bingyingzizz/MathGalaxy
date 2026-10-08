@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-08T09:39:00.431Z",
+  "generated": "2026-10-08T09:44:38.964Z",
   "counts": {
    "regions": 7,
    "clusters": 34,
-   "nodes": 371,
-   "edges": 801,
-   "strong": 793,
+   "nodes": 373,
+   "edges": 813,
+   "strong": 805,
    "weak": 8
   },
   "readingGuide": {
@@ -87,7 +87,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论、拓扑斯与凝聚态数学。",
    "color": "#B03A5B",
-   "nodeCount": 136
+   "nodeCount": 138
   }
  ],
  "clusters": [
@@ -721,7 +721,7 @@
    "name": "凝聚态集",
    "parent": "category",
    "desc": "造出终点站：紧 Hausdorff 空间上的层就是凝聚态集，换到自由对象上退化成「保有限积」，再往上走凝聚态阿贝尔群。",
-   "nodeCount": 18,
+   "nodeCount": 19,
    "nodes": [
     "def.chaus-pretopos",
     "def.condensed-set",
@@ -736,6 +736,7 @@
     "thm.top-cond-adjoint",
     "def.condensed-abelian-group",
     "prop.condab-section",
+    "def.ab-axioms",
     "def.grothendieck-category",
     "thm.condab-ab",
     "lem.stonean-projective",
@@ -748,8 +749,9 @@
    "name": "同调代数",
    "parent": "category",
    "desc": "造出「复形」这套机器：复形 → 同伦 → 同伦范畴 → 映射锥与导出三角 → 同调与长正合列 → 拟同构 → 内射对象 → 谱序列。",
-   "nodeCount": 16,
+   "nodeCount": 17,
    "nodes": [
+    "def.abelian-category",
     "def.cochain-complex",
     "prop.complex-additive",
     "def.homotopy",
@@ -6588,7 +6590,7 @@
    "id": "def.slice-category",
    "type": "definition",
    "label": "切片范畴",
-   "title": "预层的切片范畴（Category of Elements）",
+   "title": "预层的切片范畴（Slice Category）",
    "region": "category",
    "regions": [
     "category"
@@ -6600,15 +6602,15 @@
     "切片",
     "元素范畴"
    ],
-   "statement": "设 $T \\in \\widehat{\\mathcal{C}}$。$T$ 的**切片范畴** $\\mathcal{C}_{T}$ 以\n\n$$\\bigl\\{(X, s) : X \\in \\mathcal{C},\\ s \\in T(X)\\bigr\\}$$\n\n为对象，从 $(X, s)$ 到 $(X', s')$ 的态射取使 $T(f)(s') = s$ 的 $f : X \\to X'$。",
-   "notes": "这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $\\mathcal{C}_{T} \\to \\mathcal{C}$ 把 $(X, s)$ 送回 $X$。\n\n它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\\mathcal{C}_{T}$ 上。",
+   "statement": "设 $\\mathcal{C}$ 是范畴，$T$ 是 $\\mathcal{C}$ 上的预层。**切片范畴** $\\mathcal{C}/T$（也记 $\\mathcal{C}_{T}$）定义如下：\n\n1. 对象是「$\\mathcal{C}$ 的对象 $X$ 加上一个截面 $s \\in T(X)$」组成的对 $(X, s)$；\n2. 从 $(X, s)$ 到 $(X', s')$ 的态射是使 $T(f)(s') = s$ 的 $f : X \\to X'$。\n\n它带一个明显的**遗忘函子** $j_{T} : \\mathcal{C}/T \\to \\mathcal{C}$。用逗号范畴的说法：\n\n$$\\mathcal{C}/T \\;\\cong\\; \\bigl(\\mathcal{C} \\subseteq \\widehat{\\mathcal{C}}\\bigr) \\Big\\downarrow \\bigl(\\mathbf{1} \\xrightarrow{\\ T\\ } \\widehat{\\mathcal{C}}\\bigr)$$",
+   "notes": "这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $j_{T}$ 把 $(X, s)$ 送回 $X$。\n\n⭐ 逗号范畴的写法把它的身份说清了：它是**预层 $T$ 沿着 Yoneda 嵌入往回拉**得到的那个范畴 —— 一边是 $\\mathcal{C} \\hookrightarrow \\widehat{\\mathcal{C}}$，一边是 $\\mathbf{1} \\xrightarrow{T} \\widehat{\\mathcal{C}}$。它也解释了为什么 $X \\in \\mathcal{C}$ 时 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$。\n\n它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\\mathcal{C}/T$ 上（稠密性定理就是这么用的）。",
    "refs": []
   },
   {
    "id": "prop.slice-cartesian",
    "type": "proposition",
-   "label": "切片方块是笛卡尔的",
-   "title": "切片范畴与拉回",
+   "label": "切片范畴是拉回",
+   "title": "切片范畴的方块是笛卡尔的",
    "region": "category",
    "regions": [
     "category"
@@ -6618,10 +6620,11 @@
    "tags": [
     "范畴论",
     "切片",
-    "拉回"
+    "拉回",
+    "米田嵌入"
    ],
-   "statement": "设 $\\varphi : T \\implies T'$ 是预层之间的自然变换。则它诱导的方块是**笛卡尔的**。\n\n这个方块把两件事接在一起：**切片范畴到预层范畴 $\\widehat{\\mathcal{C}}$ 的嵌入**，与**范畴 $\\mathcal{C}$ 到预层范畴 $\\widehat{\\mathcal{C}}$ 的 Yoneda 嵌入**。",
-   "notes": "「把一个预层沿自然变换拉回」有两层说法：在切片范畴这一侧，是 $\\mathcal{C}_{T}$ 落在 $\\mathcal{C}_{T'}$ 上；在范畴这一侧，是 $\\mathcal{C}$ 沿 Yoneda 嵌进 $\\widehat{\\mathcal{C}}$ 之后的那个方块。两个说法给出同一个笛卡尔方块 —— 这就是切片范畴存在的意义：**给预层配一个自带 Yoneda 嵌入的指标范畴**。",
+   "statement": "对任取的一个预层，下面这个方块\n\n$$\\begin{array}{ccc} \\mathcal{C}/T & \\longrightarrow & \\widehat{\\mathcal{C}}/T \\\\ \\big\\downarrow{\\scriptstyle{j_{T}}} & & \\big\\downarrow \\\\ \\mathcal{C} & \\xrightarrow{\\ y\\ } & \\widehat{\\mathcal{C}} \\end{array}$$\n\n是**笛卡尔的**。这里上面一行是**切片范畴之间的嵌入**（把 $(X, s)$ 送到 $(h_{X},\\ s : h_{X} \\to T)$），下面一行是**范畴 $\\mathcal{C}$ 到预层范畴 $\\widehat{\\mathcal{C}}$ 的 Yoneda 嵌入**，两条竖边是两个遗忘函子。",
+   "notes": "也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。",
    "refs": []
   },
   {
@@ -7045,8 +7048,8 @@
     "投射",
     "提升"
    ],
-   "statement": "范畴 $\\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果对每个满态射 $A \\twoheadrightarrow B$ 与每个 $P \\to B$，都存在提升 $P \\to A$ 使三角形交换：\n\n$$\\begin{array}{ccc} & P & \\\\ \\swarrow & \\downarrow & \\searrow \\\\ A & \\twoheadrightarrow & B \\end{array}$$\n\n对偶地，$I$ 叫**内射的**，如果对每个单态射 $A \\rightarrowtail B$ 与每个 $A \\to I$，都存在延拓 $B \\to I$。",
-   "notes": "「投射」这个名字来自模论：$R\\text{-}\\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。\n\n在 $\\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \\twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。",
+   "statement": "范畴 $\\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果函子 $h_{P} = \\operatorname{Hom}_{\\mathcal{C}}(P, -)$ **保持满态射**。对偶地，$I$ 叫**内射的**，如果 $h^{I}$ 把单态射送到满态射。\n\n展开成提升条件就是：对每个满态射 $A \\twoheadrightarrow B$ 与每个 $P \\to B$，都存在提升 $P \\to A$ 使三角形交换：\n\n$$\\begin{array}{ccc} & P & \\\\ \\swarrow & \\downarrow & \\searrow \\\\ A & \\twoheadrightarrow & B \\end{array}$$\n\n对偶地，$I$ 内射说的是每个 $A \\rightarrowtail B$ 与每个 $A \\to I$ 都能延拓成 $B \\to I$。",
+   "notes": "「投射」这个名字来自模论：$R\\text{-}\\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。\n\n两条立刻可用的推论：**$P$ 投射时任何满态射 $Y \\twoheadrightarrow P$ 都有截面**；**若 $X \\to Y$ 有收缩而 $Y$ 投射，则 $X$ 也投射**（内射的情形对偶）。\n\n在 $\\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \\twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。",
    "refs": []
   },
   {
@@ -8101,7 +8104,7 @@
     "定义"
    ],
    "statement": "**凝聚态集**是 $\\mathbf{CHaus}$ 上的（集合值）**层**。其范畴记\n\n$$\\mathrm{Cond} \\;:=\\; \\widehat{\\mathbf{CHaus}}$$\n\n这里 $\\mathbf{CHaus}$ 配的是它的**预标准拓扑**。",
-   "notes": "**例 1. 拓扑空间给凝聚态集。** 任一拓扑空间 $X$ 给出凝聚态集 $\\underline{X}(S) := C(S, X) = \\operatorname{Hom}_{\\mathbf{Top}}(S, X)$ —— 从 $S$ 到 $X$ 的连续映射全体。\n\n**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 因为 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的紧化，从它到 $X$ 的连续映射恰好由「$\\mathbb{N}$ 上的像」加上「新添进去那些点上的像」决定，而后者给出的正是**极限**。\n\n**例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \\mathbb{R}) / C(S, \\mathbb{R}^{\\mathrm{disc}})$。\n\n这三个例子的共同点：**取值都是「从紧 Hausdorff 空间出发的连续映射的某种商或子集」**。凝聚态集之所以能记住拓扑信息，靠的就是把这些映射全留下来。",
+   "notes": "**例 1. 拓扑空间给凝聚态集。** 任一拓扑空间 $X$ 给出凝聚态集 $\\underline{X}(S) := C(S, X) = \\operatorname{Hom}_{\\mathbf{Top}}(S, X)$ —— 从 $S$ 到 $X$ 的连续映射全体。\n\n**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 这里 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的**一点紧化**，而「收敛序列连同极限」正好就是从 $\\bar{\\mathbb{N}}$ 到 $X$ 的连续映射：$\\mathbb{N}$ 上的像给出序列，新添那个点上的像给出极限。\n\n**例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \\mathbb{R}) / C(S, \\mathbb{R}^{\\mathrm{disc}})$。\n\n这三个例子的共同点：**取值都是「从紧 Hausdorff 空间出发的连续映射的某种商或子集」**。凝聚态集之所以能记住拓扑信息，靠的就是把这些映射全留下来。",
    "refs": []
   },
   {
@@ -8332,6 +8335,26 @@
    "refs": []
   },
   {
+   "id": "def.ab-axioms",
+   "type": "definition",
+   "label": "Grothendieck 的 AB 公理",
+   "title": "Grothendieck 的 AB 公理（AB1–AB6）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cond",
+   "layer": 17,
+   "tags": [
+    "同调代数",
+    "AB 公理",
+    "正合"
+   ],
+   "statement": "范畴 $\\mathcal{C}$ 的**正合性等级**（Grothendieck 的 AB 公理）逐条加强如下：\n\n1. **AB1**：预阿贝尔范畴；\n2. **AB2**：阿贝尔范畴；\n3. **AB3**：AB2 且有所有余极限（**AB3\\*** 是对偶）；\n4. **AB4**：AB3 且**余积正合**（**AB4\\*** 是对偶）；\n5. **AB5**：AB4 且**滤过余极限正合**（**AB5\\*** 是对偶）；\n6. **AB6**：AB5 且**滤过余极限与积交换**（**AB5\\*** 是对偶）。",
+   "notes": "一个字读法：**头两条补的是「态射有没有核与余核、单满正不正则」；后面几条一路在补「越来越多的余极限操作是正合的、并且和别的操作交换」。**\n\n例：$\\mathbf{Ab}$ 满足 AB6 与 AB4*；$\\mathbf{AbTop}$ 只满足 AB1；$\\mathbf{AbCHaus} \\simeq \\mathbf{Ab}^{\\mathrm{op}}$ 满足 AB4 与 AB6*（Pontryagin 对偶）；对任意范畴 $\\mathcal{C}$，$\\mathbf{Ab}^{\\mathcal{C}}$ 满足 AB6 与 AB4*；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 满足 AB5 与 AB3*。\n\n⚠️ 拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ **一般并不满足 AB6 或 AB4\\***；另外，除 $\\{0\\}$ 之外没有范畴能同时满足 AB5 与 AB5\\*。",
+   "refs": []
+  },
+  {
    "id": "def.grothendieck-category",
    "type": "definition",
    "label": "Grothendieck 范畴",
@@ -8341,14 +8364,14 @@
     "category"
    ],
    "cluster": "cond",
-   "layer": 11,
+   "layer": 18,
    "tags": [
     "范畴论",
     "同调代数",
     "生成元"
    ],
-   "statement": "**Grothendieck 范畴**是带生成元的 **AB5** 范畴；这里 AB5 说：**滤过余极限正合**。",
-   "notes": "例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是。\n\n「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。",
+   "statement": "**Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。",
+   "notes": "例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是。\n\n两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\\***（有所有极限）；而且它**有足够多的内射对象**。\n\n「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。",
    "refs": []
   },
   {
@@ -8362,14 +8385,14 @@
     "topology"
    ],
    "cluster": "cond",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "凝聚态",
     "同调代数",
     "正合"
    ],
-   "statement": "$\\mathrm{CondAb}$ 满足 **AB6** 与 **AB4\\***。",
-   "notes": "",
+   "statement": "$\\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\\***。",
+   "notes": "推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。\n\n这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。",
    "refs": []
   },
   {
@@ -8389,8 +8412,8 @@
     "Stonean",
     "投射"
    ],
-   "statement": "设 $F$ 是 **Stonean 空间**。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。",
-   "notes": "要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上保**所有**余极限。有限表现性来自 $F$ Stonean 这一点（它的闭开集构成基，于是 $\\mathbb{Z}\\cdot F$ 由有限数据生成）。",
+   "statement": "设 $F$ 是**自由紧 Hausdorff 空间**（更一般地，**Stonean 空间**）。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。",
+   "notes": "要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。",
    "refs": []
   },
   {
@@ -8432,7 +8455,27 @@
     "伴随"
    ],
    "statement": "$\\mathrm{CondAb}$ 上存在两个双函子 $\\operatorname{Hom}_{\\mathbb{Z}}$ 与 $\\otimes_{\\mathbb{Z}}$，使\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\cdot) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}(M, N)$$\n\n并且\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M \\otimes_{\\mathbb{Z}} N,\\ P\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M,\\ \\operatorname{Hom}_{\\mathbb{Z}}(N, P)\\bigr)$$",
-   "notes": "即 $\\otimes_{\\mathbb{Z}}$ 与内部的 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随**。\n\n所以 $\\mathrm{CondAb}$ 不只是一个阿贝尔范畴，它还带着一套**封闭的**张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。",
+   "notes": "即 $\\otimes_{\\mathbb{Z}}$ 与内部的 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随** —— 所以 $\\mathrm{CondAb}$ 是一个**封闭对称幺半**范畴（特别地，它富集在自己上面）。\n\n所以它不只是一个阿贝尔范畴，还带着一套封闭的张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。\n\n⚠️ 注意 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\cdot)$ 自然是一个**紧生成拓扑空间**，但它**不是拓扑阿贝尔群** —— 因为紧生成空间对（拓扑空间的）积不封闭。",
+   "refs": []
+  },
+  {
+   "id": "def.abelian-category",
+   "type": "definition",
+   "label": "加法 / 阿贝尔范畴",
+   "title": "加法范畴与阿贝尔范畴（Additive / Abelian Category）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.homology",
+   "layer": 16,
+   "tags": [
+    "同调代数",
+    "阿贝尔范畴",
+    "加法范畴"
+   ],
+   "statement": "- **预加法范畴**（$\\mathbf{Ab}$-范畴）是每个 $\\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；\n- **零对象**是 $\\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \\oplus M_{2}$，如果存在 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；\n- **加法范畴**是有零对象与所有直和的预加法范畴（等价地：所有有限积、或所有有限余积存在，此时二者存在且相等）；\n- **预阿贝尔范畴**是每个态射都有核与余核的加法范畴（等价地：所有有限极限与有限余极限存在）；\n- **阿贝尔范畴**是满足下列**等价**条件之一的预阿贝尔范畴：\n\n1. 每个单态射都是正则的（对偶地每个满态射都是正则的）；\n2. 若 $i : N \\rightarrowtail M$ 是单态射，则 $N \\cong \\ker\\bigl(M \\twoheadrightarrow \\operatorname{coker}(i)\\bigr)$（对偶同理）；\n3. 每个态射都能（在相差一个同构的意义下**唯一**地）分解成满态射接单态射；\n4. 对每个 $f : M \\to N$ 有 $\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong \\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$。",
+   "notes": "在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。\n\n例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。\n\n阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。",
    "refs": []
   },
   {
@@ -8530,7 +8573,7 @@
     "映射锥",
     "位移"
    ],
-   "statement": "态射 $f : K \\to L$ 的**映射锥**是复形\n\n$$M(f)^{n} := K^{n+1} \\oplus L^{n}, \\qquad d^{n} := \\begin{pmatrix} -d_{K}^{n+1} & 0 \\\\ f^{n+1} & d_{L}^{n} \\end{pmatrix}$$\n\n（矩阵满足 $d^{2} = 0$，只需 $f$ 与微分交换）。$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。",
+   "statement": "态射 $f : K \\to L$ 的**映射锥**是复形\n\n$$M(f)^{n} := K^{n+1} \\oplus L^{n}, \\qquad d^{n} := \\begin{pmatrix} -d^{n+1} & 0 \\\\ f^{n} & d^{n} \\end{pmatrix}$$\n\n（矩阵按 $K^{n+1} \\oplus L^{n}$ 分块：左上取自 $K$ 的微分，右下取自 $L$ 的微分，左下是 $f$ 的分量；$d^{2} = 0$ 只要 $f$ 与微分交换。）$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。",
    "notes": "用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。",
    "refs": []
   },
@@ -8570,7 +8613,7 @@
     "三角",
     "旋转"
    ],
-   "statement": "在 $\\mathbf{K}(\\mathcal{C})$ 中：\n\n1. $K \\xrightarrow{\\ 1\\ } K \\to 0 \\to K[1]$ 是导出三角；\n2. **旋转**：若 $K \\to L \\to M \\to K[1]$ 导出，则 $L \\to M \\to K[1] \\to L[1]$ 也导出；\n3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；\n4. 导出三角之间的态射可以（**不唯一**地）延拓。",
+   "statement": "在 $\\mathbf{K}(\\mathcal{C})$ 中：\n\n1. $K \\xrightarrow{\\ 1\\ } K \\to 0 \\to K[1]$ 是导出三角；\n2. **旋转**：$K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1]$ 导出 $\\iff$ 旋转后的 $L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1] \\xrightarrow{\\ -f[1]\\ } L[1]$ 导出；\n3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；\n4. 导出三角之间的态射可以（**不唯一**地）延拓。",
    "notes": "推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。",
    "refs": []
   },
@@ -15737,6 +15780,102 @@
    "definition": "def.filtration",
    "usedBy": "def.spectral-sequence",
    "note": "谱序列的第二部分是**带过滤**的同调对象。"
+  },
+  {
+   "id": "def-dep.fibered-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.fibered-product",
+   "usedBy": "def.abelian-category",
+   "note": "「直和 $M_{1} \\oplus M_{2}$」的定义用的是 $p_{k} i_{k} = 1$、$i_{1}p_{1} + i_{2}p_{2} = 1_{M}$ —— **有限积与有限余积重合**。"
+  },
+  {
+   "id": "def-dep.equalizer-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.equalizer",
+   "usedBy": "def.abelian-category",
+   "note": "预阿贝尔范畴说的是「每个态射都有**核与余核**」，阿贝尔范畴再加「单满都正则」。"
+  },
+  {
+   "id": "def-dep.mono-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.mono",
+   "usedBy": "def.abelian-category",
+   "note": "阿贝尔范畴的判据之一：每个**单态射**都是正则的。"
+  },
+  {
+   "id": "def-dep.image-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.image",
+   "usedBy": "def.abelian-category",
+   "note": "等价条件之一说的是「$\\ker(N \\to \\operatorname{coker} f)\\cong\\operatorname{coker}(\\ker f\\to M)$」—— 像与余像重合。"
+  },
+  {
+   "id": "def-dep.complex-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cochain-complex",
+   "usedBy": "def.abelian-category",
+   "note": "复形定义在**加法范畴**上，同调定义在**阿贝尔范畴**上。"
+  },
+  {
+   "id": "def-dep.abelian-ab-axioms",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abelian-category",
+   "usedBy": "def.ab-axioms",
+   "note": "AB1 = **预阿贝尔**、AB2 = **阿贝尔** —— 前两条就是这两个词。"
+  },
+  {
+   "id": "def-dep.limit-ab-axioms",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.limit",
+   "usedBy": "def.ab-axioms",
+   "note": "AB3 及以后要求「有所有**余极限**」，AB3\\* 是其对偶。"
+  },
+  {
+   "id": "def-dep.product-ab-axioms",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product",
+   "usedBy": "def.ab-axioms",
+   "note": "AB4 说**余积正合**，AB6 说**滤过余极限与积交换**。"
+  },
+  {
+   "id": "def-dep.filtered-ab-axioms",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.filtered-exact",
+   "usedBy": "def.ab-axioms",
+   "note": "AB5、AB6 的差别全在**滤过余极限**上：前者要它正合，后者还要它与积交换。"
+  },
+  {
+   "id": "def-dep.ab-grothendieck",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ab-axioms",
+   "usedBy": "def.grothendieck-category",
+   "note": "Grothendieck 范畴 = **AB5** 范畴 + 一个生成元。"
+  },
+  {
+   "id": "def-dep.grothendieck-condab",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.grothendieck-category",
+   "usedBy": "thm.condab-ab",
+   "note": "定理说的是 $\\mathrm{CondAb}$ **是** Grothendieck 范畴，并且额外满足两条。"
+  },
+  {
+   "id": "def-dep.ab-condab",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ab-axioms",
+   "usedBy": "thm.condab-ab",
+   "note": "AB6 与 AB4\\* 的含义见「Grothendieck 的 AB 公理」那条。"
   }
  ],
  "clusterLinks": [
@@ -16282,14 +16421,21 @@
   {
    "a": "cat.adjoint",
    "b": "cond",
-   "count": 2,
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.limit",
+   "b": "cond",
+   "count": 3,
    "label": "",
    "explicit": false
   },
   {
    "a": "cat.homology",
    "b": "cat.limit",
-   "count": 8,
+   "count": 12,
    "label": "",
    "explicit": false
   },

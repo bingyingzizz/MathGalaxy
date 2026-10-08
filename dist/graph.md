@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:39:00.431Z
-> 7 星系 / 34 星团 / 371 节点 / 801 连线（强边 793，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T09:44:38.964Z
+> 7 星系 / 34 星团 / 373 节点 / 813 连线（强边 805，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -5277,26 +5277,35 @@ $$\delta : \mathcal{C} \longrightarrow \widehat{\mathcal{C}}, \qquad X \mapsto h
 把 $\mathcal{C}$ 嵌进 $\widehat{\mathcal{C}}$ 之后，$\mathcal{C}$ 里的问题就搬到了一个**有所有极限与余极限**的范畴里去解 —— 这是「补全一个范畴」的标准做法。
 
 #### 切片范畴　`def.slice-category`
-*定义*　预层的切片范畴（Category of Elements）
+*定义*　预层的切片范畴（Slice Category）
 
-设 $T \in \widehat{\mathcal{C}}$。$T$ 的**切片范畴** $\mathcal{C}_{T}$ 以
+设 $\mathcal{C}$ 是范畴，$T$ 是 $\mathcal{C}$ 上的预层。**切片范畴** $\mathcal{C}/T$（也记 $\mathcal{C}_{T}$）定义如下：
 
-$$\bigl\{(X, s) : X \in \mathcal{C},\ s \in T(X)\bigr\}$$
+1. 对象是「$\mathcal{C}$ 的对象 $X$ 加上一个截面 $s \in T(X)$」组成的对 $(X, s)$；
+2. 从 $(X, s)$ 到 $(X', s')$ 的态射是使 $T(f)(s') = s$ 的 $f : X \to X'$。
 
-为对象，从 $(X, s)$ 到 $(X', s')$ 的态射取使 $T(f)(s') = s$ 的 $f : X \to X'$。
+它带一个明显的**遗忘函子** $j_{T} : \mathcal{C}/T \to \mathcal{C}$。用逗号范畴的说法：
 
-这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $\mathcal{C}_{T} \to \mathcal{C}$ 把 $(X, s)$ 送回 $X$。
+$$\mathcal{C}/T \;\cong\; \bigl(\mathcal{C} \subseteq \widehat{\mathcal{C}}\bigr) \Big\downarrow \bigl(\mathbf{1} \xrightarrow{\ T\ } \widehat{\mathcal{C}}\bigr)$$
 
-它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\mathcal{C}_{T}$ 上。
+这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $j_{T}$ 把 $(X, s)$ 送回 $X$。
 
-#### 切片方块是笛卡尔的　`prop.slice-cartesian`
-*命题*　切片范畴与拉回
+⭐ 逗号范畴的写法把它的身份说清了：它是**预层 $T$ 沿着 Yoneda 嵌入往回拉**得到的那个范畴 —— 一边是 $\mathcal{C} \hookrightarrow \widehat{\mathcal{C}}$，一边是 $\mathbf{1} \xrightarrow{T} \widehat{\mathcal{C}}$。它也解释了为什么 $X \in \mathcal{C}$ 时 $\mathcal{C}/X \simeq \widehat{\mathcal{C}}/h_{X}$。
 
-设 $\varphi : T \implies T'$ 是预层之间的自然变换。则它诱导的方块是**笛卡尔的**。
+它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\mathcal{C}/T$ 上（稠密性定理就是这么用的）。
 
-这个方块把两件事接在一起：**切片范畴到预层范畴 $\widehat{\mathcal{C}}$ 的嵌入**，与**范畴 $\mathcal{C}$ 到预层范畴 $\widehat{\mathcal{C}}$ 的 Yoneda 嵌入**。
+#### 切片范畴是拉回　`prop.slice-cartesian`
+*命题*　切片范畴的方块是笛卡尔的
 
-「把一个预层沿自然变换拉回」有两层说法：在切片范畴这一侧，是 $\mathcal{C}_{T}$ 落在 $\mathcal{C}_{T'}$ 上；在范畴这一侧，是 $\mathcal{C}$ 沿 Yoneda 嵌进 $\widehat{\mathcal{C}}$ 之后的那个方块。两个说法给出同一个笛卡尔方块 —— 这就是切片范畴存在的意义：**给预层配一个自带 Yoneda 嵌入的指标范畴**。
+对任取的一个预层，下面这个方块
+
+$$\begin{array}{ccc} \mathcal{C}/T & \longrightarrow & \widehat{\mathcal{C}}/T \\ \big\downarrow{\scriptstyle{j_{T}}} & & \big\downarrow \\ \mathcal{C} & \xrightarrow{\ y\ } & \widehat{\mathcal{C}} \end{array}$$
+
+是**笛卡尔的**。这里上面一行是**切片范畴之间的嵌入**（把 $(X, s)$ 送到 $(h_{X},\ s : h_{X} \to T)$），下面一行是**范畴 $\mathcal{C}$ 到预层范畴 $\widehat{\mathcal{C}}$ 的 Yoneda 嵌入**，两条竖边是两个遗忘函子。
+
+也就是说：**切片范畴 $\mathcal{C}/T$ 就是遗忘函子 $\widehat{\mathcal{C}}/T \to \widehat{\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。
+
+特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\mathcal{C}/X \simeq \widehat{\mathcal{C}}/h_{X}$ —— 在 $\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。
 
 #### 稠密性定理　`thm.density`
 *定理*　稠密性定理（Density Theorem）
@@ -5640,13 +5649,17 @@ $$F := \beta\, S^{\mathrm{disc}} \longrightarrow S$$
 #### 投射 / 内射对象　`def.projective-object`
 *定义*　投射对象与内射对象（Projective / Injective Object）
 
-范畴 $\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果对每个满态射 $A \twoheadrightarrow B$ 与每个 $P \to B$，都存在提升 $P \to A$ 使三角形交换：
+范畴 $\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果函子 $h_{P} = \operatorname{Hom}_{\mathcal{C}}(P, -)$ **保持满态射**。对偶地，$I$ 叫**内射的**，如果 $h^{I}$ 把单态射送到满态射。
+
+展开成提升条件就是：对每个满态射 $A \twoheadrightarrow B$ 与每个 $P \to B$，都存在提升 $P \to A$ 使三角形交换：
 
 $$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadrightarrow & B \end{array}$$
 
-对偶地，$I$ 叫**内射的**，如果对每个单态射 $A \rightarrowtail B$ 与每个 $A \to I$，都存在延拓 $B \to I$。
+对偶地，$I$ 内射说的是每个 $A \rightarrowtail B$ 与每个 $A \to I$ 都能延拓成 $B \to I$。
 
 「投射」这个名字来自模论：$R\text{-}\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。
+
+两条立刻可用的推论：**$P$ 投射时任何满态射 $Y \twoheadrightarrow P$ 都有截面**；**若 $X \to Y$ 有收缩而 $Y$ 投射，则 $X$ 也投射**（内射的情形对偶）。
 
 在 $\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。
 
@@ -6285,7 +6298,7 @@ $$\mathrm{Cond} \;:=\; \widehat{\mathbf{CHaus}}$$
 
 **例 1. 拓扑空间给凝聚态集。** 任一拓扑空间 $X$ 给出凝聚态集 $\underline{X}(S) := C(S, X) = \operatorname{Hom}_{\mathbf{Top}}(S, X)$ —— 从 $S$ 到 $X$ 的连续映射全体。
 
-**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\underline{X}(\bar{\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \ge 1}$ 连同指定的极限 $x_{\infty}$**」的集合 —— 因为 $\bar{\mathbb{N}}$ 是 $\mathbb{N}$ 的紧化，从它到 $X$ 的连续映射恰好由「$\mathbb{N}$ 上的像」加上「新添进去那些点上的像」决定，而后者给出的正是**极限**。
+**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\underline{X}(\bar{\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \ge 1}$ 连同指定的极限 $x_{\infty}$**」的集合 —— 这里 $\bar{\mathbb{N}}$ 是 $\mathbb{N}$ 的**一点紧化**，而「收敛序列连同极限」正好就是从 $\bar{\mathbb{N}}$ 到 $X$ 的连续映射：$\mathbb{N}$ 上的像给出序列，新添那个点上的像给出极限。
 
 **例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \mathbb{R}) / C(S, \mathbb{R}^{\mathrm{disc}})$。
 
@@ -6410,26 +6423,50 @@ $$\Gamma(F, -) : \mathrm{CondAb} \longrightarrow \mathbf{Ab}, \qquad M \mapsto \
 
 这条是**把 $\mathrm{CondAb}$ 的性质逐点归到 $\mathbf{Ab}$** 的通道 —— 下面的 AB 公理那一条就是靠它推出来的。
 
+#### Grothendieck 的 AB 公理　`def.ab-axioms`
+*定义*　Grothendieck 的 AB 公理（AB1–AB6）
+
+范畴 $\mathcal{C}$ 的**正合性等级**（Grothendieck 的 AB 公理）逐条加强如下：
+
+1. **AB1**：预阿贝尔范畴；
+2. **AB2**：阿贝尔范畴；
+3. **AB3**：AB2 且有所有余极限（**AB3\*** 是对偶）；
+4. **AB4**：AB3 且**余积正合**（**AB4\*** 是对偶）；
+5. **AB5**：AB4 且**滤过余极限正合**（**AB5\*** 是对偶）；
+6. **AB6**：AB5 且**滤过余极限与积交换**（**AB5\*** 是对偶）。
+
+一个字读法：**头两条补的是「态射有没有核与余核、单满正不正则」；后面几条一路在补「越来越多的余极限操作是正合的、并且和别的操作交换」。**
+
+例：$\mathbf{Ab}$ 满足 AB6 与 AB4*；$\mathbf{AbTop}$ 只满足 AB1；$\mathbf{AbCHaus} \simeq \mathbf{Ab}^{\mathrm{op}}$ 满足 AB4 与 AB6*（Pontryagin 对偶）；对任意范畴 $\mathcal{C}$，$\mathbf{Ab}^{\mathcal{C}}$ 满足 AB6 与 AB4*；拓扑斯上的 $\mathbf{Ab}(\mathcal{T})$ 满足 AB5 与 AB3*。
+
+⚠️ 拓扑斯上的 $\mathbf{Ab}(\mathcal{T})$ **一般并不满足 AB6 或 AB4\***；另外，除 $\{0\}$ 之外没有范畴能同时满足 AB5 与 AB5\*。
+
 #### Grothendieck 范畴　`def.grothendieck-category`
 *定义*　Grothendieck 范畴（Grothendieck Category）
 
-**Grothendieck 范畴**是带生成元的 **AB5** 范畴；这里 AB5 说：**滤过余极限正合**。
+**Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。
 
-例：$A\text{-}\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\mathcal{C}$ 的 $\operatorname{Ind}(\mathcal{C})$（按滤过余极限补全）也是。
+例：$A\text{-}\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\mathcal{C}$ 的 $\operatorname{Ind}(\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\mathcal{T}$ 上的 $\mathbf{Ab}(\mathcal{T})$ 也是。
+
+两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\***（有所有极限）；而且它**有足够多的内射对象**。
 
 「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。
 
 #### CondAb 满足 AB6 与 AB4*　`thm.condab-ab`
 *定理*　$\mathrm{CondAb}$ 的 AB 公理
 
-$\mathrm{CondAb}$ 满足 **AB6** 与 **AB4\***。
+$\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\***。
+
+推论：$\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。
+
+这一整段的好处是：$\mathrm{CondAb}$ 上能照搬 $\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。
 
 #### Stonean 给出有限表现投射对象　`lem.stonean-projective`
 *引理*　Stonean 空间给出有限表现的投射对象
 
-设 $F$ 是 **Stonean 空间**。则自由凝聚态阿贝尔群 $\mathbb{Z}\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。
+设 $F$ 是**自由紧 Hausdorff 空间**（更一般地，**Stonean 空间**）。则自由凝聚态阿贝尔群 $\mathbb{Z}\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。
 
-要证的等价形式是：函子 $M \mapsto \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot F, M) \cong \Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上保**所有**余极限。有限表现性来自 $F$ Stonean 这一点（它的闭开集构成基，于是 $\mathbb{Z}\cdot F$ 由有限数据生成）。
+要证的等价形式是：函子 $M \mapsto \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot F, M) \cong \Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。
 
 #### CondAb 由有限表现投射对象生成　`prop.condab-generated`
 *命题*　$\mathrm{CondAb}$ 的生成元
@@ -6447,12 +6484,34 @@ $$\operatorname{Hom}_{\mathbb{Z}}(M, N)(\cdot) \;\cong\; \operatorname{Hom}_{\ma
 
 $$\operatorname{Hom}_{\mathbb{Z}}\bigl(M \otimes_{\mathbb{Z}} N,\ P\bigr) \;\cong\; \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ \operatorname{Hom}_{\mathbb{Z}}(N, P)\bigr)$$
 
-即 $\otimes_{\mathbb{Z}}$ 与内部的 $\operatorname{Hom}_{\mathbb{Z}}$ **互为伴随**。
+即 $\otimes_{\mathbb{Z}}$ 与内部的 $\operatorname{Hom}_{\mathbb{Z}}$ **互为伴随** —— 所以 $\mathrm{CondAb}$ 是一个**封闭对称幺半**范畴（特别地，它富集在自己上面）。
 
-所以 $\mathrm{CondAb}$ 不只是一个阿贝尔范畴，它还带着一套**封闭的**张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。
+所以它不只是一个阿贝尔范畴，还带着一套封闭的张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。
+
+⚠️ 注意 $\operatorname{Hom}_{\mathbb{Z}}(M, N) = \operatorname{Hom}_{\mathbb{Z}}(M, N)(\cdot)$ 自然是一个**紧生成拓扑空间**，但它**不是拓扑阿贝尔群** —— 因为紧生成空间对（拓扑空间的）积不封闭。
 
 ### 星团：同调代数
 > 造出「复形」这套机器：复形 → 同伦 → 同伦范畴 → 映射锥与导出三角 → 同调与长正合列 → 拟同构 → 内射对象 → 谱序列。
+
+#### 加法 / 阿贝尔范畴　`def.abelian-category`
+*定义*　加法范畴与阿贝尔范畴（Additive / Abelian Category）
+
+- **预加法范畴**（$\mathbf{Ab}$-范畴）是每个 $\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；
+- **零对象**是 $\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \oplus M_{2}$，如果存在 $p_{k} : M \to M_{k}$、$i_{k} : M_{k} \to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；
+- **加法范畴**是有零对象与所有直和的预加法范畴（等价地：所有有限积、或所有有限余积存在，此时二者存在且相等）；
+- **预阿贝尔范畴**是每个态射都有核与余核的加法范畴（等价地：所有有限极限与有限余极限存在）；
+- **阿贝尔范畴**是满足下列**等价**条件之一的预阿贝尔范畴：
+
+1. 每个单态射都是正则的（对偶地每个满态射都是正则的）；
+2. 若 $i : N \rightarrowtail M$ 是单态射，则 $N \cong \ker\bigl(M \twoheadrightarrow \operatorname{coker}(i)\bigr)$（对偶同理）；
+3. 每个态射都能（在相差一个同构的意义下**唯一**地）分解成满态射接单态射；
+4. 对每个 $f : M \to N$ 有 $\ker\bigl(N \to \operatorname{coker} f\bigr) \cong \operatorname{coker}\bigl(\ker f \to M\bigr)$。
+
+在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。
+
+例：$A\text{-}\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\mathbf{Ab}(\mathcal{T})$ 也是；$\mathbf{AbCHaus}$ 也是。而 $\mathbf{AbTop}$ **不是**（$\mathbb{Z}^{\mathrm{disc}} \to \mathbb{Z}^{\mathrm{coarse}}$ 这个恒等映射不严格），$\mathbf{AbHaus}$ 也不是。
+
+阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。
 
 #### 上链复形　`def.cochain-complex`
 *定义*　复形（Complex）
@@ -6513,9 +6572,9 @@ $\mathbf{K}(\mathcal{C})$ 是**加法范畴**，且 $\mathcal{C}(\mathcal{C}) \t
 
 态射 $f : K \to L$ 的**映射锥**是复形
 
-$$M(f)^{n} := K^{n+1} \oplus L^{n}, \qquad d^{n} := \begin{pmatrix} -d_{K}^{n+1} & 0 \\ f^{n+1} & d_{L}^{n} \end{pmatrix}$$
+$$M(f)^{n} := K^{n+1} \oplus L^{n}, \qquad d^{n} := \begin{pmatrix} -d^{n+1} & 0 \\ f^{n} & d^{n} \end{pmatrix}$$
 
-（矩阵满足 $d^{2} = 0$，只需 $f$ 与微分交换）。$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。
+（矩阵按 $K^{n+1} \oplus L^{n}$ 分块：左上取自 $K$ 的微分，右下取自 $L$ 的微分，左下是 $f$ 的分量；$d^{2} = 0$ 只要 $f$ 与微分交换。）$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。
 
 用处：给出短正合列 $0 \to L \to M(f) \to K[1] \to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。
 
@@ -6540,7 +6599,7 @@ $$K \xrightarrow{\ f\ } L \longrightarrow M(f) \longrightarrow K[1]$$
 在 $\mathbf{K}(\mathcal{C})$ 中：
 
 1. $K \xrightarrow{\ 1\ } K \to 0 \to K[1]$ 是导出三角；
-2. **旋转**：若 $K \to L \to M \to K[1]$ 导出，则 $L \to M \to K[1] \to L[1]$ 也导出；
+2. **旋转**：$K \xrightarrow{\ f\ } L \xrightarrow{\ g\ } M \xrightarrow{\ h\ } K[1]$ 导出 $\iff$ 旋转后的 $L \xrightarrow{\ g\ } M \xrightarrow{\ h\ } K[1] \xrightarrow{\ -f[1]\ } L[1]$ 导出；
 3. 任意 $f : K \to L$ 都能（**不唯一**地）嵌入一个导出三角；
 4. 导出三角之间的态射可以（**不唯一**地）延拓。
 
@@ -10541,7 +10600,7 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 稠密性定理说 $T$ 是可表示预层的**余极限**。
 
-#### 定义引用：「纤维积 / 纤维余积」→ 切片方块是笛卡尔的　`def-link.fibered-product-slice`
+#### 定义引用：「纤维积 / 纤维余积」→ 切片范畴是拉回　`def-link.fibered-product-slice`
 
 结论说那个方块是**笛卡尔的** —— 这正是纤维积定义里的说法。
 
@@ -11229,7 +11288,7 @@ $\operatorname{Hom}_{\mathcal{C}}(X, -)$ 是对**范畴** $\mathcal{C}$ 取的 H
 
 稠密性定理里的余极限跑在**切片范畴** $\mathcal{C}_{T}$ 上。
 
-#### 定义引用：「纤维积 / 纤维余积」→ 切片方块是笛卡尔的　`def-dep.fibered-slice`
+#### 定义引用：「纤维积 / 纤维余积」→ 切片范畴是拉回　`def-dep.fibered-slice`
 
 「那个方块是**笛卡尔的**」正是纤维积定义里的说法。
 
@@ -11997,6 +12056,54 @@ $\mathbf{K}(\mathcal{C})$ 本身是一个**范畴**（还是加法范畴）。
 
 谱序列的第二部分是**带过滤**的同调对象。
 
+#### 定义引用：「纤维积 / 纤维余积」→ 加法 / 阿贝尔范畴　`def-dep.fibered-abelian`
+
+「直和 $M_{1} \oplus M_{2}$」的定义用的是 $p_{k} i_{k} = 1$、$i_{1}p_{1} + i_{2}p_{2} = 1_{M}$ —— **有限积与有限余积重合**。
+
+#### 定义引用：「等化子 / 余等化子」→ 加法 / 阿贝尔范畴　`def-dep.equalizer-abelian`
+
+预阿贝尔范畴说的是「每个态射都有**核与余核**」，阿贝尔范畴再加「单满都正则」。
+
+#### 定义引用：「单态射 / 满态射」→ 加法 / 阿贝尔范畴　`def-dep.mono-abelian`
+
+阿贝尔范畴的判据之一：每个**单态射**都是正则的。
+
+#### 定义引用：「像 / 余像」→ 加法 / 阿贝尔范畴　`def-dep.image-abelian`
+
+等价条件之一说的是「$\ker(N \to \operatorname{coker} f)\cong\operatorname{coker}(\ker f\to M)$」—— 像与余像重合。
+
+#### 定义引用：「上链复形」→ 加法 / 阿贝尔范畴　`def-dep.complex-abelian`
+
+复形定义在**加法范畴**上，同调定义在**阿贝尔范畴**上。
+
+#### 定义引用：「加法 / 阿贝尔范畴」→ Grothendieck 的 AB 公理　`def-dep.abelian-ab-axioms`
+
+AB1 = **预阿贝尔**、AB2 = **阿贝尔** —— 前两条就是这两个词。
+
+#### 定义引用：「极限」→ Grothendieck 的 AB 公理　`def-dep.limit-ab-axioms`
+
+AB3 及以后要求「有所有**余极限**」，AB3\* 是其对偶。
+
+#### 定义引用：「积 / 余积」→ Grothendieck 的 AB 公理　`def-dep.product-ab-axioms`
+
+AB4 说**余积正合**，AB6 说**滤过余极限与积交换**。
+
+#### 定义引用：「滤过余极限正合」→ Grothendieck 的 AB 公理　`def-dep.filtered-ab-axioms`
+
+AB5、AB6 的差别全在**滤过余极限**上：前者要它正合，后者还要它与积交换。
+
+#### 定义引用：「Grothendieck 的 AB 公理」→ Grothendieck 范畴　`def-dep.ab-grothendieck`
+
+Grothendieck 范畴 = **AB5** 范畴 + 一个生成元。
+
+#### 定义引用：「Grothendieck 范畴」→ CondAb 满足 AB6 与 AB4*　`def-dep.grothendieck-condab`
+
+定理说的是 $\mathrm{CondAb}$ **是** Grothendieck 范畴，并且额外满足两条。
+
+#### 定义引用：「Grothendieck 的 AB 公理」→ CondAb 满足 AB6 与 AB4*　`def-dep.ab-condab`
+
+AB6 与 AB4\* 的含义见「Grothendieck 的 AB 公理」那条。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -12206,6 +12313,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **层与拓扑 ↔ 预层与米田**　4 条节点级连线
 - **图与极限 ↔ 拓扑斯**　7 条节点级连线
 - **拓扑斯 ↔ 预层与米田**　2 条节点级连线
-- **伴随与反射 ↔ 凝聚态集**　2 条节点级连线
-- **同调代数 ↔ 图与极限**　8 条节点级连线
+- **伴随与反射 ↔ 凝聚态集**　3 条节点级连线
+- **图与极限 ↔ 凝聚态集**　3 条节点级连线
+- **同调代数 ↔ 图与极限**　12 条节点级连线
 - **范畴与图 ↔ 同调代数**　2 条节点级连线

@@ -15,4 +15,4 @@
 - **5** `lem.presheaf-mono-pointwise` 预层态射的单满按点检验 · layer 14 · 预层与米田
 - **5** `prop.chaus-reflective` 紧 Haus 是反射子范畴 · layer 15 · 紧 Haus 与 Stone
 
-（371 个节点里 364 个带强边入边，列了前 10 个；完整清单见 `graph.json`。）
+（373 个节点里 366 个带强边入边，列了前 10 个；完整清单见 `graph.json`。）

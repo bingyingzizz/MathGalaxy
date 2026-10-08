@@ -6,3 +6,4 @@
 - 被 `def.topos-morphism` 拓扑斯的态射 用
 - 被 `def.compactly-generated` 紧生成空间 用
 - 被 `prop.condab-section` 截面函子保极限余极限 用
+- 被 `def.ab-axioms` Grothendieck 的 AB 公理 用

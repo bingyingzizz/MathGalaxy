@@ -13,6 +13,34 @@ window.MG = window.MG || {};
   name: '同调代数',
   nodes: [
 
+    /* ------------------------------------ 加法 / 阿贝尔范畴（地基） */
+    {
+      id: 'def.abelian-category',
+      cluster: 'cat.homology',
+      type: 'definition',
+      label: '加法 / 阿贝尔范畴',
+      title: '加法范畴与阿贝尔范畴（Additive / Abelian Category）',
+      regions: ['category'],
+      tags: ['同调代数', '阿贝尔范畴', '加法范畴'],
+      statement: [
+        '- **预加法范畴**（$\\mathbf{Ab}$-范畴）是每个 $\\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；',
+        '- **零对象**是 $\\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \\oplus M_{2}$，如果存在 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；',
+        '- **加法范畴**是有零对象与所有直和的预加法范畴（等价地：所有有限积、或所有有限余积存在，此时二者存在且相等）；',
+        '- **预阿贝尔范畴**是每个态射都有核与余核的加法范畴（等价地：所有有限极限与有限余极限存在）；',
+        '- **阿贝尔范畴**是满足下列**等价**条件之一的预阿贝尔范畴：',
+        '',
+        '1. 每个单态射都是正则的（对偶地每个满态射都是正则的）；',
+        '2. 若 $i : N \\rightarrowtail M$ 是单态射，则 $N \\cong \\ker\\bigl(M \\twoheadrightarrow \\operatorname{coker}(i)\\bigr)$（对偶同理）；',
+        '3. 每个态射都能（在相差一个同构的意义下**唯一**地）分解成满态射接单态射；',
+        '4. 对每个 $f : M \\to N$ 有 $\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong \\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$。'
+      ].join('\n'),
+      notes: [
+        '在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。',
+        '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
+        '阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。'
+      ].join('\n\n')
+    },
+
     /* ------------------------------------------------------ 复形 */
     {
       id: 'def.cochain-complex',
@@ -112,9 +140,9 @@ window.MG = window.MG || {};
       statement: [
         '态射 $f : K \\to L$ 的**映射锥**是复形',
         '',
-        '$$M(f)^{n} := K^{n+1} \\oplus L^{n}, \\qquad d^{n} := \\begin{pmatrix} -d_{K}^{n+1} & 0 \\\\ f^{n+1} & d_{L}^{n} \\end{pmatrix}$$',
+        '$$M(f)^{n} := K^{n+1} \\oplus L^{n}, \\qquad d^{n} := \\begin{pmatrix} -d^{n+1} & 0 \\\\ f^{n} & d^{n} \\end{pmatrix}$$',
         '',
-        '（矩阵满足 $d^{2} = 0$，只需 $f$ 与微分交换）。$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。'
+        '（矩阵按 $K^{n+1} \\oplus L^{n}$ 分块：左上取自 $K$ 的微分，右下取自 $L$ 的微分，左下是 $f$ 的分量；$d^{2} = 0$ 只要 $f$ 与微分交换。）$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。'
       ].join('\n'),
       notes: '用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。'
     },
@@ -155,7 +183,7 @@ window.MG = window.MG || {};
         '在 $\\mathbf{K}(\\mathcal{C})$ 中：',
         '',
         '1. $K \\xrightarrow{\\ 1\\ } K \\to 0 \\to K[1]$ 是导出三角；',
-        '2. **旋转**：若 $K \\to L \\to M \\to K[1]$ 导出，则 $L \\to M \\to K[1] \\to L[1]$ 也导出；',
+        '2. **旋转**：$K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1]$ 导出 $\\iff$ 旋转后的 $L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1] \\xrightarrow{\\ -f[1]\\ } L[1]$ 导出；',
         '3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；',
         '4. 导出三角之间的态射可以（**不唯一**地）延拓。'
       ].join('\n'),

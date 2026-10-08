@@ -5,3 +5,4 @@
 - 被 `def.mapping-cone` 映射锥 用
 - 被 `def.cohomology` 同调 用
 - 被 `def.spectral-sequence` 谱序列 用
+- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用

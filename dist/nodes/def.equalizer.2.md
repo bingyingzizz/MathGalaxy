@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 `prop.cohomology-exact-sequence` 同调的短正合列 用
 - 被 `thm.long-exact` 长正合列 用
+- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用

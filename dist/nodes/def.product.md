@@ -10,4 +10,7 @@ $$\operatorname{Hom}_{\mathcal{C}}\Bigl(Y, \prod_{i} X_i\Bigr) \;\cong\; \prod_{
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-product.md
 - `thm.product` 笛卡尔积存在：用到了定义 笛卡尔积存在　proofs/def-dep.product-set.md
 
+## 它能推出什么 / 谁在用它
+- 被 `def.ab-axioms` Grothendieck 的 AB 公理 用
+
 > 说明见 `notes/def.product.md`

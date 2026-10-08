@@ -61,7 +61,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**例 1. 拓扑空间给凝聚态集。** 任一拓扑空间 $X$ 给出凝聚态集 $\\underline{X}(S) := C(S, X) = \\operatorname{Hom}_{\\mathbf{Top}}(S, X)$ —— 从 $S$ 到 $X$ 的连续映射全体。',
-        '**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 因为 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的紧化，从它到 $X$ 的连续映射恰好由「$\\mathbb{N}$ 上的像」加上「新添进去那些点上的像」决定，而后者给出的正是**极限**。',
+        '**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 这里 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的**一点紧化**，而「收敛序列连同极限」正好就是从 $\\bar{\\mathbb{N}}$ 到 $X$ 的连续映射：$\\mathbb{N}$ 上的像给出序列，新添那个点上的像给出极限。',
         '**例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \\mathbb{R}) / C(S, \\mathbb{R}^{\\mathrm{disc}})$。',
         '这三个例子的共同点：**取值都是「从紧 Hausdorff 空间出发的连续映射的某种商或子集」**。凝聚态集之所以能记住拓扑信息，靠的就是把这些映射全留下来。'
       ].join('\n\n')
@@ -263,6 +263,30 @@ window.MG = window.MG || {};
 
     /* ------------------------------------------------ Grothendieck 范畴 */
     {
+      id: 'def.ab-axioms',
+      cluster: 'cond',
+      type: 'definition',
+      label: 'Grothendieck 的 AB 公理',
+      title: 'Grothendieck 的 AB 公理（AB1–AB6）',
+      regions: ['category'],
+      tags: ['同调代数', 'AB 公理', '正合'],
+      statement: [
+        '范畴 $\\mathcal{C}$ 的**正合性等级**（Grothendieck 的 AB 公理）逐条加强如下：',
+        '',
+        '1. **AB1**：预阿贝尔范畴；',
+        '2. **AB2**：阿贝尔范畴；',
+        '3. **AB3**：AB2 且有所有余极限（**AB3\\*** 是对偶）；',
+        '4. **AB4**：AB3 且**余积正合**（**AB4\\*** 是对偶）；',
+        '5. **AB5**：AB4 且**滤过余极限正合**（**AB5\\*** 是对偶）；',
+        '6. **AB6**：AB5 且**滤过余极限与积交换**（**AB5\\*** 是对偶）。'
+      ].join('\n'),
+      notes: [
+        '一个字读法：**头两条补的是「态射有没有核与余核、单满正不正则」；后面几条一路在补「越来越多的余极限操作是正合的、并且和别的操作交换」。**',
+        '例：$\\mathbf{Ab}$ 满足 AB6 与 AB4*；$\\mathbf{AbTop}$ 只满足 AB1；$\\mathbf{AbCHaus} \\simeq \\mathbf{Ab}^{\\mathrm{op}}$ 满足 AB4 与 AB6*（Pontryagin 对偶）；对任意范畴 $\\mathcal{C}$，$\\mathbf{Ab}^{\\mathcal{C}}$ 满足 AB6 与 AB4*；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 满足 AB5 与 AB3*。',
+        '⚠️ 拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ **一般并不满足 AB6 或 AB4\\***；另外，除 $\\{0\\}$ 之外没有范畴能同时满足 AB5 与 AB5\\*。'
+      ].join('\n\n')
+    },
+    {
       id: 'def.grothendieck-category',
       cluster: 'cond',
       type: 'definition',
@@ -271,9 +295,13 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '同调代数', '生成元'],
       statement: [
-        '**Grothendieck 范畴**是带生成元的 **AB5** 范畴；这里 AB5 说：**滤过余极限正合**。'
+        '**Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。'
       ].join('\n'),
-      notes: '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是。\n\n「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。'
+      notes: [
+        '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是。',
+        '两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\\***（有所有极限）；而且它**有足够多的内射对象**。',
+        '「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。'
+      ].join('\n\n')
     },
 
     /* ------------------------------------------------ CondAb 的 AB 公理 */
@@ -285,7 +313,8 @@ window.MG = window.MG || {};
       title: '$\\mathrm{CondAb}$ 的 AB 公理',
       regions: ['category', 'topology'],
       tags: ['凝聚态', '同调代数', '正合'],
-      statement: '$\\mathrm{CondAb}$ 满足 **AB6** 与 **AB4\\***。'
+      statement: '$\\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\\***。',
+      notes: '推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。\n\n这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。'
     },
 
     /* ------------------------------------------------ Stonean 给投射对象 */
@@ -298,9 +327,9 @@ window.MG = window.MG || {};
       regions: ['category', 'topology'],
       tags: ['凝聚态', 'Stonean', '投射'],
       statement: [
-        '设 $F$ 是 **Stonean 空间**。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。'
+        '设 $F$ 是**自由紧 Hausdorff 空间**（更一般地，**Stonean 空间**）。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。'
       ].join('\n'),
-      notes: '要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上保**所有**余极限。有限表现性来自 $F$ Stonean 这一点（它的闭开集构成基，于是 $\\mathbb{Z}\\cdot F$ 由有限数据生成）。'
+      notes: '要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。'
     },
 
     /* ------------------------------------------------ CondAb 的生成元 */
@@ -333,7 +362,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M \\otimes_{\\mathbb{Z}} N,\\ P\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(M,\\ \\operatorname{Hom}_{\\mathbb{Z}}(N, P)\\bigr)$$'
       ].join('\n'),
-      notes: '即 $\\otimes_{\\mathbb{Z}}$ 与内部的 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随**。\n\n所以 $\\mathrm{CondAb}$ 不只是一个阿贝尔范畴，它还带着一套**封闭的**张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。'
+      notes: '即 $\\otimes_{\\mathbb{Z}}$ 与内部的 $\\operatorname{Hom}_{\\mathbb{Z}}$ **互为伴随** —— 所以 $\\mathrm{CondAb}$ 是一个**封闭对称幺半**范畴（特别地，它富集在自己上面）。\n\n所以它不只是一个阿贝尔范畴，还带着一套封闭的张量结构 —— 这才是「在凝聚态阿贝尔群上做代数」的前提：可以谈张量积、可以对偶、可以谈交换代数。\n\n⚠️ 注意 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\cdot)$ 自然是一个**紧生成拓扑空间**，但它**不是拓扑阿贝尔群** —— 因为紧生成空间对（拓扑空间的）积不封闭。'
     }
   ],
 

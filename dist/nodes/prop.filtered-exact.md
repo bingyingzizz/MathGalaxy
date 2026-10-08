@@ -15,5 +15,6 @@ $$\varinjlim : \mathbf{Set}^{I} \longrightarrow \mathbf{Set}$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.site-properties` site 的层范畴的好性质
+- 被 `def.ab-axioms` Grothendieck 的 AB 公理 用
 
 > 说明见 `notes/prop.filtered-exact.md`

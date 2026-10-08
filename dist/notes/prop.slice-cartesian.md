@@ -1,4 +1,6 @@
-# 切片方块是笛卡尔的　`prop.slice-cartesian`　·　说明
+# 切片范畴是拉回　`prop.slice-cartesian`　·　说明
 根 `../`
 
-「把一个预层沿自然变换拉回」有两层说法：在切片范畴这一侧，是 $\mathcal{C}_{T}$ 落在 $\mathcal{C}_{T'}$ 上；在范畴这一侧，是 $\mathcal{C}$ 沿 Yoneda 嵌进 $\widehat{\mathcal{C}}$ 之后的那个方块。两个说法给出同一个笛卡尔方块 —— 这就是切片范畴存在的意义：**给预层配一个自带 Yoneda 嵌入的指标范畴**。
+也就是说：**切片范畴 $\mathcal{C}/T$ 就是遗忘函子 $\widehat{\mathcal{C}}/T \to \widehat{\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。
+
+特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\mathcal{C}/X \simeq \widehat{\mathcal{C}}/h_{X}$ —— 在 $\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。

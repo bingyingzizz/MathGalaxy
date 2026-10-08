@@ -8,7 +8,7 @@
 - def.representable　表示函子　layer 12
 - def.slice-category　切片范畴　layer 12
 - lem.yoneda　米田引理　layer 13
-- prop.slice-cartesian　切片方块是笛卡尔的　layer 13
+- prop.slice-cartesian　切片范畴是拉回　layer 13
 - thm.represented-criterion　表示的两个定义等价　layer 14
 - prop.yoneda-embedding　米田嵌入　layer 14
 - thm.density　稠密性定理　layer 14

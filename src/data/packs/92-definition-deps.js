@@ -742,7 +742,33 @@ window.MG = window.MG || {};
     ['def.cochain-complex', 'def.spectral-sequence', 'def-dep.complex-spectral-sequence',
       '谱序列从**复形**的过滤出发，逐层算它的同调。'],
     ['def.filtration', 'def.spectral-sequence', 'def-dep.filtration-spectral-sequence',
-      '谱序列的第二部分是**带过滤**的同调对象。']
+      '谱序列的第二部分是**带过滤**的同调对象。'],
+    ['def.fibered-product', 'def.abelian-category', 'def-dep.fibered-abelian',
+      '「直和 $M_{1} \\oplus M_{2}$」的定义用的是 $p_{k} i_{k} = 1$、$i_{1}p_{1} + i_{2}p_{2} = 1_{M}$ —— **有限积与有限余积重合**。'],
+    ['def.equalizer', 'def.abelian-category', 'def-dep.equalizer-abelian',
+      '预阿贝尔范畴说的是「每个态射都有**核与余核**」，阿贝尔范畴再加「单满都正则」。'],
+    ['def.mono', 'def.abelian-category', 'def-dep.mono-abelian',
+      '阿贝尔范畴的判据之一：每个**单态射**都是正则的。'],
+    ['def.image', 'def.abelian-category', 'def-dep.image-abelian',
+      '等价条件之一说的是「$\\ker(N \\to \\operatorname{coker} f)\\cong\\operatorname{coker}(\\ker f\\to M)$」—— 像与余像重合。'],
+    ['def.cochain-complex', 'def.abelian-category', 'def-dep.complex-abelian',
+      '复形定义在**加法范畴**上，同调定义在**阿贝尔范畴**上。'],
+
+    /* ------------------------------------------------- Grothendieck 的 AB 公理 */
+    ['def.abelian-category', 'def.ab-axioms', 'def-dep.abelian-ab-axioms',
+      'AB1 = **预阿贝尔**、AB2 = **阿贝尔** —— 前两条就是这两个词。'],
+    ['def.limit', 'def.ab-axioms', 'def-dep.limit-ab-axioms',
+      'AB3 及以后要求「有所有**余极限**」，AB3\\* 是其对偶。'],
+    ['def.product', 'def.ab-axioms', 'def-dep.product-ab-axioms',
+      'AB4 说**余积正合**，AB6 说**滤过余极限与积交换**。'],
+    ['prop.filtered-exact', 'def.ab-axioms', 'def-dep.filtered-ab-axioms',
+      'AB5、AB6 的差别全在**滤过余极限**上：前者要它正合，后者还要它与积交换。'],
+    ['def.ab-axioms', 'def.grothendieck-category', 'def-dep.ab-grothendieck',
+      'Grothendieck 范畴 = **AB5** 范畴 + 一个生成元。'],
+    ['def.grothendieck-category', 'thm.condab-ab', 'def-dep.grothendieck-condab',
+      '定理说的是 $\\mathrm{CondAb}$ **是** Grothendieck 范畴，并且额外满足两条。'],
+    ['def.ab-axioms', 'thm.condab-ab', 'def-dep.ab-condab',
+      'AB6 与 AB4\\* 的含义见「Grothendieck 的 AB 公理」那条。']
   ];
 
   var edges = E.map(function (e) {
