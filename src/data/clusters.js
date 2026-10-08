@@ -224,6 +224,13 @@ MG.clusters = [
     parent: 'category',
     hub: 'def.category',
     desc: '造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。'
+  },
+  {
+    id: 'cat.functor',
+    name: '函子与自然变换',
+    parent: 'category',
+    hub: 'def.natural-transformation',
+    desc: '造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

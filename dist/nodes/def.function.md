@@ -25,6 +25,8 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 - 被 `def.graph` 图 用
 - 被 `def.graph-morphism` 图的态射 用
 
+- …另有出边，续页见 `nodes/def.function.2.md`
+
 refs: Kunen, Set Theory, I.5
 
 > 说明见 `notes/def.function.md`

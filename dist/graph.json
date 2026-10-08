@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-08T08:43:33.665Z",
+  "generated": "2026-10-08T08:47:25.317Z",
   "counts": {
    "regions": 7,
-   "clusters": 24,
-   "nodes": 235,
-   "edges": 495,
-   "strong": 487,
+   "clusters": 25,
+   "nodes": 240,
+   "edges": 504,
+   "strong": 496,
    "weak": 8
   },
   "readingGuide": {
@@ -87,7 +87,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论、拓扑斯与凝聚态数学。",
    "color": "#B03A5B",
-   "nodeCount": 5
+   "nodeCount": 10
   }
  ],
  "clusters": [
@@ -540,6 +540,20 @@
     "def.graph-morphism",
     "def.category",
     "def.section-retraction"
+   ]
+  },
+  {
+   "id": "cat.functor",
+   "name": "函子与自然变换",
+   "parent": "category",
+   "desc": "造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。",
+   "nodeCount": 5,
+   "nodes": [
+    "def.functor",
+    "def.natural-transformation",
+    "def.ff-faithful",
+    "def.essentially-surjective",
+    "def.cat-equivalence"
    ]
   }
  ],
@@ -5777,6 +5791,106 @@
    "statement": "设 $f : X \\to Y$ 是范畴里的一条态射。\n\n- $f$ 的**截面**（section）是态射 $g : Y \\to X$，使\n\n$$f \\circ g = 1_Y$$\n\n- $f$ 的**收缩**（retraction）是态射 $g : Y \\to X$，使\n\n$$g \\circ f = 1_X$$",
    "notes": "两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。",
    "refs": []
+  },
+  {
+   "id": "def.functor",
+   "type": "definition",
+   "label": "函子",
+   "title": "函子（Functor）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.functor",
+   "layer": 8,
+   "tags": [
+    "范畴论",
+    "函子",
+    "保持复合"
+   ],
+   "statement": "从范畴 $\\mathcal{C}$ 到范畴 $\\mathcal{D}$ 的**函子** $F : \\mathcal{C} \\to \\mathcal{D}$ 由两部分组成：\n\n- 对象上的映射 $X \\mapsto F(X)$；\n- 态射上的映射 $f \\mapsto F(f)$，把 $f : X \\to Y$ 送到 $F(f) : F(X) \\to F(Y)$。\n\n要求它**保持单位**与**保持复合**：\n\n$$F(1_X) = 1_{F(X)}, \\qquad F(g \\circ f) = F(g) \\circ F(f)$$\n\n（只要 $g \\circ f$ 有定义）。反方向的函子 $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$ 叫**反变函子**。",
+   "notes": "两条要求合起来就是一句话：**函子把整个范畴的结构原样搬过去** —— 单位还是单位，复合还是复合，连结合律都不用再验（它自动跟着走）。\n\n例：\n\n\n\n- **遗忘函子** $\\mathbf{Top} \\to \\mathbf{Set}$：$(X, \\tau) \\mapsto X$，连续映射当作普通映射。拓扑被丢掉，所以叫「遗忘」。同理 $\\mathbf{Ab} \\to \\mathbf{Set}$、$\\mathbf{Grp} \\to \\mathbf{Mon}$（含入）。\n\n- $\\mathbf{Set} \\to \\mathbf{Top}$ 有两种：$X \\mapsto (X, \\mathcal{P}(X))$（离散拓扑）与 $X \\mapsto (X, \\{ \\emptyset, X \\})$（平凡拓扑）。两者都对，因为从离散空间射出、射入平凡空间的映射总是连续的。\n\n- **自由构造** $\\mathbf{Set} \\to \\mathbf{Ab}$：$X \\mapsto \\bigoplus_X \\mathbb{Z}$；$\\mathbf{Set} \\to \\mathbf{Grp}$：$X \\mapsto \\langle x, x^{-1} \\mid x \\in X \\rangle$。\n\n- **交换化** $\\mathbf{Grp} \\to \\mathbf{Ab}$：$G \\mapsto G / [G, G]$。\n\n- **群化** $\\mathbf{Mon} \\to \\mathbf{Grp}$：$M \\mapsto M^{gr} = \\langle x_g \\ (g \\in M) \\mid x_g x_h = x_{gh} \\rangle$。\n\n- $\\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Cat}$：$(X, \\tau) \\mapsto \\operatorname{Open}(X)$。反变，因为开集越少映射越多。",
+   "refs": []
+  },
+  {
+   "id": "def.natural-transformation",
+   "type": "definition",
+   "label": "自然变换",
+   "title": "自然变换（Natural Transformation）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.functor",
+   "layer": 9,
+   "tags": [
+    "范畴论",
+    "自然变换",
+    "自然性"
+   ],
+   "statement": "设 $F, G : \\mathcal{C} \\to \\mathcal{D}$ 是两个函子。从 $F$ 到 $G$ 的**自然变换** $\\alpha : F \\implies G$ 是一族态射\n\n$$\\alpha_X : F(X) \\to G(X) \\qquad (X \\in \\mathcal{C})$$\n\n使得对每条 $f : X \\to Y$，方块交换：\n\n$$G(f) \\circ \\alpha_X = \\alpha_Y \\circ F(f)$$\n\n每个 $\\alpha_X$ 都是同构时，$\\alpha$ 叫**自然同构**，记 $F \\cong G$。",
+   "notes": "一句话：$\\alpha$ 的两个分量各管一头，交换性说的就是「先换函子再走 $f$」与「先走 $f$ 再换函子」结果一样。\n\n有了自然变换，**函子本身也成了对象**：以 $\\mathcal{C} \\to \\mathcal{C}'$ 的函子为对象、以自然变换为态射，得到一个范畴，记 $\\operatorname{Hom}(\\mathcal{C}, \\mathcal{C}')$；所有 $F \\implies G$ 的自然变换组成的集合记 $\\operatorname{Nat}(F, G)$。\n\n例：$\\mathbf{CRng} \\to \\mathbf{Grp}$ 上有两个函子 —— $A \\mapsto GL_n(A)$ 与 $A \\mapsto A^{*}$。行列式\n\n\n\n$$\\det_A : GL_n(A) \\to A^{*}$$\n\n\n\n拼起来正是一个**自然变换**：$\\det$ 与环同态「交换次序」。这正是「自然」二字的意思 —— 不是逐例验证出来的巧合，而是结构使然。",
+   "refs": []
+  },
+  {
+   "id": "def.ff-faithful",
+   "type": "definition",
+   "label": "忠实 / 满 / 全忠实",
+   "title": "忠实、满、全忠实函子（Faithful / Full / Fully Faithful）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.functor",
+   "layer": 9,
+   "tags": [
+    "范畴论",
+    "函子",
+    "Hom 集"
+   ],
+   "statement": "函子 $F : \\mathcal{C} \\to \\mathcal{C}'$ 对每一对对象 $X, Y$ 给出一个映射\n\n$$\\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\longrightarrow \\operatorname{Hom}_{\\mathcal{C}'}(F(X), F(Y)), \\qquad f \\mapsto F(f)$$\n\n按这个映射的性质来命名：\n\n- **忠实**（faithful）：每个这样的映射都是单射；\n- **满**（full）：每个这样的映射都是满射；\n- **全忠实**（fully faithful）：每个这样的映射都是双射。",
+   "notes": "三个名字说的都是 $F$ 在**态射层**上的表现，与对象层无关 —— 全忠实的函子可以把两个不同对象映到同一个对象上（这在等价里正是允许的）。\n\n忠实保证「态射不被合并」，满保证「目标里的态射都来自源」，两者互不蕴含。",
+   "refs": []
+  },
+  {
+   "id": "def.essentially-surjective",
+   "type": "definition",
+   "label": "本质满",
+   "title": "本质满函子（Essentially Surjective）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.functor",
+   "layer": 9,
+   "tags": [
+    "范畴论",
+    "函子",
+    "同构"
+   ],
+   "statement": "函子 $F : \\mathcal{C} \\to \\mathcal{C}'$ 叫**本质满**，如果对 $\\mathcal{C}'$ 的每个对象 $X'$，都存在 $\\mathcal{C}$ 中的对象 $X$ 使\n\n$$F(X) \\cong X'$$",
+   "notes": "注意是 $\\cong$ 而不是 $=$：要求「$F$ 的像**同构于**每个对象」，而不是「$F$ 的像**就是**全体对象」。差这一个同构，正是范畴等价比范畴同构宽松的地方 —— 而恰恰是这一点让它有用，因为绝大多数有趣的等价都不是同构。",
+   "refs": []
+  },
+  {
+   "id": "def.cat-equivalence",
+   "type": "definition",
+   "label": "范畴等价",
+   "title": "范畴等价（Equivalence of Categories）",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.functor",
+   "layer": 10,
+   "tags": [
+    "范畴论",
+    "等价",
+    "同构"
+   ],
+   "statement": "函子 $F : \\mathcal{C} \\to \\mathcal{C}'$ 叫**范畴等价**，如果存在函子 $G : \\mathcal{C}' \\to \\mathcal{C}$ 与自然同构\n\n$$F \\circ G \\cong 1_{\\mathcal{C}'}, \\qquad G \\circ F \\cong 1_{\\mathcal{C}}$$\n\n这时记 $\\mathcal{C} \\simeq \\mathcal{C}'$。若把两个 $\\cong$ 加强成等号 $F \\circ G = 1_{\\mathcal{C}'}$、$G \\circ F = 1_{\\mathcal{C}}$，则叫**范畴同构**，记 $\\mathcal{C} \\cong \\mathcal{C}'$。",
+   "notes": "同构要求两个复合**等于**恒等函子，等价只要求它们**自然同构于**恒等函子。后者弱得多，也实用得多：例如「有限维向量空间」与「$\\mathbb{F}$ 上的矩阵」等价，但绝不可能是同构（对象层的基数就不对）。\n\n在等价之下，「两个范畴是不是同一个」这个问题被替换成「能不能互相翻译而不丢结构」—— 范畴论后面所有「$\\mathcal{C}$ 与 $\\mathcal{C}'$ 一样」的说法，用的都是这个意思。",
+   "refs": []
   }
  ],
  "edges": [
@@ -8689,6 +8803,19 @@
    "note": "替换公理模式把 $A$ 中每个 $x$ 在公式 $\\varphi (x, y, p)$ 下的像收集起来 —— 这一步做的就是**代入**。"
   },
   {
+   "id": "imp.equiv-criterion",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.ff-faithful",
+    "def.essentially-surjective"
+   ],
+   "target": "def.cat-equivalence",
+   "title": "全忠实 $+$ 本质满 $\\implies$ 范畴等价",
+   "proof": "**（$\\Longleftarrow$）** 设 $F : \\mathcal{C} \\to \\mathcal{C}'$ 全忠实且本质满，要造出 $G$ 与自然同构。\n\n本质满给出：对每个 $X' \\in \\mathcal{C}'$ 都能挑一个 $A \\in \\mathcal{C}$ 与同构 $\\eta_{X'} : F(A) \\to X'$。用选择公理把这些选择一次做完，定义 $G(X') = A$。\n\n再定义 $G$ 在态射上的作用。给定 $f' : X' \\to Y'$，先把它拉回到 $G(X')$ 与 $G(Y')$ 之间：\n\n$$g = \\eta_{Y'}^{-1} \\circ f' \\circ \\eta_{X'} : F(G(X')) \\to F(G(Y'))$$\n\n由 $F$ 全忠实，$\\operatorname{Hom}(G(X'), G(Y')) \\to \\operatorname{Hom}(F G(X'), F G(Y'))$ 是双射，所以存在**唯一**的 $G(f')$ 使 $F(G(f')) = g$。这个唯一性是关键：它让 $G$ 自动保持复合与单位（两边都取 $F$ 之后相等，再用忠实性拉回来）。于是 $G$ 是函子，且 $\\eta : F \\circ G \\implies 1_{\\mathcal{C}'}$ 是自然同构。\n\n另一半 $G \\circ F \\cong 1_{\\mathcal{C}}$ 同法：令 $\\theta = F^{-1}(\\eta_{F(\\cdot)})$，交换性由 $F$ 保持复合、而 $F^{-1}$ 也跟着保持交换图逐块验证。∎\n\n**（$\\Longrightarrow$）** 设 $F$ 是等价，取 $G$ 与自然同构 $\\beta : G \\circ F \\implies 1_{\\mathcal{C}}$。\n\n**忠实**：设 $f, g : A \\to B$ 且 $F(f) = F(g)$。$\\beta$ 的自然是说下面两个方块交换：\n\n$$\\beta_B \\circ G F(f) = f \\circ \\beta_A, \\qquad \\beta_B \\circ G F(g) = g \\circ \\beta_A$$\n\n左边两式相等（因为 $F(f) = F(g)$），于是 $f \\circ \\beta_A = g \\circ \\beta_A$；$\\beta_A$ 可逆，两边右乘 $\\beta_A^{-1}$ 得 $f = g$。\n\n**满**：设 $h : F(A) \\to F(B)$。先把 $h$ 沿 $G$ 送过去，再用 $\\beta$ 接回来，得到 $\\mathcal{C}$ 中的态射\n\n$$f = \\beta_B \\circ G(h) \\circ \\beta_A^{-1} : A \\to B$$\n\n由 $\\beta$ 的交换性，$G F(f) = G(h)$；再用 $F$ 保持复合，把两边送回 $F(A) \\to F(B)$：$F(f) = h$。\n\n**本质满**见「定义」处的注解：等价的两个范畴之间对象差一个同构，这正是 $F$ 本质满。∎",
+   "note": "这条把「范畴等价」这件看起来要靠造函子的事，换成了两个**可以逐点检查**的条件：Hom 集上双射 + 对象层差一个同构。实际用的时候几乎都走这一条。"
+  },
+  {
    "id": "def-link.sep-subset",
    "kind": "definition",
    "strength": "strong",
@@ -10159,6 +10286,70 @@
    "definition": "def.category",
    "usedBy": "def.section-retraction",
    "note": "截面与收缩说的是范畴里**态射与单位态射**之间的关系，没有范畴就无从说起。"
+  },
+  {
+   "id": "def-dep.category-functor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.functor",
+   "note": "函子的定义域与靶都是**范畴**：对象映到对象、态射映到态射。"
+  },
+  {
+   "id": "def-dep.function-functor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function",
+   "usedBy": "def.functor",
+   "note": "函子在对象层与态射层各给一个**函数**。"
+  },
+  {
+   "id": "def-dep.functor-nat",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.functor",
+   "usedBy": "def.natural-transformation",
+   "note": "自然变换是**两个函子之间**的东西，先得有两个函子。"
+  },
+  {
+   "id": "def-dep.category-nat",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.category",
+   "usedBy": "def.natural-transformation",
+   "note": "自然变换的每个分量 $\\alpha_X : F(X) \\to G(X)$ 是范畴里的**态射**，自然性的方块也是在范畴里交换的。"
+  },
+  {
+   "id": "def-dep.functor-ff",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.functor",
+   "usedBy": "def.ff-faithful",
+   "note": "忠实与满说的是函子在 $\\operatorname{Hom}$ 集上**诱导的那个映射**的性质。"
+  },
+  {
+   "id": "def-dep.functor-eso",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.functor",
+   "usedBy": "def.essentially-surjective",
+   "note": "本质满说的是函子在**对象层**上的像覆盖到什么程度。"
+  },
+  {
+   "id": "def-dep.functor-equivalence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.functor",
+   "usedBy": "def.cat-equivalence",
+   "note": "范畴等价是**函子**的一条性质 —— 先有函子，才谈得上它是不是等价。"
+  },
+  {
+   "id": "def-dep.nat-equivalence",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.natural-transformation",
+   "usedBy": "def.cat-equivalence",
+   "note": "等价要求两个复合**自然同构**于恒等函子，这个「$\\cong$」只有靠自然变换才说得出来。"
   }
  ],
  "clusterLinks": [
@@ -10515,6 +10706,13 @@
   {
    "a": "cat.basic",
    "b": "set.rel",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.basic",
+   "b": "cat.functor",
    "count": 2,
    "label": "",
    "explicit": false

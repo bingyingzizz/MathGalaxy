@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:43:33.665Z
-> 7 星系 / 24 星团 / 235 节点 / 495 连线（强边 487，弱边 8）
+> 由 `tools/build.mjs` 自动生成于 2026-10-08T08:47:25.317Z
+> 7 星系 / 25 星团 / 240 节点 / 504 连线（强边 496，弱边 8）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -4804,6 +4804,107 @@ $$g \circ f = 1_X$$
 
 两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。
 
+### 星团：函子与自然变换
+> 造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。
+
+#### 函子　`def.functor`
+*定义*　函子（Functor）
+
+从范畴 $\mathcal{C}$ 到范畴 $\mathcal{D}$ 的**函子** $F : \mathcal{C} \to \mathcal{D}$ 由两部分组成：
+
+- 对象上的映射 $X \mapsto F(X)$；
+- 态射上的映射 $f \mapsto F(f)$，把 $f : X \to Y$ 送到 $F(f) : F(X) \to F(Y)$。
+
+要求它**保持单位**与**保持复合**：
+
+$$F(1_X) = 1_{F(X)}, \qquad F(g \circ f) = F(g) \circ F(f)$$
+
+（只要 $g \circ f$ 有定义）。反方向的函子 $F : \mathcal{C}^{\mathrm{op}} \to \mathcal{D}$ 叫**反变函子**。
+
+两条要求合起来就是一句话：**函子把整个范畴的结构原样搬过去** —— 单位还是单位，复合还是复合，连结合律都不用再验（它自动跟着走）。
+
+例：
+
+
+
+- **遗忘函子** $\mathbf{Top} \to \mathbf{Set}$：$(X, \tau) \mapsto X$，连续映射当作普通映射。拓扑被丢掉，所以叫「遗忘」。同理 $\mathbf{Ab} \to \mathbf{Set}$、$\mathbf{Grp} \to \mathbf{Mon}$（含入）。
+
+- $\mathbf{Set} \to \mathbf{Top}$ 有两种：$X \mapsto (X, \mathcal{P}(X))$（离散拓扑）与 $X \mapsto (X, \{ \emptyset, X \})$（平凡拓扑）。两者都对，因为从离散空间射出、射入平凡空间的映射总是连续的。
+
+- **自由构造** $\mathbf{Set} \to \mathbf{Ab}$：$X \mapsto \bigoplus_X \mathbb{Z}$；$\mathbf{Set} \to \mathbf{Grp}$：$X \mapsto \langle x, x^{-1} \mid x \in X \rangle$。
+
+- **交换化** $\mathbf{Grp} \to \mathbf{Ab}$：$G \mapsto G / [G, G]$。
+
+- **群化** $\mathbf{Mon} \to \mathbf{Grp}$：$M \mapsto M^{gr} = \langle x_g \ (g \in M) \mid x_g x_h = x_{gh} \rangle$。
+
+- $\mathbf{Top}^{\mathrm{op}} \to \mathbf{Cat}$：$(X, \tau) \mapsto \operatorname{Open}(X)$。反变，因为开集越少映射越多。
+
+#### 自然变换　`def.natural-transformation`
+*定义*　自然变换（Natural Transformation）
+
+设 $F, G : \mathcal{C} \to \mathcal{D}$ 是两个函子。从 $F$ 到 $G$ 的**自然变换** $\alpha : F \implies G$ 是一族态射
+
+$$\alpha_X : F(X) \to G(X) \qquad (X \in \mathcal{C})$$
+
+使得对每条 $f : X \to Y$，方块交换：
+
+$$G(f) \circ \alpha_X = \alpha_Y \circ F(f)$$
+
+每个 $\alpha_X$ 都是同构时，$\alpha$ 叫**自然同构**，记 $F \cong G$。
+
+一句话：$\alpha$ 的两个分量各管一头，交换性说的就是「先换函子再走 $f$」与「先走 $f$ 再换函子」结果一样。
+
+有了自然变换，**函子本身也成了对象**：以 $\mathcal{C} \to \mathcal{C}'$ 的函子为对象、以自然变换为态射，得到一个范畴，记 $\operatorname{Hom}(\mathcal{C}, \mathcal{C}')$；所有 $F \implies G$ 的自然变换组成的集合记 $\operatorname{Nat}(F, G)$。
+
+例：$\mathbf{CRng} \to \mathbf{Grp}$ 上有两个函子 —— $A \mapsto GL_n(A)$ 与 $A \mapsto A^{*}$。行列式
+
+
+
+$$\det_A : GL_n(A) \to A^{*}$$
+
+
+
+拼起来正是一个**自然变换**：$\det$ 与环同态「交换次序」。这正是「自然」二字的意思 —— 不是逐例验证出来的巧合，而是结构使然。
+
+#### 忠实 / 满 / 全忠实　`def.ff-faithful`
+*定义*　忠实、满、全忠实函子（Faithful / Full / Fully Faithful）
+
+函子 $F : \mathcal{C} \to \mathcal{C}'$ 对每一对对象 $X, Y$ 给出一个映射
+
+$$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\mathcal{C}'}(F(X), F(Y)), \qquad f \mapsto F(f)$$
+
+按这个映射的性质来命名：
+
+- **忠实**（faithful）：每个这样的映射都是单射；
+- **满**（full）：每个这样的映射都是满射；
+- **全忠实**（fully faithful）：每个这样的映射都是双射。
+
+三个名字说的都是 $F$ 在**态射层**上的表现，与对象层无关 —— 全忠实的函子可以把两个不同对象映到同一个对象上（这在等价里正是允许的）。
+
+忠实保证「态射不被合并」，满保证「目标里的态射都来自源」，两者互不蕴含。
+
+#### 本质满　`def.essentially-surjective`
+*定义*　本质满函子（Essentially Surjective）
+
+函子 $F : \mathcal{C} \to \mathcal{C}'$ 叫**本质满**，如果对 $\mathcal{C}'$ 的每个对象 $X'$，都存在 $\mathcal{C}$ 中的对象 $X$ 使
+
+$$F(X) \cong X'$$
+
+注意是 $\cong$ 而不是 $=$：要求「$F$ 的像**同构于**每个对象」，而不是「$F$ 的像**就是**全体对象」。差这一个同构，正是范畴等价比范畴同构宽松的地方 —— 而恰恰是这一点让它有用，因为绝大多数有趣的等价都不是同构。
+
+#### 范畴等价　`def.cat-equivalence`
+*定义*　范畴等价（Equivalence of Categories）
+
+函子 $F : \mathcal{C} \to \mathcal{C}'$ 叫**范畴等价**，如果存在函子 $G : \mathcal{C}' \to \mathcal{C}$ 与自然同构
+
+$$F \circ G \cong 1_{\mathcal{C}'}, \qquad G \circ F \cong 1_{\mathcal{C}}$$
+
+这时记 $\mathcal{C} \simeq \mathcal{C}'$。若把两个 $\cong$ 加强成等号 $F \circ G = 1_{\mathcal{C}'}$、$G \circ F = 1_{\mathcal{C}}$，则叫**范畴同构**，记 $\mathcal{C} \cong \mathcal{C}'$。
+
+同构要求两个复合**等于**恒等函子，等价只要求它们**自然同构于**恒等函子。后者弱得多，也实用得多：例如「有限维向量空间」与「$\mathbb{F}$ 上的矩阵」等价，但绝不可能是同构（对象层的基数就不对）。
+
+在等价之下，「两个范畴是不是同一个」这个问题被替换成「能不能互相翻译而不丢结构」—— 范畴论后面所有「$\mathcal{C}$ 与 $\mathcal{C}'$ 一样」的说法，用的都是这个意思。
+
 ---
 
 ## 全部连线（含推导过程）
@@ -7673,6 +7774,39 @@ $\models$ 按**公式的复杂度**递归定义 —— 没有「公式由语法�
 
 替换公理模式把 $A$ 中每个 $x$ 在公式 $\varphi (x, y, p)$ 下的像收集起来 —— 这一步做的就是**代入**。
 
+#### 忠实 / 满 / 全忠实 + 本质满 ⟹ 范畴等价　`imp.equiv-criterion`
+*全忠实 $+$ 本质满 $\implies$ 范畴等价*
+
+**（$\Longleftarrow$）** 设 $F : \mathcal{C} \to \mathcal{C}'$ 全忠实且本质满，要造出 $G$ 与自然同构。
+
+本质满给出：对每个 $X' \in \mathcal{C}'$ 都能挑一个 $A \in \mathcal{C}$ 与同构 $\eta_{X'} : F(A) \to X'$。用选择公理把这些选择一次做完，定义 $G(X') = A$。
+
+再定义 $G$ 在态射上的作用。给定 $f' : X' \to Y'$，先把它拉回到 $G(X')$ 与 $G(Y')$ 之间：
+
+$$g = \eta_{Y'}^{-1} \circ f' \circ \eta_{X'} : F(G(X')) \to F(G(Y'))$$
+
+由 $F$ 全忠实，$\operatorname{Hom}(G(X'), G(Y')) \to \operatorname{Hom}(F G(X'), F G(Y'))$ 是双射，所以存在**唯一**的 $G(f')$ 使 $F(G(f')) = g$。这个唯一性是关键：它让 $G$ 自动保持复合与单位（两边都取 $F$ 之后相等，再用忠实性拉回来）。于是 $G$ 是函子，且 $\eta : F \circ G \implies 1_{\mathcal{C}'}$ 是自然同构。
+
+另一半 $G \circ F \cong 1_{\mathcal{C}}$ 同法：令 $\theta = F^{-1}(\eta_{F(\cdot)})$，交换性由 $F$ 保持复合、而 $F^{-1}$ 也跟着保持交换图逐块验证。∎
+
+**（$\Longrightarrow$）** 设 $F$ 是等价，取 $G$ 与自然同构 $\beta : G \circ F \implies 1_{\mathcal{C}}$。
+
+**忠实**：设 $f, g : A \to B$ 且 $F(f) = F(g)$。$\beta$ 的自然是说下面两个方块交换：
+
+$$\beta_B \circ G F(f) = f \circ \beta_A, \qquad \beta_B \circ G F(g) = g \circ \beta_A$$
+
+左边两式相等（因为 $F(f) = F(g)$），于是 $f \circ \beta_A = g \circ \beta_A$；$\beta_A$ 可逆，两边右乘 $\beta_A^{-1}$ 得 $f = g$。
+
+**满**：设 $h : F(A) \to F(B)$。先把 $h$ 沿 $G$ 送过去，再用 $\beta$ 接回来，得到 $\mathcal{C}$ 中的态射
+
+$$f = \beta_B \circ G(h) \circ \beta_A^{-1} : A \to B$$
+
+由 $\beta$ 的交换性，$G F(f) = G(h)$；再用 $F$ 保持复合，把两边送回 $F(A) \to F(B)$：$F(f) = h$。
+
+**本质满**见「定义」处的注解：等价的两个范畴之间对象差一个同构，这正是 $F$ 本质满。∎
+
+> 这条把「范畴等价」这件看起来要靠造函子的事，换成了两个**可以逐点检查**的条件：Hom 集上双射 + 对象层差一个同构。实际用的时候几乎都走这一条。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -8373,6 +8507,38 @@ $M \times_{s,t} M = \{ (f,g) \in M \times M : s(f) = t(g) \}$ 是 $M \times M$ �
 
 截面与收缩说的是范畴里**态射与单位态射**之间的关系，没有范畴就无从说起。
 
+#### 定义引用：「范畴」→ 函子　`def-dep.category-functor`
+
+函子的定义域与靶都是**范畴**：对象映到对象、态射映到态射。
+
+#### 定义引用：「函数」→ 函子　`def-dep.function-functor`
+
+函子在对象层与态射层各给一个**函数**。
+
+#### 定义引用：「函子」→ 自然变换　`def-dep.functor-nat`
+
+自然变换是**两个函子之间**的东西，先得有两个函子。
+
+#### 定义引用：「范畴」→ 自然变换　`def-dep.category-nat`
+
+自然变换的每个分量 $\alpha_X : F(X) \to G(X)$ 是范畴里的**态射**，自然性的方块也是在范畴里交换的。
+
+#### 定义引用：「函子」→ 忠实 / 满 / 全忠实　`def-dep.functor-ff`
+
+忠实与满说的是函子在 $\operatorname{Hom}$ 集上**诱导的那个映射**的性质。
+
+#### 定义引用：「函子」→ 本质满　`def-dep.functor-eso`
+
+本质满说的是函子在**对象层**上的像覆盖到什么程度。
+
+#### 定义引用：「函子」→ 范畴等价　`def-dep.functor-equivalence`
+
+范畴等价是**函子**的一条性质 —— 先有函子，才谈得上它是不是等价。
+
+#### 定义引用：「自然变换」→ 范畴等价　`def-dep.nat-equivalence`
+
+等价要求两个复合**自然同构**于恒等函子，这个「$\cong$」只有靠自然变换才说得出来。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -8556,3 +8722,4 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **集合族与 σ-代数 ↔ 符号测度与分解**　2 条节点级连线
 - **范畴与图 ↔ 集合的构造**　5 条节点级连线
 - **范畴与图 ↔ 关系与函数**　2 条节点级连线
+- **范畴与图 ↔ 函子与自然变换**　2 条节点级连线

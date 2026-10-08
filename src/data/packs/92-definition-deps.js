@@ -238,7 +238,25 @@ window.MG = window.MG || {};
     ['def.subset', 'def.category', 'def-dep.subset-category',
       '$M \\times_{s,t} M = \\{ (f,g) \\in M \\times M : s(f) = t(g) \\}$ 是 $M \\times M$ 的一个**子集**。'],
     ['def.category', 'def.section-retraction', 'def-dep.category-section',
-      '截面与收缩说的是范畴里**态射与单位态射**之间的关系，没有范畴就无从说起。']
+      '截面与收缩说的是范畴里**态射与单位态射**之间的关系，没有范畴就无从说起。'],
+
+    /* ------------------------------------------------- 范畴论（函子层） */
+    ['def.category', 'def.functor', 'def-dep.category-functor',
+      '函子的定义域与靶都是**范畴**：对象映到对象、态射映到态射。'],
+    ['def.function', 'def.functor', 'def-dep.function-functor',
+      '函子在对象层与态射层各给一个**函数**。'],
+    ['def.functor', 'def.natural-transformation', 'def-dep.functor-nat',
+      '自然变换是**两个函子之间**的东西，先得有两个函子。'],
+    ['def.category', 'def.natural-transformation', 'def-dep.category-nat',
+      '自然变换的每个分量 $\\alpha_X : F(X) \\to G(X)$ 是范畴里的**态射**，自然性的方块也是在范畴里交换的。'],
+    ['def.functor', 'def.ff-faithful', 'def-dep.functor-ff',
+      '忠实与满说的是函子在 $\\operatorname{Hom}$ 集上**诱导的那个映射**的性质。'],
+    ['def.functor', 'def.essentially-surjective', 'def-dep.functor-eso',
+      '本质满说的是函子在**对象层**上的像覆盖到什么程度。'],
+    ['def.functor', 'def.cat-equivalence', 'def-dep.functor-equivalence',
+      '范畴等价是**函子**的一条性质 —— 先有函子，才谈得上它是不是等价。'],
+    ['def.natural-transformation', 'def.cat-equivalence', 'def-dep.nat-equivalence',
+      '等价要求两个复合**自然同构**于恒等函子，这个「$\\cong$」只有靠自然变换才说得出来。']
 
   ];
 

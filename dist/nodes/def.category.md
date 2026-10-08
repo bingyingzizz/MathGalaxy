@@ -21,5 +21,7 @@ $$M \times_{s,t} M = \{ (f, g) \in M \times M : s(f) = t(g) \}$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `def.section-retraction` 截面与收缩 用
+- 被 `def.functor` 函子 用
+- 被 `def.natural-transformation` 自然变换 用
 
 > 说明见 `notes/def.category.md`
