@@ -549,7 +549,7 @@ window.MG = window.MG || {};
     ['def.quotient-topology', 'def.k-topology', 'def-dep.ktopo-quotient',
       '$k$-拓扑是使所有这类映射都连续的**最终（最细）拓扑** —— 与商拓扑是同一个构造。'],
     ['def.compactly-generated', 'prop.ktx-colimit', 'def-dep.ktx-colimit-cg',
-      '$kX$ 是沿紧 $T_{1}$ 空间取余极限。'],
+      '$kX$ 是沿紧 Hausdorff 空间取余极限。'],
     ['def.k-topology', 'prop.ktx-colimit', 'def-dep.ktx-colimit-ktopo',
       '余极限的那条拓扑就是 $k$-拓扑。'],
     ['def.k-topology', 'prop.cg-coreflective', 'def-dep.cgcoref-ktopo',
