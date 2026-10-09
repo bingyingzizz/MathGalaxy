@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-09T07:07:59.558Z
-> 9 星系 / 42 星团 / 481 节点 / 1015 连线（强边 1006，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-09T07:14:49.537Z
+> 9 星系 / 43 星团 / 492 节点 / 1034 连线（强边 1025，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -8014,6 +8014,115 @@ $$E^{p,q}_{2} = R^{p}G\bigl(R^{q}F(M)\bigr) \;\Longrightarrow\; R^{p+q}(G \circ 
 
 📌 原书 **Corollary 7.2.13**（与 **Corollary 7.2.21** 同一件事的另一次陈述）。
 
+### 星团：层上同调
+> 把导出函子开到层上：$H^{n}(X, M) = R^{n}\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。
+
+#### 层上同调　`def.sheaf-cohomology`
+*定义*　层上同调 $H^{n}(X, M^{\bullet})$
+
+设 $M^{\bullet}$ 是 site $\mathcal{C}$ 上的**阿贝尔层复形**，$X \in \mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是
+
+$$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
+
+其中 $\Gamma(X, -)$ 是 $X$ 处的**截面函子**。
+
+⭐ **一句话**：层上同调就是**截面函子的右导出函子**。$\Gamma(X,-)$ 左正合但不右正合（层化会捣乱），$R^{n}\Gamma$ 正是补上断口的那半个。
+
+**为什么需要它**：单看 $H^{0}(X, M) = \Gamma(X, M) = M(X)$ 只有整体截面；$H^{1}$ 起才开始记录「层粘不上去」的信息（$H^{1}$ 分类层的主丛 / torsor）。
+
+**经典例子**（原书列的那些）：局部可缩空间上 $H^{n}(X, \mathbb{Z}) \cong H^{n}_{\mathrm{sing}}(X)$（层上同调 = 奇异上同调）；de Rham 上同调；$H^{n}(X, \mathcal{O}_{X})$ 在复几何里就是 Dolbeault 上同调。
+
+📌 原书 **Definition 7.3.1**。
+
+#### Čech 上同调　`def.cech-cohomology`
+*定义*　Čech 上同调 $\check{H}^{n}(X, M^{\bullet})$
+
+设 $M^{\bullet}$ 是 site $\mathcal{C}$ 上的**阿贝尔预层复形**，$X \in \mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是
+
+$$\check{H}^{n}(X, M^{\bullet}) := \Gamma\bigl(X,\ \check{H}^{n}(M^{\bullet})\bigr).$$
+
+**与层上同调的区别**：层上同调要**先取内射消解**（贵）；Čech 上同调**直接用覆盖算**（便宜），代价是它一般只是「逼近」。
+
+**为什么叫 Čech**：它照着 Čech 那套「用开覆盖的交叠来算整体信息」的直觉造出来的 —— 覆盖的每一层交叠给一个群，交叠的包含关系给微分，取同调就是 Čech 上同调。
+
+📌 原书 **Definition 7.3.5**。
+
+#### Čech 上同调是沿覆盖筛的余极限　`prop.cech-as-colim`
+*命题*　$\check{H}^{n}(X, M) = \varinjlim_{R \in J(X)} H^{n}(R, M)$
+
+若 $X \in \mathcal{C}$、$M$ 是阿贝尔预层，则 $\check{H}^{n}(X, M) = \varinjlim_{R \in J(X)} H^{n}(R, M)$（沿 $X$ 上所有覆盖筛 $R$ 取滤过余极限）。
+
+#### Cartan–Leray 谱序列　`thm.cartan-leray`
+*定理*　Cartan–Leray：Čech 到层上同调的谱序列
+
+若 $\mathfrak{X}$ 是 $X$ 的一个**覆盖**、$M$ 是阿贝尔层，则存在谱序列
+
+$$E^{p,q}_{2} := \check{H}^{p}\bigl(\mathfrak{X},\ H^{q}(M)\bigr) \;\Longrightarrow\; H^{p+q}(X, M).$$
+
+⭐ **它说的是**：Čech 上同调（右边那个 $\check{H}^{p}$）用 $H^{q}(M)$ 当系数，收敛到**真正的**层上同调。于是「便宜的算法」怎么逼近「贵的算法」这件事被讲清楚了。
+
+**推论**（Cor 7.3.7）：若覆盖的每一层上 $H^{q} = 0$（$q \ne 0$），则 $\check{H}^{n} \cong H^{n}$ —— 此时 Čech 直接给出层上同调。
+
+**证明走法**：取 $\mathfrak{X}$ 生成的筛 $R$，则 $\Gamma(\mathfrak{X}, M) = \Gamma(R, \mathcal{H}(M))$；$\mathcal{H}$ 保内射，于是由 Grothendieck 谱序列 + 上一条得到。
+
+📌 原书 **Theorem 7.3.6**。
+
+#### 无环层　`def.acyclic-sheaf`
+*定义*　无环层（Acyclic Sheaf）
+
+site $\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \ne 0$。
+
+⚠️ 原书专门提醒：**这个定义依赖 site $\mathcal{C}$，不只是依赖拓扑斯 $\widetilde{\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。
+
+📌 原书 **Definition 7.3.9**。
+
+#### 无环 ⟺ Čech 上同调为零　`prop.acyclic-iff-cech`
+*命题*　$M$ 无环 $\iff \check{H}^{n}(M) = 0$（$n \ne 0$）
+
+$\mathcal{C}$ 上的阿贝尔层 $M$ **无环** $\iff \check{H}^{n}(M) = 0$ 对一切 $n \ne 0$。
+
+#### 紧 Hausdorff 上 Čech 就是上同调　`prop.chaus-cech-eq-h`
+*命题*　紧 Hausdorff：$\check{H}^{n}(X, M) = H^{n}(X, M)$
+
+若 $X$ 是**紧 Hausdorff** 空间，则 $\check{H}^{n}(X, M) = H^{n}(X, M)$（对一切阿贝尔层 $M$）。
+
+#### 滤过极限的上同调　`prop.filtered-limit-cohomology`
+*命题*　紧 Hausdorff 的滤过极限上，常值系数的上同调是余极限
+
+若 $X = \varprojlim_{i \in I} X_{i}$ 是紧 Hausdorff 空间的**滤过极限**、$M$ 是**常值**阿贝尔群，则
+
+$$H^{n}(X, M) = \varinjlim_{i \in I} H^{n}(X_{i}, M).$$
+
+⚠️ 注意方向：**极限** $X = \varprojlim X_{i}$ 在拓扑这一侧，而它上面的**上同调**却成了**余极限** —— 上同调把方向翻过来。这条是「用有限块逼近整体，再取上同调」的合法性来源。
+
+📌 原书 **Proposition 7.3.12**。
+
+#### Stone 空间上的上同调为零　`prop.stone-acyclic`
+*命题*　Stone 空间：$H^{n}(S, M) = 0$（$n \ne 0$）
+
+若 $S$ 是 **Stone** 空间（= 紧 Hausdorff 完全不连通空间），则对任何阿贝尔层 $M$，$H^{n}(S, M) = 0$ 对一切 $n \ne 0$。
+
+#### 拓扑斯态射的导出函子　`prop.topos-morphism-derived`
+*命题*　$R^{n}f_{*}M$ 是 $X' \mapsto H^{n}(f^{-1}(X'), M)$ 的层化
+
+若 $f : \mathcal{T} \to \mathcal{T}'$ 是**拓扑斯的态射**，则 $R^{n}f_{*}M$ 是预层 $X' \mapsto H^{n}\bigl(f^{-1}(X'),\ M\bigr)$ 所**层化**得到的层。
+
+⭐ **读法**：想算拓扑斯态射的导出函子，先逐点算「另一边像处的上同调」，再把结果层化回去。这与层上同调的定义（截面函子的右导出函子）是同一回事，只是把「一个点的截面」换成了「拓扑斯态射的拉回」。
+
+📌 原书 **Proposition 7.4.1**。
+
+#### 层上同调是同伦不变量　`cor.homotopy-invariant-cohomology`
+*推论*　同伦等价的映射给同构的上同调
+
+设 $M$ 是**常值**阿贝尔群。
+
+1. 若 $f \simeq g : X \to Y$ 是**同伦**的连续映射，则 $f$ 与 $g$ 诱导的上同调映射相同；
+2. 若 $f : X \to Y$ 是**同伦等价**，则 $H^{n}(Y, M) \cong H^{n}(X, M)$。
+
+⭐ **这就是「层上同调是拓扑不变量」那句话的出处** —— 常值系数下，$H^{n}(-, M)$ 是同伦不变的，所以它可以拿来算空间的同伦类不变量（奇异上同调、de Rham 上同调都落在这一条上）。
+
+📌 原书 **Proposition 7.4.2** 与 **Corollary 7.4.3**。
+
 ### 星团：阿贝尔层
 > 造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。
 
@@ -14625,6 +14734,82 @@ $\operatorname{Ext}^{n}$ 定义成**导出范畴**里的 Hom。
 
 它由**双复形**（取 $F$ 的内射消解）造出来。
 
+#### 定义引用：「截面函子」→ 层上同调　`def-dep.sheafcoh-section`
+
+层上同调是**截面函子**的右导出函子。
+
+#### 定义引用：「右导出函子」→ 层上同调　`def-dep.sheafcoh-rdf`
+
+$H^{n} := R^{n}\Gamma$。
+
+#### 定义引用：「Čech 函子」→ Čech 上同调　`def-dep.cechcoh-cech`
+
+Čech 上同调用的是**Čech 函子**。
+
+#### 定义引用：「Grothendieck 拓扑」→ Čech 上同调是沿覆盖筛的余极限　`def-dep.cechcolim-topology`
+
+余极限沿 $\in J(X)$ 的**覆盖筛**取。
+
+#### 定义引用：「Čech 上同调」→ Čech 上同调是沿覆盖筛的余极限　`def-dep.cechcolim-cech`
+
+它给出 Čech 上同调的另一种算法。
+
+#### 定义引用：「Čech 上同调」→ Cartan–Leray 谱序列　`def-dep.cartanleray-cech`
+
+谱序列的第一页是 **Čech 上同调**。
+
+#### 定义引用：「谱序列」→ Cartan–Leray 谱序列　`def-dep.cartanleray-ss`
+
+结论是一个**谱序列**。
+
+#### 定义引用：「层上同调」→ 无环层　`def-dep.acyclic-sheafcoh`
+
+无环性的定义用的就是**层上同调**。
+
+#### 定义引用：「无环层」→ 无环 ⟺ Čech 上同调为零　`def-dep.acycliccech-acyclic`
+
+命题说无环等价于 **Čech 上同调为零**。
+
+#### 定义引用：「Čech 上同调」→ 无环 ⟺ Čech 上同调为零　`def-dep.acycliccech-cech`
+
+另一半用的是 Čech 上同调。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧 Hausdorff 上 Čech 就是上同调　`def-dep.chauscech-chaus`
+
+命题只对**紧 Hausdorff** 空间成立。
+
+#### 定义引用：「层上同调」→ 紧 Hausdorff 上 Čech 就是上同调　`def-dep.chauscech-sheafcoh`
+
+结论是两类上同调相等。
+
+#### 定义引用：「滤过范畴」→ 滤过极限的上同调　`def-dep.filtlim-filtered`
+
+取的是**滤过**极限。
+
+#### 定义引用：「层上同调」→ 滤过极限的上同调　`def-dep.filtlim-sheafcoh`
+
+说的是**上同调**怎么随极限变。
+
+#### 定义引用：「全不连通与 Stone 空间」→ Stone 空间上的上同调为零　`def-dep.stoneacyclic-stone`
+
+命题只对 **Stone 空间**成立。
+
+#### 定义引用：「拓扑斯的态射」→ 拓扑斯态射的导出函子　`def-dep.topmorphder-topmorph`
+
+说的是**拓扑斯的态射**。
+
+#### 定义引用：「右导出函子」→ 拓扑斯态射的导出函子　`def-dep.topmorphder-rdf`
+
+结论算的是导出函子 $R^{n}f_{*}$。
+
+#### 定义引用：「层上同调」→ 层上同调是同伦不变量　`def-dep.homcohom-sheafcoh`
+
+结论是关于**层上同调**的。
+
+#### 定义引用：「同伦」→ 层上同调是同伦不变量　`def-dep.homcohom-homotopy`
+
+前提是映射**同伦**或**同伦等价**。
+
 ### 弱边（类比 / 思想相通）
 
 > ⚠️ 这些**不是**逻辑蕴含，只在「卡住了、想找远房关系」时用。
@@ -14883,3 +15068,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **范畴里的代数结构 ↔ 图与极限**　3 条节点级连线
 - **代数结构 ↔ 范畴里的代数结构**　2 条节点级连线
 - **加法与阿贝尔范畴 ↔ 紧 Haus 与 Stone**　2 条节点级连线
+- **层与拓扑 ↔ 层上同调**　3 条节点级连线
+- **复形与导出三角 ↔ 层上同调**　3 条节点级连线
+- **层上同调 ↔ 紧 Haus 与 Stone**　2 条节点级连线

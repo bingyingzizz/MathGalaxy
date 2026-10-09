@@ -326,6 +326,13 @@ MG.clusters = [
     desc: '造出「逐层逼近同调」的工具：带过滤的对象 → 关联分次 → 谱序列从 $E_{r}$ 页逐页算到 $E_{\\infty}$。'
   },
   {
+    id: 'hom.sheafcoh',
+    name: '层上同调',
+    parent: 'homology',
+    hub: 'def.sheaf-cohomology',
+    desc: '把导出函子开到层上：$H^{n}(X, M) = R^{n}\\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。'
+  },
+  {
     id: 'hom.sheaf',
     name: '阿贝尔层',
     parent: 'homology',

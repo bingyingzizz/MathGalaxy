@@ -17,3 +17,5 @@ $$\begin{array}{ccc} K^{+}(\mathcal{A}) & \xrightarrow{\;F\;} & K^{+}(\mathcal{A
 - 被 `cor.grothendieck-spectral` Grothendieck 谱序列 用
 
 > 说明见 `notes/def.right-derived-functor.md`
+
+- …另有出边，续页见 `nodes/def.right-derived-functor.2.md`

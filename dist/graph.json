@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-09T07:07:59.558Z",
+  "generated": "2026-10-09T07:14:49.537Z",
   "counts": {
    "regions": 9,
-   "clusters": 42,
-   "nodes": 481,
-   "edges": 1015,
-   "strong": 1006,
+   "clusters": 43,
+   "nodes": 492,
+   "edges": 1034,
+   "strong": 1025,
    "weak": 9
   },
   "readingGuide": {
@@ -63,7 +63,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。",
    "color": "#D9649F",
-   "nodeCount": 70
+   "nodeCount": 74
   },
   {
    "id": "algebra",
@@ -87,7 +87,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。",
    "color": "#B03A5B",
-   "nodeCount": 122
+   "nodeCount": 125
   },
   {
    "id": "homology",
@@ -95,7 +95,7 @@
    "en": "Homological Algebra",
    "desc": "加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。",
    "color": "#C89A2B",
-   "nodeCount": 48
+   "nodeCount": 59
   },
   {
    "id": "condensed",
@@ -899,6 +899,26 @@
     "thm.filtered-complex-spectral",
     "def.bicomplex",
     "cor.grothendieck-spectral"
+   ]
+  },
+  {
+   "id": "hom.sheafcoh",
+   "name": "层上同调",
+   "parent": "homology",
+   "desc": "把导出函子开到层上：$H^{n}(X, M) = R^{n}\\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。",
+   "nodeCount": 11,
+   "nodes": [
+    "def.sheaf-cohomology",
+    "def.cech-cohomology",
+    "prop.cech-as-colim",
+    "thm.cartan-leray",
+    "def.acyclic-sheaf",
+    "prop.acyclic-iff-cech",
+    "prop.chaus-cech-eq-h",
+    "prop.filtered-limit-cohomology",
+    "prop.stone-acyclic",
+    "prop.topos-morphism-derived",
+    "cor.homotopy-invariant-cohomology"
    ]
   },
   {
@@ -11255,6 +11275,243 @@
    "statement": "设 $\\mathcal{A} \\xrightarrow{F} \\mathcal{A}' \\xrightarrow{G} \\mathcal{A}''$ 是加法函子，$\\mathcal{A}, \\mathcal{A}'$ **有足够多内射**、且 $F$ 把内射对象送到 $G$-零调对象。则存在谱序列\n\n$$E^{p,q}_{2} = R^{p}G\\bigl(R^{q}F(M)\\bigr) \\;\\Longrightarrow\\; R^{p+q}(G \\circ F)(M).$$",
    "notes": "⭐ **它的用处**：想算复合函子的导出函子 $R^{n}(G \\circ F)$，可以**先算 $R^{q}F$、再算 $R^{p}G$**，中间用谱序列把两层的贡献拼起来。这是同调代数里最基本的「两步走」工具。\n\n**典型应用**：层上同调 — 先层化再取截面、Čech 上同调到 de Rham 上同调、群的同调里的 Lyndon–Hochschild–Serre 谱序列，都是它的特例。\n\n**为什么要求 $F$ 把内射送到 $G$-零调**：这样 $F$ 的内射消解才能拿来做 $G$ 的零调消解，两边才接得上。\n\n📌 原书 **Corollary 7.2.13**（与 **Corollary 7.2.21** 同一件事的另一次陈述）。",
    "refs": []
+  },
+  {
+   "id": "def.sheaf-cohomology",
+   "type": "definition",
+   "label": "层上同调",
+   "title": "层上同调 $H^{n}(X, M^{\\bullet})$",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "category"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 17,
+   "tags": [
+    "同调代数",
+    "层上同调",
+    "导出函子",
+    "截面函子"
+   ],
+   "statement": "设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是\n\n$$H^{n}(X, M^{\\bullet}) := R^{n}\\Gamma(X, M^{\\bullet}),$$\n\n其中 $\\Gamma(X, -)$ 是 $X$ 处的**截面函子**。",
+   "notes": "⭐ **一句话**：层上同调就是**截面函子的右导出函子**。$\\Gamma(X,-)$ 左正合但不右正合（层化会捣乱），$R^{n}\\Gamma$ 正是补上断口的那半个。\n\n**为什么需要它**：单看 $H^{0}(X, M) = \\Gamma(X, M) = M(X)$ 只有整体截面；$H^{1}$ 起才开始记录「层粘不上去」的信息（$H^{1}$ 分类层的主丛 / torsor）。\n\n**经典例子**（原书列的那些）：局部可缩空间上 $H^{n}(X, \\mathbb{Z}) \\cong H^{n}_{\\mathrm{sing}}(X)$（层上同调 = 奇异上同调）；de Rham 上同调；$H^{n}(X, \\mathcal{O}_{X})$ 在复几何里就是 Dolbeault 上同调。\n\n📌 原书 **Definition 7.3.1**。",
+   "refs": []
+  },
+  {
+   "id": "def.cech-cohomology",
+   "type": "definition",
+   "label": "Čech 上同调",
+   "title": "Čech 上同调 $\\check{H}^{n}(X, M^{\\bullet})$",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "category"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 17,
+   "tags": [
+    "同调代数",
+    "Čech 上同调",
+    "预层",
+    "覆盖"
+   ],
+   "statement": "设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是\n\n$$\\check{H}^{n}(X, M^{\\bullet}) := \\Gamma\\bigl(X,\\ \\check{H}^{n}(M^{\\bullet})\\bigr).$$",
+   "notes": "**与层上同调的区别**：层上同调要**先取内射消解**（贵）；Čech 上同调**直接用覆盖算**（便宜），代价是它一般只是「逼近」。\n\n**为什么叫 Čech**：它照着 Čech 那套「用开覆盖的交叠来算整体信息」的直觉造出来的 —— 覆盖的每一层交叠给一个群，交叠的包含关系给微分，取同调就是 Čech 上同调。\n\n📌 原书 **Definition 7.3.5**。",
+   "refs": []
+  },
+  {
+   "id": "prop.cech-as-colim",
+   "type": "proposition",
+   "label": "Čech 上同调是沿覆盖筛的余极限",
+   "title": "$\\check{H}^{n}(X, M) = \\varinjlim_{R \\in J(X)} H^{n}(R, M)$",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "Čech 上同调",
+    "覆盖筛",
+    "余极限"
+   ],
+   "statement": "若 $X \\in \\mathcal{C}$、$M$ 是阿贝尔预层，则 $\\check{H}^{n}(X, M) = \\varinjlim_{R \\in J(X)} H^{n}(R, M)$（沿 $X$ 上所有覆盖筛 $R$ 取滤过余极限）。",
+   "notes": "",
+   "refs": []
+  },
+  {
+   "id": "thm.cartan-leray",
+   "type": "theorem",
+   "label": "Cartan–Leray 谱序列",
+   "title": "Cartan–Leray：Čech 到层上同调的谱序列",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "Cartan",
+    "Leray",
+    "谱序列",
+    "Čech"
+   ],
+   "statement": "若 $\\mathfrak{X}$ 是 $X$ 的一个**覆盖**、$M$ 是阿贝尔层，则存在谱序列\n\n$$E^{p,q}_{2} := \\check{H}^{p}\\bigl(\\mathfrak{X},\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X, M).$$",
+   "notes": "⭐ **它说的是**：Čech 上同调（右边那个 $\\check{H}^{p}$）用 $H^{q}(M)$ 当系数，收敛到**真正的**层上同调。于是「便宜的算法」怎么逼近「贵的算法」这件事被讲清楚了。\n\n**推论**（Cor 7.3.7）：若覆盖的每一层上 $H^{q} = 0$（$q \\ne 0$），则 $\\check{H}^{n} \\cong H^{n}$ —— 此时 Čech 直接给出层上同调。\n\n**证明走法**：取 $\\mathfrak{X}$ 生成的筛 $R$，则 $\\Gamma(\\mathfrak{X}, M) = \\Gamma(R, \\mathcal{H}(M))$；$\\mathcal{H}$ 保内射，于是由 Grothendieck 谱序列 + 上一条得到。\n\n📌 原书 **Theorem 7.3.6**。",
+   "refs": []
+  },
+  {
+   "id": "def.acyclic-sheaf",
+   "type": "definition",
+   "label": "无环层",
+   "title": "无环层（Acyclic Sheaf）",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "无环层",
+    "层上同调"
+   ],
+   "statement": "site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。",
+   "notes": "⚠️ 原书专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。\n\n📌 原书 **Definition 7.3.9**。",
+   "refs": []
+  },
+  {
+   "id": "prop.acyclic-iff-cech",
+   "type": "proposition",
+   "label": "无环 ⟺ Čech 上同调为零",
+   "title": "$M$ 无环 $\\iff \\check{H}^{n}(M) = 0$（$n \\ne 0$）",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 19,
+   "tags": [
+    "同调代数",
+    "无环层",
+    "Čech 上同调"
+   ],
+   "statement": "$\\mathcal{C}$ 上的阿贝尔层 $M$ **无环** $\\iff \\check{H}^{n}(M) = 0$ 对一切 $n \\ne 0$。",
+   "notes": "",
+   "refs": []
+  },
+  {
+   "id": "prop.chaus-cech-eq-h",
+   "type": "proposition",
+   "label": "紧 Hausdorff 上 Čech 就是上同调",
+   "title": "紧 Hausdorff：$\\check{H}^{n}(X, M) = H^{n}(X, M)$",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "topology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "Čech 上同调",
+    "紧 Hausdorff",
+    "层上同调"
+   ],
+   "statement": "若 $X$ 是**紧 Hausdorff** 空间，则 $\\check{H}^{n}(X, M) = H^{n}(X, M)$（对一切阿贝尔层 $M$）。",
+   "notes": "",
+   "refs": []
+  },
+  {
+   "id": "prop.filtered-limit-cohomology",
+   "type": "proposition",
+   "label": "滤过极限的上同调",
+   "title": "紧 Hausdorff 的滤过极限上，常值系数的上同调是余极限",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "topology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "滤过极限",
+    "常值系数",
+    "上同调"
+   ],
+   "statement": "若 $X = \\varprojlim_{i \\in I} X_{i}$ 是紧 Hausdorff 空间的**滤过极限**、$M$ 是**常值**阿贝尔群，则",
+   "notes": "$$H^{n}(X, M) = \\varinjlim_{i \\in I} H^{n}(X_{i}, M).$$\n\n⚠️ 注意方向：**极限** $X = \\varprojlim X_{i}$ 在拓扑这一侧，而它上面的**上同调**却成了**余极限** —— 上同调把方向翻过来。这条是「用有限块逼近整体，再取上同调」的合法性来源。\n\n📌 原书 **Proposition 7.3.12**。",
+   "refs": []
+  },
+  {
+   "id": "prop.stone-acyclic",
+   "type": "proposition",
+   "label": "Stone 空间上的上同调为零",
+   "title": "Stone 空间：$H^{n}(S, M) = 0$（$n \\ne 0$）",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "topology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 17,
+   "tags": [
+    "同调代数",
+    "Stone 空间",
+    "无环",
+    "Čech"
+   ],
+   "statement": "若 $S$ 是 **Stone** 空间（= 紧 Hausdorff 完全不连通空间），则对任何阿贝尔层 $M$，$H^{n}(S, M) = 0$ 对一切 $n \\ne 0$。",
+   "notes": "",
+   "refs": []
+  },
+  {
+   "id": "prop.topos-morphism-derived",
+   "type": "proposition",
+   "label": "拓扑斯态射的导出函子",
+   "title": "$R^{n}f_{*}M$ 是 $X' \\mapsto H^{n}(f^{-1}(X'), M)$ 的层化",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "category"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "拓扑斯",
+    "态射",
+    "导出函子"
+   ],
+   "statement": "若 $f : \\mathcal{T} \\to \\mathcal{T}'$ 是**拓扑斯的态射**，则 $R^{n}f_{*}M$ 是预层 $X' \\mapsto H^{n}\\bigl(f^{-1}(X'),\\ M\\bigr)$ 所**层化**得到的层。",
+   "notes": "⭐ **读法**：想算拓扑斯态射的导出函子，先逐点算「另一边像处的上同调」，再把结果层化回去。这与层上同调的定义（截面函子的右导出函子）是同一回事，只是把「一个点的截面」换成了「拓扑斯态射的拉回」。\n\n📌 原书 **Proposition 7.4.1**。",
+   "refs": []
+  },
+  {
+   "id": "cor.homotopy-invariant-cohomology",
+   "type": "corollary",
+   "label": "层上同调是同伦不变量",
+   "title": "同伦等价的映射给同构的上同调",
+   "region": "homology",
+   "regions": [
+    "homology",
+    "topology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "同调代数",
+    "同伦",
+    "上同调",
+    "常值系数"
+   ],
+   "statement": "设 $M$ 是**常值**阿贝尔群。\n\n1. 若 $f \\simeq g : X \\to Y$ 是**同伦**的连续映射，则 $f$ 与 $g$ 诱导的上同调映射相同；\n2. 若 $f : X \\to Y$ 是**同伦等价**，则 $H^{n}(Y, M) \\cong H^{n}(X, M)$。",
+   "notes": "⭐ **这就是「层上同调是拓扑不变量」那句话的出处** —— 常值系数下，$H^{n}(-, M)$ 是同伦不变的，所以它可以拿来算空间的同伦类不变量（奇异上同调、de Rham 上同调都落在这一条上）。\n\n📌 原书 **Proposition 7.4.2** 与 **Corollary 7.4.3**。",
+   "refs": []
   }
  ],
  "edges": [
@@ -19952,6 +20209,158 @@
    "definition": "def.bicomplex",
    "usedBy": "cor.grothendieck-spectral",
    "note": "它由**双复形**（取 $F$ 的内射消解）造出来。"
+  },
+  {
+   "id": "def-dep.sheafcoh-section",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.section-functor",
+   "usedBy": "def.sheaf-cohomology",
+   "note": "层上同调是**截面函子**的右导出函子。"
+  },
+  {
+   "id": "def-dep.sheafcoh-rdf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.right-derived-functor",
+   "usedBy": "def.sheaf-cohomology",
+   "note": "$H^{n} := R^{n}\\Gamma$。"
+  },
+  {
+   "id": "def-dep.cechcoh-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cech-functor",
+   "usedBy": "def.cech-cohomology",
+   "note": "Čech 上同调用的是**Čech 函子**。"
+  },
+  {
+   "id": "def-dep.cechcolim-topology",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.grothendieck-topology",
+   "usedBy": "prop.cech-as-colim",
+   "note": "余极限沿 $\\in J(X)$ 的**覆盖筛**取。"
+  },
+  {
+   "id": "def-dep.cechcolim-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cech-cohomology",
+   "usedBy": "prop.cech-as-colim",
+   "note": "它给出 Čech 上同调的另一种算法。"
+  },
+  {
+   "id": "def-dep.cartanleray-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cech-cohomology",
+   "usedBy": "thm.cartan-leray",
+   "note": "谱序列的第一页是 **Čech 上同调**。"
+  },
+  {
+   "id": "def-dep.cartanleray-ss",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.spectral-sequence",
+   "usedBy": "thm.cartan-leray",
+   "note": "结论是一个**谱序列**。"
+  },
+  {
+   "id": "def-dep.acyclic-sheafcoh",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sheaf-cohomology",
+   "usedBy": "def.acyclic-sheaf",
+   "note": "无环性的定义用的就是**层上同调**。"
+  },
+  {
+   "id": "def-dep.acycliccech-acyclic",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.acyclic-sheaf",
+   "usedBy": "prop.acyclic-iff-cech",
+   "note": "命题说无环等价于 **Čech 上同调为零**。"
+  },
+  {
+   "id": "def-dep.acycliccech-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cech-cohomology",
+   "usedBy": "prop.acyclic-iff-cech",
+   "note": "另一半用的是 Čech 上同调。"
+  },
+  {
+   "id": "def-dep.chauscech-chaus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.chaus",
+   "usedBy": "prop.chaus-cech-eq-h",
+   "note": "命题只对**紧 Hausdorff** 空间成立。"
+  },
+  {
+   "id": "def-dep.chauscech-sheafcoh",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sheaf-cohomology",
+   "usedBy": "prop.chaus-cech-eq-h",
+   "note": "结论是两类上同调相等。"
+  },
+  {
+   "id": "def-dep.filtlim-filtered",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.filtered-category",
+   "usedBy": "prop.filtered-limit-cohomology",
+   "note": "取的是**滤过**极限。"
+  },
+  {
+   "id": "def-dep.filtlim-sheafcoh",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sheaf-cohomology",
+   "usedBy": "prop.filtered-limit-cohomology",
+   "note": "说的是**上同调**怎么随极限变。"
+  },
+  {
+   "id": "def-dep.stoneacyclic-stone",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.stone-space",
+   "usedBy": "prop.stone-acyclic",
+   "note": "命题只对 **Stone 空间**成立。"
+  },
+  {
+   "id": "def-dep.topmorphder-topmorph",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.topos-morphism",
+   "usedBy": "prop.topos-morphism-derived",
+   "note": "说的是**拓扑斯的态射**。"
+  },
+  {
+   "id": "def-dep.topmorphder-rdf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.right-derived-functor",
+   "usedBy": "prop.topos-morphism-derived",
+   "note": "结论算的是导出函子 $R^{n}f_{*}$。"
+  },
+  {
+   "id": "def-dep.homcohom-sheafcoh",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sheaf-cohomology",
+   "usedBy": "cor.homotopy-invariant-cohomology",
+   "note": "结论是关于**层上同调**的。"
+  },
+  {
+   "id": "def-dep.homcohom-homotopy",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.homotopy",
+   "usedBy": "cor.homotopy-invariant-cohomology",
+   "note": "前提是映射**同伦**或**同伦等价**。"
   }
  ],
  "clusterLinks": [
@@ -20706,6 +21115,27 @@
   },
   {
    "a": "hom.ab",
+   "b": "topo.chaus",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.sheaf",
+   "b": "hom.sheafcoh",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "hom.complex",
+   "b": "hom.sheafcoh",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "hom.sheafcoh",
    "b": "topo.chaus",
    "count": 2,
    "label": "",

@@ -278,6 +278,8 @@ MG.notation = {
       note: '交换图里把态射名字写在箭头上 / 下。' },
     { g: 'letters', tex: '\\iota',  uni: 'ι', name: '逆映射',
       note: '群对象里的「取逆」态射 $\\iota : G \\to G$。手写体里 $\\iota$ 与 $i$ 极像 —— 凡是在「取逆」的位置上看到 $i$，先怀疑是 $\\iota$。' },
+    { g: 'cat', tex: '\\check{H}^{n}',  uni: 'Čech 上同调 Ĥⁿ', name: 'Čech 上同调',
+      note: '加帽子的 $H$：$\\check{H}^{n}(X, M)$ 是 Čech 上同调，与层上同调 $H^{n}(X,M)$ 相区别。' },
     { g: 'layout', tex: '\\bullet',  uni: '•', name: '复形的编号（右上角）',
       note: '复形一律写成 $K^{\\bullet}$（而不是 $K^{\\cdot}$）：那个 $\\bullet$ 表示「这里有一族指标」。' },
     { g: 'layout', tex: '\\trianglelefteq',  uni: '⊴', name: '正规子群 $H \\trianglelefteq G$',
