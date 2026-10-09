@@ -1,6 +1,5 @@
 # 右导出函子　`def.right-derived-functor`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.right-derived-functor.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.sheaf-cohomology` 层上同调 用
-- 被 `prop.topos-morphism-derived` 拓扑斯态射的导出函子 用
+## 陈述（续）
+$$\begin{array}{ccc} K^{+}(\mathcal{A}) & \xrightarrow{\;F\;} & K^{+}(\mathcal{A}') \\[2pt] {\scriptstyle \text{换成内射复形}}\big\downarrow & & \\[2pt] K^{+}(\mathcal{I}) & \xrightarrow[\;RF\;]{} & \end{array}$$

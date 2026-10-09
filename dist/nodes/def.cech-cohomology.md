@@ -14,4 +14,6 @@ $$\check{H}^{n}(X, M^{\bullet}) := \Gamma\bigl(X,\ \check{H}^{n}(M^{\bullet})\bi
 - 被 `thm.cartan-leray` Cartan–Leray 谱序列 用
 - 被 `prop.acyclic-iff-cech` 无环 ⟺ Čech 上同调为零 用
 
+refs: Le Stum, Definition 7.3.5
+
 > 说明见 `notes/def.cech-cohomology.md`

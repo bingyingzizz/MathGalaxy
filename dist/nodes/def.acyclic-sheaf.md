@@ -11,6 +11,6 @@ site $\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 
 - 被 `prop.acyclic-iff-cech` 无环 ⟺ Čech 上同调为零 用
 
 ## 说明
-⚠️ 原书专门提醒：**这个定义依赖 site $\mathcal{C}$，不只是依赖拓扑斯 $\widetilde{\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。
+⚠️ 专门提醒：**这个定义依赖 site $\mathcal{C}$，不只是依赖拓扑斯 $\widetilde{\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。
 
-📌 原书 **Definition 7.3.9**。
+📌  **Definition 7.3.9**。

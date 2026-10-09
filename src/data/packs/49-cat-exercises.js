@@ -1,13 +1,13 @@
 /* ==========================================================================
-   内容包 · 原书第 1 章的习题结论（14 条）
+   内容包 · 第 1 章的习题结论（14 条）
    --------------------------------------------------------------------------
-   ⚠️ 原书把一大堆**必要的结论**放在 Exercise 里（「Define …」「Show that …」），
+   ⚠️ 把一大堆**必要的结论**放在 Exercise 里（「Define …」「Show that …」），
    它们和 Proposition 一样是内容，不该漏。这一包收第 1 章里最有用的那些。
    ========================================================================== */
 window.MG = window.MG || {};
 (window.MG.packs = window.MG.packs || []).push({
 
-  name: '原书第 1 章的习题结论',
+  name: '第 1 章的习题结论',
   nodes: [
 
     {
@@ -30,7 +30,7 @@ window.MG = window.MG || {};
           '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。'
         ].join('\n')
       ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌 原书 **Exercise 1.1**。'
+      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。'
     },
 
     {
@@ -52,8 +52,8 @@ window.MG = window.MG || {};
         '记号 $[G, G]$ 是**换位子子群**（由所有 $g h g^{-1} h^{-1}$ 生成）—— 它是正规子群，商掉它正好把「非交换性」清零。',
         '⭐ **伴随的读法**：任何群同态 $G \\to A$（$A$ 阿贝尔）都唯一地穿过 $G \\to G^{\\mathrm{ab}}$。也就是说**「从 $G$ 到阿贝尔群」的映射全都只看 $G^{\\mathrm{ab}}$** —— 这就是「交换化是最经济的把群变阿贝尔的办法」。',
         '**例子**：自由群 $F(S)^{\\mathrm{ab}} \\cong \\mathbb{Z}^{\\oplus S}$（自由阿贝尔群）。所以「自由阿贝尔群函子」= 「自由群函子」再交换化。',
-        '📌 原书 **Exercise 1.9**。它同时说明 $\\mathbf{Ab} \\hookrightarrow \\mathbf{Grp}$ 除了是满子范畴之外，还有一条左伴随 —— 于是 $\\mathbf{Ab}$ 是 $\\mathbf{Grp}$ 的**反射子范畴**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 1.9'],
     },
 
     {
@@ -81,8 +81,8 @@ window.MG = window.MG || {};
           '- **等化子**：因为 Hom 至多一个元素，平行的 $f, g$ 只有「相等」或「不平行」两种，所以等化子平凡。'
         ].join('\n'),
         '**由此立刻得到**：完备格 = 有所有小极限与小余极限的偏序集；$\\mathbb{Q}$ 作为偏序集**不**完备（$\\{q : q^{2} < 2\\}$ 没有上确界）—— 这与实数完备性那条是同一件事的两种说法。',
-        '📌 原书 **Exercise 1.30**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 1.30'],
     },
 
     {
@@ -100,8 +100,8 @@ window.MG = window.MG || {};
         '⭐ **「严格」是阿贝尔范畴与一般范畴的分水岭**：阿贝尔范畴的**每条态射都严格**；而 $\\mathbf{Top}$ 里不严格。',
         '**反例为什么在拓扑里出现**：$\\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$ 是单态射（同构于自己的像），但它的**余像**平凡（因为像在余核里被商掉了），于是余像 $\\to$ 像那一步不是同构。**这正是一条 $\\mathbf{Top}$ 上「拓扑阿贝尔群不是阿贝尔范畴」的原因。**',
         '**在 $\\mathbf{Set}$ 与 $\\mathbf{Ab}$ 里每条态射都严格**：那边余像与像都能具体算成分解，中间那个映射就是恒等。',
-        '📌 原书 **Exercise 1.33**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 1.33'],
     },
 
     {
@@ -130,8 +130,8 @@ window.MG = window.MG || {};
         '$$\\begin{array}{ccc} Y & \\xrightarrow{\\;\\mathrm{id}\\;} & Y \\\\[2pt] {\\scriptstyle \\mathrm{id}}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle f} \\\\[2pt] Y & \\xrightarrow[\\;f\\;]{} & X \\end{array}$$',
         '',
         '是拉回方块。保拉回就把这个重合保下来了，于是 $F(f)$ 仍是单态射。∎',
-        '📌 原书 **Exercise 1.46**。'
-      ].join('\n')
+      ].join('\n'),
+      refs: ['Le Stum, Exercise 1.46'],
     },
 
     {
@@ -154,7 +154,7 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', '阿贝尔群对象', '极限', '遗忘函子'],
       statement: '若 $\\mathcal{C}$ 有所有极限，则 $\\mathrm{Ab}(\\mathcal{C})$ 也有所有极限，并且**遗忘函子** $\\mathrm{Ab}(\\mathcal{C}) \\to \\mathcal{C}$ 保它们。',
-      notes: '⭐ **实用价值**：这条让「在 $\\mathcal{C}$ 里算极限」与「在 $\\mathrm{Ab}(\\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$ 有所有极限，就是这条在 $\\mathcal{C} = \\mathrm{Cond}$ 上的一次应用。\n\n📌 原书 **Exercise 1.52**。'
+      notes: '⭐ **实用价值**：这条让「在 $\\mathcal{C}$ 里算极限」与「在 $\\mathrm{Ab}(\\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$ 有所有极限，就是这条在 $\\mathcal{C} = \\mathrm{Cond}$ 上的一次应用。\n\n📌  **Exercise 1.52**。'
     },
 
     {
@@ -199,7 +199,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', 'Ind-对象', '反射子范畴', '滤过余极限'],
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
-      notes: '**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌 原书 **Exercise 1.73**。'
+      notes: '**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'
     },
 
     {
