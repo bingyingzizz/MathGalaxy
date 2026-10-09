@@ -13,7 +13,7 @@
 - 拓扑学　`dist/alias/topology.md` 29 问法　·　`dist/alias/aka/topology.md` 67 别名
 - 抽象代数　`dist/alias/algebra.md` 11 问法　·　`dist/alias/aka/algebra.md` 18 别名
 - 分析学　`dist/alias/analysis.md` 41 问法　·　`dist/alias/aka/analysis.md` 160 别名
-- 范畴论　`dist/alias/category.md` 49 问法　·　`dist/alias/aka/category.md` 96 别名
-- 同调代数　`dist/alias/homology.md` 19 问法　·　`dist/alias/aka/homology.md` 24 别名
-- 凝聚态数学　`dist/alias/condensed.md` 12 问法　·　`dist/alias/aka/condensed.md` 23 别名
+- 范畴论　`dist/alias/category.md` 52 问法　·　`dist/alias/aka/category.md` 98 别名
+- 同调代数　`dist/alias/homology.md` 21 问法　·　`dist/alias/aka/homology.md` 26 别名
+- 凝聚态数学　`dist/alias/condensed.md` 13 问法　·　`dist/alias/aka/condensed.md` 23 别名
 

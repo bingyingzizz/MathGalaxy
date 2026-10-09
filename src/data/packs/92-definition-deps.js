@@ -765,7 +765,29 @@ window.MG = window.MG || {};
     ['def.sheaf', 'prop.sieve-covering-equivalent', 'def-dep.sieveequiv-sheaf',
       '第 2 至 4 条都只提到**层**与**层化**。'],
     ['thm.sheafification', 'prop.sieve-covering-equivalent', 'def-dep.sieveequiv-sheafification',
-      '记号 $\\widetilde{(-)}$ 是**层化**。']
+      '记号 $\\widetilde{(-)}$ 是**层化**。'],
+
+    /* -------------------------------------------- 极限的构造与补漏 */
+    ['def.limit', 'prop.limit-construction', 'def-dep.limcon-limit',
+      '命题说的是**极限**怎么造。'],
+    ['def.product', 'prop.limit-construction', 'def-dep.limcon-product',
+      '第一步用的是**积** $\\prod_{i} D(i)$。'],
+    ['def.equalizer', 'prop.limit-construction', 'def-dep.limcon-equalizer',
+      '第二步取**等化子**。'],
+    ['def.sheaf', 'def.section-functor', 'def-dep.sectionfunctor-sheaf',
+      '截面函子定义在**层**范畴上。'],
+    ['def.representable', 'def.section-functor', 'def-dep.sectionfunctor-representable',
+      '它就是可表示预层 $h_{X}$ 的 $\\operatorname{Hom}$ 函子。'],
+    ['def.abelian-category', 'thm.snake-lemma', 'def-dep.snake-abelian',
+      '蛇引理在**阿贝尔范畴**里说。'],
+    ['def.equalizer', 'thm.snake-lemma', 'def-dep.snake-equalizer',
+      '要用到核与像（等化子的语言）。'],
+    ['def.abelian-category', 'thm.five-lemma', 'def-dep.five-abelian',
+      '五引理在**阿贝尔范畴**里说。'],
+    ['thm.snake-lemma', 'thm.five-lemma', 'def-dep.five-snake',
+      '两者都是**追图**，五引理是比较同构的版本。'],
+    ['def.image', 'thm.five-lemma', 'def-dep.five-image',
+      '用的还是「正合 = 核 = 像」。']
   ];
 
   var edges = E.map(function (e) {

@@ -200,15 +200,27 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '逗号范畴', '辅助范畴'],
       statement: [
-        '设 $G : \\mathcal{D} \\to \\mathcal{C}$ 是函子，$X \\in \\mathcal{C}$。**逗号范畴** $X \\downarrow G$ 以',
+        '设 $F : \\mathcal{A} \\to \\mathcal{C}$、$G : \\mathcal{B} \\to \\mathcal{C}$ 是两个**靶相同**的函子。**逗号范畴** $F \\downarrow G$ 以',
         '',
-        '$$\\bigl\\{(Y, f) : Y \\in \\mathcal{D},\\ f : X \\to G(Y)\\bigr\\}$$',
+        '$$\\bigl\\{(A, B, f) : A \\in \\mathcal{A},\\ B \\in \\mathcal{B},\\ f : F(A) \\to G(B)\\bigr\\}$$',
         '',
-        '为对象，从 $(Y, f)$ 到 $(Y\', f\')$ 的态射取使 $G(g) \\circ f = f\'$ 的 $g : Y \\to Y\'$。'
+        '为对象，从 $(A, B, f)$ 到 $(A\', B\', f\')$ 的态射是一对 $(a : A \\to A\',\\ b : B \\to B\')$，使方块交换：',
+        '',
+        '$$\\begin{array}{ccc} F(A) & \\xrightarrow{\\;f\\;} & G(B) \\\\[2pt] {\\scriptstyle F(a)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle G(b)} \\\\[2pt] F(A\') & \\xrightarrow[\\;f\'\\;]{} & G(B\') \\end{array}$$',
+        '',
+        '**两个特例**：取 $\\mathcal{A} = \\mathbf{1}$（单对象范畴）时 $F$ 就是「选出 $\\mathcal{C}$ 的一个对象 $X$」，此时 $F \\downarrow G$ 记作 $X \\downarrow G$；取 $\\mathcal{B} = \\mathbf{1}$ 得 $F \\downarrow Y$。'
       ].join('\n'),
       notes: [
-        '它是「**把 $X$ 映射进 $G$ 的像**」的全部方式组成的范畴。把箭头反向得 $F \\downarrow Y$，拼起来得 $F \\downarrow G$。',
-        '预层的切片范畴、元素范畴都是它的特例。凡是要在某个函子外面「挂一个外部对象」再取最优的情形，用的都是它。'
+        '**读法**：$F \\downarrow G$ 把所有「从 $F$ 的世界伸一条箭头到 $G$ 的世界」的方式组织成一个范畴。**对象是箭头本身**（连同它们两端的来源），态射是让箭头之间能互相比较的那一对态射。',
+        '**记号**：$F \\downarrow G$ 里的符号就是「逗号」，所以叫逗号范畴；有的书写 $(F \\downarrow G)$ 或 $(F/G)$。',
+        '⭐ **为什么它到处出现**：泛性质常常是「某个逗号范畴里的**终/始对象**」。',
+        '',
+        [
+          '- $X \\downarrow \\mathrm{id}_{\\mathcal{C}}$ 是**切片** $\\mathcal{C}/X$；',
+          '- 预层的**元素范畴** $\\int F$ 就是 $\\mathbf{1} \\downarrow F$（把预层看成函子 $\\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）；',
+          '- 伴随的**单位**定义成 $\\mathrm{id} \\downarrow G$（或 $F \\downarrow \\mathrm{id}$）里的始对象。'
+        ].join('\n'),
+        '判别一个东西是不是逗号范畴，就看它「对象是不是箭头、态射是不是交换方块」。'
       ].join('\n\n')
     },
 
