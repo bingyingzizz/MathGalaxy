@@ -350,7 +350,7 @@ MG.aliases = {
     { id: 'lem.yoneda', aka: ['米田引理', 'Yoneda lemma', 'Yoneda'] },
     { id: 'thm.represented-criterion', aka: ['表示的两个定义等价', 'representable iff hom'] },
     { id: 'prop.yoneda-embedding', aka: ['米田嵌入', 'Yoneda embedding', 'h_X'] },
-    { id: 'def.slice-category', aka: ['切片范畴', 'category of elements', 'C_T'] },
+    { id: 'def.slice-category', aka: ['切片范畴', 'slice category', 'C_T', 'C/T', '𝒞/T', 'F ↓ T', '预层的切片'] },
     { id: 'prop.slice-cartesian', aka: ['切片方块是笛卡尔的'] },
     { id: 'thm.density', aka: ['稠密性定理', 'density theorem', '预层是余极限'] },
     { id: 'lem.presheaf-mono-pointwise', aka: ['预层逐点检验', '预层的单满'] },
@@ -541,7 +541,7 @@ MG.aliases = {
     { id: 'def.quasi-iso', aka: ['拟同构', 'quasi-isomorphism', 'quasi-iso', '零调', 'acyclic'] },
     { id: 'prop.injective-criterion', aka: ['内射对象的判据', 'injective criterion', 'Baer 判据'] },
     { id: 'def.filtration', aka: ['过滤', 'filtration', '关联分次', 'graded pieces'] },
-    { id: 'def.spectral-sequence', aka: ['谱序列', 'spectral sequence', '第一象限谱序列', 'E_r 页'] },
+    { id: 'def.spectral-sequence', aka: ['谱序列', 'spectral sequence', '第一象限谱序列', 'E^{p,q}_{r}', 'E_r 页'] },
   ],
 
   /* --------------------------------------------------------- 问题钩子 */

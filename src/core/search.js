@@ -67,6 +67,36 @@
         AL.nodes.forEach(function (r) { if (r && r.id) akaOf[r.id] = r.aka || []; });
       }
 
+      /* ⭐ 记号表（src/data/notation.js）也进检索。
+         不然 `F↓G`、`♯`、`K[k]`、`𝒞/T` 这些符号永远搜不到 —— 记号表登记了也没用。
+         做法：节点正文里用到了某条记号的 LaTeX 命令，就把那条记号的
+         **渲染形态（uni）与中文名（name）** 补进这个节点的检索串。 */
+      var NOT = MG.notation || null;
+      var notEntries = ((NOT && NOT.entries) || []).map(function (e) {
+        var pieces = String(e.tex || '').split(',').map(function (s) { return s.trim().toLowerCase(); })
+          .filter(function (s) { return s.length >= 2; });
+        return { pieces: pieces, uni: String(e.uni || ''), name: String(e.name || '') };
+      }).filter(function (e) { return e.pieces.length || e.name; });
+
+      function notationForms(hay, onHit) {
+        var extra = '';
+        for (var i = 0; i < notEntries.length; i++) {
+          var e = notEntries[i];
+          var hit = false;
+          for (var j = 0; j < e.pieces.length; j++) {
+            if (e.pieces[j] && hay.indexOf(e.pieces[j]) >= 0) { hit = true; break; }
+          }
+          if (!hit && e.name && hay.indexOf(e.name.toLowerCase()) >= 0) hit = true;
+          if (hit) {
+            /* ⚠️ hay 已经 toLowerCase 过了，追加的形态也必须一起小写 ——
+               否则 `K[k]`、`M(f)`、`E^{p,q}_{r}` 这些带大写字母的记号照样搜不到。 */
+            extra += ' ' + e.uni.toLowerCase() + ' ' + e.name.toLowerCase();
+            if (onHit) onHit(e);
+          }
+        }
+        return extra;
+      }
+
       index = view.graph.nodes.map(function (n) {
         var regions = n.regions.map(function (r) {
           var reg = view.graph.regionById[r];
@@ -84,6 +114,13 @@
         (n.tags || []).forEach(addWord);
         aka.forEach(addWord);
         grams2(n.label).forEach(addWord);
+
+        /* 记号表：命中的记号把「渲染形态 + 中文名」补进 hay 与词表。
+           ⚠️ 必须拿**原文**（留着 LaTeX）去匹配 —— U.plain() 会把公式整个剥掉，
+           剥完之后 `\sharp`、`\downarrow` 全不见了，记号表就永远匹配不上。 */
+        var rawHay = [n.label, n.title, (n.tags || []).join(' '),
+          n.statement || '', n.notes || ''].join('\n').toLowerCase();
+        hay += notationForms(rawHay, function (e) { addWord(e.name); addWord(e.uni); });
 
         return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka };
       });
