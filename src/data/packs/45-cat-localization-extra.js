@@ -95,12 +95,16 @@ window.MG = window.MG || {};
           '- **$1 \\implies 2$**：$R \\in J(X)$ 时 $R \\to \\widetilde{R}$ 又由**层化的粘合公理**唯一延拓出 $v : \\underline{X} = \\widetilde{h_{X}} \\to \\widetilde{R}$；把 $v \\circ u$ 与 $u \\circ v$ 分别与 $R \\to \\widetilde{R}$、$h_{X} \\to \\underline{X}$ 比较，由延拓的**唯一性**它们分别是 $\\mathrm{id}_{\\widetilde{R}}$ 与 $\\mathrm{id}_{\\underline{X}}$，故 $u$ 是同构。',
           '- **$2 \\implies 1$**：设 $u$ 是同构。由**传递性公理**，只要造出一个 $R\' \\in J(X)$ 使每个 $f \\in R\'(Y)$ 都有 $f^{-1}(R) \\in J(Y)$ 就够了。由 2 有 $h_{X} \\to \\underline{X} \\cong \\widetilde{R} = \\mathcal{H}(\\mathcal{H}(R))$，于是可造出 $R\' \\in J(X)$ 与 $\\varphi : R\' \\to \\mathcal{H}(R)$。对 $f \\in R\'(Y)$，它在 $\\mathcal{H}(R)(Y)$ 里的像来自某个 $S \\to R$（$S \\in J(Y)$）—— 沿 $h_{Y} \\to R\' \\to \\mathcal{H}(R)$ 走一圈可知 $S \\subseteq f^{-1}(R)$，于是 $f^{-1}(R) \\in J(Y)$。再用一次传递性，得 $R \\in J(X)$。',
           '- **$2 \\iff 3$**：由「层化是左 Kan 延拓」（$\\sharp T = \\varinjlim_{X \\in \\mathcal{C}/T} \\underline{X}$）取 $T = R$，得 $\\widetilde{R} = \\sharp R = \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$。于是「$\\widetilde{R} = \\underline{X}$」与「$\\underline{X} = \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$」是同一句话。',
-          '- **$3 \\implies 4$**：余极限是余积的**商** —— 自然映射 $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\to \\varinjlim_{Y} \\underline{Y}$ 总是满态射；3 成立时右端就是 $\\underline{X}$。∎',
+          '- **$3 \\implies 4$**：余极限是余积的**商** —— 自然映射 $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\to \\varinjlim_{Y} \\underline{Y}$ 总是满态射；3 成立时右端就是 $\\underline{X}$。',
+          '- **$4 \\iff 2$**：靠一个恒等式。先看**预层**层面：$\\coprod_{Y \\in \\mathcal{C}/R} h_{Y} \\to h_{X}$ 的**像恰好是 $R$** —— 它在 $Z$ 处的像是「能穿过某个 $Y \\to X \\in R$ 的那些 $Z \\to X$」，而这正是筛的定义。再对两边作用 $\\sharp$：**层化是正合的**（保有限极限），正合函子保像，于是',
+          '',
+          '$$\\widetilde{R} \\;=\\; \\sharp\\Bigl(\\operatorname{im}\\bigl(\\coprod_{Y \\in \\mathcal{C}/R} h_{Y} \\to h_{X}\\bigr)\\Bigr) \\;=\\; \\operatorname{im}\\Bigl(\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\to \\underline{X}\\Bigr).$$',
+          '',
+          '于是 4（那个映射是满态射）$\\iff$ 那个像是整个 $\\underline{X}$ $\\iff$ $\\widetilde{R} = \\underline{X}$ $\\iff$ 2。∎',
         ].join('\n'),
-        '⚠️ **$4 \\implies 3$ 这一步我没有走通。** 从 4 出发，余极限的泛性质只给出 $\\varinjlim_{Y} \\underline{Y} \\to \\underline{X}$ 是**满**态射，还不是同构（要拿回同构得再证它是单的）。这一段先标出来 —— 如果你手上有这一步的写法，告诉我我补上。',
         '**一族态射的版本**（紧跟着的推论）：族 $(X_{i} \\to X)_{i \\in I}$ 生成覆盖筛 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。'
       ].join('\n\n'),
-      refs: ['Le Stum, Proposition 3.2.12']
+      refs: ['Le Stum, Proposition 3.2.12', 'Le Stum, Exercise 3.26']
     }
   ],
 

@@ -12,6 +12,6 @@ layer 19 · 命题 · 层与拓扑 · 范畴论
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sieveequiv-sheaf.md
 - `thm.sheafification` 层化：用到了定义 层化　proofs/def-dep.sieveequiv-sheafification.md
 
-refs: Le Stum, Proposition 3.2.12
+refs: Le Stum, Proposition 3.2.12；Le Stum, Exercise 3.26
 
 > 说明见 `notes/prop.sieve-covering-equivalent.md`
