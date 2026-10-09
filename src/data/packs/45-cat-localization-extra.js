@@ -1,0 +1,105 @@
+/* ==========================================================================
+   内容包 · 局部化的补充 + 覆盖筛的四条等价（3 条）
+   --------------------------------------------------------------------------
+   两条接在「局部化」后面：环的局部化 $W^{-1}R$（集合层面最熟悉的那个例子）、
+   以及分式演算把 Hom 写成**滤过余极限**的公式。
+
+   第三条是原书 Proposition 3.2.12：一个筛是覆盖筛，等价于它的层化
+   同构于 $X$ 的层化 —— 也就是「覆盖」这件事可以脱离 $J$ 用层来刻画。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '局部化补充与覆盖筛等价',
+  nodes: [
+
+    /* ------------------------------------------------- 环的局部化 */
+    {
+      id: 'prop.ring-localization',
+      cluster: 'algebra.structures',
+      type: 'example',
+      label: '环的局部化 W⁻¹R',
+      title: '环的局部化（Localization of a Ring）',
+      regions: ['algebra', 'category'],
+      tags: ['代数', '环', '局部化', '分式', '乘性子集'],
+      statement: [
+        '设 $R$ 是**交换环**，$W \\subseteq R$ 是**乘性子集**（$1 \\in W$，且 $f, g \\in W \\implies fg \\in W$）。',
+        '',
+        '把 $R$ 看作**单对象范畴**：唯一对象 $\\ast$，$\\operatorname{Hom}(\\ast, \\ast) = R$，复合就是乘法。它关于 $W$ 的局部化记作',
+        '',
+        '$$W^{-1}R,$$',
+        '',
+        '元素写成**分式** $r/w$（$r \\in R$、$w \\in W$）。'
+      ].join('\n'),
+      notes: [
+        '⭐ **这就是范畴局部化最熟悉的一个例子。** 「把 $W$ 里的元素变成可逆元」这句话，在单对象范畴里就是「把 $W$ 里的态射变成同构」—— 和第「局部化」那条定义是同一件事。',
+        '**等价关系**：分式之间按',
+        '',
+        '$$r/w = r\'/w\' \\iff \\exists s \\in W,\\quad s\\,(rw\' - r\'w) = 0$$',
+        '',
+        '相等（那个 $s$ 是必要的：$W$ 里可能有零因子，不加 $s$ 会出错）。运算是通常的分数运算 $r/w + r\'/w\' = (rw\' + r\'w)/(ww\')$、$(r/w)(r\'/w\') = rr\'/(ww\')$ —— 分母乘起来还在 $W$ 里，这正是**乘性子集**这个条件的用处。',
+        '**两个标准例子**：$R = \\mathbb{Z}$、$W = \\mathbb{Z} \\setminus \\{0\\}$ 给出 $\\mathbb{Q}$；$R$ 一般、$W = \\{f^{n} : n \\ge 0\\}$ 给出「在 $f$ 处局部化」，把 $f$ 变成可逆元。',
+        '⭐ **为什么要求 $W$ 乘性封闭**：不封闭的话分式之间没法相乘（分母不落在 $W$ 里），局部化的泛性质（它是「使 $W$ 中元素可逆」的最一般的环）就构造不出来。'
+      ].join('\n\n')
+    },
+
+    /* --------------------------------- 分式演算下的 Hom 是余极限 */
+    {
+      id: 'prop.localization-hom-colim',
+      cluster: 'cat.basic',
+      type: 'proposition',
+      label: '局部化的 Hom 是滤过余极限',
+      title: '$\\operatorname{Hom}_{\\mathrm{ho}}(X,Y) = \\varinjlim_{X\' \\to X \\in W} \\operatorname{Hom}(X\', Y)$',
+      regions: ['category'],
+      tags: ['范畴论', '局部化', '分式演算', '余极限', 'Ore 条件'],
+      statement: [
+        '设小范畴 $\\mathcal{C}$ 关于 $W$ 容许**右分式演算**。则',
+        '',
+        '$$\\operatorname{Hom}_{\\mathrm{ho}(\\mathcal{C})}(X, Y) \\;=\\; \\varinjlim_{X\' \\to X \\in W} \\operatorname{Hom}_{\\mathcal{C}}(X\', Y),$$',
+        '',
+        '下标遍历所有 $w : X\' \\to X$（$w \\in W$），沿这些 $w$ 取**滤过**余极限。'
+      ].join('\n'),
+      notes: [
+        '⭐ **把「形式添加的逆」变成具体的余极限。** 局部化的态射本来是「向右走一步、向左倒一步」的锯齿链，一般没法直接算；右分式演算保证了可以**通分**：找一个大一点的 $X\'$ 把几条链对齐，于是所有态射都可以看成「先在 $X\'$ 上走一步、再倒回 $X$」，也就是 $\\operatorname{Hom}_{\\mathcal{C}}(X\', Y)$ 里的一个元素。',
+        '**为什么是余极限**：不同的 $X\' \\to X$ 给的是同一族态射的不同「表示」，取余极限正是「把这些表示粘起来」；而 Ore 条件保证这些 $X\' \\to X$ 组成的指标范畴是**滤过**的（任意两个都能被第三个同时压住），所以这个余极限是滤过余极限 —— 行为良好。',
+        '⭐ **实用价值**：这一条把局部化的 Hom 集合**算成**原范畴里已知东西的滤过余极限。导出范畴 $D(\\mathcal{A})$ 里算 $\\operatorname{Hom}$ 就是从这一步开始的。',
+        '⚠️ 没有分式演算时余极限**一般不对** —— 那时 $\\mathrm{ho}(\\mathcal{C})$ 的 Hom 可能连集合都不是。'
+      ].join('\n\n')
+    },
+
+    /* -------------------------------------- 覆盖筛的四条等价 */
+    {
+      id: 'prop.sieve-covering-equivalent',
+      cluster: 'cat.sheaf',
+      type: 'proposition',
+      label: '覆盖筛的四条等价',
+      title: '覆盖筛的等价刻画（$\\widetilde{R} \\simeq \\underline{X}$）',
+      regions: ['category'],
+      tags: ['范畴论', '层', '筛', '覆盖', '层化'],
+      statement: [
+        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：',
+        '',
+        [
+          '1. $R \\in J(X)$（即 $R$ 是 $X$ 上的**覆盖筛**）；',
+          '2. $\\widetilde{R} \\simeq \\underline{X}$；',
+          '3. $\\underline{X} \\simeq \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$；',
+          '4. $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\longrightarrow \\underline{X}$ 是**满态射**。'
+        ].join('\n')
+      ].join('\n'),
+      notes: [
+        '记号：$\\underline{X} := \\widetilde{h_{X}}$ 是 $X$ 对应的**层**；$\\mathcal{C}/R$ 是由「筛 $R$ 里的那些态射」组成的范畴（对象是 $f \\in R(Y)$，态射是使 $\\ast$ 交换的那些 $g$）。',
+        '⭐ **读法**：第 1 条是「$R$ 被拓扑 $J$ 承认」，第 2、3、4 条都**只提到层**。所以这一条说的是：**「是不是覆盖」这件事可以由层来刻画，不必回头看 $J$。** 这正是「拓扑 $\leftrightarrow$ 层范畴」那条对应能够一一对上的原因。',
+        '**证明走法。** 合成 $R \\hookrightarrow h_{X} \\to \\widetilde{h_{X}} = \\underline{X}$ 唯一地延拓出 $u : \\widetilde{R} \\to \\underline{X}$（层化是左伴随，层是余完备的）。',
+        '',
+        [
+          '- **$1 \\implies 2$**：$R \\in J(X)$ 时 $R \\to \\widetilde{R}$ 又延拓出 $v : \\underline{X} = \\widetilde{h_{X}} \\to \\widetilde{R}$；由延拓的唯一性（对 $\\mathrm{id}_{R}$、对 $\\mathrm{id}_{\\underline{X}}$）得 $v \\circ u = \\mathrm{id}_{\\widetilde{R}}$、$u \\circ v = \\mathrm{id}_{\\underline{X}}$，故 $u$ 是同构。',
+          '- **$2 \\implies 1$**：设 $u$ 是同构。要把 $R$ 拼出一个 $J(X)$ 里的筛：由 $h_{X} \\to \\underline{X} \\cong \\widetilde{R} = \\mathcal{H}(\\mathcal{H}(R))$，可造出 $R\' \\in J(X)$ 与 $\\varphi : R\' \\to \\mathcal{H}(R)$。对 $f \\in R\'(Y)$，它的像落在 $\\mathcal{H}(R)(Y)$ 里，而那里每个元素都来自某个 $S \\to R$（$S \\in J(Y)$），于是 $S \\subseteq f^{-1}(R)$，即 $f^{-1}(R) \\in J(Y)$。既然对一切 $f \\in R\'$ 都成立，由 $R\'$ 是覆盖筛得 $R$ 也是覆盖筛。',
+          '- **$3$、$4$** 与前两条的等价是练习。∎',
+        ].join('\n'),
+        '原书把这条列为 **Proposition 3.2.12**；紧跟着的推论 **Corollary 3.2.13** 是一族态射的版本：族 $(X_{i} \\to X)$ 生成覆盖筛 $\\iff \\coprod_{i} X_{i} \\to X$ 是满态射。'
+      ].join('\n\n')
+    }
+  ],
+
+  edges: []
+});

@@ -507,6 +507,20 @@ MG.aliases = {
     { id: 'def.module', aka: ['模', 'module', '模同态', 'A-Mod'] },
     { id: 'thm.freyd-mitchell', aka: ['Freyd-Mitchell', 'Freyd', 'Mitchell', 'Theorem 5.2.4', 'Thm 5.2.4', '嵌入定理'] },
 
+    /* 共尾 / 滤过 / 范畴里的代数结构 / 局部化补充 */
+    { id: 'def.connected-category', aka: ['连通范畴', 'connected category', '锯齿'] },
+    { id: 'def.cofinal-functor', aka: ['共尾函子', 'cofinal', 'cofinal functor', 'final functor', 'coinitial', '共尾'] },
+    { id: 'thm.cofinal-colimit', aka: ['共尾函子不改变余极限', 'cofinal colimit', '共尾 余极限'] },
+    { id: 'def.filtered-category', aka: ['滤过范畴', 'filtered category', 'filtered', '滤过余极限', '有限余锥', 'cocone'] },
+    { id: 'prop.filtered-directed', aka: ['滤过换成有向集', '有向集', 'directed set', 'Proposition 1.4.2', 'Prop 1.4.2'] },
+    { id: 'prop.representable-preserves-limits', aka: ['可表函子保极限', '可表函子保所有极限', 'representable preserves limits', 'left exact', '左正合', '保有限极限'] },
+    { id: 'def.monoid-object', aka: ['幺半群对象', 'monoid object', 'Mon(C)', '笛卡尔范畴', 'cartesian category'] },
+    { id: 'def.group-object', aka: ['群对象', 'group object', '阿贝尔群对象', 'abelian group object', 'Gr(C)', 'Ab(C)'] },
+    { id: 'ex.ab-of-categories', aka: ['Ab(Top)', 'Ab(Set)', '拓扑阿贝尔群怎么来的', '群对象的例子'] },
+    { id: 'prop.ring-localization', aka: ['环的局部化', 'W^{-1}R', '乘性子集', '分式环', 'localization of a ring'] },
+    { id: 'prop.localization-hom-colim', aka: ['局部化的 Hom', '分式演算 余极限', 'Hom 是余极限'] },
+    { id: 'prop.sieve-covering-equivalent', aka: ['覆盖筛的四条等价', '覆盖筛等价条件', 'Proposition 3.2.12', 'Prop 3.2.12', '层化 覆盖筛'] },
+
     /* 同调代数 */
     { id: 'def.cochain-complex', aka: ['复形', 'complex', '上链复形', 'cochain complex', '链复形', '微分'] },
     { id: 'prop.complex-additive', aka: ['复形范畴是加法范畴', '逐项计算'] },
@@ -697,5 +711,15 @@ MG.aliases = {
     { q: '什么是环', to: ['def.ring', 'def.ideal', 'def.field'] },
     { q: '什么是模', to: ['def.module', 'def.ring', 'def.abelian-category'] },
     { q: 'Freyd-Mitchell 是什么', to: ['thm.freyd-mitchell', 'def.abelian-category', 'def.module'] },
+    { q: '什么是共尾函子', to: ['def.cofinal-functor', 'thm.cofinal-colimit', 'def.connected-category'] },
+    { q: '什么是连通范畴', to: ['def.connected-category', 'def.cofinal-functor'] },
+    { q: '共尾函子为什么不改变余极限', to: ['thm.cofinal-colimit', 'def.cofinal-functor', 'def.filtered-category'] },
+    { q: '什么是滤过范畴', to: ['def.filtered-category', 'prop.filtered-exact', 'prop.filtered-directed'] },
+    { q: '滤过和有向集什么关系', to: ['prop.filtered-directed', 'def.filtered-category', 'def.cofinal-functor'] },
+    { q: '可表函子保极限吗', to: ['prop.representable-preserves-limits', 'def.representable', 'lem.yoneda'] },
+    { q: '什么是群对象', to: ['def.group-object', 'def.monoid-object', 'ex.ab-of-categories'] },
+    { q: '拓扑阿贝尔群是怎么定义的', to: ['ex.ab-of-categories', 'def.group-object', 'def.topo-ab-group'] },
+    { q: '环的局部化是什么', to: ['prop.ring-localization', 'def.localization', 'prop.calculus-of-fractions'] },
+    { q: '覆盖筛的等价条件', to: ['prop.sieve-covering-equivalent', 'prop.covering-sieve-epi', 'def.sieve'] },
   ],
 };

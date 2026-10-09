@@ -276,6 +276,8 @@ MG.notation = {
       note: '只用在交换图的 $\\begin{array}$ 里给边注（如 $\\downarrow\\scriptstyle{f}$）压字号，正文里不用。' },
     { g: 'layout', tex: '\\xrightarrow{f}, \\xleftarrow{g}', uni: '→f／←g', name: '带标签的箭头',
       note: '交换图里把态射名字写在箭头上 / 下。' },
+    { g: 'letters', tex: '\\iota',  uni: 'ι', name: '逆映射',
+      note: '群对象里的「取逆」态射 $\\iota : G \\to G$。手写体里 $\\iota$ 与 $i$ 极像 —— 凡是在「取逆」的位置上看到 $i$，先怀疑是 $\\iota$。' },
     { g: 'layout', tex: '\\trianglelefteq',  uni: '⊴', name: '正规子群 $H \\trianglelefteq G$',
       note: '子群写 $H \\le G$；正规子群写 $H \\trianglelefteq G$（三角形 = normal）。' },
     { g: 'layout', tex: '\\mapsto, \\longmapsto', uni: '↦ ／ ⟼', name: '元素映射',

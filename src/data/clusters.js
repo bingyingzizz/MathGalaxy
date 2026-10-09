@@ -261,6 +261,13 @@ MG.clusters = [
     desc: '造出「用箭头替代元素」这套语言：可消性（单 / 满）→ 子对象 → 像与余像 → 泛元素。'
   },
   {
+    id: 'cat.algebra',
+    name: '范畴里的代数结构',
+    parent: 'category',
+    hub: 'def.group-object',
+    desc: '把「集合 + 运算 + 公理」搬到任意有有限积的范畴里：幺半群对象 → 群对象 → 阿贝尔群对象。⭐ $\\mathrm{Ab}(\\mathbf{Set})=\\mathbf{Ab}$、$\\mathrm{Ab}(\\mathbf{Top})$ = 拓扑阿贝尔群、$\\mathrm{Ab}(\\mathrm{Cond})=\\mathrm{CondAb}$ —— 代数那条线与凝聚态那条线在这里接上。'
+  },
+  {
     id: 'cat.yoneda',
     name: '预层与米田',
     parent: 'category',
