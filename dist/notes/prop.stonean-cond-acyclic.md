@@ -8,3 +8,5 @@
 ⭐ **这是整章的起点**：后面每一步「零调」都是把一般空间归约到 Stonean（先 Stone 化，再用 Čech 复杂度量偏差），而 Stonean 这一格已经归零。
 
 ⚠️ 注意这条对**任意**凝聚态阿贝尔群 $M$ 成立，不要求 $M$ 来自拓扑群。
+
+> 续见 notes/prop.stonean-cond-acyclic.2.md

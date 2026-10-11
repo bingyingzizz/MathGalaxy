@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-11T13:42:17.193Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-11T13:52:05.411Z
 > 9 星系 / 45 星团 / 542 节点 / 1136 连线（强边 1127，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -9337,6 +9337,12 @@ $$c_{X} : \mathrm{Cond}/X \rightleftarrows \mathrm{Open}(X),$$
 
 ⭐ 这条是下面 Dyckhoff 定理那条谱序列的**构造基础**：有了这两个方向，$\mathrm{Cond}/X$ 上的上同调才能被 $\mathrm{Open}(X)$ 上的层上同调逼近。
 
+**证明。** 先看两个函子都有定义：逆像把 $Y \in \mathrm{Cond}/X$ 送到预层 $U \mapsto \operatorname{Hom}_{/X}(\underline{U}, Y)$，而 $\mathrm{Open}(X)$ 上的层条件只涉及开集的含入，逐条验即可；顺像 $\varinjlim_{U \subseteq X,\ s \in F(U)} \underline{U}$ 取的是**滤过**余极限（开集沿含入滤过），在 $\mathrm{Cond}$ 里存在。
+**逆像左正合**：$\varinjlim$ 在 $\mathrm{Cond}$ 里正合（AB5）。
+**伴随**：逐项算
+$$\operatorname{Hom}_{/X}\Bigl(\varinjlim_{U, s} \underline{U},\ Y\Bigr) = \varinjlim_{U, s} \operatorname{Hom}_{/X}(\underline{U}, Y) = \operatorname{Hom}(F, Y),$$
+第一式是余极限的泛性质，第二式就是把「从 $F$ 到 $Y$ 的映射」按 $F$ 的定义写成相容族 $\{F(U) \to \operatorname{Hom}_{/X}(\underline{U}, Y)\}$ —— 两者是同一件事。于是有伴随 $\varinjlim \underline{U} \dashv \bigl(U \mapsto \operatorname{Hom}_{/X}(\underline{U}, -)\bigr)$，逆像左正合，故 $c_{X}$ 是拓扑斯态射。∎
+
 参考：Le Stum, Proposition 8.1.3
 
 #### Stonean 上凝聚阿贝尔群零调　`prop.stonean-cond-acyclic`
@@ -9354,6 +9360,11 @@ $$H^{n}_{\mathrm{cond}}(S,\ M) = 0.$$
 
 ⚠️ 注意这条对**任意**凝聚态阿贝尔群 $M$ 成立，不要求 $M$ 来自拓扑群。
 
+**证明。** 截面函子是 $\Gamma(S, -) = \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}[S], -)$。
+- **$\mathbb{Z}[S]$ 在 $S$ Stonean 时是投射对象**：极不连通性给出 $S$ 的闭开集格上的投影性（$S = \beta I$ 时 $\mathbb{Z}[S] = \mathbb{Z}[\beta I]$ 是自由的，而自由对象投射）；
+- 于是 $\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}[S], -)$ 把满射送到满射 —— 即**正合**；
+- 右导出函子 $R^{n}\Gamma(S,-)$ 量的正是「这个函子在第 $n$ 步有多大程度不正合」，函子本身正合故全为 $0$（$n>0$）。∎
+
 参考：Le Stum, Proposition 8.1.1
 
 #### Stone 上常系数零调　`lem.stone-constant-acyclic`
@@ -9368,6 +9379,12 @@ $$H^{n}_{\mathrm{cond}}(S,\ \underline{A}) = 0.$$
 **证法**。把 $S$ 与它的一个 Stone 满射 $S_{0} \twoheadrightarrow S$ 都写成**有限离散空间**的滤过**逆**极限（Stone 空间按定义就是投射有限空间的逆极限）。增广 Čech 复形逐段零调（有限离散情形是好算的），而滤过逆极限沿着正合列取极限仍然正合，于是整体零调。
 
 **为什么值得单列**：常系数是最常用的系数，这条让「Stone 空间上的常系数上同调」这一整类计算直接归零。
+
+**证明（先有限、再取逆极限）。** 由「无环 $\iff$ Čech 上同调为零」，只需对 Stone 空间之间的**满射** $f : S_{0} \twoheadrightarrow S$ 证明增广 Čech 复形 $\check{C}^{\bullet}\bigl((S_{0}\to S)^{+}, M\bigr)$ 零调（有限**不交**覆盖那情形由「有限不交覆盖的高次 Čech 为零」给出）。
+- **$S, S_{0}$ 有限的情形**：此时它们是有限离散集，$f$ 是有限满射，增广 Čech 复形是**零伦**的（有截面的态射那条），故零调。
+- **一般情形**：Stone 空间是**投射有限空间**的滤过逆极限，写 $S_{0} = \varprojlim_{k} S_{0,k}$（$S_{0,k}$ 有限），记 $S_{k}$ 为 $S_{0,k}$ 在 $S$ 里的像。$M$ **离散**，于是交叠上的连续函数就是逐块给定的，而逆极限的取值是滤过余极限：
+$$\check{C}^{\bullet}\bigl((S_{0}\to S)^{+},\ M\bigr) = \varinjlim_{k} \check{C}^{\bullet}\bigl((S_{0,k}\to S_{k})^{+},\ M\bigr).$$
+- **滤过余极限正合**（AB5），所以「每一项都零调」沿这个余极限传下去：整体零调。∎
 
 参考：Le Stum, Lemma 8.1.2
 
@@ -9385,6 +9402,17 @@ $$H^{n}_{\mathrm{cond}}(X,\ M) \cong H^{n}_{\mathrm{sheaf}}(X,\ M).$$
 **为什么限定「系数离散」**。系数一旦带上拓扑（比如实 Banach 空间），$R^{q}c_{*}$ 一般不再消失，两边就对不上了 —— §8.2 要处理的就是这种情形。
 
 📌 **用法**：任何**局部紧**空间上的凝聚态上同调，可以**直接**用经典的层上同调来算（开覆盖、Čech、细层消解那一整套老工具全都能用）。
+
+**证明（用 $c_{X}$ 的谱序列，把 $R^{q}c_{X*}$ 算成零）。**
+- 由 $c_{X}^{-1}(X) = X$（$X$ 作为 $\mathrm{Open}(X)$ 里的对象，逆像取回它自己），得 Grothendieck 谱序列
+$$E^{p,q}_{2} = H^{p}_{\mathrm{sheaf}}\bigl(X,\ R^{q}c_{X*}M\bigr) \;\Longrightarrow\; H^{p+q}_{\mathrm{cond}}(X,\ M).$$
+- 又 $c_{X*}M = M$，所以**只需证 $R^{q}c_{X*}M = 0$（$q > 0$）**。
+- $R^{q}c_{X*}M$ 是预层 $U \mapsto H^{q}_{\mathrm{cond}}(U, M)$ 层化得到的层。$X$ **局部紧**，它在 $x$ 处的茎是
+$$(R^{q}c_{X*}M)_{x} = \varinjlim_{x \in U} H^{q}_{\mathrm{cond}}(U, M) = \varinjlim_{x \in K} H^{q}_{\mathrm{cond}}(K, M)$$
+（$U$ 跑 $x$ 的开邻域、$K$ 跑 $x$ 的紧邻域 —— 局部紧让两个滤过系统共尾）。
+- 固定 $x$ 的一个紧邻域 $K$ 与 Stone 空间 $K_{0}$ 连同满射 $K_{0} \twoheadrightarrow K$；对 $x$ 的每个紧邻域 $S \subseteq K$，拉回得 $S_{0} \to S$。**Stone 的积与子空间仍是 Stone**，所以 $S_{n}$ 全是 Stone 空间，于是由「紧 Hausdorff 上 Čech = 层上同调」与上一条「Stone 上常系数零调」
+$$H^{n}_{\mathrm{cond}}(S, M) = \check{H}^{n}(S_{\bullet}, M).$$
+- 滤过余极限正合，于是茎那个余极限化归到 $S = \{x\}$ 的情形；而单点的 Čech 复形由「有截面 $\implies$ 零调」直接给出零。故 $R^{q}c_{X*}M = 0$（$q>0$），谱序列退化，$H^{n}_{\mathrm{cond}}(X,M) \cong H^{n}_{\mathrm{sheaf}}(X,M)$。∎
 
 参考：Le Stum, Proposition 8.1.4
 
@@ -9451,6 +9479,11 @@ $$\forall s \in M^{n},\ \forall \varepsilon > 0,\ \exists s' \in M^{n+1} :\quad 
 
 **为什么成立**。完备化把 $M^{n}$ 嵌成一个**稠密**子空间，而 $K$-有界正合只用到范数不等式与「任取 $\varepsilon > 0$」—— 这类条件在取稠密子空间时**两边都保持**：稠密性保证能在 $M^{n}$ 里找到足够好的逼近，而完备空间的极限点又能落回 $\widehat{M}^{\bullet}$。
 
+**证明（两个方向各算一次 $\varepsilon/2$）。** 先商掉 $M_{0}$（$K$-有界正合在商掉范数为零的元素下不变），于是可设 $M^{\bullet} \subseteq \widehat{M}^{\bullet}$ 是稠密保范嵌入。
+- **$\implies$**：给 $s \in \widehat{M}^{n}$ 与 $\varepsilon>0$。由稠密性取 $t \in M^{n}$ 使 $\|s - t\| \le \frac{\varepsilon}{2(1+K\|d^{n}\|)}$；由 $M^{\bullet}$ 的 $K$-有界性取 $s' \in M^{n+1}$ 使 $\|t - ds'\| \le K\|dt\| + \frac{\varepsilon}{2}$。于是
+$$\|s - ds'\| \le \|s-t\| + K\|dt\| + \frac{\varepsilon}{2} = K\|ds\| + \Bigl(\|s-t\| + K\|ds - dt\| + \frac{\varepsilon}{2}\Bigr) \le K\|ds\| + \varepsilon .$$
+- **$\Longleftarrow$**：给 $s \in M^{n} \subseteq \widehat{M}^{n}$。由 $\widehat{M}^{\bullet}$ 的 $K$-有界性取 $t' \in \widehat{M}^{n+1}$ 使 $\|s - dt'\| \le K\|ds\| + \frac{\varepsilon}{2}$；再由稠密性取 $s' \in M^{n+1}$ 使 $\|s' - t'\| \le \frac{\varepsilon}{2(1+\|d^{n+1}\|)}$。于是 $\|s - ds'\| \le K\|ds\| + \varepsilon$。∎
+
 参考：Le Stum, Lemma 8.2.2
 
 #### 相邻两条 K-有界 推出 正合　`prop.k-bounded-implies-exact`
@@ -9465,6 +9498,13 @@ $$\forall s \in M^{n},\ \forall \varepsilon > 0,\ \exists s' \in M^{n+1} :\quad 
 **关键的第二处 $K$-有界**：为保证迭代出的 $s'_{i}$ 本身**收敛**，每一步都要用 $M^{n-1}$ 处的 $K$-有界正合把「原像之间差了多少」控制住 —— 这样 $\|s'_{i} - s'_{i+1}\|$ 被一个几何级数控制，$M^{n+1}$ 完备保证极限存在。
 
 **结论**：$s' = \sum_{i \ge 1}(s'_{i+1} - s'_{i})$ 的收敛和的 $d$ 正好是 $s$。于是每个闭链都是边界，即正合。
+
+**严格写法。** 设 $s \in M^{n}$、$ds = 0$。
+- 由 $M^{n}$ 处 $K$-有界，取 $s'_{1} \in M^{n+1}$ 使 $\|s - ds'_{1}\| \le \frac{1}{2^{2}}$；误差 $e_{1} := s - ds'_{1}$ 满足 $de_{1} = 0$，故对 $e_{1}$ 再用一次得 $s'_{2} \in M^{n+1}$ 使 $\|e_{1} - d(s'_{2}-s'_{1})\| \le \frac{1}{2^{3}}$，如此递推，得 $s'_{i}$ 与 $e_{i} = s - ds'_{i}$，$\|e_{i}\| \le 2^{-i-1}$。
+- **这一步用到「相邻两处」**：要控制 $\|s'_{i+1} - s'_{i}\|$ 本身（而不只是它的边界），得把 $M^{n+1}$ 处的 $K$-有界性用在元素 $s'_{i+1}-s'_{i}$ 上：
+$$\|s'_{i+1} - s'_{i}\| \le K\,\|d(s'_{i+1}-s'_{i})\| + \frac{1}{2^{i+1}} \le \frac{K}{2^{i}} + \frac{1}{2^{i+1}} .$$
+- 于是 $(s'_{i})$ 是 **Cauchy 列**，$M^{n+1}$ 完备给出极限 $s' := \lim_{i} s'_{i}$。
+- $d$ 连续，故 $ds' = \lim_{i} ds'_{i} = \lim_{i}(s - e_{i}) = s$（因 $\|e_{i}\| \to 0$）。∎
 
 参考：Le Stum, Proposition 8.2.3
 
@@ -9493,6 +9533,15 @@ $$\check{C}^{\bullet}\bigl((S_{0} \to S)^{+},\ M\bigr)$$
 **怎么造**。先归约到 $S_{0}$、$S$ 都**有限离散**的情形（Stone 空间是投射有限的逆极限，逆极限保持零伦）。有限离散时，满射 $S_{0} \twoheadrightarrow S$ 允许把一个函数「在 $S$ 的每个纤维内逐点常值化」—— 这一步是线性的、范数不增的，正好给出所需零伦，于是 $|h| \le 1$。
 
 **为什么只到 Stone / 有限离散为止。** 这一步只处理「Stone 空间之间的满射」。要把结论推到紧 Hausdorff，得先把它 Stone 化，再用 Čech 复形与层上同调的谱序列去比较偏差 —— 那正是下面两条要做的事。
+
+**证明。** 三步归约。
+- **归约到 $M$ 离散**：Stone 空间写 $S_{0} = \varprojlim_{k} S_{0,k}$（$S_{0,k}$ 有限），$S_{k}$ 为它在 $S$ 里的像，则
+$$\varinjlim_{k} \check{C}^{\bullet}\bigl((S_{0,k}\to S_{k})^{+}, M\bigr) = \check{C}^{\bullet}\bigl((S_{0}\to S)^{+}, M^{\mathrm{disc}}\bigr) \hookrightarrow \check{C}^{\bullet}\bigl((S_{0}\to S)^{+}, M\bigr),$$
+左端的直极限拓扑就是**上确界范数**拓扑；而 $C(S, M^{\mathrm{disc}})$ 在 $C(S, M)$ 里**稠密**（极不连通性给出有限不交闭开细化，在每块上取常值逼近）。配上「$K$-有界正合在完备化下不变」与「滤过余极限保持 $K$-有界」，只需证**离散那一个**复形 $1$-有界零调（对它自己的拓扑）。
+- **归约到 $S, S_{0}$ 有限**：同一个余极限再把离散情形化归到有限。
+- **有限情形**：由「有截面的态射给出零调」，$\check{C}^{\bullet}\bigl((S_{0}\to S)^{+}, M\bigr)$ 是**零伦**的，且零伦有形式 $h^{n} : f \mapsto f \circ k_{n}$（逐纤维取一个截面点），于是 $\|h^{n}\| \le 1$。由 $\mathrm{id} = h\circ d + d\circ h$，对任意 $s$：
+$$\|s - d(hs)\| = \|h(ds)\| \le \|ds\| ,$$
+这正是 $K = 1$ 的 $K$-有界正合。∎
 
 参考：Le Stum, Lemma 8.2.5
 
@@ -9524,7 +9573,14 @@ $$C(X,\ V) \twoheadrightarrow C(K,\ V)$$
 
 ⚠️ **这条一般拓扑里也有实值版本**（Tietze 延拓定理）；这里的增量是：**取值可以让是任意实 Banach 空间**。
 
-参考：Le Stum, Theorem 8.2.7
+**证明（Dugundji 延拓定理）。** 取值在拓扑向量空间里的 Tietze 是 Dugundji 的定理：设 $X$ **仿紧**（度量空间即可）、$A \subseteq X$ **闭**、$V$ 是**局部凸**拓扑向量空间，则存在**线性**延拓算子 $C(A, V) \to C(X, V)$，特别地限制映射满。
+- **构造**：仿紧性给出 $A$ 的一个开邻域系 $\{U_{i}\}$ 的局部有限细化与配套的**单位分解** $\{\varphi_{i}\}$（$\sum \varphi_{i} = 1$，$\varphi_{i} \ge 0$，支集在 $U_{i}$ 里）。每个 $U_{i}$ 上先把 $g|_{A \cap U_{i}}$ 延拓成一个常值映射 $g_{i}$（取 $A\cap U_{i}$ 上某点的值）；再令
+$$G := \sum_{i} \varphi_{i}\, g_{i} .$$
+- **为什么良定义**：局部有限 $\implies$ 每个点附近只有有限个 $\varphi_{i}$ 非零，和是有限的；$V$ 是**向量空间**，凸组合有意义；$\varphi_{i}$ 连续，故 $G$ 连续。
+- **为什么是延拓**：若 $x \in A$，则所有满足 $\varphi_{i}(x) > 0$ 的 $U_{i}$ 都含 $x$，而每个 $g_{i}$ 在 $A \cap U_{i}$ 上等于 $g$，于是 $G(x) = \sum \varphi_{i}(x) g(x) = g(x)$。
+**应用到这里**：$X$ 正规（度量 / 仿紧空间都正规）、$K \subseteq X$ 紧故闭，$V$ 实 Banach 空间（局部凸），于是限制映射 $C(X,V) \twoheadrightarrow C(K,V)$ 满。$V = \mathbb{R}^{m}$ 是逐坐标用经典 Tietze。∎
+
+参考：Le Stum, Theorem 8.2.7；Dugundji, An extension of Tietze's theorem (1951)
 
 #### 实 Banach 在紧 Hausdorff 上零调　`thm.real-banach-chaus-acyclic`
 *定理*　实 Banach 空间在紧 Hausdorff 空间上零调
@@ -9540,6 +9596,15 @@ $$H^{n}_{\mathrm{cond}}(S,\ V) = 0.$$
 ⚠️ **复 Banach 空间不成立。** 这是「solid 模 / solid 拟凝聚层」那一整套理论出现的直接原因之一 —— 实的情形能用 Tietze 那样的**序结构**（$\mathbb{R}$ 上的上确界、分割）把它压下来，复的情形没有这套工具，得上完全不同的机器。
 
 📌 与「局部紧上凝聚态＝层上同调」对照：那条处理的是**离散系数**（且空间只需局部紧），这条处理的是 **Banach 系数**（而空间只需紧）—— 两条合起来覆盖了第 8 章大半的计算。
+
+**证明（把偏差用单位分解压掉）。** 由「紧 Hausdorff 上 Čech = 层上同调」、「Banach 在 Stone 上零调」与「$K$-有界零调 $\implies$ 零调」，只需证：对 Stone 空间的连续满射 $S_{0} \to S$，增广 Čech 复形 $\check{C}^{\bullet}\bigl((S_{0}\to S)^{+}, V\bigr)$ 是 **$1$-有界零调**的。
+固定 $\varepsilon > 0$ 与 $f \in \check{C}^{n}$（即 $S_{n} \to V$ 连续，$S_{n}$ 是 $S_{0}$ 在 $S$ 上的 $(n{+}1)$ 重纤维积）。记 $\pi_{n} : S_{n} \to S$ 与 $f_{x} := f|_{\pi_{n}^{-1}(x)}$。
+- 对每个 $x \in S$，对纤维上的满射 $\pi_{n}^{-1}(x) \to \{x\}$ 用「Stone 满射的 Čech 复形 $1$-有界零调」（逐纤维的版本），得 $g_{x} : \pi_{n+1}^{-1}(x) \to V$ 使
+$$\|f_{x} - d g_{x}\| \le \|d f_{x}\| + \frac{\varepsilon}{2} \le \|df\| + \frac{\varepsilon}{2}.$$
+- 由 **Tietze（Banach 值）**，$g_{x}$ 延拓成 $S_{n+1}$ 上的 $G_{x}$；由连续性，$x$ 有邻域 $V_{x}$ 使在 $\pi_{n+1}^{-1}(V_{x})$ 上 $\|f - dG_{x}\| < \|df\| + \varepsilon$。
+- 取有限的 $V_{1}, \ldots, V_{r}$ 覆盖 $S$（**紧性**），配从属的单位分解 $\{\varphi_{i}\}$，令 $g := \sum_{i} (\varphi_{i}\circ\pi_{n+1})\,G_{i}$。由 $\sum_{i}(\varphi_{i}\circ\pi_{n}) = 1$ 得 $f = \sum_{i}(\varphi_{i}\circ\pi_{n}) f$，又 $dg = \sum_{i}(\varphi_{i}\circ\pi_{n})\, dG_{i}$，两式相减：
+$$\|f - dg\| = \Bigl\|\sum_{i} (\varphi_{i}\circ\pi_{n})\,(f - dG_{i})\Bigr\| \le \max_{i} \|f - dG_{i}\| \le \|df\| + \varepsilon,$$
+最后一步是「凸组合的范数不超过最大范数」（$\varphi_{i} \ge 0$、$\sum\varphi_{i} = 1$）。这正是 $K = 1$ 的 $K$-有界正合。∎
 
 参考：Le Stum, Theorem 8.2.8
 
@@ -9565,6 +9630,11 @@ $$\operatorname{Hom}_{\mathbb{Z}}(M \cdot S,\ N) \cong \operatorname{Hom}_{\math
 ⚠️ 关键前提是 **Stonean**（极不连通），不是一般的紧 Hausdorff —— 极不连通性正是 $\mathbb{Z}[S]$ 投射的来源。
 
 ⭐ 这条是下面谱序列的**接线口**：Breen–Deligne 分解把 Ext 展开成若干「自由对象」，而每一项的 Ext 恰好可以用这条把层的计算搬回普通计算。
+
+**证明。** $S$ Stonean $\implies$ $\mathbb{Z}[S]$ 是**投射**对象，于是 $\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}[S], -)$ **正合**。
+对自然同构
+$$\operatorname{Hom}_{\mathbb{Z}}(M \cdot S,\ N) \cong \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}[S],\ \operatorname{Hom}_{\mathbb{Z}}(M, N)\bigr)$$
+（这是 $M \cdot S = M \otimes_{\mathbb{Z}} \mathbb{Z}[S]$ 的伴随形式）两边取右导出：左端给出 $\operatorname{Ext}^{n}_{\mathbb{Z}}(M\cdot S, N)$；右端因为 $\operatorname{Hom}(\mathbb{Z}[S],-)$ 正合，可以直接穿过导出函子，得 $\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}[S], \operatorname{Ext}^{n}_{\mathbb{Z}}(M,N)\bigr)$，而后者按定义就是 $\operatorname{Ext}^{n}_{\mathbb{Z}}(M,N)(S)$。两边一比即得。∎
 
 参考：Le Stum, Lemma 8.3.1
 
@@ -9600,6 +9670,13 @@ $$F(M)_{n} = \bigoplus_{i=1}^{r_{n}} \mathbb{Z} \cdot M^{s_{n,i}}.$$
 
 **用在哪**：$\operatorname{RHom}(M, N)$ 的计算里要处理「除以 $2$」这类操作（把闭链写成收敛的级数），而收敛用的是 $2 - [2]$ 这个操作的**可逆性**。同伦的良定义正是这一步合法的前提。
 
+**证明（两步归约）。**
+- **第一步：投射消解的情形。** 设 $F(M)^{\bullet}$ 是一个**投射**消解。在导出范畴里「乘 $p$」与 $[p]$ 是同一个态射（两者都诱导 $M$ 上乘 $p$），于是由「投射复形里 Hom 就是导出 Hom」的对偶版本，$[p]$ 与逐项乘 $p$ 在复形层面**同伦**。
+- **第二步：Breen–Deligne 分解是「自然投射消解」。** 在拓扑斯 $\mathcal{T} = \widehat{\mathbf{Ab}^{\mathrm{op}}}$ 上取 $M := h_{\mathbb{Z}}$。对预层 $N$，
+$$\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot M^{s},\ N) = \operatorname{Hom}(M^{s}, N) = \operatorname{Hom}(h_{\mathbb{Z}^{s}}, N) = N(\mathbb{Z}^{s}),$$
+而预层上的极限、余极限逐项计算 —— 于是 $\mathbb{Z}\cdot M^{s}$ 是 $\mathcal{T}$ 里的**投射**对象，第一步适用。
+- 把 $M$ 取成 $h_{\mathbb{Z}}(M)$ 再层化，就得到任意拓扑斯上的情形。∎
+
 参考：Le Stum, Lemma 8.3.3
 
 #### Stonean 上 Breen–Deligne 的谱序列　`prop.breen-deligne-ss-stonean`
@@ -9614,6 +9691,12 @@ $$E^{p,q}_{1} = \bigoplus_{i=1}^{r_{p}} H^{q}\bigl(M^{s_{p,i}} \times S,\ N\bigr
 **$E_{1}$ 项的形状怎么读**：$M^{s_{p,i}}$ 是「$s_{p,i}$ 个 $M$ 的积」，$M^{s_{p,i}} \times S$ 是它配上测试空间 $S$；$H^{q}(-, N)$ 是那个空间上的凝聚态上同调。也就是：**把 Ext 换算成一批空间的上同调**，而空间的上同调是能靠 §8.1–8.2 的零调性定理打掉的。
 
 ⭐ **这就是计算路径**：「要算 Ext，先展成谱序列，再把每一格的上同调按空间的类型（Stone / 紧 Hausdorff / 局部紧）用零调性定理归零」。§8.3 后面的每条计算定理都是这条谱序列的特例。
+
+**证明。** 取 $M$ 的 Breen–Deligne 分解 $F(M)^{\bullet} \twoheadrightarrow M$，沿 Stonean 空间 $S$ 基变换（张量 $\mathbb{Z}[S]$），再对函子 $\operatorname{Hom}_{\mathbb{Z}}(-, N)$ 用「先用消解算、再用测试空间算」的标准谱序列：
+$$E^{p,q}_{1} = \operatorname{Ext}^{q}_{\mathbb{Z}}\bigl(F(M)^{p}\cdot S,\ N\bigr) \;\Longrightarrow\; \operatorname{Ext}^{p+q}_{\mathbb{Z}}\bigl(F(M)^{\bullet}\cdot S,\ N\bigr).$$
+- **左端**：$F(M)^{p}\cdot S = \bigoplus_{i} \mathbb{Z}\cdot M^{s_{p,i}} \otimes \mathbb{Z}[S] = \bigoplus_{i} \mathbb{Z}\cdot\bigl(M^{s_{p,i}}\times S\bigr)$，于是由「凝聚态上同调 = 自由对象上的 Ext」得 $\operatorname{Ext}^{q}_{\mathbb{Z}}(\mathbb{Z}\cdot(M^{s_{p,i}}\times S), N) = H^{q}\bigl(M^{s_{p,i}}\times S,\ N\bigr)$。
+- **右端**：$\mathbb{Z}[S]$ **平坦**，故 $F(M)^{\bullet}\cdot S \to M\cdot S$ 仍是拟同构；再由 Stonean 上的截面公式（$\operatorname{Ext}^{n}(M\cdot S, N) \cong \operatorname{Ext}^{n}(M,N)(S)$）得 $\operatorname{Ext}^{n}_{\mathbb{Z}}(F(M)^{\bullet}\cdot S, N) \cong \operatorname{Ext}^{n}_{\mathbb{Z}}(M,N)(S)$。
+两边一合就是所要的谱序列。∎
 
 参考：Le Stum, Proposition 8.3.4
 
@@ -9632,6 +9715,13 @@ $$\operatorname{RHom}_{\mathbb{Z}}(M,\ N) = 0.$$
 
 ⭐ **用法**：任何以实向量空间为源、离散群为靶的 Ext 问题，直接判零 —— 这是后面「局部紧阿贝尔群只剩 $\operatorname{Ext}^{0}, \operatorname{Ext}^{1}$」那一步的关键零件之一。
 
+**证明。** 用上一条的谱序列（$S$ 取 Stonean），要证收敛项为零，只需证每一格 $E^{p,q}_{1}$ 为零。
+- $M^{s_{p,i}}$ 是有限维实向量空间的（可能大）幂，**凸 $\implies$ 可缩**；
+- 而 $M^{s_{p,i}}\times S \to S$ 是同伦等价，$M^{s_{p,i}}\times S$ **局部紧 Hausdorff**、$N$ **离散**，于是由 Dyckhoff（局部紧 + 离散系数：凝聚态 = 层上同调）与「层上同调是同伦不变量」得
+$$H^{q}\bigl(M^{s_{p,i}}\times S,\ N\bigr) \cong H^{q}(S,\ N).$$
+- 右边**完全不含 $M$**。于是这一族 $E_{1}$ 项与 $M$ 无关：把 $M = 0$ 代进去得到同一族 $E_{1}$ 项，而 $\operatorname{RHom}_{\mathbb{Z}}(0, N) = 0$，谱序列收敛到 $0$；由谱序列的收敛性（$E_{1}$ 项决定极限），一般 $M$ 的收敛项也为 $0$。∎
+**一般 $\mathbb{R}$-模的情形**：$\operatorname{RHom}_{\mathbb{Z}}(V, N) = \operatorname{RHom}_{\mathbb{R}}(V, \operatorname{RHom}_{\mathbb{Z}}(\mathbb{R}, N)) = \operatorname{RHom}_{\mathbb{R}}(V, 0) = 0$（$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{R}, N) = 0$ 由有限维情形取余极限得到）。
+
 参考：Le Stum, Proposition 8.3.5
 
 #### 紧 Haus 到实 Banach 全零　`prop.rhom-chaus-banach-zero`
@@ -9647,6 +9737,16 @@ $$\operatorname{RHom}_{\mathbb{Z}}(M,\ N) = 0.$$
 
 ⚠️ 要求 $N$ 是**实** Banach 空间（带 $\mathbb{R}$-模结构），不是任意 Banach 阿贝尔群 —— 除以 $2$ 那一步要用到标量结构。
 
+**证明（把闭链写成收敛级数）。** 仍用 Breen–Deligne 谱序列 $E^{p,q}_{1} = \bigoplus_{i} H^{q}(M^{s_{p,i}}\times S, N) \implies \operatorname{Ext}^{p+q}_{\mathbb{Z}}(M,N)(S)$。
+- 由 **Thm（实 Banach 在紧 Hausdorff 上零调）**，$M^{s_{p,i}}\times S$ 是紧 Hausdorff（$M$ 紧、$S$ Stonean 紧），故 $q > 0$ 的整行是 $0$；只剩下 $q = 0$ 那一行，即复形 $K^{\bullet}$，$K^{n} := \bigoplus_{i} C\bigl(M^{s_{n,i}}\times S,\ N\bigr)$（Banach 空间）。只要证 $K^{\bullet}$ 零调。
+- **关键工具**是「乘 $2$ 与 $[2]$ 同伦」：由 $2 - [2] = dh + hd$，对闭链 $f \in K^{n}$（$df = 0$）有 $2f - [2]f = dh^{n+1}f$，于是
+$$f = \tfrac{1}{2}[2]f + d\Bigl(\tfrac{1}{2}h^{n+1}f\Bigr).$$
+- 把这一式对 $f$ 反复代入 $n$ 次：
+$$f = \frac{1}{2^{n}}[2^{n}]f + d\Bigl(\sum_{k=1}^{n} \frac{1}{2^{k}} h^{n+1}\bigl([2^{k-1}]f\bigr)\Bigr).$$
+- 因为 $\|[2]\| \le 1$、$\|h^{n+1}\| \le \|h^{n+1}\| < \infty$ 且 $N$ 是 Banach（**完备**），级数 $\sum_{k} \frac{1}{2^{k}} h^{n+1}([2^{k-1}]f)$ **收敛**；又 $\frac{1}{2^{n}}[2^{n}]f \to 0$。令 $n\to\infty$：
+$$f = d\Bigl(\sum_{k=1}^{\infty} \frac{1}{2^{k}} h^{n+1}\bigl([2^{k-1}]f\bigr)\Bigr),$$
+即每个闭链都是边界，$K^{\bullet}$ 零调。∎
+
 参考：Le Stum, Proposition 8.3.6
 
 #### 离散对偶的 RHom 与导出张量　`prop.rhom-dual-tensor`
@@ -9661,6 +9761,14 @@ $$\operatorname{RHom}_{\mathbb{Z}}\bigl(\operatorname{RHom}_{\mathbb{Z}}(M, T),\
 **证法**。用短正合列 $0 \to \mathbb{Z} \to \mathbb{R} \to T \to 0$。由前面两条归零定理得 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{R}, N) = 0$，于是 $\operatorname{RHom}_{\mathbb{Z}}(T, N) \cong N[-1]$。代入 $\operatorname{RHom}(M, T)$ 并逐层展开，再用自由情形的导出张量计算，就得到结论。
 
 ⭐ 这条把 $T$ 这个「圆」的角色讲清楚了：$T$ 在导出层面**等价于降一次数**（$\operatorname{RHom}(-, T)$ 把离散群送到它自己的 $[-1]$）。这正是下一节 Pontryagin 对偶能用 RHom 写出来的原因。
+
+**证明（先造映射，再在自由情形验它是同构）。**
+- **造映射**：串联三个同构
+$$M \otimes^{\mathbf{L}}_{\mathbb{Z}} N[-1] \;\cong\; M \otimes^{\mathbf{L}}_{\mathbb{Z}} \operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[-1], N) \;\cong\; M \otimes^{\mathbf{L}}_{\mathbb{Z}} \operatorname{RHom}_{\mathbb{Z}}(T, N) \;\cong\; \operatorname{RHom}_{\mathbb{Z}}\bigl(\operatorname{RHom}_{\mathbb{Z}}(M, T),\ N\bigr),$$
+其中第一式来自「离散群的 $\operatorname{RHom}(\mathbb{Z}, N) = N$」，第二式来自短正合列 $0\to\mathbb{Z}\to\mathbb{R}\to T\to 0$（配合 $\operatorname{RHom}(\mathbb{R}, N) = 0$，于是 $\operatorname{RHom}(T,N)\cong\operatorname{RHom}(\mathbb{Z},N)[-1] = N[-1]$），第三式是「张量与内 Hom 的伴随」。
+- **验同构**：只需对 $M = \mathbb{Z}\cdot E$（自由）验证。此时由「离散情形的 $\operatorname{RHom}(\mathbb{Z}\cdot E, N) = N^{E}$」得 $\operatorname{RHom}(M, T) = T^{E}$，而 $M\otimes^{\mathbf{L}}N = N\cdot E$；问题化归为证 $\operatorname{RHom}_{\mathbb{Z}}(T^{E}, N) \cong N\cdot E[-1]$。
+- $E$ **有限**时：由三角 $\operatorname{RHom}(\mathbb{Z},N)\to\operatorname{RHom}(\mathbb{R},N)\to\operatorname{RHom}(T,N)\to$ 与 $\operatorname{RHom}(\mathbb{R},N)=0$ 得 $\operatorname{RHom}(T,N)\cong N[-1]$，取 $E$ 次幂即可。
+- $E$ **一般**时：写成有限子集的滤过余极限 $E = \varinjlim E'$，用 Breen–Deligne 谱序列 + 滤过余极限正合把结论传上去，而这一步只需 $H^{q}\bigl((T^{s})^{E}\times S, N\bigr) = \varinjlim_{E'} H^{q}\bigl((T^{s})^{E'}\times S, N\bigr)$ —— 由 Dyckhoff 与「紧 Hausdorff 的滤过极限上常系数上同调是余极限」给出。∎
 
 参考：Le Stum, Proposition 8.3.7
 
@@ -9683,6 +9791,13 @@ $$\operatorname{RHom}_{\mathbb{Z}}\bigl(\operatorname{RHom}_{\mathbb{Z}}(M, T),\
 
 📌 **用法**：把「算 Pontryagin 对偶」归约成「算 RHom」，而 RHom 有 Breen–Deligne 谱序列与逐类归零定理可用。
 
+**证明（由结构定理化归到三类）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的，所以只要对三类分别验证。
+- **$M$ 离散**：取两段自由消解 $0 \to F' \to F \to M \to 0$（$F, F'$ 自由）。由「离散自由群的 $\operatorname{RHom}$ 只有 $0$ 次」得长正合列
+$$0 \to M^{\vee} \to F^{\vee} \to F'^{\vee} \to \operatorname{Ext}^{1}_{\mathbb{Z}}(M, T) \to 0,$$
+这既给出 $M^{\vee} \cong \operatorname{RHom}_{\mathbb{Z}}(M, T)$，又顺带给出 $\operatorname{Ext}^{1}$ 的位置。
+- **$M$ 紧**：先把上一段用在 $M^{\vee}$（对偶又紧）上，得 $\operatorname{RHom}_{\mathbb{Z}}(M^{\vee}, T) \cong M$；再用 8.3.7（把 $M^{\vee}$ 与 $\mathbb{Z}$ 代入）与「紧 $\to$ 实 Banach 全零」得 $\operatorname{RHom}_{\mathbb{Z}}(M, \mathbb{Z}) \cong M^{\vee}[-1]$，即 $M^{\vee} \cong \operatorname{RHom}_{\mathbb{Z}}(M, \mathbb{Z})[1]$。
+- **$M$ 有限维 Banach**：由「有限维 Banach 到离散群全零」的三类掐掉只剩 $\mathbb{R}$ 的靶，逐条比对得 $M^{\vee} \cong \operatorname{RHom}_{\mathbb{Z}}(M, \mathbb{R})$。∎
+
 参考：Le Stum, Proposition 8.3.8
 
 #### 局部紧阿贝尔群高次 Ext 消失　`thm.lc-ext-vanishing`
@@ -9699,6 +9814,12 @@ $$\operatorname{Ext}^{n}_{\mathbb{Z}}(M, N) = 0.$$
 **为什么是「只剩 $\operatorname{Ext}^{0}, \operatorname{Ext}^{1}$」**：$\operatorname{Ext}^{0}$ 就是 $\operatorname{Hom}$，$\operatorname{Ext}^{1}$ 分类扩张 —— 这两项是**代数**上本来就该有的；这条定理说的是**没有更多**，即凝聚态阿贝尔群的范畴在局部紧对象上「同调维数 $\le 1$」。
 
 ⚠️ 结论**不适用于非局部紧**的对象：像 $\mathbb{R}^{I}$（任意大的积）这类东西，$\operatorname{RHom}$ 的行为完全是另一回事。
+
+**证明（按结构定理分三类，逐类掐掉）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的。于是只需对三类源与三类靶交叉处理：
+- **$M$ 离散**：有两段自由消解，长正合列把 $\operatorname{Ext}^{n}$（$n \ge 2$）全部掐掉（自由对象只在 $0$ 次有 Ext）。
+- **$N$ 离散**：由连通局部紧群对离散群的那条（Exercises 8.18）同样只剩 $0, 1$ 两格。
+- **$N$ 实 Banach**：由「紧 $\to$ Banach 全零」与「有限维 Banach 之间的 $\operatorname{RHom}$ 只有 $0$ 次」把高次掐掉。
+- **$N$ 连通紧 Hausdorff**：有兩段消解 $0 \to N \to T^{E} \to T^{E'} \to 0$，故只需证 $\operatorname{Ext}^{n}_{\mathbb{Z}}(M, T^{E}) = \operatorname{Ext}^{n}_{\mathbb{Z}}(M, T)^{E} = 0$（$n \ne 0,1$），而这由 $\operatorname{RHom}_{\mathbb{Z}}(M, T) \cong M^{\vee}$（上一条 Pontryagin 对偶）集中在次数 $0$ 给出。∎
 
 参考：Le Stum, Theorem 8.3.9
 

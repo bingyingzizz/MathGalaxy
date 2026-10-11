@@ -8,3 +8,5 @@
 **注意三种情形的「位移」不同**：紧的情形多一个 $[1]$、Banach 的情形换成靶 $\mathbb{R}$。这说明「对偶」在导出层面不是一个统一的操作 —— 具体走哪条，取决于 $M$ 属于哪一类。
 
 📌 **用法**：把「算 Pontryagin 对偶」归约成「算 RHom」，而 RHom 有 Breen–Deligne 谱序列与逐类归零定理可用。
+
+> 续见 notes/prop.dual-rhom-characterization.2.md

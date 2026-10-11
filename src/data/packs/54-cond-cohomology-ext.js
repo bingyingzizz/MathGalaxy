@@ -36,7 +36,12 @@ window.MG = window.MG || {};
         '',
         '两边，就得到了结论：右边是「内 Hom 的截面」，左边是「先张量再 Hom」。',
         '⚠️ 关键前提是 **Stonean**（极不连通），不是一般的紧 Hausdorff —— 极不连通性正是 $\\mathbb{Z}[S]$ 投射的来源。',
-        '⭐ 这条是下面谱序列的**接线口**：Breen–Deligne 分解把 Ext 展开成若干「自由对象」，而每一项的 Ext 恰好可以用这条把层的计算搬回普通计算。'
+        '⭐ 这条是下面谱序列的**接线口**：Breen–Deligne 分解把 Ext 展开成若干「自由对象」，而每一项的 Ext 恰好可以用这条把层的计算搬回普通计算。',
+        ['**证明。** $S$ Stonean $\\implies$ $\\mathbb{Z}[S]$ 是**投射**对象，于是 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}[S], -)$ **正合**。',
+          '对自然同构',
+          '$$\\operatorname{Hom}_{\\mathbb{Z}}(M \\cdot S,\\ N) \\cong \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ \\operatorname{Hom}_{\\mathbb{Z}}(M, N)\\bigr)$$',
+          '（这是 $M \\cdot S = M \\otimes_{\\mathbb{Z}} \\mathbb{Z}[S]$ 的伴随形式）两边取右导出：左端给出 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M\\cdot S, N)$；右端因为 $\\operatorname{Hom}(\\mathbb{Z}[S],-)$ 正合，可以直接穿过导出函子，得 $\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S], \\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,N)\\bigr)$，而后者按定义就是 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,N)(S)$。两边一比即得。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Lemma 8.3.1']
     },
@@ -83,7 +88,14 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么需要这条。** 分解 $F(M)^{\\bullet} \\twoheadrightarrow M$ 是**拟同构**、不是同构 —— 所以「$M$ 上的运算」搬到分解上会有歧义。这条给出**消解歧义**的机制：不管你怎么把乘 $p$ 抬上去，抬出来的结果都同伦，于是「乘 $p$」在导出层面是**良定义**的。',
-        '**用在哪**：$\\operatorname{RHom}(M, N)$ 的计算里要处理「除以 $2$」这类操作（把闭链写成收敛的级数），而收敛用的是 $2 - [2]$ 这个操作的**可逆性**。同伦的良定义正是这一步合法的前提。'
+        '**用在哪**：$\\operatorname{RHom}(M, N)$ 的计算里要处理「除以 $2$」这类操作（把闭链写成收敛的级数），而收敛用的是 $2 - [2]$ 这个操作的**可逆性**。同伦的良定义正是这一步合法的前提。',
+        ['**证明（两步归约）。**',
+          '- **第一步：投射消解的情形。** 设 $F(M)^{\\bullet}$ 是一个**投射**消解。在导出范畴里「乘 $p$」与 $[p]$ 是同一个态射（两者都诱导 $M$ 上乘 $p$），于是由「投射复形里 Hom 就是导出 Hom」的对偶版本，$[p]$ 与逐项乘 $p$ 在复形层面**同伦**。',
+          '- **第二步：Breen–Deligne 分解是「自然投射消解」。** 在拓扑斯 $\\mathcal{T} = \\widehat{\\mathbf{Ab}^{\\mathrm{op}}}$ 上取 $M := h_{\\mathbb{Z}}$。对预层 $N$，',
+          '$$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot M^{s},\\ N) = \\operatorname{Hom}(M^{s}, N) = \\operatorname{Hom}(h_{\\mathbb{Z}^{s}}, N) = N(\\mathbb{Z}^{s}),$$',
+          '而预层上的极限、余极限逐项计算 —— 于是 $\\mathbb{Z}\\cdot M^{s}$ 是 $\\mathcal{T}$ 里的**投射**对象，第一步适用。',
+          '- 把 $M$ 取成 $h_{\\mathbb{Z}}(M)$ 再层化，就得到任意拓扑斯上的情形。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Lemma 8.3.3']
     },
@@ -104,7 +116,13 @@ window.MG = window.MG || {};
       notes: [
         '**构造**。把 Breen–Deligne 分解 $F(M)^{\\bullet}$ 沿 $S$ **基变换**（张量 $\\mathbb{Z}[S]$）。因为 $\\mathbb{Z}[S]$ 平坦，$F(M)^{\\bullet} \\cdot S \\to M \\cdot S$ 仍是拟同构；再套 Stonean 上的截面公式，把 $\\operatorname{Ext}(M \\cdot S, N)$ 换成 $\\operatorname{Ext}(M, N)(S)$。取「对分解的次数过滤」的标准谱序列，$E_{1}$ 项就是逐项自由对象的 Ext。',
         '**$E_{1}$ 项的形状怎么读**：$M^{s_{p,i}}$ 是「$s_{p,i}$ 个 $M$ 的积」，$M^{s_{p,i}} \\times S$ 是它配上测试空间 $S$；$H^{q}(-, N)$ 是那个空间上的凝聚态上同调。也就是：**把 Ext 换算成一批空间的上同调**，而空间的上同调是能靠 §8.1–8.2 的零调性定理打掉的。',
-        '⭐ **这就是计算路径**：「要算 Ext，先展成谱序列，再把每一格的上同调按空间的类型（Stone / 紧 Hausdorff / 局部紧）用零调性定理归零」。§8.3 后面的每条计算定理都是这条谱序列的特例。'
+        '⭐ **这就是计算路径**：「要算 Ext，先展成谱序列，再把每一格的上同调按空间的类型（Stone / 紧 Hausdorff / 局部紧）用零调性定理归零」。§8.3 后面的每条计算定理都是这条谱序列的特例。',
+        ['**证明。** 取 $M$ 的 Breen–Deligne 分解 $F(M)^{\\bullet} \\twoheadrightarrow M$，沿 Stonean 空间 $S$ 基变换（张量 $\\mathbb{Z}[S]$），再对函子 $\\operatorname{Hom}_{\\mathbb{Z}}(-, N)$ 用「先用消解算、再用测试空间算」的标准谱序列：',
+          '$$E^{p,q}_{1} = \\operatorname{Ext}^{q}_{\\mathbb{Z}}\\bigl(F(M)^{p}\\cdot S,\\ N\\bigr) \\;\\Longrightarrow\\; \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}\\bigl(F(M)^{\\bullet}\\cdot S,\\ N\\bigr).$$',
+          '- **左端**：$F(M)^{p}\\cdot S = \\bigoplus_{i} \\mathbb{Z}\\cdot M^{s_{p,i}} \\otimes \\mathbb{Z}[S] = \\bigoplus_{i} \\mathbb{Z}\\cdot\\bigl(M^{s_{p,i}}\\times S\\bigr)$，于是由「凝聚态上同调 = 自由对象上的 Ext」得 $\\operatorname{Ext}^{q}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot(M^{s_{p,i}}\\times S), N) = H^{q}\\bigl(M^{s_{p,i}}\\times S,\\ N\\bigr)$。',
+          '- **右端**：$\\mathbb{Z}[S]$ **平坦**，故 $F(M)^{\\bullet}\\cdot S \\to M\\cdot S$ 仍是拟同构；再由 Stonean 上的截面公式（$\\operatorname{Ext}^{n}(M\\cdot S, N) \\cong \\operatorname{Ext}^{n}(M,N)(S)$）得 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(F(M)^{\\bullet}\\cdot S, N) \\cong \\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,N)(S)$。',
+          '两边一合就是所要的谱序列。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.3.4']
     },
@@ -129,7 +147,14 @@ window.MG = window.MG || {};
       notes: [
         '**直觉**：$\\mathbb{R}$ 是**可除**的（$\\mathbb{R}$ 中任何元素都能任意次地开方、任何 $n$ 都除得尽），而离散群里没有这种可除性。**可除性对进离散群的方向会整个塌掉** —— 于是从实向量空间出发的所有高阶（连同 0 阶）Hom 都不剩。',
         '**证法**。用上一条谱序列：$M^{s}$（有限维 $M$ 的幂）是**可缩**的（向量空间都是可缩的），而 $H^{q}(M^{s} \\times S, N) \\cong H^{q}(S, N)$，于是 $E^{p,q}_{1}$ 只与 $S$ 有关，谱序列的极限项与「常数分解」的情形对得上，计算下来一律归零。',
-        '⭐ **用法**：任何以实向量空间为源、离散群为靶的 Ext 问题，直接判零 —— 这是后面「局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$」那一步的关键零件之一。'
+        '⭐ **用法**：任何以实向量空间为源、离散群为靶的 Ext 问题，直接判零 —— 这是后面「局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$」那一步的关键零件之一。',
+        ['**证明。** 用上一条的谱序列（$S$ 取 Stonean），要证收敛项为零，只需证每一格 $E^{p,q}_{1}$ 为零。',
+          '- $M^{s_{p,i}}$ 是有限维实向量空间的（可能大）幂，**凸 $\\implies$ 可缩**；',
+          '- 而 $M^{s_{p,i}}\\times S \\to S$ 是同伦等价，$M^{s_{p,i}}\\times S$ **局部紧 Hausdorff**、$N$ **离散**，于是由 Dyckhoff（局部紧 + 离散系数：凝聚态 = 层上同调）与「层上同调是同伦不变量」得',
+          '$$H^{q}\\bigl(M^{s_{p,i}}\\times S,\\ N\\bigr) \\cong H^{q}(S,\\ N).$$',
+          '- 右边**完全不含 $M$**。于是这一族 $E_{1}$ 项与 $M$ 无关：把 $M = 0$ 代进去得到同一族 $E_{1}$ 项，而 $\\operatorname{RHom}_{\\mathbb{Z}}(0, N) = 0$，谱序列收敛到 $0$；由谱序列的收敛性（$E_{1}$ 项决定极限），一般 $M$ 的收敛项也为 $0$。∎',
+          '**一般 $\\mathbb{R}$-模的情形**：$\\operatorname{RHom}_{\\mathbb{Z}}(V, N) = \\operatorname{RHom}_{\\mathbb{R}}(V, \\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{R}, N)) = \\operatorname{RHom}_{\\mathbb{R}}(V, 0) = 0$（$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{R}, N) = 0$ 由有限维情形取余极限得到）。'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.3.5']
     },
@@ -150,7 +175,17 @@ window.MG = window.MG || {};
       notes: [
         '**与上一条对偶**：上一条说「实向量空间 $\to$ 离散」全零；这条说「紧 Hausdorff 群 $\to$ 实 Banach」全零。两条合起来正好是后面「分三类归约」时用来掐掉两端的两把剪刀。',
         '**证法里的关键工具**是分解上乘 $p$ 的同伦：紧 Hausdorff 群上有「乘 $2$」这个映射，它在 Banach 空间里**可逆**（除以 $2$）；利用 $2 - [2]$ 的同伦，可以把一个闭链写成 $d$(一个收敛级数)，即每个闭链都是边界。收敛用 Banach 的完备性。',
-        '⚠️ 要求 $N$ 是**实** Banach 空间（带 $\\mathbb{R}$-模结构），不是任意 Banach 阿贝尔群 —— 除以 $2$ 那一步要用到标量结构。'
+        '⚠️ 要求 $N$ 是**实** Banach 空间（带 $\\mathbb{R}$-模结构），不是任意 Banach 阿贝尔群 —— 除以 $2$ 那一步要用到标量结构。',
+        ['**证明（把闭链写成收敛级数）。** 仍用 Breen–Deligne 谱序列 $E^{p,q}_{1} = \\bigoplus_{i} H^{q}(M^{s_{p,i}}\\times S, N) \\implies \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M,N)(S)$。',
+          '- 由 **Thm（实 Banach 在紧 Hausdorff 上零调）**，$M^{s_{p,i}}\\times S$ 是紧 Hausdorff（$M$ 紧、$S$ Stonean 紧），故 $q > 0$ 的整行是 $0$；只剩下 $q = 0$ 那一行，即复形 $K^{\\bullet}$，$K^{n} := \\bigoplus_{i} C\\bigl(M^{s_{n,i}}\\times S,\\ N\\bigr)$（Banach 空间）。只要证 $K^{\\bullet}$ 零调。',
+          '- **关键工具**是「乘 $2$ 与 $[2]$ 同伦」：由 $2 - [2] = dh + hd$，对闭链 $f \\in K^{n}$（$df = 0$）有 $2f - [2]f = dh^{n+1}f$，于是',
+          '$$f = \\tfrac{1}{2}[2]f + d\\Bigl(\\tfrac{1}{2}h^{n+1}f\\Bigr).$$',
+          '- 把这一式对 $f$ 反复代入 $n$ 次：',
+          '$$f = \\frac{1}{2^{n}}[2^{n}]f + d\\Bigl(\\sum_{k=1}^{n} \\frac{1}{2^{k}} h^{n+1}\\bigl([2^{k-1}]f\\bigr)\\Bigr).$$',
+          '- 因为 $\\|[2]\\| \\le 1$、$\\|h^{n+1}\\| \\le \\|h^{n+1}\\| < \\infty$ 且 $N$ 是 Banach（**完备**），级数 $\\sum_{k} \\frac{1}{2^{k}} h^{n+1}([2^{k-1}]f)$ **收敛**；又 $\\frac{1}{2^{n}}[2^{n}]f \\to 0$。令 $n\\to\\infty$：',
+          '$$f = d\\Bigl(\\sum_{k=1}^{\\infty} \\frac{1}{2^{k}} h^{n+1}\\bigl([2^{k-1}]f\\bigr)\\Bigr),$$',
+          '即每个闭链都是边界，$K^{\\bullet}$ 零调。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.3.6']
     },
@@ -171,7 +206,15 @@ window.MG = window.MG || {};
       notes: [
         '**在说什么。** 把「先取对偶、再对靶算 RHom」这个往返回溯成一个**导出张量积**，并且**降了一次数**（$[-1]$）。于是「算对偶的 Ext」被换成了「算张量积」—— 后者在离散群上可以用自由消解直接做。',
         '**证法**。用短正合列 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$。由前面两条归零定理得 $\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{R}, N) = 0$，于是 $\\operatorname{RHom}_{\\mathbb{Z}}(T, N) \\cong N[-1]$。代入 $\\operatorname{RHom}(M, T)$ 并逐层展开，再用自由情形的导出张量计算，就得到结论。',
-        '⭐ 这条把 $T$ 这个「圆」的角色讲清楚了：$T$ 在导出层面**等价于降一次数**（$\\operatorname{RHom}(-, T)$ 把离散群送到它自己的 $[-1]$）。这正是下一节 Pontryagin 对偶能用 RHom 写出来的原因。'
+        '⭐ 这条把 $T$ 这个「圆」的角色讲清楚了：$T$ 在导出层面**等价于降一次数**（$\\operatorname{RHom}(-, T)$ 把离散群送到它自己的 $[-1]$）。这正是下一节 Pontryagin 对偶能用 RHom 写出来的原因。',
+        ['**证明（先造映射，再在自由情形验它是同构）。**',
+          '- **造映射**：串联三个同构',
+          '$$M \\otimes^{\\mathbf{L}}_{\\mathbb{Z}} N[-1] \\;\\cong\\; M \\otimes^{\\mathbf{L}}_{\\mathbb{Z}} \\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}[-1], N) \\;\\cong\\; M \\otimes^{\\mathbf{L}}_{\\mathbb{Z}} \\operatorname{RHom}_{\\mathbb{Z}}(T, N) \\;\\cong\\; \\operatorname{RHom}_{\\mathbb{Z}}\\bigl(\\operatorname{RHom}_{\\mathbb{Z}}(M, T),\\ N\\bigr),$$',
+          '其中第一式来自「离散群的 $\\operatorname{RHom}(\\mathbb{Z}, N) = N$」，第二式来自短正合列 $0\\to\\mathbb{Z}\\to\\mathbb{R}\\to T\\to 0$（配合 $\\operatorname{RHom}(\\mathbb{R}, N) = 0$，于是 $\\operatorname{RHom}(T,N)\\cong\\operatorname{RHom}(\\mathbb{Z},N)[-1] = N[-1]$），第三式是「张量与内 Hom 的伴随」。',
+          '- **验同构**：只需对 $M = \\mathbb{Z}\\cdot E$（自由）验证。此时由「离散情形的 $\\operatorname{RHom}(\\mathbb{Z}\\cdot E, N) = N^{E}$」得 $\\operatorname{RHom}(M, T) = T^{E}$，而 $M\\otimes^{\\mathbf{L}}N = N\\cdot E$；问题化归为证 $\\operatorname{RHom}_{\\mathbb{Z}}(T^{E}, N) \\cong N\\cdot E[-1]$。',
+          '- $E$ **有限**时：由三角 $\\operatorname{RHom}(\\mathbb{Z},N)\\to\\operatorname{RHom}(\\mathbb{R},N)\\to\\operatorname{RHom}(T,N)\\to$ 与 $\\operatorname{RHom}(\\mathbb{R},N)=0$ 得 $\\operatorname{RHom}(T,N)\\cong N[-1]$，取 $E$ 次幂即可。',
+          '- $E$ **一般**时：写成有限子集的滤过余极限 $E = \\varinjlim E\'$，用 Breen–Deligne 谱序列 + 滤过余极限正合把结论传上去，而这一步只需 $H^{q}\\bigl((T^{s})^{E}\\times S, N\\bigr) = \\varinjlim_{E\'} H^{q}\\bigl((T^{s})^{E\'}\\times S, N\\bigr)$ —— 由 Dyckhoff 与「紧 Hausdorff 的滤过极限上常系数上同调是余极限」给出。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.3.7']
     },
@@ -199,7 +242,14 @@ window.MG = window.MG || {};
         '**在说什么。** 经典的 Pontryagin 对偶 $M^{\\vee} = \\operatorname{Hom}_{\\mathrm{cts}}(M, T)$ 说的是「取到圆里的连续同态」。这条给出它在**导出层面**的三种等价写法 —— 于是「取对偶」这个操作可以在导出的世界里做，进而参与 RHom / 张量的计算。',
         '**三条为什么互相相容**。用 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$：对**紧**的 $M$，$\\operatorname{RHom}(M, \\mathbb{R}) = 0$（紧 $\to$ Banach 全零），于是 $\\operatorname{RHom}(M, T) \\cong \\operatorname{RHom}(M, \\mathbb{Z})[1]$，第二条就是这么来的。',
         '**注意三种情形的「位移」不同**：紧的情形多一个 $[1]$、Banach 的情形换成靶 $\\mathbb{R}$。这说明「对偶」在导出层面不是一个统一的操作 —— 具体走哪条，取决于 $M$ 属于哪一类。',
-        '📌 **用法**：把「算 Pontryagin 对偶」归约成「算 RHom」，而 RHom 有 Breen–Deligne 谱序列与逐类归零定理可用。'
+        '📌 **用法**：把「算 Pontryagin 对偶」归约成「算 RHom」，而 RHom 有 Breen–Deligne 谱序列与逐类归零定理可用。',
+        ['**证明（由结构定理化归到三类）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的，所以只要对三类分别验证。',
+          '- **$M$ 离散**：取两段自由消解 $0 \\to F\' \\to F \\to M \\to 0$（$F, F\'$ 自由）。由「离散自由群的 $\\operatorname{RHom}$ 只有 $0$ 次」得长正合列',
+          '$$0 \\to M^{\\vee} \\to F^{\\vee} \\to F\'^{\\vee} \\to \\operatorname{Ext}^{1}_{\\mathbb{Z}}(M, T) \\to 0,$$',
+          '这既给出 $M^{\\vee} \\cong \\operatorname{RHom}_{\\mathbb{Z}}(M, T)$，又顺带给出 $\\operatorname{Ext}^{1}$ 的位置。',
+          '- **$M$ 紧**：先把上一段用在 $M^{\\vee}$（对偶又紧）上，得 $\\operatorname{RHom}_{\\mathbb{Z}}(M^{\\vee}, T) \\cong M$；再用 8.3.7（把 $M^{\\vee}$ 与 $\\mathbb{Z}$ 代入）与「紧 $\\to$ 实 Banach 全零」得 $\\operatorname{RHom}_{\\mathbb{Z}}(M, \\mathbb{Z}) \\cong M^{\\vee}[-1]$，即 $M^{\\vee} \\cong \\operatorname{RHom}_{\\mathbb{Z}}(M, \\mathbb{Z})[1]$。',
+          '- **$M$ 有限维 Banach**：由「有限维 Banach 到离散群全零」的三类掐掉只剩 $\\mathbb{R}$ 的靶，逐条比对得 $M^{\\vee} \\cong \\operatorname{RHom}_{\\mathbb{Z}}(M, \\mathbb{R})$。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.3.8']
     },
@@ -221,7 +271,13 @@ window.MG = window.MG || {};
         '⭐ **这是 §8.3 的终点**：局部紧 Hausdorff 阿贝尔群之间的 Ext 只在 $0$ 次和 $1$ 次上可能非零，再高一律消失。凝聚态数学对局部紧阿贝尔群给出的最终结论就是这个。',
         '**证法：先归约、再逐类掐掉**。由局部紧阿贝尔群的**结构定理**（每个这样的群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 群」扩张出来的），只要对三类源与三类靶交叉验证即可。$M$ 离散时用两段自由消解，$N$ 离散时用那条练习（连通局部紧群对离散群）；$N$ 是 Banach 时用「紧 $\to$ Banach 全零」与「有限维 Banach 之间的 RHom 只有 0 次」。',
         '**为什么是「只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$」**：$\\operatorname{Ext}^{0}$ 就是 $\\operatorname{Hom}$，$\\operatorname{Ext}^{1}$ 分类扩张 —— 这两项是**代数**上本来就该有的；这条定理说的是**没有更多**，即凝聚态阿贝尔群的范畴在局部紧对象上「同调维数 $\\le 1$」。',
-        '⚠️ 结论**不适用于非局部紧**的对象：像 $\\mathbb{R}^{I}$（任意大的积）这类东西，$\\operatorname{RHom}$ 的行为完全是另一回事。'
+        '⚠️ 结论**不适用于非局部紧**的对象：像 $\\mathbb{R}^{I}$（任意大的积）这类东西，$\\operatorname{RHom}$ 的行为完全是另一回事。',
+        ['**证明（按结构定理分三类，逐类掐掉）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的。于是只需对三类源与三类靶交叉处理：',
+          '- **$M$ 离散**：有两段自由消解，长正合列把 $\\operatorname{Ext}^{n}$（$n \\ge 2$）全部掐掉（自由对象只在 $0$ 次有 Ext）。',
+          '- **$N$ 离散**：由连通局部紧群对离散群的那条（Exercises 8.18）同样只剩 $0, 1$ 两格。',
+          '- **$N$ 实 Banach**：由「紧 $\\to$ Banach 全零」与「有限维 Banach 之间的 $\\operatorname{RHom}$ 只有 $0$ 次」把高次掐掉。',
+          '- **$N$ 连通紧 Hausdorff**：有兩段消解 $0 \\to N \\to T^{E} \\to T^{E\'} \\to 0$，故只需证 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, T^{E}) = \\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, T)^{E} = 0$（$n \\ne 0,1$），而这由 $\\operatorname{RHom}_{\\mathbb{Z}}(M, T) \\cong M^{\\vee}$（上一条 Pontryagin 对偶）集中在次数 $0$ 给出。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 8.3.9']
     },

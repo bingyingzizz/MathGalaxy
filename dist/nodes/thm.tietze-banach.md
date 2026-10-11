@@ -13,6 +13,6 @@ $$C(X,\ V) \twoheadrightarrow C(K,\ V)$$
 - `def.compact` 紧：用到了定义 紧　proofs/def-dep.tietze-compact.md
 - `def.continuous-map` 连续映射：用到了定义 连续映射　proofs/def-dep.tietze-cont.md
 
-refs: Le Stum, Theorem 8.2.7
+refs: Le Stum, Theorem 8.2.7；Dugundji, An extension of Tietze's theorem (1951)
 
 > 说明见 `notes/thm.tietze-banach.md`

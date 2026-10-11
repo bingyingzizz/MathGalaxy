@@ -6,3 +6,5 @@
 **证法**。用短正合列 $0 \to \mathbb{Z} \to \mathbb{R} \to T \to 0$。由前面两条归零定理得 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{R}, N) = 0$，于是 $\operatorname{RHom}_{\mathbb{Z}}(T, N) \cong N[-1]$。代入 $\operatorname{RHom}(M, T)$ 并逐层展开，再用自由情形的导出张量计算，就得到结论。
 
 ⭐ 这条把 $T$ 这个「圆」的角色讲清楚了：$T$ 在导出层面**等价于降一次数**（$\operatorname{RHom}(-, T)$ 把离散群送到它自己的 $[-1]$）。这正是下一节 Pontryagin 对偶能用 RHom 写出来的原因。
+
+> 续见 notes/prop.rhom-dual-tensor.2.md

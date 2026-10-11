@@ -8,3 +8,5 @@
 **顺像的形状怎么读**：$\varinjlim \underline{U}$ 是「把所有开集拼起来」的余极限 —— 开集沿含入的余极限就是它们并起来。
 
 ⭐ 这条是下面 Dyckhoff 定理那条谱序列的**构造基础**：有了这两个方向，$\mathrm{Cond}/X$ 上的上同调才能被 $\mathrm{Open}(X)$ 上的层上同调逼近。
+
+> 续见 notes/prop.cond-slice-topos-morphism.2.md
