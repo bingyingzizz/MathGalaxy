@@ -7,3 +7,5 @@ layer 17 · 推论 · 紧生成空间与弱 Hausdorff · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.hausdorff` Hausdorff 空间：用到了定义 Hausdorff 空间　proofs/def-dep.cg-hausdorff-cgprod.md
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.cgprod-cg.md
+
+> 说明见 `notes/cor.cg-product.md`

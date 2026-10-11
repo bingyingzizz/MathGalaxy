@@ -9,5 +9,4 @@ layer 7 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.subspace-topology` 子空间拓扑：用到了定义 子空间拓扑　proofs/def-dep.cgwhclosed-subspace.md
 - `def.weak-hausdorff` 弱 Hausdorff 空间：用到了定义 弱 Hausdorff 空间　proofs/def-dep.cgwhclosed-weakhaus.md
 
-## 说明
-第 2 条正是凝聚态数学里反复要用的那一条：把「由有限块拼起来的对象」按滤过余极限拼大，$\mathrm{CGWH}$ 的性质不会掉。
+> 说明见 `notes/prop.cgwh-closed.md`

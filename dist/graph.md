@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-11T13:52:05.411Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-11T14:00:16.007Z
 > 9 星系 / 45 星团 / 542 节点 / 1136 连线（强边 1127，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -1925,6 +1925,11 @@ $k$-拓扑就是**使所有连续映射 $S \to X$（$S$ 紧 Hausdorff）都连�
 
 对任何拓扑空间 $X$，$kX$ 是全体连续映射 $S \to X$（$S$ 取遍紧 Hausdorff 空间）在 $\mathbf{Top}$ 中的余极限。
 
+**证明。** 按 $k$-拓扑的定义，$U \subseteq kX$ 开 $\iff$ 对**每个**连续 $g : S \to X$（$S$ 紧 Hausdorff），$g^{-1}(U)$ 在 $S$ 中开。
+另一方面，$\mathbf{Top}$ 里一张图 $\mathcal{D}$ 的余极限 $L$ 的拓扑有标准刻画：$U \subseteq L$ 开 $\iff$ 对图上每个对象的「余射」$D_{i} \to L$，$U$ 的拉回在 $D_{i}$ 中开。
+把图取成「对象 = 全体连续映射 $g : S \to X$；态射 = 使三角形交换的连续映射」：余射就是 $g$ 本身，于是 $L$ 上的拓扑正是「由全体 $g$ 拉回定出的 $k$-拓扑」，即 $L = kX$（两者有同一个底集合同一个开集族）。∎
+⭐ **读法**：这条把「$k$-化」翻译成了「用紧 Hausdorff 块拼出来」。于是 $X$ 紧生成 $\iff$ $X$ 就是它自己那些紧 Hausdorff 块的余极限 —— 后面所有关于 $k\mathbf{Top}$ 的论证都可以在**块**上做，再沿余极限抬上去。
+
 #### 紧生成空间是余反射子范畴　`prop.cg-coreflective`
 *命题*　紧生成空间是 $\mathbf{Top}$ 的余反射子范畴
 
@@ -1990,6 +1995,15 @@ $$q^{-1}(V) \times K \;\subseteq\; W$$
 
 若 $X$ 紧生成、$Y$ 局部紧 Hausdorff，则 $X \times Y$ 紧生成。
 
+**证明。** 用的都是已经有的零件。
+- $X$ 紧生成 $\iff$ $X$ 是它自己那些紧 Hausdorff 块的余极限：$X = \varinjlim_{i} S_{i}$（上一条），$S_{i}$ 紧 Hausdorff；
+- $Y$ 局部紧 Hausdorff $\implies$ 函子 $-\times Y$ **保余极限**（它有右伴随 $C(Y, -)$）；于是
+$$X \times Y = \Bigl(\varinjlim_{i} S_{i}\Bigr) \times Y = \varinjlim_{i}\bigl(S_{i} \times Y\bigr);$$
+- **每一项 $S_{i} \times Y$ 紧生成**：它是局部紧 Hausdorff 空间（紧 $\times$ 局部紧 $=$ 局部紧 Hausdorff），而局部紧 Hausdorff $\implies$ 紧生成（每个点有紧邻域）✓；
+- **紧生成空间在 $\mathbf{Top}$ 里的余极限仍紧生成**：含入 $k\mathbf{Top} \hookrightarrow \mathbf{Top}$ 是左伴随（它**有**右伴随 $k$），左伴随保余极限，故 $k\mathbf{Top}$ 里的余极限就是 $\mathbf{Top}$ 里的余极限，且结果紧生成。
+于是 $X \times Y$ 是紧生成空间的余极限，自身紧生成。∎
+⚠️ **$Y$ 局部紧不能省**：一般拓扑空间之间的积**不保**商映射，而「$-\times Y$ 保余极限」正是这一条目的等价说法。
+
 #### k-化与积　`prop.k-product`
 *命题*　$k(kX \times Y) = k(X \times Y)$
 
@@ -2002,6 +2016,12 @@ $$k(kX \times Y) \;=\; k(X \times Y).$$
 $$kX \times Y \;=\; k(X \times Y).$$
 
 两式的差别正好是余反射子范畴的两个层次：一般情形下 $k$ 不是「积封闭」的，得对积再取一次 $k$；$Y$ 局部紧 Hausdorff 时（由商映射与积那条定理）$k$ 与「乘 $Y$」可交换。**这就是为什么 $k\mathbf{Top}$ 里的乘积得取 $k(X \times Y)$ 而不是 $X \times Y$。**
+
+**证明（第一式）。** $k$-拓扑由「哪些紧 Hausdorff 块映射连续」决定，而关键是一条逐点事实：
+- **对 $T$ 紧 Hausdorff，$g : T \to X$ 连续 $\iff$ $g : T \to kX$ 连续。** 反正向显然（$kX$ 拓扑更细）；正向因为 $kX$ 的开集就是这么定义的：$U \subseteq kX$ 开 $\iff$ 沿每个紧 Hausdorff 映射的拉回开，取 $g$ 即得 $g^{-1}(U)$ 开。
+- 于是对 $T$ 紧 Hausdorff：$(g_{1}, g_{2}) : T \to X \times Y$ 连续 $\iff$ $g_{1} : T\to X$ 与 $g_{2} : T \to Y$ 都连续 $\iff$ $g_{1} : T \to kX$ 与 $g_{2}$ 都连续 $\iff$ $T \to kX\times Y$ 连续。
+- 两张 $k$-拓扑 $k(X\times Y)$ 与 $k(kX\times Y)$ 由**同一族**测试映射（全体 $T \to$ 该底集合，$T$ 紧 Hausdorff）的连续性刻画，故它们的开集族相同，即 $k(kX\times Y) = k(X\times Y)$。
+**第二式**：由上一条「$X$ 紧生成、$Y$ 局部紧 Hausdorff $\implies$ $kX \times Y$ 紧生成」得 $kX\times Y$ 已经是紧生成的，对它取 $k$ 不再改变：$k(kX\times Y) = kX\times Y$；代入第一式即得 $kX\times Y = k(X\times Y)$。∎
 
 #### 紧开拓扑　`def.compact-open-topology`
 *定义*　紧开拓扑（Compact-Open Topology）
@@ -2020,6 +2040,12 @@ $C(X, Y)$（也就是 $\operatorname{Hom}_{\mathbf{Top}}(X, Y)$）上的**紧开
 *命题*　离散 $X$ 时 $C(X,Y) \cong Y^{X}$
 
 若 $X$ 是**离散**空间，则 $C(X, Y) \cong Y^{X}$（右边取**积拓扑**）。
+
+**证明。** 比较两边的基本开集。
+- $X$ 离散时，紧 Hausdorff 的 $g : S \to X$ 的像 $g(S)$ 是**有限**集（紧 $\implies$ 有限，因为 $X$ 上只有离散拓扑，紧子集有限）。于是紧开拓扑的生成元是
+$$W_{S,V} = \{\, f : X\to Y \;\mid\; f\bigl(g(S)\bigr)\subseteq V \,\} = \bigcap_{x \in F} \{\, f : f(x)\in V \,\},\qquad F := g(S)\ \text{有限};$$
+- 而 $\{f : f(x) \in V\}$ 正是**积拓扑**（$Y^{X} = \prod_{x\in X} Y$）下的基本开集（只有 $x$ 那个坐标被限制）。所以两边由同一族基本开集生成，恒等映射是同胚。∎
+⭐ **这就是「指数律在离散指数下平凡成立」那条**：$Y^{X}$ 的积拓扑就是紧开拓扑。这也说明紧开拓扑的**信息量**：非离散的 $X$ 上，积拓扑太细（那是「逐点收敛」拓扑），紧开拓扑才是对的。
 
 #### 弱 Hausdorff 空间　`def.weak-hausdorff`
 *定义*　弱 Hausdorff 空间（Weak Hausdorff Space）
@@ -2043,15 +2069,40 @@ $C(X, Y)$（也就是 $\operatorname{Hom}_{\mathbf{Top}}(X, Y)$）上的**紧开
 
 **对角那条的作用**：$\Delta_{X}$ $k$-闭 $\iff$ 「两个映射相等的点集」是 $k$-闭的 —— 这与 $T_{1}$、$T_{2}$ 在一般拓扑里的刻画（对角闭）平行，只是这里闭的判据换成了 $k$-闭。紧生成是让这个等价反过来的补充条件。
 
+**证明。** 五条都只用定义。
+- **紧 Hausdorff 子空间闭**：$K \subseteq X$ 紧 Hausdorff，含入 $K \hookrightarrow X$ 就是定义里的那个 $f$，故 $K = f(K)$ 闭。
+- **$T_{1}$**：单点 $\{x\}$ 是紧 Hausdorff 空间（它自己的）的像，故闭 —— 单点闭就是 $T_{1}$。
+- **$f(S)$ 紧 Hausdorff**：$f(S)$ 紧（连续像），且由定义它在 $X$ 中闭；闭子空间的子空间拓扑是 Hausdorff 的，故 $f(S)$ 紧 Hausdorff。
+- **$\Delta_{X}$ 是 $k$-闭的**：取紧 Hausdorff 的 $g = (g_{1}, g_{2}) : T \to X\times X$。$g_{1}(T)$、$g_{2}(T)$ 由上一款是紧 Hausdorff，故 $g_{1}(T)\times g_{2}(T)$ 紧 Hausdorff，于是 $\Delta_{X} \cap \bigl(g_{1}(T)\times g_{2}(T)\bigr) = \Delta_{g_{1}(T)}$（两个紧 Hausdorff 集的「相等点」）在其中**闭**；而 $g^{-1}(\Delta_{X}) = g^{-1}\bigl(\Delta_{X}\cap(g_{1}(T)\times g_{2}(T))\bigr)$ 是闭集的逆像，闭 ✓。
+- **反过来（$X$ 紧生成 + $\Delta$ $k$-闭 $\implies$ 弱 Hausdorff）**：取 $f : S\to X$（$S$ 紧 Hausdorff），要证 $f(S)$ 闭。$X$ 紧生成，故只需证对每个紧 Hausdorff 的 $h : T \to X$，$h^{-1}\bigl(f(S)\bigr)$ 在 $T$ 中闭。而
+$$h^{-1}\bigl(f(S)\bigr) = \operatorname{pr}_{T}\Bigl(\{(s, t) : f(s) = h(t)\}\Bigr) = \operatorname{pr}_{T}\Bigl((f,h)^{-1}(\Delta_{X})\Bigr),$$
+其中 $(f,h)^{-1}(\Delta_{X})$ 在 $S\times T$ 中闭（$S\times T$ 紧 Hausdorff，$\Delta$ $k$-闭）；而 $\operatorname{pr}_{T} : S\times T\to T$ 是**闭映射**（$S$ 紧），故 $h^{-1}(f(S))$ 闭 ✓。
+- **$\ker(f,g)$ 是 $k$-闭的**：$\ker(f,g) = (f,g)^{-1}(\Delta_{Y})$，而 $k$-闭集沿连续映射的拉回仍 $k$-闭（用紧 Hausdorff 测试：$(f,g)\circ h$ 连续，$h^{-1}(\ker) = ((f,g)\circ h)^{-1}(\Delta_{Y})$ 闭）。∎
+
 #### 紧块的纤维积还是紧的　`prop.cgwh-fiber-product`
 *命题*　紧 Hausdorff 沿弱 Hausdorff 的纤维积
 
 若 $S, S'$ 是紧 Hausdorff 空间、$X$ 弱 Hausdorff，且给定了连续映射 $S \to X$、$S' \to X$，则纤维积 $S \times_{X} S'$ 紧 Hausdorff。
 
+**证明。** 记两个映射为 $f : S\to X$、$g : S'\to X$。关键是把纤维积写成**对角线的原像**：
+$$S \times_{X} S' = \{(s, s') : f(s) = g(s')\} = (f, g)^{-1}\bigl(\Delta_{X}\bigr), \qquad (f,g) : S\times S' \longrightarrow X\times X .$$
+- $S\times S'$ **紧 Hausdorff** ✓；
+- 由「弱 Hausdorff $\implies$ 对角是 $k$-闭的」，$\Delta_{X}$ 是 $k$-闭的；
+- 而 $k$-闭集沿**从紧 Hausdorff 空间出发**的连续映射的拉回是**闭**集（这就是 $k$-闭的定义）：$(f,g)^{-1}(\Delta_{X})$ 在 $S\times S'$ 中闭 ✓。
+于是 $S\times_{X} S'$ 是紧 Hausdorff 空间的**闭子空间**，故紧 Hausdorff（闭子空间紧、Hausdorff 的闭子空间 Hausdorff）。∎
+⭐ **这条就是「$\mathrm{CGWH}$ 里紧块相交还是紧块」的全部内容** —— 后面「弱 Hausdorff $\implies$ 拟分离」「$\mathrm{CGWH}$ 对有限积封闭」都得靠它。
+
 #### k-闭等价关系与弱 Hausdorff 商　`prop.cg-kclosed-quotient`
 *命题*　$R$ 是 $k$-闭 $\iff$ $X/R$ 弱 Hausdorff
 
 设 $X$ 紧生成，$R$ 是 $X$ 上的等价关系（看作 $R \subseteq X \times X$）。则 $R$ 是 $k$-闭的 $\iff$ 商空间 $X/R$ 弱 Hausdorff。
+
+**证明。** 记 $q : X \to X/R$ 为商映射，则
+$$R = (q\times q)^{-1}\bigl(\Delta_{X/R}\bigr), \qquad q\times q : X\times X \longrightarrow X/R\times X/R .$$
+- **$\Longleftarrow$**：$X/R$ 弱 Hausdorff $\implies$ $\Delta_{X/R}$ 是 $k$-闭的；$k$-闭集沿连续映射拉回仍 $k$-闭（用紧 Hausdorff 测试），故 $R$ 是 $k$-闭的。
+- **$\implies$**：$R$ $k$-闭 $\implies$ $q$ 是**商映射**（$U \subseteq X/R$ 开 $\iff$ $q^{-1}(U)$ 在 $X$ 中开 —— 这正是 $R$ 的 $k$-闭性加 $X$ 紧生成给出的「饱和 $k$-闭集是闭集」）。于是 $X/R$ 紧生成（商的紧生成仍紧生成）。
+再证弱 Hausdorff：取紧 Hausdorff 的 $g : T \to X/R$。$T$ 紧，$X$ 紧生成且 $q$ 是商映射，故 $g$ 可沿 $q$ **逐块提升**：存在覆盖 $T = \bigcup_{i} T_{i}$（有限个紧 Hausdorff 块）与连续 $p_{i} : T_{i} \to X$ 使 $q p_{i} = g|_{T_{i}}$。于是 $g(T) = \bigcup_{i} q(\tilde g_{i}(T_{i}))$，而每个 $q(K)$（$K \subseteq X$ 紧 Hausdorff）是闭的：$q^{-1}q(K)$ 是**饱和**的，其 $k$-闭性由 $R$ 的 $k$-闭性与「投影 $X\times K \to X$ 闭」给出，故 $q^{-1}q(K)$ 在紧生成的 $X$ 中闭，再由 $q$ 是商映射得 $q(K)$ 闭 ✓。有限并仍闭，故 $g(T)$ 闭。∎
+⭐ **读法**：这条把「商空间弱 Hausdorff」这个**拓扑**条件翻译成了「等价关系是 $k$-闭的」这个**关于 $X\times X$ 的子集**条件 —— 后者可以逐块验证。
 
 #### CGWH 是 CG 的反射子范畴　`thm.cgwh-reflective`
 *定理*　紧生成的弱 Hausdorff 空间是反射子范畴
@@ -2066,9 +2117,18 @@ $$h : X \longmapsto X/R,$$
 
 **为什么取「最小的闭等价关系」。** 要让商 $X/R$ 弱 Hausdorff，$R$ 得是 $k$-闭的（上一条）；而要商掉得尽量少、好让反射是「最经济」的改造，就取最小的那个闭等价关系。（$R \mapsto X/R$ 把关系越大商越小，方向别弄反。）
 
-⭐ 这一条给出「怎么把一个空间修好」的完整链条：$X \rightsquigarrow kX$（先 $k$-化，变成 $\mathrm{CG}$）$\rightsquigarrow kX/R$（再商掉最小闭等价关系，变成 $\mathrm{CGWH}$）。两步都是**函子性**的，所以 $\mathrm{CGWH}$ 里的同构、极限、余极限都能从 $\mathbf{Top}$ 里搬过来。
+⭐ 这一条给出「怎么把一个空间修好」的完整链条：$k$-化（$X \mapsto kX$，变成 $\mathrm{CG}$）$\mapsto$ 商最小闭等价关系（$kX \mapsto kX/R$，变成 $\mathrm{CGWH}$）。两步都是**函子性**的，所以 $\mathrm{CGWH}$ 里的同构、极限、余极限都能从 $\mathbf{Top}$ 里搬过来。
 
 ⭐ 这就是为什么现代代数拓扑默认在 $\mathrm{CGWH}$ 里做事：$\mathrm{CGWH}$ 对**有限积**封闭、函数空间 $kC(X,Y)$ 还在里面、且是笛卡尔闭的 —— 而 $\mathbf{Top}$ 一个都不满足。
+
+**证明。** 记 $R$ 为 $X$ 上**所有 $k$-闭等价关系**的交（$X$ 紧生成时 $k$-闭 = 闭，所以这就是「最小闭等价关系」；等价关系的交仍是等价关系 ✓），令 $\eta_{X} : X \to X/R$ 为商映射。
+- **$X/R \in \mathrm{CGWH}$**：$X/R$ 紧生成（商的紧生成）✓；而 $R$ $k$-闭 $\implies$ $X/R$ 弱 Hausdorff（上一条）✓。
+- **反射的泛性质**：设 $Y \in \mathrm{CGWH}$、$f : X \to Y$ 连续。则
+$$R_{f} := \{(x, x') : f(x) = f(x')\} = (f,f)^{-1}(\Delta_{Y})$$
+是 $X$ 上的等价关系；由 $\Delta_{Y}$ $k$-闭（$Y$ 弱 Hausdorff）与「$k$-闭沿连续映射拉回仍 $k$-闭」得 $R_{f}$ $k$-闭。于是 $R \subseteq R_{f}$（$R$ 是交），所以 $f$ 在 $R$ 的每个类上取常值，从而**唯一地**穿过商：$\exists!\, \bar f : X/R \to Y$ 使 $\bar f\circ\eta_{X} = f$ ✓。
+- **$\mathrm{CGWH}$ 全忠实坐进 $\mathrm{CG}$**：$Y$ 本身弱 Hausdorff 时 $\eta_{Y} : Y \to Y/R_{Y}$ 是同胚（$R_{Y}$ 是 $\Delta_{Y}$ 本身），于是反射在 $\mathrm{CGWH}$ 上的分量是恒等 ✓。
+两条合起来就是「$\mathrm{CGWH}$ 是 $\mathrm{CG}$ 的反射子范畴，反射是 $X\mapsto X/R$」。∎
+⚠️ **方向**：等价关系取得**越大**，商掉得越**多**、空间越粗。所以「最小」的闭等价关系给出「最经济」的弱 Hausdorff 化 —— 这也是为什么反射先 $k$-化（$X\rightsquigarrow kX$）、再商最小闭等价关系、两步都函子性。
 
 #### CGWH 的开闭子空间与滤过余极限　`prop.cgwh-closed`
 *命题*　$\mathrm{CGWH}$ 的封闭性
@@ -2078,10 +2138,26 @@ $$h : X \longmapsto X/R,$$
 
 第 2 条正是凝聚态数学里反复要用的那一条：把「由有限块拼起来的对象」按滤过余极限拼大，$\mathrm{CGWH}$ 的性质不会掉。
 
+**证明。**
+- **开子空间**：$U \subseteq X$ 开。紧 Hausdorff 的 $g : S\to U$ 的像 $g(S)$ 在 $X$ 中闭，故在 $U$ 的子空间拓扑里 $g(S) = g(S)\cap U$ 闭 $\implies$ $U$ 弱 Hausdorff ✓；$k$-化与「取开子空间」交换（$k$ 拓扑由沿紧 Hausdorff 块拉回刻画，而块落进 $U$ 与否是局部条件）$\implies$ $U$ 紧生成 ✓。
+- **闭子空间**：$A \subseteq X$ 闭。紧 Hausdorff 的 $g : S\to A$ 的像在 $X$ 中闭且含于 $A$，故在 $A$ 中闭 $\implies$ 弱 Hausdorff ✓；$A$ 紧生成同样由「$k$-化与取闭子空间交换」得到 ✓。
+- **沿闭含入的滤过余极限**：对极限 $X = \varinjlim_{i\in I} X_{i}$（闭含入、$I$ 滤过），先有一条标准引理：**$X$ 中的闭集就是那些与每个 $X_{i}$ 的交都闭的集合**（余极限拓扑 + $X_{i}$ 闭），于是每个 $X_{i}$ 在 $X$ 中闭 ✓。
+- **$X$ 弱 Hausdorff**：取紧 Hausdorff 的 $g : S \to X$。由上面那条引理与 $S$ **紧**，$g(S)$ 落在**某一个** $X_{i}$ 里（这是滤过余极限的标准「紧集落进一块」引理）；又 $X_{i}$ 在 $X$ 中闭、$g$ 经由 $X_{i}$ 的像在 $X_{i}$ 中闭 $\implies$ $g(S)$ 在 $X$ 中闭 ✓。
+- **$X$ 紧生成**：由余极限的闭集刻画（逐块判定）与每块紧生成，逐块验证即得 ✓。∎
+
 #### 函数空间弱 Hausdorff　`prop.cg-function-space`
 *命题*　$Y$ 弱 Hausdorff $\implies$ $kC(X,Y)$ 弱 Hausdorff
 
 若 $Y$ 弱 Hausdorff，则 $kC(X, Y)$（紧开拓扑再取 $k$-化）也弱 Hausdorff。
+
+**证明。** 取紧 Hausdorff 的 $g : T \to kC(X, Y)$，要证 $g(T)$ 在 $kC(X,Y)$ 中闭。$kC(X,Y)$ 紧生成，故只需证：对**每个**紧 Hausdorff 的 $T'$ 与连续 $h : T'\to kC(X,Y)$，
+$$A := \{\, t'\in T' : h(t')\in g(T) \,\}$$
+在 $T'$ 中闭。
+- 由指数律（$T, T'$ 紧 Hausdorff $\implies$ 局部紧 Hausdorff），$g, h$ 分别对应连续的 $\hat g : T\times X\to Y$、$\hat h : T'\times X\to Y$；
+- **$X$ 紧生成**，所以「两个映射 $X\to Y$ 相等」只需沿所有紧 Hausdorff 的 $a : S\to X$ 验证。于是
+$$A = \operatorname{pr}_{T'}\Bigl(\bigcap_{(S,a)} B_{S,a}\Bigr), \qquad B_{S,a} := \{\,(t',t)\in T'\times T : \hat h\bigl(t',a(s)\bigr) = \hat g\bigl(t,a(s)\bigr)\ \ \forall s\in S\,\};$$
+- 每个 $B_{S,a} = \operatorname{pr}_{T'\times T}\bigl(\theta_{S,a}^{-1}(\Delta_{Y})\bigr)$，其中 $\theta_{S,a} : T'\times T\times S \to Y\times Y$，$(t',t,s)\mapsto\bigl(\hat h(t',a(s)),\ \hat g(t,a(s))\bigr)$ 连续。$T'\times T\times S$ **紧 Hausdorff**，而 $\Delta_{Y}$ 是 $k$-闭的，故 $\theta_{S,a}^{-1}(\Delta_{Y})$ **闭**；又 $S$ 紧 $\implies$ 投影 $T'\times T\times S\to T'\times T$ **闭**，所以 $B_{S,a}$ 闭；闭集之交 $B$ 闭；最后 $T$ 紧 $\implies$ $\operatorname{pr}_{T'} : T'\times T\to T'$ 闭，故 $A$ 闭 ✓。∎
+三步关键：① $X$ 紧生成让「函数相等」可以沿紧块检验；② $Y$ 弱 Hausdorff 让 $\Delta_{Y}$ 是 $k$-闭的；③ 紧因子的投影是**闭映射**。
 
 #### 紧生成空间是笛卡尔闭的　`prop.cg-cartesian-closed`
 *定理*　紧生成空间是笛卡尔闭范畴
@@ -2128,6 +2204,14 @@ $$X \longmapsto k(X \times Y) \qquad \text{左伴随于} \qquad Z \longmapsto kC
 **两个立刻的推论**：左伴随**保余极限**，所以 $X \mapsto k(X \times Y)$ 保紧生成空间的余极限；右伴随**保极限**，所以 $Z \mapsto kC(kY,Z)$ 保极限。
 
 ⭐ **余极限在 $k\mathbf{Top}$ 里是万有的。** 因为「乘 $Y$」有右伴随，它与余极限交换，这正是余极限万有（把余极限沿任意态射拉回还是余极限）的条件。**这一点在 $\mathbf{Top}$ 里不成立** —— 也是「非要在 $k\mathbf{Top}$ 里做事」的又一条理由。
+
+**证明（伴随 = 自然双射）。** 要证的是**自然**双射
+$$\operatorname{Hom}_{k\mathbf{Top}}\bigl(k(X\times Y),\ Z\bigr) \;\cong\; \operatorname{Hom}_{k\mathbf{Top}}\bigl(X,\ kC(kY, Z)\bigr).$$
+- **左边**：$k$-化是余反射（含入 $i$ 有右伴随 $k$），故对紧生成的 $Z$ 有 $\operatorname{Hom}_{k\mathbf{Top}}(kA, Z) = \operatorname{Hom}_{\mathbf{Top}}(A, Z)$；取 $A = X\times Y$ 得左边 $= \operatorname{Hom}_{\mathbf{Top}}(X\times Y,\ Z)$。
+- **右边**：同理 $\operatorname{Hom}_{k\mathbf{Top}}(X, kC(kY,Z)) = \operatorname{Hom}_{\mathbf{Top}}(X, C(kY,Z))$。
+- **中间的 currying**：集合层面永远有双射 $\operatorname{Hom}_{\mathbf{Top}}(X\times Y, Z) \cong \operatorname{Hom}_{\mathbf{Top}}(X, C(Y,Z))$（把 $f$ 送到 $x\mapsto f(x,-)$）；拓扑层面，$Z$ 紧生成时「连续性可由紧 Hausdorff 块检验」，而 $kY$ 的紧块就是 $Y$ 的紧块，故 $C(Y,Z)$ 与 $C(kY,Z)$ 上的紧开拓扑一致。
+两条合起来给出自然双射，即 $k(X\times Y) \dashv kC(kY, -)$。∎
+**顺带的两个推论**（伴随的一般性质）：左伴随 $X\mapsto k(X\times Y)$ **保余极限**；右伴随 $Z\mapsto kC(kY,Z)$ **保极限**。前者正是「$-\times Y$ 在 $k\mathbf{Top}$ 里保余极限」，也是上面「$\mathrm{CGWH}$ 对积封闭」那条用的零件。
 
 #### 紧块沿闭含入拼出的空间　`prop.closed-inclusion-filtered-limit`
 *命题*　紧 Hausdorff 块沿闭含入的滤过余极限

@@ -7,3 +7,5 @@ layer 13 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.fibered-product` 纤维积 / 纤维余积：用到了定义 纤维积 / 纤维余积　proofs/def-dep.cgwhfiber-fibered.md
 - `def.weak-hausdorff` 弱 Hausdorff 空间：用到了定义 弱 Hausdorff 空间　proofs/def-dep.cgwhfiber-weakhaus.md
+
+> 说明见 `notes/prop.cgwh-fiber-product.md`

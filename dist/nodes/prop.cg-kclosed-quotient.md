@@ -6,3 +6,5 @@ layer 7 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.quotient-topology` 商拓扑：用到了定义 商拓扑　proofs/def-dep.cg-ktx-quotient.md
+
+> 说明见 `notes/prop.cg-kclosed-quotient.md`
