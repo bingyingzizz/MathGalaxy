@@ -7,3 +7,7 @@ $\mathcal{C}$ 上的阿贝尔层 $M$ **无环** $\iff \check{H}^{n}(M) = 0$ 对�
 ## 为什么成立（入边，证明在 proofs/）
 - `def.acyclic-sheaf` 无环层：用到了定义 无环层　proofs/def-dep.acycliccech-acyclic.md
 - `def.cech-cohomology` Čech 上同调：用到了定义 Čech 上同调　proofs/def-dep.acycliccech-cech.md
+
+refs: Le Stum, Proposition 7.3.10；Le Stum, Corollary 7.3.8
+
+> 说明见 `notes/prop.acyclic-iff-cech.md`

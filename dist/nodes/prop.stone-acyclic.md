@@ -6,3 +6,7 @@ layer 17 · 命题 · 层上同调 · 同调代数+拓扑学
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-dep.stoneacyclic-stone.md
+
+refs: Le Stum, Exercise 7.50
+
+> 说明见 `notes/prop.stone-acyclic.md`

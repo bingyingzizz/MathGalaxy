@@ -8,4 +8,6 @@ layer 18 · 命题 · 层上同调 · 同调代数+范畴论
 - `def.topos-morphism` 拓扑斯的态射：用到了定义 拓扑斯的态射　proofs/def-dep.topmorphder-topmorph.md
 - `def.right-derived-functor` 右导出函子：用到了定义 右导出函子　proofs/def-dep.topmorphder-rdf.md
 
+refs: Le Stum, Proposition 7.4.1
+
 > 说明见 `notes/prop.topos-morphism-derived.md`

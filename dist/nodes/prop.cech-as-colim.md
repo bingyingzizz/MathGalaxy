@@ -7,3 +7,7 @@ layer 18 · 命题 · 层上同调 · 同调代数
 ## 为什么成立（入边，证明在 proofs/）
 - `def.grothendieck-topology` Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　proofs/def-dep.cechcolim-topology.md
 - `def.cech-cohomology` Čech 上同调：用到了定义 Čech 上同调　proofs/def-dep.cechcolim-cech.md
+
+refs: Le Stum, Exercise 7.46
+
+> 说明见 `notes/prop.cech-as-colim.md`

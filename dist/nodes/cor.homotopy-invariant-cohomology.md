@@ -3,8 +3,9 @@
 layer 18 · 推论 · 层上同调 · 同调代数+拓扑学
 
 设 $M$ 是**常值**阿贝尔群。
-> 陈述续见 `nodes/cor.homotopy-invariant-cohomology.2.md`
 
+1. 若 $f \simeq g : X \to Y$ 是**同伦**的连续映射，则 $f$ 与 $g$ 诱导的上同调映射相同；
+2. 若 $f : X \to Y$ 是**同伦等价**，则 $H^{n}(Y, M) \cong H^{n}(X, M)$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sheaf-cohomology` 层上同调：用到了定义 层上同调　proofs/def-dep.homcohom-sheafcoh.md
@@ -12,5 +13,4 @@ layer 18 · 推论 · 层上同调 · 同调代数+拓扑学
 
 refs: Le Stum, Proposition 7.4.2；Le Stum, Corollary 7.4.3
 
-## 说明
-⭐ **这就是「层上同调是拓扑不变量」那句话的出处** —— 常值系数下，$H^{n}(-, M)$ 是同伦不变的，所以它可以拿来算空间的同伦类不变量（奇异上同调、de Rham 上同调都落在这一条上）。
+> 说明见 `notes/cor.homotopy-invariant-cohomology.md`
