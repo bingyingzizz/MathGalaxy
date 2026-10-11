@@ -35,6 +35,146 @@
   }
 
   /* ==================================================================== */
+  /* 行星-卫星锚点
+     --------------------------------------------------------------------
+     星团内部不再螺旋平铺，改成「一颗行星 + 一圈卫星」：
+
+       1. 选行星：优先取**定义**节点里团内度数最高的那几个；
+          行星个数 = ceil(团内节点数 / cap)，团越大行星越多。
+       2. 行星按**蜂窝网格**摆开（相邻行星中心距 pitch，领地不重叠）。
+       3. 其余节点是**卫星**，多源 BFS 归给最近的那颗行星，
+          均布在所属行星周围的第一条轨道上。
+       4. 碰撞松弛：行星钉住不动，只推卫星，保证任意两点 ≥ minGap。
+
+     于是「谁是这个概念的卫星」这件事在图上**直接看得出来**。            */
+
+  /** 第 i 个蜂窝网格中心，相邻中心间距 pitch（轴坐标枚举，保证相邻正好差 pitch） */
+  function hexCenter(i, pitch) {
+    if (i === 0) return { x: 0, y: 0 };
+    var ring = 1, before = 0;
+    while (i - 1 >= before + 6 * ring) { before += 6 * ring; ring++; }
+    var pos = i - 1 - before;             // 在本圈的序号 0..6r-1
+    var side = Math.floor(pos / ring);    // 第几条边
+    var step = pos % ring;                // 边上第几步
+    var corners = [[ring, 0], [ring, -ring], [0, -ring], [-ring, 0], [-ring, ring], [0, ring]];
+    var dirs = [[0, -1], [-1, 0], [-1, 1], [0, 1], [1, 0], [1, -1]];
+    var co = corners[side], d = dirs[side];
+    var q = co[0] + d[0] * step;
+    var r = co[1] + d[1] * step;
+    return { x: pitch * (q + r / 2), y: pitch * (Math.sqrt(3) / 2 * r) };
+  }
+
+  /** 给星团 c 内所有节点写 anchor（以 cx,cy 为中心）；返回离中心最远的距离 */
+  function planetaryAnchors(graph, c, cx, cy, opts) {
+    opts = opts || {};
+    var minGap = opts.minGap || 96;
+    var cap = opts.cap || 6;               // 每颗行星最多带几颗卫星
+
+    var ids = [];
+    var idset = Object.create(null);
+    c.nodes.forEach(function (n) { ids.push(n.id); idset[n.id] = true; });
+
+    function degIn(x) {
+      var nb = graph.adj[x];
+      if (!nb) return 0;
+      var cnt = 0;
+      for (var i = 0; i < nb.length; i++) if (idset[nb[i]]) cnt++;
+      return cnt;
+    }
+
+    // 1) 选行星：优先定义节点，按团内度数降序；数量 = ceil(n/cap)
+    var defs = c.nodes.filter(function (n) { return n.type === 'definition'; });
+    var pool = defs.length ? defs : c.nodes;
+    var ranked = pool.slice().sort(function (a, b) {
+      var da = degIn(a.id), db = degIn(b.id);
+      if (db !== da) return db - da;
+      return a.id < b.id ? -1 : 1;
+    });
+    var P = Math.max(1, Math.ceil(c.nodes.length / cap));
+    var planets = ranked.slice(0, P).map(function (n) { return n.id; });
+
+    // 2) 多源 BFS：每个节点归属最近的行星
+    var owner = Object.create(null);
+    planets.forEach(function (p) { owner[p] = p; });
+    var frontier = planets.slice();
+    while (frontier.length) {
+      var nxt = [];
+      frontier.forEach(function (u) {
+        var nb = graph.adj[u];
+        if (!nb) return;
+        for (var i = 0; i < nb.length; i++) {
+          var v = nb[i];
+          if (idset[v] && !(v in owner)) { owner[v] = owner[u]; nxt.push(v); }
+        }
+      });
+      frontier = nxt;
+    }
+    ids.forEach(function (x) { if (!(x in owner)) owner[x] = planets[0]; });
+
+    var groups = Object.create(null);
+    planets.forEach(function (p) { groups[p] = []; });
+    ids.forEach(function (x) { groups[owner[x]].push(x); });
+
+    // 3) 每颗行星的卫星环半径：既要容得下 m 颗卫星，又要行星—卫星至少 minGap
+    var territory = planets.map(function (p) {
+      var m = groups[p].length - 1;
+      return Math.max(minGap, m * minGap / (2 * Math.PI));
+    });
+    var maxTerr = minGap;
+    territory.forEach(function (t) { maxTerr = Math.max(maxTerr, t); });
+    var pitch = maxTerr * 2 + minGap;      // 行星中心间距 → 领地不重叠
+
+    // 4) 行星落蜂窝中心；卫星均布在行星周围第一轨道
+    var posById = Object.create(null);
+    planets.forEach(function (p, i) {
+      var h = hexCenter(i, pitch);
+      posById[p] = h;
+      var sats = groups[p].filter(function (x) { return x !== p; });
+      var R = territory[i];
+      var th0 = 0.5 + (U.hashString(p) % 628) / 100;   // 起点错开，免得每颗行星都一个朝相
+      sats.forEach(function (x, k) {
+        var th = th0 + k * 2 * Math.PI / Math.max(1, sats.length);
+        posById[x] = { x: h.x + R * Math.cos(th), y: h.y + R * Math.sin(th) };
+      });
+    });
+
+    // 5) 碰撞松弛：行星固定，只推动卫星，保证任意两点 >= minGap
+    var planetSet = Object.create(null);
+    planets.forEach(function (p) { planetSet[p] = true; });
+    var movers = ids.filter(function (x) { return !planetSet[x]; });
+    var fx = Object.create(null), fy = Object.create(null);
+    for (var iter = 0; iter < 500; iter++) {
+      movers.forEach(function (x) { fx[x] = 0; fy[x] = 0; });
+      var changed = false;
+      for (var a = 0; a < ids.length; a++) {
+        for (var b = a + 1; b < ids.length; b++) {
+          var u = ids[a], v = ids[b];
+          var pu = posById[u], pv = posById[v];
+          var dx = pu.x - pv.x, dy = pu.y - pv.y;
+          var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+          if (d >= minGap) continue;
+          changed = true;
+          var f = (minGap - d) * 0.5, ux = dx / d, uy = dy / d;
+          if (!planetSet[u]) { fx[u] += ux * f; fy[u] += uy * f; }
+          if (!planetSet[v]) { fx[v] -= ux * f; fy[v] -= uy * f; }
+        }
+      }
+      movers.forEach(function (x) { posById[x].x += fx[x]; posById[x].y += fy[x]; });
+      if (!changed) break;
+    }
+
+    // 6) 平移到星团中心并写 anchor，同时量出实际半径
+    var far = 0;
+    c.nodes.forEach(function (n) {
+      var q = posById[n.id];
+      n.anchor = { x: cx + q.x, y: cy + q.y };
+      var r = Math.sqrt(q.x * q.x + q.y * q.y);
+      if (r > far) far = r;
+    });
+    return far;
+  }
+
+  /* ==================================================================== */
   function computeLayout(graph) {
     var cfg = MG.config.layout;
     var ccfg = MG.config.cluster;
@@ -61,6 +201,10 @@
       c.nodes = c.nodes.filter(function (n) { return nodes.indexOf(n) >= 0; });
       if (!c.nodes.length) { c.center = null; c._cap = 0; return; }
       c._cap = Math.max(discRadius(c.nodes.length, 1.26), ccfg.minRadius);
+      // 行星-卫星摆法占的地方比原来的螺旋大，先量一次，把星团的地盘算准 ——
+      // 宁可星团占更大面积，也不要两个星团的节点互相穿插。
+      var ext = planetaryAnchors(graph, c, 0, 0, ccfg.planetary);
+      c._cap = Math.max(c._cap, ext + ccfg.cloudPadding * 0.5);
       var g = graph.galaxyOf(c);
       c.center = g ? { x: g.center.x, y: g.center.y } : { x: 0, y: 0 };
       liveClusters.push(c);
@@ -94,34 +238,21 @@
     var buckets = Object.create(null);   // 无星团节点按星系分桶
     var borders = [], orphans = [];
 
-    // 2a. 有星团的节点：在星团圆盘内螺旋 → 再按「另一个星系」的方向往外推
+    // 2a. 有星团的节点：行星-卫星摆法（行星 = 团内度数最高的定义节点）
     liveClusters.forEach(function (c) {
-      var list = c.nodes.slice().sort(function (a, b) {
-        if (b.degree !== a.degree) return b.degree - a.degree;
-        return a.id < b.id ? -1 : 1;
-      });
-      var n = list.length;
-      var R = Math.max(c._cap * ccfg.nodeSpread, 46);
-      var phase = (U.hashString(c.id) % 628) / 100;
-      list.forEach(function (node, i) {
-        var rr = R * Math.sqrt((i + 0.42) / n);
-        var th = i * GOLDEN + phase;
-        var x = c.center.x + Math.cos(th) * rr;
-        var y = c.center.y + Math.sin(th) * rr;
+      planetaryAnchors(graph, c, c.center.x, c.center.y, ccfg.planetary);
 
-        // 跨板块：朝「另一个星系」那一侧挪，落在交界带
-        if (node.isBorder) {
-          var others = node.regionObjs.filter(function (r) { return r.id !== c.parent; });
-          if (others.length) {
-            var t = others[0].center;
-            var dx = t.x - c.center.x, dy = t.y - c.center.y;
-            var L = Math.sqrt(dx * dx + dy * dy) || 1;
-            var push = c._cap * 0.62;
-            x += (dx / L) * push;
-            y += (dy / L) * push;
-          }
-        }
-        node.anchor = { x: x, y: y };
+      // 跨板块：整颗「行星系」朝「另一个星系」那一侧挪，落在交界带
+      c.nodes.forEach(function (node) {
+        if (!node.isBorder) return;
+        var others = node.regionObjs.filter(function (r) { return r.id !== c.parent; });
+        if (!others.length) return;
+        var t = others[0].center;
+        var dx = t.x - c.center.x, dy = t.y - c.center.y;
+        var L = Math.sqrt(dx * dx + dy * dy) || 1;
+        var push = c._cap * 0.62;
+        node.anchor.x += (dx / L) * push;
+        node.anchor.y += (dy / L) * push;
       });
     });
 

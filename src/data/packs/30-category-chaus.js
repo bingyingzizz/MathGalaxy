@@ -194,7 +194,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------ 连通分量是闭开之交 */
     {
       id: 'prop.component-clopen',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'proposition',
       label: '连通分量是闭开邻域之交',
       title: '紧 Hausdorff 空间中连通分量 = 闭开邻域之交',
@@ -211,7 +211,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------- 全不连通 / 极端不连通 */
     {
       id: 'def.stone-space',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'definition',
       label: '全不连通与 Stone 空间',
       title: 'Stone 空间与 Stonean 空间（Stone / Stonean Space）',
@@ -232,7 +232,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------- 极端不连通的性质 */
     {
       id: 'prop.stonean-basic',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'proposition',
       label: '极端不连通的基本性质',
       title: '极端不连通的性质',
@@ -249,7 +249,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------- 全不连通是反射子范畴 */
     {
       id: 'prop.td-reflective',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'proposition',
       label: '全不连通空间是反射子范畴',
       title: '全不连通空间是 $\\mathbf{Top}$ 的反射子范畴',
@@ -268,7 +268,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- Stone 是反射的 */
     {
       id: 'prop.stone-reflective',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'proposition',
       label: 'Stone 空间是 CHaus 的反射子范畴',
       title: 'Stone 空间是 $\\mathbf{CHaus}$ 的反射子范畴',
@@ -281,7 +281,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 投射有限 */
     {
       id: 'def.profinite',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'definition',
       label: '投射有限空间',
       title: '投射有限空间（Profinite Space）',
@@ -298,7 +298,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------- Stone ⟺ 投射有限 */
     {
       id: 'thm.stone-profinite',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'theorem',
       label: 'Stone ⟺ 投射有限',
       title: 'Stone 空间 $\\iff$ 投射有限空间',
@@ -310,7 +310,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- Gleason */
     {
       id: 'thm.gleason',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'theorem',
       label: 'Gleason 定理',
       title: 'Gleason 定理：$\\mathbf{CHaus}$ 的投射对象',
@@ -322,7 +322,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Stonean 是收缩核 */
     {
       id: 'cor.stonean-retract',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'corollary',
       label: 'Stonean 是收缩核',
       title: 'Stonean 空间 = 自由紧 Hausdorff 空间的收缩核',

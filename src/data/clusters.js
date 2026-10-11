@@ -146,10 +146,17 @@ MG.clusters = [
   },
   {
     id: 'topo.chaus',
-    name: '紧 Haus 与 Stone',
+    name: '紧 Hausdorff 空间',
     parent: 'topology',
     hub: 'prop.chaus-reflective',
-    desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → Stone 空间 = 投射有限空间 → Gleason 定理。'
+    desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → 自由表示。它是一切「紧块」的来源。'
+  },
+  {
+    id: 'topo.stone',
+    name: 'Stone 与 Stonean',
+    parent: 'topology',
+    hub: 'thm.stone-profinite',
+    desc: '造出「不连通的那一半紧 Hausdorff 空间」：全不连通 → Stone 空间 = 投射有限空间 → 极不连通的 Stonean 空间 → Gleason 定理与布尔环表示。'
   },
   {
     id: 'topo.cg',
@@ -361,6 +368,13 @@ MG.clusters = [
     parent: 'condensed',
     hub: 'thm.pontryagin-van-kampen',
     desc: '造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。'
+  },
+  {
+    id: 'cond.cohomology',
+    name: '凝聚态上同调',
+    parent: 'condensed',
+    hub: 'thm.real-banach-chaus-acyclic',
+    desc: '造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

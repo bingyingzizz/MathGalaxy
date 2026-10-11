@@ -15,7 +15,7 @@ window.MG = window.MG || {};
     /* -------------------------------------------- 完全不连通 / 极不连通 */
     {
       id: 'def.totally-disconnected',
-      cluster: 'topo.chaus',
+      cluster: 'topo.stone',
       type: 'definition',
       label: '完全不连通与极不连通',
       title: '完全不连通 / 极不连通空间',
