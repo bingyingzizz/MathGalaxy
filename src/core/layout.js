@@ -176,6 +176,14 @@
     if (!nodes.length) return;
 
     /* -------------------------------------------------------- 0. 准备 */
+    // 星系中心整体外扩：regions.js 里的坐标是手写的「大致方位」，这里按
+    // `regionSpread` 等比拉开，给星团之间的空带腾地方。存一份基准值，
+    // 反复调用 computeLayout 也不会越乘越大。
+    graph.regions.forEach(function (r) {
+      if (!r._baseCenter) r._baseCenter = { x: r.center.x, y: r.center.y };
+      r.center = { x: r._baseCenter.x * cfg.regionSpread, y: r._baseCenter.y * cfg.regionSpread };
+    });
+
     nodes.forEach(function (n) {
       n.target = regionTarget(n, graph);
       n.regionObjs = n.regions.map(function (id) { return graph.regionById[id]; }).filter(Boolean);
@@ -215,10 +223,12 @@
         mine[0].center = { x: reg.center.x, y: reg.center.y };
         return;
       }
-      // 团与团之间留出空带：盘半径 = 最大的团盘 + 一点余量（`cluster.gap`），
-      // 星系自己的圆盘大小也是个下界。
-      var ringR = Math.max(maxCap * (1 + ccfg.gap),
-        reg._cap * (0.34 + 0.05 * Math.min(mine.length, 6)));
+      // 团与团之间要**离得够远**：K 个团均布在半径 ringR 的圈上时，相邻中心距
+      // = 2·ringR·sin(π/K)；要求它 ≥ 两个盘 + 一条空带（`cluster.blank`）。
+      // 盘挨着盘的话，一眼看不出哪个点属于哪个团。
+      var K = mine.length;
+      var ringR = Math.max((2 * maxCap + ccfg.blank) / (2 * Math.sin(Math.PI / K)),
+        reg._cap * (0.34 + 0.05 * Math.min(K, 6)));
       var phase = (U.hashString(reg.id) % 628) / 100;
       mine.forEach(function (c, i) {
         var th = phase + i * (Math.PI * 2 / mine.length);

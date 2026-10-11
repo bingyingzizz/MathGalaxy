@@ -82,14 +82,14 @@
     var cx = centroid(list).x, cy = centroid(list).y;
     var rand = U.rngFrom(c.id, MG.config.seed);
 
-    blob(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15);
+    bubble(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15);
 
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 5; i++) {
       var ang = rand() * Math.PI * 2;
-      var rad = Math.sqrt(rand()) * R * 0.62;
-      var br = R * U.lerp(0.34, 0.56, rand());
+      var rad = Math.sqrt(rand()) * R * 0.50;
+      var br = R * U.lerp(0.22, 0.38, rand());
       blob(ctx, rgb, cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad,
-        br, cc.cloudAlpha * U.lerp(0.6, 1.15, rand()));
+        br, cc.cloudAlpha * U.lerp(0.5, 0.9, rand()));
     }
 
     list.forEach(function (n) {
@@ -155,6 +155,25 @@
     g.addColorStop(0.42, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha * 0.62).toFixed(4) + ')');
     g.addColorStop(0.74, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha * 0.22).toFixed(4) + ')');
     g.addColorStop(1.00, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  /**
+   * 带「亮边」的团云：中间淡、靠边一圈浓 —— 像气泡。
+   * 团与团的边界靠它分出来：不然一片雾叠一片雾，看不出哪些点属于同一个团。
+   */
+  function bubble(ctx, rgb, x, y, r, alpha) {
+    if (r <= 0 || alpha <= 0) return;
+    function at(a) { return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + a.toFixed(4) + ')'; }
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0.00, at(alpha * 0.26));
+    g.addColorStop(0.58, at(alpha * 0.40));
+    g.addColorStop(0.86, at(alpha * 1.00));
+    g.addColorStop(0.96, at(alpha * 0.45));
+    g.addColorStop(1.00, at(0));
     ctx.fillStyle = g;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);

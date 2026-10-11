@@ -666,6 +666,7 @@ window.addEventListener('error', function (e) {
       borderPull: 0.45,           // 跨板块节点的锚定更硬 → 稳定停留在交界带
       capacityFactor: 0.88,       // 板块可用地盘半径 = √(节点数/π) × idealDist × 该系数
       minGap: 64,                 // 节点最小间距（硬碰撞）
+      regionSpread: 1.55,         // 星系中心的整体外扩系数（regions.js 里的坐标 × 它）
       temp0: 62,                  // 初始温度（同时是每步位移上限）
       temp1: 0.5,                 // 终止温度
       maxStep: 26
@@ -673,7 +674,7 @@ window.addEventListener('error', function (e) {
 
     /* 相机 */
     camera: {
-      minZoom: 0.10,
+      minZoom: 0.06,
       maxZoom: 8,
       zoomStep: 1.22,             // 按钮 / 键盘缩放的倍率
       wheelGain: 0.0016,          // 滚轮灵敏度
@@ -683,7 +684,7 @@ window.addEventListener('error', function (e) {
          夹住的时候内容就出血，适配全部名不副实。所以它必须 ≤ 内容真正需要的
          缩放。内容以后再涨，先来看这个数 —— 现在 221 个点时实际需要 ≈0.20，
          涨到上千个点会掉到 0.07 上下，那时 minZoom 也要一起降。 */
-      fitMinZoom: 0.10,
+      fitMinZoom: 0.06,
       animateMs: 420              // 相机平移动画时长
     },
 
@@ -815,7 +816,7 @@ window.addEventListener('error', function (e) {
 
     /* 星团（一套自足的装置，内部关系密、对外整块连接） */
     cluster: {
-      gap: 0.14,            // 星团之间的间距系数：同一星系内相邻两个团盘之间额外留出 maxCap×gap
+      blank: 300,           // 同一星系内，相邻两个团盘之间至少要空的宽度（世界单位）
       minRadius: 92,        // 星团最小可用半径
       nodeSpread: 0.80,     // 节点在星团圆盘里铺开的比例
       /* 星团内部的行星-卫星摆法：hub 当行星，其余节点当卫星排同心轨道。
@@ -825,9 +826,9 @@ window.addEventListener('error', function (e) {
         minGap: 64,
         oneRingMax: 3.4
       },
-      cloudPadding: 76,     // 星团云比节点分布外扩多少（世界单位）
-      cloudMinRadius: 130,
-      cloudAlpha: 0.085,    // 星团云不透明度（叠在星系云上，形成"更密的结"）
+      cloudPadding: 42,     // 星团云比节点分布外扩多少（世界单位）—— 收紧，让团的边界看得清
+      cloudMinRadius: 120,
+      cloudAlpha: 0.14,     // 星团云不透明度（叠在星系云上，形成"更密的结"）
       labelSize: 13.5,
       labelOffset: 0,       // 星团名放在星团中心上方
       namePad: 6            // 星团名底下那块底色的内边距
@@ -2161,6 +2162,14 @@ window.addEventListener('error', function (e) {
     if (!nodes.length) return;
 
     /* -------------------------------------------------------- 0. 准备 */
+    // 星系中心整体外扩：regions.js 里的坐标是手写的「大致方位」，这里按
+    // `regionSpread` 等比拉开，给星团之间的空带腾地方。存一份基准值，
+    // 反复调用 computeLayout 也不会越乘越大。
+    graph.regions.forEach(function (r) {
+      if (!r._baseCenter) r._baseCenter = { x: r.center.x, y: r.center.y };
+      r.center = { x: r._baseCenter.x * cfg.regionSpread, y: r._baseCenter.y * cfg.regionSpread };
+    });
+
     nodes.forEach(function (n) {
       n.target = regionTarget(n, graph);
       n.regionObjs = n.regions.map(function (id) { return graph.regionById[id]; }).filter(Boolean);
@@ -2200,10 +2209,12 @@ window.addEventListener('error', function (e) {
         mine[0].center = { x: reg.center.x, y: reg.center.y };
         return;
       }
-      // 团与团之间留出空带：盘半径 = 最大的团盘 + 一点余量（`cluster.gap`），
-      // 星系自己的圆盘大小也是个下界。
-      var ringR = Math.max(maxCap * (1 + ccfg.gap),
-        reg._cap * (0.34 + 0.05 * Math.min(mine.length, 6)));
+      // 团与团之间要**离得够远**：K 个团均布在半径 ringR 的圈上时，相邻中心距
+      // = 2·ringR·sin(π/K)；要求它 ≥ 两个盘 + 一条空带（`cluster.blank`）。
+      // 盘挨着盘的话，一眼看不出哪个点属于哪个团。
+      var K = mine.length;
+      var ringR = Math.max((2 * maxCap + ccfg.blank) / (2 * Math.sin(Math.PI / K)),
+        reg._cap * (0.34 + 0.05 * Math.min(K, 6)));
       var phase = (U.hashString(reg.id) % 628) / 100;
       mine.forEach(function (c, i) {
         var th = phase + i * (Math.PI * 2 / mine.length);
@@ -2530,14 +2541,14 @@ window.addEventListener('error', function (e) {
     var cx = centroid(list).x, cy = centroid(list).y;
     var rand = U.rngFrom(c.id, MG.config.seed);
 
-    blob(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15);
+    bubble(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15);
 
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 5; i++) {
       var ang = rand() * Math.PI * 2;
-      var rad = Math.sqrt(rand()) * R * 0.62;
-      var br = R * U.lerp(0.34, 0.56, rand());
+      var rad = Math.sqrt(rand()) * R * 0.50;
+      var br = R * U.lerp(0.22, 0.38, rand());
       blob(ctx, rgb, cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad,
-        br, cc.cloudAlpha * U.lerp(0.6, 1.15, rand()));
+        br, cc.cloudAlpha * U.lerp(0.5, 0.9, rand()));
     }
 
     list.forEach(function (n) {
@@ -2603,6 +2614,25 @@ window.addEventListener('error', function (e) {
     g.addColorStop(0.42, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha * 0.62).toFixed(4) + ')');
     g.addColorStop(0.74, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha * 0.22).toFixed(4) + ')');
     g.addColorStop(1.00, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  /**
+   * 带「亮边」的团云：中间淡、靠边一圈浓 —— 像气泡。
+   * 团与团的边界靠它分出来：不然一片雾叠一片雾，看不出哪些点属于同一个团。
+   */
+  function bubble(ctx, rgb, x, y, r, alpha) {
+    if (r <= 0 || alpha <= 0) return;
+    function at(a) { return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + a.toFixed(4) + ')'; }
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0.00, at(alpha * 0.26));
+    g.addColorStop(0.58, at(alpha * 0.40));
+    g.addColorStop(0.86, at(alpha * 1.00));
+    g.addColorStop(0.96, at(alpha * 0.45));
+    g.addColorStop(1.00, at(0));
     ctx.fillStyle = g;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
