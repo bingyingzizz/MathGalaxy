@@ -2032,31 +2032,20 @@ window.addEventListener('error', function (e) {
 
      于是「谁是这个概念的卫星」这件事在图上**直接看得出来**。            */
 
-  /** 第 i 个蜂窝网格中心，相邻中心间距 pitch */
+  /** 第 i 个蜂窝网格中心，相邻中心间距 pitch（轴坐标枚举，保证相邻正好差 pitch） */
   function hexCenter(i, pitch) {
     if (i === 0) return { x: 0, y: 0 };
-    var k = 0;
-    while (true) {
-      var ring = k + 1;
-      if (i < 1 + 3 * ring * (ring + 1)) break;
-      k++;
-    }
-    var ring = k + 1;
-    var before = 3 * ring * (ring - 1);   // 前 ring-1 圈累计中心数
+    var ring = 1, before = 0;
+    while (i - 1 >= before + 6 * ring) { before += 6 * ring; ring++; }
     var pos = i - 1 - before;             // 在本圈的序号 0..6r-1
-    var side = Math.floor(pos / ring);
-    var step = pos % ring;
-    var dirs = [
-      [1, 0], [0.5, -Math.sqrt(3) / 2], [-0.5, -Math.sqrt(3) / 2],
-      [-1, 0], [-0.5, Math.sqrt(3) / 2], [0.5, Math.sqrt(3) / 2]
-    ];
-    var corners = [
-      [ring, 0], [0, -ring], [-ring, 0], [-ring, 0], [0, ring], [ring, 0]
-    ];
+    var side = Math.floor(pos / ring);    // 第几条边
+    var step = pos % ring;                // 边上第几步
+    var corners = [[ring, 0], [ring, -ring], [0, -ring], [-ring, 0], [-ring, ring], [0, ring]];
+    var dirs = [[0, -1], [-1, 0], [-1, 1], [0, 1], [1, 0], [1, -1]];
     var co = corners[side], d = dirs[side];
     var q = co[0] + d[0] * step;
-    var b = co[1] + d[1] * step;
-    return { x: pitch * (q + b / 2), y: pitch * (Math.sqrt(3) / 2 * b) };
+    var r = co[1] + d[1] * step;
+    return { x: pitch * (q + r / 2), y: pitch * (Math.sqrt(3) / 2 * r) };
   }
 
   /** 给星团 c 内所有节点写 anchor（以 cx,cy 为中心）；返回离中心最远的距离 */
@@ -2110,10 +2099,10 @@ window.addEventListener('error', function (e) {
     planets.forEach(function (p) { groups[p] = []; });
     ids.forEach(function (x) { groups[owner[x]].push(x); });
 
-    // 3) 每颗行星的卫星环半径
+    // 3) 每颗行星的卫星环半径：既要容得下 m 颗卫星，又要行星—卫星至少 minGap
     var territory = planets.map(function (p) {
       var m = groups[p].length - 1;
-      return minGap * (0.62 + 0.30 * Math.max(0, m));
+      return Math.max(minGap, m * minGap / (2 * Math.PI));
     });
     var maxTerr = minGap;
     territory.forEach(function (t) { maxTerr = Math.max(maxTerr, t); });
