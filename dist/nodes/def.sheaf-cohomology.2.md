@@ -6,4 +6,4 @@
 - 被 `lem.stone-constant-acyclic` Stone 上常系数零调 用
 - 被 `thm.dyckhoff` 局部紧上凝聚态＝层上同调 用
 - 被 `method.simplicial-cohomology` 单纯方法算层上同调 用
-- 被 `prop.lc-cech-vanishing` 紧块滤过余极限上的上同调 用
+- 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用

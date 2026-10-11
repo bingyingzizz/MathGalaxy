@@ -3,7 +3,7 @@
 
 - 内部 Hom 怎么用连续函数空间算 → prop.cond-internal-hom def.internal-hom def.compactly-generated
 
-- 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.lc-cech-vanishing
+- 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.chaus-cech-eq-h
 
 - Dyckhoff 定理说的是什么 → thm.dyckhoff def.sheaf-cohomology def.locally-compact
 

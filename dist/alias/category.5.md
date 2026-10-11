@@ -15,7 +15,7 @@
 
 - 什么是拟分离 → def.quasi-separated prop.cg-wh-iff-qseparated lem.qseparated-ind-inclusions
 
-- 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.lc-cech-vanishing
+- 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.chaus-cech-eq-h
 
 - Dyckhoff 定理说的是什么 → thm.dyckhoff def.sheaf-cohomology def.locally-compact
 

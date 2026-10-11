@@ -15,5 +15,5 @@
 - 被 `ex.chaus-banach-rhom` 紧 S 对实 Banach 的 RHom 用
 - 被 `thm.lc-structure` 局部紧阿贝尔群结构定理 用
 - 被 `prop.pontryagin-discrete-compact-duality` 离散 与 紧 Hausdorff 用
-- 被 `prop.lc-cech-vanishing` 紧块滤过余极限上的上同调 用
+- 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用
 - 被 `prop.closed-inclusion-filtered-limit` 紧块沿闭含入拼出的空间 用

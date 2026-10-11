@@ -657,7 +657,6 @@ MG.aliases = {
     { id: 'prop.ab-axioms-examples', aka: ['AB 公理例子', '哪些范畴满足 AB'] },
     { id: 'method.simplicial-cohomology', aka: ['单纯方法算上同调', '超覆盖', 'hypercover', 'Godement'] },
     { id: 'lem.cartan-eilenberg', aka: ['Cartan-Eilenberg', 'Cartan–Eilenberg 分解', 'Lemma 7.2.19'] },
-    { id: 'prop.lc-cech-vanishing', aka: ['紧块滤过余极限的上同调', 'Proposition 7.3.12'] },
 
     /* — 布尔环与 Stone 表示 — */
     { id: 'def.boolean-ring', aka: ['布尔环', 'Boolean ring', '幂等环'] },
@@ -861,7 +860,7 @@ MG.aliases = {
 
     /* — 凝聚态上同调 — */
     { q: '什么空间上凝聚态上同调会消失', to: ['prop.stonean-cond-acyclic', 'thm.real-banach-chaus-acyclic', 'lem.stone-constant-acyclic'] },
-    { q: '凝聚态上同调和层上同调什么关系', to: ['thm.dyckhoff', 'def.sheaf-cohomology', 'prop.lc-cech-vanishing'] },
+    { q: '凝聚态上同调和层上同调什么关系', to: ['thm.dyckhoff', 'def.sheaf-cohomology', 'prop.chaus-cech-eq-h'] },
     { q: 'Dyckhoff 定理说的是什么', to: ['thm.dyckhoff', 'def.sheaf-cohomology', 'def.locally-compact'] },
     { q: '什么是 Banach 阿贝尔群', to: ['def.banach-ab-group', 'def.semi-normed-ab-group', 'prop.banach-stone-acyclic'] },
     { q: '什么是 K-有界正合', to: ['def.k-bounded-exact', 'prop.k-bounded-implies-exact', 'cor.k-acyclic-acyclic'] },
@@ -889,7 +888,8 @@ MG.aliases = {
     { q: '哪些范畴满足哪些 AB 公理', to: ['prop.ab-axioms-examples', 'def.ab-axioms', 'thm.condab-ab'] },
     { q: '层上同调怎么算', to: ['method.simplicial-cohomology', 'def.sheaf-cohomology', 'def.cech-cohomology'] },
     { q: '什么是 Cartan-Eilenberg 分解', to: ['lem.cartan-eilenberg', 'def.bicomplex', 'def.spectral-sequence'] },
-    { q: '紧块拼起来的空间上同调怎么算', to: ['prop.lc-cech-vanishing', 'prop.closed-inclusion-filtered-limit', 'def.sheaf-cohomology'] },
+    { q: 'Čech 上同调什么时候等于层上同调', to: ['prop.chaus-cech-eq-h', 'def.cech-cohomology', 'def.sheaf-cohomology'] },
+    { q: '紧块拼起来的空间上同调怎么算', to: ['prop.filtered-limit-cohomology', 'prop.closed-inclusion-filtered-limit', 'def.sheaf-cohomology'] },
     { q: 'Stone 表示定理是什么', to: ['thm.boolean-stone', 'def.boolean-ring', 'def.stone-space'] },
     { q: '布尔环和 Stone 空间什么关系', to: ['thm.boolean-stone', 'def.boolean-ring', 'def.stone-space'] },
   ],

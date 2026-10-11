@@ -241,28 +241,6 @@ window.MG = window.MG || {};
         '⭐ **用在哪**：推导「两个导出函子的复合 = 谱序列」（Grothendieck 谱序列）、以及导出范畴里「有界下有界复形可以换成分解」的标准论证，都要先有这条。'
       ].join('\n\n'),
       refs: ['Le Stum, Lemma 7.2.19']
-    },
-
-    {
-      id: 'prop.lc-cech-vanishing',
-      cluster: 'hom.sheafcoh',
-      type: 'proposition',
-      label: '紧块滤过余极限上的上同调',
-      title: '紧 Hausdorff 块滤过余极限的上同调',
-      regions: ['homology', 'topology'],
-      tags: ['同调代数', '层上同调', '滤过余极限', '紧 Hausdorff'],
-      statement: [
-        '设 $X = \\varinjlim_{i \\in I} X_{i}$ 是**紧 Hausdorff 空间**沿闭含入的**滤过**余极限（即 $X$ 由一串越来越大的紧 Hausdorff 块拼成、每块在 $X$ 中闭），$M$ 是常值阿贝尔群。则',
-        '',
-        '$$H^{n}(X,\\ M) \\cong \\varinjlim_{i \\in I}\\ H^{n}(X_{i},\\ M).$$'
-      ].join('\n'),
-      notes: [
-        '**在说什么。** 层上同调在「把小块往大拼」这个操作下**和滤过余极限交换** —— 先算每块的上同调再取余极限，等于直接算大空间的上同调。于是大空间的上同调被**降维**成一族紧空间上同调的计算。',
-        '**证法**：用 Čech 上同调。$X$ 的任一覆盖都能被某个「从某一块 $X_{i}$ 拉回来的覆盖」细化（因为 $X$ 是余极限，每个紧块落进有限多个开集里）；于是 Čech 复形本身就是一个滤过余极限，再与「Čech 上同调 = 层上同调」合用。',
-        '⭐ **这条是 §8.3 里滤过极限步骤的依据**：Breen–Deligne 谱序列的每一格要算 $H^{q}(M^{s} \\times S, N)$，而 $M^{s}$ 一般不是紧的，得先把 $M$ 拆成紧块、逐块算、再取余极限。',
-        '📌 与「$\\mathrm{CGWH}$ 是紧 Hausdorff 块沿闭含入的滤过余极限」那条合起来看：那个**拓扑**结论给出「$X$ 长什么样」，这条**同调**结论给出「$X$ 的上同调怎么算」—— 一条几何、一条代数，配对使用。'
-      ].join('\n\n'),
-      refs: ['Le Stum, Proposition 7.3.12']
     }
 
   ]

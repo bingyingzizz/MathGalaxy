@@ -1,7 +1,7 @@
 # 问法 → 节点 · 凝聚态数学
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/condensed.md`
 
-- 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.lc-cech-vanishing
+- 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.chaus-cech-eq-h
 
 - Dyckhoff 定理说的是什么 → thm.dyckhoff def.sheaf-cohomology def.locally-compact
 

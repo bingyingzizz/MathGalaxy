@@ -2,11 +2,11 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-11T04:51:54.485Z",
+  "generated": "2026-10-11T05:00:04.493Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 543,
+   "nodes": 542,
    "edges": 1136,
    "strong": 1127,
    "weak": 9
@@ -63,7 +63,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。",
    "color": "#D9649F",
-   "nodeCount": 82
+   "nodeCount": 81
   },
   {
    "id": "algebra",
@@ -95,7 +95,7 @@
    "en": "Homological Algebra",
    "desc": "加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。",
    "color": "#C89A2B",
-   "nodeCount": 91
+   "nodeCount": 90
   },
   {
    "id": "condensed",
@@ -922,7 +922,7 @@
    "name": "层上同调",
    "parent": "homology",
    "desc": "把导出函子开到层上：$H^{n}(X, M) = R^{n}\\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。",
-   "nodeCount": 14,
+   "nodeCount": 13,
    "nodes": [
     "def.sheaf-cohomology",
     "def.cech-cohomology",
@@ -936,8 +936,7 @@
     "prop.topos-morphism-derived",
     "cor.homotopy-invariant-cohomology",
     "method.simplicial-cohomology",
-    "lem.cartan-eilenberg",
-    "prop.lc-cech-vanishing"
+    "lem.cartan-eilenberg"
    ]
   },
   {
@@ -11554,9 +11553,11 @@
     "常值系数",
     "上同调"
    ],
-   "statement": "若 $X = \\varprojlim_{i \\in I} X_{i}$ 是紧 Hausdorff 空间的**滤过极限**、$M$ 是**常值**阿贝尔群，则",
-   "notes": "$$H^{n}(X, M) = \\varinjlim_{i \\in I} H^{n}(X_{i}, M).$$\n\n⚠️ 注意方向：**极限** $X = \\varprojlim X_{i}$ 在拓扑这一侧，而它上面的**上同调**却成了**余极限** —— 上同调把方向翻过来。这条是「用有限块逼近整体，再取上同调」的合法性来源。\n\n📌  **Proposition 7.3.12**。",
-   "refs": []
+   "statement": "若 $X = \\varprojlim_{i \\in I} X_{i}$ 是紧 Hausdorff 空间的**滤过极限**（过渡映射满）、$M$ 是**常值**阿贝尔群，则",
+   "notes": "$$H^{n}(X, M) = \\varinjlim_{i \\in I} H^{n}(X_{i}, M).$$\n\n⚠️ 注意方向：**极限** $X = \\varprojlim X_{i}$ 在拓扑这一侧，而它上面的**上同调**却成了**余极限** —— 上同调把方向翻过来。这条是「用越来越精细的有限块逼近整体，再取上同调」的合法性来源。\n\n**为什么**。用 Čech 上同调。设 $\\pi_{i} : X \\to X_{i}$ 是投影。$X$ 的任一覆盖都能被某个「沿 $\\pi_{i}$ 从某个 $X_{i}$ 的覆盖拉回来的覆盖」细化 —— 因为 $X$ 落在乘积里，紧性保证每个开覆盖只用到有限多个坐标。于是 Čech 复形随 $i$ 构成一个滤过余极限，再与「紧 Hausdorff 上 Čech 上同调 = 层上同调」合用，就得到结论。\n\n⭐ **用途**：把一个大（可能是无穷维、非紧）对象的上同调，降维成一族紧 Hausdorff 块上同调的滤过余极限。这类「先逐块算、再取余极限」的手法在 §8.3 的 Breen–Deligne 谱序列里反复出现。",
+   "refs": [
+    "Le Stum, Proposition 7.3.12"
+   ]
   },
   {
    "id": "prop.stone-acyclic",
@@ -12745,30 +12746,6 @@
    "notes": "**为什么需要它。** 双复形可以按两种方式过滤（先按列、或先按行），各得一条谱序列。要让这两条谱序列**同时**收敛到同一个总复形的上同调，就必须在构造上保证「行和列都是内射消解」—— 这正是 Cartan–Eilenberg 分解给出的东西。\n\n**「$H^{p}$ 那一层也是内射消解」是关键的额外要求**：只要求每列是内射消解还不够（那样第二条谱序列会退化）；要求上同调层也是内射消解，才能让两条过滤都读到完整信息。\n\n⭐ **用在哪**：推导「两个导出函子的复合 = 谱序列」（Grothendieck 谱序列）、以及导出范畴里「有界下有界复形可以换成分解」的标准论证，都要先有这条。",
    "refs": [
     "Le Stum, Lemma 7.2.19"
-   ]
-  },
-  {
-   "id": "prop.lc-cech-vanishing",
-   "type": "proposition",
-   "label": "紧块滤过余极限上的上同调",
-   "title": "紧 Hausdorff 块滤过余极限的上同调",
-   "region": "homology",
-   "regions": [
-    "homology",
-    "topology"
-   ],
-   "cluster": "hom.sheafcoh",
-   "layer": 18,
-   "tags": [
-    "同调代数",
-    "层上同调",
-    "滤过余极限",
-    "紧 Hausdorff"
-   ],
-   "statement": "设 $X = \\varinjlim_{i \\in I} X_{i}$ 是**紧 Hausdorff 空间**沿闭含入的**滤过**余极限（即 $X$ 由一串越来越大的紧 Hausdorff 块拼成、每块在 $X$ 中闭），$M$ 是常值阿贝尔群。则\n\n$$H^{n}(X,\\ M) \\cong \\varinjlim_{i \\in I}\\ H^{n}(X_{i},\\ M).$$",
-   "notes": "**在说什么。** 层上同调在「把小块往大拼」这个操作下**和滤过余极限交换** —— 先算每块的上同调再取余极限，等于直接算大空间的上同调。于是大空间的上同调被**降维**成一族紧空间上同调的计算。\n\n**证法**：用 Čech 上同调。$X$ 的任一覆盖都能被某个「从某一块 $X_{i}$ 拉回来的覆盖」细化（因为 $X$ 是余极限，每个紧块落进有限多个开集里）；于是 Čech 复形本身就是一个滤过余极限，再与「Čech 上同调 = 层上同调」合用。\n\n⭐ **这条是 §8.3 里滤过极限步骤的依据**：Breen–Deligne 谱序列的每一格要算 $H^{q}(M^{s} \\times S, N)$，而 $M^{s}$ 一般不是紧的，得先把 $M$ 拆成紧块、逐块算、再取余极限。\n\n📌 与「$\\mathrm{CGWH}$ 是紧 Hausdorff 块沿闭含入的滤过余极限」那条合起来看：那个**拓扑**结论给出「$X$ 长什么样」，这条**同调**结论给出「$X$ 的上同调怎么算」—— 一条几何、一条代数，配对使用。",
-   "refs": [
-    "Le Stum, Proposition 7.3.12"
    ]
   },
   {
@@ -22446,20 +22423,20 @@
    "note": "它的用途是保证两类过滤给出**相容谱序列**。"
   },
   {
-   "id": "def-dep.lccech-cohom",
+   "id": "def-dep.flimcohom-cohom",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.sheaf-cohomology",
-   "usedBy": "prop.lc-cech-vanishing",
+   "usedBy": "prop.filtered-limit-cohomology",
    "note": "结论算的是**层上同调**。"
   },
   {
-   "id": "def-dep.lccech-chaus",
+   "id": "def-dep.flimcohom-chaus",
    "kind": "definition",
    "strength": "strong",
    "definition": "def.chaus",
-   "usedBy": "prop.lc-cech-vanishing",
-   "note": "空间由**紧 Hausdorff** 块拼成。"
+   "usedBy": "prop.filtered-limit-cohomology",
+   "note": "空间是一族**紧 Hausdorff** 空间的滤过极限。"
   },
   {
    "id": "def-dep.boolring-ring",

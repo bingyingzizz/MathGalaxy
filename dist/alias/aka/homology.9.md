@@ -7,6 +7,4 @@
 
 - Cartan-Eilenberg | Cartan–Eilenberg 分解 | Lemma 7.2.19 → lem.cartan-eilenberg
 
-- 紧块滤过余极限的上同调 | Proposition 7.3.12 → prop.lc-cech-vanishing
-
 见 `../../alias.md`。
