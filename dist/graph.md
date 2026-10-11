@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-11T09:16:44.811Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-11T13:07:03.046Z
 > 9 星系 / 45 星团 / 542 节点 / 1136 连线（强边 1127，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -7698,6 +7698,13 @@ $$\cdots \to P_{2} \to P_{1} \to P_{0} \to X \to 0,$$
 
 投射对象的**余积**还是投射的；对偶地，内射对象的**积**还是内射的。
 
+**证明。** 设 $P_{i}$（$i \in I$）都投射，$Q := \coprod_{i} P_{i}$，带余射 $\iota_{i} : P_{i} \to Q$。任给满态射 $e : X \twoheadrightarrow Y$ 与 $f : Q \to Y$，要造 $g$ 使 $e g = f$：
+- 限制到每个分量，$f \iota_{i} : P_{i} \to Y$。因为 $P_{i}$ 投射，存在 $g_{i} : P_{i} \to X$ 使 $e g_{i} = f \iota_{i}$；
+- 余积的**泛性质**给出唯一的 $g : Q \to X$ 使 $g \iota_{i} = g_{i}$（对所有 $i$）；
+- 于是 $e g \iota_{i} = e g_{i} = f \iota_{i}$ 对所有 $i$ 成立，再由余积泛性质的**唯一性**得 $e g = f$。∎
+
+对偶地（把上面每个箭头反向、余积换积、满态射换单态射）：内射对象的积仍内射。
+
 #### Ab(C) 的极限　`prop.ab-limits-forgetful`
 *命题*　$\mathrm{Ab}(\mathcal{C})$ 有所有极限
 
@@ -7705,12 +7712,34 @@ $$\cdots \to P_{2} \to P_{1} \to P_{0} \to X \to 0,$$
 
 ⭐ **实用价值**：这条让「在 $\mathcal{C}$ 里算极限」与「在 $\mathrm{Ab}(\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\mathrm{Ab}(\mathrm{Cond}) = \mathrm{CondAb}$ 有所有极限，就是这条在 $\mathcal{C} = \mathrm{Cond}$ 上的一次应用。
 
-📌  **Exercise 1.52**。
+**证明（极限在遗忘函子下逐项算）。** 阿贝尔群对象的定义是一组态射与**交换图**：
+$$m : X \times X \to X, \qquad e : 1 \to X, \qquad i : X \to X$$
+配上一串等式（结合、单位、逆、交换性）—— 全是「两个复合相等」形式的图。
+- 设 $D : I \to \mathrm{Ab}(\mathcal{C})$ 是可图表，记 $UX$ 为 $X$ 的底对象。因为极限保持极限（特别地保持有限积与终对象），把上述各图和等式逐项送进 $\mathcal{C}$ 后仍然成立；于是底对象上的 $\lim UD$ **自动**带上阿贝尔群对象的结构，$m$ 取 $\lim (Um \circ \text{交换}) $、$e$ 取 $\lim Ue$。
+- 于是 $\mathrm{Ab}(\mathcal{C})$ 有 $I$-极限，而遗忘函子把它送到 $\mathcal{C}$ 里的 $\lim UD$ —— 即**保极限**。
+- 细节只在一处：$\lim$ 与有限积的交换（$U \lim = \lim U$ 与 $\lim(X_{i}\times Y_{i}) = \lim X_{i}\times \lim Y_{i}$），那是极限的一般性质。∎
+
+参考：Le Stum, Exercise 1.52
 
 #### AB6：滤过余极限与积交换　`prop.ab6`
 *命题*　$\mathbf{Ab}$ 满足 AB6
 
-在 $\mathbf{Ab}$（以及 $A\text{-}\mathbf{Mod}$）里，**滤过余极限与积交换** —— 这就是 Grothendieck 的 **AB6** 公理。
+在 $\mathbf{Ab}$（以及 $A\text{-}\mathbf{Mod}$）里**一族滤过余极限与积交换**，这就是 Grothendieck 的 **AB6** 公理：对任意指标族 $J$、**各自**的滤过范畴 $I_{j}$（$j \in J$）与函子 $M_{j} : I_{j} \to \mathbf{Ab}$，自然映射
+
+$$\varinjlim_{(i_{j})_{j} \in \prod_{j} I_{j}} \ \prod_{j \in J} M_{j}(i_{j}) \longrightarrow \prod_{j \in J} \varinjlim_{i_{j} \in I_{j}} M_{j}(i_{j})$$
+
+是同构。
+
+**证明（两边各算一次）。** 余极限取在 $prod_{j} I_{j}$ 上，而滤过范畴的**积**仍是滤过的（任意两个对象 $(i_{j})$、$(i'_{j})$ 在每个分量上各取上界，再逐坐标拼起来）。
+- **单**：左边一个元素是某一点 $(i_{j})_{j}$ 上的族 $(x_{j})_{j}$。若它在右边为 $0$，则对每个 $j$ 存在 $i_{j} \to i'_{j}$ 把 $x_{j}$ 杀掉；$(i'_{j})_{j}$ 就是 $prod_{j} I_{j}$ 里接受它的那个对象，于是这个类本身就是 $0$。
+- **满**：右边任给 $(t_{j})_{j}$，每个 $t_{j}$ 由某个 $x_{j} \in M_{j}(i_{j})$ 表示；把 $(i_{j})_{j}$ 与 $(x_{j})_{j}$ 拼起来就是左边的一个元素，它映到 $(t_{j})_{j}$。∎
+
+⚠️ **关键是「每个 $j$ 各有自己的滤过范畴」。** 若所有 $j$ 共用同一个 $I$（取对角），断言**是错的** —— 那时只有 $J$ **有限**才对（那就是「滤过余极限与有限积交换」，来自滤过余极限是 sifted 余极限）。
+反例：$I = (\mathbb{N}, \le)$、$M_{i,j} = \mathbb{Z}/p^{i}$，转移映射取「乘以 $p$」，于是 $\varinjlim_{i} \mathbb{Z}/p^{i} = \mathbb{Z}[1/p]/\mathbb{Z}$。取 $t = (t_{j})_{j}$，其中 $t_{j}$ 是阶为 $p^{j}$ 的那个元素：任何单个 $i$ 上，元素只能有阶 $\le p^{i}$，所以 $j > i$ 的分量根本提不出来 —— 而 $\prod_{j} I_{j}$ 上就没这个问题，每个 $j$ 可以各自跑到够高的层级。
+
+与 AB5 的关系：AB6 = AB5 + 上面这条（AB5 管「滤过余极限正合」，AB6 再管「它与积交换」）。
+
+参考：Le Stum, Definition 5.2.5
 
 #### 一般正合列　`def.exact-sequence`
 *定义*　正合列
@@ -8157,6 +8186,12 @@ $$0 \longrightarrow H^{k}(K) \longrightarrow \operatorname{coker} d^{k-1} \longr
 
 也就是 $0 \to Z^{k}/B^{k} \to K^{k}/B^{k} \to Z^{k+1} \to Z^{k+1}/B^{k+1} \to 0$。这条把「同调」拆成两段：**先取余核去掉上一步的像，再取核挑出闭链，最后取商** —— 于是复形里的信息被一层层剥出来。
 
+**证明。** 记 $Z^{k} := \ker d^{k}$、$B^{k} := \operatorname{im} d^{k-1}$，于是 $H^{k} = Z^{k}/B^{k}$、$\operatorname{coker} d^{k-1} = K^{k}/B^{k}$。要证的四个箭头依次是：
+- $Z^{k}/B^{k} \to K^{k}/B^{k}$：由含入 $Z^{k} \hookrightarrow K^{k}$ 诱导，单射（$Z^{k}$ 在 $K^{k}$ 里，商掉同一个 $B^{k}$）；
+- $K^{k}/B^{k} \to Z^{k+1}$：由 $d^{k}$ 诱导（它把 $B^{k} = \operatorname{im} d^{k-1}$ 送到 $d^{k}d^{k-1} = 0$，故下降得良定义）。核正是「$d^{k}x = 0$ 的那些 $x + B^{k}$」＝ $Z^{k}/B^{k}$；
+- $Z^{k+1} \to Z^{k+1}/B^{k+1} = H^{k+1}$：取商映射，满，核是 $B^{k+1} = \operatorname{im} d^{k}$ —— 正好是上一个箭头的像。∎
+三段正合各只用到「$d^{2} = 0$」和核/余核的泛性质。
+
 #### 上同调函子　`def.cohomological-functor`
 *定义*　上同调函子（Cohomological Functor）
 
@@ -8295,9 +8330,15 @@ $$E^{p,q}_{2} = R^{p}G\bigl(R^{q}F(M)\bigr) \;\Longrightarrow\; R^{p+q}(G \circ 
 
 ⭐ **它的用处**：想算复合函子的导出函子 $R^{n}(G \circ F)$，可以**先算 $R^{q}F$、再算 $R^{p}G$**，中间用谱序列把两层的贡献拼起来。这是同调代数里最基本的「两步走」工具。
 
+**证明（双复形 + 两个谱序列）。** 取 $M$ 的内射消解 $I^{\bullet}$，令 $A^{\bullet} := F I^{\bullet}$。
+- 由假设，$I^{n}$ 内射，故 $FI^{n}$ 是 $G$-零调的，所以 $A^{\bullet}$ 是 $FM$ 的一个**由 $G$-零调对象组成的**右消解，于是 $R(G\circ F)M = G A^{\bullet}$ 在导出范畴里（Leray 零调性），即 $R^{n}(G\circ F)M = H^{n}(GA^{\bullet})$；
+- 再对 $A^{\bullet}$ 取 **Cartan–Eilenberg 分解** $J^{\bullet,\bullet}$（每个 $J^{p,\bullet}$ 是 $A^{p}$ 的 $G$-零调消解，横竖两方向的同调都算得出来）；
+- 双复形的两个谱序列：按 $p$ 先过滤收敛到 $H^{p+q}(G J^{\bullet,\bullet}) = R^{p+q}(G\circ F)M$，而它的 $E_{2}$ 页是「先竖后横」算出来的 $R^{p}G\bigl(H^{q}(A^{\bullet})\bigr) = R^{p}G\bigl(R^{q}FM\bigr)$；另一个谱序列（先横后竖）因为每列都是零调消解而在 $E_{2}$ 页退化，两边收敛到同一个东西。∎
+细节在前两条里：Cartan–Eilenberg 分解的存在性，双复形谱序列的收敛与 $E_{2}$ 页的识别。
+
 **典型应用**：层上同调 — 先层化再取截面、Čech 上同调到 de Rham 上同调、群的同调里的 Lyndon–Hochschild–Serre 谱序列，都是它的特例。
 
-**为什么要求 $F$ 把内射送到 $G$-零调**：这样 $F$ 的内射消解才能拿来做 $G$ 的零调消解，两边才接得上。
+**为什么要求 $F$ 把内射送到 $G$-零调**：这样 $F$ 的内射消解才能直接拿来做 $G$ 的零调消解，两边才接得上。
 
 参考：Le Stum, Corollary 7.2.13；Le Stum, Corollary 7.2.21
 

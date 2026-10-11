@@ -6,3 +6,5 @@ layer 15 · 命题 · 加法与阿贝尔范畴 · 同调代数
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.projective-object` 投射 / 内射对象：用到了定义 投射 / 内射对象　proofs/def-dep.projcoprod-projective.md
+
+> 说明见 `notes/prop.projective-coproduct.md`

@@ -8,4 +8,6 @@ layer 15 · 命题 · 加法与阿贝尔范畴 · 同调代数+范畴论
 - `def.group-object` 群对象与阿贝尔群对象：用到了定义 群对象与阿贝尔群对象　proofs/def-dep.abl-limits-groupobj.md
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.abl-limits-limit.md
 
+refs: Le Stum, Exercise 1.52
+
 > 说明见 `notes/prop.ab-limits-forgetful.md`

@@ -142,7 +142,15 @@ window.MG = window.MG || {};
       title: '投射对象的余积还是投射的',
       regions: ['homology'],
       tags: ['同调代数', '投射对象', '余积', '对偶'],
-      statement: '投射对象的**余积**还是投射的；对偶地，内射对象的**积**还是内射的。'
+      statement: '投射对象的**余积**还是投射的；对偶地，内射对象的**积**还是内射的。',
+      notes: [
+        ['**证明。** 设 $P_{i}$（$i \\in I$）都投射，$Q := \\coprod_{i} P_{i}$，带余射 $\\iota_{i} : P_{i} \\to Q$。任给满态射 $e : X \\twoheadrightarrow Y$ 与 $f : Q \\to Y$，要造 $g$ 使 $e g = f$：',
+          '- 限制到每个分量，$f \\iota_{i} : P_{i} \\to Y$。因为 $P_{i}$ 投射，存在 $g_{i} : P_{i} \\to X$ 使 $e g_{i} = f \\iota_{i}$；',
+          '- 余积的**泛性质**给出唯一的 $g : Q \\to X$ 使 $g \\iota_{i} = g_{i}$（对所有 $i$）；',
+          '- 于是 $e g \\iota_{i} = e g_{i} = f \\iota_{i}$ 对所有 $i$ 成立，再由余积泛性质的**唯一性**得 $e g = f$。∎'
+        ].join('\n'),
+        '对偶地（把上面每个箭头反向、余积换积、满态射换单态射）：内射对象的积仍内射。'
+      ].join('\n\n')
     },
 
     {
@@ -154,7 +162,17 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', '阿贝尔群对象', '极限', '遗忘函子'],
       statement: '若 $\\mathcal{C}$ 有所有极限，则 $\\mathrm{Ab}(\\mathcal{C})$ 也有所有极限，并且**遗忘函子** $\\mathrm{Ab}(\\mathcal{C}) \\to \\mathcal{C}$ 保它们。',
-      notes: '⭐ **实用价值**：这条让「在 $\\mathcal{C}$ 里算极限」与「在 $\\mathrm{Ab}(\\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$ 有所有极限，就是这条在 $\\mathcal{C} = \\mathrm{Cond}$ 上的一次应用。\n\n📌  **Exercise 1.52**。'
+      notes: [
+        '⭐ **实用价值**：这条让「在 $\\mathcal{C}$ 里算极限」与「在 $\\mathrm{Ab}(\\mathcal{C})$ 里算极限」完全一致 —— 凝聚态那一侧 $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$ 有所有极限，就是这条在 $\\mathcal{C} = \\mathrm{Cond}$ 上的一次应用。',
+        ['**证明（极限在遗忘函子下逐项算）。** 阿贝尔群对象的定义是一组态射与**交换图**：',
+          '$$m : X \\times X \\to X, \\qquad e : 1 \\to X, \\qquad i : X \\to X$$',
+          '配上一串等式（结合、单位、逆、交换性）—— 全是「两个复合相等」形式的图。',
+          '- 设 $D : I \\to \\mathrm{Ab}(\\mathcal{C})$ 是可图表，记 $UX$ 为 $X$ 的底对象。因为极限保持极限（特别地保持有限积与终对象），把上述各图和等式逐项送进 $\\mathcal{C}$ 后仍然成立；于是底对象上的 $\\lim UD$ **自动**带上阿贝尔群对象的结构，$m$ 取 $\\lim (Um \\circ \\text{交换}) $、$e$ 取 $\\lim Ue$。',
+          '- 于是 $\\mathrm{Ab}(\\mathcal{C})$ 有 $I$-极限，而遗忘函子把它送到 $\\mathcal{C}$ 里的 $\\lim UD$ —— 即**保极限**。',
+          '- 细节只在一处：$\\lim$ 与有限积的交换（$U \\lim = \\lim U$ 与 $\\lim(X_{i}\\times Y_{i}) = \\lim X_{i}\\times \\lim Y_{i}$），那是极限的一般性质。∎'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 1.52']
     },
 
     {
@@ -187,7 +205,24 @@ window.MG = window.MG || {};
       title: '$\\mathbf{Ab}$ 满足 AB6',
       regions: ['homology'],
       tags: ['同调代数', 'AB6', '滤过余极限', '积'],
-      statement: '在 $\\mathbf{Ab}$（以及 $A\\text{-}\\mathbf{Mod}$）里，**滤过余极限与积交换** —— 这就是 Grothendieck 的 **AB6** 公理。'
+      statement: [
+        '在 $\\mathbf{Ab}$（以及 $A\\text{-}\\mathbf{Mod}$）里**一族滤过余极限与积交换**，这就是 Grothendieck 的 **AB6** 公理：对任意指标族 $J$、**各自**的滤过范畴 $I_{j}$（$j \\in J$）与函子 $M_{j} : I_{j} \\to \\mathbf{Ab}$，自然映射',
+        '',
+        '$$\\varinjlim_{(i_{j})_{j} \\in \\prod_{j} I_{j}} \\ \\prod_{j \\in J} M_{j}(i_{j}) \\longrightarrow \\prod_{j \\in J} \\varinjlim_{i_{j} \\in I_{j}} M_{j}(i_{j})$$',
+        '',
+        '是同构。'
+      ].join('\n'),
+      notes: [
+        ['**证明（两边各算一次）。** 余极限取在 $\prod_{j} I_{j}$ 上，而滤过范畴的**积**仍是滤过的（任意两个对象 $(i_{j})$、$(i\'_{j})$ 在每个分量上各取上界，再逐坐标拼起来）。',
+          '- **单**：左边一个元素是某一点 $(i_{j})_{j}$ 上的族 $(x_{j})_{j}$。若它在右边为 $0$，则对每个 $j$ 存在 $i_{j} \\to i\'_{j}$ 把 $x_{j}$ 杀掉；$(i\'_{j})_{j}$ 就是 $\prod_{j} I_{j}$ 里接受它的那个对象，于是这个类本身就是 $0$。',
+          '- **满**：右边任给 $(t_{j})_{j}$，每个 $t_{j}$ 由某个 $x_{j} \\in M_{j}(i_{j})$ 表示；把 $(i_{j})_{j}$ 与 $(x_{j})_{j}$ 拼起来就是左边的一个元素，它映到 $(t_{j})_{j}$。∎'
+        ].join('\n'),
+        ['⚠️ **关键是「每个 $j$ 各有自己的滤过范畴」。** 若所有 $j$ 共用同一个 $I$（取对角），断言**是错的** —— 那时只有 $J$ **有限**才对（那就是「滤过余极限与有限积交换」，来自滤过余极限是 sifted 余极限）。',
+          '反例：$I = (\\mathbb{N}, \\le)$、$M_{i,j} = \\mathbb{Z}/p^{i}$，转移映射取「乘以 $p$」，于是 $\\varinjlim_{i} \\mathbb{Z}/p^{i} = \\mathbb{Z}[1/p]/\\mathbb{Z}$。取 $t = (t_{j})_{j}$，其中 $t_{j}$ 是阶为 $p^{j}$ 的那个元素：任何单个 $i$ 上，元素只能有阶 $\\le p^{i}$，所以 $j > i$ 的分量根本提不出来 —— 而 $\\prod_{j} I_{j}$ 上就没这个问题，每个 $j$ 可以各自跑到够高的层级。'
+        ].join('\n'),
+        '与 AB5 的关系：AB6 = AB5 + 上面这条（AB5 管「滤过余极限正合」，AB6 再管「它与积交换」）。'
+      ].join('\n\n'),
+      refs: ['Le Stum, Definition 5.2.5']
     },
 
     {
