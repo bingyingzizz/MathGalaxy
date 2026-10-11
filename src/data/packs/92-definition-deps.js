@@ -785,7 +785,7 @@ window.MG = window.MG || {};
     ['def.abelian-category', 'thm.five-lemma', 'def-dep.five-abelian',
       '五引理在**阿贝尔范畴**里说。'],
     ['thm.snake-lemma', 'thm.five-lemma', 'def-dep.five-snake',
-      '两者都是**追图**，五引理是比较同构的版本。'],
+      '两者都在**阿贝尔范畴**里说、都只能走泛元与泛性质；五引理是比较同构的版本。'],
     ['def.image', 'thm.five-lemma', 'def-dep.five-image',
       '用的还是「正合 = 核 = 像」。'],
 
