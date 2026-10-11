@@ -19,4 +19,6 @@ layer 16 · 定理 · 凝聚态集 · 凝聚态数学
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.cond-topos` Cond 是拓扑斯
 
+refs: Le Stum, Proposition 4.1.1；Le Stum, Corollary 4.1.2
+
 > 说明见 `notes/def.chaus-pretopos.md`

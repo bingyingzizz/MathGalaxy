@@ -8,3 +8,5 @@
 **「自由」的含义**：$\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。
 
 ⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\cong$ 紧 Hausdorff 对象」，这里做的是 $\mathrm{Cond}$ 这个特例。
+
+> 续见 notes/thm.qcqs-chaus-equiv.2.md

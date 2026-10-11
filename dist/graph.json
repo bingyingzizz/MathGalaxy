@@ -2,7 +2,7 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-11T13:35:39.416Z",
+  "generated": "2026-10-11T13:42:17.193Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -8328,8 +8328,11 @@
     "预拓扑斯"
    ],
    "statement": "在 $\\mathbf{CHaus}$ 中：\n\n1. 所有极限与余极限存在；\n2. 有限余积**不交**且**万有**；\n3. 等价关系**有效**且**万有**；\n4. 满态射**正则**且**万有**。\n\n因此 $\\mathbf{CHaus}$ 是**预拓扑斯**。",
-   "notes": "第 1 条由「$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴」直接读出：\n\n\n\n$$\\varprojlim{}^{\\mathbf{CHaus}} D \\;\\cong\\; \\varprojlim{}^{\\mathbf{Top}} D, \\qquad \\varinjlim{}^{\\mathbf{CHaus}} D \\;\\cong\\; \\beta\\Bigl(\\varinjlim{}^{\\mathbf{Top}} D\\Bigr)$$\n\n\n\n**极限在 $\\mathbf{Top}$ 里怎么算就怎么算**（反射子范畴对极限封闭），**余极限要先在 $\\mathbf{Top}$ 里算、再用 $\\beta$ 紧化回去**（左伴随保余极限）。\n\n第 2、3 条从 $\\mathbf{Set}$ 继承：不交性、万有性、有效性都是「逐点」的性质，而 $\\mathbf{CHaus}$ 里的构造逐点继承集合。\n\n第 4 条是紧 Hausdorff 的特色：那里的满射都正则。",
-   "refs": []
+   "notes": "第 1 条由「$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴」直接读出：\n\n\n\n$$\\varprojlim{}^{\\mathbf{CHaus}} D \\;\\cong\\; \\varprojlim{}^{\\mathbf{Top}} D, \\qquad \\varinjlim{}^{\\mathbf{CHaus}} D \\;\\cong\\; \\beta\\Bigl(\\varinjlim{}^{\\mathbf{Top}} D\\Bigr)$$\n\n\n\n**极限在 $\\mathbf{Top}$ 里怎么算就怎么算**（反射子范畴对极限封闭），**余极限要先在 $\\mathbf{Top}$ 里算、再用 $\\beta$ 紧化回去**（左伴随保余极限）。\n\n**证明。** 关键在于「哪些 $\\mathbf{Top}$ 里的余极限**同时也是** $\\mathbf{CHaus}$ 里的余极限」：\n- 四条性质在 $\\mathbf{Set}$（拓扑斯）里都成立；而 $\\mathbf{CHaus}$ 的极限在 $\\mathbf{Top}$ 里逐点算（$\\mathbf{CHaus}$ 对极限封闭），所以涉及极限的部分直接从 $\\mathbf{Set}$ 继承；\n- 一个**本身还是紧 Hausdorff** 的 $\\mathbf{Top}$ 余极限，就是 $\\mathbf{CHaus}$ 里的余极限 —— **有限余积**、**满射的余等化子**、**闭等价关系的余等化子**都属于这一类；\n- 于是：有限余积不交（先在 $\\mathbf{Set}$ 里不交，再注意到那个余积本身紧 Hausdorff）、满射万有（拉回仍是满射，仍在紧 Hausdorff 里）、闭等价关系有效（商对象紧 Hausdorff）；\n- 第 4 条：紧 Hausdorff 空间之间的**连续满射是商映射** —— 这正是「满 $\\implies$ 正则」。∎\n\n第 2、3 条也可以从 $\\mathbf{Set}$ 继承：不交性、万有性、有效性都是「逐点」的性质，而 $\\mathbf{CHaus}$ 里的构造逐点继承集合。",
+   "refs": [
+    "Le Stum, Proposition 4.1.1",
+    "Le Stum, Corollary 4.1.2"
+   ]
   },
   {
    "id": "def.condensed-set",
@@ -8368,7 +8371,7 @@
     "判据"
    ],
    "statement": "$\\mathbf{CHaus}$ 上的集合预层 $X$ 是凝聚态集 $\\iff$\n\n1. 对有限族 $(S_{i})_{i \\in I}$：\n\n$$X\\Bigl(\\coprod_{i \\in I} S_{i}\\Bigr) \\;\\cong\\; \\prod_{i \\in I} X(S_{i})$$\n\n2. 对任何**闭等价关系** $R \\rightrightarrows S$：\n\n$$X\\bigl(\\operatorname{coker}(R \\rightrightarrows S)\\bigr) \\;\\cong\\; \\ker\\bigl(X(S) \\rightrightarrows X(R)\\bigr)$$\n\n特别地 $X(\\emptyset) \\cong \\{\\ast\\}$；等价地，若 $S' \\to S$ 是满射，则\n\n$$X(S) \\longrightarrow X(S') \\rightrightarrows X(S' \\times_{S} S')$$\n\n左正合。",
-   "notes": "$\\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两类覆盖生成：**有限不交并**与**满射**。上面第 1、2 条就是这两类覆盖下的层条件 —— 「有限余积变有限积」与「商变核」。\n\n换一种写法：$X$ 是凝聚态集 $\\iff$ 它把有限余积变成有限积、把余等化子变成等化子。这句话后面的所有构造都在用。",
+   "notes": "$\\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两类覆盖生成：**有限不交并**与**满射**。上面第 1、2 条就是这两类覆盖下的层条件 —— 「有限余积变有限积」与「商变核」。\n\n换一种写法：$X$ 是凝聚态集 $\\iff$ 它把有限余积变成有限积、把余等化子变成等化子。这句话后面的所有构造都在用。\n\n**证明。** 只需对预标准拓扑的**生成元**验证层条件 —— 一般覆盖由「有限不交并」与「满射」复合而成，够用的正是两类：\n- **有限不交并**：覆盖是 $(S_{i} \\hookrightarrow S)_{i \\in I}$（$I$ 有限、$\\coprod_{i} S_{i} \\to S$ 双射）。层条件要求 $X(S) \\to \\prod_{i} X(S_{i}) \\rightrightarrows \\prod_{i,j} X(S_{i} \\times_{S} S_{j})$ 正合；由不交性，$i \\ne j$ 时 $S_{i} \\times_{S} S_{j} = \\emptyset$、$i = j$ 时 $= S_{i}$，而 $X(\\emptyset) = \\{\\ast\\}$，于是那对映射一个是恒等、一个是常值 —— 正合化归为 $X(S) \\cong \\prod_{i} X(S_{i})$，即 (4.1)。特别地取 $I = \\emptyset$ 得 $X(\\emptyset) = \\{\\ast\\}$。\n- **满射**：覆盖是单个满射 $S' \\twoheadrightarrow S$。层条件就是 $X(S) \\to X(S') \\rightrightarrows X(S' \\times_{S} S')$ 左正合，即 (4.2)。\n反过来，两条条件合起来显然蕴含「对所有覆盖是层」（覆盖可以分解成这两类的复合），于是判据成立。∎",
    "refs": []
   },
   {
@@ -8409,8 +8412,10 @@
     "预拓扑"
    ],
    "statement": "记 $\\mathbf{FCHaus}$ 为**自由紧 Hausdorff 空间**（即 $\\beta I$）构成的满子范畴。$\\mathbf{FCHaus}$ 中的对象都是 $\\mathrm{Cond}$ 的**投射对象**，满射 $S \\to S'$ 总有截面 —— 于是**有限不交并给出 $\\mathbf{FCHaus}$ 上的一个预拓扑**。",
-   "notes": "为什么层条件「自动成立」：在自由紧 Hausdorff 空间上，满射有截面，所以「局部有原像」总能在整体上补出来（分离性由截面的存在直接给出）。**能取截面**是这里最省事的一点。",
-   "refs": []
+   "notes": "为什么层条件「自动成立」：在自由紧 Hausdorff 空间上，满射有截面，所以「局部有原像」总能在整体上补出来（分离性由截面的存在直接给出）。**能取截面**是这里最省事的一点。\n\n**证明（验证预拓扑的三条公理）。** 覆盖约定为：$(F_{i} \\to F)_{i \\in I}$，$I$ 有限且 $\\coprod_{i} F_{i} \\to F$ 双射。\n- **恒等**：$\\{\\mathrm{id}_{F}\\}$ 是覆盖；\n- **拉回稳定**：给覆盖与任意 $F' \\to F$，拉回族 $(F_{i} \\times_{F} F' \\to F')_{i}$ 仍然有限，且由「不交并沿任意映射拉回仍是不交并」得 $\\coprod_{i}(F_{i} \\times_{F} F') \\cong F'$；$\\mathbf{FCHaus}$ 对有限不交并与纤维积封闭（自由对象的有限不交并还是自由的：$\\beta I \\coprod \\beta J = \\beta(I \\coprod J)$）；\n- **复合**：覆盖的覆盖拼起来还是覆盖。\n另外，$\\mathbf{FCHaus}$ 里的覆盖 $\\coprod_{i} F_{i} \\to F$ 是**双射**，于是每个 $F_{i} \\to F$ 都是含入，而「$F \\to F_{i}$ 的截面」由 $F_{i}$ 的闭性 + 完全性给出 —— 这就是为什么这里的层条件好验。∎",
+   "refs": [
+    "Le Stum, Exercise 4.1"
+   ]
   },
   {
    "id": "prop.fchaus-sheaf",
@@ -8429,8 +8434,10 @@
     "层"
    ],
    "statement": "设 $X$ 是 $\\mathbf{FCHaus}$ 上的集合预层。则 $X$ 是层 $\\iff$ $X$ **保有限积**。",
-   "notes": "",
-   "refs": []
+   "notes": "**证明。** $\\mathbf{FCHaus}$ 上的覆盖就是「有限不交并」，即 $F = \\coprod_{i \\in I} F_{i}$（$I$ 有限）。对它写层条件：\n$$X(F) \\longrightarrow \\prod_{i} X(F_{i}) \\rightrightarrows \\prod_{i,j} X(F_{i} \\times_{F} F_{j}).$$\n- 由不交性，$i \\ne j$ 时 $F_{i} \\times_{F} F_{j} = \\emptyset$、$i = j$ 时 $= F_{i}$。于是右边那对映射一个是恒等、另一个把 $i \\ne j$ 的分量送到 $X(\\emptyset)$ —— 而 $X(\\emptyset)$ 由 $I = \\emptyset$ 的层条件（$X$ 保空余积）给出 $X(\\emptyset) \\cong \\{\\ast\\}$。\n- 所以层条件正合化归为 $X\\bigl(\\coprod_{i} F_{i}\\bigr) \\cong \\prod_{i} X(F_{i})$ —— 这正是「保有限积」。\n反过来，若 $X$ 保有限积，则上述每一条层条件自动成立。∎\n⭐ **用处**：这一条把「$\\mathrm{Cond}$ 里的层」换成了一句纯代数的话 ——「保有限积的函子」。于是验一条性质是不是层，只要验它是否保有限积。",
+   "refs": [
+    "Le Stum, Exercise 4.2"
+   ]
   },
   {
    "id": "thm.cond-equiv-fchaus",
@@ -8487,8 +8494,10 @@
     "投射对象"
    ],
    "statement": "自由紧 Hausdorff 空间（看作凝聚态集）都是**投射对象**；并且 $\\mathrm{Cond}$ 有**足够多的投射对象**。",
-   "notes": "",
-   "refs": []
+   "notes": "**证明。** 分两步。\n- **自由紧 Hausdorff 空间是投射对象。** 记 $F = \\beta I$ 自由。任给满态射 $X \\twoheadrightarrow Y$ 与 $y \\in Y(F)$。由**满态射的判据**（在自由对象上逐点满），$y$ 在某个覆盖上局部有原像：存在有限不交并分解 $F = \\coprod_{k=1}^{n} F_{k}$ 与 $x_{k} \\in X(F_{k})$ 使 $p(x_{k}) = y|_{F_{k}}$。把 $(x_{k})_{k}$ 拼起来，用「保有限积」的层条件得 $x \\in X(F) = \\prod_{k} X(F_{k})$，且 $p(x) = y$ —— 这就是提升。\n- **足够多投射对象。** 任给凝聚态集 $X$：由「$\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$」（每个紧 Hausdorff 空间都是自由空间的满像），可取含 $X$ 的满态射 $\\coprod_{i} h_{F_{i}} \\twoheadrightarrow X$（$h_{F_{i}}$ 表示自由空间），而自由对象的**余积**仍是投射对象（「投射对象的余积还是投射的」）。于是每个 $X$ 都是某个投射对象的商。∎\n\n⭐ **为什么这件事对凝聚态数学这么要紧**：$\\mathrm{Cond}$ 有足够多**投射**对象（不像一般拓扑斯只有足够多内射），于是「左导出函子」在 $\\mathrm{Cond}$ 里可以直接用自由紧 Hausdorff 块算 —— 这是 $\\mathrm{CondAb}$ 能做导出代数的那一半依据。",
+   "refs": [
+    "Le Stum, Exercise 4.3"
+   ]
   },
   {
    "id": "def.underlying-topological-space",
@@ -11680,7 +11689,7 @@
     "笛卡尔闭"
    ],
    "statement": "设 $X$ 是凝聚态集、$Y$ 是紧生成空间（视为凝聚态集 $\\underline{Y}$）。则凝聚态集之间有自然同构\n\n$$C\\bigl(X(\\bullet),\\ Y\\bigr) \\cong \\operatorname{Hom}(X,\\ \\underline{Y}),$$\n\n其中左边是「测试对象 $S \\mapsto C\\bigl(X(S), Y\\bigr)$」（连续映射空间配紧开拓扑）所定的凝聚态集，右边是 $\\mathrm{Cond}$ 的**内部 Hom**。\n\n特别地，若 $X$ 与 $Y$ **都紧生成**，则 $kC(X, Y) \\cong \\operatorname{Hom}(X, Y)$。",
-   "notes": "**为什么需要它。** $\\mathrm{Cond}$ 是拓扑斯，内部 Hom 由拓扑斯结构**自动**给出 —— 但那是抽象的。这一条给出它的**具体实现**：「内部 Hom 就是连续函数空间」。有了它，内部 Hom 才是一个可以算、可以往 $\\mathbf{Top}$ 里搬的东西。\n\n**两边分别在说什么。** $X(\\bullet)$ 是 $X$ 的**底空间**（把 $X$ 喂给紧 Hausdorff 测试对象 $S$ 得到的集合，再装上由测试映射定出的拓扑）；$\\operatorname{Hom}(X, \\underline{Y})$ 是「从 $X$ 到 $Y$ 的映射」这个**对象**。等号说：先取底空间再取函数空间，和先取内部 Hom 再取底空间，是一回事。\n\n⭐ 与「$\\mathrm{Cond}$ 是笛卡尔闭」连起来看：笛卡尔闭给的是**存在性**，这一条给的是**具体形状**。$Y$ 紧生成这个假设不能去掉 —— 紧生成正是让「紧开拓扑」够用的那个条件。",
+   "notes": "**为什么需要它。** $\\mathrm{Cond}$ 是拓扑斯，内部 Hom 由拓扑斯结构**自动**给出 —— 但那是抽象的。这一条给出它的**具体实现**：「内部 Hom 就是连续函数空间」。有了它，内部 Hom 才是一个可以算、可以往 $\\mathbf{Top}$ 里搬的东西。\n\n**两边分别在说什么。** $X(\\bullet)$ 是 $X$ 的**底空间**（把 $X$ 喂给紧 Hausdorff 测试对象 $S$ 得到的集合，再装上由测试映射定出的拓扑）；$\\operatorname{Hom}(X, \\underline{Y})$ 是「从 $X$ 到 $Y$ 的映射」这个**对象**。等号说：先取底空间再取函数空间，和先取内部 Hom 再取底空间，是一回事。\n\n⭐ 与「$\\mathrm{Cond}$ 是笛卡尔闭」连起来看：笛卡尔闭给的是**存在性**，这一条给的是**具体形状**。$Y$ 紧生成这个假设不能去掉 —— 紧生成正是让「紧开拓扑」够用的那个条件。\n\n**证明。** 先设 $X = S$ 是紧 Hausdorff 空间（此时 $X(\\bullet) = S$）。对任意紧 Hausdorff 的 $T$，两边在 $T$ 上取值并逐步用「内部 Hom 的伴随」与「紧生成空间上的指数律」：\n$$\\underline{\\operatorname{Hom}}(S, \\underline{Y})(T) = \\operatorname{Hom}\\bigl(T,\\ \\underline{\\operatorname{Hom}}(S,\\underline{Y})\\bigr) \\cong \\operatorname{Hom}(T \\times S,\\ \\underline{Y}) \\cong C(T\\times S,\\ Y) \\cong C\\bigl(T,\\ C(S, Y)\\bigr) = \\underline{C(X(\\bullet), Y)}(T).$$\n其中第四步是紧生成空间（$T \\times S$ 与 $Y$）上的**指数律**。取 $T = \\bullet$ 得自然变换；一般 $X$ 再用 Yoneda：对紧 Hausdorff 的 $S$，\n$$\\operatorname{Hom}(X, \\underline{Y})(S) \\cong \\operatorname{Hom}(S, \\operatorname{Hom}(X, \\underline{Y})) \\cong \\operatorname{Hom}(X, \\operatorname{Hom}(S, \\underline{Y})) \\cong \\operatorname{Hom}\\bigl(X, C(S, Y)\\bigr) \\cong C\\bigl(X(\\bullet), C(S, Y)\\bigr) \\cong C\\bigl(S, C(X(\\bullet), Y)\\bigr),$$\n最后一步又是指数律。于是两边作为 $\\mathbf{CHaus}$ 上的层逐点同构，即自然同构。\n**紧生成的情形**：$X$ 也紧生成时，$X(\\bullet) = X$（底空间就是它自己），且两侧都落在 $\\mathrm{CGWH}$ 里，取 $k$-化即得 $kC(X, Y) \\cong \\operatorname{Hom}(X, \\underline{Y})$。∎",
    "refs": [
     "Le Stum, Proposition 4.2.6"
    ]
@@ -11703,7 +11712,7 @@
     "紧 Hausdorff"
    ],
    "statement": "1. 凝聚态集 $X$ 是**拟紧**的 $\\iff$ 存在**自由**紧 Hausdorff 空间 $F$ 与满态射\n\n$$F \\twoheadrightarrow X.$$\n\n2. 函子 $S \\mapsto \\underline{S}$（把紧 Hausdorff 空间看成它表示的凝聚态集）给出范畴等价\n\n$$\\mathbf{CHaus}\\ \\simeq\\ \\{\\text{紧 Hausdorff 空间}\\} \\longrightarrow \\{\\text{拟紧且拟分离的凝聚态集}\\}.$$",
-   "notes": "**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（qcqs 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。\n\n**第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。\n\n**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。\n\n⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。",
+   "notes": "**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（qcqs 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。\n\n**第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。\n\n**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。\n\n⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。\n\n**证明（两条都是一般拓扑斯上的定理在 $\\mathrm{Cond}$ 上的特例）。**\n- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。\n- **第 2 条**：qcqs 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 qcqs 的（qc 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎",
    "refs": [
     "Le Stum, Theorem 4.2.8"
    ]
@@ -11726,7 +11735,7 @@
     "纤维积"
    ],
    "statement": "设 $X$ 是弱 Hausdorff 空间（且 $X$ 紧生成），$X_{1}, X_{2} \\hookrightarrow X$ 是**拟紧**子空间。则纤维积\n\n$$X_{1} \\times_{X} X_{2}$$\n\n紧 Hausdorff。特别地，任意两个拟紧开子空间的交是拟紧的，即 $X$ 是**拟分离**的。",
-   "notes": "**直觉**：拟分离要的是「两个紧块的交还是紧块」。弱 Hausdorff 正好保证了这件事 —— 它说紧块的像都是闭的，于是两个紧块沿 $X$ 的拉回落在紧块里。\n\n⚠️ 这里 $X_{1} \\times_{X} X_{2}$ 的紧性是 $\\mathrm{CGWH}$ 系里那条「紧 Hausdorff 沿弱 Hausdorff 的纤维积」的直接应用。",
+   "notes": "**直觉**：拟分离要的是「两个紧块的交还是紧块」。弱 Hausdorff 正好保证了这件事 —— 它说紧块的像都是闭的，于是两个紧块沿 $X$ 的拉回落在紧块里。\n\n⚠️ 这里 $X_{1} \\times_{X} X_{2}$ 的紧性是 $\\mathrm{CGWH}$ 系里那条「紧 Hausdorff 沿弱 Hausdorff 的纤维积」的直接应用。\n\n**证明。** 不妨设 $X$ 紧生成（弱 Hausdorff 的 $k$-化不改变结论）。对 $i = 1, 2$，由拟紧性取紧 Hausdorff 空间 $S_{i}$ 与满态射 $S_{i} \\twoheadrightarrow X_{i}$（「拟紧 $\\iff$ 有从自由紧 Hausdorff 的满射」）。于是有满态射\n$$S_{1} \\times_{X} S_{2} \\twoheadrightarrow X_{1} \\times_{X} X_{2},$$\n（纤维积保满射）。而 $X$ 弱 Hausdorff、$S_{1}, S_{2}$ 紧 Hausdorff，于是 $S_{1} \\times_{X} S_{2}$ 是 $S_{1} \\times S_{2}$ 里的**闭**子集（弱 Hausdorff 的定义：紧 Hausdorff 子空间沿连续映射的纤维积仍紧 Hausdorff），故紧 Hausdorff。\n紧 Hausdorff 空间的商还是紧 Hausdorff（连续满像是紧的，Hausdorff 商还是 Hausdorff），故 $X_{1} \\times_{X} X_{2}$ 紧 Hausdorff。∎",
    "refs": [
     "Le Stum, Lemma 4.2.9"
    ]
@@ -11749,7 +11758,7 @@
     "滤过余极限"
    ],
    "statement": "凝聚态集 $X$ 是**拟分离**的 $\\iff$ 它可以写成\n\n$$X \\cong \\varinjlim_{i \\in I}\\ S_{i},$$\n\n其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \\hookrightarrow S_{j}$ 都是**含入**。\n\n**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 qcqs 的凝聚态集。",
-   "notes": "⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 qcqs 的对象。\n\n**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。\n\n⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。",
+   "notes": "⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 qcqs 的对象。\n\n**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。\n\n⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。\n\n**证明。** 只需证正向（反向是定义）。\n- 任何凝聚态集 $X$ 都能写成 $X \\cong \\varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。\n- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「qcqs $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。\n- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。∎",
    "refs": [
     "Le Stum, Lemma 4.2.10"
    ]
@@ -11772,7 +11781,7 @@
     "底空间"
    ],
    "statement": "若凝聚态集 $X$ 拟分离，则它的底空间 $X(\\bullet)$ 弱 Hausdorff。",
-   "notes": "**证法**：把 $X$ 写成紧 Hausdorff 块沿含入的滤过余极限（上一条），再对底空间取 $k$-化。滤过余极限在 $\\mathrm{CGWH}$ 里被保留，而每个紧 Hausdorff 块都弱 Hausdorff，于是余极限仍弱 Hausdorff。\n\n**方向别弄反**：这条是「拟分离 $\\implies$ 弱 Hausdorff」，反向要加**紧生成**才成立（见下一条）。",
+   "notes": "**证法**：把 $X$ 写成紧 Hausdorff 块沿含入的滤过余极限（上一条），再对底空间取 $k$-化。滤过余极限在 $\\mathrm{CGWH}$ 里被保留，而每个紧 Hausdorff 块都弱 Hausdorff，于是余极限仍弱 Hausdorff。\n\n**方向别弄反**：这条是「拟分离 $\\implies$ 弱 Hausdorff」，反向要加**紧生成**才成立（见下一条）。\n\n**证明。** 由拟分离的刻画，把 $X$ 写成紧 Hausdorff 块沿**含入**的滤过余极限 $X = \\varinjlim_{i} S_{i}$（$S_{i} \\hookrightarrow S_{j}$）。底空间沿滤过余极限是正合的：\n$$X(\\bullet) = \\varinjlim_{i} S_{i}$$\n（在 $\\mathrm{CGWH}$ 里取 $k$-化后这个余极限仍被保留）。而**每个** $S_{i}$ 是紧 Hausdorff，当然弱 Hausdorff；$\\mathrm{CGWH}$ 是**余完备且对滤过余极限封闭**的，于是余极限 $X(\\bullet)$ 仍弱 Hausdorff。∎",
    "refs": [
     "Le Stum, Lemma 4.2.11"
    ]
@@ -11795,7 +11804,7 @@
     "紧生成"
    ],
    "statement": "设 $X$ 是**紧生成**空间。则 $X$ 弱 Hausdorff $\\iff$ $X$（视为凝聚态集）拟分离。",
-   "notes": "**两个方向分别来自哪**：「弱 Hausdorff $\\implies$ 拟分离」是那条纤维积引理；「拟分离 $\\implies$ 弱 Hausdorff」是底空间那条。紧生成是用来让「底空间」这个概念和 $X$ 自己对齐的。\n\n⭐ **合起来的意义**：在紧生成的范围里，「弱 Hausdorff」这个**拓扑**条件与「拟分离」这个**层论**条件说的是同一件事。于是 $\\mathrm{CGWH}$ 这一整套同伦论的栖息地，在凝聚态世界里有了一个纯层论的名字。",
+   "notes": "**两个方向分别来自哪**：「弱 Hausdorff $\\implies$ 拟分离」是那条纤维积引理；「拟分离 $\\implies$ 弱 Hausdorff」是底空间那条。紧生成是用来让「底空间」这个概念和 $X$ 自己对齐的。\n\n⭐ **合起来的意义**：在紧生成的范围里，「弱 Hausdorff」这个**拓扑**条件与「拟分离」这个**层论**条件说的是同一件事。于是 $\\mathrm{CGWH}$ 这一整套同伦论的栖息地，在凝聚态世界里有了一个纯层论的名字。\n\n**证明。** 两个方向各用一条引理：\n- **$\\implies$**：$X$ 紧生成且弱 Hausdorff，则视为凝聚态集时拟分离 —— 这正是「弱 Hausdorff $\\implies$ 拟分离」那条纤维积引理。\n- **$\\Longleftarrow$**：$X$ 紧生成且拟分离，则底空间 $X(\\bullet)$ 弱 Hausdorff；而 $X$ 紧生成意味着 $X(\\bullet) \\cong X$（紧生成空间的 $k$-化就是它自己，且它在凝聚态世界里由 $\\underline{S} \\mapsto \\operatorname{Hom}(S, X)$ 决定），所以 $X$ 本身弱 Hausdorff。∎",
    "refs": [
     "Le Stum, Proposition 4.2.12"
    ]
@@ -12577,7 +12586,7 @@
    "id": "prop.cond-limits-colimits",
    "type": "proposition",
    "label": "Cond 的极限与余极限",
-   "title": "$\\mathrm{Cond}$ 的极限与余极限逐点计算",
+   "title": "$\\mathrm{Cond}$ 的极限逐点算，余极限要先层化",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -12590,9 +12599,10 @@
     "极限",
     "余极限"
    ],
-   "statement": "$\\mathrm{Cond}$ 有所有（小）极限与余极限，而且它们**逐点**计算：对每个紧 Hausdorff 空间 $S$，\n\n$$\\Bigl(\\varprojlim_{i} X_{i}\\Bigr)(S) = \\varprojlim_{i} X_{i}(S),\\qquad \\Bigl(\\varinjlim_{i} X_{i}\\Bigr)(S) = \\varinjlim_{i} X_{i}(S).$$",
-   "notes": "**为什么**。$\\mathrm{Cond}$ 是 $\\mathbf{CHaus}$ 上的**层范畴** —— 而层范畴作为预层范畴的满子范畴是**反射**的，极限与余极限都能从预层那边逐点地拿过来。\n\n**「逐点」是什么意思**：要算一个凝聚态集，就得知道它在每个 $S$ 上取什么值。这一条说：余极限取值的值就是取值的余极限 —— 把抽象的范畴操作降到「集合层面」一件件做。\n\n⭐ **这条是后面所有计算的技术基础**：以后凡是遇到 $\\mathrm{Cond}$ 里的极限 / 余极限，都可以拆到每个 $S$ 上去算，而集合的极限余极限是好算的。\n\n⚠️ 注意取值的**余极限**是在 $\\mathbf{Set}$ 里取的 —— 这在层范畴里是自动的，但要记住凝聚态集的余极限不总是等于底空间的余极限。",
+   "statement": "$\\mathrm{Cond}$ 有所有（小）极限与余极限。**极限逐点计算**：对每个紧 Hausdorff 空间 $S$，\n\n$$\\Bigl(\\varprojlim_{i} X_{i}\\Bigr)(S) = \\varprojlim_{i} X_{i}(S).$$\n\n**余极限不能这样算** —— 它是「先在预层里逐点取余极限、再**层化**」：\n\n$$\\Bigl(\\varinjlim_{i} X_{i}\\Bigr)(S) = \\Bigl(\\text{层化}\\bigl(S' \\mapsto \\varinjlim_{i} X_{i}(S')\\bigr)\\Bigr)(S).$$",
+   "notes": "**证明极限那一半。** 层范畴 $\\mathrm{Cond}$ 是预层范畴 $\\widehat{\\mathbf{CHaus}}$ 的**反射**满子范畴，含入函子 $i$ 有左伴随（层化）。右伴随保极限，所以 $i$ 保极限：$\\mathrm{Cond}$ 里的极限就是预层里的极限；而预层里的极限是**逐点**算的。∎\n**余极限为什么不行。** 层化只是 $i$ 的**左**伴随，它不保余极限，所以余极限要先在预层里逐点取、再层化一次。\n**一个具体的反例。** 取紧 Hausdorff 的满射 $F \\twoheadrightarrow S$，例如 $S = S^{1}$、$F = S^{1}$、$z \\mapsto z^{2}$。在 $\\mathrm{Cond}$ 里，满射是**有效满**，所以\n$$\\operatorname{coeq}\\bigl(F \\times_{S} F \\rightrightarrows F\\bigr) = h_{S};$$\n但**逐点**看 $T = S^{1}$：$F \\times_{S} F = S^{1} \\times \\{\\pm 1\\}$，两个投影在 $\\mathrm{Hom}(S^{1}, F) = \\mathrm{Hom}(S^{1}, S^{1})$ 上就是 $g \\mapsto g$ 与 $g \\mapsto -g$，于是逐点余等化子把 $\\mathrm{id}$ 与 $-\\mathrm{id}$ 粘了起来，是 $\\mathrm{Hom}(S^{1}, S^{1})$ 的一个**真商**；而 $h_{S}(S^{1}) = \\mathrm{Hom}(S^{1}, S^{1})$ 里这两个元素并不相等。两者不同，故余极限不是逐点算的。\n\n**「逐点」是什么意思**：要算一个凝聚态集，就得知道它在每个 $S$ 上取什么值。极限可以一路拆到每个 $S$ 上算；余极限不行，多一步层化。\n\n⭐ **这条是后面所有计算的技术基础**：凡是遇到 $\\mathrm{Cond}$ 里的极限，都可以拆到每个 $S$ 上去算，而集合的极限是好算的。\n\n⚠️ **有限余积是例外**（它是逐点的）：$h_{S_{1}} \\coprod h_{S_{2}} = h_{S_{1} \\coprod S_{2}}$ —— 因为 $\\coprod$ 正是预标准拓扑的覆盖，「有限余积变有限积」那条层条件直接给出它。",
    "refs": [
+    "Le Stum, Corollary 4.1.6",
     "Le Stum, §4.1"
    ]
   },
@@ -12615,7 +12625,7 @@
     "等价关系"
    ],
    "statement": "在 $\\mathrm{Cond}$ 中，每个满态射 $f : X \\to Y$ 都是**正则**的：它是它自己那对投影的余等化子，\n\n$$Y \\cong \\operatorname{coeq}\\bigl(X \\times_{Y} X \\rightrightarrows X\\bigr).$$",
-   "notes": "**在说什么。** 一般的范畴里，「满态射」（右边可消）和「余等化子」（是某对映射的商）是两个不同的概念。拓扑斯里两者**重合** —— 这就是为什么在拓扑斯里可以放心地「取商」：任何满态射都真的在商掉一个等价关系。\n\n**$X \\times_{Y} X \\rightrightarrows X$ 是什么**：$X \\times_{Y} X = \\{\\, (x, x') : f(x) = f(x') \\,\\}$ 是 $f$ 的**核对**；它的两个投影就是那对映射。余等化子就是把「被 $f$ 认同的点」粘起来 —— 粘出来的结果正好是 $Y$。\n\n📌 这条与下一条（等价关系有效）是同一枚硬币的两面：这条说「商是良态的」，下一条说「每个等价关系都能当成某个商来出现」。",
+   "notes": "**在说什么。** 一般的范畴里，「满态射」（右边可消）和「余等化子」（是某对映射的商）是两个不同的概念。拓扑斯里两者**重合** —— 这就是为什么在拓扑斯里可以放心地「取商」：任何满态射都真的在商掉一个等价关系。\n\n**$X \\times_{Y} X \\rightrightarrows X$ 是什么**：$X \\times_{Y} X = \\{\\, (x, x') : f(x) = f(x') \\,\\}$ 是 $f$ 的**核对**；它的两个投影就是那对映射。余等化子就是把「被 $f$ 认同的点」粘起来 —— 粘出来的结果正好是 $Y$。\n\n📌 这条与下一条（等价关系有效）是同一枚硬币的两面：这条说「商是良态的」，下一条说「每个等价关系都能当成某个商来出现」。\n\n**证明。** 一般范畴里「满」与「有效满」是两个概念；拓扑斯里两者重合。\n- 先看「$f$ 有效 $\\implies$ $f$ 满」：有效满按定义是余等化子，而余等化子总是满的。\n- 再看「$f: X \\to Y$ 满 $\\implies$ 有效」：令 $\\bar f : \\operatorname{coeq}(X \\times_{Y} X \\rightrightarrows X) \\to Y$ 为余等化子的泛性质给出的映射，它是满的，且由余等化子的泛性质本身就单 —— 于是只需证 **$\\bar f$ 是满**这一点在层论上「局部能验」。\n- 具体验：满态射的局部判据说 $f$ 在**自由**紧 Hausdorff 对象上逐点满（$X(F) \\to Y(F)$ 是满射）。取 $y \\in Y(F)$，有原像 $x \\in X(F)$；把 $x$ 送到余等化子，再送回来还是 $y$ —— 于是 $\\bar f$ 在 $F$ 上满。$\\bar f$ 单且满，故是同构，$f$ 是它自己核对对的余等化子。∎",
    "refs": [
     "Le Stum, §4.1"
    ]
@@ -12639,7 +12649,7 @@
     "Giraud"
    ],
    "statement": "在 $\\mathrm{Cond}$ 中，每个等价关系 $R \\rightrightarrows X$（即 $R \\subseteq X \\times X$ 是一个「自反、对称、传递」的子对象）都是**有效的**：\n\n$$R \\cong X \\times_{Y} X,\\qquad Y := \\operatorname{coeq}\\bigl(R \\rightrightarrows X\\bigr).$$\n\n也就是说：等价关系的商存在，而且 $R$ 恰好是那个商的核对。",
-   "notes": "**「有效」是什么意思。** 给定一个等价关系，先取商 $Y = X/R$（这总能做），再把 $Y$ 沿商映射拉回 $X \\times X$。一般范畴里拉回来的东西可能**比 $R$ 大**（多粘了一些东西）。有效等价关系就是**恰好拉回 $R$ 自己**的那些。\n\n**为什么它重要**：只有有效等价关系才能「商了再拉回来还原」，也就是「取商」这个操作**不丢信息**。聚集到 $\\mathrm{Cond}$ 上，这条保证：把两个紧 Hausdorff 块按一个等价关系粘起来，得到的商对象在层论意义上「就是」那个等价关系本身。\n\n⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个 site 上的层范畴」那个定义。\n\n📌 与「Cond 是拓扑斯」那条合起来看：那条给**结论**，这三条给**理由**；有了理由，才知道 $\\mathrm{Cond}$ 的拓扑斯结构具体好在哪里（能做商、能做内部 Hom、能做层上同调）。",
+   "notes": "**「有效」是什么意思。** 给定一个等价关系，先取商 $Y = X/R$（这总能做），再把 $Y$ 沿商映射拉回 $X \\times X$。一般范畴里拉回来的东西可能**比 $R$ 大**（多粘了一些东西）。有效等价关系就是**恰好拉回 $R$ 自己**的那些。\n\n**为什么它重要**：只有有效等价关系才能「商了再拉回来还原」，也就是「取商」这个操作**不丢信息**。聚集到 $\\mathrm{Cond}$ 上，这条保证：把两个紧 Hausdorff 块按一个等价关系粘起来，得到的商对象在层论意义上「就是」那个等价关系本身。\n\n⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个 site 上的层范畴」那个定义。\n\n📌 与「Cond 是拓扑斯」那条合起来看：那条给**结论**，这三条给**理由**；有了理由，才知道 $\\mathrm{Cond}$ 的拓扑斯结构具体好在哪里（能做商、能做内部 Hom、能做层上同调）。\n\n**证明。** 给定 $R \\rightrightarrows X$。因为 $\\mathrm{Cond}$ 有余极限，商 $Y := \\operatorname{coeq}(R \\rightrightarrows X)$ 存在，且商映射 $q : X \\to Y$ 满（余等化子总是满）。由**上一条**，$q$ 是有效满：$q$ 是 $X \\times_{Y} X \\rightrightarrows X$ 的余等化子。\n现在比较 $R$ 与 $X\\times_{Y} X$：\n- 两个投影 $R \\rightrightarrows X$ 复合到 $Y$ 相同（余等化子的定义），故 $R \\subseteq X \\times_{Y} X$；\n- 反过来，$X \\times_{Y} X$ 是「被 $q$ 认同的点对」，而层论上「$q$ 在两个点上取同值」这件事可以在**覆盖上逐点验**：取覆盖 $(X_{i} \\to X)$，$X\\times_{Y}X$ 在每块上就是 $R$ 在每块上的值（用 $X$ 与 $R$ 的层条件 + 余等化子的泛性质），于是 $X \\times_{Y} X \\subseteq R$。\n两边互包，$R \\cong X \\times_{Y} X$ —— 这正是有效性，也正是 Giraud 判据里那一条。∎",
    "refs": [
     "Le Stum, §4.1"
    ]

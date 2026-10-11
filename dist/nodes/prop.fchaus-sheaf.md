@@ -9,3 +9,7 @@ layer 17 · 命题 · 凝聚态集 · 凝聚态数学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.cond-equiv-fchaus` Cond 即 FCHaus 上的层
+
+refs: Le Stum, Exercise 4.2
+
+> 说明见 `notes/prop.fchaus-sheaf.md`

@@ -9,3 +9,7 @@ layer 15 · 命题 · 凝聚态集 · 凝聚态数学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.cond-epi` 凝聚态集满态射的判据
+
+refs: Le Stum, Exercise 4.3
+
+> 说明见 `notes/prop.cond-projectives.md`

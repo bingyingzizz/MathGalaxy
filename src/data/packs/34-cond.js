@@ -38,9 +38,15 @@ window.MG = window.MG || {};
         '$$\\varprojlim{}^{\\mathbf{CHaus}} D \\;\\cong\\; \\varprojlim{}^{\\mathbf{Top}} D, \\qquad \\varinjlim{}^{\\mathbf{CHaus}} D \\;\\cong\\; \\beta\\Bigl(\\varinjlim{}^{\\mathbf{Top}} D\\Bigr)$$',
         '',
         '**极限在 $\\mathbf{Top}$ 里怎么算就怎么算**（反射子范畴对极限封闭），**余极限要先在 $\\mathbf{Top}$ 里算、再用 $\\beta$ 紧化回去**（左伴随保余极限）。',
-        '第 2、3 条从 $\\mathbf{Set}$ 继承：不交性、万有性、有效性都是「逐点」的性质，而 $\\mathbf{CHaus}$ 里的构造逐点继承集合。',
-        '第 4 条是紧 Hausdorff 的特色：那里的满射都正则。'
-      ].join('\n\n')
+        ['**证明。** 关键在于「哪些 $\\mathbf{Top}$ 里的余极限**同时也是** $\\mathbf{CHaus}$ 里的余极限」：',
+          '- 四条性质在 $\\mathbf{Set}$（拓扑斯）里都成立；而 $\\mathbf{CHaus}$ 的极限在 $\\mathbf{Top}$ 里逐点算（$\\mathbf{CHaus}$ 对极限封闭），所以涉及极限的部分直接从 $\\mathbf{Set}$ 继承；',
+          '- 一个**本身还是紧 Hausdorff** 的 $\\mathbf{Top}$ 余极限，就是 $\\mathbf{CHaus}$ 里的余极限 —— **有限余积**、**满射的余等化子**、**闭等价关系的余等化子**都属于这一类；',
+          '- 于是：有限余积不交（先在 $\\mathbf{Set}$ 里不交，再注意到那个余积本身紧 Hausdorff）、满射万有（拉回仍是满射，仍在紧 Hausdorff 里）、闭等价关系有效（商对象紧 Hausdorff）；',
+          '- 第 4 条：紧 Hausdorff 空间之间的**连续满射是商映射** —— 这正是「满 $\\implies$ 正则」。∎'
+        ].join('\n'),
+        '第 2、3 条也可以从 $\\mathbf{Set}$ 继承：不交性、万有性、有效性都是「逐点」的性质，而 $\\mathbf{CHaus}$ 里的构造逐点继承集合。'
+      ].join('\n\n'),
+      refs: ['Le Stum, Proposition 4.1.1', 'Le Stum, Corollary 4.1.2']
     },
 
     /* ---------------------------------------------------- 凝聚态集 */
@@ -93,7 +99,15 @@ window.MG = window.MG || {};
         '',
         '左正合。'
       ].join('\n'),
-      notes: '$\\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两类覆盖生成：**有限不交并**与**满射**。上面第 1、2 条就是这两类覆盖下的层条件 —— 「有限余积变有限积」与「商变核」。\n\n换一种写法：$X$ 是凝聚态集 $\\iff$ 它把有限余积变成有限积、把余等化子变成等化子。这句话后面的所有构造都在用。'
+      notes: [
+        '$\\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两类覆盖生成：**有限不交并**与**满射**。上面第 1、2 条就是这两类覆盖下的层条件 —— 「有限余积变有限积」与「商变核」。',
+        '换一种写法：$X$ 是凝聚态集 $\\iff$ 它把有限余积变成有限积、把余等化子变成等化子。这句话后面的所有构造都在用。',
+        ['**证明。** 只需对预标准拓扑的**生成元**验证层条件 —— 一般覆盖由「有限不交并」与「满射」复合而成，够用的正是两类：',
+          '- **有限不交并**：覆盖是 $(S_{i} \\hookrightarrow S)_{i \\in I}$（$I$ 有限、$\\coprod_{i} S_{i} \\to S$ 双射）。层条件要求 $X(S) \\to \\prod_{i} X(S_{i}) \\rightrightarrows \\prod_{i,j} X(S_{i} \\times_{S} S_{j})$ 正合；由不交性，$i \\ne j$ 时 $S_{i} \\times_{S} S_{j} = \\emptyset$、$i = j$ 时 $= S_{i}$，而 $X(\\emptyset) = \\{\\ast\\}$，于是那对映射一个是恒等、一个是常值 —— 正合化归为 $X(S) \\cong \\prod_{i} X(S_{i})$，即 (4.1)。特别地取 $I = \\emptyset$ 得 $X(\\emptyset) = \\{\\ast\\}$。',
+          '- **满射**：覆盖是单个满射 $S\' \\twoheadrightarrow S$。层条件就是 $X(S) \\to X(S\') \\rightrightarrows X(S\' \\times_{S} S\')$ 左正合，即 (4.2)。',
+          '反过来，两条条件合起来显然蕴含「对所有覆盖是层」（覆盖可以分解成这两类的复合），于是判据成立。∎'
+        ].join('\n')
+      ].join('\n\n')
     },
 
     /* ------------------------------------------------ Cond 是拓扑斯 */
@@ -133,7 +147,16 @@ window.MG = window.MG || {};
       statement: [
         '记 $\\mathbf{FCHaus}$ 为**自由紧 Hausdorff 空间**（即 $\\beta I$）构成的满子范畴。$\\mathbf{FCHaus}$ 中的对象都是 $\\mathrm{Cond}$ 的**投射对象**，满射 $S \\to S\'$ 总有截面 —— 于是**有限不交并给出 $\\mathbf{FCHaus}$ 上的一个预拓扑**。'
       ].join('\n'),
-      notes: '为什么层条件「自动成立」：在自由紧 Hausdorff 空间上，满射有截面，所以「局部有原像」总能在整体上补出来（分离性由截面的存在直接给出）。**能取截面**是这里最省事的一点。'
+      notes: [
+        '为什么层条件「自动成立」：在自由紧 Hausdorff 空间上，满射有截面，所以「局部有原像」总能在整体上补出来（分离性由截面的存在直接给出）。**能取截面**是这里最省事的一点。',
+        ['**证明（验证预拓扑的三条公理）。** 覆盖约定为：$(F_{i} \\to F)_{i \\in I}$，$I$ 有限且 $\\coprod_{i} F_{i} \\to F$ 双射。',
+          '- **恒等**：$\\{\\mathrm{id}_{F}\\}$ 是覆盖；',
+          '- **拉回稳定**：给覆盖与任意 $F\' \\to F$，拉回族 $(F_{i} \\times_{F} F\' \\to F\')_{i}$ 仍然有限，且由「不交并沿任意映射拉回仍是不交并」得 $\\coprod_{i}(F_{i} \\times_{F} F\') \\cong F\'$；$\\mathbf{FCHaus}$ 对有限不交并与纤维积封闭（自由对象的有限不交并还是自由的：$\\beta I \\coprod \\beta J = \\beta(I \\coprod J)$）；',
+          '- **复合**：覆盖的覆盖拼起来还是覆盖。',
+          '另外，$\\mathbf{FCHaus}$ 里的覆盖 $\\coprod_{i} F_{i} \\to F$ 是**双射**，于是每个 $F_{i} \\to F$ 都是含入，而「$F \\to F_{i}$ 的截面」由 $F_{i}$ 的闭性 + 完全性给出 —— 这就是为什么这里的层条件好验。∎'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 4.1']
     },
 
     /* ------------------------------------------- FCHaus 上层的判据 */
@@ -145,7 +168,17 @@ window.MG = window.MG || {};
       title: '自由紧 Hausforff 空间上的层 $\\iff$ 保有限积',
       regions: ['condensed'],
       tags: ['凝聚态', '自由', '层'],
-      statement: '设 $X$ 是 $\\mathbf{FCHaus}$ 上的集合预层。则 $X$ 是层 $\\iff$ $X$ **保有限积**。'
+      statement: '设 $X$ 是 $\\mathbf{FCHaus}$ 上的集合预层。则 $X$ 是层 $\\iff$ $X$ **保有限积**。',
+      notes: [
+        ['**证明。** $\\mathbf{FCHaus}$ 上的覆盖就是「有限不交并」，即 $F = \\coprod_{i \\in I} F_{i}$（$I$ 有限）。对它写层条件：',
+          '$$X(F) \\longrightarrow \\prod_{i} X(F_{i}) \\rightrightarrows \\prod_{i,j} X(F_{i} \\times_{F} F_{j}).$$',
+          '- 由不交性，$i \\ne j$ 时 $F_{i} \\times_{F} F_{j} = \\emptyset$、$i = j$ 时 $= F_{i}$。于是右边那对映射一个是恒等、另一个把 $i \\ne j$ 的分量送到 $X(\\emptyset)$ —— 而 $X(\\emptyset)$ 由 $I = \\emptyset$ 的层条件（$X$ 保空余积）给出 $X(\\emptyset) \\cong \\{\\ast\\}$。',
+          '- 所以层条件正合化归为 $X\\bigl(\\coprod_{i} F_{i}\\bigr) \\cong \\prod_{i} X(F_{i})$ —— 这正是「保有限积」。',
+          '反过来，若 $X$ 保有限积，则上述每一条层条件自动成立。∎',
+          '⭐ **用处**：这一条把「$\\mathrm{Cond}$ 里的层」换成了一句纯代数的话 ——「保有限积的函子」。于是验一条性质是不是层，只要验它是否保有限积。'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 4.2']
     },
 
     /* ------------------------------------------------ Cond ≅ FCHaus */
@@ -188,7 +221,15 @@ window.MG = window.MG || {};
       tags: ['凝聚态', '投射对象'],
       statement: [
         '自由紧 Hausdorff 空间（看作凝聚态集）都是**投射对象**；并且 $\\mathrm{Cond}$ 有**足够多的投射对象**。'
-      ].join('\n')
+      ].join('\n'),
+      notes: [
+        ['**证明。** 分两步。',
+          '- **自由紧 Hausdorff 空间是投射对象。** 记 $F = \\beta I$ 自由。任给满态射 $X \\twoheadrightarrow Y$ 与 $y \\in Y(F)$。由**满态射的判据**（在自由对象上逐点满），$y$ 在某个覆盖上局部有原像：存在有限不交并分解 $F = \\coprod_{k=1}^{n} F_{k}$ 与 $x_{k} \\in X(F_{k})$ 使 $p(x_{k}) = y|_{F_{k}}$。把 $(x_{k})_{k}$ 拼起来，用「保有限积」的层条件得 $x \\in X(F) = \\prod_{k} X(F_{k})$，且 $p(x) = y$ —— 这就是提升。',
+          '- **足够多投射对象。** 任给凝聚态集 $X$：由「$\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$」（每个紧 Hausdorff 空间都是自由空间的满像），可取含 $X$ 的满态射 $\\coprod_{i} h_{F_{i}} \\twoheadrightarrow X$（$h_{F_{i}}$ 表示自由空间），而自由对象的**余积**仍是投射对象（「投射对象的余积还是投射的」）。于是每个 $X$ 都是某个投射对象的商。∎'
+        ].join('\n'),
+        '⭐ **为什么这件事对凝聚态数学这么要紧**：$\\mathrm{Cond}$ 有足够多**投射**对象（不像一般拓扑斯只有足够多内射），于是「左导出函子」在 $\\mathrm{Cond}$ 里可以直接用自由紧 Hausdorff 块算 —— 这是 $\\mathrm{CondAb}$ 能做导出代数的那一半依据。'
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 4.3']
     },
 
     /* ------------------------------------------------ 底拓扑空间 */
