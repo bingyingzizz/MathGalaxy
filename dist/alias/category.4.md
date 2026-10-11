@@ -1,6 +1,8 @@
 # 问法 → 节点 · 范畴论
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/category.md`
 
+- 什么是内 Hom → def.internal-hom def.tensor-abelian-sheaf def.adjoint
+
 - 层的张量积怎么算 → def.tensor-abelian-sheaf def.internal-hom thm.sheafification
 
 - 什么是局部化 → def.localization prop.calculus-of-fractions def.homotopy-category
@@ -20,7 +22,5 @@
 - 可表函子保极限吗 → prop.representable-preserves-limits def.representable lem.yoneda
 
 - 什么是群对象 → def.group-object def.monoid-object ex.ab-of-categories
-
-- 拓扑阿贝尔群是怎么定义的 → ex.ab-of-categories def.group-object def.topo-ab-group
 
 > 续见 alias/category.5.md

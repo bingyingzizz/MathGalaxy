@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-11T05:00:04.493Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-11T05:43:51.397Z
 > 9 星系 / 45 星团 / 542 节点 / 1136 连线（强边 1127，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -5962,10 +5962,10 @@ $$\begin{array}{ccc} Y & \xrightarrow{\;\mathrm{id}\;} & Y \\[2pt] {\scriptstyle
 ### 星团：图与极限
 > 造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子。
 
-#### 交换图　`def.commutative-diagram`
-*定义*　交换图（Commutative Diagram）
+#### 图与交换图　`def.commutative-diagram`
+*定义*　图与交换图（Diagram / Commutative Diagram）
 
-设 $I$ 是一个**小范畴**（只有一个小集合那么多对象与态射）。$\mathcal{C}$ 中**以 $I$ 为索引范畴的图**（也叫 $I$ 上的交换图）就是一个函子
+设 $I$ 是一个**小范畴**（只有一个小集合那么多对象与态射）。$\mathcal{C}$ 中**以 $I$ 为索引范畴的图**就是一个函子
 
 $$D : I \longrightarrow \mathcal{C}$$
 
@@ -5973,7 +5973,13 @@ $$D : I \longrightarrow \mathcal{C}$$
 
 $$\mathcal{C}^{I} := \operatorname{Hom}(I, \mathcal{C})$$
 
-之所以叫「交换图」，是因为 $I$ 里的复合 $\beta \circ \alpha$ 被 $D$ 送到 $\mathcal{C}$ 里的复合 $D(\beta) \circ D(\alpha)$ —— 函子的定义里已经写死了两个复合相等，所以图上沿不同路径走结果一样，这正是「交换」。
+若 $I$ 里任意两个对象之间**至多一个态射**（这样的 $I$ 叫**预序**），则称 $D$ 为 $I$ 上的**交换图**。
+
+**交换性是索引范畴的性质，不是函子给的。** 「$I$ 是预序」当且仅当「任何 $I$-形状的图都交换」：此时 $I$ 里同起终点的两条路径复合出来都是 $\operatorname{Hom}(i, j)$ 里那**唯一**的态射，必然相等。
+
+**一般情形只有「形状」。** $I$ 不是预序时 $D$ 只能叫 $I$-形状的图：函子**不要求**平行的 $f \ne g : i \rightrightarrows j$ 被送到相等的箭头。最典型的不交换图是**平行对** $\bullet \rightrightarrows \bullet$，它的极限与余极限正是**等化子**与**余等化子**；经典交换方块则对应预序 $\{A \le B \le D,\ A \le C \le D\}$。
+
+**纸面上的读法。** 画在纸上的图只是**呈现**：给一个有向图 $G$ 的顶点送对象、箭头送态射。说它**交换**，意思是任意两条同起终点的路径在标注下的复合**相等** —— 这是一条**要检查的条件**，等价于标注下降到 $G$ 自由生成的范畴的商上仍是函子。
 
 $I$ 叫**索引范畴**：它只规定图的形状，不规定内容。
 
@@ -13473,7 +13479,7 @@ Gleason 定理把 $\mathbf{CHaus}$ 的**投射对象**认了出来。
 
 命题的另一边是「**单位** $\eta$ 是同构」。
 
-#### 定义引用：「交换图」→ 极限即伴随　`def-dep.diagram-limit-adjoint`
+#### 定义引用：「图与交换图」→ 极限即伴随　`def-dep.diagram-limit-adjoint`
 
 命题里的 $\Delta : \mathcal{C} \to \mathcal{C}^{I}$ 是**常图函子**，$\mathcal{C}^{I}$ 是图范畴。
 
@@ -13485,7 +13491,7 @@ SAFT 的结论是「$G$ 有**左伴随**」。
 
 命题谈的是**反射子范畴**里的极限与余极限。
 
-#### 定义引用：「交换图」→ 滤过余极限正合　`def-dep.diagram-filtered`
+#### 定义引用：「图与交换图」→ 滤过余极限正合　`def-dep.diagram-filtered`
 
 余极限函子 $\varinjlim : \mathbf{Set}^{I} \to \mathbf{Set}$ 的定义域是**图范畴**。
 
@@ -14289,15 +14295,15 @@ $M \times_{s,t} M = \{ (f,g) \in M \times M : s(f) = t(g) \}$ 是 $M \times M$ �
 
 等价要求两个复合**自然同构**于恒等函子，这个「$\cong$」只有靠自然变换才说得出来。
 
-#### 定义引用：「函子」→ 交换图　`def-dep.functor-diagram`
+#### 定义引用：「函子」→ 图与交换图　`def-dep.functor-diagram`
 
 一张图就是一个**函子** $D : I \to \mathcal{C}$，索引范畴 $I$ 是它的定义域。
 
-#### 定义引用：「范畴」→ 交换图　`def-dep.category-diagram`
+#### 定义引用：「范畴」→ 图与交换图　`def-dep.category-diagram`
 
 索引范畴与靶都是**范畴** —— 图这个概念整个建立在范畴之上。
 
-#### 定义引用：「交换图」→ 单纯对象　`def-dep.diagram-simplicial`
+#### 定义引用：「图与交换图」→ 单纯对象　`def-dep.diagram-simplicial`
 
 单纯对象就是一个图 $\Delta^{\mathrm{op}} \to \mathcal{C}$ —— 只不过索引范畴换成了**单纯形范畴** $\Delta$。
 
@@ -14313,7 +14319,7 @@ $\Delta$ 的态射是**单调映射** $[n] \to [m]$，面映射与退化映射�
 
 锥就是常图到 $D$ 的**自然变换** $\Delta X \implies D$，相容性条件正是自然性方块。
 
-#### 定义引用：「交换图」→ 极限　`def-dep.diagram-limit`
+#### 定义引用：「图与交换图」→ 极限　`def-dep.diagram-limit`
 
 极限是**图**的极限 —— 先有图，才谈得上它的泛锥。
 
@@ -14693,7 +14699,7 @@ Grothendieck 范畴 = AB5 范畴**加一个生成元**。
 
 它是**阿贝尔群值层**。
 
-#### 定义引用：「交换图」→ 上链复形　`def-dep.diagram-complex`
+#### 定义引用：「图与交换图」→ 上链复形　`def-dep.diagram-complex`
 
 一个（长）序列就是**有序集上的图** $(\mathbb{Z}, \le) \to \mathcal{C}$。
 
@@ -15193,9 +15199,9 @@ $(I,+)$ 是加法**子群**；商环先做加法商的**商群**。
 
 滤过性是**范畴**的一条性质。
 
-#### 定义引用：「交换图」→ 滤过范畴　`def-dep.filtered-diagram`
+#### 定义引用：「图与交换图」→ 滤过范畴　`def-dep.filtered-diagram`
 
-「每个有限**图**都有余锥」说的是交换图。
+「每个有限**图**都有余锥」说的是这个函子意义上的**图**，形状由索引范畴给出。
 
 #### 定义引用：「滤过范畴」→ 滤过范畴可换成有向集　`def-dep.filtereddir-filtered`
 

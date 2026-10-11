@@ -17,21 +17,25 @@ window.MG = window.MG || {};
       id: 'def.commutative-diagram',
       cluster: 'cat.limit',
       type: 'definition',
-      label: '交换图',
-      title: '交换图（Commutative Diagram）',
+      label: '图与交换图',
+      title: '图与交换图（Diagram / Commutative Diagram）',
       regions: ['category'],
       tags: ['范畴论', '图', '索引范畴'],
       statement: [
-        '设 $I$ 是一个**小范畴**（只有一个小集合那么多对象与态射）。$\\mathcal{C}$ 中**以 $I$ 为索引范畴的图**（也叫 $I$ 上的交换图）就是一个函子',
+        '设 $I$ 是一个**小范畴**（只有一个小集合那么多对象与态射）。$\\mathcal{C}$ 中**以 $I$ 为索引范畴的图**就是一个函子',
         '',
         '$$D : I \\longrightarrow \\mathcal{C}$$',
         '',
         '所有这样的图以自然变换为态射，组成范畴',
         '',
-        '$$\\mathcal{C}^{I} := \\operatorname{Hom}(I, \\mathcal{C})$$'
+        '$$\\mathcal{C}^{I} := \\operatorname{Hom}(I, \\mathcal{C})$$',
+        '',
+        '若 $I$ 里任意两个对象之间**至多一个态射**（这样的 $I$ 叫**预序**），则称 $D$ 为 $I$ 上的**交换图**。'
       ].join('\n'),
       notes: [
-        '之所以叫「交换图」，是因为 $I$ 里的复合 $\\beta \\circ \\alpha$ 被 $D$ 送到 $\\mathcal{C}$ 里的复合 $D(\\beta) \\circ D(\\alpha)$ —— 函子的定义里已经写死了两个复合相等，所以图上沿不同路径走结果一样，这正是「交换」。',
+        '**交换性是索引范畴的性质，不是函子给的。** 「$I$ 是预序」当且仅当「任何 $I$-形状的图都交换」：此时 $I$ 里同起终点的两条路径复合出来都是 $\\operatorname{Hom}(i, j)$ 里那**唯一**的态射，必然相等。',
+        '**一般情形只有「形状」。** $I$ 不是预序时 $D$ 只能叫 $I$-形状的图：函子**不要求**平行的 $f \\ne g : i \\rightrightarrows j$ 被送到相等的箭头。最典型的不交换图是**平行对** $\\bullet \\rightrightarrows \\bullet$，它的极限与余极限正是**等化子**与**余等化子**；经典交换方块则对应预序 $\\{A \\le B \\le D,\\ A \\le C \\le D\\}$。',
+        '**纸面上的读法。** 画在纸上的图只是**呈现**：给一个有向图 $G$ 的顶点送对象、箭头送态射。说它**交换**，意思是任意两条同起终点的路径在标注下的复合**相等** —— 这是一条**要检查的条件**，等价于标注下降到 $G$ 自由生成的范畴的商上仍是函子。',
         '$I$ 叫**索引范畴**：它只规定图的形状，不规定内容。',
         '沿一个函子 $\\lambda : I \\to J$ 预复合，得到**重索引** $\\lambda^{*} : \\mathcal{C}^{J} \\to \\mathcal{C}^{I}$：把 $J$ 形状的图截成 $I$ 形状的图。特别地，到终范畴的唯一函子 $I \\to \\mathbf{1}$ 诱导**常图函子** $\\Delta : \\mathcal{C} \\longrightarrow \\mathcal{C}^{I}$，它把对象 $X$ 送到「每个位置都是 $X$、每条箭头都是 $1_X$」的常图。'
       ].join('\n\n')

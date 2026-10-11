@@ -12,7 +12,7 @@ layer 10 · 定义 · 图与极限 · 范畴论
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.filtered-category.md
-- `def.commutative-diagram` 交换图：用到了定义 交换图　proofs/def-dep.filtered-diagram.md
+- `def.commutative-diagram` 图与交换图：用到了定义 图与交换图　proofs/def-dep.filtered-diagram.md
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.filtered-directed` 滤过范畴可换成有向集 用

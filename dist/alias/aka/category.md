@@ -21,7 +21,7 @@
 
 - 范畴等价 | equivalence of categories | 范畴同构 → def.cat-equivalence
 
-- 交换图 | commutative diagram | 索引范畴 | 图范畴 | 常图函子 → def.commutative-diagram
+- 交换图 | commutative diagram | diagram | 图（函子） | 索引范畴 | 图范畴 | 常图函子 | 预序 → def.commutative-diagram
 
 - 单纯对象 | simplicial object | 单纯形范畴 | 面映射 | 退化映射 → def.simplicial
 

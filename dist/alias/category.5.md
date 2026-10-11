@@ -1,6 +1,8 @@
 # 问法 → 节点 · 范畴论
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/category.md`
 
+- 拓扑阿贝尔群是怎么定义的 → ex.ab-of-categories def.group-object def.topo-ab-group
+
 - 环的局部化是什么 → prop.ring-localization def.localization prop.calculus-of-fractions
 
 - 覆盖筛的等价条件 → prop.sieve-covering-equivalent prop.covering-sieve-epi def.sieve
@@ -18,7 +20,5 @@
 - 凝聚态上同调和层上同调什么关系 → thm.dyckhoff def.sheaf-cohomology prop.chaus-cech-eq-h
 
 - Dyckhoff 定理说的是什么 → thm.dyckhoff def.sheaf-cohomology def.locally-compact
-
-- Giraud 判据是什么 → prop.cond-equivalence-effective prop.cond-epi-regular thm.giraud
 
 > 续见 alias/category.6.md

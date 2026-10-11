@@ -10,6 +10,6 @@ $$D \mapsto \lim D$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.limit` 极限：用到了定义 极限　proofs/def-link.limit-adjoint-criterion.md
-- `def.commutative-diagram` 交换图：用到了定义 交换图　proofs/def-dep.diagram-limit-adjoint.md
+- `def.commutative-diagram` 图与交换图：用到了定义 图与交换图　proofs/def-dep.diagram-limit-adjoint.md
 
 > 说明见 `notes/prop.limit-adjoint.md`

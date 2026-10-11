@@ -14,7 +14,7 @@ $$[0], \ [1], \ [2], \ \ldots, \ [n], \ \ldots$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.commutative-diagram` 交换图：用到了定义 交换图　proofs/def-dep.diagram-simplicial.md
+- `def.commutative-diagram` 图与交换图：用到了定义 图与交换图　proofs/def-dep.diagram-simplicial.md
 - `def.function` 函数：用到了定义 函数　proofs/def-dep.function-simplicial.md
 
 ## 它能推出什么 / 谁在用它

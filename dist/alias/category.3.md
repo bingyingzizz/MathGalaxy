@@ -1,6 +1,10 @@
 # 问法 → 节点 · 范畴论
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/category.md`
 
+- Kan 延拓是什么 → def.kan-extension ex.kan-extension def.adjoint
+
+- 层是什么 → def.sheaf thm.sheaf-descent def.presheaf
+
 - 什么是 Grothendieck 拓扑 → def.grothendieck-topology def.pretopology def.sieve
 
 - 预层怎么变成层 → thm.sheafification def.cech-functor prop.cech-properties
@@ -22,7 +26,5 @@
 - 内射对象怎么判断 → prop.injective-criterion def.projective-object def.mono
 
 - 什么是阿贝尔层 → def.abelian-sheaf def.presheaf-valued def.sheaf
-
-- 什么是内 Hom → def.internal-hom def.tensor-abelian-sheaf def.adjoint
 
 > 续见 alias/category.4.md

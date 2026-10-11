@@ -3,7 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 `def.cat-equivalence` 范畴等价 用
-- 被 `def.commutative-diagram` 交换图 用
+- 被 `def.commutative-diagram` 图与交换图 用
 - 被 `def.presheaf` 预层 用
 - 被 `def.presheaf-cat` 预层范畴 用
 - 被 `def.representable` 表示函子 用

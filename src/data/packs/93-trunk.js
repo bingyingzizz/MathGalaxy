@@ -106,7 +106,7 @@ MG.trunk = [
   'def.category',              //  7 层  范畴（本线的入口）
   'def.functor',               //  8 层  函子
   'def.natural-transformation',//  9 层  自然变换（函子之间的翻译）
-  'def.commutative-diagram',   //  9 层  交换图（图 = 函子）
+  'def.commutative-diagram',   //  9 层  图与交换图（图 = 函子；索引范畴是预序时才叫交换图）
   'def.adjoint',               //  9 层  伴随（两个方向互为最佳）
   'def.presheaf',              //  9 层  预层（反变函子）
   'def.limit',                 // 11 层  极限（泛锥）

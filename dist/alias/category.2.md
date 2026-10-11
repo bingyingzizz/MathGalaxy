@@ -1,6 +1,10 @@
 # 问法 → 节点 · 范畴论
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/category.md`
 
+- 单态射和满态射是什么 → def.mono def.subobject prop.sheaf-mono-epi-iso
+
+- 什么是终对象和始对象 → def.final-initial def.limit def.elements-category
+
 - 米田引理说的是什么 → lem.yoneda def.representable prop.yoneda-embedding
 
 - 什么是可表示函子 → def.representable lem.yoneda thm.represented-criterion
@@ -18,9 +22,5 @@
 - 什么时候一个函子有伴随 → thm.right-adjoint-criterion thm.saft def.representable
 
 - 什么是反射子范畴 → def.reflective-subcategory prop.chaus-reflective prop.cg-coreflective
-
-- Kan 延拓是什么 → def.kan-extension ex.kan-extension def.adjoint
-
-- 层是什么 → def.sheaf thm.sheaf-descent def.presheaf
 
 > 续见 alias/category.3.md

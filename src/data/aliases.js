@@ -329,7 +329,7 @@ MG.aliases = {
     { id: 'def.cat-equivalence', aka: ['范畴等价', 'equivalence of categories', '范畴同构'] },
 
     /* 图与极限 */
-    { id: 'def.commutative-diagram', aka: ['交换图', 'commutative diagram', '索引范畴', '图范畴', '常图函子'] },
+    { id: 'def.commutative-diagram', aka: ['交换图', 'commutative diagram', 'diagram', '图（函子）', '索引范畴', '图范畴', '常图函子', '预序'] },
     { id: 'def.simplicial', aka: ['单纯对象', 'simplicial object', '单纯形范畴', '面映射', '退化映射'] },
     { id: 'def.cone', aka: ['锥', 'cone', '余锥', 'cocone'] },
     { id: 'def.limit', aka: ['极限', 'limit', '余极限', 'colimit', '泛锥', '有限极限'] },
@@ -752,6 +752,8 @@ MG.aliases = {
     { q: '什么是全忠实函子', to: ['def.ff-faithful', 'def.cat-equivalence', 'prop.yoneda-embedding'] },
     { q: '什么时候两个范畴算等价', to: ['def.cat-equivalence', 'def.ff-faithful', 'def.essentially-surjective'] },
     { q: '什么是交换图', to: ['def.commutative-diagram', 'def.cone', 'def.limit'] },
+    { q: '为什么交换图会交换', to: ['def.commutative-diagram'] },
+    { q: '图不交换怎么办', to: ['def.commutative-diagram', 'def.equalizer'] },
 
     /* — 极限与余极限 — */
     { q: '极限是什么', to: ['def.limit', 'def.cone', 'def.commutative-diagram'] },

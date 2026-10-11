@@ -13,6 +13,10 @@
 
 - 什么是交换图 → def.commutative-diagram def.cone def.limit
 
+- 为什么交换图会交换 → def.commutative-diagram
+
+- 图不交换怎么办 → def.commutative-diagram def.equalizer
+
 - 极限是什么 → def.limit def.cone def.commutative-diagram
 
 - 什么是泛性质 → def.limit def.elements-category def.representable
@@ -22,9 +26,5 @@
 - 拉回和推出是什么 → def.fibered-product def.limit def.subobject
 
 - 等化子和核是什么 → def.equalizer def.mono prop.cohomology-exact-sequence
-
-- 单态射和满态射是什么 → def.mono def.subobject prop.sheaf-mono-epi-iso
-
-- 什么是终对象和始对象 → def.final-initial def.limit def.elements-category
 
 > 续见 alias/category.2.md

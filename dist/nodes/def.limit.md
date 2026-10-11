@@ -13,7 +13,7 @@ $$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.commutative-diagram` 交换图：用到了定义 交换图　proofs/def-dep.diagram-limit.md
+- `def.commutative-diagram` 图与交换图：用到了定义 图与交换图　proofs/def-dep.diagram-limit.md
 - `def.cone` 锥：用到了定义 锥　proofs/def-dep.cone-limit.md
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.category-limit.md
 

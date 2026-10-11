@@ -1,6 +1,8 @@
 # 问法 → 节点 · 范畴论
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/category.md`
 
+- Giraud 判据是什么 → prop.cond-equivalence-effective prop.cond-epi-regular thm.giraud
+
 - 什么是正合列 → def.exact-sequence def.split-exact thm.long-exact
 
 - 层上同调怎么算 → method.simplicial-cohomology def.sheaf-cohomology def.cech-cohomology

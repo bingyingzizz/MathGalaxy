@@ -721,7 +721,7 @@ window.MG = window.MG || {};
     ['def.category', 'def.filtered-category', 'def-dep.filtered-category',
       '滤过性是**范畴**的一条性质。'],
     ['def.commutative-diagram', 'def.filtered-category', 'def-dep.filtered-diagram',
-      '「每个有限**图**都有余锥」说的是交换图。'],
+      '「每个有限**图**都有余锥」说的是这个函子意义上的**图**，形状由索引范畴给出。'],
     ['def.filtered-category', 'prop.filtered-directed', 'def-dep.filtereddir-filtered',
       '命题的输入是**滤过范畴**。'],
     ['def.chain', 'prop.filtered-directed', 'def-dep.filtereddir-chain',
