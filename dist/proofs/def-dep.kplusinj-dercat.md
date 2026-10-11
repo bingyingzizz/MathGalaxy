@@ -3,4 +3,4 @@
 
 `def.derived-category` 导出范畴 → `thm.k-plus-injectives` 内射复形就是导出范畴
 
-结论是 $K^{+}(\mathcal{I}) simeq D^{+}(\mathcal{A})$。
+结论是 $K^{+}(\mathcal{I}) \simeq D^{+}(\mathcal{A})$。

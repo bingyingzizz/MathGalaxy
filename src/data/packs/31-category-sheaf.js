@@ -430,7 +430,7 @@ window.MG = window.MG || {};
         '',
         '**（$\\implies$）** 层给出 $\\operatorname{Hom}(h_{X}, F) \\cong \\operatorname{Hom}(R, F)$，两边用米田与上面的计算展开就是所要的正合。**（$\\Longleftarrow$）** 反过来，正合序列给出的那个 $\\ker$ 与 $F(X)$ 的同构，对所有由覆盖族生成的筛 $R$ 成立；而每个 $R \\in J(X)$ 都由某个覆盖族生成，所以对一切 $R \\in J(X)$ 都有 $F(X) \\cong \\operatorname{Hom}(R, F)$，即 $F$ 是层。∎',
         '',
-        '⚠️ 细看上面 $\alpha, \\beta$ 的定义：$\\operatorname{Hom}(R, F)$ 里的相容性条件要通过 $R$ 的**态射结构**（两个投影 $X_{i} \\times_{X} X_{j} \\rightrightarrows X_{i}$）才能写下来，这正是为什么必须用**纤维积**而不是「交」。'
+        '⚠️ 细看上面 $\\alpha, \\beta$ 的定义：$\\operatorname{Hom}(R, F)$ 里的相容性条件要通过 $R$ 的**态射结构**（两个投影 $X_{i} \\times_{X} X_{j} \\rightrightarrows X_{i}$）才能写下来，这正是为什么必须用**纤维积**而不是「交」。'
       ].join('\n'),
       note: '这条把「层」这个抽象定义落到可以逐项验证的形状：**一串截面、两个限制映射、取核**。实际验层时走的都是这一条。'
     },

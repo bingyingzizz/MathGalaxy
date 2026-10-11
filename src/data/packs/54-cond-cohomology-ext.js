@@ -268,7 +268,7 @@ window.MG = window.MG || {};
       tags: ['凝聚态数学', 'RHom', 'Banach 空间', 'Ex 8.15'],
       statement: '设 $M, N$ 是有限维实 Banach 空间。则 $\\operatorname{RHom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{R}}(M, N)$，其中右边集中在 **0 次**。',
       notes: [
-        '**和「实 Banach 在紧 Haus 上零调」是一条链上的**：$\\mathbb{Z}$-线性映射 $M \\to N$ 已经是 $\\mathbb{R}$-线性的（因为 $M$ 是实向量空间，$\\mathbb{Z}$-线性 + 连续 $\implies$ $\\mathbb{R}$-线性），于是没有高阶修正项。',
+        '**和「实 Banach 在紧 Haus 上零调」是一条链上的**：$\\mathbb{Z}$-线性映射 $M \\to N$ 已经是 $\\mathbb{R}$-线性的（因为 $M$ 是实向量空间，$\\mathbb{Z}$-线性 + 连续 $\\implies$ $\\mathbb{R}$-线性），于是没有高阶修正项。',
         '⚠️ 只在**有限维**时这么干净。无限维的实 Banach 空间之间一般会有高阶项 —— 那正是「实 Banach 在紧 Haus 上零调」那条定理要用到的技术难度所在。'
       ].join('\n\n'),
       refs: ['Le Stum, Exercise 8.15']

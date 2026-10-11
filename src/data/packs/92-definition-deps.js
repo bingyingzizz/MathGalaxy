@@ -921,7 +921,7 @@ window.MG = window.MG || {};
     ['def.derived-category', 'prop.hom-k-eq-hom-d', 'def-dep.homkd-dercat',
       '结论说两边相等。'],
     ['def.derived-category', 'thm.k-plus-injectives', 'def-dep.kplusinj-dercat',
-      '结论是 $K^{+}(\\mathcal{I}) \simeq D^{+}(\\mathcal{A})$。'],
+      '结论是 $K^{+}(\\mathcal{I}) \\simeq D^{+}(\\mathcal{A})$。'],
     ['def.functor', 'def.right-derived-functor', 'def-dep.rdf-functor',
       '被求导的是一个**加法函子**。'],
     ['def.cochain-complex', 'def.right-derived-functor', 'def-dep.rdf-complex',
