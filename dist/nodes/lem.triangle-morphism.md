@@ -11,5 +11,4 @@ layer 15 · 引理 · 复形与导出三角 · 同调代数
 - `def.distinguished-triangle` 导出三角：用到了定义 导出三角　proofs/def-dep.triangle-morphism.md
 - `def.homotopy` 同伦：用到了定义 同伦　proofs/def-dep.homotopy-triangle-morphism.md
 
-## 说明
-第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。第 1 条说明三角之间的态射被前两步控制得很紧 —— 这正是三角范畴公理里那条最不明显的要求的来源。
+> 说明见 `notes/lem.triangle-morphism.md`

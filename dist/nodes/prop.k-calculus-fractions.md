@@ -7,3 +7,7 @@ $K(\mathcal{A})$ 关于**拟同构**这一族态射同时允许**左**与**右�
 ## 为什么成立（入边，证明在 proofs/）
 - `prop.calculus-of-fractions` 分式演算下的局部化：用到了定义 分式演算下的局部化　proofs/def-dep.kfrac-fractions.md
 - `def.homotopy-category` 同伦范畴：用到了定义 同伦范畴　proofs/def-dep.kfrac-kcat.md
+
+refs: Le Stum, Proposition 7.2.1
+
+> 说明见 `notes/prop.k-calculus-fractions.md`

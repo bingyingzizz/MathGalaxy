@@ -7,3 +7,7 @@ layer 18 · 命题 · 复形与导出三角 · 同调代数
 ## 为什么成立（入边，证明在 proofs/）
 - `def.ext` 扩展群 Ext：用到了定义 扩展群 Ext　proofs/def-dep.extrhom-ext.md
 - `def.internal-hom` 内 Hom：用到了定义 内 Hom　proofs/def-dep.extrhom-internalhom.md
+
+refs: Le Stum, Proposition 7.2.10
+
+> 说明见 `notes/prop.ext-is-rhom.md`

@@ -1,10 +1,10 @@
 # 内射复形就是导出范畴　`thm.k-plus-injectives`　·　说明
 根 `../`
 
-记 $K^{+}(\mathcal{I})$ 为**上有界内射复形**模同伦构成的范畴。这条说：要算 $D^{+}(\mathcal{A})$ 里的东西，**只需要看内射复形**。
+记 $\mathbf{K}^{+}(\mathcal{I})$ 为**上有界内射复形**模同伦构成的范畴。这条说：要算 $D^{+}(\mathcal{A})$ 里的东西，**只需要看内射复形**。
 
-⭐ **实用价值**：这就是「用内射消解算右导出函子」的合法性来源 —— 右导出函子 $RF$ 的定义本来就要求把复形换成内射复形，这条保证了那一侧的范畴**就是**导出范畴本身，替换不会丢信息。
+**证明：全忠实 + 本质满。**
+- **全忠实**：源与靶都是 $C^{+}(\mathcal{I})$ 里的复形，由「上有界内射复形里 Hom 就是导出 Hom」直接得 $\operatorname{Hom}_{\mathbf{K}}(I^{\bullet}, J^{\bullet}) = \operatorname{Hom}_{D}(I^{\bullet}, J^{\bullet})$，所以含入在 Hom 上是双射。
+- **本质满**：任给 $K^{\bullet} \in C^{+}(\mathcal{A})$，由「足够多内射」可逐项提升，造出**由单射组成**的内射消解 $K^{\bullet} \rightarrowtail I^{\bullet}$（同伦范畴里每步用内射性延拓态射即可，从上往下递推）。消解是拟同构，于是在 $D^{+}(\mathcal{A})$ 里是同构 —— $K^{\bullet}$ 与 $I^{\bullet}$ 同构。
 
-对偶地：有足够多投射时 $K^{-}(\mathcal{P}) \simeq D^{-}(\mathcal{A})$。
-
-📌  **Theorem 7.2.6**。
+> 续见 notes/thm.k-plus-injectives.2.md

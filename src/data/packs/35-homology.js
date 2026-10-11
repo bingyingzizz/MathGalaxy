@@ -205,7 +205,15 @@ window.MG = window.MG || {};
         '1. $w^{2} = 0$（把 $w$ 沿三角的旋转接起来复合两次）；',
         '2. 若 $u, v$ 都是**同伦等价**，则 $w$ 也是。'
       ].join('\n'),
-      notes: '第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。第 1 条说明三角之间的态射被前两步控制得很紧 —— 这正是三角范畴公理里那条最不明显的要求的来源。'
+      notes: [
+        '**证明第 2 条（三角的五引理）。** 取任意 $T \\in \\mathbf{K}(\\mathcal{C})$，对共调函子 $\\operatorname{Hom}_{\\mathbf{K}}(T, -)$ 作用在两个三角上，得两条长正合列，并由 $(u, v, w, u[1], v[1], w[1])$ 连起来：',
+        '',
+        '$$\\begin{array}{ccccccccc} \\operatorname{Hom}(T, K) & \\to & \\operatorname{Hom}(T, L) & \\to & \\operatorname{Hom}(T, M) & \\to & \\operatorname{Hom}(T, K[1]) & \\to & \\operatorname{Hom}(T, L[1]) \\\\ {\\scriptstyle u_{*}}\\big\\downarrow & & {\\scriptstyle v_{*}}\\big\\downarrow & & {\\scriptstyle w_{*}}\\big\\downarrow & & {\\scriptstyle u[1]_{*}}\\big\\downarrow & & {\\scriptstyle v[1]_{*}}\\big\\downarrow \\\\ \\operatorname{Hom}(T, K\') & \\to & \\operatorname{Hom}(T, L\') & \\to & \\operatorname{Hom}(T, M\') & \\to & \\operatorname{Hom}(T, K\'[1]) & \\to & \\operatorname{Hom}(T, L\'[1]) \\end{array}$$',
+        '',
+        '若 $u, v$ 是同伦等价，则 $u_{*}, v_{*}$ 以及它们的平移 $u[1]_{*}, v[1]_{*}$ 都是双射 —— 五引理把中间的 $w_{*}$ 夹成双射。这对**每个** $T$ 都成立，于是由 Yoneda 引理，$w$ 本身就是同伦等价。∎',
+        '**第 1 条**按「把 $w$ 沿三角的旋转接起来」读，讲的是**旋转后那块方形交换**：$h\' \\circ w = u[1] \\circ h$。这条直接由「$(v, w, u[1])$ 是旋转后两个三角之间的态射」给出 —— 旋转之后的图仍然是三角态射，它的方形正是这一块。',
+        '第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。第 1 条说明三角之间的态射被前两步控制得很紧 —— 这正是三角范畴公理里那条最不明显的要求的来源。'
+      ].join('\n\n')
     },
 
     /* -------------------------------------------------------- 同调 */

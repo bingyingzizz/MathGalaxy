@@ -7,3 +7,7 @@ layer 13 · 命题 · 复形与导出三角 · 同调代数
 ## 为什么成立（入边，证明在 proofs/）
 - `def.f-acyclic` F-零调对象：用到了定义 F-零调对象　proofs/def-dep.leray-acyclic.md
 - `def.right-derived-functor` 右导出函子：用到了定义 右导出函子　proofs/def-dep.leray-rdf.md
+
+refs: Le Stum, Proposition 7.2.12
+
+> 说明见 `notes/prop.leray-acyclicity.md`
