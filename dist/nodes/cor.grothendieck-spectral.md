@@ -13,6 +13,7 @@ $$E^{p,q}_{2} = R^{p}G\bigl(R^{q}F(M)\bigr) \;\Longrightarrow\; R^{p+q}(G \circ 
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.derived-functor-exact-factor` 正合因子让谱序列退化
+- ⇒ `thm.leray-spectral-sequence` Leray 谱序列
 
 refs: Le Stum, Corollary 7.2.13；Le Stum, Corollary 7.2.21
 

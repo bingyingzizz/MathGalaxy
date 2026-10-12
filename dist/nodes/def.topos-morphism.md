@@ -15,8 +15,11 @@ $$f^{*} : \mathcal{T}' \longrightarrow \mathcal{T}, \qquad f_{*} : \mathcal{T} \
 
 ## 它能推出什么 / 谁在用它
 - 被 `thm.induced-topos-morphism` 任意函子诱导拓扑斯态射 用
+- 被 `prop.topos-morphism-abelian-adjunction` 拓扑斯态射在阿贝尔群上给出伴随 用
+- 被 `prop.derived-pushforward-composition` 推前的复合 用
 - 被 `prop.topos-morphism-derived` 拓扑斯态射的导出函子 用
-- 被 `prop.cond-slice-topos-morphism` Cond/X 到开集拓扑斯的态射 用
+
+- …另有出边，续页见 `nodes/def.topos-morphism.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §3.3
 

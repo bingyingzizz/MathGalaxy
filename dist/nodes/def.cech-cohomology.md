@@ -11,11 +11,13 @@ $$\check{H}^{n}(X, M^{\bullet}) := \Gamma\bigl(X,\ \check{H}^{n}(M^{\bullet})\bi
 
 ## 它能推出什么 / 谁在用它
 - 被 `lem.cech-finite-disjoint-acyclic` 有限不交覆盖的 Čech 零调 用
+- 被 `prop.cech-higher-cohomology-presheaf` 高次上同调预层没有 Čech 上同调 用
+- 被 `prop.cech-interval-vanishing` 区间上没有高阶 Čech 上同调 用
 - 被 `prop.cech-as-colim` Čech 上同调是沿覆盖筛的余极限 用
 - 被 `thm.cartan-leray` Cartan–Leray 谱序列 用
 - 被 `prop.acyclic-iff-cech` 无环 ⟺ Čech 上同调为零 用
-- 被 `lem.stone-cech-1-bounded` Stone 满射的 Čech 复形 1-有界零调 用
-- 被 `method.simplicial-cohomology` 单纯方法算层上同调 用
+
+- …另有出边，续页见 `nodes/def.cech-cohomology.2.md`
 
 refs: Le Stum, Definition 7.3.5
 

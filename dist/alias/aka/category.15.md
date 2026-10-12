@@ -19,4 +19,10 @@
 
 - Theorem 3.4.2 | Thm 3.4.2 | Corollary 3.4.3 | Cor 3.4.3 → thm.induced-topos-morphism
 
-见 `../../alias.md`。
+- Exercise 7.51 → prop.topos-morphism-abelian-adjunction
+
+- Exercise 7.52 → prop.inverse-image-tensor
+
+- Exercise 7.57 → prop.abelian-slice-adjunction
+
+> 续见 alias/aka/category.16.md

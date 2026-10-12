@@ -2,6 +2,10 @@
 根 `../`　·　第 1 页 `nodes/def.sheaf-cohomology.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.higher-cohomology-presheaf-zero` 高次上同调预层的关联层为零 用
+- 被 `prop.cohomology-functoriality` 上同调的函子性 用
+- 被 `thm.leray-spectral-sequence` Leray 谱序列 用
+- 被 `def.acyclic-sheaf` 无环层 用
 - 被 `prop.chaus-cech-eq-h` 紧 Hausdorff 上 Čech 就是上同调 用
 - 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用
 - 被 `cor.homotopy-invariant-cohomology` 层上同调是同伦不变量 用

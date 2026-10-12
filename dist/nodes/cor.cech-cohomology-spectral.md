@@ -10,6 +10,9 @@ layer 19 · 推论 · 层上同调 · 同调代数
 - `thm.cartan-leray` Cartan–Leray 谱序列 + `prop.cech-as-colim` Čech 上同调是沿覆盖筛的余极限：Cartan–Leray（固定覆盖）$\implies$ 取遍覆盖的谱序列　proofs/imp-link.cartanleray-cechss.md
 - `def.sheaf-cohomology` 层上同调：用到了定义 层上同调　proofs/def-link.cechss-sheafcoh.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.cech-h1-equals-h1` 一次 Čech 就是一次上同调
+
 refs: Le Stum, An introduction to condensed mathematics, Corollary 7.3.8
 
 > 说明见 `notes/cor.cech-cohomology-spectral.md`

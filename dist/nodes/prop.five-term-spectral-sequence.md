@@ -10,6 +10,9 @@ layer 18 · 命题 · 过滤与谱序列 · 同调代数
 - `prop.spectral-degenerate-row` 谱序列的退化行：退化行 $\implies$ 五项正合列　proofs/imp-link.degrow-fiveterm.md
 - `def.spectral-sequence` 谱序列：用到了定义 谱序列　proofs/def-link.fiveterm-ss.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.cech-h1-equals-h1` 一次 Čech 就是一次上同调
+
 refs: Le Stum, An introduction to condensed mathematics, Exercise 7.30
 
 > 说明见 `notes/prop.five-term-spectral-sequence.md`

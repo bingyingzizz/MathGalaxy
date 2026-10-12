@@ -11,4 +11,4 @@
 - cat.yoneda　预层与米田　中心天体 lem.yoneda　13 点
 - cat.adjoint　伴随与反射　中心天体 def.adjoint　17 点
 - cat.sheaf　层与拓扑　中心天体 def.sheaf　24 点
-- cat.topos　拓扑斯　中心天体 def.topos　23 点
+- cat.topos　拓扑斯　中心天体 def.topos　30 点

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:13:00.437Z
-> 9 星系 / 45 星团 / 617 节点 / 1283 连线（强边 1274，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:15:33.687Z
+> 9 星系 / 45 星团 / 632 节点 / 1300 连线（强边 1291，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -8594,6 +8594,103 @@ $$\hat{g} : \widehat{\mathcal{C}} \longrightarrow \widehat{\mathcal{C}'}, \qquad
 
 参考：Le Stum, An introduction to condensed mathematics, Theorem 3.4.2, Corollary 3.4.3
 
+#### 拓扑斯态射在阿贝尔群上给出伴随　`prop.topos-morphism-abelian-adjunction`
+*命题*　命题：$f^{-1} \dashv f_{*}$ 升级到 $\mathcal{T}(\mathbf{Ab})$
+
+设 $f : \mathcal{T} \to \mathcal{T}'$ 是拓扑斯态射。则拉回 $f^{-1} : \mathcal{T}'(\mathbf{Ab}) \to \mathcal{T}(\mathbf{Ab})$ 有**右伴随** $f_{*}$，而且 $f^{-1}$ **正合**。
+
+**证明。** 在底层 $f^{-1} \dashv f_{*}$ 且 $f^{-1}$ 正合 ✓；而阿贝尔群层的结构是**逐点**给的（群运算是态射、等式逐点验证），所以这对伴随连同正合性自动升级到 $\mathbf{Ab}$ 这一层 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.51
+
+#### 拉回与内 Hom、张量积相容　`prop.inverse-image-tensor`
+*命题*　命题：$f_{*}\operatorname{Hom}(f^{-1}M, N) = \operatorname{Hom}(M, f_{*}N)$，$f^{-1}(M \otimes N) \cong f^{-1}M \otimes f^{-1}N$
+
+设 $f : \mathcal{T} \to \mathcal{T}'$ 是拓扑斯态射、$M, N$ 是阿贝尔群层。则
+
+$$f_{*}\operatorname{Hom}_{\mathbb{Z}}\bigl(f^{-1}M,\ N\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ f_{*}N\bigr), \qquad f^{-1}\bigl(M \otimes_{\mathbb{Z}} N\bigr) \cong f^{-1}M \otimes_{\mathbb{Z}} f^{-1}N.$$
+
+**证明。** 第一条把伴随 $f^{-1} \dashv f_{*}$ 与内 Hom 的伴随性串起来 ✓（两边在测试对象上给出的自然同构是同一个）。
+
+第二条：$f^{-1}$ 是左伴随因而**保余极限** ✓，而张量积是幺半结构里的余极限（商的余核）✓；也可以逐点验证 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.52
+
+#### 切片上的正合左伴随　`prop.abelian-slice-adjunction`
+*命题*　命题：$j_{X!} \dashv j_{X}^{-1}$ 且 $j_{X!}$ 正合
+
+设 $\mathcal{T}$ 是拓扑斯、$X \in \mathcal{T}$。则函子
+
+$$j_{X}^{-1} : \mathcal{T}(\mathbf{Ab}) \longrightarrow \mathcal{T}/X(\mathbf{Ab})$$
+
+有**左伴随** $j_{X!}$，而且 $j_{X!}$ **正合**。
+
+**证明。** 预层情形有显式公式
+
+$$j_{S!}M(U) = \bigoplus_{s : U \to S} M(s) ✓$$
+
+它明显是 $j_{S}^{-1}$ 的左伴随 ✓，正合性来自「$\bigoplus$ 与拉回交换」✓。一般拓扑斯上把两边层化即得 ✓（正合性对层化保持，因为层化正合）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.57
+
+#### 切片左伴随作用在 Z 上　`prop.slice-shriek-z`
+*命题*　命题：$j_{X!}\mathbb{Z} = \mathbb{Z}\cdot X$
+
+设 $\mathcal{T}$ 是拓扑斯、$X \in \mathcal{T}$。则
+
+$$j_{X!}\mathbb{Z} \;=\; \mathbb{Z}\cdot X.$$
+
+**证明。** 逐条用伴随：
+
+$$\operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X!}\mathbb{Z},\ M\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z},\ j_{X}^{-1}M\bigr) = \operatorname{Hom}\bigl(\mathbf{1}_{X},\ j_{X}^{-1}M\bigr) = \operatorname{Hom}(X,\ M) ✓$$
+
+最后一式用了「$X$ 上方的终对象给出 $\operatorname{Hom}(\mathbf{1}_{X}, j_X^{-1}M) = M(X) = \operatorname{Hom}(X,M)$」✓。与 $\mathbb{Z}\cdot X$ 的万有性质比对，由米田引理即得 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.58
+
+#### 切片上的上同调就是原上同调　`prop.cohomology-slice-identification`
+*命题*　命题：$H^{n}\bigl(\mathbf{1}_{X}, j_{X}^{-1}M^{\bullet}\bigr) = H^{n}(X, M^{\bullet})$
+
+设 $\mathcal{T}$ 是拓扑斯、$X \in \mathcal{T}$、$M^{\bullet}$ 是阿贝尔群复形。则
+
+$$H^{n}\bigl(\mathbf{1}_{X},\ j_{X}^{-1}M^{\bullet}\bigr) \;=\; H^{n}\bigl(X,\ M^{\bullet}\bigr),$$
+
+其中 $\mathbf{1}_{X}$ 是切片拓扑斯 $\mathcal{T}/X$ 的终对象。
+
+**证明。** 先看 $0$ 次：
+
+$$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z},\ j_{X}^{-1}M\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X!}\mathbb{Z},\ M\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) = M(X) ✓$$
+
+再用「$j_{X}^{-1}$ 有正合左伴随，因而保内射」✓，于是两边的内射消解一一对应，取导出函子即得等式 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.59
+
+#### 内 Hom 的取值　`prop.internal-hom-slice-value`
+*命题*　命题：$\operatorname{Hom}_{\mathbb{Z}}(M, N)(X) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X}^{-1}M, j_{X}^{-1}N\bigr)$
+
+设 $\mathcal{T}$ 是拓扑斯、$X \in \mathcal{T}$、$M, N$ 是阿贝尔群层。则
+
+$$\operatorname{Hom}_{\mathbb{Z}}(M, N)(X) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X!}j_{X}^{-1}M,\ N\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X}^{-1}M,\ j_{X}^{-1}N\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ j_{X*}j_{X}^{-1}N\bigr).$$
+
+**证明。** 每一步都是一次伴随：内 Hom 的取值 $\operatorname{Hom}_{\mathbb{Z}}(M,N)(X) = \operatorname{Hom}_{\mathbb{Z}}(M, N)(\mathbf{1}_{X})$ 与 $\operatorname{Hom}_{\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.60
+
+#### 切片的投影公式　`prop.slice-shriek-projection`
+*命题*　命题：$j_{X!}(M \otimes j_{X}^{-1}N) = j_{X!}M \otimes N$
+
+设 $\mathcal{T}$ 是拓扑斯、$X \in \mathcal{T}$、$M, N$ 是阿贝尔群层。则
+
+$$j_{X!}\bigl(M \otimes_{\mathbb{Z}} j_{X}^{-1}N\bigr) = j_{X!}M \otimes_{\mathbb{Z}} N, \qquad j_{X!}\bigl(j_{X}^{-1}M \otimes_{\mathbb{Z}} N\bigr) = M \otimes_{\mathbb{Z}} j_{X!}N.$$
+
+特别地
+
+$$M\cdot X \;:=\; M \otimes_{\mathbb{Z}} \mathbb{Z}\cdot X \;=\; j_{X!}j_{X}^{-1}M.$$
+
+**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。最后一式把 $N = \mathbb{Z}$ 代入并记住 $j_{X!}\mathbb{Z} = \mathbb{Z}\cdot X$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.61
+
 ## 星系：同调代数（Homological Algebra）
 > 加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。
 
@@ -10430,6 +10527,128 @@ $$\operatorname{Hom}_{\mathbb{Z}}\Bigl(\bigoplus_{i_{0},\ldots,i_{n}} \mathbb{Z}
 ∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.40
+
+#### 高次上同调预层的关联层为零　`prop.higher-cohomology-presheaf-zero`
+*命题*　命题：$n \ne 0$ 时 $\widetilde{H^{n}(M)} = 0$
+
+设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层、$n \ne 0$。则预层
+
+$$U \longmapsto H^{n}(U,\ M)$$
+
+的**关联层为零**：它的层化是零层。
+
+**证明。** 取 $M$ 的一条内射消解 $I^{\bullet}$ ✓，则 $H^{n}(U, M) = H^{n}\Gamma(U, I^{\bullet})$ ✓。给一个上同调类 $s$，用它在某条覆盖的每一块上的代表上链 $c$：因为 $I^{\bullet}$ 作为复形在每个点处正合，$c$ 在局部是某个上链的**边界** ✓ —— 于是 $s$ 限制到覆盖的每一块上都是 $0$ ✓，也就是说它在关联层里的芽为 $0$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.43
+
+#### 高次上同调预层没有 Čech 上同调　`prop.cech-higher-cohomology-presheaf`
+*命题*　命题：$n \ne 0 \implies \check{H}^{p}\bigl(H^{n}(M)\bigr) = 0$
+
+设 $M$ 是 site 上的阿贝尔层、$n \ne 0$，并把 $H^{n}(M)$ 记作预层 $U \mapsto H^{n}(U, M)$。则
+
+$$\check{H}^{p}\bigl(H^{n}(M)\bigr) = 0 \qquad (\forall p \ge 0).$$
+
+**证明。** 由「高次上同调预层的关联层为零」，$H^{n}(M)$ 层化之后是零层 ✓；而 Čech 上同调只依赖预层的**层化**（Čech 函子分解成两趟 $(-)^{+}$）✓ —— 零层上当然没有 Čech 上同调 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.45
+
+#### 区间上没有高阶 Čech 上同调　`prop.cech-interval-vanishing`
+*命题*　命题：$M$ 常 $\implies \check{H}^{n}([0,1], M) = 0$（$n \ne 0$）
+
+设 $M$ 是 $[0,1]$ 上的**常**阿贝尔群。则
+
+$$\check{H}^{n}\bigl([0,1],\ M\bigr) = 0 \qquad (n \ne 0).$$
+
+**证明。** 先看加细：$[0,1]$ 的任一开覆盖都有形如
+
+$$[0,1] = \bigcup_{k=0}^{r} I_{k}, \qquad I_{k} \cap I_{k+1} = J_{k} \text{ 也是区间}$$
+
+的加细 ✓（画个图即可）。对这种「区间拼区间」的覆盖，增广 Čech 复形可以写出**显式同伦收缩** ✓，于是这个覆盖上的高阶 Čech 群为零 ✓。
+
+而 Čech 上同调是**沿覆盖取滤过余极限** ✓，加细上为零 $\implies$ 极限上为零 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.47
+
+#### 一次 Čech 就是一次上同调　`prop.cech-h1-equals-h1`
+*命题*　命题：$\check{H}^{1}(X, M) \cong H^{1}(X, M)$
+
+设 $\mathcal{C}$ 是有纤维积的 site、$X \in \mathcal{C}$、$M$ 是阿贝尔层。则
+
+$$\check{H}^{1}(X,\ M) \;\cong\; H^{1}(X,\ M).$$
+
+**证明。** 用 Čech 到上同调的谱序列
+$$E^{p,q}_{2} = \check{H}^{p}\bigl(X,\ H^{q}(M)\bigr) \implies H^{p+q}(X, M) ✓$$
+由「高次上同调预层没有 Čech 上同调」，$q \ne 0$ 那一整块都为零 ✓，特别地 $E^{0,1}_{2} = 0$。
+再由第一象限谱序列的五项正合列
+$$0 \to E^{1,0}_{2} \to H^{1} \to E^{0,1}_{2} \to \cdots$$
+最后一项为零，故 $E^{1,0}_{2} \cong H^{1}$ ✓；而 $E^{1,0}_{2} = \check{H}^{1}(X, H^{0}(M)) = \check{H}^{1}(X, M)$ ✓（$H^{0}(M) = M$）。∎
+
+⭐ 于是**一次** Čech 上同调永远等于一次层上同调，高次才会差（差多少由谱序列量出来）。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.48
+
+#### 无环性的四条等价说法　`prop.acyclic-equivalent-conditions`
+*命题*　命题：$M$ 无环 $\iff$ 处处上同调为零 $\iff$ 处处 Čech 为零
+
+设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层。以下四条等价：
+
+1. $M$ **无环**：$H^{n}(M) = 0$（$n \ne 0$）；
+2. 对每个 $X \in \mathcal{C}$：$H^{n}(X, M) = 0$（$n \ne 0$）；
+3. 对每个覆盖族 $\mathfrak{X}$：$\check{H}^{n}(\mathfrak{X}, M) = 0$（$n \ne 0$）；
+4. 对每个 $X \in \mathcal{C}$：$\check{H}^{n}(X, M) = 0$（$n \ne 0$）。
+
+**证明。**
+**(1) $\iff$ (2)**：层上同调就是「高次上同调预层」的整体截面，$H^{n}(X, M) = \Gamma\bigl(X, H^{n}(M)\bigr)$ ✓，两边同时为零 ✓。
+**(1) $\implies$ (3)**：对固定覆盖用 Cartan–Leray 谱序列 $E^{p,q}_{2} = \check{H}^{p}(\mathfrak{X}, H^{q}(M)) \implies H^{p+q}(X,M)$ ✓；(1) 让 $q \ne 0$ 的行全为零、$H^{p+q}$ 也全为零（$p+q \ne 0$），谱序列退化给出 $\check{H}^{n}(\mathfrak{X}, M) = 0$ ✓。
+**(3) $\implies$ (4)**：$\check{H}^{n}(X, -)$ 是沿覆盖取的滤过余极限 ✓，每个覆盖上都为零故为零 ✓。
+**(4) $\implies$ (1)**：把同一句话反过来 —— 用 Čech 到上同调的谱序列逐次消去，$E^{p,q}_{2}$ 的右端全为零，故全为零 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.49
+
+#### 上同调的函子性　`prop.cohomology-functoriality`
+*命题*　命题：$H^{n}(X', M^{\bullet}) \to H^{n}\bigl(f^{-1}(X'), f^{-1}M^{\bullet}\bigr)$
+
+设 $f : \mathcal{T} \to \mathcal{T}'$ 是拓扑斯态射。则对 $X' \in \mathcal{T}'$ 与复形 $M^{\bullet}$，存在**典范映射**
+
+$$H^{n}\bigl(X',\ M^{\bullet}\bigr) \longrightarrow H^{n}\bigl(f^{-1}(X'),\ f^{-1}M^{\bullet}\bigr).$$
+
+**证明。** 由伴随 $f^{-1} \dashv f_{*}$，整体截面满足
+
+$$\Gamma\bigl(X',\ M\bigr) = \operatorname{Hom}(X', M) = \operatorname{Hom}\bigl(f^{-1}(X'),\ f^{-1}M\bigr) = \Gamma\bigl(f^{-1}(X'),\ f^{-1}M\bigr) ✓$$
+
+而 $f^{-1}$ 正合、保内射 ✓，所以它把内射消解送到内射消解，两边取导出函子即得这条典范映射 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.54
+
+#### 推前的复合　`prop.derived-pushforward-composition`
+*命题*　命题：$Rf'_{*} \circ Rf_{*} = R(f' \circ f)_{*}$
+
+设 $\mathcal{T} \xrightarrow{\ f\ } \mathcal{T}' \xrightarrow{\ f'\ } \mathcal{T}''$ 是拓扑斯态射的序列。则
+
+$$Rf'_{*} \circ Rf_{*} \;=\; R(f' \circ f)_{*},$$
+
+并且有谱序列 $E^{p,q}_{2} = R^{p}f'_{*}\bigl(R^{q}f_{*}M\bigr) \implies R^{p+q}(f' \circ f)_{*}M$。
+
+**证明。** 这是 Grothendieck 谱序列的又一特例：$f_{*}$ 把内射层送到 $f'_{*}$-零调对象 ✓，于是在 $\Gamma\bigl(X'', \cdot\bigr)$ 这一层套用 Grothendieck 谱序列即得 ✓；谱序列在 $f_{*}$ 严格保持内射时退化成上面那条等式 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.55
+
+#### Leray 谱序列　`thm.leray-spectral-sequence`
+*定理*　定理：$E^{p,q}_{2} = H^{p}\bigl(X', R^{q}f_{*}M^{\bullet}\bigr) \implies H^{p+q}\bigl(f^{-1}X', M^{\bullet}\bigr)$
+
+设 $f : \mathcal{T} \to \mathcal{T}'$ 是拓扑斯态射、$X' \in \mathcal{T}'$、$M^{\bullet}$ 是 $\mathcal{T}$ 里的阿贝尔群复形。则存在谱序列
+
+$$E^{p,q}_{2} \;=\; H^{p}\bigl(X',\ R^{q}f_{*}M^{\bullet}\bigr) \;\Longrightarrow\; H^{p+q}\bigl(f^{-1}(X'),\ M^{\bullet}\bigr).$$
+
+**证明。** 关键的一条是伴随给出的截面同构
+
+$$\Gamma\bigl(X',\ f_{*}M\bigr) = \Gamma\bigl(f^{-1}(X'),\ M\bigr) ✓$$
+
+把 $\Gamma\bigl(f^{-1}(X'), \cdot\bigr)$ 写成 $\Gamma(X', \cdot) \circ f_{*}$，再套 Grothendieck 谱序列（$f_{*}$ 把内射送到 $f_{*}$ 的零调对象 —— 内射本身零调）✓，即得 ✓。∎
+
+⭐ 用处：**先在 $\mathcal{T}$ 这一侧算 $R^{q}f_{*}$，再在 $\mathcal{T}'$ 那一侧算 $H^{p}$**，两层的信息由这条谱序列拼起来。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.56
 
 ### 星团：阿贝尔层
 > 造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。
@@ -16527,6 +16746,83 @@ $$(S \times X)(\cdot) \;\cong\; k\bigl(S(\cdot) \times X(\cdot)\bigr) = k\bigl(S
 
 推导用的是自由对象把余积换成直和。
 
+#### 定义引用：「层上同调」→ 高次上同调预层的关联层为零　`def-link.higherpresheaf0-sheafcoh`
+
+命题说的是层上同调给出的那个预层。
+
+#### 定义引用：「Čech 上同调」→ 高次上同调预层没有 Čech 上同调　`def-link.cechhigher-cech`
+
+命题说这个预层的 Čech 上同调为零。
+
+#### 高次上同调预层的关联层为零 ⟹ 高次上同调预层没有 Čech 上同调　`imp-link.higherpresheaf0-cechhigher`
+*关联层为零 $\implies$ Čech 全为零*
+
+$H^{n}(M)$ 的关联层为零 ✓，而 Čech 上同调只依赖预层的层化（Čech 函子分解成两趟 $(-)^{+}$）✓ —— 零层上取不到非零的 Čech 上同调 ✓。∎
+
+#### 定义引用：「Čech 上同调」→ 区间上没有高阶 Čech 上同调　`def-link.intervalvanish-cech`
+
+结论是区间上的高阶 Čech 上同调为零。
+
+#### Čech 到上同调的谱序列 + 高次上同调预层没有 Čech 上同调 + 谱序列的五项正合列 ⟹ 一次 Čech 就是一次上同调　`imp-link.cechhigher-h1`
+*Čech 到上同调谱序列 + 高次预层为零 $\implies$ 一次 Čech 就是一次上同调*
+
+谱序列 $E^{p,q}_{2} = \check{H}^{p}(X, H^{q}(M)) \implies H^{p+q}(X,M)$ ✓ 里，$q \ne 0$ 的项全为零 ✓，特别地 $E^{0,1}_{2} = 0$。
+五项正合列 $0 \to E^{1,0}_{2} \to H^{1} \to E^{0,1}_{2} \to \cdots$ ✓ 于是给出 $E^{1,0}_{2} \cong H^{1}$，而 $E^{1,0}_{2} = \check{H}^{1}(X, M)$ ✓。∎
+
+#### 定义引用：「无环层」→ 无环性的四条等价说法　`def-link.acyclicconds-acyclic`
+
+命题给出「无环」的四条等价说法。
+
+#### 定义引用：「拓扑斯的态射」→ 拓扑斯态射在阿贝尔群上给出伴随　`def-link.toposab-adjunction`
+
+命题说的就是拓扑斯态射的那一对函子。
+
+#### 定义引用：「阿贝尔层的张量积」→ 拉回与内 Hom、张量积相容　`def-link.invtensor-tensor`
+
+第二条公式里的张量积。
+
+#### 定义引用：「层上同调」→ 上同调的函子性　`def-link.cohomfun-sheafcoh`
+
+映射的两端都是层上同调。
+
+#### 定义引用：「拓扑斯的态射」→ 推前的复合　`def-link.derivedcomp-toposmor`
+
+命题比较两条推前的复合。
+
+#### 定义引用：「层上同调」→ Leray 谱序列　`def-link.leray-sheafcoh`
+
+谱序列两端都是层上同调。
+
+#### Grothendieck 谱序列 ⟹ Leray 谱序列　`imp-link.grothendieck-leray`
+*Grothendieck 谱序列 $\implies$ Leray 谱序列*
+
+由伴随，$\Gamma\bigl(f^{-1}(X'), -\bigr) = \Gamma(X', f_{*}-)$ ✓，即所考虑的函子是 $\Gamma(X',-)$ 与 $f_{*}$ 的复合。
+内射层是 $f_{*}$-零调的 ✓，于是 Grothendieck 谱序列给出 $E^{p,q}_{2} = H^{p}(X', R^{q}f_{*}M^{\bullet}) \implies H^{p+q}(f^{-1}X', M^{\bullet})$ ✓。∎
+
+#### 定义引用：「拓扑斯」→ 切片上的正合左伴随　`def-link.sliceadj-slice`
+
+切片拓扑斯上的这对伴随。
+
+#### 定义引用：「自由阿贝尔群层」→ 切片左伴随作用在 Z 上　`def-link.slicez-free`
+
+右边就是自由阿贝尔群层。
+
+#### 切片左伴随作用在 Z 上 ⟹ 切片上的上同调就是原上同调　`imp-link.slicez-cohslice`
+*$j_{X!}\mathbb{Z} = \mathbb{Z}\cdot X$ $\implies$ 切片上的上同调就是原上同调*
+
+$\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}, j_{X}^{-1}M) = \operatorname{Hom}_{\mathbb{Z}}(j_{X!}\mathbb{Z}, M) = \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot X, M) = M(X)$ ✓，两端作为函子相同。
+又 $j_{X}^{-1}$ 有正合左伴随，因而保内射 ✓，所以两边可以用同一批内射消解取导出函子，得到 $H^{n}(\mathbf{1}_{X}, j_{X}^{-1}M^{\bullet}) = H^{n}(X, M^{\bullet})$ ✓。∎
+
+#### 定义引用：「内 Hom」→ 内 Hom 的取值　`def-link.inthomslice-internal`
+
+命题算的就是内 Hom 在 $X$ 处的取值。
+
+#### 切片左伴随作用在 Z 上 + 拉回与内 Hom、张量积相容 ⟹ 切片的投影公式　`imp-link.slicez-sliceproj`
+*伴随 + 张量相容 $\implies$ 切片的投影公式*
+
+把两边对到同一处 Hom：用 $j_{X!} \dashv j_{X}^{-1}$ 把左边的 Hom 换到 $\operatorname{Hom}(M \otimes j_{X}^{-1}N, j_{X}^{-1}-)$，再用 $f^{-1}$ 与张量积的相容性 ✓，由米田引理得同构 ✓。
+最后一式取 $N = \mathbb{Z}$，并用 $j_{X!}\mathbb{Z} = \mathbb{Z}\cdot X$ ✓。∎
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -19877,8 +20173,10 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **单满、子对象与像 ↔ 加法与阿贝尔范畴**　5 条节点级连线
 - **拓扑斯 ↔ 加法与阿贝尔范畴**　2 条节点级连线
 - **凝聚态阿贝尔群 ↔ 阿贝尔层**　3 条节点级连线
-- **拓扑斯 ↔ 阿贝尔层**　4 条节点级连线
+- **拓扑斯 ↔ 阿贝尔层**　7 条节点级连线
 - **复形与导出三角 ↔ 过滤与谱序列**　6 条节点级连线
+- **层上同调 ↔ 过滤与谱序列**　5 条节点级连线
+- **拓扑斯 ↔ 层上同调**　2 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -19922,7 +20220,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **代数结构 ↔ 范畴里的代数结构**　2 条节点级连线
 - **加法与阿贝尔范畴 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **复形与导出三角 ↔ 层上同调**　3 条节点级连线
-- **层上同调 ↔ 过滤与谱序列**　3 条节点级连线
 - **层上同调 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **图与极限 ↔ 层上同调**　2 条节点级连线
 - **图与极限 ↔ 凝聚态集**　3 条节点级连线
