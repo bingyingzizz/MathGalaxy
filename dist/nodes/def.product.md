@@ -12,11 +12,13 @@ layer 12 · 定义 · 图与极限 · 范畴论
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.biproduct-is-product` 直和就是积 用
+- 被 `prop.set-top-ab-complete` Set、Top、Ab 的完备性 用
+- 被 `prop.coproduct-chaus` 不交并是紧 Hausdorff 的余积 用
 - 被 `def.ab-axioms` Grothendieck 的 AB 公理 用
 - 被 `def.internal-hom` 内 Hom 用
 - 被 `def.monoid-object` 幺半群对象 用
-- 被 `def.group-object` 群对象与阿贝尔群对象 用
-- 被 `prop.limit-construction` 极限的构造 用
+
+- …另有出边，续页见 `nodes/def.product.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §1.3
 

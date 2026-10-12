@@ -11,11 +11,13 @@ layer 5 · 定义 · 拓扑空间 · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.component-clopen` 连通分量是闭开邻域之交
+- 被 `prop.connected-image-closure` 连通的像与闭包 用
 - 被 `prop.component-clopen` 连通分量是闭开邻域之交 用
 - 被 `prop.td-reflective` 全不连通空间是反射子范畴 用
 - 被 `def.stone-space` 全不连通与 Stone 空间 用
 - 被 `def.totally-disconnected` 完全不连通与极不连通 用
-- 被 `ex.connected-lc-ext` 连通局部紧到离散只剩 Ext一次 用
+
+- …另有出边，续页见 `nodes/def.connected.2.md`
 
 refs: Munkres, Topology
 

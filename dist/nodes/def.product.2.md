@@ -3,3 +3,5 @@
 
 ## 陈述（续）
 $$\operatorname{Hom}_{\mathcal{C}}\Bigl(Y, \prod_{i} X_i\Bigr) \;\cong\; \prod_{i} \operatorname{Hom}_{\mathcal{C}}(Y, X_i)$$
+
+> 续见 `nodes/def.product.3.md`

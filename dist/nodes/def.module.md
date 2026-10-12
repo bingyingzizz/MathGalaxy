@@ -15,6 +15,7 @@ $$A \times M \longrightarrow M, \qquad (a, m) \longmapsto a \cdot m,$$
 - `def.ring` 环：用到了定义 环　proofs/def-dep.module-ring.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.module-tensor-universal` 张量积对双线性映射万有 用
 - 被 `thm.freyd-mitchell` Freyd–Mitchell 嵌入定理 用
 - 被 `ex.algebra-categories` 代数的几个范畴 用
 

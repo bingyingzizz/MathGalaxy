@@ -23,4 +23,6 @@
 
 - Exercise 4.13 → prop.qseparated-mono
 
+- Exercise 6.8 → prop.pontryagin-finite-dim-banach
+
 见 `../../alias.md`。

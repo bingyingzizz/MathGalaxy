@@ -19,8 +19,8 @@ $$p_i \circ g = g_i \qquad (i \in I)$$
 - ⇒ `thm.right-adjoint-preserves-limits` 右伴随保极限
 - ⇒ `thm.saft` 伴随函子定理
 - ⇒ `ex.kan-extension` Kan 延拓的两个例子
+- 被 `prop.set-top-ab-complete` Set、Top、Ab 的完备性 用
 - 被 `prop.yoneda-embedding` 米田嵌入 用
-- 被 `thm.density` 稠密性定理 用
 
 - …另有出边，续页见 `nodes/def.limit.3.md`
 

@@ -5,11 +5,11 @@
 
 - 余极限是 Kan 延拓 | 伴随是 Kan 延拓 → ex.kan-extension
 
-- 滤过余极限正合 | filtered colimits are exact | Proposition 1.5.7 | Prop 1.5.7 → prop.filtered-exact
+- 滤过余极限正合 | filtered colimits are exact | Proposition 1.5.7 | Prop 1.5.7 | Exercise 1.68 → prop.filtered-exact
 
 - 筛 | sieve | 覆盖筛 | covering sieve | Exercise 3.9 → def.sieve
 
-- 预拓扑 | pretopology | 覆盖族 | Grothendieck pretopology | Definition 3.2.4 | Def 3.2.4 → def.pretopology
+- 预拓扑 | pretopology | 覆盖族 | Grothendieck pretopology | Definition 3.2.4 | Def 3.2.4 | Exercise 3.13 | Exercise 3.16 → def.pretopology
 
 - Grothendieck 拓扑 | Grothendieck topology | site | 景 | site 理论 | Definition 3.2.2 | Def 3.2.2 → def.grothendieck-topology
 

@@ -1,7 +1,7 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
-- 等化子 | 余等化子 | equalizer | coequalizer | 核 | ker | coker | Definition 1.3.8 | Def 1.3.8 → def.equalizer
+- 等化子 | 余等化子 | equalizer | coequalizer | 核 | ker | coker | Definition 1.3.8 | Def 1.3.8 | Exercise 1.36 → def.equalizer
 
 - 单态射 | 满态射 | mono | epi | monomorphism | epimorphism | 可消 | Definition 1.3.9 | Def 1.3.9 → def.mono
 

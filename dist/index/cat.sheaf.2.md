@@ -1,6 +1,7 @@
 # 层与拓扑（cat.sheaf）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/cat.sheaf.md`
 
+- prop.covering-sieves-filter　覆盖筛构成滤子　layer 15
 - thm.sheaf-descent　层的下降条件　layer 16
 - def.cech-functor　Čech 函子　layer 16
 - prop.sheaf-epi-criterion　满态射的局部判据　layer 16
@@ -14,6 +15,5 @@
 - prop.stalk-separated　茎与分离预层　layer 17
 - prop.sheafification-slice-colimit　层化是切片上的余极限　layer 17
 - thm.sheafification　层化　layer 18
-- prop.inverse-image-constant-sheaf　常层沿拉回不变　layer 18
 
 > 续见 `index/cat.sheaf.3.md`

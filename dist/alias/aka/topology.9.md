@@ -25,4 +25,6 @@
 
 - Exercise 2.29 → prop.continuous-map-space-metric
 
-见 `../../alias.md`。
+- Exercise 2.12 → prop.coproduct-chaus
+
+> 续见 alias/aka/topology.10.md

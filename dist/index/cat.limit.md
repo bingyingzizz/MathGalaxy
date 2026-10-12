@@ -1,7 +1,7 @@
 # 图与极限（cat.limit）· 节点清单（第 1/2 页）
 
 造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子。
-中心天体 def.limit　·　21 个节点　·　根 `../`　·　续页 `index/cat.limit.2.md`
+中心天体 def.limit　·　22 个节点　·　根 `../`　·　续页 `index/cat.limit.2.md`
 
 - def.simplex-category　单纯形范畴　layer 8
 - def.commutative-diagram　图与交换图　layer 9

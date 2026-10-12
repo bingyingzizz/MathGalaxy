@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:20:43.061Z
-> 9 星系 / 45 星团 / 654 节点 / 1331 连线（强边 1322，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:23:29.164Z
+> 9 星系 / 45 星团 / 661 节点 / 1340 连线（强边 1331，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -1572,6 +1572,17 @@ $\pi$ **闭**说明 $\pi(Y\setminus V)$ 闭，故 $U$ 是开集 ✓。逐条验�
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 2.8
 
+#### 连通的像与闭包　`prop.connected-image-closure`
+*命题*　命题：连通空间的像连通；连通子集的闭包连通
+
+1. **连通**空间在连续映射下的像是连通的；
+2. 连通子集的**闭包**是连通的。
+
+**证明。** (1) 若 $f(X) = U \sqcup V$ 是两块不交非空开集，则 $X = f^{-1}(U) \sqcup f^{-1}(V)$ 断开 $X$ ✓。
+(2) 设 $A \subseteq X$ 连通、$\overline{A} = U \sqcup V$（$U, V$ 在 $\overline{A}$ 中非空开）。则 $A = (A \cap U) \sqcup (A \cap V)$ ✓；由 $A$ 连通，不妨 $A \cap V = \emptyset$，于是 $A \subseteq U$ 且 $V \cap U = \emptyset$ 蕴含 $V$ 在 $\overline{A}$ 中也是闭的 ✓，故 $\overline{A} \subseteq U$，与 $V \ne \emptyset$ 矛盾 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.13
+
 ### 星团：度量空间
 > 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
 
@@ -1862,6 +1873,19 @@ $\mathbf{CHaus}$ 里有余等化子，所以 $\operatorname{coker}(R \rightright
 取 $F = \beta S^{\mathrm{disc}}$（前一条命题：$F \twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \times_{S} S$ 再做一次，得到 $F' \twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎
 
 参考：Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
+#### 不交并是紧 Hausdorff 的余积　`prop.coproduct-chaus`
+*命题*　命题：$S \sqcup T$ 是 $\mathbf{CHaus}$ 里的余积
+
+在**紧 Hausdorff** 空间范畴里（自由紧 Hausdorff 空间之间也一样），**不交并**是**余积**：
+
+$$\operatorname{Hom}(S \sqcup T,\ Z) \;\cong\; \operatorname{Hom}(S, Z) \times \operatorname{Hom}(T, Z).$$
+
+**证明。** 一个连续映射 $S \sqcup T \to Z$ 由它在两半上的限制决定 ✓；反之给两条连续映射，把它们拼起来仍连续（不交并的拓扑就是两块拓扑的和）✓。于是上面的自然双射成立，即余积的泛性质 ✓。紧 Hausdorff 对有限不交并封闭（两块紧、两块 Hausdorff）✓。∎
+
+⚠️ 无限个不交并一般**不**紧，所以余积只对有限族留在范畴里；这也是后面用预拓扑（有限不交并）而不是一般不交并的原因。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.12
 
 ### 星团：Stone 与 Stonean
 > 造出「不连通的那一半紧 Hausdorff 空间」：全不连通 → Stone 空间 = 投射有限空间 → 极不连通的 Stonean 空间 → Gleason 定理与布尔环表示。
@@ -2875,6 +2899,23 @@ $$\varphi\Bigl(\sum_{k} b_{k}\otimes c_{k}\Bigr) := \sum_{k} f(b_{k})\,g(c_{k}) 
 ⚠️ **交换性是必需的**：非交换环上，$B\otimes_{A}C$ 一般不是环（乘法在张量积上不下降）—— 那时纤维余积要用自由积 / 余等化子另造。
 
 参考：Le Stum, Exercise 1.36
+
+#### 张量积对双线性映射万有　`prop.module-tensor-universal`
+*命题*　命题：$\operatorname{Bil}(M \times N,\ P) \cong \operatorname{Hom}(M \otimes N,\ P)$
+
+张量积 $M \otimes_{\mathbb{Z}} N$（resp. $M \otimes_{k} N$）对 $\mathbb{Z}$-双线性（resp. $k$-双线性）映射**万有**：
+
+$$\operatorname{Bil}_{\mathbb{Z}}(M \times N,\ P) \;\cong\; \operatorname{Hom}_{\mathbb{Z}}\bigl(M \otimes_{\mathbb{Z}} N,\ P\bigr),$$
+
+左边的双线性映射与右边的群同态一一对应。
+
+**证明。** 先造自由模上的张量积：取 $\mathbb{Z}\cdot(M \times N)$（自由阿贝尔群），商掉「双线性关系」
+
+$$(m + m', n) \sim (m, n) + (m', n), \quad (m, n + n') \sim (m, n) + (m, n'), \quad (am, n) \sim a(m,n) \sim (m, an) ✓$$
+
+一般模由自由模商出（取表现）✓，商上的张量积就是商 ✓。这时 $M \times N \to M \otimes N$ 双线性 ✓，任何双线性映射 $M \times N \to P$ 唯一地穿过它 ✓ —— 这正是万有性质 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.21
 
 ### 星团：向量空间的基
 > 造出线性代数的地基：每个向量空间都有基。
@@ -7113,6 +7154,19 @@ $$\operatorname{Hom}_{\operatorname{Ind}}\bigl(X, \varinjlim_{j}Y_{j}\bigr) \;=\
 
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
+#### Set、Top、Ab 的完备性　`prop.set-top-ab-complete`
+*命题*　命题：$\mathbf{Set} / \mathbf{Top} / \mathbf{Ab}$ 完备且余完备
+
+$\mathbf{Set}$、$\mathbf{Top}$、$\mathbf{Ab}$ 都有**所有小极限与小余极限**。
+
+遗忘函子 $\mathbf{Top} \to \mathbf{Set}$ **既保所有极限又保所有余极限**；而 $\mathbf{Ab} \to \mathbf{Set}$ **保所有极限，但不保余积**。
+
+**证明。** $\mathbf{Set}$：小积与等化子给出所有小极限 ✓，不交并与余等化子给出所有小余极限 ✓。$\mathbf{Top}$：同样的构造配上相应的拓扑（积拓扑、子空间/等化子拓扑、不交并拓扑、商拓扑）✓。$\mathbf{Ab}$：用自由阿贝尔群与商群造 ✓。
+
+遗忘函子保极限是因为拓扑与代数结构都是「逐点」定义的 ✓；但 $M \oplus N$ 的底集合不是 $M \sqcup N$，所以 $\mathbf{Ab} \to \mathbf{Set}$ 不保余积 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.38, Exercise 1.45
+
 ### 星团：单满、子对象与像
 > 造出「用箭头替代元素」这套语言：可消性（单 / 满）→ 子对象 → 像与余像 → 泛元素。
 
@@ -7976,6 +8030,21 @@ $$p_{!}F \circ p \;\cong\; F.$$
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.74
 
+#### 伴随的复合　`prop.adjunction-composition`
+*命题*　命题：$F_{1} \dashv G_{1}$、$F_{2} \dashv G_{2}$ $\implies$ $F_{2}F_{1} \dashv G_{1}G_{2}$
+
+若 $F_{1} \dashv G_{1}$（$\mathcal{C} \to \mathcal{D}$）与 $F_{2} \dashv G_{2}$（$\mathcal{D} \to \mathcal{E}$），则
+
+$$F_{2} \circ F_{1} \;\dashv\; G_{1} \circ G_{2}.$$
+
+**证明。** 把两个伴随的同构串起来 ✓：对 $X \in \mathcal{C}$、$Z \in \mathcal{E}$，
+
+$$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatorname{Hom}_{\mathcal{D}}\bigl(F_{1}X,\ G_{2}Z\bigr) \cong \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G_{1}G_{2}Z\bigr) ✓$$
+
+两次都用伴随的定义，而这族同构关于 $X, Z$ 自然（两个自然同构的复合仍自然）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.59
+
 ### 星团：层与拓扑
 > 造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。
 
@@ -8503,6 +8572,19 @@ $$\bigl(T^{\#}\bigr)_{x} \;=\; T_{x}.$$
 **证明。** 茎是沿 $x$ 的开邻域取的**滤过余极限** ✓，而层化是保滤过余极限的（它是保余极限的左伴随）✓；两侧都归结到 $T$ 在同一批邻域上的取值 ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.57
+
+#### 族生成的筛　`prop.sieve-generated-by-family`
+*命题*　命题：$R = \coprod_{i} \operatorname{im}(h_{f_{i}})$
+
+族 $(f_{i} : X_{i} \to X)_{i \in I}$ 生成的筛是
+
+$$R \;=\; \coprod_{i \in I} \operatorname{im}\bigl(h_{f_{i}}\bigr),$$
+
+其中 $h_{f_{i}} : h_{X_{i}} \to h_{X}$。也就是说：$g : Y \to X$ 落在 $R$ 中 $\iff$ 它在 $\widehat{\mathcal{C}}$ 里穿过某个 $f_{i}$。
+
+**证明。** 筛就是对每个 $Y$ 给一个 $\operatorname{Hom}(Y, X)$ 的子集、且对预复合封闭 ✓。按定义，由 ${f_i}$ 生成的筛是**含全体 $f_{i}$ 的那个最小筛** ✓；而 $\operatorname{im}(h_{f_{i}})$ 的取值正是「穿过 $f_{i}$ 的那些 $g$」，对预复合封闭 ✓，取并（余积）就得到最小的那个 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.10
 
 ### 星团：拓扑斯
 > 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
@@ -12073,6 +12155,19 @@ $$0 \to M \to M_{0} \to M_{1} \to 0 \quad\leadsto\quad 0 \to \widehat{M_{1}} \to
 ⭐ 用处：把「**紧**阿贝尔群」化归成「**连通紧**阿贝尔群」。例如算 $\operatorname{RHom}$ 时，中间项与右端项都是连通的，于是可以用连通情形的结论（连通时只剩 $0$ 次与 $1$ 次 Ext）把高次 Ext 一次性掐掉。
 
 参考：Le Stum, An introduction to condensed mathematics, §6.2
+
+#### 有限维 Banach 空间的对偶是向量空间对偶　`prop.pontryagin-finite-dim-banach`
+*命题*　命题：$V$ 有限维实 Banach $\implies \widehat{V} \cong V^{\ast}$
+
+设 $V$ 是**有限维**实 Banach 空间。则 Pontryagin 对偶就是通常的向量空间对偶：
+
+$$\widehat{V} \;\cong\; V^{\ast} = \operatorname{Hom}_{\mathbb{R}}(V,\ \mathbb{R}).$$
+
+**证明。** 因为 $\mathbb{T} = \mathbb{R}/\mathbb{Z}$，而 $V$ 是有限维实向量空间、特别地**单连通** ✓，连续同态 $V \to \mathbb{T}$ 都能唯一地提升为连续同态 $V \to \mathbb{R}$ ✓。再注意：**连续的加法映射 $V \to \mathbb{R}$ 自动是 $\mathbb{R}$-线性的** —— 先在有理数上由加性得 $f(qv) = q f(v)$ ✓，再由连续性逼近实数系数 ✓。于是 $\widehat{V} \cong \operatorname{Hom}_{\mathbb{R}}(V, \mathbb{R}) = V^{\ast}$ ✓。∎
+
+📌 前提「有限维」不能去掉：实 Banach 空间**局部紧当且仅当有限维**。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 6.8
 
 ### 星团：凝聚态上同调
 > 造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\operatorname{Ext}^{0}, \operatorname{Ext}^{1}$。
@@ -17219,6 +17314,42 @@ ind-可表示用的就是 Ind-对象。
 
 层化之后取茎。
 
+#### 定义引用：「模」→ 张量积对双线性映射万有　`def-link.tensoruniv-bilinear`
+
+张量积是模上的构造。
+
+#### 定义引用：「极限」→ Set、Top、Ab 的完备性　`def-link.settopab-set`
+
+命题说的是这些范畴里极限余极限都存在。
+
+#### 定义引用：「积 / 余积」→ Set、Top、Ab 的完备性　`def-link.settopab-product`
+
+完备性由积与等化子给出。
+
+#### 定义引用：「伴随函子」→ 伴随的复合　`def-link.adjcomp-adj`
+
+命题是伴随的复合律。
+
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 不交并是紧 Hausdorff 的余积　`def-link.coprodchaus-chaus`
+
+命题活在紧 Hausdorff 范畴里。
+
+#### 定义引用：「积 / 余积」→ 不交并是紧 Hausdorff 的余积　`def-link.coprodchaus-product`
+
+结论是「这是余积」。
+
+#### 定义引用：「连通与连通分量」→ 连通的像与闭包　`def-link.connimg-connected`
+
+两条都围绕连通性。
+
+#### 定义引用：「筛」→ 族生成的筛　`def-link.sievegen-sieve`
+
+算的是族生成的筛。
+
+#### 定义引用：「Pontryagin 对偶」→ 有限维 Banach 空间的对偶是向量空间对偶　`def-link.pontbanach-dual`
+
+有限维情形下对偶退化成向量空间对偶。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -20579,6 +20710,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **范畴与图 ↔ 图与极限**　5 条节点级连线
 - **图与极限 ↔ 预层与米田**　6 条节点级连线
 - **函子与自然变换 ↔ 预层与米田**　10 条节点级连线
+- **图与极限 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线

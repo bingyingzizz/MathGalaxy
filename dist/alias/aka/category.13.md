@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 单满在层化后不变 | Exercise 3.38 → prop.precanonical-mono-epi
+
 - 生成元 | generator | 生成元集 | set of generators | Definition 3.3.4 → def.generator
 
 - 拓扑斯 | topos | Grothendieck topos | 初等拓扑斯 | Definition 3.3.5 → def.topos
@@ -20,7 +22,5 @@
 - 拟分离 | quasi-separated | qs | Definition 3.3.10 → def.quasi-separated
 
 - 预拓扑斯由拓扑斯唯一确定 | qcqs | Theorem 3.3.11 → thm.pretopos-qcqs
-
-- 拓扑斯的态射 | geometric morphism | 几何态射 | 拉回函子 | 推前函子 | Definition 3.4.1 → def.topos-morphism
 
 > 续见 alias/aka/category.14.md

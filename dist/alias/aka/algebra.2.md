@@ -21,4 +21,6 @@
 
 - Stone 表示定理 | 布尔环与 Stone 空间 | Stone representation | Exercise 2.22 → thm.boolean-stone
 
+- Exercise 1.21 → prop.module-tensor-universal
+
 见 `../../alias.md`。

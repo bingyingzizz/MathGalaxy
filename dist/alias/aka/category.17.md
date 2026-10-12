@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- Exercise 7.57 → prop.abelian-slice-adjunction
+
+- Exercise 7.58 → prop.slice-shriek-z
+
 - Exercise 7.59 → prop.cohomology-slice-identification
 
 - Exercise 7.60 | Exercise 3.66 → prop.internal-hom-slice-value
@@ -26,7 +30,5 @@
 - Exercise 3.11 → prop.covering-sieves-filter
 
 - Exercise 3.14 → prop.site-covering-families-pretopology
-
-- Exercise 3.20 → prop.sheafification-image
 
 > 续见 alias/aka/category.18.md

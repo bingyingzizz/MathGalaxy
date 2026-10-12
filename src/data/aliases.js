@@ -336,7 +336,7 @@ MG.aliases = {
     { id: 'def.final-initial', aka: ['终对象', '始对象', 'terminal object', 'initial object', '零对象', 'Definition 1.3.5', 'Def 1.3.5'] },
     { id: 'def.product', aka: ['积', '余积', 'product', 'coproduct', '直积', '直和', 'Definition 1.3.6', 'Def 1.3.6'] },
     { id: 'def.fibered-product', aka: ['纤维积', '拉回', 'pullback', 'fibered product', '推出', 'pushout', '笛卡尔方块', 'Definition 1.3.7', 'Def 1.3.7'] },
-    { id: 'def.equalizer', aka: ['等化子', '余等化子', 'equalizer', 'coequalizer', '核', 'ker', 'coker', 'Definition 1.3.8', 'Def 1.3.8'] },
+    { id: 'def.equalizer', aka: ['等化子', '余等化子', 'equalizer', 'coequalizer', '核', 'ker', 'coker', 'Definition 1.3.8', 'Def 1.3.8', 'Exercise 1.36'] },
     { id: 'def.mono', aka: ['单态射', '满态射', 'mono', 'epi', 'monomorphism', 'epimorphism', '可消', 'Definition 1.3.9', 'Def 1.3.9'] },
     { id: 'def.subobject', aka: ['子对象', 'subobject', '子对象之交', '原像', 'Definition 1.3.10', 'Def 1.3.10'] },
     { id: 'thm.lim-functor', aka: ['极限的函子性', '极限是函子', 'lim functor'] },
@@ -473,7 +473,7 @@ MG.aliases = {
     { id: 'prop.reflective-limits', aka: ['反射子范畴里的极限', 'Exercise 1.64', 'Exercise 1.70'] },
     { id: 'def.kan-extension', aka: ['Kan 延拓', 'Kan extension', '左 Kan 延拓', '右 Kan 延拓', 'Definition 1.5.9', 'Def 1.5.9'] },
     { id: 'ex.kan-extension', aka: ['余极限是 Kan 延拓', '伴随是 Kan 延拓'] },
-    { id: 'prop.filtered-exact', aka: ['滤过余极限正合', 'filtered colimits are exact', 'Proposition 1.5.7', 'Prop 1.5.7'] },
+    { id: 'prop.filtered-exact', aka: ['滤过余极限正合', 'filtered colimits are exact', 'Proposition 1.5.7', 'Prop 1.5.7', 'Exercise 1.68'] },
 
     /* 紧 Haus 与 Stone */
     { id: 'def.chaus', aka: ['CHaus', '紧 Hausdorff 空间', 'compact Hausdorff', '紧豪斯多夫空间'] },
@@ -497,7 +497,7 @@ MG.aliases = {
 
     /* 层与拓扑 */
     { id: 'def.sieve', aka: ['筛', 'sieve', '覆盖筛', 'covering sieve', 'Exercise 3.9'] },
-    { id: 'def.pretopology', aka: ['预拓扑', 'pretopology', '覆盖族', 'Grothendieck pretopology', 'Definition 3.2.4', 'Def 3.2.4'] },
+    { id: 'def.pretopology', aka: ['预拓扑', 'pretopology', '覆盖族', 'Grothendieck pretopology', 'Definition 3.2.4', 'Def 3.2.4', 'Exercise 3.13', 'Exercise 3.16'] },
     { id: 'def.grothendieck-topology', aka: ['Grothendieck 拓扑', 'Grothendieck topology', 'site', '景', 'site 理论', 'Definition 3.2.2', 'Def 3.2.2'] },
     { id: 'def.sheaf', aka: ['层', 'sheaf', '分离预层', 'separated presheaf', '粘合', '下降', 'Definition 3.2.5', 'Def 3.2.5'] },
     { id: 'thm.sheaf-descent', aka: ['层的下降条件', 'sheaf condition', '层条件', 'Exercise 3.15'] },
@@ -517,7 +517,7 @@ MG.aliases = {
 
     /* 拓扑斯 */
     { id: 'def.pretopos', aka: ['预拓扑斯', 'pretopos', '预拓扑斯公理', 'Definition 3.3.1'] },
-    { id: 'prop.pretopos-factorization', aka: ['预拓扑斯里的满单分解', '平衡范畴', 'balanced', 'Exercise 3.30', 'Exercise 3.31', 'Exercise 3.32', 'Exercise 3.19'] },
+    { id: 'prop.pretopos-factorization', aka: ['预拓扑斯里的满单分解', '平衡范畴', 'balanced', 'Exercise 3.30', 'Exercise 3.31', 'Exercise 3.32', 'Exercise 3.19', 'Exercise 3.25'] },
     { id: 'prop.subobject-lattice', aka: ['子对象构成有界格', '子对象格', 'Exercise 3.33'] },
     { id: 'def.precanonical-topology', aka: ['预标准拓扑', 'precanonical topology', 'Definition 3.3.2', 'Exercise 3.34', 'Exercise 3.35'] },
     { id: 'prop.precanonical-sheaf', aka: ['预标准拓扑下的层', 'Exercise 3.36', 'Proposition 3.3.3', 'Exercise 3.37'] },
@@ -776,6 +776,13 @@ MG.aliases = {
     { id: 'prop.sheaf-hom-computed-in-presheaves', aka: ['Exercise 3.45'] },
     { id: 'prop.inverse-image-constant-sheaf', aka: ['Exercise 3.50'] },
     { id: 'prop.stalk-of-sheafification', aka: ['Exercise 3.57'] },
+    { id: 'prop.module-tensor-universal', aka: ['Exercise 1.21'] },
+    { id: 'prop.set-top-ab-complete', aka: ['Exercise 1.38', 'Exercise 1.45'] },
+    { id: 'prop.adjunction-composition', aka: ['Exercise 1.59'] },
+    { id: 'prop.coproduct-chaus', aka: ['Exercise 2.12'] },
+    { id: 'prop.connected-image-closure', aka: ['Exercise 2.13'] },
+    { id: 'prop.sieve-generated-by-family', aka: ['Exercise 3.10'] },
+    { id: 'prop.pontryagin-finite-dim-banach', aka: ['Exercise 6.8'] },
   ],
 
   /* --------------------------------------------------------- 问题钩子 */

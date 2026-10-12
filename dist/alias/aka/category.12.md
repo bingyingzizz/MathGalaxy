@@ -9,7 +9,7 @@
 
 - 预拓扑斯 | pretopos | 预拓扑斯公理 | Definition 3.3.1 → def.pretopos
 
-- 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 | Exercise 3.19 → prop.pretopos-factorization
+- 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 | Exercise 3.19 | Exercise 3.25 → prop.pretopos-factorization
 
 - 子对象构成有界格 | 子对象格 | Exercise 3.33 → prop.subobject-lattice
 
@@ -18,7 +18,5 @@
 - 预标准拓扑下的层 | Exercise 3.36 | Proposition 3.3.3 | Exercise 3.37 → prop.precanonical-sheaf
 
 - 余积与商在层范畴不变 → prop.precanonical-preserves
-
-- 单满在层化后不变 | Exercise 3.38 → prop.precanonical-mono-epi
 
 > 续见 alias/aka/category.13.md
