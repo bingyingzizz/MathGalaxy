@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T13:47:18.418Z
-> 9 星系 / 45 星团 / 680 节点 / 1365 连线（强边 1356，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T13:57:35.053Z
+> 9 星系 / 45 星团 / 706 节点 / 1391 连线（强边 1382，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -2944,6 +2944,15 @@ $$(m + m', n) \sim (m, n) + (m', n), \quad (m, n + n') \sim (m, n) + (m, n'), \q
 一般模由自由模商出（取表现）✓，商上的张量积就是商 ✓。这时 $M \times N \to M \otimes N$ 双线性 ✓，任何双线性映射 $M \times N \to P$ 唯一地穿过它 ✓ —— 这正是万有性质 ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.21
+
+#### Z-模就是阿贝尔群　`prop.zmod-is-ab`
+*命题*　命题：$\mathbb{Z}\text{-}\mathbf{Mod} \cong \mathbf{Ab}$、$\mathbb{Z}\text{-}\mathbf{Alg} \cong \mathbf{Rng}$
+
+$\mathbb{Z}\text{-}\mathbf{Mod} \cong \mathbf{Ab}$（范畴**同构**）；$\mathbb{Z}\text{-}\mathbf{Alg} \cong \mathbf{Rng}$；更一般地 $k\text{-}\mathbf{Alg} \simeq k\backslash\mathbf{Rng}$ 的全子范畴（要求 $k$ 的像落在中心里）。
+
+**证明。** $\mathbb{Z}$-模结构由「$n$ 倍」唯一确定，所以 $\mathbb{Z}$-模就是阿贝尔群 ✓；$\mathbb{Z}$-代数就是环 ✓；$k$-代数就是「带一个中心里装着 $k$ 的环」✓，逐条对照公理即得。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.10
 
 ### 星团：向量空间的基
 > 造出线性代数的地基：每个向量空间都有基。
@@ -6541,6 +6550,51 @@ $$X \text{ 是投射对象} \iff \text{每个满态射 } Y \twoheadrightarrow X 
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.49
 
+#### 函子保截面与收缩　`prop.functor-preserves-sections`
+*命题*　命题：函子把截面（收缩、同构）送到同类
+
+函子把**截面**（resp. **收缩**、**同构**）送到截面（resp. 收缩、同构）；特别地函子把同构送到同构。
+
+**证明。** $f \circ g = 1$ 与 $g \circ f = 1$ 在函子下仍是同样的等式（函子保恒等、保复合）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.11
+
+#### 态射范畴上的域与余域函子　`def.mor-domain-codomain`
+*定义*　定义：$\operatorname{Mor}(\mathcal{C}) \to \mathcal{C}$ 的两个投影
+
+$\operatorname{Mor}(\mathcal{C})$ 上有**域函子**与**余域函子**到 $\mathcal{C}$；对固定 $X$，切片 $\mathcal{C}/X \to \mathcal{C}$ 与余切片 $X\backslash\mathcal{C} \to \mathcal{C}$ 是遗忘函子。
+
+**证明。** $(\text{域}, \text{余域})$ 把 $f : X \to Y$ 送到 $X$（resp. $Y$）✓；切片里把 $(A \to X)$ 送到 $A$，态射的复合按定义就相容 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.12
+
+#### 矩阵范畴　`prop.matrix-category`
+*命题*　命题：$\operatorname{Mat}(k)$ 是小范畴，与有限维向量空间等价
+
+$k$ 交换时 $\operatorname{Mat}(k)$（对象 $\mathbb{N}$、$\operatorname{Hom}(m,n) = M_{n \times m}(k)$、复合是矩阵乘法）是**小范畴**；$k$ 是域时 $\operatorname{Mat}(k) \simeq$ 有限维 $k$-向量空间范畴（**等价但不同构**）。
+
+**证明。** 矩阵乘法满足结合律与单位律 ✓；取一组基给出到有限维空间的函子，它是全忠实且本质满的 ✓，但没有同构 —— 左边是小范畴、右边是大范畴 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.19
+
+#### Cat 的终始对象与有限积　`prop.cat-final-initial-products`
+*命题*　命题：$\mathbf{Cat}$ 有终对象 $\mathbf{1}$、始对象 $\mathbf{0}$ 与积范畴
+
+$\mathbf{Cat}$ 有**终对象**（单对象范畴 $\mathbf{1}$）、有**始对象**（空范畴 $\mathbf{0}$）、有**有限积**（积范畴 $\mathcal{C} \times \mathcal{C}'$）；并且 $\operatorname{Op}(\mathcal{C})$ 是域与余域函子 $\operatorname{Mor}(\mathcal{C}) \rightrightarrows \mathcal{C}$ 的**核**。
+
+**证明。** 终/始对象与积范畴的泛性质逐条验证 ✓；「域 = 余域」正是两条函子的等化子 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.31
+
+#### 允许右分式演算时局部化函子正合　`prop.localization-functor-exact`
+*命题*　命题：右分式演算 $\implies$ $Q : \mathcal{C} \to \mathrm{ho}(\mathcal{C})$ 正合
+
+若 $\mathcal{C}$ 关于 $W$ 容许**右分式演算**，则局部化函子 $Q : \mathcal{C} \to \mathrm{ho}(\mathcal{C})$ **正合**。
+
+**证明。** 右分式演算说 $\operatorname{Hom}_{\mathrm{ho}}(X, Y)$ 是形如 $X \xleftarrow{\ w\ } X' \xrightarrow{\ f\ } Y$（$w \in W$）的分式的商 ✓，而 $Q$ 在这些 Hom 集上是满的、并与原范畴的映射交换 ✓，于是它保有限极限与有限余极限 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.54
+
 ### 星团：函子与自然变换
 > 造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。
 
@@ -6750,6 +6804,24 @@ $$F(X) \cong F(Y) \implies X \cong Y.$$
 ⚠️ 反过来不对：本质单射的函子未必全忠实。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.17
+
+#### 遗忘函子忠实但不满　`prop.forgetful-faithful-not-full`
+*命题*　命题：$\mathbf{Top} \to \mathbf{Set}$ 与 $\mathbf{Ab} \to \mathbf{Set}$ 忠实不满
+
+遗忘函子 $\mathbf{Top} \to \mathbf{Set}$ 与 $\mathbf{Ab} \to \mathbf{Set}$ 都是**忠实但不满**的。
+
+**证明。** 映射的集合不变，所以忠实 ✓；但两个拓扑空间之间的连续映射只是全体映射的一部分、两个群之间的映射还要求保运算 ✓ —— 所以不满 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.14
+
+#### 自然同构不改变函子的性质　`prop.nat-iso-invariants`
+*命题*　命题：$F \cong F'$ 则两者忠实/满/全忠实/本质满/等价性一致
+
+若 $F \cong F'$，则 $F$ 忠实（resp. 满、全忠实、本质满、是等价）$\iff$ $F'$ 也如此。
+
+**证明。** 自然同构在每对 Hom 集上给出一族与复合相容的双射 ✓，于是「$\operatorname{Hom}(X,Y) \to \operatorname{Hom}(FX, FY)$ 是不是双射」这件事两边同时成立 ✓；本质满与等价同理（同构平移对象）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.16
 
 ### 星团：图与极限
 > 造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子。
@@ -7374,6 +7446,60 @@ $$\text{幺半群对象} \longmapsto \text{幺半群对象}, \qquad \text{群对
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.53
 
+#### 自由对象的例子　`prop.free-objects-examples`
+*命题*　命题：各代数范畴里的自由对象
+
+「自由」在几个代数范畴里的样子：$\mathbf{Mon}$ 里是以 $X$ 为生成元的**字幺半群**；$\mathbf{Gr}$ 里是**字群**（允许消去）；$\mathbf{Rng}$ 里是非交换多项式环；$G\text{-}\mathbf{Set}$ 里是 $G$ 本身（正则作用）；$A\text{-}\mathbf{Mod}$ 里是 $A^{(X)}$；$k\text{-}\mathbf{Alg}$ 里是**张量代数**。
+
+**证明。** 逐条核对自由对象的万有性质 $\operatorname{Hom}(FX, -) \cong \operatorname{Hom}_{\mathbf{Set}}\bigl(X, U(-)\bigr)$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.8
+
+#### 带算子的对象就是模　`prop.op-category-is-modules`
+*命题*　命题：$\operatorname{Op}(k\text{-}\mathbf{Mod}) \simeq k[T]\text{-}\mathbf{Mod}$
+
+记 $\operatorname{Op}(\mathcal{C}) \subseteq \operatorname{Mor}(\mathcal{C})$ 为由「域 = 余域」的态射组成的**满子范畴**（带算子的对象）。$k$ 交换时 $\operatorname{Op}(k\text{-}\mathbf{Mod}) \simeq k[T]\text{-}\mathbf{Mod}$。
+
+**证明。** 「$k$-模 $M$ 带上一个自同态 $T : M \to M$」与「$k[T]$-模结构」是同一份数据（$T$ 给出 $k[T] \to \operatorname{End}(M)$）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.13
+
+#### 代数范畴里的极限与余极限　`prop.algebra-categories-limits`
+*命题*　命题：极限逐点算，余极限由自由构造加商给出
+
+$\mathbf{Mon}$、$\mathbf{Gr}$、$\mathbf{Rng}$、$G\text{-}\mathbf{Set}$、$A\text{-}\mathbf{Mod}$、$k\text{-}\mathbf{Alg}$ 里的**极限逐点算**（忘到底集合就是集合的极限）；**余极限**由「先自由生成、再取商」给出 —— 例如 $\mathbf{Gr}$ 里的余积是自由积。
+
+**证明。** 这些遗忘函子都**保极限** ✓，所以极限 = 底层集合的极限配上由泛性质逐点给出的结构 ✓；余积则先把生成元自由地拼起来、再商掉关系 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.28
+
+#### 双代数的例子　`prop.bialgebra-examples`
+*命题*　命题：$k[t]$ 与 $k[t,1/t]$ 都是双代数
+
+**双代数** = $k$-代数范畴的反范畴里的**幺半群**。$k[t]$ 带 $t \mapsto t \otimes 1 + 1 \otimes t$、$k[t, 1/t]$ 带 $t \mapsto t \otimes t$ 都是双代数。
+
+**证明。** 把「反范畴里的幺半群」翻译回 $k$-代数，就是「余乘 $\Delta : A \to A \otimes A$ 是**代数同态**」✓；上面两个 $\Delta$ 都保乘法 ✓（$k[t,1/t]$ 里 $t$ 可逆，所以只有 $t \mapsto t \otimes t$ 这一种选择）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.50
+
+#### 代数遗忘函子保极限　`prop.forgetful-preserves-limits`
+*命题*　命题：$\mathbf{Mon}, \mathbf{Gr}, \mathbf{Rng}, \ldots \to \mathbf{Set}$ 保所有极限
+
+$\mathbf{Mon}$、$\mathbf{Gr}$、$\mathbf{Rng}$、$G\text{-}\mathbf{Set}$、$A\text{-}\mathbf{Mod}$、$k\text{-}\mathbf{Alg}$ 到 $\mathbf{Set}$ 的遗忘函子都**保所有极限**。
+
+**证明。** 这些结构都是「在集合上逐点给出运算 + 逐点验证等式」✓，于是极限图表的泛性质在底层集合上逐点成立，结构自动拼出 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.65
+
+#### 遗忘与含入函子的正合性　`prop.forgetful-exactness`
+*命题*　命题：遗忘保极限不保余极限；层化正合
+
+代数遗忘函子**保极限但不保余极限**；含入 $\widetilde{\mathcal{C}} \hookrightarrow \widehat{\mathcal{C}}$ 保极限不保余极限，而它的左伴随（**层化**）**正合**。
+
+**证明。** 保极限见「代数遗忘函子保极限」✓；不保余极限：$M \oplus N$ 的底集合不是 $M \sqcup N$ ✓；层化是左伴随又左正合，故正合 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.66
+
 ### 星团：预层与米田
 > 造出「表示」这套语言：预层范畴是落点，米田引理说自然变换集与 $F(X)$ 一一对应，稠密性定理说每个预层都是可表示预层的余极限。
 
@@ -7652,6 +7778,33 @@ $$\Bigl(\varinjlim_{i} T_{i}\Bigr)(X) \;\cong\; \varinjlim_{i} T_{i}(X), \qquad 
 **证明。** (2) $\iff$ (1)：$T = \varinjlim_{X \to T} h_{X}$ 总是成立（元素范畴的余极限给出 $T$）✓，而它落在可表示预层上、指标范畴正是 $\mathcal{C}/T$ ✓，所以「可表示为滤过余极限」与「$\mathcal{C}/T$ 滤过」是同一句话 ✓。(1) $\iff$ (3)：滤过余极限保有限极限 ✓，可表示预层左正合 ✓，于是余极限也左正合；反过来左正合的预层由它自己的元素范畴给出的表达是滤过的 ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.8
+
+#### 遗忘函子可表示　`prop.forgetful-representable`
+*命题*　命题：以集合为值的常见遗忘函子都可表示
+
+以 $\mathbf{Set}$ 为值的常见遗忘函子都是**可表示的**，表示对象就是相应的**自由对象**。
+
+**证明。** $\mathbf{Grp} \to \mathbf{Set}$ 由 $\mathbb{Z}$ 表示（同态 $\mathbb{Z} \to G$ 就是选一个元素）✓；$\mathbf{Rng} \to \mathbf{Set}$ 由 $\mathbb{Z}[t]$ 表示 ✓；$\mathbf{Top} \to \mathbf{Set}$ 由单点空间表示 ✓；一般地 $U \cong \operatorname{Hom}(F\mathbf{1}, -)$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.20
+
+#### 解集函子可表示　`prop.solution-functor-representable`
+*命题*　命题：$A \mapsto \{a \in A^{n} : f_{i}(a) = 0\}$ 可表示
+
+设 $f_{1}, \ldots, f_{r} \in k[t_{1}, \ldots, t_{n}]$。把交换 $k$-代数 $A$ 送到**解集** $S(A) = \{(a_{1}, \ldots, a_{n}) \in A^{n} : f_{1}(a) = \cdots = f_{r}(a) = 0\}$ 的函子**可表示**。
+
+**证明。** $k$-代数同态 $k[t_{1},\ldots,t_{n}]/(f_{1},\ldots,f_{r}) \to A$ 完全由 $t_{i}$ 的像决定，而像必须把每个 $f_{i}$ 送到 $0$ ✓ —— 于是这族同态正是 $S(A)$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.22
+
+#### 万有元素唯一到唯一同构　`prop.universal-unique-iso`
+*命题*　命题：$(X,s)$ 与 $(X',s')$ 都万有 $\implies$ 唯一的 $f : X \cong X'$ 带 $s$ 到 $s'$
+
+若 $(X, s)$ 与 $(X', s')$ 都是函子 $F$ 的**万有元素**，则存在**唯一的同构** $f : X \to X'$ 使 $F(f)(s) = s'$。
+
+**证明。** 两个万有元素各自给出 $h_{X} \cong F \cong h_{X'}$ ✓，由米田引理得唯一的同构 $X \cong X'$ ✓，而「把 $s$ 送到 $s'$」正是这个同构在元素层的写法 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.23
 
 ### 星团：伴随与反射
 > 造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。
@@ -8072,6 +8225,70 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 两次都用伴随的定义，而这族同构关于 $X, Z$ 自然（两个自然同构的复合仍自然）✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.59
+
+#### 伴随双射的自然性　`prop.adjunction-naturality`
+*命题*　命题：$\Phi$ 自然的显式写法
+
+伴随双射 $\Phi_{X, X'} : \operatorname{Hom}\bigl(F(X), X'\bigr) \cong \operatorname{Hom}\bigl(X, G(X')\bigr)$ 的自然性说的是：对 $g : Y \to X$、$g' : X' \to Y'$ 与 $f : F(X) \to X'$，有 $\Phi\bigl(g' \circ f \circ F(g)\bigr) = G(g') \circ \Phi(f) \circ g$。
+
+**证明。** 代 $\Phi(f) = G(f) \circ \eta_{X}$ 与 $\Phi^{-1}(h) = \varepsilon_{X'} \circ F(h)$ ✓，两边都用单位与余单位的自然性即得那条等式 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.55
+
+#### 遗忘函子的伴随　`prop.forgetful-adjoints-examples`
+*命题*　命题：自由 ⊣ 遗忘、层化 ⊣ 含入、$k$-化 ⊣ 含入
+
+常见的一对对子：**自由 ⊣ 遗忘**（$\mathbf{Mon}$、$\mathbf{Gr}$、$\mathbf{Ab}$、$A\text{-}\mathbf{Mod}$……）、**层化 ⊣ 含入**（$\widetilde{\mathcal{C}} \hookrightarrow \widehat{\mathcal{C}}$）、**$k$-化 ⊣ 含入**（$k\mathbf{Top} \hookrightarrow \mathbf{Top}$）。一般规律：**「忘掉结构 / 放宽结构」的函子是右伴随，其左伴随即「自由地补上结构」**。
+
+**证明。** 逐例核对万能性质：$\operatorname{Hom}_{\mathbf{Mon}}(\text{自由幺半群},\ G) \cong \operatorname{Hom}_{\mathbf{Set}}(X, G)$ ✓；$\operatorname{Hom}(T^{\#}, F) \cong \operatorname{Hom}(T, F)$ ✓；$\operatorname{Hom}_{k\mathbf{Top}}(kX, Y) \cong \operatorname{Hom}_{\mathbf{Top}}(X, Y)$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.56
+
+#### Currying　`prop.currying`
+*命题*　命题：$X \mapsto X \times Y \;\dashv\; Z \mapsto \mathbf{Set}(Y, Z)$
+
+在 $\mathbf{Set}$ 里 $X \mapsto X \times Y$ **⊣** $Z \mapsto \mathbf{Set}(Y, Z)$：
+
+**证明。** 给 $f : X \times Y \to Z$，令 $\widehat{f}(x)(y) = f(x, y)$ ✓；反过来给 $g$ 令 $f(x,y) = g(x)(y)$ ✓ —— 两个方向互逆且自然 ✓，所以 $\mathbf{Set}(X \times Y, Z) \cong \mathbf{Set}\bigl(X, \mathbf{Set}(Y, Z)\bigr)$ ✓。$\mathbf{Cat}$（函子范畴）与 $\mathbf{Ab}$ 里有同一套伴随 —— 这就是**笛卡尔闭**。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.57
+
+#### 常见伴随的单位与余单位　`prop.unit-counit-examples`
+*命题*　命题：从单位/余单位读出忠实性
+
+几对常见伴随的单位：**自由 ⊣ 遗忘** 的单位是「把 $x$ 送进生成元」；**层化 ⊣ 含入** 的单位是 $T \to T^{\#}$；**$k$-化 ⊣ 含入** 的单位是恒等（$X \to kX$ 当 $X$ 已紧生成时）。由「余单位满 $\iff$ 忠实」还能从单位/余单位读出忠实性。
+
+**证明。** 逐例用 $\eta_{X} = \Phi(1_{FX})$、$\varepsilon_{Y} = \Phi^{-1}(1_{GY})$ 算即可 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.61
+
+#### 有余幂则可表示函子有伴随　`prop.copowers-give-adjoint`
+*命题*　命题：$\mathcal{C}$ 有余幂 $\implies$ $X^{(I)} \dashv h_{X}$
+
+若小范畴 $\mathcal{C}$ 有**余幂**，则每个可表示函子 $h_{X}$ 都有左伴随：$\mathbf{Set} \to \mathcal{C},\ I \mapsto X^{(I)}$ **⊣** $h_{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$。
+
+**证明。** 余幂的泛性质给出 $\operatorname{Hom}_{\mathcal{C}}\bigl(X^{(I)}, Y\bigr) \cong \operatorname{Hom}_{\mathbf{Set}}\bigl(I, \operatorname{Hom}_{\mathcal{C}}(X, Y)\bigr) = \mathbf{Set}\bigl(I, h_{X}(Y)\bigr)$ ✓，正是伴随的定义 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.62
+
+#### 反射的判据　`prop.reflection-criterion`
+*命题*　命题：$F$ 是反射 $\iff$ 存在 $\alpha_{X} : X \to F(X)$，在 $\mathcal{C}'$ 上是同构
+
+设 $\mathcal{C}'$ 是 $\mathcal{C}$ 的**满**子范畴、$F : \mathcal{C} \to \mathcal{C}'$。则 $F$ 是**反射** $\iff$ 存在自然态射 $\alpha_{X} : X \to F(X)$（$X \in \mathcal{C}$），且 $X \in \mathcal{C}'$ 时 $\alpha_{X}$ 是**同构**。
+
+**证明。** ($\Longrightarrow$) 取单位 $\alpha = \eta$ ✓；$X \in \mathcal{C}'$ 时含入全忠实使 $\eta_{X}$ 是同构（三角等式逼出逆）✓。
+($\Longleftarrow$) 由 $\alpha$ 的泛性，每个 $X \to Y$（$Y \in \mathcal{C}'$）唯一地穿过 $\alpha_{X}$ ✓ —— 正是反射的泛性质 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.71
+
+#### 余反射子范畴上的幺半群　`prop.coreflective-monoids-full`
+*命题*　命题：$\mathcal{C}'$ 余反射 $\implies \mathrm{Mon}(\mathcal{C}')$ 是 $\mathrm{Mon}(\mathcal{C})$ 的满子范畴
+
+若 $\mathcal{C}'$ 是 $\mathcal{C}$ 的**余反射**子范畴，则 $\mathrm{Mon}(\mathcal{C}')$ 是 $\mathrm{Mon}(\mathcal{C})$ 的**满子范畴**；$\mathrm{Gr}$、$\mathbf{Ab}$ 等同样。
+
+**证明。** $\mathcal{C}'$ 是满子范畴，所以 $\mathrm{Mon}(\mathcal{C}') \to \mathrm{Mon}(\mathcal{C})$ 自动全忠实 ✓。结构能对上靠**余单位**：含入 $i$ 有右伴随 $r$（这就是余反射），于是 $\mathcal{C}'$ 里的积是 $G \times_{\mathcal{C}'} G' = r(G \times_{\mathcal{C}} G')$ ✓，而 $\varepsilon : i\,r \to 1$ 给出 $\mathcal{C}$ 里的态射 $G \times_{\mathcal{C}'} G' \to G \times_{\mathcal{C}} G'$ —— 用它可以把 $\mathcal{C}'$ 里的乘法搬到 $\mathcal{C}$ 里，反之亦然 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 1.72
 
 ### 星团：层与拓扑
 > 造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。
@@ -9203,6 +9420,16 @@ $$(x_{*}E)(U) = \begin{cases} E & x \in U,\\ \emptyset & x \notin U,\end{cases} 
 ⭐ 读法：**拓扑空间上的「拟紧层」就是几何里那个「紧的 étale 空间」**。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.70
+
+#### 切片里的覆盖筛　`prop.slice-covering-sieve`
+*命题*　命题：$R$ 在 $\mathcal{C}/T$ 里覆盖 $\iff$ $\hat j_{T!}R$ 在 $\mathcal{C}$ 里是覆盖筛
+
+设 $\mathcal{C}$ 是 site、$T \in \widehat{\mathcal{C}}$、$s \in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\mathcal{C}/T$ 里是**覆盖** $\iff$ $\hat j_{T!}R$ 是 $X$ 在 $\mathcal{C}$ 里的**覆盖筛**。
+
+**证明。** 两边都是「沿 $R$ 的余锥能不能覆盖」这件事的翻译 ✓：$\mathcal{C}/T$ 里的覆盖由 $\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来，而 $j_{T!}$ 正是把 $\mathcal{C}/T$ 里的筛搬回 $\mathcal{C}$ 的函子 ✓。
+⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出 site 的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.62
 
 ## 星系：同调代数（Homological Algebra）
 > 加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。
@@ -10724,6 +10951,17 @@ $$R^{n}G\bigl(F(K)\bigr) \;\cong\; R^{n}(G \circ F)(K);$$
 **证明。** 正合函子的高次导出函子为零：$R^{q}F = 0$（$q > 0$）✓。在 Grothendieck 谱序列 $E^{p,q}_{2} = R^{p}G(R^{q}F(K)) \implies R^{p+q}(G\circ F)(K)$ 里，$E_{2}$ 页只剩下 $q = 0$ 那一行 ✓，于是谱序列退化，$R^{n}(G\circ F)(K) \cong R^{n}G(F(K))$ ✓。对偶地把 $F,G$ 互换（另一半用 $G$ 正合 $\implies$ $R^{p}G = 0$）✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.35
+
+#### 谱序列的页画在 (p,q) 平面上　`prop.spectral-sequence-page-picture`
+*命题*　命题：$E_{0}, E_{1}, E_{2}$ 都是 $(p,q)$ 平面上的格点族
+
+谱序列的每一页 $E_{r}$ 都可以画成 $(p, q)$ 平面上的**格点族**（每个格点挂一个对象 $E^{p,q}_{r}$），而微分 $d_{r}$ 是从 $(p,q)$ 指向 $(p+r,\, q-r+1)$ 的**斜向箭头**。于是 $E_{0}, E_{1}, E_{2}$ 只是同一张图上不同的「向量场」。
+
+**证明。** 逐项对定义：$E_{0}$ 的箭头是 $(p,q) \to (p, q+1)$（纵向）✓；$E_{1}$ 的是 $(p,q) \to (p+1, q)$（横向）✓；$E_{2}$ 的是 $(p,q) \to (p+2, q-1)$（斜率 $-\frac{1}{2}$）✓ —— 每翻一页箭头就转一次、同时「吃掉」更多格点 ✓。∎
+
+⭐ 用处：**第一象限**谱序列里，这条图画出来一眼就能看出哪些项会活到 $E_{\infty}$（比如 $E^{0,q}$ 只可能被从左上来的箭头打到）。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.28
 
 ### 星团：层上同调
 > 把导出函子开到层上：$H^{n}(X, M) = R^{n}\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。
@@ -17714,6 +17952,111 @@ ind-可表示用的就是 Ind-对象。
 
 命题说「上同调预层的取值就是上同调」。
 
+#### 定义引用：「幺半群对象」→ 自由对象的例子　`def-link.freeobj-mon`
+
+自由对象要在这些代数范畴里造。
+
+#### 定义引用：「环」→ Z-模就是阿贝尔群　`def-link.zmod-ring`
+
+命题把模与环和 Z-模、Z-代数对上。
+
+#### 定义引用：「截面与收缩」→ 函子保截面与收缩　`def-link.fsections-section`
+
+保的就是截面与收缩。
+
+#### 定义引用：「切片范畴」→ 态射范畴上的域与余域函子　`def-link.morcat-slice`
+
+切片范畴那两个遗忘函子就在这里。
+
+#### 定义引用：「幺半群对象」→ 带算子的对象就是模　`def-link.opcat-monoid`
+
+带算子的对象就是「单对象 + 自同态」这套数据。
+
+#### 定义引用：「忠实 / 满 / 全忠实」→ 遗忘函子忠实但不满　`def-link.ffnotfull-ff`
+
+判定的是忠实与满。
+
+#### 定义引用：「范畴等价」→ 自然同构不改变函子的性质　`def-link.natisoinv-equiv`
+
+等价性在自然同构下不变。
+
+#### 定义引用：「范畴」→ 矩阵范畴　`def-link.matcat-cat`
+
+要验的首先是一个小范畴。
+
+#### 定义引用：「表示函子」→ 遗忘函子可表示　`def-link.forgetrepr-representable`
+
+结论是「可表示」。
+
+#### 定义引用：「表示函子」→ 解集函子可表示　`def-link.solutionrepr-representable`
+
+解集函子可表示。
+
+#### 定义引用：「米田引理」→ 万有元素唯一到唯一同构　`def-link.univuniq-yoneda`
+
+唯一性由米田引理给出。
+
+#### 定义引用：「极限」→ 代数范畴里的极限与余极限　`def-link.algcatlim-limit`
+
+说这些范畴里的极限余极限怎么算。
+
+#### 定义引用：「终对象 / 始对象」→ Cat 的终始对象与有限积　`def-link.catfinal-final`
+
+终对象与始对象在 Cat 里是谁。
+
+#### 定义引用：「幺半群对象」→ 双代数的例子　`def-link.bialg-monoid`
+
+双代数就是反范畴里的幺半群。
+
+#### 定义引用：「局部化」→ 允许右分式演算时局部化函子正合　`def-link.locfunctor-localization`
+
+正合说的是局部化函子。
+
+#### 定义引用：「伴随函子」→ 伴随双射的自然性　`def-link.adjnat-adjoint`
+
+把伴随双射的自然性写成显式等式。
+
+#### 定义引用：「伴随函子」→ 遗忘函子的伴随　`def-link.forgetadj-adjoint`
+
+一批常用伴随。
+
+#### 定义引用：「伴随函子」→ Currying　`def-link.currying-adjoint`
+
+Currying 就是一对伴随。
+
+#### 定义引用：「单位与余单位」→ 常见伴随的单位与余单位　`def-link.unitcounit-adjunit`
+
+把各例的单位余单位算出来。
+
+#### 定义引用：「伴随函子」→ 有余幂则可表示函子有伴随　`def-link.copowers-adjoint`
+
+余幂给出左伴随。
+
+#### 定义引用：「幺半群对象」→ 代数遗忘函子保极限　`def-link.forgetlim-monoid`
+
+这些遗忘函子保极限。
+
+#### 定义引用：「正合函子」→ 遗忘与含入函子的正合性　`def-link.forgetexact-exactfun`
+
+讨论的是正合性。
+
+#### 定义引用：「反射子范畴」→ 反射的判据　`def-link.reflectcrit-reflective`
+
+给出反射的一个判据。
+
+#### 定义引用：「幺半群对象」→ 余反射子范畴上的幺半群　`def-link.corefmon-monoid`
+
+幺半群对象沿余反射子范畴的限制。
+
+#### 切片拓扑斯 ⟹ 切片里的覆盖筛　`imp-link.slicetopos-slicecov`
+*切片拓扑斯 $\implies$ 切片里的覆盖筛判据*
+
+由「切片拓扑斯」那条，$j_{T}$ 余连续、$\widetilde{\mathcal{C}/T} \simeq \widetilde{\mathcal{C}}/\widetilde{T}$ ✓，于是 $\mathcal{C}/T$ 里的覆盖就是 $\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来的 ✓；把筛 $R$ 沿 $j_{T!}$ 推回去即得判据 ✓。∎
+
+#### 定义引用：「谱序列」→ 谱序列的页画在 (p,q) 平面上　`def-link.sspage-ss`
+
+把谱序列的页画在平面上。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -21071,10 +21414,12 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **范畴与图 ↔ 函子与自然变换**　5 条节点级连线
 - **单满、子对象与像 ↔ 预层与米田**　4 条节点级连线
 - **范畴与图 ↔ 紧 Hausdorff 空间**　2 条节点级连线
-- **范畴与图 ↔ 图与极限**　5 条节点级连线
+- **范畴与图 ↔ 图与极限**　6 条节点级连线
 - **图与极限 ↔ 预层与米田**　6 条节点级连线
 - **函子与自然变换 ↔ 预层与米田**　10 条节点级连线
 - **图与极限 ↔ 紧 Hausdorff 空间**　2 条节点级连线
+- **范畴与图 ↔ 预层与米田**　3 条节点级连线
+- **范畴里的代数结构 ↔ 图与极限**　4 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -21099,7 +21444,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 关系与函数**　2 条节点级连线
 - **图与极限 ↔ 集合的构造**　2 条节点级连线
 - **图与极限 ↔ 单满、子对象与像**　4 条节点级连线
-- **范畴与图 ↔ 预层与米田**　2 条节点级连线
 - **伴随与反射 ↔ 关系与函数**　2 条节点级连线
 - **图与极限 ↔ 紧生成空间与弱 Hausdorff**　2 条节点级连线
 - **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　3 条节点级连线
@@ -21109,7 +21453,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑阿贝尔群 ↔ 紧生成空间与弱 Hausdorff**　4 条节点级连线
 - **代数结构 ↔ 加法与阿贝尔范畴**　2 条节点级连线
 - **图与极限 ↔ 序结构**　2 条节点级连线
-- **范畴里的代数结构 ↔ 图与极限**　3 条节点级连线
 - **代数结构 ↔ 范畴里的代数结构**　2 条节点级连线
 - **加法与阿贝尔范畴 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **复形与导出三角 ↔ 层上同调**　3 条节点级连线

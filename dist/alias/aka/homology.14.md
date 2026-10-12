@@ -29,4 +29,6 @@
 
 - Exercise 7.42 → prop.cohomology-presheaf-H
 
+- Exercise 7.28 → prop.spectral-sequence-page-picture
+
 见 `../../alias.md`。

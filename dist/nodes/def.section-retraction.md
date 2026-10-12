@@ -10,6 +10,7 @@ layer 8 · 定义 · 范畴与图 · 范畴论
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.category-section.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.functor-preserves-sections` 函子保截面与收缩 用
 - 被 `def.localization` 局部化 用
 - 被 `prop.iso-unique-section` 同构的截面与收缩唯一 用
 

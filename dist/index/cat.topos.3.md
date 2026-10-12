@@ -1,6 +1,7 @@
 # 拓扑斯（cat.topos）· 节点清单（第 3/3 页）
 根 `../`　·　第 1 页 `index/cat.topos.md`　·　上一页 `index/cat.topos.2.md`
 
+- prop.slice-shriek-z　切片左伴随作用在 Z 上　layer 18
 - prop.internal-hom-slice-value　内 Hom 的取值　layer 18
 - prop.topos-morphism-point　点给出的拓扑斯态射　layer 18
 - prop.inverse-image-tensor　拉回与内 Hom、张量积相容　layer 19

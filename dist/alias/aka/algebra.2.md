@@ -23,4 +23,4 @@
 
 - Exercise 1.21 → prop.module-tensor-universal
 
-见 `../../alias.md`。
+> 续见 alias/aka/algebra.3.md

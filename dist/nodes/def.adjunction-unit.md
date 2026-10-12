@@ -16,6 +16,7 @@ $$\Phi_{X, Y} : \operatorname{Hom}_{\mathcal{D}}\bigl(F(X), Y\bigr) \longrightar
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.adjoint-full-faithful` 全忠实与单位
+- 被 `prop.unit-counit-examples` 常见伴随的单位与余单位 用
 - 被 `prop.adjoint-full-faithful` 全忠实与单位 用
 - 被 `prop.counit-epi-iff-faithful` 余单位与忠实性 用
 

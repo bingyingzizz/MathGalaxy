@@ -11,6 +11,7 @@ layer 13 · 定义 · 函子与自然变换 · 范畴论
 - 被 `prop.left-exact-criterion` 左正合性的判据 用
 - 被 `prop.left-exact-iff-R0` 左正合性与 R⁰ 用
 - 被 `prop.ind-representable-iff-left-exact` ind-可表示即左正合 用
+- 被 `prop.forgetful-exactness` 遗忘与含入函子的正合性 用
 - 被 `prop.preserves-products-kernels` 保积与核 ⟹ 保所有有限极限 用
 
 refs: Le Stum, An introduction to condensed mathematics, §1.2

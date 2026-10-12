@@ -17,7 +17,9 @@ layer 12 · 定义 · 预层与米田 · 范畴论
 - ⇒ `thm.density` 稠密性定理
 - 被 `prop.slice-fully-faithful-mono` 单态射的切片刻画 用
 - 被 `prop.slice-topos` 切片拓扑斯 用
-- 被 `thm.density` 稠密性定理 用
+- 被 `def.mor-domain-codomain` 态射范畴上的域与余域函子 用
+
+- …另有出边，续页见 `nodes/def.slice-category.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
 

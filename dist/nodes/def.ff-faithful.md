@@ -18,9 +18,9 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\ma
 - ⇒ `prop.adjoint-full-faithful` 全忠实与单位
 - 被 `thm.equivalence-criterion` 等价函子的判据 用
 - 被 `prop.fully-faithful-injective` 全忠实函子本质单射 用
+- 被 `prop.forgetful-faithful-not-full` 遗忘函子忠实但不满 用
 - 被 `prop.yoneda-embedding` 米田嵌入 用
 - 被 `prop.adjoint-full-faithful` 全忠实与单位 用
-- 被 `def.reflective-subcategory` 反射子范畴 用
 
 - …另有出边，续页见 `nodes/def.ff-faithful.3.md`
 

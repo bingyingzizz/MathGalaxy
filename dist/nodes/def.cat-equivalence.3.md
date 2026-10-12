@@ -2,4 +2,5 @@
 根 `../`　·　第 1 页 `nodes/def.cat-equivalence.md`　·　上一页 `nodes/def.cat-equivalence.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.nat-iso-invariants` 自然同构不改变函子的性质 用
 - 被 `thm.pontryagin-van-kampen` Pontryagin–van Kampen 对偶 用

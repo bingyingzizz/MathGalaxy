@@ -3,7 +3,7 @@
 
 - 紧生成空间是余反射的 | kification | 紧生成是余反射子范畴 | k 是右伴随 | Proposition 2.3.4 | Prop 2.3.4 → prop.cg-coreflective
 
-- 紧生成空间的例子 | 局部紧空间是紧生成的 | R^I 不紧生成 → ex.cg-examples
+- 紧生成空间的例子 | 局部紧空间是紧生成的 | R^I 不紧生成 | Exercise 6.2 → ex.cg-examples
 
 - 紧生成空间的等价刻画 | k-空间等价条件 | Exercise 2.24 → prop.cg-equivalent-conditions
 

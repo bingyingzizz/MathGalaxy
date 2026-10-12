@@ -16,7 +16,10 @@ $$\mu : G \times G \longrightarrow G$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.functor-preserves-monoid-objects` 保有限积的函子作用于代数对象 用
-- 被 `def.group-object` 群对象与阿贝尔群对象 用
+- 被 `prop.free-objects-examples` 自由对象的例子 用
+- 被 `prop.op-category-is-modules` 带算子的对象就是模 用
+
+- …另有出边，续页见 `nodes/def.monoid-object.3.md`
 
 refs: Mac Lane, Categories for the Working Mathematician, III.6
 

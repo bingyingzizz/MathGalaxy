@@ -2,6 +2,8 @@
 根 `../`　·　第 1 页 `nodes/def.limit.md`　·　上一页 `nodes/def.limit.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.algebra-categories-limits` 代数范畴里的极限与余极限 用
+- 被 `prop.yoneda-embedding` 米田嵌入 用
 - 被 `thm.density` 稠密性定理 用
 - 被 `thm.right-adjoint-preserves-limits` 右伴随保极限 用
 - 被 `prop.limit-adjoint` 极限即伴随 用
@@ -20,7 +22,5 @@
 - 被 `def.sheaf` 层 用
 - 被 `def.topos-morphism` 拓扑斯的态射 用
 - 被 `def.compactly-generated` 紧生成空间 用
-- 被 `def.ab-axioms` Grothendieck 的 AB 公理 用
-- 被 `thm.cofinal-colimit` 共尾函子不改变余极限 用
 
 > 续见 `nodes/def.limit.4.md`

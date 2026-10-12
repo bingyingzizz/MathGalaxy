@@ -11,6 +11,7 @@ $\mathcal{C}$ 的**终对象** $\mathbf{1}_{\mathcal{C}}$ 是空图 $\emptyset \
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-final.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.cat-final-initial-products` Cat 的终始对象与有限积 用
 - 被 `def.monoid-object` 幺半群对象 用
 - 被 `def.zero-object` 零对象与直和 用
 

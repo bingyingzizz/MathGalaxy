@@ -9,6 +9,9 @@ layer 13 · 命题 · 拓扑斯 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.slice-category` 切片范畴：用到了定义 切片范畴　proofs/def-link.slicetopos-slice.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.slice-covering-sieve` 切片里的覆盖筛
+
 refs: Le Stum, An introduction to condensed mathematics, Exercise 3.63, Exercise 3.64
 
 > 说明见 `notes/prop.slice-topos.md`
