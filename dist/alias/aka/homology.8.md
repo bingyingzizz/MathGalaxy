@@ -1,26 +1,20 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 同调的短正合列 → prop.cohomology-exact-sequence
+
+- 上同调函子 | cohomological functor | Exercise 7.15 | Definition 7.1.12 | Def 7.1.12 | Corollary 7.1.16 | Cor 7.1.16 | Proposition 7.1.13 | Corollary 7.1.10 | Cor 7.1.10 → def.cohomological-functor
+
+- 长正合列 | long exact sequence | 蛇引理 | snake lemma | 连接同态 | Theorem 7.1.15 | Thm 7.1.15 → thm.long-exact
+
+- 拟同构 | quasi-isomorphism | quasi-iso | 零调 | acyclic | Exercise 7.16 | Exercise 7.17 | Definition 7.1.17 | Def 7.1.17 → def.quasi-iso
+
+- 内射对象的判据 | injective criterion | Baer 判据 | Exercise 7.18 → prop.injective-criterion
+
+- 过滤 | filtration | 关联分次 | graded pieces → def.filtration
+
 - 谱序列 | spectral sequence | 第一象限谱序列 | E^{p,q}_{r} | E_r 页 → def.spectral-sequence
 
 - Stonean 上零调 | Stonean acyclic | Proposition 8.1.1 → prop.stonean-cond-acyclic
-
-- Stone 上常系数零调 | Stone acyclic constant | Lemma 8.1.2 → lem.stone-constant-acyclic
-
-- Dyckhoff | 局部紧上凝聚态等于层上同调 | Proposition 8.1.4 → thm.dyckhoff
-
-- K-有界正合 | K-bounded exact | K-有界零调 | Definition 8.2.1 → def.k-bounded-exact
-
-- K-有界与完备化 | k-bounded completion | Lemma 8.2.2 → lem.k-bounded-completion
-
-- K-有界推出正合 | Proposition 8.2.3 → prop.k-bounded-implies-exact
-
-- K-有界零调推出零调 | Corollary 8.2.4 → cor.k-acyclic-acyclic
-
-- Stone 满射的 Čech 复形 | 1-有界零调 | Lemma 8.2.5 → lem.stone-cech-1-bounded
-
-- Banach 在 Stone 上零调 | Proposition 8.2.6 → prop.banach-stone-acyclic
-
-- 实 Banach 在紧 Haus 上零调 | Theorem 8.2.8 → thm.real-banach-chaus-acyclic
 
 > 续见 alias/aka/homology.9.md

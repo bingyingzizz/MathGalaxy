@@ -1,7 +1,7 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
-- 蛇引理 | snake lemma | 连接同态 | 追图 | diagram chasing → thm.snake-lemma
+- 蛇引理 | snake lemma | 连接同态 | 追图 | diagram chasing | Proposition 7.1.14 | Prop 7.1.14 → thm.snake-lemma
 
 - 五引理 | five lemma | 追图 → thm.five-lemma
 
@@ -20,7 +20,5 @@
 - 单纯对象给出链复形 | 交替和 | Exercise 7.2 → prop.simplicial-to-chain
 
 - 范畴嵌入复形 | Exercise 7.3 → prop.category-into-complexes
-
-- 同伦等价的判据 | Exercise 7.6 → prop.homotopy-equivalence-criterion
 
 > 续见 alias/aka/homology.2.md

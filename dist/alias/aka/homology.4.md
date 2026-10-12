@@ -1,6 +1,8 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- Ext 就是 RHom | Proposition 7.2.10 | Prop 7.2.10 → prop.ext-is-rhom
+
 - F-零调 | acyclic | 零调对象 | Definition 7.2.11 | Def 7.2.11 → def.f-acyclic
 
 - Leray 零调性 | Proposition 7.2.12 | Prop 7.2.12 → prop.leray-acyclicity
@@ -18,7 +20,5 @@
 - Čech 上同调是余极限 | Exercise 7.46 → prop.cech-as-colim
 
 - Cartan-Leray | Cartan–Leray 谱序列 | Theorem 7.3.6 | Thm 7.3.6 → thm.cartan-leray
-
-- 无环层 | acyclic sheaf | Definition 7.3.9 | Def 7.3.9 → def.acyclic-sheaf
 
 > 续见 alias/aka/homology.5.md
