@@ -17,8 +17,8 @@ $$P \longmapsto \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ \operatorname{Hom}_{\ma
 - `def.condensed-abelian-group` 凝聚态阿贝尔群：用到了定义 凝聚态阿贝尔群　proofs/def-dep.tensor-condab.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.tensor-rhom-natural-map` 张量与 RHom 的配对 用
 - 被 `def.flat-abelian-sheaf` 平坦阿贝尔层 用
-- 被 `prop.ring-tensor-coproduct` 交换环的纤维余积是张量积 用
 
 > 说明见 `notes/def.tensor-abelian-sheaf.md`
 

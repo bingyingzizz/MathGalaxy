@@ -14,12 +14,12 @@ $$\mathrm{Cond} \;:=\; \widehat{\mathbf{CHaus}}$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.top-cond-adjoint` Top 与 Cond 的伴随
+- 被 `prop.condab-discrete-acyclic` 离散空间上零调 用
+- 被 `cor.ext-cond-set-section` Ext 的截面公式 用
 - 被 `prop.condensed-criterion` 凝聚态集的刻画 用
 - 被 `thm.cond-topos` Cond 是拓扑斯 用
 - 被 `thm.top-cond-adjoint` Top 与 Cond 的伴随 用
 - 被 `def.condensed-abelian-group` 凝聚态阿贝尔群 用
-- 被 `prop.cond-internal-hom` 内部 Hom 的函数空间刻画 用
-- 被 `prop.cond-slice-topos-morphism` Cond/X 到开集拓扑斯的态射 用
 
 > 说明见 `notes/def.condensed-set.md`
 

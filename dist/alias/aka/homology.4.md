@@ -1,6 +1,8 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 紧 Hausdorff 上 Cech 就是上同调 | Proposition 7.3.11 | Prop 7.3.11 → prop.chaus-cech-eq-h
+
 - 滤过极限的上同调 | Proposition 7.3.12 | Prop 7.3.12 → prop.filtered-limit-cohomology
 
 - Stone 空间上同调为零 | Exercise 7.50 → prop.stone-acyclic

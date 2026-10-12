@@ -1,6 +1,10 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- Leray 零调性 | Proposition 7.2.12 | Prop 7.2.12 → prop.leray-acyclicity
+
+- 过滤复形给出谱序列 | Theorem 7.2.16 | Thm 7.2.16 → thm.filtered-complex-spectral
+
 - 双复形 | bicomplex | 复形的复形 | Definition 7.2.17 | Def 7.2.17 → def.bicomplex
 
 - Grothendieck 谱序列 | Corollary 7.2.13 | Cor 7.2.13 | Corollary 7.2.21 → cor.grothendieck-spectral
@@ -16,7 +20,5 @@
 - 无环层 | acyclic sheaf | Definition 7.3.9 | Def 7.3.9 → def.acyclic-sheaf
 
 - 无环等价于 Cech 为零 | Proposition 7.3.10 | Prop 7.3.10 → prop.acyclic-iff-cech
-
-- 紧 Hausdorff 上 Cech 就是上同调 | Proposition 7.3.11 | Prop 7.3.11 → prop.chaus-cech-eq-h
 
 > 续见 alias/aka/homology.4.md

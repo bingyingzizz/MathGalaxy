@@ -17,7 +17,7 @@ $$\widehat{\mathcal{C}}(\mathbf{Ab}) := \operatorname{Hom}(\mathcal{C}^{\mathrm{
 - `def.presheaf-cat` 预层范畴：用到了定义 预层范畴　proofs/def-dep.abelsheaf-presheafcat.md
 
 ## 它能推出什么 / 谁在用它
-- 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用
+- 被 `prop.cech-section-vanishing` 带截面的覆盖上 Čech 零调 用
 
 > 说明见 `notes/def.abelian-sheaf.md`
 

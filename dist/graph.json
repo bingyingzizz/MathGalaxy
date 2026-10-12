@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T04:24:25.181Z",
+  "generated": "2026-10-12T04:28:50.787Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 550,
-   "edges": 1153,
-   "strong": 1144,
+   "nodes": 560,
+   "edges": 1173,
+   "strong": 1164,
    "weak": 9
   },
   "readingGuide": {
@@ -95,7 +95,7 @@
    "en": "Homological Algebra",
    "desc": "加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。",
    "color": "#C89A2B",
-   "nodeCount": 90
+   "nodeCount": 93
   },
   {
    "id": "condensed",
@@ -103,7 +103,7 @@
    "en": "Condensed Mathematics",
    "desc": "把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。",
    "color": "#1F8A70",
-   "nodeCount": 65
+   "nodeCount": 72
   }
  ],
  "clusters": [
@@ -929,7 +929,7 @@
    "name": "层上同调",
    "parent": "homology",
    "desc": "把导出函子开到层上：$H^{n}(X, M) = R^{n}\\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。",
-   "nodeCount": 13,
+   "nodeCount": 15,
    "nodes": [
     "def.sheaf-cohomology",
     "def.cech-cohomology",
@@ -943,7 +943,9 @@
     "prop.topos-morphism-derived",
     "cor.homotopy-invariant-cohomology",
     "method.simplicial-cohomology",
-    "lem.cartan-eilenberg"
+    "lem.cartan-eilenberg",
+    "prop.cech-section-vanishing",
+    "prop.cohomology-of-coproduct"
    ]
   },
   {
@@ -951,14 +953,15 @@
    "name": "阿贝尔层",
    "parent": "homology",
    "desc": "造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。",
-   "nodeCount": 6,
+   "nodeCount": 7,
    "nodes": [
     "def.presheaf-valued",
     "def.abelian-sheaf",
     "thm.topos-abelian-grothendieck",
     "def.internal-hom",
     "def.tensor-abelian-sheaf",
-    "def.flat-abelian-sheaf"
+    "def.flat-abelian-sheaf",
+    "prop.tensor-rhom-natural-map"
    ]
   },
   {
@@ -1029,7 +1032,7 @@
    "name": "凝聚态上同调",
    "parent": "condensed",
    "desc": "造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$。",
-   "nodeCount": 29,
+   "nodeCount": 36,
    "nodes": [
     "prop.cond-slice-topos-morphism",
     "prop.stonean-cond-acyclic",
@@ -1059,7 +1062,14 @@
     "ex.chaus-banach-rhom",
     "ex.bd-ss",
     "ex.connected-lc-ext",
-    "ex.nonlc-rhom"
+    "ex.nonlc-rhom",
+    "lem.cech-finite-disjoint-acyclic",
+    "prop.condab-discrete-acyclic",
+    "prop.condab-quotient-r-disc",
+    "cor.ext-cond-set-section",
+    "prop.rhom-zs-sections",
+    "prop.rhom-ze-powers",
+    "prop.discrete-cond-rhom-constant"
    ]
   }
  ],
@@ -13090,6 +13100,236 @@
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §5.1"
    ]
+  },
+  {
+   "id": "prop.cech-section-vanishing",
+   "type": "proposition",
+   "label": "带截面的覆盖上 Čech 零调",
+   "title": "命题：满射有截面时增广 Čech 复形同伦平凡",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 17,
+   "tags": [
+    "命题",
+    "Čech 上同调",
+    "截面",
+    "同伦"
+   ],
+   "statement": "设 $\\mathcal{T}$ 是拓扑斯，$X_{0} \\xrightarrow{\\ p\\ } X$ 是态射且**有截面** $s$（$p s = 1_{X}$）。记\n\n$$X_{n} := X_{0} \\times_{X} \\cdots \\times_{X} X_{0} \\quad (n+1 \\text{ 个因子}),$$\n\n则对 $\\mathcal{T}$ 中任何阿贝尔群 $M$，增广 Čech 复形 $\\check{C}^{\\bullet}\\bigl((X_{0} \\to X)^{+}, M\\bigr)$ 是**同伦平凡**的；特别地\n\n$$\\check{H}^{n}\\bigl((X_{0} \\to X),\\ M\\bigr) = 0 \\qquad (n > 0).$$\n\n同伦的形状是 $f \\mapsto f \\circ s^{n}$，其中 $s^{n} : X_{n} \\to X_{n+1}$。",
+   "notes": "**证明。** 对每个 $n \\ge -1$ 取\n$$s^{n} := s \\times_{X} 1_{X_{n}} : X_{n} \\longrightarrow X_{n+1}$$\n（$n = -1$ 时它就是 $s$ 本身）。这是「沿截面把次数提高一格」的那一族映射，满足收缩同伦的恒等式\n$$1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}, \\qquad d_{n} := \\sum_{i=0}^{n}(-1)^{i} d^{n}_{i}$$\n（把两边逐项展开成各面映射 $d^{n}_{i}$ 的复合即可验证）✓。把 $s^{n}$ 线性延拓到自由对象上，同一恒等式说明 $\\mathbb{Z}\\cdot X^{+}_{\\bullet}$ 上的恒等映射**同伦于 0** —— 即这个复形同伦平凡 ✓。\n而 $\\check{C}^{\\bullet} = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X^{+}_{\\bullet},\\ M\\bigr)$，Hom 函子把同伦 $(s^{n})$ 送到同伦 $(\\operatorname{Hom}(s^{n}, M))$，故 Čech 复形也同伦平凡，正次数上同调为零 ✓。∎\n\n⭐ **有截面 $\\implies$ 没有高次 Čech 上同调**。于是覆盖族里只要有一支映射带截面，整族的 Čech 复形就收缩掉 —— 「同构映射」「有限不交覆盖」这些情形全部自动零调。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §7.3"
+   ]
+  },
+  {
+   "id": "prop.cohomology-of-coproduct",
+   "type": "proposition",
+   "label": "上同调与不交并",
+   "title": "命题：$H^{n}(\\coprod_{i} X_{i}, M) \\cong \\prod_{i} H^{n}(X_{i}, M)$",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheafcoh",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "层上同调",
+    "不交并"
+   ],
+   "statement": "设 $\\mathcal{T}$ 是拓扑斯，$(X_{i})_{i \\in I}$ 是一族对象，$M$ 是 $\\mathcal{T}$ 中的阿贝尔群。则对一切 $n \\ge 0$\n\n$$H^{n}\\Bigl(\\coprod_{i \\in I} X_{i},\\ M\\Bigr) \\;\\cong\\; \\prod_{i \\in I} H^{n}(X_{i},\\ M).$$",
+   "notes": "**证明。** 取 $M$ 的**内射消解** $I^{\\bullet}$ ✓。截面函子把不交并送成**积**：\n$$\\Gamma\\Bigl(\\coprod_{i} X_{i},\\ -\\Bigr) \\;=\\; \\prod_{i} \\Gamma(X_{i},\\ -) ✓$$\n（从余积出发的映射恰是一族相容的映射；等价地，$\\Gamma(X, -) = \\operatorname{Hom}(h_{X}, -)$ 而 $h$ 保余积。）于是\n$$\\Gamma\\Bigl(\\coprod_{i} X_{i},\\ I^{\\bullet}\\Bigr) = \\prod_{i} \\Gamma(X_{i},\\ I^{\\bullet}) ✓$$\n在 $\\mathbf{Ab}$ 里**积是正合的**，所以逐项取积不影响上同调的计算：\n$$H^{n}\\Bigl(\\Gamma\\bigl(\\coprod_{i} X_{i},\\ I^{\\bullet}\\bigr)\\Bigr) \\cong \\prod_{i} H^{n}\\bigl(\\Gamma(X_{i},\\ I^{\\bullet})\\bigr) = \\prod_{i} H^{n}(X_{i},\\ M) ✓$$\n（每个 $\\Gamma(X_{i}, I^{\\bullet})$ 都算 $H^{n}(X_{i}, M)$：$I^{\\bullet}$ 逐项内射，对**每个**测试对象 $X_{i}$ 仍然给出消解。）∎\n\n⭐ 一句话：**不交并这一侧是积**。离散空间上的零调（$H^{n}(\\coprod_{e} *, M) = \\prod_{e} H^{n}(*, M) = 0$）就是它的直接推论。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §7.3"
+   ]
+  },
+  {
+   "id": "lem.cech-finite-disjoint-acyclic",
+   "type": "lemma",
+   "label": "有限不交覆盖的 Čech 零调",
+   "title": "引理：紧 Hausdorff 空间上有限不交覆盖的 Čech 高次为零",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "引理",
+    "Čech 上同调",
+    "零调",
+    "凝聚态"
+   ],
+   "statement": "设 $M$ 是凝聚态阿贝尔群，$S$ 是紧 Hausdorff 空间，且\n\n$$S = \\bigsqcup_{i=1}^{r} S_{i}$$\n\n是一个**有限不交覆盖**（$S_{i}$ 两两不交、并为 $S$）。则\n\n$$\\check{H}^{n}(S, M) = 0 \\qquad (n > 0).$$",
+   "notes": "**证明。** 把覆盖看成族 $(S_{i} \\hookrightarrow S)_{i=1}^{r}$。由两两不交且并为 $S$，规范映射\n$$\\coprod_{i=1}^{r} S_{i} \\xrightarrow{\\ \\cong\\ } S$$\n是**同构**，于是它有截面（取它的逆）✓。由「带截面的覆盖上 Čech 复形同伦平凡」，这个族的增广 Čech 复形同伦平凡，从而正次数上同调为零 ✓。∎\n\n⭐ 它把**有限不交覆盖**这一类从 Čech 零调的检验里划掉 —— 于是只剩「单支满射」要处理，这正是「Stone 空间上常系数零调」的证明要分两步走的原因。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.1"
+   ]
+  },
+  {
+   "id": "prop.condab-discrete-acyclic",
+   "type": "proposition",
+   "label": "离散空间上零调",
+   "title": "命题：凝聚态阿贝尔群在离散空间与「离散 $\\times$ Stonean」上零调",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "凝聚态",
+    "零调",
+    "离散空间"
+   ],
+   "statement": "设 $M$ 是凝聚态阿贝尔群。则\n\n1. $E$ 是**离散**拓扑空间时 $H^{n}_{\\mathrm{cond}}(E, M) = 0$（$n > 0$）；\n2. 更一般地，$E$ 离散、$S$ **Stonean** 时 $H^{n}_{\\mathrm{cond}}(E \\times S,\\ M) = 0$（$n > 0$）。",
+   "notes": "**证明。**\n**1.** 离散空间是点的不交并：$E = \\coprod_{e \\in E}\\{e\\}$。而上同调把不交并换成**积**：\n$$H^{n}\\Bigl(\\coprod_{i} X_{i},\\ M\\Bigr) \\cong \\prod_{i} H^{n}(X_{i},\\ M) ✓$$\n单点的情形是零：$\\{e\\} = *$，它的自由对象是 $\\mathbb{Z}[*] = \\mathbb{Z}$（投射），故 $H^{n}(*, M) = \\operatorname{Ext}^{n}_{\\mathbb{Z}}(\\mathbb{Z}, M) = 0$（$n > 0$）✓。于是离散空间上高次全为零 ✓。\n**2.** $E$ 离散时 $E \\times S = \\coprod_{e \\in E} S$ 是 $S$ 的**不交并**，再一次用「不交并 $\\implies$ 积」：\n$$H^{n}(E \\times S,\\ M) \\cong \\prod_{e \\in E} H^{n}(S,\\ M) = 0 \\qquad (n > 0),$$\n末一步用的是「Stonean 空间上凝聚态阿贝尔群零调」✓。∎\n\n⭐ 一句话：**零调性从 Stonean 传给「离散 $\\times$ Stonean」**。这就是 $\\mathbb{N} \\times S$、$\\mathbb{Z} \\times S$ 这类混合空间上没有高次上同调的原因。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.1"
+   ]
+  },
+  {
+   "id": "prop.condab-quotient-r-disc",
+   "type": "proposition",
+   "label": "R/R_disc 在 Stone 上的截面",
+   "title": "命题：$Q = \\mathbb{R}/\\mathbb{R}^{\\mathrm{disc}}$ 的截面是连续函数模局部常值函数",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "凝聚态",
+    "商",
+    "连续函数"
+   ],
+   "statement": "记 $Q := \\mathbb{R}/\\mathbb{R}^{\\mathrm{disc}}$（把 $\\mathbb{R}^{\\mathrm{disc}}$ 看成离散拓扑的加法群，$\\mathbb{R}$ 取通常拓扑，商在凝聚态阿贝尔群里取）。设 $S$ 是 **Stone** 空间。则\n\n$$Q(S) \\;=\\; C(S, \\mathbb{R})\\,\\big/\\,C(S, \\mathbb{R}^{\\mathrm{disc}}),$$\n\n即：到 $\\mathbb{R}$ 的连续函数，模去**局部常值**函数。",
+   "notes": "**证明。** 凝聚态阿贝尔群里的短正合列\n$$0 \\longrightarrow \\mathbb{R}^{\\mathrm{disc}} \\longrightarrow \\mathbb{R} \\longrightarrow Q \\longrightarrow 0$$\n给出长正合列\n$$0 \\to \\Gamma(S, \\mathbb{R}^{\\mathrm{disc}}) \\to \\Gamma(S, \\mathbb{R}) \\to \\Gamma(S, Q) \\to H^{1}_{\\mathrm{cond}}(S, \\mathbb{R}^{\\mathrm{disc}}).$$\n末项为零：$S$ 是 Stone 空间，而 $\\mathbb{R}^{\\mathrm{disc}}$ 对应的凝聚态阿贝尔群就是**常**凝聚态群 $\\underline{\\mathbb{R}}$，由「Stone 空间上常系数零调」得 $H^{1} = 0$ ✓。再看前两项：$\\Gamma(S, \\mathbb{R}) = \\operatorname{Hom}_{\\mathrm{Cond}}(S, \\mathbb{R}) = C(S, \\mathbb{R})$ ✓；$\\Gamma(S, \\mathbb{R}^{\\mathrm{disc}}) = C(S, \\mathbb{R}^{\\mathrm{disc}})$ —— 映入**离散**空间 $\\mathbb{R}^{\\mathrm{disc}}$ 的连续映射正是**局部常值**映射 ✓（$\\mathbb{R}^{\\mathrm{disc}}$ 的每个单点集都是开的，所以连续函数在每个点上局部常值）。于是 $\\Gamma(S, Q) = C(S,\\mathbb{R})/C(S,\\mathbb{R}^{\\mathrm{disc}})$ ✓。∎\n\n⚠️ **这个商不是零**：只要 $S$ 上有非常值的连续实值函数（例如 $S = \\beta I$ 时取一个非局部常值的有界函数），$Q(S) \\ne 0$。这与「拓扑阿贝尔群**不是**阿贝尔范畴」是同一件事的两面：在拓扑群层面商不好使，在凝聚态层面才有上面这条正确的截面公式。\n\n⭐ 它也是「$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 型现象」的一般样子：**改拓扑不改底集，却真的改变了层的截面**。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.1"
+   ]
+  },
+  {
+   "id": "cor.ext-cond-set-section",
+   "type": "corollary",
+   "label": "Ext 的截面公式",
+   "title": "推论：$\\operatorname{Ext}^{n}(\\mathbb{Z}\\cdot X, N)(S) \\cong H^{n}(X \\times S, N)$",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "推论",
+    "Ext",
+    "截面",
+    "Stonean"
+   ],
+   "statement": "设 $X$ 是凝聚态集、$N$ 是凝聚态阿贝尔群、$S$ 是 **Stonean** 空间。则对一切 $n \\ge 0$\n\n$$\\operatorname{Ext}^{n}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ N\\bigr)(S) \\;\\cong\\; H^{n}\\bigl(X \\times S,\\ N\\bigr).$$",
+   "notes": "**证明。** 把 Stonean 上的截面公式 $\\operatorname{Ext}^{n}(M, N)(S) \\cong \\operatorname{Ext}^{n}(M \\cdot S,\\ N)$ 用在 $M = \\mathbb{Z}\\cdot X$ 上：\n$$\\operatorname{Ext}^{n}\\bigl(\\mathbb{Z}\\cdot X,\\ N\\bigr)(S) \\cong \\operatorname{Ext}^{n}\\bigl(\\mathbb{Z}\\cdot X \\otimes_{\\mathbb{Z}} \\mathbb{Z}[S],\\ N\\bigr) \\cong \\operatorname{Ext}^{n}\\bigl(\\mathbb{Z}\\cdot (X \\times S),\\ N\\bigr) ✓$$\n第二式的依据是自由对象的两条泛性质拼起来：$\\mathbb{Z}\\cdot X \\otimes_{\\mathbb{Z}} \\mathbb{Z}\\cdot Y \\cong \\mathbb{Z}\\cdot (X \\times Y)$ ✓。\n又 $\\mathbb{Z}\\cdot Y$ 是**自由**的：$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot Y, -) = \\Gamma(Y, -)$，于是\n$$\\operatorname{Ext}^{n}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot Y,\\ N\\bigr) = R^{n}\\Gamma(Y, -)(N) = H^{n}(Y, N) ✓$$\n取 $Y = X \\times S$ 即得结论 ✓。∎\n\n⭐ 这一条把「**层的** Ext 在一个截面上的值」彻底翻译成「一个**具体空间**的上同调」：要算 $\\operatorname{Ext}^{n}(\\mathbb{Z}\\cdot X, N)(S)$，就去算 $X \\times S$ 的上同调。后面两条（离散空间、Banach 系数）都是它的特例。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.3"
+   ]
+  },
+  {
+   "id": "prop.rhom-zs-sections",
+   "type": "proposition",
+   "label": "Stonean 上 Z[S] 的 RHom",
+   "title": "命题：$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}[S], N) \\cong N(S)$（$S$ Stonean）",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "Ext",
+    "Stonean",
+    "截面"
+   ],
+   "statement": "设 $S$ 是 **Stonean** 空间，$N$ 是凝聚态阿贝尔群。则\n\n$$\\operatorname{RHom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ N\\bigr) \\;\\cong\\; N(S)$$\n\n（右边理解为集中在 $0$ 次的复形，即高次 Ext 全为零）。",
+   "notes": "**证明。** $S$ Stonean 时 $\\mathbb{Z}[S]$ 是**投射**对象：极不连通性给出闭开集上的「截面型」投影性，$\\mathbb{Z}[S]$ 是那些 $\\mathbb{Z}[C]$（$C$ 闭开）的余极限，投影性沿余极限保持 ✓。于是\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[S],\\ -\\bigr) = \\Gamma(S, -) = \\bigl(N \\mapsto N(S)\\bigr)$$\n是**正合**函子，它的右导出函子集中在 $0$ 次、且 $R^{0} = \\Gamma(S,-)$ ✓。因此 $\\operatorname{RHom}(\\mathbb{Z}[S], N)$ 就等于 $\\operatorname{Hom}(\\mathbb{Z}[S], N) = N(S)$（集中在 $0$ 次的复形）✓。∎\n\n⭐ 与「Stonean 上凝聚态阿贝尔群零调」是同一件事的两种说法：**系数零调 $\\iff$ 测试对象 $\\mathbb{Z}[S]$ 投射**。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.3"
+   ]
+  },
+  {
+   "id": "prop.rhom-ze-powers",
+   "type": "proposition",
+   "label": "离散空间上 Z[E] 的 RHom",
+   "title": "命题：$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}[E], N) \\cong N^{E}$（$E$ 离散）",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "Ext",
+    "离散空间",
+    "自由对象"
+   ],
+   "statement": "设 $E$ 是**离散**拓扑空间，$N$ 是凝聚态阿贝尔群。则\n\n$$\\operatorname{RHom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}[E],\\ N\\bigr) \\;\\cong\\; N^{E} \\;=\\; \\prod_{e \\in E} N$$\n\n（同样理解为集中在 $0$ 次的复形）。",
+   "notes": "**证明。** 离散空间是不交并 $E = \\coprod_{e \\in E}\\{e\\}$，自由对象随之分裂成**直和**\n$$\\mathbb{Z}[E] = \\bigoplus_{e \\in E} \\mathbb{Z}[*] = \\bigoplus_{e \\in E} \\mathbb{Z} ✓$$\n投射对象的任意直和仍投射，故 $\\mathbb{Z}[E]$ 投射 ✓，于是 $\\operatorname{RHom}(\\mathbb{Z}[E], -)$ 集中在 $0$ 次、等于 $\\operatorname{Hom}(\\mathbb{Z}[E], -)$。而\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\Bigl(\\bigoplus_{e \\in E} \\mathbb{Z},\\ N\\Bigr) \\cong \\prod_{e \\in E} \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z},\\ N) \\cong \\prod_{e \\in E} N = N^{E} ✓$$\n（Hom 把直和送成积。）∎\n\n**另一条路**：由「离散空间上零调」与截面公式，$\\operatorname{Ext}^{n}(\\mathbb{Z}\\cdot E, N)(S) \\cong H^{n}(E \\times S, N) = 0$（$n>0$、$S$ Stonean），说明 $N^{E}$ 这个层没有高次，再逐点比较 $0$ 次即得 —— 两条路说的是同一件事。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.3"
+   ]
+  },
+  {
+   "id": "prop.discrete-cond-rhom-constant",
+   "type": "proposition",
+   "label": "离散群的 RHom 是常层",
+   "title": "命题：离散阿贝尔群的 RHom 与导出张量积都落在常层里",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.cohomology",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "凝聚态",
+    "离散群",
+    "RHom",
+    "导出张量"
+   ],
+   "statement": "设 $M, N$ 是**离散**阿贝尔群，也把它们看成对应的常凝聚态阿贝尔群。则\n\n$$\\operatorname{RHom}^{\\mathrm{cond}}_{\\mathbb{Z}}(M,\\ N) \\;\\cong\\; \\mathrm{c}\\bigl(\\operatorname{RHom}^{\\mathrm{abs}}_{\\mathbb{Z}}(M,\\ N)\\bigr), \\qquad M \\otimes^{\\mathbf{L},\\mathrm{cond}}_{\\mathbb{Z}} N \\;\\cong\\; \\mathrm{c}\\bigl(M \\otimes^{\\mathbf{L},\\mathrm{abs}}_{\\mathbb{Z}} N\\bigr),$$\n\n其中上标 $\\mathrm{cond}$ 表示「在凝聚态阿贝尔群里算」、$\\mathrm{abs}$ 表示「在抽象阿贝尔群里算」，而 $\\mathrm{c}(A)$ 表示**常凝聚态群**。",
+   "notes": "**证明。** 取 $M$ 作为**抽象**阿贝尔群的一个自由消解 $P_{\\bullet} \\to M$ ✓。\n- **常层函子在这条消解上保持正合**：$\\mathrm{c}(-)$ 把自由阿贝尔群送到自由凝聚态阿贝尔群 $\\mathbb{Z}[E]$，而且它在离散群上正合，于是 $\\mathrm{c}(P_{\\bullet}) \\to \\mathrm{c}(M)$ 仍是一个消解 ✓。\n- **每一项都零调**：$P_{i} = \\mathbb{Z}^{(E)}$ 给出 $\\mathrm{c}(P_{i}) = \\mathbb{Z}[E]$，而 $\\operatorname{RHom}(\\mathbb{Z}[E], N) \\cong N^{E}$ 集中在 $0$ 次（上一条），故这些项对 $\\operatorname{RHom}(-, N)$ 零调 ✓。\n- **算出来**：可以用 $\\mathrm{c}(P_{\\bullet})$ 计算内部的 $\\operatorname{RHom}$：\n$$\\operatorname{RHom}^{\\mathrm{cond}}\\bigl(\\mathrm{c}(M),\\ N\\bigr) \\cong \\operatorname{Hom}\\bigl(\\mathrm{c}(P_{\\bullet}),\\ N\\bigr) = \\mathrm{c}\\bigl(\\operatorname{Hom}(P_{\\bullet},\\ N)\\bigr),$$\n取上同调即得 $\\mathrm{c}\\bigl(\\operatorname{Ext}^{\\bullet}(M,N)\\bigr) = \\mathrm{c}\\bigl(\\operatorname{RHom}^{\\mathrm{abs}}(M,N)\\bigr)$ ✓。\n张量侧同理：自由阿贝尔群**平坦**，常层函子正合，于是 $\\mathrm{c}(P_{\\bullet})\\otimes^{\\mathbf{L}} N \\cong \\mathrm{c}(P_{\\bullet}\\otimes^{\\mathbf{L}} N)$，两边取同调得第二个同构 ✓。∎\n\n⭐ 一句话：**离散群「感觉不到」凝聚态那一层结构** —— 在它们身上，凝聚态同调代数与抽象同调代数给出同一个答案（只差一个常层）。所以要真正用到凝聚态结构，就必须拿 $\\mathbb{R}$、$\\mathbb{Z}[S]$ 这类非离散对象来测。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.3"
+   ]
+  },
+  {
+   "id": "prop.tensor-rhom-natural-map",
+   "type": "proposition",
+   "label": "张量与 RHom 的配对",
+   "title": "命题：$M \\otimes^{\\mathbf{L}} \\operatorname{RHom}(P, N) \\to \\operatorname{RHom}(\\operatorname{RHom}(M, P), N)$",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheaf",
+   "layer": 19,
+   "tags": [
+    "命题",
+    "导出范畴",
+    "内部 Hom",
+    "张量"
+   ],
+   "statement": "设 $\\mathcal{T}$ 是拓扑斯，$M, N, P$ 是 $\\mathcal{T}$ 中的阿贝尔群。则存在自然映射\n\n$$M \\otimes^{\\mathbf{L}}_{\\mathbb{Z}} \\operatorname{RHom}_{\\mathbb{Z}}(P,\\ N) \\longrightarrow \\operatorname{RHom}_{\\mathbb{Z}}\\bigl(\\operatorname{RHom}_{\\mathbb{Z}}(M,\\ P),\\ N\\bigr).$$",
+   "notes": "**证明（由两条配对拼出来）。**\n- **求值配对**：$\\operatorname{RHom}(M, P) \\otimes^{\\mathbf{L}} M \\to P$（把映射作用在元素上，由内部 Hom 与导出张量的伴随给出）✓；\n- **复合配对**：$P \\otimes^{\\mathbf{L}} \\operatorname{RHom}(P, N) \\to N$，同理 ✓。\n把两者张量起来：\n$$M \\otimes^{\\mathbf{L}} \\operatorname{RHom}(M, P) \\otimes^{\\mathbf{L}} \\operatorname{RHom}(P, N) \\longrightarrow P \\otimes^{\\mathbf{L}} \\operatorname{RHom}(P, N) \\longrightarrow N.$$\n再用**内部 Hom 与导出张量的伴随**（$A \\otimes^{\\mathbf{L}} X \\to N$ 等价于 $X \\to \\operatorname{RHom}(A, N)$），取 $A = \\operatorname{RHom}(M, P)$、$X = M \\otimes^{\\mathbf{L}} \\operatorname{RHom}(P, N)$，上面这个映射一一对应于\n$$M \\otimes^{\\mathbf{L}} \\operatorname{RHom}(P, N) \\longrightarrow \\operatorname{RHom}\\bigl(\\operatorname{RHom}(M, P),\\ N\\bigr) ✓$$\n自然性来自两层配对都自然（伴随同构对三个变量都自然）✓。∎\n\n⚠️ **一般不是同构** —— 要它成为同构需要额外的有限性 / 对偶条件。这条给的是**自然映射**，用处在于把「对偶的 RHom」换成「张量积的 RHom」，从而可以用自由消解去算。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §8.3"
+   ]
   }
  ],
  "edges": [
@@ -16570,6 +16810,166 @@
    "definition": "def.exact-sequence",
    "usedBy": "prop.abhaus-strict-exact",
    "note": "「严格正合」是在正合列之上再加「嵌入闭、满射开」两条。"
+  },
+  {
+   "id": "def-link.cechsec-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cech-functor",
+   "usedBy": "prop.cech-section-vanishing",
+   "note": "命题说的就是 Čech 复形，用的是 Čech 函子那套记号。"
+  },
+  {
+   "id": "def-link.cechsec-sheaf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abelian-sheaf",
+   "usedBy": "prop.cech-section-vanishing",
+   "note": "系数 $M$ 是拓扑斯里的阿贝尔群（阿贝尔层）。"
+  },
+  {
+   "id": "def-link.coprod-cohomology",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sheaf-cohomology",
+   "usedBy": "prop.cohomology-of-coproduct",
+   "note": "命题比较的就是层上同调 $H^{n}(X, M)$。"
+  },
+  {
+   "id": "def-link.coprod-sheaf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abelian-sheaf",
+   "usedBy": "prop.cohomology-of-coproduct",
+   "note": "系数取拓扑斯里的阿贝尔群。"
+  },
+  {
+   "id": "def-link.fda-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cech-cohomology",
+   "usedBy": "lem.cech-finite-disjoint-acyclic",
+   "note": "结论是关于 Čech 上同调 $\\check{H}^{n}$ 的。"
+  },
+  {
+   "id": "def-link.fda-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "lem.cech-finite-disjoint-acyclic",
+   "note": "系数是凝聚态阿贝尔群。"
+  },
+  {
+   "id": "def-link.disc-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "prop.condab-discrete-acyclic",
+   "note": "命题讨论的是凝聚态阿贝尔群的上同调。"
+  },
+  {
+   "id": "def-link.disc-condset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-set",
+   "usedBy": "prop.condab-discrete-acyclic",
+   "note": "「离散空间 $E$」是通过把拓扑空间看作凝聚态集进来的。"
+  },
+  {
+   "id": "def-link.qdisc-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "prop.condab-quotient-r-disc",
+   "note": "商 $Q = \\mathbb{R}/\\mathbb{R}^{\\mathrm{disc}}$ 在凝聚态阿贝尔群里取。"
+  },
+  {
+   "id": "def-link.qdisc-topab",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.topo-ab-group",
+   "usedBy": "prop.condab-quotient-r-disc",
+   "note": "$\\mathbb{R}$ 与 $\\mathbb{R}^{\\mathrm{disc}}$ 都是拓扑阿贝尔群，$Q$ 是它们的商。"
+  },
+  {
+   "id": "def-link.exsx-condset",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-set",
+   "usedBy": "cor.ext-cond-set-section",
+   "note": "公式左边 $\\mathbb{Z}\\cdot X$ 里的 $X$ 是凝聚态集。"
+  },
+  {
+   "id": "def-link.exsx-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "cor.ext-cond-set-section",
+   "note": "系数 $N$ 与 Ext 都在凝聚态阿贝尔群里。"
+  },
+  {
+   "id": "def-link.zs-proj",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.projective-object",
+   "usedBy": "prop.rhom-zs-sections",
+   "note": "证明的关键是 $\\mathbb{Z}[S]$ 在 Stonean 上投射。"
+  },
+  {
+   "id": "def-link.zs-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "prop.rhom-zs-sections",
+   "note": "$N$ 与 $\\operatorname{RHom}$ 都在凝聚态阿贝尔群里。"
+  },
+  {
+   "id": "def-link.ze-proj",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.projective-object",
+   "usedBy": "prop.rhom-ze-powers",
+   "note": "自由对象 $\\mathbb{Z}[E]$ 是投射的（投射对象的直和仍投射）。"
+  },
+  {
+   "id": "def-link.ze-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "prop.rhom-ze-powers",
+   "note": "同上，$N$ 是凝聚态阿贝尔群。"
+  },
+  {
+   "id": "def-link.drhom-internal",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.internal-hom",
+   "usedBy": "prop.discrete-cond-rhom-constant",
+   "note": "内部的 $\\operatorname{RHom}$ 就是内部 Hom 的导出版本。"
+  },
+  {
+   "id": "def-link.drhom-cond",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.condensed-abelian-group",
+   "usedBy": "prop.discrete-cond-rhom-constant",
+   "note": "两个 RHom 分别算在凝聚态阿贝尔群与抽象阿贝尔群里。"
+  },
+  {
+   "id": "def-link.trnm-internal",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.internal-hom",
+   "usedBy": "prop.tensor-rhom-natural-map",
+   "note": "映射的两端都由内部 Hom（的导出版本）写成。"
+  },
+  {
+   "id": "def-link.trnm-tensor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.tensor-abelian-sheaf",
+   "usedBy": "prop.tensor-rhom-natural-map",
+   "note": "映射左边用到拓扑斯上阿贝尔层的张量积（导出版本）。"
   },
   {
    "id": "def-link.sep-subset",
@@ -23322,6 +23722,62 @@
    "explicit": false
   },
   {
+   "a": "cat.sheaf",
+   "b": "hom.sheafcoh",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "hom.sheaf",
+   "b": "hom.sheafcoh",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cond.cohomology",
+   "b": "hom.sheafcoh",
+   "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cond.ab",
+   "b": "cond.cohomology",
+   "count": 9,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cond.cohomology",
+   "b": "cond.set",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cond.cohomology",
+   "b": "cond.topo",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cond.cohomology",
+   "b": "topo.chaus",
+   "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cond.cohomology",
+   "b": "hom.sheaf",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "order.structure",
    "b": "set.construct",
    "count": 4,
@@ -23686,13 +24142,6 @@
    "explicit": false
   },
   {
-   "a": "cat.sheaf",
-   "b": "hom.sheafcoh",
-   "count": 3,
-   "label": "",
-   "explicit": false
-  },
-  {
    "a": "hom.complex",
    "b": "hom.sheafcoh",
    "count": 3,
@@ -23742,20 +24191,6 @@
    "explicit": false
   },
   {
-   "a": "cond.ab",
-   "b": "cond.cohomology",
-   "count": 2,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "cond.cohomology",
-   "b": "hom.sheafcoh",
-   "count": 4,
-   "label": "",
-   "explicit": false
-  },
-  {
    "a": "cond.cohomology",
    "b": "topology.general",
    "count": 6,
@@ -23773,13 +24208,6 @@
    "a": "cond.cohomology",
    "b": "hom.complex",
    "count": 11,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "cond.cohomology",
-   "b": "topo.chaus",
-   "count": 3,
    "label": "",
    "explicit": false
   },

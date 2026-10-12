@@ -13,6 +13,7 @@ $$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
 - `def.right-derived-functor` 右导出函子：用到了定义 右导出函子　proofs/def-dep.sheafcoh-rdf.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.cohomology-of-coproduct` 上同调与不交并 用
 - 被 `def.acyclic-sheaf` 无环层 用
 - 被 `prop.chaus-cech-eq-h` 紧 Hausdorff 上 Čech 就是上同调 用
 - 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用

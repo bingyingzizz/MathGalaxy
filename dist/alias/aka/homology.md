@@ -11,14 +11,16 @@
 
 - 分裂短正合列 | split exact | 分裂引理 | split lemma | Definition 5.1.6 | Def 5.1.6 | Exercise 5.7 → def.split-exact
 
+- 带截面的覆盖上 Čech 零调 | Proposition 7.3.3 | Prop 7.3.3 → prop.cech-section-vanishing
+
+- 上同调与不交并 | Exercise 7.38 → prop.cohomology-of-coproduct
+
+- 张量与 RHom 的配对 | Exercise 8.16 → prop.tensor-rhom-natural-map
+
 - 投射对象的余积 | Exercise 1.48 → prop.projective-coproduct
 
 - Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
 
 - AB6 | 滤过余极限与积交换 | Exercise 1.69 → prop.ab6
-
-- K(A) 分式演算 | Proposition 7.2.1 | Prop 7.2.1 → prop.k-calculus-fractions
-
-- 导出范畴 | derived category | D(A) | Definition 7.2.2 | Def 7.2.2 → def.derived-category
 
 > 续见 alias/aka/homology.2.md

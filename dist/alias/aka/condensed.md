@@ -3,6 +3,20 @@
 
 - AbHaus 的严格正合 | Exercise 5.5 → prop.abhaus-strict-exact
 
+- 有限不交覆盖的 Čech 零调 | Exercise 8.1 → lem.cech-finite-disjoint-acyclic
+
+- 离散空间上零调 | Exercise 8.2 → prop.condab-discrete-acyclic
+
+- R/R_disc 的截面 | Exercise 8.3 → prop.condab-quotient-r-disc
+
+- Ext 的截面公式 | Exercise 8.8 → cor.ext-cond-set-section
+
+- Stonean 上 Z[S] 的 RHom | Exercise 8.9 → prop.rhom-zs-sections
+
+- 离散空间上 Z[E] 的 RHom | Exercise 8.10 → prop.rhom-ze-powers
+
+- 离散群的 RHom 是常层 | Exercise 8.11 → prop.discrete-cond-rhom-constant
+
 - CHaus 是预拓扑斯 → def.chaus-pretopos
 
 - 凝聚态集 | condensed set | Cond | 凝聚态 → def.condensed-set
@@ -14,21 +28,5 @@
 - FCHaus 上的预拓扑 → prop.fchaus-pretopology
 
 - FCHaus 上的层保有限积 → prop.fchaus-sheaf
-
-- Cond 等价于 FCHaus 上的层 → thm.cond-equiv-fchaus
-
-- 凝聚态集的满态射 → prop.cond-epi
-
-- Cond 足够多投射对象 → prop.cond-projectives
-
-- 底拓扑空间 | underlying topological space → def.underlying-topological-space
-
-- 拓扑空间到凝聚态集 | Top 到 Cond | kTop → thm.top-cond-adjoint
-
-- 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) → def.condensed-abelian-group
-
-- 截面函子 | Gamma(F,-) | sections functor → prop.condab-section
-
-- CondAb 满足 AB6 | AB4* | AB 公理 → thm.condab-ab
 
 > 续见 alias/aka/condensed.2.md

@@ -15,9 +15,9 @@ $$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadri
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.gleason` Gleason 定理
+- 被 `prop.rhom-zs-sections` Stonean 上 Z[S] 的 RHom 用
+- 被 `prop.rhom-ze-powers` 离散空间上 Z[E] 的 RHom 用
 - 被 `thm.gleason` Gleason 定理 用
-- 被 `prop.free-projective` 自由紧 Haus 是投射对象 用
-- 被 `prop.fchaus-pretopology` FCHaus 上的预拓扑 用
 
 > 说明见 `notes/def.projective-object.md`
 

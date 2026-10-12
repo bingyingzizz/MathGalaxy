@@ -1,6 +1,10 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- K(A) 分式演算 | Proposition 7.2.1 | Prop 7.2.1 → prop.k-calculus-fractions
+
+- 导出范畴 | derived category | D(A) | Definition 7.2.2 | Def 7.2.2 → def.derived-category
+
 - 正合列给出导出三角 | Proposition 7.2.4 | Prop 7.2.4 → prop.exact-to-triangle
 
 - Hom 在同伦与导出范畴一样 | Proposition 7.2.5 | Prop 7.2.5 → prop.hom-k-eq-hom-d
@@ -16,9 +20,5 @@
 - Ext 就是 RHom | Proposition 7.2.10 | Prop 7.2.10 → prop.ext-is-rhom
 
 - F-零调 | acyclic | 零调对象 | Definition 7.2.11 | Def 7.2.11 → def.f-acyclic
-
-- Leray 零调性 | Proposition 7.2.12 | Prop 7.2.12 → prop.leray-acyclicity
-
-- 过滤复形给出谱序列 | Theorem 7.2.16 | Thm 7.2.16 → thm.filtered-complex-spectral
 
 > 续见 alias/aka/homology.3.md

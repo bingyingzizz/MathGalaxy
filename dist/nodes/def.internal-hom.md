@@ -16,8 +16,10 @@ $$\operatorname{Hom}(X, M) : Y \longmapsto \operatorname{Hom}(X \times Y,\ M) \;
 - `def.topos` 拓扑斯：用到了定义 拓扑斯　proofs/def-dep.internalhom-topos.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.discrete-cond-rhom-constant` 离散群的 RHom 是常层 用
+- 被 `prop.tensor-rhom-natural-map` 张量与 RHom 的配对 用
 - 被 `def.tensor-abelian-sheaf` 阿贝尔层的张量积 用
-- 被 `prop.continuous-hom-condensed` 连续同态与内部 Hom 用
-- 被 `prop.ext-is-rhom` Ext 就是 RHom 用
 
 > 说明见 `notes/def.internal-hom.md`
+
+- …另有出边，续页见 `nodes/def.internal-hom.3.md`

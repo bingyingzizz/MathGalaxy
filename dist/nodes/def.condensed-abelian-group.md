@@ -14,9 +14,8 @@ $$\mathrm{Ab}(\mathrm{Cond}) \;\simeq\; \mathrm{Cond}(\mathrm{Ab}) \;\simeq\; \w
 - `def.abelian-sheaf` 阿贝尔层：用到了定义 阿贝尔层　proofs/def-dep.condab-abelsheaf.md
 
 ## 它能推出什么 / 谁在用它
-- 被 `thm.condab-ab` CondAb 满足 AB6 与 AB4* 用
-- 被 `def.tensor-abelian-sheaf` 阿贝尔层的张量积 用
-- 被 `prop.abtop-to-abcond` 拓扑阿贝尔群嵌入凝聚态 用
+- 被 `lem.cech-finite-disjoint-acyclic` 有限不交覆盖的 Čech 零调 用
+- 被 `prop.condab-discrete-acyclic` 离散空间上零调 用
 
 > 说明见 `notes/def.condensed-abelian-group.md`
 

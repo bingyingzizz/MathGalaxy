@@ -10,6 +10,7 @@ $$\check{H}^{n}(X, M^{\bullet}) := \Gamma\bigl(X,\ \check{H}^{n}(M^{\bullet})\bi
 - `def.cech-functor` Čech 函子：用到了定义 Čech 函子　proofs/def-dep.cechcoh-cech.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `lem.cech-finite-disjoint-acyclic` 有限不交覆盖的 Čech 零调 用
 - 被 `prop.cech-as-colim` Čech 上同调是沿覆盖筛的余极限 用
 - 被 `thm.cartan-leray` Cartan–Leray 谱序列 用
 - 被 `prop.acyclic-iff-cech` 无环 ⟺ Čech 上同调为零 用
