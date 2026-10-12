@@ -1,6 +1,10 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 弱 Hausdorff 与拟分离等价 | weak Hausdorff iff quasi-separated | Proposition 4.2.12 → prop.cg-wh-iff-qseparated
+
+- Cond/X 到开集拓扑斯 | 切片拓扑斯态射 | Proposition 8.1.3 → prop.cond-slice-topos-morphism
+
 - Stonean 上零调 | Stonean acyclic | Proposition 8.1.1 → prop.stonean-cond-acyclic
 
 - Stone 上常系数零调 | Stone acyclic constant | Lemma 8.1.2 → lem.stone-constant-acyclic
@@ -16,11 +20,5 @@
 - K-有界与完备化 | k-bounded completion | Lemma 8.2.2 → lem.k-bounded-completion
 
 - K-有界推出正合 | Proposition 8.2.3 → prop.k-bounded-implies-exact
-
-- K-有界零调推出零调 | Corollary 8.2.4 → cor.k-acyclic-acyclic
-
-- Stone 满射的 Čech 复形 | 1-有界零调 | Lemma 8.2.5 → lem.stone-cech-1-bounded
-
-- Banach 在 Stone 上零调 | Proposition 8.2.6 → prop.banach-stone-acyclic
 
 > 续见 alias/aka/condensed.6.md

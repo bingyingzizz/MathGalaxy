@@ -1,6 +1,12 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- K-有界零调推出零调 | Corollary 8.2.4 → cor.k-acyclic-acyclic
+
+- Stone 满射的 Čech 复形 | 1-有界零调 | Lemma 8.2.5 → lem.stone-cech-1-bounded
+
+- Banach 在 Stone 上零调 | Proposition 8.2.6 → prop.banach-stone-acyclic
+
 - Tietze 延拓 | Tietze | Banach 值 Tietze | Theorem 8.2.7 → thm.tietze-banach
 
 - 实 Banach 在紧 Haus 上零调 | Theorem 8.2.8 → thm.real-banach-chaus-acyclic
@@ -16,9 +22,5 @@
 - Banach 到离散全零 | Proposition 8.3.5 → prop.rhom-banach-discrete-zero
 
 - 紧 Haus 到 Banach 全零 | Proposition 8.3.6 → prop.rhom-chaus-banach-zero
-
-- 对偶的 RHom | 导出张量 | Proposition 8.3.7 → prop.rhom-dual-tensor
-
-- 对偶的 RHom 刻画 | Pontryagin 对偶与 RHom | Proposition 8.3.8 → prop.dual-rhom-characterization
 
 > 续见 alias/aka/condensed.7.md

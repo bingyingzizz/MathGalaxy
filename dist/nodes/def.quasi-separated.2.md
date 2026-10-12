@@ -2,5 +2,6 @@
 根 `../`　·　第 1 页 `nodes/def.quasi-separated.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `lem.qseparated-ind-inclusions` 拟分离即含入的滤过余极限 用
 - 被 `lem.qseparated-underlying-weak-hausdorff` 拟分离 推出 底空间弱 Hausdorff 用
 - 被 `prop.cg-wh-iff-qseparated` 紧生成：弱 Hausdorff ⟺ 拟分离 用

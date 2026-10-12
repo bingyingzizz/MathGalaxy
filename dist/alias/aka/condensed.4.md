@@ -1,6 +1,10 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 局部紧阿贝尔群 | pre-abelian | Exercise 6.4 | R-disc 不是严格 → prop.lc-ab-preabelian
+
+- Pontryagin 对偶 | Pontryagin dual | 圆群 | T | Exercise 6.11 → def.pontryagin-dual
+
 - Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 → thm.pontryagin-van-kampen
 
 - 内部 Hom 的刻画 | internal hom | 连续函数空间 | C(X,Y) | Proposition 4.2.6 → prop.cond-internal-hom
@@ -12,9 +16,5 @@
 - 拟分离的 Ind 写法 | Ind(CHaus) | 含入的滤过余极限 | Lemma 4.2.10 → lem.qseparated-ind-inclusions
 
 - 底空间弱 Hausdorff | underlying weak Hausdorff | Lemma 4.2.11 → lem.qseparated-underlying-weak-hausdorff
-
-- 弱 Hausdorff 与拟分离等价 | weak Hausdorff iff quasi-separated | Proposition 4.2.12 → prop.cg-wh-iff-qseparated
-
-- Cond/X 到开集拓扑斯 | 切片拓扑斯态射 | Proposition 8.1.3 → prop.cond-slice-topos-morphism
 
 > 续见 alias/aka/condensed.5.md

@@ -549,7 +549,7 @@ MG.aliases = {
     { id: 'thm.cond-equiv-fchaus', aka: ['Cond 等价于 FCHaus 上的层', 'Theorem 4.1.7'] },
     { id: 'prop.cond-epi', aka: ['凝聚态集的满态射', 'Proposition 4.1.8'] },
     { id: 'prop.cond-projectives', aka: ['Cond 足够多投射对象', 'Exercise 4.3'] },
-    { id: 'def.underlying-topological-space', aka: ['底拓扑空间', 'underlying topological space', 'Definition 4.2.3'] },
+    { id: 'def.underlying-topological-space', aka: ['底拓扑空间', 'underlying topological space', 'Definition 4.2.3', 'Exercise 4.4'] },
     { id: 'thm.top-cond-adjoint', aka: ['拓扑空间到凝聚态集', 'Top 到 Cond', 'kTop', 'Theorem 4.2.4', 'Thm 4.2.4'] },
     { id: 'def.condensed-abelian-group', aka: ['凝聚态阿贝尔群', 'condensed abelian group', 'CondAb', 'Ab(Cond)', 'Definition 6.1.1', 'Proposition 6.1.2', 'Prop 6.1.2'] },
     { id: 'def.grothendieck-category', aka: ['Grothendieck 范畴', 'Grothendieck category', 'AB5', 'Definition 5.2.6'] },
@@ -719,6 +719,11 @@ MG.aliases = {
     { id: 'def.free-abelian-sheaf', aka: ['Exercise 5.18', 'Exercise 5.24'] },
     { id: 'prop.image-kernel-cokernel', aka: ['Exercise 5.9'] },
     { id: 'prop.projection-formula-cond', aka: ['Exercise 4.11'] },
+    { id: 'prop.cond-epi-open-surjective', aka: ['Proposition 4.2.5', 'Prop 4.2.5', 'Exercise 4.9'] },
+    { id: 'prop.open-covering-covering', aka: ['Exercise 4.6'] },
+    { id: 'prop.hom-presheaf-sheaf', aka: ['Exercise 4.7'] },
+    { id: 'prop.countable-colimit-qseparated', aka: ['Exercise 4.12'] },
+    { id: 'prop.qseparated-mono', aka: ['Exercise 4.13'] },
   ],
 
   /* --------------------------------------------------------- 问题钩子 */

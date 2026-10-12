@@ -14,6 +14,7 @@ $$f : S \longrightarrow X(\cdot), \qquad f \in X(S),\ S \in \mathbf{CHaus}$$
 ## 它能推出什么 / 谁在用它
 - 被 `cor.cond-ktop-finite-products` 底空间保有限积 用
 - 被 `prop.projection-formula-cond` 投影公式 用
+- 被 `prop.qseparated-mono` 拟分离嵌入底空间 用
 
 refs: Le Stum, An introduction to condensed mathematics, §4
 

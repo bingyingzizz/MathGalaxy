@@ -17,10 +17,8 @@
 
 - Cond 足够多投射对象 | Exercise 4.3 → prop.cond-projectives
 
-- 底拓扑空间 | underlying topological space | Definition 4.2.3 → def.underlying-topological-space
+- 底拓扑空间 | underlying topological space | Definition 4.2.3 | Exercise 4.4 → def.underlying-topological-space
 
 - 拓扑空间到凝聚态集 | Top 到 Cond | kTop | Theorem 4.2.4 | Thm 4.2.4 → thm.top-cond-adjoint
-
-- 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) | Definition 6.1.1 | Proposition 6.1.2 | Prop 6.1.2 → def.condensed-abelian-group
 
 > 续见 alias/aka/condensed.3.md

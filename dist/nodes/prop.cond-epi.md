@@ -9,4 +9,7 @@ layer 17 · 命题 · 凝聚态集 · 凝聚态数学
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-cond-epi.md
 - `def.free-compact-hausdorff` 自由紧 Hausdorff 空间：用到了定义 自由紧 Hausdorff 空间　proofs/def-dep.free-cond-epi.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.cond-epi-open-surjective` 开满射是满态射
+
 refs: Le Stum, An introduction to condensed mathematics, §4

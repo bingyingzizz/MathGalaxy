@@ -14,10 +14,10 @@ $$Y \times_{X} Z$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.pretopos-qcqs` 预拓扑斯由拓扑斯唯一确定
+- 被 `prop.countable-colimit-qseparated` 可数递增余极限是拟分离的 用
 - 被 `thm.pretopos-qcqs` 预拓扑斯由拓扑斯唯一确定 用
 - 被 `thm.qcqs-chaus-equiv` qc 与 qcqs 的判定 用
 - 被 `lem.weak-hausdorff-qseparated` 弱 Hausdorff 推出 拟分离 用
-- 被 `lem.qseparated-ind-inclusions` 拟分离即含入的滤过余极限 用
 
 - …另有出边，续页见 `nodes/def.quasi-separated.2.md`
 

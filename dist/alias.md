@@ -15,5 +15,5 @@
 - 分析学　`alias/analysis.md` 43 问法　·　`alias/aka/analysis.md` 162 别名
 - 范畴论　`alias/category.md` 63 问法　·　`alias/aka/category.md` 142 别名
 - 同调代数　`alias/homology.md` 47 问法　·　`alias/aka/homology.md` 114 别名
-- 凝聚态数学　`alias/condensed.md` 40 问法　·　`alias/aka/condensed.md` 77 别名
+- 凝聚态数学　`alias/condensed.md` 40 问法　·　`alias/aka/condensed.md` 82 别名
 
