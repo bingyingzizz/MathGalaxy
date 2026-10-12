@@ -87,7 +87,7 @@
     /* 云雾层上一次是按什么参数画的 —— 相机 / 视口 / dpr / 纹理四样都没变就不必再画。
        ⚠️ 悬停、选中、开合图例这些「不动相机」的重绘以前也要把整屏云雾重采样一遍，
        实测那是整帧的大头（dpr=1 时 ~15ms，dpr=2 时 ~37ms），而它根本没变。 */
-    var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null };
+    var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null, q: 1 };
     var dpr = 1;
     var rafId = 0;
     var dirty = true;
@@ -112,11 +112,11 @@
       var animating = cam.tick();
       if (dirty || animating) {
         var c = cam;
-        if (cloudDrawn.tex !== cloudTex || cloudDrawn.k !== c.k || cloudDrawn.tx !== c.tx ||
-          cloudDrawn.ty !== c.ty || cloudDrawn.w !== c.viewW || cloudDrawn.h !== c.viewH ||
-          cloudDrawn.dpr !== dpr) {
-          if (!noCloud) MG.background.draw(cloudCtx, cam, cloudTex, dpr);
-          cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex };
+        if (cloudDrawn.tex !== cloudTex || cloudDrawn.q !== drawQ || cloudDrawn.k !== c.k ||
+          cloudDrawn.tx !== c.tx || cloudDrawn.ty !== c.ty || cloudDrawn.w !== c.viewW ||
+          cloudDrawn.h !== c.viewH || cloudDrawn.dpr !== dpr) {
+          if (!noCloud) MG.background.draw(cloudCtx, cam, cloudTex, dpr * drawQ);
+          cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex, q: drawQ };
         }
         renderer.draw();
         dirty = false;
@@ -130,8 +130,8 @@
     function resize() {
       var s = renderer.resize();
       dpr = s.dpr;
-      cloudEl.width = Math.round(s.w * dpr);
-      cloudEl.height = Math.round(s.h * dpr);
+      cloudEl.width = Math.max(1, Math.round(s.w * dpr * drawQ));   // 低分辨率模式下云雾同倍降
+      cloudEl.height = Math.max(1, Math.round(s.h * dpr * drawQ));
       requestDraw();
     }
     global.addEventListener('resize', resize);
@@ -793,6 +793,7 @@
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
       if (noBlur) p.push('noblur=1');    // 毛玻璃 A/B 开关同理
       if (noCloud) p.push('nocloud=1');  // 云雾层 A/B 开关同理
+      if (quickDraw) p.push('quick=1');  // 低分辨率模式同理
       var c = camCenter();
       p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
@@ -982,6 +983,11 @@
     var noBlur = /(^|[&#])noblur=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
     /* 云雾层 A/B 开关：带 nocloud=1 时整层不画（用来判断「拖动时的 79ms 是不是它的账」）。 */
     var noCloud = /(^|[&#])nocloud=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    /* 低分辨率模式（诊断）：把绘制分辨率减半 ⇒ 光栅化像素量掉到 1/4。
+       用来直接验证「重光栅化量（尤其范畴论那边横穿屏幕的几百条长线）是不是掉帧根源」。 */
+    var quickDraw = /(^|[&#])quick=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    var drawQ = quickDraw ? 0.5 : 1;
+    if (quickDraw) renderer.setDrawScale(drawQ);
     if (noBlur) {
       var noBlurCss = document.createElement('style');
       noBlurCss.textContent = '*{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}';
@@ -1068,7 +1074,7 @@
           '峰 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + ' ms\n' +
           '连线层 ' + drawMs.toFixed(2) + ' ms' + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) + ' ms' : '') + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
-          ' · canvas ' + c.width + '×' + c.height +
+          ' · canvas ' + c.width + '×' + c.height + (quickDraw ? ' · ½分辨率模式' : '') +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
           (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
           (glInfo ? '\n' + glInfo : '');

@@ -143,8 +143,11 @@
       var rect = canvas.getBoundingClientRect();
       var w = Math.max(1, Math.round(rect.width || global.innerWidth));
       var h = Math.max(1, Math.round(rect.height || global.innerHeight));
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
+      /* ⚠️ 低分辨率模式必须缩的是**后备尺寸**（CSS 尺寸不变，浏览器会把小的拉伸回来），
+         只缩 transform 会把画面缩到左上角一小块。 */
+      var sc = dpr * drawScale;
+      canvas.width = Math.max(1, Math.round(w * sc));
+      canvas.height = Math.max(1, Math.round(h * sc));
       W = w; H = h;
       view.cam.setViewport(W, H);
       invalidate();
@@ -417,9 +420,17 @@
     /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
     var nameBoxes = [];
 
+    /* 绘制分辨率倍率（诊断/低分辨率模式用）：1 = 正常。降到 0.5 时，
+       光栅化的像素量掉到 1/4 —— 用来验证「重光栅化量」是不是掉帧的根因。 */
+    var drawScale = 1;
+
     function draw() {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, W, H);
+      /* ⚠️ 先按**设备像素**整张清掉：drawScale < 1 时若用缩放后的 transform 去
+         clearRect(0,0,W,H)，只清得掉左上角一块，其余会留上一帧的残影。 */
+      var sc = dpr * drawScale;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.setTransform(sc, 0, 0, sc, 0, 0);
 
       var geoms = ensureGeom();
       var cam = view.cam;
@@ -974,6 +985,10 @@
       draw: draw,
       hitTest: hitTest,
       invalidate: invalidate,
+      setDrawScale: function (s) {
+        drawScale = U.clamp(s || 1, 0.2, 1);
+        resize();          // 后备尺寸跟着变（CSS 尺寸不变，浏览器负责拉伸回来）
+      },
       nodeRadius: nodeRadius,
       screenOf: screenOf,
       get size() { return { w: W, h: H }; }
