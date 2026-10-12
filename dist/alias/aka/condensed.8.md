@@ -5,4 +5,6 @@
 
 - Corollary 4.2.7 | Cor 4.2.7 → cor.cond-ktop-finite-products
 
+- Exercise 4.11 → prop.projection-formula-cond
+
 见 `../../alias.md`。

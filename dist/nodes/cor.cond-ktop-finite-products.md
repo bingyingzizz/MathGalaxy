@@ -10,6 +10,9 @@ layer 18 · 推论 · 凝聚态集 · 凝聚态数学
 - `prop.cg-cartesian-closed` 紧生成空间是笛卡尔闭的 + `prop.cond-internal-hom` 内部 Hom 的函数空间刻画：紧生成空间的指数律 $\implies$ 底空间保有限积　proofs/imp-link.expon-condktop.md
 - `def.underlying-topological-space` 底拓扑空间：用到了定义 底拓扑空间　proofs/def-link.condktop-underlying.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.projection-formula-cond` 投影公式
+
 refs: Le Stum, An introduction to condensed mathematics, Corollary 4.2.7
 
 > 说明见 `notes/cor.cond-ktop-finite-products.md`

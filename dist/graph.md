@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T05:22:42.504Z
-> 9 星系 / 45 星团 / 594 节点 / 1242 连线（强边 1233，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T05:24:58.306Z
+> 9 星系 / 45 星团 / 597 节点 / 1249 连线（强边 1240，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -9110,6 +9110,31 @@ $$F \text{ 左正合} \iff F \text{ 加法，且把左正合列送到左正合�
 
 参考：Le Stum, An introduction to condensed mathematics, §5.2
 
+#### 像就是余核的核　`prop.image-kernel-cokernel`
+*命题*　命题：$\operatorname{im} f = \ker(\operatorname{coker} f)$，每个态射都严格
+
+设 $\mathcal{C}$ 是阿贝尔范畴，$f : M \to N$。则
+
+$$\operatorname{im} f \;=\; \ker\bigl(N \longrightarrow \operatorname{coker} f\bigr), \qquad \operatorname{coim} f \;=\; \operatorname{coker}\bigl(\ker f \longrightarrow M\bigr).$$
+
+特别地典范态射 $\operatorname{coim} f \to \operatorname{im} f$ 是同构 —— **阿贝尔范畴里每个态射都是严格的**。
+
+**证明（两条基本事实：阿贝尔范畴里每个单态射都是它余核的核、每个满态射都是它核的余核）。**
+记 $m := \ker\bigl(N \to \operatorname{coker} f\bigr)$，它按定义是单态射 ✓。
+**（一）$f$ 穿过 $m$。** 因为 $(\operatorname{coker} f) \circ f = 0$ ✓，而 $m$ 正是这个映射的核，所以 $f$ 唯一地分解为 $f = m \circ e$ ✓。
+**（二）$m$ 最小。** 设 $f = m' \circ e'$ 是任意分解且 $m'$ 是单态射。因为 $(\operatorname{coker} m') \circ m' = 0$ ✓，得 $(\operatorname{coker} m') \circ f = 0$，于是由 $\operatorname{coker} f$ 的泛性质，$\operatorname{coker} m'$ 穿过 $\operatorname{coker} f$ ✓，特别地
+$$(\operatorname{coker} m') \circ m = 0.$$
+再用「单态射 $m'$ 是它自己余核的核」：$m' = \ker(\operatorname{coker} m')$ ✓，于是 $m$ 唯一地穿过 $m'$ —— 即 $m$ 是「$f$ 能穿过的各种单态射」里最小的那个 ✓。
+（一）（二）合起来，$m$ 连同分解 $f = m \circ e$ 正是**像**的泛性质 ✓，所以 $\operatorname{im} f = \ker(\operatorname{coker} f)$ ✓。
+对偶地把箭头反过来（在 $\mathcal{C}^{\mathrm{op}}$ 里做同一件事）即得余像那条 ✓。
+**（三）严格性。** 由 (一) 的分解 $f = m \circ e$ 与它的对偶分解，$\operatorname{coim} f \to \operatorname{im} f$ 两边都是同一个中间对象，于是它是同构 ✓。∎
+
+⭐ 这条把「像」从泛性定义（最小中间对象）换成**可以算的公式**：$\ker(\operatorname{coker} f)$。同调代数里凡是要「手工取像」的地方，用的都是这个公式。
+
+⚠️ **阿贝尔**这个前提不能省：一般范畴里 $\operatorname{coim} f \to \operatorname{im} f$ 未必同构（那种态射就不叫严格的了）。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.9
+
 ### 星团：复形与导出三角
 > 造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。
 
@@ -10424,6 +10449,39 @@ $$M \otimes^{\mathbf{L}} \operatorname{RHom}(P, N) \longrightarrow \operatorname
 
 参考：Le Stum, An introduction to condensed mathematics, §8.3
 
+#### 自由阿贝尔群层　`def.free-abelian-sheaf`
+*定义*　定义：$\mathbb{Z}\cdot X$，遗忘函子的左伴随
+
+设 $\mathcal{T}$ 是拓扑斯。遗忘函子
+
+$$\mathcal{T}(\mathbf{Ab}) \longrightarrow \mathcal{T}$$
+
+（把阿贝尔层忘成底集合层）有**左伴随**，记作
+
+$$\mathbb{Z}\cdot(-) : \mathcal{T} \longrightarrow \mathcal{T}(\mathbf{Ab}), \qquad X \longmapsto \mathbb{Z}\cdot X \quad (\text{也记 } \mathbb{Z}[X]),$$
+
+它由**万有性质**刻画：对 $X \in \mathcal{T}$ 与 $M \in \mathcal{T}(\mathbf{Ab})$，
+
+$$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{T}}(X,\ M) = M(X).$$
+
+**怎么造。** 先逐点自由化、再层化：把 $X$ 看成预层，取预层 $U \mapsto \mathbb{Z}\cdot X(U)$（逐点自由阿贝尔群），再层化：
+
+$$\mathbb{Z}\cdot X \;:=\; \bigl(U \mapsto \mathbb{Z}\cdot X(U)\bigr)^{\#}.$$
+
+**为什么这就对。** 预层那一层是逐点的：函子范畴里的伴随逐点造，而 $\mathbf{Ab} \to \mathbf{Set}$ 的遗忘函子有左伴随 $E \mapsto \mathbb{Z}\cdot E$（自由阿贝尔群）✓，于是 $\widehat{\mathcal{C}}(\mathbf{Ab}) \to \widehat{\mathcal{C}}$ 的左伴随即逐点自由 ✓。到层这一层，用「层化 $\dashv$ 含入」把伴随传下去 ✓：
+
+$$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) = \operatorname{Hom}_{\widehat{\mathcal{C}}(\mathbf{Ab})}\bigl(\mathbb{Z}\cdot X,\ M\bigr) \cong \operatorname{Hom}_{\widehat{\mathcal{C}}}(X,\ M) = M(X) ✓$$
+
+（$M$ 本身是层，所以在预层那边的 Hom 与层这边的 Hom 一样）。∎
+
+⭐ **用处**：$\mathbb{Z}\cdot X$ 是「把一个空间/层当自由生成元看」的装置。Čech 复形就是 $\check{C}^{\bullet}(X, M) = \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot X_{\bullet}, M)$；层上同调则是 $H^{n}(X, M) = \operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}\cdot X, M)$ ✓。
+
+⚠️ **一般不是逐点算的**：层化会改动取值，「逐点自由再层化」与「自由」只有在层条件不碍事的时候才重合。
+
+📌 例：$\mathbb{Z}\cdot \mathbf{1} \cong \mathbb{Z}$（常层）；$\mathbb{Z}\cdot X$ 永远是**投射**对象的候选（它是自由的）。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24
+
 ## 星系：凝聚态数学（Condensed Mathematics）
 > 把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。
 
@@ -10833,6 +10891,21 @@ $$(X \times Y)(\cdot) \;\cong\; k\bigl(X(\cdot) \times Y(\cdot)\bigr).$$
 📌 例：$S \times X(\cdot) \cong (S \times X)(\cdot)$ 这类投影公式（$S$ 局部紧 Hausdorff）就是同一条道理的另一副面孔。
 
 参考：Le Stum, An introduction to condensed mathematics, Corollary 4.2.7
+
+#### 投影公式　`prop.projection-formula-cond`
+*命题*　投影公式：$S \times X(\cdot) \cong (S \times X)(\cdot)$
+
+设 $X$ 是凝聚态集，$S$ 是**局部紧 Hausdorff** 拓扑空间。则
+
+$$S \times X(\cdot) \;\cong\; (S \times X)(\cdot).$$
+
+（左边是底空间 $X(\cdot)$ 与 $S$ 的拓扑积；$S$ 紧 Hausdorff 时这就是「把 $S$ 拉进来不影响 $k$-化」。）
+
+⭐ **读法**：底空间函子 $X \mapsto X(\cdot)$ 与「乘一个局部紧空间」可交换。于是「在空间上乘以紧块」这类操作，可以先在 $\mathrm{Cond}$ 里做、再落回拓扑空间，也可以反过来做。
+
+📌 它与「底空间保有限积」是一条链上的两步：那条给出 $k$-化后的公式，这条把 $k$-化消掉。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 4.11
 
 ### 星团：凝聚态阿贝尔群
 > 在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。
@@ -15992,6 +16065,40 @@ $$E^{p,q}_{2} = \check{H}^{p}\bigl(\mathfrak{X},\ H^{q}(M)\bigr) \;\Longrightarr
 再沿所有覆盖取**滤过余极限**：$\check{H}^{p}(X, -) = \varinjlim_{\mathfrak{X} \in \operatorname{Cov}(X)} \check{H}^{p}(\mathfrak{X}, -)$ ✓（Čech 上同调就是沿覆盖取的余极限）。
 滤过余极限**正合**（保有限极限、保正合列），所以它把每一页的谱序列逐项保下来 —— 页、微分、以及收敛到同一个 $H^{p+q}(X, M)$ 都被保住 ✓。于是得到 $E^{p,q}_{2} = \check{H}^{p}(X, H^{q}(M)) \implies H^{p+q}(X, M)$ ✓。∎
 
+#### 定义引用：「阿贝尔层」→ 自由阿贝尔群层　`def-link.freeab-abelian`
+
+自由对象要造的是阿贝尔层。
+
+#### 定义引用：「伴随函子」→ 自由阿贝尔群层　`def-link.freeab-adjoint`
+
+「自由」是用遗忘函子的左伴随来定义的。
+
+#### 定义引用：「像 / 余像」→ 像就是余核的核　`def-link.imgkc-image`
+
+命题给的就是「像」的另一副面孔。
+
+#### 定义引用：「核与余核」→ 像就是余核的核　`def-link.imgkc-kernel`
+
+公式里出现的核与余核。
+
+#### 定义引用：「加法 / 阿贝尔范畴」→ 像就是余核的核　`def-link.imgkc-abelian`
+
+「每个态射都严格」只在阿贝尔范畴里成立。
+
+#### 定义引用：「底拓扑空间」→ 投影公式　`def-link.projcond-underlying`
+
+公式两边的 $(-)(\cdot)$ 就是底拓扑空间。
+
+#### 底空间保有限积 + k-化与积 ⟹ 投影公式　`imp-link.finprod-projcond`
+*底空间保有限积 + $k$-化与积 $\implies$ 投影公式*
+
+**（一）$S$ 紧 Hausdorff 的情形。** 此时 $S$ 本身紧、$S(\cdot) = S$ ✓。由「底空间保有限积」
+$$(S \times X)(\cdot) \;\cong\; k\bigl(S(\cdot) \times X(\cdot)\bigr) = k\bigl(S \times X(\cdot)\bigr) ✓$$
+而 $S$ 紧 Hausdorff 因而局部紧，由「$k$-化与积」$k\bigl(S \times X(\cdot)\bigr) \cong S \times X(\cdot)$ ✓ —— 这一步正是「乘一个局部紧空间」与 $k$-化交换。
+**（二）$S$ 只假设局部紧 Hausdorff 的情形（思路）。** 两边作为集合都是 $S \times X(\ast)$ ✓；而底空间的拓扑由「紧 Hausdorff 空间到它的映射」决定（底空间的定义）✓。$S$ 局部紧 Hausdorff 时是它自己的紧子空间的滤过余极限，把 (一) 逐块用上去即可 ✓。
+两步合起来即得 $S \times X(\cdot) \cong (S \times X)(\cdot)$ ✓。∎
+⚠️ **(二) 只是化归的思路**：真正的证明要把「底空间的拓扑由紧块决定」这句话在两边各写清楚（左边靠底空间的定义、右边靠 $k$-化的定义）。这一步不做也没有数学风险，但严格说这里只到「化归到紧的情形」为止。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -19318,7 +19425,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **凝聚态集 ↔ 紧 Hausdorff 空间**　12 条节点级连线
 - **拓扑斯 ↔ 凝聚态集**　9 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　5 条节点级连线
-- **凝聚态集 ↔ 紧生成空间与弱 Hausdorff**　8 条节点级连线
+- **凝聚态集 ↔ 紧生成空间与弱 Hausdorff**　9 条节点级连线
 - **同调与正合列 ↔ 复形与导出三角**　11 条节点级连线
 - **图与极限 ↔ 加法与阿贝尔范畴**　14 条节点级连线
 - **伴随与反射 ↔ 加法与阿贝尔范畴**　2 条节点级连线
@@ -19338,6 +19445,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **函子与自然变换 ↔ 复形与导出三角**　3 条节点级连线
 - **伴随与反射 ↔ 拓扑斯**　3 条节点级连线
 - **拓扑斯 ↔ 预层与米田**　3 条节点级连线
+- **伴随与反射 ↔ 阿贝尔层**　2 条节点级连线
+- **单满、子对象与像 ↔ 加法与阿贝尔范畴**　5 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -19374,7 +19483,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　3 条节点级连线
 - **范畴与图 ↔ 复形与导出三角**　4 条节点级连线
 - **复形与导出三角 ↔ 过滤与谱序列**　4 条节点级连线
-- **单满、子对象与像 ↔ 加法与阿贝尔范畴**　4 条节点级连线
 - **预层与米田 ↔ 阿贝尔层**　2 条节点级连线
 - **凝聚态阿贝尔群 ↔ 阿贝尔层**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 拓扑空间**　2 条节点级连线

@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T05:22:42.504Z",
+  "generated": "2026-10-12T05:24:58.306Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 594,
-   "edges": 1242,
-   "strong": 1233,
+   "nodes": 597,
+   "edges": 1249,
+   "strong": 1240,
    "weak": 9
   },
   "readingGuide": {
@@ -95,7 +95,7 @@
    "en": "Homological Algebra",
    "desc": "加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。",
    "color": "#C89A2B",
-   "nodeCount": 112
+   "nodeCount": 114
   },
   {
    "id": "condensed",
@@ -103,7 +103,7 @@
    "en": "Condensed Mathematics",
    "desc": "把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。",
    "color": "#1F8A70",
-   "nodeCount": 76
+   "nodeCount": 77
   }
  ],
  "clusters": [
@@ -851,7 +851,7 @@
    "name": "加法与阿贝尔范畴",
    "parent": "homology",
    "desc": "造出做同调代数的场地：预加法 / 加法范畴 → 预阿贝尔 → 阿贝尔范畴 → AB 公理 → Grothendieck 范畴。",
-   "nodeCount": 24,
+   "nodeCount": 25,
    "nodes": [
     "def.ab-axioms",
     "def.grothendieck-category",
@@ -876,7 +876,8 @@
     "prop.additive-iff-preserves-biproduct",
     "prop.adjoint-additive",
     "prop.exact-sequence-subcategory",
-    "prop.left-exact-criterion"
+    "prop.left-exact-criterion",
+    "prop.image-kernel-cokernel"
    ]
   },
   {
@@ -983,7 +984,7 @@
    "name": "阿贝尔层",
    "parent": "homology",
    "desc": "造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。",
-   "nodeCount": 7,
+   "nodeCount": 8,
    "nodes": [
     "def.presheaf-valued",
     "def.abelian-sheaf",
@@ -991,7 +992,8 @@
     "def.internal-hom",
     "def.tensor-abelian-sheaf",
     "def.flat-abelian-sheaf",
-    "prop.tensor-rhom-natural-map"
+    "prop.tensor-rhom-natural-map",
+    "def.free-abelian-sheaf"
    ]
   },
   {
@@ -999,7 +1001,7 @@
    "name": "凝聚态集",
    "parent": "condensed",
    "desc": "造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。",
-   "nodeCount": 21,
+   "nodeCount": 22,
    "nodes": [
     "def.chaus-pretopos",
     "def.condensed-set",
@@ -1021,7 +1023,8 @@
     "prop.cond-limits-colimits",
     "prop.cond-epi-regular",
     "prop.cond-equivalence-effective",
-    "cor.cond-ktop-finite-products"
+    "cor.cond-ktop-finite-products",
+    "prop.projection-formula-cond"
    ]
   },
   {
@@ -14568,6 +14571,78 @@
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Corollary 7.3.8"
    ]
+  },
+  {
+   "id": "def.free-abelian-sheaf",
+   "type": "definition",
+   "label": "自由阿贝尔群层",
+   "title": "定义：$\\mathbb{Z}\\cdot X$，遗忘函子的左伴随",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.sheaf",
+   "layer": 17,
+   "tags": [
+    "定义",
+    "自由对象",
+    "阿贝尔层",
+    "左伴随",
+    "Z[X]"
+   ],
+   "statement": "设 $\\mathcal{T}$ 是拓扑斯。遗忘函子\n\n$$\\mathcal{T}(\\mathbf{Ab}) \\longrightarrow \\mathcal{T}$$\n\n（把阿贝尔层忘成底集合层）有**左伴随**，记作\n\n$$\\mathbb{Z}\\cdot(-) : \\mathcal{T} \\longrightarrow \\mathcal{T}(\\mathbf{Ab}), \\qquad X \\longmapsto \\mathbb{Z}\\cdot X \\quad (\\text{也记 } \\mathbb{Z}[X]),$$\n\n它由**万有性质**刻画：对 $X \\in \\mathcal{T}$ 与 $M \\in \\mathcal{T}(\\mathbf{Ab})$，\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{T}}(X,\\ M) = M(X).$$",
+   "notes": "**怎么造。** 先逐点自由化、再层化：把 $X$ 看成预层，取预层 $U \\mapsto \\mathbb{Z}\\cdot X(U)$（逐点自由阿贝尔群），再层化：\n\n$$\\mathbb{Z}\\cdot X \\;:=\\; \\bigl(U \\mapsto \\mathbb{Z}\\cdot X(U)\\bigr)^{\\#}.$$\n\n**为什么这就对。** 预层那一层是逐点的：函子范畴里的伴随逐点造，而 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的遗忘函子有左伴随 $E \\mapsto \\mathbb{Z}\\cdot E$（自由阿贝尔群）✓，于是 $\\widehat{\\mathcal{C}}(\\mathbf{Ab}) \\to \\widehat{\\mathcal{C}}$ 的左伴随即逐点自由 ✓。到层这一层，用「层化 $\\dashv$ 含入」把伴随传下去 ✓：\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) = \\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}\\bigl(\\mathbb{Z}\\cdot X,\\ M\\bigr) \\cong \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(X,\\ M) = M(X) ✓$$\n\n（$M$ 本身是层，所以在预层那边的 Hom 与层这边的 Hom 一样）。∎\n\n⭐ **用处**：$\\mathbb{Z}\\cdot X$ 是「把一个空间/层当自由生成元看」的装置。Čech 复形就是 $\\check{C}^{\\bullet}(X, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$；层上同调则是 $H^{n}(X, M) = \\operatorname{Ext}^{n}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M)$ ✓。\n\n⚠️ **一般不是逐点算的**：层化会改动取值，「逐点自由再层化」与「自由」只有在层条件不碍事的时候才重合。\n\n📌 例：$\\mathbb{Z}\\cdot \\mathbf{1} \\cong \\mathbb{Z}$（常层）；$\\mathbb{Z}\\cdot X$ 永远是**投射**对象的候选（它是自由的）。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24"
+   ]
+  },
+  {
+   "id": "prop.image-kernel-cokernel",
+   "type": "proposition",
+   "label": "像就是余核的核",
+   "title": "命题：$\\operatorname{im} f = \\ker(\\operatorname{coker} f)$，每个态射都严格",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.ab",
+   "layer": 17,
+   "tags": [
+    "命题",
+    "阿贝尔范畴",
+    "像",
+    "余像",
+    "严格态射"
+   ],
+   "statement": "设 $\\mathcal{C}$ 是阿贝尔范畴，$f : M \\to N$。则\n\n$$\\operatorname{im} f \\;=\\; \\ker\\bigl(N \\longrightarrow \\operatorname{coker} f\\bigr), \\qquad \\operatorname{coim} f \\;=\\; \\operatorname{coker}\\bigl(\\ker f \\longrightarrow M\\bigr).$$\n\n特别地典范态射 $\\operatorname{coim} f \\to \\operatorname{im} f$ 是同构 —— **阿贝尔范畴里每个态射都是严格的**。",
+   "notes": "**证明（两条基本事实：阿贝尔范畴里每个单态射都是它余核的核、每个满态射都是它核的余核）。**\n记 $m := \\ker\\bigl(N \\to \\operatorname{coker} f\\bigr)$，它按定义是单态射 ✓。\n**（一）$f$ 穿过 $m$。** 因为 $(\\operatorname{coker} f) \\circ f = 0$ ✓，而 $m$ 正是这个映射的核，所以 $f$ 唯一地分解为 $f = m \\circ e$ ✓。\n**（二）$m$ 最小。** 设 $f = m' \\circ e'$ 是任意分解且 $m'$ 是单态射。因为 $(\\operatorname{coker} m') \\circ m' = 0$ ✓，得 $(\\operatorname{coker} m') \\circ f = 0$，于是由 $\\operatorname{coker} f$ 的泛性质，$\\operatorname{coker} m'$ 穿过 $\\operatorname{coker} f$ ✓，特别地\n$$(\\operatorname{coker} m') \\circ m = 0.$$\n再用「单态射 $m'$ 是它自己余核的核」：$m' = \\ker(\\operatorname{coker} m')$ ✓，于是 $m$ 唯一地穿过 $m'$ —— 即 $m$ 是「$f$ 能穿过的各种单态射」里最小的那个 ✓。\n（一）（二）合起来，$m$ 连同分解 $f = m \\circ e$ 正是**像**的泛性质 ✓，所以 $\\operatorname{im} f = \\ker(\\operatorname{coker} f)$ ✓。\n对偶地把箭头反过来（在 $\\mathcal{C}^{\\mathrm{op}}$ 里做同一件事）即得余像那条 ✓。\n**（三）严格性。** 由 (一) 的分解 $f = m \\circ e$ 与它的对偶分解，$\\operatorname{coim} f \\to \\operatorname{im} f$ 两边都是同一个中间对象，于是它是同构 ✓。∎\n\n⭐ 这条把「像」从泛性定义（最小中间对象）换成**可以算的公式**：$\\ker(\\operatorname{coker} f)$。同调代数里凡是要「手工取像」的地方，用的都是这个公式。\n\n⚠️ **阿贝尔**这个前提不能省：一般范畴里 $\\operatorname{coim} f \\to \\operatorname{im} f$ 未必同构（那种态射就不叫严格的了）。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, Exercise 5.9"
+   ]
+  },
+  {
+   "id": "prop.projection-formula-cond",
+   "type": "proposition",
+   "label": "投影公式",
+   "title": "投影公式：$S \\times X(\\cdot) \\cong (S \\times X)(\\cdot)$",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.set",
+   "layer": 19,
+   "tags": [
+    "命题",
+    "凝聚态集",
+    "投影公式",
+    "局部紧",
+    "k-化"
+   ],
+   "statement": "设 $X$ 是凝聚态集，$S$ 是**局部紧 Hausdorff** 拓扑空间。则\n\n$$S \\times X(\\cdot) \\;\\cong\\; (S \\times X)(\\cdot).$$\n\n（左边是底空间 $X(\\cdot)$ 与 $S$ 的拓扑积；$S$ 紧 Hausdorff 时这就是「把 $S$ 拉进来不影响 $k$-化」。）",
+   "notes": "⭐ **读法**：底空间函子 $X \\mapsto X(\\cdot)$ 与「乘一个局部紧空间」可交换。于是「在空间上乘以紧块」这类操作，可以先在 $\\mathrm{Cond}$ 里做、再落回拓扑空间，也可以反过来做。\n\n📌 它与「底空间保有限积」是一条链上的两步：那条给出 $k$-化后的公式，这条把 $k$-化消掉。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, Exercise 4.11"
+   ]
   }
  ],
  "edges": [
@@ -18783,6 +18858,67 @@
    "target": "cor.cech-cohomology-spectral",
    "title": "Cartan–Leray（固定覆盖）$\\implies$ 取遍覆盖的谱序列",
    "proof": "先对 $X$ 的**每个**覆盖 $\\mathfrak{X}$ 用 Cartan–Leray：存在谱序列\n$$E^{p,q}_{2} = \\check{H}^{p}\\bigl(\\mathfrak{X},\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X, M) ✓$$\n（右端与覆盖无关，正是层上同调本身）✓。\n再沿所有覆盖取**滤过余极限**：$\\check{H}^{p}(X, -) = \\varinjlim_{\\mathfrak{X} \\in \\operatorname{Cov}(X)} \\check{H}^{p}(\\mathfrak{X}, -)$ ✓（Čech 上同调就是沿覆盖取的余极限）。\n滤过余极限**正合**（保有限极限、保正合列），所以它把每一页的谱序列逐项保下来 —— 页、微分、以及收敛到同一个 $H^{p+q}(X, M)$ 都被保住 ✓。于是得到 $E^{p,q}_{2} = \\check{H}^{p}(X, H^{q}(M)) \\implies H^{p+q}(X, M)$ ✓。∎",
+   "note": ""
+  },
+  {
+   "id": "def-link.freeab-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abelian-sheaf",
+   "usedBy": "def.free-abelian-sheaf",
+   "note": "自由对象要造的是阿贝尔层。"
+  },
+  {
+   "id": "def-link.freeab-adjoint",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.adjoint",
+   "usedBy": "def.free-abelian-sheaf",
+   "note": "「自由」是用遗忘函子的左伴随来定义的。"
+  },
+  {
+   "id": "def-link.imgkc-image",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.image",
+   "usedBy": "prop.image-kernel-cokernel",
+   "note": "命题给的就是「像」的另一副面孔。"
+  },
+  {
+   "id": "def-link.imgkc-kernel",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.kernel-cokernel",
+   "usedBy": "prop.image-kernel-cokernel",
+   "note": "公式里出现的核与余核。"
+  },
+  {
+   "id": "def-link.imgkc-abelian",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.abelian-category",
+   "usedBy": "prop.image-kernel-cokernel",
+   "note": "「每个态射都严格」只在阿贝尔范畴里成立。"
+  },
+  {
+   "id": "def-link.projcond-underlying",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.underlying-topological-space",
+   "usedBy": "prop.projection-formula-cond",
+   "note": "公式两边的 $(-)(\\cdot)$ 就是底拓扑空间。"
+  },
+  {
+   "id": "imp-link.finprod-projcond",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "cor.cond-ktop-finite-products",
+    "prop.k-product"
+   ],
+   "target": "prop.projection-formula-cond",
+   "title": "底空间保有限积 + $k$-化与积 $\\implies$ 投影公式",
+   "proof": "**（一）$S$ 紧 Hausdorff 的情形。** 此时 $S$ 本身紧、$S(\\cdot) = S$ ✓。由「底空间保有限积」\n$$(S \\times X)(\\cdot) \\;\\cong\\; k\\bigl(S(\\cdot) \\times X(\\cdot)\\bigr) = k\\bigl(S \\times X(\\cdot)\\bigr) ✓$$\n而 $S$ 紧 Hausdorff 因而局部紧，由「$k$-化与积」$k\\bigl(S \\times X(\\cdot)\\bigr) \\cong S \\times X(\\cdot)$ ✓ —— 这一步正是「乘一个局部紧空间」与 $k$-化交换。\n**（二）$S$ 只假设局部紧 Hausdorff 的情形（思路）。** 两边作为集合都是 $S \\times X(\\ast)$ ✓；而底空间的拓扑由「紧 Hausdorff 空间到它的映射」决定（底空间的定义）✓。$S$ 局部紧 Hausdorff 时是它自己的紧子空间的滤过余极限，把 (一) 逐块用上去即可 ✓。\n两步合起来即得 $S \\times X(\\cdot) \\cong (S \\times X)(\\cdot)$ ✓。∎\n⚠️ **(二) 只是化归的思路**：真正的证明要把「底空间的拓扑由紧块决定」这句话在两边各写清楚（左边靠底空间的定义、右边靠 $k$-化的定义）。这一步不做也没有数学风险，但严格说这里只到「化归到紧的情形」为止。",
    "note": ""
   },
   {
@@ -25503,7 +25639,7 @@
   {
    "a": "cond.set",
    "b": "topo.cg",
-   "count": 8,
+   "count": 9,
    "label": "",
    "explicit": false
   },
@@ -25637,6 +25773,20 @@
    "a": "cat.topos",
    "b": "cat.yoneda",
    "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.adjoint",
+   "b": "hom.sheaf",
+   "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "cat.structure",
+   "b": "hom.ab",
+   "count": 5,
    "label": "",
    "explicit": false
   },
@@ -25888,13 +26038,6 @@
   {
    "a": "hom.complex",
    "b": "hom.spectral",
-   "count": 4,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "cat.structure",
-   "b": "hom.ab",
    "count": 4,
    "label": "",
    "explicit": false

@@ -23,4 +23,6 @@
 
 - Corollary 7.3.8 | Cor 7.3.8 → cor.cech-cohomology-spectral
 
-见 `../../alias.md`。
+- Exercise 5.18 | Exercise 5.24 → def.free-abelian-sheaf
+
+> 续见 alias/aka/homology.13.md

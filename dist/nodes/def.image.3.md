@@ -2,4 +2,6 @@
 根 `../`　·　第 1 页 `nodes/def.image.md`　·　上一页 `nodes/def.image.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `thm.five-lemma` 五引理 用
+- 被 `def.strict-morphism` 严格态射 用
 - 被 `def.exact-sequence` 一般正合列 用

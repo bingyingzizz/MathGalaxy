@@ -15,10 +15,9 @@ $$\operatorname{coim} f \longrightarrow \operatorname{im} f$$
 - `def.mono` 单态射 / 满态射：用到了定义 单态射 / 满态射　proofs/def-dep.mono-image.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.image-kernel-cokernel` 像就是余核的核 用
 - 被 `prop.pretopos-factorization` 满-单分解 用
 - 被 `def.abelian-category` 加法 / 阿贝尔范畴 用
-- 被 `thm.five-lemma` 五引理 用
-- 被 `def.strict-morphism` 严格态射 用
 
 - …另有出边，续页见 `nodes/def.image.3.md`
 

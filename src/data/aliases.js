@@ -716,6 +716,9 @@ MG.aliases = {
     { id: 'prop.bicomplex-spectral', aka: ['Proposition 7.2.18', 'Prop 7.2.18', 'Exercise 7.32', 'Exercise 7.33'] },
     { id: 'lem.covering-free-acyclic', aka: ['Lemma 7.3.2'] },
     { id: 'cor.cech-cohomology-spectral', aka: ['Corollary 7.3.8', 'Cor 7.3.8'] },
+    { id: 'def.free-abelian-sheaf', aka: ['Exercise 5.18', 'Exercise 5.24'] },
+    { id: 'prop.image-kernel-cokernel', aka: ['Exercise 5.9'] },
+    { id: 'prop.projection-formula-cond', aka: ['Exercise 4.11'] },
   ],
 
   /* --------------------------------------------------------- 问题钩子 */
