@@ -456,7 +456,7 @@
       drawEdges(defs);
       drawEdges(eqs);
       drawEdges(imps);
-      geoms.forEach(function (g) { if (g.arrow) drawArrow(g); });
+      drawArrows(geoms);
 
       /* ---------- 2. 节点 ---------- */
       if (lodA.nodeDot > 0.02) {
@@ -694,7 +694,20 @@
       ctx.restore();
     }
 
+    /**
+     * 连线：**按样式分桶，每组一个路径、只描边一次**。
+     *
+     * ⚠️ 这里省的不是像素，是**描边次数**：定义引用线有 1244 条（占全部连线 89%），
+     *    逐条 stroke() 时用户机器上实测约 0.05ms/条 ⇒ 一帧六十多毫秒。
+     *    证据：把定义线一关，同一页面立刻从 13fps 变成 240fps；
+     *    而把绘制分辨率砍半（quick=1，像素量 1/4）完全不改变帧数 —— 所以瓶颈是
+     *    「多少笔」，不是「多少像素」。合成一个路径后，1244 次描边变成一次。
+     *
+     * ⚠️ 副作用（知道且接受）：同一路径内的交叠**不会再叠加变深**（一个路径只混合一次），
+     *    所以定义线相交处由「更深」变成「同样深浅」—— 观感反而更干净。
+     */
     function drawEdges(list) {
+      var groups = Object.create(null), order = [], glyphs = [];
       list.forEach(function (g) {
         var e = g.edge;
         var style = T.edgeStyles[e.kind];
@@ -724,45 +737,61 @@
           w *= active ? 1.6 : 1;
         }
 
+        var color;
+        if (spineOnly) {
+          color = U.rgba(T.spineColor || 'B4661A', a);
+        } else if (e.kind === 'definition' || e.kind === 'analogy') {
+          var alpha = (style.alpha != null ? style.alpha : 1) * a;
+          color = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
+        } else {
+          color = U.rgba(style.color, a);
+        }
+
+        var key = color + '|' + w.toFixed(2) + '|' + (isWeak ? 'dash' : '-');
+        var grp = groups[key];
+        if (!grp) { grp = groups[key] = { color: color, w: w, dash: isWeak ? C.analogy.dash : null, gs: [] }; order.push(grp); }
+        grp.gs.push(g);
+
+        if (g.glyph && cam_eqVisible()) glyphs.push({ g: g, a: a });
+      });
+
+      order.forEach(function (grp) {
         ctx.save();
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.lineWidth = w;
-        if (isWeak) ctx.setLineDash(C.analogy.dash);
-
-        if (spineOnly) {
-          ctx.strokeStyle = U.rgba(T.spineColor || 'B4661A', a);
-        } else if (e.kind === 'definition' || e.kind === 'analogy') {
-          var alpha = (style.alpha != null ? style.alpha : 1) * a;
-          ctx.strokeStyle = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
-        } else {
-          ctx.strokeStyle = U.rgba(style.color, a);
-        }
-
+        ctx.lineWidth = grp.w;
+        if (grp.dash) ctx.setLineDash(grp.dash);
+        ctx.strokeStyle = grp.color;
         ctx.beginPath();
-        g.polys.forEach(function (pts, i) {
-          if (g.quads[i]) {
-            var q = g.quads[i];
-            ctx.moveTo(q.p0.x, q.p0.y);
-            ctx.quadraticCurveTo(q.p1.x, q.p1.y, q.p2.x, q.p2.y);
-          } else {
-            ctx.moveTo(pts[0].x, pts[0].y);
-            for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
+        for (var i = 0; i < grp.gs.length; i++) {
+          var polys = grp.gs[i].polys, quads = grp.gs[i].quads;
+          for (var j = 0; j < polys.length; j++) {
+            var q = quads[j], pts = polys[j];
+            if (q) {
+              ctx.moveTo(q.p0.x, q.p0.y);
+              ctx.quadraticCurveTo(q.p1.x, q.p1.y, q.p2.x, q.p2.y);
+            } else {
+              ctx.moveTo(pts[0].x, pts[0].y);
+              for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
+            }
           }
-        });
-        ctx.stroke();
-
-        // 等价线中点画一个 ⟺（用白色描边做底，而不是白方块，免得在云上留个补丁）
-        if (g.glyph && cam_eqVisible()) {
-          ctx.font = '600 ' + Math.round(U.clamp(13 * Math.pow(view.cam.k, 0.4), 11, 18)) + 'px ' + T.font;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.lineWidth = 3.5;
-          ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
-          ctx.strokeText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
-          ctx.fillStyle = U.rgba(T.edgeStyles.equivalence.color, 0.92 * a);
-          ctx.fillText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
         }
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // 等价线中点画一个 ⟺（用白色描边做底，而不是白方块，免得在云上留个补丁）
+      glyphs.forEach(function (it) {
+        var g = it.g, a = it.a;
+        ctx.save();
+        ctx.font = '600 ' + Math.round(U.clamp(13 * Math.pow(view.cam.k, 0.4), 11, 18)) + 'px ' + T.font;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.lineWidth = 3.5;
+        ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
+        ctx.strokeText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
+        ctx.fillStyle = U.rgba(T.edgeStyles.equivalence.color, 0.92 * a);
+        ctx.fillText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
         ctx.restore();
       });
     }
@@ -778,24 +807,37 @@
       return false;
     }
 
-    function drawArrow(g) {
-      var e = g.edge;
-      var a = alphaForEdge(e) * lodA.nodeEdge;
-      if (a <= 0.02) return;
-      var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
-      var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(ang);
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(-sz, sz * 0.42);
-      ctx.lineTo(-sz * 0.72, 0);
-      ctx.lineTo(-sz, -sz * 0.42);
-      ctx.closePath();
-      ctx.fillStyle = U.rgba(T.edgeStyles.implication.color, a);
-      ctx.fill();
-      ctx.restore();
+    /** 箭头也分桶：**一次 beginPath + 一次 fill** 画完所有箭头（原来是每个箭头一次） */
+    function drawArrows(geoms) {
+      var groups = Object.create(null), order = [];
+      geoms.forEach(function (g) {
+        if (!g.arrow) return;
+        var e = g.edge;
+        var a = alphaForEdge(e) * lodA.nodeEdge;
+        if (a <= 0.02) return;
+        var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
+        var color = U.rgba(T.edgeStyles.implication.color, a);
+        var key = color + '|' + sz.toFixed(2);
+        var grp = groups[key];
+        if (!grp) { grp = groups[key] = { color: color, sz: sz, list: [] }; order.push(grp); }
+        grp.list.push(g);
+      });
+      order.forEach(function (grp) {
+        var sz = grp.sz, tip = sz * 0.42, notch = sz * 0.72;
+        ctx.fillStyle = grp.color;
+        ctx.beginPath();
+        for (var i = 0; i < grp.list.length; i++) {
+          var ar = grp.list[i].arrow;
+          var co = Math.cos(ar.angle), si = Math.sin(ar.angle);
+          // 与原来 translate(x,y) + rotate(ang) 后画那几个点等价
+          ctx.moveTo(ar.x, ar.y);
+          ctx.lineTo(ar.x - sz * co - tip * si, ar.y - sz * si + tip * co);
+          ctx.lineTo(ar.x - notch * co, ar.y - notch * si);
+          ctx.lineTo(ar.x - sz * co + tip * si, ar.y - sz * si - tip * co);
+          ctx.closePath();
+        }
+        ctx.fill();
+      });
     }
 
     /* ---------------------------------------------------------- 节点 */
