@@ -13,10 +13,13 @@ $$\prod_{a \in S} h_{a} : \mathcal{C} \longrightarrow \mathbf{Set}^{S}, \qquad X
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.giraud` Giraud 定理
+- 被 `prop.generator-coproduct-epi` 生成元的余积刻画 用
+- 被 `prop.generators-abelian-sheaves` 生成元给出阿贝尔层的生成元 用
 - 被 `prop.condab-generated` CondAb 由有限表现投射对象生成 用
 - 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用
 - 被 `def.topos` 拓扑斯 用
-- 被 `def.grothendieck-category` Grothendieck 范畴 用
+
+- …另有出边，续页见 `nodes/def.generator.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §3.3
 

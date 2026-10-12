@@ -12,6 +12,9 @@ $$\Gamma(F, -) : \mathrm{CondAb} \longrightarrow \mathbf{Ab}, \qquad M \mapsto \
 - `def.free-compact-hausdorff` 自由紧 Hausdorff 空间：用到了定义 自由紧 Hausdorff 空间　proofs/def-dep.free-condab-section.md
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-condab-section.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `thm.abelian-sheaf-equiv` 阿贝尔层即拓扑斯里的阿贝尔群
+
 refs: Le Stum, Lemma 6.1.3
 
 > 说明见 `notes/prop.condab-section.md`

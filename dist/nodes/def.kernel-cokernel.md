@@ -13,6 +13,7 @@ layer 14 · 定义 · 加法与阿贝尔范畴 · 范畴论
 ## 它能推出什么 / 谁在用它
 - 被 `prop.abhaus-strict-exact` Hausdorff 拓扑阿贝尔群的核与余核 用
 - 被 `prop.image-kernel-cokernel` 像就是余核的核 用
+- 被 `prop.exact-at-points` 正合就是逐点正合 用
 
 refs: Le Stum, An introduction to condensed mathematics, §5.1
 

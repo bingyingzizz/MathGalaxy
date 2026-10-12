@@ -1,0 +1,15 @@
+# 自由对象的张量积　`prop.free-sheaf-tensor`
+命题：$\mathbb{Z}\cdot X \otimes \mathbb{Z}\cdot Y \cong \mathbb{Z}\cdot(X \times Y)$
+layer 19 · 命题 · 阿贝尔层 · 同调代数
+
+设 $\mathcal{T}$ 是拓扑斯、$X, Y \in \mathcal{T}$。则
+
+$$\mathbb{Z}\cdot X \;\otimes_{\mathbb{Z}}\; \mathbb{Z}\cdot Y \;\cong\; \mathbb{Z}\cdot (X \times Y).$$
+
+## 为什么成立（入边，证明在 proofs/）
+- `def.tensor-abelian-sheaf` 阿贝尔层的张量积：用到了定义 阿贝尔层的张量积　proofs/def-link.freetensor-tensor.md
+- `def.free-abelian-sheaf` 自由阿贝尔群层：用到了定义 自由阿贝尔群层　proofs/def-link.freetensor-free.md
+
+refs: Le Stum, An introduction to condensed mathematics, Exercise 5.29
+
+> 说明见 `notes/prop.free-sheaf-tensor.md`

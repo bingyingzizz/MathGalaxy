@@ -21,6 +21,7 @@ $$\operatorname{im}(d^{n-1}) = \ker(d^{n}).$$
 ## 它能推出什么 / 谁在用它
 - 被 `prop.exact-sequence-subcategory` 正合列构成子范畴 用
 - 被 `prop.abhaus-strict-exact` Hausdorff 拓扑阿贝尔群的核与余核 用
+- 被 `prop.exact-at-points` 正合就是逐点正合 用
 
 refs: Le Stum, Definition 5.2.3
 

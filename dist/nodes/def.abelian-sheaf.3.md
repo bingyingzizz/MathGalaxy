@@ -5,6 +5,7 @@
 - 被 `prop.cech-section-vanishing` 带截面的覆盖上 Čech 零调 用
 - 被 `prop.cohomology-of-coproduct` 上同调与不交并 用
 - 被 `def.free-abelian-sheaf` 自由阿贝尔群层 用
+- 被 `thm.abelian-sheaf-equiv` 阿贝尔层即拓扑斯里的阿贝尔群 用
 - 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用
 - 被 `def.internal-hom` 内 Hom 用
 - 被 `def.tensor-abelian-sheaf` 阿贝尔层的张量积 用

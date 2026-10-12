@@ -14,6 +14,10 @@ $$\mathcal{T}(\mathbf{Ab}) \longrightarrow \mathcal{T}$$
 - `def.abelian-sheaf` 阿贝尔层：用到了定义 阿贝尔层　proofs/def-link.freeab-abelian.md
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-link.freeab-adjoint.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.presheaf-free-projective` 自由的预层是投射的 用
+- 被 `prop.free-sheaf-tensor` 自由对象的张量积 用
+
 refs: Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24
 
 > 说明见 `notes/def.free-abelian-sheaf.md`

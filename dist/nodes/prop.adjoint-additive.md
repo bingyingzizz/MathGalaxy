@@ -12,6 +12,9 @@ $$\operatorname{Hom}_{\mathcal{D}}(FM, N) \;\cong\; \operatorname{Hom}_{\mathcal
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-link.adjadd-adjoint.md
 - `def.additive-functor` 加法函子：用到了定义 加法函子　proofs/def-link.adjadd-addfun.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.subcat-additive` 子范畴继承加法与阿贝尔性
+
 refs: Le Stum, An introduction to condensed mathematics, §5.1
 
 > 说明见 `notes/prop.adjoint-additive.md`

@@ -11,6 +11,9 @@ layer 17 · 命题 · 加法与阿贝尔范畴 · 同调代数
 - `def.kernel-cokernel` 核与余核：用到了定义 核与余核　proofs/def-link.imgkc-kernel.md
 - `def.abelian-category` 加法 / 阿贝尔范畴：用到了定义 加法 / 阿贝尔范畴　proofs/def-link.imgkc-abelian.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.subcat-additive` 子范畴继承加法与阿贝尔性
+
 refs: Le Stum, An introduction to condensed mathematics, Exercise 5.9
 
 > 说明见 `notes/prop.image-kernel-cokernel.md`

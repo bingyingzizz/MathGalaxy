@@ -553,7 +553,7 @@ MG.aliases = {
     { id: 'thm.top-cond-adjoint', aka: ['拓扑空间到凝聚态集', 'Top 到 Cond', 'kTop', 'Theorem 4.2.4', 'Thm 4.2.4'] },
     { id: 'def.condensed-abelian-group', aka: ['凝聚态阿贝尔群', 'condensed abelian group', 'CondAb', 'Ab(Cond)', 'Definition 6.1.1', 'Proposition 6.1.2', 'Prop 6.1.2'] },
     { id: 'def.grothendieck-category', aka: ['Grothendieck 范畴', 'Grothendieck category', 'AB5', 'Definition 5.2.6'] },
-    { id: 'def.abelian-category', aka: ['预加法范畴', '加法范畴', '预阿贝尔范畴', '阿贝尔范畴', 'Ab-范畴', 'Definition 5.1.1', 'Definition 5.1.4', 'Definition 5.2.1', 'Definition 5.2.2'] },
+    { id: 'def.abelian-category', aka: ['预加法范畴', '加法范畴', '预阿贝尔范畴', '阿贝尔范畴', 'Ab-范畴', 'Definition 5.1.1', 'Definition 5.1.4', 'Definition 5.2.1', 'Definition 5.2.2', 'Exercise 5.8'] },
     { id: 'def.ab-axioms', aka: ['AB 公理', 'AB 公理的例子', 'Definition 5.2.5'] },
     { id: 'prop.condab-section', aka: ['截面函子', 'Gamma(F,-)', 'sections functor', 'Exercise 5.17'] },
     { id: 'thm.condab-ab', aka: ['CondAb 满足 AB6', 'AB4*', 'AB 公理', 'Theorem 6.1.4', 'Corollary 6.1.5'] },
@@ -562,9 +562,9 @@ MG.aliases = {
 
     /* 阿贝尔层 */
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
-    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14'] },
+    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14', 'Exercise 5.22'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'Theorem 5.3.2'] },
-    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8'] },
+    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8', 'Exercise 5.21', 'Exercise 5.23', 'Exercise 5.30'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28', 'Exercise 5.26', 'Exercise 5.27'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3', 'Exercise 5.31'] },
 
@@ -724,6 +724,13 @@ MG.aliases = {
     { id: 'prop.hom-presheaf-sheaf', aka: ['Exercise 4.7'] },
     { id: 'prop.countable-colimit-qseparated', aka: ['Exercise 4.12'] },
     { id: 'prop.qseparated-mono', aka: ['Exercise 4.13'] },
+    { id: 'prop.exact-at-points', aka: ['Exercise 5.10'] },
+    { id: 'prop.subcat-additive', aka: ['Exercise 5.12'] },
+    { id: 'prop.generator-coproduct-epi', aka: ['Exercise 5.13'] },
+    { id: 'thm.abelian-sheaf-equiv', aka: ['Exercise 5.15'] },
+    { id: 'prop.presheaf-free-projective', aka: ['Exercise 5.19'] },
+    { id: 'prop.generators-abelian-sheaves', aka: ['Exercise 5.20'] },
+    { id: 'prop.free-sheaf-tensor', aka: ['Exercise 5.29'] },
   ],
 
   /* --------------------------------------------------------- 问题钩子 */

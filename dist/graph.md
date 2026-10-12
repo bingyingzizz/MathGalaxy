@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:06:41.996Z
-> 9 星系 / 45 星团 / 602 节点 / 1256 连线（强边 1247，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:10:10.939Z
+> 9 星系 / 45 星团 / 609 节点 / 1268 连线（强边 1259，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -9135,6 +9135,49 @@ $$(\operatorname{coker} m') \circ m = 0.$$
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 5.9
 
+#### 正合就是逐点正合　`prop.exact-at-points`
+*命题*　命题：短正合 $\iff$ 三处都正合
+
+设 $0 \to M' \xrightarrow{\ i\ } M \xrightarrow{\ p\ } M'' \to 0$ 是阿贝尔范畴里的列。则
+
+- **短正合** $\iff$ 在 $M'$、$M$、$M''$ **三处都正合**；
+- **左正合** $\iff$ 在 $M'$、$M$ 处正合；
+- **右正合** $\iff$ 在 $M$、$M''$ 处正合。
+
+**证明。** 三句话逐条对照定义即可：「在 $M'$ 处正合」读作 $\ker i = 0$（即 $i$ 单）；「在 $M$ 处正合」读作 $\operatorname{im} i = \ker p$；「在 $M''$ 处正合」读作 $\operatorname{coker} p = 0$（即 $p$ 满）✓。把这几条组合起来正是左/右/短正合的定义 ✓。∎
+
+⭐ 用处：把「整条列正合」这件整体的事拆成**逐点检查**，实际验证时用的就是这一条。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.10
+
+#### 子范畴继承加法与阿贝尔性　`prop.subcat-additive`
+*命题*　命题：全忠实 + 有伴随 $\implies$ $\mathcal{C}$ 也加法（阿贝尔）
+
+设 $F : \mathcal{C} \hookrightarrow \mathcal{D}$ 是**全忠实**函子，$\mathcal{D}$ 加法（resp. 阿贝尔）。若 $F$ 有**伴随或余伴随**（resp. 且 $F$ 正合），则 $\mathcal{C}$ 也是**加法**（resp. **阿贝尔**）范畴。
+
+**证明。**
+**（一）双积。** 伴随（不论左右）都加法：右伴随保积、左伴随保余积 ✓（见「伴随函子都加法」）。于是 $\mathcal{D}$ 里 $F(X) \oplus F(Y)$ 是双积，而 $F$ 全忠实把它「如实」搬回 $\mathcal{C}$：由米田引理，$\operatorname{Hom}_{\mathcal{C}}(Z, \cdot)$ 上的两条等式与 $\mathcal{D}$ 里的完全一致 ✓。
+**（二）阿贝尔性。** 有了双积后核余核再由 $\mathcal{D}$ 里「每个态射都严格」（$\operatorname{coker}(\ker u) \cong \ker(\operatorname{coker} u)$）沿**正合**函子搬回来 ✓。∎
+
+⭐ 读法：**「往里放」的全忠实函子只要还有伴随，子范畴就白拿加法结构** —— 这就是「$\mathbf{Ab}$ 的子范畴为什么自动加法」的答案。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.12
+
+#### 生成元的余积刻画　`prop.generator-coproduct-epi`
+*命题*　命题：$G$ 生成 $\iff$ 每个 $M$ 都有 $G^{(I)} \twoheadrightarrow M$
+
+设 $\mathcal{C}$ 是有余积的阿贝尔范畴、$G \in \mathcal{C}$。则
+
+$$G \text{ 是生成元} \iff \text{对每个 } M \in \mathcal{C},\ \exists I:\ G^{(I)} \twoheadrightarrow M.$$
+
+**证明。**
+**$(\Longrightarrow)$** 取 $I := \operatorname{Hom}_{\mathcal{C}}(G, M)$，令 $\coprod_I G \to M$ 的各分量按对应态射来 ✓。若它不是满射，则 $M \to \operatorname{coker}$ 非零，由生成性存在 $g : G \to M$ 使这个复合非零 —— 可是 $g$ 本来就是 $I$ 中的一个分量，它的像落在 $\operatorname{im}$ 里，矛盾 ✓。
+**$(\Longleftarrow)$** 给 $f \ne g : M \to N$，则 $h := f - g \ne 0$。取满射 $G^{(I)} \twoheadrightarrow M$，于是 $h \circ (\text{满射}) \ne 0$，特别地某个分量 $G \to M$ 上非零 ✓，即 $\operatorname{Hom}(G, h) \ne 0$ —— 所以 $\operatorname{Hom}(G, -)$ 忠实，$G$ 是生成元 ✓。∎
+
+⚠️ 这条判据其实**只用到余积**（AB3），滤过余极限没有出场（AB5 的那部分条件用不上）。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.13
+
 ### 星团：复形与导出三角
 > 造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。
 
@@ -10481,6 +10524,62 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) = \operatorna
 📌 例：$\mathbb{Z}\cdot \mathbf{1} \cong \mathbb{Z}$（常层）；$\mathbb{Z}\cdot X$ 永远是**投射**对象的候选（它是自由的）。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24
+
+#### 阿贝尔层即拓扑斯里的阿贝尔群　`thm.abelian-sheaf-equiv`
+*定理*　定理：$\widetilde{\mathcal{C}}(\mathbf{Ab}) \simeq \mathbf{Ab}(\widetilde{\mathcal{C}})$
+
+设 $\mathcal{C}$ 是 site。则「site 上的**阿贝尔层**」与「拓扑斯 $\widetilde{\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：
+
+$$\widetilde{\mathcal{C}}(\mathbf{Ab}) \;\simeq\; \mathbf{Ab}\bigl(\widetilde{\mathcal{C}}\bigr).$$
+
+**证明的思路。** 两个方向都是「**逐点取值**」：
+
+- $\to$：拓扑斯里的阿贝尔群对象 $M$ 在 $X \in \mathcal{C}$ 上取值，用的是**整体截面函子保积**（群的运算、$0$、逆元逐点读出来）✓，于是 $X \mapsto M(X)$ 给出一个阿贝尔预层，而且它是层 ✓；
+
+- $\leftarrow$：反过来给阿贝尔层 $M$，在每个 $X$ 处的取值自动带阿贝尔群结构，而层范畴里的群结构由这些值逐点决定（预层范畴里的群对象就是逐点的群）✓。
+
+两个方向互逆，因为都是「取遍每个 $X$ 的值」✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.15
+
+#### 自由的预层是投射的　`prop.presheaf-free-projective`
+*命题*　命题：$\mathbb{Z}\cdot h_{X}$ 在 $\widehat{\mathcal{C}}(\mathbf{Ab})$ 里投射
+
+设 $\mathcal{C}$ 是范畴、$X \in \mathcal{C}$。则 $\mathbb{Z}\cdot h_{X}$ 是预层范畴 $\widehat{\mathcal{C}}(\mathbf{Ab})$ 里的**投射对象**；更一般地，$\mathbb{Z}\cdot T$（$T$ 是任意预层）也投射。
+
+**证明。** 投射性等价于 $\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot T, -)$ **正合** ✓。由自由对象的万有性质，$\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot T, M) \cong M(T)$ —— 这里的 $M(T)$ 指「预层的 $T$ 处取值」那一族逐点取值 ✓；而预层范畴里的正合性是**逐点判**的，逐点正是阿贝尔群之间的 Hom，因而是正合的 ✓。∎
+
+⭐ 这就是「自由即投射」在层论里的样子，也是 $\mathbb{Z}\cdot X_{\bullet}$ 能充当投射消解的依据。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.19
+
+#### 生成元给出阿贝尔层的生成元　`prop.generators-abelian-sheaves`
+*命题*　命题：$S$ 生成 $\mathcal{T}$ $\implies$ $\{\mathbb{Z}\cdot X\}$ 生成 $\mathcal{T}(\mathbf{Ab})$
+
+设 $\mathcal{T}$ 是拓扑斯、$S$ 是它的一组**生成元**。则
+
+$$\bigl\{\ \mathbb{Z}\cdot X \ :\ X \in S\ \bigr\}$$
+
+是 $\mathcal{T}(\mathbf{Ab})$ 的一组生成元。
+
+**证明。** 由自由对象的万有性质，$\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot X, M) = M(X) = \operatorname{Hom}(X, M)$ ✓ —— 于是「用 $\mathbb{Z}\cdot X$ 检测态射」与「用 $X$ 检测态射」是同一件事 ✓。$S$ 生成 $\mathcal{T}$ 说明后者够用，所以前者也够用 ✓。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.20
+
+#### 自由对象的张量积　`prop.free-sheaf-tensor`
+*命题*　命题：$\mathbb{Z}\cdot X \otimes \mathbb{Z}\cdot Y \cong \mathbb{Z}\cdot(X \times Y)$
+
+设 $\mathcal{T}$ 是拓扑斯、$X, Y \in \mathcal{T}$。则
+
+$$\mathbb{Z}\cdot X \;\otimes_{\mathbb{Z}}\; \mathbb{Z}\cdot Y \;\cong\; \mathbb{Z}\cdot (X \times Y).$$
+
+**证明（米田）。** 对任意 $N \in \mathcal{T}(\mathbf{Ab})$，
+$$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X \otimes \mathbb{Z}\cdot Y,\ N\bigr) \cong \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot Y, N)\bigr) \cong \operatorname{Hom}\bigl(X,\ \operatorname{Hom}(Y, N)\bigr) \cong \operatorname{Hom}(X \times Y,\ N) \cong \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot(X \times Y),\ N\bigr) ✓$$
+（第一、三步是张量–内 Hom 伴随，第二、四步是自由对象的万有性质，中间一步是 $X \times Y$ 的泛性质。）对一切 $N$ 成立，由米田引理即得同构 ✓。∎
+
+⭐ 读法：**自由对象把拓扑斯里的积翻译成阿贝尔群层里的张量积**。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 5.29
 
 ## 星系：凝聚态数学（Condensed Mathematics）
 > 把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。
@@ -16209,6 +16308,59 @@ $$(S \times X)(\cdot) \;\cong\; k\bigl(S(\cdot) \times X(\cdot)\bigr) = k\bigl(S
 
 若 $X = \varinjlim_i S_{i}$（含入过渡），则 $X(S) = \varinjlim_i \operatorname{Hom}(S, S_{i})$ ✓；两个元素映到底空间里同一个连续映射时，它们来自某个 $S_{i}$，而 $S_{i} \hookrightarrow X(\cdot)$ 是含入、特别地单射，故两个元素相等 ✓。于是 $X(S) \to C(S, X(\cdot))$ 单射，对每个紧 Hausdorff $S$ 成立即得单态射 ✓。∎
 
+#### 定义引用：「一般正合列」→ 正合就是逐点正合　`def-link.exactpts-exactseq`
+
+命题比较的就是「正合」这条定义的三档说法。
+
+#### 定义引用：「核与余核」→ 正合就是逐点正合　`def-link.exactpts-kernel`
+
+逐点读法用的核与余核。
+
+#### 定义引用：「加法 / 阿贝尔范畴」→ 子范畴继承加法与阿贝尔性　`def-link.subcatadd-abelian`
+
+结论是「$\mathcal{C}$ 也加法 / 阿贝尔」。
+
+#### 伴随函子都加法 + 像就是余核的核 ⟹ 子范畴继承加法与阿贝尔性　`imp-link.adjadd-subcatadd`
+*伴随都加法 + 阿贝尔里态射严格 $\implies$ 子范畴继承*
+
+伴随（左右不论）都加法，故保双积；$\mathcal{D}$ 里的双积经全忠实函子如实映回 $\mathcal{C}$ ✓，于是 $\mathcal{C}$ 有双积、加法结构相容 ✓。
+阿贝尔性再要核余核：$\mathcal{D}$ 里每个态射都严格（$\operatorname{coker}(\ker u) \cong \ker(\operatorname{coker} u)$）✓，正合函子把这条等式搬回 $\mathcal{C}$ ✓。∎
+
+#### 定义引用：「生成元集」→ 生成元的余积刻画　`def-link.gencopro-generator`
+
+命题给出生成元的等价刻画。
+
+#### 定义引用：「阿贝尔层」→ 阿贝尔层即拓扑斯里的阿贝尔群　`def-link.absheafequiv-abelian`
+
+等价的一边就是阿贝尔层。
+
+#### 截面函子保极限余极限 ⟹ 阿贝尔层即拓扑斯里的阿贝尔群　`imp-link.section-absheafequiv`
+*整体截面函子保积 $\implies$ 阿贝尔层即拓扑斯里的阿贝尔群*
+
+整体截面函子保积 ✓，所以拓扑斯里的阿贝尔群对象 $M$ 在每个对象 $X$ 处的取值 $M(X)$ 自然带阿贝尔群结构、且随 $X$ 函子化 ✓，得到一侧的函子。
+反过来，阿贝尔层 $M$ 的每个取值都是阿贝尔群，而层范畴里的群结构由逐点取值决定 ✓，得到另一侧的函子。
+两个方向都是「取遍每个 $X$ 的值」，互为逆 ✓。∎
+
+#### 定义引用：「自由阿贝尔群层」→ 自由的预层是投射的　`def-link.pffreeproj-free`
+
+命题说的是 $\mathbb{Z}\cdot(-)$ 出来的对象。
+
+#### 定义引用：「投射 / 内射对象」→ 自由的预层是投射的　`def-link.pffreeproj-proj`
+
+结论就是「投射对象」。
+
+#### 定义引用：「生成元集」→ 生成元给出阿贝尔层的生成元　`def-link.gensab-generator`
+
+两边的「生成元」都按这条定义读。
+
+#### 定义引用：「阿贝尔层的张量积」→ 自由对象的张量积　`def-link.freetensor-tensor`
+
+公式里的 $\otimes$ 就是阿贝尔层张量积。
+
+#### 定义引用：「自由阿贝尔群层」→ 自由对象的张量积　`def-link.freetensor-free`
+
+两边都是自由对象。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -19557,6 +19709,9 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑斯 ↔ 预层与米田**　3 条节点级连线
 - **伴随与反射 ↔ 阿贝尔层**　2 条节点级连线
 - **单满、子对象与像 ↔ 加法与阿贝尔范畴**　5 条节点级连线
+- **拓扑斯 ↔ 加法与阿贝尔范畴**　2 条节点级连线
+- **凝聚态阿贝尔群 ↔ 阿贝尔层**　3 条节点级连线
+- **拓扑斯 ↔ 阿贝尔层**　4 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -19574,7 +19729,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **凝聚态阿贝尔群 ↔ 紧 Hausdorff 空间**　3 条节点级连线
 - **图与极限 ↔ 同调与正合列**　3 条节点级连线
 - **凝聚态阿贝尔群 ↔ 加法与阿贝尔范畴**　2 条节点级连线
-- **拓扑斯 ↔ 阿贝尔层**　3 条节点级连线
 - **加法与阿贝尔范畴 ↔ 阿贝尔层**　2 条节点级连线
 - **紧生成空间与弱 Hausdorff ↔ 拓扑空间**　16 条节点级连线
 - **向量空间的基 ↔ 序结构**　2 条节点级连线
@@ -19594,7 +19748,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **范畴与图 ↔ 复形与导出三角**　4 条节点级连线
 - **复形与导出三角 ↔ 过滤与谱序列**　4 条节点级连线
 - **预层与米田 ↔ 阿贝尔层**　2 条节点级连线
-- **凝聚态阿贝尔群 ↔ 阿贝尔层**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 拓扑空间**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 紧生成空间与弱 Hausdorff**　4 条节点级连线
 - **代数结构 ↔ 加法与阿贝尔范畴**　2 条节点级连线
