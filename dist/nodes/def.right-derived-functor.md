@@ -13,12 +13,14 @@ layer 11 · 定义 · 复形与导出三角 · 同调代数
 ## 它能推出什么 / 谁在用它
 - 被 `prop.left-exact-iff-R0` 左正合性与 R⁰ 用
 - 被 `def.resolution` 消解 用
+- 被 `prop.derived-functor-exact-factor` 正合因子让谱序列退化 用
 - 被 `thm.derived-long-exact` 导出函子的长正合列 用
 - 被 `def.f-acyclic` F-零调对象 用
 - 被 `prop.leray-acyclicity` Leray 零调性 用
 - 被 `cor.grothendieck-spectral` Grothendieck 谱序列 用
 - 被 `def.sheaf-cohomology` 层上同调 用
-- 被 `prop.topos-morphism-derived` 拓扑斯态射的导出函子 用
+
+- …另有出边，续页见 `nodes/def.right-derived-functor.3.md`
 
 refs: Le Stum, Definition 7.2.7
 

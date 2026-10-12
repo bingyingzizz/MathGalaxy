@@ -17,6 +17,7 @@ $$\mathcal{T}(\mathbf{Ab}) \longrightarrow \mathcal{T}$$
 ## 它能推出什么 / 谁在用它
 - 被 `prop.presheaf-free-projective` 自由的预层是投射的 用
 - 被 `prop.free-sheaf-tensor` 自由对象的张量积 用
+- 被 `prop.cech-cochain-formula` Čech 上链的具体公式 用
 
 refs: Le Stum, An introduction to condensed mathematics, Exercise 5.18, Exercise 5.24
 

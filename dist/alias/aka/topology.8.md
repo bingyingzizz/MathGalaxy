@@ -7,7 +7,7 @@
 
 - 局部紧阿贝尔群 | pre-abelian | Exercise 6.4 | R-disc 不是严格 → prop.lc-ab-preabelian
 
-- Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 → thm.pontryagin-van-kampen
+- Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 | Exercise 6.7 → thm.pontryagin-van-kampen
 
 - Tietze 延拓 | Tietze | Banach 值 Tietze | Theorem 8.2.7 → thm.tietze-banach
 

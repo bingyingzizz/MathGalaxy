@@ -11,6 +11,9 @@ $$M \longmapsto P \otimes_{\mathbb{Z}} M$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.tensor-abelian-sheaf` 阿贝尔层的张量积：用到了定义 阿贝尔层的张量积　proofs/def-dep.flat-tensor.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.flat-tensor-acyclic` 平坦张量保持零调 用
+
 refs: Le Stum, An introduction to condensed mathematics, §5.3
 
 ## 说明

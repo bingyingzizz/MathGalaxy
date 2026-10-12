@@ -13,6 +13,7 @@ layer 17 · 定理 · 过滤与谱序列 · 同调代数
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.bicomplex-spectral` 双复形给出谱序列
+- ⇒ `prop.filtered-first-page` 过滤复形的第一页
 
 refs: Le Stum, Theorem 7.2.16；Weibel, An Introduction to Homological Algebra, 5.4.1
 

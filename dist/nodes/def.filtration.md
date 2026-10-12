@@ -10,6 +10,7 @@ layer 15 · 定义 · 过滤与谱序列 · 同调代数
 - `def.subobject` 子对象：用到了定义 子对象　proofs/def-dep.subobject-filtration.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.filtered-first-page` 过滤复形的第一页 用
 - 被 `def.spectral-sequence` 谱序列 用
 - 被 `thm.filtered-complex-spectral` 过滤复形给出谱序列 用
 

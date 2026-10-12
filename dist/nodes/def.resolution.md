@@ -10,6 +10,9 @@ layer 15 · 定义 · 同调与正合列 · 同调代数
 - `def.quasi-iso` 拟同构：用到了定义 拟同构　proofs/def-link.res-quasiiso.md
 - `def.right-derived-functor` 右导出函子：用到了定义 右导出函子　proofs/def-link.res-derived.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.total-complex-injective-resolution` 全复形还是内射消解 用
+
 refs: Le Stum, An introduction to condensed mathematics, Definition 7.1.20
 
 > 说明见 `notes/def.resolution.md`

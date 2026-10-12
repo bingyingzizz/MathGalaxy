@@ -13,6 +13,7 @@ site $\mathcal{C}$ 上的 **Čech 函子*
 - ⇒ `thm.sheafification` 层化
 - 被 `prop.cech-section-vanishing` 带截面的覆盖上 Čech 零调 用
 - 被 `lem.covering-free-acyclic` 覆盖给出的自由复形零调 用
+- 被 `prop.cech-cochain-formula` Čech 上链的具体公式 用
 - 被 `prop.cech-properties` Čech 函子的性质 用
 - 被 `thm.sheafification` 层化 用
 - 被 `def.cech-cohomology` Čech 上同调 用

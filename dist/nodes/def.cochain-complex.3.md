@@ -2,6 +2,8 @@
 根 `../`　·　第 1 页 `nodes/def.cochain-complex.md`　·　上一页 `nodes/def.cochain-complex.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.additive-complex-construction` 加法函子与复形构造交换 用
+- 被 `prop.complex-additive` 复形范畴是加法范畴 用
 - 被 `def.homotopy` 同伦 用
 - 被 `def.mapping-cone` 映射锥 用
 - 被 `def.cohomology` 同调 用

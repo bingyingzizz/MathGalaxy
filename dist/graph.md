@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:10:10.939Z
-> 9 星系 / 45 星团 / 609 节点 / 1268 连线（强边 1259，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:13:00.437Z
+> 9 星系 / 45 星团 / 617 节点 / 1283 连线（强边 1274，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -9786,6 +9786,30 @@ $$0 \to R^{0}F(M') \to R^{0}F(M) \to R^{0}F(M'') \to R^{1}F(M') \to \cdots$$
 
 参考：Le Stum, An introduction to condensed mathematics, §7.2
 
+#### 加法函子与复形构造交换　`prop.additive-complex-construction`
+*命题*　命题：$F(C(\mathcal{A})) \cong C(F(\mathcal{A}))$
+
+加法函子 $F : \mathcal{A} \to \mathcal{A}'$ 逐项作用给出函子
+
+$$C(F) : C(\mathcal{A}) \longrightarrow C(\mathcal{A}'), \qquad (K^{n}, d^{n}) \longmapsto \bigl(FK^{n},\ Fd^{n}\bigr),$$
+
+即 $F(C(\mathcal{A})) \cong C(F(\mathcal{A}))$：**先取复形范畴再作用 $F$，与先作用 $F$ 再取复形范畴一样**。
+
+**证明。** 复形的数据只有「一族对象 + 一族态射 + $d \circ d = 0$」✓，全是加法范畴的语言：加法函子保零态射、保复合、保加法，于是 $F(d^{n+1}) \circ F(d^{n}) = F(d^{n+1} \circ d^{n}) = 0$ ✓，$C(F)$ 是函子（$F$ 保持交换图）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.27
+
+#### 全复形还是内射消解　`prop.total-complex-injective-resolution`
+*命题*　命题：全复形 $I^{\bullet}$ 仍是 $K^{\bullet}$ 的内射消解
+
+设 $K^{\bullet,\bullet}$ 是下有界双复形、每项内射，且其全复形 $I^{\bullet}$ 连同增广给出 $K^{\bullet}$ 的一条消解。则 $K^{\bullet} \to I^{\bullet}$ **仍是内射消解**。
+
+**证明。** 全复形的每一项是**有限**多个内射对象的直和（下有界保证每个次数上只有有限多项），直和仍是内射 ✓；而全复形与双复形同调相容：$H^{n}(\operatorname{Tot}) \cong H^{n}$（这里用的是「下有界 + 每列是消解」的收敛性）✓，所以 $K^{\bullet} \to I^{\bullet}$ 是拟同构 ✓。∎
+
+⭐ 这一条是 Cartan–Eilenberg 那套「双复形 $\to$ 全复形」的合法性依据。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.34
+
 ### 星团：同调与正合列
 > 造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。
 
@@ -10020,6 +10044,59 @@ $$E^{1}_{p,q} \;=\; H^{q}\bigl(K^{p,\bullet}\bigr),$$
 ⚠️ **下有界**不能省：谱序列在无界情形要额外讨论收敛（一般要用 $\varprojlim$ 的整套语言）。
 
 参考：Le Stum, An introduction to condensed mathematics, Proposition 7.2.18
+
+#### 谱序列的退化行　`prop.spectral-degenerate-row`
+*命题*　命题：只有 $p = 0$ 那一行时 $E^{0,q} \cong H^{q}$
+
+设 $E^{p,q}_{r} \implies H^{p+q}$ 是**第一象限**谱序列。若对某个 $r \ge 1$ 有
+
+$$p \ne 0 \implies E^{p,q}_{r} = 0 \qquad (\forall q),$$
+
+则对一切 $q$：$E^{0,q}_{r} \cong H^{q}$。
+
+**证明。** 固定 $q$。第一象限保证 $p < 0$ 或 $q < 0$ 的项恒为零 ✓，所以 $E^{0,q}$ 处进出它的微分都要离开 $p = 0$ 这一行或跑出第一象限，于是
+
+$$E^{0,q}_{r} = E^{0,q}_{r+1} = \cdots = E^{0,q}_{\infty} ✓$$
+
+而收敛到 $H^{q}$ 的过滤里，$E^{\infty}_{0,q} = \operatorname{Gr}^{0}H^{q}$，且 $p < 0$ 的项全为零说明 $H^{q}$ 的过滤在 $0$ 处没有更低的层，故 $\operatorname{Gr}^{0}H^{q} = H^{q}$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.29
+
+#### 谱序列的五项正合列　`prop.five-term-spectral-sequence`
+*命题*　命题：$0 \to E^{1,0}_{2} \to H^{1} \to E^{0,1}_{2} \xrightarrow{d_{2}} E^{2,0}_{2} \to H^{2}$
+
+第一象限谱序列 $E^{p,q}_{2} \implies H^{p+q}$ 给出**五项正合列**
+
+$$0 \longrightarrow E^{1,0}_{2} \longrightarrow H^{1} \longrightarrow E^{0,1}_{2} \xrightarrow{\ d_{2}\ } E^{2,0}_{2} \longrightarrow H^{2}.$$
+
+**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}$ 与 $E^{0,1}$ 都活到 $E^{\infty}$（没有更低的 $q$ 可以被打到）✓。把 $E^{\infty}_{1,0} = \operatorname{Gr}^{1}H^{1}$、$E^{\infty}_{0,1} = \operatorname{Gr}^{0}H^{1}$ 连同 $E^{\infty}_{2,0} = \operatorname{Gr}^{2}H^{2}$ 的过滤逐项拼起来，就得到上面这条链 ✓。∎
+
+⭐ 用处：这是「谱序列直接给出低次正合列」的标准工具，$H^{1}$ 与 $H^{2}$ 的低次项就从这里读出来。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.30
+
+#### 过滤复形的第一页　`prop.filtered-first-page`
+*命题*　命题：$E^{1}_{p,q} = H^{p+q}(\operatorname{Gr}^{p}K^{\bullet})$
+
+设 $K^{\bullet}$ 是带（递降）过滤的复形，$E^{p,q}_{r}$ 是它给出的谱序列。则
+
+$$E^{1}_{p,q} \;=\; H^{p+q}\bigl(\operatorname{Gr}^{p}K^{\bullet}\bigr).$$
+
+**证明。** 由 $E^{0}_{p,q} = \operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分 $d_{0}$ 是过滤商上诱导的微分（也就是 $K^{\bullet}$ 的微分下到分次片上）✓；取同调即得 $E^{1}_{p,q} = H^{p+q}(\operatorname{Gr}^{p}K^{\bullet})$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.31
+
+#### 正合因子让谱序列退化　`prop.derived-functor-exact-factor`
+*命题*　命题：$F$ 正合 $\implies R^{n}G(FK) \cong R^{n}(G \circ F)(K)$
+
+设 $\mathcal{A} \xrightarrow{F} \mathcal{A}' \xrightarrow{G} \mathcal{A}''$ 是加法函子，满足 Grothendieck 谱序列的条件。若 $F$ 正合，则
+
+$$R^{n}G\bigl(F(K)\bigr) \;\cong\; R^{n}(G \circ F)(K);$$
+对偶地，若 $G$ 正合，则 $G\bigl(R^{n}F(K)\bigr) \cong R^{n}(G \circ F)(K)$。
+
+**证明。** 正合函子的高次导出函子为零：$R^{q}F = 0$（$q > 0$）✓。在 Grothendieck 谱序列 $E^{p,q}_{2} = R^{p}G(R^{q}F(K)) \implies R^{p+q}(G\circ F)(K)$ 里，$E_{2}$ 页只剩下 $q = 0$ 那一行 ✓，于是谱序列退化，$R^{n}(G\circ F)(K) \cong R^{n}G(F(K))$ ✓。对偶地把 $F,G$ 互换（另一半用 $G$ 正合 $\implies$ $R^{p}G = 0$）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.35
 
 ### 星团：层上同调
 > 把导出函子开到层上：$H^{n}(X, M) = R^{n}\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。
@@ -10339,6 +10416,21 @@ $$E^{p,q}_{2} \;=\; \check{H}^{p}\bigl(X,\ H^{q}(M)\bigr) \;\Longrightarrow\; H^
 
 参考：Le Stum, An introduction to condensed mathematics, Corollary 7.3.8
 
+#### Čech 上链的具体公式　`prop.cech-cochain-formula`
+*命题*　命题：$\check{C}^{n}(\mathfrak{X}, M) = \prod M(X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}})$
+
+设 site $\mathcal{C}$ 有纤维积，$\mathfrak{X} = (X_{i} \to X)_{i \in I}$ 是一族态射，$M$ 是阿贝尔层。则
+
+$$\check{C}^{n}(\mathfrak{X}, M) \;=\; \prod_{i_{0}, \ldots, i_{n}} M\bigl(X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}}\bigr).$$
+
+**证明。** 按定义 $\check{C}^{\bullet}(\mathfrak{X}, M) = \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot X_{\bullet}, M)$ ✓，而 Čech 脉的 $n$ 次项是 $X_{n} = \coprod_{i_{0},\ldots,i_{n}} X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}}$ ✓。自由对象把余积换成直和、把取值写成 Hom：
+
+$$\operatorname{Hom}_{\mathbb{Z}}\Bigl(\bigoplus_{i_{0},\ldots,i_{n}} \mathbb{Z}\cdot\bigl(X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}}\bigr),\ M\Bigr) = \prod_{i_{0},\ldots,i_{n}} M\bigl(X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}}\bigr) ✓$$
+
+∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.40
+
 ### 星团：阿贝尔层
 > 造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。
 
@@ -10580,6 +10672,15 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X \otimes \mathbb{Z}\cdot
 ⭐ 读法：**自由对象把拓扑斯里的积翻译成阿贝尔群层里的张量积**。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 5.29
+
+#### 平坦张量保持零调　`prop.flat-tensor-acyclic`
+*命题*　命题：$P$ 平坦、$M$ 下有界零调 $\implies P \otimes M$ 零调
+
+设 $P$ 是拓扑斯里的**平坦**阿贝尔群，$M$ 是幂（下有界、在 $n \ne 0$ 处同调为零）的**零调**复形。则 $P \otimes_{\mathbb{Z}} M$ 也零调。
+
+**证明。** 平坦就是说 $P \otimes_{\mathbb{Z}} -$ **正合** ✓。「下有界 + 零调」的复形就是一条正合列 ✓，正合函子把正合列仍送到正合列，所以 $P \otimes M$ 也正合，即零调 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.39
 
 ## 星系：凝聚态数学（Condensed Mathematics）
 > 把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。
@@ -16361,6 +16462,71 @@ $$(S \times X)(\cdot) \;\cong\; k\bigl(S(\cdot) \times X(\cdot)\bigr) = k\bigl(S
 
 两边都是自由对象。
 
+#### 定义引用：「上链复形」→ 加法函子与复形构造交换　`def-link.addcomplex-complex`
+
+命题说的就是复形范畴本身。
+
+#### 定义引用：「加法函子」→ 加法函子与复形构造交换　`def-link.addcomplex-functor`
+
+前提是 $F$ 加法。
+
+#### 定义引用：「谱序列」→ 谱序列的退化行　`def-link.degrow-ss`
+
+命题说的是谱序列的退化情形。
+
+#### 定义引用：「谱序列」→ 谱序列的五项正合列　`def-link.fiveterm-ss`
+
+五项正合列从谱序列的页里读出来。
+
+#### 谱序列的退化行 ⟹ 谱序列的五项正合列　`imp-link.degrow-fiveterm`
+*退化行 $\implies$ 五项正合列*
+
+第一象限里 $H^{1}$ 只由 $E^{1,0}$、$E^{0,1}$ 两层拼成，$H^{2}$ 的低层是 $E^{2,0}$ ✓。
+把 $E^{\infty}$ 页的这几项按过滤拼回 $H^{1}$、$H^{2}$：$0 \to E^{1,0}_{2} \to H^{1} \to E^{0,1}_{2}$ 正合用的是 $\operatorname{Gr}^{1}H^{1} = E^{\infty}_{1,0}$，而 $E^{0,1}_{2} \xrightarrow{d_{2}} E^{2,0}_{2}$ 的核正是活到 $E^{\infty}$ 的部分 ✓，其后 $E^{2,0}_{2} \to H^{2}$ 用的是 $\operatorname{Gr}^{2}H^{2} = E^{\infty}_{2,0}$ ✓。∎
+
+#### 定义引用：「过滤」→ 过滤复形的第一页　`def-link.firstpage-filtered`
+
+公式里的分次片就是过滤商。
+
+#### 过滤复形给出谱序列 ⟹ 过滤复形的第一页　`imp-link.filteredss-firstpage`
+*下有界过滤复形给出谱序列 $\implies$ 第一页是分次片的同调*
+
+那条定理给出 $E^{0}_{p,q} = \operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分正是过滤商上诱导的微分 ✓；取同调即得 $E^{1}_{p,q} = H^{p+q}(\operatorname{Gr}^{p}K^{\bullet})$ ✓。∎
+
+#### 定义引用：「双复形」→ 全复形还是内射消解　`def-link.totalcomplex-bicomplex`
+
+命题说的是双复形的全复形。
+
+#### 定义引用：「消解」→ 全复形还是内射消解　`def-link.totalcomplex-res`
+
+结论是「仍是内射消解」。
+
+#### 定义引用：「右导出函子」→ 正合因子让谱序列退化　`def-link.derivedexact-grothendieck`
+
+命题比较两边的导出函子。
+
+#### Grothendieck 谱序列 ⟹ 正合因子让谱序列退化　`imp-link.grothendieck-derivedexact`
+*Grothendieck 谱序列 $\implies$ 正合因子时退化*
+
+正合函子高次导出为零：$R^{q}F = 0$（$q > 0$）✓，于是谱序列 $E^{p,q}_{2} = R^{p}G(R^{q}F(K))$ 只剩 $q = 0$ 一行 ✓。
+一行谱序列处处退化，$E^{n,0}_{2} = E^{n,0}_{\infty} = \operatorname{Gr}^{n}$，收敛给出 $R^{n}(G \circ F)(K) \cong R^{n}G(F(K))$ ✓。对偶地把 $G$ 正合的情形照做 ✓。∎
+
+#### 定义引用：「平坦阿贝尔层」→ 平坦张量保持零调　`def-link.flattensor-flat`
+
+前提是 $P$ 平坦。
+
+#### 定义引用：「拟同构」→ 平坦张量保持零调　`def-link.flattensor-acyclic`
+
+结论是零调。
+
+#### 定义引用：「Čech 函子」→ Čech 上链的具体公式　`def-link.cechformula-cech`
+
+公式就是 Čech 复形逐项写出来。
+
+#### 定义引用：「自由阿贝尔群层」→ Čech 上链的具体公式　`def-link.cechformula-free`
+
+推导用的是自由对象把余积换成直和。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -19688,12 +19854,12 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑斯 ↔ 凝聚态集**　10 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　6 条节点级连线
 - **凝聚态集 ↔ 紧生成空间与弱 Hausdorff**　10 条节点级连线
-- **同调与正合列 ↔ 复形与导出三角**　11 条节点级连线
+- **同调与正合列 ↔ 复形与导出三角**　12 条节点级连线
 - **图与极限 ↔ 加法与阿贝尔范畴**　14 条节点级连线
 - **伴随与反射 ↔ 加法与阿贝尔范畴**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 加法与阿贝尔范畴**　3 条节点级连线
-- **层与拓扑 ↔ 层上同调**　6 条节点级连线
-- **阿贝尔层 ↔ 层上同调**　3 条节点级连线
+- **层与拓扑 ↔ 层上同调**　7 条节点级连线
+- **阿贝尔层 ↔ 层上同调**　4 条节点级连线
 - **凝聚态上同调 ↔ 层上同调**　5 条节点级连线
 - **凝聚态阿贝尔群 ↔ 凝聚态上同调**　9 条节点级连线
 - **凝聚态上同调 ↔ 凝聚态集**　3 条节点级连线
@@ -19701,7 +19867,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **凝聚态上同调 ↔ 紧 Hausdorff 空间**　5 条节点级连线
 - **凝聚态上同调 ↔ 阿贝尔层**　2 条节点级连线
 - **图与极限 ↔ 复形与导出三角**　4 条节点级连线
-- **加法与阿贝尔范畴 ↔ 复形与导出三角**　7 条节点级连线
+- **加法与阿贝尔范畴 ↔ 复形与导出三角**　8 条节点级连线
 - **层与拓扑 ↔ 预层与米田**　7 条节点级连线
 - **函子与自然变换 ↔ 加法与阿贝尔范畴**　3 条节点级连线
 - **函子与自然变换 ↔ 复形与导出三角**　3 条节点级连线
@@ -19712,6 +19878,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑斯 ↔ 加法与阿贝尔范畴**　2 条节点级连线
 - **凝聚态阿贝尔群 ↔ 阿贝尔层**　3 条节点级连线
 - **拓扑斯 ↔ 阿贝尔层**　4 条节点级连线
+- **复形与导出三角 ↔ 过滤与谱序列**　6 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -19746,7 +19913,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 紧生成空间与弱 Hausdorff**　2 条节点级连线
 - **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　3 条节点级连线
 - **范畴与图 ↔ 复形与导出三角**　4 条节点级连线
-- **复形与导出三角 ↔ 过滤与谱序列**　4 条节点级连线
 - **预层与米田 ↔ 阿贝尔层**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 拓扑空间**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 紧生成空间与弱 Hausdorff**　4 条节点级连线

@@ -17,7 +17,6 @@ $$\cdots \longrightarrow K^{n-1} \xrightarrow{\ d^{n-1}\ } K^{n} \xrightarrow{\ 
 - 被 `prop.simplicial-to-chain` 单纯对象给出链复形 用
 - 被 `prop.category-into-complexes` 范畴嵌入复形 用
 - 被 `prop.complexes-abelian` 复形范畴是阿贝尔范畴 用
-- 被 `prop.complex-additive` 复形范畴是加法范畴 用
 
 - …另有出边，续页见 `nodes/def.cochain-complex.3.md`
 

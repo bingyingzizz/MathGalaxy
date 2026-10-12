@@ -15,6 +15,7 @@ layer 9 · 定义 · 加法与阿贝尔范畴 · 同调代数
 - 被 `prop.adjoint-additive` 伴随函子都加法 用
 - 被 `prop.additive-functor-preserves-triangles` 加法函子保导出三角 用
 - 被 `prop.left-exact-criterion` 左正合性的判据 用
+- 被 `prop.additive-complex-construction` 加法函子与复形构造交换 用
 
 refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2
 

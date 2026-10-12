@@ -10,6 +10,7 @@ layer 14 · 定义 · 同调与正合列 · 同调代数
 ## 它能推出什么 / 谁在用它
 - 被 `prop.injective-complex-homotopy` 内射复形：零调、拟同构与同伦 用
 - 被 `def.resolution` 消解 用
+- 被 `prop.flat-tensor-acyclic` 平坦张量保持零调 用
 - 被 `def.derived-category` 导出范畴 用
 
 refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3

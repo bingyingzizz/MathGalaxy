@@ -21,4 +21,16 @@
 
 - Exercise 5.29 → prop.free-sheaf-tensor
 
-见 `../../alias.md`。
+- Exercise 7.27 → prop.additive-complex-construction
+
+- Exercise 7.29 → prop.spectral-degenerate-row
+
+- Exercise 7.30 → prop.five-term-spectral-sequence
+
+- Exercise 7.31 → prop.filtered-first-page
+
+- Exercise 7.34 → prop.total-complex-injective-resolution
+
+- Exercise 7.35 → prop.derived-functor-exact-factor
+
+> 续见 alias/aka/homology.14.md

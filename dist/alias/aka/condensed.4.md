@@ -3,9 +3,9 @@
 
 - 局部紧阿贝尔群 | pre-abelian | Exercise 6.4 | R-disc 不是严格 → prop.lc-ab-preabelian
 
-- Pontryagin 对偶 | Pontryagin dual | 圆群 | T | Exercise 6.11 → def.pontryagin-dual
+- Pontryagin 对偶 | Pontryagin dual | 圆群 | T | Exercise 6.11 | Exercise 6.6 → def.pontryagin-dual
 
-- Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 → thm.pontryagin-van-kampen
+- Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 | Exercise 6.7 → thm.pontryagin-van-kampen
 
 - 内部 Hom 的刻画 | internal hom | 连续函数空间 | C(X,Y) | Proposition 4.2.6 → prop.cond-internal-hom
 

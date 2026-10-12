@@ -15,11 +15,11 @@ $$d^{p,q}_{r} : E^{p,q}_{r} \longrightarrow E^{p+r,\, q-r+1}_{r}$$
 - `def.filtration` 过滤：用到了定义 过滤　proofs/def-dep.filtration-spectral-sequence.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.spectral-degenerate-row` 谱序列的退化行 用
+- 被 `prop.five-term-spectral-sequence` 谱序列的五项正合列 用
 - 被 `thm.filtered-complex-spectral` 过滤复形给出谱序列 用
 - 被 `cor.grothendieck-spectral` Grothendieck 谱序列 用
 - 被 `thm.cartan-leray` Cartan–Leray 谱序列 用
-- 被 `prop.breen-deligne-ss-stonean` Stonean 上 Breen–Deligne 的谱序列 用
-- 被 `ex.bd-ss` Breen–Deligne 的一般谱序列 用
 
 - …另有出边，续页见 `nodes/def.spectral-sequence.3.md`
 
