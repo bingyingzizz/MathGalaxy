@@ -12,6 +12,7 @@ $$FM = RFM,$$
 - `def.right-derived-functor` 右导出函子：用到了定义 右导出函子　proofs/def-dep.acyclic-rdf.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.injective-iff-acyclic` 内射与零调的等价 用
 - 被 `prop.leray-acyclicity` Leray 零调性 用
 
 refs: Le Stum, Definition 7.2.11

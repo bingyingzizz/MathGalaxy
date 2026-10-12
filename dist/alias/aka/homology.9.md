@@ -1,6 +1,16 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- Stonean 上 Ext 截面公式 | Ext 截面 | Lemma 8.3.1 → lem.ext-stonean-section
+
+- Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 → thm.breen-deligne
+
+- 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
+
+- Breen-Deligne 谱序列 | Proposition 8.3.4 → prop.breen-deligne-ss-stonean
+
+- Banach 到离散全零 | Proposition 8.3.5 → prop.rhom-banach-discrete-zero
+
 - 紧 Haus 到 Banach 全零 | Proposition 8.3.6 → prop.rhom-chaus-banach-zero
 
 - 对偶的 RHom | 导出张量 | Proposition 8.3.7 → prop.rhom-dual-tensor
@@ -12,17 +22,5 @@
 - ZRT 计算表 | RHom 计算表 | Exercise 8.17 → table.rhom-zrt
 
 - 有限维 Banach 的 RHom | Exercise 8.15 → ex.finite-banach-rhom
-
-- 紧 S 对 Banach 的 RHom | Exercise 8.12 → ex.chaus-banach-rhom
-
-- 一般拓扑斯的 Breen-Deligne 谱序列 | Exercise 8.14 → ex.bd-ss
-
-- 连通局部紧的 Ext | Exercise 8.18 → ex.connected-lc-ext
-
-- 非局部紧的 RHom | R^I 的 RHom | Exercise 8.19 → ex.nonlc-rhom
-
-- 正合列 | exact sequence | 短正合列 | Definition 5.2.3 → def.exact-sequence
-
-- 足够多内射 | enough injectives | Proposition 5.2.8 → prop.grothendieck-enough-injectives
 
 > 续见 alias/aka/homology.10.md

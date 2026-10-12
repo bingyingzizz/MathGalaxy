@@ -1,6 +1,14 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 拓扑斯上的阿贝尔群 | Ab(T) 是 Grothendieck 范畴 → thm.topos-abelian-grothendieck
+
+- 内 Hom | internal hom | Hom(X,M) | 内层 | 内部 Hom | Exercise 3.43 → def.internal-hom
+
+- 阿贝尔层的张量积 | 封闭对称幺半 | closed symmetric monoidal | Tensor | internal hom | 封闭张量结构 → def.tensor-abelian-sheaf
+
+- 平坦阿贝尔层 | flat | 平坦性 | 无挠 → def.flat-abelian-sheaf
+
 - Freyd-Mitchell | Freyd | Mitchell | Theorem 5.2.4 | Thm 5.2.4 | 嵌入定理 → thm.freyd-mitchell
 
 - 复形 | complex | 上链复形 | cochain complex | 链复形 | 微分 → def.cochain-complex
@@ -12,15 +20,5 @@
 - 同伦范畴 | homotopy category | K(C) | 同伦等价 → def.homotopy-category
 
 - 映射锥 | mapping cone | 位移 | shift | K[1] | Exercise 7.8 → def.mapping-cone
-
-- 导出三角 | distinguished triangle | 三角 | triangle → def.distinguished-triangle
-
-- 三角的旋转 | rotation | 八面体公理 | Exercise 7.10 → prop.triangle-rotation
-
-- 三角态射的性质 → lem.triangle-morphism
-
-- 同调 | cohomology | homology | H^n | 闭链 | 上边缘 | Exercise 7.12 | Exercise 7.14 → def.cohomology
-
-- 同调的短正合列 → prop.cohomology-exact-sequence
 
 > 续见 alias/aka/homology.7.md

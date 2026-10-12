@@ -18,7 +18,7 @@ $$\operatorname{Hom}(X, M) : Y \longmapsto \operatorname{Hom}(X \times Y,\ M) \;
 ## 它能推出什么 / 谁在用它
 - 被 `prop.discrete-cond-rhom-constant` 离散群的 RHom 是常层 用
 - 被 `prop.tensor-rhom-natural-map` 张量与 RHom 的配对 用
-- 被 `def.tensor-abelian-sheaf` 阿贝尔层的张量积 用
+- 被 `prop.cohomology-as-ext` 上同调就是 Ext 用
 
 > 说明见 `notes/def.internal-hom.md`
 

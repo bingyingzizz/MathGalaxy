@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:40:27.066Z
-> 9 星系 / 45 星团 / 574 节点 / 1200 连线（强边 1191，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:42:37.204Z
+> 9 星系 / 45 星团 / 578 节点 / 1208 连线（强边 1199，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -9084,6 +9084,43 @@ $$\operatorname{Hom}(\mathbb{Z}/k, N) = \ker(\times k) = N[k], \qquad \operatorn
 
 参考：Le Stum, An introduction to condensed mathematics, §7.2
 
+#### 投射对象没有高次 Ext　`prop.ext-projective-vanishes`
+*命题*　命题：$P$ 投射 $\implies \operatorname{Ext}^{n}(P, M) = 0$（$n > 0$）
+
+设 $\mathcal{A}$ 是阿贝尔范畴，$P \in \mathcal{A}$ 是**投射**对象，$M \in \mathcal{A}$ 任意。则
+
+$$\operatorname{Ext}^{n}_{\mathcal{A}}(P,\ M) = 0 \qquad (n > 0), \qquad \operatorname{Ext}^{0}_{\mathcal{A}}(P,\ M) = \operatorname{Hom}_{\mathcal{A}}(P,\ M).$$
+
+注意：这句话**不需要** $\mathcal{A}$ 有足够多投射对象 —— $P$ 投射本身就给出 $P$ 的一条长度 $0$ 的投射消解。
+
+**证明。** $P$ **投射**意味着函子 $\operatorname{Hom}_{\mathcal{A}}(P, -)$ **正合** ✓。而 $P$ 的投射消解可以取成
+$$\cdots \to 0 \to 0 \to P \xrightarrow{\ 1\ } P \to 0,$$
+即「长度 $0$ 的消解」（$P$ 自己就是投射的，不需要再找覆盖）✓。把 $\operatorname{Hom}(P, -)$ 作用在 $M$ 的内射消解 $M \to I^{\bullet}$ 上：因为 $\operatorname{Hom}(P,-)$ 正合、$M \to I^{\bullet}$ 正合，复形 $\operatorname{Hom}(P, I^{\bullet})$ 只可能在 $0$ 次有上同调 ✓，即
+$$R^{n}\operatorname{Hom}(P, M) = \operatorname{Ext}^{n}(P, M) = 0 \quad (n > 0) ✓$$
+（也可以直接从 $\operatorname{RHom}(P, M) = \operatorname{Hom}(P, M)$ 这件事读出来：正合函子的右导出函子就是它自己。）∎
+
+⭐ 对偶地：**内射对象没有高次 Ext**（$\operatorname{Ext}^{n}(M, I) = 0$，$n>0$）—— 这两条合起来就是「投射 / 内射对象可以拿来替代消解里的项」的全部理由。
+
+参考：Le Stum, An introduction to condensed mathematics, §7.2
+
+#### 内射与零调的等价　`prop.injective-iff-acyclic`
+*命题*　命题：内射 $\iff$ 对一切左正合函子零调
+
+设 $\mathcal{A}$ 是阿贝尔范畴，$I \in \mathcal{A}$。则下列等价：
+
+1. $I$ 是**内射**对象；
+2. $I$ 对**一切左正合**加法函子 $F : \mathcal{A} \to \mathcal{A}'$ 都是 $F$-零调的；
+3. $I$ 对一切形如 $F = \operatorname{Hom}_{\mathcal{A}}(M, -)$ 的左正合函子都是 $F$-零调的。
+
+**证明。**
+$(1) \implies (2)$：$I$ 内射时，$I$ 自己（连同恒等映射）就是一条**长度 $0$ 的内射消解** $0 \to I \xrightarrow{\ 1\ } I \to 0$ ✓。用它算右导出函子：$RF(I) = F(I)$ 集中在 $0$ 次，故 $R^{n}F(I) = 0$（$n > 0$）✓，即 $I$ 是 $F$-零调的。
+$(2) \implies (3)$：显然（$\operatorname{Hom}(M,-)$ 是左正合的）。
+$(3) \implies (1)$：对每个 $M$，$I$ 对 $\operatorname{Hom}(M,-)$ 零调意味着 $R^{n}\operatorname{Hom}(M, I) = \operatorname{Ext}^{n}(M, I) = 0$（$n > 0$），特别地 $\operatorname{Ext}^{1}_{\mathcal{A}}(M, I) = 0$ 对一切 $M$ 成立 ✓。而由**内射判据**，$\operatorname{Ext}^{1}_{\mathcal{A}}(-, I) = 0$ 正是「$I$ 内射」的等价刻画（在阿贝尔范畴里，它等价于「每个单态射 $I \rightarrowtail N$ 都有收缩」）✓。于是 $I$ 内射 ✓。∎
+
+⭐ 用途：验「内射」时可以从**任何**左正合函子那一侧下手 —— 而在凝聚态 / 层的情形里，最方便的左正合函子就是取截面 $\Gamma(S, -)$。
+
+参考：Le Stum, An introduction to condensed mathematics, §7.2
+
 ### 星团：同调与正合列
 > 造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。
 
@@ -9511,6 +9548,39 @@ $$H^{n}\Bigl(\Gamma\bigl(\coprod_{i} X_{i},\ I^{\bullet}\bigr)\Bigr) \cong \prod
 （每个 $\Gamma(X_{i}, I^{\bullet})$ 都算 $H^{n}(X_{i}, M)$：$I^{\bullet}$ 逐项内射，对**每个**测试对象 $X_{i}$ 仍然给出消解。）∎
 
 ⭐ 一句话：**不交并这一侧是积**。离散空间上的零调（$H^{n}(\coprod_{e} *, M) = \prod_{e} H^{n}(*, M) = 0$）就是它的直接推论。
+
+参考：Le Stum, An introduction to condensed mathematics, §7.3
+
+#### 上同调就是 Ext　`prop.cohomology-as-ext`
+*命题*　命题：$H^{n}(X, M^{\bullet}) \cong \operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}\cdot X,\ M^{\bullet})$
+
+设 $\mathcal{T}$ 是拓扑斯，$X \in \mathcal{T}$，$M^{\bullet}$ 是 $\mathcal{T}$ 中阿贝尔群的复形。则
+
+$$\operatorname{R}\Gamma(X,\ M^{\bullet}) \;\cong\; \operatorname{RHom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M^{\bullet}\bigr), \qquad H^{n}(X,\ M^{\bullet}) \;\cong\; \operatorname{Ext}^{n}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M^{\bullet}\bigr).$$
+
+**证明。** 关键在于这两个函子**本来是同一个函子**。由 $\mathbb{Z}\cdot X$ 的泛性质（它是自由对象：$\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}\cdot X, M) = \operatorname{Hom}(X, M)$）✓，
+$$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) \;=\; \operatorname{Hom}_{\mathcal{T}}\bigl(X,\ M\bigr) \;=\; \Gamma(X, M) = M(X) ✓$$
+即「取截面」函子与「$\operatorname{Hom}(\mathbb{Z}\cdot X, -)$」逐字相同 ✓。右导出函子只依赖函子本身，故两者的右导出函子在导出范畴里同构：$\operatorname{R}\Gamma(X, -) \cong \operatorname{RHom}(\mathbb{Z}\cdot X, -)$ ✓；逐类取上同调就得到第二个同构 ✓。∎
+
+⭐ 这条是**两套语言之间的桥**：一边是几何味的「截面」（$\Gamma(X,-)$），一边是代数味的「导出 Hom」。有了它，层上同调的一切计算都能翻译成导出范畴里的 Ext 计算 —— 反过来，Ext 的几何意义也清楚了：**它就是某个空间上的上同调**。
+
+📌 与「Stonean 上的截面公式」对照看：那条把 Ext 写成 $\operatorname{Ext}^{n}(M \cdot S, N)$，这条把 Ext 写成 $H^{n}(X, N)$，两条合起来正是「$H^{n}(X, N)$ 可以用 $\mathbb{Z}\cdot X$ 的消解来算」。
+
+参考：Le Stum, An introduction to condensed mathematics, §7.3
+
+#### 预层在可表示对象上没有高次上同调　`prop.presheaf-representable-acyclic`
+*命题*　命题：$H^{n}(h_{X}, M) = 0$（$n > 0$，预层情形）
+
+设 $\mathcal{C}$ 是任意范畴、$\widehat{\mathcal{C}}$ 配标准拓扑，$X \in \mathcal{C}$、$M$ 是 $\widehat{\mathcal{C}}$ 上的阿贝尔**预层**。则
+
+$$H^{n}\bigl(h_{X},\ M\bigr) = 0 \qquad (n > 0).$$
+
+**证明。** 取截面函子 $\Gamma(h_{X}, -)$：由 Yoneda 引理
+$$\Gamma(h_{X}, M) = \operatorname{Hom}_{\widehat{\mathcal{C}}}(h_{X}, M) = M(X) ✓$$
+而在**预层**范畴上，「逐点取值」$M \mapsto M(X)$ 是**正合**的 ✓（预层的核、像、余核都逐点算；$M(X)$ 就是一个普通的阿贝尔群）。
+正合函子的右导出函子集中在 $0$ 次（用长度 $0$ 的「消解」$M \to M$ 即可看出）✓，于是 $H^{n}(h_{X}, M) = R^{n}\Gamma(h_{X}, M) = 0$（$n > 0$）✓。∎
+
+⭐ **为什么值得单独说**：因为这是「**层化为什么必要**」的最好说明 —— 在预层层面，可表示对象上根本没有高次上同调（一切正合）；一取层化，$\mathbb{Z}\cdot X$ 就不再是「取值」那个函子，高次才冒出来。层上同调的非平凡性，全部来自**层的范畴里正合性被打破**这一点。
 
 参考：Le Stum, An introduction to condensed mathematics, §7.3
 
@@ -14968,6 +15038,38 @@ $\pi$ 是连续的闭映射。
 
 Ab 有足够多投射（自由群），消解才存在。
 
+#### 定义引用：「扩展群 Ext」→ 投射对象没有高次 Ext　`def-link.extproj-ext`
+
+结论说的是扩展群 $\operatorname{Ext}^{n}(P,M)$。
+
+#### 定义引用：「投射 / 内射对象」→ 投射对象没有高次 Ext　`def-link.extproj-projective`
+
+前提是 $P$ 投射，证明靠 $\operatorname{Hom}(P,-)$ 正合。
+
+#### 定义引用：「F-零调对象」→ 内射与零调的等价　`def-link.injacy-acyclic`
+
+命题要刻画的就是「$F$-零调」这条定义。
+
+#### 定义引用：「内射对象的判据」→ 内射与零调的等价　`def-link.injacy-injective`
+
+$(3) \implies (1)$ 用的是内射对象的判据（$\operatorname{Ext}^{1}(-,I) = 0$）。
+
+#### 定义引用：「层上同调」→ 上同调就是 Ext　`def-link.chext-sheafcoh`
+
+左边就是层上同调 $H^{n}(X, M^{\bullet})$。
+
+#### 定义引用：「内 Hom」→ 上同调就是 Ext　`def-link.chext-internal`
+
+右边的 $\operatorname{RHom}(\mathbb{Z}\cdot X, -)$ 是内部 Hom 的导出版本。
+
+#### 定义引用：「预层」→ 预层在可表示对象上没有高次上同调　`def-link.preshcoh-presheaf`
+
+系数 $M$ 是预层，不是层 —— 这是整条命题的关键。
+
+#### 定义引用：「层上同调」→ 预层在可表示对象上没有高次上同调　`def-link.preshcoh-sheafcoh`
+
+结论是「预层情形下可表示对象的上同调为零」，与层上同调对照。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18295,12 +18397,12 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑斯 ↔ 凝聚态集**　9 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　5 条节点级连线
 - **凝聚态集 ↔ 紧生成空间与弱 Hausdorff**　7 条节点级连线
-- **同调与正合列 ↔ 复形与导出三角**　9 条节点级连线
+- **同调与正合列 ↔ 复形与导出三角**　10 条节点级连线
 - **图与极限 ↔ 加法与阿贝尔范畴**　14 条节点级连线
 - **伴随与反射 ↔ 加法与阿贝尔范畴**　2 条节点级连线
 - **拓扑阿贝尔群 ↔ 加法与阿贝尔范畴**　3 条节点级连线
 - **层与拓扑 ↔ 层上同调**　4 条节点级连线
-- **阿贝尔层 ↔ 层上同调**　2 条节点级连线
+- **阿贝尔层 ↔ 层上同调**　3 条节点级连线
 - **凝聚态上同调 ↔ 层上同调**　5 条节点级连线
 - **凝聚态阿贝尔群 ↔ 凝聚态上同调**　9 条节点级连线
 - **凝聚态上同调 ↔ 凝聚态集**　3 条节点级连线

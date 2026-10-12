@@ -1,6 +1,16 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 谱序列 | spectral sequence | 第一象限谱序列 | E^{p,q}_{r} | E_r 页 → def.spectral-sequence
+
+- Stonean 上零调 | Stonean acyclic | Proposition 8.1.1 → prop.stonean-cond-acyclic
+
+- Stone 上常系数零调 | Stone acyclic constant | Lemma 8.1.2 → lem.stone-constant-acyclic
+
+- Dyckhoff | 局部紧上凝聚态等于层上同调 | Proposition 8.1.4 → thm.dyckhoff
+
+- K-有界正合 | K-bounded exact | K-有界零调 | Definition 8.2.1 → def.k-bounded-exact
+
 - K-有界与完备化 | k-bounded completion | Lemma 8.2.2 → lem.k-bounded-completion
 
 - K-有界推出正合 | Proposition 8.2.3 → prop.k-bounded-implies-exact
@@ -12,15 +22,5 @@
 - Banach 在 Stone 上零调 | Proposition 8.2.6 → prop.banach-stone-acyclic
 
 - 实 Banach 在紧 Haus 上零调 | Theorem 8.2.8 → thm.real-banach-chaus-acyclic
-
-- Stonean 上 Ext 截面公式 | Ext 截面 | Lemma 8.3.1 → lem.ext-stonean-section
-
-- Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 → thm.breen-deligne
-
-- 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
-
-- Breen-Deligne 谱序列 | Proposition 8.3.4 → prop.breen-deligne-ss-stonean
-
-- Banach 到离散全零 | Proposition 8.3.5 → prop.rhom-banach-discrete-zero
 
 > 续见 alias/aka/homology.9.md

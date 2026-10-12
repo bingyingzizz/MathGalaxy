@@ -17,7 +17,6 @@ $$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadri
 - ⇒ `thm.gleason` Gleason 定理
 - 被 `prop.rhom-zs-sections` Stonean 上 Z[S] 的 RHom 用
 - 被 `prop.rhom-ze-powers` 离散空间上 Z[E] 的 RHom 用
-- 被 `thm.gleason` Gleason 定理 用
 
 > 说明见 `notes/def.projective-object.md`
 
