@@ -7,4 +7,16 @@
 
 - 正合列 | exact sequence | 短正合列 | Definition 5.2.3 → def.exact-sequence
 
+- Theorem 1.2.4 | Thm 1.2.4 → thm.equivalence-criterion
+
+- Proposition 1.5.10 | Prop 1.5.10 → prop.kan-extension-adjoint
+
+- Proposition 1.5.11 | Prop 1.5.11 → prop.kan-extension-exists
+
+- Theorem 3.1.2 | Thm 3.1.2 → thm.presheaf-limits-colimits
+
+- Definition 3.2.10 | Def 3.2.10 → def.associated-sheaf
+
+- Theorem 3.4.2 | Thm 3.4.2 | Corollary 3.4.3 | Cor 3.4.3 → thm.induced-topos-morphism
+
 见 `../../alias.md`。

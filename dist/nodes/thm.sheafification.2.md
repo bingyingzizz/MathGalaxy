@@ -5,3 +5,5 @@
 $$\operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T^{\sharp},\ F\bigr) \;\cong\; \operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T,\ F\bigr)$$
 
 并且它是**幂等**的：$(T^{\sharp})^{\sharp} \cong T^{\sharp}$。具体地，$T^{\sharp}$ 取「对预层做两次 Čech 构造」。
+
+> 续见 `nodes/thm.sheafification.3.md`

@@ -11,6 +11,7 @@ $$\widehat{\mathcal{C}} := \operatorname{Hom}(\mathcal{C}^{\mathrm{op}}, \mathbf
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.functor-presheafcat.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `thm.presheaf-limits-colimits` 预层范畴的极限与余极限 用
 - 被 `def.abelian-sheaf` 阿贝尔层 用
 - 被 `prop.representable-preserves-limits` 可表函子保所有极限 用
 

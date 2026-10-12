@@ -10,6 +10,9 @@ $$E^{p,q}_{2} := \check{H}^{p}\bigl(\mathfrak{X},\ H^{q}(M)\bigr) \;\Longrightar
 - `def.cech-cohomology` Čech 上同调：用到了定义 Čech 上同调　proofs/def-dep.cartanleray-cech.md
 - `def.spectral-sequence` 谱序列：用到了定义 谱序列　proofs/def-dep.cartanleray-ss.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `cor.cech-cohomology-spectral` Čech 到上同调的谱序列
+
 refs: Le Stum, Theorem 7.3.6
 
 > 说明见 `notes/thm.cartan-leray.md`

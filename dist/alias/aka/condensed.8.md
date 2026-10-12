@@ -3,4 +3,6 @@
 
 - 等价关系有效 | effective equivalence relation | Giraud → prop.cond-equivalence-effective
 
+- Corollary 4.2.7 | Cor 4.2.7 → cor.cond-ktop-finite-products
+
 见 `../../alias.md`。

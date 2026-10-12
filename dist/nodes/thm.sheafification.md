@@ -17,7 +17,9 @@ $$\sharp : \widehat{\mathcal{C}} \longrightarrow \widehat{\mathcal{C}}, \qquad T
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.site-properties` site 的层范畴的好性质
-- 被 `prop.sieve-covering-equivalent` 覆盖筛的四条等价 用
+- ⇒ `lem.covering-free-acyclic` 覆盖给出的自由复形零调
+
+- …另有出边，续页见 `nodes/thm.sheafification.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
 

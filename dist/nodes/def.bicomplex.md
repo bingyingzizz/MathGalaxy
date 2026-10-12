@@ -10,6 +10,7 @@ $$d^{p+1,q} \circ d^{p,q} = 0, \qquad d'^{p,q+1} \circ d'^{p,q} = 0, \qquad d'^{
 - `def.cochain-complex` 上链复形：用到了定义 上链复形　proofs/def-dep.bicomplex-complex.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.bicomplex-spectral` 双复形给出谱序列 用
 - 被 `cor.grothendieck-spectral` Grothendieck 谱序列 用
 - 被 `lem.cartan-eilenberg` Cartan–Eilenberg 分解 用
 

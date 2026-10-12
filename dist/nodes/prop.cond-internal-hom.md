@@ -14,6 +14,9 @@ $$C\bigl(X(\bullet),\ Y\bigr) \cong \operatorname{Hom}(X,\ \underline{Y}),$$
 - `def.condensed-set` 凝聚态集：用到了定义 凝聚态集　proofs/def-dep.condihom-condset.md
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.condihom-cg.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `cor.cond-ktop-finite-products` 底空间保有限积
+
 refs: Le Stum, Proposition 4.2.6
 
 > 说明见 `notes/prop.cond-internal-hom.md`

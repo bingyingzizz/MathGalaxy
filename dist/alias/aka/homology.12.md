@@ -15,4 +15,12 @@
 
 - Cartan-Eilenberg | Cartan–Eilenberg 分解 | Lemma 7.2.19 → lem.cartan-eilenberg
 
+- Definition 7.1.20 | Def 7.1.20 → def.resolution
+
+- Proposition 7.2.18 | Prop 7.2.18 → prop.bicomplex-spectral
+
+- Lemma 7.3.2 → lem.covering-free-acyclic
+
+- Corollary 7.3.8 | Cor 7.3.8 → cor.cech-cohomology-spectral
+
 见 `../../alias.md`。

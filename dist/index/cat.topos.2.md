@@ -8,3 +8,4 @@
 - def.topos-morphism　拓扑斯的态射　layer 17
 - def.morphism-of-sites　site 的态射　layer 17
 - def.induced-topology　诱导拓扑　layer 17
+- thm.induced-topos-morphism　任意函子诱导拓扑斯态射　layer 18

@@ -16,6 +16,7 @@ $$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
 - 被 `prop.cohomology-of-coproduct` 上同调与不交并 用
 - 被 `prop.cohomology-as-ext` 上同调就是 Ext 用
 - 被 `prop.presheaf-representable-acyclic` 预层在可表示对象上没有高次上同调 用
+- 被 `cor.cech-cohomology-spectral` Čech 到上同调的谱序列 用
 - 被 `def.acyclic-sheaf` 无环层 用
 
 - …另有出边，续页见 `nodes/def.sheaf-cohomology.2.md`

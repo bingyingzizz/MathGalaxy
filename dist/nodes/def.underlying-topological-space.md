@@ -11,6 +11,9 @@ $$f : S \longrightarrow X(\cdot), \qquad f \in X(S),\ S \in \mathbf{CHaus}$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-underlying.md
 
+## 它能推出什么 / 谁在用它
+- 被 `cor.cond-ktop-finite-products` 底空间保有限积 用
+
 refs: Le Stum, An introduction to condensed mathematics, §4
 
 > 说明见 `notes/def.underlying-topological-space.md`

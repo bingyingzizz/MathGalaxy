@@ -7,4 +7,5 @@
 - prop.cond-equivalence-effective　Cond 的等价关系有效　layer 17
 - thm.cond-topos　Cond 是拓扑斯　layer 18
 - thm.cond-equiv-fchaus　Cond 即 FCHaus 上的层　layer 18
+- cor.cond-ktop-finite-products　底空间保有限积　layer 18
 - thm.top-cond-adjoint　Top 与 Cond 的伴随　layer 19

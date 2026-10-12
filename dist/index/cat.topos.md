@@ -1,7 +1,7 @@
 # 拓扑斯（cat.topos）· 节点清单（第 1/2 页）
 
 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
-中心天体 def.topos　·　22 个节点　·　根 `../`　·　续页 `index/cat.topos.2.md`
+中心天体 def.topos　·　23 个节点　·　根 `../`　·　续页 `index/cat.topos.2.md`
 
 - def.generator　生成元集　layer 10
 - prop.quasi-compact-properties　拟紧的性质　layer 13

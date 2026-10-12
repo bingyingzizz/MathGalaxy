@@ -6,3 +6,5 @@
 - prop.cohomology-as-ext　上同调就是 Ext　layer 18
 - prop.presheaf-representable-acyclic　预层在可表示对象上没有高次上同调　layer 18
 - prop.acyclic-iff-cech　无环 ⟺ Čech 上同调为零　layer 19
+- lem.covering-free-acyclic　覆盖给出的自由复形零调　layer 19
+- cor.cech-cohomology-spectral　Čech 到上同调的谱序列　layer 19

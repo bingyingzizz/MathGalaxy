@@ -15,6 +15,7 @@ $$\bigl\{(A, B, f) : A \in \mathcal{A},\ B \in \mathcal{B},\ f : F(A) \to G(B)\b
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.saft` 伴随函子定理
+- 被 `prop.kan-extension-exists` 有余极限时 Kan 延拓总存在 用
 - 被 `thm.saft` 伴随函子定理 用
 - 被 `def.cofinal-functor` 共尾函子 用
 

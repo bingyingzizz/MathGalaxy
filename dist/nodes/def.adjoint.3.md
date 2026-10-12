@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.adjoint.md`　·　上一页 `nodes/def.adjoint.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `ex.kan-extension` Kan 延拓的两个例子 用
 - 被 `thm.right-adjoint-criterion` 右伴随存在的判据 用
 - 被 `prop.adjoint-full-faithful` 全忠实与单位 用
 - 被 `thm.saft` 伴随函子定理 用
@@ -19,4 +20,5 @@
 - 被 `def.morphism-of-sites` site 的态射 用
 - 被 `prop.abelianization` 交换化 用
 - 被 `prop.left-adjoint-unique` 左伴随唯一 用
-- 被 `prop.counit-epi-iff-faithful` 余单位与忠实性 用
+
+> 续见 `nodes/def.adjoint.4.md`

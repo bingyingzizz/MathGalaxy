@@ -12,6 +12,9 @@ $$X_{n} := X_{0} \times_{X} \cdots \times_{X} X_{0} \quad (n+1 \text{ 个因子}
 - `def.cech-functor` Čech 函子：用到了定义 Čech 函子　proofs/def-link.cechsec-cech.md
 - `def.abelian-sheaf` 阿贝尔层：用到了定义 阿贝尔层　proofs/def-link.cechsec-sheaf.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `lem.covering-free-acyclic` 覆盖给出的自由复形零调
+
 refs: Le Stum, An introduction to condensed mathematics, §7.3
 
 > 说明见 `notes/prop.cech-section-vanishing.md`

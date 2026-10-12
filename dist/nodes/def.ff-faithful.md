@@ -16,6 +16,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\ma
 ## 它能推出什么 / 谁在用它
 - ⇒ `def.cat-equivalence` 范畴等价
 - ⇒ `prop.adjoint-full-faithful` 全忠实与单位
+- 被 `thm.equivalence-criterion` 等价函子的判据 用
 - 被 `prop.yoneda-embedding` 米田嵌入 用
 - 被 `prop.adjoint-full-faithful` 全忠实与单位 用
 - 被 `def.reflective-subcategory` 反射子范畴 用

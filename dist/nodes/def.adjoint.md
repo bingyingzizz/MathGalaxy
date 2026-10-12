@@ -16,8 +16,8 @@ layer 9 · 定义 · 伴随与反射 · 范畴论
 - ⇒ `thm.right-adjoint-preserves-limits` 右伴随保极限
 - ⇒ `ex.kan-extension` Kan 延拓的两个例子
 - 被 `prop.adjoint-additive` 伴随函子都加法 用
+- 被 `prop.kan-extension-adjoint` Kan 延拓与伴随的存在性 用
 - 被 `thm.right-adjoint-preserves-limits` 右伴随保极限 用
-- 被 `ex.kan-extension` Kan 延拓的两个例子 用
 
 - …另有出边，续页见 `nodes/def.adjoint.3.md`
 

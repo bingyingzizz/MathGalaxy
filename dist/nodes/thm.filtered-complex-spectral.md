@@ -11,6 +11,9 @@ layer 17 · 定理 · 过滤与谱序列 · 同调代数
 - `def.spectral-sequence` 谱序列：用到了定义 谱序列　proofs/def-dep.filtss-ss.md
 - `def.cochain-complex` 上链复形：用到了定义 上链复形　proofs/def-dep.filtss-complex.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.bicomplex-spectral` 双复形给出谱序列
+
 refs: Le Stum, Theorem 7.2.16；Weibel, An Introduction to Homological Algebra, 5.4.1
 
 > 说明见 `notes/thm.filtered-complex-spectral.md`

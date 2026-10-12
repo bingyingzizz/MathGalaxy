@@ -11,6 +11,7 @@ layer 9 · 定义 · 函子与自然变换 · 范畴论
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `def.cat-equivalence` 范畴等价
+- 被 `thm.equivalence-criterion` 等价函子的判据 用
 
 refs: Le Stum, An introduction to condensed mathematics, §1.2
 

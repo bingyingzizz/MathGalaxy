@@ -12,6 +12,7 @@ layer 11 · 定义 · 复形与导出三角 · 同调代数
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.left-exact-iff-R0` 左正合性与 R⁰ 用
+- 被 `def.resolution` 消解 用
 - 被 `thm.derived-long-exact` 导出函子的长正合列 用
 - 被 `def.f-acyclic` F-零调对象 用
 - 被 `prop.leray-acyclicity` Leray 零调性 用

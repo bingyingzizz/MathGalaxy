@@ -1,7 +1,7 @@
 # 凝聚态集（cond.set）· 节点清单（第 1/2 页）
 
 造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。
-中心天体 def.condensed-set　·　20 个节点　·　根 `../`　·　续页 `index/cond.set.2.md`
+中心天体 def.condensed-set　·　21 个节点　·　根 `../`　·　续页 `index/cond.set.2.md`
 
 - prop.cond-projectives　Cond 有足够多投射对象　layer 15
 - def.chaus-pretopos　CHaus 是预拓扑斯　layer 16

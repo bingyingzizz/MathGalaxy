@@ -3,6 +3,7 @@
 
 - def.section-functor　截面函子　layer 16
 - prop.constant-sheaf-preserves-limits　常层函子保极限　layer 16
+- def.associated-sheaf　关联层　layer 16
 - prop.cech-properties　Čech 函子的性质　layer 17
 - prop.stalk-separated　茎与分离预层　layer 17
 - thm.sheafification　层化　layer 18
