@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 等化子 | 余等化子 | equalizer | coequalizer | 核 | ker | coker | Definition 1.3.8 | Def 1.3.8 → def.equalizer
+
 - 单态射 | 满态射 | mono | epi | monomorphism | epimorphism | 可消 | Definition 1.3.9 | Def 1.3.9 → def.mono
 
 - 子对象 | subobject | 子对象之交 | 原像 | Definition 1.3.10 | Def 1.3.10 → def.subobject
@@ -16,7 +18,5 @@
 - 预层范畴 | presheaf category | PSh | 函子范畴 → def.presheaf-cat
 
 - 表示函子 | representable functor | 表示对象 | 万有元素 | universal element | Definition 1.2.5 | Def 1.2.5 → def.representable
-
-- 米田引理 | Yoneda lemma | Yoneda | Lemma 1.2.6 → lem.yoneda
 
 > 续见 alias/aka/category.4.md

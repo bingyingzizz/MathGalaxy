@@ -1,6 +1,12 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 余极限是 Kan 延拓 | 伴随是 Kan 延拓 → ex.kan-extension
+
+- 滤过余极限正合 | filtered colimits are exact | Proposition 1.5.7 | Prop 1.5.7 → prop.filtered-exact
+
+- 筛 | sieve | 覆盖筛 | covering sieve → def.sieve
+
 - 预拓扑 | pretopology | 覆盖族 | Grothendieck pretopology | Definition 3.2.4 | Def 3.2.4 → def.pretopology
 
 - Grothendieck 拓扑 | Grothendieck topology | site | 景 | site 理论 | Definition 3.2.2 | Def 3.2.2 → def.grothendieck-topology
@@ -14,9 +20,5 @@
 - Cech 函子的性质 | 左正合 | Lemma 3.2.6 → prop.cech-properties
 
 - 层化 | sheafification | sheafify | 伴随层 | Exercise 5.16 | Theorem 3.2.8 | Thm 3.2.8 → thm.sheafification
-
-- 正则满态射 | regular epimorphism | regular epi → def.regular-epi
-
-- 万有余极限 | universal colimit | 万有满态射 | 不交余积 | disjoint coproduct | Definition 3.2.11 | Def 3.2.11 → def.universal-colimit
 
 > 续见 alias/aka/category.11.md

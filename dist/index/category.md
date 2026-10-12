@@ -3,12 +3,12 @@
 
 范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。
 
-- cat.basic　范畴与图　中心天体 def.category　10 点
-- cat.functor　函子与自然变换　中心天体 def.natural-transformation　10 点
+- cat.basic　范畴与图　中心天体 def.category　12 点
+- cat.functor　函子与自然变换　中心天体 def.natural-transformation　11 点
 - cat.limit　图与极限　中心天体 def.limit　21 点
-- cat.structure　单满、子对象与像　中心天体 def.subobject　5 点
-- cat.algebra　范畴里的代数结构　中心天体 def.group-object　3 点
+- cat.structure　单满、子对象与像　中心天体 def.subobject　6 点
+- cat.algebra　范畴里的代数结构　中心天体 def.group-object　4 点
 - cat.yoneda　预层与米田　中心天体 lem.yoneda　13 点
-- cat.adjoint　伴随与反射　中心天体 def.adjoint　17 点
+- cat.adjoint　伴随与反射　中心天体 def.adjoint　19 点
 - cat.sheaf　层与拓扑　中心天体 def.sheaf　24 点
 - cat.topos　拓扑斯　中心天体 def.topos　30 点

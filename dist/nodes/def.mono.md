@@ -13,10 +13,9 @@ $$i \circ f = i \circ g \;\Longrightarrow\; f = g$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.covering-sieve-epi` 覆盖筛即余积满射
+- 被 `prop.slice-fully-faithful-mono` 单态射的切片刻画 用
 - 被 `lem.presheaf-mono-pointwise` 预层态射的单满按点检验 用
 - 被 `prop.injective-criterion` 内射对象的判据 用
-- 被 `def.subobject` 子对象 用
-- 被 `def.image` 像 / 余像 用
 
 - …另有出边，续页见 `nodes/def.mono.2.md`
 

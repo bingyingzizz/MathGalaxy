@@ -1,7 +1,7 @@
 # 范畴与图（cat.basic）· 节点清单（第 1/1 页）
 
 造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。
-中心天体 def.category　·　10 个节点　·　根 `../`
+中心天体 def.category　·　12 个节点　·　根 `../`
 
 - def.universe　Grothendieck 宇宙　layer 4
 - def.graph　图　layer 6
@@ -11,5 +11,7 @@
 - def.subcategory　子范畴　layer 8
 - prop.iso-unique-section　同构的截面与收缩唯一　layer 9
 - def.localization　局部化　layer 10
+- prop.preorder-as-category　预序集就是「Hom 至多一元」的小范畴　layer 11
 - prop.calculus-of-fractions　分式演算下的局部化　layer 14
 - prop.localization-hom-colim　局部化的 Hom 是滤过余极限　layer 15
+- prop.projective-universal-epi　投射对象与满态射的截面　layer 15

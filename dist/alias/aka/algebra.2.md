@@ -9,9 +9,9 @@
 
 - 模 | module | 模同态 | A-Mod → def.module
 
-- 幺半群对象 | monoid object | Mon(C) | 笛卡尔范畴 | cartesian category | Definition 1.4.10 | Def 1.4.10 → def.monoid-object
+- 幺半群对象 | monoid object | Mon(C) | 笛卡尔范畴 | cartesian category | Definition 1.4.10 | Def 1.4.10 | Exercise 1.51 → def.monoid-object
 
-- 群对象 | group object | 阿贝尔群对象 | abelian group object | Gr(C) | Ab(C) → def.group-object
+- 群对象 | group object | 阿贝尔群对象 | abelian group object | Gr(C) | Ab(C) | Exercise 1.51 → def.group-object
 
 - Ab(Top) | Ab(Set) | 拓扑阿贝尔群怎么来的 | 群对象的例子 → ex.ab-of-categories
 

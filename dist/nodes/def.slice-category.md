@@ -15,6 +15,7 @@ layer 12 · 定义 · 预层与米田 · 范畴论
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.density` 稠密性定理
+- 被 `prop.slice-fully-faithful-mono` 单态射的切片刻画 用
 - 被 `thm.density` 稠密性定理 用
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5

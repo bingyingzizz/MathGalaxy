@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 → prop.pretopos-factorization
+
+- 子对象构成有界格 | 子对象格 | Exercise 3.33 → prop.subobject-lattice
+
 - 预标准拓扑 | precanonical topology | Definition 3.3.2 | Exercise 3.34 | Exercise 3.35 → def.precanonical-topology
 
 - 预标准拓扑下的层 | Exercise 3.36 | Proposition 3.3.3 | Exercise 3.37 → prop.precanonical-sheaf
@@ -18,11 +22,5 @@
 - 可表示性下降 → lem.representable-quotient
 
 - 拓扑斯中覆盖即余积满 | Exercise 3.41 → prop.topos-covering-epi
-
-- 层即保极限的预层 → prop.topos-sheaf-limits
-
-- 拟紧 | quasi-compact | qc | Definition 3.3.8 → def.quasi-compact
-
-- 拟紧的性质 | Exercise 3.46 | Proposition 3.3.9 → prop.quasi-compact-properties
 
 > 续见 alias/aka/category.13.md

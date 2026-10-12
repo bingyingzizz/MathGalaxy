@@ -10,3 +10,5 @@ $$\gamma = (\widetilde{\gamma} \circ p) \circ \alpha$$
 $$\operatorname{Hom}(p_{!}F,\ G) \;\cong\; \operatorname{Hom}(F,\ G \circ p)$$
 
 即 $p_{!}$ 是预复合函子 $p^{*} = (-) \circ p$ 的**左伴随**。箭头反向得**右 Kan 延拓** $p_{*} \dashv p^{*}$。
+
+> 续见 `nodes/def.kan-extension.3.md`

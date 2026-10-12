@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 余连续函子 | cocontinuous | Definition 3.4.6 | Def 3.4.6 | Exercise 3.59 | Exercise 3.60 → def.cocontinuous-functor
+
 - 诱导拓扑 | induced topology | Definition 3.4.7 | Def 3.4.7 | Exercise 3.61 → def.induced-topology
 
 - 代数的范畴 | Mon | Gr | Rng | G-Set | A-Mod | k-Alg | Exercise 1.1 → ex.algebra-categories
@@ -18,11 +20,5 @@
 - 左伴随唯一 | Exercise 1.58 → prop.left-adjoint-unique
 
 - 余单位与忠实 | Exercise 1.60 → prop.counit-epi-iff-faithful
-
-- C 是 Ind(C) 的反射 | Exercise 1.73 → prop.ind-reflective
-
-- 滤过加有限余极限 | Exercise 1.41 → prop.filtered-finite-colimits
-
-- 环的纤维余积 | 张量积是推出 | Exercise 1.29 → prop.ring-tensor-coproduct
 
 > 续见 alias/aka/category.9.md

@@ -16,9 +16,11 @@ $$\iota : G \longrightarrow G$$
 - `def.group` 群：用到了定义 群　proofs/def-dep.groupobj-group.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.functor-preserves-monoid-objects` 保有限积的函子作用于代数对象 用
 - 被 `ex.ab-of-categories` Ab(C) 的例子 用
 - 被 `ex.algebra-categories` 代数的几个范畴 用
-- 被 `prop.ab-limits-forgetful` Ab(C) 的极限 用
+
+- …另有出边，续页见 `nodes/def.group-object.3.md`
 
 refs: Mac Lane, Categories for the Working Mathematician, III.6
 

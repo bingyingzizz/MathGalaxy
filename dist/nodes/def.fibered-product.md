@@ -10,6 +10,7 @@ layer 12 · 定义 · 图与极限 · 范畴论
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-fibered.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.projective-universal-epi` 投射对象与满态射的截面 用
 - 被 `prop.slice-cartesian` 切片范畴是拉回 用
 - 被 `thm.sheaf-descent` 层的下降条件 用
 - 被 `prop.subobject-lattice` 子对象构成有界格 用
@@ -18,8 +19,6 @@ layer 12 · 定义 · 图与极限 · 范畴论
 - 被 `def.subobject` 子对象 用
 - 被 `def.free-presentation` 自由表示 用
 - 被 `def.pretopology` 预拓扑 用
-- 被 `def.universal-colimit` 万有关系 用
-- 被 `def.effective-equivalence` 有效等价关系 用
 
 - …另有出边，续页见 `nodes/def.fibered-product.3.md`
 

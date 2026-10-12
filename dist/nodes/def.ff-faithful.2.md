@@ -5,3 +5,5 @@
 - **忠实**（faithful）：每个这样的映射都是单射；
 - **满**（full）：每个这样的映射都是满射；
 - **全忠实**（fully faithful）：每个这样的映射都是双射。
+
+> 续见 `nodes/def.ff-faithful.3.md`

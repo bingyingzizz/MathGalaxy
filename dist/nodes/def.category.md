@@ -18,9 +18,9 @@ $$( \mathcal{O}, M, s, t, \circ, i )$$
 - `def.subset` 子集：用到了定义 子集　proofs/def-dep.subset-category.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.preorder-as-category` 预序集就是「Hom 至多一元」的小范畴 用
 - 被 `def.section-retraction` 截面与收缩 用
 - 被 `def.functor` 函子 用
-- 被 `def.natural-transformation` 自然变换 用
 
 - …另有出边，续页见 `nodes/def.category.3.md`
 

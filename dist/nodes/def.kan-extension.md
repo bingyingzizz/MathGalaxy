@@ -17,7 +17,8 @@ $$\alpha : F \implies p_{!}F \circ p$$
 - ⇒ `ex.kan-extension` Kan 延拓的两个例子
 - 被 `prop.kan-extension-adjoint` Kan 延拓与伴随的存在性 用
 - 被 `prop.kan-extension-exists` 有余极限时 Kan 延拓总存在 用
-- 被 `ex.kan-extension` Kan 延拓的两个例子 用
+
+- …另有出边，续页见 `nodes/def.kan-extension.3.md`
 
 refs: Mac Lane, Categories for the Working Mathematician, X.3
 

@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 正则满态射 | regular epimorphism | regular epi → def.regular-epi
+
+- 万有余极限 | universal colimit | 万有满态射 | 不交余积 | disjoint coproduct | Definition 3.2.11 | Def 3.2.11 → def.universal-colimit
+
 - 层范畴的性质 | site 的好性质 | 预拓扑斯公理 → prop.site-properties
 
 - 层中单满即同构 | epi-mono factorization → prop.sheaf-mono-epi-iso
@@ -18,9 +22,5 @@
 - 不交万有余积与次标准 | Exercise 3.29 → prop.disjoint-universal
 
 - 预拓扑斯 | pretopos | 预拓扑斯公理 | Definition 3.3.1 → def.pretopos
-
-- 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 → prop.pretopos-factorization
-
-- 子对象构成有界格 | 子对象格 | Exercise 3.33 → prop.subobject-lattice
 
 > 续见 alias/aka/category.12.md

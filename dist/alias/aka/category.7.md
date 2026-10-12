@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 零对象与终对象 | Exercise 5.1 → prop.zero-object-final-criterion
+
+- 双积就是积 | Exercise 5.1 → prop.biproduct-is-product
+
 - 预加性结构唯一 | Exercise 5.2 → prop.hom-enrichment-unique
 
 - 加法函子的双积刻画 | Exercise 5.3 → prop.additive-iff-preserves-biproduct
@@ -18,7 +22,5 @@
 - 连续函子 | continuous functor | Definition 3.4.4 | Def 3.4.4 | Exercise 3.54 | Exercise 3.58 → def.continuous-functor
 
 - site 的态射 | morphism of sites | Definition 3.4.5 | Def 3.4.5 | Exercise 3.58 → def.morphism-of-sites
-
-- 余连续函子 | cocontinuous | Definition 3.4.6 | Def 3.4.6 | Exercise 3.59 | Exercise 3.60 → def.cocontinuous-functor
 
 > 续见 alias/aka/category.8.md

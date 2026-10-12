@@ -17,10 +17,12 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\ma
 - ⇒ `def.cat-equivalence` 范畴等价
 - ⇒ `prop.adjoint-full-faithful` 全忠实与单位
 - 被 `thm.equivalence-criterion` 等价函子的判据 用
+- 被 `prop.fully-faithful-injective` 全忠实函子本质单射 用
 - 被 `prop.yoneda-embedding` 米田嵌入 用
 - 被 `prop.adjoint-full-faithful` 全忠实与单位 用
 - 被 `def.reflective-subcategory` 反射子范畴 用
-- 被 `def.generator` 生成元集 用
+
+- …另有出边，续页见 `nodes/def.ff-faithful.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §1.2
 

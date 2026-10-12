@@ -3,6 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 `prop.presheaf-free-projective` 自由的预层是投射的 用
+- 被 `prop.projective-universal-epi` 投射对象与满态射的截面 用
 - 被 `thm.gleason` Gleason 定理 用
 - 被 `prop.free-projective` 自由紧 Haus 是投射对象 用
 - 被 `prop.fchaus-pretopology` FCHaus 上的预拓扑 用

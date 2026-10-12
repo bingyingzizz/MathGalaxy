@@ -15,6 +15,7 @@ $$\mu : G \times G \longrightarrow G$$
 - `def.final-initial` 终对象 / 始对象：用到了定义 终对象 / 始对象　proofs/def-dep.monoidobj-terminal.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.functor-preserves-monoid-objects` 保有限积的函子作用于代数对象 用
 - 被 `def.group-object` 群对象与阿贝尔群对象 用
 
 refs: Mac Lane, Categories for the Working Mathematician, III.6

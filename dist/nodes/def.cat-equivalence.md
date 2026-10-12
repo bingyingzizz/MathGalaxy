@@ -15,7 +15,9 @@ $$F \circ G \cong 1_{\mathcal{C}'}, \qquad G \circ F \cong 1_{\mathcal{C}}$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `thm.equivalence-criterion` 等价函子的判据 用
-- 被 `thm.pontryagin-van-kampen` Pontryagin–van Kampen 对偶 用
+- 被 `prop.preorder-as-category` 预序集就是「Hom 至多一元」的小范畴 用
+
+- …另有出边，续页见 `nodes/def.cat-equivalence.3.md`
 
 refs: Le Stum, An introduction to condensed mathematics, §1.2
 

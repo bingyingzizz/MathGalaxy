@@ -10,6 +10,9 @@ layer 11 · 命题 · 伴随与反射 · 范畴论
 - `def.kan-extension` Kan 延拓：用到了定义 Kan 延拓　proofs/def-link.kanadj-kan.md
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-link.kanadj-adj.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.kan-extension-fully-faithful` 全忠实沿自身的 Kan 延拓
+
 refs: Le Stum, An introduction to condensed mathematics, Proposition 1.5.10
 
 > 说明见 `notes/prop.kan-extension-adjoint.md`
