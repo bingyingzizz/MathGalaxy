@@ -1,6 +1,10 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 局部紧高次 Ext 消失 | Ext 消失 | Theorem 8.3.9 → thm.lc-ext-vanishing
+
+- ZRT 计算表 | RHom 计算表 | Exercise 8.17 → table.rhom-zrt
+
 - 有限维 Banach 的 RHom | Exercise 8.15 → ex.finite-banach-rhom
 
 - 紧 S 对 Banach 的 RHom | Exercise 8.12 → ex.chaus-banach-rhom
@@ -21,6 +25,4 @@
 
 - 满态射正则 | epi regular | 余等化子 → prop.cond-epi-regular
 
-- 等价关系有效 | effective equivalence relation | Giraud → prop.cond-equivalence-effective
-
-见 `../../alias.md`。
+> 续见 alias/aka/condensed.8.md

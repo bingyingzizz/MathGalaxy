@@ -16,6 +16,7 @@ $$\widehat{M} := C_{\mathbb{Z}}(M, \mathbb{T}),$$
 - `def.topo-ab-group` 拓扑阿贝尔群：用到了定义 拓扑阿贝尔群　proofs/def-dep.pontryagin-topoab.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.chaus-two-term-resolution` 紧阿贝尔群的两项消解 用
 - 被 `thm.pontryagin-van-kampen` Pontryagin–van Kampen 对偶 用
 - 被 `prop.dual-rhom-characterization` Pontryagin 对偶的 RHom 刻画 用
 - 被 `prop.pontryagin-discrete-compact-duality` 离散 与 紧 Hausdorff 用

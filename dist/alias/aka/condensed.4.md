@@ -1,6 +1,8 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 → thm.pontryagin-van-kampen
+
 - 内部 Hom 的刻画 | internal hom | 连续函数空间 | C(X,Y) | Proposition 4.2.6 → prop.cond-internal-hom
 
 - qcqs | 拟紧拟分离 | CHaus 等价 qcqs | qcqs 判定 | Theorem 4.2.8 → thm.qcqs-chaus-equiv
@@ -14,7 +16,5 @@
 - 弱 Hausdorff 与拟分离等价 | weak Hausdorff iff quasi-separated | Proposition 4.2.12 → prop.cg-wh-iff-qseparated
 
 - Cond/X 到开集拓扑斯 | 切片拓扑斯态射 | Proposition 8.1.3 → prop.cond-slice-topos-morphism
-
-- Stonean 上零调 | Stonean acyclic | Proposition 8.1.1 → prop.stonean-cond-acyclic
 
 > 续见 alias/aka/condensed.5.md

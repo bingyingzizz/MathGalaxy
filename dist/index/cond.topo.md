@@ -1,7 +1,7 @@
 # 拓扑阿贝尔群（cond.topo）· 节点清单（第 1/2 页）
 
 造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。
-中心天体 thm.pontryagin-van-kampen　·　11 个节点　·　根 `../`　·　续页 `index/cond.topo.2.md`
+中心天体 thm.pontryagin-van-kampen　·　12 个节点　·　根 `../`　·　续页 `index/cond.topo.2.md`
 
 - def.topo-ab-group　拓扑阿贝尔群　layer 16
 - thm.lc-structure　局部紧阿贝尔群结构定理　layer 16

@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T04:57:59.433Z",
+  "generated": "2026-10-12T04:59:31.651Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 582,
-   "edges": 1217,
-   "strong": 1208,
+   "nodes": 583,
+   "edges": 1219,
+   "strong": 1210,
    "weak": 9
   },
   "readingGuide": {
@@ -103,7 +103,7 @@
    "en": "Condensed Mathematics",
    "desc": "把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。",
    "color": "#1F8A70",
-   "nodeCount": 74
+   "nodeCount": 75
   }
  ],
  "clusters": [
@@ -1032,7 +1032,7 @@
    "name": "拓扑阿贝尔群",
    "parent": "condensed",
    "desc": "造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。",
-   "nodeCount": 11,
+   "nodeCount": 12,
    "nodes": [
     "def.topo-ab-group",
     "prop.abtop-to-abcond",
@@ -1044,7 +1044,8 @@
     "thm.lc-structure",
     "prop.pontryagin-discrete-compact-duality",
     "prop.pontryagin-torsion-stone",
-    "prop.abhaus-strict-exact"
+    "prop.abhaus-strict-exact",
+    "prop.chaus-two-term-resolution"
    ]
   },
   {
@@ -13857,6 +13858,29 @@
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §7.2"
    ]
+  },
+  {
+   "id": "prop.chaus-two-term-resolution",
+   "type": "proposition",
+   "label": "紧阿贝尔群的两项消解",
+   "title": "命题：紧 Hausdorff 阿贝尔群有两项连通消解",
+   "region": "condensed",
+   "regions": [
+    "condensed"
+   ],
+   "cluster": "cond.topo",
+   "layer": 19,
+   "tags": [
+    "命题",
+    "Pontryagin 对偶",
+    "紧阿贝尔群",
+    "连通"
+   ],
+   "statement": "设 $M$ 是**紧 Hausdorff 阿贝尔群**。则存在短正合列（一个「两项消解」）\n\n$$0 \\longrightarrow M \\longrightarrow M_{0} \\longrightarrow M_{1} \\longrightarrow 0$$\n\n其中 $M_{0}$、$M_{1}$ 都是**连通的**紧 Hausdorff 阿贝尔群。",
+   "notes": "**证明（对偶过去再对偶回来）。** 记 $\\widehat{M} = \\operatorname{Hom}_{\\mathrm{cts}}(M, T)$ 为 Pontryagin 对偶（$T = \\mathbb{R}/\\mathbb{Z}$），由 Pontryagin–van Kampen 对偶，$M$ 紧 $\\iff$ $\\widehat{M}$ **离散** ✓。\n**① 对离散的一侧造一个满射。** 取 $\\widehat{M}$ 的一组生成元 $(e_{i})_{i \\in I}$，得满射\n$$\\mathbb{Z}^{(I)} \\twoheadrightarrow \\widehat{M} ✓$$\n（自由离散群是离散群的投射覆盖。）\n**② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是\n$$M \\hookrightarrow T^{I}, \\qquad M_{0} := T^{I} \\text{ 连通（$T$ 连通，连通空间的积连通）✓}$$\n**③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列\n$$0 \\to M \\to M_{0} \\to M_{1} \\to 0 \\quad\\leadsto\\quad 0 \\to \\widehat{M_{1}} \\to \\mathbb{Z}^{(I)} \\to \\widehat{M} \\to 0,$$\n其中 $\\widehat{M_{1}}$ 是自由离散群 $\\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\\cong \\mathbb{Z}^{(J)}$ ✓（PID 上自由模的子模自由）。再对偶回来：$M_{1} \\cong T^{J}$ ✓ —— 连通（并紧）✓。\n两部分合起来就是所求的两项消解 ✓。∎\n\n⭐ 用处：把「**紧**阿贝尔群」化归成「**连通紧**阿贝尔群」。例如算 $\\operatorname{RHom}$ 时，中间项与右端项都是连通的，于是可以用连通情形的结论（连通时只剩 $0$ 次与 $1$ 次 Ext）把高次 Ext 一次性掐掉。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §6.2"
+   ]
   }
  ],
  "edges": [
@@ -17849,6 +17873,22 @@
    "definition": "def.exact-functor",
    "usedBy": "prop.left-exact-iff-R0",
    "note": "结论是「$F$ 左正合」。"
+  },
+  {
+   "id": "def-link.ttr-dual",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.pontryagin-dual",
+   "usedBy": "prop.chaus-two-term-resolution",
+   "note": "整个证明就是在 Pontryagin 对偶两侧来回搬运。"
+  },
+  {
+   "id": "def-link.ttr-lc",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.pontryagin-van-kampen",
+   "usedBy": "prop.chaus-two-term-resolution",
+   "note": "「紧 $\\iff$ 对偶离散」用的是 Pontryagin–van Kampen 对偶。"
   },
   {
    "id": "def-link.sep-subset",

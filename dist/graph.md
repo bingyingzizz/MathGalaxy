@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:57:59.433Z
-> 9 星系 / 45 星团 / 582 节点 / 1217 连线（强边 1208，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:59:31.651Z
+> 9 星系 / 45 星团 / 583 节点 / 1219 连线（强边 1210，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -10575,6 +10575,30 @@ $M$ 不是无挠 $\iff$ 存在非平凡的**有限**子群单射 $M' \hookrighta
 
 参考：Le Stum, An introduction to condensed mathematics, §5.1
 
+#### 紧阿贝尔群的两项消解　`prop.chaus-two-term-resolution`
+*命题*　命题：紧 Hausdorff 阿贝尔群有两项连通消解
+
+设 $M$ 是**紧 Hausdorff 阿贝尔群**。则存在短正合列（一个「两项消解」）
+
+$$0 \longrightarrow M \longrightarrow M_{0} \longrightarrow M_{1} \longrightarrow 0$$
+
+其中 $M_{0}$、$M_{1}$ 都是**连通的**紧 Hausdorff 阿贝尔群。
+
+**证明（对偶过去再对偶回来）。** 记 $\widehat{M} = \operatorname{Hom}_{\mathrm{cts}}(M, T)$ 为 Pontryagin 对偶（$T = \mathbb{R}/\mathbb{Z}$），由 Pontryagin–van Kampen 对偶，$M$ 紧 $\iff$ $\widehat{M}$ **离散** ✓。
+**① 对离散的一侧造一个满射。** 取 $\widehat{M}$ 的一组生成元 $(e_{i})_{i \in I}$，得满射
+$$\mathbb{Z}^{(I)} \twoheadrightarrow \widehat{M} ✓$$
+（自由离散群是离散群的投射覆盖。）
+**② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是
+$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（$T$ 连通，连通空间的积连通）✓}$$
+**③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列
+$$0 \to M \to M_{0} \to M_{1} \to 0 \quad\leadsto\quad 0 \to \widehat{M_{1}} \to \mathbb{Z}^{(I)} \to \widehat{M} \to 0,$$
+其中 $\widehat{M_{1}}$ 是自由离散群 $\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\cong \mathbb{Z}^{(J)}$ ✓（PID 上自由模的子模自由）。再对偶回来：$M_{1} \cong T^{J}$ ✓ —— 连通（并紧）✓。
+两部分合起来就是所求的两项消解 ✓。∎
+
+⭐ 用处：把「**紧**阿贝尔群」化归成「**连通紧**阿贝尔群」。例如算 $\operatorname{RHom}$ 时，中间项与右端项都是连通的，于是可以用连通情形的结论（连通时只剩 $0$ 次与 $1$ 次 Ext）把高次 Ext 一次性掐掉。
+
+参考：Le Stum, An introduction to condensed mathematics, §6.2
+
 ### 星团：凝聚态上同调
 > 造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\operatorname{Ext}^{0}, \operatorname{Ext}^{1}$。
 
@@ -15200,6 +15224,14 @@ $(3) \implies (1)$ 用的是内射对象的判据（$\operatorname{Ext}^{1}(-,I)
 #### 定义引用：「正合函子」→ 左正合性与 R⁰　`def-link.r0-exactfun`
 
 结论是「$F$ 左正合」。
+
+#### 定义引用：「Pontryagin 对偶」→ 紧阿贝尔群的两项消解　`def-link.ttr-dual`
+
+整个证明就是在 Pontryagin 对偶两侧来回搬运。
+
+#### 定义引用：「Pontryagin–van Kampen 对偶」→ 紧阿贝尔群的两项消解　`def-link.ttr-lc`
+
+「紧 $\iff$ 对偶离散」用的是 Pontryagin–van Kampen 对偶。
 
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 

@@ -1,6 +1,8 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 凝聚态集 | condensed set | Cond | 凝聚态 | Definition 4.1.3 → def.condensed-set
+
 - 凝聚态集的判据 | 保有限积 | Proposition 4.1.4 → prop.condensed-criterion
 
 - 凝聚态集是拓扑斯 | Cond is a topos | Theorem 4.1.5 → thm.cond-topos
@@ -20,7 +22,5 @@
 - 拓扑空间到凝聚态集 | Top 到 Cond | kTop → thm.top-cond-adjoint
 
 - 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) | Definition 6.1.1 → def.condensed-abelian-group
-
-- 截面函子 | Gamma(F,-) | sections functor | Exercise 5.17 → prop.condab-section
 
 > 续见 alias/aka/condensed.3.md

@@ -21,8 +21,8 @@
 
 - C(S,M) 的范数 | Exercise 8.5 → prop.continuous-functions-normed
 
-- CHaus 是预拓扑斯 | Proposition 4.1.1 | Corollary 4.1.2 → def.chaus-pretopos
+- 紧阿贝尔群的两项消解 | Exercise 6.10 → prop.chaus-two-term-resolution
 
-- 凝聚态集 | condensed set | Cond | 凝聚态 | Definition 4.1.3 → def.condensed-set
+- CHaus 是预拓扑斯 | Proposition 4.1.1 | Corollary 4.1.2 → def.chaus-pretopos
 
 > 续见 alias/aka/condensed.2.md

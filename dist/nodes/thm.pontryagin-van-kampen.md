@@ -15,6 +15,9 @@ $$M \longmapsto \widehat{M} := C_{\mathbb{Z}}(M, \mathbb{T}),$$
 - `def.pontryagin-dual` Pontryagin 对偶：用到了定义 Pontryagin 对偶　proofs/def-dep.pvk-dual.md
 - `def.cat-equivalence` 范畴等价：用到了定义 范畴等价　proofs/def-dep.pvk-equivalence.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.chaus-two-term-resolution` 紧阿贝尔群的两项消解 用
+
 refs: Le Stum, Theorem 6.2.4；Morris, Pontryagin Duality and the Structure of Locally Compact Abelian Groups
 
 > 说明见 `notes/thm.pontryagin-van-kampen.md`

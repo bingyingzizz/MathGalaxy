@@ -421,6 +421,7 @@ MG.aliases = {
     { id: 'prop.stalk-separated', aka: ['茎', 'stalk', '分离预层', 'Exercise 3.53'] },
     { id: 'prop.left-exact-criterion', aka: ['左正合性的判据', 'Exercise 5.11'] },
     { id: 'prop.left-exact-iff-R0', aka: ['左正合与 R⁰', 'Exercise 7.23'] },
+    { id: 'prop.chaus-two-term-resolution', aka: ['紧阿贝尔群的两项消解', 'Exercise 6.10'] },
     { id: 'def.totally-disconnected', aka: ['完全不连通', 'totally disconnected', '极不连通', 'extremally disconnected', 'Definition 2.2.7', 'Def 2.2.7'] },
     { id: 'def.locally-compact', aka: ['局部紧', 'locally compact', '局部紧 Hausdorff', '紧邻域', 'Definition 2.3.1', 'Def 2.3.1'] },
     { id: 'thm.tykhonov', aka: ['Tychonoff', 'Tykhonov', '吉洪诺夫', 'Theorem 2.1.4', 'Thm 2.1.4', '紧空间的积'] },
