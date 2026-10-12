@@ -1,6 +1,10 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- Stonean 是收缩核 | retract | 收缩核 → cor.stonean-retract
+
+- 紧生成空间 | compactly generated | k-space | k-空间 | k空间 | k化 | 紧生成 → def.compactly-generated
+
 - 紧生成空间是余反射的 | kification | 紧生成是余反射子范畴 | k 是右伴随 → prop.cg-coreflective
 
 - 紧生成空间的例子 | 局部紧空间是紧生成的 | R^I 不紧生成 → ex.cg-examples
@@ -18,11 +22,5 @@
 - k-化与积交换 | k(X×Y) → prop.k-product
 
 - 紧开拓扑 | compact-open topology | 函数空间拓扑 | W_{S,V} → def.compact-open-topology
-
-- 离散时函数空间是积空间 → prop.compact-open-discrete
-
-- 弱 Hausdorff | weak Hausdorff | 弱豪斯多夫 → def.weak-hausdorff
-
-- 弱 Hausdorff 的性质 | 对角 k-闭 → prop.weak-hausdorff-basic
 
 > 续见 alias/aka/topology.6.md

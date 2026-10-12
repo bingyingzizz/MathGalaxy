@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.banach-ab-group.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `cor.k-acyclic-acyclic` K-有界零调 推出 零调 用
 - 被 `prop.banach-stone-acyclic` Banach 在 Stone 上零调 用
 - 被 `thm.real-banach-chaus-acyclic` 实 Banach 在紧 Hausdorff 上零调 用
 - 被 `prop.rhom-banach-discrete-zero` 有限维 Banach 到离散群全零 用

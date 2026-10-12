@@ -12,6 +12,8 @@ layer 7 · 定义 · 凝聚态上同调 · 凝聚态数学+分析学
 - `def.group` 群：用到了定义 群　proofs/def-dep.seminorm-group.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.k-bounded-exact-filtered-colimit` K-有界正合沿滤过余极限保持 用
+- 被 `prop.continuous-functions-normed` 连续函数空间的范数 用
 - 被 `def.banach-ab-group` Banach 阿贝尔群 用
 - 被 `def.k-bounded-exact` K-有界正合 用
 - 被 `lem.stone-cech-1-bounded` Stone 满射的 Čech 复形 1-有界零调 用

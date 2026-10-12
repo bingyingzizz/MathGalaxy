@@ -10,4 +10,7 @@ $$f : X \longrightarrow [0, 1], \qquad f|_{A} \equiv 0, \qquad f|_{B} \equiv 1.$
 - `def.continuous` 连续：用到了定义 连续　proofs/def-dep.urysohn-continuous.md
 - `def.normal-space` 正规空间：用到了定义 正规空间　proofs/def-dep.urysohn-normal.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.paracompact-partition-unity` 仿紧性与单位分解 用
+
 > 说明见 `notes/lem.urysohn.md`

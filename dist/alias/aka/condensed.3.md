@@ -1,6 +1,10 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 关联凝聚态群 | Proposition 6.2.1 | Prop 6.2.1 | AbTop 到 AbCond → prop.abtop-to-abcond
+
+- Proposition 6.2.2 | Prop 6.2.2 | 连续同态是内部 Hom → prop.continuous-hom-condensed
+
 - Proposition 6.2.3 | Prop 6.2.3 | 正合列的搬运 | 紧提升 → prop.exact-sequence-topo-ab
 
 - 局部紧阿贝尔群 | pre-abelian | Exercise 6.4 | R-disc 不是严格 → prop.lc-ab-preabelian
@@ -14,9 +18,5 @@
 - qcqs | 拟紧拟分离 | CHaus 等价 qcqs | qcqs 判定 | Theorem 4.2.8 → thm.qcqs-chaus-equiv
 
 - 弱 Hausdorff 推出拟分离 | weak Hausdorff quasi-separated | Lemma 4.2.9 → lem.weak-hausdorff-qseparated
-
-- 拟分离的 Ind 写法 | Ind(CHaus) | 含入的滤过余极限 | Lemma 4.2.10 → lem.qseparated-ind-inclusions
-
-- 底空间弱 Hausdorff | underlying weak Hausdorff | Lemma 4.2.11 → lem.qseparated-underlying-weak-hausdorff
 
 > 续见 alias/aka/condensed.4.md

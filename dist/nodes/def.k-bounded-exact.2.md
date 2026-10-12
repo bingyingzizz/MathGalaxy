@@ -2,4 +2,5 @@
 根 `../`　·　第 1 页 `nodes/def.k-bounded-exact.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.k-bounded-implies-exact` 相邻两条 K-有界 推出 正合 用
 - 被 `cor.k-acyclic-acyclic` K-有界零调 推出 零调 用

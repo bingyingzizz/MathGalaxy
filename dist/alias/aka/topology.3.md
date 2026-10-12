@@ -1,6 +1,10 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 局部紧 | locally compact | 局部紧 Hausdorff | 紧邻域 | Definition 2.3.1 | Def 2.3.1 → def.locally-compact
+
+- Tychonoff | Tykhonov | 吉洪诺夫 | Theorem 2.1.4 | Thm 2.1.4 | 紧空间的积 → thm.tykhonov
+
 - 紧 Hausdorff 上 Cech 就是上同调 | Proposition 7.3.11 | Prop 7.3.11 → prop.chaus-cech-eq-h
 
 - 滤过极限的上同调 | Proposition 7.3.12 | Prop 7.3.12 → prop.filtered-limit-cohomology
@@ -16,11 +20,5 @@
 - 满射的极小闭子集 → lem.minimal-closed-surjection
 
 - 自由紧 Hausdorff 空间 | free compact Hausdorff | FCHaus → def.free-compact-hausdorff
-
-- 紧 Haus 是自由的商 → prop.chaus-quotient-of-free
-
-- 投射对象 | projective object | 内射对象 | injective object | 投射模 | 内射模 → def.projective-object
-
-- 自由对象是投射的 → prop.free-projective
 
 > 续见 alias/aka/topology.4.md

@@ -1,6 +1,12 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 凝聚态集是拓扑斯 | Cond is a topos → thm.cond-topos
+
+- FCHaus 上的预拓扑 | Exercise 4.1 → prop.fchaus-pretopology
+
+- FCHaus 上的层保有限积 → prop.fchaus-sheaf
+
 - Cond 等价于 FCHaus 上的层 → thm.cond-equiv-fchaus
 
 - 凝聚态集的满态射 → prop.cond-epi
@@ -22,9 +28,5 @@
 - CondAb 的生成元 → prop.condab-generated
 
 - 拓扑阿贝尔群 | topological abelian group | AbTop | 连续同态 | CZ(M,N) → def.topo-ab-group
-
-- 关联凝聚态群 | Proposition 6.2.1 | Prop 6.2.1 | AbTop 到 AbCond → prop.abtop-to-abcond
-
-- Proposition 6.2.2 | Prop 6.2.2 | 连续同态是内部 Hom → prop.continuous-hom-condensed
 
 > 续见 alias/aka/condensed.3.md

@@ -19,10 +19,8 @@
 
 - 覆盖等价于余积满 → prop.covering-sieve-epi
 
-- 不交万有余积与次标准 → prop.disjoint-universal
+- 不交万有余积与次标准 | Exercise 3.29 → prop.disjoint-universal
 
 - 预拓扑斯 | pretopos | 预拓扑斯公理 → def.pretopos
-
-- 预拓扑斯里的满单分解 | 平衡范畴 | balanced → prop.pretopos-factorization
 
 > 续见 alias/aka/category.10.md

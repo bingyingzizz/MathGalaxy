@@ -1,6 +1,12 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 紧 Haus 是自由的商 → prop.chaus-quotient-of-free
+
+- 投射对象 | projective object | 内射对象 | injective object | 投射模 | 内射模 → def.projective-object
+
+- 自由对象是投射的 → prop.free-projective
+
 - 自由表示 | free presentation | 自由表现 → def.free-presentation
 
 - 紧 Haus 都有自由表示 → cor.chaus-free-presentation
@@ -20,9 +26,5 @@
 - Stone 等价于投射有限 | Stone duality → thm.stone-profinite
 
 - Gleason 定理 | Gleason | CHaus 的投射对象 → thm.gleason
-
-- Stonean 是收缩核 | retract | 收缩核 → cor.stonean-retract
-
-- 紧生成空间 | compactly generated | k-space | k-空间 | k空间 | k化 | 紧生成 → def.compactly-generated
 
 > 续见 alias/aka/topology.5.md

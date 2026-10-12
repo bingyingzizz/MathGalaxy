@@ -13,8 +13,8 @@ $$\forall s \in M^{n},\ \forall \varepsilon > 0,\ \exists s' \in M^{n+1} :\quad 
 - `def.cochain-complex` 上链复形：用到了定义 上链复形　proofs/def-dep.kbexact-complex.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.k-bounded-exact-filtered-colimit` K-有界正合沿滤过余极限保持 用
 - 被 `lem.k-bounded-completion` K-有界正合在完备化下不变 用
-- 被 `prop.k-bounded-implies-exact` 相邻两条 K-有界 推出 正合 用
 
 - …另有出边，续页见 `nodes/def.k-bounded-exact.2.md`
 

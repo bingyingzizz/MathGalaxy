@@ -1,6 +1,12 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 离散时函数空间是积空间 → prop.compact-open-discrete
+
+- 弱 Hausdorff | weak Hausdorff | 弱豪斯多夫 → def.weak-hausdorff
+
+- 弱 Hausdorff 的性质 | 对角 k-闭 → prop.weak-hausdorff-basic
+
 - 紧块的纤维积 | fiber product compact → prop.cgwh-fiber-product
 
 - k-闭等价关系 | 弱 Hausdorff 商 → prop.cg-kclosed-quotient
@@ -18,9 +24,5 @@
 - 指数伴随 | Corollary 2.3.7 | Cor 2.3.7 | 余极限万有 → cor.cg-exponential-adjoint
 
 - 正规空间 | normal space | 正则空间 | 分离公理 → def.normal-space
-
-- Urysohn 引理 | Urysohn | Lemma 2.1.2 | 连续函数足够多 → lem.urysohn
-
-- 拓扑阿贝尔群 | topological abelian group | AbTop | 连续同态 | CZ(M,N) → def.topo-ab-group
 
 > 续见 alias/aka/topology.7.md

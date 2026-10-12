@@ -11,6 +11,7 @@ layer 6 · 定义 · 拓扑空间 · 拓扑学
 - `def.closed-set` 闭集与闭包：用到了定义 闭集与闭包　proofs/def-dep.normal-closed.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.paracompact-partition-unity` 仿紧性与单位分解 用
 - 被 `lem.urysohn` Urysohn 引理 用
 - 被 `thm.tietze-banach` Tietze 延拓（Banach 值） 用
 
