@@ -9,12 +9,12 @@ layer 6 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.cond-epi-open-surjective` 开满射是满态射 用
+- 被 `prop.weak-hausdorff-k-closed` 弱 Hausdorff 的对角线与核 用
 - 被 `prop.cgwh-fiber-product` 紧块的纤维积还是紧的 用
 - 被 `prop.cgwh-closed` CGWH 的开闭子空间与滤过余极限 用
 - 被 `prop.exact-sequence-topo-ab` 拓扑阿贝尔群正合列的搬运 用
 - 被 `lem.weak-hausdorff-qseparated` 弱 Hausdorff 推出 拟分离 用
 - 被 `lem.qseparated-underlying-weak-hausdorff` 拟分离 推出 底空间弱 Hausdorff 用
-- 被 `prop.cg-wh-iff-qseparated` 紧生成：弱 Hausdorff ⟺ 拟分离 用
 
 - …另有出边，续页见 `nodes/def.weak-hausdorff.2.md`
 

@@ -17,4 +17,18 @@
 
 - Exercise 3.10 → prop.sieve-generated-by-family
 
-见 `../../alias.md`。
+- Exercise 3.12 → prop.topology-alternative-axiom
+
+- Exercise 3.22 → prop.constant-sheaf-adjunction
+
+- Exercise 3.23 → prop.constant-sheaf-top
+
+- Exercise 3.63 | Exercise 3.64 → prop.slice-topos
+
+- Exercise 3.67 → def.crystalline-sheaf
+
+- Exercise 3.68 | Exercise 3.69 → prop.crystalline-sheaf-equiv
+
+- Exercise 3.70 → prop.qc-sheaf-etale
+
+> 续见 alias/aka/category.19.md

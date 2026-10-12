@@ -14,6 +14,7 @@ layer 13 · 命题 · 伴随与反射 · 范畴论
 - ⇒ `thm.induced-topos-morphism` 任意函子诱导拓扑斯态射
 - ⇒ `prop.adjunction-extends-to-diagrams` 伴随延拓到图范畴
 - ⇒ `prop.kan-extension-fully-faithful` 全忠实沿自身的 Kan 延拓
+- ⇒ `prop.derived-functor-kan-extension` 导出函子就是 Kan 延拓
 
 refs: Le Stum, An introduction to condensed mathematics, Proposition 1.5.11
 

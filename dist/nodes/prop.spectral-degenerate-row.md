@@ -7,6 +7,8 @@ layer 17 · 命题 · 过滤与谱序列 · 同调代数
 $$p \ne 0 \implies E^{p,q}_{r} = 0 \qquad (\forall q),$$
 
 则对一切 $q$：$E^{0,q}_{r} \cong H^{q}$。
+> 陈述续见 `nodes/prop.spectral-degenerate-row.2.md`
+
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.spectral-sequence` 谱序列：用到了定义 谱序列　proofs/def-link.degrow-ss.md

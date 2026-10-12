@@ -25,4 +25,6 @@
 
 - Exercise 6.8 → prop.pontryagin-finite-dim-banach
 
-见 `../../alias.md`。
+- Exercise 4.5 → prop.discrete-iff-constant
+
+> 续见 alias/aka/condensed.9.md

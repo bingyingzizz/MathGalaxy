@@ -5,6 +5,9 @@
 - 被 `prop.higher-cohomology-presheaf-zero` 高次上同调预层的关联层为零 用
 - 被 `prop.cohomology-functoriality` 上同调的函子性 用
 - 被 `thm.leray-spectral-sequence` Leray 谱序列 用
+- 被 `prop.topos-morphism-point` 点给出的拓扑斯态射 用
+- 被 `prop.cohomology-via-associated-sheaf` 用关联层算上同调 用
+- 被 `prop.cohomology-presheaf-H` 层化不改变导出的整体截面 用
 - 被 `def.acyclic-sheaf` 无环层 用
 - 被 `prop.chaus-cech-eq-h` 紧 Hausdorff 上 Čech 就是上同调 用
 - 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用

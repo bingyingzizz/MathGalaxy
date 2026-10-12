@@ -1,7 +1,7 @@
-# 凝聚态集（cond.set）· 节点清单（第 1/2 页）
+# 凝聚态集（cond.set）· 节点清单（第 1/3 页）
 
 造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。
-中心天体 def.condensed-set　·　27 个节点　·　根 `../`　·　续页 `index/cond.set.2.md`
+中心天体 def.condensed-set　·　29 个节点　·　根 `../`　·　续页 `index/cond.set.2.md`
 
 - prop.cond-projectives　Cond 有足够多投射对象　layer 15
 - prop.open-covering-covering　开覆盖给出覆盖　layer 15

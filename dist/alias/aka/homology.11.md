@@ -1,7 +1,7 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
-- Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 → thm.breen-deligne
+- Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 | Exercise 8.13 → thm.breen-deligne
 
 - 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
 

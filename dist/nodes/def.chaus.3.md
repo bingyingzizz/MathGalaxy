@@ -2,4 +2,6 @@
 根 `../`　·　第 1 页 `nodes/def.chaus.md`　·　上一页 `nodes/def.chaus.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.pontryagin-discrete-compact-duality` 离散 与 紧 Hausdorff 用
+- 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用
 - 被 `prop.closed-inclusion-filtered-limit` 紧块沿闭含入拼出的空间 用

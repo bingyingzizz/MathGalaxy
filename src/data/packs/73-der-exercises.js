@@ -46,7 +46,9 @@ window.MG = window.MG || {};
         '',
         '$$p \\ne 0 \\implies E^{p,q}_{r} = 0 \\qquad (\\forall q),$$',
         '',
-        '则对一切 $q$：$E^{0,q}_{r} \\cong H^{q}$。'
+        '则对一切 $q$：$E^{0,q}_{r} \\cong H^{q}$。',
+        '',
+        '对偶地，若某个 $r \\ge 2$ 满足 $q \\ne 0 \\implies E^{p,q}_{r} = 0$（$\\forall p$），则对一切 $p$：$E^{p,0}_{r} \\cong H^{p}$。'
       ].join('\n'),
       notes: [
         '**证明。** 固定 $q$。第一象限保证 $p < 0$ 或 $q < 0$ 的项恒为零 ✓，所以 $E^{0,q}$ 处进出它的微分都要离开 $p = 0$ 这一行或跑出第一象限，于是',

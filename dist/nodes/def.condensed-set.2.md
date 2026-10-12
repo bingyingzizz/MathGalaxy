@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.condensed-set.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `def.condensed-abelian-group` 凝聚态阿贝尔群 用
 - 被 `prop.cond-internal-hom` 内部 Hom 的函数空间刻画 用
 - 被 `prop.cond-slice-topos-morphism` Cond/X 到开集拓扑斯的态射 用
 - 被 `prop.cond-limits-colimits` Cond 的极限与余极限 用

@@ -7,6 +7,8 @@
 - 被 `prop.rhom-zs-sections` Stonean 上 Z[S] 的 RHom 用
 - 被 `prop.rhom-ze-powers` 离散空间上 Z[E] 的 RHom 用
 - 被 `prop.discrete-cond-rhom-constant` 离散群的 RHom 是常层 用
+- 被 `prop.discrete-functor-coproduct` 离散函子保直和 用
+- 被 `prop.cond-quotient-topological` 商群在凝聚态意义下一致 用
 - 被 `thm.condab-ab` CondAb 满足 AB6 与 AB4* 用
 - 被 `def.tensor-abelian-sheaf` 阿贝尔层的张量积 用
 - 被 `prop.abtop-to-abcond` 拓扑阿贝尔群嵌入凝聚态 用

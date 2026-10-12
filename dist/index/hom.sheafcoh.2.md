@@ -11,6 +11,6 @@
 - prop.cohomology-functoriality　上同调的函子性　layer 18
 - prop.derived-pushforward-composition　推前的复合　layer 18
 - thm.leray-spectral-sequence　Leray 谱序列　layer 18
-- prop.acyclic-iff-cech　无环 ⟺ Čech 上同调为零　layer 19
+- prop.cohomology-via-associated-sheaf　用关联层算上同调　layer 18
 
 > 续见 `index/hom.sheafcoh.3.md`

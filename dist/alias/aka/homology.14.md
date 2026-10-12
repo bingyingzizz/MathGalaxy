@@ -23,4 +23,10 @@
 
 - Exercise 7.56 → thm.leray-spectral-sequence
 
+- Exercise 7.22 → prop.derived-functor-kan-extension
+
+- Exercise 7.36 → prop.cohomology-via-associated-sheaf
+
+- Exercise 7.42 → prop.cohomology-presheaf-H
+
 见 `../../alias.md`。

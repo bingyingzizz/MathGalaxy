@@ -16,10 +16,10 @@ $$\mathrm{Cond} \;:=\; \widehat{\mathbf{CHaus}}$$
 - ⇒ `thm.top-cond-adjoint` Top 与 Cond 的伴随
 - 被 `prop.condab-discrete-acyclic` 离散空间上零调 用
 - 被 `cor.ext-cond-set-section` Ext 的截面公式 用
+- 被 `prop.discrete-iff-constant` 离散即常 用
 - 被 `prop.condensed-criterion` 凝聚态集的刻画 用
 - 被 `thm.cond-topos` Cond 是拓扑斯 用
 - 被 `thm.top-cond-adjoint` Top 与 Cond 的伴随 用
-- 被 `def.condensed-abelian-group` 凝聚态阿贝尔群 用
 
 - …另有出边，续页见 `nodes/def.condensed-set.2.md`
 

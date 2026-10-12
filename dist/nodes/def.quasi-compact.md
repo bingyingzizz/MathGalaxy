@@ -11,6 +11,7 @@ site $\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.pretopos-qcqs` 预拓扑斯由拓扑斯唯一确定
+- 被 `prop.qc-sheaf-etale` 拟紧层与紧的 étale 空间 用
 - 被 `thm.pretopos-qcqs` 预拓扑斯由拓扑斯唯一确定 用
 - 被 `def.quasi-separated` 拟分离对象 用
 - 被 `thm.qcqs-chaus-equiv` qc 与 qcqs 的判定 用

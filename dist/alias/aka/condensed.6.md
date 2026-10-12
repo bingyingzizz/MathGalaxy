@@ -13,7 +13,7 @@
 
 - Stonean 上 Ext 截面公式 | Ext 截面 | Lemma 8.3.1 → lem.ext-stonean-section
 
-- Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 → thm.breen-deligne
+- Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 | Exercise 8.13 → thm.breen-deligne
 
 - 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
 

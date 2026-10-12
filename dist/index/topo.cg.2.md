@@ -12,3 +12,4 @@
 - prop.k-product　k-化与积　layer 18
 - prop.weak-hausdorff-basic　弱 Hausdorff 的基本性质　layer 18
 - cor.cg-exponential-adjoint　CG 的指数伴随　layer 18
+- prop.weak-hausdorff-k-closed　弱 Hausdorff 的对角线与核　layer 18

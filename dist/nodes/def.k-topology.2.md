@@ -2,4 +2,5 @@
 根 `../`　·　第 1 页 `nodes/def.k-topology.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.k-product` k-化与积 用
 - 被 `prop.weak-hausdorff-basic` 弱 Hausdorff 的基本性质 用

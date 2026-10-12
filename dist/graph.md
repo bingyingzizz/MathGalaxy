@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:23:29.164Z
-> 9 星系 / 45 星团 / 661 节点 / 1340 连线（强边 1331，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T13:47:18.418Z
+> 9 星系 / 45 星团 / 680 节点 / 1365 连线（强边 1356，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -1887,6 +1887,24 @@ $$\operatorname{Hom}(S \sqcup T,\ Z) \;\cong\; \operatorname{Hom}(S, Z) \times \
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 2.12
 
+#### 紧 Hausdorff 上商映射的四种说法　`prop.chaus-quotient-equiv`
+*命题*　命题：商映射 $\iff$ 正则满 $\iff$ 满态射 $\iff$ 满射
+
+设 $\pi : S \to T$ 是**紧 Hausdorff** 空间之间的连续映射。以下四条等价：
+
+1. $\pi$ 是**商映射**；
+2. $\pi$ 是**正则满态射**；
+3. $\pi$ 是**满态射**；
+4. $\pi$ 是**满射**。
+
+**证明（循环）。** (1)$\implies$(2)：商映射是某个余等化子，因而正则满 ✓。(2)$\implies$(3)：正则满自动是满态射 ✓。(3)$\implies$(4)：紧 Hausdorff 之间，满态射就是满射（紧 Hausdorff 是「投射对象够多」的范畴，满态射有截面，特别地满）✓。(4)$\implies$(1)：紧 Hausdorff 的连续满射是商映射（紧空间到 Hausdorff 空间的连续满射诱导同胚于商）✓。∎
+
+⭐ 用处：在紧 Hausdorff 里验「商映射」不必再拿开集去对，**满射就够了** —— 这是后面把「覆盖」读成「满态射」的依据。
+
+📌 「紧 $\to$ Hausdorff 的连续满射是商映射」这一步用的是：紧空间里闭子集紧、连续像紧，于是 $T$ 里的闭集若拉回来闭就闭。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.9
+
 ### 星团：Stone 与 Stonean
 > 造出「不连通的那一半紧 Hausdorff 空间」：全不连通 → Stone 空间 = 投射有限空间 → 极不连通的 Stonean 空间 → Gleason 定理与布尔环表示。
 
@@ -2559,6 +2577,16 @@ $$d(f, g) := \sup_{s \in S}\ d\bigl(f(s),\ g(s)\bigr).$$
 **证明。** $S$ 紧、$d$ 连续，所以 $s \mapsto d(f(s), g(s))$ 连续因而**取到上确界** ✓，上式是有限值，给出（半）度量；它诱导的正是紧开拓扑（等度连续/一致收敛就是紧开拓扑在紧空间上的样子）✓。完备性：给 Cauchy 列，由一致收敛取逐点极限 $f$，一致收敛保证 $f$ 连续 ✓，且它在同一度量下收敛 ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 2.29
+
+#### 弱 Hausdorff 的对角线与核　`prop.weak-hausdorff-k-closed`
+*命题*　命题：对角线 $k$-闭 $\iff$ 弱 Hausdorff；$\ker(f,g)$ 也 $k$-闭
+
+1. 若 $X$ 弱 Hausdorff，则对角线 $X \subseteq X \times X$ 是 **$k$-闭**的；$X$ 紧生成时反过来也对；
+2. 若 $Y$ 弱 Hausdorff、$f, g : X \to Y$ 连续，则 $\ker(f, g) \subseteq X$ 是 **$k$-闭**的。
+
+**证明。** (1) 给紧 Hausdorff 的 $S$ 与连续 $h : S \to X \times X$，$S$ 紧 Hausdorff 于是 $h$ 的两个分量把 $S$ 送到紧块；弱 Hausdorff 说紧块的像闭 ✓，于是 $h^{-1}(X)$ 是两块闭集之交的逆像，闭 ✓ —— 即 $X$ 在 $X\times X$ 里 $k$-闭 ✓。反过来（紧生成时）用「$k$-闭 $\iff$ 与每个紧块交闭」把弱 Hausdorff 性读出来 ✓。(2) $\ker(f,g)$ 是对角线沿连续映射 $(f,g) : X \to Y \times Y$ 的逆像 ✓，$k$-闭性在逆像下保持 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.36, Exercise 2.37
 
 ## 星系：抽象代数（Abstract Algebra）
 > 群、环、域、模与线性代数；佐恩引理的经典应用场。
@@ -8502,7 +8530,9 @@ $$\operatorname{Hom}\bigl(h_{X}^{\#},\ F\bigr) \cong \operatorname{Hom}(h_{X}, F
 #### 覆盖族构成预拓扑　`prop.site-covering-families-pretopology`
 *命题*　命题：site 里所有生成覆盖筛的族构成预拓扑
 
-设 $\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**。
+设 $\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。
+
+⚠️ 注意：生成覆盖筛的族**未必**是**给定**预拓扑下的覆盖族 —— 「极大」说的是「对给定的拓扑」，不是「对给定的预拓扑」。
 
 **证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎
 
@@ -8585,6 +8615,76 @@ $$R \;=\; \coprod_{i \in I} \operatorname{im}\bigl(h_{f_{i}}\bigr),$$
 **证明。** 筛就是对每个 $Y$ 给一个 $\operatorname{Hom}(Y, X)$ 的子集、且对预复合封闭 ✓。按定义，由 ${f_i}$ 生成的筛是**含全体 $f_{i}$ 的那个最小筛** ✓；而 $\operatorname{im}(h_{f_{i}})$ 的取值正是「穿过 $f_{i}$ 的那些 $g$」，对预复合封闭 ✓，取并（余积）就得到最小的那个 ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.10
+
+#### 拓扑公理的替代形式　`prop.topology-alternative-axiom`
+*命题*　命题：最后一条公理可换成「放大 + 局部化」
+
+Grothendieck 拓扑定义里**最后一条公理**可以换成：对一切 $R \subseteq R' \subseteq h_{X}$，
+
+$$R \in J(X) \implies R' \in J(X), \qquad \bigl(R' \in J(X) \text{ 且 } \forall f \in R'(Y),\ f^{-1}(R) \in J(Y)\bigr) \implies R \in J(X).$$
+
+**证明。** 两条正是原公理 (T2)、(T3) 的「筛版本」：第一句说覆盖**对放大封闭**（原来那条是「沿自身拉回仍覆盖」，两者等价）✓；第二句说**局部是覆盖则整体是覆盖**（原来那条是「覆盖沿覆盖细化」）✓。逐条对照即得 ✓。∎
+
+⭐ 读法：这两句把「覆盖」说成一族满足**滤子 + 局部性**的筛，实际验证拓扑时比原公理好写好用。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.12
+
+#### 常层的伴随　`prop.constant-sheaf-adjunction`
+*命题*　命题：$\operatorname{Hom}(\widetilde{E}_{\mathcal{C}}, F) \cong \operatorname{Hom}_{\mathbf{Set}}\bigl(E, \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)\bigr)$
+
+设 $E$ 是集合、$F$ 是 site $\mathcal{C}$ 上的层。则
+
+$$\operatorname{Hom}\bigl(\widetilde{E}_{\mathcal{C}},\ F\bigr) \;\cong\; \operatorname{Hom}_{\mathbf{Set}}\bigl(E,\ \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)\bigr) \;\cong\; \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)^{E},$$
+
+其中 $\mathbf{1}_{\mathcal{C}}$ 是终对象。
+
+**证明。** 常层是「$E$ 份终对象」的余积的层化 ✓，而层化与含入互为伴随、余积的 Hom 是积 ✓，于是
+
+$$\operatorname{Hom}\bigl(\widetilde{E},\ F\bigr) \cong \operatorname{Hom}\Bigl(\coprod_{E} \mathbf{1}_{\mathcal{C}},\ F\Bigr) \cong \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)^{E} ✓$$
+
+左端再换成 $\operatorname{Hom}_{\mathbf{Set}}(E, \operatorname{Hom}(\mathbf{1}, F))$ 即可 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.22
+
+#### 拓扑空间上的常层就是离散空间的层　`prop.constant-sheaf-top`
+*命题*　命题：$\widetilde{E}_{\mathbf{Top}} \cong \underline{E^{\mathrm{disc}}}$
+
+设 $E$ 是集合。则 $\mathbf{Top}$ 上的**常层**就是**离散空间** $E$ 所给出的层：
+
+$$\widetilde{E}_{\mathbf{Top}} \;\cong\; \underline{E^{\mathrm{disc}}},$$
+
+并且 $\widetilde{E}_{\mathbf{Top}}(X) = E$ $\iff$ $X$ **连通**。
+
+**证明。** 常层的取值是「$X$ 上的**局部常值** $E$-值映射」✓（层化把常预层换成局部常值映射），而离散空间 $E$ 给出的层取值是连续映射 $X \to E^{\mathrm{disc}}$ —— 那正好也是局部常值映射 ✓，两者一致 ✓。而「$X$ 上每个局部常值映射都是常映射」$\iff$ $X$ 连通 ✓。∎
+
+⭐ 这条把「常」与「离散」接上了：**离散空间的凝聚态集就是常层**。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.23
+
+#### 晶体层　`def.crystalline-sheaf`
+*定义*　定义：所有过渡都是同构的 $\mathbf{Top}_{/X}$ 上的层
+
+给出 $\mathbf{Top}_{/X}$ 上的一个层 $\mathcal{F}$，等价于给出所有 $\mathcal{F}_{Y}$（$Y \to X$）连同相容的态射
+
+$$\alpha_{f} : f^{-1}\mathcal{F}_{Y} \longrightarrow \mathcal{F}_{Z} \qquad (f : Z \to Y).$$
+
+若所有 $\alpha_{f}$ 都是**同构**，就叫 $\mathcal{F}$ 是**晶体层**（crystalline sheaf）。
+
+**读法。** $\mathbf{Top}_{/X}$ 上的层就是「把 $X$ 上每个空间 $Y$ 上的数据 $\mathcal{F}_{Y}$ 按拉回相容地拼起来」✓；晶体的意思正是「拉回就是同一个东西」—— 数据只依赖 $Y \to X$ 的**同伦/同胚型**，不依赖 $Y$ 的选取 ✓。
+
+📌 这条是下面「晶体层 $\simeq$ $X$ 上的层」那条定义的一半。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.67
+
+#### 晶体层就是 X 上的层　`prop.crystalline-sheaf-equiv`
+*命题*　命题：实化 $\mathcal{F} \mapsto \mathcal{F}_{X}$ 给出等价；$\mathbf{Et}(X) \simeq \widetilde{\mathbf{Open}(X)}$
+
+1. **实化** $\mathcal{F} \mapsto \mathcal{F}_{X}$ 给出 $\mathbf{Top}_{/X}$ 上的**晶体层**与 $X$ 上的**层**之间的等价；
+2. 于是 $\mathbf{Et}(X)$（$X$ 上的 étale 空间范畴）$\simeq$ 晶体层 $\simeq$ $X$ 上的层 —— 特别地 $\mathbf{Et}(X)$ 是拓扑斯，因为 $\mathbf{Et}(X) \simeq \widetilde{\mathbf{Open}(X)}$。
+
+**证明的思路。** 从晶体层到 $X$ 上的层是「取 $Y = X$ 那份数据」✓；反方向把 $X$ 上的层 $\mathcal{F}$ 送到 $\mathbf{Top}_{/X}$ 上的层 $\mathcal{F}_{Y} := f^{-1}\mathcal{F}$（$f : Y \to X$）✓ —— 这时过渡 $\alpha_f$ 自动是同构，所以落在晶体层里 ✓。两个方向互逆 ✓。(2) 是 (1) 加上「$X$ 上的层范畴 $\simeq$ étale 空间范畴」这条标准等价 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.68, Exercise 3.69
 
 ### 星团：拓扑斯
 > 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
@@ -9022,6 +9122,8 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z},\ j_{X}^{-1}M\bigr) = \operato
 
 $$\operatorname{Hom}_{\mathbb{Z}}(M, N)(X) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X!}j_{X}^{-1}M,\ N\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{X}^{-1}M,\ j_{X}^{-1}N\bigr) = \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ j_{X*}j_{X}^{-1}N\bigr).$$
 
+对一个**测试对象** $Z$ 也一样：$\operatorname{Hom}(X, N)(Z) = \operatorname{Hom}_{\mathbb{Z}}\bigl(j_{Z}^{-1} X,\ j_{Z}^{-1}N\bigr)$（只是把 $X$ 换成 $Z$ 那一对伴随）。
+
 **证明。** 每一步都是一次伴随：内 Hom 的取值 $\operatorname{Hom}_{\mathbb{Z}}(M,N)(X) = \operatorname{Hom}_{\mathbb{Z}}(M, N)(\mathbf{1}_{X})$ 与 $\operatorname{Hom}_{\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.60
@@ -9040,6 +9142,67 @@ $$M\cdot X \;:=\; M \otimes_{\mathbb{Z}} \mathbb{Z}\cdot X \;=\; j_{X!}j_{X}^{-1
 **证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。最后一式把 $N = \mathbb{Z}$ 代入并记住 $j_{X!}\mathbb{Z} = \mathbb{Z}\cdot X$ ✓。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.61
+
+#### 对象给出拓扑斯态射　`prop.topos-morphism-from-object`
+*命题*　命题：$X \in \mathcal{C}$ 给出 $\widehat{X} : \mathbf{Set} \to \widehat{\mathcal{C}}$
+
+把 $X \in \mathcal{C}$ 看成函子 $X : \mathbf{1} \to \mathcal{C}$，它给出拓扑斯态射 $\widehat{X} : \mathbf{Set} \to \widehat{\mathcal{C}}$，三个函子在对象上由下式给出：
+
+$$\widehat{X}^{-1}(T) = T(X), \qquad \bigl(\widehat{X}_{!}(E)\bigr)(Y) = \begin{cases} E & \exists\, Y \to X,\\ \emptyset & \text{否则},\end{cases} \qquad \bigl(\widehat{X}_{*}(E)\bigr)(Y) = \begin{cases} E & \exists\, X \to Y,\\ \{0\} & \text{否则}.\end{cases}$$
+
+**证明。** 由「任意函子诱导拓扑斯态射」，$X : \mathbf{1} \to \mathcal{C}$ 诱导出 $\widehat{X}_{!} \dashv \widehat{X}^{-1} \dashv \widehat{X}_{*}$ ✓。三条公式分别是：拉回就是取值 ✓；左 Kan 延拓沿 $\mathbf{1} \to \mathcal{C}$ 由逗号范畴的余极限给出，而「$\exists Y \to X$」正是那个余极限非空的条件 ✓；右伴对偶 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.52
+
+#### 终映射给出的拓扑斯态射　`prop.topos-morphism-final-map`
+*命题*　命题：$p : X \to \mathbf{1}$ 给出 $p_{*} = \Gamma(X, -)$、$p^{-1}E = \widetilde{E}_{X}$
+
+设 $X$ 是拓扑空间、$p : X \to \mathbf{1}$ 是到单点的映射。则它给出的拓扑斯态射满足
+
+$$p_{*}\mathcal{F} = \Gamma(X, \mathcal{F}), \qquad p^{-1}E = \widetilde{E}_{X};$$
+
+而且对连续映射 $f : Y \to X$，有 $\widetilde{E}_{Y} = f^{-1}\widetilde{E}_{X}$。
+
+**证明。** $p_{*}$ 是「推前」，在单点上的层就是整体截面 ✓；$p^{-1}$ 是「拉回」，把集合 $E$ 送到 $X$ 上的常层 $\widetilde{E}_{X}$ ✓（它在 $\mathbf{Top}$ 上的层就是 $\underline{E^{\mathrm{disc}}}$）。最后一式：记 $q : Y \to \mathbf{1}$，则 $q = p \circ f$，而推前/拉回关于复合相容 ✓，于是 $\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\widetilde{E}_{X}$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.55
+
+#### 点给出的拓扑斯态射　`prop.topos-morphism-point`
+*命题*　命题：$x : \mathbf{1} \to X$ 给出 $(x_{*}E)(U) = E$（$x \in U$）与 $x^{-1}\mathcal{F} = \mathcal{F}_{x}$
+
+设 $X$ 是拓扑空间、$x : \mathbf{1} \to X$ 是一个点。则它给出的拓扑斯态射满足
+
+$$(x_{*}E)(U) = \begin{cases} E & x \in U,\\ \emptyset & x \notin U,\end{cases} \qquad x^{-1}\mathcal{F} = \mathcal{F}_{x}.$$
+
+也就是说：**推前是「只看 $x$ 的开邻域」的常层，拉回就是茎**。
+
+**证明。** $x_{*}E$ 的取值是「拉回 $x^{-1}(U)$ 的」：$x^{-1}(U)$ 在单点空间里要么是空集要么是全空间 ✓，于是取值如式 ✓。$x^{-1}$ 是 $x_{*}$ 的左伴随，由伴随公式 $\operatorname{Hom}(x^{-1}\mathcal{F}, E) = \operatorname{Hom}(\mathcal{F}, x_{*}E) = \mathcal{F}_{x}$-型的计算即得它就是茎 ✓（也可直接用「茎 = 沿 $x$ 的开邻域取滤过余极限」）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.56
+
+#### 切片拓扑斯　`prop.slice-topos`
+*命题*　命题：$\widetilde{\mathcal{C}/T} \simeq \widetilde{\mathcal{C}}/\widetilde{T}$，且 $j_{T} : \widetilde{\mathcal{C}/T} \to \widetilde{\mathcal{C}}$ 是拓扑斯态射
+
+设 $\mathcal{C}$ 是 site、$T \in \widehat{\mathcal{C}}$。则
+
+1. $j_{T}$ **余连续**，因而给出拓扑斯态射 $j_{T} : \widetilde{\mathcal{C}/T} \to \widetilde{\mathcal{C}}$；
+2. $\widetilde{\mathcal{C}/T} \;\simeq\; \widetilde{\mathcal{C}}/\widetilde{T}$；
+3. 在这个等价下，$j_{T!}$ 对应遗忘函子 $\widetilde{\mathcal{C}}/\widetilde{T} \to \widetilde{\mathcal{C}}$，$j_{T}^{-1}$ 对应 $\mathcal{F} \mapsto (\mathcal{F} \times \widetilde{T} \to \widetilde{T})$。
+
+**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。(2) 两个范畴的对象都是「$X \in \mathcal{C}$ 加一个截面 $s \in T(X)$」，层条件也逐字对应 ✓。(3) 把两边的函子按定义写出来即得 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.63, Exercise 3.64
+
+#### 拟紧层与紧的 étale 空间　`prop.qc-sheaf-etale`
+*命题*　命题：$X$ 上的层拟紧 $\iff$ 对应 espace étalé 紧
+
+拓扑空间 $X$ 上的层（对**标准拓扑**而言）**拟紧** $\iff$ 与它对应的 **espace étalé** 是**紧**空间。
+
+**证明。** 拟紧的定义是「从余积出发的满态射可以取有限子族仍然满」✓；在 $X$ 上的层这个具体世界里，「$\coprod_{i} \mathcal{F}_{i} \to \mathcal{G}$ 满」正是 espace étalé 之间的映射在每根纤维上满，于是「有限子族已经满」$\iff$「相应的紧空间被有限个块覆盖」✓ —— 两边同时成立 ✓。∎
+
+⭐ 读法：**拓扑空间上的「拟紧层」就是几何里那个「紧的 étale 空间」**。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.70
 
 ## 星系：同调代数（Homological Algebra）
 > 加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。
@@ -10257,6 +10420,21 @@ $$C(F) : C(\mathcal{A}) \longrightarrow C(\mathcal{A}'), \qquad (K^{n}, d^{n}) \
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.34
 
+#### 导出函子就是 Kan 延拓　`prop.derived-functor-kan-extension`
+*命题*　命题：$F$ 左正合 $\implies RF$ 是沿局部化的左 Kan 延拓
+
+设 $F : \mathcal{A} \to \mathcal{A}'$ 是**左正合**加法函子。则 $RF$ 是复合映射
+
+$$\mathbf{K}^{+}(\mathcal{A}) \xrightarrow{\ F\ } \mathbf{K}^{+}(\mathcal{A}') \longrightarrow \mathbf{D}^{+}(\mathcal{A}')$$
+
+沿**局部化** $\mathbf{K}^{+}(\mathcal{A}) \to \mathbf{D}^{+}(\mathcal{A})$ 的（左）**Kan 延拓**（对偶地：右正合函子的 $LF$ 沿另一个局部化）。
+
+**证明。** 局部化（把拟同构变成同构）是预复合函子的左伴随 ✓，而左正合函子在拟同构上表现良好，于是「先取 $F$ 再局部化」这个复合函子沿局部化的左 Kan 延拓存在且正是 $RF$ ✓ —— 这就是导出函子的泛性刻画：它是 $F$ 在导出范畴里的**最优扩张** ✓。∎
+
+⭐ 读法：**「导出函子」不是新东西，它是局部化下的 Kan 延拓** —— 与「Kan 延拓就是伴随」配成一对。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.22
+
 ### 星团：同调与正合列
 > 造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。
 
@@ -10500,6 +10678,8 @@ $$E^{1}_{p,q} \;=\; H^{q}\bigl(K^{p,\bullet}\bigr),$$
 $$p \ne 0 \implies E^{p,q}_{r} = 0 \qquad (\forall q),$$
 
 则对一切 $q$：$E^{0,q}_{r} \cong H^{q}$。
+
+对偶地，若某个 $r \ge 2$ 满足 $q \ne 0 \implies E^{p,q}_{r} = 0$（$\forall p$），则对一切 $p$：$E^{p,0}_{r} \cong H^{p}$。
 
 **证明。** 固定 $q$。第一象限保证 $p < 0$ 或 $q < 0$ 的项恒为零 ✓，所以 $E^{0,q}$ 处进出它的微分都要离开 $p = 0$ 这一行或跑出第一象限，于是
 
@@ -10999,6 +11179,30 @@ $$\Gamma\bigl(X',\ f_{*}M\bigr) = \Gamma\bigl(f^{-1}(X'),\ M\bigr) ✓$$
 ⭐ 用处：**先在 $\mathcal{T}$ 这一侧算 $R^{q}f_{*}$，再在 $\mathcal{T}'$ 那一侧算 $H^{p}$**，两层的信息由这条谱序列拼起来。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 7.56
+
+#### 用关联层算上同调　`prop.cohomology-via-associated-sheaf`
+*命题*　命题：$\mathrm{R}\Gamma(X, M^{\bullet}) = \mathrm{R}\Gamma(\underline{X}, M^{\bullet})$
+
+设 $X \in \mathcal{C}$、$\underline{X} = h_{X}^{\#}$ 是它的**关联层**。则
+
+$$\mathrm{R}\Gamma\bigl(X,\ M^{\bullet}\bigr) \;=\; \mathrm{R}\Gamma\bigl(\underline{X},\ M^{\bullet}\bigr), \qquad \mathrm{H}^{n}\bigl(\underline{X},\ M^{\bullet}\bigr) = \mathrm{H}^{n}\bigl(X,\ M^{\bullet}\bigr).$$
+
+**证明。** 对任何层 $M$，由关联层的万有性质 $\operatorname{Hom}(\underline{X}, M) = M(X) = \operatorname{Hom}(X, M)$ ✓，即 $\Gamma(X, M) = \Gamma(\underline{X}, M)$。取内射消解 $I^{\bullet}$，两边逐项相等 ✓，故导出函子相等 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.36
+
+#### 层化不改变导出的整体截面　`prop.cohomology-presheaf-H`
+*命题*　命题：$\Gamma\bigl(X, R\mathcal{H}(M^{\bullet})\bigr) = R\Gamma(X, M^{\bullet})$，从而 $\Gamma\bigl(X, \mathcal{H}^{n}(M^{\bullet})\bigr) = H^{n}(X, M^{\bullet})$
+
+设 $X \in \mathcal{C}$、$M^{\bullet}$ 是阿贝尔层复形，$\mathcal{H}$ 记「把阿贝尔层当预层看」的含入函子。则
+
+$$\Gamma\bigl(X,\ R\mathcal{H}(M^{\bullet})\bigr) \;=\; R\Gamma\bigl(X,\ M^{\bullet}\bigr), \qquad \Gamma\bigl(X,\ \mathcal{H}^{n}(M^{\bullet})\bigr) \;=\; H^{n}\bigl(X,\ M^{\bullet}\bigr).$$
+
+**证明。** $\mathcal{H}$ 与**层化**互为伴随，而层化**正合** ✓，所以 $\mathcal{H}$ 保内射 ✓（左伴随正合的右伴随保内射）。反过来，函子 $M \mapsto \Gamma(X, M)$ 在**预层**上是正合的 ✓。两条合起来套用「导出函子与正合因子的复合」那条，即得第一式 ✓；第二式就是对它取 $n$ 次同调并在层那一侧读出取值 ✓。∎
+
+⭐ 用处：**上同调预层 $H^{n}(M)$ 的取值就是上同调** —— 这句在算 Čech 与上同调的关系时反复要用。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 7.42
 
 ### 星团：阿贝尔层
 > 造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。
@@ -11754,6 +11958,34 @@ $$X \longrightarrow \underline{X(\cdot)}$$
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 4.13
 
+#### 离散即常　`prop.discrete-iff-constant`
+*命题*　命题：$X$ 离散 $\iff$ 常 $\iff$ 只依赖紧 Hausdorff 的离散商
+
+对凝聚态集 $X$，三条等价：
+
+1. $X$ 是**离散的**：存在离散拓扑空间 $E$ 使 $X \cong \underline{E}$；
+2. $X$ 是**常的**：存在集合 $E$ 使 $X \cong \widetilde{E}$（常层）；
+3. 对任何紧 Hausdorff 空间 $S$，
+$$X(S) \;\cong\; \varprojlim_{S \twoheadrightarrow S'} X(S'),$$
+其中 $S'$ 跑遍 $S$ 的**离散商**。
+
+**证明。** (1)$\iff$(2)：离散空间 $E$ 给出的凝聚态集取值是 $\underline{E}(S) = C(S, E)$，也就是「$S$ 上的局部常值 $E$-值映射」✓；而常层 $\widetilde{E}$ 的取值按定义正是局部常值映射 ✓ —— 两个函子一致 ✓（见「拓扑空间上的常层就是离散空间的层」）。
+
+(2)$\iff$(3)：局部常值映射只依赖 $S$ 的连通块结构，而这正是「沿 $S$ 的离散商取投影极限」读出来的信息 ✓；反过来若 $X(S) = \varprojlim_{S \twoheadrightarrow S'}X(S')$，则 $X$ 只看得见离散商，等价于常 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 4.5
+
+#### 底函子保不交并　`prop.underlying-preserves-coproduct`
+*命题*　命题：$X = \coprod_{i} X_{i}$ $\implies$ $\underline{X} = \coprod_{i}\underline{X_{i}}$
+
+若拓扑空间 $X$ 是子空间的不交并 $X = \coprod_{i \in I} X_{i}$，则它的凝聚态集就是各块的凝聚态集在 $\mathrm{Cond}$ 里的**余积**：
+
+$$\underline{X} \;=\; \coprod_{i \in I} \underline{X_{i}}.$$
+
+**证明。** 函子 $X \mapsto \underline{X}$（$\underline{X}(S) = C(S, X)$）是 $X \mapsto X(\cdot)$ 的**左伴随** ✓，左伴随保余极限、特别地保余积 ✓。所以把拓扑空间的不交并送进 $\mathrm{Cond}$，得到的就是余积 ✓（$\mathrm{Cond}$ 里的余积是「先取逐点不交并、再层化」，正是 $C(S, \coprod_i X_i)$ 的层化）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 4.8
+
 ### 星团：凝聚态阿贝尔群
 > 在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。
 
@@ -11843,6 +12075,34 @@ $\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特�
 ⭐ **这条是「在 $\mathrm{CondAb}$ 里能做导出代数」的另一半依据**（另一半是「有足够多内射」，由它是 Grothendieck 范畴给出）：有足够多**投射**对象意味着**左**导出函子也能直接算。
 
 参考：Le Stum, Proposition 6.1.7
+
+#### 离散函子保直和　`prop.discrete-functor-coproduct`
+*命题*　命题：$\bigl(\bigoplus_{i} M_{i}\bigr)^{\mathrm{disc}} \cong \bigoplus_{i} M_{i}^{\mathrm{disc}}$
+
+设 $(M_{i})_{i \in I}$ 是一族阿贝尔群。则
+
+$$\Bigl(\bigoplus_{i \in I} M_{i}\Bigr)^{\mathrm{disc}} \;\cong\; \bigoplus_{i \in I} M_{i}^{\mathrm{disc}},$$
+
+其中 $(-)^{\mathrm{disc}}$ 是把阿贝尔群看成离散凝聚态阿贝尔群。
+
+**证明。** $(-)^{\mathrm{disc}}$ 是遗忘函子的**左伴随** ✓，左伴随保余极限、特别地保直和 ✓。∎
+
+⚠️ 对**积**不成立：$(-)^{\mathrm{disc}}$ 是左伴随，一般不保积 —— 这正是「离散化会把无限直积换成直和」的那件事。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 6.3
+
+#### 商群在凝聚态意义下一致　`prop.cond-quotient-topological`
+*命题*　命题：$\underline{M/N} \cong \underline{M}/\underline{N}$（$N$ 闭）
+
+设 $N$ 是局部紧 Hausdorff 阿贝尔群 $M$ 的**闭**子群。则拓扑商群的凝聚态版本与凝聚态商的商一致：
+
+$$\underline{M/N} \;\cong\; \underline{M}\big/\underline{N}.$$
+
+**证明。** 正合列 $0 \to N \to M \to M/N \to 0$ 里，$N$ 闭保证 $M/N$ 是 Hausdorff 的局部紧群 ✓；而「拓扑阿贝尔群 $\mapsto$ 凝聚态阿贝尔群」是**保所有极限**的函子 ✓，它把商的余核送到余核 ✓。于是拓扑意义下的商与凝聚态意义下的商对上 ✓。∎
+
+📌 用处：算凝聚态阿贝尔群时，**可以先在拓扑这一侧把商算好再离散化**。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 6.5
 
 ### 星团：拓扑阿贝尔群
 > 造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。
@@ -17350,6 +17610,110 @@ ind-可表示用的就是 Ind-对象。
 
 有限维情形下对偶退化成向量空间对偶。
 
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧 Hausdorff 上商映射的四种说法　`def-link.chausquot-chaus`
+
+四条等价都是在紧 Hausdorff 范畴里说的。
+
+#### 定义引用：「商拓扑」→ 紧 Hausdorff 上商映射的四种说法　`def-link.chausquot-quotient`
+
+第一条是「商映射」。
+
+#### 定义引用：「弱 Hausdorff 空间」→ 弱 Hausdorff 的对角线与核　`def-link.whkclosed-wh`
+
+前提是弱 Hausdorff。
+
+#### 定义引用：「k-开、k-闭与 k-拓扑」→ 弱 Hausdorff 的对角线与核　`def-link.whkclosed-ktop`
+
+结论说的是对角线 $k$-闭。
+
+#### 定义引用：「Grothendieck 拓扑」→ 拓扑公理的替代形式　`def-link.altaxiom-gt`
+
+改写的正是拓扑公理的最后一条。
+
+#### 定义引用：「层」→ 常层的伴随　`def-link.constadj-sheaf`
+
+伴随的另一边是层。
+
+#### 定义引用：「关联层」→ 拓扑空间上的常层就是离散空间的层　`def-link.consttop-const`
+
+两边都是「关联层」这个构造的特例。
+
+#### 定义引用：「拓扑斯的态射」→ 对象给出拓扑斯态射　`def-link.topmorobj-toposmor`
+
+结论是「给出一个拓扑斯态射」。
+
+#### 任意函子诱导拓扑斯态射 ⟹ 对象给出拓扑斯态射　`imp-link.indtop-topmorobj`
+*任意函子诱导拓扑斯态射 $\implies$ 对象给出 $\widehat{X}$*
+
+把 $X$ 看成函子 $X : \mathbf{1} \to \mathcal{C}$ ✓，由「任意函子诱导拓扑斯态射」即得 $\widehat{X}_{!} \dashv \widehat{X}^{-1} \dashv \widehat{X}_{*}$ ✓；三条公式由 Kan 延拓的逐点公式（逗号范畴上的余极限/极限）算出 ✓。∎
+
+#### 定义引用：「拓扑斯的态射」→ 点给出的拓扑斯态射　`def-link.topmorpt-toposmor`
+
+结论是点给出的拓扑斯态射。
+
+#### 定义引用：「层上同调」→ 点给出的拓扑斯态射　`def-link.topmorpt-stalk`
+
+拉回就是茎，后面算上同调全靠它。
+
+#### 定义引用：「拓扑斯的态射」→ 终映射给出的拓扑斯态射　`def-link.topmorfinal-toposmor`
+
+结论是终映射给出的拓扑斯态射。
+
+#### 对象给出拓扑斯态射 + 拓扑空间上的常层就是离散空间的层 ⟹ 终映射给出的拓扑斯态射　`imp-link.topmorobj-topmorfinal`
+*对象给出的拓扑斯态射 $\implies$ 终映射的情形*
+
+取 $X \in \mathbf{Top}$ 与到单点的映射 $p : X \to \mathbf{1}$ ✓。沿 $p$ 的推前就是「在 $X$ 上取整体截面」$p_{*}\mathcal{F} = \Gamma(X, \mathcal{F})$ ✓；拉回把集合 $E$ 送到 $X$ 上的常层 $p^{-1}E = \widetilde{E}_{X}$ ✓（常层就是离散空间给出的层）。
+再对连续映射 $f : Y \to X$ 用「拉回关于复合相容」：$q = p \circ f$ 给出 $\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\widetilde{E}_{X}$ ✓。∎
+
+#### 定义引用：「切片范畴」→ 切片拓扑斯　`def-link.slicetopos-slice`
+
+命题说的是切片范畴上的层范畴。
+
+#### 定义引用：「层」→ 晶体层　`def-link.crystalsheaf-sheaf`
+
+晶体层首先是一个层。
+
+#### 定义引用：「层」→ 晶体层就是 X 上的层　`def-link.crystalequiv-etale`
+
+等价的两边一边是层、一边是 étale 空间。
+
+#### 定义引用：「拟紧对象」→ 拟紧层与紧的 étale 空间　`def-link.qcetale-qc`
+
+判定的是拟紧性。
+
+#### 定义引用：「凝聚态集」→ 离散即常　`def-link.disciffconst-set`
+
+三条说的都是凝聚态集。
+
+#### 定义引用：「底拓扑空间」→ 底函子保不交并　`def-link.underlyingcoprod-underlying`
+
+公式两边是同一条函子的取值。
+
+#### 定义引用：「凝聚态阿贝尔群」→ 离散函子保直和　`def-link.disccoprod-condab`
+
+标的都是凝聚态阿贝尔群。
+
+#### 定义引用：「凝聚态阿贝尔群」→ 商群在凝聚态意义下一致　`def-link.condquot-condab`
+
+命题比较拓扑商与凝聚态商。
+
+#### 定义引用：「右导出函子」→ 导出函子就是 Kan 延拓　`def-link.kanrf-derfun`
+
+命题把导出函子认成 Kan 延拓。
+
+#### Kan 延拓与伴随的存在性 + 有余极限时 Kan 延拓总存在 ⟹ 导出函子就是 Kan 延拓　`imp-link.kanadj-kanrf`
+*Kan 延拓即伴随 $\implies$ 导出函子就是 Kan 延拓*
+
+局部化 $\mathbf{K}^{+}(\mathcal{A}) \to \mathbf{D}^{+}(\mathcal{A})$ 是预复合函子的左伴随 ✓，而「先作用 $F$ 再局部化」在左正合 $F$ 下表现良好 ✓；由「Kan 延拓与伴随同生同死」与逐点公式，这个复合沿局部化的左 Kan 延拓存在且由 $RF$ 给出 ✓。∎
+
+#### 定义引用：「层上同调」→ 用关联层算上同调　`def-link.cohassoc-sheafcoh`
+
+两边都是层上同调。
+
+#### 定义引用：「层上同调」→ 层化不改变导出的整体截面　`def-link.cohpresheaf-sheafcoh`
+
+命题说「上同调预层的取值就是上同调」。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -20667,12 +21031,12 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **伴随与反射 ↔ 图与极限**　13 条节点级连线
 - **伴随与反射 ↔ 函子与自然变换**　8 条节点级连线
 - **紧 Hausdorff 空间 ↔ 度量空间**　4 条节点级连线
-- **紧 Hausdorff 空间 ↔ 拓扑空间**　3 条节点级连线
+- **紧 Hausdorff 空间 ↔ 拓扑空间**　4 条节点级连线
 - **Stone 与 Stonean ↔ 拓扑空间**　10 条节点级连线
 - **紧 Hausdorff 空间 ↔ Stone 与 Stonean**　5 条节点级连线
 - **伴随与反射 ↔ 层与拓扑**　2 条节点级连线
 - **层与拓扑 ↔ 单满、子对象与像**　2 条节点级连线
-- **层与拓扑 ↔ 拓扑斯**　19 条节点级连线
+- **层与拓扑 ↔ 拓扑斯**　20 条节点级连线
 - **凝聚态集 ↔ 紧 Hausdorff 空间**　12 条节点级连线
 - **拓扑斯 ↔ 凝聚态集**　10 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　6 条节点级连线
@@ -20695,7 +21059,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **函子与自然变换 ↔ 加法与阿贝尔范畴**　3 条节点级连线
 - **函子与自然变换 ↔ 复形与导出三角**　3 条节点级连线
 - **伴随与反射 ↔ 拓扑斯**　3 条节点级连线
-- **拓扑斯 ↔ 预层与米田**　3 条节点级连线
+- **拓扑斯 ↔ 预层与米田**　4 条节点级连线
 - **伴随与反射 ↔ 阿贝尔层**　2 条节点级连线
 - **单满、子对象与像 ↔ 加法与阿贝尔范畴**　5 条节点级连线
 - **拓扑斯 ↔ 加法与阿贝尔范畴**　2 条节点级连线
@@ -20703,7 +21067,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑斯 ↔ 阿贝尔层**　7 条节点级连线
 - **复形与导出三角 ↔ 过滤与谱序列**　6 条节点级连线
 - **层上同调 ↔ 过滤与谱序列**　5 条节点级连线
-- **拓扑斯 ↔ 层上同调**　2 条节点级连线
+- **拓扑斯 ↔ 层上同调**　3 条节点级连线
 - **范畴与图 ↔ 函子与自然变换**　5 条节点级连线
 - **单满、子对象与像 ↔ 预层与米田**　4 条节点级连线
 - **范畴与图 ↔ 紧 Hausdorff 空间**　2 条节点级连线

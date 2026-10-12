@@ -1,0 +1,14 @@
+# 层化不改变导出的整体截面　`prop.cohomology-presheaf-H`
+命题：$\Gamma\bigl(X, R\mathcal{H}(M^{\bullet})\bigr) = R\Gamma(X, M^{\bullet})$，从而 $\Gamma\bigl(X, \mathcal{H}^{n}(M^{\bullet})\bigr) = H^{n}(X, M^{\bullet})$
+layer 18 · 命题 · 层上同调 · 同调代数
+
+设 $X \in \mathcal{C}$、$M^{\bullet}$ 是阿贝尔层复形，$\mathcal{H}$ 记「把阿贝尔层当预层看」的含入函子。则
+> 陈述续见 `nodes/prop.cohomology-presheaf-H.2.md`
+
+
+## 为什么成立（入边，证明在 proofs/）
+- `def.sheaf-cohomology` 层上同调：用到了定义 层上同调　proofs/def-link.cohpresheaf-sheafcoh.md
+
+refs: Le Stum, An introduction to condensed mathematics, Exercise 7.42
+
+> 说明见 `notes/prop.cohomology-presheaf-H.md`

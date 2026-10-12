@@ -14,11 +14,10 @@ layer 11 · 定义 · 复形与导出三角 · 同调代数
 - 被 `prop.left-exact-iff-R0` 左正合性与 R⁰ 用
 - 被 `def.resolution` 消解 用
 - 被 `prop.derived-functor-exact-factor` 正合因子让谱序列退化 用
+- 被 `prop.derived-functor-kan-extension` 导出函子就是 Kan 延拓 用
 - 被 `thm.derived-long-exact` 导出函子的长正合列 用
 - 被 `def.f-acyclic` F-零调对象 用
 - 被 `prop.leray-acyclicity` Leray 零调性 用
-- 被 `cor.grothendieck-spectral` Grothendieck 谱序列 用
-- 被 `def.sheaf-cohomology` 层上同调 用
 
 - …另有出边，续页见 `nodes/def.right-derived-functor.3.md`
 

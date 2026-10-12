@@ -12,6 +12,7 @@ layer 11 · 命题 · 伴随与反射 · 范畴论
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `prop.kan-extension-fully-faithful` 全忠实沿自身的 Kan 延拓
+- ⇒ `prop.derived-functor-kan-extension` 导出函子就是 Kan 延拓
 
 refs: Le Stum, An introduction to condensed mathematics, Proposition 1.5.10
 

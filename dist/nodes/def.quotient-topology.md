@@ -14,10 +14,10 @@ $$\mathcal{T}_{Y} := \{\, V \subseteq Y : \pi^{-1}(V) \in \mathcal{T} \,\}$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.quotient-of-compact` 紧空间的商紧 用
+- 被 `prop.chaus-quotient-equiv` 紧 Hausdorff 上商映射的四种说法 用
 - 被 `thm.quotient-product` 商映射与局部紧空间作积 用
 - 被 `prop.cg-kclosed-quotient` k-闭等价关系与弱 Hausdorff 商 用
 - 被 `def.k-topology` k-开、k-闭与 k-拓扑 用
-- 被 `thm.quotient-product` 商映射与局部紧空间作积 用
 
 - …另有出边，续页见 `nodes/def.quotient-topology.2.md`
 

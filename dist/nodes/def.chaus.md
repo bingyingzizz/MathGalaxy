@@ -14,7 +14,6 @@ layer 15 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 - ⇒ `prop.component-clopen` 连通分量是闭开邻域之交
 - ⇒ `thm.gleason` Gleason 定理
 - 被 `prop.coproduct-chaus` 不交并是紧 Hausdorff 的余积 用
-- 被 `prop.chaus-quotient-of-free` 紧 Haus 是自由的商 用
 
 - …另有出边，续页见 `nodes/def.chaus.2.md`
 

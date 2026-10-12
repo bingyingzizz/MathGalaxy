@@ -7,6 +7,9 @@
 - 被 `def.associated-sheaf` 关联层 用
 - 被 `prop.sheafification-image` 层化与像交换 用
 - 被 `prop.stalk-of-sheafification` 层化不改变茎 用
+- 被 `prop.constant-sheaf-adjunction` 常层的伴随 用
+- 被 `def.crystalline-sheaf` 晶体层 用
+- 被 `prop.crystalline-sheaf-equiv` 晶体层就是 X 上的层 用
 - 被 `thm.sheaf-descent` 层的下降条件 用
 - 被 `prop.sheaf-epi-criterion` 满态射的局部判据 用
 - 被 `prop.precanonical-sheaf` 预标准拓扑下的层 用
@@ -17,8 +20,5 @@
 - 被 `def.cech-functor` Čech 函子 用
 - 被 `def.condensed-set` 凝聚态集 用
 - 被 `def.condensed-abelian-group` 凝聚态阿贝尔群 用
-- 被 `def.abelian-sheaf` 阿贝尔层 用
-- 被 `prop.sieve-covering-equivalent` 覆盖筛的四条等价 用
-- 被 `def.section-functor` 截面函子 用
 
 > 续见 `nodes/def.sheaf.3.md`

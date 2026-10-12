@@ -11,10 +11,10 @@ layer 17 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.quotient-topology` 商拓扑：用到了定义 商拓扑　proofs/def-dep.ktopo-quotient.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.weak-hausdorff-k-closed` 弱 Hausdorff 的对角线与核 用
 - 被 `prop.k-product` k-化与积 用
 - 被 `prop.ktx-colimit` kX 是紧空间的余极限 用
 - 被 `prop.cg-coreflective` 紧生成空间是余反射子范畴 用
-- 被 `prop.k-product` k-化与积 用
 
 - …另有出边，续页见 `nodes/def.k-topology.2.md`
 

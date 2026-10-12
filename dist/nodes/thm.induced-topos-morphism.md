@@ -10,6 +10,9 @@ layer 18 · 定理 · 拓扑斯 · 范畴论
 - `prop.kan-extension-exists` 有余极限时 Kan 延拓总存在 + `thm.presheaf-limits-colimits` 预层范畴的极限与余极限：预层范畴完备 $\implies$ 任意函子诱导拓扑斯态射　proofs/imp-link.kanex-indtop.md
 - `def.topos-morphism` 拓扑斯的态射：用到了定义 拓扑斯的态射　proofs/def-link.indtop-topos.md
 
+## 它能推出什么 / 谁在用它
+- ⇒ `prop.topos-morphism-from-object` 对象给出拓扑斯态射
+
 refs: Le Stum, An introduction to condensed mathematics, Theorem 3.4.2, Corollary 3.4.3
 
 > 说明见 `notes/thm.induced-topos-morphism.md`

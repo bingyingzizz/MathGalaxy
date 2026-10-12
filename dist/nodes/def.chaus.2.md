@@ -2,6 +2,8 @@
 根 `../`　·　第 1 页 `nodes/def.chaus.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.chaus-quotient-equiv` 紧 Hausdorff 上商映射的四种说法 用
+- 被 `prop.chaus-quotient-of-free` 紧 Haus 是自由的商 用
 - 被 `prop.component-clopen` 连通分量是闭开邻域之交 用
 - 被 `def.free-compact-hausdorff` 自由紧 Hausdorff 空间 用
 - 被 `def.free-presentation` 自由表示 用
@@ -16,7 +18,5 @@
 - 被 `prop.rhom-chaus-banach-zero` 紧 Haus 到实 Banach 全零 用
 - 被 `ex.chaus-banach-rhom` 紧 S 对实 Banach 的 RHom 用
 - 被 `thm.lc-structure` 局部紧阿贝尔群结构定理 用
-- 被 `prop.pontryagin-discrete-compact-duality` 离散 与 紧 Hausdorff 用
-- 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用
 
 > 续见 `nodes/def.chaus.3.md`

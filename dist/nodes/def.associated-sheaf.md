@@ -16,6 +16,7 @@ $$X^{\sharp} \;:=\; h_{X}^{\#}, \qquad h_{X} = \operatorname{Hom}_{\mathcal{C}}(
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.sheafification-slice-colimit` 层化是切片上的余极限 用
+- 被 `prop.constant-sheaf-top` 拓扑空间上的常层就是离散空间的层 用
 
 refs: Le Stum, An introduction to condensed mathematics, Definition 3.2.10
 
