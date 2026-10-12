@@ -404,7 +404,9 @@ window.MG = window.MG || {};
         '',
         '$$\\frac{d\\mu}{d\\lambda} \\cdot \\frac{d\\lambda}{d\\mu} = 1\\quad  \\text{a.e.}$$'
       ].join('\n'),
-      notes: '两条链式法则一拼：$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$，而 $d\\mu / d\\mu \\equiv  1$。',
+      notes: [
+        ['**证明。** $\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu$ 时，Radon–Nikodym 导数满足**链式法则**（乘法性）：若 $\\nu \\ll \\mu \\ll \\rho$，则 $\\frac{d\\nu}{d\\rho} = \\frac{d\\nu}{d\\mu}\\cdot\\frac{d\\mu}{d\\rho}$ $\\rho$-a.e. ✓。把它用在 $\\nu = \\mu = \\rho$ 上：','$$\\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu} = \\frac{d\\mu}{d\\mu} = 1 \\quad \\text{a.e.},$$','最后一步是因为 $d\\mu = 1 \\cdot d\\mu$，而密度在 a.e. 意义下唯一 ✓。∎'].join('\n'),
+'两条链式法则一拼：$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$，而 $d\\mu / d\\mu \\equiv  1$。'].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.9']
     },
 
@@ -452,6 +454,7 @@ window.MG = window.MG || {};
         '且在 a.e. 意义下唯一。'
       ].join('\n'),
       notes: [
+        ['**证明（把复情形拆回已经证过的实情形）。**','- **拆复测度**：$\\nu = \\nu_{1} + i\\nu_{2}$，$\\nu_{1}, \\nu_{2}$ 是**有限**符号测度（$\\nu$ 有限 $\\implies$ 其实部虚部有限）✓；','- **符号测度**：对有限符号测度 $\\rho$ 与 $\\sigma$ 有限测度 $\\mu$，先用 Hahn 分解写 $\\rho = \\rho^{+} - \\rho^{-}$，对两个有限正测度各用一次 Radon–Nikodym：$d\\rho^{\\pm} = h^{\\pm}\\,\\mathrm{d}\\mu + d\\rho^{\\pm}_{s}$（$\\rho^{\\pm}_{s} \\perp \\mu$，$h^{\\pm} \\in L^{1}(\\mu)$）✓；','- **拼起来**：令 $f := (h_{1}^{+} - h_{1}^{-}) + i(h_{2}^{+} - h_{2}^{-}) \\in L^{1}(\\mu)$、$\\lambda := (\\rho_{1,a} - \\rho_{1,s}) + i(\\cdots)$ 的奇异部分之和，则 $d\\nu = d\\lambda + f\\,\\mathrm{d}\\mu$、$\\lambda \\perp \\mu$ ✓；','- **唯一性**：若 $d\\lambda + f\\,\\mathrm{d}\\mu = d\\lambda\' + f\'\\,\\mathrm{d}\\mu$，与 $\\mu$ 取 Lebesgue 分解比奇异部分得 $\\lambda = \\lambda\'$；比绝对连续部分并用密度 a.e. 唯一得 $f = f\'$ a.e. ✓。∎','⚠️ 这里 $f \\in L^{1}(\\mu)$（真正可积）而不是「广义可积」，因为复测度**有限**。'].join('\n'),
         '复测度可以拆成实部与虚部、各自再用符号测度的版本 —— 这是把上一套结论搬到复情形的标准做法。',
         '⚠ 这里 $f \\in L^1(\\mu)$ 而不再是「广义可积」：因为复测度有限，$f$ 必须真可积。'
       ].join('\n\n'),
@@ -476,6 +479,7 @@ window.MG = window.MG || {};
         '$$|\\nu|(E) = \\int_E |f| d\\mu$$'
       ].join('\n'),
       notes: [
+        ['**证明。** 记 $|\\nu|(E) := \\sup\\bigl\\{\\sum_{j}|\\nu(E_{j})| : E = \\bigsqcup_{j} E_{j} \\text{ 可数划分} \\bigr\\}$。','**(a)** 对任意划分，由三角不等式','$$|\\nu(E)| = \\Bigl|\\sum_{j}\\nu(E_{j})\\Bigr| \\le \\sum_{j}|\\nu(E_{j})|,$$','对一切划分取上确界得 $|\\nu(E)| \\le |\\nu|(E)$ ✓。','**(b)** 设 $d\\nu = f\\,\\mathrm{d}\\mu$。','- **上界**：对任意划分','$$\\sum_{j}|\\nu(E_{j})| = \\sum_{j}\\Bigl|\\int_{E_{j}} f\\,\\mathrm{d}\\mu\\Bigr| \\le \\sum_{j}\\int_{E_{j}}|f|\\,\\mathrm{d}\\mu = \\int_{E}|f|\\,\\mathrm{d}\\mu,$$','取上确界得 $|\\nu|(E) \\le \\int_{E}|f|\\,\\mathrm{d}\\mu$ ✓；','- **下界**：取只由 $E \\cap \\{f \\ge 0\\}$ 与 $E \\cap \\{f < 0\\}$ 组成的划分，此时 $\\sum_{j}|\\nu(E_{j})| = \\int_{E}|f|\\,\\mathrm{d}\\mu$，故上确界 $\\ge$ 它 ✓；','两边合起来：$|\\nu|(E) = \\int_{E}|f|\\,\\mathrm{d}\\mu$，即 $d|\\nu| = |f|\\,\\mathrm{d}\\mu$ ✓。','**不同表示的一致性**：若同时有 $d\\nu = f_{1}d\\mu_{1} = f_{2}d\\mu_{2}$，取公共基准 $\\rho := |\\nu| + \\mu_{1} + \\mu_{2}$，把两边都用链式法则换到 $\\rho$ 上，再用上式的上确界论证即得 $|f_{1}|\\frac{d\\mu_{1}}{d\\rho} = |f_{2}|\\frac{d\\mu_{2}}{d\\rho}$ $\\rho$-a.e. ✓。∎'].join('\n'),
         '(b) 的证法：先取 $\\rho = |\\nu_1| + |\\nu_2|$ 把 $\\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\\rho$ 上。于是要证的就是',
         '',
         '$$|f_1| \\frac{d\\mu_1}{d\\rho} = |f_2| \\frac{d\\mu_2}{d\\rho}\\quad  \\rho-\\text{a.e.}$$',

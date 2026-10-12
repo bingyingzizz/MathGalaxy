@@ -49,6 +49,7 @@ window.MG = window.MG || {};
         '$$f : X \\to Y\\text{ 可测} \\iff f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{E}$$'
       ].join('\n'),
       notes: [
+        ['**证明。**','**(1) 复合**：对 $E \\in \\mathcal{O}$ 有 $(g \\circ f)^{-1}(E) = f^{-1}\\bigl(g^{-1}(E)\\bigr)$；由 $g$ 可测得 $g^{-1}(E) \\in \\mathcal{N}$，再由 $f$ 可测得 $f^{-1}(\\cdot) \\in \\mathcal{M}$ ✓。','**(2) 只需验证生成元**：','- **$(\\Longleftarrow)$** 令 $\\mathcal{C} := \\{\\, E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\,\\}$。原像保持并、交、补（$f^{-1}(E^{c}) = X \\setminus f^{-1}(E)$），故 $\\mathcal{C}$ 是 $Y$ 上的 **$\\sigma$代数** ✓；由假设 $\\mathcal{E} \\subseteq \\mathcal{C}$，取生成的 $\\sigma$代数得 $\\mathcal{N} = \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即一切 $E \\in \\mathcal{N}$ 的原像都可测 ✓。','- **$(\\implies)$** 按可测的定义即得 ✓。','同一论证可用于任何「生成它的族」：拓扑空间上只需开集（或闭集、或基元素）；$\\mathbb{R}$ 上只需 $(-\\infty, a]$ 这类射线 ✓。∎'].join('\n'),
         '(1)：对 $E \\in \\mathcal{O}$ 有 $(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$，两层都可测。',
         '(2) 的 $(\\Longleftarrow )$：令 $\\mathcal{C} = \\{ E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\}$。因为原像保持并、交、补，**$\\mathcal{C}$ 是一个 $\\sigma$代数**；题设说 $\\mathcal{E} \\subseteq \\mathcal{C}$，于是 $\\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即所有可测集的原像都可测。',
         '(2) 是整段里最常用的判定工具：要证 $f$ 可测，只需在一小族生成元上验证 —— 比如 $\\mathbb{R}$ 值函数只需验证 $f^{-1}((a, \\infty))$ 可测。'
@@ -191,6 +192,7 @@ window.MG = window.MG || {};
         '$$0 \\le |\\varphi_1| \\le |\\varphi_2| \\le \\cdots \\le |f|, \\quad  \\varphi_n \\to f\\text{ 逐点}$$'
       ].join('\n'),
       notes: [
+        ['**证明。**','**(a)** 对 $n \\ge 1$、$k = 0, 1, \\ldots, 2^{n}n - 1$ 令','$$E_{n,k} := f^{-1}\\bigl((k2^{-n}, (k+1)2^{-n}]\\bigr), \\qquad F_{n} := f^{-1}\\bigl((n, +\\infty]\\bigr),$$','$$\\varphi_{n} := \\sum_{k} k\\,2^{-n}\\,\\chi_{E_{n,k}} \\;+\\; n\\,\\chi_{F_{n}} \\;+\\; 0\\cdot\\chi_{f^{-1}(\\{0\\})}.$$','- **简单**：每个 $E_{n,k}$、$F_{n}$ 可测（$f$ 可测 + 区间是 Borel 集），只有有限多个取值 ✓；','- **$0 \\le \\varphi_{n} \\le f$**：在 $E_{n,k}$ 上 $k2^{-n} < f \\le (k+1)2^{-n}$ ✓；在 $F_{n}$ 上 $n < f$ ✓；其余为零 ✓；','- **单调**：$n \\to n+1$ 时区间按 $2^{-(n+1)}$ 加细、上限从 $n$ 升到 $n+1$，逐点算一遍即知 $\\varphi_{n} \\le \\varphi_{n+1}$ ✓；','- **逐点收敛**：若 $f(x) < \\infty$，取 $n > f(x)$ 后 $0 \\le f(x)-\\varphi_{n}(x) \\le 2^{-n} \\to 0$；若 $f(x) = +\\infty$ 则 $\\varphi_{n}(x) = n \\to \\infty$ ✓；','- **在有界集上一致**：$f \\le M$ 时取 $n > M$，同样得 $|f-\\varphi_{n}| \\le 2^{-n}$，与 $x$ 无关 ✓。','**(b)** 一般可测 $f$：写成 $f = (f_{1}^{+} - f_{1}^{-}) + i(f_{2}^{+} - f_{2}^{-})$，对四个非负可测部分各用 (a) 得单调列，再把实部虚部、正部负部线性组合起来；由于每一步都满足 $|\\varphi_{n}| \\le |f|$、逐点收敛，结论成立 ✓。∎'].join('\n'),
         '(a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $2^{-n}$ 切碎，超过 $n$ 的部分一律抹成 $n$ ——',
         '',
         '$$\\varphi_n = \\sum_{k=0}^{2^n\\cdot n-1} k\\cdot2^{-n}\\cdot\\chi_{E_n^k} + n\\cdot\\chi_{F_n}, $$',
@@ -220,6 +222,7 @@ window.MG = window.MG || {};
         '**(b)** 每个 $f_n$ 可测且 $f_n \\to f$ $\\mu -\\text{a.e.} \\implies$ $f$ 可测。'
       ].join('\n'),
       notes: [
+        ['**证明。**','**$(\\implies)$** 设 $\\mu$ 完备。记 $N := \\{f \\ne g\\}$、$\\mu(N) = 0$。对任意可测集 $B$，','$$g^{-1}(B) = \\bigl(f^{-1}(B) \\cap N^{c}\\bigr) \\cup \\bigl(g^{-1}(B) \\cap N\\bigr),$$','第一块可测（$f$ 可测）；第二块是**零集的子集**，由完备性可测 ✓。故 $g$ 可测。(b) 同理：$f_{n} \\to f$ a.e. 时把 $f$ 在不收敛的零集上改写成 $\\limsup_{n} f_{n}$，可测性不变，而它与 $f$ 只差一个零集 ✓。','**$(\\Longleftarrow)$** 设 (a) 成立。取零集 $E$（$\\mu(E) = 0$）与任意 $F \\subseteq E$，令 $f \\equiv 0$、$g := \\chi_{F}$。则 $f$ 可测，且 $\\{f \\ne g\\} \\subseteq E$ 是零集，即 $f = g$ a.e.；由 (a)，$g$ 可测；于是 $F = g^{-1}(\\{1\\})$ 可测 ✓。故每个零集的子集都可测，**$\\mu$ 完备** ✓。（用 (b) 也一样：取常列 $f_{n} \\equiv 0$、$f := \\chi_{F}$，$f_{n} \\to f$ a.e.，由 (b) 得 $\\chi_{F}$ 可测。）∎','⭐ 这条说明**完备性恰好就是「重新定义零集上的值不破坏可测性」所需的全部条件**。'].join('\n'),
         '$(\\implies )$ 是完备性的直接好处：重新定义零集上的值不改变可测性。',
         '$(\\Longleftarrow )$ 是这条命题有意思的地方 —— 它说明**完备性恰好是「不破坏可测性」所需的全部**。构造：取零集 $E$（$\\mu (E) = 0$）里一个不可测的子集 $F$（若 $\\mu$ 不完备，这样的 $F$ 存在），令',
         '',

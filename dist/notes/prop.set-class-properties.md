@@ -1,10 +1,12 @@
 # 集合族的基本性质　`prop.set-class-properties`　·　说明
 根 `../`
 
-(1)：取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset$ 要能被拆成不交并，只能是空并。
+**证明。**
+(1) 取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset \in \mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。
+(2) 代数：$A_{1}, \ldots, A_{n} \in \mathfrak{A}$ 时 $A_{1}\cap\cdots\cap A_{n} = X \setminus \bigl(\bigcup_{i}(X\setminus A_{i})\bigr) \in \mathfrak{A}$（补 + 有限并）✓；可数交由 $\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \setminus \bigcup B_{j}$ 即可。）
+(3) $\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。
+(5) 设 $\mathcal{E}$ 是基本类，$\mathfrak{A} := \{ \mathcal{E} \text{ 中有限多个两两不交的集合之并} \}$。
+- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\cap B)\sqcup(A\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；
+- **对差封闭**：$A \setminus B$ 逐块
 
-(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \setminus \bigcup B_{j}$** 这种相对补。
-
-(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。
-
-这几条性质的实际用途：**验证一个族是 $\sigma$代数时，只需查「含 $X$」「对补」「对可数并」三条**，其余全部免费。
+> 续见 notes/prop.set-class-properties.2.md

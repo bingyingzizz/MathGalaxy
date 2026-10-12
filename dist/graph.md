@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T03:41:29.674Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T03:55:49.690Z
 > 9 星系 / 45 星团 / 542 节点 / 1136 连线（强边 1127，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -2929,6 +2929,15 @@ $$\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \
 
 （第 (4) 条因为本身是一条定理，单独列在「环 $\implies \sigma$环 的判据」里。）
 
+**证明。**
+(1) 取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset \in \mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。
+(2) 代数：$A_{1}, \ldots, A_{n} \in \mathfrak{A}$ 时 $A_{1}\cap\cdots\cap A_{n} = X \setminus \bigl(\bigcup_{i}(X\setminus A_{i})\bigr) \in \mathfrak{A}$（补 + 有限并）✓；可数交由 $\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \setminus \bigcup B_{j}$ 即可。）
+(3) $\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。
+(5) 设 $\mathcal{E}$ 是基本类，$\mathfrak{A} := \{ \mathcal{E} \text{ 中有限多个两两不交的集合之并} \}$。
+- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\cap B)\sqcup(A\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；
+- **对差封闭**：$A \setminus B$ 逐块做差，同样拆成有限不交并 ✓；
+- 含 $\emptyset$（空并）✓。于是 $\mathfrak{A}$ 是一个**环** ✓。∎
+
 (1)：取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset$ 要能被拆成不交并，只能是空并。
 
 (2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \setminus \bigcup B_{j}$** 这种相对补。
@@ -3278,6 +3287,16 @@ $$\mu_0( (a, b] ) = F(b) - F(a)$$
 
 （并规定 $\mu _{0}(\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的代数 $\mathfrak{A}$ 上。）则 $\mu _{0}$ 是 $\mathfrak{A}$ 上的一个**预测度**。
 
+**证明。** 记 $\mathfrak{A}$ 为有限不交并 $\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\mu_{0}\bigl(\bigsqcup_{j}(a_{j},b_{j}]\bigr) := \sum_{j}\bigl(F(b_{j})-F(a_{j})\bigr)$。
+- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \le a_{2} < \cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\mu_{0}$ 与分解无关 ✓；空并给 $\mu_{0}(\emptyset) = 0$ ✓。
+- **有限可加**：把两个不交并拼起来直接相加 ✓。
+- **可数可加（右连续在这里上场）**：设 $(a, b] = \bigsqcup_{j \ge 1}(a_{j}, b_{j}]$。
+  **$\ge$**：对每个 $n$ 有 $(a,b] \supseteq \bigsqcup_{j \le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \ge \sum_{j \le n}\bigl(F(b_{j})-F(a_{j})\bigr)$，令 $n \to \infty$ ✓；
+  **$\le$**：给 $\varepsilon > 0$。**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \varepsilon 2^{-j}$；再用右连续取 $\delta > 0$ 使 $F(a+\delta) < F(a) + \varepsilon$。开区间族 $\{(a_{j}, c_{j})\}$ 覆盖紧集 $[a+\delta, b]$，抽有限子覆盖并按端点排序相加，得
+$$F(b) - F(a) \le 2\varepsilon + \sum_{j}\bigl(F(b_{j}) - F(a_{j})\bigr),$$
+令 $\varepsilon \to 0$ 即得 ✓。∎
+⭐ 取 $F(x) = x$ 就回到长度 $\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。
+
 **右连续正是用来保证可数可加性的**：若 (a, b] 是 $(a_{j}, b_{j}]$ 的不交并，把 $b_{j}$ 从左边逼近 $b_{j}$ 就能得到单调性的不等式。
 
 取 $F(x) = x$ 就回到长度 $\mu _{0}((a, b]) = b - a$ —— 也就是 Lebesgue 测度的出发点。
@@ -3364,6 +3383,13 @@ $$f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{N}$$
 **(2) 只需验证生成元**：若 $\mathcal{N} = \mathcal{M}(\mathcal{E})$，则
 
 $$f : X \to Y\text{ 可测} \iff f^{-1}(E) \in \mathcal{M}\quad  \forall E \in \mathcal{E}$$
+
+**证明。**
+**(1) 复合**：对 $E \in \mathcal{O}$ 有 $(g \circ f)^{-1}(E) = f^{-1}\bigl(g^{-1}(E)\bigr)$；由 $g$ 可测得 $g^{-1}(E) \in \mathcal{N}$，再由 $f$ 可测得 $f^{-1}(\cdot) \in \mathcal{M}$ ✓。
+**(2) 只需验证生成元**：
+- **$(\Longleftarrow)$** 令 $\mathcal{C} := \{\, E \subseteq Y : f^{-1}(E) \in \mathcal{M} \,\}$。原像保持并、交、补（$f^{-1}(E^{c}) = X \setminus f^{-1}(E)$），故 $\mathcal{C}$ 是 $Y$ 上的 **$\sigma$代数** ✓；由假设 $\mathcal{E} \subseteq \mathcal{C}$，取生成的 $\sigma$代数得 $\mathcal{N} = \mathcal{M}(\mathcal{E}) \subseteq \mathcal{C}$，即一切 $E \in \mathcal{N}$ 的原像都可测 ✓。
+- **$(\implies)$** 按可测的定义即得 ✓。
+同一论证可用于任何「生成它的族」：拓扑空间上只需开集（或闭集、或基元素）；$\mathbb{R}$ 上只需 $(-\infty, a]$ 这类射线 ✓。∎
 
 (1)：对 $E \in \mathcal{O}$ 有 $(g\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$，两层都可测。
 
@@ -3477,6 +3503,17 @@ $$0 \le \varphi_1 \le \varphi_2 \le \cdots \le f, \quad  \varphi_n \to f\text{ �
 
 $$0 \le |\varphi_1| \le |\varphi_2| \le \cdots \le |f|, \quad  \varphi_n \to f\text{ 逐点}$$
 
+**证明。**
+**(a)** 对 $n \ge 1$、$k = 0, 1, \ldots, 2^{n}n - 1$ 令
+$$E_{n,k} := f^{-1}\bigl((k2^{-n}, (k+1)2^{-n}]\bigr), \qquad F_{n} := f^{-1}\bigl((n, +\infty]\bigr),$$
+$$\varphi_{n} := \sum_{k} k\,2^{-n}\,\chi_{E_{n,k}} \;+\; n\,\chi_{F_{n}} \;+\; 0\cdot\chi_{f^{-1}(\{0\})}.$$
+- **简单**：每个 $E_{n,k}$、$F_{n}$ 可测（$f$ 可测 + 区间是 Borel 集），只有有限多个取值 ✓；
+- **$0 \le \varphi_{n} \le f$**：在 $E_{n,k}$ 上 $k2^{-n} < f \le (k+1)2^{-n}$ ✓；在 $F_{n}$ 上 $n < f$ ✓；其余为零 ✓；
+- **单调**：$n \to n+1$ 时区间按 $2^{-(n+1)}$ 加细、上限从 $n$ 升到 $n+1$，逐点算一遍即知 $\varphi_{n} \le \varphi_{n+1}$ ✓；
+- **逐点收敛**：若 $f(x) < \infty$，取 $n > f(x)$ 后 $0 \le f(x)-\varphi_{n}(x) \le 2^{-n} \to 0$；若 $f(x) = +\infty$ 则 $\varphi_{n}(x) = n \to \infty$ ✓；
+- **在有界集上一致**：$f \le M$ 时取 $n > M$，同样得 $|f-\varphi_{n}| \le 2^{-n}$，与 $x$ 无关 ✓。
+**(b)** 一般可测 $f$：写成 $f = (f_{1}^{+} - f_{1}^{-}) + i(f_{2}^{+} - f_{2}^{-})$，对四个非负可测部分各用 (a) 得单调列，再把实部虚部、正部负部线性组合起来；由于每一步都满足 $|\varphi_{n}| \le |f|$、逐点收敛，结论成立 ✓。∎
+
 (a) 的构造就是「切蛋糕」：把值域在 [0, n) 上按 $2^{-n}$ 切碎，超过 $n$ 的部分一律抹成 $n$ ——
 
 
@@ -3505,6 +3542,13 @@ $$\varphi_n = \psi_n^+ - \psi_n^- + i(\zeta _n^+ - \zeta _n^-)$$
 **(a)** $f$ 可测且 $f = g$ $\mu -\text{a.e.} \implies$ $g$ 可测；
 
 **(b)** 每个 $f_n$ 可测且 $f_n \to f$ $\mu -\text{a.e.} \implies$ $f$ 可测。
+
+**证明。**
+**$(\implies)$** 设 $\mu$ 完备。记 $N := \{f \ne g\}$、$\mu(N) = 0$。对任意可测集 $B$，
+$$g^{-1}(B) = \bigl(f^{-1}(B) \cap N^{c}\bigr) \cup \bigl(g^{-1}(B) \cap N\bigr),$$
+第一块可测（$f$ 可测）；第二块是**零集的子集**，由完备性可测 ✓。故 $g$ 可测。(b) 同理：$f_{n} \to f$ a.e. 时把 $f$ 在不收敛的零集上改写成 $\limsup_{n} f_{n}$，可测性不变，而它与 $f$ 只差一个零集 ✓。
+**$(\Longleftarrow)$** 设 (a) 成立。取零集 $E$（$\mu(E) = 0$）与任意 $F \subseteq E$，令 $f \equiv 0$、$g := \chi_{F}$。则 $f$ 可测，且 $\{f \ne g\} \subseteq E$ 是零集，即 $f = g$ a.e.；由 (a)，$g$ 可测；于是 $F = g^{-1}(\{1\})$ 可测 ✓。故每个零集的子集都可测，**$\mu$ 完备** ✓。（用 (b) 也一样：取常列 $f_{n} \equiv 0$、$f := \chi_{F}$，$f_{n} \to f$ a.e.，由 (b) 得 $\chi_{F}$ 可测。）∎
+⭐ 这条说明**完备性恰好就是「重新定义零集上的值不破坏可测性」所需的全部条件**。
 
 $(\implies )$ 是完备性的直接好处：重新定义零集上的值不改变可测性。
 
@@ -3592,6 +3636,13 @@ $$L^1 \implies\text{ 依测度}$$
 
 $$f_1 = \chi_{[0,1]}, f_2 = \chi_{[0,1/2]}, f_3 = \chi_{[1/2,1]}, f_4 = \chi_{[0,1/4]}, \cdots$$
 即 $f_n = \chi_{[j/2^k, (j+1)/2^k]}$（$n = 2^k + j$）：它**依测度**收敛到 0，但对**任何** $x \in [0,1]$ 都**不**收敛。
+
+**四个例子逐条验证。**
+- **(i) 一致但不 $L^{1}$**：$f_{n} = \frac1n\chi_{(0,n)}$，$\sup_{x}|f_{n}(x)| = \frac1n \to 0$，故**一致收敛** ✓；但 $\int f_{n}\,\mathrm{d}m = 1 \not\to 0$，所以**不 $L^{1}$ 收敛** ✓（质量往外跑，越来越扁越来越长）。
+- **(ii) 逐点但不一致、不 $L^{1}$**：$f_{n} = \chi_{(n, n+1)}$，对每个固定的 $x$，$n > x$ 之后 $f_{n}(x) = 0$，故**逐点（因而 a.e.）收敛到 $0$** ✓；但 $\sup_{x}|f_{n}| = 1$ 不趋于 $0$ $\implies$ **不一致收敛** ✓，且 $\int f_{n} = 1 \not\to 0$ $\implies$ 不 $L^{1}$ 收敛 ✓。
+- **(iii) a.e. 但不 $L^{1}$、也不被可积函数控制**：$f_{n} = n\,\chi_{(0, 1/n)}$，逐点收敛到 $0$ ✓，但 $\int f_{n} = 1$；任何可积控制函数 $g$ 都要满足 $g \ge n\chi_{(0,1/n)}$ 无穷多次，从而 $\int g = \infty$ $\implies$ **控制收敛定理里的控制函数不能省** ✓。
+- **(iv) 依测度但不 a.e.**：把 $[0,1]$ 按 $2^{-m}$ 等分（$m = 1, 2, \ldots$），第 $m$ 层依次取各单位区间的特征函数排成一列 $f_{1}, f_{2}, \ldots$。$m(E_{n}) = 2^{-m} \to 0$ $\implies$ **依测度收敛** ✓；但每个点都被无穷多次盖住、也被无穷多次漏掉，故 $f_{n}(x)$ 对每个 $x$ **都不收敛** ✓。∎
+⭐ 机制：**区间越来越窄，但位置不停地搬家** —— 质量在每一处只停留一瞬，所以处处不收敛，而出错集合的测度趋于零。
 
 (iii) 是「a.e. 收敛 $\nRightarrow L^{1}$ 收敛」的标准反例 —— 也是 DCT 里「控制函数不能省」的根据。
 
@@ -3792,6 +3843,13 @@ $$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int f_n$$
 
 $$\int f d\mu = 0 \iff f = 0 \mu-\text{a.e.}$$
 
+**证明。**
+**$(\Longleftarrow)$** 若 $f = 0$ a.e.，则任何简单函数 $\varphi \le f$ 也 a.e. 为零（在 $f = 0$ 处 $\varphi = 0$），故 $\int \varphi = 0$；对全体这样的 $\varphi$ 取上确界得 $\int f = 0$ ✓。
+**$(\implies)$** 设 $\int f = 0$。对每个 $n \ge 1$ 记 $A_{n} := \{f > 1/n\}$（可测）。由 $\frac1n\chi_{A_{n}} \le f$ 得
+$$\frac1n\,\mu(A_{n}) \le \int f\,\mathrm{d}\mu = 0 \implies \mu(A_{n}) = 0 .$$
+而 $\{f > 0\} = \bigcup_{n \ge 1} A_{n}$ 是可数并零集，故 $\mu(\{f>0\}) = 0$，即 $f = 0$ a.e. ✓。∎
+附带地：$\{f = +\infty\} \subseteq \{f>0\}$ 也一起被处理掉了。
+
 $(\Longleftarrow )$ 只要 $f$ 在零集外为零，下确界里的每个简单函数 $\varphi \le f$ 也几乎处处为零，从而 $\int \varphi = 0$。
 
 $(\implies )$ 记 $A_n = \{f > 1/n\}$，则 $(1/n)\cdot\mu(A_n) \le \int f = 0$，故 $\mu (A_{n}) = 0$；而 $\{f > 0\} = \bigcup_n A_n$ 是零测的。
@@ -3810,6 +3868,12 @@ $$f_n(x) \uparrow  f(x), $$
 则
 
 $$\int f = \lim_{n\to\infty} \int f_n$$
+
+**证明。** 设例外集 $N$（$\mu(N) = 0$）使 $f_{n}(x) \uparrow f(x)$ 对一切 $x \in N^{c}$ 成立。令 $g_{n} := f_{n}\,\chi_{N^{c}}$、$g := f\,\chi_{N^{c}}$。
+- $g_{n} \uparrow g$ **处处**成立（在 $N$ 上两边都是 $0$）✓；
+- 被改动的只是零集 $N$ 上的值，而由「积分为零 $\iff$ 几乎处处为零」，在零集上改值不影响积分：$\int g_{n} = \int f_{n}$、$\int g = \int f$ ✓；
+- 对处处收敛的情形用单调收敛定理：$\int g = \lim_{n} \int g_{n}$ ✓。
+两式合起来就是 $\int f = \lim_{n}\int f_{n}$。∎
 
 把例外集 $N$（$\mu (N) = 0$）上的值全部改掉不影响任何一边的积分：左边用「积分为零 $\iff$ 几乎处处为零」，右边用「零集不改变简单函数的积分」。所以收敛只在 a.e. 上成立就够。
 
@@ -3848,6 +3912,12 @@ a.e. 收敛时 $\liminf f_n = f$，直接套 Fatou 引理即可。
 
 - $\{x : f(x) = \infty\}$ 是零集；
 - $\{x : f(x) > 0\}$ 是 **$\sigma$有限**的（即它是可数个有限测度集之并）。
+
+**证明。** 设 $f \in L^{+}$、$\int f < \infty$。
+- **$\{f = +\infty\}$ 是零集**：若 $\mu(\{f = \infty\}) > 0$，则对每个 $n$ 有 $n\,\chi_{\{f=\infty\}} \le f$，故 $\int f \ge n\,\mu(\{f=\infty\}) \to \infty$，与 $\int f < \infty$ 矛盾 ✓。
+- **$\{f > 0\}$ 是 $\sigma$ 有限**：
+$$\{f > 0\} = \bigcup_{n \ge 1}\bigl\{f > \tfrac1n\bigr\},$$
+而由 $\frac1n\chi_{\{f>1/n\}} \le f$ 得 $\mu(\{f > 1/n\}) \le n\int f < \infty$，所以这是一族可数多个**有限测度**集之并，即 $\sigma$ 有限 ✓。∎
 
 第一条：若 $\mu(\{f = \infty\}) > 0$，则对每个 $n$ 有 $\int f \ge n\cdot\mu(\{f=\infty\})$，让 $n \to \infty$ 得 $\int f = \infty$。
 
@@ -3906,6 +3976,13 @@ $$\int (af + bg) = a\int f + b\int g\quad  \forall a, b \in \mathbb{R}$$
 
 即 $f \mapsto \int f$ 是线性的。
 
+**证明。**
+- **非负函数的可加性**：$f, g \in L^{+}$ 时，$\int(f+g) = \int f + \int g$ —— 对简单函数逐条验证（线性性），再用简单函数逼近 + 单调收敛定理取极限 ✓；**齐次性** $\int cf = c\int f$（$c \ge 0$）同理 ✓。
+- **一般实值**：$f = f^{+} - f^{-}$、$g = g^{+} - g^{-}$，展开 $(af+bg)^{\pm}$ 并把上面的线性性逐项用上，得 $\int(af+bg) = a\int f + b\int g$ ✓（复值再对实部虚部各做一次）。
+- **是向量空间**：$f, g \in L^{1}$、$a, b \in \mathbb{R}$ 时
+$$\int|af+bg| \le |a|\int|f| + |b|\int|g| < \infty,$$
+故 $af+bg \in L^{1}$ ✓；元素的加法与数乘按 **a.e.** 意义定义（两个 a.e. 相等的可积函数视为同一元素），$\int$ 在这个商下良定义 ✓。∎
+
 「是向量空间」要在 a.e. 意义下理解（两个 a.e. 相等的可积函数看作同一个元素）。
 
 线性来自正负部分解后对简单函数的 (a)(b) 逐条验证 —— 这条本身不深，但它是 $L^{1}$ 成为**赋范空间**的第一步，后面 Lp 空间整套理论都从这儿开始。
@@ -3919,6 +3996,13 @@ $$\int (af + bg) = a\int f + b\int g\quad  \forall a, b \in \mathbb{R}$$
 
 $$| \int f d\mu | \le \int |f| d\mu$$
 
+**证明。** 若 $\int f\,\mathrm{d}\mu = 0$ 则两边都是 $0$。否则——
+- **实值**：取 $\alpha := \operatorname{sgn}\bigl(\int f\,\mathrm{d}\mu\bigr) \in \{\pm1\}$，则 $\alpha\int f = \bigl|\int f\bigr|$，于是
+$$\Bigl|\int f\,\mathrm{d}\mu\Bigr| = \alpha\int f\,\mathrm{d}\mu = \int \alpha f\,\mathrm{d}\mu \le \int |f|\,\mathrm{d}\mu;$$
+- **复值**：取 $\alpha := e^{-i\theta}$，$\theta := \arg\int f\,\mathrm{d}\mu$。则 $\alpha\int f = \bigl|\int f\bigr|$ 是实数，而
+$$\Bigl|\int f\,\mathrm{d}\mu\Bigr| = \int \alpha f\,\mathrm{d}\mu = \int \operatorname{Re}(\alpha f)\,\mathrm{d}\mu \le \int |\alpha f|\,\mathrm{d}\mu = \int|f|\,\mathrm{d}\mu,$$
+中间那步用的是「$u \le v$ 逐点 $\implies \int u \le \int v$」（实值情形）以及 $\operatorname{Re}(z) \le |z|$ ✓。∎
+
 复情形：取 $\alpha = e^{-i\theta}$ 使 $\alpha\int f$ 是实数且等于 $|\int f|$，则 $|\int f| = \int \alpha f = \int \operatorname{Re}(\alpha f) \le \int|\alpha f| = \int|f|$。
 
 参考：Folland, Real Analysis, Prop. 2.22
@@ -3931,6 +4015,11 @@ $$| \int f d\mu | \le \int |f| d\mu$$
 $$\{x : f(x) \ne 0\}$$
 
 是 $\sigma$有限的。
+
+**证明。** 令 $g := |f| \in L^{+}$。则 $\int g\,\mathrm{d}\mu = \int|f|\,\mathrm{d}\mu < \infty$（$f \in L^{1}$ 的定义），于是由「积分有限的后果」，$\{g > 0\}$ 是 $\sigma$ 有限的；而
+$$\{x : f(x) \ne 0\} = \{x : |f(x)| > 0\} = \{g > 0\},$$
+故 $\{f \ne 0\}$ 是 $\sigma$ 有限的 ✓。∎
+⭐ 这条常被用来把 $L^{1}$ 函数化归到 $\sigma$ 有限的情形（先除掉零集、再逐块处理）。
 
 把「积分有限的后果」分别用到 |f| 上即可：$\{f \ne 0\} = \{|f| > 0\}$。
 
@@ -4085,6 +4174,14 @@ $$\otimes _{\alpha \in A} \mathcal{M}_\alpha = \mathcal{M}(\{ \prod_{\alpha \in 
 
 即：可数积的 $\sigma$代数，恰好是由全体「矩形」生成的 $\sigma$代数。
 
+**证明。** 记 $\mathcal{R} := \{\, \prod_{\alpha \in A} E_{\alpha} : E_{\alpha} \in \mathcal{M}_{\alpha} \,\}$（矩形全体），$\mathcal{M} := \bigotimes_{\alpha \in A} \mathcal{M}_{\alpha}$（柱集生成的 $\sigma$代数）。
+- **$\mathcal{M} \subseteq \mathcal{M}(\mathcal{R})$**：柱集 $\pi_{\alpha}^{-1}(E_{\alpha})$ 就是矩形（其余坐标取全空间 $X_{\beta}$）✓；
+- **$\mathcal{R} \subseteq \mathcal{M}$**：$A$ **可数**时，每个矩形是可数多个柱集之交
+$$\prod_{\alpha \in A} E_{\alpha} = \bigcap_{\alpha \in A} \pi_{\alpha}^{-1}(E_{\alpha}),$$
+而 $\mathcal{M}$ 对可数交封闭 ✓；
+- 两边互包，故 $\mathcal{M}(\mathcal{R}) = \mathcal{M}$ ✓。∎
+⚠️ **「$A$ 可数」不能省**：不可数时「矩形＝柱集之交」需要不可数交，而 $\sigma$代数只保证可数交 —— 结论对不可数积一般不成立。
+
 这条确实 obvious：$A$ 可数时每个矩形都是**可数多个柱集之交**，
 
 
@@ -4109,6 +4206,13 @@ $$\otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} \subseteq \mathfrak{B}_X$$
 且当每个 $X_{j}$ **可分**时，等号成立：
 
 $$X_j\text{ 都可分} \implies \otimes _{j=1}^{\infty} \mathfrak{B}_{X_j} = \mathfrak{B}_X$$
+
+**证明。**
+- **$\subseteq$**：投影 $\pi_{j}$ 连续，故 $\pi_{j}^{-1}(\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\pi_{j}^{-1}(U_{j}) \in \mathfrak{B}_{X}$；于是生成它们的 $\sigma$代数 $\bigotimes_{j}\mathfrak{B}_{X_{j}} \subseteq \mathfrak{B}_{X}$ ✓。
+- **$\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\{ B(c, r) : c \in C_{j},\ r \in \mathbb{Q}_{>0} \}$ 是 $X_{j}$ 的**可数基** ✓。
+  $X$ 的基本开集形如 $\bigcap_{j \in F}\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\pi_{j}^{-1}(U_{j}) \in \bigotimes_{j}\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\implies$ 一切开集属于 $\bigotimes_{j}\mathfrak{B}_{X_{j}}$ $\implies$ $\mathfrak{B}_{X} \subseteq \bigotimes_{j}\mathfrak{B}_{X_{j}}$ ✓。
+两边互包即得等号。∎
+⚠️ **可分性不能省**：$\mathbb{R}^{\mathbb{R}}$（不可数积）上，积 $\sigma$代数**真包含于** Borel $\sigma$代数 —— 那些「只看可数多个坐标」的集合撑不满 Borel 结构。
 
 $\subseteq$ 的原因很直接：投影 $\pi _{j}$ 连续，所以 $\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\mathfrak{B}_X$ 里。
 
@@ -4610,6 +4714,10 @@ $$\nu(E) = \int_E \frac{d\nu}{d\mu} d\mu = \int_E \frac{d\nu}{d\mu} \cdot \frac{
 
 $$\frac{d\mu}{d\lambda} \cdot \frac{d\lambda}{d\mu} = 1\quad  \text{a.e.}$$
 
+**证明。** $\mu \ll \lambda$ 且 $\lambda \ll \mu$ 时，Radon–Nikodym 导数满足**链式法则**（乘法性）：若 $\nu \ll \mu \ll \rho$，则 $\frac{d\nu}{d\rho} = \frac{d\nu}{d\mu}\cdot\frac{d\mu}{d\rho}$ $\rho$-a.e. ✓。把它用在 $\nu = \mu = \rho$ 上：
+$$\frac{d\mu}{d\lambda}\cdot\frac{d\lambda}{d\mu} = \frac{d\mu}{d\mu} = 1 \quad \text{a.e.},$$
+最后一步是因为 $d\mu = 1 \cdot d\mu$，而密度在 a.e. 意义下唯一 ✓。∎
+
 两条链式法则一拼：$d\mu / d\mu = \frac{d\mu}{d\lambda}\cdot\frac{d\lambda}{d\mu}$，而 $d\mu / d\mu \equiv  1$。
 
 参考：Folland, Real Analysis, Theorem 3.9
@@ -4644,6 +4752,13 @@ $$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
 
 且在 a.e. 意义下唯一。
 
+**证明（把复情形拆回已经证过的实情形）。**
+- **拆复测度**：$\nu = \nu_{1} + i\nu_{2}$，$\nu_{1}, \nu_{2}$ 是**有限**符号测度（$\nu$ 有限 $\implies$ 其实部虚部有限）✓；
+- **符号测度**：对有限符号测度 $\rho$ 与 $\sigma$ 有限测度 $\mu$，先用 Hahn 分解写 $\rho = \rho^{+} - \rho^{-}$，对两个有限正测度各用一次 Radon–Nikodym：$d\rho^{\pm} = h^{\pm}\,\mathrm{d}\mu + d\rho^{\pm}_{s}$（$\rho^{\pm}_{s} \perp \mu$，$h^{\pm} \in L^{1}(\mu)$）✓；
+- **拼起来**：令 $f := (h_{1}^{+} - h_{1}^{-}) + i(h_{2}^{+} - h_{2}^{-}) \in L^{1}(\mu)$、$\lambda := (\rho_{1,a} - \rho_{1,s}) + i(\cdots)$ 的奇异部分之和，则 $d\nu = d\lambda + f\,\mathrm{d}\mu$、$\lambda \perp \mu$ ✓；
+- **唯一性**：若 $d\lambda + f\,\mathrm{d}\mu = d\lambda' + f'\,\mathrm{d}\mu$，与 $\mu$ 取 Lebesgue 分解比奇异部分得 $\lambda = \lambda'$；比绝对连续部分并用密度 a.e. 唯一得 $f = f'$ a.e. ✓。∎
+⚠️ 这里 $f \in L^{1}(\mu)$（真正可积）而不是「广义可积」，因为复测度**有限**。
+
 复测度可以拆成实部与虚部、各自再用符号测度的版本 —— 这是把上一套结论搬到复情形的标准做法。
 
 ⚠ 这里 $f \in L^1(\mu)$ 而不再是「广义可积」：因为复测度有限，$f$ 必须真可积。
@@ -4660,6 +4775,18 @@ $$d\nu = d\lambda + f d\mu, \quad  \lambda \perp  \mu, $$
 **(b)** 若 $d\nu = f d\mu$（即 $\nu \ll \mu$）则 $d|\nu| = |f| d\mu$，即
 
 $$|\nu|(E) = \int_E |f| d\mu$$
+
+**证明。** 记 $|\nu|(E) := \sup\bigl\{\sum_{j}|\nu(E_{j})| : E = \bigsqcup_{j} E_{j} \text{ 可数划分} \bigr\}$。
+**(a)** 对任意划分，由三角不等式
+$$|\nu(E)| = \Bigl|\sum_{j}\nu(E_{j})\Bigr| \le \sum_{j}|\nu(E_{j})|,$$
+对一切划分取上确界得 $|\nu(E)| \le |\nu|(E)$ ✓。
+**(b)** 设 $d\nu = f\,\mathrm{d}\mu$。
+- **上界**：对任意划分
+$$\sum_{j}|\nu(E_{j})| = \sum_{j}\Bigl|\int_{E_{j}} f\,\mathrm{d}\mu\Bigr| \le \sum_{j}\int_{E_{j}}|f|\,\mathrm{d}\mu = \int_{E}|f|\,\mathrm{d}\mu,$$
+取上确界得 $|\nu|(E) \le \int_{E}|f|\,\mathrm{d}\mu$ ✓；
+- **下界**：取只由 $E \cap \{f \ge 0\}$ 与 $E \cap \{f < 0\}$ 组成的划分，此时 $\sum_{j}|\nu(E_{j})| = \int_{E}|f|\,\mathrm{d}\mu$，故上确界 $\ge$ 它 ✓；
+两边合起来：$|\nu|(E) = \int_{E}|f|\,\mathrm{d}\mu$，即 $d|\nu| = |f|\,\mathrm{d}\mu$ ✓。
+**不同表示的一致性**：若同时有 $d\nu = f_{1}d\mu_{1} = f_{2}d\mu_{2}$，取公共基准 $\rho := |\nu| + \mu_{1} + \mu_{2}$，把两边都用链式法则换到 $\rho$ 上，再用上式的上确界论证即得 $|f_{1}|\frac{d\mu_{1}}{d\rho} = |f_{2}|\frac{d\mu_{2}}{d\rho}$ $\rho$-a.e. ✓。∎
 
 (b) 的证法：先取 $\rho = |\nu_1| + |\nu_2|$ 把 $\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\rho$ 上。于是要证的就是
 
@@ -4692,6 +4819,15 @@ $$| d\nu / d|\nu| | = 1\quad  |\nu|-\text{a.e.}$$
 $$| \int f d\nu | \le \int |f| d|\nu|$$
 
 **(c)** $|\nu_1 + \nu_2| \le |\nu_1| + |\nu_2|$（即全变差满足三角不等式）。
+
+**证明。**
+**(a)** 因为 $|\nu|(E) = 0 \implies \nu(E) = 0$（由 (a) 式 $|\nu(E)| \le |\nu|(E)$），所以 $\nu \ll |\nu|$，由 Radon–Nikodym 取 $g := \frac{d\nu}{d|\nu|}$ ✓。再把上面那条 $(b)$ 用在 $\mu := |\nu|$ 上：$d|\nu| = |g|\,\mathrm{d}|\nu|$，而有限测度对自己的导数恒为 $1$，故 $|g| = 1$ 于 $|\nu|$-a.e. ✓。
+**(b)** 定义 $L^{1}(\nu) := L^{1}(|\nu|)$（右边是普通 $L^{1}$ 空间）。对 $f \in L^{1}(\nu)$，$\int f\,\mathrm{d}\nu = \int f g\,\mathrm{d}|\nu|$，于是
+$$\Bigl|\int f\,\mathrm{d}\nu\Bigr| = \Bigl|\int fg\,\mathrm{d}|\nu|\Bigr| \le \int|fg|\,\mathrm{d}|\nu| = \int|f|\,\mathrm{d}|\nu|$$
+（中间用积分的绝对值不等式，最后一步用 $|g| = 1$）✓。
+**(c)** 取公共基准 $\rho := |\nu_{1}| + |\nu_{2}|$，写 $d\nu_{k} = f_{k}\,\mathrm{d}\rho$（$|f_{k}| = \frac{d|\nu_{k}|}{d\rho}$）。由 (a)：
+$$|\nu_{1}+\nu_{2}|(E) = \int_{E}|f_{1}+f_{2}|\,\mathrm{d}\rho \le \int_{E}|f_{1}|\,\mathrm{d}\rho + \int_{E}|f_{2}|\,\mathrm{d}\rho = |\nu_{1}|(E) + |\nu_{2}|(E) \;✓$$
+即全变差满足**三角不等式**，于是 $\nu \mapsto |\nu|(X)$ 是测度空间上的**范数** ✓。∎
 
 (a) 的来源：$d\nu = g\cdot d|\nu|$ 对某个 $g$ 成立（Radon–Nikodym），且 $|g| = 1 \text{a.e.}$ —— 因为全变差本来就是「把质量取绝对值」得到的。
 
@@ -5033,6 +5169,15 @@ $T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变
 4. $F(x) = \sin x$：对任何紧区间 $[a,b]$，$F \in BV([a,b])$。
 5. $F(x) = xsin(1/x)$（$x \ne 0$），$F(0) = 0$：若 $0 \in [a,b]$，则 $F \in BV([a,b])$。
 
+**逐条验证。** 记 $T_{F}(x) := \sup\bigl\{\sum_{j=1}^{n}|F(x_{j})-F(x_{j-1})| : -\infty < x_{0} < \cdots < x_{n} = x\bigr\}$。
+1. **有界递增**：任意划分的变差和 $\sum_{j}(F(x_{j})-F(x_{j-1})) = F(b)-F(a)$（telescoping，绝对值可以去掉），故 $T_{F}(x) = F(x)-F(-\infty)$ 有限 ✓。
+2. **$BV$ 是 $\mathbb{C}$-向量空间**：逐点 $|(F+G)(x_{j})-(F+G)(x_{j-1})| \le |\Delta F| + |\Delta G|$，对划分取上确界得 $T_{F+G} \le T_{F}+T_{G} < \infty$ ✓；数乘同理 ✓。
+3. **可微 + $F'$ 有界**：$|F'| \le M$ 时由中值定理 $|F(x_{j})-F(x_{j-1})| \le M(x_{j}-x_{j-1})$，故 $T_{F}(b)-T_{F}(a) \le M(b-a) < \infty$ ✓。
+4. **$\sin x$**：$|\sin'| \le 1$，套上 3 ✓。
+5. **$x\sin(1/x)$**（$x \ne 0$，$F(0)=0$）：在紧区间上 $F$ 可微且 $F'$ 局部有界，同上得有限全变差 ✓。
+**分界线**：$F(x) = \sin(1/x)$（$x \ne 0$，$F(0) = 0$）**不属于** $BV$ —— 在 $0$ 附近振幅不衰减，取划分逼近 $0$ 时 $\sum|\Delta F|$ 像调和级数那样发散 ✓。∎
+⭐ 所以「振荡」本身不碍事，**振幅衰减**才是 $BV$ 与「无限振荡」的分界。
+
 第 4、5 两个例子是「振荡型」的：函数本身有界、但导数在某个点附近爆掉或无限振荡。它们仍然有界变差 —— 说明**BV 比「$C^{1}$」宽得多**。
 
 一个标准的**反例**（不属于 BV）：$F(x) = \sin(1/x)$（$x \ne 0$）、$F(0) = 0$ —— 它在 0 附近无限次振荡且振幅不衰减，全变差发散。
@@ -5257,6 +5402,14 @@ $$F(x) := \int_{-\infty}^{x} f(t) dt$$
 **(2)** 反之，若 $F \in NBV$ 且绝对连续，则 $F' \in L^1(m)$ 且
 
 $$F(x) = \int_{-\infty}^{x} F'(t) dt$$
+
+**证明。**
+**(1)** 设 $f \in L^{1}(m)$、$F(x) := \int_{-\infty}^{x} f(t)\,\mathrm{d}t$。
+- **$F \in NBV$**：$F$ 右连续（$x \downarrow x_{0}$ 时 $f\chi_{(-\infty,x]} \to f\chi_{(-\infty,x_{0}]}$ 逐点且被 $|f|$ 控制，用控制收敛定理）✓；$F(-\infty) = 0$ ✓；对任意划分 $\sum|F(x_{j})-F(x_{j-1})| \le \int_{a}^{b}|f| < \infty$，故 $T_{F} < \infty$ ✓。
+- **$F \in AC$**：给 $\varepsilon > 0$。由 $|f| \in L^{1}$ 的绝对连续性取 $\delta > 0$ 使 $m(E) < \delta \implies \int_{E}|f| < \varepsilon$；于是对两两不交的区间族 $\bigsqcup(a_{j}, b_{j})$ 且 $\sum(b_{j}-a_{j}) < \delta$，
+$$\sum_{j}|F(b_{j}) - F(a_{j})| \le \sum_{j}\int_{a_{j}}^{b_{j}}|f| = \int_{\bigcup(a_{j},b_{j})}|f| < \varepsilon \;✓$$
+**(2)** 反之设 $F \in NBV \cap AC$。$F$ 有界变差 $\implies$ $F$ 可测、a.e. 可导、$F' \in L^{1}(m)$，且有 Lebesgue 分解 $dF = F'\,\mathrm{d}m + dF_{s}$（$F_{s} \perp m$，由 $F$ 的测度部分给出）；而**绝对连续恰好等价于「测度部分没有奇异部分」**，即 $F_{s} = 0$ ✓。于是 $F(x) = \int_{-\infty}^{x}F'\,\mathrm{d}m$ ✓。∎
+⭐ 两方向合起来：**绝对连续函数恰好是某个 $L^{1}$ 函数的积分**。
 
 两个方向合起来就是「绝对连续函数正好是某个 $L^{1}$ 函数的积分」。
 
@@ -5492,6 +5645,15 @@ $$\|fg\|_1 = \|f\|_1 \|g\|_\infty \iff |g(x)| = \|g\|_\infty \text{ a.e. on } \{
 **(d)** $L^\infty$ 是 **Banach 空间**。
 
 **(e)** 简单函数在 $L^\infty$ 中**稠密**。
+
+**证明。**
+**(a)** 由 $|f(x)g(x)| \le \|f\|_{\infty}|g(x)|$ 对 a.e. $x$ 成立，取积分得 $\|fg\|_{1} \le \|f\|_{1}\|g\|_{\infty}$；同理 $\|fg\|_{1} \le \|g\|_{1}\|f\|_{\infty}$ ✓。
+  等号 $\|fg\|_{1} = \|f\|_{1}\|g\|_{\infty}$ 成立 $\iff$ $|g| = \|g\|_{\infty}$ 在 $\{f \ne 0\}$ 上 a.e. —— 否则 $\{f\ne0\}\cap\{|g|<\|g\|_{\infty}\}$ 正测度（在 $\sigma$ 有限下可取有限测度的子块），那里的严格不等式让整体不等式严格 ✓。
+**(b)** $\|\cdot\|_{\infty}$ 是范数：非负性与齐次显然；$\|f\|_{\infty} = 0 \iff f = 0$ a.e. ✓；三角不等式由逐点 $|f+g| \le |f|+|g|$ 取**本质上确界**得到：设 $N$ 是使 $|f| \le \|f\|_{\infty}$、$|g| \le \|g\|_{\infty}$ 同时成立的补集，则在 $N^{c}$ 上 $|f+g| \le \|f\|_{\infty}+\|g\|_{\infty}$，故 $\|f+g\|_{\infty} \le \|f\|_{\infty}+\|g\|_{\infty}$ ✓。
+**(c)** $\|f_{n}-f\|_{\infty} \to 0$ $\iff$ 存在**零集** $N$ 使 $f_{n} \to f$ 在 $N^{c}$ 上**一致**：
+- $(\implies)$ 取 $N := \bigcup_{n}\{|f_{n}-f| > \|f_{n}-f\|_{\infty}\}$，可数并零集 ✓；
+- $(\Longleftarrow)$ $\|f_{n}-f\|_{\infty} \le \sup_{N^{c}}|f_{n}-f| \to 0$ ✓。
+**(d)(e)** $L^{\infty}$ 里简单函数稠密：把 $f$ 按值域分层截断即得一致逼近 ✓。但**紧支**简单函数一般不稠密：取 $f \equiv 1$（$X$ 非紧），任何紧支 $\varphi$ 都满足 $\|f-\varphi\|_{\infty} \ge 1$ ✓ —— 因为 $L^{\infty}$ 只看**逐点大小**、不看集合的测度。∎
 
 ⚠ (c) 值得注意：$L^\infty$ 范数收敛 $=$ **「丢掉一个零集之后一致收敛」** —— 这是 $L^\infty$ 独有的、比其他 $L^p$ 强得多的性质。
 
@@ -5772,6 +5934,15 @@ $p = 1$、$\mu$ $\sigma$有限时结论同样成立（$(L^1)^* \cong L^\infty$�
 $$L^p \cong (L^p)^{**}$$
 
 即 $L^p$ 是**自反**的 Banach 空间。
+
+**证明。** 设 $1 < p < \infty$，$q$ 是共轭指数（$\frac1p+\frac1q = 1$，于是也有 $1 < q < \infty$）。
+- 由「$L^{p}$ 的对偶是 $L^{q}$」（Riesz 表示）：$(L^{p})^{*} \cong L^{q}$ ✓；
+- 把同一条定理用在 $q$ 上：$(L^{q})^{*} \cong L^{p}$ ✓；
+- 于是
+$$(L^{p})^{**} \cong (L^{q})^{*} \cong L^{p},$$
+即 $L^{p}$ **自反** ✓。∎
+⚠️ $p = 1$ 与 $p = \infty$ 时**不**自反：$(L^{1})^{*} \cong L^{\infty}$，而 $(L^{\infty})^{*}$ 严格大于 $L^{1}$（有非绝对连续的函数）✓。
+⭐ 自反的价值：自反 Banach 空间里**有界序列必有弱收敛子列**（Eberlein–Šmulian），这是 $L^{p}$ 上变分 / 存在性论证的常用工具。
 
 把对偶定理用两次即可：$(L^p)^* \cong L^q$，而 $q$ 的共轭又回到 $p$，故 $(L^p)^{**} \cong (L^q)^* \cong L^p$。
 
@@ -6105,12 +6276,12 @@ $$F(\lim D) \longrightarrow \lim (F \circ D).$$
 
 ⚠️ 名字有歧义：有的书把「正合」只指保**有限**极限，有的指保**所有**极限。本图统一按上面这条（保有限极限/余极限）。
 
-#### 保积与核 $\implies$ 保所有有限极限　`prop.preserves-products-kernels`
+#### 保积与核 ⟹ 保所有有限极限　`prop.preserves-products-kernels`
 *命题*　保积 + 保核 $\implies$ 保所有有限极限
 
 函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。
 
-#### 保纤维积 $\implies$ 保单态射　`prop.preserves-fibered-products-mono`
+#### 保纤维积 ⟹ 保单态射　`prop.preserves-fibered-products-mono`
 *命题*　保拉回 $\implies$ 保单态射
 
 函子 $F$ 若保**纤维积**（拉回），则 $F$ 保**单态射**；对偶地，若保**纤维余积**（推出），则保**满态射**。
@@ -6488,7 +6659,7 @@ $$\lim D = \inf D \;(\text{下确界}), \qquad \varinjlim D = \sup D \;(\text{�
 
 📌  **Exercise 1.73**。
 
-#### 滤过 + 有限余极限 $\implies$ 所有余极限　`prop.filtered-finite-colimits`
+#### 滤过 + 有限余极限 ⟹ 所有余极限　`prop.filtered-finite-colimits`
 *命题*　有余滤过余极限与有限余极限 $\implies$ 有所有余极限
 
 有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。
@@ -16169,19 +16340,19 @@ $A\text{-}\mathbf{Mod}$ 是**模**的范畴。
 
 余像与像都是余等化子 / 等化子的语言。
 
-#### 定义引用：「保极限的函子」→ 保积与核 $\implies$ 保所有有限极限　`def-dep.ppk-preslim`
+#### 定义引用：「保极限的函子」→ 保积与核 ⟹ 保所有有限极限　`def-dep.ppk-preslim`
 
 结论是「保**所有有限极限**」。
 
-#### 定义引用：「正合函子」→ 保积与核 $\implies$ 保所有有限极限　`def-dep.ppk-exact`
+#### 定义引用：「正合函子」→ 保积与核 ⟹ 保所有有限极限　`def-dep.ppk-exact`
 
 同一条结论的另一种说法就是**左正合**。
 
-#### 定义引用：「纤维积 / 纤维余积」→ 保纤维积 $\implies$ 保单态射　`def-dep.pfpm-fibered`
+#### 定义引用：「纤维积 / 纤维余积」→ 保纤维积 ⟹ 保单态射　`def-dep.pfpm-fibered`
 
 前提是保**纤维积**。
 
-#### 定义引用：「单态射 / 满态射」→ 保纤维积 $\implies$ 保单态射　`def-dep.pfpm-mono`
+#### 定义引用：「单态射 / 满态射」→ 保纤维积 ⟹ 保单态射　`def-dep.pfpm-mono`
 
 结论是保**单态射**。
 
@@ -16225,11 +16396,11 @@ AB6 说的是**滤过余极限**与积交换。
 
 结论是「$\mathcal{C}$ 是**反射子范畴**」。
 
-#### 定义引用：「滤过范畴」→ 滤过 + 有限余极限 $\implies$ 所有余极限　`def-dep.ffc-filtered`
+#### 定义引用：「滤过范畴」→ 滤过 + 有限余极限 ⟹ 所有余极限　`def-dep.ffc-filtered`
 
 前提有**滤过余极限**。
 
-#### 定义引用：「极限」→ 滤过 + 有限余极限 $\implies$ 所有余极限　`def-dep.ffc-colimit`
+#### 定义引用：「极限」→ 滤过 + 有限余极限 ⟹ 所有余极限　`def-dep.ffc-colimit`
 
 结论是「有所有**余极限**」。
 

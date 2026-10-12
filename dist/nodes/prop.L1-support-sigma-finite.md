@@ -14,5 +14,4 @@ $$\{x : f(x) \ne 0\}$$
 
 refs: Folland, Real Analysis, §2.3
 
-## 说明
-把「积分有限的后果」分别用到 |f| 上即可：$\{f \ne 0\} = \{|f| > 0\}$。
+> 说明见 `notes/prop.L1-support-sigma-finite.md`

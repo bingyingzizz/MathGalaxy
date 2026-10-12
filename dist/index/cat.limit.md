@@ -18,7 +18,7 @@
 - thm.lim-functor　极限的函子性　layer 12
 - prop.poset-limit-join　偏序集里的极限是交　layer 12
 - prop.ind-reflective　C 是 Ind(C) 的反射子范畴　layer 12
-- prop.filtered-finite-colimits　滤过 + 有限余极限 $\implies$ 所有余极限　layer 12
+- prop.filtered-finite-colimits　滤过 + 有限余极限 ⟹ 所有余极限　layer 12
 - def.cofinal-functor　共尾函子　layer 13
 
 > 续见 `index/cat.limit.2.md`

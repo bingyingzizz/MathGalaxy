@@ -12,5 +12,4 @@ $$| \int f d\mu | \le \int |f| d\mu$$
 
 refs: Folland, Real Analysis, Prop. 2.22
 
-## 说明
-复情形：取 $\alpha = e^{-i\theta}$ 使 $\alpha\int f$ 是实数且等于 $|\int f|$，则 $|\int f| = \int \alpha f = \int \operatorname{Re}(\alpha f) \le \int|\alpha f| = \int|f|$。
+> 说明见 `notes/prop.integral-abs-ineq.md`

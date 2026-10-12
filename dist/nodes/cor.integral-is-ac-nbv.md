@@ -9,8 +9,8 @@ $$F(x) := \int_{-\infty}^{x} f(t) dt$$
 属于 $AC \cap NBV$。
 
 **(2)** 反之，若 $F \in NBV$ 且绝对连续，则 $F' \in L^1(m)$ 且
-> 陈述续见 `nodes/cor.integral-is-ac-nbv.2.md`
 
+$$F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.nbv` NBV：用到了定义 NBV　proofs/def-link.nbv-ftc.md
@@ -18,5 +18,4 @@ $$F(x) := \int_{-\infty}^{x} f(t) dt$$
 
 refs: Folland, Real Analysis, Theorem 3.35
 
-## 说明
-两个方向合起来就是「绝对连续函数正好是某个 $L^{1}$ 函数的积分」。
+> 说明见 `notes/cor.integral-is-ac-nbv.md`

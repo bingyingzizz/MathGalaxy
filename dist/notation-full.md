@@ -119,6 +119,7 @@
 - `\mathcal{N}` 𝒩　**零集族或第二个空间的 σ-代数** — 测度的构造里是零集族；可测函数 / 乘积测度里是第二个空间的 $\sigma$ 代数
 - `\mathcal{L}` ℒ　**Lebesgue σ-代数或一阶语言** — 分析里是 Lebesgue $\sigma$ 代数；一阶逻辑里是一阶语言
 - `\mathcal{M} \otimes \mathcal{N}` ℳ⊗𝒩　**积 σ-代数**
+- `\bigotimes_{j} \mathfrak{B}_{X_{j}}` ⨂　**可数积的 σ-代数（各坐标 σ-代数之积）** — 与 $\mathcal{M} \otimes \mathcal{N}$ 是同一个东西，$\bigotimes$ 用于多指标
 - `\mu \times \nu` μ×ν　**乘积测度**
 - `m` m　**$\mathbb{R}$ 上的 Lebesgue 测度**
 - `\mu_{G}` μ_G　**单调函数 $G$ 诱导的 Borel 测度**

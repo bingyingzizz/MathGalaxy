@@ -6,7 +6,7 @@
 - `dist/notation/order.md` 序、基数与序数 18
 - `dist/notation/num.md` 数系与分析基础 26
 - `dist/notation/topo.md` 拓扑与度量 6
-- `dist/notation/measure.md` 测度与 σ-代数 24
+- `dist/notation/measure.md` 测度与 σ-代数 25
 - `dist/notation/integral.md` 积分与函数空间 12
 - `dist/notation/layout.md` 排版与箭头 12
 - `dist/notation/cat.md` 范畴与同调 18

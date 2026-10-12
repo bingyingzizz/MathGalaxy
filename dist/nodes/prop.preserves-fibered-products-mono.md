@@ -1,4 +1,4 @@
-# 保纤维积 $\implies$ 保单态射　`prop.preserves-fibered-products-mono`
+# 保纤维积 ⟹ 保单态射　`prop.preserves-fibered-products-mono`
 保拉回 $\implies$ 保单态射
 layer 14 · 命题 · 函子与自然变换 · 范畴论
 

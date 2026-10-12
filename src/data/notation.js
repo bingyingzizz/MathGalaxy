@@ -239,6 +239,8 @@ MG.notation = {
     { g: 'measure', tex: '\\mathcal{L}', uni: 'ℒ', name: 'Lebesgue σ-代数**或**一阶语言',
       note: '分析里是 Lebesgue $\\sigma$ 代数；一阶逻辑里是一阶语言' },
     { g: 'measure', tex: '\\mathcal{M} \\otimes \\mathcal{N}', uni: 'ℳ⊗𝒩', name: '积 σ-代数' },
+    { g: 'measure', tex: '\\bigotimes_{j} \\mathfrak{B}_{X_{j}}', uni: '⨂', name: '可数积的 σ-代数（各坐标 σ-代数之积）',
+      note: '与 $\\mathcal{M} \\otimes \\mathcal{N}$ 是同一个东西，$\\bigotimes$ 用于多指标' },
     { g: 'measure', tex: '\\mu \\times \\nu', uni: 'μ×ν', name: '乘积测度' },
     { g: 'measure', tex: 'm',         uni: 'm', name: '$\\mathbb{R}$ 上的 Lebesgue 测度' },
     { g: 'measure', tex: '\\mu_{G}',  uni: 'μ_G', name: '单调函数 $G$ 诱导的 Borel 测度' },

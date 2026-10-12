@@ -10,5 +10,5 @@
 - def.cat-equivalence　范畴等价　layer 10
 - def.preserves-limit　保极限的函子　layer 12
 - def.exact-functor　正合函子　layer 13
-- prop.preserves-products-kernels　保积与核 $\implies$ 保所有有限极限　layer 14
-- prop.preserves-fibered-products-mono　保纤维积 $\implies$ 保单态射　layer 14
+- prop.preserves-products-kernels　保积与核 ⟹ 保所有有限极限　layer 14
+- prop.preserves-fibered-products-mono　保纤维积 ⟹ 保单态射　layer 14
