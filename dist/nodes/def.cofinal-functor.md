@@ -17,4 +17,6 @@ $$i \downarrow F \quad \text{非空，且连通。}$$
 - 被 `thm.cofinal-colimit` 共尾函子不改变余极限 用
 - 被 `prop.filtered-directed` 滤过范畴可换成有向集 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.3
+
 > 说明见 `notes/def.cofinal-functor.md`

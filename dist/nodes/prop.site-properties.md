@@ -14,4 +14,6 @@ layer 19 · 命题 · 层与拓扑 · 范畴论
 - `prop.filtered-exact` 滤过余极限正合 + `def.universal-colimit` 万有关系 + `thm.sheafification` 层化：逐点继承 $\mathbf{Set}$ 的性质　proofs/imp.site-properties.md
 - `def.universal-colimit` 万有关系：用到了定义 万有关系　proofs/def-dep.universal-site.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
 > 说明见 `notes/prop.site-properties.md`

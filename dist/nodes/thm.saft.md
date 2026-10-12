@@ -14,4 +14,6 @@ $$F(X) \;=\; \varprojlim_{(Y,\, f) \in (X \downarrow G)} Y$$
 - `def.comma-category` 逗号范畴：用到了定义 逗号范畴　proofs/def-link.comma-saft.md
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.adjoint-saft.md
 
+refs: Mac Lane, Categories for the Working Mathematician, V.8
+
 > 说明见 `notes/thm.saft.md`

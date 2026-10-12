@@ -17,4 +17,6 @@ $$gH := \{\, gh : h \in H \,\}, \qquad Hg := \{\, hg : h \in H \,\}.$$
 - 被 `def.quotient-group` 商群 用
 - 被 `def.group-hom` 群同态、核与像 用
 
+refs: Lang, Algebra
+
 > 说明见 `notes/def.normal-subgroup.md`

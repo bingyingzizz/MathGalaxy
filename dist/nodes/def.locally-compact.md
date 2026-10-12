@@ -14,4 +14,6 @@ layer 15 · 定义 · 拓扑空间 · 拓扑学
 - 被 `ex.connected-lc-ext` 连通局部紧到离散只剩 Ext一次 用
 - 被 `thm.lc-structure` 局部紧阿贝尔群结构定理 用
 
+refs: Munkres, Topology
+
 > 说明见 `notes/def.locally-compact.md`

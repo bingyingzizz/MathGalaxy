@@ -15,8 +15,9 @@ layer 15 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 - ⇒ `thm.gleason` Gleason 定理
 - 被 `prop.chaus-quotient-of-free` 紧 Haus 是自由的商 用
 - 被 `prop.component-clopen` 连通分量是闭开邻域之交 用
-- 被 `def.free-compact-hausdorff` 自由紧 Hausdorff 空间 用
-
-> 说明见 `notes/def.chaus.md`
 
 - …另有出边，续页见 `nodes/def.chaus.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
+> 说明见 `notes/def.chaus.md`

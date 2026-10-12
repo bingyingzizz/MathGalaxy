@@ -6,8 +6,6 @@ layer 14 · 命题 · 范畴与图 · 范畴论
 
 1. $W$ 对复合封闭，且包含所有恒等态射；
 2. **（Ore 条件）** 对任何 $w : X' \to X$ 与任何 $f : Y \to X$，存在 $g$ 与 $v \in W$ 使方块交换：
-
-$$\begin{array}{ccc} Z & \xrightarrow{\;g\;} & Y \\[2pt] {\scriptstyle v}\big\downarrow & & \big\downarrow{\scriptstyle f} \\[2pt] X' & \xrightarrow[\;w\;]{} & X \end{array} \qquad v \in W;$$
 > 陈述续见 `nodes/prop.calculus-of-fractions.2.md`
 
 
@@ -17,7 +15,8 @@ $$\begin{array}{ccc} Z & \xrightarrow{\;g\;} & Y \\[2pt] {\scriptstyle v}\big\do
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.localization-hom-colim` 局部化的 Hom 是滤过余极限 用
+- 被 `prop.k-calculus-fractions` K(A) 允许分式演算 用
+
+refs: Le Stum, An introduction to condensed mathematics, §1.1
 
 > 说明见 `notes/prop.calculus-of-fractions.md`
-
-- …另有出边，续页见 `nodes/prop.calculus-of-fractions.3.md`

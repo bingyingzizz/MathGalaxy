@@ -8,4 +8,6 @@ layer 14 · 命题 · 函子与自然变换 · 范畴论
 - `def.preserves-limit` 保极限的函子：用到了定义 保极限的函子　proofs/def-dep.ppk-preslim.md
 - `def.exact-functor` 正合函子：用到了定义 正合函子　proofs/def-dep.ppk-exact.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.2
+
 > 说明见 `notes/prop.preserves-products-kernels.md`

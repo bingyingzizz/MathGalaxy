@@ -7,4 +7,6 @@ layer 16 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.compact-open-topology` 紧开拓扑：用到了定义 紧开拓扑　proofs/def-dep.compactopen-discrete.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/prop.compact-open-discrete.md`

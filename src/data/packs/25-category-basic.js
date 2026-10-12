@@ -62,7 +62,8 @@ window.MG = window.MG || {};
         '$$(a, b) = (c, d) \\iff a = c \\wedge b = d$$',
         '',
         '而换成 $\\{ x, \\{x,y\\} \\}$ 就必须拿这条公理逐条去验，不能想当然。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* --------------------------------------------------------- 图的态射 */
@@ -85,7 +86,8 @@ window.MG = window.MG || {};
         '',
         '也就是说：$\\varphi_1$ 把一条边的起点送到这条边的像的起点，把终点送到终点。'
       ].join('\n'),
-      notes: '两条等式各管一头。把它们画成方块就是「图的态射」这个名字的全部内容 —— 顶点那层与边那层各自连续，并且方向对得上。'
+      notes: '两条等式各管一头。把它们画成方块就是「图的态射」这个名字的全部内容 —— 顶点那层与边那层各自连续，并且方向对得上。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ------------------------------------------------------------ 范畴 */
@@ -131,7 +133,8 @@ window.MG = window.MG || {};
         '$$M = \\{ (u, v) : u \\subseteq v \\} \\subseteq \\tau \\times \\tau$$',
         '',
         '即「从小的开集到包含它的开集」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* -------------------------------------------------------- 截面与收缩 */
@@ -154,7 +157,8 @@ window.MG = window.MG || {};
         '',
         '$$g \\circ f = 1_X$$'
       ].join('\n'),
-      notes: '两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。'
+      notes: '两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     }
   ],
 

@@ -9,4 +9,6 @@ layer 16 · 命题 · 拓扑斯 · 范畴论
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-limits.md
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-sheaf-limits.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/prop.topos-sheaf-limits.md`

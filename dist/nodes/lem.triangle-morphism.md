@@ -11,4 +11,6 @@ layer 15 · 引理 · 复形与导出三角 · 同调代数
 - `def.distinguished-triangle` 导出三角：用到了定义 导出三角　proofs/def-dep.triangle-morphism.md
 - `def.homotopy` 同伦：用到了定义 同伦　proofs/def-dep.homotopy-triangle-morphism.md
 
+refs: Le Stum, An introduction to condensed mathematics, §7.1
+
 > 说明见 `notes/lem.triangle-morphism.md`

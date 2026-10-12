@@ -3,10 +3,6 @@ Grothendieck 拓扑与 site（Grothendieck Topology, Site）
 layer 14 · 定义 · 层与拓扑 · 范畴论
 
 范畴 $\mathcal{C}$ 上的 **Grothendieck 拓扑**是对每个 $X$ 指定一族**覆盖筛** $J(X)$，满足：
-
-1. $h_{X} \in J(X)$；
-2. **拉回稳定**：$R \in J(X)$、$f : Y \to X$ $\implies$ $f^{*}(R) := R \times_{h_{X}} h_{Y} \in J(Y)$；
-3. **传递**：$R, R' \subseteq h_{X}$，若 $R' \in J(X)$ 且对每个 $f \in R'(Y)$ 有 $f^{*}(R) \in J(Y)$，则 $R \in J(X)$。
 > 陈述续见 `nodes/def.grothendieck-topology.2.md`
 
 
@@ -19,7 +15,12 @@ layer 14 · 定义 · 层与拓扑 · 范畴论
 - ⇒ `prop.covering-sieve-epi` 覆盖筛即余积满射
 - 被 `prop.topos-covering-epi` 拓扑斯中覆盖即余积满射 用
 - 被 `def.sheaf` 层 用
-
-> 说明见 `notes/def.grothendieck-topology.md`
+- 被 `def.canonical-topology` 标准拓扑 用
+- 被 `def.precanonical-topology` 预标准拓扑 用
+- 被 `def.quasi-compact` 拟紧对象 用
 
 - …另有出边，续页见 `nodes/def.grothendieck-topology.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
+> 说明见 `notes/def.grothendieck-topology.md`

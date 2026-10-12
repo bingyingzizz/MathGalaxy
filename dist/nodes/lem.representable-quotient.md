@@ -15,4 +15,6 @@ $$\coprod_{i \in I} F_{i} \longrightarrow F$$
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.giraud` Giraud 定理
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/lem.representable-quotient.md`

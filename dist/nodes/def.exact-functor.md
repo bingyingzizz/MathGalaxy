@@ -12,4 +12,6 @@ layer 13 · 定义 · 函子与自然变换 · 范畴论
 - 被 `prop.left-exact-iff-R0` 左正合性与 R⁰ 用
 - 被 `prop.preserves-products-kernels` 保积与核 ⟹ 保所有有限极限 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.2
+
 > 说明见 `notes/def.exact-functor.md`

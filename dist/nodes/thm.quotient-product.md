@@ -14,4 +14,6 @@ $$q \times \mathrm{id}_{Z} : X \times Z \longrightarrow Y \times Z$$
 - `def.quotient-topology` 商拓扑：用到了定义 商拓扑　proofs/def-dep.quotprod-quotient.md
 - `def.product-topology` 积拓扑：用到了定义 积拓扑　proofs/def-dep.quotprod-product.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/thm.quotient-product.md`

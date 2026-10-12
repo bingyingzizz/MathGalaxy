@@ -3,10 +3,8 @@
 layer 12 · 定义 · 图与极限 · 范畴论
 
 形状为 $X_1 \xrightarrow{f_1} X_0 \xleftarrow{f_2} X_2$ 的图的极限叫**纤维积**，记 $X_1 \times_{X_0} X_2$，也叫 $f_1$ 沿 $f_2$ 的**拉回**。它补成一个交换方块
+> 陈述续见 `nodes/def.fibered-product.2.md`
 
-$$\begin{array}{ccc} X_1 \times_{X_0} X_2 & \longrightarrow & X_2 \\ \downarrow & & \downarrow f_2 \\ X_1 & \xrightarrow{f_1} & X_0 \end{array}$$
-
-这样的方块叫**笛卡尔的**。对偶地，图的余极限叫**纤维余积**，也叫**推出**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-fibered.md
@@ -18,7 +16,13 @@ $$\begin{array}{ccc} X_1 \times_{X_0} X_2 & \longrightarrow & X_2 \\ \downarrow 
 - 被 `prop.quasi-compact-properties` 拟紧的性质 用
 - 被 `def.mono` 单态射 / 满态射 用
 - 被 `def.subobject` 子对象 用
+- 被 `def.free-presentation` 自由表示 用
+- 被 `def.pretopology` 预拓扑 用
+- 被 `def.universal-colimit` 万有关系 用
+- 被 `def.effective-equivalence` 有效等价关系 用
+
+- …另有出边，续页见 `nodes/def.fibered-product.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §1.3
 
 > 说明见 `notes/def.fibered-product.md`
-
-- …另有出边，续页见 `nodes/def.fibered-product.2.md`

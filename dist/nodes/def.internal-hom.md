@@ -5,8 +5,6 @@ layer 17 · 定义 · 阿贝尔层 · 同调代数
 设 $\mathcal{T}$ 是拓扑斯，$X \in \mathcal{T}$、$M \in \mathcal{T}(\mathbf{Ab})$。则
 
 $$\operatorname{Hom}(X, M) : Y \longmapsto \operatorname{Hom}(X \times Y,\ M) \;\cong\; \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot(X \times Y),\ M\bigr)$$
-
-是 $\mathcal{T}$ 上的一个阿贝尔层，叫 $M$ 在 $X$ 处的**内 Hom**。
 > 陈述续见 `nodes/def.internal-hom.2.md`
 
 
@@ -20,6 +18,8 @@ $$\operatorname{Hom}(X, M) : Y \longmapsto \operatorname{Hom}(X \times Y,\ M) \;
 - 被 `prop.tensor-rhom-natural-map` 张量与 RHom 的配对 用
 - 被 `prop.cohomology-as-ext` 上同调就是 Ext 用
 
-> 说明见 `notes/def.internal-hom.md`
-
 - …另有出边，续页见 `nodes/def.internal-hom.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §5.3
+
+> 说明见 `notes/def.internal-hom.md`

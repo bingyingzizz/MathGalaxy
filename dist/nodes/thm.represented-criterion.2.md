@@ -2,4 +2,8 @@
 根 `../`　·　第 1 页 `nodes/thm.represented-criterion.md`
 
 ## 陈述（续）
-也就是说，「存在万有元素 $(X, s)$」与「$F$ 同构于 $\operatorname{Hom}_{\mathcal{C}}(X, -)$」是同一件事。
+}$ 被 $X \in \mathcal{C}$ 表示 $\iff$ 
+$h^{X} \cong F$。
+也就是说，「存在万有元素 $(X, s)$」与「$F$ 同构于 $\ope
+ratorname{Hom}_{\mathcal{C}}(X, -)$」
+是同一件事。

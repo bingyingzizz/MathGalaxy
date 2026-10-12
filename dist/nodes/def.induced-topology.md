@@ -7,3 +7,5 @@ layer 17 · 定义 · 拓扑斯 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.grothendieck-topology` Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　proofs/def-dep.inducedtopo-topology.md
 - `def.continuous-functor` 连续函子（site 之间）：用到了定义 连续函子（site 之间）　proofs/def-dep.inducedtopo-continuous.md
+
+refs: Le Stum, An introduction to condensed mathematics, §3.3

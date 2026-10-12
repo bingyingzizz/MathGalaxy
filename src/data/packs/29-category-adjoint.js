@@ -46,7 +46,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '',
         '  $$\\operatorname{Hom}(F\'F(X), Y) \\cong \\operatorname{Hom}(F(X), G\'(Y)) \\cong \\operatorname{Hom}(X, GG\'(Y))$$'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ------------------------------------------------------ 单位余单位 */
@@ -79,7 +80,8 @@ window.MG = window.MG || {};
         '一句话：**单位是「把自己送进去」，余单位是「把别人接回来」**，三角等式保证两个方向互不打架。',
         '⚠️ **单位与余单位一般不一定是同构**，这是伴随与「范畴等价」最大的差别。它们同时同构时，才是等价。',
         '由 $\\Phi$ 反解两边的公式：$\\Phi_{X,Y}(f) = G(f) \\circ \\eta_{X}$，$\\Phi^{-1}_{X,Y}(g) = \\varepsilon_{Y} \\circ F(g)$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* -------------------------------------------- 右伴随存在的判据 */
@@ -98,7 +100,8 @@ window.MG = window.MG || {};
         '',
         '都可表示。'
       ].join('\n'),
-      notes: '这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。证明见边上的推导。'
+      notes: '这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。证明见边上的推导。',
+      refs: ['Mac Lane, Categories for the Working Mathematician, V.6']
     },
 
     /* ------------------------------------------ 全忠实 ⟺ 单位同构 */
@@ -118,7 +121,8 @@ window.MG = window.MG || {};
       notes: [
         '所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。',
         '这也是**反射**与**余反射**的分界线：反射说的是「含入函子有左伴随」，而含入函子总是全忠实的（满子范畴），所以反射的余单位一定是同构。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ------------------------------------------------ 极限 ⟺ 有伴随 */
@@ -144,7 +148,8 @@ window.MG = window.MG || {};
         '',
         '左边正是「锥」的集合，右边是「射入极限的态射」的集合。逐字对照伴随的定义，两边是同一句话。',
         '所以「这个范畴有没有极限」问的就是「$\\Delta$ 有没有伴」—— 后面凡是要造伴随，几乎都能化归成造某种极限。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, V.5']
     },
 
     /* ------------------------------------------------------ 保极限 */
@@ -164,7 +169,8 @@ window.MG = window.MG || {};
       notes: [
         '对偶地：**左伴随保持所有余极限**。',
         '这条是判断「某函子不可能是右伴随」最快的办法 —— 只要它不保某个极限（比如不保积），就直接出局。反过来，它也解释了为什么遗忘函子总能当右伴随：遗忘函子通常保极限（结构是逐点定义的）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* -------------------------------------------------------- SAFT */
@@ -187,7 +193,8 @@ window.MG = window.MG || {};
         '**保极限是唯一的障碍**。这与「右伴随保极限」合起来就是一条完整的判据：保极限既是必要条件，在完备的小范畴上也是充分条件。',
         '构造的含义：把 $X$ 映射进 $G$ 的像的所有方式组成一个范畴 $X \\downarrow G$，在其中取极限 —— $F(X)$ 是 $\\mathcal{D}$ 中「最接近」$X$ 的对象。所有 $X \\to G(Y)$ 都能被整理成 $X \\to G(F(X)) \\to G(Y)$。',
         '证明见边上的推导。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, V.8']
     },
 
     /* ---------------------------------------------------- 逗号范畴 */
@@ -221,7 +228,8 @@ window.MG = window.MG || {};
           '- 伴随的**单位**定义成 $\\mathrm{id} \\downarrow G$（或 $F \\downarrow \\mathrm{id}$）里的始对象。'
         ].join('\n'),
         '判别一个东西是不是逗号范畴，就看它「对象是不是箭头、态射是不是交换方块」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, II.6']
     },
 
     /* -------------------------------------------------- 反射子范畴 */
@@ -250,7 +258,8 @@ window.MG = window.MG || {};
           '- $\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴。',
           '- 离散空间范畴在 $\\mathbf{Top}$ 中是反射的，平凡拓扑空间范畴在 $\\mathbf{Top}$ 中是余反射的。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ------------------------------------------- 反射子范畴里的极限 */
@@ -270,7 +279,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 设嵌入 $i : \\mathcal{C}\' \\hookrightarrow \\mathcal{C}$，反射 $F : \\mathcal{C}\\to\\mathcal{C}\'$，$F \\dashv i$（即 $i$ 是右伴随）。','- **余极限**：对任意 $C\' \\in \\mathcal{C}\'$，用伴随同构与 $\\mathcal{C}$ 中余极限的泛性','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(F(\\operatorname{colim}_{\\mathcal{C}}D\'), C\'\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(\\operatorname{colim}_{\\mathcal{C}}D\', iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(D\'_{j}, iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(D\'_{j}, C\'\\bigr),$$','对 $C\'$ 自然 —— 这正是「$F(\\operatorname{colim}_{\\mathcal{C}}D\')$ 是 $D\'$ 在 $\\mathcal{C}\'$ 里的余极限」的泛性质 ✓。','- **极限**：同法','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', \\operatorname{lim}_{\\mathcal{C}}D\'\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(iC\', D\'_{j}\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', D\'_{j}\\bigr)$$','（第二个同构用了 $i$ 全忠实），故 $\\lim_{\\mathcal{C}}D\'$ 已经落在 $\\mathcal{C}\'$ 里、且就是 $\\mathcal{C}\'$ 中的极限 ✓。','**结论：反射子范畴对极限封闭，余极限要过一遍反射。**∎'].join('\n'),
-'也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'].join('\n\n')
+'也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ---------------------------------------------------- Kan 延拓 */
@@ -309,7 +319,8 @@ window.MG = window.MG || {};
         '| $f = R(g) \\circ \\eta_{A}$ | $\\gamma = p^{*}(\\widetilde{\\gamma}) \\circ \\alpha$ |',
         '',
         '所以 Kan 延拓不是新东西，它只是把伴随的公式换了个方向用。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, X.3']
     },
 
     /* ------------------------------------------------ Kan 延拓的例子 */
@@ -332,7 +343,8 @@ window.MG = window.MG || {};
         '',
         '右边那个对应的 $1_{\\mathcal{C}} \\implies G \\circ F$ 正是**单位** $\\eta$。'
       ].join('\n'),
-      notes: '两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。'
+      notes: '两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。',
+      refs: ['Mac Lane, Categories for the Working Mathematician, X.3']
     },
 
     /* ------------------------------------------------ 滤过余极限正合 */
@@ -359,7 +371,8 @@ window.MG = window.MG || {};
         '',
         '做法是两边都取代表元再比对：$\\mathbf{Set}$ 里滤过余极限的元素恰好是某个指标处的元素，所以「一边一个代表元」可以上升到「同一个指标处的一对」。',
         '这条为什么重要：后面谈层的时候，层化是拿滤过余极限配出来的，而**只有滤过余极限不破坏有限极限**，这套构造才能与有限极限（也就是把拓扑信息编码进去的那个部分）相安无事。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     }
   ],
 

@@ -7,4 +7,6 @@ layer 9 · 命题 · 范畴与图 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.section-retraction` 截面与收缩：用到了定义 截面与收缩　proofs/def-dep.iso-unique-section.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.1
+
 > 说明见 `notes/prop.iso-unique-section.md`

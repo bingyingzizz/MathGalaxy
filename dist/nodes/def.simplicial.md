@@ -7,9 +7,6 @@ layer 10 · 定义 · 图与极限 · 范畴论
 $$[0], \ [1], \ [2], \ \ldots, \ [n], \ \ldots$$
 
 而 $[n] \to [m]$ 的态射取全体**单调映射**（不要求 $n \le m$，也不要求严格）。$\Delta$ 的全体态射由两类生成：
-
-- **面映射** $\delta^{i} : [n-1] \to [n]$：跳过第 $i$ 个点（$i = 0, \ldots, n$）；
-- **退化映射** $\sigma^{i} : [n] \to [n-1]$：重复第 $i$ 个点。
 > 陈述续见 `nodes/def.simplicial.2.md`
 
 
@@ -20,5 +17,7 @@ $$[0], \ [1], \ [2], \ \ldots, \ [n], \ \ldots$$
 ## 它能推出什么 / 谁在用它
 - 被 `prop.simplicial-to-chain` 单纯对象给出链复形 用
 - 被 `method.simplicial-cohomology` 单纯方法算层上同调 用
+
+refs: Le Stum, An introduction to condensed mathematics, §1.3
 
 > 说明见 `notes/def.simplicial.md`

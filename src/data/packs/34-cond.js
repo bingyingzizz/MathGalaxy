@@ -70,7 +70,8 @@ window.MG = window.MG || {};
         '**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 这里 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的**一点紧化**，而「收敛序列连同极限」正好就是从 $\\bar{\\mathbb{N}}$ 到 $X$ 的连续映射：$\\mathbb{N}$ 上的像给出序列，新添那个点上的像给出极限。',
         '**例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \\mathbb{R}) / C(S, \\mathbb{R}^{\\mathrm{disc}})$。',
         '这三个例子的共同点：**取值都是「从紧 Hausdorff 空间出发的连续映射的某种商或子集」**。凝聚态集之所以能记住拓扑信息，靠的就是把这些映射全留下来。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ 凝聚态集的刻画 */
@@ -107,7 +108,8 @@ window.MG = window.MG || {};
           '- **满射**：覆盖是单个满射 $S\' \\twoheadrightarrow S$。层条件就是 $X(S) \\to X(S\') \\rightrightarrows X(S\' \\times_{S} S\')$ 左正合，即 (4.2)。',
           '反过来，两条条件合起来显然蕴含「对所有覆盖是层」（覆盖可以分解成这两类的复合），于是判据成立。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ Cond 是拓扑斯 */
@@ -195,7 +197,8 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{Cond} \\;\\simeq\\; \\widehat{\\mathbf{FCHaus}}$$'
       ].join('\n'),
-      notes: '两个方向：$\\mathbf{CHaus}$ 上的层限制到 $\\mathbf{FCHaus}$ 上仍是层（覆盖变少了，层的条件只会更容易满足）；反过来，$\\mathbf{FCHaus}$ 上的层 $X$ 沿「自由对象到 $S$ 的映射」取滤过余极限延拓回 $\\mathbf{CHaus}$，得到的就是粘合出来的那个值。证明见边上那条推导。'
+      notes: '两个方向：$\\mathbf{CHaus}$ 上的层限制到 $\\mathbf{FCHaus}$ 上仍是层（覆盖变少了，层的条件只会更容易满足）；反过来，$\\mathbf{FCHaus}$ 上的层 $X$ 沿「自由对象到 $S$ 的映射」取滤过余极限延拓回 $\\mathbf{CHaus}$，得到的就是粘合出来的那个值。证明见边上那条推导。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ 满态射的判据 */
@@ -207,7 +210,8 @@ window.MG = window.MG || {};
       title: '凝聚态集的满态射',
       regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
-      statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。'
+      statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ 足够多投射对象 */
@@ -248,7 +252,8 @@ window.MG = window.MG || {};
         '',
         '都连续的**最细**拓扑。'
       ].join('\n'),
-      notes: '等价刻画：$Y \\subseteq X(\\cdot)$ 是开集 $\\iff$ 对每个 $S \\in \\mathbf{CHaus}$ 与每个 $f \\in X(S)$，$f^{-1}(Y)$ 在 $S$ 中开。\n\n所以「$X$ 的底空间」记下了 $X$ 能看见的全部拓扑信息，但**一般会丢掉 $X$ 自己的精细结构** —— 除非 $X$ 来自一个紧生成空间。'
+      notes: '等价刻画：$Y \\subseteq X(\\cdot)$ 是开集 $\\iff$ 对每个 $S \\in \\mathbf{CHaus}$ 与每个 $f \\in X(S)$，$f^{-1}(Y)$ 在 $S$ 中开。\n\n所以「$X$ 的底空间」记下了 $X$ 能看见的全部拓扑信息，但**一般会丢掉 $X$ 自己的精细结构** —— 除非 $X$ 来自一个紧生成空间。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ Top ↔ Cond */
@@ -267,7 +272,8 @@ window.MG = window.MG || {};
         '',
         '是**忠实**的，并且有右伴随 $X \\mapsto X(\\cdot)$。限制到**紧生成空间**的满子范畴上时，它变成**全忠实**的。'
       ].join('\n'),
-      notes: '关键一句：**若 $X$ 是拓扑空间，则它的底空间 $X(\\cdot) \\cong kX$**。\n\n所以「拓扑空间 $\\to$ 凝聚态集 $\\to$ 底拓扑空间」这个来回，做的正是**$k$-化**：它把一般拓扑空间换成紧生成的那一个，之后就不再变化。于是 $k\\mathbf{Top}$ 恰好是 $\\mathrm{Cond}$ 里「完整地记得自己」的那部分，而一般的 $\\mathbf{Top}$ 多出来的那些空间在 $\\mathrm{Cond}$ 里被合并掉了。'
+      notes: '关键一句：**若 $X$ 是拓扑空间，则它的底空间 $X(\\cdot) \\cong kX$**。\n\n所以「拓扑空间 $\\to$ 凝聚态集 $\\to$ 底拓扑空间」这个来回，做的正是**$k$-化**：它把一般拓扑空间换成紧生成的那一个，之后就不再变化。于是 $k\\mathbf{Top}$ 恰好是 $\\mathrm{Cond}$ 里「完整地记得自己」的那部分，而一般的 $\\mathbf{Top}$ 多出来的那些空间在 $\\mathrm{Cond}$ 里被合并掉了。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ---------------------------------------------- 凝聚态阿贝尔群 */
@@ -290,7 +296,8 @@ window.MG = window.MG || {};
         '一般定义见「阿贝尔层」—— 凝聚态阿贝尔群就是 $\\mathcal{T} = \\mathrm{Cond}$ 的那个特例。',
         '在紧 Hausdorff 这个场地里层条件可以化简：**$M$ 是凝聚态阿贝尔群 $\\iff$ 它保有限积**（一般拓扑斯上没有这么干净的判据）。',
         '记号：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) := \\operatorname{Hom}_{\\mathrm{CondAb}}(M, N)$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §6.1']
     },
 
     /* ------------------------------------------------ 截面函子 */
@@ -365,7 +372,8 @@ window.MG = window.MG || {};
         '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）。',
         '两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\\***（有所有极限）；而且它**有足够多的内射对象**。',
         '「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------ CondAb 的 AB 公理 */

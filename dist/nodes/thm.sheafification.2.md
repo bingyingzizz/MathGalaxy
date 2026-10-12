@@ -2,6 +2,6 @@
 根 `../`　·　第 1 页 `nodes/thm.sheafification.md`
 
 ## 陈述（续）
-并且它是**幂等**的：$(T^{\sharp})^{\sharp} \cong T^{\sharp}$。具体地，$T^{\sharp}$ 取「对预层做两次 Čech 构造」。
+$$\operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T^{\sharp},\ F\bigr) \;\cong\; \operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T,\ F\bigr)$$
 
-> 续见 `nodes/thm.sheafification.3.md`
+并且它是**幂等**的：$(T^{\sharp})^{\sharp} \cong T^{\sharp}$。具体地，$T^{\sharp}$ 取「对预层做两次 Čech 构造」。

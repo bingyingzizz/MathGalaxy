@@ -36,7 +36,8 @@ window.MG = window.MG || {};
         '「由从紧 Hausdorff 空间进来的映射决定拓扑」的意思是：**只要一个子集在所有这类映射下的原像都开，它就是开的**。',
         '一般拓扑空间不满足这一条 —— 于是紧生成性把那些「测试不够」的空间排除在外，留下的那批在做乘积、函数空间时行为良好。',
         '这是**余反射**的入口：$k$-化（见「$k$-开、$k$-闭与 $k$-拓扑」）把任何空间改造成紧生成的，而且改造前后到别的紧生成空间之间的映射一一对应。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -55,7 +56,8 @@ window.MG = window.MG || {};
       notes: [
         '**例 1** 是最常用的一条：紧 Hausdorff 空间自己当然紧生成（它本身就是自己的那条余极限）；一般局部紧 Hausdorff 空间由「取紧邻域」这一类映射决定拓扑。',
         '**例 3** 是反面教材 —— 它正是「乘积不好用」的根源：$\\mathbb{R}^{I}$ 太细，细到没有足够的紧 Hausdorff 空间能测出它的拓扑。$k$-化会把它换成拓扑更粗的 $k(\\mathbb{R}^{I})$，那个才好用。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 等价刻画 */
@@ -90,7 +92,8 @@ window.MG = window.MG || {};
           '- (5) $\\iff$ (4)：把「$X \\to Y$ 连续」按定义展开成「开集的原像开」，再用 (4) 换成紧 Hausdorff 空间上的检验。'
         ].join('\n'),
         '⭐ **测试空间统一取紧 Hausdorff 空间。** 定义那一条与这里 (2)(3)(4)(6) 用的是同一族测试空间 —— 也就是说：$X$ 紧生成 $\\iff$ 存在紧 Hausdorff 空间的不交并 $\\coprod S \\twoheadrightarrow X$ 是商映射 $\\iff$ 存在局部紧 Hausdorff 空间 $Z \\twoheadrightarrow X$ 是商映射。**三个说法给出同一个范畴**，用哪一条就看哪一条好算。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* ------------------------------------------------------ k-拓扑 */
@@ -111,7 +114,8 @@ window.MG = window.MG || {};
         '$k$-拓扑就是**使所有连续映射 $S \\to X$（$S$ 紧 Hausdorff）都连续的最终（最细）拓扑**。它比原来的拓扑**细** —— 开集变多了（原本开的当然还是 $k$-开的）。',
         '⭐ **紧生成 = 自己就是 $k$-化**：$X$ 紧生成 $\\iff$ $kX = X$（同一个拓扑空间）。所以 $k$ 是一个**幂等**的改造：$k(kX) = kX$。',
         '一般情形下 $kX$ 与 $X$ 之间的恒等映射 $kX \\to X$ 连续（拓扑变细了），但反方向不连续 —— 这个「往下走」的映射正是余反射的余单位 $\\varepsilon_{X}$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -129,7 +133,8 @@ window.MG = window.MG || {};
           '把图取成「对象 = 全体连续映射 $g : S \\to X$；态射 = 使三角形交换的连续映射」：余射就是 $g$ 本身，于是 $L$ 上的拓扑正是「由全体 $g$ 拉回定出的 $k$-拓扑」，即 $L = kX$（两者有同一个底集合同一个开集族）。∎',
           '⭐ **读法**：这条把「$k$-化」翻译成了「用紧 Hausdorff 块拼出来」。于是 $X$ 紧生成 $\\iff$ $X$ 就是它自己那些紧 Hausdorff 块的余极限 —— 后面所有关于 $k\\mathbf{Top}$ 的论证都可以在**块**上做，再沿余极限抬上去。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 余反射 */
@@ -161,7 +166,8 @@ window.MG = window.MG || {};
           '- 反向由 $\\varepsilon_{Y}$ 连续直接得到。这样两个方向互逆，就是那个同构。'
         ].join('\n'),
         '⭐ 与紧 Hausdorff 对照着记：$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的**反射**子范畴（含入函子有**左**伴随 $\\beta$），而 $k\\mathbf{Top}$ 是**余反射**的（含入函子有**右**伴随 $k$）。一个把空间「收紧」，一个把空间「松开」—— 所以前者对极限封闭，后者对**余极限**封闭。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 商映射与积 */
@@ -193,7 +199,8 @@ window.MG = window.MG || {};
         '是 $(x, z)$ 的一个开邻域 —— 所以 $(x, z)$ 是 $W$ 的内点，$W$ 开。∎',
         '⚠️ **局部紧这个条件不能省。** 一般情形下「商映射乘 id」不是商映射：取 $q$ 是某条坏商、$Z$ 是一个既不局部紧又不紧生成的空间，乘积的商拓扑会严格细于商空间应有的拓扑。',
         '记法：有的把这条写成「$Z$ 局部紧 Hausdorff $\\implies$ 函子 $- \\times Z$ 保商映射」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -215,7 +222,8 @@ window.MG = window.MG || {};
           '于是 $X \\times Y$ 是紧生成空间的余极限，自身紧生成。∎',
           '⚠️ **$Y$ 局部紧不能省**：一般拓扑空间之间的积**不保**商映射，而「$-\\times Y$ 保余极限」正是这一条目的等价说法。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -243,7 +251,8 @@ window.MG = window.MG || {};
           '- 两张 $k$-拓扑 $k(X\\times Y)$ 与 $k(kX\\times Y)$ 由**同一族**测试映射（全体 $T \\to$ 该底集合，$T$ 紧 Hausdorff）的连续性刻画，故它们的开集族相同，即 $k(kX\\times Y) = k(X\\times Y)$。',
           '**第二式**：由上一条「$X$ 紧生成、$Y$ 局部紧 Hausdorff $\\implies$ $kX \\times Y$ 紧生成」得 $kX\\times Y$ 已经是紧生成的，对它取 $k$ 不再改变：$k(kX\\times Y) = kX\\times Y$；代入第一式即得 $kX\\times Y = k(X\\times Y)$。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 紧开拓扑 */
@@ -265,7 +274,8 @@ window.MG = window.MG || {};
       notes: [
         '读法：$W_{S,V}$ 是「在所有从头进来的紧块上都落在 $V$ 里」的那些映射。$g$ 通过 $S$ 这个「测试块」把 $X$ 的局部控制住。',
         '⭐ 这一条让 $\\operatorname{Hom}(X,Y)$ 本身成为一个拓扑空间 —— 于是可以谈「映射空间」，才可以谈同伦、道路空间、环路空间。在 $\\mathrm{CGWH}$ 里它才真正好用（见「函数空间弱 Hausdorff」那条）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -284,7 +294,8 @@ window.MG = window.MG || {};
           '- 而 $\\{f : f(x) \\in V\\}$ 正是**积拓扑**（$Y^{X} = \\prod_{x\\in X} Y$）下的基本开集（只有 $x$ 那个坐标被限制）。所以两边由同一族基本开集生成，恒等映射是同胚。∎',
           '⭐ **这就是「指数律在离散指数下平凡成立」那条**：$Y^{X}$ 的积拓扑就是紧开拓扑。这也说明紧开拓扑的**信息量**：非离散的 $X$ 上，积拓扑太细（那是「逐点收敛」拓扑），紧开拓扑才是对的。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 弱 Hausdorff */
@@ -296,7 +307,8 @@ window.MG = window.MG || {};
       title: '弱 Hausdorff 空间（Weak Hausdorff Space）',
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', 'CGWH'],
-      statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。'
+      statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -332,7 +344,8 @@ window.MG = window.MG || {};
           '其中 $(f,h)^{-1}(\\Delta_{X})$ 在 $S\\times T$ 中闭（$S\\times T$ 紧 Hausdorff，$\\Delta$ $k$-闭）；而 $\\operatorname{pr}_{T} : S\\times T\\to T$ 是**闭映射**（$S$ 紧），故 $h^{-1}(f(S))$ 闭 ✓。',
           '- **$\\ker(f,g)$ 是 $k$-闭的**：$\\ker(f,g) = (f,g)^{-1}(\\Delta_{Y})$，而 $k$-闭集沿连续映射的拉回仍 $k$-闭（用紧 Hausdorff 测试：$(f,g)\\circ h$ 连续，$h^{-1}(\\ker) = ((f,g)\\circ h)^{-1}(\\Delta_{Y})$ 闭）。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -353,7 +366,8 @@ window.MG = window.MG || {};
           '于是 $S\\times_{X} S\'$ 是紧 Hausdorff 空间的**闭子空间**，故紧 Hausdorff（闭子空间紧、Hausdorff 的闭子空间 Hausdorff）。∎',
           '⭐ **这条就是「$\\mathrm{CGWH}$ 里紧块相交还是紧块」的全部内容** —— 后面「弱 Hausdorff $\\implies$ 拟分离」「$\\mathrm{CGWH}$ 对有限积封闭」都得靠它。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -373,7 +387,8 @@ window.MG = window.MG || {};
           '再证弱 Hausdorff：取紧 Hausdorff 的 $g : T \\to X/R$。$T$ 紧，$X$ 紧生成且 $q$ 是商映射，故 $g$ 可沿 $q$ **逐块提升**：存在覆盖 $T = \\bigcup_{i} T_{i}$（有限个紧 Hausdorff 块）与连续 $p_{i} : T_{i} \\to X$ 使 $q p_{i} = g|_{T_{i}}$。于是 $g(T) = \\bigcup_{i} q(\\tilde g_{i}(T_{i}))$，而每个 $q(K)$（$K \\subseteq X$ 紧 Hausdorff）是闭的：$q^{-1}q(K)$ 是**饱和**的，其 $k$-闭性由 $R$ 的 $k$-闭性与「投影 $X\\times K \\to X$ 闭」给出，故 $q^{-1}q(K)$ 在紧生成的 $X$ 中闭，再由 $q$ 是商映射得 $q(K)$ 闭 ✓。有限并仍闭，故 $g(T)$ 闭。∎',
           '⭐ **读法**：这条把「商空间弱 Hausdorff」这个**拓扑**条件翻译成了「等价关系是 $k$-闭的」这个**关于 $X\\times X$ 的子集**条件 —— 后者可以逐块验证。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -406,7 +421,8 @@ window.MG = window.MG || {};
           '两条合起来就是「$\\mathrm{CGWH}$ 是 $\\mathrm{CG}$ 的反射子范畴，反射是 $X\\mapsto X/R$」。∎',
           '⚠️ **方向**：等价关系取得**越大**，商掉得越**多**、空间越粗。所以「最小」的闭等价关系给出「最经济」的弱 Hausdorff 化 —— 这也是为什么反射先 $k$-化（$X\\rightsquigarrow kX$）、再商最小闭等价关系、两步都函子性。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -430,7 +446,8 @@ window.MG = window.MG || {};
           '- **$X$ 弱 Hausdorff**：取紧 Hausdorff 的 $g : S \\to X$。由上面那条引理与 $S$ **紧**，$g(S)$ 落在**某一个** $X_{i}$ 里（这是滤过余极限的标准「紧集落进一块」引理）；又 $X_{i}$ 在 $X$ 中闭、$g$ 经由 $X_{i}$ 的像在 $X_{i}$ 中闭 $\\implies$ $g(S)$ 在 $X$ 中闭 ✓。',
           '- **$X$ 紧生成**：由余极限的闭集刻画（逐块判定）与每块紧生成，逐块验证即得 ✓。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -452,7 +469,8 @@ window.MG = window.MG || {};
           '- 每个 $B_{S,a} = \\operatorname{pr}_{T\'\\times T}\\bigl(\\theta_{S,a}^{-1}(\\Delta_{Y})\\bigr)$，其中 $\\theta_{S,a} : T\'\\times T\\times S \\to Y\\times Y$，$(t\',t,s)\\mapsto\\bigl(\\hat h(t\',a(s)),\\ \\hat g(t,a(s))\\bigr)$ 连续。$T\'\\times T\\times S$ **紧 Hausdorff**，而 $\\Delta_{Y}$ 是 $k$-闭的，故 $\\theta_{S,a}^{-1}(\\Delta_{Y})$ **闭**；又 $S$ 紧 $\\implies$ 投影 $T\'\\times T\\times S\\to T\'\\times T$ **闭**，所以 $B_{S,a}$ 闭；闭集之交 $B$ 闭；最后 $T$ 紧 $\\implies$ $\\operatorname{pr}_{T\'} : T\'\\times T\\to T\'$ 闭，故 $A$ 闭 ✓。∎',
           '三步关键：① $X$ 紧生成让「函数相等」可以沿紧块检验；② $Y$ 弱 Hausdorff 让 $\\Delta_{Y}$ 是 $k$-闭的；③ 紧因子的投影是**闭映射**。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -484,7 +502,8 @@ window.MG = window.MG || {};
         '',
         '两次都只用到积的结合性与 $k$-化的函子性 —— 这也是为什么必须**先取 $k$-化**：不取的话右边那个 $C(Y,Z)$ 未必紧生成。',
         '⚠️ 一个容易踩的点：$C(kX, kY) = C(kX, Y)$ 作为**集合**相等，但一般**不是同胚**，哪怕换成 $k$-拓扑也一样。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -513,7 +532,8 @@ window.MG = window.MG || {};
           '两条合起来给出自然双射，即 $k(X\\times Y) \\dashv kC(kY, -)$。∎',
           '**顺带的两个推论**（伴随的一般性质）：左伴随 $X\\mapsto k(X\\times Y)$ **保余极限**；右伴随 $Z\\mapsto kC(kY,Z)$ **保极限**。前者正是「$-\\times Y$ 在 $k\\mathbf{Top}$ 里保余极限」，也是上面「$\\mathrm{CGWH}$ 对积封闭」那条用的零件。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     }
   ],
 

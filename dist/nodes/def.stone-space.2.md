@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.stone-space.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.stone-clopen-refinement` Stone 空间的闭开加细 用
 - 被 `thm.gleason` Gleason 定理 用
 - 被 `thm.stone-profinite` Stone ⟺ 投射有限 用
 - 被 `prop.stonean-basic` 极端不连通的基本性质 用
@@ -16,4 +17,5 @@
 - 被 `lem.ext-stonean-section` Stonean 上 Ext 的截面公式 用
 - 被 `prop.breen-deligne-ss-stonean` Stonean 上 Breen–Deligne 的谱序列 用
 - 被 `prop.pontryagin-torsion-stone` 挠 与 Stonean，无挠 与 连通 用
-- 被 `thm.boolean-stone` Boolean 环与 Stone 空间等价 用
+
+> 续见 `nodes/def.stone-space.3.md`

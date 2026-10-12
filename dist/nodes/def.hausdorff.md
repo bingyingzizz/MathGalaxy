@@ -18,4 +18,6 @@ $$\forall x \ne y \in X,\ \exists U \ni x,\ V \ni y \ \text{开},\quad U \cap V 
 - 被 `def.normal-space` 正规空间 用
 - 被 `def.locally-compact` 局部紧 Hausdorff 空间 用
 
+refs: Munkres, Topology
+
 > 说明见 `notes/def.hausdorff.md`

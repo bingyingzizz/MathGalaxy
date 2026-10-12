@@ -17,4 +17,6 @@ $$C\bigl(k(X \times Y),\ Z\bigr) \;\cong\; C\bigl(X,\ C(Y, Z)\bigr).$$
 ## 它能推出什么 / 谁在用它
 - 被 `cor.cg-exponential-adjoint` CG 的指数伴随 用
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/prop.cg-cartesian-closed.md`

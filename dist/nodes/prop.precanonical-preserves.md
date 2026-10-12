@@ -12,4 +12,6 @@ layer 17 · 命题 · 拓扑斯 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.precanonical-topology` 预标准拓扑：用到了定义 预标准拓扑　proofs/def-dep.precanonical-preserves.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/prop.precanonical-preserves.md`

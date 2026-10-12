@@ -14,4 +14,6 @@ layer 18 · 定义 · 加法与阿贝尔范畴 · 同调代数
 - 被 `prop.grothendieck-enough-injectives` Grothendieck 范畴有足够多内射 用
 - 被 `prop.ab5-implications` AB5 与 AB3*/AB4* 的关系 用
 
+refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2
+
 > 说明见 `notes/def.grothendieck-category.md`

@@ -17,4 +17,6 @@ $$F(\lim D) \longrightarrow \lim (F \circ D).$$
 - 被 `def.exact-functor` 正合函子 用
 - 被 `prop.preserves-products-kernels` 保积与核 ⟹ 保所有有限极限 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.2
+
 > 说明见 `notes/def.preserves-limit.md`

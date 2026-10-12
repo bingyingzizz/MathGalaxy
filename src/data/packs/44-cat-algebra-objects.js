@@ -39,7 +39,8 @@ window.MG = window.MG || {};
         '**为什么要求有限积**：乘法要拿「两个自变量」说话，而范畴里「两个」就是积 $G \\times G$；单位要拿「没有自变量」说话，那就是终对象 $1 \\to G$。',
         '**态射**：两个幺半群对象之间的态射 $f : G \\to G\'$ 是使 $f \\circ \\mu = \\mu\' \\circ (f\\times f)$ 且 $f \\circ \\varepsilon = \\varepsilon\'$ 的态射。全体构成范畴 $\\mathrm{Mon}(\\mathcal{C})$。',
         '⚠️ 名字上容易和「$\\mathcal{C}$ 上的预层 / 群层」混：这里说的是**范畴内部**的一个对象带结构（「内部」的意思），不是值在群里的函子。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.6']
     },
 
     /* -------------------------------------------------------- 群对象 */
@@ -76,7 +77,8 @@ window.MG = window.MG || {};
         '',
         '⭐⭐ **所以「凝聚态阿贝尔群 = 凝聚态集范畴里的阿贝尔群对象」这句话不是新定义，只是这条定义代进 $\\mathcal{C} = \\mathrm{Cond}$。** 整个星图里「集合 + 运算 + 公理 $\to$ 群 $\to$ 阿贝尔群」那条线，到这一层就和凝聚态那条线接上了。',
         '⚠️ 群对象**不要求**范畴有极限（只用有限积），所以它比「在拓扑斯里做代数」适用范围更广。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.6']
     },
 
     /* ------------------------------------------------------------ 例 */
@@ -96,7 +98,8 @@ window.MG = window.MG || {};
         '- $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$；',
         '- $\\mathrm{Ab}(\\widehat{\\mathcal{C}})$ = 预层范畴里的阿贝尔群对象 $\\simeq$ 值在 $\\mathbf{Ab}$ 的预层。'
       ].join('\n'),
-      notes: '⭐ 这张表最有用的一点是**反着读**：想研究拓扑阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathbf{Top}$；想研究凝聚态阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathrm{Cond}$。**同一个定义、同一套定理（核、余核、正合列……）直接搬**。\n\n⚠️ $\\mathrm{Ab}(\\mathbf{Grp}) = \\mathbf{Ab}$ 这条最容易让人愣一下：群范畴里的群对象**恰好是**阿贝尔群（Eckmann–Hilton 论证）—— 「群」这个结构加在「群」这个范畴上时，会强制交换性。'
+      notes: '⭐ 这张表最有用的一点是**反着读**：想研究拓扑阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathbf{Top}$；想研究凝聚态阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathrm{Cond}$。**同一个定义、同一套定理（核、余核、正合列……）直接搬**。\n\n⚠️ $\\mathrm{Ab}(\\mathbf{Grp}) = \\mathbf{Ab}$ 这条最容易让人愣一下：群范畴里的群对象**恰好是**阿贝尔群（Eckmann–Hilton 论证）—— 「群」这个结构加在「群」这个范畴上时，会强制交换性。',
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.6']
     }
   ],
 

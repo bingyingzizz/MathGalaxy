@@ -7,8 +7,8 @@ layer 15 · 定义 · 单满、子对象与像 · 范畴论
 总有一个态射
 
 $$\operatorname{coim} f \longrightarrow \operatorname{im} f$$
+> 陈述续见 `nodes/def.image.2.md`
 
-它是同构时，称 $f$ 是**严格的**（strict）。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.subobject` 子对象：用到了定义 子对象　proofs/def-dep.subobject-image.md
@@ -20,6 +20,8 @@ $$\operatorname{coim} f \longrightarrow \operatorname{im} f$$
 - 被 `thm.five-lemma` 五引理 用
 - 被 `def.strict-morphism` 严格态射 用
 
-> 说明见 `notes/def.image.md`
+- …另有出边，续页见 `nodes/def.image.3.md`
 
-- …另有出边，续页见 `nodes/def.image.2.md`
+refs: Le Stum, An introduction to condensed mathematics, §1.1
+
+> 说明见 `notes/def.image.md`

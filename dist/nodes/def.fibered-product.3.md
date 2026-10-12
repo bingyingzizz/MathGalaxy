@@ -1,0 +1,9 @@
+# 纤维积 / 纤维余积　`def.fibered-product`　·　续页（第 3 页）
+根 `../`　·　第 1 页 `nodes/def.fibered-product.md`　·　上一页 `nodes/def.fibered-product.2.md`
+
+## 它能推出什么 / 谁在用它（续）
+- 被 `def.quasi-separated` 拟分离对象 用
+- 被 `def.mapping-cone` 映射锥 用
+- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用
+- 被 `prop.cgwh-fiber-product` 紧块的纤维积还是紧的 用
+- 被 `prop.preserves-fibered-products-mono` 保纤维积 ⟹ 保单态射 用

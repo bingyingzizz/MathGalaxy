@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.chaus.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `def.free-compact-hausdorff` 自由紧 Hausdorff 空间 用
 - 被 `def.free-presentation` 自由表示 用
 - 被 `def.stone-space` 全不连通与 Stone 空间 用
 - 被 `def.chaus-pretopos` CHaus 是预拓扑斯 用

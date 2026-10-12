@@ -12,4 +12,6 @@ $$\pi_{0} : \mathbf{Top} \longrightarrow \mathbf{Top}_{\mathrm{td}}, \qquad X \m
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-dep.stone-td-reflective.md
 - `def.connected` 连通与连通分量：用到了定义 连通与连通分量　proofs/def-dep.connected-td-reflective.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.2
+
 > 说明见 `notes/prop.td-reflective.md`

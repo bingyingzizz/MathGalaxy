@@ -17,4 +17,6 @@ $$Y \cap Z := Y \times_{X} Z, \qquad f^{-1}(Y) := Y \times_{X} X'$$
 - 被 `def.image` 像 / 余像 用
 - 被 `def.filtration` 过滤 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.1
+
 > 说明见 `notes/def.subobject.md`

@@ -2,7 +2,7 @@
 自由紧 Hausdorff 空间（Free Compact Hausdorff Space）
 layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 
-**自由紧 Hausdorff 空间**就是某个离散空间 $I$ 的 Stone–Čech 紧化 $F \cong \beta I$。称 $I$ 是 $F$ 的一组**基**：此时
+*
 > 陈述续见 `nodes/def.free-compact-hausdorff.2.md`
 
 
@@ -14,6 +14,10 @@ layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 - 被 `prop.free-projective` 自由紧 Haus 是投射对象 用
 - 被 `prop.fchaus-pretopology` FCHaus 上的预拓扑 用
 - 被 `prop.fchaus-sheaf` FCHaus 上层的判据 用
+- 被 `prop.cond-epi` 凝聚态集满态射的判据 用
+- 被 `prop.condab-section` 截面函子保极限余极限 用
+
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
 
 - …另有出边，续页见 `nodes/def.free-compact-hausdorff.3.md`
 

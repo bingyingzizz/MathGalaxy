@@ -11,4 +11,6 @@ $$T \;\cong\; \varinjlim_{(X, s) \in \mathcal{C}_{T}} h_{X}$$
 - `def.limit` 极限：用到了定义 极限　proofs/def-link.limit-density.md
 - `def.slice-category` 切片范畴：用到了定义 切片范畴　proofs/def-link.slice-category-density.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
+
 > 说明见 `notes/thm.density.md`

@@ -7,8 +7,8 @@ layer 11 · 定义 · 单满、子对象与像 · 范畴论
 $$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
 
 为对象，从 $(Y, t)$ 到 $(Z, u)$ 的态射取使 $F(f)(t) = u$ 的 $f : Y \to Z$。
+> 陈述续见 `nodes/def.elements-category.2.md`
 
-称 $(X, s)$ 是 $F$ 的**泛元素**，如果它是 $\operatorname{el}(F)$ 的始对象。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.function` 函数：用到了定义 函数　proofs/def-dep.function-el.md
@@ -18,5 +18,7 @@ $$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
 - 被 `def.representable` 表示函子 用
 - 被 `def.slice-category` 切片范畴 用
 - 被 `def.comma-category` 逗号范畴 用
+
+refs: Mac Lane, Categories for the Working Mathematician, III.7
 
 > 说明见 `notes/def.elements-category.md`

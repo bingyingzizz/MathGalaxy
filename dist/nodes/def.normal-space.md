@@ -15,4 +15,6 @@ layer 6 · 定义 · 拓扑空间 · 拓扑学
 - 被 `lem.urysohn` Urysohn 引理 用
 - 被 `thm.tietze-banach` Tietze 延拓（Banach 值） 用
 
+refs: Munkres, Topology
+
 > 说明见 `notes/def.normal-space.md`

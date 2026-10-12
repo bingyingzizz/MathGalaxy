@@ -9,4 +9,6 @@ $$f \text{ 是单态射（满态射）} \iff X^{\sharp} \to Y^{\sharp} \text{ �
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-mono-epi.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/prop.precanonical-mono-epi.md`

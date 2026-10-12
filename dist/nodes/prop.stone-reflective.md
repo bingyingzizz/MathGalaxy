@@ -10,4 +10,6 @@ Stone 空间构成的范畴是 $\mathbf{CHaus}$ 的反射子范畴。
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.stone-profinite` Stone ⟺ 投射有限
 
+refs: Le Stum, An introduction to condensed mathematics, §2.2
+
 > 说明见 `notes/prop.stone-reflective.md`

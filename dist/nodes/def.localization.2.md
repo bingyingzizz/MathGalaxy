@@ -1,8 +1,8 @@
 # 局部化　`def.localization`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.localization.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.calculus-of-fractions` 分式演算下的局部化 用
-- 被 `prop.ring-localization` 环的局部化 W⁻¹R 用
-- 被 `prop.localization-hom-colim` 局部化的 Hom 是滤过余极限 用
-- 被 `def.derived-category` 导出范畴 用
+## 陈述（续）
+1. 对每个 $w \in W$，$\gamma(w)$ 是同构；
+2. **泛性质**：对任何函子 $F : \mathcal{C} \to \mathcal{D}$ 使每个 $w \in W$ 的像都是同构，存在唯一的 $\overline{F} : \mathrm{ho}(\mathcal{C}) \to \mathcal{D}$ 使 $\overline{F} \circ \gamma = F$。
+
+> 续见 `nodes/def.localization.3.md`

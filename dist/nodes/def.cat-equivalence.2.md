@@ -1,5 +1,5 @@
 # 范畴等价　`def.cat-equivalence`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.cat-equivalence.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `thm.pontryagin-van-kampen` Pontryagin–van Kampen 对偶 用
+## 陈述（续）
+这时记 $\mathcal{C} \simeq \mathcal{C}'$。若把两个 $\cong$ 加强成等号 $F \circ G = 1_{\mathcal{C}'}$、$G \circ F = 1_{\mathcal{C}}$，则叫**范畴同构**，记 $\mathcal{C} \cong \mathcal{C}'$。

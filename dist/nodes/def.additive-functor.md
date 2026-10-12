@@ -3,10 +3,8 @@
 layer 9 · 定义 · 加法与阿贝尔范畴 · 同调代数
 
 设 $\mathcal{C}, \mathcal{D}$ 是两个**预加性范畴**。函子 $F : \mathcal{C} \to \mathcal{D}$ 叫**加法函子**，如果对每对 $M, N \in \mathcal{C}$，映射
+> 陈述续见 `nodes/def.additive-functor.2.md`
 
-$$\operatorname{Hom}_{\mathcal{C}}(M, N) \longrightarrow \operatorname{Hom}_{\mathcal{D}}(F(M), F(N)), \qquad f \longmapsto F(f)$$
-
-是**阿贝尔群同态**（即保加法、保 $0$）。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.addfunctor-functor.md
@@ -17,5 +15,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(M, N) \longrightarrow \operatorname{Hom}_{\ma
 - 被 `prop.adjoint-additive` 伴随函子都加法 用
 - 被 `prop.additive-functor-preserves-triangles` 加法函子保导出三角 用
 - 被 `prop.left-exact-criterion` 左正合性的判据 用
+
+refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 > 说明见 `notes/def.additive-functor.md`

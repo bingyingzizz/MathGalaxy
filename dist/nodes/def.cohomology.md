@@ -2,7 +2,7 @@
 同调（Cohomology）
 layer 13 · 定义 · 同调与正合列 · 同调代数
 
-设 $\mathcal{A}$ 是阿贝尔范畴，$K$ 是 $\mathcal{A}$ 中的上链复形。$K$ 的**第 $n$ 阶同调**是
+设 $\mathcal{A}$ 是阿贝尔范畴，$K$ 
 > 陈述续见 `nodes/def.cohomology.2.md`
 
 
@@ -16,6 +16,8 @@ layer 13 · 定义 · 同调与正合列 · 同调代数
 - 被 `thm.long-exact` 长正合列 用
 - 被 `def.cohomological-functor` 上同调函子 用
 - 被 `def.quasi-iso` 拟同构 用
+
+refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3
 
 ## 说明
 例：$H^{n}(K[k]) = H^{n+k}(K)$；$M \in \mathcal{A}$ 时 $H^{0}([M]) = M$、其余为 $0$；$H^{0}([M \to N]) = \ker f$、$H^{1}([M \to N]) = \operatorname{coker} f$。

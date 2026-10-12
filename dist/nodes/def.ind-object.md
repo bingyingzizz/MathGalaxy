@@ -13,4 +13,6 @@ layer 11 · 定义 · 图与极限 · 范畴论
 - 被 `prop.ind-reflective` C 是 Ind(C) 的反射子范畴 用
 - 被 `lem.qseparated-ind-inclusions` 拟分离即含入的滤过余极限 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.3
+
 > 说明见 `notes/def.ind-object.md`

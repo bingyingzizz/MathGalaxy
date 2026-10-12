@@ -9,4 +9,6 @@ $$\bigl(T/R\bigr)^{\sharp} \;\cong\; T^{\sharp} / R^{\sharp}$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.effective-equivalence` 有效等价关系：用到了定义 有效等价关系　proofs/def-dep.effective-sheafify.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
 > 说明见 `notes/prop.sheafify-equivalence.md`

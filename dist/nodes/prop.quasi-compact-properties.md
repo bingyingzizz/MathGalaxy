@@ -9,4 +9,6 @@ layer 13 · 命题 · 拓扑斯 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.fibered-product` 纤维积 / 纤维余积：用到了定义 纤维积 / 纤维余积　proofs/def-dep.fibered-qc.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/prop.quasi-compact-properties.md`

@@ -17,8 +17,9 @@ $$i \circ f = i \circ g \;\Longrightarrow\; f = g$$
 - 被 `prop.injective-criterion` 内射对象的判据 用
 - 被 `def.subobject` 子对象 用
 - 被 `def.image` 像 / 余像 用
-- 被 `def.projective-object` 投射 / 内射对象 用
-
-> 说明见 `notes/def.mono.md`
 
 - …另有出边，续页见 `nodes/def.mono.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §1.1
+
+> 说明见 `notes/def.mono.md`

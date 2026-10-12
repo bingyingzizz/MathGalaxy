@@ -7,12 +7,6 @@ layer 10 · 定义 · 伴随与反射 · 范畴论
 $$\Phi_{X, Y} : \operatorname{Hom}_{\mathcal{D}}\bigl(F(X), Y\bigr) \longrightarrow \operatorname{Hom}_{\mathcal{C}}\bigl(X, G(Y)\bigr)$$
 
 把它在两个「恒等态射」上取值，得到两个自然变换：
-
-$$\eta_{X} := \Phi_{X, F(X)}(1_{F(X)}) : X \to G F(X) \qquad (\textbf{单位})$$
-
-$$\varepsilon_{Y} := \Phi_{G(Y), Y}^{-1}(1_{G(Y)}) : F G(Y) \to Y \qquad (\textbf{余单位})$$
-
-它们满足**三角等式**
 > 陈述续见 `nodes/def.adjunction-unit.2.md`
 
 
@@ -24,5 +18,7 @@ $$\varepsilon_{Y} := \Phi_{G(Y), Y}^{-1}(1_{G(Y)}) : F G(Y) \to Y \qquad (\textb
 - ⇒ `prop.adjoint-full-faithful` 全忠实与单位
 - 被 `prop.adjoint-full-faithful` 全忠实与单位 用
 - 被 `prop.counit-epi-iff-faithful` 余单位与忠实性 用
+
+refs: Le Stum, An introduction to condensed mathematics, §1.5
 
 > 说明见 `notes/def.adjunction-unit.md`

@@ -12,4 +12,6 @@ $$X \longmapsto k(X \times Y) \qquad \text{左伴随于} \qquad Z \longmapsto kC
 - `prop.cg-cartesian-closed` 紧生成空间是笛卡尔闭的：用到了定义 紧生成空间是笛卡尔闭的　proofs/def-dep.cgexp-cc.md
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.cgexp-adjoint.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/cor.cg-exponential-adjoint.md`

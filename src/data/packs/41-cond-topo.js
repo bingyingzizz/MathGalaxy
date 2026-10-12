@@ -43,7 +43,8 @@ window.MG = window.MG || {};
           '- $\\underline{M} \\mapsto M$ 那条通道**没有明显的伴随**，因为函子 $X \\mapsto X(\\bullet)$（取底拓扑空间）**不保积**；',
           '- 就算 $M$ 是拓扑阿贝尔群，$kM$ **一般也不是**拓扑阿贝尔群 —— 因为紧生成空间对（拓扑空间的）积不封闭。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §6.2']
     },
 
     /* ------------------------------------------------ 关联凝聚态群 */

@@ -9,4 +9,6 @@ layer 7 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.subspace-topology` 子空间拓扑：用到了定义 子空间拓扑　proofs/def-dep.cgwhclosed-subspace.md
 - `def.weak-hausdorff` 弱 Hausdorff 空间：用到了定义 弱 Hausdorff 空间　proofs/def-dep.cgwhclosed-weakhaus.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/prop.cgwh-closed.md`

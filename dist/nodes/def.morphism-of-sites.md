@@ -8,4 +8,6 @@ layer 17 · 定义 · 拓扑斯 · 范畴论
 - `def.continuous-functor` 连续函子（site 之间）：用到了定义 连续函子（site 之间）　proofs/def-dep.sitesmorphism-continuous.md
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.sitesmorphism-adjoint.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/def.morphism-of-sites.md`

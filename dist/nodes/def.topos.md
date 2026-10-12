@@ -21,6 +21,9 @@ layer 16 · 定义 · 拓扑斯 · 范畴论
 - 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用
 - 被 `def.topos-morphism` 拓扑斯的态射 用
 - 被 `def.internal-hom` 内 Hom 用
-- 被 `thm.breen-deligne` Breen–Deligne 分解 用
+
+- …另有出边，续页见 `nodes/def.topos.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §3.3
 
 > 说明见 `notes/def.topos.md`

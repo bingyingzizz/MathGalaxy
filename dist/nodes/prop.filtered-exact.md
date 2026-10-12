@@ -16,4 +16,6 @@ $$\varinjlim : \mathbf{Set}^{I} \longrightarrow \mathbf{Set}$$
 - ⇒ `prop.site-properties` site 的层范畴的好性质
 - 被 `def.ab-axioms` Grothendieck 的 AB 公理 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.5
+
 > 说明见 `notes/prop.filtered-exact.md`

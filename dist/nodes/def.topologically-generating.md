@@ -6,3 +6,5 @@ layer 15 · 定义 · 层与拓扑 · 范畴论
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.grothendieck-topology` Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　proofs/def-dep.topgen-topology.md
+
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2

@@ -9,4 +9,6 @@ $$0 \longrightarrow H^{k}(K) \longrightarrow \operatorname{coker} d^{k-1} \longr
 ## 为什么成立（入边，证明在 proofs/）
 - `def.equalizer` 等化子 / 余等化子：用到了定义 等化子 / 余等化子　proofs/def-dep.equalizer-cohomology-sequence.md
 
+refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3
+
 > 说明见 `notes/prop.cohomology-exact-sequence.md`

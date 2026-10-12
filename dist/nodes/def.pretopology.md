@@ -2,7 +2,7 @@
 预拓扑（Pretopology）
 layer 13 · 定义 · 层与拓扑 · 范畴论
 
-范畴 $\mathcal{C}$ 上的**预拓扑**是对每个 $X$ 指定一族**覆盖族** $\operatorname{Cov}(X)$（每个元素是一族态射 $(X_{i} \to X)_{i \in I}$），满足：
+范畴 $\mathcal{C}$ 上的**预拓扑**是对每个 $X$ 指定一族**覆盖族** 
 > 陈述续见 `nodes/def.pretopology.2.md`
 
 
@@ -13,6 +13,8 @@ layer 13 · 定义 · 层与拓扑 · 范畴论
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.sheaf-descent` 层的下降条件
 - 被 `def.grothendieck-topology` Grothendieck 拓扑 用
+
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 ## 说明
 三条读成一句话：**同构是覆盖、覆盖能拉回、覆盖的覆盖还是覆盖**。

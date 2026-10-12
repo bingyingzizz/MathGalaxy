@@ -7,8 +7,6 @@ $\mathbf{CHaus}$ 是 $\mathbf{Top}$ 的**反射子范畴**，反射叫 **Stone�
 $$\beta : \mathbf{Top} \longrightarrow \mathbf{CHaus}, \qquad X \mapsto \beta X$$
 
 即对每个 $X \in \mathbf{Top}$ 与每个紧 Hausdorff 空间 $K$，
-
-$$\operatorname{Hom}_{\mathbf{CHaus}}\bigl(\beta X,\ K\bigr) \;\cong\; \operatorname{Hom}_{\mathbf{Top}}\bigl(X,\ K\bigr)$$
 > 陈述续见 `nodes/prop.chaus-reflective.2.md`
 
 
@@ -18,9 +16,11 @@ $$\operatorname{Hom}_{\mathbf{CHaus}}\bigl(\beta X,\ K\bigr) \;\cong\; \operator
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.adjoint-chaus-reflective.md
 - `def.hausdorff` Hausdorff 空间：用到了定义 Hausdorff 空间　proofs/def-dep.hausdorff-stonecech.md
 
-> 说明见 `notes/prop.chaus-reflective.md`
-
 - …另有入边，续页见 `nodes/prop.chaus-reflective.3.md`
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 `nodes/prop.chaus-reflective.4.md`
+- ～弱边 `prop.yoneda-embedding` 米田嵌入
+
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
+> 说明见 `notes/prop.chaus-reflective.md`

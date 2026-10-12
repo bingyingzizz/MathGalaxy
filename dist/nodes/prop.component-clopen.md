@@ -12,4 +12,6 @@ $$C(x) \;=\; \bigcap \{\, K \subseteq S : K \text{ 闭开},\ x \in K \,\}$$
 - `def.clopen` 闭开集：用到了定义 闭开集　proofs/def-link.clopen-component.md
 - `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-component.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.2
+
 > 说明见 `notes/prop.component-clopen.md`

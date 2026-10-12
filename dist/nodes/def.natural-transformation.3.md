@@ -1,0 +1,8 @@
+# 自然变换　`def.natural-transformation`　·　续页（第 3 页）
+根 `../`　·　第 1 页 `nodes/def.natural-transformation.md`　·　上一页 `nodes/def.natural-transformation.2.md`
+
+## 它能推出什么 / 谁在用它（续）
+- 被 `def.adjunction-unit` 单位与余单位 用
+- 被 `def.kan-extension` Kan 延拓 用
+- 被 `def.presheaf-valued` 取值一般的预层与层 用
+- 被 `def.localization` 局部化 用

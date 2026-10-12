@@ -3,8 +3,6 @@
 layer 15 · 定义 · 过滤与谱序列 · 同调代数
 
 设 $\mathcal{A}$ 是阿贝尔范畴。$M \in \mathcal{A}$ 上的（**递降**）**过滤**是 $M$ 的子对象沿 $(\mathbb{Z}, \ge)$ 的图：
-
-$$\cdots \subseteq F^{n}M \subseteq F^{n+1}M \subseteq \cdots \subseteq M$$
 > 陈述续见 `nodes/def.filtration.2.md`
 
 
@@ -14,6 +12,8 @@ $$\cdots \subseteq F^{n}M \subseteq F^{n+1}M \subseteq \cdots \subseteq M$$
 ## 它能推出什么 / 谁在用它
 - 被 `def.spectral-sequence` 谱序列 用
 - 被 `thm.filtered-complex-spectral` 过滤复形给出谱序列 用
+
+refs: Le Stum, An introduction to condensed mathematics, §7.2
 
 ## 说明
 命题：$\mathbf{F}(\mathcal{C}(\mathcal{A})) \cong \mathcal{C}(\mathbf{F}(\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。

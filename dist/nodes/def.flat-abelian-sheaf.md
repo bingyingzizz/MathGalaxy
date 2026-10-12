@@ -11,5 +11,7 @@ $$M \longmapsto P \otimes_{\mathbb{Z}} M$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.tensor-abelian-sheaf` 阿贝尔层的张量积：用到了定义 阿贝尔层的张量积　proofs/def-dep.flat-tensor.md
 
+refs: Le Stum, An introduction to condensed mathematics, §5.3
+
 ## 说明
 例：**通常的阿贝尔群平坦 $\iff$ 无挠**。由此立刻得到：$\mathbb{Z}\cdot X$ **总是平坦的** —— 先归结到预层、再归结到通常的阿贝尔群，而自由阿贝尔群无挠。

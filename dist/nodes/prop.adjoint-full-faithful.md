@@ -12,4 +12,6 @@ $$F \text{ 全忠实} \iff \eta \text{ 是同构}, \qquad G \text{ 全忠实} \i
 - `def.ff-faithful` 忠实 / 满 / 全忠实：用到了定义 忠实 / 满 / 全忠实　proofs/def-dep.ff-adjoint.md
 - `def.adjunction-unit` 单位与余单位：用到了定义 单位与余单位　proofs/def-dep.unit-adjoint-ff.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.5
+
 > 说明见 `notes/prop.adjoint-full-faithful.md`

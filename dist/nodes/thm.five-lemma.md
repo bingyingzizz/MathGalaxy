@@ -11,4 +11,6 @@ layer 18 · 引理 · 加法与阿贝尔范畴 · 同调代数
 - `thm.snake-lemma` 蛇引理：用到了定义 蛇引理　proofs/def-dep.five-snake.md
 - `def.image` 像 / 余像：用到了定义 像 / 余像　proofs/def-dep.five-image.md
 
+refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2
+
 > 说明见 `notes/thm.five-lemma.md`

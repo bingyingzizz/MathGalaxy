@@ -38,7 +38,8 @@ window.MG = window.MG || {};
         '在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。',
         '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
         '阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------------ 复形 */
@@ -60,7 +61,8 @@ window.MG = window.MG || {};
       notes: [
         '$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；同伦范畴那边同样加 $+$ $-$ $b$。',
         '例：$K$ 是（半）单纯对象时，令 $d^{n} := \\sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------------- 复形是加法的 */
@@ -79,7 +81,8 @@ window.MG = window.MG || {};
         '- 核与余核也**逐项**取：$(\\ker f)^{n} = \\ker f^{n}$，$d_{\\ker f} := d_{K}|_{\\ker f^{n}}$；',
         '- $\\mathcal{C}(\\mathcal{C})$ 中的**极限与余极限逐项计算**。'
       ].join('\n'),
-      notes: '「逐项计算」是函子范畴的通用事实：$\\mathcal{C}(\\mathcal{C})$ 是 $\\operatorname{Hom}((\\mathbb{Z},\\le), \\mathcal{C})$ 的满子范畴，一切构造都在每个 $n$ 上分别做，然后再验证微分与它们相容。这条让后面所有关于复形的极限/余极限都不必单独证明。'
+      notes: '「逐项计算」是函子范畴的通用事实：$\\mathcal{C}(\\mathcal{C})$ 是 $\\operatorname{Hom}((\\mathbb{Z},\\le), \\mathcal{C})$ 的满子范畴，一切构造都在每个 $n$ 上分别做，然后再验证微分与它们相容。这条让后面所有关于复形的极限/余极限都不必单独证明。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------------- 同伦 */
@@ -102,7 +105,8 @@ window.MG = window.MG || {};
         '',
         '记 $f \\sim g$，$s$ 叫一个**同伦**。与 $0$ 同伦的态射叫**零伦的**。'
       ].join('\n'),
-      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。'
+      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------- 同伦范畴 */
@@ -125,7 +129,8 @@ window.MG = window.MG || {};
         '等价的说法：$f : K \\to L$ 是同伦等价 $\\iff$ 存在 $g : L \\to K$ 使 $g \\circ f \\sim 1_{K}$、$f \\circ g \\sim 1_{L}$；$K$ 同伦平凡 $\\iff$ $1_{K} \\sim 0_{K}$。',
         '$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
         '为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ------------------------------------------------------ 映射锥 */
@@ -144,7 +149,8 @@ window.MG = window.MG || {};
         '',
         '（矩阵按 $K^{n+1} \\oplus L^{n}$ 分块：左上取自 $K$ 的微分，右下取自 $L$ 的微分，左下是 $f$ 的分量；$d^{2} = 0$ 只要 $f$ 与微分交换。）$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。'
       ].join('\n'),
-      notes: '用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。'
+      notes: '用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------- 导出三角 */
@@ -167,7 +173,8 @@ window.MG = window.MG || {};
         '',
         '三角之间的**态射**是一族映射 $(u, v, w, u[1])$，使所有方块交换。'
       ].join('\n'),
-      notes: '导出三角是「短正合列」的**同伦版**：它不要求 $M$ 是商，只要求 $K \\to L \\to M \\to K[1]$ 在形状上接得上。加上位移这一步之后，一个态射就能嵌进一条任意长度的序列里 —— 这正是三角范畴要的形式。'
+      notes: '导出三角是「短正合列」的**同伦版**：它不要求 $M$ 是商，只要求 $K \\to L \\to M \\to K[1]$ 在形状上接得上。加上位移这一步之后，一个态射就能嵌进一条任意长度的序列里 —— 这正是三角范畴要的形式。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ------------------------------------------ 三角的旋转与延拓 */
@@ -187,7 +194,8 @@ window.MG = window.MG || {};
         '3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；',
         '4. 导出三角之间的态射可以（**不唯一**地）延拓。'
       ].join('\n'),
-      notes: '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。'
+      notes: '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------- 三角态射的性质 */
@@ -219,7 +227,8 @@ window.MG = window.MG || {};
           '**第 1 条在说什么**：三角之间的态射被前两步控制得很紧 —— 前两步一旦归零，第三步不但被逼成零平方，还被夹在两条正合列之间。这正是三角范畴公理里那条最不显然的要求的来源。'
         ].join('\n'),
         '第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------------------- 同调 */
@@ -241,7 +250,8 @@ window.MG = window.MG || {};
       notes: [
         '例：$H^{n}(K[k]) = H^{n+k}(K)$；$M \\in \\mathcal{A}$ 时 $H^{0}([M]) = M$、其余为 $0$；$H^{0}([M \\to N]) = \\ker f$、$H^{1}([M \\to N]) = \\operatorname{coker} f$。',
         '$H^{n}$ 是**函子**，但它是**加法而不正合**的 —— 同调不可交换性是整个同调代数的起点。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------- 同调的短正合列 */
@@ -266,7 +276,8 @@ window.MG = window.MG || {};
           '- $Z^{k+1} \\to Z^{k+1}/B^{k+1} = H^{k+1}$：取商映射，满，核是 $B^{k+1} = \\operatorname{im} d^{k}$ —— 正好是上一个箭头的像。∎',
           '三段正合各只用到「$d^{2} = 0$」和核/余核的泛性质。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------------- 上同调函子 */
@@ -285,7 +296,8 @@ window.MG = window.MG || {};
         '',
         '正合。'
       ].join('\n'),
-      notes: '上同调函子把导出三角变成一条**长正合列**：反复旋转三角、每次用一次正合性、再拼接，就得到 $\\cdots \\to F(K[n]) \\to F(L[n]) \\to F(M[n]) \\to F(K[n+1]) \\to \\cdots$。\n\n例：固定 $K$ 之后，$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, -)$ 是上同调函子 —— 这就是同调代数里那些「长正合列」的总来源。'
+      notes: '上同调函子把导出三角变成一条**长正合列**：反复旋转三角、每次用一次正合性、再拼接，就得到 $\\cdots \\to F(K[n]) \\to F(L[n]) \\to F(M[n]) \\to F(K[n+1]) \\to \\cdots$。\n\n例：固定 $K$ 之后，$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, -)$ 是上同调函子 —— 这就是同调代数里那些「长正合列」的总来源。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------------- 长正合列 */
@@ -305,7 +317,8 @@ window.MG = window.MG || {};
         '其中 $\\delta$ 叫**连接同态**。',
         '',
         '推论：$H^{n} : \\mathbf{K}(\\mathcal{A}) \\to \\mathcal{A}$ 是**上同调函子**。'
-      ].join('\n')
+      ].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* ---------------------------------------------------- 拟同构 */
@@ -324,7 +337,8 @@ window.MG = window.MG || {};
         '注意：$K \\to L$ 拟同构 $\\iff$ $L \\to K$ 拟同构（「拟同构」是双向的说法，虽然映射只有一个方向）；$K$ 零调 $\\iff$ $[0] \\to K$ 拟同构 $\\iff$ $K \\to [0]$ 拟同构。',
         '两条命题：（1）若 $K \\to L \\to M \\to$ 是导出三角，则 $f$ 是拟同构 $\\iff$ $M$ 零调；（2）对三角态射 $(u, v, w)$，$u, v$ 是拟同构 $\\iff$ $w$ 是拟同构。',
         '拟同构是「在 $\\mathbf{K}(\\mathcal{C})$ 里不是同构，但同调上看不出差别」的映射 —— 把拟同构反过来形式地变成同构，就得到**导出范畴**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------------- 内射对象 */
@@ -348,7 +362,8 @@ window.MG = window.MG || {};
         '',
         '$$M \\text{ 内射} \\iff M\'\' \\text{ 内射}$$'
       ].join('\n'),
-      notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。'
+      notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* ------------------------------------------------------ 过滤 */
@@ -367,7 +382,8 @@ window.MG = window.MG || {};
         '',
         '总假定过滤是**穷尽的**（$\\bigcup_{n} F^{n}M = M$）与**分离的**（$\\bigcap_{n} F^{n}M = 0$）；若 $n \\ll 0$ 时 $F^{n}M = M$ 且 $n \\gg 0$ 时 $F^{n}M = 0$，叫**有限的**。带过滤的对象构成范畴 $\\mathbf{F}(\\mathcal{A})$，**关联分次**记 $\\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。'
       ].join('\n'),
-      notes: '命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。'
+      notes: '命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
     },
 
     /* ---------------------------------------------------- 谱序列 */
@@ -400,7 +416,8 @@ window.MG = window.MG || {};
         '',
         '继承。于是每根 $H^{n}$ 上都有一串 $H^{n} \\supseteq \\cdots \\supseteq F^{p}H^{n} \\supseteq F^{p+1}H^{n} \\supseteq \\cdots \\supseteq 0$。',
         '谱序列说的就是：**对充分大的 $r$，$E_{r}$ 页稳定下来，恰好等于这个过滤的关联分次**。所以它是「从过滤的复形一层层逼近同调」的工具 —— 直接算 $H^{n}$ 太难时，就把 $H^{n}$ 拆成容易算的那些碎片。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
     }
   ],
 

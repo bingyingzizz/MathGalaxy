@@ -10,4 +10,6 @@ $$\mathrm{Cond} \;\simeq\; \widehat{\mathbf{FCHaus}}$$
 - `prop.fchaus-sheaf` FCHaus 上层的判据 + `prop.fchaus-pretopology` FCHaus 上的预拓扑 + `def.free-presentation` 自由表示：$\mathrm{Cond} \simeq \widehat{\mathbf{FCHaus}}$　proofs/imp.cond-fchaus.md
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-cond-equiv.md
 
+refs: Le Stum, An introduction to condensed mathematics, §4
+
 > 说明见 `notes/thm.cond-equiv-fchaus.md`

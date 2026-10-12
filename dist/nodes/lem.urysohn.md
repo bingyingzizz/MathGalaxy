@@ -13,4 +13,6 @@ $$f : X \longrightarrow [0, 1], \qquad f|_{A} \equiv 0, \qquad f|_{B} \equiv 1.$
 ## 它能推出什么 / 谁在用它
 - 被 `prop.paracompact-partition-unity` 仿紧性与单位分解 用
 
+refs: Munkres, Topology
+
 > 说明见 `notes/lem.urysohn.md`

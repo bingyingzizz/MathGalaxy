@@ -20,4 +20,6 @@ $$D(\alpha) \circ p_i = p_j$$
 - 被 `def.limit` 极限 用
 - 被 `def.elements-category` 元素范畴 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.3
+
 > 说明见 `notes/def.cone.md`

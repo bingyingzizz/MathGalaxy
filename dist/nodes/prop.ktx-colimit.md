@@ -8,4 +8,6 @@ layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.ktx-colimit-cg.md
 - `def.k-topology` k-开、k-闭与 k-拓扑：用到了定义 k-开、k-闭与 k-拓扑　proofs/def-dep.ktx-colimit-ktopo.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/prop.ktx-colimit.md`

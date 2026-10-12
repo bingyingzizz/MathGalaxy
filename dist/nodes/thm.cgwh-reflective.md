@@ -15,4 +15,6 @@ $$h : X \longmapsto X/R,$$
 - `def.hausdorff` Hausdorff 空间：用到了定义 Hausdorff 空间　proofs/def-dep.cgwh-hausdorff.md
 - `def.quotient-topology` 商拓扑：用到了定义 商拓扑　proofs/def-dep.cgwh-quotient.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/thm.cgwh-reflective.md`

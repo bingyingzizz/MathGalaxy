@@ -12,4 +12,6 @@ $$h^{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$$
 - `def.filtered-category` 滤过范畴：用到了定义 滤过范畴　proofs/def-dep.finpres-filtered.md
 - `def.representable` 表示函子：用到了定义 表示函子　proofs/def-dep.finpres-representable.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
+
 > 说明见 `notes/def.finitely-presented.md`

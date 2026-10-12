@@ -36,7 +36,8 @@ window.MG = window.MG || {};
         '**极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。',
         '⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通（**Lemma 2.2.10**）；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**（**Prop 2.2.9**）；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。',
         '**例子**：Cantor 集 $2^{\\mathbb{N}}$ 完全不连通但不极不连通；$\\beta\\mathbb{N}$（$\\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\\beta\\mathbb{N} \\setminus \\mathbb{N}$ 是它的一个极端例子。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ------------------------------------------------- 局部紧 Hausdorff */
@@ -56,7 +57,8 @@ window.MG = window.MG || {};
         '**例子**：$\\mathbb{R}^{n}$、任何离散空间、任何紧 Hausdorff 空间。**反例**：$\\mathbb{Q}$（不是局部紧）、无穷维 Banach 空间（闭单位球不紧）。',
         '⭐ **它在凝聚态数学里的位置**：$\\mathbf{CHaus}$ 是场地，而**局部紧 Hausdorff**是「能用紧 Hausdorff 逼近」的最小一族 —— 局部紧 Hausdorff 空间都是**紧生成**的（例 1），所以都能忠实地变成凝聚态集。Pontryagin 对偶也只在局部紧 Hausdorff 阿贝尔群那一条线上成立。',
         '⚠️ 「局部紧」这个条件**不能省**：商映射乘 id 那条定理、Tychonoff 以外的积性质、以及「紧提升条件」都要它。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Munkres, Topology']
     },
 
     /* ------------------------------------------------------ Tychonoff */
@@ -95,7 +97,8 @@ window.MG = window.MG || {};
       title: '拓扑生成集（Topologically Generating Set）',
       regions: ['category'],
       tags: ['范畴论', 'site', '生成集', '筛'],
-      statement: '设 $\\mathcal{C}$ 是 site。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。'
+      statement: '设 $\\mathcal{C}$ 是 site。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------------ 连续函子（site） */
@@ -120,7 +123,8 @@ window.MG = window.MG || {};
         '⭐ **它等价于**：$g$ 把 $\\mathcal{C}\'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。',
         '**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。',
         '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**（Definition 3.4.5）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- site 的态射 */
@@ -139,7 +143,8 @@ window.MG = window.MG || {};
         '⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。',
         '**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在 site 这一层先保有限极限。',
         '**几何直觉**：空间之间的连续映射给出 site 的态射；site 的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「site」换成「层范畴」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 余连续函子 */
@@ -151,7 +156,8 @@ window.MG = window.MG || {};
       title: '余连续函子（Cocontinuous Functor）',
       regions: ['category'],
       tags: ['范畴论', 'site', '余连续', '层'],
-      statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。'
+      statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 诱导拓扑 */
@@ -163,7 +169,8 @@ window.MG = window.MG || {};
       title: '诱导拓扑（Induced Topology）',
       regions: ['category'],
       tags: ['范畴论', 'site', '诱导拓扑'],
-      statement: '设 $\\mathcal{C}\'$ 是 site，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。'
+      statement: '设 $\\mathcal{C}\'$ 是 site，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }
   ],
 

@@ -7,4 +7,6 @@ layer 10 · 命题 · 伴随与反射 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.adjunique-adjoint.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.5
+
 > 说明见 `notes/prop.left-adjoint-unique.md`

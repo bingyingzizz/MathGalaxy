@@ -2,4 +2,5 @@
 根 `../`　·　第 1 页 `nodes/def.subspace-topology.md`
 
 ## 陈述（续）
+$$\mathcal{T}_{Y} := \{\, U \cap Y : U \in \mathcal{T} \,\}$$
 这样得到的拓扑是使含入映射 $Y \hookrightarrow X$ 连续的最粗拓扑。

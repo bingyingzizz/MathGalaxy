@@ -28,7 +28,8 @@ window.MG = window.MG || {};
       notes: [
         '紧跟 Hausdorff 放在一起是一件很划算的事：**紧 Hausdorff 是正则的、正规的**，而且从紧空间到 Hausdorff 空间的连续双射自动是同胚。很多在 $\\mathbf{Top}$ 里要额外假设的东西，在这里是免费的。',
         '$\\mathbf{CHaus}$ 里**任意极限存在**，并且就是 $\\mathbf{Top}$ 里算完之后那个结果（见「紧 Haus 是反射子范畴」那条）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ------------------------------------------ CHaus 是反射子范畴 */
@@ -59,7 +60,8 @@ window.MG = window.MG || {};
         '再取闭包 $\\beta X := \\overline{e_{X}(X)}$。方块紧 Hausdorff，闭子集因而也紧 Hausdorff。',
         '⭐ **$e_{X}$ 是单射 $\\iff$ $X$ 是 Tychonoff（$T_{3.5}$）空间** —— 即连续函数多到能分开不同的点。所以对于一般拓扑空间，$\\beta X$ 是把「连续函数看得出的信息」全部收进来之后的紧化。',
         '推论：**紧 Hausdorff 空间的任意极限自动是紧 Hausdorff 的**。这是反射子范畴对极限封闭的一般结论在这里的样子 —— 以后在 $\\mathbf{CHaus}$ 里取极限，不必再回头验紧性与 Hausdorff 性。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ---------------------------------------------- 极小闭子集引理 */
@@ -74,7 +76,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $f : S \\to T$ 是紧 Hausdorff 空间之间的连续满射。则存在**极小**的闭子集 $S\' \\subseteq S$，使限制 $f|_{S\'}$ 仍然是满射。'
       ].join('\n'),
-      notes: '证明用佐恩引理：把「$f$ 在其上满」的闭子集族按**反包含**排序，链的上界取交 —— 紧性保证交出来的闭子集仍然满（若非满，剩下的那个紧集会被一列越来越小的闭集挖空，与有限交性质矛盾）。于是有极大元，在原序下就是极小闭子集。'
+      notes: '证明用佐恩引理：把「$f$ 在其上满」的闭子集族按**反包含**排序，链的上界取交 —— 紧性保证交出来的闭子集仍然满（若非满，剩下的那个紧集会被一列越来越小的闭集挖空，与有限交性质矛盾）。于是有极大元，在原序下就是极小闭子集。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ------------------------------------------------ 自由紧 Haus */
@@ -93,7 +96,8 @@ window.MG = window.MG || {};
         '',
         '即连续映射 $F \\to S$ 与 $S$ 中一族点 $(t_{i})_{i \\in I}$ 一一对应。这族点使 $F \\to S$ 成为满射时，叫 $F$ 的**生成元**。'
       ].join('\n'),
-      notes: '「自由」两个字在这里的含义和自由群、自由模完全一样：**在 $I$ 上没有任何约束**（$I$ 是离散的，所以从 $I$ 出发的映射随便给点就是连续的），于是「$F$ 到别处的映射」与「$I$ 上的一族点」是一回事。'
+      notes: '「自由」两个字在这里的含义和自由群、自由模完全一样：**在 $I$ 上没有任何约束**（$I$ 是离散的，所以从 $I$ 出发的映射随便给点就是连续的），于是「$F$ 到别处的映射」与「$I$ 上的一族点」是一回事。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* -------------------------------------------- CHaus 是自由的商 */
@@ -120,7 +124,8 @@ window.MG = window.MG || {};
           '故 $\\bar f$ 满。∎',
           '⭐ 这条与「紧 Hausdorff 是 $\\mathbf{Top}$ 的反射子范畴」是一回事，只是换了个说法：反射子范畴里每个对象都是自由对象的商，而自由对象就是 $\\beta I$。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ---------------------------------------------------- 投射对象 */
@@ -145,7 +150,8 @@ window.MG = window.MG || {};
         '「投射」这个名字来自模论：$R\\text{-}\\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。',
         '两条立刻可用的推论：**$P$ 投射时任何满态射 $Y \\twoheadrightarrow P$ 都有截面**；**若 $X \\to Y$ 有收缩而 $Y$ 投射，则 $X$ 也投射**（内射的情形对偶）。',
         '在 $\\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \\twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ----------------------------------------- 自由紧 Haus 是投射的 */
@@ -158,7 +164,8 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['范畴论', '投射', '自由'],
       statement: '自由紧 Hausdorff 空间是 $\\mathbf{CHaus}$ 中的投射对象。',
-      notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。∎'
+      notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。∎',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ---------------------------------------------------- 自由表示 */
@@ -183,7 +190,8 @@ window.MG = window.MG || {};
         '对照集合里的那件事：对 $f : X \\to Y$，令 $R := X \\times_{Y} X = \\{(x_{1},x_{2}) : f(x_{1}) = f(x_{2})\\}$（「像相同的点对」），则 $X/R \\cong \\operatorname{im} f$（**Noether 第一同构定理**）；反过来，给定 $X$ 上的等价关系 $R$，把 $Y := X/R$，就有 $R = X \\times_{Y} X$。',
         '自由表示就是把这件事搬进 $\\mathbf{CHaus}$：$R$ 是「把像相同的点粘起来」那个等价关系，而第三条要求 $R$ 自己也能由一个自由紧 Hausdorff 空间满射过来 —— 于是整个 $S$ 由自由对象经过一次余等化子造出来。',
         '$\\mathbf{CHaus}$ 里有余等化子，所以 $\\operatorname{coker}(R \\rightrightarrows F)$ 存在；它就是商空间 $F/R$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* --------------------------------------------- 自由表示的存在性 */
@@ -196,7 +204,8 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['范畴论', '自由表示', '存在性'],
       statement: '每个紧 Hausdorff 空间 $S$ 都有自由表示。',
-      notes: '取 $F = \\beta S^{\\mathrm{disc}}$（前一条命题：$F \\twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \\times_{S} S$ 再做一次，得到 $F\' \\twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎'
+      notes: '取 $F = \\beta S^{\\mathrm{disc}}$（前一条命题：$F \\twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \\times_{S} S$ 再做一次，得到 $F\' \\twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ------------------------------------------ 连通分量是闭开之交 */
@@ -213,7 +222,8 @@ window.MG = window.MG || {};
         '',
         '$$C(x) \\;=\\; \\bigcap \\{\\, K \\subseteq S : K \\text{ 闭开},\\ x \\in K \\,\\}$$'
       ].join('\n'),
-      notes: '证明见边上那条推导。要点是「**紧 Hausdorff 里有无穷多闭开集可用**」：紧 Hausdorff 空间是正规的（$T_{4}$），所以两个不交闭集能被开集分开，而紧性又把「开集分开」升级成「闭开集分开」。这条把 $\\pi_{0}$ 这个反射函子变得可算：连通分量不是抽象地取出来的，而是闭开集的交。'
+      notes: '证明见边上那条推导。要点是「**紧 Hausdorff 里有无穷多闭开集可用**」：紧 Hausdorff 空间是正规的（$T_{4}$），所以两个不交闭集能被开集分开，而紧性又把「开集分开」升级成「闭开集分开」。这条把 $\\pi_{0}$ 这个反射函子变得可算：连通分量不是抽象地取出来的，而是闭开集的交。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------- 全不连通 / 极端不连通 */
@@ -234,7 +244,8 @@ window.MG = window.MG || {};
       notes: [
         '记 $\\pi_{0}(X) := \\{\\, C(x) : x \\in X \\,\\}$ 为连通分量的集合，并赋予它**商拓扑**；$x \\mapsto C(x)$ 给出连续映射 $X \\to \\pi_{0}(X)$。',
         '两个字面上很像的条件分居两端：**全不连通**说「碎到每个分量只剩一个点」，**极端不连通**说「开集的闭包不再长大」。后者更强 —— 极端不连通的 $T_{1}$ 空间必全不连通。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* -------------------------------------------- 极端不连通的性质 */
@@ -259,7 +270,8 @@ window.MG = window.MG || {};
           '（等价说法：极端不连通 $\\iff$ 不交开集的闭包不交。）',
           '**(b) 写严**：由 (a)，Hausdorff 性给出的分离开集 $U\\ni x$、$V\\ni y$ 满足 $\\overline U\\cap\\overline V = \\emptyset$；而 $\\overline U$、$\\overline V$ 都是**闭开**的（极端不连通），于是它们构成 $x$ 与 $y$ 之间的一个开闭分隔：$x$ 的连通分量含于 $\\overline U$，故不含 $y$ ✓。于是每个连通分量是单点，即全不连通。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------- 全不连通是反射子范畴 */
@@ -287,7 +299,8 @@ window.MG = window.MG || {};
           '**「$X\\to\\pi_{0}(X)$ 是同构」** $\\iff$ 每个分量是单点 $\\iff$ $X$ 全不连通 ✓。∎',
           '⭐ 推论读法：反射子范畴等价于「含入有左伴随」，而左伴随保余极限 —— 但这里要用的是**含入保极限**（右伴随保极限），于是全不连通空间的极限（在 $\\mathbf{Top}$ 里算）落回全不连通 ✓。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------- Stone 是反射的 */
@@ -308,7 +321,8 @@ window.MG = window.MG || {};
           '- 于是 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 是反射子范畴，反射是「取连通分量商」（它对紧 Hausdorff 空间仍是紧 Hausdorff ✓）。∎',
           '⭐ 反射子范畴的**含入保极限**，所以 Stone 空间的极限（在 $\\mathbf{CHaus}$ 或 $\\mathbf{Top}$ 里算）仍是 Stone ✓ —— 这正是「Stone 空间对极限封闭」。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------------- 投射有限 */
@@ -325,7 +339,8 @@ window.MG = window.MG || {};
         '',
         '$$X \\;=\\; \\varprojlim_{i \\in I} X_{i}, \\qquad X_{i} \\text{ 有限离散},\\quad I \\text{ 有向}$$'
       ].join('\n'),
-      notes: '「pro-finite」= 有限者的投射极限。直观上它是「越来越细的有限分辨率」堆出来的对象：$X_{i}$ 是第 $i$ 层分辨率下的样子，$I$ 有向保证任意两层分辨率都能同时加细。'
+      notes: '「pro-finite」= 有限者的投射极限。直观上它是「越来越细的有限分辨率」堆出来的对象：$X_{i}$ 是第 $i$ 层分辨率下的样子，$I$ 有向保证任意两层分辨率都能同时加细。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------- Stone ⟺ 投射有限 */
@@ -337,7 +352,8 @@ window.MG = window.MG || {};
       title: 'Stone 空间 $\\iff$ 投射有限空间',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '投射有限'],
-      statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。'
+      statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------------- Gleason */
@@ -349,7 +365,8 @@ window.MG = window.MG || {};
       title: 'Gleason 定理：$\\mathbf{CHaus}$ 的投射对象',
       regions: ['topology'],
       tags: ['范畴论', 'Gleason', '投射对象'],
-      statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。'
+      statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ------------------------------------------------ Stonean 是收缩核 */
@@ -371,7 +388,8 @@ window.MG = window.MG || {};
           '- **$(\\Longleftarrow)$**：若 $A$ 是自由对象 $F$ 的收缩核（$r: F\\to A$，$r|_A = \\mathrm{id}$），则由**投射对象的收缩核仍投射**（标准事实：投射对象的直和项/收缩核还是投射的），$A$ 在 $\\mathbf{CHaus}$ 里投射；再由 Gleason 定理，$A$ 是 Stonean ✓。∎',
           '⭐ 这条是「Stonean = 自由紧 Hausdorff 的收缩核」的完整论证，也是后面「$\\mathbb{Z}[S]$ 投射」的来源（$S$ 的收缩核给出截面，截面给出 $\\mathbb{Z}[S]$ 的投射性）。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     }
   ],
 

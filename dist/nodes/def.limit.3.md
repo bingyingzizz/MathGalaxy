@@ -2,7 +2,6 @@
 根 `../`　·　第 1 页 `nodes/def.limit.md`　·　上一页 `nodes/def.limit.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 `thm.density` 稠密性定理 用
 - 被 `thm.right-adjoint-preserves-limits` 右伴随保极限 用
 - 被 `prop.limit-adjoint` 极限即伴随 用
 - 被 `thm.saft` 伴随函子定理 用

@@ -1,13 +1,9 @@
 # 纤维积 / 纤维余积　`def.fibered-product`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.fibered-product.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.free-presentation` 自由表示 用
-- 被 `def.pretopology` 预拓扑 用
-- 被 `def.universal-colimit` 万有关系 用
-- 被 `def.effective-equivalence` 有效等价关系 用
-- 被 `def.quasi-separated` 拟分离对象 用
-- 被 `def.mapping-cone` 映射锥 用
-- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用
-- 被 `prop.cgwh-fiber-product` 紧块的纤维积还是紧的 用
-- 被 `prop.preserves-fibered-products-mono` 保纤维积 ⟹ 保单态射 用
+## 陈述（续）
+$$\begin{array}{ccc} X_1 \times_{X_0} X_2 & \longrightarrow & X_2 \\ \downarrow & & \downarrow f_2 \\ X_1 & \xrightarrow{f_1} & X_0 \end{array}$$
+
+这样的方块叫**笛卡尔的**。对偶地，图的余极限叫**纤维余积**，也叫**推出**。
+
+> 续见 `nodes/def.fibered-product.3.md`

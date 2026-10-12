@@ -9,8 +9,8 @@ $$D : I \longrightarrow \mathcal{C}$$
 所有这样的图以自然变换为态射，组成范畴
 
 $$\mathcal{C}^{I} := \operatorname{Hom}(I, \mathcal{C})$$
+> 陈述续见 `nodes/def.commutative-diagram.2.md`
 
-若 $I$ 里任意两个对象之间**至多一个态射**（这样的 $I$ 叫**预序**），则称 $D$ 为 $I$ 上的**交换图**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.functor-diagram.md
@@ -21,7 +21,9 @@ $$\mathcal{C}^{I} := \operatorname{Hom}(I, \mathcal{C})$$
 - 被 `prop.filtered-exact` 滤过余极限正合 用
 - 被 `def.simplicial` 单纯对象 用
 - 被 `def.limit` 极限 用
+- 被 `def.cochain-complex` 上链复形 用
+- 被 `def.filtered-category` 滤过范畴 用
+
+refs: Le Stum, An introduction to condensed mathematics, §1.3
 
 > 说明见 `notes/def.commutative-diagram.md`
-
-- …另有出边，续页见 `nodes/def.commutative-diagram.2.md`

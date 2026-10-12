@@ -7,4 +7,6 @@ Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续
 ## 为什么成立（入边，证明在 proofs/）
 - `thm.gleason` Gleason 定理：用到了定义 Gleason 定理　proofs/def-dep.gleason-retract.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.2
+
 > 说明见 `notes/cor.stonean-retract.md`

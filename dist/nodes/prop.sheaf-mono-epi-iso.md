@@ -10,4 +10,6 @@ layer 13 · 命题 · 层与拓扑 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.equalizer` 等化子 / 余等化子：用到了定义 等化子 / 余等化子　proofs/def-dep.equalizer-mono-epi.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
 > 说明见 `notes/prop.sheaf-mono-epi-iso.md`

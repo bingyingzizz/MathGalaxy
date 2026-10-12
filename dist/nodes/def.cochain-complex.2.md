@@ -1,17 +1,7 @@
 # 上链复形　`def.cochain-complex`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.cochain-complex.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.category-into-complexes` 范畴嵌入复形 用
-- 被 `prop.complexes-abelian` 复形范畴是阿贝尔范畴 用
-- 被 `prop.complex-additive` 复形范畴是加法范畴 用
-- 被 `def.homotopy` 同伦 用
-- 被 `def.mapping-cone` 映射锥 用
-- 被 `def.cohomology` 同调 用
-- 被 `def.spectral-sequence` 谱序列 用
-- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用
-- 被 `def.right-derived-functor` 右导出函子 用
-- 被 `thm.filtered-complex-spectral` 过滤复形给出谱序列 用
-- 被 `def.bicomplex` 双复形 用
-- 被 `def.k-bounded-exact` K-有界正合 用
-- 被 `def.exact-sequence` 一般正合列 用
+## 陈述（续）
+若对每个 $n$ 都有 $d^{n} \circ d^{n-1} = 0$，则称 $K$ 是一个**（上）链复形**，$d$ 叫**微分**。把箭头反向（或等价地在 $\mathcal{C}^{\mathrm{op}}$ 里取）得**链复形**，记 $K_{n} := K^{-n}$、$d_{n} := d^{-n}$。
+
+> 续见 `nodes/def.cochain-complex.3.md`

@@ -13,4 +13,6 @@ $$X \mapsto h_{X}$$
 - `def.quasi-compact` 拟紧对象：用到了定义 拟紧对象　proofs/def-dep.qc-pretopos-qcqs.md
 - `def.quasi-separated` 拟分离对象：用到了定义 拟分离对象　proofs/def-dep.qs-pretopos-qcqs.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/thm.pretopos-qcqs.md`

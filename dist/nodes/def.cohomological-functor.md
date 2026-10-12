@@ -12,4 +12,6 @@ $$FK \longrightarrow FL \longrightarrow FM$$
 - `def.cohomology` 同调：用到了定义 同调　proofs/def-dep.cohomology-functor.md
 - `def.distinguished-triangle` 导出三角：用到了定义 导出三角　proofs/def-dep.triangle-cohomological.md
 
+refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3
+
 > 说明见 `notes/def.cohomological-functor.md`

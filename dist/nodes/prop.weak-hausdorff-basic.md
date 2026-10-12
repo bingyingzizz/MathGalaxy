@@ -10,4 +10,6 @@ layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.product-topology` 积拓扑：用到了定义 积拓扑　proofs/def-dep.weakhaus-diagonal.md
 - `def.k-topology` k-开、k-闭与 k-拓扑：用到了定义 k-开、k-闭与 k-拓扑　proofs/def-dep.weakhaus-basic-k.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/prop.weak-hausdorff-basic.md`

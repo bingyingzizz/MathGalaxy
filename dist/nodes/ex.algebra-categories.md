@@ -16,4 +16,6 @@ layer 15 · 例 · 代数结构 · 抽象代数+范畴论
 - `def.ring` 环：用到了定义 环　proofs/def-dep.algcats-ring.md
 - `def.module` 模：用到了定义 模　proofs/def-dep.algcats-module.md
 
+refs: Lang, Algebra
+
 > 说明见 `notes/ex.algebra-categories.md`

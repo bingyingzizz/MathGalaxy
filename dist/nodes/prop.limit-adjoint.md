@@ -12,4 +12,6 @@ $$D \mapsto \lim D$$
 - `def.limit` 极限：用到了定义 极限　proofs/def-link.limit-adjoint-criterion.md
 - `def.commutative-diagram` 图与交换图：用到了定义 图与交换图　proofs/def-dep.diagram-limit-adjoint.md
 
+refs: Mac Lane, Categories for the Working Mathematician, V.5
+
 > 说明见 `notes/prop.limit-adjoint.md`

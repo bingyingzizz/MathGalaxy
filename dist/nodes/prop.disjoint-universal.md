@@ -8,4 +8,6 @@ layer 16 · 命题 · 层与拓扑 · 范畴论
 - `def.universal-colimit` 万有关系：用到了定义 万有关系　proofs/def-dep.universal-disjoint.md
 - `def.canonical-topology` 标准拓扑：用到了定义 标准拓扑　proofs/def-dep.canonical-disjoint.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
 > 说明见 `notes/prop.disjoint-universal.md`

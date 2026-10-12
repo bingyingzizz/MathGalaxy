@@ -8,4 +8,6 @@ layer 17 · 命题 · 紧 Hausdorff 空间 · 拓扑学
 - `def.projective-object` 投射 / 内射对象：用到了定义 投射 / 内射对象　proofs/def-dep.projective-free.md
 - `def.free-compact-hausdorff` 自由紧 Hausdorff 空间：用到了定义 自由紧 Hausdorff 空间　proofs/def-dep.free-projective.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
 > 说明见 `notes/prop.free-projective.md`

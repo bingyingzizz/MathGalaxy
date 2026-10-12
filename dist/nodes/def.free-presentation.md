@@ -18,6 +18,9 @@ layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 - ⇒ `thm.cond-topos` Cond 是拓扑斯
 - ⇒ `thm.cond-equiv-fchaus` Cond 即 FCHaus 上的层
 - ⇒ `prop.cond-epi` 凝聚态集满态射的判据
-- 被 `cor.chaus-free-presentation` 紧 Haus 都有自由表示 用
+
+- …另有出边，续页见 `nodes/def.free-presentation.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
 
 > 说明见 `notes/def.free-presentation.md`

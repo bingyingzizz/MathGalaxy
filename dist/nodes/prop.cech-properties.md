@@ -12,4 +12,6 @@ layer 17 · 命题 · 层与拓扑 · 范畴论
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.sheafification` 层化
 
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
 > 说明见 `notes/prop.cech-properties.md`

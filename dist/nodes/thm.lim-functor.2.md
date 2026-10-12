@@ -2,4 +2,6 @@
 根 `../`　·　第 1 页 `nodes/thm.lim-functor.md`
 
 ## 陈述（续）
+$$\lim \alpha : \lim F \longrightarrow \lim G, \qquad \pi^{G}_{i} \circ \lim \alpha = \alpha_i \circ \pi^{F}_{i}$$
+
 这样得到的 $\lim : \mathcal{C}^{I} \to \mathcal{C}$ 是一个函子。

@@ -9,4 +9,6 @@ layer 17 · 例 · 紧生成空间与弱 Hausdorff · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.cgex-cg.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/ex.cg-examples.md`

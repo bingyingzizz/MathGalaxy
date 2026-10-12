@@ -30,7 +30,8 @@ window.MG = window.MG || {};
           '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。'
         ].join('\n')
       ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。'
+      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。',
+      refs: ['Lang, Algebra']
     },
 
     {
@@ -122,6 +123,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '保极限', '积', '核', '左正合'],
       statement: '函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。',
     notes:         ['**证明。** 记 $F : \\mathcal{C}\\to\\mathcal{D}$ 保有限积与核（等化子）。','- **有限极限的标准构造**：对有限图 $D : I\\to\\mathcal{C}$，令 $P := \\prod_{i\\in I}D(i)$，并考虑两条态射','$$P \\;\\underset{\\;q\\;}{\\overset{\\;p\\;}{\\rightrightarrows}}\\; \\prod_{u : i\\to j}D(j), \\qquad p := \\bigl(\\pi_{j}\\bigr)_{u},\\quad q := \\bigl(D(u)\\circ\\pi_{i}\\bigr)_{u},$$','即「第 $u$ 个坐标分别取 $D(u)$ 之后的投影与直接投影」。则','$$\\lim D \\;\\cong\\; \\operatorname{eq}(p, q),$$','（元素层面：$\\operatorname{eq}(p,q)$ 恰是一族相容的 $D(i)$ 元素，即 $D$ 的锥；泛性由积的泛性给出）✓。','- **$F$ 保两步**：$F(P) \\cong \\prod_{i}FD(i)$（保有限积）✓；$F(\\operatorname{eq}(p,q)) \\cong \\operatorname{eq}(Fp, Fq)$（保核）✓。','- **合起来**：把上面的构造用于 $FD$ 得到的等化子正是 $\\operatorname{eq}(Fp,Fq) \\cong F(\\operatorname{eq}(p,q))$，而它又是 $\\lim FD$ ✓。故 $F$ 保一切有限极限，即**左正合** ✓。∎','⚠️ 只保「积」不够：还要保核（等化子），否则上面第二条会断。'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     {
@@ -159,7 +161,8 @@ window.MG = window.MG || {};
           '- 于是 $e g \\iota_{i} = e g_{i} = f \\iota_{i}$ 对所有 $i$ 成立，再由余积泛性质的**唯一性**得 $e g = f$。∎'
         ].join('\n'),
         '对偶地（把上面每个箭头反向、余积换积、满态射换单态射）：内射对象的积仍内射。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     {
@@ -194,6 +197,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '伴随', '唯一性'],
       statement: '若 $F_{1} \\dashv G$ 且 $F_{2} \\dashv G$，则 $F_{1} \\cong F_{2}$（对偶地：同一个左伴随的右伴随在同构意义下唯一）。',
     notes:         ['**证明。** 设 $F_{1}\\dashv G$、$F_{2}\\dashv G$，伴随同构记为 $\\varphi_{1}, \\varphi_{2}$。','- 对任意 $X \\in \\mathcal{C}$ 与 $Y \\in \\mathcal{D}$，','$$\\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{1}X, Y\\bigr) \\xrightarrow{\\;\\varphi_{1}\\;} \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, GY\\bigr) \\xrightarrow{\\;\\varphi_{2}^{-1}\\;} \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{2}X, Y\\bigr)$$','是一个与 $Y$ 自然同构 ✓。','- 由 **Yoneda 引理**，自然同构 $\\operatorname{Hom}(F_{1}X, -) \\cong \\operatorname{Hom}(F_{2}X, -)$ 唯一地来自一个同构 $\\theta_{X} : F_{1}X \\to F_{2}X$ ✓。','- $\\theta$ 对 $X$ 自然：$\\theta$ 是「用同两个伴随同构拼出来的」，而伴随同构对两个变量都自然，故 $\\theta : F_{1} \\to F_{2}$ 是自然同构 ✓。','- 同一条论证交换 $\\mathcal{C}$ 与 $\\mathcal{D}^{\\mathrm{op}}$ 就得到右伴随的唯一性 ✓。∎'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     {
@@ -206,6 +210,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '伴随', '余单位', '忠实'],
       statement: '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $G$ **忠实** $\\iff$ 余单位 $\\varepsilon$ 是**满态射**（对偶地：$F$ 忠实 $\\iff$ 单位是单态射）。',
     notes:         ['**证明。** 设 $F \\dashv G$，伴随同构 $\\varphi_{Y,Z} : \\operatorname{Hom}_{\\mathcal{D}}(FY, Z) \\xrightarrow{\\ \\cong\\ } \\operatorname{Hom}_{\\mathcal{C}}(Y, GZ)$，余单位 $\\varepsilon_{Y} = \\varphi^{-1}(1_{GY})$。','- **关键同构**：由三角恒等式，下面的方块交换（对一切 $Z$）：','$$\\begin{array}{ccc} \\operatorname{Hom}_{\\mathcal{D}}(Y, Z) & \\xrightarrow{\\ G_{Y,Z}\\ } & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\\\ {\\scriptstyle \\operatorname{Hom}(\\varepsilon_{Y}, Z)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle \\cong\\ \\varphi_{GY,Z}} \\\\ \\operatorname{Hom}_{\\mathcal{D}}(FGY, Z) & \\xrightarrow[\\ \\cong\\ ]{} & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\end{array}$$','即 $\\varphi_{GY,Z}\\circ\\operatorname{Hom}(\\varepsilon_{Y}, Z) = G_{Y,Z}$ ✓。','- 于是（用「$e$ 是满态射 $\\iff$ $\\operatorname{Hom}(e, Z)$ 对一切 $Z$ 是单射」这条刻画）','$$\\varepsilon_{Y}\\text{ 满} \\iff \\forall Z:\\ \\operatorname{Hom}(\\varepsilon_{Y},Z)\\text{ 单} \\iff \\forall Z:\\ G_{Y,Z}\\text{ 单} \\iff G\\text{ 忠实} ✓$$','- 对偶地（把整个论证搬到 $\\mathcal{C}^{\\mathrm{op}}, \\mathcal{D}^{\\mathrm{op}}$）得 $F$ 忠实 $\\iff$ 单位 $\\eta$ 是单态射 ✓。∎'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     {
@@ -247,7 +252,8 @@ window.MG = window.MG || {};
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
       notes: [
         ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎'].join('\n'),
-'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n')
+'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     {
@@ -260,6 +266,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '滤过余极限', '余极限', '完备性'],
       statement: '有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。',
     notes:         ['**证明。** 记 $\\mathcal{C}$ 有有限余极限与滤过余极限。','- **先看小指标**：设 $I$ 是任一小范畴，$D : I \\to \\mathcal{C}$。令 $\\operatorname{Fin}(I)$ 是 $I$ 的**有限子范畴**（对象集有限、且对其中每对对象只取有限多个态射）的全体，按包含构成偏序 —— 它是**滤过**的（两个有限子范畴的并仍有限）✓。','- **两步走**：$\\varinjlim_{I} D$ 可以这样算：先在每个有限子范畴 $J$（沿含入 $J \\hookrightarrow I$）上取余极限 $\\varinjlim_{J}D|_{J}$ —— 这是**有限**余极限（有限图）✓；再沿 $J$ 的滤过序取余极限，得到 $\\varinjlim_{J \\in \\operatorname{Fin}(I)}\\bigl(\\varinjlim_{J} D\\bigr)$，它与 $\\varinjlim_{I}D$ 满足同一个泛性质（两条余锥的相容性互相翻译）故同构 ✓。','- 于是任何余极限都是「有限余极限的滤过余极限」，两者都在 $\\mathcal{C}$ 里，故 $\\mathcal{C}$ 有所有余极限 ✓。∎','⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     {

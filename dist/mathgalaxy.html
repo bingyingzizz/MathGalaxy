@@ -15559,7 +15559,8 @@ window.MG = window.MG || {};
         '',
         '这样得到的拓扑是使含入映射 $Y \\hookrightarrow X$ 连续的最粗拓扑。'
       ].join('\n'),
-      notes: '直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。'
+      notes: '直观：**子空间的开集就是「大空间的开集切一刀」**。所以「$Y$ 中闭」「$Y$ 中紧」都要按切出来的那片来判断，不能直接看大空间里的样子 —— 例如 $(0, 1) \\subseteq \\mathbb{R}$ 在自身中是闭的，在 $\\mathbb{R}$ 中不是。',
+      refs: ['Munkres, Topology']
     },
     {
       id: 'def.quotient-topology',
@@ -15576,7 +15577,8 @@ window.MG = window.MG || {};
         '',
         '这是使 $\\pi$ 连续的最细拓扑；带这个拓扑的 $Y$ 叫 $X$ 的**商空间**。'
       ].join('\n'),
-      notes: '直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。\n\n商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。'
+      notes: '直观：**商空间的开集就是「拉回去是开的」的那些**。所以商空间里的性质要「从上面看下来」：$Y$ 中有没有开集分离两个点，问的是它们的原像能不能被 $X$ 的开集分开。\n\n商拓扑与子空间拓扑是方向相反的一对：一个取「切一刀得到的最粗」，一个取「贴回去得到的最细」。',
+      refs: ['Munkres, Topology']
     },
 
     {
@@ -15597,7 +15599,8 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **「最粗」是关键字**：投影要连续，只要求每个 $\\pi_{j}^{-1}(U_{j})$ 是开的；把这些取有限交当基，就是积拓扑。要求更细反而会丢掉极限 —— 而「$x_{n} \\to x$ $\\iff$ 按每个分量都收敛」正是这条最粗性换来的。',
         '**范畴意义**：$\\prod_{i} X_{i}$ 连同投影就是 $\\mathbf{Top}$ 里的**积**。所以积拓扑不是随便挑的，它是泛性质唯一确定的那一个。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Munkres, Topology']
     },
 
     /* ------------------------------------------------------ 分离公理 */
@@ -15618,7 +15621,8 @@ window.MG = window.MG || {};
         '一句话：**极限唯一**。序列只要收敛就只能收敛到一个点 —— 这正是分析里默认的那种空间。',
         '更强的分离性是**正规**（$T_{4}$）：任意两个不交闭集可被开集分开。紧 Hausdorff 空间是正规的（证明用两次紧性造开覆盖再取有限子覆盖）。',
         '$T_{3}$（正则）与 $T_{3.5}$（Tychonoff）夹在中间：$T_{3.5}$ 说的是**不同的点可以被连续函数分离开**，也就是「连续函数足够多」这一条。Stone–Čech 紧化的单射性要求的正是它。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Munkres, Topology']
     },
 
     /* ---------------------------------------------------------- 连通 */
@@ -15635,7 +15639,8 @@ window.MG = window.MG || {};
         '',
         '固定 $x \\in X$，包含 $x$ 的**连通分量** $C(x)$ 是所有含 $x$ 的连通子集的并 —— 它本身连通，且是极大的。'
       ].join('\n'),
-      notes: '连通分量构成 $X$ 的一个划分，且每个分量都是闭的。**既开又闭**的子集（记作**闭开集**）与连通性是同一件事的两面：$X$ 连通当且仅当它的闭开子集只有 $\\emptyset$ 与 $X$ 本身 —— 所以「有没有非平凡的闭开集」就是「能不能断开」。'
+      notes: '连通分量构成 $X$ 的一个划分，且每个分量都是闭的。**既开又闭**的子集（记作**闭开集**）与连通性是同一件事的两面：$X$ 连通当且仅当它的闭开子集只有 $\\emptyset$ 与 $X$ 本身 —— 所以「有没有非平凡的闭开集」就是「能不能断开」。',
+      refs: ['Munkres, Topology']
     },
     {
       id: 'def.clopen',
@@ -15648,7 +15653,8 @@ window.MG = window.MG || {};
       statement: [
         '$X$ 的子集 $K$ 叫**闭开集**，如果它同时是开集与闭集。等价地：$K$ 与它的补 $K^{c}$ 都是开集，即 $X = K \\sqcup K^{c}$ 是一个不交非空开集之并（$K$ 非平凡时）。'
       ].join('\n'),
-      notes: '闭开集在一般的拓扑空间里是「稀有物种」：在 $\\mathbb{R}$、$[0,1]$ 这类连通空间里只有 $\\emptyset$ 与全空间。**闭开集越多，空间越碎** —— 全不连通说的就是「闭开集多到能分开任何两个点」；投射有限空间则是「闭开集构成一组基」。'
+      notes: '闭开集在一般的拓扑空间里是「稀有物种」：在 $\\mathbb{R}$、$[0,1]$ 这类连通空间里只有 $\\emptyset$ 与全空间。**闭开集越多，空间越碎** —— 全不连通说的就是「闭开集多到能分开任何两个点」；投射有限空间则是「闭开集构成一组基」。',
+      refs: ['Munkres, Topology']
     }
   ],
 
@@ -17221,7 +17227,8 @@ window.MG = window.MG || {};
         '$$(a, b) = (c, d) \\iff a = c \\wedge b = d$$',
         '',
         '而换成 $\\{ x, \\{x,y\\} \\}$ 就必须拿这条公理逐条去验，不能想当然。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* --------------------------------------------------------- 图的态射 */
@@ -17244,7 +17251,8 @@ window.MG = window.MG || {};
         '',
         '也就是说：$\\varphi_1$ 把一条边的起点送到这条边的像的起点，把终点送到终点。'
       ].join('\n'),
-      notes: '两条等式各管一头。把它们画成方块就是「图的态射」这个名字的全部内容 —— 顶点那层与边那层各自连续，并且方向对得上。'
+      notes: '两条等式各管一头。把它们画成方块就是「图的态射」这个名字的全部内容 —— 顶点那层与边那层各自连续，并且方向对得上。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ------------------------------------------------------------ 范畴 */
@@ -17290,7 +17298,8 @@ window.MG = window.MG || {};
         '$$M = \\{ (u, v) : u \\subseteq v \\} \\subseteq \\tau \\times \\tau$$',
         '',
         '即「从小的开集到包含它的开集」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* -------------------------------------------------------- 截面与收缩 */
@@ -17313,7 +17322,8 @@ window.MG = window.MG || {};
         '',
         '$$g \\circ f = 1_X$$'
       ].join('\n'),
-      notes: '两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。'
+      notes: '两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     }
   ],
 
@@ -17369,7 +17379,8 @@ window.MG = window.MG || {};
           '- **群化** $\\mathbf{Mon} \\to \\mathbf{Grp}$：$M \\mapsto M^{gr} = \\langle x_g \\ (g \\in M) \\mid x_g x_h = x_{gh} \\rangle$。',
           '- $\\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Cat}$：$(X, \\tau) \\mapsto \\operatorname{Open}(X)$。反变，因为开集越少映射越多。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* -------------------------------------------------------- 自然变换 */
@@ -17400,7 +17411,8 @@ window.MG = window.MG || {};
         '$$\\det_A : GL_n(A) \\to A^{*}$$',
         '',
         '拼起来正是一个**自然变换**：$\\det$ 与环同态「交换次序」。这正是「自然」二字的意思 —— 不是逐例验证出来的巧合，而是结构使然。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* ------------------------------------------------ 忠实 / 满 / 全忠实 */
@@ -17426,7 +17438,8 @@ window.MG = window.MG || {};
       notes: [
         '三个名字说的都是 $F$ 在**态射层**上的表现，与对象层无关 —— 全忠实的函子可以把两个不同对象映到同一个对象上（这在等价里正是允许的）。',
         '忠实保证「态射不被合并」，满保证「目标里的态射都来自源」，两者互不蕴含。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* -------------------------------------------------------- 本质满 */
@@ -17443,7 +17456,8 @@ window.MG = window.MG || {};
         '',
         '$$F(X) \\cong X\'$$'
       ].join('\n'),
-      notes: '注意是 $\\cong$ 而不是 $=$：要求「$F$ 的像**同构于**每个对象」，而不是「$F$ 的像**就是**全体对象」。差这一个同构，正是范畴等价比范畴同构宽松的地方 —— 而恰恰是这一点让它有用，因为绝大多数有趣的等价都不是同构。'
+      notes: '注意是 $\\cong$ 而不是 $=$：要求「$F$ 的像**同构于**每个对象」，而不是「$F$ 的像**就是**全体对象」。差这一个同构，正是范畴等价比范畴同构宽松的地方 —— 而恰恰是这一点让它有用，因为绝大多数有趣的等价都不是同构。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* -------------------------------------------------------- 范畴等价 */
@@ -17465,7 +17479,8 @@ window.MG = window.MG || {};
       notes: [
         '同构要求两个复合**等于**恒等函子，等价只要求它们**自然同构于**恒等函子。后者弱得多，也实用得多：例如「有限维向量空间」与「$\\mathbb{F}$ 上的矩阵」等价，但绝不可能是同构（对象层的基数就不对）。',
         '在等价之下，「两个范畴是不是同一个」这个问题被替换成「能不能互相翻译而不丢结构」—— 范畴论后面所有「$\\mathcal{C}$ 与 $\\mathcal{C}\'$ 一样」的说法，用的都是这个意思。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     }
   ],
 
@@ -17553,7 +17568,8 @@ window.MG = window.MG || {};
         '**纸面上的读法。** 画在纸上的图只是**呈现**：给一个有向图 $G$ 的顶点送对象、箭头送态射。说它**交换**，意思是任意两条同起终点的路径在标注下的复合**相等** —— 这是一条**要检查的条件**，等价于标注下降到 $G$ 自由生成的范畴的商上仍是函子。',
         '$I$ 叫**索引范畴**：它只规定图的形状，不规定内容。',
         '沿一个函子 $\\lambda : I \\to J$ 预复合，得到**重索引** $\\lambda^{*} : \\mathcal{C}^{J} \\to \\mathcal{C}^{I}$：把 $J$ 形状的图截成 $I$ 形状的图。特别地，到终范畴的唯一函子 $I \\to \\mathbf{1}$ 诱导**常图函子** $\\Delta : \\mathcal{C} \\longrightarrow \\mathcal{C}^{I}$，它把对象 $X$ 送到「每个位置都是 $X$、每条箭头都是 $1_X$」的常图。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------------------ 单纯对象 */
@@ -17584,7 +17600,8 @@ window.MG = window.MG || {};
       notes: [
         '把 $[n]$ 画成一个顶点数 $n+1$ 的标准单纯形，面映射就是「贴一个面」，退化映射就是「把一个顶点压扁」。于是 $\\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\\Delta^{\\mathrm{op}} \\to \\mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。',
         '取 $\\mathcal{C} = \\mathbf{Set}$，$X([n])$ 就是「$n$ 维单纯形的集合」，$X(\\delta^i)$ 给出「第 $i$ 个面」，$X(\\sigma^i)$ 给出「退化」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------------- 锥 */
@@ -17610,7 +17627,8 @@ window.MG = window.MG || {};
       notes: [
         '直观：$X$ 站在图外面，往 $D$ 的每个位置上各投一束光，而且要求投影之间彼此相容（先投影再走图中的箭头，与直接投影到终点，结果一样）。',
         '$X$ 固定时，$D$ 上的锥恰好是自然变换集 $\\operatorname{Nat}(\\Delta X, D)$，所以「锥」不是新东西，只是把自然变换换了个说法。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* -------------------------------------------------------- 极限 */
@@ -17637,7 +17655,8 @@ window.MG = window.MG || {};
         '泛性质的含义只有一句：**任何别的锥都唯一地穿过它**。所以极限一旦存在，就在同构意义下唯一 —— 不必挑一个具体构造，用哪个都行。',
         '两个等价的写法：「泛锥」与「$\\operatorname{Hom}_{\\mathcal{C}^{I}}(\\Delta -, D)$ 可被表示」。后者把极限变成了一条可计算的同构。',
         '「泛」还可以说得更彻底：极限就是锥范畴里的**终对象**（见「元素范畴」）。这一句话在后面反复出现。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* -------------------------------------------------- 终 / 始对象 */
@@ -17659,7 +17678,8 @@ window.MG = window.MG || {};
       notes: [
         '例：在 $\\mathbf{Set}$ 里 $\\mathbf{0} = \\emptyset$（射入 $X$ 的映射只有空映射）、$\\mathbf{1} = \\{\\emptyset\\}$（射入单点集的映射唯一）。在 $\\mathbf{Top}$ 里相同。在 $\\mathbf{Ab}$ 里两者都是 $\\{0\\}$。',
         '另一头：$\\mathbb{Z}$ 是环范畴的始对象 —— 每个环都有唯一的 $\\mathbb{Z} \\to R$。所以说 $\\mathbb{Z}$「在所有环里泛」，说的正是这件事。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------------- 积 */
@@ -17679,7 +17699,8 @@ window.MG = window.MG || {};
       notes: [
         '一句话：**积就是「一个映射 = 一族映射」**。射入积的映射与「分别射入每个分量的映射组成的族」一一对应，投影 $p_i$ 就是取出第 $i$ 个分量。',
         '例：$\\mathbf{Set}$ 里积是笛卡尔积，余积是无交并；$\\mathbf{Top}$ 里积取**乘积拓扑**（使它成为积的最粗的拓扑），余积取**不交并拓扑**（最细的那个）；$\\mathbf{Ab}$ 里积是直积 $\\prod_i A_i$，余积是直和 $\\bigoplus_i A_i$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------- 纤维积 */
@@ -17706,7 +17727,8 @@ window.MG = window.MG || {};
         '',
         '其中 $\\sim$ 由 $f_1(x_0) \\sim f_2(x_0)$（$x_0 \\in X_0$）生成。$\\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。',
         '$\\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \\to S$、$g: Y \\to S$ 拼成 $\\varphi : X \\oplus Y \\to S$，$(x,y) \\mapsto f(x) - g(y)$，则推出 $= \\operatorname{coker} \\varphi$、拉回 $= \\ker \\varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------- 等化子 */
@@ -17728,7 +17750,8 @@ window.MG = window.MG || {};
       notes: [
         '直观：等化子是 $X$ 里「被 $f$ 与 $g$ 送到同一处」的那一部分；余等化子是 $Y$ 里「把 $f(x)$ 与 $g(x)$ 粘起来」的商。',
         '例：$\\mathbf{Set}$ 里 $\\ker(f,g) = \\{x \\in X : f(x) = g(x)\\}$，$\\operatorname{coker}(f,g) = Y/\\!\\sim$（$\\sim$ 由 $f(x) \\sim g(x)$ 生成）。$\\mathbf{Top}$ 里加子空间 / 商拓扑。$\\mathbf{Ab}$ 里 $\\ker(f,g) = \\ker(f - g)$ —— 两个映射的等化子退化成**一个**映射的核，这正是「核」这个名字的来源。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------------------ 单态射 */
@@ -17749,7 +17772,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '在 $\\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射（后者要用选择公理）。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\\mathbb{Z} \\to \\mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ------------------------------------------------------ 子对象 */
@@ -17770,7 +17794,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '把「子集」换成「单态射」，好处是不再依赖元素 —— 于是这套语言可以照搬到没有元素的范畴里去。「交」变成拉回、「原像」也变成拉回，两种操作合成了一个：$Y \\cap Z$ 解的是「既在 $Y$ 里又在 $Z$ 里」的部分，$f^{-1}(Y)$ 解的是「$y = f(x)$ 有解」的部分。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* -------------------------------------------------- 极限的函子性 */
@@ -17797,7 +17822,8 @@ window.MG = window.MG || {};
         ['**证明。**','- **锥**：$\\pi^{F}_{i} : \\lim F \\to F(i)$ 是 $F$ 的泛锥。对每个 $i$，$\\alpha_{i}\\circ\\pi^{F}_{i} : \\lim F \\to G(i)$；由 $\\alpha$ 的自然性','$$G(u)\\circ\\alpha_{i}\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ F(u)\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ\\pi^{F}_{j},$$','故这是一族相容的映射，即 $\\lim F$ 到 $G$ 的锥 ✓。','- **唯一态射**：由 $\\lim G$ 的泛性得到唯一的 $\\lim\\alpha$，并满足 $\\pi^{G}_{i}\\circ\\lim\\alpha = \\alpha_{i}\\circ\\pi^{F}_{i}$ ✓。','- **函子性**：$\\lim(\\mathrm{id}_{F})$ 与 $\\mathrm{id}_{\\lim F}$ 都是使 $\\pi^{F}_{i}\\circ(-) = \\pi^{F}_{i}$ 的态射，由唯一性相等 ✓；同理 $\\lim(\\beta\\alpha)$ 与 $(\\lim\\beta)(\\lim\\alpha)$ 都与同一个锥相容，故相等 ✓。','于是 $\\lim : \\mathcal{C}^{I}\\to\\mathcal{C}$ 是函子 ✓。∎'].join('\n'),
         '这就是「泛性」的标准用法：**先造一个锥，再让唯一性把态射免费送上门**。极限的对象层是构造，态射层是泛性，两者合起来才是函子。',
         '有了它，「$\\lim$ 保持某个性质」才说得通 —— 后面讨论「某个函子保极限」时，正是拿这个函子去做文章。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------------- 像 */
@@ -17821,7 +17847,8 @@ window.MG = window.MG || {};
       notes: [
         '在 $\\mathbf{Set}$、$\\mathbf{Ab}$、$\\mathbf{Top}$ 这些范畴里 $\\operatorname{coim} f \\to \\operatorname{im} f$ 总是同构，所以平时不必区分两者；一般范畴里则不然。',
         '与 $\\mathbf{Set}$ 里「像就是 $\\{f(x)\\}$」相比，这里多出来的东西是**泛性**：像不再是一堆点的集合，而是「最小的那个可以穿过它的中间对象」。子对象、单态射、像三者连在一起看，就是「把元素语言换成箭头语言」的样例。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ---------------------------------------------------- 元素范畴 */
@@ -17845,7 +17872,8 @@ window.MG = window.MG || {};
       notes: [
         '这条把「**泛**」这个字一次说清：**泛 = 某个辅助范畴里的始对象（或终对象）**。于是「泛锥」「泛分解」「泛元素」其实是同一句套话的三次应用。',
         '例：$\\mathbb{Z}$ 是环范畴的始对象，所以说它「在所有环里泛」；空图上的泛锥就是终对象；极限就是锥范畴的终对象。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.7']
     }
   ],
 
@@ -17893,7 +17921,8 @@ window.MG = window.MG || {};
           '- 拓扑空间上：$\\operatorname{Open}(X)$ 是开集范畴（态射是含入），预层给每个开集 $u$ 一个 $T(u)$，给 $u\' \\subseteq u$ 一个「限制」$T(u) \\to T(u\')$，$s \\mapsto s|_{u\'}$。连续函数预层 $C^{0}$、光滑函数预层 $C^{\\infty}$、常预层 $\\underline{E}$（$\\underline{E}(u) = E$，限制取恒等）、常函数预层都是。',
           '- 固定 $X \\in \\mathcal{C}$：$h_{X} : Y \\mapsto \\operatorname{Hom}_{\\mathcal{C}}(Y, X)$ 是预层，叫**可表示预层**。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ------------------------------------------------------ 预层范畴 */
@@ -17913,7 +17942,8 @@ window.MG = window.MG || {};
       notes: [
         '它是函子范畴，所以极限与余极限**逐点**算 —— 后面所有关于 $\\widehat{\\mathcal{C}}$ 的构造都从这里出发。',
         '几个小例子：$\\widehat{\\emptyset} = \\mathbf{1}$（空范畴到 $\\mathbf{Set}$ 的唯一函子）；$\\widehat{\\mathbf{1}} \\simeq \\mathbf{Set}$（选一个对象、一个集合）；$G$ 是幺半群时 $\\widehat{G} \\simeq G\\text{-}\\mathbf{Set}$（带 $G$ 作用的集合，且映射与 $G$ 中每个元素的平移相容）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ---------------------------------------------------------- 表示 */
@@ -17950,7 +17980,8 @@ window.MG = window.MG || {};
         '  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto \\{\\, f : Z \\to X \\ \\mid\\ f \\text{ 连续且 } f(Z) \\subseteq Y \\,\\}$$',
         '',
         '  被 $F(Y)$ 里那个自然元素 $i : Y \\rightarrowtail X$ 表示。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ------------------------------------------------------ 米田引理 */
@@ -17978,7 +18009,8 @@ window.MG = window.MG || {};
         '这个双射在两**边**都自然：对 $F$（自然变换）自然，对 $X$（态射）也自然。两头都自然，才是这条引理真正有分量的地方。',
         '它把「$h^{X}$ 到 $F$ 的所有自然变换」这个原则上无从下手的集合，压成了 $F(X)$ 里的**一个元素**。后面凡是遇到「自然变换不好数」的地方，基本都是靠这一步救场。',
         '对偶形式：$T$ 是预层（$T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）、$h_{X} = \\operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$。两式只是把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，所以后面的推导两套都用。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* -------------------------------------------------- 表示 ⟺ 同构 */
@@ -17995,7 +18027,8 @@ window.MG = window.MG || {};
         '',
         '也就是说，「存在万有元素 $(X, s)$」与「$F$ 同构于 $\\operatorname{Hom}_{\\mathcal{C}}(X, -)$」是同一件事。'
       ].join('\n'),
-      notes: '这条把「表示」的两种说法接上了：万有元素是**元素层**的说法，$h^{X} \\cong F$ 是**函子层**的说法。实际验证时常走前者（挑出那个 $s$ 就完事），实际使用时常走后者（同构可以直接搬运算）。'
+      notes: '这条把「表示」的两种说法接上了：万有元素是**元素层**的说法，$h^{X} \\cong F$ 是**函子层**的说法。实际验证时常走前者（挑出那个 $s$ 就完事），实际使用时常走后者（同构可以直接搬运算）。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ------------------------------------------------------ 米田嵌入 */
@@ -18017,7 +18050,8 @@ window.MG = window.MG || {};
       notes: [
         '全忠实说的是 $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_{X}, h_{Y}) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$ —— 用 $h_{X}$ 互相之间的箭头完全复刻了 $X$ 之间的箭头，一点不多一点不少。',
         '把 $\\mathcal{C}$ 嵌进 $\\widehat{\\mathcal{C}}$ 之后，$\\mathcal{C}$ 里的问题就搬到了一个**有所有极限与余极限**的范畴里去解 —— 这是「补全一个范畴」的标准做法。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ------------------------------------------------------ 切片范畴 */
@@ -18043,7 +18077,8 @@ window.MG = window.MG || {};
         '这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $j_{T}$ 把 $(X, s)$ 送回 $X$。',
         '⭐ 逗号范畴的写法把它的身份说清了：它是**预层 $T$ 沿着 Yoneda 嵌入往回拉**得到的那个范畴 —— 一边是 $\\mathcal{C} \\hookrightarrow \\widehat{\\mathcal{C}}$，一边是 $\\mathbf{1} \\xrightarrow{T} \\widehat{\\mathcal{C}}$。它也解释了为什么 $X \\in \\mathcal{C}$ 时 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$。',
         '它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\\mathcal{C}/T$ 上（稠密性定理就是这么用的）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ------------------------------------------------ 切片方块是笛卡尔的 */
@@ -18064,7 +18099,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 需要证 $\\mathcal{C}/T \\to \\mathcal{C}\\times_{\\widehat{\\mathcal{C}}}\\widehat{\\mathcal{C}}/T$ 是等价。','- **对象**：$\\mathcal{C}/T$ 的对象是 $p : X \\to T$（$X\\in\\mathcal{C}$）；由 **Yoneda**，$\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，所以 $p$ 与一个态射 $h_{X}\\to T$ 一一对应 —— 而右边拉回的对象的正是「$X \\in \\mathcal{C}$ 连同 $h_{X}\\to T$」✓。','- **态射**：$\\mathcal{C}/T$ 中 $p \\to p\'$ 是交换三角（$X\\to X\'$ 与 $T$ 上的相容性）；把 Yoneda 嵌入作用上去得到 $h_{X}\\to h_{X\'}$ 与 $h_{X}\\to T$ 的相容对，右边正是一对这样的数据。由 Yoneda 嵌入**全忠实**（$\\operatorname{Hom}(h_{X},h_{X\'}) \\cong \\operatorname{Hom}(X,X\')$），这个对应在 Hom 上是双射 ✓。','- **函子性 / 等价**：对应在复合下保持（Yoneda 是函子）✓ 于是得到一个范畴等价，即原方块**笛卡尔** ✓。','- **特例**：取 $T = h_{X}$，得 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片与在预层范畴里沿 $h_{X}$ 切片是同一件事 ✓。∎'].join('\n'),
-'也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'].join('\n\n')
+'也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ------------------------------------------------------ 稠密性定理 */
@@ -18084,7 +18120,8 @@ window.MG = window.MG || {};
       notes: [
         '指标跑在切片范畴 $\\mathcal{C}_{T}$ 上：$T$ 的每个元素 $(X, s)$ 贡献一个 $h_{X}$，$T$ 就是它们的余极限。',
         '所以 $\\widehat{\\mathcal{C}}$ 是「由可表示预层自由生成的」—— 可表示预层是它的一块块砖。后面说到「预层范畴是所有可表示预层的余极限闭包」时，说的就是这一条。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* -------------------------------------------- 预层的单 / 满按点检验 */
@@ -18102,7 +18139,8 @@ window.MG = window.MG || {};
       notes: [
         '一句话：**预层的性质按点检验**。$\\widehat{\\mathcal{C}}$ 里的一切都是逐点定义的，单满不例外。',
         '（$\\Longleftarrow$）方向是显然的：逐点单射的族当然左可消。（$\\Longrightarrow$）方向要用米田引理，见边上那条推导。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     }
   ],
 
@@ -18259,7 +18297,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '',
         '  $$\\operatorname{Hom}(F\'F(X), Y) \\cong \\operatorname{Hom}(F(X), G\'(Y)) \\cong \\operatorname{Hom}(X, GG\'(Y))$$'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ------------------------------------------------------ 单位余单位 */
@@ -18292,7 +18331,8 @@ window.MG = window.MG || {};
         '一句话：**单位是「把自己送进去」，余单位是「把别人接回来」**，三角等式保证两个方向互不打架。',
         '⚠️ **单位与余单位一般不一定是同构**，这是伴随与「范畴等价」最大的差别。它们同时同构时，才是等价。',
         '由 $\\Phi$ 反解两边的公式：$\\Phi_{X,Y}(f) = G(f) \\circ \\eta_{X}$，$\\Phi^{-1}_{X,Y}(g) = \\varepsilon_{Y} \\circ F(g)$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* -------------------------------------------- 右伴随存在的判据 */
@@ -18311,7 +18351,8 @@ window.MG = window.MG || {};
         '',
         '都可表示。'
       ].join('\n'),
-      notes: '这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。证明见边上的推导。'
+      notes: '这是「造右伴随」的通用机器：先对每个 $Y$ 求出表示对象 $G(Y)$，再验证这样拼出来的 $G$ 是函子。证明见边上的推导。',
+      refs: ['Mac Lane, Categories for the Working Mathematician, V.6']
     },
 
     /* ------------------------------------------ 全忠实 ⟺ 单位同构 */
@@ -18331,7 +18372,8 @@ window.MG = window.MG || {};
       notes: [
         '所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。',
         '这也是**反射**与**余反射**的分界线：反射说的是「含入函子有左伴随」，而含入函子总是全忠实的（满子范畴），所以反射的余单位一定是同构。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ------------------------------------------------ 极限 ⟺ 有伴随 */
@@ -18357,7 +18399,8 @@ window.MG = window.MG || {};
         '',
         '左边正是「锥」的集合，右边是「射入极限的态射」的集合。逐字对照伴随的定义，两边是同一句话。',
         '所以「这个范畴有没有极限」问的就是「$\\Delta$ 有没有伴」—— 后面凡是要造伴随，几乎都能化归成造某种极限。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, V.5']
     },
 
     /* ------------------------------------------------------ 保极限 */
@@ -18377,7 +18420,8 @@ window.MG = window.MG || {};
       notes: [
         '对偶地：**左伴随保持所有余极限**。',
         '这条是判断「某函子不可能是右伴随」最快的办法 —— 只要它不保某个极限（比如不保积），就直接出局。反过来，它也解释了为什么遗忘函子总能当右伴随：遗忘函子通常保极限（结构是逐点定义的）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* -------------------------------------------------------- SAFT */
@@ -18400,7 +18444,8 @@ window.MG = window.MG || {};
         '**保极限是唯一的障碍**。这与「右伴随保极限」合起来就是一条完整的判据：保极限既是必要条件，在完备的小范畴上也是充分条件。',
         '构造的含义：把 $X$ 映射进 $G$ 的像的所有方式组成一个范畴 $X \\downarrow G$，在其中取极限 —— $F(X)$ 是 $\\mathcal{D}$ 中「最接近」$X$ 的对象。所有 $X \\to G(Y)$ 都能被整理成 $X \\to G(F(X)) \\to G(Y)$。',
         '证明见边上的推导。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, V.8']
     },
 
     /* ---------------------------------------------------- 逗号范畴 */
@@ -18434,7 +18479,8 @@ window.MG = window.MG || {};
           '- 伴随的**单位**定义成 $\\mathrm{id} \\downarrow G$（或 $F \\downarrow \\mathrm{id}$）里的始对象。'
         ].join('\n'),
         '判别一个东西是不是逗号范畴，就看它「对象是不是箭头、态射是不是交换方块」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, II.6']
     },
 
     /* -------------------------------------------------- 反射子范畴 */
@@ -18463,7 +18509,8 @@ window.MG = window.MG || {};
           '- $\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的反射子范畴。',
           '- 离散空间范畴在 $\\mathbf{Top}$ 中是反射的，平凡拓扑空间范畴在 $\\mathbf{Top}$ 中是余反射的。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ------------------------------------------- 反射子范畴里的极限 */
@@ -18483,7 +18530,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 设嵌入 $i : \\mathcal{C}\' \\hookrightarrow \\mathcal{C}$，反射 $F : \\mathcal{C}\\to\\mathcal{C}\'$，$F \\dashv i$（即 $i$ 是右伴随）。','- **余极限**：对任意 $C\' \\in \\mathcal{C}\'$，用伴随同构与 $\\mathcal{C}$ 中余极限的泛性','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(F(\\operatorname{colim}_{\\mathcal{C}}D\'), C\'\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(\\operatorname{colim}_{\\mathcal{C}}D\', iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(D\'_{j}, iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(D\'_{j}, C\'\\bigr),$$','对 $C\'$ 自然 —— 这正是「$F(\\operatorname{colim}_{\\mathcal{C}}D\')$ 是 $D\'$ 在 $\\mathcal{C}\'$ 里的余极限」的泛性质 ✓。','- **极限**：同法','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', \\operatorname{lim}_{\\mathcal{C}}D\'\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(iC\', D\'_{j}\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', D\'_{j}\\bigr)$$','（第二个同构用了 $i$ 全忠实），故 $\\lim_{\\mathcal{C}}D\'$ 已经落在 $\\mathcal{C}\'$ 里、且就是 $\\mathcal{C}\'$ 中的极限 ✓。','**结论：反射子范畴对极限封闭，余极限要过一遍反射。**∎'].join('\n'),
-'也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'].join('\n\n')
+'也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     /* ---------------------------------------------------- Kan 延拓 */
@@ -18522,7 +18570,8 @@ window.MG = window.MG || {};
         '| $f = R(g) \\circ \\eta_{A}$ | $\\gamma = p^{*}(\\widetilde{\\gamma}) \\circ \\alpha$ |',
         '',
         '所以 Kan 延拓不是新东西，它只是把伴随的公式换了个方向用。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, X.3']
     },
 
     /* ------------------------------------------------ Kan 延拓的例子 */
@@ -18545,7 +18594,8 @@ window.MG = window.MG || {};
         '',
         '右边那个对应的 $1_{\\mathcal{C}} \\implies G \\circ F$ 正是**单位** $\\eta$。'
       ].join('\n'),
-      notes: '两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。'
+      notes: '两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。',
+      refs: ['Mac Lane, Categories for the Working Mathematician, X.3']
     },
 
     /* ------------------------------------------------ 滤过余极限正合 */
@@ -18572,7 +18622,8 @@ window.MG = window.MG || {};
         '',
         '做法是两边都取代表元再比对：$\\mathbf{Set}$ 里滤过余极限的元素恰好是某个指标处的元素，所以「一边一个代表元」可以上升到「同一个指标处的一对」。',
         '这条为什么重要：后面谈层的时候，层化是拿滤过余极限配出来的，而**只有滤过余极限不破坏有限极限**，这套构造才能与有限极限（也就是把拓扑信息编码进去的那个部分）相安无事。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     }
   ],
 
@@ -18774,7 +18825,8 @@ window.MG = window.MG || {};
       notes: [
         '紧跟 Hausdorff 放在一起是一件很划算的事：**紧 Hausdorff 是正则的、正规的**，而且从紧空间到 Hausdorff 空间的连续双射自动是同胚。很多在 $\\mathbf{Top}$ 里要额外假设的东西，在这里是免费的。',
         '$\\mathbf{CHaus}$ 里**任意极限存在**，并且就是 $\\mathbf{Top}$ 里算完之后那个结果（见「紧 Haus 是反射子范畴」那条）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ------------------------------------------ CHaus 是反射子范畴 */
@@ -18805,7 +18857,8 @@ window.MG = window.MG || {};
         '再取闭包 $\\beta X := \\overline{e_{X}(X)}$。方块紧 Hausdorff，闭子集因而也紧 Hausdorff。',
         '⭐ **$e_{X}$ 是单射 $\\iff$ $X$ 是 Tychonoff（$T_{3.5}$）空间** —— 即连续函数多到能分开不同的点。所以对于一般拓扑空间，$\\beta X$ 是把「连续函数看得出的信息」全部收进来之后的紧化。',
         '推论：**紧 Hausdorff 空间的任意极限自动是紧 Hausdorff 的**。这是反射子范畴对极限封闭的一般结论在这里的样子 —— 以后在 $\\mathbf{CHaus}$ 里取极限，不必再回头验紧性与 Hausdorff 性。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ---------------------------------------------- 极小闭子集引理 */
@@ -18820,7 +18873,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $f : S \\to T$ 是紧 Hausdorff 空间之间的连续满射。则存在**极小**的闭子集 $S\' \\subseteq S$，使限制 $f|_{S\'}$ 仍然是满射。'
       ].join('\n'),
-      notes: '证明用佐恩引理：把「$f$ 在其上满」的闭子集族按**反包含**排序，链的上界取交 —— 紧性保证交出来的闭子集仍然满（若非满，剩下的那个紧集会被一列越来越小的闭集挖空，与有限交性质矛盾）。于是有极大元，在原序下就是极小闭子集。'
+      notes: '证明用佐恩引理：把「$f$ 在其上满」的闭子集族按**反包含**排序，链的上界取交 —— 紧性保证交出来的闭子集仍然满（若非满，剩下的那个紧集会被一列越来越小的闭集挖空，与有限交性质矛盾）。于是有极大元，在原序下就是极小闭子集。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ------------------------------------------------ 自由紧 Haus */
@@ -18839,7 +18893,8 @@ window.MG = window.MG || {};
         '',
         '即连续映射 $F \\to S$ 与 $S$ 中一族点 $(t_{i})_{i \\in I}$ 一一对应。这族点使 $F \\to S$ 成为满射时，叫 $F$ 的**生成元**。'
       ].join('\n'),
-      notes: '「自由」两个字在这里的含义和自由群、自由模完全一样：**在 $I$ 上没有任何约束**（$I$ 是离散的，所以从 $I$ 出发的映射随便给点就是连续的），于是「$F$ 到别处的映射」与「$I$ 上的一族点」是一回事。'
+      notes: '「自由」两个字在这里的含义和自由群、自由模完全一样：**在 $I$ 上没有任何约束**（$I$ 是离散的，所以从 $I$ 出发的映射随便给点就是连续的），于是「$F$ 到别处的映射」与「$I$ 上的一族点」是一回事。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* -------------------------------------------- CHaus 是自由的商 */
@@ -18866,7 +18921,8 @@ window.MG = window.MG || {};
           '故 $\\bar f$ 满。∎',
           '⭐ 这条与「紧 Hausdorff 是 $\\mathbf{Top}$ 的反射子范畴」是一回事，只是换了个说法：反射子范畴里每个对象都是自由对象的商，而自由对象就是 $\\beta I$。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ---------------------------------------------------- 投射对象 */
@@ -18891,7 +18947,8 @@ window.MG = window.MG || {};
         '「投射」这个名字来自模论：$R\\text{-}\\mathbf{Mod}$ 里的投射对象恰好是投射模，内射对象恰好是内射模 —— 那两条标准判据（$P$ 是直和项、$I$ 是直和项）就是这里的定义在模上的样子。',
         '两条立刻可用的推论：**$P$ 投射时任何满态射 $Y \\twoheadrightarrow P$ 都有截面**；**若 $X \\to Y$ 有收缩而 $Y$ 投射，则 $X$ 也投射**（内射的情形对偶）。',
         '在 $\\mathbf{Set}$ 里**每个对象都投射**，这就是选择公理：给定满射 $A \\twoheadrightarrow B$ 与 $B$ 中的点，总能挑一个原像。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ----------------------------------------- 自由紧 Haus 是投射的 */
@@ -18904,7 +18961,8 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['范畴论', '投射', '自由'],
       statement: '自由紧 Hausdorff 空间是 $\\mathbf{CHaus}$ 中的投射对象。',
-      notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。∎'
+      notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。∎',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ---------------------------------------------------- 自由表示 */
@@ -18929,7 +18987,8 @@ window.MG = window.MG || {};
         '对照集合里的那件事：对 $f : X \\to Y$，令 $R := X \\times_{Y} X = \\{(x_{1},x_{2}) : f(x_{1}) = f(x_{2})\\}$（「像相同的点对」），则 $X/R \\cong \\operatorname{im} f$（**Noether 第一同构定理**）；反过来，给定 $X$ 上的等价关系 $R$，把 $Y := X/R$，就有 $R = X \\times_{Y} X$。',
         '自由表示就是把这件事搬进 $\\mathbf{CHaus}$：$R$ 是「把像相同的点粘起来」那个等价关系，而第三条要求 $R$ 自己也能由一个自由紧 Hausdorff 空间满射过来 —— 于是整个 $S$ 由自由对象经过一次余等化子造出来。',
         '$\\mathbf{CHaus}$ 里有余等化子，所以 $\\operatorname{coker}(R \\rightrightarrows F)$ 存在；它就是商空间 $F/R$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* --------------------------------------------- 自由表示的存在性 */
@@ -18942,7 +19001,8 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['范畴论', '自由表示', '存在性'],
       statement: '每个紧 Hausdorff 空间 $S$ 都有自由表示。',
-      notes: '取 $F = \\beta S^{\\mathrm{disc}}$（前一条命题：$F \\twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \\times_{S} S$ 再做一次，得到 $F\' \\twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎'
+      notes: '取 $F = \\beta S^{\\mathrm{disc}}$（前一条命题：$F \\twoheadrightarrow S$ 满，且 $F$ 自由）。把同样的做法对 $S \\times_{S} S$ 再做一次，得到 $F\' \\twoheadrightarrow R$ 满。三条逐一满足：自由、满、以及对 $R$ 的那条满射。∎',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
     /* ------------------------------------------ 连通分量是闭开之交 */
@@ -18959,7 +19019,8 @@ window.MG = window.MG || {};
         '',
         '$$C(x) \\;=\\; \\bigcap \\{\\, K \\subseteq S : K \\text{ 闭开},\\ x \\in K \\,\\}$$'
       ].join('\n'),
-      notes: '证明见边上那条推导。要点是「**紧 Hausdorff 里有无穷多闭开集可用**」：紧 Hausdorff 空间是正规的（$T_{4}$），所以两个不交闭集能被开集分开，而紧性又把「开集分开」升级成「闭开集分开」。这条把 $\\pi_{0}$ 这个反射函子变得可算：连通分量不是抽象地取出来的，而是闭开集的交。'
+      notes: '证明见边上那条推导。要点是「**紧 Hausdorff 里有无穷多闭开集可用**」：紧 Hausdorff 空间是正规的（$T_{4}$），所以两个不交闭集能被开集分开，而紧性又把「开集分开」升级成「闭开集分开」。这条把 $\\pi_{0}$ 这个反射函子变得可算：连通分量不是抽象地取出来的，而是闭开集的交。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------- 全不连通 / 极端不连通 */
@@ -18980,7 +19041,8 @@ window.MG = window.MG || {};
       notes: [
         '记 $\\pi_{0}(X) := \\{\\, C(x) : x \\in X \\,\\}$ 为连通分量的集合，并赋予它**商拓扑**；$x \\mapsto C(x)$ 给出连续映射 $X \\to \\pi_{0}(X)$。',
         '两个字面上很像的条件分居两端：**全不连通**说「碎到每个分量只剩一个点」，**极端不连通**说「开集的闭包不再长大」。后者更强 —— 极端不连通的 $T_{1}$ 空间必全不连通。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* -------------------------------------------- 极端不连通的性质 */
@@ -19005,7 +19067,8 @@ window.MG = window.MG || {};
           '（等价说法：极端不连通 $\\iff$ 不交开集的闭包不交。）',
           '**(b) 写严**：由 (a)，Hausdorff 性给出的分离开集 $U\\ni x$、$V\\ni y$ 满足 $\\overline U\\cap\\overline V = \\emptyset$；而 $\\overline U$、$\\overline V$ 都是**闭开**的（极端不连通），于是它们构成 $x$ 与 $y$ 之间的一个开闭分隔：$x$ 的连通分量含于 $\\overline U$，故不含 $y$ ✓。于是每个连通分量是单点，即全不连通。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------- 全不连通是反射子范畴 */
@@ -19033,7 +19096,8 @@ window.MG = window.MG || {};
           '**「$X\\to\\pi_{0}(X)$ 是同构」** $\\iff$ 每个分量是单点 $\\iff$ $X$ 全不连通 ✓。∎',
           '⭐ 推论读法：反射子范畴等价于「含入有左伴随」，而左伴随保余极限 —— 但这里要用的是**含入保极限**（右伴随保极限），于是全不连通空间的极限（在 $\\mathbf{Top}$ 里算）落回全不连通 ✓。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------- Stone 是反射的 */
@@ -19054,7 +19118,8 @@ window.MG = window.MG || {};
           '- 于是 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 是反射子范畴，反射是「取连通分量商」（它对紧 Hausdorff 空间仍是紧 Hausdorff ✓）。∎',
           '⭐ 反射子范畴的**含入保极限**，所以 Stone 空间的极限（在 $\\mathbf{CHaus}$ 或 $\\mathbf{Top}$ 里算）仍是 Stone ✓ —— 这正是「Stone 空间对极限封闭」。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------------- 投射有限 */
@@ -19071,7 +19136,8 @@ window.MG = window.MG || {};
         '',
         '$$X \\;=\\; \\varprojlim_{i \\in I} X_{i}, \\qquad X_{i} \\text{ 有限离散},\\quad I \\text{ 有向}$$'
       ].join('\n'),
-      notes: '「pro-finite」= 有限者的投射极限。直观上它是「越来越细的有限分辨率」堆出来的对象：$X_{i}$ 是第 $i$ 层分辨率下的样子，$I$ 有向保证任意两层分辨率都能同时加细。'
+      notes: '「pro-finite」= 有限者的投射极限。直观上它是「越来越细的有限分辨率」堆出来的对象：$X_{i}$ 是第 $i$ 层分辨率下的样子，$I$ 有向保证任意两层分辨率都能同时加细。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------- Stone ⟺ 投射有限 */
@@ -19083,7 +19149,8 @@ window.MG = window.MG || {};
       title: 'Stone 空间 $\\iff$ 投射有限空间',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '投射有限'],
-      statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。'
+      statement: '拓扑空间是 Stone 空间 $\\iff$ 它是投射有限空间。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ---------------------------------------------------- Gleason */
@@ -19095,7 +19162,8 @@ window.MG = window.MG || {};
       title: 'Gleason 定理：$\\mathbf{CHaus}$ 的投射对象',
       regions: ['topology'],
       tags: ['范畴论', 'Gleason', '投射对象'],
-      statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。'
+      statement: '$\\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ------------------------------------------------ Stonean 是收缩核 */
@@ -19117,7 +19185,8 @@ window.MG = window.MG || {};
           '- **$(\\Longleftarrow)$**：若 $A$ 是自由对象 $F$ 的收缩核（$r: F\\to A$，$r|_A = \\mathrm{id}$），则由**投射对象的收缩核仍投射**（标准事实：投射对象的直和项/收缩核还是投射的），$A$ 在 $\\mathbf{CHaus}$ 里投射；再由 Gleason 定理，$A$ 是 Stonean ✓。∎',
           '⭐ 这条是「Stonean = 自由紧 Hausdorff 的收缩核」的完整论证，也是后面「$\\mathbb{Z}[S]$ 投射」的来源（$S$ 的收缩核给出截面，截面给出 $\\mathbb{Z}[S]$ 的投射性）。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     }
   ],
 
@@ -19270,7 +19339,8 @@ window.MG = window.MG || {};
         '',
         '$$S = \\{\\, g : Y \\to X \\ \\mid\\ \\exists i,\\ \\exists h : Y \\to X_{i},\\ g = f_{i} \\circ h \\,\\}$$'
       ].join('\n'),
-      notes: '直觉：**$X$ 上一族「允许的映射」，而且凡是能再往下接的都算进来**。所以筛不是随便一族箭头，它「对预复合封闭」—— 这正是一个子函子该有的样子。'
+      notes: '直觉：**$X$ 上一族「允许的映射」，而且凡是能再往下接的都算进来**。所以筛不是随便一族箭头，它「对预复合封闭」—— 这正是一个子函子该有的样子。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------------------ 预拓扑 */
@@ -19292,7 +19362,8 @@ window.MG = window.MG || {};
         '',
         '3. **传递**：若 $(X_{i} \\to X)_{i \\in I} \\in \\operatorname{Cov}(X)$ 且对每个 $i$ 有 $(X_{ij} \\to X_{i})_{j \\in J_{i}} \\in \\operatorname{Cov}(X_{i})$，则 $(X_{ij} \\to X)_{i \\in I, j \\in J_{i}} \\in \\operatorname{Cov}(X)$。'
       ].join('\n'),
-      notes: '三条读成一句话：**同构是覆盖、覆盖能拉回、覆盖的覆盖还是覆盖**。\n\n例：在 $\\mathbf{Set}$ 上取 $\\operatorname{Cov}(X) = \\{(X_{i} \\to X) : X = \\bigcup_{i} X_{i}\\}$，三条都成立 —— 这就是「覆盖」两个字的原型。'
+      notes: '三条读成一句话：**同构是覆盖、覆盖能拉回、覆盖的覆盖还是覆盖**。\n\n例：在 $\\mathbf{Set}$ 上取 $\\operatorname{Cov}(X) = \\{(X_{i} \\to X) : X = \\bigcup_{i} X_{i}\\}$，三条都成立 —— 这就是「覆盖」两个字的原型。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* --------------------------------------- Grothendieck 拓扑 / site */
@@ -19316,7 +19387,8 @@ window.MG = window.MG || {};
       notes: [
         '$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R\' \\in J(X) \\implies R \\cap R\' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R\'$、$R \\in J(X) \\implies R\' \\in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。',
         '由预拓扑可以生成拓扑：把每个覆盖族换成它生成的筛，再取全部这样的筛。**拓扑比预拓扑更一般** —— 预拓扑要求那些纤维积存在，而在预层范畴里筛的拉回总是存在的。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ---------------------------------------------------------- 层 */
@@ -19347,7 +19419,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '',
         '在拓扑空间的老写法里（$\\mathcal{C} = \\operatorname{Open}(X)^{\\mathrm{op}}$），这两条就是：$s|_{U_{i}} = t|_{U_{i}}$ 处处成立则 $s = t$；以及局部截面 $s_{i}$ 在交叠处一致时能拼出整体截面。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* -------------------------------------------------- 层的下降条件 */
@@ -19371,7 +19444,8 @@ window.MG = window.MG || {};
       notes: [
         '这就是教科书里那两条：**单态** $F(X) \\hookrightarrow \\prod_{i} F(X_{i})$ 是**分离公理**，**等于核**是**粘合公理**（相容族恰好是整体截面的像）。',
         '把交叠条件写成 $X_{i} \\times_{X} X_{j}$ 上的一致性是关键 —— 「两块覆盖在重叠部分的限制相同」这句话，在一般范畴里没有交叠可用，只有纤维积。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* -------------------------------------------------- Čech 函子 */
@@ -19390,7 +19464,8 @@ window.MG = window.MG || {};
         '',
         '（因为 $J(X)$ 是滤子，这是一个**滤过余极限**。）由 $h_{X} \\in J(X)$ 与 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，得到自然映射 $T \\to \\widehat{H}(T)$。'
       ].join('\n'),
-      notes: '「沿越来越大的覆盖筛取极限」在 $T$ 这一侧翻成了余极限 —— 因为 $\\operatorname{Hom}(-, T)$ 是**反变**的，反变函子沿滤子取极限等于共变函子的滤过余极限。$\\widehat{H}$ 是把预层朝层的方向推一把的第一步。'
+      notes: '「沿越来越大的覆盖筛取极限」在 $T$ 这一侧翻成了余极限 —— 因为 $\\operatorname{Hom}(-, T)$ 是**反变**的，反变函子沿滤子取极限等于共变函子的滤过余极限。$\\widehat{H}$ 是把预层朝层的方向推一把的第一步。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------------ Čech 函子的性质 */
@@ -19409,7 +19484,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 记 $\\widehat{H}(T) := \\varinjlim_{(X_{i}\\to X)}\\check{H}^{0}\\bigl((X_{i}),T\\bigr)$，其中 $\\check{H}^{0}$ 是 $\\prod_{i}T(X_{i}) \\rightrightarrows \\prod_{i,j}T(X_{i}\\times_{X}X_{j})$ 的等化子。','**1.（左正合）** $T \\mapsto \\check{H}^{0}((X_{i}),T)$ 只用到 $T$ 的取值与拉回，是有限极限（积 + 等化子）的复合，故保有限极限；而 $\\mathbf{Set}$ 里的**滤过余极限正合**（与有限极限交换）✓。两者合起来给出 $\\widehat{H}$ 左正合 ✓。','**2.（分离 / 层）** $\\widehat{H}(T)(X)$ 的元素是「某个覆盖上的相容族」，两个元素相等 $\\iff$ 存在公共细化使它们在那上面一致（滤过性）。于是：若它们在某个覆盖的每支上相等，则在该覆盖上就已经相等，故 $\\widehat{H}(T) \\to \\prod_{i}\\widehat{H}(T)(X_{i})$ 单 —— 即 $\\widehat{H}(T)$ **分离** ✓。进一步，若 $T$ 分离，任何 $\\widehat{H}(T)$ 上的相容族可以逐层提升到 $T$（分离性保证提升唯一），从而粘成 $\\widehat{H}(T)$ 的一个元素，故 $\\widehat{H}(T)$ 是**层** ✓。','**3.（与嵌入的关系）** 由 $\\check{H}^{0}$ 是等化子，$T(X) \\to \\widehat{H}(T)(X)$ 总是单 $\\iff$ 「$T$ 上两个元素若在某个覆盖上一致则相等」，即 $T$ 分离 ✓；这个映射还是满的 $\\iff$ 每个相容族都能粘合，即 $T$ 是层 ✓。于是 $T$ 分离 $\\iff T \\to \\widehat{H}(T)$ 单、$T$ 是层 $\\iff$ 它是同构 ✓。∎'].join('\n'),
-'1 的理由很短：$\\operatorname{Hom}(-, T)$ 保极限，而**滤过余极限左正合**。3 说明「分离」与「层」的差别就是「$T$ 在 $\\widehat{H}$ 里是不是已经到顶了」—— 于是「做两次 $\\widehat{H}$」这件事有了明确的意义。'].join('\n\n')
+'1 的理由很短：$\\operatorname{Hom}(-, T)$ 保极限，而**滤过余极限左正合**。3 说明「分离」与「层」的差别就是「$T$ 在 $\\widehat{H}$ 里是不是已经到顶了」—— 于是「做两次 $\\widehat{H}$」这件事有了明确的意义。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* -------------------------------------------------------- 层化 */
@@ -19447,7 +19523,8 @@ window.MG = window.MG || {};
           '- 常数预层（每个开集上取同一个集合 $E$）的层化叫**常数层**。',
           '- 拓扑空间 $X$ 上取 $\\mathcal{C} = \\operatorname{Open}(X)$，得到的就是通常的层范畴，$\\sharp$ 就是通常的层化函子。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* -------------------------------------------------- 正则满态射 */
@@ -19462,7 +19539,8 @@ window.MG = window.MG || {};
       statement: [
         '态射 $f : X \\to Y$ 叫**正则满态射**，如果它是某个平行对的**余等化子**：存在 $u, v : W \\rightrightarrows X$ 使 $f = \\operatorname{coker}(u, v)$。'
       ].join('\n'),
-      notes: '在 $\\mathbf{Set}$ 里**每个满射都是正则的**：取 $W = X \\times_{Y} X$ 与两个投影，它们的余等化子正是 $f$。在一般范畴里不然 —— 「满」（右可消）比「正则满」弱得多，差的那部分正是「$Y$ 是不是真的由 $X$ 商出来的」。'
+      notes: '在 $\\mathbf{Set}$ 里**每个满射都是正则的**：取 $W = X \\times_{Y} X$ 与两个投影，它们的余等化子正是 $f$。在一般范畴里不然 —— 「满」（右可消）比「正则满」弱得多，差的那部分正是「$Y$ 是不是真的由 $X$ 商出来的」。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ---------------------------------------------------- 万有性 */
@@ -19486,7 +19564,8 @@ window.MG = window.MG || {};
         '',
         '有效等价关系叫**万有的**，如果它的商映射是万有正则满态射。'
       ].join('\n'),
-      notes: '「万有」= **拉回之后还在**：不管把整个图沿什么映射拉回去，性质都保持。这三条是把「集合里那些显然的好性质」翻译成范畴语言的样板 —— 它们在 $\\mathbf{Set}$ 里不出问题，但换一个范畴就未必，所以必须写下来。'
+      notes: '「万有」= **拉回之后还在**：不管把整个图沿什么映射拉回去，性质都保持。这三条是把「集合里那些显然的好性质」翻译成范畴语言的样板 —— 它们在 $\\mathbf{Set}$ 里不出问题，但换一个范畴就未必，所以必须写下来。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* -------------------------------------------- site 的层范畴的好性质 */
@@ -19507,7 +19586,8 @@ window.MG = window.MG || {};
         '4. 余积是**不交**的；',
         '5. 等价关系是**有效的**且**万有**的。'
       ].join('\n'),
-      notes: '理由一句话：**这些性质在 $\\mathbf{Set}$ 里成立，而层范畴里的构造逐点继承 $\\mathbf{Set}$ 的性质**，再配合层化保有限极限与余极限。第 3 条尤其值得记：在这里「满 = 正则满」是自动的，不必额外假设 —— 这正是后面预拓扑斯公理里那一条的来源。'
+      notes: '理由一句话：**这些性质在 $\\mathbf{Set}$ 里成立，而层范畴里的构造逐点继承 $\\mathbf{Set}$ 的性质**，再配合层化保有限极限与余极限。第 3 条尤其值得记：在这里「满 = 正则满」是自动的，不必额外假设 —— 这正是后面预拓扑斯公理里那一条的来源。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------------ 层中单满即同构 */
@@ -19527,7 +19607,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 设 $u : F \\to G$ 是层之间的态射。','**1.** 设 $u$ 既单又满。由满性（层中满态射的**局部**判据），对 $1_{G} \\in G(G)$ 存在覆盖 $(G_{i}\\to G)$ 与 $t_{i}\\in F(G_{i})$ 使 $u(t_{i}) = 1_{G}|_{G_{i}}$。在双重拉回 $G_{i}\\times_{G}G_{j}$ 上，$t_{i}$ 与 $t_{j}$ 的像都等于 $1_{G}$ 的限制，由 $u$ 单得 $t_{i}|= t_{j}|$ —— 相容 ✓。层条件给唯一的 $v \\in F(G)$ 与 $v|_{G_{i}} = t_{i}$，于是 $u(v) = 1_{G}$（两边在覆盖上一致，层分离）。又 $u(v u) = u$，而 $u$ 单 $\\implies v u = 1_{F}$。故 $u$ 同构 ✓。','**2.** 像分解：拓扑斯里每个态射都有 (满, 单) 分解（像 $= $ 层化后的余等化子）。设 $u = m e$ 与 $u = m\' e\'$ 是两个这样的分解。由 $m e = m\' e\'$ 与满-单的泛性，$e\'$ 通过 $e$ 分解（$e$ 满、$m\'$ 单，用「满 $\\implies$ 左消去」得唯一分解），对称地 $e$ 通过 $e\'$ 分解，两个分解互相比较得 $I \\cong I\'$ ✓。∎'].join('\n'),
-'这两条在 $\\mathbf{Set}$ 里也对，但在层范畴里**不是自动的**，要证。它们恰好就是**预拓扑斯（pretopos）**公理的内容 —— 所以这个位置正是从「层」走向「拓扑斯」的接口。'].join('\n\n')
+'这两条在 $\\mathbf{Set}$ 里也对，但在层范畴里**不是自动的**，要证。它们恰好就是**预拓扑斯（pretopos）**公理的内容 —— 所以这个位置正是从「层」走向「拓扑斯」的接口。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------ 层的满态射的局部判据 */
@@ -19546,7 +19627,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。**','- **$(\\implies)$** 设 $u : F \\to G$ 是满态射。任取 $X$ 与 $s \\in G(X)$，即 $s : h_{X} \\to G$。取拉回','$$\\begin{array}{ccc} h_{X}\\times_{G}F & \\xrightarrow{\\ \\ } & F\\\\ \\big\\downarrow & & \\big\\downarrow{\\scriptstyle u}\\\\ h_{X} & \\xrightarrow{\\ s\\ } & G\\end{array}$$','底边 $u$ 满 $\\implies$ 左边那条也是满态射（拓扑斯里满态射沿任意态射拉回仍满），即 $h_{X}\\times_{G}F \\to h_{X}$ 是**覆盖**；取它的一族可表示层覆盖 $(X_{i}\\to X)$，则每支给出 $s|_{X_{i}}$ 在 $F(X_{i})$ 里的一个原像 ✓。','- **$(\\Longleftarrow)$** 设条件成立，取像分解 $u = m\\,e$（$e$ 满、$m : I \\rightarrowtail G$ 单）。条件说：对每个 $X$、每个 $s \\in G(X)$，存在覆盖使 $s|_{X_{i}}$ 落在 $\\operatorname{im}u \\subseteq \\operatorname{im}m = I$ 里。而单态射是同构 $\\iff$ 它的像在每个 $X$ 上被覆盖局部地盖住（子对象相等的局部判据）。故 $m$ 是同构，$u = m e$ 满 ✓。∎','一句话：**层的满态射就是「局部满」。**'].join('\n'),
-'一句话：**层的满态射是「局部满」**。整体上 $s$ 可能没有原像，但总能把 $X$ 切成一层覆盖，每块上都有原像 —— 这是「层上只有局部信息」最典型的体现。'].join('\n\n')
+'一句话：**层的满态射是「局部满」**。整体上 $s$ 可能没有原像，但总能把 $X$ 切成一层覆盖，每块上都有原像 —— 这是「层上只有局部信息」最典型的体现。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ---------------------------------------------------- 有效等价关系 */
@@ -19567,7 +19649,8 @@ window.MG = window.MG || {};
         '',
         '即 $R$ 恰好就是商映射的核对。'
       ].join('\n'),
-      notes: '「有效」说的是**商没有多粘**：先取等价关系再取商、然后再看商映射的核对，回到原来的等价关系。\n\n对照集合：任意 $f : X \\to Y$ 给出的核对 $X \\times_{Y} X$ 一定是有效的（$\\overline{X} \\cong \\operatorname{im} f$）；反过来任意等价关系 $R \\subseteq X \\times X$ 取 $\\overline{X} = X/R$ 也总是回到 $R$。**在 $\\mathbf{Set}$ 里人人都有效**，但在一般范畴里这是要额外要求的一条。'
+      notes: '「有效」说的是**商没有多粘**：先取等价关系再取商、然后再看商映射的核对，回到原来的等价关系。\n\n对照集合：任意 $f : X \\to Y$ 给出的核对 $X \\times_{Y} X$ 一定是有效的（$\\overline{X} \\cong \\operatorname{im} f$）；反过来任意等价关系 $R \\subseteq X \\times X$ 取 $\\overline{X} = X/R$ 也总是回到 $R$。**在 $\\mathbf{Set}$ 里人人都有效**，但在一般范畴里这是要额外要求的一条。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ---------------------------------------------- 层化与等价关系 */
@@ -19586,7 +19669,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 记层化为 $(-)^{\\sharp}$：它是到层范畴的反射，故左伴随。','- 左伴随保**余极限** ✓；它同时又**左正合**（保有限极限，因为拓扑斯都是左正合的）✓。','- **等价关系的条件都是有限极限条件**：$R \\rightrightarrows T$ 是等价关系 $\\iff$ 存在 $R \\to T\\times T$ 使其为单态射（自反、对称、传递三条用对角、交换与拉回表达）。层化保这些有限极限，故 $R^{\\sharp} \\rightrightarrows T^{\\sharp}$ 仍是等价关系 ✓。','- **商是余等化子**：$T/R := \\operatorname{coeq}(R \\rightrightarrows T)$，是余极限，故 $(T/R)^{\\sharp} \\cong \\operatorname{coeq}(R^{\\sharp}\\rightrightarrows T^{\\sharp}) = T^{\\sharp}/R^{\\sharp}$ ✓。','两件事合起来就是「先商再层化 $=$ 先层化再商」✓。∎'].join('\n'),
-'「先取商再层化」与「先层化再取商」结果一样 —— 这类交换性是层化「保余极限」的具体面貌（商是余等化子，是余极限）。'].join('\n\n')
+'「先取商再层化」与「先层化再取商」结果一样 —— 这类交换性是层化「保余极限」的具体面貌（商是余等化子，是余极限）。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ---------------------------------------------------- 标准拓扑 */
@@ -19611,7 +19695,8 @@ window.MG = window.MG || {};
         '$$\\text{次标准} \\iff \\text{可表示预层都是层} \\iff X^{\\sharp} = h_{X}\\ (\\forall X) \\iff \\text{米田嵌入经过层范畴仍然全忠实}$$',
         '',
         '所以「次标准」= **层范畴仍然看得见原来的范畴**。反过来，标准拓扑就是「能看见 $\\mathcal{C}$ 的前提下的最细拓扑」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* --------------------------------------------- 覆盖筛与余积满射 */
@@ -19626,7 +19711,8 @@ window.MG = window.MG || {};
       statement: [
         '族 $(X_{i} \\to X)_{i \\in I}$ 生成一个**覆盖筛** $\\iff$ 余积 $\\coprod_{i \\in I} X_{i} \\to X$ 是**满态射**（在 $\\mathcal{C}$ 中）。'
       ].join('\n'),
-      notes: '这把一件看起来属于「拓扑」的事（什么算覆盖）翻译成一句纯范畴的话（余积是不是满射）。从此「$\\{X_{i} \\to X\\}$ 覆盖 $X$」与「$\\coprod_{i} X_{i} \\to X$ 满」可以随意换着用。'
+      notes: '这把一件看起来属于「拓扑」的事（什么算覆盖）翻译成一句纯范畴的话（余积是不是满射）。从此「$\\{X_{i} \\to X\\}$ 覆盖 $X$」与「$\\coprod_{i} X_{i} \\to X$ 满」可以随意换着用。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------ 不交万有余积与次标准 */
@@ -19643,7 +19729,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 记次标准拓扑下的层化为 $(-)^{\\sharp}$，此时可表示预层都是层：$h_{X}^{\\sharp} = h_{X}$。','**$(\\implies)$** 设 $X = \\coprod_{i}X_{i}$ 在 $\\mathcal{C}$ 里不交、万有。Yoneda 嵌入保余积，故 $h_{X} \\cong \\coprod_{i}h_{X_{i}}$，两边都是层，即这个余积在层范畴里就被算出来了 ✓。不交：层范畴的余积逐点算，$\\coprod_{i}h_{X_{i}}$ 的注入都来自 $\\mathcal{C}$ 里的注入，两两拉回是 $h_{0}$（始对象）✓。万有：沿任意 $Z \\to h_{X}$ 的拉回逐点验，落在 $\\mathcal{C}$ 里就是原来的万有性 ✓。','**$(\\Longleftarrow)$** 设某个次标准拓扑下 $h_{X} = \\coprod_{i}h_{X_{i}}$ 不交、万有。逐点（对每个 $Z \\in \\mathcal{C}$）展开：不交给 $\\operatorname{Hom}(Z,X) = \\coprod_{i}\\operatorname{Hom}(Z,X_{i})$ 的不交并；万有给「沿 $Z\' \\to Z$ 拉回保持它」。取 $Z = X$ 与 $1_{X}$ 读出 $X_{i}\\to X$ 的注入性，取 $Z = X_{i}\\times_{X}X_{j}$ 读出两两拉回是始对象，再取任意 $Z$ 得万有性，逐条搬回 $\\mathcal{C}$ ✓。','**结论：标准拓扑恰好把 $\\mathcal{C}$ 里成立的余积性质原样保留，不多也不少。**∎'].join('\n'),
-'一个方向：次标准保证 $X = h_{X}$、$X_{i} = h_{X_{i}}$ 都在层范畴里，而 $\\coprod_{i} h_{X_{i}}$ 本来就不交，所以自动是层。另一个方向：拿 $h_{X} = \\coprod_{i} h_{X_{i}}$ 去逐条验注入性与「拉回是始对象」。\n\n含义：**标准拓扑恰好把 $\\mathcal{C}$ 里成立的那部分余积性质原样保留下来**，不多也不少 —— 这就是「次标准」这个名字该有的分量。'].join('\n\n')
+'一个方向：次标准保证 $X = h_{X}$、$X_{i} = h_{X_{i}}$ 都在层范畴里，而 $\\coprod_{i} h_{X_{i}}$ 本来就不交，所以自动是层。另一个方向：拿 $h_{X} = \\coprod_{i} h_{X_{i}}$ 去逐条验注入性与「拉回是始对象」。\n\n含义：**标准拓扑恰好把 $\\mathcal{C}$ 里成立的那部分余积性质原样保留下来**，不多也不少 —— 这就是「次标准」这个名字该有的分量。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     }
   ],
 
@@ -19799,7 +19886,8 @@ window.MG = window.MG || {};
         '第 4 条**不是独立的** —— 它可以由前三条推出，所以有些课本只写三条。写下来的好处是提醒一件事：**在这里满态射自动是正则的**，于是「满」与「商映射」是同一件事。',
         '标准事实：**单态射可以通过极限来定义**（$i$ 是单态射 $\\iff$ 那个方形是笛卡尔的），而拉回与极限都保持单态射；这保证了推出也保单态射 —— 第 2、3 条里那些「不交」「有效」才有意义。',
         '例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何 site 的层范畴都是预拓扑斯。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ------------------------------------------------ 满-单分解 */
@@ -19820,7 +19908,8 @@ window.MG = window.MG || {};
         '',
         '$$f : X \\twoheadrightarrow \\overline{X} \\rightarrowtail Y, \\qquad \\overline{X} := X / R,\\quad R := X \\times_{Y} X$$'
       ].join('\n'),
-      notes: '这三条在 $\\mathbf{Set}$ 里都理所当然，但在一般范畴里都要证。它们合起来说：「**预拓扑斯里的像 = 商**」，与集合里「像就是按核对取商」完全一致。证明见边上那条推导。'
+      notes: '这三条在 $\\mathbf{Set}$ 里都理所当然，但在一般范畴里都要证。它们合起来说：「**预拓扑斯里的像 = 商**」，与集合里「像就是按核对取商」完全一致。证明见边上那条推导。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 子对象格 */
@@ -19841,7 +19930,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 「子对象」是单态射 $X\' \\rightarrowtail X$ 的同构类。','- **交**取**拉回**：$X_{1} \\cap X_{2} := X_{1} \\times_{X} X_{2}$。单态射的拉回仍是单态射 ✓；泛性给出「同时分解过 $X_{1}$ 与 $X_{2}$」$\\iff$「分解过拉回」，即它恰是两个子对象的**最大下界** ✓。','- **并**取**像**：$X_{1} \\cup X_{2} := \\operatorname{im}(X_{1} \\coprod X_{2} \\to X)$。余积的泛性给出「同时被 $X_{1}, X_{2}$ 包含的态射 $\\iff$ 从余积出发的态射」，而取像正是把它变成单态射：$X_{1} \\to X$ 与 $X_{2} \\to X$ 都分解过它，且任何同时包含两者的子对象都被它分解过（像的泛性）—— 恰是**最小上界** ✓。（像的存在来自预拓扑斯里余等化子 / 商的存在。）','- **有界**：最小元是始对象到 $X$ 的唯一态射（预拓扑斯里始对象到任何对象都是单态射），最大元是 $1_{X}$ ✓。','- **分配律**：$X_{1} \\cap (X_{2}\\cup X_{3}) = (X_{1}\\cap X_{2}) \\cup (X_{1}\\cap X_{3})$ —— 沿单态射的拉回保余积（预拓扑斯里余积不交且万有），把两边都算成同一个拉回 ✓。','- **拉回是格同态**：$f^{*}(-) := -\\times_{Y} X$ 保拉回（是极限），故保交、保上下界；而它保余积（万有性）与像（像的计算可以搬到拉回里做），故保并 ✓。∎'].join('\n'),
-'「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。'].join('\n\n')
+'「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 预标准拓扑 */
@@ -19860,7 +19950,8 @@ window.MG = window.MG || {};
         '',
         '是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个 site。'
       ].join('\n'),
-      notes: '生成它的其实是两类覆盖：**有限不交并**（$\\coprod_{i \\in I} X_{i} \\cong X$）与**满射** $(X_{i} \\to X)$。名字里的「预」是因为它比标准拓扑**粗** —— 但仍然是次标准的。'
+      notes: '生成它的其实是两类覆盖：**有限不交并**（$\\coprod_{i \\in I} X_{i} \\cong X$）与**满射** $(X_{i} \\to X)$。名字里的「预」是因为它比标准拓扑**粗** —— 但仍然是次标准的。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ------------------------------------------ 预标准拓扑下的层 */
@@ -19885,7 +19976,8 @@ window.MG = window.MG || {};
         ['**证明。** 设覆盖族 $(X_{i} \\to X)_{i \\in I}$（有限、$\\coprod_{i}X_{i} \\to X$ 满）。层条件是对每个这样的族','$$F(X) \\to \\prod_{i}F(X_{i}) \\rightrightarrows \\prod_{i,j}F(X_{i}\\times_{X}X_{j})$$','为等化子。','- **「余积变积」**：取单支覆盖 $X \\to X$（它当然满），则层条件退化成 $F(X) \\cong F(X)$ 的平凡等式 —— 有限余积的层条件要把 $I$ 取成各支自身：对有限族 $(X_{i})$，$\\coprod_{i}X_{i} \\to \\coprod_{i}X_{i}$ 满，层条件给出 $F(\\coprod_{i}X_{i}) \\cong \\prod_{i}F(X_{i})$ ✓（与余积交换 == 与有限积交换，因为 $F$ 是 $\\mathbf{Set}$ 值）。','- **「商变核」**：一般族的覆盖条件里，$\\coprod_{i}X_{i} \\to X$ 是满态射，于是它在预拓扑斯里是**有效满**的：$R := \\coprod_{i,j}X_{i}\\times_{X}X_{j}$ 是 $\\coprod_{i}X_{i}$ 上的等价关系，而 $X$ 是这个关系的商（余等化子）。于是层条件读作 $F(X) \\cong \\ker\\bigl(F(\\coprod X_{i}) \\rightrightarrows F(R)\\bigr)$；再接上「余积变积」就得到陈述里的第一条等式 ✓。反过来取 $X = X/R$ 的商映射作覆盖，得 $F(X/R) \\cong \\ker(F(X)\\rightrightarrows F(R))$ ✓。','- **合起来**：两条所说正是所有覆盖（都是有限族、余积满）的层条件 ✓。','- **推论**：$h_{X} = \\operatorname{Hom}(X,-)$ 满足两条（Hom 把余积送成积、把商送成核），故每个可表示预层都是层 —— 即预标准拓扑是次标准的 ✓。∎'].join('\n'),
         '这两条把「层」写成了两条在 $\\mathbf{Set}$ 里显然、在这里需要验的等式：**有限余积变有限积**、**商变核**。它们正是「预拓扑斯里的余积与商和集合里长得一样」的精确说法。',
         '推论：**预标准拓扑是次标准的** —— 可表示预层 $h_{X}$ 满足上面两条（$\\operatorname{Hom}(X, -)$ 保积，$\\operatorname{Hom}(X/R, -)$ 由余等化子给出核），所以它们都是层。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ---------------------------------- 预标准拓扑保持余积与商 */
@@ -19905,7 +19997,8 @@ window.MG = window.MG || {};
         '',
         '也就是说：$\\mathcal{C}$ 与 $\\mathcal{C}$ 中的 $X \\mapsto h_{X}$ 之间，余积与商**两边算出来一样**。'
       ].join('\n'),
-      notes: '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。∎'
+      notes: '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。∎',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------- 单满在层范畴里不变 */
@@ -19924,7 +20017,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 记层化为 $(-)^{\\sharp}$。','- **$(\\implies)$**：层化是到层范畴的**左伴随**，故保余极限，特别保满态射；又是**左正合**的（保有限极限），故保单态射 ✓。','- **$(\\Longleftarrow)$**：预标准拓扑是次标准的，所以 $h_{X}^{\\sharp} \\cong h_{X}$、$h_{Y}^{\\sharp} \\cong h_{Y}$，且 $f^{\\sharp}$ 在 Yoneda 嵌入下的像就是 $h_{f}$。','- 对可表示预层：$h_{f}$ 单 $\\iff$ $f$ 单（Yoneda 双射把 $h_{f}(Z)$ 的诱导映射写成「与 $f$ 复合」，单射性逐点验出）；$h_{f}$ 满 $\\iff$ $f$ 满（$\\mathbf{Set}$ 值预层范畴中的满态射逐点判定；一边取 $Z = Y$ 与 $1_{Y}$，另一边用 $\\operatorname{Hom}(Z,-)$ 保满态射）✓。','- 于是 $h_{f}$ 单（满）$\\iff$ $h_{f}^{\\sharp}$ 单（满），两头接起来即得 ✓。∎'].join('\n'),
-'所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。'].join('\n\n')
+'所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ---------------------------------------------------- 生成元 */
@@ -19943,7 +20037,8 @@ window.MG = window.MG || {};
         '',
         '是**忠实**的。等价地：只要 $f \\ne g : X \\to Y$，就存在 $a \\in S$ 与 $g_{0} : a \\to X$ 使 $f \\circ g_{0} \\ne g \\circ g_{0}$。$S = \\{G\\}$ 时，$G$ 叫**生成元**。'
       ].join('\n'),
-      notes: '直观：**$S$ 里的对象「看得见」所有态射之间的差别** —— 随便两个不同的态射，总有一个来自 $S$ 的箭头能把它们分开。\n\n例：$\\mathbf{1}$ 是 $\\mathbf{Set}$ 的生成元；$A$ 是 $A\\text{-}\\mathbf{Mod}$ 的生成元；$\\mathcal{C}$ 本身是预层范畴 $\\widehat{\\mathcal{C}}$ 的生成元集。'
+      notes: '直观：**$S$ 里的对象「看得见」所有态射之间的差别** —— 随便两个不同的态射，总有一个来自 $S$ 的箭头能把它们分开。\n\n例：$\\mathbf{1}$ 是 $\\mathbf{Set}$ 的生成元；$A$ 是 $A\\text{-}\\mathbf{Mod}$ 的生成元；$\\mathcal{C}$ 本身是预层范畴 $\\widehat{\\mathcal{C}}$ 的生成元集。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ------------------------------------------------------ 拓扑斯 */
@@ -19967,7 +20062,8 @@ window.MG = window.MG || {};
         '与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。',
         '例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；site 的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**',
         '⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- Giraud 定理 */
@@ -19990,7 +20086,8 @@ window.MG = window.MG || {};
       notes: [
         '四条的对译：(2)$\\iff$(3) 取 $\\mathcal{C} = \\mathcal{T}$ 配上标准拓扑；(3)$\\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；(1)$\\implies$(2) 也给 $\\mathcal{T}$ 配标准拓扑。',
         '第 4 条是最好用的一条：**要造一个拓扑斯，只要造一个预层范畴加一个正合反射**。凝聚态集正是这么来的 —— 取紧 Hausdorff 空间上的层。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane–Moerdijk, Sheaves in Geometry and Logic, Appendix']
     },
 
     /* ------------------------------------------ 可表示性的下降引理 */
@@ -20011,7 +20108,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 记 $F_{i} \\cong h_{X_{i}}$、$F_{i}\\times_{F}F_{j} \\cong h_{X_{i,j}}$，并记 $X := \\coprod_{i}X_{i}$、$R := \\coprod_{i,j}X_{i,j}$。','- **$R$ 是 $X$ 上的等价关系**：满态射 $\\coprod_{i}F_{i} \\to F$ 给出平行对 $R \\rightrightarrows X$ 的两条结构映射（由 $F_{i}\\times_{F}F_{j} \\rightrightarrows F_{i}$ 与 Yoneda 得到）；自反来自对角 $F_{i} \\to F_{i}\\times_{F}F_{i}$，对称来自 $X_{i,j} \\cong X_{j,i}$，传递来自 $F_{i}\\times_{F}F_{j}\\times_{F}F_{k}$ 的三重拉回（这些都在层范畴里是极限，逐层算）✓。','- **等价关系有效**：拓扑斯里等价关系都有效，故商 $X/R$ 存在，且 $h_{X/R}$ 是这个关系在层范畴里的余等化子 ✓。','- **$F \\cong X/R$**：层范畴中的余等化子列','$$\\coprod_{i,j}F_{i}\\times_{F}F_{j} \\rightrightarrows \\coprod_{i}F_{i} \\longrightarrow F$$','说明 $F$ 是这两个对象的余等化子（满态射是有效满的），而同一列换成可表示层就是 $R \\rightrightarrows X \\to X/R$，故 $F \\cong X/R = h_{X/R}$，即 $F$ 可表示 ✓。∎'].join('\n'),
-'把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'].join('\n\n')
+'把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ------------------------------------------ 覆盖 = 余积满射 */
@@ -20026,7 +20124,8 @@ window.MG = window.MG || {};
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。',
       notes: [
         ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
-'这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n')
+'这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* --------------------------------- 拓扑斯上的层 = 保极限的预层 */
@@ -20039,7 +20138,8 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '拓扑斯', '层'],
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）上的预层 $F : \\mathcal{T}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是层 $\\iff$ $F$ 保持所有极限。',
-      notes: '证明就一行：若 $R$ 是 $X$ 的覆盖筛，则 $X \\cong \\varinjlim_{X\' \\to X \\in R} X\'$ —— 这句话正是覆盖的定义；把它送回 $F$ 就得到 $F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{T}/R} F(X\')$，即层条件。\n\n所以在拓扑斯上，「**层**」与「**把余极限送回极限的预层**」是同一件事。层论里那两条（分离 + 粘合）在这里合成了「连续」这一个词。'
+      notes: '证明就一行：若 $R$ 是 $X$ 的覆盖筛，则 $X \\cong \\varinjlim_{X\' \\to X \\in R} X\'$ —— 这句话正是覆盖的定义；把它送回 $F$ 就得到 $F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{T}/R} F(X\')$，即层条件。\n\n所以在拓扑斯上，「**层**」与「**把余极限送回极限的预层**」是同一件事。层论里那两条（分离 + 粘合）在这里合成了「连续」这一个词。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 拟紧对象 */
@@ -20056,7 +20156,8 @@ window.MG = window.MG || {};
         '',
         '在拓扑斯中，等价的说法是：任给满射 $\\coprod_{i \\in I} X_{i} \\to X$，都存在有限 $J \\subseteq I$ 使 $\\coprod_{i \\in J} X_{i} \\to X$ 仍是满射。'
       ].join('\n'),
-      notes: '这就是**紧性**在剥掉拓扑之后剩下的形状：**任何覆盖都有有限子覆盖**。紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里正是「拟紧」的那批对象 —— 后面凝聚态集的定义就是靠它写下来的，所以这个名字值得记牢。'
+      notes: '这就是**紧性**在剥掉拓扑之后剩下的形状：**任何覆盖都有有限子覆盖**。紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里正是「拟紧」的那批对象 —— 后面凝聚态集的定义就是靠它写下来的，所以这个名字值得记牢。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ------------------------------------------------ 拟紧的性质 */
@@ -20075,7 +20176,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**逐条证明。**','**1.** site 里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
-'第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n')
+'第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 拟分离对象 */
@@ -20094,7 +20196,8 @@ window.MG = window.MG || {};
         '',
         '仍然拟紧。'
       ].join('\n'),
-      notes: '性质：**子对象封闭**（拟分离对象的子对象拟分离）；**余积封闭**；**沿单射的滤过余极限封闭**。\n\n「拟分离」在两个拟紧对象之间多加了一道要求：**交叠处也要小**。这和拓扑里「紧 + 交叠紧」的想法完全平行 —— 有了拟紧与拟分离，「小而好」的对象就被挑出来了。'
+      notes: '性质：**子对象封闭**（拟分离对象的子对象拟分离）；**余积封闭**；**沿单射的滤过余极限封闭**。\n\n「拟分离」在两个拟紧对象之间多加了一道要求：**交叠处也要小**。这和拓扑里「紧 + 交叠紧」的想法完全平行 —— 有了拟紧与拟分离，「小而好」的对象就被挑出来了。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ---------------------------------------- 预拓扑斯由拓扑斯确定 */
@@ -20113,7 +20216,8 @@ window.MG = window.MG || {};
         '',
         '给出 $\\mathcal{C}$ 与「$\\mathcal{C}$ 上**拟紧且拟分离**的层」所成范畴之间的**等价**。'
       ].join('\n'),
-      notes: '也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ site $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。'
+      notes: '也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ site $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* ------------------------------------------------ 拓扑斯的态射 */
@@ -20132,7 +20236,8 @@ window.MG = window.MG || {};
         '',
         '满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ **正合**（保有限极限）。$f^{*}$ 叫**拉回函子**，$f_{*}$ 叫**推前函子**。'
       ].join('\n'),
-      notes: '动机来自拓扑空间：连续映射 $\\varphi : X \\to Y$ 给出层范畴之间的一对函子 —— 沿 $\\varphi$ 把层拉回来（$f^{*}$）、再把层推出去（$f_{*}$）。这一对满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ 正合。于是**拓扑斯之间的「映射」就照这个样子定义**：不是函子，而是一对互为伴随的函子，而且方向与几何直觉相反（左边那个是拉回）。'
+      notes: '动机来自拓扑空间：连续映射 $\\varphi : X \\to Y$ 给出层范畴之间的一对函子 —— 沿 $\\varphi$ 把层拉回来（$f^{*}$）、再把层推出去（$f_{*}$）。这一对满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ 正合。于是**拓扑斯之间的「映射」就照这个样子定义**：不是函子，而是一对互为伴随的函子，而且方向与几何直觉相反（左边那个是拉回）。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }
   ],
 
@@ -20324,7 +20429,8 @@ window.MG = window.MG || {};
         '**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 这里 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的**一点紧化**，而「收敛序列连同极限」正好就是从 $\\bar{\\mathbb{N}}$ 到 $X$ 的连续映射：$\\mathbb{N}$ 上的像给出序列，新添那个点上的像给出极限。',
         '**例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \\mathbb{R}) / C(S, \\mathbb{R}^{\\mathrm{disc}})$。',
         '这三个例子的共同点：**取值都是「从紧 Hausdorff 空间出发的连续映射的某种商或子集」**。凝聚态集之所以能记住拓扑信息，靠的就是把这些映射全留下来。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ 凝聚态集的刻画 */
@@ -20361,7 +20467,8 @@ window.MG = window.MG || {};
           '- **满射**：覆盖是单个满射 $S\' \\twoheadrightarrow S$。层条件就是 $X(S) \\to X(S\') \\rightrightarrows X(S\' \\times_{S} S\')$ 左正合，即 (4.2)。',
           '反过来，两条条件合起来显然蕴含「对所有覆盖是层」（覆盖可以分解成这两类的复合），于是判据成立。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ Cond 是拓扑斯 */
@@ -20449,7 +20556,8 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{Cond} \\;\\simeq\\; \\widehat{\\mathbf{FCHaus}}$$'
       ].join('\n'),
-      notes: '两个方向：$\\mathbf{CHaus}$ 上的层限制到 $\\mathbf{FCHaus}$ 上仍是层（覆盖变少了，层的条件只会更容易满足）；反过来，$\\mathbf{FCHaus}$ 上的层 $X$ 沿「自由对象到 $S$ 的映射」取滤过余极限延拓回 $\\mathbf{CHaus}$，得到的就是粘合出来的那个值。证明见边上那条推导。'
+      notes: '两个方向：$\\mathbf{CHaus}$ 上的层限制到 $\\mathbf{FCHaus}$ 上仍是层（覆盖变少了，层的条件只会更容易满足）；反过来，$\\mathbf{FCHaus}$ 上的层 $X$ 沿「自由对象到 $S$ 的映射」取滤过余极限延拓回 $\\mathbf{CHaus}$，得到的就是粘合出来的那个值。证明见边上那条推导。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ 满态射的判据 */
@@ -20461,7 +20569,8 @@ window.MG = window.MG || {};
       title: '凝聚态集的满态射',
       regions: ['condensed'],
       tags: ['凝聚态', '满态射'],
-      statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。'
+      statement: '凝聚态集的态射 $X \\to Y$ 是满态射 $\\iff$ 对每个**自由**紧 Hausdorff 空间 $F$，$X(F) \\to Y(F)$ 是满射。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ 足够多投射对象 */
@@ -20502,7 +20611,8 @@ window.MG = window.MG || {};
         '',
         '都连续的**最细**拓扑。'
       ].join('\n'),
-      notes: '等价刻画：$Y \\subseteq X(\\cdot)$ 是开集 $\\iff$ 对每个 $S \\in \\mathbf{CHaus}$ 与每个 $f \\in X(S)$，$f^{-1}(Y)$ 在 $S$ 中开。\n\n所以「$X$ 的底空间」记下了 $X$ 能看见的全部拓扑信息，但**一般会丢掉 $X$ 自己的精细结构** —— 除非 $X$ 来自一个紧生成空间。'
+      notes: '等价刻画：$Y \\subseteq X(\\cdot)$ 是开集 $\\iff$ 对每个 $S \\in \\mathbf{CHaus}$ 与每个 $f \\in X(S)$，$f^{-1}(Y)$ 在 $S$ 中开。\n\n所以「$X$ 的底空间」记下了 $X$ 能看见的全部拓扑信息，但**一般会丢掉 $X$ 自己的精细结构** —— 除非 $X$ 来自一个紧生成空间。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ------------------------------------------------ Top ↔ Cond */
@@ -20521,7 +20631,8 @@ window.MG = window.MG || {};
         '',
         '是**忠实**的，并且有右伴随 $X \\mapsto X(\\cdot)$。限制到**紧生成空间**的满子范畴上时，它变成**全忠实**的。'
       ].join('\n'),
-      notes: '关键一句：**若 $X$ 是拓扑空间，则它的底空间 $X(\\cdot) \\cong kX$**。\n\n所以「拓扑空间 $\\to$ 凝聚态集 $\\to$ 底拓扑空间」这个来回，做的正是**$k$-化**：它把一般拓扑空间换成紧生成的那一个，之后就不再变化。于是 $k\\mathbf{Top}$ 恰好是 $\\mathrm{Cond}$ 里「完整地记得自己」的那部分，而一般的 $\\mathbf{Top}$ 多出来的那些空间在 $\\mathrm{Cond}$ 里被合并掉了。'
+      notes: '关键一句：**若 $X$ 是拓扑空间，则它的底空间 $X(\\cdot) \\cong kX$**。\n\n所以「拓扑空间 $\\to$ 凝聚态集 $\\to$ 底拓扑空间」这个来回，做的正是**$k$-化**：它把一般拓扑空间换成紧生成的那一个，之后就不再变化。于是 $k\\mathbf{Top}$ 恰好是 $\\mathrm{Cond}$ 里「完整地记得自己」的那部分，而一般的 $\\mathbf{Top}$ 多出来的那些空间在 $\\mathrm{Cond}$ 里被合并掉了。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
     /* ---------------------------------------------- 凝聚态阿贝尔群 */
@@ -20544,7 +20655,8 @@ window.MG = window.MG || {};
         '一般定义见「阿贝尔层」—— 凝聚态阿贝尔群就是 $\\mathcal{T} = \\mathrm{Cond}$ 的那个特例。',
         '在紧 Hausdorff 这个场地里层条件可以化简：**$M$ 是凝聚态阿贝尔群 $\\iff$ 它保有限积**（一般拓扑斯上没有这么干净的判据）。',
         '记号：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) := \\operatorname{Hom}_{\\mathrm{CondAb}}(M, N)$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §6.1']
     },
 
     /* ------------------------------------------------ 截面函子 */
@@ -20619,7 +20731,8 @@ window.MG = window.MG || {};
         '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）。',
         '两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\\***（有所有极限）；而且它**有足够多的内射对象**。',
         '「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------ CondAb 的 AB 公理 */
@@ -20853,7 +20966,8 @@ window.MG = window.MG || {};
         '在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。',
         '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
         '阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------------ 复形 */
@@ -20875,7 +20989,8 @@ window.MG = window.MG || {};
       notes: [
         '$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；同伦范畴那边同样加 $+$ $-$ $b$。',
         '例：$K$ 是（半）单纯对象时，令 $d^{n} := \\sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------------- 复形是加法的 */
@@ -20894,7 +21009,8 @@ window.MG = window.MG || {};
         '- 核与余核也**逐项**取：$(\\ker f)^{n} = \\ker f^{n}$，$d_{\\ker f} := d_{K}|_{\\ker f^{n}}$；',
         '- $\\mathcal{C}(\\mathcal{C})$ 中的**极限与余极限逐项计算**。'
       ].join('\n'),
-      notes: '「逐项计算」是函子范畴的通用事实：$\\mathcal{C}(\\mathcal{C})$ 是 $\\operatorname{Hom}((\\mathbb{Z},\\le), \\mathcal{C})$ 的满子范畴，一切构造都在每个 $n$ 上分别做，然后再验证微分与它们相容。这条让后面所有关于复形的极限/余极限都不必单独证明。'
+      notes: '「逐项计算」是函子范畴的通用事实：$\\mathcal{C}(\\mathcal{C})$ 是 $\\operatorname{Hom}((\\mathbb{Z},\\le), \\mathcal{C})$ 的满子范畴，一切构造都在每个 $n$ 上分别做，然后再验证微分与它们相容。这条让后面所有关于复形的极限/余极限都不必单独证明。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------------- 同伦 */
@@ -20917,7 +21033,8 @@ window.MG = window.MG || {};
         '',
         '记 $f \\sim g$，$s$ 叫一个**同伦**。与 $0$ 同伦的态射叫**零伦的**。'
       ].join('\n'),
-      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。'
+      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------- 同伦范畴 */
@@ -20940,7 +21057,8 @@ window.MG = window.MG || {};
         '等价的说法：$f : K \\to L$ 是同伦等价 $\\iff$ 存在 $g : L \\to K$ 使 $g \\circ f \\sim 1_{K}$、$f \\circ g \\sim 1_{L}$；$K$ 同伦平凡 $\\iff$ $1_{K} \\sim 0_{K}$。',
         '$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
         '为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ------------------------------------------------------ 映射锥 */
@@ -20959,7 +21077,8 @@ window.MG = window.MG || {};
         '',
         '（矩阵按 $K^{n+1} \\oplus L^{n}$ 分块：左上取自 $K$ 的微分，右下取自 $L$ 的微分，左下是 $f$ 的分量；$d^{2} = 0$ 只要 $f$ 与微分交换。）$k$-**位移** $K[k]$ 取 $K[k]^{n} := K^{n+k}$，微分带符号 $(-1)^{k} d^{n+k}$。'
       ].join('\n'),
-      notes: '用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。'
+      notes: '用处：给出短正合列 $0 \\to L \\to M(f) \\to K[1] \\to 0$（一般不分裂）。于是**每个态射都能嵌进一条「几乎正合」的序列**，这是三角范畴的出发点 —— 后面所有导出三角的定义都靠它。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ---------------------------------------------------- 导出三角 */
@@ -20982,7 +21101,8 @@ window.MG = window.MG || {};
         '',
         '三角之间的**态射**是一族映射 $(u, v, w, u[1])$，使所有方块交换。'
       ].join('\n'),
-      notes: '导出三角是「短正合列」的**同伦版**：它不要求 $M$ 是商，只要求 $K \\to L \\to M \\to K[1]$ 在形状上接得上。加上位移这一步之后，一个态射就能嵌进一条任意长度的序列里 —— 这正是三角范畴要的形式。'
+      notes: '导出三角是「短正合列」的**同伦版**：它不要求 $M$ 是商，只要求 $K \\to L \\to M \\to K[1]$ 在形状上接得上。加上位移这一步之后，一个态射就能嵌进一条任意长度的序列里 —— 这正是三角范畴要的形式。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* ------------------------------------------ 三角的旋转与延拓 */
@@ -21002,7 +21122,8 @@ window.MG = window.MG || {};
         '3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；',
         '4. 导出三角之间的态射可以（**不唯一**地）延拓。'
       ].join('\n'),
-      notes: '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。'
+      notes: '推论：**映射锥在 $\\mathbf{K}(\\mathcal{C})$ 中唯一**（同伦意义下唯一）。所以「$f$ 的锥」在 $\\mathbf{K}(\\mathcal{C})$ 里是一个定义良好的对象 —— 尽管 $M(f)$ 的显式写法依赖于 $f$ 的表示。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------- 三角态射的性质 */
@@ -21034,7 +21155,8 @@ window.MG = window.MG || {};
           '**第 1 条在说什么**：三角之间的态射被前两步控制得很紧 —— 前两步一旦归零，第三步不但被逼成零平方，还被夹在两条正合列之间。这正是三角范畴公理里那条最不显然的要求的来源。'
         ].join('\n'),
         '第 2 条是「五引理」在同伦范畴里的样子：**前两步定住了，第三步就跟着定住**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
     /* -------------------------------------------------------- 同调 */
@@ -21056,7 +21178,8 @@ window.MG = window.MG || {};
       notes: [
         '例：$H^{n}(K[k]) = H^{n+k}(K)$；$M \\in \\mathcal{A}$ 时 $H^{0}([M]) = M$、其余为 $0$；$H^{0}([M \\to N]) = \\ker f$、$H^{1}([M \\to N]) = \\operatorname{coker} f$。',
         '$H^{n}$ 是**函子**，但它是**加法而不正合**的 —— 同调不可交换性是整个同调代数的起点。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------- 同调的短正合列 */
@@ -21081,7 +21204,8 @@ window.MG = window.MG || {};
           '- $Z^{k+1} \\to Z^{k+1}/B^{k+1} = H^{k+1}$：取商映射，满，核是 $B^{k+1} = \\operatorname{im} d^{k}$ —— 正好是上一个箭头的像。∎',
           '三段正合各只用到「$d^{2} = 0$」和核/余核的泛性质。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------------- 上同调函子 */
@@ -21100,7 +21224,8 @@ window.MG = window.MG || {};
         '',
         '正合。'
       ].join('\n'),
-      notes: '上同调函子把导出三角变成一条**长正合列**：反复旋转三角、每次用一次正合性、再拼接，就得到 $\\cdots \\to F(K[n]) \\to F(L[n]) \\to F(M[n]) \\to F(K[n+1]) \\to \\cdots$。\n\n例：固定 $K$ 之后，$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, -)$ 是上同调函子 —— 这就是同调代数里那些「长正合列」的总来源。'
+      notes: '上同调函子把导出三角变成一条**长正合列**：反复旋转三角、每次用一次正合性、再拼接，就得到 $\\cdots \\to F(K[n]) \\to F(L[n]) \\to F(M[n]) \\to F(K[n+1]) \\to \\cdots$。\n\n例：固定 $K$ 之后，$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, -)$ 是上同调函子 —— 这就是同调代数里那些「长正合列」的总来源。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------------- 长正合列 */
@@ -21120,7 +21245,8 @@ window.MG = window.MG || {};
         '其中 $\\delta$ 叫**连接同态**。',
         '',
         '推论：$H^{n} : \\mathbf{K}(\\mathcal{A}) \\to \\mathcal{A}$ 是**上同调函子**。'
-      ].join('\n')
+      ].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* ---------------------------------------------------- 拟同构 */
@@ -21139,7 +21265,8 @@ window.MG = window.MG || {};
         '注意：$K \\to L$ 拟同构 $\\iff$ $L \\to K$ 拟同构（「拟同构」是双向的说法，虽然映射只有一个方向）；$K$ 零调 $\\iff$ $[0] \\to K$ 拟同构 $\\iff$ $K \\to [0]$ 拟同构。',
         '两条命题：（1）若 $K \\to L \\to M \\to$ 是导出三角，则 $f$ 是拟同构 $\\iff$ $M$ 零调；（2）对三角态射 $(u, v, w)$，$u, v$ 是拟同构 $\\iff$ $w$ 是拟同构。',
         '拟同构是「在 $\\mathbf{K}(\\mathcal{C})$ 里不是同构，但同调上看不出差别」的映射 —— 把拟同构反过来形式地变成同构，就得到**导出范畴**。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* -------------------------------------------------- 内射对象 */
@@ -21163,7 +21290,8 @@ window.MG = window.MG || {};
         '',
         '$$M \\text{ 内射} \\iff M\'\' \\text{ 内射}$$'
       ].join('\n'),
-      notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。'
+      notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']
     },
 
     /* ------------------------------------------------------ 过滤 */
@@ -21182,7 +21310,8 @@ window.MG = window.MG || {};
         '',
         '总假定过滤是**穷尽的**（$\\bigcup_{n} F^{n}M = M$）与**分离的**（$\\bigcap_{n} F^{n}M = 0$）；若 $n \\ll 0$ 时 $F^{n}M = M$ 且 $n \\gg 0$ 时 $F^{n}M = 0$，叫**有限的**。带过滤的对象构成范畴 $\\mathbf{F}(\\mathcal{A})$，**关联分次**记 $\\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。'
       ].join('\n'),
-      notes: '命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。'
+      notes: '命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
     },
 
     /* ---------------------------------------------------- 谱序列 */
@@ -21215,7 +21344,8 @@ window.MG = window.MG || {};
         '',
         '继承。于是每根 $H^{n}$ 上都有一串 $H^{n} \\supseteq \\cdots \\supseteq F^{p}H^{n} \\supseteq F^{p+1}H^{n} \\supseteq \\cdots \\supseteq 0$。',
         '谱序列说的就是：**对充分大的 $r$，$E_{r}$ 页稳定下来，恰好等于这个过滤的关联分次**。所以它是「从过滤的复形一层层逼近同调」的工具 —— 直接算 $H^{n}$ 太难时，就把 $H^{n}$ 拆成容易算的那些碎片。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
     }
   ],
 
@@ -21331,7 +21461,8 @@ window.MG = window.MG || {};
       notes: [
         '把 $\\mathcal{D}$ 取成 $\\mathbf{Set}$ 就回到原来的层；取成 $\\mathbf{Ab}$ 就得到**阿贝尔层**。',
         '定义里的技巧是：**用「射入 $Y$ 的映射」把 $\\mathcal{D}$ 里的层条件降回集合层**。于是集合层的每一条结论，只要它的表述里那些构造在 $\\mathcal{D}$ 里也有（极限、积……），就能逐条搬过来 —— 这是「层可以取一般值」的全部秘密。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* ------------------------------------------------------ 阿贝尔层 */
@@ -21356,7 +21487,8 @@ window.MG = window.MG || {};
         '⭐ **阿贝尔群预层就是「最粗拓扑下的层」** —— 两种说法是一套东西。',
         '遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 沿复合给出遗忘函子 $\\widehat{\\mathcal{C}}(\\mathbf{Ab}) \\to \\widehat{\\mathcal{C}}$。',
         '两条基本事实：\n\n- **阿贝尔层按底集合层来判**：$M$ 是阿贝尔层 $\\iff$ 它的底集合预层是层。因为遗忘函子保所有极限，而层条件是一个极限图 —— 用米田引理把 $\\operatorname{Hom}_{\\mathbb{Z}}(N, M(-))$ 换回 $M(-)$，条件就同一条。\n- **阿贝尔层 = 层范畴里的阿贝尔群对象**：$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\simeq \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr)$。这正是「凝聚态阿贝尔群 = 凝聚态集范畴里的阿贝尔群」那条定义的一般版本。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* --------------------------------- 拓扑斯上的阿贝尔群是 Grothendieck 范畴 */
@@ -21381,7 +21513,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '',
         '顺带一条：$\\mathbb{Z}\\cdot X$ 在 $\\mathcal{T}(\\mathbf{Ab})$ 里**投射**（先看预层：$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ 在预层上是正合的）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* ------------------------------------------------------- 内 Hom */
@@ -21410,7 +21543,8 @@ window.MG = window.MG || {};
         '「可表示」这一步只用到一个事实：那个预层**保所有极限**（于是由表示函子的判据，它有表示对象）。',
         '两条推论：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1})$ —— 也就是说 **$\\mathcal{T}(\\mathbf{Ab})$ 富集在自己上面**；以及 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M) \\cong \\operatorname{Hom}(X, M)$。',
         '内 Hom 在预层范畴里算与在层范畴里算结果一样：$\\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}(M,N) = \\operatorname{Hom}_{\\widetilde{\\mathcal{C}}(\\mathbf{Ab})}(M,N)$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* ------------------------------------------------------ 张量积 */
@@ -21442,7 +21576,8 @@ window.MG = window.MG || {};
         '记 $M \\cdot X := M \\otimes_{\\mathbb{Z}} \\mathbb{Z}\\cdot X$，则 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(X) \\cong \\operatorname{Hom}_{\\mathbb{Z}}(M \\cdot X,\\ N)$ —— **「在某点处取值」= 「先在点处张量、再取 Hom」**。',
         '⭐ **凝聚态阿贝尔群 $\\mathrm{CondAb}$ 就是这里的特例**（$\\mathcal{T} = \\mathrm{Cond}$）：上面每一条原样照搬，不必单独写一遍。特别地 $\\mathrm{CondAb}$ 是封闭对称幺半范畴，因而富集在自己上面，可以谈张量积、对偶与交换代数。',
         '⚠️ 但要注意 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N)$ 自然是一个**紧生成拓扑空间**，却**不是拓扑阿贝尔群** —— 因为紧生成空间对（拓扑空间的）积不封闭。把 $\\mathrm{CondAb}$ 当成「拓扑阿贝尔群」来用会在这一步出问题。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* -------------------------------------------------------- 平坦 */
@@ -21461,7 +21596,8 @@ window.MG = window.MG || {};
         '',
         '是**正合**的。'
       ].join('\n'),
-      notes: '例：**通常的阿贝尔群平坦 $\\iff$ 无挠**。由此立刻得到：$\\mathbb{Z}\\cdot X$ **总是平坦的** —— 先归结到预层、再归结到通常的阿贝尔群，而自由阿贝尔群无挠。'
+      notes: '例：**通常的阿贝尔群平坦 $\\iff$ 无挠**。由此立刻得到：$\\mathbb{Z}\\cdot X$ **总是平坦的** —— 先归结到预层、再归结到通常的阿贝尔群，而自由阿贝尔群无挠。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     }
   ],
 
@@ -21508,7 +21644,8 @@ window.MG = window.MG || {};
         '「由从紧 Hausdorff 空间进来的映射决定拓扑」的意思是：**只要一个子集在所有这类映射下的原像都开，它就是开的**。',
         '一般拓扑空间不满足这一条 —— 于是紧生成性把那些「测试不够」的空间排除在外，留下的那批在做乘积、函数空间时行为良好。',
         '这是**余反射**的入口：$k$-化（见「$k$-开、$k$-闭与 $k$-拓扑」）把任何空间改造成紧生成的，而且改造前后到别的紧生成空间之间的映射一一对应。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21527,7 +21664,8 @@ window.MG = window.MG || {};
       notes: [
         '**例 1** 是最常用的一条：紧 Hausdorff 空间自己当然紧生成（它本身就是自己的那条余极限）；一般局部紧 Hausdorff 空间由「取紧邻域」这一类映射决定拓扑。',
         '**例 3** 是反面教材 —— 它正是「乘积不好用」的根源：$\\mathbb{R}^{I}$ 太细，细到没有足够的紧 Hausdorff 空间能测出它的拓扑。$k$-化会把它换成拓扑更粗的 $k(\\mathbb{R}^{I})$，那个才好用。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 等价刻画 */
@@ -21562,7 +21700,8 @@ window.MG = window.MG || {};
           '- (5) $\\iff$ (4)：把「$X \\to Y$ 连续」按定义展开成「开集的原像开」，再用 (4) 换成紧 Hausdorff 空间上的检验。'
         ].join('\n'),
         '⭐ **测试空间统一取紧 Hausdorff 空间。** 定义那一条与这里 (2)(3)(4)(6) 用的是同一族测试空间 —— 也就是说：$X$ 紧生成 $\\iff$ 存在紧 Hausdorff 空间的不交并 $\\coprod S \\twoheadrightarrow X$ 是商映射 $\\iff$ 存在局部紧 Hausdorff 空间 $Z \\twoheadrightarrow X$ 是商映射。**三个说法给出同一个范畴**，用哪一条就看哪一条好算。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* ------------------------------------------------------ k-拓扑 */
@@ -21583,7 +21722,8 @@ window.MG = window.MG || {};
         '$k$-拓扑就是**使所有连续映射 $S \\to X$（$S$ 紧 Hausdorff）都连续的最终（最细）拓扑**。它比原来的拓扑**细** —— 开集变多了（原本开的当然还是 $k$-开的）。',
         '⭐ **紧生成 = 自己就是 $k$-化**：$X$ 紧生成 $\\iff$ $kX = X$（同一个拓扑空间）。所以 $k$ 是一个**幂等**的改造：$k(kX) = kX$。',
         '一般情形下 $kX$ 与 $X$ 之间的恒等映射 $kX \\to X$ 连续（拓扑变细了），但反方向不连续 —— 这个「往下走」的映射正是余反射的余单位 $\\varepsilon_{X}$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21601,7 +21741,8 @@ window.MG = window.MG || {};
           '把图取成「对象 = 全体连续映射 $g : S \\to X$；态射 = 使三角形交换的连续映射」：余射就是 $g$ 本身，于是 $L$ 上的拓扑正是「由全体 $g$ 拉回定出的 $k$-拓扑」，即 $L = kX$（两者有同一个底集合同一个开集族）。∎',
           '⭐ **读法**：这条把「$k$-化」翻译成了「用紧 Hausdorff 块拼出来」。于是 $X$ 紧生成 $\\iff$ $X$ 就是它自己那些紧 Hausdorff 块的余极限 —— 后面所有关于 $k\\mathbf{Top}$ 的论证都可以在**块**上做，再沿余极限抬上去。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 余反射 */
@@ -21633,7 +21774,8 @@ window.MG = window.MG || {};
           '- 反向由 $\\varepsilon_{Y}$ 连续直接得到。这样两个方向互逆，就是那个同构。'
         ].join('\n'),
         '⭐ 与紧 Hausdorff 对照着记：$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的**反射**子范畴（含入函子有**左**伴随 $\\beta$），而 $k\\mathbf{Top}$ 是**余反射**的（含入函子有**右**伴随 $k$）。一个把空间「收紧」，一个把空间「松开」—— 所以前者对极限封闭，后者对**余极限**封闭。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 商映射与积 */
@@ -21665,7 +21807,8 @@ window.MG = window.MG || {};
         '是 $(x, z)$ 的一个开邻域 —— 所以 $(x, z)$ 是 $W$ 的内点，$W$ 开。∎',
         '⚠️ **局部紧这个条件不能省。** 一般情形下「商映射乘 id」不是商映射：取 $q$ 是某条坏商、$Z$ 是一个既不局部紧又不紧生成的空间，乘积的商拓扑会严格细于商空间应有的拓扑。',
         '记法：有的把这条写成「$Z$ 局部紧 Hausdorff $\\implies$ 函子 $- \\times Z$ 保商映射」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21687,7 +21830,8 @@ window.MG = window.MG || {};
           '于是 $X \\times Y$ 是紧生成空间的余极限，自身紧生成。∎',
           '⚠️ **$Y$ 局部紧不能省**：一般拓扑空间之间的积**不保**商映射，而「$-\\times Y$ 保余极限」正是这一条目的等价说法。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21715,7 +21859,8 @@ window.MG = window.MG || {};
           '- 两张 $k$-拓扑 $k(X\\times Y)$ 与 $k(kX\\times Y)$ 由**同一族**测试映射（全体 $T \\to$ 该底集合，$T$ 紧 Hausdorff）的连续性刻画，故它们的开集族相同，即 $k(kX\\times Y) = k(X\\times Y)$。',
           '**第二式**：由上一条「$X$ 紧生成、$Y$ 局部紧 Hausdorff $\\implies$ $kX \\times Y$ 紧生成」得 $kX\\times Y$ 已经是紧生成的，对它取 $k$ 不再改变：$k(kX\\times Y) = kX\\times Y$；代入第一式即得 $kX\\times Y = k(X\\times Y)$。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 紧开拓扑 */
@@ -21737,7 +21882,8 @@ window.MG = window.MG || {};
       notes: [
         '读法：$W_{S,V}$ 是「在所有从头进来的紧块上都落在 $V$ 里」的那些映射。$g$ 通过 $S$ 这个「测试块」把 $X$ 的局部控制住。',
         '⭐ 这一条让 $\\operatorname{Hom}(X,Y)$ 本身成为一个拓扑空间 —— 于是可以谈「映射空间」，才可以谈同伦、道路空间、环路空间。在 $\\mathrm{CGWH}$ 里它才真正好用（见「函数空间弱 Hausdorff」那条）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21756,7 +21902,8 @@ window.MG = window.MG || {};
           '- 而 $\\{f : f(x) \\in V\\}$ 正是**积拓扑**（$Y^{X} = \\prod_{x\\in X} Y$）下的基本开集（只有 $x$ 那个坐标被限制）。所以两边由同一族基本开集生成，恒等映射是同胚。∎',
           '⭐ **这就是「指数律在离散指数下平凡成立」那条**：$Y^{X}$ 的积拓扑就是紧开拓扑。这也说明紧开拓扑的**信息量**：非离散的 $X$ 上，积拓扑太细（那是「逐点收敛」拓扑），紧开拓扑才是对的。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     /* -------------------------------------------------- 弱 Hausdorff */
@@ -21768,7 +21915,8 @@ window.MG = window.MG || {};
       title: '弱 Hausdorff 空间（Weak Hausdorff Space）',
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', 'CGWH'],
-      statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。'
+      statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21804,7 +21952,8 @@ window.MG = window.MG || {};
           '其中 $(f,h)^{-1}(\\Delta_{X})$ 在 $S\\times T$ 中闭（$S\\times T$ 紧 Hausdorff，$\\Delta$ $k$-闭）；而 $\\operatorname{pr}_{T} : S\\times T\\to T$ 是**闭映射**（$S$ 紧），故 $h^{-1}(f(S))$ 闭 ✓。',
           '- **$\\ker(f,g)$ 是 $k$-闭的**：$\\ker(f,g) = (f,g)^{-1}(\\Delta_{Y})$，而 $k$-闭集沿连续映射的拉回仍 $k$-闭（用紧 Hausdorff 测试：$(f,g)\\circ h$ 连续，$h^{-1}(\\ker) = ((f,g)\\circ h)^{-1}(\\Delta_{Y})$ 闭）。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21825,7 +21974,8 @@ window.MG = window.MG || {};
           '于是 $S\\times_{X} S\'$ 是紧 Hausdorff 空间的**闭子空间**，故紧 Hausdorff（闭子空间紧、Hausdorff 的闭子空间 Hausdorff）。∎',
           '⭐ **这条就是「$\\mathrm{CGWH}$ 里紧块相交还是紧块」的全部内容** —— 后面「弱 Hausdorff $\\implies$ 拟分离」「$\\mathrm{CGWH}$ 对有限积封闭」都得靠它。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21845,7 +21995,8 @@ window.MG = window.MG || {};
           '再证弱 Hausdorff：取紧 Hausdorff 的 $g : T \\to X/R$。$T$ 紧，$X$ 紧生成且 $q$ 是商映射，故 $g$ 可沿 $q$ **逐块提升**：存在覆盖 $T = \\bigcup_{i} T_{i}$（有限个紧 Hausdorff 块）与连续 $p_{i} : T_{i} \\to X$ 使 $q p_{i} = g|_{T_{i}}$。于是 $g(T) = \\bigcup_{i} q(\\tilde g_{i}(T_{i}))$，而每个 $q(K)$（$K \\subseteq X$ 紧 Hausdorff）是闭的：$q^{-1}q(K)$ 是**饱和**的，其 $k$-闭性由 $R$ 的 $k$-闭性与「投影 $X\\times K \\to X$ 闭」给出，故 $q^{-1}q(K)$ 在紧生成的 $X$ 中闭，再由 $q$ 是商映射得 $q(K)$ 闭 ✓。有限并仍闭，故 $g(T)$ 闭。∎',
           '⭐ **读法**：这条把「商空间弱 Hausdorff」这个**拓扑**条件翻译成了「等价关系是 $k$-闭的」这个**关于 $X\\times X$ 的子集**条件 —— 后者可以逐块验证。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21878,7 +22029,8 @@ window.MG = window.MG || {};
           '两条合起来就是「$\\mathrm{CGWH}$ 是 $\\mathrm{CG}$ 的反射子范畴，反射是 $X\\mapsto X/R$」。∎',
           '⚠️ **方向**：等价关系取得**越大**，商掉得越**多**、空间越粗。所以「最小」的闭等价关系给出「最经济」的弱 Hausdorff 化 —— 这也是为什么反射先 $k$-化（$X\\rightsquigarrow kX$）、再商最小闭等价关系、两步都函子性。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21902,7 +22054,8 @@ window.MG = window.MG || {};
           '- **$X$ 弱 Hausdorff**：取紧 Hausdorff 的 $g : S \\to X$。由上面那条引理与 $S$ **紧**，$g(S)$ 落在**某一个** $X_{i}$ 里（这是滤过余极限的标准「紧集落进一块」引理）；又 $X_{i}$ 在 $X$ 中闭、$g$ 经由 $X_{i}$ 的像在 $X_{i}$ 中闭 $\\implies$ $g(S)$ 在 $X$ 中闭 ✓。',
           '- **$X$ 紧生成**：由余极限的闭集刻画（逐块判定）与每块紧生成，逐块验证即得 ✓。∎'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21924,7 +22077,8 @@ window.MG = window.MG || {};
           '- 每个 $B_{S,a} = \\operatorname{pr}_{T\'\\times T}\\bigl(\\theta_{S,a}^{-1}(\\Delta_{Y})\\bigr)$，其中 $\\theta_{S,a} : T\'\\times T\\times S \\to Y\\times Y$，$(t\',t,s)\\mapsto\\bigl(\\hat h(t\',a(s)),\\ \\hat g(t,a(s))\\bigr)$ 连续。$T\'\\times T\\times S$ **紧 Hausdorff**，而 $\\Delta_{Y}$ 是 $k$-闭的，故 $\\theta_{S,a}^{-1}(\\Delta_{Y})$ **闭**；又 $S$ 紧 $\\implies$ 投影 $T\'\\times T\\times S\\to T\'\\times T$ **闭**，所以 $B_{S,a}$ 闭；闭集之交 $B$ 闭；最后 $T$ 紧 $\\implies$ $\\operatorname{pr}_{T\'} : T\'\\times T\\to T\'$ 闭，故 $A$ 闭 ✓。∎',
           '三步关键：① $X$ 紧生成让「函数相等」可以沿紧块检验；② $Y$ 弱 Hausdorff 让 $\\Delta_{Y}$ 是 $k$-闭的；③ 紧因子的投影是**闭映射**。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21956,7 +22110,8 @@ window.MG = window.MG || {};
         '',
         '两次都只用到积的结合性与 $k$-化的函子性 —— 这也是为什么必须**先取 $k$-化**：不取的话右边那个 $C(Y,Z)$ 未必紧生成。',
         '⚠️ 一个容易踩的点：$C(kX, kY) = C(kX, Y)$ 作为**集合**相等，但一般**不是同胚**，哪怕换成 $k$-拓扑也一样。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     },
 
     {
@@ -21985,7 +22140,8 @@ window.MG = window.MG || {};
           '两条合起来给出自然双射，即 $k(X\\times Y) \\dashv kC(kY, -)$。∎',
           '**顺带的两个推论**（伴随的一般性质）：左伴随 $X\\mapsto k(X\\times Y)$ **保余极限**；右伴随 $Z\\mapsto kC(kY,Z)$ **保极限**。前者正是「$-\\times Y$ 在 $k\\mathbf{Top}$ 里保余极限」，也是上面「$\\mathrm{CGWH}$ 对积封闭」那条用的零件。'
         ].join('\n')
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.3']
     }
   ],
 
@@ -22035,7 +22191,8 @@ window.MG = window.MG || {};
         '**单位元与逆元是唯一的**：若 $e, e\'$ 都是单位元，则 $e = e e\' = e\'$；若 $a^{-1}, a\'$ 都是 $a$ 的逆，则 $a\' = a\' e = a\' a a^{-1} = e a^{-1} = a^{-1}$。所以「$e$」与「$a^{-1}$」这两个记号合法。',
         '**例子与反例**：$(\\mathbb{Z}, +)$ 是阿贝尔群；$(\\mathbb{Q} \\setminus \\{0\\}, \\cdot)$ 是阿贝尔群；$(\\mathbb{Z}, \\cdot)$ **不是**群（只有 $\\pm 1$ 有乘法逆元）；$n \\times n$ 可逆矩阵在乘法下是群但**不阿贝尔**（$n \\ge 2$）。',
         '📌 还有一层更弱的：只要求结合律与单位元、不要求逆元，叫**幺半群**。（$\\mathbb{N}$ 在加法下就是幺半群不是群。）'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     /* ---------------------------------------------------------- 子群 */
@@ -22058,7 +22215,8 @@ window.MG = window.MG || {};
         '',
         '（结合律是从 $G$ 里继承的，不必重查。）'
       ].join('\n'),
-      notes: '两条合起来可写成一条：$a, b \\in H \\implies a b^{-1} \\in H$。\n\n任意多个子群的交仍是子群；但**并**一般不是 —— 这也是「由 $S$ 生成的子群 $\\langle S \\rangle$」要定义成「含 $S$ 的一切子群的交」的原因。'
+      notes: '两条合起来可写成一条：$a, b \\in H \\implies a b^{-1} \\in H$。\n\n任意多个子群的交仍是子群；但**并**一般不是 —— 这也是「由 $S$ 生成的子群 $\\langle S \\rangle$」要定义成「含 $S$ 的一切子群的交」的原因。',
+      refs: ['Lang, Algebra']
     },
 
     /* ------------------------------------------------------ 正规子群 */
@@ -22085,7 +22243,8 @@ window.MG = window.MG || {};
         '最右边那个括号里的 $(g\')^{-1} h g\'$ 得还在 $H$ 里才行 —— 「$H$ 对共轭封闭」正是正规性。**阿贝尔群里每个子群都正规**（共轭不动），所以在阿贝尔群里这一步永远不碍事。',
         '**陪集是一条等价关系。** 定义 $a \\sim b \\iff a^{-1} b \\in H$，则等价类恰好是左陪集，全体左陪集划分 $G$ —— 这就是下面商群要用的商集。',
         '**记号**：$H \\le G$ 表示子群，$H \\trianglelefteq G$ 表示正规子群（$\\trianglelefteq$ 读作「正规于」）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     /* -------------------------------------------------------- 商群 */
@@ -22110,7 +22269,8 @@ window.MG = window.MG || {};
         '商群就是**集合层面的商集**再往上一层：先在 $G$ 上用等价关系「差一个 $N$ 的元素」商掉，再验证商集上还残留着一个运算。',
         '**泛性质**（商群真正的用处）：对任何群同态 $\\varphi : G \\to G\'$，若 $N \\subseteq \\ker\\varphi$，则 $\\varphi$ 唯一地穿过 $\\pi$：存在唯一的 $\\overline{\\varphi} : G/N \\to G\'$ 使 $\\overline{\\varphi} \\circ \\pi = \\varphi$。',
         '⚠️ 商**群**只对正规子群有；商**集** $G/H$ 对任何子群都有（左陪集照样划分 $G$），但那个商集上一般没有群结构。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     /* -------------------------------------------------------- 同态 */
@@ -22140,7 +22300,8 @@ window.MG = window.MG || {};
         '',
         '所以 $gkg^{-1} \\in \\ker\\varphi$，即 $\\ker\\varphi \\trianglelefteq G$。**核总是正规的** —— 这正是「商群能商掉核」的全部理由。',
         '**单同态 $\\iff$ 核平凡**：$\\varphi$ 是单射 $\\iff$ $\\ker\\varphi = \\{e\\}$。于是「单」这个性质被一个**子群**完全编码了。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     /* -------------------------------------------------- 第一同构定理 */
@@ -22216,7 +22377,8 @@ window.MG = window.MG || {};
         '**怎么把态射造出来。** 局部化里的态射是 $W$ 中态射的**形式逆**与 $\\mathcal{C}$ 中原有态射拼成的**有限长链**（这叫**分式**，因为长得像 $c \\cdot w^{-1} \\cdot d$）。两个这样的链只要能用原范畴里的交换图连通，就视作同一个态射。',
         '⭐ **两个标准例子**（都在同调代数那一支）：把链同伦 $\\simeq$ 全体当成同构，得到**同伦范畴** $\\mathbf{K}(\\mathcal{C})$；再把**拟同构**全体当成同构，得到**导出范畴** $D(\\mathcal{A})$。所以这一条是那一整条线的地基层。',
         '⚠️ **局部化一定存在，但可能很贵**：一般情形下 $\\mathrm{ho}(\\mathcal{C})$ 的态射**不再是集合**（每两个对象之间的分式链可能真类多），Hom 也可能爆掉。下面那条命题说的就是「什么时候它老老实实是个局部小范畴」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     {
@@ -22244,7 +22406,8 @@ window.MG = window.MG || {};
         '⭐ **直觉**：Ore 条件说的是「分式能做通分」—— 一个 $W$ 里的态射跟在前面，总能换成一个 $W$ 里的态射跟在后面，于是分式可以统一写成「先逆一个、再走一个」的**单分式** $f \\circ w^{-1}$，复合起来才封得住。消去条件保证「等价」这件事本身是好的。',
         '**与环论对照**：这正是交换环里**局部化** $S^{-1}A$（$S$ 是乘性子集）的那个条件；那里的「分式」$a/s$ 就是这里的分式，Ore 条件在交换的情形自动成立。',
         '⚠️ 局部化**总是存在**（上一条），但**不总是**能这样具体算 —— 分式演算是一条足够好用的**充分**条件。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     }
   ],
 
@@ -22292,7 +22455,8 @@ window.MG = window.MG || {};
         '',
         '**紧 Hausdorff $\\implies$ 正规**（这是紧性最常用的一个推论：两个不交闭集在紧空间里能被有限多个开集对分开）。所以 $[0,1]$、$\\beta I$ 这些空间都是正规的 —— 于是 Urysohn 引理在那里永远能用。',
         '⚠️ **正规性不是遗传的**：正规空间的子空间未必正规。这一点与「紧」「Hausdorff」都不同。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Munkres, Topology']
     },
 
     {
@@ -22320,7 +22484,8 @@ window.MG = window.MG || {};
         '',
         '（$x \\notin$ 任何 $U_{q}$ 时取 $1$）。由那列开集的**单调夹逼**可以验证 $f$ 连续，且 $f|_{A} = 0$、$f|_{B} = 1$。反方向是直接的：$f^{-1}[0, 1/2)$ 与 $f^{-1}(1/2, 1]$ 就是分开 $A, B$ 的开集。∎',
         '**用途**：它是 **Tietze 扩张定理**（把闭子集上的连续实函数扩到整个空间）的前置，而 Tietze 又是「实 Banach 空间在紧 Hausdorff 空间上零调」那条的引擎 —— 那条链最终通到凝聚态上同调。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Munkres, Topology']
     }
   ],
 
@@ -22374,7 +22539,8 @@ window.MG = window.MG || {};
           '- $\\underline{M} \\mapsto M$ 那条通道**没有明显的伴随**，因为函子 $X \\mapsto X(\\bullet)$（取底拓扑空间）**不保积**；',
           '- 就算 $M$ 是拓扑阿贝尔群，$kM$ **一般也不是**拓扑阿贝尔群 —— 因为紧生成空间对（拓扑空间的）积不封闭。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §6.2']
     },
 
     /* ------------------------------------------------ 关联凝聚态群 */
@@ -22630,7 +22796,8 @@ window.MG = window.MG || {};
         '**为什么理想这样定义。** 与正规子群一模一样的问题：想在商集上定义乘法，就要让 $(a + I)(b + I)$ 与代表元无关。算一下 $(a + x)(b + y) = ab + ay + xb + xy$ —— 后面三项都得落在 $I$ 里。$xy \\in I$ 由「$I$ 是子群」保证不了，必须**额外要求**。',
         '⭐ **对照表**：群要商出**群**，商掉的是**正规子群**；环要商出**环**，商掉的是**理想**。（$I$ 作为加法子群当然自动正规 —— 加法群是阿贝尔群 —— 所以那一边不用另加条件。）',
         '**主理想** $(a) := \\{\\, xa : x \\in A \\,\\}$（交换环里就是 $a$ 的倍数全体）。$A/(a)$ 是「把 $a$ 当成 $0$」造出来的环；$\\mathbb{Z}/(n) = \\mathbb{Z}/n\\mathbb{Z}$ 就是模 $n$ 同余。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     {
@@ -22662,7 +22829,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '',
         '所以「在 $A\\text{-}\\mathbf{Mod}$ 里能做的」，就是同调代数想推广到一般范畴的东西。**其余范畴能做的事情，都以它为标尺。**'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     {
@@ -22733,7 +22901,8 @@ window.MG = window.MG || {};
         '**空范畴不连通**（它连一个对象都没有）；**单对象范畴连通**（$n = 0$ 的空锯齿就够了）。',
         '⚠️ 与拓扑里的连通**不是一回事**：这里纯粹是「态射图画成的无向图连通」，没有任何开集。',
         '⭐ **为什么需要它**：滤过范畴要求「任意两个对象都有共同的上界」，那是连通性的一种强形式。共尾函子的定义（每个逗号范畴非空**且连通**）里，连通那一条正是用来保证「两条不同的路给出同一个答案」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* -------------------------------------------------------- 共尾函子 */
@@ -22756,7 +22925,8 @@ window.MG = window.MG || {};
         '⭐ **直观**：$F$ 的像在 $I$ 里「到处都有、而且没有被隔开」。非空 = 每个 $i$ 都有一条路走到 $F$ 的像里；连通 = 不同的走法之间能互相转换。**满足这两条，$J$ 就在 $I$ 里「铺得足够满」**，沿着它算余极限与沿着整个 $I$ 算是一回事（见下一条）。',
         '**对偶**：把 $i \\downarrow F$ 换成**下**逗号范畴 $F \\downarrow i$（对象是 $\\{\\, f : F(j) \\to i \\,\\}$）得到的条件叫 **coinitial**，它保的是**极限**。',
         '**例子**：$J \\to \\mathbf{1}$ 共尾 $\\iff$ $J$ 连通；有向集沿 $\\le$ 的含入 $\\mathbb{N} \\to \\mathbb{Z}$ 是共尾的；$\\mathcal{C}$ 到它的反射子范畴的含入一般**不是**共尾的（方向反了就看 coinitial）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------- 共尾 ⟹ 余极限同构 */
@@ -22785,7 +22955,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '⭐ **用途**：算余极限时可以**把指标范畴换成一个共尾的子范畴**。最常用的一招是把 $\\mathbb{N}$ 换成一个子列、或者把有向集换成它的共尾子集 —— 极限不变。',
         '对偶地：**coinitial** 函子不改变极限。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------------------ 滤过范畴 */
@@ -22813,7 +22984,8 @@ window.MG = window.MG || {};
         '**与有向集的关系**：有向集（偏序集 + 任意两元有上界）看成范畴就是滤过的；反过来，**任何滤过范畴都能换成一个共尾的有向集**（见「滤过范畴可换成有向集」）。所以「滤过余极限」与「沿有向集的余极限」是同一件事。',
         '⭐ **为什么处处要求它**：滤过余极限在 $\\mathbf{Set}$、$A\\text{-}\\mathbf{Mod}$、$\\mathrm{CondAb}$ 里都**正合**（与有限极限交换），这是 Grothendieck 的 **AB5** 公理，也是同调代数挑范畴时的关键条件。沿一般范畴取余极限没有这条好性质。',
         '⚠️ 与「链」区分：链是**全序**子集，比滤过强；滤过只要求「有共同上界」，任意两元之间不必可比。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* --------------------------------- 滤过范畴可被有向集替换 */
@@ -22876,7 +23048,8 @@ window.MG = window.MG || {};
           '- $\\operatorname{Hom}(X, -)$ 保**有限**极限这一点，就是说 $X$ 与一切有限极限「相容」。'
         ].join('\n'),
         '说一个函子 **left exact**（左正合），指它保所有**有限**极限 —— 所以右正合就是保所有有限余极限，「正合」是两者都对。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     }
   ],
 
@@ -22926,7 +23099,8 @@ window.MG = window.MG || {};
         '**为什么要求有限积**：乘法要拿「两个自变量」说话，而范畴里「两个」就是积 $G \\times G$；单位要拿「没有自变量」说话，那就是终对象 $1 \\to G$。',
         '**态射**：两个幺半群对象之间的态射 $f : G \\to G\'$ 是使 $f \\circ \\mu = \\mu\' \\circ (f\\times f)$ 且 $f \\circ \\varepsilon = \\varepsilon\'$ 的态射。全体构成范畴 $\\mathrm{Mon}(\\mathcal{C})$。',
         '⚠️ 名字上容易和「$\\mathcal{C}$ 上的预层 / 群层」混：这里说的是**范畴内部**的一个对象带结构（「内部」的意思），不是值在群里的函子。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.6']
     },
 
     /* -------------------------------------------------------- 群对象 */
@@ -22963,7 +23137,8 @@ window.MG = window.MG || {};
         '',
         '⭐⭐ **所以「凝聚态阿贝尔群 = 凝聚态集范畴里的阿贝尔群对象」这句话不是新定义，只是这条定义代进 $\\mathcal{C} = \\mathrm{Cond}$。** 整个星图里「集合 + 运算 + 公理 $\to$ 群 $\to$ 阿贝尔群」那条线，到这一层就和凝聚态那条线接上了。',
         '⚠️ 群对象**不要求**范畴有极限（只用有限积），所以它比「在拓扑斯里做代数」适用范围更广。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.6']
     },
 
     /* ------------------------------------------------------------ 例 */
@@ -22983,7 +23158,8 @@ window.MG = window.MG || {};
         '- $\\mathrm{Ab}(\\mathrm{Cond}) = \\mathrm{CondAb}$；',
         '- $\\mathrm{Ab}(\\widehat{\\mathcal{C}})$ = 预层范畴里的阿贝尔群对象 $\\simeq$ 值在 $\\mathbf{Ab}$ 的预层。'
       ].join('\n'),
-      notes: '⭐ 这张表最有用的一点是**反着读**：想研究拓扑阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathbf{Top}$；想研究凝聚态阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathrm{Cond}$。**同一个定义、同一套定理（核、余核、正合列……）直接搬**。\n\n⚠️ $\\mathrm{Ab}(\\mathbf{Grp}) = \\mathbf{Ab}$ 这条最容易让人愣一下：群范畴里的群对象**恰好是**阿贝尔群（Eckmann–Hilton 论证）—— 「群」这个结构加在「群」这个范畴上时，会强制交换性。'
+      notes: '⭐ 这张表最有用的一点是**反着读**：想研究拓扑阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathbf{Top}$；想研究凝聚态阿贝尔群，就把 $\\mathcal{C}$ 取成 $\\mathrm{Cond}$。**同一个定义、同一套定理（核、余核、正合列……）直接搬**。\n\n⚠️ $\\mathrm{Ab}(\\mathbf{Grp}) = \\mathbf{Ab}$ 这条最容易让人愣一下：群范畴里的群对象**恰好是**阿贝尔群（Eckmann–Hilton 论证）—— 「群」这个结构加在「群」这个范畴上时，会强制交换性。',
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.6']
     }
   ],
 
@@ -23034,7 +23210,8 @@ window.MG = window.MG || {};
         '相等（那个 $s$ 是必要的：$W$ 里可能有零因子，不加 $s$ 会出错）。运算是通常的分数运算 $r/w + r\'/w\' = (rw\' + r\'w)/(ww\')$、$(r/w)(r\'/w\') = rr\'/(ww\')$ —— 分母乘起来还在 $W$ 里，这正是**乘性子集**这个条件的用处。',
         '**两个标准例子**：$R = \\mathbb{Z}$、$W = \\mathbb{Z} \\setminus \\{0\\}$ 给出 $\\mathbb{Q}$；$R$ 一般、$W = \\{f^{n} : n \\ge 0\\}$ 给出「在 $f$ 处局部化」，把 $f$ 变成可逆元。',
         '⭐ **为什么要求 $W$ 乘性封闭**：不封闭的话分式之间没法相乘（分母不落在 $W$ 里），局部化的泛性质（它是「使 $W$ 中元素可逆」的最一般的环）就构造不出来。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Lang, Algebra']
     },
 
     /* --------------------------------- 分式演算下的 Hom 是余极限 */
@@ -23059,7 +23236,8 @@ window.MG = window.MG || {};
         '**为什么是余极限**：不同的 $X\' \\to X$ 给的是同一族态射的不同「表示」，取余极限正是「把这些表示粘起来」；而 Ore 条件保证这些 $X\' \\to X$ 组成的指标范畴是**滤过**的（任意两个都能被第三个同时压住），所以这个余极限是滤过余极限 —— 行为良好。',
         '⭐ **实用价值**：这一条把局部化的 Hom 集合**算成**原范畴里已知东西的滤过余极限。导出范畴 $D(\\mathcal{A})$ 里算 $\\operatorname{Hom}$ 就是从这一步开始的。',
         '⚠️ 没有分式演算时余极限**一般不对** —— 那时 $\\mathrm{ho}(\\mathcal{C})$ 的 Hom 可能连集合都不是。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* -------------------------------------- 覆盖筛的四条等价 */
@@ -23148,7 +23326,8 @@ window.MG = window.MG || {};
         '**为什么是这样。** 一个锥 $\\{\\, g_{i} : Y \\to D(i) \\,\\}$ 等价于一条映射 $g : Y \\to X\'$（积的泛性质）；而「$g$ 是锥」这个条件（对每条 $\\alpha : i \\to j$ 有 $D(\\alpha) \\circ g_{i} = g_{j}$）恰好就是「$p \\circ g = q \\circ g$」。所以**锥 = 使 $p,q$ 相等的那族映射**，而「最一般的这种映射」正是等化子的定义。',
         '**对偶地**：余极限 = 无限余积 + 余等化子。',
         '⭐ **实用价值**：证明「某个范畴完备」时不用逐条图去造极限 —— 只要造出（小）积与等化子就够了（譬如 $\\mathbf{Set}$、$A\\text{-}\\mathbf{Mod}$、$\\mathrm{Cond}$ 都是这么验的）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------------ 截面函子（一般版） */
@@ -23178,7 +23357,8 @@ window.MG = window.MG || {};
         '',
         '**什么时候保余极限**：当 $X$ 在层范畴里**投射**时（$\\operatorname{Hom}(h_{X}, -) = \\Gamma(X,-)$ 保满态射），它保余极限。',
         '⭐ **凝聚态那一侧的例子**：$F \\in \\mathbf{FCHaus}$ 时 $\\mathbb{Z}\\cdot F$ 是投射的，于是 $\\Gamma(F, -)$ 保所有极限**与**所有余极限 —— 那条命题是这里的一个特例。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------------------------ 蛇引理 */
@@ -23214,7 +23394,8 @@ window.MG = window.MG || {};
         '',
         '**正合性**同样逐步用核 / 余核的泛性质验证（关键一步是 $\\operatorname{im} u = \\ker q$），没有一步需要元素。∎',
         '⭐ **用处**：它是**长正合列**的引擎 —— 把短正合列 $0 \\to K \\to L \\to M \\to 0$ 的每一层（核、余核）串起来，靠的就是每层的 $\\delta$。凡是「有了短正合列想推长正合列」的地方，底下都在跑蛇引理。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------------------ 五引理 */
@@ -23242,7 +23423,8 @@ window.MG = window.MG || {};
         '两步都只用「正合 = 核 = 像」这一条泛性质。∎',
         '⭐ **推论（常用形式）**：若图中的 $A_{1} = B_{1} = 0$、$A_{5} = B_{5} = 0$，则 $\\alpha_{3}$ 是单（满 / 同构）由 $\\alpha_{2}, \\alpha_{4}$ 单（满 / 同构）决定 —— **这就是「比较长正合列」时最常引的那句：两头一样，中间就一样。**',
         '⚠️ 与蛇引理的关系：**两者都不能靠追元素**，都得走泛元与泛性质；区别在五引理只讲同构传递（不必造连接同态），蛇引理要**造**出 $\\delta$。凡是「想比较两个谱序列/两条长正合列」的地方，用五引理。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     }
   ],
 
@@ -23289,7 +23471,8 @@ window.MG = window.MG || {};
         '**严格（strict）子范畴**：恒等态射在子范畴里也必须是恒等态射。绝大多数场合默认如此。',
         '**例子**：$\\mathbf{Ab} \\hookrightarrow \\mathbf{Grp}$ 是满子范畴（阿贝尔群之间的同态恰好就是它们作为群的同态）；$\\mathbf{CHaus} \\hookrightarrow \\mathbf{Top}$ 是满子范畴；$\\mathbf{Grp} \\to \\mathbf{Set}$ 不是子范畴（连对象都不是同一批集合）。',
         '⭐ 「反射子范畴」「余反射子范畴」都是在满子范畴上再加一条：含入函子有伴随。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ------------------------------------------------- 单纯形范畴 */
@@ -23315,7 +23498,8 @@ window.MG = window.MG || {};
         '**为什么要它**：单纯对象就是 $\\Delta^{\\mathrm{op}}$ 上的图（见「单纯对象」）。这一条把「一个空间在 $n$ 维的骨架」组织成范畴语言 —— $[n]$ 是 $n$-单形，面映射是「取第 $i$ 个面」，退化映射是「把单形压扁」。',
         '**$\\Delta$ 的态射全都能写成面映射与退化映射的复合**，而且它们满足**单纯恒等式**（$\\delta^{j}\\delta^{i} = \\delta^{i}\\delta^{j-1}$ 等）。所以定义单纯对象时只要给出这两族映射就够 —— 这正是「单纯集 = 一族集合 + 面 + 退化」那种写法的来源。',
         '⚠️ 记号在各书里不统一：有的用 $[n] = \\{0, \\ldots, n\\}$（本图取这个），有的用 $\\Delta^{n}$ 指标准的几何 $n$-单形（那是**几何实现**那边的对象，不是这里的指标）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------- Ind-对象 */
@@ -23337,7 +23521,8 @@ window.MG = window.MG || {};
         '**公式为什么长这样**：要给两个形式余极限之间的映射，先固定 $j$，对每个 $i$ 给一条 $X_{i} \\to Y_{j}$ 且与 $i$ 的变动相容（这就是 $\\varprojlim_{i}$），再对 $j$ 取滤过余极限（$Y_{j}$ 越往后越大，晚给的映射可以「补」上早先的）。',
         '**例子**：$\\operatorname{Ind}(\\mathbf{FinSet})$ 是「所有集合」（每个集合都是它有限子集的滤过余极限）；$K$-理论的「向量丛按直和/余极限补全」用的也是它。',
         '📌 对偶地有 **Pro-对象**：把滤过图换成**余滤过**图，得到 $\\operatorname{Pro}(\\mathcal{C})$（profinite 空间就是 $\\operatorname{Pro}(\\mathbf{FinSet})$）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------- 保极限（定义） */
@@ -23361,7 +23546,8 @@ window.MG = window.MG || {};
         '⭐ **最常用的一条**：**右伴随保所有极限**（对偶地左伴随保所有余极限）。证明只用伴随同构与极限的泛性质，不需要任何具体构造。',
         '**弱一点的说法**：$F$ 保**有限**极限（= **left exact**）、保**滤过**余极限（AB5 那一条）、保**积**、保**等化子**……都是把上面的「每个图」限制到某一类图。',
         '⚠️ 与「$F$ 连续」区分：这里说的连续函子（continuous functor）是**保极限**，与拓扑里的连续无关。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* ------------------------------------------------ 正合函子 */
@@ -23381,7 +23567,8 @@ window.MG = window.MG || {};
         '⭐ **右伴随是左正合的，左伴随是右正合的** —— 这是「伴随 $\\implies$ 保极限 / 保余极限」的直接后果，也是最常用的判据。',
         '**在阿贝尔范畴里更好用**：$F$ 左正合 $\\iff$ 它保核（$F(\\ker) = \\ker$）；$F$ 正合 $\\iff$ 它把短正合列送成短正合列。',
         '⚠️ 名字有歧义：有的书把「正合」只指保**有限**极限，有的指保**所有**极限。本图统一按上面这条（保有限极限/余极限）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* ---------------------------------------------------- 零对象 */
@@ -23427,7 +23614,8 @@ window.MG = window.MG || {};
         '⭐ **为什么同调代数只谈加法函子**：求导函子、$\\operatorname{Ext}$、$H^{n}$ 都是加法的。复形上的运算（$d^{2}=0$、取同调、映射锥）每一步都是**加减法**，非加法函子连复形都送不成复形。',
         '**例子**：$\\operatorname{Hom}(X, -)$ 是加法的（$\\operatorname{Hom}$ 本身是阿贝尔群）；$M \\otimes_{A} -$ 是加法的；遗忘函子 $A\\text{-}\\mathbf{Mod} \\to \\mathbf{Ab}$ 是加法的。',
         '⚠️ 「加法」与「左正合/右正合」是两件事：加法只是保群结构，正合才是保核与余核。加法是前提，正合是进一步的条件。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------ 分裂正合列 */
@@ -23460,7 +23648,8 @@ window.MG = window.MG || {};
         ['**证明。** 记 $i := i_{1}$、$p := i_{2}$，则 $i$ 单、$p$ 满且 $\\operatorname{im} i = \\ker p$。','- **有截面 $\\implies$ 分裂**：设 $p s = 1_{M_{2}}$。则 $p(1_{M} - s p) = p - p s p = 0$，故 $1_{M} - sp$ 落在 $\\ker p = \\operatorname{im} i$ 里，于是存在 $r : M \\to M_{1}$ 使','$$i r = 1_{M} - s p.$$','由 $i$ 单：$i(r i) = (1_{M} - sp)\\,i = i - s(p i) = i$（用了 $p i = 0$），故 $r i = 1_{M_{1}}$ ✓。与 $p i = 0$ 合起来，$p_{1} := r$、$i_{1} := i$、$p_{2} := p$、$i_{2} := s$ 满足双积的三条等式（$r i = 1$、$p s = 1$、$i r + s p = 1_{M}$，见「直和就是积」），即 $M$ 就是 $M_{1} \\oplus M_{2}$，该列分裂 ✓。','- **分裂 $\\implies$ 有截面**：分裂时该列同构于 $0 \\to M_{1} \\xrightarrow{\\ \\mathrm{pr}_{1}\\ } M_{1} \\oplus M_{2} \\xrightarrow{\\ \\mathrm{pr}_{2}\\ } M_{2} \\to 0$，而 $\\mathrm{pr}_{2}$ 有显然的截面（到第二个分量的含入），沿同构搬回去就得到 $p$ 的截面 ✓。','- **对偶**：把同一论证搬到 $\\mathcal{C}^{\\mathrm{op}}$，得「分裂 $\\iff$ $i$ 有收缩」✓。∎'].join('\n'),
         '⭐ **这就是「分裂引理」**（split lemma）：在加法范畴里，「短正合列分裂」与「有截面」与「是直和」是同一件事。它把**列论的问题化成直和的问题** —— 这是同调代数里最常用的一步化简。',
         '⚠️ 短正合列一般**不**分裂（$0 \\to \\mathbb{Z} \\xrightarrow{2} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$ 就不分裂）—— 分裂是特殊情形，判断它分不分裂正是 $\\operatorname{Ext}^{1}$ 要回答的问题。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     /* ------------------------------------------------ 足够多投射 */
@@ -23512,7 +23701,8 @@ window.MG = window.MG || {};
         '**例子**：有限集（$\\mathbf{Set}$ 里）、有限生成模（$A\\text{-}\\mathbf{Mod}$ 里）、有限 CW 复形（拓扑里）。$\\mathbb{R}$ 在 $\\mathbf{Top}$ 里**不是**紧的（$\\mathbb{R}$ 是有限区间的滤过余极限，但 $\\operatorname{Hom}(\\mathbb{R},-)$ 不保那个余极限）。',
         '⭐ **在同调代数里的用处**：$X$ 有限表现 $\\iff$ $h^{X}$ 保滤过余极限 $\\iff$ $X$ 是「小」的测试对象。凝聚态那一侧「CondAb 由有限表现的投射对象生成」正是靠它 —— 有限表现的投射对象是 $\\mathrm{CondAb}$ 的生成元。',
         '⚠️ 「有限表现」与「有限生成」不同：有限生成只要求有一个满射 $A^{n} \\twoheadrightarrow M$；有限表现还要求核也是有限生成的（即 $A^{m} \\to A^{n} \\to M \\to 0$ 正合）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
 
     /* ---------------------------------------------- 同构的截面唯一 */
@@ -23526,6 +23716,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '同构', '截面', '收缩'],
       statement: '若 $f : X \\to Y$ 是**同构**，则它的**截面**与**收缩**都存在且**唯一**，而且两者相等，都等于 $f^{-1}$。',
     notes:         ['**证明。** 设 $f : X \\to Y$ 是同构，记 $g := f^{-1}$。','- **存在**：$g f = 1_{X}$ 且 $f g = 1_{Y}$，故 $g$ 既是 $f$ 的截面（$f g = 1_{Y}$）又是收缩（$g f = 1_{X}$）✓。','- **截面唯一**：设 $s : Y\\to X$ 满足 $f s = 1_{Y}$，则 $s = 1_{X}\\,s = (g f)\\,s = g\\,(f s) = g\\,1_{Y} = g$ ✓。','- **收缩唯一**：设 $r : X \\to Y$ 满足 $r f = 1_{X}$，则 $r = r\\,1_{X} = r\\,(f g) = (r f)\\,g = 1_{X}\\,g = g$ ✓。','两件事并起来：截面与收缩都存在、都唯一，且都等于 $f^{-1}$ ✓。∎'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     }
   ],
 
@@ -23572,7 +23763,8 @@ window.MG = window.MG || {};
         '**极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。',
         '⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通（**Lemma 2.2.10**）；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**（**Prop 2.2.9**）；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。',
         '**例子**：Cantor 集 $2^{\\mathbb{N}}$ 完全不连通但不极不连通；$\\beta\\mathbb{N}$（$\\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\\beta\\mathbb{N} \\setminus \\mathbb{N}$ 是它的一个极端例子。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
     },
 
     /* ------------------------------------------------- 局部紧 Hausdorff */
@@ -23592,7 +23784,8 @@ window.MG = window.MG || {};
         '**例子**：$\\mathbb{R}^{n}$、任何离散空间、任何紧 Hausdorff 空间。**反例**：$\\mathbb{Q}$（不是局部紧）、无穷维 Banach 空间（闭单位球不紧）。',
         '⭐ **它在凝聚态数学里的位置**：$\\mathbf{CHaus}$ 是场地，而**局部紧 Hausdorff**是「能用紧 Hausdorff 逼近」的最小一族 —— 局部紧 Hausdorff 空间都是**紧生成**的（例 1），所以都能忠实地变成凝聚态集。Pontryagin 对偶也只在局部紧 Hausdorff 阿贝尔群那一条线上成立。',
         '⚠️ 「局部紧」这个条件**不能省**：商映射乘 id 那条定理、Tychonoff 以外的积性质、以及「紧提升条件」都要它。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Munkres, Topology']
     },
 
     /* ------------------------------------------------------ Tychonoff */
@@ -23631,7 +23824,8 @@ window.MG = window.MG || {};
       title: '拓扑生成集（Topologically Generating Set）',
       regions: ['category'],
       tags: ['范畴论', 'site', '生成集', '筛'],
-      statement: '设 $\\mathcal{C}$ 是 site。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。'
+      statement: '设 $\\mathcal{C}$ 是 site。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
     /* ------------------------------------------------ 连续函子（site） */
@@ -23656,7 +23850,8 @@ window.MG = window.MG || {};
         '⭐ **它等价于**：$g$ 把 $\\mathcal{C}\'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。',
         '**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。',
         '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**（Definition 3.4.5）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- site 的态射 */
@@ -23675,7 +23870,8 @@ window.MG = window.MG || {};
         '⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。',
         '**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在 site 这一层先保有限极限。',
         '**几何直觉**：空间之间的连续映射给出 site 的态射；site 的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「site」换成「层范畴」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 余连续函子 */
@@ -23687,7 +23883,8 @@ window.MG = window.MG || {};
       title: '余连续函子（Cocontinuous Functor）',
       regions: ['category'],
       tags: ['范畴论', 'site', '余连续', '层'],
-      statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。'
+      statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
     /* -------------------------------------------------- 诱导拓扑 */
@@ -23699,7 +23896,8 @@ window.MG = window.MG || {};
       title: '诱导拓扑（Induced Topology）',
       regions: ['category'],
       tags: ['范畴论', 'site', '诱导拓扑'],
-      statement: '设 $\\mathcal{C}\'$ 是 site，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。'
+      statement: '设 $\\mathcal{C}\'$ 是 site，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }
   ],
 
@@ -23740,7 +23938,8 @@ window.MG = window.MG || {};
           '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。'
         ].join('\n')
       ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。'
+      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。',
+      refs: ['Lang, Algebra']
     },
 
     {
@@ -23832,6 +24031,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '保极限', '积', '核', '左正合'],
       statement: '函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。',
     notes:         ['**证明。** 记 $F : \\mathcal{C}\\to\\mathcal{D}$ 保有限积与核（等化子）。','- **有限极限的标准构造**：对有限图 $D : I\\to\\mathcal{C}$，令 $P := \\prod_{i\\in I}D(i)$，并考虑两条态射','$$P \\;\\underset{\\;q\\;}{\\overset{\\;p\\;}{\\rightrightarrows}}\\; \\prod_{u : i\\to j}D(j), \\qquad p := \\bigl(\\pi_{j}\\bigr)_{u},\\quad q := \\bigl(D(u)\\circ\\pi_{i}\\bigr)_{u},$$','即「第 $u$ 个坐标分别取 $D(u)$ 之后的投影与直接投影」。则','$$\\lim D \\;\\cong\\; \\operatorname{eq}(p, q),$$','（元素层面：$\\operatorname{eq}(p,q)$ 恰是一族相容的 $D(i)$ 元素，即 $D$ 的锥；泛性由积的泛性给出）✓。','- **$F$ 保两步**：$F(P) \\cong \\prod_{i}FD(i)$（保有限积）✓；$F(\\operatorname{eq}(p,q)) \\cong \\operatorname{eq}(Fp, Fq)$（保核）✓。','- **合起来**：把上面的构造用于 $FD$ 得到的等化子正是 $\\operatorname{eq}(Fp,Fq) \\cong F(\\operatorname{eq}(p,q))$，而它又是 $\\lim FD$ ✓。故 $F$ 保一切有限极限，即**左正合** ✓。∎','⚠️ 只保「积」不够：还要保核（等化子），否则上面第二条会断。'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     {
@@ -23869,7 +24069,8 @@ window.MG = window.MG || {};
           '- 于是 $e g \\iota_{i} = e g_{i} = f \\iota_{i}$ 对所有 $i$ 成立，再由余积泛性质的**唯一性**得 $e g = f$。∎'
         ].join('\n'),
         '对偶地（把上面每个箭头反向、余积换积、满态射换单态射）：内射对象的积仍内射。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
     },
 
     {
@@ -23904,6 +24105,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '伴随', '唯一性'],
       statement: '若 $F_{1} \\dashv G$ 且 $F_{2} \\dashv G$，则 $F_{1} \\cong F_{2}$（对偶地：同一个左伴随的右伴随在同构意义下唯一）。',
     notes:         ['**证明。** 设 $F_{1}\\dashv G$、$F_{2}\\dashv G$，伴随同构记为 $\\varphi_{1}, \\varphi_{2}$。','- 对任意 $X \\in \\mathcal{C}$ 与 $Y \\in \\mathcal{D}$，','$$\\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{1}X, Y\\bigr) \\xrightarrow{\\;\\varphi_{1}\\;} \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, GY\\bigr) \\xrightarrow{\\;\\varphi_{2}^{-1}\\;} \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{2}X, Y\\bigr)$$','是一个与 $Y$ 自然同构 ✓。','- 由 **Yoneda 引理**，自然同构 $\\operatorname{Hom}(F_{1}X, -) \\cong \\operatorname{Hom}(F_{2}X, -)$ 唯一地来自一个同构 $\\theta_{X} : F_{1}X \\to F_{2}X$ ✓。','- $\\theta$ 对 $X$ 自然：$\\theta$ 是「用同两个伴随同构拼出来的」，而伴随同构对两个变量都自然，故 $\\theta : F_{1} \\to F_{2}$ 是自然同构 ✓。','- 同一条论证交换 $\\mathcal{C}$ 与 $\\mathcal{D}^{\\mathrm{op}}$ 就得到右伴随的唯一性 ✓。∎'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     {
@@ -23916,6 +24118,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '伴随', '余单位', '忠实'],
       statement: '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $G$ **忠实** $\\iff$ 余单位 $\\varepsilon$ 是**满态射**（对偶地：$F$ 忠实 $\\iff$ 单位是单态射）。',
     notes:         ['**证明。** 设 $F \\dashv G$，伴随同构 $\\varphi_{Y,Z} : \\operatorname{Hom}_{\\mathcal{D}}(FY, Z) \\xrightarrow{\\ \\cong\\ } \\operatorname{Hom}_{\\mathcal{C}}(Y, GZ)$，余单位 $\\varepsilon_{Y} = \\varphi^{-1}(1_{GY})$。','- **关键同构**：由三角恒等式，下面的方块交换（对一切 $Z$）：','$$\\begin{array}{ccc} \\operatorname{Hom}_{\\mathcal{D}}(Y, Z) & \\xrightarrow{\\ G_{Y,Z}\\ } & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\\\ {\\scriptstyle \\operatorname{Hom}(\\varepsilon_{Y}, Z)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle \\cong\\ \\varphi_{GY,Z}} \\\\ \\operatorname{Hom}_{\\mathcal{D}}(FGY, Z) & \\xrightarrow[\\ \\cong\\ ]{} & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\end{array}$$','即 $\\varphi_{GY,Z}\\circ\\operatorname{Hom}(\\varepsilon_{Y}, Z) = G_{Y,Z}$ ✓。','- 于是（用「$e$ 是满态射 $\\iff$ $\\operatorname{Hom}(e, Z)$ 对一切 $Z$ 是单射」这条刻画）','$$\\varepsilon_{Y}\\text{ 满} \\iff \\forall Z:\\ \\operatorname{Hom}(\\varepsilon_{Y},Z)\\text{ 单} \\iff \\forall Z:\\ G_{Y,Z}\\text{ 单} \\iff G\\text{ 忠实} ✓$$','- 对偶地（把整个论证搬到 $\\mathcal{C}^{\\mathrm{op}}, \\mathcal{D}^{\\mathrm{op}}$）得 $F$ 忠实 $\\iff$ 单位 $\\eta$ 是单态射 ✓。∎'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.5']
     },
 
     {
@@ -23957,7 +24160,8 @@ window.MG = window.MG || {};
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
       notes: [
         ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎'].join('\n'),
-'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n')
+'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     {
@@ -23970,6 +24174,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '滤过余极限', '余极限', '完备性'],
       statement: '有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。',
     notes:         ['**证明。** 记 $\\mathcal{C}$ 有有限余极限与滤过余极限。','- **先看小指标**：设 $I$ 是任一小范畴，$D : I \\to \\mathcal{C}$。令 $\\operatorname{Fin}(I)$ 是 $I$ 的**有限子范畴**（对象集有限、且对其中每对对象只取有限多个态射）的全体，按包含构成偏序 —— 它是**滤过**的（两个有限子范畴的并仍有限）✓。','- **两步走**：$\\varinjlim_{I} D$ 可以这样算：先在每个有限子范畴 $J$（沿含入 $J \\hookrightarrow I$）上取余极限 $\\varinjlim_{J}D|_{J}$ —— 这是**有限**余极限（有限图）✓；再沿 $J$ 的滤过序取余极限，得到 $\\varinjlim_{J \\in \\operatorname{Fin}(I)}\\bigl(\\varinjlim_{J} D\\bigr)$，它与 $\\varinjlim_{I}D$ 满足同一个泛性质（两条余锥的相容性互相翻译）故同构 ✓。','- 于是任何余极限都是「有限余极限的滤过余极限」，两者都在 $\\mathcal{C}$ 里，故 $\\mathcal{C}$ 有所有余极限 ✓。∎','⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。'].join('\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     {
@@ -24485,7 +24690,8 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '无环层', '层上同调'],
       statement: 'site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。',
-      notes: '⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。\n\n📌  **Definition 7.3.9**。'
+      notes: '⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。\n\n📌  **Definition 7.3.9**。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §7.3']
     },
 
     {

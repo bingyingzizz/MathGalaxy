@@ -8,3 +8,5 @@ layer 18 · 定理 · Stone 与 Stonean · 拓扑学
 - `def.stone-space` 全不连通与 Stone 空间 + `def.profinite` 投射有限空间 + `prop.stone-reflective` Stone 空间是 CHaus 的反射子范畴 + `def.topology-base` 基与子基：Stone 空间 $\iff$ 投射有限空间　proofs/imp.stone-profinite.md
 - `def.profinite` 投射有限空间：用到了定义 投射有限空间　proofs/def-link.profinite-stone.md
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-link.stone-profinite.md
+
+refs: Le Stum, An introduction to condensed mathematics, §2.2

@@ -20,4 +20,6 @@ $$\iota : G \longrightarrow G$$
 - 被 `ex.algebra-categories` 代数的几个范畴 用
 - 被 `prop.ab-limits-forgetful` Ab(C) 的极限 用
 
+refs: Mac Lane, Categories for the Working Mathematician, III.6
+
 > 说明见 `notes/def.group-object.md`

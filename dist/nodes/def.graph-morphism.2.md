@@ -2,4 +2,5 @@
 根 `../`　·　第 1 页 `nodes/def.graph-morphism.md`
 
 ## 陈述（续）
+$$s' \circ \varphi_2 = \varphi_1 \circ s, \qquad t' \circ \varphi_2 = \varphi_1 \circ t$$
 也就是说：$\varphi_1$ 把一条边的起点送到这条边的像的起点，把终点送到终点。

@@ -18,8 +18,9 @@ $$P \longmapsto \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ \operatorname{Hom}_{\ma
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.tensor-rhom-natural-map` 张量与 RHom 的配对 用
-- 被 `def.flat-abelian-sheaf` 平坦阿贝尔层 用
-
-> 说明见 `notes/def.tensor-abelian-sheaf.md`
 
 - …另有出边，续页见 `nodes/def.tensor-abelian-sheaf.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §5.3
+
+> 说明见 `notes/def.tensor-abelian-sheaf.md`

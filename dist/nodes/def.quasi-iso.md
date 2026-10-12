@@ -11,4 +11,6 @@ layer 14 · 定义 · 同调与正合列 · 同调代数
 - 被 `prop.injective-complex-homotopy` 内射复形：零调、拟同构与同伦 用
 - 被 `def.derived-category` 导出范畴 用
 
+refs: Le Stum, An introduction to condensed mathematics, §7.1–7.3
+
 > 说明见 `notes/def.quasi-iso.md`

@@ -8,4 +8,6 @@ layer 11 · 命题 · 伴随与反射 · 范畴论
 - `def.adjunction-unit` 单位与余单位：用到了定义 单位与余单位　proofs/def-dep.counitepi-unit.md
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.counitepi-adjoint.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.5
+
 > 说明见 `notes/prop.counit-epi-iff-faithful.md`

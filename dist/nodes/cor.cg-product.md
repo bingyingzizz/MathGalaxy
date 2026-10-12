@@ -8,4 +8,6 @@ layer 17 · 推论 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.hausdorff` Hausdorff 空间：用到了定义 Hausdorff 空间　proofs/def-dep.cg-hausdorff-cgprod.md
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.cgprod-cg.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/cor.cg-product.md`

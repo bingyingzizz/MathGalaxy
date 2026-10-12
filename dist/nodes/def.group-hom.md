@@ -19,4 +19,6 @@ $$\ker\varphi := \{\, g \in G : \varphi(g) = e' \,\} \;\subseteq\; G, \qquad \op
 - 被 `thm.first-iso` 第一同构定理（Noether） 用
 - 被 `thm.first-iso` 第一同构定理（Noether） 用
 
+refs: Lang, Algebra
+
 > 说明见 `notes/def.group-hom.md`

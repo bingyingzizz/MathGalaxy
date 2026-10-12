@@ -18,9 +18,9 @@ $$T : \mathcal{C}^{\mathrm{op}} \longrightarrow \mathbf{Set}$$
 - 被 `lem.presheaf-mono-pointwise` 预层态射的单满按点检验 用
 - 被 `def.slice-category` 切片范畴 用
 - 被 `def.sieve` 筛 用
-- 被 `def.grothendieck-topology` Grothendieck 拓扑 用
-- 被 `def.sheaf` 层 用
-
-> 说明见 `notes/def.presheaf.md`
 
 - …另有出边，续页见 `nodes/def.presheaf.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
+
+> 说明见 `notes/def.presheaf.md`

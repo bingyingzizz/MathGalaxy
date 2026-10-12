@@ -12,4 +12,6 @@ $$X_{1} \cup X_{2} := \operatorname{im}\bigl(X_{1} \coprod X_{2} \to X\bigr)$$
 - `def.subobject` 子对象：用到了定义 子对象　proofs/def-dep.subobject-lattice.md
 - `def.fibered-product` 纤维积 / 纤维余积：用到了定义 纤维积 / 纤维余积　proofs/def-dep.fibered-subobject-lattice.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/prop.subobject-lattice.md`

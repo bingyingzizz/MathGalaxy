@@ -17,4 +17,6 @@ layer 5 · 定义 · 拓扑空间 · 拓扑学
 - 被 `def.totally-disconnected` 完全不连通与极不连通 用
 - 被 `ex.connected-lc-ext` 连通局部紧到离散只剩 Ext一次 用
 
+refs: Munkres, Topology
+
 > 说明见 `notes/def.connected.md`

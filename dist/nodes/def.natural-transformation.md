@@ -9,8 +9,8 @@ $$\alpha_X : F(X) \to G(X) \qquad (X \in \mathcal{C})$$
 使得对每条 $f : X \to Y$，方块交换：
 
 $$G(f) \circ \alpha_X = \alpha_Y \circ F(f)$$
+> 陈述续见 `nodes/def.natural-transformation.2.md`
 
-每个 $\alpha_X$ 都是同构时，$\alpha$ 叫**自然同构**，记 $F \cong G$。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.functor-nat.md
@@ -25,6 +25,8 @@ $$G(f) \circ \alpha_X = \alpha_Y \circ F(f)$$
 - 被 `def.presheaf-cat` 预层范畴 用
 - 被 `def.representable` 表示函子 用
 
-> 说明见 `notes/def.natural-transformation.md`
+- …另有出边，续页见 `nodes/def.natural-transformation.3.md`
 
-- …另有出边，续页见 `nodes/def.natural-transformation.2.md`
+refs: Le Stum, An introduction to condensed mathematics, §1.2
+
+> 说明见 `notes/def.natural-transformation.md`

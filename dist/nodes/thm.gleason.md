@@ -11,3 +11,5 @@ $\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。
 
 ## 它能推出什么 / 谁在用它
 - 被 `cor.stonean-retract` Stonean 是收缩核 用
+
+refs: Le Stum, An introduction to condensed mathematics, §2.2

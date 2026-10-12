@@ -11,4 +11,6 @@ $$G\bigl(\lim D\bigr) \;\cong\; \lim\, (G \circ D)$$
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-link.adjoint-preserves-limits.md
 - `def.limit` 极限：用到了定义 极限　proofs/def-link.limit-preserves-limits.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.5
+
 > 说明见 `notes/thm.right-adjoint-preserves-limits.md`

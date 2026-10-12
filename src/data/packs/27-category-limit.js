@@ -38,7 +38,8 @@ window.MG = window.MG || {};
         '**纸面上的读法。** 画在纸上的图只是**呈现**：给一个有向图 $G$ 的顶点送对象、箭头送态射。说它**交换**，意思是任意两条同起终点的路径在标注下的复合**相等** —— 这是一条**要检查的条件**，等价于标注下降到 $G$ 自由生成的范畴的商上仍是函子。',
         '$I$ 叫**索引范畴**：它只规定图的形状，不规定内容。',
         '沿一个函子 $\\lambda : I \\to J$ 预复合，得到**重索引** $\\lambda^{*} : \\mathcal{C}^{J} \\to \\mathcal{C}^{I}$：把 $J$ 形状的图截成 $I$ 形状的图。特别地，到终范畴的唯一函子 $I \\to \\mathbf{1}$ 诱导**常图函子** $\\Delta : \\mathcal{C} \\longrightarrow \\mathcal{C}^{I}$，它把对象 $X$ 送到「每个位置都是 $X$、每条箭头都是 $1_X$」的常图。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------------------ 单纯对象 */
@@ -69,7 +70,8 @@ window.MG = window.MG || {};
       notes: [
         '把 $[n]$ 画成一个顶点数 $n+1$ 的标准单纯形，面映射就是「贴一个面」，退化映射就是「把一个顶点压扁」。于是 $\\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\\Delta^{\\mathrm{op}} \\to \\mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。',
         '取 $\\mathcal{C} = \\mathbf{Set}$，$X([n])$ 就是「$n$ 维单纯形的集合」，$X(\\delta^i)$ 给出「第 $i$ 个面」，$X(\\sigma^i)$ 给出「退化」。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------------- 锥 */
@@ -95,7 +97,8 @@ window.MG = window.MG || {};
       notes: [
         '直观：$X$ 站在图外面，往 $D$ 的每个位置上各投一束光，而且要求投影之间彼此相容（先投影再走图中的箭头，与直接投影到终点，结果一样）。',
         '$X$ 固定时，$D$ 上的锥恰好是自然变换集 $\\operatorname{Nat}(\\Delta X, D)$，所以「锥」不是新东西，只是把自然变换换了个说法。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* -------------------------------------------------------- 极限 */
@@ -122,7 +125,8 @@ window.MG = window.MG || {};
         '泛性质的含义只有一句：**任何别的锥都唯一地穿过它**。所以极限一旦存在，就在同构意义下唯一 —— 不必挑一个具体构造，用哪个都行。',
         '两个等价的写法：「泛锥」与「$\\operatorname{Hom}_{\\mathcal{C}^{I}}(\\Delta -, D)$ 可被表示」。后者把极限变成了一条可计算的同构。',
         '「泛」还可以说得更彻底：极限就是锥范畴里的**终对象**（见「元素范畴」）。这一句话在后面反复出现。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* -------------------------------------------------- 终 / 始对象 */
@@ -144,7 +148,8 @@ window.MG = window.MG || {};
       notes: [
         '例：在 $\\mathbf{Set}$ 里 $\\mathbf{0} = \\emptyset$（射入 $X$ 的映射只有空映射）、$\\mathbf{1} = \\{\\emptyset\\}$（射入单点集的映射唯一）。在 $\\mathbf{Top}$ 里相同。在 $\\mathbf{Ab}$ 里两者都是 $\\{0\\}$。',
         '另一头：$\\mathbb{Z}$ 是环范畴的始对象 —— 每个环都有唯一的 $\\mathbb{Z} \\to R$。所以说 $\\mathbb{Z}$「在所有环里泛」，说的正是这件事。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------------- 积 */
@@ -164,7 +169,8 @@ window.MG = window.MG || {};
       notes: [
         '一句话：**积就是「一个映射 = 一族映射」**。射入积的映射与「分别射入每个分量的映射组成的族」一一对应，投影 $p_i$ 就是取出第 $i$ 个分量。',
         '例：$\\mathbf{Set}$ 里积是笛卡尔积，余积是无交并；$\\mathbf{Top}$ 里积取**乘积拓扑**（使它成为积的最粗的拓扑），余积取**不交并拓扑**（最细的那个）；$\\mathbf{Ab}$ 里积是直积 $\\prod_i A_i$，余积是直和 $\\bigoplus_i A_i$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------- 纤维积 */
@@ -191,7 +197,8 @@ window.MG = window.MG || {};
         '',
         '其中 $\\sim$ 由 $f_1(x_0) \\sim f_2(x_0)$（$x_0 \\in X_0$）生成。$\\mathbf{Top}$ 里拉回取子空间拓扑、推出取商拓扑。',
         '$\\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \\to S$、$g: Y \\to S$ 拼成 $\\varphi : X \\oplus Y \\to S$，$(x,y) \\mapsto f(x) - g(y)$，则推出 $= \\operatorname{coker} \\varphi$、拉回 $= \\ker \\varphi$ —— 第一步取直和，第二步把 $f, g$ 的差商掉。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------- 等化子 */
@@ -213,7 +220,8 @@ window.MG = window.MG || {};
       notes: [
         '直观：等化子是 $X$ 里「被 $f$ 与 $g$ 送到同一处」的那一部分；余等化子是 $Y$ 里「把 $f(x)$ 与 $g(x)$ 粘起来」的商。',
         '例：$\\mathbf{Set}$ 里 $\\ker(f,g) = \\{x \\in X : f(x) = g(x)\\}$，$\\operatorname{coker}(f,g) = Y/\\!\\sim$（$\\sim$ 由 $f(x) \\sim g(x)$ 生成）。$\\mathbf{Top}$ 里加子空间 / 商拓扑。$\\mathbf{Ab}$ 里 $\\ker(f,g) = \\ker(f - g)$ —— 两个映射的等化子退化成**一个**映射的核，这正是「核」这个名字的来源。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ------------------------------------------------------ 单态射 */
@@ -234,7 +242,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '在 $\\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射（后者要用选择公理）。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\\mathbb{Z} \\to \\mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ------------------------------------------------------ 子对象 */
@@ -255,7 +264,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '把「子集」换成「单态射」，好处是不再依赖元素 —— 于是这套语言可以照搬到没有元素的范畴里去。「交」变成拉回、「原像」也变成拉回，两种操作合成了一个：$Y \\cap Z$ 解的是「既在 $Y$ 里又在 $Z$ 里」的部分，$f^{-1}(Y)$ 解的是「$y = f(x)$ 有解」的部分。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* -------------------------------------------------- 极限的函子性 */
@@ -282,7 +292,8 @@ window.MG = window.MG || {};
         ['**证明。**','- **锥**：$\\pi^{F}_{i} : \\lim F \\to F(i)$ 是 $F$ 的泛锥。对每个 $i$，$\\alpha_{i}\\circ\\pi^{F}_{i} : \\lim F \\to G(i)$；由 $\\alpha$ 的自然性','$$G(u)\\circ\\alpha_{i}\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ F(u)\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ\\pi^{F}_{j},$$','故这是一族相容的映射，即 $\\lim F$ 到 $G$ 的锥 ✓。','- **唯一态射**：由 $\\lim G$ 的泛性得到唯一的 $\\lim\\alpha$，并满足 $\\pi^{G}_{i}\\circ\\lim\\alpha = \\alpha_{i}\\circ\\pi^{F}_{i}$ ✓。','- **函子性**：$\\lim(\\mathrm{id}_{F})$ 与 $\\mathrm{id}_{\\lim F}$ 都是使 $\\pi^{F}_{i}\\circ(-) = \\pi^{F}_{i}$ 的态射，由唯一性相等 ✓；同理 $\\lim(\\beta\\alpha)$ 与 $(\\lim\\beta)(\\lim\\alpha)$ 都与同一个锥相容，故相等 ✓。','于是 $\\lim : \\mathcal{C}^{I}\\to\\mathcal{C}$ 是函子 ✓。∎'].join('\n'),
         '这就是「泛性」的标准用法：**先造一个锥，再让唯一性把态射免费送上门**。极限的对象层是构造，态射层是泛性，两者合起来才是函子。',
         '有了它，「$\\lim$ 保持某个性质」才说得通 —— 后面讨论「某个函子保极限」时，正是拿这个函子去做文章。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
     /* ---------------------------------------------------------- 像 */
@@ -306,7 +317,8 @@ window.MG = window.MG || {};
       notes: [
         '在 $\\mathbf{Set}$、$\\mathbf{Ab}$、$\\mathbf{Top}$ 这些范畴里 $\\operatorname{coim} f \\to \\operatorname{im} f$ 总是同构，所以平时不必区分两者；一般范畴里则不然。',
         '与 $\\mathbf{Set}$ 里「像就是 $\\{f(x)\\}$」相比，这里多出来的东西是**泛性**：像不再是一堆点的集合，而是「最小的那个可以穿过它的中间对象」。子对象、单态射、像三者连在一起看，就是「把元素语言换成箭头语言」的样例。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },
 
     /* ---------------------------------------------------- 元素范畴 */
@@ -330,7 +342,8 @@ window.MG = window.MG || {};
       notes: [
         '这条把「**泛**」这个字一次说清：**泛 = 某个辅助范畴里的始对象（或终对象）**。于是「泛锥」「泛分解」「泛元素」其实是同一句套话的三次应用。',
         '例：$\\mathbb{Z}$ 是环范畴的始对象，所以说它「在所有环里泛」；空图上的泛锥就是终对象；极限就是锥范畴的终对象。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Mac Lane, Categories for the Working Mathematician, III.7']
     }
   ],
 

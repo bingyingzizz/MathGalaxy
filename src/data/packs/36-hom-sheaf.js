@@ -36,7 +36,8 @@ window.MG = window.MG || {};
       notes: [
         '把 $\\mathcal{D}$ 取成 $\\mathbf{Set}$ 就回到原来的层；取成 $\\mathbf{Ab}$ 就得到**阿贝尔层**。',
         '定义里的技巧是：**用「射入 $Y$ 的映射」把 $\\mathcal{D}$ 里的层条件降回集合层**。于是集合层的每一条结论，只要它的表述里那些构造在 $\\mathcal{D}$ 里也有（极限、积……），就能逐条搬过来 —— 这是「层可以取一般值」的全部秘密。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* ------------------------------------------------------ 阿贝尔层 */
@@ -61,7 +62,8 @@ window.MG = window.MG || {};
         '⭐ **阿贝尔群预层就是「最粗拓扑下的层」** —— 两种说法是一套东西。',
         '遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 沿复合给出遗忘函子 $\\widehat{\\mathcal{C}}(\\mathbf{Ab}) \\to \\widehat{\\mathcal{C}}$。',
         '两条基本事实：\n\n- **阿贝尔层按底集合层来判**：$M$ 是阿贝尔层 $\\iff$ 它的底集合预层是层。因为遗忘函子保所有极限，而层条件是一个极限图 —— 用米田引理把 $\\operatorname{Hom}_{\\mathbb{Z}}(N, M(-))$ 换回 $M(-)$，条件就同一条。\n- **阿贝尔层 = 层范畴里的阿贝尔群对象**：$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\simeq \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr)$。这正是「凝聚态阿贝尔群 = 凝聚态集范畴里的阿贝尔群」那条定义的一般版本。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* --------------------------------- 拓扑斯上的阿贝尔群是 Grothendieck 范畴 */
@@ -86,7 +88,8 @@ window.MG = window.MG || {};
         ].join('\n'),
         '',
         '顺带一条：$\\mathbb{Z}\\cdot X$ 在 $\\mathcal{T}(\\mathbf{Ab})$ 里**投射**（先看预层：$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ 在预层上是正合的）。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* ------------------------------------------------------- 内 Hom */
@@ -115,7 +118,8 @@ window.MG = window.MG || {};
         '「可表示」这一步只用到一个事实：那个预层**保所有极限**（于是由表示函子的判据，它有表示对象）。',
         '两条推论：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1})$ —— 也就是说 **$\\mathcal{T}(\\mathbf{Ab})$ 富集在自己上面**；以及 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M) \\cong \\operatorname{Hom}(X, M)$。',
         '内 Hom 在预层范畴里算与在层范畴里算结果一样：$\\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}(M,N) = \\operatorname{Hom}_{\\widetilde{\\mathcal{C}}(\\mathbf{Ab})}(M,N)$。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* ------------------------------------------------------ 张量积 */
@@ -147,7 +151,8 @@ window.MG = window.MG || {};
         '记 $M \\cdot X := M \\otimes_{\\mathbb{Z}} \\mathbb{Z}\\cdot X$，则 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N)(X) \\cong \\operatorname{Hom}_{\\mathbb{Z}}(M \\cdot X,\\ N)$ —— **「在某点处取值」= 「先在点处张量、再取 Hom」**。',
         '⭐ **凝聚态阿贝尔群 $\\mathrm{CondAb}$ 就是这里的特例**（$\\mathcal{T} = \\mathrm{Cond}$）：上面每一条原样照搬，不必单独写一遍。特别地 $\\mathrm{CondAb}$ 是封闭对称幺半范畴，因而富集在自己上面，可以谈张量积、对偶与交换代数。',
         '⚠️ 但要注意 $\\operatorname{Hom}_{\\mathbb{Z}}(M, N)$ 自然是一个**紧生成拓扑空间**，却**不是拓扑阿贝尔群** —— 因为紧生成空间对（拓扑空间的）积不封闭。把 $\\mathrm{CondAb}$ 当成「拓扑阿贝尔群」来用会在这一步出问题。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     },
 
     /* -------------------------------------------------------- 平坦 */
@@ -166,7 +171,8 @@ window.MG = window.MG || {};
         '',
         '是**正合**的。'
       ].join('\n'),
-      notes: '例：**通常的阿贝尔群平坦 $\\iff$ 无挠**。由此立刻得到：$\\mathbb{Z}\\cdot X$ **总是平坦的** —— 先归结到预层、再归结到通常的阿贝尔群，而自由阿贝尔群无挠。'
+      notes: '例：**通常的阿贝尔群平坦 $\\iff$ 无挠**。由此立刻得到：$\\mathbb{Z}\\cdot X$ **总是平坦的** —— 先归结到预层、再归结到通常的阿贝尔群，而自由阿贝尔群无挠。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §5.3']
     }
   ],
 

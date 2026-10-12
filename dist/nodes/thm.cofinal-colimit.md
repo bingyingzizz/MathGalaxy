@@ -10,4 +10,6 @@ $$\varinjlim_{j \in J} D\bigl(F(j)\bigr) \;\cong\; \varinjlim_{i \in I} D(i).$$
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.cofinalcolim-colimit.md
 - `def.cofinal-functor` 共尾函子：用到了定义 共尾函子　proofs/def-dep.cofinalcolim-cofinal.md
 
+refs: Le Stum, An introduction to condensed mathematics, §1.3
+
 > 说明见 `notes/thm.cofinal-colimit.md`

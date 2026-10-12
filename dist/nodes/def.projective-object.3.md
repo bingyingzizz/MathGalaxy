@@ -2,7 +2,6 @@
 根 `../`　·　第 1 页 `nodes/def.projective-object.md`　·　上一页 `nodes/def.projective-object.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 `prop.ext-projective-vanishes` 投射对象没有高次 Ext 用
 - 被 `thm.gleason` Gleason 定理 用
 - 被 `prop.free-projective` 自由紧 Haus 是投射对象 用
 - 被 `prop.fchaus-pretopology` FCHaus 上的预拓扑 用

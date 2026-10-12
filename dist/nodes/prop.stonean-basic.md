@@ -10,4 +10,6 @@ layer 17 · 命题 · Stone 与 Stonean · 拓扑学
 - `def.clopen` 闭开集：用到了定义 闭开集　proofs/def-link.clopen-stonean-basic.md
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-dep.stone-stonean-basic.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.2
+
 > 说明见 `notes/prop.stonean-basic.md`

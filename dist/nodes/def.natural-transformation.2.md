@@ -1,8 +1,7 @@
 # 自然变换　`def.natural-transformation`　·　续页（第 2 页）
 根 `../`　·　第 1 页 `nodes/def.natural-transformation.md`
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.adjunction-unit` 单位与余单位 用
-- 被 `def.kan-extension` Kan 延拓 用
-- 被 `def.presheaf-valued` 取值一般的预层与层 用
-- 被 `def.localization` 局部化 用
+## 陈述（续）
+每个 $\alpha_X$ 都是同构时，$\alpha$ 叫**自然同构**，记 $F \cong G$。
+
+> 续见 `nodes/def.natural-transformation.3.md`

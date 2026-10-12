@@ -14,4 +14,6 @@ $$W^{-1}R,$$
 - `def.ring` 环：用到了定义 环　proofs/def-dep.ringloc-ring.md
 - `def.localization` 局部化：用到了定义 局部化　proofs/def-dep.ringloc-localization.md
 
+refs: Lang, Algebra
+
 > 说明见 `notes/prop.ring-localization.md`

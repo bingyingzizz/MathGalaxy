@@ -13,9 +13,12 @@ layer 17 · 定理 · 拓扑斯 · 范畴论
 - `def.topos` 拓扑斯 + `def.canonical-topology` 标准拓扑 + `def.generator` 生成元集 + `lem.representable-quotient` 可表示性的下降：Giraud 定理的证明　proofs/imp.giraud.md
 - `def.topos` 拓扑斯：用到了定义 拓扑斯　proofs/def-dep.topos-giraud.md
 - `def.canonical-topology` 标准拓扑：用到了定义 标准拓扑　proofs/def-dep.canonical-giraud.md
-- `def.representable` 表示函子：用到了定义 表示函子　proofs/def-dep.representable-giraud.md
 
-> 说明见 `notes/thm.giraud.md`
+- …另有入边，续页见 `nodes/thm.giraud.2.md`
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 `nodes/thm.giraud.2.md`
+- ⇒ `thm.cond-topos` Cond 是拓扑斯
+
+refs: Mac Lane–Moerdijk, Sheaves in Geometry and Logic, Appendix
+
+> 说明见 `notes/thm.giraud.md`

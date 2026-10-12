@@ -7,4 +7,6 @@ layer 15 · 引理 · 紧 Hausdorff 空间 · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.compact` 紧：用到了定义 紧　proofs/def-link.compact-minimal-closed.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
 > 说明见 `notes/lem.minimal-closed-surjection.md`

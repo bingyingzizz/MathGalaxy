@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.abelian-sheaf.md`　·　上一页 `nodes/def.abelian-sheaf.2.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `prop.cech-section-vanishing` 带截面的覆盖上 Čech 零调 用
 - 被 `prop.cohomology-of-coproduct` 上同调与不交并 用
 - 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用
 - 被 `def.internal-hom` 内 Hom 用

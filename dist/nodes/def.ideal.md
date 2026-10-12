@@ -14,4 +14,6 @@ $$a x \in I \quad \text{与} \quad x a \in I.$$
 - `def.ring` 环：用到了定义 环　proofs/def-dep.ideal-ring.md
 - `def.quotient-group` 商群：用到了定义 商群　proofs/def-dep.ideal-quotientgroup.md
 
+refs: Lang, Algebra
+
 > 说明见 `notes/def.ideal.md`

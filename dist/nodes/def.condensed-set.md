@@ -21,6 +21,8 @@ $$\mathrm{Cond} \;:=\; \widehat{\mathbf{CHaus}}$$
 - 被 `thm.top-cond-adjoint` Top 与 Cond 的伴随 用
 - 被 `def.condensed-abelian-group` 凝聚态阿贝尔群 用
 
-> 说明见 `notes/def.condensed-set.md`
-
 - …另有出边，续页见 `nodes/def.condensed-set.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §4
+
+> 说明见 `notes/def.condensed-set.md`

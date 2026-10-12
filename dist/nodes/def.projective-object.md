@@ -5,8 +5,6 @@ layer 14 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 范畴 $\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果函子 $h_{P} = \operatorname{Hom}_{\mathcal{C}}(P, -)$ **保持满态射**。对偶地，$I$ 叫**内射的**，如果 $h^{I}$ 把单态射送到满态射。
 
 展开成提升条件就是：对每个满态射 $A \twoheadrightarrow B$ 与每个 $P \to B$，都存在提升 $P \to A$ 使三角形交换：
-
-$$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadrightarrow & B \end{array}$$
 > 陈述续见 `nodes/def.projective-object.2.md`
 
 
@@ -17,7 +15,10 @@ $$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadri
 - ⇒ `thm.gleason` Gleason 定理
 - 被 `prop.rhom-zs-sections` Stonean 上 Z[S] 的 RHom 用
 - 被 `prop.rhom-ze-powers` 离散空间上 Z[E] 的 RHom 用
-
-> 说明见 `notes/def.projective-object.md`
+- 被 `prop.ext-projective-vanishes` 投射对象没有高次 Ext 用
 
 - …另有出边，续页见 `nodes/def.projective-object.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
+> 说明见 `notes/def.projective-object.md`

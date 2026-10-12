@@ -15,8 +15,9 @@ layer 16 · 定义 · Stone 与 Stonean · 拓扑学
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.stone-profinite` Stone ⟺ 投射有限
 - ⇒ `thm.gleason` Gleason 定理
-- 被 `prop.stone-clopen-refinement` Stone 空间的闭开加细 用
-
-> 说明见 `notes/def.stone-space.md`
 
 - …另有出边，续页见 `nodes/def.stone-space.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §2.2
+
+> 说明见 `notes/def.stone-space.md`

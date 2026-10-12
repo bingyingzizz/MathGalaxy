@@ -7,8 +7,6 @@ layer 11 · 定义 · 图与极限 · 范畴论
 $$p_i \circ g = g_i \qquad (i \in I)$$
 
 等价地，锥函子被 $\lim D$ 表示：
-
-$$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}_{\mathcal{C}}(Y, \lim D)$$
 > 陈述续见 `nodes/def.limit.2.md`
 
 
@@ -22,7 +20,10 @@ $$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}
 - ⇒ `thm.saft` 伴随函子定理
 - ⇒ `ex.kan-extension` Kan 延拓的两个例子
 - 被 `prop.yoneda-embedding` 米田嵌入 用
-
-> 说明见 `notes/def.limit.md`
+- 被 `thm.density` 稠密性定理 用
 
 - …另有出边，续页见 `nodes/def.limit.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §1.3
+
+> 说明见 `notes/def.limit.md`

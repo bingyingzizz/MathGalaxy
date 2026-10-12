@@ -6,8 +6,6 @@ layer 12 · 定义 · 预层与米田 · 范畴论
 
 1. 对象是「$\mathcal{C}$ 的对象 $X$ 加上一个截面 $s \in T(X)$」组成的对 $(X, s)$；
 2. 从 $(X, s)$ 到 $(X', s')$ 的态射是使 $T(f)(s') = s$ 的 $f : X \to X'$。
-
-它带一个明显的**遗忘函子** $j_{T} : \mathcal{C}/T \to \mathcal{C}$。用逗号范畴的说法：
 > 陈述续见 `nodes/def.slice-category.2.md`
 
 
@@ -18,5 +16,7 @@ layer 12 · 定义 · 预层与米田 · 范畴论
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.density` 稠密性定理
 - 被 `thm.density` 稠密性定理 用
+
+refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 > 说明见 `notes/def.slice-category.md`

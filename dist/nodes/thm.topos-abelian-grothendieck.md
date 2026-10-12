@@ -9,6 +9,9 @@ layer 19 · 定理 · 阿贝尔层 · 同调代数
 - `def.abelian-sheaf` 阿贝尔层：用到了定义 阿贝尔层　proofs/def-dep.abelsh-grothendieck.md
 - `def.grothendieck-category` Grothendieck 范畴：用到了定义 Grothendieck 范畴　proofs/def-dep.grothendieck-topos-ab.md
 - `def.generator` 生成元集：用到了定义 生成元集　proofs/def-dep.generator-topos-ab.md
-- `def.abelian-category` 加法 / 阿贝尔范畴：用到了定义 加法 / 阿贝尔范畴　proofs/def-dep.abeliancat-topos-ab.md
+
+- …另有入边，续页见 `nodes/thm.topos-abelian-grothendieck.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §5.3
 
 > 说明见 `notes/thm.topos-abelian-grothendieck.md`

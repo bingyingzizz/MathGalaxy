@@ -13,4 +13,6 @@ $$\mathbf{Top} \longrightarrow \mathrm{Cond}, \qquad X \mapsto \underline{X},\qu
 - `def.condensed-set` 凝聚态集：用到了定义 凝聚态集　proofs/def-dep.condensed-top-adjoint.md
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.cg-top-cond.md
 
+refs: Le Stum, An introduction to condensed mathematics, §4
+
 > 说明见 `notes/thm.top-cond-adjoint.md`

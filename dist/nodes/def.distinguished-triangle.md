@@ -2,9 +2,7 @@
 导出三角（Distinguished Triangle）
 layer 14 · 定义 · 复形与导出三角 · 同调代数
 
-$\mathbf{K}(\mathcal{C})$ 中的**导出三角**是形状为
-
-$$K \longrightarrow L \longrightarrow M \longrightarrow K[1]$$
+$\mathbf{K}(\mathcal{C})$ 中的**导出
 > 陈述续见 `nodes/def.distinguished-triangle.2.md`
 
 
@@ -18,6 +16,8 @@ $$K \longrightarrow L \longrightarrow M \longrightarrow K[1]$$
 - 被 `prop.triangle-rotation` 三角的旋转与延拓 用
 - 被 `lem.triangle-morphism` 三角态射的性质 用
 - 被 `def.cohomological-functor` 上同调函子 用
+
+refs: Le Stum, An introduction to condensed mathematics, §7.1
 
 - …另有出边，续页见 `nodes/def.distinguished-triangle.3.md`
 

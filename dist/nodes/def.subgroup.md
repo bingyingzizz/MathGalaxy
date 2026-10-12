@@ -12,6 +12,8 @@ layer 7 · 定义 · 代数结构 · 抽象代数
 ## 它能推出什么 / 谁在用它
 - 被 `def.group-hom` 群同态、核与像 用
 
+refs: Lang, Algebra
+
 ## 说明
 两条合起来可写成一条：$a, b \in H \implies a b^{-1} \in H$。
 

@@ -9,4 +9,6 @@ $$s|_{X_{i}} \in \operatorname{im}\bigl(F(X_{i}) \to G(X_{i})\bigr) \qquad (\for
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-epi-criterion.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
 > 说明见 `notes/prop.sheaf-epi-criterion.md`

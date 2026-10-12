@@ -17,8 +17,8 @@ $$\widehat{\mathcal{C}}(\mathbf{Ab}) := \operatorname{Hom}(\mathcal{C}^{\mathrm{
 - `def.presheaf-cat` 预层范畴：用到了定义 预层范畴　proofs/def-dep.abelsheaf-presheafcat.md
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.cech-section-vanishing` 带截面的覆盖上 Čech 零调 用
+- …另有出边，续页见 `nodes/def.abelian-sheaf.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §5.3
 
 > 说明见 `notes/def.abelian-sheaf.md`
-
-- …另有出边，续页见 `nodes/def.abelian-sheaf.3.md`

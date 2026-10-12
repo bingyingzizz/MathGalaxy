@@ -18,4 +18,6 @@ $$A \times M \longrightarrow M, \qquad (a, m) \longmapsto a \cdot m,$$
 - 被 `thm.freyd-mitchell` Freyd–Mitchell 嵌入定理 用
 - 被 `ex.algebra-categories` 代数的几个范畴 用
 
+refs: Lang, Algebra
+
 > 说明见 `notes/def.module.md`

@@ -15,4 +15,6 @@ $$kX \times Y \;=\; k(X \times Y).$$
 - `def.k-topology` k-开、k-闭与 k-拓扑：用到了定义 k-开、k-闭与 k-拓扑　proofs/def-dep.kprod-ktopo.md
 - `def.product-topology` 积拓扑：用到了定义 积拓扑　proofs/def-dep.kprod-product.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
 > 说明见 `notes/prop.k-product.md`

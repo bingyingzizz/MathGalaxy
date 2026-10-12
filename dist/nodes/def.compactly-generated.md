@@ -10,9 +10,14 @@ layer 16 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-cg.md
 - `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-cg.md
 - `def.topology` 拓扑空间与开集：用到了定义 拓扑空间与开集　proofs/def-dep.cg-topology.md
-- `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.cg-chaus.md
 
-> 说明见 `notes/def.compactly-generated.md`
+- …另有入边，续页见 `nodes/def.compactly-generated.2.md`
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 `nodes/def.compactly-generated.2.md`
+- ⇒ `thm.top-cond-adjoint` Top 与 Cond 的伴随
+
+- …另有出边，续页见 `nodes/def.compactly-generated.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §2.3
+
+> 说明见 `notes/def.compactly-generated.md`

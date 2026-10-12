@@ -9,8 +9,6 @@ $$( \mathcal{O}, M, s, t, \circ, i )$$
 其中 $(\mathcal{O}, M, s, t)$ 是一个**图**：$\mathcal{O}$ 是**对象**，$M$ 是**态射**，$s, t : M \to \mathcal{O}$ 给出每条态射的**源**与**靶**，记 $f : X \to Y$ 表示 $s(f) = X$、$t(f) = Y$。此外还有两个映射：
 
 **复合** $\circ$ 定义在可复合的态射对上。记
-
-$$M \times_{s,t} M = \{ (f, g) \in M \times M : s(f) = t(g) \}$$
 > 陈述续见 `nodes/def.category.2.md`
 
 
@@ -24,6 +22,8 @@ $$M \times_{s,t} M = \{ (f, g) \in M \times M : s(f) = t(g) \}$$
 - 被 `def.functor` 函子 用
 - 被 `def.natural-transformation` 自然变换 用
 
-> 说明见 `notes/def.category.md`
-
 - …另有出边，续页见 `nodes/def.category.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §1.1
+
+> 说明见 `notes/def.category.md`

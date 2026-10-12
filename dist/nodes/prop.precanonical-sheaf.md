@@ -13,4 +13,6 @@ $$F(X) \;\cong\; \ker\Bigl(\prod_{i} F(X_{i}) \rightrightarrows \prod_{i,j} F(X_
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-precanonical.md
 
+refs: Le Stum, An introduction to condensed mathematics, §3.3
+
 > 说明见 `notes/prop.precanonical-sheaf.md`

@@ -12,4 +12,6 @@ $$F := \beta\, S^{\mathrm{disc}} \longrightarrow S$$
 - `def.free-compact-hausdorff` 自由紧 Hausdorff 空间：用到了定义 自由紧 Hausdorff 空间　proofs/def-dep.free-chaus-quotient.md
 - `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-quotient-free.md
 
+refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
+
 > 说明见 `notes/prop.chaus-quotient-of-free.md`

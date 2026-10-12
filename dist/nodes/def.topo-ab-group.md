@@ -20,6 +20,8 @@ $$C_{\mathbb{Z}}(M, N) \;\subseteq\; C(M, N),$$
 ## 它能推出什么 / 谁在用它
 - 被 `prop.abhaus-strict-exact` Hausdorff 拓扑阿贝尔群的核与余核 用
 
-> 说明见 `notes/def.topo-ab-group.md`
-
 - …另有出边，续页见 `nodes/def.topo-ab-group.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §6.2
+
+> 说明见 `notes/def.topo-ab-group.md`

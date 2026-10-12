@@ -3,10 +3,8 @@
 layer 9 · 定义 · 伴随与反射 · 范畴论
 
 设 $F : \mathcal{C} \to \mathcal{D}$、$G : \mathcal{D} \to \mathcal{C}$ 是一对函子。$(F, G)$ 叫一对**伴随函子**，如果存在自然同构
+> 陈述续见 `nodes/def.adjoint.2.md`
 
-$$\operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ Y\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G(Y)\bigr) \qquad (X \in \mathcal{C},\ Y \in \mathcal{D})$$
-
-这时记 $F \dashv G$：$F$ 叫 $G$ 的**左伴随**，$G$ 叫 $F$ 的**右伴随**。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.functor-adjoint.md
@@ -17,7 +15,12 @@ $$\operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ Y\bigr) \;\cong\; \operatorname{H
 - ⇒ `thm.right-adjoint-criterion` 右伴随存在的判据
 - ⇒ `thm.right-adjoint-preserves-limits` 右伴随保极限
 - ⇒ `ex.kan-extension` Kan 延拓的两个例子
+- 被 `prop.adjoint-additive` 伴随函子都加法 用
+- 被 `thm.right-adjoint-preserves-limits` 右伴随保极限 用
+- 被 `ex.kan-extension` Kan 延拓的两个例子 用
+
+- …另有出边，续页见 `nodes/def.adjoint.3.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §1.5
 
 > 说明见 `notes/def.adjoint.md`
-
-- …另有出边，续页见 `nodes/def.adjoint.2.md`

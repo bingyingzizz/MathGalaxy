@@ -16,4 +16,6 @@ $$( V, E, s, t )$$
 - 被 `def.graph-morphism` 图的态射 用
 - 被 `def.category` 范畴 用
 
+refs: Le Stum, An introduction to condensed mathematics, §1.1
+
 > 说明见 `notes/def.graph.md`

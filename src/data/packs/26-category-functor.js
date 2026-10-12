@@ -45,7 +45,8 @@ window.MG = window.MG || {};
           '- **群化** $\\mathbf{Mon} \\to \\mathbf{Grp}$：$M \\mapsto M^{gr} = \\langle x_g \\ (g \\in M) \\mid x_g x_h = x_{gh} \\rangle$。',
           '- $\\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Cat}$：$(X, \\tau) \\mapsto \\operatorname{Open}(X)$。反变，因为开集越少映射越多。',
         ].join('\n'),
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* -------------------------------------------------------- 自然变换 */
@@ -76,7 +77,8 @@ window.MG = window.MG || {};
         '$$\\det_A : GL_n(A) \\to A^{*}$$',
         '',
         '拼起来正是一个**自然变换**：$\\det$ 与环同态「交换次序」。这正是「自然」二字的意思 —— 不是逐例验证出来的巧合，而是结构使然。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* ------------------------------------------------ 忠实 / 满 / 全忠实 */
@@ -102,7 +104,8 @@ window.MG = window.MG || {};
       notes: [
         '三个名字说的都是 $F$ 在**态射层**上的表现，与对象层无关 —— 全忠实的函子可以把两个不同对象映到同一个对象上（这在等价里正是允许的）。',
         '忠实保证「态射不被合并」，满保证「目标里的态射都来自源」，两者互不蕴含。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* -------------------------------------------------------- 本质满 */
@@ -119,7 +122,8 @@ window.MG = window.MG || {};
         '',
         '$$F(X) \\cong X\'$$'
       ].join('\n'),
-      notes: '注意是 $\\cong$ 而不是 $=$：要求「$F$ 的像**同构于**每个对象」，而不是「$F$ 的像**就是**全体对象」。差这一个同构，正是范畴等价比范畴同构宽松的地方 —— 而恰恰是这一点让它有用，因为绝大多数有趣的等价都不是同构。'
+      notes: '注意是 $\\cong$ 而不是 $=$：要求「$F$ 的像**同构于**每个对象」，而不是「$F$ 的像**就是**全体对象」。差这一个同构，正是范畴等价比范畴同构宽松的地方 —— 而恰恰是这一点让它有用，因为绝大多数有趣的等价都不是同构。',
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     },
 
     /* -------------------------------------------------------- 范畴等价 */
@@ -141,7 +145,8 @@ window.MG = window.MG || {};
       notes: [
         '同构要求两个复合**等于**恒等函子，等价只要求它们**自然同构于**恒等函子。后者弱得多，也实用得多：例如「有限维向量空间」与「$\\mathbb{F}$ 上的矩阵」等价，但绝不可能是同构（对象层的基数就不对）。',
         '在等价之下，「两个范畴是不是同一个」这个问题被替换成「能不能互相翻译而不丢结构」—— 范畴论后面所有「$\\mathcal{C}$ 与 $\\mathcal{C}\'$ 一样」的说法，用的都是这个意思。'
-      ].join('\n\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §1.2']
     }
   ],
 

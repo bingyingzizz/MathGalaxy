@@ -15,6 +15,9 @@ layer 17 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 - 被 `prop.ktx-colimit` kX 是紧空间的余极限 用
 - 被 `prop.cg-coreflective` 紧生成空间是余反射子范畴 用
 - 被 `prop.k-product` k-化与积 用
-- 被 `prop.weak-hausdorff-basic` 弱 Hausdorff 的基本性质 用
+
+- …另有出边，续页见 `nodes/def.k-topology.2.md`
+
+refs: Le Stum, An introduction to condensed mathematics, §2.3
 
 > 说明见 `notes/def.k-topology.md`

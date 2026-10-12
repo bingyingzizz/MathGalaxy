@@ -11,4 +11,6 @@ $$f : S \longrightarrow X(\cdot), \qquad f \in X(S),\ S \in \mathbf{CHaus}$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-underlying.md
 
+refs: Le Stum, An introduction to condensed mathematics, §4
+
 > 说明见 `notes/def.underlying-topological-space.md`
