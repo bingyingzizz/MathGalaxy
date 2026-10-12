@@ -720,6 +720,7 @@
                            能整块表达就整块，剩下的才写 id，所以整块开关的链接很短
         &dl=0 &lb=0 &ex=1  定义线 / 名字 / 探索（弱边）的开关
         &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
+        &fps=1             右下角显示诊断角标（帧耗时 / 连线层耗时 / dpr / canvas 尺寸）
 
       ⚠️ 绝不用 ?query + history.pushState：`file://` 下 origin 是 null，
          pushState / replaceState 会抛 SecurityError —— 而「双击 index.html 就能用」
@@ -785,6 +786,7 @@
       if (C.exploreMode) p.push('ex=1');
       var hide = hideTokens();
       if (hide.length) p.push('hide=' + hide.join(','));
+      if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
       var c = camCenter();
       p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
@@ -961,6 +963,52 @@
     function seedHash() { hashState.seeded = true; }
     graphEl.addEventListener('pointerdown', seedHash);
     graphEl.addEventListener('wheel', seedHash, { passive: true });
+
+    /* ------------------------------------------------------ 诊断角标（可选） */
+    /*
+      地址栏带 fps=1 时，右下角显示一行读数：整帧耗时 / 连线层耗时 / 窗口与 dpr / canvas 后备尺寸。
+      用来在**别人的机器**上报性能 —— 我这边是 headless 软件光栅化，数字不可比。
+      不带这个参数时完全不创建，不进产品正常路径。
+    */
+    var fpsHud = /(^|[&#])fps=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    if (fpsHud) {
+      var hudEl = document.createElement('div');
+      hudEl.id = 'mg-fps';
+      hudEl.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:30;pointer-events:none;'
+        + 'background:rgba(20,22,28,.88);color:#fff;padding:7px 11px;border-radius:9px;'
+        + 'font:11.5px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre;text-align:left';
+      document.body.appendChild(hudEl);
+
+      var hudLast = 0, hudAcc = 0, hudCnt = 0, hudWorst = 0, hudPeak = 0;
+      var hudTick = function (ts) {
+        if (hudLast) {
+          var dms = ts - hudLast;
+          hudAcc += dms; hudCnt++;
+          if (dms > hudWorst) hudWorst = dms;
+        }
+        hudLast = ts;
+        requestAnimationFrame(hudTick);
+      };
+      requestAnimationFrame(hudTick);
+
+      /* 每 700ms 刷新一次读数：整帧间隔 + 同步量一次「只画连线层」的真实耗时 */
+      setInterval(function () {
+        var c = document.getElementById('layer-graph');
+        var ms = hudCnt ? hudAcc / hudCnt : 0;
+        var t0 = performance.now();
+        renderer.draw();
+        var drawMs = performance.now() - t0;
+        hudAcc = 0; hudCnt = 0;
+        if (ms > hudPeak) hudPeak = ms;
+        hudEl.textContent =
+          '帧 ' + ms.toFixed(1) + ' ms（峰值 ' + hudPeak.toFixed(0) + '）· ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
+          '连线层 ' + drawMs.toFixed(2) + ' ms\n' +
+          global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
+          ' · canvas ' + c.width + '×' + c.height +
+          '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length;
+        hudWorst = 0;
+      }, 700);
+    }
 
     /* ------------------------------------------------------------ 启动 */
 
