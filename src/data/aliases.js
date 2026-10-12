@@ -412,6 +412,7 @@ MG.aliases = {
     { id: 'prop.closed-map-neighborhood-basis', aka: ['闭映射的邻域基', 'Exercise 8.6'] },
     { id: 'prop.paracompact-partition-unity', aka: ['仿紧与单位分解', '正规与单位分解', 'Exercise 8.7'] },
     { id: 'prop.constant-sheaf-preserves-limits', aka: ['常层函子保极限', 'Exercise 3.49'] },
+    { id: 'prop.ext-abelian-groups', aka: ['阿贝尔群的 Ext', 'Ext 只有两层', 'Exercise 7.25'] },
     { id: 'def.totally-disconnected', aka: ['完全不连通', 'totally disconnected', '极不连通', 'extremally disconnected', 'Definition 2.2.7', 'Def 2.2.7'] },
     { id: 'def.locally-compact', aka: ['局部紧', 'locally compact', '局部紧 Hausdorff', '紧邻域', 'Definition 2.3.1', 'Def 2.3.1'] },
     { id: 'thm.tykhonov', aka: ['Tychonoff', 'Tykhonov', '吉洪诺夫', 'Theorem 2.1.4', 'Thm 2.1.4', '紧空间的积'] },

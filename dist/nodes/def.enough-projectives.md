@@ -13,6 +13,7 @@ $$P \twoheadrightarrow X.$$
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.injective-resolution-lift` 内射消解之间的提升 用
+- 被 `prop.ext-abelian-groups` 阿贝尔群的 Ext 用
 
 refs: Le Stum, Definition 1.4.8
 

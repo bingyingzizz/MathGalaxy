@@ -11,6 +11,8 @@
 
 - 内射消解之间的提升 | 比较定理 | Exercise 7.21 → prop.injective-resolution-lift
 
+- 阿贝尔群的 Ext | Ext 只有两层 | Exercise 7.25 → prop.ext-abelian-groups
+
 - 投射对象的余积 | Exercise 1.48 → prop.projective-coproduct
 
 - Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful

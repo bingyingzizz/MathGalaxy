@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:39:13.053Z
-> 9 星系 / 45 星团 / 573 节点 / 1198 连线（强边 1189，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:40:27.066Z
+> 9 星系 / 45 星团 / 574 节点 / 1200 连线（强边 1191，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -9056,6 +9056,34 @@ $(\Longrightarrow)$ 设 $f : I^{\bullet} \to J^{\bullet}$ 是拟同构。映射�
 
 参考：Le Stum, An introduction to condensed mathematics, §7.1
 
+#### 阿贝尔群的 Ext　`prop.ext-abelian-groups`
+*命题*　命题：$\operatorname{Ext}^{n}_{\mathbb{Z}}(M,N) = 0$（$n \ge 2$）与 $\operatorname{Ext}^{1}(\mathbb{Z}/k,\,N) = N/kN$
+
+取 $\mathcal{A} = \mathbf{Ab}$（阿贝尔群）。则
+
+1. 对任意阿贝尔群 $M, N$ 与一切 $n \ge 2$：
+$$\operatorname{Ext}^{n}_{\mathbb{Z}}(M,\ N) = 0, \qquad \operatorname{Ext}^{0}_{\mathbb{Z}}(M,\ N) = \operatorname{Hom}_{\mathbb{Z}}(M,\ N);$$
+2. 对 $k \ge 1$：
+$$\operatorname{Ext}^{1}_{\mathbb{Z}}\bigl(\mathbb{Z}/k\mathbb{Z},\ N\bigr) \;\cong\; N/kN, \qquad \operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}/k\mathbb{Z},\ N\bigr) = N[k].$$
+
+（$N[k] := \{n \in N : kn = 0\}$。）
+
+**证明。**
+**1.** 每个阿贝尔群都有**长度 2 的自由消解**：取满射 $\mathbb{Z}^{(I)} \twoheadrightarrow M$（由生成元集 $I$ 给出），它的核 $K$ 是自由阿贝尔群 $\mathbb{Z}^{(I)}$ 的子群，**因而也自由**（$\mathbb{Z}$ 是主理想整环，PID 上自由模的子模仍自由 ✓）。取 $\mathbb{Z}^{(J)} \twoheadrightarrow K$ 得
+$$0 \longrightarrow \mathbb{Z}^{(J)} \longrightarrow \mathbb{Z}^{(I)} \longrightarrow M \longrightarrow 0.$$
+只要有一条长度 2 的消解，就可以用它算 $\operatorname{Ext}^{n}$：复形 $\operatorname{Hom}(\mathbb{Z}^{(\bullet)}, N)$ 只在 $0$、$1$ 次非零，故上同调只在 $n = 0, 1$ 次可能出现：$\operatorname{Ext}^{n}(M,N) = 0$（$n \ge 2$）✓，且 $\operatorname{Ext}^{0} = \operatorname{Hom}(M,N)$ ✓。
+**2.** 用 $\mathbb{Z}/k$ 的标准消解
+$$0 \longrightarrow \mathbb{Z} \xrightarrow{\ \times k\ } \mathbb{Z} \longrightarrow \mathbb{Z}/k \longrightarrow 0$$
+作用 $\operatorname{Hom}_{\mathbb{Z}}(-, N)$ 得长正合列
+$$0 \to \operatorname{Hom}(\mathbb{Z}/k, N) \to \operatorname{Hom}(\mathbb{Z}, N) \xrightarrow{\ (\times k)^{*}\ } \operatorname{Hom}(\mathbb{Z}, N) \to \operatorname{Ext}^{1}(\mathbb{Z}/k, N) \to \underbrace{\operatorname{Ext}^{1}(\mathbb{Z}, N)}_{=\,0} \to \cdots$$
+其中 $\operatorname{Hom}(\mathbb{Z}, N) \cong N$、$(\times k)^{*}$ 就是「乘 $k$」这个自同态 ✓（$\operatorname{Ext}^{1}(\mathbb{Z}, N) = 0$ 因为 $\mathbb{Z}$ 投射）。于是
+$$\operatorname{Hom}(\mathbb{Z}/k, N) = \ker(\times k) = N[k], \qquad \operatorname{Ext}^{1}(\mathbb{Z}/k, N) = \operatorname{coker}(\times k) = N/kN ✓$$
+∎
+
+⭐ 这两条合起来是一句话：**阿贝尔群的同调代数只有两层**（$n = 0$ 与 $n = 1$）。所以「高次 Ext」是只有换了范畴（层、凝聚态阿贝尔群）之后才会真正出现的现象 —— 后面整套凝聚态上同调做的正是这件事。
+
+参考：Le Stum, An introduction to condensed mathematics, §7.2
+
 ### 星团：同调与正合列
 > 造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。
 
@@ -14932,6 +14960,14 @@ $\pi$ 是连续的闭映射。
 
 常层是常预层的层化。
 
+#### 定义引用：「扩展群 Ext」→ 阿贝尔群的 Ext　`def-link.extab-ext`
+
+命题算的就是这条定义里的扩展群 $\operatorname{Ext}^{n}$。
+
+#### 定义引用：「足够多投射对象」→ 阿贝尔群的 Ext　`def-link.extab-enough`
+
+Ab 有足够多投射（自由群），消解才存在。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18272,7 +18308,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **凝聚态上同调 ↔ 紧 Hausdorff 空间**　5 条节点级连线
 - **凝聚态上同调 ↔ 阿贝尔层**　2 条节点级连线
 - **图与极限 ↔ 复形与导出三角**　4 条节点级连线
-- **加法与阿贝尔范畴 ↔ 复形与导出三角**　6 条节点级连线
+- **加法与阿贝尔范畴 ↔ 复形与导出三角**　7 条节点级连线
 - **层与拓扑 ↔ 预层与米田**　6 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线

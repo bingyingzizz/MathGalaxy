@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T04:39:13.053Z",
+  "generated": "2026-10-12T04:40:27.066Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 573,
-   "edges": 1198,
-   "strong": 1189,
+   "nodes": 574,
+   "edges": 1200,
+   "strong": 1191,
    "weak": 9
   },
   "readingGuide": {
@@ -95,7 +95,7 @@
    "en": "Homological Algebra",
    "desc": "加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。",
    "color": "#C89A2B",
-   "nodeCount": 101
+   "nodeCount": 102
   },
   {
    "id": "condensed",
@@ -875,7 +875,7 @@
    "name": "复形与导出三角",
    "parent": "homology",
    "desc": "造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。",
-   "nodeCount": 27,
+   "nodeCount": 28,
    "nodes": [
     "def.cochain-complex",
     "prop.complex-additive",
@@ -903,7 +903,8 @@
     "prop.complexes-abelian",
     "prop.cohomology-short-exact",
     "prop.injective-complex-homotopy",
-    "prop.injective-resolution-lift"
+    "prop.injective-resolution-lift",
+    "prop.ext-abelian-groups"
    ]
   },
   {
@@ -13641,6 +13642,29 @@
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.2"
    ]
+  },
+  {
+   "id": "prop.ext-abelian-groups",
+   "type": "proposition",
+   "label": "阿贝尔群的 Ext",
+   "title": "命题：$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,N) = 0$（$n \\ge 2$）与 $\\operatorname{Ext}^{1}(\\mathbb{Z}/k,\\,N) = N/kN$",
+   "region": "homology",
+   "regions": [
+    "homology"
+   ],
+   "cluster": "hom.complex",
+   "layer": 17,
+   "tags": [
+    "命题",
+    "Ext",
+    "阿贝尔群",
+    "自由消解"
+   ],
+   "statement": "取 $\\mathcal{A} = \\mathbf{Ab}$（阿贝尔群）。则\n\n1. 对任意阿贝尔群 $M, N$ 与一切 $n \\ge 2$：\n$$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M,\\ N) = 0, \\qquad \\operatorname{Ext}^{0}_{\\mathbb{Z}}(M,\\ N) = \\operatorname{Hom}_{\\mathbb{Z}}(M,\\ N);$$\n2. 对 $k \\ge 1$：\n$$\\operatorname{Ext}^{1}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}/k\\mathbb{Z},\\ N\\bigr) \\;\\cong\\; N/kN, \\qquad \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\mathbb{Z}/k\\mathbb{Z},\\ N\\bigr) = N[k].$$\n\n（$N[k] := \\{n \\in N : kn = 0\\}$。）",
+   "notes": "**证明。**\n**1.** 每个阿贝尔群都有**长度 2 的自由消解**：取满射 $\\mathbb{Z}^{(I)} \\twoheadrightarrow M$（由生成元集 $I$ 给出），它的核 $K$ 是自由阿贝尔群 $\\mathbb{Z}^{(I)}$ 的子群，**因而也自由**（$\\mathbb{Z}$ 是主理想整环，PID 上自由模的子模仍自由 ✓）。取 $\\mathbb{Z}^{(J)} \\twoheadrightarrow K$ 得\n$$0 \\longrightarrow \\mathbb{Z}^{(J)} \\longrightarrow \\mathbb{Z}^{(I)} \\longrightarrow M \\longrightarrow 0.$$\n只要有一条长度 2 的消解，就可以用它算 $\\operatorname{Ext}^{n}$：复形 $\\operatorname{Hom}(\\mathbb{Z}^{(\\bullet)}, N)$ 只在 $0$、$1$ 次非零，故上同调只在 $n = 0, 1$ 次可能出现：$\\operatorname{Ext}^{n}(M,N) = 0$（$n \\ge 2$）✓，且 $\\operatorname{Ext}^{0} = \\operatorname{Hom}(M,N)$ ✓。\n**2.** 用 $\\mathbb{Z}/k$ 的标准消解\n$$0 \\longrightarrow \\mathbb{Z} \\xrightarrow{\\ \\times k\\ } \\mathbb{Z} \\longrightarrow \\mathbb{Z}/k \\longrightarrow 0$$\n作用 $\\operatorname{Hom}_{\\mathbb{Z}}(-, N)$ 得长正合列\n$$0 \\to \\operatorname{Hom}(\\mathbb{Z}/k, N) \\to \\operatorname{Hom}(\\mathbb{Z}, N) \\xrightarrow{\\ (\\times k)^{*}\\ } \\operatorname{Hom}(\\mathbb{Z}, N) \\to \\operatorname{Ext}^{1}(\\mathbb{Z}/k, N) \\to \\underbrace{\\operatorname{Ext}^{1}(\\mathbb{Z}, N)}_{=\\,0} \\to \\cdots$$\n其中 $\\operatorname{Hom}(\\mathbb{Z}, N) \\cong N$、$(\\times k)^{*}$ 就是「乘 $k$」这个自同态 ✓（$\\operatorname{Ext}^{1}(\\mathbb{Z}, N) = 0$ 因为 $\\mathbb{Z}$ 投射）。于是\n$$\\operatorname{Hom}(\\mathbb{Z}/k, N) = \\ker(\\times k) = N[k], \\qquad \\operatorname{Ext}^{1}(\\mathbb{Z}/k, N) = \\operatorname{coker}(\\times k) = N/kN ✓$$\n∎\n\n⭐ 这两条合起来是一句话：**阿贝尔群的同调代数只有两层**（$n = 0$ 与 $n = 1$）。所以「高次 Ext」是只有换了范畴（层、凝聚态阿贝尔群）之后才会真正出现的现象 —— 后面整套凝聚态上同调做的正是这件事。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §7.2"
+   ]
   }
  ],
  "edges": [
@@ -17481,6 +17505,22 @@
    "definition": "def.sheaf",
    "usedBy": "prop.constant-sheaf-preserves-limits",
    "note": "常层是常预层的层化。"
+  },
+  {
+   "id": "def-link.extab-ext",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.ext",
+   "usedBy": "prop.ext-abelian-groups",
+   "note": "命题算的就是这条定义里的扩展群 $\\operatorname{Ext}^{n}$。"
+  },
+  {
+   "id": "def-link.extab-enough",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.enough-projectives",
+   "usedBy": "prop.ext-abelian-groups",
+   "note": "Ab 有足够多投射（自由群），消解才存在。"
   },
   {
    "id": "def-link.sep-subset",
@@ -24298,7 +24338,7 @@
   {
    "a": "hom.ab",
    "b": "hom.complex",
-   "count": 6,
+   "count": 7,
    "label": "",
    "explicit": false
   },
