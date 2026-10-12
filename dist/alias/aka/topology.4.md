@@ -17,9 +17,9 @@
 
 - 极端不连通的性质 → prop.stonean-basic
 
-- 全不连通是反射子范畴 | pi_0 → prop.td-reflective
+- 全不连通是反射子范畴 | pi_0 | Exercise 2.15 → prop.td-reflective
 
-- Stone 空间是反射子范畴 → prop.stone-reflective
+- Stone 空间是反射子范畴 | Exercise 2.17 → prop.stone-reflective
 
 - 投射有限空间 | profinite space | profinite → def.profinite
 

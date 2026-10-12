@@ -9,7 +9,7 @@
 
 - 紧生成空间的例子 | 局部紧空间是紧生成的 | R^I 不紧生成 → ex.cg-examples
 
-- 紧生成空间的等价刻画 | k-空间等价条件 → prop.cg-equivalent-conditions
+- 紧生成空间的等价刻画 | k-空间等价条件 | Exercise 2.24 → prop.cg-equivalent-conditions
 
 - k-拓扑 | k拓扑 | k-开 | k-闭 | k-化 | k-ification | kX → def.k-topology
 

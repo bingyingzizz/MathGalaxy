@@ -417,6 +417,7 @@ MG.aliases = {
     { id: 'prop.injective-iff-acyclic', aka: ['内射与零调等价', 'Exercise 7.26'] },
     { id: 'prop.cohomology-as-ext', aka: ['上同调就是 Ext', 'Exercise 7.37'] },
     { id: 'prop.presheaf-representable-acyclic', aka: ['预层的可表示对象零调', 'Exercise 7.41'] },
+    { id: 'prop.stone-clopen-refinement', aka: ['Stone 空间的闭开加细', 'Exercise 2.20'] },
     { id: 'def.totally-disconnected', aka: ['完全不连通', 'totally disconnected', '极不连通', 'extremally disconnected', 'Definition 2.2.7', 'Def 2.2.7'] },
     { id: 'def.locally-compact', aka: ['局部紧', 'locally compact', '局部紧 Hausdorff', '紧邻域', 'Definition 2.3.1', 'Def 2.3.1'] },
     { id: 'thm.tykhonov', aka: ['Tychonoff', 'Tykhonov', '吉洪诺夫', 'Theorem 2.1.4', 'Thm 2.1.4', '紧空间的积'] },
@@ -483,8 +484,8 @@ MG.aliases = {
     { id: 'prop.component-clopen', aka: ['连通分量是闭开邻域之交'] },
     { id: 'def.stone-space', aka: ['Stone 空间', 'Stone space', 'Stonean 空间', '极端不连通', 'extremally disconnected', '全不连通', 'totally disconnected'] },
     { id: 'prop.stonean-basic', aka: ['极端不连通的性质'] },
-    { id: 'prop.td-reflective', aka: ['全不连通是反射子范畴', 'pi_0'] },
-    { id: 'prop.stone-reflective', aka: ['Stone 空间是反射子范畴'] },
+    { id: 'prop.td-reflective', aka: ['全不连通是反射子范畴', 'pi_0', 'Exercise 2.15'] },
+    { id: 'prop.stone-reflective', aka: ['Stone 空间是反射子范畴', 'Exercise 2.17'] },
     { id: 'def.profinite', aka: ['投射有限空间', 'profinite space', 'profinite'] },
     { id: 'thm.stone-profinite', aka: ['Stone 等价于投射有限', 'Stone duality'] },
     { id: 'thm.gleason', aka: ['Gleason 定理', 'Gleason', 'CHaus 的投射对象'] },
@@ -563,7 +564,7 @@ MG.aliases = {
 
     /* 紧生成空间与弱 Hausdorff */
     { id: 'ex.cg-examples', aka: ['紧生成空间的例子', '局部紧空间是紧生成的', 'R^I 不紧生成'] },
-    { id: 'prop.cg-equivalent-conditions', aka: ['紧生成空间的等价刻画', 'k-空间等价条件'] },
+    { id: 'prop.cg-equivalent-conditions', aka: ['紧生成空间的等价刻画', 'k-空间等价条件', 'Exercise 2.24'] },
     { id: 'def.k-topology', aka: ['k-拓扑', 'k拓扑', 'k-开', 'k-闭', 'k-化', 'k-ification', 'kX'] },
     { id: 'prop.ktx-colimit', aka: ['kX 是余极限'] },
     { id: 'thm.quotient-product', aka: ['商映射乘局部紧', '商映射与积', 'quotient map product', '局部紧因子'] },

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:42:37.204Z
-> 9 星系 / 45 星团 / 578 节点 / 1208 连线（强边 1199，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:44:43.590Z
+> 9 星系 / 45 星团 / 579 节点 / 1210 连线（强边 1201，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -1961,6 +1961,32 @@ $$\mathbf{BoolRing}^{\mathrm{op}}\;\simeq\;\mathbf{Stone}.$$
 ⭐ 由此**布尔代数的所有定理都能翻译成 Stone 空间的语言**（反之亦然）—— 具体地：$B$ 中的幂等元（＝元素）对应 $\operatorname{Spec}(B)$ 的开闭子集，$B$ 的理想对应 $\operatorname{Spec}(B)$ 的闭子集。
 
 参考：Le Stum, Exercise 2.22
+
+#### Stone 空间的闭开加细　`prop.stone-clopen-refinement`
+*命题*　命题：Stone 空间的开覆盖有有限不交闭开加细
+
+设 $S$ 是 **Stone** 空间。则 $S$ 的**任何开覆盖都有有限的、两两不交的闭开加细**：存在有限族 $(C_{r})_{r \le m}$ 使
+
+$$C_{r} \text{ 闭开}, \qquad C_{r} \cap C_{s} = \emptyset \ (r \ne s), \qquad \bigsqcup_{r} C_{r} = S,$$
+
+且每个 $C_{r}$ 都含在覆盖的某一支之中。
+
+**证明。** Stone 空间就是**投射有限**空间：$S = \varprojlim_{i \in I} S_{i}$，每个 $S_{i}$ 有限离散、转移映射满 ✓。于是
+$$\bigl\{\, \pi_{i}^{-1}(x) \;:\; i \in I,\ x \in S_{i} \,\bigr\}$$
+是 $S$ 的一组**闭开**集基，而且对 $i \le j$ 有嵌套（$\pi_{j}$ 的纤维含在 $\pi_{i}$ 的纤维里）✓。
+**① 先取有限闭开子覆盖。** 给定开覆盖 $(U_{\alpha})$：对每个 $s \in S$ 取 $i(s)$ 与 $x := \pi_{i(s)}(s)$，使
+$$D_{s} := \pi_{i(s)}^{-1}(x) \subseteq U_{\alpha(s)}$$
+（用基的闭开性，取直径足够细的那一层）✓。$\{D_{s}\}$ 是开覆盖，而 $S$ **紧** $\implies$ 抽出有限子覆盖 $D_{1}, \ldots, D_{m}$ ✓。
+**② 再两两不交化。** 记 $D^{1}_{j} := D_{j}$、$D^{0}_{j} := S \setminus D_{j}$，对每个 $\varepsilon \in \{0,1\}^{m}$ 取
+$$C_{\varepsilon} := D^{\varepsilon_{1}}_{1} \cap \cdots \cap D^{\varepsilon_{m}}_{m}.$$
+每个 $C_{\varepsilon}$ 是闭开的（有限交、补）✓；不同 $\varepsilon$ 的 $C_{\varepsilon}$ **两两不交** ✓；它们**并为** $S$（每点属于唯一一个 $C_{\varepsilon}$）✓。去掉空集，得到有限族 $(C_{r})$。
+**③ 每块含在某一支里。** 若 $C_{\varepsilon} \ne \emptyset$，取 $s \in C_{\varepsilon}$；由 $\{D_{j}\}$ 覆盖 $S$，有 $j$ 使 $s \in D_{j}$ —— 而 $s \in D_{j}$ 说明 $\varepsilon_{j} = 1$，于是
+$$C_{\varepsilon} \subseteq D_{j} \subseteq U_{\alpha(j)} ✓$$
+∎
+
+⭐ 用途：它把「开覆盖」换成「**有限不交闭开分划**」，于是可以**逐块定义、逐块拼起来**。§8.2 里「Stone 空间上 $C(S, M^{\mathrm{disc}})$ 在 $C(S, M)$ 中稠密」用的就是这一条：在每一块上取一个常值，拼成局部常值函数。
+
+参考：Le Stum, An introduction to condensed mathematics, §2.2
 
 ### 星团：紧生成空间与弱 Hausdorff
 > 造出「乘积好用的拓扑空间范畴」：紧生成空间（$k$-空间）→ $k$-拓扑与 $k$-化 → 商映射与积 → 紧开拓扑 → 弱 Hausdorff → $\mathrm{CGWH}$ 是反射子范畴。
@@ -15070,6 +15096,14 @@ $(3) \implies (1)$ 用的是内射对象的判据（$\operatorname{Ext}^{1}(-,I)
 
 结论是「预层情形下可表示对象的上同调为零」，与层上同调对照。
 
+#### 定义引用：「闭开集」→ Stone 空间的闭开加细　`def-link.clopenref-clopen`
+
+加细用的块就是闭开集。
+
+#### 定义引用：「全不连通与 Stone 空间」→ Stone 空间的闭开加细　`def-link.clopenref-stone`
+
+证明的第一步是「Stone 空间 = 投射有限空间」，用的是这条定义。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18388,7 +18422,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **伴随与反射 ↔ 函子与自然变换**　8 条节点级连线
 - **紧 Hausdorff 空间 ↔ 度量空间**　4 条节点级连线
 - **紧 Hausdorff 空间 ↔ 拓扑空间**　3 条节点级连线
-- **Stone 与 Stonean ↔ 拓扑空间**　9 条节点级连线
+- **Stone 与 Stonean ↔ 拓扑空间**　10 条节点级连线
 - **紧 Hausdorff 空间 ↔ Stone 与 Stonean**　5 条节点级连线
 - **伴随与反射 ↔ 层与拓扑**　2 条节点级连线
 - **层与拓扑 ↔ 单满、子对象与像**　2 条节点级连线

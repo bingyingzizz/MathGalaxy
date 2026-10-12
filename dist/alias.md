@@ -10,7 +10,7 @@
 - 数理逻辑　`alias/logic.md` 0 问法　·　`alias/aka/logic.md` 4 别名
 - 集合论　`alias/set-theory.md` 20 问法　·　`alias/aka/set-theory.md` 52 别名
 - 序理论　`alias/order-theory.md` 8 问法　·　`alias/aka/order-theory.md` 13 别名
-- 拓扑学　`alias/topology.md` 44 问法　·　`alias/aka/topology.md` 83 别名
+- 拓扑学　`alias/topology.md` 44 问法　·　`alias/aka/topology.md` 84 别名
 - 抽象代数　`alias/algebra.md` 13 问法　·　`alias/aka/algebra.md` 23 别名
 - 分析学　`alias/analysis.md` 43 问法　·　`alias/aka/analysis.md` 162 别名
 - 范畴论　`alias/category.md` 63 问法　·　`alias/aka/category.md` 135 别名
