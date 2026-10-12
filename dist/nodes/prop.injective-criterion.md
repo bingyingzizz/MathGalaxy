@@ -19,3 +19,6 @@ $$M \text{ 内射} \iff M'' \text{ 内射}$$
 - `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.adjoint-injective-criterion.md
 
 > 说明见 `notes/prop.injective-criterion.md`
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 `nodes/prop.injective-criterion.2.md`

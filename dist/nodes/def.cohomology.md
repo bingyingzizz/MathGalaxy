@@ -12,6 +12,7 @@ layer 13 · 定义 · 同调与正合列 · 同调代数
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.long-exact` 长正合列
+- 被 `prop.cohomology-short-exact` 同调的两条正合列 用
 - 被 `thm.long-exact` 长正合列 用
 - 被 `def.cohomological-functor` 上同调函子 用
 - 被 `def.quasi-iso` 拟同构 用

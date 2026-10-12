@@ -14,6 +14,7 @@ $$s^{n} : K^{n} \longrightarrow L^{n-1}$$
 - `def.cochain-complex` 上链复形：用到了定义 上链复形　proofs/def-dep.complex-homotopy.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.homotopy-equivalence-criterion` 同伦等价的判据 用
 - 被 `lem.triangle-morphism` 三角态射的性质 用
 - 被 `def.homotopy-category` 同伦范畴 用
 - 被 `cor.homotopy-invariant-cohomology` 层上同调是同伦不变量 用

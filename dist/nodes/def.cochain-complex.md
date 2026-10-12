@@ -14,7 +14,7 @@ $$\cdots \longrightarrow K^{n-1} \xrightarrow{\ d^{n-1}\ } K^{n} \xrightarrow{\ 
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.category-complex.md
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.complex-additive` 复形范畴是加法范畴 用
+- 被 `prop.simplicial-to-chain` 单纯对象给出链复形 用
 
 > 说明见 `notes/def.cochain-complex.md`
 

@@ -11,6 +11,9 @@ $$P \twoheadrightarrow X.$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.projective-object` 投射 / 内射对象：用到了定义 投射 / 内射对象　proofs/def-dep.enoughproj-projective.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.injective-resolution-lift` 内射消解之间的提升 用
+
 refs: Le Stum, Definition 1.4.8
 
 > 说明见 `notes/def.enough-projectives.md`

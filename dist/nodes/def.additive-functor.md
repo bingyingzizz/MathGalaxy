@@ -15,5 +15,6 @@ $$\operatorname{Hom}_{\mathcal{C}}(M, N) \longrightarrow \operatorname{Hom}_{\ma
 ## 它能推出什么 / 谁在用它
 - 被 `prop.additive-iff-preserves-biproduct` 加法函子的刻画 用
 - 被 `prop.adjoint-additive` 伴随函子都加法 用
+- 被 `prop.additive-functor-preserves-triangles` 加法函子保导出三角 用
 
 > 说明见 `notes/def.additive-functor.md`

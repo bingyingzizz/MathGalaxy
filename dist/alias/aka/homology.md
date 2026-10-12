@@ -17,10 +17,10 @@
 
 - 张量与 RHom 的配对 | Exercise 8.16 → prop.tensor-rhom-natural-map
 
-- 投射对象的余积 | Exercise 1.48 → prop.projective-coproduct
+- 单纯对象给出链复形 | 交替和 | Exercise 7.2 → prop.simplicial-to-chain
 
-- Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
+- 范畴嵌入复形 | Exercise 7.3 → prop.category-into-complexes
 
-- AB6 | 滤过余极限与积交换 | Exercise 1.69 → prop.ab6
+- 同伦等价的判据 | Exercise 7.6 → prop.homotopy-equivalence-criterion
 
 > 续见 alias/aka/homology.2.md

@@ -6,3 +6,5 @@
 
 $$K \xrightarrow{\ f\ } L \longrightarrow M(f) \longrightarrow K[1]$$
 三角之间的**态射**是一族映射 $(u, v, w, u[1])$，使所有方块交换。
+
+> 续见 `nodes/def.distinguished-triangle.3.md`
