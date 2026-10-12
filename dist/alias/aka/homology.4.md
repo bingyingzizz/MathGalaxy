@@ -11,14 +11,12 @@
 
 - 双复形 | bicomplex | 复形的复形 | Definition 7.2.17 | Def 7.2.17 → def.bicomplex
 
-- Grothendieck 谱序列 | Corollary 7.2.13 | Cor 7.2.13 | Corollary 7.2.21 → cor.grothendieck-spectral
+- Grothendieck 谱序列 | Corollary 7.2.13 | Cor 7.2.13 | Corollary 7.2.21 | Proposition 7.2.20 → cor.grothendieck-spectral
 
 - 层上同调 | sheaf cohomology | H^n(X,M) | Definition 7.3.1 | Def 7.3.1 → def.sheaf-cohomology
 
 - Čech 上同调 | Cech 上同调 | Cech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
 
-- Čech 上同调是余极限 | Exercise 7.46 → prop.cech-as-colim
-
-- Cartan-Leray | Cartan–Leray 谱序列 | Theorem 7.3.6 | Thm 7.3.6 → thm.cartan-leray
+- Čech 上同调是余极限 | Exercise 7.46 | Proposition 7.3.4 → prop.cech-as-colim
 
 > 续见 alias/aka/homology.5.md

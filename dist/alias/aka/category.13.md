@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 群对象 | group object | 阿贝尔群对象 | abelian group object | Gr(C) | Ab(C) → def.group-object
+
 - Ab(Top) | Ab(Set) | 拓扑阿贝尔群怎么来的 | 群对象的例子 → ex.ab-of-categories
 
 - 环的局部化 | W^{-1}R | 乘性子集 | 分式环 | localization of a ring → prop.ring-localization

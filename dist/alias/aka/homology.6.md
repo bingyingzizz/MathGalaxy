@@ -1,6 +1,8 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 预加法范畴 | 加法范畴 | 预阿贝尔范畴 | 阿贝尔范畴 | Ab-范畴 | Definition 5.1.1 | Definition 5.1.4 | Definition 5.2.1 | Definition 5.2.2 → def.abelian-category
+
 - AB 公理 | AB 公理的例子 | Definition 5.2.5 → def.ab-axioms
 
 - 取值在范畴里的层 | sheaf with values | presheaf with values | 一般值的层 → def.presheaf-valued
@@ -11,10 +13,6 @@
 
 - 内 Hom | internal hom | Hom(X,M) | 内层 | 内部 Hom | Exercise 3.43 | Proposition 3.3.7 | Proposition 6.1.8 → def.internal-hom
 
-- 阿贝尔层的张量积 | 封闭对称幺半 | closed symmetric monoidal | Tensor | internal hom | 封闭张量结构 → def.tensor-abelian-sheaf
-
-- 平坦阿贝尔层 | flat | 平坦性 | 无挠 | Definition 5.3.3 → def.flat-abelian-sheaf
-
-- Freyd-Mitchell | Freyd | Mitchell | Theorem 5.2.4 | Thm 5.2.4 | 嵌入定理 → thm.freyd-mitchell
+- 阿贝尔层的张量积 | 封闭对称幺半 | closed symmetric monoidal | Tensor | internal hom | 封闭张量结构 | Exercise 5.25 | Exercise 5.28 → def.tensor-abelian-sheaf
 
 > 续见 alias/aka/homology.7.md

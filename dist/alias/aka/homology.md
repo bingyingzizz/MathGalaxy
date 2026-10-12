@@ -5,7 +5,7 @@
 
 - 五引理 | five lemma | 追图 → thm.five-lemma
 
-- 足够多投射 | enough projectives | 足够多内射 | enough injectives | Definition 1.4.8 | Def 1.4.8 → def.enough-projectives
+- 足够多投射 | enough projectives | 足够多内射 | enough injectives | Definition 1.4.8 | Def 1.4.8 | Proposition 7.1.21 → def.enough-projectives
 
 - 加法函子 | additive functor | Definition 5.1.2 | Def 5.1.2 → def.additive-functor
 

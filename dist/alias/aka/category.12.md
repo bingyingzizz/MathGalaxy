@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 局部化 | localization | ho(C) | 形式逆 | Proposition 1.4.12 | Prop 1.4.12 → def.localization
+
 - 分式演算 | calculus of fractions | Ore 条件 | Proposition 1.4.14 | Prop 1.4.14 → prop.calculus-of-fractions
 
 - 连通范畴 | connected category | 锯齿 → def.connected-category
@@ -16,7 +18,5 @@
 - 可表函子保极限 | 可表函子保所有极限 | representable preserves limits | left exact | 左正合 | 保有限极限 → prop.representable-preserves-limits
 
 - 幺半群对象 | monoid object | Mon(C) | 笛卡尔范畴 | cartesian category → def.monoid-object
-
-- 群对象 | group object | 阿贝尔群对象 | abelian group object | Gr(C) | Ab(C) → def.group-object
 
 > 续见 alias/aka/category.13.md

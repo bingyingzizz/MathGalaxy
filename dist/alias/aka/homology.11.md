@@ -1,6 +1,18 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- Banach 到离散全零 | Proposition 8.3.5 → prop.rhom-banach-discrete-zero
+
+- 紧 Haus 到 Banach 全零 | Proposition 8.3.6 → prop.rhom-chaus-banach-zero
+
+- 对偶的 RHom | 导出张量 | Proposition 8.3.7 → prop.rhom-dual-tensor
+
+- 对偶的 RHom 刻画 | Pontryagin 对偶与 RHom | Proposition 8.3.8 → prop.dual-rhom-characterization
+
+- 局部紧高次 Ext 消失 | Ext 消失 | Theorem 8.3.9 → thm.lc-ext-vanishing
+
+- ZRT 计算表 | RHom 计算表 | Exercise 8.17 → table.rhom-zrt
+
 - 有限维 Banach 的 RHom | Exercise 8.15 → ex.finite-banach-rhom
 
 - 紧 S 对 Banach 的 RHom | Exercise 8.12 → ex.chaus-banach-rhom
@@ -13,14 +25,4 @@
 
 - 正合列 | exact sequence | 短正合列 | Definition 5.2.3 → def.exact-sequence
 
-- 足够多内射 | enough injectives | Proposition 5.2.8 → prop.grothendieck-enough-injectives
-
-- AB5 与 AB3* | AB 公理关系 | Proposition 5.2.7 → prop.ab5-implications
-
-- AB 公理例子 | 哪些范畴满足 AB → prop.ab-axioms-examples
-
-- 单纯方法算上同调 | 超覆盖 | hypercover | Godement → method.simplicial-cohomology
-
-- Cartan-Eilenberg | Cartan–Eilenberg 分解 | Lemma 7.2.19 → lem.cartan-eilenberg
-
-见 `../../alias.md`。
+> 续见 alias/aka/homology.12.md
