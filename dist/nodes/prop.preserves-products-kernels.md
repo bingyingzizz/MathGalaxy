@@ -1,4 +1,4 @@
-# 保积与核 ⟹ 保所有有限极限　`prop.preserves-products-kernels`
+# 保积与核 $\implies$ 保所有有限极限　`prop.preserves-products-kernels`
 保积 + 保核 $\implies$ 保所有有限极限
 layer 14 · 命题 · 函子与自然变换 · 范畴论
 

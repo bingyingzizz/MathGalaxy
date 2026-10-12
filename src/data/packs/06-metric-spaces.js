@@ -174,7 +174,13 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '其实只要 $X$ 是 Hausdorff 空间，紧子集就是闭的；距离空间自然 Hausdorff。',
-        '把它和「$X$ 完备」放在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\\implies A$ 完备」。'
+        '把它和「$X$ 完备」放在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\\implies A$ 完备」。',
+        ['**证明。** 设 $A$ 紧，取 $x \\in X\\setminus A$ 要证它是内点。',
+          '- 对每个 $a \\in A$，由 Hausdorff 性取 $a$ 的开邻域 $U_{a}$ 与 $x$ 的开邻域 $V_{a}$ 使 $U_{a}\\cap V_{a} = \\emptyset$（距离空间里取 $U_{a} = B(a, r/2)$、$V_{a} = B(x, r/2)$，$r = d(a,x)$）；',
+          '- $\\{U_{a}\\}_{a\\in A}$ 是 $A$ 的开覆盖，由**紧性**取有限子覆盖 $U_{a_{1}}, \\ldots, U_{a_{n}}$；',
+          '- $V := \\bigcap_{i=1}^{n} V_{a_{i}}$ 是 $x$ 的开邻域，且 $V\\cap U_{a_{i}} = \\emptyset$ 对每个 $i$ 成立，故 $V \\cap A = \\emptyset$，即 $V \\subseteq X\\setminus A$ ✓。',
+          '于是 $X\\setminus A$ 开，$A$ 闭。∎'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Munkres, Topology, §26']
     },
@@ -196,7 +202,12 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠ **「$X$ 完备」这个前提不能省。** 理由是中间那一步：$A$ 作为子空间完备 $\\iff A$ 在 $X$ 中闭 —— 这一步要用 $X$ 完备。少了它，$A$ 闭 $A$ 全有界推不出 $A$ 紧。',
-        '这也是 **Heine–Borel** 的推广：$\\mathbb{R}^{n}$ 完备，而在 $\\mathbb{R}^{n}$ 中 $A$ 有界 $\\iff A$ 全有界，于是「有界闭集紧」正是它的特例。'
+        '这也是 **Heine–Borel** 的推广：$\\mathbb{R}^{n}$ 完备，而在 $\\mathbb{R}^{n}$ 中 $A$ 有界 $\\iff A$ 全有界，于是「有界闭集紧」正是它的特例。',
+        ['**证明。**',
+          '- **$\\implies$**：$A$ 紧 $\\implies$ $A$ 在 $X$ 中闭（上一条）。全有界：任给 $\\varepsilon > 0$，$\\{B(a,\\varepsilon)\\cap A\\}_{a\\in A}$ 是 $A$（带子空间度量）的开覆盖，紧性给有限子覆盖，那有限个中心就是 $\\varepsilon$-网 ✓。',
+          '- **$\\Longleftarrow$**：设 $A$ 闭、全有界。先看**完备性**：$X$ 完备、$A$ 闭，则 $A$ 里的 Cauchy 列在 $X$ 里收敛到某点，极限落在闭的 $A$ 里，故 $A$ 作为子空间完备 ✓。再证**紧**：全有界给可数稠密子集，于是 $A$ 里的任意序列可以用「逐层取 $2^{-n}$-网 + 抽屉原理」抽出 Cauchy 子列；完备性让这个子列收敛 ✓。所以 $A$ **列紧**；而在**度量空间**里列紧 $\\iff$ 紧 ✓。∎',
+          '⚠️ 「$X$ 完备 $\\implies$ $A$ 完备」那一步正是标题里那个前提的用处（见上一条说明）。'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Munkres, Topology, §28', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
     }
@@ -204,7 +215,7 @@ window.MG = window.MG || {};
 
   edges: [
 
-    /* ---------------------------------------- 紧 ⟹ 列紧 */
+    /* ---------------------------------------- 紧 $\\implies$ 列紧 */
     {
       id: 'imp.compact-seqcompact',
       kind: 'implication',
@@ -231,7 +242,7 @@ window.MG = window.MG || {};
       note: '只有这一步不需要选择公理。'
     },
 
-    /* ---------------------------------------- 列紧 ⟹ 全有界 */
+    /* ---------------------------------------- 列紧 $\\implies$ 全有界 */
     {
       id: 'imp.seqcompact-totbdd',
       kind: 'implication',
@@ -258,7 +269,7 @@ window.MG = window.MG || {};
       note: '顺带得到一个常用的推论：**列紧 $\\implies$ 有界**（因为全有界 $\\implies$ 有界）。'
     },
 
-    /* ---------------------------------------- 列紧 ⟹ 完备 */
+    /* ---------------------------------------- 列紧 $\\implies$ 完备 */
     {
       id: 'imp.seqcompact-complete',
       kind: 'implication',
@@ -279,7 +290,7 @@ window.MG = window.MG || {};
       note: '和「紧 $\\implies$ 完备」是同一个套路，只是把「紧」换成它的直接推论「列紧」。'
     },
 
-    /* ---------------------------------------- 列紧 ⟹ 紧 */
+    /* ---------------------------------------- 列紧 $\\implies$ 紧 */
     {
       id: 'imp.seqcompact-compact',
       kind: 'implication',
@@ -316,7 +327,7 @@ window.MG = window.MG || {};
       note: '「坏球」这一招的直觉是：让一串被架空的小球缩到一个极限点，再用极限点的开邻域一口吞掉它。整段只用全有界，没用选择公理。'
     },
 
-    /* ---------------------------------------- 紧 ⟹ 完备 */
+    /* ---------------------------------------- 紧 $\\implies$ 完备 */
     {
       id: 'imp.compact-complete',
       kind: 'implication',
@@ -337,7 +348,7 @@ window.MG = window.MG || {};
       note: '关键引理：「Cauchy 列 + 有一个收敛子列 $\\implies$ 收敛」，这在任何度量空间里都对。'
     },
 
-    /* ---------------------------------------- 紧 ⟹ 全有界 */
+    /* ---------------------------------------- 紧 $\\implies$ 全有界 */
     {
       id: 'imp.compact-totbdd',
       kind: 'implication',
@@ -359,7 +370,7 @@ window.MG = window.MG || {};
       ].join('\n')
     },
 
-    /* ---------------------------------------- 完备 + 全有界 ⟹ 列紧 */
+    /* ---------------------------------------- 完备 + 全有界 $\\implies$ 列紧 */
     {
       id: 'imp.complete-totbdd-seqcompact',
       kind: 'implication',

@@ -68,7 +68,22 @@ window.MG = window.MG || {};
       title: 'Tychonoff 定理：紧空间的任意积紧',
       regions: ['topology'],
       tags: ['拓扑', '紧', '积', 'Tychonoff', '选择公理'],
-      statement: '任意一族紧空间的**积**（带积拓扑）仍然紧 —— 任意多个，包括不可数多个。'
+      statement: '任意一族紧空间的**积**（带积拓扑）仍然紧 —— 任意多个，包括不可数多个。',
+      notes: [
+        ['**证明（Alexander 子基引理 + 选择公理）。** 记 $X = \\prod_{i\\in I} X_{i}$，投影 $p_{i} : X\\to X_{i}$。取**子基**',
+          '$$\\mathcal{S} := \\{\\, p_{i}^{-1}(U_{i}) \\;:\\; i\\in I,\\ U_{i}\\subseteq X_{i}\\ \\text{开} \\,\\}.$$',
+          '**Alexander 子基引理**：拓扑空间紧 $\\iff$ 每个由子基成员组成的覆盖都有有限子覆盖。所以只需验证后者。',
+          '设 $\\mathcal{S}_{0} \\subseteq \\mathcal{S}$ 覆盖 $X$，反设它**没有**有限子覆盖。对每个 $i$ 记',
+          '$$\\mathcal{U}_{i} := \\{\\, U_{i} : p_{i}^{-1}(U_{i}) \\in \\mathcal{S}_{0} \\,\\},\\qquad F_{i} := X_{i}\\setminus \\bigcup \\mathcal{U}_{i}.$$',
+          '- **$F_{i} \\ne \\emptyset$**：否则 $\\mathcal{U}_{i}$ 是紧空间 $X_{i}$ 的开覆盖，取有限子覆盖 $U_{1},\\ldots,U_{n}$，对应的 $p_{i}^{-1}(U_{1}),\\ldots,p_{i}^{-1}(U_{n})$ 就是 $X$ 的有限子覆盖 —— 与反设矛盾 ✓。',
+          '- 由**选择公理**取 $x_{i} \\in F_{i}$，令 $x := (x_{i})_{i\\in I} \\in X$。',
+          '- 于是对每个 $p_{i}^{-1}(U_{i})\\in \\mathcal{S}_{0}$ 都有 $x_{i} \\notin U_{i}$（因 $x_{i}\\in F_{i}$），故 $x \\notin p_{i}^{-1}(U_{i})$ 对**所有**成员成立 —— 与 $\\mathcal{S}_{0}$ 覆盖 $X$ 矛盾 ✓。',
+          '所以每个子基覆盖都有有限子覆盖，由 Alexander 引理 $X$ 紧。∎',
+          '（Alexander 引理本身：若某覆盖族无有限子覆盖，用 Zorn 把它扩成一个极大的这种族 $\\mathcal{M}$，则「非 $\\mathcal{M}$ 成员」的取法给出一族与子基有关的数据，逐条推出 $\\mathcal{M}$ 其实是覆盖、矛盾。）'
+        ].join('\n'),
+        '⭐ **Tychonoff 与选择公理等价**（在 ZF 里互相推出）—— 这是「选择公理有多强」的一个标准刻度。'
+      ].join('\n\n'),
+      refs: ['Munkres, Topology, §37', 'Le Stum, Exercise 2.19']
     },
 
     /* -------------------------------------------- site 的拓扑生成集 */

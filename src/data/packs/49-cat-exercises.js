@@ -52,6 +52,13 @@ window.MG = window.MG || {};
         '记号 $[G, G]$ 是**换位子子群**（由所有 $g h g^{-1} h^{-1}$ 生成）—— 它是正规子群，商掉它正好把「非交换性」清零。',
         '⭐ **伴随的读法**：任何群同态 $G \\to A$（$A$ 阿贝尔）都唯一地穿过 $G \\to G^{\\mathrm{ab}}$。也就是说**「从 $G$ 到阿贝尔群」的映射全都只看 $G^{\\mathrm{ab}}$** —— 这就是「交换化是最经济的把群变阿贝尔的办法」。',
         '**例子**：自由群 $F(S)^{\\mathrm{ab}} \\cong \\mathbb{Z}^{\\oplus S}$（自由阿贝尔群）。所以「自由阿贝尔群函子」= 「自由群函子」再交换化。',
+        ['**证明。** 要造自然双射',
+          '$$\\operatorname{Hom}_{\\mathbf{Grp}}(G,\\ A) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(G^{\\mathrm{ab}},\\ A\\bigr),\\qquad A\\ \\text{阿贝尔}.$$',
+          '- **良定义**：任给群同态 $\\varphi : G\\to A$（$A$ 阿贝尔）。换位子 $ghg^{-1}h^{-1}$ 被送到 $\\varphi(g)\\varphi(h)\\varphi(g)^{-1}\\varphi(h)^{-1} = e$（交换性！），故 $[G,G] \\subseteq \\ker\\varphi$，于是 $\\varphi$ 唯一地穿过商 $G\\twoheadrightarrow G^{\\mathrm{ab}}$ ✓。',
+          '- **反向**是 $G\\to G^{\\mathrm{ab}}$ 与函数的复合 ✓，且两个方向互逆（在 $G^{\\mathrm{ab}}$ 上验一次、在 $\\operatorname{Hom}(G,A)$ 上验一次）✓。',
+          '- **自然性**对 $G$ 与 $A$ 都逐项验证（$G\\to G\'$ 的像把 $[G,G]$ 送进 $[G\',G\']$，故诱导 $G^{\\mathrm{ab}}\\to G\'^{\\mathrm{ab}}$）✓。∎',
+          '⭐ 这正是「交换化是左伴随」的含义：它是「把非交换性清零」的**最经济**的函子 —— 任何到阿贝尔群的映射都只能看到 $G^{\\mathrm{ab}}$。'
+        ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Exercise 1.9'],
     },
@@ -108,7 +115,7 @@ window.MG = window.MG || {};
       id: 'prop.preserves-products-kernels',
       cluster: 'cat.functor',
       type: 'proposition',
-      label: '保积与核 ⟹ 保所有有限极限',
+      label: '保积与核 $\\implies$ 保所有有限极限',
       title: '保积 + 保核 $\\implies$ 保所有有限极限',
       regions: ['category'],
       tags: ['范畴论', '保极限', '积', '核', '左正合'],
@@ -119,7 +126,7 @@ window.MG = window.MG || {};
       id: 'prop.preserves-fibered-products-mono',
       cluster: 'cat.functor',
       type: 'proposition',
-      label: '保纤维积 ⟹ 保单态射',
+      label: '保纤维积 $\\implies$ 保单态射',
       title: '保拉回 $\\implies$ 保单态射',
       regions: ['category'],
       tags: ['范畴论', '纤维积', '拉回', '单态射', '保'],
@@ -241,7 +248,7 @@ window.MG = window.MG || {};
       id: 'prop.filtered-finite-colimits',
       cluster: 'cat.limit',
       type: 'proposition',
-      label: '滤过 + 有限余极限 ⟹ 所有余极限',
+      label: '滤过 + 有限余极限 $\\implies$ 所有余极限',
       title: '有余滤过余极限与有限余极限 $\\implies$ 有所有余极限',
       regions: ['category'],
       tags: ['范畴论', '滤过余极限', '余极限', '完备性'],
@@ -256,7 +263,19 @@ window.MG = window.MG || {};
       title: '交换环的推出 = 张量积',
       regions: ['algebra', 'category'],
       tags: ['代数', '环', '张量积', '推出'],
-      statement: '在**交换环**范畴里，沿 $A \\to B$、$A \\to C$ 的**纤维余积**（推出）是 $B \\otimes_{A} C$。'
+      statement: '在**交换环**范畴里，沿 $A \\to B$、$A \\to C$ 的**纤维余积**（推出）是 $B \\otimes_{A} C$。',
+      notes: [
+        ['**证明（验证推出的泛性质）。** 记 $D := B\\otimes_{A} C$，$\\beta : B\\to D$、$\\gamma : C\\to D$ 为 $b\\mapsto b\\otimes 1$、$c\\mapsto 1\\otimes c$。',
+          '- **方块交换**：$\\beta(a\\cdot 1_{B}) = a\\otimes 1 = 1\\otimes a\\cdot 1 = \\gamma(a\\cdot 1_{C})$，即 $\\beta\\circ(A\\to B) = \\gamma\\circ(A\\to C)$ ✓；',
+          '- **泛性质**：任给交换环 $E$ 与同态 $f : B\\to E$、$g : C\\to E$ 使 $f|_{A} = g|_{A}$，定义',
+          '$$\\varphi\\Bigl(\\sum_{k} b_{k}\\otimes c_{k}\\Bigr) := \\sum_{k} f(b_{k})\\,g(c_{k}) \\in E .$$',
+          '它是**良定义**的：$\\otimes$ 的双线性关系逐条被 $f,g$ 的乘法性与 $f|_{A}=g|_{A}$ 满足（例如 $ab\\otimes c - b\\otimes ac \\mapsto f(ab)g(c)-f(b)g(ac) = f(a)f(b)g(c) - f(b)g(a)g(c) = 0$）✓；由交换性 $\\varphi$ 是环同态 ✓；且 $\\varphi\\beta = f$、$\\varphi\\gamma = g$ ✓。',
+          '- **唯一性**：$D$ 由 $\\beta(B)\\cup\\gamma(C)$ 生成（$b\\otimes c = \\beta(b)\\gamma(c)$），故在两个生成块上定死就唯一 ✓。',
+          '于是 $D$ 满足推出的泛性质，即 $B\\otimes_{A}C = B\\coprod_{A} C$。∎',
+          '⚠️ **交换性是必需的**：非交换环上，$B\\otimes_{A}C$ 一般不是环（乘法在张量积上不下降）—— 那时纤维余积要用自由积 / 余等化子另造。'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Exercise 1.36']
     }
   ],
 

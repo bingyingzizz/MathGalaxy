@@ -8,3 +8,5 @@
 **用在哪**：$A\text{-}\mathbf{Mod}$、$\operatorname{Ind}(\mathcal{C})$、拓扑斯上的 $\mathbf{Ab}(\mathcal{T})$、$\mathrm{CondAb}$ —— 都是 Grothendieck 范畴，于是右导出函子、导出范畴、谱序列这一整套在它们上面全部可用。这就是 Grothendieck 那一代人挑出「AB5 + 生成元」这两条的全部理由。
 
 📌 随定义而来的另一条（同章）：Grothendieck 范畴**自动满足 AB3\***（有所有极限）—— 极限的存在性不用额外假设。
+
+> 续见 notes/prop.grothendieck-enough-injectives.2.md

@@ -7,3 +7,7 @@ layer 19 · 命题 · 代数结构 · 抽象代数+范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.ring` 环：用到了定义 环　proofs/def-dep.ringtensor-ring.md
 - `def.tensor-abelian-sheaf` 阿贝尔层的张量积：用到了定义 阿贝尔层的张量积　proofs/def-dep.ringtensor-tensor.md
+
+refs: Le Stum, Exercise 1.36
+
+> 说明见 `notes/prop.ring-tensor-coproduct.md`

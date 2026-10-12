@@ -3,12 +3,13 @@
 layer 17 · 命题 · Stone 与 Stonean · 拓扑学
 
 全不连通空间构成的范畴是 $\mathbf{Top}$ 的**反射子范畴**，反射是
-> 陈述续见 `nodes/prop.td-reflective.2.md`
 
+$$\pi_{0} : \mathbf{Top} \longrightarrow \mathbf{Top}_{\mathrm{td}}, \qquad X \mapsto \pi_{0}(X)$$
+
+并且 $X \to \pi_{0}(X)$ 是同构 $\iff$ $X$ 全不连通。
 
 ## 为什么成立（入边，证明在 proofs/）
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-dep.stone-td-reflective.md
 - `def.connected` 连通与连通分量：用到了定义 连通与连通分量　proofs/def-dep.connected-td-reflective.md
 
-## 说明
-推论：**全不连通空间的任意极限仍是全不连通的** —— 因为 $\pi_{0}$ 作为反射（一个左伴随）保余极限，而含入函子保极限。这条与「$\mathbf{CHaus}$ 对极限封闭」叠起来，就是 Stone 空间与 Stonean 空间各自对极限封闭。
+> 说明见 `notes/prop.td-reflective.md`

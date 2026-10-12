@@ -1,4 +1,4 @@
-# 滤过 + 有限余极限 ⟹ 所有余极限　`prop.filtered-finite-colimits`
+# 滤过 + 有限余极限 $\implies$ 所有余极限　`prop.filtered-finite-colimits`
 有余滤过余极限与有限余极限 $\implies$ 有所有余极限
 layer 12 · 命题 · 图与极限 · 范畴论
 

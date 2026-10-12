@@ -7,3 +7,7 @@ layer 15 · 定理 · 拓扑空间 · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.compact` 紧：用到了定义 紧　proofs/def-dep.tykhonov-compact.md
 - `def.product-topology` 积拓扑：用到了定义 积拓扑　proofs/def-dep.tykhonov-product.md
+
+refs: Munkres, Topology, §37；Le Stum, Exercise 2.19
+
+> 说明见 `notes/thm.tykhonov.md`

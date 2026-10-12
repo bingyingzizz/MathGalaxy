@@ -112,7 +112,15 @@ window.MG = window.MG || {};
         '',
         '是连续满射。'
       ].join('\n'),
-      notes: '恒等映射 $S^{\\mathrm{disc}} \\to S$ 连续（离散拓扑最细），沿它的 Stone–Čech 泛性质给出 $\\beta S^{\\mathrm{disc}} \\to S$。既然 $S^{\\mathrm{disc}} \\to S$ 已经是满射，而紧空间的连续满像 $\\beta S^{\\mathrm{disc}} \\to S$ 作用在稠密的 $S^{\\mathrm{disc}}$ 上已经覆盖了 $S$，满射性就跟着来了。'
+      notes: [
+        '恒等映射 $S^{\\mathrm{disc}} \\to S$ 连续（离散拓扑最细），沿它的 Stone–Čech 泛性质给出 $\\beta S^{\\mathrm{disc}} \\to S$。既然 $S^{\\mathrm{disc}} \\to S$ 已经是满射，而紧空间的连续满像 $\\beta S^{\\mathrm{disc}} \\to S$ 作用在稠密的 $S^{\\mathrm{disc}}$ 上已经覆盖了 $S$，满射性就跟着来了。',
+        ['**证明（写成正式的）。** 记 $f : S^{\\mathrm{disc}}\\to S$ 为恒等映射，它连续（离散拓扑最细）。由 Stone–Čech 的**泛性质**，$f$ 唯一地延拓为 $\\bar f : \\beta S^{\\mathrm{disc}} \\to S$，使 $\\bar f\\circ\\iota = f$（$\\iota$ 是稠密嵌入）。',
+          '- 由泛性质，两个映射 $\\beta S^{\\mathrm{disc}} \\rightrightarrows S$ 若在 $\\iota(S^{\\mathrm{disc}})$ 上相同则相等；',
+          '- 于是 $\\bar f\\bigl(\\overline{\\iota(S^{\\mathrm{disc}})}\\bigr) = \\bar f(\\beta S^{\\mathrm{disc}})$（**连续性 + 稠密性**：像的闭包等于闭包在连续映射下的像）$= \\overline{f(S^{\\mathrm{disc}})} = \\overline{S} = S$ ✓。',
+          '故 $\\bar f$ 满。∎',
+          '⭐ 这条与「紧 Hausdorff 是 $\\mathbf{Top}$ 的反射子范畴」是一回事，只是换了个说法：反射子范畴里每个对象都是自由对象的商，而自由对象就是 $\\beta I$。'
+        ].join('\n')
+      ].join('\n\n')
     },
 
     /* ---------------------------------------------------- 投射对象 */
@@ -243,7 +251,15 @@ window.MG = window.MG || {};
         '',
         '**(b)** 极端不连通的 Hausdorff 空间是**全不连通**的。'
       ].join('\n'),
-      notes: '**(a)** 反证：若 $\\overline{U} \\cap \\overline{V}$ 非空，取其中的点 $x$。因为 $X$ 极端不连通，$\\overline{U}$ 与 $\\overline{V}$ 都是闭开的，于是它们与自己的内部的关系逼出矛盾 —— 具体地说，$x$ 的每个邻域都要同时碰到 $U$ 与 $V$，而这两个闭开集又把 $x$ 与「另一个」隔开。\n\n**(b)** 设 $x \\ne y$。Hausdorff 性给出分离它们的开集 $U \\ni x$、$V \\ni y$，由 (a) 得两个不交的闭开集把 $x$ 与 $y$ 隔开，于是 $C(x) \\subseteq U \\not\\ni y$，$y \\notin C(x)$。所以每个连通分量是单点。'
+      notes: [
+        '**(a)** 反证：若 $\\overline{U} \\cap \\overline{V}$ 非空，取其中的点 $x$。因为 $X$ 极端不连通，$\\overline{U}$ 与 $\\overline{V}$ 都是闭开的，于是它们与自己的内部的关系逼出矛盾 —— 具体地说，$x$ 的每个邻域都要同时碰到 $U$ 与 $V$，而这两个闭开集又把 $x$ 与「另一个」隔开。',
+        '**(b)** 设 $x \\ne y$。Hausdorff 性给出分离它们的开集 $U \\ni x$、$V \\ni y$，由 (a) 得两个不交的闭开集把 $x$ 与 $y$ 隔开，于是 $C(x) \\subseteq U \\not\\ni y$，$y \\notin C(x)$。所以每个连通分量是单点。',
+        ['**把 (a) 写严。** 设 $U, V$ 不交开。令 $W := X\\setminus \\overline{V}$ —— 它开，且 $U\\subseteq W$。',
+          '因为 $U\\subseteq W = W^{\\circ}$，取闭包得 $\\overline U\\subseteq\\overline{W^{\\circ}}$；而**极端不连通的等价刻画**是「任意开集的闭包开」，即 $\\overline{W^{\\circ}}$ 是开的，于是 $\\overline{W^{\\circ}} = W^{\\circ}$，所以 $\\overline U \\subseteq W^{\\circ} = W = X\\setminus\\overline V$，即 $\\overline U\\cap\\overline V = \\emptyset$ ✓。∎',
+          '（等价说法：极端不连通 $\\iff$ 不交开集的闭包不交。）',
+          '**(b) 写严**：由 (a)，Hausdorff 性给出的分离开集 $U\\ni x$、$V\\ni y$ 满足 $\\overline U\\cap\\overline V = \\emptyset$；而 $\\overline U$、$\\overline V$ 都是**闭开**的（极端不连通），于是它们构成 $x$ 与 $y$ 之间的一个开闭分隔：$x$ 的连通分量含于 $\\overline U$，故不含 $y$ ✓。于是每个连通分量是单点，即全不连通。∎'
+        ].join('\n')
+      ].join('\n\n')
     },
 
     /* ---------------------------------------- 全不连通是反射子范畴 */
@@ -262,7 +278,16 @@ window.MG = window.MG || {};
         '',
         '并且 $X \\to \\pi_{0}(X)$ 是同构 $\\iff$ $X$ 全不连通。'
       ].join('\n'),
-      notes: '推论：**全不连通空间的任意极限仍是全不连通的** —— 因为 $\\pi_{0}$ 作为反射（一个左伴随）保余极限，而含入函子保极限。这条与「$\\mathbf{CHaus}$ 对极限封闭」叠起来，就是 Stone 空间与 Stonean 空间各自对极限封闭。'
+      notes: [
+        '推论：**全不连通空间的任意极限仍是全不连通的** —— 因为 $\\pi_{0}$ 作为反射（一个左伴随）保余极限，而含入函子保极限。这条与「$\\mathbf{CHaus}$ 对极限封闭」叠起来，就是 Stone 空间与 Stonean 空间各自对极限封闭。',
+        ['**证明。** 记 $\\mathbf{Top}_{\\mathrm{td}}$ 为全不连通空间范畴，含入 $i : \\mathbf{Top}_{\\mathrm{td}}\\hookrightarrow\\mathbf{Top}$。要证 $i$ 有左伴随 $\\pi_{0}$。',
+          '- **构造**：$\\pi_{0}(X)$ 取 $X$ 的连通分量全体，配**商拓扑**（$X\\to\\pi_{0}(X)$ 把每点送到它的分量）。商拓扑下 $\\pi_{0}(X)$ 全不连通（连通分量的原像是……分量在商里是单点，而商空间里单点是否开闭要看原像是否开闭 —— 一般 $\\pi_{0}$ 只是「全不连通」而未必离散，符合要求）；',
+          '- **泛性质**：任给 $f : X \\to Y$（$Y$ 全不连通）。连续映射把连通集送到连通集，而 $Y$ 的连通子集只有单点，故 $f$ 在每个连通分量上取常值，于是 $f$ 唯一地穿过 $X\\to\\pi_{0}(X)$ ✓。',
+          '两个方向互逆，故 $\\pi_{0}\\dashv i$ ✓，即 $\\mathbf{Top}_{\\mathrm{td}}$ 是反射子范畴。',
+          '**「$X\\to\\pi_{0}(X)$ 是同构」** $\\iff$ 每个分量是单点 $\\iff$ $X$ 全不连通 ✓。∎',
+          '⭐ 推论读法：反射子范畴等价于「含入有左伴随」，而左伴随保余极限 —— 但这里要用的是**含入保极限**（右伴随保极限），于是全不连通空间的极限（在 $\\mathbf{Top}$ 里算）落回全不连通 ✓。'
+        ].join('\n')
+      ].join('\n\n')
     },
 
     /* ---------------------------------------------- Stone 是反射的 */
@@ -275,7 +300,15 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '反射'],
       statement: 'Stone 空间构成的范畴是 $\\mathbf{CHaus}$ 的反射子范畴。',
-      notes: '推论：**Stone 空间的任意极限仍是 Stone 空间**。把这条与「全不连通空间对极限封闭」并排看，就能读出 Stone 空间的双重身份：它既是「紧 Hausdorff 里全不连通的那些」，也是「紧 Hausdorff 这个反射子范畴里再反射一次剩下的那些」。'
+      notes: [
+        '推论：**Stone 空间的任意极限仍是 Stone 空间**。把这条与「全不连通空间对极限封闭」并排看，就能读出 Stone 空间的双重身份：它既是「紧 Hausdorff 里全不连通的那些」，也是「紧 Hausdorff 这个反射子范畴里再反射一次剩下的那些」。',
+        ['**证明。** Stone 空间 = 紧 Hausdorff **且**全不连通。把两个反射叠起来：',
+          '- 含入 $\\mathbf{CHaus}\\hookrightarrow\\mathbf{Top}$ 有**左**伴随 $\\beta$（Stone–Čech 紧化），即 $\\mathbf{CHaus}$ 是反射子范畴；',
+          '- 在 $\\mathbf{CHaus}$ 内部再取全不连通的那些：含入 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 有左伴随「取紧 Hausdorff 空间的连通分量商」$S\\mapsto S/\\!\\sim$（把每个连通分量压成一点），因为连续映射把紧 Hausdorff 的连通分量送到连通集、而全不连通空间里连通集只有单点；',
+          '- 于是 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 是反射子范畴，反射是「取连通分量商」（它对紧 Hausdorff 空间仍是紧 Hausdorff ✓）。∎',
+          '⭐ 反射子范畴的**含入保极限**，所以 Stone 空间的极限（在 $\\mathbf{CHaus}$ 或 $\\mathbf{Top}$ 里算）仍是 Stone ✓ —— 这正是「Stone 空间对极限封闭」。'
+        ].join('\n')
+      ].join('\n\n')
     },
 
     /* ---------------------------------------------------- 投射有限 */
@@ -331,7 +364,14 @@ window.MG = window.MG || {};
       statement: [
         'Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续映射 $r : X \\to A$ 使 $r|_{A} = 1_{A}$（这样的 $A$ 叫 $X$ 的收缩核）。'
       ].join('\n'),
-      notes: '这条把 Gleason 定理翻译成了一句「具体拓扑」的话：投射性 = 收缩核。与模论里「投射模 = 自由模的直和项」完全平行 —— 两者都是「投射 = 从自由对象上切一块下来」。'
+      notes: [
+        '这条把 Gleason 定理翻译成了一句「具体拓扑」的话：投射性 = 收缩核。与模论里「投射模 = 自由模的直和项」完全平行 —— 两者都是「投射 = 从自由对象上切一块下来」。',
+        ['**证明（把 Gleason 与「$\\mathbf{CHaus}$ 里每个对象都是自由的商」拼起来）。**',
+          '- **$(\\implies)$**：设 $A$ 是 Stonean。取自由紧 Hausdorff 空间 $F$ 与满射 $p : F\\twoheadrightarrow A$（「$\\mathbf{CHaus}$ 里每个对象都是自由的商」）。Stonean $\\implies$ 由 **Gleason 定理** $A$ 是 $\\mathbf{CHaus}$ 里的**投射对象**，于是满射 $p : F\\to A$ 有**截面** $s : A\\to F$，即 $p\\circ s = \\mathrm{id}_{A}$ —— 这正是「$A$ 是 $F$ 的收缩核」（取 $r := p$）✓。',
+          '- **$(\\Longleftarrow)$**：若 $A$ 是自由对象 $F$ 的收缩核（$r: F\\to A$，$r|_A = \\mathrm{id}$），则由**投射对象的收缩核仍投射**（标准事实：投射对象的直和项/收缩核还是投射的），$A$ 在 $\\mathbf{CHaus}$ 里投射；再由 Gleason 定理，$A$ 是 Stonean ✓。∎',
+          '⭐ 这条是「Stonean = 自由紧 Hausdorff 的收缩核」的完整论证，也是后面「$\\mathbb{Z}[S]$ 投射」的来源（$S$ 的收缩核给出截面，截面给出 $\\mathbb{Z}[S]$ 的投射性）。'
+        ].join('\n')
+      ].join('\n\n')
     }
   ],
 

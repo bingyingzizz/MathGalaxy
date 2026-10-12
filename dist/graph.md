@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T03:30:31.562Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T03:41:29.674Z
 > 9 星系 / 45 星团 / 542 节点 / 1136 连线（强边 1127，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -1452,6 +1452,21 @@ $$f(x) := \inf\{\, q : x \in U_{q} \,\}$$
 
 任意一族紧空间的**积**（带积拓扑）仍然紧 —— 任意多个，包括不可数多个。
 
+**证明（Alexander 子基引理 + 选择公理）。** 记 $X = \prod_{i\in I} X_{i}$，投影 $p_{i} : X\to X_{i}$。取**子基**
+$$\mathcal{S} := \{\, p_{i}^{-1}(U_{i}) \;:\; i\in I,\ U_{i}\subseteq X_{i}\ \text{开} \,\}.$$
+**Alexander 子基引理**：拓扑空间紧 $\iff$ 每个由子基成员组成的覆盖都有有限子覆盖。所以只需验证后者。
+设 $\mathcal{S}_{0} \subseteq \mathcal{S}$ 覆盖 $X$，反设它**没有**有限子覆盖。对每个 $i$ 记
+$$\mathcal{U}_{i} := \{\, U_{i} : p_{i}^{-1}(U_{i}) \in \mathcal{S}_{0} \,\},\qquad F_{i} := X_{i}\setminus \bigcup \mathcal{U}_{i}.$$
+- **$F_{i} \ne \emptyset$**：否则 $\mathcal{U}_{i}$ 是紧空间 $X_{i}$ 的开覆盖，取有限子覆盖 $U_{1},\ldots,U_{n}$，对应的 $p_{i}^{-1}(U_{1}),\ldots,p_{i}^{-1}(U_{n})$ 就是 $X$ 的有限子覆盖 —— 与反设矛盾 ✓。
+- 由**选择公理**取 $x_{i} \in F_{i}$，令 $x := (x_{i})_{i\in I} \in X$。
+- 于是对每个 $p_{i}^{-1}(U_{i})\in \mathcal{S}_{0}$ 都有 $x_{i} \notin U_{i}$（因 $x_{i}\in F_{i}$），故 $x \notin p_{i}^{-1}(U_{i})$ 对**所有**成员成立 —— 与 $\mathcal{S}_{0}$ 覆盖 $X$ 矛盾 ✓。
+所以每个子基覆盖都有有限子覆盖，由 Alexander 引理 $X$ 紧。∎
+（Alexander 引理本身：若某覆盖族无有限子覆盖，用 Zorn 把它扩成一个极大的这种族 $\mathcal{M}$，则「非 $\mathcal{M}$ 成员」的取法给出一族与子基有关的数据，逐条推出 $\mathcal{M}$ 其实是覆盖、矛盾。）
+
+⭐ **Tychonoff 与选择公理等价**（在 ZF 里互相推出）—— 这是「选择公理有多强」的一个标准刻度。
+
+参考：Munkres, Topology, §37；Le Stum, Exercise 2.19
+
 ### 星团：度量空间
 > 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
 
@@ -1575,6 +1590,12 @@ $$A\text{ 紧} \implies A\text{ 是} X\text{ 中的闭集}$$
 
 把它和「$X$ 完备」放在一起，正是为了下面那条**子集**的紧性刻画做准备：那条要用「$A$ 紧 $\implies A$ 闭」和「$A$ 闭 $X$ 完备 $\implies A$ 完备」。
 
+**证明。** 设 $A$ 紧，取 $x \in X\setminus A$ 要证它是内点。
+- 对每个 $a \in A$，由 Hausdorff 性取 $a$ 的开邻域 $U_{a}$ 与 $x$ 的开邻域 $V_{a}$ 使 $U_{a}\cap V_{a} = \emptyset$（距离空间里取 $U_{a} = B(a, r/2)$、$V_{a} = B(x, r/2)$，$r = d(a,x)$）；
+- $\{U_{a}\}_{a\in A}$ 是 $A$ 的开覆盖，由**紧性**取有限子覆盖 $U_{a_{1}}, \ldots, U_{a_{n}}$；
+- $V := \bigcap_{i=1}^{n} V_{a_{i}}$ 是 $x$ 的开邻域，且 $V\cap U_{a_{i}} = \emptyset$ 对每个 $i$ 成立，故 $V \cap A = \emptyset$，即 $V \subseteq X\setminus A$ ✓。
+于是 $X\setminus A$ 开，$A$ 闭。∎
+
 参考：Munkres, Topology, §26
 
 #### 子集的紧性刻画　`prop.subset-compact-equiv`
@@ -1589,6 +1610,11 @@ $$A\text{ 紧} \iff A\text{ 闭}\text{ 且} A\text{ 全有界}$$
 ⚠ **「$X$ 完备」这个前提不能省。** 理由是中间那一步：$A$ 作为子空间完备 $\iff A$ 在 $X$ 中闭 —— 这一步要用 $X$ 完备。少了它，$A$ 闭 $A$ 全有界推不出 $A$ 紧。
 
 这也是 **Heine–Borel** 的推广：$\mathbb{R}^{n}$ 完备，而在 $\mathbb{R}^{n}$ 中 $A$ 有界 $\iff A$ 全有界，于是「有界闭集紧」正是它的特例。
+
+**证明。**
+- **$\implies$**：$A$ 紧 $\implies$ $A$ 在 $X$ 中闭（上一条）。全有界：任给 $\varepsilon > 0$，$\{B(a,\varepsilon)\cap A\}_{a\in A}$ 是 $A$（带子空间度量）的开覆盖，紧性给有限子覆盖，那有限个中心就是 $\varepsilon$-网 ✓。
+- **$\Longleftarrow$**：设 $A$ 闭、全有界。先看**完备性**：$X$ 完备、$A$ 闭，则 $A$ 里的 Cauchy 列在 $X$ 里收敛到某点，极限落在闭的 $A$ 里，故 $A$ 作为子空间完备 ✓。再证**紧**：全有界给可数稠密子集，于是 $A$ 里的任意序列可以用「逐层取 $2^{-n}$-网 + 抽屉原理」抽出 Cauchy 子列；完备性让这个子列收敛 ✓。所以 $A$ **列紧**；而在**度量空间**里列紧 $\iff$ 紧 ✓。∎
+⚠️ 「$X$ 完备 $\implies$ $A$ 完备」那一步正是标题里那个前提的用处（见上一条说明）。
 
 参考：Munkres, Topology, §28；Rudin, Principles of Mathematical Analysis, Ch. 2
 
@@ -1659,6 +1685,12 @@ $$F := \beta\, S^{\mathrm{disc}} \longrightarrow S$$
 是连续满射。
 
 恒等映射 $S^{\mathrm{disc}} \to S$ 连续（离散拓扑最细），沿它的 Stone–Čech 泛性质给出 $\beta S^{\mathrm{disc}} \to S$。既然 $S^{\mathrm{disc}} \to S$ 已经是满射，而紧空间的连续满像 $\beta S^{\mathrm{disc}} \to S$ 作用在稠密的 $S^{\mathrm{disc}}$ 上已经覆盖了 $S$，满射性就跟着来了。
+
+**证明（写成正式的）。** 记 $f : S^{\mathrm{disc}}\to S$ 为恒等映射，它连续（离散拓扑最细）。由 Stone–Čech 的**泛性质**，$f$ 唯一地延拓为 $\bar f : \beta S^{\mathrm{disc}} \to S$，使 $\bar f\circ\iota = f$（$\iota$ 是稠密嵌入）。
+- 由泛性质，两个映射 $\beta S^{\mathrm{disc}} \rightrightarrows S$ 若在 $\iota(S^{\mathrm{disc}})$ 上相同则相等；
+- 于是 $\bar f\bigl(\overline{\iota(S^{\mathrm{disc}})}\bigr) = \bar f(\beta S^{\mathrm{disc}})$（**连续性 + 稠密性**：像的闭包等于闭包在连续映射下的像）$= \overline{f(S^{\mathrm{disc}})} = \overline{S} = S$ ✓。
+故 $\bar f$ 满。∎
+⭐ 这条与「紧 Hausdorff 是 $\mathbf{Top}$ 的反射子范畴」是一回事，只是换了个说法：反射子范畴里每个对象都是自由对象的商，而自由对象就是 $\beta I$。
 
 #### 投射 / 内射对象　`def.projective-object`
 *定义*　投射对象与内射对象（Projective / Injective Object）
@@ -1743,6 +1775,11 @@ $$C(x) \;=\; \bigcap \{\, K \subseteq S : K \text{ 闭开},\ x \in K \,\}$$
 
 **(b)** 设 $x \ne y$。Hausdorff 性给出分离它们的开集 $U \ni x$、$V \ni y$，由 (a) 得两个不交的闭开集把 $x$ 与 $y$ 隔开，于是 $C(x) \subseteq U \not\ni y$，$y \notin C(x)$。所以每个连通分量是单点。
 
+**把 (a) 写严。** 设 $U, V$ 不交开。令 $W := X\setminus \overline{V}$ —— 它开，且 $U\subseteq W$。
+因为 $U\subseteq W = W^{\circ}$，取闭包得 $\overline U\subseteq\overline{W^{\circ}}$；而**极端不连通的等价刻画**是「任意开集的闭包开」，即 $\overline{W^{\circ}}$ 是开的，于是 $\overline{W^{\circ}} = W^{\circ}$，所以 $\overline U \subseteq W^{\circ} = W = X\setminus\overline V$，即 $\overline U\cap\overline V = \emptyset$ ✓。∎
+（等价说法：极端不连通 $\iff$ 不交开集的闭包不交。）
+**(b) 写严**：由 (a)，Hausdorff 性给出的分离开集 $U\ni x$、$V\ni y$ 满足 $\overline U\cap\overline V = \emptyset$；而 $\overline U$、$\overline V$ 都是**闭开**的（极端不连通），于是它们构成 $x$ 与 $y$ 之间的一个开闭分隔：$x$ 的连通分量含于 $\overline U$，故不含 $y$ ✓。于是每个连通分量是单点，即全不连通。∎
+
 #### 全不连通空间是反射子范畴　`prop.td-reflective`
 *命题*　全不连通空间是 $\mathbf{Top}$ 的反射子范畴
 
@@ -1754,12 +1791,25 @@ $$\pi_{0} : \mathbf{Top} \longrightarrow \mathbf{Top}_{\mathrm{td}}, \qquad X \m
 
 推论：**全不连通空间的任意极限仍是全不连通的** —— 因为 $\pi_{0}$ 作为反射（一个左伴随）保余极限，而含入函子保极限。这条与「$\mathbf{CHaus}$ 对极限封闭」叠起来，就是 Stone 空间与 Stonean 空间各自对极限封闭。
 
+**证明。** 记 $\mathbf{Top}_{\mathrm{td}}$ 为全不连通空间范畴，含入 $i : \mathbf{Top}_{\mathrm{td}}\hookrightarrow\mathbf{Top}$。要证 $i$ 有左伴随 $\pi_{0}$。
+- **构造**：$\pi_{0}(X)$ 取 $X$ 的连通分量全体，配**商拓扑**（$X\to\pi_{0}(X)$ 把每点送到它的分量）。商拓扑下 $\pi_{0}(X)$ 全不连通（连通分量的原像是……分量在商里是单点，而商空间里单点是否开闭要看原像是否开闭 —— 一般 $\pi_{0}$ 只是「全不连通」而未必离散，符合要求）；
+- **泛性质**：任给 $f : X \to Y$（$Y$ 全不连通）。连续映射把连通集送到连通集，而 $Y$ 的连通子集只有单点，故 $f$ 在每个连通分量上取常值，于是 $f$ 唯一地穿过 $X\to\pi_{0}(X)$ ✓。
+两个方向互逆，故 $\pi_{0}\dashv i$ ✓，即 $\mathbf{Top}_{\mathrm{td}}$ 是反射子范畴。
+**「$X\to\pi_{0}(X)$ 是同构」** $\iff$ 每个分量是单点 $\iff$ $X$ 全不连通 ✓。∎
+⭐ 推论读法：反射子范畴等价于「含入有左伴随」，而左伴随保余极限 —— 但这里要用的是**含入保极限**（右伴随保极限），于是全不连通空间的极限（在 $\mathbf{Top}$ 里算）落回全不连通 ✓。
+
 #### Stone 空间是 CHaus 的反射子范畴　`prop.stone-reflective`
 *命题*　Stone 空间是 $\mathbf{CHaus}$ 的反射子范畴
 
 Stone 空间构成的范畴是 $\mathbf{CHaus}$ 的反射子范畴。
 
 推论：**Stone 空间的任意极限仍是 Stone 空间**。把这条与「全不连通空间对极限封闭」并排看，就能读出 Stone 空间的双重身份：它既是「紧 Hausdorff 里全不连通的那些」，也是「紧 Hausdorff 这个反射子范畴里再反射一次剩下的那些」。
+
+**证明。** Stone 空间 = 紧 Hausdorff **且**全不连通。把两个反射叠起来：
+- 含入 $\mathbf{CHaus}\hookrightarrow\mathbf{Top}$ 有**左**伴随 $\beta$（Stone–Čech 紧化），即 $\mathbf{CHaus}$ 是反射子范畴；
+- 在 $\mathbf{CHaus}$ 内部再取全不连通的那些：含入 $\mathbf{Stone}\hookrightarrow\mathbf{CHaus}$ 有左伴随「取紧 Hausdorff 空间的连通分量商」$S\mapsto S/\!\sim$（把每个连通分量压成一点），因为连续映射把紧 Hausdorff 的连通分量送到连通集、而全不连通空间里连通集只有单点；
+- 于是 $\mathbf{Stone}\hookrightarrow\mathbf{CHaus}$ 是反射子范畴，反射是「取连通分量商」（它对紧 Hausdorff 空间仍是紧 Hausdorff ✓）。∎
+⭐ 反射子范畴的**含入保极限**，所以 Stone 空间的极限（在 $\mathbf{CHaus}$ 或 $\mathbf{Top}$ 里算）仍是 Stone ✓ —— 这正是「Stone 空间对极限封闭」。
 
 #### 投射有限空间　`def.profinite`
 *定义*　投射有限空间（Profinite Space）
@@ -1786,6 +1836,11 @@ $\mathbf{CHaus}$ 中的**投射对象恰好是 Stonean 空间**。
 Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续映射 $r : X \to A$ 使 $r|_{A} = 1_{A}$（这样的 $A$ 叫 $X$ 的收缩核）。
 
 这条把 Gleason 定理翻译成了一句「具体拓扑」的话：投射性 = 收缩核。与模论里「投射模 = 自由模的直和项」完全平行 —— 两者都是「投射 = 从自由对象上切一块下来」。
+
+**证明（把 Gleason 与「$\mathbf{CHaus}$ 里每个对象都是自由的商」拼起来）。**
+- **$(\implies)$**：设 $A$ 是 Stonean。取自由紧 Hausdorff 空间 $F$ 与满射 $p : F\twoheadrightarrow A$（「$\mathbf{CHaus}$ 里每个对象都是自由的商」）。Stonean $\implies$ 由 **Gleason 定理** $A$ 是 $\mathbf{CHaus}$ 里的**投射对象**，于是满射 $p : F\to A$ 有**截面** $s : A\to F$，即 $p\circ s = \mathrm{id}_{A}$ —— 这正是「$A$ 是 $F$ 的收缩核」（取 $r := p$）✓。
+- **$(\Longleftarrow)$**：若 $A$ 是自由对象 $F$ 的收缩核（$r: F\to A$，$r|_A = \mathrm{id}$），则由**投射对象的收缩核仍投射**（标准事实：投射对象的直和项/收缩核还是投射的），$A$ 在 $\mathbf{CHaus}$ 里投射；再由 Gleason 定理，$A$ 是 Stonean ✓。∎
+⭐ 这条是「Stonean = 自由紧 Hausdorff 的收缩核」的完整论证，也是后面「$\mathbb{Z}[S]$ 投射」的来源（$S$ 的收缩核给出截面，截面给出 $\mathbb{Z}[S]$ 的投射性）。
 
 #### 完全不连通与极不连通　`def.totally-disconnected`
 *定义*　完全不连通 / 极不连通空间
@@ -1853,6 +1908,13 @@ $$\mathbf{BoolRing}^{\mathrm{op}}\;\simeq\;\mathbf{Stone}.$$
 ⭐ **这是「Stone 空间为什么特殊」的代数根源**。Stone 空间的每一个点、每一个开闭集都能用「幂等元」来读：全不连通性 = 元素幂等、紧性 = 环有单位、闭开集 = 幂等元本身。于是 Stone 空间上的计算可以整个翻译成**模 $2$ 的代数**。
 
 📌 与「挠 $\leftrightarrow$ Stonean」那条对偶字典连起来看：纯代数侧的「挠」、拓扑侧的「极不连通」、环论侧的「幂等」三个词在同一个地方汇合 —— 这正是凝聚态数学反复用到 Stonean 空间的原因。
+
+**证明（两个函子互逆）。**
+- **$S\mapsto \operatorname{Clopen}(S)$ 确实是布尔环**：对称差给加法、交是乘法，$S$ 本身是单位元，每个开闭集自带补，而开闭集都是幂等元 ✓；
+- **$B\mapsto \operatorname{Spec}(B)$ 是石空间**：$\operatorname{Spec}(B)\subseteq \mathbb{F}_{2}^{B}$ 是乘积空间的**闭**子集（它是「每个 $f$ 是环同态」这组等式的公共解集），$\mathbb{F}_{2}$ 有限离散故紧 Hausdorff，于是 $\operatorname{Spec}(B)$ 紧 Hausdorff；而 $\mathbb{F}_{2}^{B}$ 极不连通、闭子空间仍极不连通 $\implies$ $\operatorname{Spec}(B)$ 极不连通，特别地全不连通 ✓；
+- **两个复合是恒等**：$S\mapsto \operatorname{Clopen}(S)\mapsto \operatorname{Spec}(\operatorname{Clopen}(S))$ —— 每个 $x\in S$ 给求值 $\operatorname{Clopen}(S)\to\mathbb{F}_{2}$，这是双射（Stone 空间里点由开闭集分离）；反向 $B\mapsto \operatorname{Spec}(B)\mapsto \operatorname{Clopen}(\operatorname{Spec}(B))$ —— 每个 $b\in B$ 给 $\{f : f(b) = 1\}$，它在 $\operatorname{Spec}(B)$ 里开闭，且这个对应是**环同构**（用「每个素理想都是极大、商为 $\mathbb{F}_{2}$」）✓；
+- **全忠实**由两个复合是恒等给出 ✓。∎
+⭐ 由此**布尔代数的所有定理都能翻译成 Stone 空间的语言**（反之亦然）—— 具体地：$B$ 中的幂等元（＝元素）对应 $\operatorname{Spec}(B)$ 的开闭子集，$B$ 的理想对应 $\operatorname{Spec}(B)$ 的闭子集。
 
 参考：Le Stum, Exercise 2.22
 
@@ -2533,12 +2595,30 @@ $$(-)^{\mathrm{ab}} : \mathbf{Grp} \longrightarrow \mathbf{Ab}, \qquad G \longma
 
 **例子**：自由群 $F(S)^{\mathrm{ab}} \cong \mathbb{Z}^{\oplus S}$（自由阿贝尔群）。所以「自由阿贝尔群函子」= 「自由群函子」再交换化。
 
+**证明。** 要造自然双射
+$$\operatorname{Hom}_{\mathbf{Grp}}(G,\ A) \;\cong\; \operatorname{Hom}_{\mathbf{Ab}}\bigl(G^{\mathrm{ab}},\ A\bigr),\qquad A\ \text{阿贝尔}.$$
+- **良定义**：任给群同态 $\varphi : G\to A$（$A$ 阿贝尔）。换位子 $ghg^{-1}h^{-1}$ 被送到 $\varphi(g)\varphi(h)\varphi(g)^{-1}\varphi(h)^{-1} = e$（交换性！），故 $[G,G] \subseteq \ker\varphi$，于是 $\varphi$ 唯一地穿过商 $G\twoheadrightarrow G^{\mathrm{ab}}$ ✓。
+- **反向**是 $G\to G^{\mathrm{ab}}$ 与函数的复合 ✓，且两个方向互逆（在 $G^{\mathrm{ab}}$ 上验一次、在 $\operatorname{Hom}(G,A)$ 上验一次）✓。
+- **自然性**对 $G$ 与 $A$ 都逐项验证（$G\to G'$ 的像把 $[G,G]$ 送进 $[G',G']$，故诱导 $G^{\mathrm{ab}}\to G'^{\mathrm{ab}}$）✓。∎
+⭐ 这正是「交换化是左伴随」的含义：它是「把非交换性清零」的**最经济**的函子 —— 任何到阿贝尔群的映射都只能看到 $G^{\mathrm{ab}}$。
+
 参考：Le Stum, Exercise 1.9
 
 #### 交换环的纤维余积是张量积　`prop.ring-tensor-coproduct`
 *命题*　交换环的推出 = 张量积
 
 在**交换环**范畴里，沿 $A \to B$、$A \to C$ 的**纤维余积**（推出）是 $B \otimes_{A} C$。
+
+**证明（验证推出的泛性质）。** 记 $D := B\otimes_{A} C$，$\beta : B\to D$、$\gamma : C\to D$ 为 $b\mapsto b\otimes 1$、$c\mapsto 1\otimes c$。
+- **方块交换**：$\beta(a\cdot 1_{B}) = a\otimes 1 = 1\otimes a\cdot 1 = \gamma(a\cdot 1_{C})$，即 $\beta\circ(A\to B) = \gamma\circ(A\to C)$ ✓；
+- **泛性质**：任给交换环 $E$ 与同态 $f : B\to E$、$g : C\to E$ 使 $f|_{A} = g|_{A}$，定义
+$$\varphi\Bigl(\sum_{k} b_{k}\otimes c_{k}\Bigr) := \sum_{k} f(b_{k})\,g(c_{k}) \in E .$$
+它是**良定义**的：$\otimes$ 的双线性关系逐条被 $f,g$ 的乘法性与 $f|_{A}=g|_{A}$ 满足（例如 $ab\otimes c - b\otimes ac \mapsto f(ab)g(c)-f(b)g(ac) = f(a)f(b)g(c) - f(b)g(a)g(c) = 0$）✓；由交换性 $\varphi$ 是环同态 ✓；且 $\varphi\beta = f$、$\varphi\gamma = g$ ✓。
+- **唯一性**：$D$ 由 $\beta(B)\cup\gamma(C)$ 生成（$b\otimes c = \beta(b)\gamma(c)$），故在两个生成块上定死就唯一 ✓。
+于是 $D$ 满足推出的泛性质，即 $B\otimes_{A}C = B\coprod_{A} C$。∎
+⚠️ **交换性是必需的**：非交换环上，$B\otimes_{A}C$ 一般不是环（乘法在张量积上不下降）—— 那时纤维余积要用自由积 / 余等化子另造。
+
+参考：Le Stum, Exercise 1.36
 
 ### 星团：向量空间的基
 > 造出线性代数的地基：每个向量空间都有基。
@@ -6025,12 +6105,12 @@ $$F(\lim D) \longrightarrow \lim (F \circ D).$$
 
 ⚠️ 名字有歧义：有的书把「正合」只指保**有限**极限，有的指保**所有**极限。本图统一按上面这条（保有限极限/余极限）。
 
-#### 保积与核 ⟹ 保所有有限极限　`prop.preserves-products-kernels`
+#### 保积与核 $\implies$ 保所有有限极限　`prop.preserves-products-kernels`
 *命题*　保积 + 保核 $\implies$ 保所有有限极限
 
 函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。
 
-#### 保纤维积 ⟹ 保单态射　`prop.preserves-fibered-products-mono`
+#### 保纤维积 $\implies$ 保单态射　`prop.preserves-fibered-products-mono`
 *命题*　保拉回 $\implies$ 保单态射
 
 函子 $F$ 若保**纤维积**（拉回），则 $F$ 保**单态射**；对偶地，若保**纤维余积**（推出），则保**满态射**。
@@ -6408,7 +6488,7 @@ $$\lim D = \inf D \;(\text{下确界}), \qquad \varinjlim D = \sup D \;(\text{�
 
 📌  **Exercise 1.73**。
 
-#### 滤过 + 有限余极限 ⟹ 所有余极限　`prop.filtered-finite-colimits`
+#### 滤过 + 有限余极限 $\implies$ 所有余极限　`prop.filtered-finite-colimits`
 *命题*　有余滤过余极限与有限余极限 $\implies$ 有所有余极限
 
 有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。
@@ -7869,6 +7949,14 @@ $$0 \longrightarrow M \longrightarrow I^{0} \longrightarrow I^{1} \longrightarro
 
 📌 随定义而来的另一条（同章）：Grothendieck 范畴**自动满足 AB3\***（有所有极限）—— 极限的存在性不用额外假设。
 
+**证明（超限迭代；Baer 判据的范畴版本）。** 记 $\mathcal{A}$ 是带生成元 $U$ 的 AB5 范畴。
+- **判据**：$I$ 内射 $\iff$ 对每个单态射 $A\rightarrowtail B$ 与每个 $A\to I$，延拓 $B\to I$ 存在。因为 $U$ 是生成元，只需对**子对象** $A\rightarrowtail U$ 验证（一般的 $B$ 用一族 $U\to B$ 铺开、逐块延拓再拼）。
+- **第一步**：$U$ 生成 $\implies$ 求值映射 $M\hookrightarrow U^{\operatorname{Hom}(U,M)}$ 是单态射（两个态射若在所有 $U\to M$ 上相同则相同），所以 $M$ 总能嵌进 $U$ 的一族积里。
+- **第二步（补全延拓）**：设 $M_{0} := M$。给定 $M_{\alpha}$，把所有「待延拓数据」$\bigl(A\rightarrowtail U,\ A\to M_{\alpha}\bigr)$ 一次性推出去 —— 令 $M_{\alpha+1}$ 是 $M_{\alpha}$ 与 $\coprod_{(A,\varphi)}U$ 沿 $\coprod_{(A,\varphi)}A$ 的推出。于是每个从 $U$ 的子对象出发的映射都能在 $M_{\alpha+1}$ 里延拓到整个 $U$ 上。
+- **极限序数**：取 $M_{\beta} := \varinjlim_{\alpha<\beta}M_{\alpha}$。$\mathcal{A}$ 是 **AB5**（滤过余极限正合），这一层层余极限保持单射与正合 ✓。
+- **稳定**：增量只依赖「$U$ 的子对象全体」这一**集合**（生成元 + AB5 保证它小），故足够大的序数之后 $M_{\alpha}\to M_{\alpha+1}$ 已是同构；稳定下来的 $I := M_{\infty}$ 满足判据，故内射 ✓。对 $M\hookrightarrow I$ 重复该过程即得内射消解。∎
+**标准出处**：Freyd, *Abelian Categories*；另有一条更短的路线走 Gabriel–Popescu 嵌入（把 $\mathcal{A}$ 看成 $R\text{-}\mathbf{Mod}$ 的正合反射子范畴，再把 $R\text{-}\mathbf{Mod}$ 的内射对象反射过来）。
+
 参考：Le Stum, Proposition 5.2.8（另见 Proposition 5.2.7）
 
 #### AB5 与 AB3*/AB4* 的关系　`prop.ab5-implications`
@@ -7884,7 +7972,13 @@ $$0 \longrightarrow M \longrightarrow I^{0} \longrightarrow I^{1} \longrightarro
 
 **第 3 条是「为什么凝聚态数学要用 CondAb 而不是随便一个拓扑斯」的答案**：$\mathbf{Ab}(\mathcal{T})$ 只有 AB5 与 AB3*，做一般的同调代数够用；但 $\mathrm{CondAb}$ 额外满足 **AB6 与 AB4\*** —— 即「滤过余极限与积交换」「积正合」。有了这两条才能像在 $\mathbf{Ab}$ 里一样自由地交换极限与余极限。
 
-参考：Le Stum, Proposition 5.2.7
+**三条各自的理由。**
+- **第 1 条**：用 **Freyd 的特殊伴随函子定理**。一个**余完备**范畴若有**小的余生成集**且**余良幂**（每个对象只有一个小集合那么多的商），则它**完备**。Grothendieck 范畴 $\mathcal{A}$：余完备 ✓（AB5）；余良幂与小的余生成集都来自**生成元** $U$ —— 一个商由它「在 $U$ 上的点」决定，于是 $U$ 的商构成一个集合，而它们的积就是余生成元。SAFT 于是给出所有极限存在 ✓。
+- **第 2 条**：这是 **Roos** 的经典结果。思路：AB5 让 $\mathbb{N}$ 形状的**余**极限行为良好、AB5\* 让 $\mathbb{N}$ 形状的**逆**极限行为良好；两者同时成立时会逼出一条 Milnor 型的正合列（$\prod$ 与 $\bigoplus$ 的比较），在阿贝尔范畴里只能对零对象成立 ✓。
+- **第 3 条**：前半 —— $\mathbf{Ab}(\mathcal{T})$ 是拓扑斯上的层范畴，是 Grothendieck 范畴，故 AB5 + AB3\*（第 1 条）✓；后半 —— 「AB6 与 AB4\* 一般不成立」在一般拓扑斯上有反例（阿贝尔层的积一般不正合、滤过余极限一般不与积交换），这两条**不能白拿** ✓。∎
+⭐ 所以 $\mathrm{CondAb}$ 的 AB6 / AB4\* 是**额外**的收获，来自 $\mathbf{CHaus}$ 这个 site 的具体形状（逐项归约到 $\mathbf{Ab}$），而不是任何拓扑斯都有的。
+
+参考：Le Stum, Proposition 5.2.7；Freyd, Abelian Categories；Roos, Derived functors of inverse limits (AB5 与 AB5\* 互斥)
 
 #### AB 公理的例子表　`prop.ab-axioms-examples`
 *例*　哪些范畴满足哪些 AB 公理
@@ -16075,19 +16169,19 @@ $A\text{-}\mathbf{Mod}$ 是**模**的范畴。
 
 余像与像都是余等化子 / 等化子的语言。
 
-#### 定义引用：「保极限的函子」→ 保积与核 ⟹ 保所有有限极限　`def-dep.ppk-preslim`
+#### 定义引用：「保极限的函子」→ 保积与核 $\implies$ 保所有有限极限　`def-dep.ppk-preslim`
 
 结论是「保**所有有限极限**」。
 
-#### 定义引用：「正合函子」→ 保积与核 ⟹ 保所有有限极限　`def-dep.ppk-exact`
+#### 定义引用：「正合函子」→ 保积与核 $\implies$ 保所有有限极限　`def-dep.ppk-exact`
 
 同一条结论的另一种说法就是**左正合**。
 
-#### 定义引用：「纤维积 / 纤维余积」→ 保纤维积 ⟹ 保单态射　`def-dep.pfpm-fibered`
+#### 定义引用：「纤维积 / 纤维余积」→ 保纤维积 $\implies$ 保单态射　`def-dep.pfpm-fibered`
 
 前提是保**纤维积**。
 
-#### 定义引用：「单态射 / 满态射」→ 保纤维积 ⟹ 保单态射　`def-dep.pfpm-mono`
+#### 定义引用：「单态射 / 满态射」→ 保纤维积 $\implies$ 保单态射　`def-dep.pfpm-mono`
 
 结论是保**单态射**。
 
@@ -16131,11 +16225,11 @@ AB6 说的是**滤过余极限**与积交换。
 
 结论是「$\mathcal{C}$ 是**反射子范畴**」。
 
-#### 定义引用：「滤过范畴」→ 滤过 + 有限余极限 ⟹ 所有余极限　`def-dep.ffc-filtered`
+#### 定义引用：「滤过范畴」→ 滤过 + 有限余极限 $\implies$ 所有余极限　`def-dep.ffc-filtered`
 
 前提有**滤过余极限**。
 
-#### 定义引用：「极限」→ 滤过 + 有限余极限 ⟹ 所有余极限　`def-dep.ffc-colimit`
+#### 定义引用：「极限」→ 滤过 + 有限余极限 $\implies$ 所有余极限　`def-dep.ffc-colimit`
 
 结论是「有所有**余极限**」。
 

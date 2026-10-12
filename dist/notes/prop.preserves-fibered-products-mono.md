@@ -1,4 +1,4 @@
-# 保纤维积 ⟹ 保单态射　`prop.preserves-fibered-products-mono`　·　说明
+# 保纤维积 $\implies$ 保单态射　`prop.preserves-fibered-products-mono`　·　说明
 根 `../`
 
 **为什么**：$f : Y \to X$ 是单态射，等价于说「$Y \to X$ 上 $\mathrm{id}$ 与 $\mathrm{id}$ 的两个拉回重合」，即方块
