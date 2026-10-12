@@ -6546,6 +6546,7 @@ MG.notation = {
     { g: 'letters', tex: 'h^{X}, h_{X}', uni: 'h^X／h_X', name: '可表示函子 / 可表示预层（范畴论）',
       note: '**上标记协变** $h^{X} = \\operatorname{Hom}_{\\mathcal{C}}(X, -)$；**下标记预层** $h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$。米田引理用上标，米田嵌入用下标。' },
     { g: 'letters', tex: '\\Theta',   uni: 'Θ', name: '证明内局部：余极限到 $T$ 的那一个态射' },
+    { g: 'letters', tex: '\\Psi',     uni: 'Ψ', name: '证明内局部：与 $\\Phi$ 配对的那个映射（米田引理里的逆）' },
     { g: 'letters', tex: '\\Gamma(F, M)', uni: 'Γ(F,M)', name: '截面（凝聚态里）',
       note: '凝聚态集或凝聚态阿贝尔群 $M$ 在紧 Hausdorff 空间 $F$ 处的**截面**，就是 $M(F)$。' },
     { g: 'letters', tex: '\\mathrm{ZFC}', uni: 'ZFC', name: '公理系统名（名词 → `\\mathrm{}`）' },
@@ -17750,6 +17751,7 @@ window.MG = window.MG || {};
         '这样得到的 $\\lim : \\mathcal{C}^{I} \\to \\mathcal{C}$ 是一个函子。'
       ].join('\n'),
       notes: [
+        ['**证明。**','- **锥**：$\\pi^{F}_{i} : \\lim F \\to F(i)$ 是 $F$ 的泛锥。对每个 $i$，$\\alpha_{i}\\circ\\pi^{F}_{i} : \\lim F \\to G(i)$；由 $\\alpha$ 的自然性','$$G(u)\\circ\\alpha_{i}\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ F(u)\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ\\pi^{F}_{j},$$','故这是一族相容的映射，即 $\\lim F$ 到 $G$ 的锥 ✓。','- **唯一态射**：由 $\\lim G$ 的泛性得到唯一的 $\\lim\\alpha$，并满足 $\\pi^{G}_{i}\\circ\\lim\\alpha = \\alpha_{i}\\circ\\pi^{F}_{i}$ ✓。','- **函子性**：$\\lim(\\mathrm{id}_{F})$ 与 $\\mathrm{id}_{\\lim F}$ 都是使 $\\pi^{F}_{i}\\circ(-) = \\pi^{F}_{i}$ 的态射，由唯一性相等 ✓；同理 $\\lim(\\beta\\alpha)$ 与 $(\\lim\\beta)(\\lim\\alpha)$ 都与同一个锥相容，故相等 ✓。','于是 $\\lim : \\mathcal{C}^{I}\\to\\mathcal{C}$ 是函子 ✓。∎'].join('\n'),
         '这就是「泛性」的标准用法：**先造一个锥，再让唯一性把态射免费送上门**。极限的对象层是构造，态射层是泛性，两者合起来才是函子。',
         '有了它，「$\\lim$ 保持某个性质」才说得通 —— 后面讨论「某个函子保极限」时，正是拿这个函子去做文章。'
       ].join('\n\n')
@@ -17929,6 +17931,7 @@ window.MG = window.MG || {};
         '即「全体自然变换」与「$F(X)$ 的元素」一一对应。'
       ].join('\n'),
       notes: [
+        ['**证明。** 定义映射','$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$','- **逆映射**：给 $u \\in F(X)$，对每个 $Y$ 定义','$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$','它是自然的：对 $g : Y \\to Z$，由 $F$ 的函子性 $F(g)\\circ F(f) = F(g\\circ f)$，两边正是 $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ 与 $\\Psi(u)_{Z}(g\\circ f)$ ✓。','- **$\\Phi\\Psi = \\mathrm{id}$**：$\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓。','- **$\\Psi\\Phi = \\mathrm{id}$**：给 $\\alpha$ 与 $f : X\\to Y$，用 $\\alpha$ 的自然性（作用在 $f$ 上）','$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$','- **自然性**：$\\Phi$ 对 $F$ 自然（沿 $\\beta : F\\to G$ 两边都变成 $\\beta_{X}\\circ(-)$）✓；对 $X$ 也自然（沿 $k : X\'\\to X$，$h^{k}$ 的前复合与 $F(k)$ 对应）✓。','于是 $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$，双射就是 $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓；对偶地（取 $\\mathcal{C}^{\\mathrm{op}}$）得预层版本 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓。∎'].join('\n'),
         '这个双射在两**边**都自然：对 $F$（自然变换）自然，对 $X$（态射）也自然。两头都自然，才是这条引理真正有分量的地方。',
         '它把「$h^{X}$ 到 $F$ 的所有自然变换」这个原则上无从下手的集合，压成了 $F(X)$ 里的**一个元素**。后面凡是遇到「自然变换不好数」的地方，基本都是靠这一步救场。',
         '对偶形式：$T$ 是预层（$T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）、$h_{X} = \\operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$。两式只是把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，所以后面的推导两套都用。'
@@ -18016,7 +18019,9 @@ window.MG = window.MG || {};
         '',
         '是**笛卡尔的**。上面是**切片范畴到预层范畴的嵌入**，下面是**范畴 $\\mathcal{C}$ 到预层范畴的 Yoneda 嵌入** $h$（$h(X) = h_{X} = \\operatorname{Hom}(-, X)$），两条竖边是两个遗忘函子。'
       ].join('\n'),
-      notes: '也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'
+      notes: [
+        ['**证明。** 需要证 $\\mathcal{C}/T \\to \\mathcal{C}\\times_{\\widehat{\\mathcal{C}}}\\widehat{\\mathcal{C}}/T$ 是等价。','- **对象**：$\\mathcal{C}/T$ 的对象是 $p : X \\to T$（$X\\in\\mathcal{C}$）；由 **Yoneda**，$\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，所以 $p$ 与一个态射 $h_{X}\\to T$ 一一对应 —— 而右边拉回的对象的正是「$X \\in \\mathcal{C}$ 连同 $h_{X}\\to T$」✓。','- **态射**：$\\mathcal{C}/T$ 中 $p \\to p\'$ 是交换三角（$X\\to X\'$ 与 $T$ 上的相容性）；把 Yoneda 嵌入作用上去得到 $h_{X}\\to h_{X\'}$ 与 $h_{X}\\to T$ 的相容对，右边正是一对这样的数据。由 Yoneda 嵌入**全忠实**（$\\operatorname{Hom}(h_{X},h_{X\'}) \\cong \\operatorname{Hom}(X,X\')$），这个对应在 Hom 上是双射 ✓。','- **函子性 / 等价**：对应在复合下保持（Yoneda 是函子）✓ 于是得到一个范畴等价，即原方块**笛卡尔** ✓。','- **特例**：取 $T = h_{X}$，得 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片与在预层范畴里沿 $h_{X}$ 切片是同一件事 ✓。∎'].join('\n'),
+'也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'].join('\n\n')
     },
 
     /* ------------------------------------------------------ 稠密性定理 */
@@ -18433,7 +18438,9 @@ window.MG = window.MG || {};
         '- 余极限等于 $F\\bigl(\\operatorname{colim}_{\\mathcal{C}} D\'\\bigr)$；',
         '- 极限就等于 $\\operatorname{lim}_{\\mathcal{C}} D\'$ 本身（它自动落在 $\\mathcal{C}\'$ 里）。'
       ].join('\n'),
-      notes: '也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'
+      notes: [
+        ['**证明。** 设嵌入 $i : \\mathcal{C}\' \\hookrightarrow \\mathcal{C}$，反射 $F : \\mathcal{C}\\to\\mathcal{C}\'$，$F \\dashv i$（即 $i$ 是右伴随）。','- **余极限**：对任意 $C\' \\in \\mathcal{C}\'$，用伴随同构与 $\\mathcal{C}$ 中余极限的泛性','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(F(\\operatorname{colim}_{\\mathcal{C}}D\'), C\'\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(\\operatorname{colim}_{\\mathcal{C}}D\', iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(D\'_{j}, iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(D\'_{j}, C\'\\bigr),$$','对 $C\'$ 自然 —— 这正是「$F(\\operatorname{colim}_{\\mathcal{C}}D\')$ 是 $D\'$ 在 $\\mathcal{C}\'$ 里的余极限」的泛性质 ✓。','- **极限**：同法','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', \\operatorname{lim}_{\\mathcal{C}}D\'\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(iC\', D\'_{j}\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', D\'_{j}\\bigr)$$','（第二个同构用了 $i$ 全忠实），故 $\\lim_{\\mathcal{C}}D\'$ 已经落在 $\\mathcal{C}\'$ 里、且就是 $\\mathcal{C}\'$ 中的极限 ✓。','**结论：反射子范畴对极限封闭，余极限要过一遍反射。**∎'].join('\n'),
+'也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'].join('\n\n')
     },
 
     /* ---------------------------------------------------- Kan 延拓 */
@@ -18515,6 +18522,7 @@ window.MG = window.MG || {};
         '保持所有有限极限。'
       ].join('\n'),
       notes: [
+        ['**证明。** 滤过范畴就是「任意有限图都有余锥」的小范畴。','- **先看有限积**：给滤过图 $X_{i}, Y_{i}$，比较映射','$$\\varinjlim_{i}(X_{i}\\times Y_{i}) \\longrightarrow \\bigl(\\varinjlim_{i}X_{i}\\bigr)\\times\\bigl(\\varinjlim_{i}Y_{i}\\bigr)$$','**满**：取右边一对 $([x],[y])$，$x \\in X_{i}$、$y \\in Y_{j}$；由滤过性存在 $k$ 与 $i\\to k$、$j\\to k$，于是 $(x_{k}, y_{k})$ 的代表落到 $X_{k}\\times Y_{k}$ ✓。','**单**：若 $(x_{i},y_{i})$ 与 $(x\'_{i\'},y\'_{i\'})$ 在右边相等，则各坐标在某个更后的指标处相等；由滤过性取公共的 $k$，在 $X_{k}\\times Y_{k}$ 里它们已经相等 ✓。','- **一般有限极限**由有限积与等化子生成：等化子 $\\{(x,y) : f(x) = g(y)\\}$ 的两边取代表元后，滤过性同样给出公共指标使等式在那个指标处成立（$\\mathbf{Set}$ 里元素都是「某个指标处的元素」）✓。','- 于是 $\\varinjlim$ 与一切有限极限交换，即**正合** ✓。','⚠️ 这里的「正合」是集合层面的断言；一般范畴里「滤过余极限正合」需要更强的假设（AB5 型），不能照搬。∎'].join('\n'),
         '「正合」在这里就一句话：滤过余极限与有限极限**可以交换**。最基本的例子是它保持有限积：',
         '',
         '$$\\varinjlim_{i} (X_{i} \\times Y_{i}) \\;\\cong\\; \\bigl(\\varinjlim_{i} X_{i}\\bigr) \\times \\bigl(\\varinjlim_{i} Y_{i}\\bigr)$$',
@@ -19356,7 +19364,9 @@ window.MG = window.MG || {};
         '2. $T$ 是预层 $\\implies$ $\\widehat{H}(T)$ **分离**；$T$ 分离 $\\implies$ $\\widehat{H}(T)$ 是**层**；',
         '3. $T$ 是分离的（层）$\\iff$ $T \\to \\widehat{H}(T)$ 是单态射（同构）。'
       ].join('\n'),
-      notes: '1 的理由很短：$\\operatorname{Hom}(-, T)$ 保极限，而**滤过余极限左正合**。3 说明「分离」与「层」的差别就是「$T$ 在 $\\widehat{H}$ 里是不是已经到顶了」—— 于是「做两次 $\\widehat{H}$」这件事有了明确的意义。'
+      notes: [
+        ['**证明。** 记 $\\widehat{H}(T) := \\varinjlim_{(X_{i}\\to X)}\\check{H}^{0}\\bigl((X_{i}),T\\bigr)$，其中 $\\check{H}^{0}$ 是 $\\prod_{i}T(X_{i}) \\rightrightarrows \\prod_{i,j}T(X_{i}\\times_{X}X_{j})$ 的等化子。','**1.（左正合）** $T \\mapsto \\check{H}^{0}((X_{i}),T)$ 只用到 $T$ 的取值与拉回，是有限极限（积 + 等化子）的复合，故保有限极限；而 $\\mathbf{Set}$ 里的**滤过余极限正合**（与有限极限交换）✓。两者合起来给出 $\\widehat{H}$ 左正合 ✓。','**2.（分离 / 层）** $\\widehat{H}(T)(X)$ 的元素是「某个覆盖上的相容族」，两个元素相等 $\\iff$ 存在公共细化使它们在那上面一致（滤过性）。于是：若它们在某个覆盖的每支上相等，则在该覆盖上就已经相等，故 $\\widehat{H}(T) \\to \\prod_{i}\\widehat{H}(T)(X_{i})$ 单 —— 即 $\\widehat{H}(T)$ **分离** ✓。进一步，若 $T$ 分离，任何 $\\widehat{H}(T)$ 上的相容族可以逐层提升到 $T$（分离性保证提升唯一），从而粘成 $\\widehat{H}(T)$ 的一个元素，故 $\\widehat{H}(T)$ 是**层** ✓。','**3.（与嵌入的关系）** 由 $\\check{H}^{0}$ 是等化子，$T(X) \\to \\widehat{H}(T)(X)$ 总是单 $\\iff$ 「$T$ 上两个元素若在某个覆盖上一致则相等」，即 $T$ 分离 ✓；这个映射还是满的 $\\iff$ 每个相容族都能粘合，即 $T$ 是层 ✓。于是 $T$ 分离 $\\iff T \\to \\widehat{H}(T)$ 单、$T$ 是层 $\\iff$ 它是同构 ✓。∎'].join('\n'),
+'1 的理由很短：$\\operatorname{Hom}(-, T)$ 保极限，而**滤过余极限左正合**。3 说明「分离」与「层」的差别就是「$T$ 在 $\\widehat{H}$ 里是不是已经到顶了」—— 于是「做两次 $\\widehat{H}$」这件事有了明确的意义。'].join('\n\n')
     },
 
     /* -------------------------------------------------------- 层化 */
@@ -19472,7 +19482,9 @@ window.MG = window.MG || {};
         '1. 若 $u$ 既是单态射又是满态射，则 $u$ 是同构；',
         '2. $u$ 有**唯一的**满-单分解：存在唯一的 $I$ 使 $u = F \\twoheadrightarrow I \\rightarrowtail G$。'
       ].join('\n'),
-      notes: '这两条在 $\\mathbf{Set}$ 里也对，但在层范畴里**不是自动的**，要证。它们恰好就是**预拓扑斯（pretopos）**公理的内容 —— 所以这个位置正是从「层」走向「拓扑斯」的接口。'
+      notes: [
+        ['**证明。** 设 $u : F \\to G$ 是层之间的态射。','**1.** 设 $u$ 既单又满。由满性（层中满态射的**局部**判据），对 $1_{G} \\in G(G)$ 存在覆盖 $(G_{i}\\to G)$ 与 $t_{i}\\in F(G_{i})$ 使 $u(t_{i}) = 1_{G}|_{G_{i}}$。在双重拉回 $G_{i}\\times_{G}G_{j}$ 上，$t_{i}$ 与 $t_{j}$ 的像都等于 $1_{G}$ 的限制，由 $u$ 单得 $t_{i}|= t_{j}|$ —— 相容 ✓。层条件给唯一的 $v \\in F(G)$ 与 $v|_{G_{i}} = t_{i}$，于是 $u(v) = 1_{G}$（两边在覆盖上一致，层分离）。又 $u(v u) = u$，而 $u$ 单 $\\implies v u = 1_{F}$。故 $u$ 同构 ✓。','**2.** 像分解：拓扑斯里每个态射都有 (满, 单) 分解（像 $= $ 层化后的余等化子）。设 $u = m e$ 与 $u = m\' e\'$ 是两个这样的分解。由 $m e = m\' e\'$ 与满-单的泛性，$e\'$ 通过 $e$ 分解（$e$ 满、$m\'$ 单，用「满 $\\implies$ 左消去」得唯一分解），对称地 $e$ 通过 $e\'$ 分解，两个分解互相比较得 $I \\cong I\'$ ✓。∎'].join('\n'),
+'这两条在 $\\mathbf{Set}$ 里也对，但在层范畴里**不是自动的**，要证。它们恰好就是**预拓扑斯（pretopos）**公理的内容 —— 所以这个位置正是从「层」走向「拓扑斯」的接口。'].join('\n\n')
     },
 
     /* ------------------------------------------ 层的满态射的局部判据 */
@@ -19489,7 +19501,9 @@ window.MG = window.MG || {};
         '',
         '$$s|_{X_{i}} \\in \\operatorname{im}\\bigl(F(X_{i}) \\to G(X_{i})\\bigr) \\qquad (\\forall i \\in I)$$'
       ].join('\n'),
-      notes: '一句话：**层的满态射是「局部满」**。整体上 $s$ 可能没有原像，但总能把 $X$ 切成一层覆盖，每块上都有原像 —— 这是「层上只有局部信息」最典型的体现。'
+      notes: [
+        ['**证明。**','- **$(\\implies)$** 设 $u : F \\to G$ 是满态射。任取 $X$ 与 $s \\in G(X)$，即 $s : h_{X} \\to G$。取拉回','$$\\begin{array}{ccc} h_{X}\\times_{G}F & \\xrightarrow{\\ \\ } & F\\\\ \\big\\downarrow & & \\big\\downarrow{\\scriptstyle u}\\\\ h_{X} & \\xrightarrow{\\ s\\ } & G\\end{array}$$','底边 $u$ 满 $\\implies$ 左边那条也是满态射（拓扑斯里满态射沿任意态射拉回仍满），即 $h_{X}\\times_{G}F \\to h_{X}$ 是**覆盖**；取它的一族可表示层覆盖 $(X_{i}\\to X)$，则每支给出 $s|_{X_{i}}$ 在 $F(X_{i})$ 里的一个原像 ✓。','- **$(\\Longleftarrow)$** 设条件成立，取像分解 $u = m\\,e$（$e$ 满、$m : I \\rightarrowtail G$ 单）。条件说：对每个 $X$、每个 $s \\in G(X)$，存在覆盖使 $s|_{X_{i}}$ 落在 $\\operatorname{im}u \\subseteq \\operatorname{im}m = I$ 里。而单态射是同构 $\\iff$ 它的像在每个 $X$ 上被覆盖局部地盖住（子对象相等的局部判据）。故 $m$ 是同构，$u = m e$ 满 ✓。∎','一句话：**层的满态射就是「局部满」。**'].join('\n'),
+'一句话：**层的满态射是「局部满」**。整体上 $s$ 可能没有原像，但总能把 $X$ 切成一层覆盖，每块上都有原像 —— 这是「层上只有局部信息」最典型的体现。'].join('\n\n')
     },
 
     /* ---------------------------------------------------- 有效等价关系 */
@@ -19527,7 +19541,9 @@ window.MG = window.MG || {};
         '',
         '$$\\bigl(T/R\\bigr)^{\\sharp} \\;\\cong\\; T^{\\sharp} / R^{\\sharp}$$'
       ].join('\n'),
-      notes: '「先取商再层化」与「先层化再取商」结果一样 —— 这类交换性是层化「保余极限」的具体面貌（商是余等化子，是余极限）。'
+      notes: [
+        ['**证明。** 记层化为 $(-)^{\\sharp}$：它是到层范畴的反射，故左伴随。','- 左伴随保**余极限** ✓；它同时又**左正合**（保有限极限，因为拓扑斯都是左正合的）✓。','- **等价关系的条件都是有限极限条件**：$R \\rightrightarrows T$ 是等价关系 $\\iff$ 存在 $R \\to T\\times T$ 使其为单态射（自反、对称、传递三条用对角、交换与拉回表达）。层化保这些有限极限，故 $R^{\\sharp} \\rightrightarrows T^{\\sharp}$ 仍是等价关系 ✓。','- **商是余等化子**：$T/R := \\operatorname{coeq}(R \\rightrightarrows T)$，是余极限，故 $(T/R)^{\\sharp} \\cong \\operatorname{coeq}(R^{\\sharp}\\rightrightarrows T^{\\sharp}) = T^{\\sharp}/R^{\\sharp}$ ✓。','两件事合起来就是「先商再层化 $=$ 先层化再商」✓。∎'].join('\n'),
+'「先取商再层化」与「先层化再取商」结果一样 —— 这类交换性是层化「保余极限」的具体面貌（商是余等化子，是余极限）。'].join('\n\n')
     },
 
     /* ---------------------------------------------------- 标准拓扑 */
@@ -19582,7 +19598,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}$ 有有限极限。则 $X = \\coprod_{i \\in I} X_{i}$ 在 $\\mathcal{C}$ 中是**不交的万有余积** $\\iff$ 对任何（等价地：某一个）**次标准拓扑**，它作为层范畴中的余积仍然不交、万有。'
       ].join('\n'),
-      notes: '一个方向：次标准保证 $X = h_{X}$、$X_{i} = h_{X_{i}}$ 都在层范畴里，而 $\\coprod_{i} h_{X_{i}}$ 本来就不交，所以自动是层。另一个方向：拿 $h_{X} = \\coprod_{i} h_{X_{i}}$ 去逐条验注入性与「拉回是始对象」。\n\n含义：**标准拓扑恰好把 $\\mathcal{C}$ 里成立的那部分余积性质原样保留下来**，不多也不少 —— 这就是「次标准」这个名字该有的分量。'
+      notes: [
+        ['**证明。** 记次标准拓扑下的层化为 $(-)^{\\sharp}$，此时可表示预层都是层：$h_{X}^{\\sharp} = h_{X}$。','**$(\\implies)$** 设 $X = \\coprod_{i}X_{i}$ 在 $\\mathcal{C}$ 里不交、万有。Yoneda 嵌入保余积，故 $h_{X} \\cong \\coprod_{i}h_{X_{i}}$，两边都是层，即这个余积在层范畴里就被算出来了 ✓。不交：层范畴的余积逐点算，$\\coprod_{i}h_{X_{i}}$ 的注入都来自 $\\mathcal{C}$ 里的注入，两两拉回是 $h_{0}$（始对象）✓。万有：沿任意 $Z \\to h_{X}$ 的拉回逐点验，落在 $\\mathcal{C}$ 里就是原来的万有性 ✓。','**$(\\Longleftarrow)$** 设某个次标准拓扑下 $h_{X} = \\coprod_{i}h_{X_{i}}$ 不交、万有。逐点（对每个 $Z \\in \\mathcal{C}$）展开：不交给 $\\operatorname{Hom}(Z,X) = \\coprod_{i}\\operatorname{Hom}(Z,X_{i})$ 的不交并；万有给「沿 $Z\' \\to Z$ 拉回保持它」。取 $Z = X$ 与 $1_{X}$ 读出 $X_{i}\\to X$ 的注入性，取 $Z = X_{i}\\times_{X}X_{j}$ 读出两两拉回是始对象，再取任意 $Z$ 得万有性，逐条搬回 $\\mathcal{C}$ ✓。','**结论：标准拓扑恰好把 $\\mathcal{C}$ 里成立的余积性质原样保留，不多也不少。**∎'].join('\n'),
+'一个方向：次标准保证 $X = h_{X}$、$X_{i} = h_{X_{i}}$ 都在层范畴里，而 $\\coprod_{i} h_{X_{i}}$ 本来就不交，所以自动是层。另一个方向：拿 $h_{X} = \\coprod_{i} h_{X_{i}}$ 去逐条验注入性与「拉回是始对象」。\n\n含义：**标准拓扑恰好把 $\\mathcal{C}$ 里成立的那部分余积性质原样保留下来**，不多也不少 —— 这就是「次标准」这个名字该有的分量。'].join('\n\n')
     }
   ],
 
@@ -19778,7 +19796,9 @@ window.MG = window.MG || {};
         '',
         '而且**拉回是格之间的同态**（保交、保并、保上界）。'
       ].join('\n'),
-      notes: '「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。'
+      notes: [
+        ['**证明。** 「子对象」是单态射 $X\' \\rightarrowtail X$ 的同构类。','- **交**取**拉回**：$X_{1} \\cap X_{2} := X_{1} \\times_{X} X_{2}$。单态射的拉回仍是单态射 ✓；泛性给出「同时分解过 $X_{1}$ 与 $X_{2}$」$\\iff$「分解过拉回」，即它恰是两个子对象的**最大下界** ✓。','- **并**取**像**：$X_{1} \\cup X_{2} := \\operatorname{im}(X_{1} \\coprod X_{2} \\to X)$。余积的泛性给出「同时被 $X_{1}, X_{2}$ 包含的态射 $\\iff$ 从余积出发的态射」，而取像正是把它变成单态射：$X_{1} \\to X$ 与 $X_{2} \\to X$ 都分解过它，且任何同时包含两者的子对象都被它分解过（像的泛性）—— 恰是**最小上界** ✓。（像的存在来自预拓扑斯里余等化子 / 商的存在。）','- **有界**：最小元是始对象到 $X$ 的唯一态射（预拓扑斯里始对象到任何对象都是单态射），最大元是 $1_{X}$ ✓。','- **分配律**：$X_{1} \\cap (X_{2}\\cup X_{3}) = (X_{1}\\cap X_{2}) \\cup (X_{1}\\cap X_{3})$ —— 沿单态射的拉回保余积（预拓扑斯里余积不交且万有），把两边都算成同一个拉回 ✓。','- **拉回是格同态**：$f^{*}(-) := -\\times_{Y} X$ 保拉回（是极限），故保交、保上下界；而它保余积（万有性）与像（像的计算可以搬到拉回里做），故保并 ✓。∎'].join('\n'),
+'「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。'].join('\n\n')
     },
 
     /* -------------------------------------------------- 预标准拓扑 */
@@ -19819,6 +19839,7 @@ window.MG = window.MG || {};
         '$$F\\Bigl(\\coprod_{i \\in I} X_{i}\\Bigr) \\;\\cong\\; \\prod_{i \\in I} F(X_{i}), \\qquad R \\text{ 是 } X \\text{ 上的等价关系} \\implies F(X/R) \\;\\cong\\; \\ker\\bigl(F(X) \\rightrightarrows F(R)\\bigr)$$'
       ].join('\n'),
       notes: [
+        ['**证明。** 设覆盖族 $(X_{i} \\to X)_{i \\in I}$（有限、$\\coprod_{i}X_{i} \\to X$ 满）。层条件是对每个这样的族','$$F(X) \\to \\prod_{i}F(X_{i}) \\rightrightarrows \\prod_{i,j}F(X_{i}\\times_{X}X_{j})$$','为等化子。','- **「余积变积」**：取单支覆盖 $X \\to X$（它当然满），则层条件退化成 $F(X) \\cong F(X)$ 的平凡等式 —— 有限余积的层条件要把 $I$ 取成各支自身：对有限族 $(X_{i})$，$\\coprod_{i}X_{i} \\to \\coprod_{i}X_{i}$ 满，层条件给出 $F(\\coprod_{i}X_{i}) \\cong \\prod_{i}F(X_{i})$ ✓（与余积交换 == 与有限积交换，因为 $F$ 是 $\\mathbf{Set}$ 值）。','- **「商变核」**：一般族的覆盖条件里，$\\coprod_{i}X_{i} \\to X$ 是满态射，于是它在预拓扑斯里是**有效满**的：$R := \\coprod_{i,j}X_{i}\\times_{X}X_{j}$ 是 $\\coprod_{i}X_{i}$ 上的等价关系，而 $X$ 是这个关系的商（余等化子）。于是层条件读作 $F(X) \\cong \\ker\\bigl(F(\\coprod X_{i}) \\rightrightarrows F(R)\\bigr)$；再接上「余积变积」就得到陈述里的第一条等式 ✓。反过来取 $X = X/R$ 的商映射作覆盖，得 $F(X/R) \\cong \\ker(F(X)\\rightrightarrows F(R))$ ✓。','- **合起来**：两条所说正是所有覆盖（都是有限族、余积满）的层条件 ✓。','- **推论**：$h_{X} = \\operatorname{Hom}(X,-)$ 满足两条（Hom 把余积送成积、把商送成核），故每个可表示预层都是层 —— 即预标准拓扑是次标准的 ✓。∎'].join('\n'),
         '这两条把「层」写成了两条在 $\\mathbf{Set}$ 里显然、在这里需要验的等式：**有限余积变有限积**、**商变核**。它们正是「预拓扑斯里的余积与商和集合里长得一样」的精确说法。',
         '推论：**预标准拓扑是次标准的** —— 可表示预层 $h_{X}$ 满足上面两条（$\\operatorname{Hom}(X, -)$ 保积，$\\operatorname{Hom}(X/R, -)$ 由余等化子给出核），所以它们都是层。'
       ].join('\n\n')
@@ -19858,7 +19879,9 @@ window.MG = window.MG || {};
         '',
         '$$f \\text{ 是单态射（满态射）} \\iff X^{\\sharp} \\to Y^{\\sharp} \\text{ 是单态射（满态射）}$$'
       ].join('\n'),
-      notes: '所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。'
+      notes: [
+        ['**证明。** 记层化为 $(-)^{\\sharp}$。','- **$(\\implies)$**：层化是到层范畴的**左伴随**，故保余极限，特别保满态射；又是**左正合**的（保有限极限），故保单态射 ✓。','- **$(\\Longleftarrow)$**：预标准拓扑是次标准的，所以 $h_{X}^{\\sharp} \\cong h_{X}$、$h_{Y}^{\\sharp} \\cong h_{Y}$，且 $f^{\\sharp}$ 在 Yoneda 嵌入下的像就是 $h_{f}$。','- 对可表示预层：$h_{f}$ 单 $\\iff$ $f$ 单（Yoneda 双射把 $h_{f}(Z)$ 的诱导映射写成「与 $f$ 复合」，单射性逐点验出）；$h_{f}$ 满 $\\iff$ $f$ 满（$\\mathbf{Set}$ 值预层范畴中的满态射逐点判定；一边取 $Z = Y$ 与 $1_{Y}$，另一边用 $\\operatorname{Hom}(Z,-)$ 保满态射）✓。','- 于是 $h_{f}$ 单（满）$\\iff$ $h_{f}^{\\sharp}$ 单（满），两头接起来即得 ✓。∎'].join('\n'),
+'所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。'].join('\n\n')
     },
 
     /* ---------------------------------------------------- 生成元 */
@@ -19943,7 +19966,9 @@ window.MG = window.MG || {};
         '',
         '中每个 $F_{i}$ 以及每个 $F_{i} \\times_{F} F_{j}$ 都**可表示**，则 $F$ 也可表示。'
       ].join('\n'),
-      notes: '把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'
+      notes: [
+        ['**证明。** 记 $F_{i} \\cong h_{X_{i}}$、$F_{i}\\times_{F}F_{j} \\cong h_{X_{i,j}}$，并记 $X := \\coprod_{i}X_{i}$、$R := \\coprod_{i,j}X_{i,j}$。','- **$R$ 是 $X$ 上的等价关系**：满态射 $\\coprod_{i}F_{i} \\to F$ 给出平行对 $R \\rightrightarrows X$ 的两条结构映射（由 $F_{i}\\times_{F}F_{j} \\rightrightarrows F_{i}$ 与 Yoneda 得到）；自反来自对角 $F_{i} \\to F_{i}\\times_{F}F_{i}$，对称来自 $X_{i,j} \\cong X_{j,i}$，传递来自 $F_{i}\\times_{F}F_{j}\\times_{F}F_{k}$ 的三重拉回（这些都在层范畴里是极限，逐层算）✓。','- **等价关系有效**：拓扑斯里等价关系都有效，故商 $X/R$ 存在，且 $h_{X/R}$ 是这个关系在层范畴里的余等化子 ✓。','- **$F \\cong X/R$**：层范畴中的余等化子列','$$\\coprod_{i,j}F_{i}\\times_{F}F_{j} \\rightrightarrows \\coprod_{i}F_{i} \\longrightarrow F$$','说明 $F$ 是这两个对象的余等化子（满态射是有效满的），而同一列换成可表示层就是 $R \\rightrightarrows X \\to X/R$，故 $F \\cong X/R = h_{X/R}$，即 $F$ 可表示 ✓。∎'].join('\n'),
+'把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'].join('\n\n')
     },
 
     /* ------------------------------------------ 覆盖 = 余积满射 */
@@ -19956,7 +19981,9 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '拓扑斯', '覆盖'],
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。',
-      notes: '这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'
+      notes: [
+        ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
+'这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n')
     },
 
     /* --------------------------------- 拓扑斯上的层 = 保极限的预层 */
@@ -20003,7 +20030,9 @@ window.MG = window.MG || {};
         '2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；',
         '3. 预拓扑斯 $\\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\\iff$ 存在满射 $X \\to F$ 且 $X \\in \\mathcal{C}$。'
       ].join('\n'),
-      notes: '第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'
+      notes: [
+        ['**逐条证明。**','**1.** site 里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
+'第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n')
     },
 
     /* -------------------------------------------------- 拟分离对象 */
@@ -22168,6 +22197,7 @@ window.MG = window.MG || {};
         '则 $\\mathrm{ho}(\\mathcal{C})$ 可以这样具体算出来：对象不变，$\\operatorname{Hom}_{\\mathrm{ho}}(X, Y)$ 是形如 $X \\xleftarrow{\\;w\\;} X\' \\xrightarrow{\\;f\\;} Y$（$w \\in W$）的**分式**在等价关系下的商集。'
       ].join('\n'),
       notes: [
+        ['**证明（Gabriel–Zisman 的构造，逐条用掉三个条件）。** 设 $W$ 容许右分式演算。','- **分式与等价**：一个分式是  $X \\xleftarrow{\\ w\\ } X\' \\xrightarrow{\\ f\\ } Y$（$w \\in W$）；两个分式等价，如果存在 $X\'\'\\xrightarrow{v}X\'$、$X\'\'\\xrightarrow{v\'}X\'$ 使 $w v = w\' v\'$（$\\in W$）且 $f v = f\' v\'$ ✓。','- **等价关系**：自反、对称显然；传递性用 **Ore 条件 2** 把两次比较拉到同一个 $X\'\'$ 上，再用 **消去条件 3** 处理剩下的差异 ✓。','- **复合**：两个分式的复合要「通分」——把 $f_{1}$ 与 $w_{2}$ 按 **条件 2** 摆成一个方块，得到一个公共的 $Z$，于是复合仍是单分式；换代表元不改变复合类（同样靠 2、3）✓。','- **范畴**：恒等取 $1_{X}$（$X \\xleftarrow{1}X\\xrightarrow{1}X$，条件 1 给出 $1 \\in W$）；结合律由构造直接验（三条条件保证「通分」的结果与顺序无关）✓。','- **泛性质**：记得到的范畴为 $\\operatorname{Frac}_{W}(\\mathcal{C})$，函子 $\\mathcal{C}\\to\\operatorname{Frac}_{W}(\\mathcal{C})$ 把每个 $w\\in W$ 变成同构（$w$ 的逆就是分式 $X \\xleftarrow{w}X\'\\xrightarrow{1}X\'$）✓；任何把 $W$ 变成同构的函子 $H$ 都用 $H(f)H(w)^{-1}$ 唯一分解 ✓。','于是 $\\operatorname{Frac}_{W}(\\mathcal{C}) \\simeq \\mathcal{C}[W^{-1}] = \\mathrm{ho}(\\mathcal{C})$，且 $\\operatorname{Hom}$ 就是分式的商集 ✓。∎','⚠️ 少了 Ore 或消去条件，局部化仍然存在，但它的 Hom **一般不是**分式的商集 —— 这正是「分式演算」存在的意义。'].join('\n'),
         '⭐ **直觉**：Ore 条件说的是「分式能做通分」—— 一个 $W$ 里的态射跟在前面，总能换成一个 $W$ 里的态射跟在后面，于是分式可以统一写成「先逆一个、再走一个」的**单分式** $f \\circ w^{-1}$，复合起来才封得住。消去条件保证「等价」这件事本身是好的。',
         '**与环论对照**：这正是交换环里**局部化** $S^{-1}A$（$S$ 是乘性子集）的那个条件；那里的「分式」$a/s$ 就是这里的分式，Ore 条件在交换的情形自动成立。',
         '⚠️ 局部化**总是存在**（上一条），但**不总是**能这样具体算 —— 分式演算是一条足够好用的**充分**条件。'
@@ -22981,6 +23011,7 @@ window.MG = window.MG || {};
         '下标遍历所有 $w : X\' \\to X$（$w \\in W$），沿这些 $w$ 取**滤过**余极限。'
       ].join('\n'),
       notes: [
+        ['**证明。** 沿用分式的写法：$\\operatorname{Hom}_{\\mathrm{ho}}(X, Y)$ 的元素是分式 $X \\xleftarrow{w} X\' \\xrightarrow{f} Y$（$w \\in W$）在等价关系下的类。','- **做成余极限**：记 $J$ 是以 $(w : X\'-\\!\\!\\to X) \\in W$ 为对象、以「$v : X\'\'-\\!\\!\\to X\'$ 且 $wv \\in W$」为态射的范畴，则','$$\\varinjlim_{(X\'\\to X)\\in J}\\operatorname{Hom}_{\\mathcal{C}}(X\', Y)$$','的元素正是「在某个 $X\'$ 上取一个 $f$，两个代表元在更小的 $X\'\'$ 上相同就算同一个」—— 与分式的等价关系逐条对齐 ✓。','- **$J$ 是滤过的**：给两个对象 $w_{1} : X_{1}\\to X$、$w_{2} : X_{2}\\to X$，由 **Ore 条件 2**（把 $w_{2}$ 提到 $w_{1}$ 前面）得到 $X\'\'$ 同时映到 $X_{1}$ 与 $X_{2}$，且两条复合都在 $W$ 里 —— 这就是余锥 ✓；两个平行态射的等化同样由 Ore 条件给出 ✓。','- 于是该余极限是**滤过**余极限，且它就是 $\\operatorname{Hom}_{\\mathrm{ho}}(X,Y)$ ✓。','于是局部化的 Hom「原则上无从下手」，在分式演算成立时变成一个可以计算的滤过余极限 ✓。∎'].join('\n'),
         '⭐ **把「形式添加的逆」变成具体的余极限。** 局部化的态射本来是「向右走一步、向左倒一步」的锯齿链，一般没法直接算；右分式演算保证了可以**通分**：找一个大一点的 $X\'$ 把几条链对齐，于是所有态射都可以看成「先在 $X\'$ 上走一步、再倒回 $X$」，也就是 $\\operatorname{Hom}_{\\mathcal{C}}(X\', Y)$ 里的一个元素。',
         '**为什么是余极限**：不同的 $X\' \\to X$ 给的是同一族态射的不同「表示」，取余极限正是「把这些表示粘起来」；而 Ore 条件保证这些 $X\' \\to X$ 组成的指标范畴是**滤过**的（任意两个都能被第三个同时压住），所以这个余极限是滤过余极限 —— 行为良好。',
         '⭐ **实用价值**：这一条把局部化的 Hom 集合**算成**原范畴里已知东西的滤过余极限。导出范畴 $D(\\mathcal{A})$ 里算 $\\operatorname{Hom}$ 就是从这一步开始的。',
@@ -23449,7 +23480,8 @@ window.MG = window.MG || {};
       title: '同构的截面与收缩',
       regions: ['category'],
       tags: ['范畴论', '同构', '截面', '收缩'],
-      statement: '若 $f : X \\to Y$ 是**同构**，则它的**截面**与**收缩**都存在且**唯一**，而且两者相等，都等于 $f^{-1}$。'
+      statement: '若 $f : X \\to Y$ 是**同构**，则它的**截面**与**收缩**都存在且**唯一**，而且两者相等，都等于 $f^{-1}$。',
+    notes:         ['**证明。** 设 $f : X \\to Y$ 是同构，记 $g := f^{-1}$。','- **存在**：$g f = 1_{X}$ 且 $f g = 1_{Y}$，故 $g$ 既是 $f$ 的截面（$f g = 1_{Y}$）又是收缩（$g f = 1_{X}$）✓。','- **截面唯一**：设 $s : Y\\to X$ 满足 $f s = 1_{Y}$，则 $s = 1_{X}\\,s = (g f)\\,s = g\\,(f s) = g\\,1_{Y} = g$ ✓。','- **收缩唯一**：设 $r : X \\to Y$ 满足 $r f = 1_{X}$，则 $r = r\\,1_{X} = r\\,(f g) = (r f)\\,g = 1_{X}\\,g = g$ ✓。','两件事并起来：截面与收缩都存在、都唯一，且都等于 $f^{-1}$ ✓。∎'].join('\n'),
     }
   ],
 
@@ -23713,6 +23745,7 @@ window.MG = window.MG || {};
         '只要它们存在。'
       ].join('\n'),
       notes: [
+        ['**证明。** 把偏序集看成范畴时，$\\operatorname{Hom}(x,y)$ 至多一个元素，「锥」$c \\to D$ 就退化成「$c \\preceq D(i)$ 对一切 $i$」，即 $c$ 是 $D$ 的一个**下界** ✓。','- 泛锥 = 下界中**最大**的那一个 = $\\inf D$；「$\\lim D$ 存在」正好就是「$\\inf D$ 存在」✓。','- 对偶地（把 $\\preceq$ 反向），余锥 = 上界，泛余锥 = 最小上界 = $\\sup D$ ✓。','- 特例：单点图 $\\inf = \\sup = $ 该元素；空图给出终对象（最大元）与始对象（最小元）；两元素图给出积 $\\inf\\{x,y\\}$ 与余积 $\\sup\\{x,y\\}$；拉回、推出分别是下确界、上确界（因为相容条件自动满足）；而等化子：$f, g$ 若平行则 $f = g$（Hom 至多一个元素），此时等化子就是恒等 ✓。','因此完备格 $=$ 有所有小极限的偏序集；有界格 $\\leftrightarrow$ 有有限极限与有限余极限 ✓。∎'].join('\n'),
         '⭐ **这条把整套范畴语言翻译成序语言**，也是最好的入门例子：',
         '',
         [
@@ -23753,7 +23786,8 @@ window.MG = window.MG || {};
       title: '保积 + 保核 $\\implies$ 保所有有限极限',
       regions: ['category'],
       tags: ['范畴论', '保极限', '积', '核', '左正合'],
-      statement: '函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。'
+      statement: '函子 $F$ 若保**所有有限积**与**所有核**（等化子），则 $F$ 保**所有有限极限**（即 $F$ 左正合）。',
+    notes:         ['**证明。** 记 $F : \\mathcal{C}\\to\\mathcal{D}$ 保有限积与核（等化子）。','- **有限极限的标准构造**：对有限图 $D : I\\to\\mathcal{C}$，令 $P := \\prod_{i\\in I}D(i)$，并考虑两条态射','$$P \\;\\underset{\\;q\\;}{\\overset{\\;p\\;}{\\rightrightarrows}}\\; \\prod_{u : i\\to j}D(j), \\qquad p := \\bigl(\\pi_{j}\\bigr)_{u},\\quad q := \\bigl(D(u)\\circ\\pi_{i}\\bigr)_{u},$$','即「第 $u$ 个坐标分别取 $D(u)$ 之后的投影与直接投影」。则','$$\\lim D \\;\\cong\\; \\operatorname{eq}(p, q),$$','（元素层面：$\\operatorname{eq}(p,q)$ 恰是一族相容的 $D(i)$ 元素，即 $D$ 的锥；泛性由积的泛性给出）✓。','- **$F$ 保两步**：$F(P) \\cong \\prod_{i}FD(i)$（保有限积）✓；$F(\\operatorname{eq}(p,q)) \\cong \\operatorname{eq}(Fp, Fq)$（保核）✓。','- **合起来**：把上面的构造用于 $FD$ 得到的等化子正是 $\\operatorname{eq}(Fp,Fq) \\cong F(\\operatorname{eq}(p,q))$，而它又是 $\\lim FD$ ✓。故 $F$ 保一切有限极限，即**左正合** ✓。∎','⚠️ 只保「积」不够：还要保核（等化子），否则上面第二条会断。'].join('\n'),
     },
 
     {
@@ -23824,7 +23858,8 @@ window.MG = window.MG || {};
       title: '同一个右伴随的左伴随在同构意义下唯一',
       regions: ['category'],
       tags: ['范畴论', '伴随', '唯一性'],
-      statement: '若 $F_{1} \\dashv G$ 且 $F_{2} \\dashv G$，则 $F_{1} \\cong F_{2}$（对偶地：同一个左伴随的右伴随在同构意义下唯一）。'
+      statement: '若 $F_{1} \\dashv G$ 且 $F_{2} \\dashv G$，则 $F_{1} \\cong F_{2}$（对偶地：同一个左伴随的右伴随在同构意义下唯一）。',
+    notes:         ['**证明。** 设 $F_{1}\\dashv G$、$F_{2}\\dashv G$，伴随同构记为 $\\varphi_{1}, \\varphi_{2}$。','- 对任意 $X \\in \\mathcal{C}$ 与 $Y \\in \\mathcal{D}$，','$$\\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{1}X, Y\\bigr) \\xrightarrow{\\;\\varphi_{1}\\;} \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, GY\\bigr) \\xrightarrow{\\;\\varphi_{2}^{-1}\\;} \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F_{2}X, Y\\bigr)$$','是一个与 $Y$ 自然同构 ✓。','- 由 **Yoneda 引理**，自然同构 $\\operatorname{Hom}(F_{1}X, -) \\cong \\operatorname{Hom}(F_{2}X, -)$ 唯一地来自一个同构 $\\theta_{X} : F_{1}X \\to F_{2}X$ ✓。','- $\\theta$ 对 $X$ 自然：$\\theta$ 是「用同两个伴随同构拼出来的」，而伴随同构对两个变量都自然，故 $\\theta : F_{1} \\to F_{2}$ 是自然同构 ✓。','- 同一条论证交换 $\\mathcal{C}$ 与 $\\mathcal{D}^{\\mathrm{op}}$ 就得到右伴随的唯一性 ✓。∎'].join('\n'),
     },
 
     {
@@ -23835,7 +23870,8 @@ window.MG = window.MG || {};
       title: '$G$ 忠实 $\\iff$ 余单位是满',
       regions: ['category'],
       tags: ['范畴论', '伴随', '余单位', '忠实'],
-      statement: '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $G$ **忠实** $\\iff$ 余单位 $\\varepsilon$ 是**满态射**（对偶地：$F$ 忠实 $\\iff$ 单位是单态射）。'
+      statement: '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $G$ **忠实** $\\iff$ 余单位 $\\varepsilon$ 是**满态射**（对偶地：$F$ 忠实 $\\iff$ 单位是单态射）。',
+    notes:         ['**证明。** 设 $F \\dashv G$，伴随同构 $\\varphi_{Y,Z} : \\operatorname{Hom}_{\\mathcal{D}}(FY, Z) \\xrightarrow{\\ \\cong\\ } \\operatorname{Hom}_{\\mathcal{C}}(Y, GZ)$，余单位 $\\varepsilon_{Y} = \\varphi^{-1}(1_{GY})$。','- **关键同构**：由三角恒等式，下面的方块交换（对一切 $Z$）：','$$\\begin{array}{ccc} \\operatorname{Hom}_{\\mathcal{D}}(Y, Z) & \\xrightarrow{\\ G_{Y,Z}\\ } & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\\\ {\\scriptstyle \\operatorname{Hom}(\\varepsilon_{Y}, Z)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle \\cong\\ \\varphi_{GY,Z}} \\\\ \\operatorname{Hom}_{\\mathcal{D}}(FGY, Z) & \\xrightarrow[\\ \\cong\\ ]{} & \\operatorname{Hom}_{\\mathcal{C}}(GY, GZ)\\end{array}$$','即 $\\varphi_{GY,Z}\\circ\\operatorname{Hom}(\\varepsilon_{Y}, Z) = G_{Y,Z}$ ✓。','- 于是（用「$e$ 是满态射 $\\iff$ $\\operatorname{Hom}(e, Z)$ 对一切 $Z$ 是单射」这条刻画）','$$\\varepsilon_{Y}\\text{ 满} \\iff \\forall Z:\\ \\operatorname{Hom}(\\varepsilon_{Y},Z)\\text{ 单} \\iff \\forall Z:\\ G_{Y,Z}\\text{ 单} \\iff G\\text{ 忠实} ✓$$','- 对偶地（把整个论证搬到 $\\mathcal{C}^{\\mathrm{op}}, \\mathcal{D}^{\\mathrm{op}}$）得 $F$ 忠实 $\\iff$ 单位 $\\eta$ 是单态射 ✓。∎'].join('\n'),
     },
 
     {
@@ -23875,7 +23911,9 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', 'Ind-对象', '反射子范畴', '滤过余极限'],
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
-      notes: '**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'
+      notes: [
+        ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎'].join('\n'),
+'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n')
     },
 
     {
@@ -23886,7 +23924,8 @@ window.MG = window.MG || {};
       title: '有余滤过余极限与有限余极限 $\\implies$ 有所有余极限',
       regions: ['category'],
       tags: ['范畴论', '滤过余极限', '余极限', '完备性'],
-      statement: '有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。'
+      statement: '有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。',
+    notes:         ['**证明。** 记 $\\mathcal{C}$ 有有限余极限与滤过余极限。','- **先看小指标**：设 $I$ 是任一小范畴，$D : I \\to \\mathcal{C}$。令 $\\operatorname{Fin}(I)$ 是 $I$ 的**有限子范畴**（对象集有限、且对其中每对对象只取有限多个态射）的全体，按包含构成偏序 —— 它是**滤过**的（两个有限子范畴的并仍有限）✓。','- **两步走**：$\\varinjlim_{I} D$ 可以这样算：先在每个有限子范畴 $J$（沿含入 $J \\hookrightarrow I$）上取余极限 $\\varinjlim_{J}D|_{J}$ —— 这是**有限**余极限（有限图）✓；再沿 $J$ 的滤过序取余极限，得到 $\\varinjlim_{J \\in \\operatorname{Fin}(I)}\\bigl(\\varinjlim_{J} D\\bigr)$，它与 $\\varinjlim_{I}D$ 满足同一个泛性质（两条余锥的相容性互相翻译）故同构 ✓。','- 于是任何余极限都是「有限余极限的滤过余极限」，两者都在 $\\mathcal{C}$ 里，故 $\\mathcal{C}$ 有所有余极限 ✓。∎','⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。'].join('\n'),
     },
 
     {

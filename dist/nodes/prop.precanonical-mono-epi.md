@@ -9,5 +9,4 @@ $$f \text{ 是单态射（满态射）} \iff X^{\sharp} \to Y^{\sharp} \text{ �
 ## 为什么成立（入边，证明在 proofs/）
 - `def.sheaf` 层：用到了定义 层　proofs/def-dep.sheaf-mono-epi.md
 
-## 说明
-所以「谁是单的、谁是满的」在 $\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\mathcal{C}$ 换成 $\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。
+> 说明见 `notes/prop.precanonical-mono-epi.md`

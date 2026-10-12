@@ -10,5 +10,4 @@ layer 13 · 命题 · 层与拓扑 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.equalizer` 等化子 / 余等化子：用到了定义 等化子 / 余等化子　proofs/def-dep.equalizer-mono-epi.md
 
-## 说明
-这两条在 $\mathbf{Set}$ 里也对，但在层范畴里**不是自动的**，要证。它们恰好就是**预拓扑斯（pretopos）**公理的内容 —— 所以这个位置正是从「层」走向「拓扑斯」的接口。
+> 说明见 `notes/prop.sheaf-mono-epi-iso.md`

@@ -9,5 +9,4 @@ $$\bigl(T/R\bigr)^{\sharp} \;\cong\; T^{\sharp} / R^{\sharp}$$
 ## 为什么成立（入边，证明在 proofs/）
 - `def.effective-equivalence` 有效等价关系：用到了定义 有效等价关系　proofs/def-dep.effective-sheafify.md
 
-## 说明
-「先取商再层化」与「先层化再取商」结果一样 —— 这类交换性是层化「保余极限」的具体面貌（商是余等化子，是余极限）。
+> 说明见 `notes/prop.sheafify-equivalence.md`

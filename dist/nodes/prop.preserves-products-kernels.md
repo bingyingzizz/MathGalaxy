@@ -7,3 +7,5 @@ layer 14 · 命题 · 函子与自然变换 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.preserves-limit` 保极限的函子：用到了定义 保极限的函子　proofs/def-dep.ppk-preslim.md
 - `def.exact-functor` 正合函子：用到了定义 正合函子　proofs/def-dep.ppk-exact.md
+
+> 说明见 `notes/prop.preserves-products-kernels.md`

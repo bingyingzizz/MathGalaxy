@@ -7,3 +7,5 @@ layer 12 · 命题 · 图与极限 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - `def.filtered-category` 滤过范畴：用到了定义 滤过范畴　proofs/def-dep.ffc-filtered.md
 - `def.limit` 极限：用到了定义 极限　proofs/def-dep.ffc-colimit.md
+
+> 说明见 `notes/prop.filtered-finite-colimits.md`

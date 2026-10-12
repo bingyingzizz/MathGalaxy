@@ -118,6 +118,7 @@ window.MG = window.MG || {};
         '即「全体自然变换」与「$F(X)$ 的元素」一一对应。'
       ].join('\n'),
       notes: [
+        ['**证明。** 定义映射','$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$','- **逆映射**：给 $u \\in F(X)$，对每个 $Y$ 定义','$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$','它是自然的：对 $g : Y \\to Z$，由 $F$ 的函子性 $F(g)\\circ F(f) = F(g\\circ f)$，两边正是 $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ 与 $\\Psi(u)_{Z}(g\\circ f)$ ✓。','- **$\\Phi\\Psi = \\mathrm{id}$**：$\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓。','- **$\\Psi\\Phi = \\mathrm{id}$**：给 $\\alpha$ 与 $f : X\\to Y$，用 $\\alpha$ 的自然性（作用在 $f$ 上）','$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$','- **自然性**：$\\Phi$ 对 $F$ 自然（沿 $\\beta : F\\to G$ 两边都变成 $\\beta_{X}\\circ(-)$）✓；对 $X$ 也自然（沿 $k : X\'\\to X$，$h^{k}$ 的前复合与 $F(k)$ 对应）✓。','于是 $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$，双射就是 $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓；对偶地（取 $\\mathcal{C}^{\\mathrm{op}}$）得预层版本 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓。∎'].join('\n'),
         '这个双射在两**边**都自然：对 $F$（自然变换）自然，对 $X$（态射）也自然。两头都自然，才是这条引理真正有分量的地方。',
         '它把「$h^{X}$ 到 $F$ 的所有自然变换」这个原则上无从下手的集合，压成了 $F(X)$ 里的**一个元素**。后面凡是遇到「自然变换不好数」的地方，基本都是靠这一步救场。',
         '对偶形式：$T$ 是预层（$T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）、$h_{X} = \\operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$。两式只是把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，所以后面的推导两套都用。'
@@ -205,7 +206,9 @@ window.MG = window.MG || {};
         '',
         '是**笛卡尔的**。上面是**切片范畴到预层范畴的嵌入**，下面是**范畴 $\\mathcal{C}$ 到预层范畴的 Yoneda 嵌入** $h$（$h(X) = h_{X} = \\operatorname{Hom}(-, X)$），两条竖边是两个遗忘函子。'
       ].join('\n'),
-      notes: '也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'
+      notes: [
+        ['**证明。** 需要证 $\\mathcal{C}/T \\to \\mathcal{C}\\times_{\\widehat{\\mathcal{C}}}\\widehat{\\mathcal{C}}/T$ 是等价。','- **对象**：$\\mathcal{C}/T$ 的对象是 $p : X \\to T$（$X\\in\\mathcal{C}$）；由 **Yoneda**，$\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，所以 $p$ 与一个态射 $h_{X}\\to T$ 一一对应 —— 而右边拉回的对象的正是「$X \\in \\mathcal{C}$ 连同 $h_{X}\\to T$」✓。','- **态射**：$\\mathcal{C}/T$ 中 $p \\to p\'$ 是交换三角（$X\\to X\'$ 与 $T$ 上的相容性）；把 Yoneda 嵌入作用上去得到 $h_{X}\\to h_{X\'}$ 与 $h_{X}\\to T$ 的相容对，右边正是一对这样的数据。由 Yoneda 嵌入**全忠实**（$\\operatorname{Hom}(h_{X},h_{X\'}) \\cong \\operatorname{Hom}(X,X\')$），这个对应在 Hom 上是双射 ✓。','- **函子性 / 等价**：对应在复合下保持（Yoneda 是函子）✓ 于是得到一个范畴等价，即原方块**笛卡尔** ✓。','- **特例**：取 $T = h_{X}$，得 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片与在预层范畴里沿 $h_{X}$ 切片是同一件事 ✓。∎'].join('\n'),
+'也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'].join('\n\n')
     },
 
     /* ------------------------------------------------------ 稠密性定理 */

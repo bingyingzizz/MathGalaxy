@@ -8,5 +8,4 @@ layer 17 · 命题 · 拓扑斯 · 范畴论
 - `def.topos` 拓扑斯：用到了定义 拓扑斯　proofs/def-dep.topos-covering-epi.md
 - `def.grothendieck-topology` Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　proofs/def-dep.topology-covering-epi.md
 
-## 说明
-这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。
+> 说明见 `notes/prop.topos-covering-epi.md`

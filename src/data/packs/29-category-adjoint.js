@@ -268,7 +268,9 @@ window.MG = window.MG || {};
         '- 余极限等于 $F\\bigl(\\operatorname{colim}_{\\mathcal{C}} D\'\\bigr)$；',
         '- 极限就等于 $\\operatorname{lim}_{\\mathcal{C}} D\'$ 本身（它自动落在 $\\mathcal{C}\'$ 里）。'
       ].join('\n'),
-      notes: '也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'
+      notes: [
+        ['**证明。** 设嵌入 $i : \\mathcal{C}\' \\hookrightarrow \\mathcal{C}$，反射 $F : \\mathcal{C}\\to\\mathcal{C}\'$，$F \\dashv i$（即 $i$ 是右伴随）。','- **余极限**：对任意 $C\' \\in \\mathcal{C}\'$，用伴随同构与 $\\mathcal{C}$ 中余极限的泛性','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(F(\\operatorname{colim}_{\\mathcal{C}}D\'), C\'\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(\\operatorname{colim}_{\\mathcal{C}}D\', iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(D\'_{j}, iC\'\\bigr) \\;\\cong\\; \\lim_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(D\'_{j}, C\'\\bigr),$$','对 $C\'$ 自然 —— 这正是「$F(\\operatorname{colim}_{\\mathcal{C}}D\')$ 是 $D\'$ 在 $\\mathcal{C}\'$ 里的余极限」的泛性质 ✓。','- **极限**：同法','$$\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', \\operatorname{lim}_{\\mathcal{C}}D\'\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}}\\bigl(iC\', D\'_{j}\\bigr) \\;\\cong\\; \\operatorname{lim}_{j}\\operatorname{Hom}_{\\mathcal{C}\'}\\bigl(C\', D\'_{j}\\bigr)$$','（第二个同构用了 $i$ 全忠实），故 $\\lim_{\\mathcal{C}}D\'$ 已经落在 $\\mathcal{C}\'$ 里、且就是 $\\mathcal{C}\'$ 中的极限 ✓。','**结论：反射子范畴对极限封闭，余极限要过一遍反射。**∎'].join('\n'),
+'也就是说，**反射子范畴对极限封闭**。这条让「先在大的范畴里算，再看能不能落回去」成为标准操作：余极限要回炉过一次反射，极限则不用。'].join('\n\n')
     },
 
     /* ---------------------------------------------------- Kan 延拓 */
@@ -350,6 +352,7 @@ window.MG = window.MG || {};
         '保持所有有限极限。'
       ].join('\n'),
       notes: [
+        ['**证明。** 滤过范畴就是「任意有限图都有余锥」的小范畴。','- **先看有限积**：给滤过图 $X_{i}, Y_{i}$，比较映射','$$\\varinjlim_{i}(X_{i}\\times Y_{i}) \\longrightarrow \\bigl(\\varinjlim_{i}X_{i}\\bigr)\\times\\bigl(\\varinjlim_{i}Y_{i}\\bigr)$$','**满**：取右边一对 $([x],[y])$，$x \\in X_{i}$、$y \\in Y_{j}$；由滤过性存在 $k$ 与 $i\\to k$、$j\\to k$，于是 $(x_{k}, y_{k})$ 的代表落到 $X_{k}\\times Y_{k}$ ✓。','**单**：若 $(x_{i},y_{i})$ 与 $(x\'_{i\'},y\'_{i\'})$ 在右边相等，则各坐标在某个更后的指标处相等；由滤过性取公共的 $k$，在 $X_{k}\\times Y_{k}$ 里它们已经相等 ✓。','- **一般有限极限**由有限积与等化子生成：等化子 $\\{(x,y) : f(x) = g(y)\\}$ 的两边取代表元后，滤过性同样给出公共指标使等式在那个指标处成立（$\\mathbf{Set}$ 里元素都是「某个指标处的元素」）✓。','- 于是 $\\varinjlim$ 与一切有限极限交换，即**正合** ✓。','⚠️ 这里的「正合」是集合层面的断言；一般范畴里「滤过余极限正合」需要更强的假设（AB5 型），不能照搬。∎'].join('\n'),
         '「正合」在这里就一句话：滤过余极限与有限极限**可以交换**。最基本的例子是它保持有限积：',
         '',
         '$$\\varinjlim_{i} (X_{i} \\times Y_{i}) \\;\\cong\\; \\bigl(\\varinjlim_{i} X_{i}\\bigr) \\times \\bigl(\\varinjlim_{i} Y_{i}\\bigr)$$',
