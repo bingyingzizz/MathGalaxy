@@ -187,8 +187,51 @@
       return fs;
     }
 
+    /* ------------------------------------------------------ 视口裁剪 */
+    /*
+      ⚠️ 「放大之后反而更卡」的根因就在这里：屏幕上只剩几十个点，每帧却仍为全部
+         700 个点、1400 条线算几何、描边、量名字（实测 k=1.6 时屏幕上一个点都没有，
+         一帧还要 6.3ms）。下面用裸乘加算屏幕坐标，不为判断分配对象。
+
+      线做的是**保守**裁剪：只有所有端点都落在视口同一侧之外才丢 —— 多前提的推出线
+      先汇聚到一点、定义引用线还会外凸（最多 90px），这样判才切不掉真正可见的线。
+    */
+    var PAD_NODE = 220;      // 点的余量：光晕（r*5.4）+ 名字宽度 + 选中环
+    var PAD_EDGE = 140;      // 线的余量：贝塞尔外凸 90 + 箭头 17 + 线宽
+
+    function nodeSX(n) { return n.x * view.cam.k + view.cam.tx; }
+    function nodeSY(n) { return n.y * view.cam.k + view.cam.ty; }
+
+    function inView(x, y, pad) {
+      return x > -pad && x < W + pad && y > -pad && y < H + pad;
+    }
+
+    /** 屏幕外的点不画 */
+    function nodeInView(n, pad) {
+      return inView(nodeSX(n), nodeSY(n), pad == null ? PAD_NODE : pad);
+    }
+
+    /** 所有端点都在视口同一侧之外 → 这条线肯定看不见 */
+    function edgeInView(e) {
+      var ids = GU.edgeNodes(e);
+      if (!ids.length) return false;
+      var left = true, right = true, up = true, down = true;
+      for (var i = 0; i < ids.length; i++) {
+        var n = view.graph.byId[ids[i]];
+        if (!n) continue;
+        var x = nodeSX(n), y = nodeSY(n);
+        if (x > -PAD_EDGE) left = false;
+        if (x < W + PAD_EDGE) right = false;
+        if (y > -PAD_EDGE) up = false;
+        if (y < H + PAD_EDGE) down = false;
+        if (!left && !right && !up && !down) return true;   // 有一个端点就在视口里
+      }
+      return !(left || right || up || down);
+    }
+
     /* ------------------------------------------------------ 连线几何 */
-    var geomCam = { k: -1, tx: 0, ty: 0 };
+    var geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };
+    var geomList = [];
 
     function buildGeometry() {
       var cam = view.cam;
@@ -196,20 +239,24 @@
       var list = [];
 
       view.visible.forEach(function (e) {
+        if (!edgeInView(e)) return;            // 屏幕外的线连几何都不建
         var g = computeEdge(e, cam);
         if (g) { geom[e.id] = g; list.push(g); }
       });
       geomCache = geom;
-      geomCam = { k: cam.k, tx: cam.tx, ty: cam.ty };
+      geomList = list;
+      geomCam = { k: cam.k, tx: cam.tx, ty: cam.ty, w: W, h: H };
       return list;
     }
 
-    /** 保证命中检测用的是当前相机下的几何 */
+    /** 相机与视口大小都没变 → 复用上一帧的几何（命中检测与重复绘制都走这里） */
     function ensureGeom() {
       var cam = view.cam;
-      if (!geomCache || geomCam.k !== cam.k || geomCam.tx !== cam.tx || geomCam.ty !== cam.ty) {
-        buildGeometry();
+      if (!geomCache || geomCam.k !== cam.k || geomCam.tx !== cam.tx || geomCam.ty !== cam.ty
+        || geomCam.w !== W || geomCam.h !== H) {
+        return buildGeometry();
       }
+      return geomList;
     }
 
     function screenOf(n) { return view.cam.toScreen(n.x, n.y); }
@@ -374,7 +421,7 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
 
-      var geoms = buildGeometry();
+      var geoms = ensureGeom();
       var cam = view.cam;
       computeLod();
       nameBoxes.length = 0;
@@ -743,6 +790,7 @@
     /* ---------------------------------------------------------- 节点 */
     function drawNode(n) {
       if (!nodeOk(n.id)) return;                 // 被藏起来的点：不画（连线也已一并去掉）
+      if (!nodeInView(n)) return;                // 屏幕外的点：光晕、圆点、外环全省掉
       var p = screenOf(n);
       var r = nodeRadius(n);
       var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
@@ -824,6 +872,7 @@
         if (!keepAll && !isSpecial && !trunk && n.degree < 3) return;
 
         var p = screenOf(n);
+        if (!inView(p.x, p.y, PAD_NODE)) return;   // 屏幕外的名字：既不量宽也不画
         var r = nodeRadius(n);
         var text = n.label;
         var tw = measure(ctx, text, ctx.font);
