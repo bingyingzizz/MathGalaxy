@@ -1,6 +1,7 @@
 # 加法与阿贝尔范畴（hom.ab）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/hom.ab.md`
 
+- prop.biproduct-is-product　直和就是积　layer 17
 - prop.hom-enrichment-unique　预加性结构唯一　layer 17
 - prop.exact-sequence-subcategory　正合列构成子范畴　layer 17
 - def.grothendieck-category　Grothendieck 范畴　layer 18

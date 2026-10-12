@@ -9,7 +9,7 @@
 
 - Cech 函子的性质 | 左正合 → prop.cech-properties
 
-- 层化 | sheafification | sheafify | 伴随层 → thm.sheafification
+- 层化 | sheafification | sheafify | 伴随层 | Exercise 5.16 → thm.sheafification
 
 - 正则满态射 | regular epimorphism | regular epi → def.regular-epi
 

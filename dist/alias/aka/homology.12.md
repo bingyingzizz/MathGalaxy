@@ -1,6 +1,10 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 非局部紧的 RHom | R^I 的 RHom | Exercise 8.19 → ex.nonlc-rhom
+
+- 正合列 | exact sequence | 短正合列 | Definition 5.2.3 → def.exact-sequence
+
 - 足够多内射 | enough injectives | Proposition 5.2.8 → prop.grothendieck-enough-injectives
 
 - AB5 与 AB3* | AB 公理关系 | Proposition 5.2.7 → prop.ab5-implications

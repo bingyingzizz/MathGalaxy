@@ -21,6 +21,6 @@
 
 - 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) | Definition 6.1.1 → def.condensed-abelian-group
 
-- 截面函子 | Gamma(F,-) | sections functor → prop.condab-section
+- 截面函子 | Gamma(F,-) | sections functor | Exercise 5.17 → prop.condab-section
 
 > 续见 alias/aka/condensed.3.md

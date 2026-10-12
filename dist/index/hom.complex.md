@@ -1,7 +1,7 @@
 # 复形与导出三角（hom.complex）· 节点清单（第 1/3 页）
 
 造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。
-中心天体 def.distinguished-triangle　·　30 个节点　·　根 `../`　·　续页 `index/hom.complex.2.md`
+中心天体 def.distinguished-triangle　·　31 个节点　·　根 `../`　·　续页 `index/hom.complex.2.md`
 
 - def.cochain-complex　上链复形　layer 10
 - def.homotopy　同伦　layer 11
@@ -15,8 +15,8 @@
 - prop.leray-acyclicity　Leray 零调性　layer 13
 - prop.homotopy-equivalence-criterion　同伦等价的判据　layer 13
 - def.distinguished-triangle　导出三角　layer 14
+- prop.left-exact-iff-R0　左正合性与 R⁰　layer 14
 - prop.triangle-rotation　三角的旋转与延拓　layer 15
 - lem.triangle-morphism　三角态射的性质　layer 15
-- prop.k-calculus-fractions　K(A) 允许分式演算　layer 15
 
 > 续见 `index/hom.complex.2.md`

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:51:51.573Z
-> 9 星系 / 45 星团 / 580 节点 / 1212 连线（强边 1203，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:57:59.433Z
+> 9 星系 / 45 星团 / 582 节点 / 1217 连线（强边 1208，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -8604,6 +8604,26 @@ $$\operatorname{im}(d^{n-1}_{1}\oplus d^{n-1}_{2}) = \operatorname{im}d^{n-1}_{1
 
 参考：Le Stum, An introduction to condensed mathematics, §5.1
 
+#### 左正合性的判据　`prop.left-exact-criterion`
+*命题*　命题：$F$ 左正合 $\iff$ $F$ 加法且保左正合列
+
+设 $\mathcal{C}, \mathcal{D}$ 是阿贝尔范畴，$F : \mathcal{C} \to \mathcal{D}$ 是函子。则
+
+$$F \text{ 左正合} \iff F \text{ 加法，且把左正合列送到左正合列}.$$
+
+对偶地：$F$ 右正合 $\iff$ $F$ 加法，且把右正合列送到右正合列。
+
+**证明。**
+**$(\Longrightarrow)$** 左正合就是**保有限极限** ✓。保有限极限当然保有限积与核，于是：$F$ 保双积 $\implies$ $F$ 加法（见「加法函子的刻画」）✓；而左正合列 $0 \to M' \to M \to M''$ 本身就是一个有限极限图表，被 $F$ 送到同样的图表，即仍是左正合列 ✓。
+**$(\Longleftarrow)$** 设 $F$ 加法且保左正合列。由「保有限积 + 保核 $\implies$ 保所有有限极限」，只需证这两条 ✓：
+- **保核**：$0 \to \ker f \xrightarrow{\ i\ } M \xrightarrow{\ f\ } N$ 是左正合列 ✓，被送到左正合列 $0 \to F(\ker f) \xrightarrow{\ Fi\ } FM \xrightarrow{\ Ff\ } FN$，这正是 $F(\ker f) \cong \ker(Ff)$ ✓；
+- **保有限积**：$0 \to M \xrightarrow{\ i_{1}\ } M \oplus N \xrightarrow{\ p_{2}\ } N$ 也是左正合列（$i_{1}$ 单、$\operatorname{im}i_{1} = \ker p_{2}$）✓，被送到左正合列 $0 \to FM \to F(M\oplus N) \to FN$；而 $F$ **加法**说明 $F$ 保双积、$Fi_{1}$ 就是第一个含入 ✓，于是 $F(M \oplus N)$ 连同 $Fi_{1}, Fi_{2}$ 满足直和的三条等式（见「直和就是积」），即 $F(M\oplus N) \cong FM \oplus FN$ ✓。
+两条合起来：$F$ 保有限积与核，从而保所有有限极限，即左正合 ✓。∎
+
+⭐ 这条把「左正合」拆成两件**逐项可查**的事：**加法**（看双积）与**保左正合列**（看具体的列）。实际验证函子左正合时用的就是这两把尺子。
+
+参考：Le Stum, An introduction to condensed mathematics, §5.2
+
 ### 星团：复形与导出三角
 > 造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。
 
@@ -9169,6 +9189,30 @@ $(2) \implies (3)$：显然（$\operatorname{Hom}(M,-)$ 是左正合的）。
 $(3) \implies (1)$：对每个 $M$，$I$ 对 $\operatorname{Hom}(M,-)$ 零调意味着 $R^{n}\operatorname{Hom}(M, I) = \operatorname{Ext}^{n}(M, I) = 0$（$n > 0$），特别地 $\operatorname{Ext}^{1}_{\mathcal{A}}(M, I) = 0$ 对一切 $M$ 成立 ✓。而由**内射判据**，$\operatorname{Ext}^{1}_{\mathcal{A}}(-, I) = 0$ 正是「$I$ 内射」的等价刻画（在阿贝尔范畴里，它等价于「每个单态射 $I \rightarrowtail N$ 都有收缩」）✓。于是 $I$ 内射 ✓。∎
 
 ⭐ 用途：验「内射」时可以从**任何**左正合函子那一侧下手 —— 而在凝聚态 / 层的情形里，最方便的左正合函子就是取截面 $\Gamma(S, -)$。
+
+参考：Le Stum, An introduction to condensed mathematics, §7.2
+
+#### 左正合性与 R⁰　`prop.left-exact-iff-R0`
+*命题*　命题：$F$ 左正合 $\iff$ $R^{0}F \cong F$
+
+设 $\mathcal{A}$ 是阿贝尔范畴（有足够多内射）、$\mathcal{A}'$ 是阿贝尔范畴，$F : \mathcal{A} \to \mathcal{A}'$ 是**加法**函子。则
+
+$$F \text{ 左正合} \iff \forall M \in \mathcal{A}:\ R^{0}F(M) \cong F(M).$$
+
+对偶地（有足够多投射时）：$F$ 右正合 $\iff L_{0}F \cong F$。
+
+**证明。**
+**$(\Longrightarrow)$** 取 $M$ 的一条内射消解 $0 \to M \xrightarrow{\ \varepsilon\ } I^{0} \xrightarrow{\ d^{0}\ } I^{1} \to \cdots$ ✓。$F$ **左正合**，所以它把上半段正合列送到正合列
+$$0 \longrightarrow FM \xrightarrow{\ F\varepsilon\ } FI^{0} \xrightarrow{\ Fd^{0}\ } FI^{1} ✓$$
+于是由 $R^{0}F(M) = H^{0}(FI^{\bullet})$ 的定义
+$$R^{0}F(M) = \ker(Fd^{0}) = \operatorname{im}(F\varepsilon) \cong FM ✓$$
+**$(\Longleftarrow)$** 设 $R^{0}F \cong F$。短正合列 $0 \to M' \to M \to M'' \to 0$ 的长正合列开头是
+$$0 \to R^{0}F(M') \to R^{0}F(M) \to R^{0}F(M'') \to R^{1}F(M') \to \cdots$$
+用 $R^{0}F \cong F$ 换掉前三项，得到 $0 \to FM' \to FM \to FM''$ **正合** ✓，即 $F$ 左正合 ✓。∎
+
+⭐ 一句话：**左正合性可以只用 $0$ 次导出函子来检验**。反过来，这也解释了为什么「$R^{0}F = F$」在导出函子的记号里被当成左正合的默认性质。
+
+⚠️ 前提「$F$ 加法」不能省：非加法函子的导出函子没有意义（导出函子是在加法范畴的复形上定义的）。
 
 参考：Le Stum, An introduction to condensed mathematics, §7.2
 
@@ -15137,6 +15181,26 @@ $(3) \implies (1)$ 用的是内射对象的判据（$\operatorname{Ext}^{1}(-,I)
 
 把点看成拓扑斯态射 $1 \to \operatorname{Sh}(X)$，用的是拓扑斯之间的态射。
 
+#### 定义引用：「正合函子」→ 左正合性的判据　`def-link.lcrit-exactfun`
+
+命题要刻画的就是「左正合函子」这条定义。
+
+#### 定义引用：「加法函子」→ 左正合性的判据　`def-link.lcrit-addfun`
+
+判据里的一半是「$F$ 加法」。
+
+#### 定义引用：「保极限的函子」→ 左正合性的判据　`def-link.lcrit-res`
+
+左正合 = 保有限极限，用的是保极限那条定义。
+
+#### 定义引用：「右导出函子」→ 左正合性与 R⁰　`def-link.r0-derfun`
+
+命题比较的就是右导出函子的 $0$ 次分量与 $F$ 本身。
+
+#### 定义引用：「正合函子」→ 左正合性与 R⁰　`def-link.r0-exactfun`
+
+结论是「$F$ 左正合」。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18479,6 +18543,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 复形与导出三角**　4 条节点级连线
 - **加法与阿贝尔范畴 ↔ 复形与导出三角**　7 条节点级连线
 - **层与拓扑 ↔ 预层与米田**　6 条节点级连线
+- **函子与自然变换 ↔ 加法与阿贝尔范畴**　3 条节点级连线
+- **函子与自然变换 ↔ 复形与导出三角**　3 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -18515,7 +18581,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **伴随与反射 ↔ 拓扑斯**　2 条节点级连线
 - **图与极限 ↔ 紧生成空间与弱 Hausdorff**　2 条节点级连线
 - **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　3 条节点级连线
-- **函子与自然变换 ↔ 复形与导出三角**　2 条节点级连线
 - **范畴与图 ↔ 复形与导出三角**　4 条节点级连线
 - **复形与导出三角 ↔ 过滤与谱序列**　4 条节点级连线
 - **单满、子对象与像 ↔ 加法与阿贝尔范畴**　4 条节点级连线

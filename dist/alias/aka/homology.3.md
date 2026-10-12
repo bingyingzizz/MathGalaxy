@@ -1,6 +1,10 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- 左正合性的判据 | Exercise 5.11 → prop.left-exact-criterion
+
+- 左正合与 R⁰ | Exercise 7.23 → prop.left-exact-iff-R0
+
 - 投射对象的余积 | Exercise 1.48 → prop.projective-coproduct
 
 - Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
@@ -18,9 +22,5 @@
 - 内射复形等价导出范畴 | K+(I) 等价 D+(A) | Theorem 7.2.6 | Thm 7.2.6 → thm.k-plus-injectives
 
 - 右导出函子 | right derived functor | RF | RnF | Definition 7.2.7 | Def 7.2.7 → def.right-derived-functor
-
-- 导出函子的长正合列 | Theorem 7.2.8 | Thm 7.2.8 → thm.derived-long-exact
-
-- Ext | 扩展群 | extension group | Ext^n | Definition 7.2.9 | Def 7.2.9 → def.ext
 
 > 续见 alias/aka/homology.4.md

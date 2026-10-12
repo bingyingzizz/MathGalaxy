@@ -15,7 +15,7 @@
 
 - CGWH 的子空间 | CGWH 的滤过余极限 → prop.cgwh-closed
 
-- 函数空间弱 Hausdorff | kC(X,Y) → prop.cg-function-space
+- 函数空间弱 Hausdorff | kC(X,Y) | Exercise 4.10 → prop.cg-function-space
 
 - 积拓扑 | product topology | 乘积空间 | 投影 → def.product-topology
 

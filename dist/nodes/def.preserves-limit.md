@@ -13,6 +13,7 @@ $$F(\lim D) \longrightarrow \lim (F \circ D).$$
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.preslim-functor.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.left-exact-criterion` 左正合性的判据 用
 - 被 `def.exact-functor` 正合函子 用
 - 被 `prop.preserves-products-kernels` 保积与核 ⟹ 保所有有限极限 用
 
