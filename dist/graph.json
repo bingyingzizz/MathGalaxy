@@ -2,7 +2,7 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T05:19:58.377Z",
+  "generated": "2026-10-12T05:22:42.504Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -11078,7 +11078,7 @@
     "连通分量"
    ],
    "statement": "拓扑空间 $X$ 叫**完全不连通的**，如果**每个连通分量都是单点**。\n\n叫**极不连通的**（extremally disconnected），如果**每个开集的闭包仍然开**。",
-   "notes": "⚠️ **两个名字只差一个字，强弱正好相反**：\n\n\n\n- **完全不连通**说「碎到每个分量只剩一个点」；\n- **极不连通**说「开集的闭包不再长大」—— 后者更强。\n\n**极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。\n\n⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通（**Lemma 2.2.10**）；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**（**Prop 2.2.9**）；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。\n\n**例子**：Cantor 集 $2^{\\mathbb{N}}$ 完全不连通但不极不连通；$\\beta\\mathbb{N}$（$\\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\\beta\\mathbb{N} \\setminus \\mathbb{N}$ 是它的一个极端例子。",
+   "notes": "⚠️ **两个名字只差一个字，强弱正好相反**：\n\n\n\n- **完全不连通**说「碎到每个分量只剩一个点」；\n- **极不连通**说「开集的闭包不再长大」—— 后者更强。\n\n**极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。\n\n⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。\n\n**例子**：Cantor 集 $2^{\\mathbb{N}}$ 完全不连通但不极不连通；$\\beta\\mathbb{N}$（$\\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\\beta\\mathbb{N} \\setminus \\mathbb{N}$ 是它的一个极端例子。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §2.2"
    ]
@@ -11172,7 +11172,7 @@
     "态射"
    ],
    "statement": "设 $\\mathcal{C}, \\mathcal{C}'$ 是两个 site。函子\n\n$$f^{-1} := g : \\mathcal{C} \\longrightarrow \\mathcal{C}'$$\n叫**连续的**，如果沿 $g$ 的预复合把 $\\mathcal{C}'$ 上的层拉回成 $\\mathcal{C}$ 上的层：\n\n$$g^{*} : \\widetilde{\\mathcal{C}'} \\longrightarrow \\widetilde{\\mathcal{C}}, \\qquad F \\longmapsto F \\circ g, \\qquad \\text{落在层范畴里。}$$",
-   "notes": "**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。\n\n⭐ **它等价于**：$g$ 把 $\\mathcal{C}'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。\n\n**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。\n\n📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**（Definition 3.4.5）。",
+   "notes": "**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。\n\n⭐ **它等价于**：$g$ 把 $\\mathcal{C}'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。\n\n**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。\n\n📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -11266,7 +11266,7 @@
     "代数"
    ],
    "statement": "常用的代数范畴（对象 + 保结构映射）：\n\n- $\\mathrm{Mon}$：幺半群；\n- $\\mathrm{Gr}$（也写 $\\mathbf{Grp}$）：群；\n- $\\mathrm{Rng}$：环；\n- $G\\text{-}\\mathbf{Set}$：$G$-集（带 $G$ 作用的集合）；\n- $A\\text{-}\\mathbf{Mod}$：$A$-模；\n- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。",
-   "notes": "⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。",
+   "notes": "⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。",
    "refs": [
     "Lang, Algebra"
    ]
@@ -11523,7 +11523,7 @@
     "滤过余极限"
    ],
    "statement": "若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。",
-   "notes": "**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。\n- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。\n- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故\n$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$\n对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。\n- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎\n\n**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。",
+   "notes": "**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。\n- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。\n- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故\n$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$\n对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。\n- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎\n\n**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.3"
    ]
@@ -11988,7 +11988,7 @@
     "Čech"
    ],
    "statement": "若 $\\mathfrak{X}$ 是 $X$ 的一个**覆盖**、$M$ 是阿贝尔层，则存在谱序列\n\n$$E^{p,q}_{2} := \\check{H}^{p}\\bigl(\\mathfrak{X},\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X, M).$$",
-   "notes": "⭐ **它说的是**：Čech 上同调（右边那个 $\\check{H}^{p}$）用 $H^{q}(M)$ 当系数，收敛到**真正的**层上同调。于是「便宜的算法」怎么逼近「贵的算法」这件事被讲清楚了。\n\n**推论**（Cor 7.3.7）：若覆盖的每一层上 $H^{q} = 0$（$q \\ne 0$），则 $\\check{H}^{n} \\cong H^{n}$ —— 此时 Čech 直接给出层上同调。\n\n**证明走法**：取 $\\mathfrak{X}$ 生成的筛 $R$，则 $\\Gamma(\\mathfrak{X}, M) = \\Gamma(R, \\mathcal{H}(M))$；$\\mathcal{H}$ 保内射，于是由 Grothendieck 谱序列 + 上一条得到。",
+   "notes": "⭐ **它说的是**：Čech 上同调（右边那个 $\\check{H}^{p}$）用 $H^{q}(M)$ 当系数，收敛到**真正的**层上同调。于是「便宜的算法」怎么逼近「贵的算法」这件事被讲清楚了。\n\n**推论**：若覆盖的每一层上 $H^{q} = 0$（$q \\ne 0$），则 $\\check{H}^{n} \\cong H^{n}$ —— 此时 Čech 直接给出层上同调。\n\n**证明走法**：取 $\\mathfrak{X}$ 生成的筛 $R$，则 $\\Gamma(\\mathfrak{X}, M) = \\Gamma(R, \\mathcal{H}(M))$；$\\mathcal{H}$ 保内射，于是由 Grothendieck 谱序列 + 上一条得到。",
    "refs": [
     "Le Stum, Theorem 7.3.6"
    ]
@@ -12010,7 +12010,7 @@
     "层上同调"
    ],
    "statement": "site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。",
-   "notes": "⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。\n\n📌  **Definition 7.3.9**。",
+   "notes": "⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §7.3"
    ]

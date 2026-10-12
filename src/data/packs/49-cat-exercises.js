@@ -30,7 +30,7 @@ window.MG = window.MG || {};
           '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。'
         ].join('\n')
       ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。',
+      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。',
       refs: ['Lang, Algebra']
     },
 
@@ -252,7 +252,7 @@ window.MG = window.MG || {};
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
       notes: [
         ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎'].join('\n'),
-'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n'),
+'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 

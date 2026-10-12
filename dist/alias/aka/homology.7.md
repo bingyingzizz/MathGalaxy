@@ -3,7 +3,7 @@
 
 - 内 Hom | internal hom | Hom(X,M) | 内层 | 内部 Hom | Exercise 3.43 | Proposition 3.3.7 | Proposition 6.1.8 → def.internal-hom
 
-- 阿贝尔层的张量积 | 封闭对称幺半 | closed symmetric monoidal | Tensor | internal hom | 封闭张量结构 | Exercise 5.25 | Exercise 5.28 → def.tensor-abelian-sheaf
+- 阿贝尔层的张量积 | 封闭对称幺半 | closed symmetric monoidal | Tensor | internal hom | 封闭张量结构 | Exercise 5.25 | Exercise 5.28 | Exercise 5.26 | Exercise 5.27 → def.tensor-abelian-sheaf
 
 - 平坦阿贝尔层 | flat | 平坦性 | 无挠 | Definition 5.3.3 | Exercise 5.31 → def.flat-abelian-sheaf
 

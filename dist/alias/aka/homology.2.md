@@ -19,7 +19,7 @@
 
 - 内射与零调等价 | Exercise 7.26 → prop.injective-iff-acyclic
 
-- 上同调就是 Ext | Exercise 7.37 → prop.cohomology-as-ext
+- 上同调就是 Ext | Exercise 7.37 | Exercise 5.24 → prop.cohomology-as-ext
 
 - 预层的可表示对象零调 | Exercise 7.41 → prop.presheaf-representable-acyclic
 

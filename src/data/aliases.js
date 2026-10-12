@@ -415,7 +415,7 @@ MG.aliases = {
     { id: 'prop.ext-abelian-groups', aka: ['阿贝尔群的 Ext', 'Ext 只有两层', 'Exercise 7.25'] },
     { id: 'prop.ext-projective-vanishes', aka: ['投射对象没有高次 Ext', 'Exercise 7.24'] },
     { id: 'prop.injective-iff-acyclic', aka: ['内射与零调等价', 'Exercise 7.26'] },
-    { id: 'prop.cohomology-as-ext', aka: ['上同调就是 Ext', 'Exercise 7.37'] },
+    { id: 'prop.cohomology-as-ext', aka: ['上同调就是 Ext', 'Exercise 7.37', 'Exercise 5.24'] },
     { id: 'prop.presheaf-representable-acyclic', aka: ['预层的可表示对象零调', 'Exercise 7.41'] },
     { id: 'prop.stone-clopen-refinement', aka: ['Stone 空间的闭开加细', 'Exercise 2.20'] },
     { id: 'prop.stalk-separated', aka: ['茎', 'stalk', '分离预层', 'Exercise 3.53'] },
@@ -562,10 +562,10 @@ MG.aliases = {
 
     /* 阿贝尔层 */
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
-    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1'] },
+    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'Theorem 5.3.2'] },
     { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8'] },
-    { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28'] },
+    { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28', 'Exercise 5.26', 'Exercise 5.27'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3', 'Exercise 5.31'] },
 
     /* 紧生成空间与弱 Hausdorff */
@@ -713,7 +713,7 @@ MG.aliases = {
     { id: 'thm.induced-topos-morphism', aka: ['Theorem 3.4.2', 'Thm 3.4.2', 'Corollary 3.4.3', 'Cor 3.4.3'] },
     { id: 'cor.cond-ktop-finite-products', aka: ['Corollary 4.2.7', 'Cor 4.2.7'] },
     { id: 'def.resolution', aka: ['Definition 7.1.20', 'Def 7.1.20'] },
-    { id: 'prop.bicomplex-spectral', aka: ['Proposition 7.2.18', 'Prop 7.2.18'] },
+    { id: 'prop.bicomplex-spectral', aka: ['Proposition 7.2.18', 'Prop 7.2.18', 'Exercise 7.32', 'Exercise 7.33'] },
     { id: 'lem.covering-free-acyclic', aka: ['Lemma 7.3.2'] },
     { id: 'cor.cech-cohomology-spectral', aka: ['Corollary 7.3.8', 'Cor 7.3.8'] },
   ],

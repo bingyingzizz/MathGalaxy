@@ -11,7 +11,7 @@
 
 - 取值在范畴里的层 | sheaf with values | presheaf with values | 一般值的层 → def.presheaf-valued
 
-- 阿贝尔层 | abelian sheaf | 阿贝尔群层 | sheaf of abelian groups | Ab(C) | 层上的阿贝尔群 | Definition 5.3.1 → def.abelian-sheaf
+- 阿贝尔层 | abelian sheaf | 阿贝尔群层 | sheaf of abelian groups | Ab(C) | 层上的阿贝尔群 | Definition 5.3.1 | Exercise 5.14 → def.abelian-sheaf
 
 - 拓扑斯上的阿贝尔群 | Ab(T) 是 Grothendieck 范畴 | Theorem 5.3.2 → thm.topos-abelian-grothendieck
 

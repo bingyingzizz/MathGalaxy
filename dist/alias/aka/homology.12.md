@@ -17,7 +17,7 @@
 
 - Definition 7.1.20 | Def 7.1.20 → def.resolution
 
-- Proposition 7.2.18 | Prop 7.2.18 → prop.bicomplex-spectral
+- Proposition 7.2.18 | Prop 7.2.18 | Exercise 7.32 | Exercise 7.33 → prop.bicomplex-spectral
 
 - Lemma 7.3.2 → lem.covering-free-acyclic
 

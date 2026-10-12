@@ -34,7 +34,7 @@ window.MG = window.MG || {};
           '- **极不连通**说「开集的闭包不再长大」—— 后者更强。'
         ].join('\n'),
         '**极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。',
-        '⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通（**Lemma 2.2.10**）；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**（**Prop 2.2.9**）；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。',
+        '⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。',
         '**例子**：Cantor 集 $2^{\\mathbb{N}}$ 完全不连通但不极不连通；$\\beta\\mathbb{N}$（$\\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\\beta\\mathbb{N} \\setminus \\mathbb{N}$ 是它的一个极端例子。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
@@ -122,7 +122,7 @@ window.MG = window.MG || {};
         '**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}\'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}\'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。',
         '⭐ **它等价于**：$g$ 把 $\\mathcal{C}\'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。',
         '**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。',
-        '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**（Definition 3.4.5）。'
+        '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },

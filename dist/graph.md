@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T05:19:58.377Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T05:22:42.504Z
 > 9 星系 / 45 星团 / 594 节点 / 1242 连线（强边 1233，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -1956,7 +1956,7 @@ Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续
 
 **极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。
 
-⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\implies$ 完全不连通（**Lemma 2.2.10**）；完全不连通 + 紧 Hausdorff $\iff$ **profinite**（**Prop 2.2.9**）；极不连通 + 紧 Hausdorff $\implies$ **Stonean**。
+⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\implies$ 完全不连通；完全不连通 + 紧 Hausdorff $\iff$ **profinite**；极不连通 + 紧 Hausdorff $\implies$ **Stonean**。
 
 **例子**：Cantor 集 $2^{\mathbb{N}}$ 完全不连通但不极不连通；$\beta\mathbb{N}$（$\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\beta\mathbb{N} \setminus \mathbb{N}$ 是它的一个极端例子。
 
@@ -2759,8 +2759,6 @@ $$r/w = r'/w' \iff \exists s \in W,\quad s\,(rw' - r'w) = 0$$
 ⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。
 
 **两个特殊的**：$G\text{-}\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \to \mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\text{-}\mathbf{Mod}$ 是同调代数的样板间。
-
-📌  **Exercise 1.1**。
 
 参考：Lang, Algebra
 
@@ -6988,8 +6986,6 @@ $$\operatorname{Hom}_{\operatorname{Ind}}\bigl(X, \varinjlim_{j}Y_{j}\bigr) \;=\
 
 ⭐ 于是 $\operatorname{Ind}(\mathcal{C})$ 是「把 $\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。
 
-📌  **Exercise 1.73**。
-
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 滤过 + 有限余极限 ⟹ 所有余极限　`prop.filtered-finite-colimits`
@@ -8546,7 +8542,7 @@ $$g^{*} : \widetilde{\mathcal{C}'} \longrightarrow \widetilde{\mathcal{C}}, \qqu
 
 **记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \to Y$ 给出开集范畴之间的函子 $f^{-1} : \operatorname{Open}(Y) \to \operatorname{Open}(X)$（取原像），而层沿它拉回。
 
-📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**（Definition 3.4.5）。
+📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
@@ -10009,7 +10005,7 @@ $$E^{p,q}_{2} := \check{H}^{p}\bigl(\mathfrak{X},\ H^{q}(M)\bigr) \;\Longrightar
 
 ⭐ **它说的是**：Čech 上同调（右边那个 $\check{H}^{p}$）用 $H^{q}(M)$ 当系数，收敛到**真正的**层上同调。于是「便宜的算法」怎么逼近「贵的算法」这件事被讲清楚了。
 
-**推论**（Cor 7.3.7）：若覆盖的每一层上 $H^{q} = 0$（$q \ne 0$），则 $\check{H}^{n} \cong H^{n}$ —— 此时 Čech 直接给出层上同调。
+**推论**：若覆盖的每一层上 $H^{q} = 0$（$q \ne 0$），则 $\check{H}^{n} \cong H^{n}$ —— 此时 Čech 直接给出层上同调。
 
 **证明走法**：取 $\mathfrak{X}$ 生成的筛 $R$，则 $\Gamma(\mathfrak{X}, M) = \Gamma(R, \mathcal{H}(M))$；$\mathcal{H}$ 保内射，于是由 Grothendieck 谱序列 + 上一条得到。
 
@@ -10021,8 +10017,6 @@ $$E^{p,q}_{2} := \check{H}^{p}\bigl(\mathfrak{X},\ H^{q}(M)\bigr) \;\Longrightar
 site $\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \ne 0$。
 
 ⚠️ 专门提醒：**这个定义依赖 site $\mathcal{C}$，不只是依赖拓扑斯 $\widetilde{\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。
-
-📌  **Definition 7.3.9**。
 
 参考：Le Stum, An introduction to condensed mathematics, §7.3
 

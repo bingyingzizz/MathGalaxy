@@ -5715,7 +5715,7 @@ MG.aliases = {
     { id: 'prop.ext-abelian-groups', aka: ['阿贝尔群的 Ext', 'Ext 只有两层', 'Exercise 7.25'] },
     { id: 'prop.ext-projective-vanishes', aka: ['投射对象没有高次 Ext', 'Exercise 7.24'] },
     { id: 'prop.injective-iff-acyclic', aka: ['内射与零调等价', 'Exercise 7.26'] },
-    { id: 'prop.cohomology-as-ext', aka: ['上同调就是 Ext', 'Exercise 7.37'] },
+    { id: 'prop.cohomology-as-ext', aka: ['上同调就是 Ext', 'Exercise 7.37', 'Exercise 5.24'] },
     { id: 'prop.presheaf-representable-acyclic', aka: ['预层的可表示对象零调', 'Exercise 7.41'] },
     { id: 'prop.stone-clopen-refinement', aka: ['Stone 空间的闭开加细', 'Exercise 2.20'] },
     { id: 'prop.stalk-separated', aka: ['茎', 'stalk', '分离预层', 'Exercise 3.53'] },
@@ -5862,10 +5862,10 @@ MG.aliases = {
 
     /* 阿贝尔层 */
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
-    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1'] },
+    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'Theorem 5.3.2'] },
     { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8'] },
-    { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28'] },
+    { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28', 'Exercise 5.26', 'Exercise 5.27'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3', 'Exercise 5.31'] },
 
     /* 紧生成空间与弱 Hausdorff */
@@ -6013,7 +6013,7 @@ MG.aliases = {
     { id: 'thm.induced-topos-morphism', aka: ['Theorem 3.4.2', 'Thm 3.4.2', 'Corollary 3.4.3', 'Cor 3.4.3'] },
     { id: 'cor.cond-ktop-finite-products', aka: ['Corollary 4.2.7', 'Cor 4.2.7'] },
     { id: 'def.resolution', aka: ['Definition 7.1.20', 'Def 7.1.20'] },
-    { id: 'prop.bicomplex-spectral', aka: ['Proposition 7.2.18', 'Prop 7.2.18'] },
+    { id: 'prop.bicomplex-spectral', aka: ['Proposition 7.2.18', 'Prop 7.2.18', 'Exercise 7.32', 'Exercise 7.33'] },
     { id: 'lem.covering-free-acyclic', aka: ['Lemma 7.3.2'] },
     { id: 'cor.cech-cohomology-spectral', aka: ['Corollary 7.3.8', 'Cor 7.3.8'] },
   ],
@@ -23772,7 +23772,7 @@ window.MG = window.MG || {};
           '- **极不连通**说「开集的闭包不再长大」—— 后者更强。'
         ].join('\n'),
         '**极不连通的需求方是 Haskell / 集合论 / 凝聚态**：它是「投影对象」的几何形态（Gleason 定理：$\\mathbf{CHaus}$ 的投射对象恰好是 Stonean 空间）。',
-        '⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通（**Lemma 2.2.10**）；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**（**Prop 2.2.9**）；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。',
+        '⭐ **在紧 Hausdorff 的世界里三者串成一条链**：极不连通 $\\implies$ 完全不连通；完全不连通 + 紧 Hausdorff $\\iff$ **profinite**；极不连通 + 紧 Hausdorff $\\implies$ **Stonean**。',
         '**例子**：Cantor 集 $2^{\\mathbb{N}}$ 完全不连通但不极不连通；$\\beta\\mathbb{N}$（$\\mathbb{N}$ 的 Stone–Čech 紧化）极不连通；$\\beta\\mathbb{N} \\setminus \\mathbb{N}$ 是它的一个极端例子。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
@@ -23860,7 +23860,7 @@ window.MG = window.MG || {};
         '**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}\'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}\'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。',
         '⭐ **它等价于**：$g$ 把 $\\mathcal{C}\'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。',
         '**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。',
-        '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**（Definition 3.4.5）。'
+        '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -23949,7 +23949,7 @@ window.MG = window.MG || {};
           '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。'
         ].join('\n')
       ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。\n\n📌  **Exercise 1.1**。',
+      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。',
       refs: ['Lang, Algebra']
     },
 
@@ -24171,7 +24171,7 @@ window.MG = window.MG || {};
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
       notes: [
         ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎'].join('\n'),
-'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。\n\n📌  **Exercise 1.73**。'].join('\n\n'),
+'**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
@@ -24686,7 +24686,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **它说的是**：Čech 上同调（右边那个 $\\check{H}^{p}$）用 $H^{q}(M)$ 当系数，收敛到**真正的**层上同调。于是「便宜的算法」怎么逼近「贵的算法」这件事被讲清楚了。',
-        '**推论**（Cor 7.3.7）：若覆盖的每一层上 $H^{q} = 0$（$q \\ne 0$），则 $\\check{H}^{n} \\cong H^{n}$ —— 此时 Čech 直接给出层上同调。',
+        '**推论**：若覆盖的每一层上 $H^{q} = 0$（$q \\ne 0$），则 $\\check{H}^{n} \\cong H^{n}$ —— 此时 Čech 直接给出层上同调。',
         '**证明走法**：取 $\\mathfrak{X}$ 生成的筛 $R$，则 $\\Gamma(\\mathfrak{X}, M) = \\Gamma(R, \\mathcal{H}(M))$；$\\mathcal{H}$ 保内射，于是由 Grothendieck 谱序列 + 上一条得到。',
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 7.3.6'],
@@ -24701,7 +24701,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '无环层', '层上同调'],
       statement: 'site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。',
-      notes: '⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。\n\n📌  **Definition 7.3.9**。',
+      notes: '⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。',
       refs: ['Le Stum, An introduction to condensed mathematics, §7.3']
     },
 
