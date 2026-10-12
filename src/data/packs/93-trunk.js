@@ -127,5 +127,21 @@ MG.trunk = [
   'def.cochain-complex',       // 10 层  复形（两两复合为零）
   'def.cohomology',            // 13 层  同调（把复形读成不变量）
   'def.abelian-category',      // 16 层  阿贝尔范畴（做同调代数的场地）
-  'thm.long-exact'             // 16 层  长正合列
+  'thm.long-exact',            // 16 层  长正合列
+
+  /* ================= 九、凝聚态上同调（第 8 章那一套） ================= */
+  /* 第八段把「复形 → 同调 → 导出函子」这台机器装好了。这一段的用处只有一个：
+     把 Ext 真正**算出来**。顺序是：先在 Stonean 上把高次上同调杀掉（零调性），
+     再把系数从离散群升级到 Banach 群（需要半范数那一层），最后用 Breen–Deligne
+     分解把任意凝聚态阿贝尔群的 Ext 拆成「可算的那些」。 */
+  'prop.stonean-cond-acyclic', // 18 层  Stonean 上凝聚态阿贝尔群零调（整段的起点）
+  'lem.stone-constant-acyclic',// 18 层  Stone 上常系数零调（下一步要过 Stone）
+  'def.semi-normed-ab-group',  //  7 层  半范数阿贝尔群（解析那一层的入口）
+  'def.banach-ab-group',       // 15 层  Banach 阿贝尔群
+  'def.k-bounded-exact',       // 11 层  K-有界正合（带常数的「几乎正合」）
+  'prop.banach-stone-acyclic', // 17 层  Banach 阿贝尔群在 Stone 上零调
+  'thm.real-banach-chaus-acyclic', // 16 层  实 Banach 空间在紧 Hausdorff 上零调
+  'thm.breen-deligne',         // 18 层  Breen–Deligne 分解（把 Ext 化成可算的）
+  'lem.ext-stonean-section',   // 17 层  Stonean 上的截面公式：Ext(M,N)(S) ≅ Ext(M·S,N)
+  'thm.lc-ext-vanishing'       // 24 层  局部紧阿贝尔群的高次 Ext 消失（本段终点）
 ];
