@@ -12,4 +12,8 @@ $$\operatorname{Hom}_{\mathcal{C}}(M, N) \longrightarrow \operatorname{Hom}_{\ma
 - `def.functor` 函子：用到了定义 函子　proofs/def-dep.addfunctor-functor.md
 - `def.group` 群：用到了定义 群　proofs/def-dep.addfunctor-group.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.additive-iff-preserves-biproduct` 加法函子的刻画 用
+- 被 `prop.adjoint-additive` 伴随函子都加法 用
+
 > 说明见 `notes/def.additive-functor.md`

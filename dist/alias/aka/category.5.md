@@ -11,10 +11,12 @@
 
 - 零对象 | zero object | 双积 | 直和 | biproduct | Definition 5.1.3 | Def 5.1.3 → def.zero-object
 
-- 拓扑生成集 | topologically generating | Definition 3.2.3 | Def 3.2.3 → def.topologically-generating
+- 核 | kernel | 余核 | cokernel | 左正合列 | 右正合列 | Definition 5.1.5 | Def 5.1.5 → def.kernel-cokernel
 
-- 连续函子 | continuous functor | Definition 3.4.4 | Def 3.4.4 → def.continuous-functor
+- 零对象与终对象 | Exercise 5.1 → prop.zero-object-final-criterion
 
-- site 的态射 | morphism of sites | Definition 3.4.5 | Def 3.4.5 → def.morphism-of-sites
+- 双积就是积 | Exercise 5.1 → prop.biproduct-is-product
+
+- 预加性结构唯一 | Exercise 5.2 → prop.hom-enrichment-unique
 
 > 续见 alias/aka/category.6.md

@@ -18,8 +18,7 @@ $$C_{\mathbb{Z}}(M, N) \;\subseteq\; C(M, N),$$
 - `def.compact-open-topology` 紧开拓扑：用到了定义 紧开拓扑　proofs/def-dep.topoab-compactopen.md
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.abtop-to-abcond` 拓扑阿贝尔群嵌入凝聚态 用
-- 被 `prop.continuous-hom-condensed` 连续同态与内部 Hom 用
+- 被 `prop.abhaus-strict-exact` Hausdorff 拓扑阿贝尔群的核与余核 用
 
 > 说明见 `notes/def.topo-ab-group.md`
 

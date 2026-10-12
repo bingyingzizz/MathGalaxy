@@ -1,6 +1,10 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- K-有界正合 | K-bounded exact | K-有界零调 | Definition 8.2.1 → def.k-bounded-exact
+
+- K-有界与完备化 | k-bounded completion | Lemma 8.2.2 → lem.k-bounded-completion
+
 - K-有界推出正合 | Proposition 8.2.3 → prop.k-bounded-implies-exact
 
 - K-有界零调推出零调 | Corollary 8.2.4 → cor.k-acyclic-acyclic
@@ -18,9 +22,5 @@
 - 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
 
 - Breen-Deligne 谱序列 | Proposition 8.3.4 → prop.breen-deligne-ss-stonean
-
-- Banach 到离散全零 | Proposition 8.3.5 → prop.rhom-banach-discrete-zero
-
-- 紧 Haus 到 Banach 全零 | Proposition 8.3.6 → prop.rhom-chaus-banach-zero
 
 > 续见 alias/aka/homology.8.md

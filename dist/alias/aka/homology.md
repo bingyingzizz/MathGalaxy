@@ -9,7 +9,7 @@
 
 - 加法函子 | additive functor | Definition 5.1.2 | Def 5.1.2 → def.additive-functor
 
-- 分裂短正合列 | split exact | 分裂引理 | split lemma | Definition 5.1.6 | Def 5.1.6 → def.split-exact
+- 分裂短正合列 | split exact | 分裂引理 | split lemma | Definition 5.1.6 | Def 5.1.6 | Exercise 5.7 → def.split-exact
 
 - 投射对象的余积 | Exercise 1.48 → prop.projective-coproduct
 
@@ -20,7 +20,5 @@
 - K(A) 分式演算 | Proposition 7.2.1 | Prop 7.2.1 → prop.k-calculus-fractions
 
 - 导出范畴 | derived category | D(A) | Definition 7.2.2 | Def 7.2.2 → def.derived-category
-
-- 正合列给出导出三角 | Proposition 7.2.4 | Prop 7.2.4 → prop.exact-to-triangle
 
 > 续见 alias/aka/homology.2.md

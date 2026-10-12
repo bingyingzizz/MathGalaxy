@@ -1,6 +1,10 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 一般拓扑斯的 Breen-Deligne 谱序列 | Exercise 8.14 → ex.bd-ss
+
+- 连通局部紧的 Ext | Exercise 8.18 → ex.connected-lc-ext
+
 - 非局部紧的 RHom | R^I 的 RHom | Exercise 8.19 → ex.nonlc-rhom
 
 - 局部紧阿贝尔群结构定理 | 结构定理 | V⊕K | Theorem 6.2.5 → thm.lc-structure

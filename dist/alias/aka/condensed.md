@@ -1,6 +1,8 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- AbHaus 的严格正合 | Exercise 5.5 → prop.abhaus-strict-exact
+
 - CHaus 是预拓扑斯 → def.chaus-pretopos
 
 - 凝聚态集 | condensed set | Cond | 凝聚态 → def.condensed-set
@@ -28,7 +30,5 @@
 - 截面函子 | Gamma(F,-) | sections functor → prop.condab-section
 
 - CondAb 满足 AB6 | AB4* | AB 公理 → thm.condab-ab
-
-- Stonean 给出投射对象 → lem.stonean-projective
 
 > 续见 alias/aka/condensed.2.md

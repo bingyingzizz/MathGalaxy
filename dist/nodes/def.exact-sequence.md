@@ -18,6 +18,10 @@ $$\operatorname{im}(d^{n-1}) = \ker(d^{n}).$$
 - `def.cochain-complex` 上链复形：用到了定义 上链复形　proofs/def-dep.exseq-complex.md
 - `def.image` 像 / 余像：用到了定义 像 / 余像　proofs/def-dep.exseq-image.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.exact-sequence-subcategory` 正合列构成子范畴 用
+- 被 `prop.abhaus-strict-exact` Hausdorff 拓扑阿贝尔群的核与余核 用
+
 refs: Le Stum, Definition 5.2.3
 
 > 说明见 `notes/def.exact-sequence.md`

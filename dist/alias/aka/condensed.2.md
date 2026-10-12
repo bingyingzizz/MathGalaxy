@@ -1,6 +1,8 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- Stonean 给出投射对象 → lem.stonean-projective
+
 - CondAb 的生成元 → prop.condab-generated
 
 - 拓扑阿贝尔群 | topological abelian group | AbTop | 连续同态 | CZ(M,N) → def.topo-ab-group
@@ -18,7 +20,5 @@
 - Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 → thm.pontryagin-van-kampen
 
 - 内部 Hom 的刻画 | internal hom | 连续函数空间 | C(X,Y) | Proposition 4.2.6 → prop.cond-internal-hom
-
-- qcqs | 拟紧拟分离 | CHaus 等价 qcqs | qcqs 判定 | Theorem 4.2.8 → thm.qcqs-chaus-equiv
 
 > 续见 alias/aka/condensed.3.md
