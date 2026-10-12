@@ -10,5 +10,5 @@
 - cat.algebra　范畴里的代数结构　中心天体 def.group-object　3 点
 - cat.yoneda　预层与米田　中心天体 lem.yoneda　12 点
 - cat.adjoint　伴随与反射　中心天体 def.adjoint　15 点
-- cat.sheaf　层与拓扑　中心天体 def.sheaf　22 点
+- cat.sheaf　层与拓扑　中心天体 def.sheaf　23 点
 - cat.topos　拓扑斯　中心天体 def.topos　22 点

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:44:43.590Z
-> 9 星系 / 45 星团 / 579 节点 / 1210 连线（强边 1201，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:51:51.573Z
+> 9 星系 / 45 星团 / 580 节点 / 1212 连线（强边 1203，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -7804,6 +7804,31 @@ $$\Gamma : \mathcal{T} \longrightarrow \mathbf{Set}, \qquad \Gamma(F) = \operato
 
 参考：Le Stum, An introduction to condensed mathematics, §3.2
 
+#### 茎与分离预层　`prop.stalk-separated`
+*命题*　命题：茎 $T_{x} = \varinjlim_{U \ni x}T(U)$ 与「分离」的茎刻画
+
+设 $X$ 是拓扑空间，把 $x \in X$ 看成连续映射 $x : 1 \to X$（$1$ 是单点空间），它给出拓扑斯态射 $\hat x : \mathbf{Set} \to \operatorname{Sh}(X)$。则
+
+1. **拉回就是茎**：$\hat x^{*}(T) = T_{x} := \varinjlim_{U \ni x} T(U)$（余极限沿 $x$ 的全体邻域取）；
+2. **推前是「在 $x$ 处取值」**：$\hat x_{*}(E)$ 是层
+$$U \longmapsto \begin{cases} E, & x \in U \\ \emptyset, & x \notin U \end{cases}$$
+而 $\hat x^{*}$ 的左伴随 $\hat x_{!}$ 是同一形状的「**摩天楼层**」；
+3. **分离性的茎刻画**：预层 $T$ 是**分离的**（层条件里「单射」那一半：在某个覆盖的每支上限制相等 $\implies$ 自身相等）$\iff$ 对每个开集 $U$，映射
+$$T(U) \longrightarrow \prod_{x \in U} T_{x}$$
+是**单射**。
+
+**证明。**
+**1.** 拓扑斯态射 $\hat x = (\hat x^{*}, \hat x_{*})$ 的拉回是「在 $x$ 处的纤维」，而层在一点的纤维就是**茎** $T_{x} = \varinjlim_{x \in U} T(U)$ ✓（余极限沿 $x$ 的邻域取 —— 邻域按包含构成滤过范畴）。
+**2.** 验证伴随关系 $\operatorname{Hom}(T, \hat x_{*}E) \cong \operatorname{Hom}(\hat x^{*}T, E)$：左边是一个自然变换，在 $U \ni x$ 处给出 $T(U) \to E$，相容性说明它们「在限制下对应同一个元素」✓；这样的相容族恰好是
+$$\varprojlim_{U \ni x} \operatorname{Hom}\bigl(T(U),\ E\bigr) \;=\; \operatorname{Hom}\Bigl(\varinjlim_{U \ni x} T(U),\ E\Bigr) \;=\; \operatorname{Hom}(T_{x}, E) ✓$$
+（第一个等号是「反变的 Hom 把余极限送成极限」）。$x \notin U$ 时该层取值 $\emptyset$，覆盖上的相容族只能落在空集里 —— 不存在，故仍是层 ✓。左伴随 $\hat x_{!}$ 同理（把 $E$ 摆在 $x$ 的邻域上，别处放空集）✓。
+**3.** $(\Longrightarrow)$ 设 $s, t \in T(U)$ 在每个茎里相等。对每个 $x \in U$：$s$ 与 $t$ 在 $T_{x}$ 里相等，意味着存在开邻域 $U_{x} \subseteq U$（$x \in U_{x}$）使 $s|_{U_{x}} = t|_{U_{x}}$ ✓。$\{U_{x}\}_{x \in U}$ 是 $U$ 的开覆盖，由**分离性**得 $s = t$ ✓。
+$(\Longleftarrow)$ 反过来设 $s, t \in T(U)$ 在某个开覆盖 $(U_{i})$ 的每支上相等。任取 $x \in U$，取一支 $U_{i} \ni x$，则 $s$ 与 $t$ 在 $x$ 的邻域 $U_{i}$ 上相等，故它们在茎 $T_{x}$ 里相等 ✓；这对一切 $x \in U$ 成立，由单射性得 $s = t$ ✓。∎
+
+⭐ 一句话：**「分离」=「在每个点的茎里都相等就能推出整体相等」**。层比分离预层多的那一步（相容族的**粘合**）在茎里是看不出来的 —— 这正是「分离」与「层」的差别。
+
+参考：Le Stum, An introduction to condensed mathematics, §3.4
+
 ### 星团：拓扑斯
 > 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
 
@@ -15104,6 +15129,14 @@ $(3) \implies (1)$ 用的是内射对象的判据（$\operatorname{Ext}^{1}(-,I)
 
 证明的第一步是「Stone 空间 = 投射有限空间」，用的是这条定义。
 
+#### 定义引用：「层」→ 茎与分离预层　`def-link.stalk-sheaf`
+
+命题讨论的是层（与分离预层）以及它们之间的态射。
+
+#### 定义引用：「拓扑斯」→ 茎与分离预层　`def-link.stalk-topos`
+
+把点看成拓扑斯态射 $1 \to \operatorname{Sh}(X)$，用的是拓扑斯之间的态射。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18426,7 +18459,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **紧 Hausdorff 空间 ↔ Stone 与 Stonean**　5 条节点级连线
 - **伴随与反射 ↔ 层与拓扑**　2 条节点级连线
 - **层与拓扑 ↔ 单满、子对象与像**　2 条节点级连线
-- **层与拓扑 ↔ 拓扑斯**　17 条节点级连线
+- **层与拓扑 ↔ 拓扑斯**　18 条节点级连线
 - **凝聚态集 ↔ 紧 Hausdorff 空间**　12 条节点级连线
 - **拓扑斯 ↔ 凝聚态集**　9 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　5 条节点级连线

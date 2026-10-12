@@ -1,6 +1,8 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- Banach 阿贝尔群 | Banach abelian group | Banach 化 → def.banach-ab-group
+
 - K-有界正合 | K-bounded exact | K-有界零调 | Definition 8.2.1 → def.k-bounded-exact
 
 - K-有界与完备化 | k-bounded completion | Lemma 8.2.2 → lem.k-bounded-completion
@@ -20,7 +22,5 @@
 - Stonean 上 Ext 截面公式 | Ext 截面 | Lemma 8.3.1 → lem.ext-stonean-section
 
 - Breen-Deligne | Breen–Deligne 分解 | Theorem 8.3.2 → thm.breen-deligne
-
-- 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
 
 > 续见 alias/aka/condensed.6.md

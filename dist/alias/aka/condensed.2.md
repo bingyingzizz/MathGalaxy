@@ -17,16 +17,14 @@
 
 - 拓扑空间到凝聚态集 | Top 到 Cond | kTop → thm.top-cond-adjoint
 
-- 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) → def.condensed-abelian-group
+- 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) | Definition 6.1.1 → def.condensed-abelian-group
 
 - 截面函子 | Gamma(F,-) | sections functor → prop.condab-section
 
-- CondAb 满足 AB6 | AB4* | AB 公理 → thm.condab-ab
+- CondAb 满足 AB6 | AB4* | AB 公理 | Theorem 6.1.4 | Corollary 6.1.5 → thm.condab-ab
 
-- Stonean 给出投射对象 → lem.stonean-projective
+- Stonean 给出投射对象 | Lemma 6.1.3 | Lemma 6.1.6 → lem.stonean-projective
 
-- CondAb 的生成元 → prop.condab-generated
-
-- 拓扑阿贝尔群 | topological abelian group | AbTop | 连续同态 | CZ(M,N) → def.topo-ab-group
+- CondAb 的生成元 | Proposition 6.1.7 → prop.condab-generated
 
 > 续见 alias/aka/condensed.3.md

@@ -2,13 +2,13 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T04:44:43.590Z",
+  "generated": "2026-10-12T04:51:51.573Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 579,
-   "edges": 1210,
-   "strong": 1201,
+   "nodes": 580,
+   "edges": 1212,
+   "strong": 1203,
    "weak": 9
   },
   "readingGuide": {
@@ -87,7 +87,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。",
    "color": "#B03A5B",
-   "nodeCount": 135
+   "nodeCount": 136
   },
   {
    "id": "homology",
@@ -782,7 +782,7 @@
    "name": "层与拓扑",
    "parent": "category",
    "desc": "造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。",
-   "nodeCount": 22,
+   "nodeCount": 23,
    "nodes": [
     "def.sieve",
     "def.pretopology",
@@ -805,7 +805,8 @@
     "prop.sieve-covering-equivalent",
     "def.section-functor",
     "def.topologically-generating",
-    "prop.constant-sheaf-preserves-limits"
+    "prop.constant-sheaf-preserves-limits",
+    "prop.stalk-separated"
    ]
   },
   {
@@ -13785,6 +13786,29 @@
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §2.2"
    ]
+  },
+  {
+   "id": "prop.stalk-separated",
+   "type": "proposition",
+   "label": "茎与分离预层",
+   "title": "命题：茎 $T_{x} = \\varinjlim_{U \\ni x}T(U)$ 与「分离」的茎刻画",
+   "region": "category",
+   "regions": [
+    "category"
+   ],
+   "cluster": "cat.sheaf",
+   "layer": 17,
+   "tags": [
+    "命题",
+    "层",
+    "茎",
+    "分离预层"
+   ],
+   "statement": "设 $X$ 是拓扑空间，把 $x \\in X$ 看成连续映射 $x : 1 \\to X$（$1$ 是单点空间），它给出拓扑斯态射 $\\hat x : \\mathbf{Set} \\to \\operatorname{Sh}(X)$。则\n\n1. **拉回就是茎**：$\\hat x^{*}(T) = T_{x} := \\varinjlim_{U \\ni x} T(U)$（余极限沿 $x$ 的全体邻域取）；\n2. **推前是「在 $x$ 处取值」**：$\\hat x_{*}(E)$ 是层\n$$U \\longmapsto \\begin{cases} E, & x \\in U \\\\ \\emptyset, & x \\notin U \\end{cases}$$\n而 $\\hat x^{*}$ 的左伴随 $\\hat x_{!}$ 是同一形状的「**摩天楼层**」；\n3. **分离性的茎刻画**：预层 $T$ 是**分离的**（层条件里「单射」那一半：在某个覆盖的每支上限制相等 $\\implies$ 自身相等）$\\iff$ 对每个开集 $U$，映射\n$$T(U) \\longrightarrow \\prod_{x \\in U} T_{x}$$\n是**单射**。",
+   "notes": "**证明。**\n**1.** 拓扑斯态射 $\\hat x = (\\hat x^{*}, \\hat x_{*})$ 的拉回是「在 $x$ 处的纤维」，而层在一点的纤维就是**茎** $T_{x} = \\varinjlim_{x \\in U} T(U)$ ✓（余极限沿 $x$ 的邻域取 —— 邻域按包含构成滤过范畴）。\n**2.** 验证伴随关系 $\\operatorname{Hom}(T, \\hat x_{*}E) \\cong \\operatorname{Hom}(\\hat x^{*}T, E)$：左边是一个自然变换，在 $U \\ni x$ 处给出 $T(U) \\to E$，相容性说明它们「在限制下对应同一个元素」✓；这样的相容族恰好是\n$$\\varprojlim_{U \\ni x} \\operatorname{Hom}\\bigl(T(U),\\ E\\bigr) \\;=\\; \\operatorname{Hom}\\Bigl(\\varinjlim_{U \\ni x} T(U),\\ E\\Bigr) \\;=\\; \\operatorname{Hom}(T_{x}, E) ✓$$\n（第一个等号是「反变的 Hom 把余极限送成极限」）。$x \\notin U$ 时该层取值 $\\emptyset$，覆盖上的相容族只能落在空集里 —— 不存在，故仍是层 ✓。左伴随 $\\hat x_{!}$ 同理（把 $E$ 摆在 $x$ 的邻域上，别处放空集）✓。\n**3.** $(\\Longrightarrow)$ 设 $s, t \\in T(U)$ 在每个茎里相等。对每个 $x \\in U$：$s$ 与 $t$ 在 $T_{x}$ 里相等，意味着存在开邻域 $U_{x} \\subseteq U$（$x \\in U_{x}$）使 $s|_{U_{x}} = t|_{U_{x}}$ ✓。$\\{U_{x}\\}_{x \\in U}$ 是 $U$ 的开覆盖，由**分离性**得 $s = t$ ✓。\n$(\\Longleftarrow)$ 反过来设 $s, t \\in T(U)$ 在某个开覆盖 $(U_{i})$ 的每支上相等。任取 $x \\in U$，取一支 $U_{i} \\ni x$，则 $s$ 与 $t$ 在 $x$ 的邻域 $U_{i}$ 上相等，故它们在茎 $T_{x}$ 里相等 ✓；这对一切 $x \\in U$ 成立，由单射性得 $s = t$ ✓。∎\n\n⭐ 一句话：**「分离」=「在每个点的茎里都相等就能推出整体相等」**。层比分离预层多的那一步（相容族的**粘合**）在茎里是看不出来的 —— 这正是「分离」与「层」的差别。",
+   "refs": [
+    "Le Stum, An introduction to condensed mathematics, §3.4"
+   ]
   }
  ],
  "edges": [
@@ -17721,6 +17745,22 @@
    "definition": "def.stone-space",
    "usedBy": "prop.stone-clopen-refinement",
    "note": "证明的第一步是「Stone 空间 = 投射有限空间」，用的是这条定义。"
+  },
+  {
+   "id": "def-link.stalk-sheaf",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sheaf",
+   "usedBy": "prop.stalk-separated",
+   "note": "命题讨论的是层（与分离预层）以及它们之间的态射。"
+  },
+  {
+   "id": "def-link.stalk-topos",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.topos",
+   "usedBy": "prop.stalk-separated",
+   "note": "把点看成拓扑斯态射 $1 \\to \\operatorname{Sh}(X)$，用的是拓扑斯之间的态射。"
   },
   {
    "id": "def-link.sep-subset",
@@ -24412,7 +24452,7 @@
   {
    "a": "cat.sheaf",
    "b": "cat.topos",
-   "count": 17,
+   "count": 18,
    "label": "",
    "explicit": false
   },

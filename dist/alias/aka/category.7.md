@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 诱导拓扑 | induced topology | Definition 3.4.7 | Def 3.4.7 | Exercise 3.61 → def.induced-topology
+
+- 代数的范畴 | Mon | Gr | Rng | G-Set | A-Mod | k-Alg | Exercise 1.1 → ex.algebra-categories
+
 - 偏序集的极限 | 极限就是交 | Exercise 1.30 → prop.poset-limit-join
 
 - 严格态射 | strict morphism | 严格 | Exercise 1.33 → def.strict-morphism
@@ -20,9 +24,5 @@
 - 滤过加有限余极限 | Exercise 1.41 → prop.filtered-finite-colimits
 
 - 环的纤维余积 | 张量积是推出 | Exercise 1.29 → prop.ring-tensor-coproduct
-
-- 层上同调 | sheaf cohomology | H^n(X,M) | Definition 7.3.1 | Def 7.3.1 → def.sheaf-cohomology
-
-- Čech 上同调 | Cech 上同调 | Cech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
 
 > 续见 alias/aka/category.8.md

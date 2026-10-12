@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 层上同调 | sheaf cohomology | H^n(X,M) | Definition 7.3.1 | Def 7.3.1 → def.sheaf-cohomology
+
+- Čech 上同调 | Cech 上同调 | Cech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
+
 - 拓扑斯态射的导出函子 | Proposition 7.4.1 | Prop 7.4.1 → prop.topos-morphism-derived
 
 - 反射子范畴 | reflective subcategory | 余反射 | 反射函子 → def.reflective-subcategory
@@ -18,11 +22,5 @@
 - 预拓扑 | pretopology | 覆盖族 | Grothendieck pretopology → def.pretopology
 
 - Grothendieck 拓扑 | Grothendieck topology | site | 景 | site 理论 → def.grothendieck-topology
-
-- 层 | sheaf | 分离预层 | separated presheaf | 粘合 | 下降 → def.sheaf
-
-- 层的下降条件 | sheaf condition | 层条件 → thm.sheaf-descent
-
-- Cech 函子 | Čech functor | H hat → def.cech-functor
 
 > 续见 alias/aka/category.9.md

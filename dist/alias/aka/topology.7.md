@@ -13,9 +13,9 @@
 
 - 局部紧阿贝尔群结构定理 | 结构定理 | V⊕K | Theorem 6.2.5 → thm.lc-structure
 
-- 离散与紧对偶 | 离散紧 Hausdorff 互换 → prop.pontryagin-discrete-compact-duality
+- 离散与紧对偶 | 离散紧 Hausdorff 互换 | Exercise 6.9 → prop.pontryagin-discrete-compact-duality
 
-- 挠与 Stonean | 无挠与连通 | torsion Stonean → prop.pontryagin-torsion-stone
+- 挠与 Stonean | 无挠与连通 | torsion Stonean | Exercise 6.9 → prop.pontryagin-torsion-stone
 
 - 布尔环 | Boolean ring | 幂等环 → def.boolean-ring
 

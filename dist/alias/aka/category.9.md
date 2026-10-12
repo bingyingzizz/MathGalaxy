@@ -1,6 +1,12 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 层 | sheaf | 分离预层 | separated presheaf | 粘合 | 下降 → def.sheaf
+
+- 层的下降条件 | sheaf condition | 层条件 → thm.sheaf-descent
+
+- Cech 函子 | Čech functor | H hat → def.cech-functor
+
 - Cech 函子的性质 | 左正合 → prop.cech-properties
 
 - 层化 | sheafification | sheafify | 伴随层 → thm.sheafification
@@ -18,11 +24,5 @@
 - 有效等价关系 | effective equivalence relation | 有效关系 → def.effective-equivalence
 
 - 层化与商交换 → prop.sheafify-equivalence
-
-- 标准拓扑 | canonical topology | 次标准 | subcanonical → def.canonical-topology
-
-- 覆盖等价于余积满 → prop.covering-sieve-epi
-
-- 不交万有余积与次标准 | Exercise 3.29 → prop.disjoint-universal
 
 > 续见 alias/aka/category.10.md

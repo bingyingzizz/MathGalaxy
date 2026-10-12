@@ -15,6 +15,7 @@ layer 16 · 定义 · 拓扑斯 · 范畴论
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.giraud` Giraud 定理
+- 被 `prop.stalk-separated` 茎与分离预层 用
 - 被 `thm.giraud` Giraud 定理 用
 - 被 `prop.topos-covering-epi` 拓扑斯中覆盖即余积满射 用
 - 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用

@@ -5718,14 +5718,15 @@ MG.aliases = {
     { id: 'prop.cohomology-as-ext', aka: ['上同调就是 Ext', 'Exercise 7.37'] },
     { id: 'prop.presheaf-representable-acyclic', aka: ['预层的可表示对象零调', 'Exercise 7.41'] },
     { id: 'prop.stone-clopen-refinement', aka: ['Stone 空间的闭开加细', 'Exercise 2.20'] },
+    { id: 'prop.stalk-separated', aka: ['茎', 'stalk', '分离预层', 'Exercise 3.53'] },
     { id: 'def.totally-disconnected', aka: ['完全不连通', 'totally disconnected', '极不连通', 'extremally disconnected', 'Definition 2.2.7', 'Def 2.2.7'] },
     { id: 'def.locally-compact', aka: ['局部紧', 'locally compact', '局部紧 Hausdorff', '紧邻域', 'Definition 2.3.1', 'Def 2.3.1'] },
     { id: 'thm.tykhonov', aka: ['Tychonoff', 'Tykhonov', '吉洪诺夫', 'Theorem 2.1.4', 'Thm 2.1.4', '紧空间的积'] },
     { id: 'def.topologically-generating', aka: ['拓扑生成集', 'topologically generating', 'Definition 3.2.3', 'Def 3.2.3'] },
-    { id: 'def.continuous-functor', aka: ['连续函子', 'continuous functor', 'Definition 3.4.4', 'Def 3.4.4'] },
-    { id: 'def.morphism-of-sites', aka: ['site 的态射', 'morphism of sites', 'Definition 3.4.5', 'Def 3.4.5'] },
-    { id: 'def.cocontinuous-functor', aka: ['余连续函子', 'cocontinuous', 'Definition 3.4.6', 'Def 3.4.6'] },
-    { id: 'def.induced-topology', aka: ['诱导拓扑', 'induced topology', 'Definition 3.4.7', 'Def 3.4.7'] },
+    { id: 'def.continuous-functor', aka: ['连续函子', 'continuous functor', 'Definition 3.4.4', 'Def 3.4.4', 'Exercise 3.54', 'Exercise 3.58'] },
+    { id: 'def.morphism-of-sites', aka: ['site 的态射', 'morphism of sites', 'Definition 3.4.5', 'Def 3.4.5', 'Exercise 3.58'] },
+    { id: 'def.cocontinuous-functor', aka: ['余连续函子', 'cocontinuous', 'Definition 3.4.6', 'Def 3.4.6', 'Exercise 3.59', 'Exercise 3.60'] },
+    { id: 'def.induced-topology', aka: ['诱导拓扑', 'induced topology', 'Definition 3.4.7', 'Def 3.4.7', 'Exercise 3.61'] },
     { id: 'ex.algebra-categories', aka: ['代数的范畴', 'Mon', 'Gr', 'Rng', 'G-Set', 'A-Mod', 'k-Alg', 'Exercise 1.1'] },
     { id: 'prop.abelianization', aka: ['交换化', 'abelianization', '换位子子群', 'G ab', 'Exercise 1.9'] },
     { id: 'prop.poset-limit-join', aka: ['偏序集的极限', '极限就是交', 'Exercise 1.30'] },
@@ -5812,24 +5813,24 @@ MG.aliases = {
     { id: 'prop.disjoint-universal', aka: ['不交万有余积与次标准', 'Exercise 3.29'] },
 
     /* 拓扑斯 */
-    { id: 'def.pretopos', aka: ['预拓扑斯', 'pretopos', '预拓扑斯公理'] },
+    { id: 'def.pretopos', aka: ['预拓扑斯', 'pretopos', '预拓扑斯公理', 'Definition 3.3.1'] },
     { id: 'prop.pretopos-factorization', aka: ['预拓扑斯里的满单分解', '平衡范畴', 'balanced', 'Exercise 3.30', 'Exercise 3.31', 'Exercise 3.32'] },
     { id: 'prop.subobject-lattice', aka: ['子对象构成有界格', '子对象格', 'Exercise 3.33'] },
-    { id: 'def.precanonical-topology', aka: ['预标准拓扑', 'precanonical topology'] },
-    { id: 'prop.precanonical-sheaf', aka: ['预标准拓扑下的层', 'Exercise 3.36'] },
+    { id: 'def.precanonical-topology', aka: ['预标准拓扑', 'precanonical topology', 'Definition 3.3.2', 'Exercise 3.34', 'Exercise 3.35'] },
+    { id: 'prop.precanonical-sheaf', aka: ['预标准拓扑下的层', 'Exercise 3.36', 'Proposition 3.3.3', 'Exercise 3.37'] },
     { id: 'prop.precanonical-preserves', aka: ['余积与商在层范畴不变'] },
     { id: 'prop.precanonical-mono-epi', aka: ['单满在层化后不变', 'Exercise 3.38'] },
-    { id: 'def.generator', aka: ['生成元', 'generator', '生成元集', 'set of generators'] },
-    { id: 'def.topos', aka: ['拓扑斯', 'topos', 'Grothendieck topos', '初等拓扑斯'] },
-    { id: 'thm.giraud', aka: ['Giraud 定理', 'Giraud', '拓扑斯的刻画'] },
+    { id: 'def.generator', aka: ['生成元', 'generator', '生成元集', 'set of generators', 'Definition 3.3.4'] },
+    { id: 'def.topos', aka: ['拓扑斯', 'topos', 'Grothendieck topos', '初等拓扑斯', 'Definition 3.3.5'] },
+    { id: 'thm.giraud', aka: ['Giraud 定理', 'Giraud', '拓扑斯的刻画', 'Theorem 3.3.6'] },
     { id: 'lem.representable-quotient', aka: ['可表示性下降'] },
     { id: 'prop.topos-covering-epi', aka: ['拓扑斯中覆盖即余积满', 'Exercise 3.41'] },
     { id: 'prop.topos-sheaf-limits', aka: ['层即保极限的预层'] },
-    { id: 'def.quasi-compact', aka: ['拟紧', 'quasi-compact', 'qc'] },
-    { id: 'prop.quasi-compact-properties', aka: ['拟紧的性质', 'Exercise 3.46'] },
-    { id: 'def.quasi-separated', aka: ['拟分离', 'quasi-separated', 'qs'] },
-    { id: 'thm.pretopos-qcqs', aka: ['预拓扑斯由拓扑斯唯一确定', 'qcqs'] },
-    { id: 'def.topos-morphism', aka: ['拓扑斯的态射', 'geometric morphism', '几何态射', '拉回函子', '推前函子'] },
+    { id: 'def.quasi-compact', aka: ['拟紧', 'quasi-compact', 'qc', 'Definition 3.3.8'] },
+    { id: 'prop.quasi-compact-properties', aka: ['拟紧的性质', 'Exercise 3.46', 'Proposition 3.3.9'] },
+    { id: 'def.quasi-separated', aka: ['拟分离', 'quasi-separated', 'qs', 'Definition 3.3.10'] },
+    { id: 'thm.pretopos-qcqs', aka: ['预拓扑斯由拓扑斯唯一确定', 'qcqs', 'Theorem 3.3.11'] },
+    { id: 'def.topos-morphism', aka: ['拓扑斯的态射', 'geometric morphism', '几何态射', '拉回函子', '推前函子', 'Definition 3.4.1'] },
 
     /* 紧生成空间 */
     { id: 'def.compactly-generated', aka: ['紧生成空间', 'compactly generated', 'k-space', 'k-空间', 'k空间', 'k化', '紧生成'] },
@@ -5847,18 +5848,18 @@ MG.aliases = {
     { id: 'prop.cond-projectives', aka: ['Cond 足够多投射对象'] },
     { id: 'def.underlying-topological-space', aka: ['底拓扑空间', 'underlying topological space'] },
     { id: 'thm.top-cond-adjoint', aka: ['拓扑空间到凝聚态集', 'Top 到 Cond', 'kTop'] },
-    { id: 'def.condensed-abelian-group', aka: ['凝聚态阿贝尔群', 'condensed abelian group', 'CondAb', 'Ab(Cond)'] },
+    { id: 'def.condensed-abelian-group', aka: ['凝聚态阿贝尔群', 'condensed abelian group', 'CondAb', 'Ab(Cond)', 'Definition 6.1.1'] },
     { id: 'def.grothendieck-category', aka: ['Grothendieck 范畴', 'Grothendieck category', 'AB5'] },
     { id: 'prop.condab-section', aka: ['截面函子', 'Gamma(F,-)', 'sections functor'] },
-    { id: 'thm.condab-ab', aka: ['CondAb 满足 AB6', 'AB4*', 'AB 公理'] },
-    { id: 'lem.stonean-projective', aka: ['Stonean 给出投射对象'] },
-    { id: 'prop.condab-generated', aka: ['CondAb 的生成元'] },
+    { id: 'thm.condab-ab', aka: ['CondAb 满足 AB6', 'AB4*', 'AB 公理', 'Theorem 6.1.4', 'Corollary 6.1.5'] },
+    { id: 'lem.stonean-projective', aka: ['Stonean 给出投射对象', 'Lemma 6.1.3', 'Lemma 6.1.6'] },
+    { id: 'prop.condab-generated', aka: ['CondAb 的生成元', 'Proposition 6.1.7'] },
 
     /* 阿贝尔层 */
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
     { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴'] },
-    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43'] },
+    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠'] },
 
@@ -5901,7 +5902,7 @@ MG.aliases = {
     { id: 'prop.continuous-hom-condensed', aka: ['Proposition 6.2.2', 'Prop 6.2.2', '连续同态是内部 Hom'] },
     { id: 'prop.exact-sequence-topo-ab', aka: ['Proposition 6.2.3', 'Prop 6.2.3', '正合列的搬运', '紧提升'] },
     { id: 'prop.lc-ab-preabelian', aka: ['局部紧阿贝尔群', 'pre-abelian', 'Exercise 6.4', 'R-disc 不是严格'] },
-    { id: 'def.pontryagin-dual', aka: ['Pontryagin 对偶', 'Pontryagin dual', '圆群', 'T'] },
+    { id: 'def.pontryagin-dual', aka: ['Pontryagin 对偶', 'Pontryagin dual', '圆群', 'T', 'Exercise 6.11'] },
     { id: 'thm.pontryagin-van-kampen', aka: ['Pontryagin-van Kampen', '庞特里亚金对偶定理', 'Theorem 6.2.4', 'Thm 6.2.4', '自等价'] },
     { id: 'def.ring', aka: ['环', 'ring', '交换环', '含幺环'] },
     { id: 'def.ideal', aka: ['理想', 'ideal', '商环', 'quotient ring', '主理想'] },
@@ -5981,8 +5982,8 @@ MG.aliases = {
 
     /* — 拓扑阿贝尔群补白 — */
     { id: 'thm.lc-structure', aka: ['局部紧阿贝尔群结构定理', '结构定理', 'V⊕K', 'Theorem 6.2.5'] },
-    { id: 'prop.pontryagin-discrete-compact-duality', aka: ['离散与紧对偶', '离散紧 Hausdorff 互换'] },
-    { id: 'prop.pontryagin-torsion-stone', aka: ['挠与 Stonean', '无挠与连通', 'torsion Stonean'] },
+    { id: 'prop.pontryagin-discrete-compact-duality', aka: ['离散与紧对偶', '离散紧 Hausdorff 互换', 'Exercise 6.9'] },
+    { id: 'prop.pontryagin-torsion-stone', aka: ['挠与 Stonean', '无挠与连通', 'torsion Stonean', 'Exercise 6.9'] },
 
     /* — 拓扑斯性质与阿贝尔范畴补白 — */
     { id: 'prop.cond-limits-colimits', aka: ['Cond 的极限余极限', '逐点计算'] },
@@ -27704,6 +27705,67 @@ window.MG = window.MG || {};
       definition: 'def.stone-space',
       usedBy: 'prop.stone-clopen-refinement',
       note: '证明的第一步是「Stone 空间 = 投射有限空间」，用的是这条定义。'
+    }
+  ]
+});
+
+</script>
+<script>
+/* ==========================================================================
+   内容包 · 茎与分离性（原书 §3.4 的练习 3.53）
+   --------------------------------------------------------------------------
+   图上到处在用「层」，但一直没有一条节点讲**茎**（stalk）——
+   而茎是层论最常用的东西：把「局部地看一个层」变成「一个集合」。
+   这一条把茎写成拓扑斯态射的拉回，并给出「分离预层」的茎刻画。
+   ========================================================================== */
+window.MG = window.MG || {};
+(window.MG.packs = window.MG.packs || []).push({
+
+  name: '茎与分离性',
+  nodes: [
+
+    {
+      id: 'prop.stalk-separated',
+      cluster: 'cat.sheaf',
+      type: 'proposition',
+      label: '茎与分离预层',
+      title: '命题：茎 $T_{x} = \\varinjlim_{U \\ni x}T(U)$ 与「分离」的茎刻画',
+      regions: ['category'],
+      tags: ['命题', '层', '茎', '分离预层'],
+      statement: [
+        '设 $X$ 是拓扑空间，把 $x \\in X$ 看成连续映射 $x : 1 \\to X$（$1$ 是单点空间），它给出拓扑斯态射 $\\hat x : \\mathbf{Set} \\to \\operatorname{Sh}(X)$。则',
+        '',
+        '1. **拉回就是茎**：$\\hat x^{*}(T) = T_{x} := \\varinjlim_{U \\ni x} T(U)$（余极限沿 $x$ 的全体邻域取）；',
+        '2. **推前是「在 $x$ 处取值」**：$\\hat x_{*}(E)$ 是层',
+        '$$U \\longmapsto \\begin{cases} E, & x \\in U \\\\ \\emptyset, & x \\notin U \\end{cases}$$',
+        '而 $\\hat x^{*}$ 的左伴随 $\\hat x_{!}$ 是同一形状的「**摩天楼层**」；',
+        '3. **分离性的茎刻画**：预层 $T$ 是**分离的**（层条件里「单射」那一半：在某个覆盖的每支上限制相等 $\\implies$ 自身相等）$\\iff$ 对每个开集 $U$，映射',
+        '$$T(U) \\longrightarrow \\prod_{x \\in U} T_{x}$$',
+        '是**单射**。'
+      ].join('\n'),
+      notes: [
+        ['**证明。**','**1.** 拓扑斯态射 $\\hat x = (\\hat x^{*}, \\hat x_{*})$ 的拉回是「在 $x$ 处的纤维」，而层在一点的纤维就是**茎** $T_{x} = \\varinjlim_{x \\in U} T(U)$ ✓（余极限沿 $x$ 的邻域取 —— 邻域按包含构成滤过范畴）。','**2.** 验证伴随关系 $\\operatorname{Hom}(T, \\hat x_{*}E) \\cong \\operatorname{Hom}(\\hat x^{*}T, E)$：左边是一个自然变换，在 $U \\ni x$ 处给出 $T(U) \\to E$，相容性说明它们「在限制下对应同一个元素」✓；这样的相容族恰好是','$$\\varprojlim_{U \\ni x} \\operatorname{Hom}\\bigl(T(U),\\ E\\bigr) \\;=\\; \\operatorname{Hom}\\Bigl(\\varinjlim_{U \\ni x} T(U),\\ E\\Bigr) \\;=\\; \\operatorname{Hom}(T_{x}, E) ✓$$','（第一个等号是「反变的 Hom 把余极限送成极限」）。$x \\notin U$ 时该层取值 $\\emptyset$，覆盖上的相容族只能落在空集里 —— 不存在，故仍是层 ✓。左伴随 $\\hat x_{!}$ 同理（把 $E$ 摆在 $x$ 的邻域上，别处放空集）✓。','**3.** $(\\Longrightarrow)$ 设 $s, t \\in T(U)$ 在每个茎里相等。对每个 $x \\in U$：$s$ 与 $t$ 在 $T_{x}$ 里相等，意味着存在开邻域 $U_{x} \\subseteq U$（$x \\in U_{x}$）使 $s|_{U_{x}} = t|_{U_{x}}$ ✓。$\\{U_{x}\\}_{x \\in U}$ 是 $U$ 的开覆盖，由**分离性**得 $s = t$ ✓。','$(\\Longleftarrow)$ 反过来设 $s, t \\in T(U)$ 在某个开覆盖 $(U_{i})$ 的每支上相等。任取 $x \\in U$，取一支 $U_{i} \\ni x$，则 $s$ 与 $t$ 在 $x$ 的邻域 $U_{i}$ 上相等，故它们在茎 $T_{x}$ 里相等 ✓；这对一切 $x \\in U$ 成立，由单射性得 $s = t$ ✓。∎'].join('\n'),
+        '⭐ 一句话：**「分离」=「在每个点的茎里都相等就能推出整体相等」**。层比分离预层多的那一步（相容族的**粘合**）在茎里是看不出来的 —— 这正是「分离」与「层」的差别。'
+      ].join('\n\n'),
+      refs: ['Le Stum, An introduction to condensed mathematics, §3.4']
+    }
+
+  ],
+
+  edges: [
+    {
+      id: 'def-link.stalk-sheaf',
+      kind: 'definition',
+      definition: 'def.sheaf',
+      usedBy: 'prop.stalk-separated',
+      note: '命题讨论的是层（与分离预层）以及它们之间的态射。'
+    },
+    {
+      id: 'def-link.stalk-topos',
+      kind: 'definition',
+      definition: 'def.topos',
+      usedBy: 'prop.stalk-separated',
+      note: '把点看成拓扑斯态射 $1 \\to \\operatorname{Sh}(X)$，用的是拓扑斯之间的态射。'
     }
   ]
 });

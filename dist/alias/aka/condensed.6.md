@@ -1,6 +1,8 @@
 # 别名 → 节点 · 凝聚态数学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../condensed.md`
 
+- 乘 p 的同伦 | scalar homotopy | Lemma 8.3.3 → lem.breen-deligne-scalar-homotopy
+
 - Breen-Deligne 谱序列 | Proposition 8.3.4 → prop.breen-deligne-ss-stonean
 
 - Banach 到离散全零 | Proposition 8.3.5 → prop.rhom-banach-discrete-zero
@@ -22,7 +24,5 @@
 - 一般拓扑斯的 Breen-Deligne 谱序列 | Exercise 8.14 → ex.bd-ss
 
 - 连通局部紧的 Ext | Exercise 8.18 → ex.connected-lc-ext
-
-- 非局部紧的 RHom | R^I 的 RHom | Exercise 8.19 → ex.nonlc-rhom
 
 > 续见 alias/aka/condensed.7.md
