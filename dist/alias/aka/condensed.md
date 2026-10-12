@@ -21,10 +21,8 @@
 
 - C(S,M) 的范数 | Exercise 8.5 → prop.continuous-functions-normed
 
-- CHaus 是预拓扑斯 → def.chaus-pretopos
+- CHaus 是预拓扑斯 | Proposition 4.1.1 | Corollary 4.1.2 → def.chaus-pretopos
 
-- 凝聚态集 | condensed set | Cond | 凝聚态 → def.condensed-set
-
-- 凝聚态集的判据 | 保有限积 → prop.condensed-criterion
+- 凝聚态集 | condensed set | Cond | 凝聚态 | Definition 4.1.3 → def.condensed-set
 
 > 续见 alias/aka/condensed.2.md

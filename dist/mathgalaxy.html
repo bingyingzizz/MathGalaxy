@@ -5837,19 +5837,21 @@ MG.aliases = {
     { id: 'prop.cg-coreflective', aka: ['紧生成空间是余反射的', 'kification', '紧生成是余反射子范畴', 'k 是右伴随'] },
 
     /* 凝聚态集 */
-    { id: 'def.chaus-pretopos', aka: ['CHaus 是预拓扑斯'] },
-    { id: 'def.condensed-set', aka: ['凝聚态集', 'condensed set', 'Cond', '凝聚态'] },
-    { id: 'prop.condensed-criterion', aka: ['凝聚态集的判据', '保有限积'] },
-    { id: 'thm.cond-topos', aka: ['凝聚态集是拓扑斯', 'Cond is a topos'] },
+    { id: 'def.chaus-pretopos', aka: ['CHaus 是预拓扑斯', 'Proposition 4.1.1', 'Corollary 4.1.2'] },
+    { id: 'def.condensed-set', aka: ['凝聚态集', 'condensed set', 'Cond', '凝聚态', 'Definition 4.1.3'] },
+    { id: 'prop.condensed-criterion', aka: ['凝聚态集的判据', '保有限积', 'Proposition 4.1.4'] },
+    { id: 'thm.cond-topos', aka: ['凝聚态集是拓扑斯', 'Cond is a topos', 'Theorem 4.1.5'] },
     { id: 'prop.fchaus-pretopology', aka: ['FCHaus 上的预拓扑', 'Exercise 4.1'] },
-    { id: 'prop.fchaus-sheaf', aka: ['FCHaus 上的层保有限积'] },
-    { id: 'thm.cond-equiv-fchaus', aka: ['Cond 等价于 FCHaus 上的层'] },
-    { id: 'prop.cond-epi', aka: ['凝聚态集的满态射'] },
-    { id: 'prop.cond-projectives', aka: ['Cond 足够多投射对象'] },
-    { id: 'def.underlying-topological-space', aka: ['底拓扑空间', 'underlying topological space'] },
+    { id: 'prop.fchaus-sheaf', aka: ['FCHaus 上的层保有限积', 'Exercise 4.2'] },
+    { id: 'thm.cond-equiv-fchaus', aka: ['Cond 等价于 FCHaus 上的层', 'Theorem 4.1.7'] },
+    { id: 'prop.cond-epi', aka: ['凝聚态集的满态射', 'Proposition 4.1.8'] },
+    { id: 'prop.cond-projectives', aka: ['Cond 足够多投射对象', 'Exercise 4.3'] },
+    { id: 'def.underlying-topological-space', aka: ['底拓扑空间', 'underlying topological space', 'Definition 4.2.3'] },
     { id: 'thm.top-cond-adjoint', aka: ['拓扑空间到凝聚态集', 'Top 到 Cond', 'kTop'] },
     { id: 'def.condensed-abelian-group', aka: ['凝聚态阿贝尔群', 'condensed abelian group', 'CondAb', 'Ab(Cond)', 'Definition 6.1.1'] },
-    { id: 'def.grothendieck-category', aka: ['Grothendieck 范畴', 'Grothendieck category', 'AB5'] },
+    { id: 'def.grothendieck-category', aka: ['Grothendieck 范畴', 'Grothendieck category', 'AB5', 'Definition 5.2.6'] },
+    { id: 'def.abelian-category', aka: ['预加法范畴', '加法范畴', '预阿贝尔范畴', '阿贝尔范畴', 'Ab-范畴', 'Definition 5.1.1', 'Definition 5.1.4', 'Definition 5.2.1', 'Definition 5.2.2'] },
+    { id: 'def.ab-axioms', aka: ['AB 公理', 'AB 公理的例子', 'Definition 5.2.5'] },
     { id: 'prop.condab-section', aka: ['截面函子', 'Gamma(F,-)', 'sections functor'] },
     { id: 'thm.condab-ab', aka: ['CondAb 满足 AB6', 'AB4*', 'AB 公理', 'Theorem 6.1.4', 'Corollary 6.1.5'] },
     { id: 'lem.stonean-projective', aka: ['Stonean 给出投射对象', 'Lemma 6.1.3', 'Lemma 6.1.6'] },
@@ -5857,11 +5859,11 @@ MG.aliases = {
 
     /* 阿贝尔层 */
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
-    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群'] },
-    { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴'] },
+    { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1'] },
+    { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'Theorem 5.3.2'] },
     { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构'] },
-    { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠'] },
+    { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3'] },
 
     /* 紧生成空间与弱 Hausdorff */
     { id: 'ex.cg-examples', aka: ['紧生成空间的例子', '局部紧空间是紧生成的', 'R^I 不紧生成'] },
@@ -5986,7 +5988,7 @@ MG.aliases = {
     { id: 'prop.pontryagin-torsion-stone', aka: ['挠与 Stonean', '无挠与连通', 'torsion Stonean', 'Exercise 6.9'] },
 
     /* — 拓扑斯性质与阿贝尔范畴补白 — */
-    { id: 'prop.cond-limits-colimits', aka: ['Cond 的极限余极限', '逐点计算'] },
+    { id: 'prop.cond-limits-colimits', aka: ['Cond 的极限余极限', '逐点计算', 'Corollary 4.1.6'] },
     { id: 'prop.cond-epi-regular', aka: ['满态射正则', 'epi regular', '余等化子'] },
     { id: 'prop.cond-equivalence-effective', aka: ['等价关系有效', 'effective equivalence relation', 'Giraud'] },
     { id: 'def.exact-sequence', aka: ['正合列', 'exact sequence', '短正合列', 'Definition 5.2.3'] },

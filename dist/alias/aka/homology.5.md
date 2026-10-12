@@ -15,8 +15,8 @@
 
 - 层上同调是同伦不变量 | Proposition 7.4.2 | Corollary 7.4.3 | Cor 7.4.3 → cor.homotopy-invariant-cohomology
 
-- Grothendieck 范畴 | Grothendieck category | AB5 → def.grothendieck-category
+- Grothendieck 范畴 | Grothendieck category | AB5 | Definition 5.2.6 → def.grothendieck-category
 
-- 取值在范畴里的层 | sheaf with values | presheaf with values | 一般值的层 → def.presheaf-valued
+- 预加法范畴 | 加法范畴 | 预阿贝尔范畴 | 阿贝尔范畴 | Ab-范畴 | Definition 5.1.1 | Definition 5.1.4 | Definition 5.2.1 | Definition 5.2.2 → def.abelian-category
 
 > 续见 alias/aka/homology.6.md
