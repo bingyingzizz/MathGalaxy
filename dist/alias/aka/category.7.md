@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 偏序集的极限 | 极限就是交 | Exercise 1.30 → prop.poset-limit-join
+
 - 严格态射 | strict morphism | 严格 | Exercise 1.33 → def.strict-morphism
 
 - 保积与核 | Exercise 1.43 → prop.preserves-products-kernels
@@ -22,7 +24,5 @@
 - 层上同调 | sheaf cohomology | H^n(X,M) | Definition 7.3.1 | Def 7.3.1 → def.sheaf-cohomology
 
 - Čech 上同调 | Cech 上同调 | Cech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
-
-- 拓扑斯态射的导出函子 | Proposition 7.4.1 | Prop 7.4.1 → prop.topos-morphism-derived
 
 > 续见 alias/aka/category.8.md

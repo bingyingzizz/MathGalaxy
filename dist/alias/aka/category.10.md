@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 预拓扑斯 | pretopos | 预拓扑斯公理 → def.pretopos
+
 - 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 → prop.pretopos-factorization
 
 - 子对象构成有界格 | 子对象格 | Exercise 3.33 → prop.subobject-lattice
@@ -24,7 +26,5 @@
 - 拓扑斯中覆盖即余积满 | Exercise 3.41 → prop.topos-covering-epi
 
 - 层即保极限的预层 → prop.topos-sheaf-limits
-
-- 拟紧 | quasi-compact | qc → def.quasi-compact
 
 > 续见 alias/aka/category.11.md

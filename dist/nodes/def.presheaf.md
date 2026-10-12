@@ -13,6 +13,7 @@ $$T : \mathcal{C}^{\mathrm{op}} \longrightarrow \mathbf{Set}$$
 - `def.category` 范畴：用到了定义 范畴　proofs/def-dep.category-presheaf.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.constant-sheaf-preserves-limits` 常层函子保极限 用
 - 被 `lem.presheaf-mono-pointwise` 预层态射的单满按点检验 用
 - 被 `def.slice-category` 切片范畴 用
 - 被 `def.sieve` 筛 用

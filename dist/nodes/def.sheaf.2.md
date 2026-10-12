@@ -2,6 +2,7 @@
 根 `../`　·　第 1 页 `nodes/def.sheaf.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `thm.sheaf-descent` 层的下降条件 用
 - 被 `prop.sheaf-epi-criterion` 满态射的局部判据 用
 - 被 `prop.precanonical-sheaf` 预标准拓扑下的层 用
 - 被 `prop.precanonical-mono-epi` 单满在层化后不变 用

@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 拟紧 | quasi-compact | qc → def.quasi-compact
+
 - 拟紧的性质 | Exercise 3.46 → prop.quasi-compact-properties
 
 - 拟分离 | quasi-separated | qs → def.quasi-separated

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:35:26.329Z
-> 9 星系 / 45 星团 / 572 节点 / 1196 连线（强边 1187，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T04:39:13.053Z
+> 9 星系 / 45 星团 / 573 节点 / 1198 连线（强边 1189，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -7760,6 +7760,24 @@ $$\Gamma(X, -) : \widetilde{\mathcal{C}} \longrightarrow \mathbf{Set}, \qquad F 
 
 设 $\mathcal{C}$ 是 site。集合 $G \subseteq \mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \in \mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \to X)_{i}$。
 
+#### 常层函子保极限　`prop.constant-sheaf-preserves-limits`
+*命题*　命题：常（预）层函子 $\Delta$ 保所有极限
+
+设 $\mathcal{C}$ 是 site，$\Delta : \mathbf{Set} \to \widehat{\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\underline{(-)}$ 表示对应的**常层**。则：
+
+1. 若 $E = \varprojlim_{i} E_{i}$ 是集合里的极限，则 $\Delta E = \varprojlim_{i}\Delta E_{i}$；
+2. 同样地 $\underline{E} = \varprojlim_{i}\underline{E_{i}}$ —— 常层函子也保极限。
+
+**证明。**
+**1.** 预层范畴里的极限与余极限是**逐点计算**的：$(\varprojlim \Delta E_{i})(X) = \varprojlim (\Delta E_{i})(X) = \varprojlim E_{i} = E = (\Delta E)(X)$，且这在 $X$ 上自然（转移映射都是恒等）✓。于是 $\Delta E = \varprojlim \Delta E_{i}$ ✓。
+**2.** 常层函子可以写成 $\underline{E} = a(\Delta E)$（$a$ 是层化）。而 $\Delta$ 还有一条更本质的刻画：**它有一个左伴随**，就是整体截面函子
+$$\Gamma : \mathcal{T} \longrightarrow \mathbf{Set}, \qquad \Gamma(F) = \operatorname{Hom}(1, F) = F(*)$$
+（$1$ 是终对象）✓ —— 因为 $\operatorname{Hom}_{\mathcal{T}}(1, \Delta E) = E$ 给出自然双射 $\Gamma \dashv \Delta$ ✓。**右伴随保极限**，所以 $\Delta$ 保一切极限；再由「层范畴中的极限与预层范畴中的极限一致」（层范畴中的极限逐点算，层化在极限上是恒等）得 $\underline{E} = \varprojlim\underline{E_{i}}$ ✓。∎
+
+⭐ 一句话：**「常」这个操作是右伴随，所以它把集合里的极限原样搬到层里。** 后面把 $E = \varinjlim E_{i}$、$E \times S$ 这类构造搬进凝聚态世界时，用的就是这条。
+
+参考：Le Stum, An introduction to condensed mathematics, §3.2
+
 ### 星团：拓扑斯
 > 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
 
@@ -14906,6 +14924,14 @@ $\pi$ 是连续的闭映射。
 
 构造 $g_{i}$ 那一步用的是 Urysohn 引理。
 
+#### 定义引用：「预层」→ 常层函子保极限　`def-link.constsheaf-presheaf`
+
+常预层是「取值恒为 $E$」的那个预层。
+
+#### 定义引用：「层」→ 常层函子保极限　`def-link.constsheaf-sheaf`
+
+常层是常预层的层化。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18247,6 +18273,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **凝聚态上同调 ↔ 阿贝尔层**　2 条节点级连线
 - **图与极限 ↔ 复形与导出三角**　4 条节点级连线
 - **加法与阿贝尔范畴 ↔ 复形与导出三角**　6 条节点级连线
+- **层与拓扑 ↔ 预层与米田**　6 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
@@ -18280,7 +18307,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 单满、子对象与像**　4 条节点级连线
 - **范畴与图 ↔ 预层与米田**　2 条节点级连线
 - **伴随与反射 ↔ 关系与函数**　2 条节点级连线
-- **层与拓扑 ↔ 预层与米田**　5 条节点级连线
 - **伴随与反射 ↔ 拓扑斯**　2 条节点级连线
 - **图与极限 ↔ 紧生成空间与弱 Hausdorff**　2 条节点级连线
 - **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　3 条节点级连线

@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- Cech 函子的性质 | 左正合 → prop.cech-properties
+
+- 层化 | sheafification | sheafify | 伴随层 → thm.sheafification
+
 - 正则满态射 | regular epimorphism | regular epi → def.regular-epi
 
 - 万有余极限 | universal colimit | 万有满态射 | 不交余积 | disjoint coproduct → def.universal-colimit
@@ -20,7 +24,5 @@
 - 覆盖等价于余积满 → prop.covering-sieve-epi
 
 - 不交万有余积与次标准 | Exercise 3.29 → prop.disjoint-universal
-
-- 预拓扑斯 | pretopos | 预拓扑斯公理 → def.pretopos
 
 > 续见 alias/aka/category.10.md

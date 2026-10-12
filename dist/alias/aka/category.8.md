@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 拓扑斯态射的导出函子 | Proposition 7.4.1 | Prop 7.4.1 → prop.topos-morphism-derived
+
 - 反射子范畴 | reflective subcategory | 余反射 | 反射函子 → def.reflective-subcategory
 
 - 反射子范畴里的极限 → prop.reflective-limits
@@ -22,9 +24,5 @@
 - 层的下降条件 | sheaf condition | 层条件 → thm.sheaf-descent
 
 - Cech 函子 | Čech functor | H hat → def.cech-functor
-
-- Cech 函子的性质 | 左正合 → prop.cech-properties
-
-- 层化 | sheafification | sheafify | 伴随层 → thm.sheafification
 
 > 续见 alias/aka/category.9.md

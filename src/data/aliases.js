@@ -411,6 +411,7 @@ MG.aliases = {
     { id: 'prop.continuous-functions-normed', aka: ['C(S,M) 的范数', 'Exercise 8.5'] },
     { id: 'prop.closed-map-neighborhood-basis', aka: ['闭映射的邻域基', 'Exercise 8.6'] },
     { id: 'prop.paracompact-partition-unity', aka: ['仿紧与单位分解', '正规与单位分解', 'Exercise 8.7'] },
+    { id: 'prop.constant-sheaf-preserves-limits', aka: ['常层函子保极限', 'Exercise 3.49'] },
     { id: 'def.totally-disconnected', aka: ['完全不连通', 'totally disconnected', '极不连通', 'extremally disconnected', 'Definition 2.2.7', 'Def 2.2.7'] },
     { id: 'def.locally-compact', aka: ['局部紧', 'locally compact', '局部紧 Hausdorff', '紧邻域', 'Definition 2.3.1', 'Def 2.3.1'] },
     { id: 'thm.tykhonov', aka: ['Tychonoff', 'Tykhonov', '吉洪诺夫', 'Theorem 2.1.4', 'Thm 2.1.4', '紧空间的积'] },
@@ -551,7 +552,7 @@ MG.aliases = {
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
     { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴'] },
-    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom'] },
+    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠'] },
 
