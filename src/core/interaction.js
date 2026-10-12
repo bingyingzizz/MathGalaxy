@@ -22,6 +22,19 @@
     var lastPinch = null;
     var hoverDirty = false;
     var rafPending = false;
+    /* 诊断用：输入处理耗时的累加（HUD 读完自己清零）。真实拖拽时每帧都会跑好几次
+       指针回调，这里是把「输入这一侧到底吃多少」量出来的唯一办法。 */
+    var prof = { ms: 0, n: 0 };
+
+    /** 包一层计时：不改原逻辑，只累加耗时 */
+    function profiled(fn) {
+      return function (e) {
+        var t0 = performance.now ? performance.now() : 0;
+        try { return fn(e); } finally {
+          if (t0) { prof.ms += performance.now() - t0; prof.n++; }
+        }
+      };
+    }
 
     function localPos(e) {
       var r = canvas.getBoundingClientRect();
@@ -185,15 +198,16 @@
     }
 
     /* --------------------------------------------------------- 绑定 */
-    canvas.addEventListener('pointerdown', onPointerDown);
-    canvas.addEventListener('pointermove', onPointerMove);
-    canvas.addEventListener('pointerup', onPointerUp);
-    canvas.addEventListener('pointercancel', onPointerCancel);
+    canvas.addEventListener('pointerdown', profiled(onPointerDown));
+    canvas.addEventListener('pointermove', profiled(onPointerMove));
+    canvas.addEventListener('pointerup', profiled(onPointerUp));
+    canvas.addEventListener('pointercancel', profiled(onPointerCancel));
     canvas.addEventListener('pointerleave', function () { applyHover(null); });
-    canvas.addEventListener('wheel', onWheel, { passive: false });
+    canvas.addEventListener('wheel', profiled(onWheel), { passive: false });
     canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 
     return {
+      profile: prof,
       destroy: function () {
         canvas.removeEventListener('pointerdown', onPointerDown);
         canvas.removeEventListener('pointermove', onPointerMove);

@@ -91,6 +91,8 @@
     var dpr = 1;
     var rafId = 0;
     var dirty = true;
+    /* 诊断用：一帧里「我这边花的 JS」的累加（不含被推迟的光栅化 → 剩下的账归「其余」） */
+    var drawProf = { ms: 0, n: 0 };
 
     /* -------------------------------------------------------- 绘制循环 */
     function requestDraw() {
@@ -106,6 +108,7 @@
         cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
         cloudDrawn.tex = null;              // 纹理换了：这一次必须重铺
       }
+      var tp = performance.now();
       var animating = cam.tick();
       if (dirty || animating) {
         var c = cam;
@@ -118,6 +121,7 @@
         renderer.draw();
         dirty = false;
       }
+      drawProf.ms += performance.now() - tp; drawProf.n++;
       if (animating) requestDraw();
       noteCamera();
     }
@@ -382,7 +386,7 @@
     }
 
     /* ---------------------------------------------------------- 交互 */
-    MG.createInteraction(graphEl, view, {
+    var interaction = MG.createInteraction(graphEl, view, {
       draw: function () { requestDraw(); },
       hitTest: function (x, y) { return renderer.hitTest(x, y); },
       onPick: function (hit) {
@@ -992,6 +996,7 @@
       document.body.appendChild(hudEl);
 
       var hudLast = 0, hudAcc = 0, hudCnt = 0, hudWorst = 0, hudPeak = 0;
+      var hudPeakDraw = 0, hudPeakInp = 0, hudPeakRest = 0;
       var hudTick = function (ts) {
         if (hudLast) {
           var dms = ts - hudLast;
@@ -1032,7 +1037,11 @@
       }
       setInterval(function () {
         var c = document.getElementById('layer-graph');
+        var fCnt = Math.max(1, hudCnt);
         var ms = hudCnt ? hudAcc / hudCnt : 0;
+        var drawPer = drawProf.ms / fCnt;                       // 一帧里我这边花的 JS
+        var inpPer = interaction.profile ? interaction.profile.ms / fCnt : 0;   // 一帧里输入回调花的
+        var rest = ms - drawPer - inpPer;                        // 其余 = 光栅化 + 合成 + 呈现
         var t0 = performance.now();
         renderer.draw();
         var drawMs = performance.now() - t0;
@@ -1047,9 +1056,16 @@
           cloudMs = (performance.now() - t1) / reps;
         } catch (e) { /* 量不到就不显示 */ }
         hudAcc = 0; hudCnt = 0;
+        drawProf.ms = 0; drawProf.n = 0;
+        if (interaction.profile) { interaction.profile.ms = 0; interaction.profile.n = 0; }
         if (ms > hudPeak) hudPeak = ms;
+        if (drawPer > hudPeakDraw) hudPeakDraw = drawPer;
+        if (inpPer > hudPeakInp) hudPeakInp = inpPer;
+        if (rest > hudPeakRest) hudPeakRest = rest;
         hudEl.textContent =
           '帧 ' + ms.toFixed(1) + ' ms（峰值 ' + hudPeak.toFixed(0) + '）· ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
+          '绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
+          '峰 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + ' ms\n' +
           '连线层 ' + drawMs.toFixed(2) + ' ms' + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) + ' ms' : '') + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
           ' · canvas ' + c.width + '×' + c.height +
@@ -1118,6 +1134,18 @@
           out.push('连线层 · 关定义线 ' + bTime(function () { renderer.draw(); }, 4, bFlushG).toFixed(2) + ' ms'
             + '  （可见连线 ' + view.visible.length + '）');
           C.showDefinitionLines = true; renderer.invalidate();
+        } catch (e) {}
+        try {
+          /* 输入路径的嫌疑：每次 pointermove 都会 getBoundingClientRect()，
+             而它可能触发**整个页面的强制重排**（图例有四百多个元素）。 */
+          gcv.getBoundingClientRect();
+          var tr1 = performance.now();
+          for (var ri = 0; ri < 50; ri++) gcv.getBoundingClientRect();
+          out.push('getBoundingClientRect ×50  ' + (performance.now() - tr1).toFixed(2) + ' ms（合计）');
+          if (bEl) bEl.textContent = 'x';
+          var tr2 = performance.now();
+          for (var rj = 0; rj < 20; rj++) { if (bEl) bEl.textContent = 'x' + rj; gcv.getBoundingClientRect(); }
+          out.push('  布局被弄脏后 ×20      ' + (performance.now() - tr2).toFixed(2) + ' ms（合计）');
         } catch (e) {}
         try {
           var gl2 = document.createElement('canvas').getContext('webgl');
