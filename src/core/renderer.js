@@ -459,9 +459,7 @@
       drawArrows(geoms);
 
       /* ---------- 2. 节点 ---------- */
-      if (lodA.nodeDot > 0.02) {
-        view.graph.nodes.forEach(function (n) { drawNode(n); });
-      }
+      if (lodA.nodeDot > 0.02) drawNodes();
       /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
@@ -841,51 +839,109 @@
     }
 
     /* ---------------------------------------------------------- 节点 */
-    function drawNode(n) {
-      if (!nodeOk(n.id)) return;                 // 被藏起来的点：不画（连线也已一并去掉）
-      if (!nodeInView(n)) return;                // 屏幕外的点：光晕、圆点、外环全省掉
-      var p = screenOf(n);
-      var r = nodeRadius(n);
-      var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
-      if (a <= 0.02) return;
+    /**
+     * 节点：**按 (类型色, alpha) 分桶，每桶一个路径一次填充 / 一次描边**。
+     *
+     * ⚠️ 和连线那边同一个道理：省的是**调用次数**，不是像素。全图适配时 706 个点
+     *    每条都要 beginPath + arc + fill + stroke（白圈）＋（hub 再一道环）
+     *    ⇒ 两千多次描边 + 一千多次贴图；用户机器上瓶颈正是「多少笔」。
+     *
+     * 光晕是逐点 drawImage，**合并不了**，所以按 alpha 排序后连续贴，
+     * 只把 globalAlpha / 精灵的切换次数压下来（这是它唯一能省的部分）。
+     *
+     * ⚠️ 顺序变化（知道且接受）：原来是「A 的光晕 → A 的圆点 → B 的光晕 → B 的圆点」，
+     *    现在所有光晕先铺、再统一画圆点 ⇒ 邻点的光晕不会再糊到别人的圆点上，
+     *    点看起来更干净。
+     */
+    function drawNodes() {
+      var nodes = view.graph.nodes;
+      var fillB = Object.create(null), fillOrder = [];
+      var ringB = Object.create(null), ringOrder = [];
+      var glowB = Object.create(null), glowOrder = [];
+      var marks = [];        // 选中 / 悬停 / hub 的外环（数量少，单独画）
+      var i, j;
 
-      var st = MG.typeStyle(n.type);
-      var isFocus = view.focus && view.focus.type === 'node' && view.focus.id === n.id;
-      var isHover = (view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
-        (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
-          GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
+      for (i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        if (!nodeOk(n.id)) continue;
+        if (!nodeInView(n)) continue;
+        var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
+        if (a <= 0.02) continue;
 
-      // 光晕
-      if (C.node.glow) {
-        var gs = glowSprite(st.color);
-        var gsz = r * 5.4;
-        ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
-        ctx.drawImage(gs, p.x - gsz / 2, p.y - gsz / 2, gsz, gsz);
-        ctx.globalAlpha = 1;
+        var st = MG.typeStyle(n.type);
+        var p = screenOf(n), r = nodeRadius(n);
+        var isFocus = !!(view.focus && view.focus.type === 'node' && view.focus.id === n.id);
+        var isHover = !!((view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
+          (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
+            GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0));
+
+        if (C.node.glow) {
+          /* 光晕也按 (颜色, alpha) 分桶：drawImage 本身合并不了，
+             但同桶连着贴能省掉 globalAlpha 与精灵的反复切换，也不用每点建对象 */
+          var ga = a * ((isFocus || isHover) ? 1 : 0.72);
+          var gk = st.color + '|' + ga.toFixed(3);
+          var gb = glowB[gk];
+          if (!gb) { gb = glowB[gk] = { c: st.color, a: ga, sprite: null, items: [] }; glowOrder.push(gb); }
+          gb.items.push(p.x, p.y, r * 5.4);
+        }
+
+        var fk = st.color + '|' + a.toFixed(3);
+        var fb = fillB[fk];
+        if (!fb) { fb = fillB[fk] = { color: U.rgba(st.color, a), items: [] }; fillOrder.push(fb); }
+        fb.items.push(p.x, p.y, r);
+
+        var rk = a.toFixed(3);
+        var rb = ringB[rk];
+        if (!rb) { rb = ringB[rk] = { color: 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')', items: [] }; ringOrder.push(rb); }
+        rb.items.push(p.x, p.y, r);
+
+        if (isFocus || isHover || n.isHub) marks.push({ x: p.x, y: p.y, r: r, color: st.color, a: a, isFocus: isFocus, isHover: isHover });
       }
 
-      // 实心点 + 白圈
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      ctx.fillStyle = U.rgba(st.color, a);
-      ctx.fill();
-      ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, view.cam.k + 0.35));
-      ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
-      ctx.stroke();
+      /* 光晕：按桶连着贴（每桶一次 globalAlpha + 一次取精灵） */
+      for (i = 0; i < glowOrder.length; i++) {
+        var gb = glowOrder[i];
+        ctx.globalAlpha = gb.a;
+        var sprite = gb.sprite || (gb.sprite = glowSprite(gb.c));
+        for (j = 0; j < gb.items.length; j += 3) {
+          var sz = gb.items[j + 2];
+          ctx.drawImage(sprite, gb.items[j] - sz / 2, gb.items[j + 1] - sz / 2, sz, sz);
+        }
+      }
+      if (glowOrder.length) ctx.globalAlpha = 1;
 
-      // 选中 / 悬停的外环
-      if (isFocus || isHover) {
+      /* 实心圆点：每桶一次 beginPath + 一次 fill */
+      for (i = 0; i < fillOrder.length; i++) {
+        var fg = fillOrder[i];
+        ctx.fillStyle = fg.color;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, r + 5.5, 0, Math.PI * 2);
-        ctx.lineWidth = isFocus ? 2 : 1.4;
-        ctx.strokeStyle = U.rgba(st.color, (isFocus ? 0.95 : 0.55) * a);
+        for (j = 0; j < fg.items.length; j += 3) {
+          ctx.moveTo(fg.items[j] + fg.items[j + 2], fg.items[j + 1]);
+          ctx.arc(fg.items[j], fg.items[j + 1], fg.items[j + 2], 0, Math.PI * 2);
+        }
+        ctx.fill();
+      }
+
+      /* 白圈：每桶一次 beginPath + 一次 stroke */
+      ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, view.cam.k + 0.35));
+      for (i = 0; i < ringOrder.length; i++) {
+        var rg = ringOrder[i];
+        ctx.strokeStyle = rg.color;
+        ctx.beginPath();
+        for (j = 0; j < rg.items.length; j += 3) {
+          ctx.moveTo(rg.items[j] + rg.items[j + 2], rg.items[j + 1]);
+          ctx.arc(rg.items[j], rg.items[j + 1], rg.items[j + 2], 0, Math.PI * 2);
+        }
         ctx.stroke();
-      } else if (n.isHub) {
-        // 星团的中心天体：外面套一道细环，全图尺度上也认得出「这个装置的核心」
+      }
+
+      /* 选中 / 悬停的外环；星团的中心天体再套一道细环（全图尺度上也认得出核心） */
+      for (i = 0; i < marks.length; i++) {
+        var m = marks[i];
         ctx.beginPath();
-        ctx.arc(p.x, p.y, r + 3.0, 0, Math.PI * 2);
-        ctx.lineWidth = 1.25;
-        ctx.strokeStyle = U.rgba(st.color, 0.6 * a);
+        ctx.arc(m.x, m.y, m.r + (m.isFocus || m.isHover ? 5.5 : 3.0), 0, Math.PI * 2);
+        ctx.lineWidth = m.isFocus ? 2 : (m.isHover ? 1.4 : 1.25);
+        ctx.strokeStyle = U.rgba(m.color, (m.isFocus ? 0.95 : (m.isHover ? 0.55 : 0.6)) * m.a);
         ctx.stroke();
       }
     }
