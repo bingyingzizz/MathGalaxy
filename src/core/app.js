@@ -112,7 +112,7 @@
         if (cloudDrawn.tex !== cloudTex || cloudDrawn.k !== c.k || cloudDrawn.tx !== c.tx ||
           cloudDrawn.ty !== c.ty || cloudDrawn.w !== c.viewW || cloudDrawn.h !== c.viewH ||
           cloudDrawn.dpr !== dpr) {
-          MG.background.draw(cloudCtx, cam, cloudTex, dpr);
+          if (!noCloud) MG.background.draw(cloudCtx, cam, cloudTex, dpr);
           cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex };
         }
         renderer.draw();
@@ -788,6 +788,7 @@
       if (hide.length) p.push('hide=' + hide.join(','));
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
       if (noBlur) p.push('noblur=1');    // 毛玻璃 A/B 开关同理
+      if (noCloud) p.push('nocloud=1');  // 云雾层 A/B 开关同理
       var c = camCenter();
       p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
@@ -975,6 +976,8 @@
     /* 毛玻璃 A/B 开关：带 noblur=1 时全局关掉 backdrop-filter。
        用来判断「面板毛玻璃在 GPU 合成器上的代价」—— 它下面的 canvas 每帧都在变。 */
     var noBlur = /(^|[&#])noblur=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    /* 云雾层 A/B 开关：带 nocloud=1 时整层不画（用来判断「拖动时的 79ms 是不是它的账」）。 */
+    var noCloud = /(^|[&#])nocloud=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
     if (noBlur) {
       var noBlurCss = document.createElement('style');
       noBlurCss.textContent = '*{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}';
@@ -1006,6 +1009,19 @@
          重建一次，保证重铺出来的内容和真实那一帧完全一致（不改变画面）。
          顺带：角标开着时，全屏云雾每 700ms 会多铺一次，对「帧」读数的影响 < 0.3% 级别。 */
       var hudTex = null, hudVisSig = '';
+      /* GPU 的纹理上限与型号 —— 「大纹理被回退到软件路径」这个假设要靠它证实 */
+      var glInfo = '';
+      try {
+        var glProbe = document.createElement('canvas').getContext('webgl');
+        if (glProbe) {
+          var dbgInfo = glProbe.getExtension('WEBGL_debug_renderer_info');
+          var glName = dbgInfo ? String(glProbe.getParameter(dbgInfo.UNMASKED_RENDERER_WEBGL) || '') : '';
+          glInfo = '纹理上限 ' + glProbe.getParameter(glProbe.MAX_TEXTURE_SIZE)
+            + (glName ? ' · ' + glName.slice(0, 52) : '');
+        } else {
+          glInfo = '这台机器拿不到 WebGL 上下文';
+        }
+      } catch (e) { glInfo = ''; }
       function hudTexture() {
         var sig = graph.nodes.length + ':' + vis.hiddenCount();
         if (!hudTex || sig !== hudVisSig) {
@@ -1038,7 +1054,8 @@
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
           ' · canvas ' + c.width + '×' + c.height +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
-          (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '');
+          (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
+          (glInfo ? '\n' + glInfo : '');
         hudWorst = 0;
       }, 700);
     }
