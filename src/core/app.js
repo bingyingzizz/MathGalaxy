@@ -84,6 +84,10 @@
     var renderer = MG.createRenderer(graphEl, view);
     var cloudTex = null;
     var cloudDirty = true;
+    /* 云雾层上一次是按什么参数画的 —— 相机 / 视口 / dpr / 纹理四样都没变就不必再画。
+       ⚠️ 悬停、选中、开合图例这些「不动相机」的重绘以前也要把整屏云雾重采样一遍，
+       实测那是整帧的大头（dpr=1 时 ~15ms，dpr=2 时 ~37ms），而它根本没变。 */
+    var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null };
     var dpr = 1;
     var rafId = 0;
     var dirty = true;
@@ -100,10 +104,17 @@
       if (cloudDirty) {
         cloudDirty = false;
         cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+        cloudDrawn.tex = null;              // 纹理换了：这一次必须重铺
       }
       var animating = cam.tick();
       if (dirty || animating) {
-        MG.background.draw(cloudCtx, cam, cloudTex, dpr);
+        var c = cam;
+        if (cloudDrawn.tex !== cloudTex || cloudDrawn.k !== c.k || cloudDrawn.tx !== c.tx ||
+          cloudDrawn.ty !== c.ty || cloudDrawn.w !== c.viewW || cloudDrawn.h !== c.viewH ||
+          cloudDrawn.dpr !== dpr) {
+          MG.background.draw(cloudCtx, cam, cloudTex, dpr);
+          cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex };
+        }
         renderer.draw();
         dirty = false;
       }

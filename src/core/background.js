@@ -192,7 +192,11 @@
     var sw = tex.w * cam.k;
     var sh = tex.h * cam.k;
     ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+    /* ⚠️ 这一档**不能**用 'high'：云雾纹理是 0.42 倍世界尺寸，每帧要放大约 2.4 倍铺满全屏，
+       high 档重采样实测吃掉半帧（dpr=2、1600×900 下整帧 72.9ms → 39.6ms；dpr=1 也有可观占比）。
+       它本来就是一团模糊的雾，双线性放大看不出差别 —— 引擎里其它 drawImage（节点光晕）
+       也一直是默认的 low。 */
+    ctx.imageSmoothingQuality = 'low';
     ctx.drawImage(tex.canvas, sx, sy, sw, sh);
   }
 
