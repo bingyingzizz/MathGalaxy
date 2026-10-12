@@ -1,18 +1,20 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
-- 群对象 | group object | 阿贝尔群对象 | abelian group object | Gr(C) | Ab(C) → def.group-object
+- 拟分离 | quasi-separated | qs | Definition 3.3.10 → def.quasi-separated
 
-- Ab(Top) | Ab(Set) | 拓扑阿贝尔群怎么来的 | 群对象的例子 → ex.ab-of-categories
+- 预拓扑斯由拓扑斯唯一确定 | qcqs | Theorem 3.3.11 → thm.pretopos-qcqs
 
-- 环的局部化 | W^{-1}R | 乘性子集 | 分式环 | localization of a ring → prop.ring-localization
+- 拓扑斯的态射 | geometric morphism | 几何态射 | 拉回函子 | 推前函子 | Definition 3.4.1 → def.topos-morphism
 
-- 局部化的 Hom | 分式演算 余极限 | Hom 是余极限 → prop.localization-hom-colim
+- 局部化 | localization | ho(C) | 形式逆 | Proposition 1.4.12 | Prop 1.4.12 | Definition 1.4.11 | Def 1.4.11 → def.localization
 
-- 覆盖筛的四条等价 | 覆盖筛等价条件 | Proposition 3.2.12 | Prop 3.2.12 | 层化 覆盖筛 → prop.sieve-covering-equivalent
+- 分式演算 | calculus of fractions | Ore 条件 | Proposition 1.4.14 | Prop 1.4.14 | Definition 1.4.13 | Def 1.4.13 → prop.calculus-of-fractions
 
-- Cond/X 到开集拓扑斯 | 切片拓扑斯态射 | Proposition 8.1.3 → prop.cond-slice-topos-morphism
+- 连通范畴 | connected category | 锯齿 → def.connected-category
 
-- 正合列 | exact sequence | 短正合列 | Definition 5.2.3 → def.exact-sequence
+- 共尾函子 | cofinal | cofinal functor | final functor | coinitial | 共尾 → def.cofinal-functor
 
-见 `../../alias.md`。
+- 共尾函子不改变余极限 | cofinal colimit | 共尾 余极限 → thm.cofinal-colimit
+
+> 续见 alias/aka/category.14.md

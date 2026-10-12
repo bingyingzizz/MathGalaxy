@@ -1,24 +1,22 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
-- 标准拓扑 | canonical topology | 次标准 | subcanonical | Definition 3.2.15 → def.canonical-topology
+- 预拓扑 | pretopology | 覆盖族 | Grothendieck pretopology | Definition 3.2.4 | Def 3.2.4 → def.pretopology
 
-- 覆盖等价于余积满 → prop.covering-sieve-epi
+- Grothendieck 拓扑 | Grothendieck topology | site | 景 | site 理论 | Definition 3.2.2 | Def 3.2.2 → def.grothendieck-topology
 
-- 不交万有余积与次标准 | Exercise 3.29 → prop.disjoint-universal
+- 层 | sheaf | 分离预层 | separated presheaf | 粘合 | 下降 | Definition 3.2.5 | Def 3.2.5 → def.sheaf
 
-- 预拓扑斯 | pretopos | 预拓扑斯公理 | Definition 3.3.1 → def.pretopos
+- 层的下降条件 | sheaf condition | 层条件 → thm.sheaf-descent
 
-- 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 → prop.pretopos-factorization
+- Cech 函子 | Čech functor | H hat → def.cech-functor
 
-- 子对象构成有界格 | 子对象格 | Exercise 3.33 → prop.subobject-lattice
+- Cech 函子的性质 | 左正合 | Lemma 3.2.6 → prop.cech-properties
 
-- 预标准拓扑 | precanonical topology | Definition 3.3.2 | Exercise 3.34 | Exercise 3.35 → def.precanonical-topology
+- 层化 | sheafification | sheafify | 伴随层 | Exercise 5.16 | Theorem 3.2.8 | Thm 3.2.8 → thm.sheafification
 
-- 预标准拓扑下的层 | Exercise 3.36 | Proposition 3.3.3 | Exercise 3.37 → prop.precanonical-sheaf
+- 正则满态射 | regular epimorphism | regular epi → def.regular-epi
 
-- 余积与商在层范畴不变 → prop.precanonical-preserves
-
-- 单满在层化后不变 | Exercise 3.38 → prop.precanonical-mono-epi
+- 万有余极限 | universal colimit | 万有满态射 | 不交余积 | disjoint coproduct | Definition 3.2.11 | Def 3.2.11 → def.universal-colimit
 
 > 续见 alias/aka/category.11.md

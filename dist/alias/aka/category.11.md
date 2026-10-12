@@ -1,26 +1,26 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
-- 生成元 | generator | 生成元集 | set of generators | Definition 3.3.4 → def.generator
+- 层范畴的性质 | site 的好性质 | 预拓扑斯公理 → prop.site-properties
 
-- 拓扑斯 | topos | Grothendieck topos | 初等拓扑斯 | Definition 3.3.5 → def.topos
+- 层中单满即同构 | epi-mono factorization → prop.sheaf-mono-epi-iso
 
-- Giraud 定理 | Giraud | 拓扑斯的刻画 | Theorem 3.3.6 → thm.giraud
+- 满态射的局部判据 | 局部满 | local epimorphism → prop.sheaf-epi-criterion
 
-- 可表示性下降 → lem.representable-quotient
+- 有效等价关系 | effective equivalence relation | 有效关系 → def.effective-equivalence
 
-- 拓扑斯中覆盖即余积满 | Exercise 3.41 → prop.topos-covering-epi
+- 层化与商交换 → prop.sheafify-equivalence
 
-- 层即保极限的预层 → prop.topos-sheaf-limits
+- 标准拓扑 | canonical topology | 次标准 | subcanonical | Definition 3.2.15 | Lemma 3.2.14 → def.canonical-topology
 
-- 拟紧 | quasi-compact | qc | Definition 3.3.8 → def.quasi-compact
+- 覆盖等价于余积满 | Corollary 3.2.13 | Cor 3.2.13 → prop.covering-sieve-epi
 
-- 拟紧的性质 | Exercise 3.46 | Proposition 3.3.9 → prop.quasi-compact-properties
+- 不交万有余积与次标准 | Exercise 3.29 → prop.disjoint-universal
 
-- 拟分离 | quasi-separated | qs | Definition 3.3.10 → def.quasi-separated
+- 预拓扑斯 | pretopos | 预拓扑斯公理 | Definition 3.3.1 → def.pretopos
 
-- 预拓扑斯由拓扑斯唯一确定 | qcqs | Theorem 3.3.11 → thm.pretopos-qcqs
+- 预拓扑斯里的满单分解 | 平衡范畴 | balanced | Exercise 3.30 | Exercise 3.31 | Exercise 3.32 → prop.pretopos-factorization
 
-- 拓扑斯的态射 | geometric morphism | 几何态射 | 拉回函子 | 推前函子 | Definition 3.4.1 → def.topos-morphism
+- 子对象构成有界格 | 子对象格 | Exercise 3.33 → prop.subobject-lattice
 
 > 续见 alias/aka/category.12.md

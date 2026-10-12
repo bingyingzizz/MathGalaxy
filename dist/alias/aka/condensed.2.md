@@ -21,6 +21,6 @@
 
 - 拓扑空间到凝聚态集 | Top 到 Cond | kTop → thm.top-cond-adjoint
 
-- 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) | Definition 6.1.1 → def.condensed-abelian-group
+- 凝聚态阿贝尔群 | condensed abelian group | CondAb | Ab(Cond) | Definition 6.1.1 | Proposition 6.1.2 | Prop 6.1.2 → def.condensed-abelian-group
 
 > 续见 alias/aka/condensed.3.md

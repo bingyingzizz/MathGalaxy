@@ -11,18 +11,16 @@
 
 - 商拓扑 | quotient topology | 商空间 | 粘合空间 → def.quotient-topology
 
-- Hausdorff | 豪斯多夫 | T2 | 分离公理 | Tychonoff | 正则空间 | 正规空间 → def.hausdorff
+- Hausdorff | 豪斯多夫 | T2 | 分离公理 | Tychonoff | 正则空间 | 正规空间 | Definition 2.1.1 | Def 2.1.1 → def.hausdorff
 
-- 连通 | connected | 连通分量 | 连通分支 → def.connected
+- 连通 | connected | 连通分量 | 连通分支 | Definition 2.2.5 | Def 2.2.5 → def.connected
 
-- 闭开集 | clopen | 既开又闭 → def.clopen
+- 闭开集 | clopen | 既开又闭 | Definition 2.2.5 | Def 2.2.5 → def.clopen
 
 - 闭映射的邻域基 | Exercise 8.6 → prop.closed-map-neighborhood-basis
 
 - 仿紧与单位分解 | 正规与单位分解 | Exercise 8.7 → prop.paracompact-partition-unity
 
 - Stone 空间的闭开加细 | Exercise 2.20 → prop.stone-clopen-refinement
-
-- 完全不连通 | totally disconnected | 极不连通 | extremally disconnected | Definition 2.2.7 | Def 2.2.7 → def.totally-disconnected
 
 > 续见 alias/aka/topology.3.md

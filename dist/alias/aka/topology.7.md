@@ -1,24 +1,26 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
-- Urysohn 引理 | Urysohn | Lemma 2.1.2 | 连续函数足够多 → lem.urysohn
+- 弱 Hausdorff | weak Hausdorff | 弱豪斯多夫 | Definition 2.3.8 | Def 2.3.8 → def.weak-hausdorff
 
-- 拓扑阿贝尔群 | topological abelian group | AbTop | 连续同态 | CZ(M,N) → def.topo-ab-group
+- 弱 Hausdorff 的性质 | 对角 k-闭 → prop.weak-hausdorff-basic
 
-- 局部紧阿贝尔群 | pre-abelian | Exercise 6.4 | R-disc 不是严格 → prop.lc-ab-preabelian
+- 紧块的纤维积 | fiber product compact → prop.cgwh-fiber-product
 
-- Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 → thm.pontryagin-van-kampen
+- k-闭等价关系 | 弱 Hausdorff 商 → prop.cg-kclosed-quotient
 
-- Tietze 延拓 | Tietze | Banach 值 Tietze | Theorem 8.2.7 → thm.tietze-banach
+- CGWH | CGWH 是反射子范畴 | 紧生成弱 Hausdorff | 弱 Hausdorff 化 → thm.cgwh-reflective
 
-- 局部紧阿贝尔群结构定理 | 结构定理 | V⊕K | Theorem 6.2.5 → thm.lc-structure
+- CGWH 的子空间 | CGWH 的滤过余极限 → prop.cgwh-closed
 
-- 离散与紧对偶 | 离散紧 Hausdorff 互换 | Exercise 6.9 → prop.pontryagin-discrete-compact-duality
+- 函数空间弱 Hausdorff | kC(X,Y) | Exercise 4.10 → prop.cg-function-space
 
-- 挠与 Stonean | 无挠与连通 | torsion Stonean | Exercise 6.9 → prop.pontryagin-torsion-stone
+- 积拓扑 | product topology | 乘积空间 | 投影 → def.product-topology
 
-- 布尔环 | Boolean ring | 幂等环 → def.boolean-ring
+- 笛卡尔闭 | cartesian closed | currying | 指数对象 | Theorem 2.3.6 | Thm 2.3.6 → prop.cg-cartesian-closed
 
-- Stone 表示定理 | 布尔环与 Stone 空间 | Stone representation | Exercise 2.22 → thm.boolean-stone
+- 指数伴随 | Corollary 2.3.7 | Cor 2.3.7 | 余极限万有 → cor.cg-exponential-adjoint
+
+- 正规空间 | normal space | 正则空间 | 分离公理 | Definition 2.1.1 | Def 2.1.1 → def.normal-space
 
 > 续见 alias/aka/topology.8.md

@@ -1,28 +1,24 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
-- 诱导拓扑 | induced topology | Definition 3.4.7 | Def 3.4.7 | Exercise 3.61 → def.induced-topology
+- 预加性结构唯一 | Exercise 5.2 → prop.hom-enrichment-unique
 
-- 代数的范畴 | Mon | Gr | Rng | G-Set | A-Mod | k-Alg | Exercise 1.1 → ex.algebra-categories
+- 加法函子的双积刻画 | Exercise 5.3 → prop.additive-iff-preserves-biproduct
 
-- 偏序集的极限 | 极限就是交 | Exercise 1.30 → prop.poset-limit-join
+- 伴随函子加法 | Exercise 5.4 → prop.adjoint-additive
 
-- 严格态射 | strict morphism | 严格 | Exercise 1.33 → def.strict-morphism
+- 正合列构成加法子范畴 | Exercise 5.6 → prop.exact-sequence-subcategory
 
-- 保积与核 | Exercise 1.43 → prop.preserves-products-kernels
+- 常层函子保极限 | Exercise 3.49 → prop.constant-sheaf-preserves-limits
 
-- 保拉回保单态射 | Exercise 1.46 → prop.preserves-fibered-products-mono
+- 茎 | stalk | 分离预层 | Exercise 3.53 → prop.stalk-separated
 
-- Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
+- 拓扑生成集 | topologically generating | Definition 3.2.3 | Def 3.2.3 → def.topologically-generating
 
-- 左伴随唯一 | Exercise 1.58 → prop.left-adjoint-unique
+- 连续函子 | continuous functor | Definition 3.4.4 | Def 3.4.4 | Exercise 3.54 | Exercise 3.58 → def.continuous-functor
 
-- 余单位与忠实 | Exercise 1.60 → prop.counit-epi-iff-faithful
+- site 的态射 | morphism of sites | Definition 3.4.5 | Def 3.4.5 | Exercise 3.58 → def.morphism-of-sites
 
-- C 是 Ind(C) 的反射 | Exercise 1.73 → prop.ind-reflective
-
-- 滤过加有限余极限 | Exercise 1.41 → prop.filtered-finite-colimits
-
-- 环的纤维余积 | 张量积是推出 | Exercise 1.29 → prop.ring-tensor-coproduct
+- 余连续函子 | cocontinuous | Definition 3.4.6 | Def 3.4.6 | Exercise 3.59 | Exercise 3.60 → def.cocontinuous-functor
 
 > 续见 alias/aka/category.8.md

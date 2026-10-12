@@ -1,6 +1,8 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 完全不连通 | totally disconnected | 极不连通 | extremally disconnected | Definition 2.2.7 | Def 2.2.7 → def.totally-disconnected
+
 - 局部紧 | locally compact | 局部紧 Hausdorff | 紧邻域 | Definition 2.3.1 | Def 2.3.1 → def.locally-compact
 
 - Tychonoff | Tykhonov | 吉洪诺夫 | Theorem 2.1.4 | Thm 2.1.4 | 紧空间的积 → thm.tykhonov
@@ -14,11 +16,5 @@
 - 层上同调是同伦不变量 | Proposition 7.4.2 | Corollary 7.4.3 | Cor 7.4.3 → cor.homotopy-invariant-cohomology
 
 - CHaus | 紧 Hausdorff 空间 | compact Hausdorff | 紧豪斯多夫空间 → def.chaus
-
-- Stone-Cech 紧化 | Stone-Čech | βX | beta X | 紧化 → prop.chaus-reflective
-
-- 满射的极小闭子集 → lem.minimal-closed-surjection
-
-- 自由紧 Hausdorff 空间 | free compact Hausdorff | FCHaus → def.free-compact-hausdorff
 
 > 续见 alias/aka/topology.4.md

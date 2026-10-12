@@ -1,28 +1,20 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
-- 锥 | cone | 余锥 | cocone → def.cone
+- 交换图 | commutative diagram | diagram | 图（函子） | 索引范畴 | 图范畴 | 常图函子 | 预序 | Definition 1.3.1 | Def 1.3.1 → def.commutative-diagram
 
-- 极限 | limit | 余极限 | colimit | 泛锥 | 有限极限 → def.limit
+- 单纯对象 | simplicial object | 单纯形范畴 | 面映射 | 退化映射 | Definition 1.3.2 | Def 1.3.2 → def.simplicial
 
-- 终对象 | 始对象 | terminal object | initial object | 零对象 → def.final-initial
+- 锥 | cone | 余锥 | cocone | Definition 1.3.3 | Def 1.3.3 → def.cone
 
-- 积 | 余积 | product | coproduct | 直积 | 直和 → def.product
+- 极限 | limit | 余极限 | colimit | 泛锥 | 有限极限 | Definition 1.3.4 | Def 1.3.4 → def.limit
 
-- 纤维积 | 拉回 | pullback | fibered product | 推出 | pushout | 笛卡尔方块 → def.fibered-product
+- 终对象 | 始对象 | terminal object | initial object | 零对象 | Definition 1.3.5 | Def 1.3.5 → def.final-initial
 
-- 等化子 | 余等化子 | equalizer | coequalizer | 核 | ker | coker → def.equalizer
+- 积 | 余积 | product | coproduct | 直积 | 直和 | Definition 1.3.6 | Def 1.3.6 → def.product
 
-- 单态射 | 满态射 | mono | epi | monomorphism | epimorphism | 可消 → def.mono
+- 纤维积 | 拉回 | pullback | fibered product | 推出 | pushout | 笛卡尔方块 | Definition 1.3.7 | Def 1.3.7 → def.fibered-product
 
-- 子对象 | subobject | 子对象之交 | 原像 → def.subobject
-
-- 极限的函子性 | 极限是函子 | lim functor → thm.lim-functor
-
-- 像 | 余像 | image | coimage | 严格态射 | strict → def.image
-
-- 元素范畴 | category of elements | el(F) | 泛元素 | universal element → def.elements-category
-
-- 预层 | presheaf | 限制映射 | 可表示预层 → def.presheaf
+- 等化子 | 余等化子 | equalizer | coequalizer | 核 | ker | coker | Definition 1.3.8 | Def 1.3.8 → def.equalizer
 
 > 续见 alias/aka/category.3.md

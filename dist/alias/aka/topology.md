@@ -19,7 +19,7 @@
 
 - 列紧 | sequentially compact → def.sequentially-compact
 
-- 紧 | 紧集 | compact | 开覆盖 → def.compact
+- 紧 | 紧集 | compact | 开覆盖 | Definition 2.1.3 | Def 2.1.3 → def.compact
 
 - 紧的等价刻画 | 紧 等价 | Heine-Borel → thm.metric-compact-equiv
 
