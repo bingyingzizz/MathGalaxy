@@ -108,6 +108,7 @@
         dirty = false;
       }
       if (animating) requestDraw();
+      noteCamera();
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -152,6 +153,7 @@
       if (opts.center !== false) centerOn(id);
       requestDraw();
       hideHint();
+      syncHash('push');
     }
 
     function focusEdge(id, opts) {
@@ -171,6 +173,7 @@
       }
       requestDraw();
       hideHint();
+      syncHash('push');
     }
 
     function findEdge(id) {
@@ -181,6 +184,7 @@
     function clearFocus() {
       view.focus = null;
       requestDraw();
+      syncHash('push');
     }
 
     /** 若某个点不在安全视野内，平滑移到中心（避开右侧面板） */
@@ -293,7 +297,7 @@
       requestDraw();
     }
 
-    vis.onChange(function () { refreshVisible(); renderLegend(); });
+    vis.onChange(function () { refreshVisible(); renderLegend(); syncHash('push'); });
 
     /* ------------------------------------------------ 主干模式 / 分层 */
     /*
@@ -336,6 +340,7 @@
       applyFilter();
       renderLegend();
       fitAll();                       // 子图通常只有几十个点，直接铺满屏幕
+      syncHash('push');
     }
 
     function clearSubgraph() {
@@ -344,6 +349,7 @@
       applyFilter();
       renderLegend();
       fitAll();                       // 「退出」说好的是「回全图」，相机也得回去
+      syncHash('push');
     }
 
     function setTrunkOnly(on) {
@@ -352,6 +358,7 @@
       var btn = toolbar.querySelector('[data-act="toggle-trunk"]');
       if (btn) btn.classList.toggle('on', trunkOnly);
       if (trunkOnly) fitAll();          // 主干只有几十个点，直接铺满屏幕
+      syncHash('push');
     }
 
     /** k = 只显示第 0…k 层；k >= 最大层 或 null = 不限 */
@@ -360,6 +367,7 @@
       layerMax = (k == null || k >= max) ? null : Math.max(0, k);
       applyFilter();
       if (layerMax != null) fitAll();
+      syncHash('push');
     }
 
     /* ---------------------------------------------------------- 交互 */
@@ -412,6 +420,7 @@
         btn.classList.toggle('on', C.wheelZooms);
         btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
       }
+      if (act && act.indexOf('toggle-') === 0) syncHash('push');
     });
 
     /* ---------------------------------------------------- 图例（也是开关） */
@@ -429,11 +438,18 @@
       return { v: v, n: list.length };
     }
 
-    /** 点一下：全显示 → 全隐藏；只要缺了 → 补齐 */
+    /** 点一下：全显示 → 全隐藏；只要缺了 → 补齐
+        ⚠️ 判据必须是「用户手动藏没藏」，不能看 isNodeVisible —— 那个上面还叠着
+           主干 / 分层 / 子图这三层过滤。一个星系若整个落在过滤线以外（例如开了
+           「只看 0–4 层」时的 algebra），按可见数算就成了「已经藏了 → 反向补齐」，
+           点色块会毫无反应。 */
     function toggleList(list) {
       if (!list.length) return;
-      var s = statOf(list);
-      vis.setMany(list.map(function (n) { return n.id; }), s.v < s.n);
+      var hid = Object.create(null);
+      vis.hiddenIds().forEach(function (id) { hid[id] = true; });
+      var some = false;
+      for (var i = 0; i < list.length; i++) if (hid[list[i].id]) { some = true; break; }
+      vis.setMany(list.map(function (n) { return n.id; }), some);
     }
 
     function typeNodes(t) {
@@ -678,21 +694,264 @@
     }
     hideHintSoon();
 
-    /* ------------------------------------------------------------ 启动 */
-    /** 深链：#n=<节点id>  #e=<连线id>  #r=<星系id>  #c=<星团id> */
+    /* ------------------------------------------------------ 视图状态进 hash */
+    /*
+      URL 里装的就是「我看到的这张图」，整条可以复制给别人：
+
+        #n=<节点id>        聚焦某个节点（面板同时打开）
+        #e=<连线id>        聚焦某条连线
+        #r=<星系id>        适配到某个星系
+        #c=<星团id>        适配到某个星团
+        &ly=<k>            只显示第 0…k 层（缺省 = 不限层）
+        &tr=1              主干模式
+        &sub=<id>&sd=<deps|users|both>&sh=<跳数>&sb=<0|1>   只看某个节点的子图
+        &hide=R:<星系>,C:<星团>,T:<类别>,<节点id>,…          藏起来的点：
+                           能整块表达就整块，剩下的才写 id，所以整块开关的链接很短
+        &dl=0 &lb=0 &ex=1  定义线 / 名字 / 探索（弱边）的开关
+        &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
+
+      ⚠️ 绝不用 ?query + history.pushState：`file://` 下 origin 是 null，
+         pushState / replaceState 会抛 SecurityError —— 而「双击 index.html 就能用」
+         是硬要求。这里一律走 hash，pushState/replaceState 只是**能成功时**的优雅路径。
+      ⚠️ 只有带视图状态的那几种 token（ly/tr/sub/hide/dl/lb/ex/v）才接管可见性：
+         光是一个 #n=/#e=/#r=/#c= 的老链接，不覆盖接收者本地存的那份隐藏集合。
+      ⚠️ 地址栏只在「真的动过」之后才写字（seeded）：刚开始那 700ms 的推镜头动画
+         不该往地址栏里塞东西。相机用 replaceState，不刷历史。
+    */
+    var hashState = {
+      seeded: false,      // 用户动过星图没有（没动过就不写 URL）
+      applying: false,    // 正在应用 URL → 期间不往回写
+      last: null,         // 上次写进去的串（自比的，也是自写事件的判据）
+      timer: 0, camTimer: 0, camSig: '', pending: null
+    };
+
+    function enc(s) { return encodeURIComponent(String(s)); }
+    function dec(s) { try { return decodeURIComponent(String(s)); } catch (e) { return String(s); } }
+
+    /** 屏幕中心的世界坐标（相机存中心而不是 tx/ty，换个窗口大小也还原得对） */
+    function camCenter() {
+      return { x: (cam.viewW / 2 - cam.tx) / cam.k, y: (cam.viewH / 2 - cam.ty) / cam.k };
+    }
+    function camSig() {
+      var c = camCenter();
+      return cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1);
+    }
+
+    /** 隐藏集合 → token 串：整块（星系 / 星团 / 类别）优先，剩下才逐个写 id */
+    function hideTokens() {
+      var rest = Object.create(null);
+      vis.hiddenIds().forEach(function (id) { rest[id] = true; });
+      var out = [];
+      function cover(list) {
+        if (!list || !list.length) return false;
+        for (var i = 0; i < list.length; i++) if (!rest[list[i].id]) return false;
+        list.forEach(function (n) { delete rest[n.id]; });
+        return true;
+      }
+      (graph.regions || []).forEach(function (r) {
+        if (cover(regionNodes(r.id))) out.push('R:' + enc(r.id));
+      });
+      (graph.clusters || []).forEach(function (c) {
+        if (cover(c.nodes)) out.push('C:' + enc(c.id));
+      });
+      (T.typeOrder || []).forEach(function (t) {
+        if (cover(typeNodes(t))) out.push('T:' + enc(t));
+      });
+      Object.keys(rest).sort().forEach(function (id) { out.push(enc(id)); });
+      return out;
+    }
+
+    function buildHash() {
+      var p = [];
+      if (view.focus) p.push((view.focus.type === 'node' ? 'n=' : 'e=') + enc(view.focus.id));
+      if (layerMax != null) p.push('ly=' + layerMax);
+      if (trunkOnly) p.push('tr=1');
+      if (subSeed) {
+        p.push('sub=' + enc(subSeed), 'sd=' + subDir, 'sh=' + subHops, 'sb=' + (subSkipBase ? '1' : '0'));
+      }
+      if (!C.showDefinitionLines) p.push('dl=0');
+      if (!C.showLabels) p.push('lb=0');
+      if (C.exploreMode) p.push('ex=1');
+      var hide = hideTokens();
+      if (hide.length) p.push('hide=' + hide.join(','));
+      var c = camCenter();
+      p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
+      return p.join('&');
+    }
+
+    function writeHash(s, mode) {
+      hashState.last = s;
+      var base = String(global.location.href).split('#')[0];
+      var next = base + (s ? '#' + s : '');
+      try {
+        if (mode === 'replace' && global.history && global.history.replaceState) {
+          global.history.replaceState(null, '', next);
+        } else if (global.history && global.history.pushState) {
+          global.history.pushState(null, '', next);
+        } else {
+          throw new Error('no history api');
+        }
+      } catch (e) {
+        // 受限环境（file:// 等）：退回改 location
+        if (mode === 'replace') global.location.replace(next);
+        else global.location.hash = s;
+      }
+    }
+
+    /**
+     * 140ms 内合并成一次写：滑块连点、「显示全部」这种一次改好几个开关的操作
+     * 不该在历史里留下四五条记录（那正是「返回键不好用」的根源）。
+     */
+    function syncHash(mode) {
+      if (hashState.applying) return;
+      hashState.seeded = true;
+      if (mode !== 'replace') hashState.pending = 'push';
+      else if (hashState.pending !== 'push') hashState.pending = 'replace';
+      if (hashState.timer) return;
+      hashState.timer = setTimeout(function () {
+        hashState.timer = 0;
+        var m = hashState.pending; hashState.pending = null;
+        var s = buildHash();
+        if (s === hashState.last) return;        // 没变就不碰地址栏（也不进历史）
+        writeHash(s, m || 'replace');
+      }, 140);
+    }
+
+    /** 相机停下来之后把「现在这一屏」补进 URL（replace，不新增历史） */
+    function noteCamera() {
+      if (!hashState.seeded || hashState.camTimer) return;
+      var sig = camSig();
+      if (sig === hashState.camSig) return;
+      hashState.camTimer = setTimeout(function () {
+        hashState.camTimer = 0;
+        hashState.camSig = camSig();
+        syncHash('replace');
+      }, 450);
+    }
+
+    /** 按 hide= 还原隐藏集合（URL 说全显示就是全显示） */
+    function applyHide(spec) {
+      var want = Object.create(null);
+      spec.split(',').forEach(function (tok) {
+        if (!tok) return;
+        tok = dec(tok);
+        if (tok.indexOf('R:') === 0) {
+          regionNodes(tok.slice(2)).forEach(function (n) { want[n.id] = true; });
+        } else if (tok.indexOf('C:') === 0) {
+          var c = graph.clusterById[tok.slice(2)];
+          if (c) (c.nodes || []).forEach(function (n) { want[n.id] = true; });
+        } else if (tok.indexOf('T:') === 0) {
+          typeNodes(tok.slice(2)).forEach(function (n) { want[n.id] = true; });
+        } else if (graph.byId[tok]) {
+          want[tok] = true;
+        }
+      });
+      vis.setMany(graph.nodes.map(function (n) { return n.id; }), true);
+      var ids = Object.keys(want);
+      if (ids.length) vis.setMany(ids, false);
+    }
+
+    /** 工具条按钮的 .on 跟着 config 走（从 URL 恢复时要补上） */
+    function syncToolbar() {
+      var map = {
+        'toggle-defs': C.showDefinitionLines, 'toggle-labels': C.showLabels,
+        'toggle-explore': C.exploreMode, 'toggle-trunk': trunkOnly, 'toggle-wheel': C.wheelZooms
+      };
+      Object.keys(map).forEach(function (act) {
+        var btn = toolbar.querySelector('[data-act="' + act + '"]');
+        if (!btn) return;
+        btn.classList.toggle('on', !!map[act]);
+        if (act === 'toggle-wheel') btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
+      });
+    }
+
+    /** 读 URL → 恢复视图；返回 true 表示「URL 里确实有东西要恢复」 */
     function applyHash() {
       var h = String(global.location.hash || '').replace(/^#/, '');
-      var m = h.match(/^([necr])=(.+)$/);
-      if (!m) return false;
-      var id = decodeURIComponent(m[2]).trim();
-      if (m[1] === 'n' && graph.byId[id]) { focusNode(id, { force: true }); return true; }
-      if (m[1] === 'e' && findEdge(id)) { focusEdge(id, { force: true }); return true; }
-      if (m[1] === 'r' && graph.regionById[id]) { fitRegion(id); return true; }
-      if (m[1] === 'c' && graph.clusterById[id] && graph.clusterById[id].nodes.length) {
-        fitCluster(id); return true;
+      if (!h) return false;
+      var kv = Object.create(null);
+      h.split('&').forEach(function (part) {
+        if (!part) return;
+        var i = part.indexOf('=');
+        if (i > 0) kv[part.slice(0, i)] = part.slice(i + 1);
+      });
+      if (!Object.keys(kv).length) return false;
+      var hasCam = !!kv.v;
+      var isView = hasCam || kv.ly != null || kv.tr != null || kv.sub != null ||
+        kv.hide != null || kv.dl != null || kv.lb != null || kv.ex != null;
+      if (!isView && kv.n == null && kv.e == null && kv.r == null && kv.c == null) return false;
+
+      hashState.applying = true;
+      try {
+        /* ⭐ 只要这条 URL 带视图状态，它就是**完整状态**：没写的 token 一律回默认
+           （tr/sub 关、hide 空、dl/lb 开、ex 关、ly 不限）。光一个 #n=… 的老链接
+           不动这些，也不覆盖接收者本地存的那份隐藏集合。 */
+        if (isView) {
+          C.showDefinitionLines = kv.dl != null ? dec(kv.dl) !== '0' : true;
+          C.showLabels = kv.lb != null ? dec(kv.lb) !== '0' : true;
+          C.exploreMode = kv.ex != null ? dec(kv.ex) === '1' : false;
+
+          var ly = kv.ly != null ? parseInt(dec(kv.ly), 10) : NaN;
+          setLayerMax(isFinite(ly) ? ly : null);
+          setTrunkOnly(kv.tr != null && dec(kv.tr) === '1');
+          if (kv.sub != null) {
+            subSkipBase = kv.sb !== '0';
+            var hops = kv.sh != null ? parseInt(dec(kv.sh), 10) : 2;
+            setSubgraph(dec(kv.sub), kv.sd ? dec(kv.sd) : 'deps', isFinite(hops) ? hops : 2);
+          } else {
+            clearSubgraph();
+          }
+          applyHide(kv.hide != null ? kv.hide : '');
+          refreshVisible();
+        }
+
+        // 回退到「没有聚焦」的那一条时，面板要跟着收起来
+        if (!kv.n && !kv.e && view.focus) { clearFocus(); panel.hide(); }
+
+        if (kv.n != null && graph.byId[dec(kv.n)]) {
+          focusNode(dec(kv.n), { force: true, center: !hasCam });
+        } else if (kv.e != null && findEdge(dec(kv.e))) {
+          focusEdge(dec(kv.e), { force: true, center: !hasCam });
+        } else if (kv.r != null && graph.regionById[dec(kv.r)]) {
+          if (!hasCam) fitRegion(dec(kv.r));
+        } else if (kv.c != null && graph.clusterById[dec(kv.c)]) {
+          if (!hasCam) fitCluster(dec(kv.c));
+        }
+
+        if (hasCam) {
+          var pq = dec(kv.v).split(',');
+          var k = parseFloat(pq[0]), x = parseFloat(pq[1]), y = parseFloat(pq[2]);
+          if (isFinite(k) && isFinite(x) && isFinite(y)) {
+            cam.stopAnimation();
+            cam.k = U.clamp(k, C.camera.minZoom, C.camera.maxZoom);
+            cam.centerOn(x, y);
+          }
+        }
+        hashState.last = h;
+        hashState.camSig = camSig();
+        syncToolbar();
+        renderLegend();
+        requestDraw();
+      } finally {
+        hashState.applying = false;
       }
-      return false;
+      return true;
     }
+
+    /* 自己写的 hash 会触发 hashchange —— 对一下 last 就知道是不是自己写的 */
+    global.addEventListener('hashchange', function () {
+      if (hashState.applying) return;
+      var h = String(global.location.hash || '').replace(/^#/, '');
+      if (h === (hashState.last || '')) return;
+      applyHash();
+    });
+
+    /* 第一次真的动鼠标 / 滚轮之后，才开始往地址栏里写视图状态 */
+    function seedHash() { hashState.seeded = true; }
+    graphEl.addEventListener('pointerdown', seedHash);
+    graphEl.addEventListener('wheel', seedHash, { passive: true });
+
+    /* ------------------------------------------------------------ 启动 */
 
     function start() {
       resize();
@@ -700,6 +959,7 @@
         cloudDirty = false;
         cloudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
       }
+      syncToolbar();
       renderLegend();
       // 上次藏了一批点（或开着主干模式）→ 开局就只把「还看得见的那些」铺满屏幕
       var live = visibleNodes();
