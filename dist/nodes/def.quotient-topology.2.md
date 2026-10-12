@@ -2,4 +2,5 @@
 根 `../`　·　第 1 页 `nodes/def.quotient-topology.md`
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 `thm.cgwh-reflective` CGWH 是 CG 的反射子范畴 用
 - 被 `prop.cg-equivalent-conditions` 紧生成空间的等价刻画 用

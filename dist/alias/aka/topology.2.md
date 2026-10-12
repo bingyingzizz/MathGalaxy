@@ -13,7 +13,7 @@
 
 - Hausdorff | 豪斯多夫 | T2 | 分离公理 | Tychonoff | 正则空间 | 正规空间 | Definition 2.1.1 | Def 2.1.1 → def.hausdorff
 
-- 连通 | connected | 连通分量 | 连通分支 | Definition 2.2.5 | Def 2.2.5 → def.connected
+- 连通 | connected | 连通分量 | 连通分支 | Definition 2.2.5 | Def 2.2.5 | Exercise 2.14 → def.connected
 
 - 闭开集 | clopen | 既开又闭 | Definition 2.2.5 | Def 2.2.5 → def.clopen
 
@@ -21,6 +21,6 @@
 
 - 仿紧与单位分解 | 正规与单位分解 | Exercise 8.7 → prop.paracompact-partition-unity
 
-- Stone 空间的闭开加细 | Exercise 2.20 → prop.stone-clopen-refinement
+- Stone 空间的闭开加细 | Exercise 2.20 | Exercise 2.19 → prop.stone-clopen-refinement
 
 > 续见 alias/aka/topology.3.md

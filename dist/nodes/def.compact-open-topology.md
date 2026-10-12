@@ -14,9 +14,9 @@ $$W_{S,V} := \{\, f : X \to Y \;\mid\; \operatorname{Im}(f \circ g) \subseteq V 
 - `def.continuous` 连续：用到了定义 连续　proofs/def-dep.compactopen-continuous.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.continuous-map-space-metric` 紧 Hausdorff 上的函数空间是度量空间 用
 - 被 `prop.cg-function-space` 函数空间弱 Hausdorff 用
 - 被 `prop.compact-open-discrete` 离散时函数空间是积 用
-- 被 `def.topo-ab-group` 拓扑阿贝尔群 用
 
 - …另有出边，续页见 `nodes/def.compact-open-topology.3.md`
 

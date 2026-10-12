@@ -1,26 +1,22 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
-- 弱 Hausdorff | weak Hausdorff | 弱豪斯多夫 | Definition 2.3.8 | Def 2.3.8 → def.weak-hausdorff
+- 离散时函数空间是积空间 | Exercise 2.28 → prop.compact-open-discrete
 
-- 弱 Hausdorff 的性质 | 对角 k-闭 → prop.weak-hausdorff-basic
+- 弱 Hausdorff | weak Hausdorff | 弱豪斯多夫 | Definition 2.3.8 | Def 2.3.8 | Exercise 2.32 | Exercise 2.33 → def.weak-hausdorff
+
+- 弱 Hausdorff 的性质 | 对角 k-闭 | Exercise 2.31 | Exercise 2.34 → prop.weak-hausdorff-basic
 
 - 紧块的纤维积 | fiber product compact → prop.cgwh-fiber-product
 
-- k-闭等价关系 | 弱 Hausdorff 商 → prop.cg-kclosed-quotient
+- k-闭等价关系 | 弱 Hausdorff 商 | Exercise 2.39 → prop.cg-kclosed-quotient
 
-- CGWH | CGWH 是反射子范畴 | 紧生成弱 Hausdorff | 弱 Hausdorff 化 → thm.cgwh-reflective
+- CGWH | CGWH 是反射子范畴 | 紧生成弱 Hausdorff | 弱 Hausdorff 化 | Exercise 2.40 → thm.cgwh-reflective
 
-- CGWH 的子空间 | CGWH 的滤过余极限 → prop.cgwh-closed
+- CGWH 的子空间 | CGWH 的滤过余极限 | Exercise 2.41 → prop.cgwh-closed
 
-- 函数空间弱 Hausdorff | kC(X,Y) | Exercise 4.10 → prop.cg-function-space
+- 函数空间弱 Hausdorff | kC(X,Y) | Exercise 4.10 | Exercise 2.38 → prop.cg-function-space
 
 - 积拓扑 | product topology | 乘积空间 | 投影 → def.product-topology
-
-- 笛卡尔闭 | cartesian closed | currying | 指数对象 | Theorem 2.3.6 | Thm 2.3.6 → prop.cg-cartesian-closed
-
-- 指数伴随 | Corollary 2.3.7 | Cor 2.3.7 | 余极限万有 → cor.cg-exponential-adjoint
-
-- 正规空间 | normal space | 正则空间 | 分离公理 | Definition 2.1.1 | Def 2.1.1 → def.normal-space
 
 > 续见 alias/aka/topology.8.md

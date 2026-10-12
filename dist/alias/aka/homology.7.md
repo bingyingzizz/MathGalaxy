@@ -1,7 +1,7 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
-- 内 Hom | internal hom | Hom(X,M) | 内层 | 内部 Hom | Exercise 3.43 | Proposition 3.3.7 | Proposition 6.1.8 | Exercise 5.21 | Exercise 5.23 | Exercise 5.30 → def.internal-hom
+- 内 Hom | internal hom | Hom(X,M) | 内层 | 内部 Hom | Exercise 3.43 | Proposition 3.3.7 | Proposition 6.1.8 | Exercise 5.21 | Exercise 5.23 | Exercise 5.30 | Exercise 3.44 → def.internal-hom
 
 - 阿贝尔层的张量积 | 封闭对称幺半 | closed symmetric monoidal | Tensor | internal hom | 封闭张量结构 | Exercise 5.25 | Exercise 5.28 | Exercise 5.26 | Exercise 5.27 → def.tensor-abelian-sheaf
 

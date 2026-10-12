@@ -9,16 +9,14 @@
 
 - k-拓扑 | k拓扑 | k-开 | k-闭 | k-化 | k-ification | kX | Definition 2.3.3 | Def 2.3.3 → def.k-topology
 
-- kX 是余极限 → prop.ktx-colimit
+- kX 是余极限 | Exercise 2.26 → prop.ktx-colimit
 
 - 商映射乘局部紧 | 商映射与积 | quotient map product | 局部紧因子 | Theorem 2.3.2 | Thm 2.3.2 → thm.quotient-product
 
-- 紧生成空间对积封闭 | CG 对有限积封闭 → cor.cg-product
+- 紧生成空间对积封闭 | CG 对有限积封闭 | Exercise 2.25 → cor.cg-product
 
-- k-化与积交换 | k(X×Y) → prop.k-product
+- k-化与积交换 | k(X×Y) | Exercise 2.27 → prop.k-product
 
 - 紧开拓扑 | compact-open topology | 函数空间拓扑 | W_{S,V} | Definition 2.3.5 | Def 2.3.5 → def.compact-open-topology
-
-- 离散时函数空间是积空间 → prop.compact-open-discrete
 
 > 续见 alias/aka/topology.7.md

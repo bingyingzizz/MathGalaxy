@@ -17,10 +17,8 @@
 
 - 茎 | stalk | 分离预层 | Exercise 3.53 → prop.stalk-separated
 
-- 拓扑生成集 | topologically generating | Definition 3.2.3 | Def 3.2.3 → def.topologically-generating
+- 拓扑生成集 | topologically generating | Definition 3.2.3 | Def 3.2.3 | Exercise 3.39 → def.topologically-generating
 
 - 连续函子 | continuous functor | Definition 3.4.4 | Def 3.4.4 | Exercise 3.54 | Exercise 3.58 → def.continuous-functor
-
-- site 的态射 | morphism of sites | Definition 3.4.5 | Def 3.4.5 | Exercise 3.58 → def.morphism-of-sites
 
 > 续见 alias/aka/category.8.md

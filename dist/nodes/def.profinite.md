@@ -11,6 +11,7 @@ layer 12 · 定义 · Stone 与 Stonean · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.stone-profinite` Stone ⟺ 投射有限
+- 被 `prop.profinite-sets-spaces` 投射有限集即投射有限空间 用
 - 被 `thm.stone-profinite` Stone ⟺ 投射有限 用
 
 refs: Le Stum, An introduction to condensed mathematics, §2.2

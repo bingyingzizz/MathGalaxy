@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 余单位与忠实 | Exercise 1.60 → prop.counit-epi-iff-faithful
+
 - C 是 Ind(C) 的反射 | Exercise 1.73 | Exercise 1.42 | Exercise 1.47 → prop.ind-reflective
 
 - 滤过加有限余极限 | Exercise 1.41 | Exercise 1.44 → prop.filtered-finite-colimits
@@ -16,7 +18,5 @@
 - 反射子范畴 | reflective subcategory | 余反射 | 反射函子 | Definition 1.5.8 | Def 1.5.8 → def.reflective-subcategory
 
 - 反射子范畴里的极限 | Exercise 1.64 | Exercise 1.70 → prop.reflective-limits
-
-- Kan 延拓 | Kan extension | 左 Kan 延拓 | 右 Kan 延拓 | Definition 1.5.9 | Def 1.5.9 → def.kan-extension
 
 > 续见 alias/aka/category.10.md

@@ -17,7 +17,7 @@ $$f^{*} : \mathcal{T}' \longrightarrow \mathcal{T}, \qquad f_{*} : \mathcal{T} \
 - 被 `thm.induced-topos-morphism` 任意函子诱导拓扑斯态射 用
 - 被 `prop.topos-morphism-abelian-adjunction` 拓扑斯态射在阿贝尔群上给出伴随 用
 - 被 `prop.derived-pushforward-composition` 推前的复合 用
-- 被 `prop.topos-morphism-derived` 拓扑斯态射的导出函子 用
+- 被 `prop.inverse-image-constant-sheaf` 常层沿拉回不变 用
 
 - …另有出边，续页见 `nodes/def.topos-morphism.3.md`
 

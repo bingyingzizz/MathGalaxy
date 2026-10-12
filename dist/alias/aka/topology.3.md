@@ -5,7 +5,7 @@
 
 - 局部紧 | locally compact | 局部紧 Hausdorff | 紧邻域 | Definition 2.3.1 | Def 2.3.1 → def.locally-compact
 
-- Tychonoff | Tykhonov | 吉洪诺夫 | Theorem 2.1.4 | Thm 2.1.4 | 紧空间的积 → thm.tykhonov
+- Tychonoff | Tykhonov | 吉洪诺夫 | Theorem 2.1.4 | Thm 2.1.4 | 紧空间的积 | Exercise 2.10 → thm.tykhonov
 
 - 紧 Hausdorff 上 Cech 就是上同调 | Proposition 7.3.11 | Prop 7.3.11 → prop.chaus-cech-eq-h
 

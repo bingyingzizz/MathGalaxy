@@ -11,7 +11,7 @@
 
 - Exercise 5.12 → prop.subcat-additive
 
-- Exercise 5.13 → prop.generator-coproduct-epi
+- Exercise 5.13 | Exercise 3.40 → prop.generator-coproduct-epi
 
 - Exercise 5.15 → thm.abelian-sheaf-equiv
 
@@ -30,7 +30,5 @@
 - Exercise 7.31 → prop.filtered-first-page
 
 - Exercise 7.34 → prop.total-complex-injective-resolution
-
-- Exercise 7.35 → prop.derived-functor-exact-factor
 
 > 续见 alias/aka/homology.14.md

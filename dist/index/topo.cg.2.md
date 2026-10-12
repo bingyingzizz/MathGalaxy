@@ -1,6 +1,8 @@
 # 紧生成空间与弱 Hausdorff（topo.cg）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/topo.cg.md`
 
+- prop.cg-equivalent-conditions　紧生成空间的等价刻画　layer 17
+- def.k-topology　k-开、k-闭与 k-拓扑　layer 17
 - cor.cg-product　紧生成空间对积封闭　layer 17
 - thm.cgwh-reflective　CGWH 是 CG 的反射子范畴　layer 17
 - prop.cg-cartesian-closed　紧生成空间是笛卡尔闭的　layer 17

@@ -10,6 +10,7 @@ layer 11 · 定义 · 图与极限 · 范畴论
 - `def.filtered-category` 滤过范畴：用到了定义 滤过范畴　proofs/def-dep.indobj-filtered.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.ind-representable-iff-left-exact` ind-可表示即左正合 用
 - 被 `prop.ind-reflective` C 是 Ind(C) 的反射子范畴 用
 - 被 `lem.qseparated-ind-inclusions` 拟分离即含入的滤过余极限 用
 

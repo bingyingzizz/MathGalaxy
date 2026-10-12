@@ -12,6 +12,7 @@ layer 13 · 定义 · 层与拓扑 · 范畴论
 
 ## 它能推出什么 / 谁在用它
 - ⇒ `thm.sheaf-descent` 层的下降条件
+- 被 `prop.site-covering-families-pretopology` 覆盖族构成预拓扑 用
 - 被 `def.grothendieck-topology` Grothendieck 拓扑 用
 
 refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2

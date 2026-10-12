@@ -14,6 +14,9 @@ $$X^{\sharp} \;:=\; h_{X}^{\#}, \qquad h_{X} = \operatorname{Hom}_{\mathcal{C}}(
 - `def.sheaf` 层：用到了定义 层　proofs/def-link.assoc-sheaf.md
 - `def.presheaf` 预层：用到了定义 预层　proofs/def-link.assoc-presheaf.md
 
+## 它能推出什么 / 谁在用它
+- 被 `prop.sheafification-slice-colimit` 层化是切片上的余极限 用
+
 refs: Le Stum, An introduction to condensed mathematics, Definition 3.2.10
 
 > 说明见 `notes/def.associated-sheaf.md`

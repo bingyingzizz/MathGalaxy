@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:19:02.061Z
-> 9 星系 / 45 星团 / 639 节点 / 1313 连线（强边 1304，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-12T12:20:43.061Z
+> 9 星系 / 45 星团 / 654 节点 / 1331 连线（强边 1322，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -1529,6 +1529,49 @@ $\pi$ **闭**说明 $\pi(Y\setminus V)$ 闭，故 $U$ 是开集 ✓。逐条验�
 
 参考：Le Stum, An introduction to condensed mathematics, §8.3
 
+#### Hausdorff 空间是反射子范畴　`prop.hausdorff-reflective`
+*命题*　命题：$\mathbf{Haus} \subset \mathbf{Top}$ 是反射子范畴
+
+**Hausdorff 空间**构成 $\mathbf{Top}$ 的**反射子范畴**：反射是把每个拓扑空间送去它的「Hausdorff 化」$X \mapsto X/\!\sim$。
+
+**证明。** 把 $X$ 里「不能被子开集分开」的点粘起来：定义 $x \sim y$ $\iff$ $x, y$ 在 $X$ 的每个开覆盖式的分离里都同进同出（等价地：$X$ 到任何 Hausdorff 空间的连续映射都把 $x,y$ 映到同一点）✓。商 $X/\!\sim$ 是 Hausdorff ✓，而且任何连续映射 $X \to H$（$H$ Hausdorff）唯一地穿过它 ✓ —— 这正是反射的泛性质 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.3
+
+#### 正规空间的邻域里有闭邻域　`prop.normal-locally-closed`
+*命题*　命题：正规 Hausdorff $\implies$ 每个邻域含闭邻域
+
+设 $X$ 是**正规** Hausdorff 空间、$x \in X$。则 $x$ 的每个邻域都含一个**闭**邻域。
+
+**证明。** 给邻域 $U \ni x$。取 $x$ 的闭邻域 $F \subseteq U$：由正规性造开集 $W$ 使 $x \in W \subseteq \overline{W} \subseteq U$ ✓（正规 = 不交闭集可被开集分开，把 $\{x\}$ 与 $X \setminus U$ 分开），于是 $\overline{W}$ 就是所含的闭邻域 ✓。∎
+
+⭐ 用处：紧空间里闭子集紧，所以「邻域含闭邻域」在紧 Hausdorff 里就变成「邻域含紧邻域」—— 这正是局部紧的常见来源。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.5
+
+#### 紧性的基本操作　`prop.compact-basic-operations`
+*命题*　命题：闭子集紧、连续像紧、紧 Hausdorff 正规
+
+1. 紧空间的**闭子空间**紧；
+2. 紧空间的**连续像**紧；
+3. **紧 Hausdorff** 空间是**正规**的。
+
+**证明。** (1) 给闭子集 $F \subseteq X$（$X$ 紧）与开覆盖，添上 $X \setminus F$ 得 $X$ 的开覆盖，取有限子覆盖再删掉那一项 ✓。(2) 给 $f : X \to Y$（$X$ 紧）与 $Y$ 中开覆盖，拉回得 $X$ 的开覆盖、取有限子覆盖再推回去 ✓。
+(3) 给不交闭集 $A, B$：对每个 $a \in A$ 用 Hausdorff 性造 $a$ 的开邻域 $U_a$ 使 $\overline{U_a} \cap B = \emptyset$ ✓；$A$ 紧，取有限个覆盖 $A$，令 $U := \bigcup_{i} U_{a_i}$，则 $\overline{U} \cap B = \emptyset$ ✓；对 $B$ 做一次同样的操作，再把两次得到的开集调小一层，就得到分开 $A, B$ 的开集 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.6, Exercise 2.7
+
+#### 紧空间的商紧　`prop.quotient-of-compact`
+*命题*　命题：$S$ 紧 $\implies S/R$ 紧
+
+设 $S$ 是紧拓扑空间、$R$ 是 $S$ 上的等价关系。则商空间 $S/R$ 也是**紧**的。
+
+**证明。** 商映射 $\pi : S \to S/R$ 连续且满 ✓，而紧空间的连续像是紧的 ✓（见「紧性的基本操作」）。∎
+
+⚠️ 注意：一般 $S$ 紧 Hausdorff 也**不保证** $S/R$ Hausdorff —— 那要额外要求 $R$ 是闭的（这就是弱 Hausdorff / k-闭那一套的出发点）。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.8
+
 ### 星团：度量空间
 > 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
 
@@ -2044,6 +2087,26 @@ $$C_{\varepsilon} \subseteq D_{j} \subseteq U_{\alpha(j)} ✓$$
 
 参考：Le Stum, An introduction to condensed mathematics, §2.2
 
+#### 全不连通对子空间封闭　`prop.totally-disconnected-subspace`
+*命题*　命题：全不连通空间的子空间全不连通
+
+**全不连通**空间的**子空间**仍全不连通；同样地，闭开集限制到子空间上仍是闭开集。
+
+**证明。** 给子空间 $Y \subseteq X$、$y \in Y$。$X$ 里每个含 $y$ 的闭开集 $K$ 与 $Y$ 交出的 $K \cap Y$ 在 $Y$ 里仍闭开 ✓；若 $Y$ 在 $y$ 处连通、含有另一个点 $y'$，则全不连通性给出 $X$ 的闭开集分离 $y, y'$ ✓，把它交到 $Y$ 上就断开 $Y$ —— 矛盾 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.16
+
+#### 投射有限集即投射有限空间　`prop.profinite-sets-spaces`
+*命题*　命题：有限集的 pro-对象 $\simeq$ 投射有限空间
+
+有限集合范畴的 **pro-对象**所成范畴，与**投射有限空间**所成范畴**等价**。
+
+**证明。** pro-对象就是一个「按指标范畴取投影极限」的图表 ${E_{i}}$（$E_i$ 有限离散）✓，它照面给出一个投射有限空间 ✓；反过来，投射有限空间是有限离散空间的（滤过）投影极限 ✓（这是「投射有限」的定义读法）。两个方向互为逆 ✓。
+
+⭐ 于是「投射有限集」这个组合名字对得上：它既可以看作 pro-(有限集)，也可以看作紧全不连通空间。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.21
+
 ### 星团：紧生成空间与弱 Hausdorff
 > 造出「乘积好用的拓扑空间范畴」：紧生成空间（$k$-空间）→ $k$-拓扑与 $k$-化 → 商映射与积 → 紧开拓扑 → 弱 Hausdorff → $\mathrm{CGWH}$ 是反射子范畴。
 
@@ -2461,6 +2524,17 @@ $$\operatorname{Hom}_{k\mathbf{Top}}\bigl(k(X\times Y),\ Z\bigr) \;\cong\; \oper
 📌 与「$\mathrm{CGWH}$ 的封闭性」那条分工：那条说的是「一般的 CGWH 空间沿闭含入拼起来还是 CGWH」，这条把块**换成紧 Hausdorff**，并额外给出拓扑的显式刻画与反向分解。
 
 参考：Le Stum, Proposition 2.3.9
+
+#### 紧 Hausdorff 上的函数空间是度量空间　`prop.continuous-map-space-metric`
+*命题*　命题：$S$ 紧 Hausdorff、$X$ （半）度量（完备）$\implies C(S, X)$ 也是
+
+设 $S$ 是**紧 Hausdorff** 空间、$X$ 是（半）度量空间（resp. 完备）。则连续函数空间 $C(S, X)$ 的**紧开拓扑**来自一个（半）度量（resp. 并且是完备的），即
+
+$$d(f, g) := \sup_{s \in S}\ d\bigl(f(s),\ g(s)\bigr).$$
+
+**证明。** $S$ 紧、$d$ 连续，所以 $s \mapsto d(f(s), g(s))$ 连续因而**取到上确界** ✓，上式是有限值，给出（半）度量；它诱导的正是紧开拓扑（等度连续/一致收敛就是紧开拓扑在紧空间上的样子）✓。完备性：给 Cauchy 列，由一致收敛取逐点极限 $f$，一致收敛保证 $f$ 连续 ✓，且它在同一度量下收敛 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 2.29
 
 ## 星系：抽象代数（Abstract Algebra）
 > 群、环、域、模与线性代数；佐恩引理的经典应用场。
@@ -7484,6 +7558,19 @@ $$\Bigl(\varinjlim_{i} T_{i}\Bigr)(X) \;\cong\; \varinjlim_{i} T_{i}(X), \qquad 
 
 参考：Le Stum, An introduction to condensed mathematics, Theorem 3.1.2
 
+#### ind-可表示即左正合　`prop.ind-representable-iff-left-exact`
+*命题*　命题：$T$ ind-可表示 $\iff$ $\mathcal{C}/T$ 滤过 $\iff$ $T$ 左正合
+
+预层 $T \in \widehat{\mathcal{C}}$ 的三条说法等价：
+
+1. $T$ 是 **ind-可表示**的（可表示为滤过的可表示预层余极限）；
+2. 切片范畴 $\mathcal{C}/T$ 是**滤过**的；
+3. $T$ **左正合**（保有限极限）。
+
+**证明。** (2) $\iff$ (1)：$T = \varinjlim_{X \to T} h_{X}$ 总是成立（元素范畴的余极限给出 $T$）✓，而它落在可表示预层上、指标范畴正是 $\mathcal{C}/T$ ✓，所以「可表示为滤过余极限」与「$\mathcal{C}/T$ 滤过」是同一句话 ✓。(1) $\iff$ (3)：滤过余极限保有限极限 ✓，可表示预层左正合 ✓，于是余极限也左正合；反过来左正合的预层由它自己的元素范畴给出的表达是滤过的 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.8
+
 ### 星团：伴随与反射
 > 造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。
 
@@ -8327,6 +8414,95 @@ $$\operatorname{Hom}\bigl(h_{X}^{\#},\ F\bigr) \cong \operatorname{Hom}(h_{X}, F
 ⚠️ 这个函子**左正合**（米田嵌入保极限、层化也左正合），但一般**不忠实**，也不保余极限与无穷极限：层化会把「同一个对象的不同预层描述」粘起来。
 
 参考：Le Stum, An introduction to condensed mathematics, Definition 3.2.10
+
+#### 覆盖筛构成滤子　`prop.covering-sieves-filter`
+*命题*　命题：$J(X)$ 是筛的序集上的滤子
+
+对每个 $X$，$J(X)$（$X$ 上的覆盖筛全体）是筛的序集上的**滤子**：
+
+1. $J(X) \ne \emptyset$；
+2. $R, R' \in J(X) \implies R \cap R' \in J(X)$（即 $J(X)$ 对下界封闭）；
+3. $R \in J(X)$ 且 $R \subseteq R' \implies R' \in J(X)$（对更大的筛封闭）。
+
+**证明。** 三条都是 Grothendieck 拓扑公理的直接改写：公理 (T1) 给出 $h_{X} \in J(X)$ ✓；公理 (T2)（覆盖沿自身拉回）给出第 3 条 ✓；公理 (T3)（覆盖沿覆盖细化）给出第 2 条 = 「两个覆盖的公共细化仍是覆盖」✓。∎
+
+⭐ 于是「沿越来越大的覆盖取极限」是对一个**滤子**取滤过余极限 —— Čech 函子的定义正是这么写的。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.11
+
+#### 覆盖族构成预拓扑　`prop.site-covering-families-pretopology`
+*命题*　命题：site 里所有生成覆盖筛的族构成预拓扑
+
+设 $\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**。
+
+**证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎
+
+⭐ 读法：**site 与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.14
+
+#### 层化与像交换　`prop.sheafification-image`
+*命题*　命题：$\operatorname{im}(T^{\#} \to T'^{\#}) = \bigl(\operatorname{im}(T \to T')\bigr)^{\#}$
+
+设 $\mathcal{C}$ 是 site、$u : T \to T'$ 是预层态射。则
+
+$$\operatorname{im}\bigl(T^{\#} \to T'^{\#}\bigr) \;=\; \Bigl(\operatorname{im}\bigl(T \to T'\bigr)\Bigr)^{\#}.$$
+
+**证明。** 层化**正合**（既保有限极限又保余极限）✓，所以它把预层里的像（$\ker(\operatorname{coker})$ 形式）逐项送过去；层范畴里的像同样由 $\operatorname{im} = \ker(\operatorname{coker})$ 给出 ✓，两条路走到同一处 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.20
+
+#### 层化是切片上的余极限　`prop.sheafification-slice-colimit`
+*命题*　命题：$T^{\#} \cong \varinjlim_{X \in \mathcal{C}/T} X$
+
+设 $T$ 是 site $\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限
+
+$$T^{\#} \;\cong\; \varinjlim_{X \in \mathcal{C}/T}\ X^{\sharp},$$
+
+这里每个 $X$ 都看成它的关联层 $X^{\sharp} = h_{X}^{\#}$。
+
+**证明。** $T = \varinjlim_{(X \to T)} h_{X}$ ✓（元素范畴给出的余极限），层化保余极限 ✓，而 $h_{X}^{\#} = X^{\sharp}$ ✓，于是 $T^{\#} = \varinjlim X^{\sharp}$ ✓。∎
+
+⭐ 读法：**层化就是「把 $T$ 按它的元素拆开、逐个关联层化再拼回去」**。
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.26
+
+#### 层之间的 Hom 在预层里算　`prop.sheaf-hom-computed-in-presheaves`
+*命题*　命题：$\operatorname{Hom}_{\widetilde{\mathcal{C}}}(T^{\#}, F) = \operatorname{Hom}_{\widehat{\mathcal{C}}}(T, F)$
+
+设 $\mathcal{C}$ 是 site、$T$ 是预层、$F$ 是**层**。则
+
+$$\operatorname{Hom}_{\widetilde{\mathcal{C}}}\bigl(T^{\#},\ F\bigr) \;=\; \operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T,\ F\bigr).$$
+
+**证明。** 层化 $(-)^{\#}$ 与含入互为一对伴随 ✓，于是
+
+$$\operatorname{Hom}_{\widetilde{\mathcal{C}}}\bigl(T^{\#}, F\bigr) = \operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T,\ F\bigr) ✓$$
+
+（右边把 $F$ 看成预层）✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.45
+
+#### 常层沿拉回不变　`prop.inverse-image-constant-sheaf`
+*命题*　命题：$f^{-1}\overline{E} = \overline{E}$
+
+设 $f : \mathcal{T} \to \mathcal{T}'$ 是拓扑斯态射、$\overline{E}$ 是常层（$E$ 是集合）。则
+
+$$f^{-1}\bigl(\overline{E}\bigr) \;=\; \overline{E}.$$
+
+**证明。** 常层由余极限拼出：$\overline{E} = \coprod_{e \in E} \mathbf{1}$ ✓；而 $f^{-1}$ 是**左伴随**，保余极限，且 $f^{-1}\mathbf{1} = \mathbf{1}$ ✓，于是 $f^{-1}\overline{E} = \coprod_{e} f^{-1}\mathbf{1} = \overline{E}$ ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.50
+
+#### 层化不改变茎　`prop.stalk-of-sheafification`
+*命题*　命题：$(T^{\#})_{x} = T_{x}$
+
+设 $X$ 是拓扑空间、$T$ 是 $X$ 上的预层、$x \in X$。则层化不改变茎：
+
+$$\bigl(T^{\#}\bigr)_{x} \;=\; T_{x}.$$
+
+**证明。** 茎是沿 $x$ 的开邻域取的**滤过余极限** ✓，而层化是保滤过余极限的（它是保余极限的左伴随）✓；两侧都归结到 $T$ 在同一批邻域上的取值 ✓。∎
+
+参考：Le Stum, An introduction to condensed mathematics, Exercise 3.57
 
 ### 星团：拓扑斯
 > 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
@@ -16970,6 +17146,79 @@ $\operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}, j_{X}^{-1}M) = \operatorname{Hom}_{
 逐点公式给出 $(p_{!}F)(X') = \varinjlim_{p(X) \to X'} F(X)$ ✓，而单位 $F \implies p_{!}F \circ p$ 就是那条自然变换 ✓。
 取 $X' = p(X_{0})$：逗号范畴 $p \downarrow p(X_{0})$ 有终对象 $1_{p(X_{0})}$（$p$ 全忠实）✓，沿带终对象的范畴取余极限即取终对象处的值 ✓，故 $(p_{!}F)(p(X_{0})) \cong F(X_{0})$，单位是自然同构 ✓。∎
 
+#### 定义引用：「Hausdorff 空间」→ Hausdorff 空间是反射子范畴　`def-link.hausrefl-top`
+
+反射的目标范畴就是 Hausdorff 空间。
+
+#### 定义引用：「反射子范畴」→ Hausdorff 空间是反射子范畴　`def-link.hausrefl-reflective`
+
+结论是「反射子范畴」。
+
+#### 定义引用：「正规空间」→ 正规空间的邻域里有闭邻域　`def-link.normclosed-normal`
+
+命题的前提是正规 Hausdorff。
+
+#### 定义引用：「紧」→ 紧性的基本操作　`def-link.compactops-compact`
+
+三条都围绕紧性。
+
+#### 定义引用：「商拓扑」→ 紧空间的商紧　`def-link.quotcompact-quotient`
+
+结论说的是商空间仍紧。
+
+#### 紧性的基本操作 ⟹ 紧空间的商紧　`imp-link.compactops-quotcompact`
+*紧空间连续像紧 $\implies$ 商仍紧*
+
+商映射 $S \to S/R$ 连续且满 ✓，由「紧空间的连续像紧」即得 $S/R$ 紧 ✓。∎
+
+#### 定义引用：「完全不连通与极不连通」→ 全不连通对子空间封闭　`def-link.tdsub-td`
+
+命题说的是全不连通对子空间封闭。
+
+#### 定义引用：「投射有限空间」→ 投射有限集即投射有限空间　`def-link.profset-profinite`
+
+两边是同一种东西的两种写法。
+
+#### 定义引用：「紧开拓扑」→ 紧 Hausdorff 上的函数空间是度量空间　`def-link.cmapmetric-compactopen`
+
+命题算的就是紧开拓扑。
+
+#### 定义引用：「Ind-对象」→ ind-可表示即左正合　`def-link.indrepr-ind`
+
+ind-可表示用的就是 Ind-对象。
+
+#### 定义引用：「正合函子」→ ind-可表示即左正合　`def-link.indrepr-exactfun`
+
+第三条说的是左正合。
+
+#### 定义引用：「Grothendieck 拓扑」→ 覆盖筛构成滤子　`def-link.covsieve-gt`
+
+三条都是 Grothendieck 拓扑公理的改写。
+
+#### 定义引用：「预拓扑」→ 覆盖族构成预拓扑　`def-link.sitecov-pre`
+
+结论是「这族覆盖构成预拓扑」。
+
+#### 定义引用：「层」→ 层化与像交换　`def-link.sheafimg-sheaf`
+
+像在层范畴里取。
+
+#### 定义引用：「关联层」→ 层化是切片上的余极限　`def-link.sheafcolim-assoc`
+
+公式右边的每一项就是关联层。
+
+#### 定义引用：「预层」→ 层之间的 Hom 在预层里算　`def-link.sheafhom-presheaf`
+
+右边的 Hom 在预层里算。
+
+#### 定义引用：「拓扑斯的态射」→ 常层沿拉回不变　`def-link.invconst-toposmor`
+
+拉回是拓扑斯态射的一半。
+
+#### 定义引用：「层」→ 层化不改变茎　`def-link.stalksheafify-sheaf`
+
+层化之后取茎。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -20274,7 +20523,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **测度的构造 ↔ 集合的构造**　3 条节点级连线
 - **集合的构造 ↔ 拓扑空间**　4 条节点级连线
 - **关系与函数 ↔ 拓扑空间**　2 条节点级连线
-- **拓扑空间 ↔ 度量空间**　5 条节点级连线
+- **拓扑空间 ↔ 度量空间**　6 条节点级连线
 - **实数与极限 ↔ 拓扑空间**　2 条节点级连线
 - **数系的构造 ↔ 关系与函数**　5 条节点级连线
 - **代数结构 ↔ 数系的构造**　5 条节点级连线
@@ -20292,7 +20541,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **紧 Hausdorff 空间 ↔ Stone 与 Stonean**　5 条节点级连线
 - **伴随与反射 ↔ 层与拓扑**　2 条节点级连线
 - **层与拓扑 ↔ 单满、子对象与像**　2 条节点级连线
-- **层与拓扑 ↔ 拓扑斯**　18 条节点级连线
+- **层与拓扑 ↔ 拓扑斯**　19 条节点级连线
 - **凝聚态集 ↔ 紧 Hausdorff 空间**　12 条节点级连线
 - **拓扑斯 ↔ 凝聚态集**　10 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　6 条节点级连线
@@ -20311,7 +20560,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **凝聚态上同调 ↔ 阿贝尔层**　2 条节点级连线
 - **图与极限 ↔ 复形与导出三角**　4 条节点级连线
 - **加法与阿贝尔范畴 ↔ 复形与导出三角**　8 条节点级连线
-- **层与拓扑 ↔ 预层与米田**　7 条节点级连线
+- **层与拓扑 ↔ 预层与米田**　8 条节点级连线
 - **函子与自然变换 ↔ 加法与阿贝尔范畴**　3 条节点级连线
 - **函子与自然变换 ↔ 复形与导出三角**　3 条节点级连线
 - **伴随与反射 ↔ 拓扑斯**　3 条节点级连线
@@ -20328,14 +20577,14 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **单满、子对象与像 ↔ 预层与米田**　4 条节点级连线
 - **范畴与图 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **范畴与图 ↔ 图与极限**　5 条节点级连线
+- **图与极限 ↔ 预层与米田**　6 条节点级连线
+- **函子与自然变换 ↔ 预层与米田**　10 条节点级连线
 - **序结构 ↔ 集合的构造**　4 条节点级连线
 - **选择原理 ↔ 序结构**　7 条节点级连线
 - **微分定理 ↔ 度量空间**　3 条节点级连线
 - **微分定理 ↔ 测度的构造**　3 条节点级连线
 - **L^p 空间 ↔ 可测函数与收敛**　3 条节点级连线
 - **L^p 空间 ↔ 测度的构造**　4 条节点级连线
-- **图与极限 ↔ 预层与米田**　5 条节点级连线
-- **函子与自然变换 ↔ 预层与米田**　9 条节点级连线
 - **函子与自然变换 ↔ 图与极限**　7 条节点级连线
 - **图与极限 ↔ 层与拓扑**　8 条节点级连线
 - **单满、子对象与像 ↔ 拓扑斯**　2 条节点级连线

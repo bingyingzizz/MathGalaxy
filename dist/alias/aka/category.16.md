@@ -1,32 +1,28 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- Cond/X 到开集拓扑斯 | 切片拓扑斯态射 | Proposition 8.1.3 → prop.cond-slice-topos-morphism
+
+- 正合列 | exact sequence | 短正合列 | Definition 5.2.3 → def.exact-sequence
+
+- Theorem 1.2.4 | Thm 1.2.4 → thm.equivalence-criterion
+
+- Proposition 1.5.10 | Prop 1.5.10 → prop.kan-extension-adjoint
+
+- Proposition 1.5.11 | Prop 1.5.11 → prop.kan-extension-exists
+
+- Theorem 3.1.2 | Thm 3.1.2 | Exercise 1.67 → thm.presheaf-limits-colimits
+
+- Definition 3.2.10 | Def 3.2.10 → def.associated-sheaf
+
 - Theorem 3.4.2 | Thm 3.4.2 | Corollary 3.4.3 | Cor 3.4.3 → thm.induced-topos-morphism
 
 - Exercise 7.51 → prop.topos-morphism-abelian-adjunction
 
-- Exercise 7.52 → prop.inverse-image-tensor
+- Exercise 7.52 | Exercise 3.51 → prop.inverse-image-tensor
 
 - Exercise 7.57 → prop.abelian-slice-adjunction
 
 - Exercise 7.58 → prop.slice-shriek-z
-
-- Exercise 7.59 → prop.cohomology-slice-identification
-
-- Exercise 7.60 → prop.internal-hom-slice-value
-
-- Exercise 7.61 → prop.slice-shriek-projection
-
-- Exercise 1.17 → prop.fully-faithful-injective
-
-- Exercise 1.15 | Exercise 1.18 → prop.preorder-as-category
-
-- Exercise 1.32 → prop.slice-fully-faithful-mono
-
-- Exercise 1.49 → prop.projective-universal-epi
-
-- Exercise 1.53 → prop.functor-preserves-monoid-objects
-
-- Exercise 1.63 → prop.adjunction-extends-to-diagrams
 
 > 续见 alias/aka/category.17.md

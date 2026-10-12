@@ -1,6 +1,12 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 笛卡尔闭 | cartesian closed | currying | 指数对象 | Theorem 2.3.6 | Thm 2.3.6 | Exercise 2.30 → prop.cg-cartesian-closed
+
+- 指数伴随 | Corollary 2.3.7 | Cor 2.3.7 | 余极限万有 → cor.cg-exponential-adjoint
+
+- 正规空间 | normal space | 正则空间 | 分离公理 | Definition 2.1.1 | Def 2.1.1 → def.normal-space
+
 - Urysohn 引理 | Urysohn | Lemma 2.1.2 | 连续函数足够多 → lem.urysohn
 
 - 拓扑阿贝尔群 | topological abelian group | AbTop | 连续同态 | CZ(M,N) → def.topo-ab-group
@@ -12,13 +18,5 @@
 - Tietze 延拓 | Tietze | Banach 值 Tietze | Theorem 8.2.7 → thm.tietze-banach
 
 - 局部紧阿贝尔群结构定理 | 结构定理 | V⊕K | Theorem 6.2.5 → thm.lc-structure
-
-- 离散与紧对偶 | 离散紧 Hausdorff 互换 | Exercise 6.9 → prop.pontryagin-discrete-compact-duality
-
-- 挠与 Stonean | 无挠与连通 | torsion Stonean | Exercise 6.9 → prop.pontryagin-torsion-stone
-
-- 布尔环 | Boolean ring | 幂等环 → def.boolean-ring
-
-- Stone 表示定理 | 布尔环与 Stone 空间 | Stone representation | Exercise 2.22 → thm.boolean-stone
 
 > 续见 alias/aka/topology.9.md

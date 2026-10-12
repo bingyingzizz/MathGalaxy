@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- site 的态射 | morphism of sites | Definition 3.4.5 | Def 3.4.5 | Exercise 3.58 → def.morphism-of-sites
+
 - 余连续函子 | cocontinuous | Definition 3.4.6 | Def 3.4.6 | Exercise 3.59 | Exercise 3.60 → def.cocontinuous-functor
 
 - 诱导拓扑 | induced topology | Definition 3.4.7 | Def 3.4.7 | Exercise 3.61 → def.induced-topology
@@ -18,7 +20,5 @@
 - Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
 
 - 左伴随唯一 | Exercise 1.58 → prop.left-adjoint-unique
-
-- 余单位与忠实 | Exercise 1.60 → prop.counit-epi-iff-faithful
 
 > 续见 alias/aka/category.9.md

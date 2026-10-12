@@ -13,6 +13,7 @@ layer 10 · 定义 · 伴随与反射 · 范畴论
 - `def.ff-faithful` 忠实 / 满 / 全忠实：用到了定义 忠实 / 满 / 全忠实　proofs/def-dep.ff-reflective.md
 
 ## 它能推出什么 / 谁在用它
+- 被 `prop.hausdorff-reflective` Hausdorff 空间是反射子范畴 用
 - 被 `prop.reflective-limits` 反射子范畴里的极限 用
 - 被 `thm.sheafification` 层化 用
 - 被 `prop.ind-reflective` C 是 Ind(C) 的反射子范畴 用

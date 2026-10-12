@@ -12,6 +12,7 @@ layer 6 · 定义 · 拓扑空间 · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - 被 `prop.paracompact-partition-unity` 仿紧性与单位分解 用
+- 被 `prop.normal-locally-closed` 正规空间的邻域里有闭邻域 用
 - 被 `lem.urysohn` Urysohn 引理 用
 - 被 `thm.tietze-banach` Tietze 延拓（Banach 值） 用
 

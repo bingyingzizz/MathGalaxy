@@ -5,7 +5,7 @@
 
 - 满射的极小闭子集 | Lemma 2.1.5 → lem.minimal-closed-surjection
 
-- 自由紧 Hausdorff 空间 | free compact Hausdorff | FCHaus | Definition 2.2.1 | Def 2.2.1 → def.free-compact-hausdorff
+- 自由紧 Hausdorff 空间 | free compact Hausdorff | FCHaus | Definition 2.2.1 | Def 2.2.1 | Exercise 2.11 → def.free-compact-hausdorff
 
 - 紧 Haus 是自由的商 → prop.chaus-quotient-of-free
 
