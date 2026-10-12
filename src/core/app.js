@@ -1060,6 +1060,103 @@
       }, 700);
     }
 
+    /* ------------------------------------------- 微基准（bench=1，诊断用） */
+    /*
+      ⚠️ 为什么必须「强制冲刷」：canvas 的绘制指令是**延迟光栅化**的，单独量一次
+         drawImage / fillRect 只会量到「记录指令」（0.00ms）。这里每轮测量末尾都用
+         1 像素 getImageData 把积压的光栅化冲掉，量到的才是浏览器真花的时间。
+      用它在**别人的机器**上把账拆开：纯色铺满（裸光栅速度）/ 连线层 / 云雾层 /
+      连线层的两个子项（关名字、关定义线）。
+    */
+    var benchOn = /(^|[&#])bench=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    if (benchOn) {
+      var bEl = document.createElement('div');
+      bEl.id = 'mg-bench';
+      bEl.style.cssText = 'position:fixed;left:14px;top:64px;z-index:31;pointer-events:none;'
+        + 'background:rgba(20,22,28,.9);color:#fff;padding:9px 12px;border-radius:9px;'
+        + 'font:11.5px/1.6 ui-monospace,Menlo,Consolas,monospace;white-space:pre;text-align:left';
+      bEl.textContent = '微基准运行中…（约 3 秒）';
+      document.body.appendChild(bEl);
+
+      var bG = graphEl.getContext('2d');
+      function bFlushG() { try { bG.getImageData(0, 0, 1, 1); } catch (e) {} }
+      function bFlushC() { try { cloudCtx.getImageData(0, 0, 1, 1); } catch (e) {} }
+      function bTime(fn, n, flush) {
+        fn(); flush();                                  // 预热（几何缓存 / 字形缓存 / 纹理）
+        var t = performance.now();
+        for (var i = 0; i < n; i++) fn();
+        flush();
+        return (performance.now() - t) / n;
+      }
+      setTimeout(function () {
+        var out = [];
+        var gcv = graphEl, ccv = cloudEl;
+        out.push('画布 ' + gcv.width + '×' + gcv.height + ' · 云雾 ' + ccv.width + '×' + ccv.height + ' · dpr ' + dpr);
+        out.push('窗口 ' + global.innerWidth + '×' + global.innerHeight + ' · 相机 k=' + cam.k.toFixed(3));
+        try {
+          out.push('纯色铺满整张画布   ' + bTime(function () {
+            bG.setTransform(1, 0, 0, 1, 0, 0);
+            bG.fillStyle = '#ffffff';
+            bG.fillRect(0, 0, gcv.width, gcv.height);
+          }, 5, bFlushG).toFixed(2) + ' ms');
+        } catch (e) { out.push('纯色铺满：测不了 ' + e.message); }
+        try {
+          out.push('连线层（含光栅化） ' + bTime(function () { renderer.draw(); }, 4, bFlushG).toFixed(2) + ' ms');
+        } catch (e) { out.push('连线层：测不了 ' + e.message); }
+        try {
+          var bt = MG.background.buildTexture(graph, vis.isNodeVisible);
+          out.push('云雾层（含光栅化） ' + bTime(function () { MG.background.draw(cloudCtx, cam, bt, dpr); }, 4, bFlushC).toFixed(2) + ' ms'
+            + '  （纹理 ' + bt.canvas.width + '×' + bt.canvas.height + '）');
+        } catch (e) { out.push('云雾层：测不了 ' + e.message); }
+        try {
+          C.showLabels = false;
+          out.push('连线层 · 关掉名字 ' + bTime(function () { renderer.draw(); }, 4, bFlushG).toFixed(2) + ' ms');
+          C.showLabels = true; renderer.invalidate();
+        } catch (e) {}
+        try {
+          C.showDefinitionLines = false; renderer.invalidate();
+          out.push('连线层 · 关定义线 ' + bTime(function () { renderer.draw(); }, 4, bFlushG).toFixed(2) + ' ms'
+            + '  （可见连线 ' + view.visible.length + '）');
+          C.showDefinitionLines = true; renderer.invalidate();
+        } catch (e) {}
+        try {
+          var gl2 = document.createElement('canvas').getContext('webgl');
+          if (gl2) {
+            var dbg2 = gl2.getExtension('WEBGL_debug_renderer_info');
+            out.push('纹理上限 ' + gl2.getParameter(gl2.MAX_TEXTURE_SIZE)
+              + (dbg2 ? ' · ' + String(gl2.getParameter(dbg2.UNMASKED_RENDERER_WEBGL)).slice(0, 60) : ''));
+          }
+        } catch (e) {}
+        /* 用户抱怨的是「放大之后拖动」——上面量的是开局全图，这里再在高倍下量一遍 */
+        try {
+          var cat = graph.nodes.filter(function (n) { return n.regions.indexOf('category') >= 0; });
+          var cx0 = 0, cy0 = 0, ci;
+          for (ci = 0; ci < cat.length; ci++) { cx0 += cat[ci].x; cy0 += cat[ci].y; }
+          cx0 /= cat.length; cy0 /= cat.length;
+          var kFit = cam.k, cBack = camCenter();
+          [12, 40].forEach(function (mult) {
+            cam._anim = null; cam.k = kFit * mult; cam.centerOn(cx0, cy0);
+            renderer.invalidate();
+            var t = bTime(function () { renderer.draw(); }, 4, bFlushG);
+            var onScr = 0, ns = graph.nodes, i;
+            for (i = 0; i < ns.length; i++) {
+              var px = ns[i].x * cam.k + cam.tx, py = ns[i].y * cam.k + cam.ty;
+              if (px > -220 && px < gcv.width + 220 && py > -220 && py < gcv.height + 220) onScr++;
+            }
+            out.push('放大到 k=' + (kFit * mult).toFixed(2) + ' → 连线层 ' + t.toFixed(2)
+              + ' ms（屏内 ' + onScr + ' 个点）');
+          });
+          cam._anim = null; cam.k = kFit; cam.centerOn(cBack.x, cBack.y);
+          renderer.invalidate();
+          out.push('（已把镜头还给原处）');
+        } catch (e) { out.push('高倍测量失败：' + e.message); }
+        out.push('（每项都带 1 像素 getImageData 强制冲刷，量的是真实光栅化时间）');
+        bEl.textContent = out.join('\n');
+        renderLegend();
+        requestDraw();
+      }, 2200);
+    }
+
     /* ------------------------------------------------------------ 启动 */
 
     function start() {
