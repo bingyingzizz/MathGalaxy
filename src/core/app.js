@@ -787,6 +787,7 @@
       var hide = hideTokens();
       if (hide.length) p.push('hide=' + hide.join(','));
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
+      if (noBlur) p.push('noblur=1');    // 毛玻璃 A/B 开关同理
       var c = camCenter();
       p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
@@ -971,6 +972,14 @@
       不带这个参数时完全不创建，不进产品正常路径。
     */
     var fpsHud = /(^|[&#])fps=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    /* 毛玻璃 A/B 开关：带 noblur=1 时全局关掉 backdrop-filter。
+       用来判断「面板毛玻璃在 GPU 合成器上的代价」—— 它下面的 canvas 每帧都在变。 */
+    var noBlur = /(^|[&#])noblur=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
+    if (noBlur) {
+      var noBlurCss = document.createElement('style');
+      noBlurCss.textContent = '*{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}';
+      document.head.appendChild(noBlurCss);
+    }
     if (fpsHud) {
       var hudEl = document.createElement('div');
       hudEl.id = 'mg-fps';
@@ -991,21 +1000,45 @@
       };
       requestAnimationFrame(hudTick);
 
-      /* 每 700ms 刷新一次读数：整帧间隔 + 同步量一次「只画连线层」的真实耗时 */
+      /* 每 700ms 刷新一次读数：整帧间隔 + 同步量「只画连线层」与「只画云雾层」的真实耗时。
+         ⚠️ 云雾必须量在**真正显示的那张画布**上：离屏画布不被合成，浏览器会把光栅化
+         一直推迟，量出来是 0.00ms（踩过）。所以这里用真画布、并把纹理按可见性签名
+         重建一次，保证重铺出来的内容和真实那一帧完全一致（不改变画面）。
+         顺带：角标开着时，全屏云雾每 700ms 会多铺一次，对「帧」读数的影响 < 0.3% 级别。 */
+      var hudTex = null, hudVisSig = '';
+      function hudTexture() {
+        var sig = graph.nodes.length + ':' + vis.hiddenCount();
+        if (!hudTex || sig !== hudVisSig) {
+          hudTex = MG.background.buildTexture(graph, vis.isNodeVisible);
+          hudVisSig = sig;
+        }
+        return hudTex;
+      }
       setInterval(function () {
         var c = document.getElementById('layer-graph');
         var ms = hudCnt ? hudAcc / hudCnt : 0;
         var t0 = performance.now();
         renderer.draw();
         var drawMs = performance.now() - t0;
+        var cloudMs = NaN;
+        try {
+          /* ⚠️ 必须连铺几次再平均：单独调一次 drawImage 量到的只是「记录指令」，
+             真正的光栅化被推迟到合成阶段（单次量出来是 0.00ms —— 踩过两次）。
+             连铺会触发背压，第 2、3 次才把光栅化的账算进来。 */
+          var reps = 3, ci = 0;
+          var t1 = performance.now();
+          for (ci = 0; ci < reps; ci++) MG.background.draw(cloudCtx, cam, hudTexture(), dpr);
+          cloudMs = (performance.now() - t1) / reps;
+        } catch (e) { /* 量不到就不显示 */ }
         hudAcc = 0; hudCnt = 0;
         if (ms > hudPeak) hudPeak = ms;
         hudEl.textContent =
           '帧 ' + ms.toFixed(1) + ' ms（峰值 ' + hudPeak.toFixed(0) + '）· ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
-          '连线层 ' + drawMs.toFixed(2) + ' ms\n' +
+          '连线层 ' + drawMs.toFixed(2) + ' ms' + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) + ' ms' : '') + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
           ' · canvas ' + c.width + '×' + c.height +
-          '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length;
+          '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
+          (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '');
         hudWorst = 0;
       }, 700);
     }
