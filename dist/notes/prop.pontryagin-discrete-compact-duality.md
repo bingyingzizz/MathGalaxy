@@ -8,3 +8,5 @@
 ⭐ **这里可以看到「用紧 Hausdorff 空间测一切」这套思路的源头**：离散群不能直接谈紧性，但它可以「变成」一个紧 Hausdorff 空间；于是「取离散群的商 / 子」这类操作在那边变成「取紧空间的闭子空间 / 商」，全部变成拓扑问题。
 
 📌 这条是 Pontryagin 那一对字典的**一半**（另一条处理挠与连通）。
+
+> 续见 notes/prop.pontryagin-discrete-compact-duality.2.md

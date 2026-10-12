@@ -9,4 +9,6 @@ $\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\**
 - `def.grothendieck-category` Grothendieck 范畴：用到了定义 Grothendieck 范畴　proofs/def-dep.grothendieck-condab.md
 - `def.ab-axioms` Grothendieck 的 AB 公理：用到了定义 Grothendieck 的 AB 公理　proofs/def-dep.ab-condab.md
 
+refs: Le Stum, Theorem 6.1.4；Le Stum, Corollary 6.1.5
+
 > 说明见 `notes/thm.condab-ab.md`

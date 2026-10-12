@@ -8,4 +8,6 @@ layer 17 · 引理 · 凝聚态阿贝尔群 · 凝聚态数学
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-dep.stonean-projective.md
 - `def.projective-object` 投射 / 内射对象：用到了定义 投射 / 内射对象　proofs/def-dep.projective-stonean.md
 
+refs: Le Stum, Lemma 6.1.6
+
 > 说明见 `notes/lem.stonean-projective.md`

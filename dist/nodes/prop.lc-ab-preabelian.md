@@ -14,4 +14,6 @@ $$\mathrm{id} : \mathbb{R}^{\mathrm{disc}} \longrightarrow \mathbb{R}$$
 - `def.abelian-category` 加法 / 阿贝尔范畴：用到了定义 加法 / 阿贝尔范畴　proofs/def-dep.lcab-abeliancat.md
 - `def.compactly-generated` 紧生成空间：用到了定义 紧生成空间　proofs/def-dep.lcab-cg.md
 
+refs: Le Stum, Exercise 6.4
+
 > 说明见 `notes/prop.lc-ab-preabelian.md`

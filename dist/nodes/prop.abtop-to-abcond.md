@@ -16,4 +16,6 @@ $$\mathbf{AbTop} \longrightarrow \mathrm{AbCond}, \qquad M \longmapsto \underlin
 ## 它能推出什么 / 谁在用它
 - 被 `prop.exact-sequence-topo-ab` 拓扑阿贝尔群正合列的搬运 用
 
+refs: Le Stum, Proposition 6.2.1
+
 > 说明见 `notes/prop.abtop-to-abcond.md`

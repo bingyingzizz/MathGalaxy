@@ -7,3 +7,7 @@ $\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特�
 ## 为什么成立（入边，证明在 proofs/）
 - `def.generator` 生成元集：用到了定义 生成元集　proofs/def-dep.generator-condab-generated.md
 - `def.projective-object` 投射 / 内射对象：用到了定义 投射 / 内射对象　proofs/def-dep.projective-condab-generated.md
+
+refs: Le Stum, Proposition 6.1.7
+
+> 说明见 `notes/prop.condab-generated.md`

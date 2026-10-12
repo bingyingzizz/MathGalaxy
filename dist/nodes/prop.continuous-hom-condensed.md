@@ -7,3 +7,7 @@ layer 18 · 命题 · 拓扑阿贝尔群 · 凝聚态数学
 ## 为什么成立（入边，证明在 proofs/）
 - `def.topo-ab-group` 拓扑阿贝尔群：用到了定义 拓扑阿贝尔群　proofs/def-dep.conthom-topoab.md
 - `def.internal-hom` 内 Hom：用到了定义 内 Hom　proofs/def-dep.conthom-internalhom.md
+
+refs: Le Stum, Proposition 6.2.2
+
+> 说明见 `notes/prop.continuous-hom-condensed.md`

@@ -18,4 +18,6 @@ $$0 \longrightarrow M' \xrightarrow{\;u\;} M \xrightarrow{\;v\;} M'' \longrighta
 - `prop.abtop-to-abcond` 拓扑阿贝尔群嵌入凝聚态：用到了定义 拓扑阿贝尔群嵌入凝聚态　proofs/def-dep.exacttopo-abtopabcond.md
 - `def.weak-hausdorff` 弱 Hausdorff 空间：用到了定义 弱 Hausdorff 空间　proofs/def-dep.exacttopo-weakhaus.md
 
+refs: Le Stum, Proposition 6.2.3
+
 > 说明见 `notes/prop.exact-sequence-topo-ab.md`

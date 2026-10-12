@@ -309,7 +309,18 @@ window.MG = window.MG || {};
         '',
         '保**所有极限与所有余极限**。'
       ].join('\n'),
-      notes: '理由：层在 $F$ 处的截面是「逐点」算出来的，而 $\\mathbf{Ab}$ 里有限积与有限余积一致、滤过余极限正合。\n\n这条是**把 $\\mathrm{CondAb}$ 的性质逐点归到 $\\mathbf{Ab}$** 的通道 —— 下面的 AB 公理那一条就是靠它推出来的。'
+      notes: [
+        '理由：层在 $F$ 处的截面是「逐点」算出来的，而 $\\mathbf{Ab}$ 里有限积与有限余积一致、滤过余极限正合。',
+        '这条是**把 $\\mathrm{CondAb}$ 的性质逐点归到 $\\mathbf{Ab}$** 的通道 —— 下面的 AB 公理那一条就是靠它推出来的。',
+        ['**证明。** 把 $\\mathrm{CondAb}$ 等同于 $\\mathbf{FCHaus}$ 上的阿贝尔层范畴（这是「$\\mathrm{Cond} \\simeq \\widehat{\\mathbf{FCHaus}}$」的加法版本）。',
+          '- **保余极限**：只需证预层意义的余极限**自动是层**。$F$ 自由时，$\\mathbf{FCHaus}$ 上的覆盖就是有限不交并，于是对 $\\coprod_{j=1}^{r} F_{j}$：',
+          '$$\\Bigl(\\varinjlim_{i} M_{i}\\Bigr)\\Bigl(\\coprod_{j} F_{j}\\Bigr) = \\varinjlim_{i} M_{i}\\Bigl(\\coprod_{j} F_{j}\\Bigr) = \\varinjlim_{i} \\bigoplus_{j} M_{i}(F_{j}) = \\bigoplus_{j} \\varinjlim_{i} M_{i}(F_{j}),$$',
+          '中间一步用「$\\mathbf{FCHaus}$ 上的层保有限积」（即 $M(\\coprod F_{j}) = \\bigoplus M(F_{j})$），最后一步用 $\\mathbf{Ab}$ 里有限积与有限余积一致、且滤过余极限正合。既然余极限仍满足层条件，它就是层内的余极限，且 $\\Gamma(F, -)$ 与它交换 ✓。',
+          '- **保极限**：层范畴里的极限**逐项**计算（预层极限自动是层），故 $\\Gamma(F, \\varprojlim M_{i}) = \\varprojlim \\Gamma(F, M_{i})$ ✓。∎',
+          '⭐ 推论：$\\Gamma(F,-)$ 还是**正合**的（既保核又保余核）—— 这正是「自由紧 Hausdorff 空间给投射对象」的根源。'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Lemma 6.1.3']
     },
 
     /* ------------------------------------------------ Grothendieck 范畴 */
@@ -367,7 +378,20 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '同调代数', '正合'],
       statement: '$\\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\\***。',
-      notes: '推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。\n\n「是 Grothendieck 范畴」那一半其实对**任意**拓扑斯都成立（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）；这里真正多出来的是 **AB6 与 AB4\\*** —— 一般拓扑斯上的阿贝尔群并不同时具备这两条。\n\n这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。'
+      notes: [
+        '推论：$\\mathrm{CondAb}$ 是**阿贝尔范畴**，并且（1）有生成元；（2）所有极限与余极限存在；（3）所有积与余积都**正合**；（4）**滤过余极限正合，且与积交换**。',
+        '「是 Grothendieck 范畴」那一半其实对**任意**拓扑斯都成立（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）；这里真正多出来的是 **AB6 与 AB4\\*** —— 一般拓扑斯上的阿贝尔群并不同时具备这两条。',
+        '这一整段的好处是：$\\mathrm{CondAb}$ 上能照搬 $\\mathbf{Ab}$ 上那一套同调代数 —— 求导函子、长正合列、导出范畴，一样都不缺。',
+        ['**证明（逐条归约到 $\\mathbf{Ab}$）。** 关键工具就是上一条：**每个 $\\Gamma(F,-)$（$F$ 自由）都保所有极限与余极限**，所以任何「用有限极限 + 余极限写出来的性质」都可以逐项检验，而逐项之后就是 $\\mathbf{Ab}$ 里的熟事实。',
+          '- **有余极限 / 有极限**：逐项取余极限得到的预层仍是层（上一条）$\\implies$ 存在 ✓；',
+          '- **滤过余极限正合（AB5）**：逐项算，$\\mathbf{Ab}$ 里滤过余极限正合 ✓；',
+          '- **有生成元**：$\\mathrm{Cond}$ 由 $\\{h_{F}\\}$（$F$ 自由紧 Hausdorff）生成 $\\implies$ $\\mathrm{CondAb}$ 由 $\\{\\mathbb{Z}\\cdot F\\}$ 生成 ✓；',
+          '- **AB4\\*（积正合）**：积逐项算，$\\mathbf{Ab}$ 里积正合 ✓；',
+          '- **AB6（滤过余极限与积交换）**：逐项化归到 $\\mathbf{Ab}$ 的 AB6 ✓；',
+          '- **阿贝尔**：核、余核逐项算都是 $\\mathbf{Ab}$ 里的核余核，单满分解、$\\operatorname{im}\\cong\\operatorname{coim}$ 都逐项成立 ✓。∎'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Theorem 6.1.4', 'Le Stum, Corollary 6.1.5']
     },
 
     /* ------------------------------------------------ Stonean 给投射对象 */
@@ -382,7 +406,15 @@ window.MG = window.MG || {};
       statement: [
         '设 $F$ 是**自由紧 Hausdorff 空间**（更一般地，**Stonean 空间**）。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。'
       ].join('\n'),
-      notes: '要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。'
+      notes: [
+        '要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。',
+        ['**证明。** 由张量—Hom 伴随，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong M(F) = \\Gamma(F, M)$ ✓，所以只需看 $\\Gamma(F,-)$。',
+          '- **保满态射**：上一条说 $\\Gamma(F,-)$ 保**所有**余极限，特别地保余核；$v$ 满 $\\iff$ $\\operatorname{coker} v = 0$ $\\implies$ $\\operatorname{coker}\\Gamma(v) = 0$ $\\implies$ $\\Gamma(v)$ 满 ✓；',
+          '- **保滤过余极限**：同样由「保所有余极限」✓。',
+          '而标准判据是：$P$ **投射** $\\iff$ $\\operatorname{Hom}(P,-)$ 保满态射；$P$ **有限表现** $\\iff$ $\\operatorname{Hom}(P,-)$ 保滤过余极限。两条合起来，$\\mathbb{Z}\\cdot F$ 就是有限表现的投射对象。∎'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Lemma 6.1.6']
     },
 
     /* ------------------------------------------------ CondAb 的生成元 */
@@ -394,7 +426,16 @@ window.MG = window.MG || {};
       title: '$\\mathrm{CondAb}$ 的生成元',
       regions: ['condensed'],
       tags: ['凝聚态', '生成元', '投射'],
-      statement: '$\\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特别地，它有足够多的投射对象。'
+      statement: '$\\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特别地，它有足够多的投射对象。',
+      notes: [
+        ['**证明。**',
+          '- **生成**：$\\mathrm{Cond}$ 由 $\\{h_{F}\\}$（$F$ 自由紧 Hausdorff）生成；而一般地「若 $\\{X_{i}\\}$ 生成 $\\mathcal{C}$，则 $\\{\\mathbb{Z}\\cdot X_{i}\\}$ 生成 $\\mathrm{Ab}(\\mathcal{C})$」（用自由阿贝尔群对象的泛性质：两个态射若在所有 $\\mathbb{Z}\\cdot X_{i}$ 上相同则相同）。于是 $\\{\\mathbb{Z}\\cdot F\\}$ 生成 $\\mathrm{CondAb}$ ✓；',
+          '- 而每个 $\\mathbb{Z}\\cdot F$ 由**上一条**是有限表现的投射对象 ✓；',
+          '- **足够多投射对象**：任给 $M$，由「生成」存在满态射 $\\bigoplus_{i} \\mathbb{Z}\\cdot F_{i} \\twoheadrightarrow M$，而投射对象的**余积**仍是投射对象 ✓ —— 所以每个 $M$ 都是某个投射对象的商。∎',
+          '⭐ **这条是「在 $\\mathrm{CondAb}$ 里能做导出代数」的另一半依据**（另一半是「有足够多内射」，由它是 Grothendieck 范畴给出）：有足够多**投射**对象意味着**左**导出函子也能直接算。'
+        ].join('\n')
+      ].join('\n\n'),
+      refs: ['Le Stum, Proposition 6.1.7']
     }
   ],
 

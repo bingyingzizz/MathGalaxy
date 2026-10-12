@@ -13,6 +13,6 @@ layer 18 · 命题 · 拓扑阿贝尔群 · 凝聚态数学+拓扑学
 - `def.pontryagin-dual` Pontryagin 对偶：用到了定义 Pontryagin 对偶　proofs/def-dep.pts-dual.md
 - `def.stone-space` 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　proofs/def-dep.pts-stone.md
 
-refs: Le Stum, §6.2
+refs: Le Stum, §6.2；Le Stum, Exercise 6.9
 
 > 说明见 `notes/prop.pontryagin-torsion-stone.md`
