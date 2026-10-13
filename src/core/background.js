@@ -84,8 +84,11 @@
 
     nebula(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15, rand);
 
+    /* 每个节点周围也来一小块（长尾）—— 云的形状跟着内容走，不是凭空一个圆盘。
+       ⚠️ 以前这里是 `blob(..., R*0.24, cloudAlpha*0.8)`：半径小、浓度实，
+       一块一块在缩小时就是一圈看得见的小圆点。换成长尾、半径放一档、浓度补一点。 */
     list.forEach(function (n) {
-      blob(ctx, rgb, n.x, n.y, R * 0.24, cc.cloudAlpha * 0.8);
+      softBlob(ctx, rgb, n.x, n.y, R * 0.30, cc.cloudAlpha * 0.95);
     });
   }
 
@@ -154,41 +157,76 @@
   }
 
   /**
-   * 星团的**星云**：一团柔雾做底色 + 一圈**不规则**的亮脊 + 几缕内部絮。
+   * 长尾软斑：画法与 `blob` 完全一样（一个圆 + 一条径向渐变），只是曲线更「散」
+   * —— 中心更淡、尾巴更长。
    *
-   * ⚠️ 这里刻意**不画正圆**（原来是「中间淡、靠边一圈浓」的圆环，缩小时就是一个圆圈，很假）。
-   * 亮脊由 11 块软斑沿一条起伏的线铺成，半径按三组正弦调制，相位用星团 id 定的种子 ——
-   * 所以每个团形状都不一样，但同一个团每次打开都长一样（不会抖）。
-   * 「团与团的边界」仍然靠这圈亮脊分出来，只是它不再是圆的。
+   * ⚠️ 为什么星团那一层要用它：`blob` 的浓度在 0.74r 处还有 0.22（≈中心的两成），
+   * 到 r 才掉到 0 —— 一块一块看得见「边」。星团云是几十块叠出来的，用 blob 叠出来的
+   * 结果就是一圈看得清的小圆点（用户原话：「就是一个圆圈看着很怪」）。
+   * 这条曲线从 0.38r 起就一路往下滑（0.40 → 0.22 → 0.095 → 0.032 → 0），
+   * 叠出来的整体才是「越往外越淡、最后化没」，没有边界可言。
+   * 代价是同样半径下总墨量约为 blob 的 0.79 —— 调用处把半径放大了一档补回来。
+   */
+  function softBlob(ctx, rgb, x, y, r, alpha) {
+    if (r <= 0 || alpha <= 0) return;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    var s = rgb.r + ',' + rgb.g + ',' + rgb.b + ',';
+    g.addColorStop(0.00, 'rgba(' + s + alpha.toFixed(4) + ')');
+    g.addColorStop(0.18, 'rgba(' + s + (alpha * 0.66).toFixed(4) + ')');
+    g.addColorStop(0.38, 'rgba(' + s + (alpha * 0.40).toFixed(4) + ')');
+    g.addColorStop(0.58, 'rgba(' + s + (alpha * 0.22).toFixed(4) + ')');
+    g.addColorStop(0.78, 'rgba(' + s + (alpha * 0.095).toFixed(4) + ')');
+    g.addColorStop(0.92, 'rgba(' + s + (alpha * 0.032).toFixed(4) + ')');
+    g.addColorStop(1.00, 'rgba(' + s + '0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  /**
+   * 星团的**星云**：一团长尾柔雾做底 + 一圈角度铺满的软絮 + 几块大而淡的内部絮。
+   *
+   * ⚠️ 三条刻意的做法，都是为了让团云**没有边界**：
+   *   ① 一律用 `softBlob`（长尾曲线）—— 用 `blob` 会叠出一圈看得清的小圆点；
+   *   ② 絮的半径由内向外散开（`t` 取 1−√u：中心密、外面疏），
+   *      每絮的浓度按 `fade = (1−t)^1.45` **越往外越淡**，最外一层正好为 0；
+   *   ③ 外面的絮同时也更小 —— 边缘才是碎的，不是一圈珠子。
+   * 于是星云是从中心一层层淡出去的，找不出一条边。
+   * 角度仍按槽位铺满一圈（纯随机取角会留空洞，缩小时看着像「一圈点」）；
+   * 起伏与相位的种子由星团 id 定 —— 每个团长不一样，同一个团每次打开长一样（不会抖）。
    */
   function nebula(ctx, rgb, x, y, r, alpha, rand) {
     if (r <= 0 || alpha <= 0) return;
     var TWO = Math.PI * 2;
 
-    /* 1) 核：一大团柔雾 —— 缩得很小时这一团还是一块有颜色的地方 */
-    blob(ctx, rgb, x, y, r * 0.96, alpha * 0.20);
+    /* 1) 核：一大团长尾柔雾 —— 缩得很小时这一团还是一块有颜色的地方，
+          也是「星团比星系云更密」这件事的主要来源（团云没有自己的颜色，只有浓度） */
+    softBlob(ctx, rgb, x, y, r * 1.02, alpha * 0.26);
 
-    /* 2) 亮脊：沿起伏的线铺一圈软斑 —— 这是「团的边界」所在，只是不再是正圆。
-       16 块（相邻两块要搭得上，否则会变成一圈点）。 */
-    var n = 16;
+    /* 2) 软絮：角度铺满一圈，半径由内向外散开，越往外越淡、越小 */
+    var n = 26;
     var p1 = rand() * TWO, p2 = rand() * TWO, p3 = rand() * TWO;
     for (var i = 0; i < n; i++) {
-      var th = i / n * TWO;
+      var th = i / n * TWO + (rand() - 0.5) * 0.5;
       var wob = 1
         + 0.15 * Math.sin(3 * th + p1)
         + 0.10 * Math.sin(5 * th + p2)
         + 0.06 * Math.sin(8 * th + p3);
-      var rr = r * 0.88 * wob;
-      var br = r * U.lerp(0.19, 0.26, rand());
-      blob(ctx, rgb, x + Math.cos(th) * rr, y + Math.sin(th) * rr, br,
-        alpha * U.lerp(0.85, 1.20, rand()));
+      var t = 1 - Math.sqrt(rand());                 // 0 = 中心，1 = 最外
+      var rr = r * wob * (0.12 + 1.18 * t);
+      var fade = Math.pow(1 - t, 1.45);              // ⭐ 越往外越淡，到 t=1 正好为 0
+      softBlob(ctx, rgb, x + Math.cos(th) * rr, y + Math.sin(th) * rr,
+        r * U.lerp(0.34, 0.16, t),                   // 外面的絮也更小
+        alpha * fade * U.lerp(0.75, 1.15, rand()));
     }
 
-    /* 3) 内部的絮：5 缕有浓有淡的软斑 —— 星云的「不均匀」主要来自这里 */
-    for (var j = 0; j < 5; j++) {
-      var a2 = rand() * TWO, d2 = Math.sqrt(rand()) * r * 0.62;
-      blob(ctx, rgb, x + Math.cos(a2) * d2, y + Math.sin(a2) * d2,
-        r * U.lerp(0.16, 0.34, rand()), alpha * U.lerp(0.30, 0.62, rand()));
+    /* 3) 内部大而淡的絮：星云的「不均匀」主要来自这里（只有小絮会显得平） */
+    for (var j = 0; j < 4; j++) {
+      var a2 = rand() * TWO, d2 = Math.sqrt(rand()) * r * 0.55;
+      softBlob(ctx, rgb, x + Math.cos(a2) * d2, y + Math.sin(a2) * d2,
+        r * U.lerp(0.24, 0.42, rand()),
+        alpha * U.lerp(0.20, 0.36, rand()) * (1 - 0.7 * d2 / (r * 0.55)));
     }
   }
 

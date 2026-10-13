@@ -615,12 +615,32 @@
         var gal = view.graph.galaxyOf ? view.graph.galaxyOf(c) : null;
         var rgb = U.hexToRgb(c.color || (gal ? gal.color : '#7A8699'));
 
+        var rmax = 0;
+        for (var ri = 0; ri < env.r.length; ri++) if (env.r[ri] > rmax) rmax = env.r[ri];
+
         traceEnvelope(env, view.cam);
-        ctx.fillStyle = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (cfgE.fillAlpha * a).toFixed(3) + ')';
+        /* ⭐ 这一块用**径向渐变**填：中心浓、越往外越淡、到包络外沿正好为 0。
+           于是「这个团的范围」是一条化开的过渡，不再是描出来的一圈线。
+           （原来是 fillAlpha 平铺 + strokeAlpha 描边 —— 缩小时就是一个个圆圈，
+           用户原话：「就是一个圆圈看着很怪」。）
+           ⚠️ gradSpan < 1：渐变的零点落在**包络以内**，各方向都到不了外沿，
+           所以任何一个方向都不会留下一条淡边 —— 边界是靠浓度读出来的。 */
+        var cs = view.cam.toScreen(env.cx, env.cy);
+        var gR = Math.max(1, rmax * view.cam.k * cfgE.gradSpan);
+        var g = ctx.createRadialGradient(cs.x, cs.y, 0, cs.x, cs.y, gR);
+        var rgbS = rgb.r + ',' + rgb.g + ',' + rgb.b + ',';
+        g.addColorStop(0.00, 'rgba(' + rgbS + (cfgE.fillAlpha * a).toFixed(4) + ')');
+        g.addColorStop(0.45, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.52 * a).toFixed(4) + ')');
+        g.addColorStop(0.78, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.16 * a).toFixed(4) + ')');
+        g.addColorStop(1.00, 'rgba(' + rgbS + '0)');
+        ctx.fillStyle = g;
         ctx.fill();
-        ctx.lineWidth = cfgE.width;
-        ctx.strokeStyle = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (cfgE.strokeAlpha * a).toFixed(3) + ')';
-        ctx.stroke();
+
+        if (cfgE.strokeAlpha > 0.002) {           // 留着的：要一条很淡的轮廓线时把它调起来
+          ctx.lineWidth = cfgE.width;
+          ctx.strokeStyle = 'rgba(' + rgbS + (cfgE.strokeAlpha * a).toFixed(3) + ')';
+          ctx.stroke();
+        }
       });
       ctx.restore();
     }
