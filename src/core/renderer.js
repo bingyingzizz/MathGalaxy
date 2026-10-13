@@ -211,7 +211,7 @@
       return inView(nodeSX(n), nodeSY(n), pad == null ? PAD_NODE : pad);
     }
 
-    /** 所有端点都在视口同一侧之外 → 这条线肯定看不见 */
+    /** 所有端点都在视口同一侧之外 → 这条线肯定看不见（便宜的预筛，见下面的精确判据） */
     function edgeInView(e) {
       var ids = GU.edgeNodes(e);
       if (!ids.length) return false;
@@ -233,15 +233,52 @@
     var geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };
     var geomList = [];
 
+    /** 线段与（带余量的）视口矩形相交？Liang–Barsky 参数裁剪，O(1)。 */
+    function segHitsView(x1, y1, x2, y2) {
+      var l = -PAD_EDGE, r = W + PAD_EDGE, t = -PAD_EDGE, b = H + PAD_EDGE;
+      var dx = x2 - x1, dy = y2 - y1;
+      var p = [-dx, dx, -dy, dy];
+      var q = [x1 - l, r - x1, y1 - t, b - y1];
+      var t0 = 0, t1 = 1;
+      for (var i = 0; i < 4; i++) {
+        if (p[i] === 0) { if (q[i] < 0) return false; continue; }
+        var rr = q[i] / p[i];
+        if (p[i] < 0) { if (rr > t1) return false; if (rr > t0) t0 = rr; }
+        else { if (rr < t0) return false; if (rr < t1) t1 = rr; }
+      }
+      return t0 <= t1;
+    }
+
+    /** 画出来的形状碰到视口没有 —— polys 是折线（见 computeEdge），逐段精确判。
+        ⚠️ 别用「外框相交」代替：长斜线的外框可以盖住视口而线本身从旁边过去，
+        那样会白画一条看不见的线；而**不能**反过来用「两端点都在屏幕外就丢」——
+        实测那样在 k=1.44 会把画出来的 175 条砍到 7 条、k=3.0 砍到 0 条
+        （屏幕上只剩一堆互不相连的点），把真正横穿画面的线一起丢了。 */
+    function polysHitView(polys) {
+      for (var i = 0; i < polys.length; i++) {
+        var pts = polys[i];
+        if (pts.length === 1) {
+          if (inView(pts[0].x, pts[0].y, PAD_EDGE)) return true;
+          continue;
+        }
+        for (var j = 1; j < pts.length; j++) {
+          if (segHitsView(pts[j - 1].x, pts[j - 1].y, pts[j].x, pts[j].y)) return true;
+        }
+      }
+      return false;
+    }
+
     function buildGeometry() {
       var cam = view.cam;
       var geom = Object.create(null);
       var list = [];
 
       view.visible.forEach(function (e) {
-        if (!edgeInView(e)) return;            // 屏幕外的线连几何都不建
+        if (!edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
         var g = computeEdge(e, cam);
-        if (g) { geom[e.id] = g; list.push(g); }
+        if (!g || !polysHitView(g.polys)) return;   // 精确判据：画出来的形状碰不到视口就不画
+        geom[e.id] = g;
+        list.push(g);
       });
       geomCache = geom;
       geomList = list;
