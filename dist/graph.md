@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-13T04:53:36.443Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-13T05:26:53.073Z
 > 9 星系 / 45 星团 / 706 节点 / 1391 连线（强边 1382，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -8236,9 +8236,9 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.55
 
 #### 遗忘函子的伴随　`prop.forgetful-adjoints-examples`
-*命题*　命题：自由 ⊣ 遗忘、层化 ⊣ 含入、$k$-化 ⊣ 含入
+*命题*　命题：自由 $\dashv$ 遗忘、层化 $\dashv$ 含入、$k$-化 $\dashv$ 含入
 
-常见的一对对子：**自由 ⊣ 遗忘**（$\mathbf{Mon}$、$\mathbf{Gr}$、$\mathbf{Ab}$、$A\text{-}\mathbf{Mod}$……）、**层化 ⊣ 含入**（$\widetilde{\mathcal{C}} \hookrightarrow \widehat{\mathcal{C}}$）、**$k$-化 ⊣ 含入**（$k\mathbf{Top} \hookrightarrow \mathbf{Top}$）。一般规律：**「忘掉结构 / 放宽结构」的函子是右伴随，其左伴随即「自由地补上结构」**。
+常见的一对对子：**自由 $\dashv$ 遗忘**（$\mathbf{Mon}$、$\mathbf{Gr}$、$\mathbf{Ab}$、$A\text{-}\mathbf{Mod}$……）、**层化 $\dashv$ 含入**（$\widetilde{\mathcal{C}} \hookrightarrow \widehat{\mathcal{C}}$）、**$k$-化 $\dashv$ 含入**（$k\mathbf{Top} \hookrightarrow \mathbf{Top}$）。一般规律：**「忘掉结构 / 放宽结构」的函子是右伴随，其左伴随即「自由地补上结构」**。
 
 **证明。** 逐例核对万能性质：$\operatorname{Hom}_{\mathbf{Mon}}(\text{自由幺半群},\ G) \cong \operatorname{Hom}_{\mathbf{Set}}(X, G)$ ✓；$\operatorname{Hom}(T^{\#}, F) \cong \operatorname{Hom}(T, F)$ ✓；$\operatorname{Hom}_{k\mathbf{Top}}(kX, Y) \cong \operatorname{Hom}_{\mathbf{Top}}(X, Y)$ ✓。∎
 
@@ -8247,7 +8247,7 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 #### Currying　`prop.currying`
 *命题*　命题：$X \mapsto X \times Y \;\dashv\; Z \mapsto \mathbf{Set}(Y, Z)$
 
-在 $\mathbf{Set}$ 里 $X \mapsto X \times Y$ **⊣** $Z \mapsto \mathbf{Set}(Y, Z)$：
+在 $\mathbf{Set}$ 里 $X \mapsto X \times Y$ **$\dashv$** $Z \mapsto \mathbf{Set}(Y, Z)$：
 
 **证明。** 给 $f : X \times Y \to Z$，令 $\widehat{f}(x)(y) = f(x, y)$ ✓；反过来给 $g$ 令 $f(x,y) = g(x)(y)$ ✓ —— 两个方向互逆且自然 ✓，所以 $\mathbf{Set}(X \times Y, Z) \cong \mathbf{Set}\bigl(X, \mathbf{Set}(Y, Z)\bigr)$ ✓。$\mathbf{Cat}$（函子范畴）与 $\mathbf{Ab}$ 里有同一套伴随 —— 这就是**笛卡尔闭**。∎
 
@@ -8256,7 +8256,7 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 #### 常见伴随的单位与余单位　`prop.unit-counit-examples`
 *命题*　命题：从单位/余单位读出忠实性
 
-几对常见伴随的单位：**自由 ⊣ 遗忘** 的单位是「把 $x$ 送进生成元」；**层化 ⊣ 含入** 的单位是 $T \to T^{\#}$；**$k$-化 ⊣ 含入** 的单位是恒等（$X \to kX$ 当 $X$ 已紧生成时）。由「余单位满 $\iff$ 忠实」还能从单位/余单位读出忠实性。
+几对常见伴随的单位：**自由 $\dashv$ 遗忘** 的单位是「把 $x$ 送进生成元」；**层化 $\dashv$ 含入** 的单位是 $T \to T^{\#}$；**$k$-化 $\dashv$ 含入** 的单位是恒等（$X \to kX$ 当 $X$ 已紧生成时）。由「余单位满 $\iff$ 忠实」还能从单位/余单位读出忠实性。
 
 **证明。** 逐例用 $\eta_{X} = \Phi(1_{FX})$、$\varepsilon_{Y} = \Phi^{-1}(1_{GY})$ 算即可 ✓。∎
 
@@ -8265,7 +8265,7 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 #### 有余幂则可表示函子有伴随　`prop.copowers-give-adjoint`
 *命题*　命题：$\mathcal{C}$ 有余幂 $\implies$ $X^{(I)} \dashv h_{X}$
 
-若小范畴 $\mathcal{C}$ 有**余幂**，则每个可表示函子 $h_{X}$ 都有左伴随：$\mathbf{Set} \to \mathcal{C},\ I \mapsto X^{(I)}$ **⊣** $h_{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$。
+若小范畴 $\mathcal{C}$ 有**余幂**，则每个可表示函子 $h_{X}$ 都有左伴随：$\mathbf{Set} \to \mathcal{C},\ I \mapsto X^{(I)}$ **$\dashv$** $h_{X} = \operatorname{Hom}_{\mathcal{C}}(X, -)$。
 
 **证明。** 余幂的泛性质给出 $\operatorname{Hom}_{\mathcal{C}}\bigl(X^{(I)}, Y\bigr) \cong \operatorname{Hom}_{\mathbf{Set}}\bigl(I, \operatorname{Hom}_{\mathcal{C}}(X, Y)\bigr) = \mathbf{Set}\bigl(I, h_{X}(Y)\bigr)$ ✓，正是伴随的定义 ✓。∎
 

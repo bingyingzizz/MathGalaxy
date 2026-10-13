@@ -198,7 +198,7 @@ const SITE_REPO_URL = `https://github.com/${USER}/${SITE_REPO}`;
  * 填 {{占位符}}。填完还残留**已知名字**的占位符 = 模板和脚本对不上，
  * 直接失败 —— 否则 {{COUNTS}} 会原样发到线上，这种事语法上完全看不出来。
  */
-const KNOWN = ['USER', 'COUNTS', 'STRONG_WEAK', 'UPDATED', 'REPO', 'SITE_REPO', 'NAV', 'DOCS'];
+const KNOWN = ['USER', 'COUNTS', 'STRONG_WEAK', 'UPDATED', 'REPO', 'SITE_REPO', 'NAV', 'DOCS', 'HEAD_EXTRA'];
 function fill(tpl, map, name) {
   const out = tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : m));
   const left = [...new Set(out.match(new RegExp('\\{\\{(' + KNOWN.join('|') + ')\\}\\}', 'g')) || [])];
@@ -206,6 +206,27 @@ function fill(tpl, map, name) {
   return out;
 }
 const readSite = (f) => fs.readFileSync(path.join(SITE, f), 'utf8');
+
+/**
+ * 分享卡片 / 收录用的 head 片段：canonical + OG + Twitter + 一段 JSON-LD。
+ * 没有 og:image —— 站点没有位图素材（favicon 是内联 SVG，做不了 og:image）；
+ * 要加就得先生成一张 1200×630 的图，那是另一件事。
+ */
+function headExtra({ title, desc, url, ld }) {
+  return [
+    `<link rel="canonical" href="${url}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="${esc(USER)}.github.io">`,
+    `<meta property="og:title" content="${esc(title)}">`,
+    `<meta property="og:description" content="${esc(desc)}">`,
+    `<meta property="og:url" content="${url}">`,
+    `<meta property="og:locale" content="zh_CN">`,
+    `<meta name="twitter:card" content="summary">`,
+    `<script type="application/ld+json">${JSON.stringify(ld)}</script>`,
+  ].join('\n');
+}
+
+const SITE_ORIGIN = LIVE_URL.replace(/\/$/, '');   // 站点绝对地址（无尾斜杠）
 
 // 首页
 fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
@@ -215,6 +236,16 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
   UPDATED: updated,
   REPO: REPO_URL,
   SITE_REPO: SITE_REPO_URL,
+  HEAD_EXTRA: headExtra({
+    title: `${USER} · 数学笔记`,
+    desc: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。',
+    url: `${SITE_ORIGIN}/`,
+    ld: {
+      '@context': 'https://schema.org', '@type': 'WebSite',
+      name: `${USER}.github.io`, url: `${SITE_ORIGIN}/`, inLanguage: 'zh-CN',
+      description: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。',
+    },
+  }),
 }, 'site/index.html'));
 
 /* ---------------------------- 阅读页：把 .md/.txt 在构建期渲染成静态 HTML */
@@ -254,8 +285,84 @@ fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
   UPDATED: updated,
   NAV: navHtml,
   DOCS: docsHtml,
+  HEAD_EXTRA: headExtra({
+    title: `怎么读这张图 · ${USER}`,
+    desc: '数学星图的读图指南、记号对照表、检索协议、内容准则与枢纽定理榜。',
+    url: `${SITE_ORIGIN}/read.html`,
+    ld: {
+      '@context': 'https://schema.org', '@type': 'WebPage',
+      name: '怎么读这张图', url: `${SITE_ORIGIN}/read.html`, inLanguage: 'zh-CN',
+      description: '数学星图的读图指南、记号对照表、检索协议、内容准则与枢纽定理榜。',
+      isPartOf: { '@type': 'WebSite', name: `${USER}.github.io`, url: `${SITE_ORIGIN}/` },
+    },
+  }),
 }, 'site/read.html'));
 console.log(`   阅读页：${DOCS.map((d) => d.file).join(' · ')} → read.html`);
+
+/* -------------------- 站点根：给爬虫与 AI agent 的入口文件 -------------------- */
+// 三个文件的分工：
+//   robots.txt   约定俗成，爬虫从这里知道「随便抓」，并找到 sitemap
+//   sitemap.xml  列全部页面（HTML 入口 + 每个概念的 .md），清单**从实际产出的文件生成**
+//   llms.txt     给 AI agent 的固定入口（约定放在域名根）：先读哪几份、怎么引用
+// ⚠️ 手写清单迟早和站点对不上 —— 一律现算。
+// ⚠️ 节点页里那几行 `proofs/…` `notes/…` 是**纯文本路径、不是链接** ⇒ 爬虫跟不过去，
+// 只能靠 sitemap 把它们列全。所以这里把四个内容目录都收进来（实测约 3600 条 URL / 540 KB，
+// 离 sitemap 上限 50 MB / 5 万条还差得远）。
+const contentDirs = ['nodes', 'index', 'proofs', 'notes'];
+const contentMd = [];
+for (const d of contentDirs) {
+  const p = path.join(DIST, d);
+  if (!fs.existsSync(p)) continue;
+  for (const f of fs.readdirSync(p).filter((x) => x.endsWith('.md')).sort()) {
+    contentMd.push(`${d}/${f}`);
+  }
+}
+const smEntries = [
+  { loc: `${SITE_ORIGIN}/`, pri: '1.0' },
+  { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8' },
+  { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0' },
+  ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md', 'LICENSE.txt']
+    .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.6' })),
+  ...contentMd.map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: f.startsWith('nodes/') ? '0.5' : '0.4' })),
+];
+fs.writeFileSync(path.join(STAGE, 'sitemap.xml'),
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  smEntries.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${updated}</lastmod><priority>${u.pri}</priority></url>`).join('\n') +
+  '\n</urlset>\n', 'utf8');
+fs.writeFileSync(path.join(STAGE, 'robots.txt'),
+  '# 全部允许抓取 —— 这张图就是给人看、给 AI 读的\n' +
+  'User-agent: *\nAllow: /\n\n' +
+  `Sitemap: ${SITE_ORIGIN}/sitemap.xml\n`, 'utf8');
+
+// 根 llms.txt：AI agent 的约定入口。**必须在一次抓取之内**（同 dist 产物的 1300 B 口径）。
+const rootLlms = `# ${USER}.github.io
+
+个人站点。主体是**数学星图 MathGalaxy**：${cnt.nodes} 个数学概念（定理 / 定义 / 引理）按
+「星系 → 星团 → 恒星」三层组织，边是逻辑关系（推出 / 等价 / 定义引用 / 类比）。
+
+## 想读内容，按这个顺序
+
+- \`/mathgalaxy/llms.txt\`    星图的检索协议 —— **先读这一份**，它说清了每种产物怎么用
+- \`/mathgalaxy/index.md\`    索引：星系、星团、节点 id 一览
+- \`/mathgalaxy/nodes/<id>.md\`  一个概念一个文件，绝大多数 ≤ 1300 B，可以整份读进来
+- \`/read.html\`              给人读的：读图指南 / 记号对照表 / 内容准则 / 枢纽定理榜
+
+## 程序化使用
+
+- \`/mathgalaxy/graph.json\`  全量图（约 1.7 MB），schema 见 \`/mathgalaxy/reading.md\`
+
+## 引用
+
+引用请标注**节点 id** 与内容版本（例：节点 \`thm.cantor\`，内容 ${distMeta.version}），
+完整条款见 \`/mathgalaxy/LICENSE.txt\`。
+`;
+const rootLlmsBytes = Buffer.byteLength(rootLlms, 'utf8');
+if (rootLlmsBytes > 1250) {
+  throw new Error(`根 llms.txt 过大：${rootLlmsBytes} B（AI 单次抓取上限 ~1300 B，留 50 B 余量）`);
+}
+fs.writeFileSync(path.join(STAGE, 'llms.txt'), rootLlms, 'utf8');
+console.log(`   根 llms.txt（${rootLlmsBytes} B）+ robots.txt + sitemap.xml（${smEntries.length} 条 URL）`);
 
 /* ------------------------------------------------------------ 收尾文件 */
 fs.writeFileSync(path.join(STAGE, '.nojekyll'), '');   // 别让 Jekyll 处理
