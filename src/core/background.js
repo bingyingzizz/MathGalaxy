@@ -82,15 +82,7 @@
     var cx = centroid(list).x, cy = centroid(list).y;
     var rand = U.rngFrom(c.id, MG.config.seed);
 
-    bubble(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15);
-
-    for (var i = 0; i < 5; i++) {
-      var ang = rand() * Math.PI * 2;
-      var rad = Math.sqrt(rand()) * R * 0.50;
-      var br = R * U.lerp(0.22, 0.38, rand());
-      blob(ctx, rgb, cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad,
-        br, cc.cloudAlpha * U.lerp(0.5, 0.9, rand()));
-    }
+    nebula(ctx, rgb, cx, cy, R * 0.98, cc.cloudAlpha * 1.15, rand);
 
     list.forEach(function (n) {
       blob(ctx, rgb, n.x, n.y, R * 0.24, cc.cloudAlpha * 0.8);
@@ -162,22 +154,42 @@
   }
 
   /**
-   * 带「亮边」的团云：中间淡、靠边一圈浓 —— 像气泡。
-   * 团与团的边界靠它分出来：不然一片雾叠一片雾，看不出哪些点属于同一个团。
+   * 星团的**星云**：一团柔雾做底色 + 一圈**不规则**的亮脊 + 几缕内部絮。
+   *
+   * ⚠️ 这里刻意**不画正圆**（原来是「中间淡、靠边一圈浓」的圆环，缩小时就是一个圆圈，很假）。
+   * 亮脊由 11 块软斑沿一条起伏的线铺成，半径按三组正弦调制，相位用星团 id 定的种子 ——
+   * 所以每个团形状都不一样，但同一个团每次打开都长一样（不会抖）。
+   * 「团与团的边界」仍然靠这圈亮脊分出来，只是它不再是圆的。
    */
-  function bubble(ctx, rgb, x, y, r, alpha) {
+  function nebula(ctx, rgb, x, y, r, alpha, rand) {
     if (r <= 0 || alpha <= 0) return;
-    function at(a) { return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + a.toFixed(4) + ')'; }
-    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-    g.addColorStop(0.00, at(alpha * 0.26));
-    g.addColorStop(0.58, at(alpha * 0.40));
-    g.addColorStop(0.86, at(alpha * 1.00));
-    g.addColorStop(0.96, at(alpha * 0.45));
-    g.addColorStop(1.00, at(0));
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fill();
+    var TWO = Math.PI * 2;
+
+    /* 1) 核：一大团柔雾 —— 缩得很小时这一团还是一块有颜色的地方 */
+    blob(ctx, rgb, x, y, r * 0.96, alpha * 0.20);
+
+    /* 2) 亮脊：沿起伏的线铺一圈软斑 —— 这是「团的边界」所在，只是不再是正圆。
+       16 块（相邻两块要搭得上，否则会变成一圈点）。 */
+    var n = 16;
+    var p1 = rand() * TWO, p2 = rand() * TWO, p3 = rand() * TWO;
+    for (var i = 0; i < n; i++) {
+      var th = i / n * TWO;
+      var wob = 1
+        + 0.15 * Math.sin(3 * th + p1)
+        + 0.10 * Math.sin(5 * th + p2)
+        + 0.06 * Math.sin(8 * th + p3);
+      var rr = r * 0.88 * wob;
+      var br = r * U.lerp(0.19, 0.26, rand());
+      blob(ctx, rgb, x + Math.cos(th) * rr, y + Math.sin(th) * rr, br,
+        alpha * U.lerp(0.85, 1.20, rand()));
+    }
+
+    /* 3) 内部的絮：5 缕有浓有淡的软斑 —— 星云的「不均匀」主要来自这里 */
+    for (var j = 0; j < 5; j++) {
+      var a2 = rand() * TWO, d2 = Math.sqrt(rand()) * r * 0.62;
+      blob(ctx, rgb, x + Math.cos(a2) * d2, y + Math.sin(a2) * d2,
+        r * U.lerp(0.16, 0.34, rand()), alpha * U.lerp(0.30, 0.62, rand()));
+    }
   }
 
   /** 按相机把云雾纹理画到屏幕（白底由页面提供） */
