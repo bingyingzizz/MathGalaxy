@@ -26,6 +26,18 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 
+/* ------------------------------------------------------------ 内容版本 */
+/* 由 tools/idstable.mjs 维护。星图公开之后**节点 id 是对外契约**，所以要有一个
+   对外可引用的版本号：别人按 id + 版本号引用，我们重构 id 时才有对齐的依据。
+   快照文件是 tools/ids.snapshot.json（json 里的 version）。 */
+function contentVersion() {
+  try {
+    const s = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/ids.snapshot.json'), 'utf8'));
+    return s && s.version ? s.version : '';
+  } catch (e) { return ''; }
+}
+const CONTENT_VERSION = contentVersion();
+
 /* ------------------------------------------------------------ 时间戳策略 */
 /** 去掉时间戳后再序列化 —— 用来判断「除时间戳以外，内容有没有变」 */
 function withoutStamp(d) {
@@ -69,7 +81,7 @@ function loadMG() {
   const files = [
     'core/config.js', 'core/util.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
     'core/layers.js',
-    'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/notation.js',
+    'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/notation.js', 'data/xref.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -97,12 +109,14 @@ function buildGraph(MG) {
 /* ---------------------------------------------------------------- JSON 导出 */
 function exportJSON(MG, graph) {
   const T = MG.theme;
+  const XREF = MG.xref || {};          // 外部锚点（src/data/xref.js）
   const strengthOf = e => e.strength || (T.edgeStrength && T.edgeStrength[e.kind]) || 'strong';
 
   return {
     meta: {
       name: '数学星图 MathGalaxy',
       schema: 'mathgalaxy/v1',
+      version: CONTENT_VERSION || undefined,
       generated: new Date().toISOString(),
       counts: {
         regions: graph.regions.length,
@@ -160,6 +174,7 @@ function exportJSON(MG, graph) {
       statement: n.statement,
       notes: n.notes || '',
       refs: n.refs,
+      xref: XREF[n.id] || undefined,
     })),
 
     edges: graph.edges.map(e => {
@@ -793,7 +808,7 @@ function exportLlmsTxt(data, base = '') {
 
 可检索的数学知识图谱：节点是定理/定义/引理，边是逻辑关系。
 **给 AI 用：按协议取数据，不要单次抓 graph.json。**
-${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。
+${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。${data.meta.version ? '内容 ' + data.meta.version + '。' : ''}
 数据根 = 本文件所在目录。${live}
 
 ## 检索协议
@@ -1079,6 +1094,30 @@ function exportAliasProducts(MG, graph) {
 }
 
 /* -------------------------------------------------------- 别名表断言 */
+/* 外部锚点（xref）。真源在 `src/data/xref.js`。硬断言：键要在白名单里、
+   值必须是完整 http(s) URL、id 必须真实存在 —— 对外锚点错了比没有更糟。 */
+function assertXref(MG, graph) {
+  const X = MG.xref;
+  if (!X) return ['外部锚点：`src/data/xref.js` 没有挂上（index.html / loadMG 少了 script？）'];
+  const KEYS = ['wikipedia', 'nlab', 'stacks', 'mathlib'];
+  const errs = [];
+  for (const id of Object.keys(X)) {
+    if (id.startsWith('_')) continue;                 // 注释键（_说明 之类）
+    const rec = X[id];
+    if (!graph.byId[id]) { errs.push(`xref 指向不存在的节点：${id}`); continue; }
+    if (!rec || typeof rec !== 'object') { errs.push(`xref[${id}] 不是对象`); continue; }
+    const ks = Object.keys(rec);
+    if (!ks.length) errs.push(`xref[${id}] 是空的（要么填，要么删掉这条）`);
+    for (const k of ks) {
+      if (KEYS.indexOf(k) < 0) errs.push(`xref[${id}].${k} 不在白名单（${KEYS.join(' / ')}）里`);
+      if (!/^https?:\/\/\S+$/.test(String(rec[k]))) {
+        errs.push(`xref[${id}].${k} 必须是完整 http(s) URL：${rec[k]}`);
+      }
+    }
+  }
+  return errs;
+}
+
 function assertAliases(MG, graph) {
   const A = MG.aliases;
   if (!A) return ['别名表：`src/data/aliases.js` 没有挂上（index.html 少了 <script>？）'];
@@ -1210,6 +1249,8 @@ function assertNotation(MG, graph) {
 /* ---------------------------------------------------------------- 单文件 HTML */
 function buildSingleFile() {
   let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  /* 内容版本注入（tools/idstable.mjs 维护；index.html 里写的是 'dev'） */
+  html = html.replace("MG.contentVersion = 'dev'", "MG.contentVersion = '" + (CONTENT_VERSION || 'dev') + "'");
 
   // 内联 CSS
   html = html.replace(/<link[^>]+href="([^"]+\.css)"[^>]*>/g, (m, href) => {
@@ -1303,6 +1344,7 @@ if (doJSON) {
   const errs = assertAI(MG, graph, files, pagesOf);
   errs.push(...assertNotation(MG, graph));
   errs.push(...assertAliases(MG, graph));
+  errs.push(...assertXref(MG, graph));
   // 给 AI 看的说明文档也必须在一次抓取之内
   for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md', 'alias.md']) {
     const p = path.join(DIST, extra);

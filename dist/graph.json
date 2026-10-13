@@ -2,7 +2,8 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "generated": "2026-10-12T13:57:35.053Z",
+  "version": "v0.9.0",
+  "generated": "2026-10-13T04:53:36.443Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1412,7 +1413,11 @@
    "refs": [
     "Jech, The Axiom of Choice",
     "Kunen, Set Theory, I.12"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Axiom_of_choice",
+    "nlab": "https://ncatlab.org/nlab/show/axiom+of+choice"
+   }
   },
   {
    "id": "def.subset",
@@ -1757,7 +1762,10 @@
    "refs": [
     "Zermelo (1904)",
     "Kunen, Set Theory, I.12"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Well-ordering_theorem"
+   }
   },
   {
    "id": "lem.zorn",
@@ -1781,7 +1789,11 @@
    "refs": [
     "Zorn (1935)",
     "Kunen, Set Theory, I.12"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Zorn%27s_lemma",
+    "nlab": "https://ncatlab.org/nlab/show/Zorn%27s+lemma"
+   }
   },
   {
    "id": "thm.hausdorff",
@@ -2422,7 +2434,10 @@
    "refs": [
     "Halmos, Measure Theory, §9",
     "Folland, Real Analysis, §1.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Measure_(mathematics)"
+   }
   },
   {
    "id": "def.premeasure",
@@ -2671,7 +2686,10 @@
    "refs": [
     "Halmos, Measure Theory, §11",
     "Folland, Real Analysis, Theorem 1.11"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Carath%C3%A9odory%27s_extension_theorem"
+   }
   },
   {
    "id": "prop.caratheodory-extension",
@@ -3116,7 +3134,10 @@
    "notes": "⭐ 这是整个 Lebesgue 积分理论的**发动机**：后面的逐项积分、Fatou、DCT 全都是它的推论。\n\n对比 Riemann 积分：那里「积分与极限交换」需要一致收敛这样强的条件；这里只要**单调**就够了 —— 这就是 Lebesgue 积分的全部好处。\n\n⚠ 两者都可能是 $\\infty$，等式在扩充意义下理解。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.14"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Monotone_convergence_theorem"
+   }
   },
   {
    "id": "thm.termwise-integration",
@@ -3205,7 +3226,10 @@
    "notes": "⚠ 注意不等号方向：**下面的**极限在积分外面，得到的**不大于**积分的下极限。也就是说「取极限」会让积分**变小**，不会变大。\n\n这是 MCT 去掉单调性后剩下的东西 —— 单调性一旦丢掉，等号就退化成不等式。\n\n反向的例子：$f_n = \\chi_{[n, n+1]}$（在 $\\mathbb{R}$ 上），则每个 $\\int f_{n} = 1$ 但 $\\int \\liminf f_{n} = 0$。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.18"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Fatou%27s_lemma"
+   }
   },
   {
    "id": "cor.fatou",
@@ -3403,7 +3427,10 @@
    "notes": "⭐ 这是实际计算里**用得最多**的收敛定理。三个条件缺一不可：\n\n\n\n$\\cdot \\text{a.e.}$ 收敛 —— 不能去掉（$\\chi_{[n,n+1]}$ 反例）；\n\n$\\cdot$ 控制函数 $g \\in L^{1}$ —— 不能去掉（$n\\chi_{[0,1/n]}$ 在 [0,1] 上每点趋于 0，但积分为 1）；\n\n$\\cdot$ 必须是**可积**的 $g$，光是「有界」不够（在无穷测度空间上）。\n\n\n\n为什么叫「控制」：$g$ 把所有 $f_{n}$ 关在一间可积的笼子里，所以质量无处可逃，极限过程不会漏掉面积。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.24"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Dominated_convergence_theorem"
+   }
   },
   {
    "id": "thm.termwise-L1",
@@ -3741,7 +3768,10 @@
    "notes": "⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。\n\n**Fubini 则必须假定可积** —— 否则一边是 $\\infty$、一边是 $-\\infty$，换序会出事。\n\n⚠ 反例（不是可积但累次积分不等）：在 $[0,1]^{2}$ 上取 $f(x, y) = (x^2 - y^2) / (x^2 + y^2)^3$ 之类，两个累次积分会互为相反数。\n\n⚠ $\\sigma$有限不能省：在「$\\mathbb{R}$ 上的计数测度 $\\times Lebesgue$ 测度」这种情形下，单调类定理的论证会崩，Fubini 会得出荒谬的结论（对角线上的经典反例）。",
    "refs": [
     "Folland, Real Analysis, Theorem 2.37"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Fubini%27s_theorem"
+   }
   },
   {
    "id": "thm.fubini-complete",
@@ -4072,7 +4102,10 @@
    "notes": "⭐ 这是整个符号测度理论的**结构定理**：任何 $\\nu$ 都能唯一拆成「与 $\\mu$ 奇异的部分」+「关于 $\\mu$ 绝对连续的部分」。\n\n特别地，**当 $\\nu \\ll \\mu$ 时**，$\\lambda = 0$，于是 $d\\nu = f d\\mu$ —— 这就是通常说的 **Radon–Nikodym 定理**。\n\n⚠ $\\sigma$有限不能省（对 $\\nu$ 和 $\\mu$ 都要）。\n\n证明的三步（下一段箭头里展开）：$I. \\nu$、$\\mu$ 有限；II. 用 $\\sigma$有限切成有限块；$III. \\nu$ 是符号测度时分别对 $\\nu^+, \\nu^-$ 做。",
    "refs": [
     "Folland, Real Analysis, Theorem 3.8"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem"
+   }
   },
   {
    "id": "def.rn-derivative",
@@ -4929,7 +4962,10 @@
    "notes": "**取等条件**：等号成立 $\\iff$ $|f|^p$ 与 $|g|^q$ 成比例 a.e.（即 $\\alpha |f|^p = \\beta |g|^q$ a.e.）。\n\n证明：先设 $\\|f\\|_p = \\|g\\|_q = 1$。由 Young 不等式，把 $\\lambda = 1/p$、$a = |f|^p$、$b = |g|^q$ 代进去得\n\n\n\n$$|fg| \\le \\frac{|f|^p}{p} + \\frac{|g|^q}{q}$$\n\n\n\n两边积分即得 $\\|fg\\|_1 \\le \\frac{1}{p} + \\frac{1}{q} = 1$。一般情形把 $f, g$ 各自归一化。\n\n⚠ $p = q = 2$ 时就是 **Cauchy–Schwarz 不等式**。\n\n$p = 1$ 时共轭指数是 $q = \\infty$，此时 $\\|fg\\|_1 \\le \\|f\\|_1 \\|g\\|_\\infty$（见 $L^\\infty$ 那一节）。",
    "refs": [
     "Folland, Real Analysis, Theorem 6.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality"
+   }
   },
   {
    "id": "thm.minkowski",
@@ -5240,7 +5276,10 @@
    "notes": "⭐ 这是 $L^p$ 理论的高潮：**$L^p$ 上的每一个连续线性泛函，都只是「乘一个 $L^q$ 函数再积分」**。\n\n$p = 1$、$\\mu$ $\\sigma$有限时结论同样成立（$(L^1)^* \\cong L^\\infty$）；\n\n⚠ 但 $p = \\infty$ 时**不成立**：$(L^\\infty)^*$ 严格大于 $L^1$（存在不是由 $L^1$ 函数给出的有界线性泛函，比如在 $C[0,1]$ 上调 Hahn–Banach 得到的那些）。\n\n证明思路（见右侧箭头）：先把 $\\Phi$ 变成一个复测度（$\\nu(E) := \\Phi(\\chi_E)$），再用 Radon–Nikodym 把它写成 $\\int \\cdot \\, g \\, d\\mu$，最后验证 $g \\in L^q$。",
    "refs": [
     "Folland, Real Analysis, Theorem 6.15"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Riesz_representation_theorem"
+   }
   },
   {
    "id": "cor.lp-reflexive",
@@ -5625,7 +5664,11 @@
    "notes": "⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。于是\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$|\\mathbb{R}| = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。",
    "refs": [
     "Kunen, Set Theory, I.6"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Cantor%27s_theorem",
+    "nlab": "https://ncatlab.org/nlab/show/Cantor%27s+theorem"
+   }
   },
   {
    "id": "thm.schroder-bernstein",
@@ -7077,7 +7120,11 @@
    "notes": "**证明。** 定义映射\n$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$\n- **逆映射**：给 $u \\in F(X)$，对每个 $Y$ 定义\n$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$\n它是自然的：对 $g : Y \\to Z$，由 $F$ 的函子性 $F(g)\\circ F(f) = F(g\\circ f)$，两边正是 $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ 与 $\\Psi(u)_{Z}(g\\circ f)$ ✓。\n- **$\\Phi\\Psi = \\mathrm{id}$**：$\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓。\n- **$\\Psi\\Phi = \\mathrm{id}$**：给 $\\alpha$ 与 $f : X\\to Y$，用 $\\alpha$ 的自然性（作用在 $f$ 上）\n$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$\n- **自然性**：$\\Phi$ 对 $F$ 自然（沿 $\\beta : F\\to G$ 两边都变成 $\\beta_{X}\\circ(-)$）✓；对 $X$ 也自然（沿 $k : X'\\to X$，$h^{k}$ 的前复合与 $F(k)$ 对应）✓。\n于是 $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$，双射就是 $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓；对偶地（取 $\\mathcal{C}^{\\mathrm{op}}$）得预层版本 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓。∎\n\n这个双射在两**边**都自然：对 $F$（自然变换）自然，对 $X$（态射）也自然。两头都自然，才是这条引理真正有分量的地方。\n\n它把「$h^{X}$ 到 $F$ 的所有自然变换」这个原则上无从下手的集合，压成了 $F(X)$ 里的**一个元素**。后面凡是遇到「自然变换不好数」的地方，基本都是靠这一步救场。\n\n对偶形式：$T$ 是预层（$T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）、$h_{X} = \\operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$。两式只是把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，所以后面的推导两套都用。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.1–1.5"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Yoneda_lemma",
+    "nlab": "https://ncatlab.org/nlab/show/Yoneda+lemma"
+   }
   },
   {
    "id": "thm.represented-criterion",
@@ -7232,7 +7279,11 @@
    "notes": "一句话：**两个方向之间的翻译互为最佳**。从左边绕（先 $F$ 再射出去）与从右边绕（先射出去再 $G$）得到的东西一样多 —— 而且是**自然**一样多。\n\n例：\n\n\n\n- 遗忘函子 $\\mathbf{Top} \\to \\mathbf{Set}$ 有左右**两个**伴随：左伴随是**离散拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(S_{d}, X) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(S, F(X))$），右伴随是**平凡拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(X, S_{t}) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(F(X), S)$）。\n- 遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的左伴随是**自由阿贝尔群**：$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathbb{Z}^{(X)}, M) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, \\operatorname{forget} M)$。**自由是遗忘的左伴随**。\n\n\n\n两条运算规则：\n\n\n\n- **对偶**：$F \\dashv G$ $\\iff$ $G^{\\mathrm{op}} \\dashv F^{\\mathrm{op}}$（在 $\\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}^{\\mathrm{op}}$ 上）。\n- **复合**：$F \\dashv G$ 且 $F' \\dashv G'$ $\\implies$ $F' \\circ F \\dashv G \\circ G'$，因为\n\n\n\n  $$\\operatorname{Hom}(F'F(X), Y) \\cong \\operatorname{Hom}(F(X), G'(Y)) \\cong \\operatorname{Hom}(X, GG'(Y))$$",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.5"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Adjoint_functors",
+    "nlab": "https://ncatlab.org/nlab/show/adjoint+functor"
+   }
   },
   {
    "id": "def.adjunction-unit",
@@ -7958,7 +8009,11 @@
    "notes": "$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R' \\in J(X) \\implies R \\cap R' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R'$、$R \\in J(X) \\implies R' \\in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。\n\n由预拓扑可以生成拓扑：把每个覆盖族换成它生成的筛，再取全部这样的筛。**拓扑比预拓扑更一般** —— 预拓扑要求那些纤维积存在，而在预层范畴里筛的拉回总是存在的。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Grothendieck_topology",
+    "nlab": "https://ncatlab.org/nlab/show/Grothendieck+topology"
+   }
   },
   {
    "id": "def.sheaf",
@@ -7980,7 +8035,11 @@
    "notes": "用米田引理 $\\operatorname{Hom}(h_{X}, F) \\cong F(X)$，可以把这个定义读成两句话：左边是 $F(X)$（整体截面），右边是「沿 $R$ 的一族相容截面」：\n\n\n\n- **单射 = 分离公理**：两个整体截面若在 $R$ 上一致，就必定相等；\n- **双射 = 粘合公理**：任何一族相容截面都能**唯一**地拼成整体截面。\n\n\n\n在拓扑空间的老写法里（$\\mathcal{C} = \\operatorname{Open}(X)^{\\mathrm{op}}$），这两条就是：$s|_{U_{i}} = t|_{U_{i}}$ 处处成立则 $s = t$；以及局部截面 $s_{i}$ 在交叠处一致时能拼出整体截面。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Sheaf_(mathematics)",
+    "nlab": "https://ncatlab.org/nlab/show/sheaf"
+   }
   },
   {
    "id": "thm.sheaf-descent",
@@ -8485,7 +8544,11 @@
    "notes": "与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。\n\n例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；site 的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**\n\n⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Topos",
+    "nlab": "https://ncatlab.org/nlab/show/topos"
+   }
   },
   {
    "id": "thm.giraud",
@@ -8728,7 +8791,11 @@
    "notes": "**例 1. 拓扑空间给凝聚态集。** 任一拓扑空间 $X$ 给出凝聚态集 $\\underline{X}(S) := C(S, X) = \\operatorname{Hom}_{\\mathbf{Top}}(S, X)$ —— 从 $S$ 到 $X$ 的连续映射全体。\n\n**例 2. 收敛序列。** 取 $X$ 是拓扑空间，则 $\\underline{X}(\\bar{\\mathbb{N}})$ 恰好是「**收敛序列 $(x_{n})_{n \\ge 1}$ 连同指定的极限 $x_{\\infty}$**」的集合 —— 这里 $\\bar{\\mathbb{N}}$ 是 $\\mathbb{N}$ 的**一点紧化**，而「收敛序列连同极限」正好就是从 $\\bar{\\mathbb{N}}$ 到 $X$ 的连续映射：$\\mathbb{N}$ 上的像给出序列，新添那个点上的像给出极限。\n\n**例 3. 连续函数模掉局部常值函数。** 存在唯一的凝聚态集 $Q$ 使 $Q(S) = C(S, \\mathbb{R}) / C(S, \\mathbb{R}^{\\mathrm{disc}})$。\n\n这三个例子的共同点：**取值都是「从紧 Hausdorff 空间出发的连续映射的某种商或子集」**。凝聚态集之所以能记住拓扑信息，靠的就是把这些映射全留下来。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §4"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Condensed_mathematics",
+    "nlab": "https://ncatlab.org/nlab/show/condensed+mathematics"
+   }
   },
   {
    "id": "prop.condensed-criterion",
@@ -9099,7 +9166,11 @@
    "notes": "在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。\n\n例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。\n\n阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §5.1–5.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Abelian_category",
+    "nlab": "https://ncatlab.org/nlab/show/abelian+category"
+   }
   },
   {
    "id": "def.cochain-complex",
@@ -11869,7 +11940,11 @@
    "notes": "**几条立刻要记住的**（对 $\\mathcal{A}$ 里的对象 $M, N$）：\n\n\n\n- $\\operatorname{Ext}^{n}(M, N) = 0$（$n < 0$）；\n- $\\operatorname{Ext}^{0}(M, N) = \\operatorname{Hom}(M, N)$；\n- $\\operatorname{Ext}^{1}(M, N)$ **分类 $N$ 被 $M$ 的扩张**（同构意义下）；\n- 在 $\\mathbf{Ab}$ 里 $\\operatorname{Ext}^{n}(M, N) = 0$（$n > 1$）；\n- $\\operatorname{Ext}^{1}(\\mathbb{Z}/n\\mathbb{Z},\\ \\mathbb{Z}/m\\mathbb{Z}) = \\mathbb{Z}/d\\mathbb{Z}$，$d = \\gcd(m, n)$。\n\n⭐ **两种算法**：$\\operatorname{Ext}^{n} = $ 「导出范畴里的 Hom」（这条定义）$ = R^{n}\\operatorname{Hom}$（用内射消解算）。两者一致 —— 见下一条。",
    "refs": [
     "Le Stum, Definition 7.2.9"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Ext_functor",
+    "nlab": "https://ncatlab.org/nlab/show/Ext"
+   }
   },
   {
    "id": "prop.ext-is-rhom",

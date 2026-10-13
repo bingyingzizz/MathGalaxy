@@ -456,10 +456,12 @@
       drawEdges(defs);
       drawEdges(eqs);
       drawEdges(imps);
-      drawArrows(geoms);
+      geoms.forEach(function (g) { if (g.arrow) drawArrow(g); });
 
       /* ---------- 2. 节点 ---------- */
-      if (lodA.nodeDot > 0.02) drawNodes();
+      if (lodA.nodeDot > 0.02) {
+        view.graph.nodes.forEach(function (n) { drawNode(n); });
+      }
       /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
@@ -705,60 +707,36 @@
      *    所以定义线相交处由「更深」变成「同样深浅」—— 观感反而更干净。
      */
     function drawEdges(list) {
-      var groups = Object.create(null), order = [], glyphs = [];
+      /* 只有**定义引用线**走「合并描边」的快路径：它占全部连线 89%（1244/1391），
+         逐条 stroke() 在用户机器上约 0.05ms/条 ⇒ 一帧六十多毫秒
+         （实测：把它一关，同一页面 13fps → 240fps；而把像素量砍到 1/4 毫无变化）。
+         其余三类一共才 121 条（推出 108 / 等价 4 / 类比 9）⇒ **保持逐条绘制的原样**。 */
+      var defB = Object.create(null), defOrder = [];
       list.forEach(function (g) {
-        var e = g.edge;
-        var style = T.edgeStyles[e.kind];
+        if (g.edge.kind !== 'definition') { drawEdgeOne(g); return; }
+        var e = g.edge, style = T.edgeStyles.definition;
         var spine = isSpine(e);
-        // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
         if (a <= 0.02) return;
-
+        if (!C.showDefinitionLines) return;
         var active = isEdgeActive(g);
-        var w = (e.kind === 'implication' ? C.edge.implicationWidth
-          : e.kind === 'equivalence' ? C.edge.equivalenceWidth
-            : e.kind === 'analogy' ? T.edgeStyles.analogy.width
-              : C.edge.definitionWidth) * (active ? 1.85 : 1);
-
-        // 全图尺度：主干画成一条低调的暖色细线，不抢云雾和装置名
+        var w = C.edge.definitionWidth * (active ? 1.85 : 1);
         var spineOnly = spine && lodA.nodeEdge < 0.9;
         if (spineOnly) { a *= 0.55 + 0.45 * lodA.nodeEdge; w = 1.25; }
-
-        if (e.kind === 'definition' && !C.showDefinitionLines) return;
-
-        // 弱边：不开探索模式时压得很淡，开了才提亮
-        var isWeak = GU.isWeak(e);
-        if (isWeak) {
-          var base = C.exploreMode ? C.analogy.exploreAlpha : C.analogy.dimAlpha;
-          a = a * (base / (style.alpha || 1));
-          if (a <= 0.02) return;
-          w *= active ? 1.6 : 1;
-        }
-
-        var color;
-        if (spineOnly) {
-          color = U.rgba(T.spineColor || 'B4661A', a);
-        } else if (e.kind === 'definition' || e.kind === 'analogy') {
-          var alpha = (style.alpha != null ? style.alpha : 1) * a;
-          color = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
-        } else {
-          color = U.rgba(style.color, a);
-        }
-
-        var key = color + '|' + w.toFixed(2) + '|' + (isWeak ? 'dash' : '-');
-        var grp = groups[key];
-        if (!grp) { grp = groups[key] = { color: color, w: w, dash: isWeak ? C.analogy.dash : null, gs: [] }; order.push(grp); }
+        var color = spineOnly
+          ? U.rgba(T.spineColor || 'B4661A', a)
+          : 'rgba(' + style.color + ',' + ((style.alpha != null ? style.alpha : 1) * a).toFixed(3) + ')';
+        var key = color + '|' + w.toFixed(2);
+        var grp = defB[key];
+        if (!grp) { grp = defB[key] = { color: color, w: w, gs: [] }; defOrder.push(grp); }
         grp.gs.push(g);
-
-        if (g.glyph && cam_eqVisible()) glyphs.push({ g: g, a: a });
       });
 
-      order.forEach(function (grp) {
+      defOrder.forEach(function (grp) {
         ctx.save();
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.lineWidth = grp.w;
-        if (grp.dash) ctx.setLineDash(grp.dash);
         ctx.strokeStyle = grp.color;
         ctx.beginPath();
         for (var i = 0; i < grp.gs.length; i++) {
@@ -777,11 +755,68 @@
         ctx.stroke();
         ctx.restore();
       });
+    }
+
+    /** 逐条绘制（推出 / 等价 / 类比，以及定义线在别的调用点单画时）—— 与原来逐字一致 */
+    function drawEdgeOne(g) {
+      var e = g.edge;
+      var style = T.edgeStyles[e.kind];
+      var spine = isSpine(e);
+      // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
+      var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
+      if (a <= 0.02) return;
+
+      var active = isEdgeActive(g);
+      var w = (e.kind === 'implication' ? C.edge.implicationWidth
+        : e.kind === 'equivalence' ? C.edge.equivalenceWidth
+          : e.kind === 'analogy' ? T.edgeStyles.analogy.width
+            : C.edge.definitionWidth) * (active ? 1.85 : 1);
+
+      // 全图尺度：主干画成一条低调的暖色细线，不抢云雾和装置名
+      var spineOnly = spine && lodA.nodeEdge < 0.9;
+      if (spineOnly) { a *= 0.55 + 0.45 * lodA.nodeEdge; w = 1.25; }
+
+      if (e.kind === 'definition' && !C.showDefinitionLines) return;
+
+      // 弱边：不开探索模式时压得很淡，开了才提亮
+      var isWeak = GU.isWeak(e);
+      if (isWeak) {
+        var base = C.exploreMode ? C.analogy.exploreAlpha : C.analogy.dimAlpha;
+        a = a * (base / (style.alpha || 1));
+        if (a <= 0.02) return;
+        w *= active ? 1.6 : 1;
+      }
+
+      ctx.save();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = w;
+      if (isWeak) ctx.setLineDash(C.analogy.dash);
+
+      if (spineOnly) {
+        ctx.strokeStyle = U.rgba(T.spineColor || 'B4661A', a);
+      } else if (e.kind === 'definition' || e.kind === 'analogy') {
+        var alpha = (style.alpha != null ? style.alpha : 1) * a;
+        ctx.strokeStyle = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
+      } else {
+        ctx.strokeStyle = U.rgba(style.color, a);
+      }
+
+      ctx.beginPath();
+      g.polys.forEach(function (pts, i) {
+        if (g.quads[i]) {
+          var q = g.quads[i];
+          ctx.moveTo(q.p0.x, q.p0.y);
+          ctx.quadraticCurveTo(q.p1.x, q.p1.y, q.p2.x, q.p2.y);
+        } else {
+          ctx.moveTo(pts[0].x, pts[0].y);
+          for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
+        }
+      });
+      ctx.stroke();
 
       // 等价线中点画一个 ⟺（用白色描边做底，而不是白方块，免得在云上留个补丁）
-      glyphs.forEach(function (it) {
-        var g = it.g, a = it.a;
-        ctx.save();
+      if (g.glyph && cam_eqVisible()) {
         ctx.font = '600 ' + Math.round(U.clamp(13 * Math.pow(view.cam.k, 0.4), 11, 18)) + 'px ' + T.font;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -790,8 +825,8 @@
         ctx.strokeText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
         ctx.fillStyle = U.rgba(T.edgeStyles.equivalence.color, 0.92 * a);
         ctx.fillText(g.glyph.text, g.glyph.x, g.glyph.y + 0.5);
-        ctx.restore();
-      });
+      }
+      ctx.restore();
     }
 
     function cam_eqVisible() { return view.cam.k >= C.edge.equivalenceGlyph; }
@@ -805,143 +840,72 @@
       return false;
     }
 
-    /** 箭头也分桶：**一次 beginPath + 一次 fill** 画完所有箭头（原来是每个箭头一次） */
-    function drawArrows(geoms) {
-      var groups = Object.create(null), order = [];
-      geoms.forEach(function (g) {
-        if (!g.arrow) return;
-        var e = g.edge;
-        var a = alphaForEdge(e) * lodA.nodeEdge;
-        if (a <= 0.02) return;
-        var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
-        var color = U.rgba(T.edgeStyles.implication.color, a);
-        var key = color + '|' + sz.toFixed(2);
-        var grp = groups[key];
-        if (!grp) { grp = groups[key] = { color: color, sz: sz, list: [] }; order.push(grp); }
-        grp.list.push(g);
-      });
-      order.forEach(function (grp) {
-        var sz = grp.sz, tip = sz * 0.42, notch = sz * 0.72;
-        ctx.fillStyle = grp.color;
-        ctx.beginPath();
-        for (var i = 0; i < grp.list.length; i++) {
-          var ar = grp.list[i].arrow;
-          var co = Math.cos(ar.angle), si = Math.sin(ar.angle);
-          // 与原来 translate(x,y) + rotate(ang) 后画那几个点等价
-          ctx.moveTo(ar.x, ar.y);
-          ctx.lineTo(ar.x - sz * co - tip * si, ar.y - sz * si + tip * co);
-          ctx.lineTo(ar.x - notch * co, ar.y - notch * si);
-          ctx.lineTo(ar.x - sz * co + tip * si, ar.y - sz * si - tip * co);
-          ctx.closePath();
-        }
-        ctx.fill();
-      });
+    function drawArrow(g) {
+      var e = g.edge;
+      var a = alphaForEdge(e) * lodA.nodeEdge;
+      if (a <= 0.02) return;
+      var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
+      var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(ang);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-sz, sz * 0.42);
+      ctx.lineTo(-sz * 0.72, 0);
+      ctx.lineTo(-sz, -sz * 0.42);
+      ctx.closePath();
+      ctx.fillStyle = U.rgba(T.edgeStyles.implication.color, a);
+      ctx.fill();
+      ctx.restore();
     }
 
     /* ---------------------------------------------------------- 节点 */
-    /**
-     * 节点：**按 (类型色, alpha) 分桶，每桶一个路径一次填充 / 一次描边**。
-     *
-     * ⚠️ 和连线那边同一个道理：省的是**调用次数**，不是像素。全图适配时 706 个点
-     *    每条都要 beginPath + arc + fill + stroke（白圈）＋（hub 再一道环）
-     *    ⇒ 两千多次描边 + 一千多次贴图；用户机器上瓶颈正是「多少笔」。
-     *
-     * 光晕是逐点 drawImage，**合并不了**，所以按 alpha 排序后连续贴，
-     * 只把 globalAlpha / 精灵的切换次数压下来（这是它唯一能省的部分）。
-     *
-     * ⚠️ 顺序变化（知道且接受）：原来是「A 的光晕 → A 的圆点 → B 的光晕 → B 的圆点」，
-     *    现在所有光晕先铺、再统一画圆点 ⇒ 邻点的光晕不会再糊到别人的圆点上，
-     *    点看起来更干净。
-     */
-    function drawNodes() {
-      var nodes = view.graph.nodes;
-      var fillB = Object.create(null), fillOrder = [];
-      var ringB = Object.create(null), ringOrder = [];
-      var glowB = Object.create(null), glowOrder = [];
-      var marks = [];        // 选中 / 悬停 / hub 的外环（数量少，单独画）
-      var i, j;
+    function drawNode(n) {
+      if (!nodeOk(n.id)) return;                 // 被藏起来的点：不画（连线也已一并去掉）
+      if (!nodeInView(n)) return;                // 屏幕外的点：光晕、圆点、外环全省掉
+      var p = screenOf(n);
+      var r = nodeRadius(n);
+      var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
+      if (a <= 0.02) return;
 
-      for (i = 0; i < nodes.length; i++) {
-        var n = nodes[i];
-        if (!nodeOk(n.id)) continue;
-        if (!nodeInView(n)) continue;
-        var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
-        if (a <= 0.02) continue;
+      var st = MG.typeStyle(n.type);
+      var isFocus = view.focus && view.focus.type === 'node' && view.focus.id === n.id;
+      var isHover = (view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
+        (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
+          GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
 
-        var st = MG.typeStyle(n.type);
-        var p = screenOf(n), r = nodeRadius(n);
-        var isFocus = !!(view.focus && view.focus.type === 'node' && view.focus.id === n.id);
-        var isHover = !!((view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
-          (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
-            GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0));
-
-        if (C.node.glow) {
-          /* 光晕也按 (颜色, alpha) 分桶：drawImage 本身合并不了，
-             但同桶连着贴能省掉 globalAlpha 与精灵的反复切换，也不用每点建对象 */
-          var ga = a * ((isFocus || isHover) ? 1 : 0.72);
-          var gk = st.color + '|' + ga.toFixed(3);
-          var gb = glowB[gk];
-          if (!gb) { gb = glowB[gk] = { c: st.color, a: ga, sprite: null, items: [] }; glowOrder.push(gb); }
-          gb.items.push(p.x, p.y, r * 5.4);
-        }
-
-        var fk = st.color + '|' + a.toFixed(3);
-        var fb = fillB[fk];
-        if (!fb) { fb = fillB[fk] = { color: U.rgba(st.color, a), items: [] }; fillOrder.push(fb); }
-        fb.items.push(p.x, p.y, r);
-
-        var rk = a.toFixed(3);
-        var rb = ringB[rk];
-        if (!rb) { rb = ringB[rk] = { color: 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')', items: [] }; ringOrder.push(rb); }
-        rb.items.push(p.x, p.y, r);
-
-        if (isFocus || isHover || n.isHub) marks.push({ x: p.x, y: p.y, r: r, color: st.color, a: a, isFocus: isFocus, isHover: isHover });
+      // 光晕
+      if (C.node.glow) {
+        var gs = glowSprite(st.color);
+        var gsz = r * 5.4;
+        ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
+        ctx.drawImage(gs, p.x - gsz / 2, p.y - gsz / 2, gsz, gsz);
+        ctx.globalAlpha = 1;
       }
 
-      /* 光晕：按桶连着贴（每桶一次 globalAlpha + 一次取精灵） */
-      for (i = 0; i < glowOrder.length; i++) {
-        var gb = glowOrder[i];
-        ctx.globalAlpha = gb.a;
-        var sprite = gb.sprite || (gb.sprite = glowSprite(gb.c));
-        for (j = 0; j < gb.items.length; j += 3) {
-          var sz = gb.items[j + 2];
-          ctx.drawImage(sprite, gb.items[j] - sz / 2, gb.items[j + 1] - sz / 2, sz, sz);
-        }
-      }
-      if (glowOrder.length) ctx.globalAlpha = 1;
-
-      /* 实心圆点：每桶一次 beginPath + 一次 fill */
-      for (i = 0; i < fillOrder.length; i++) {
-        var fg = fillOrder[i];
-        ctx.fillStyle = fg.color;
-        ctx.beginPath();
-        for (j = 0; j < fg.items.length; j += 3) {
-          ctx.moveTo(fg.items[j] + fg.items[j + 2], fg.items[j + 1]);
-          ctx.arc(fg.items[j], fg.items[j + 1], fg.items[j + 2], 0, Math.PI * 2);
-        }
-        ctx.fill();
-      }
-
-      /* 白圈：每桶一次 beginPath + 一次 stroke */
+      // 实心点 + 白圈
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = U.rgba(st.color, a);
+      ctx.fill();
       ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, view.cam.k + 0.35));
-      for (i = 0; i < ringOrder.length; i++) {
-        var rg = ringOrder[i];
-        ctx.strokeStyle = rg.color;
-        ctx.beginPath();
-        for (j = 0; j < rg.items.length; j += 3) {
-          ctx.moveTo(rg.items[j] + rg.items[j + 2], rg.items[j + 1]);
-          ctx.arc(rg.items[j], rg.items[j + 1], rg.items[j + 2], 0, Math.PI * 2);
-        }
-        ctx.stroke();
-      }
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
+      ctx.stroke();
 
-      /* 选中 / 悬停的外环；星团的中心天体再套一道细环（全图尺度上也认得出核心） */
-      for (i = 0; i < marks.length; i++) {
-        var m = marks[i];
+      // 选中 / 悬停的外环
+      if (isFocus || isHover) {
         ctx.beginPath();
-        ctx.arc(m.x, m.y, m.r + (m.isFocus || m.isHover ? 5.5 : 3.0), 0, Math.PI * 2);
-        ctx.lineWidth = m.isFocus ? 2 : (m.isHover ? 1.4 : 1.25);
-        ctx.strokeStyle = U.rgba(m.color, (m.isFocus ? 0.95 : (m.isHover ? 0.55 : 0.6)) * m.a);
+        ctx.arc(p.x, p.y, r + 5.5, 0, Math.PI * 2);
+        ctx.lineWidth = isFocus ? 2 : 1.4;
+        ctx.strokeStyle = U.rgba(st.color, (isFocus ? 0.95 : 0.55) * a);
+        ctx.stroke();
+      } else if (n.isHub) {
+        // 星团的中心天体：外面套一道细环，全图尺度上也认得出「这个装置的核心」
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + 3.0, 0, Math.PI * 2);
+        ctx.lineWidth = 1.25;
+        ctx.strokeStyle = U.rgba(st.color, 0.6 * a);
         ctx.stroke();
       }
     }

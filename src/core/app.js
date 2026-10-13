@@ -82,6 +82,8 @@
     view.cam = cam;
 
     var renderer = MG.createRenderer(graphEl, view);
+    /* 导出（当前视图 → 子图 JSON / SVG / TikZ）。引擎模块，不碰任何内容。 */
+    var exporter = MG.createExport ? MG.createExport(view, cam, renderer.nodeRadius) : null;
     var cloudTex = null;
     var cloudDirty = true;
     /* 云雾层上一次是按什么参数画的 —— 相机 / 视口 / dpr / 纹理四样都没变就不必再画。
@@ -584,6 +586,17 @@
           '</div></div>'
         : '';
 
+      /* ---------- 导出：导出的是「你现在看到的这一块」 ---------- */
+      var exN = 0, exE = 0;
+      if (exporter) { var _c = exporter.collect(); exN = _c.nodes.length; exE = _c.edges.length; }
+      var exportGroup =
+        '<div class="lg-group"><div class="lg-title">导出当前视图（' + exN + ' 点 / ' + exE + ' 线）</div>' +
+        '<div class="lg-row lg-layers">' +
+        '<button class="lg-reset" data-export="svg" title="导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）">SVG</button>' +
+        '<button class="lg-reset" data-export="tikz" title="导出 TikZ 代码（给论文用）：每个节点带 \\label{n:节点id}，正文里可以 \\ref 引用">TikZ</button>' +
+        '<button class="lg-reset" data-export="json" title="导出子图 JSON（给程序和 AI）：id / 类型 / 陈述 / 坐标 / 边">子图 JSON</button>' +
+        '</div></div>';
+
       legendEl.innerHTML =
         '<div class="lg-head" data-toggle><b>图例</b>' +
         (hidden
@@ -600,6 +613,7 @@
         subGroup +
         '<div class="lg-group"><div class="lg-title">数学板块</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
+        exportGroup +
         '<div class="lg-hint">' +
         (subSeed
           ? '子图模式：「' + U.escapeHtml(graph.byId[subSeed] ? graph.byId[subSeed].label : subSeed) +
@@ -643,6 +657,23 @@
         var nid = nav.getAttribute('data-nav');
         if (graph.clusterById[nid]) fitCluster(nid);
         else fitRegion(nid);
+        return;
+      }
+
+      // 导出：SVG / TikZ / 子图 JSON（内容 = 当前屏幕内的点与它们之间的线）
+      var exb = t.closest('[data-export]');
+      if (exb) {
+        var res = exporter ? exporter.save(exb.getAttribute('data-export'))
+          : { ok: false, reason: '导出模块没加载（index.html 少了 export.js？）' };
+        var old = exb.textContent;
+        exb.textContent = res && res.ok ? '✓' : '×';
+        setTimeout(function () { exb.textContent = old; }, 1200);
+        if (res && res.ok) {
+          console.log('[数学星图] 已导出 ' + res.name + '（' + res.nodes + ' 点 / ' +
+            res.edges + ' 线 / ' + res.bytes + ' 字节）');
+        } else {
+          console.error('[数学星图] 导出失败：' + ((res && res.reason) || '未知原因'));
+        }
         return;
       }
 
@@ -1248,6 +1279,7 @@
       visibility: vis,
       focusNode: focusNode, focusEdge: focusEdge, fitAll: fitAll, fitRegion: fitRegion,
       clearFocus: clearFocus,
+      export: exporter,
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次
       rebuild: function () { start(); },
       get graph() { return view.graph; },

@@ -87,6 +87,9 @@ window.addEventListener('error', function (e) {
 <!-- ⚠ KaTeX 必须在 core/util.js 之前加载：util.js 里的行内/块级公式渲染会去问
      MG.renderInlineMath / MG.renderBlockMath，而它们由 app.js 的 hookKatex() 挂上，
      挂钩的前提是 global.katex 已经存在。 -->
+<script>/* 内容版本：tools/idstable.mjs 维护，build.mjs 构建时把 dev 换成真版本号。
+   ⭐ 星图公开后节点 id 是对外契约，导出的文件与 llms.txt 里都带这个版本，别人引用时能对齐。 */
+window.MG = window.MG || {}; MG.contentVersion = 'dev';</script>
 <script src="src/ui/katex.min.js"></script>
 
 <script src="src/core/config.js"></script>
@@ -110,6 +113,7 @@ window.addEventListener('error', function (e) {
 <script src="src/data/regions.js"></script>
 <script src="src/data/clusters.js"></script>
 <script src="src/data/aliases.js"></script>
+<script src="src/data/xref.js"></script>
 <script src="src/data/notation.js"></script>
 <script src="src/data/packs/01-zfc-axioms.js"></script>
 <script src="src/data/packs/02-set-theory.js"></script>
@@ -195,6 +199,7 @@ window.addEventListener('error', function (e) {
 <script src="src/data/packs/93-trunk.js"></script>
 
 <!-- 启动 -->
+<script src="src/core/export.js"></script>
 <script src="src/core/app.js"></script>
 </body>
 </html>
