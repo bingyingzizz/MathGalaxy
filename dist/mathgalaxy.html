@@ -76,6 +76,10 @@ html, body {
 
 /* ---------- 浮动 UI 通用 ---------- */
 .floating {
+  /* ⚠️ 拖动/缩放期间 JS 会给 <html> 挂 .dragging：那时关掉 backdrop-filter 并换成接近不透明的
+     实色背景。原因：浮动 UI 是 fixed 的、拖动时它自己不动，而背后的 canvas 每帧都在变
+     ⇒ 合成器每帧都要重新模糊 backdrop。⛔ 不要给 backdrop-filter 加 transition，
+     过渡本身就会产生每帧成本。 */
   position: fixed;
   z-index: 10;
   background: var(--glass);
@@ -84,6 +88,14 @@ html, body {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+}
+
+/* 拖动 / 缩放 / 平移进行时：浮动 UI 换成接近不透明的实色，去掉 backdrop 模糊。
+   ⛔ 这里不许加 transition（过渡期间每帧都要重新模糊，等于没省）。 */
+html.dragging .floating {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 /* ---------- 搜索 ---------- */
@@ -3946,8 +3958,30 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     }
 
     /* ------------------------------------------------------- 指针按下 */
+    /* 手势期间给 <html> 挂 .dragging：浮动 UI 那一层 backdrop 模糊在「背后 canvas 每帧都变」
+       时是合成器的固定开销，拖动/缩放期间先关掉（样式见 styles.css，⛔ 不加 transition）。
+       滚轮没有起止事件 ⇒ 用一个短去抖计时器收尾。 */
+    var dragStateTimer = 0, dragStateOn = false;
+    function setDragState(on, holdMs) {
+      if (on) {
+        if (!dragStateOn) {
+          dragStateOn = true;
+          document.documentElement.classList.add('dragging');
+        }
+        if (dragStateTimer) { clearTimeout(dragStateTimer); dragStateTimer = 0; }
+        if (holdMs) dragStateTimer = setTimeout(function () { setDragState(false); }, holdMs);
+      } else {
+        if (dragStateTimer) { clearTimeout(dragStateTimer); dragStateTimer = 0; }
+        if (dragStateOn) {
+          dragStateOn = false;
+          document.documentElement.classList.remove('dragging');
+        }
+      }
+    }
+
     function onPointerDown(e) {
       if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return;
+      setDragState(true);                 // 按下就挂：抬起来之前的每一帧都已经省下模糊
       canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId);
       var p = localPos(e);
       pointers.set(e.pointerId, p);
@@ -4045,6 +4079,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
       if (pointers.size === 0) {
         canvas.classList.remove('dragging');
+        setDragState(false);              // 手势结束：恢复浮动 UI 的毛玻璃
         if (mode === 'pan' && !moved) {
           var dt = (performance.now ? performance.now() : Date.now()) - downTime;
           if (dt < 700) {
@@ -4070,13 +4105,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
     function onPointerCancel(e) {
       pointers.delete(e.pointerId);
-      if (pointers.size === 0) { mode = 'idle'; canvas.classList.remove('dragging'); }
+      if (pointers.size === 0) { mode = 'idle'; canvas.classList.remove('dragging'); setDragState(false); }
       lastPinch = pinchState();
     }
 
     /* ------------------------------------------------------------ 滚轮 */
     function onWheel(e) {
       e.preventDefault();
+      /* 滚轮/双指捏合也是「背后 canvas 每帧在变」的时段 ⇒ 一样关掉浮动层的模糊。
+         滚轮没有结束事件，用 260ms 去抖收尾（比手势本身长一点，连续滚动期间不闪回）。 */
+      setDragState(true, 260);
       var p = localPos(e);
       var isPinch = e.ctrlKey || e.metaKey;   // 触控板捏合 → 浏览器给的是 ctrl+wheel
       var zoom = isPinch || C.wheelZooms;

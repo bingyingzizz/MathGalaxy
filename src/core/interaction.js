@@ -48,8 +48,30 @@
     }
 
     /* ------------------------------------------------------- 指针按下 */
+    /* 手势期间给 <html> 挂 .dragging：浮动 UI 那一层 backdrop 模糊在「背后 canvas 每帧都变」
+       时是合成器的固定开销，拖动/缩放期间先关掉（样式见 styles.css，⛔ 不加 transition）。
+       滚轮没有起止事件 ⇒ 用一个短去抖计时器收尾。 */
+    var dragStateTimer = 0, dragStateOn = false;
+    function setDragState(on, holdMs) {
+      if (on) {
+        if (!dragStateOn) {
+          dragStateOn = true;
+          document.documentElement.classList.add('dragging');
+        }
+        if (dragStateTimer) { clearTimeout(dragStateTimer); dragStateTimer = 0; }
+        if (holdMs) dragStateTimer = setTimeout(function () { setDragState(false); }, holdMs);
+      } else {
+        if (dragStateTimer) { clearTimeout(dragStateTimer); dragStateTimer = 0; }
+        if (dragStateOn) {
+          dragStateOn = false;
+          document.documentElement.classList.remove('dragging');
+        }
+      }
+    }
+
     function onPointerDown(e) {
       if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return;
+      setDragState(true);                 // 按下就挂：抬起来之前的每一帧都已经省下模糊
       canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId);
       var p = localPos(e);
       pointers.set(e.pointerId, p);
@@ -147,6 +169,7 @@
 
       if (pointers.size === 0) {
         canvas.classList.remove('dragging');
+        setDragState(false);              // 手势结束：恢复浮动 UI 的毛玻璃
         if (mode === 'pan' && !moved) {
           var dt = (performance.now ? performance.now() : Date.now()) - downTime;
           if (dt < 700) {
@@ -172,13 +195,16 @@
 
     function onPointerCancel(e) {
       pointers.delete(e.pointerId);
-      if (pointers.size === 0) { mode = 'idle'; canvas.classList.remove('dragging'); }
+      if (pointers.size === 0) { mode = 'idle'; canvas.classList.remove('dragging'); setDragState(false); }
       lastPinch = pinchState();
     }
 
     /* ------------------------------------------------------------ 滚轮 */
     function onWheel(e) {
       e.preventDefault();
+      /* 滚轮/双指捏合也是「背后 canvas 每帧在变」的时段 ⇒ 一样关掉浮动层的模糊。
+         滚轮没有结束事件，用 260ms 去抖收尾（比手势本身长一点，连续滚动期间不闪回）。 */
+      setDragState(true, 260);
       var p = localPos(e);
       var isPinch = e.ctrlKey || e.metaKey;   // 触控板捏合 → 浏览器给的是 ctrl+wheel
       var zoom = isPinch || C.wheelZooms;

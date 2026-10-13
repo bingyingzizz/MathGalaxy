@@ -53,6 +53,10 @@ html, body {
 
 /* ---------- 浮动 UI 通用 ---------- */
 .floating {
+  /* ⚠️ 拖动/缩放期间 JS 会给 <html> 挂 .dragging：那时关掉 backdrop-filter 并换成接近不透明的
+     实色背景。原因：浮动 UI 是 fixed 的、拖动时它自己不动，而背后的 canvas 每帧都在变
+     ⇒ 合成器每帧都要重新模糊 backdrop。⛔ 不要给 backdrop-filter 加 transition，
+     过渡本身就会产生每帧成本。 */
   position: fixed;
   z-index: 10;
   background: var(--glass);
@@ -61,6 +65,14 @@ html, body {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+}
+
+/* 拖动 / 缩放 / 平移进行时：浮动 UI 换成接近不透明的实色，去掉 backdrop 模糊。
+   ⛔ 这里不许加 transition（过渡期间每帧都要重新模糊，等于没省）。 */
+html.dragging .floating {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 /* ---------- 搜索 ---------- */
