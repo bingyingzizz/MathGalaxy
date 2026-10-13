@@ -1,8 +1,7 @@
 # 可测函数　`def.measurable-function`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.measurable-function.md`
+[在星图里打开](../#n=def.measurable-function)　·　第 1 页 [nodes/def.measurable-function.md](./def.measurable-function.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.cauchy-in-measure` 依测度 Cauchy 用
-- 被 `def.locally-integrable` 局部可积 用
-- 被 `def.lp-norm` L^p 范数 用
-- 被 `def.essential-sup` 本性上界与 L^∞ 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-dep.function-measurable-function.md](../proofs/def-dep.function-measurable-function.md)
+
+> 续见 [nodes/def.measurable-function.3.md](./def.measurable-function.3.md)

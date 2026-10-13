@@ -1,6 +1,7 @@
 # Hahn 分解定理　`thm.hahn-decomposition`
 Hahn 分解定理（Hahn Decomposition Theorem）
 layer 18 · 定理 · 符号测度与分解 · 分析学
+[在星图里打开](../#n=thm.hahn-decomposition)　·　[节点索引](../index.md)
 
 设 $\nu$ 是 $(X, \mathcal{M})$ 上的符号测度。则存在 $P, N \in \mathcal{M}$ 使
 
@@ -10,14 +11,16 @@ $$P \cup N = X, \quad  P \cap N = \emptyset, $$
 
 若 $P', N'$ 是另一对这样的集合，则 $P \triangle  P' = N \triangle  N'$ 是 $\nu$零集。
 
-## 为什么成立（入边，证明在 proofs/）
-- `def.signed-measure` 符号测度 + `prop.positive-set-closure` 正集的封闭性：符号测度 + 正集的封闭性 $\implies$ Hahn 分解　proofs/imp.hahn.md
-- `def.positive-negative-null` 正集 / 负集 / 零集：用到了定义 正集 / 负集 / 零集　proofs/def-link.positive-hahn.md
-
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.jordan-decomposition` Jordan 分解定理
-- 被 `thm.jordan-decomposition` Jordan 分解定理 用
+- ⇒ [`thm.jordan-decomposition`](../nodes/thm.jordan-decomposition.md) Jordan 分解定理
+
+- …另有出边，续页见 [nodes/thm.hahn-decomposition.3.md](./thm.hahn-decomposition.3.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/thm.hahn-decomposition.2.md](./thm.hahn-decomposition.2.md)
 
 refs: Folland, Real Analysis, Theorem 3.3；Halmos, Measure Theory, §29
 
 > 说明见 `notes/thm.hahn-decomposition.md`
+
+引用：`thm.hahn-decomposition`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

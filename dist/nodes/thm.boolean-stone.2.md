@@ -1,6 +1,6 @@
 # Boolean 环与 Stone 空间等价　`thm.boolean-stone`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/thm.boolean-stone.md`
+[在星图里打开](../#n=thm.boolean-stone)　·　第 1 页 [nodes/thm.boolean-stone.md](./thm.boolean-stone.md)
 
-## 陈述（续）
-- $B \mapsto \operatorname{Spec}(B) := \operatorname{Hom}_{\mathbf{Rng}}(B,\ \mathbb{F}_{2})$，配上 $\mathbb{F}_{2}$（取离散拓扑）上的**乘积拓扑**；
-- $S \mapsto \operatorname{Clopen}(S)$ —— $S$ 的**开闭子集**全体，**加法取对称差**、**乘法取交**。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.boolean-ring`](../nodes/def.boolean-ring.md) 布尔环：用到了定义 布尔环　[proofs/def-dep.boolstone-ring.md](../proofs/def-dep.boolstone-ring.md)
+- [`def.stone-space`](../nodes/def.stone-space.md) 全不连通与 Stone 空间：用到了定义 全不连通与 Stone 空间　[proofs/def-dep.boolstone-stone.md](../proofs/def-dep.boolstone-stone.md)

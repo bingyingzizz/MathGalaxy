@@ -1,6 +1,7 @@
 # CHaus 是预拓扑斯　`def.chaus-pretopos`
 $\mathbf{CHaus}$ 是预拓扑斯
 layer 16 · 定理 · 凝聚态集 · 凝聚态数学
+[在星图里打开](../#n=def.chaus-pretopos)　·　[节点索引](../index.md)
 
 在 $\mathbf{CHaus}$ 中：
 
@@ -12,13 +13,15 @@ layer 16 · 定理 · 凝聚态集 · 凝聚态数学
 因此 $\mathbf{CHaus}$ 是**预拓扑斯**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.pretopos` 预拓扑斯：用到了定义 预拓扑斯　proofs/def-dep.pretopos-chaus.md
-- `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-pretopos.md
-- `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.adjoint-chaus-pretopos.md
+- [`def.pretopos`](../nodes/def.pretopos.md) 预拓扑斯：用到了定义 预拓扑斯　[proofs/def-dep.pretopos-chaus.md](../proofs/def-dep.pretopos-chaus.md)
+
+- …另有入边，续页见 [nodes/def.chaus-pretopos.2.md](./def.chaus-pretopos.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.cond-topos` Cond 是拓扑斯
+- ⇒ [`thm.cond-topos`](../nodes/thm.cond-topos.md) Cond 是拓扑斯
 
 refs: Le Stum, Proposition 4.1.1；Le Stum, Corollary 4.1.2
 
 > 说明见 `notes/def.chaus-pretopos.md`
+
+引用：`def.chaus-pretopos`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

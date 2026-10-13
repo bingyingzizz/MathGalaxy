@@ -1,6 +1,7 @@
 # 集合族的基本性质　`prop.set-class-properties`
 命题：基本类 / 环 / σ-代数的几条基本性质
 layer 15 · 命题 · 集合族与 σ-代数 · 分析学
+[在星图里打开](../#n=prop.set-class-properties)　·　[节点索引](../index.md)
 
 (1) 基本类包含 $\emptyset$。
 
@@ -13,13 +14,14 @@ $(3) \mathfrak{A}$ 是 $\sigma$代数 $\iff \mathfrak{A}$ 对**可数并**与**�
 $$\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \}$$
 
 是一个**环**。
-> 陈述续见 `nodes/prop.set-class-properties.2.md`
 
+（第 (4) 条因为本身是一条定理，单独列在「环 $\implies \sigma$环 的判据」里。）
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.fundamental-class` 基本类：用到了定义 基本类　proofs/def-link.fundamental-props.md
-- `def.set-ring` 环与代数：用到了定义 环与代数　proofs/def-link.ring-props.md
+- …另有入边，续页见 [nodes/prop.set-class-properties.2.md](./prop.set-class-properties.2.md)
 
 refs: Halmos, Measure Theory, §4
 
 > 说明见 `notes/prop.set-class-properties.md`
+
+引用：`prop.set-class-properties`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

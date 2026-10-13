@@ -1,8 +1,7 @@
 # 幺半群对象　`def.monoid-object`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.monoid-object.md`　·　上一页 `nodes/def.monoid-object.2.md`
+[在星图里打开](../#n=def.monoid-object)　·　第 1 页 [nodes/def.monoid-object.md](./def.monoid-object.md)　·　上一页 [nodes/def.monoid-object.2.md](./def.monoid-object.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.bialgebra-examples` 双代数的例子 用
-- 被 `prop.forgetful-preserves-limits` 代数遗忘函子保极限 用
-- 被 `prop.coreflective-monoids-full` 余反射子范畴上的幺半群 用
-- 被 `def.group-object` 群对象与阿贝尔群对象 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.final-initial`](../nodes/def.final-initial.md) 终对象 / 始对象：用到了定义 终对象 / 始对象　[proofs/def-dep.monoidobj-terminal.md](../proofs/def-dep.monoidobj-terminal.md)
+
+> 续见 [nodes/def.monoid-object.4.md](./def.monoid-object.4.md)

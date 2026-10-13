@@ -1,9 +1,7 @@
 # L⁺　`def.lplus`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.lplus.md`
+[在星图里打开](../#n=def.lplus)　·　第 1 页 [nodes/def.lplus.md](./def.lplus.md)
 
-## 陈述（续）
-$$L^+ := \{ f : X \to [0, +\infty] : f\text{ 可测} \}$$
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-dep.measure-lplus.md](../proofs/def-dep.measure-lplus.md)
 
-即取值在**扩充**非负实数里的可测函数全体。
-
-> 续见 `nodes/def.lplus.3.md`
+> 续见 [nodes/def.lplus.3.md](./def.lplus.3.md)

@@ -1,6 +1,6 @@
 # 图的态射　`def.graph-morphism`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.graph-morphism.md`
+[在星图里打开](../#n=def.graph-morphism)　·　第 1 页 [nodes/def.graph-morphism.md](./def.graph-morphism.md)
 
-## 陈述（续）
-$$s' \circ \varphi_2 = \varphi_1 \circ s, \qquad t' \circ \varphi_2 = \varphi_1 \circ t$$
-也就是说：$\varphi_1$ 把一条边的起点送到这条边的像的起点，把终点送到终点。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.graph`](../nodes/def.graph.md) 图：用到了定义 图　[proofs/def-dep.graph-graph-morphism.md](../proofs/def-dep.graph-graph-morphism.md)
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-dep.function-graph-morphism.md](../proofs/def-dep.function-graph-morphism.md)

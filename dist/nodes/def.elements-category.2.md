@@ -1,5 +1,8 @@
 # 元素范畴　`def.elements-category`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.elements-category.md`
+[在星图里打开](../#n=def.elements-category)　·　第 1 页 [nodes/def.elements-category.md](./def.elements-category.md)
 
-## 陈述（续）
-称 $(X, s)$ 是 $F$ 的**泛元素**，如果它是 $\operatorname{el}(F)$ 的始对象。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-dep.function-el.md](../proofs/def-dep.function-el.md)
+- [`def.cone`](../nodes/def.cone.md) 锥：用到了定义 锥　[proofs/def-dep.cone-el.md](../proofs/def-dep.cone-el.md)
+
+> 续见 [nodes/def.elements-category.3.md](./def.elements-category.3.md)

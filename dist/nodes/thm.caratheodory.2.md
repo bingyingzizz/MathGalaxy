@@ -1,7 +1,7 @@
 # Carathéodory 定理　`thm.caratheodory`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/thm.caratheodory.md`
+[在星图里打开](../#n=thm.caratheodory)　·　第 1 页 [nodes/thm.caratheodory.md](./thm.caratheodory.md)
 
-## 陈述（续）
-1. **$\mathcal{M}$ 是一个 $\sigma$代数**；
-2. **$\mu^*|_\mathcal{M}$ 是 $(X, \mathcal{M})$ 上的一个测度**（即 $\mu^{*}$ 在 $\mathcal{M}$ 上真的可加）；
-3. 这个测度是**完备**的。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.outer-measure`](../nodes/def.outer-measure.md) 外测度 + [`def.caratheodory-measurable`](../nodes/def.caratheodory-measurable.md) μ*-可测集：外测度 + 可切集 $\implies$ σ-代数与完备测度　[proofs/imp.outer-carath.md](../proofs/imp.outer-carath.md)
+- [`def.outer-measure`](../nodes/def.outer-measure.md) 外测度：用到了定义 外测度　[proofs/def-link.outer-carath-thm.md](../proofs/def-link.outer-carath-thm.md)
+- [`def.caratheodory-measurable`](../nodes/def.caratheodory-measurable.md) μ*-可测集：用到了定义 μ*-可测集　[proofs/def-link.carathmeasurable-thm.md](../proofs/def-link.carathmeasurable-thm.md)

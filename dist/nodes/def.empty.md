@@ -1,6 +1,7 @@
 # 空集 ∅　`def.empty`
 空集（Empty Set）
 layer 0 · 定义 · 集合的构造 · 集合论
+[在星图里打开](../#n=def.empty)　·　[节点索引](../index.md)
 
 **空集**是不含任何元素的集合，记作 $\emptyset$：
 
@@ -11,10 +12,12 @@ $$\emptyset := \{ x : x \ne x \}$$
 于是对一切集合 $A$：$\emptyset \subseteq A$（空泛真），且 $\emptyset$ 是 $\subseteq$ 的最小元。
 
 ## 它能推出什么 / 谁在用它
-- 被 `thm.empty` 空集存在 用
-- 被 `def.union-inter` 并集与交集 用
-- 被 `def.final-initial` 终对象 / 始对象 用
+- 被 [`thm.empty`](../nodes/thm.empty.md) 空集存在 用
+- 被 [`def.union-inter`](../nodes/def.union-inter.md) 并集与交集 用
+- 被 [`def.final-initial`](../nodes/def.final-initial.md) 终对象 / 始对象 用
 
 refs: Kunen, Set Theory, I.5
 
 > 说明见 `notes/def.empty.md`
+
+引用：`def.empty`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

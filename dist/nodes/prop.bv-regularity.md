@@ -1,6 +1,7 @@
 # BV 函数的正则性　`prop.bv-regularity`
 命题：BV 函数的单侧极限都存在、不连续点可数、a.e. 可导
 layer 19 · 命题 · 有界变差与绝对连续 · 分析学
+[在星图里打开](../#n=prop.bv-regularity)　·　[节点索引](../index.md)
 
 设 $F \in BV$。则
 
@@ -11,9 +12,10 @@ layer 19 · 命题 · 有界变差与绝对连续 · 分析学
 **(e)** 令 $G(x) = F(x+)$，则 $F'$ 与 $G'$ 处处存在且相等（a.e.）。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.bv-jordan` BV 的 Jordan 分解 + `thm.monotone-differentiable` 单调函数几乎处处可导：化归到递增函数 $\implies BV$ 的正则性　proofs/imp.bv-regularity.md
-- `def.bounded-variation` 有界变差 BV：用到了定义 有界变差 BV　proofs/def-link.bv-regularity-thm.md
+- …另有入边，续页见 [nodes/prop.bv-regularity.2.md](./prop.bv-regularity.2.md)
 
 refs: Folland, Real Analysis, Theorem 3.27
 
 > 说明见 `notes/prop.bv-regularity.md`
+
+引用：`prop.bv-regularity`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

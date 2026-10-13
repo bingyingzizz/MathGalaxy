@@ -1,6 +1,7 @@
 # 半范数阿贝尔群　`def.semi-normed-ab-group`
 半范数阿贝尔群
 layer 7 · 定义 · 凝聚态上同调 · 凝聚态数学+分析学
+[在星图里打开](../#n=def.semi-normed-ab-group)　·　[节点索引](../index.md)
 
 **半范数阿贝尔群**是一个阿贝尔群 $M$ 配上函数 $\|\cdot\| : M \to \mathbb{R}_{\ge 0}$，满足
 
@@ -9,15 +10,13 @@ layer 7 · 定义 · 凝聚态上同调 · 凝聚态数学+分析学
 - $\|-s\| = \|s\|$（对称性）。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.group` 群：用到了定义 群　proofs/def-dep.seminorm-group.md
+- [`def.group`](../nodes/def.group.md) 群：用到了定义 群　[proofs/def-dep.seminorm-group.md](../proofs/def-dep.seminorm-group.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.k-bounded-exact-filtered-colimit` K-有界正合沿滤过余极限保持 用
-- 被 `prop.continuous-functions-normed` 连续函数空间的范数 用
-- 被 `def.banach-ab-group` Banach 阿贝尔群 用
-- 被 `def.k-bounded-exact` K-有界正合 用
-- 被 `lem.stone-cech-1-bounded` Stone 满射的 Čech 复形 1-有界零调 用
+- …另有出边，续页见 [nodes/def.semi-normed-ab-group.2.md](./def.semi-normed-ab-group.2.md)
 
 refs: Le Stum, §8.2
 
 > 说明见 `notes/def.semi-normed-ab-group.md`
+
+引用：`def.semi-normed-ab-group`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

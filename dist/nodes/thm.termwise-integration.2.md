@@ -1,6 +1,5 @@
 # 逐项积分　`thm.termwise-integration`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/thm.termwise-integration.md`
+[在星图里打开](../#n=thm.termwise-integration)　·　第 1 页 [nodes/thm.termwise-integration.md](./thm.termwise-integration.md)
 
-## 陈述（续）
-$$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} 
-\int f_n$$
+## 它能推出什么 / 谁在用它（续）
+- ⇒ [`thm.termwise-L1`](../nodes/thm.termwise-L1.md) L¹ 的逐项积分

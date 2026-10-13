@@ -1,7 +1,7 @@
 # 商拓扑　`def.quotient-topology`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.quotient-topology.md`
+[在星图里打开](../#n=def.quotient-topology)　·　第 1 页 [nodes/def.quotient-topology.md](./def.quotient-topology.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `thm.quotient-product` 商映射与局部紧空间作积 用
-- 被 `thm.cgwh-reflective` CGWH 是 CG 的反射子范畴 用
-- 被 `prop.cg-equivalent-conditions` 紧生成空间的等价刻画 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/dep.function-quotient.md](../proofs/dep.function-quotient.md)
+
+> 续见 [nodes/def.quotient-topology.3.md](./def.quotient-topology.3.md)

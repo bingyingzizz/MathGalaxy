@@ -1,11 +1,8 @@
 # 拓扑空间与开集　`def.topology`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.topology.md`
+[在星图里打开](../#n=def.topology)　·　第 1 页 [nodes/def.topology.md](./def.topology.md)
 
-## 陈述（续）
-1. **含两端**：$\emptyset \in \mathcal{T}$ 且 $X \in \mathcal{T}$；
-2. **任意并封闭**：$\{ U_i \}_{i \in I} \subseteq \mathcal{T} \implies \bigcup_{i \in I} U_i \in \mathcal{T}$（$I$ 任意，可以不可数）；
-3. **有限交封闭**：$U, V \in \mathcal{T} \implies U \cap V \in \mathcal{T}$。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.power-set`](../nodes/def.power-set.md) 幂集 𝒫(X)：用到了定义 幂集 𝒫(X)　[proofs/dep.powerset-topology.md](../proofs/dep.powerset-topology.md)
+- [`def.subset`](../nodes/def.subset.md) 子集：用到了定义 子集　[proofs/dep.subset-topology.md](../proofs/dep.subset-topology.md)
 
-$\mathcal{T}$ 的成员称为**开集**，它们的补集称为**闭集**。
-
-> 续见 `nodes/def.topology.3.md`
+> 续见 [nodes/def.topology.3.md](./def.topology.3.md)

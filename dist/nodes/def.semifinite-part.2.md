@@ -1,6 +1,5 @@
 # 半有限部分　`def.semifinite-part`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.semifinite-part.md`
+[在星图里打开](../#n=def.semifinite-part)　·　第 1 页 [nodes/def.semifinite-part.md](./def.semifinite-part.md)
 
-## 陈述（续）
-$$\mu_0(E) := \sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty \}$$
-则 $\mu _{0}$ 称为 $\mu$ 的**半有限部分**，它是一个半有限测度，且 $\mu _{0} \le \mu$。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.measure-space`](../nodes/def.measure-space.md) 有限 / σ-有限 / 半有限：用到了定义 有限 / σ-有限 / 半有限　[proofs/def-link.semifinite-measure-space.md](../proofs/def-link.semifinite-measure-space.md)

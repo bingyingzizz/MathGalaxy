@@ -1,6 +1,7 @@
 # Lebesgue 可测　`def.lebesgue-measurable`
 Lebesgue 可测 / Borel 可测（$\mathbb{R} \to \mathbb{C}$ 的情形）
 layer 7 · 定义 · 可测函数与收敛 · 分析学
+[在星图里打开](../#n=def.lebesgue-measurable)　·　[节点索引](../index.md)
 
 对 $f : \mathbb{R} \to \mathbb{C}$：
 
@@ -8,9 +9,10 @@ layer 7 · 定义 · 可测函数与收敛 · 分析学
 - 若 $f$ 是 $(\mathfrak{B}_\mathbb{R}, \mathfrak{B}_\mathbb{C})$-可测，称 $f$ **Borel 可测**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.measurable-function` 可测函数：用到了定义 可测函数　proofs/def-link.lebesgue-measurable-def.md
-- `def.borel` Borel σ-代数：用到了定义 Borel σ-代数　proofs/def-link.borel-lebesgue-measurable.md
+- …另有入边，续页见 [nodes/def.lebesgue-measurable.2.md](./def.lebesgue-measurable.2.md)
 
 refs: Folland, Real Analysis, §2.1
 
 > 说明见 `notes/def.lebesgue-measurable.md`
+
+引用：`def.lebesgue-measurable`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

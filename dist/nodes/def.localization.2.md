@@ -1,8 +1,9 @@
 # 局部化　`def.localization`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.localization.md`
+[在星图里打开](../#n=def.localization)　·　第 1 页 [nodes/def.localization.md](./def.localization.md)
 
-## 陈述（续）
-1. 对每个 $w \in W$，$\gamma(w)$ 是同构；
-2. **泛性质**：对任何函子 $F : \mathcal{C} \to \mathcal{D}$ 使每个 $w \in W$ 的像都是同构，存在唯一的 $\overline{F} : \mathrm{ho}(\mathcal{C}) \to \mathcal{D}$ 使 $\overline{F} \circ \gamma = F$。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.functor`](../nodes/def.functor.md) 函子：用到了定义 函子　[proofs/def-dep.localization-functor.md](../proofs/def-dep.localization-functor.md)
+- [`def.section-retraction`](../nodes/def.section-retraction.md) 截面与收缩：用到了定义 截面与收缩　[proofs/def-dep.localization-iso.md](../proofs/def-dep.localization-iso.md)
+- [`def.natural-transformation`](../nodes/def.natural-transformation.md) 自然变换：用到了定义 自然变换　[proofs/def-dep.localization-nattrans.md](../proofs/def-dep.localization-nattrans.md)
 
-> 续见 `nodes/def.localization.3.md`
+> 续见 [nodes/def.localization.3.md](./def.localization.3.md)

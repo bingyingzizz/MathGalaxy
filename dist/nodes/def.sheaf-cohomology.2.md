@@ -1,19 +1,7 @@
 # 层上同调　`def.sheaf-cohomology`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.sheaf-cohomology.md`
+[在星图里打开](../#n=def.sheaf-cohomology)　·　第 1 页 [nodes/def.sheaf-cohomology.md](./def.sheaf-cohomology.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.higher-cohomology-presheaf-zero` 高次上同调预层的关联层为零 用
-- 被 `prop.cohomology-functoriality` 上同调的函子性 用
-- 被 `thm.leray-spectral-sequence` Leray 谱序列 用
-- 被 `prop.topos-morphism-point` 点给出的拓扑斯态射 用
-- 被 `prop.cohomology-via-associated-sheaf` 用关联层算上同调 用
-- 被 `prop.cohomology-presheaf-H` 层化不改变导出的整体截面 用
-- 被 `def.acyclic-sheaf` 无环层 用
-- 被 `prop.chaus-cech-eq-h` 紧 Hausdorff 上 Čech 就是上同调 用
-- 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用
-- 被 `cor.homotopy-invariant-cohomology` 层上同调是同伦不变量 用
-- 被 `prop.stonean-cond-acyclic` Stonean 上凝聚阿贝尔群零调 用
-- 被 `lem.stone-constant-acyclic` Stone 上常系数零调 用
-- 被 `thm.dyckhoff` 局部紧上凝聚态＝层上同调 用
-- 被 `method.simplicial-cohomology` 单纯方法算层上同调 用
-- 被 `prop.filtered-limit-cohomology` 滤过极限的上同调 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.right-derived-functor`](../nodes/def.right-derived-functor.md) 右导出函子：用到了定义 右导出函子　[proofs/def-dep.sheafcoh-rdf.md](../proofs/def-dep.sheafcoh-rdf.md)
+
+> 续见 [nodes/def.sheaf-cohomology.3.md](./def.sheaf-cohomology.3.md)

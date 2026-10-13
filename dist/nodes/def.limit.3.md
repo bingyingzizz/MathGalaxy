@@ -1,26 +1,8 @@
 # 极限　`def.limit`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.limit.md`　·　上一页 `nodes/def.limit.2.md`
+[在星图里打开](../#n=def.limit)　·　第 1 页 [nodes/def.limit.md](./def.limit.md)　·　上一页 [nodes/def.limit.2.md](./def.limit.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.algebra-categories-limits` 代数范畴里的极限与余极限 用
-- 被 `prop.yoneda-embedding` 米田嵌入 用
-- 被 `thm.density` 稠密性定理 用
-- 被 `thm.right-adjoint-preserves-limits` 右伴随保极限 用
-- 被 `prop.limit-adjoint` 极限即伴随 用
-- 被 `thm.saft` 伴随函子定理 用
-- 被 `prop.reflective-limits` 反射子范畴里的极限 用
-- 被 `ex.kan-extension` Kan 延拓的两个例子 用
-- 被 `prop.filtered-exact` 滤过余极限正合 用
-- 被 `thm.lim-functor` 极限的函子性 用
-- 被 `prop.topos-sheaf-limits` 拓扑斯上的层即保极限的预层 用
-- 被 `prop.condab-section` 截面函子保极限余极限 用
-- 被 `def.final-initial` 终对象 / 始对象 用
-- 被 `def.product` 积 / 余积 用
-- 被 `def.fibered-product` 纤维积 / 纤维余积 用
-- 被 `def.equalizer` 等化子 / 余等化子 用
-- 被 `def.profinite` 投射有限空间 用
-- 被 `def.sheaf` 层 用
-- 被 `def.topos-morphism` 拓扑斯的态射 用
-- 被 `def.compactly-generated` 紧生成空间 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.cone`](../nodes/def.cone.md) 锥：用到了定义 锥　[proofs/def-dep.cone-limit.md](../proofs/def-dep.cone-limit.md)
+- [`def.category`](../nodes/def.category.md) 范畴：用到了定义 范畴　[proofs/def-dep.category-limit.md](../proofs/def-dep.category-limit.md)
 
-> 续见 `nodes/def.limit.4.md`
+> 续见 [nodes/def.limit.4.md](./def.limit.4.md)

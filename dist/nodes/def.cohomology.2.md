@@ -1,13 +1,7 @@
 # 同调　`def.cohomology`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.cohomology.md`
+[在星图里打开](../#n=def.cohomology)　·　第 1 页 [nodes/def.cohomology.md](./def.cohomology.md)
 
-## 陈述（续）
-是 $\mathcal{A}$ 中的上链复形。$K$ 
-的**第 $n$ 阶同调**是
-$$H^{n}(K) \;:=\; Z^{n}(K)
- \big/ B^{n}(K) \;=\; \k
-er d^{n} \big/ \operatorna
-me{im} d^{n-1}$$
-链复形 $K_{n}$ 的第 $n$ 阶同调取它在 $
-\mathcal{A}^{\mathrm{op}}$
- 中的 $(1-n)$ 阶上同调。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.equalizer`](../nodes/def.equalizer.md) 等化子 / 余等化子：用到了定义 等化子 / 余等化子　[proofs/def-dep.equalizer-cohomology.md](../proofs/def-dep.equalizer-cohomology.md)
+
+> 续见 [nodes/def.cohomology.3.md](./def.cohomology.3.md)

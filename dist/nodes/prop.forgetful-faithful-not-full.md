@@ -1,15 +1,15 @@
 # 遗忘函子忠实但不满　`prop.forgetful-faithful-not-full`
 命题：$\mathbf{Top} \to \mathbf{Set}$ 与 $\mathbf{Ab} \to \mathbf{Set}$ 忠实不满
 layer 10 · 命题 · 函子与自然变换 · 范畴论
+[在星图里打开](../#n=prop.forgetful-faithful-not-full)　·　[节点索引](../index.md)
 
-遗忘函子 $\mathbf{T
-> 陈述续见 `nodes/prop.forgetful-faithful-not-full.2.md`
-
+遗忘函子 $\mathbf{Top} \to \mathbf{Set}$ 与 $\mathbf{Ab} \to \mathbf{Set}$ 都是**忠实但不满**的。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.ff-faithful` 忠实 / 满 / 全忠实：用到了定义 忠实 / 满 / 全忠实　proofs/def-link.ffnotfull-ff.md
+- …另有入边，续页见 [nodes/prop.forgetful-faithful-not-full.2.md](./prop.forgetful-faithful-not-full.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, Exercise 1.14
 
-## 说明
-**证明。** 映射的集合不变，所以忠实 ✓；但两个拓扑空间之间的连续映射只是全体映射的一部分、两个群之间的映射还要求保运算 ✓ —— 所以不满 ✓。∎
+> 说明见 `notes/prop.forgetful-faithful-not-full.md`
+
+引用：`prop.forgetful-faithful-not-full`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

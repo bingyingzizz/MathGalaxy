@@ -1,6 +1,7 @@
 # 整数 ℤ　`def.int`
 整数 $\mathbb{Z}$（由 $\mathbb{N} \times \mathbb{N}$ 构造）
 layer 7 · 定义 · 数系的构造 · 集合论
+[在星图里打开](../#n=def.int)　·　[节点索引](../index.md)
 
 在 $\mathbb{N} \times \mathbb{N}$ 上定义
 
@@ -11,17 +12,21 @@ $$(a, b) \sim (c, d) :\iff a + d = b + c$$
 $$\mathbb{Z} := (\mathbb{N} \times \mathbb{N}) / \sim$$
 
 元素记作 $[a, b]$（即 $a - b$）。$\mathbb{Z}$ 上的**运算与序**（都要先验证与代表元无关）：
-> 陈述续见 `nodes/def.int.2.md`
 
+$$[a, b] + [c, d] := [a + c,\ b + d]$$
+$$[a, b] \cdot [c, d] := [ac + bd,\ ad + bc]$$
+$$[a, b] \le [c, d] :\iff a + d \le b + c$$
+
+其中加法与序来自 $\mathbb{N}$ 的加法与序，乘法的写法是照着 $(a - b)(c - d) = ac + bd - (ad + bc)$ 抄的。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.omega` 自然数集存在：用到了定义 自然数集存在　proofs/dep.omega-int.md
-- `def.quotient-set` 商集与等价类：用到了定义 商集与等价类　proofs/dep.quotient-int.md
-- `thm.induction` 归纳原理与递推定义：用到了定义 归纳原理与递推定义　proofs/dep.induction-int.md
+- …另有入边，续页见 [nodes/def.int.2.md](./def.int.2.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `def.rat` 有理数 ℚ 用
+- …另有出边，续页见 [nodes/def.int.3.md](./def.int.3.md)
 
 refs: Kunen, Set Theory, I.5
 
 > 说明见 `notes/def.int.md`
+
+引用：`def.int`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

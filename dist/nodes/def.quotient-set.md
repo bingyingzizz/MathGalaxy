@@ -1,6 +1,7 @@
 # 商集与等价类　`def.quotient-set`
 商集 / 等价类（Quotient Set）
 layer 5 · 定义 · 关系与函数 · 集合论
+[在星图里打开](../#n=def.quotient-set)　·　[节点索引](../index.md)
 
 设 $\sim$ 是集合 $A$ 上的一个**等价关系**。对 $a \in A$，称
 
@@ -17,16 +18,13 @@ $$A / \sim\ := \{ [a] : a \in A \}$$
 - 不同的等价类**两两不交**，且全体之并恰为 $A$ —— 也就是说，等价关系把 $A$ **划分**成一块块。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.rel` 关系：用到了定义 关系　proofs/dep.rel-quotient.md
+- [`def.rel`](../nodes/def.rel.md) 关系：用到了定义 关系　[proofs/dep.rel-quotient.md](../proofs/dep.rel-quotient.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `def.int` 整数 ℤ 用
-- 被 `def.rat` 有理数 ℚ 用
-- 被 `def.cauchy-null` Cauchy 列与零列 用
-- 被 `def.real` 实数系 ℝ 用
-- 被 `def.integrable` 可积 / L¹ 用
-- 被 `def.quotient-group` 商群 用
+- …另有出边，续页见 [nodes/def.quotient-set.2.md](./def.quotient-set.2.md)
 
 refs: Kunen, Set Theory, I.5
 
 > 说明见 `notes/def.quotient-set.md`
+
+引用：`def.quotient-set`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

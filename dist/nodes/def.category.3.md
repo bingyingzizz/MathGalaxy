@@ -1,19 +1,9 @@
 # 范畴　`def.category`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.category.md`　·　上一页 `nodes/def.category.2.md`
+[在星图里打开](../#n=def.category)　·　第 1 页 [nodes/def.category.md](./def.category.md)　·　上一页 [nodes/def.category.2.md](./def.category.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.section-retraction` 截面与收缩 用
-- 被 `def.functor` 函子 用
-- 被 `def.natural-transformation` 自然变换 用
-- 被 `def.commutative-diagram` 图与交换图 用
-- 被 `def.limit` 极限 用
-- 被 `def.presheaf` 预层 用
-- 被 `def.representable` 表示函子 用
-- 被 `def.adjoint` 伴随函子 用
-- 被 `def.chaus` 紧 Hausdorff 空间范畴 用
-- 被 `def.pretopology` 预拓扑 用
-- 被 `def.cochain-complex` 上链复形 用
-- 被 `def.homotopy-category` 同伦范畴 用
-- 被 `def.filtered-category` 滤过范畴 用
-- 被 `def.subcategory` 子范畴 用
-- 被 `def.simplex-category` 单纯形范畴 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.graph`](../nodes/def.graph.md) 图：用到了定义 图　[proofs/def-dep.graph-category.md](../proofs/def-dep.graph-category.md)
+- [`thm.product`](../nodes/thm.product.md) 笛卡尔积存在：用到了定义 笛卡尔积存在　[proofs/def-dep.product-category.md](../proofs/def-dep.product-category.md)
+- [`def.subset`](../nodes/def.subset.md) 子集：用到了定义 子集　[proofs/def-dep.subset-category.md](../proofs/def-dep.subset-category.md)
+
+> 续见 [nodes/def.category.4.md](./def.category.4.md)

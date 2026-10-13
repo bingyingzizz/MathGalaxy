@@ -1,7 +1,8 @@
 # 终对象 / 始对象　`def.final-initial`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.final-initial.md`
+[在星图里打开](../#n=def.final-initial)　·　第 1 页 [nodes/def.final-initial.md](./def.final-initial.md)
 
-## 陈述（续）
-$$\operatorname{Hom}_{\mathcal{C}}(X, \mathbf{1}_{\mathcal{C}}) = \{*\}, \qquad \operatorname{Hom}_{\mathcal{C}}(\mathbf{0}_{\mathcal{C}}, X) = \{*\}$$
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.empty`](../nodes/def.empty.md) 空集 ∅：用到了定义 空集 ∅　[proofs/def-dep.empty-final.md](../proofs/def-dep.empty-final.md)
+- [`def.limit`](../nodes/def.limit.md) 极限：用到了定义 极限　[proofs/def-dep.limit-final.md](../proofs/def-dep.limit-final.md)
 
-（对每个对象 $X$ 都恰好只有一个态射）。二者同时存在且同构时，叫**零对象**。
+> 续见 [nodes/def.final-initial.3.md](./def.final-initial.3.md)

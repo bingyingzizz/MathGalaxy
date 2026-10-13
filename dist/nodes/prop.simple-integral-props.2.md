@@ -1,8 +1,6 @@
 # 简单函数积分的性质　`prop.simple-integral-props`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/prop.simple-integral-props.md`
+[在星图里打开](../#n=prop.simple-integral-props)　·　第 1 页 [nodes/prop.simple-integral-props.md](./prop.simple-integral-props.md)
 
-## 陈述（续）
-- **(a)** $c > 0 \implies \int c\varphi = c\int \varphi$
-- **(b)** $\int (\varphi + \psi) = \int \varphi + \int \psi$
-- **(c)** $\varphi \le \psi \implies \int \varphi \le \int \psi$
-- **(d)** $A \mapsto \int_A \varphi d\mu$ 是 $\mathcal{M}$ 上的**测度**。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.integral-simple`](../nodes/def.integral-simple.md) 简单函数的积分：用到了定义 简单函数的积分　[proofs/def-link.integral-simple-props.md](../proofs/def-link.integral-simple-props.md)
+- [`def.simple-function`](../nodes/def.simple-function.md) 简单函数：用到了定义 简单函数　[proofs/def-link.simple-function-props.md](../proofs/def-link.simple-function-props.md)

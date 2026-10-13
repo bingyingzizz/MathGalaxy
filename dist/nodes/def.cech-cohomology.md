@@ -1,24 +1,20 @@
 # Čech 上同调　`def.cech-cohomology`
 Čech 上同调 $\check{H}^{n}(X, M^{\bullet})$
 layer 17 · 定义 · 层上同调 · 同调代数+范畴论
+[在星图里打开](../#n=def.cech-cohomology)　·　[节点索引](../index.md)
 
 设 $M^{\bullet}$ 是 site $\mathcal{C}$ 上的**阿贝尔预层复形**，$X \in \mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是
 
 $$\check{H}^{n}(X, M^{\bullet}) := \Gamma\bigl(X,\ \check{H}^{n}(M^{\bullet})\bigr).$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.cech-functor` Čech 函子：用到了定义 Čech 函子　proofs/def-dep.cechcoh-cech.md
+- [`def.cech-functor`](../nodes/def.cech-functor.md) Čech 函子：用到了定义 Čech 函子　[proofs/def-dep.cechcoh-cech.md](../proofs/def-dep.cechcoh-cech.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `lem.cech-finite-disjoint-acyclic` 有限不交覆盖的 Čech 零调 用
-- 被 `prop.cech-higher-cohomology-presheaf` 高次上同调预层没有 Čech 上同调 用
-- 被 `prop.cech-interval-vanishing` 区间上没有高阶 Čech 上同调 用
-- 被 `prop.cech-as-colim` Čech 上同调是沿覆盖筛的余极限 用
-- 被 `thm.cartan-leray` Cartan–Leray 谱序列 用
-- 被 `prop.acyclic-iff-cech` 无环 ⟺ Čech 上同调为零 用
-
-- …另有出边，续页见 `nodes/def.cech-cohomology.2.md`
+- …另有出边，续页见 [nodes/def.cech-cohomology.2.md](./def.cech-cohomology.2.md)
 
 refs: Le Stum, Definition 7.3.5
 
 > 说明见 `notes/def.cech-cohomology.md`
+
+引用：`def.cech-cohomology`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

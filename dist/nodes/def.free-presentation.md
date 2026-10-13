@@ -1,6 +1,7 @@
 # 自由表示　`def.free-presentation`
 自由表示（Free Presentation）
 layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
+[在星图里打开](../#n=def.free-presentation)　·　[节点索引](../index.md)
 
 紧 Hausdorff 空间之间的连续满射 $F \twoheadrightarrow S$ 叫 $S$ 的**自由表示**，如果
 
@@ -10,17 +11,17 @@ layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 
 此时 $S \cong \operatorname{coker}(R \rightrightarrows F)$。
 
-## 为什么成立（入边，证明在 proofs/）
-- `def.fibered-product` 纤维积 / 纤维余积：用到了定义 纤维积 / 纤维余积　proofs/def-dep.fibered-free-presentation.md
-- `def.chaus` 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　proofs/def-dep.chaus-free-presentation.md
-
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.cond-topos` Cond 是拓扑斯
-- ⇒ `thm.cond-equiv-fchaus` Cond 即 FCHaus 上的层
-- ⇒ `prop.cond-epi` 凝聚态集满态射的判据
+- ⇒ [`thm.cond-topos`](../nodes/thm.cond-topos.md) Cond 是拓扑斯
+- ⇒ [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) Cond 即 FCHaus 上的层
 
-- …另有出边，续页见 `nodes/def.free-presentation.2.md`
+- …另有出边，续页见 [nodes/def.free-presentation.3.md](./def.free-presentation.3.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/def.free-presentation.2.md](./def.free-presentation.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §2.1–2.2
 
 > 说明见 `notes/def.free-presentation.md`
+
+引用：`def.free-presentation`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

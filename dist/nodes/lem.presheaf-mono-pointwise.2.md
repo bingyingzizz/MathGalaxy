@@ -1,9 +1,6 @@
 # 预层态射的单满按点检验　`lem.presheaf-mono-pointwise`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/lem.presheaf-mono-pointwise.md`
+[在星图里打开](../#n=lem.presheaf-mono-pointwise)　·　第 1 页 [nodes/lem.presheaf-mono-pointwise.md](./lem.presheaf-mono-pointwise.md)
 
-## 陈述（续）
- T'$ 在 $\widehat{\mathcal{
-C}}$ 中是单态射（满态射）$\iff$ 对每个 $
-X \in \mathcal{C}$，$\varp
-hi_{X} : T(X) \to T'(X)$ 是
-单射（满射）。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射：用到了定义 单态射 / 满态射　[proofs/def-link.mono-presheaf-mono.md](../proofs/def-link.mono-presheaf-mono.md)
+- [`def.presheaf`](../nodes/def.presheaf.md) 预层：用到了定义 预层　[proofs/def-link.presheaf-mono-pointwise.md](../proofs/def-link.presheaf-mono-pointwise.md)

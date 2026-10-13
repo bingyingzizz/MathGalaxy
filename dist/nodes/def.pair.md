@@ -1,6 +1,7 @@
 # 有序对　`def.pair`
 有序对（Ordered Pair, Kuratowski）
 layer 3 · 定义 · 集合的构造 · 集合论
+[在星图里打开](../#n=def.pair)　·　[节点索引](../index.md)
 
 Kuratowski 定义：
 
@@ -15,17 +16,18 @@ $$(a, b) = (c, d) \iff a = c \wedge  b = d$$
 $n$ 元组递归定义为 $(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `ax.pair` 配对公理：用到了定义 配对公理　proofs/def-link.pair-pairing.md
-- `ax.power` 幂集公理：用到了定义 幂集公理　proofs/def-link.pair-power.md
+- [`ax.pair`](../nodes/ax.pair.md) 配对公理：用到了定义 配对公理　[proofs/def-link.pair-pairing.md](../proofs/def-link.pair-pairing.md)
+
+- …另有入边，续页见 [nodes/def.pair.2.md](./def.pair.2.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `def.section` 截口 用
-- 被 `def.bijection` 单射 / 满射 / 双射 用
-- 被 `def.rel` 关系 用
-- 被 `thm.product` 笛卡尔积存在 用
-- 被 `def.graph` 图 用
+- 被 [`def.section`](../nodes/def.section.md) 截口 用
 
 refs: Kunen, Set Theory, I.5
 
+- …另有出边，续页见 [nodes/def.pair.3.md](./def.pair.3.md)
+
 ## 说明
 用集合「编码」有序对之后，关系、函数、序型等等才都能在 ZFC 内部说清楚。
+
+引用：`def.pair`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

@@ -1,21 +1,21 @@
 # 逐项积分　`thm.termwise-integration`
 定理：非负函数级数可以逐项积分
 layer 19 · 定理 · 积分 · 分析学
+[在星图里打开](../#n=thm.termwise-integration)　·　[节点索引](../index.md)
 
 设 $\{f_n\} \subseteq L^+$，则
-> 陈述续见 `nodes/thm.termwise-integration.2.md`
 
+$$\int \sum_{n=1}^{\infty} f_n = \sum_{n=1}^{\infty} \int f_n$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- `thm.mct` 单调收敛定理：MCT $\implies$ 逐项积分　proofs/imp.termwise.md
-- `def.measure` 测度：用到了定义 测度　proofs/def-link.premeasure-termwise.md
+- [`thm.mct`](../nodes/thm.mct.md) 单调收敛定理：MCT $\implies$ 逐项积分　[proofs/imp.termwise.md](../proofs/imp.termwise.md)
+- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-link.premeasure-termwise.md](../proofs/def-link.premeasure-termwise.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.termwise-L1` L¹ 的逐项积分
+- …另有出边，续页见 [nodes/thm.termwise-integration.2.md](./thm.termwise-integration.2.md)
 
 refs: Folland, Real Analysis, Theorem 2.15
 
-## 说明
-（现在 $f_n \ge 0$，所以两边都可能是 $\infty$；结论等价于：不可能出现「逐项积分发散而整体积分有限」的怪事。）
+> 说明见 `notes/thm.termwise-integration.md`
 
-用法上这就是**无条件地交换 $\int$ 和 $\sum$**，不需要控制函数 —— 代价是要求非负。有正有负时必须换 DCT。
+引用：`thm.termwise-integration`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

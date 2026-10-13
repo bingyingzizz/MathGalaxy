@@ -1,18 +1,20 @@
 # 消解　`def.resolution`
 定义：左/右消解、投射/内射消解
 layer 15 · 定义 · 同调与正合列 · 同调代数
+[在星图里打开](../#n=def.resolution)　·　[节点索引](../index.md)
 
 设 $f : K^{\bullet} \to L^{\bullet}$ 是复形之间的**拟同构**，就说 $L^{\bullet}$ 是 $K^{\bullet}$ 的一个**右消解**（right resolution，也叫 replacement）；若每个 $L^{n}$ 都是**内射**对象，就叫**内射消解**。
-> 陈述续见 `nodes/def.resolution.2.md`
 
-
-## 为什么成立（入边，证明在 proofs/）
-- `def.quasi-iso` 拟同构：用到了定义 拟同构　proofs/def-link.res-quasiiso.md
-- `def.right-derived-functor` 右导出函子：用到了定义 右导出函子　proofs/def-link.res-derived.md
+把箭头反过来（即到 $\mathcal{A}^{\mathrm{op}}$ 里去取同样的定义），得到**左消解**；若每个 $L^{n}$ 都是**投射**对象，就叫**投射消解**。
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.total-complex-injective-resolution` 全复形还是内射消解 用
+- 被 [`prop.total-complex-injective-resolution`](../nodes/prop.total-complex-injective-resolution.md) 全复形还是内射消解 用
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/def.resolution.2.md](./def.resolution.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, Definition 7.1.20
 
 > 说明见 `notes/def.resolution.md`
+
+引用：`def.resolution`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

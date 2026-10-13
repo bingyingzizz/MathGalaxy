@@ -1,6 +1,7 @@
 # 复函数的积分　`def.integral-complex`
 复值函数的积分：正负部相减
 layer 18 · 定义 · 积分 · 分析学
+[在星图里打开](../#n=def.integral-complex)　·　[节点索引](../index.md)
 
 设 $f : X \to \overline{\mathbb{R}}$ 可测，记正部与负部
 
@@ -12,16 +13,16 @@ $$\int f := \int f^+ - \int f^-$$
 
 对复值函数，拆实部虚部：$\int f := \int \operatorname{Re} f + i \int \operatorname{Im} f$（要求两个积分都有意义）。
 
-## 为什么成立（入边，证明在 proofs/）
-- `def.lplus` L⁺：用到了定义 L⁺　proofs/def-link.lplus-complex.md
-- `def.complex` 复数 ℂ：用到了定义 复数 ℂ　proofs/dep.complex-integral-complex.md
-- `def.integral-nonneg` 非负函数的积分：用到了定义 非负函数的积分　proofs/def-dep.nonneg-integral-complex.md
-
 ## 它能推出什么 / 谁在用它
-- 被 `prop.integral-abs-ineq` 积分绝对值不等式 用
+- 被 [`prop.integral-abs-ineq`](../nodes/prop.integral-abs-ineq.md) 积分绝对值不等式 用
 
-- …另有出边，续页见 `nodes/def.integral-complex.2.md`
+- …另有出边，续页见 [nodes/def.integral-complex.3.md](./def.integral-complex.3.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/def.integral-complex.2.md](./def.integral-complex.2.md)
 
 refs: Folland, Real Analysis, §2.3
 
 > 说明见 `notes/def.integral-complex.md`
+
+引用：`def.integral-complex`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

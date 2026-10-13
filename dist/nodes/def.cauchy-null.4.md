@@ -1,5 +1,7 @@
 # Cauchy 列与零列　`def.cauchy-null`　·　续页（第 4 页）
-根 `../`　·　第 1 页 `nodes/def.cauchy-null.md`　·　上一页 `nodes/def.cauchy-null.3.md`
+[在星图里打开](../#n=def.cauchy-null)　·　第 1 页 [nodes/def.cauchy-null.md](./def.cauchy-null.md)　·　上一页 [nodes/def.cauchy-null.3.md](./def.cauchy-null.3.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.real` 实数系 ℝ 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/dep.abs-cauchy-null.md](../proofs/dep.abs-cauchy-null.md)
+
+> 续见 [nodes/def.cauchy-null.5.md](./def.cauchy-null.5.md)

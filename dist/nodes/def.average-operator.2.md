@@ -1,6 +1,7 @@
 # 平均算子 Aᵣ　`def.average-operator`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.average-operator.md`
+[在星图里打开](../#n=def.average-operator)　·　第 1 页 [nodes/def.average-operator.md](./def.average-operator.md)
 
-## 陈述（续）
-$$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
-即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-dep.measure-average-operator.md](../proofs/def-dep.measure-average-operator.md)
+
+> 续见 [nodes/def.average-operator.3.md](./def.average-operator.3.md)

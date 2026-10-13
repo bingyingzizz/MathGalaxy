@@ -294,6 +294,10 @@ MG.notation = {
       note: '带指标的极限写作 $\\varinjlim_{(X,s)} h_{X}$；不带指标时可以用 $\\lim$、$\\operatorname{colim}$。' },
     { g: 'layout', tex: '\\dashv',  uni: '⊣', name: '左伴随 $F \\dashv G$',
       note: '写 $F \\dashv G$ 表示 $F$ 是 $G$ 的**左**伴随。箭头朝右也朝下，别写成 $\\vdash$（那是有穷逻辑的可推导）。' },
+    { g: 'layout', tex: '\\checkmark', uni: '✓', name: '证毕时的对勾',
+      note: '证明里「这一步已经验完」的记号，写在**公式内部**要写 $\\checkmark$，' +
+        '⛔ 别把 $✓$ 直接塞进 $\\text{…}$ 或数学模式（KaTeX 在文本模式下没有它的字形）。' +
+        '整句叙述里的 $✓$ 是装饰符，可以照写。' },
     { g: 'layout', tex: '\\coprod, \\bigoplus, \\sqcup', uni: '∐ ∐ ⊔', name: '余积 / 直和 / 不交并',
       note: '集合的余积写 $\\coprod$，加法群的余积写 $\\bigoplus$，两个空间的不交并写 $\\sqcup$。' },
     { g: 'layout', tex: '\\underline{E}',  uni: 'E̲', name: '常预层 / 强调',

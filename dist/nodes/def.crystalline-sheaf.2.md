@@ -1,5 +1,5 @@
 # 晶体层　`def.crystalline-sheaf`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.crystalline-sheaf.md`
+[在星图里打开](../#n=def.crystalline-sheaf)　·　第 1 页 [nodes/def.crystalline-sheaf.md](./def.crystalline-sheaf.md)
 
-## 陈述（续）
-若所有 $\alpha_{f}$ 都是**同构**，就叫 $\mathcal{F}$ 是**晶体层**（crystalline sheaf）。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.sheaf`](../nodes/def.sheaf.md) 层：用到了定义 层　[proofs/def-link.crystalsheaf-sheaf.md](../proofs/def-link.crystalsheaf-sheaf.md)

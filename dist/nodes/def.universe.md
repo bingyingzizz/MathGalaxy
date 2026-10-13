@@ -1,6 +1,7 @@
 # Grothendieck 宇宙　`def.universe`
 Grothendieck 宇宙（Grothendieck Universe）
 layer 4 · 定义 · 范畴与图 · 范畴论
+[在星图里打开](../#n=def.universe)　·　[节点索引](../index.md)
 
 一个集合 $U$ 叫**宇宙**，如果它对集合论的基本构造封闭：
 
@@ -12,9 +13,12 @@ layer 4 · 定义 · 范畴与图 · 范畴论
 若 $U$ 含有无穷集，则 $\mathbb{N} \in U$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.power-set` 幂集 𝒫(X)：用到了定义 幂集 𝒫(X)　proofs/def-dep.power-universe.md
-- `def.union-inter` 并集与交集：用到了定义 并集与交集　proofs/def-dep.union-universe.md
+- [`def.power-set`](../nodes/def.power-set.md) 幂集 𝒫(X)：用到了定义 幂集 𝒫(X)　[proofs/def-dep.power-universe.md](../proofs/def-dep.power-universe.md)
+
+- …另有入边，续页见 [nodes/def.universe.2.md](./def.universe.2.md)
 
 refs: SGA 4, I.0
 
 > 说明见 `notes/def.universe.md`
+
+引用：`def.universe`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

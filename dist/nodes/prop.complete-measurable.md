@@ -1,6 +1,7 @@
 # 完备性 ⟺ 不破坏可测性　`prop.complete-measurable`
 命题：$\mu$ 完备 $\iff$ 几乎处处相等 / 几乎处处收敛不破坏可测性
 layer 17 · 命题 · 可测函数与收敛 · 分析学
+[在星图里打开](../#n=prop.complete-measurable)　·　[节点索引](../index.md)
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间。则 $\mu$ **完备**当且仅当下面两条都成立：
 
@@ -9,9 +10,10 @@ layer 17 · 命题 · 可测函数与收敛 · 分析学
 **(b)** 每个 $f_n$ 可测且 $f_n \to f$ $\mu -\text{a.e.} \implies$ $f$ 可测。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.null-set` 零集与完备：用到了定义 零集与完备　proofs/def-link.nullset-complete-measurable.md
-- `def.ae` 几乎处处：用到了定义 几乎处处　proofs/def-link.ae-complete-measurable.md
+- …另有入边，续页见 [nodes/prop.complete-measurable.2.md](./prop.complete-measurable.2.md)
 
 refs: Folland, Real Analysis, Prop. 2.11
 
 > 说明见 `notes/prop.complete-measurable.md`
+
+引用：`prop.complete-measurable`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

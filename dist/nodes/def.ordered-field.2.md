@@ -1,7 +1,8 @@
 # 有序域　`def.ordered-field`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.ordered-field.md`
+[在星图里打开](../#n=def.ordered-field)　·　第 1 页 [nodes/def.ordered-field.md](./def.ordered-field.md)
 
-## 陈述（续）
-则称 $(F, +, \cdot, \le)$ 是一个**有序域**。照搬 $\mathbb{Q}$ 上的说法：$a > 0$ 叫**正元**，$a < 0$ 叫**负元**；两者拼起来就是绝对值
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.field`](../nodes/def.field.md) 域：用到了定义 域　[proofs/dep.field-ordered.md](../proofs/dep.field-ordered.md)
+- [`def.poset`](../nodes/def.poset.md) 偏序集：用到了定义 偏序集　[proofs/dep.poset-ordered.md](../proofs/dep.poset-ordered.md)
 
-$$|a| := \begin{cases} a, & a \ge 0 \\ -a, & a < 0 \end{cases}$$
+> 续见 [nodes/def.ordered-field.3.md](./def.ordered-field.3.md)

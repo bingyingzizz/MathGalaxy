@@ -1,8 +1,10 @@
 # 距离空间　`def.metric-space`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.metric-space.md`　·　上一页 `nodes/def.metric-space.2.md`
+[在星图里打开](../#n=def.metric-space)　·　第 1 页 [nodes/def.metric-space.md](./def.metric-space.md)　·　上一页 [nodes/def.metric-space.2.md](./def.metric-space.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `def.totally-bounded` 全有界 用
-- 被 `def.sequentially-compact` 列紧 用
-- 被 `def.compact` 紧 用
-- 被 `def.shrinks-nicely` 可缩族 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.real`](../nodes/def.real.md) 实数系 ℝ：用到了定义 实数系 ℝ　[proofs/dep.real-metric.md](../proofs/dep.real-metric.md)
+- [`def.topology`](../nodes/def.topology.md) 拓扑空间与开集：用到了定义 拓扑空间与开集　[proofs/dep.topology-metric.md](../proofs/dep.topology-metric.md)
+- [`def.topology-base`](../nodes/def.topology-base.md) 基与子基：用到了定义 基与子基　[proofs/dep.base-metric.md](../proofs/dep.base-metric.md)
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-dep.function-metric-space.md](../proofs/def-dep.function-metric-space.md)
+
+> 续见 [nodes/def.metric-space.4.md](./def.metric-space.4.md)

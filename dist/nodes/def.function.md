@@ -1,6 +1,7 @@
 # 函数　`def.function`
 函数（Function）
 layer 5 · 定义 · 关系与函数 · 集合论
+[在星图里打开](../#n=def.function)　·　[节点索引](../index.md)
 
 设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \to B$），当且仅当对每个输入恰有一个输出：
 
@@ -11,22 +12,15 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 单射 / 满射 / 双射见另一条节点。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.rel` 关系：用到了定义 关系　proofs/def-dep.rel-function.md
+- [`def.rel`](../nodes/def.rel.md) 关系：用到了定义 关系　[proofs/def-dep.rel-function.md](../proofs/def-dep.rel-function.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `def.section` 截口 用
-- 被 `def.bijection` 单射 / 满射 / 双射 用
-- 被 `def.quotient-topology` 商拓扑 用
-- 被 `def.cauchy-null` Cauchy 列与零列 用
-- 被 `def.field` 域 用
-- 被 `def.choicefn` 选择函数 用
-- 被 `def.metric-space` 距离空间 用
-- 被 `def.product-sigma` 积 σ-代数 用
-- 被 `def.measurable-function` 可测函数 用
-- 被 `def.graph` 图 用
+- 被 [`def.section`](../nodes/def.section.md) 截口 用
 
-- …另有出边，续页见 `nodes/def.function.2.md`
+- …另有出边，续页见 [nodes/def.function.2.md](./def.function.2.md)
 
 refs: Kunen, Set Theory, I.5
 
 > 说明见 `notes/def.function.md`
+
+引用：`def.function`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

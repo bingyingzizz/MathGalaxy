@@ -1,8 +1,10 @@
 # 加法 / 阿贝尔范畴　`def.abelian-category`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.abelian-category.md`　·　上一页 `nodes/def.abelian-category.2.md`
+[在星图里打开](../#n=def.abelian-category)　·　第 1 页 [nodes/def.abelian-category.md](./def.abelian-category.md)　·　上一页 [nodes/def.abelian-category.2.md](./def.abelian-category.2.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）
-- `def.image` 像 / 余像：用到了定义 像 / 余像　proofs/def-dep.image-abelian.md
-- `def.cochain-complex` 上链复形：用到了定义 上链复形　proofs/def-dep.complex-abelian.md
+- [`def.fibered-product`](../nodes/def.fibered-product.md) 纤维积 / 纤维余积：用到了定义 纤维积 / 纤维余积　[proofs/def-dep.fibered-abelian.md](../proofs/def-dep.fibered-abelian.md)
+- [`def.equalizer`](../nodes/def.equalizer.md) 等化子 / 余等化子：用到了定义 等化子 / 余等化子　[proofs/def-dep.equalizer-abelian.md](../proofs/def-dep.equalizer-abelian.md)
+- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射：用到了定义 单态射 / 满态射　[proofs/def-dep.mono-abelian.md](../proofs/def-dep.mono-abelian.md)
+- [`def.image`](../nodes/def.image.md) 像 / 余像：用到了定义 像 / 余像　[proofs/def-dep.image-abelian.md](../proofs/def-dep.image-abelian.md)
 
-> 续见 `nodes/def.abelian-category.4.md`
+> 续见 [nodes/def.abelian-category.4.md](./def.abelian-category.4.md)

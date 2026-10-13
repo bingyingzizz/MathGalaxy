@@ -1,6 +1,7 @@
 # 米田嵌入　`prop.yoneda-embedding`
 米田嵌入（Yoneda Embedding）
 layer 14 · 命题 · 预层与米田 · 范畴论
+[在星图里打开](../#n=prop.yoneda-embedding)　·　[节点索引](../index.md)
 
 对应
 
@@ -9,16 +10,15 @@ $$\delta : \mathcal{C} \longrightarrow \widehat{\mathcal{C}}, \qquad X \mapsto h
 是一个**全忠实**函子，并且**保持所有极限**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `lem.yoneda` 米田引理：米田引理 $\implies$ 米田嵌入全忠实、保极限　proofs/imp.yoneda-embedding.md
-- `def.limit` 极限：用到了定义 极限　proofs/def-link.limit-yoneda-embedding.md
-- `def.ff-faithful` 忠实 / 满 / 全忠实：用到了定义 忠实 / 满 / 全忠实　proofs/def-link.ff-faithful-yoneda-embedding.md
-- `def.natural-transformation` 自然变换：用到了定义 自然变换　proofs/def-dep.nat-yoneda-embedding.md
+- [`lem.yoneda`](../nodes/lem.yoneda.md) 米田引理：米田引理 $\implies$ 米田嵌入全忠实、保极限　[proofs/imp.yoneda-embedding.md](../proofs/imp.yoneda-embedding.md)
 
-- …另有入边，续页见 `nodes/prop.yoneda-embedding.2.md`
+- …另有入边，续页见 [nodes/prop.yoneda-embedding.2.md](./prop.yoneda-embedding.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ～弱边 `prop.chaus-reflective` 紧 Haus 是反射子范畴
+- …另有出边，续页见 [nodes/prop.yoneda-embedding.3.md](./prop.yoneda-embedding.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 > 说明见 `notes/prop.yoneda-embedding.md`
+
+引用：`prop.yoneda-embedding`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

@@ -1,6 +1,7 @@
 # 选择函数　`def.choicefn`
 选择函数（Choice Function）
 layer 6 · 定义 · 选择原理 · 集合论
+[在星图里打开](../#n=def.choicefn)　·　[节点索引](../index.md)
 
 设 $F$ 是一个集合族，且 $\emptyset \notin F$。
 
@@ -14,12 +15,14 @@ $\forall X \in F, f(X) \in X$。
 于是选择公理可以简洁地写成：**每个满足 $\emptyset \notin F$ 的集合族 $F$ 都有选择函数**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.function` 函数：用到了定义 函数　proofs/def-link.choicefn-rel.md
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-link.choicefn-rel.md](../proofs/def-link.choicefn-rel.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `ax.choice` 选择公理 用
+- …另有出边，续页见 [nodes/def.choicefn.2.md](./def.choicefn.2.md)
 
 refs: Jech, The Axiom of Choice
 
 ## 说明
 若 $F$ 有限，逐个挑选即可，无需 AC。难点只在无穷族，尤其是不可数族。
+
+引用：`def.choicefn`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

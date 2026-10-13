@@ -1,8 +1,7 @@
 # 几乎处处　`def.ae`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.ae.md`
+[在星图里打开](../#n=def.ae)　·　第 1 页 [nodes/def.ae.md](./def.ae.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.completion-measurable-function` 完备化后可改在零集上 用
-- 被 `thm.cauchy-in-measure` 依测度 Cauchy ⟹ 收敛 用
-- 被 `thm.monotone-differentiable` 单调函数几乎处处可导 用
-- 被 `cor.fatou` Fatou 的推论 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/dep.measure-ae.md](../proofs/dep.measure-ae.md)
+
+> 续见 [nodes/def.ae.3.md](./def.ae.3.md)

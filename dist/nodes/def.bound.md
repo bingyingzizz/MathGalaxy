@@ -1,21 +1,23 @@
 # 界与确界　`def.bound`
 上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）
 layer 6 · 定义 · 序结构 · 序理论
+[在星图里打开](../#n=def.bound)　·　[节点索引](../index.md)
 
 设 $(P, \preceq )$ 是偏序集，$S \subseteq P$，$u, l, m \in P$。
-> 陈述续见 `nodes/def.bound.2.md`
+> 陈述续见 [nodes/def.bound.2.md](./def.bound.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.poset` 偏序集：用到了定义 偏序集　proofs/def-link.bound-poset.md
-- `def.subset` 子集：用到了定义 子集　proofs/def-dep.subset-bound.md
+- [`def.poset`](../nodes/def.poset.md) 偏序集：用到了定义 偏序集　[proofs/def-link.bound-poset.md](../proofs/def-link.bound-poset.md)
+- [`def.subset`](../nodes/def.subset.md) 子集：用到了定义 子集　[proofs/def-dep.subset-bound.md](../proofs/def-dep.subset-bound.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `def.series` 级数收敛 用
-- 被 `def.integral-nonneg` 非负函数的积分 用
-- 被 `lem.zorn` 佐恩引理 用
-- 被 `thm.real-ordered-field` ℝ 是完备有序域 用
+- 被 [`def.series`](../nodes/def.series.md) 级数收敛 用
+
+- …另有出边，续页见 [nodes/def.bound.4.md](./def.bound.4.md)
 
 refs: Kunen, Set Theory, I.11；Rudin, Principles of Mathematical Analysis, Ch. 1
 
 > 说明见 `notes/def.bound.md`
+
+引用：`def.bound`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

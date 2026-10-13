@@ -1,6 +1,8 @@
 # 米田引理　`lem.yoneda`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/lem.yoneda.md`
+[在星图里打开](../#n=lem.yoneda)　·　第 1 页 [nodes/lem.yoneda.md](./lem.yoneda.md)
 
-## 它能推出什么 / 谁在用它（续）
-- ⇒ `lem.presheaf-mono-pointwise` 预层态射的单满按点检验
-- 被 `prop.universal-unique-iso` 万有元素唯一到唯一同构 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.natural-transformation`](../nodes/def.natural-transformation.md) 自然变换：用到了定义 自然变换　[proofs/def-dep.nat-yoneda.md](../proofs/def-dep.nat-yoneda.md)
+- [`def.functor`](../nodes/def.functor.md) 函子：用到了定义 函子　[proofs/def-dep.functor-yoneda.md](../proofs/def-dep.functor-yoneda.md)
+
+> 续见 [nodes/lem.yoneda.3.md](./lem.yoneda.3.md)

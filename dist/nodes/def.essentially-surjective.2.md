@@ -1,30 +1,6 @@
 # 本质满　`def.essentially-surjective`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.essentially-surjective.md`
+[在星图里打开](../#n=def.essentially-surjective)　·　第 1 页 [nodes/def.essentially-surjective.md](./def.essentially-surjective.md)
 
-## 陈述（续）
- : \
-mathc
-al{C}
- \to
- \ma
-thcal
-{C}'$
- 叫*
-*本质满
-**，
-如果对 $
-\mat
-hcal{
-C}'$ 
-的每个对象
- $X'$
-，都存在 
-$\ma
-thcal
-{C}$ 
-中的对象 
-$X$ 使
-$$F(X
-) \c
-ong X
-'$$
+## 它能推出什么 / 谁在用它（续）
+- ⇒ [`def.cat-equivalence`](../nodes/def.cat-equivalence.md) 范畴等价
+- 被 [`thm.equivalence-criterion`](../nodes/thm.equivalence-criterion.md) 等价函子的判据 用

@@ -1,6 +1,7 @@
 # 正集的封闭性　`prop.positive-set-closure`
 命题：正集的可测子集仍是正集；可数个正集之并仍是正集
 layer 17 · 命题 · 符号测度与分解 · 分析学
+[在星图里打开](../#n=prop.positive-set-closure)　·　[节点索引](../index.md)
 
 设 $\nu$ 是符号测度。
 
@@ -8,14 +9,13 @@ layer 17 · 命题 · 符号测度与分解 · 分析学
 - **可数多个正集之并仍是正集**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.positive-negative-null` 正集 / 负集 / 零集：用到了定义 正集 / 负集 / 零集　proofs/def-link.posneg-positive-closure.md
+- [`def.positive-negative-null`](../nodes/def.positive-negative-null.md) 正集 / 负集 / 零集：用到了定义 正集 / 负集 / 零集　[proofs/def-link.posneg-positive-closure.md](../proofs/def-link.posneg-positive-closure.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.hahn-decomposition` Hahn 分解定理
+- …另有出边，续页见 [nodes/prop.positive-set-closure.2.md](./prop.positive-set-closure.2.md)
 
 refs: Folland, Real Analysis, Lemma 3.1
 
-## 说明
-第一条由定义直接得到。
+> 说明见 `notes/prop.positive-set-closure.md`
 
-第二条是 Hahn 分解证明里反复用到的技术步骤：把可数多个正集 $P_1, P_2, \ldots $ 不交化（$P_j' = P_j \setminus \bigcup_{i<j} P_i$，正集之差仍是正集），再用可数可加性逐块验证。
+引用：`prop.positive-set-closure`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

@@ -1,6 +1,7 @@
 # 拓扑斯　`def.topos`
 拓扑斯（Topos）
 layer 16 · 定义 · 拓扑斯 · 范畴论
+[在星图里打开](../#n=def.topos)　·　[节点索引](../index.md)
 
 范畴 $\mathcal{T}$ 叫**拓扑斯**，如果
 
@@ -10,19 +11,14 @@ layer 16 · 定义 · 拓扑斯 · 范畴论
 4. 等价关系是有效的且万有的。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.pretopos` 预拓扑斯：用到了定义 预拓扑斯　proofs/def-dep.pretopos-topos.md
-- `def.generator` 生成元集：用到了定义 生成元集　proofs/def-dep.generator-topos.md
+- [`def.pretopos`](../nodes/def.pretopos.md) 预拓扑斯：用到了定义 预拓扑斯　[proofs/def-dep.pretopos-topos.md](../proofs/def-dep.pretopos-topos.md)
+- [`def.generator`](../nodes/def.generator.md) 生成元集：用到了定义 生成元集　[proofs/def-dep.generator-topos.md](../proofs/def-dep.generator-topos.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.giraud` Giraud 定理
-- 被 `prop.stalk-separated` 茎与分离预层 用
-- 被 `prop.abelian-slice-adjunction` 切片上的正合左伴随 用
-- 被 `thm.giraud` Giraud 定理 用
-- 被 `prop.topos-covering-epi` 拓扑斯中覆盖即余积满射 用
-- 被 `thm.topos-abelian-grothendieck` 拓扑斯上的阿贝尔群是 Grothendieck 范畴 用
-
-- …另有出边，续页见 `nodes/def.topos.2.md`
+- …另有出边，续页见 [nodes/def.topos.2.md](./def.topos.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §3.3
 
 > 说明见 `notes/def.topos.md`
+
+引用：`def.topos`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

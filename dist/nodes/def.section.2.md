@@ -1,10 +1,10 @@
 # 截口　`def.section`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.section.md`
+[在星图里打开](../#n=def.section)　·　第 1 页 [nodes/def.section.md](./def.section.md)
 
-## 陈述（续）
-$$E_x := \{y \in Y : (x, y) \in E\}$$
-$$E^y := \{x \in X : (x, y) \in E\}$$
-分别叫 $E$ 在 $x$ 处的**纵截口**与在 $y$ 处的**横截口**。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`thm.product`](../nodes/thm.product.md) 笛卡尔积存在：笛卡尔积存在 $\implies$ 可以谈截口　[proofs/imp.product-section.md](../proofs/imp.product-section.md)
+- [`def.pair`](../nodes/def.pair.md) 有序对：用到了定义 有序对　[proofs/def-link.pair-section.md](../proofs/def-link.pair-section.md)
+- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-link.function-section.md](../proofs/def-link.function-section.md)
+- [`def.subset`](../nodes/def.subset.md) 子集：用到了定义 子集　[proofs/def-dep.subset-section.md](../proofs/def-dep.subset-section.md)
 
-类似地，对函数 $f : X \times Y \to \mathbb{C}$ 定义
-$$f_x(y) := f^y(x) := f(x, y)$$
+> 续见 [nodes/def.section.3.md](./def.section.3.md)

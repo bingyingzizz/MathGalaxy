@@ -1,6 +1,8 @@
 # K-有界正合　`def.k-bounded-exact`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.k-bounded-exact.md`
+[在星图里打开](../#n=def.k-bounded-exact)　·　第 1 页 [nodes/def.k-bounded-exact.md](./def.k-bounded-exact.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.k-bounded-implies-exact` 相邻两条 K-有界 推出 正合 用
-- 被 `cor.k-acyclic-acyclic` K-有界零调 推出 零调 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.semi-normed-ab-group`](../nodes/def.semi-normed-ab-group.md) 半范数阿贝尔群：用到了定义 半范数阿贝尔群　[proofs/def-dep.kbexact-seminorm.md](../proofs/def-dep.kbexact-seminorm.md)
+- [`def.cochain-complex`](../nodes/def.cochain-complex.md) 上链复形：用到了定义 上链复形　[proofs/def-dep.kbexact-complex.md](../proofs/def-dep.kbexact-complex.md)
+
+> 续见 [nodes/def.k-bounded-exact.3.md](./def.k-bounded-exact.3.md)

@@ -1,5 +1,5 @@
 # 连通范畴　`def.connected-category`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.connected-category.md`
+[在星图里打开](../#n=def.connected-category)　·　第 1 页 [nodes/def.connected-category.md](./def.connected-category.md)
 
-## 陈述（续）
-或同样一条但箭头方向相反（$A = X_{0} \leftarrow X_{1} \to X_{2} \leftarrow \cdots \to X_{n} = B$）把 $A$ 与 $B$ 连起来。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.functor`](../nodes/def.functor.md) 函子：用到了定义 函子　[proofs/def-dep.connected-functor.md](../proofs/def-dep.connected-functor.md)

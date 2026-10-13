@@ -1,9 +1,8 @@
 # 拓扑阿贝尔群　`def.topo-ab-group`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.topo-ab-group.md`
+[在星图里打开](../#n=def.topo-ab-group)　·　第 1 页 [nodes/def.topo-ab-group.md](./def.topo-ab-group.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.condab-quotient-r-disc` R/R_disc 在 Stone 上的截面 用
-- 被 `prop.abtop-to-abcond` 拓扑阿贝尔群嵌入凝聚态 用
-- 被 `prop.continuous-hom-condensed` 连续同态与内部 Hom 用
-- 被 `def.pontryagin-dual` Pontryagin 对偶 用
-- 被 `thm.pontryagin-van-kampen` Pontryagin–van Kampen 对偶 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.topology`](../nodes/def.topology.md) 拓扑空间与开集：用到了定义 拓扑空间与开集　[proofs/def-dep.topoab-topology.md](../proofs/def-dep.topoab-topology.md)
+- [`def.compact-open-topology`](../nodes/def.compact-open-topology.md) 紧开拓扑：用到了定义 紧开拓扑　[proofs/def-dep.topoab-compactopen.md](../proofs/def-dep.topoab-compactopen.md)
+
+> 续见 [nodes/def.topo-ab-group.3.md](./def.topo-ab-group.3.md)

@@ -1,13 +1,18 @@
 # 函数　`def.function`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.function.md`
+[在星图里打开](../#n=def.function)　·　第 1 页 [nodes/def.function.md](./def.function.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 `def.graph-morphism` 图的态射 用
-- 被 `def.functor` 函子 用
-- 被 `def.simplicial` 单纯对象 用
-- 被 `def.cone` 锥 用
-- 被 `def.elements-category` 元素范畴 用
-- 被 `def.representable` 表示函子 用
-- 被 `def.adjoint` 伴随函子 用
-- 被 `def.comma-category` 逗号范畴 用
-- 被 `def.group` 群 用
+- 被 [`def.bijection`](../nodes/def.bijection.md) 单射 / 满射 / 双射 用
+- 被 [`def.quotient-topology`](../nodes/def.quotient-topology.md) 商拓扑 用
+- 被 [`def.cauchy-null`](../nodes/def.cauchy-null.md) Cauchy 列与零列 用
+- 被 [`def.field`](../nodes/def.field.md) 域 用
+- 被 [`def.choicefn`](../nodes/def.choicefn.md) 选择函数 用
+- 被 [`def.metric-space`](../nodes/def.metric-space.md) 距离空间 用
+- 被 [`def.product-sigma`](../nodes/def.product-sigma.md) 积 σ-代数 用
+- 被 [`def.measurable-function`](../nodes/def.measurable-function.md) 可测函数 用
+- 被 [`def.graph`](../nodes/def.graph.md) 图 用
+- 被 [`def.graph-morphism`](../nodes/def.graph-morphism.md) 图的态射 用
+- 被 [`def.functor`](../nodes/def.functor.md) 函子 用
+- 被 [`def.simplicial`](../nodes/def.simplicial.md) 单纯对象 用
+
+> 续见 [nodes/def.function.3.md](./def.function.3.md)

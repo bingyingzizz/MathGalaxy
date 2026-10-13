@@ -1,11 +1,16 @@
 # 单态射 / 满态射　`def.mono`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.mono.md`
+[在星图里打开](../#n=def.mono)　·　第 1 页 [nodes/def.mono.md](./def.mono.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 `def.subobject` 子对象 用
-- 被 `def.image` 像 / 余像 用
-- 被 `def.projective-object` 投射 / 内射对象 用
-- 被 `def.regular-epi` 正则满态射 用
-- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用
-- 被 `prop.calculus-of-fractions` 分式演算下的局部化 用
-- 被 `prop.preserves-fibered-products-mono` 保纤维积 ⟹ 保单态射 用
+- ⇒ [`prop.covering-sieve-epi`](../nodes/prop.covering-sieve-epi.md) 覆盖筛即余积满射
+- 被 [`prop.slice-fully-faithful-mono`](../nodes/prop.slice-fully-faithful-mono.md) 单态射的切片刻画 用
+- 被 [`lem.presheaf-mono-pointwise`](../nodes/lem.presheaf-mono-pointwise.md) 预层态射的单满按点检验 用
+- 被 [`prop.injective-criterion`](../nodes/prop.injective-criterion.md) 内射对象的判据 用
+- 被 [`def.subobject`](../nodes/def.subobject.md) 子对象 用
+- 被 [`def.image`](../nodes/def.image.md) 像 / 余像 用
+- 被 [`def.projective-object`](../nodes/def.projective-object.md) 投射 / 内射对象 用
+- 被 [`def.regular-epi`](../nodes/def.regular-epi.md) 正则满态射 用
+- 被 [`def.abelian-category`](../nodes/def.abelian-category.md) 加法 / 阿贝尔范畴 用
+- 被 [`prop.calculus-of-fractions`](../nodes/prop.calculus-of-fractions.md) 分式演算下的局部化 用
+
+> 续见 [nodes/def.mono.3.md](./def.mono.3.md)

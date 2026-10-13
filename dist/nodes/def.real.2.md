@@ -1,10 +1,7 @@
 # 实数系 ℝ　`def.real`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.real.md`
+[在星图里打开](../#n=def.real)　·　第 1 页 [nodes/def.real.md](./def.real.md)
 
 ## 陈述（续）
-$$[x_n] + [y_n] := [x_n + y_n], \qquad [x_n] \cdot [y_n] := [x_n y_n]$$
-
-$${}[x_n] > 0 :\iff \exists q \in \mathbb{Q},\ q > 0,\ \exists N,\ \forall n \ge N : x_n \ge q$$
 （一般的序由 $[y_n] \ge [x_n] :\iff [y_n - x_n] \ge 0$ 给出。）零与一取常数列：
 
 $$0 := [(0,0,0,\ldots)], \qquad 1 := [(1,1,1,\ldots)]$$
@@ -13,4 +10,4 @@ $$0 := [(0,0,0,\ldots)], \qquad 1 := [(1,1,1,\ldots)]$$
 
 $$q \mapsto [(q, q, q, \ldots)]$$
 
-> 续见 `nodes/def.real.3.md`
+> 续见 [nodes/def.real.3.md](./def.real.3.md)

@@ -1,12 +1,7 @@
 # 预层　`def.presheaf`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.presheaf.md`
+[在星图里打开](../#n=def.presheaf)　·　第 1 页 [nodes/def.presheaf.md](./def.presheaf.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 `prop.sheaf-hom-computed-in-presheaves` 层之间的 Hom 在预层里算 用
-- 被 `lem.presheaf-mono-pointwise` 预层态射的单满按点检验 用
-- 被 `def.slice-category` 切片范畴 用
-- 被 `def.sieve` 筛 用
-- 被 `def.grothendieck-topology` Grothendieck 拓扑 用
-- 被 `def.sheaf` 层 用
-- 被 `def.canonical-topology` 标准拓扑 用
-- 被 `def.abelian-sheaf` 阿贝尔层 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.category`](../nodes/def.category.md) 范畴：用到了定义 范畴　[proofs/def-dep.category-presheaf.md](../proofs/def-dep.category-presheaf.md)
+
+> 续见 [nodes/def.presheaf.3.md](./def.presheaf.3.md)

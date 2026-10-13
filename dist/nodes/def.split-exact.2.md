@@ -1,7 +1,5 @@
 # 分裂短正合列　`def.split-exact`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.split-exact.md`
+[在星图里打开](../#n=def.split-exact)　·　第 1 页 [nodes/def.split-exact.md](./def.split-exact.md)
 
-## 陈述（续）
-$$0 \longrightarrow M_{1} \xrightarrow{\;\mathrm{pr}_{1}\;} M_{1} \oplus M_{2} \xrightarrow{\;\mathrm{pr}_{2}\;} M_{2} \longrightarrow 0$$
-
-（即 $i_{1}$ 是到直和第一个分量的含入、$i_{2}$ 是到第二个分量的投影）。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.zero-object`](../nodes/def.zero-object.md) 零对象与直和：用到了定义 零对象与直和　[proofs/def-dep.splitexact-zeroobj.md](../proofs/def-dep.splitexact-zeroobj.md)

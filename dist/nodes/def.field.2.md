@@ -1,5 +1,7 @@
 # 域　`def.field`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.field.md`
+[在星图里打开](../#n=def.field)　·　第 1 页 [nodes/def.field.md](./def.field.md)
 
-## 陈述（续）
-一句话：**加减乘除（除以非零元）都封闭，且满足结合、交换、分配律**。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.group`](../nodes/def.group.md) 群：用到了定义 群　[proofs/def-dep.field-group.md](../proofs/def-dep.field-group.md)
+
+> 续见 [nodes/def.field.3.md](./def.field.3.md)

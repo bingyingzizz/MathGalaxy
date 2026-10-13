@@ -1,5 +1,5 @@
 # RN 导数的链式法则　`prop.rn-chain-rule`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/prop.rn-chain-rule.md`
+[在星图里打开](../#n=prop.rn-chain-rule)　·　第 1 页 [nodes/prop.rn-chain-rule.md](./prop.rn-chain-rule.md)
 
-## 陈述（续）
-$$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda}\quad  (\lambda-\text{a.e.})$$
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`prop.integral-gives-ac`](../nodes/prop.integral-gives-ac.md) 积分给出绝对连续测度 + [`prop.integrals-equal-iff`](../nodes/prop.integrals-equal-iff.md) 何时两个函数积分处处相同：换元公式与链式法则　[proofs/imp.rn-chain-rule.md](../proofs/imp.rn-chain-rule.md)

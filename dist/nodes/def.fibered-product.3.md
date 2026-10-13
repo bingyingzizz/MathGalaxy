@@ -1,11 +1,14 @@
 # 纤维积 / 纤维余积　`def.fibered-product`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.fibered-product.md`　·　上一页 `nodes/def.fibered-product.2.md`
+[在星图里打开](../#n=def.fibered-product)　·　第 1 页 [nodes/def.fibered-product.md](./def.fibered-product.md)　·　上一页 [nodes/def.fibered-product.2.md](./def.fibered-product.2.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 `def.universal-colimit` 万有关系 用
-- 被 `def.effective-equivalence` 有效等价关系 用
-- 被 `def.quasi-separated` 拟分离对象 用
-- 被 `def.mapping-cone` 映射锥 用
-- 被 `def.abelian-category` 加法 / 阿贝尔范畴 用
-- 被 `prop.cgwh-fiber-product` 紧块的纤维积还是紧的 用
-- 被 `prop.preserves-fibered-products-mono` 保纤维积 ⟹ 保单态射 用
+- 被 [`prop.projective-universal-epi`](../nodes/prop.projective-universal-epi.md) 投射对象与满态射的截面 用
+- 被 [`prop.slice-cartesian`](../nodes/prop.slice-cartesian.md) 切片范畴是拉回 用
+- 被 [`thm.sheaf-descent`](../nodes/thm.sheaf-descent.md) 层的下降条件 用
+- 被 [`prop.subobject-lattice`](../nodes/prop.subobject-lattice.md) 子对象构成有界格 用
+- 被 [`prop.quasi-compact-properties`](../nodes/prop.quasi-compact-properties.md) 拟紧的性质 用
+- 被 [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射 用
+- 被 [`def.subobject`](../nodes/def.subobject.md) 子对象 用
+- 被 [`def.free-presentation`](../nodes/def.free-presentation.md) 自由表示 用
+
+> 续见 [nodes/def.fibered-product.4.md](./def.fibered-product.4.md)

@@ -6,9 +6,9 @@
 $$\mathbb{Z}^{(I)} \twoheadrightarrow \widehat{M} ✓$$
 （自由离散群是离散群的投射覆盖。）
 **② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是
-$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（$T$ 连通，连通空间的积连通）✓}$$
+$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（$T$ 连通，连通空间的积连通）}\;\checkmark$$
 **③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列
 $$0 \to M \to M_{0} \to M_{1} \to 0 \quad\leadsto\quad 0 \to \widehat{M_{1}} \to \mathbb{Z}^{(I)} \to \widehat{M} \to 0,$$
-其中 $\widehat{M_{1}}$ 是自由离散群 $\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\cong \mathbb{Z}^{(J)}$ ✓（PID 上自由模
+其中 $\widehat{M_{1}}$ 是自由离散群 $\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\cong \mathbb{Z}^{(J)}$ ✓（PID 上
 
 > 续见 notes/prop.chaus-two-term-resolution.2.md

@@ -1,26 +1,26 @@
 # 阿贝尔层的张量积　`def.tensor-abelian-sheaf`
 张量积与封闭幺半结构
 layer 18 · 定义 · 阿贝尔层 · 同调代数
+[在星图里打开](../#n=def.tensor-abelian-sheaf)　·　[节点索引](../index.md)
 
 设 $\mathcal{T}$ 是拓扑斯、$M, N \in \mathcal{T}(\mathbf{Ab})$。函子
 
 $$P \longmapsto \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ \operatorname{Hom}_{\mathbb{Z}}(N, P)\bigr)$$
 
 可表示；表示对象记 $M \otimes_{\mathbb{Z}} N$。于是
-> 陈述续见 `nodes/def.tensor-abelian-sheaf.2.md`
+> 陈述续见 [nodes/def.tensor-abelian-sheaf.2.md](./def.tensor-abelian-sheaf.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.internal-hom` 内 Hom：用到了定义 内 Hom　proofs/def-dep.tensor-internalhom.md
-- `def.abelian-sheaf` 阿贝尔层：用到了定义 阿贝尔层　proofs/def-dep.tensor-abelsheaf.md
-- `def.adjoint` 伴随函子：用到了定义 伴随函子　proofs/def-dep.tensor-adjoint.md
-- `def.condensed-abelian-group` 凝聚态阿贝尔群：用到了定义 凝聚态阿贝尔群　proofs/def-dep.tensor-condab.md
+- [`def.internal-hom`](../nodes/def.internal-hom.md) 内 Hom：用到了定义 内 Hom　[proofs/def-dep.tensor-internalhom.md](../proofs/def-dep.tensor-internalhom.md)
+
+- …另有入边，续页见 [nodes/def.tensor-abelian-sheaf.3.md](./def.tensor-abelian-sheaf.3.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `prop.tensor-rhom-natural-map` 张量与 RHom 的配对 用
-
-- …另有出边，续页见 `nodes/def.tensor-abelian-sheaf.3.md`
+- …另有出边，续页见 [nodes/def.tensor-abelian-sheaf.4.md](./def.tensor-abelian-sheaf.4.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §5.3
 
 > 说明见 `notes/def.tensor-abelian-sheaf.md`
+
+引用：`def.tensor-abelian-sheaf`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

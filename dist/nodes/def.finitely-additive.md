@@ -1,6 +1,7 @@
 # 有限可加测度　`def.finitely-additive`
 有限可加测度（Finitely Additive Measure）
 layer 15 · 定义 · 测度的构造 · 分析学
+[在星图里打开](../#n=def.finitely-additive)　·　[节点索引](../index.md)
 
 若 $\mu$ 只满足 (i) 与**有限**可加性：
 
@@ -10,8 +11,10 @@ $$A, B \in \mathcal{M}\text{ 两两不交} \implies \mu(A \cup B) = \mu(A) + \mu
 则 $\mu$ 称为**有限可加测度**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.measure` 测度：用到了定义 测度　proofs/def-dep.measure-finitely-additive.md
+- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-dep.measure-finitely-additive.md](../proofs/def-dep.measure-finitely-additive.md)
 
 refs: Halmos, Measure Theory, §9
 
 > 说明见 `notes/def.finitely-additive.md`
+
+引用：`def.finitely-additive`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

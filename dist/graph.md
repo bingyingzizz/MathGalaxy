@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-13T05:26:53.073Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-13T05:37:11.713Z
 > 9 星系 / 45 星团 / 706 节点 / 1391 连线（强边 1382，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -10408,7 +10408,7 @@ $$\mathcal{C} \longrightarrow \mathcal{C}(\mathcal{C}), \qquad M \longmapsto [M]
 
 **证明。**
 **1.** 复形之间的态射是 $\mathbb{Z}$ 指标的一族映射 $f^{n} : [M]^{n} \to [N]^{n}$ 且与微分交换；而 $[M]$、$[N]$ 只在 $0$ 次非零，微分又是零，交换性自动成立 ✓。于是
-$$\operatorname{Hom}_{\mathcal{C}(\mathcal{C})}([M], [N]) = \operatorname{Hom}_{\mathcal{C}}(M, N) \quad \text{（只有 } n = 0 \text{ 这一项）✓}$$
+$$\operatorname{Hom}_{\mathcal{C}(\mathcal{C})}([M], [N]) = \operatorname{Hom}_{\mathcal{C}}(M, N) \quad \text{（只有 } n = 0 \text{ 这一项）}\;\checkmark$$
 即全忠实 ✓。
 **2.** 复形范畴里的极限与余极限**逐项计算**（见「复形范畴的性质」）。逐项看：$0$ 次上得到原图在该处的极限（对 $[M_{i}]$ 逐项取极限，$0$ 次那一项恰是 $\lim M_{i}$）✓；其余次上得到「一堆零对象的极限」—— 而 $0$ 既是始对象又是终对象，故那些极限与余极限仍是 $0$ ✓。于是 $[\lim M_{i}] = \lim [M_{i}]$，$[\varinjlim M_{i}] = \varinjlim [M_{i}]$ ✓。∎
 
@@ -10506,9 +10506,9 @@ $$0 \to H^{k} \to K^{k}/B^{k} \to B^{k+1} \to 0, \qquad 0 \to B^{k+1} \to Z^{k+1
 $(\Longrightarrow)$ 逐层构造收缩同伦。零调给出短正合列
 $$0 \longrightarrow Z^{n} \longrightarrow I^{n} \xrightarrow{\ p_{n}\ } Z^{n+1} \longrightarrow 0,$$
 （$Z^{n} = \ker d^{n}$、$Z^{n+1} = \operatorname{im} d^{n}$）。$I^{n}$ **内射**，所以这条列**分裂**：取 $q_{n} : I^{n} \to Z^{n}$ 使 $q_{n}j_{n} = 1$、取 $s_{n} : Z^{n+1} \to I^{n}$ 使 $p_{n}s_{n} = 1$，于是
-$$1_{I^{n}} = j_{n}q_{n} + s_{n}p_{n} \qquad \text{（分裂短正合列的标准恒等式）}✓$$
+$$1_{I^{n}} = j_{n}q_{n} + s_{n}p_{n} \qquad \text{（分裂短正合列的标准恒等式）}\;\checkmark$$
 令 $s^{n} := s_{n-1}\circ q_{n} : I^{n} \to I^{n-1}$。注意 $d^{n} = j_{n+1}p_{n}$ 且 $d^{n-1} = j_{n}p_{n-1}$，于是
-$$d^{n-1}s^{n} + s^{n+1}d^{n} = j_{n}p_{n-1}s_{n-1}q_{n} + s_{n}q_{n+1}j_{n+1}p_{n} = j_{n}q_{n} + s_{n}p_{n} = 1_{I^{n}} ✓$$
+$$d^{n-1}s^{n} + s^{n+1}d^{n} = j_{n}p_{n-1}s_{n-1}q_{n} + s_{n}q_{n+1}j_{n+1}p_{n} = j_{n}q_{n} + s_{n}p_{n} = 1_{I^{n}} \;\checkmark$$
 （用了 $p_{n-1}s_{n-1} = 1$、$q_{n+1}j_{n+1} = 1$。）这正是「$1 \sim 0$」要求的恒等式 ✓。
 **2.** $(\Longleftarrow)$ 同伦等价显然给出拟同构（同伦的映射在同调上相等，逆映射的存在性使 $H^{n}(f)$ 可逆）✓。
 $(\Longrightarrow)$ 设 $f : I^{\bullet} \to J^{\bullet}$ 是拟同构。映射锥 $M(f)^{n} = I^{n+1}\oplus J^{n}$ 仍是**逐项内射、有界下方**的复形 ✓，而由导出三角 $I \to J \to M(f) \to I[1]$ 与「$f$ 拟同构 $\iff$ 锥零调」，$M(f)$ 零调 ✓。对上 $M(f)$ 用第 1 条，得 $M(f)$ 同伦平凡；再由三角 $I \to J \to M(f) \to I[1]$ 与同伦平凡的锥，可以逐层把映射抬起来，得到 $g : J^{\bullet}\to I^{\bullet}$ 与同伦 $gf \sim 1$、$fg \sim 1$ ✓（这就是「三角论证」：锥的同伦平凡性正好给出同伦逆的数据）。于是 $f$ 是同伦等价 ✓。∎
@@ -12644,7 +12644,7 @@ $$0 \longrightarrow M \longrightarrow M_{0} \longrightarrow M_{1} \longrightarro
 $$\mathbb{Z}^{(I)} \twoheadrightarrow \widehat{M} ✓$$
 （自由离散群是离散群的投射覆盖。）
 **② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是
-$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（$T$ 连通，连通空间的积连通）✓}$$
+$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（$T$ 连通，连通空间的积连通）}\;\checkmark$$
 **③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列
 $$0 \to M \to M_{0} \to M_{1} \to 0 \quad\leadsto\quad 0 \to \widehat{M_{1}} \to \mathbb{Z}^{(I)} \to \widehat{M} \to 0,$$
 其中 $\widehat{M_{1}}$ 是自由离散群 $\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\cong \mathbb{Z}^{(J)}$ ✓（PID 上自由模的子模自由）。再对偶回来：$M_{1} \cong T^{J}$ ✓ —— 连通（并紧）✓。

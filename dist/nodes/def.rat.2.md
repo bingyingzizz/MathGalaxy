@@ -1,7 +1,9 @@
 # 有理数 ℚ　`def.rat`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/def.rat.md`
+[在星图里打开](../#n=def.rat)　·　第 1 页 [nodes/def.rat.md](./def.rat.md)
 
-## 陈述（续）
-$$\frac{a}{b} + \frac{c}{d} := \frac{ad + bc}{bd}, \qquad \frac{a}{b} \cdot \frac{c}{d} := \frac{ac}{bd}, \qquad \frac{a}{b} \le \frac{c}{d} :\iff ad \le bc \quad (b, d > 0)$$
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.int`](../nodes/def.int.md) 整数 ℤ：用到了定义 整数 ℤ　[proofs/dep.int-rat.md](../proofs/dep.int-rat.md)
+- [`def.quotient-set`](../nodes/def.quotient-set.md) 商集与等价类：用到了定义 商集与等价类　[proofs/dep.quotient-rat.md](../proofs/dep.quotient-rat.md)
+- [`def.ordered-field`](../nodes/def.ordered-field.md) 有序域：用到了定义 有序域　[proofs/dep.ordered-rat.md](../proofs/dep.ordered-rat.md)
 
-于是 $\mathbb{Q}$ 是一个**有序域**：四则运算齐全，且与序相容。
+> 续见 [nodes/def.rat.3.md](./def.rat.3.md)

@@ -1,7 +1,6 @@
 # 替换公理模式　`ax.repl`　·　续页（第 2 页）
-根 `../`　·　第 1 页 `nodes/ax.repl.md`
+[在星图里打开](../#n=ax.repl)　·　第 1 页 [nodes/ax.repl.md](./ax.repl.md)
 
-## 陈述（续）
-$$\forall p [ \forall x\forall y\forall z ( \varphi(x,y,p) \wedge  \varphi(x,z,p) \to y = z ) \to \forall A \exists B \forall y ( y \in B \leftrightarrow  \exists x \in A, \varphi(x,y,p) ) ]$$
-
-它保证了「替换」不会跑出集合论宇宙：像 $B$ 也是集合。
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.formula`](../nodes/def.formula.md) 公式：用到了定义 公式　[proofs/def-link.formula-repl.md](../proofs/def-link.formula-repl.md)
+- [`def.substitution`](../nodes/def.substitution.md) 代入：用到了定义 代入　[proofs/def-link.substitution-repl.md](../proofs/def-link.substitution-repl.md)

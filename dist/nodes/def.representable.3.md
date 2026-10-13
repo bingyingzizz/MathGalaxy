@@ -1,15 +1,7 @@
 # 表示函子　`def.representable`　·　续页（第 3 页）
-根 `../`　·　第 1 页 `nodes/def.representable.md`　·　上一页 `nodes/def.representable.2.md`
+[在星图里打开](../#n=def.representable)　·　第 1 页 [nodes/def.representable.md](./def.representable.md)　·　上一页 [nodes/def.representable.2.md](./def.representable.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- ⇒ `thm.right-adjoint-criterion` 右伴随存在的判据
-- 被 `prop.forgetful-representable` 遗忘函子可表示 用
-- 被 `prop.solution-functor-representable` 解集函子可表示 用
-- 被 `lem.yoneda` 米田引理 用
-- 被 `thm.represented-criterion` 表示的两个定义等价 用
-- 被 `thm.right-adjoint-criterion` 右伴随存在的判据 用
-- 被 `thm.giraud` Giraud 定理 用
-- 被 `lem.representable-quotient` 可表示性的下降 用
-- 被 `prop.representable-preserves-limits` 可表函子保所有极限 用
-- 被 `def.section-functor` 截面函子 用
-- 被 `def.finitely-presented` 有限表现对象 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.elements-category`](../nodes/def.elements-category.md) 元素范畴：用到了定义 元素范畴　[proofs/def-dep.el-representable.md](../proofs/def-dep.el-representable.md)
+
+> 续见 [nodes/def.representable.4.md](./def.representable.4.md)

@@ -1,6 +1,7 @@
 # 层　`def.sheaf`
 层与分离预层（Sheaf）
 layer 15 · 定义 · 层与拓扑 · 范畴论
+[在星图里打开](../#n=def.sheaf)　·　[节点索引](../index.md)
 
 设 $\mathcal{C}$ 是 site，$F : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$ 是预层。
 
@@ -12,17 +13,15 @@ $$\operatorname{Hom}(h_{X}, F) \longrightarrow \operatorname{Hom}(R, F)$$
 - $F$ 叫**层**，如果这个映射是**双射**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.grothendieck-topology` Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　proofs/def-dep.topology-sheaf.md
-- `def.presheaf` 预层：用到了定义 预层　proofs/def-dep.presheaf-sheaf.md
-- `def.limit` 极限：用到了定义 极限　proofs/def-dep.limit-sheaf.md
+- [`def.grothendieck-topology`](../nodes/def.grothendieck-topology.md) Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　[proofs/def-dep.topology-sheaf.md](../proofs/def-dep.topology-sheaf.md)
+
+- …另有入边，续页见 [nodes/def.sheaf.2.md](./def.sheaf.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ `thm.sheaf-descent` 层的下降条件
-- ⇒ `prop.topos-sheaf-limits` 拓扑斯上的层即保极限的预层
-- ⇒ `prop.cond-epi` 凝聚态集满态射的判据
-
-- …另有出边，续页见 `nodes/def.sheaf.2.md`
+- …另有出边，续页见 [nodes/def.sheaf.3.md](./def.sheaf.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 > 说明见 `notes/def.sheaf.md`
+
+引用：`def.sheaf`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

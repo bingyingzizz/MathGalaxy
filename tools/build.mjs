@@ -379,25 +379,64 @@ const SEC_STMT = '陈述（续）';
 /** 小节名去掉 `## ` 前缀 —— 续页的标题自己会加一个，不去就变成「## ## …」 */
 const secName = s => String(s).replace(/^##\s*/, '');
 
+/* markdown 链接。⚠️ 只**包**住原文（连反引号一起），不改字面 —— 别的体检脚本还在
+   按 `nodes/<id>.md` 这种反引号路径做匹配，改了字面就把它们弄哑了。
+   顺手转义文本里的方括号：标签一含 [ ] 就会把链接语法弄坏。 */
+const mdLink = (txt, href) => `[${String(txt).replace(/[[\]]/g, '\\$&')}](${href})`;
+
+/* 续页的小节标题行。⚠️ 它也占位，预算里必须算上（以前只在写出时加，估算漏掉 ⇒ 续页超限）。 */
+const contSecLine = (sec) => `## ${secName(sec)}${sec === SEC_STMT ? '' : '（续）'}\n`;
+
+/* 续页页首。⚠️ 预算与实际写出去的那份**必须同一处生成** —— 以前两边各写一遍，
+   改了链接写法之后估算就和实际对不上了（估算偏小 ⇒ 顶破上限）。 */
+const contHead = (node, k) =>
+  `# ${node.label}　\`${node.id}\`　·　续页（第 ${k} 页）\n` +
+  `${mdLink('在星图里打开', `../#n=${node.id}`)}　·　第 1 页 ${mdLink('nodes/' + node.id + '.md', './' + node.id + '.md')}` +
+  (k > 2 ? `　·　上一页 ${mdLink('nodes/' + node.id + '.' + (k - 1) + '.md', './' + node.id + '.' + (k - 1) + '.md')}` : '') +
+  '\n\n';
+
 /** 把塞不进节点第 1 页的内容按小节打包成续页。
-    规则：换小节一定另起一页（页首标题才诚实）；同一小节超预算也另起。 */
-function packPages(node, items, budget) {
+    规则：换小节一定另起一页（页首标题才诚实）；同一小节超预算也另起。
+    ⚠️ 预算**两条上限都要查**（字节 ≤1300 **且** 转义后 ≤1050）—— 以前只看字节，
+    LaTeX 密集的续页会卡在转义字符那条上（2026-10-13 被页脚与链接暴露出来）。
+    ⚠️ 单条内容自己就顶破一页时（长证明 + 密集 LaTeX），先按段/按字切开 ——
+    否则「另起一页」也救不了它。 */
+function packPages(node, items, maxB, maxC) {
   const pages = [];
   let cur = null;
-  const headOf = (k, sec) => `# ${node.label}　\`${node.id}\`　·　续页（第 ${k} 页）\n` +
-    `根 \`../\`　·　第 1 页 \`nodes/${node.id}.md\`\n\n## ${secName(sec)}${sec === SEC_STMT ? '' : '（续）'}\n`;
+  /* ⚠️ 续页末尾还有一行「续见 <下一页>」（最后一页没有），它占位也要从预算里扣 ——
+     不扣的话每页实测都比估算大 90 字符左右，正好顶破上限。 */
+  const contJumpB = aiBytes(`\n> 续见 ${mdLink('nodes/' + node.id + '.99.md', './' + node.id + '.99.md')}\n`);
+  const contJumpC = aiCost(`\n> 续见 ${mdLink('nodes/' + node.id + '.99.md', './' + node.id + '.99.md')}\n`);
+  maxB -= contJumpB;
+  maxC -= contJumpC;
+  const fitsOn = (k, sec, lines, extra) => {
+    const d = contHead(node, k) + contSecLine(sec) + lines.map(l => l + '\n').join('') + extra + '\n';
+    return aiBytes(d) <= maxB && aiCost(d) <= maxC;
+  };
+  const push = () => { if (cur) { pages.push(cur); cur = null; } };
+
+  // 先保证「每一条自己都能放进一页」；切出来的续块照旧待在同一小节里。
+  // ⚠️ 用**最长的那种页首**（k 取两位，带「上一页」链接）估，别用第 2 页的短页首 ——
+  //    靠后的续页页首更长，按短页首切出来的块会顶破。
+  // ⚠️ aiChunk 内部按**全局**上限（AI_MAXB / AI_ESC）判，而续页的预算更紧；
+  //    差额必须当 reserve 传进去，否则切出来「刚好合格」的块在续页上照样顶破。
+  const flat = [];
+  const worstHead = contHead(node, 99);
   for (const it of items) {
-    if (cur && it.sec !== cur.sec) { pages.push(cur); cur = null; }
-    const k = pages.length + 2;
-    if (!cur) cur = { sec: it.sec, lines: [] };
-    const size = aiBytes(headOf(k, it.sec) + cur.lines.map(l => l + '\n').join('') + it.text + '\n');
-    if (cur.lines.length && size > budget) {
-      pages.push(cur);
-      cur = { sec: it.sec, lines: [] };
+    for (const p of aiChunk(it.text, worstHead + contSecLine(it.sec), '', AI_MAXB - maxB, AI_ESC - maxC)) {
+      flat.push({ sec: it.sec, text: p });
     }
+  }
+
+  for (const it of flat) {
+    if (cur && it.sec !== cur.sec) push();
+    if (!cur) cur = { sec: it.sec, lines: [] };
+    if (cur.lines.length && !fitsOn(pages.length + 2, it.sec, cur.lines, it.text)) push();
+    if (!cur) cur = { sec: it.sec, lines: [] };
     cur.lines.push(it.text);
   }
-  if (cur) pages.push(cur);
+  push();
   return pages;
 }
 
@@ -415,9 +454,12 @@ function edgeTail(e) {
   return (e.note || '').trim();
 }
 
-/** 把一个格式串切成若干块，使 head + 块 + tail 能一次读完 */
-function aiChunk(body, head, tail, resB = 150) {
-  const fits = s => aiBytes(s) + resB <= AI_MAXB && aiCost(s) + resB <= AI_ESC;
+/** 把一个格式串切成若干块，使 head + 块 + tail 能一次读完。
+    ⚠️ 两个 reserve 分开传：字节数与转义字符数不是一回事（中文页字节远大于字符数，
+    LaTeX 密集页反过来），只用一个数会在另一条上限上松掉 ⇒ 要么顶破、要么
+    被压到「一个字都放不下」而退化成逐字切分（2026-10-13 踩过）。 */
+function aiChunk(body, head, tail, resB = 150, resC = resB) {
+  const fits = s => aiBytes(s) + resB <= AI_MAXB && aiCost(s) + resC <= AI_ESC;
   if (fits(head + body + tail)) return [body];
   const chunks = [];
   let cur = '';
@@ -499,7 +541,8 @@ function exportAIProducts(MG, graph, data) {
   for (const n of graph.nodes) {
     const head = `# ${n.label}　\`${n.id}\`\n${n.title}\n` +
       `layer ${n.layer} · ${typeName(n.type)} · ${n.cluster ? cname(n.cluster) : '—'} · ` +
-      `${(n.regions || []).map(rname).join('+')}\n\n`;
+      `${(n.regions || []).map(rname).join('+')}\n` +
+      `${mdLink('在星图里打开', `../#n=${n.id}`)}　·　${mdLink('节点索引', '../index.md')}\n\n`;
     const refs = (n.refs || []).length ? `\nrefs: ${n.refs.join('；')}\n` : '';
     const notes = (n.notes || '').trim();
     const notesPtr = notes ? `\n> 说明见 \`notes/${n.id}.md\`\n` : '';
@@ -508,19 +551,39 @@ function exportAIProducts(MG, graph, data) {
        ① 「说明塞得下就内联」是在跳转行之前判的，跳转行一加就顶破；
        ② 先扣 refs 再扣说明再扣邻接，一路减法下来和实际拼出来的长度对不上。
        现在改成：每次要加东西就先拼一遍、量一遍。 */
-    const JUMP_RESERVE = 190;      // 最多三条「续页跳转」的位子
+    /* 最多三条「续页跳转」的位子。⚠️ 别写死常数、也别只按最短的那条估：
+       三条里两条是更长的「另有…续页见」措辞，且行里都带节点 id 与链接 ——
+       长 id（thm.induced-topos-morphism）一行就 90+ 字符。
+       字节与转义字符**分别**算（中文页的字节远大于字符数），各自再留 80 的零头余量
+       （空行、id 长短不一、行尾换行）。真顶破了还有构建断言兜底。 */
+    const nodePageRef = (k) => mdLink('nodes/' + n.id + '.' + k + '.md', './' + n.id + '.' + k + '.md');
+    const jumpLines = [
+      `> 陈述续见 ${nodePageRef(99)}`,
+      `- …另有入边，续页见 ${nodePageRef(99)}`,
+      `- …另有出边，续页见 ${nodePageRef(99)}`,
+    ];
+    const JUMP_RESERVE_B = Math.max(190, jumpLines.reduce((s, l) => s + aiBytes(l) + 2, 0)) + 40;
+    const JUMP_RESERVE_C = Math.max(190, jumpLines.reduce((s, l) => s + aiCost(l) + 2, 0)) + 40;
 
     // 说明：只有确实短小的才内联（这一步不看陈述，避免循环依赖）
     const notesInline = !!notes && aiBytes(notes) <= 300 &&
       aiBytes(head + refs) + aiBytes(notes) + 760 <= AI_MAXB;
     const notesTail = !notes ? '' : (notesInline ? '\n## 说明\n' + notes + '\n' : notesPtr);
-    const mandatoryTail = refs + notesTail;
+    /* 引用方式写在每页尾部 —— 公开之后「怎么引用」的落地形态：
+       节点 id 是别人唯一能追回这一页的线索。⚠️ 写短：这一行占的是 AI 单次抓取的
+       预算（1050 字符），每个节点都有，写长了分页会翻倍。 */
+    const citeTail = `\n引用：\`${n.id}\`（内容 ${CONTENT_VERSION || 'dev'}）· 条款见 ${mdLink('LICENSE.txt', '../LICENSE.txt')}\n`;
+    const mandatoryTail = refs + notesTail + citeTail;
 
     const stmtChunks = aiChunk((n.statement || '').trim(), head, refs,
-      aiBytes(mandatoryTail) + JUMP_RESERVE + 320);
+      aiBytes(mandatoryTail) + JUMP_RESERVE_B, aiCost(mandatoryTail) + JUMP_RESERVE_C);
 
     let text = head + stmtChunks[0] + '\n';
-    const canAdd = extra => aiBytes(text + extra + mandatoryTail) + JUMP_RESERVE <= AI_MAXB;
+    // ⚠️ 两条上限都要查（字节 + 转义后字符），别只看字节
+    const canAdd = extra => {
+      const draft = text + extra + mandatoryTail;
+      return aiBytes(draft) + JUMP_RESERVE_B <= AI_MAXB && aiCost(draft) + JUMP_RESERVE_C <= AI_ESC;
+    };
     const over = [];               // 塞不下的内容 → 续页
 
     /* 入边：它为什么成立 —— 一行一条，正文都在 proofs/ */
@@ -534,9 +597,9 @@ function exportAIProducts(MG, graph, data) {
           : e.kind === 'definition' ? [e.definition]
           : [e.a === n.id ? e.b : e.a];
         // 每个 id 都单独包反引号 —— 多来源的边也要能逐个 id 复制
-        const from = ids.map(s => '`' + s + '` ' + label(s)).join(' + ');
+        const from = ids.map(s => mdLink('`' + s + '`', `../nodes/${s}.md`) + ' ' + label(s)).join(' + ');
         const ttl = e.kind === 'definition' ? `用到了定义 ${label(e.definition)}` : (e.title || e.id);
-        return `- ${from}：${ttl}　proofs/${e.id}.md`;
+        return `- ${from}：${ttl}　${mdLink('proofs/' + e.id + '.md', `../proofs/${e.id}.md`)}`;
       });
       let sec = SEC_IN + '\n';
       let shown = 0;
@@ -550,10 +613,14 @@ function exportAIProducts(MG, graph, data) {
 
     /* 出边：它能推出什么 / 谁在用它 */
     const ous = (out.get(n.id) || []).map(e => {
-      if (e.kind === 'implication') return `- ⇒ \`${e.target}\` ${label(e.target)}`;
-      if (e.kind === 'definition') return `- 被 \`${e.usedBy}\` ${label(e.usedBy)} 用`;
-      if (e.kind === 'analogy') return `- ～弱边 \`${e.a === n.id ? e.b : e.a}\` ${label(e.a === n.id ? e.b : e.a)}`;
-      return `- ⟺ \`${e.a === n.id ? e.b : e.a}\` ${label(e.a === n.id ? e.b : e.a)}`;
+      const other = e.kind === 'implication' ? e.target
+        : e.kind === 'definition' ? e.usedBy
+        : (e.a === n.id ? e.b : e.a);
+      const linked = mdLink('`' + other + '`', `../nodes/${other}.md`);
+      if (e.kind === 'implication') return `- ⇒ ${linked} ${label(e.target)}`;
+      if (e.kind === 'definition') return `- 被 ${linked} ${label(e.usedBy)} 用`;
+      if (e.kind === 'analogy') return `- ～弱边 ${linked} ${label(other)}`;
+      return `- ⟺ ${linked} ${label(other)}`;
     });
     if (ous.length) {
       let sec = SEC_OUT + '\n';
@@ -572,7 +639,7 @@ function exportAIProducts(MG, graph, data) {
        命名与 proofs/ 同一套：第 1 页 <base>.md、第 k 页 <base>.<k>.md。 */
     const items = [];
     stmtChunks.slice(1).forEach(c => items.push({ sec: SEC_STMT, text: c }));
-    const pages = packPages(n, items.concat(over), AI_MAXB - 90);
+    const pages = packPages(n, items.concat(over), AI_MAXB - 90, AI_ESC - 70);
     const firstOf = {};
     pages.forEach((p, i) => { if (firstOf[p.sec] == null) firstOf[p.sec] = i + 2; });
 
@@ -580,14 +647,15 @@ function exportAIProducts(MG, graph, data) {
 
     // 第 1 页的跳转行：路径一定指向真实存在的那一页
     const jump = [];
+    const nodePageLink = (k) => mdLink('nodes/' + n.id + '.' + k + '.md', './' + n.id + '.' + k + '.md');
     if (firstOf[SEC_STMT] != null) {
-      jump.push([SEC_STMT, `> 陈述续见 \`nodes/${n.id}.${firstOf[SEC_STMT]}.md\``]);
+      jump.push([SEC_STMT, `> 陈述续见 ${nodePageLink(firstOf[SEC_STMT])}`]);
     }
     if (firstOf[SEC_IN] != null) {
-      jump.push([SEC_IN, `- …另有入边，续页见 \`nodes/${n.id}.${firstOf[SEC_IN]}.md\``]);
+      jump.push([SEC_IN, `- …另有入边，续页见 ${nodePageLink(firstOf[SEC_IN])}`]);
     }
     if (firstOf[SEC_OUT] != null) {
-      jump.push([SEC_OUT, `- …另有出边，续页见 \`nodes/${n.id}.${firstOf[SEC_OUT]}.md\``]);
+      jump.push([SEC_OUT, `- …另有出边，续页见 ${nodePageLink(firstOf[SEC_OUT])}`]);
     }
     for (const [sec, line] of jump) {
       if (sec === SEC_STMT) {
@@ -616,11 +684,9 @@ function exportAIProducts(MG, graph, data) {
     const texts = [text];
     pages.forEach((p, i) => {
       const k = i + 2;
-      let t = `# ${n.label}　\`${n.id}\`　·　续页（第 ${k} 页）\n` +
-        `根 \`../\`　·　第 1 页 \`nodes/${n.id}.md\`` +
-        (k > 2 ? `　·　上一页 \`nodes/${n.id}.${k - 1}.md\`` : '') + '\n\n' +
-        `## ${secName(p.sec)}${p.sec === SEC_STMT ? '' : '（续）'}\n` + p.lines.join('\n') + '\n';
-      if (i < pages.length - 1) t += `\n> 续见 \`nodes/${n.id}.${k + 1}.md\`\n`;
+      let t = contHead(n, k) +
+        contSecLine(p.sec) + p.lines.join('\n') + '\n';
+      if (i < pages.length - 1) t += `\n> 续见 ${mdLink('nodes/' + n.id + '.' + (k + 1) + '.md', './' + n.id + '.' + (k + 1) + '.md')}\n`;
       texts.push(t);
       files.push({ path: `nodes/${n.id}.${k}.md`, text: t });
     });
@@ -733,8 +799,7 @@ function assertAI(MG, graph, files, pagesOf) {
   }
 
   /* ③ 分页里的跳转必须真的存在（写错页码 / 漏生成都要报） */
-  const paths = new Set(files.map(f => f.path));
-  for (const f of files) {
+  const paths = new Set(files.map(f => f.path));  for (const f of files) {
     for (const m of f.text.matchAll(/`((?:nodes|index|notes|proofs)\/[^`]+\.md)`/g)) {
       if (/[<>]/.test(m[1])) continue;                 // `index/<星团id>.md` 这种是占位写法，不是真路径
       if (!paths.has(m[1])) errs.push(`${f.path} 指向不存在的文件：${m[1]}`);
@@ -764,6 +829,22 @@ function assertAI(MG, graph, files, pagesOf) {
         if (!all.includes('`' + nb + '`')) {
           errs.push(`节点 ${n.id} 的页面上找不到邻居 ${nb}（走到这里就断了）`);
         }
+      }
+    }
+  }
+
+  /* ④ 站内链接必须指向真实存在的文件 —— 节点页现在互相链（出边 / 入边 / 证明路径 /
+       续页 / 许可），链错就是线上 404。⚠️ 这一条是加了链接之后必须补的活儿：
+       「路径唯一」「续页跳转存在」只查了跳转行，查不到正文里的链接。 */
+  const alwaysThere = new Set(['LICENSE.txt']);   // 直接写盘，不在 files 清单里
+  for (const f of files) {
+    const fromDir = path.posix.dirname(f.path);
+    for (const m of f.text.matchAll(/\]\(([^)\s]+)\)/g)) {
+      const href = m[1];
+      if (/^(https?:|#|\.\.\/#)/.test(href)) continue;      // 外链 / 页内锚点 / 星图深链
+      const target = path.posix.normalize(path.posix.join(fromDir, href.replace(/^\.\//, '')));
+      if (!paths.has(target) && !alwaysThere.has(target)) {
+        errs.push(`链接指向不存在的文件：${f.path} → ${href}（解析为 ${target}）`);
       }
     }
   }

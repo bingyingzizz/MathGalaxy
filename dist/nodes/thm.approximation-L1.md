@@ -1,6 +1,7 @@
 # L¹ 里的逼近　`thm.approximation-L1`
 定理：$L^{1}$ 中可用简单函数 / 连续函数逼近
 layer 20 · 定理 · 积分 · 分析学
+[在星图里打开](../#n=thm.approximation-L1)　·　[节点索引](../index.md)
 
 设 $f \in L^1(\mu)$。则对任意 $\varepsilon > 0$，存在简单函数 $\varphi = \sum_j a_j \chi_{E_j}$ 使
 
@@ -10,14 +11,16 @@ $$\int |f - \varphi| d\mu < \varepsilon$$
 
 $$\int |f - g| d\mu < \varepsilon$$
 
-## 为什么成立（入边，证明在 proofs/）
-- `def.integrable` 可积 / L¹：用到了定义 可积 / L¹　proofs/def-link.integrable-approx.md
-- `def.simple-function` 简单函数：用到了定义 简单函数　proofs/def-link.simple-approx-L1.md
-
 ## 它能推出什么 / 谁在用它
-- ⇒ `cor.lusin` Lusin 定理
-- ⇒ `thm.lebesgue-differentiation` Lebesgue 微分定理
+- ⇒ [`cor.lusin`](../nodes/cor.lusin.md) Lusin 定理
+
+- …另有出边，续页见 [nodes/thm.approximation-L1.3.md](./thm.approximation-L1.3.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/thm.approximation-L1.2.md](./thm.approximation-L1.2.md)
 
 refs: Folland, Real Analysis, Theorem 2.26
 
 > 说明见 `notes/thm.approximation-L1.md`
+
+引用：`thm.approximation-L1`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

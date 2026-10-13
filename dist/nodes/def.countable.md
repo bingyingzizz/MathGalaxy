@@ -1,6 +1,7 @@
 # 可数与不可数　`def.countable`
 可数 / 至多可数（Countable）
 layer 8 · 定义 · 基数与等势 · 集合论
+[在星图里打开](../#n=def.countable)　·　[节点索引](../index.md)
 
 设 $\mathbb{N} = \{0, 1, 2, \ldots\}$ 是自然数集。
 
@@ -11,13 +12,15 @@ layer 8 · 定义 · 基数与等势 · 集合论
 不是至多可数的集合叫**不可数**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- `def.bijection` 单射 / 满射 / 双射：用到了定义 单射 / 满射 / 双射　proofs/dep.bijection-countable.md
-- `thm.omega` 自然数集存在：用到了定义 自然数集存在　proofs/dep.nat-countable.md
-- `def.equinumerous` 等势：用到了定义 等势　proofs/dep.equinumerous-countable.md
+- [`def.bijection`](../nodes/def.bijection.md) 单射 / 满射 / 双射：用到了定义 单射 / 满射 / 双射　[proofs/dep.bijection-countable.md](../proofs/dep.bijection-countable.md)
+
+- …另有入边，续页见 [nodes/def.countable.2.md](./def.countable.2.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 `thm.real-uncountable` ℝ 不可数 用
+- …另有出边，续页见 [nodes/def.countable.3.md](./def.countable.3.md)
 
 refs: Kunen, Set Theory, I.6
 
 > 说明见 `notes/def.countable.md`
+
+引用：`def.countable`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
