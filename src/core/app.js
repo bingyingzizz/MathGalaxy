@@ -96,6 +96,13 @@
     /* 诊断用：一帧里「我这边花的 JS」的累加（不含被推迟的光栅化 → 剩下的账归「其余」） */
     var drawProf = { ms: 0, n: 0 };
 
+    /* 用户要求「少动效」：镜头动画压到 1ms（⚠️ 不能是 0 —— dur=0 会让进度算成 NaN） */
+    var REDUCE_MOTION = !!(global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (REDUCE_MOTION) C.camera.animateMs = 1;
+
+    /* 拖层号滑杆期间不重画整个图例：重画会把这个 <input> 换掉，拖拽当场断掉 */
+    var suppressLegend = false;
+
     /* -------------------------------------------------------- 绘制循环 */
     function requestDraw() {
       dirty = true;
@@ -314,7 +321,11 @@
       requestDraw();
     }
 
-    vis.onChange(function () { refreshVisible(); renderLegend(); syncHash('push'); });
+    vis.onChange(function () {
+      refreshVisible();
+      if (!suppressLegend) renderLegend();
+      syncHash('push');
+    });
 
     /* ------------------------------------------------ 主干模式 / 分层 */
     /*
@@ -378,12 +389,14 @@
       syncHash('push');
     }
 
-    /** k = 只显示第 0…k 层；k >= 最大层 或 null = 不限 */
-    function setLayerMax(k) {
+    /** k = 只显示第 0…k 层；k >= 最大层 或 null = 不限。
+        opts.fit=false 用于「拖滑杆的过程中」：那时不重新适配镜头，否则画面会跟着抖。 */
+    function setLayerMax(k, opts) {
+      opts = opts || {};
       var max = graph.maxLayer || 0;
       layerMax = (k == null || k >= max) ? null : Math.max(0, k);
       applyFilter();
-      if (layerMax != null) fitAll();
+      if (layerMax != null && opts.fit !== false) fitAll();
       syncHash('push');
     }
 
@@ -550,23 +563,21 @@
 
       var hidden = total - shown;
 
-      /* ---------- 分层开关：点第 k 个芯片 = 只显示 0…k 层 ---------- */
+      /* ---------- 分层：滑杆（原来是一排 0–27 芯片，层数只会继续涨，撑不住） ---------- */
       var maxLv = graph.maxLayer || 0;
       var sizes = graph.layerSizes || [];
-      var layerChips = '';
-      for (var lv = 0; lv <= maxLv; lv++) {
-        var llist = sizes[lv] || [];
-        var lon = (layerMax == null) || lv <= layerMax;
-        var lnames = llist.map(function (x) { return x.label; });
-        layerChips += '<span class="lg-chip' + (lon ? ' on' : '') + '" data-layer="' + lv + '" title="' +
-          U.escapeHtml('第 ' + lv + ' 层（' + llist.length + ' 个）：' +
-            (lnames.slice(0, 10).join('、') || '（空）') + (lnames.length > 10 ? ' …' : '')) + '">' +
-          lv + '</span>';
-      }
-      layerChips += '<span class="lg-chip lg-chip-all' + (layerMax == null ? ' on' : '') +
+      var curLv = (layerMax == null) ? maxLv : layerMax;
+      var llist = sizes[curLv] || [];
+      var lnames = llist.map(function (x) { return x.label; });
+      var layerTip = '第 ' + curLv + ' 层（' + llist.length + ' 个）：' +
+        (lnames.slice(0, 12).join('、') || '（空）') + (lnames.length > 12 ? ' …' : '');
+      var layerChips =
+        '<input type="range" class="lg-range" min="0" max="' + maxLv + '" step="1" value="' + curLv +
+        '" data-layer-range aria-label="显示到第几层" title="' + U.escapeHtml('拖动：只显示「离地基不超过 k 步」的点。' + layerTip) + '">' +
+        '<span class="lg-chip lg-chip-all' + (layerMax == null ? ' on' : '') +
         '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
-      var layerTitle = '分层 · 显示到第 ' + (layerMax == null ? maxLv : layerMax) + ' 层' +
-        '（' + shown + '/' + total + '）';
+      var layerTitle = '<span id="lg-layer-readout" title="' + U.escapeHtml(layerTip) + '">' +
+        '分层 · 显示到第 ' + curLv + ' 层（' + shown + '/' + total + '）</span>';
 
       /* ---------- 子图开关：只在子图模式开着时出现 ---------- */
       var subChips = '';
@@ -690,6 +701,31 @@
       if (chip) toggleList(regionNodes(chip.getAttribute('data-vr')));
     });
 
+    /* 层号滑杆：拖的过程中只更新读数 + 过滤（不重画图例、不重新适配镜头），
+       松手（change）才做一次完整善后。否则 input 元素会被 renderLegend 换掉、拖拽断掉。 */
+    function layerRangeValue(el) {
+      var k = parseInt(el.value, 10);
+      return isFinite(k) ? k : null;
+    }
+    legendEl.addEventListener('input', function (e) {
+      var r = e.target;
+      if (!r || !r.matches || !r.matches('[data-layer-range]')) return;
+      suppressLegend = true;
+      setLayerMax(layerRangeValue(r), { fit: false });
+      var out = document.getElementById('lg-layer-readout');
+      if (out) {
+        var k = (layerMax == null) ? (graph.maxLayer || 0) : layerMax;
+        out.textContent = '分层 · 显示到第 ' + k + ' 层（' + vis.visibleCount() + '/' + graph.nodes.length + '）';
+      }
+    });
+    legendEl.addEventListener('change', function (e) {
+      var r = e.target;
+      if (!r || !r.matches || !r.matches('[data-layer-range]')) return;
+      suppressLegend = false;
+      setLayerMax(layerRangeValue(r));
+      renderLegend();
+    });
+
     /* 窄屏（竖屏手机 / 窄窗口）默认把图例**折起来**，而不是藏掉。
        ⚠️ 阈值必须和 styles.css 里那条 @media 保持一致。
        ⚠️ 只在「刚进入窄屏」时折一次 —— 每次都折的话，用户自己展开完一动窗口又没了。 */
@@ -704,6 +740,48 @@
     window.addEventListener('resize', syncNarrowLegend);
 
     /* ---------------------------------------------------------- 键盘 */
+    /* ------------------------------------------------- 沿边游走（← →） */
+    /*
+      「数学式」的键盘漫游：正在看某个点时，
+        → 顺着箭头走 —— 我推出的结论（implication）、我引用的定义（definition）
+        ← 逆着箭头走 —— 推出我的前提、引用我这个定义的结论
+      无向边（等价 / 类比）两个方向都能走。同一方向连按，在一圈候选里轮转（按层号、id 排序，
+      顺序可预期）。Shift + 方向键仍然是原来的平移。
+    */
+    var walkState = { from: null, dir: 0, i: 0 };
+    function neighborsOf(id, dir) {
+      var raw = [];
+      graph.edges.forEach(function (e) {
+        if (e.kind === 'implication') {
+          if (dir > 0) { if ((e.sources || []).indexOf(id) >= 0) raw.push(e.target); }
+          else if (e.target === id) (e.sources || []).forEach(function (s) { raw.push(s); });
+        } else if (e.kind === 'definition') {
+          if (dir > 0) { if (e.usedBy === id) raw.push(e.definition); }
+          else if (e.definition === id) raw.push(e.usedBy);
+        } else {
+          if (e.a === id) raw.push(e.b);
+          else if (e.b === id) raw.push(e.a);
+        }
+      });
+      var seen = Object.create(null), list = [];
+      raw.forEach(function (x) {
+        var n = graph.byId[x];
+        if (!n || seen[x]) return;
+        seen[x] = 1; list.push(n);
+      });
+      list.sort(function (p, q) {
+        return (p.layer - q.layer) || (p.id < q.id ? -1 : (p.id > q.id ? 1 : 0));
+      });
+      return list;
+    }
+    function walkNeighbor(id, dir) {
+      var list = neighborsOf(id, dir);
+      if (!list.length) return;
+      if (walkState.from !== id || walkState.dir !== dir) walkState = { from: id, dir: dir, i: 0 };
+      else walkState.i = (walkState.i + 1) % list.length;
+      focusNode(list[Math.min(walkState.i, list.length - 1)].id, { force: true });
+    }
+
     document.addEventListener('keydown', function (e) {
       var tag = (e.target.tagName || '').toLowerCase();
       var typing = tag === 'input' || tag === 'textarea' || e.target.isContentEditable;
@@ -715,11 +793,20 @@
         return;
       }
       if (typing) return;
+      // 键盘也算「用户动过星图」—— 否则第一次动作用方向键平移时，地址栏不会记相机
+      seedHash();
       if (e.key === '/' ) { e.preventDefault(); search.focus(); return; }
       if (e.key === '+' || e.key === '=') { e.preventDefault(); cam.zoomBy(C.camera.zoomStep); requestDraw(); }
       else if (e.key === '-' || e.key === '_') { e.preventDefault(); cam.zoomBy(1 / C.camera.zoomStep); requestDraw(); }
       else if (e.key === '0') { e.preventDefault(); fitAll(); requestDraw(); }
       else if (e.key.indexOf('Arrow') === 0) {
+        // 正在看某个点时：← → 沿边游走（Shift+方向 仍是平移，互不冲突）
+        var f = view.focus;
+        if (f && f.type === 'node' && !e.shiftKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+          e.preventDefault();
+          walkNeighbor(f.id, e.key === 'ArrowRight' ? 1 : -1);
+          return;
+        }
         e.preventDefault();
         var step = 90;
         if (e.key === 'ArrowLeft') cam.panBy(step, 0);
@@ -1224,7 +1311,7 @@
         // 初始视角：先稍微留白，再平滑推进到「全部适配」
         cam.k = fitK * 0.72;
         cam.centerOn(cx, cy);
-        cam.animateTo({ k: fitK, cx: cx, cy: cy }, 700);
+        cam.animateTo({ k: fitK, cx: cx, cy: cy }, REDUCE_MOTION ? 1 : 700);
       }
       requestDraw();
     }

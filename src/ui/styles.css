@@ -541,3 +541,40 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   }
   #hint { display: none; }
 }
+
+/* 给读屏用的播报区：视觉上不占位，读屏能读到（搜索结果数量） */
+.sr-live {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 层号滑杆（0–27 那一排芯片换成 range + 读数） */
+.lg-range {
+  -webkit-appearance: none; appearance: none;
+  flex: 1 1 auto; min-width: 90px; height: 16px; margin: 0 6px 0 2px;
+  background: transparent; cursor: pointer;
+}
+.lg-range::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 2px; background: var(--line);
+}
+.lg-range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 13px; height: 13px; margin-top: -4.5px; border-radius: 50%;
+  background: var(--ink); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.lg-range::-moz-range-track { height: 4px; border-radius: 2px; background: var(--line); }
+.lg-range::-moz-range-thumb {
+  width: 13px; height: 13px; border-radius: 50%; background: var(--ink);
+  border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+
+/* 用户要求「少动效」时：入场动画 / 过渡一律压到近乎瞬时。
+   （镜头动画是 JS 的，那边另外读一次 matchMedia —— 见 app.js 的 REDUCE_MOTION） */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

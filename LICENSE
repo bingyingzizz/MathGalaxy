@@ -1,0 +1,49 @@
+MathGalaxy · 数学星图 —— 许可与引用
+
+一、图的内容（节点、边、证明、笔记，以及导出的 graph.json / graph.md / nodes/ 等产物）
+
+    © 2026 bingyingzizz。保留所有权利。
+
+    可以自由阅读、检索、链接，也可以在自己的文章、讲义、笔记、论文里引用或复述
+    其中的命题与证明 —— 条件是 ⭐ **引用必须标注节点**：
+
+        写明这条内容在图里的节点 id（例如 thm.cantor），并给出内容版本号
+        （产物里都写着，见 llms.txt 的「内容 vX.Y.Z」）。
+
+    例：
+
+        参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。
+
+    为什么这么要求：这张图是逐条笔记整理出来的，节点 id 是读者唯一能追回原始陈述
+    与完整证明的线索。标了 id，别人才能自己去看全貌，而不是只看到被摘走的一句。
+
+    不允许：整份转载、镜像、改名再分发，或把内容并进别的知识库之后抹掉节点 id。
+
+二、代码（src/ 、tools/ 、site/ 下的源码）
+
+    MIT License
+
+    Copyright (c) 2026 bingyingzizz
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+三、第三方
+
+    数学定理本身没有版权，图里的数学内容取自教科书与笔记，整理方式与文字归作者。
+    KaTeX（src/ui/katex.min.js 与 src/ui/katex.min.css）为 MIT 许可。

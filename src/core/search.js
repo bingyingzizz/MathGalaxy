@@ -301,7 +301,8 @@
         var r0 = view.graph.regionById[it.node.regions[0]];
         if (r0) regionName = r0.name;
       }
-      return '<div class="sr-item' + (i === active ? ' active' : '') + '" data-i="' + i + '">' +
+      return '<div class="sr-item' + (i === active ? ' active' : '') + '" data-i="' + i +
+        '" id="sr-item-' + i + '" role="option" aria-selected="' + (i === active ? 'true' : 'false') + '">' +
         '<span class="sr-dot" style="background:' + color + '"></span>' +
         '<span class="sr-title">' + mark(it.label, it.q) + '</span>' +
         '<span class="sr-sub">' + U.escapeHtml(tagText) + ' · ' + U.escapeHtml(it.sub) + '</span>' +
@@ -334,6 +335,23 @@
       }
       results.classList.toggle('hidden', !open);
       box.classList.toggle('active', open);
+      syncA11y();
+    }
+
+    /* 可达性：把「下拉开没开 / 当前高亮第几条 / 一共几条」同步给读屏。
+       ⚠️ 键盘 ↑↓ / Enter / Esc 早就有了，缺的一直是这几个属性。 */
+    var liveEl = document.getElementById('search-live');
+    function syncA11y() {
+      input.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var ok = open && active >= 0 && items[active];
+      if (ok) input.setAttribute('aria-activedescendant', 'sr-item-' + active);
+      else input.removeAttribute('aria-activedescendant');
+      if (liveEl) {
+        liveEl.textContent = !open ? ''
+          : (items.length
+            ? items.length + ' 条结果' + (ok ? '，当前第 ' + (active + 1) + ' 条' : '')
+            : '没有结果');
+      }
     }
 
     function choose(i) {
@@ -349,6 +367,7 @@
       active = -1;
       results.classList.add('hidden');
       box.classList.remove('active');
+      syncA11y();
     }
 
     function clear() {

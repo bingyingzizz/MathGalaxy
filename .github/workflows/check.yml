@@ -1,0 +1,41 @@
+name: 体检
+
+# 每次推到 main / 每次 PR 都跑一遍内容体检。
+# 分工：
+#   · build.mjs            = 硬门（体积 / 路径 / 层号 / 记号 / xref / 跳转有效性）
+#   · _katexcheck-all.mjs  = 硬门（每条公式喂真 KaTeX，失败即红）
+#   · idstable.mjs         = 硬门（节点 id 是对外契约：删改必须登记退役）
+#   · 其余                  = 只打印报告，不拦（它们从不非零退出，留作日志参考）
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: 构建 + 硬断言
+        run: bun tools/build.mjs
+
+      - name: 公式体检（真 KaTeX）
+        run: bun tools/_katexcheck-all.mjs
+
+      - name: 节点 id 契约（快照 / 退役清单）
+        run: bun tools/idstable.mjs
+
+      - name: 报告类体检（不拦）
+        continue-on-error: true
+        run: |
+          bun tools/_notationcheck.mjs
+          bun tools/_findmeta.mjs
+          bun tools/_proofaudit.mjs
+          bun tools/_layers.mjs
+          bun tools/_slashcheck.mjs

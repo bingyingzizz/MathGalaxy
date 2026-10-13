@@ -865,6 +865,8 @@ function exportReading(data, base = '') {
 \`id\` \`type\` \`label\` \`title\` \`region\` \`cluster\` \`layer\`
 \`statement\` \`notes\` \`refs\`；节点用 \`id\` 引用，深链 \`#n=<节点id>\`。
 
+引用见 \`${base}LICENSE.txt\`。
+
 记号见 \`${base}notation.md\`。
 `;
 }
@@ -1340,6 +1342,13 @@ if (doJSON) {
   const aliasFiles = exportAliasProducts(MG, graph);
   for (const f of aliasFiles) files.push(f);
   console.log(`  → dist/alias.md + alias/*.md（${aliasFiles.length} 页）+ alias.md`);
+
+  /* ---------------------------------------------------------- 许可 */
+  /* 单一真源是仓库根目录的 LICENSE（给人读的正式文本，不进体积断言，也不被改写）。
+     dist 版只加一行 markdown 标题 —— 站点阅读页 renderDoc() 要求第一行是 `# 标题`。 */
+  fs.writeFileSync(path.join(DIST, 'LICENSE.txt'),
+    `# 许可与引用\n\n${fs.readFileSync(path.join(ROOT, 'LICENSE'), 'utf8')}`, 'utf8');
+  console.log('  → dist/LICENSE.txt（复制自仓库根 LICENSE + 一行标题）');
 
   const errs = assertAI(MG, graph, files, pagesOf);
   errs.push(...assertNotation(MG, graph));

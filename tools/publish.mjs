@@ -134,7 +134,7 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
 for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'index.md',
-                 'notation.md', 'notation-full.md', 'alias.md']) {
+                 'notation.md', 'notation-full.md', 'alias.md', 'LICENSE.txt']) {
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
@@ -227,6 +227,7 @@ const DOCS = [
   { id: 'llms',     file: 'llms.txt',         nav: '检索协议',   sub: '给 AI 的入口' },
   { id: 'policy',   file: 'policy.md',        nav: '内容准则',   sub: '这张图为什么这么长' },
   { id: 'hubs',     file: 'hubs.md',          nav: '枢纽定理榜', sub: '哪些东西是地基' },
+  { id: 'license',  file: 'LICENSE.txt',      nav: '许可与引用', sub: '引用请标注节点 id' },
 ];
 
 const navHtml = DOCS.map((d) =>

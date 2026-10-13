@@ -26,4 +26,6 @@
 `id` `type` `label` `title` `region` `cluster` `layer`
 `statement` `notes` `refs`；节点用 `id` 引用，深链 `#n=<节点id>`。
 
+引用见 `LICENSE.txt`。
+
 记号见 `notation.md`。
