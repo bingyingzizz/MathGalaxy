@@ -3,7 +3,7 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-13T05:37:11.713Z",
+  "generated": "2026-10-13T05:54:33.395Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -38,7 +38,7 @@
    "id": "logic",
    "name": "数理逻辑",
    "en": "Mathematical Logic",
-   "desc": "一阶语言、公式与满足关系；形式系统、可计算性与模型论待补。",
+   "desc": "一阶语言、公式与满足关系 —— ZFC 的公理就写在这门语言里。",
    "color": "#8A63E8",
    "nodeCount": 4
   },
@@ -112,7 +112,7 @@
    "id": "logic.fol",
    "name": "一阶语言与公式",
    "parent": "logic",
-   "desc": "造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。（形式系统、可计算性、模型论待补。）",
+   "desc": "造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。",
    "nodeCount": 4,
    "nodes": [
     "def.first-order-language",

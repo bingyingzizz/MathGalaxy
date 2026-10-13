@@ -15,7 +15,7 @@ MG.regions = [
     color: '#8A63E8',
     center: { x: -1150, y: -700 },
     radius: 460,
-    desc: '一阶语言、公式与满足关系；形式系统、可计算性与模型论待补。'
+    desc: '一阶语言、公式与满足关系 —— ZFC 的公理就写在这门语言里。'
   },
   {
     id: 'set-theory',
