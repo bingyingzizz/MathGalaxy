@@ -2826,11 +2826,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       var rect = canvas.getBoundingClientRect();
       var w = Math.max(1, Math.round(rect.width || global.innerWidth));
       var h = Math.max(1, Math.round(rect.height || global.innerHeight));
-      /* ⚠️ 低分辨率模式必须缩的是**后备尺寸**（CSS 尺寸不变，浏览器会把小的拉伸回来），
-         只缩 transform 会把画面缩到左上角一小块。 */
-      var sc = dpr * drawScale;
-      canvas.width = Math.max(1, Math.round(w * sc));
-      canvas.height = Math.max(1, Math.round(h * sc));
+      canvas.width = Math.max(1, Math.round(w * dpr));
+      canvas.height = Math.max(1, Math.round(h * dpr));
       W = w; H = h;
       view.cam.setViewport(W, H);
       invalidate();
@@ -3103,17 +3100,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
     var nameBoxes = [];
 
-    /* 绘制分辨率倍率（诊断/低分辨率模式用）：1 = 正常。降到 0.5 时，
-       光栅化的像素量掉到 1/4 —— 用来验证「重光栅化量」是不是掉帧的根因。 */
-    var drawScale = 1;
-
     function draw() {
-      /* ⚠️ 先按**设备像素**整张清掉：drawScale < 1 时若用缩放后的 transform 去
-         clearRect(0,0,W,H)，只清得掉左上角一块，其余会留上一帧的残影。 */
-      var sc = dpr * drawScale;
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-      ctx.setTransform(sc, 0, 0, sc, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
 
       var geoms = ensureGeom();
       var cam = view.cam;
@@ -3730,10 +3719,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       draw: draw,
       hitTest: hitTest,
       invalidate: invalidate,
-      setDrawScale: function (s) {
-        drawScale = U.clamp(s || 1, 0.2, 1);
-        resize();          // 后备尺寸跟着变（CSS 尺寸不变，浏览器负责拉伸回来）
-      },
       nodeRadius: nodeRadius,
       screenOf: screenOf,
       get size() { return { w: W, h: H }; }
@@ -36329,7 +36314,7 @@ MG.trunk = [
     /* 云雾层上一次是按什么参数画的 —— 相机 / 视口 / dpr / 纹理四样都没变就不必再画。
        ⚠️ 悬停、选中、开合图例这些「不动相机」的重绘以前也要把整屏云雾重采样一遍，
        实测那是整帧的大头（dpr=1 时 ~15ms，dpr=2 时 ~37ms），而它根本没变。 */
-    var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null, q: 1 };
+    var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null };
     var dpr = 1;
     var rafId = 0;
     var dirty = true;
@@ -36354,11 +36339,11 @@ MG.trunk = [
       var animating = cam.tick();
       if (dirty || animating) {
         var c = cam;
-        if (cloudDrawn.tex !== cloudTex || cloudDrawn.q !== drawQ || cloudDrawn.k !== c.k ||
+        if (cloudDrawn.tex !== cloudTex || cloudDrawn.k !== c.k ||
           cloudDrawn.tx !== c.tx || cloudDrawn.ty !== c.ty || cloudDrawn.w !== c.viewW ||
           cloudDrawn.h !== c.viewH || cloudDrawn.dpr !== dpr) {
-          if (!noCloud) MG.background.draw(cloudCtx, cam, cloudTex, dpr * drawQ);
-          cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex, q: drawQ };
+          MG.background.draw(cloudCtx, cam, cloudTex, dpr);
+          cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex };
         }
         renderer.draw();
         dirty = false;
@@ -36372,8 +36357,8 @@ MG.trunk = [
     function resize() {
       var s = renderer.resize();
       dpr = s.dpr;
-      cloudEl.width = Math.max(1, Math.round(s.w * dpr * drawQ));   // 低分辨率模式下云雾同倍降
-      cloudEl.height = Math.max(1, Math.round(s.h * dpr * drawQ));
+      cloudEl.width = Math.max(1, Math.round(s.w * dpr));
+      cloudEl.height = Math.max(1, Math.round(s.h * dpr));
       requestDraw();
     }
     global.addEventListener('resize', resize);
@@ -37062,9 +37047,6 @@ MG.trunk = [
       var hide = hideTokens();
       if (hide.length) p.push('hide=' + hide.join(','));
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
-      if (noBlur) p.push('noblur=1');    // 毛玻璃 A/B 开关同理
-      if (noCloud) p.push('nocloud=1');  // 云雾层 A/B 开关同理
-      if (quickDraw) p.push('quick=1');  // 低分辨率模式同理
       var c = camCenter();
       p.push('v=' + cam.k.toFixed(4) + ',' + c.x.toFixed(1) + ',' + c.y.toFixed(1));
       return p.join('&');
@@ -37249,21 +37231,6 @@ MG.trunk = [
       不带这个参数时完全不创建，不进产品正常路径。
     */
     var fpsHud = /(^|[&#])fps=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
-    /* 毛玻璃 A/B 开关：带 noblur=1 时全局关掉 backdrop-filter。
-       用来判断「面板毛玻璃在 GPU 合成器上的代价」—— 它下面的 canvas 每帧都在变。 */
-    var noBlur = /(^|[&#])noblur=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
-    /* 云雾层 A/B 开关：带 nocloud=1 时整层不画（用来判断「拖动时的 79ms 是不是它的账」）。 */
-    var noCloud = /(^|[&#])nocloud=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
-    /* 低分辨率模式（诊断）：把绘制分辨率减半 ⇒ 光栅化像素量掉到 1/4。
-       用来直接验证「重光栅化量（尤其范畴论那边横穿屏幕的几百条长线）是不是掉帧根源」。 */
-    var quickDraw = /(^|[&#])quick=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
-    var drawQ = quickDraw ? 0.5 : 1;
-    if (quickDraw) renderer.setDrawScale(drawQ);
-    if (noBlur) {
-      var noBlurCss = document.createElement('style');
-      noBlurCss.textContent = '*{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}';
-      document.head.appendChild(noBlurCss);
-    }
     if (fpsHud) {
       var hudEl = document.createElement('div');
       hudEl.id = 'mg-fps';
@@ -37345,7 +37312,7 @@ MG.trunk = [
           '峰 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + ' ms\n' +
           '连线层 ' + drawMs.toFixed(2) + ' ms' + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) + ' ms' : '') + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
-          ' · canvas ' + c.width + '×' + c.height + (quickDraw ? ' · ½分辨率模式' : '') +
+          ' · canvas ' + c.width + '×' + c.height +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
           (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
           (glInfo ? '\n' + glInfo : '');
