@@ -534,8 +534,20 @@
         hover: view.hover, labels: C.showLabels, glow: C.node.glow, glowLiveV: glowLive };
       ctx = target;
       W = target.canvas.width; H = target.canvas.height; dpr = 1;
-      staticCam = { k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale };
-      cullOff = true;
+      /* ⚠️ staticCam 必须是「够用的相机」：凡是用 camNow() 的地方都会拿到它，
+         所以要带上 toScreen（traceEnvelope 用）。以前这里没有它、而 drawEnvelopes
+         传的是 view.cam（实时相机）⇒ 烘焙里的包络一直按实时机位画，是错的。 */
+      staticCam = {
+        k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale, viewW: W, viewH: H,
+        toScreen: function (x, y) { return { x: x * this.k + this.tx, y: y * this.k + this.ty }; }
+      };
+      /* ⭐ cullOff = false：**按烘焙画布裁剪**。
+         以前开着 cullOff（不裁），于是把整个世界的指令都记进这张画布 —— 矩形外的部分
+         白记白画（区域模式 3312×2056 只有一小块用得上）。这正是「越界重烘」那根
+         50~145ms 尖峰里的大头。
+         安全性：裁剪判据全部走 `camNow()`（此处 = staticCam）与 W/H（此处 = 画布尺寸），
+         和实时画同一套；PAD_NODE/PAD_EDGE 余量也在 ⇒ 与「不裁」逐像素一致。 */
+      cullOff = false;
       view.hover = null;                    // hover 不进烘焙
       C.showLabels = false;                 // 标签不进烘焙
       C.node.glow = false;                  // 光晕实时画（实测 ≈0.05ms）
@@ -770,7 +782,7 @@
         var rmax = 0;
         for (var ri = 0; ri < env.r.length; ri++) if (env.r[ri] > rmax) rmax = env.r[ri];
 
-        traceEnvelope(env, view.cam);
+        traceEnvelope(env, camNow());    // ⚠️ 必须 camNow()：烘焙时是 staticCam，读 view.cam 会整体错位
         /* ⭐ 这一块用**径向渐变**填：中心浓、越往外越淡、到包络外沿正好为 0。
            于是「这个团的范围」是一条化开的过渡，不再是描出来的一圈线。
            （原来是 fillAlpha 平铺 + strokeAlpha 描边 —— 缩小时就是一个个圆圈，

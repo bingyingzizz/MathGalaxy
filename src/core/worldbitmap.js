@@ -151,9 +151,19 @@
         ? (Math.max(s.w, s.h) > worldSideMax || s.w * s.h > worldPxMax)
         : (Math.max(s.w, s.h) > maxSide());
       if (big) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
-      var idx = cur === 0 ? 1 : 0;
+      /* ⭐ 就地烘：**复用当前正在显示的那一代画布**，不换显示层。
+         每次「换显示层」实测有 80~150ms 的固定开销（与画布大小、画多少内容都无关 ——
+         连 646×548 的世界烘也照样挨这一刀），那是拖动里那一根尖峰的大头。
+         就地烘是安全的：drawStatic（清 + 画）与随后的 applyTransform 在**同一个同步块**里，
+         paint 不会插进来，所以看不到半成品，也不会看到「新图配旧 transform」。
+         只有尺寸真的变了（dpr / 视口尺寸变化）才换一代 —— 那种时候不能在可见画布上重分配。 */
+      var idx = cur >= 0 ? cur : 0;
       var cv = els[idx];
-      if (cv.width !== s.w || cv.height !== s.h) { cv.width = s.w; cv.height = s.h; }
+      if (cv.width !== s.w || cv.height !== s.h) {
+        idx = idx === 0 ? 1 : 0;
+        cv = els[idx];
+        cv.width = s.w; cv.height = s.h;
+      }
       cv.style.width = (s.w / dpr) + 'px';
       cv.style.height = (s.h / dpr) + 'px';
       var gen = ++buildGen;
@@ -172,9 +182,10 @@
       snap = { ready: true, rect: r, mode: pick.mode, scale: s.scale, k: k, dpr: dpr, rev: ++rev, key: lastKey };
       cur = idx;
       applyTransform();
-      cv.style.display = '';
-      if (cur === 0 && els[1]) els[1].style.display = 'none';
-      else if (cur === 1 && els[0]) els[0].style.display = 'none';
+      /* 就地烘时这一代本来就在显示 ⇒ 只在真的藏着的时候才写 style（少一次样式重算） */
+      if (cv.style.display === 'none') cv.style.display = '';
+      var other = els[1 - cur];
+      if (other && other.style.display !== 'none') other.style.display = 'none';
       stats.bakes++; stats.lastMs = +ms.toFixed(1);
       if (ms > stats.peakMs) stats.peakMs = +ms.toFixed(1);
       stats.swaps++;
