@@ -191,7 +191,6 @@
       panelOpen = true;
       if (opts.center !== false) centerOn(id);
       requestDraw();
-      hideHint();
       syncHash('push');
     }
 
@@ -211,7 +210,6 @@
         if (cnt) { mid.x /= cnt; mid.y /= cnt; ensureCenter(mid); }
       }
       requestDraw();
-      hideHint();
       syncHash('push');
     }
 
@@ -428,7 +426,7 @@
         if (hit.type === 'node') focusNode(hit.id);
         else focusEdge(hit.id);
       },
-      onHover: function () { hideHintSoon(); }
+      onHover: function () { /* #hint 不再随 hover 淡出（它现在承担页面标题与说明） */ }
     });
 
     /* ---------------------------------------------------------- 搜索 */
