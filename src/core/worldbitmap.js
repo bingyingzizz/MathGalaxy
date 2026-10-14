@@ -81,9 +81,13 @@
       if (!(k > 0)) return null;
       if (k <= worldK() * 1.0001) return { r: world, mode: 'world' };
       if (!regionOn) return null;      // Phase B 未开启：高倍率不烘（交实时画）
-      var padW = marginPx / (k * dpr);                 // 余量：设备像素 → 世界单位
-      var halfW = (vw / 2) / k + padW;
-      var halfH = (vh / 2) / k + padW;
+      /* ⚠️ **先把像素尺寸定死**（吸附到 8 设备像素的格），再换算成世界矩形。
+         否则矩形宽度每烘一次都会因 ceil 抖动 1px ⇒ 画布 backing store 反复重新分配
+         （3330×1983 ≈ 26MB）—— 实测那是 54~67ms 单帧尖峰的来源。 */
+      var m = Math.min(dpr, 2);
+      var pw = Math.ceil((vw * dpr + 2 * marginPx) / 8) * 8;
+      var ph = Math.ceil((vh * dpr + 2 * marginPx) / 8) * 8;
+      var halfW = pw / (2 * k * m), halfH = ph / (2 * k * m);
       var cx = (vw / 2 - tx) / k, cy = (vh / 2 - ty) / k;   // 视口中心的世界坐标
       return { mode: 'region', r: { minX: cx - halfW, minY: cy - halfH, maxX: cx + halfW, maxY: cy + halfH } };
     }
