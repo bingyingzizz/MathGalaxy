@@ -233,11 +233,29 @@
 
     /* 开关默认值 */
     exploreMode: false,     // true → 打开弱边（探索模式）
-    showDefinitionLines: true,
-    showLabels: true,
+    showDefinitionLines: true,    showLabels: true,
     wheelZooms: true,             // false → 滚轮平移（触控板手感）
     hideParallelImplications: true, // 已有等价线时不再叠画同对节点的箭头
-    highlightDefinitions: true    // 面板上把「定义引用」单独分组
+    highlightDefinitions: true,   // 面板上把「定义引用」单独分组
+
+    /* Phase A：世界位图（DOM canvas + CSS transform 载体）
+       maxSide = 单图最长边（设备像素）；k ≤ maxSide/世界长 才启用，超出交 Phase B。
+       内存：4096×3475 单份 ≈54MB，两代并存 ≈109MB。阶梯 4096→3600→2048→关。 */
+    bitmap: {
+      enabled: true,
+      /* 单图最长边阶梯（设备像素）。覆盖的 k 上限 = maxSide / 世界最长边：
+         4096 → k ≤ 0.607；3600 → 0.533；2048 → 0.303。
+         ⚠️ 试过 8192（k ≤ 1.213）：分配 + 全图烘焙在本机直接把页面卡死 ⇒ 退回 4096。
+            放大带（k > 0.607）必须靠 Phase B（视口⊕余量），抬 maxSide 不是办法。
+         烘的是当前 k，所以低速档的图很小；只有放大时才会真吃大图内存。
+         建不出来会自动降档，最小档还不行就彻底关掉位图（回到实时画）。 */
+      maxSide: 4096,
+      tiers: [4096, 3600, 2048],
+      /* Phase B：k 超过 maxSide/世界长 时改烘「视口 ⊕ 余量」，每边余量（设备像素）。
+         余量要 > 一次烘焙期间的拖动位移（14 帧 × 速度 ≈ 120~350px）+ 安全量。 */
+      marginPx: 400,
+      settleMs: 180        // 停手多久才允许重烘（手势期间一律不烘）
+    }
   };
 
   /* ---------------------------------------------------------------- 主题 */

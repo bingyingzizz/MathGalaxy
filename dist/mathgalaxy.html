@@ -946,11 +946,29 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
     /* 开关默认值 */
     exploreMode: false,     // true → 打开弱边（探索模式）
-    showDefinitionLines: true,
-    showLabels: true,
+    showDefinitionLines: true,    showLabels: true,
     wheelZooms: true,             // false → 滚轮平移（触控板手感）
     hideParallelImplications: true, // 已有等价线时不再叠画同对节点的箭头
-    highlightDefinitions: true    // 面板上把「定义引用」单独分组
+    highlightDefinitions: true,   // 面板上把「定义引用」单独分组
+
+    /* Phase A：世界位图（DOM canvas + CSS transform 载体）
+       maxSide = 单图最长边（设备像素）；k ≤ maxSide/世界长 才启用，超出交 Phase B。
+       内存：4096×3475 单份 ≈54MB，两代并存 ≈109MB。阶梯 4096→3600→2048→关。 */
+    bitmap: {
+      enabled: true,
+      /* 单图最长边阶梯（设备像素）。覆盖的 k 上限 = maxSide / 世界最长边：
+         4096 → k ≤ 0.607；3600 → 0.533；2048 → 0.303。
+         ⚠️ 试过 8192（k ≤ 1.213）：分配 + 全图烘焙在本机直接把页面卡死 ⇒ 退回 4096。
+            放大带（k > 0.607）必须靠 Phase B（视口⊕余量），抬 maxSide 不是办法。
+         烘的是当前 k，所以低速档的图很小；只有放大时才会真吃大图内存。
+         建不出来会自动降档，最小档还不行就彻底关掉位图（回到实时画）。 */
+      maxSide: 4096,
+      tiers: [4096, 3600, 2048],
+      /* Phase B：k 超过 maxSide/世界长 时改烘「视口 ⊕ 余量」，每边余量（设备像素）。
+         余量要 > 一次烘焙期间的拖动位移（14 帧 × 速度 ≈ 120~350px）+ 安全量。 */
+      marginPx: 400,
+      settleMs: 180        // 停手多久才允许重烘（手势期间一律不烘）
+    }
   };
 
   /* ---------------------------------------------------------------- 主题 */
@@ -2911,7 +2929,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     }
 
     function computeLod() {
-      var k = view.cam.k, L = C.lod;
+      var k = camNow().k, L = C.lod;
       var tDot = thr(L.nodeDotIn), tEdge = thr(L.nodeEdgeIn), tName = thr(L.nodeNameIn);
       var tTrunk = thr(L.trunkNameIn), tGal = thr(L.galaxyNameIn);
       var tCIn = thr(L.clusterNameIn), tCOut = thr(L.clusterNameOut);
@@ -2978,7 +2996,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     }
 
     function nodeRadius(node) {
-      var r = C.node.baseRadius * Math.pow(view.cam.k, C.node.radiusPower);
+      var r = C.node.baseRadius * Math.pow(camNow().k, C.node.radiusPower);
       r = U.clamp(r, C.node.minRadius, C.node.maxRadius);
       r *= sizeMul(node);
       // 放大之后也要有上限，否则高缩放下中心天体会顶到邻居
@@ -3003,20 +3021,23 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     var PAD_NODE = 220;      // 点的余量：光晕（r*5.4）+ 名字宽度 + 选中环
     var PAD_EDGE = 140;      // 线的余量：贝塞尔外凸 90 + 箭头 17 + 线宽
 
-    function nodeSX(n) { return n.x * view.cam.k + view.cam.tx; }
-    function nodeSY(n) { return n.y * view.cam.k + view.cam.ty; }
+    function nodeSX(n) { var c = camNow(); return n.x * c.k + c.tx; }
+    function nodeSY(n) { var c = camNow(); return n.y * c.k + c.ty; }
 
     function inView(x, y, pad) {
+      if (cullOff) return true;
       return x > -pad && x < W + pad && y > -pad && y < H + pad;
     }
 
     /** 屏幕外的点不画 */
     function nodeInView(n, pad) {
+      if (cullOff) return true;
       return inView(nodeSX(n), nodeSY(n), pad == null ? PAD_NODE : pad);
     }
 
     /** 所有端点都在视口同一侧之外 → 这条线肯定看不见（便宜的预筛，见下面的精确判据） */
     function edgeInView(e) {
+      if (cullOff) return true;
       var ids = GU.edgeNodes(e);
       if (!ids.length) return false;
       var left = true, right = true, up = true, down = true;
@@ -3078,7 +3099,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       var list = [];
 
       view.visible.forEach(function (e) {
-        if (!edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
+        if (!cullOff && !edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
         var g = computeEdge(e, cam);
         if (!g || !polysHitView(g.polys)) return;   // 精确判据：画出来的形状碰不到视口就不画
         geom[e.id] = g;
@@ -3100,7 +3121,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       return geomList;
     }
 
-    function screenOf(n) { return view.cam.toScreen(n.x, n.y); }
+    /* 世界 → 屏幕。⚠️ 必须走 camNow()：烘焙时 staticCam 覆盖实时相机
+       （直接写 view.cam.toScreen 会让烘出来的内容落在「实时屏幕坐标」上 ⇒ 整体平移）。 */
+    function w2s(x, y) { var c = camNow(); return { x: x * c.k + c.tx, y: y * c.k + c.ty }; }
+    function screenOf(n) { return w2s(n.x, n.y); }
 
     function trimTo(from, to, r) {
       var dx = to.x - from.x, dy = to.y - from.y;
@@ -3170,7 +3194,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         wc.x /= srcs.length; wc.y /= srcs.length;
         var ddx = wc.x - Pt.x, ddy = wc.y - Pt.y;
         var dl = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
-        var off = Math.min(C.edge.mergeOffset * cam.k, dl * 0.45);
+        var off = Math.min(C.edge.mergeOffset * camNow().k, dl * 0.45);
         var J = { x: Pt.x + (ddx / dl) * off, y: Pt.y + (ddy / dl) * off };
         srcs.forEach(function (s) {
           var Ps = screenOf(s), rsp = nodeRadius(s);
@@ -3234,6 +3258,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       return !!adj && adj.indexOf(id) >= 0;
     }
 
+    /* ------------------------------------------------- Phase A：静态烘焙用 */
+    /* 烘焙时必须让「屏幕上才有的量」按**烘焙那个 k** 算，而绘制目标又是另一张画布。
+       所以：staticCam 覆盖相机读数、cullOff 关掉视口裁剪、staticHidden 让实时层
+       把静态部分让给位图图层（标签/hover 仍实时画）。⛔ 只在 drawStatic 的同步区间里置位。 */
+    var staticCam = null, cullOff = false, staticHidden = false, glowLive = false;
+    /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback */
+    var prof = { edges: 0, nodes: 0, labels: 0, frames: 0 };
+    function camNow() { return staticCam || view.cam; }
+    function setStaticHidden(v) { staticHidden = !!v; }
+    function bbox() { return view.graph.bbox(); }
     /** 这条边的两端是不是都在主干上（= 学习主线的骨架）。结果缓存在边上。 */
     function isSpine(e) {
       if (e._spine == null) {
@@ -3258,22 +3292,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
     var nameBoxes = [];
 
-    function draw() {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, W, H);
-
-      var geoms = ensureGeom();
-      var cam = view.cam;
-      computeLod();
-      nameBoxes.length = 0;
-
-      /* ---------- 0. 星团包络（每个「装置」一圈边界，垫在最底下） ---------- */
+    /* ---------- 静态层（可烘）：包络 → 星团连线 → 边 → 节点 → 箭头 ---------- */
+    function paintStatic(geoms) {
+      var tE = performance.now();
       drawEnvelopes();
-
-      /* ---------- 0b. 星团级粗线（缩小时才出现，整块对整块） ---------- */
       drawClusterLinks();
 
-      /* ---------- 1. 节点级连线 ---------- */
       var defs = [], eqs = [], imps = [], anas = [];
       geoms.forEach(function (g) {
         if (g.edge.kind === 'definition') defs.push(g);
@@ -3287,15 +3311,107 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       drawEdges(eqs);
       drawEdges(imps);
       geoms.forEach(function (g) { if (g.arrow) drawArrow(g); });
+      prof.edges += performance.now() - tE;
 
-      /* ---------- 2. 节点 ---------- */
+      var tN = performance.now();
       if (lodA.nodeDot > 0.02) {
         view.graph.nodes.forEach(function (n) { drawNode(n); });
       }
-      /* ---------- 3. 名称（星系名 → 星团名 → 节点名，逐层交接） ---------- */
+      prof.nodes += performance.now() - tN;
+    }
+
+    /* ---------- 动态层（必须实时）：光晕 → 名称 → hover 叠加 ---------- */
+    function paintDynamic() {
+      if (glowLive) drawGlows();
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
+      drawHoverOverlay();
+    }
+
+    function draw() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      var geoms = ensureGeom();     // ⚠️ 照常建几何：命中测试（hitTest）依赖它
+      computeLod();
+      nameBoxes.length = 0;
+
+      if (!staticHidden) paintStatic(geoms);   // 位图模式：静态层交给 DOM 图层
+
+      var t1 = performance.now();
+      paintDynamic();
+      prof.labels += performance.now() - t1;
+      prof.frames++;
+    }
+
+    /* ================================================ 烘焙入口（Phase A）
+       把「除标签与 hover 之外的一切」按给定比例画进 target：
+         · 不做视口裁剪（cullOff）· 不含标签 · 不含 hover 态 · 不含光晕（光晕实时画）
+         · 相机走 staticCam ⇒ 线宽/曲率上限/LOD alpha/spineOnly/节点半径全部按 scale 算
+           ⇒ 显示时 1:1（m = k/k_bake）⇒ 纯平移下与实时画一致
+       ⛔ 这是引擎入口：不认识任何内容模块，也不写任何文件/网络。 */
+    function drawStatic(target, scale, rect) {
+      var save = { ctx: ctx, W: W, H: H, dpr: dpr, cam: staticCam, cull: cullOff,
+        hover: view.hover, labels: C.showLabels, glow: C.node.glow, glowLiveV: glowLive };
+      ctx = target;
+      W = target.canvas.width; H = target.canvas.height; dpr = 1;
+      staticCam = { k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale };
+      cullOff = true;
+      view.hover = null;                    // hover 不进烘焙
+      C.showLabels = false;                 // 标签不进烘焙
+      C.node.glow = false;                  // 光晕实时画（实测 ≈0.05ms）
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      /* ⛔ 单位变换：staticCam 已把世界坐标换算成烘焙画布像素（k=scale、tx=-minX*scale），
+         再叠一次 setTransform(scale,…) 会把内容又乘一个 k_bake —— 实测烘出来的线只占画布 48%×48%。 */
+      geomCache = null; geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };
+      computeLod();
+      nameBoxes.length = 0;
+      paintStatic(ensureGeom());
+
+      ctx = save.ctx; W = save.W; H = save.H; dpr = save.dpr;
+      staticCam = save.cam; cullOff = save.cull;
+      view.hover = save.hover; C.showLabels = save.labels; C.node.glow = save.glow; glowLive = save.glowLiveV;
+      geomCache = null; geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };   // 实时层下一帧重建
+    }
+
+    /* 光晕实时画（烘焙集里没有它）：与 drawNode 里那段逐字一致，只是独立成一遍 */
+    function drawGlows() {
+      if (!C.node.glow) return;
+      view.graph.nodes.forEach(function (n) {
+        if (!nodeOk(n.id) || !nodeInView(n)) return;
+        var p = screenOf(n), r = nodeRadius(n);
+        var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
+        if (a <= 0.02) return;
+        var isFocus = view.focus && view.focus.type === 'node' && view.focus.id === n.id;
+        var isHover = (view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
+          (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
+            GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
+        var gs = glowSprite(MG.typeStyle(n.type).color);
+        var gsz = r * 5.4;
+        ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
+        ctx.drawImage(gs, p.x - gsz / 2, p.y - gsz / 2, gsz, gsz);
+        ctx.globalAlpha = 1;
+      });
+    }
+
+    /* hover 叠加层。Phase A 占位 = **只保留外环**：
+       「入射边加粗（×1.85）」实测会让被烘那条线的核心 alpha 从 0.19 过冲到 0.34
+       （= α(1−α)，0.6% 的像素），属于待用户拍板的 A/B 甲支，先不做。 */
+    function drawHoverOverlay() {
+      var hv = view.hover;
+      if (!hv || hv.type !== 'node') return;
+      var n = view.graph.byId[hv.id];
+      if (!n || !nodeOk(n.id)) return;
+      var p = screenOf(n), r = nodeRadius(n);
+      var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
+      if (a <= 0.02) return;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r + 5.5, 0, Math.PI * 2);
+      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = U.rgba(MG.typeStyle(n.type).color, 0.55 * a);
+      ctx.stroke();
     }
 
     /* ------------------------------------------------ 星系名 */
@@ -3310,7 +3426,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         if (!r.stat || !r.name) return;
         // 整个星系的点都被藏起来了 → 只剩云雾，名字也不必出
         if (view.isNodeVisible && !regionHasVisible(r.id)) return;
-        var p = view.cam.toScreen(r.stat.cx, r.stat.cy);
+        var p = w2s(r.stat.cx, r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = r.name;
         var tw = ctx.measureText(text).width;
@@ -3362,12 +3478,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
         if (!A || !B || !A.stat || !B.stat) return;
         if (view.isNodeVisible && (!visibleIn(A.nodes) || !visibleIn(B.nodes))) return;
-        var p0 = view.cam.toScreen(A.stat.cx, A.stat.cy);
-        var p1 = view.cam.toScreen(B.stat.cx, B.stat.cy);
+        var p0 = w2s(A.stat.cx, A.stat.cy);
+        var p1 = w2s(B.stat.cx, B.stat.cy);
         var len = U.dist(p0.x, p0.y, p1.x, p1.y);
         if (len < 2) return;
         var t = Math.min(1, l.count / Math.max(2, maxCount));
-        var w = U.lerp(cfgL.widthMin, cfgL.widthMax, Math.sqrt(t)) * Math.min(1.4, Math.max(0.6, view.cam.k));
+        var w = U.lerp(cfgL.widthMin, cfgL.widthMax, Math.sqrt(t)) * Math.min(1.4, Math.max(0.6, camNow().k));
         var bend = (l.a < l.b ? 1 : -1) * len * cfgL.curve;
         var ctl = U.perpControl(p0.x, p0.y, p1.x, p1.y, bend);
         ctx.beginPath();
@@ -3466,8 +3582,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
            用户原话：「就是一个圆圈看着很怪」。）
            ⚠️ gradSpan < 1：渐变的零点落在**包络以内**，各方向都到不了外沿，
            所以任何一个方向都不会留下一条淡边 —— 边界是靠浓度读出来的。 */
-        var cs = view.cam.toScreen(env.cx, env.cy);
-        var gR = Math.max(1, rmax * view.cam.k * cfgE.gradSpan);
+        var cs = w2s(env.cx, env.cy);
+        var gR = Math.max(1, rmax * camNow().k * cfgE.gradSpan);
         var g = ctx.createRadialGradient(cs.x, cs.y, 0, cs.x, cs.y, gR);
         var rgbS = rgb.r + ',' + rgb.g + ',' + rgb.b + ',';
         g.addColorStop(0.00, 'rgba(' + rgbS + (cfgE.fillAlpha * a).toFixed(4) + ')');
@@ -3515,7 +3631,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       (view.graph.clusters || []).forEach(function (c) {
         if (!c.stat || !c.name) return;
         if (view.isNodeVisible && !visibleIn(c.nodes)) return;   // 整团都藏起来了
-        var p = view.cam.toScreen(c.stat.cx, c.stat.cy);
+        var p = w2s(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = c.name;
         var tw = ctx.measureText(text).width;
@@ -3667,7 +3783,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
       // 等价线中点画一个 ⟺（用白色描边做底，而不是白方块，免得在云上留个补丁）
       if (g.glyph && cam_eqVisible()) {
-        ctx.font = '600 ' + Math.round(U.clamp(13 * Math.pow(view.cam.k, 0.4), 11, 18)) + 'px ' + T.font;
+        ctx.font = '600 ' + Math.round(U.clamp(13 * Math.pow(camNow().k, 0.4), 11, 18)) + 'px ' + T.font;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.lineWidth = 3.5;
@@ -3679,7 +3795,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       ctx.restore();
     }
 
-    function cam_eqVisible() { return view.cam.k >= C.edge.equivalenceGlyph; }
+    function cam_eqVisible() { return camNow().k >= C.edge.equivalenceGlyph; }
 
     function isEdgeActive(g) {
       var e = g.edge;
@@ -3694,7 +3810,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       var e = g.edge;
       var a = alphaForEdge(e) * lodA.nodeEdge;
       if (a <= 0.02) return;
-      var sz = U.clamp(C.edge.arrowSize * Math.pow(view.cam.k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
+      var sz = U.clamp(C.edge.arrowSize * Math.pow(camNow().k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
       var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;
       ctx.save();
       ctx.translate(x, y);
@@ -3725,8 +3841,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
           GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
 
-      // 光晕
-      if (C.node.glow) {
+      // 光晕（位图模式下由 drawGlows() 单独实时画一遍，这里跳过）
+      if (C.node.glow && !glowLive) {
         var gs = glowSprite(st.color);
         var gsz = r * 5.4;
         ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
@@ -3739,7 +3855,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fillStyle = U.rgba(st.color, a);
       ctx.fill();
-      ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, view.cam.k + 0.35));
+      ctx.lineWidth = Math.max(1.2, C.node.ringWidth * Math.min(1, camNow().k + 0.35));
       ctx.strokeStyle = 'rgba(255,255,255,' + (0.95 * a).toFixed(3) + ')';
       ctx.stroke();
 
@@ -3899,11 +4015,280 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       invalidate: invalidate,
       nodeRadius: nodeRadius,
       screenOf: screenOf,
+      drawStatic: drawStatic,                              // Phase A：烘焙入口
+      setStaticHidden: setStaticHidden,                    // 为真时实时层不画静态部分
+      setGlowLive: function (v) { glowLive = !!v; },        // 光晕改由实时层单独画
+      bbox: bbox,
+      prof: prof,
+      profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.frames = 0; },
       get size() { return { w: W, h: H }; }
     };
   }
 
   MG.createRenderer = createRenderer;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ==========================================================================
+   世界/区域位图（Phase A + B）—— 引擎模块，不认识任何内容
+   --------------------------------------------------------------------------
+   单一快照模型：永远只有一份「已就绪」快照 + 最多一个构建任务在飞。
+     Snapshot { surface, worldRect, bakeScale, dpr, k, paintRevision }
+   **Phase A 与 B 的差别只有 worldRect 的取值**（同一份代码，不是两套状态机）：
+     · k ≤ maxSide/世界最长边  ⇒ R = 整个世界   → 平移期间零重烘、永不越界
+     · 否则                    ⇒ R = 视口 ⊕ 余量 → 越界就异步重烘、旧图继续用、就绪后原子替换
+   为什么高倍率不能用世界图：面积 ∝ k²（k=1.44 时世界图 80Mpx/321MB，而视口只覆盖世界 3.8%）
+   —— 付 100% 的钱用 4% 的东西；实测把单图上限抬到 8192 会直接卡死页面。
+
+   为什么能精确：线宽 / 90px 曲率上限 / LOD alpha 斜坡 / spineOnly / 节点半径
+   全都只依赖 k、与平移无关 ⇒ 烘在「当前 k」、显示时 m=k/k_bake ⇒ 纯平移时逐像素一致。
+
+   载体：DOM canvas + CSS transform（拖动只改 transform ⇒ 合成器搬图层）。
+   吸附：合成偏移吸附到设备像素网格 —— ⛔ 相机逻辑位置一律不动。
+   不进烘焙：标签、hover 叠加层、光晕（光晕实时画，实测 ≈0.05ms）。
+   资源：两代 canvas 轮换；建不出来按 maxSide 阶梯往下降，最小档还不行就关掉。
+   ⚠️ 三个「等下一帧」的坑（都踩过）：settle 判定、换图定位、任何依赖后续帧的补写
+       —— 相机静止时根本没有下一帧，必须用定时器 / 当场就位。
+   ⚠️ 静态路径里任何读**实时相机/实时视口**的位置都会整体错位（screenOf 踩过）。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = global.MG = global.MG || {};
+
+  function createWorldBitmap(opt) {
+    var renderer = opt.renderer;
+    var graph = opt.graph;
+    var host = opt.host;                 // 容器
+    var beforeEl = opt.beforeEl;         // 插在它前面（= 图层 canvas）
+    var tiers = (opt.tiers && opt.tiers.length) ? opt.tiers.slice() : [4096, 3600, 2048];
+    var ti = 0;
+    var settleMs = opt.settleMs == null ? 180 : opt.settleMs;
+    var marginPx = opt.marginPx == null ? 400 : opt.marginPx;   // 区域模式的余量（设备像素/边）
+    var enabled = opt.enabled !== false;
+    /* Phase B 区域模式开关。⚠️ 默认关：区域路径**尚未通过复验**（探针超时），
+       不验证不上线；关掉时 k > 世界单图上限仍走实时画（= Phase A 的已验证行为）。
+       打开：地址挂 #region=1 或运行期 MG.app.setRegion(true)。 */
+    var regionOn = !!opt.region;
+
+    var els = [null, null];              // 两代
+    var cur = -1;
+    var pending = false, settleTimer = 0, settleWanted = false, snapping = false;
+    var buildGen = 0, rev = 0;
+    var world = null, wW = 0, wH = 0;
+    var last = { k: -1, tx: 0, ty: 0, dpr: 0, vw: 0, vh: 0 };
+    var lastMove = 0, lastTransform = '', lastKey = '';
+    var stats = { bakes: 0, lastMs: 0, peakMs: 0, swaps: 0, skipped: 0, regionBakes: 0, fallbackFrames: 0, reason: '', mode: '-' };
+    var snap = { ready: false, rect: null, mode: '', scale: 0, k: 0, dpr: 1, rev: 0, key: '' };
+
+    function now() { return (global.performance || Date).now(); }
+    function maxSide() { return tiers[Math.min(ti, tiers.length - 1)]; }
+
+    function measure() {
+      var bb = graph.bbox();
+      world = { minX: bb.minX, minY: bb.minY, maxX: bb.maxX, maxY: bb.maxY };
+      wW = Math.max(1, bb.maxX - bb.minX);
+      wH = Math.max(1, bb.maxY - bb.minY);
+    }
+    /** 世界单图能覆盖的最大 k */
+    function worldK() { return maxSide() / Math.max(wW, wH); }
+
+    function mkEl() {
+      var cv = global.document.createElement('canvas');
+      cv.setAttribute('data-mg', 'worldbitmap');
+      cv.style.cssText = 'position:absolute;left:0;top:0;transform-origin:0 0;'
+        + 'will-change:transform;pointer-events:none;display:none;';
+      if (beforeEl && beforeEl.parentNode === host) host.insertBefore(cv, beforeEl);
+      else host.appendChild(cv);
+      return cv;
+    }
+    function attach() {
+      if (els[0]) return true;
+      els[0] = mkEl(); els[1] = mkEl(); measure();
+      return true;
+    }
+
+    /** 该用哪个矩形：装得下就整个世界；装不下就「视口 ⊕ 余量」 */
+    function rectFor(k, tx, ty, dpr, vw, vh) {
+      if (!(k > 0)) return null;
+      if (k <= worldK() * 1.0001) return { r: world, mode: 'world' };
+      if (!regionOn) return null;      // Phase B 未开启：高倍率不烘（交实时画）
+      var padW = marginPx / (k * dpr);                 // 余量：设备像素 → 世界单位
+      var halfW = (vw / 2) / k + padW;
+      var halfH = (vh / 2) / k + padW;
+      var cx = (vw / 2 - tx) / k, cy = (vh / 2 - ty) / k;   // 视口中心的世界坐标
+      return { mode: 'region', r: { minX: cx - halfW, minY: cy - halfH, maxX: cx + halfW, maxY: cy + halfH } };
+    }
+    function sameRect(a, b) {
+      if (!a || !b) return false;
+      var tol = 1e-6;
+      return Math.abs(a.minX - b.minX) < tol && Math.abs(a.minY - b.minY) < tol
+        && Math.abs(a.maxX - b.maxX) < tol && Math.abs(a.maxY - b.maxY) < tol;
+    }
+    /** 快照够不够用。
+        ⚠️ 世界模式下**不能**用「视口 ⊆ 矩形」判：全图档时整个世界都在视口里，
+        矩形本来就比视口小 ⇒ 那条判据恒为 false ⇒ 每帧排队重烘（实测把用户卡回来过）。
+        世界模式只需 k 还在世界单图能覆盖的范围内。 */
+    function adequate(k) {
+      if (!snap.ready) return false;
+      if (snap.mode === 'world') return k <= worldK() * 1.0001;
+      return coversView();
+    }
+    /** 视口是否完全落在快照矩形里（三行矩形包含测试，不是 v1–v5 那种「覆盖判定」） */
+    function coversView() {
+      if (!snap.ready) return false;
+      var k = last.k, r = snap.rect;
+      var x0 = (0 - last.tx) / k, x1 = (last.vw - last.tx) / k;
+      var y0 = (0 - last.ty) / k, y1 = (last.vh - last.ty) / k;
+      return x0 >= r.minX && x1 <= r.maxX && y0 >= r.minY && y1 <= r.maxY;
+    }
+    function sizeFor(r, k, dpr) {
+      var sc = k * Math.min(dpr, 2);
+      return { scale: sc, w: Math.max(1, Math.ceil((r.maxX - r.minX) * sc)), h: Math.max(1, Math.ceil((r.maxY - r.minY) * sc)) };
+    }
+
+    /** 同步烘一块（区域模式下一块约 3~8ms；分横带跨帧是下一步） */
+    function runBake() {
+      pending = false;
+      if (!els[0]) attach();
+      var k = last.k, dpr = Math.max(1, last.dpr);
+      if (!(k > 0)) { stats.skipped++; return; }
+      var pick = rectFor(k, last.tx, last.ty, dpr, last.vw, last.vh);
+      if (!pick) { stats.skipped++; return; }
+      var r = pick.r;
+      var s = sizeFor(r, k, dpr);
+      if (Math.max(s.w, s.h) > maxSide()) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
+      var idx = cur === 0 ? 1 : 0;
+      var cv = els[idx];
+      if (cv.width !== s.w || cv.height !== s.h) { cv.width = s.w; cv.height = s.h; }
+      cv.style.width = (s.w / dpr) + 'px';
+      cv.style.height = (s.h / dpr) + 'px';
+      var gen = ++buildGen;
+      var t0 = now();
+      try {
+        renderer.drawStatic(cv.getContext('2d'), s.scale, r);
+      } catch (err) {
+        stats.reason = '降档：' + ((err && err.message) || err);
+        if (ti < tiers.length - 1) { ti++; cv.width = 1; cv.height = 1; return runBake(); }
+        enabled = false; hide(); stats.skipped++; return;
+      }
+      var ms = now() - t0;
+      if (gen !== buildGen) { stats.skipped++; return; }
+      /* ⚠️ 顺序要紧：先用**新快照**写定位，再显示、再换代。烘完没有下一帧，
+         等下一帧才定位会让新图带着上一世的 transform 显示（实测整层错位）。 */
+      snap = { ready: true, rect: r, mode: pick.mode, scale: s.scale, k: k, dpr: dpr, rev: ++rev, key: lastKey };
+      cur = idx;
+      applyTransform();
+      cv.style.display = '';
+      if (cur === 0 && els[1]) els[1].style.display = 'none';
+      else if (cur === 1 && els[0]) els[0].style.display = 'none';
+      stats.bakes++; stats.lastMs = +ms.toFixed(1);
+      if (ms > stats.peakMs) stats.peakMs = +ms.toFixed(1);
+      stats.swaps++;
+      if (pick.mode === 'region') stats.regionBakes++;
+      stats.mode = pick.mode;
+      stats.reason = 'ok ' + pick.mode + ' ' + s.w + 'x' + s.h + ' @k=' + k.toFixed(3) + ' tier=' + maxSide();
+      if (opt.onSwap) opt.onSwap();     // 保险：烘完至少再来一帧
+    }
+
+    /** 用「最后已知的相机」给当前显示的那一代写 transform（吸附到设备像素网格） */
+    function applyTransform() {
+      if (cur < 0 || !snap.ready) return '';
+      var k = last.k, dpr = Math.max(1, last.dpr);
+      if (!(k > 0)) return '';
+      var sx = Math.round((snap.rect.minX * k + last.tx) * dpr) / dpr;
+      var sy = Math.round((snap.rect.minY * k + last.ty) * dpr) / dpr;
+      var m = (k * dpr) / snap.scale;
+      var tr = 'translate3d(' + sx.toFixed(3) + 'px,' + sy.toFixed(3) + 'px,0) scale(' + m.toFixed(5) + ')';
+      lastTransform = tr;
+      var el = els[cur];
+      if (el) el.style.transform = tr;
+      return tr;
+    }
+
+    /* 停手之后由定时器来判「该不该重烘」（帧可能已经不来了；拖动中越界则当场重烘） */
+    function onSettle() { settleTimer = 0; if (settleWanted) scheduleBake(); }
+
+    function scheduleBake() {
+      if (pending || snapping) return;
+      snapping = true; pending = true;
+      global.setTimeout(function () { snapping = false; runBake(); }, 0);
+    }
+
+    /** 每帧调一次（在 renderer.draw() 之前）；返回 true = 本帧静态层由位图承担 */
+    function tick(cam, dpr, paintKey) {
+      if (!els[0]) attach();
+      dpr = Math.max(1, dpr || 1);
+      var k = cam.k;
+      var moved = (k !== last.k || cam.tx !== last.tx || cam.ty !== last.ty
+        || dpr !== last.dpr || cam.viewW !== last.vw || cam.viewH !== last.vh);
+      if (moved) {
+        last.k = k; last.tx = cam.tx; last.ty = cam.ty; last.dpr = dpr;
+        last.vw = cam.viewW; last.vh = cam.viewH; lastMove = now();
+        if (settleTimer) global.clearTimeout(settleTimer);
+        settleTimer = global.setTimeout(onSettle, settleMs + 20);
+      }
+      if (!enabled) { hide(); return false; }
+      var pick = rectFor(k, cam.tx, cam.ty, dpr, cam.viewW, cam.viewH);
+      if (!pick) { hide(); return false; }          // 该档不烘（区域模式未开）⇒ 交实时画，别排队
+      if (!snap.ready) { hide(); scheduleBake(); return false; }
+
+      /* 位置 + 缩放（只吸附合成偏移） */
+      var sx = Math.round((snap.rect.minX * k + cam.tx) * dpr) / dpr;
+      var sy = Math.round((snap.rect.minY * k + cam.ty) * dpr) / dpr;
+      var m = (k * dpr) / snap.scale;
+      var tr = 'translate3d(' + sx.toFixed(3) + 'px,' + sy.toFixed(3) + 'px,0) scale(' + m.toFixed(5) + ')';
+      if (tr !== lastTransform) {
+        lastTransform = tr;
+        applyTransform();
+        if (els[cur]) els[cur].style.display = '';
+        var other = els[1 - cur];
+        if (other && other.style.display !== 'none') other.style.display = 'none';
+      }
+
+      /* 该不该重烘：
+         · 视口跑出旧图 ⇒ **立刻**（拖动中也要，旧图继续用，就绪后原子替换）
+         · k / dpr / 绘制输入变了 ⇒ 等停手（settle）再烘，免得手势里反复烘  */
+      var outNow = !adequate(k);
+      var stale = (snap.k !== k) || (snap.dpr !== dpr) || (paintKey != null && snap.key !== paintKey);
+      settleWanted = stale && !outNow;
+      if (outNow) {
+        scheduleBake();
+        /* 视口已经跑出旧图 ⇒ **本帧走实时画**（判决的「实时兜底帧」，列为验收路径实测）。
+           只在「盖不住」时兜底：k/dpr/输入变了但还盖得住时，继续用旧图（不要白花一帧）。 */
+        if (!coversView()) { stats.fallbackFrames++; return false; }
+      }
+      else if (settleWanted && !moved && (now() - lastMove) > settleMs) { lastKey = paintKey; scheduleBake(); }
+      return true;
+    }
+
+    function hide() { if (cur >= 0 && els[cur]) els[cur].style.display = 'none'; }
+
+    return {
+      attach: attach, tick: tick, hide: hide,
+      bakeNow: function () { scheduleBake(); },
+      enable: function (v) { enabled = !!v; if (!enabled) hide(); },
+      setRegion: function (v) { regionOn = !!v; snap.ready = false; scheduleBake(); },
+      get region() { return regionOn; },
+      get enabled() { return enabled; },
+      state: function () {
+        return {
+          enabled: enabled, ready: snap.ready, mode: stats.mode,
+          k: +snap.k.toFixed(4), scale: +snap.scale.toFixed(4), rev: snap.rev, region: regionOn,
+          bakes: stats.bakes, regionBakes: stats.regionBakes,
+          lastMs: stats.lastMs, peakMs: stats.peakMs, swaps: stats.swaps, skipped: stats.skipped,
+          fallbackFrames: stats.fallbackFrames,
+          reason: stats.reason,
+          worldK: +worldK().toFixed(4), maxSide: maxSide(), tier: ti,
+          covered: snap.ready ? coversView() : false,
+          size: snap.ready ? Math.round((snap.rect.maxX - snap.rect.minX) * snap.scale) + 'x'
+            + Math.round((snap.rect.maxY - snap.rect.minY) * snap.scale) : '-'
+        };
+      }
+    };
+  }
+
+  MG.createWorldBitmap = createWorldBitmap;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -36543,6 +36928,14 @@ MG.trunk = [
        实测那是整帧的大头（dpr=1 时 ~15ms，dpr=2 时 ~37ms），而它根本没变。 */
     var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null };
     var dpr = 1;
+    /* Phase A：世界位图（挂载见文件末尾）。paintKey 把「绘制输入」压成一个串，
+       它一变（显隐 / 开关 / 聚焦 / 数据）就允许重烘一次 —— 平移与纯 k 变不重烘。 */
+    var bitmap = null, perfRec = null, lastUseBmp = false;
+    function paintKey() {
+      return graph.nodes.length + '|' + vis.hiddenCount() + '|'
+        + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
+        + (C.hideParallelImplications ? 1 : 0) + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
+    }
     var rafId = 0;
     var dirty = true;
     /* 诊断用：一帧里「我这边花的 JS」的累加（不含被推迟的光栅化 → 剩下的账归「其余」） */
@@ -36579,12 +36972,19 @@ MG.trunk = [
           MG.background.draw(cloudCtx, cam, cloudTex, dpr);
           cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex };
         }
+        /* Phase A：位图图层承担静态部分 ⇒ 实时层只画标签/hover/光晕。
+           位置与缩放由 bitmap 自己按相机写 transform（吸附到设备像素网格）。 */
+        var useBmp = bitmap ? bitmap.tick(c, dpr, paintKey()) : false;
+        lastUseBmp = useBmp;
+        renderer.setStaticHidden(useBmp);
+        renderer.setGlowLive(useBmp);
         renderer.draw();
         dirty = false;
       }
       drawProf.ms += performance.now() - tp; drawProf.n++;
       if (animating) requestDraw();
       noteCamera();
+
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -37540,9 +37940,16 @@ MG.trunk = [
 
     /* ------------------------------------------------------ 诊断角标（可选） */
     /*
-      地址栏带 fps=1 时，右下角显示一行读数：整帧耗时 / 连线层耗时 / 窗口与 dpr / canvas 后备尺寸。
-      用来在**别人的机器**上报性能 —— 我这边是 headless 软件光栅化，数字不可比。
-      不带这个参数时完全不创建，不进产品正常路径。
+      地址栏带 fps=1 时右下角出读数。**字段语义**（避免把不同窗口的数混着读）：
+        · 实时 帧         = rAF 间隔，最近 700ms 的均值（含空帧 ⇒ 空闲时应 ≈1 个时隙）
+        · 实时 绘制/输入/其余 = 同一 700ms 窗口内：app 自己的 JS / 输入回调 / 其余（光栅化+合成+呈现）
+                          三者相加 ≈ 帧。**「绘制」只算 JS，不含光栅化。**
+        · 峰(自开)       = 打开页面以来的最大值；**已剔除 gap**（见下）
+        · 分项 边/节点/标签 = renderer.prof 的低频汇总（每帧累加 ÷ 帧数，⛔ 不引入 flush/readback）
+        · 抽样           = 额外做一次绘制/铺雾来估「连线层/云雾层」的成本，**属于侵入式测量，不计入帧**
+                          （空闲行里「帧 4.6 / 绘制 0.00 / 抽样连线层 7.00」不矛盾：三者窗口与口径本来就不同）
+        · gap            = 帧间隔 > 2s 或采样时页面 hidden（切标签/截图工具/断档伪影）⇒ 只计数，不进峰值
+      不带 fps=1 时完全不创建，不进产品正常路径。
     */
     var fpsHud = /(^|[&#])fps=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
     if (fpsHud) {
@@ -37553,18 +37960,72 @@ MG.trunk = [
         + 'font:11.5px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre;text-align:left';
       document.body.appendChild(hudEl);
 
+      /* 对齐自检：位图图层在屏幕上的实际位置/宽度 vs「实时层算出的同一世界矩形」。
+         错位px 大 = 位置错；宽比 ≠1 = **缩放**错（k/k_bake 算错或尺寸没跟上）。 */
+      function alignLine() {
+        var bs = bitmap ? bitmap.state() : null;
+        if (!bs || !bs.ready) return '对齐 （位图未就绪）';
+        var els = document.querySelectorAll('canvas[data-mg="worldbitmap"]');
+        var el = null;
+        for (var i = 0; i < els.length; i++) if (els[i].style.display !== 'none') el = els[i];
+        if (!el) return '对齐 （无显示层）';
+        var bb = graph.bbox();
+        var ex = bb.minX * cam.k + cam.tx, ey = bb.minY * cam.k + cam.ty;
+        var ew = (bb.maxX - bb.minX) * cam.k;
+        var r = el.getBoundingClientRect();
+        var off = Math.hypot(r.left - ex, r.top - ey);
+        return '对齐 错位 ' + off.toFixed(1) + 'px ｜ 宽比 ' + (ew ? (r.width / ew).toFixed(4) : '-')
+          + ' ｜ 层 ' + el.width + 'x' + el.height + ' @k_bake ' + bs.k.toFixed(3) + ' @k ' + cam.k.toFixed(3)
+          + ' @dpr ' + global.devicePixelRatio;
+      }
       var hudLast = 0, hudAcc = 0, hudCnt = 0, hudWorst = 0, hudPeak = 0;
       var hudPeakDraw = 0, hudPeakInp = 0, hudPeakRest = 0;
+      /* 长帧记录器：环形缓冲 20 条；gap（>2s 或采样时 hidden）只计数不进峰值 */
+      var ring = [], gaps = 0;
       var hudTick = function (ts) {
         if (hudLast) {
           var dms = ts - hudLast;
-          hudAcc += dms; hudCnt++;
-          if (dms > hudWorst) hudWorst = dms;
+          var hidden = (document.visibilityState === 'hidden');
+          if (dms > 2000 || hidden) { gaps++; }
+          else {
+            hudAcc += dms; hudCnt++;
+            if (dms > hudWorst) hudWorst = dms;
+            if (dms > 30) {
+              var bs = bitmap ? bitmap.state() : null;
+              ring.push({ dt: +dms.toFixed(1), vis: document.visibilityState, k: +cam.k.toFixed(4),
+                k_bake: bs ? bs.k : null, 仅transform: lastUseBmp ? 1 : 0,
+                可见边: view.visible.length, 节点: graph.nodes.length,
+                位图: bs ? (bs.ready ? 'on' : 'off') : 'none', ts: Math.round(ts) });
+              if (ring.length > 20) ring.shift();
+            }
+          }
         }
         hudLast = ts;
         requestAnimationFrame(hudTick);
       };
       requestAnimationFrame(hudTick);
+      MG.perf = {
+        ring: ring,
+        snapshot: function () {
+          var bs = bitmap ? bitmap.state() : null;
+          var pr = renderer.prof;
+          var f = Math.max(1, pr.frames);
+          return {
+            时间: new Date().toISOString(),
+            env: { innerW: global.innerWidth, innerH: global.innerHeight, dpr: global.devicePixelRatio,
+              canvas: (function () { var c = document.getElementById('layer-graph'); return c.width + 'x' + c.height; })(),
+              gl: glInfo, 视口: cam.viewW + 'x' + cam.viewH },
+            开关: { 定义线: C.showDefinitionLines, 名字: C.showLabels, 探索: C.exploreMode,
+              位图: bitmap ? bitmap.enabled : null, 云雾: true },
+            位图: bs,
+            计数: { 节点: graph.nodes.length, 连线: view.visible.length, 隐藏: vis.hiddenCount() },
+            prof每帧: { 边: +(pr.edges / f).toFixed(2), 节点: +(pr.nodes / f).toFixed(2),
+              标签: +(pr.labels / f).toFixed(2), 帧: pr.frames },
+            峰: { 帧: +hudPeak.toFixed(1), 绘制: +hudPeakDraw.toFixed(2), 输入: +hudPeakInp.toFixed(2), 其余: +hudPeakRest.toFixed(2) },
+            gap计数: gaps, 长帧: ring.slice()
+          };
+        }
+      };
 
       /* 每 700ms 刷新一次读数：整帧间隔 + 同步量「只画连线层」与「只画云雾层」的真实耗时。
          ⚠️ 云雾必须量在**真正显示的那张画布**上：离屏画布不被合成，浏览器会把光栅化
@@ -37620,17 +38081,25 @@ MG.trunk = [
         if (drawPer > hudPeakDraw) hudPeakDraw = drawPer;
         if (inpPer > hudPeakInp) hudPeakInp = inpPer;
         if (rest > hudPeakRest) hudPeakRest = rest;
+        var pr = renderer.prof, pF = Math.max(1, pr.frames);
+        var bs = bitmap ? bitmap.state() : null;
         hudEl.textContent =
-          '帧 ' + ms.toFixed(1) + ' ms（峰值 ' + hudPeak.toFixed(0) + '）· ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
-          '绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
-          '峰 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + ' ms\n' +
-          '连线层 ' + drawMs.toFixed(2) + ' ms' + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) + ' ms' : '') + '\n' +
+          '实时 帧 ' + ms.toFixed(1) + ' ms · ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
+          '实时 绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
+          '峰(自开) 帧 ' + hudPeak.toFixed(0) + ' ｜ 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + '\n' +
+          '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) + ' ｜ 标签 ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
+          '抽样(侵入) 连线层 ' + drawMs.toFixed(2) + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) : '') + ' ms\n' +
+          '位图 ' + (bs ? ((bs.ready ? 'on' : 'off') + (bs.inRange ? '' : '(超范围)') + ' k_bake ' + bs.k.toFixed(3) + ' ' + bs.size
+            + ' 烘' + bs.bakes + '次 末' + bs.lastMs + '/峰' + bs.peakMs + 'ms 换' + bs.swaps) : '未装') + '\n' +
+          'gap ' + gaps + ' 次（>2s 或 hidden，不进峰值）\n' +
+          alignLine() + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
           ' · canvas ' + c.width + '×' + c.height +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
           (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
           (glInfo ? '\n' + glInfo : '');
         hudWorst = 0;
+        renderer.profReset();
       }, 700);
     }
 
@@ -37770,6 +38239,28 @@ MG.trunk = [
 
     start();
 
+    /* ------------------------------------------------ Phase A：世界位图图层
+       载体乙（DOM canvas + CSS transform）：拖动只改 transform，合成器搬图层。
+       位置/缩放/重烘时机全在 worldbitmap 里；app 这边只负责挂载与开关。 */
+    if (MG.createWorldBitmap && C.bitmap) {
+      /* ⚠️ 开关一律从 hash + search 两处读，并且**用查询串传**（`?region=1`）：
+         应用自己每帧把视图状态写回 location.hash（`#v=…`），hash 里的开关会被顶掉；
+         而它从不写 location.search。 */
+      var flags = String(location.hash || '') + '&' + String(location.search || '');
+      var bmpOn = !/(^|[&#?])bitmap=0/.test(flags);
+      var regionOn = /(^|[&#?])region=1/.test(flags);
+      bitmap = MG.createWorldBitmap({
+        renderer: renderer, graph: graph,
+        host: graphEl.parentNode, beforeEl: graphEl,
+        tiers: (function () {
+          var m = /(^|[&#])maxside=(\d+)/.exec(String(location.hash || ''));
+          return m ? [Number(m[2])] : C.bitmap.tiers;
+        })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
+        region: regionOn,
+        enabled: C.bitmap.enabled !== false && bmpOn
+      });
+      bitmap.attach();
+    }
     /* ------------------------------------------------ 外部内容包（可选） */
     if (MG.loader) {
       MG.loader.loadExternal().then(function (res) {
@@ -37790,6 +38281,8 @@ MG.trunk = [
         search.reindex();
         renderLegend();
         start();
+
+
         console.info('[数学星图] 已并入 ' + res.loaded + ' 个外部内容包。');
       });
     }
@@ -37802,6 +38295,9 @@ MG.trunk = [
       clearFocus: clearFocus,
       export: exporter,
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次
+      setBitmap: function (v) { if (bitmap) { bitmap.enable(v); bitmap.bakeNow(); } requestDraw(); },
+      setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
+      get bitmap() { return bitmap ? bitmap.state() : null; },
       rebuild: function () { start(); },
       get graph() { return view.graph; },
       get packs() { return (MG.packs || []); }
