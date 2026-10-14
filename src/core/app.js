@@ -1435,6 +1435,7 @@
       });
       bitmap.attach();
       renderer.setHoverFull(hoverFullOn);   // 甲支（默认）：入射边加宽 ×1.85 + 箭头 ×1.2
+      renderer.setEnvLive(true);            // 星团包络不进烘焙（和光晕一样实时画）
     }
     /* ------------------------------------------------ 外部内容包（可选） */
     if (MG.loader) {

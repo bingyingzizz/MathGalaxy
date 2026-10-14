@@ -2913,10 +2913,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /** 「适配全部」时相机该停在哪 —— 和 cam.fit() 用同一套公式 */
     function fitZoom() {
       var bb = view.graph.bbox();
-      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, W, H].join(',');
+      /* ⚠️ LOD 的 `{rel:…}` 规格（10 处，含包络 envelopeIn/Out）是按「适配全部」的 k₀ 定的倍数，
+         所以这里必须用**视口**尺寸，不能用 W/H —— 烘焙时 W/H 是那张大画布的像素尺寸
+         （比如 3312×2056 或 4186×3552），跟视口差一大截 ⇒ 两条路算出的 LOD 完全不是一回事，
+         于是「包络在星图里和实拍不一样浓/干脆看不见」。
+         判据要用 camNow().viewW/viewH（staticCam 也带这两个字段）。 */
+      var c = camNow();
+      var vw = c.viewW || W, vh = c.viewH || H;
+      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh].join(',');
       if (key === fitKKey) return fitKCache;
-      var pad = Math.min(C.camera.fitPadding, Math.min(W, H) * 0.18);
-      var aw = Math.max(40, W - pad * 2), ah = Math.max(40, H - pad * 2);
+      var pad = Math.min(C.camera.fitPadding, Math.min(vw, vh) * 0.18);
+      var aw = Math.max(40, vw - pad * 2), ah = Math.max(40, vh - pad * 2);
       var w = Math.max(1, bb.maxX - bb.minX), h = Math.max(1, bb.maxY - bb.minY);
       fitKCache = U.clamp(Math.min(aw / w, ah / h),
         Math.max(C.camera.minZoom, C.camera.fitMinZoom),
@@ -3269,7 +3276,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* 烘焙时必须让「屏幕上才有的量」按**烘焙那个 k** 算，而绘制目标又是另一张画布。
        所以：staticCam 覆盖相机读数、cullOff 关掉视口裁剪、staticHidden 让实时层
        把静态部分让给位图图层（标签/hover 仍实时画）。⛔ 只在 drawStatic 的同步区间里置位。 */
-    var staticCam = null, cullOff = false, staticHidden = false, glowLive = false, hoverFull = false;
+    var staticCam = null, cullOff = false, staticHidden = false, glowLive = false, envLive = false, hoverFull = false;
     /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback */
     var prof = { edges: 0, nodes: 0, labels: 0, frames: 0 };
     function camNow() { return staticCam || view.cam; }
@@ -3302,7 +3309,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* ---------- 静态层（可烘）：包络 → 星团连线 → 边 → 节点 → 箭头 ---------- */
     function paintStatic(geoms) {
       var tE = performance.now();
-      drawEnvelopes();
+      if (!envLive) drawEnvelopes();       // 位图模式：包络交给实时层（见 paintDynamic）
       drawClusterLinks();
 
       var defs = [], eqs = [], imps = [], anas = [];
@@ -3330,6 +3337,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* ---------- 动态层（必须实时）：光晕 → 名称 → hover 叠加 ---------- */
     function paintDynamic() {
       if (glowLive) drawGlows();
+      /* ⭐ 包络和光晕一样**不进烘焙**：烘焙图里的 LOD/叠加顺序与实时画对不上
+         （实测同机位位图路 vs 实画路差 5.6% 像素、集中在各团的软色区）。
+         放在名字/标签**之前**画，免得色块压住字。 */
+      if (envLive) drawEnvelopes();
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
@@ -3366,8 +3377,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       /* ⚠️ staticCam 必须是「够用的相机」：凡是用 camNow() 的地方都会拿到它，
          所以要带上 toScreen（traceEnvelope 用）。以前这里没有它、而 drawEnvelopes
          传的是 view.cam（实时相机）⇒ 烘焙里的包络一直按实时机位画，是错的。 */
+      /* ⚠️ viewW/viewH 必须是**视口**尺寸（不是画布尺寸 W/H）——fitZoom() 靠它算
+         「适配全部」的 k₀，而 LOD 的 {rel:…} 规格（10 处）是 k₀ 的倍数。
+         填成画布尺寸 ⇒ 烘焙的 LOD 与实时画完全对不上（表现：包络等软色层浓度不对/看不见）。
+         裁剪用的是 W/H 全局量，与这里无关，所以两种口径不会打架。 */
       staticCam = {
-        k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale, viewW: W, viewH: H,
+        k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale,
+        viewW: view.cam.viewW, viewH: view.cam.viewH,
         toScreen: function (x, y) { return { x: x * this.k + this.tx, y: y * this.k + this.ty }; }
       };
       /* ⭐ cullOff = false：**按烘焙画布裁剪**。
@@ -4054,6 +4070,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       drawStatic: drawStatic,                              // Phase A：烘焙入口
       setStaticHidden: setStaticHidden,                    // 为真时实时层不画静态部分
       setGlowLive: function (v) { glowLive = !!v; },        // 光晕改由实时层单独画
+      setEnvLive: function (v) { envLive = !!v; },          // 包络改由实时层单独画（不进烘焙）
       setHoverFull: function (v) { hoverFull = !!v; },       // hover 甲支（入射边加宽）
       bbox: bbox,
       prof: prof,
@@ -38356,6 +38373,7 @@ MG.trunk = [
       });
       bitmap.attach();
       renderer.setHoverFull(hoverFullOn);   // 甲支（默认）：入射边加宽 ×1.85 + 箭头 ×1.2
+      renderer.setEnvLive(true);            // 星团包络不进烘焙（和光晕一样实时画）
     }
     /* ------------------------------------------------ 外部内容包（可选） */
     if (MG.loader) {
