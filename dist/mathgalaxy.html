@@ -38259,7 +38259,9 @@ MG.trunk = [
          而它从不写 location.search。 */
       var flags = String(location.hash || '') + '&' + String(location.search || '');
       var bmpOn = !/(^|[&#?])bitmap=0/.test(flags);
-      var regionOn = /(^|[&#?])region=1/.test(flags);
+      /* region 默认**打开**（已验收：内容互相关 (0,0)、p95 4.3、兜底帧 0、人速拖动零慢帧）。
+         关掉：?region=0 或 MG.app.setRegion(false)。 */
+      var regionOn = !/(^|[&#?])region=0/.test(flags);
       var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
       bitmap = MG.createWorldBitmap({
         renderer: renderer, graph: graph,
