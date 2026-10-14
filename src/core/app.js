@@ -91,6 +91,14 @@
        实测那是整帧的大头（dpr=1 时 ~15ms，dpr=2 时 ~37ms），而它根本没变。 */
     var cloudDrawn = { k: -1, tx: 0, ty: 0, w: -1, h: -1, dpr: -1, tex: null };
     var dpr = 1;
+    /* Phase A：世界位图（挂载见文件末尾）。paintKey 把「绘制输入」压成一个串，
+       它一变（显隐 / 开关 / 聚焦 / 数据）就允许重烘一次 —— 平移与纯 k 变不重烘。 */
+    var bitmap = null, perfRec = null, lastUseBmp = false;
+    function paintKey() {
+      return graph.nodes.length + '|' + vis.hiddenCount() + '|'
+        + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
+        + (C.hideParallelImplications ? 1 : 0) + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
+    }
     var rafId = 0;
     var dirty = true;
     /* 诊断用：一帧里「我这边花的 JS」的累加（不含被推迟的光栅化 → 剩下的账归「其余」） */
@@ -127,12 +135,19 @@
           MG.background.draw(cloudCtx, cam, cloudTex, dpr);
           cloudDrawn = { k: c.k, tx: c.tx, ty: c.ty, w: c.viewW, h: c.viewH, dpr: dpr, tex: cloudTex };
         }
+        /* Phase A：位图图层承担静态部分 ⇒ 实时层只画标签/hover/光晕。
+           位置与缩放由 bitmap 自己按相机写 transform（吸附到设备像素网格）。 */
+        var useBmp = bitmap ? bitmap.tick(c, dpr, paintKey()) : false;
+        lastUseBmp = useBmp;
+        renderer.setStaticHidden(useBmp);
+        renderer.setGlowLive(useBmp);
         renderer.draw();
         dirty = false;
       }
       drawProf.ms += performance.now() - tp; drawProf.n++;
       if (animating) requestDraw();
       noteCamera();
+
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -1088,9 +1103,16 @@
 
     /* ------------------------------------------------------ 诊断角标（可选） */
     /*
-      地址栏带 fps=1 时，右下角显示一行读数：整帧耗时 / 连线层耗时 / 窗口与 dpr / canvas 后备尺寸。
-      用来在**别人的机器**上报性能 —— 我这边是 headless 软件光栅化，数字不可比。
-      不带这个参数时完全不创建，不进产品正常路径。
+      地址栏带 fps=1 时右下角出读数。**字段语义**（避免把不同窗口的数混着读）：
+        · 实时 帧         = rAF 间隔，最近 700ms 的均值（含空帧 ⇒ 空闲时应 ≈1 个时隙）
+        · 实时 绘制/输入/其余 = 同一 700ms 窗口内：app 自己的 JS / 输入回调 / 其余（光栅化+合成+呈现）
+                          三者相加 ≈ 帧。**「绘制」只算 JS，不含光栅化。**
+        · 峰(自开)       = 打开页面以来的最大值；**已剔除 gap**（见下）
+        · 分项 边/节点/标签 = renderer.prof 的低频汇总（每帧累加 ÷ 帧数，⛔ 不引入 flush/readback）
+        · 抽样           = 额外做一次绘制/铺雾来估「连线层/云雾层」的成本，**属于侵入式测量，不计入帧**
+                          （空闲行里「帧 4.6 / 绘制 0.00 / 抽样连线层 7.00」不矛盾：三者窗口与口径本来就不同）
+        · gap            = 帧间隔 > 2s 或采样时页面 hidden（切标签/截图工具/断档伪影）⇒ 只计数，不进峰值
+      不带 fps=1 时完全不创建，不进产品正常路径。
     */
     var fpsHud = /(^|[&#])fps=1/.test(String(global.location.hash || '') + '&' + String(global.location.search || ''));
     if (fpsHud) {
@@ -1101,18 +1123,72 @@
         + 'font:11.5px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre;text-align:left';
       document.body.appendChild(hudEl);
 
+      /* 对齐自检：位图图层在屏幕上的实际位置/宽度 vs「实时层算出的同一世界矩形」。
+         错位px 大 = 位置错；宽比 ≠1 = **缩放**错（k/k_bake 算错或尺寸没跟上）。 */
+      function alignLine() {
+        var bs = bitmap ? bitmap.state() : null;
+        if (!bs || !bs.ready) return '对齐 （位图未就绪）';
+        var els = document.querySelectorAll('canvas[data-mg="worldbitmap"]');
+        var el = null;
+        for (var i = 0; i < els.length; i++) if (els[i].style.display !== 'none') el = els[i];
+        if (!el) return '对齐 （无显示层）';
+        var bb = graph.bbox();
+        var ex = bb.minX * cam.k + cam.tx, ey = bb.minY * cam.k + cam.ty;
+        var ew = (bb.maxX - bb.minX) * cam.k;
+        var r = el.getBoundingClientRect();
+        var off = Math.hypot(r.left - ex, r.top - ey);
+        return '对齐 错位 ' + off.toFixed(1) + 'px ｜ 宽比 ' + (ew ? (r.width / ew).toFixed(4) : '-')
+          + ' ｜ 层 ' + el.width + 'x' + el.height + ' @k_bake ' + bs.k.toFixed(3) + ' @k ' + cam.k.toFixed(3)
+          + ' @dpr ' + global.devicePixelRatio;
+      }
       var hudLast = 0, hudAcc = 0, hudCnt = 0, hudWorst = 0, hudPeak = 0;
       var hudPeakDraw = 0, hudPeakInp = 0, hudPeakRest = 0;
+      /* 长帧记录器：环形缓冲 20 条；gap（>2s 或采样时 hidden）只计数不进峰值 */
+      var ring = [], gaps = 0;
       var hudTick = function (ts) {
         if (hudLast) {
           var dms = ts - hudLast;
-          hudAcc += dms; hudCnt++;
-          if (dms > hudWorst) hudWorst = dms;
+          var hidden = (document.visibilityState === 'hidden');
+          if (dms > 2000 || hidden) { gaps++; }
+          else {
+            hudAcc += dms; hudCnt++;
+            if (dms > hudWorst) hudWorst = dms;
+            if (dms > 30) {
+              var bs = bitmap ? bitmap.state() : null;
+              ring.push({ dt: +dms.toFixed(1), vis: document.visibilityState, k: +cam.k.toFixed(4),
+                k_bake: bs ? bs.k : null, 仅transform: lastUseBmp ? 1 : 0,
+                可见边: view.visible.length, 节点: graph.nodes.length,
+                位图: bs ? (bs.ready ? 'on' : 'off') : 'none', ts: Math.round(ts) });
+              if (ring.length > 20) ring.shift();
+            }
+          }
         }
         hudLast = ts;
         requestAnimationFrame(hudTick);
       };
       requestAnimationFrame(hudTick);
+      MG.perf = {
+        ring: ring,
+        snapshot: function () {
+          var bs = bitmap ? bitmap.state() : null;
+          var pr = renderer.prof;
+          var f = Math.max(1, pr.frames);
+          return {
+            时间: new Date().toISOString(),
+            env: { innerW: global.innerWidth, innerH: global.innerHeight, dpr: global.devicePixelRatio,
+              canvas: (function () { var c = document.getElementById('layer-graph'); return c.width + 'x' + c.height; })(),
+              gl: glInfo, 视口: cam.viewW + 'x' + cam.viewH },
+            开关: { 定义线: C.showDefinitionLines, 名字: C.showLabels, 探索: C.exploreMode,
+              位图: bitmap ? bitmap.enabled : null, 云雾: true },
+            位图: bs,
+            计数: { 节点: graph.nodes.length, 连线: view.visible.length, 隐藏: vis.hiddenCount() },
+            prof每帧: { 边: +(pr.edges / f).toFixed(2), 节点: +(pr.nodes / f).toFixed(2),
+              标签: +(pr.labels / f).toFixed(2), 帧: pr.frames },
+            峰: { 帧: +hudPeak.toFixed(1), 绘制: +hudPeakDraw.toFixed(2), 输入: +hudPeakInp.toFixed(2), 其余: +hudPeakRest.toFixed(2) },
+            gap计数: gaps, 长帧: ring.slice()
+          };
+        }
+      };
 
       /* 每 700ms 刷新一次读数：整帧间隔 + 同步量「只画连线层」与「只画云雾层」的真实耗时。
          ⚠️ 云雾必须量在**真正显示的那张画布**上：离屏画布不被合成，浏览器会把光栅化
@@ -1168,17 +1244,25 @@
         if (drawPer > hudPeakDraw) hudPeakDraw = drawPer;
         if (inpPer > hudPeakInp) hudPeakInp = inpPer;
         if (rest > hudPeakRest) hudPeakRest = rest;
+        var pr = renderer.prof, pF = Math.max(1, pr.frames);
+        var bs = bitmap ? bitmap.state() : null;
         hudEl.textContent =
-          '帧 ' + ms.toFixed(1) + ' ms（峰值 ' + hudPeak.toFixed(0) + '）· ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
-          '绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
-          '峰 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + ' ms\n' +
-          '连线层 ' + drawMs.toFixed(2) + ' ms' + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) + ' ms' : '') + '\n' +
+          '实时 帧 ' + ms.toFixed(1) + ' ms · ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
+          '实时 绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
+          '峰(自开) 帧 ' + hudPeak.toFixed(0) + ' ｜ 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + '\n' +
+          '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) + ' ｜ 标签 ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
+          '抽样(侵入) 连线层 ' + drawMs.toFixed(2) + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) : '') + ' ms\n' +
+          '位图 ' + (bs ? ((bs.ready ? 'on' : 'off') + (bs.inRange ? '' : '(超范围)') + ' k_bake ' + bs.k.toFixed(3) + ' ' + bs.size
+            + ' 烘' + bs.bakes + '次 末' + bs.lastMs + '/峰' + bs.peakMs + 'ms 换' + bs.swaps) : '未装') + '\n' +
+          'gap ' + gaps + ' 次（>2s 或 hidden，不进峰值）\n' +
+          alignLine() + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
           ' · canvas ' + c.width + '×' + c.height +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
           (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
           (glInfo ? '\n' + glInfo : '');
         hudWorst = 0;
+        renderer.profReset();
       }, 700);
     }
 
@@ -1318,6 +1402,36 @@
 
     start();
 
+    /* ------------------------------------------------ Phase A：世界位图图层
+       载体乙（DOM canvas + CSS transform）：拖动只改 transform，合成器搬图层。
+       位置/缩放/重烘时机全在 worldbitmap 里；app 这边只负责挂载与开关。 */
+    if (MG.createWorldBitmap && C.bitmap) {
+      /* ⚠️ 开关一律从 hash + search 两处读，并且**用查询串传**（`?region=1`）：
+         应用自己每帧把视图状态写回 location.hash（`#v=…`），hash 里的开关会被顶掉；
+         而它从不写 location.search。 */
+      var flags = String(location.hash || '') + '&' + String(location.search || '');
+      var bmpOn = !/(^|[&#?])bitmap=0/.test(flags);
+      /* region 默认**打开**（已验收：内容互相关 (0,0)、p95 4.3、兜底帧 0、人速拖动零慢帧）。
+         关掉：?region=0 或 MG.app.setRegion(false)。 */
+      var regionOn = !/(^|[&#?])region=0/.test(flags);
+      var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
+      /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
+         避免静默降质。要看廉价版（只画外环）：?hover=ring */
+      var hoverFullOn = !/(^|[&#?])hover=ring/.test(flags);
+      bitmap = MG.createWorldBitmap({
+        renderer: renderer, graph: graph,
+        host: graphEl.parentNode, beforeEl: graphEl,
+        tiers: (function () {
+          var m = /(^|[&#])maxside=(\d+)/.exec(String(location.hash || ''));
+          return m ? [Number(m[2])] : C.bitmap.tiers;
+        })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
+        region: regionOn,
+        marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
+        enabled: C.bitmap.enabled !== false && bmpOn
+      });
+      bitmap.attach();
+      renderer.setHoverFull(hoverFullOn);   // 甲支（默认）：入射边加宽 ×1.85 + 箭头 ×1.2
+    }
     /* ------------------------------------------------ 外部内容包（可选） */
     if (MG.loader) {
       MG.loader.loadExternal().then(function (res) {
@@ -1338,6 +1452,8 @@
         search.reindex();
         renderLegend();
         start();
+
+
         console.info('[数学星图] 已并入 ' + res.loaded + ' 个外部内容包。');
       });
     }
@@ -1350,6 +1466,10 @@
       clearFocus: clearFocus,
       export: exporter,
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次
+      setBitmap: function (v) { if (bitmap) { bitmap.enable(v); bitmap.bakeNow(); } requestDraw(); },
+      setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
+      setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
+      get bitmap() { return bitmap ? bitmap.state() : null; },
       rebuild: function () { start(); },
       get graph() { return view.graph; },
       get packs() { return (MG.packs || []); }
