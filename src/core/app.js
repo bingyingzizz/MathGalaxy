@@ -1128,9 +1128,10 @@
       function alignLine() {
         var bs = bitmap ? bitmap.state() : null;
         if (!bs || !bs.ready) return '对齐 （位图未就绪）';
+        /* ⚠️ 两代画布**都常显**（带轮换代不换显示层）⇒ 不能拿「第一个没藏起来的」当现行层，
+           必须按 state().live 取（旧的两代里那个已备份/透明的那一代落位无意义）。 */
         var els = document.querySelectorAll('canvas[data-mg="worldbitmap"]');
-        var el = null;
-        for (var i = 0; i < els.length; i++) if (els[i].style.display !== 'none') el = els[i];
+        var el = (bs.live >= 0 && els[bs.live]) ? els[bs.live] : null;
         if (!el) return '对齐 （无显示层）';
         var bb = graph.bbox();
         var ex = bb.minX * cam.k + cam.tx, ey = bb.minY * cam.k + cam.ty;
@@ -1415,6 +1416,8 @@
          关掉：?region=0 或 MG.app.setRegion(false)。 */
       var regionOn = !/(^|[&#?])region=0/.test(flags);
       var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
+      /* 带高旋钮（横带切片烘焙）：&band=<设备像素>；越小单帧越轻、轮越长（A/B 用） */
+      var bandOn = /(^|[&#?])band=(\d+)/.exec(flags);
       /* 世界图面积预算旋钮：&worldpx=0 退回「只看边长」的老口径（A/B 用） */
       var worldPxOn = /(^|[&#?])worldpx=(\d+)/.exec(flags);
       /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
@@ -1427,6 +1430,7 @@
           var m = /(^|[&#])maxside=(\d+)/.exec(String(location.hash || ''));
           return m ? [Number(m[2])] : C.bitmap.tiers;
         })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
+        bandPx: bandOn ? Number(bandOn[2]) : C.bitmap.bandPx,
         region: regionOn,
         marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
         worldPxMax: worldPxOn ? Number(worldPxOn[2]) : C.bitmap.worldPxMax,
@@ -1474,6 +1478,7 @@
       setBitmap: function (v) { if (bitmap) { bitmap.enable(v); bitmap.bakeNow(); } requestDraw(); },
       setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
       setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
+      setBand: function (v) { if (bitmap) bitmap.setBand(v); requestDraw(); },
       get bitmap() { return bitmap ? bitmap.state() : null; },
       rebuild: function () { start(); },
       get graph() { return view.graph; },

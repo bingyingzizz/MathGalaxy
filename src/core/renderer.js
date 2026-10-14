@@ -306,6 +306,23 @@
       return geomList;
     }
 
+    /* 烘焙专用的一格几何缓存。
+       ⭐ 一轮横带切片里**每条带的 (scale, rect, W, H) 完全一样** ⇒ 几何只该建一次；
+       而实时层每帧都按自己的相机重建，会把共用缓存冲掉 ⇒ 单独存一格。
+       判据用 staticCam（= 烘焙相机）的读数，和 buildGeometry 里那套 key 同源。 */
+    var bakeGeom = null, bakeGeomCam = null;
+    function ensureGeomBake() {
+      var c = staticCam;
+      if (bakeGeom && bakeGeomCam && bakeGeomCam.k === c.k && bakeGeomCam.tx === c.tx
+        && bakeGeomCam.ty === c.ty && bakeGeomCam.w === W && bakeGeomCam.h === H) {
+        return bakeGeom;
+      }
+      bakeGeom = buildGeometry();
+      bakeGeomCam = { k: c.k, tx: c.tx, ty: c.ty, w: W, h: H };
+      return bakeGeom;
+    }
+    function geomForBake() { return staticCam ? ensureGeomBake() : ensureGeom(); }
+
     /* 世界 → 屏幕。⚠️ 必须走 camNow()：烘焙时 staticCam 覆盖实时相机
        （直接写 view.cam.toScreen 会让烘出来的内容落在「实时屏幕坐标」上 ⇒ 整体平移）。 */
     function w2s(x, y) { var c = camNow(); return { x: x * c.k + c.tx, y: y * c.k + c.ty }; }
@@ -539,8 +556,16 @@
          · 不做视口裁剪（cullOff）· 不含标签 · 不含 hover 态 · 不含光晕（光晕实时画）
          · 相机走 staticCam ⇒ 线宽/曲率上限/LOD alpha/spineOnly/节点半径全部按 scale 算
            ⇒ 显示时 1:1（m = k/k_bake）⇒ 纯平移下与实时画一致
-       ⛔ 这是引擎入口：不认识任何内容模块，也不写任何文件/网络。 */
-    function drawStatic(target, scale, rect) {
+       ⛔ 这是引擎入口：不认识任何内容模块，也不写任何文件/网络。
+
+       band（可选，{y0, h}）：**只烘这一条横带**（整数设备像素，带与带不重叠）。
+         给了它：不清整张画布（只清这条带），并把绘制硬裁到这条带里，画完复原。
+         ⇒ 若干条的并集**逐像素等于**整张烘出来的图（每像素只画一次，半透明内容不会被叠两次）；
+         ⇒ 屏幕上每次只脏一条带 ⇒ 「整张重新光栅化」那笔钱按带分帧摊掉
+            （实测 k=1.2、3312×2056 的画布：整张 46~58ms/帧 → 1/10 带 ≤1 个时隙）。
+         ⛔ y0 与 y0+h 必须是整数：小数的裁剪边会被抗锯齿，带与带之间就会出现接缝。
+         ⚠️ 清空写在裁剪**里面**：调用方不必管清底，也不会误清掉别的带。 */
+    function drawStatic(target, scale, rect, band) {
       var save = { ctx: ctx, W: W, H: H, dpr: dpr, cam: staticCam, cull: cullOff,
         hover: view.hover, labels: C.showLabels, glow: C.node.glow, glowLiveV: glowLive };
       ctx = target;
@@ -568,13 +593,24 @@
       C.showLabels = false;                 // 标签不进烘焙
       C.node.glow = false;                  // 光晕实时画（实测 ≈0.05ms）
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, W, H);
+      var clipped = false;
+      if (band && band.h > 0) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, band.y0, W, band.h);
+        ctx.clip();
+        ctx.clearRect(0, band.y0, W, band.h);
+        clipped = true;
+      } else {
+        ctx.clearRect(0, 0, W, H);
+      }
       /* ⛔ 单位变换：staticCam 已把世界坐标换算成烘焙画布像素（k=scale、tx=-minX*scale），
          再叠一次 setTransform(scale,…) 会把内容又乘一个 k_bake —— 实测烘出来的线只占画布 48%×48%。 */
       geomCache = null; geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };
       computeLod();
       nameBoxes.length = 0;
-      paintStatic(ensureGeom());
+      paintStatic(geomForBake());
+      if (clipped) ctx.restore();       // ⛔ 必须在切回实时 ctx 之前 restore
 
       ctx = save.ctx; W = save.W; H = save.H; dpr = save.dpr;
       staticCam = save.cam; cullOff = save.cull;
