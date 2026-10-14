@@ -4262,6 +4262,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       fallbackFrames: 0, emerg: 0, reason: '', mode: '-', rounds: 0, bands: 0, bandMs: 0,
       lastBands: 0, roundMs: 0, rushed: 0, realloc: 0 };
     var snap = { ready: false, rect: null, mode: '', scale: 0, k: 0, dpr: 1, rev: 0, key: '' };
+    /* 「这一档根本烘不出来」的签名（模式+像素尺寸+dpr）。
+       ⛔ 有它才能保证**不卡在旧快照上**：烘不出来时必须 ready=false（退回实时画），
+       否则 tick 一直以为「有位图顶着」，屏幕上就是一张盖不住的旧图（周围空白）——
+       用户实测的「先缩小再拖动，周围不渲染」正是这条。
+       签名相同的帧不再白排队重烘（太大会一直太大）。 */
+    var failKey = '';
 
     function now() { return (global.performance || Date).now(); }
     function logRealloc(who, cv, w, h, kx) {
@@ -4276,16 +4282,21 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       wW = Math.max(1, bb.maxX - bb.minX);
       wH = Math.max(1, bb.maxY - bb.minY);
     }
-    /** 世界单图能覆盖的最大 k（边长口径，来自 maxSide 阶梯） */
-    function worldK() { return maxSide() / Math.max(wW, wH); }
-    /** 世界单图真正的上限 = max(边长口径, 面积/边长预算口径)。
-        允许边长略微超过 maxSide，换「k 一越过 0.607 就不必掉进区域模式」。
-        ⚠️ dpr 必须算进去：像素尺寸 = 世界长 × k × min(dpr,2)（忽略它会在高分屏上烘出 2 倍大的图）。 */
+    /** 世界单图能覆盖的最大 k = 「边长 ≤ worldSideMax 且 面积 ≤ worldPxMax」能撑到的那个 k。
+        ⚠️ dpr 必须算进去（像素尺寸 = 世界长 × k × min(dpr,2)）。
+        ⛔ **判据必须和 tooBig() 完全一致** —— 曾经写成 `max(worldK(), min(sideK, areaK))`，
+        而 worldK() 是**没算 dpr 的**边长口径 ⇒ 手机上（dpr≥2）它盖过了预算 ⇒
+        rectFor 说是「世界档」、tooBig 又嫌太大 ⇒ **一张也烘不出来** ⇒ 卡在旧快照上、
+        周围永远不渲染（用户实测：手机「先缩小再拖动」就中招；电脑 dpr=1 所以从不复现）。 */
     function worldKMax(dpr) {
       var d = Math.min(Math.max(1, dpr || 1), 2);
-      var sideK = worldSideMax / (Math.max(wW, wH) * d);
+      var len = Math.max(wW, wH) * d;
+      /* 预算被关掉（`&worldpx=0` / setWorldBudget(0)）= 退回「世界图必须装进 maxSide 阶梯」的老口径 */
+      if (!(worldPxMax > 0)) return (maxSide() / len) * 0.999;
+      var sideK = worldSideMax > 0 ? worldSideMax / len : Infinity;
       var areaK = Math.sqrt(worldPxMax / (wW * wH)) / d;
-      return Math.max(worldK(), Math.min(sideK, areaK));
+      /* ×0.999：留一点余量，免得正好卡在预算边界上被 ceil 顶出去 */
+      return Math.min(sideK, areaK) * 0.999;
     }
 
     function mkEl(gen) {
@@ -4350,8 +4361,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       /* margin 不能把图顶出纹理/内存上限：夹到 maxSide（k=1.44、视口 2530 时每边最多 ~783px）。
          否则会一直 too-big ⇒ snap 永远 not ready ⇒ 每帧排队重烘 + 退回实时画。 */
       var lim = maxSide();
-      var pw = Math.min(lim, Math.ceil((vw * dpr + 2 * marginPx) / 8) * 8);
-      var ph = Math.min(lim, Math.ceil((vh * dpr + 2 * marginPx) / 8) * 8);
+      /* ⚠️ 像素尺寸也必须用 **m = min(dpr,2)**，不能用满 dpr：
+         画布显示时放大倍率 = k*dpr/(k*m) = dpr/m，所以「盖住视口所需像素」= vw*m。
+         用满 dpr 会多出 dpr/m 倍（手机 dpr=3 ⇒ 1.5 倍）⇒ 白白顶到 lim ⇒
+         手机竖屏（1600 CSS 高）算到 5600 被夹成 4096 ⇒ **矩形物理上盖不住 4800 设备像素的视口**
+         ⇒ 每帧同步全烘、永远不「盖住」（用户「周围不渲染」的第二个成因）。 */
+      var pw = Math.min(lim, Math.ceil((vw * m + 2 * marginPx) / 8) * 8);
+      var ph = Math.min(lim, Math.ceil((vh * m + 2 * marginPx) / 8) * 8);
       var gx = k * m;                                  // 一个设备像素 = 多少世界长度
       var halfW = pw / (2 * gx), halfH = ph / (2 * gx);
       var cx = (vw / 2 - tx) / k, cy = (vh / 2 - ty) / k;   // 视口中心的世界坐标
@@ -4409,7 +4425,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (!pick) { stats.skipped++; return; }
       var r = pick.r;
       var s = sizeFor(r, k, dpr, pick.mode);
-      if (tooBig(pick, s)) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
+      if (tooBig(pick, s)) { giveUp(pick, s, dpr, 'too-big'); return; }
+      if (uncoverable(pick, r)) { giveUp(pick, s, dpr, '盖不住'); return; }
+      failKey = '';
       /* ⭐ 就地烘：**复用当前正在显示的那一代画布**，不换显示层。
          每次「换显示层」实测有 80~150ms 的固定开销（与画布大小、画多少内容都无关 ——
          连 646×548 的世界烘也照样挨这一刀），那是拖动里那一根尖峰的大头。
@@ -4483,6 +4501,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (!els[1]) return false;
       var r = pick.r, s = sizeFor(r, k, dpr, pick.mode);
       if (tooBig(pick, s)) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return false; }
+      if (uncoverable(pick, r)) { stats.skipped++; stats.reason = '盖不住 ' + s.w + 'x' + s.h; return false; }
+      failKey = '';
       var target = cur >= 0 ? 1 - cur : 0;
       var cv = els[target];
       if (cv.width !== s.w || cv.height !== s.h) {
@@ -4725,7 +4745,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (!enabled) { hide(); return false; }
       var pick = rectFor(k, cam.tx, cam.ty, dpr, cam.viewW, cam.viewH);
       if (!pick) { hide(); return false; }          // 该档不烘（区域模式未开）⇒ 交实时画，别排队
-      if (!snap.ready) { hide(); scheduleBake(); return false; }
+      if (!snap.ready) {
+        hide();
+        /* ⚠️ 这一档要是根本烘不出来（见 runBake 的 too-big 分支），签名相同的帧就别再排队了：
+           否则每帧一次 setTimeout + rectFor/sizeFor，纯白烧。 */
+        if (bakeSig(pick, sizeFor(pick.r, k, dpr, pick.mode), dpr) !== failKey) scheduleBake();
+        return false;
+      }
 
       /* 先落位（含带轮的目标那一代）：清旧带要用「它**现在**在屏幕上的位置」 */
       applyTransform();
@@ -4814,6 +4840,25 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         ? (Math.max(s.cw, s.ch) > worldSideMax || s.cw * s.ch > worldPxMax)
         : (Math.max(s.w, s.h) > maxSide());
     }
+    /** 「烘不出来」的签名：模式 / 像素尺寸 / dpr —— 只跟判据有关，与相机位置无关
+        （区域模式的尺寸只由视口+余量决定，世界档的尺寸只由 k 决定）。 */
+    function bakeSig(pick, s, dpr) {
+      return pick.mode + '|' + s.w + 'x' + s.h + '|' + Math.min(Math.max(1, dpr | 0), 2);
+    }
+    /** 区域图有没有可能盖住整个视口？被 tier 上限夹过头（极高 dpr / 超长屏 / 超大窗口）就**永不**可能：
+        那种图每帧同步全烘也只是白烧（4096² ≈ 16.8Mpx ≈ 150ms 光栅 × 每帧），退回实时画才对。 */
+    function uncoverable(pick, r) { return pick.mode === 'region' && !rectCoversView(r); }
+    /** 这一步烘不出来 / 烘了也盖不住 ⇒ **退回实时画**，并把签名记下（同签名的帧不再白排队）。
+        ⛔ 千万别只是 return：留着旧快照 = 屏幕上一张盖不住/过期的旧图（周围空白）且永远不自救
+        —— 用户实测的「手机先缩小再拖动，周围不渲染」就是这条。
+        ready=false ⇒ 下一帧 tick 走 hide() + 实时画（正确但慢）；等 k 回到能烘的范围就自动恢复。 */
+    function giveUp(pick, s, dpr, why) {
+      stats.skipped++;
+      stats.reason = why + ' ' + s.w + 'x' + s.h + ' ⇒ 退回实时画';
+      failKey = bakeSig(pick, s, dpr);
+      snap.ready = false;
+      hide();
+    }
 
     function hide() {
       for (var i = 0; i < 2; i++) if (els[i] && els[i].style.display !== 'none') els[i].style.display = 'none';
@@ -4858,6 +4903,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
           lastBands: stats.lastBands, roundMs: stats.roundMs, rushed: stats.rushed, realloc: stats.realloc,
           bandPx: bandPx, inRound: !!round, live: cur, emerg: stats.emerg, 同步日志: slog, 轮日志: rlog,
           speed: Math.round(speed), zoomMs: zoomMs, 距上次出图: Math.round(now() - lastBakeT), 分配日志: rlLog, 掉: Math.round(slackFall),
+          不可能: failKey,
           worldK: +worldKMax(snap.dpr || last.dpr).toFixed(4), maxSide: maxSide(), tier: ti,
           worldPx: worldPxMax, worldSide: worldSideMax,
           covered: snap.ready ? rectCoversView(snap.rect) : false,
@@ -38847,9 +38893,11 @@ MG.trunk = [
         renderer: renderer, graph: graph,
         host: graphEl.parentNode, beforeEl: graphEl,
         tiers: (function () {
-          var m = /(^|[&#])maxside=(\d+)/.exec(String(location.hash || ''));
+          /* ⚠️ 也走 flags（hash + search 两处）—— 只读 hash 时 `?maxside=` 会被静默忽略
+             （实测踩过：以为在测降档，其实 tier 一直是 4096）。 */
+          var m = /(^|[&#?])maxside=(\d+)/.exec(flags);
           return m ? [Number(m[2])] : C.bitmap.tiers;
-        })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
+        })(), settleMs: C.bitmap.settleMs, onSwap: requestDraw,
         bandPx: bandOn ? Number(bandOn[2]) : C.bitmap.bandPx,
         zoomMs: zoomOn ? Number(zoomOn[2]) : C.bitmap.zoomMs,
         region: regionOn,

@@ -1429,9 +1429,11 @@
         renderer: renderer, graph: graph,
         host: graphEl.parentNode, beforeEl: graphEl,
         tiers: (function () {
-          var m = /(^|[&#])maxside=(\d+)/.exec(String(location.hash || ''));
+          /* ⚠️ 也走 flags（hash + search 两处）—— 只读 hash 时 `?maxside=` 会被静默忽略
+             （实测踩过：以为在测降档，其实 tier 一直是 4096）。 */
+          var m = /(^|[&#?])maxside=(\d+)/.exec(flags);
           return m ? [Number(m[2])] : C.bitmap.tiers;
-        })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
+        })(), settleMs: C.bitmap.settleMs, onSwap: requestDraw,
         bandPx: bandOn ? Number(bandOn[2]) : C.bitmap.bandPx,
         zoomMs: zoomOn ? Number(zoomOn[2]) : C.bitmap.zoomMs,
         region: regionOn,
