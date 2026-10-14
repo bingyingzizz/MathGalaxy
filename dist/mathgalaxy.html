@@ -964,6 +964,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
          建不出来会自动降档，最小档还不行就彻底关掉位图（回到实时画）。 */
       maxSide: 4096,
       tiers: [4096, 3600, 2048],
+      /* 世界单图的**面积预算**（设备像素）：允许边长略超 maxSide，换「k 刚越过 0.607 那一段
+         仍走世界模式」。那段正是最差档 k≈0.62 —— 走区域模式时拖动中每 ~0.4 秒重烘一次、
+         每次一根 145ms 的尖峰（实测 11~14 次 / 6s）；世界图一次烘完，**平移期零重烘**。
+         16e6 ⇒ k=0.62 时世界图 4186×3551 ≈ 59MB，一次世界烘 ≈ 2.2 倍区域烘，
+         但它只发生在停手（settle）之后，不落在拖动里。0 = 退回「只看边长」的老口径。 */
+      worldPxMax: 16e6,
+      worldSideMax: 6144,
       /* Phase B：k 超过 maxSide/世界长 时改烘「视口 ⊕ 余量」，每边余量（设备像素）。
          余量要 > 一次烘焙期间的拖动位移（14 帧 × 速度 ≈ 120~350px）+ 安全量。 */
       marginPx: 400,
@@ -4083,6 +4090,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     var ti = 0;
     var settleMs = opt.settleMs == null ? 180 : opt.settleMs;
     var marginPx = opt.marginPx == null ? 400 : opt.marginPx;   // 区域模式的余量（设备像素/边）
+    /* 世界单图的**面积预算**（设备像素）。用途：让「边长刚好越过 maxSide」的那一小段 k
+       仍然走世界模式 —— 最差档 k≈0.62 正好落在里面。那段走区域模式时，拖动中每 ~0.4 秒
+       就得重烘一次，每次都是一根 145ms 的尖峰（实测 11~14 次 / 6s，用户能感觉到掉帧）；
+       世界图一次烘完，**平移期零重烘**。实测一次世界烘 ≈ 2.2 倍区域烘，且只在停手后发生。 */
+    var worldPxMax = opt.worldPxMax == null ? 16e6 : opt.worldPxMax;
+    var worldSideMax = opt.worldSideMax == null ? 6144 : opt.worldSideMax;
     var enabled = opt.enabled !== false;
     /* Phase B 区域模式开关。⚠️ 默认关：区域路径**尚未通过复验**（探针超时），
        不验证不上线；关掉时 k > 世界单图上限仍走实时画（= Phase A 的已验证行为）。
@@ -4108,8 +4121,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       wW = Math.max(1, bb.maxX - bb.minX);
       wH = Math.max(1, bb.maxY - bb.minY);
     }
-    /** 世界单图能覆盖的最大 k */
+    /** 世界单图能覆盖的最大 k（边长口径，来自 maxSide 阶梯） */
     function worldK() { return maxSide() / Math.max(wW, wH); }
+    /** 世界单图真正的上限 = max(边长口径, 面积/边长预算口径)。
+        允许边长略微超过 maxSide，换「k 一越过 0.607 就不必掉进区域模式」。
+        ⚠️ dpr 必须算进去：像素尺寸 = 世界长 × k × min(dpr,2)（忽略它会在高分屏上烘出 2 倍大的图）。 */
+    function worldKMax(dpr) {
+      var d = Math.min(Math.max(1, dpr || 1), 2);
+      var sideK = worldSideMax / (Math.max(wW, wH) * d);
+      var areaK = Math.sqrt(worldPxMax / (wW * wH)) / d;
+      return Math.max(worldK(), Math.min(sideK, areaK));
+    }
 
     function mkEl() {
       var cv = global.document.createElement('canvas');
@@ -4129,7 +4151,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /** 该用哪个矩形：装得下就整个世界；装不下就「视口 ⊕ 余量」 */
     function rectFor(k, tx, ty, dpr, vw, vh) {
       if (!(k > 0)) return null;
-      if (k <= worldK() * 1.0001) return { r: world, mode: 'world' };
+      if (k <= worldKMax(dpr) * 1.0001) return { r: world, mode: 'world' };
       if (!regionOn) return null;      // Phase B 未开启：高倍率不烘（交实时画）
       /* ⚠️ **先把像素尺寸定死**（吸附到 8 设备像素的格），再换算成世界矩形。
          否则矩形宽度每烘一次都会因 ceil 抖动 1px ⇒ 画布 backing store 反复重新分配
@@ -4156,7 +4178,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         世界模式只需 k 还在世界单图能覆盖的范围内。 */
     function adequate(k) {
       if (!snap.ready) return false;
-      if (snap.mode === 'world') return k <= worldK() * 1.0001;
+      if (snap.mode === 'world') return k <= worldKMax(snap.dpr) * 1.0001;
       return coversView();
     }
     /** 视口是否完全落在快照矩形里（三行矩形包含测试，不是 v1–v5 那种「覆盖判定」） */
@@ -4182,7 +4204,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (!pick) { stats.skipped++; return; }
       var r = pick.r;
       var s = sizeFor(r, k, dpr);
-      if (Math.max(s.w, s.h) > maxSide()) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
+      var big = pick.mode === 'world'
+        ? (Math.max(s.w, s.h) > worldSideMax || s.w * s.h > worldPxMax)
+        : (Math.max(s.w, s.h) > maxSide());
+      if (big) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
       var idx = cur === 0 ? 1 : 0;
       var cv = els[idx];
       if (cv.width !== s.w || cv.height !== s.h) { cv.width = s.w; cv.height = s.h; }
@@ -4297,6 +4322,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       setRegion: function (v) { regionOn = !!v; snap.ready = false; scheduleBake(); },
       /* 余量旋钮（调参用）：改完下一次重烘生效 */
       setMargin: function (v) { marginPx = Math.max(0, Number(v) || 0); snap.ready = false; scheduleBake(); },
+      /* 世界图面积预算旋钮（调参/A-B 用）。传 0 或不传 = 退回「只看边长」的老口径 */
+      setWorldBudget: function (px, side) {
+        worldPxMax = px == null ? 0 : Math.max(0, Number(px) || 0);
+        worldSideMax = side == null ? 0 : Math.max(0, Number(side) || 0);
+        snap.ready = false; scheduleBake();
+      },
       get margin() { return marginPx; },
       get region() { return regionOn; },
       get enabled() { return enabled; },
@@ -4308,7 +4339,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
           lastMs: stats.lastMs, peakMs: stats.peakMs, swaps: stats.swaps, skipped: stats.skipped,
           fallbackFrames: stats.fallbackFrames,
           reason: stats.reason,
-          worldK: +worldK().toFixed(4), maxSide: maxSide(), tier: ti,
+          worldK: +worldKMax(snap.dpr || last.dpr).toFixed(4), maxSide: maxSide(), tier: ti,
+          worldPx: worldPxMax, worldSide: worldSideMax,
           covered: snap.ready ? coversView() : false,
           size: snap.ready ? Math.round((snap.rect.maxX - snap.rect.minX) * snap.scale) + 'x'
             + Math.round((snap.rect.maxY - snap.rect.minY) * snap.scale) : '-'
@@ -38281,6 +38313,8 @@ MG.trunk = [
          关掉：?region=0 或 MG.app.setRegion(false)。 */
       var regionOn = !/(^|[&#?])region=0/.test(flags);
       var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
+      /* 世界图面积预算旋钮：&worldpx=0 退回「只看边长」的老口径（A/B 用） */
+      var worldPxOn = /(^|[&#?])worldpx=(\d+)/.exec(flags);
       /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
          避免静默降质。要看廉价版（只画外环）：?hover=ring */
       var hoverFullOn = !/(^|[&#?])hover=ring/.test(flags);
@@ -38293,6 +38327,8 @@ MG.trunk = [
         })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
         region: regionOn,
         marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
+        worldPxMax: worldPxOn ? Number(worldPxOn[2]) : C.bitmap.worldPxMax,
+        worldSideMax: C.bitmap.worldSideMax,
         enabled: C.bitmap.enabled !== false && bmpOn
       });
       bitmap.attach();

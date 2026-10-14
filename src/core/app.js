@@ -1415,6 +1415,8 @@
          关掉：?region=0 或 MG.app.setRegion(false)。 */
       var regionOn = !/(^|[&#?])region=0/.test(flags);
       var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
+      /* 世界图面积预算旋钮：&worldpx=0 退回「只看边长」的老口径（A/B 用） */
+      var worldPxOn = /(^|[&#?])worldpx=(\d+)/.exec(flags);
       /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
          避免静默降质。要看廉价版（只画外环）：?hover=ring */
       var hoverFullOn = !/(^|[&#?])hover=ring/.test(flags);
@@ -1427,6 +1429,8 @@
         })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
         region: regionOn,
         marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
+        worldPxMax: worldPxOn ? Number(worldPxOn[2]) : C.bitmap.worldPxMax,
+        worldSideMax: C.bitmap.worldSideMax,
         enabled: C.bitmap.enabled !== false && bmpOn
       });
       bitmap.attach();
