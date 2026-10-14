@@ -818,9 +818,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       pad: 44,                    // 边界离最远那个点再外扩多少（世界单位）
       samples: 24,                // 绕一圈取多少个方向
       smooth: 3,                  // 半径序列平滑几遍（消掉尖角）
-      fillAlpha: 0.052,           // 中心浓度（渐变，平均值比它低）
+      fillAlpha: 0.16,            // 中心浓度（渐变，平均值比它低）
       gradSpan: 0.90,             // 渐变半径 / 最远采样半径 —— <1 保证各方向都化到 0
-      strokeAlpha: 0,             // 0 = 不描边（要淡轮廓线时调到 0.05~0.10）
+      strokeAlpha: 0.06,          // 淡轮廓线（0 = 不描边；0.05~0.10 之间比较合适）
       width: 1.3
     },
 
