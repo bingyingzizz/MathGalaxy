@@ -56,6 +56,17 @@ export function loadEngine() {
     { filename: 'src/core/util.js' }
   );
 
+  /* 别名与问题钩子也装上。为什么必须进页面：
+     `label` 是标准叫法，而**人和 AI 搜的是别的词** —— 英文名、老名字、缩写，
+     以及「控制收敛要什么条件」这种大白话问法。这两类数据原本只服务站内搜索和
+     dist/alias/*.md（给 AI），概念页里一个字都没有 ⇒ 搜索引擎无从命中。
+     ⚠️ `aka` 是纯文本（不能含 `$`），当文本转义即可。 */
+  vm.runInContext(
+    fs.readFileSync(path.join(ROOT, 'src', 'data', 'aliases.js'), 'utf8'),
+    ctx,
+    { filename: 'src/data/aliases.js' }
+  );
+
   const U = win.MG.util;
   if (!U || typeof U.md !== 'function' || typeof U.titleHtml !== 'function') {
     throw new Error('util.js 没导出 MG.util.md / titleHtml');
@@ -74,7 +85,7 @@ export function loadEngine() {
     catch (e) { mathErrors.push({ mode: 'block', tex, msg: String(e.message).slice(0, 160) }); return '<div class="math-block">' + esc(tex) + '</div>'; }
   };
 
-  return { U, katex, mathErrors };
+  return { U, katex, mathErrors, aliases: win.MG.aliases };
 }
 
 /* -------------------------------------------------------------- 文本工具 */
@@ -416,6 +427,31 @@ function nodePage(node, rel, ctx) {
       '</ul></section>'
     : '';
 
+  /* 问题钩子：把**人真正会敲进搜索框的那句话**写进页面。
+     一条问法往往指向好几个节点，所以每个被指向的节点都列它，并把同问法下的
+     其它节点链出去。这是「搜钩子能搜到」的唯一办法 —— 只放在 aliases.js 里，
+     搜索引擎一个字也看不见。 */
+  const myHooks = ctx.hooksOf.get(node.id) || [];
+  const hooksHtml = myHooks.length
+    ? '<section class="rel-sec hook-sec"><h2>常见问法 <span class="n">' + myHooks.length +
+      ' 条</span></h2><ul class="hooks">' +
+      myHooks.map((h) => {
+        const others = (h.to || []).filter((x) => x !== node.id && byId.has(x));
+        const links = others.map((x) =>
+          '<a href="' + nodeHref(x) + '">' + esc(byId.get(x).label) + '</a>').join('、');
+        return '<li><span class="q">' + esc(h.q) + '</span>' +
+          (links ? '<span class="also">也看 ' + links + '</span>' : '') + '</li>';
+      }).join('') + '</ul></section>'
+    : '';
+
+  /* 别名：`label` 是标准叫法，人和 AI 搜的是别的词（英文名 / 老名字 / 缩写）。
+     写进页面是**术语表式的正常做法**，不是塞关键词 —— 每个词都真的是它的名字。 */
+  const aka = ctx.akaOf.get(node.id) || [];
+  const akaHtml = aka.length
+    ? '<p class="aka"><span class="aka-k">又称</span>' +
+      aka.map((x) => esc(x)).join('<span class="aka-s">·</span>') + '</p>'
+    : '';
+
   const regionColor = region ? region.color : '#4f7cf5';
 
   /* ⚠️ 页脚**不留构建日期**：meta.generated 每次构建都会变，写进去就意味着
@@ -457,6 +493,7 @@ function nodePage(node, rel, ctx) {
     <p class="idline"><code>${esc(node.id)}</code>${
       node.tags && node.tags.length ? ' · ' + node.tags.map((t) => esc(t)).join(' · ') : ''
     }</p>
+    ${akaHtml}
   </header>
 
   <section class="sec statement">
@@ -470,6 +507,8 @@ function nodePage(node, rel, ctx) {
   ${inHtml}
 
   ${refsHtml}
+
+  ${hooksHtml}
 
   ${sibHtml}
 
@@ -642,6 +681,121 @@ ${blocks.join('\n\n')}
 `;
 }
 
+/* ------------------------------------------------------------- 常见问法页 */
+
+/**
+ * 把全部问题钩子集中到一页。
+ * `q` 是**人真正会敲进搜索框的那句话**（「控制收敛要什么条件」），不是术语 ——
+ * 对搜索引擎来说这是最自然的长尾入口，对人也是一张「不知道该搜什么」时的地图。
+ */
+function questionsPage(ctx) {
+  const { graph, origin, byId } = ctx;
+  const all = (ctx.aliases && ctx.aliases.hooks) || [];
+  const usable = all.filter((h) => (h.to || []).some((id) => byId.has(id)));
+
+  const items = usable.map((h) => {
+    const tos = (h.to || []).filter((id) => byId.has(id));
+    const links = tos.map((id) =>
+      '<a href="nodes/' + encodeURIComponent(id) + '.html">' + esc(byId.get(id).label) + '</a>').join('、');
+    return '  <li><p class="q">' + esc(h.q) + '</p><p class="to">' + links + '</p></li>';
+  }).join('\n');
+
+  const url = origin + '/mathgalaxy/questions.html';
+  const description = clip(
+    `数学星图的 ${usable.length} 条常见问法：每条问法列出该看哪几个概念。` +
+    '「什么时候积分和极限能换顺序」「控制收敛要什么条件」「布尔环和 Stone 空间什么关系」。', 150);
+
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        name: '数学星图 · 常见问法',
+        url,
+        inLanguage: 'zh-CN',
+        description,
+        mainEntity: usable.slice(0, 200).map((h) => ({
+          '@type': 'Question',
+          name: h.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: '见：' + (h.to || []).filter((id) => byId.has(id))
+              .map((id) => byId.get(id).label + '（' + origin + '/mathgalaxy/nodes/' +
+                encodeURIComponent(id) + '.html）').join('；'),
+          },
+        })),
+      },
+      {
+        '@type': 'CollectionPage',
+        name: '数学星图 · 常见问法',
+        url,
+        inLanguage: 'zh-CN',
+        isPartOf: { '@type': 'WebSite', name: '数学星图 MathGalaxy', url: origin + '/mathgalaxy/' },
+      },
+    ],
+  };
+
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>常见问法索引 · 数学星图 MathGalaxy</title>
+<meta name="description" content="${esc(description)}">
+<link rel="canonical" href="${esc(url)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="数学星图 MathGalaxy">
+<meta property="og:title" content="常见问法索引 · 数学星图 MathGalaxy">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${esc(url)}">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">${JSON.stringify(ld)}</script>
+<link rel="stylesheet" href="../assets/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/node.css">
+</head>
+<body class="all-page">
+
+<nav class="crumb" aria-label="面包屑">
+  <a href="./">数学星图</a><span class="sep">›</span>
+  <a href="all.html">全部概念</a><span class="sep">›</span>
+  <span aria-current="page">常见问法</span>
+</nav>
+
+<main class="wrap">
+
+<header class="np-head">
+  <h1>常见问法</h1>
+  <p class="full">${usable.length} 条真实问法 → 该看哪几个概念</p>
+  <p class="lead">这些是<strong>搜的时候真正会敲进去的字</strong>，不是术语。每条列出该看的概念页。</p>
+</header>
+
+<ul class="qlist">
+${items}
+</ul>
+
+<section class="sec jump">
+  <h2>继续</h2>
+  <p>
+    <a href="all.html">全部概念索引</a>　·　
+    <a href="./">打开星图</a>　·　
+    <a href="read.html">读图指南与记号表</a>
+  </p>
+</section>
+
+</main>
+
+<footer class="np-foot">
+  <p>数学星图 MathGalaxy · 内容 ${esc(ctx.version)} · 更新 ${esc(ctx.updated)}</p>
+  <p>引用请标注节点 id 与内容版本 · 条款见 <a href="LICENSE.txt">LICENSE</a></p>
+</footer>
+
+</body>
+</html>
+`;
+}
+
 /* ------------------------------------------------------------------ 主入口 */
 
 /**
@@ -649,7 +803,7 @@ ${blocks.join('\n\n')}
  * @returns {{ pages: {rel:string, html:string}[], stats: object, mathErrors: object[] }}
  */
 export function buildSitePages(graph, { origin, user }) {
-  const { U, mathErrors } = loadEngine();
+  const { U, mathErrors, aliases } = loadEngine();
 
   const regions = new Map(graph.regions.map((r) => [r.id, r]));
   const clusters = new Map(graph.clusters.map((c) => [c.id, c]));
@@ -665,8 +819,27 @@ export function buildSitePages(graph, { origin, user }) {
     list.sort((a, b) => (a.layer - b.layer) || a.id.localeCompare(b.id));
   }
 
+  // 别名：id → [别名…]
+  const akaOf = new Map();
+  for (const a of (aliases && aliases.nodes) || []) {
+    if (a && a.id && Array.isArray(a.aka) && a.aka.length) akaOf.set(a.id, a.aka);
+  }
+
+  // 问题钩子：id → [该看它的问法…]。一条问法通常同时指向好几个节点，所以每个被指向的
+  // 节点页都会列出它，并把同一问法下的**其它**节点链出去（天然的内链 + 真实搜索词）。
+  // ⚠️ 引用不存在的 id 直接跳过 —— 宁可少一条，也不要把死链写进 706 个页面里。
+  const hooksOf = new Map();
+  let hookDangling = 0;
+  for (const h of (aliases && aliases.hooks) || []) {
+    for (const id of (h.to || [])) {
+      if (!byId.has(id)) { hookDangling++; continue; }
+      if (!hooksOf.has(id)) hooksOf.set(id, []);
+      hooksOf.get(id).push(h);
+    }
+  }
+
   const ctx = {
-    U, regions, clusters, byId, graph, origin, user, clusterMembers,
+    U, regions, clusters, byId, graph, origin, user, clusterMembers, akaOf, hooksOf, aliases,
     version: graph.meta.version,
     updated: String(graph.meta.generated).slice(0, 10),
     nodeCount: graph.nodes.length,
@@ -692,6 +865,10 @@ export function buildSitePages(graph, { origin, user }) {
   const all = allPage(ctx);
   pages.push({ rel: 'all.html', html: all });
   bytes += Buffer.byteLength(all, 'utf8');
+
+  const questions = questionsPage(ctx);
+  pages.push({ rel: 'questions.html', html: questions });
+  bytes += Buffer.byteLength(questions, 'utf8');
 
   // 孤立点：既没有入边也没有出边的节点（内链网里的死胡同）
   const orphan = graph.nodes.filter((n) => {

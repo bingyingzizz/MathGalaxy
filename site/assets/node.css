@@ -140,6 +140,35 @@
 
 .jump p{font-size:14.5px;line-height:2.2;color:var(--soft)}
 
+/* 别名：`label` 是标准叫法，人搜的是别的词。写进页面是术语表式的正常做法，
+   ⛔ 不是塞关键词 —— 每个词都真的是它的名字。 */
+.aka{margin:12px 0 0;font-size:13.5px;color:var(--soft);line-height:1.95}
+.aka-k{
+  display:inline-block;margin-right:7px;padding:1px 7px;border-radius:5px;
+  background:var(--code-bg);color:var(--faint);font-size:11.5px;letter-spacing:.04em;
+}
+.aka-s{margin:0 6px;color:var(--faint);opacity:.55}
+
+/* 常见问法：人真正会敲进搜索框的那句话（不是术语） */
+.hook-sec .hooks{list-style:none;margin:0;padding:0}
+.hook-sec .hooks>li{
+  padding:11px 14px;border:1px solid var(--line);border-radius:11px;margin-bottom:8px;
+  border-left:3px solid var(--rc,#4f7cf5);
+}
+.hook-sec .q{margin:0;font-size:15px;line-height:1.65;color:var(--ink)}
+.hook-sec .q::before{content:'「';color:var(--faint)}
+.hook-sec .q::after{content:'」';color:var(--faint)}
+.hook-sec .also{display:block;margin-top:5px;font-size:13.5px;color:var(--soft)}
+.hook-sec .also a{font-weight:500}
+
+/* 常见问法总索引页 */
+.qlist{list-style:none;margin:0;padding:0}
+.qlist>li{padding:13px 0;border-bottom:1px solid var(--line)}
+.qlist>li:last-child{border-bottom:0}
+.qlist .q{margin:0 0 5px;font-size:16px;line-height:1.6;color:var(--ink);font-weight:550}
+.qlist .q::before{content:'「';color:var(--faint);font-weight:400}
+.qlist .q::after{content:'」';color:var(--faint);font-weight:400}
+.qlist .to{margin:0;font-size:14.5px;color:var(--soft);line-height:1.8}
 /* 同星团的其他概念：补齐内链（图里 52% 的节点出边为 0），也给读者一条接着读的路 */
 .sibs{list-style:none;margin:0;padding:0;display:grid;gap:2px 18px;
   grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}

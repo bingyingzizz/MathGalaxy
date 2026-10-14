@@ -352,7 +352,8 @@ const smEntries = [
   { loc: `${SITE_ORIGIN}/`, pri: '1.0' },
   { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8' },
   { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0' },
-  { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9' },   // 全部概念的入口，爬虫从这儿进
+  { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9' },        // 全部概念的入口，爬虫从这儿进
+  { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8' },  // 184 条真实问法，长尾入口
   ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md', 'LICENSE.txt']
     .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.4' })),
   // 概念页：一个概念一页，这才是能被「搜概念名」命中的东西
