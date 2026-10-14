@@ -507,20 +507,50 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   padding-left: 10px; margin-top: 12px;
 }
 
-/* ---------- 底部提示 ---------- */
+/* ---------- 底部：页面标题 + 说明 + 操作提示 ---------- */
+/* ⚠️ 这一块是 /mathgalaxy/ 里**唯一一块静态可读内容**（单文件应用的正文全在
+   JS 字符串里），承担着页面 h1 与说明的职责，搜索引擎抓的就是它。
+   ⛔ 不许加自动淡出（app.js 里原本 9 秒 hideHint，已删）；
+   ⛔ 不许在小屏 display:none（下面媒体查询原本这么干，已改成缩小）；
+   ⛔ 不许用 opacity / visibility / height:0 藏它 —— 那就是「隐藏文本」。 */
 #hint {
   left: 50%;
   bottom: 14px;
   transform: translateX(-50%);
-  padding: 6px 14px;
+  padding: 9px 18px 10px;
   font-size: 12px;
   color: var(--ink-faint);
-  border-radius: 20px;
+  border-radius: 14px;
+  /* 整条不吃鼠标事件，星图在它上面照样能拖 —— 但里面的链接单独放行 */
   pointer-events: none;
-  transition: opacity .5s ease;
-  white-space: nowrap;
+  max-width: min(780px, calc(100vw - 28px));
+  text-align: center;
 }
-#hint.fade { opacity: 0; }
+#hint h1 {
+  font-size: 13.5px;
+  font-weight: 650;
+  letter-spacing: 0;
+  margin: 0 0 3px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+#hint .hint-lead {
+  margin: 0 0 4px;
+  color: var(--ink-soft);
+  line-height: 1.62;
+}
+#hint .hint-keys {
+  margin: 0;
+  line-height: 1.62;
+}
+#hint a {
+  color: var(--ink-soft);
+  pointer-events: auto;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 2px;
+}
+#hint a:hover { color: var(--ink); text-decoration-color: currentColor; }
 
 /* ---------- 小屏适配 ---------- */
 @media (max-width: 820px) {
@@ -551,7 +581,11 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
     max-height: 52vh;
     z-index: 11;              /* 压在详情面板（底部抽屉）之上，随时够得着 */
   }
-  #hint { display: none; }
+  /* ⛔ 这里原来是 `#hint { display: none; }` —— 但 #hint 现在承担着页面标题与
+     说明，小屏把它藏掉等于「对一半读者和爬虫隐藏内容」。改成缩小排版。 */
+  #hint { bottom: 10px; padding: 7px 12px 8px; font-size: 11px; max-width: calc(100vw - 20px); }
+  #hint h1 { font-size: 12.5px; }
+  #hint .hint-lead { line-height: 1.55; }
 }
 
 /* 给读屏用的播报区：视觉上不占位，读屏能读到（搜索结果数量） */

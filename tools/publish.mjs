@@ -37,6 +37,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { renderDoc, esc } from './md.mjs';
+import { buildSitePages } from './sitepages.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -299,15 +300,40 @@ fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
 }, 'site/read.html'));
 console.log(`   阅读页：${DOCS.map((d) => d.file).join(' · ')} → read.html`);
 
+/* ------------------------------- 概念页：每个节点一份**真 HTML**（给搜索引擎） */
+// 为什么要这一步：
+//   nodes/<id>.md 由 GitHub Pages 以 `Content-Type: text/markdown` 提供，
+//   搜索引擎抓取后判定「这不是网页」，**整站 706 个概念页一个都进不了索引**
+//   （实测 site: 查询只返回 3 个 URL：/、/read.html、和意外被抓的 graph.md）。
+//   所以每个概念再出一份 HTML —— 标题是概念名、正文是陈述与证明、公式在构建期
+//   就渲染成静态 MathML，页面互链成网。
+// ⚠️ .md 一个都不动：它们是给 AI 的按需检索产物，llms.txt 那条协议照旧。
+const graph = JSON.parse(fs.readFileSync(path.join(DIST, 'graph.json'), 'utf8'));
+const { pages: conceptPages, stats: pageStats, mathErrors } = buildSitePages(graph, {
+  origin: SITE_ORIGIN, user: USER,
+});
+// 公式渲染失败一律硬失败：静默降级会在页面上留一串裸 LaTeX
+if (mathErrors.length) {
+  console.error(`✗ 概念页有 ${mathErrors.length} 处公式渲染失败：`);
+  for (const e of mathErrors.slice(0, 8)) console.error(`   ${e.mode} | ${e.msg} | ${e.tex.slice(0, 80)}`);
+  process.exit(1);
+}
+for (const p of conceptPages) {
+  const f = path.join(STAGE, 'mathgalaxy', p.rel);
+  fs.mkdirSync(path.dirname(f), { recursive: true });
+  fs.writeFileSync(f, p.html, 'utf8');
+}
+console.log(`   概念页：${pageStats.nodes} 个概念 → ${pageStats.total} 个 HTML` +
+  `（平均 ${(pageStats.avgBytes / 1024).toFixed(0)} KB，概念间内链平均 ` +
+  `${(graph.edges.length * 2 / pageStats.nodes).toFixed(1)} 条/页）`);
+if (pageStats.orphan) console.log(`   ⚠️ 无出入边的孤立概念 ${pageStats.orphan} 个：${pageStats.orphanSample.join(' ')}`);
+
 /* -------------------- 站点根：给爬虫与 AI agent 的入口文件 -------------------- */
 // 三个文件的分工：
 //   robots.txt   约定俗成，爬虫从这里知道「随便抓」，并找到 sitemap
-//   sitemap.xml  列全部页面（HTML 入口 + 每个概念的 .md），清单**从实际产出的文件生成**
+//   sitemap.xml  列**能被搜索引擎索引的 HTML 页**：入口 + 706 个概念页 + all.html
 //   llms.txt     给 AI agent 的固定入口（约定放在域名根）：先读哪几份、怎么引用
 // ⚠️ 手写清单迟早和站点对不上 —— 一律现算。
-// ⚠️ 节点页里那几行 `proofs/…` `notes/…` 是**纯文本路径、不是链接** ⇒ 爬虫跟不过去，
-// 只能靠 sitemap 把它们列全。所以这里把四个内容目录都收进来（实测约 3600 条 URL / 540 KB，
-// 离 sitemap 上限 50 MB / 5 万条还差得远）。
 const contentDirs = ['nodes', 'index', 'proofs', 'notes'];
 const contentMd = [];
 for (const d of contentDirs) {
@@ -317,13 +343,22 @@ for (const d of contentDirs) {
     contentMd.push(`${d}/${f}`);
   }
 }
+/* ⚠️ .md **不再进 sitemap**（2026-10-14 改）。
+   搜索引擎不索引 `text/markdown`：列进去只是让 Google 抓完堆进
+   「已抓取，尚未编入索引」，白耗抓取预算（实测整站 .md 一条都没被索引）。
+   文件本身一个都没动，AI 走根 llms.txt 那条协议照旧能找到 —— 那条协议本来
+   就不是给搜索引擎看的。 */
 const smEntries = [
   { loc: `${SITE_ORIGIN}/`, pri: '1.0' },
   { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8' },
   { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0' },
+  { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9' },   // 全部概念的入口，爬虫从这儿进
   ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md', 'LICENSE.txt']
-    .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.6' })),
-  ...contentMd.map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: f.startsWith('nodes/') ? '0.5' : '0.4' })),
+    .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.4' })),
+  // 概念页：一个概念一页，这才是能被「搜概念名」命中的东西
+  ...conceptPages.filter((p) => p.rel.startsWith('nodes/')).map((p) => ({
+    loc: `${SITE_ORIGIN}/mathgalaxy/${p.rel}`, pri: '0.7',
+  })),
 ];
 fs.writeFileSync(path.join(STAGE, 'sitemap.xml'),
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -346,6 +381,7 @@ const rootLlms = `# ${USER}.github.io
 - \`/mathgalaxy/llms.txt\`    星图的检索协议 —— **先读这一份**，它说清了每种产物怎么用
 - \`/mathgalaxy/index.md\`    索引：星系、星团、节点 id 一览
 - \`/mathgalaxy/nodes/<id>.md\`  一个概念一个文件，绝大多数 ≤ 1300 B，可以整份读进来
+- \`/mathgalaxy/nodes/<id>.html\` 同一个概念的完整单页版（公式是 MathML、不分页，但大得多）
 - \`/read.html\`              给人读的：读图指南 / 记号对照表 / 内容准则 / 枢纽定理榜
 
 ## 程序化使用

@@ -3,22 +3,24 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-<title>数学星图 · Math Galaxy</title>
-<meta name="description" content="可交互的数学知识星图：定理 / 定义 / 引理 按数学板块聚簇，箭头表示推出，黑线表示等价，蓝线表示定义引用。" />
+<title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。" />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="数学星图 · MathGalaxy" />
-<meta property="og:title" content="数学星图 · Math Galaxy" />
-<meta property="og:description" content="可交互的数学知识星图：定理 / 定义 / 引理 按数学板块聚簇，箭头表示推出，黑线表示等价，蓝线表示定义引用。" />
+<meta property="og:site_name" content="数学星图 MathGalaxy" />
+<meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。" />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <meta name="twitter:card" content="summary" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"数学星图 · MathGalaxy",
- "url":"https://bingyingzizz.github.io/mathgalaxy/","applicationCategory":"EducationalApplication",
- "inLanguage":"zh-CN","isAccessibleForFree":true,"license":"https://bingyingzizz.github.io/mathgalaxy/LICENSE.txt",
- "description":"可交互的数学知识星图：数学概念按星系 / 星团 / 恒星三层组织，边表示推出、等价与定义引用。"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"数学星图 MathGalaxy",
+ "alternateName":"MathGalaxy","url":"https://bingyingzizz.github.io/mathgalaxy/",
+ "applicationCategory":"EducationalApplication","inLanguage":"zh-CN","isAccessibleForFree":true,
+ "license":"https://bingyingzizz.github.io/mathgalaxy/LICENSE.txt",
+ "sameAs":"https://github.com/bingyingzizz/MathGalaxy",
+ "description":"数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图；每个概念都有独立页面可以单独检索。"}
 </script>
 <link rel="stylesheet" href="src/ui/styles.css" />
 <!-- KaTeX：数学排版。CSS 与 JS 都放 src/ui/，字体在 src/ui/fonts/（与 CSS 同目录，file:// 也能加载） -->
@@ -95,8 +97,20 @@ window.addEventListener('error', function (e) {
   <div id="panel-body"></div>
 </aside>
 
-<!-- ===== 底部提示 ===== -->
-<div id="hint" class="floating">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走</div>
+<!-- ===== 底部：页面标题 + 这是什么 + 操作提示 =====
+     ⚠️ 这一块**必须保持可见**（不能 display:none，也不能靠 sr-only 藏起来）：
+        /mathgalaxy/ 是 2.6 MB 的单文件应用，正文全在 JS 字符串里，渲染完页面上
+        只有 97 个字符的可见文本 —— 搜索引擎读不到任何内容，整页等于空壳，
+        所以这个 URL 至今没被任何搜索引擎收录（实测 site: 查不到）。
+        这里是页面上唯一的静态可读内容，也是通往 706 个概念页与阅读页的入口。
+        h1 用 CSS 压成正文大小，但语义上仍是这一页的主标题。 -->
+<div id="hint" class="floating">
+  <h1>数学星图 MathGalaxy</h1>
+  <p class="hint-lead">把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」
+  三层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。</p>
+  <p class="hint-keys">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走
+  ｜ <a href="all.html">全部概念索引</a> · <a href="read.html">读图指南</a> · <a href="llms.txt">检索协议</a></p>
+</div>
 
 <!-- =========================================================================
      底层引擎（与内容无关，一般不需要改）

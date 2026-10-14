@@ -834,13 +834,14 @@
     });
 
     /* ------------------------------------------------------------ 提示 */
-    var hintTimer = null, hintGone = false;
-    function hideHint() { if (!hintGone) { hintGone = true; hintEl.classList.add('fade'); } }
-    function hideHintSoon() {
-      if (hintTimer || hintGone) return;
-      hintTimer = setTimeout(hideHint, 9000);
-    }
-    hideHintSoon();
+    /* ⚠️ 这里**故意不自动淡出**（原来 9 秒后加 .fade ⇒ opacity: 0）。
+       #hint 现在同时承担这一页的标题与说明：h1 + 一段介绍 + 通往概念索引 /
+       阅读页的链接。它是 /mathgalaxy/ 这个 2.6 MB 单文件应用里**唯一一块静态
+       可读内容** —— 搜索引擎能抓到的就是它（渲染完可见文本原本只有 97 个字符，
+       整个 URL 因此一直没被收录）。自动淡出 = 对爬虫隐藏内容，会被判成
+       「隐藏文本」；何况这一页本来就没有别的可读文本可以替代。
+       ⛔ 不要再恢复定时淡出（样式里小屏那句 display:none 也一起拿掉了）。 */
+    if (hintEl) hintEl.classList.remove('fade');
 
     /* ------------------------------------------------------ 视图状态进 hash */
     /*
