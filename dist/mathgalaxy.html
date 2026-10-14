@@ -4233,6 +4233,14 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (!pick) { hide(); return false; }          // 该档不烘（区域模式未开）⇒ 交实时画，别排队
       if (!snap.ready) { hide(); scheduleBake(); return false; }
 
+      /* 盖不住就**当场同步重烘**（实测 0.8~5ms，比白花一帧实时画便宜得多）。
+         ⚠️ 之前丢给 setTimeout ⇒ 那一帧盖不住只好走实时画 ⇒ **兜底帧数正好等于重烘次数**
+         （实测 12 次重烘 = 12 个兜底帧，把 p95 顶到 16.6/20.9ms）。 */
+      if (!adequate(k)) {
+        runBake();
+        if (!coversView()) { stats.fallbackFrames++; hide(); return false; }   // 烘了仍盖不住才兜底
+      }
+
       /* 位置 + 缩放（只吸附合成偏移） */
       var sx = Math.round((snap.rect.minX * k + cam.tx) * dpr) / dpr;
       var sy = Math.round((snap.rect.minY * k + cam.ty) * dpr) / dpr;
@@ -4249,16 +4257,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       /* 该不该重烘：
          · 视口跑出旧图 ⇒ **立刻**（拖动中也要，旧图继续用，就绪后原子替换）
          · k / dpr / 绘制输入变了 ⇒ 等停手（settle）再烘，免得手势里反复烘  */
-      var outNow = !adequate(k);
       var stale = (snap.k !== k) || (snap.dpr !== dpr) || (paintKey != null && snap.key !== paintKey);
-      settleWanted = stale && !outNow;
-      if (outNow) {
-        scheduleBake();
-        /* 视口已经跑出旧图 ⇒ **本帧走实时画**（判决的「实时兜底帧」，列为验收路径实测）。
-           只在「盖不住」时兜底：k/dpr/输入变了但还盖得住时，继续用旧图（不要白花一帧）。 */
-        if (!coversView()) { stats.fallbackFrames++; return false; }
-      }
-      else if (settleWanted && !moved && (now() - lastMove) > settleMs) { lastKey = paintKey; scheduleBake(); }
+      settleWanted = stale;
+      if (stale && !moved && (now() - lastMove) > settleMs) { lastKey = paintKey; scheduleBake(); }
       return true;
     }
 
