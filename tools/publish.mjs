@@ -370,6 +370,18 @@ fs.writeFileSync(path.join(STAGE, 'robots.txt'),
   'User-agent: *\nAllow: /\n\n' +
   `Sitemap: ${SITE_ORIGIN}/sitemap.xml\n`, 'utf8');
 
+/* ------------------------------------------- IndexNow：让 Bing 系主动来抓 */
+// 一个 key 文件放在站点根 + 一次 POST，就能把 URL 推给 Bing / Yandex / Seznam /
+// Naver —— **不需要登录任何账户**。这是 Google 之外唯一能「主动报到」的渠道，
+// 而 DuckDuckGo 用的就是 Bing 的索引。
+// ⚠️ Google 不吃 IndexNow：它只能靠 Search Console 提交或外链发现。
+// ⚠️ 这里**只放 key 文件、不自动提交** —— 提交由 tools/indexnow.mjs 手动跑，
+//    免得每次发布都往搜索引擎推一遍（IndexNow 会限流）。
+// ⛔ key 是所有权凭证，改它就要重新提交一次，别随手换。
+const INDEXNOW_KEY = '03a17f33fad664109bdb097cb3fcbb22';
+fs.writeFileSync(path.join(STAGE, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY + '\n', 'utf8');
+console.log(`   IndexNow key 文件：${INDEXNOW_KEY}.txt（提交用 tools/indexnow.mjs）`);
+
 // 根 llms.txt：AI agent 的约定入口。**必须在一次抓取之内**（同 dist 产物的 1300 B 口径）。
 const rootLlms = `# ${USER}.github.io
 
