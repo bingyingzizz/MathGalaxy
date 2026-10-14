@@ -481,6 +481,45 @@ html.ui-no-hint #hint { display: none; }
   transition: background .14s ease, border-color .14s ease;
 }
 .pn-btn:hover { background: rgba(74, 110, 245, .14); border-color: rgba(74, 110, 245, .5); }
+
+/* ---------- 详情面板：已读标记 ---------- */
+/* 绿 = 读完。和工具条/图例里的蓝（功能色）分开，免得看成又一个开关。 */
+.pn-read { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 2px; }
+.pn-btn.pn-read-btn {
+  border-color: rgba(46, 158, 91, .38);
+  background: rgba(46, 158, 91, .06);
+  color: #23794A;
+}
+.pn-btn.pn-read-btn:hover { background: rgba(46, 158, 91, .14); border-color: rgba(46, 158, 91, .5); }
+.pn-btn.pn-read-btn.on {
+  background: rgba(46, 158, 91, .13);
+  border-color: rgba(46, 158, 91, .48);
+  font-weight: 600;
+}
+.pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
+.pn-read-tip.ok { color: #23794A; }
+
+/* ---------- 图例：进度 ---------- */
+#legend .lg-prog { display: flex; align-items: center; gap: 7px; }
+#legend .lg-prog b { font-weight: 650; color: var(--ink); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+#legend .lg-prog em { font-style: normal; color: var(--ink-faint); font-size: 11px; }
+#legend .lg-pbar {
+  flex: 1 1 auto;
+  min-width: 50px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(20, 22, 28, .09);
+  overflow: hidden;
+}
+#legend .lg-pbar i {
+  display: block;
+  height: 100%;
+  background: #2E9E5B;
+  border-radius: 3px;
+  transition: width .25s ease;
+}
+#legend .lg-ready { color: #23794A; }
+#legend .lg-ready b { font-weight: 650; font-variant-numeric: tabular-nums; }
 .pn-regions { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
 .pn-chip {
   font-size: 11.5px;
@@ -3633,6 +3672,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
+      drawReadMarks();
       drawHoverOverlay();
     }
 
@@ -3747,6 +3787,33 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
          · 两侧各多出 ~0.49px 的晕，alpha 正确 ✓
        剩下的偏差（实测）：芯里 α 0.19→0.34、α 0.5→0.75（= α(1−α)，0.6% 的像素）、
        以及交叉处 z-order 微差（max 37/255，1% 像素）。这些是**已知且待用户拍板**的偏差。 */
+    /* ------------------------------------------ 已读标记（实时叠加层） */
+    /* ⭐ 已读状态是**用户进度**，一个点变一次；⛔ 绝不能进位图烘焙 ——
+       否则每标记一个节点就要重烘整张图（那是几十毫秒 + 几十 MB 分配）。
+       跟 hover / 光晕 / 包络一样走实时叠加层。
+       ⚠️ 引擎不认识「已读」是什么：只问 view.isNodeRead / view.showReadMarks。
+          这两个钩子没装（导出器复用渲染器时就是）⇒ 什么都不画。 */
+    function drawReadMarks() {
+      if (!view.isNodeRead || !view.showReadMarks) return;
+      if (!view.showReadMarks()) return;
+      var list = view.graph.nodes;
+      for (var i = 0; i < list.length; i++) {
+        var n = list[i];
+        if (!view.isNodeRead(n.id)) continue;
+        if (!nodeOk(n.id)) continue;
+        var p = screenOf(n);
+        var r = nodeRadius(n);
+        if (!inView(p.x, p.y, r + 8)) continue;
+        var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
+        if (a <= 0.03) continue;            // 太淡就不画，免得糊成一片噪点
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + 3.1, 0, Math.PI * 2);
+        ctx.lineWidth = 1.7;
+        ctx.strokeStyle = U.rgba('#2E9E5B', 0.72 * a);   // 绿 = 读完
+        ctx.stroke();
+      }
+    }
+
     function drawHoverOverlay() {
       var hv = view.hover;
       if (!hv || hv.type !== 'node') return;
@@ -5978,6 +6045,31 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         '</div>';
       html += regionChips(n);
 
+      /* 已读标记 + 「下一步」提示。
+         ⚠️ panel 不认识 localStorage —— 三个钩子都由 app 注入（见 createPanel 的 hooks）。
+            没注入就整块不出现，导出器之类复用面板时不会画出半个按钮。 */
+      if (hooks && hooks.onToggleRead) {
+        var isRead = hooks.isRead ? !!hooks.isRead(n.id) : false;
+        var tip = '';
+        if (!isRead) {
+          var miss = hooks.missingPrereqs ? hooks.missingPrereqs(n.id) : [];
+          if (!miss.length) {
+            tip = '<span class="pn-read-tip ok">前置都读过了</span>';
+          } else {
+            var names = miss.slice(0, 4).map(function (id) {
+              var m = g.byId[id];
+              return m ? U.escapeHtml(m.label) : U.escapeHtml(id);
+            }).join('、');
+            tip = '<span class="pn-read-tip">还差 ' + miss.length + ' 条前置：' + names +
+              (miss.length > 4 ? ' …' : '') + '</span>';
+          }
+        }
+        html += '<div class="pn-read">' +
+          '<button class="pn-btn pn-read-btn' + (isRead ? ' on' : '') +
+          '" data-read="' + U.escapeHtml(n.id) + '">' +
+          (isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读') + '</button>' + tip + '</div>';
+      }
+
       if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
       if (n.notes) html += section('说明 / 备注', '<div class="pn-body">' + U.md(n.notes) + '</div>');
       if (n.refs && n.refs.length) {
@@ -6112,6 +6204,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     bodyEl.addEventListener('click', function (ev) {
       /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
          按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
+      var readBtn = ev.target.closest ? ev.target.closest('[data-read]') : null;
+      if (readBtn) {
+        hooks.onToggleRead && hooks.onToggleRead(readBtn.getAttribute('data-read'));
+        return;
+      }
       var subBtn = ev.target.closest ? ev.target.closest('[data-sub]') : null;
       if (subBtn) {
         if (current && current.type === 'node') {
@@ -6335,6 +6432,208 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
   }
 
   MG.createVisibility = createVisibility;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<!-- 已读状态：用户自己的进度（localStorage）。与 visibility 同类但**互不干涉** ——
+     那边管「画不画」，这边管「读没读」；藏起来的节点照样可以是已读。 -->
+<script>
+/* ==========================================================================
+   数学星图 · 已读状态（我读过哪些节点）
+   --------------------------------------------------------------------------
+   这不是内容，也不是引擎 —— 是**用户自己的进度**，只存在浏览器里
+   （localStorage，和「可见性」同一套路数）。因此：
+
+     · 不写进 graph.json、不碰任何一条边、不参与布局与分层
+     · 图上的标记画在**叠加层**，⛔ 不进位图烘焙 —— 否则每标记一个点就要重烘全图
+     · 换设备 / 清缓存就没了：这是**私人状态**，不是账号，也不做云同步
+
+   除了「记没记住」，它还回答一个问题：**下一步该读什么**。
+   图里每个节点的入边是有方向的：
+     · implication 的 sources  = 前提
+     · definition 的 definition = 用到的定义
+     （等价与类比不算前置。）
+   凡是「前置全都读过了」的未读节点，就是**现在可以读**的。
+
+   ⚠️ 与 visibility.js 的分工：那边管「画不画」，这边管「读没读」。
+      两个互不干涉 —— 藏起来的节点照样可以是已读。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  var KEY = 'mathgalaxy.read.v1';       // ⛔ 改这个键名 = 所有人的进度清零
+
+  function createReadState(graph) {
+    var read = Object.create(null);     // id → true（节点 id 带点和冒号，不能用普通对象）
+    var listeners = [];
+    var nodes = graph.nodes;
+    var showMarks = true;               // 图上画不画已读标记
+    var MARK_KEY = 'mathgalaxy.read.show.v1';
+
+    /* ------------------------------------------------ 前置索引（建一次） */
+    /* id → [前置 id…]。只认 implication 的前提和 definition 引用的定义：
+       等价是「同一个东西的两种说法」，不是前置；类比更不是。 */
+    var prereqOf = Object.create(null);
+    function buildPrereq(g) {
+      prereqOf = Object.create(null);
+      g.edges.forEach(function (e) {
+        var pres = null, tgt = null;
+        if (e.kind === 'implication') { pres = e.sources || []; tgt = e.target; }
+        else if (e.kind === 'definition') { pres = e.definition ? [e.definition] : []; tgt = e.usedBy; }
+        if (!pres || !pres.length || !tgt || !g.byId[tgt]) return;
+        if (!prereqOf[tgt]) prereqOf[tgt] = [];
+        for (var i = 0; i < pres.length; i++) {
+          if (g.byId[pres[i]] && prereqOf[tgt].indexOf(pres[i]) < 0) prereqOf[tgt].push(pres[i]);
+        }
+      });
+    }
+
+    /* ------------------------------------------------------------ 读写 */
+    function load() {
+      var raw = null;
+      try { raw = global.localStorage ? global.localStorage.getItem(KEY) : null; }
+      catch (e) { raw = null; }                    // 无痕模式 / 受限的 file://
+      if (!raw) return;
+      var list = null;
+      try { list = JSON.parse(raw); } catch (e) { return; }
+      if (!list || typeof list.forEach !== 'function') return;
+      list.forEach(function (id) {
+        if (typeof id === 'string' && graph.byId[id]) read[id] = true;
+      });
+    }
+
+    function save() {
+      try {
+        if (!global.localStorage) return;
+        var ids = Object.keys(read);
+        if (ids.length) global.localStorage.setItem(KEY, JSON.stringify(ids));
+        else global.localStorage.removeItem(KEY);
+      } catch (e) { /* 记不住就算了，不影响看 */ }
+    }
+
+    function commit() {
+      save();
+      listeners.forEach(function (cb) {
+        try { cb(); } catch (e) { console.error('[数学星图] 已读回调出错', e); }
+      });
+    }
+
+    /* ------------------------------------------------------------ 查询 */
+    function isRead(id) { return !!read[id]; }
+    function readCount() { return Object.keys(read).length; }
+    function readIds() { return Object.keys(read); }
+
+    function prereqsOf(id) { return (prereqOf[id] || []).slice(); }
+
+    /** 前置全读过了吗（没有前置 ⇒ 一开始就能读） */
+    function isReady(id) {
+      var pre = prereqOf[id];
+      if (!pre || !pre.length) return true;
+      for (var i = 0; i < pre.length; i++) if (!read[pre[i]]) return false;
+      return true;
+    }
+
+    /** 还差哪些前置没读（面板上用来告诉人「先去看这几条」） */
+    function missingPrereqs(id) {
+      var pre = prereqOf[id] || [];
+      return pre.filter(function (pid) { return !read[pid]; });
+    }
+
+    /** 现在能读的未读节点，按 layer 从小到大（浅的在前，和学习顺序一致） */
+    function readyList(limit) {
+      var out = [];
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        if (read[n.id]) continue;
+        if (isReady(n.id)) out.push(n);
+      }
+      out.sort(function (a, b) { return (a.layer - b.layer) || (a.id < b.id ? -1 : 1); });
+      return limit ? out.slice(0, limit) : out;
+    }
+
+    /* ------------------------------------------------------------ 改动 */
+    function setNode(id, on) {
+      if (!graph.byId[id]) return;
+      if (on) { if (read[id]) return; read[id] = true; }
+      else { if (!read[id]) return; delete read[id]; }
+      commit();
+    }
+    function toggle(id) { setNode(id, !read[id]); }
+
+    function markMany(ids, on) {
+      var hits = 0;
+      ids.forEach(function (id) {
+        if (!graph.byId[id]) return;
+        if (on) { if (!read[id]) { read[id] = true; hits++; } }
+        else if (read[id]) { delete read[id]; hits++; }
+      });
+      if (hits) commit();
+    }
+
+    function reset() {
+      if (!Object.keys(read).length) return;
+      read = Object.create(null);
+      commit();
+    }
+
+    /* 图上要不要画已读标记（存 localStorage，但**不影响已读数据**） */
+    function setShowMarks(on) {
+      showMarks = !!on;
+      try { if (global.localStorage) global.localStorage.setItem(MARK_KEY, showMarks ? '1' : '0'); }
+      catch (e) { /* 忽略 */ }
+      commit();
+    }
+    function isShowMarks() { return showMarks; }
+
+    /* 换了一张图（别的 agent 改了内容 / 外部包加载完）：保留进度，丢掉不存在的 id */
+    function rebind(g) {
+      graph = g;
+      nodes = g.nodes;
+      var dropped = 0;
+      Object.keys(read).forEach(function (id) {
+        if (!g.byId[id]) { delete read[id]; dropped++; }
+      });
+      buildPrereq(g);
+      if (dropped) commit();
+    }
+
+    function onChange(cb) {
+      listeners.push(cb);
+      return function () {
+        var i = listeners.indexOf(cb);
+        if (i >= 0) listeners.splice(i, 1);
+      };
+    }
+
+    /* ------------------------------------------------------------ 启动 */
+    buildPrereq(graph);
+    load();
+    try {
+      var saved = global.localStorage ? global.localStorage.getItem(MARK_KEY) : null;
+      if (saved === '0') showMarks = false;
+    } catch (e) { /* 忽略 */ }
+
+    return {
+      isRead: isRead,
+      readCount: readCount,
+      readIds: readIds,
+      prereqsOf: prereqsOf,
+      isReady: isReady,
+      missingPrereqs: missingPrereqs,
+      readyList: readyList,
+      setNode: setNode,
+      toggle: toggle,
+      markMany: markMany,
+      reset: reset,
+      setShowMarks: setShowMarks,
+      isShowMarks: isShowMarks,
+      rebind: rebind,
+      onChange: onChange
+    };
+  }
+
+  MG.createReadState = createReadState;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -37750,13 +38049,20 @@ MG.trunk = [
        被藏起来的点不画、不出名字、不响应点击；一端被藏的连线也一起不画。 */
     var vis = MG.createVisibility(graph);
 
+    /* 已读状态：用户自己的进度，存在 localStorage。和 vis 一样是**运行时状态** ——
+       不进 graph.json、不影响布局与分层。图上那个绿环由 renderer 的叠加层画
+       （⛔ 不进烘焙：标记一个点就重烘全图是不能接受的）。 */
+    var reads = MG.createReadState(graph);
+
     var view = {
       graph: graph,
       cam: null,
       visible: [],
       focus: null,
       hover: null,
-      isNodeVisible: vis.isNodeVisible
+      isNodeVisible: vis.isNodeVisible,
+      isNodeRead: reads.isRead,
+      showReadMarks: reads.isShowMarks
     };
 
     /** 真正参与绘制的连线：先按定义线开关过滤，再去掉「有一端被藏起来」的 */
@@ -37772,6 +38078,14 @@ MG.trunk = [
 
     var cam = MG.createCamera();
     view.cam = cam;
+
+    /* 已读状态一变：重画星图（绿环在叠加层）+ 刷新图例里那行进度。
+       ⚠️ 这里只**注册回调**，不立刻执行 —— 那会儿 renderLegend / requestDraw 还没就绪，
+          真正触发是用户点「标记已读」的时候。 */
+    reads.onChange(function () {
+      renderLegend();
+      requestDraw();
+    });
 
     var renderer = MG.createRenderer(graphEl, view);
     /* 导出（当前视图 → 子图 JSON / SVG / TikZ）。引擎模块，不碰任何内容。 */
@@ -37992,7 +38306,19 @@ MG.trunk = [
       onRegion: function (rid) { fitRegion(rid); },
       onCluster: function (cid) { fitCluster(cid); },
       onSubgraph: function (id, dir) { setSubgraph(id, dir); },
-      onClose: function () { panelOpen = false; requestDraw(); }
+      onClose: function () { panelOpen = false; requestDraw(); },
+      /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
+      isRead: reads.isRead,
+      missingPrereqs: reads.missingPrereqs,
+      onToggleRead: function (id) {
+        reads.toggle(id);
+        /* 重画面板让按钮与「还差几条前置」跟着变。
+           ⚠️ show() 会把 scrollTop 归零 ⇒ 先把位置存下来再恢复，
+              否则在长面板中间点一下「已读」会跳回顶部。 */
+        var keep = panelEl.scrollTop;
+        panel.show({ type: 'node', id: id });
+        panelEl.scrollTop = keep;
+      }
     });
 
     /* ------------------------------------- 可见性变化后的统一善后 */
@@ -38326,6 +38652,27 @@ MG.trunk = [
 
       var hidden = total - shown;
 
+      /* ---------- 进度：已读 / 可读 ---------- */
+      /* 这是**用户自己的**进度（localStorage），不是内容的一部分 ——
+         删掉 localStorage 那一项，图本身一个像素都不变。
+         「可读」= 前置全都读过的未读节点：图里每条 implication 的 sources、
+         每条 definition 的 definition 都算前置，这个数是现算的。 */
+      var readN = reads.readCount();
+      var readyN = reads.readyList().length;
+      var progressGroup =
+        '<div class="lg-group"><div class="lg-title">进度</div>' +
+        '<div class="lg-row lg-prog">' +
+          '<span class="lg-pbar"><i style="width:' +
+            (total ? (readN / total * 100).toFixed(1) : '0') + '%"></i></span>' +
+          '<b>' + readN + '</b><em>/ ' + total + ' 已读</em>' +
+        '</div>' +
+        '<div class="lg-row">' +
+          '<span class="lg-item lg-ready" title="前置全都读过的未读节点 —— 现在就能读">可读 <b>' + readyN + '</b></span>' +
+          '<span class="lg-chip' + (reads.isShowMarks() ? ' on' : '') +
+            '" data-readmarks title="在图上给读过的节点画绿环">标记</span>' +
+          (readN ? '<button class="lg-reset" data-readreset title="清空已读进度（不可撤销）">重置</button>' : '') +
+        '</div></div>';
+
       /* ---------- 分层：滑杆（原来是一排 0–27 芯片，层数只会继续涨，撑不住） ---------- */
       var maxLv = graph.maxLayer || 0;
       var sizes = graph.layerSizes || [];
@@ -38378,6 +38725,7 @@ MG.trunk = [
           : '') +
         '<span class="lg-caret">▼</span></div>' +
         '<div class="lg-body">' +
+        progressGroup +
         '<div class="lg-group"><div class="lg-title">节点（' + total + '）</div>' +
         '<div class="lg-row">' + typeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
@@ -38409,6 +38757,10 @@ MG.trunk = [
       if (t.closest('[data-reset]')) {
         setLayerMax(null); setTrunkOnly(false); clearSubgraph(); vis.showAll(); return;
       }
+
+      // 进度：开关图上的绿环 / 清空已读
+      if (t.closest('[data-readmarks]')) { reads.setShowMarks(!reads.isShowMarks()); return; }
+      if (t.closest('[data-readreset]')) { reads.reset(); return; }
 
       // 子图：改跳数 / 开关「跳地基」/ 退出
       var sh = t.closest('[data-subhops]');

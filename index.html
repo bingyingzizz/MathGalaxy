@@ -169,6 +169,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'dev';</script>
 <script src="src/core/search.js"></script>
 <script src="src/core/panel.js"></script>
 <script src="src/core/visibility.js"></script>
+<!-- 已读状态：用户自己的进度（localStorage）。与 visibility 同类但**互不干涉** ——
+     那边管「画不画」，这边管「读没读」；藏起来的节点照样可以是已读。 -->
+<script src="src/core/readstate.js"></script>
 <script src="src/core/loader.js"></script>
 
 <!-- =========================================================================

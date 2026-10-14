@@ -150,6 +150,31 @@
         '</div>';
       html += regionChips(n);
 
+      /* 已读标记 + 「下一步」提示。
+         ⚠️ panel 不认识 localStorage —— 三个钩子都由 app 注入（见 createPanel 的 hooks）。
+            没注入就整块不出现，导出器之类复用面板时不会画出半个按钮。 */
+      if (hooks && hooks.onToggleRead) {
+        var isRead = hooks.isRead ? !!hooks.isRead(n.id) : false;
+        var tip = '';
+        if (!isRead) {
+          var miss = hooks.missingPrereqs ? hooks.missingPrereqs(n.id) : [];
+          if (!miss.length) {
+            tip = '<span class="pn-read-tip ok">前置都读过了</span>';
+          } else {
+            var names = miss.slice(0, 4).map(function (id) {
+              var m = g.byId[id];
+              return m ? U.escapeHtml(m.label) : U.escapeHtml(id);
+            }).join('、');
+            tip = '<span class="pn-read-tip">还差 ' + miss.length + ' 条前置：' + names +
+              (miss.length > 4 ? ' …' : '') + '</span>';
+          }
+        }
+        html += '<div class="pn-read">' +
+          '<button class="pn-btn pn-read-btn' + (isRead ? ' on' : '') +
+          '" data-read="' + U.escapeHtml(n.id) + '">' +
+          (isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读') + '</button>' + tip + '</div>';
+      }
+
       if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
       if (n.notes) html += section('说明 / 备注', '<div class="pn-body">' + U.md(n.notes) + '</div>');
       if (n.refs && n.refs.length) {
@@ -284,6 +309,11 @@
     bodyEl.addEventListener('click', function (ev) {
       /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
          按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
+      var readBtn = ev.target.closest ? ev.target.closest('[data-read]') : null;
+      if (readBtn) {
+        hooks.onToggleRead && hooks.onToggleRead(readBtn.getAttribute('data-read'));
+        return;
+      }
       var subBtn = ev.target.closest ? ev.target.closest('[data-sub]') : null;
       if (subBtn) {
         if (current && current.type === 'node') {

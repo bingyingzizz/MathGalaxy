@@ -58,13 +58,20 @@
        被藏起来的点不画、不出名字、不响应点击；一端被藏的连线也一起不画。 */
     var vis = MG.createVisibility(graph);
 
+    /* 已读状态：用户自己的进度，存在 localStorage。和 vis 一样是**运行时状态** ——
+       不进 graph.json、不影响布局与分层。图上那个绿环由 renderer 的叠加层画
+       （⛔ 不进烘焙：标记一个点就重烘全图是不能接受的）。 */
+    var reads = MG.createReadState(graph);
+
     var view = {
       graph: graph,
       cam: null,
       visible: [],
       focus: null,
       hover: null,
-      isNodeVisible: vis.isNodeVisible
+      isNodeVisible: vis.isNodeVisible,
+      isNodeRead: reads.isRead,
+      showReadMarks: reads.isShowMarks
     };
 
     /** 真正参与绘制的连线：先按定义线开关过滤，再去掉「有一端被藏起来」的 */
@@ -80,6 +87,14 @@
 
     var cam = MG.createCamera();
     view.cam = cam;
+
+    /* 已读状态一变：重画星图（绿环在叠加层）+ 刷新图例里那行进度。
+       ⚠️ 这里只**注册回调**，不立刻执行 —— 那会儿 renderLegend / requestDraw 还没就绪，
+          真正触发是用户点「标记已读」的时候。 */
+    reads.onChange(function () {
+      renderLegend();
+      requestDraw();
+    });
 
     var renderer = MG.createRenderer(graphEl, view);
     /* 导出（当前视图 → 子图 JSON / SVG / TikZ）。引擎模块，不碰任何内容。 */
@@ -300,7 +315,19 @@
       onRegion: function (rid) { fitRegion(rid); },
       onCluster: function (cid) { fitCluster(cid); },
       onSubgraph: function (id, dir) { setSubgraph(id, dir); },
-      onClose: function () { panelOpen = false; requestDraw(); }
+      onClose: function () { panelOpen = false; requestDraw(); },
+      /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
+      isRead: reads.isRead,
+      missingPrereqs: reads.missingPrereqs,
+      onToggleRead: function (id) {
+        reads.toggle(id);
+        /* 重画面板让按钮与「还差几条前置」跟着变。
+           ⚠️ show() 会把 scrollTop 归零 ⇒ 先把位置存下来再恢复，
+              否则在长面板中间点一下「已读」会跳回顶部。 */
+        var keep = panelEl.scrollTop;
+        panel.show({ type: 'node', id: id });
+        panelEl.scrollTop = keep;
+      }
     });
 
     /* ------------------------------------- 可见性变化后的统一善后 */
@@ -634,6 +661,27 @@
 
       var hidden = total - shown;
 
+      /* ---------- 进度：已读 / 可读 ---------- */
+      /* 这是**用户自己的**进度（localStorage），不是内容的一部分 ——
+         删掉 localStorage 那一项，图本身一个像素都不变。
+         「可读」= 前置全都读过的未读节点：图里每条 implication 的 sources、
+         每条 definition 的 definition 都算前置，这个数是现算的。 */
+      var readN = reads.readCount();
+      var readyN = reads.readyList().length;
+      var progressGroup =
+        '<div class="lg-group"><div class="lg-title">进度</div>' +
+        '<div class="lg-row lg-prog">' +
+          '<span class="lg-pbar"><i style="width:' +
+            (total ? (readN / total * 100).toFixed(1) : '0') + '%"></i></span>' +
+          '<b>' + readN + '</b><em>/ ' + total + ' 已读</em>' +
+        '</div>' +
+        '<div class="lg-row">' +
+          '<span class="lg-item lg-ready" title="前置全都读过的未读节点 —— 现在就能读">可读 <b>' + readyN + '</b></span>' +
+          '<span class="lg-chip' + (reads.isShowMarks() ? ' on' : '') +
+            '" data-readmarks title="在图上给读过的节点画绿环">标记</span>' +
+          (readN ? '<button class="lg-reset" data-readreset title="清空已读进度（不可撤销）">重置</button>' : '') +
+        '</div></div>';
+
       /* ---------- 分层：滑杆（原来是一排 0–27 芯片，层数只会继续涨，撑不住） ---------- */
       var maxLv = graph.maxLayer || 0;
       var sizes = graph.layerSizes || [];
@@ -686,6 +734,7 @@
           : '') +
         '<span class="lg-caret">▼</span></div>' +
         '<div class="lg-body">' +
+        progressGroup +
         '<div class="lg-group"><div class="lg-title">节点（' + total + '）</div>' +
         '<div class="lg-row">' + typeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
@@ -717,6 +766,10 @@
       if (t.closest('[data-reset]')) {
         setLayerMax(null); setTrunkOnly(false); clearSubgraph(); vis.showAll(); return;
       }
+
+      // 进度：开关图上的绿环 / 清空已读
+      if (t.closest('[data-readmarks]')) { reads.setShowMarks(!reads.isShowMarks()); return; }
+      if (t.closest('[data-readreset]')) { reads.reset(); return; }
 
       // 子图：改跳数 / 开关「跳地基」/ 退出
       var sh = t.closest('[data-subhops]');

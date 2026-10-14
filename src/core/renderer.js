@@ -559,6 +559,7 @@
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
+      drawReadMarks();
       drawHoverOverlay();
     }
 
@@ -673,6 +674,33 @@
          · 两侧各多出 ~0.49px 的晕，alpha 正确 ✓
        剩下的偏差（实测）：芯里 α 0.19→0.34、α 0.5→0.75（= α(1−α)，0.6% 的像素）、
        以及交叉处 z-order 微差（max 37/255，1% 像素）。这些是**已知且待用户拍板**的偏差。 */
+    /* ------------------------------------------ 已读标记（实时叠加层） */
+    /* ⭐ 已读状态是**用户进度**，一个点变一次；⛔ 绝不能进位图烘焙 ——
+       否则每标记一个节点就要重烘整张图（那是几十毫秒 + 几十 MB 分配）。
+       跟 hover / 光晕 / 包络一样走实时叠加层。
+       ⚠️ 引擎不认识「已读」是什么：只问 view.isNodeRead / view.showReadMarks。
+          这两个钩子没装（导出器复用渲染器时就是）⇒ 什么都不画。 */
+    function drawReadMarks() {
+      if (!view.isNodeRead || !view.showReadMarks) return;
+      if (!view.showReadMarks()) return;
+      var list = view.graph.nodes;
+      for (var i = 0; i < list.length; i++) {
+        var n = list[i];
+        if (!view.isNodeRead(n.id)) continue;
+        if (!nodeOk(n.id)) continue;
+        var p = screenOf(n);
+        var r = nodeRadius(n);
+        if (!inView(p.x, p.y, r + 8)) continue;
+        var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
+        if (a <= 0.03) continue;            // 太淡就不画，免得糊成一片噪点
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + 3.1, 0, Math.PI * 2);
+        ctx.lineWidth = 1.7;
+        ctx.strokeStyle = U.rgba('#2E9E5B', 0.72 * a);   // 绿 = 读完
+        ctx.stroke();
+      }
+    }
+
     function drawHoverOverlay() {
       var hv = view.hover;
       if (!hv || hv.type !== 'node') return;
