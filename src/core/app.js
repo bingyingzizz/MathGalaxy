@@ -466,6 +466,64 @@
       if (act && act.indexOf('toggle-') === 0) syncHash('push');
     });
 
+    /* ------------------------------------------ 设置面板（界面元素显隐） */
+    /*
+      管的是「界面**显示什么**」，和工具条上那 5 个 toggle（管「图怎么画」）分开。
+      状态存 localStorage，关掉图例下次打开还是关的。
+      ⛔ 工具栏自己**不给**隐藏开关 —— 藏了就没有入口回来了。
+      ⚠️ 这里加的是 <html> 上的类（ui-no-xxx），默认一个都没有 ⇒ 爬虫渲染时
+         全部可见，不构成「隐藏文本」。
+    */
+    var settingsEl = document.getElementById('settings');
+    var settingsBtn = document.getElementById('tb-settings');
+    var UI_KEY = 'mg.ui.hidden';
+    var UI_ITEMS = ['search', 'legend', 'hint'];
+
+    function uiHidden() {
+      try { return JSON.parse(localStorage.getItem(UI_KEY) || '{}') || {}; }
+      catch (_) { return {}; }          // 隐私模式 / file:// 下可能禁用，当作没设过
+    }
+    function applyUI() {
+      var hid = uiHidden();
+      UI_ITEMS.forEach(function (k) {
+        document.documentElement.classList.toggle('ui-no-' + k, !!hid[k]);
+      });
+      var boxes = settingsEl.querySelectorAll('input[data-ui]');
+      for (var i = 0; i < boxes.length; i++) {
+        boxes[i].checked = !hid[boxes[i].getAttribute('data-ui')];
+      }
+    }
+    function toggleUI(k, visible) {
+      var hid = uiHidden();
+      if (visible) delete hid[k]; else hid[k] = 1;
+      try { localStorage.setItem(UI_KEY, JSON.stringify(hid)); } catch (_) { /* 忽略 */ }
+      applyUI();
+      renderLegend();       // 图例里那行「按 / 搜索」提示会跟着变
+      requestDraw();
+    }
+    function setSettingsOpen(on) {
+      settingsEl.classList.toggle('hidden', !on);
+      settingsBtn.classList.toggle('on', !!on);
+      settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+    applyUI();              // 开页就按上次的选择摆好
+
+    settingsBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setSettingsOpen(settingsEl.classList.contains('hidden'));
+    });
+    settingsEl.addEventListener('click', function (e) { e.stopPropagation(); });
+    settingsEl.addEventListener('change', function (e) {
+      var t = e.target;
+      var k = t && t.getAttribute && t.getAttribute('data-ui');
+      if (k) toggleUI(k, t.checked);
+    });
+    // 点页面别处关掉；Esc 也关（同时会关掉详情面板，符合「Esc = 关浮层」的直觉）
+    document.addEventListener('click', function () { setSettingsOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setSettingsOpen(false);
+    });
+
     /* ---------------------------------------------------- 图例（也是开关） */
     /*
       图例同时是「显示 / 隐藏」的控制面板：

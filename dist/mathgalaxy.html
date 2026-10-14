@@ -240,6 +240,81 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
 }
 .tb-sep { width: 1px; height: 18px; background: var(--line-strong); margin: 0 4px; }
 
+/* 回站点首页：长得像工具条按钮，但它其实是 <a>（导航语义 ⇒ 能中键新标签打开、
+   能右键复制链接、状态栏能预览去向）。样式跟 #toolbar button 对齐。 */
+#toolbar a.tb-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: 30px;
+  min-width: 30px;
+  padding: 0 9px;
+  border-radius: 8px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .14s ease, color .14s ease;
+}
+#toolbar a.tb-home:hover { background: rgba(20, 22, 28, .06); color: var(--ink); text-decoration: none; }
+#toolbar a.tb-home:active { background: rgba(20, 22, 28, .11); }
+
+/* ---------- 设置面板（挂在工具条正下方，**不是新窗口**） ---------- */
+/* 它管的是「界面显示什么」；工具条上那 5 个 toggle 管的是「图怎么画」——两件事分开。 */
+#settings {
+  top: 62px;
+  right: 14px;
+  width: 252px;
+  padding: 10px 12px 12px;
+  font-size: 13px;
+  z-index: 12;                /* 要压住工具条(#toolbar 是 z-index 10) */
+}
+#settings .set-title {
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--ink-faint);
+  margin: 0 0 5px 6px;
+}
+.set-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  user-select: none;
+  line-height: 1.5;
+}
+.set-row:hover { background: rgba(20, 22, 28, .045); color: var(--ink); }
+.set-row input[type='checkbox'] {
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  accent-color: #4f7cf5;
+  cursor: pointer;
+}
+.set-sep { height: 1px; background: var(--line); margin: 10px 4px; }
+.set-link {
+  display: block;
+  padding: 6px;
+  border-radius: 7px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  line-height: 1.5;
+}
+.set-link:hover { background: rgba(20, 22, 28, .045); color: var(--ink); text-decoration: none; }
+
+/* ---------- 设置里关掉的界面元素 ---------- */
+/* ⚠️ 这些类只在**用户主动**勾掉时才会加到 <html> 上；默认（爬虫渲染的也是默认态）
+   什么都没有 ⇒ 元素可见。所以 #hint 被关掉不构成「隐藏文本」——
+   那是用户的选择，不是给爬虫看的一套、给人看的另一套。 */
+html.ui-no-search #search-box { display: none; }
+html.ui-no-legend #legend { display: none; }
+html.ui-no-hint #hint { display: none; }
+
 /* ---------- 图例（同时是「显示 / 隐藏」开关面板） ---------- */
 #legend {
   left: 14px;
@@ -747,6 +822,30 @@ window.addEventListener('error', function (e) {
   <button data-act="toggle-labels"  class="toggle on" title="显示 / 隐藏节点名称">名称</button>
   <button data-act="toggle-explore" class="toggle" title="探索模式：把「类比」这类弱边提亮（平时压得很淡）">探索</button>
   <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移">滚轮·缩放</button>
+  <span class="tb-sep"></span>
+  <!-- 回站点首页。用 <a> 而不是 <button>：它是导航，能中键/右键新标签打开、能复制链接。
+       ⚠️ 别人从 GitHub 或帖子里点进来是**直接落在 /mathgalaxy/**，此前页面上没有一条
+          回到站点首页的路（只有底部那行小字里的链接），这个按钮补的就是它。 -->
+  <a class="tb-home" href="../" title="回到站点首页（bingyingzizz.github.io）">⌂</a>
+  <button data-act="settings" id="tb-settings" title="设置：显示 / 隐藏界面元素" aria-expanded="false" aria-controls="settings">⚙</button>
+</div>
+
+<!-- ===== 设置面板（挂在工具条下面，不是新窗口） =====
+     ⚠️ 这一栏管的是「**界面显示什么**」，和工具条上那 5 个开关（管「图怎么画」）
+        是两件事，别混在一起。
+     ⛔ **工具栏自己不给隐藏开关** —— 藏了就没有入口回来了。 -->
+<div id="settings" class="floating hidden" role="dialog" aria-label="设置">
+  <div class="set-title">界面元素</div>
+  <label class="set-row"><input type="checkbox" data-ui="search" checked> 搜索框</label>
+  <label class="set-row"><input type="checkbox" data-ui="legend" checked> 图例（左下）</label>
+  <label class="set-row"><input type="checkbox" data-ui="hint" checked> 底部说明（标题与操作提示）</label>
+  <div class="set-sep"></div>
+  <div class="set-title">去别处</div>
+  <a class="set-link" href="../">⌂ 站点首页</a>
+  <a class="set-link" href="all.html">全部概念索引（706 个）</a>
+  <a class="set-link" href="questions.html">常见问法（184 条）</a>
+  <a class="set-link" href="read.html">读图指南与记号表</a>
+  <a class="set-link" href="https://github.com/bingyingzizz/MathGalaxy" target="_blank" rel="noopener">↗ GitHub 源码</a>
 </div>
 
 <!-- ===== 左下角：图例（同时是「显示 / 隐藏」的开关面板） ===== -->
@@ -38057,6 +38156,64 @@ MG.trunk = [
         btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
       }
       if (act && act.indexOf('toggle-') === 0) syncHash('push');
+    });
+
+    /* ------------------------------------------ 设置面板（界面元素显隐） */
+    /*
+      管的是「界面**显示什么**」，和工具条上那 5 个 toggle（管「图怎么画」）分开。
+      状态存 localStorage，关掉图例下次打开还是关的。
+      ⛔ 工具栏自己**不给**隐藏开关 —— 藏了就没有入口回来了。
+      ⚠️ 这里加的是 <html> 上的类（ui-no-xxx），默认一个都没有 ⇒ 爬虫渲染时
+         全部可见，不构成「隐藏文本」。
+    */
+    var settingsEl = document.getElementById('settings');
+    var settingsBtn = document.getElementById('tb-settings');
+    var UI_KEY = 'mg.ui.hidden';
+    var UI_ITEMS = ['search', 'legend', 'hint'];
+
+    function uiHidden() {
+      try { return JSON.parse(localStorage.getItem(UI_KEY) || '{}') || {}; }
+      catch (_) { return {}; }          // 隐私模式 / file:// 下可能禁用，当作没设过
+    }
+    function applyUI() {
+      var hid = uiHidden();
+      UI_ITEMS.forEach(function (k) {
+        document.documentElement.classList.toggle('ui-no-' + k, !!hid[k]);
+      });
+      var boxes = settingsEl.querySelectorAll('input[data-ui]');
+      for (var i = 0; i < boxes.length; i++) {
+        boxes[i].checked = !hid[boxes[i].getAttribute('data-ui')];
+      }
+    }
+    function toggleUI(k, visible) {
+      var hid = uiHidden();
+      if (visible) delete hid[k]; else hid[k] = 1;
+      try { localStorage.setItem(UI_KEY, JSON.stringify(hid)); } catch (_) { /* 忽略 */ }
+      applyUI();
+      renderLegend();       // 图例里那行「按 / 搜索」提示会跟着变
+      requestDraw();
+    }
+    function setSettingsOpen(on) {
+      settingsEl.classList.toggle('hidden', !on);
+      settingsBtn.classList.toggle('on', !!on);
+      settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+    applyUI();              // 开页就按上次的选择摆好
+
+    settingsBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setSettingsOpen(settingsEl.classList.contains('hidden'));
+    });
+    settingsEl.addEventListener('click', function (e) { e.stopPropagation(); });
+    settingsEl.addEventListener('change', function (e) {
+      var t = e.target;
+      var k = t && t.getAttribute && t.getAttribute('data-ui');
+      if (k) toggleUI(k, t.checked);
+    });
+    // 点页面别处关掉；Esc 也关（同时会关掉详情面板，符合「Esc = 关浮层」的直觉）
+    document.addEventListener('click', function () { setSettingsOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setSettingsOpen(false);
     });
 
     /* ---------------------------------------------------- 图例（也是开关） */
