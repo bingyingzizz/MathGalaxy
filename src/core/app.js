@@ -1418,6 +1418,8 @@
       var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
       /* 带高旋钮（横带切片烘焙）：&band=<设备像素>；越小单帧越轻、轮越长（A/B 用） */
       var bandOn = /(^|[&#?])band=(\d+)/.exec(flags);
+      /* 缩放期出图间隔：&zoomms=<毫秒>；0 = 只等停手（A/B 用） */
+      var zoomOn = /(^|[&#?])zoomms=(\d+)/.exec(flags);
       /* 世界图面积预算旋钮：&worldpx=0 退回「只看边长」的老口径（A/B 用） */
       var worldPxOn = /(^|[&#?])worldpx=(\d+)/.exec(flags);
       /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
@@ -1431,6 +1433,7 @@
           return m ? [Number(m[2])] : C.bitmap.tiers;
         })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
         bandPx: bandOn ? Number(bandOn[2]) : C.bitmap.bandPx,
+        zoomMs: zoomOn ? Number(zoomOn[2]) : C.bitmap.zoomMs,
         region: regionOn,
         marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
         worldPxMax: worldPxOn ? Number(worldPxOn[2]) : C.bitmap.worldPxMax,
@@ -1479,6 +1482,7 @@
       setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
       setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
       setBand: function (v) { if (bitmap) bitmap.setBand(v); requestDraw(); },
+      setZoomMs: function (v) { if (bitmap) bitmap.setZoomMs(v); requestDraw(); },
       get bitmap() { return bitmap ? bitmap.state() : null; },
       rebuild: function () { start(); },
       get graph() { return view.graph; },

@@ -62,6 +62,13 @@
         112px ⇒ 单帧≈1 个时隙（p95 4.3~5.1，与不烘焙持平）、max 25~29ms；
         160px ⇒ max 12.5ms 但每帧约 2 个时隙（p95 7~8.3）。取 128 折中。 */
     var bandPx = Math.max(48, Math.round(opt.bandPx == null ? 128 : Number(opt.bandPx) || 128));
+    /* 缩放手势里**多久补烘一次**（毫秒；0 = 关掉，退回「只等停手」）。
+        为什么需要：k 一变，位图就是上一档的图被 transform 拉伸 ⇒ 线宽/圆点/箭头
+        全跟着被缩放（屏幕上本该恒定的东西变了），一直挂到停手 settle 才纠正。
+        代价：一次区域重烘 ≈ 画布面积 × 9ns（6.8Mpx ≈ 61ms 光栅），所以出图频率 = 
+        max(zoomMs, 一轮自己的时长) —— 快机器上就是每 zoomMs 一帧新图，慢机器自动降频。
+        96 帧/s 预算里 100ms 一烘 ≈ 10 轮/s × 61ms ≈ 0.6 预算；150ms ≈ 0.4；200ms ≈ 0.3。 */
+    var zoomMs = opt.zoomMs == null ? 150 : Math.max(0, Number(opt.zoomMs) || 0);
     /* 世界单图的**面积预算**（设备像素）。用途：让「边长刚好越过 maxSide」的那一小段 k
        仍然走世界模式 —— 最差档 k≈0.62 正好落在里面。那段走区域模式时，拖动中每 ~0.4 秒
        就得重烘一次，每次都是一根 145ms 的尖峰（实测 11~14 次 / 6s，用户能感觉到掉帧）；
@@ -81,6 +88,9 @@
     var world = null, wW = 0, wH = 0;
     var last = { k: -1, tx: 0, ty: 0, dpr: 0, vw: 0, vh: 0 };
     var lastMove = 0, lastTransform = '', lastKey = '', speed = 0, speedMax = 0;
+    var lastBakeT = 0;                   // 上一次「出图完成」的时刻（缩放手势的限频基准）
+    var slackFall = 0, lastSlack = 0;    // 「余量每帧在掉多少」的衰减峰值（缩放/加速拖动）
+    var rlLog = [];                      // 近若干次「画布重新分配」（W×H 变了）—— 排查抖动用
     var speedWin = [], speedSum = 0;     // 速度滑动窗口（每帧位移，设备像素）
     var chainId = 0, camRef = null;      // 带轮的驱动链（自己的 rAF）+ 相机引用
     var slog = [];                       // 近若干次「不盖住 ⇒ 同步全烘」的事件（排查尖峰归因用）
@@ -91,6 +101,10 @@
     var snap = { ready: false, rect: null, mode: '', scale: 0, k: 0, dpr: 1, rev: 0, key: '' };
 
     function now() { return (global.performance || Date).now(); }
+    function logRealloc(who, cv, w, h, kx) {
+      if (rlLog.length > 8) rlLog.shift();
+      rlLog.push({ 谁: who, 旧: cv.width + 'x' + cv.height, 新: w + 'x' + h, k: +(kx || 0).toFixed(3) });
+    }
     function maxSide() { return tiers[Math.min(ti, tiers.length - 1)]; }
 
     function measure() {
@@ -153,11 +167,13 @@
     function maxEst() { return Math.max(speedMax, 16); }
     /** 轮跑完需要的余量（设备像素）：T 帧、每帧平均走 speed、还要扛住单帧最大跳变。
         单帧最大跳变必须算进去 —— 拖动是**按输入事件跳**的（一次 pointermove 就是几十像素），
-        用平均值估会正好在最后一帧越界 ⇒ 追赶。 */
-    function runwayPx(n) { return Math.max(0, n - 1) * speedEst() + maxEst(); }
+        用平均值估会正好在最后一帧越界 ⇒ 追赶。
+        ⭐ 再加上「余量本身每帧在掉多少」× 轮要跑的帧数：**缩放**（k 变小 ⇒ 视口要更多世界）
+        和加速拖动都是这么把余量吃掉的，不预留就必在轮的中途露洞。 */
+    function runwayPx(n) { return Math.max(0, n - 1) * speedEst() + maxEst() + n * slackFall; }
     /** 开轮门槛（设备像素）：轮跑得完再加 1.35 倍安全量。
-        上限 0.55×margin：门槛太高会让「每轮覆盖的位移」变小 ⇒ 每秒烘的量反而变多。 */
-    function needPx(n) { return Math.min(marginPx * 0.55, Math.max(100, runwayPx(n) * 1.35 + 20)); }
+        上限 0.8×margin（余量在掉时可以放开一点）：门槛太高会让「每轮覆盖的位移」变小。 */
+    function needPx(n) { return Math.min(marginPx * 0.8, Math.max(100, runwayPx(n) * 1.35 + 20)); }
 
     /** 该用哪个矩形：装得下就整个世界；装不下就「视口 ⊕ 余量」 */
     function rectFor(k, tx, ty, dpr, vw, vh) {
@@ -199,15 +215,22 @@
       if (snap.mode === 'world') return k <= worldKMax(snap.dpr) * 1.0001;
       return rectCoversView(snap.rect);
     }
-    function sizeFor(r, k, dpr) {
+    /** 画布像素尺寸。
+        ⚠️ 世界档的尺寸**必须量化到粗格**：世界图 = 世界长 × k × dpr ⇒ k 动一点点尺寸就变 ✗
+        ⇒ 每次（缩放手势里每 zoomMs 一次）重烘都要重新分配几十 MB 的画布。
+        量化是**向上取整**、内容比例仍是精确的 k×dpr ⇒ 只多出一圈透明边（在世界 bbox 之外，
+        本来就没内容），显示时 m 仍恒等于 1 ⇒ 观感零损失。
+        区域档的 pw/ph 本来就由视口+余量定死、与 k 无关 ⇒ 不需要量化。 */
+    var WORLD_QUANT = 128;
+    function sizeFor(r, k, dpr, mode) {
       var sc = k * Math.min(dpr, 2);
-      return {
-        scale: sc,
-        /* -1e-6：矩形宽 = pw/gx 时乘 gx 回来会带 1e-9 的浮点尾巴，ceil 会多涨 1 像素
-           ⇒ 画布尺寸每轮抖一下 ⇒ 每轮重新分配（正是要避免的那笔钱）。 */
-        w: Math.max(1, Math.ceil((r.maxX - r.minX) * sc - 1e-6)),
-        h: Math.max(1, Math.ceil((r.maxY - r.minY) * sc - 1e-6))
-      };
+      var g = mode === 'world' ? WORLD_QUANT : 1;
+      /* -1e-6：矩形宽 = pw/gx 时乘 gx 回来会带 1e-9 的浮点尾巴，ceil 会多涨 1 像素
+         ⇒ 画布尺寸每轮抖一下 ⇒ 每轮重新分配（正是要避免的那笔钱）。 */
+      var cw = Math.max(1, Math.ceil((r.maxX - r.minX) * sc - 1e-6));
+      var ch = Math.max(1, Math.ceil((r.maxY - r.minY) * sc - 1e-6));
+      /* cw/ch = **内容尺寸**（预算与上限都按它判）；w/h = 实际画布（世界档补到 128 的格） */
+      return { scale: sc, cw: cw, ch: ch, w: Math.ceil(cw / g) * g, h: Math.ceil(ch / g) * g };
     }
 
     /* ------------------------------------------------------ 同步全烘（老路）
@@ -222,11 +245,8 @@
       var pick = rectFor(k, last.tx, last.ty, dpr, last.vw, last.vh);
       if (!pick) { stats.skipped++; return; }
       var r = pick.r;
-      var s = sizeFor(r, k, dpr);
-      var big = pick.mode === 'world'
-        ? (Math.max(s.w, s.h) > worldSideMax || s.w * s.h > worldPxMax)
-        : (Math.max(s.w, s.h) > maxSide());
-      if (big) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
+      var s = sizeFor(r, k, dpr, pick.mode);
+      if (tooBig(pick, s)) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return; }
       /* ⭐ 就地烘：**复用当前正在显示的那一代画布**，不换显示层。
          每次「换显示层」实测有 80~150ms 的固定开销（与画布大小、画多少内容都无关 ——
          连 646×548 的世界烘也照样挨这一刀），那是拖动里那一根尖峰的大头。
@@ -236,6 +256,7 @@
       var idx = cur >= 0 ? cur : 0;
       var cv = els[idx];
       if (cv.width !== s.w || cv.height !== s.h) {
+        logRealloc('bake', cv, s.w, s.h, k);
         idx = idx === 0 ? 1 : 0;
         cv = els[idx];
         cv.width = s.w; cv.height = s.h;
@@ -265,6 +286,7 @@
       syncIdle(cv, dpr);
       stats.bakes++; stats.lastMs = +ms.toFixed(1);
       if (ms > stats.peakMs) stats.peakMs = +ms.toFixed(1);
+      lastBakeT = now();
       stats.swaps++;
       if (pick.mode === 'region') stats.regionBakes++;
       stats.mode = pick.mode;
@@ -280,6 +302,7 @@
       var el = els[i];
       if (!el || el === baked) return;
       if (el.width !== baked.width || el.height !== baked.height) {
+        logRealloc('idle', el, baked.width, baked.height, snap.k);
         el.width = baked.width; el.height = baked.height;
         stats.realloc++;
       }
@@ -295,12 +318,13 @@
     function startRound(pick, k, dpr, paintKey) {
       if (!els[0]) attach();
       if (!els[1]) return false;
-      var r = pick.r, s = sizeFor(r, k, dpr);
-      if (Math.max(s.w, s.h) > maxSide()) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return false; }
+      var r = pick.r, s = sizeFor(r, k, dpr, pick.mode);
+      if (tooBig(pick, s)) { stats.skipped++; stats.reason = 'too-big ' + s.w + 'x' + s.h; return false; }
       var target = cur >= 0 ? 1 - cur : 0;
       var cv = els[target];
       if (cv.width !== s.w || cv.height !== s.h) {
         /* 尺寸对不上（换档 / 换视口后的第一轮）：这一刀只能挨一次，之后同尺寸的轮全免分配 */
+        logRealloc('round', cv, s.w, s.h, k);
         cv.width = s.w; cv.height = s.h;
         stats.realloc++;
       }
@@ -314,13 +338,15 @@
          也不要收尾追赶 —— 追赶是整张一次画完，那才是真尖峰）。 */
       var slack0 = slackOf(snap.rect);
       var want = bandsFor(s.h);
-      /* T 只能在 [ceil(want/2), want] 里调：⛔ 不许为凑余量把带放大到 2 倍以上
-         （一条带 = 画布宽 × 带高 的脏区，实测 686px 带 ≈ 22~27ms/帧，比追赶还难看）。 */
-      var fit = Math.max(3, Math.floor(Math.max(0, slack0 - maxEst()) / speedEst()) + 1);
-      var T = Math.max(Math.ceil(want / 2), Math.min(want, fit));
+      /* T 只能在 [max(3, ceil(want/3)), want] 里调：⛔ 不许为凑余量把带放大到 3 倍以上
+         （一条带 = 画布宽 × 带高 的脏区，实测 686px 带 ≈ 22~27ms/帧）。
+         帧慢 / 位移大时（余量掉得快）宁可少几条、单帧重一点，也不要收尾追赶
+         —— 追赶是整张一次画完，那才是真尖峰。 */
+      var fit = Math.max(3, Math.floor(Math.max(0, slack0 - maxEst()) / (speedEst() + slackFall)) + 1);
+      var T = Math.max(Math.max(3, Math.ceil(want / 3)), Math.min(want, fit));
       var bh = Math.ceil(s.h / T);
       round = { target: target, old: cur, rect: r, scale: s.scale, k: k, dpr: dpr, key: paintKey,
-        w: s.w, h: s.h, y: 0, n: Math.ceil(s.h / bh), bandH: bh, i: 0, t0: now(), gen: ++buildGen,
+        mode: pick.mode, w: s.w, h: s.h, y: 0, n: Math.ceil(s.h / bh), bandH: bh, i: 0, t0: now(), gen: ++buildGen,
         ticks: 0, rushBands: 0, slack0: Math.round(slack0), speed0: Math.round(speed),
         gapSum: 0, gapN: 0, stepSum: 0, jsSum: 0, lastT: 0 };
       applyTransform();                          // 目标先落位（交接边界要按它现在的屏幕位置算）
@@ -423,16 +449,18 @@
       }
       setClip(r.target, 0, 0);             // 新显示层必须整张可见
       applyTransform();
-      stats.bakes++; stats.regionBakes++; stats.rounds++;
-      stats.mode = 'region';
+      stats.bakes++; stats.rounds++;
+      if (r.mode === 'region') stats.regionBakes++;
+      stats.mode = r.mode;
       stats.roundMs = +(now() - r.t0).toFixed(1);
+      lastBakeT = now();
       rlog.push({ 带: r.n, tick: r.ticks, 追赶带: r.rushBands, ms: stats.roundMs,
         起松弛: r.slack0, 速度: r.speed0, 终松弛: Math.round(slackOf(r.rect)), 盖住: covered,
         带JS均: +(r.jsSum / Math.max(1, r.ticks)).toFixed(2),
         步ms均: +(r.stepSum / Math.max(1, r.ticks)).toFixed(2),
         间隔均: +(r.gapSum / Math.max(1, r.gapN)).toFixed(2) });
       if (rlog.length > 12) rlog.shift();
-      stats.reason = 'ok region ' + r.w + 'x' + r.h + ' @k=' + r.k.toFixed(3)
+      stats.reason = 'ok ' + r.mode + ' ' + r.w + 'x' + r.h + ' @k=' + r.k.toFixed(3)
         + ' 带' + r.n + (covered ? '' : ' ⚠未盖住') + ' tier=' + maxSide();
       if (opt.onSwap) opt.onSwap();     // 换代之后也要至少再来一帧（HUD/标签要跟上）
     }
@@ -547,12 +575,22 @@
       if (!round) {
         var wantSync = false, wantRound = false;
         /* 尺寸变了（换视口 / 换 dpr）：这一代尺寸不对了，只能同步重来 */
-        var sNow = sizeFor(pick.r, k, dpr);
+        var sNow = sizeFor(pick.r, k, dpr, pick.mode);
         var sizeChanged = els[cur] && (els[cur].width !== sNow.w || els[cur].height !== sNow.h);
+        /* 余量在掉多少（px/帧）：缩放（k 变小 ⇒ 视口要更多世界）与加速拖动都从这儿读 */
+        var sl = slackOf(snap.rect);
+        if (lastSlack) {
+          var dSl = sl - lastSlack;
+          slackFall = dSl < 0 ? Math.max(-dSl, slackFall * 0.9) : slackFall * 0.9;
+        }
+        lastSlack = sl;
+        var settled = !moved && (now() - lastMove) > settleMs;
+        var zoomNow = zoomDue(k, paintKey);        // 手势里到点该补一帧了吗
+        var lowSlack = pick.mode === 'region' && snapshotRegion() && sl < needPx(sNow.h);
         if (!adequate(k)) {
           stats.emerg++;
           if (slog.length > 8) slog.shift();
-          slog.push({ 松弛: Math.round(slackOf(snap.rect)), 速度: Math.round(speed),
+          slog.push({ 松弛: Math.round(sl), 速度: Math.round(speed), 掉: Math.round(slackFall),
             上轮: stats.rounds, 因: '不盖住', 快照k: +snap.k.toFixed(3), k: +k.toFixed(3),
             同k: snap.k === k, 旧图几何盖住: rectCoversView(snap.rect) });
           if (pick.mode === 'region' && rectCoversView(snap.rect)) {
@@ -564,16 +602,21 @@
             wantSync = true;
           }
         } else if (sizeChanged || pick.mode !== snap.mode) {
-          wantSync = true;                       // 换档/换视口：重分配本来就要挨一刀
-        } else if (stale && !moved && (now() - lastMove) > settleMs) {
-          /* k / dpr / 绘制输入变了 ⇒ 等停手（settle）再烘，免得手势里反复烘 */
+          /* 换档 / 换视口：画布尺寸要变（那一次分配躲不掉），但**烘的部分照样能切带**。
+             同步全烘 = 「分配 + 整张烘」一根 ~200ms；开轮 = 「分配 + 第一条带」~75ms。
+             ⚠️ 手势里要跟 zoomMs 一样限频：世界档的尺寸随 k 走（已量化到 128 的格），
+             不限频就变成「k 每动一点 ⇒ 尺寸又变了 ⇒ 又开一轮」——实测每帧一轮。 */
+          if (settled || zoomNow) { lastKey = paintKey; wantRound = true; }
+        } else if (lowSlack) {
+          /* ⭐ 提前开轮：余量不够轮跑完就别等露洞。平移、缩放都走这一条
+             （⛔ 必须排在 stale 前面 —— 缩放时 stale 恒真，排后面就会被它挡住 ⇒ 每次都是露洞后
+             才补救）。 */
+          wantRound = true;
+        } else if (stale && (settled || zoomNow)) {
+          /* k / dpr / 绘制输入变了 ⇒ **停手补一次**；⭐ 手势里也按 zoomMs 补一次（见 zoomDue）。
+             两条都走带轮 —— 同步全烘只有「真露洞」才配得上。 */
           lastKey = paintKey;
-          wantSync = (pick.mode !== 'region');
-          wantRound = (pick.mode === 'region');
-        } else if (pick.mode === 'region' && snapshotRegion()) {
-          /* ⭐ 提前开轮：余量不够轮跑完就别等露洞 */
-          var n = bandsFor(sNow.h);
-          if (slackOf(snap.rect) < needPx(n)) wantRound = true;
+          wantRound = true;
         }
         if (wantSync) runBake();
         else if (wantRound) {
@@ -588,6 +631,26 @@
 
     /** 快照是不是区域图（世界图与它尺寸不同；第一轮区域烘必须走同步全烘） */
     function snapshotRegion() { return snap.ready && snap.mode === 'region' && cur >= 0; }
+
+    /** 缩放手势里该不该补一帧（= 用户要的「缩放中每 zoomMs 重画一次」）。
+        三条判据：距上次出图够久、k 真的变了（0.4% 以上，细微抖动不值得烘）、显隐/输入没变
+        （那种变了走停手那条）。世界档也走这条路 —— 带轮会把它摊成小帧，
+        出图快慢由轮自己的时长决定（大世界图一轮 ~28 帧，自然就慢下来，不用特意限流）。 */
+    function zoomDue(k, key) {
+      if (!(zoomMs > 0) || !snap.ready) return false;
+      if (snap.key !== key) return false;
+      if (!(snap.k > 0) || Math.abs(k / snap.k - 1) < 0.004) return false;
+      return (now() - lastBakeT) > zoomMs;
+    }
+    /** 这张图烘得出来吗（两种模式的上限不同：世界图允许面积预算口径的边长）。
+        ⚠️ 世界档按**内容尺寸** cw/ch 判，不按量化后的 w/h —— 量化只是补一圈透明边，
+        把边算进 16e6 面积预算会让「k 到 0.62~0.643 时一张世界图刚好装得下」这条刚好破掉
+        （实测：内容 4250×3625 = 15.4Mpx ✓，量化成 4352×3712 = 16.2Mpx ✗ ⇒ 白丢世界档）。 */
+    function tooBig(pick, s) {
+      return pick.mode === 'world'
+        ? (Math.max(s.cw, s.ch) > worldSideMax || s.cw * s.ch > worldPxMax)
+        : (Math.max(s.w, s.h) > maxSide());
+    }
 
     function hide() {
       for (var i = 0; i < 2; i++) if (els[i] && els[i].style.display !== 'none') els[i].style.display = 'none';
@@ -604,9 +667,11 @@
       setMargin: function (v) { marginPx = Math.max(0, Number(v) || 0); snap.ready = false; scheduleBake(); },
       /* 带高旋钮（调参 / A-B 用）：每条约多少设备像素 */
       setBand: function (v) {
-        bandPx = Math.max(48, Math.round(Number(v) || 0) || 224);
+        bandPx = Math.max(48, Math.round(Number(v) || 0) || 128);
         round = null; snap.ready = false; scheduleBake();
       },
+      /* 缩放期出图间隔（毫秒；0 = 退回「只等停手」的老行为） */
+      setZoomMs: function (v) { zoomMs = Math.max(0, Number(v) || 0); },
       /* 世界图面积预算旋钮（调参/A-B 用）。传 0 或不传 = 退回「只看边长」的老口径 */
       setWorldBudget: function (px, side) {
         worldPxMax = px == null ? 0 : Math.max(0, Number(px) || 0);
@@ -628,7 +693,8 @@
           /* 带轮读数：轮数 / 带数 / 末带ms / 末轮带数 / 末轮墙钟 / 追赶次数 / 分配次数 */
           rounds: stats.rounds, bands: stats.bands, bandMs: stats.bandMs,
           lastBands: stats.lastBands, roundMs: stats.roundMs, rushed: stats.rushed, realloc: stats.realloc,
-          bandPx: bandPx, inRound: !!round, live: cur, emerg: stats.emerg, 同步日志: slog, 轮日志: rlog, speed: Math.round(speed),
+          bandPx: bandPx, inRound: !!round, live: cur, emerg: stats.emerg, 同步日志: slog, 轮日志: rlog,
+          speed: Math.round(speed), zoomMs: zoomMs, 距上次出图: Math.round(now() - lastBakeT), 分配日志: rlLog, 掉: Math.round(slackFall),
           worldK: +worldKMax(snap.dpr || last.dpr).toFixed(4), maxSide: maxSide(), tier: ti,
           worldPx: worldPxMax, worldSide: worldSideMax,
           covered: snap.ready ? rectCoversView(snap.rect) : false,
