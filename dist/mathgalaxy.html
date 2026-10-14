@@ -2905,6 +2905,33 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     return t * t * (3 - 2 * t);
   }
 
+  /* ------------------------------------------------------ 圆角矩形路径（兼容）
+     ⛔ 别写成 `if (ctx.roundRect) ctx.roundRect(..., r)` —— 这个 API 是 2022 才进的规范，
+     安卓平板的 Chromium 早期实现**有这个函数、但第 5 个参数只吃 sequence<number>**，
+     传数字会抛：
+       TypeError: Failed to execute 'roundRect' on 'CanvasRenderingContext2D':
+                  The provided value cannot be converted to a sequence
+     ⇒ 每帧绘制直接炸掉、页面弹错误框（实测：平板打开就报错，台式机与新手机都正常）。
+     所以：先试**数组**形式（规范允许 `[r]` = 四角同值，早期的 sequence-only 实现也吃），
+     捕获到异常就永久退回手画 arcTo（处处可用，形状一致）。 */
+  var rrNative = -1;                    // -1 未定 / 1 原生 / 0 手画
+  function roundPath(ctx, x, y, w, h, r) {
+    if (rrNative !== 0) {
+      if (rrNative === 1) { ctx.roundRect(x, y, w, h, [r]); return; }
+      if (ctx.roundRect) {
+        try { ctx.roundRect(x, y, w, h, [r]); rrNative = 1; return; }
+        catch (e) { rrNative = 0; }
+      } else { rrNative = 0; }
+    }
+    var q = Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2);
+    ctx.moveTo(x + q, y);
+    ctx.arcTo(x + w, y, x + w, y + h, q);
+    ctx.arcTo(x + w, y + h, x, y + h, q);
+    ctx.arcTo(x, y + h, x, y, q);
+    ctx.arcTo(x, y, x + w, y, q);
+    ctx.closePath();
+  }
+
   /* ======================================================================= */
   function createRenderer(canvas, view) {
     var ctx = canvas.getContext('2d');
@@ -3543,9 +3570,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.86)';
         ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);
-        else ctx.rect(p.x - bw / 2, cy - bh / 2, bw, bh);
-        ctx.fill();
+        roundPath(ctx, p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);        ctx.fill();
         ctx.strokeStyle = U.rgba(r.color, 0.55);
         ctx.lineWidth = 1.5;
         ctx.stroke();
@@ -3751,8 +3776,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.88)';
         ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(p.x - bw / 2, y - bh / 2, bw, bh, bh / 2);
-        else ctx.rect(p.x - bw / 2, y - bh / 2, bw, bh);
+        roundPath(ctx, p.x - bw / 2, y - bh / 2, bw, bh, bh / 2);
         ctx.fill();
         var g = view.graph.galaxyOf(c);
         if (g) { ctx.strokeStyle = U.rgba(g.color, 0.5); ctx.lineWidth = 1.2; ctx.stroke(); }
