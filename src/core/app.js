@@ -1412,6 +1412,7 @@
       var flags = String(location.hash || '') + '&' + String(location.search || '');
       var bmpOn = !/(^|[&#?])bitmap=0/.test(flags);
       var regionOn = /(^|[&#?])region=1/.test(flags);
+      var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
       bitmap = MG.createWorldBitmap({
         renderer: renderer, graph: graph,
         host: graphEl.parentNode, beforeEl: graphEl,
@@ -1420,6 +1421,7 @@
           return m ? [Number(m[2])] : C.bitmap.tiers;
         })(), settleMs: C.bitmap.settleMs, marginPx: C.bitmap.marginPx, onSwap: requestDraw,
         region: regionOn,
+        marginPx: marginOn ? Number(marginOn[2]) : C.bitmap.marginPx,
         enabled: C.bitmap.enabled !== false && bmpOn
       });
       bitmap.attach();
@@ -1460,6 +1462,7 @@
       requestDraw: requestDraw,     // 外部改了 cam / 数据之后记得调一次
       setBitmap: function (v) { if (bitmap) { bitmap.enable(v); bitmap.bakeNow(); } requestDraw(); },
       setRegion: function (v) { if (bitmap) bitmap.setRegion(v); requestDraw(); },
+      setMargin: function (v) { if (bitmap) bitmap.setMargin(v); requestDraw(); },
       get bitmap() { return bitmap ? bitmap.state() : null; },
       rebuild: function () { start(); },
       get graph() { return view.graph; },

@@ -85,8 +85,11 @@
          否则矩形宽度每烘一次都会因 ceil 抖动 1px ⇒ 画布 backing store 反复重新分配
          （3330×1983 ≈ 26MB）—— 实测那是 54~67ms 单帧尖峰的来源。 */
       var m = Math.min(dpr, 2);
-      var pw = Math.ceil((vw * dpr + 2 * marginPx) / 8) * 8;
-      var ph = Math.ceil((vh * dpr + 2 * marginPx) / 8) * 8;
+      /* margin 不能把图顶出纹理/内存上限：夹到 maxSide（k=1.44、视口 2530 时每边最多 ~783px）。
+         否则会一直 too-big ⇒ snap 永远 not ready ⇒ 每帧排队重烘 + 退回实时画。 */
+      var lim = maxSide();
+      var pw = Math.min(lim, Math.ceil((vw * dpr + 2 * marginPx) / 8) * 8);
+      var ph = Math.min(lim, Math.ceil((vh * dpr + 2 * marginPx) / 8) * 8);
       var halfW = pw / (2 * k * m), halfH = ph / (2 * k * m);
       var cx = (vw / 2 - tx) / k, cy = (vh / 2 - ty) / k;   // 视口中心的世界坐标
       return { mode: 'region', r: { minX: cx - halfW, minY: cy - halfH, maxX: cx + halfW, maxY: cy + halfH } };
@@ -242,6 +245,9 @@
       bakeNow: function () { scheduleBake(); },
       enable: function (v) { enabled = !!v; if (!enabled) hide(); },
       setRegion: function (v) { regionOn = !!v; snap.ready = false; scheduleBake(); },
+      /* 余量旋钮（调参用）：改完下一次重烘生效 */
+      setMargin: function (v) { marginPx = Math.max(0, Number(v) || 0); snap.ready = false; scheduleBake(); },
+      get margin() { return marginPx; },
       get region() { return regionOn; },
       get enabled() { return enabled; },
       state: function () {
