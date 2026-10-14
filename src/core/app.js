@@ -1415,6 +1415,9 @@
          关掉：?region=0 或 MG.app.setRegion(false)。 */
       var regionOn = !/(^|[&#?])region=0/.test(flags);
       var marginOn = /(^|[&#?])margin=(\d+)/.exec(flags);
+      /* hover 叠加层默认走**甲支**（入射边加宽 + 箭头）—— 与旧「真画」观感一致，
+         避免静默降质。要看廉价版（只画外环）：?hover=ring */
+      var hoverFullOn = !/(^|[&#?])hover=ring/.test(flags);
       bitmap = MG.createWorldBitmap({
         renderer: renderer, graph: graph,
         host: graphEl.parentNode, beforeEl: graphEl,
@@ -1427,6 +1430,7 @@
         enabled: C.bitmap.enabled !== false && bmpOn
       });
       bitmap.attach();
+      renderer.setHoverFull(hoverFullOn);   // 甲支（默认）：入射边加宽 ×1.85 + 箭头 ×1.2
     }
     /* ------------------------------------------------ 外部内容包（可选） */
     if (MG.loader) {

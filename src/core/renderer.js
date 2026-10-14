@@ -440,7 +440,7 @@
     /* 烘焙时必须让「屏幕上才有的量」按**烘焙那个 k** 算，而绘制目标又是另一张画布。
        所以：staticCam 覆盖相机读数、cullOff 关掉视口裁剪、staticHidden 让实时层
        把静态部分让给位图图层（标签/hover 仍实时画）。⛔ 只在 drawStatic 的同步区间里置位。 */
-    var staticCam = null, cullOff = false, staticHidden = false, glowLive = false;
+    var staticCam = null, cullOff = false, staticHidden = false, glowLive = false, hoverFull = false;
     /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback */
     var prof = { edges: 0, nodes: 0, labels: 0, frames: 0 };
     function camNow() { return staticCam || view.cam; }
@@ -574,9 +574,14 @@
       });
     }
 
-    /* hover 叠加层。Phase A 占位 = **只保留外环**：
-       「入射边加粗（×1.85）」实测会让被烘那条线的核心 alpha 从 0.19 过冲到 0.34
-       （= α(1−α)，0.6% 的像素），属于待用户拍板的 A/B 甲支，先不做。 */
+    /* hover 叠加层。
+       乙支（默认）= 只画节点外环：完全落在烘焙节点之外，纯叠加 ⇒ 精确。
+       甲支（hoverFull=true）= 再把「入射边加宽 ×1.85 + 箭头 ×1.2」用 **destination-over**
+       叠上去 —— 它只在「烘焙图没有墨的地方」落笔，于是：
+         · 原来的 1.15px 芯原封不动（alpha 不变）✓
+         · 两侧各多出 ~0.49px 的晕，alpha 正确 ✓
+       剩下的偏差（实测）：芯里 α 0.19→0.34、α 0.5→0.75（= α(1−α)，0.6% 的像素）、
+       以及交叉处 z-order 微差（max 37/255，1% 像素）。这些是**已知且待用户拍板**的偏差。 */
     function drawHoverOverlay() {
       var hv = view.hover;
       if (!hv || hv.type !== 'node') return;
@@ -590,6 +595,18 @@
       ctx.lineWidth = 1.4;
       ctx.strokeStyle = U.rgba(MG.typeStyle(n.type).color, 0.55 * a);
       ctx.stroke();
+      if (!hoverFull || !geomCache) return;
+      /* 甲支：入射边加宽 + 箭头变大，destination-over ⇒ 只补「新增的那一圈」 */
+      var list = Object.keys(geomCache);
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      for (var i = 0; i < list.length; i++) {
+        var g = geomCache[list[i]];
+        if (!g || !isEdgeActive(g)) continue;
+        drawEdgeOne(g);
+        if (g.arrow) drawArrow(g);
+      }
+      ctx.restore();
     }
 
     /* ------------------------------------------------ 星系名 */
@@ -1196,6 +1213,7 @@
       drawStatic: drawStatic,                              // Phase A：烘焙入口
       setStaticHidden: setStaticHidden,                    // 为真时实时层不画静态部分
       setGlowLive: function (v) { glowLive = !!v; },        // 光晕改由实时层单独画
+      setHoverFull: function (v) { hoverFull = !!v; },       // hover 甲支（入射边加宽）
       bbox: bbox,
       prof: prof,
       profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.frames = 0; },
