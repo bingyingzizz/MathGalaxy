@@ -503,6 +503,8 @@
     */
     var settingsEl = document.getElementById('settings');
     var settingsBtn = document.getElementById('tb-settings');
+    var settingsScrim = document.getElementById('settings-scrim');
+    var settingsClose = document.getElementById('settings-close');
     var UI_KEY = 'mg.ui.hidden';
     var UI_ITEMS = ['search', 'legend', 'hint'];
 
@@ -528,10 +530,20 @@
       renderLegend();       // 图例里那行「按 / 搜索」提示会跟着变
       requestDraw();
     }
+    /* 开 / 关这个模态窗口。三个关闭入口都走这里：× / 点遮罩 / Esc。
+       ⚠️ 焦点要跟着走：打开时给关闭按钮（键盘用户直接 Esc 或 Tab 就有落点），
+          关闭时如果焦点还在面板里就还给 ⚙ —— 否则焦点会掉进被 display:none 的子树里，
+          下一个 Tab 从浏览器地址栏重新开始，很难受。 */
     function setSettingsOpen(on) {
       settingsEl.classList.toggle('hidden', !on);
+      if (settingsScrim) settingsScrim.classList.toggle('hidden', !on);
       settingsBtn.classList.toggle('on', !!on);
       settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      if (on) {
+        if (settingsClose) settingsClose.focus();
+      } else if (settingsEl.contains(document.activeElement)) {
+        settingsBtn.focus();
+      }
     }
     applyUI();              // 开页就按上次的选择摆好
 
@@ -539,6 +551,9 @@
       e.stopPropagation();
       setSettingsOpen(settingsEl.classList.contains('hidden'));
     });
+    if (settingsClose) {
+      settingsClose.addEventListener('click', function () { setSettingsOpen(false); });
+    }
     settingsEl.addEventListener('click', function (e) { e.stopPropagation(); });
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
