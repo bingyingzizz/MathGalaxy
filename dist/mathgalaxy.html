@@ -437,6 +437,11 @@ html.ui-no-hint #hint { display: none; }
   animation: panel-in .18s cubic-bezier(.2,.8,.3,1);
 }
 #panel.hidden { display: none; }
+/* ⚠️⚠️ `.hidden` 在本项目里是**逐个 id 定义**的，不是全局类！
+   新加一个用 `class="… hidden"` 的浮层，必须在这附近补一条 —— 否则那个类
+   加上等于没加。实测踩过：设置面板一直 `display:block`，点 ⚙ 只有 class 在变、
+   面板根本关不掉（而且探针只查 classList 时看不出来，要查 getComputedStyle）。 */
+#settings.hidden { display: none; }
 @keyframes panel-in {
   from { opacity: 0; transform: translateY(-6px) scale(.985); }
   to   { opacity: 1; transform: none; }
