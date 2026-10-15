@@ -888,38 +888,42 @@ function assertAI(MG, graph, files, pagesOf) {
 
 /* ---------------------------------------------------------------- llms.txt */
 /* ⚠️ 它本身也必须能一次抓完：实测曾 3.6 KB（估 1004 词元）被截断在「两种检索模式」
-   那一行，AI 根本没读到走边规则。所以协议在前，细节全部挪去 reading.md / policy.md。 */
+   那一行，AI 根本没读到走边规则。所以协议在前，细节全部挪去 reading.md / policy.md。
+   ⚠️ 也正因为这条，**整份文件常年贴着 1300 B 的天花板**（现在 ~1280 B）：
+   2026-10-16 加英文段（T1.3）时没有余量，只能从中文里等量让位 ——
+   让掉的都是**与英文段重复**或**紧一紧就有**的字，信息一项没少：
+     · 删「给 AI 用：按协议取数据，不要单次抓 graph.json」—— 下面的 ⚠ 段说的是同一件事
+     · 删中文那句「可检索的数学知识图谱…」—— 英文段第一句就是它
+     · ⚠ 段与「其它」段压缩措辞（分页规则、转义字符、四个文档的指针一个没丢）
+   拉丁字母在「转义后字符数」那一档也更省 —— 两个上限都要看，见 aiCost()。 */
 function exportLlmsTxt(data, base = '') {
   const c = data.meta.counts;
   const live = base === '' ? '线上：https://bingyingzizz.github.io/mathgalaxy/\n' : '';
   return `# 数学星图 MathGalaxy
 
-可检索的数学知识图谱：节点是定理/定义/引理，边是逻辑关系。
-**给 AI 用：按协议取数据，不要单次抓 graph.json。**
-${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。${data.meta.version ? '内容 ' + data.meta.version + '。' : ''}
-数据根 = 本文件所在目录。${live}
-
+MathGalaxy: a searchable knowledge graph of mathematics.
+${c.nodes} nodes / ${c.edges} edges · ${c.regions} galaxies / ${c.clusters} clusters${data.meta.version ? ' · content ' + data.meta.version : ''}.
+Chinese is the source language; node titles carry English names;
+retrieval protocol unchanged.
+${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。数据根 = 本文件所在目录。${live}
 ## 检索协议
 
-0. \`${base}alias.md\` —— 大白话 / 英文名 → 节点 id。
-1. \`${base}index.md\` —— 星系 → 星团 id。
-2. \`${base}index/<星系id>.md\` —— 该星系的星团（名字、中心天体、点数）。
-3. \`${base}index/<星团id>.md\` —— 该团节点清单（id / 名称 / 层号）。
-4. \`${base}nodes/<节点id>.md\` —— 陈述 + 出入边（每条带证明路径）。
+0. \`${base}alias.md\` 大白话 / 英文名 → 节点 id。
+1. \`${base}index.md\` 星系 → 星团 id。
+2. \`${base}index/<星系id>.md\` 星团（名字 / 中心天体 / 点数）。
+3. \`${base}index/<星团id>.md\` 节点清单（id / 名称 / 层号）。
+4. \`${base}nodes/<节点id>.md\` 陈述 + 出入边（每条带证明路径）。
    说明在 \`notes/<节点id>.md\`，边的正文在 \`proofs/<边id>.md\`。
 顺着 id 继续读就是沿图走。
 
-⚠ **单次抓取约 1000 词元**，抓取工具还会转义
-\`# * [ ] \\\` _ ~\`。产物都按这个尺度切过：**放不下的分页成
-\`<路径>.2.md\`**，首页永远是 \`<路径>.md\`。
-\`${base}graph.json\` / \`${base}graph.md\` 是几百 KB 的全量导出：
-**只用来下载，不要用来检索**。
+⚠ 单次抓取约 1000 词元，工具还会转义 \`# * [ ] \\\` _ ~\`；产物都按这个尺度切过：
+放不下的分页成 \`<路径>.2.md\`，首页永远是 \`<路径>.md\`。
+\`${base}graph.json\` / \`${base}graph.md\` 是几百 KB 全量导出：**只下载，不要用来检索**。
 
 ## 其它
 
 \`${base}reading.md\` 结构/边 · \`${base}policy.md\` 准则 · \`${base}hubs.md\` 枢纽 · \
-\`${base}notation.md\` 记号表。
-LaTeX 由 KaTeX 渲染；\`label\` 等字段是纯文本。
+\`${base}notation.md\` 记号表。LaTeX 走 KaTeX；\`label\` 等字段是纯文本。
 `;
 }
 
