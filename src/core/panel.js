@@ -223,6 +223,9 @@
         }
       }
       bodyEl.innerHTML = html;
+      /* 正文里出现的概念名 → 可点（跳过当前节点自己）。
+         ⚠️ 必须在 innerHTML 之后做：linkify 是**对渲染好的 DOM 做后处理**。 */
+      if (hooks.linkify) hooks.linkify(bodyEl, n.id);
     }
 
     /* -------------------------------------------------------- 连线面板 */
@@ -303,10 +306,21 @@
       }
 
       bodyEl.innerHTML = html;
+      /* 边的证明里也会提到概念 —— 一样给链接（没有「自己」要跳过） */
+      if (hooks.linkify) hooks.linkify(bodyEl, null);
     }
 
     /* ----------------------------------------------------------- 事件 */
     bodyEl.addEventListener('click', function (ev) {
+      /* 正文里点的概念名：跳到那个节点。
+         ⛔ 必须 preventDefault：这些 <a> 的 href 是 "#"，不拦会把地址栏的 hash
+            冲成空的 —— 而 hash 就是星图的深链（#n= / #e= / #v=）。 */
+      var xa = ev.target.closest ? ev.target.closest('[data-xlink]') : null;
+      if (xa) {
+        ev.preventDefault();
+        hooks.onGoto && hooks.onGoto({ type: 'node', id: xa.getAttribute('data-xlink') });
+        return;
+      }
       /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
          按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
       var readBtn = ev.target.closest ? ev.target.closest('[data-read]') : null;

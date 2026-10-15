@@ -542,6 +542,48 @@ html.ui-no-hint #hint { display: none; }
 .pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
 .pn-read-tip.ok { color: #23794A; }
 
+/* ---------- 正文里可点的概念名（xlink） ---------- */
+/* 分寸：看得出能点，但别打断阅读 —— 底色与正文同色，只给一条淡下划线，
+   hover 才上色。毕竟一段陈述里可能有两三个这样的词。 */
+.pn-xlink {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(79, 124, 245, .40);
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+  cursor: pointer;
+}
+.pn-xlink:hover {
+  color: #35509B;
+  background: rgba(79, 124, 245, .10);
+  border-bottom-color: rgba(79, 124, 245, .85);
+  text-decoration: none;
+}
+.pn-xlink:focus-visible {
+  outline: 2px solid rgba(79, 124, 245, .65);
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* 设置窗口里的「清空已读进度」 */
+.set-row-btn { display: block; padding: 4px 6px; }
+.set-row-btn button {
+  appearance: none;
+  font: inherit;
+  font-size: 12.5px;
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background .14s ease, border-color .14s ease, color .14s ease;
+}
+.set-row-btn button:hover {
+  background: rgba(200, 60, 60, .06);
+  border-color: rgba(200, 60, 60, .38);
+  color: #A0362C;
+}
+
 /* ---------- 图例：进度 ---------- */
 #legend .lg-prog { display: flex; align-items: center; gap: 7px; }
 #legend .lg-prog b { font-weight: 650; color: var(--ink); font-size: 12.5px; font-variant-numeric: tabular-nums; }

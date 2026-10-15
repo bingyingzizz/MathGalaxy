@@ -567,6 +567,48 @@ html.ui-no-hint #hint { display: none; }
 .pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
 .pn-read-tip.ok { color: #23794A; }
 
+/* ---------- 正文里可点的概念名（xlink） ---------- */
+/* 分寸：看得出能点，但别打断阅读 —— 底色与正文同色，只给一条淡下划线，
+   hover 才上色。毕竟一段陈述里可能有两三个这样的词。 */
+.pn-xlink {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(79, 124, 245, .40);
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+  cursor: pointer;
+}
+.pn-xlink:hover {
+  color: #35509B;
+  background: rgba(79, 124, 245, .10);
+  border-bottom-color: rgba(79, 124, 245, .85);
+  text-decoration: none;
+}
+.pn-xlink:focus-visible {
+  outline: 2px solid rgba(79, 124, 245, .65);
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* 设置窗口里的「清空已读进度」 */
+.set-row-btn { display: block; padding: 4px 6px; }
+.set-row-btn button {
+  appearance: none;
+  font: inherit;
+  font-size: 12.5px;
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background .14s ease, border-color .14s ease, color .14s ease;
+}
+.set-row-btn button:hover {
+  background: rgba(200, 60, 60, .06);
+  border-color: rgba(200, 60, 60, .38);
+  color: #A0362C;
+}
+
 /* ---------- 图例：进度 ---------- */
 #legend .lg-prog { display: flex; align-items: center; gap: 7px; }
 #legend .lg-prog b { font-weight: 650; color: var(--ink); font-size: 12.5px; font-variant-numeric: tabular-nums; }
@@ -953,6 +995,9 @@ window.addEventListener('error', function (e) {
     <label class="set-row"><input type="checkbox" data-ui="search" checked> 搜索框</label>
     <label class="set-row"><input type="checkbox" data-ui="legend" checked> 图例（左下）</label>
     <label class="set-row"><input type="checkbox" data-ui="hint" checked> 底部说明（标题与操作提示）</label>
+    <div class="set-sep"></div>
+    <div class="set-title">已读标记</div>
+    <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset>清空已读进度</button></div>
     <div class="set-sep"></div>
     <div class="set-title">去别处</div>
     <a class="set-link" href="../">⌂ 站点首页</a>
@@ -6194,6 +6239,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         }
       }
       bodyEl.innerHTML = html;
+      /* 正文里出现的概念名 → 可点（跳过当前节点自己）。
+         ⚠️ 必须在 innerHTML 之后做：linkify 是**对渲染好的 DOM 做后处理**。 */
+      if (hooks.linkify) hooks.linkify(bodyEl, n.id);
     }
 
     /* -------------------------------------------------------- 连线面板 */
@@ -6274,10 +6322,21 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       }
 
       bodyEl.innerHTML = html;
+      /* 边的证明里也会提到概念 —— 一样给链接（没有「自己」要跳过） */
+      if (hooks.linkify) hooks.linkify(bodyEl, null);
     }
 
     /* ----------------------------------------------------------- 事件 */
     bodyEl.addEventListener('click', function (ev) {
+      /* 正文里点的概念名：跳到那个节点。
+         ⛔ 必须 preventDefault：这些 <a> 的 href 是 "#"，不拦会把地址栏的 hash
+            冲成空的 —— 而 hash 就是星图的深链（#n= / #e= / #v=）。 */
+      var xa = ev.target.closest ? ev.target.closest('[data-xlink]') : null;
+      if (xa) {
+        ev.preventDefault();
+        hooks.onGoto && hooks.onGoto({ type: 'node', id: xa.getAttribute('data-xlink') });
+        return;
+      }
       /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
          按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
       var readBtn = ev.target.closest ? ev.target.closest('[data-read]') : null;
@@ -6710,6 +6769,185 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
   }
 
   MG.createReadState = createReadState;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<!-- 内文概念跳转：把正文里提到的概念名包成可点的链接（DOM 后处理，不改内容） -->
+<script>
+/* ==========================================================================
+   数学星图 · 内文概念跳转（把正文里提到的概念变成可点的链接）
+   --------------------------------------------------------------------------
+   「环」的定义里写着「(A,+) 是阿贝尔群」「乘法还交换的环叫交换环」——
+   那些词各自都是图里的一个节点，点它就该跳过去。
+
+   做法：**渲染后的 DOM 后处理**（既不改内容，也不动 util.js 的 md()）
+     · 用「首字 → 候选词」的索引扫纯文本节点，命中就包成 <a data-xlink="id">
+     · 长的优先、区间不重叠
+     · ⛔ 跳过 <a> <code> <pre> <button>，以及 KaTeX 吐出来的 .katex / .katex-display
+
+   ⚠️ 词表由调用方传进来（graph 的 label + aliases 的 aka），这里只管匹配与包标签 ——
+      引擎不该知道「图里有哪些节点」。同一个道理：不在 util.js 里做这件事。
+
+   ⭐⭐ **只链「图里真有边相连」的节点**（邻接表 adj）。为什么这是关键：
+       aliases.js 里登记了大量**普通词**当别名（「满足」「单位」「命题」「推出」），
+       在正文里它们多数只是行文用词 —— 「(A,·) 满足结合律」里的「满足」不是
+       def.satisfaction。放开匹配会满页都是错的链接，比没有链接更糟。
+       限定在邻域里之后，链出来的就正好是「**这一条依赖的那些节点**」。
+
+   ⛔ 单字不匹配（MIN_LEN = 2）：中文没有词边界，「循环」「环境」里的「环」
+      会被当成 def.ring —— 同样是错的链接。
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = (global.MG = global.MG || {});
+
+  var MIN_LEN = 2;
+
+  function createXLink(graph, aliases) {
+    /* 首字 → [{w, id, n}]，按 n 降序（长的优先） */
+    var byFirst = Object.create(null);
+    var labelOf = Object.create(null);
+
+    function add(word, id) {
+      var w = String(word == null ? '' : word).trim();
+      if (w.length < MIN_LEN) return;
+      var f = w.charAt(0);
+      if (!byFirst[f]) byFirst[f] = [];
+      // 同一个词已经指向这个 id 就不重复加（label 与 aka 常常一样）
+      for (var i = 0; i < byFirst[f].length; i++) {
+        if (byFirst[f][i].w === w && byFirst[f][i].id === id) return;
+      }
+      byFirst[f].push({ w: w, id: id, n: w.length });
+    }
+
+    graph.nodes.forEach(function (n) {
+      labelOf[n.id] = n.label || n.id;
+      add(n.label, n.id);
+    });
+    /* 别名也进词表：人和 AI 搜的是别名，正文里出现的也常常是别名。
+       ⚠️ aka 里可能有英文（"Zorn's lemma"）—— 一样能匹配，无所谓。 */
+    ((aliases && aliases.nodes) || []).forEach(function (a) {
+      if (!a || !a.id) return;
+      (a.aka || []).forEach(function (k) { add(k, a.id); });
+    });
+
+    Object.keys(byFirst).forEach(function (f) {
+      byFirst[f].sort(function (a, b) { return b.n - a.n; });
+    });
+
+    /* ---------------------------------------------------------- 邻接表 */
+    /* id → { 邻居id: 1 }。四种边的端点字段各不相同，这里按 kind 取；
+       算成**无向**的（谁连谁都能跳）。只有在这张表里的节点才会被链。 */
+    var adj = Object.create(null);
+    function endsOfEdge(e) {
+      if (e.kind === 'implication') return (e.sources || []).concat(e.target ? [e.target] : []);
+      if (e.kind === 'equivalence' || e.kind === 'analogy') return [e.a, e.b];
+      if (e.kind === 'definition') return [e.definition, e.usedBy];
+      return [];
+    }
+    graph.edges.forEach(function (e) {
+      var ids = endsOfEdge(e).filter(function (v) { return v && graph.byId[v]; });
+      for (var i = 0; i < ids.length; i++) {
+        for (var j = 0; j < ids.length; j++) {
+          if (i === j) continue;
+          if (!adj[ids[i]]) adj[ids[i]] = Object.create(null);
+          adj[ids[i]][ids[j]] = 1;
+        }
+      }
+    });
+
+    /** 在一段纯文本里找命中区间：长的优先，命中后跳过整段（不重叠） */
+    function scan(text, fromId) {
+      var allow = fromId ? adj[fromId] : null;
+      var hits = [];
+      var i = 0;
+      while (i < text.length) {
+        var cands = byFirst[text.charAt(i)];
+        var got = null;
+        if (cands) {
+          for (var k = 0; k < cands.length; k++) {
+            var c = cands[k];
+            if (c.id === fromId) continue;                    // 自指不链
+            if (allow && !allow[c.id]) continue;              // ⭐ 不在邻域里就不链
+            if (i + c.n <= text.length && text.substr(i, c.n) === c.w) { got = c; break; }
+          }
+        }
+        if (got) { hits.push({ at: i, len: got.n, id: got.id }); i += got.n; }
+        else i++;
+      }
+      return hits;
+    }
+
+    var SKIP = { A: 1, CODE: 1, PRE: 1, SCRIPT: 1, STYLE: 1, BUTTON: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1 };
+
+    function insideSkipped(node, root) {
+      var p = node.parentNode;
+      while (p && p !== root) {
+        if (SKIP[p.nodeName]) return true;
+        // ⛔ KaTeX 的输出是一大堆嵌套 span，里面的字不是「正文」
+        if (p.classList && (p.classList.contains('katex') || p.classList.contains('katex-display'))) return true;
+        p = p.parentNode;
+      }
+      return false;
+    }
+
+    /**
+     * 把 root 里出现的、**且与 fromId 有边相连**的概念名包成可点的 <a>。
+     * @param {Element} root    已经渲染好的容器（面板正文 / 概念页正文…）
+     * @param {Object}  opts    { fromId } 站在哪个节点上看；给了它就只链它的邻居
+     * @returns {number} 加了多少个链接
+     */
+    function linkify(root, opts) {
+      if (!root || !global.document) return 0;
+      opts = opts || {};
+      var fromId = opts.fromId || null;
+
+      // 先收集、后修改：边遍历边改 DOM，TreeWalker 会被自己改乱
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+      var texts = [];
+      var t;
+      while ((t = walker.nextNode())) {
+        if (!t.nodeValue || !t.nodeValue.trim()) continue;
+        if (insideSkipped(t, root)) continue;
+        texts.push(t);
+      }
+
+      var count = 0;
+      texts.forEach(function (node) {
+        var s = node.nodeValue;
+        var hits = scan(s, fromId);
+        if (!hits.length) return;
+        var frag = document.createDocumentFragment();
+        var pos = 0;
+        hits.forEach(function (h) {
+          if (h.at > pos) frag.appendChild(document.createTextNode(s.slice(pos, h.at)));
+          var a = document.createElement('a');
+          a.className = 'pn-xlink';
+          a.setAttribute('data-xlink', h.id);
+          a.setAttribute('href', '#');
+          a.setAttribute('title', '跳到「' + (labelOf[h.id] || h.id) + '」');
+          a.textContent = s.substr(h.at, h.len);
+          frag.appendChild(a);
+          pos = h.at + h.len;
+          count++;
+        });
+        if (pos < s.length) frag.appendChild(document.createTextNode(s.slice(pos)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      return count;
+    }
+
+    /** 诊断用：词表规模 */
+    function stats() {
+      var n = 0;
+      Object.keys(byFirst).forEach(function (f) { n += byFirst[f].length; });
+      return { words: n, firstChars: Object.keys(byFirst).length };
+    }
+
+    return { linkify: linkify, stats: stats };
+  }
+
+  MG.createXLink = createXLink;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -38164,6 +38402,11 @@ MG.trunk = [
     });
 
     var renderer = MG.createRenderer(graphEl, view);
+
+    /* 内文概念跳转：面板正文里提到的概念名 → 可点，跳到那个节点。
+       词表 = 每个节点的 label + aliases.js 的 aka；匹配与包标签都在 xlink 里。
+       ⚠️ 只在**渲染完之后**对 DOM 做后处理 —— 不动内容，也不动 util.js 的 md()。 */
+    var xlink = MG.createXLink(graph, MG.aliases);
     /* 导出（当前视图 → 子图 JSON / SVG / TikZ）。引擎模块，不碰任何内容。 */
     var exporter = MG.createExport ? MG.createExport(view, cam, renderer.nodeRadius) : null;
     var cloudTex = null;
@@ -38383,6 +38626,9 @@ MG.trunk = [
       onCluster: function (cid) { fitCluster(cid); },
       onSubgraph: function (id, dir) { setSubgraph(id, dir); },
       onClose: function () { panelOpen = false; requestDraw(); },
+      /* 内文概念跳转：panel 渲染完正文后调它把概念名包成链接（panel 自己不认识图）。
+         ⭐ 只链与 fromId **有边相连**的节点 —— 见 xlink.js 头部注释里的原因。 */
+      linkify: function (root, fromId) { return xlink.linkify(root, { fromId: fromId }); },
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
@@ -38621,7 +38867,13 @@ MG.trunk = [
     if (settingsClose) {
       settingsClose.addEventListener('click', function () { setSettingsOpen(false); });
     }
-    settingsEl.addEventListener('click', function (e) { e.stopPropagation(); });
+    settingsEl.addEventListener('click', function (e) {
+      e.stopPropagation();
+      /* 「清空已读进度」的按钮在设置窗口里 ⇒ 处理也要挂这儿（原来挂在图例上）。
+         ⛔ 别只写 stopPropagation 就完事 —— 那条只是不让事件冒泡关窗口。 */
+      var t = e.target;
+      if (t && t.closest && t.closest('[data-readreset]')) reads.reset();
+    });
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
       var k = t && t.getAttribute && t.getAttribute('data-ui');
@@ -38743,26 +38995,10 @@ MG.trunk = [
 
       var hidden = total - shown;
 
-      /* ---------- 进度：已读 / 可读 ---------- */
-      /* 这是**用户自己的**进度（localStorage），不是内容的一部分 ——
-         删掉 localStorage 那一项，图本身一个像素都不变。
-         「可读」= 前置全都读过的未读节点：图里每条 implication 的 sources、
-         每条 definition 的 definition 都算前置，这个数是现算的。 */
-      var readN = reads.readCount();
-      var readyN = reads.readyList().length;
-      var progressGroup =
-        '<div class="lg-group"><div class="lg-title">进度</div>' +
-        '<div class="lg-row lg-prog">' +
-          '<span class="lg-pbar"><i style="width:' +
-            (total ? (readN / total * 100).toFixed(1) : '0') + '%"></i></span>' +
-          '<b>' + readN + '</b><em>/ ' + total + ' 已读</em>' +
-        '</div>' +
-        '<div class="lg-row">' +
-          '<span class="lg-item lg-ready" title="前置全都读过的未读节点 —— 现在就能读">可读 <b>' + readyN + '</b></span>' +
-          '<span class="lg-chip' + (reads.isShowMarks() ? ' on' : '') +
-            '" data-readmarks title="在图上给读过的节点画绿环">标记</span>' +
-          (readN ? '<button class="lg-reset" data-readreset title="清空已读进度（不可撤销）">重置</button>' : '') +
-        '</div></div>';
+      /* 已读进度**不进图例**（用户：「这个进度感觉可以不用加，没啥必要」）。
+         标记本身还在：面板里有「✓ 标记已读」，图上画绿环，
+         清空进度的入口挪到设置窗口里。 */
+      var progressGroup = '';
 
       /* ---------- 分层：滑杆（原来是一排 0–27 芯片，层数只会继续涨，撑不住） ---------- */
       var maxLv = graph.maxLayer || 0;
@@ -38849,8 +39085,7 @@ MG.trunk = [
         setLayerMax(null); setTrunkOnly(false); clearSubgraph(); vis.showAll(); return;
       }
 
-      // 进度：开关图上的绿环 / 清空已读
-      if (t.closest('[data-readmarks]')) { reads.setShowMarks(!reads.isShowMarks()); return; }
+      // 进度相关的图例开关已移除（用户说没必要）；清空进度的入口在设置窗口里
       if (t.closest('[data-readreset]')) { reads.reset(); return; }
 
       // 子图：改跳数 / 开关「跳地基」/ 退出

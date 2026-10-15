@@ -97,6 +97,11 @@
     });
 
     var renderer = MG.createRenderer(graphEl, view);
+
+    /* 内文概念跳转：面板正文里提到的概念名 → 可点，跳到那个节点。
+       词表 = 每个节点的 label + aliases.js 的 aka；匹配与包标签都在 xlink 里。
+       ⚠️ 只在**渲染完之后**对 DOM 做后处理 —— 不动内容，也不动 util.js 的 md()。 */
+    var xlink = MG.createXLink(graph, MG.aliases);
     /* 导出（当前视图 → 子图 JSON / SVG / TikZ）。引擎模块，不碰任何内容。 */
     var exporter = MG.createExport ? MG.createExport(view, cam, renderer.nodeRadius) : null;
     var cloudTex = null;
@@ -316,6 +321,9 @@
       onCluster: function (cid) { fitCluster(cid); },
       onSubgraph: function (id, dir) { setSubgraph(id, dir); },
       onClose: function () { panelOpen = false; requestDraw(); },
+      /* 内文概念跳转：panel 渲染完正文后调它把概念名包成链接（panel 自己不认识图）。
+         ⭐ 只链与 fromId **有边相连**的节点 —— 见 xlink.js 头部注释里的原因。 */
+      linkify: function (root, fromId) { return xlink.linkify(root, { fromId: fromId }); },
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
@@ -554,7 +562,13 @@
     if (settingsClose) {
       settingsClose.addEventListener('click', function () { setSettingsOpen(false); });
     }
-    settingsEl.addEventListener('click', function (e) { e.stopPropagation(); });
+    settingsEl.addEventListener('click', function (e) {
+      e.stopPropagation();
+      /* 「清空已读进度」的按钮在设置窗口里 ⇒ 处理也要挂这儿（原来挂在图例上）。
+         ⛔ 别只写 stopPropagation 就完事 —— 那条只是不让事件冒泡关窗口。 */
+      var t = e.target;
+      if (t && t.closest && t.closest('[data-readreset]')) reads.reset();
+    });
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
       var k = t && t.getAttribute && t.getAttribute('data-ui');
@@ -676,26 +690,10 @@
 
       var hidden = total - shown;
 
-      /* ---------- 进度：已读 / 可读 ---------- */
-      /* 这是**用户自己的**进度（localStorage），不是内容的一部分 ——
-         删掉 localStorage 那一项，图本身一个像素都不变。
-         「可读」= 前置全都读过的未读节点：图里每条 implication 的 sources、
-         每条 definition 的 definition 都算前置，这个数是现算的。 */
-      var readN = reads.readCount();
-      var readyN = reads.readyList().length;
-      var progressGroup =
-        '<div class="lg-group"><div class="lg-title">进度</div>' +
-        '<div class="lg-row lg-prog">' +
-          '<span class="lg-pbar"><i style="width:' +
-            (total ? (readN / total * 100).toFixed(1) : '0') + '%"></i></span>' +
-          '<b>' + readN + '</b><em>/ ' + total + ' 已读</em>' +
-        '</div>' +
-        '<div class="lg-row">' +
-          '<span class="lg-item lg-ready" title="前置全都读过的未读节点 —— 现在就能读">可读 <b>' + readyN + '</b></span>' +
-          '<span class="lg-chip' + (reads.isShowMarks() ? ' on' : '') +
-            '" data-readmarks title="在图上给读过的节点画绿环">标记</span>' +
-          (readN ? '<button class="lg-reset" data-readreset title="清空已读进度（不可撤销）">重置</button>' : '') +
-        '</div></div>';
+      /* 已读进度**不进图例**（用户：「这个进度感觉可以不用加，没啥必要」）。
+         标记本身还在：面板里有「✓ 标记已读」，图上画绿环，
+         清空进度的入口挪到设置窗口里。 */
+      var progressGroup = '';
 
       /* ---------- 分层：滑杆（原来是一排 0–27 芯片，层数只会继续涨，撑不住） ---------- */
       var maxLv = graph.maxLayer || 0;
@@ -782,8 +780,7 @@
         setLayerMax(null); setTrunkOnly(false); clearSubgraph(); vis.showAll(); return;
       }
 
-      // 进度：开关图上的绿环 / 清空已读
-      if (t.closest('[data-readmarks]')) { reads.setShowMarks(!reads.isShowMarks()); return; }
+      // 进度相关的图例开关已移除（用户说没必要）；清空进度的入口在设置窗口里
       if (t.closest('[data-readreset]')) { reads.reset(); return; }
 
       // 子图：改跳数 / 开关「跳地基」/ 退出

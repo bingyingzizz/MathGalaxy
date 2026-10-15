@@ -111,6 +111,9 @@ window.addEventListener('error', function (e) {
     <label class="set-row"><input type="checkbox" data-ui="legend" checked> 图例（左下）</label>
     <label class="set-row"><input type="checkbox" data-ui="hint" checked> 底部说明（标题与操作提示）</label>
     <div class="set-sep"></div>
+    <div class="set-title">已读标记</div>
+    <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset>清空已读进度</button></div>
+    <div class="set-sep"></div>
     <div class="set-title">去别处</div>
     <a class="set-link" href="../">⌂ 站点首页</a>
     <a class="set-link" href="all.html">全部概念索引（706 个）</a>
@@ -180,6 +183,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'dev';</script>
 <!-- 已读状态：用户自己的进度（localStorage）。与 visibility 同类但**互不干涉** ——
      那边管「画不画」，这边管「读没读」；藏起来的节点照样可以是已读。 -->
 <script src="src/core/readstate.js"></script>
+<!-- 内文概念跳转：把正文里提到的概念名包成可点的链接（DOM 后处理，不改内容） -->
+<script src="src/core/xlink.js"></script>
 <script src="src/core/loader.js"></script>
 
 <!-- =========================================================================
