@@ -11,7 +11,7 @@ $$( V, E, s, t )$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.pair`](../nodes/def.pair.md) 有序对：用到了定义 有序对　[proofs/def-dep.pair-graph.md](../proofs/def-dep.pair-graph.md)
-- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-dep.function-graph.md](../proofs/def-dep.function-graph.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/def-dep.function-graph.md](../proofs/def-dep.function-graph.md)
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.graph-morphism`](../nodes/def.graph-morphism.md) 图的态射 用

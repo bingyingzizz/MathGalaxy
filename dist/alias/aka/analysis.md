@@ -1,6 +1,8 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 函数 | 实值函数 | 复值函数 | 多元函数 | function → def.number-function
+
 - 原像 | preimage | inverse image | 像 → def.preimage
 
 - 绝对值 | absolute value → def.abs
@@ -26,9 +28,5 @@
 - 区间 | interval → def.interval
 
 - 数列极限 | 极限 | limit | 收敛 | convergence → def.sequence-limit
-
-- 确界原理 | 实数完备 | 完备性 | least upper bound property | completeness of R → thm.real-ordered-field
-
-- 级数 | series | 级数收敛 → def.series
 
 > 续见 alias/aka/analysis.2.md

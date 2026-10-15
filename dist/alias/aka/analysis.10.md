@@ -1,6 +1,20 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- BV 的例子 → prop.bv-examples
+
+- T_F ± F 递增 → lem.variation-monotone
+
+- NBV | 规范有界变差 → def.nbv
+
+- AC 包含于 BV → lem.ac-subset-bv
+
+- BV 的 Jordan 分解 → thm.bv-jordan
+
+- 全变差的 NBV 性质 → lem.nbv-variation
+
+- 递增函数的导数积分不等式 → prop.monotone-integral-derivative
+
 - BV 函数的正则性 → prop.bv-regularity
 
 - 测度与 NBV 一一对应 → thm.borel-measure-nbv
@@ -20,15 +34,5 @@
 - 本性上界 | essential supremum | L-infinity | L∞ 范数 → def.essential-sup
 
 - Lp 范数 | Lp norm | L^p 空间 → def.lp-norm
-
-- Hölder | Holder 不等式 | 赫尔德不等式 → thm.holder
-
-- 稠密 | dense | 简单函数稠密 → prop.dense-simple-compact-support
-
-- Lq 落在 Lp 加 Lr → prop.lq-in-lp-plus-lr
-
-- Lp 交 Lr 包含于 Lq → prop.lp-inter-lr-in-lq
-
-- 小 l p 空间 | 序列空间包含 | ℓp → prop.ell-p-inclusion
 
 > 续见 alias/aka/analysis.11.md

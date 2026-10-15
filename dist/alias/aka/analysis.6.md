@@ -1,6 +1,14 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- Fatou | Fatou's lemma | 法图引理 | 法都引理 → lem.fatou
+
+- 可积 | L1 | L¹ | integrable | Lebesgue 可积 | 勒贝格可积 → def.integrable
+
+- Fatou 推论 → cor.fatou
+
+- L1 是向量空间 → prop.L1-vector-space
+
 - 积分绝对值不等式 → prop.integral-abs-ineq
 
 - 支撑 σ-有限 → prop.L1-support-sigma-finite
@@ -20,15 +28,5 @@
 - 截口 | section | 切片 → def.section
 
 - 积 σ代数的生成基 → prop.product-sigma-base
-
-- 可数积的生成 → prop.product-sigma-generated
-
-- 截口可测 → prop.section-measurable
-
-- 可数积的 Borel 代数 → cor.borel-product
-
-- 乘积测度 | product measure → def.product-measure
-
-- 乘积测度由截口给出 → thm.product-measure-sections
 
 > 续见 alias/aka/analysis.7.md

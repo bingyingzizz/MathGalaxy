@@ -15,6 +15,22 @@ window.MG = window.MG || {};
 
   edges: [
 
+    /* ---------------------------------------------------------- 映射 */
+    {
+      id: 'def-link.numberfn-function',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.number-function',
+      note: '函数就是**取值在数集**的那种映射 —— 先把「映射」定下来，才谈得上挑出其中一类叫函数。'
+    },
+    {
+      id: 'def-link.numberfn-real',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.number-function',
+      note: '「数集」指的是 $\\mathbb{R}$、$\\mathbb{C}$ 的子集 —— 得先有实数与复数。'
+    },
+
     /* ---------------------------------------------------------- 子集 */
     {
       id: 'def-link.sep-subset',

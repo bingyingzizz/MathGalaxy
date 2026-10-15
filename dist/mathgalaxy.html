@@ -7052,9 +7052,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       return { words: n, firstChars: Object.keys(byFirst).length };
     }
 
-    /* ⭐ `scan` 也导出去：**构建期**要用同一套匹配逻辑生成依赖边
-       （`tools/defrefs.mjs`）。⛔ 千万别在构建脚本里另写一份 —— 两份匹配逻辑一定会漂。 */
-    return { linkify: linkify, scan: scan, stats: stats };
+    return { linkify: linkify, stats: stats };
   }
 
   MG.createXLink = createXLink;
@@ -7687,7 +7685,8 @@ MG.aliases = {
 
     /* 关系与函数 */
     { id: 'def.rel', aka: ['二元关系', 'binary relation', '关系'] },
-    { id: 'def.function', aka: ['映射', 'mapping', 'function'] },
+    { id: 'def.function', aka: ['映射', 'mapping', 'map', '对应'] },
+    { id: 'def.number-function', aka: ['函数', '实值函数', '复值函数', '多元函数', 'function'] },
     { id: 'def.preimage', aka: ['原像', 'preimage', 'inverse image', '像'] },
     { id: 'def.nat-arith', aka: ['自然数的加法', '自然数的乘法', '自然数运算', 'Peano 算术'] },
     { id: 'def.quotient-set', aka: ['商集', '等价类', 'quotient', 'equivalence class'] },
@@ -9595,26 +9594,48 @@ window.MG = window.MG || {};
       refs: ['Kunen, Set Theory, I.5']
     },
 
-    /* -------------------------------------------------------- 函数 */
+    /* -------------------------------------------------------- 映射 */
     {
       id: 'def.function',
       cluster: 'set.rel',
       type: 'definition',
-      label: '函数',
-      title: '函数（Function）',
+      label: '映射',
+      title: '映射（Mapping）',
       regions: ['set-theory'],
-      tags: ['定义', '函数'],
+      tags: ['定义', '映射', '对应'],
       statement: [
-        '设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \\to B$），当且仅当对每个输入恰有一个输出：',
+        '设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**映射**（记 $f : A \\to B$），当且仅当对每个输入恰有一个输出：',
         '',
         '$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$',
         '',
         '唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \\{ f(a) : a \\in A \\}$。',
         '',
-        '单射 / 满射 / 双射见另一条节点。'
+        '单射 / 满射 / 双射见另一条节点；取值落在数集里的映射另有一个名字，叫**函数**。'
       ].join('\n'),
-      notes: '在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。\n\n⚠ 两个容易混的地方：\n- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \\to B$（即 $\\operatorname{dom} f = A$）。\n- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。',
+      notes: '在 ZFC 里「映射就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。\n\n⚠ 两个容易混的地方：\n- 「$f$ 是映射」不要求 $A$ 上处处有定义；要求了才写 $f : A \\to B$（即 $\\operatorname{dom} f = A$）。\n- 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。\n\n⭐ **「映射」是最一般的说法**（集合到集合），不管是几何体之间的、群之间的、还是函子之间的。中文书里常把它和「函数」混着用，本图把两者分开：**取值在数集的才叫函数**。',
       refs: ['Kunen, Set Theory, I.5']
+    },
+
+    /* -------------------------------------------------------- 函数 */
+    {
+      id: 'def.number-function',
+      cluster: 'set.rel',
+      type: 'definition',
+      label: '函数',
+      title: '函数（Function）',
+      regions: ['set-theory', 'analysis'],
+      tags: ['定义', '函数', '数集'],
+      statement: [
+        '设 $f : X \\to Y$ 是**映射**。若它的取值落在**数集**里 —— 即 $Y \\subseteq \\mathbb{R}$ 或 $Y \\subseteq \\mathbb{C}$ —— 就叫 $f$ 是一个**函数**。',
+        '',
+        '按中学课本的说法是「数集到数集的映射」；本图把**定义域**那一边放宽：$X$ 可以是任意集合（测度空间、拓扑空间、甚至另一个函数空间）。'
+      ].join('\n'),
+      notes: [
+        '⭐ **为什么要和「映射」分开**：「映射」是集合层面最一般的说法（几何体之间、群之间、函子之间都用它）；「函数」专指**取值在数集**的那些 —— 只有输出是数，才谈得上加减乘、大小、取极限、求导、求积分。图里出现「函数」的地方几乎都在用这些结构。',
+        '**常用叫法**：$Y = \\mathbb{R}$ 的叫**实值函数**，$Y = \\mathbb{C}$ 的叫**复值函数**，$\\mathbb{R}^{n} \\to \\mathbb{R}$ 的叫**多元函数**。',
+        '⚠️ 中学课本的定义是「数集到数集的映射」。本图只要求**陪域**是数集：$f : X \\to \\mathbb{R}$ 里 $X$ 完全可以是一般的集合 —— 否则「可测函数」「连续函数」「$L^{p}$ 里的函数」都得另起名字，反而更绕。定义域也要求是数集的话，那些全都不是函数了。'
+      ].join('\n\n'),
+      refs: ['Rudin, Principles of Mathematical Analysis']
     },
 
     /* ---------------------------------------------------- 选择函数 */
@@ -35076,6 +35097,22 @@ window.MG = window.MG || {};
   nodes: [],
 
   edges: [
+
+    /* ---------------------------------------------------------- 映射 */
+    {
+      id: 'def-link.numberfn-function',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.number-function',
+      note: '函数就是**取值在数集**的那种映射 —— 先把「映射」定下来，才谈得上挑出其中一类叫函数。'
+    },
+    {
+      id: 'def-link.numberfn-real',
+      kind: 'definition',
+      definition: 'def.real',
+      usedBy: 'def.number-function',
+      note: '「数集」指的是 $\\mathbb{R}$、$\\mathbb{C}$ 的子集 —— 得先有实数与复数。'
+    },
 
     /* ---------------------------------------------------------- 子集 */
     {

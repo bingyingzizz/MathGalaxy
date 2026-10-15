@@ -1,7 +1,9 @@
-# 函数　`def.function`　·　续页（第 3 页）
+# 映射　`def.function`　·　续页（第 3 页）
 [在星图里打开](../#n=def.function)　·　第 1 页 [nodes/def.function.md](./def.function.md)　·　上一页 [nodes/def.function.2.md](./def.function.2.md)
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 [`def.graph-morphism`](../nodes/def.graph-morphism.md) 图的态射 用
+- 被 [`def.functor`](../nodes/def.functor.md) 函子 用
 - 被 [`def.simplicial`](../nodes/def.simplicial.md) 单纯对象 用
 - 被 [`def.cone`](../nodes/def.cone.md) 锥 用
 - 被 [`def.elements-category`](../nodes/def.elements-category.md) 元素范畴 用

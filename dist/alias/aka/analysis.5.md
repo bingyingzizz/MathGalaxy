@@ -1,6 +1,12 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 收敛方式 | 五种收敛 | modes of convergence | 几乎处处收敛 | 一致收敛 → def.convergence-modes
+
+- 反例 | 收敛的反例 | 标准反例 → prop.convergence-counterexamples
+
+- L1 收敛推出依测度 → prop.L1-implies-measure
+
 - Egorov | 叶果洛夫 | 叶戈罗夫 → thm.egorov
 
 - Lusin | 卢津 → cor.lusin
@@ -24,13 +30,5 @@
 - 复函数的积分 | 复积分 → def.integral-complex
 
 - 逐项积分 | term-by-term integration | 级数逐项积分 → thm.termwise-integration
-
-- Fatou | Fatou's lemma | 法图引理 | 法都引理 → lem.fatou
-
-- 可积 | L1 | L¹ | integrable | Lebesgue 可积 | 勒贝格可积 → def.integrable
-
-- Fatou 推论 → cor.fatou
-
-- L1 是向量空间 → prop.L1-vector-space
 
 > 续见 alias/aka/analysis.6.md

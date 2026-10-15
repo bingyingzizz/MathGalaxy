@@ -9,3 +9,4 @@
 - 被 [`def.essential-sup`](../nodes/def.essential-sup.md) 本性上界与 L^∞ 用
 - ⇒ [`thm.real-ordered-field`](../nodes/thm.real-ordered-field.md) ℝ 是完备有序域
 - ⇒ [`thm.real-unique`](../nodes/thm.real-unique.md) 完备有序域的唯一性
+- 被 [`def.number-function`](../nodes/def.number-function.md) 函数 用

@@ -14,7 +14,7 @@ $$D(\alpha) \circ p_i = p_j$$
 等价地说，锥就是从常图 $\Delta X$ 到 $D$ 的一个自然变换。把其中的箭头全部反向，得到**余锥**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-dep.function-cone.md](../proofs/def-dep.function-cone.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/def-dep.function-cone.md](../proofs/def-dep.function-cone.md)
 
 - …另有入边，续页见 [nodes/def.cone.2.md](./def.cone.2.md)
 

@@ -1,6 +1,12 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 扩张唯一性 → thm.caratheodory-uniqueness
+
+- 分布函数与测度 → thm.ls-exists
+
+- 可测函数 | measurable function | 可测 → def.measurable-function
+
 - 可测的判定 → prop.measurable-criterion
 
 - Lebesgue 可测 | 勒贝格可测 → def.lebesgue-measurable
@@ -22,11 +28,5 @@
 - 完备化可改零集 → prop.completion-measurable-function
 
 - 依测度收敛 | 依测度 Cauchy 收敛 → thm.cauchy-in-measure
-
-- 收敛方式 | 五种收敛 | modes of convergence | 几乎处处收敛 | 一致收敛 → def.convergence-modes
-
-- 反例 | 收敛的反例 | 标准反例 → prop.convergence-counterexamples
-
-- L1 收敛推出依测度 → prop.L1-implies-measure
 
 > 续见 alias/aka/analysis.5.md

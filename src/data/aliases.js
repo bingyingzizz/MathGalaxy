@@ -63,7 +63,8 @@ MG.aliases = {
 
     /* 关系与函数 */
     { id: 'def.rel', aka: ['二元关系', 'binary relation', '关系'] },
-    { id: 'def.function', aka: ['映射', 'mapping', 'function'] },
+    { id: 'def.function', aka: ['映射', 'mapping', 'map', '对应'] },
+    { id: 'def.number-function', aka: ['函数', '实值函数', '复值函数', '多元函数', 'function'] },
     { id: 'def.preimage', aka: ['原像', 'preimage', 'inverse image', '像'] },
     { id: 'def.nat-arith', aka: ['自然数的加法', '自然数的乘法', '自然数运算', 'Peano 算术'] },
     { id: 'def.quotient-set', aka: ['商集', '等价类', 'quotient', 'equivalence class'] },

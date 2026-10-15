@@ -2,6 +2,6 @@
 [在星图里打开](../#n=def.quotient-topology)　·　第 1 页 [nodes/def.quotient-topology.md](./def.quotient-topology.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/dep.function-quotient.md](../proofs/dep.function-quotient.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/dep.function-quotient.md](../proofs/dep.function-quotient.md)
 
 > 续见 [nodes/def.quotient-topology.3.md](./def.quotient-topology.3.md)

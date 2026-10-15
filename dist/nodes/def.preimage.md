@@ -9,7 +9,7 @@ layer 6 · 定义 · 关系与函数 · 集合论+分析学
 - 对 $B \subseteq Y$，$B$ 的**原像**是 $f^{-1}(B) := \{\, x \in X : f(x) \in B \,\} \subseteq X$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/dep.preimage-function.md](../proofs/dep.preimage-function.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/dep.preimage-function.md](../proofs/dep.preimage-function.md)
 
 refs: Kunen, Set Theory, I.5
 

@@ -1,6 +1,12 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 外测度 | outer measure → def.outer-measure
+
+- 预测度 | premeasure → def.premeasure
+
+- 有限可加 | finitely additive → def.finitely-additive
+
 - σ-有限 | sigma-finite | 有限测度 | 半有限 | 测度空间 → def.measure-space
 
 - 测度的性质 | 测度基本性质 → prop.measure-basic
@@ -24,11 +30,5 @@
 - 几乎处处 | a.e. | almost everywhere | a.e. 收敛 → def.ae
 
 - 预测度还原 → prop.caratheodory-extension
-
-- 扩张唯一性 → thm.caratheodory-uniqueness
-
-- 分布函数与测度 → thm.ls-exists
-
-- 可测函数 | measurable function | 可测 → def.measurable-function
 
 > 续见 alias/aka/analysis.4.md

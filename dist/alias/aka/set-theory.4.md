@@ -1,6 +1,8 @@
 # 别名 → 节点 · 集合论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../set-theory.md`
 
+- Burali-Forti | 序数全体是真类 | 布拉利-福尔蒂 → thm.burali-forti
+
 - 选择函数 | choice function | 选取函数 → def.choicefn
 
 - 选择公理 | AC | axiom of choice | Zorn → ax.choice

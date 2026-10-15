@@ -3,5 +3,5 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.quotient-set`](../nodes/def.quotient-set.md) 商集与等价类 用
-- 被 [`def.function`](../nodes/def.function.md) 函数 用
+- 被 [`def.function`](../nodes/def.function.md) 映射 用
 - 被 [`def.poset`](../nodes/def.poset.md) 偏序集 用

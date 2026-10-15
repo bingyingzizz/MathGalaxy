@@ -3,7 +3,9 @@
 
 - 二元关系 | binary relation | 关系 → def.rel
 
-- 映射 | mapping | function → def.function
+- 映射 | mapping | map | 对应 → def.function
+
+- 函数 | 实值函数 | 复值函数 | 多元函数 | function → def.number-function
 
 - 原像 | preimage | inverse image | 像 → def.preimage
 
@@ -26,7 +28,5 @@
 - 对角线论证 | diagonal argument | 幂集比原集大 → thm.cantor
 
 - 基数可比 | 三分律 → thm.cardinal-comparable
-
-- 自然数 | natural numbers | ℕ → thm.omega
 
 > 续见 alias/aka/set-theory.3.md

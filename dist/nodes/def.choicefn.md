@@ -15,7 +15,7 @@ $\forall X \in F, f(X) \in X$。
 于是选择公理可以简洁地写成：**每个满足 $\emptyset \notin F$ 的集合族 $F$ 都有选择函数**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/def-link.choicefn-rel.md](../proofs/def-link.choicefn-rel.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/def-link.choicefn-rel.md](../proofs/def-link.choicefn-rel.md)
 
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/def.choicefn.2.md](./def.choicefn.2.md)

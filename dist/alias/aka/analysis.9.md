@@ -1,6 +1,16 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- L1 与全变差 → prop.L1-signed
+
+- 局部可积 | locally integrable → def.locally-integrable
+
+- 平均算子 | average operator → def.average-operator
+
+- 平均算子连续 → lem.average-continuous
+
+- 极大函数 | maximal function | Hardy–Littlewood 极大函数 → def.maximal-function
+
 - Lebesgue 集 | Lebesgue point | 勒贝格点 → def.lebesgue-set
 
 - 极大定理 | maximal theorem | Hardy–Littlewood 极大不等式 → thm.maximal-theorem
@@ -18,19 +28,5 @@
 - 有界变差 | bounded variation | BV | 变差 → def.bounded-variation
 
 - 单调函数可导 | 单调函数几乎处处可导 → thm.monotone-differentiable
-
-- BV 的例子 → prop.bv-examples
-
-- T_F ± F 递增 → lem.variation-monotone
-
-- NBV | 规范有界变差 → def.nbv
-
-- AC 包含于 BV → lem.ac-subset-bv
-
-- BV 的 Jordan 分解 → thm.bv-jordan
-
-- 全变差的 NBV 性质 → lem.nbv-variation
-
-- 递增函数的导数积分不等式 → prop.monotone-integral-derivative
 
 > 续见 alias/aka/analysis.10.md

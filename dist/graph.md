@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-15T05:52:49.995Z
-> 9 星系 / 45 星团 / 708 节点 / 1396 连线（强边 1387，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-15T06:03:09.645Z
+> 9 星系 / 45 星团 / 709 节点 / 1398 连线（强边 1389，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -428,24 +428,41 @@ $$\mathcal{P}(X) := \{ A : A \subseteq X \}$$
 
 参考：Kunen, Set Theory, I.5
 
-#### 函数　`def.function`
-*定义*　函数（Function）
+#### 映射　`def.function`
+*定义*　映射（Mapping）
 
-设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**函数**（记 $f : A \to B$），当且仅当对每个输入恰有一个输出：
+设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**映射**（记 $f : A \to B$），当且仅当对每个输入恰有一个输出：
 
 $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 
 唯一性使 $f(a) = b$ 这个记号不会歧义；此时 $\operatorname{dom} f = A$，$f$ 的**像**是 $f(A) = \{ f(a) : a \in A \}$。
 
-单射 / 满射 / 双射见另一条节点。
+单射 / 满射 / 双射见另一条节点；取值落在数集里的映射另有一个名字，叫**函数**。
 
-在 ZFC 里「函数就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。
+在 ZFC 里「映射就是一种特殊的关系」：它只多了一条要求 —— 每个输入的输出**唯一**。
 
 ⚠ 两个容易混的地方：
-- 「$f$ 是函数」不要求 $A$ 上处处有定义；要求了才写 $f : A \to B$（即 $\operatorname{dom} f = A$）。
+- 「$f$ 是映射」不要求 $A$ 上处处有定义；要求了才写 $f : A \to B$（即 $\operatorname{dom} f = A$）。
 - 像 $f(A)$ 一般只是 $B$ 的子集，满射才要求 $f(A) = B$。
 
+⭐ **「映射」是最一般的说法**（集合到集合），不管是几何体之间的、群之间的、还是函子之间的。中文书里常把它和「函数」混着用，本图把两者分开：**取值在数集的才叫函数**。
+
 参考：Kunen, Set Theory, I.5
+
+#### 函数　`def.number-function`
+*定义*　函数（Function）
+
+设 $f : X \to Y$ 是**映射**。若它的取值落在**数集**里 —— 即 $Y \subseteq \mathbb{R}$ 或 $Y \subseteq \mathbb{C}$ —— 就叫 $f$ 是一个**函数**。
+
+按中学课本的说法是「数集到数集的映射」；本图把**定义域**那一边放宽：$X$ 可以是任意集合（测度空间、拓扑空间、甚至另一个函数空间）。
+
+⭐ **为什么要和「映射」分开**：「映射」是集合层面最一般的说法（几何体之间、群之间、函子之间都用它）；「函数」专指**取值在数集**的那些 —— 只有输出是数，才谈得上加减乘、大小、取极限、求导、求积分。图里出现「函数」的地方几乎都在用这些结构。
+
+**常用叫法**：$Y = \mathbb{R}$ 的叫**实值函数**，$Y = \mathbb{C}$ 的叫**复值函数**，$\mathbb{R}^{n} \to \mathbb{R}$ 的叫**多元函数**。
+
+⚠️ 中学课本的定义是「数集到数集的映射」。本图只要求**陪域**是数集：$f : X \to \mathbb{R}$ 里 $X$ 完全可以是一般的集合 —— 否则「可测函数」「连续函数」「$L^{p}$ 里的函数」都得另起名字，反而更绕。定义域也要求是数集的话，那些全都不是函数了。
+
+参考：Rudin, Principles of Mathematical Analysis
 
 #### 单射 / 满射 / 双射　`def.bijection`
 *定义*　单射 / 满射 / 双射（Injective / Surjective / Bijective）
@@ -14881,7 +14898,7 @@ Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 
 集合构造式 $E_x = \{ y : (x, y) \in E \}$ 里写的就是**有序对** $(x, y)$。
 
-#### 定义引用：「函数」→ 截口　`def-link.function-section`
+#### 定义引用：「映射」→ 截口　`def-link.function-section`
 
 截口的第二半是对**函数** $f : X \times Y \to \mathbb{C}$ 定义 $f_x(y) := f(x, y)$。
 
@@ -15703,7 +15720,7 @@ $\emptyset$ 先作为原始对象给出；这条定理说明**不把它当原始
 
 $\bigcap \emptyset$ 要注意：它必须相对某个全集才有意义 —— 空集的出现方式常常是这种边角。
 
-#### 定义引用：「函数」→ 单射 / 满射 / 双射　`dep.function-bijection`
+#### 定义引用：「映射」→ 单射 / 满射 / 双射　`dep.function-bijection`
 
 单射、满射、双射都是**函数**的性质。
 
@@ -15775,7 +15792,7 @@ $L^p$ 的元素取复值：$f : X \to \mathbb{C}$。
 
 本性上界是「$\mu(\{|f| > a\}) = 0$ 的那些 $a \ge 0$ 的下确界」——$a$ 是实数。
 
-#### 定义引用：「函数」→ 像与原像　`dep.preimage-function`
+#### 定义引用：「映射」→ 像与原像　`dep.preimage-function`
 
 像 $f(A)$ 与原像 $f^{-1}(B)$ 都预设 $f$ 是**映射**。
 
@@ -15950,7 +15967,7 @@ $Y \subseteq X$ —— 先有子集，才谈得上它上面的子空间拓扑。
 
 商拓扑问的是商集的哪些子集**拉回去是开的**，判断依据仍是大空间的拓扑。
 
-#### 定义引用：「函数」→ 商拓扑　`dep.function-quotient`
+#### 定义引用：「映射」→ 商拓扑　`dep.function-quotient`
 
 商拓扑是先有一个**满射** $\pi : X \twoheadrightarrow Y$，再反过来给 $Y$ 装拓扑。
 
@@ -16006,7 +16023,7 @@ $\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/\sim$ —— 同样
 
 Cauchy 列、零列都是**有理数列**：$\varepsilon$ 取正有理数，绝对值也是 $\mathbb{Q}$ 上的 —— 用 $\mathbb{Q}$ 的序与四则运算就够，不必先有 $\mathbb{R}$。
 
-#### 定义引用：「函数」→ Cauchy 列与零列　`dep.function-cauchy-null`
+#### 定义引用：「映射」→ Cauchy 列与零列　`dep.function-cauchy-null`
 
 「数列」就是函数 $\omega \to \mathbb{Q}$；下标、子列都是函数语言。
 
@@ -16246,7 +16263,7 @@ $$I_n := \begin{cases} [a_{n-1}, m_n], & x_n > m_n \\ [m_n, b_{n-1}], & x_n \le 
 
 $$|\mathbb{R}| = 2^{\aleph_0} > \aleph_0$$
 
-#### 定义引用：「函数」→ 域　`dep.function-field`
+#### 定义引用：「映射」→ 域　`dep.function-field`
 
 两个运算就是两个**函数** $F \times F \to F$（定义域那一步先要用「笛卡尔积」把 $F \times F$ 造出来）。
 
@@ -18140,6 +18157,14 @@ Currying 就是一对伴随。
 
 把谱序列的页画在平面上。
 
+#### 定义引用：「映射」→ 函数　`def-link.numberfn-function`
+
+函数就是**取值在数集**的那种映射 —— 先把「映射」定下来，才谈得上挑出其中一类叫函数。
+
+#### 定义引用：「实数系 ℝ」→ 函数　`def-link.numberfn-real`
+
+「数集」指的是 $\mathbb{R}$、$\mathbb{C}$ 的子集 —— 得先有实数与复数。
+
 #### 定义引用：「子集」→ 分离公理模式　`def-link.sep-subset`
 
 分离公理模式给出的 $B = \{ x \in A : \varphi (x, p) \}$ 恰好是 $A$ 的一个**子集**——"只从 $A$ 里挑元素"正是 $\subseteq$ 的语义。
@@ -18168,7 +18193,7 @@ Currying 就是一对伴随。
 
 $A \times B = \{ (a, b) : a \in A, b \in B \}$ 中的元素就是有序对。
 
-#### 定义引用：「函数」→ 选择函数　`def-link.choicefn-rel`
+#### 定义引用：「映射」→ 选择函数　`def-link.choicefn-rel`
 
 选择函数首先是一个**函数**：定义里直接要求「$f$ 是函数，$\operatorname{dom} f = F$」。
 
@@ -19012,7 +19037,7 @@ $\mathrm{CGWH}$ 是在**紧生成**之上再加弱 Hausdorff。
 
 关系是 $A \times B$ 的**子集**，定义域 $\operatorname{dom} R$ 与值域 $\operatorname{ran} R$ 也都是子集。
 
-#### 定义引用：「关系」→ 函数　`def-dep.rel-function`
+#### 定义引用：「关系」→ 映射　`def-dep.rel-function`
 
 函数是**特殊的关系**：只多要求「每个输入的输出唯一」。
 
@@ -19040,7 +19065,7 @@ $\mathrm{CGWH}$ 是在**紧生成**之上再加弱 Hausdorff。
 
 正因为逐有限子集定义，线性无关性**具有有限特征**（注里点明了这一步）。
 
-#### 定义引用：「函数」→ 距离空间　`def-dep.function-metric-space`
+#### 定义引用：「映射」→ 距离空间　`def-dep.function-metric-space`
 
 距离 $d : X \times X \to [0, +\infty)$ 是一个**函数**，记号 $d(x, y)$ 用的就是函数值。
 
@@ -19076,7 +19101,7 @@ $\mathfrak{A} \subseteq \mathcal{P}(X)$：基本类首先是一族**子集**。
 
 这条同时定义 $\mathcal{M}(\mathcal{E})$ 与 $\mathfrak{m}(\mathcal{E})$——后者就是**由 $\mathcal{E}$ 生成的单调类**。
 
-#### 定义引用：「函数」→ 积 σ-代数　`def-dep.function-product-sigma`
+#### 定义引用：「映射」→ 积 σ-代数　`def-dep.function-product-sigma`
 
 投影 $\pi_\alpha$ 是**函数**，柱集 $\pi_\alpha^{-1}(E_\alpha)$ 用的是逆像。
 
@@ -19328,7 +19353,7 @@ $\varphi_g(f) = \int f g \, d\mu$ 本身是一个**积分**。
 
 $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 
-#### 定义引用：「函数」→ 可测函数　`def-dep.function-measurable-function`
+#### 定义引用：「映射」→ 可测函数　`def-dep.function-measurable-function`
 
 可测性的载体是**函数** $f : X \to Y$ —— 先有函数，才谈得上「每个可测集的原像可测」。
 
@@ -19364,7 +19389,7 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 
 四元组 $(V, E, s, t)$ 是**嵌套的有序对** —— 有序对是它的载体，先有有序对才写得下四元组。
 
-#### 定义引用：「函数」→ 图　`def-dep.function-graph`
+#### 定义引用：「映射」→ 图　`def-dep.function-graph`
 
 起点映射与终点映射 $s, t : E \to V$ 是两个**函数**。
 
@@ -19372,7 +19397,7 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 
 图的态射是**图之间**的 —— 先有图这个对象。
 
-#### 定义引用：「函数」→ 图的态射　`def-dep.function-graph-morphism`
+#### 定义引用：「映射」→ 图的态射　`def-dep.function-graph-morphism`
 
 图的态射是一**对函数** $(\varphi_1, \varphi_2)$，再加上两条交换性等式。
 
@@ -19396,7 +19421,7 @@ $M \times_{s,t} M = \{ (f,g) \in M \times M : s(f) = t(g) \}$ 是 $M \times M$ �
 
 函子的定义域与靶都是**范畴**：对象映到对象、态射映到态射。
 
-#### 定义引用：「函数」→ 函子　`def-dep.function-functor`
+#### 定义引用：「映射」→ 函子　`def-dep.function-functor`
 
 函子在对象层与态射层各给一个**函数**。
 
@@ -19436,11 +19461,11 @@ $M \times_{s,t} M = \{ (f,g) \in M \times M : s(f) = t(g) \}$ 是 $M \times M$ �
 
 单纯对象就是一个图 $\Delta^{\mathrm{op}} \to \mathcal{C}$ —— 只不过索引范畴换成了**单纯形范畴** $\Delta$。
 
-#### 定义引用：「函数」→ 单纯对象　`def-dep.function-simplicial`
+#### 定义引用：「映射」→ 单纯对象　`def-dep.function-simplicial`
 
 $\Delta$ 的态射是**单调映射** $[n] \to [m]$，面映射与退化映射是两类基本映射（跳过一点 / 重复一点）。
 
-#### 定义引用：「函数」→ 锥　`def-dep.function-cone`
+#### 定义引用：「映射」→ 锥　`def-dep.function-cone`
 
 锥是一**族**态射 $p_i : X \to D(i)$，族的底层是一个以 $I$ 的对象为定义域的函数。
 
@@ -19504,7 +19529,7 @@ $\Delta$ 的态射是**单调映射** $[n] \to [m]$，面映射与退化映射�
 
 「$I$ 是 $Y$ 的子对象」这句话里的 $I \to Y$ 是**单态射**。
 
-#### 定义引用：「函数」→ 元素范畴　`def-dep.function-el`
+#### 定义引用：「映射」→ 元素范畴　`def-dep.function-el`
 
 元素范畴的对象是 $(Y, t)$，$t \in F(Y)$；把 $F$ 看成函数之后「元素」才有意义。
 
@@ -19536,7 +19561,7 @@ $\widehat{\mathcal{C}}$ 的态射就是预层之间的**自然变换**。
 
 $\operatorname{Hom}_{\mathcal{C}}(X, -)$ 是对**范畴** $\mathcal{C}$ 取的 Hom 函子。
 
-#### 定义引用：「函数」→ 表示函子　`def-dep.function-representable`
+#### 定义引用：「映射」→ 表示函子　`def-dep.function-representable`
 
 万有条件里的 $\exists! f : X \to Y$ 与 $F(f)(s) = t$ 都是**函数**层的话。
 
@@ -19564,7 +19589,7 @@ $\operatorname{Hom}_{\mathcal{C}}(X, -)$ 是对**范畴** $\mathcal{C}$ 取的 H
 
 $\operatorname{Hom}_{\mathcal{D}}(F(X), Y)$ 与 $\operatorname{Hom}_{\mathcal{C}}(X, G(Y))$ 是对两个**范畴**取的 Hom 集。
 
-#### 定义引用：「函数」→ 伴随函子　`def-dep.function-adjoint`
+#### 定义引用：「映射」→ 伴随函子　`def-dep.function-adjoint`
 
 伴随的同构逐对对象给一个**双射**，其底层是函数。
 
@@ -19576,7 +19601,7 @@ $\operatorname{Hom}_{\mathcal{D}}(F(X), Y)$ 与 $\operatorname{Hom}_{\mathcal{C}
 
 单位与余单位本身都是**自然变换**，三角等式也是自然性方块拼出来的。
 
-#### 定义引用：「函数」→ 逗号范畴　`def-dep.function-comma`
+#### 定义引用：「映射」→ 逗号范畴　`def-dep.function-comma`
 
 逗号范畴的对象是 $(Y, f)$，其中 $f : X \to G(Y)$ 是一个**映射**。
 
@@ -20116,7 +20141,7 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 
 结论说的是**弱 Hausdorff** 性在子空间与滤过余极限下保持。
 
-#### 定义引用：「函数」→ 群　`def-dep.group-function`
+#### 定义引用：「映射」→ 群　`def-dep.group-function`
 
 群运算是 $G \times G \to G$，一个**函数**。
 
@@ -21454,7 +21479,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **关系与函数 ↔ 拓扑空间**　2 条节点级连线
 - **拓扑空间 ↔ 度量空间**　6 条节点级连线
 - **实数与极限 ↔ 拓扑空间**　2 条节点级连线
-- **数系的构造 ↔ 关系与函数**　5 条节点级连线
+- **数系的构造 ↔ 关系与函数**　6 条节点级连线
 - **代数结构 ↔ 数系的构造**　5 条节点级连线
 - **代数结构 ↔ 关系与函数**　3 条节点级连线
 - **序结构 ↔ 序数与超限**　3 条节点级连线

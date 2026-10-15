@@ -1,6 +1,16 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- Hölder | Holder 不等式 | 赫尔德不等式 → thm.holder
+
+- 稠密 | dense | 简单函数稠密 → prop.dense-simple-compact-support
+
+- Lq 落在 Lp 加 Lr → prop.lq-in-lp-plus-lr
+
+- Lp 交 Lr 包含于 Lq → prop.lp-inter-lr-in-lq
+
+- 小 l p 空间 | 序列空间包含 | ℓp → prop.ell-p-inclusion
+
 - 有限测度时的包含方向 → prop.lp-inclusion-finite
 
 - 对偶配对 | dual pairing | 对偶 → def.duality-map
@@ -21,6 +31,4 @@
 
 - 半范数阿贝尔群 | semi-normed abelian group | 半范数 → def.semi-normed-ab-group
 
-- Banach 阿贝尔群 | Banach abelian group | Banach 化 → def.banach-ab-group
-
-见 `../../alias.md`。
+> 续见 alias/aka/analysis.12.md

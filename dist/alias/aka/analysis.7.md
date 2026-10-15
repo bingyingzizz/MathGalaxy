@@ -1,6 +1,16 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 可数积的生成 → prop.product-sigma-generated
+
+- 截口可测 → prop.section-measurable
+
+- 可数积的 Borel 代数 → cor.borel-product
+
+- 乘积测度 | product measure → def.product-measure
+
+- 乘积测度由截口给出 → thm.product-measure-sections
+
 - 乘积测度不完备 → prop.product-incomplete
 
 - Fubini | Tonelli | 富比尼 | 富比尼定理 | 交换积分次序 | 重积分换序 → thm.fubini-tonelli
@@ -20,13 +30,5 @@
 - 正集封闭 → prop.positive-set-closure
 
 - 绝对连续的 ε-δ 刻画 | 绝对连续等价刻画 → thm.ac-epsilon-delta
-
-- 要么奇异要么有下界 → lem.singular-or-lower-bound
-
-- Radon–Nikodym 导数 | RN 导数 | 密度 | Radon-Nikodym derivative → def.rn-derivative
-
-- 全变差 | total variation → prop.total-variation-basics
-
-- Hahn 分解 | Hahn decomposition | 哈恩分解 → thm.hahn-decomposition
 
 > 续见 alias/aka/analysis.8.md

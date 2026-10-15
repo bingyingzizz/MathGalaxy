@@ -1,6 +1,10 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 确界原理 | 实数完备 | 完备性 | least upper bound property | completeness of R → thm.real-ordered-field
+
+- 级数 | series | 级数收敛 → def.series
+
 - 连续 | continuous | 连续函数 → def.continuous
 
 - 导数 | derivative | 可导 → def.derivative
@@ -26,11 +30,5 @@
 - 集合族的性质 → prop.set-class-properties
 
 - 测度 | measure | 可数可加 → def.measure
-
-- 外测度 | outer measure → def.outer-measure
-
-- 预测度 | premeasure → def.premeasure
-
-- 有限可加 | finitely additive → def.finitely-additive
 
 > 续见 alias/aka/analysis.3.md

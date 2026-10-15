@@ -12,7 +12,7 @@ layer 7 · 定义 · 代数结构 · 抽象代数
 一句话：**加减乘除（除以非零元）都封闭，且满足结合、交换、分配律**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.function`](../nodes/def.function.md) 函数：用到了定义 函数　[proofs/dep.function-field.md](../proofs/dep.function-field.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/dep.function-field.md](../proofs/dep.function-field.md)
 
 - …另有入边，续页见 [nodes/def.field.2.md](./def.field.2.md)
 
