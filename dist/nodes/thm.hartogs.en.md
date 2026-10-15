@@ -1,0 +1,15 @@
+# Hartogs' Theorem, 1915　`thm.hartogs`
+English entry · root `../`
+[in graph](../#n=thm.hartogs)　·　[Chinese page (authoritative)](./thm.hartogs.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 8 · theorem · cluster 基数与等势 (`set.cardinal`) · Set Theory
+names: `Hartogs` (short) · `Hartogs' Theorem, 1915` (full)
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/thm.hartogs.md` and `proofs/`.
+
+
+Cite: `thm.hartogs` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

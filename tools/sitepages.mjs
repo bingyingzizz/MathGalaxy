@@ -28,6 +28,15 @@ export function esc(s) {
   return String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ESC[c]);
 }
 
+/* 英文入口页（T3.1）在不在：构建期为「有英文名/摘要」的节点产出 `nodes/<id>.en.md`。
+   ⚠️ 判据是**文件系统**（真有这个文件），不是 graph.json 里的字段（那只是「该有」）——
+      两边不一致时以文件为准，否则页面上的链接会 404。
+   ⚠️ 必须定义在 nodePage 之前（踩过：写在函数体里 ⇒ TDZ，ImportError 起不来）。 */
+const enPageExists = (id) => {
+  try { return fs.existsSync(path.join(ROOT, 'dist', 'nodes', id + '.en.md')); }
+  catch (e) { return false; }
+};
+
 /* -------------------------------------------------- 载入「仓库里那份真引擎」 */
 /**
  * 把 src/ui/katex.min.js 与 src/core/util.js 装进一个 VM。
@@ -358,6 +367,8 @@ function nodePage(node, rel, ctx) {
   const descFull = description + (enName ? ' · English: ' + enName : '');
 
   const url = origin + '/mathgalaxy/nodes/' + encodeURIComponent(node.id) + '.html';
+  const hasEnPage = enPageExists(node.id);
+  const enPageRel = node.id + '.en.md';
   const crumbRegion = region ? region.name : node.region;
   const crumbCluster = cluster ? cluster.name : node.cluster;
 
@@ -514,7 +525,7 @@ function nodePage(node, rel, ctx) {
 <meta name="description" content="${esc(descFull)}">
 <link rel="canonical" href="${esc(url)}">
 <link rel="alternate" type="text/markdown" href="${esc(node.id)}.md" title="Markdown 原文（给 AI 的按需检索版）">
-<meta property="og:type" content="article">
+${hasEnPage ? `<link rel="alternate" type="text/markdown" hreflang="en" href="${esc(enPageRel)}" title="English entry (Markdown)">\n` : ''}<meta property="og:type" content="article">
 <meta property="og:site_name" content="数学星图 MathGalaxy">
 <meta property="og:title" content="${esc(htmlTitle)}">
 <meta property="og:description" content="${esc(descFull)}">
@@ -568,7 +579,7 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
       <a href="../#n=${encodeURIComponent(node.id)}">在星图里打开「${esc(node.label)}」</a>　·　
       <a href="../all.html">全部 ${ctx.nodeCount} 个概念</a>　·　
       <a href="${esc(node.id)}.md">Markdown 原文</a>　·　
-      <a href="../read.html">读图指南与记号表</a>
+      ${hasEnPage ? `<a href="${esc(enPageRel)}" hreflang="en">English entry</a>　·　` : ''}<a href="../read.html">读图指南与记号表</a>
     </p>
   </section>
 

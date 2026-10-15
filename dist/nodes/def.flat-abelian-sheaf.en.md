@@ -1,0 +1,15 @@
+# Flatness　`def.flat-abelian-sheaf`
+English entry · root `../`
+[in graph](../#n=def.flat-abelian-sheaf)　·　[Chinese page (authoritative)](./def.flat-abelian-sheaf.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 19 · definition · cluster 阿贝尔层 (`hom.sheaf`) · Homological Algebra
+names: `flat` (short) · `Flatness` (full)
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/def.flat-abelian-sheaf.md` and `proofs/`.
+
+
+Cite: `def.flat-abelian-sheaf` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

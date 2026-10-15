@@ -1,0 +1,15 @@
+# Axiom of Extensionality　`ax.ext`
+English entry · root `../`
+[in graph](../#n=ax.ext)　·　[Chinese page (authoritative)](./ax.ext.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 0 · axiom · cluster ZFC 公理系统 (`set.zfc`) · Set Theory
+names: `extensionality` (short) · `Axiom of Extensionality` (full)
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/ax.ext.md` and `proofs/`.
+
+
+Cite: `ax.ext` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

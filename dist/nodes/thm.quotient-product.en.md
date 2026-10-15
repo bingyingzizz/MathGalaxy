@@ -1,0 +1,9 @@
+# quotient map product　`thm.quotient-product`
+English entry · root `../`
+[in graph](../#n=thm.quotient-product)　·　[Chinese page (authoritative)](./thm.quotient-product.md)
+
+> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+
+layer 7 · theorem · cluster 紧生成空间与弱 Hausdorff (`topo.cg`) · Topology
+
+> 续见 nodes/thm.quotient-product.en.2.md

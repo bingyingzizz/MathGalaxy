@@ -1,0 +1,15 @@
+# Additive Functor　`def.additive-functor`
+English entry · root `../`
+[in graph](../#n=def.additive-functor)　·　[Chinese page (authoritative)](./def.additive-functor.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 9 · definition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homological Algebra
+names: `additive functor` (short) · `Additive Functor` (full)
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/def.additive-functor.md` and `proofs/`.
+
+
+Cite: `def.additive-functor` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

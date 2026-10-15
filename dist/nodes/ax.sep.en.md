@@ -1,0 +1,14 @@
+# separation　`ax.sep`
+English entry · root `../`
+[in graph](../#n=ax.sep)　·　[Chinese page (authoritative)](./ax.sep.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 4 · axiom · cluster ZFC 公理系统 (`set.zfc`) · Set Theory
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/ax.sep.md` and `proofs/`.
+
+
+Cite: `ax.sep` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

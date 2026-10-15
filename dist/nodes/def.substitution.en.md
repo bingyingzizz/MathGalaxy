@@ -1,0 +1,14 @@
+# substitution　`def.substitution`
+English entry · root `../`
+[in graph](../#n=def.substitution)　·　[Chinese page (authoritative)](./def.substitution.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 2 · definition · cluster 一阶语言与公式 (`logic.fol`) · Mathematical Logic
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/def.substitution.md` and `proofs/`.
+
+
+Cite: `def.substitution` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

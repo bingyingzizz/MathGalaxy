@@ -1,0 +1,14 @@
+# sheaf condition　`thm.sheaf-descent`
+English entry · root `../`
+[in graph](../#n=thm.sheaf-descent)　·　[Chinese page (authoritative)](./thm.sheaf-descent.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 16 · theorem · cluster 层与拓扑 (`cat.sheaf`) · Category Theory
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/thm.sheaf-descent.md` and `proofs/`.
+
+
+Cite: `thm.sheaf-descent` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

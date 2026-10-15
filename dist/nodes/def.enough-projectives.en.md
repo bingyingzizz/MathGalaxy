@@ -1,0 +1,14 @@
+# enough projectives　`def.enough-projectives`
+English entry · root `../`
+[in graph](../#n=def.enough-projectives)　·　[Chinese page (authoritative)](./def.enough-projectives.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 15 · definition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homological Algebra
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/def.enough-projectives.md` and `proofs/`.
+
+
+Cite: `def.enough-projectives` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

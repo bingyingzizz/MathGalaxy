@@ -1,0 +1,14 @@
+# split exact　`def.split-exact`
+English entry · root `../`
+[in graph](../#n=def.split-exact)　·　[Chinese page (authoritative)](./def.split-exact.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 14 · definition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homological Algebra
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/def.split-exact.md` and `proofs/`.
+
+
+Cite: `def.split-exact` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+

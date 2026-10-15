@@ -1,0 +1,15 @@
+# Hausdorff 极大原理　`thm.hausdorff`
+English entry · root `../`
+[in graph](../#n=thm.hausdorff)　·　[Chinese page (authoritative)](./thm.hausdorff.md)
+
+> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+
+layer 9 · theorem · cluster 选择原理 (`order.choice`) · Order Theory
+
+## Abstract
+Every chain in a poset extends to a maximal one: for a chain $C_0 \subseteq P$ there is a maximal chain $M$ with $C_0 \subseteq M$, maximal under inclusion. Taking $C_0 = \emptyset$ gives that every non-empty poset has a maximal chain. The statement predates Zorn's lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise form of "keep adding elements until you cannot add any more".
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/thm.hausdorff.md` and `proofs/`.
+
+> 续见 nodes/thm.hausdorff.en.2.md

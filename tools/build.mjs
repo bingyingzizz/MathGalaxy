@@ -135,6 +135,8 @@ function exportJSON(MG, graph) {
         edges: graph.edges.length,
         strong: graph.edges.filter(e => strengthOf(e) === 'strong').length,
         weak: graph.edges.filter(e => strengthOf(e) === 'weak').length,
+        /* 有英文入口页的节点数（T3.1）：llms.txt 的协议里要写这个数 */
+        en_pages: graph.nodes.filter(n => n.title_en || n.label_en || n.abstract_en).length,
       },
       readingGuide: {
         layers: '星系(region) → 星团(cluster) → 恒星(node)',
@@ -184,6 +186,9 @@ function exportJSON(MG, graph) {
          消费方不必猜这段英文是审过的还是机翻的。 */
       abstract_en: n.abstract_en || undefined,
       translations: n.abstract_en ? { en: { status: ABSSTATUS, version: ABS.basedOn || null } } : undefined,
+      /* 英文入口页（T3.1）：有英文名或摘要的节点另出一份 `nodes/<id>.en.md`。
+         这里只登记**有没有**，路径按约定拼 —— 消费方不必猜。 */
+      en_page: (n.title_en || n.label_en || n.abstract_en) ? `nodes/${n.id}.en.md` : undefined,
       region: n.regions[0] || null,
       regions: n.regions,
       cluster: n.cluster || null,
@@ -733,6 +738,14 @@ function exportAIProducts(MG, graph, data) {
     }
 
     files.push({ path: `nodes/${n.id}.md`, text });
+    /* 英文页（T3.1）：凡是有英文名或英文摘要的节点，都另出一份**英文入口页**。
+       ⛔ 不是中文页的翻译 —— 中文陈述/证明没有英文版，这里只给「英文读者 / 英文 AI
+       落在这一页时能拿到的东西」：英文名、层级、类型、星团、摘要（若有）、图外条目，
+       以及指回**权威中文页**的路。缺什么就明说缺，不假装是全文。 */
+    if (n.title_en || n.label_en || n.abstract_en) {
+      const en = enNodeText(n, MG);
+      emitChunks(files, 'nodes', n.id + '.en', en.head, en.body.trimEnd(), en.tail, en.tailRes);
+    }
     const texts = [text];
     pages.forEach((p, i) => {
       const k = i + 2;
@@ -944,31 +957,31 @@ function assertAI(MG, graph, files, pagesOf) {
 function exportLlmsTxt(data, base = '') {
   const c = data.meta.counts;
   const live = base === '' ? '线上：https://bingyingzizz.github.io/mathgalaxy/\n' : '';
+  const nEn = data.meta.counts.en_pages || 0;
   return `# 数学星图 MathGalaxy
 
 MathGalaxy: a searchable knowledge graph of mathematics.
 ${c.nodes} nodes / ${c.edges} edges · ${c.regions} galaxies / ${c.clusters} clusters${data.meta.version ? ' · content ' + data.meta.version : ''}.
-Chinese is the source language; node titles carry English names;
-retrieval protocol unchanged.
+Chinese is the source; ${nEn} nodes have English pages.
 ${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连线。数据根 = 本文件所在目录。${live}
 ## 检索协议
 
 0. \`${base}alias.md\` 大白话 / 英文名 → 节点 id。
-1. \`${base}index.md\` 星系 → 星团 id。
-2. \`${base}index/<星系id>.md\` 星团（名字 / 中心天体 / 点数）。
-3. \`${base}index/<星团id>.md\` 节点清单（id / 名称 / 层号）。
-4. \`${base}nodes/<节点id>.md\` 陈述 + 出入边（每条带证明路径）。
+1. \`${base}index.md\` 星系 → \`index/<星系id>.md\` 星团 → \`index/<星团id>.md\` 节点清单。
+2. \`${base}nodes/<节点id>.md\` 陈述 + 出入边（每条带证明路径）；
    说明在 \`notes/<节点id>.md\`，边的正文在 \`proofs/<边id>.md\`。
+3. **英文**：有英文名/摘要的节点另有 \`${base}nodes/<节点id>.en.md\`
+   （英文名 + 摘要；陈述与证明仍以中文页为准）。文档英文版是 \`${base}*.en.md\`。
+   ⛔ 没有英文版的就按中文页读，别猜。
 顺着 id 继续读就是沿图走。
 
-⚠ 单次抓取约 1000 词元，工具还会转义 \`# * [ ] \\\` _ ~\`；产物都按这个尺度切过：
-放不下的分页成 \`<路径>.2.md\`，首页永远是 \`<路径>.md\`。
-\`${base}graph.json\` / \`${base}graph.md\` 是几百 KB 全量导出：**只下载，不要用来检索**。
+⚠ 单次抓取约 1000 词元（还会转义 \`# * [ ] \\\` _ ~\`）；放不下的分页成 \`<路径>.2.md\`，
+首页永远是 \`<路径>.md\`。\`${base}graph.json\` / \`graph.md\` 只下载，别用来检索。
 
 ## 其它
 
-\`${base}reading.md\` 结构/边 · \`${base}policy.md\` 准则 · \`${base}hubs.md\` 枢纽 · \
-\`${base}notation.md\` 记号表。LaTeX 走 KaTeX；\`label\` 等字段是纯文本。
+\`${base}reading.md\` 结构 · \`policy.md\` 准则 · \`hubs.md\` 枢纽 · \
+\`notation.md\` 记号表。LaTeX 走 KaTeX；\`label\` 等字段是纯文本。
 `;
 }
 
@@ -1231,6 +1244,70 @@ function absHeading(A) {
 const fillBase = (s, base) => String(s).replace(/\{\{base\}\}/g, base);
 /** 英文名回落链：label_en → title_en → 中文 label（与 graph.js 抄下来的口径一致） */
 const enNameOf = n => (n && (n.label_en || n.title_en || n.label)) || '';
+
+/* ==================================================== 英文节点页（T3.1） */
+/* 干什么：给「有英文名或英文摘要」的节点出一份 `nodes/<id>.en.md`。
+   ⛔ 它不是中文页的翻译：中文的陈述 / 说明 / 证明没有英文版，这一页给的是
+      英文读者 / 英文 AI 落到这里时能拿到的东西 + 指回**权威中文页**的路。
+   ⚠️ 缺什么就写着缺 —— 这一页的最高优先级是「别让人以为读到了全文」。
+   ⚠️ 状态同样只有一个来源：有摘要的走 i18nState(摘要)，只有名字的走「自动派生」
+      （派生型内容由构建生成，本来就不需要人审 —— 见任务书 §0.4）。 */
+const EN_TYPE = {
+  axiom: 'axiom', definition: 'definition', theorem: 'theorem', lemma: 'lemma',
+  proposition: 'proposition', corollary: 'corollary', example: 'example',
+};
+function enNodeText(n, MG) {
+  const ABS = (MG && MG.i18nAbstracts) || null;
+  const hasAbs = !!(ABS && ABS.items && ABS.items[n.id]);
+  const name = n.title_en || n.label_en || '';
+  const regEn = (rid) => {
+    const r = ((MG && MG.regions) || []).find((x) => x.id === rid);
+    return (r && r.en) || rid;
+  };
+  const clusterName = (cid) => {
+    const c = ((MG && MG.clusters) || []).find((x) => x.id === cid);
+    return c ? `${c.name} (\`${cid}\`)` : cid;
+  };
+  const head = `# ${name || n.label}　\`${n.id}\`\n` +
+    `English entry · root \`../\`\n` +
+    `${mdLink('in graph', `../#n=${n.id}`)}　·　` +
+    `${mdLink('Chinese page (authoritative)', './' + n.id + '.md')}\n\n`;
+  const L = [];
+  if (hasAbs) {
+    const st = i18nState(ABS);
+    const why = st.state === 'stale'
+      ? `revision ${ABS.basedOn} of the content; the Chinese page is authoritative.`
+      : st.state === 'reviewed'
+        ? 'reviewed by the author; the Chinese page is authoritative.'
+        : 'machine-drafted, pending author review; the Chinese page is authoritative.';
+    L.push(`> English: **${st.state}** · ${why}`);
+  } else {
+    L.push('> English: **name only** · auto-derived from the source data; ' +
+      'the Chinese page is authoritative.');
+  }
+  L.push('');
+  L.push(`layer ${n.layer} · ${EN_TYPE[n.type] || n.type}` +
+    (n.cluster ? ` · cluster ${clusterName(n.cluster)}` : '') +
+    ((n.regions || []).length ? ` · ${(n.regions || []).map(regEn).join(' / ')}` : ''));
+  if (!hasAbs && n.label_en && n.title_en && n.label_en !== n.title_en) {
+    L.push(`names: \`${n.label_en}\` (short) · \`${n.title_en}\` (full)`);
+  }
+  if (n.abstract_en) L.push('', '## Abstract', n.abstract_en);
+  L.push('', '## Statement and proof');
+  L.push('Chinese only — see the Chinese page ' + `\`nodes/${n.id}.md\` and \`proofs/\`.`);
+  const xr = ((MG && MG.xref) || {})[n.id];
+  const XR_NAME = { wikipedia: 'Wikipedia', nlab: 'nLab', stacks: 'Stacks Project', mathlib: 'Mathlib' };
+  if (xr) {
+    L.push('', '## Elsewhere');
+    L.push(Object.keys(XR_NAME).filter((k) => xr[k]).map((k) => `${XR_NAME[k]}: ${xr[k]}`).join(' · '));
+  }
+  const tail = `\nCite: \`${n.id}\` (content ${CONTENT_VERSION || 'dev'}) · terms: ` +
+    mdLink('LICENSE.txt', '../LICENSE.txt') + '\n';
+  /* ⚠️ 预留要给**真实尾巴**的大小：传大了 page 1 会把正文挤到续页
+     （踩过：lem.zorn.en.md 只剩 464 B，摘要整段跑到第 2 页）。 */
+  const tailRes = Math.max(aiBytes(tail), aiCost(tail)) + 24;
+  return { head, body: L.join('\n') + '\n', tail, tailRes };
+}
 
 /** 枢纽榜英文版的「块」：页首说明 + 每 15 条一组 + 结尾那行。
     ⛔ 入边口径必须与 exportHubs() 完全一致（改一处必须改两处）。

@@ -1,0 +1,15 @@
+# von Neumann Ordinal　`def.ordinal`
+English entry · root `../`
+[in graph](../#n=def.ordinal)　·　[Chinese page (authoritative)](./def.ordinal.md)
+
+> English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
+
+layer 7 · definition · cluster 序数与超限 (`set.ordinal`) · Set Theory
+names: `ordinal` (short) · `von Neumann Ordinal` (full)
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/def.ordinal.md` and `proofs/`.
+
+
+Cite: `def.ordinal` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+
