@@ -34,6 +34,9 @@
     var graphEl = document.getElementById('layer-graph');
     var cloudEl = document.getElementById('layer-cloud');
     var cloudCtx = cloudEl.getContext('2d');
+    /* 已读脉冲环单独一层（见 renderer.drawReadRings 的注释：动画不能画进主画布） */
+    var readEl = document.getElementById('layer-read');
+    var readCtx = readEl.getContext('2d');
     var searchBox = document.getElementById('search-box');
     var searchInput = document.getElementById('search-input');
     var searchResults = document.getElementById('search-results');
@@ -132,8 +135,23 @@
     var suppressLegend = false;
 
     /* -------------------------------------------------------- 绘制循环 */
+    /* 已读脉冲：**自己一条 rAF**，和主画布的绘制循环分开。
+       ⭐ 为什么分开：脉冲要每帧都动，而主画布是**按需**重画的（不动就不画，省电）。
+          把它塞进 frame() 会把整张图的每次重画都拖成 240Hz。
+       ⭐ 而且**没有可见的已读节点就停**（drawReadRings 返回 0）⇒ 空闲时零开销。
+       ⚠️ 任何一次 requestDraw 都会重新踢一脚 —— 不然「平移之后已读的点进入视野」
+          那一刻没人叫醒它。 */
+    var readPulseRaf = 0;
+    function readPulseFrame(ts) {
+      readPulseRaf = 0;
+      if (!renderer.drawReadRings) return;                 // 渲染器没这个 API ⇒ 不用跑
+      if (renderer.drawReadRings(readCtx, ts) > 0) readPulseRaf = requestAnimationFrame(readPulseFrame);
+    }
+    function kickReadPulse() { if (!readPulseRaf) readPulseRaf = requestAnimationFrame(readPulseFrame); }
+
     function requestDraw() {
       dirty = true;
+      kickReadPulse();
       if (!rafId) rafId = requestAnimationFrame(frame);
     }
 
@@ -176,6 +194,8 @@
       dpr = s.dpr;
       cloudEl.width = Math.max(1, Math.round(s.w * dpr));
       cloudEl.height = Math.max(1, Math.round(s.h * dpr));
+      readEl.width = Math.max(1, Math.round(s.w * dpr));
+      readEl.height = Math.max(1, Math.round(s.h * dpr));
       requestDraw();
     }
     global.addEventListener('resize', resize);

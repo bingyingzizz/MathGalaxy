@@ -16,6 +16,8 @@
   var C = MG.config;
   var T = MG.theme;
   var GU = MG.graphUtil;
+  /* 已读脉冲的一圈走多久（毫秒）。慢一点才像「呼吸」，快一点像报错闪。 */
+  var READ_PULSE_MS = 1800;
 
   /* --------------------------------------------------------- 光晕精灵缓存 */
   var glowCache = Object.create(null);
@@ -559,7 +561,6 @@
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
-      drawReadMarks();
       drawHoverOverlay();
     }
 
@@ -674,31 +675,62 @@
          · 两侧各多出 ~0.49px 的晕，alpha 正确 ✓
        剩下的偏差（实测）：芯里 α 0.19→0.34、α 0.5→0.75（= α(1−α)，0.6% 的像素）、
        以及交叉处 z-order 微差（max 37/255，1% 像素）。这些是**已知且待用户拍板**的偏差。 */
-    /* ------------------------------------------ 已读标记（实时叠加层） */
-    /* ⭐ 已读状态是**用户进度**，一个点变一次；⛔ 绝不能进位图烘焙 ——
-       否则每标记一个节点就要重烘整张图（那是几十毫秒 + 几十 MB 分配）。
-       跟 hover / 光晕 / 包络一样走实时叠加层。
-       ⚠️ 引擎不认识「已读」是什么：只问 view.isNodeRead / view.showReadMarks。
-          这两个钩子没装（导出器复用渲染器时就是）⇒ 什么都不画。 */
-    function drawReadMarks() {
-      if (!view.isNodeRead || !view.showReadMarks) return;
-      if (!view.showReadMarks()) return;
-      var list = view.graph.nodes;
+    /* ------------------------------- 已读标记（**独立的脉冲层**，不在主画布上） */
+    /*
+       ⭐ 用户要的是「标记过之后节点周围绕一圈绿的、**动**的圈圈」——
+          原来那个静态环太不显眼，不点进去根本看不出读没读。
+       ⛔ 但动画**绝不能画进主画布**：动画 = 每帧重画，而主画布每帧要重画
+          连线 / 节点 / 标签（实测 4~7ms，而本机是 240Hz 屏、每帧预算 4.2ms）。
+          所以单开一层 canvas（`#layer-read`），每帧只 clearRect + 几十个 arc。
+
+       ⭐ 这一层由 **app 自己的 rAF** 驱动，而且**一个可见的已读节点都没有时就停**
+          （空闲零开销）。返回值就是给调用方做这个判断用的：
+          `run() === 0` ⇒ 下一帧不用再排了。
+
+       ⚠️ 引擎不认识「已读」是什么：只问 `view.isNodeRead` / `view.showReadMarks`。
+          钩子没装（导出器复用渲染器时就是）⇒ 什么都不画。
+       ⚠️ 无论画不画，**先清干净** —— 否则关掉开关之后会留一屏退不掉的旧环。
+       @param octx  #layer-read 的 2d context
+       @param tMs   performance.now()，用来算脉冲相位
+       @returns     画了几个环；0 = 可以停机
+    */
+    function drawReadRings(octx, tMs) {
+      octx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      octx.clearRect(0, 0, W, H);
+      if (!view.isNodeRead || !view.showReadMarks) return 0;
+      if (!view.showReadMarks()) return 0;
+      var pulse = (tMs % READ_PULSE_MS) / READ_PULSE_MS;      // 0 → 1
+      var list = view.graph.nodes, drawn = 0;
       for (var i = 0; i < list.length; i++) {
         var n = list[i];
         if (!view.isNodeRead(n.id)) continue;
         if (!nodeOk(n.id)) continue;
         var p = screenOf(n);
         var r = nodeRadius(n);
-        if (!inView(p.x, p.y, r + 8)) continue;
+        if (!inView(p.x, p.y, r + 16)) continue;
         var a = alphaForNode(n.id) * lodA.nodeDot * (isTrunk(n) ? 1 : lodA.trunkDim);
         if (a <= 0.03) continue;            // 太淡就不画，免得糊成一片噪点
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, r + 3.1, 0, Math.PI * 2);
-        ctx.lineWidth = 1.7;
-        ctx.strokeStyle = U.rgba('#2E9E5B', 0.72 * a);   // 绿 = 读完
-        ctx.stroke();
+        drawn++;
+        /* 三笔，都是为了「不点进去也一眼看得出读没读」：
+           ① 常驻基环 —— 标记本身
+           ②③ 两圈错开半个周期的扩散环 —— 每隔半周期就有一圈在往外走，
+               所以任何时刻看着都是「活的」，不会有一瞬间像静止的 */
+        octx.beginPath();
+        octx.arc(p.x, p.y, r + 3.1, 0, Math.PI * 2);
+        octx.lineWidth = 2.1;
+        octx.strokeStyle = U.rgba('#2E9E5B', 0.88 * a);
+        octx.stroke();
+        for (var w = 0; w < 2; w++) {
+          var ph = (pulse + w * 0.5) % 1;
+          var fd = (1 - ph) * (1 - ph);
+          octx.beginPath();
+          octx.arc(p.x, p.y, r + 3.1 + ph * 11, 0, Math.PI * 2);
+          octx.lineWidth = 1.8;
+          octx.strokeStyle = U.rgba('#2E9E5B', 0.9 * fd * a);
+          octx.stroke();
+        }
       }
+      return drawn;
     }
 
     function drawHoverOverlay() {
@@ -1331,6 +1363,7 @@
       setGlowLive: function (v) { glowLive = !!v; },        // 光晕改由实时层单独画
       setEnvLive: function (v) { envLive = !!v; },          // 包络改由实时层单独画（不进烘焙）
       setHoverFull: function (v) { hoverFull = !!v; },       // hover 甲支（入射边加宽）
+      drawReadRings: drawReadRings,                          // 已读脉冲环 → #layer-read（见上）
       bbox: bbox,
       prof: prof,
       profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.frames = 0; },

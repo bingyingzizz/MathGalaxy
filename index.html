@@ -62,6 +62,10 @@ window.addEventListener('error', function (e) {
 <div id="viewport" aria-hidden="true">
   <canvas id="layer-cloud"></canvas>
   <canvas id="layer-graph"></canvas>
+  <!-- 已读脉冲环：**单独一层**，由自己的 rAF 驱动。
+       ⛔ 不许画进 layer-graph —— 那要每帧重画整层（标签最贵，实测 4~7ms），
+          而这一层只画几十个圆，一点点像素。 -->
+  <canvas id="layer-read"></canvas>
 </div>
 
 <!-- ===== 左上角：搜索 ===== -->

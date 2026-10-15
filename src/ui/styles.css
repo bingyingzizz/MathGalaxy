@@ -50,6 +50,8 @@ html, body {
 #layer-graph { z-index: 1; cursor: grab; }
 #layer-graph.dragging { cursor: grabbing; }
 #layer-graph.pointing { cursor: pointer; }
+/* 已读脉冲环：叠在连线层上面，⛔ 不接鼠标（否则会把拖动/点击吃掉） */
+#layer-read { z-index: 2; pointer-events: none; }
 
 /* ---------- 浮动 UI 通用 ---------- */
 .floating {
