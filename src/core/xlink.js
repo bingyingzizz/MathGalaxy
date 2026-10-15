@@ -12,14 +12,26 @@
    ⚠️ 词表由调用方传进来（graph 的 label + aliases 的 aka），这里只管匹配与包标签 ——
       引擎不该知道「图里有哪些节点」。同一个道理：不在 util.js 里做这件事。
 
-   ⭐⭐ **只链「图里真有边相连」的节点**（邻接表 adj）。为什么这是关键：
-       aliases.js 里登记了大量**普通词**当别名（「满足」「单位」「命题」「推出」），
-       在正文里它们多数只是行文用词 —— 「(A,·) 满足结合律」里的「满足」不是
-       def.satisfaction。放开匹配会满页都是错的链接，比没有链接更糟。
-       限定在邻域里之后，链出来的就正好是「**这一条依赖的那些节点**」。
+   ⭐⭐ **全图匹配**（不再只链直接邻居）。为什么：跨星系的节点天然就远 —— 实测
+       「局部紧 Hausdorff」离 thm.pontryagin-van-kampen 是 **4 跳**（拓扑学 ↔ 凝聚态），
+       「范畴」离那个预层命题是 2 跳。要覆盖它们就得放到 4 跳，那几乎等于全图
+       （1/2/3 跳的平均邻居数是 4.3 / 25.6 / 86.5）。⇒ 放宽到全图，
+       **「这个词在这里到底指不指那个节点」交给读的人判断**，样式上给提示：
+
+         · `near`（蓝实线）= 与当前节点**真有边相连**
+         · `far` （灰点线）= 图里有这个节点，但这页只是在文字里提到
+
+   ⭐⭐ **正文优先**（`opts.priority`）。面板顶上那行「还差 N 条前置：群同态、核与像…」
+       是**提示**，用节点 label 拼的，在 DOM 里排在「陈述」**前面**。不给优先级的话，
+       它一命中 8 字长的「群同态、核与像」就把 `def.group-hom` 的名额占了，
+       等扫到正文里真正的「群同态」时已经算「链过一次」⇒ 用户报的「点不动」。
+       ⇒ 命中选择器的子树**先扫**，`seen`（一个概念只链第一次）也就先给正文。
 
    ⛔ 单字不匹配（MIN_LEN = 2）：中文没有词边界，「循环」「环境」里的「环」
-      会被当成 def.ring —— 同样是错的链接。
+      会被当成 def.ring —— 同样是错的链接。（代价：「核」「像」这类单字术语链不了。）
+
+   ⛔ `aliases.linkStop` 里的词**不链** —— 那些是行文词（满足 / 推出 / 代数…），
+      只是碰巧和某个 aka 同写法。表在**内容**里，引擎只读表。
    ========================================================================== */
 (function (global) {
   'use strict';
@@ -60,6 +72,13 @@
       (a.aka || []).forEach(function (k) { add(k, a.id, false); });
     });
 
+    /* ⛔「行文词」：同一个写法，在这里只是普通说法，不是概念指称。
+       表是**内容**（aliases.js 的 linkStop），引擎只负责「表里有的不链」。
+       ⚠️ 只对 aka 生效 —— 万一某个**节点名**恰好也叫这个（例如「极限」既是
+          def.limit 的 label、又是 def.sequence-limit 的 aka），label 照链。 */
+    var stopWords = Object.create(null);
+    ((aliases && aliases.linkStop) || []).forEach(function (w) { stopWords[String(w)] = 1; });
+
     Object.keys(byFirst).forEach(function (f) {
       byFirst[f].sort(function (a, b) { return b.n - a.n; });
     });
@@ -97,7 +116,7 @@
      *   ⇒ 放宽到全图，**「这个词在这里到底指不指那个节点」交给读的人判断**，
      *     样式上的浓淡给他一个提示。代码不替他决定。
      */
-    function scan(text, fromId) {
+    function scan(text, fromId, allowShortAka) {
       var near = fromId ? adj[fromId] : null;
       var hits = [];
       var i = 0;
@@ -108,9 +127,10 @@
           for (var k = 0; k < cands.length; k++) {
             var c = cands[k];
             if (c.id === fromId) continue;                    // 自指不链
-            // ⭐ aka 来的短词（2 字）不在邻域里就跳过 —— 那是行文用词，不是概念指称。
+            if (!c.isLabel && stopWords[c.w]) continue;        // 行文词（见 aliases.linkStop）
+            // ⭐ aka 来的短词（2 字）默认不在邻域里就跳过 —— 那是行文用词，不是概念指称。
             //   label 不受这条限制：「范畴」「预层」都是 2 字的**节点名**，该链。
-            if (!c.isLabel && c.n < 3 && !(near && near[c.id])) continue;
+            if (!c.isLabel && c.n < 3 && !allowShortAka && !(near && near[c.id])) continue;
             if (i + c.n <= text.length && text.substr(i, c.n) === c.w) { got = c; break; }
           }
         }
@@ -136,34 +156,60 @@
     }
 
     /**
-     * 把 root 里出现的、**且与 fromId 有边相连**的概念名包成可点的 <a>。
+     * 这段文字是不是落在 `sel` 里。
+     * ⭐⭐ **为什么需要它**：面板顶部那行「还差 3 条前置：群同态、核与像、正规子群…」
+     *    是**提示**（列出的是节点 label），在 DOM 里排在「陈述」**前面**。
+     *    它一命中 8 字长的「群同态、核与像」，`seen` 就把 `def.group-hom` 这个名额
+     *    记掉了；等扫到陈述里真正的行文「群同态」时，已经算「链过一次」——
+     *    用户实测的「群同态点不动」就是这么来的。
+     *    ⇒ 正文（`.pn-body`）先扫，提示 / 芯片之类的后扫。
+     */
+    function inside(node, root, sel) {
+      if (!sel) return false;
+      var p = node.parentNode;
+      while (p && p !== root) {
+        if (p.matches && p.matches(sel)) return true;
+        p = p.parentNode;
+      }
+      return false;
+    }
+
+    /**
+     * 把 root 里出现的概念名包成可点的 <a>。
      * @param {Element} root    已经渲染好的容器（面板正文 / 概念页正文…）
-     * @param {Object}  opts    { fromId } 站在哪个节点上看；给了它就只链它的邻居
+     * @param {Object}  opts    { fromId, priority, shortAka }
+     *        fromId   站在哪个节点上看 —— 决定 near / far（不再限制链不链）
+     *        priority 选择器；命中的子树里的文字**先扫**（正文优先于提示，见 inside()）
+     *        shortAka true = 2 字 aka 不再要求邻域（默认 false，噪音大）
      * @returns {number} 加了多少个链接
      */
     function linkify(root, opts) {
       if (!root || !global.document) return 0;
       opts = opts || {};
       var fromId = opts.fromId || null;
+      var prio = opts.priority || null;
+      var allowShortAka = !!opts.shortAka;
 
       // 先收集、后修改：边遍历边改 DOM，TreeWalker 会被自己改乱
       var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
-      var texts = [];
+      var prioTexts = [], restTexts = [];
       var t;
       while ((t = walker.nextNode())) {
         if (!t.nodeValue || !t.nodeValue.trim()) continue;
         if (insideSkipped(t, root)) continue;
-        texts.push(t);
+        (prio && inside(t, root, prio) ? prioTexts : restTexts).push(t);
       }
+      var texts = prioTexts.concat(restTexts);
 
       var count = 0;
       /* ⭐ 同一个概念只链**第一次**出现。
          实测一个面板里「对偶」出现 4 次、「预层」5 次 —— 全链上就是满页下划线，
-         读起来反而更累。点一次就够了；后面的原样留着（pos 不前移即可）。 */
+         读起来反而更累。点一次就够了；后面的原样留着（pos 不前移即可）。
+         ⚠️ 「第一次」是在**上面那个顺序**里的第一次 ⇒ 正文永远优先拿到名额。 */
       var seen = Object.create(null);
       texts.forEach(function (node) {
         var s = node.nodeValue;
-        var hits = scan(s, fromId);
+        var hits = scan(s, fromId, allowShortAka);
         if (!hits.length) return;
         var frag = document.createDocumentFragment();
         var pos = 0;

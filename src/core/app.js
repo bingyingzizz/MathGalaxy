@@ -322,8 +322,14 @@
       onSubgraph: function (id, dir) { setSubgraph(id, dir); },
       onClose: function () { panelOpen = false; requestDraw(); },
       /* 内文概念跳转：panel 渲染完正文后调它把概念名包成链接（panel 自己不认识图）。
-         ⭐ 只链与 fromId **有边相连**的节点 —— 见 xlink.js 头部注释里的原因。 */
-      linkify: function (root, fromId) { return xlink.linkify(root, { fromId: fromId }); },
+         ⭐ **全图匹配 + 两级样式**（near 蓝实线 / far 灰点线），不再只链直接邻居 ——
+            见 xlink.js 头部注释。
+         ⭐⭐ `priority`：正文（`.pn-body`）**先扫**。面板顶上那行「还差 N 条前置：
+            群同态、核与像…」是提示，用节点 label 拼的，排在陈述前面；不给优先级的话
+            它会把概念名额吃光，正文里的「群同态」反而点不动（用户实测报过）。 */
+      linkify: function (root, fromId) {
+        return xlink.linkify(root, { fromId: fromId, priority: '.pn-body', shortAka: true });
+      },
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
