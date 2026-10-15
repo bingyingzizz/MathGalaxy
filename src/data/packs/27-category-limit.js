@@ -229,19 +229,31 @@ window.MG = window.MG || {};
       id: 'def.mono',
       cluster: 'cat.structure',
       type: 'definition',
-      label: '单态射 / 满态射',
-      title: '单态射与满态射（Monomorphism / Epimorphism）',
+      label: '单态射 / 满态射 / 同构',
+      title: '单态射、满态射与同构（Mono / Epi / Isomorphism）',
       regions: ['category'],
-      tags: ['范畴论', '单态射', '可消'],
+      tags: ['范畴论', '单态射', '满态射', '同构', '可消'],
       statement: [
         '态射 $i : Y \\to X$ 叫**单态射**（mono），如果对任意对象 $Z$ 与任意 $f, g : Z \\to Y$，',
         '',
         '$$i \\circ f = i \\circ g \\;\\Longrightarrow\\; f = g$$',
         '',
-        '（左可消）。等价地：方块 $Y \\to Y \\times_X Y$ 是笛卡尔的，即 $Y \\cong Y \\times_X Y$，其中 $Y \\times_X Y$ 是沿 $i$ 的两个拉回。把箭头全部反向，得到**满态射**（epi，右可消）。'
+        '（左可消）。等价地：方块 $Y \\to Y \\times_X Y$ 是笛卡尔的，即 $Y \\cong Y \\times_X Y$，其中 $Y \\times_X Y$ 是沿 $i$ 的两个拉回。把箭头全部反向，得到**满态射**（epi，右可消）。',
+        '',
+        '两个方向都可消的态射叫**同构**：$f : X \\to Y$ 叫**同构**（isomorphism），如果存在 $g : Y \\to X$ 使',
+        '',
+        '$$g \\circ f = 1_{X}, \\qquad f \\circ g = 1_{Y}$$',
+        '',
+        '这时 $g$ 叫 $f$ 的**逆**，记作 $f^{-1}$；它由 $f$ 唯一确定。'
       ].join('\n'),
       notes: [
-        '在 $\\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射（后者要用选择公理）。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\\mathbb{Z} \\to \\mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。'
+        '在 $\\mathbf{Set}$ 里单态射恰好是单射、满态射恰好是满射（后者要用选择公理）。但一般范畴里「可消」才是定义，「一对一 / 到上」只是它在具体范畴里的表现：在环范畴里 $\\mathbb{Z} \\to \\mathbb{Q}$ 是满态射，可它的底层映射并不是满射 —— 遗忘函子把它送出去就不再是满的了。',
+        '**逆是唯一的**：若 $g, g\'$ 都是 $f$ 的逆，则 $g = g \\circ 1_{Y} = g \\circ (f \\circ g\') = (g \\circ f) \\circ g\' = 1_{X} \\circ g\' = g\'$ ✓。',
+        '**同构与单态射的关系**：$f$ 是同构 $\\iff$ $f$ 是单态射且有**截面**。',
+        '$(\\implies)$ 由 $f \\circ g = 1_{Y}$、$g \\circ f = 1_{X}$ 直接看出（后者说明 $f$ 是分裂单态射，从而是单态射）。',
+        '$(\\Longleftarrow)$ 设 $f \\circ g = 1_{Y}$。则 $f \\circ (g \\circ f) = (f \\circ g) \\circ f = 1_{Y} \\circ f = f = f \\circ 1_{X}$，由 $f$ 单态射得 $g \\circ f = 1_{X}$，故 $f$ 是同构 ✓。',
+        '把箭头全部反向，得到对偶说法：$f$ 是同构 $\\iff$ $f$ 是满态射且有**收缩**。',
+        '⚠️ 「单态射 $+$ 满态射」**不够**：环范畴里 $\\mathbb{Z} \\to \\mathbb{Q}$ 既单又满，却不是同构 —— 还差一个截面（或收缩）。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
     },

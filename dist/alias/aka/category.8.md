@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 连续函子 | continuous functor | Definition 3.4.4 | Def 3.4.4 | Exercise 3.54 | Exercise 3.58 → def.continuous-functor
+
 - site 的态射 | morphism of sites | Definition 3.4.5 | Def 3.4.5 | Exercise 3.58 → def.morphism-of-sites
 
 - 余连续函子 | cocontinuous | Definition 3.4.6 | Def 3.4.6 | Exercise 3.59 | Exercise 3.60 → def.cocontinuous-functor
@@ -16,9 +18,5 @@
 - 保积与核 | Exercise 1.43 → prop.preserves-products-kernels
 
 - 保拉回保单态射 | Exercise 1.46 → prop.preserves-fibered-products-mono
-
-- Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
-
-- 左伴随唯一 | Exercise 1.58 → prop.left-adjoint-unique
 
 > 续见 alias/aka/category.9.md

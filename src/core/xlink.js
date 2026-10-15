@@ -27,11 +27,17 @@
        等扫到正文里真正的「群同态」时已经算「链过一次」⇒ 用户报的「点不动」。
        ⇒ 命中选择器的子树**先扫**，`seen`（一个概念只链第一次）也就先给正文。
 
-   ⛔ 单字不匹配（MIN_LEN = 2）：中文没有词边界，「循环」「环境」里的「环」
-      会被当成 def.ring —— 同样是错的链接。（代价：「核」「像」这类单字术语链不了。）
+   ⛔ 单字默认不匹配（MIN_LEN = 2）。为什么：中文没有词边界，「循环」里的「环」、
+      「公理模式」里的「模」、「开邻域」里的「域」都会被当成术语。
+      ⭐ **例外是一张人工名单**（`aliases.singleChar`：群 / 层 / 紧 / 锥 / 筛 / 茎 / 势）——
+      这几个字在全库 22 万字里确实只当术语用（判据是把每个字的上下文全 dump 出来看，
+      不是拍脑袋）。代价：「核」「像」链不了（「核心」「图像」太常见，而且「核」
+      同时指向三个节点）。
 
-   ⛔ `aliases.linkStop` 里的词**不链** —— 那些是行文词（满足 / 推出 / 代数…），
-      只是碰巧和某个 aka 同写法。表在**内容**里，引擎只读表。
+   ⛔ `aliases.linkStop` 里的写法**不链，而且要把整段吃掉**（拦词）——
+      那些是行文词（满足 / 推出 / 代数…），只是碰巧和某个 aka 同写法。
+      「吃掉」是必需的：「把**短正合列**送成」里如果只把『正合列』设成「不链」，
+      游标会退到更短的『正合』，于是链出一个错的。表在**内容**里，引擎只读表。
    ========================================================================== */
 (function (global) {
   'use strict';
@@ -44,9 +50,19 @@
     var byFirst = Object.create(null);
     var labelOf = Object.create(null);
 
+    /* ⭐⭐ 单字白名单 —— 名单在**内容**里（`aliases.singleChar`），代码只负责「按名单放行」。
+       为什么不干脆一律放行：中文没有词边界，单字匹配会满页错链。实测（全库 22 万字）：
+         「域」→ 开邻域 / 紧邻域 / 定义域   「模」→ 公理模式 / 模型 / 模板
+         「基」→ 基本定理 / 地基 / 基准     「积」→ 积分 / 积分理论
+         「环」→ 循环 / 无环               「图」→ 本星图 / 图形
+         「核 / 像」→ 核心 / 图像（而且「核」同时指向三个节点，链过去指哪个都不对）
+       人工挑过、正文里确实只当术语用的那几个才进名单（群 / 层 / 紧 / 锥 / 筛 / 茎 / 势）。 */
+    var single = Object.create(null);
+    ((aliases && aliases.singleChar) || []).forEach(function (w) { single[String(w)] = 1; });
+
     function add(word, id, isLabel) {
       var w = String(word == null ? '' : word).trim();
-      if (w.length < MIN_LEN) return;
+      if (w.length < MIN_LEN && !single[w]) return;
       var f = w.charAt(0);
       if (!byFirst[f]) byFirst[f] = [];
       // 同一个词已经指向这个 id 就不重复加（label 与 aka 常常一样）
@@ -57,6 +73,18 @@
         }
       }
       byFirst[f].push({ w: w, id: id, n: w.length, isLabel: !!isLabel });
+    }
+
+    /* ⛔ 「拦词」：**不链**，而且要把这一整段**吃掉**。
+       为什么光「不链」不够：「把短正合列送成」里，在「正」处匹配不到『正合列』的话
+       就会退到更短的『正合』，于是链出一个错的（正合函子）。
+       所以拦词得占住位置、把游标推过去，短词才没机会钻进来。 */
+    function addBlocker(word) {
+      var w = String(word == null ? '' : word).trim();
+      if (w.length < MIN_LEN) return;
+      var f = w.charAt(0);
+      if (!byFirst[f]) byFirst[f] = [];
+      byFirst[f].push({ w: w, id: null, n: w.length, isLabel: true, block: true });
     }
 
     graph.nodes.forEach(function (n) {
@@ -74,13 +102,16 @@
 
     /* ⛔「行文词」：同一个写法，在这里只是普通说法，不是概念指称。
        表是**内容**（aliases.js 的 linkStop），引擎只负责「表里有的不链」。
-       ⚠️ 只对 aka 生效 —— 万一某个**节点名**恰好也叫这个（例如「极限」既是
-          def.limit 的 label、又是 def.sequence-limit 的 aka），label 照链。 */
-    var stopWords = Object.create(null);
-    ((aliases && aliases.linkStop) || []).forEach(function (w) { stopWords[String(w)] = 1; });
+       它们同时是**拦词**（见 addBlocker）—— 「不正合」要靠它挡住，否则
+       「短正合列」会退到『正合』链错。 */
+    ((aliases && aliases.linkStop) || []).forEach(function (w) { addBlocker(w); });
 
     Object.keys(byFirst).forEach(function (f) {
-      byFirst[f].sort(function (a, b) { return b.n - a.n; });
+      /* 长的优先；⛔ 同长度时**拦词排前面** —— 否则一个既是 aka 又是拦词的写法
+         会先被当成概念链出去，拦词形同虚设。 */
+      byFirst[f].sort(function (a, b) {
+        return (b.n - a.n) || ((b.block ? 1 : 0) - (a.block ? 1 : 0));
+      });
     });
 
     /* ---------------------------------------------------------- 邻接表 */
@@ -122,18 +153,22 @@
       var i = 0;
       while (i < text.length) {
         var cands = byFirst[text.charAt(i)];
-        var got = null;
+        var got = null, blocked = false;
         if (cands) {
           for (var k = 0; k < cands.length; k++) {
             var c = cands[k];
+            // ⚠️ 先看字面：不匹配的候选直接跳过（长度不够 / 字不对）
+            if (i + c.n > text.length || text.substr(i, c.n) !== c.w) continue;
+            // 拦词：吃掉整段，不给更短的候选留机会
+            if (c.block) { i += c.n; blocked = true; break; }
             if (c.id === fromId) continue;                    // 自指不链
-            if (!c.isLabel && stopWords[c.w]) continue;        // 行文词（见 aliases.linkStop）
             // ⭐ aka 来的短词（2 字）默认不在邻域里就跳过 —— 那是行文用词，不是概念指称。
             //   label 不受这条限制：「范畴」「预层」都是 2 字的**节点名**，该链。
             if (!c.isLabel && c.n < 3 && !allowShortAka && !(near && near[c.id])) continue;
-            if (i + c.n <= text.length && text.substr(i, c.n) === c.w) { got = c; break; }
+            got = c; break;
           }
         }
+        if (blocked) continue;
         if (got) {
           hits.push({ at: i, len: got.n, id: got.id, near: !!(near && near[got.id]) });
           i += got.n;

@@ -10,7 +10,6 @@
 - def.section-retraction　截面与收缩　layer 8
 - def.subcategory　子范畴　layer 8
 - prop.matrix-category　矩阵范畴　layer 8
-- prop.iso-unique-section　同构的截面与收缩唯一　layer 9
 - prop.functor-preserves-sections　函子保截面与收缩　layer 9
 - def.localization　局部化　layer 10
 - prop.preorder-as-category　预序集就是「Hom 至多一元」的小范畴　layer 11
@@ -18,5 +17,6 @@
 - def.mor-domain-codomain　态射范畴上的域与余域函子　layer 13
 - prop.cat-final-initial-products　Cat 的终始对象与有限积　layer 13
 - prop.calculus-of-fractions　分式演算下的局部化　layer 14
+- prop.iso-unique-section　同构的截面与收缩唯一　layer 14
 
 > 续见 `index/cat.basic.2.md`

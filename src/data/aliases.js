@@ -337,7 +337,7 @@ MG.aliases = {
     { id: 'def.product', aka: ['积', '余积', 'product', 'coproduct', '直积', '直和', 'Definition 1.3.6', 'Def 1.3.6'] },
     { id: 'def.fibered-product', aka: ['纤维积', '拉回', 'pullback', 'fibered product', '推出', 'pushout', '笛卡尔方块', 'Definition 1.3.7', 'Def 1.3.7'] },
     { id: 'def.equalizer', aka: ['等化子', '余等化子', 'equalizer', 'coequalizer', '核', 'ker', 'coker', 'Definition 1.3.8', 'Def 1.3.8', 'Exercise 1.36'] },
-    { id: 'def.mono', aka: ['单态射', '满态射', 'mono', 'epi', 'monomorphism', 'epimorphism', '可消', 'Definition 1.3.9', 'Def 1.3.9'] },
+    { id: 'def.mono', aka: ['单态射', '满态射', '同构', '同构映射', 'mono', 'epi', 'monomorphism', 'epimorphism', 'isomorphism', 'isomorphic', '可消', 'Definition 1.3.9', 'Def 1.3.9'] },
     { id: 'def.subobject', aka: ['子对象', 'subobject', '子对象之交', '原像', 'Definition 1.3.10', 'Def 1.3.10'] },
     { id: 'thm.lim-functor', aka: ['极限的函子性', '极限是函子', 'lim functor'] },
     { id: 'def.image', aka: ['像', '余像', 'image', 'coimage', '严格态射', 'strict', 'Definition 1.3.11', 'Def 1.3.11'] },
@@ -375,7 +375,7 @@ MG.aliases = {
     { id: 'prop.iso-unique-section', aka: ['Proposition 1.1.4', 'Prop 1.1.4', '同构的截面唯一'] },
     { id: 'def.ind-object', aka: ['Ind-对象', 'ind-object', 'Ind(C)', 'Definition 1.4.3', 'Def 1.4.3'] },
     { id: 'def.preserves-limit', aka: ['保极限', 'preserves limits', '保余极限', '连续函子', 'Definition 1.4.4', 'Def 1.4.4'] },
-    { id: 'def.exact-functor', aka: ['正合函子', 'left exact', 'right exact', '左正合', '右正合', 'Definition 1.4.6', 'Def 1.4.6'] },
+    { id: 'def.exact-functor', aka: ['正合', '正合函子', '左正合', '右正合', 'left exact', 'right exact', 'exact functor', 'Definition 1.4.6', 'Def 1.4.6'] },
     { id: 'def.enough-projectives', aka: ['足够多投射', 'enough projectives', '足够多内射', 'enough injectives', 'Definition 1.4.8', 'Def 1.4.8', 'Proposition 7.1.21'] },
     { id: 'def.finitely-presented', aka: ['有限表现', 'finitely presented', '紧对象', 'compact object', 'Definition 1.4.9', 'Def 1.4.9'] },
     { id: 'def.zero-object', aka: ['零对象', 'zero object', '双积', '直和', 'biproduct', 'Definition 5.1.3', 'Def 5.1.3'] },
@@ -861,11 +861,37 @@ MG.aliases = {
     '正则',   // 18 —— ax.found（正则公理），也用来形容正则性
     '分离',   // 18 —— ax.sep（分离公理），也用来形容分离性
     '推出',   // 17 —— def.fibered-product（推出 = pushout），但「由此推出」更常见
+    '正合列', // —— 不是「正合函子」：把它拦掉，「短正合列 / 长正合列」里的「正合」
+              //    才不会退化成 def.exact-functor 的错链（见 xlink.js 的 addBlocker）
     '三角',   // 9  —— def.distinguished-triangle，「三角」当图形讲的时候更多
+    '幺半群', // —— 实测放行「群」之后撞出来的：幺半群是 monoid，不是 def.group
+    '要紧',   // —— 同上，「它最要紧的性质」里的「紧」不是 def.compact
     '替换',   // 4  —— def.substitution / ax.repl，行文用词
     '模型',   // 2  —— def.satisfaction，行文用词
     '语义',   // 1  —— def.satisfaction，行文用词
   ],
+
+  /* -------------------------------------------------- 允许参与匹配的单字 */
+  /*
+    引擎默认 MIN_LEN = 2（中文没有词边界，单字匹配会满页错链）。这里是**人工放行的例外**。
+
+    怎么挑的：把每个候选字在全库（706 个节点、22 万字正文）里的出现上下文**全部 dump
+    出来看**，只留那些确实只当术语用的。下面是落选的，附它们撞上的东西：
+
+      ✗ 域 → 开邻域 / 紧邻域 / 定义域 ✗ 模 → 公理模式 / 模型 / 模板
+      ✗ 基 → 基本定理 / 地基 / 基准   ✗ 积 → 积分 / 积分理论
+      ✗ 环 → 循环 / 无环             ✗ 图 → 本星图 / 图形
+      ✗ 核 → 核心、而且同时指向 def.equalizer / def.kernel-cokernel / def.group-hom
+      ✗ 像 → 图像、逆像
+
+    ⭐ 这些字本来就在 `aka` 里（`{ id: 'def.compact', aka: ['紧', …] }`）——
+      名单只是让引擎**放行**，不新增别名。
+
+    ⚠️ 「层」**曾经放行，实测后又撤了**：全库 155 次里绝大多数是「layer」的意思 ——
+       同一层地基 / 逐层取 / 两层都可测 / 底层 / 值域分层 / 上一层 / 顶点那层与边那层。
+       多字的「预层 / 层化 / 层范畴 / 阿贝尔层 / 层上同调」本来就在词表里，不受影响。
+    */
+  singleChar: ['群', '紧', '锥', '筛', '茎', '势'],
 
   /* --------------------------------------------------------- 问题钩子 */
   /* `q` 是**问法**（写成一句人话或一个说法都行），`to` 是该看的节点。 */

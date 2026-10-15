@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- Ab(C) 的极限 | Exercise 1.52 → prop.ab-limits-forgetful
+
+- 左伴随唯一 | Exercise 1.58 → prop.left-adjoint-unique
+
 - 余单位与忠实 | Exercise 1.60 → prop.counit-epi-iff-faithful
 
 - C 是 Ind(C) 的反射 | Exercise 1.73 | Exercise 1.42 | Exercise 1.47 → prop.ind-reflective
@@ -16,7 +20,5 @@
 - 拓扑斯态射的导出函子 | Proposition 7.4.1 | Prop 7.4.1 | Exercise 7.53 → prop.topos-morphism-derived
 
 - 反射子范畴 | reflective subcategory | 余反射 | 反射函子 | Definition 1.5.8 | Def 1.5.8 → def.reflective-subcategory
-
-- 反射子范畴里的极限 | Exercise 1.64 | Exercise 1.70 → prop.reflective-limits
 
 > 续见 alias/aka/category.10.md

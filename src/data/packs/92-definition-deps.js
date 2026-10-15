@@ -818,6 +818,10 @@ window.MG = window.MG || {};
       '用的函子是**可表函子** $h^{X}$。'],
     ['def.section-retraction', 'prop.iso-unique-section', 'def-dep.iso-unique-section',
       '命题说的是同构的**截面与收缩**。'],
+    ['def.section-retraction', 'def.mono', 'def-dep.mono-section',
+      '同构的定义用的就是**截面与收缩**：有截面的单态射（或有收缩的满态射）就是同构。'],
+    ['def.mono', 'prop.iso-unique-section', 'def-dep.iso-unique-mono',
+      '命题里的**同构**就是这个节点定义的。'],
 
     /* -------------------------------------------- 原书第 2–4 章的定义骨架 */
     ['def.connected', 'def.totally-disconnected', 'def-dep.totdisc-connected',

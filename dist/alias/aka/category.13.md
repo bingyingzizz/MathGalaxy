@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 余积与商在层范畴不变 → prop.precanonical-preserves
+
 - 单满在层化后不变 | Exercise 3.38 → prop.precanonical-mono-epi
 
 - 生成元 | generator | 生成元集 | set of generators | Definition 3.3.4 → def.generator

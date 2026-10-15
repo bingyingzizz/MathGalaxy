@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 层的下降条件 | sheaf condition | 层条件 | Exercise 3.15 → thm.sheaf-descent
+
+- Cech 函子 | Čech functor | H hat → def.cech-functor
+
 - Cech 函子的性质 | 左正合 | Lemma 3.2.6 → prop.cech-properties
 
 - 层化 | sheafification | sheafify | 伴随层 | Exercise 5.16 | Theorem 3.2.8 | Thm 3.2.8 → thm.sheafification
@@ -16,7 +20,5 @@
 - 满态射的局部判据 | 局部满 | local epimorphism | Exercise 3.21 | Exercise 3.27 → prop.sheaf-epi-criterion
 
 - 有效等价关系 | effective equivalence relation | 有效关系 → def.effective-equivalence
-
-- 层化与商交换 | Exercise 3.17 | Exercise 3.28 → prop.sheafify-equivalence
 
 > 续见 alias/aka/category.12.md

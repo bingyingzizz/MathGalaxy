@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 表示函子 | representable functor | 表示对象 | 万有元素 | universal element | Definition 1.2.5 | Def 1.2.5 → def.representable
+
 - 米田引理 | Yoneda lemma | Yoneda | Lemma 1.2.6 → lem.yoneda
 
 - 表示的两个定义等价 | representable iff hom | Proposition 1.2.7 | Prop 1.2.7 → thm.represented-criterion
@@ -16,9 +18,5 @@
 - 预层逐点检验 | 预层的单满 → lem.presheaf-mono-pointwise
 
 - 伴随函子 | adjoint functor | 左伴随 | 右伴随 | adjunction | Definition 1.5.1 | Def 1.5.1 → def.adjoint
-
-- 单位 | 余单位 | unit | counit | 三角等式 | Proposition 1.5.2 | Prop 1.5.2 | Definition 1.5.3 | Def 1.5.3 → def.adjunction-unit
-
-- 右伴随存在的判据 | adjoint functor existence → thm.right-adjoint-criterion
 
 > 续见 alias/aka/category.5.md

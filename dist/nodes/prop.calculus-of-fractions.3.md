@@ -3,6 +3,6 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.localization`](../nodes/def.localization.md) 局部化：用到了定义 局部化　[proofs/def-dep.fractions-localization.md](../proofs/def-dep.fractions-localization.md)
-- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射：用到了定义 单态射 / 满态射　[proofs/def-dep.fractions-mono.md](../proofs/def-dep.fractions-mono.md)
+- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射 / 同构：用到了定义 单态射 / 满态射 / 同构　[proofs/def-dep.fractions-mono.md](../proofs/def-dep.fractions-mono.md)
 
 > 续见 [nodes/prop.calculus-of-fractions.4.md](./prop.calculus-of-fractions.4.md)

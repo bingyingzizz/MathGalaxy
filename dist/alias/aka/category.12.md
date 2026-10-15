@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 层化与商交换 | Exercise 3.17 | Exercise 3.28 → prop.sheafify-equivalence
+
 - 标准拓扑 | canonical topology | 次标准 | subcanonical | Definition 3.2.15 | Lemma 3.2.14 → def.canonical-topology
 
 - 覆盖等价于余积满 | Corollary 3.2.13 | Cor 3.2.13 → prop.covering-sieve-epi
@@ -16,7 +18,5 @@
 - 预标准拓扑 | precanonical topology | Definition 3.3.2 | Exercise 3.34 | Exercise 3.35 → def.precanonical-topology
 
 - 预标准拓扑下的层 | Exercise 3.36 | Proposition 3.3.3 | Exercise 3.37 → prop.precanonical-sheaf
-
-- 余积与商在层范畴不变 → prop.precanonical-preserves
 
 > 续见 alias/aka/category.13.md

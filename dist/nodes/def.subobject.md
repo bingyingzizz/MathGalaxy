@@ -10,7 +10,7 @@ $$Y \cap Z := Y \times_{X} Z, \qquad f^{-1}(Y) := Y \times_{X} X'$$
 （对 $Y, Z \subseteq X$ 与任意 $f : X' \to X$；存在时才有定义）。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射：用到了定义 单态射 / 满态射　[proofs/def-dep.mono-subobject.md](../proofs/def-dep.mono-subobject.md)
+- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射 / 同构：用到了定义 单态射 / 满态射 / 同构　[proofs/def-dep.mono-subobject.md](../proofs/def-dep.mono-subobject.md)
 
 - …另有入边，续页见 [nodes/def.subobject.2.md](./def.subobject.2.md)
 

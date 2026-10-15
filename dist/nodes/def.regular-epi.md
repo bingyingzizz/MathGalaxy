@@ -6,11 +6,14 @@ layer 14 · 定义 · 层与拓扑 · 范畴论
 态射 $f : X \to Y$ 叫**正则满态射**，如果它是某个平行对的**余等化子**：存在 $u, v : W \rightrightarrows X$ 使 $f = \operatorname{coker}(u, v)$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射：用到了定义 单态射 / 满态射　[proofs/def-dep.mono-regular-epi.md](../proofs/def-dep.mono-regular-epi.md)
-- [`def.equalizer`](../nodes/def.equalizer.md) 等化子 / 余等化子：用到了定义 等化子 / 余等化子　[proofs/def-dep.equalizer-regular-epi.md](../proofs/def-dep.equalizer-regular-epi.md)
+- [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射 / 同构：用到了定义 单态射 / 满态射 / 同构　[proofs/def-dep.mono-regular-epi.md](../proofs/def-dep.mono-regular-epi.md)
+
+- …另有入边，续页见 [nodes/def.regular-epi.2.md](./def.regular-epi.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.regular-epi.2.md](./def.regular-epi.2.md)
+- ⇒ [`prop.pretopos-factorization`](../nodes/prop.pretopos-factorization.md) 满-单分解
+
+- …另有出边，续页见 [nodes/def.regular-epi.3.md](./def.regular-epi.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
 

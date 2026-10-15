@@ -4,7 +4,7 @@
 中心天体 def.subobject　·　6 个节点　·　根 `../`
 
 - def.elements-category　元素范畴　layer 11
-- def.mono　单态射 / 满态射　layer 13
+- def.mono　单态射 / 满态射 / 同构　layer 13
 - def.subobject　子对象　layer 14
 - prop.slice-fully-faithful-mono　单态射的切片刻画　layer 14
 - def.image　像 / 余像　layer 15

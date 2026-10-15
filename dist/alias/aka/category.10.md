@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 反射子范畴里的极限 | Exercise 1.64 | Exercise 1.70 → prop.reflective-limits
+
 - Kan 延拓 | Kan extension | 左 Kan 延拓 | 右 Kan 延拓 | Definition 1.5.9 | Def 1.5.9 → def.kan-extension
 
 - 余极限是 Kan 延拓 | 伴随是 Kan 延拓 → ex.kan-extension
@@ -14,9 +16,5 @@
 - Grothendieck 拓扑 | Grothendieck topology | site | 景 | site 理论 | Definition 3.2.2 | Def 3.2.2 → def.grothendieck-topology
 
 - 层 | sheaf | 分离预层 | separated presheaf | 粘合 | 下降 | Definition 3.2.5 | Def 3.2.5 → def.sheaf
-
-- 层的下降条件 | sheaf condition | 层条件 | Exercise 3.15 → thm.sheaf-descent
-
-- Cech 函子 | Čech functor | H hat → def.cech-functor
 
 > 续见 alias/aka/category.11.md

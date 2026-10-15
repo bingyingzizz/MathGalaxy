@@ -7,7 +7,7 @@
 - 被 [`thm.sheaf-descent`](../nodes/thm.sheaf-descent.md) 层的下降条件 用
 - 被 [`prop.subobject-lattice`](../nodes/prop.subobject-lattice.md) 子对象构成有界格 用
 - 被 [`prop.quasi-compact-properties`](../nodes/prop.quasi-compact-properties.md) 拟紧的性质 用
-- 被 [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射 用
+- 被 [`def.mono`](../nodes/def.mono.md) 单态射 / 满态射 / 同构 用
 - 被 [`def.subobject`](../nodes/def.subobject.md) 子对象 用
 - 被 [`def.free-presentation`](../nodes/def.free-presentation.md) 自由表示 用
 

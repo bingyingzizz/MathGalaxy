@@ -1,6 +1,10 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 零对象 | zero object | 双积 | 直和 | biproduct | Definition 5.1.3 | Def 5.1.3 → def.zero-object
+
+- 核 | kernel | 余核 | cokernel | 左正合列 | 右正合列 | Definition 5.1.5 | Def 5.1.5 → def.kernel-cokernel
+
 - 零对象与终对象 | Exercise 5.1 → prop.zero-object-final-criterion
 
 - 双积就是积 | Exercise 5.1 → prop.biproduct-is-product
@@ -18,7 +22,5 @@
 - 茎 | stalk | 分离预层 | Exercise 3.53 → prop.stalk-separated
 
 - 拓扑生成集 | topologically generating | Definition 3.2.3 | Def 3.2.3 | Exercise 3.39 → def.topologically-generating
-
-- 连续函子 | continuous functor | Definition 3.4.4 | Def 3.4.4 | Exercise 3.54 | Exercise 3.58 → def.continuous-functor
 
 > 续见 alias/aka/category.8.md
