@@ -393,12 +393,15 @@ function nodePage(node, rel, ctx) {
   ];
   if (cluster) facts.push(crumbCluster);
 
-  /* 英文摘要（T2.2）：枢纽榜前列的节点带一段英文导读（产物在 graph.json 的 abstract_en）。
+  /* 英文摘要/陈述（T2.2 / T3.2）：枢纽榜节点带英文内容（产物在 graph.json）。
      ⚠️ 状态（draft / reviewed / stale）**来自构建** —— node.translations.en 是
         tools/build.mjs 按 status + basedOn 现算写进 graph.json 的；页面不自己判断状态、
-        也不手写状态词。⛔ 「中文陈述是权威版本」这句话必须跟摘要一起出现（作者护栏）。
+        也不手写状态词。⛔ 「中文陈述是权威版本」这句话必须跟英文一起出现（作者护栏）。
      ⚠️ 这一段必须建在 JSON-LD 之前：下面 ldNode.abstract 要用它。 */
   const absEn = String(node.abstract_en || '').trim();
+  const stmEn = String(node.statement_en || '').trim();
+  const notesEn = String(node.notes_en || '').trim();
+  const hasEnBody = !!(absEn || stmEn);
   const absTr = (node.translations && node.translations.en) || null;
   const absState = absTr ? absTr.status : '';
   const absNote = absState === 'reviewed'
@@ -407,11 +410,14 @@ function nodePage(node, rel, ctx) {
       ? 'Translation of the statement above · made for content ' + (absTr.version || '?') +
         ', not updated since · the Chinese text is authoritative.'
       : 'Translation of the statement above · machine-drafted, pending author review · the Chinese text is authoritative.';
-  const absHtml = absEn
+  const absHtml = hasEnBody
     ? '<section class="sec abstract-en" lang="en">' +
-      '<h2>English abstract <span class="abs-state">' + esc(absState || 'draft') + '</span></h2>' +
+      '<h2>English <span class="abs-state">' + esc(absState || 'draft') + '</span></h2>' +
       '<p class="abs-note">' + esc(absNote) + '</p>' +
-      U.md(absEn) + '</section>'
+      (absEn ? '<h3>Abstract</h3>' + U.md(absEn) : '') +
+      (stmEn ? '<h3>Statement</h3>' + U.md(stmEn) : '') +
+      (notesEn ? '<h3>Notes</h3>' + U.md(notesEn) : '') +
+      '</section>'
     : '';
 
   // 结构化数据

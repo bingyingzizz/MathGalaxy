@@ -151,6 +151,20 @@
       });
     }
 
+    /* ------------------------------------------- 英文陈述 / 说明（T3.2） */
+    /* `src/data/i18n/statements.en.js`：只给少数枢纽节点的**逐句对译**。
+       ⛔ 中文陈述仍是唯一真源；这里只是把译文抄到节点上，消费方按有没有回落。
+       ⚠️ 边的证明（proofs）不在本批 —— 英文页会写明证明仍以中文页为准。 */
+    var stm = (MG.i18nStatements && MG.i18nStatements.items) || null;
+    if (stm) {
+      nodes.forEach(function (n) {
+        var s = stm[n.id];
+        if (!s) return;
+        if (s.statement_en) n.statement_en = s.statement_en;
+        if (s.notes_en) n.notes_en = s.notes_en;
+      });
+    }
+
     var autoId = 0;    packs.forEach(function (pack) {
       var name = pack.name || 'pack';
       (pack.edges || []).forEach(function (raw) {

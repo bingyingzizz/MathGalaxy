@@ -2,9 +2,11 @@
 English entry · root `../`
 [in graph](../#n=thm.first-iso)　·　[Chinese page (authoritative)](./thm.first-iso.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/First_isomorphism_theorem
+$$G \big/ \ker\varphi \;\cong\; \operatorname{im}\varphi, \qquad g \ker\varphi \;\longmapsto\; \varphi(g).$$
 
+In particular: **the image of a surjective homomorphism is the quotient group** ($G/\ker\varphi \cong G'$ when $\varphi$ is surjective).
 
-Cite: `thm.first-iso` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+## Notes
+**The three steps of the proof.** Write $K = \ker\varphi$.
 
+> 续见 nodes/thm.first-iso.en.4.md

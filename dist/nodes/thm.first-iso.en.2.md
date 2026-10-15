@@ -5,7 +5,7 @@ English entry · root `../`
 ## Abstract
 For a group homomorphism $\varphi : G \to G'$, the assignment $g\ker\varphi \mapsto \varphi(g)$ is an isomorphism $G/\ker\varphi \cong \operatorname{im}\varphi$; in particular a surjective homomorphism has the quotient as image. The proof is three steps: well-definedness, multiplicativity, bijectivity. The same proof works verbatim for any "set + operations + axioms" structure, $A/\ker f \cong \operatorname{im} f$, and the set-level prototype is that every map induces a bijection from the quotient by $a \sim a' \iff f(a) = f(a')$ onto its image.
 
-## Statement and proof
-Chinese only — see the Chinese page `nodes/thm.first-iso.md` and `proofs/`.
+## Statement
+Let $\varphi : G \to G'$ be a **group homomorphism**. Then $\varphi$ induces an isomorphism
 
 > 续见 nodes/thm.first-iso.en.3.md

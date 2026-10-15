@@ -88,8 +88,10 @@ function loadMG() {
     /* ⚠️ 只给构建用：浏览器端不需要英文文档正文（read.html 的英文版由 publish.mjs 组装），
        所以这个文件**不挂进 index.html**。 */
     'data/i18n/docs.en.js',
-    /* 英文摘要（T2.2）：同样只给构建用 —— 浏览器端从 graph.js 挂好的字段读，不直接加载它。 */
+    /* 英文摘要（T2.2）与英文陈述/说明（T3.2）：同样只给构建用 —— 浏览器端从
+       graph.js 挂好的字段读，不直接加载这两个文件。 */
     'data/i18n/abstracts.en.js',
+    'data/i18n/statements.en.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -112,6 +114,32 @@ function buildGraph(MG) {
   // ⚠️ 层号仍然不写进 src/data/ —— 内容里永远没有层号。
   MG.computeLayers(graph);
   return graph;
+}
+
+/* -------------------------------------------- 英文译文的状态汇总（T3.2） */
+/* 一个节点可能同时有：抽象（T2.2，创译）、陈述/说明（T3.2，创译）、英文名（T1.1，派生）。
+   这里把「创译型的那几件」合起来报成一个状态 + 一份字段清单，消费方一眼能看清
+   「这条英文到底译到了哪一步、审过没有」。
+   ⚠️ 状态取**最保守**的那个：只要有一件是 stale 就 stale；否则有一件 draft 就 draft；
+     全是 reviewed 才是 reviewed。 */
+function enTranslationOf(n, MG) {
+  const parts = [];
+  if (n.abstract_en) parts.push(MG.i18nAbstracts || null);
+  if (n.statement_en || n.notes_en) parts.push(MG.i18nStatements || null);
+  if (!parts.length) return undefined;
+  let status = 'reviewed', version = null;
+  for (const src of parts) {
+    const st = src ? i18nState(src) : { state: 'draft', cv: null };
+    if (!version && src && src.basedOn) version = src.basedOn;
+    if (st.state === 'stale') status = 'stale';
+    else if (st.state === 'draft' && status !== 'stale') status = 'draft';
+  }
+  const fields = [];
+  if (n.abstract_en) fields.push('abstract');
+  if (n.statement_en) fields.push('statement');
+  if (n.notes_en) fields.push('notes');
+  if (n.title_en || n.label_en) fields.push('name');
+  return { en: { status, version, fields } };
 }
 
 /* ---------------------------------------------------------------- JSON 导出 */
@@ -185,7 +213,11 @@ function exportJSON(MG, graph) {
       /* 英文摘要（T2.2）：只有枢纽榜前列的节点有。状态与版本一起给出来，
          消费方不必猜这段英文是审过的还是机翻的。 */
       abstract_en: n.abstract_en || undefined,
-      translations: n.abstract_en ? { en: { status: ABSSTATUS, version: ABS.basedOn || null } } : undefined,
+      /* 英文陈述 / 说明（T3.2 试点）：只有少数节点有；⛔ 证明（proofs）不在其中，
+         所以消费方看到 statement_en 时别以为整条都译完了 —— `translations.en.fields` 里写着有什么。 */
+      statement_en: n.statement_en || undefined,
+      notes_en: n.notes_en || undefined,
+      translations: enTranslationOf(n, MG),
       /* 英文入口页（T3.1）：有英文名或摘要的节点另出一份 `nodes/<id>.en.md`。
          这里只登记**有没有**，路径按约定拼 —— 消费方不必猜。 */
       en_page: (n.title_en || n.label_en || n.abstract_en) ? `nodes/${n.id}.en.md` : undefined,
@@ -1293,8 +1325,19 @@ function enNodeText(n, MG) {
     L.push(`names: \`${n.label_en}\` (short) · \`${n.title_en}\` (full)`);
   }
   if (n.abstract_en) L.push('', '## Abstract', n.abstract_en);
-  L.push('', '## Statement and proof');
-  L.push('Chinese only — see the Chinese page ' + `\`nodes/${n.id}.md\` and \`proofs/\`.`);
+  /* 英文陈述 / 说明（T3.2）：有就直接给 —— 这可是英文页上最要紧的东西。
+     ⚠️ 没有的时候必须**明说没有**，不能让人以为中文页只是多余的。 */
+  const STM = (MG && MG.i18nStatements) || null;
+  const hasStm = !!(STM && STM.items && (STM.items[n.id] || {}).statement_en);
+  if (n.statement_en) L.push('', '## Statement', n.statement_en);
+  if (n.notes_en) L.push('', '## Notes', n.notes_en);
+  if (!hasStm) {
+    L.push('', '## Statement and proof');
+    L.push('Chinese only — see the Chinese page ' + `\`nodes/${n.id}.md\` and \`proofs/\`.`);
+  } else {
+    L.push('', `> Proofs of the edges are still Chinese only: \`proofs/\`; ` +
+      'the Chinese page remains authoritative.');
+  }
   const xr = ((MG && MG.xref) || {})[n.id];
   const XR_NAME = { wikipedia: 'Wikipedia', nlab: 'nLab', stacks: 'Stacks Project', mathlib: 'Mathlib' };
   if (xr) {
@@ -1640,6 +1683,34 @@ function assertAbstracts(MG, graph) {
   return errs;
 }
 
+/* ------------------------------------------- 英文陈述/说明的硬断言（T3.2） */
+/* 真源 = `src/data/i18n/statements.en.js`（创译型，agent 起草、作者审校）。
+   断言：① id 真实存在；② 有 status / basedOn；③ 字段非空、不含汉字、不含禁用命令；
+        ④ 每条至少有 statement_en 或 notes_en 之一（空条目等于没写）。 */
+function assertStatements(MG, graph) {
+  const S = MG.i18nStatements;
+  if (!S) return ['英文陈述：`src/data/i18n/statements.en.js` 没有挂上（loadMG 少了它？）'];
+  const errs = [];
+  const items = S.items || {};
+  if (!S.status) errs.push('英文陈述：缺 status');
+  if (!S.basedOn) errs.push('英文陈述：缺 basedOn（译自哪个内容版本）');
+  const BAN = ['\\dots', '\\Rightarrow', '\\leq', '\\geq', '\\neq', '\\impliedby'];
+  for (const [id, rec] of Object.entries(items)) {
+    if (!graph.byId[id]) { errs.push(`英文陈述：节点不存在 \`${id}\``); continue; }
+    const fields = Object.keys(rec || {}).filter((k) => rec[k]);
+    if (!fields.length) { errs.push(`英文陈述：\`${id}\` 是空条目（要么写，要么删）`); continue; }
+    for (const f of ['statement_en', 'notes_en']) {
+      const s = rec[f];
+      if (s == null) continue;
+      if (/[\u4e00-\u9fff]/.test(s)) errs.push(`英文陈述：\`${id}.${f}\` 含汉字`);
+      for (const b of BAN) if (String(s).includes(b)) errs.push(`英文陈述：\`${id}.${f}\` 用了禁用命令 ${b}`);
+    }
+  }
+  const st = i18nState(S);
+  console.log(`  i18n：statement_en/notes_en ${Object.keys(items).length} 个节点 · 状态 ${st.state}`);
+  return errs;
+}
+
 function assertAliases(MG, graph) {  const A = MG.aliases;
   if (!A) return ['别名表：`src/data/aliases.js` 没有挂上（index.html 少了 <script>？）'];
   const errs = [];
@@ -1935,6 +2006,7 @@ if (doJSON) {
   errs.push(...assertXref(MG, graph));
   errs.push(...assertI18n(MG, graph));
   errs.push(...assertAbstracts(MG, graph));
+  errs.push(...assertStatements(MG, graph));
   // 给 AI 看的说明文档也必须在一次抓取之内
   for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md', 'alias.md']) {
     const p = path.join(DIST, extra);

@@ -3,7 +3,7 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T10:22:21.005Z",
+  "generated": "2026-10-15T10:31:16.274Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1834,7 +1834,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.wellordering.en.md",
@@ -1868,10 +1871,18 @@
    "label_en": "Zorn's lemma",
    "title_en": "Zorn's Lemma",
    "abstract_en": "Let $(P, \\preceq)$ be a non-empty poset in which every chain has an upper bound in $P$. Then $P$ has a maximal element. Both hypotheses are needed: the empty poset has none, and an upper bound for every chain yields maximality only, never a greatest element. It is the standard engine of existence proofs — bases, maximal ideals, compactness, Hahn–Banach — and it is non-constructive: an element is produced without telling you which one.",
+   "statement_en": "Let $(P, \\preceq)$ be a **non-empty** poset. If every chain in $P$ has an upper bound in $P$, then $P$ has a **maximal element**.\n\n$$P \\ne \\emptyset \\wedge ( \\forall C \\subseteq P, C\\text{ is a chain} \\to \\exists u \\in P, u\\text{ is an upper bound of } C ) \\implies \\exists m \\in P, m\\text{ is maximal}$$",
+   "notes_en": "Neither hypothesis can be dropped: the empty poset has no maximal element, and \"every chain has an upper bound\" does not give a *greatest* element — only a maximal one.\n\nIt is \"the universal engine of existence proofs\": every vector space has a basis, every ring has a maximal ideal, the compactness theorem, Hahn–Banach — all of them rely on it.\n\nThe name is a historical accident: Zorn popularised the statement in the 1940s, while Kuratowski had already proved an equivalent form in 1922, so it is also called the Kuratowski–Zorn lemma.\n\n⚠ Non-constructive: what one obtains is \"there exists a maximal element\", and usually one cannot say which.",
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "statement",
+      "notes",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/lem.zorn.en.md",
@@ -1908,7 +1919,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.hausdorff.en.md",
@@ -2041,10 +2055,18 @@
    "label_en": "metric space",
    "title_en": "Metric Space",
    "abstract_en": "A metric space is a pair $(X, d)$ with $d : X \\times X \\to [0, +\\infty)$ satisfying $d(x,y) = 0 \\iff x = y$, symmetry and the triangle inequality; open balls $B(x,r) = \\{y : d(x,y) < r\\}$ generate a topology, and they form a base for it. The point of the definition here is the split that follows: compactness and closedness use only the open sets, while completeness and total boundedness use $d$. Completeness is genuinely not topological — $\\mathbb{R}$ and $(0,1)$ are homeomorphic but only the first is complete.",
+   "statement_en": "A **metric space** is a pair $(X, d)$: $X$ is a set and $d : X \\times X \\to [0, +\\infty)$ is a **metric** on $X$, satisfying\n\n- **non-degeneracy**: $d(x, y) = 0 \\iff x = y$\n- **symmetry**: $d(x, y) = d(y, x)$\n- **triangle inequality**: $d(x, z) \\le d(x, y) + d(y, z)$\n\nFrom $d$ one defines the **open balls** $B(x, r) = \\{ y \\in X : d(x, y) < r \\}$, and declares $U \\subseteq X$ to be open $\\iff U$ is a union of open balls. This puts a topology on $X$.\n\nGiven $\\varepsilon > 0$, a set $D \\subseteq X$ is called an **$\\varepsilon$-net** if $\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$.",
+   "notes_en": "The open balls form a **base** for this topology. Every metric space is first countable and normal (hence Hausdorff).\n\nThe properties that follow fall into two classes: **compactness / closedness** depend only on the open sets and are **topological**; **completeness / total boundedness** use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval $(0, 1)$ are homeomorphic, yet only the first is complete.",
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "statement",
+      "notes",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.metric-space.en.md",
@@ -2180,7 +2202,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.metric-compact-equiv.en.md",
@@ -2408,7 +2433,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.ring-monotone-sigma.en.md",
@@ -2471,7 +2499,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/thm.monotone-class.en.md",
@@ -2827,7 +2859,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.outer-measure.en.md",
@@ -3936,7 +3972,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.product-measure.en.md",
@@ -3971,7 +4011,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/def.section.en.md",
@@ -4000,7 +4043,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/prop.section-measurable.en.md",
@@ -4501,7 +4547,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.complex-measure.en.md",
@@ -4820,7 +4870,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.shrinks-nicely.en.md",
@@ -5144,7 +5198,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/prop.nbv-derivative.en.md",
@@ -5450,7 +5507,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/def.essential-sup.en.md",
@@ -6200,7 +6260,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.cardinal-comparable.en.md",
@@ -6575,7 +6638,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.int.en.md",
@@ -6686,7 +6753,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/def.cauchy-null.en.md",
@@ -6826,7 +6896,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.real-uncountable.en.md",
@@ -7779,7 +7852,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/def.representable.en.md",
@@ -7866,7 +7943,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/prop.yoneda-embedding.en.md",
@@ -8068,7 +8149,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/prop.adjoint-full-faithful.en.md",
@@ -8148,7 +8232,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/thm.saft.en.md",
@@ -8279,7 +8367,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/ex.kan-extension.en.md",
@@ -8363,7 +8454,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/prop.chaus-reflective.en.md",
@@ -10041,7 +10135,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/def.abelian-category.en.md",
@@ -10509,7 +10606,10 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract"
+     ]
     }
    },
    "en_page": "nodes/thm.topos-abelian-grothendieck.en.md",
@@ -10736,7 +10836,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/prop.cg-coreflective.en.md",
@@ -10773,7 +10877,11 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/thm.quotient-product.en.md",
@@ -11242,10 +11350,18 @@
    "label_en": "Noether",
    "title_en": "Noether",
    "abstract_en": "For a group homomorphism $\\varphi : G \\to G'$, the assignment $g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective homomorphism has the quotient as image. The proof is three steps: well-definedness, multiplicativity, bijectivity. The same proof works verbatim for any \"set + operations + axioms\" structure, $A/\\ker f \\cong \\operatorname{im} f$, and the set-level prototype is that every map induces a bijection from the quotient by $a \\sim a' \\iff f(a) = f(a')$ onto its image.",
+   "statement_en": "Let $\\varphi : G \\to G'$ be a **group homomorphism**. Then $\\varphi$ induces an isomorphism\n\n$$G \\big/ \\ker\\varphi \\;\\cong\\; \\operatorname{im}\\varphi, \\qquad g \\ker\\varphi \\;\\longmapsto\\; \\varphi(g).$$\n\nIn particular: **the image of a surjective homomorphism is the quotient group** ($G/\\ker\\varphi \\cong G'$ when $\\varphi$ is surjective).",
+   "notes_en": "**The three steps of the proof.** Write $K = \\ker\\varphi$.\n\n- **Well defined**: if $gK = g'K$ then $g' = gk$ for some $k \\in K$, hence $\\varphi(g') = \\varphi(g)\\varphi(k) = \\varphi(g)e' = \\varphi(g)$ — elements of the same coset are sent to the same value.\n- **Homomorphism**: $\\overline{\\varphi}\\bigl((gK)(g'K)\\bigr) = \\overline{\\varphi}(gg'K) = \\varphi(gg') = \\varphi(g)\\varphi(g') = \\overline{\\varphi}(gK)\\,\\overline{\\varphi}(g'K)$.\n- **Bijection**: injective, because $\\overline{\\varphi}(gK) = e'$ means $\\varphi(g) = e'$, i.e. $g \\in K$, so $gK = K$; surjective, because the image is $\\varphi(G)$ by construction. ∎\n\n⭐ **It is really a theorem about the format \"set + operations + axioms\", not a privilege of groups.** The same proof carries over verbatim, provided one replaces \"homomorphism\" by the corresponding notion:\n\n$$A \\big/ \\ker f \\;\\cong\\; \\operatorname{im} f.$$\n\n⭐ **The set-level prototype**: for any map $f : A \\to B$, put $a \\sim a' \\iff f(a) = f(a')$ on $A$; then $f$ induces a **bijection** $A/{\\sim} \\;\\to\\; \\operatorname{im} f$ (see \"quotient set and equivalence classes\"). The group version adds exactly one sentence: **after dividing by the kernel, what remains is a group**. The first two steps (well defined, bijection) are the set-level content; only the third (homomorphism) is new.\n\n**What question does it answer?** \"Where does a homomorphism send a group?\" has a two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), locked together by a single isomorphism. So studying homomorphisms is studying normal subgroups — which is why group theory turns into the study of the lattice of subgroups.",
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0"
+     "version": "v0.9.0",
+     "fields": [
+      "abstract",
+      "statement",
+      "notes",
+      "name"
+     ]
     }
    },
    "en_page": "nodes/thm.first-iso.en.md",
