@@ -1,18 +1,18 @@
 # MathGalaxy · Notation
 
-> English version: **draft** (machine-drafted 2026-10-16, pending author review). Chinese is the source; it prevails.
+> English version: **draft** · Chinese source is authoritative · machine-drafted, pending author review.
 
-One symbol, one meaning per cluster; every clash between clusters is in the table.
+One symbol, one meaning per cluster; clashes between clusters are listed below.
 
 ## Rulings
 
 $A^{c}$ complement · $\subseteq$ inclusion · $\subset$ strict inclusion
-— never `\subsetneq` (banned spelling here).
+— never `\subsetneq` (banned).
 
 ## Table
 
-Each group is one page under `notation/`; entry **names** there are Chinese, the
-symbols are not. Whole table on one page: `notation-full.md`.
+Each group is one page under `notation/`; entry **names** are Chinese, the symbols
+are not. Whole table: `notation-full.md`.
 
 - `dist/notation/set.md` Logic and sets 39
 - `dist/notation/order.md` Order, cardinals, ordinals 18

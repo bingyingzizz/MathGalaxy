@@ -292,21 +292,32 @@ const DOCS = [
 ];
 /* 英文文档是**分页**的（一次抓取装不下，见 build.mjs 的 paginateEnDoc）：
    `hubs.en.md` + `hubs.en.2.md` + …。给人读的阅读页要把它们接回一整篇 ——
-   去掉续页的页首标题与指路行，「续见」指针也只在 AI 抓取时才有意义。 */
+   去掉续页的页首标题与指路行，「续见」指针也只在 AI 抓取时才有意义。
+   ⭐ 顺带把**状态头**抠出来（第 1 页第一行 `> …`）：它就是页面上那条横幅的文本。
+      这样横幅与 .en.md 里的状态头**永远是同一句话** —— 状态只有一个来源
+      （src/data/i18n/docs.en.js 的 status/basedOn），⛔ 页面上不许另写一份。 */
 function readEnDoc(file) {
   const base = file.replace(/\.md$/, '');
   const parts = [];
+  let status = '';
   for (let k = 1; ; k++) {
     const p = path.join(DIST, k === 1 ? file : `${base}.${k}.md`);
     if (!fs.existsSync(p)) break;
     let t = fs.readFileSync(p, 'utf8');
+    if (k === 1) {
+      const m = /^>\s*(English version:.*)$/m.exec(t);
+      if (!m) throw new Error(`dist/${file} 里没有英文状态头（English version: …）—— 构建没跑全？`);
+      status = m[1].trim();
+    }
     if (k > 1) t = t.replace(/^# [^\n]*\n+/, '').replace(/^> page 1 [^\n]*\n+/, '');
     t = t.replace(/\n> continued in `[^`]*`\n/g, '\n');
     parts.push(t.trim());
   }
   if (!parts.length) throw new Error(`英文文档 dist/${file} 不在，先检查构建`);
-  return parts.join('\n\n').replace(/\n{3,}/g, '\n\n');
+  return { text: parts.join('\n\n').replace(/\n{3,}/g, '\n\n'), status };
 }
+/** markdown 行内强调 → HTML（横幅要跟状态头一字不差，所以只把 ** ** 变成粗体） */
+const mdInline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
 
 /* 每个语言块一行：左栏、正文都靠 <html data-lang> 切（CSS 两条规则，见 read.css）。
    ⚠️ 两份正文都在 DOM 里 ⇒ 搜索引擎两种语言都看得见，不需要 hreflang。 */
@@ -314,7 +325,7 @@ const zhBlock = (s) => `<span class="zh" lang="zh-CN">${s}</span>`;
 const enBlock = (s) => `<span class="en" lang="en">${s}</span>`;
 
 const navHtml = DOCS.map((d) =>
-  `    <a href="#${d.id}" data-doc="${d.id}">` +
+  `    <a href="#${d.id}" data-doc="${d.id}"${d.en ? '' : ' class="noen"'}>` +
   `<b>${zhBlock(esc(d.nav))}${enBlock(esc(d.navEn))}</b>` +
   `<span>${zhBlock(esc(d.sub))}${enBlock(esc(d.subEn))}</span></a>`
 ).join('\n');
@@ -326,9 +337,10 @@ const docsHtml = DOCS.map((d) => {
   if (!title) throw new Error(`dist/${d.file} 的第一行不是 # 标题，阅读页取不到标题`);
   let en = null;
   if (d.en) {
-    const r = renderDoc(readEnDoc(d.en));
-    if (!r.title) throw new Error(`dist/${d.en} 的第一行不是 # 标题，阅读页取不到标题`);
-    en = r;
+    const r = readEnDoc(d.en);
+    const p = renderDoc(r.text);
+    if (!p.title) throw new Error(`dist/${d.en} 的第一行不是 # 标题，阅读页取不到标题`);
+    en = { title: p.title, html: p.html, status: r.status };
   }
   const attrs = [
     `id="${d.id}"`,
@@ -350,7 +362,9 @@ const docsHtml = DOCS.map((d) => {
     `      <div class="${zhCls}" lang="zh-CN">`,
     indent(html),
     `      </div>`,
-    en ? [`      <div class="body en" lang="en">`, indent(en.html), `      </div>`].join('\n') : '',
+    en ? [`      <div class="body en" lang="en">`,
+      `        <p class="enban">⚠️ ${mdInline(en.status)}</p>`,
+      indent(en.html), `      </div>`].join('\n') : '',
     `    </section>`,
   ].filter(Boolean).join('\n');
 }).join('\n\n');

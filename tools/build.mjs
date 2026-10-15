@@ -1131,15 +1131,33 @@ function exportNotationProducts(MG, base = '') {
    ⚠️ 路径：英文版与中文版**同目录同 URL 规则**（第 0 节：同一 URL 承载双语，
    中英并存不冲突）—— 所以 `reading.en.md` 里的相对路径和 `reading.md` 一样，
    `{{base}}` 的替换规则也照抄中文版。 */
-function enStatusLine(D) {
+/* ⭐⭐ 状态只有一个来源：`src/data/i18n/docs.en.js` 的 `status` + `basedOn`。
+   stale 是**算出来的**：内容版本（tools/ids.snapshot.json 的 vX.Y.Z）跑到 `basedOn`
+   之外就自动标 stale —— 不指望谁记得去改状态。
+   ⚠️ 措辞三件必须同时出现（作者 2026-10-16 护栏）：Chinese source is authoritative ·
+      machine-drafted · pending author review；页面横幅读的就是这一行的文本本身
+      （publish.mjs 从 .en.md 里抠出来渲染），所以两处永远不会漂。 */
+function enStatus(D) {
   const r = D.reviewed || {};
-  if (D.status === 'reviewed') {
-    return `> English version: **reviewed**${r.by ? ' · ' + r.by : ''}` +
-      `${r.date ? ' · ' + r.date : ''}. Chinese is the source language.`;
+  const cv = contentVersion();
+  const stale = !!(D.basedOn && cv && D.basedOn !== cv);
+  /* ⚠️ 这三行也是**体积预算的一部分**（单次抓取 ≤1050 转义字符）：
+     `notation.en.md` 贴着上限，所以措辞能省就省 —— 加字之前先看 _tools/_docsize.mjs。 */
+  const tail = 'Chinese source is authoritative · machine-drafted, pending author review.';
+  if (stale) {
+    return {
+      state: 'stale',
+      line: `> English version: **stale** (from ${D.basedOn}; content is ${cv}). ${tail}`,
+    };
   }
-  return '> English version: **draft** (machine-drafted' +
-    `${D.drafted ? ' ' + D.drafted : ''}, pending author review). ` +
-    'Chinese is the source; it prevails.';
+  if (D.status === 'reviewed') {
+    return {
+      state: 'reviewed',
+      line: `> English version: **reviewed**${r.by ? ' · ' + r.by : ''}${r.date ? ' · ' + r.date : ''} · ` +
+        'Chinese source is authoritative.',
+    };
+  }
+  return { state: 'draft', line: `> English version: **draft** · ${tail}` };
 }
 /** 把文档体里的 `{{base}}` 展开成中文版同样的相对前缀（'' 或 'dist/'） */
 const fillBase = (s, base) => String(s).replace(/\{\{base\}\}/g, base);
@@ -1186,7 +1204,7 @@ function exportNotationEn(MG, base = '') {
   const D = MG.i18nDocs, d = D.docs.notation;
   const N = MG.notation || { groups: [], entries: [] };
   const nb = g => (N.entries || []).filter(e => e.g === g.id).length;
-  const L = [`# ${d.title}`, '', enStatusLine(D), '', fillBase(d.body, base), ''];
+  const L = [`# ${d.title}`, '', enStatus(D).line, '', fillBase(d.body, base), ''];
   for (const g of (N.groups || [])) {
     L.push(`- \`${base}notation/${g.id}.md\` ${d.groups[g.id] || g.name} ${nb(g)}`);
   }
@@ -1263,7 +1281,7 @@ function exportGlossary(MG) {
   const L = [];
   L.push('# 数学星图 · 术语表（中 → 英）');
   L.push('');
-  L.push(enStatusLine(D));
+  L.push(enStatus(D).line);
   L.push('');
   L.push('给译者 / 英文页用的对照表。**有英文键的一律从代码里的键现算**（改键即改表）；');
   L.push('带 `+` 的行是代码里没有对应英文键、由 `docs.en.js` 补的。');
@@ -1636,7 +1654,12 @@ if (doJSON) {
         照项目老规矩切成 `X.en.2.md`；hubs / notation 是索引型，本来就只有一页。
      ⚠️ 根目录那份也要（和中文版一致，给直接翻仓库的人 / AI）；`{{base}}` 展开成 dist/。 */
   const EN_DOCS = MG.i18nDocs;
-  const enStatus = enStatusLine(EN_DOCS);
+  const enState = enStatus(EN_DOCS);
+  const enStatusLine = enState.line;
+  if (enState.state === 'stale') {
+    console.log(`  ⚠️ 英文文档标记为 **stale**：译自 ${EN_DOCS.basedOn}，当前内容版本 ${contentVersion()}` +
+      ' —— 把 src/data/i18n/docs.en.js 的 basedOn 更新/重译后才会变回 draft');
+  }
   const enOut = [];
   /* 每份英文文档：正文页（dist/）与仓库根页各一套，`{{base}}` 分别展开
      ⚠️ 根目录那份是**照抄中文版的规矩**：中文 llms/policy/reading/notation/alias 都有根副本，
@@ -1647,7 +1670,7 @@ if (doJSON) {
       const d = EN_DOCS.docs[docKey];
       const body = blocksOf ? '' : fillBase(d.body, base);
       const blocks = blocksOf ? blocksOf(base) : null;
-      for (const p of paginateEnDoc(name, d, enStatus, body, blocks)) {
+      for (const p of paginateEnDoc(name, d, enStatusLine, body, blocks)) {
         enOut.push({ file: path.join(dir, `${name}.en${p.suffix}.md`), text: p.text });
       }
     }

@@ -1,6 +1,6 @@
 # 数学星图 · 术语表（中 → 英）
 
-> English version: **draft** (machine-drafted 2026-10-16, pending author review). Chinese is the source; it prevails.
+> English version: **draft** · Chinese source is authoritative · machine-drafted, pending author review.
 
 给译者 / 英文页用的对照表。**有英文键的一律从代码里的键现算**（改键即改表）；
 带 `+` 的行是代码里没有对应英文键、由 `docs.en.js` 补的。

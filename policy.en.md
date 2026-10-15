@@ -1,6 +1,6 @@
 # MathGalaxy · Content policy
 
-> English version: **draft** (machine-drafted 2026-10-16, pending author review). Chinese is the source; it prevails.
+> English version: **draft** · Chinese source is authoritative · machine-drafted, pending author review.
 
 ## 1. Every layer is *constructed* from the layer below
 
