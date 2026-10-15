@@ -28,8 +28,8 @@
     var read = Object.create(null);     // id → true（节点 id 带点和冒号，不能用普通对象）
     var listeners = [];
     var nodes = graph.nodes;
-    var showMarks = true;               // 图上画不画已读标记
-    var MARK_KEY = 'mathgalaxy.read.show.v1';
+    var showMarks = true;               // 图上画不画已读标记（**不持久化**，见 setShowMarks）
+    var MARK_KEY = 'mathgalaxy.read.show.v1';   // 旧版本用过的键，现在启动时删掉
 
     /* ------------------------------------------------ 前置索引（建一次） */
     /* id → [前置 id…]。只认 implication 的前提和 definition 引用的定义：
@@ -137,11 +137,12 @@
       commit();
     }
 
-    /* 图上要不要画已读标记（存 localStorage，但**不影响已读数据**） */
+    /* 图上要不要画已读标记。
+       ⛔ **故意不持久化**（每次打开都是开的）—— 有一次它存进 localStorage 之后，
+          唯一的开关被删掉了，于是老用户永久看不见绿环，界面上无路可退。
+          这是个纯显示开关，不值得为它冒那个风险。 */
     function setShowMarks(on) {
       showMarks = !!on;
-      try { if (global.localStorage) global.localStorage.setItem(MARK_KEY, showMarks ? '1' : '0'); }
-      catch (e) { /* 忽略 */ }
       commit();
     }
     function isShowMarks() { return showMarks; }
@@ -169,10 +170,10 @@
     /* ------------------------------------------------------------ 启动 */
     buildPrereq(graph);
     load();
-    try {
-      var saved = global.localStorage ? global.localStorage.getItem(MARK_KEY) : null;
-      if (saved === '0') showMarks = false;
-    } catch (e) { /* 忽略 */ }
+    /* ⛔ 这里**故意不再读** `mathgalaxy.read.show.v1` —— 那个键是旧版本留下的，
+       读它会让「关过一次」的浏览器永久看不见绿环。顺手把它清掉，免得留着误导。 */
+    try { if (global.localStorage) global.localStorage.removeItem(MARK_KEY); }
+    catch (e) { /* 忽略 */ }
 
     return {
       isRead: isRead,

@@ -833,10 +833,28 @@ html.ui-no-hint #hint { display: none; }
     z-index: 11;              /* 压在详情面板（底部抽屉）之上，随时够得着 */
   }
   /* ⛔ 这里原来是 `#hint { display: none; }` —— 但 #hint 现在承担着页面标题与
-     说明，小屏把它藏掉等于「对一半读者和爬虫隐藏内容」。改成缩小排版。 */
-  #hint { bottom: 10px; padding: 7px 12px 8px; font-size: 11px; max-width: calc(100vw - 20px); }
-  #hint h1 { font-size: 12.5px; }
-  #hint .hint-lead { line-height: 1.55; }
+     说明，小屏把它藏掉等于「对一半读者和爬虫隐藏内容」。改成缩小排版。
+     ⭐ 2026-10-15 再压一轮：竖屏上它折行太多、盖住小半个星图（用户：「很大很挤」）。
+        文字一个都不删（那是唯一一块静态可读内容），只把字号 / 行高 / 内边距收紧。 */
+  #hint {
+    bottom: 8px;
+    padding: 6px 11px 7px;
+    font-size: 10.5px;
+    line-height: 1.45;
+    border-radius: 11px;
+    max-width: calc(100vw - 20px);
+  }
+  #hint h1 { font-size: 12px; margin-bottom: 1px; line-height: 1.3; }
+  #hint .hint-lead { line-height: 1.45; margin-bottom: 2px; }
+  #hint .hint-keys { line-height: 1.45; }
+  #hint details[open] summary { margin-bottom: 3px; }
+}
+
+/* 手机竖屏再紧一档 —— 中文在这个宽度下每行放不下几个字，折行最凶 */
+@media (max-width: 560px) {
+  #hint { padding: 5px 9px 6px; font-size: 10px; }
+  #hint h1 { font-size: 11.5px; }
+  #hint summary { font-size: 10px; }
 }
 
 /* 给读屏用的播报区：视觉上不占位，读屏能读到（搜索结果数量） */
