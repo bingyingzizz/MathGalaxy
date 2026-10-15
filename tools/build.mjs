@@ -85,6 +85,9 @@ function loadMG() {
     'core/config.js', 'core/util.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
     'core/layers.js',
     'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/i18n.js', 'data/notation.js', 'data/xref.js',
+    /* ⚠️ 只给构建用：浏览器端不需要英文文档正文（read.html 的英文版由 publish.mjs 组装），
+       所以这个文件**不挂进 index.html**。 */
+    'data/i18n/docs.en.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -1117,6 +1120,193 @@ function exportNotationProducts(MG, base = '') {
   return files;
 }
 
+/* ============================================================ 英文文档 */
+/* T2.1：read 文档的英文版。正文真源是 `src/data/i18n/docs.en.js`（内容侧），
+   这里只做三件事：加**状态头**、把 `{{base}}` 换成相对路径、把现算的数字/清单排进去。
+   ⛔ 别手写第二份英文 —— 要改就改那个数据文件，再 `bun tools/build.mjs`。
+
+   ⚠️ 状态头（任务书 §0.4）必须排在 `# 标题` **之后**：md.mjs 的 renderDoc() 取
+   第一个 `# ` 行当页面标题，标题上面还有东西的话 publish.mjs 会判「第一行不是 # 标题」。
+
+   ⚠️ 路径：英文版与中文版**同目录同 URL 规则**（第 0 节：同一 URL 承载双语，
+   中英并存不冲突）—— 所以 `reading.en.md` 里的相对路径和 `reading.md` 一样，
+   `{{base}}` 的替换规则也照抄中文版。 */
+function enStatusLine(D) {
+  const r = D.reviewed || {};
+  if (D.status === 'reviewed') {
+    return `> English version: **reviewed**${r.by ? ' · ' + r.by : ''}` +
+      `${r.date ? ' · ' + r.date : ''}. Chinese is the source language.`;
+  }
+  return '> English version: **draft** (machine-drafted' +
+    `${D.drafted ? ' ' + D.drafted : ''}, pending author review). ` +
+    'Chinese is the source; it prevails.';
+}
+/** 把文档体里的 `{{base}}` 展开成中文版同样的相对前缀（'' 或 'dist/'） */
+const fillBase = (s, base) => String(s).replace(/\{\{base\}\}/g, base);
+/** 英文名回落链：label_en → title_en → 中文 label（与 graph.js 抄下来的口径一致） */
+const enNameOf = n => (n && (n.label_en || n.title_en || n.label)) || '';
+
+/** 枢纽榜英文版的「块」：页首说明 + 每 15 条一组 + 结尾那行。
+    ⛔ 入边口径必须与 exportHubs() 完全一致（改一处必须改两处）。
+    ⭐ 为什么这里自己切块而不是交给正文解析：行是列表，正文切块会把列表从中间切开
+       （aiChunk 对「一整段没空行」的东西只能逐字切）。切在**行与行之间**才诚实。 */
+function hubBlocksEn(MG, graph) {
+  const D = MG.i18nDocs, d = D.docs.hubs;
+  const indeg = new Map();
+  const bump = k => indeg.set(k, (indeg.get(k) || 0) + 1);
+  for (const e of graph.edges) {
+    if (e.kind === 'implication') bump(e.target);
+    else if (e.kind === 'definition') bump(e.usedBy);
+    else if (e.kind === 'equivalence') { bump(e.a); bump(e.b); }
+    /* analogy（弱边）不计入 —— 枢纽榜只反映逻辑骨架 */
+  }
+  const ranked = graph.nodes
+    .map(n => ({ n, d: indeg.get(n.id) || 0 }))
+    .filter(x => x.d > 0)
+    .sort((a, b) => b.d - a.d || a.n.layer - b.n.layer);
+
+  const blocks = [d.head];
+  let rows = [], shown = 0;
+  for (const { n, d: deg } of ranked) {
+    if (shown >= 30) break;
+    const cl = n.cluster && graph.clusterById[n.cluster] ? graph.clusterById[n.cluster].name : '—';
+    rows.push(`- **${deg}** \`${n.id}\` ${enNameOf(n)} · layer ${n.layer} · ${cl}`);
+    shown++;
+    /* ⚠️ 每块别贪多：块是**不可再切**的单位，给大了会整块挤到下一页（页数翻倍）。
+       5 行一块，让打包器自己把页填满。 */
+    if (rows.length === 5) { blocks.push(rows.join('\n')); rows = []; }
+  }
+  if (rows.length) blocks.push(rows.join('\n'));
+  blocks.push(d.tail(shown, graph.nodes.length, ranked.length));
+  return blocks;
+}
+
+/** 记号表索引英文版。条目名（notation/*.md 里的）仍是中文 —— 见正文说明。 */
+function exportNotationEn(MG, base = '') {
+  const D = MG.i18nDocs, d = D.docs.notation;
+  const N = MG.notation || { groups: [], entries: [] };
+  const nb = g => (N.entries || []).filter(e => e.g === g.id).length;
+  const L = [`# ${d.title}`, '', enStatusLine(D), '', fillBase(d.body, base), ''];
+  for (const g of (N.groups || [])) {
+    L.push(`- \`${base}notation/${g.id}.md\` ${d.groups[g.id] || g.name} ${nb(g)}`);
+  }
+  L.push('');
+  return L.join('\n') + '\n';
+}
+
+/* ------------------------------------------------------ 英文文档分页 */
+/* ⚠️⚠️ 为什么英文必须切页、中文不用：
+     AI_ESC = 1050 是**转义后字符数**，AI_MAXB = 1300 是**字节数**。
+     中文一个字 ≈ 3 B / 1 字符 ⇒ 卡在字节那条（reading.md 1269 B 才 722 字符）；
+     英文一个字符 ≈ 1 B     ⇒ 卡在字符那条（同样的内容 1623 B / 1685 字符）。
+     ⇒ 同一份文档的英文版天生比中文版「长」两倍多，**装不进一次抓取**。
+     所以英文文档照中文节点页的老办法切页：正文照写，一次抓不完就 `X.en.2.md`。
+     ⛔ 不许为了塞进一页把英文砍短 —— 那是静默降质（§5）。
+
+   切页点**只切在小节边界**（`## ` 行）：英文段落切一半比多一页更糟。
+   每页都带标题 + 状态头，续页第一行给回第 1 页的路径。 */
+function paginateEnDoc(name, doc, statusLine, body, blocks) {
+  /* 按 `## ` 切成块：块 0 = 第一个 `## ` 之前的引子（可能没有）
+     ⭐ 也可以由调用方直接给块（列表型文档：只在行与行之间切，见 hubBlocksEn）。 */
+  blocks = blocks || [];
+  if (!blocks.length) {
+    for (const line of String(body).trim().split('\n')) {
+      if (!blocks.length || /^##\s/.test(line)) blocks.push([]);
+      blocks[blocks.length - 1].push(line);
+    }
+    blocks = blocks.map(b => b.join('\n').trim()).filter(Boolean);
+  }
+  const head1 = `# ${doc.title}\n\n${statusLine}\n\n`;
+  const headK = k => `# ${doc.title} · continuation (page ${k})\n\n` +
+    `> page 1 \`${name}.en.md\`\n\n`;
+    /* ⚠️ head1/headK 两处生成必须和下面写出时同一份 —— 估算与实际不一致就会顶破上限。 */
+  const jumpRes = `\n> continued in \`${name}.en.99.md\`\n`;   // 最坏情况预留
+  const fits = (k, txt) =>
+    aiBytes((k === 1 ? head1 : headK(k)) + txt + jumpRes) <= AI_MAXB &&
+    aiCost((k === 1 ? head1 : headK(k)) + txt + jumpRes) <= AI_ESC;
+
+  const pages = [];
+  let cur = null;
+  for (const b of blocks) {
+    /* 两种来源：正文解析出来的是**行数组**，调用方直接给的是**字符串** */
+    const txt = (Array.isArray(b) ? b.join('\n') : String(b)).trim();
+    if (!txt) continue;
+    const k = pages.length + 1;
+    if (cur && !fits(k, cur + '\n\n' + txt)) { pages.push(cur); cur = null; }
+    const k2 = pages.length + 1;
+    if (!fits(k2, txt)) {                    // 单块自己就顶破一页 ⇒ 交给 aiChunk 硬切
+      for (const p of aiChunk(txt, headK(k2), jumpRes, 0, 0)) pages.push(p);
+      continue;
+    }
+    cur = cur ? cur + '\n\n' + txt : txt;
+  }
+  if (cur) pages.push(cur);
+
+  return pages.map((txt, i) => {
+    const k = i + 1;
+    let t = (k === 1 ? head1 : headK(k)) + txt + '\n';
+    if (k < pages.length) t += `\n> continued in \`${name}.en.${k + 1}.md\`\n`;
+    return { suffix: k === 1 ? '' : '.' + k, text: t };
+  });
+}
+
+/* ------------------------------------------------------------ 术语表 */
+/* T2.1 的副产品：中英对照。⭐ 规则是**复用已有英文键，不新造词**：
+   节点类型（config.js 的键就是英文）、边的四种 kind（键即英文）、记号表分组名
+   （docs.en.js 的 groups 就是那些键的译文）、九个星系（regions.js 的 `en` 字段）
+   全部现算；只有代码里根本没有英文键的词才由 docs.en.js 的 glossaryExtra 补，
+   并在表里标 `+`，让作者一眼看得出哪些是新造的。 */
+function exportGlossary(MG) {
+  const D = MG.i18nDocs;
+  const T = MG.theme || {};
+  const N = MG.notation || { groups: [], entries: [] };
+  const L = [];
+  L.push('# 数学星图 · 术语表（中 → 英）');
+  L.push('');
+  L.push(enStatusLine(D));
+  L.push('');
+  L.push('给译者 / 英文页用的对照表。**有英文键的一律从代码里的键现算**（改键即改表）；');
+  L.push('带 `+` 的行是代码里没有对应英文键、由 `docs.en.js` 补的。');
+  L.push('');
+
+  L.push('## 节点类型（`src/core/config.js` 的 `nodeTypes` 键）');
+  L.push('');
+  for (const k of (T.typeOrder || Object.keys(T.nodeTypes || {}))) {
+    const t = (T.nodeTypes || {})[k];
+    if (t) L.push(`- \`${k}\`　${t.name}`);
+  }
+  L.push('');
+
+  L.push('## 边的四种 kind（`edgeNames` / `edgeStyles` 键）');
+  L.push('');
+  for (const k of Object.keys(T.edgeNames || {})) {
+    const w = (k === 'analogy') ? 'weak' : 'strong';
+    L.push(`- \`${k}\`　${T.edgeNames[k]}　（${w} edge）`);
+  }
+  L.push('');
+
+  L.push('## 记号表分组（`notation.js` 的 `groups`）');
+  L.push('');
+  for (const g of (N.groups || [])) {
+    const n = (N.entries || []).filter(e => e.g === g.id).length;
+    L.push(`- \`${g.id}\`　${g.name}　→　${D.docs.notation.groups[g.id] || '（缺）'}　${n} 条`);
+  }
+  L.push('');
+
+  L.push('## 九个星系（`regions.js` 的 `en` 字段）');
+  L.push('');
+  for (const r of (MG.regions || [])) L.push(`- \`${r.id}\`　${r.name}　→　${r.en || '（缺）'}`);
+  L.push('');
+
+  L.push('## 其它（`+` = 手工新造）');
+  L.push('');
+  for (const g of (D.glossaryExtra || [])) {
+    L.push(`- ${g.zh}　→　${g.en}　\`+\`${g.note ? '　— ' + g.note : ''}`);
+  }
+  L.push('');
+  return L.join('\n');
+}
+
 /* -------------------------------------------------------- alias.md */
 /* 别名与问法索引。真源在 `src/data/aliases.js` —— 这里只把它排版出来。
    给 AI 的用处：把「大白话 / 英文名 / 老名字」换成节点 id，
@@ -1436,6 +1626,60 @@ if (doJSON) {
   fs.writeFileSync(path.join(DIST, 'hubs.md'), exportHubs(MG, graph, data), 'utf8');
   console.log('  → dist/hubs.md');
 
+  /* ------------------------------------------------------- 英文文档（T2.1） */
+  /* 正文真源 src/data/i18n/docs.en.js；这里只渲染 + 状态头 + 分页。
+     ⭐ reading / policy 天生装不进一次抓取（英文卡在「转义后字符数」那条上限上），
+        照项目老规矩切成 `X.en.2.md`；hubs / notation 是索引型，本来就只有一页。
+     ⚠️ 根目录那份也要（和中文版一致，给直接翻仓库的人 / AI）；`{{base}}` 展开成 dist/。 */
+  const EN_DOCS = MG.i18nDocs;
+  const enStatus = enStatusLine(EN_DOCS);
+  const enOut = [];
+  /* 每份英文文档：正文页（dist/）与仓库根页各一套，`{{base}}` 分别展开
+     ⚠️ 根目录那份是**照抄中文版的规矩**：中文 llms/policy/reading/notation/alias 都有根副本，
+        只有 hubs.md 没有 —— 英文这边也照做，别自己发明。 */
+  const put = (name, docKey, blocksOf, withRoot = true) => {
+    for (const base of (withRoot ? ['', 'dist/'] : [''])) {
+      const dir = base ? ROOT : DIST;
+      const d = EN_DOCS.docs[docKey];
+      const body = blocksOf ? '' : fillBase(d.body, base);
+      const blocks = blocksOf ? blocksOf(base) : null;
+      for (const p of paginateEnDoc(name, d, enStatus, body, blocks)) {
+        enOut.push({ file: path.join(dir, `${name}.en${p.suffix}.md`), text: p.text });
+      }
+    }
+  };
+  put('reading', 'reading');
+  put('policy', 'policy');
+  put('hubs', 'hubs', () => hubBlocksEn(MG, graph), false);   // 列表型：自己切块 ✓（base 无关）
+  enOut.push({ file: path.join(DIST, 'notation.en.md'), text: exportNotationEn(MG) });
+  enOut.push({ file: path.join(ROOT, 'notation.en.md'), text: exportNotationEn(MG, 'dist/') });
+  /* 术语表：只进仓库 i18n/（译者 / 手工维护用），⛔ 不发布成站点产物 —— 它是索引型参考，
+     不是给抓取工具读的产物，没必要挤站点体积。 */
+  fs.mkdirSync(path.join(ROOT, 'i18n'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'i18n', 'glossary.md'), exportGlossary(MG), 'utf8');
+
+  /* ⚠️ 先清掉上一轮的英文文档（页数会随正文变化）—— 不然 dist/ 和根目录会攒下
+     孤儿 `X.en.5.md` 这种续页，发布时被一起带走。 */
+  const enRe = /^(reading|policy|hubs|notation)\.en(\.[0-9]+)?\.md$/;
+  for (const dir of [DIST, ROOT]) {
+    for (const f of fs.readdirSync(dir)) {
+      if (enRe.test(f)) fs.rmSync(path.join(dir, f));
+    }
+  }
+
+  const enErrs = [];
+  for (const f of enOut) {
+    const b = aiBytes(f.text), c = aiCost(f.text);
+    if (b > AI_MAXB || c > AI_ESC) {
+      enErrs.push(`产物过大：${path.relative(ROOT, f.file).replace(/\\/g, '/')}` +
+        ` = ${b} B / 转义后 ${c} 字符（上限 ${AI_MAXB} B 且 ${AI_ESC} 字符）`);
+    }
+    fs.writeFileSync(f.file, f.text, 'utf8');
+  }
+  console.log(`  → 英文文档（状态：${EN_DOCS.status}）：` +
+    enOut.map(f => path.relative(ROOT, f.file).replace(/\\/g, '/')).join(' · ') +
+    ' + i18n/glossary.md');
+
   /* ---------------------------------------------- AI 按需检索产物 */
   for (const d of ['nodes', 'proofs', 'notes', 'index', 'notation', 'alias']) {
     fs.rmSync(path.join(DIST, d), { recursive: true, force: true });
@@ -1470,6 +1714,7 @@ if (doJSON) {
   console.log('  → dist/LICENSE.txt（复制自仓库根 LICENSE + 一行标题）');
 
   const errs = assertAI(MG, graph, files, pagesOf);
+  errs.push(...enErrs);
   errs.push(...assertNotation(MG, graph));
   errs.push(...assertAliases(MG, graph));
   errs.push(...assertXref(MG, graph));

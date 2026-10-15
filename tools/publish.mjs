@@ -260,17 +260,49 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
 // 以前这三张卡片直接链到 mathgalaxy/*.md —— 浏览器只当纯文本吐出来，又生硬又没排版。
 // 现在渲染成站内的阅读页：同一份内容，排好版，切换有动画；原件仍然在 mathgalaxy/ 下
 // 原封不动地躺着（AI 要读的还是它们）。
+// ⭐ T2.1：现在是**双语**的 —— 中文（真源）+ 英文（构建生成，见 src/data/i18n/docs.en.js）。
+//    同一节里放两套正文，靠 <html data-lang> + CSS 切；`?lang=en` 可直链。
 const DOCS = [
-  { id: 'reading',  file: 'reading.md',       nav: '读图指南',   sub: '三层 / 四种边 / 层号' },
-  { id: 'notation', file: 'notation-full.md', nav: '记号对照表', sub: '包含 / 真包含 / 补集 / 字母谁是谁' },
-  { id: 'llms',     file: 'llms.txt',         nav: '检索协议',   sub: '给 AI 的入口' },
-  { id: 'policy',   file: 'policy.md',        nav: '内容准则',   sub: '这张图为什么这么长' },
-  { id: 'hubs',     file: 'hubs.md',          nav: '枢纽定理榜', sub: '哪些东西是地基' },
-  { id: 'license',  file: 'LICENSE.txt',      nav: '许可与引用', sub: '引用请标注节点 id' },
+  { id: 'reading',  file: 'reading.md',       en: 'reading.en.md', nav: '读图指南',   navEn: 'Reading guide',
+    sub: '三层 / 四种边 / 层号',                  subEn: 'three scales, four edge kinds, layers' },
+  { id: 'notation', file: 'notation-full.md', en: 'notation.en.md', nav: '记号对照表', navEn: 'Notation',
+    sub: '包含 / 真包含 / 补集 / 字母谁是谁',        subEn: 'inclusion, complement, letter conventions' },
+  { id: 'llms',     file: 'llms.txt',                               nav: '检索协议',   navEn: 'Retrieval protocol',
+    sub: '给 AI 的入口',                          subEn: 'the entry point for AI' },
+  { id: 'policy',   file: 'policy.md',        en: 'policy.en.md',  nav: '内容准则',   navEn: 'Content policy',
+    sub: '这张图为什么这么长',                    subEn: 'why the graph is this long' },
+  { id: 'hubs',     file: 'hubs.md',          en: 'hubs.en.md',    nav: '枢纽定理榜', navEn: 'Hub theorems',
+    sub: '哪些东西是地基',                        subEn: 'what the foundations are' },
+  { id: 'license',  file: 'LICENSE.txt',                            nav: '许可与引用', navEn: 'Licence & citation',
+    sub: '引用请标注节点 id',                     subEn: 'cite by node id' },
 ];
+/* 英文文档是**分页**的（一次抓取装不下，见 build.mjs 的 paginateEnDoc）：
+   `hubs.en.md` + `hubs.en.2.md` + …。给人读的阅读页要把它们接回一整篇 ——
+   去掉续页的页首标题与指路行，「续见」指针也只在 AI 抓取时才有意义。 */
+function readEnDoc(file) {
+  const base = file.replace(/\.md$/, '');
+  const parts = [];
+  for (let k = 1; ; k++) {
+    const p = path.join(DIST, k === 1 ? file : `${base}.${k}.md`);
+    if (!fs.existsSync(p)) break;
+    let t = fs.readFileSync(p, 'utf8');
+    if (k > 1) t = t.replace(/^# [^\n]*\n+/, '').replace(/^> page 1 [^\n]*\n+/, '');
+    t = t.replace(/\n> continued in `[^`]*`\n/g, '\n');
+    parts.push(t.trim());
+  }
+  if (!parts.length) throw new Error(`英文文档 dist/${file} 不在，先检查构建`);
+  return parts.join('\n\n').replace(/\n{3,}/g, '\n\n');
+}
+
+/* 每个语言块一行：左栏、正文都靠 <html data-lang> 切（CSS 两条规则，见 read.css）。
+   ⚠️ 两份正文都在 DOM 里 ⇒ 搜索引擎两种语言都看得见，不需要 hreflang。 */
+const zhBlock = (s) => `<span class="zh" lang="zh-CN">${s}</span>`;
+const enBlock = (s) => `<span class="en" lang="en">${s}</span>`;
 
 const navHtml = DOCS.map((d) =>
-  `    <a href="#${d.id}" data-doc="${d.id}"><b>${esc(d.nav)}</b><span>${esc(d.sub)}</span></a>`
+  `    <a href="#${d.id}" data-doc="${d.id}">` +
+  `<b>${zhBlock(esc(d.nav))}${enBlock(esc(d.navEn))}</b>` +
+  `<span>${zhBlock(esc(d.sub))}${enBlock(esc(d.subEn))}</span></a>`
 ).join('\n');
 
 const docsHtml = DOCS.map((d) => {
@@ -278,14 +310,35 @@ const docsHtml = DOCS.map((d) => {
   if (!fs.existsSync(src)) throw new Error(`阅读页要用的 dist/${d.file} 不在，先检查构建`);
   const { title, html } = renderDoc(fs.readFileSync(src, 'utf8'));
   if (!title) throw new Error(`dist/${d.file} 的第一行不是 # 标题，阅读页取不到标题`);
+  let en = null;
+  if (d.en) {
+    const r = renderDoc(readEnDoc(d.en));
+    if (!r.title) throw new Error(`dist/${d.en} 的第一行不是 # 标题，阅读页取不到标题`);
+    en = r;
+  }
+  const attrs = [
+    `id="${d.id}"`,
+    `data-title="${esc(d.nav)}"`,
+    en ? `data-title-en="${esc(d.navEn)}"` : null,
+    `data-raw="mathgalaxy/${d.file}"`,
+    en ? `data-raw-en="mathgalaxy/${d.en}"` : null,
+  ].filter(Boolean).join(' ');
+  const indent = (s) => s.split('\n').map((l) => '        ' + l).join('\n');
+  /* ⚠️ 没有英文版的那两节（检索协议 / 许可）：中文正文**不能**带 `.zh` ——
+     带了就被 `html[data-lang=en] .zh{display:none}` 一起藏掉，英文模式只剩一行警告。 */
+  const zhCls = en ? 'body zh' : 'body';
+  /* ⚠️ 同理：没有英文版时标题**不能**包 `.zh` —— 否则英文模式下 h1 是空的（踩过）。 */
+  const h1 = en ? zhBlock(esc(title)) + enBlock(esc(en.title)) : esc(title);
   return [
-    `    <section class="doc" id="${d.id}" data-title="${esc(d.nav)}" data-raw="mathgalaxy/${d.file}">`,
-    `      <h1 class="stag">${esc(title)}</h1>`,
-    `      <div class="body">`,
-    html.split('\n').map((l) => '        ' + l).join('\n'),
+    `    <section class="doc" ${attrs}>`,
+    `      <h1 class="stag">${h1}</h1>`,
+    en ? '' : `      <p class="noen">${enBlock('⚠️ No English version of this document yet — the Chinese text below is authoritative.')}</p>`,
+    `      <div class="${zhCls}" lang="zh-CN">`,
+    indent(html),
     `      </div>`,
+    en ? [`      <div class="body en" lang="en">`, indent(en.html), `      </div>`].join('\n') : '',
     `    </section>`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }).join('\n\n');
 
 fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {

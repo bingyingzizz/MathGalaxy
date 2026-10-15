@@ -12,6 +12,17 @@
 <link rel="stylesheet" href="assets/katex.min.css">
 <script src="assets/katex.min.js"></script>
 <script>document.documentElement.classList.add('js');</script>
+<!-- 语言：?lang=en 直链 > 上次选的（localStorage）> 浏览器语言里是英文就英文，否则中文。
+     ⚠️ 必须在**首屏之前**定下 data-lang —— 否则英文用户会先看到一屏中文再跳。
+     没 JS 时 data-lang 不设 ⇒ CSS 默认显示中文（真源）。 -->
+<script>(function(){try{
+  var q=new URLSearchParams(location.search).get('lang');
+  var s=localStorage.getItem('mathgalaxy.read.lang');
+  var b=String(navigator.language||'').toLowerCase().indexOf('en')===0?'en':'zh';
+  var l=(q||s||b)==='en'?'en':'zh';
+  document.documentElement.setAttribute('data-lang',l);
+  document.documentElement.lang=(l==='en'?'en':'zh-CN');
+}catch(e){document.documentElement.setAttribute('data-lang','zh');}})();</script>
 <noscript><style>.doc{display:block!important}</style></noscript>
 </head>
 <body class="reader">
@@ -20,15 +31,16 @@
   <div class="in">
     <a class="back" href="./">← {{USER}}</a>
     <span class="sp"></span>
-    <a class="mini" href="mathgalaxy/">数学星图 →</a>
-    <a class="mini" id="raw" href="mathgalaxy/reading.md" target="_blank" rel="noopener">原文 ↗</a>
+    <a class="mini" href="mathgalaxy/"><span class="zh">数学星图 →</span><span class="en">MathGalaxy →</span></a>
+    <a class="mini" id="raw" href="mathgalaxy/reading.md" target="_blank" rel="noopener"><span class="zh">原文 ↗</span><span class="en">raw ↗</span></a>
+    <button class="mini lang" id="lang" type="button" aria-live="polite"><span class="zh">English</span><span class="en">中文</span></button>
   </div>
 </header>
 
 <div class="rlayout">
 
   <nav class="side" aria-label="文档">
-    <p>怎么读这张图</p>
+    <p><span class="zh">怎么读这张图</span><span class="en">How to read this map</span></p>
 {{NAV}}
   </nav>
 
@@ -36,28 +48,66 @@
 {{DOCS}}
 
     <p class="rfoot">
-      这几份东西同时也是 <b>AI 的检索入口</b>：原件就在
+      <span class="zh">这几份东西同时也是 <b>AI 的检索入口</b>：原件就在
       <code>mathgalaxy/</code> 下（<code>.md</code> / <code>.txt</code>），
       可以直接把 URL 丢给 AI，不需要打开这个页面。<br>
-      最近更新：{{UPDATED}}
+      最近更新：{{UPDATED}}</span>
+      <span class="en" lang="en">These documents are also <b>the entry point for AI</b>: the originals
+      live under <code>mathgalaxy/</code> (<code>.md</code> / <code>.txt</code>) — hand the URL to an
+      agent, no need to open this page. English versions (<code>*.en.md</code>) are build-generated
+      and pending author review.<br>
+      Last updated: {{UPDATED}}</span>
     </p>
   </main>
 
 </div>
 
 <script>
-/* 阅读页只做三件事：按 hash 切换文档、给每块内容排错峰进场的延迟、更新顶栏的「原文」链接。
+/* 阅读页只做四件事：按 hash 切换文档、给每块内容排错峰进场的延迟、
+   更新顶栏的「原文」链接、切中英。
    正文是构建期就渲染好的静态 HTML —— 打开即读，不依赖任何脚本。 */
 (function () {
   var SITE = document.documentElement.dataset.site || '';
   var secs = [].slice.call(document.querySelectorAll('.doc'));
   var navs = [].slice.call(document.querySelectorAll('.side a'));
   var raw = document.getElementById('raw');
+  var langBtn = document.getElementById('lang');
   var ids = secs.map(function (s) { return s.id; });
+  var cur = ids[0];
 
   function target() {
     var h = location.hash.replace(/^#/, '');
     return ids.indexOf(h) >= 0 ? h : ids[0];
+  }
+
+  /* 语言：data-lang 由 <head> 里那段先定好，这里只负责切换和同步。
+     ⚠️ 判据是 html 上的 data-lang，CSS 的两条规则跟着它走（read.css 末尾）。 */
+  function lang() {
+    return document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+  }
+  function syncRaw(sec) {
+    if (!raw) return;
+    raw.href = (lang() === 'en' && sec.dataset.rawEn) ? sec.dataset.rawEn : sec.dataset.raw;
+  }
+  function syncTitle(sec) {
+    var t = (lang() === 'en' && sec.dataset.titleEn) ? sec.dataset.titleEn : sec.dataset.title;
+    document.title = t + ' · ' + SITE;
+  }
+  function setLang(next, push) {
+    document.documentElement.setAttribute('data-lang', next);
+    document.documentElement.lang = next === 'en' ? 'en' : 'zh-CN';
+    try { localStorage.setItem('mathgalaxy.read.lang', next); } catch (e) {}
+    var u = new URL(location.href);
+    if (next === 'en') u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang');
+    if (push !== false) history.replaceState(null, '', u.pathname + (u.search || '') + u.hash);
+    var sec = document.getElementById(cur);
+    if (sec) { syncRaw(sec); syncTitle(sec); replay(sec); }
+  }
+  if (langBtn) {
+    langBtn.addEventListener('click', function () {
+      setLang(lang() === 'en' ? 'zh' : 'en');
+      langBtn.setAttribute('aria-label', lang() === 'en' ? '切换到中文' : 'Switch to English');
+    });
   }
 
   // 重放进场动画：先摘掉 .run，强制一次重排，再挂回去
@@ -72,6 +122,7 @@
   }
 
   function show(id, first) {
+    cur = id;
     secs.forEach(function (s) {
       s.classList.toggle('on', s.id === id);
       var h = s.querySelector('h1');
@@ -83,14 +134,15 @@
     var sec = document.getElementById(id);
     var h1 = sec.querySelector('h1');
     if (h1) h1.style.viewTransitionName = 'doc-hero';
-    if (raw) raw.href = sec.dataset.raw;
-    document.title = sec.dataset.title + ' · ' + SITE;
+    syncRaw(sec);
+    syncTitle(sec);
     replay(sec);
     if (!first) window.scrollTo(0, 0);
   }
 
   window.addEventListener('hashchange', function () { show(target(), false); });
   show(target(), true);
+  if (lang() === 'en' && langBtn) langBtn.setAttribute('aria-label', 'Switch to Chinese');
 })();
 
 /* 行内数学：正文里写成 $…$ 的地方交给 KaTeX 渲染。

@@ -106,6 +106,21 @@ body.reader{padding-bottom:0}
 .rfoot code{font-family:var(--mono);font-size:12.5px;background:var(--code-bg);
   padding:1px 5px;border-radius:5px}
 
+/* -------------------------------------------------------------- 中英切换 */
+/* 两套正文都在 DOM 里（同一 URL 承载双语，见 tools/publish.mjs），靠这两条规则切：
+   ⚠️ 判据是 <html data-lang> 这个**属性本身**，不是某个代理 class —— 没 JS 时不设属性 ⇒
+      默认走中文（真源），英文用户由 <head> 里那段脚本在首屏前定下 data-lang。 */
+html[data-lang="en"] .zh{display:none}
+html:not([data-lang="en"]) .en{display:none}
+/* 左栏的语言块包在 <b>/<span> 里面，会被上面的 .side a span 规则压成小字/浅色 —— 拉回来 */
+.side a b .zh,.side a b .en,.side a>span .zh,.side a>span .en{font-size:inherit;color:inherit}
+/* 没有英文版的那两节（检索协议、许可）：英文模式下顶一行说明，别让人以为是漏翻了 */
+.noen{margin:0 0 18px!important;padding:10px 14px;border-radius:10px;
+  background:rgba(224,132,52,.09);border:1px solid rgba(224,132,52,.28);
+  color:#8a5a1e;font-size:13.5px;line-height:1.6}
+button.lang{font-family:inherit;cursor:pointer;background:none;font-weight:600}
+button.lang:hover{color:var(--accent);border-color:rgba(79,124,245,.45);background:var(--accent-soft)}
+
 /* -------------------------------------------------------------- 进场动画 */
 /* .stag 由构建期打在每个正文块上；JS 给它加 .run 并写 animationDelay。
    没 JS / 开了「减少动态效果」时，.run 不起作用 —— 内容照样看得见。 */
