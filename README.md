@@ -1,5 +1,46 @@
 # 数学星图 · MathGalaxy
 
+<!-- ────────────────────────────────────────────────────────────────────────
+     English section (T1.0). 中文从下面「一张可缩放…」开始，一个字没动。
+     数字改的时候一起改这里；权威数字永远以 llms.txt / graph.json 为准。
+     ──────────────────────────────────────────────────────────────────── -->
+
+> ## English
+>
+> **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
+> concept is a star, every proof is a line between them.
+> **709 nodes / 1398 edges** across **9 galaxies and 45 clusters** (content `v0.9.0`).
+> Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
+> in the browser, with the same data the published site serves.
+>
+> 🌐 **Open the live map** → <https://bingyingzizz.github.io/mathgalaxy/>
+>
+> ### How to read it
+>
+> Three scales: **galaxy** (a mathematical field) → **cluster** (a self-contained
+> apparatus built to produce one usable thing) → **node** (a single definition,
+> theorem, lemma, proposition, corollary or axiom).
+>
+> | edge on the canvas | meaning |
+> |---|---|
+> | **black arrow** | implication — sources are the hypotheses, the arrow points at what they yield |
+> | **black line** | equivalence — click it to see both directions of the proof |
+> | **blue translucent line** | definition reference — the statement of one node uses this definition |
+> | **purple dashed line** | analogy (a *weak* edge; hidden until you turn on Explore) |
+>
+> ### For AI agents
+>
+> **Do not fetch `graph.json` in one go** (it is ~1.7 MB). Follow the retrieval
+> protocol in [`llms.txt`](llms.txt): `dist/alias.md` (plain words / English names → node id)
+> → `dist/index.md` (galaxies → clusters) → `dist/index/<cluster>.md` (node list)
+> → `dist/nodes/<node-id>.md` (statement + in/out edges). Each file is cut to fit one
+> fetch (~1300 B); overflow continues in `<path>.2.md`, and the first page is always `<path>.md`.
+> Node ids are stable — they are the citation contract.
+>
+> **Cite as:** `MathGalaxy node ⟨id⟩ (content v0.9.0)` — see [`LICENSE`](LICENSE).
+>
+> *Chinese original follows below.*
+
 一张**可缩放、可检索**的数学知识图谱：每个数学概念是一颗星，定理之间的推导是连线。
 
 > ### 🔭 在线看图 → <https://bingyingzizz.github.io/mathgalaxy/>
