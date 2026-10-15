@@ -3,7 +3,7 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T08:27:18.296Z",
+  "generated": "2026-10-15T09:11:38.057Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1253,6 +1253,8 @@
    "type": "axiom",
    "label": "分离公理模式",
    "title": "分离公理模式（Axiom Schema of Separation）",
+   "label_en": "separation",
+   "title_en": "separation",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1390,6 +1392,8 @@
    "type": "axiom",
    "label": "正则公理",
    "title": "正则公理 / 基础公理（Axiom of Foundation）",
+   "label_en": "foundation",
+   "title_en": "foundation",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1412,6 +1416,8 @@
    "type": "axiom",
    "label": "选择公理",
    "title": "选择公理（Axiom of Choice, AC）",
+   "label_en": "axiom of choice",
+   "title_en": "axiom of choice",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1439,6 +1445,8 @@
    "type": "definition",
    "label": "子集",
    "title": "子集 / 真子集（Subset）",
+   "label_en": "subset",
+   "title_en": "subset",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -5542,6 +5550,8 @@
    "type": "definition",
    "label": "数列极限",
    "title": "数列极限 $x_n \\to x$（Limit of a Sequence）",
+   "label_en": "limit",
+   "title_en": "limit",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5744,6 +5754,8 @@
    "type": "definition",
    "label": "像与原像",
    "title": "像与原像（Image / Preimage）",
+   "label_en": "preimage",
+   "title_en": "preimage",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -5859,6 +5871,8 @@
    "type": "definition",
    "label": "基数 |A|",
    "title": "基数与基数的比较（Cardinality）",
+   "label_en": "cardinality",
+   "title_en": "cardinality",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6139,6 +6153,8 @@
    "type": "definition",
    "label": "Hausdorff 空间",
    "title": "Hausdorff 空间 / $T_{2}$（Hausdorff Space）",
+   "label_en": "Hausdorff",
+   "title_en": "Hausdorff",
    "region": "topology",
    "regions": [
     "topology"
@@ -6209,6 +6225,8 @@
    "type": "definition",
    "label": "商集与等价类",
    "title": "商集 / 等价类（Quotient Set）",
+   "label_en": "quotient",
+   "title_en": "quotient",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -7160,6 +7178,8 @@
    "type": "definition",
    "label": "终对象 / 始对象",
    "title": "终对象与始对象（Terminal / Initial Object）",
+   "label_en": "initial object",
+   "title_en": "initial object",
    "region": "category",
    "regions": [
     "category"
@@ -7342,6 +7362,8 @@
    "type": "definition",
    "label": "元素范畴",
    "title": "元素范畴（Category of Elements）",
+   "label_en": "category of elements",
+   "title_en": "category of elements",
    "region": "category",
    "regions": [
     "category"
@@ -7412,6 +7434,8 @@
    "type": "definition",
    "label": "表示函子",
    "title": "表示函子与万有元素（Representable Functor）",
+   "label_en": "representable functor",
+   "title_en": "representable functor",
    "region": "category",
    "regions": [
     "category"
@@ -7763,6 +7787,8 @@
    "type": "definition",
    "label": "逗号范畴",
    "title": "逗号范畴（Comma Category）",
+   "label_en": "comma category",
+   "title_en": "comma category",
    "region": "category",
    "regions": [
     "category"
@@ -8015,6 +8041,8 @@
    "type": "definition",
    "label": "投射 / 内射对象",
    "title": "投射对象与内射对象（Projective / Injective Object）",
+   "label_en": "injective object",
+   "title_en": "injective object",
    "region": "topology",
    "regions": [
     "topology"
@@ -8309,6 +8337,8 @@
    "type": "definition",
    "label": "筛",
    "title": "筛（Sieve）",
+   "label_en": "sieve",
+   "title_en": "sieve",
    "region": "category",
    "regions": [
     "category"
@@ -8331,6 +8361,8 @@
    "type": "definition",
    "label": "预拓扑",
    "title": "预拓扑（Pretopology）",
+   "label_en": "pretopology",
+   "title_en": "pretopology",
    "region": "category",
    "regions": [
     "category"
@@ -8379,6 +8411,8 @@
    "type": "definition",
    "label": "层",
    "title": "层与分离预层（Sheaf）",
+   "label_en": "sheaf",
+   "title_en": "sheaf",
    "region": "category",
    "regions": [
     "category"
@@ -8497,6 +8531,8 @@
    "type": "definition",
    "label": "正则满态射",
    "title": "正则满态射（Regular Epimorphism）",
+   "label_en": "regular epimorphism",
+   "title_en": "regular epimorphism",
    "region": "category",
    "regions": [
     "category"
@@ -8657,6 +8693,8 @@
    "type": "definition",
    "label": "标准拓扑",
    "title": "标准拓扑与次标准拓扑（Canonical Topology）",
+   "label_en": "canonical topology",
+   "title_en": "canonical topology",
    "region": "category",
    "regions": [
     "category"
@@ -8905,6 +8943,8 @@
    "type": "definition",
    "label": "拓扑斯",
    "title": "拓扑斯（Topos）",
+   "label_en": "topos",
+   "title_en": "topos",
    "region": "category",
    "regions": [
     "category"
@@ -9159,6 +9199,8 @@
    "type": "definition",
    "label": "凝聚态集",
    "title": "凝聚态集（Condensed Set）",
+   "label_en": "condensed set",
+   "title_en": "condensed set",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -9570,6 +9612,8 @@
    "type": "definition",
    "label": "上链复形",
    "title": "复形（Complex）",
+   "label_en": "complex",
+   "title_en": "complex",
    "region": "homology",
    "regions": [
     "homology"
@@ -9614,6 +9658,8 @@
    "type": "definition",
    "label": "同伦",
    "title": "同伦（Homotopy）",
+   "label_en": "homotopy",
+   "title_en": "homotopy",
    "region": "homology",
    "regions": [
     "homology"
@@ -9659,6 +9705,8 @@
    "type": "definition",
    "label": "映射锥",
    "title": "映射锥与位移（Mapping Cone）",
+   "label_en": "mapping cone",
+   "title_en": "mapping cone",
    "region": "homology",
    "regions": [
     "homology"
@@ -9749,6 +9797,8 @@
    "type": "definition",
    "label": "同调",
    "title": "同调（Cohomology）",
+   "label_en": "cohomology",
+   "title_en": "cohomology",
    "region": "homology",
    "regions": [
     "homology"
@@ -9839,6 +9889,8 @@
    "type": "definition",
    "label": "拟同构",
    "title": "拟同构与零调复形（Quasi-Isomorphism）",
+   "label_en": "quasi-isomorphism",
+   "title_en": "quasi-isomorphism",
    "region": "homology",
    "regions": [
     "homology"
@@ -9885,6 +9937,8 @@
    "type": "definition",
    "label": "过滤",
    "title": "过滤（Filtration）",
+   "label_en": "filtration",
+   "title_en": "filtration",
    "region": "homology",
    "regions": [
     "homology"
@@ -9931,6 +9985,8 @@
    "type": "definition",
    "label": "取值一般的预层与层",
    "title": "取值在一般范畴里的层（Sheaf with Values in a Category）",
+   "label_en": "sheaf with values",
+   "title_en": "sheaf with values",
    "region": "homology",
    "regions": [
     "homology"
@@ -9953,6 +10009,8 @@
    "type": "definition",
    "label": "阿贝尔层",
    "title": "阿贝尔层（Abelian Sheaf）",
+   "label_en": "abelian sheaf",
+   "title_en": "abelian sheaf",
    "region": "homology",
    "regions": [
     "homology"
@@ -10067,6 +10125,8 @@
    "type": "definition",
    "label": "紧生成空间",
    "title": "紧生成空间 / $k$-空间（Compactly Generated Space）",
+   "label_en": "compactly generated",
+   "title_en": "compactly generated",
    "region": "topology",
    "regions": [
     "topology"
@@ -10534,6 +10594,8 @@
    "type": "definition",
    "label": "群",
    "title": "群与阿贝尔群（Group）",
+   "label_en": "group",
+   "title_en": "group",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10581,6 +10643,8 @@
    "type": "definition",
    "label": "正规子群",
    "title": "正规子群与陪集（Normal Subgroup）",
+   "label_en": "normal subgroup",
+   "title_en": "normal subgroup",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10629,6 +10693,8 @@
    "type": "definition",
    "label": "群同态、核与像",
    "title": "群同态（Group Homomorphism）",
+   "label_en": "group homomorphism",
+   "title_en": "group homomorphism",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10653,6 +10719,8 @@
    "type": "theorem",
    "label": "第一同构定理（Noether）",
    "title": "第一同构定理（Noether）",
+   "label_en": "Noether",
+   "title_en": "Noether",
    "region": "algebra",
    "regions": [
     "algebra",
@@ -10978,6 +11046,8 @@
    "type": "definition",
    "label": "理想",
    "title": "理想与商环（Ideal）",
+   "label_en": "ideal",
+   "title_en": "ideal",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -11199,6 +11269,8 @@
    "type": "definition",
    "label": "幺半群对象",
    "title": "幺半群对象（Monoid Object）",
+   "label_en": "monoid object",
+   "title_en": "monoid object",
    "region": "category",
    "regions": [
     "category",
@@ -11223,6 +11295,8 @@
    "type": "definition",
    "label": "群对象与阿贝尔群对象",
    "title": "群对象与阿贝尔群对象（Group Object）",
+   "label_en": "group object",
+   "title_en": "group object",
    "region": "category",
    "regions": [
     "category",
@@ -11398,6 +11472,8 @@
    "type": "lemma",
    "label": "蛇引理",
    "title": "蛇引理（Snake Lemma）",
+   "label_en": "snake lemma",
+   "title_en": "snake lemma",
    "region": "homology",
    "regions": [
     "homology"
@@ -11472,6 +11548,8 @@
    "type": "definition",
    "label": "单纯形范畴",
    "title": "单纯形范畴 $\\Delta$",
+   "label_en": "Delta",
+   "title_en": "Delta",
    "region": "category",
    "regions": [
     "category"
@@ -11546,6 +11624,8 @@
    "type": "definition",
    "label": "正合函子",
    "title": "左正合 / 右正合 / 正合函子（Exact Functor）",
+   "label_en": "exact functor",
+   "title_en": "exact functor",
    "region": "category",
    "regions": [
     "category"
@@ -11618,6 +11698,8 @@
    "type": "definition",
    "label": "分裂短正合列",
    "title": "分裂的短正合列（Split Exact Sequence）",
+   "label_en": "split exact",
+   "title_en": "split exact",
    "region": "homology",
    "regions": [
     "homology"
@@ -11641,6 +11723,8 @@
    "type": "definition",
    "label": "足够多投射对象",
    "title": "足够多投射对象（Enough Projectives）",
+   "label_en": "enough projectives",
+   "title_en": "enough projectives",
    "region": "homology",
    "regions": [
     "homology"
@@ -11664,6 +11748,8 @@
    "type": "definition",
    "label": "有限表现对象",
    "title": "有限表现（紧）对象（Finitely Presented Object）",
+   "label_en": "finitely presented",
+   "title_en": "finitely presented",
    "region": "category",
    "regions": [
     "category"
@@ -11759,6 +11845,8 @@
    "type": "theorem",
    "label": "Tychonoff 定理",
    "title": "Tychonoff 定理：紧空间的任意积紧",
+   "label_en": "Tychonoff",
+   "title_en": "Tychonoff",
    "region": "topology",
    "regions": [
     "topology"

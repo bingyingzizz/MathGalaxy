@@ -23,7 +23,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 /* ⭐ 英文名的判定口径**只有一份**：tools/i18n-backfill.mjs。
    这里 import 它的函数来核「旁挂表有没有漂」，不另抄一遍规则。 */
-import { bucketRows } from './i18n-backfill.mjs';
+import { bucketRows, splitBuckets, decide } from './i18n-backfill.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -1405,16 +1405,20 @@ function assertXref(MG, graph) {
 /* ------------------------------------------------------ 英文名字段断言 */
 /* 真源 = `src/data/i18n.js`（由 tools/i18n-backfill.mjs 从 aka / title 现算）。
    硬断言三件：① 每条 id 真实存在；② title_en 非空且不含汉字；
-   ③ **没漂**：凡是「按口径该自动填」的节点，旁挂表里必须都有 ——
-      否则说明 aliases.js 加了英文名但忘了重跑回填脚本。
-   ⚠️ 口径（bucketRows）是 import 进来的，不在这里另抄一份。 */
+   ③ **没漂**：凡是「按口径该填」的节点（一级 + 二级），旁挂表里必须都有 ——
+      否则说明 aliases.js / title 改了但忘了重跑回填脚本。
+   ⚠️ 口径（bucketRows / decide）是 import 进来的，不在这里另抄一份。 */
 function assertI18n(MG, graph) {
   const I = MG.i18n;
   if (!I || !I.nodes) return ['英文名字段：`src/data/i18n.js` 没有挂上（index.html / loadMG 少了 script？跑 bun tools/i18n-backfill.mjs 生成）'];
   const errs = [];
   const keys = Object.keys(I.nodes);
-  bucketRows(MG, graph).filter((r) => r.clean.length === 1).forEach((r) => {
-    if (!I.nodes[r.id]) errs.push(`英文名漂移：\`${r.id}\` 按口径该自动填，但 i18n.js 里没有（跑 bun tools/i18n-backfill.mjs）`);
+  const rows = bucketRows(MG, graph);
+  const dec = decide(rows, splitBuckets(rows));
+  dec.t1.concat(dec.t2).forEach(({ r, e }) => {
+    if (!I.nodes[r.id]) {
+      errs.push(`英文名漂移：\`${r.id}\` 按口径该填（${e.from}），但 i18n.js 里没有（跑 bun tools/i18n-backfill.mjs）`);
+    }
   });
   for (const id of keys) {
     if (!graph.byId[id]) { errs.push(`英文名字段：i18n.js 里的节点不存在 \`${id}\``); continue; }
