@@ -2,7 +2,6 @@
 [在星图里打开](../#n=def.measure)　·　第 1 页 [nodes/def.measure.md](./def.measure.md)　·　上一页 [nodes/def.measure.3.md](./def.measure.3.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 [`prop.total-variation-basics`](../nodes/prop.total-variation-basics.md) 全变差的基本性质 用
 - 被 [`thm.borel-measure-nbv`](../nodes/thm.borel-measure-nbv.md) 测度 ↔ NBV 的一一对应 用
 - 被 [`def.ae`](../nodes/def.ae.md) 几乎处处 用
 - 被 [`lem.covering`](../nodes/lem.covering.md) 覆盖引理 用
@@ -12,5 +11,6 @@
 - 被 [`def.lplus`](../nodes/def.lplus.md) L⁺ 用
 - 被 [`def.integral-simple`](../nodes/def.integral-simple.md) 简单函数的积分 用
 - 被 [`def.convergence-modes`](../nodes/def.convergence-modes.md) 五种收敛 用
+- 被 [`def.cauchy-in-measure`](../nodes/def.cauchy-in-measure.md) 依测度 Cauchy 用
 
 > 续见 [nodes/def.measure.5.md](./def.measure.5.md)

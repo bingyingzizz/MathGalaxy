@@ -3,7 +3,7 @@ $\mathcal{T}(\mathbf{Ab})$ 是 Grothendieck 范畴
 layer 19 · 定理 · 阿贝尔层 · 同调代数
 [在星图里打开](../#n=thm.topos-abelian-grothendieck)　·　[节点索引](../index.md)
 
-若 $\mathcal{T}$ 
+若
 > 陈述续见 [nodes/thm.topos-abelian-grothendieck.2.md](./thm.topos-abelian-grothendieck.2.md)
 
 
@@ -14,6 +14,8 @@ layer 19 · 定理 · 阿贝尔层 · 同调代数
 > English abstract 续见 [nodes/thm.topos-abelian-grothendieck.3.md](./thm.topos-abelian-grothendieck.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §5.3
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Grothendieck_category · nLab https://ncatlab.org/nlab/show/Grothendieck+category
 
 > 说明见 `notes/thm.topos-abelian-grothendieck.md`
 

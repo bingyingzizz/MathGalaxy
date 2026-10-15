@@ -6,18 +6,18 @@ layer 9 · 定义 · 伴随与反射 · 范畴论
 设 $F : \mathcal{C} \to \mathcal{D}$、$G : \mathcal{D} \to \mathcal{C}$ 是一对函子。$(F, G)$ 叫一对**伴随函子**，如果存在自然同构
 
 $$\operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ Y\bigr) \;\cong\; \operatorname{Hom}_{\mathcal{C}}\bigl(X,\ G(Y)\bigr) \qquad (X \in \mathcal{C},\ Y \in \mathcal{D})$$
+> 陈述续见 [nodes/def.adjoint.2.md](./def.adjoint.2.md)
 
-这时记 $F \dashv G$：$F$ 叫 $G$ 的**左伴随**，$G$ 叫 $F$ 的**右伴随**。
-
-## 它能推出什么 / 谁在用它
-- ⇒ [`thm.right-adjoint-criterion`](../nodes/thm.right-adjoint-criterion.md) 右伴随存在的判据
-
-- …另有出边，续页见 [nodes/def.adjoint.3.md](./def.adjoint.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/def.adjoint.2.md](./def.adjoint.2.md)
+- …另有入边，续页见 [nodes/def.adjoint.3.md](./def.adjoint.3.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.adjoint.4.md](./def.adjoint.4.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.5
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Adjoint_functors · nLab https://ncatlab.org/nlab/show/adjoint+functor
 
 > 说明见 `notes/def.adjoint.md`
 

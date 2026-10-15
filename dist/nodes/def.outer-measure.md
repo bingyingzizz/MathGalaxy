@@ -8,8 +8,6 @@ layer 14 · 定义 · 测度的构造 · 分析学
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.power-set`](../nodes/def.power-set.md) 幂集 𝒫(X)：用到了定义 幂集 𝒫(X)　[proofs/dep.powerset-outer-measure.md](../proofs/dep.powerset-outer-measure.md)
-
 - …另有入边，续页见 [nodes/def.outer-measure.4.md](./def.outer-measure.4.md)
 
 ## 它能推出什么 / 谁在用它
@@ -19,6 +17,8 @@ layer 14 · 定义 · 测度的构造 · 分析学
 > English abstract 续见 [nodes/def.outer-measure.3.md](./def.outer-measure.3.md)
 
 refs: Halmos, Measure Theory, §11；Folland, Real Analysis, §1.4
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Outer_measure · nLab https://ncatlab.org/nlab/show/outer+measure
 
 > 说明见 `notes/def.outer-measure.md`
 

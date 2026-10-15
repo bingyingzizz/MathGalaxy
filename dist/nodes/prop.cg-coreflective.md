@@ -3,7 +3,7 @@
 layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=prop.cg-coreflective)　·　[节点索引](../index.md)
 
-紧生成空间构成的范畴 $k\mathbf{Top}$ 是 $\mathbf{Top}$ 的**余反射子范畴**：含入函子 $i : k\mathbf{Top} \hookrightarrow \mathbf{Top}$ 有**右**伴随
+紧生成空间构成的范畴 $k\mathb
 > 陈述续见 [nodes/prop.cg-coreflective.2.md](./prop.cg-coreflective.2.md)
 
 
@@ -17,6 +17,8 @@ layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 > English abstract 续见 [nodes/prop.cg-coreflective.3.md](./prop.cg-coreflective.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §2.3
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Compactly_generated_space · nLab https://ncatlab.org/nlab/show/compactly+generated+space
 
 > 说明见 `notes/prop.cg-coreflective.md`
 

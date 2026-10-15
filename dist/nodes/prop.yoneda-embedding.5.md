@@ -4,5 +4,3 @@
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.natural-transformation`](../nodes/def.natural-transformation.md) 自然变换：用到了定义 自然变换　[proofs/def-dep.nat-yoneda-embedding.md](../proofs/def-dep.nat-yoneda-embedding.md)
 - [`prop.chaus-reflective`](../nodes/prop.chaus-reflective.md) 紧 Haus 是反射子范畴：米田嵌入与 Stone–Čech 紧化：都是「嵌进一个大得多的世界」　[proofs/ana.embed-better-world.md](../proofs/ana.embed-better-world.md)
-
-> 续见 [nodes/prop.yoneda-embedding.6.md](./prop.yoneda-embedding.6.md)

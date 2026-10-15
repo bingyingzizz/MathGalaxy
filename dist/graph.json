@@ -3,7 +3,7 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T09:26:41.756Z",
+  "generated": "2026-10-15T10:02:24.196Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1873,7 +1873,8 @@
    ],
    "xref": {
     "wikipedia": "https://en.wikipedia.org/wiki/Zorn%27s_lemma",
-    "nlab": "https://ncatlab.org/nlab/show/Zorn%27s+lemma"
+    "nlab": "https://ncatlab.org/nlab/show/Zorn%27s+lemma",
+    "mathlib": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Zorn.html"
    }
   },
   {
@@ -1905,7 +1906,11 @@
    "refs": [
     "Hausdorff (1914)",
     "Kunen, Set Theory, I.12"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Hausdorff_maximal_principle",
+    "nlab": "https://ncatlab.org/nlab/show/Hausdorff+maximal+principle"
+   }
   },
   {
    "id": "lem.tukey",
@@ -2033,7 +2038,12 @@
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 2",
     "Munkres, Topology, §20"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Metric_space",
+    "nlab": "https://ncatlab.org/nlab/show/metric+space",
+    "mathlib": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/MetricSpace/Basic.html"
+   }
   },
   {
    "id": "def.complete",
@@ -2160,7 +2170,11 @@
    "notes": "逻辑骨架全在箭头里（点箭头看证明）：\n\n\n\n- 紧 $\\implies$ 列紧\n- 列紧 $\\implies$ 全有界　（整段里**唯一**实质用到选择原理的一步，用的是 DC）\n- 列紧 $\\implies$ 完备\n- 列紧 $\\implies$ 紧　（「坏球」法，只用到全有界，不动选择公理）\n- 紧 $\\implies$ 完备、紧 $\\implies$ 全有界\n- 完备 + 全有界 $\\implies$ 列紧　（对角线法，也不动选择公理）\n\n\n\n于是「列紧 $\\implies$ 全有界 $\\implies$ 紧」与「紧 $\\implies$ 列紧」闭合，三个概念打通。\n\n⚠ 在一般拓扑空间里只有「紧 $\\implies$ 列紧」成立、**反向不成立** —— 列紧是度量空间特有的好运气。",
    "refs": [
     "Munkres, Topology, §28 与 §43"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Sequentially_compact_space",
+    "nlab": "https://ncatlab.org/nlab/show/compact+space"
+   }
   },
   {
    "id": "prop.compact-subset-closed",
@@ -2379,7 +2393,10 @@
    "notes": "注意前提「$\\mathfrak{A}$ 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 $\\sigma$环。\n\n这条定理是单调类定理的技术核心：正是因为它，才能把「对 $\\sigma$代数成立」化归为「先验证一个环，再看单调极限」。",
    "refs": [
     "Halmos, Measure Theory, §6"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Sigma-ring"
+   }
   },
   {
    "id": "def.generated-sigma",
@@ -2437,7 +2454,10 @@
    "refs": [
     "Halmos, Measure Theory, §6",
     "Folland, Real Analysis, Theorem 2.37"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Monotone_class_theorem"
+   }
   },
   {
    "id": "def.borel",
@@ -2781,7 +2801,11 @@
    "refs": [
     "Halmos, Measure Theory, §11",
     "Folland, Real Analysis, §1.4"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Outer_measure",
+    "nlab": "https://ncatlab.org/nlab/show/outer+measure"
+   }
   },
   {
    "id": "prop.outer-measure-induced",
@@ -3607,7 +3631,8 @@
     "Folland, Real Analysis, Theorem 2.24"
    ],
    "xref": {
-    "wikipedia": "https://en.wikipedia.org/wiki/Dominated_convergence_theorem"
+    "wikipedia": "https://en.wikipedia.org/wiki/Dominated_convergence_theorem",
+    "mathlib": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/DominatedConvergence.html"
    }
   },
   {
@@ -3874,7 +3899,10 @@
    "refs": [
     "Folland, Real Analysis, §2.5",
     "Halmos, Measure Theory, §35"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Product_measure"
+   }
   },
   {
    "id": "def.section",
@@ -3978,7 +4006,8 @@
     "Folland, Real Analysis, Theorem 2.37"
    ],
    "xref": {
-    "wikipedia": "https://en.wikipedia.org/wiki/Fubini%27s_theorem"
+    "wikipedia": "https://en.wikipedia.org/wiki/Fubini%27s_theorem",
+    "mathlib": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/Prod.html"
    }
   },
   {
@@ -4422,7 +4451,10 @@
    "notes": "⚠ 与符号测度相比，复测度**自动有限**（取值在 $\\mathbb{C}$ 里，不涉及 $\\pm \\infty$），而且可数可加性里的那个级数**自动绝对收敛**。\n\n所以在复测度的世界里，「有限性」「重排问题」这些麻烦全部消失 —— 代价是不能再有「无穷质量」的例子。",
    "refs": [
     "Folland, Real Analysis, §3.3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Complex_measure"
+   }
   },
   {
    "id": "thm.rn-complex",
@@ -5051,7 +5083,11 @@
    "notes": "证明：写 $d\\mu_F = d\\lambda + f\\cdot dm$（Lebesgue 分解），由测度那条定理 $f = F'$ a.e.。于是\n\n\n\n$\\cdot$ $\\mu_F \\perp  m$ 意味着绝对连续部为零，即 $f = 0 \\implies F' = 0 \\text{a.e.}$；\n\n$\\cdot$ $\\mu_F \\ll  m$ 意味着 $\\lambda = 0$，于是 $F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F'\\cdot dt$。\n\n⭐ 这一条就是「微积分基本定理」的测度版：**能不能把函数积回来，取决于 $\\mu _F$ 是否绝对连续**。",
    "refs": [
     "Folland, Real Analysis, Theorem 3.35"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Bounded_variation",
+    "nlab": "https://ncatlab.org/nlab/show/absolutely+continuous+function"
+   }
   },
   {
    "id": "def.ac-function",
@@ -5344,7 +5380,11 @@
    "notes": "等价说法：$\\|f\\|_\\infty \\le M \\iff |f(x)| \\le M$ 对 a.e. $x$ 成立。\n\n「本性」两个字的意思是：**把零集上的糟糕取值统统不算**。比如 $f = 0$ a.e. 但 $f$ 在某个零集上取 $+\\infty$，仍然有 $\\|f\\|_\\infty = 0$。\n\n⚠ $\\|f\\|_\\infty$ 与「$\\sup |f|$」不同：后者可能因为零集上的一点而变得很大。",
    "refs": [
     "Folland, Real Analysis, §6.1"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Essential_supremum",
+    "nlab": "https://ncatlab.org/nlab/show/essential+supremum"
+   }
   },
   {
    "id": "thm.linf-properties",
@@ -6070,7 +6110,11 @@
    "notes": "⭐ 这条是「基数排序」的许可证：没有它，连「$A$ 比 $B$ 大」这句话都可能毫无意义。\n\n证明路线（见边）：**良序定理**把 $A$、$B$ 都良序化 $\\to$ 对应的序数可以比较 $\\to$ 于是有一个方向能放进单射。所以这条定理与 AC、良序定理是同一件事的三种说法。\n\n⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。",
    "refs": [
     "Jech, The Axiom of Choice, Ch. 3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Cardinal_number",
+    "nlab": "https://ncatlab.org/nlab/show/cardinal+number"
+   }
   },
   {
    "id": "def.topology",
@@ -6431,7 +6475,11 @@
    "notes": "⭐ 动机一句话：**$\\mathbb{N}$ 里减法学不通**（$3 - 5$ 不存在），但「$3 - 5$」这个**对**总有意义 —— 于是把「差」本身当成新对象。\n\n副产品：$\\mathbb{Z}$ 有加法零元 $[0, 0] = 0$ 与加法逆元 $-[a, b] = [b, a]$ —— 这正是 $\\mathbb{N}$ 缺的东西。\n\n⚠ $\\mathbb{Z}$ 里 $\\mathbb{N}$ 是通过 $a \\mapsto [a, 0]$ **嵌进去**的（单射且保持运算与序），所以写 $3 \\in \\mathbb{Z}$ 时用的是这个嵌入 —— 这一步不能省。",
    "refs": [
     "Kunen, Set Theory, I.5"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Integer",
+    "nlab": "https://ncatlab.org/nlab/show/integer"
+   }
   },
   {
    "id": "def.rat",
@@ -6535,7 +6583,11 @@
    "notes": "⭐ **为什么要「模去零列」**：同一个实数有很多种逼近方式 —— 比如 $(1, 1, 1, \\ldots)$ 与 $(1.1,\\ 1.01,\\ 1.001,\\ \\ldots)$ 都该代表 $1$，而它们的差是零列。等价类把「同一个数的不同逼近」粘成一件事。\n\n⚠ 这里**只用 $\\mathbb{Q}$ 的序与绝对值**（$\\varepsilon$ 取正有理数、绝对值是 $\\mathbb{Q}$ 上的），所以**不构成循环**：这一步在造出 $\\mathbb{R}$ 之前完全说得通。度量空间里那套「距离、Cauchy 列、完备」的语言，正是从这里的做法抽出来的。\n\n三条后面要用的事实：\n- Cauchy 列**有界**；\n- Cauchy 列的**和、差、积仍是 Cauchy 列**；\n- **不是零列的 Cauchy 列，从某一项起 $|x_n| \\ge \\delta$**（某个正有理数 $\\delta$）—— 于是它的倒数（去掉前面有限项）也是 Cauchy 列。第三条是「乘法有逆元」的全部依据。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Cauchy_sequence",
+    "nlab": "https://ncatlab.org/nlab/show/Cauchy+sequence"
+   }
   },
   {
    "id": "def.real",
@@ -6670,7 +6722,11 @@
    "refs": [
     "Tao, Analysis I, Ch. 8（可数性）",
     "Rudin, Principles of Mathematical Analysis, Ch. 2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Uncountable_set",
+    "nlab": "https://ncatlab.org/nlab/show/Cantor%27s+theorem"
+   }
   },
   {
    "id": "def.field",
@@ -7591,7 +7647,11 @@
    "notes": "一句话：**$F$ 的全部数据都由 $X$ 上的一个元素 $s$ 生成**。给定任何别的 $t$，都有唯一的 $f$ 把 $s$ 推过去变成它 —— 所以别处的元素不是随便来的，是被 $s$ 推出来的。\n\n等价的说法：$(X, s)$ 万有 $\\iff$ $(X, s)$ 是元素范畴 $\\operatorname{el}(F)$ 的始对象 —— 「泛」这个字在这一层和上一层的用法是同一个。\n\n例：\n\n\n\n- $k \\in \\operatorname{Ob}(\\mathbf{CRng})$，$F : k\\text{-}\\mathbf{Alg} \\to \\mathbf{Set}$ 是遗忘函子。$(k[t],\\ t)$ 表示 $F$：对 $A \\in k\\text{-}\\mathbf{Alg}$ 与 $a \\in F(A)$，令 $t \\mapsto a$ 诱导出唯一的 $k$-代数同态 $k[t] \\to A$。\n- $F : \\mathbf{Ring} \\to \\mathbf{Set}$ 取常值单点集。$\\mathbb{Z}$ 表示 $F$：每个环都有唯一的 $\\mathbb{Z} \\to R$。\n- 固定拓扑空间 $X$ 与子空间 $Y \\subseteq X$，反变函子\n\n\n\n  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto \\{\\, f : Z \\to X \\ \\mid\\ f \\text{ 连续且 } f(Z) \\subseteq Y \\,\\}$$\n\n\n\n  被 $F(Y)$ 里那个自然元素 $i : Y \\rightarrowtail X$ 表示。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.1–1.5"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Representable_functor",
+    "nlab": "https://ncatlab.org/nlab/show/representable+functor"
+   }
   },
   {
    "id": "lem.yoneda",
@@ -7672,7 +7732,11 @@
    "notes": "全忠实说的是 $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_{X}, h_{Y}) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$ —— 用 $h_{X}$ 互相之间的箭头完全复刻了 $X$ 之间的箭头，一点不多一点不少。\n\n把 $\\mathcal{C}$ 嵌进 $\\widehat{\\mathcal{C}}$ 之后，$\\mathcal{C}$ 里的问题就搬到了一个**有所有极限与余极限**的范畴里去解 —— 这是「补全一个范畴」的标准做法。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.1–1.5"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Yoneda_embedding",
+    "nlab": "https://ncatlab.org/nlab/show/Yoneda+embedding"
+   }
   },
   {
    "id": "def.slice-category",
@@ -7866,7 +7930,11 @@
    "notes": "所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。\n\n这也是**反射**与**余反射**的分界线：反射说的是「含入函子有左伴随」，而含入函子总是全忠实的（满子范畴），所以反射的余单位一定是同构。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.5"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Full_and_faithful_functors",
+    "nlab": "https://ncatlab.org/nlab/show/full+and+faithful+functor"
+   }
   },
   {
    "id": "prop.limit-adjoint",
@@ -7941,7 +8009,11 @@
    "notes": "**保极限是唯一的障碍**。这与「右伴随保极限」合起来就是一条完整的判据：保极限既是必要条件，在完备的小范畴上也是充分条件。\n\n构造的含义：把 $X$ 映射进 $G$ 的像的所有方式组成一个范畴 $X \\downarrow G$，在其中取极限 —— $F(X)$ 是 $\\mathcal{D}$ 中「最接近」$X$ 的对象。所有 $X \\to G(Y)$ 都能被整理成 $X \\to G(F(X)) \\to G(Y)$。\n\n证明见边上的推导。",
    "refs": [
     "Mac Lane, Categories for the Working Mathematician, V.8"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Adjoint_functor_theorem",
+    "nlab": "https://ncatlab.org/nlab/show/adjoint+functor+theorem"
+   }
   },
   {
    "id": "def.comma-category",
@@ -8064,7 +8136,11 @@
    "notes": "两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。",
    "refs": [
     "Mac Lane, Categories for the Working Mathematician, X.3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Kan_extension",
+    "nlab": "https://ncatlab.org/nlab/show/Kan+extension"
+   }
   },
   {
    "id": "prop.filtered-exact",
@@ -8141,7 +8217,11 @@
    "notes": "构造：把 $X$ 送进 Tychonoff 方块\n\n\n\n$$e_{X} : X \\longrightarrow [0,1]^{C(X,[0,1])}, \\qquad x \\mapsto (f(x))_{f}$$\n\n\n\n再取闭包 $\\beta X := \\overline{e_{X}(X)}$。方块紧 Hausdorff，闭子集因而也紧 Hausdorff。\n\n⭐ **$e_{X}$ 是单射 $\\iff$ $X$ 是 Tychonoff（$T_{3.5}$）空间** —— 即连续函数多到能分开不同的点。所以对于一般拓扑空间，$\\beta X$ 是把「连续函数看得出的信息」全部收进来之后的紧化。\n\n推论：**紧 Hausdorff 空间的任意极限自动是紧 Hausdorff 的**。这是反射子范畴对极限封闭的一般结论在这里的样子 —— 以后在 $\\mathbf{CHaus}$ 里取极限，不必再回头验紧性与 Hausdorff 性。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §2.1–2.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Stone%E2%80%93%C4%8Cech_compactification",
+    "nlab": "https://ncatlab.org/nlab/show/Stone-Cech+compactification"
+   }
   },
   {
    "id": "lem.minimal-closed-surjection",
@@ -8606,7 +8686,8 @@
    ],
    "xref": {
     "wikipedia": "https://en.wikipedia.org/wiki/Sheaf_(mathematics)",
-    "nlab": "https://ncatlab.org/nlab/show/sheaf"
+    "nlab": "https://ncatlab.org/nlab/show/sheaf",
+    "mathlib": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Sites/Sheaf.html"
    }
   },
   {
@@ -10237,7 +10318,11 @@
    "notes": "证明分三段：\n\n\n\n- **阿贝尔**：先在预层范畴 $\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ 里逐分量验证（那里就是逐点的阿贝尔群）—— 具体的，对任意态射 $u$ 验证 $\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$；再沿**正合反射**（层化）把这些等式运回层范畴。滤过余极限正合同理。\n- **所有极限与余极限存在**：因为层范畴是预层范畴的反射子范畴。\n- **小生成元集**：若 $S$ 是 $\\mathcal{T}$ 的小生成元集，则 $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ 生成 $\\mathcal{T}(\\mathbf{Ab})$ —— 它们的余积就是生成元。\n\n\n\n顺带一条：$\\mathbb{Z}\\cdot X$ 在 $\\mathcal{T}(\\mathbf{Ab})$ 里**投射**（先看预层：$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ 在预层上是正合的）。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §5.3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Grothendieck_category",
+    "nlab": "https://ncatlab.org/nlab/show/Grothendieck+category"
+   }
   },
   {
    "id": "def.internal-hom",
@@ -10456,7 +10541,11 @@
    "notes": "**要证的是**：对每个紧生成空间 $X$ 与每个拓扑空间 $Y$，\n\n\n\n$$\\operatorname{Hom}_{\\mathbf{Top}}(X,\\ Y) \\;\\cong\\; \\operatorname{Hom}_{k\\mathbf{Top}}\\bigl(X,\\ kY\\bigr).$$\n\n\n\n**证明。** 余单位是 $\\varepsilon_{Y} : kY \\to Y$（恒等映射，拓扑从细到粗，连续）。\n\n\n\n- 先证 $kY$ 确实紧生成：把每个连续映射 $S \\to Y$（$S$ 紧 Hausdorff）复合 $\\varepsilon_{Y}$ 抬成 $S \\to kY$，再用 $kY$ 的定义（$k$-开集的取法）验证「由这些映射决定拓扑」。\n- 于是任意 $f : X \\to Y$ 连续（$X$ 紧生成）时，$f = \\varepsilon_{Y} \\circ f': X \\to kY$ 给出一个到 $kY$ 的连续映射 $f'$：设 $U \\subseteq kY$ 开，要证 $f'^{-1}(U)$ 在 $X$ 中开。由 $X$ 紧生成，只需对每个紧 $L \\subseteq X$ 验证 $f'^{-1}(U) \\cap L$ 在 $L$ 中开。而 $f|_{L} : L \\to Y$ 连续、$L$ 紧，故 $f(L)$ 紧；$U \\cap f(L)$ 在 $f(L)$ 中开，于是 $(f|_{L})^{-1}\\bigl(U \\cap f(L)\\bigr) = f'^{-1}(U) \\cap L$ 在 $L$ 中开。∎\n- 反向由 $\\varepsilon_{Y}$ 连续直接得到。这样两个方向互逆，就是那个同构。\n\n⭐ 与紧 Hausdorff 对照着记：$\\mathbf{CHaus}$ 是 $\\mathbf{Top}$ 的**反射**子范畴（含入函子有**左**伴随 $\\beta$），而 $k\\mathbf{Top}$ 是**余反射**的（含入函子有**右**伴随 $k$）。一个把空间「收紧」，一个把空间「松开」—— 所以前者对极限封闭，后者对**余极限**封闭。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §2.3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Compactly_generated_space",
+    "nlab": "https://ncatlab.org/nlab/show/compactly+generated+space"
+   }
   },
   {
    "id": "thm.quotient-product",
@@ -10488,7 +10577,11 @@
    "notes": "⭐ **这是「紧生成空间对积封闭」那条的引擎**，也是搜「商映射」「局部紧」时该落到的地方。\n\n**证明的走法（逆映射连续法）。** 记 $W := (q \\times \\mathrm{id}_{Z})^{-1}(U)$，要证 $W$ 开。取一点 $(x, z) \\in W$，记 $y = q(x)$。因为 $U$ 在 $Y \\times Z$ 中开，可以挑出基本开集\n\n\n\n$$V \\times K \\;\\subseteq\\; U, \\qquad y \\in V,\\;\\; z \\in K,$$\n\n\n\n其中 $V$ 开、$K$ 是 $z$ 的**紧邻域**（局部紧 Hausdorff $\\implies$ 每点有紧邻域基，可以要求 $K$ 落在任意给定的邻域里）。由 $q$ 是商映射，$q^{-1}(V)$ 是 $X$ 中的开集，于是\n\n\n\n$$q^{-1}(V) \\times K \\;\\subseteq\\; W$$\n\n\n\n是 $(x, z)$ 的一个开邻域 —— 所以 $(x, z)$ 是 $W$ 的内点，$W$ 开。∎\n\n⚠️ **局部紧这个条件不能省。** 一般情形下「商映射乘 id」不是商映射：取 $q$ 是某条坏商、$Z$ 是一个既不局部紧又不紧生成的空间，乘积的商拓扑会严格细于商空间应有的拓扑。\n\n记法：有的把这条写成「$Z$ 局部紧 Hausdorff $\\implies$ 函子 $- \\times Z$ 保商映射」。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §2.3"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Quotient_space_(topology)",
+    "nlab": "https://ncatlab.org/nlab/show/quotient+space"
+   }
   },
   {
    "id": "cor.cg-product",
@@ -10951,7 +11044,10 @@
    "refs": [
     "Lang, Algebra, Ch. I §4",
     "Dummit & Foote, Abstract Algebra, §10.2"
-   ]
+   ],
+   "xref": {
+    "wikipedia": "https://en.wikipedia.org/wiki/First_isomorphism_theorem"
+   }
   },
   {
    "id": "def.localization",

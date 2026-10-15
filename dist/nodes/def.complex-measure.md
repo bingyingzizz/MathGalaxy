@@ -12,19 +12,21 @@ $$\nu : \mathcal{M} \to \mathbb{C}$$
 $$\nu(\emptyset) = 0, $$
 
 且对两两不交的 $\{E_j\} \subseteq \mathcal{M}$：
+> 陈述续见 [nodes/def.complex-measure.2.md](./def.complex-measure.2.md)
 
-$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/def.complex-measure.3.md](./def.complex-measure.3.md)
+- …另有入边，续页见 [nodes/def.complex-measure.4.md](./def.complex-measure.4.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.complex-measure.4.md](./def.complex-measure.4.md)
+- …另有出边，续页见 [nodes/def.complex-measure.5.md](./def.complex-measure.5.md)
 
 ## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
-> English abstract 续见 [nodes/def.complex-measure.2.md](./def.complex-measure.2.md)
+> English abstract 续见 [nodes/def.complex-measure.3.md](./def.complex-measure.3.md)
 
 refs: Folland, Real Analysis, §3.3
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Complex_measure
 
 > 说明见 `notes/def.complex-measure.md`
 

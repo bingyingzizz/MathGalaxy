@@ -3,7 +3,7 @@
 layer 11 · 命题 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=prop.adjoint-full-faithful)　·　[节点索引](../index.md)
 
-设 $F \dashv G$，单位 $\eta$、余单位 $\varepsilon$。则
+设
 > 陈述续见 [nodes/prop.adjoint-full-faithful.2.md](./prop.adjoint-full-faithful.2.md)
 
 
@@ -14,6 +14,8 @@ layer 11 · 命题 · 伴随与反射 · 范畴论
 > English abstract 续见 [nodes/prop.adjoint-full-faithful.3.md](./prop.adjoint-full-faithful.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.5
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Full_and_faithful_functors · nLab https://ncatlab.org/nlab/show/full+and+faithful+functor
 
 > 说明见 `notes/prop.adjoint-full-faithful.md`
 

@@ -20,6 +20,8 @@ layer 17 · 定义 · 乘积测度与 Fubini · 分析学
 
 refs: Folland, Real Analysis, §2.5；Halmos, Measure Theory, §35
 
+外部：Wikipedia https://en.wikipedia.org/wiki/Product_measure
+
 > 说明见 `notes/def.product-measure.md`
 
 引用：`def.product-measure`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

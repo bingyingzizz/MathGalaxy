@@ -2,5 +2,4 @@
 [在星图里打开](../#n=thm.dct)　·　第 1 页 [nodes/thm.dct.md](./thm.dct.md)　·　上一页 [nodes/thm.dct.2.md](./thm.dct.2.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- ⇒ [`thm.differentiate-under-integral`](../nodes/thm.differentiate-under-integral.md) 交换极限/导数与积分
 - ⇒ [`thm.lp-banach`](../nodes/thm.lp-banach.md) L^p 是 Banach 空间

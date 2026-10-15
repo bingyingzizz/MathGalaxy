@@ -2,7 +2,29 @@
 [在星图里打开](../#n=prop.nbv-derivative)　·　第 1 页 [nodes/prop.nbv-derivative.md](./prop.nbv-derivative.md)
 
 ## 陈述（续）
-$$\mu_F \perp  m \iff F' = 0\quad  \text{a.e.}$$
-$$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$
+in NBV$
+。则 $F' 
+\in L^
+1(m)$，并
+且
+$$\mu
+_F \p
+erp  m 
+\iff F
+' = 0\
+quad  
+\text{
+a.e.}$$
+
+$$\mu
+_F \l
+l  m \
+iff F(x
+) = \i
+nt_{-
+\infty
+}^{x} F
+'(t) dt
+$$
 
 > 续见 [nodes/prop.nbv-derivative.3.md](./prop.nbv-derivative.3.md)

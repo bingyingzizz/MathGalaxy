@@ -11,12 +11,15 @@ $$\mathrm{Cond} \;:=\; \widehat{\mathbf{CHaus}}$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.chaus`](../nodes/def.chaus.md) 紧 Hausdorff 空间范畴：用到了定义 紧 Hausdorff 空间范畴　[proofs/def-dep.chaus-condensed.md](../proofs/def-dep.chaus-condensed.md)
-- [`def.sheaf`](../nodes/def.sheaf.md) 层：用到了定义 层　[proofs/def-dep.sheaf-condensed.md](../proofs/def-dep.sheaf-condensed.md)
+
+- …另有入边，续页见 [nodes/def.condensed-set.2.md](./def.condensed-set.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.condensed-set.2.md](./def.condensed-set.2.md)
+- …另有出边，续页见 [nodes/def.condensed-set.3.md](./def.condensed-set.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §4
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Condensed_mathematics · nLab https://ncatlab.org/nlab/show/condensed+mathematics
 
 > 说明见 `notes/def.condensed-set.md`
 

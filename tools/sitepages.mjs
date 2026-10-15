@@ -487,6 +487,18 @@ function nodePage(node, rel, ctx) {
       aka.map((x) => esc(x)).join('<span class="aka-s">·</span>') + '</p>'
     : '';
 
+  /* 图外条目（T2.3）：这条在 Wikipedia / nLab / Mathlib 上的对应页。
+     ⭐ 它是「从星图走到图外」的唯一出路 —— 每条 URL 都真核过（见 src/data/xref.js 抬头），
+        ⛔ 不核实不写。⛔ 视觉上只加一行小字，不动别的。 */
+  const XR = node.xref || null;
+  const XR_NAME = { wikipedia: 'Wikipedia', nlab: 'nLab', stacks: 'Stacks Project', mathlib: 'Mathlib' };
+  const xrefHtml = XR
+    ? '<p class="xref"><span class="xref-k">图外条目</span>' +
+      Object.keys(XR_NAME).filter((k) => XR[k]).map((k) =>
+        '<a href="' + esc(XR[k]) + '" target="_blank" rel="noopener nofollow">' + XR_NAME[k] + ' ↗</a>'
+      ).join('<span class="aka-s">·</span>') + '</p>'
+    : '';
+
   const regionColor = region ? region.color : '#4f7cf5';
 
   /* ⚠️ 页脚**不留构建日期**：meta.generated 每次构建都会变，写进去就意味着
@@ -529,6 +541,7 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
       node.tags && node.tags.length ? ' · ' + node.tags.map((t) => esc(t)).join(' · ') : ''
     }</p>
     ${akaHtml}
+    ${xrefHtml}
   </header>
 
   <section class="sec statement">

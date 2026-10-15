@@ -519,6 +519,7 @@ function exportAIProducts(MG, graph, data) {
      它同时是 packPages 的「小节名」—— 换小节一定另起一页，所以摘要要么在第 1 页，
      要么整段进续页（不会被切两半）。 */
   const ABSEC = absHeading(ABS);
+  const XREF = MG.xref || {};      // 外部锚点（T2.3）：节点 .md 里也要给出来
   const byId = graph.byId;
   const label = id => (byId[id] ? byId[id].label : id);
   const cname = id => (graph.clusterById[id] ? graph.clusterById[id].name : id);
@@ -567,6 +568,14 @@ function exportAIProducts(MG, graph, data) {
       `${(n.regions || []).map(rname).join('+')}\n` +
       `${mdLink('在星图里打开', `../#n=${n.id}`)}　·　${mdLink('节点索引', '../index.md')}\n\n`;
     const refs = (n.refs || []).length ? `\nrefs: ${n.refs.join('；')}\n` : '';
+    /* 图外条目（T2.3）：这条在 Wikipedia / nLab / Mathlib 上的对应页 ——
+       让人和 AI 都能从星图走到图外去核对。⚠️ 每条 URL 都真核过（见 src/data/xref.js 抬头），
+       ⛔ 不核实不写。它占第 1 页的预算，所以和 refs 一起进预留。 */
+    const xr = XREF[n.id] || null;
+    const xrNames = { wikipedia: 'Wikipedia', nlab: 'nLab', stacks: 'Stacks', mathlib: 'Mathlib' };
+    const xrefLine = xr
+      ? `\n外部：${Object.keys(xrNames).filter(k => xr[k]).map(k => `${xrNames[k]} ${xr[k]}`).join(' · ')}\n`
+      : '';
     const notes = (n.notes || '').trim();
     const notesPtr = notes ? `\n> 说明见 \`notes/${n.id}.md\`\n` : '';
 
@@ -604,7 +613,7 @@ function exportAIProducts(MG, graph, data) {
        节点 id 是别人唯一能追回这一页的线索。⚠️ 写短：这一行占的是 AI 单次抓取的
        预算（1050 字符），每个节点都有，写长了分页会翻倍。 */
     const citeTail = `\n引用：\`${n.id}\`（内容 ${CONTENT_VERSION || 'dev'}）· 条款见 ${mdLink('LICENSE.txt', '../LICENSE.txt')}\n`;
-    const mandatoryTail = refs + notesTail + citeTail;
+    const mandatoryTail = refs + xrefLine + notesTail + citeTail;
 
     const stmtChunks = aiChunk((n.statement || '').trim(), head, refs,
       aiBytes(mandatoryTail) + JUMP_RESERVE_B, aiCost(mandatoryTail) + JUMP_RESERVE_C);

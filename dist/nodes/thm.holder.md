@@ -14,11 +14,11 @@ $$\|fg\|_1 \le \|f\|_p \, \|g\|_q$$
 - …另有入边，续页见 [nodes/thm.holder.2.md](./thm.holder.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.minkowski`](../nodes/thm.minkowski.md) Minkowski 不等式
-
 - …另有出边，续页见 [nodes/thm.holder.3.md](./thm.holder.3.md)
 
 refs: Folland, Real Analysis, Theorem 6.2
+
+外部：Wikipedia https://en.wikipedia.org/wiki/H%C3%B6lder%27s_inequality
 
 > 说明见 `notes/thm.holder.md`
 

@@ -3,9 +3,7 @@
 layer 14 · 定理 · 数系的构造 · 分析学+集合论
 [在星图里打开](../#n=thm.real-uncountable)　·　[节点索引](../index.md)
 
-**实数集 $\mathbb{R}$ 不可数**：不存在从 $\mathbb{N}$ 到 $\mathbb{R}$ 的满射，即 $\mathbb{R}$ 不能排成一个序列。
-
-更强的结论：
+*
 > 陈述续见 [nodes/thm.real-uncountable.2.md](./thm.real-uncountable.2.md)
 
 
@@ -16,6 +14,8 @@ layer 14 · 定理 · 数系的构造 · 分析学+集合论
 > English abstract 续见 [nodes/thm.real-uncountable.3.md](./thm.real-uncountable.3.md)
 
 refs: Tao, Analysis I, Ch. 8（可数性）；Rudin, Principles of Mathematical Analysis, Ch. 2
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Uncountable_set · nLab https://ncatlab.org/nlab/show/Cantor%27s+theorem
 
 > 说明见 `notes/thm.real-uncountable.md`
 

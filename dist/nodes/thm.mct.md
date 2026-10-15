@@ -17,11 +17,11 @@ $$\int f = \lim_{n\to\infty} \int f_n$$
 - …另有入边，续页见 [nodes/thm.mct.2.md](./thm.mct.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.termwise-integration`](../nodes/thm.termwise-integration.md) 逐项积分
-
 - …另有出边，续页见 [nodes/thm.mct.3.md](./thm.mct.3.md)
 
 refs: Folland, Real Analysis, Theorem 2.14
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Monotone_convergence_theorem
 
 > 说明见 `notes/thm.mct.md`
 

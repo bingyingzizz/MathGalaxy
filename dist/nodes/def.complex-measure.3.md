@@ -1,10 +1,7 @@
 # 复测度　`def.complex-measure`　·　续页（第 3 页）
 [在星图里打开](../#n=def.complex-measure)　·　第 1 页 [nodes/def.complex-measure.md](./def.complex-measure.md)　·　上一页 [nodes/def.complex-measure.2.md](./def.complex-measure.2.md)
 
-## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.complex`](../nodes/def.complex.md) 复数 ℂ：用到了定义 复数 ℂ　[proofs/dep.complex-complex-measure.md](../proofs/dep.complex-complex-measure.md)
-- [`def.sigma-algebra`](../nodes/def.sigma-algebra.md) σ-代数：用到了定义 σ-代数　[proofs/def-dep.sigma-algebra-complex-measure.md](../proofs/def-dep.sigma-algebra-complex-measure.md)
-- [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-dep.measure-complex-measure.md](../proofs/def-dep.measure-complex-measure.md)
-- [`def.signed-measure`](../nodes/def.signed-measure.md) 符号测度：用到了定义 符号测度　[proofs/def-dep.signed-complex-measure.md](../proofs/def-dep.signed-complex-measure.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative（续）
+A complex measure on a measurable space $(X, \mathcal{M})$ is a map $\nu : \mathcal{M} \to \mathbb{C}$ with $\nu(\emptyset) = 0$ and $\nu(\bigsqcup_j E_j) = \sum_j \nu(E_j)$ for pairwise disjoint families, the series converging absolutely. Unlike signed measures, complex measures are automatically finite and that series is automatically absolutely convergent, so questions of finiteness and rearrangement never arise — at the cost of losing examples with infinite mass.
 
 > 续见 [nodes/def.complex-measure.4.md](./def.complex-measure.4.md)

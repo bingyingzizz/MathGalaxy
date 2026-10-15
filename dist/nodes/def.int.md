@@ -15,16 +15,18 @@ $$\mathbb{Z} := (\mathbb{N} \times \mathbb{N}) / \sim$$
 > 陈述续见 [nodes/def.int.2.md](./def.int.2.md)
 
 
-## 它能推出什么 / 谁在用它
-- 被 [`def.rat`](../nodes/def.rat.md) 有理数 ℚ 用
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.int.4.md](./def.int.4.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.int.5.md](./def.int.5.md)
 
 ## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
 > English abstract 续见 [nodes/def.int.3.md](./def.int.3.md)
 
 refs: Kunen, Set Theory, I.5
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Integer · nLab https://ncatlab.org/nlab/show/integer
 
 > 说明见 `notes/def.int.md`
 

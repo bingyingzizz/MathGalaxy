@@ -17,6 +17,8 @@ $$F(X) \;=\; \varprojlim_{(Y,\, f) \in (X \downarrow G)} Y$$
 
 refs: Mac Lane, Categories for the Working Mathematician, V.8
 
+外部：Wikipedia https://en.wikipedia.org/wiki/Adjoint_functor_theorem · nLab https://ncatlab.org/nlab/show/adjoint+functor+theorem
+
 > 说明见 `notes/thm.saft.md`
 
 引用：`thm.saft`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

@@ -11,16 +11,17 @@ $$|f_n| \le g\quad  \text{a.e.}\quad  \forall n$$
 
 $$\int f = \lim_{n\to\infty} \int f_n$$
 
-## 为什么成立（入边，证明在 proofs/）
-- [`lem.fatou`](../nodes/lem.fatou.md) Fatou 引理：Fatou $\implies$ 控制收敛定理　[proofs/imp.dct.md](../proofs/imp.dct.md)
-- [`def.integrable`](../nodes/def.integrable.md) 可积 / L¹：用到了定义 可积 / L¹　[proofs/def-link.integrable-dct.md](../proofs/def-link.integrable-dct.md)
-
-- …另有入边，续页见 [nodes/thm.dct.2.md](./thm.dct.2.md)
-
 ## 它能推出什么 / 谁在用它
+- ⇒ [`thm.differentiate-under-integral`](../nodes/thm.differentiate-under-integral.md) 交换极限/导数与积分
+
 - …另有出边，续页见 [nodes/thm.dct.3.md](./thm.dct.3.md)
 
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/thm.dct.2.md](./thm.dct.2.md)
+
 refs: Folland, Real Analysis, Theorem 2.24
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Dominated_convergence_theorem · Mathlib https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/DominatedConvergence.html
 
 > 说明见 `notes/thm.dct.md`
 

@@ -10,10 +10,6 @@ layer 20 · 定理 · 乘积测度与 Fubini · 分析学
 $$\int f_x d\nu \in L^+(X), \quad  \int f^y d\mu \in L^+(Y)$$
 
 且
-
-$$\int f d(\mu \times \nu) = \int_X ( \int_Y f(x, y) d\nu(y) ) d\mu(x) = \int_Y ( \int_X f(x, y) d\mu(x) ) d\nu(y)$$
-
-**(b) Fubini（可积情形）**：若 $f \in L^1(\mu \times \nu)$，则
 > 陈述续见 [nodes/thm.fubini-tonelli.2.md](./thm.fubini-tonelli.2.md)
 
 
@@ -24,6 +20,8 @@ $$\int f d(\mu \times \nu) = \int_X ( \int_Y f(x, y) d\nu(y) ) d\mu(x) = \int_Y 
 - …另有出边，续页见 [nodes/thm.fubini-tonelli.5.md](./thm.fubini-tonelli.5.md)
 
 refs: Folland, Real Analysis, Theorem 2.37
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Fubini%27s_theorem · Mathlib https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/Prod.html
 
 > 说明见 `notes/thm.fubini-tonelli.md`
 

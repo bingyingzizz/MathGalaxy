@@ -4,3 +4,5 @@
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.hausdorff`](../nodes/def.hausdorff.md) Hausdorff 空间：用到了定义 Hausdorff 空间　[proofs/def-dep.hausdorff-stonecech.md](../proofs/def-dep.hausdorff-stonecech.md)
 - [`prop.yoneda-embedding`](../nodes/prop.yoneda-embedding.md) 米田嵌入：米田嵌入与 Stone–Čech 紧化：都是「嵌进一个大得多的世界」　[proofs/ana.embed-better-world.md](../proofs/ana.embed-better-world.md)
+
+> 续见 [nodes/prop.chaus-reflective.7.md](./prop.chaus-reflective.7.md)

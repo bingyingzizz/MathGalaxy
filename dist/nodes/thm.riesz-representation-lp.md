@@ -10,15 +10,15 @@ $$
 $$
 
 于是映射 $g \mapsto \varphi_g$ 是 $L^q$ 到 $(L^p)^*$ 的**等距同构**：
+> 陈述续见 [nodes/thm.riesz-representation-lp.2.md](./thm.riesz-representation-lp.2.md)
 
-$$(L^p)^* \cong L^q$$
-
-特别地，$p = 2$ 时 $L^2$ 自对偶。
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.riesz-representation-lp.2.md](./thm.riesz-representation-lp.2.md)
+- …另有入边，续页见 [nodes/thm.riesz-representation-lp.3.md](./thm.riesz-representation-lp.3.md)
 
 refs: Folland, Real Analysis, Theorem 6.15
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Riesz_representation_theorem
 
 > 说明见 `notes/thm.riesz-representation-lp.md`
 

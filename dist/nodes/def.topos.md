@@ -12,12 +12,17 @@ layer 16 · 定义 · 拓扑斯 · 范畴论
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.pretopos`](../nodes/def.pretopos.md) 预拓扑斯：用到了定义 预拓扑斯　[proofs/def-dep.pretopos-topos.md](../proofs/def-dep.pretopos-topos.md)
-- [`def.generator`](../nodes/def.generator.md) 生成元集：用到了定义 生成元集　[proofs/def-dep.generator-topos.md](../proofs/def-dep.generator-topos.md)
+
+- …另有入边，续页见 [nodes/def.topos.2.md](./def.topos.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.topos.2.md](./def.topos.2.md)
+- ⇒ [`thm.giraud`](../nodes/thm.giraud.md) Giraud 定理
+
+- …另有出边，续页见 [nodes/def.topos.3.md](./def.topos.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §3.3
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Topos · nLab https://ncatlab.org/nlab/show/topos
 
 > 说明见 `notes/def.topos.md`
 

@@ -84,8 +84,7 @@
 .sec strong{font-weight:650}
 .sec .empty{color:var(--faint)}
 
-/* 英文摘要（T2.2）：枢纽节点的英文导读。左边一条竖线把它和中文正文区分开，
-   顶上那行小字说明「状态 + 中文为准」—— 状态词由构建给出（draft/reviewed/stale）。 */
+/* 英文摘要（T2.2）：枢纽节点的英文导读。左边一条竖线把它和中文正文区分开，   顶上那行小字说明「状态 + 中文为准」—— 状态词由构建给出（draft/reviewed/stale）。 */
 .sec.abstract-en{border-left:3px solid color-mix(in srgb,var(--rc,#4f7cf5) 35%,transparent);
   padding-left:18px;margin-left:-21px}
 .sec.abstract-en .abs-state{font-size:11.5px;font-weight:600;letter-spacing:.04em;
@@ -160,6 +159,16 @@
   background:var(--code-bg);color:var(--faint);font-size:11.5px;letter-spacing:.04em;
 }
 .aka-s{margin:0 6px;color:var(--faint);opacity:.55}
+
+/* 图外条目（T2.3）：Wikipedia / nLab / Mathlib 的对应页。样式与「又称」同一套，
+   只是链接带 ↗ 表示出站。⛔ 不占视觉中心 —— 它是一条脚注性质的出路。 */
+.xref{margin:6px 0 0;font-size:13.5px;color:var(--soft);line-height:1.95}
+.xref-k{
+  display:inline-block;margin-right:7px;padding:1px 7px;border-radius:5px;
+  background:var(--code-bg);color:var(--faint);font-size:11.5px;letter-spacing:.04em;
+}
+.xref a{border-bottom:1px solid rgba(79,124,245,.28)}
+.xref a:hover{text-decoration:none;border-bottom-color:var(--accent);color:var(--accent)}
 
 /* 常见问法：人真正会敲进搜索框的那句话（不是术语） */
 .hook-sec .hooks{list-style:none;margin:0;padding:0}

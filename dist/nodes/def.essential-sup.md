@@ -6,8 +6,6 @@ layer 16 · 定义 · L^p 空间 · 分析学
 定义
 
 $$\|f\|_\infty := \inf \{\, a \ge 0 : \mu(\{\, |f| > a \,\}) = 0 \,\}$$
-
-（把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \|f\|_\infty$ 本身就有 $\mu(\{|f| > a\}) = 0$。
 > 陈述续见 [nodes/def.essential-sup.2.md](./def.essential-sup.2.md)
 
 
@@ -21,6 +19,8 @@ $$\|f\|_\infty := \inf \{\, a \ge 0 : \mu(\{\, |f| > a \,\}) = 0 \,\}$$
 > English abstract 续见 [nodes/def.essential-sup.3.md](./def.essential-sup.3.md)
 
 refs: Folland, Real Analysis, §6.1
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Essential_supremum · nLab https://ncatlab.org/nlab/show/essential+supremum
 
 > 说明见 `notes/def.essential-sup.md`
 

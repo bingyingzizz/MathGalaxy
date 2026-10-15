@@ -1,7 +1,7 @@
 # 复测度　`def.complex-measure`　·　续页（第 2 页）
 [在星图里打开](../#n=def.complex-measure)　·　第 1 页 [nodes/def.complex-measure.md](./def.complex-measure.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative（续）
-A complex measure on a measurable space $(X, \mathcal{M})$ is a map $\nu : \mathcal{M} \to \mathbb{C}$ with $\nu(\emptyset) = 0$ and $\nu(\bigsqcup_j E_j) = \sum_j \nu(E_j)$ for pairwise disjoint families, the series converging absolutely. Unlike signed measures, complex measures are automatically finite and that series is automatically absolutely convergent, so questions of finiteness and rearrangement never arise — at the cost of losing examples with infinite mass.
+## 陈述（续）
+$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 
 > 续见 [nodes/def.complex-measure.3.md](./def.complex-measure.3.md)

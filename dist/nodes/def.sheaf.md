@@ -13,14 +13,14 @@ $$\operatorname{Hom}(h_{X}, F) \longrightarrow \operatorname{Hom}(R, F)$$
 - $F$ 叫**层**，如果这个映射是**双射**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.grothendieck-topology`](../nodes/def.grothendieck-topology.md) Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　[proofs/def-dep.topology-sheaf.md](../proofs/def-dep.topology-sheaf.md)
-
 - …另有入边，续页见 [nodes/def.sheaf.2.md](./def.sheaf.2.md)
 
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/def.sheaf.3.md](./def.sheaf.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Sheaf_(mathematics) · nLab https://ncatlab.org/nlab/show/sheaf · Mathlib https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Sites/Sheaf.html
 
 > 说明见 `notes/def.sheaf.md`
 

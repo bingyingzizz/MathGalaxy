@@ -2,7 +2,6 @@
 [在星图里打开](../#n=def.measure)　·　第 1 页 [nodes/def.measure.md](./def.measure.md)　·　上一页 [nodes/def.measure.4.md](./def.measure.4.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 [`def.cauchy-in-measure`](../nodes/def.cauchy-in-measure.md) 依测度 Cauchy 用
 - 被 [`def.product-measure`](../nodes/def.product-measure.md) 乘积测度 用
 - 被 [`def.signed-measure`](../nodes/def.signed-measure.md) 符号测度 用
 - 被 [`def.mutually-singular`](../nodes/def.mutually-singular.md) 相互奇异 用

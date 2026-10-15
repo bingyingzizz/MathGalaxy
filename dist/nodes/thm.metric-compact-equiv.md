@@ -4,16 +4,18 @@ layer 15 · 定理 · 度量空间 · 拓扑学
 [在星图里打开](../#n=thm.metric-compact-equiv)　·　[节点索引](../index.md)
 
 设 (X, d) 是距离空间。则下列三条**彼此等价**：
+> 陈述续见 [nodes/thm.metric-compact-equiv.2.md](./thm.metric-compact-equiv.2.md)
 
-$$X\text{ 紧} \iff X\text{ 列紧} \iff X\text{ 完备且全有界}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.metric-compact-equiv.3.md](./thm.metric-compact-equiv.3.md)
+- …另有入边，续页见 [nodes/thm.metric-compact-equiv.5.md](./thm.metric-compact-equiv.5.md)
 
 ## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
-> English abstract 续见 [nodes/thm.metric-compact-equiv.2.md](./thm.metric-compact-equiv.2.md)
+> English abstract 续见 [nodes/thm.metric-compact-equiv.3.md](./thm.metric-compact-equiv.3.md)
 
 refs: Munkres, Topology, §28 与 §43
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Sequentially_compact_space · nLab https://ncatlab.org/nlab/show/compact+space
 
 > 说明见 `notes/thm.metric-compact-equiv.md`
 

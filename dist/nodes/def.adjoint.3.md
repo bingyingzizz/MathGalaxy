@@ -1,14 +1,9 @@
 # 伴随函子　`def.adjoint`　·　续页（第 3 页）
 [在星图里打开](../#n=def.adjoint)　·　第 1 页 [nodes/def.adjoint.md](./def.adjoint.md)　·　上一页 [nodes/def.adjoint.2.md](./def.adjoint.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- ⇒ [`thm.right-adjoint-preserves-limits`](../nodes/thm.right-adjoint-preserves-limits.md) 右伴随保极限
-- ⇒ [`ex.kan-extension`](../nodes/ex.kan-extension.md) Kan 延拓的两个例子
-- 被 [`prop.adjoint-additive`](../nodes/prop.adjoint-additive.md) 伴随函子都加法 用
-- 被 [`prop.kan-extension-adjoint`](../nodes/prop.kan-extension-adjoint.md) Kan 延拓与伴随的存在性 用
-- 被 [`def.free-abelian-sheaf`](../nodes/def.free-abelian-sheaf.md) 自由阿贝尔群层 用
-- 被 [`prop.adjunction-extends-to-diagrams`](../nodes/prop.adjunction-extends-to-diagrams.md) 伴随延拓到图范畴 用
-- 被 [`prop.adjunction-composition`](../nodes/prop.adjunction-composition.md) 伴随的复合 用
-- 被 [`prop.adjunction-naturality`](../nodes/prop.adjunction-naturality.md) 伴随双射的自然性 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.functor`](../nodes/def.functor.md) 函子：用到了定义 函子　[proofs/def-dep.functor-adjoint.md](../proofs/def-dep.functor-adjoint.md)
+- [`def.category`](../nodes/def.category.md) 范畴：用到了定义 范畴　[proofs/def-dep.category-adjoint.md](../proofs/def-dep.category-adjoint.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/def-dep.function-adjoint.md](../proofs/def-dep.function-adjoint.md)
 
 > 续见 [nodes/def.adjoint.4.md](./def.adjoint.4.md)

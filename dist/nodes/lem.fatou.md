@@ -16,6 +16,8 @@ $$\int \liminf_{n\to\infty} f_n \le \liminf_{n\to\infty} \int f_n$$
 
 refs: Folland, Real Analysis, Theorem 2.18
 
+外部：Wikipedia https://en.wikipedia.org/wiki/Fatou%27s_lemma
+
 > 说明见 `notes/lem.fatou.md`
 
 引用：`lem.fatou`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)

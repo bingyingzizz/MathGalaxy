@@ -11,7 +11,6 @@ $$|A| < |\mathcal{P}(A)|$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.power-set`](../nodes/def.power-set.md) 幂集 𝒫(X)：幂集 $\implies$ Cantor 定理（对角线法）　[proofs/imp.cantor.md](../proofs/imp.cantor.md)
-- [`def.cardinal`](../nodes/def.cardinal.md) 基数 |A|：用到了定义 基数 |A|　[proofs/dep.cardinal-cantor.md](../proofs/dep.cardinal-cantor.md)
 
 - …另有入边，续页见 [nodes/thm.cantor.2.md](./thm.cantor.2.md)
 
@@ -19,6 +18,8 @@ $$|A| < |\mathcal{P}(A)|$$
 - 被 [`thm.real-uncountable`](../nodes/thm.real-uncountable.md) ℝ 不可数 用
 
 refs: Kunen, Set Theory, I.6
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Cantor%27s_theorem · nLab https://ncatlab.org/nlab/show/Cantor%27s+theorem
 
 > 说明见 `notes/thm.cantor.md`
 

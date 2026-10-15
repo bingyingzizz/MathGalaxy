@@ -11,12 +11,15 @@ layer 16 · 定理 · 测度的构造 · 分析学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`prop.caratheodory-extension`](../nodes/prop.caratheodory-extension.md) 预测度还原
-- ⇒ [`def.product-measure`](../nodes/def.product-measure.md) 乘积测度
+
+- …另有出边，续页见 [nodes/thm.caratheodory.3.md](./thm.caratheodory.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.caratheodory.2.md](./thm.caratheodory.2.md)
 
 refs: Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Carath%C3%A9odory%27s_extension_theorem
 
 > 说明见 `notes/thm.caratheodory.md`
 

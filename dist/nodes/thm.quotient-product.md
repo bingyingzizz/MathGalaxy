@@ -3,19 +3,19 @@
 layer 7 · 定理 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=thm.quotient-product)　·　[节点索引](../index.md)
 
-设 $q : X \to Y$ 是**商映射**，$Z$ 是**局部紧 Hausdorff** 空间。则
+设 $q : X \to Y$ 是**商映射**，$Z$ 是**局部紧 Haus
+> 陈述续见 [nodes/thm.quotient-product.2.md](./thm.quotient-product.2.md)
 
-$$q \times \mathrm{id}_{Z} : X \times Z \longrightarrow Y \times Z$$
-
-也是商映射。
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.quotient-product.3.md](./thm.quotient-product.3.md)
+- …另有入边，续页见 [nodes/thm.quotient-product.4.md](./thm.quotient-product.4.md)
 
 ## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
-> English abstract 续见 [nodes/thm.quotient-product.2.md](./thm.quotient-product.2.md)
+> English abstract 续见 [nodes/thm.quotient-product.3.md](./thm.quotient-product.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §2.3
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Quotient_space_(topology) · nLab https://ncatlab.org/nlab/show/quotient+space
 
 > 说明见 `notes/thm.quotient-product.md`
 

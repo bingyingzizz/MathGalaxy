@@ -3,7 +3,7 @@
 layer 12 · 命题 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=ex.kan-extension)　·　[节点索引](../index.md)
 
-**(1)** 图 $D : I \to \mathcal{C}$ 有余极限 $X$ $\iff$ 沿投影 $p : I \to \mathbf{1}$ 的左 Kan 延拓 $p_{!}D : \mathbf{1} \to \mathcal{C}$ 存在，且取值为
+**(1)** 图 $D : I \to \mathcal{C}$ 有余极限 $X$ $\if
 > 陈述续见 [nodes/ex.kan-extension.2.md](./ex.kan-extension.2.md)
 
 
@@ -14,6 +14,8 @@ layer 12 · 命题 · 伴随与反射 · 范畴论
 > English abstract 续见 [nodes/ex.kan-extension.3.md](./ex.kan-extension.3.md)
 
 refs: Mac Lane, Categories for the Working Mathematician, X.3
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Kan_extension · nLab https://ncatlab.org/nlab/show/Kan+extension
 
 ## 说明
 两条合起来看：**余极限和右伴随都是 Kan 延拓的特例**。Kan 延拓是这一整团的统一出口 —— 前面分散的定义（极限、伴随、反射）在其中都能各就各位。

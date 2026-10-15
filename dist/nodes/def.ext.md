@@ -9,12 +9,15 @@ $$\operatorname{Ext}^{n}(K^{\bullet}, L^{\bullet}) := \operatorname{Hom}_{D(\mat
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.derived-category`](../nodes/def.derived-category.md) 导出范畴：用到了定义 导出范畴　[proofs/def-dep.ext-dercat.md](../proofs/def-dep.ext-dercat.md)
-- [`def.distinguished-triangle`](../nodes/def.distinguished-triangle.md) 导出三角：用到了定义 导出三角　[proofs/def-dep.ext-triangle.md](../proofs/def-dep.ext-triangle.md)
+
+- …另有入边，续页见 [nodes/def.ext.2.md](./def.ext.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.ext.2.md](./def.ext.2.md)
+- …另有出边，续页见 [nodes/def.ext.3.md](./def.ext.3.md)
 
 refs: Le Stum, Definition 7.2.9
+
+外部：Wikipedia https://en.wikipedia.org/wiki/Ext_functor · nLab https://ncatlab.org/nlab/show/Ext
 
 > 说明见 `notes/def.ext.md`
 
