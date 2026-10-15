@@ -65,6 +65,7 @@ MG.aliases = {
     { id: 'def.rel', aka: ['二元关系', 'binary relation', '关系'] },
     { id: 'def.function', aka: ['映射', 'mapping', 'function'] },
     { id: 'def.preimage', aka: ['原像', 'preimage', 'inverse image', '像'] },
+    { id: 'def.nat-arith', aka: ['自然数的加法', '自然数的乘法', '自然数运算', 'Peano 算术'] },
     { id: 'def.quotient-set', aka: ['商集', '等价类', 'quotient', 'equivalence class'] },
     { id: 'def.bijection', aka: ['单射', '满射', '双射', 'injective', 'surjective', 'bijective'] },
 

@@ -277,7 +277,9 @@
       return { words: n, firstChars: Object.keys(byFirst).length };
     }
 
-    return { linkify: linkify, stats: stats };
+    /* ⭐ `scan` 也导出去：**构建期**要用同一套匹配逻辑生成依赖边
+       （`tools/defrefs.mjs`）。⛔ 千万别在构建脚本里另写一份 —— 两份匹配逻辑一定会漂。 */
+    return { linkify: linkify, scan: scan, stats: stats };
   }
 
   MG.createXLink = createXLink;

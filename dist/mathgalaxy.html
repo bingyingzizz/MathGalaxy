@@ -7052,7 +7052,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       return { words: n, firstChars: Object.keys(byFirst).length };
     }
 
-    return { linkify: linkify, stats: stats };
+    /* ⭐ `scan` 也导出去：**构建期**要用同一套匹配逻辑生成依赖边
+       （`tools/defrefs.mjs`）。⛔ 千万别在构建脚本里另写一份 —— 两份匹配逻辑一定会漂。 */
+    return { linkify: linkify, scan: scan, stats: stats };
   }
 
   MG.createXLink = createXLink;
@@ -7687,6 +7689,7 @@ MG.aliases = {
     { id: 'def.rel', aka: ['二元关系', 'binary relation', '关系'] },
     { id: 'def.function', aka: ['映射', 'mapping', 'function'] },
     { id: 'def.preimage', aka: ['原像', 'preimage', 'inverse image', '像'] },
+    { id: 'def.nat-arith', aka: ['自然数的加法', '自然数的乘法', '自然数运算', 'Peano 算术'] },
     { id: 'def.quotient-set', aka: ['商集', '等价类', 'quotient', 'equivalence class'] },
     { id: 'def.bijection', aka: ['单射', '满射', '双射', 'injective', 'surjective', 'bijective'] },
 
@@ -18550,6 +18553,35 @@ window.MG = window.MG || {};
       refs: ['Kunen, Set Theory, I.5']
     },
 
+    /* ------------------------------------------- 自然数上的加法与乘法 */
+    {
+      id: 'def.nat-arith',
+      cluster: 'set.numbers',
+      type: 'definition',
+      label: '自然数的加法与乘法',
+      title: '自然数上的加法与乘法（由递推定义）',
+      regions: ['set-theory'],
+      tags: ['定义', '自然数', '递推', '加法', '乘法'],
+      statement: [
+        '设 $\\omega = \\mathbb{N}$，$S(n) := n \\cup \\{n\\}$，$0 := \\emptyset$。用**递推定义**在 $\\omega$ 上定义两个运算。',
+        '',
+        '**加法**：对每个固定的 $m$，$n \\mapsto m + n$ 是满足下式的唯一 $g : \\omega \\to \\omega$：',
+        '',
+        '$$m + 0 := m, \\qquad m + S(n) := S(m + n)$$',
+        '',
+        '**乘法**：同样地，',
+        '',
+        '$$m \\cdot 0 := 0, \\qquad m \\cdot S(n) := m \\cdot n + m$$'
+      ].join('\n'),
+      notes: [
+        '**为什么只能这样定义**：$\\omega$ 本身就是递归地造出来的，唯一「从 $\\omega$ 出发造东西」的工具就是递推定义。加法、乘法、幂、序，全从这一条出来。',
+        '⚠️ 这两条只是「**存在唯一**」的断言 —— 存在性正是**递推定义定理**给的内容，所以它们是**定义**而不是公理，也不需要额外的公理。',
+        '**性质靠归纳原理验证**（不属于定义）：以 $0 + n = n$ 为例 —— $n = 0$ 时两边都是 $0$；设 $0 + n = n$，则 $0 + S(n) = S(0 + n) = S(n)$ ✓。交换律 $m + n = n + m$ 要先证两条引理 $0 + n = n$ 与 $S(m) + n = S(m + n)$，再对 $n$ 归纳；结合律、分配律 $m(n+k) = mn + mk$ 同理。',
+        '⭐ **它是后面所有运算的原型**：$\\mathbb{Z}$ 的加法 $[a,b] + [c,d] := [a+c,\\ b+d]$ 里的 $+$、$\\mathbb{Q}$ 的加法、$\\mathbb{R}$ 的逐项加法，里子都是这一个 $+$。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.5']
+    },
+
     /* ------------------------------------------------------------ 整数 */
     {
       id: 'def.int',
@@ -18813,6 +18845,20 @@ window.MG = window.MG || {};
       definition: 'thm.omega',
       usedBy: 'thm.induction',
       note: '归纳原理与递推定义都来自「$\\omega$ 是**最小归纳集**」这一条。'
+    },
+    {
+      id: 'dep.induction-natarith',
+      kind: 'definition',
+      definition: 'thm.induction',
+      usedBy: 'def.nat-arith',
+      note: '加法与乘法都是**递推定义** —— 「存在唯一」那一条正是递推定义定理给的内容。'
+    },
+    {
+      id: 'dep.natarith-int',
+      kind: 'definition',
+      definition: 'def.nat-arith',
+      usedBy: 'def.int',
+      note: '$\\mathbb{Z}$ 的加法 $[a,b] + [c,d] := [a+c, b+d]$ 里子里的 $+$，就是自然数的加法。'
     },
     {
       id: 'dep.omega-int',

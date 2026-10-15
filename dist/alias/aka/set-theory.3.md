@@ -1,6 +1,10 @@
 # 别名 → 节点 · 集合论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../set-theory.md`
 
+- 数学归纳法 | induction | 递推定义 | recursion → thm.induction
+
+- 整数 | integers | ℤ → def.int
+
 - 有理数 | rationals | ℚ → def.rat
 
 - 绝对值 | absolute value → def.abs
@@ -26,9 +30,5 @@
 - 序型 | order type | 序数表示 → thm.wellorder-ordinal
 
 - Burali-Forti | 序数全体是真类 | 布拉利-福尔蒂 → thm.burali-forti
-
-- 选择函数 | choice function | 选取函数 → def.choicefn
-
-- 选择公理 | AC | axiom of choice | Zorn → ax.choice
 
 > 续见 alias/aka/set-theory.4.md

@@ -1,6 +1,10 @@
 # 别名 → 节点 · 集合论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../set-theory.md`
 
+- 选择函数 | choice function | 选取函数 → def.choicefn
+
+- 选择公理 | AC | axiom of choice | Zorn → ax.choice
+
 - 良序定理 | well-ordering theorem | Zermelo → thm.wellordering
 
 - 佐恩引理 | Zorn's lemma | Zorn 引理 → lem.zorn

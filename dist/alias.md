@@ -8,7 +8,7 @@
 `alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）。
 
 - 数理逻辑　`alias/logic.md` 0 问法　·　`alias/aka/logic.md` 4 别名
-- 集合论　`alias/set-theory.md` 20 问法　·　`alias/aka/set-theory.md` 53 别名
+- 集合论　`alias/set-theory.md` 20 问法　·　`alias/aka/set-theory.md` 54 别名
 - 序理论　`alias/order-theory.md` 8 问法　·　`alias/aka/order-theory.md` 13 别名
 - 拓扑学　`alias/topology.md` 44 问法　·　`alias/aka/topology.md` 95 别名
 - 抽象代数　`alias/algebra.md` 13 问法　·　`alias/aka/algebra.md` 25 别名

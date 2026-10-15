@@ -1,6 +1,6 @@
 # 整数 ℤ　`def.int`
 整数 $\mathbb{Z}$（由 $\mathbb{N} \times \mathbb{N}$ 构造）
-layer 7 · 定义 · 数系的构造 · 集合论
+layer 8 · 定义 · 数系的构造 · 集合论
 [在星图里打开](../#n=def.int)　·　[节点索引](../index.md)
 
 在 $\mathbb{N} \times \mathbb{N}$ 上定义

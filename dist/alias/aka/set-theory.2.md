@@ -7,6 +7,8 @@
 
 - 原像 | preimage | inverse image | 像 → def.preimage
 
+- 自然数的加法 | 自然数的乘法 | 自然数运算 | Peano 算术 → def.nat-arith
+
 - 商集 | 等价类 | quotient | equivalence class → def.quotient-set
 
 - 单射 | 满射 | 双射 | injective | surjective | bijective → def.bijection
@@ -26,9 +28,5 @@
 - 基数可比 | 三分律 → thm.cardinal-comparable
 
 - 自然数 | natural numbers | ℕ → thm.omega
-
-- 数学归纳法 | induction | 递推定义 | recursion → thm.induction
-
-- 整数 | integers | ℤ → def.int
 
 > 续见 alias/aka/set-theory.3.md
