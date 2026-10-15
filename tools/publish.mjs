@@ -139,6 +139,20 @@ for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md'
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
+// 英文文档（T2.1）：正文页 + 续页，一份都不能漏 —— 阅读页的「原文 ↗」和 AI 抓取都指着它们。
+// ⚠️ 名字带页号（`reading.en.2.md`），所以要按前缀扫，别写死清单：页数会随正文变。
+for (const f of fs.readdirSync(DIST)) {
+  if (/^(reading|policy|hubs|notation)\.en(\.[0-9]+)?\.md$/.test(f)) {
+    fs.copyFileSync(path.join(DIST, f), path.join(STAGE, 'mathgalaxy', f));
+  }
+}
+/* 阅读页的「原文 ↗」和 AI 抓取都按这些路径取原件 —— 缺一个就是线上 404，这里拦住。
+   （2026-10-16 踩过：加了英文文档却忘了加进发布清单，站点上一个都没有。） */
+for (const f of ['reading.en.md', 'policy.en.md', 'hubs.en.md', 'notation.en.md']) {
+  if (!fs.existsSync(path.join(STAGE, 'mathgalaxy', f))) {
+    throw new Error(`站点缺 mathgalaxy/${f} —— 阅读页的「原文」链接会 404`);
+  }
+}
 
 // AI 按需检索的产物：每团一份清单、每节点一个文件、边的正文。
 // ⚠️ 这些是「拆分过的图」，加起来比 graph.json 还大 —— 但**单个文件都很小**，
