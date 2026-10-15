@@ -1002,6 +1002,10 @@ window.addEventListener('error', function (e) {
     <label class="set-row"><input type="checkbox" data-ui="hint" checked> 底部说明（标题与操作提示）</label>
     <div class="set-sep"></div>
     <div class="set-title">已读标记</div>
+    <!-- ⛔ 这个复选框必须有：showMarks 会从 localStorage 读，只要存过 '0' 就整个关掉。
+         原来唯一的开关是图例里那个 data-readmarks 小芯片，2026-10-15 删进度组时被一起删了，
+         结果「关掉之后再也打不开」——用户就是这么看不见绿环的。 -->
+    <label class="set-row"><input type="checkbox" id="set-readshow" checked> 图上显示已读标记（绿环）</label>
     <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset>清空已读进度</button></div>
     <div class="set-sep"></div>
     <div class="set-title">去别处</div>
@@ -39227,6 +39231,7 @@ MG.trunk = [
       settingsBtn.classList.toggle('on', !!on);
       settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
       if (on) {
+        syncReadShow();                      // 复选框跟着 state 走（可能在别处被改过）
         if (settingsClose) settingsClose.focus();
       } else if (settingsEl.contains(document.activeElement)) {
         settingsBtn.focus();
@@ -39250,9 +39255,17 @@ MG.trunk = [
     });
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
+      /* 「图上显示已读标记」：state 在 readstate 里（存 localStorage），这里只接线。
+         ⛔ 必须有一个**能打开**的入口 —— 它默认 true，但从 localStorage 读到的 '0' 会覆盖它，
+            没有入口的话用户一旦关过就永远看不见绿环（踩过）。 */
+      if (t && t.id === 'set-readshow') { reads.setShowMarks(!!t.checked); return; }
       var k = t && t.getAttribute && t.getAttribute('data-ui');
       if (k) toggleUI(k, t.checked);
     });
+    /* 复选框的初始状态跟着 state 走（localStorage 里可能存着 false） */
+    var readShowEl = document.getElementById('set-readshow');
+    function syncReadShow() { if (readShowEl) readShowEl.checked = reads.isShowMarks(); }
+    syncReadShow();
     // 点页面别处关掉；Esc 也关（同时会关掉详情面板，符合「Esc = 关浮层」的直觉）
     document.addEventListener('click', function () { setSettingsOpen(false); });
     document.addEventListener('keydown', function (e) {

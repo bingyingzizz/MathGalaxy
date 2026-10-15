@@ -120,6 +120,10 @@ window.addEventListener('error', function (e) {
     <label class="set-row"><input type="checkbox" data-ui="hint" checked> 底部说明（标题与操作提示）</label>
     <div class="set-sep"></div>
     <div class="set-title">已读标记</div>
+    <!-- ⛔ 这个复选框必须有：showMarks 会从 localStorage 读，只要存过 '0' 就整个关掉。
+         原来唯一的开关是图例里那个 data-readmarks 小芯片，2026-10-15 删进度组时被一起删了，
+         结果「关掉之后再也打不开」——用户就是这么看不见绿环的。 -->
+    <label class="set-row"><input type="checkbox" id="set-readshow" checked> 图上显示已读标记（绿环）</label>
     <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset>清空已读进度</button></div>
     <div class="set-sep"></div>
     <div class="set-title">去别处</div>

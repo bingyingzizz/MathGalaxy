@@ -574,6 +574,7 @@
       settingsBtn.classList.toggle('on', !!on);
       settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
       if (on) {
+        syncReadShow();                      // 复选框跟着 state 走（可能在别处被改过）
         if (settingsClose) settingsClose.focus();
       } else if (settingsEl.contains(document.activeElement)) {
         settingsBtn.focus();
@@ -597,9 +598,17 @@
     });
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
+      /* 「图上显示已读标记」：state 在 readstate 里（存 localStorage），这里只接线。
+         ⛔ 必须有一个**能打开**的入口 —— 它默认 true，但从 localStorage 读到的 '0' 会覆盖它，
+            没有入口的话用户一旦关过就永远看不见绿环（踩过）。 */
+      if (t && t.id === 'set-readshow') { reads.setShowMarks(!!t.checked); return; }
       var k = t && t.getAttribute && t.getAttribute('data-ui');
       if (k) toggleUI(k, t.checked);
     });
+    /* 复选框的初始状态跟着 state 走（localStorage 里可能存着 false） */
+    var readShowEl = document.getElementById('set-readshow');
+    function syncReadShow() { if (readShowEl) readShowEl.checked = reads.isShowMarks(); }
+    syncReadShow();
     // 点页面别处关掉；Esc 也关（同时会关掉详情面板，符合「Esc = 关浮层」的直觉）
     document.addEventListener('click', function () { setSettingsOpen(false); });
     document.addEventListener('keydown', function (e) {
