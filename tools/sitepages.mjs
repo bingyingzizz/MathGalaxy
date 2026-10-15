@@ -337,7 +337,13 @@ function nodePage(node, rel, ctx) {
      否则用 label。不这么筛会出现 37 个页面 title 全叫「命题 · 数学星图」。 */
   const titlePlain = plainTitle(node.title);
   const pageTitle = (titlePlain.length > node.label.length) ? titlePlain : node.label;
-  const htmlTitle = pageTitle + ' · 数学星图';
+  /* 英文名（T1.1 的字段）：title_en 优先，其次 label_en。
+     ⚠️ 中文 title 里**本来就常带英文**（`外延公理（Axiom of Extensionality）`），
+        所以只在「中文名里没有它」时才并列出来，避免一句话里出现两次。 */
+  const normCmp = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  const enName = String(node.title_en || node.label_en || '').trim();
+  const enInTitle = !!enName && normCmp(pageTitle).includes(normCmp(enName));
+  const htmlTitle = (enName && !enInTitle ? pageTitle + '（' + enName + '）' : pageTitle) + ' · 数学星图 MathGalaxy';
 
   // 描述：陈述太短就往「说明」里借，还是太短就拿页面标题兜底 —— Google 会跳过过短的
   let descSource = stripMd(node.statement);
@@ -347,6 +353,9 @@ function nodePage(node, rel, ctx) {
   // 只按源码长度截，含 `<` 的描述会明显超出摘要长度（实测最长的到 198）。
   let description = clip(descSource, 158);
   for (let n = 150; n >= 60 && esc(description).length > 165; n -= 12) description = clip(descSource, n);
+  /* 英文一句（T1.2）：同一个 URL 承载双语，摘要里直接把英文名带上 ——
+     对英文检索的人/爬虫这是唯一能看见名字的地方（画布上的标签仍是中文）。 */
+  const descFull = description + (enName ? ' · English: ' + enName : '');
 
   const url = origin + '/mathgalaxy/nodes/' + encodeURIComponent(node.id) + '.html';
   const crumbRegion = region ? region.name : node.region;
@@ -379,7 +388,9 @@ function nodePage(node, rel, ctx) {
     '@type': ldType,
     '@id': url + '#concept',
     name: node.label,
-    alternateName: titlePlain !== node.label ? titlePlain : undefined,
+    /* 同一个 URL 承载双语 ⇒ 英文名走 alternateName（不是另开一个 URL，
+       所以**不需要 hreflang** —— 那是给不同 URL 用的）。 */
+    alternateName: enName || (titlePlain !== node.label ? titlePlain : undefined),
     description,
     url,
     inLanguage: 'zh-CN',
@@ -464,16 +475,16 @@ function nodePage(node, rel, ctx) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(htmlTitle)}</title>
-<meta name="description" content="${esc(description)}">
+<meta name="description" content="${esc(descFull)}">
 <link rel="canonical" href="${esc(url)}">
 <link rel="alternate" type="text/markdown" href="${esc(node.id)}.md" title="Markdown 原文（给 AI 的按需检索版）">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="数学星图 MathGalaxy">
 <meta property="og:title" content="${esc(htmlTitle)}">
-<meta property="og:description" content="${esc(description)}">
+<meta property="og:description" content="${esc(descFull)}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="zh_CN">
-<meta name="twitter:card" content="summary">
+${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta name="twitter:card" content="summary">
 <meta name="theme-color" content="${esc(regionColor)}">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <link rel="stylesheet" href="../../assets/katex.min.css">
@@ -487,7 +498,7 @@ function nodePage(node, rel, ctx) {
 <main class="wrap">
 
   <header class="np-head">
-    <h1>${U.titleHtml(node.label)}</h1>
+    <h1>${U.titleHtml(node.label)}${enName && !enInTitle ? '<span class="en" lang="en">' + esc(enName) + '</span>' : ''}</h1>
     ${node.title && node.title !== node.label ? '<p class="full">' + U.titleHtml(node.title) + '</p>' : ''}
     <ul class="facts">${facts.map((f) => '<li>' + esc(f) + '</li>').join('')}</ul>
     <p class="idline"><code>${esc(node.id)}</code>${
@@ -633,6 +644,7 @@ function allPage(ctx) {
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 </head>
@@ -749,6 +761,7 @@ function questionsPage(ctx) {
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <link rel="stylesheet" href="../assets/katex.min.css">

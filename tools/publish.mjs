@@ -213,7 +213,7 @@ const readSite = (f) => fs.readFileSync(path.join(SITE, f), 'utf8');
  * 没有 og:image —— 站点没有位图素材（favicon 是内联 SVG，做不了 og:image）；
  * 要加就得先生成一张 1200×630 的图，那是另一件事。
  */
-function headExtra({ title, desc, url, ld }) {
+function headExtra({ title, desc, url, ld, en }) {
   return [
     `<link rel="canonical" href="${url}">`,
     `<meta property="og:type" content="website">`,
@@ -222,9 +222,12 @@ function headExtra({ title, desc, url, ld }) {
     `<meta property="og:description" content="${esc(desc)}">`,
     `<meta property="og:url" content="${url}">`,
     `<meta property="og:locale" content="zh_CN">`,
+    /* 同一个 URL 承载双语 ⇒ 不需要 hreflang（那是给不同 URL 用的），
+       用 og:locale:alternate 说明「这页里也有英文」。 */
+    en ? `<meta property="og:locale:alternate" content="en">` : null,
     `<meta name="twitter:card" content="summary">`,
     `<script type="application/ld+json">${JSON.stringify(ld)}</script>`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }
 
 const SITE_ORIGIN = LIVE_URL.replace(/\/$/, '');   // 站点绝对地址（无尾斜杠）
@@ -239,11 +242,15 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
   SITE_REPO: SITE_REPO_URL,
   HEAD_EXTRA: headExtra({
     title: `${USER} · 数学笔记`,
-    desc: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。',
+    desc: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。'
+      + ' MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 709 nodes,'
+      + ' 1398 edges, four kinds of edges (implication / equivalence / definition / analogy).',
     url: `${SITE_ORIGIN}/`,
+    en: true,
     ld: {
       '@context': 'https://schema.org', '@type': 'WebSite',
       name: `${USER}.github.io`, url: `${SITE_ORIGIN}/`, inLanguage: 'zh-CN',
+      alternateName: 'MathGalaxy',
       description: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。',
     },
   }),
@@ -288,11 +295,14 @@ fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
   DOCS: docsHtml,
   HEAD_EXTRA: headExtra({
     title: `怎么读这张图 · ${USER}`,
-    desc: '数学星图的读图指南、记号对照表、检索协议、内容准则与枢纽定理榜。',
+    desc: '数学星图的读图指南、记号对照表、检索协议、内容准则与枢纽定理榜。'
+      + ' How to read the graph: three scales, four kinds of edges, the notation table and the retrieval protocol for AI agents.',
     url: `${SITE_ORIGIN}/read.html`,
+    en: true,
     ld: {
       '@context': 'https://schema.org', '@type': 'WebPage',
       name: '怎么读这张图', url: `${SITE_ORIGIN}/read.html`, inLanguage: 'zh-CN',
+      alternateName: 'How to read MathGalaxy',
       description: '数学星图的读图指南、记号对照表、检索协议、内容准则与枢纽定理榜。',
       isPartOf: { '@type': 'WebSite', name: `${USER}.github.io`, url: `${SITE_ORIGIN}/` },
     },
