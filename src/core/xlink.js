@@ -32,27 +32,32 @@
     var byFirst = Object.create(null);
     var labelOf = Object.create(null);
 
-    function add(word, id) {
+    function add(word, id, isLabel) {
       var w = String(word == null ? '' : word).trim();
       if (w.length < MIN_LEN) return;
       var f = w.charAt(0);
       if (!byFirst[f]) byFirst[f] = [];
       // 同一个词已经指向这个 id 就不重复加（label 与 aka 常常一样）
       for (var i = 0; i < byFirst[f].length; i++) {
-        if (byFirst[f][i].w === w && byFirst[f][i].id === id) return;
+        if (byFirst[f][i].w === w && byFirst[f][i].id === id) {
+          if (isLabel) byFirst[f][i].isLabel = true;   // label 优先
+          return;
+        }
       }
-      byFirst[f].push({ w: w, id: id, n: w.length });
+      byFirst[f].push({ w: w, id: id, n: w.length, isLabel: !!isLabel });
     }
 
     graph.nodes.forEach(function (n) {
       labelOf[n.id] = n.label || n.id;
-      add(n.label, n.id);
+      add(n.label, n.id, true);
     });
     /* 别名也进词表：人和 AI 搜的是别名，正文里出现的也常常是别名。
-       ⚠️ aka 里可能有英文（"Zorn's lemma"）—— 一样能匹配，无所谓。 */
+       ⚠️ 但 aka 里混着大量**普通词**（满足 / 单位 / 命题 / 推出 / 反例）——
+         它们是给**搜索**用的，正文里多数只是行文用词。所以 aka 要更严：
+         要么在当前节点的邻域里，要么本身够长（≥ 3 字）才认。见 scan()。 */
     ((aliases && aliases.nodes) || []).forEach(function (a) {
       if (!a || !a.id) return;
-      (a.aka || []).forEach(function (k) { add(k, a.id); });
+      (a.aka || []).forEach(function (k) { add(k, a.id, false); });
     });
 
     Object.keys(byFirst).forEach(function (f) {
@@ -80,9 +85,20 @@
       }
     });
 
-    /** 在一段纯文本里找命中区间：长的优先，命中后跳过整段（不重叠） */
+    /**
+     * 在一段纯文本里找命中区间：长的优先，命中后跳过整段（不重叠）。
+     *
+     * ⭐ 命中分两级：**与 fromId 有边相连**的记 `near: true`，其余 `near: false`。
+     *   两级都链，只是样式不同（近的蓝下划线、远的灰点线）。
+     *   为什么不再限制「只链邻居」：跨星系的节点天然就远 —— 实测
+     *   「局部紧 Hausdorff」离 thm.pontryagin-van-kampen 是 **4 跳**
+     *   （拓扑学 ↔ 凝聚态），「范畴」离那个预层命题是 2 跳。
+     *   要覆盖它们就得放到 4 跳，那几乎等于全图，限制也就没意义了。
+     *   ⇒ 放宽到全图，**「这个词在这里到底指不指那个节点」交给读的人判断**，
+     *     样式上的浓淡给他一个提示。代码不替他决定。
+     */
     function scan(text, fromId) {
-      var allow = fromId ? adj[fromId] : null;
+      var near = fromId ? adj[fromId] : null;
       var hits = [];
       var i = 0;
       while (i < text.length) {
@@ -92,12 +108,16 @@
           for (var k = 0; k < cands.length; k++) {
             var c = cands[k];
             if (c.id === fromId) continue;                    // 自指不链
-            if (allow && !allow[c.id]) continue;              // ⭐ 不在邻域里就不链
+            // ⭐ aka 来的短词（2 字）不在邻域里就跳过 —— 那是行文用词，不是概念指称。
+            //   label 不受这条限制：「范畴」「预层」都是 2 字的**节点名**，该链。
+            if (!c.isLabel && c.n < 3 && !(near && near[c.id])) continue;
             if (i + c.n <= text.length && text.substr(i, c.n) === c.w) { got = c; break; }
           }
         }
-        if (got) { hits.push({ at: i, len: got.n, id: got.id }); i += got.n; }
-        else i++;
+        if (got) {
+          hits.push({ at: i, len: got.n, id: got.id, near: !!(near && near[got.id]) });
+          i += got.n;
+        } else i++;
       }
       return hits;
     }
@@ -137,6 +157,10 @@
       }
 
       var count = 0;
+      /* ⭐ 同一个概念只链**第一次**出现。
+         实测一个面板里「对偶」出现 4 次、「预层」5 次 —— 全链上就是满页下划线，
+         读起来反而更累。点一次就够了；后面的原样留着（pos 不前移即可）。 */
+      var seen = Object.create(null);
       texts.forEach(function (node) {
         var s = node.nodeValue;
         var hits = scan(s, fromId);
@@ -144,12 +168,16 @@
         var frag = document.createDocumentFragment();
         var pos = 0;
         hits.forEach(function (h) {
+          if (seen[h.id]) return;
+          seen[h.id] = 1;
           if (h.at > pos) frag.appendChild(document.createTextNode(s.slice(pos, h.at)));
           var a = document.createElement('a');
-          a.className = 'pn-xlink';
+          // near = 与当前节点有边相连；far = 只是「这个词在图里另有一个节点」
+          a.className = 'pn-xlink' + (h.near ? '' : ' far');
           a.setAttribute('data-xlink', h.id);
           a.setAttribute('href', '#');
-          a.setAttribute('title', '跳到「' + (labelOf[h.id] || h.id) + '」');
+          a.setAttribute('title',
+            (h.near ? '它依赖：' : '图里也有：') + (labelOf[h.id] || h.id));
           a.textContent = s.substr(h.at, h.len);
           frag.appendChild(a);
           pos = h.at + h.len;

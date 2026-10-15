@@ -563,6 +563,19 @@ html.ui-no-hint #hint { display: none; }
   outline-offset: 1px;
   border-radius: 2px;
 }
+/* 远的一级：这个词在图里另有一个节点，但当前节点和它没有直接边。
+   样式更淡（灰点线）—— 提示「多半是指它，但你自己判断」。 */
+.pn-xlink.far {
+  color: var(--ink-soft);
+  border-bottom-style: dotted;
+  border-bottom-color: rgba(20, 22, 28, .30);
+}
+.pn-xlink.far:hover {
+  color: #35509B;
+  background: rgba(79, 124, 245, .08);
+  border-bottom-style: solid;
+  border-bottom-color: rgba(79, 124, 245, .75);
+}
 
 /* 设置窗口里的「清空已读进度」 */
 .set-row-btn { display: block; padding: 4px 6px; }
