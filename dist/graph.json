@@ -3,13 +3,13 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T05:14:42.364Z",
+  "generated": "2026-10-15T05:39:46.773Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
-   "nodes": 706,
-   "edges": 1393,
-   "strong": 1384,
+   "nodes": 707,
+   "edges": 1394,
+   "strong": 1385,
    "weak": 9
   },
   "readingGuide": {
@@ -48,7 +48,7 @@
    "en": "Set Theory",
    "desc": "ZFC 公理系统、序数、基数与选择原理。",
    "color": "#4F7CF5",
-   "nodeCount": 52
+   "nodeCount": 53
   },
   {
    "id": "order-theory",
@@ -80,7 +80,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 162
+   "nodeCount": 163
   },
   {
    "id": "category",
@@ -162,11 +162,12 @@
    "name": "关系与函数",
    "parent": "set-theory",
    "desc": "造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。",
-   "nodeCount": 4,
+   "nodeCount": 5,
    "nodes": [
     "def.rel",
     "def.function",
     "def.bijection",
+    "def.preimage",
     "def.quotient-set"
    ]
   },
@@ -5534,6 +5535,30 @@
    ],
    "statement": "设 $f : A \\to B$。\n\n- $f$ **单射**（injective）：$f(a) = f(a') \\implies a = a'$，即不同输入给不同输出；\n- $f$ **满射**（surjective）：$\\forall b \\in B, \\exists a \\in A : f(a) = b$，即 $f(A) = B$；\n- $f$ **双射**（bijective）：既单又满。\n\n双射 $f : A \\to B$ 的**逆** $f^{-1} : B \\to A$ 也是双射（把 $f$ 看作关系时，逆关系就是 $f^{-1}$）。\n\n于是「存在双射 $A \\to B$」是集合之间的一种等价关系，用来定义**等势**。",
    "notes": "⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\\alpha \\hookrightarrow X$ 不成立」也是同一个句式。\n\n⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \\mathbb{R} \\to \\mathbb{R}$，$x \\mapsto x^2$ 既不单也不满；把陪域改成 $[0, \\infty)$ 就满了。",
+   "refs": [
+    "Kunen, Set Theory, I.5"
+   ]
+  },
+  {
+   "id": "def.preimage",
+   "type": "definition",
+   "label": "像与原像",
+   "title": "像与原像（Image / Preimage）",
+   "region": "set-theory",
+   "regions": [
+    "set-theory",
+    "analysis"
+   ],
+   "cluster": "set.rel",
+   "layer": 6,
+   "tags": [
+    "定义",
+    "映射",
+    "像",
+    "原像"
+   ],
+   "statement": "设 $f : X \\to Y$ 是映射。\n\n- 对 $A \\subseteq X$，$A$ 的**像**是 $f(A) := \\{\\, f(x) : x \\in A \\,\\} \\subseteq Y$；\n- 对 $B \\subseteq Y$，$B$ 的**原像**是 $f^{-1}(B) := \\{\\, x \\in X : f(x) \\in B \\,\\} \\subseteq X$。",
+   "notes": "⭐ **原像对并、交、补全部保持，而且不需要任何额外假设**：\n\n\n\n$$f^{-1}\\Bigl(\\bigcup_{i} B_{i}\\Bigr) = \\bigcup_{i} f^{-1}(B_{i}), \\qquad f^{-1}\\Bigl(\\bigcap_{i} B_{i}\\Bigr) = \\bigcap_{i} f^{-1}(B_{i}), \\qquad f^{-1}(B^{c}) = \\bigl(f^{-1}(B)\\bigr)^{c}$$\n\n\n\n像**没有**这些性质：$f(A \\cap A') \\subseteq f(A) \\cap f(A')$ 一般只是包含，取等要 $f$ 单射。这正是「**连续**」（每个开集的原像是开集）与「**可测**」（每个可测集的原像可测）都用原像、不用像来定义的原因。\n\n**证明（补集，其余两条逐字同理）**：$x \\in f^{-1}(B^{c}) \\iff f(x) \\in B^{c} \\iff f(x) \\notin B \\iff x \\notin f^{-1}(B) \\iff x \\in \\bigl(f^{-1}(B)\\bigr)^{c}$ ✓。∎\n\n**记号**：$f^{-1}$ 有两种用法 —— 作用在**元素**上（$f^{-1}(y)$）是逆映射，只在 $f$ 可逆时有意义；作用在**集合**上（$f^{-1}(B)$）是原像，**永远**有意义。看参数是元素还是集合就能分辨，两种含义在 $f$ 可逆时一致。",
    "refs": [
     "Kunen, Set Theory, I.5"
    ]
@@ -11285,7 +11310,7 @@
     "Hausdorff",
     "紧邻域"
    ],
-   "statement": "拓扑空间 $X$ 叫**局部紧 Hausdorff** 的，如果它是 Hausdorff 的，并且**每个点都有紧邻域**：对每个 $x \\in X$，存在紧集 $K$ 使 $x \\in \\operatorname{int} K$。",
+   "statement": "拓扑空间 $X$ 叫**局部紧**的，如果**每个点都有紧邻域**：对每个 $x \\in X$，存在紧集 $K$ 使\n\n$$x \\in \\operatorname{int} K$$\n\n再要求它是 Hausdorff 的，就叫**局部紧 Hausdorff** 空间。\n\n⚠️ 本图提到「局部紧」**而不另加限定**时，指的都是后者 —— 这是凝聚态数学里的标准用法：那里用得到的性质（局部紧 $\\implies$ 紧生成、商映射 $\\times$ 局部紧）都同时需要 Hausdorff。",
    "notes": "**等价说法**（Hausdorff 时）：每点有**紧邻域基**（即任意给定邻域 $U \\ni x$ 里都能找到一个紧邻域 $K$ 使 $x \\in \\operatorname{int}K \\subseteq K \\subseteq U$）。这条更强的形式正是「商映射 $\\times$ 局部紧」那条定理要用的。\n\n**例子**：$\\mathbb{R}^{n}$、任何离散空间、任何紧 Hausdorff 空间。**反例**：$\\mathbb{Q}$（不是局部紧）、无穷维 Banach 空间（闭单位球不紧）。\n\n⭐ **它在凝聚态数学里的位置**：$\\mathbf{CHaus}$ 是场地，而**局部紧 Hausdorff**是「能用紧 Hausdorff 逼近」的最小一族 —— 局部紧 Hausdorff 空间都是**紧生成**的（例 1），所以都能忠实地变成凝聚态集。Pontryagin 对偶也只在局部紧 Hausdorff 阿贝尔群那一条线上成立。\n\n⚠️ 「局部紧」这个条件**不能省**：商映射乘 id 那条定理、Tychonoff 以外的积性质、以及「紧提升条件」都要它。",
    "refs": [
     "Munkres, Topology"
@@ -19607,6 +19632,14 @@
    "definition": "def.real",
    "usedBy": "def.essential-sup",
    "note": "本性上界是「$\\mu(\\{|f| > a\\}) = 0$ 的那些 $a \\ge 0$ 的下确界」——$a$ 是实数。"
+  },
+  {
+   "id": "dep.preimage-function",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function",
+   "usedBy": "def.preimage",
+   "note": "像 $f(A)$ 与原像 $f^{-1}(B)$ 都预设 $f$ 是**映射**。"
   },
   {
    "id": "dep.subset-powerset",

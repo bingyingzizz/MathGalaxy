@@ -1,6 +1,8 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- σ-有限 | sigma-finite | 有限测度 | 半有限 | 测度空间 → def.measure-space
+
 - 测度的性质 | 测度基本性质 → prop.measure-basic
 
 - 零集 | null set | 零测集 → def.null-set
@@ -28,9 +30,5 @@
 - 分布函数与测度 → thm.ls-exists
 
 - 可测函数 | measurable function | 可测 → def.measurable-function
-
-- 可测的判定 → prop.measurable-criterion
-
-- Lebesgue 可测 | 勒贝格可测 → def.lebesgue-measurable
 
 > 续见 alias/aka/analysis.4.md

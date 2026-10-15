@@ -1,6 +1,8 @@
 # 别名 → 节点 · 集合论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../set-theory.md`
 
+- 有理数 | rationals | ℚ → def.rat
+
 - 绝对值 | absolute value → def.abs
 
 - 三角不等式 | triangle inequality → thm.triangle
@@ -28,7 +30,5 @@
 - 选择函数 | choice function | 选取函数 → def.choicefn
 
 - 选择公理 | AC | axiom of choice | Zorn → ax.choice
-
-- 良序定理 | well-ordering theorem | Zermelo → thm.wellordering
 
 > 续见 alias/aka/set-theory.4.md

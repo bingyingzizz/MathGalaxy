@@ -1,6 +1,10 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 积分绝对值不等式 → prop.integral-abs-ineq
+
+- 支撑 σ-有限 → prop.L1-support-sigma-finite
+
 - 两个函数积分处处相同 → prop.integrals-equal-iff
 
 - 控制收敛 | DCT | dominated convergence | Lebesgue 控制收敛定理 | 积分与极限交换 → thm.dct
@@ -26,7 +30,5 @@
 - 乘积测度 | product measure → def.product-measure
 
 - 乘积测度由截口给出 → thm.product-measure-sections
-
-- 乘积测度不完备 → prop.product-incomplete
 
 > 续见 alias/aka/analysis.7.md

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-15T05:14:42.364Z
-> 9 星系 / 45 星团 / 706 节点 / 1393 连线（强边 1384，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-15T05:39:46.773Z
+> 9 星系 / 45 星团 / 707 节点 / 1394 连线（强边 1385，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -463,6 +463,30 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 ⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\alpha \hookrightarrow X$ 不成立」也是同一个句式。
 
 ⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \mathbb{R} \to \mathbb{R}$，$x \mapsto x^2$ 既不单也不满；把陪域改成 $[0, \infty)$ 就满了。
+
+参考：Kunen, Set Theory, I.5
+
+#### 像与原像　`def.preimage`
+*定义*　像与原像（Image / Preimage）
+
+设 $f : X \to Y$ 是映射。
+
+- 对 $A \subseteq X$，$A$ 的**像**是 $f(A) := \{\, f(x) : x \in A \,\} \subseteq Y$；
+- 对 $B \subseteq Y$，$B$ 的**原像**是 $f^{-1}(B) := \{\, x \in X : f(x) \in B \,\} \subseteq X$。
+
+⭐ **原像对并、交、补全部保持，而且不需要任何额外假设**：
+
+
+
+$$f^{-1}\Bigl(\bigcup_{i} B_{i}\Bigr) = \bigcup_{i} f^{-1}(B_{i}), \qquad f^{-1}\Bigl(\bigcap_{i} B_{i}\Bigr) = \bigcap_{i} f^{-1}(B_{i}), \qquad f^{-1}(B^{c}) = \bigl(f^{-1}(B)\bigr)^{c}$$
+
+
+
+像**没有**这些性质：$f(A \cap A') \subseteq f(A) \cap f(A')$ 一般只是包含，取等要 $f$ 单射。这正是「**连续**」（每个开集的原像是开集）与「**可测**」（每个可测集的原像可测）都用原像、不用像来定义的原因。
+
+**证明（补集，其余两条逐字同理）**：$x \in f^{-1}(B^{c}) \iff f(x) \in B^{c} \iff f(x) \notin B \iff x \notin f^{-1}(B) \iff x \in \bigl(f^{-1}(B)\bigr)^{c}$ ✓。∎
+
+**记号**：$f^{-1}$ 有两种用法 —— 作用在**元素**上（$f^{-1}(y)$）是逆映射，只在 $f$ 可逆时有意义；作用在**集合**上（$f^{-1}(B)$）是原像，**永远**有意义。看参数是元素还是集合就能分辨，两种含义在 $f$ 可逆时一致。
 
 参考：Kunen, Set Theory, I.5
 
@@ -1453,7 +1477,13 @@ $$f(x) := \inf\{\, q : x \in U_{q} \,\}$$
 #### 局部紧 Hausdorff 空间　`def.locally-compact`
 *定义*　局部紧 Hausdorff 空间（Locally Compact Hausdorff）
 
-拓扑空间 $X$ 叫**局部紧 Hausdorff** 的，如果它是 Hausdorff 的，并且**每个点都有紧邻域**：对每个 $x \in X$，存在紧集 $K$ 使 $x \in \operatorname{int} K$。
+拓扑空间 $X$ 叫**局部紧**的，如果**每个点都有紧邻域**：对每个 $x \in X$，存在紧集 $K$ 使
+
+$$x \in \operatorname{int} K$$
+
+再要求它是 Hausdorff 的，就叫**局部紧 Hausdorff** 空间。
+
+⚠️ 本图提到「局部紧」**而不另加限定**时，指的都是后者 —— 这是凝聚态数学里的标准用法：那里用得到的性质（局部紧 $\implies$ 紧生成、商映射 $\times$ 局部紧）都同时需要 Hausdorff。
 
 **等价说法**（Hausdorff 时）：每点有**紧邻域基**（即任意给定邻域 $U \ni x$ 里都能找到一个紧邻域 $K$ 使 $x \in \operatorname{int}K \subseteq K \subseteq U$）。这条更强的形式正是「商映射 $\times$ 局部紧」那条定理要用的。
 
@@ -15721,6 +15751,10 @@ $L^p$ 的元素取复值：$f : X \to \mathbb{C}$。
 #### 定义引用：「实数系 ℝ」→ 本性上界与 L^∞　`dep.real-lp`
 
 本性上界是「$\mu(\{|f| > a\}) = 0$ 的那些 $a \ge 0$ 的下确界」——$a$ 是实数。
+
+#### 定义引用：「函数」→ 像与原像　`dep.preimage-function`
+
+像 $f(A)$ 与原像 $f^{-1}(B)$ 都预设 $f$ 是**映射**。
 
 #### 定义引用：「子集」→ 幂集 𝒫(X)　`dep.subset-powerset`
 

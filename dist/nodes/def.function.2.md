@@ -3,6 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.bijection`](../nodes/def.bijection.md) 单射 / 满射 / 双射 用
+- 被 [`def.preimage`](../nodes/def.preimage.md) 像与原像 用
 - 被 [`def.quotient-topology`](../nodes/def.quotient-topology.md) 商拓扑 用
 - 被 [`def.cauchy-null`](../nodes/def.cauchy-null.md) Cauchy 列与零列 用
 - 被 [`def.field`](../nodes/def.field.md) 域 用
@@ -13,6 +14,5 @@
 - 被 [`def.graph`](../nodes/def.graph.md) 图 用
 - 被 [`def.graph-morphism`](../nodes/def.graph-morphism.md) 图的态射 用
 - 被 [`def.functor`](../nodes/def.functor.md) 函子 用
-- 被 [`def.simplicial`](../nodes/def.simplicial.md) 单纯对象 用
 
 > 续见 [nodes/def.function.3.md](./def.function.3.md)

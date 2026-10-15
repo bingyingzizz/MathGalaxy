@@ -1,6 +1,8 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 原像 | preimage | inverse image | 像 → def.preimage
+
 - 绝对值 | absolute value → def.abs
 
 - 三角不等式 | triangle inequality → thm.triangle
@@ -28,7 +30,5 @@
 - 确界原理 | 实数完备 | 完备性 | least upper bound property | completeness of R → thm.real-ordered-field
 
 - 级数 | series | 级数收敛 → def.series
-
-- 连续 | continuous | 连续函数 → def.continuous
 
 > 续见 alias/aka/analysis.2.md

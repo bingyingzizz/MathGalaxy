@@ -1,6 +1,8 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 导数互逆 → cor.rn-inverse
+
 - Jordan 分解 | Jordan decomposition | 若尔当分解 → thm.jordan-decomposition
 
 - 绝对连续与变差 → prop.ac-and-variations

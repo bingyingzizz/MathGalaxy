@@ -1,6 +1,8 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- 乘积测度不完备 → prop.product-incomplete
+
 - Fubini | Tonelli | 富比尼 | 富比尼定理 | 交换积分次序 | 重积分换序 → thm.fubini-tonelli
 
 - 完备情形的 Fubini → thm.fubini-complete
@@ -26,7 +28,5 @@
 - 全变差 | total variation → prop.total-variation-basics
 
 - Hahn 分解 | Hahn decomposition | 哈恩分解 → thm.hahn-decomposition
-
-- 导数互逆 → cor.rn-inverse
 
 > 续见 alias/aka/analysis.8.md

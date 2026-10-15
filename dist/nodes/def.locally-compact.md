@@ -3,14 +3,19 @@
 layer 15 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.locally-compact)　·　[节点索引](../index.md)
 
-拓扑空间 $X$ 叫**局部紧 Hausdorff** 的，如果它是 Hausdorff 的，并且**每个点都有紧邻域**：对每个 $x \in X$，存在紧集 $K$ 使 $x \in \operatorname{int} K$。
+拓扑空间 $X$ 叫**局部紧**的，如果**每个点都有紧邻域**：对每个 $x \in X$，存在紧集 $K$ 使
+
+$$x \in \operatorname{int} K$$
+
+再要求它是 Hausdorff 的，就叫**局部紧 Hausdorff** 空间。
+
+⚠️ 本图提到「局部紧」**而不另加限定**时，指的都是后者 —— 这是凝聚态数学里的标准用法：那里用得到的性质（局部紧 $\implies$ 紧生成、商映射 $\times$ 局部紧）都同时需要 Hausdorff。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.hausdorff`](../nodes/def.hausdorff.md) Hausdorff 空间：用到了定义 Hausdorff 空间　[proofs/def-dep.loccpt-hausdorff.md](../proofs/def-dep.loccpt-hausdorff.md)
-- [`def.compact`](../nodes/def.compact.md) 紧：用到了定义 紧　[proofs/def-dep.loccpt-compact.md](../proofs/def-dep.loccpt-compact.md)
+- …另有入边，续页见 [nodes/def.locally-compact.2.md](./def.locally-compact.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.locally-compact.2.md](./def.locally-compact.2.md)
+- …另有出边，续页见 [nodes/def.locally-compact.3.md](./def.locally-compact.3.md)
 
 refs: Munkres, Topology
 

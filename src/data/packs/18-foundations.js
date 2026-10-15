@@ -111,6 +111,31 @@ window.MG = window.MG || {};
       refs: ['Kunen, Set Theory, I.5']
     },
     {
+      id: 'def.preimage',
+      cluster: 'set.rel',
+      type: 'definition',
+      label: '像与原像',
+      title: '像与原像（Image / Preimage）',
+      regions: ['set-theory', 'analysis'],
+      tags: ['定义', '映射', '像', '原像'],
+      statement: [
+        '设 $f : X \\to Y$ 是映射。',
+        '',
+        '- 对 $A \\subseteq X$，$A$ 的**像**是 $f(A) := \\{\\, f(x) : x \\in A \\,\\} \\subseteq Y$；',
+        '- 对 $B \\subseteq Y$，$B$ 的**原像**是 $f^{-1}(B) := \\{\\, x \\in X : f(x) \\in B \\,\\} \\subseteq X$。'
+      ].join('\n'),
+      notes: [
+        '⭐ **原像对并、交、补全部保持，而且不需要任何额外假设**：',
+        '',
+        '$$f^{-1}\\Bigl(\\bigcup_{i} B_{i}\\Bigr) = \\bigcup_{i} f^{-1}(B_{i}), \\qquad f^{-1}\\Bigl(\\bigcap_{i} B_{i}\\Bigr) = \\bigcap_{i} f^{-1}(B_{i}), \\qquad f^{-1}(B^{c}) = \\bigl(f^{-1}(B)\\bigr)^{c}$$',
+        '',
+        '像**没有**这些性质：$f(A \\cap A\') \\subseteq f(A) \\cap f(A\')$ 一般只是包含，取等要 $f$ 单射。这正是「**连续**」（每个开集的原像是开集）与「**可测**」（每个可测集的原像可测）都用原像、不用像来定义的原因。',
+        '**证明（补集，其余两条逐字同理）**：$x \\in f^{-1}(B^{c}) \\iff f(x) \\in B^{c} \\iff f(x) \\notin B \\iff x \\notin f^{-1}(B) \\iff x \\in \\bigl(f^{-1}(B)\\bigr)^{c}$ ✓。∎',
+        '**记号**：$f^{-1}$ 有两种用法 —— 作用在**元素**上（$f^{-1}(y)$）是逆映射，只在 $f$ 可逆时有意义；作用在**集合**上（$f^{-1}(B)$）是原像，**永远**有意义。看参数是元素还是集合就能分辨，两种含义在 $f$ 可逆时一致。'
+      ].join('\n\n'),
+      refs: ['Kunen, Set Theory, I.5']
+    },
+    {
       id: 'def.countable',
       cluster: 'set.cardinal',
       type: 'definition',
@@ -314,6 +339,13 @@ window.MG = window.MG || {};
       definition: 'def.real',
       usedBy: 'def.essential-sup',
       note: '本性上界是「$\\mu(\\{|f| > a\\}) = 0$ 的那些 $a \\ge 0$ 的下确界」——$a$ 是实数。'
+    },
+    {
+      id: 'dep.preimage-function',
+      kind: 'definition',
+      definition: 'def.function',
+      usedBy: 'def.preimage',
+      note: '像 $f(A)$ 与原像 $f^{-1}(B)$ 都预设 $f$ 是**映射**。'
     }
   ]
 });

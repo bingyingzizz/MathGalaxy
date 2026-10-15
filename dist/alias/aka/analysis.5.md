@@ -1,6 +1,10 @@
 # 别名 → 节点 · 分析学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
+- Egorov | 叶果洛夫 | 叶戈罗夫 → thm.egorov
+
+- Lusin | 卢津 → cor.lusin
+
 - L+ | L⁺ | 非负可测函数 | 非负函数空间 → def.lplus
 
 - 简单函数的积分 | 简单积分 → def.integral-simple
@@ -28,9 +32,5 @@
 - Fatou 推论 → cor.fatou
 
 - L1 是向量空间 → prop.L1-vector-space
-
-- 积分绝对值不等式 → prop.integral-abs-ineq
-
-- 支撑 σ-有限 → prop.L1-support-sigma-finite
 
 > 续见 alias/aka/analysis.6.md

@@ -3,7 +3,9 @@
 
 - 二元关系 | binary relation | 关系 → def.rel
 
-- 映射 | mapping | function | 像与原像 → def.function
+- 映射 | mapping | function → def.function
+
+- 原像 | preimage | inverse image | 像 → def.preimage
 
 - 商集 | 等价类 | quotient | equivalence class → def.quotient-set
 
@@ -28,7 +30,5 @@
 - 数学归纳法 | induction | 递推定义 | recursion → thm.induction
 
 - 整数 | integers | ℤ → def.int
-
-- 有理数 | rationals | ℚ → def.rat
 
 > 续见 alias/aka/set-theory.3.md
