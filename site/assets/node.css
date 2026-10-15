@@ -84,6 +84,15 @@
 .sec strong{font-weight:650}
 .sec .empty{color:var(--faint)}
 
+/* 英文摘要（T2.2）：枢纽节点的英文导读。左边一条竖线把它和中文正文区分开，
+   顶上那行小字说明「状态 + 中文为准」—— 状态词由构建给出（draft/reviewed/stale）。 */
+.sec.abstract-en{border-left:3px solid color-mix(in srgb,var(--rc,#4f7cf5) 35%,transparent);
+  padding-left:18px;margin-left:-21px}
+.sec.abstract-en .abs-state{font-size:11.5px;font-weight:600;letter-spacing:.04em;
+  text-transform:lowercase;color:var(--soft);border:1px solid var(--line,#e6e8ee);
+  border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:2px}
+.sec.abstract-en .abs-note{font-size:12.5px;color:var(--faint);margin:0 0 12px}
+
 /* 独立公式：给足上下留白，居中 */
 .sec .katex-display,.proof .katex-display{margin:18px 0;overflow-x:auto;overflow-y:hidden}
 .sec .katex-display:last-child,.proof .katex-display:last-child{margin-bottom:0}

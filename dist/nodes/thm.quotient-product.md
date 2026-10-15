@@ -10,9 +10,10 @@ $$q \times \mathrm{id}_{Z} : X \times Z \longrightarrow Y \times Z$$
 也是商映射。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.quotient-topology`](../nodes/def.quotient-topology.md) 商拓扑：用到了定义 商拓扑　[proofs/def-dep.cg-quotient-locally-compact.md](../proofs/def-dep.cg-quotient-locally-compact.md)
+- …另有入边，续页见 [nodes/thm.quotient-product.3.md](./thm.quotient-product.3.md)
 
-- …另有入边，续页见 [nodes/thm.quotient-product.2.md](./thm.quotient-product.2.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.quotient-product.2.md](./thm.quotient-product.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §2.3
 

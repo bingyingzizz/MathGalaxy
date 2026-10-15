@@ -8,9 +8,10 @@ layer 15 · 定理 · 度量空间 · 拓扑学
 $$X\text{ 紧} \iff X\text{ 列紧} \iff X\text{ 完备且全有界}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.compact`](../nodes/def.compact.md) 紧：用到了定义 紧　[proofs/def-link.compact-theorem.md](../proofs/def-link.compact-theorem.md)
+- …另有入边，续页见 [nodes/thm.metric-compact-equiv.3.md](./thm.metric-compact-equiv.3.md)
 
-- …另有入边，续页见 [nodes/thm.metric-compact-equiv.2.md](./thm.metric-compact-equiv.2.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.metric-compact-equiv.2.md](./thm.metric-compact-equiv.2.md)
 
 refs: Munkres, Topology, §28 与 §43
 

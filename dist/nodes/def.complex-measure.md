@@ -16,12 +16,13 @@ $$\nu(\emptyset) = 0, $$
 $$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.complex`](../nodes/def.complex.md) 复数 ℂ：用到了定义 复数 ℂ　[proofs/dep.complex-complex-measure.md](../proofs/dep.complex-complex-measure.md)
-
-- …另有入边，续页见 [nodes/def.complex-measure.2.md](./def.complex-measure.2.md)
+- …另有入边，续页见 [nodes/def.complex-measure.3.md](./def.complex-measure.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.complex-measure.3.md](./def.complex-measure.3.md)
+- …另有出边，续页见 [nodes/def.complex-measure.4.md](./def.complex-measure.4.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/def.complex-measure.2.md](./def.complex-measure.2.md)
 
 refs: Folland, Real Analysis, §3.3
 

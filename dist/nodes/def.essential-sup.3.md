@@ -1,7 +1,7 @@
 # 本性上界与 L^∞　`def.essential-sup`　·　续页（第 3 页）
 [在星图里打开](../#n=def.essential-sup)　·　第 1 页 [nodes/def.essential-sup.md](./def.essential-sup.md)　·　上一页 [nodes/def.essential-sup.2.md](./def.essential-sup.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 [`thm.linf-properties`](../nodes/thm.linf-properties.md) L^∞ 的性质 用
-- 被 [`prop.lp-inter-lr-in-lq`](../nodes/prop.lp-inter-lr-in-lq.md) L^p ∩ L^r ⊆ L^q 用
-- 被 [`def.duality-map`](../nodes/def.duality-map.md) 对偶配对 φ_g 用
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative（续）
+The essential supremum is $\|f\|_\infty := \inf \{a \ge 0 : \mu(\{|f| > a\}) = 0\}$: the true bound of $f$ once its values on null sets are ignored. The infimum is attained at $a = \|f\|_\infty$ itself, and $\|f\|_\infty \le M \iff |f| \le M$ almost everywhere. Then $L^\infty$ consists of the measurable $f$ with $\|f\|_\infty < \infty$. Note the difference from $\sup |f|$, which a single value on a null set can spoil.
+
+> 续见 [nodes/def.essential-sup.4.md](./def.essential-sup.4.md)

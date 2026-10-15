@@ -104,9 +104,10 @@
         }).join(' ');
         var st = U.plain(n.statement);
         var nt = U.plain(n.notes);
+        var ab = n.abstract_en ? U.plain(n.abstract_en) : '';   // 英文摘要（T2.2）
         var aka = akaOf[n.id] || [];
         var hay = [
-          n.label, n.title, n.label_en || '', n.title_en || '',
+          n.label, n.title, n.label_en || '', n.title_en || '', ab,
           n.id, n.type, MG.typeStyle(n.type).name,
           (n.tags || []).join(' '), aka.join(' '), regions, st, nt
         ].join('\n').toLowerCase();

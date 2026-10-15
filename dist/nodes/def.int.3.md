@@ -1,5 +1,7 @@
 # 整数 ℤ　`def.int`　·　续页（第 3 页）
 [在星图里打开](../#n=def.int)　·　第 1 页 [nodes/def.int.md](./def.int.md)　·　上一页 [nodes/def.int.2.md](./def.int.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 [`def.rat`](../nodes/def.rat.md) 有理数 ℚ 用
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative（续）
+The integers as a quotient: on $\mathbb{N} \times \mathbb{N}$ put $(a,b) \sim (c,d) \iff a + d = b + c$ (same difference) and set $\mathbb{Z} := (\mathbb{N} \times \mathbb{N})/{\sim}$, writing $[a,b]$ for $a - b$. Addition, multiplication and order are defined on representatives and must be checked independent of them. Motivation: subtraction fails in $\mathbb{N}$, but the pair $3 - 5$ is meaningful, so the difference itself is taken as the object; $[0,0]$ and $[b,a]$ supply the missing zero and inverses. $\mathbb{N}$ embeds via $a \mapsto [a,0]$.
+
+> 续见 [nodes/def.int.4.md](./def.int.4.md)

@@ -6,11 +6,14 @@ layer 14 · 定理 · 数系的构造 · 分析学+集合论
 **实数集 $\mathbb{R}$ 不可数**：不存在从 $\mathbb{N}$ 到 $\mathbb{R}$ 的满射，即 $\mathbb{R}$ 不能排成一个序列。
 
 更强的结论：
+> 陈述续见 [nodes/thm.real-uncountable.2.md](./thm.real-uncountable.2.md)
 
-$$|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0} > \aleph_0$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.real-uncountable.2.md](./thm.real-uncountable.2.md)
+- …另有入边，续页见 [nodes/thm.real-uncountable.5.md](./thm.real-uncountable.5.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.real-uncountable.3.md](./thm.real-uncountable.3.md)
 
 refs: Tao, Analysis I, Ch. 8（可数性）；Rudin, Principles of Mathematical Analysis, Ch. 2
 

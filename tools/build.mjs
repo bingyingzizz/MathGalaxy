@@ -88,6 +88,8 @@ function loadMG() {
     /* ⚠️ 只给构建用：浏览器端不需要英文文档正文（read.html 的英文版由 publish.mjs 组装），
        所以这个文件**不挂进 index.html**。 */
     'data/i18n/docs.en.js',
+    /* 英文摘要（T2.2）：同样只给构建用 —— 浏览器端从 graph.js 挂好的字段读，不直接加载它。 */
+    'data/i18n/abstracts.en.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -114,6 +116,8 @@ function buildGraph(MG) {
 
 /* ---------------------------------------------------------------- JSON 导出 */
 function exportJSON(MG, graph) {
+  const ABS = MG.i18nAbstracts || null;
+  const ABSSTATUS = ABS ? i18nState(ABS).state : null;
   const T = MG.theme;
   const XREF = MG.xref || {};          // 外部锚点（src/data/xref.js）
   const strengthOf = e => e.strength || (T.edgeStrength && T.edgeStrength[e.kind]) || 'strong';
@@ -176,6 +180,10 @@ function exportJSON(MG, graph) {
          缺省 = 没有 ⇒ 消费方按 label_en → title_en → 中文 label 回落。 */
       label_en: n.label_en || undefined,
       title_en: n.title_en || undefined,
+      /* 英文摘要（T2.2）：只有枢纽榜前列的节点有。状态与版本一起给出来，
+         消费方不必猜这段英文是审过的还是机翻的。 */
+      abstract_en: n.abstract_en || undefined,
+      translations: n.abstract_en ? { en: { status: ABSSTATUS, version: ABS.basedOn || null } } : undefined,
       region: n.regions[0] || null,
       regions: n.regions,
       cluster: n.cluster || null,
@@ -506,6 +514,11 @@ function emitChunks(files, dir, base, head, body, tail, resB) {
 
 function exportAIProducts(MG, graph, data) {
   const files = [];
+  const ABS = MG.i18nAbstracts || { items: {}, status: 'draft', basedOn: null };
+  /* 英文摘要的小节标题（状态由 absHeading 现算；整份文件同一行，所以只算一次）。
+     它同时是 packPages 的「小节名」—— 换小节一定另起一页，所以摘要要么在第 1 页，
+     要么整段进续页（不会被切两半）。 */
+  const ABSEC = absHeading(ABS);
   const byId = graph.byId;
   const label = id => (byId[id] ? byId[id].label : id);
   const cname = id => (graph.clusterById[id] ? graph.clusterById[id].name : id);
@@ -572,6 +585,14 @@ function exportAIProducts(MG, graph, data) {
       `- …另有入边，续页见 ${nodePageRef(99)}`,
       `- …另有出边，续页见 ${nodePageRef(99)}`,
     ];
+    /* 带英文摘要的节点还可能多出：小节标题本身 + 「摘要续见」跳转行 ——
+       摘要进了续页时，第 1 页就只剩这两行（≈155 字符），同样吃第 1 页的预算，
+       所以**两条都要**进预留（只影响这 30 个枢纽节点）。
+       ⚠️ 只留跳转行是不够的：标题那 95 字符没算 ⇒ 刚好顶破上限（踩过）。 */
+    if (n.abstract_en) {
+      jumpLines.push(ABSEC);
+      jumpLines.push(`> English abstract 续见 ${nodePageRef(99)}`);
+    }
     const JUMP_RESERVE_B = Math.max(190, jumpLines.reduce((s, l) => s + aiBytes(l) + 2, 0)) + 40;
     const JUMP_RESERVE_C = Math.max(190, jumpLines.reduce((s, l) => s + aiCost(l) + 2, 0)) + 40;
 
@@ -595,6 +616,15 @@ function exportAIProducts(MG, graph, data) {
       return aiBytes(draft) + JUMP_RESERVE_B <= AI_MAXB && aiCost(draft) + JUMP_RESERVE_C <= AI_ESC;
     };
     const over = [];               // 塞不下的内容 → 续页
+
+    /* 英文摘要（T2.2）：枢纽节点的英文导读，紧跟陈述。
+       ⚠️ 它占 AI 单次抓取的预算 ⇒ 照老规矩「拼一遍、量一遍」，塞不下就进续页。
+       ⚠️ 小节标题里带状态（draft/reviewed/stale）—— 由 absHeading() 现算，
+          ⛔ 不许手写；中文陈述是权威版本这一句也写在标题里。 */
+    if (n.abstract_en) {
+      const blk = `\n${ABSEC}\n${n.abstract_en}\n`;
+      if (canAdd(blk)) text += blk; else over.push({ sec: ABSEC, text: n.abstract_en });
+    }
 
     /* 入边：它为什么成立 —— 一行一条，正文都在 proofs/ */
     const ins = (inc.get(n.id) || []).slice().sort((a, b) => {
@@ -666,6 +696,9 @@ function exportAIProducts(MG, graph, data) {
     }
     if (firstOf[SEC_OUT] != null) {
       jump.push([SEC_OUT, `- …另有出边，续页见 ${nodePageLink(firstOf[SEC_OUT])}`]);
+    }
+    if (firstOf[ABSEC] != null) {
+      jump.push([ABSEC, `> English abstract 续见 ${nodePageLink(firstOf[ABSEC])}`]);
     }
     for (const [sec, line] of jump) {
       if (sec === SEC_STMT) {
@@ -1137,10 +1170,20 @@ function exportNotationProducts(MG, base = '') {
    ⚠️ 措辞三件必须同时出现（作者 2026-10-16 护栏）：Chinese source is authoritative ·
       machine-drafted · pending author review；页面横幅读的就是这一行的文本本身
       （publish.mjs 从 .en.md 里抠出来渲染），所以两处永远不会漂。 */
+/** 英文层状态的**唯一算法**（文档、摘要、以后的任何英文产物共用）：
+    `status` 是人的开关，`basedOn` 是「译自哪个内容版本」；
+    两者之外还看**当前内容版本** —— 对不上 ⇒ stale（不用谁记得去改）。 */
+function i18nState(D) {
+  const cv = contentVersion();
+  const stale = !!(D && D.basedOn && cv && D.basedOn !== cv);
+  return { cv, stale, state: stale ? 'stale' : ((D && D.status === 'reviewed') ? 'reviewed' : 'draft') };
+}
+
 function enStatus(D) {
   const r = D.reviewed || {};
-  const cv = contentVersion();
-  const stale = !!(D.basedOn && cv && D.basedOn !== cv);
+  const st = i18nState(D);
+  const cv = st.cv;
+  const stale = st.stale;
   /* ⚠️ 这三行也是**体积预算的一部分**（单次抓取 ≤1050 转义字符）：
      `notation.en.md` 贴着上限，所以措辞能省就省 —— 加字之前先看 _tools/_docsize.mjs。 */
   const tail = 'Chinese source is authoritative · machine-drafted, pending author review.';
@@ -1158,6 +1201,22 @@ function enStatus(D) {
     };
   }
   return { state: 'draft', line: `> English version: **draft** · ${tail}` };
+}
+
+/** 英文摘要的小节标题（T2.2）—— 状态同样由 i18nState 算，⛔ 不许手写。 */
+function absHeading(A) {
+  const st = i18nState(A);
+  const r = (A && A.reviewed) || {};
+  if (st.state === 'stale') {
+    return `## English abstract · **stale** (from ${A.basedOn}; content is ${st.cv}) · ` +
+      'machine-drafted, pending author review; Chinese is authoritative';
+  }
+  if (st.state === 'reviewed') {
+    return `## English abstract${r.by ? ' · reviewed by ' + r.by : ' · reviewed'}` +
+      `${r.date ? ' (' + r.date + ')' : ''} · Chinese is authoritative`;
+  }
+  return '## English abstract · **draft** · machine-drafted, pending author review; ' +
+    'Chinese is authoritative';
 }
 /** 把文档体里的 `{{base}}` 展开成中文版同样的相对前缀（'' 或 'dist/'） */
 const fillBase = (s, base) => String(s).replace(/\{\{base\}\}/g, base);
@@ -1451,8 +1510,51 @@ function assertI18n(MG, graph) {
   return errs;
 }
 
-function assertAliases(MG, graph) {
-  const A = MG.aliases;
+/* ------------------------------------------------- 英文摘要的硬断言（T2.2） */
+/* 真源 = `src/data/i18n/abstracts.en.js`（创译型内容，agent 起草、作者审校）。
+   断言：① id 真实存在；② 有 status / basedOn（状态与 stale 全靠这两个字段）；
+        ③ 正文非空、不含汉字、不含禁用 LaTeX 命令（摘要走 md 渲染，同一条纪律）。
+   ⚠️ 「前 30 名有没有都覆盖」只报告、不当硬断言 —— 榜会随内容变，不该卡构建。 */
+function assertAbstracts(MG, graph) {
+  const A = MG.i18nAbstracts;
+  if (!A) return ['英文摘要：`src/data/i18n/abstracts.en.js` 没有挂上（loadMG 少了它？）'];
+  const errs = [];
+  const items = A.items || {};
+  if (!A.status) errs.push('英文摘要：缺 status（状态与 stale 判定的唯一来源）');
+  if (!A.basedOn) errs.push('英文摘要：缺 basedOn（译自哪个内容版本）');
+  const BAN = ['\\dots', '\\Rightarrow', '\\leq', '\\geq', '\\neq', '\\impliedby'];
+  for (const [id, s] of Object.entries(items)) {
+    if (!graph.byId[id]) { errs.push(`英文摘要：节点不存在 \`${id}\``); continue; }
+    if (typeof s !== 'string' || !s.trim()) { errs.push(`英文摘要：\`${id}\` 是空的`); continue; }
+    if (/[\u4e00-\u9fff]/.test(s)) errs.push(`英文摘要：\`${id}\` 含汉字 —— 摘要必须是英文`);
+    for (const b of BAN) {
+      if (String(s).includes(b)) errs.push(`英文摘要：\`${id}\` 用了禁用命令 ${b}`);
+    }
+  }
+  /* 报告：当前枢纽榜前 30 里覆盖了几个（只报告） */
+  const indeg = new Map();
+  const bump = k => indeg.set(k, (indeg.get(k) || 0) + 1);
+  for (const e of graph.edges) {
+    if (e.kind === 'implication') bump(e.target);
+    else if (e.kind === 'definition') bump(e.usedBy);
+    else if (e.kind === 'equivalence') { bump(e.a); bump(e.b); }
+  }
+  const top = graph.nodes.map(n => ({ id: n.id, d: indeg.get(n.id) || 0 }))
+    .filter(x => x.d > 0)
+    .sort((a, b) => b.d - a.d || (graph.byId[a.id].layer - graph.byId[b.id].layer))
+    .slice(0, 30).map(x => x.id);
+  const have = top.filter(id => items[id]).length;
+  const st = i18nState(A);
+  console.log(`  i18n：abstract_en ${Object.keys(items).length} 条（枢纽榜前 30 覆盖 ${have}/30）· 状态 ${st.state}` +
+    (st.stale ? `（译自 ${A.basedOn}，当前 ${st.cv}）` : ''));
+  if (have < top.length) {
+    const miss = top.filter(id => !items[id]);
+    console.log(`        ⚠️ 前 30 里还没有摘要的：${miss.join(' ')}`);
+  }
+  return errs;
+}
+
+function assertAliases(MG, graph) {  const A = MG.aliases;
   if (!A) return ['别名表：`src/data/aliases.js` 没有挂上（index.html 少了 <script>？）'];
   const errs = [];
   const ids = graph.byId;
@@ -1746,6 +1848,7 @@ if (doJSON) {
   errs.push(...assertAliases(MG, graph));
   errs.push(...assertXref(MG, graph));
   errs.push(...assertI18n(MG, graph));
+  errs.push(...assertAbstracts(MG, graph));
   // 给 AI 看的说明文档也必须在一次抓取之内
   for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md', 'alias.md']) {
     const p = path.join(DIST, extra);

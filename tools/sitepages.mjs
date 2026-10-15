@@ -382,6 +382,27 @@ function nodePage(node, rel, ctx) {
   ];
   if (cluster) facts.push(crumbCluster);
 
+  /* 英文摘要（T2.2）：枢纽榜前列的节点带一段英文导读（产物在 graph.json 的 abstract_en）。
+     ⚠️ 状态（draft / reviewed / stale）**来自构建** —— node.translations.en 是
+        tools/build.mjs 按 status + basedOn 现算写进 graph.json 的；页面不自己判断状态、
+        也不手写状态词。⛔ 「中文陈述是权威版本」这句话必须跟摘要一起出现（作者护栏）。
+     ⚠️ 这一段必须建在 JSON-LD 之前：下面 ldNode.abstract 要用它。 */
+  const absEn = String(node.abstract_en || '').trim();
+  const absTr = (node.translations && node.translations.en) || null;
+  const absState = absTr ? absTr.status : '';
+  const absNote = absState === 'reviewed'
+    ? 'Translation of the statement above · reviewed by the author · the Chinese text is authoritative.'
+    : absState === 'stale'
+      ? 'Translation of the statement above · made for content ' + (absTr.version || '?') +
+        ', not updated since · the Chinese text is authoritative.'
+      : 'Translation of the statement above · machine-drafted, pending author review · the Chinese text is authoritative.';
+  const absHtml = absEn
+    ? '<section class="sec abstract-en" lang="en">' +
+      '<h2>English abstract <span class="abs-state">' + esc(absState || 'draft') + '</span></h2>' +
+      '<p class="abs-note">' + esc(absNote) + '</p>' +
+      U.md(absEn) + '</section>'
+    : '';
+
   // 结构化数据
   const ldType = (node.type === 'definition' || node.type === 'axiom') ? 'DefinedTerm' : 'TechArticle';
   const ldNode = {
@@ -403,6 +424,9 @@ function nodePage(node, rel, ctx) {
   };
   if (ldType === 'DefinedTerm') ldNode.termCode = node.id;
   if (node.tags && node.tags.length) ldNode.keywords = node.tags.join(', ');
+  /* 英文摘要也进结构化数据（schema.org 的 abstract）：机器读者不必去正文里找它。
+     ⚠️ 只在有摘要时写 —— 没有的节点不留空字段。 */
+  if (absEn) ldNode.abstract = absEn;
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -513,6 +537,8 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
   </section>
 
   ${notesHtml ? '<section class="sec notes"><h2>说明</h2>' + notesHtml + '</section>' : ''}
+
+  ${absHtml}
 
   ${outHtml}
   ${inHtml}

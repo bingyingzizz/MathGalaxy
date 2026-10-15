@@ -4,14 +4,19 @@ layer 6 · 定理 · 集合族与 σ-代数 · 分析学
 [在星图里打开](../#n=thm.monotone-class)　·　[节点索引](../index.md)
 
 设 $\mathcal{E} \subseteq \mathcal{P}(X)$。则
+> 陈述续见 [nodes/thm.monotone-class.2.md](./thm.monotone-class.2.md)
 
-$$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\text{ 且} \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
-
-## 它能推出什么 / 谁在用它
-- ⇒ [`thm.product-measure-sections`](../nodes/thm.product-measure-sections.md) 乘积测度由截口给出
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.monotone-class.2.md](./thm.monotone-class.2.md)
+- [`def.generated-sigma`](../nodes/def.generated-sigma.md) 生成的 σ-代数：用到了定义 生成的 σ-代数　[proofs/def-link.generated-monotone.md](../proofs/def-link.generated-monotone.md)
+
+- …另有入边，续页见 [nodes/thm.monotone-class.4.md](./thm.monotone-class.4.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.monotone-class.5.md](./thm.monotone-class.5.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.monotone-class.3.md](./thm.monotone-class.3.md)
 
 refs: Halmos, Measure Theory, §6；Folland, Real Analysis, Theorem 2.37
 

@@ -9,18 +9,17 @@ $$E_x := \{y \in Y : (x, y) \in E\}$$
 $$E^y := \{x \in X : (x, y) \in E\}$$
 
 分别叫 $E$ 在 $x$ 处的**纵截口**与在 $y$ 处的**横截口**。
+> 陈述续见 [nodes/def.section.2.md](./def.section.2.md)
 
-类似地，对函数 $f : X \times Y \to \mathbb{C}$ 定义
-
-$$f_x(y) := f^y(x) := f(x, y)$$
-
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.section-measurable`](../nodes/prop.section-measurable.md) 截口可测
-
-- …另有出边，续页见 [nodes/def.section.3.md](./def.section.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/def.section.2.md](./def.section.2.md)
+- …另有入边，续页见 [nodes/def.section.4.md](./def.section.4.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.section.5.md](./def.section.5.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/def.section.3.md](./def.section.3.md)
 
 refs: Folland, Real Analysis, §2.5
 

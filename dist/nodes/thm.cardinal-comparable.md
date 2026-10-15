@@ -10,9 +10,10 @@ $$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
 即任意两个基数都可以比较大小。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`thm.wellordering`](../nodes/thm.wellordering.md) 良序定理：良序定理 $\implies$ 任意两个基数可比　[proofs/imp.cardinal-comparable.md](../proofs/imp.cardinal-comparable.md)
+- …另有入边，续页见 [nodes/thm.cardinal-comparable.3.md](./thm.cardinal-comparable.3.md)
 
-- …另有入边，续页见 [nodes/thm.cardinal-comparable.2.md](./thm.cardinal-comparable.2.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.cardinal-comparable.2.md](./thm.cardinal-comparable.2.md)
 
 refs: Jech, The Axiom of Choice, Ch. 3
 

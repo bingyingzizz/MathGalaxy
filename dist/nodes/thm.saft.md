@@ -10,10 +10,10 @@ layer 13 · 定理 · 伴随与反射 · 范畴论
 $$F(X) \;=\; \varprojlim_{(Y,\, f) \in (X \downarrow G)} Y$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.limit`](../nodes/def.limit.md) 极限 + [`def.comma-category`](../nodes/def.comma-category.md) 逗号范畴：保极限 $\implies$ 有左伴随　[proofs/imp.saft.md](../proofs/imp.saft.md)
-- [`def.limit`](../nodes/def.limit.md) 极限：用到了定义 极限　[proofs/def-link.limit-saft.md](../proofs/def-link.limit-saft.md)
+- …另有入边，续页见 [nodes/thm.saft.3.md](./thm.saft.3.md)
 
-- …另有入边，续页见 [nodes/thm.saft.2.md](./thm.saft.2.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.saft.2.md](./thm.saft.2.md)
 
 refs: Mac Lane, Categories for the Working Mathematician, V.8
 

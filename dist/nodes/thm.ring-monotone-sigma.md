@@ -8,9 +8,10 @@ layer 5 · 定理 · 集合族与 σ-代数 · 分析学
 $$\mathfrak{A}\text{ 是} \sigma-\text{环} \iff \mathfrak{A}\text{ 是单调类} \iff \mathfrak{A}\text{ 对可列不交并封闭}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.set-ring`](../nodes/def.set-ring.md) 环与代数 + [`def.monotone-class`](../nodes/def.monotone-class.md) 单调类：环 + 单调类 $\implies$ σ-环　[proofs/imp.ring-monotone-sigma.md](../proofs/imp.ring-monotone-sigma.md)
+- …另有入边，续页见 [nodes/thm.ring-monotone-sigma.3.md](./thm.ring-monotone-sigma.3.md)
 
-- …另有入边，续页见 [nodes/thm.ring-monotone-sigma.2.md](./thm.ring-monotone-sigma.2.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.ring-monotone-sigma.2.md](./thm.ring-monotone-sigma.2.md)
 
 refs: Halmos, Measure Theory, §6
 

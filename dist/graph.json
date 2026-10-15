@@ -3,7 +3,7 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T09:11:38.057Z",
+  "generated": "2026-10-15T09:26:41.756Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1810,6 +1810,13 @@
    "type": "theorem",
    "label": "良序定理",
    "title": "良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）",
+   "abstract_en": "Every set can be well ordered: $\\forall X\\, \\exists \\preceq$ a well-ordering of $X$, equivalently every set is equinumerous with an ordinal. Zermelo introduced the axiom of choice in 1904 precisely to prove this, and over ZF the statement is equivalent to AC. Immediate consequence: any two cardinals are comparable, and $\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -1839,6 +1846,13 @@
    "title": "佐恩引理（Zorn's Lemma）",
    "label_en": "Zorn's lemma",
    "title_en": "Zorn's Lemma",
+   "abstract_en": "Let $(P, \\preceq)$ be a non-empty poset in which every chain has an upper bound in $P$. Then $P$ has a maximal element. Both hypotheses are needed: the empty poset has none, and an upper bound for every chain yields maximality only, never a greatest element. It is the standard engine of existence proofs — bases, maximal ideals, compactness, Hahn–Banach — and it is non-constructive: an element is produced without telling you which one.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "order-theory",
    "regions": [
     "order-theory",
@@ -1867,6 +1881,13 @@
    "type": "theorem",
    "label": "Hausdorff 极大原理",
    "title": "Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）",
+   "abstract_en": "Every chain in a poset extends to a maximal one: for a chain $C_0 \\subseteq P$ there is a maximal chain $M$ with $C_0 \\subseteq M$, maximal under inclusion. Taking $C_0 = \\emptyset$ gives that every non-empty poset has a maximal chain. The statement predates Zorn's lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise form of \"keep adding elements until you cannot add any more\".",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -1989,6 +2010,13 @@
    "title": "距离空间 / 度量空间（Metric Space）",
    "label_en": "metric space",
    "title_en": "Metric Space",
+   "abstract_en": "A metric space is a pair $(X, d)$ with $d : X \\times X \\to [0, +\\infty)$ satisfying $d(x,y) = 0 \\iff x = y$, symmetry and the triangle inequality; open balls $B(x,r) = \\{y : d(x,y) < r\\}$ generate a topology, and they form a base for it. The point of the definition here is the split that follows: compactness and closedness use only the open sets, while completeness and total boundedness use $d$. Completeness is genuinely not topological — $\\mathbb{R}$ and $(0,1)$ are homeomorphic but only the first is complete.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "topology",
    "regions": [
     "topology"
@@ -2108,6 +2136,13 @@
    "type": "theorem",
    "label": "紧的三个等价刻画",
    "title": "度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界",
+   "abstract_en": "In a metric space the following are equivalent: compact, sequentially compact, and complete together with totally bounded. The skeleton lives in the implications: compact implies sequentially compact; sequentially compact implies totally bounded (the one place dependent choice is used) and complete; sequentially compact implies compact by the \"bad ball\" argument; complete and totally bounded implies sequentially compact by diagonalisation. In general topological spaces only the first implication survives — sequential compactness is a metric-space luxury.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "topology",
    "regions": [
     "topology"
@@ -2321,6 +2356,13 @@
    "type": "theorem",
    "label": "环 → σ-环 的判据",
    "title": "定理：环是 σ-环 $\\iff$ 它是单调类 $\\iff$ 它对可数不交并封闭",
+   "abstract_en": "For a ring $\\mathfrak{A}$ of sets, the following are equivalent: $\\mathfrak{A}$ is a $\\sigma$-ring, $\\mathfrak{A}$ is a monotone class, and $\\mathfrak{A}$ is closed under countable disjoint unions. The hypothesis that $\\mathfrak{A}$ is a ring cannot be dropped: a monotone class need not be closed under finite unions. This equivalence is the technical core of the monotone class theorem, since it reduces \"true for the $\\sigma$-algebra\" to \"check a ring, then take monotone limits\".",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2372,6 +2414,13 @@
    "title": "单调类定理（Monotone Class Theorem）",
    "label_en": "monotone class theorem",
    "title_en": "Monotone Class Theorem",
+   "abstract_en": "For $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, the $\\sigma$-algebra generated by $\\mathcal{E}$ equals the monotone class generated by $\\mathcal{E}$ if complements of members of $\\mathcal{E}$ and unions of two members of $\\mathcal{E}$ lie in that monotone class. With \"$\\mathcal{E}$ is an algebra\" this is the standard monotone class theorem; the form above weakens that hypothesis to the two closure conditions, and the proof is the same two-step argument with the monotone class as the running object.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2709,6 +2758,13 @@
    "title": "外测度（Outer Measure）",
    "label_en": "outer measure",
    "title_en": "Outer Measure",
+   "abstract_en": "An outer measure on a non-empty set $X$ is a function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is monotone and countably subadditive. It is defined on every subset, and the price is exactly that subadditivity: it is not a measure. Carathéodory's idea is to single out the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. Lebesgue's original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable interval covers, is the prototypical example.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3794,6 +3850,13 @@
    "title": "乘积测度（Product Measure $\\mu \\times \\nu$）",
    "label_en": "product measure",
    "title_en": "product measure",
+   "abstract_en": "For measure spaces $(X, \\mathcal{M}, \\mu)$ and $(Y, \\mathcal{N}, \\nu)$: rectangles $A \\times B$ generate $\\mathcal{M} \\otimes \\mathcal{N}$; on finite disjoint unions of rectangles set $\\mu_0(\\bigsqcup_j A_j \\times B_j) := \\sum_j \\mu(A_j)\\nu(B_j)$, which is a premeasure; extend it to an outer measure and restrict to $\\mathcal{M} \\otimes \\mathcal{N}$. That restriction is the product measure $\\mu \\times \\nu$. Disjointness is exactly what makes $\\mu_0$ well defined. When both factors are $\\sigma$-finite so is the product, and Carathéodory uniqueness makes it the only such measure.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3818,6 +3881,13 @@
    "type": "definition",
    "label": "截口",
    "title": "截口（Section）$E_{x}$ 与 $E^{y}$",
+   "abstract_en": "For $E \\subseteq X \\times Y$ the vertical and horizontal sections are $E_x := \\{y \\in Y : (x,y) \\in E\\}$ and $E^y := \\{x \\in X : (x,y) \\in E\\}$; for a function $f : X \\times Y \\to \\mathbb{C}$ one sets $f_x(y) = f^y(x) = f(x,y)$. Geometrically, cut the picture with a line and look at what remains. Sections are the language in which Fubini is stated: integrate along the sections first, then integrate the resulting function against the other variable.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3839,6 +3909,13 @@
    "type": "proposition",
    "label": "截口可测",
    "title": "命题：可测集的截口可测，可测函数的截口可测",
+   "abstract_en": "Sections of measurable sets are measurable: if $E \\in \\mathcal{M} \\otimes \\mathcal{N}$ then $E_x \\in \\mathcal{N}$ for every $x$ and $E^y \\in \\mathcal{M}$ for every $y$; likewise the sections of an $\\mathcal{M} \\otimes \\mathcal{N}$-measurable $f$ are measurable, because $f_x^{-1}(B) = (f^{-1}(B))_x$ and dually. The proof is the standard one: the class of sets all of whose sections are measurable contains every rectangle and is a $\\sigma$-algebra. Note that this holds for every point, whereas Fubini can only promise almost every point once integrability enters.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4324,6 +4401,13 @@
    "title": "复测度（Complex Measure）",
    "label_en": "complex measure",
    "title_en": "Complex Measure",
+   "abstract_en": "A complex measure on a measurable space $(X, \\mathcal{M})$ is a map $\\nu : \\mathcal{M} \\to \\mathbb{C}$ with $\\nu(\\emptyset) = 0$ and $\\nu(\\bigsqcup_j E_j) = \\sum_j \\nu(E_j)$ for pairwise disjoint families, the series converging absolutely. Unlike signed measures, complex measures are automatically finite and that series is automatically absolutely convergent, so questions of finiteness and rearrangement never arise — at the cost of losing examples with infinite mass.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4624,6 +4708,13 @@
    "title": "可缩地趋于 x（Shrinks Nicely）",
    "label_en": "shrinking",
    "title_en": "shrinking",
+   "abstract_en": "A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ when $E_r \\subseteq B(r,x)$ for every $r$ and there is $\\alpha > 0$ with $m(E_r) > \\alpha \\cdot m(B(r,x))$ for all $r$. The two conditions say \"fits inside the ball\" and \"is not too thin\". Balls themselves qualify, as does any fixed shape rescaled inside them; a thin sliver does not. The notion exists so that differentiation theorems do not depend on the shape of the sets being shrunk.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4938,6 +5029,13 @@
    "type": "proposition",
    "label": "NBV 函数的导数与测度的关系",
    "title": "命题：$\\mu_F \\perp m \\iff F' = 0 \\text{a.e.}$；$\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F'$",
+   "abstract_en": "For $F$ of normalised bounded variation, $F' \\in L^1(m)$ and $\\mu_F \\perp m \\iff F' = 0$ a.e., while $\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F'(t)\\,dt$. Both follow by writing the Lebesgue decomposition $d\\mu_F = d\\lambda + f\\,dm$ and using $f = F'$ a.e.: vanishing of the absolutely continuous part is the first case, $\\lambda = 0$ is the second. This is the measure-theoretic form of the fundamental theorem of calculus — $F'$ integrates back to $F$ exactly when $\\mu_F$ is absolutely continuous.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5224,6 +5322,13 @@
    "type": "definition",
    "label": "本性上界与 L^∞",
    "title": "本性上界 $\\|f\\|_\\infty$ 与空间 $L^\\infty$",
+   "abstract_en": "The essential supremum is $\\|f\\|_\\infty := \\inf \\{a \\ge 0 : \\mu(\\{|f| > a\\}) = 0\\}$: the true bound of $f$ once its values on null sets are ignored. The infimum is attained at $a = \\|f\\|_\\infty$ itself, and $\\|f\\|_\\infty \\le M \\iff |f| \\le M$ almost everywhere. Then $L^\\infty$ consists of the measurable $f$ with $\\|f\\|_\\infty < \\infty$. Note the difference from $\\sup |f|$, which a single value on a null set can spoil.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5943,6 +6048,13 @@
    "type": "theorem",
    "label": "基数可比定理",
    "title": "基数可比定理（需要选择公理）",
+   "abstract_en": "Assuming the axiom of choice, any two sets $A$, $B$ satisfy $|A| \\le |B|$ or $|B| \\le |A|$, that is, any two cardinals are comparable. This is the licence for ordering cardinals at all: without it even \"$A$ is bigger than $B$\" can be meaningless. The proof runs through the well-ordering theorem: well-order both sets, compare the corresponding ordinals, and read off an injection in one direction. Without AC there really are incomparable cardinals.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6297,6 +6409,13 @@
    "title": "整数 $\\mathbb{Z}$（由 $\\mathbb{N} \\times \\mathbb{N}$ 构造）",
    "label_en": "integers",
    "title_en": "integers",
+   "abstract_en": "The integers as a quotient: on $\\mathbb{N} \\times \\mathbb{N}$ put $(a,b) \\sim (c,d) \\iff a + d = b + c$ (same difference) and set $\\mathbb{Z} := (\\mathbb{N} \\times \\mathbb{N})/{\\sim}$, writing $[a,b]$ for $a - b$. Addition, multiplication and order are defined on representatives and must be checked independent of them. Motivation: subtraction fails in $\\mathbb{N}$, but the pair $3 - 5$ is meaningful, so the difference itself is taken as the object; $[0,0]$ and $[b,a]$ supply the missing zero and inverses. $\\mathbb{N}$ embeds via $a \\mapsto [a,0]$.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6393,6 +6512,13 @@
    "type": "definition",
    "label": "Cauchy 列与零列",
    "title": "有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）",
+   "abstract_en": "Over $\\mathbb{Q}$ alone — $\\varepsilon$ ranges over positive rationals, so no reals are presupposed — a rational sequence $(x_n)$ is Cauchy when $\\forall \\varepsilon > 0\\, \\exists N\\, \\forall m,n \\ge N : |x_m - x_n| < \\varepsilon$, is null when $\\forall \\varepsilon > 0\\, \\exists N\\, \\forall n \\ge N : |x_n| < \\varepsilon$, and two Cauchy sequences are equivalent when their difference is null. The quotient by this relation is how $\\mathbb{R}$ is built: it glues together the many ways of approximating one number. Three facts are used later: Cauchy sequences are bounded, sums and products of Cauchy sequences are Cauchy, and a non-null Cauchy sequence satisfies $|x_n| \\ge \\delta > 0$ from some point on, so its reciprocal is Cauchy again.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -6519,6 +6645,13 @@
    "type": "theorem",
    "label": "ℝ 不可数",
    "title": "实数集是稠密而不可数的：$|\\mathbb{R}| = 2^{\\aleph_0}$",
+   "abstract_en": "$\\mathbb{R}$ is uncountable — there is no surjection $\\mathbb{N} \\to \\mathbb{R}$ — and in fact $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$. Uncountability is proved by nested closed intervals and completeness alone, with no cardinal theory; the cardinality statement pairs binary expansions with $\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density and cardinality are different things, which is why analysis needs $\\mathbb{R}$.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "analysis",
    "regions": [
     "analysis",
@@ -7436,6 +7569,13 @@
    "title": "表示函子与万有元素（Representable Functor）",
    "label_en": "representable functor",
    "title_en": "representable functor",
+   "abstract_en": "A functor $F : \\mathcal{C} \\to \\mathbf{Set}$ is represented by an object $X$ together with $s \\in F(X)$ when every $t \\in F(Y)$ is $F(f)(s)$ for exactly one $f : X \\to Y$; equivalently $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$. All the data of $F$ is generated by the single element $s$. Equivalently $(X, s)$ is an initial object of the category of elements of $F$. Examples: $k[t]$ represents the forgetful functor on $k$-algebras, $\\mathbb{Z}$ represents the constant functor on rings.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "category",
    "regions": [
     "category"
@@ -7510,6 +7650,13 @@
    "title": "米田嵌入（Yoneda Embedding）",
    "label_en": "Yoneda embedding",
    "title_en": "Yoneda Embedding",
+   "abstract_en": "The assignment $\\delta : \\mathcal{C} \\to \\widehat{\\mathcal{C}}$, $X \\mapsto h_X = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$, is fully faithful and preserves all limits. Fully faithful means $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_X, h_Y) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$: the arrows between representable functors reproduce the arrows of $\\mathcal{C}$ exactly, no more and no fewer. Embedding $\\mathcal{C}$ this way moves problems into a category that has all limits and colimits.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "category",
    "regions": [
     "category"
@@ -7697,6 +7844,13 @@
    "type": "proposition",
    "label": "全忠实与单位",
    "title": "全忠实 $\\iff$ 单位（余单位）是同构",
+   "abstract_en": "For an adjunction $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$: $F$ is full and faithful iff $\\eta$ is an isomorphism, and $G$ is full and faithful iff $\\varepsilon$ is an isomorphism. So fullness and faithfulness of the left adjoint is checked on a single natural transformation rather than on every Hom-set. This is also the dividing line between reflections and coreflections: an inclusion of a full subcategory is always fully faithful, so a reflection has an invertible counit.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "category",
    "regions": [
     "category"
@@ -7765,6 +7919,13 @@
    "title": "伴随函子定理（SAFT）",
    "label_en": "special adjoint functor theorem",
    "title_en": "special adjoint functor theorem",
+   "abstract_en": "Let $\\mathcal{D}$ be small and complete. A functor $G : \\mathcal{D} \\to \\mathcal{C}$ has a left adjoint iff it preserves all limits; when it does, one may take $F(X) = \\varprojlim_{(Y,f) \\in (X \\downarrow G)} Y$. So preservation of limits, which is automatic for right adjoints, is also sufficient under these hypotheses. The construction reads: $F(X)$ is the object of $\\mathcal{D}$ closest to $X$, and every $X \\to G(Y)$ factors through $X \\to G(FX) \\to G(Y)$.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "category",
    "regions": [
     "category"
@@ -7881,6 +8042,13 @@
    "type": "proposition",
    "label": "Kan 延拓的两个例子",
    "title": "余极限与右伴随都是 Kan 延拓",
+   "abstract_en": "Two examples showing that Kan extensions absorb the earlier notions. (1) A diagram $D : I \\to \\mathcal{C}$ has a colimit iff the left Kan extension of $D$ along $p : I \\to \\mathbf{1}$ exists, and then $(p_!D)(\\ast) = \\varinjlim_{i \\in I} D(i)$. (2) $F : \\mathcal{C} \\to \\mathcal{D}$ has a right adjoint iff the left Kan extension of $1_{\\mathcal{C}}$ along $F$ exists, and then $G = F_!1_{\\mathcal{C}}$, the unit being the transpose of $1_{\\mathcal{C}} \\implies G \\circ F$.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "category",
    "regions": [
     "category"
@@ -7951,6 +8119,13 @@
    "type": "proposition",
    "label": "紧 Haus 是反射子范畴",
    "title": "Stone–Čech 紧化",
+   "abstract_en": "The category $\\mathbf{CHaus}$ is a reflective subcategory of $\\mathbf{Top}$, the reflection being the Stone–Čech compactification: $\\operatorname{Hom}_{\\mathbf{CHaus}}(\\beta X, K) \\cong \\operatorname{Hom}_{\\mathbf{Top}}(X, K)$ for every compact Hausdorff $K$. Construction: embed $X$ into the Tychonoff cube $[0,1]^{C(X,[0,1])}$ and take the closure, which is compact Hausdorff as a closed subset of a compact Hausdorff space. The embedding is injective iff $X$ is Tychonoff. Corollary: any limit of compact Hausdorff spaces is again compact Hausdorff.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "topology",
    "regions": [
     "topology"
@@ -9586,6 +9761,13 @@
    "type": "definition",
    "label": "加法 / 阿贝尔范畴",
    "title": "加法范畴与阿贝尔范畴（Additive / Abelian Category）",
+   "abstract_en": "The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to \\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian means that kernels and cokernels exist, and abelian means any one of four equivalent conditions: every monomorphism is regular; $N \\cong \\ker(M \\to \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every map factors uniquely as an epimorphism followed by a monomorphism; $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. Abelian categories are the working environment of homological algebra — exactness needs kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a topos are abelian; $\\mathbf{AbTop}$ is not.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "homology",
    "regions": [
     "homology"
@@ -10033,6 +10215,13 @@
    "type": "theorem",
    "label": "拓扑斯上的阿贝尔群是 Grothendieck 范畴",
    "title": "$\\mathcal{T}(\\mathbf{Ab})$ 是 Grothendieck 范畴",
+   "abstract_en": "For a topos $\\mathcal{T}$, the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian group objects in sheaves is a Grothendieck category: abelian, with a small set of generators, all colimits, and filtered colimits exact. Abelianness is checked componentwise in the presheaf category and transported along the exact sheafification reflection; limits and colimits exist by that reflection; and if $S$ generates $\\mathcal{T}$ then $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$. Those generators are moreover projective.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "homology",
    "regions": [
     "homology"
@@ -10244,6 +10433,13 @@
    "title": "紧生成空间是 $\\mathbf{Top}$ 的余反射子范畴",
    "label_en": "kification",
    "title_en": "kification",
+   "abstract_en": "The category $k\\mathbf{Top}$ of compactly generated spaces is a coreflective subcategory of $\\mathbf{Top}$: the inclusion $i$ has a right adjoint $k$ that keeps the underlying set and replaces the topology by the $k$-topology, $i \\dashv k$, i.e. $\\operatorname{Hom}_{\\mathbf{Top}}(X, Y) \\cong \\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$ for compactly generated $X$. The counit $kY \\to Y$ is the identity map, continuous because the $k$-topology is the finer one.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "topology",
    "regions": [
     "topology"
@@ -10269,6 +10465,13 @@
    "title": "商映射与局部紧因子作积仍是商映射",
    "label_en": "quotient map product",
    "title_en": "quotient map product",
+   "abstract_en": "If $q : X \\to Y$ is a quotient map and $Z$ is locally compact Hausdorff, then $q \\times \\mathrm{id}_Z : X \\times Z \\to Y \\times Z$ is again a quotient map. For a point $(x,z)$ of the preimage of an open set one picks a basic open $V \\times K \\subseteq U$ with $K$ a compact neighbourhood of $z$; then $q^{-1}(V) \\times K$ is an open neighbourhood of $(x,z)$ inside that preimage. Local compactness cannot be dropped. This is the engine behind \"compactly generated spaces are closed under products\".",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "topology",
    "regions": [
     "topology"
@@ -10721,6 +10924,13 @@
    "title": "第一同构定理（Noether）",
    "label_en": "Noether",
    "title_en": "Noether",
+   "abstract_en": "For a group homomorphism $\\varphi : G \\to G'$, the assignment $g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective homomorphism has the quotient as image. The proof is three steps: well-definedness, multiplicativity, bijectivity. The same proof works verbatim for any \"set + operations + axioms\" structure, $A/\\ker f \\cong \\operatorname{im} f$, and the set-level prototype is that every map induces a bijection from the quotient by $a \\sim a' \\iff f(a) = f(a')$ onto its image.",
+   "translations": {
+    "en": {
+     "status": "draft",
+     "version": "v0.9.0"
+    }
+   },
    "region": "algebra",
    "regions": [
     "algebra",

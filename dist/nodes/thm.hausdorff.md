@@ -4,18 +4,19 @@ layer 9 · 定理 · 选择原理 · 序理论
 [在星图里打开](../#n=thm.hausdorff)　·　[节点索引](../index.md)
 
 设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则存在 $P$ 的**极大链** $M$ 使 $C_{0} \subseteq M$。
+> 陈述续见 [nodes/thm.hausdorff.2.md](./thm.hausdorff.2.md)
 
-其中「极大链」指在包含关系 $\subseteq$ 下极大的链：若 $M \subseteq M' \subseteq P$ 且 $M'$ 也是链，则 $M' = M$。
-
-取 $C_{0} = \emptyset$ 即得：**每个非空偏序集都有极大链。**
 
 ## 它能推出什么 / 谁在用它
 - ⟺ [`lem.zorn`](../nodes/lem.zorn.md) 佐恩引理
 
-- …另有出边，续页见 [nodes/thm.hausdorff.3.md](./thm.hausdorff.3.md)
+- …另有出边，续页见 [nodes/thm.hausdorff.5.md](./thm.hausdorff.5.md)
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.hausdorff.2.md](./thm.hausdorff.2.md)
+- …另有入边，续页见 [nodes/thm.hausdorff.4.md](./thm.hausdorff.4.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/thm.hausdorff.3.md](./thm.hausdorff.3.md)
 
 refs: Hausdorff (1914)；Kunen, Set Theory, I.12
 

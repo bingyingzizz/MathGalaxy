@@ -1,10 +1,9 @@
 # 距离空间　`def.metric-space`　·　续页（第 4 页）
 [在星图里打开](../#n=def.metric-space)　·　第 1 页 [nodes/def.metric-space.md](./def.metric-space.md)　·　上一页 [nodes/def.metric-space.3.md](./def.metric-space.3.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 [`cor.borel-product`](../nodes/cor.borel-product.md) 可数积的 Borel 代数 用
-- 被 [`def.complete`](../nodes/def.complete.md) 完备 用
-- 被 [`def.totally-bounded`](../nodes/def.totally-bounded.md) 全有界 用
-- 被 [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧 用
-- 被 [`def.compact`](../nodes/def.compact.md) 紧 用
-- 被 [`def.shrinks-nicely`](../nodes/def.shrinks-nicely.md) 可缩族 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.topology`](../nodes/def.topology.md) 拓扑空间与开集：用到了定义 拓扑空间与开集　[proofs/dep.topology-metric.md](../proofs/dep.topology-metric.md)
+- [`def.topology-base`](../nodes/def.topology-base.md) 基与子基：用到了定义 基与子基　[proofs/dep.base-metric.md](../proofs/dep.base-metric.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/def-dep.function-metric-space.md](../proofs/def-dep.function-metric-space.md)
+
+> 续见 [nodes/def.metric-space.5.md](./def.metric-space.5.md)

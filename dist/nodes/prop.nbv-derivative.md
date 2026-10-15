@@ -4,17 +4,19 @@ layer 20 · 命题 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=prop.nbv-derivative)　·　[节点索引](../index.md)
 
 设 $F \in NBV$。则 $F' \in L^1(m)$，并且
+> 陈述续见 [nodes/prop.nbv-derivative.2.md](./prop.nbv-derivative.2.md)
 
-$$\mu_F \perp  m \iff F' = 0\quad  \text{a.e.}$$
-$$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$
-
-## 为什么成立（入边，证明在 proofs/）
-- [`def.nbv`](../nodes/def.nbv.md) NBV：用到了定义 NBV　[proofs/def-link.nbv-derivative.md](../proofs/def-link.nbv-derivative.md)
-
-- …另有入边，续页见 [nodes/prop.nbv-derivative.2.md](./prop.nbv-derivative.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/prop.nbv-derivative.4.md](./prop.nbv-derivative.4.md)
+- ⇒ [`prop.ac-iff-measure-ac`](../nodes/prop.ac-iff-measure-ac.md) 函数绝对连续 ⟺ 测度绝对连续
+
+- …另有出边，续页见 [nodes/prop.nbv-derivative.6.md](./prop.nbv-derivative.6.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/prop.nbv-derivative.4.md](./prop.nbv-derivative.4.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/prop.nbv-derivative.3.md](./prop.nbv-derivative.3.md)
 
 refs: Folland, Real Analysis, Theorem 3.35
 

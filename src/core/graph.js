@@ -139,8 +139,19 @@
       });
     }
 
-    var autoId = 0;
-    packs.forEach(function (pack) {
+    /* -------------------------------------------------- 英文摘要（T2.2） */
+    /* `src/data/i18n/abstracts.en.js`：给枢纽榜前列的节点旁挂一段英文导读。
+       ⛔ 不是正文（陈述/说明/证明的真源仍在 packs），只是「这条讲什么」的译文。
+       状态（draft / reviewed / stale）由构建期决定，这里只抄字段。 */
+    var abs = (MG.i18nAbstracts && MG.i18nAbstracts.items) || null;
+    if (abs) {
+      nodes.forEach(function (n) {
+        var a = abs[n.id];
+        if (a) n.abstract_en = a;
+      });
+    }
+
+    var autoId = 0;    packs.forEach(function (pack) {
       var name = pack.name || 'pack';
       (pack.edges || []).forEach(function (raw) {
         if (raw && raw.kind === 'cluster-link') return;  // 星团连线请写在 pack.clusterLinks

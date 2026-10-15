@@ -9,12 +9,13 @@ $\cdot$ $E_r \subseteq B(r, x)$ 对每个 $r$ 成立；
 $\cdot$ 存在 $\alpha > 0$，使 $m(E_r) > \alpha\cdot m(B(r, x))$ 对一切 $r$ 成立。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.borel`](../nodes/def.borel.md) Borel σ-代数：用到了定义 Borel σ-代数　[proofs/def-dep.borel-shrinks-nicely.md](../proofs/def-dep.borel-shrinks-nicely.md)
-
-- …另有入边，续页见 [nodes/def.shrinks-nicely.2.md](./def.shrinks-nicely.2.md)
+- …另有入边，续页见 [nodes/def.shrinks-nicely.3.md](./def.shrinks-nicely.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.shrinks-nicely.3.md](./def.shrinks-nicely.3.md)
+- …另有出边，续页见 [nodes/def.shrinks-nicely.4.md](./def.shrinks-nicely.4.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/def.shrinks-nicely.2.md](./def.shrinks-nicely.2.md)
 
 refs: Folland, Real Analysis, §3.4
 
