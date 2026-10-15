@@ -21,6 +21,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+/* ⭐ 英文名的判定口径**只有一份**：tools/i18n-backfill.mjs。
+   这里 import 它的函数来核「旁挂表有没有漂」，不另抄一遍规则。 */
+import { bucketRows } from './i18n-backfill.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -81,7 +84,7 @@ function loadMG() {
   const files = [
     'core/config.js', 'core/util.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
     'core/layers.js',
-    'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/notation.js', 'data/xref.js',
+    'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/i18n.js', 'data/notation.js', 'data/xref.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -166,6 +169,10 @@ function exportJSON(MG, graph) {
       type: n.type,
       label: n.label,
       title: n.title,
+      /* 英文名（T1.1）：由 src/data/i18n.js 提供、graph.js 挂到节点上。
+         缺省 = 没有 ⇒ 消费方按 label_en → title_en → 中文 label 回落。 */
+      label_en: n.label_en || undefined,
+      title_en: n.title_en || undefined,
       region: n.regions[0] || null,
       regions: n.regions,
       cluster: n.cluster || null,
@@ -1201,6 +1208,33 @@ function assertXref(MG, graph) {
   return errs;
 }
 
+/* ------------------------------------------------------ 英文名字段断言 */
+/* 真源 = `src/data/i18n.js`（由 tools/i18n-backfill.mjs 从 aka / title 现算）。
+   硬断言三件：① 每条 id 真实存在；② title_en 非空且不含汉字；
+   ③ **没漂**：凡是「按口径该自动填」的节点，旁挂表里必须都有 ——
+      否则说明 aliases.js 加了英文名但忘了重跑回填脚本。
+   ⚠️ 口径（bucketRows）是 import 进来的，不在这里另抄一份。 */
+function assertI18n(MG, graph) {
+  const I = MG.i18n;
+  if (!I || !I.nodes) return ['英文名字段：`src/data/i18n.js` 没有挂上（index.html / loadMG 少了 script？跑 bun tools/i18n-backfill.mjs 生成）'];
+  const errs = [];
+  const keys = Object.keys(I.nodes);
+  bucketRows(MG, graph).filter((r) => r.clean.length === 1).forEach((r) => {
+    if (!I.nodes[r.id]) errs.push(`英文名漂移：\`${r.id}\` 按口径该自动填，但 i18n.js 里没有（跑 bun tools/i18n-backfill.mjs）`);
+  });
+  for (const id of keys) {
+    if (!graph.byId[id]) { errs.push(`英文名字段：i18n.js 里的节点不存在 \`${id}\``); continue; }
+    const e = I.nodes[id] || {};
+    if (!e.title_en) errs.push(`英文名字段：\`${id}\` 缺 title_en`);
+    if (/[\u4e00-\u9fff]/.test(String(e.title_en || ''))) errs.push(`英文名字段：\`${id}\` 的 title_en 含汉字 —— 那不是英文名`);
+    if (e.label_en && /[\u4e00-\u9fff]/.test(e.label_en)) errs.push(`英文名字段：\`${id}\` 的 label_en 含汉字`);
+  }
+  const on = graph.nodes.filter((n) => n.title_en).length;
+  if (on !== keys.length) errs.push(`英文名字段：挂上 title_en 的节点 ${on} 个 ≠ 旁挂表 ${keys.length} 条`);
+  console.log(`  i18n：title_en 覆盖 ${on} / ${graph.nodes.length} 个节点（${(100 * on / graph.nodes.length).toFixed(1)}%）`);
+  return errs;
+}
+
 function assertAliases(MG, graph) {
   const A = MG.aliases;
   if (!A) return ['别名表：`src/data/aliases.js` 没有挂上（index.html 少了 <script>？）'];
@@ -1435,6 +1469,7 @@ if (doJSON) {
   errs.push(...assertNotation(MG, graph));
   errs.push(...assertAliases(MG, graph));
   errs.push(...assertXref(MG, graph));
+  errs.push(...assertI18n(MG, graph));
   // 给 AI 看的说明文档也必须在一次抓取之内
   for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md', 'alias.md']) {
     const p = path.join(DIST, extra);

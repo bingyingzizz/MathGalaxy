@@ -106,11 +106,14 @@
         var nt = U.plain(n.notes);
         var aka = akaOf[n.id] || [];
         var hay = [
-          n.label, n.title, n.id, n.type, MG.typeStyle(n.type).name,
+          n.label, n.title, n.label_en || '', n.title_en || '',
+          n.id, n.type, MG.typeStyle(n.type).name,
           (n.tags || []).join(' '), aka.join(' '), regions, st, nt
         ].join('\n').toLowerCase();
 
         addWord(n.label);
+        addWord(n.label_en);        // 英文短标签（T1.1）
+        addWord(n.title_en);        // 正式英文名（T1.1）
         (n.tags || []).forEach(addWord);
         aka.forEach(addWord);
         grams2(n.label).forEach(addWord);

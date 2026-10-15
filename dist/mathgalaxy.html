@@ -2051,6 +2051,21 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       });
     });
 
+    /* ---------------------------------------------------- 英文名字段（i18n） */
+    /* `src/data/i18n.js` 是一张**按 id 索引的旁挂表**（由 tools/i18n-backfill.mjs
+       从 aka / title 现算，别手写）。这里只做一件事：把 title_en / label_en 抄到
+       节点上。引擎不认识「英文」这回事 —— 缺省就什么都不做，
+       消费方按 `label_en → title_en → 中文 label` 回落。 */
+    var i18n = (MG.i18n && MG.i18n.nodes) || null;
+    if (i18n) {
+      nodes.forEach(function (n) {
+        var e = i18n[n.id];
+        if (!e) return;
+        if (e.title_en) n.title_en = e.title_en;
+        if (e.label_en) n.label_en = e.label_en;
+      });
+    }
+
     var autoId = 0;
     packs.forEach(function (pack) {
       var name = pack.name || 'pack';
@@ -5781,11 +5796,14 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         var nt = U.plain(n.notes);
         var aka = akaOf[n.id] || [];
         var hay = [
-          n.label, n.title, n.id, n.type, MG.typeStyle(n.type).name,
+          n.label, n.title, n.label_en || '', n.title_en || '',
+          n.id, n.type, MG.typeStyle(n.type).name,
           (n.tags || []).join(' '), aka.join(' '), regions, st, nt
         ].join('\n').toLowerCase();
 
         addWord(n.label);
+        addWord(n.label_en);        // 英文短标签（T1.1）
+        addWord(n.title_en);        // 正式英文名（T1.1）
         (n.tags || []).forEach(addWord);
         aka.forEach(addWord);
         grams2(n.label).forEach(addWord);
@@ -8852,6 +8870,265 @@ MG.aliases = {
     { q: 'Stone 表示定理是什么', to: ['thm.boolean-stone', 'def.boolean-ring', 'def.stone-space'] },
     { q: '布尔环和 Stone 空间什么关系', to: ['thm.boolean-stone', 'def.boolean-ring', 'def.stone-space'] },
   ],
+};
+
+</script>
+<!-- 英文名字段（title_en / label_en）：旁挂表，由 tools/i18n-backfill.mjs 生成 -->
+<script>
+/* ==========================================================================
+   数学星图 · 英文名字段（title_en / label_en）
+   --------------------------------------------------------------------------
+   ⚠️ 这份文件由 `tools/i18n-backfill.mjs` 从**同一份源数据**生成：
+      aka 来源 = src/data/aliases.js，正式名来源 = 各节点 title 的括号。
+      ⛔ 别手抄第二份；要加名字请改 aliases.js / 节点 title，然后重跑：
+          bun tools/i18n-backfill.mjs
+      工具只采「aka 里恰好一条名字样英文」的节点（口径见那个脚本）。
+      歧义 / 只有缩写 / 只有书号 / 哪儿都没有的，一个都没填 —— 清单在 i18n-gaps.md。
+
+   字段语义（消费方按这个回落）：
+      title_en  正式英文名
+      label_en  画布短标签；缺省 ⇒ 回落 title_en ⇒ 再回落中文 label
+   挂载点：src/core/graph.js 建图时把这里的两条字段抄到节点上；
+           graph.json / 搜索索引 / 概念页都从那两条字段读。
+   ========================================================================== */
+window.MG = window.MG || {};
+
+MG.i18n = {
+  version: 1,
+  generatedBy: 'tools/i18n-backfill.mjs',
+  updated: '2026-10-15',
+  nodes: {
+    'ax.ext': { title_en: 'Axiom of Extensionality', label_en: 'extensionality' },
+    'ax.inf': { title_en: 'Axiom of Infinity', label_en: 'infinity' },
+    'ax.pair': { title_en: 'Axiom of Pairing', label_en: 'pairing' },
+    'ax.power': { title_en: 'Axiom of Power Set', label_en: 'power set' },
+    'ax.repl': { title_en: 'Axiom Schema of Replacement', label_en: 'replacement' },
+    'ax.union': { title_en: 'Axiom of Union', label_en: 'union' },
+    'cor.lp-reflexive': { title_en: 'reflexive', label_en: 'reflexive' },
+    'cor.lusin': { title_en: 'Lusin', label_en: 'Lusin' },
+    'cor.stonean-retract': { title_en: 'retract', label_en: 'retract' },
+    'def.abs': { title_en: 'Absolute Value', label_en: 'absolute value' },
+    'def.absolute-continuity': { title_en: 'absolutely continuous', label_en: 'absolutely continuous' },
+    'def.ac-function': { title_en: 'Absolutely Continuous Function', label_en: 'absolutely continuous function' },
+    'def.acyclic-sheaf': { title_en: 'Acyclic Sheaf', label_en: 'acyclic sheaf' },
+    'def.additive-functor': { title_en: 'Additive Functor', label_en: 'additive functor' },
+    'def.ae': { title_en: 'Almost Everywhere, a.e.', label_en: 'almost everywhere' },
+    'def.average-operator': { title_en: 'average operator', label_en: 'average operator' },
+    'def.banach-ab-group': { title_en: 'Banach abelian group', label_en: 'Banach abelian group' },
+    'def.bicomplex': { title_en: 'Bicomplex', label_en: 'bicomplex' },
+    'def.boolean-ring': { title_en: 'Boolean Ring', label_en: 'Boolean ring' },
+    'def.borel': { title_en: 'Borel', label_en: 'Borel' },
+    'def.bound': { title_en: 'least upper bound', label_en: 'least upper bound' },
+    'def.bounded-variation': { title_en: 'bounded variation', label_en: 'bounded variation' },
+    'def.cat-equivalence': { title_en: 'Equivalence of Categories', label_en: 'equivalence of categories' },
+    'def.category': { title_en: 'Category', label_en: 'category' },
+    'def.cech-cohomology': { title_en: 'Cech cohomology', label_en: 'Cech cohomology' },
+    'def.cech-functor': { title_en: 'Čech Functor', label_en: 'Čech functor' },
+    'def.chain': { title_en: 'Chain / Antichain', label_en: 'chain' },
+    'def.chaus': { title_en: 'compact Hausdorff', label_en: 'compact Hausdorff' },
+    'def.choicefn': { title_en: 'Choice Function', label_en: 'choice function' },
+    'def.clopen': { title_en: 'Clopen Set', label_en: 'clopen' },
+    'def.cocontinuous-functor': { title_en: 'Cocontinuous Functor', label_en: 'cocontinuous' },
+    'def.cohomological-functor': { title_en: 'Cohomological Functor', label_en: 'cohomological functor' },
+    'def.compact': { title_en: 'Compact Space', label_en: 'compact' },
+    'def.compact-open-topology': { title_en: 'Compact-Open Topology', label_en: 'compact-open topology' },
+    'def.complete': { title_en: 'Complete Metric Space', label_en: 'complete' },
+    'def.complex': { title_en: 'Complex Numbers', label_en: 'complex numbers' },
+    'def.complex-measure': { title_en: 'Complex Measure', label_en: 'complex measure' },
+    'def.condensed-abelian-group': { title_en: 'Condensed Abelian Group', label_en: 'condensed abelian group' },
+    'def.conjugate-exponents': { title_en: 'Conjugate Exponents', label_en: 'conjugate exponents' },
+    'def.connected': { title_en: 'Connectedness', label_en: 'connected' },
+    'def.connected-category': { title_en: 'Connected Category', label_en: 'connected category' },
+    'def.continuous': { title_en: 'continuous', label_en: 'continuous' },
+    'def.continuous-functor': { title_en: 'Continuous Functor between Sites', label_en: 'continuous functor' },
+    'def.continuous-map': { title_en: 'Continuous Map', label_en: 'continuous map' },
+    'def.convergence-modes': { title_en: 'modes of convergence', label_en: 'modes of convergence' },
+    'def.countable': { title_en: 'Countable', label_en: 'countable' },
+    'def.derivative': { title_en: 'Derivative', label_en: 'derivative' },
+    'def.derived-category': { title_en: 'derived category', label_en: 'derived category' },
+    'def.duality-map': { title_en: 'dual pairing', label_en: 'dual pairing' },
+    'def.effective-equivalence': { title_en: 'Effective Equivalence Relation', label_en: 'effective equivalence relation' },
+    'def.empty': { title_en: 'Empty Set', label_en: 'empty set' },
+    'def.essentially-surjective': { title_en: 'Essentially Surjective', label_en: 'essentially surjective' },
+    'def.exact-sequence': { title_en: 'exact sequence', label_en: 'exact sequence' },
+    'def.ext': { title_en: 'extension group', label_en: 'extension group' },
+    'def.extended-real': { title_en: 'Extended Reals', label_en: 'extended real' },
+    'def.f-acyclic': { title_en: 'acyclic', label_en: 'acyclic' },
+    'def.field': { title_en: 'Field', label_en: 'field' },
+    'def.finchar': { title_en: 'Family of Finite Character', label_en: 'finite character' },
+    'def.finitely-additive': { title_en: 'Finitely Additive Measure', label_en: 'finitely additive' },
+    'def.first-order-language': { title_en: 'first-order logic', label_en: 'first-order logic' },
+    'def.flat-abelian-sheaf': { title_en: 'Flatness', label_en: 'flat' },
+    'def.formula': { title_en: 'well-formed formula', label_en: 'well-formed formula' },
+    'def.free-compact-hausdorff': { title_en: 'Free Compact Hausdorff Space', label_en: 'free compact Hausdorff' },
+    'def.free-presentation': { title_en: 'Free Presentation', label_en: 'free presentation' },
+    'def.function': { title_en: 'Mapping', label_en: 'mapping' },
+    'def.functor': { title_en: 'Functor', label_en: 'functor' },
+    'def.fundamental-class': { title_en: 'Fundamental Class', label_en: 'fundamental class' },
+    'def.generated-sigma': { title_en: 'generated sigma-algebra', label_en: 'generated sigma-algebra' },
+    'def.graph': { title_en: 'Graph', label_en: 'graph' },
+    'def.graph-morphism': { title_en: 'graph morphism', label_en: 'graph morphism' },
+    'def.grothendieck-category': { title_en: 'Grothendieck Category', label_en: 'Grothendieck category' },
+    'def.homeomorphism': { title_en: 'Homeomorphism', label_en: 'homeomorphism' },
+    'def.homotopy-category': { title_en: 'Homotopy Category', label_en: 'homotopy category' },
+    'def.ind-object': { title_en: 'ind-object', label_en: 'ind-object' },
+    'def.induced-topology': { title_en: 'Induced Topology', label_en: 'induced topology' },
+    'def.int': { title_en: 'integers', label_en: 'integers' },
+    'def.integrable': { title_en: 'integrable', label_en: 'integrable' },
+    'def.internal-hom': { title_en: 'Internal Hom', label_en: 'internal hom' },
+    'def.interval': { title_en: 'Interval', label_en: 'interval' },
+    'def.k-bounded-exact': { title_en: 'K-bounded exact', label_en: 'K-bounded exact' },
+    'def.k-topology': { title_en: 'k-ification', label_en: 'k-ification' },
+    'def.kan-extension': { title_en: 'Kan Extension', label_en: 'Kan extension' },
+    'def.lebesgue-set': { title_en: 'Lebesgue point', label_en: 'Lebesgue point' },
+    'def.localization': { title_en: 'Localization', label_en: 'localization' },
+    'def.locally-compact': { title_en: 'Locally Compact Hausdorff', label_en: 'locally compact' },
+    'def.locally-integrable': { title_en: 'locally integrable', label_en: 'locally integrable' },
+    'def.lp-norm': { title_en: 'Lp norm', label_en: 'Lp norm' },
+    'def.maximal-function': { title_en: 'maximal function', label_en: 'maximal function' },
+    'def.measurable-function': { title_en: 'Measurable Function', label_en: 'measurable function' },
+    'def.measure': { title_en: 'Measure', label_en: 'measure' },
+    'def.measure-space': { title_en: 'sigma-finite', label_en: 'sigma-finite' },
+    'def.metric-space': { title_en: 'Metric Space', label_en: 'metric space' },
+    'def.module': { title_en: 'Module', label_en: 'module' },
+    'def.monotone-class': { title_en: 'Monotone Class', label_en: 'monotone class' },
+    'def.morphism-of-sites': { title_en: 'Morphism of Sites', label_en: 'morphism of sites' },
+    'def.mutually-singular': { title_en: 'mutually singular', label_en: 'mutually singular' },
+    'def.natural-transformation': { title_en: 'Natural Transformation', label_en: 'natural transformation' },
+    'def.normal-space': { title_en: 'Normal Space', label_en: 'normal space' },
+    'def.null-set': { title_en: 'Null Set & Complete Measure Space', label_en: 'null set' },
+    'def.number-function': { title_en: 'Function', label_en: 'function' },
+    'def.order-iso': { title_en: 'Order Isomorphism', label_en: 'order isomorphism' },
+    'def.ordered-field': { title_en: 'Ordered Field', label_en: 'ordered field' },
+    'def.ordinal': { title_en: 'von Neumann Ordinal', label_en: 'ordinal' },
+    'def.outer-measure': { title_en: 'Outer Measure', label_en: 'outer measure' },
+    'def.pontryagin-dual': { title_en: 'Pontryagin Dual', label_en: 'Pontryagin dual' },
+    'def.power-set': { title_en: 'Power Set', label_en: 'power set' },
+    'def.precanonical-topology': { title_en: 'Precanonical Topology', label_en: 'precanonical topology' },
+    'def.premeasure': { title_en: 'Premeasure', label_en: 'premeasure' },
+    'def.preserves-limit': { title_en: 'preserves limits', label_en: 'preserves limits' },
+    'def.presheaf': { title_en: 'Presheaf', label_en: 'presheaf' },
+    'def.presheaf-cat': { title_en: 'presheaf category', label_en: 'presheaf category' },
+    'def.pretopos': { title_en: 'Pretopos', label_en: 'pretopos' },
+    'def.product-measure': { title_en: 'product measure', label_en: 'product measure' },
+    'def.product-sigma': { title_en: 'product sigma-algebra', label_en: 'product sigma-algebra' },
+    'def.product-topology': { title_en: 'Product Topology', label_en: 'product topology' },
+    'def.quasi-compact': { title_en: 'Quasi-Compact Object', label_en: 'quasi-compact' },
+    'def.quasi-separated': { title_en: 'Quasi-Separated Object', label_en: 'quasi-separated' },
+    'def.quotient-group': { title_en: 'Quotient Group', label_en: 'quotient group' },
+    'def.quotient-topology': { title_en: 'Quotient Topology', label_en: 'quotient topology' },
+    'def.rat': { title_en: 'rationals', label_en: 'rationals' },
+    'def.real': { title_en: 'real numbers', label_en: 'real numbers' },
+    'def.reflective-subcategory': { title_en: 'Reflective Subcategory', label_en: 'reflective subcategory' },
+    'def.regular-measure': { title_en: 'regular measure', label_en: 'regular measure' },
+    'def.rel': { title_en: 'Relation', label_en: 'binary relation' },
+    'def.right-derived-functor': { title_en: 'right derived functor', label_en: 'right derived functor' },
+    'def.ring': { title_en: 'ring', label_en: 'ring' },
+    'def.rn-derivative': { title_en: 'Radon-Nikodym derivative', label_en: 'Radon-Nikodym derivative' },
+    'def.section-functor': { title_en: 'Sections Functor', label_en: 'sections functor' },
+    'def.section-retraction': { title_en: 'Section / Retraction', label_en: 'retraction' },
+    'def.semi-normed-ab-group': { title_en: 'semi-normed abelian group', label_en: 'semi-normed abelian group' },
+    'def.sequentially-compact': { title_en: 'Sequentially Compact', label_en: 'sequentially compact' },
+    'def.series': { title_en: 'Series', label_en: 'series' },
+    'def.sheaf-cohomology': { title_en: 'sheaf cohomology', label_en: 'sheaf cohomology' },
+    'def.shrinks-nicely': { title_en: 'shrinking', label_en: 'shrinking' },
+    'def.sigma-ring': { title_en: 'sigma-ring', label_en: 'sigma-ring' },
+    'def.signed-measure': { title_en: 'Signed Measure', label_en: 'signed measure' },
+    'def.simple-function': { title_en: 'Simple Function', label_en: 'simple function' },
+    'def.simplicial': { title_en: 'Simplicial Object', label_en: 'simplicial object' },
+    'def.slice-category': { title_en: 'Slice Category', label_en: 'slice category' },
+    'def.spectral-sequence': { title_en: 'Spectral Sequence', label_en: 'spectral sequence' },
+    'def.strict-morphism': { title_en: 'Strict Morphism', label_en: 'strict morphism' },
+    'def.subcategory': { title_en: 'Subcategory', label_en: 'subcategory' },
+    'def.subgroup': { title_en: 'Subgroup', label_en: 'subgroup' },
+    'def.subobject': { title_en: 'Subobject', label_en: 'subobject' },
+    'def.subspace-topology': { title_en: 'Subspace Topology', label_en: 'subspace topology' },
+    'def.substitution': { title_en: 'substitution', label_en: 'substitution' },
+    'def.topo-ab-group': { title_en: 'Topological Abelian Group', label_en: 'topological abelian group' },
+    'def.topologically-generating': { title_en: 'Topologically Generating Set', label_en: 'topologically generating' },
+    'def.topos-morphism': { title_en: 'geometric morphism', label_en: 'geometric morphism' },
+    'def.totally-bounded': { title_en: 'Totally Bounded', label_en: 'totally bounded' },
+    'def.underlying-topological-space': { title_en: 'underlying topological space', label_en: 'underlying topological space' },
+    'def.universe': { title_en: 'Grothendieck Universe', label_en: 'universe' },
+    'def.weak-hausdorff': { title_en: 'Weak Hausdorff Space', label_en: 'weak Hausdorff' },
+    'lem.archimedean': { title_en: 'Archimedean', label_en: 'Archimedean' },
+    'lem.breen-deligne-scalar-homotopy': { title_en: 'scalar homotopy', label_en: 'scalar homotopy' },
+    'lem.covering': { title_en: 'covering lemma', label_en: 'covering lemma' },
+    'lem.k-bounded-completion': { title_en: 'k-bounded completion', label_en: 'k-bounded completion' },
+    'lem.qseparated-underlying-weak-hausdorff': { title_en: 'underlying weak Hausdorff', label_en: 'underlying weak Hausdorff' },
+    'lem.stone-constant-acyclic': { title_en: 'Stone acyclic constant', label_en: 'Stone acyclic constant' },
+    'lem.tukey': { title_en: 'Tukey\'s Lemma / Teichmüller–Tukey', label_en: 'Tukey' },
+    'lem.urysohn': { title_en: 'Urysohn', label_en: 'Urysohn' },
+    'lem.weak-hausdorff-qseparated': { title_en: 'weak Hausdorff quasi-separated', label_en: 'weak Hausdorff quasi-separated' },
+    'lem.young-inequality': { title_en: 'Young', label_en: 'Young' },
+    'lem.zorn': { title_en: 'Zorn\'s Lemma', label_en: 'Zorn\'s lemma' },
+    'prop.abelianization': { title_en: 'abelianization', label_en: 'abelianization' },
+    'prop.calculus-of-fractions': { title_en: 'calculus of fractions', label_en: 'calculus of fractions' },
+    'prop.cg-coreflective': { title_en: 'kification', label_en: 'kification' },
+    'prop.cg-wh-iff-qseparated': { title_en: 'weak Hausdorff iff quasi-separated', label_en: null },
+    'prop.cgwh-fiber-product': { title_en: 'fiber product compact', label_en: 'fiber product compact' },
+    'prop.cond-epi-regular': { title_en: 'epi regular', label_en: 'epi regular' },
+    'prop.cond-internal-hom': { title_en: 'internal hom', label_en: 'internal hom' },
+    'prop.condab-section': { title_en: 'sections functor', label_en: 'sections functor' },
+    'prop.dense-simple-compact-support': { title_en: 'dense', label_en: 'dense' },
+    'prop.duality-isometry': { title_en: 'isometry', label_en: 'isometry' },
+    'prop.filtered-directed': { title_en: 'directed set', label_en: 'directed set' },
+    'prop.filtered-exact': { title_en: 'filtered colimits are exact', label_en: 'filtered colimits are exact' },
+    'prop.grothendieck-enough-injectives': { title_en: 'enough injectives', label_en: 'enough injectives' },
+    'prop.injective-criterion': { title_en: 'injective criterion', label_en: 'injective criterion' },
+    'prop.lc-ab-preabelian': { title_en: 'pre-abelian', label_en: 'pre-abelian' },
+    'prop.pontryagin-torsion-stone': { title_en: 'torsion Stonean', label_en: 'torsion Stonean' },
+    'prop.pretopos-factorization': { title_en: 'balanced', label_en: 'balanced' },
+    'prop.ring-localization': { title_en: 'Localization of a Ring', label_en: 'localization of a ring' },
+    'prop.sheaf-epi-criterion': { title_en: 'local epimorphism', label_en: 'local epimorphism' },
+    'prop.sheaf-mono-epi-iso': { title_en: 'epi-mono factorization', label_en: 'epi-mono factorization' },
+    'prop.stalk-separated': { title_en: 'stalk', label_en: 'stalk' },
+    'prop.stonean-cond-acyclic': { title_en: 'Stonean acyclic', label_en: 'Stonean acyclic' },
+    'prop.total-variation-basics': { title_en: 'total variation', label_en: 'total variation' },
+    'prop.triangle-rotation': { title_en: 'rotation', label_en: 'rotation' },
+    'prop.yoneda-embedding': { title_en: 'Yoneda Embedding', label_en: 'Yoneda embedding' },
+    'thm.boolean-stone': { title_en: 'Stone representation', label_en: 'Stone representation' },
+    'thm.cantor': { title_en: 'diagonal argument', label_en: 'diagonal argument' },
+    'thm.cofinal-colimit': { title_en: 'cofinal colimit', label_en: 'cofinal colimit' },
+    'thm.completion': { title_en: 'completion', label_en: 'completion' },
+    'thm.cond-topos': { title_en: 'Cond is a topos', label_en: 'Cond is a topos' },
+    'thm.dct': { title_en: 'DCT, Dominated Convergence Theorem', label_en: 'dominated convergence' },
+    'thm.density': { title_en: 'Density Theorem', label_en: 'density theorem' },
+    'thm.differentiate-under-integral': { title_en: 'differentiation under the integral sign', label_en: null },
+    'thm.dyckhoff': { title_en: 'Dyckhoff', label_en: 'Dyckhoff' },
+    'thm.egorov': { title_en: 'Egorov', label_en: 'Egorov' },
+    'thm.five-lemma': { title_en: 'Five Lemma', label_en: 'five lemma' },
+    'thm.ftc-lebesgue': { title_en: 'fundamental theorem of calculus', label_en: 'fundamental theorem of calculus' },
+    'thm.giraud': { title_en: 'Giraud', label_en: 'Giraud' },
+    'thm.gleason': { title_en: 'Gleason', label_en: 'Gleason' },
+    'thm.hahn-decomposition': { title_en: 'Hahn Decomposition Theorem', label_en: 'Hahn decomposition' },
+    'thm.hartogs': { title_en: 'Hartogs\' Theorem, 1915', label_en: 'Hartogs' },
+    'thm.holder': { title_en: 'Hölder', label_en: 'Hölder' },
+    'thm.jordan-decomposition': { title_en: 'Jordan Decomposition Theorem', label_en: 'Jordan decomposition' },
+    'thm.lebesgue-differentiation': { title_en: 'differentiation theorem', label_en: 'differentiation theorem' },
+    'thm.lebesgue-radon-nikodym': { title_en: 'Radon-Nikodym theorem', label_en: 'Radon-Nikodym theorem' },
+    'thm.lim-functor': { title_en: 'lim functor', label_en: 'lim functor' },
+    'thm.lp-banach': { title_en: 'Banach', label_en: 'Banach' },
+    'thm.maximal-theorem': { title_en: 'maximal theorem', label_en: 'maximal theorem' },
+    'thm.mct': { title_en: 'MCT, Monotone Convergence Theorem', label_en: 'monotone convergence theorem' },
+    'thm.minkowski': { title_en: 'Minkowski', label_en: 'Minkowski' },
+    'thm.monotone-class': { title_en: 'Monotone Class Theorem', label_en: 'monotone class theorem' },
+    'thm.omega': { title_en: 'natural numbers', label_en: 'natural numbers' },
+    'thm.pontryagin-van-kampen': { title_en: 'Pontryagin-van Kampen', label_en: 'Pontryagin-van Kampen' },
+    'thm.product': { title_en: 'Cartesian product', label_en: 'Cartesian product' },
+    'thm.quotient-product': { title_en: 'quotient map product', label_en: 'quotient map product' },
+    'thm.represented-criterion': { title_en: 'representable iff hom', label_en: 'representable iff hom' },
+    'thm.riesz-representation-lp': { title_en: 'dual space', label_en: 'dual space' },
+    'thm.right-adjoint-criterion': { title_en: 'adjoint functor existence', label_en: 'adjoint functor existence' },
+    'thm.saft': { title_en: 'special adjoint functor theorem', label_en: 'special adjoint functor theorem' },
+    'thm.sheaf-descent': { title_en: 'sheaf condition', label_en: 'sheaf condition' },
+    'thm.simple-approximation': { title_en: 'approximation by simple functions', label_en: null },
+    'thm.stone-profinite': { title_en: 'Stone duality', label_en: 'Stone duality' },
+    'thm.termwise-integration': { title_en: 'term-by-term integration', label_en: 'term-by-term integration' },
+    'thm.tietze-banach': { title_en: 'Tietze', label_en: 'Tietze' },
+    'thm.triangle': { title_en: 'triangle inequality', label_en: 'triangle inequality' },
+    'thm.wellorder-ordinal': { title_en: 'order type', label_en: 'order type' },
+  }
 };
 
 </script>

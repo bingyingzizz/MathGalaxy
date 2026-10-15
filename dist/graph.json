@@ -3,7 +3,7 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T06:03:09.645Z",
+  "generated": "2026-10-15T08:27:18.296Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1229,6 +1229,8 @@
    "type": "axiom",
    "label": "外延公理",
    "title": "外延公理（Axiom of Extensionality）",
+   "label_en": "extensionality",
+   "title_en": "Axiom of Extensionality",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1273,6 +1275,8 @@
    "type": "axiom",
    "label": "配对公理",
    "title": "配对公理（Axiom of Pairing）",
+   "label_en": "pairing",
+   "title_en": "Axiom of Pairing",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1293,6 +1297,8 @@
    "type": "axiom",
    "label": "并集公理",
    "title": "并集公理（Axiom of Union）",
+   "label_en": "union",
+   "title_en": "Axiom of Union",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1313,6 +1319,8 @@
    "type": "axiom",
    "label": "幂集公理",
    "title": "幂集公理（Axiom of Power Set）",
+   "label_en": "power set",
+   "title_en": "Axiom of Power Set",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1334,6 +1342,8 @@
    "type": "axiom",
    "label": "无穷公理",
    "title": "无穷公理（Axiom of Infinity）",
+   "label_en": "infinity",
+   "title_en": "Axiom of Infinity",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1356,6 +1366,8 @@
    "type": "axiom",
    "label": "替换公理模式",
    "title": "替换公理模式（Axiom Schema of Replacement）",
+   "label_en": "replacement",
+   "title_en": "Axiom Schema of Replacement",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1469,6 +1481,8 @@
    "type": "definition",
    "label": "关系",
    "title": "关系（Relation）",
+   "label_en": "binary relation",
+   "title_en": "Relation",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1490,6 +1504,8 @@
    "type": "definition",
    "label": "映射",
    "title": "映射（Mapping）",
+   "label_en": "mapping",
+   "title_en": "Mapping",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1512,6 +1528,8 @@
    "type": "definition",
    "label": "函数",
    "title": "函数（Function）",
+   "label_en": "function",
+   "title_en": "Function",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -1535,6 +1553,8 @@
    "type": "definition",
    "label": "选择函数",
    "title": "选择函数（Choice Function）",
+   "label_en": "choice function",
+   "title_en": "Choice Function",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1597,6 +1617,8 @@
    "type": "theorem",
    "label": "自然数集存在",
    "title": "自然数集 $\\omega$ 存在",
+   "label_en": "natural numbers",
+   "title_en": "natural numbers",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1639,6 +1661,8 @@
    "type": "theorem",
    "label": "笛卡尔积存在",
    "title": "笛卡尔积 $A \\times B$ 存在",
+   "label_en": "Cartesian product",
+   "title_en": "Cartesian product",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1682,6 +1706,8 @@
    "type": "definition",
    "label": "链",
    "title": "链 / 反链（Chain / Antichain）",
+   "label_en": "chain",
+   "title_en": "Chain / Antichain",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -1703,6 +1729,8 @@
    "type": "definition",
    "label": "界与确界",
    "title": "上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）",
+   "label_en": "least upper bound",
+   "title_en": "least upper bound",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -1750,6 +1778,8 @@
    "type": "definition",
    "label": "有限特征",
    "title": "有限特征族（Family of Finite Character）",
+   "label_en": "finite character",
+   "title_en": "Family of Finite Character",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -1799,6 +1829,8 @@
    "type": "lemma",
    "label": "佐恩引理",
    "title": "佐恩引理（Zorn's Lemma）",
+   "label_en": "Zorn's lemma",
+   "title_en": "Zorn's Lemma",
    "region": "order-theory",
    "regions": [
     "order-theory",
@@ -1851,6 +1883,8 @@
    "type": "lemma",
    "label": "Tukey 引理",
    "title": "Tukey 引理（Tukey's Lemma / Teichmüller–Tukey）",
+   "label_en": "Tukey",
+   "title_en": "Tukey's Lemma / Teichmüller–Tukey",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -1874,6 +1908,8 @@
    "type": "theorem",
    "label": "Hartogs 定理",
    "title": "Hartogs 定理（Hartogs' Theorem, 1915）—— ZF 中即可证明",
+   "label_en": "Hartogs",
+   "title_en": "Hartogs' Theorem, 1915",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -1943,6 +1979,8 @@
    "type": "definition",
    "label": "距离空间",
    "title": "距离空间 / 度量空间（Metric Space）",
+   "label_en": "metric space",
+   "title_en": "Metric Space",
    "region": "topology",
    "regions": [
     "topology"
@@ -1966,6 +2004,8 @@
    "type": "definition",
    "label": "完备",
    "title": "完备距离空间（Complete Metric Space）",
+   "label_en": "complete",
+   "title_en": "Complete Metric Space",
    "region": "topology",
    "regions": [
     "topology"
@@ -1988,6 +2028,8 @@
    "type": "definition",
    "label": "全有界",
    "title": "全有界 / 预紧（Totally Bounded）",
+   "label_en": "totally bounded",
+   "title_en": "Totally Bounded",
    "region": "topology",
    "regions": [
     "topology"
@@ -2010,6 +2052,8 @@
    "type": "definition",
    "label": "列紧",
    "title": "列紧 / 序列紧（Sequentially Compact）",
+   "label_en": "sequentially compact",
+   "title_en": "Sequentially Compact",
    "region": "topology",
    "regions": [
     "topology"
@@ -2032,6 +2076,8 @@
    "type": "definition",
    "label": "紧",
    "title": "紧空间（Compact Space）",
+   "label_en": "compact",
+   "title_en": "Compact Space",
    "region": "topology",
    "regions": [
     "topology"
@@ -2124,6 +2170,8 @@
    "type": "definition",
    "label": "基本类",
    "title": "基本类（Fundamental Class）",
+   "label_en": "fundamental class",
+   "title_en": "Fundamental Class",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -2170,6 +2218,8 @@
    "type": "definition",
    "label": "σ-环",
    "title": "σ-环（σ-Ring）",
+   "label_en": "sigma-ring",
+   "title_en": "sigma-ring",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2217,6 +2267,8 @@
    "type": "definition",
    "label": "单调类",
    "title": "单调类（Monotone Class）",
+   "label_en": "monotone class",
+   "title_en": "Monotone Class",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2284,6 +2336,8 @@
    "type": "definition",
    "label": "生成的 σ-代数",
    "title": "由 $\\mathcal{E}$ 生成的 σ-代数 / 单调类：$\\mathcal{M}(\\mathcal{E})$ 与 $\\mathfrak{m}(\\mathcal{E})$",
+   "label_en": "generated sigma-algebra",
+   "title_en": "generated sigma-algebra",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2308,6 +2362,8 @@
    "type": "theorem",
    "label": "单调类定理",
    "title": "单调类定理（Monotone Class Theorem）",
+   "label_en": "monotone class theorem",
+   "title_en": "Monotone Class Theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2331,6 +2387,8 @@
    "type": "definition",
    "label": "Borel σ-代数",
    "title": "Borel σ-代数（Borel σ-Algebra $\\mathfrak{B}_X$）",
+   "label_en": "Borel",
+   "title_en": "Borel",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -2354,6 +2412,8 @@
    "type": "definition",
    "label": "积 σ-代数",
    "title": "积 σ-代数（Product σ-Algebra）",
+   "label_en": "product sigma-algebra",
+   "title_en": "product sigma-algebra",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -2445,6 +2505,8 @@
    "type": "definition",
    "label": "测度",
    "title": "测度（Measure）",
+   "label_en": "measure",
+   "title_en": "Measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2471,6 +2533,8 @@
    "type": "definition",
    "label": "预测度",
    "title": "预测度（Premeasure）—— 定义在环上的「测度」",
+   "label_en": "premeasure",
+   "title_en": "Premeasure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2494,6 +2558,8 @@
    "type": "definition",
    "label": "有限可加测度",
    "title": "有限可加测度（Finitely Additive Measure）",
+   "label_en": "finitely additive",
+   "title_en": "Finitely Additive Measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2515,6 +2581,8 @@
    "type": "definition",
    "label": "有限 / σ-有限 / 半有限",
    "title": "测度空间的几种「大小」：有限、σ-有限、半有限",
+   "label_en": "sigma-finite",
+   "title_en": "sigma-finite",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2561,6 +2629,8 @@
    "type": "definition",
    "label": "零集与完备",
    "title": "μ-零集 / 完备测度空间（Null Set & Complete Measure Space）",
+   "label_en": "null set",
+   "title_en": "Null Set & Complete Measure Space",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2583,6 +2653,8 @@
    "type": "theorem",
    "label": "完备化定理",
    "title": "定理：任何测度空间都能完备化",
+   "label_en": "completion",
+   "title_en": "completion",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2627,6 +2699,8 @@
    "type": "definition",
    "label": "外测度",
    "title": "外测度（Outer Measure）",
+   "label_en": "outer measure",
+   "title_en": "Outer Measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2835,6 +2909,8 @@
    "type": "definition",
    "label": "可测函数",
    "title": "可测函数（Measurable Function）",
+   "label_en": "measurable function",
+   "title_en": "Measurable Function",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2971,6 +3047,8 @@
    "type": "definition",
    "label": "简单函数",
    "title": "简单函数（Simple Function）",
+   "label_en": "simple function",
+   "title_en": "Simple Function",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -2992,6 +3070,7 @@
    "type": "theorem",
    "label": "简单函数逼近",
    "title": "定理：可测函数都是简单函数列的极限",
+   "title_en": "approximation by simple functions",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3146,6 +3225,8 @@
    "type": "theorem",
    "label": "单调收敛定理",
    "title": "单调收敛定理（MCT, Monotone Convergence Theorem）",
+   "label_en": "monotone convergence theorem",
+   "title_en": "MCT, Monotone Convergence Theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3171,6 +3252,8 @@
    "type": "theorem",
    "label": "逐项积分",
    "title": "定理：非负函数级数可以逐项积分",
+   "label_en": "term-by-term integration",
+   "title_en": "term-by-term integration",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3330,6 +3413,8 @@
    "type": "definition",
    "label": "可积 / L¹",
    "title": "可积函数与 $L^{1}$ 空间",
+   "label_en": "integrable",
+   "title_en": "integrable",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3439,6 +3524,8 @@
    "type": "theorem",
    "label": "控制收敛定理",
    "title": "控制收敛定理（DCT, Dominated Convergence Theorem）",
+   "label_en": "dominated convergence",
+   "title_en": "DCT, Dominated Convergence Theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3509,6 +3596,7 @@
    "type": "theorem",
    "label": "交换极限/导数与积分",
    "title": "定理：在积分号下取极限与求导",
+   "title_en": "differentiation under the integral sign",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3532,6 +3620,8 @@
    "type": "definition",
    "label": "五种收敛",
    "title": "收敛的类型：一致 / 近一致 / a.e. / 依测度 / $L^{1}$",
+   "label_en": "modes of convergence",
+   "title_en": "modes of convergence",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3644,6 +3734,8 @@
    "type": "theorem",
    "label": "Egorov 定理",
    "title": "Egorov 定理：a.e. 收敛 $\\implies$ 近一致",
+   "label_en": "Egorov",
+   "title_en": "Egorov",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3667,6 +3759,8 @@
    "type": "corollary",
    "label": "Lusin 定理",
    "title": "Lusin 定理：可测函数几乎处处连续",
+   "label_en": "Lusin",
+   "title_en": "Lusin",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3690,6 +3784,8 @@
    "type": "definition",
    "label": "乘积测度",
    "title": "乘积测度（Product Measure $\\mu \\times \\nu$）",
+   "label_en": "product measure",
+   "title_en": "product measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3849,6 +3945,8 @@
    "type": "definition",
    "label": "符号测度",
    "title": "符号测度（Signed Measure）",
+   "label_en": "signed measure",
+   "title_en": "Signed Measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3914,6 +4012,8 @@
    "type": "theorem",
    "label": "Hahn 分解定理",
    "title": "Hahn 分解定理（Hahn Decomposition Theorem）",
+   "label_en": "Hahn decomposition",
+   "title_en": "Hahn Decomposition Theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3938,6 +4038,8 @@
    "type": "definition",
    "label": "相互奇异",
    "title": "相互奇异 / 互相垂直（Mutually Singular $\\mu \\perp \\nu$）",
+   "label_en": "mutually singular",
+   "title_en": "mutually singular",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3960,6 +4062,8 @@
    "type": "theorem",
    "label": "Jordan 分解定理",
    "title": "Jordan 分解定理（Jordan Decomposition Theorem）",
+   "label_en": "Jordan decomposition",
+   "title_en": "Jordan Decomposition Theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3982,6 +4086,8 @@
    "type": "definition",
    "label": "绝对连续",
    "title": "绝对连续（Absolute Continuity $\\nu \\ll \\mu$）",
+   "label_en": "absolutely continuous",
+   "title_en": "absolutely continuous",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4114,6 +4220,8 @@
    "type": "theorem",
    "label": "Lebesgue–Radon–Nikodym 定理",
    "title": "Lebesgue–Radon–Nikodym 定理：$\\nu = \\lambda + \\rho$，$\\lambda \\perp \\mu$，$\\rho \\ll \\mu$",
+   "label_en": "Radon-Nikodym theorem",
+   "title_en": "Radon-Nikodym theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4139,6 +4247,8 @@
    "type": "definition",
    "label": "RN 导数与 Lebesgue 分解",
    "title": "Radon–Nikodym 导数 $d\\nu/d\\mu$ 与 Lebesgue 分解",
+   "label_en": "Radon-Nikodym derivative",
+   "title_en": "Radon-Nikodym derivative",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4204,6 +4314,8 @@
    "type": "definition",
    "label": "复测度",
    "title": "复测度（Complex Measure）",
+   "label_en": "complex measure",
+   "title_en": "Complex Measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4247,6 +4359,8 @@
    "type": "proposition",
    "label": "全变差的基本性质",
    "title": "命题：$|\\nu(E)| \\le |\\nu|(E)$，且 $d|\\nu| = |f| d\\mu$",
+   "label_en": "total variation",
+   "title_en": "total variation",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4292,6 +4406,8 @@
    "type": "lemma",
    "label": "覆盖引理",
    "title": "覆盖引理：开球族里能挑出不交子族，三倍膨胀仍覆盖",
+   "label_en": "covering lemma",
+   "title_en": "covering lemma",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4314,6 +4430,8 @@
    "type": "definition",
    "label": "局部可积",
    "title": "局部可积函数 $L^{1}_{\\text{loc}}$",
+   "label_en": "locally integrable",
+   "title_en": "locally integrable",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4335,6 +4453,8 @@
    "type": "definition",
    "label": "平均算子 Aᵣ",
    "title": "平均算子（Averaging Operator $A_{r} f$）",
+   "label_en": "average operator",
+   "title_en": "average operator",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4378,6 +4498,8 @@
    "type": "definition",
    "label": "极大函数",
    "title": "Hardy–Littlewood 极大函数 Hf",
+   "label_en": "maximal function",
+   "title_en": "maximal function",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4400,6 +4522,8 @@
    "type": "theorem",
    "label": "极大定理",
    "title": "极大定理（弱 (1,1) 不等式）",
+   "label_en": "maximal theorem",
+   "title_en": "maximal theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4422,6 +4546,8 @@
    "type": "theorem",
    "label": "Lebesgue 微分定理",
    "title": "Lebesgue 微分定理：$A_{r} f(x) \\to f(x) \\text{a.e.}$",
+   "label_en": "differentiation theorem",
+   "title_en": "differentiation theorem",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4444,6 +4570,8 @@
    "type": "definition",
    "label": "Lebesgue 集",
    "title": "Lebesgue 集 $L_f$",
+   "label_en": "Lebesgue point",
+   "title_en": "Lebesgue point",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4486,6 +4614,8 @@
    "type": "definition",
    "label": "可缩族",
    "title": "可缩地趋于 x（Shrinks Nicely）",
+   "label_en": "shrinking",
+   "title_en": "shrinking",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4529,6 +4659,8 @@
    "type": "definition",
    "label": "正则 Borel 测度",
    "title": "正则 Borel 测度（Regular Borel Measure）",
+   "label_en": "regular measure",
+   "title_en": "regular measure",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4596,6 +4728,8 @@
    "type": "definition",
    "label": "有界变差 BV",
    "title": "全变差与有界变差函数（Total Variation, BV）",
+   "label_en": "bounded variation",
+   "title_en": "bounded variation",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4818,6 +4952,8 @@
    "type": "definition",
    "label": "绝对连续函数",
    "title": "绝对连续函数 AC（Absolutely Continuous Function）",
+   "label_en": "absolutely continuous function",
+   "title_en": "Absolutely Continuous Function",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4907,6 +5043,8 @@
    "type": "theorem",
    "label": "微积分基本定理（Lebesgue 版）",
    "title": "定理（TFAE）：绝对连续 $\\iff$ 是 $L^{1}$ 函数的积分 $\\iff$ 导数的积分还原",
+   "label_en": "fundamental theorem of calculus",
+   "title_en": "fundamental theorem of calculus",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4930,6 +5068,8 @@
    "type": "definition",
    "label": "L^p 范数",
    "title": "$L^p$ 范数与 $L^p$ 空间",
+   "label_en": "Lp norm",
+   "title_en": "Lp norm",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4952,6 +5092,8 @@
    "type": "lemma",
    "label": "Young 不等式",
    "title": "Young 不等式（$a^\\lambda \\cdot b^{1-\\lambda} \\le \\lambda a + (1-\\lambda)b$）",
+   "label_en": "Young",
+   "title_en": "Young",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4974,6 +5116,8 @@
    "type": "theorem",
    "label": "Hölder 不等式",
    "title": "Hölder 不等式",
+   "label_en": "Hölder",
+   "title_en": "Hölder",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4999,6 +5143,8 @@
    "type": "theorem",
    "label": "Minkowski 不等式",
    "title": "Minkowski 不等式（$L^p$ 的三角不等式）",
+   "label_en": "Minkowski",
+   "title_en": "Minkowski",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5021,6 +5167,8 @@
    "type": "theorem",
    "label": "L^p 是 Banach 空间",
    "title": "定理（Riesz–Fischer）：$1 \\le p < \\infty$ 时 $L^p$ 完备",
+   "label_en": "Banach",
+   "title_en": "Banach",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5044,6 +5192,8 @@
    "type": "proposition",
    "label": "紧支简单函数稠密",
    "title": "命题：紧支集简单函数在 $L^p$ 中稠密",
+   "label_en": "dense",
+   "title_en": "dense",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5199,6 +5349,8 @@
    "type": "definition",
    "label": "共轭指数",
    "title": "共轭指数（Conjugate Exponents）",
+   "label_en": "conjugate exponents",
+   "title_en": "Conjugate Exponents",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5221,6 +5373,8 @@
    "type": "definition",
    "label": "对偶配对 φ_g",
    "title": "由 g 给出的线性泛函 $\\varphi_g(f) = \\int f\\cdot g$",
+   "label_en": "dual pairing",
+   "title_en": "dual pairing",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5243,6 +5397,8 @@
    "type": "proposition",
    "label": "‖g‖_q = ‖φ_g‖",
    "title": "命题：$\\|\\varphi_g\\| = \\|g\\|_q$（$\\mu$ 半有限时也含 $q = \\infty$）",
+   "label_en": "isometry",
+   "title_en": "isometry",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5287,6 +5443,8 @@
    "type": "theorem",
    "label": "(L^p)* ≅ L^q",
    "title": "定理（Riesz 表示）：$1 < p < \\infty$ 时 $(L^p)^{*} \\cong L^q$",
+   "label_en": "dual space",
+   "title_en": "dual space",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5313,6 +5471,8 @@
    "type": "corollary",
    "label": "L^p 自反",
    "title": "推论：$1 < p < \\infty$ 时 $L^p \\cong (L^p)^{**}$",
+   "label_en": "reflexive",
+   "title_en": "reflexive",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5335,6 +5495,8 @@
    "type": "definition",
    "label": "扩充实数 [−∞,+∞]",
    "title": "扩充实数系 $\\overline{\\mathbb{R}}$（Extended Reals）",
+   "label_en": "extended real",
+   "title_en": "Extended Reals",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5356,6 +5518,8 @@
    "type": "definition",
    "label": "区间",
    "title": "区间（Interval）",
+   "label_en": "interval",
+   "title_en": "Interval",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -5399,6 +5563,8 @@
    "type": "definition",
    "label": "级数收敛",
    "title": "级数 $\\sum a_n$（Series）",
+   "label_en": "series",
+   "title_en": "Series",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5420,6 +5586,8 @@
    "type": "definition",
    "label": "连续",
    "title": "连续（Continuity）",
+   "label_en": "continuous",
+   "title_en": "continuous",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -5443,6 +5611,8 @@
    "type": "definition",
    "label": "导数",
    "title": "导数 $F'$（Derivative）",
+   "label_en": "derivative",
+   "title_en": "Derivative",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5464,6 +5634,8 @@
    "type": "definition",
    "label": "复数 ℂ",
    "title": "复数系 $\\mathbb{C}$（Complex Numbers）",
+   "label_en": "complex numbers",
+   "title_en": "Complex Numbers",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -5528,6 +5700,8 @@
    "type": "definition",
    "label": "空集 ∅",
    "title": "空集（Empty Set）",
+   "label_en": "empty set",
+   "title_en": "Empty Set",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -5594,6 +5768,8 @@
    "type": "definition",
    "label": "可数与不可数",
    "title": "可数 / 至多可数（Countable）",
+   "label_en": "countable",
+   "title_en": "Countable",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -5616,6 +5792,8 @@
    "type": "definition",
    "label": "几乎处处",
    "title": "几乎处处（Almost Everywhere, a.e.）",
+   "label_en": "almost everywhere",
+   "title_en": "Almost Everywhere, a.e.",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -5637,6 +5815,8 @@
    "type": "definition",
    "label": "幂集 𝒫(X)",
    "title": "幂集（Power Set）",
+   "label_en": "power set",
+   "title_en": "Power Set",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -5700,6 +5880,8 @@
    "type": "theorem",
    "label": "Cantor 定理",
    "title": "Cantor 定理：$|A| < |\\mathcal{P}(A)|$",
+   "label_en": "diagonal argument",
+   "title_en": "diagonal argument",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -5835,6 +6017,8 @@
    "type": "definition",
    "label": "连续映射",
    "title": "连续映射（Continuous Map）",
+   "label_en": "continuous map",
+   "title_en": "Continuous Map",
    "region": "topology",
    "regions": [
     "topology",
@@ -5858,6 +6042,8 @@
    "type": "definition",
    "label": "同胚",
    "title": "同胚（Homeomorphism）",
+   "label_en": "homeomorphism",
+   "title_en": "Homeomorphism",
    "region": "topology",
    "regions": [
     "topology"
@@ -5880,6 +6066,8 @@
    "type": "definition",
    "label": "子空间拓扑",
    "title": "子空间拓扑（Subspace Topology）",
+   "label_en": "subspace topology",
+   "title_en": "Subspace Topology",
    "region": "topology",
    "regions": [
     "topology"
@@ -5902,6 +6090,8 @@
    "type": "definition",
    "label": "商拓扑",
    "title": "商拓扑（Quotient Topology）",
+   "label_en": "quotient topology",
+   "title_en": "Quotient Topology",
    "region": "topology",
    "regions": [
     "topology"
@@ -5924,6 +6114,8 @@
    "type": "definition",
    "label": "积拓扑",
    "title": "积拓扑与乘积空间（Product Topology）",
+   "label_en": "product topology",
+   "title_en": "Product Topology",
    "region": "topology",
    "regions": [
     "topology"
@@ -5969,6 +6161,8 @@
    "type": "definition",
    "label": "连通与连通分量",
    "title": "连通空间与连通分量（Connectedness）",
+   "label_en": "connected",
+   "title_en": "Connectedness",
    "region": "topology",
    "regions": [
     "topology"
@@ -5991,6 +6185,8 @@
    "type": "definition",
    "label": "闭开集",
    "title": "闭开集（Clopen Set）",
+   "label_en": "clopen",
+   "title_en": "Clopen Set",
    "region": "topology",
    "regions": [
     "topology"
@@ -6081,6 +6277,8 @@
    "type": "definition",
    "label": "整数 ℤ",
    "title": "整数 $\\mathbb{Z}$（由 $\\mathbb{N} \\times \\mathbb{N}$ 构造）",
+   "label_en": "integers",
+   "title_en": "integers",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6103,6 +6301,8 @@
    "type": "definition",
    "label": "有理数 ℚ",
    "title": "有理数 $\\mathbb{Q}$（由 $\\mathbb{Z} \\times (\\mathbb{Z}\\setminus\\{0\\})$ 构造）",
+   "label_en": "rationals",
+   "title_en": "rationals",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6125,6 +6325,8 @@
    "type": "definition",
    "label": "绝对值 |x|",
    "title": "绝对值 $|x|$（Absolute Value）",
+   "label_en": "absolute value",
+   "title_en": "Absolute Value",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -6148,6 +6350,8 @@
    "type": "theorem",
    "label": "三角不等式",
    "title": "三角不等式 $|x + y| \\le |x| + |y|$",
+   "label_en": "triangle inequality",
+   "title_en": "triangle inequality",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -6194,6 +6398,8 @@
    "type": "definition",
    "label": "实数系 ℝ",
    "title": "实数系 $\\mathbb{R}$（由 Cauchy 列构造）",
+   "label_en": "real numbers",
+   "title_en": "real numbers",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -6244,6 +6450,8 @@
    "type": "lemma",
    "label": "阿基米德性质",
    "title": "阿基米德性质与 $\\mathbb{Q}$ 的稠密性",
+   "label_en": "Archimedean",
+   "title_en": "Archimedean",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -6318,6 +6526,8 @@
    "type": "definition",
    "label": "域",
    "title": "域 $F$（Field）",
+   "label_en": "field",
+   "title_en": "Field",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6341,6 +6551,8 @@
    "type": "definition",
    "label": "有序域",
    "title": "有序域（Ordered Field）",
+   "label_en": "ordered field",
+   "title_en": "Ordered Field",
    "region": "algebra",
    "regions": [
     "algebra",
@@ -6366,6 +6578,8 @@
    "type": "definition",
    "label": "序同构",
    "title": "序同构与序型（Order Isomorphism）",
+   "label_en": "order isomorphism",
+   "title_en": "Order Isomorphism",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -6390,6 +6604,8 @@
    "type": "definition",
    "label": "序数",
    "title": "序数（von Neumann Ordinal）",
+   "label_en": "ordinal",
+   "title_en": "von Neumann Ordinal",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6462,6 +6678,8 @@
    "type": "theorem",
    "label": "良序集的序型",
    "title": "每个良序集序同构于唯一的序数",
+   "label_en": "order type",
+   "title_en": "order type",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -6512,6 +6730,8 @@
    "type": "definition",
    "label": "一阶语言",
    "title": "一阶语言 $\\mathcal{L}$（First-Order Language）",
+   "label_en": "first-order logic",
+   "title_en": "first-order logic",
    "region": "logic",
    "regions": [
     "logic"
@@ -6536,6 +6756,8 @@
    "type": "definition",
    "label": "公式",
    "title": "项与公式 / 语句（Formula, Sentence）",
+   "label_en": "well-formed formula",
+   "title_en": "well-formed formula",
    "region": "logic",
    "regions": [
     "logic"
@@ -6561,6 +6783,8 @@
    "type": "definition",
    "label": "代入",
    "title": "代入 $\\varphi (x/t)$（Substitution）",
+   "label_en": "substitution",
+   "title_en": "substitution",
    "region": "logic",
    "regions": [
     "logic"
@@ -6609,6 +6833,8 @@
    "type": "definition",
    "label": "Grothendieck 宇宙",
    "title": "Grothendieck 宇宙（Grothendieck Universe）",
+   "label_en": "universe",
+   "title_en": "Grothendieck Universe",
    "region": "category",
    "regions": [
     "category"
@@ -6631,6 +6857,8 @@
    "type": "definition",
    "label": "图",
    "title": "图（Graph）",
+   "label_en": "graph",
+   "title_en": "Graph",
    "region": "category",
    "regions": [
     "category"
@@ -6652,6 +6880,8 @@
    "type": "definition",
    "label": "图的态射",
    "title": "图的态射（Morphism of Graphs）",
+   "label_en": "graph morphism",
+   "title_en": "graph morphism",
    "region": "category",
    "regions": [
     "category"
@@ -6674,6 +6904,8 @@
    "type": "definition",
    "label": "范畴",
    "title": "范畴（Category）",
+   "label_en": "category",
+   "title_en": "Category",
    "region": "category",
    "regions": [
     "category"
@@ -6696,6 +6928,8 @@
    "type": "definition",
    "label": "截面与收缩",
    "title": "截面与收缩（Section / Retraction）",
+   "label_en": "retraction",
+   "title_en": "Section / Retraction",
    "region": "category",
    "regions": [
     "category"
@@ -6718,6 +6952,8 @@
    "type": "definition",
    "label": "函子",
    "title": "函子（Functor）",
+   "label_en": "functor",
+   "title_en": "Functor",
    "region": "category",
    "regions": [
     "category"
@@ -6740,6 +6976,8 @@
    "type": "definition",
    "label": "自然变换",
    "title": "自然变换（Natural Transformation）",
+   "label_en": "natural transformation",
+   "title_en": "Natural Transformation",
    "region": "category",
    "regions": [
     "category"
@@ -6784,6 +7022,8 @@
    "type": "definition",
    "label": "本质满",
    "title": "本质满函子（Essentially Surjective）",
+   "label_en": "essentially surjective",
+   "title_en": "Essentially Surjective",
    "region": "category",
    "regions": [
     "category"
@@ -6806,6 +7046,8 @@
    "type": "definition",
    "label": "范畴等价",
    "title": "范畴等价（Equivalence of Categories）",
+   "label_en": "equivalence of categories",
+   "title_en": "Equivalence of Categories",
    "region": "category",
    "regions": [
     "category"
@@ -6850,6 +7092,8 @@
    "type": "definition",
    "label": "单纯对象",
    "title": "单纯对象（Simplicial Object）",
+   "label_en": "simplicial object",
+   "title_en": "Simplicial Object",
    "region": "category",
    "regions": [
     "category"
@@ -7028,6 +7272,8 @@
    "type": "definition",
    "label": "子对象",
    "title": "子对象（Subobject）",
+   "label_en": "subobject",
+   "title_en": "Subobject",
    "region": "category",
    "regions": [
     "category"
@@ -7050,6 +7296,8 @@
    "type": "theorem",
    "label": "极限的函子性",
    "title": "极限是函子（Limits as a Functor）",
+   "label_en": "lim functor",
+   "title_en": "lim functor",
    "region": "category",
    "regions": [
     "category"
@@ -7116,6 +7364,8 @@
    "type": "definition",
    "label": "预层",
    "title": "预层（Presheaf）",
+   "label_en": "presheaf",
+   "title_en": "Presheaf",
    "region": "category",
    "regions": [
     "category"
@@ -7138,6 +7388,8 @@
    "type": "definition",
    "label": "预层范畴",
    "title": "预层范畴（Category of Presheaves）",
+   "label_en": "presheaf category",
+   "title_en": "presheaf category",
    "region": "category",
    "regions": [
     "category"
@@ -7208,6 +7460,8 @@
    "type": "theorem",
    "label": "表示的两个定义等价",
    "title": "表示 $\\iff$ 与 $h^{X}$ 同构",
+   "label_en": "representable iff hom",
+   "title_en": "representable iff hom",
    "region": "category",
    "regions": [
     "category"
@@ -7230,6 +7484,8 @@
    "type": "proposition",
    "label": "米田嵌入",
    "title": "米田嵌入（Yoneda Embedding）",
+   "label_en": "Yoneda embedding",
+   "title_en": "Yoneda Embedding",
    "region": "category",
    "regions": [
     "category"
@@ -7252,6 +7508,8 @@
    "type": "definition",
    "label": "切片范畴",
    "title": "预层的切片范畴（Slice Category）",
+   "label_en": "slice category",
+   "title_en": "Slice Category",
    "region": "category",
    "regions": [
     "category"
@@ -7297,6 +7555,8 @@
    "type": "theorem",
    "label": "稠密性定理",
    "title": "稠密性定理（Density Theorem）",
+   "label_en": "density theorem",
+   "title_en": "Density Theorem",
    "region": "category",
    "regions": [
     "category"
@@ -7389,6 +7649,8 @@
    "type": "theorem",
    "label": "右伴随存在的判据",
    "title": "右伴随存在 $\\iff$ 可表示",
+   "label_en": "adjoint functor existence",
+   "title_en": "adjoint functor existence",
    "region": "category",
    "regions": [
     "category"
@@ -7477,6 +7739,8 @@
    "type": "theorem",
    "label": "伴随函子定理",
    "title": "伴随函子定理（SAFT）",
+   "label_en": "special adjoint functor theorem",
+   "title_en": "special adjoint functor theorem",
    "region": "category",
    "regions": [
     "category"
@@ -7521,6 +7785,8 @@
    "type": "definition",
    "label": "反射子范畴",
    "title": "反射子范畴（Reflective Subcategory）",
+   "label_en": "reflective subcategory",
+   "title_en": "Reflective Subcategory",
    "region": "category",
    "regions": [
     "category"
@@ -7565,6 +7831,8 @@
    "type": "definition",
    "label": "Kan 延拓",
    "title": "Kan 延拓（Kan Extension）",
+   "label_en": "Kan extension",
+   "title_en": "Kan Extension",
    "region": "category",
    "regions": [
     "category"
@@ -7609,6 +7877,8 @@
    "type": "proposition",
    "label": "滤过余极限正合",
    "title": "滤过余极限正合（$\\mathbf{Set}$ 中）",
+   "label_en": "filtered colimits are exact",
+   "title_en": "filtered colimits are exact",
    "region": "category",
    "regions": [
     "category"
@@ -7631,6 +7901,8 @@
    "type": "definition",
    "label": "紧 Hausdorff 空间范畴",
    "title": "紧 Hausdorff 空间范畴 $\\mathbf{CHaus}$",
+   "label_en": "compact Hausdorff",
+   "title_en": "compact Hausdorff",
    "region": "topology",
    "regions": [
     "topology"
@@ -7697,6 +7969,8 @@
    "type": "definition",
    "label": "自由紧 Hausdorff 空间",
    "title": "自由紧 Hausdorff 空间（Free Compact Hausdorff Space）",
+   "label_en": "free compact Hausdorff",
+   "title_en": "Free Compact Hausdorff Space",
    "region": "topology",
    "regions": [
     "topology"
@@ -7785,6 +8059,8 @@
    "type": "definition",
    "label": "自由表示",
    "title": "自由表示（Free Presentation）",
+   "label_en": "free presentation",
+   "title_en": "Free Presentation",
    "region": "topology",
    "regions": [
     "topology"
@@ -7961,6 +8237,8 @@
    "type": "theorem",
    "label": "Stone ⟺ 投射有限",
    "title": "Stone 空间 $\\iff$ 投射有限空间",
+   "label_en": "Stone duality",
+   "title_en": "Stone duality",
    "region": "topology",
    "regions": [
     "topology"
@@ -7983,6 +8261,8 @@
    "type": "theorem",
    "label": "Gleason 定理",
    "title": "Gleason 定理：$\\mathbf{CHaus}$ 的投射对象",
+   "label_en": "Gleason",
+   "title_en": "Gleason",
    "region": "topology",
    "regions": [
     "topology"
@@ -8005,6 +8285,8 @@
    "type": "corollary",
    "label": "Stonean 是收缩核",
    "title": "Stonean 空间 = 自由紧 Hausdorff 空间的收缩核",
+   "label_en": "retract",
+   "title_en": "retract",
    "region": "topology",
    "regions": [
     "topology"
@@ -8123,6 +8405,8 @@
    "type": "theorem",
    "label": "层的下降条件",
    "title": "用覆盖族检验层",
+   "label_en": "sheaf condition",
+   "title_en": "sheaf condition",
    "region": "category",
    "regions": [
     "category"
@@ -8145,6 +8429,8 @@
    "type": "definition",
    "label": "Čech 函子",
    "title": "Čech 函子（Čech Functor）",
+   "label_en": "Čech functor",
+   "title_en": "Čech Functor",
    "region": "category",
    "regions": [
     "category"
@@ -8277,6 +8563,8 @@
    "type": "proposition",
    "label": "层中单满即同构",
    "title": "层里的单满分解",
+   "label_en": "epi-mono factorization",
+   "title_en": "epi-mono factorization",
    "region": "category",
    "regions": [
     "category"
@@ -8299,6 +8587,8 @@
    "type": "proposition",
    "label": "满态射的局部判据",
    "title": "层中满态射的局部刻画",
+   "label_en": "local epimorphism",
+   "title_en": "local epimorphism",
    "region": "category",
    "regions": [
     "category"
@@ -8321,6 +8611,8 @@
    "type": "definition",
    "label": "有效等价关系",
    "title": "有效等价关系（Effective Equivalence Relation）",
+   "label_en": "effective equivalence relation",
+   "title_en": "Effective Equivalence Relation",
    "region": "category",
    "regions": [
     "category"
@@ -8431,6 +8723,8 @@
    "type": "definition",
    "label": "预拓扑斯",
    "title": "预拓扑斯（Pretopos）",
+   "label_en": "pretopos",
+   "title_en": "Pretopos",
    "region": "category",
    "regions": [
     "category"
@@ -8453,6 +8747,8 @@
    "type": "proposition",
    "label": "满-单分解",
    "title": "预拓扑斯中的满-单分解",
+   "label_en": "balanced",
+   "title_en": "balanced",
    "region": "category",
    "regions": [
     "category"
@@ -8497,6 +8793,8 @@
    "type": "definition",
    "label": "预标准拓扑",
    "title": "预标准拓扑（Precanonical Topology）",
+   "label_en": "precanonical topology",
+   "title_en": "Precanonical Topology",
    "region": "category",
    "regions": [
     "category"
@@ -8632,6 +8930,8 @@
    "type": "theorem",
    "label": "Giraud 定理",
    "title": "Giraud 定理",
+   "label_en": "Giraud",
+   "title_en": "Giraud",
    "region": "category",
    "regions": [
     "category"
@@ -8720,6 +9020,8 @@
    "type": "definition",
    "label": "拟紧对象",
    "title": "拟紧对象（Quasi-Compact Object）",
+   "label_en": "quasi-compact",
+   "title_en": "Quasi-Compact Object",
    "region": "category",
    "regions": [
     "category"
@@ -8764,6 +9066,8 @@
    "type": "definition",
    "label": "拟分离对象",
    "title": "拟分离对象（Quasi-Separated Object）",
+   "label_en": "quasi-separated",
+   "title_en": "Quasi-Separated Object",
    "region": "category",
    "regions": [
     "category"
@@ -8808,6 +9112,8 @@
    "type": "definition",
    "label": "拓扑斯的态射",
    "title": "拓扑斯的态射（Morphism of Toposes）",
+   "label_en": "geometric morphism",
+   "title_en": "geometric morphism",
    "region": "category",
    "regions": [
     "category"
@@ -8901,6 +9207,8 @@
    "type": "theorem",
    "label": "Cond 是拓扑斯",
    "title": "凝聚态集的范畴是拓扑斯",
+   "label_en": "Cond is a topos",
+   "title_en": "Cond is a topos",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -9030,6 +9338,8 @@
    "type": "definition",
    "label": "底拓扑空间",
    "title": "凝聚态集的底拓扑空间",
+   "label_en": "underlying topological space",
+   "title_en": "underlying topological space",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -9073,6 +9383,8 @@
    "type": "definition",
    "label": "凝聚态阿贝尔群",
    "title": "凝聚态阿贝尔群（Condensed Abelian Group）",
+   "label_en": "condensed abelian group",
+   "title_en": "Condensed Abelian Group",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -9095,6 +9407,8 @@
    "type": "proposition",
    "label": "截面函子保极限余极限",
    "title": "截面函子 $\\Gamma(F, -)$",
+   "label_en": "sections functor",
+   "title_en": "sections functor",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -9139,6 +9453,8 @@
    "type": "definition",
    "label": "Grothendieck 范畴",
    "title": "Grothendieck 范畴（Grothendieck Category）",
+   "label_en": "Grothendieck category",
+   "title_en": "Grothendieck Category",
    "region": "homology",
    "regions": [
     "homology"
@@ -9320,6 +9636,8 @@
    "type": "definition",
    "label": "同伦范畴",
    "title": "同伦范畴（Homotopy Category）",
+   "label_en": "homotopy category",
+   "title_en": "Homotopy Category",
    "region": "homology",
    "regions": [
     "homology"
@@ -9385,6 +9703,8 @@
    "type": "proposition",
    "label": "三角的旋转与延拓",
    "title": "导出三角的基本性质",
+   "label_en": "rotation",
+   "title_en": "rotation",
    "region": "homology",
    "regions": [
     "homology"
@@ -9473,6 +9793,8 @@
    "type": "definition",
    "label": "上同调函子",
    "title": "上同调函子（Cohomological Functor）",
+   "label_en": "cohomological functor",
+   "title_en": "Cohomological Functor",
    "region": "homology",
    "regions": [
     "homology"
@@ -9539,6 +9861,8 @@
    "type": "proposition",
    "label": "内射对象的判据",
    "title": "内射对象的四条等价说法",
+   "label_en": "injective criterion",
+   "title_en": "injective criterion",
    "region": "homology",
    "regions": [
     "homology"
@@ -9583,6 +9907,8 @@
    "type": "definition",
    "label": "谱序列",
    "title": "谱序列（Spectral Sequence）",
+   "label_en": "spectral sequence",
+   "title_en": "Spectral Sequence",
    "region": "homology",
    "regions": [
     "homology"
@@ -9671,6 +9997,8 @@
    "type": "definition",
    "label": "内 Hom",
    "title": "内 Hom（Internal Hom）",
+   "label_en": "internal hom",
+   "title_en": "Internal Hom",
    "region": "homology",
    "regions": [
     "homology"
@@ -9715,6 +10043,8 @@
    "type": "definition",
    "label": "平坦阿贝尔层",
    "title": "平坦性（Flatness）",
+   "label_en": "flat",
+   "title_en": "Flatness",
    "region": "homology",
    "regions": [
     "homology"
@@ -9805,6 +10135,8 @@
    "type": "definition",
    "label": "k-开、k-闭与 k-拓扑",
    "title": "$k$-开集与 $k$-化（$k$-Topology）",
+   "label_en": "k-ification",
+   "title_en": "k-ification",
    "region": "topology",
    "regions": [
     "topology"
@@ -9850,6 +10182,8 @@
    "type": "proposition",
    "label": "紧生成空间是余反射子范畴",
    "title": "紧生成空间是 $\\mathbf{Top}$ 的余反射子范畴",
+   "label_en": "kification",
+   "title_en": "kification",
    "region": "topology",
    "regions": [
     "topology"
@@ -9873,6 +10207,8 @@
    "type": "theorem",
    "label": "商映射与局部紧空间作积",
    "title": "商映射与局部紧因子作积仍是商映射",
+   "label_en": "quotient map product",
+   "title_en": "quotient map product",
    "region": "topology",
    "regions": [
     "topology"
@@ -9941,6 +10277,8 @@
    "type": "definition",
    "label": "紧开拓扑",
    "title": "紧开拓扑（Compact-Open Topology）",
+   "label_en": "compact-open topology",
+   "title_en": "Compact-Open Topology",
    "region": "topology",
    "regions": [
     "topology"
@@ -9985,6 +10323,8 @@
    "type": "definition",
    "label": "弱 Hausdorff 空间",
    "title": "弱 Hausdorff 空间（Weak Hausdorff Space）",
+   "label_en": "weak Hausdorff",
+   "title_en": "Weak Hausdorff Space",
    "region": "topology",
    "regions": [
     "topology"
@@ -10029,6 +10369,8 @@
    "type": "proposition",
    "label": "紧块的纤维积还是紧的",
    "title": "紧 Hausdorff 沿弱 Hausdorff 的纤维积",
+   "label_en": "fiber product compact",
+   "title_en": "fiber product compact",
    "region": "topology",
    "regions": [
     "topology"
@@ -10215,6 +10557,8 @@
    "type": "definition",
    "label": "子群",
    "title": "子群（Subgroup）",
+   "label_en": "subgroup",
+   "title_en": "Subgroup",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10260,6 +10604,8 @@
    "type": "definition",
    "label": "商群",
    "title": "商群（Quotient Group）",
+   "label_en": "quotient group",
+   "title_en": "Quotient Group",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10334,6 +10680,8 @@
    "type": "definition",
    "label": "局部化",
    "title": "范畴的局部化（Localization）",
+   "label_en": "localization",
+   "title_en": "Localization",
    "region": "category",
    "regions": [
     "category"
@@ -10357,6 +10705,8 @@
    "type": "proposition",
    "label": "分式演算下的局部化",
    "title": "右分式演算 $\\implies$ 局部化好算",
+   "label_en": "calculus of fractions",
+   "title_en": "calculus of fractions",
    "region": "category",
    "regions": [
     "category"
@@ -10380,6 +10730,8 @@
    "type": "definition",
    "label": "正规空间",
    "title": "正规空间（Normal Space）",
+   "label_en": "normal space",
+   "title_en": "Normal Space",
    "region": "topology",
    "regions": [
     "topology"
@@ -10403,6 +10755,8 @@
    "type": "lemma",
    "label": "Urysohn 引理",
    "title": "Urysohn 引理",
+   "label_en": "Urysohn",
+   "title_en": "Urysohn",
    "region": "topology",
    "regions": [
     "topology"
@@ -10426,6 +10780,8 @@
    "type": "definition",
    "label": "拓扑阿贝尔群",
    "title": "拓扑阿贝尔群与连续同态（Topological Abelian Group）",
+   "label_en": "topological abelian group",
+   "title_en": "Topological Abelian Group",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -10519,6 +10875,8 @@
    "type": "proposition",
    "label": "局部紧阿贝尔群不是阿贝尔范畴",
    "title": "局部紧 Hausdorff 阿贝尔群：预阿贝尔但非阿贝尔",
+   "label_en": "pre-abelian",
+   "title_en": "pre-abelian",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -10543,6 +10901,8 @@
    "type": "definition",
    "label": "Pontryagin 对偶",
    "title": "Pontryagin 对偶（Pontryagin Dual）",
+   "label_en": "Pontryagin dual",
+   "title_en": "Pontryagin Dual",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -10566,6 +10926,8 @@
    "type": "theorem",
    "label": "Pontryagin–van Kampen 对偶",
    "title": "Pontryagin–van Kampen 对偶定理",
+   "label_en": "Pontryagin-van Kampen",
+   "title_en": "Pontryagin-van Kampen",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -10591,6 +10953,8 @@
    "type": "definition",
    "label": "环",
    "title": "环与交换环（Ring）",
+   "label_en": "ring",
+   "title_en": "ring",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10637,6 +11001,8 @@
    "type": "definition",
    "label": "模",
    "title": "模与模同态（Module）",
+   "label_en": "module",
+   "title_en": "Module",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -10685,6 +11051,8 @@
    "type": "definition",
    "label": "连通范畴",
    "title": "连通范畴（Connected Category）",
+   "label_en": "connected category",
+   "title_en": "Connected Category",
    "region": "category",
    "regions": [
     "category"
@@ -10732,6 +11100,8 @@
    "type": "theorem",
    "label": "共尾函子不改变余极限",
    "title": "共尾 $\\implies$ 沿 $F$ 算余极限与沿 $I$ 算同构",
+   "label_en": "cofinal colimit",
+   "title_en": "cofinal colimit",
    "region": "category",
    "regions": [
     "category"
@@ -10779,6 +11149,8 @@
    "type": "proposition",
    "label": "滤过范畴可换成有向集",
    "title": "滤过 $\\implies$ 存在共尾的有向集",
+   "label_en": "directed set",
+   "title_en": "directed set",
    "region": "category",
    "regions": [
     "category"
@@ -10900,6 +11272,8 @@
    "type": "example",
    "label": "环的局部化 W⁻¹R",
    "title": "环的局部化（Localization of a Ring）",
+   "label_en": "localization of a ring",
+   "title_en": "Localization of a Ring",
    "region": "algebra",
    "regions": [
     "algebra",
@@ -10998,6 +11372,8 @@
    "type": "definition",
    "label": "截面函子",
    "title": "截面函子与全局截面（Sections Functor）",
+   "label_en": "sections functor",
+   "title_en": "Sections Functor",
    "region": "category",
    "regions": [
     "category"
@@ -11046,6 +11422,8 @@
    "type": "lemma",
    "label": "五引理",
    "title": "五引理（Five Lemma）",
+   "label_en": "five lemma",
+   "title_en": "Five Lemma",
    "region": "homology",
    "regions": [
     "homology"
@@ -11070,6 +11448,8 @@
    "type": "definition",
    "label": "子范畴",
    "title": "子范畴与满子范畴（Subcategory）",
+   "label_en": "subcategory",
+   "title_en": "Subcategory",
    "region": "category",
    "regions": [
     "category"
@@ -11116,6 +11496,8 @@
    "type": "definition",
    "label": "Ind-对象",
    "title": "Ind-对象与 $\\operatorname{Ind}(\\mathcal{C})$",
+   "label_en": "ind-object",
+   "title_en": "ind-object",
    "region": "category",
    "regions": [
     "category"
@@ -11139,6 +11521,8 @@
    "type": "definition",
    "label": "保极限的函子",
    "title": "函子保极限（Preservation of Limits）",
+   "label_en": "preserves limits",
+   "title_en": "preserves limits",
    "region": "category",
    "regions": [
     "category"
@@ -11209,6 +11593,8 @@
    "type": "definition",
    "label": "加法函子",
    "title": "加法函子（Additive Functor）",
+   "label_en": "additive functor",
+   "title_en": "Additive Functor",
    "region": "homology",
    "regions": [
     "homology"
@@ -11348,6 +11734,8 @@
    "type": "definition",
    "label": "局部紧 Hausdorff 空间",
    "title": "局部紧 Hausdorff 空间（Locally Compact Hausdorff）",
+   "label_en": "locally compact",
+   "title_en": "Locally Compact Hausdorff",
    "region": "topology",
    "regions": [
     "topology"
@@ -11396,6 +11784,8 @@
    "type": "definition",
    "label": "拓扑生成集",
    "title": "拓扑生成集（Topologically Generating Set）",
+   "label_en": "topologically generating",
+   "title_en": "Topologically Generating Set",
    "region": "category",
    "regions": [
     "category"
@@ -11419,6 +11809,8 @@
    "type": "definition",
    "label": "连续函子（site 之间）",
    "title": "连续函子（Continuous Functor between Sites）",
+   "label_en": "continuous functor",
+   "title_en": "Continuous Functor between Sites",
    "region": "category",
    "regions": [
     "category"
@@ -11442,6 +11834,8 @@
    "type": "definition",
    "label": "site 的态射",
    "title": "site 的态射（Morphism of Sites）",
+   "label_en": "morphism of sites",
+   "title_en": "Morphism of Sites",
    "region": "category",
    "regions": [
     "category"
@@ -11465,6 +11859,8 @@
    "type": "definition",
    "label": "余连续函子",
    "title": "余连续函子（Cocontinuous Functor）",
+   "label_en": "cocontinuous",
+   "title_en": "Cocontinuous Functor",
    "region": "category",
    "regions": [
     "category"
@@ -11488,6 +11884,8 @@
    "type": "definition",
    "label": "诱导拓扑",
    "title": "诱导拓扑（Induced Topology）",
+   "label_en": "induced topology",
+   "title_en": "Induced Topology",
    "region": "category",
    "regions": [
     "category"
@@ -11536,6 +11934,8 @@
    "type": "proposition",
    "label": "交换化",
    "title": "交换化 $G \\mapsto G^{\\mathrm{ab}}$ 是左伴随",
+   "label_en": "abelianization",
+   "title_en": "abelianization",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -11584,6 +11984,8 @@
    "type": "definition",
    "label": "严格态射",
    "title": "严格态射（Strict Morphism）",
+   "label_en": "strict morphism",
+   "title_en": "Strict Morphism",
    "region": "category",
    "regions": [
     "category"
@@ -11863,6 +12265,8 @@
    "type": "definition",
    "label": "导出范畴",
    "title": "导出范畴 $D(\\mathcal{A})$",
+   "label_en": "derived category",
+   "title_en": "derived category",
    "region": "homology",
    "regions": [
     "homology"
@@ -11956,6 +12360,8 @@
    "type": "definition",
    "label": "右导出函子",
    "title": "右导出函子 $RF$",
+   "label_en": "right derived functor",
+   "title_en": "right derived functor",
    "region": "homology",
    "regions": [
     "homology"
@@ -12001,6 +12407,8 @@
    "type": "definition",
    "label": "扩展群 Ext",
    "title": "扩展群 $\\operatorname{Ext}^{n}$",
+   "label_en": "extension group",
+   "title_en": "extension group",
    "region": "homology",
    "regions": [
     "homology"
@@ -12051,6 +12459,8 @@
    "type": "definition",
    "label": "F-零调对象",
    "title": "$F$-零调对象（$F$-Acyclic）",
+   "label_en": "acyclic",
+   "title_en": "acyclic",
    "region": "homology",
    "regions": [
     "homology"
@@ -12121,6 +12531,8 @@
    "type": "definition",
    "label": "双复形",
    "title": "双复形（Bicomplex）",
+   "label_en": "bicomplex",
+   "title_en": "Bicomplex",
    "region": "homology",
    "regions": [
     "homology"
@@ -12167,6 +12579,8 @@
    "type": "definition",
    "label": "层上同调",
    "title": "层上同调 $H^{n}(X, M^{\\bullet})$",
+   "label_en": "sheaf cohomology",
+   "title_en": "sheaf cohomology",
    "region": "homology",
    "regions": [
     "homology",
@@ -12191,6 +12605,8 @@
    "type": "definition",
    "label": "Čech 上同调",
    "title": "Čech 上同调 $\\check{H}^{n}(X, M^{\\bullet})$",
+   "label_en": "Cech cohomology",
+   "title_en": "Cech cohomology",
    "region": "homology",
    "regions": [
     "homology",
@@ -12262,6 +12678,8 @@
    "type": "definition",
    "label": "无环层",
    "title": "无环层（Acyclic Sheaf）",
+   "label_en": "acyclic sheaf",
+   "title_en": "Acyclic Sheaf",
    "region": "homology",
    "regions": [
     "homology"
@@ -12429,6 +12847,8 @@
    "type": "proposition",
    "label": "内部 Hom 的函数空间刻画",
    "title": "$C(X(\\bullet), Y) \\cong \\operatorname{Hom}(X, Y)$",
+   "label_en": "internal hom",
+   "title_en": "internal hom",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -12475,6 +12895,8 @@
    "type": "lemma",
    "label": "弱 Hausdorff 推出 拟分离",
    "title": "弱 Hausdorff 的紧块相交还是紧块",
+   "label_en": "weak Hausdorff quasi-separated",
+   "title_en": "weak Hausdorff quasi-separated",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -12521,6 +12943,8 @@
    "type": "lemma",
    "label": "拟分离 推出 底空间弱 Hausdorff",
    "title": "拟分离凝聚态集的底空间弱 Hausdorff",
+   "label_en": "underlying weak Hausdorff",
+   "title_en": "underlying weak Hausdorff",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -12544,6 +12968,7 @@
    "type": "proposition",
    "label": "紧生成：弱 Hausdorff ⟺ 拟分离",
    "title": "紧生成空间上两个条件等价",
+   "title_en": "weak Hausdorff iff quasi-separated",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -12591,6 +13016,8 @@
    "type": "proposition",
    "label": "Stonean 上凝聚阿贝尔群零调",
    "title": "Stonean 空间上一切凝聚态阿贝尔群零调",
+   "label_en": "Stonean acyclic",
+   "title_en": "Stonean acyclic",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12615,6 +13042,8 @@
    "type": "lemma",
    "label": "Stone 上常系数零调",
    "title": "Stone 空间上常值系数的零调",
+   "label_en": "Stone acyclic constant",
+   "title_en": "Stone acyclic constant",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12639,6 +13068,8 @@
    "type": "theorem",
    "label": "局部紧上凝聚态＝层上同调",
    "title": "Dyckhoff：$H^{n}_{\\mathrm{cond}}(X, M) = H^{n}_{\\mathrm{sheaf}}(X, M)$",
+   "label_en": "Dyckhoff",
+   "title_en": "Dyckhoff",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12663,6 +13094,8 @@
    "type": "definition",
    "label": "半范数阿贝尔群",
    "title": "半范数阿贝尔群",
+   "label_en": "semi-normed abelian group",
+   "title_en": "semi-normed abelian group",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12686,6 +13119,8 @@
    "type": "definition",
    "label": "Banach 阿贝尔群",
    "title": "Banach 阿贝尔群与 Banach 化",
+   "label_en": "Banach abelian group",
+   "title_en": "Banach abelian group",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12710,6 +13145,8 @@
    "type": "definition",
    "label": "K-有界正合",
    "title": "$K$-有界正合与 $K$-有界零调",
+   "label_en": "K-bounded exact",
+   "title_en": "K-bounded exact",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12734,6 +13171,8 @@
    "type": "lemma",
    "label": "K-有界正合在完备化下不变",
    "title": "$K$-有界正合 $\\iff$ 完备化后 $K$-有界正合",
+   "label_en": "k-bounded completion",
+   "title_en": "k-bounded completion",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12854,6 +13293,8 @@
    "type": "theorem",
    "label": "Tietze 延拓（Banach 值）",
    "title": "Tietze 延拓定理：$C(X, V) \\twoheadrightarrow C(K, V)$",
+   "label_en": "Tietze",
+   "title_en": "Tietze",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -12952,6 +13393,8 @@
    "type": "lemma",
    "label": "分解上乘 p 与 M 上乘 p 同伦",
    "title": "标量乘法的同伦提升",
+   "label_en": "scalar homotopy",
+   "title_en": "scalar homotopy",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -13318,6 +13761,8 @@
    "type": "proposition",
    "label": "挠 与 Stonean，无挠 与 连通",
    "title": "Pontryagin 对偶下的挠与连通",
+   "label_en": "torsion Stonean",
+   "title_en": "torsion Stonean",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -13368,6 +13813,8 @@
    "type": "proposition",
    "label": "Cond 的满态射都是正则的",
    "title": "$\\mathrm{Cond}$ 中满态射 $=$ 余等化子",
+   "label_en": "epi regular",
+   "title_en": "epi regular",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -13416,6 +13863,8 @@
    "type": "definition",
    "label": "一般正合列",
    "title": "正合列",
+   "label_en": "exact sequence",
+   "title_en": "exact sequence",
    "region": "homology",
    "regions": [
     "homology",
@@ -13440,6 +13889,8 @@
    "type": "proposition",
    "label": "Grothendieck 范畴有足够多内射",
    "title": "Grothendieck 范畴有足够多的内射对象",
+   "label_en": "enough injectives",
+   "title_en": "enough injectives",
    "region": "homology",
    "regions": [
     "homology"
@@ -13556,6 +14007,8 @@
    "type": "definition",
    "label": "布尔环",
    "title": "布尔环（Boolean Ring）",
+   "label_en": "Boolean ring",
+   "title_en": "Boolean Ring",
    "region": "topology",
    "regions": [
     "topology",
@@ -13580,6 +14033,8 @@
    "type": "theorem",
    "label": "Boolean 环与 Stone 空间等价",
    "title": "Stone 表示定理：$\\mathbf{BoolRing}^{\\mathrm{op}} \\simeq \\mathbf{Stone}$",
+   "label_en": "Stone representation",
+   "title_en": "Stone representation",
    "region": "topology",
    "regions": [
     "topology",
@@ -14482,6 +14937,8 @@
    "type": "proposition",
    "label": "茎与分离预层",
    "title": "命题：茎 $T_{x} = \\varinjlim_{U \\ni x}T(U)$ 与「分离」的茎刻画",
+   "label_en": "stalk",
+   "title_en": "stalk",
    "region": "category",
    "regions": [
     "category"

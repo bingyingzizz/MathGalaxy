@@ -124,6 +124,21 @@
       });
     });
 
+    /* ---------------------------------------------------- 英文名字段（i18n） */
+    /* `src/data/i18n.js` 是一张**按 id 索引的旁挂表**（由 tools/i18n-backfill.mjs
+       从 aka / title 现算，别手写）。这里只做一件事：把 title_en / label_en 抄到
+       节点上。引擎不认识「英文」这回事 —— 缺省就什么都不做，
+       消费方按 `label_en → title_en → 中文 label` 回落。 */
+    var i18n = (MG.i18n && MG.i18n.nodes) || null;
+    if (i18n) {
+      nodes.forEach(function (n) {
+        var e = i18n[n.id];
+        if (!e) return;
+        if (e.title_en) n.title_en = e.title_en;
+        if (e.label_en) n.label_en = e.label_en;
+      });
+    }
+
     var autoId = 0;
     packs.forEach(function (pack) {
       var name = pack.name || 'pack';
