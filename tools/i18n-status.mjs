@@ -17,8 +17,14 @@
      bun tools/i18n-status.mjs --patch         打印「缺 basedOn 的字段该填什么」，照抄进数据文件
      bun tools/i18n-status.mjs --json          机器可读
 
-   ⛔ 本工具**不写任何文件**。stale 要靠「重新对稿」消掉，不是把 basedOn 刷新一下 ——
+   ⛔ 本工具默认**不写任何文件**。stale 要靠「重新对稿」消掉，不是把 basedOn 刷新一下 ——
       那样等于悄悄作废审校记录（要重设就自己把那一行改成上面打印的新值）。
+   ⭐ 唯一的例外是 `--rebump`：**内容版本号整体 +1 之后**，把每条 basedOn 的**版本段**
+      换成新版本（指纹段一个字符都不动）。它只做机械替换，并且**先拒绝**任何指纹对不上
+      的条目（真正过期的东西不会被它偷偷洗白）。
+   用法：
+     bun tools/i18n-status.mjs --rebump          干跑：列出会改哪些行
+     bun tools/i18n-status.mjs --rebump --apply  真写（三个数据文件）
    ========================================================================== */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -30,6 +36,8 @@ const argv = process.argv.slice(2);
 const MD = argv.includes('--md');
 const PATCH = argv.includes('--patch');
 const JSONOUT = argv.includes('--json');
+const REBUMP = argv.includes('--rebump');
+const APPLY = argv.includes('--apply');
 const ii = argv.indexOf('--ids');
 const ONLY = ii >= 0 ? (argv[ii + 1] || '').split(',').map(s => s.trim()).filter(Boolean) : null;
 
@@ -82,6 +90,8 @@ function push(file, id, field, rec, zh) {
     why = why || 'stale';
   }
   rows.push({ file, id, field, state, basedOn: rec.basedOn, why,
+    /* ⭐ 指纹对不上 = **真 stale**（中文那句被改过）；只有版本段对不上则不算 */
+    fpBad: !!(hash && zh != null && hash !== MG.zhHash(zh)),
     need: rec.basedOn ? null : `${VERSION}#${MG.zhHash(zh)}` });
 }
 
@@ -97,6 +107,46 @@ for (const name of Object.keys(D.docs || {})) {
   const d = D.docs[name];
   push('docs', name, name, { status: d.status || D.status, basedOn: d.basedOn || D.basedOn,
     reviewed: d.reviewed !== undefined ? d.reviewed : D.reviewed }, null);
+}
+
+/* ------------------------------------------------- 版本号整体 +1 后的机械重基线 */
+/* 干什么：内容版本从 vX.Y.Z 涨到 vX'.Y'.Z' 之后，每条英文记录的 `basedOn` 里那个
+   **版本段**就过期了 —— 但中文底稿一个字没动（指纹段会证明这一点）。
+   于是把版本段统一换成新版本，指纹段原样保留。
+   ⛔ 先拒绝：只要有一条的指纹对不上（= 真正该重新对稿的），就**一条都不改**并 exit 1。
+   ⛔ 只认 `basedOn: '<ver>#<hash>'` 这种形状的**数据行**，不碰注释、不碰别的字符串。 */
+function rebump() {
+  const FILES = ['data/i18n/abstracts.en.js', 'data/i18n/statements.en.js', 'data/i18n/docs.en.js'];
+  /* 先算「哪些条目指纹对不上」——用已经跑出来的 rows */
+  /* ⚠️ 「真 stale」= **指纹**对不上（中文那句被改过）。只是版本段落后（内容加了几条
+     id、中文原文没动）不算 —— 那种情况正是本动作要处理的。 */
+  const staleIds = new Set(rows.filter(r => r.fpBad).map(r => `${r.file}:${r.id}.${r.field}`));
+  if (staleIds.size) {
+    console.log(`✗ 有 ${staleIds.size} 条是**真 stale**（指纹对不上）——不许重基线。先重新对稿：`);
+    for (const k of Array.from(staleIds).slice(0, 10)) console.log('   - ' + k);
+    process.exit(1);
+  }
+  let changed = 0;
+  for (const rel of FILES) {
+    const p = path.join(SRC, rel);
+    const src = fs.readFileSync(p, 'utf8');
+    const out = src.replace(/basedOn: '([^'#]+)(#[0-9a-f]{8})?'/g, (all, ver, hash) => {
+      if (ver === VERSION) return all;
+      changed++;
+      return `basedOn: '${VERSION}${hash || ''}'`;
+    });
+    if (out !== src) {
+      console.log(`  ${rel}：${(src.match(/basedOn: '([^'#]+)/g) || []).filter((s) => !s.startsWith(`basedOn: '${VERSION}`)).length} 行 → ${VERSION}`);
+      if (APPLY) fs.writeFileSync(p, out, 'utf8');
+    }
+  }
+  console.log(changed
+    ? (APPLY ? `✓ 已把 ${changed} 处 basedOn 的版本段改成 ${VERSION}（指纹未动）` : `（干跑）会改 ${changed} 处 → 加 --apply 才写`)
+    : `✓ 全部已经是 ${VERSION}，不用改`);
+}
+if (REBUMP) {
+  rebump();
+  process.exit(0);
 }
 
 /* --------------------------------------------------------------- 输出 */

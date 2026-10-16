@@ -22,4 +22,4 @@ refs: Enderton, A Mathematical Introduction to Logic, Ch. 1；Kunen, Set Theory,
 
 > 说明见 `notes/def.formula.md`
 
-引用：`def.formula`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.formula`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

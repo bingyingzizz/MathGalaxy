@@ -27,4 +27,4 @@ refs: Halmos, Measure Theory, §13；Folland, Real Analysis, Prop. 1.6
 
 > 说明见 `notes/thm.completion.md`
 
-引用：`thm.completion`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.completion`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

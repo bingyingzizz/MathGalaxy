@@ -9,5 +9,5 @@ A family $\{E_r\}_{r > 0}$ of Borel subsets of $\mathbb{R}^n$ shrinks nicely to 
 Chinese only — see the Chinese page `nodes/def.shrinks-nicely.md` and `proofs/`.
 
 
-Cite: `def.shrinks-nicely` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.shrinks-nicely` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -1,4 +1,4 @@
-# 紧生成空间与弱 Hausdorff（topo.cg）· 节点清单（第 1/2 页）
+# 紧生成空间与弱 Hausdorff / Compactly Generated Spaces and Weak Hausdorff（topo.cg）· 节点清单（第 1/3 页）
 
 造出「乘积好用的拓扑空间范畴」：紧生成空间（$k$-空间）→ $k$-拓扑与 $k$-化 → 商映射与积 → 紧开拓扑 → 弱 Hausdorff → $\mathrm{CGWH}$ 是反射子范畴。
 中心天体 def.compactly-generated　·　23 个节点　·　根 `../`　·　续页 `index/topo.cg.2.md`

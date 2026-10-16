@@ -11,5 +11,5 @@ names: `slice category` (short) · `Slice Category` (full)
 Chinese only — see the Chinese page `nodes/def.slice-category.md` and `proofs/`.
 
 
-Cite: `def.slice-category` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.slice-category` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

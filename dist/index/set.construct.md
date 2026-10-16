@@ -1,4 +1,4 @@
-# 集合的构造（set.construct）· 节点清单（第 1/1 页）
+# 集合的构造 / Constructing Sets（set.construct）· 节点清单（第 1/1 页）
 
 造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。
 中心天体 def.subset　·　9 个节点　·　根 `../`

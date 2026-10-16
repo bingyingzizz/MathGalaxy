@@ -11,5 +11,5 @@ names: `extended real` (short) · `Extended Reals` (full)
 Chinese only — see the Chinese page `nodes/def.extended-real.md` and `proofs/`.
 
 
-Cite: `def.extended-real` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.extended-real` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

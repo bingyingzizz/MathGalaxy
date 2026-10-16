@@ -19,4 +19,4 @@ refs: Jech, The Axiom of Choice, Ch. 3
 
 > 说明见 `notes/thm.cardinal-comparable.md`
 
-引用：`thm.cardinal-comparable`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.cardinal-comparable`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

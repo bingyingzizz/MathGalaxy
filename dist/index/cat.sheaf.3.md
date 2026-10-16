@@ -1,4 +1,4 @@
-# 层与拓扑（cat.sheaf）· 节点清单（第 3/3 页）
+# 层与拓扑 / Sheaves and Topologies（cat.sheaf）· 节点清单（第 3/3 页）
 根 `../`　·　第 1 页 `index/cat.sheaf.md`　·　上一页 `index/cat.sheaf.2.md`
 
 - prop.cech-properties　Čech 函子的性质　layer 17

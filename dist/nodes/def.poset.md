@@ -21,4 +21,4 @@ refs: Kunen, Set Theory, I.11；Davey & Priestley, Introduction to Lattices and 
 
 > 说明见 `notes/def.poset.md`
 
-引用：`def.poset`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.poset`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

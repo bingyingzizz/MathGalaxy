@@ -6,5 +6,5 @@ English entry · root `../`
 Chinese only — see the Chinese page `nodes/prop.section-measurable.md` and `proofs/`.
 
 
-Cite: `prop.section-measurable` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.section-measurable` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

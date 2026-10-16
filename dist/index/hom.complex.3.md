@@ -1,4 +1,4 @@
-# 复形与导出三角（hom.complex）· 节点清单（第 3/3 页）
+# 复形与导出三角 / Complexes and Distinguished Triangles（hom.complex）· 节点清单（第 3/3 页）
 根 `../`　·　第 1 页 `index/hom.complex.md`　·　上一页 `index/hom.complex.2.md`
 
 - prop.injective-iff-acyclic　内射与零调的等价　layer 16

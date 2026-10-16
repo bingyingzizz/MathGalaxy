@@ -1,6 +1,7 @@
-# 层上同调（hom.sheafcoh）· 节点清单（第 3/3 页）
+# 层上同调 / Sheaf Cohomology（hom.sheafcoh）· 节点清单（第 3/3 页）
 根 `../`　·　第 1 页 `index/hom.sheafcoh.md`　·　上一页 `index/hom.sheafcoh.2.md`
 
+- prop.cohomology-via-associated-sheaf　用关联层算上同调　layer 18
 - prop.cohomology-presheaf-H　层化不改变导出的整体截面　layer 18
 - prop.acyclic-iff-cech　无环 ⟺ Čech 上同调为零　layer 19
 - lem.covering-free-acyclic　覆盖给出的自由复形零调　layer 19

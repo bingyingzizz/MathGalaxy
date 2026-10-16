@@ -13,5 +13,5 @@ Chinese only — see the Chinese page `nodes/ax.choice.md` and `proofs/`.
 Wikipedia: https://en.wikipedia.org/wiki/Axiom_of_choice · nLab: https://ncatlab.org/nlab/show/axiom+of+choice
 
 
-Cite: `ax.choice` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `ax.choice` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

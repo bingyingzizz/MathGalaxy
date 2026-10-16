@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/thm.metric-compact-equiv.md` and `p
 Wikipedia: https://en.wikipedia.org/wiki/Sequentially_compact_space · nLab: https://ncatlab.org/nlab/show/compact+space
 
 
-Cite: `thm.metric-compact-equiv` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.metric-compact-equiv` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

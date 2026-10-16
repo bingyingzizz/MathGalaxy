@@ -17,4 +17,4 @@ refs: Folland, Real Analysis, Lemma 3.16
 
 > 说明见 `notes/lem.average-continuous.md`
 
-引用：`lem.average-continuous`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`lem.average-continuous`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

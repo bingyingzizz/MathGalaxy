@@ -11,5 +11,5 @@ names: `precanonical topology` (short) · `Precanonical Topology` (full)
 Chinese only — see the Chinese page `nodes/def.precanonical-topology.md` and `proofs/`.
 
 
-Cite: `def.precanonical-topology` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.precanonical-topology` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -19,7 +19,7 @@
       ⭐ **文档的 stale 只按内容版本判**（不像摘要/陈述那样另有中文底稿指纹）：
          文档的数字、清单、路径都是构建期现算的，它没有「一句中文原文」可对。
       · **stale 是算出来的**：内容版本 bump 到 `basedOn` 之外 ⇒ 状态自动变 stale
-        （不需要谁记得去改），状态头会写明「译自 v0.9.0 / 当前 v0.9.1」。
+        （不需要谁记得去改），状态头会写明「译自 v旧 / 当前 v新」。
       ⛔ 状态头与页面横幅都由构建生成，一个字都不许手写；
         要翻状态就改这里一处，然后 bun tools/build.mjs。
       ⚠️ 判定只有一处实现 = `src/core/i18n.js` 的 MG.enFieldStatus。
@@ -36,7 +36,7 @@ MG.i18nDocs = {
   status: 'draft',
   /* 这份英文是从哪个内容版本译出来的（tools/ids.snapshot.json 的 vX.Y.Z）。
      ⚠️ 内容版本变了但英文没跟着更新 ⇒ 构建自动把它标成 stale，不是靠人记得改。 */
-  basedOn: 'v0.9.0',
+  basedOn: 'v0.9.1',
   drafted: '2026-10-16',
   reviewed: null,          // 审校后：{ by: '作者名', date: 'YYYY-MM-DD' }
 
@@ -67,7 +67,7 @@ MG.i18nDocs = {
     reading: {
       title: 'MathGalaxy · How to read this map',
       /* 逐份状态（决策二.3）：审过这一份就把 status 改 'reviewed' 并填 reviewed */
-      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
+      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
       body: [
         'Data starts at `{{base}}index.md`.',
         '',
@@ -109,7 +109,7 @@ MG.i18nDocs = {
     /* -------------------------------------------------------------- policy */
     policy: {
       title: 'MathGalaxy · Content policy',
-      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
+      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
       body: [
         '## 1. Every layer is *constructed* from the layer below',
         '',
@@ -150,7 +150,7 @@ MG.i18nDocs = {
     /* ---------------------------------------------------------------- hubs */
     hubs: {
       title: 'MathGalaxy · Hub theorems',
-      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
+      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
       head: [
         'Ranked by **in-degree**: how many strong edges point at it. It answers one question —',
         '**which things are the real foundation and worth learning first.** (Weak edges do not',
@@ -165,7 +165,7 @@ MG.i18nDocs = {
     /* ------------------------------------------------------------ notation */
     notation: {
       title: 'MathGalaxy · Notation',
-      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
+      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
       body: [
         'One symbol, one meaning per cluster; clashes between clusters are listed below.',
         '',

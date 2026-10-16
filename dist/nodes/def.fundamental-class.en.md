@@ -11,5 +11,5 @@ names: `fundamental class` (short) · `Fundamental Class` (full)
 Chinese only — see the Chinese page `nodes/def.fundamental-class.md` and `proofs/`.
 
 
-Cite: `def.fundamental-class` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.fundamental-class` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

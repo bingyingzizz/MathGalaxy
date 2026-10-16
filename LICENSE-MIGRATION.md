@@ -64,10 +64,10 @@
 > Examples:
 >
 > ```
-> MathGalaxy, node thm.cantor (content v0.9.0),
+> MathGalaxy, node thm.cantor (content v0.9.1),
 > https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html
 >
-> See MathGalaxy node def.condensed-set (content v0.9.0) for the full statement.
+> See MathGalaxy node def.condensed-set (content v0.9.1) for the full statement.
 > ```
 >
 > Machine-readable: `graph.json` → `meta.version` and `nodes[].id`; every concept page
@@ -84,11 +84,11 @@
 | 项 | 建议 | 说明 |
 |---|---|---|
 | **节点 id** | ✅ | 形如 `thm.cantor` / `def.sheaf` / `ax.choice`。前缀 + 点 + 名字，全库唯一、跨版本稳定 |
-| **内容版本** | ✅ | 形如 `v0.9.0`。真源 = `tools/ids.snapshot.json`；产物里都写着（`graph.json` 的 `meta.version`、`llms.txt` 的「内容 vX.Y.Z」、每个概念页页脚）|
+| **内容版本** | ✅ | 形如 `v0.9.1`。真源 = `tools/ids.snapshot.json`；产物里都写着（`graph.json` 的 `meta.version`、`llms.txt` 的「内容 vX.Y.Z」、每个概念页页脚）|
 | **链接** | ➕ 推荐 | `https://bingyingzizz.github.io/mathgalaxy/nodes/<id>.html` |
 | 英文名 | ➕ 可选 | 概念页的 `English:` 行或 h1 副标题里就是它（覆盖不全，缺的会回落中文名）|
 
-**算合格**：`参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。`
+**算合格**：`参见 MathGalaxy 节点 thm.cantor（内容 v0.9.1）。`
 **不算**：只写「MathGalaxy」不写 id；只写 id 不写版本；把 id 抹掉或改成自己的编号。
 
 ---

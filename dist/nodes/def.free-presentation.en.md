@@ -11,5 +11,5 @@ names: `free presentation` (short) · `Free Presentation` (full)
 Chinese only — see the Chinese page `nodes/def.free-presentation.md` and `proofs/`.
 
 
-Cite: `def.free-presentation` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.free-presentation` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

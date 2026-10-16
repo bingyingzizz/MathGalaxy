@@ -1,4 +1,4 @@
-# 凝聚态集（cond.set）· 节点清单（第 1/3 页）
+# 凝聚态集 / Condensed Sets（cond.set）· 节点清单（第 1/3 页）
 
 造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。
 中心天体 def.condensed-set　·　29 个节点　·　根 `../`　·　续页 `index/cond.set.2.md`

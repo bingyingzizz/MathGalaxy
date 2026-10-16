@@ -1,4 +1,4 @@
-# 层上同调（hom.sheafcoh）· 节点清单（第 1/3 页）
+# 层上同调 / Sheaf Cohomology（hom.sheafcoh）· 节点清单（第 1/3 页）
 
 把导出函子开到层上：$H^{n}(X, M) = R^{n}\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。
 中心天体 def.sheaf-cohomology　·　30 个节点　·　根 `../`　·　续页 `index/hom.sheafcoh.2.md`

@@ -1,4 +1,4 @@
-# 复形与导出三角（hom.complex）· 节点清单（第 2/3 页）
+# 复形与导出三角 / Complexes and Distinguished Triangles（hom.complex）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/hom.complex.md`
 
 - prop.derived-functor-kan-extension　导出函子就是 Kan 延拓　layer 14

@@ -10,5 +10,5 @@ layer 12 · lemma · cluster Condensed Cohomology (`cond.cohomology`) · Condens
 Chinese only — see the Chinese page `nodes/lem.breen-deligne-scalar-homotopy.md` and `proofs/`.
 
 
-Cite: `lem.breen-deligne-scalar-homotopy` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `lem.breen-deligne-scalar-homotopy` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

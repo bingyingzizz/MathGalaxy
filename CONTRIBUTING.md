@@ -173,10 +173,17 @@ then translations stay per-batch, each carrying its own status header.
 ```bash
 bun tools/build.mjs             # build + all hard assertions
 bun tools/_katexcheck-all.mjs   # every formula fed to the real KaTeX (must be 0 failures)
+bun tools/searchcheck.mjs       # search regression baseline (24 annotated queries)
+bun tools/i18n-status.mjs       # per-item English status (draft / reviewed / stale)
 ```
 
 …and then actually look at the result (screenshot or open `index.html`). Publishing is
 `bun tools/publish.mjs`; it force-pushes the site repository, so run it serially.
+
+**Search is a contract too.** `tools/searchcheck.mjs` pins the behaviour of the search box
+(hit counts and the top ids for 24 annotated queries — including the `preadditive` case that
+once returned 14 wrong nodes). Adding queries is welcome; **changing an existing expectation
+needs a reason**.
 
 **Licence and citation.** Code is MIT; graph content is **CC BY 4.0** (SPDX `CC-BY-4.0`) —
 attribution only, so copying, mirroring, renaming and commercial reuse are all allowed.

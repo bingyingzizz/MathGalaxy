@@ -21,4 +21,4 @@ refs: Munkres, Topology
 
 > 说明见 `notes/def.locally-compact.md`
 
-引用：`def.locally-compact`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.locally-compact`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -1,4 +1,4 @@
-# 乘积测度与 Fubini（analysis.product）· 节点清单（第 1/1 页）
+# 乘积测度与 Fubini / Product Measures and Fubini（analysis.product）· 节点清单（第 1/1 页）
 
 造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。
 中心天体 def.product-measure　·　11 个节点　·　根 `../`

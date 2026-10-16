@@ -21,4 +21,4 @@ refs: Folland, Real Analysis, §3.5；Rudin, Real and Complex Analysis, Ch. 7
 
 > 说明见 `notes/def.bounded-variation.md`
 
-引用：`def.bounded-variation`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.bounded-variation`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -6,5 +6,5 @@ English entry · root `../`
 Wikipedia: https://en.wikipedia.org/wiki/Monotone_class_theorem
 
 
-Cite: `thm.monotone-class` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.monotone-class` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

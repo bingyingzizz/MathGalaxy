@@ -1,4 +1,4 @@
-# 预层与米田（cat.yoneda）· 节点清单（第 2/2 页）
+# 预层与米田 / Presheaves and Yoneda（cat.yoneda）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/cat.yoneda.md`
 
 - lem.presheaf-mono-pointwise　预层态射的单满按点检验　layer 14

@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/thm.real-uncountable.md` and `proof
 Wikipedia: https://en.wikipedia.org/wiki/Uncountable_set · nLab: https://ncatlab.org/nlab/show/Cantor%27s+theorem
 
 
-Cite: `thm.real-uncountable` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.real-uncountable` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `quasi-separated` (short) · `Quasi-Separated Object` (full)
 Chinese only — see the Chinese page `nodes/def.quasi-separated.md` and `proofs/`.
 
 
-Cite: `def.quasi-separated` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.quasi-separated` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

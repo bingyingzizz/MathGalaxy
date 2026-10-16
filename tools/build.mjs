@@ -149,7 +149,9 @@ function enTranslationOf(n, MG) {
      「name only」变成看着像「有译文待审」（290 个节点会集体说谎）。 */
   const creative = fields.filter(f => f !== 'name');
   return { en: {
-    status: worstStatus(creative.map(f => rec[f].status)),   // 最保守的汇总（兼容旧消费方）
+    /* 汇总只算创译型字段；**只有英文名**的节点报 'derived'（派生型，没人审也不需要审）——
+       ⛔ 别让它报 'reviewed'：那会让消费方以为「这条英文有人看过」。 */
+    status: creative.length ? worstStatus(creative.map(f => rec[f].status)) : 'derived',
     version: versionOf(firstBase),                  // 这条英文当初是对着哪个内容版本写的
     fields,                                         // 有哪些英文内容（字段名，含 name）
     creative,                                       // 其中真正需要人审的那几个
@@ -844,13 +846,18 @@ function exportAIProducts(MG, graph, data) {
       `星团的名字见 \`index/<星系id>.md\`（那页还有中心天体与点数）。\n` +
       `规模：${data.meta.counts.regions} 星系 / ${data.meta.counts.clusters} 星团 / ` +
       `${data.meta.counts.nodes} 节点 / ${data.meta.counts.edges} 连线。\n\n` +
+      /* ⚠️ 这份是**入口页**，只有 1300 B 的预算（硬断言）：只写「星系 → 星团 id」，
+         星团的名字（中文 + 英文）在 `index/<星系id>.md` 那一页 —— 别往这里加名字。 */
       regions.map(({ r, cs }) =>
         `## ${r.name}（${r.id}）\n` + cs.map(c => c.id).join('　')).join('\n\n') + '\n',
   });
 
   for (const { r, cs } of regions) {
-    const lines = cs.map(c => `- ${c.id}　${c.name}　中心天体 ${c.hub}　${c.nodes.length} 点`);
-    const head1 = `# ${r.name}（${r.id}）· 星团目录\n\n${r.desc}\n\n`;
+    /* ⭐ 星团英文名（clusters.js 的 en，T2.4）也排进目录：英文读者/AI 顺着 id 走进来时，
+       先看到的就是这两页，中文名之外给一个英文名，比让他去猜 id 强。
+       ⛔ 缺英文名的就只写中文（回落规矩与全站一致，不编）。 */
+    const lines = cs.map(c => `- ${c.id}　${c.name}${c.en ? ' / ' + c.en : ''}　中心天体 ${c.hub}　${c.nodes.length} 点`);
+    const head1 = `# ${r.name}${r.en ? ' / ' + r.en : ''}（${r.id}）· 星团目录\n\n${r.desc}\n\n`;
     const parts = [];
     let cur = '';
     for (const l of lines) {
@@ -882,7 +889,7 @@ function exportAIProducts(MG, graph, data) {
     if (!c.nodes.length) continue;
     const lines = c.nodes.slice().sort((a, b) => a.layer - b.layer)
       .map(n => `- ${n.id}　${n.label}　layer ${n.layer}`);
-    const head1 = `# ${c.name}（${c.id}）· 节点清单\n\n${c.desc}\n` +
+    const head1 = `# ${c.name}${c.en ? ' / ' + c.en : ''}（${c.id}）· 节点清单\n\n${c.desc}\n` +
       `中心天体 ${c.hub}　·　${c.nodes.length} 个节点　·　根 \`../\`\n\n`;
     const chunks = [];
     let cur = '';
@@ -895,10 +902,10 @@ function exportAIProducts(MG, graph, data) {
     chunks.forEach((t, i) => {
       const k = i + 1;
       const head = k === 1
-        ? `# ${c.name}（${c.id}）· 节点清单（第 1/${N} 页）\n\n${c.desc}\n` +
+        ? `# ${c.name}${c.en ? ' / ' + c.en : ''}（${c.id}）· 节点清单（第 1/${N} 页）\n\n${c.desc}\n` +
           `中心天体 ${c.hub}　·　${c.nodes.length} 个节点　·　根 \`../\`` +
           (N > 1 ? `　·　续页 \`index/${c.id}.2.md\`` : '') + '\n\n'
-        : `# ${c.name}（${c.id}）· 节点清单（第 ${k}/${N} 页）\n` +
+        : `# ${c.name}${c.en ? ' / ' + c.en : ''}（${c.id}）· 节点清单（第 ${k}/${N} 页）\n` +
           `根 \`../\`　·　第 1 页 \`index/${c.id}.md\`` +
           (k > 2 ? `　·　上一页 \`index/${c.id}.${k - 1}.md\`` : '') + '\n\n';
       let text = head + t;

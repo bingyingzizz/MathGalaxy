@@ -11,5 +11,5 @@ names: `homeomorphism` (short) · `Homeomorphism` (full)
 Chinese only — see the Chinese page `nodes/def.homeomorphism.md` and `proofs/`.
 
 
-Cite: `def.homeomorphism` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.homeomorphism` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

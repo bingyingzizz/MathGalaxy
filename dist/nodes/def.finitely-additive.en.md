@@ -11,5 +11,5 @@ names: `finitely additive` (short) · `Finitely Additive Measure` (full)
 Chinese only — see the Chinese page `nodes/def.finitely-additive.md` and `proofs/`.
 
 
-Cite: `def.finitely-additive` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.finitely-additive` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

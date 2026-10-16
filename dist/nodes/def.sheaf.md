@@ -25,4 +25,4 @@ refs: Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 > 说明见 `notes/def.sheaf.md`
 
-引用：`def.sheaf`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.sheaf`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -1,4 +1,4 @@
-# 一阶语言与公式（logic.fol）· 节点清单（第 1/1 页）
+# 一阶语言与公式 / First-Order Languages and Formulas（logic.fol）· 节点清单（第 1/1 页）
 
 造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。
 中心天体 def.first-order-language　·　4 个节点　·　根 `../`

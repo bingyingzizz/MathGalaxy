@@ -11,5 +11,5 @@ names: `order isomorphism` (short) · `Order Isomorphism` (full)
 Chinese only — see the Chinese page `nodes/def.order-iso.md` and `proofs/`.
 
 
-Cite: `def.order-iso` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.order-iso` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

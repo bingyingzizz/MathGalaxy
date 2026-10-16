@@ -11,5 +11,5 @@ names: `module` (short) · `Module` (full)
 Chinese only — see the Chinese page `nodes/def.module.md` and `proofs/`.
 
 
-Cite: `def.module` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.module` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

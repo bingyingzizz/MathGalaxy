@@ -1,4 +1,4 @@
-# 拓扑斯（cat.topos）· 节点清单（第 2/3 页）
+# 拓扑斯 / Toposes（cat.topos）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/cat.topos.md`
 
 - def.continuous-functor　连续函子（site 之间）　layer 16

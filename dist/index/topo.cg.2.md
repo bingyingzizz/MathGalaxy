@@ -1,4 +1,4 @@
-# 紧生成空间与弱 Hausdorff（topo.cg）· 节点清单（第 2/2 页）
+# 紧生成空间与弱 Hausdorff / Compactly Generated Spaces and Weak Hausdorff（topo.cg）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/topo.cg.md`
 
 - prop.cg-equivalent-conditions　紧生成空间的等价刻画　layer 17
@@ -12,4 +12,5 @@
 - prop.k-product　k-化与积　layer 18
 - prop.weak-hausdorff-basic　弱 Hausdorff 的基本性质　layer 18
 - cor.cg-exponential-adjoint　CG 的指数伴随　layer 18
-- prop.weak-hausdorff-k-closed　弱 Hausdorff 的对角线与核　layer 18
+
+> 续见 `index/topo.cg.3.md`

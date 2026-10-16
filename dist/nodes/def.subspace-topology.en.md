@@ -11,5 +11,5 @@ names: `subspace topology` (short) · `Subspace Topology` (full)
 Chinese only — see the Chinese page `nodes/def.subspace-topology.md` and `proofs/`.
 
 
-Cite: `def.subspace-topology` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.subspace-topology` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

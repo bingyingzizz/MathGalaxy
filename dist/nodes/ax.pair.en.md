@@ -11,5 +11,5 @@ names: `pairing` (short) · `Axiom of Pairing` (full)
 Chinese only — see the Chinese page `nodes/ax.pair.md` and `proofs/`.
 
 
-Cite: `ax.pair` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `ax.pair` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

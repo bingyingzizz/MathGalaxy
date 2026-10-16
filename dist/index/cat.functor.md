@@ -1,4 +1,4 @@
-# 函子与自然变换（cat.functor）· 节点清单（第 1/1 页）
+# 函子与自然变换 / Functors and Natural Transformations（cat.functor）· 节点清单（第 1/1 页）
 
 造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。
 中心天体 def.natural-transformation　·　13 个节点　·　根 `../`

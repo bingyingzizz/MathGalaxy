@@ -1,4 +1,4 @@
-# 符号测度与分解（analysis.signed）· 节点清单（第 1/2 页）
+# 符号测度与分解 / Signed Measures and Decompositions（analysis.signed）· 节点清单（第 1/2 页）
 
 造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。
 中心天体 def.signed-measure　·　19 个节点　·　根 `../`　·　续页 `index/analysis.signed.2.md`
@@ -17,6 +17,5 @@
 - cor.rn-inverse　互为绝对连续时导数互逆　layer 18
 - thm.jordan-decomposition　Jordan 分解定理　layer 19
 - prop.ac-and-variations　绝对连续与变差　layer 20
-- prop.integral-gives-ac　积分给出绝对连续测度　layer 20
 
 > 续见 `index/analysis.signed.2.md`

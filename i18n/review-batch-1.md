@@ -19,7 +19,7 @@
 
 ## 零、逐条状态（本批 33 条 = 11 条摘要 + 11 条陈述 + 11 条说明）
 
-**rollup：reviewed 0 · draft 33 · stale 0**（内容版本 `v0.9.0`，2026-10-16 现算）。
+**rollup：reviewed 0 · draft 33 · stale 0**（内容版本 `v0.9.1`，2026-10-16 现算）。
 
 | 部分 | 条数 | reviewed | draft | stale |
 |---|---|---|---|---|

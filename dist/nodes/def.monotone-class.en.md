@@ -11,5 +11,5 @@ names: `monotone class` (short) · `Monotone Class` (full)
 Chinese only — see the Chinese page `nodes/def.monotone-class.md` and `proofs/`.
 
 
-Cite: `def.monotone-class` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.monotone-class` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

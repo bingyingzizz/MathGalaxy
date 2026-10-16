@@ -1,4 +1,4 @@
-# 凝聚态上同调（cond.cohomology）· 节点清单（第 4/5 页）
+# 凝聚态上同调 / Condensed Cohomology（cond.cohomology）· 节点清单（第 4/5 页）
 根 `../`　·　第 1 页 `index/cond.cohomology.md`　·　上一页 `index/cond.cohomology.3.md`
 
 - prop.stonean-cond-acyclic　Stonean 上凝聚阿贝尔群零调　layer 18

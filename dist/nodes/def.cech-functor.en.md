@@ -11,5 +11,5 @@ names: `Čech functor` (short) · `Čech Functor` (full)
 Chinese only — see the Chinese page `nodes/def.cech-functor.md` and `proofs/`.
 
 
-Cite: `def.cech-functor` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.cech-functor` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

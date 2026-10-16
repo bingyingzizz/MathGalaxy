@@ -11,5 +11,5 @@ names: `null set` (short) · `Null Set & Complete Measure Space` (full)
 Chinese only — see the Chinese page `nodes/def.null-set.md` and `proofs/`.
 
 
-Cite: `def.null-set` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.null-set` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

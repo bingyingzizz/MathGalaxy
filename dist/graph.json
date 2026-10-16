@@ -2,11 +2,11 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "version": "v0.9.0",
+  "version": "v0.9.1",
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T04:02:40.327Z",
+  "generated": "2026-10-16T04:23:14.966Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -1282,7 +1282,7 @@
    "title_en": "Axiom of Extensionality",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1322,7 +1322,7 @@
    "title_en": "separation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1362,7 +1362,7 @@
    "title_en": "Axiom of Pairing",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1400,7 +1400,7 @@
    "title_en": "Axiom of Union",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1438,7 +1438,7 @@
    "title_en": "Axiom of Power Set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1477,7 +1477,7 @@
    "title_en": "Axiom of Infinity",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1517,7 +1517,7 @@
    "title_en": "Axiom Schema of Replacement",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1557,7 +1557,7 @@
    "title_en": "foundation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1597,7 +1597,7 @@
    "title_en": "axiom of choice",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1642,7 +1642,7 @@
    "title_en": "subset",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1702,7 +1702,7 @@
    "title_en": "Relation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1741,7 +1741,7 @@
    "title_en": "Mapping",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1781,7 +1781,7 @@
    "title_en": "Function",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1822,7 +1822,7 @@
    "title_en": "Choice Function",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1902,7 +1902,7 @@
    "title_en": "natural numbers",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -1962,7 +1962,7 @@
    "title_en": "Cartesian product",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2023,7 +2023,7 @@
    "title_en": "Chain / Antichain",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2062,7 +2062,7 @@
    "title_en": "least upper bound",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2127,7 +2127,7 @@
    "title_en": "Family of Finite Character",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2169,7 +2169,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -2183,7 +2183,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#4716d94b"
+      "abstract": "v0.9.1#4716d94b"
      }
     }
    },
@@ -2223,7 +2223,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -2243,9 +2243,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#bb7411b4",
-      "statement": "v0.9.0#88c083ff",
-      "notes": "v0.9.0#4e157a1c"
+      "abstract": "v0.9.1#bb7411b4",
+      "statement": "v0.9.1#88c083ff",
+      "notes": "v0.9.1#4e157a1c"
      }
     }
    },
@@ -2285,7 +2285,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -2299,7 +2299,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#dece7db3"
+      "abstract": "v0.9.1#dece7db3"
      }
     }
    },
@@ -2336,7 +2336,7 @@
    "title_en": "Tukey's Lemma / Teichmüller–Tukey",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2377,7 +2377,7 @@
    "title_en": "Hartogs' Theorem, 1915",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2468,7 +2468,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -2488,9 +2488,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#00da69f8",
-      "statement": "v0.9.0#31649b03",
-      "notes": "v0.9.0#a1cebdb4"
+      "abstract": "v0.9.1#00da69f8",
+      "statement": "v0.9.1#31649b03",
+      "notes": "v0.9.1#a1cebdb4"
      }
     }
    },
@@ -2527,7 +2527,7 @@
    "title_en": "Complete Metric Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2567,7 +2567,7 @@
    "title_en": "Totally Bounded",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2607,7 +2607,7 @@
    "title_en": "Sequentially Compact",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2647,7 +2647,7 @@
    "title_en": "Compact Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2689,7 +2689,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -2703,7 +2703,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#b29d24a7"
+      "abstract": "v0.9.1#b29d24a7"
      }
     }
    },
@@ -2786,7 +2786,7 @@
    "title_en": "Fundamental Class",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2850,7 +2850,7 @@
    "title_en": "sigma-ring",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2915,7 +2915,7 @@
    "title_en": "Monotone Class",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -2981,7 +2981,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -3001,9 +3001,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#a6257d0e",
-      "statement": "v0.9.0#5d3aa74a",
-      "notes": "v0.9.0#ce1b4b57"
+      "abstract": "v0.9.1#a6257d0e",
+      "statement": "v0.9.1#5d3aa74a",
+      "notes": "v0.9.1#ce1b4b57"
      }
     }
    },
@@ -3038,7 +3038,7 @@
    "title_en": "generated sigma-algebra",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3082,7 +3082,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -3096,7 +3096,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#78753395"
+      "abstract": "v0.9.1#78753395"
      }
     }
    },
@@ -3131,7 +3131,7 @@
    "title_en": "Borel",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3172,7 +3172,7 @@
    "title_en": "product sigma-algebra",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3281,7 +3281,7 @@
    "title_en": "Measure",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3325,7 +3325,7 @@
    "title_en": "Premeasure",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3366,7 +3366,7 @@
    "title_en": "Finitely Additive Measure",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3405,7 +3405,7 @@
    "title_en": "sigma-finite",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3469,7 +3469,7 @@
    "title_en": "Null Set & Complete Measure Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3509,7 +3509,7 @@
    "title_en": "completion",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3573,7 +3573,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -3587,7 +3587,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#1d1a972f"
+      "abstract": "v0.9.1#1d1a972f"
      }
     }
    },
@@ -3786,7 +3786,7 @@
    "title_en": "Lebesgue–Stieltjes",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3826,7 +3826,7 @@
    "title_en": "Measurable Function",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -3980,7 +3980,7 @@
    "title_en": "Simple Function",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4018,7 +4018,7 @@
    "title_en": "approximation by simple functions",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4190,7 +4190,7 @@
    "title_en": "MCT, Monotone Convergence Theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4233,7 +4233,7 @@
    "title_en": "term-by-term integration",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4410,7 +4410,7 @@
    "title_en": "integrable",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4537,7 +4537,7 @@
    "title_en": "DCT, Dominated Convergence Theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4625,7 +4625,7 @@
    "title_en": "differentiation under the integral sign",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4666,7 +4666,7 @@
    "title_en": "modes of convergence",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4796,7 +4796,7 @@
    "title_en": "Egorov",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4837,7 +4837,7 @@
    "title_en": "Lusin",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -4882,7 +4882,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -4902,9 +4902,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#1b243432",
-      "statement": "v0.9.0#174abecd",
-      "notes": "v0.9.0#15d8cb14"
+      "abstract": "v0.9.1#1b243432",
+      "statement": "v0.9.1#174abecd",
+      "notes": "v0.9.1#15d8cb14"
      }
     }
    },
@@ -4942,7 +4942,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -4956,7 +4956,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#0a85dee1"
+      "abstract": "v0.9.1#0a85dee1"
      }
     }
    },
@@ -4987,7 +4987,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -5001,7 +5001,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#05ea13af"
+      "abstract": "v0.9.1#05ea13af"
      }
     }
    },
@@ -5125,7 +5125,7 @@
    "title_en": "Signed Measure",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5208,7 +5208,7 @@
    "title_en": "Hahn Decomposition Theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5250,7 +5250,7 @@
    "title_en": "mutually singular",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5290,7 +5290,7 @@
    "title_en": "Jordan Decomposition Theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5330,7 +5330,7 @@
    "title_en": "absolutely continuous",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5480,7 +5480,7 @@
    "title_en": "Radon-Nikodym theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5523,7 +5523,7 @@
    "title_en": "Radon-Nikodym derivative",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5608,7 +5608,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -5622,7 +5622,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#792f3f7b"
+      "abstract": "v0.9.1#792f3f7b"
      }
     }
    },
@@ -5677,7 +5677,7 @@
    "title_en": "total variation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5740,7 +5740,7 @@
    "title_en": "covering lemma",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5780,7 +5780,7 @@
    "title_en": "locally integrable",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5819,7 +5819,7 @@
    "title_en": "average operator",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5880,7 +5880,7 @@
    "title_en": "maximal function",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5920,7 +5920,7 @@
    "title_en": "maximal theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -5960,7 +5960,7 @@
    "title_en": "differentiation theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6000,7 +6000,7 @@
    "title_en": "Lebesgue point",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6062,7 +6062,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -6076,7 +6076,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#a792035c"
+      "abstract": "v0.9.1#a792035c"
      }
     }
    },
@@ -6128,7 +6128,7 @@
    "title_en": "regular measure",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6213,7 +6213,7 @@
    "title_en": "bounded variation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6434,7 +6434,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -6454,9 +6454,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#aa637905",
-      "statement": "v0.9.0#2fff7b16",
-      "notes": "v0.9.0#e730d43c"
+      "abstract": "v0.9.1#aa637905",
+      "statement": "v0.9.1#2fff7b16",
+      "notes": "v0.9.1#e730d43c"
      }
     }
    },
@@ -6491,7 +6491,7 @@
    "title_en": "Absolutely Continuous Function",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6598,7 +6598,7 @@
    "title_en": "fundamental theorem of calculus",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6639,7 +6639,7 @@
    "title_en": "Lp norm",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6679,7 +6679,7 @@
    "title_en": "Young",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6719,7 +6719,7 @@
    "title_en": "Hölder",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6762,7 +6762,7 @@
    "title_en": "Minkowski",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6802,7 +6802,7 @@
    "title_en": "Banach",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6843,7 +6843,7 @@
    "title_en": "dense",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -6885,7 +6885,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -6899,7 +6899,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#877ac0d0"
+      "abstract": "v0.9.1#877ac0d0"
      }
     }
    },
@@ -7045,7 +7045,7 @@
    "title_en": "Conjugate Exponents",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7085,7 +7085,7 @@
    "title_en": "dual pairing",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7125,7 +7125,7 @@
    "title_en": "isometry",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7187,7 +7187,7 @@
    "title_en": "dual space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7231,7 +7231,7 @@
    "title_en": "reflexive",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7271,7 +7271,7 @@
    "title_en": "Extended Reals",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7310,7 +7310,7 @@
    "title_en": "Interval",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7350,7 +7350,7 @@
    "title_en": "limit",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7389,7 +7389,7 @@
    "title_en": "Series",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7428,7 +7428,7 @@
    "title_en": "continuous",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7469,7 +7469,7 @@
    "title_en": "Derivative",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7508,7 +7508,7 @@
    "title_en": "Complex Numbers",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7590,7 +7590,7 @@
    "title_en": "Empty Set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7650,7 +7650,7 @@
    "title_en": "preimage",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7692,7 +7692,7 @@
    "title_en": "Countable",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7732,7 +7732,7 @@
    "title_en": "Almost Everywhere, a.e.",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7771,7 +7771,7 @@
    "title_en": "Power Set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7831,7 +7831,7 @@
    "title_en": "cardinality",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7870,7 +7870,7 @@
    "title_en": "diagonal argument",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -7937,7 +7937,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -7951,7 +7951,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#de40e4ba"
+      "abstract": "v0.9.1#de40e4ba"
      }
     }
    },
@@ -8052,7 +8052,7 @@
    "title_en": "Continuous Map",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8093,7 +8093,7 @@
    "title_en": "Homeomorphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8133,7 +8133,7 @@
    "title_en": "Subspace Topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8173,7 +8173,7 @@
    "title_en": "Quotient Topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8213,7 +8213,7 @@
    "title_en": "Product Topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8254,7 +8254,7 @@
    "title_en": "Hausdorff",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8294,7 +8294,7 @@
    "title_en": "Connectedness",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8334,7 +8334,7 @@
    "title_en": "Clopen Set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8374,7 +8374,7 @@
    "title_en": "quotient",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8462,7 +8462,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -8476,7 +8476,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#481df90f"
+      "abstract": "v0.9.1#481df90f"
      }
     }
    },
@@ -8511,7 +8511,7 @@
    "title_en": "rationals",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8551,7 +8551,7 @@
    "title_en": "Absolute Value",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8592,7 +8592,7 @@
    "title_en": "triangle inequality",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8636,7 +8636,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -8656,9 +8656,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#d376e5cb",
-      "statement": "v0.9.0#4ba3632c",
-      "notes": "v0.9.0#a43dd73a"
+      "abstract": "v0.9.1#d376e5cb",
+      "statement": "v0.9.1#4ba3632c",
+      "notes": "v0.9.1#a43dd73a"
      }
     }
    },
@@ -8694,7 +8694,7 @@
    "title_en": "real numbers",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8762,7 +8762,7 @@
    "title_en": "Archimedean",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8831,7 +8831,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -8845,7 +8845,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#ea2cb38a"
+      "abstract": "v0.9.1#ea2cb38a"
      }
     }
    },
@@ -8883,7 +8883,7 @@
    "title_en": "Field",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8924,7 +8924,7 @@
    "title_en": "Ordered Field",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -8967,7 +8967,7 @@
    "title_en": "Order Isomorphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9009,7 +9009,7 @@
    "title_en": "von Neumann Ordinal",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9099,7 +9099,7 @@
    "title_en": "order type",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9142,7 +9142,7 @@
    "title_en": "Burali-Forti",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9185,7 +9185,7 @@
    "title_en": "first-order logic",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9227,7 +9227,7 @@
    "title_en": "well-formed formula",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9270,7 +9270,7 @@
    "title_en": "substitution",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9336,7 +9336,7 @@
    "title_en": "Grothendieck Universe",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9376,7 +9376,7 @@
    "title_en": "Graph",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9415,7 +9415,7 @@
    "title_en": "graph morphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9455,7 +9455,7 @@
    "title_en": "Category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9495,7 +9495,7 @@
    "title_en": "Section / Retraction",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9535,7 +9535,7 @@
    "title_en": "Functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9575,7 +9575,7 @@
    "title_en": "Natural Transformation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9637,7 +9637,7 @@
    "title_en": "Essentially Surjective",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9677,7 +9677,7 @@
    "title_en": "Equivalence of Categories",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9739,7 +9739,7 @@
    "title_en": "Simplicial Object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9823,7 +9823,7 @@
    "title_en": "initial object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9953,7 +9953,7 @@
    "title_en": "Subobject",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -9993,7 +9993,7 @@
    "title_en": "lim functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10055,7 +10055,7 @@
    "title_en": "category of elements",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10095,7 +10095,7 @@
    "title_en": "Presheaf",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10135,7 +10135,7 @@
    "title_en": "presheaf category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10179,7 +10179,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -10199,9 +10199,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#db3381b4",
-      "statement": "v0.9.0#befbd619",
-      "notes": "v0.9.0#d1444966"
+      "abstract": "v0.9.1#db3381b4",
+      "statement": "v0.9.1#befbd619",
+      "notes": "v0.9.1#d1444966"
      }
     }
    },
@@ -10262,7 +10262,7 @@
    "title_en": "representable iff hom",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10304,7 +10304,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -10318,7 +10318,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#1bc8f10f"
+      "abstract": "v0.9.1#1bc8f10f"
      }
     }
    },
@@ -10353,7 +10353,7 @@
    "title_en": "Slice Category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10416,7 +10416,7 @@
    "title_en": "Density Theorem",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10526,7 +10526,7 @@
    "title_en": "adjoint functor existence",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10567,7 +10567,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -10581,7 +10581,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#b504654a"
+      "abstract": "v0.9.1#b504654a"
      }
     }
    },
@@ -10662,7 +10662,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -10676,7 +10676,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#5b78b019"
+      "abstract": "v0.9.1#5b78b019"
      }
     }
    },
@@ -10711,7 +10711,7 @@
    "title_en": "comma category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10751,7 +10751,7 @@
    "title_en": "Reflective Subcategory",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10813,7 +10813,7 @@
    "title_en": "Kan Extension",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10854,7 +10854,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -10868,7 +10868,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#118bf379"
+      "abstract": "v0.9.1#118bf379"
      }
     }
    },
@@ -10903,7 +10903,7 @@
    "title_en": "filtered colimits are exact",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10943,7 +10943,7 @@
    "title_en": "compact Hausdorff",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -10985,7 +10985,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -10999,7 +10999,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#f1673aca"
+      "abstract": "v0.9.1#f1673aca"
      }
     }
    },
@@ -11056,7 +11056,7 @@
    "title_en": "Free Compact Hausdorff Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11118,7 +11118,7 @@
    "title_en": "injective object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11180,7 +11180,7 @@
    "title_en": "Free Presentation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11374,7 +11374,7 @@
    "title_en": "Stone duality",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11414,7 +11414,7 @@
    "title_en": "Gleason",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11454,7 +11454,7 @@
    "title_en": "retract",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11494,7 +11494,7 @@
    "title_en": "sieve",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11534,7 +11534,7 @@
    "title_en": "pretopology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11600,7 +11600,7 @@
    "title_en": "sheaf",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11645,7 +11645,7 @@
    "title_en": "sheaf condition",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11685,7 +11685,7 @@
    "title_en": "Čech Functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11769,7 +11769,7 @@
    "title_en": "regular epimorphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11853,7 +11853,7 @@
    "title_en": "epi-mono factorization",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11893,7 +11893,7 @@
    "title_en": "local epimorphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11933,7 +11933,7 @@
    "title_en": "Effective Equivalence Relation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -11995,7 +11995,7 @@
    "title_en": "canonical topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12079,7 +12079,7 @@
    "title_en": "Pretopos",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12119,7 +12119,7 @@
    "title_en": "balanced",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12181,7 +12181,7 @@
    "title_en": "Precanonical Topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12309,7 +12309,7 @@
    "title_en": "topos",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12352,7 +12352,7 @@
    "title_en": "Giraud",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12458,7 +12458,7 @@
    "title_en": "Quasi-Compact Object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12520,7 +12520,7 @@
    "title_en": "Quasi-Separated Object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12582,7 +12582,7 @@
    "title_en": "geometric morphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12645,7 +12645,7 @@
    "title_en": "condensed set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12711,7 +12711,7 @@
    "title_en": "Cond is a topos",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12858,7 +12858,7 @@
    "title_en": "underlying topological space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12919,7 +12919,7 @@
    "title_en": "Condensed Abelian Group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -12959,7 +12959,7 @@
    "title_en": "sections functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13021,7 +13021,7 @@
    "title_en": "Grothendieck Category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13132,7 +13132,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -13152,9 +13152,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#b132a277",
-      "statement": "v0.9.0#70512d43",
-      "notes": "v0.9.0#a8da619b"
+      "abstract": "v0.9.1#b132a277",
+      "statement": "v0.9.1#70512d43",
+      "notes": "v0.9.1#a8da619b"
      }
     }
    },
@@ -13189,7 +13189,7 @@
    "title_en": "complex",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13251,7 +13251,7 @@
    "title_en": "homotopy",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13291,7 +13291,7 @@
    "title_en": "Homotopy Category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13330,7 +13330,7 @@
    "title_en": "mapping cone",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13392,7 +13392,7 @@
    "title_en": "rotation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13454,7 +13454,7 @@
    "title_en": "cohomology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13516,7 +13516,7 @@
    "title_en": "Cohomological Functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13578,7 +13578,7 @@
    "title_en": "quasi-isomorphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13618,7 +13618,7 @@
    "title_en": "injective criterion",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13658,7 +13658,7 @@
    "title_en": "filtration",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13698,7 +13698,7 @@
    "title_en": "Spectral Sequence",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13738,7 +13738,7 @@
    "title_en": "sheaf with values",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13778,7 +13778,7 @@
    "title_en": "abelian sheaf",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13821,7 +13821,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -13841,9 +13841,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#d5dcdf37",
-      "statement": "v0.9.0#f13b85f8",
-      "notes": "v0.9.0#66118814"
+      "abstract": "v0.9.1#d5dcdf37",
+      "statement": "v0.9.1#f13b85f8",
+      "notes": "v0.9.1#66118814"
      }
     }
    },
@@ -13878,7 +13878,7 @@
    "title_en": "Internal Hom",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13940,7 +13940,7 @@
    "title_en": "Flatness",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -13980,7 +13980,7 @@
    "title_en": "Compactly Generated Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14115,7 +14115,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -14135,9 +14135,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#7b38c5fc",
-      "statement": "v0.9.0#0d2ec83c",
-      "notes": "v0.9.0#66941903"
+      "abstract": "v0.9.1#7b38c5fc",
+      "statement": "v0.9.1#0d2ec83c",
+      "notes": "v0.9.1#66941903"
      }
     }
    },
@@ -14175,7 +14175,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "name"
@@ -14189,7 +14189,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#b724ea06"
+      "abstract": "v0.9.1#b724ea06"
      }
     }
    },
@@ -14270,7 +14270,7 @@
    "title_en": "Compact-Open Topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14332,7 +14332,7 @@
    "title_en": "Weak Hausdorff Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14394,7 +14394,7 @@
    "title_en": "fiber product compact",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14575,7 +14575,7 @@
    "title_en": "group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14616,7 +14616,7 @@
    "title_en": "Subgroup",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14656,7 +14656,7 @@
    "title_en": "normal subgroup",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14697,7 +14697,7 @@
    "title_en": "Quotient Group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14738,7 +14738,7 @@
    "title_en": "group homomorphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14784,7 +14784,7 @@
    "translations": {
     "en": {
      "status": "draft",
-     "version": "v0.9.0",
+     "version": "v0.9.1",
      "fields": [
       "abstract",
       "statement",
@@ -14804,9 +14804,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.0#d50659a4",
-      "statement": "v0.9.0#1f75f342",
-      "notes": "v0.9.0#8164331f"
+      "abstract": "v0.9.1#d50659a4",
+      "statement": "v0.9.1#1f75f342",
+      "notes": "v0.9.1#8164331f"
      }
     }
    },
@@ -14845,7 +14845,7 @@
    "title_en": "Localization",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14886,7 +14886,7 @@
    "title_en": "calculus of fractions",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14927,7 +14927,7 @@
    "title_en": "Normal Space",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -14968,7 +14968,7 @@
    "title_en": "Urysohn",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15009,7 +15009,7 @@
    "title_en": "Topological Abelian Group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15120,7 +15120,7 @@
    "title_en": "pre-abelian",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15162,7 +15162,7 @@
    "title_en": "Pontryagin Dual",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15203,7 +15203,7 @@
    "title_en": "Pontryagin-van Kampen",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15246,7 +15246,7 @@
    "title_en": "ring",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15287,7 +15287,7 @@
    "title_en": "ideal",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15328,7 +15328,7 @@
    "title_en": "Module",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15394,7 +15394,7 @@
    "title_en": "Connected Category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15459,7 +15459,7 @@
    "title_en": "cofinal colimit",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15524,7 +15524,7 @@
    "title_en": "directed set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15590,7 +15590,7 @@
    "title_en": "monoid object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15632,7 +15632,7 @@
    "title_en": "group object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15699,7 +15699,7 @@
    "title_en": "Localization of a Ring",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15815,7 +15815,7 @@
    "title_en": "Sections Functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15857,7 +15857,7 @@
    "title_en": "snake lemma",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15899,7 +15899,7 @@
    "title_en": "Five Lemma",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15941,7 +15941,7 @@
    "title_en": "Subcategory",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -15981,7 +15981,7 @@
    "title_en": "simplex category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16023,7 +16023,7 @@
    "title_en": "ind-object",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16064,7 +16064,7 @@
    "title_en": "preserves limits",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16105,7 +16105,7 @@
    "title_en": "exact functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16170,7 +16170,7 @@
    "title_en": "Additive Functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16211,7 +16211,7 @@
    "title_en": "split exact",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16252,7 +16252,7 @@
    "title_en": "enough projectives",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16293,7 +16293,7 @@
    "title_en": "finitely presented",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16381,7 +16381,7 @@
    "title_en": "Locally Compact Hausdorff",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16422,7 +16422,7 @@
    "title_en": "Tychonoff",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16465,7 +16465,7 @@
    "title_en": "Topologically Generating Set",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16506,7 +16506,7 @@
    "title_en": "Continuous Functor between Sites",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16547,7 +16547,7 @@
    "title_en": "Morphism of Sites",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16588,7 +16588,7 @@
    "title_en": "Cocontinuous Functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16629,7 +16629,7 @@
    "title_en": "Induced Topology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16695,7 +16695,7 @@
    "title_en": "abelianization",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -16761,7 +16761,7 @@
    "title_en": "Strict Morphism",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17058,7 +17058,7 @@
    "title_en": "derived category",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17169,7 +17169,7 @@
    "title_en": "right derived functor",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17232,7 +17232,7 @@
    "title_en": "extension group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17300,7 +17300,7 @@
    "title_en": "acyclic",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17388,7 +17388,7 @@
    "title_en": "Bicomplex",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17452,7 +17452,7 @@
    "title_en": "sheaf cohomology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17494,7 +17494,7 @@
    "title_en": "Čech cohomology",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17559,7 +17559,7 @@
    "title_en": "Cartan-Leray",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17601,7 +17601,7 @@
    "title_en": "Acyclic Sheaf",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17786,7 +17786,7 @@
    "title_en": "internal hom",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17850,7 +17850,7 @@
    "title_en": "weak Hausdorff quasi-separated",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17914,7 +17914,7 @@
    "title_en": "underlying weak Hausdorff",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -17954,7 +17954,7 @@
    "title_en": "weak Hausdorff iff quasi-separated",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18019,7 +18019,7 @@
    "title_en": "Stonean acyclic",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18061,7 +18061,7 @@
    "title_en": "Stone acyclic constant",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18103,7 +18103,7 @@
    "title_en": "Dyckhoff",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18145,7 +18145,7 @@
    "title_en": "semi-normed abelian group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18186,7 +18186,7 @@
    "title_en": "Banach abelian group",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18228,7 +18228,7 @@
    "title_en": "K-bounded exact",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18270,7 +18270,7 @@
    "title_en": "k-bounded completion",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18408,7 +18408,7 @@
    "title_en": "Tietze",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18500,7 +18500,7 @@
    "title_en": "Breen-Deligne",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18542,7 +18542,7 @@
    "title_en": "scalar homotopy",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18926,7 +18926,7 @@
    "title_en": "torsion Stonean",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -18994,7 +18994,7 @@
    "title_en": "epi regular",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -19060,7 +19060,7 @@
    "title_en": "exact sequence",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -19102,7 +19102,7 @@
    "title_en": "enough injectives",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -19213,7 +19213,7 @@
    "title_en": "Cartan-Eilenberg",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -19254,7 +19254,7 @@
    "title_en": "Boolean Ring",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -19296,7 +19296,7 @@
    "title_en": "Stone representation",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"
@@ -20216,7 +20216,7 @@
    "title_en": "stalk",
    "translations": {
     "en": {
-     "status": "reviewed",
+     "status": "derived",
      "version": null,
      "fields": [
       "name"

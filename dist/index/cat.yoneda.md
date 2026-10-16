@@ -1,4 +1,4 @@
-# 预层与米田（cat.yoneda）· 节点清单（第 1/2 页）
+# 预层与米田 / Presheaves and Yoneda（cat.yoneda）· 节点清单（第 1/2 页）
 
 造出「表示」这套语言：预层范畴是落点，米田引理说自然变换集与 $F(X)$ 一一对应，稠密性定理说每个预层都是可表示预层的余极限。
 中心天体 lem.yoneda　·　17 个节点　·　根 `../`　·　续页 `index/cat.yoneda.2.md`

@@ -11,5 +11,5 @@ names: `power set` (short) · `Power Set` (full)
 Chinese only — see the Chinese page `nodes/def.power-set.md` and `proofs/`.
 
 
-Cite: `def.power-set` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.power-set` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

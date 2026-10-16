@@ -49,7 +49,7 @@ MathGalaxy · 数学星图 —— 许可与引用
 
     引用、摘录或复述某一条内容时，请写明**节点 id** 与**内容版本号**：
 
-        参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。
+        参见 MathGalaxy 节点 thm.cantor（内容 v0.9.1）。
 
     推荐格式与「怎样算合格」见下面的「五」；英文写法见「四」。
 
@@ -64,7 +64,7 @@ MathGalaxy · 数学星图 —— 许可与引用
     内容版本号（整理惯例，同样不是附加条件）
     ---------------------------------------------------------------
 
-    形如 v0.9.0。真源是 tools/ids.snapshot.json；由
+    形如 v0.9.1。真源是 tools/ids.snapshot.json；由
     `bun tools/idstable.mjs --apply` 递增（patch +1，可 --version 指定）。
     节点 id 跨版本稳定；某一版的 id 全集就在那个快照文件里。
 
@@ -136,10 +136,10 @@ MathGalaxy · 数学星图 —— 许可与引用
     Examples:
 
     ```
-    MathGalaxy, node thm.cantor (content v0.9.0),
+    MathGalaxy, node thm.cantor (content v0.9.1),
     https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html
 
-    See MathGalaxy node def.condensed-set (content v0.9.0) for the full statement.
+    See MathGalaxy node def.condensed-set (content v0.9.1) for the full statement.
     ```
 
     Machine-readable: `graph.json` → `meta.version` (content version) and
@@ -159,16 +159,16 @@ MathGalaxy · 数学星图 —— 许可与引用
     | 项 | 建议 | 说明 |
     |---|---|---|
     | 节点 id | ✅ | 形如 thm.cantor / def.sheaf / ax.choice。前缀 + 点 + 名字，全库唯一、跨版本稳定 |
-    | 内容版本 | ✅ | 形如 v0.9.0。真源 = tools/ids.snapshot.json；产物里都写着（graph.json 的 meta.version、llms.txt 的「内容 vX.Y.Z」、每个概念页页脚）|
+    | 内容版本 | ✅ | 形如 v0.9.1。真源 = tools/ids.snapshot.json；产物里都写着（graph.json 的 meta.version、llms.txt 的「内容 vX.Y.Z」、每个概念页页脚）|
     | 链接 | ➕ 推荐 | https://bingyingzizz.github.io/mathgalaxy/nodes/<id>.html —— 有了链接，别人一点就能核对；纸质媒介可以写域名 + id |
     | 英文名 | ➕ 可选 | 概念页的 English: 行或 h1 副标题里就是它（覆盖不全，缺的会回落中文名）|
 
     合格的样子（三选一，任一即可）：
 
-        1. 参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。
-        2. MathGalaxy, node thm.cantor (content v0.9.0),
+        1. 参见 MathGalaxy 节点 thm.cantor（内容 v0.9.1）。
+        2. MathGalaxy, node thm.cantor (content v0.9.1),
            https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html
-        3. [MathGalaxy thm.cantor v0.9.0](https://…/nodes/thm.cantor.html)
+        3. [MathGalaxy thm.cantor v0.9.1](https://…/nodes/thm.cantor.html)
 
     不合格的样子：
 
@@ -178,11 +178,11 @@ MathGalaxy · 数学星图 —— 许可与引用
 
     模板（可直接复制）：
 
-        正文夹注（中文）   参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。
-        正文夹注（英文）   See MathGalaxy, node thm.cantor (content v0.9.0).
+        正文夹注（中文）   参见 MathGalaxy 节点 thm.cantor（内容 v0.9.1）。
+        正文夹注（英文）   See MathGalaxy, node thm.cantor (content v0.9.1).
 
         脚注 / 参考文献（英文，含链接）
-            MathGalaxy. thm.cantor (Cantor's theorem), content v0.9.0.
+            MathGalaxy. thm.cantor (Cantor's theorem), content v0.9.1.
             https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html
 
         BibTeX
@@ -190,20 +190,20 @@ MathGalaxy · 数学星图 —— 许可与引用
               title        = {MathGalaxy node \texttt{thm.cantor} (Cantor's theorem)},
               author       = {{bingyingzizz}},
               year         = {2026},
-              note         = {Content v0.9.0; knowledge graph of mathematics},
+              note         = {Content v0.9.1; knowledge graph of mathematics},
               howpublished = {\url{https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html}}
             }
 
         数据集 / 语料库（英文）
             MathGalaxy (2026). A searchable knowledge graph of mathematics,
-            content v0.9.0. © 2026 bingyingzizz. Node ids are stable
+            content v0.9.1. © 2026 bingyingzizz. Node ids are stable
             identifiers; see tools/ids.snapshot.json for the id set.
 
     引「一条推导」：推论写在**边**上（边的 id 形如 imp.xxx / eq.xxx /
     def-link.xxx），引两端节点 + 边的 id 更精确：
 
         MathGalaxy, edge imp.wellorder-ordinal from thm.wellordering
-        to def.ordinal (content v0.9.0).
+        to def.ordinal (content v0.9.1).
 
     应用里每个节点面板都有「引用此节点」按钮，点一下就能复制这种引文。
 

@@ -11,5 +11,5 @@ names: `density theorem` (short) · `Density Theorem` (full)
 Chinese only — see the Chinese page `nodes/thm.density.md` and `proofs/`.
 
 
-Cite: `thm.density` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.density` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

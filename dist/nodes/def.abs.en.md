@@ -11,5 +11,5 @@ names: `absolute value` (short) · `Absolute Value` (full)
 Chinese only — see the Chinese page `nodes/def.abs.md` and `proofs/`.
 
 
-Cite: `def.abs` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.abs` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

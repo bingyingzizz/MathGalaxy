@@ -1,4 +1,4 @@
-# 序结构（order.structure）· 节点清单（第 1/1 页）
+# 序结构 / Order Structures（order.structure）· 节点清单（第 1/1 页）
 
 造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。
 中心天体 def.poset　·　6 个节点　·　根 `../`

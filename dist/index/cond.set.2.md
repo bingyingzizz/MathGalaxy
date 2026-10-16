@@ -1,4 +1,4 @@
-# 凝聚态集（cond.set）· 节点清单（第 2/3 页）
+# 凝聚态集 / Condensed Sets（cond.set）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/cond.set.md`
 
 - lem.qseparated-underlying-weak-hausdorff　拟分离 推出 底空间弱 Hausdorff　layer 17

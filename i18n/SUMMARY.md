@@ -1,8 +1,29 @@
 # 英文层总表（Tier 1–3 收尾）
 
-> 由 `_tools/_enreport.mjs` 现算（数字都从产物里读，不靠记忆）。生成于 2026-10-16。
+> 由 `_tools/_enreport.mjs` / `_tools/_finalreport.mjs` 现算（数字都从产物里读，不靠记忆）。
+> 收尾更新于 2026-10-16（内容版本 **v0.9.1**）。
 > 任务书：单一内容树、`*_en` 由构建生成、⛔ 不建第二棵内容树、未审校内容带状态头、
 > 每子项独立验收 + 独立提交 + 独立发布。
+
+## 〇、收尾状态（逐条）
+
+| 子项 | 状态 | 证据 |
+|---|---|---|
+| T1.0 README 英文节 | ✅ | `README.md` 第 12/43 行（数字现算）|
+| T1.1 英文名字段 | ✅ | **294 / 709 = 41.5%**（一级 253 + 二级 41）· 缺口 415 见 `i18n/gaps.md` |
+| T1.2 概念页双语（`alternateName`）| ✅ | 709 个概念页都有；内链平均 3.9 条/页 |
+| T1.3 `llms.txt` 英文段 | ✅ | 根 + dist 两份（根 1050 B，超 1250 会抛）|
+| T1.4 许可迁 CC BY 4.0 / MIT | ✅ | `LICENSE` 四、五、六节；`LICENSE-MIGRATION.md` §4 镜像对照表；旧 `LICENSE-PROPOSAL.md` 已在 `0eeccaa` 删除并在新文件抬头注明 |
+| T2.1 read 文档英文版 | ✅ | 4 份 / 11 页（reading 3 · policy 3 · hubs 4 · notation 1）+ 根副本 |
+| T2.2 英文摘要（前 30 枢纽）| ✅ | **30 / 30**，逐条状态（见 §四）|
+| T2.3 外链锚点 `xref` | ✅ | 45 节点 / 80 链接（Wikipedia 45 · nLab 30 · Mathlib 5），逐条 200 + title 核过 |
+| T2.4 界面英文模式 | ✅ | 口径「折模板 105」（逐条 236）；工具条 `EN`/`中文` + `?lang=`；本次又加「画布名字」独立开关 |
+| T3.1 英文入口页管道 | ✅ | 294 节点 / 378 文件；概念页含英文小节 + `hreflang` |
+| T3.2 英文陈述 | 🟡 **批次 1 完成，等作者审校** | 11 节点 / 22 字段（试点 3 + 批次 1 的 8）；批次 2/3 冻结 |
+| T3.3 CONTRIBUTING 翻译路径 | ✅ | 含「状态是逐条的」「公式逐字 + 不许有汉字」「新条目现取 basedOn」|
+| §1F 口径更正（枢纽榜 16 个）| ✅ | 见 §三 第 4′ 行 |
+| §5.1–5.7 小开关 | ✅ | 5.1/5.2 不做；5.3 分批；5.4 扩到 30（批次 1 已做）；5.5/5.6/5.7 已办 |
+| §6 交接文档 | ✅ | 本文件 + `DECISIONS.md` + 仓库外的事实文件（会话记忆）|
 
 ## 一、覆盖率
 
@@ -11,7 +32,7 @@
 | 英文名 `title_en` / `label_en` | **294 / 709 = 41.5%** | 一级 253（aka 恰好一条名字样英文）+ 二级 41（title 里恰好命中一个 aka 候选）。T2.2 修了两处闸门误杀（连字符专名 / 裸 `section` 被当书号）并补了 13 个枢纽名 |
 | 英文摘要 `abstract_en` | **30**（枢纽榜前 30 = 30/30） | 机器起草，**逐条** `status: draft`，中文为准 |
 | 英文陈述 `statement` / `notes` | **11 个节点 / 22 个字段**（试点 3 + 批次 1 的 8） | 逐句对译；状态**逐字段**（决策二.3）|
-| 英文入口页 `nodes/<id>.en.md` | **290 个节点 / 351 个文件**（61 页是续页） | 有英文名或摘要就有；最大 890 B |
+| 英文入口页 `nodes/<id>.en.md` | **294 个节点 / 378 个文件**（84 页是续页） | 有英文名或摘要就有；文件系统口径（⛔ 不看 `en_page` 字段）|
 | read 文档英文版 | **4 份 / 11 页** | reading · policy · hubs · notation（+ 仓库根副本 7 个） |
 | 术语表 | 1 份 | `i18n/glossary.md`（有英文键的一律现算） |
 | 外链锚点 `xref` | **45 个节点 / 80 个链接** | Wikipedia 45 · nLab 30 · Mathlib 5（45 个节点里 45 个有 Wikipedia 条），逐条 HTTP 200 + title 核对 |
@@ -49,6 +70,7 @@
 | `LICENSE-MIGRATION.md` | 许可**迁移记录**（原 `LICENSE-PROPOSAL.md`，2026-10-16 已生效）：方案 B 落地、镜像影响表、故意没做的事 |
 | `tools/i18n-backfill.mjs` | 英文名回填（一二级规则唯一真源，build 直接 import 复用） |
 | `tools/i18n-status.mjs` | **逐条状态体检**（决策二.3）：列出每条/每字段 draft / reviewed / stale + 为什么；`--md` 出批次 rollup、`--patch` 打印缺的 basedOn。⛔ 只报不写 |
+| `tools/searchcheck.mjs` | **搜索回归体检**（T3.4）：24 条标注查询跑真模块（含 `preadditive`→1、`additive`→10、人名、书号、记号、中文词），条数或前几条命中变了就 exit 1；`--list` 看命中、`--record` 出基准表 |
 | `_tools/_xrefcand.mjs` · `_xrefverify.mjs` · `_xreview.mjs` | 外链候选 / 核对（并发、双网络路、抓 title）/ 人眼复核 |
 | `_tools/_uistr.mjs` · `_uiprobe.js` · `_uifmt.mjs` · `_uistate.js` | UI 文案清单（源码扫 + 真跑界面 + 折模板 + 状态截图） |
 | `_tools/_abcheck.mjs` · `_stcheck.mjs` | 摘要 / 陈述译文逐条喂真 KaTeX |
@@ -108,6 +130,29 @@
   修法：拉丁词条要求**词边界命中**（中文词条不受影响）。修后 `preadditive` → 命中唯一的那个节点。
 - 词表（`vocab`，切分多词查询用）**不含**英文摘要与陈述里的词 —— 它们只进 `hay`（匹配用），
   不进词表。目前够用；若以后英文长句查询变多，再考虑把它们的词也 `addWord` 进去。
+- ⭐ **回归基准**（`bun tools/searchcheck.mjs`，24 条标注查询）：跑的是**真模块**
+  （`MG.createSearch` + 假 DOM + 真的「点结果行」拿命中 id），对不上 exit 1。
+  覆盖：修 bug 的那条（`preadditive` → 1）、短词（`additive` → 10）、人名
+  （`zorn` / `fubini` / `radon` / `schroder` / `noether` / `delta`）、通用词（`section`）、
+  书号（`Exercise 2.25` → 1；`I.5` → **0**，因为 hay 不含 refs）、记号
+  （`L^p` / `ℵ₀` / `σ-algebra` / `kC` / `NBV`）、中文词（`测度` / `紧生成`）、类型名（`定义`）。
+  ⛔ 加查询欢迎；**改既有期望值必须说得出理由**。
+- ⭐ **词边界修复的前后对照**（A/B 都跑真模块：B 只是把 termsOf 里的 `wordAligned` 换成 `true`）：
+
+  | 查询 | 修复前 | 修复后 | 修复前首条 | 修复后首条 |
+  |---|---|---|---|---|
+  | `preadditive` | 14 | **1** | `thm.freyd-mitchell`（错） | **`def.abelian-category`** |
+  | `section` | 14 | 13 | `prop.rhom-zs-sections`（错） | **`def.section`** |
+  | `yoneda` | 14 | 13 | `prop.yoneda-embedding` | **`lem.yoneda`** |
+  | `additive` | 10 | 10 | `def.additive-functor` | 不变 |
+  | `isomorphism` | 6 | 6 | `def.mono` | 不变（老查询本来就没坏） |
+  | `measurable` | 14 | 14 | `def.measurable-function` | 不变 |
+  | `radon` | 14 | 14 | `thm.lebesgue-radon-nikodym` | 不变 |
+  | `schroder` | 1 | 1 | `thm.schroder-bernstein` | 不变 |
+  | `abelian` | 14 | 14 | `def.abelian-category` | 不变 |
+
+  ⇒ 修复**只动了碎片受伤的那些查询**（长词里的短碎片），老的长词查询一个都没退化。
+  探针：`_tools/_scab.mjs`（本地，gitignore）。
 
 ## 六、提交记录（英文层）
 

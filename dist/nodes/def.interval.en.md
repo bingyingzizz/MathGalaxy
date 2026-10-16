@@ -11,5 +11,5 @@ names: `interval` (short) · `Interval` (full)
 Chinese only — see the Chinese page `nodes/def.interval.md` and `proofs/`.
 
 
-Cite: `def.interval` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.interval` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

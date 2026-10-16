@@ -23,4 +23,4 @@ refs: Mac Lane, Categories for the Working Mathematician, X.3
 
 > 说明见 `notes/def.kan-extension.md`
 
-引用：`def.kan-extension`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.kan-extension`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

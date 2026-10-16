@@ -11,5 +11,5 @@ names: `continuous map` (short) · `Continuous Map` (full)
 Chinese only — see the Chinese page `nodes/def.continuous-map.md` and `proofs/`.
 
 
-Cite: `def.continuous-map` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.continuous-map` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

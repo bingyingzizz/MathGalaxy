@@ -1,4 +1,4 @@
-# 集合族与 σ-代数（analysis.setclass）· 节点清单（第 1/1 页）
+# 集合族与 σ-代数 / Families of Sets and Sigma-Algebras（analysis.setclass）· 节点清单（第 1/1 页）
 
 造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。
 中心天体 def.sigma-algebra　·　10 个节点　·　根 `../`

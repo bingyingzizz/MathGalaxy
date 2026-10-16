@@ -1,4 +1,4 @@
-# 紧 Hausdorff 空间（topo.chaus）· 节点清单（第 1/1 页）
+# 紧 Hausdorff 空间 / Compact Hausdorff Spaces（topo.chaus）· 节点清单（第 1/1 页）
 
 造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → 自由表示。它是一切「紧块」的来源。
 中心天体 prop.chaus-reflective　·　11 个节点　·　根 `../`

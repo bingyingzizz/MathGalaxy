@@ -11,5 +11,5 @@ names: `Grothendieck category` (short) · `Grothendieck Category` (full)
 Chinese only — see the Chinese page `nodes/def.grothendieck-category.md` and `proofs/`.
 
 
-Cite: `def.grothendieck-category` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.grothendieck-category` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

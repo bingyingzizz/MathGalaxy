@@ -11,5 +11,5 @@ names: `internal hom` (short) · `Internal Hom` (full)
 Chinese only — see the Chinese page `nodes/def.internal-hom.md` and `proofs/`.
 
 
-Cite: `def.internal-hom` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.internal-hom` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

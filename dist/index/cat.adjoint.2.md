@@ -1,4 +1,4 @@
-# 伴随与反射（cat.adjoint）· 节点清单（第 2/2 页）
+# 伴随与反射 / Adjunctions and Reflections（cat.adjoint）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/cat.adjoint.md`
 
 - prop.reflection-criterion　反射的判据　layer 11

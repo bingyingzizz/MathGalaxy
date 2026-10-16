@@ -1,4 +1,4 @@
-# L^p 空间（analysis.lp）· 节点清单（第 1/2 页）
+# L^p 空间 / L^p Spaces（analysis.lp）· 节点清单（第 1/2 页）
 
 造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。
 中心天体 def.lp-norm　·　18 个节点　·　根 `../`　·　续页 `index/analysis.lp.2.md`

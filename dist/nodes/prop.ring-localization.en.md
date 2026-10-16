@@ -11,5 +11,5 @@ names: `localization of a ring` (short) · `Localization of a Ring` (full)
 Chinese only — see the Chinese page `nodes/prop.ring-localization.md` and `proofs/`.
 
 
-Cite: `prop.ring-localization` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.ring-localization` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

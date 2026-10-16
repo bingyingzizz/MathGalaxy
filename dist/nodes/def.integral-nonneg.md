@@ -20,4 +20,4 @@ refs: Folland, Real Analysis, §2.2
 
 > 说明见 `notes/def.integral-nonneg.md`
 
-引用：`def.integral-nonneg`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.integral-nonneg`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

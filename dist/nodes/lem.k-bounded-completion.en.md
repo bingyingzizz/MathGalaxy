@@ -10,5 +10,5 @@ layer 16 · lemma · cluster Condensed Cohomology (`cond.cohomology`) · Condens
 Chinese only — see the Chinese page `nodes/lem.k-bounded-completion.md` and `proofs/`.
 
 
-Cite: `lem.k-bounded-completion` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `lem.k-bounded-completion` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

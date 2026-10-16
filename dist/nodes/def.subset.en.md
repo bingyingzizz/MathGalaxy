@@ -10,5 +10,5 @@ layer 1 · definition · cluster Constructing Sets (`set.construct`) · Set Theo
 Chinese only — see the Chinese page `nodes/def.subset.md` and `proofs/`.
 
 
-Cite: `def.subset` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.subset` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

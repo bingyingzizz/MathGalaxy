@@ -10,5 +10,5 @@ layer 18 · proposition · cluster Condensed Cohomology (`cond.cohomology`) · C
 Chinese only — see the Chinese page `nodes/prop.stonean-cond-acyclic.md` and `proofs/`.
 
 
-Cite: `prop.stonean-cond-acyclic` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.stonean-cond-acyclic` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

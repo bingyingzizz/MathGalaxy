@@ -10,5 +10,5 @@ layer 5 · definition · cluster Topological Spaces (`topology.general`) · Topo
 Chinese only — see the Chinese page `nodes/def.hausdorff.md` and `proofs/`.
 
 
-Cite: `def.hausdorff` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.hausdorff` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

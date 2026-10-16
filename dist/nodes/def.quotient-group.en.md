@@ -11,5 +11,5 @@ names: `quotient group` (short) · `Quotient Group` (full)
 Chinese only — see the Chinese page `nodes/def.quotient-group.md` and `proofs/`.
 
 
-Cite: `def.quotient-group` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.quotient-group` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

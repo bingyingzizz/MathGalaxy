@@ -14,4 +14,4 @@ refs: Folland, Real Analysis, Theorem 6.6
 
 > 说明见 `notes/thm.lp-banach.md`
 
-引用：`thm.lp-banach`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.lp-banach`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

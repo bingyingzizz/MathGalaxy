@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **709 nodes / 1398 edges** across **9 galaxies and 45 clusters** (content `v0.9.0`).
+> **709 nodes / 1398 edges** across **9 galaxies and 45 clusters** (content `v0.9.1`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >
@@ -40,7 +40,7 @@
 > **Licence:** graph content **CC BY 4.0** (SPDX `CC-BY-4.0`) — attribution only;
 > copying, mirroring, renaming and commercial reuse are all allowed. Code: MIT.
 > Citing is a request, not a condition: please name the node `id` and the content
-> version — `MathGalaxy node ⟨id⟩ (content v0.9.0)`. See [`LICENSE`](LICENSE);
+> version — `MathGalaxy node ⟨id⟩ (content v0.9.1)`. See [`LICENSE`](LICENSE);
 > full legal code in [`LICENSE-CC-BY-4.0.txt`](LICENSE-CC-BY-4.0.txt).
 >
 > *Chinese original follows below.*
@@ -682,8 +682,8 @@ python -m http.server 8000     # 然后访问 http://localhost:8000
 写明**节点 id** 与**内容版本号**。
 
 ```
-参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。
-MathGalaxy, node thm.cantor (content v0.9.0),
+参见 MathGalaxy 节点 thm.cantor（内容 v0.9.1）。
+MathGalaxy, node thm.cantor (content v0.9.1),
 https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html
 ```
 

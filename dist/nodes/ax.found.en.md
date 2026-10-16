@@ -10,5 +10,5 @@ layer 0 · axiom · cluster The ZFC Axioms (`set.zfc`) · Set Theory
 Chinese only — see the Chinese page `nodes/ax.found.md` and `proofs/`.
 
 
-Cite: `ax.found` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `ax.found` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -1,4 +1,4 @@
-# 凝聚态上同调（cond.cohomology）· 节点清单（第 1/5 页）
+# 凝聚态上同调 / Condensed Cohomology（cond.cohomology）· 节点清单（第 1/5 页）
 
 造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\operatorname{Ext}^{0}, \operatorname{Ext}^{1}$。
 中心天体 thm.real-banach-chaus-acyclic　·　38 个节点　·　根 `../`　·　续页 `index/cond.cohomology.2.md`

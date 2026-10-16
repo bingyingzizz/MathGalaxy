@@ -11,5 +11,5 @@ names: `signed measure` (short) · `Signed Measure` (full)
 Chinese only — see the Chinese page `nodes/def.signed-measure.md` and `proofs/`.
 
 
-Cite: `def.signed-measure` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.signed-measure` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

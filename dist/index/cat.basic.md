@@ -1,4 +1,4 @@
-# 范畴与图（cat.basic）· 节点清单（第 1/2 页）
+# 范畴与图 / Categories and Diagrams（cat.basic）· 节点清单（第 1/2 页）
 
 造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。
 中心天体 def.category　·　17 个节点　·　根 `../`　·　续页 `index/cat.basic.2.md`

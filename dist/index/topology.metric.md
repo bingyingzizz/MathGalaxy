@@ -1,4 +1,4 @@
-# 度量空间（topology.metric）· 节点清单（第 1/1 页）
+# 度量空间 / Metric Spaces（topology.metric）· 节点清单（第 1/1 页）
 
 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
 中心天体 def.metric-space　·　8 个节点　·　根 `../`

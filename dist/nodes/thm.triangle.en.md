@@ -10,5 +10,5 @@ layer 10 · theorem · cluster Constructing the Number Systems (`set.numbers`) �
 Chinese only — see the Chinese page `nodes/thm.triangle.md` and `proofs/`.
 
 
-Cite: `thm.triangle` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.triangle` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

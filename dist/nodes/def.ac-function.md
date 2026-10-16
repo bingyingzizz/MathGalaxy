@@ -17,4 +17,4 @@ refs: Folland, Real Analysis, §3.5
 
 > 说明见 `notes/def.ac-function.md`
 
-引用：`def.ac-function`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.ac-function`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

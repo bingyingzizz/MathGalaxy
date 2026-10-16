@@ -1,4 +1,4 @@
-# 凝聚态阿贝尔群（cond.ab）· 节点清单（第 1/1 页）
+# 凝聚态阿贝尔群 / Condensed Abelian Groups（cond.ab）· 节点清单（第 1/1 页）
 
 在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。
 中心天体 def.condensed-abelian-group　·　7 个节点　·　根 `../`

@@ -11,5 +11,5 @@ names: `clopen` (short) · `Clopen Set` (full)
 Chinese only — see the Chinese page `nodes/def.clopen.md` and `proofs/`.
 
 
-Cite: `def.clopen` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.clopen` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

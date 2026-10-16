@@ -1,4 +1,4 @@
-# 拓扑斯（cat.topos）· 节点清单（第 3/3 页）
+# 拓扑斯 / Toposes（cat.topos）· 节点清单（第 3/3 页）
 根 `../`　·　第 1 页 `index/cat.topos.md`　·　上一页 `index/cat.topos.2.md`
 
 - prop.slice-shriek-z　切片左伴随作用在 Z 上　layer 18

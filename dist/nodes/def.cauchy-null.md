@@ -22,4 +22,4 @@ refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 
 > 说明见 `notes/def.cauchy-null.md`
 
-引用：`def.cauchy-null`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.cauchy-null`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

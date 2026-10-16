@@ -1,4 +1,4 @@
-# 凝聚态上同调（cond.cohomology）· 节点清单（第 3/5 页）
+# 凝聚态上同调 / Condensed Cohomology（cond.cohomology）· 节点清单（第 3/5 页）
 根 `../`　·　第 1 页 `index/cond.cohomology.md`　·　上一页 `index/cond.cohomology.2.md`
 
 - prop.rhom-banach-discrete-zero　有限维 Banach 到离散群全零　layer 17

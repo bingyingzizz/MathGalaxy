@@ -1,4 +1,4 @@
-# 凝聚态上同调（cond.cohomology）· 节点清单（第 2/5 页）
+# 凝聚态上同调 / Condensed Cohomology（cond.cohomology）· 节点清单（第 2/5 页）
 根 `../`　·　第 1 页 `index/cond.cohomology.md`
 
 - cor.k-acyclic-acyclic　K-有界零调 推出 零调　layer 16

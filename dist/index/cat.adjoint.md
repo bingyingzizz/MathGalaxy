@@ -1,4 +1,4 @@
-# 伴随与反射（cat.adjoint）· 节点清单（第 1/2 页）
+# 伴随与反射 / Adjunctions and Reflections（cat.adjoint）· 节点清单（第 1/2 页）
 
 造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。
 中心天体 def.adjoint　·　27 个节点　·　根 `../`　·　续页 `index/cat.adjoint.2.md`

@@ -1,4 +1,4 @@
-# 测度的构造（analysis.measure）· 节点清单（第 1/2 页）
+# 测度的构造 / Constructing Measures（analysis.measure）· 节点清单（第 1/2 页）
 
 造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。
 中心天体 def.measure　·　18 个节点　·　根 `../`　·　续页 `index/analysis.measure.2.md`

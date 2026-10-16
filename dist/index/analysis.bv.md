@@ -1,4 +1,4 @@
-# 有界变差与绝对连续（analysis.bv）· 节点清单（第 1/2 页）
+# 有界变差与绝对连续 / Bounded Variation and Absolute Continuity（analysis.bv）· 节点清单（第 1/2 页）
 
 造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。
 中心天体 def.bounded-variation　·　16 个节点　·　根 `../`　·　续页 `index/analysis.bv.2.md`

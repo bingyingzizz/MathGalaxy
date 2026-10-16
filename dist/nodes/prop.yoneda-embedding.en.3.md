@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/prop.yoneda-embedding.md` and `proo
 Wikipedia: https://en.wikipedia.org/wiki/Yoneda_embedding · nLab: https://ncatlab.org/nlab/show/Yoneda+embedding
 
 
-Cite: `prop.yoneda-embedding` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.yoneda-embedding` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

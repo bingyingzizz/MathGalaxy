@@ -1,4 +1,4 @@
-# 拓扑空间（topology.general）· 节点清单（第 2/2 页）
+# 拓扑空间 / Topological Spaces（topology.general）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/topology.general.md`
 
 - def.locally-compact　局部紧 Hausdorff 空间　layer 15

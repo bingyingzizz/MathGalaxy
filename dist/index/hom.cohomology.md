@@ -1,4 +1,4 @@
-# 同调与正合列（hom.cohomology）· 节点清单（第 1/1 页）
+# 同调与正合列 / Homology and Exact Sequences（hom.cohomology）· 节点清单（第 1/1 页）
 
 造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。
 中心天体 def.cohomology　·　7 个节点　·　根 `../`

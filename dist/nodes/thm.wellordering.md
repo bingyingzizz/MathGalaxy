@@ -28,4 +28,4 @@ refs: Zermelo (1904)；Kunen, Set Theory, I.12
 
 > 说明见 `notes/thm.wellordering.md`
 
-引用：`thm.wellordering`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.wellordering`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

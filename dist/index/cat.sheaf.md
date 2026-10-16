@@ -1,4 +1,4 @@
-# 层与拓扑（cat.sheaf）· 节点清单（第 1/3 页）
+# 层与拓扑 / Sheaves and Topologies（cat.sheaf）· 节点清单（第 1/3 页）
 
 造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。
 中心天体 def.sheaf　·　37 个节点　·　根 `../`　·　续页 `index/cat.sheaf.2.md`

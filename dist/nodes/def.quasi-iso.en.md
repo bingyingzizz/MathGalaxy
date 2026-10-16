@@ -10,5 +10,5 @@ layer 14 · definition · cluster Homology and Exact Sequences (`hom.cohomology`
 Chinese only — see the Chinese page `nodes/def.quasi-iso.md` and `proofs/`.
 
 
-Cite: `def.quasi-iso` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.quasi-iso` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

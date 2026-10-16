@@ -21,4 +21,4 @@ refs: Folland, Real Analysis, Theorem 3.27
 
 > 说明见 `notes/thm.bv-jordan.md`
 
-引用：`thm.bv-jordan`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.bv-jordan`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

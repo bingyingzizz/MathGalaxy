@@ -11,5 +11,5 @@ names: `sections functor` (short) · `Sections Functor` (full)
 Chinese only — see the Chinese page `nodes/def.section-functor.md` and `proofs/`.
 
 
-Cite: `def.section-functor` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.section-functor` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

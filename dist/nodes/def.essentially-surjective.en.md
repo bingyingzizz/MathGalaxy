@@ -11,5 +11,5 @@ names: `essentially surjective` (short) · `Essentially Surjective` (full)
 Chinese only — see the Chinese page `nodes/def.essentially-surjective.md` and `proofs/`.
 
 
-Cite: `def.essentially-surjective` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.essentially-surjective` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

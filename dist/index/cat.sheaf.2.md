@@ -1,4 +1,4 @@
-# 层与拓扑（cat.sheaf）· 节点清单（第 2/3 页）
+# 层与拓扑 / Sheaves and Topologies（cat.sheaf）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/cat.sheaf.md`
 
 - prop.covering-sieves-filter　覆盖筛构成滤子　layer 15

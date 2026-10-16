@@ -1,4 +1,4 @@
-# 阿贝尔层（hom.sheaf）· 节点清单（第 1/2 页）
+# 阿贝尔层 / Abelian Sheaves（hom.sheaf）· 节点清单（第 1/2 页）
 
 造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。
 中心天体 def.abelian-sheaf　·　13 个节点　·　根 `../`　·　续页 `index/hom.sheaf.2.md`

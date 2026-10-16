@@ -11,5 +11,5 @@ names: `choice function` (short) · `Choice Function` (full)
 Chinese only — see the Chinese page `nodes/def.choicefn.md` and `proofs/`.
 
 
-Cite: `def.choicefn` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.choicefn` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

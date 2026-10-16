@@ -1,4 +1,4 @@
-# 层上同调（hom.sheafcoh）· 节点清单（第 2/3 页）
+# 层上同调 / Sheaf Cohomology（hom.sheafcoh）· 节点清单（第 2/3 页）
 根 `../`　·　第 1 页 `index/hom.sheafcoh.md`
 
 - method.simplicial-cohomology　单纯方法算层上同调　layer 18
@@ -11,6 +11,5 @@
 - prop.cohomology-functoriality　上同调的函子性　layer 18
 - prop.derived-pushforward-composition　推前的复合　layer 18
 - thm.leray-spectral-sequence　Leray 谱序列　layer 18
-- prop.cohomology-via-associated-sheaf　用关联层算上同调　layer 18
 
 > 续见 `index/hom.sheafcoh.3.md`

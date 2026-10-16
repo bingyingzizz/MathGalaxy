@@ -10,5 +10,5 @@ layer 15 · theorem · cluster Topological Spaces (`topology.general`) · Topolo
 Chinese only — see the Chinese page `nodes/thm.tykhonov.md` and `proofs/`.
 
 
-Cite: `thm.tykhonov` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.tykhonov` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

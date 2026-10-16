@@ -6,5 +6,5 @@ English entry · root `../`
 Wikipedia: https://en.wikipedia.org/wiki/Outer_measure · nLab: https://ncatlab.org/nlab/show/outer+measure
 
 
-Cite: `def.outer-measure` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.outer-measure` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 
