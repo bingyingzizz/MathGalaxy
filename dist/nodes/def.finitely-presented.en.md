@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · definition · cluster 预层与米田 (`cat.yoneda`) · Category Theory
+layer 13 · definition · cluster Presheaves and Yoneda (`cat.yoneda`) · Category Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.finitely-presented.md` and `proofs/`.

@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-16T02:46:05.827Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-16T02:56:02.804Z
 > 9 星系 / 45 星团 / 709 节点 / 1398 连线（强边 1389，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -12736,7 +12736,7 @@ $$0 \longrightarrow M \longrightarrow M_{0} \longrightarrow M_{1} \longrightarro
 $$\mathbb{Z}^{(I)} \twoheadrightarrow \widehat{M} ✓$$
 （自由离散群是离散群的投射覆盖。）
 **② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是
-$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（$T$ 连通，连通空间的积连通）}\;\checkmark$$
+$$M \hookrightarrow T^{I}, \qquad M_{0} := T^{I} \text{ 连通（}T\text{ 连通，连通空间的积连通）}\;\checkmark$$
 **③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列
 $$0 \to M \to M_{0} \to M_{1} \to 0 \quad\leadsto\quad 0 \to \widehat{M_{1}} \to \mathbb{Z}^{(I)} \to \widehat{M} \to 0,$$
 其中 $\widehat{M_{1}}$ 是自由离散群 $\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\cong \mathbb{Z}^{(J)}$ ✓（PID 上自由模的子模自由）。再对偶回来：$M_{1} \cong T^{J}$ ✓ —— 连通（并紧）✓。

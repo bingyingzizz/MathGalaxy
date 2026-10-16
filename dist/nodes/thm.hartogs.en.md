@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 8 · theorem · cluster 基数与等势 (`set.cardinal`) · Set Theory
+layer 8 · theorem · cluster Cardinals and Equinumerosity (`set.cardinal`) · Set Theory
 names: `Hartogs` (short) · `Hartogs' Theorem, 1915` (full)
 
 ## Statement and proof

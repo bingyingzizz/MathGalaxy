@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 12 · definition · cluster 复形与导出三角 (`hom.complex`) · Homological Algebra
+layer 12 · definition · cluster Complexes and Distinguished Triangles (`hom.complex`) · Homological Algebra
 names: `homotopy category` (short) · `Homotopy Category` (full)
 
 ## Statement and proof

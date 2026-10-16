@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 8 · definition · cluster Stone 与 Stonean (`topo.stone`) · Topology / Abstract Algebra
+layer 8 · definition · cluster Stone and Stonean Spaces (`topo.stone`) · Topology / Abstract Algebra
 names: `Boolean ring` (short) · `Boolean Ring` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster 可测函数与收敛 (`analysis.measurable`) · Analysis
+layer 7 · definition · cluster Measurable Functions and Convergence (`analysis.measurable`) · Analysis
 names: `simple function` (short) · `Simple Function` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · definition · cluster 有界变差与绝对连续 (`analysis.bv`) · Analysis
+layer 14 · definition · cluster Bounded Variation and Absolute Continuity (`analysis.bv`) · Analysis
 names: `absolutely continuous function` (short) · `Absolutely Continuous Function` (full)
 
 ## Statement and proof

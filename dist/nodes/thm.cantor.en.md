@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · theorem · cluster 基数与等势 (`set.cardinal`) · Set Theory
+layer 9 · theorem · cluster Cardinals and Equinumerosity (`set.cardinal`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.cantor.md` and `proofs/`.

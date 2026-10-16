@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · lemma · cluster 凝聚态集 (`cond.set`) · Condensed Mathematics
+layer 17 · lemma · cluster Condensed Sets (`cond.set`) · Condensed Mathematics
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/lem.weak-hausdorff-qseparated.md` and `proofs/`.

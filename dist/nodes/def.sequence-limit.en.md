@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · definition · cluster 实数与极限 (`analysis.real`) · Analysis
+layer 13 · definition · cluster Real Numbers and Limits (`analysis.real`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.sequence-limit.md` and `proofs/`.

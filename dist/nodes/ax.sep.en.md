@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 4 · axiom · cluster ZFC 公理系统 (`set.zfc`) · Set Theory
+layer 4 · axiom · cluster The ZFC Axioms (`set.zfc`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/ax.sep.md` and `proofs/`.

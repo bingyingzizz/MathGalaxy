@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · proposition · cluster 拓扑阿贝尔群 (`cond.topo`) · Condensed Mathematics / Topology
+layer 18 · proposition · cluster Topological Abelian Groups (`cond.topo`) · Condensed Mathematics / Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.pontryagin-torsion-stone.md` and `proofs/`.

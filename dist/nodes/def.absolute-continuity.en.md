@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster 符号测度与分解 (`analysis.signed`) · Analysis
+layer 16 · definition · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.absolute-continuity.md` and `proofs/`.

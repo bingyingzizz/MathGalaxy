@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 21 · theorem · cluster 积分 (`analysis.integral`) · Analysis
+layer 21 · theorem · cluster Integration (`analysis.integral`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.differentiate-under-integral.md` and `proofs/`.

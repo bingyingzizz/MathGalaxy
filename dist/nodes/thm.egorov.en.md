@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 21 · theorem · cluster 可测函数与收敛 (`analysis.measurable`) · Analysis
+layer 21 · theorem · cluster Measurable Functions and Convergence (`analysis.measurable`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.egorov.md` and `proofs/`.

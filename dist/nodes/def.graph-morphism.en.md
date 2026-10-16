@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster 范畴与图 (`cat.basic`) · Category Theory
+layer 7 · definition · cluster Categories and Diagrams (`cat.basic`) · Category Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.graph-morphism.md` and `proofs/`.

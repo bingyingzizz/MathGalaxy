@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 8 · definition · cluster 代数结构 (`algebra.structures`) · Abstract Algebra / Order Theory
+layer 8 · definition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Order Theory
 names: `ordered field` (short) · `Ordered Field` (full)
 
 ## Statement and proof

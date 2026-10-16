@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 3 · definition · cluster 集合的构造 (`set.construct`) · Set Theory
+layer 3 · definition · cluster Constructing Sets (`set.construct`) · Set Theory
 names: `power set` (short) · `Power Set` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster 序数与超限 (`set.ordinal`) · Set Theory
+layer 7 · definition · cluster Ordinals and Transfinite Recursion (`set.ordinal`) · Set Theory
 names: `ordinal` (short) · `von Neumann Ordinal` (full)
 
 ## Statement and proof

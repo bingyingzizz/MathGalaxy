@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homological Algebra
+layer 9 · definition · cluster Additive and Abelian Categories (`hom.ab`) · Homological Algebra
 names: `additive functor` (short) · `Additive Functor` (full)
 
 ## Statement and proof

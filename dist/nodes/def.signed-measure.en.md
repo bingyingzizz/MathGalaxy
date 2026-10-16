@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 符号测度与分解 (`analysis.signed`) · Analysis
+layer 15 · definition · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
 names: `signed measure` (short) · `Signed Measure` (full)
 
 ## Statement and proof

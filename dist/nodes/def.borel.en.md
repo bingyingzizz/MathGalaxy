@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 6 · definition · cluster 集合族与 σ-代数 (`analysis.setclass`) · Analysis / Topology
+layer 6 · definition · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis / Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.borel.md` and `proofs/`.

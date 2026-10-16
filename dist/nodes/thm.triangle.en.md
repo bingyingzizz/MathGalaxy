@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · theorem · cluster 数系的构造 (`set.numbers`) · Set Theory / Analysis
+layer 10 · theorem · cluster Constructing the Number Systems (`set.numbers`) · Set Theory / Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.triangle.md` and `proofs/`.

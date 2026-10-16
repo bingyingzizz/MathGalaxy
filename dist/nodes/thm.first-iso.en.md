@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 9 · theorem · cluster 代数结构 (`algebra.structures`) · Abstract Algebra / Set Theory
+layer 9 · theorem · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Set Theory
 
 > 续见 nodes/thm.first-iso.en.2.md

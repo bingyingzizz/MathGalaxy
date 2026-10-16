@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · theorem · cluster 符号测度与分解 (`analysis.signed`) · Analysis
+layer 19 · theorem · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
 names: `Jordan decomposition` (short) · `Jordan Decomposition Theorem` (full)
 
 ## Statement and proof

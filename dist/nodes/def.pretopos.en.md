@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 拓扑斯 (`cat.topos`) · Category Theory
+layer 15 · definition · cluster Toposes (`cat.topos`) · Category Theory
 names: `pretopos` (short) · `Pretopos` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · axiom · cluster 选择原理 (`order.choice`) · Set Theory
+layer 9 · axiom · cluster Choice Principles (`order.choice`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/ax.choice.md` and `proofs/`.

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 5 · theorem · cluster 集合的构造 (`set.construct`) · Set Theory
+layer 5 · theorem · cluster Constructing Sets (`set.construct`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.product.md` and `proofs/`.

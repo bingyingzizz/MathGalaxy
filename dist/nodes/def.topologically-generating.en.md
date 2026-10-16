@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 层与拓扑 (`cat.sheaf`) · Category Theory
+layer 15 · definition · cluster Sheaves and Topologies (`cat.sheaf`) · Category Theory
 names: `topologically generating` (short) · `Topologically Generating Set` (full)
 
 ## Statement and proof

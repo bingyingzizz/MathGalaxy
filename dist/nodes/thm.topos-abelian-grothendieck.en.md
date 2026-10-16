@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 19 · theorem · cluster 阿贝尔层 (`hom.sheaf`) · Homological Algebra
+layer 19 · theorem · cluster Abelian Sheaves (`hom.sheaf`) · Homological Algebra
 
 > 续见 nodes/thm.topos-abelian-grothendieck.en.2.md

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · definition · cluster L^p 空间 (`analysis.lp`) · Analysis
+layer 18 · definition · cluster L^p Spaces (`analysis.lp`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.lp-norm.md` and `proofs/`.

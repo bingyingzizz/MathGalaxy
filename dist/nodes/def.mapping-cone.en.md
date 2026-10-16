@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · definition · cluster 复形与导出三角 (`hom.complex`) · Homological Algebra
+layer 13 · definition · cluster Complexes and Distinguished Triangles (`hom.complex`) · Homological Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.mapping-cone.md` and `proofs/`.

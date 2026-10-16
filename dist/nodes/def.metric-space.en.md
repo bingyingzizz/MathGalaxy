@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 13 · definition · cluster 度量空间 (`topology.metric`) · Topology
+layer 13 · definition · cluster Metric Spaces (`topology.metric`) · Topology
 
 > 续见 nodes/def.metric-space.en.2.md

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster 拓扑空间 (`topology.general`) · Topology
+layer 7 · definition · cluster Topological Spaces (`topology.general`) · Topology
 names: `homeomorphism` (short) · `Homeomorphism` (full)
 
 ## Statement and proof

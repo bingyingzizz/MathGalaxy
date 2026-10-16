@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster 单满、子对象与像 (`cat.structure`) · Category Theory
+layer 16 · definition · cluster Monos, Epis, Subobjects and Images (`cat.structure`) · Category Theory
 names: `strict morphism` (short) · `Strict Morphism` (full)
 
 ## Statement and proof

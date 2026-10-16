@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 12 · proposition · cluster 伴随与反射 (`cat.adjoint`) · Category Theory
+layer 12 · proposition · cluster Adjunctions and Reflections (`cat.adjoint`) · Category Theory
 
 > 续见 nodes/ex.kan-extension.en.2.md

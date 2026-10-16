@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster 测度的构造 (`analysis.measure`) · Analysis
+layer 16 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
 names: `almost everywhere` (short) · `Almost Everywhere, a.e.` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 11 · example · cluster 代数结构 (`algebra.structures`) · Abstract Algebra / Category Theory
+layer 11 · example · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Category Theory
 names: `localization of a ring` (short) · `Localization of a Ring` (full)
 
 ## Statement and proof

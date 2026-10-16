@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 5 · definition · cluster 关系与函数 (`set.rel`) · Set Theory
+layer 5 · definition · cluster Relations and Mappings (`set.rel`) · Set Theory
 names: `mapping` (short) · `Mapping` (full)
 
 ## Statement and proof

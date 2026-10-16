@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · definition · cluster 范畴与图 (`cat.basic`) · Category Theory
+layer 10 · definition · cluster Categories and Diagrams (`cat.basic`) · Category Theory
 names: `localization` (short) · `Localization` (full)
 
 ## Statement and proof

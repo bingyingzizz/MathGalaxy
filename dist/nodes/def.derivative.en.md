@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 实数与极限 (`analysis.real`) · Analysis
+layer 15 · definition · cluster Real Numbers and Limits (`analysis.real`) · Analysis
 names: `derivative` (short) · `Derivative` (full)
 
 ## Statement and proof

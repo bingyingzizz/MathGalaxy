@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · definition · cluster 凝聚态阿贝尔群 (`cond.ab`) · Condensed Mathematics
+layer 17 · definition · cluster Condensed Abelian Groups (`cond.ab`) · Condensed Mathematics
 names: `condensed abelian group` (short) · `Condensed Abelian Group` (full)
 
 ## Statement and proof

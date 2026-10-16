@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 测度的构造 (`analysis.measure`) · Analysis
+layer 15 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
 names: `premeasure` (short) · `Premeasure` (full)
 
 ## Statement and proof

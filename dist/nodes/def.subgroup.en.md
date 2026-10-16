@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster 代数结构 (`algebra.structures`) · Abstract Algebra
+layer 7 · definition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra
 names: `subgroup` (short) · `Subgroup` (full)
 
 ## Statement and proof

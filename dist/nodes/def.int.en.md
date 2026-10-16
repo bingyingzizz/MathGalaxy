@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 8 · definition · cluster 数系的构造 (`set.numbers`) · Set Theory
+layer 8 · definition · cluster Constructing the Number Systems (`set.numbers`) · Set Theory
 
 > 续见 nodes/def.int.en.2.md

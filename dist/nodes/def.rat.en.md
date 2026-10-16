@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster 数系的构造 (`set.numbers`) · Set Theory
+layer 9 · definition · cluster Constructing the Number Systems (`set.numbers`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.rat.md` and `proofs/`.

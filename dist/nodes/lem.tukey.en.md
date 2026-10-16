@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · lemma · cluster 选择原理 (`order.choice`) · Order Theory
+layer 9 · lemma · cluster Choice Principles (`order.choice`) · Order Theory
 names: `Tukey` (short) · `Tukey's Lemma / Teichmüller–Tukey` (full)
 
 ## Statement and proof

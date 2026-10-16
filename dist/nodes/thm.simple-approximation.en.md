@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 8 · theorem · cluster 可测函数与收敛 (`analysis.measurable`) · Analysis
+layer 8 · theorem · cluster Measurable Functions and Convergence (`analysis.measurable`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.simple-approximation.md` and `proofs/`.

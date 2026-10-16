@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 17 · definition · cluster 乘积测度与 Fubini (`analysis.product`) · Analysis
+layer 17 · definition · cluster Product Measures and Fubini (`analysis.product`) · Analysis
 
 > 续见 nodes/def.product-measure.en.2.md

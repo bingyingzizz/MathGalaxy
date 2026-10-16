@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · definition · cluster 度量空间 (`topology.metric`) · Topology
+layer 14 · definition · cluster Metric Spaces (`topology.metric`) · Topology
 names: `totally bounded` (short) · `Totally Bounded` (full)
 
 ## Statement and proof

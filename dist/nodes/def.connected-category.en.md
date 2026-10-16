@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster 图与极限 (`cat.limit`) · Category Theory
+layer 9 · definition · cluster Diagrams and Limits (`cat.limit`) · Category Theory
 names: `connected category` (short) · `Connected Category` (full)
 
 ## Statement and proof

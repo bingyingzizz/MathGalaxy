@@ -6057,12 +6057,31 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
        ⚠️ 不要把「被更长命中项包含的词」丢掉：`实数完备` 同时命中别名「实数完备」
           和词「实数」「完备」，只留最长的那个会让下面一整片节点全部召不回来。
           长词在前、短词在后，靠打分自然分层。 */
+    /* 一个词条在查询里的每次出现，前后是不是「词边界」。
+       ⭐ T3.1 修：词表里有 `ive` / `id` 这类从记号表、缩写里来的**短 ASCII 碎片**，
+          它们会钻到长英文词里面去 —— 搜 `preadditive` 会被切成 `ive` 之类的词，
+          于是一堆含 `-ive` 的节点涌上来，真正含 `preadditive` 的那个反而被挤出去。
+          现在拉丁词条要求**词边界命中**（中文词条不受影响 —— CJK 没有词边界可言）。 */
+    function wordAligned(Q, v) {
+      if (!/^[a-z]/.test(v)) return true;            // 非拉丁开头：照旧（中文 / 符号）
+      var from = 0, i;
+      while ((i = Q.indexOf(v, from)) >= 0) {
+        var before = i === 0 ? '' : Q[i - 1];
+        var after = Q[i + v.length] || '';
+        var okB = !/[a-z0-9]/.test(before);
+        var okA = !/[a-z0-9]/.test(after);
+        if (okB && okA) return true;
+        from = i + 1;
+      }
+      return false;
+    }
+
     function termsOf(q) {
       var Q = q.toLowerCase();
       var hit = [];
       for (var i = 0; i < vocab.length; i++) {
         var v = vocab[i];
-        if (v.length <= Q.length && Q.indexOf(v) >= 0) hit.push(v);
+        if (v.length <= Q.length && Q.indexOf(v) >= 0 && wordAligned(Q, v)) hit.push(v);
       }
       hit = hit.filter(function (v, i, a) { return a.indexOf(v) === i; });
       hit.sort(function (a, b) { return b.length - a.length; });
@@ -9787,15 +9806,19 @@ MG.i18nAbstracts = {
 <!-- 英文陈述/说明（statement_en / notes_en，T3.2 试点）：逐句对译，中文仍是真源 -->
 <script>
 /* ==========================================================================
-   数学星图 · 英文陈述与说明（statement_en / notes_en · T3.2 试点）
+   数学星图 · 英文陈述与说明（statement_en / notes_en · T3.2）
    --------------------------------------------------------------------------
-   这是什么：把**少数枢纽节点**的陈述（statement）与说明（notes）译成英文。
-   首批只有 3 条 —— 试点：证明「一条完整的英文节点」这条管道从头到尾通了。
+   这是什么：把**枢纽节点**的陈述（statement）与说明（notes）译成英文。
+   现有 11 条 = 试点 3 条（T3.2，2026-10-16）+ **第一批 8 条**（T3.2 批次 1，
+   对象是枢纽榜前 10 名里尚未有译文的那 8 个 —— 前两名 lem.zorn / thm.first-iso
+   已在试点里）。每个批次的中英对照与存疑清单在 i18n/review-batch-N.md。
 
    ⛔ 不是第二棵内容树：中文陈述仍是唯一真源（`src/data/packs/*.js`）；
       这里按 id 旁挂译文，graph.js 建图时抄到节点上。
    ⛔ 不含新命题、不含新推导：**逐句对译**，中文说什么就说什么。
    ⛔ 边的证明（`proofs/`）**不在**本批范围 —— 英文页会写明「证明仍以中文页为准」。
+   ⚠️ **公式原样搬**：`$…$` / `$$…$$` 一字不改（包括公式里 `\text{中文}` 的部分）——
+      本批刻意不译公式内的中文，理由与待作者裁决清单见 review-batch-1.md。
 
    ⚠️ 这是**创译型**内容：agent 起草 → 作者审校 → 才可标 reviewed。
       状态与 stale 的口径与 read 文档、摘要完全一致（单一来源 = status + basedOn）：
@@ -9892,6 +9915,241 @@ MG.i18nStatements = {
         'use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n' +
         '⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval ' +
         '$(0, 1)$ are homeomorphic, yet only the first is complete.',
+    },
+
+    /* ======================================================================
+       T3.2 批次 1（2026-10-16）：枢纽榜前 10 名里还没有译文的 8 个
+       （前两名 lem.zorn / thm.first-iso 在试点里）。中英对照 + 存疑见
+        i18n/review-batch-1.md。
+       ====================================================================== */
+
+    /* -------------------------------------------- 3. Cauchy 列与零列 */
+    'def.cauchy-null': {
+      statement_en:
+        'Let $(x_n)$ be a **sequence of rational numbers** (that is, a function ' +
+        '$\\omega \\to \\mathbb{Q}$), let $|x|$ be the absolute value on $\\mathbb{Q}$, and let ' +
+        '$\\varepsilon$ always range over **positive rationals** (no real numbers are needed yet).\n\n' +
+        '$(x_n)$ is a **Cauchy sequence**:\n\n' +
+        '$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall m, n \\ge N : ' +
+        '|x_m - x_n| < \\varepsilon$$\n\n' +
+        '$(x_n)$ is a **null sequence**:\n\n' +
+        '$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n \\ge N : |x_n| < \\varepsilon$$\n\n' +
+        'Two Cauchy sequences are **equivalent**:\n\n' +
+        '$$(x_n) \\sim (y_n) :\\iff (x_n - y_n) \\text{ is a null sequence}$$\n\n' +
+        '($\\sim$ is an equivalence relation: reflexivity and symmetry are immediate, ' +
+        'transitivity follows from the triangle inequality.)',
+      notes_en:
+        '⭐ **Why divide by the null sequences**: the same real number has many approximating ' +
+        'sequences — for instance $(1, 1, 1, \\ldots)$ and $(1.1,\\ 1.01,\\ 1.001,\\ \\ldots)$ ' +
+        'should both represent $1$, and their difference is a null sequence. Equivalence classes ' +
+        'glue "different approximations of one and the same number" into a single object.\n\n' +
+        '⚠ Here we use **only the order and the absolute value of $\\mathbb{Q}$** ($\\varepsilon$ ' +
+        'ranges over positive rationals, and the absolute value is the one on $\\mathbb{Q}$), so ' +
+        'there is **no circularity**: this step makes perfect sense before $\\mathbb{R}$ is ' +
+        'constructed. The language of "distance, Cauchy sequence, completeness" in metric spaces ' +
+        'is exactly what was abstracted out of this construction.\n\n' +
+        'Three facts needed later:\n' +
+        '- a Cauchy sequence is **bounded**;\n' +
+        '- **sum, difference and product of Cauchy sequences are again Cauchy**;\n' +
+        '- **a Cauchy sequence that is not a null sequence satisfies $|x_n| \\ge \\delta$ from ' +
+        'some index on** (for some positive rational $\\delta$) — hence its reciprocal, after ' +
+        'discarding finitely many terms, is again Cauchy. The third fact is the entire basis ' +
+        'for "multiplication has inverses".',
+    },
+
+    /* ------------------------------------------------ 4. 表示函子 */
+    'def.representable': {
+      statement_en:
+        'Let $F : \\mathcal{C} \\to \\mathbf{Set}$ be a functor.\n\n' +
+        '**(i) Universal element.** An object $X \\in \\mathcal{C}$ together with an element ' +
+        '$s \\in F(X)$ is called **universal** for $F$ if\n\n' +
+        '$$\\forall Y \\in \\mathcal{C},\\ \\forall t \\in F(Y),\\ \\exists! \\, f : X \\to Y,' +
+        '\\qquad F(f)(s) = t$$\n\n' +
+        'One then also says that $F$ is **represented** by $(X, s)$.\n\n' +
+        '**(ii) Representable.** If $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$, one says ' +
+        'that $F$ is **represented** by $X$, and $X$ is called a **representing object** of $F$.',
+      notes_en:
+        'In one sentence: **all the data of $F$ is generated by one element $s$ of $X$**. Given ' +
+        'any other $t$, there is a unique $f$ pushing $s$ across to it — so elements elsewhere ' +
+        'do not come from nowhere; they are pushed out of $s$.\n\n' +
+        'An equivalent phrasing: $(X, s)$ is universal $\\iff$ $(X, s)$ is an initial object of ' +
+        'the category of elements $\\operatorname{el}(F)$ — the word "universal" is used in the ' +
+        'same way on this level and on the level below.\n\n' +
+        'Examples:\n\n' +
+        '- Let $k \\in \\operatorname{Ob}(\\mathbf{CRng})$ and let ' +
+        '$F : k\\text{-}\\mathbf{Alg} \\to \\mathbf{Set}$ be the forgetful functor. Then ' +
+        '$(k[t],\\ t)$ represents $F$: for $A \\in k\\text{-}\\mathbf{Alg}$ and $a \\in F(A)$, ' +
+        'sending $t \\mapsto a$ induces a unique $k$-algebra homomorphism $k[t] \\to A$.\n' +
+        '- Let $F : \\mathbf{Ring} \\to \\mathbf{Set}$ be the constant functor at the one-point ' +
+        'set. Then $\\mathbb{Z}$ represents $F$: every ring has a unique $\\mathbb{Z} \\to R$.\n' +
+        '- Fix a topological space $X$ and a subspace $Y \\subseteq X$, and take the ' +
+        'contravariant functor\n\n' +
+        '  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto ' +
+        '\\{\\, f : Z \\to X \\ \\mid\\ f \\text{ continuous and } f(Z) \\subseteq Y \\,\\}$$\n\n' +
+        '  It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.',
+    },
+
+    /* ------------------------------------------ 5. 加法 / 阿贝尔范畴 */
+    'def.abelian-category': {
+      statement_en:
+        '- A **preadditive category** (an $\\mathbf{Ab}$-category) is a category in which every ' +
+        '$\\operatorname{Hom}$ set carries an abelian group structure and composition is ' +
+        'bilinear;\n' +
+        '- A **zero object** is an object with $\\operatorname{End}(M) = 1$ (that is, ' +
+        '$1_{M} = 0_{M}$); an object $M$ is the **direct sum** $M = M_{1} \\oplus M_{2}$ of ' +
+        '$M_{1}, M_{2}$ if there are $p_{k} : M \\to M_{k}$, $i_{k} : M_{k} \\to M$ with ' +
+        '$p_{1} i_{1} = 1$, $p_{2} i_{2} = 1$, $i_{1} p_{1} + i_{2} p_{2} = 1_{M}$;\n' +
+        '- An **additive category** is a preadditive category with a zero object and all direct ' +
+        'sums (equivalently: all finite products exist, or all finite coproducts exist — in ' +
+        'which case both exist and agree);\n' +
+        '- A **preabelian category** is an additive category in which every morphism has a ' +
+        'kernel and a cokernel (equivalently: all finite limits and finite colimits exist);\n' +
+        '- An **abelian category** is a preabelian category satisfying one of the following ' +
+        '**equivalent** conditions:\n\n' +
+        '1. every monomorphism is regular (dually, every epimorphism is regular);\n' +
+        '2. if $i : N \\rightarrowtail M$ is a monomorphism, then ' +
+        '$N \\cong \\ker\\bigl(M \\twoheadrightarrow \\operatorname{coker}(i)\\bigr)$ (and ' +
+        'dually);\n' +
+        '3. every morphism factors (uniquely up to isomorphism) as an epimorphism followed by a ' +
+        'monomorphism;\n' +
+        '4. for every $f : M \\to N$, ' +
+        '$\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong ' +
+        '\\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$.',
+      notes_en:
+        'In an abelian category one says **injective / surjective** rather than monomorphism / ' +
+        'epimorphism — because condition 1 guarantees that "regular" and "cancellable" are the ' +
+        'same thing.\n\n' +
+        'Examples: $A\\text{-}\\mathbf{Mod}$ is abelian; so is $\\mathbf{Ab}(\\mathcal{T})$ for a ' +
+        'topos $\\mathcal{T}$; so is $\\mathbf{AbCHaus}$. But $\\mathbf{AbTop}$ is **not** (the ' +
+        'identity map $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is not ' +
+        'strict), and neither is $\\mathbf{AbHaus}$.\n\n' +
+        'An abelian category is the **working environment** of homological algebra as a whole: ' +
+        'with kernels and cokernels one can even state "exact sequence"; an additive category ' +
+        'only supplies the additive skeleton (zero object and direct sums).',
+    },
+
+    /* ------------------------------------------------- 6. 乘积测度 */
+    'def.product-measure': {
+      statement_en:
+        'Let $(X, \\mathcal{M}, \\mu )$ and $(Y, \\mathcal{N}, \\nu )$ be measure spaces.\n\n' +
+        '**① Rectangles**: sets of the form $A \\times B$ (with $A \\in \\mathcal{M}$, ' +
+        '$B \\in \\mathcal{N}$) are called (measurable) rectangles. All rectangles **generate** ' +
+        '$\\mathcal{M} \\otimes  \\mathcal{N}$.\n\n' +
+        '**② Premeasure on rectangles**: let $\\mathcal{A}$ be the collection of all **finite ' +
+        'disjoint unions of rectangles**. For\n\n' +
+        '$$E = \\bigsqcup_{j=1}^{n} (A_j \\times B_j)$$\n\n' +
+        'define\n\n' +
+        '$$\\mu_{0} (E) := \\sum_{j=1}^{n} \\mu(A_j) \\nu(B_j)$$\n\n' +
+        'Then $\\mu_{0}$ is a **premeasure** on the algebra $\\mathcal{A}$.\n\n' +
+        '**③ Extension**: $\\mu_{0}$ induces an outer measure on $X \\times Y$, and restricting ' +
+        'it to $\\mathcal{M} \\otimes  \\mathcal{N}$ gives a measure, written\n\n' +
+        '$$\\mu \\times \\nu$$\n\n' +
+        'that is, the **product measure**.',
+      notes_en:
+        'Well-definedness of $\\mu_{0} $ has to be checked (the same $E$ can be split into ' +
+        'different disjoint unions of rectangles) — this is exactly why "rectangles" are ' +
+        'replaced by "**disjoint** unions of rectangles": under disjoint unions, additivity is ' +
+        'easy to verify.\n\n' +
+        '**Everything goes through when the measures are σ-finite**: if $\\mu$ and $\\nu$ are ' +
+        'both σ-finite, then so is $\\mu \\times \\nu$, and by Carathéodory uniqueness the measure ' +
+        'constructed this way is unique.\n\n' +
+        '⚠ The whole machine of this step (premeasure $\\to$ outer measure $\\to$ Carathéodory ' +
+        'extension $\\to$ uniqueness) is exactly the off-the-shelf quartet from the ' +
+        '"constructing measures" cluster.',
+    },
+
+    /* ------------------------------------- 7. 紧生成空间是余反射子范畴 */
+    'prop.cg-coreflective': {
+      statement_en:
+        'The category $k\\mathbf{Top}$ of compactly generated spaces is a **coreflective ' +
+        'subcategory** of $\\mathbf{Top}$: the inclusion functor ' +
+        '$i : k\\mathbf{Top} \\hookrightarrow \\mathbf{Top}$ has a **right** adjoint\n\n' +
+        '$$k : \\mathbf{Top} \\longrightarrow k\\mathbf{Top}, \\qquad X \\mapsto kX$$\n\n' +
+        'that is, $i \\dashv k$. The space $kX$ has the same underlying set as $X$, with the ' +
+        'topology replaced by the $k$-topology.',
+      notes_en:
+        '**What has to be shown**: for every compactly generated space $X$ and every topological ' +
+        'space $Y$,\n\n' +
+        '$$\\operatorname{Hom}_{\\mathbf{Top}}(X,\\ Y) \\;\\cong\\; ' +
+        '\\operatorname{Hom}_{k\\mathbf{Top}}\\bigl(X,\\ kY\\bigr).$$\n\n' +
+        '**Proof.** The counit is $\\varepsilon_{Y} : kY \\to Y$ (the identity map, topology from ' +
+        'finer to coarser, continuous).\n\n' +
+        '- First, $kY$ really is compactly generated: compose every continuous map $S \\to Y$ ' +
+        '($S$ compact Hausdorff) with $\\varepsilon_{Y}$ to lift it to $S \\to kY$, then use the ' +
+        'definition of $kY$ (how $k$-open sets are taken) to verify that "the topology is ' +
+        'determined by these maps".\n' +
+        '- So whenever $f : X \\to Y$ is continuous (with $X$ compactly generated), ' +
+        '$f = \\varepsilon_{Y} \\circ f\': X \\to kY$ yields a continuous map $f\'$ into $kY$: ' +
+        'let $U \\subseteq kY$ be open; we must show that $f\'^{-1}(U)$ is open in $X$. Since ' +
+        '$X$ is compactly generated, it suffices to check for every compact $L \\subseteq X$ ' +
+        'that $f\'^{-1}(U) \\cap L$ is open in $L$. But $f|_{L} : L \\to Y$ is continuous and ' +
+        '$L$ is compact, so $f(L)$ is compact; $U \\cap f(L)$ is open in $f(L)$, hence ' +
+        '$(f|_{L})^{-1}\\bigl(U \\cap f(L)\\bigr) = f\'^{-1}(U) \\cap L$ is open in $L$. ∎\n' +
+        '- The converse direction follows directly from continuity of $\\varepsilon_{Y}$. The ' +
+        'two directions are mutually inverse, which is the isomorphism.\n\n' +
+        '⭐ Keep this side by side with compact Hausdorff: $\\mathbf{CHaus}$ is a **reflective** ' +
+        'subcategory of $\\mathbf{Top}$ (the inclusion has a **left** adjoint $\\beta$), whereas ' +
+        '$k\\mathbf{Top}$ is **coreflective** (the inclusion has a **right** adjoint $k$). One ' +
+        '"tightens" a space, the other "loosens" it — hence the former is closed under limits ' +
+        'and the latter under **colimits**.',
+    },
+
+    /* ------------------------- 8. 拓扑斯上的阿贝尔群是 Grothendieck 范畴 */
+    'thm.topos-abelian-grothendieck': {
+      statement_en:
+        'If $\\mathcal{T}$ is a topos, then the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian ' +
+        'sheaves on $\\mathcal{T}$ is a **Grothendieck category**: it has a small set of ' +
+        'generators, has all colimits, and filtered colimits are exact.',
+      notes_en:
+        'The proof has three parts:\n\n' +
+        '- **Abelian**: first verify componentwise in the presheaf category ' +
+        '$\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ (there one simply has pointwise abelian groups) ' +
+        '— concretely, for an arbitrary morphism $u$ verify ' +
+        '$\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$; then transport ' +
+        'these identities back to the sheaf category along the **exact reflection** ' +
+        '(sheafification). The same argument gives exactness of filtered colimits.\n' +
+        '- **All limits and colimits exist**: because the sheaf category is a reflective ' +
+        'subcategory of the presheaf category.\n' +
+        '- **Small set of generators**: if $S$ is a small set of generators of $\\mathcal{T}$, ' +
+        'then $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$ — ' +
+        'their coproduct is a generator.\n\n' +
+        'One more fact along the way: $\\mathbb{Z}\\cdot X$ is **projective** in ' +
+        '$\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: ' +
+        '$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ ' +
+        'is exact on presheaves).',
+    },
+
+    /* --------------------------- 9. NBV 函数的导数与测度的关系 */
+    'prop.nbv-derivative': {
+      statement_en:
+        'Let $F \\in NBV$. Then $F\' \\in L^1(m)$, and\n\n' +
+        '$$\\mu_F \\perp  m \\iff F\' = 0\\quad  \\text{a.e.}$$\n' +
+        '$$\\mu_F \\ll  m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$',
+      notes_en:
+        'Proof: write $d\\mu_F = d\\lambda + f\\cdot dm$ (Lebesgue decomposition); by the ' +
+        'corresponding theorem for measures, $f = F\'$ a.e. Hence\n\n' +
+        '$\\cdot$ $\\mu_F \\perp  m$ means the absolutely continuous part vanishes, that is ' +
+        '$f = 0 \\implies F\' = 0 \\text{a.e.}$;\n\n' +
+        '$\\cdot$ $\\mu_F \\ll  m$ means $\\lambda = 0$, so ' +
+        '$F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F\'\\cdot dt$.\n\n' +
+        '⭐ This is the measure-theoretic version of the fundamental theorem of calculus: ' +
+        '**whether a function can be integrated back depends on whether $\\mu _F$ is absolutely ' +
+        'continuous**.',
+    },
+
+    /* --------------------------------------- 10. 环 → σ-环 的判据 */
+    'thm.ring-monotone-sigma': {
+      statement_en:
+        'Let $\\mathfrak{A}$ be a **ring**. Then the following three conditions are equivalent:\n\n' +
+        '$$\\mathfrak{A}\\text{ is a } \\sigma\\text{-ring} \\iff \\mathfrak{A}\\text{ is a ' +
+        'monotone class} \\iff \\mathfrak{A}\\text{ is closed under countable disjoint unions}$$',
+      notes_en:
+        'Note that the hypothesis "$\\mathfrak{A}$ is a ring" cannot be dropped — a monotone ' +
+        'class is in general not closed under finite unions, so being a monotone class by ' +
+        'itself does not imply being a $\\sigma$-ring.\n\n' +
+        'This theorem is the technical core of the monotone class theorem: it is precisely what ' +
+        'lets one reduce "true for all $\\sigma$-algebras" to "first verify it on a ring, then ' +
+        'pass to monotone limits".',
     },
   },
 };
@@ -32322,7 +32580,7 @@ window.MG = window.MG || {};
         '其中 $M_{0}$、$M_{1}$ 都是**连通的**紧 Hausdorff 阿贝尔群。'
       ].join('\n'),
       notes: [
-        ['**证明（对偶过去再对偶回来）。** 记 $\\widehat{M} = \\operatorname{Hom}_{\\mathrm{cts}}(M, T)$ 为 Pontryagin 对偶（$T = \\mathbb{R}/\\mathbb{Z}$），由 Pontryagin–van Kampen 对偶，$M$ 紧 $\\iff$ $\\widehat{M}$ **离散** ✓。','**① 对离散的一侧造一个满射。** 取 $\\widehat{M}$ 的一组生成元 $(e_{i})_{i \\in I}$，得满射','$$\\mathbb{Z}^{(I)} \\twoheadrightarrow \\widehat{M} ✓$$','（自由离散群是离散群的投射覆盖。）','**② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是','$$M \\hookrightarrow T^{I}, \\qquad M_{0} := T^{I} \\text{ 连通（$T$ 连通，连通空间的积连通）}\\;\\checkmark$$','**③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列','$$0 \\to M \\to M_{0} \\to M_{1} \\to 0 \\quad\\leadsto\\quad 0 \\to \\widehat{M_{1}} \\to \\mathbb{Z}^{(I)} \\to \\widehat{M} \\to 0,$$','其中 $\\widehat{M_{1}}$ 是自由离散群 $\\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\\cong \\mathbb{Z}^{(J)}$ ✓（PID 上自由模的子模自由）。再对偶回来：$M_{1} \\cong T^{J}$ ✓ —— 连通（并紧）✓。','两部分合起来就是所求的两项消解 ✓。∎'].join('\n'),
+        ['**证明（对偶过去再对偶回来）。** 记 $\\widehat{M} = \\operatorname{Hom}_{\\mathrm{cts}}(M, T)$ 为 Pontryagin 对偶（$T = \\mathbb{R}/\\mathbb{Z}$），由 Pontryagin–van Kampen 对偶，$M$ 紧 $\\iff$ $\\widehat{M}$ **离散** ✓。','**① 对离散的一侧造一个满射。** 取 $\\widehat{M}$ 的一组生成元 $(e_{i})_{i \\in I}$，得满射','$$\\mathbb{Z}^{(I)} \\twoheadrightarrow \\widehat{M} ✓$$','（自由离散群是离散群的投射覆盖。）','**② 对偶回来。** Pontryagin 对偶把满射换成**单态射**、把自由离散群 $\\mathbb{Z}^{(I)}$ 换成 $T^{I}$ ✓，于是','$$M \\hookrightarrow T^{I}, \\qquad M_{0} := T^{I} \\text{ 连通（}T\\text{ 连通，连通空间的积连通）}\\;\\checkmark$$','**③ 商也是连通的。** 令 $M_{1} := M_{0}/M$。对偶这条短正合列','$$0 \\to M \\to M_{0} \\to M_{1} \\to 0 \\quad\\leadsto\\quad 0 \\to \\widehat{M_{1}} \\to \\mathbb{Z}^{(I)} \\to \\widehat{M} \\to 0,$$','其中 $\\widehat{M_{1}}$ 是自由离散群 $\\mathbb{Z}^{(I)}$ 的**子群**，因而本身也是**自由离散群** $\\cong \\mathbb{Z}^{(J)}$ ✓（PID 上自由模的子模自由）。再对偶回来：$M_{1} \\cong T^{J}$ ✓ —— 连通（并紧）✓。','两部分合起来就是所求的两项消解 ✓。∎'].join('\n'),
         '⭐ 用处：把「**紧**阿贝尔群」化归成「**连通紧**阿贝尔群」。例如算 $\\operatorname{RHom}$ 时，中间项与右端项都是连通的，于是可以用连通情形的结论（连通时只剩 $0$ 次与 $1$ 次 Ext）把高次 Ext 一次性掐掉。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §6.2']

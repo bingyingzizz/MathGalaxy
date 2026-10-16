@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · definition · cluster 阿贝尔层 (`hom.sheaf`) · Homological Algebra
+layer 17 · definition · cluster Abelian Sheaves (`hom.sheaf`) · Homological Algebra
 names: `internal hom` (short) · `Internal Hom` (full)
 
 ## Statement and proof

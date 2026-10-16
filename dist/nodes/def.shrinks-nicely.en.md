@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 微分定理 (`analysis.differentiation`) · Analysis
+layer 15 · definition · cluster Differentiation Theorems (`analysis.differentiation`) · Analysis
 
 > 续见 nodes/def.shrinks-nicely.en.2.md

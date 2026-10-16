@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · definition · cluster 层上同调 (`hom.sheafcoh`) · Homological Algebra
+layer 18 · definition · cluster Sheaf Cohomology (`hom.sheafcoh`) · Homological Algebra
 names: `acyclic sheaf` (short) · `Acyclic Sheaf` (full)
 
 ## Statement and proof

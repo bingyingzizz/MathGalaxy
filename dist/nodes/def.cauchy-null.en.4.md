@@ -2,12 +2,19 @@
 English entry · root `../`
 [in graph](../#n=def.cauchy-null)　·　[Chinese page (authoritative)](./def.cauchy-null.md)
 
-## Statement and proof
-Chinese only — see the Chinese page `nodes/def.cauchy-null.md` and `proofs/`.
+## Statement
+Let $(x_n)$ be a **sequence of rational numbers** (that is, a function $\omega \to \mathbb{Q}$), let $|x|$ be the absolute value on $\mathbb{Q}$, and let $\varepsilon$ always range over **positive rationals** (no real numbers are needed yet).
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Cauchy_sequence · nLab: https://ncatlab.org/nlab/show/Cauchy+sequence
+$(x_n)$ is a **Cauchy sequence**:
 
+$$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \varepsilon$$
 
-Cite: `def.cauchy-null` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+$(x_n)$ is a **null sequence**:
 
+$$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
+
+Two Cauchy sequences are **equivalent**:
+
+$$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ is a null sequence}$$
+
+> 续见 nodes/def.cauchy-null.en.5.md

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · proposition · cluster 同调与正合列 (`hom.cohomology`) · Homological Algebra
+layer 15 · proposition · cluster Homology and Exact Sequences (`hom.cohomology`) · Homological Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.injective-criterion.md` and `proofs/`.

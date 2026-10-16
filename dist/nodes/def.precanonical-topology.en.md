@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster 拓扑斯 (`cat.topos`) · Category Theory
+layer 16 · definition · cluster Toposes (`cat.topos`) · Category Theory
 names: `precanonical topology` (short) · `Precanonical Topology` (full)
 
 ## Statement and proof

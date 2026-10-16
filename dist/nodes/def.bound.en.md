@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 6 · definition · cluster 序结构 (`order.structure`) · Order Theory
+layer 6 · definition · cluster Order Structures (`order.structure`) · Order Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.bound.md` and `proofs/`.

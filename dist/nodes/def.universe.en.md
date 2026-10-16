@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 4 · definition · cluster 范畴与图 (`cat.basic`) · Category Theory
+layer 4 · definition · cluster Categories and Diagrams (`cat.basic`) · Category Theory
 names: `universe` (short) · `Grothendieck Universe` (full)
 
 ## Statement and proof

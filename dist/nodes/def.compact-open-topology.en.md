@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 紧生成空间与弱 Hausdorff (`topo.cg`) · Topology
+layer 15 · definition · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
 names: `compact-open topology` (short) · `Compact-Open Topology` (full)
 
 ## Statement and proof

@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 5 · theorem · cluster 集合族与 σ-代数 (`analysis.setclass`) · Analysis
+layer 5 · theorem · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis
 
 > 续见 nodes/thm.ring-monotone-sigma.en.2.md

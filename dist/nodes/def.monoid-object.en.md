@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · definition · cluster 范畴里的代数结构 (`cat.algebra`) · Category Theory / Abstract Algebra
+layer 13 · definition · cluster Algebraic Structures in a Category (`cat.algebra`) · Category Theory / Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.monoid-object.md` and `proofs/`.

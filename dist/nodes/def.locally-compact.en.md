@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 拓扑空间 (`topology.general`) · Topology
+layer 15 · definition · cluster Topological Spaces (`topology.general`) · Topology
 names: `locally compact` (short) · `Locally Compact Hausdorff` (full)
 
 ## Statement and proof

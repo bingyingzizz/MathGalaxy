@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 14 · theorem · cluster 数系的构造 (`set.numbers`) · Analysis / Set Theory
+layer 14 · theorem · cluster Constructing the Number Systems (`set.numbers`) · Analysis / Set Theory
 
 > 续见 nodes/thm.real-uncountable.en.2.md

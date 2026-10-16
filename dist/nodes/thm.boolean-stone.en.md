@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · theorem · cluster Stone 与 Stonean (`topo.stone`) · Topology / Abstract Algebra
+layer 17 · theorem · cluster Stone and Stonean Spaces (`topo.stone`) · Topology / Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.boolean-stone.md` and `proofs/`.

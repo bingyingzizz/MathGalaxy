@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 12 · definition · cluster 预层与米田 (`cat.yoneda`) · Category Theory
+layer 12 · definition · cluster Presheaves and Yoneda (`cat.yoneda`) · Category Theory
 names: `slice category` (short) · `Slice Category` (full)
 
 ## Statement and proof

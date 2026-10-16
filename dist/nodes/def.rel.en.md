@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 4 · definition · cluster 关系与函数 (`set.rel`) · Set Theory
+layer 4 · definition · cluster Relations and Mappings (`set.rel`) · Set Theory
 names: `binary relation` (short) · `Relation` (full)
 
 ## Statement and proof

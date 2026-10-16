@@ -2,12 +2,19 @@
 English entry · root `../`
 [in graph](../#n=def.product-measure)　·　[Chinese page (authoritative)](./def.product-measure.md)
 
-## Statement and proof
-Chinese only — see the Chinese page `nodes/def.product-measure.md` and `proofs/`.
+## Statement
+Let $(X, \mathcal{M}, \mu )$ and $(Y, \mathcal{N}, \nu )$ be measure spaces.
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Product_measure
+**① Rectangles**: sets of the form $A \times B$ (with $A \in \mathcal{M}$, $B \in \mathcal{N}$) are called (measurable) rectangles. All rectangles **generate** $\mathcal{M} \otimes  \mathcal{N}$.
 
+**② Premeasure on rectangles**: let $\mathcal{A}$ be the collection of all **finite disjoint unions of rectangles**. For
 
-Cite: `def.product-measure` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+$$E = \bigsqcup_{j=1}^{n} (A_j \times B_j)$$
 
+define
+
+$$\mu_{0} (E) := \sum_{j=1}^{n} \mu(A_j) \nu(B_j)$$
+
+Then $\mu_{0}$ is a **premeasure** on the algebra $\mathcal{A}$.
+
+> 续见 nodes/def.product-measure.en.4.md

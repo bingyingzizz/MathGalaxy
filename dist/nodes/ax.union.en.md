@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 0 · axiom · cluster ZFC 公理系统 (`set.zfc`) · Set Theory
+layer 0 · axiom · cluster The ZFC Axioms (`set.zfc`) · Set Theory
 names: `union` (short) · `Axiom of Union` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · definition · cluster 测度的构造 (`analysis.measure`) · Analysis
+layer 14 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
 names: `measure` (short) · `Measure` (full)
 
 ## Statement and proof

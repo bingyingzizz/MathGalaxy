@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster 积分 (`analysis.integral`) · Analysis
+layer 18 · theorem · cluster Integration (`analysis.integral`) · Analysis
 names: `monotone convergence theorem` (short) · `MCT, Monotone Convergence Theorem` (full)
 
 ## Statement and proof

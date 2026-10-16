@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster 有界变差与绝对连续 (`analysis.bv`) · Analysis
+layer 16 · definition · cluster Bounded Variation and Absolute Continuity (`analysis.bv`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.bounded-variation.md` and `proofs/`.

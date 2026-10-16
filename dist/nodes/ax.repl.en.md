@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 3 · axiom · cluster ZFC 公理系统 (`set.zfc`) · Set Theory
+layer 3 · axiom · cluster The ZFC Axioms (`set.zfc`) · Set Theory
 names: `replacement` (short) · `Axiom Schema of Replacement` (full)
 
 ## Statement and proof

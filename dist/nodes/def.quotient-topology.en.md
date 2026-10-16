@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 6 · definition · cluster 拓扑空间 (`topology.general`) · Topology
+layer 6 · definition · cluster Topological Spaces (`topology.general`) · Topology
 names: `quotient topology` (short) · `Quotient Topology` (full)
 
 ## Statement and proof

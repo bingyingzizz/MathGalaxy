@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 16 · definition · cluster 符号测度与分解 (`analysis.signed`) · Analysis
+layer 16 · definition · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
 
 > 续见 nodes/def.complex-measure.en.2.md

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 22 · theorem · cluster 有界变差与绝对连续 (`analysis.bv`) · Analysis
+layer 22 · theorem · cluster Bounded Variation and Absolute Continuity (`analysis.bv`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.ftc-lebesgue.md` and `proofs/`.

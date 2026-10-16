@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster 函子与自然变换 (`cat.functor`) · Category Theory
+layer 9 · definition · cluster Functors and Natural Transformations (`cat.functor`) · Category Theory
 names: `essentially surjective` (short) · `Essentially Surjective` (full)
 
 ## Statement and proof

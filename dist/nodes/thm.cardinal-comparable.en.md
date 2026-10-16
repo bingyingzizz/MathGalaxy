@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 10 · theorem · cluster 基数与等势 (`set.cardinal`) · Set Theory
+layer 10 · theorem · cluster Cardinals and Equinumerosity (`set.cardinal`) · Set Theory
 
 > 续见 nodes/thm.cardinal-comparable.en.2.md

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 6 · definition · cluster 紧生成空间与弱 Hausdorff (`topo.cg`) · Topology
+layer 6 · definition · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
 names: `weak Hausdorff` (short) · `Weak Hausdorff Space` (full)
 
 ## Statement and proof

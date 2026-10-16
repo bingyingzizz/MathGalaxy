@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 1 · definition · cluster 集合的构造 (`set.construct`) · Set Theory
+layer 1 · definition · cluster Constructing Sets (`set.construct`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.subset.md` and `proofs/`.

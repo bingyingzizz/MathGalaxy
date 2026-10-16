@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 2 · definition · cluster 集合族与 σ-代数 (`analysis.setclass`) · Analysis
+layer 2 · definition · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis
 names: `monotone class` (short) · `Monotone Class` (full)
 
 ## Statement and proof

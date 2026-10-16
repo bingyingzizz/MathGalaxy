@@ -2,9 +2,14 @@
 English entry · root `../`
 [in graph](../#n=prop.cg-coreflective)　·　[Chinese page (authoritative)](./prop.cg-coreflective.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Compactly_generated_space · nLab: https://ncatlab.org/nlab/show/compactly+generated+space
+## Statement
+The category $k\mathbf{Top}$ of compactly generated spaces is a **coreflective subcategory** of $\mathbf{Top}$: the inclusion functor $i : k\mathbf{Top} \hookrightarrow \mathbf{Top}$ has a **right** adjoint
 
+$$k : \mathbf{Top} \longrightarrow k\mathbf{Top}, \qquad X \mapsto kX$$
 
-Cite: `prop.cg-coreflective` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+that is, $i \dashv k$. The space $kX$ has the same underlying set as $X$, with the topology replaced by the $k$-topology.
 
+## Notes
+**What has to be shown**: for every compactly generated space $X$ and every topological space $Y$,
+
+> 续见 nodes/prop.cg-coreflective.en.4.md

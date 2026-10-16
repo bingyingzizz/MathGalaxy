@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 8 · definition · cluster 代数结构 (`algebra.structures`) · Abstract Algebra
+layer 8 · definition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra
 names: `quotient group` (short) · `Quotient Group` (full)
 
 ## Statement and proof

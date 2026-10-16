@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 8 · definition · cluster 基数与等势 (`set.cardinal`) · Set Theory
+layer 8 · definition · cluster Cardinals and Equinumerosity (`set.cardinal`) · Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.cardinal.md` and `proofs/`.

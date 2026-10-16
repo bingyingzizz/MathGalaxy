@@ -2,12 +2,14 @@
 English entry · root `../`
 [in graph](../#n=prop.nbv-derivative)　·　[Chinese page (authoritative)](./prop.nbv-derivative.md)
 
-## Statement and proof
-Chinese only — see the Chinese page `nodes/prop.nbv-derivative.md` and `proofs/`.
+$$\mu_F \perp  m \iff F' = 0\quad  \text{a.e.}$$
+$$\mu_F \ll  m \iff F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Bounded_variation · nLab: https://ncatlab.org/nlab/show/absolutely+continuous+function
+## Notes
+Proof: write $d\mu_F = d\lambda + f\cdot dm$ (Lebesgue decomposition); by the corresponding theorem for measures, $f = F'$ a.e. Hence
 
+$\cdot$ $\mu_F \perp  m$ means the absolutely continuous part vanishes, that is $f = 0 \implies F' = 0 \text{a.e.}$;
 
-Cite: `prop.nbv-derivative` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+$\cdot$ $\mu_F \ll  m$ means $\lambda = 0$, so $F(x) = \mu_F((-\infty,x]) = \int_{-\infty}^x f\cdot dm = \int_{-\infty}^x F'\cdot dt$.
 
+> 续见 nodes/prop.nbv-derivative.en.4.md

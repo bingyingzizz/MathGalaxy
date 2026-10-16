@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · definition · cluster 层与拓扑 (`cat.sheaf`) · Category Theory
+layer 10 · definition · cluster Sheaves and Topologies (`cat.sheaf`) · Category Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.sieve.md` and `proofs/`.

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 6 · definition · cluster 关系与函数 (`set.rel`) · Set Theory / Analysis
+layer 6 · definition · cluster Relations and Mappings (`set.rel`) · Set Theory / Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.preimage.md` and `proofs/`.

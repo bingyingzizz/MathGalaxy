@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · theorem · cluster 伴随与反射 (`cat.adjoint`) · Category Theory
+layer 13 · theorem · cluster Adjunctions and Reflections (`cat.adjoint`) · Category Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.right-adjoint-criterion.md` and `proofs/`.

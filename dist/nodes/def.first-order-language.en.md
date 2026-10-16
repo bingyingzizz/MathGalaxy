@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 0 · definition · cluster 一阶语言与公式 (`logic.fol`) · Mathematical Logic
+layer 0 · definition · cluster First-Order Languages and Formulas (`logic.fol`) · Mathematical Logic
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.first-order-language.md` and `proofs/`.

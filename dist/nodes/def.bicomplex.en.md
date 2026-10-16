@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 11 · definition · cluster 过滤与谱序列 (`hom.spectral`) · Homological Algebra
+layer 11 · definition · cluster Filtrations and Spectral Sequences (`hom.spectral`) · Homological Algebra
 names: `bicomplex` (short) · `Bicomplex` (full)
 
 ## Statement and proof

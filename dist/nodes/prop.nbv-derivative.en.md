@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
 
-layer 20 · proposition · cluster 有界变差与绝对连续 (`analysis.bv`) · Analysis
+layer 20 · proposition · cluster Bounded Variation and Absolute Continuity (`analysis.bv`) · Analysis
 
 > 续见 nodes/prop.nbv-derivative.en.2.md

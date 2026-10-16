@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 7 · definition · cluster 序结构 (`order.structure`) · Order Theory
+layer 7 · definition · cluster Order Structures (`order.structure`) · Order Theory
 names: `finite character` (short) · `Family of Finite Character` (full)
 
 ## Statement and proof

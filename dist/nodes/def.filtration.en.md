@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster 过滤与谱序列 (`hom.spectral`) · Homological Algebra
+layer 15 · definition · cluster Filtrations and Spectral Sequences (`hom.spectral`) · Homological Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.filtration.md` and `proofs/`.

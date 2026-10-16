@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 22 · definition · cluster 微分定理 (`analysis.differentiation`) · Analysis
+layer 22 · definition · cluster Differentiation Theorems (`analysis.differentiation`) · Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.lebesgue-set.md` and `proofs/`.
