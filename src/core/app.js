@@ -11,6 +11,10 @@
   var C = MG.config;
   var T = MG.theme;
   var GU = MG.graphUtil;
+  /* 界面语言（T2.4）：tf = 查表（缺键回落中文）；labelOf = 节点显示名；num = 数字格式。
+     ⚠️ 这仨必须在**渲染时**才用 —— 不能拿来拼模块加载期的常量。 */
+  var tf = MG.t;
+  var labelOf = MG.labelOf;
 
   /* ------------------------------------------------------- KaTeX（可选） */
   /* 若页面里引入了 KaTeX，$…$ 与 $$…$$ 就会自动渲染；没有则原样显示。 */
@@ -30,6 +34,17 @@
 
   function boot() {
     hookKatex();
+
+    /* 界面语言（T2.4）：先把 index.html 里写死的静态文案按语言填一遍。
+       英文模式下同时给 <html> 打 lang="en"（CSS 与读屏都靠它）。 */
+    MG.applyStatic(document.body);
+    if (MG.isEn) document.documentElement.setAttribute('lang', 'en');
+    /* 设置窗里那两个计数（全部概念索引 / 常见问法）原来是**写死的**（706 / 184），
+       内容长到 709 之后就没人更新它。这里改成从数据现算 —— 顺手修掉这个陈旧数字。 */
+    (function fixCounts() {
+      var q = document.getElementById('set-link-q');
+      if (q) q.textContent = tf('常见问法（{n} 条）', { n: ((MG.aliases || {}).hooks || []).length });
+    })();
 
     var graphEl = document.getElementById('layer-graph');
     var cloudEl = document.getElementById('layer-cloud');
@@ -55,6 +70,12 @@
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
     }
+    /* 设置窗里「全部概念索引（N 个）」的 N 从图现算（原来写死 706，早就不对了）。
+       ⚠️ 概念页的条数 = 节点数，与 dist/_sitepages 的规则一致（`graph.nodes.length`）。 */
+    (function fixAllCount() {
+      var a = document.getElementById('set-link-all');
+      if (a) a.textContent = tf('全部概念索引（{n} 个）', { n: graph.nodes.length });
+    })();
 
     /* ------------------------------------------------------------ 状态 */
     /* 可见性：左下角「显示节点」面板里挑的那一块（存在 localStorage 里）。
@@ -619,7 +640,7 @@
       } else if (act === 'toggle-wheel') {
         C.wheelZooms = !C.wheelZooms;
         btn.classList.toggle('on', C.wheelZooms);
-        btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
+        btn.textContent = C.wheelZooms ? tf('滚轮·缩放') : tf('滚轮·平移');
       }
       if (act && act.indexOf('toggle-') === 0) syncHash('push');
     });
@@ -761,7 +782,7 @@
       var num = s.v === s.n ? '·' + s.n : '·' + s.v + '/' + s.n;
       var name = U.escapeHtml(o.label);
       if (o.nav) name = '<span class="lg-name" data-nav="' + o.nav + '" title="' +
-        U.escapeHtml(o.navTip || '跳过去看') + '">' + name + '</span>';
+        U.escapeHtml(o.navTip || tf('跳过去看')) + '">' + name + '</span>';
       else name = '<span class="lg-name">' + name + '</span>';
       return '<span class="lg-item lg-tog' + state + '" ' + o.attr + ' title="' +
         U.escapeHtml(o.tip) + '">' +
@@ -778,43 +799,48 @@
 
       /* ---------- 节点类别（点一下 = 整类开关） ---------- */
       var typeRows = types.filter(function (t) { return T.nodeTypes[t]; }).map(function (t) {
-        var st = T.nodeTypes[t];
+        var st = MG.typeStyle(t);           // ⭐ 英文模式下它给的 name 已经是英文
         var list = typeNodes(t);
         if (!list.length) return '';
         return togChip({
           label: st.name, color: st.color, list: list, attr: 'data-vt="' + t + '"',
-          tip: '点一下：显示 / 隐藏全部「' + st.name + '」（共 ' + list.length + ' 个）'
+          tip: tf('点一下：显示 / 隐藏全部「{名}」（共 {n} 个）', { 名: st.name, n: list.length })
         });
       }).join('');
 
       /* ---------- 连线 ---------- */
       var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
+      var strongTag = '<em style="color:#A5ABB3;font-style:normal">' + U.escapeHtml(tf('·强')) + '</em>';
       var edgeRows =
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>推出 →<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>定义引用<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>' + U.escapeHtml(tf('等价')) + strongTag + '</span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>' + U.escapeHtml(tf('推出 →')) + strongTag + '</span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>' + U.escapeHtml(tf('定义引用')) + strongTag + '</span>' +
         (weakCount
           ? '<span class="lg-item" style="opacity:' + (C.exploreMode ? 1 : 0.45) + '">' +
             '<span class="lg-line" style="border-top-color:rgba(138,106,214,.7);border-top-width:2px;border-top-style:dashed"></span>' +
-            '类比<em style="color:#A5ABB3;font-style:normal">·弱 ' + weakCount + ' 条' +
-            (C.exploreMode ? '' : '（点右上角「探索」显示）') + '</em></span>'
+            U.escapeHtml(tf('类比')) + '<em style="color:#A5ABB3;font-style:normal">' +
+            U.escapeHtml(tf('·弱 {n} 条', { n: weakCount }) +
+              (C.exploreMode ? '' : tf('（点右上角「探索」显示）'))) + '</em></span>'
           : '');
 
       /* ---------- 数学板块：星系 + 它下面的星团（缩进一层） ---------- */
       var regionRows = live.map(function (r) {
         var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
+        var rname = MG.regionName(r);
         var head = togChip({
-          label: r.name, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
-          attr: 'data-vr="' + r.id + '"', tip: '点色块：显示 / 隐藏整个「' + r.name + '」；点名字：跳过去看',
-          nav: r.id, navTip: '跳过去看「' + r.name + '」'
+          label: rname, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
+          attr: 'data-vr="' + r.id + '"',
+          tip: tf('点色块：显示 / 隐藏整个「{名}」；点名字：跳过去看', { 名: rname }),
+          nav: r.id, navTip: tf('跳过去看「{名}」', { 名: rname })
         });
         if (!mine.length) return head;
         var kids = mine.map(function (c) {
+          var cname = MG.clusterName(c);
           return togChip({
-            label: c.name, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
+            label: cname, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
             attr: 'data-vc="' + c.id + '"', round: true,
-            tip: '点圆点：显示 / 隐藏「' + c.name + '」；点名字：跳过去看',
-            nav: c.id, navTip: '跳过去看「' + c.name + '」'
+            tip: tf('点圆点：显示 / 隐藏「{名}」；点名字：跳过去看', { 名: cname }),
+            nav: c.id, navTip: tf('跳过去看「{名}」', { 名: cname })
           });
         }).join('');
         return head + '<span class="lg-kids">' + kids + '</span>';
@@ -833,15 +859,19 @@
       var curLv = (layerMax == null) ? maxLv : layerMax;
       var llist = sizes[curLv] || [];
       var lnames = llist.map(function (x) { return x.label; });
-      var layerTip = '第 ' + curLv + ' 层（' + llist.length + ' 个）：' +
-        (lnames.slice(0, 12).join('、') || '（空）') + (lnames.length > 12 ? ' …' : '');
+      var layerTip = tf('第 {n} 层（{k} 个）：{名}', {
+        n: curLv, k: llist.length,
+        名: (lnames.slice(0, 12).join('、') || tf('（空）')) + (lnames.length > 12 ? ' …' : '')
+      });
       var layerChips =
         '<input type="range" class="lg-range" min="0" max="' + maxLv + '" step="1" value="' + curLv +
-        '" data-layer-range aria-label="显示到第几层" title="' + U.escapeHtml('拖动：只显示「离地基不超过 k 步」的点。' + layerTip) + '">' +
+        '" data-layer-range aria-label="' + U.escapeHtml(tf('显示到第几层')) + '" title="' +
+        U.escapeHtml(tf('拖动：只显示「离地基不超过 k 步」的点。') + layerTip) + '">' +
         '<span class="lg-chip lg-chip-all' + (layerMax == null ? ' on' : '') +
-        '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
+        '" data-layer="all" title="' + U.escapeHtml(tf('不限层数（全部 {n} 个点）', { n: total })) + '">' +
+        U.escapeHtml(tf('全部')) + '</span>';
       var layerTitle = '<span id="lg-layer-readout" title="' + U.escapeHtml(layerTip) + '">' +
-        '分层 · 显示到第 ' + curLv + ' 层（' + shown + '/' + total + '）</span>';
+        U.escapeHtml(tf('分层 · 显示到第 {n} 层（{k}/{m}）', { n: curLv, k: shown, m: total })) + '</span>';
 
       /* ---------- 子图开关：只在子图模式开着时出现 ---------- */
       var subChips = '';
@@ -852,12 +882,15 @@
         }
       }
       var subGroup = subSeed
-        ? '<div class="lg-group"><div class="lg-title">只看子图 · ' +
-            U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) + '（' + subCount + ' 个点）</div>' +
+        ? '<div class="lg-group"><div class="lg-title">' +
+            U.escapeHtml(tf('只看子图 · {名}（{n} 个点）', {
+              名: (SUB_DIR_NAME[subDir] || subDir), n: subCount })) + '</div>' +
           '<div class="lg-row lg-layers">' + subChips +
           '<span class="lg-chip' + (subSkipBase ? ' on' : '') + '" data-subbase ' +
-            'title="跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有">跳地基</span>' +
-          '<button class="lg-reset" data-subclear title="退出子图，恢复全图">退出</button>' +
+            'title="' + U.escapeHtml(tf('跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有')) + '">' +
+            U.escapeHtml(tf('跳地基')) + '</span>' +
+          '<button class="lg-reset" data-subclear title="' + U.escapeHtml(tf('退出子图，恢复全图')) + '">' +
+            U.escapeHtml(tf('退出')) + '</button>' +
           '</div></div>'
         : '';
 
@@ -865,42 +898,44 @@
       var exN = 0, exE = 0;
       if (exporter) { var _c = exporter.collect(); exN = _c.nodes.length; exE = _c.edges.length; }
       var exportGroup =
-        '<div class="lg-group"><div class="lg-title">导出当前视图（' + exN + ' 点 / ' + exE + ' 线）</div>' +
+        '<div class="lg-group"><div class="lg-title">' +
+        U.escapeHtml(tf('导出当前视图（{n} 点 / {k} 线）', { n: exN, k: exE })) + '</div>' +
         '<div class="lg-row lg-layers">' +
-        '<button class="lg-reset" data-export="svg" title="导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）">SVG</button>' +
-        '<button class="lg-reset" data-export="tikz" title="导出 TikZ 代码（给论文用）：每个节点带 \\label{n:节点id}，正文里可以 \\ref 引用">TikZ</button>' +
-        '<button class="lg-reset" data-export="json" title="导出子图 JSON（给程序和 AI）：id / 类型 / 陈述 / 坐标 / 边">子图 JSON</button>' +
+        '<button class="lg-reset" data-export="svg" title="' + U.escapeHtml(tf('导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）')) + '">SVG</button>' +
+        '<button class="lg-reset" data-export="tikz" title="' + U.escapeHtml(tf('导出 TikZ 代码（给论文用）：每个节点带 \\label{n:节点id}，正文里可以 \\ref 引用')) + '">TikZ</button>' +
+        '<button class="lg-reset" data-export="json" title="' + U.escapeHtml(tf('导出子图 JSON（给程序和 AI）：id / 类型 / 陈述 / 坐标 / 边')) + '">' +
+          U.escapeHtml(tf('子图 JSON')) + '</button>' +
         '</div></div>';
 
+      var legendHint = subSeed
+        ? tf('子图模式：「{名}」', { 名: labelOf(graph.byId[subSeed]) || subSeed }) +
+          tf('，共 {n} 个点（点数字改跳数，「退出」回全图）', { n: subCount })
+        : trunkOnly || layerMax != null
+          ? (trunkOnly ? tf('主干模式：') : '') +
+            (layerMax != null ? tf('只显示第 0–{n} 层：', { n: layerMax }) : '') +
+            tf('现在共 {n} 个点（点图例标题栏的「显示全部」恢复）', { n: shown })
+          : tf('点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下');
+
       legendEl.innerHTML =
-        '<div class="lg-head" data-toggle><b>图例</b>' +
+        '<div class="lg-head" data-toggle><b>' + U.escapeHtml(tf('图例')) + '</b>' +
         (hidden
-          ? '<button class="lg-reset" data-reset title="把所有节点都显示出来">显示全部 ' + shown + '/' + total + '</button>'
+          ? '<button class="lg-reset" data-reset title="' + U.escapeHtml(tf('把所有节点都显示出来')) + '">' +
+            U.escapeHtml(tf('显示全部 {n}/{m}', { n: shown, m: total })) + '</button>'
           : '') +
         '<span class="lg-caret">▼</span></div>' +
         '<div class="lg-body">' +
         progressGroup +
-        '<div class="lg-group"><div class="lg-title">节点（' + total + '）</div>' +
+        '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('节点（{n}）', { n: total })) + '</div>' +
         '<div class="lg-row">' + typeRows + '</div></div>' +
-        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
+        '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('连线（{n}）', { n: graph.edges.length })) + '</div>' +
         '<div class="lg-row">' + edgeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">' + layerTitle + '</div>' +
         '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
         subGroup +
-        '<div class="lg-group"><div class="lg-title">数学板块</div>' +
+        '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('数学板块')) + '</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
         exportGroup +
-        '<div class="lg-hint">' +
-        (subSeed
-          ? '子图模式：「' + U.escapeHtml(graph.byId[subSeed] ? graph.byId[subSeed].label : subSeed) +
-            '」' + U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) +
-            '，共 ' + subCount + ' 个点（点数字改跳数，「退出」回全图）'
-          : trunkOnly || layerMax != null
-            ? (trunkOnly ? '主干模式：' : '') +
-              (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
-              '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
-            : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
-        '</div>' +
+        '<div class="lg-hint">' + U.escapeHtml(legendHint) + '</div>' +
         '</div>';
     }
 
@@ -1265,7 +1300,7 @@
         var btn = toolbar.querySelector('[data-act="' + act + '"]');
         if (!btn) return;
         btn.classList.toggle('on', !!map[act]);
-        if (act === 'toggle-wheel') btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
+        if (act === 'toggle-wheel') btn.textContent = tf(C.wheelZooms ? '滚轮·缩放' : '滚轮·平移');
       });
     }
 

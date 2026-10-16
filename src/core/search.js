@@ -127,12 +127,17 @@
           n.statement || '', n.notes || ''].join('\n').toLowerCase();
         hay += notationForms(rawHay, function (e) { addWord(e.name); addWord(e.uni); });
 
-        return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka };
+        /* T2.4：英文模式下搜索结果的**显示**也要用英文名（hay 里早就有它们，
+           这里是把它们端到结果行上）。⛔ 中文模式一字不变。 */
+        return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka,
+          label_en: n.label_en || '', title_en: n.title_en || '',
+          st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : '') };
       });
 
-      /* 星团名也进词表：「测度的构造」贡献 `测度` */
+      /* 星团名也进词表：「测度的构造」贡献 `测度`；英文模式下英文星团名也要能搜到 */
       view.graph.clusters.forEach(function (c) {
         addWord(c.name);
+        if (c.en) addWord(c.en);
         grams2(c.name).forEach(addWord);
       });
 
@@ -266,6 +271,7 @@
         if (!e) return;
         items.push({
           kind: 'node', id: h.id, label: e.label, sub: subOf(e),
+          label_en: e.label_en,                 // ⭐ 英文模式显示用（T2.4）
           q: markTerm(e, terms), node: e.node, grp: h.grp
         });
       });
@@ -274,7 +280,8 @@
       view.graph.regions.forEach(function (r) {
         if (!r.stat) return;
         if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
-          items.push({ kind: 'region', id: r.id, label: r.name, sub: r.stat.count + ' 个节点', q: q, grp: 'all' });
+          items.push({ kind: 'region', id: r.id, label: MG.regionName(r),
+            sub: MG.t('{n} 个节点', { n: r.stat.count }), q: q, grp: 'all' });
         }
       });
 
@@ -283,6 +290,11 @@
     }
 
     function subOf(e) {
+      /* 英文模式：副标题优先英文摘要/英文陈述，再退到英文名 —— 都没有就还是中文 */
+      if (MG.isEn) {
+        var en = e.st_en || e.title_en || e.label_en;
+        if (en) return U.truncate(U.plain(en), 64);
+      }
       var st = e.st || U.plain(e.title);
       return U.truncate(st || MG.typeStyle(e.node.type).name, 64);
     }
@@ -300,16 +312,16 @@
       var color = it.kind === 'region'
         ? (view.graph.regionById[it.id] || {}).color || '#ccc'
         : MG.typeStyle(it.node.type).color;
-      var tagText = it.kind === 'region' ? '板块' : MG.typeStyle(it.node.type).name;
+      var tagText = it.kind === 'region' ? MG.t('板块') : MG.typeStyle(it.node.type).name;
       var regionName = '';
       if (it.kind === 'node' && it.node.regions.length) {
         var r0 = view.graph.regionById[it.node.regions[0]];
-        if (r0) regionName = r0.name;
+        if (r0) regionName = MG.regionName(r0);
       }
       return '<div class="sr-item' + (i === active ? ' active' : '') + '" data-i="' + i +
         '" id="sr-item-' + i + '" role="option" aria-selected="' + (i === active ? 'true' : 'false') + '">' +
         '<span class="sr-dot" style="background:' + color + '"></span>' +
-        '<span class="sr-title">' + mark(it.label, it.q) + '</span>' +
+        '<span class="sr-title">' + mark(MG.isEn ? (it.label_en || it.label) : it.label, it.q) + '</span>' +
         '<span class="sr-sub">' + U.escapeHtml(tagText) + ' · ' + U.escapeHtml(it.sub) + '</span>' +
         (regionName ? '<span class="sr-region">' + U.escapeHtml(regionName) + '</span>' : '<span class="sr-region">' + U.escapeHtml(tagText) + '</span>') +
         '</div>';
@@ -319,7 +331,7 @@
       if (!items.length) {
         var v = input.value.trim();
         results.innerHTML = v
-          ? '<div class="sr-empty">没有找到「' + U.escapeHtml(v) + '」相关的节点</div>'
+          ? '<div class="sr-empty">' + U.escapeHtml(MG.t('没有找到「{名}」相关的节点', { 名: v })) + '</div>'
           : '';
         open = !!v;
       } else {
@@ -330,8 +342,8 @@
           var g = it.grp || 'all';
           if (g !== last) {
             last = g;
-            if (g === 'hook') html += '<div class="sr-group">相关问题</div>';
-            else if (items[0].grp === 'hook') html += '<div class="sr-group">全部结果</div>';
+            if (g === 'hook') html += '<div class="sr-group">' + U.escapeHtml(MG.t('相关问题')) + '</div>';
+            else if (items[0].grp === 'hook') html += '<div class="sr-group">' + U.escapeHtml(MG.t('全部结果')) + '</div>';
           }
           html += itemHtml(it, i);
         });
@@ -354,8 +366,8 @@
       if (liveEl) {
         liveEl.textContent = !open ? ''
           : (items.length
-            ? items.length + ' 条结果' + (ok ? '，当前第 ' + (active + 1) + ' 条' : '')
-            : '没有结果');
+            ? MG.t('{n} 条结果，当前第 {k} 条', { n: items.length, k: ok ? active + 1 : '—' })
+            : MG.t('没有结果'));
       }
     }
 

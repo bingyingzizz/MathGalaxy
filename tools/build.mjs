@@ -202,7 +202,9 @@ function exportJSON(MG, graph) {
     })),
 
     clusters: graph.clusters.filter(c => c.nodes.length).map(c => ({
-      id: c.id, name: c.name, parent: c.parent, desc: c.desc,
+      /* T2.4：星团也带英文名（clusters.js 的 en 字段）—— 界面英文模式、概念页面包屑、
+         AI 读 graph.json 时都用它。⛔ 缺了就是 null，让消费方自己回落中文。 */
+      id: c.id, name: c.name, en: c.en || null, parent: c.parent, desc: c.desc,
       nodeCount: c.nodes.length,
       nodes: c.nodes.map(n => n.id),
     })),

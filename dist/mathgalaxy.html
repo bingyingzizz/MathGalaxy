@@ -999,32 +999,33 @@ window.addEventListener('error', function (e) {
     <svg viewBox="0 0 16 16" width="14" height="14"><path d="M7 1a6 6 0 1 0 3.7 10.7l3.3 3.3 1-1-3.3-3.3A6 6 0 0 0 7 1Zm0 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/></svg>
   </span>
   <input id="search-input" type="text" placeholder="搜索节点：定理 / 定义 / 关键词…"
+         data-t-ph="搜索节点：定理 / 定义 / 关键词…"
          autocomplete="off" autocorrect="off" spellcheck="false"
          role="combobox" aria-expanded="false" aria-controls="search-results"
-         aria-autocomplete="list" aria-label="搜索节点" />
+         aria-autocomplete="list" aria-label="搜索节点" data-t-aria="搜索节点" />
   <kbd class="search-kbd">/</kbd>
-  <div id="search-results" class="hidden" role="listbox" aria-label="搜索结果"></div>
+  <div id="search-results" class="hidden" role="listbox" aria-label="搜索结果" data-t-aria="搜索结果"></div>
   <!-- 结果数量播报给读屏（视觉上不占位） -->
   <div id="search-live" class="sr-live" role="status" aria-live="polite"></div>
 </div>
 
 <!-- ===== 右上角：工具条 ===== -->
 <div id="toolbar" class="floating">
-  <button data-act="zoom-in"  title="放大（+）">＋</button>
-  <button data-act="zoom-out" title="缩小（−）">－</button>
-  <button data-act="fit"      title="适配全部节点（0）">⤢</button>
+  <button data-act="zoom-in"  title="放大（+）" data-t-title="放大（+）">＋</button>
+  <button data-act="zoom-out" title="缩小（−）" data-t-title="缩小（−）">－</button>
+  <button data-act="fit"      title="适配全部节点（0）" data-t-title="适配全部节点（0）">⤢</button>
   <span class="tb-sep"></span>
-  <button data-act="toggle-trunk"    class="toggle" title="主干模式：只留学习主线上的节点（缩小时它们的名字也先出现）">主干</button>
-  <button data-act="toggle-defs"    class="toggle on" title="显示 / 隐藏「定义引用」蓝线">定义线</button>
-  <button data-act="toggle-labels"  class="toggle on" title="显示 / 隐藏节点名称">名称</button>
-  <button data-act="toggle-explore" class="toggle" title="探索模式：把「类比」这类弱边提亮（平时压得很淡）">探索</button>
-  <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移">滚轮·缩放</button>
+  <button data-act="toggle-trunk"    class="toggle" title="主干模式：只留学习主线上的节点（缩小时它们的名字也先出现）" data-t-title="主干模式：只留学习主线上的节点（缩小时它们的名字也先出现）" data-t="主干">主干</button>
+  <button data-act="toggle-defs"    class="toggle on" title="显示 / 隐藏「定义引用」蓝线" data-t-title="显示 / 隐藏「定义引用」蓝线" data-t="定义线">定义线</button>
+  <button data-act="toggle-labels"  class="toggle on" title="显示 / 隐藏节点名称" data-t-title="显示 / 隐藏节点名称" data-t="名称">名称</button>
+  <button data-act="toggle-explore" class="toggle" title="探索模式：把「类比」这类弱边提亮（平时压得很淡）" data-t-title="探索模式：把「类比」这类弱边提亮（平时压得很淡）" data-t="探索">探索</button>
+  <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移" data-t-title="滚轮：缩放 ⇄ 平移" data-t="滚轮·缩放">滚轮·缩放</button>
   <span class="tb-sep"></span>
   <!-- 回站点首页。用 <a> 而不是 <button>：它是导航，能中键/右键新标签打开、能复制链接。
        ⚠️ 别人从 GitHub 或帖子里点进来是**直接落在 /mathgalaxy/**，此前页面上没有一条
           回到站点首页的路（只有底部那行小字里的链接），这个按钮补的就是它。 -->
-  <a class="tb-home" href="../" title="回到站点首页（bingyingzizz.github.io）">⌂</a>
-  <button data-act="settings" id="tb-settings" title="设置：显示 / 隐藏界面元素" aria-expanded="false" aria-controls="settings">⚙</button>
+  <a class="tb-home" href="../" title="回到站点首页（bingyingzizz.github.io）" data-t-title="回到站点首页（bingyingzizz.github.io）">⌂</a>
+  <button data-act="settings" id="tb-settings" title="设置：显示 / 隐藏界面元素" data-t-title="设置：显示 / 隐藏界面元素" aria-expanded="false" aria-controls="settings">⚙</button>
 </div>
 
 <!-- ===== 设置：居中的模态窗口（不是挂在工具条下面的小浮层） =====
@@ -1035,28 +1036,28 @@ window.addEventListener('error', function (e) {
 <div id="settings-scrim" class="hidden"></div>
 <div id="settings" class="hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
   <div class="set-head">
-    <b id="settings-title">设置</b>
-    <button id="settings-close" type="button" title="关闭（Esc）" aria-label="关闭设置">×</button>
+    <b id="settings-title" data-t="设置">设置</b>
+    <button id="settings-close" type="button" title="关闭（Esc）" data-t-title="关闭（Esc）" aria-label="关闭设置" data-t-aria="关闭设置">×</button>
   </div>
   <div class="set-body">
-    <div class="set-title">界面元素</div>
-    <label class="set-row"><input type="checkbox" data-ui="search" checked> 搜索框</label>
-    <label class="set-row"><input type="checkbox" data-ui="legend" checked> 图例（左下）</label>
-    <label class="set-row"><input type="checkbox" data-ui="hint" checked> 底部说明（标题与操作提示）</label>
+    <div class="set-title" data-t="界面元素">界面元素</div>
+    <label class="set-row"><input type="checkbox" data-ui="search" checked> <span data-t="搜索框">搜索框</span></label>
+    <label class="set-row"><input type="checkbox" data-ui="legend" checked> <span data-t="图例（左下）">图例（左下）</span></label>
+    <label class="set-row"><input type="checkbox" data-ui="hint" checked> <span data-t="底部说明（标题与操作提示）">底部说明（标题与操作提示）</span></label>
     <div class="set-sep"></div>
-    <div class="set-title">已读标记</div>
+    <div class="set-title" data-t="已读标记">已读标记</div>
     <!-- ⛔ 这个复选框必须有：showMarks 会从 localStorage 读，只要存过 '0' 就整个关掉。
          原来唯一的开关是图例里那个 data-readmarks 小芯片，2026-10-15 删进度组时被一起删了，
          结果「关掉之后再也打不开」——用户就是这么看不见绿环的。 -->
-    <label class="set-row"><input type="checkbox" id="set-readshow" checked> 图上显示已读标记（绿环）</label>
-    <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset>清空已读进度</button></div>
+    <label class="set-row"><input type="checkbox" id="set-readshow" checked> <span data-t="图上显示已读标记（绿环）">图上显示已读标记（绿环）</span></label>
+    <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset data-t="清空已读进度">清空已读进度</button></div>
     <div class="set-sep"></div>
-    <div class="set-title">去别处</div>
-    <a class="set-link" href="../">⌂ 站点首页</a>
-    <a class="set-link" href="all.html">全部概念索引（706 个）</a>
-    <a class="set-link" href="questions.html">常见问法（184 条）</a>
-    <a class="set-link" href="read.html">读图指南与记号表</a>
-    <a class="set-link" href="https://github.com/bingyingzizz/MathGalaxy" target="_blank" rel="noopener">↗ GitHub 源码</a>
+    <div class="set-title" data-t="去别处">去别处</div>
+    <a class="set-link" href="../" data-t="⌂ 站点首页">⌂ 站点首页</a>
+    <a class="set-link" href="all.html" id="set-link-all">全部概念索引（706 个）</a>
+    <a class="set-link" href="questions.html" id="set-link-q">常见问法（184 条）</a>
+    <a class="set-link" href="read.html" data-t="读图指南与记号表">读图指南与记号表</a>
+    <a class="set-link" href="https://github.com/bingyingzizz/MathGalaxy" target="_blank" rel="noopener" data-t="↗ GitHub 源码">↗ GitHub 源码</a>
   </div>
 </div>
 
@@ -1083,11 +1084,11 @@ window.addEventListener('error', function (e) {
 <div id="hint" class="floating">
   <h1>数学星图 MathGalaxy</h1>
   <details open>
-    <summary>这是什么 · 怎么用</summary>
-    <p class="hint-lead">把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」
+    <summary data-t="这是什么 · 怎么用">这是什么 · 怎么用</summary>
+    <p class="hint-lead" data-t="把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。">把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」
     三层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。</p>
-    <p class="hint-keys">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走
-    ｜ <a href="all.html">全部概念索引</a> · <a href="questions.html">常见问法</a> · <a href="read.html">读图指南</a> · <a href="llms.txt">检索协议</a></p>
+    <p class="hint-keys"><span data-t="拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走</span>
+    ｜ <a href="all.html" data-t="全部概念索引">全部概念索引</a> · <a href="questions.html" data-t="常见问法">常见问法</a> · <a href="read.html" data-t="读图指南">读图指南</a> · <a href="llms.txt" data-t="检索协议">检索协议</a></p>
   </details>
 </div>
 
@@ -1428,15 +1429,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* 图例里节点类型的显示顺序（也是「重要程度」的排序依据） */
     typeOrder: ['axiom', 'definition', 'theorem', 'lemma', 'proposition', 'corollary', 'example'],
 
-    /* 节点类型 → 颜色。改这里即可换配色。 */
+    /* 节点类型 → 颜色。改这里即可换配色。
+       ⭐ T2.4：加 `nameEn` —— 界面英文模式下的类型名（「公理」→ Axiom）。
+          它是**引擎侧**的界面文案，不是数学内容；⛔ 不要跟 label_en/title_en 混。 */
     nodeTypes: {
-      axiom:       { name: '公理',  color: '#7A5CD6', short: '公理' },
-      definition:  { name: '定义',  color: '#8B93A7', short: '定义' },
-      theorem:     { name: '定理',  color: '#2F9E63', short: '定理' },
-      lemma:       { name: '引理',  color: '#E08434', short: '引理' },
-      proposition: { name: '命题',  color: '#12A0B8', short: '命题' },
-      corollary:   { name: '推论',  color: '#3A7BD5', short: '推论' },
-      example:     { name: '例',    color: '#A79BC4', short: '例' }
+      axiom:       { name: '公理',  nameEn: 'Axiom',       color: '#7A5CD6', short: '公理' },
+      definition:  { name: '定义',  nameEn: 'Definition',  color: '#8B93A7', short: '定义' },
+      theorem:     { name: '定理',  nameEn: 'Theorem',     color: '#2F9E63', short: '定理' },
+      lemma:       { name: '引理',  nameEn: 'Lemma',       color: '#E08434', short: '引理' },
+      proposition: { name: '命题',  nameEn: 'Proposition', color: '#12A0B8', short: '命题' },
+      corollary:   { name: '推论',  nameEn: 'Corollary',   color: '#3A7BD5', short: '推论' },
+      example:     { name: '例',    nameEn: 'Example',     color: '#A79BC4', short: '例' }
     },
 
     /* 边的视觉 */
@@ -1447,12 +1450,18 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       analogy:     { color: '138, 106, 214', width: 1.5, alpha: 0.55, dashed: true }
     },
 
-    /* 边的中文名 */
+    /* 边的中文名（`edgeNamesEn` 同上：界面英文模式用的短名） */
     edgeNames: {
       implication: '推出',
       equivalence: '等价',
       definition:  '定义引用',
       analogy:     '类比'
+    },
+    edgeNamesEn: {
+      implication: 'Implies',
+      equivalence: 'Equivalence',
+      definition:  'Definition reference',
+      analogy:     'Analogy'
     },
 
     /* ------------------------------------------------------------------
@@ -1478,9 +1487,22 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     labelHalo: 'rgba(255,255,255,0.92)'
   };
 
-  /** 取节点类型样式（未知类型回落到 definition） */
+  /** 取节点类型样式（未知类型回落到 definition）
+      ⭐ T2.4：界面英文模式下 `name` 直接换成 `nameEn` —— 这样图例 / 搜索下拉 /
+         面板那三处的类型名**一处都不用改**（它们本来就只读 `.name`）。 */
   MG.typeStyle = function (type) {
-    return MG.theme.nodeTypes[type] || MG.theme.nodeTypes.definition;
+    var st = MG.theme.nodeTypes[type] || MG.theme.nodeTypes.definition;
+    if (MG.isEn && st.nameEn) {
+      return { name: st.nameEn, nameEn: st.nameEn, color: st.color, short: st.nameEn };
+    }
+    return st;
+  };
+
+  /** 边的显示名（同上：英文模式走 edgeNamesEn） */
+  MG.edgeName = function (kind) {
+    var T = MG.theme;
+    if (MG.isEn && T.edgeNamesEn && T.edgeNamesEn[kind]) return T.edgeNamesEn[kind];
+    return (T.edgeNames || {})[kind] || kind;
   };
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -1830,6 +1852,128 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     titleHtml: titleHtml
   };
 })(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<!-- 界面语言（T2.4）：MG.t / MG.labelOf / MG.applyStatic。⛔ 必须在任何界面模块之前 ——
+     它只定义函数，但 config/util 之后的模块会在渲染时调它。 -->
+<script>
+/* ==========================================================================
+   数学星图 · 界面语言（T2.4）
+   --------------------------------------------------------------------------
+   这里只管**界面外壳**：按钮、分区标题、悬停提示、占位符、状态文案。
+   ⛔ 数学内容不走这里 —— 节点名走 label_en / title_en（src/data/i18n.js），
+      星团名走 clusters.js 的 en 字段，星系名走 regions.js 的 en 字段。
+
+   为什么查表用**中文原文当键**：
+     · 调用点读起来就是中文，一眼知道那句是什么（t('图例')）；
+     · 缺键自动回落中文 —— 永远不会显示出一个 key 或空白；
+     · ⛔ 不发明第二套键名（那会变成又一份要同步的东西）。
+
+   语言从哪来（与阅读页 `site/read.html` 同一套约定）：
+     ① URL `?lang=en` / `?lang=zh`（会记进 localStorage）
+     ② localStorage `mathgalaxy.read.lang`（阅读页记的，两边共用）
+     ③ navigator.language 以 en 开头
+   默认中文 —— ⭐ **没 JS 时页面是中文**，与英文文档「没有英文版就按中文读」同一条规矩。
+
+   静态文案（index.html 里写死的那几块）用属性标注，加载时一次性填：
+     data-t 文本 / data-t-title 悬停 / data-t-aria aria-label / data-t-ph 占位符
+   ========================================================================== */
+(function (global) {
+  'use strict';
+  var MG = global.MG = global.MG || {};
+  var KEY = 'mathgalaxy.read.lang';
+
+  function detect() {
+    var search = (global.location && global.location.search) || '';
+    var m = /[?&]lang=(en|zh)\b/.exec(search);
+    if (m) { try { global.localStorage.setItem(KEY, m[1]); } catch (e) {} return m[1]; }
+    try {
+      var v = global.localStorage.getItem(KEY);
+      if (v === 'en' || v === 'zh') return v;
+    } catch (e) {}
+    var nav = (global.navigator && (global.navigator.language || global.navigator.userLanguage)) || '';
+    return /^en\b/i.test(nav) ? 'en' : 'zh';
+  }
+
+  var lang = detect();
+
+  /** t('中文原文', {占位符: 值}) —— 英文模式查表，缺键回落中文 */
+  function t(s, params) {
+    var out = s;
+    if (lang === 'en') {
+      var tbl = (MG.uiEn && MG.uiEn.strings) || null;
+      if (tbl && Object.prototype.hasOwnProperty.call(tbl, s)) out = tbl[s];
+    }
+    if (params) {
+      out = String(out).replace(/\{([^{}]+)\}/g, function (all, k) {
+        return Object.prototype.hasOwnProperty.call(params, k) ? String(params[k]) : all;
+      });
+    }
+    return out;
+  }
+
+  /** 数字按语言格式化：中文 1.2 万 / 英文 12.3k —— 目前只用于计数，先统一千分位 */
+  function num(n) {
+    if (lang !== 'en') return String(n);
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  /** 节点显示名：英文模式优先 label_en → title_en → 中文 label */
+  function labelOf(n) {
+    if (!n) return '';
+    if (lang === 'en') return n.label_en || n.title_en || n.label || n.id;
+    return n.label || n.id;
+  }
+  /** 节点正式名（面板大标题用）：英文模式优先 title_en → label_en → 中文 title */
+  function titleOf(n) {
+    if (!n) return '';
+    if (lang === 'en') return n.title_en || n.label_en || n.title || n.label || n.id;
+    return n.title || n.label || n.id;
+  }
+  /** 概念名（正文里的指代）：跟着 labelOf 走 */
+  function nameOf(idOrNode, graph) {
+    var n = typeof idOrNode === 'string' ? (graph && graph.byId && graph.byId[idOrNode]) : idOrNode;
+    if (!n) return typeof idOrNode === 'string' ? idOrNode : '';
+    return labelOf(n);
+  }
+  function clusterName(c) { return !c ? '' : (lang === 'en' ? (c.en || c.name) : c.name); }
+  function regionName(r) { return !r ? '' : (lang === 'en' ? (r.en || r.name) : r.name); }
+
+  /** index.html 里写死的静态文案：一次性按属性填 */
+  function applyStatic(root) {
+    var el = root || (global.document && global.document.body);
+    if (!el || !el.querySelectorAll) return 0;
+    var n = 0, all = el.querySelectorAll('[data-t],[data-t-title],[data-t-aria],[data-t-ph]');
+    for (var i = 0; i < all.length; i++) {
+      var e = all[i];
+      if (e.hasAttribute('data-t')) { e.textContent = t(e.getAttribute('data-t')); n++; }
+      if (e.hasAttribute('data-t-title')) { e.setAttribute('title', t(e.getAttribute('data-t-title'))); n++; }
+      if (e.hasAttribute('data-t-aria')) { e.setAttribute('aria-label', t(e.getAttribute('data-t-aria'))); n++; }
+      if (e.hasAttribute('data-t-ph')) { e.setAttribute('placeholder', t(e.getAttribute('data-t-ph'))); n++; }
+    }
+    return n;
+  }
+
+  /** 换语言（目前只有「载入时定」，没有运行时热切换 —— 免得半个界面是英文） */
+  function set(next) {
+    if (next !== 'en' && next !== 'zh') return;
+    lang = next;
+    try { global.localStorage.setItem(KEY, next); } catch (e) {}
+  }
+
+  MG.lang = lang;
+  MG.isEn = lang === 'en';
+  MG.t = t;
+  MG.num = num;
+  MG.labelOf = labelOf;
+  MG.titleOf = titleOf;
+  MG.nameOf = nameOf;
+  MG.clusterName = clusterName;
+  MG.regionName = regionName;
+  MG.applyStatic = applyStatic;
+  MG.setLang = set;
+  MG.LANG_KEY = KEY;
+})(window);
 
 </script>
 <script>
@@ -5867,12 +6011,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
           n.statement || '', n.notes || ''].join('\n').toLowerCase();
         hay += notationForms(rawHay, function (e) { addWord(e.name); addWord(e.uni); });
 
-        return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka };
+        /* T2.4：英文模式下搜索结果的**显示**也要用英文名（hay 里早就有它们，
+           这里是把它们端到结果行上）。⛔ 中文模式一字不变。 */
+        return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka,
+          label_en: n.label_en || '', title_en: n.title_en || '',
+          st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : '') };
       });
 
-      /* 星团名也进词表：「测度的构造」贡献 `测度` */
+      /* 星团名也进词表：「测度的构造」贡献 `测度`；英文模式下英文星团名也要能搜到 */
       view.graph.clusters.forEach(function (c) {
         addWord(c.name);
+        if (c.en) addWord(c.en);
         grams2(c.name).forEach(addWord);
       });
 
@@ -6006,6 +6155,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         if (!e) return;
         items.push({
           kind: 'node', id: h.id, label: e.label, sub: subOf(e),
+          label_en: e.label_en,                 // ⭐ 英文模式显示用（T2.4）
           q: markTerm(e, terms), node: e.node, grp: h.grp
         });
       });
@@ -6014,7 +6164,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       view.graph.regions.forEach(function (r) {
         if (!r.stat) return;
         if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
-          items.push({ kind: 'region', id: r.id, label: r.name, sub: r.stat.count + ' 个节点', q: q, grp: 'all' });
+          items.push({ kind: 'region', id: r.id, label: MG.regionName(r),
+            sub: MG.t('{n} 个节点', { n: r.stat.count }), q: q, grp: 'all' });
         }
       });
 
@@ -6023,6 +6174,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     }
 
     function subOf(e) {
+      /* 英文模式：副标题优先英文摘要/英文陈述，再退到英文名 —— 都没有就还是中文 */
+      if (MG.isEn) {
+        var en = e.st_en || e.title_en || e.label_en;
+        if (en) return U.truncate(U.plain(en), 64);
+      }
       var st = e.st || U.plain(e.title);
       return U.truncate(st || MG.typeStyle(e.node.type).name, 64);
     }
@@ -6040,16 +6196,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       var color = it.kind === 'region'
         ? (view.graph.regionById[it.id] || {}).color || '#ccc'
         : MG.typeStyle(it.node.type).color;
-      var tagText = it.kind === 'region' ? '板块' : MG.typeStyle(it.node.type).name;
+      var tagText = it.kind === 'region' ? MG.t('板块') : MG.typeStyle(it.node.type).name;
       var regionName = '';
       if (it.kind === 'node' && it.node.regions.length) {
         var r0 = view.graph.regionById[it.node.regions[0]];
-        if (r0) regionName = r0.name;
+        if (r0) regionName = MG.regionName(r0);
       }
       return '<div class="sr-item' + (i === active ? ' active' : '') + '" data-i="' + i +
         '" id="sr-item-' + i + '" role="option" aria-selected="' + (i === active ? 'true' : 'false') + '">' +
         '<span class="sr-dot" style="background:' + color + '"></span>' +
-        '<span class="sr-title">' + mark(it.label, it.q) + '</span>' +
+        '<span class="sr-title">' + mark(MG.isEn ? (it.label_en || it.label) : it.label, it.q) + '</span>' +
         '<span class="sr-sub">' + U.escapeHtml(tagText) + ' · ' + U.escapeHtml(it.sub) + '</span>' +
         (regionName ? '<span class="sr-region">' + U.escapeHtml(regionName) + '</span>' : '<span class="sr-region">' + U.escapeHtml(tagText) + '</span>') +
         '</div>';
@@ -6059,7 +6215,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (!items.length) {
         var v = input.value.trim();
         results.innerHTML = v
-          ? '<div class="sr-empty">没有找到「' + U.escapeHtml(v) + '」相关的节点</div>'
+          ? '<div class="sr-empty">' + U.escapeHtml(MG.t('没有找到「{名}」相关的节点', { 名: v })) + '</div>'
           : '';
         open = !!v;
       } else {
@@ -6070,8 +6226,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
           var g = it.grp || 'all';
           if (g !== last) {
             last = g;
-            if (g === 'hook') html += '<div class="sr-group">相关问题</div>';
-            else if (items[0].grp === 'hook') html += '<div class="sr-group">全部结果</div>';
+            if (g === 'hook') html += '<div class="sr-group">' + U.escapeHtml(MG.t('相关问题')) + '</div>';
+            else if (items[0].grp === 'hook') html += '<div class="sr-group">' + U.escapeHtml(MG.t('全部结果')) + '</div>';
           }
           html += itemHtml(it, i);
         });
@@ -6094,8 +6250,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       if (liveEl) {
         liveEl.textContent = !open ? ''
           : (items.length
-            ? items.length + ' 条结果' + (ok ? '，当前第 ' + (active + 1) + ' 条' : '')
-            : '没有结果');
+            ? MG.t('{n} 条结果，当前第 {k} 条', { n: items.length, k: ok ? active + 1 : '—' })
+            : MG.t('没有结果'));
       }
     }
 
@@ -7475,6 +7631,7 @@ MG.clusters = [
   {
     id: 'logic.fol',
     name: '一阶语言与公式',
+    en: 'First-Order Languages and Formulas',
     parent: 'logic',
     hub: 'def.first-order-language',
     desc: '造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。'
@@ -7484,6 +7641,7 @@ MG.clusters = [
   {
     id: 'set.zfc',
     name: 'ZFC 公理系统',
+    en: 'The ZFC Axioms',
     parent: 'set-theory',
     hub: 'ax.ext',
     desc: '造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。'
@@ -7491,6 +7649,7 @@ MG.clusters = [
   {
     id: 'set.construct',
     name: '集合的构造',
+    en: 'Constructing Sets',
     parent: 'set-theory',
     hub: 'def.subset',
     desc: '造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。'
@@ -7498,6 +7657,7 @@ MG.clusters = [
   {
     id: 'set.rel',
     name: '关系与函数',
+    en: 'Relations and Mappings',
     parent: 'set-theory',
     hub: 'def.function',
     desc: '造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。'
@@ -7505,6 +7665,7 @@ MG.clusters = [
   {
     id: 'set.cardinal',
     name: '基数与等势',
+    en: 'Cardinals and Equinumerosity',
     parent: 'set-theory',
     hub: 'def.cardinal',
     desc: '造出「集合有多大」这把尺子：等势 → 基数 → 可数与不可数 → Cantor 定理 → 基数可比。'
@@ -7512,6 +7673,7 @@ MG.clusters = [
   {
     id: 'set.numbers',
     name: '数系的构造',
+    en: 'Constructing the Number Systems',
     parent: 'set-theory',
     hub: 'def.real',
     desc: '造出数本身：ℕ → ℤ → ℚ → ℝ → ℂ。每一步都是同一招 —— 把已有对象按等价关系粘成等价类；ℝ 那一跳是把 ℚ 按 Cauchy 列**完备化**。⚠️ ℝ 是造出来的，三组性质（域、序、确界原理）是**定理**，不是定义。'
@@ -7519,6 +7681,7 @@ MG.clusters = [
   {
     id: 'set.ordinal',
     name: '序数与超限',
+    en: 'Ordinals and Transfinite Recursion',
     parent: 'set-theory',
     hub: 'def.ordinal',
     desc: '造出「无穷有多长」这把尺子：良序集的序型 → von Neumann 序数（传递的良序集）→ 三歧性 → 超限递归 / 超限归纳，顺带发现序数全体是真类。'
@@ -7528,6 +7691,7 @@ MG.clusters = [
   {
     id: 'order.structure',
     name: '序结构',
+    en: 'Order Structures',
     parent: 'order-theory',
     hub: 'def.poset',
     desc: '造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。'
@@ -7535,6 +7699,7 @@ MG.clusters = [
   {
     id: 'order.choice',
     name: '选择原理',
+    en: 'Choice Principles',
     parent: 'order-theory',
     hub: 'ax.choice',
     desc: '造出存在性证明的万能发动机：选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理。五个说法是一个强连通块，永远同层。'
@@ -7544,6 +7709,7 @@ MG.clusters = [
   {
     id: 'algebra.structures',
     name: '代数结构',
+    en: 'Algebraic Structures',
     parent: 'algebra',
     hub: 'def.group',
     desc: '造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。'
@@ -7551,6 +7717,7 @@ MG.clusters = [
   {
     id: 'algebra.vectorspace',
     name: '向量空间的基',
+    en: 'Bases of Vector Spaces',
     parent: 'algebra',
     hub: 'def.vs',
     desc: '造出线性代数的地基：每个向量空间都有基。'
@@ -7560,6 +7727,7 @@ MG.clusters = [
   {
     id: 'topology.general',
     name: '拓扑空间',
+    en: 'Topological Spaces',
     parent: 'topology',
     hub: 'def.topology',
     desc: '造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。'
@@ -7567,6 +7735,7 @@ MG.clusters = [
   {
     id: 'topology.metric',
     name: '度量空间',
+    en: 'Metric Spaces',
     parent: 'topology',
     hub: 'def.metric-space',
     desc: '造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。'
@@ -7574,6 +7743,7 @@ MG.clusters = [
   {
     id: 'topo.chaus',
     name: '紧 Hausdorff 空间',
+    en: 'Compact Hausdorff Spaces',
     parent: 'topology',
     hub: 'prop.chaus-reflective',
     desc: '造出「紧 Hausdorff 这套范畴」：Stone–Čech 紧化 → 自由对象 → 投射对象 → 自由表示。它是一切「紧块」的来源。'
@@ -7581,6 +7751,7 @@ MG.clusters = [
   {
     id: 'topo.stone',
     name: 'Stone 与 Stonean',
+    en: 'Stone and Stonean Spaces',
     parent: 'topology',
     hub: 'thm.stone-profinite',
     desc: '造出「不连通的那一半紧 Hausdorff 空间」：全不连通 → Stone 空间 = 投射有限空间 → 极不连通的 Stonean 空间 → Gleason 定理与布尔环表示。'
@@ -7588,6 +7759,7 @@ MG.clusters = [
   {
     id: 'topo.cg',
     name: '紧生成空间与弱 Hausdorff',
+    en: 'Compactly Generated Spaces and Weak Hausdorff',
     parent: 'topology',
     hub: 'def.compactly-generated',
     desc: '造出「乘积好用的拓扑空间范畴」：紧生成空间（$k$-空间）→ $k$-拓扑与 $k$-化 → 商映射与积 → 紧开拓扑 → 弱 Hausdorff → $\\mathrm{CGWH}$ 是反射子范畴。'
@@ -7597,6 +7769,7 @@ MG.clusters = [
   {
     id: 'analysis.real',
     name: '实数与极限',
+    en: 'Real Numbers and Limits',
     parent: 'analysis',
     hub: 'def.sequence-limit',
     desc: '在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）'
@@ -7604,6 +7777,7 @@ MG.clusters = [
   {
     id: 'analysis.setclass',
     name: '集合族与 σ-代数',
+    en: 'Families of Sets and Sigma-Algebras',
     parent: 'analysis',
     hub: 'def.sigma-algebra',
     desc: '造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。'
@@ -7611,6 +7785,7 @@ MG.clusters = [
   {
     id: 'analysis.measure',
     name: '测度的构造',
+    en: 'Constructing Measures',
     parent: 'analysis',
     hub: 'def.measure',
     desc: '造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。'
@@ -7618,6 +7793,7 @@ MG.clusters = [
   {
     id: 'analysis.measurable',
     name: '可测函数与收敛',
+    en: 'Measurable Functions and Convergence',
     parent: 'analysis',
     hub: 'def.measurable-function',
     desc: '造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。'
@@ -7625,6 +7801,7 @@ MG.clusters = [
   {
     id: 'analysis.integral',
     name: '积分',
+    en: 'Integration',
     parent: 'analysis',
     hub: 'def.integrable',
     desc: '造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。'
@@ -7632,6 +7809,7 @@ MG.clusters = [
   {
     id: 'analysis.product',
     name: '乘积测度与 Fubini',
+    en: 'Product Measures and Fubini',
     parent: 'analysis',
     hub: 'def.product-measure',
     desc: '造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。'
@@ -7639,6 +7817,7 @@ MG.clusters = [
   {
     id: 'analysis.signed',
     name: '符号测度与分解',
+    en: 'Signed Measures and Decompositions',
     parent: 'analysis',
     hub: 'def.signed-measure',
     desc: '造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。'
@@ -7646,6 +7825,7 @@ MG.clusters = [
   {
     id: 'analysis.differentiation',
     name: '微分定理',
+    en: 'Differentiation Theorems',
     parent: 'analysis',
     hub: 'def.maximal-function',
     desc: '造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。'
@@ -7653,6 +7833,7 @@ MG.clusters = [
   {
     id: 'analysis.bv',
     name: '有界变差与绝对连续',
+    en: 'Bounded Variation and Absolute Continuity',
     parent: 'analysis',
     hub: 'def.bounded-variation',
     desc: '造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。'
@@ -7660,6 +7841,7 @@ MG.clusters = [
   {
     id: 'analysis.lp',
     name: 'L^p 空间',
+    en: 'L^p Spaces',
     parent: 'analysis',
     hub: 'def.lp-norm',
     desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
@@ -7669,6 +7851,7 @@ MG.clusters = [
   {
     id: 'cat.basic',
     name: '范畴与图',
+    en: 'Categories and Diagrams',
     parent: 'category',
     hub: 'def.category',
     desc: '造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。'
@@ -7676,6 +7859,7 @@ MG.clusters = [
   {
     id: 'cat.functor',
     name: '函子与自然变换',
+    en: 'Functors and Natural Transformations',
     parent: 'category',
     hub: 'def.natural-transformation',
     desc: '造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。'
@@ -7683,6 +7867,7 @@ MG.clusters = [
   {
     id: 'cat.limit',
     name: '图与极限',
+    en: 'Diagrams and Limits',
     parent: 'category',
     hub: 'def.limit',
     desc: '造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子。'
@@ -7690,6 +7875,7 @@ MG.clusters = [
   {
     id: 'cat.structure',
     name: '单满、子对象与像',
+    en: 'Monos, Epis, Subobjects and Images',
     parent: 'category',
     hub: 'def.subobject',
     desc: '造出「用箭头替代元素」这套语言：可消性（单 / 满）→ 子对象 → 像与余像 → 泛元素。'
@@ -7697,6 +7883,7 @@ MG.clusters = [
   {
     id: 'cat.algebra',
     name: '范畴里的代数结构',
+    en: 'Algebraic Structures in a Category',
     parent: 'category',
     hub: 'def.group-object',
     desc: '把「集合 + 运算 + 公理」搬到任意有有限积的范畴里：幺半群对象 → 群对象 → 阿贝尔群对象。⭐ $\\mathrm{Ab}(\\mathbf{Set})=\\mathbf{Ab}$、$\\mathrm{Ab}(\\mathbf{Top})$ = 拓扑阿贝尔群、$\\mathrm{Ab}(\\mathrm{Cond})=\\mathrm{CondAb}$ —— 代数那条线与凝聚态那条线在这里接上。'
@@ -7704,6 +7891,7 @@ MG.clusters = [
   {
     id: 'cat.yoneda',
     name: '预层与米田',
+    en: 'Presheaves and Yoneda',
     parent: 'category',
     hub: 'lem.yoneda',
     desc: '造出「表示」这套语言：预层范畴是落点，米田引理说自然变换集与 $F(X)$ 一一对应，稠密性定理说每个预层都是可表示预层的余极限。'
@@ -7711,6 +7899,7 @@ MG.clusters = [
   {
     id: 'cat.adjoint',
     name: '伴随与反射',
+    en: 'Adjunctions and Reflections',
     parent: 'category',
     hub: 'def.adjoint',
     desc: '造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。'
@@ -7718,6 +7907,7 @@ MG.clusters = [
   {
     id: 'cat.sheaf',
     name: '层与拓扑',
+    en: 'Sheaves and Topologies',
     parent: 'category',
     hub: 'def.sheaf',
     desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。'
@@ -7725,6 +7915,7 @@ MG.clusters = [
   {
     id: 'cat.topos',
     name: '拓扑斯',
+    en: 'Toposes',
     parent: 'category',
     hub: 'def.topos',
     desc: '造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。'
@@ -7734,6 +7925,7 @@ MG.clusters = [
   {
     id: 'hom.ab',
     name: '加法与阿贝尔范畴',
+    en: 'Additive and Abelian Categories',
     parent: 'homology',
     hub: 'def.abelian-category',
     desc: '造出做同调代数的场地：预加法 / 加法范畴 → 预阿贝尔 → 阿贝尔范畴 → AB 公理 → Grothendieck 范畴。'
@@ -7741,6 +7933,7 @@ MG.clusters = [
   {
     id: 'hom.complex',
     name: '复形与导出三角',
+    en: 'Complexes and Distinguished Triangles',
     parent: 'homology',
     hub: 'def.distinguished-triangle',
     desc: '造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。'
@@ -7748,6 +7941,7 @@ MG.clusters = [
   {
     id: 'hom.cohomology',
     name: '同调与正合列',
+    en: 'Homology and Exact Sequences',
     parent: 'homology',
     hub: 'def.cohomology',
     desc: '造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。'
@@ -7755,6 +7949,7 @@ MG.clusters = [
   {
     id: 'hom.spectral',
     name: '过滤与谱序列',
+    en: 'Filtrations and Spectral Sequences',
     parent: 'homology',
     hub: 'def.spectral-sequence',
     desc: '造出「逐层逼近同调」的工具：带过滤的对象 → 关联分次 → 谱序列从 $E_{r}$ 页逐页算到 $E_{\\infty}$。'
@@ -7762,6 +7957,7 @@ MG.clusters = [
   {
     id: 'hom.sheafcoh',
     name: '层上同调',
+    en: 'Sheaf Cohomology',
     parent: 'homology',
     hub: 'def.sheaf-cohomology',
     desc: '把导出函子开到层上：$H^{n}(X, M) = R^{n}\\Gamma(X, M)$ → Čech 上同调（便宜的算法）→ Cartan–Leray 谱序列把它们接起来 → 无环层 → 拓扑斯态射的导出函子。'
@@ -7769,6 +7965,7 @@ MG.clusters = [
   {
     id: 'hom.sheaf',
     name: '阿贝尔层',
+    en: 'Abelian Sheaves',
     parent: 'homology',
     hub: 'def.abelian-sheaf',
     desc: '造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。'
@@ -7778,6 +7975,7 @@ MG.clusters = [
   {
     id: 'cond.set',
     name: '凝聚态集',
+    en: 'Condensed Sets',
     parent: 'condensed',
     hub: 'def.condensed-set',
     desc: '造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。'
@@ -7785,6 +7983,7 @@ MG.clusters = [
   {
     id: 'cond.ab',
     name: '凝聚态阿贝尔群',
+    en: 'Condensed Abelian Groups',
     parent: 'condensed',
     hub: 'def.condensed-abelian-group',
     desc: '在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。'
@@ -7792,6 +7991,7 @@ MG.clusters = [
   {
     id: 'cond.topo',
     name: '拓扑阿贝尔群',
+    en: 'Topological Abelian Groups',
     parent: 'condensed',
     hub: 'thm.pontryagin-van-kampen',
     desc: '造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。'
@@ -7799,6 +7999,7 @@ MG.clusters = [
   {
     id: 'cond.cohomology',
     name: '凝聚态上同调',
+    en: 'Condensed Cohomology',
     parent: 'condensed',
     hub: 'thm.real-banach-chaus-acyclic',
     desc: '造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$。'
@@ -9683,6 +9884,177 @@ MG.i18nStatements = {
         '$(0, 1)$ are homeomorphic, yet only the first is complete.',
     },
   },
+};
+
+</script>
+<!-- 界面文案英文表（T2.4）：**键就是中文原文**，MG.t() 查不到就回落中文。
+     只收界面外壳；数学内容走上面的 label_en / title_en 与 clusters.js 的 en。 -->
+<script>
+/* ==========================================================================
+   数学星图 · 界面文案英文表（T2.4）
+   --------------------------------------------------------------------------
+   ⭐ **键就是中文原文**（见 src/core/i18n.js 的说明）：
+     调用点写 `MG.t('图例')`，英文模式查这张表，查不到就显示中文。
+     好处：不用发明第二套键名，缺键只会「没翻到」，不会显示成 key 或空白。
+
+   只收**界面外壳**：按钮 / 分区标题 / 悬停提示 / 占位符 / 状态文案。
+   ⛔ 数学内容不在这里 —— 节点名走 label_en / title_en（src/data/i18n.js），
+      星团名走 clusters.js 的 `en`，星系名走 regions.js 的 `en`，类型名走 config.js 的 `nameEn`。
+
+   `{名}` = 嵌进来的名字（节点 / 星团 / 星系 / 层号），`{n}` = 数字。
+   口径（作者 2026-10-16 定）：折成模板 **105** 条；逐条 236 个实例。
+   拼写：**美式英语**（-ize / -ization，见 i18n/glossary.md）。
+   ========================================================================== */
+window.MG = window.MG || {};
+
+MG.uiEn = {
+  version: 1,
+  lang: 'en',
+  note: '界面外壳文案（T2.4）。键 = 中文原文；缺键回落中文。',
+  strings: {
+
+    /* ---------------------------------------------------- 顶部工具栏 */
+    '主干': 'Trunk',
+    '定义线': 'Def. lines',
+    '名称': 'Names',
+    '探索': 'Explore',
+    '滚轮·缩放': 'Wheel: zoom',
+    '滚轮·平移': 'Wheel: pan',
+    '放大（+）': 'Zoom in (+)',
+    '缩小（−）': 'Zoom out (−)',
+    '适配全部节点（0）': 'Fit all nodes (0)',
+    '主干模式：只留学习主线上的节点（缩小时它们的名字也先出现）':
+      'Trunk mode: keep only the learning trunk (their names appear first when zoomed out)',
+    '显示 / 隐藏「定义引用」蓝线': 'Show / hide the blue “definition reference” lines',
+    '显示 / 隐藏节点名称': 'Show / hide node names',
+    '探索模式：把「类比」这类弱边提亮（平时压得很淡）':
+      'Explore mode: brighten weak edges such as analogies (kept very faint otherwise)',
+    '滚轮：缩放 ⇄ 平移': 'Wheel: zoom ⇄ pan',
+    '回到站点首页（bingyingzizz.github.io）': 'Back to the site home (bingyingzizz.github.io)',
+    '设置：显示 / 隐藏界面元素': 'Settings: show / hide interface elements',
+
+    /* ------------------------------------------------------ 设置窗口 */
+    '设置': 'Settings',
+    '关闭设置': 'Close settings',
+    '关闭（Esc）': 'Close (Esc)',
+    '界面元素': 'Interface elements',
+    '搜索框': 'Search box',
+    '图例（左下）': 'Legend (bottom left)',
+    '底部说明（标题与操作提示）': 'Page note (title and controls)',
+    '已读标记': 'Read marks',
+    '图上显示已读标记（绿环）': 'Show read marks on the graph (green rings)',
+    '清空已读进度': 'Clear reading progress',
+    '去别处': 'Elsewhere',
+    '⌂ 站点首页': '⌂ Site home',
+    '全部概念索引（{n} 个）': 'All concepts ({n})',
+    '常见问法（{n} 条）': 'Common questions ({n})',
+    '读图指南与记号表': 'Reading guide & notation',
+    '↗ GitHub 源码': '↗ Source on GitHub',
+
+    /* ------------------------------------------------------ 底部说明 */
+    '这是什么 · 怎么用': 'What this is · how to use it',
+    '把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。':
+      'An interactive dependency graph of mathematical concepts (axioms / definitions / theorems / lemmas / propositions), ' +
+      'organised on three scales: galaxy → cluster → star. Arrows are implications, black lines are equivalences, ' +
+      'blue lines are definition references, purple dashes are cross-field analogies.',
+    '拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走':
+      'Drag to pan · wheel / pinch to zoom · click a node to focus · click an edge to see the proof · ' +
+      'after focusing, ←→ walks the edges',
+    '全部概念索引': 'All concepts',
+    '常见问法': 'Common questions',
+    '读图指南': 'Reading guide',
+    '检索协议': 'Retrieval protocol',
+
+    /* -------------------------------------------------------- 搜索框 */
+    '搜索节点': 'Search nodes',
+    '搜索结果': 'Search results',
+    '搜索节点：定理 / 定义 / 关键词…': 'Search nodes: theorem / definition / keyword…',
+    '{n} 条结果，当前第 {k} 条': '{n} results, item {k} selected',
+    '没有结果': 'No results',
+    '没有找到「{名}」相关的节点': 'No node matches “{名}”',
+    '相关问题': 'Related questions',
+    '全部结果': 'All results',
+    '板块': 'Field',
+    '{n} 个节点': '{n} nodes',
+
+    /* ---------------------------------------------------------- 图例 */
+    '图例': 'Legend',
+    '节点（{n}）': 'Nodes ({n})',
+    '连线（{n}）': 'Edges ({n})',
+    '·强': '· strong',
+    '·弱 {n} 条': '· weak {n}',
+    '（点右上角「探索」显示）': ' (press “Explore”, top right)',
+    '分层 · 显示到第 {n} 层（{k}/{m}）': 'Layer · up to {n} ({k}/{m})',
+    '全部': 'All',
+    '（空）': '(empty)',
+    '跳过去看': 'Jump to it',
+    '数学板块': 'Fields',
+    '导出当前视图（{n} 点 / {k} 线）': 'Export current view ({n} nodes / {k} edges)',
+    '子图 JSON': 'Subgraph JSON',
+    '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下':
+      'Click a swatch to show / hide · click a name to jump there · click a layer to keep only that layer and below',
+    '点一下：显示 / 隐藏全部「{名}」（共 {n} 个）': 'Click: show / hide all “{名}” ({n} of them)',
+    '点圆点：显示 / 隐藏「{名}」；点名字：跳过去看':
+      'Click the dot to show / hide “{名}”; click the name to jump there',
+    '点色块：显示 / 隐藏整个「{名}」；点名字：跳过去看':
+      'Click the swatch to show / hide all of “{名}”; click the name to jump there',
+    '跳过去看「{名}」': 'Jump to “{名}”',
+    '第 {n} 层（{k} 个）：{名}': 'Layer {n} ({k}): {名}',
+    '拖动：只显示「离地基不超过 k 步」的点。': 'Drag: keep only points within k steps of the foundations. ',
+    '不限层数（全部 {n} 个点）': 'No layer limit (all {n} nodes)',
+    '显示到第几层': 'Show up to layer',
+    '把所有节点都显示出来': 'Show every node again',
+    '显示全部 {n}/{m}': 'Show all {n}/{m}',
+    '等价': 'Equivalence',
+    '推出 →': 'Implies →',
+    '定义引用': 'Definition ref.',
+    '类比': 'Analogy',
+    '只看子图 · {名}（{n} 个点）': 'Subgraph only · {名} ({n} nodes)',
+    '沿依赖走 {n} 跳': 'Walk {n} hops along dependencies',
+    '跳地基': 'Skip foundations',
+    '跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有':
+      'Skip the layer 0–2 “foundations” (ZFC axioms, first-order language …) — they appear in almost every closure',
+    '退出子图，恢复全图': 'Leave the subgraph, back to the full map',
+    '退出': 'Exit',
+    '导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）':
+      'Export an SVG: the points on screen plus the edges between them (ready to drop into a document)',
+    '导出 TikZ 代码（给论文用）：每个节点带 \\label{n:节点id}，正文里可以 \\ref 引用':
+      'Export TikZ (for papers): every node carries \\label{n:<node-id>} so you can \\ref it in the text',
+    '导出子图 JSON（给程序和 AI）：id / 类型 / 陈述 / 坐标 / 边':
+      'Export subgraph JSON (for programs and AI): id / type / statement / coordinates / edges',
+    '子图模式：「{名}」': 'Subgraph mode: “{名}”',
+    '，共 {n} 个点（点数字改跳数，「退出」回全图）':
+      ', {n} nodes in total (click a number to change the hops, “Exit” returns to the full map)',
+    '主干模式：': 'Trunk mode: ',
+    '只显示第 0–{n} 层：': 'Only layers 0–{n}: ',
+    '现在共 {n} 个点（点图例标题栏的「显示全部」恢复）':
+      '{n} nodes right now (use “show all” in the legend header to restore)',
+
+    /* -------------------------------------------------------- 节点面板 */
+    '只看它靠什么': 'What it rests on',
+    '只看谁用它': 'What uses it',
+    '看它周围': 'Around it',
+    '引用此节点': 'Cite this node',
+    '复制引文（节点 id + 内容版本 + 概念页链接）':
+      'Copy the citation (node id + content version + concept-page link)',
+    '已复制 ✓': 'Copied ✓',
+    '请手动复制': 'Please copy manually',
+    '第 {n} 层（依赖深度）· 它依赖 {n} 个 · 被 {n} 个依赖':
+      'Layer {n} (dependency depth) · depends on {n} · used by {n}',
+    '✓ 标记已读': '✓ Mark as read',
+    '✓ 已读 · 点一下取消': '✓ Read · click to undo',
+    '前置都读过了': 'all prerequisites read',
+    '还差 {n} 条前置：{名}': '{n} prerequisites missing: {名}',
+    '陈述': 'Statement',
+    '说明 / 备注': 'Notes',
+    '参考': 'References',
+    '邻接': 'Neighbours',
+
+    /* -------------------------------------------------------- 边面板 */
+    '推导过程': 'Proof',
+    '为什么等价': 'Why they are equivalent',
+    '引用': 'Reference',
+  }
 };
 
 </script>
@@ -39678,6 +40050,10 @@ MG.trunk = [
   var C = MG.config;
   var T = MG.theme;
   var GU = MG.graphUtil;
+  /* 界面语言（T2.4）：tf = 查表（缺键回落中文）；labelOf = 节点显示名；num = 数字格式。
+     ⚠️ 这仨必须在**渲染时**才用 —— 不能拿来拼模块加载期的常量。 */
+  var tf = MG.t;
+  var labelOf = MG.labelOf;
 
   /* ------------------------------------------------------- KaTeX（可选） */
   /* 若页面里引入了 KaTeX，$…$ 与 $$…$$ 就会自动渲染；没有则原样显示。 */
@@ -39697,6 +40073,17 @@ MG.trunk = [
 
   function boot() {
     hookKatex();
+
+    /* 界面语言（T2.4）：先把 index.html 里写死的静态文案按语言填一遍。
+       英文模式下同时给 <html> 打 lang="en"（CSS 与读屏都靠它）。 */
+    MG.applyStatic(document.body);
+    if (MG.isEn) document.documentElement.setAttribute('lang', 'en');
+    /* 设置窗里那两个计数（全部概念索引 / 常见问法）原来是**写死的**（706 / 184），
+       内容长到 709 之后就没人更新它。这里改成从数据现算 —— 顺手修掉这个陈旧数字。 */
+    (function fixCounts() {
+      var q = document.getElementById('set-link-q');
+      if (q) q.textContent = tf('常见问法（{n} 条）', { n: ((MG.aliases || {}).hooks || []).length });
+    })();
 
     var graphEl = document.getElementById('layer-graph');
     var cloudEl = document.getElementById('layer-cloud');
@@ -39722,6 +40109,12 @@ MG.trunk = [
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
     }
+    /* 设置窗里「全部概念索引（N 个）」的 N 从图现算（原来写死 706，早就不对了）。
+       ⚠️ 概念页的条数 = 节点数，与 dist/_sitepages 的规则一致（`graph.nodes.length`）。 */
+    (function fixAllCount() {
+      var a = document.getElementById('set-link-all');
+      if (a) a.textContent = tf('全部概念索引（{n} 个）', { n: graph.nodes.length });
+    })();
 
     /* ------------------------------------------------------------ 状态 */
     /* 可见性：左下角「显示节点」面板里挑的那一块（存在 localStorage 里）。
@@ -40286,7 +40679,7 @@ MG.trunk = [
       } else if (act === 'toggle-wheel') {
         C.wheelZooms = !C.wheelZooms;
         btn.classList.toggle('on', C.wheelZooms);
-        btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
+        btn.textContent = C.wheelZooms ? tf('滚轮·缩放') : tf('滚轮·平移');
       }
       if (act && act.indexOf('toggle-') === 0) syncHash('push');
     });
@@ -40428,7 +40821,7 @@ MG.trunk = [
       var num = s.v === s.n ? '·' + s.n : '·' + s.v + '/' + s.n;
       var name = U.escapeHtml(o.label);
       if (o.nav) name = '<span class="lg-name" data-nav="' + o.nav + '" title="' +
-        U.escapeHtml(o.navTip || '跳过去看') + '">' + name + '</span>';
+        U.escapeHtml(o.navTip || tf('跳过去看')) + '">' + name + '</span>';
       else name = '<span class="lg-name">' + name + '</span>';
       return '<span class="lg-item lg-tog' + state + '" ' + o.attr + ' title="' +
         U.escapeHtml(o.tip) + '">' +
@@ -40445,43 +40838,48 @@ MG.trunk = [
 
       /* ---------- 节点类别（点一下 = 整类开关） ---------- */
       var typeRows = types.filter(function (t) { return T.nodeTypes[t]; }).map(function (t) {
-        var st = T.nodeTypes[t];
+        var st = MG.typeStyle(t);           // ⭐ 英文模式下它给的 name 已经是英文
         var list = typeNodes(t);
         if (!list.length) return '';
         return togChip({
           label: st.name, color: st.color, list: list, attr: 'data-vt="' + t + '"',
-          tip: '点一下：显示 / 隐藏全部「' + st.name + '」（共 ' + list.length + ' 个）'
+          tip: tf('点一下：显示 / 隐藏全部「{名}」（共 {n} 个）', { 名: st.name, n: list.length })
         });
       }).join('');
 
       /* ---------- 连线 ---------- */
       var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
+      var strongTag = '<em style="color:#A5ABB3;font-style:normal">' + U.escapeHtml(tf('·强')) + '</em>';
       var edgeRows =
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>等价<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>推出 →<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
-        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>定义引用<em style="color:#A5ABB3;font-style:normal">·强</em></span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>' + U.escapeHtml(tf('等价')) + strongTag + '</span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>' + U.escapeHtml(tf('推出 →')) + strongTag + '</span>' +
+        '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>' + U.escapeHtml(tf('定义引用')) + strongTag + '</span>' +
         (weakCount
           ? '<span class="lg-item" style="opacity:' + (C.exploreMode ? 1 : 0.45) + '">' +
             '<span class="lg-line" style="border-top-color:rgba(138,106,214,.7);border-top-width:2px;border-top-style:dashed"></span>' +
-            '类比<em style="color:#A5ABB3;font-style:normal">·弱 ' + weakCount + ' 条' +
-            (C.exploreMode ? '' : '（点右上角「探索」显示）') + '</em></span>'
+            U.escapeHtml(tf('类比')) + '<em style="color:#A5ABB3;font-style:normal">' +
+            U.escapeHtml(tf('·弱 {n} 条', { n: weakCount }) +
+              (C.exploreMode ? '' : tf('（点右上角「探索」显示）'))) + '</em></span>'
           : '');
 
       /* ---------- 数学板块：星系 + 它下面的星团（缩进一层） ---------- */
       var regionRows = live.map(function (r) {
         var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
+        var rname = MG.regionName(r);
         var head = togChip({
-          label: r.name, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
-          attr: 'data-vr="' + r.id + '"', tip: '点色块：显示 / 隐藏整个「' + r.name + '」；点名字：跳过去看',
-          nav: r.id, navTip: '跳过去看「' + r.name + '」'
+          label: rname, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
+          attr: 'data-vr="' + r.id + '"',
+          tip: tf('点色块：显示 / 隐藏整个「{名}」；点名字：跳过去看', { 名: rname }),
+          nav: r.id, navTip: tf('跳过去看「{名}」', { 名: rname })
         });
         if (!mine.length) return head;
         var kids = mine.map(function (c) {
+          var cname = MG.clusterName(c);
           return togChip({
-            label: c.name, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
+            label: cname, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
             attr: 'data-vc="' + c.id + '"', round: true,
-            tip: '点圆点：显示 / 隐藏「' + c.name + '」；点名字：跳过去看',
-            nav: c.id, navTip: '跳过去看「' + c.name + '」'
+            tip: tf('点圆点：显示 / 隐藏「{名}」；点名字：跳过去看', { 名: cname }),
+            nav: c.id, navTip: tf('跳过去看「{名}」', { 名: cname })
           });
         }).join('');
         return head + '<span class="lg-kids">' + kids + '</span>';
@@ -40500,15 +40898,19 @@ MG.trunk = [
       var curLv = (layerMax == null) ? maxLv : layerMax;
       var llist = sizes[curLv] || [];
       var lnames = llist.map(function (x) { return x.label; });
-      var layerTip = '第 ' + curLv + ' 层（' + llist.length + ' 个）：' +
-        (lnames.slice(0, 12).join('、') || '（空）') + (lnames.length > 12 ? ' …' : '');
+      var layerTip = tf('第 {n} 层（{k} 个）：{名}', {
+        n: curLv, k: llist.length,
+        名: (lnames.slice(0, 12).join('、') || tf('（空）')) + (lnames.length > 12 ? ' …' : '')
+      });
       var layerChips =
         '<input type="range" class="lg-range" min="0" max="' + maxLv + '" step="1" value="' + curLv +
-        '" data-layer-range aria-label="显示到第几层" title="' + U.escapeHtml('拖动：只显示「离地基不超过 k 步」的点。' + layerTip) + '">' +
+        '" data-layer-range aria-label="' + U.escapeHtml(tf('显示到第几层')) + '" title="' +
+        U.escapeHtml(tf('拖动：只显示「离地基不超过 k 步」的点。') + layerTip) + '">' +
         '<span class="lg-chip lg-chip-all' + (layerMax == null ? ' on' : '') +
-        '" data-layer="all" title="不限层数（全部 ' + total + ' 个点）">全部</span>';
+        '" data-layer="all" title="' + U.escapeHtml(tf('不限层数（全部 {n} 个点）', { n: total })) + '">' +
+        U.escapeHtml(tf('全部')) + '</span>';
       var layerTitle = '<span id="lg-layer-readout" title="' + U.escapeHtml(layerTip) + '">' +
-        '分层 · 显示到第 ' + curLv + ' 层（' + shown + '/' + total + '）</span>';
+        U.escapeHtml(tf('分层 · 显示到第 {n} 层（{k}/{m}）', { n: curLv, k: shown, m: total })) + '</span>';
 
       /* ---------- 子图开关：只在子图模式开着时出现 ---------- */
       var subChips = '';
@@ -40519,12 +40921,15 @@ MG.trunk = [
         }
       }
       var subGroup = subSeed
-        ? '<div class="lg-group"><div class="lg-title">只看子图 · ' +
-            U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) + '（' + subCount + ' 个点）</div>' +
+        ? '<div class="lg-group"><div class="lg-title">' +
+            U.escapeHtml(tf('只看子图 · {名}（{n} 个点）', {
+              名: (SUB_DIR_NAME[subDir] || subDir), n: subCount })) + '</div>' +
           '<div class="lg-row lg-layers">' + subChips +
           '<span class="lg-chip' + (subSkipBase ? ' on' : '') + '" data-subbase ' +
-            'title="跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有">跳地基</span>' +
-          '<button class="lg-reset" data-subclear title="退出子图，恢复全图">退出</button>' +
+            'title="' + U.escapeHtml(tf('跳过第 0–2 层的「地基」（ZFC 公理、一阶语言这些）——它们几乎每个闭包里都有')) + '">' +
+            U.escapeHtml(tf('跳地基')) + '</span>' +
+          '<button class="lg-reset" data-subclear title="' + U.escapeHtml(tf('退出子图，恢复全图')) + '">' +
+            U.escapeHtml(tf('退出')) + '</button>' +
           '</div></div>'
         : '';
 
@@ -40532,42 +40937,44 @@ MG.trunk = [
       var exN = 0, exE = 0;
       if (exporter) { var _c = exporter.collect(); exN = _c.nodes.length; exE = _c.edges.length; }
       var exportGroup =
-        '<div class="lg-group"><div class="lg-title">导出当前视图（' + exN + ' 点 / ' + exE + ' 线）</div>' +
+        '<div class="lg-group"><div class="lg-title">' +
+        U.escapeHtml(tf('导出当前视图（{n} 点 / {k} 线）', { n: exN, k: exE })) + '</div>' +
         '<div class="lg-row lg-layers">' +
-        '<button class="lg-reset" data-export="svg" title="导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）">SVG</button>' +
-        '<button class="lg-reset" data-export="tikz" title="导出 TikZ 代码（给论文用）：每个节点带 \\label{n:节点id}，正文里可以 \\ref 引用">TikZ</button>' +
-        '<button class="lg-reset" data-export="json" title="导出子图 JSON（给程序和 AI）：id / 类型 / 陈述 / 坐标 / 边">子图 JSON</button>' +
+        '<button class="lg-reset" data-export="svg" title="' + U.escapeHtml(tf('导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）')) + '">SVG</button>' +
+        '<button class="lg-reset" data-export="tikz" title="' + U.escapeHtml(tf('导出 TikZ 代码（给论文用）：每个节点带 \\label{n:节点id}，正文里可以 \\ref 引用')) + '">TikZ</button>' +
+        '<button class="lg-reset" data-export="json" title="' + U.escapeHtml(tf('导出子图 JSON（给程序和 AI）：id / 类型 / 陈述 / 坐标 / 边')) + '">' +
+          U.escapeHtml(tf('子图 JSON')) + '</button>' +
         '</div></div>';
 
+      var legendHint = subSeed
+        ? tf('子图模式：「{名}」', { 名: labelOf(graph.byId[subSeed]) || subSeed }) +
+          tf('，共 {n} 个点（点数字改跳数，「退出」回全图）', { n: subCount })
+        : trunkOnly || layerMax != null
+          ? (trunkOnly ? tf('主干模式：') : '') +
+            (layerMax != null ? tf('只显示第 0–{n} 层：', { n: layerMax }) : '') +
+            tf('现在共 {n} 个点（点图例标题栏的「显示全部」恢复）', { n: shown })
+          : tf('点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下');
+
       legendEl.innerHTML =
-        '<div class="lg-head" data-toggle><b>图例</b>' +
+        '<div class="lg-head" data-toggle><b>' + U.escapeHtml(tf('图例')) + '</b>' +
         (hidden
-          ? '<button class="lg-reset" data-reset title="把所有节点都显示出来">显示全部 ' + shown + '/' + total + '</button>'
+          ? '<button class="lg-reset" data-reset title="' + U.escapeHtml(tf('把所有节点都显示出来')) + '">' +
+            U.escapeHtml(tf('显示全部 {n}/{m}', { n: shown, m: total })) + '</button>'
           : '') +
         '<span class="lg-caret">▼</span></div>' +
         '<div class="lg-body">' +
         progressGroup +
-        '<div class="lg-group"><div class="lg-title">节点（' + total + '）</div>' +
+        '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('节点（{n}）', { n: total })) + '</div>' +
         '<div class="lg-row">' + typeRows + '</div></div>' +
-        '<div class="lg-group"><div class="lg-title">连线（' + graph.edges.length + '）</div>' +
+        '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('连线（{n}）', { n: graph.edges.length })) + '</div>' +
         '<div class="lg-row">' + edgeRows + '</div></div>' +
         '<div class="lg-group"><div class="lg-title">' + layerTitle + '</div>' +
         '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
         subGroup +
-        '<div class="lg-group"><div class="lg-title">数学板块</div>' +
+        '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('数学板块')) + '</div>' +
         '<div class="lg-row">' + regionRows + '</div></div>' +
         exportGroup +
-        '<div class="lg-hint">' +
-        (subSeed
-          ? '子图模式：「' + U.escapeHtml(graph.byId[subSeed] ? graph.byId[subSeed].label : subSeed) +
-            '」' + U.escapeHtml(SUB_DIR_NAME[subDir] || subDir) +
-            '，共 ' + subCount + ' 个点（点数字改跳数，「退出」回全图）'
-          : trunkOnly || layerMax != null
-            ? (trunkOnly ? '主干模式：' : '') +
-              (layerMax != null ? '只显示第 0–' + layerMax + ' 层：' : '') +
-              '现在共 ' + shown + ' 个点（点图例标题栏的「显示全部」恢复）'
-            : '点色块 = 显示 / 隐藏 · 点名字 = 跳过去看 · 点层号 = 只看那一层以下') +
-        '</div>' +
+        '<div class="lg-hint">' + U.escapeHtml(legendHint) + '</div>' +
         '</div>';
     }
 
@@ -40932,7 +41339,7 @@ MG.trunk = [
         var btn = toolbar.querySelector('[data-act="' + act + '"]');
         if (!btn) return;
         btn.classList.toggle('on', !!map[act]);
-        if (act === 'toggle-wheel') btn.textContent = C.wheelZooms ? '滚轮·缩放' : '滚轮·平移';
+        if (act === 'toggle-wheel') btn.textContent = tf(C.wheelZooms ? '滚轮·缩放' : '滚轮·平移');
       });
     }
 

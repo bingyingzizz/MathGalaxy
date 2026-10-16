@@ -319,15 +319,17 @@
     /* 图例里节点类型的显示顺序（也是「重要程度」的排序依据） */
     typeOrder: ['axiom', 'definition', 'theorem', 'lemma', 'proposition', 'corollary', 'example'],
 
-    /* 节点类型 → 颜色。改这里即可换配色。 */
+    /* 节点类型 → 颜色。改这里即可换配色。
+       ⭐ T2.4：加 `nameEn` —— 界面英文模式下的类型名（「公理」→ Axiom）。
+          它是**引擎侧**的界面文案，不是数学内容；⛔ 不要跟 label_en/title_en 混。 */
     nodeTypes: {
-      axiom:       { name: '公理',  color: '#7A5CD6', short: '公理' },
-      definition:  { name: '定义',  color: '#8B93A7', short: '定义' },
-      theorem:     { name: '定理',  color: '#2F9E63', short: '定理' },
-      lemma:       { name: '引理',  color: '#E08434', short: '引理' },
-      proposition: { name: '命题',  color: '#12A0B8', short: '命题' },
-      corollary:   { name: '推论',  color: '#3A7BD5', short: '推论' },
-      example:     { name: '例',    color: '#A79BC4', short: '例' }
+      axiom:       { name: '公理',  nameEn: 'Axiom',       color: '#7A5CD6', short: '公理' },
+      definition:  { name: '定义',  nameEn: 'Definition',  color: '#8B93A7', short: '定义' },
+      theorem:     { name: '定理',  nameEn: 'Theorem',     color: '#2F9E63', short: '定理' },
+      lemma:       { name: '引理',  nameEn: 'Lemma',       color: '#E08434', short: '引理' },
+      proposition: { name: '命题',  nameEn: 'Proposition', color: '#12A0B8', short: '命题' },
+      corollary:   { name: '推论',  nameEn: 'Corollary',   color: '#3A7BD5', short: '推论' },
+      example:     { name: '例',    nameEn: 'Example',     color: '#A79BC4', short: '例' }
     },
 
     /* 边的视觉 */
@@ -338,12 +340,18 @@
       analogy:     { color: '138, 106, 214', width: 1.5, alpha: 0.55, dashed: true }
     },
 
-    /* 边的中文名 */
+    /* 边的中文名（`edgeNamesEn` 同上：界面英文模式用的短名） */
     edgeNames: {
       implication: '推出',
       equivalence: '等价',
       definition:  '定义引用',
       analogy:     '类比'
+    },
+    edgeNamesEn: {
+      implication: 'Implies',
+      equivalence: 'Equivalence',
+      definition:  'Definition reference',
+      analogy:     'Analogy'
     },
 
     /* ------------------------------------------------------------------
@@ -369,8 +377,21 @@
     labelHalo: 'rgba(255,255,255,0.92)'
   };
 
-  /** 取节点类型样式（未知类型回落到 definition） */
+  /** 取节点类型样式（未知类型回落到 definition）
+      ⭐ T2.4：界面英文模式下 `name` 直接换成 `nameEn` —— 这样图例 / 搜索下拉 /
+         面板那三处的类型名**一处都不用改**（它们本来就只读 `.name`）。 */
   MG.typeStyle = function (type) {
-    return MG.theme.nodeTypes[type] || MG.theme.nodeTypes.definition;
+    var st = MG.theme.nodeTypes[type] || MG.theme.nodeTypes.definition;
+    if (MG.isEn && st.nameEn) {
+      return { name: st.nameEn, nameEn: st.nameEn, color: st.color, short: st.nameEn };
+    }
+    return st;
+  };
+
+  /** 边的显示名（同上：英文模式走 edgeNamesEn） */
+  MG.edgeName = function (kind) {
+    var T = MG.theme;
+    if (MG.isEn && T.edgeNamesEn && T.edgeNamesEn[kind]) return T.edgeNamesEn[kind];
+    return (T.edgeNames || {})[kind] || kind;
   };
 })(typeof window !== 'undefined' ? window : globalThis);
