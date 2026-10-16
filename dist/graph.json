@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T06:38:48.925Z",
+  "generated": "2026-10-16T06:44:08.522Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -2162,28 +2162,40 @@
    "id": "thm.wellordering",
    "type": "theorem",
    "label": "良序定理",
-   "title": "良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）",
+   "title": "良序定理 / 良序原理（Well-Ordering Theorem）",
    "label_en": "well-ordering theorem",
-   "title_en": "Well-Ordering Theorem, Zermelo 1904",
+   "title_en": "Well-Ordering Theorem",
    "abstract_en": "Every set can be well ordered: $\\forall X\\, \\exists \\preceq$ a well-ordering of $X$, equivalently every set is equinumerous with an ordinal. Zermelo introduced the axiom of choice in 1904 precisely to prove this, and over ZF the statement is equivalent to AC. Immediate consequence: any two cardinals are comparable, and $\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.",
+   "statement_en": "Every set can be given a well-ordering: for any set $X$ there is a well-ordering relation $\\preceq$ on $X$.\n\nIn other words: every set $X$ is equinumerous with some ordinal.\n\nIn particular, every set has a cardinality, and the real line admits a well-ordering (though this well-ordering cannot be written down explicitly).",
+   "notes_en": "Zermelo introduced the axiom of choice explicitly in 1904 in order to prove that every set can be well-ordered; this is where AC first appears.\n\nThe well-ordering theorem immediately yields the **comparability theorem for cardinals**: any two sets have comparable cardinalities.\n\nIt cannot be proved in ZF; but ZF together with it proves AC, so the two are equivalent.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
-      "abstract": "v0.9.1#4716d94b"
+      "abstract": "v0.9.1#4716d94b",
+      "statement": "v0.9.1#f0e20930",
+      "notes": "v0.9.1#bf8c5d7a"
      }
     }
    },
@@ -2200,7 +2212,7 @@
     "等价命题",
     "选择"
    ],
-   "statement": "每个集合都能被赋予一个良序：\n\n$$\\forall X \\exists\\preceq ( \\preceq\\text{ 是} X\\text{ 上的良序关系} )$$\n\n换句话说：任何集合 $X$ 都与某个序数等势。\n\n特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。",
+   "statement": "每个集合都能被赋予一个良序：对任何集合 $X$，都存在 $X$ 上的良序关系 $\\preceq$。\n\n换句话说：任何集合 $X$ 都与某个序数等势。\n\n特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。",
    "notes": "Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公理，这也是 AC 第一次登场。\n\n由良序定理可立刻得到**基数可比定理**：任意两个集合的基数都可比较大小。\n\n在 ZF 中不能证明它；但由它和 ZF 可推出 AC，所以两者等价。",
    "refs": [
     "Zermelo (1904)",
@@ -2278,28 +2290,38 @@
    "id": "thm.hausdorff",
    "type": "theorem",
    "label": "Hausdorff 极大原理",
-   "title": "Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）",
+   "title": "Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）",
    "label_en": "Hausdorff maximal principle",
-   "title_en": "Hausdorff Maximal Principle, 1914",
+   "title_en": "Hausdorff Maximal Principle",
    "abstract_en": "Every chain in a poset extends to a maximal one: for a chain $C_0 \\subseteq P$ there is a maximal chain $M$ with $C_0 \\subseteq M$, maximal under inclusion. Taking $C_0 = \\emptyset$ gives that every non-empty poset has a maximal chain. The statement predates Zorn's lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise form of \"keep adding elements until you cannot add any more\".",
+   "statement_en": "Let $(P, \\preceq )$ be a poset and $C_{0} \\subseteq P$ a chain. Then there is a **maximal chain** $M$ of $P$ with $C_{0} \\subseteq M$.\n\nHere \"maximal chain\" means a chain that is maximal under inclusion $\\subseteq$: if $M \\subseteq M' \\subseteq P$ and $M'$ is again a chain, then $M' = M$.\n\nTaking $C_{0} = \\emptyset$ gives: **every non-empty poset has a maximal chain.**",
+   "notes_en": "In form it predates Zorn's lemma (Hausdorff, 1914), and it is equivalent to it.\n\nThe existence of a maximal chain is exactly the rigorous version of the intuition \"keep adding elements from below until you can add no more\".",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#dece7db3"
+      "abstract": "v0.9.1#dece7db3",
+      "statement": "v0.9.1#317a7f66",
+      "notes": "v0.9.1#53809b5a"
      }
     }
    },
@@ -3081,7 +3103,7 @@
    "abstract_en": "For $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, the $\\sigma$-algebra generated by $\\mathcal{E}$ equals the monotone class generated by $\\mathcal{E}$ if complements of members of $\\mathcal{E}$ and unions of two members of $\\mathcal{E}$ lie in that monotone class. With \"$\\mathcal{E}$ is an algebra\" this is the standard monotone class theorem; the form above weakens that hypothesis to the two closure conditions, and the proof is the same two-step argument with the monotone class as the running object.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -3091,10 +3113,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
       "abstract": "v0.9.1#78753395"
      }
@@ -3112,7 +3136,7 @@
     "单调类",
     "生成"
    ],
-   "statement": "设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。则\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\text{ 且} \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
+   "statement": "设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。则\n\n$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$",
    "notes": "**这一条是「标准版 + 加强版」合起来的那一个版本。**\n\n**标准版**（Halmos §6 / Folland 2.37）：$\\mathcal{A}$ 是**代数** $\\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$。\n\n上面陈述的是**加强版**：把「$\\mathcal{E}$ 是代数」换成两条更弱的条件——$\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行。证明仍是单调类定理那三步：\n\n**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。\n\n**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。\n\n**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。\n\n于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；反向恒成立，两边相等。（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）\n\n⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。\n\n**用法**（不论哪个版本都一样）：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。\n\n⚠ 与「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 $+$ 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。",
    "refs": [
     "Halmos, Measure Theory, §6",
@@ -4939,24 +4963,34 @@
    "label_en": "section",
    "title_en": "Section",
    "abstract_en": "For $E \\subseteq X \\times Y$ the vertical and horizontal sections are $E_x := \\{y \\in Y : (x,y) \\in E\\}$ and $E^y := \\{x \\in X : (x,y) \\in E\\}$; for a function $f : X \\times Y \\to \\mathbb{C}$ one sets $f_x(y) = f^y(x) = f(x,y)$. Geometrically, cut the picture with a line and look at what remains. Sections are the language in which Fubini is stated: integrate along the sections first, then integrate the resulting function against the other variable.",
+   "statement_en": "Let $E \\subseteq X \\times Y$. For $x \\in X$ and $y \\in Y$ define\n\n$$E_x := \\{y \\in Y : (x, y) \\in E\\}$$\n\n$$E^y := \\{x \\in X : (x, y) \\in E\\}$$\n\ncalled respectively the **vertical section** of $E$ at $x$ and the **horizontal section** at $y$.\n\nSimilarly, for a function $f : X \\times Y \\to \\mathbb{C}$ define\n\n$$f_x(y) := f^y(x) := f(x, y)$$",
+   "notes_en": "Intuition: cut a plane figure with a vertical (or horizontal) line; the segment you cut out is the section.\n\nSections are the language of Fubini's theorem: the double integral $\\iint f d(\\mu \\times \\nu)$ is \"integrate along the sections first, then integrate the resulting function of the other variable\".",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#0a85dee1"
+      "abstract": "v0.9.1#0a85dee1",
+      "statement": "v0.9.1#ad479275",
+      "notes": "v0.9.1#8645e773"
      }
     }
    },
@@ -4986,7 +5020,7 @@
    "abstract_en": "Sections of measurable sets are measurable: if $E \\in \\mathcal{M} \\otimes \\mathcal{N}$ then $E_x \\in \\mathcal{N}$ for every $x$ and $E^y \\in \\mathcal{M}$ for every $y$; likewise the sections of an $\\mathcal{M} \\otimes \\mathcal{N}$-measurable $f$ are measurable, because $f_x^{-1}(B) = (f^{-1}(B))_x$ and dually. The proof is the standard one: the class of sets all of whose sections are measurable contains every rectangle and is a $\\sigma$-algebra. Note that this holds for every point, whereas Fubini can only promise almost every point once integrability enters.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -4996,10 +5030,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
       "abstract": "v0.9.1#05ea13af"
      }
@@ -5018,7 +5054,7 @@
     "可测"
    ],
    "statement": "**(a)** 若 $E \\in \\mathcal{M} \\otimes  \\mathcal{N}$，则对一切 $x \\in X$ 有 $E_x \\in \\mathcal{N}$，对一切 $y \\in Y$ 有 $E^y \\in \\mathcal{M}$。\n\n**(b)** 若 $f$ 是 $\\mathcal{M} \\otimes  \\mathcal{N}$-可测的，则对一切 $x$ 有 $f_x$ 是 $\\mathcal{N}$-可测的，对一切 $y$ 有 $f^y$ 是 $\\mathcal{M}$-可测的。",
-   "notes": "证明是一个「先看矩形、再看 $\\sigma$代数」的标准套路：令\n\n\n\n$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y)\\}$$\n\n\n\n则 $\\mathcal{R}$ 包含所有矩形，而且**$\\mathcal{R}$ 是一个 $\\sigma$代数**（截口运算保持并、交、补）。于是 $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$。\n\n(b) 由 (a) 与两条恒等式得到：\n\n\n\n$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$\n\n\n\n⚠ 注意 (b) 说的是「**每一个** $x$ 都行」，而 Fubini 定理里只能保证「几乎每一个」—— 那是因为 Fubini 还要它可积。",
+   "notes": "证明是一个「先看矩形、再看 $\\sigma$代数」的标准套路：令\n\n\n\n$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} \\ \\wedge\\ E^y \\in \\mathcal{M}\\quad \\forall(x, y)\\}$$\n\n\n\n则 $\\mathcal{R}$ 包含所有矩形，而且**$\\mathcal{R}$ 是一个 $\\sigma$代数**（截口运算保持并、交、补）。于是 $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$。\n\n(b) 由 (a) 与两条恒等式得到：\n\n\n\n$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$\n\n\n\n⚠ 注意 (b) 说的是「**每一个** $x$ 都行」，而 Fubini 定理里只能保证「几乎每一个」—— 那是因为 Fubini 还要它可积。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.34"
    ]
@@ -7934,24 +7970,36 @@
    "label_en": "comparability of cardinals",
    "title_en": "comparability of cardinals",
    "abstract_en": "Assuming the axiom of choice, any two sets $A$, $B$ satisfy $|A| \\le |B|$ or $|B| \\le |A|$, that is, any two cardinals are comparable. This is the licence for ordering cardinals at all: without it even \"$A$ is bigger than $B$\" can be meaningless. The proof runs through the well-ordering theorem: well-order both sets, compare the corresponding ordinals, and read off an injection in one direction. Without AC there really are incomparable cardinals.",
+   "statement_en": "Under the **axiom of choice**: for any two sets $A$ and $B$ we have $|A| \\le |B|$ or $|B| \\le |A|$.\n\nThat is, any two cardinals are comparable.",
+   "notes_en": "⭐ This is the licence to *order* cardinals: without it, even the sentence \"$A$ is bigger than $B$\" can be meaningless.\n\nRoute of the proof (see the edge): the **well-ordering theorem** well-orders both $A$ and $B$, the corresponding ordinals are comparable, and hence one direction admits an injection. So this theorem, AC and the well-ordering theorem are three ways of saying the same thing.\n\n⚠ Without AC there really are incomparable cardinals (Jech, *The Axiom of Choice*).",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
-      "abstract": "v0.9.1#de40e4ba"
+      "abstract": "v0.9.1#de40e4ba",
+      "statement": "v0.9.1#65d602d2",
+      "notes": "v0.9.1#f4afd520"
      }
     }
    },
@@ -7967,7 +8015,7 @@
     "基数",
     "选择"
    ],
-   "statement": "在**选择公理**下：对任意两个集合 $A$、$B$，必有\n\n$$|A| \\le |B| \\quad \\text{或} \\quad |B| \\le |A|$$\n\n即任意两个基数都可以比较大小。",
+   "statement": "在**选择公理**下：对任意两个集合 $A$、$B$，必有 $|A| \\le |B|$ 或 $|B| \\le |A|$。\n\n即任意两个基数都可以比较大小。",
    "notes": "⭐ 这条是「基数排序」的许可证：没有它，连「$A$ 比 $B$ 大」这句话都可能毫无意义。\n\n证明路线（见边）：**良序定理**把 $A$、$B$ 都良序化 $\\to$ 对应的序数可以比较 $\\to$ 于是有一个方向能放进单射。所以这条定理与 AC、良序定理是同一件事的三种说法。\n\n⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。",
    "refs": [
     "Jech, The Axiom of Choice, Ch. 3"
@@ -10564,24 +10612,36 @@
    "title": "全忠实 $\\iff$ 单位（余单位）是同构",
    "title_en": "fully faithful iff the unit is an isomorphism",
    "abstract_en": "For an adjunction $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$: $F$ is full and faithful iff $\\eta$ is an isomorphism, and $G$ is full and faithful iff $\\varepsilon$ is an isomorphism. So fullness and faithfulness of the left adjoint is checked on a single natural transformation rather than on every Hom-set. This is also the dividing line between reflections and coreflections: an inclusion of a full subcategory is always fully faithful, so a reflection has an invertible counit.",
+   "statement_en": "Let $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$. Then $F$ is **fully faithful** $\\iff$ $\\eta$ is an isomorphism; $G$ is **fully faithful** $\\iff$ $\\varepsilon$ is an isomorphism.",
+   "notes_en": "So \"a left adjoint is fully faithful\" reduces to checking that every component of a single natural transformation is invertible — far easier than checking Hom-sets pair by pair.\n\nThis is also the dividing line between **reflective** and **coreflective**: reflective means \"the inclusion functor has a left adjoint\", and an inclusion functor is always fully faithful (full subcategory), so for a reflection the counit is always an isomorphism.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
-      "abstract": "v0.9.1#b504654a"
+      "abstract": "v0.9.1#b504654a",
+      "statement": "v0.9.1#315d7da7",
+      "notes": "v0.9.1#9b807211"
      }
     }
    },
@@ -10597,7 +10657,7 @@
     "伴随",
     "全忠实"
    ],
-   "statement": "设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则\n\n$$F \\text{ 全忠实} \\iff \\eta \\text{ 是同构}, \\qquad G \\text{ 全忠实} \\iff \\varepsilon \\text{ 是同构}$$",
+   "statement": "设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $F$ **全忠实** $\\iff$ $\\eta$ 是同构；$G$ **全忠实** $\\iff$ $\\varepsilon$ 是同构。",
    "notes": "所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。\n\n这也是**反射**与**余反射**的分界线：反射说的是「含入函子有左伴随」，而含入函子总是全忠实的（满子范畴），所以反射的余单位一定是同构。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §1.5"

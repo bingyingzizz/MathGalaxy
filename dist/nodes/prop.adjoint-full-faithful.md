@@ -8,9 +8,9 @@ layer 11 · 命题 · 伴随与反射 · 范畴论
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/prop.adjoint-full-faithful.4.md](./prop.adjoint-full-faithful.4.md)
+- …另有入边，续页见 [nodes/prop.adjoint-full-faithful.5.md](./prop.adjoint-full-faithful.5.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · **stale** (the Chinese wording changed since this translation) · machine-drafted, pending author review; Chinese is authoritative
 > English abstract 续见 [nodes/prop.adjoint-full-faithful.3.md](./prop.adjoint-full-faithful.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.5

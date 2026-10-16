@@ -9639,7 +9639,7 @@ MG.i18n = {
     'thm.gleason': { title_en: 'Gleason', label_en: 'Gleason', from: 'aka' },
     'thm.hahn-decomposition': { title_en: 'Hahn Decomposition Theorem', label_en: 'Hahn decomposition', from: 'title' },
     'thm.hartogs': { title_en: 'Hartogs\' Theorem, 1915', label_en: 'Hartogs', from: 'title' },
-    'thm.hausdorff': { title_en: 'Hausdorff Maximal Principle, 1914', label_en: 'Hausdorff maximal principle', from: 'title' },
+    'thm.hausdorff': { title_en: 'Hausdorff Maximal Principle', label_en: 'Hausdorff maximal principle', from: 'title' },
     'thm.holder': { title_en: 'Hölder', label_en: 'Hölder', from: 'aka' },
     'thm.jordan-decomposition': { title_en: 'Jordan Decomposition Theorem', label_en: 'Jordan decomposition', from: 'title' },
     'thm.lebesgue-differentiation': { title_en: 'differentiation theorem', label_en: 'differentiation theorem', from: 'aka' },
@@ -9671,7 +9671,7 @@ MG.i18n = {
     'thm.triangle': { title_en: 'triangle inequality', label_en: 'triangle inequality', from: 'aka' },
     'thm.tykhonov': { title_en: 'Tychonoff', label_en: 'Tychonoff', from: 'aka-title' },
     'thm.wellorder-ordinal': { title_en: 'order type', label_en: 'order type', from: 'aka' },
-    'thm.wellordering': { title_en: 'Well-Ordering Theorem, Zermelo 1904', label_en: 'well-ordering theorem', from: 'title' },
+    'thm.wellordering': { title_en: 'Well-Ordering Theorem', label_en: 'well-ordering theorem', from: 'title' },
   }
 };
 
@@ -10489,6 +10489,120 @@ MG.i18nStatements = {
         'lets one reduce "true for all $\\sigma$-algebras" to "first verify it on a ring, then ' +
         'pass to monotone limits".',
         status: 'reviewed', basedOn: 'v0.9.1#ce1b4b57', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      },
+    },
+
+    /* ================================================ 批次 2a（枢纽榜第 11–20 名里的短条）
+       ⚠️ 这几条**还没审**（status: 'draft'）—— 作者审完再翻，翻法见 tools/i18n-review.mjs。 */
+
+    /* ------------------------------------------------ Hausdorff 极大原理 */
+    'thm.hausdorff': {
+      statement: {
+        en:
+        'Let $(P, \\preceq )$ be a poset and $C_{0} \\subseteq P$ a chain. Then there is a ' +
+        '**maximal chain** $M$ of $P$ with $C_{0} \\subseteq M$.\n\n' +
+        'Here "maximal chain" means a chain that is maximal under inclusion $\\subseteq$: if ' +
+        '$M \\subseteq M\' \\subseteq P$ and $M\'$ is again a chain, then $M\' = M$.\n\n' +
+        'Taking $C_{0} = \\emptyset$ gives: **every non-empty poset has a maximal chain.**',
+        status: 'draft', basedOn: 'v0.9.1#317a7f66', reviewed: null,
+      },
+      notes: {
+        en:
+        'In form it predates Zorn\'s lemma (Hausdorff, 1914), and it is equivalent to it.\n\n' +
+        'The existence of a maximal chain is exactly the rigorous version of the intuition ' +
+        '"keep adding elements from below until you can add no more".',
+        status: 'draft', basedOn: 'v0.9.1#53809b5a', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------------ 截口 */
+    'def.section': {
+      statement: {
+        en:
+        'Let $E \\subseteq X \\times Y$. For $x \\in X$ and $y \\in Y$ define\n\n' +
+        '$$E_x := \\{y \\in Y : (x, y) \\in E\\}$$\n\n' +
+        '$$E^y := \\{x \\in X : (x, y) \\in E\\}$$\n\n' +
+        'called respectively the **vertical section** of $E$ at $x$ and the **horizontal ' +
+        'section** at $y$.\n\n' +
+        'Similarly, for a function $f : X \\times Y \\to \\mathbb{C}$ define\n\n' +
+        '$$f_x(y) := f^y(x) := f(x, y)$$',
+        status: 'draft', basedOn: 'v0.9.1#ad479275', reviewed: null,
+      },
+      notes: {
+        en:
+        'Intuition: cut a plane figure with a vertical (or horizontal) line; the segment you ' +
+        'cut out is the section.\n\n' +
+        'Sections are the language of Fubini\'s theorem: the double integral ' +
+        '$\\iint f d(\\mu \\times \\nu)$ is "integrate along the sections first, then integrate ' +
+        'the resulting function of the other variable".',
+        status: 'draft', basedOn: 'v0.9.1#8645e773', reviewed: null,
+      },
+    },
+
+    /* -------------------------------------------------------- 良序定理 */
+    'thm.wellordering': {
+      statement: {
+        en:
+        'Every set can be given a well-ordering: for any set $X$ there is a well-ordering ' +
+        'relation $\\preceq$ on $X$.\n\n' +
+        'In other words: every set $X$ is equinumerous with some ordinal.\n\n' +
+        'In particular, every set has a cardinality, and the real line admits a well-ordering ' +
+        '(though this well-ordering cannot be written down explicitly).',
+        status: 'draft', basedOn: 'v0.9.1#f0e20930', reviewed: null,
+      },
+      notes: {
+        en:
+        'Zermelo introduced the axiom of choice explicitly in 1904 in order to prove that ' +
+        'every set can be well-ordered; this is where AC first appears.\n\n' +
+        'The well-ordering theorem immediately yields the **comparability theorem for ' +
+        'cardinals**: any two sets have comparable cardinalities.\n\n' +
+        'It cannot be proved in ZF; but ZF together with it proves AC, so the two are ' +
+        'equivalent.',
+        status: 'draft', basedOn: 'v0.9.1#bf8c5d7a', reviewed: null,
+      },
+    },
+
+    /* ---------------------------------------------------- 基数可比定理 */
+    'thm.cardinal-comparable': {
+      statement: {
+        en:
+        'Under the **axiom of choice**: for any two sets $A$ and $B$ we have ' +
+        '$|A| \\le |B|$ or $|B| \\le |A|$.\n\n' +
+        'That is, any two cardinals are comparable.',
+        status: 'draft', basedOn: 'v0.9.1#65d602d2', reviewed: null,
+      },
+      notes: {
+        en:
+        '⭐ This is the licence to *order* cardinals: without it, even the sentence ' +
+        '"$A$ is bigger than $B$" can be meaningless.\n\n' +
+        'Route of the proof (see the edge): the **well-ordering theorem** well-orders both ' +
+        '$A$ and $B$, the corresponding ordinals are comparable, and hence one direction ' +
+        'admits an injection. So this theorem, AC and the well-ordering theorem are three ' +
+        'ways of saying the same thing.\n\n' +
+        '⚠ Without AC there really are incomparable cardinals (Jech, *The Axiom of Choice*).',
+        status: 'draft', basedOn: 'v0.9.1#f4afd520', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------ 全忠实与单位 */
+    'prop.adjoint-full-faithful': {
+      statement: {
+        en:
+        'Let $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$. Then $F$ is ' +
+        '**fully faithful** $\\iff$ $\\eta$ is an isomorphism; $G$ is **fully faithful** ' +
+        '$\\iff$ $\\varepsilon$ is an isomorphism.',
+        status: 'draft', basedOn: 'v0.9.1#315d7da7', reviewed: null,
+      },
+      notes: {
+        en:
+        'So "a left adjoint is fully faithful" reduces to checking that every component of a ' +
+        'single natural transformation is invertible — far easier than checking Hom-sets ' +
+        'pair by pair.\n\n' +
+        'This is also the dividing line between **reflective** and **coreflective**: ' +
+        'reflective means "the inclusion functor has a left adjoint", and an inclusion ' +
+        'functor is always fully faithful (full subcategory), so for a reflection the counit ' +
+        'is always an isomorphism.',
+        status: 'draft', basedOn: 'v0.9.1#9b807211', reviewed: null,
       },
     },
   },
@@ -12104,14 +12218,15 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'theorem',
       label: '良序定理',
-      title: '良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）',
+      /* ⚠️ 括号里的英文名**不要带年份**：一级英文名规则会在「title 括号里的英文与 aka 一致」时
+         取 title 那一条 ⇒ 带年份的话 `title_en` 就成了「Well-Ordering Theorem, Zermelo 1904」
+         （作者 2026-10-16 点过这个毛病）。年份在 notes 与 refs 里都写着，不丢信息。 */
+      title: '良序定理 / 良序原理（Well-Ordering Theorem）',
       // 既是集合论的定理，也是序理论的定理 → 落在两块的边界上
       regions: ['set-theory', 'order-theory'],
       tags: ['ZFC', '等价命题', '选择'],
       statement: [
-        '每个集合都能被赋予一个良序：',
-        '',
-        '$$\\forall X \\exists\\preceq ( \\preceq\\text{ 是} X\\text{ 上的良序关系} )$$',
+        '每个集合都能被赋予一个良序：对任何集合 $X$，都存在 $X$ 上的良序关系 $\\preceq$。',
         '',
         '换句话说：任何集合 $X$ 都与某个序数等势。',
         '',
@@ -12151,7 +12266,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
-      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）',
+      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）',
       regions: ['order-theory'],
       tags: ['ZFC', '等价命题', '极大原理', '链'],
       statement: [
@@ -13255,7 +13370,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。则',
         '',
-        '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\text{ 且} \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$'
+        '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff \\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ \\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$'
       ].join('\n'),
       notes: [
         '**这一条是「标准版 + 加强版」合起来的那一个版本。**',
@@ -15951,7 +16066,7 @@ window.MG = window.MG || {};
       notes: [
         '证明是一个「先看矩形、再看 $\\sigma$代数」的标准套路：令',
         '',
-        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y)\\}$$',
+        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} \\ \\wedge\\ E^y \\in \\mathcal{M}\\quad \\forall(x, y)\\}$$',
         '',
         '则 $\\mathcal{R}$ 包含所有矩形，而且**$\\mathcal{R}$ 是一个 $\\sigma$代数**（截口运算保持并、交、补）。于是 $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$。',
         '(b) 由 (a) 与两条恒等式得到：',
@@ -19988,9 +20103,7 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定理', '基数', '选择'],
       statement: [
-        '在**选择公理**下：对任意两个集合 $A$、$B$，必有',
-        '',
-        '$$|A| \\le |B| \\quad \\text{或} \\quad |B| \\le |A|$$',
+        '在**选择公理**下：对任意两个集合 $A$、$B$，必有 $|A| \\le |B|$ 或 $|B| \\le |A|$。',
         '',
         '即任意两个基数都可以比较大小。'
       ].join('\n'),
@@ -23164,9 +23277,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '伴随', '全忠实'],
       statement: [
-        '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则',
-        '',
-        '$$F \\text{ 全忠实} \\iff \\eta \\text{ 是同构}, \\qquad G \\text{ 全忠实} \\iff \\varepsilon \\text{ 是同构}$$'
+        '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $F$ **全忠实** $\\iff$ $\\eta$ 是同构；$G$ **全忠实** $\\iff$ $\\varepsilon$ 是同构。'
       ].join('\n'),
       notes: [
         '所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。',

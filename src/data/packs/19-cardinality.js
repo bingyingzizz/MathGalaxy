@@ -129,9 +129,7 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定理', '基数', '选择'],
       statement: [
-        '在**选择公理**下：对任意两个集合 $A$、$B$，必有',
-        '',
-        '$$|A| \\le |B| \\quad \\text{或} \\quad |B| \\le |A|$$',
+        '在**选择公理**下：对任意两个集合 $A$、$B$，必有 $|A| \\le |B|$ 或 $|B| \\le |A|$。',
         '',
         '即任意两个基数都可以比较大小。'
       ].join('\n'),

@@ -2,12 +2,10 @@
 English entry · root `../`
 [in graph](../#n=prop.adjoint-full-faithful)　·　[Chinese page (authoritative)](./prop.adjoint-full-faithful.md)
 
-## Statement and proof
-Chinese only — see the Chinese page `nodes/prop.adjoint-full-faithful.md` and `proofs/`.
+## Statement · **draft**
+Let $F \dashv G$ with unit $\eta$ and counit $\varepsilon$. Then $F$ is **fully faithful** $\iff$ $\eta$ is an isomorphism; $G$ is **fully faithful** $\iff$ $\varepsilon$ is an isomorphism.
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Full_and_faithful_functors · nLab: https://ncatlab.org/nlab/show/full+and+faithful+functor
+## Notes · **draft**
+So "a left adjoint is fully faithful" reduces to checking that every component of a single natural transformation is invertible — far easier than checking Hom-sets pair by pair.
 
-
-Cite: `prop.adjoint-full-faithful` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
-
+> 续见 nodes/prop.adjoint-full-faithful.en.4.md

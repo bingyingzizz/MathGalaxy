@@ -2,9 +2,13 @@
 English entry · root `../`
 [in graph](../#n=thm.cardinal-comparable)　·　[Chinese page (authoritative)](./thm.cardinal-comparable.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Cardinal_number · nLab: https://ncatlab.org/nlab/show/cardinal+number
+That is, any two cardinals are comparable.
 
+## Notes · **draft**
+⭐ This is the licence to *order* cardinals: without it, even the sentence "$A$ is bigger than $B$" can be meaningless.
 
-Cite: `thm.cardinal-comparable` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Route of the proof (see the edge): the **well-ordering theorem** well-orders both $A$ and $B$, the corresponding ordinals are comparable, and hence one direction admits an injection. So this theorem, AC and the well-ordering theorem are three ways of saying the same thing.
 
+⚠ Without AC there really are incomparable cardinals (Jech, *The Axiom of Choice*).
+
+> 续见 nodes/thm.cardinal-comparable.en.4.md

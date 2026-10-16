@@ -45,71 +45,57 @@ n
 $
 。
 则
-$
+ 
 $
 F
+$
  
-\
-t
-e
-x
-t
-{
- 
+*
+*
 全
 忠
 实
-}
+*
+*
  
+$
 \
 i
 f
 f
+$
  
+$
 \
 e
 t
 a
- 
-\
-t
-e
-x
-t
-{
+$
  
 是
 同
 构
-}
-,
- 
-\
-q
-q
-u
-a
-d
- 
+；
+$
 G
+$
  
-\
-t
-e
-x
-t
-{
- 
+*
+*
 全
 忠
 实
-}
+*
+*
  
+$
 \
 i
 f
 f
+$
  
+$
 \
 v
 a
@@ -121,19 +107,11 @@ i
 l
 o
 n
- 
-\
-t
-e
-x
-t
-{
+$
  
 是
 同
 构
-}
-$
-$
+。
 
 > 续见 [nodes/prop.adjoint-full-faithful.3.md](./prop.adjoint-full-faithful.3.md)

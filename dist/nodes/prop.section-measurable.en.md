@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=prop.section-measurable)　·　[Chinese page (authoritative)](./prop.section-measurable.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **stale** · stale fields: abstract (the Chinese wording changed since this translation); the Chinese page is authoritative.
 
 layer 7 · proposition · cluster Product Measures and Fubini (`analysis.product`) · Analysis
 

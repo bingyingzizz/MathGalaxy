@@ -415,5 +415,119 @@ MG.i18nStatements = {
         status: 'reviewed', basedOn: 'v0.9.1#ce1b4b57', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
+
+    /* ================================================ 批次 2a（枢纽榜第 11–20 名里的短条）
+       ⚠️ 这几条**还没审**（status: 'draft'）—— 作者审完再翻，翻法见 tools/i18n-review.mjs。 */
+
+    /* ------------------------------------------------ Hausdorff 极大原理 */
+    'thm.hausdorff': {
+      statement: {
+        en:
+        'Let $(P, \\preceq )$ be a poset and $C_{0} \\subseteq P$ a chain. Then there is a ' +
+        '**maximal chain** $M$ of $P$ with $C_{0} \\subseteq M$.\n\n' +
+        'Here "maximal chain" means a chain that is maximal under inclusion $\\subseteq$: if ' +
+        '$M \\subseteq M\' \\subseteq P$ and $M\'$ is again a chain, then $M\' = M$.\n\n' +
+        'Taking $C_{0} = \\emptyset$ gives: **every non-empty poset has a maximal chain.**',
+        status: 'draft', basedOn: 'v0.9.1#317a7f66', reviewed: null,
+      },
+      notes: {
+        en:
+        'In form it predates Zorn\'s lemma (Hausdorff, 1914), and it is equivalent to it.\n\n' +
+        'The existence of a maximal chain is exactly the rigorous version of the intuition ' +
+        '"keep adding elements from below until you can add no more".',
+        status: 'draft', basedOn: 'v0.9.1#53809b5a', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------------ 截口 */
+    'def.section': {
+      statement: {
+        en:
+        'Let $E \\subseteq X \\times Y$. For $x \\in X$ and $y \\in Y$ define\n\n' +
+        '$$E_x := \\{y \\in Y : (x, y) \\in E\\}$$\n\n' +
+        '$$E^y := \\{x \\in X : (x, y) \\in E\\}$$\n\n' +
+        'called respectively the **vertical section** of $E$ at $x$ and the **horizontal ' +
+        'section** at $y$.\n\n' +
+        'Similarly, for a function $f : X \\times Y \\to \\mathbb{C}$ define\n\n' +
+        '$$f_x(y) := f^y(x) := f(x, y)$$',
+        status: 'draft', basedOn: 'v0.9.1#ad479275', reviewed: null,
+      },
+      notes: {
+        en:
+        'Intuition: cut a plane figure with a vertical (or horizontal) line; the segment you ' +
+        'cut out is the section.\n\n' +
+        'Sections are the language of Fubini\'s theorem: the double integral ' +
+        '$\\iint f d(\\mu \\times \\nu)$ is "integrate along the sections first, then integrate ' +
+        'the resulting function of the other variable".',
+        status: 'draft', basedOn: 'v0.9.1#8645e773', reviewed: null,
+      },
+    },
+
+    /* -------------------------------------------------------- 良序定理 */
+    'thm.wellordering': {
+      statement: {
+        en:
+        'Every set can be given a well-ordering: for any set $X$ there is a well-ordering ' +
+        'relation $\\preceq$ on $X$.\n\n' +
+        'In other words: every set $X$ is equinumerous with some ordinal.\n\n' +
+        'In particular, every set has a cardinality, and the real line admits a well-ordering ' +
+        '(though this well-ordering cannot be written down explicitly).',
+        status: 'draft', basedOn: 'v0.9.1#f0e20930', reviewed: null,
+      },
+      notes: {
+        en:
+        'Zermelo introduced the axiom of choice explicitly in 1904 in order to prove that ' +
+        'every set can be well-ordered; this is where AC first appears.\n\n' +
+        'The well-ordering theorem immediately yields the **comparability theorem for ' +
+        'cardinals**: any two sets have comparable cardinalities.\n\n' +
+        'It cannot be proved in ZF; but ZF together with it proves AC, so the two are ' +
+        'equivalent.',
+        status: 'draft', basedOn: 'v0.9.1#bf8c5d7a', reviewed: null,
+      },
+    },
+
+    /* ---------------------------------------------------- 基数可比定理 */
+    'thm.cardinal-comparable': {
+      statement: {
+        en:
+        'Under the **axiom of choice**: for any two sets $A$ and $B$ we have ' +
+        '$|A| \\le |B|$ or $|B| \\le |A|$.\n\n' +
+        'That is, any two cardinals are comparable.',
+        status: 'draft', basedOn: 'v0.9.1#65d602d2', reviewed: null,
+      },
+      notes: {
+        en:
+        '⭐ This is the licence to *order* cardinals: without it, even the sentence ' +
+        '"$A$ is bigger than $B$" can be meaningless.\n\n' +
+        'Route of the proof (see the edge): the **well-ordering theorem** well-orders both ' +
+        '$A$ and $B$, the corresponding ordinals are comparable, and hence one direction ' +
+        'admits an injection. So this theorem, AC and the well-ordering theorem are three ' +
+        'ways of saying the same thing.\n\n' +
+        '⚠ Without AC there really are incomparable cardinals (Jech, *The Axiom of Choice*).',
+        status: 'draft', basedOn: 'v0.9.1#f4afd520', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------ 全忠实与单位 */
+    'prop.adjoint-full-faithful': {
+      statement: {
+        en:
+        'Let $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$. Then $F$ is ' +
+        '**fully faithful** $\\iff$ $\\eta$ is an isomorphism; $G$ is **fully faithful** ' +
+        '$\\iff$ $\\varepsilon$ is an isomorphism.',
+        status: 'draft', basedOn: 'v0.9.1#315d7da7', reviewed: null,
+      },
+      notes: {
+        en:
+        'So "a left adjoint is fully faithful" reduces to checking that every component of a ' +
+        'single natural transformation is invertible — far easier than checking Hom-sets ' +
+        'pair by pair.\n\n' +
+        'This is also the dividing line between **reflective** and **coreflective**: ' +
+        'reflective means "the inclusion functor has a left adjoint", and an inclusion ' +
+        'functor is always fully faithful (full subcategory), so for a reflection the counit ' +
+        'is always an isomorphism.',
+        status: 'draft', basedOn: 'v0.9.1#9b807211', reviewed: null,
+      },
+    },
   },
 };

@@ -287,7 +287,7 @@ MG.i18n = {
     'thm.gleason': { title_en: 'Gleason', label_en: 'Gleason', from: 'aka' },
     'thm.hahn-decomposition': { title_en: 'Hahn Decomposition Theorem', label_en: 'Hahn decomposition', from: 'title' },
     'thm.hartogs': { title_en: 'Hartogs\' Theorem, 1915', label_en: 'Hartogs', from: 'title' },
-    'thm.hausdorff': { title_en: 'Hausdorff Maximal Principle, 1914', label_en: 'Hausdorff maximal principle', from: 'title' },
+    'thm.hausdorff': { title_en: 'Hausdorff Maximal Principle', label_en: 'Hausdorff maximal principle', from: 'title' },
     'thm.holder': { title_en: 'Hölder', label_en: 'Hölder', from: 'aka' },
     'thm.jordan-decomposition': { title_en: 'Jordan Decomposition Theorem', label_en: 'Jordan decomposition', from: 'title' },
     'thm.lebesgue-differentiation': { title_en: 'differentiation theorem', label_en: 'differentiation theorem', from: 'aka' },
@@ -319,6 +319,6 @@ MG.i18n = {
     'thm.triangle': { title_en: 'triangle inequality', label_en: 'triangle inequality', from: 'aka' },
     'thm.tykhonov': { title_en: 'Tychonoff', label_en: 'Tychonoff', from: 'aka-title' },
     'thm.wellorder-ordinal': { title_en: 'order type', label_en: 'order type', from: 'aka' },
-    'thm.wellordering': { title_en: 'Well-Ordering Theorem, Zermelo 1904', label_en: 'well-ordering theorem', from: 'title' },
+    'thm.wellordering': { title_en: 'Well-Ordering Theorem', label_en: 'well-ordering theorem', from: 'title' },
   }
 };

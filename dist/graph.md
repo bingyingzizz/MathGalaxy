@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-16T06:38:48.925Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-16T06:44:08.522Z
 > 9 星系 / 45 星团 / 709 节点 / 1398 连线（强边 1389，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -656,9 +656,7 @@ $$|A| \le |B| \ \text{且}\ |B| \le |A| \implies |A| = |B|$$
 #### 基数可比定理　`thm.cardinal-comparable`
 *定理*　基数可比定理（需要选择公理）
 
-在**选择公理**下：对任意两个集合 $A$、$B$，必有
-
-$$|A| \le |B| \quad \text{或} \quad |B| \le |A|$$
+在**选择公理**下：对任意两个集合 $A$、$B$，必有 $|A| \le |B|$ 或 $|B| \le |A|$。
 
 即任意两个基数都可以比较大小。
 
@@ -1223,11 +1221,9 @@ $\forall X \in F, f(X) \in X$。
 参考：Jech, The Axiom of Choice
 
 #### 良序定理　`thm.wellordering`
-*定理*　良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）
+*定理*　良序定理 / 良序原理（Well-Ordering Theorem）
 
-每个集合都能被赋予一个良序：
-
-$$\forall X \exists\preceq ( \preceq\text{ 是} X\text{ 上的良序关系} )$$
+每个集合都能被赋予一个良序：对任何集合 $X$，都存在 $X$ 上的良序关系 $\preceq$。
 
 换句话说：任何集合 $X$ 都与某个序数等势。
 
@@ -1257,7 +1253,7 @@ Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公�
 参考：Zorn (1935)；Kunen, Set Theory, I.12
 
 #### Hausdorff 极大原理　`thm.hausdorff`
-*定理*　Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）
+*定理*　Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）
 
 设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则存在 $P$ 的**极大链** $M$ 使 $C_{0} \subseteq M$。
 
@@ -3388,7 +3384,7 @@ $\mathcal{M}(\mathcal{E})$ 称为**由 $\mathcal{E}$ 生成的 $\sigma$代数**�
 
 设 $\mathcal{E} \subseteq \mathcal{P}(X)$。则
 
-$$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\text{ 且} \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
+$$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\ \wedge\ \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
 
 **这一条是「标准版 + 加强版」合起来的那一个版本。**
 
@@ -4698,7 +4694,7 @@ $$f_x(y) := f^y(x) := f(x, y)$$
 
 
 
-$$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N}\text{ 且} E^y \in \mathcal{M}\quad  \forall(x, y)\}$$
+$$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N} \ \wedge\ E^y \in \mathcal{M}\quad \forall(x, y)\}$$
 
 
 
@@ -7975,9 +7971,7 @@ $$\operatorname{Hom}_{\mathcal{D}}\bigl(F(-),\ Y\bigr) : \mathcal{C}^{\mathrm{op
 #### 全忠实与单位　`prop.adjoint-full-faithful`
 *命题*　全忠实 $\iff$ 单位（余单位）是同构
 
-设 $F \dashv G$，单位 $\eta$、余单位 $\varepsilon$。则
-
-$$F \text{ 全忠实} \iff \eta \text{ 是同构}, \qquad G \text{ 全忠实} \iff \varepsilon \text{ 是同构}$$
+设 $F \dashv G$，单位 $\eta$、余单位 $\varepsilon$。则 $F$ **全忠实** $\iff$ $\eta$ 是同构；$G$ **全忠实** $\iff$ $\varepsilon$ 是同构。
 
 所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。
 

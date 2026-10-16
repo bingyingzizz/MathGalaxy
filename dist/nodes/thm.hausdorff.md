@@ -1,9 +1,9 @@
 # Hausdorff 极大原理　`thm.hausdorff`
-Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）
+Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）
 layer 9 · 定理 · 选择原理 · 序理论
 [在星图里打开](../#n=thm.hausdorff)　·　[节点索引](../index.md)
 
-设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则
+设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则存在
 > 陈述续见 [nodes/thm.hausdorff.2.md](./thm.hausdorff.2.md)
 
 

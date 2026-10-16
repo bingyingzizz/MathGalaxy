@@ -5,7 +5,7 @@
 
 
 
-$$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N}\text{ 且} E^y \in \mathcal{M}\quad  \forall(x, y)\}$$
+$$\mathcal{R} = \{E \subseteq X \times Y : E_x \in \mathcal{N} \ \wedge\ E^y \in \mathcal{M}\quad \forall(x, y)\}$$
 
 
 

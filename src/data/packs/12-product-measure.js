@@ -96,7 +96,7 @@ window.MG = window.MG || {};
       notes: [
         '证明是一个「先看矩形、再看 $\\sigma$代数」的标准套路：令',
         '',
-        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N}\\text{ 且} E^y \\in \\mathcal{M}\\quad  \\forall(x, y)\\}$$',
+        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} \\ \\wedge\\ E^y \\in \\mathcal{M}\\quad \\forall(x, y)\\}$$',
         '',
         '则 $\\mathcal{R}$ 包含所有矩形，而且**$\\mathcal{R}$ 是一个 $\\sigma$代数**（截口运算保持并、交、补）。于是 $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$。',
         '(b) 由 (a) 与两条恒等式得到：',

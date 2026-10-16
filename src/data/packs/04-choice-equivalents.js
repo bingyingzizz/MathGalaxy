@@ -19,14 +19,15 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'theorem',
       label: '良序定理',
-      title: '良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）',
+      /* ⚠️ 括号里的英文名**不要带年份**：一级英文名规则会在「title 括号里的英文与 aka 一致」时
+         取 title 那一条 ⇒ 带年份的话 `title_en` 就成了「Well-Ordering Theorem, Zermelo 1904」
+         （作者 2026-10-16 点过这个毛病）。年份在 notes 与 refs 里都写着，不丢信息。 */
+      title: '良序定理 / 良序原理（Well-Ordering Theorem）',
       // 既是集合论的定理，也是序理论的定理 → 落在两块的边界上
       regions: ['set-theory', 'order-theory'],
       tags: ['ZFC', '等价命题', '选择'],
       statement: [
-        '每个集合都能被赋予一个良序：',
-        '',
-        '$$\\forall X \\exists\\preceq ( \\preceq\\text{ 是} X\\text{ 上的良序关系} )$$',
+        '每个集合都能被赋予一个良序：对任何集合 $X$，都存在 $X$ 上的良序关系 $\\preceq$。',
         '',
         '换句话说：任何集合 $X$ 都与某个序数等势。',
         '',
@@ -66,7 +67,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
-      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）',
+      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）',
       regions: ['order-theory'],
       tags: ['ZFC', '等价命题', '极大原理', '链'],
       statement: [

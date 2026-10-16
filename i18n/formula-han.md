@@ -1,4 +1,4 @@
-# 公式含汉字的陈述清单（83 条待还账）
+# 公式含汉字的陈述清单（79 条待还账）
 
 > ⚠️ 这份清单是**待办账本**，不是例外登记（例外只在 `i18n/deviations.md`，当前 0 条）。
 >
@@ -8,92 +8,86 @@
 > ⇒ 本清单里的节点**必须先改公式、再加译文**，否则构建失败。
 >
 > 口径：扫的是每个节点 `statement` 字段里 `$$…$$` / `$…$` 内部的 `[\u4e00-\u9fff]`。
-> 现状：**0 个已翻译节点违反**（11 条英文陈述全过），下面 83 个都还没翻译。
-
-| # | 节点 id | 公式含汉字的处数 |
-|---|---|---|
-| 1 | `ax.choice` | 1 |
-| 2 | `def.finchar` | 1 |
-| 3 | `thm.wellordering` | 1 |
-| 4 | `thm.hartogs` | 1 |
-| 5 | `def.complete` | 1 |
-| 6 | `def.totally-bounded` | 1 |
-| 7 | `def.sequentially-compact` | 1 |
-| 8 | `def.compact` | 1 |
-| 9 | `thm.metric-compact-equiv` | 1 |
-| 10 | `prop.compact-subset-closed` | 1 |
-| 11 | `prop.subset-compact-equiv` | 1 |
-| 12 | `def.fundamental-class` | 1 |
-| 13 | `prop.set-class-properties` | 1 |
-| 14 | `def.generated-sigma` | 2 |
-| 15 | `thm.monotone-class` | 1 |
-| 16 | `def.borel` | 1 |
-| 17 | `cor.borel-product` | 1 |
-| 18 | `def.premeasure` | 1 |
-| 19 | `def.finitely-additive` | 1 |
-| 20 | `prop.measurable-criterion` | 1 |
-| 21 | `cor.continuous-measurable` | 1 |
-| 22 | `prop.measurable-product-and-realimag` | 1 |
-| 23 | `thm.simple-approximation` | 1 |
-| 24 | `def.lplus` | 1 |
-| 25 | `def.integral-simple` | 1 |
-| 26 | `def.integral-nonneg` | 1 |
-| 27 | `thm.mct` | 1 |
-| 28 | `def.integrable` | 1 |
-| 29 | `thm.cauchy-in-measure` | 1 |
-| 30 | `prop.L1-implies-measure` | 1 |
-| 31 | `thm.egorov` | 1 |
-| 32 | `cor.lusin` | 1 |
-| 33 | `def.signed-measure` | 1 |
-| 34 | `prop.ac-and-variations` | 1 |
-| 35 | `prop.integral-gives-ac` | 1 |
-| 36 | `def.complex-measure` | 1 |
-| 37 | `def.locally-integrable` | 1 |
-| 38 | `thm.lebesgue-differentiation` | 1 |
-| 39 | `def.regular-measure` | 1 |
-| 40 | `lem.variation-monotone` | 1 |
-| 41 | `thm.bv-jordan` | 1 |
-| 42 | `def.nbv` | 1 |
-| 43 | `def.ac-function` | 1 |
-| 44 | `prop.ac-iff-measure-ac` | 1 |
-| 45 | `def.lp-norm` | 1 |
-| 46 | `def.essential-sup` | 1 |
-| 47 | `def.ae` | 1 |
-| 48 | `thm.schroder-bernstein` | 1 |
-| 49 | `thm.cardinal-comparable` | 1 |
-| 50 | `def.product-topology` | 1 |
-| 51 | `def.hausdorff` | 1 |
-| 52 | `def.abs` | 1 |
-| 53 | `def.adjunction-unit` | 1 |
-| 54 | `prop.adjoint-full-faithful` | 1 |
-| 55 | `prop.component-clopen` | 1 |
-| 56 | `def.profinite` | 1 |
-| 57 | `prop.precanonical-sheaf` | 1 |
-| 58 | `prop.precanonical-mono-epi` | 1 |
-| 59 | `def.homotopy-category` | 1 |
-| 60 | `prop.injective-criterion` | 1 |
-| 61 | `cor.cg-exponential-adjoint` | 1 |
-| 62 | `def.ideal` | 1 |
-| 63 | `def.cofinal-functor` | 1 |
-| 64 | `def.continuous-functor` | 1 |
-| 65 | `prop.poset-limit-join` | 1 |
-| 66 | `def.right-derived-functor` | 1 |
-| 67 | `thm.qcqs-chaus-equiv` | 1 |
-| 68 | `prop.cond-limits-colimits` | 1 |
-| 69 | `prop.zero-object-final-criterion` | 1 |
-| 70 | `prop.biproduct-is-product` | 1 |
-| 71 | `prop.additive-iff-preserves-biproduct` | 1 |
-| 72 | `prop.cech-section-vanishing` | 1 |
-| 73 | `prop.closed-map-neighborhood-basis` | 1 |
-| 74 | `prop.stone-clopen-refinement` | 1 |
-| 75 | `prop.left-exact-criterion` | 1 |
-| 76 | `prop.left-exact-iff-R0` | 1 |
-| 77 | `def.free-abelian-sheaf` | 1 |
-| 78 | `prop.hom-presheaf-sheaf` | 1 |
-| 79 | `prop.generator-coproduct-epi` | 1 |
-| 80 | `prop.projective-universal-epi` | 1 |
-| 81 | `prop.functor-preserves-monoid-objects` | 1 |
-| 82 | `prop.topology-alternative-axiom` | 1 |
-| 83 | `prop.topos-morphism-from-object` | 1 |
-
-复算：`bun _tools/_handebt.mjs`（只读，会同时报「已翻译但还含汉字」的违规者，应为 0）。
+> 现状：**0 个已翻译节点违反**（16 条英文陈述全过），下面 79 个都还没翻译。
+| # | 节点 | 条数 | 第一条（截断） |
+|---|---|---|---|
+| 1 | `ax.choice` | 1 | `\forall F [ ( \forall X \in F, X \ne \emptyset ) \to \exists` |
+| 2 | `def.finchar` | 1 | `X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}` |
+| 3 | `thm.hartogs` | 1 | `\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成` |
+| 4 | `def.complete` | 1 | `\{x_n\}\text{ 是} Cauchy\text{ 列} \implies \exists x \in X : ` |
+| 5 | `def.totally-bounded` | 1 | `\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n` |
+| 6 | `def.sequentially-compact` | 1 | `\forall\{x_n\} \subseteq X, \exists\{x_{n_k}\}\text{ 与} \exi` |
+| 7 | `def.compact` | 1 | `\forall\{U_i\}_{i \in I} (\text{ 每个} U_i\text{ 开且} X = \bigc` |
+| 8 | `thm.metric-compact-equiv` | 1 | `X\text{ 紧} \iff X\text{ 列紧} \iff X\text{ 完备且全有界}` |
+| 9 | `prop.compact-subset-closed` | 1 | `A\text{ 紧} \implies A\text{ 是} X\text{ 中的闭集}` |
+| 10 | `prop.subset-compact-equiv` | 1 | `A\text{ 紧} \iff A\text{ 闭}\text{ 且} A\text{ 全有界}` |
+| 11 | `def.fundamental-class` | 1 | `A, B \in \mathfrak{A} \implies A \setminus B\text{ 是} \mathf` |
+| 12 | `prop.set-class-properties` | 1 | `\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \}` |
+| 13 | `def.generated-sigma` | 2 | `\mathcal{M}(\mathcal{E}) := \bigcap \{ \mathfrak{A} : \mathf` |
+| 14 | `def.borel` | 1 | `\mathfrak{B}_X := \mathcal{M}(\{ U \subseteq X : U\text{ 是开集` |
+| 15 | `cor.borel-product` | 1 | `X_j\text{ 都可分} \implies \otimes _{j=1}^{\infty} \mathfrak{B}` |
+| 16 | `def.premeasure` | 1 | `\mu(\emptyset) = 0, \quad  \{E_j\}\text{ 两两不交} \implies \mu(` |
+| 17 | `def.finitely-additive` | 1 | `A, B \in \mathcal{M}\text{ 两两不交} \implies \mu(A \cup B) = \m` |
+| 18 | `prop.measurable-criterion` | 1 | `f : X \to Y\text{ 可测} \iff f^{-1}(E) \in \mathcal{M}\quad  \` |
+| 19 | `cor.continuous-measurable` | 1 | `f : X \to Y\text{ 连续} \implies f\text{ 是} (\mathfrak{B}_X, \` |
+| 20 | `prop.measurable-product-and-realimag` | 1 | `f : X \to Y\text{ 可测} \iff f_\alpha = \pi _\alpha \circ  f\t` |
+| 21 | `thm.simple-approximation` | 2 | `0 \le \varphi_1 \le \varphi_2 \le \cdots \le f, \quad  \varp` |
+| 22 | `def.lplus` | 1 | `L^+ := \{ f : X \to [0, +\infty] : f\text{ 可测} \}` |
+| 23 | `def.integral-simple` | 1 | `\varphi = \sum_{j=1}^{n} a_j \chi_{E_j}, \quad  a_j \ge 0, E` |
+| 24 | `def.integral-nonneg` | 1 | `\int f d\mu := \sup \{ \int \varphi d\mu : 0 \le \varphi \le` |
+| 25 | `thm.mct` | 1 | `f_1 \le f_2 \le \cdots, \quad  f_n \uparrow  f\text{ 逐点}, ` |
+| 26 | `def.integrable` | 1 | `f\text{ 可积} \iff \int \|f\| d\mu < \infty` |
+| 27 | `thm.cauchy-in-measure` | 1 | `f_n \to f\text{ 依测度}, ` |
+| 28 | `prop.L1-implies-measure` | 1 | `\int \|f_n - f\| \to 0 \implies f_n \to f\text{ 依测度}` |
+| 29 | `thm.egorov` | 1 | `\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \va` |
+| 30 | `cor.lusin` | 1 | `\mu(E^c) < \varepsilon,\text{ 且} f\|_E\text{ 连续}` |
+| 31 | `def.signed-measure` | 1 | `\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 且右边的级数绝对收敛}(` |
+| 32 | `prop.ac-and-variations` | 1 | `\nu \ll  \mu \iff \|\nu\| \ll  \mu \iff \nu^+ \ll  \mu\text{ 且` |
+| 33 | `prop.integral-gives-ac` | 1 | `\nu\text{ 有限} \iff f \in L^1(\mu)` |
+| 34 | `def.complex-measure` | 1 | `\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}` |
+| 35 | `def.locally-integrable` | 1 | `\int_K \|f(x)\| dx < \infty\quad \text{ 对每个有界可测集} K \subseteq ` |
+| 36 | `thm.lebesgue-differentiation` | 1 | `\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对} \text{a.e.} x \i` |
+| 37 | `def.regular-measure` | 1 | `\nu(E) = \inf\{ \nu(U) : U\text{ 开}, E \subseteq U \}` |
+| 38 | `lem.variation-monotone` | 1 | `T_F + F\quad \text{ 与}\quad  T_F - F` |
+| 39 | `thm.bv-jordan` | 2 | `F \in BV \iff \operatorname{Re} F \in BV\text{ 且} \operatorn` |
+| 40 | `def.nbv` | 1 | `NBV := \{ F \in BV : F\text{ 右连续},\text{ 且} F(-\infty) = 0 \` |
+| 41 | `def.ac-function` | 1 | `\forall\varepsilon > 0, \exists\delta > 0 :\text{ 任意有限个两两不交的` |
+| 42 | `prop.ac-iff-measure-ac` | 1 | `F\text{ 绝对连续} \iff \mu_F \ll  m` |
+| 43 | `def.lp-norm` | 1 | `L^p(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \t` |
+| 44 | `def.essential-sup` | 1 | `
+L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} ` |
+| 45 | `def.ae` | 1 | `\exists E \in \mathcal{M}:\ \mu(E) = 0 \quad \text{且} \quad ` |
+| 46 | `thm.schroder-bernstein` | 1 | `\|A\| \le \|B\| \ \text{且}\ \|B\| \le \|A\| \implies \|A\| = \|B\|` |
+| 47 | `def.product-topology` | 1 | `\prod_{i \in I} U_{i} \qquad (U_{i} \in \mathcal{T}_{i},\ \t` |
+| 48 | `def.hausdorff` | 1 | `\forall x \ne y \in X,\ \exists U \ni x,\ V \ni y \ \text{开}` |
+| 49 | `def.abs` | 1 | `\|x\| := \begin{cases} x, & x \ge 0 \\ -x, & x < 0 \end{cases}` |
+| 50 | `def.adjunction-unit` | 2 | `\eta_{X} := \Phi_{X, F(X)}(1_{F(X)}) : X \to G F(X) \qquad (` |
+| 51 | `prop.component-clopen` | 1 | `C(x) \;=\; \bigcap \{\, K \subseteq S : K \text{ 闭开},\ x \in` |
+| 52 | `def.profinite` | 1 | `X \;=\; \varprojlim_{i \in I} X_{i}, \qquad X_{i} \text{ 有限离` |
+| 53 | `prop.precanonical-sheaf` | 1 | `F\Bigl(\coprod_{i \in I} X_{i}\Bigr) \;\cong\; \prod_{i \in ` |
+| 54 | `prop.precanonical-mono-epi` | 1 | `f \text{ 是单态射（满态射）} \iff X^{\sharp} \to Y^{\sharp} \text{ 是单` |
+| 55 | `def.homotopy-category` | 1 | `\operatorname{Hom}_{\mathbf{K}(\mathcal{C})}(K, L) \;:=\; \o` |
+| 56 | `prop.injective-criterion` | 1 | `M \text{ 内射} \iff M'' \text{ 内射}` |
+| 57 | `cor.cg-exponential-adjoint` | 1 | `X \longmapsto k(X \times Y) \qquad \text{左伴随于} \qquad Z \lon` |
+| 58 | `def.ideal` | 1 | `a x \in I \quad \text{与} \quad x a \in I.` |
+| 59 | `def.cofinal-functor` | 1 | `i \downarrow F \quad \text{非空，且连通。}` |
+| 60 | `def.continuous-functor` | 1 | `g^{*} : \widetilde{\mathcal{C}'} \longrightarrow \widetilde{` |
+| 61 | `prop.poset-limit-join` | 1 | `\lim D = \inf D \;(\text{下确界}), \qquad \varinjlim D = \sup D` |
+| 62 | `def.right-derived-functor` | 1 | `\begin{array}{ccc} K^{+}(\mathcal{A}) & \xrightarrow{\;F\;} ` |
+| 63 | `thm.qcqs-chaus-equiv` | 1 | `\mathbf{CHaus}\ \simeq\ \{\text{紧 Hausdorff 空间}\} \longright` |
+| 64 | `prop.cond-limits-colimits` | 1 | `\Bigl(\varinjlim_{i} X_{i}\Bigr)(S) = \Bigl(\text{层化}\bigl(S` |
+| 65 | `prop.zero-object-final-criterion` | 1 | `M \text{ 是零对象} \iff M \text{ 是终对象} \iff M \text{ 是始对象}.` |
+| 66 | `prop.biproduct-is-product` | 1 | `M \text{ 是} M_{1}, M_{2} \text{ 的直和} \iff (M, p_{1}, p_{2}) ` |
+| 67 | `prop.additive-iff-preserves-biproduct` | 1 | `F \text{ 加法} \iff F \text{ 保零对象与所有直和} \iff F \text{ 保所有有限积} ` |
+| 68 | `prop.cech-section-vanishing` | 1 | `X_{n} := X_{0} \times_{X} \cdots \times_{X} X_{0} \quad (n+1` |
+| 69 | `prop.closed-map-neighborhood-basis` | 1 | `\bigl\{\, \pi^{-1}(U) \;:\; U \text{ 是 } A \text{ 在 } X \tex` |
+| 70 | `prop.stone-clopen-refinement` | 1 | `C_{r} \text{ 闭开}, \qquad C_{r} \cap C_{s} = \emptyset \ (r \` |
+| 71 | `prop.left-exact-criterion` | 1 | `F \text{ 左正合} \iff F \text{ 加法，且把左正合列送到左正合列}.` |
+| 72 | `prop.left-exact-iff-R0` | 1 | `F \text{ 左正合} \iff \forall M \in \mathcal{A}:\ R^{0}F(M) \co` |
+| 73 | `def.free-abelian-sheaf` | 1 | `\mathbb{Z}\cdot(-) : \mathcal{T} \longrightarrow \mathcal{T}` |
+| 74 | `prop.hom-presheaf-sheaf` | 1 | `U \;\longmapsto\; Y(U) := \operatorname{Hom}_{/X}\bigl(\unde` |
+| 75 | `prop.generator-coproduct-epi` | 1 | `G \text{ 是生成元} \iff \text{对每个 } M \in \mathcal{C},\ \exists ` |
+| 76 | `prop.projective-universal-epi` | 1 | `X \text{ 是投射对象} \iff \text{每个满态射 } Y \twoheadrightarrow X \t` |
+| 77 | `prop.functor-preserves-monoid-objects` | 1 | `\text{幺半群对象} \longmapsto \text{幺半群对象}, \qquad \text{群对象} \lo` |
+| 78 | `prop.topology-alternative-axiom` | 1 | `R \in J(X) \implies R' \in J(X), \qquad \bigl(R' \in J(X) \t` |
+| 79 | `prop.topos-morphism-from-object` | 1 | `\widehat{X}^{-1}(T) = T(X), \qquad \bigl(\widehat{X}_{!}(E)\` |

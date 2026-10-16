@@ -3,7 +3,7 @@
 layer 7 · 命题 · 乘积测度与 Fubini · 分析学
 [在星图里打开](../#n=prop.section-measurable)　·　[节点索引](../index.md)
 
-**(a)** 若 $E \in \mathcal{M} \otimes  \mathcal{N}$，则对一切 $x \in X$ 有 $E_x \in \mathcal{N}$，对一切 $y \in Y$ 有 $E^y \in \mathcal{M}$。
+**(a)** 若 $E \in \mathcal{M} \otimes  \mathcal{N}$，则对一切 $x \in X$ 有 $E_x \in \mathcal{N}$，对一切 $y \in Y$ 有 $E^y 
 > 陈述续见 [nodes/prop.section-measurable.2.md](./prop.section-measurable.2.md)
 
 
@@ -13,7 +13,7 @@ layer 7 · 命题 · 乘积测度与 Fubini · 分析学
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/prop.section-measurable.7.md](./prop.section-measurable.7.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · **stale** (the Chinese wording changed since this translation) · machine-drafted, pending author review; Chinese is authoritative
 > English abstract 续见 [nodes/prop.section-measurable.3.md](./prop.section-measurable.3.md)
 
 refs: Folland, Real Analysis, Prop. 2.34

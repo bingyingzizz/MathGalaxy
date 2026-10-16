@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.monotone-class)　·　[Chinese page (authoritative)](./thm.monotone-class.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **stale** · stale fields: abstract (the Chinese wording changed since this translation); the Chinese page is authoritative.
 
 layer 6 · theorem · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis
 

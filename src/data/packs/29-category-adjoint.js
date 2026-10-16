@@ -114,9 +114,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '伴随', '全忠实'],
       statement: [
-        '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则',
-        '',
-        '$$F \\text{ 全忠实} \\iff \\eta \\text{ 是同构}, \\qquad G \\text{ 全忠实} \\iff \\varepsilon \\text{ 是同构}$$'
+        '设 $F \\dashv G$，单位 $\\eta$、余单位 $\\varepsilon$。则 $F$ **全忠实** $\\iff$ $\\eta$ 是同构；$G$ **全忠实** $\\iff$ $\\varepsilon$ 是同构。'
       ].join('\n'),
       notes: [
         '所以「左伴随全忠实」这件事，只需要检查一个自然变换的每个分量可逆 —— 比逐对检查 Hom 集容易得多。',

@@ -2,7 +2,8 @@
 English entry · root `../`
 [in graph](../#n=prop.adjoint-full-faithful)　·　[Chinese page (authoritative)](./prop.adjoint-full-faithful.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **stale** · stale fields: abstract (the Chinese wording changed since this translation); the Chinese page is authoritative.
+> fields: abstract stale · statement draft · notes draft · name derived
 
 layer 11 · proposition · cluster Adjunctions and Reflections (`cat.adjoint`) · Category Theory
 

@@ -3,14 +3,14 @@
 layer 10 · 定理 · 基数与等势 · 集合论
 [在星图里打开](../#n=thm.cardinal-comparable)　·　[节点索引](../index.md)
 
-在**选择公理**下：对任意两个集合 $A$、$B$，必有
+在**选择公理**下：对任意两个集合 $A$
 > 陈述续见 [nodes/thm.cardinal-comparable.2.md](./thm.cardinal-comparable.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.cardinal-comparable.4.md](./thm.cardinal-comparable.4.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · **stale** (the Chinese wording changed since this translation) · machine-drafted, pending author review; Chinese is authoritative
 > English abstract 续见 [nodes/thm.cardinal-comparable.3.md](./thm.cardinal-comparable.3.md)
 
 refs: Jech, The Axiom of Choice, Ch. 3
