@@ -607,6 +607,13 @@ window.MG = window.MG || {};
         '而 $\\sum_i C_{ij} b_i$ 恰好是「把 $A$ 的第 $j$ 列换成 $b$」之后按第 $j$ 列做 Laplace 展开的结果，即 $\\det A_j$。故 $x_j = \\det A_j / \\det A$。∎'
       ].join('\n'),
       note: '证明的组织方式值得记住：**Laplace 展开 + 错位展开 = 伴随矩阵**，于是 Cramer 法则不过是「$A^{-1} = \\operatorname{adj}A / \\det A$」写在分量上。'
+    },
+    {
+      id: 'dep.vs-multilinearform',
+      kind: 'definition',
+      definition: 'def.vs',
+      usedBy: 'def.multilinear-form',
+      note: '多重线性型是定义在 $K$-向量空间 $V$ 上的映射 $V^{n} \\to K$，所以要先用向量空间。'
     }
   ]
 });

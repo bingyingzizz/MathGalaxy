@@ -74,7 +74,7 @@ const CASES = [
   { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta', 'prop.constant-sheaf-preserves-limits', 'def.simplex-category'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
   { q: '测度', n: 14, top: ['def.measure', 'def.measure-space', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响（同档的一批换了位，集合与旧记录相同）' },
   { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-cartesian-closed', 'prop.cg-coreflective'], why: '中文词 + 星团名命中（同档批次，degree 定次序）' },
-  { q: '定义', n: 14, total: 412, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 这个数**每加一批内容就会长**：345 → 353（批 1，35 点）→ 361（批 1 收尾）→ 381（批 2，48 点）→ 412（批 3，42 点）。它统计的是「命中次数」而不是节点数，所以正文里出现的「定义」二字也计入。加完内容按新值重钉即可，**动就是预期的**' },
+  { q: '定义', n: 14, total: 433, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 这个数**每加一批内容就会长**：345 → 353（批 1，35 点）→ 361（批 1 收尾）→ 381（批 2，48 点）→ 412（批 3，42 点）→ 433（批 4，36 点）。它统计的是「命中次数」而不是节点数，所以正文里出现的「定义」二字也计入。加完内容按新值重钉即可，**动就是预期的**' },
   { q: 'compact', total: 28, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 28。⚠️ 26→28 来自新增的 `prop.continuous-bounded-on-compact` 与 `thm.uniform-continuity-compact` —— **id 也在 hay 里**，所以新节点的 id 会直接抬高这类拉丁词的总数' },
   /* ⭐ `ref:` 前缀 = 只搜书目/出处（2026-10-16 建议④）。
      ⛔ refs **不进 hay**（上一批 `I.5` 那条记 0 就是为了钉住这点），

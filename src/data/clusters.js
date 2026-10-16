@@ -140,6 +140,30 @@ MG.clusters = [
     desc: '造出线性代数的地基：线性无关 / 张成 → 基 → 维数（任意两组基等势）。$\\operatorname{span} S = \\bigcap \\{W \\supseteq S\\}$ 这个「取一切之交」的模板与 $\\sigma$-代数的生成是同一招。'
   },
   {
+    id: 'algebra.spectral',
+    name: '特征值与 Jordan 型',
+    en: 'Eigenvalues and Jordan Form',
+    parent: 'algebra',
+    hub: 'thm.jordan-canonical-form',
+    desc: '造出「一个算子在换基下长什么样」的完整答案：特征值与特征多项式 → Cayley–Hamilton → 极小多项式 → **可对角化判据** → 根子空间分解 → **Jordan 标准形**（代数闭域上相似分类的最终形态）。多项式环 $K[x]$ 那套语言（唯一分解整环）在这里第三次出场。'
+  },
+  {
+    id: 'algebra.inner',
+    name: '内积空间与正交性',
+    en: 'Inner Product Spaces and Orthogonality',
+    parent: 'algebra',
+    hub: 'thm.spectral-theorem',
+    desc: '在向量空间上加一把「尺子」：内积 → 诱导范数与距离 → Cauchy–Schwarz → 正交与正交补 → **Gram–Schmidt** 与正交投影 → 伴随算子 → **谱定理**（实对称 / 复正规可正交对角化）→ 二次型与 Sylvester 判据 → 奇异值分解。'
+  },
+  {
+    id: 'algebra.multilinear',
+    name: '多重线性与张量',
+    en: 'Multilinear Algebra and Tensors',
+    parent: 'algebra',
+    hub: 'def.exterior-algebra',
+    desc: '造出「把双线性型变成线性映射」的机器：双线性型 → **张量积的万有性质** → 张量 ⊣ 内 Hom（伴随）→ 外幂与外代数 → 对称代数 → **行列式 = 最高外幂上的作用**（把行列式的来源统一到外代数）。'
+  },
+  {
     id: 'algebra.matrix',
     name: '矩阵与行列式',
     en: 'Matrices and Determinants',
