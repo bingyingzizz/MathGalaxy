@@ -1,10 +1,11 @@
-# compactly generated　`def.compactly-generated`
+# Compactly Generated Space　`def.compactly-generated`
 English entry · root `../`
 [in graph](../#n=def.compactly-generated)　·　[Chinese page (authoritative)](./def.compactly-generated.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster 紧生成空间与弱 Hausdorff (`topo.cg`) · Topology
+names: `compactly generated` (short) · `Compactly Generated Space` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.compactly-generated.md` and `proofs/`.

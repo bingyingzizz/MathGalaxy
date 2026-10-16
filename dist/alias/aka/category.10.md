@@ -5,7 +5,7 @@
 
 - Kan 延拓 | Kan extension | 左 Kan 延拓 | 右 Kan 延拓 | Definition 1.5.9 | Def 1.5.9 → def.kan-extension
 
-- 余极限是 Kan 延拓 | 伴随是 Kan 延拓 → ex.kan-extension
+- 余极限是 Kan 延拓 | 伴随是 Kan 延拓 | Kan extensions: colimits and right adjoints → ex.kan-extension
 
 - 滤过余极限正合 | filtered colimits are exact | Proposition 1.5.7 | Prop 1.5.7 | Exercise 1.68 → prop.filtered-exact
 

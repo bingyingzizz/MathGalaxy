@@ -45,58 +45,59 @@ T2.4 是给这些**界面外壳文案**加英文模式。你的规矩是「>200 
 
 ---
 
-## 2. 前 30 枢纽里 16 个没有英文名 —— 要不要我补？
+## 2. 前 30 枢纽里 16 个没有英文名 —— ✅ 已补完（2026-10-16）
+
+> ✅ **已拍板并已完成**（任务书 T2.2）。最终英文名覆盖 **274 → 294 / 709 = 41.5%**。
+> ⚠️ 实际做法与原来的设想**不一样**，逐条记录在下面「实际怎么做的」一节，以那节为准。
 
 > ⚠️ **口径更正**：先前这条写的是 14，错了。枢纽榜前 30 按「强边入度降序 + layer 升序」定，
 > 而入度 = 4 的节点有 **36 个**并列跨在第 30 名附近 ⇒ **不先 `computeLayers` 再排的探针，
 > 得到的前 30 是任意的**（我那次就是）。以构建口径（`dist/hubs.md` 那张榜的算法）为准：
-> **16 个**没有英文名；补完后覆盖 **290 / 709 = 40.9%**。
+> **16 个**没有英文名。
 
 **是什么**：这 16 个节点的 `title_en` / `label_en` 是空的（它们的 aka 里只有书号或缩写，
 机械规则填不出来）。摘要（`abstract_en`）里我已经用标准英文术语写过它们，但**名字字段**仍空。
-加了它们，英文名覆盖 **274 → 290（40.9%）**。
 
-**证据**（按枢纽榜口径「强入边降序 + layer 升序」排，列的是**榜位**；建议名是我写的）：
+**实际怎么做的**（比设想的方案多两步 —— 前两步是**修 bug**，不是补数据）：
 
-| 榜位 | 节点 id | 中文名 | 入度 | layer | 建议 `title_en` |
-|---|---|---|---|---|---|
-| 3 | `def.cauchy-null` | Cauchy 列与零列 | 5 | 11 | Cauchy sequences and null sequences |
-| 5 | `def.abelian-category` | 加法 / 阿贝尔范畴 | 5 | 16 | additive and abelian categories |
-| 8 | `thm.topos-abelian-grothendieck` | 拓扑斯上的阿贝尔群是 Grothendieck 范畴 | 5 | 19 | abelian groups in a topos form a Grothendieck category |
-| 9 | `prop.nbv-derivative` | NBV 函数的导数与测度的关系 | 5 | 20 | derivative of an NBV function and its measure |
-| 10 | `thm.ring-monotone-sigma` | 环 → σ-环 的判据 | 4 | 5 | when a ring is a σ-ring |
-| 12 | `def.section` | 截口 | 4 | 6 | section |
-| 13 | `prop.section-measurable` | 截口可测 | 4 | 7 | sections of measurable sets and functions |
-| 16 | `thm.wellordering` | 良序定理 | 4 | 9 | well-ordering theorem |
-| 17 | `thm.hausdorff` | Hausdorff 极大原理 | 4 | 9 | Hausdorff maximal principle |
-| 18 | `thm.cardinal-comparable` | 基数可比定理 | 4 | 10 | comparability of cardinals |
-| 19 | `prop.adjoint-full-faithful` | 全忠实与单位 | 4 | 11 | fully faithful iff the unit is an isomorphism |
-| 20 | `ex.kan-extension` | Kan 延拓的两个例子 | 4 | 12 | Kan extensions: colimits and right adjoints |
-| 24 | `thm.real-uncountable` | ℝ 不可数 | 4 | 14 | uncountability of the reals |
-| 26 | `thm.metric-compact-equiv` | 紧的三个等价刻画 | 4 | 15 | equivalent characterisations of compactness |
-| 29 | `def.essential-sup` | 本性上界与 L^∞ | 4 | 16 | essential supremum and the space L∞ ⚠️ 不带 LaTeX |
-| 30 | `prop.chaus-reflective` | 紧 Haus 是反射子范畴 | 4 | 16 | compact Hausdorff spaces form a reflective subcategory |
+| 步 | 做了什么 | 结果 |
+|---|---|---|
+| ① | 修 `nameLike` 的驼峰误杀：原来把 `Heine-Borel` 去掉标点后看成 `HeineBorel`（看到第二个大写）判成记号。改成**按连字符/撇号分段**判，并要求每段 ≥2 个字母（`kTop`/`kX`/`L-infinity`/`k-ification` 仍挡在外面） | `thm.metric-compact-equiv`、`def.essential-sup` 直接就有了名字；另外 5 个非枢纽节点（`Burali-Forti` / `Cartan-Leray` / `Breen-Deligne` / `Cartan-Eilenberg` / `Lebesgue–Stieltjes`）跟着填上 |
+| ② | 修 `refCode` 的误杀：原来**裸的 `section`** 也被当成书号（`Section 2.3` 那种坐标）。改成**必须带编号**才算书号 | `def.section` 填上 `Section` |
+| ③ | 剩下 13 个在 `aliases.js` 的 aka 里补名字 | 16/16 齐 |
+| ④ | 顺手修掉三条任务书点名的：`thm.first-iso`（`Noether` → `first isomorphism theorem`）、`def.simplex-category`（`Delta` → `simplex category`）、`prop.chaus-reflective`（`beta X` → `Stone–Čech compactification`） | 名字对了 |
 
-⚠️ **这张表和上一版（14 行）不一样，以这张为准**：旧表是「不先 `computeLayers` 就排」的探针产出的，
-它多算了 `thm.fubini-tonelli` / `thm.rn-pointwise`（这两个**确实**没英文名，但**不在前 30**），
-漏了 `prop.adjoint-full-faithful` / `ex.kan-extension` / `thm.real-uncountable` / `prop.chaus-reflective`。
-复算脚本 `_tools/_hub16.mjs`（只读，照 `dist/hubs.md` 的入度算法）。
+**顺带修掉的两处回归**（改闸门会牵动别的节点，逐条量过）：
+`thm.ftc-lebesgue`（新增候选 `Newton-Leibniz` ⇒ 变歧义）→ 把那条写成
+`Newton-Leibniz 定理`（含汉字 ⇒ 只进搜索、不当名字）；`def.section-retraction`（`section` 与
+`retraction` 变成两条候选 ⇒ 歧义）→ 合并成一条 `section / retraction`，名字仍是 `Section / Retraction`。
+
+**已知的一处覆盖下降 + 一处不漂亮的 title_en**（都不藏着）：
+- `def.k-topology`：原来的名字是 `k-ification`（**错**，那是函子不是拓扑），新闸门把它挡掉了
+  ⇒ 这个节点回到缺口。`k-topology` 这种「单字母 + 连字符 + 词」的写法按新规则仍然不算名字
+  （`L-infinity` 是同一类记号）。要填它需要在 aka 里写一个不含单字母段的英文名，或加一个显式
+  `en` 字段 —— **等你定**。
+- `thm.wellordering` / `thm.hausdorff`：`title_en` = `Well-Ordering Theorem, Zermelo 1904` /
+  `Hausdorff Maximal Principle, 1914` —— 因为**你自己的 title 括号里就带年份**，规则照抄了它。
+  `label_en`（画布上用短名）是干净的 `well-ordering theorem` / `Hausdorff maximal principle`。
+  想改就说一声，改法是修 title 或加显式 `en` 字段。
+
+**验收**：`bun tools/i18n-backfill.mjs` → 一级 253 + 二级 41 = **294 / 709 = 41.5%**，
+缺口 435 → **415**；`bun tools/build.mjs` 全部硬断言通过；六个体检脚本 0 硬失败。
+逐条 before/after 清单：`_tools/_i18ndiff.mjs`（只读）跑出来 21 条新增 / 1 条移除 / 3 条改名。
 
 **选项**：(a) 我按上表在 `aliases.js` 加 aka（英文名走一级规则自动填）；(b) 你自己改；(c) 不做。
 
-> ✅ **已拍板（2026-10-16 晚）：做**（任务书 T2.2 原文「fix the hub nodes' missing English names」）。
-> 名字你随时可以改；`def.essential-sup` 那条按任务书要求**不许带 LaTeX**（所以建议名写成
-> 纯文本 `L∞`，不写 `$L^\infty$`）。`def.section` 的 aka 我加之前会先量**跳转噪音**，
-> 若有噪音就「只填字段、不喂跳转」。
-
-**建议**：(a)。这是**你拍板名字**、我执行的活；改一处真源（`aliases.js`）+ 重跑
-`bun tools/i18n-backfill.mjs`。
-⚠️ 一个副作用要知道：aka 同时喂**内文跳转**（正文里出现该词会变链接）与**搜索** ——
-`section` 这种通用词有 `linkStop` 拦着，但我会在改完后跑 `_xlmissing`/`_xlnoise` 看有没有噪音。
+> ✅ **已拍板（2026-10-16 晚）：做**（任务书 T2.2 原文「fix the hub nodes' missing English names」），
+> **并且已做完**，做法见上面的「实际怎么做的」。
+> `def.essential-sup` 按任务书要求**不许带 LaTeX** ⇒ 最终名 `essential supremum`（纯文本，一个 `$` 都没有）。
+> `def.section` 的**跳转噪音已量**：全库正文里 `section/sections` 只出现 **1 处**
+> （`def.section-retraction` 的面板），边正文 0 处，上限就是 1 条新链接 ⇒ **噪音可忽略，照常喂跳转**，
+> 不需要进 `linkStop`。
 
 ---
 
-## 3. 二级命中里 2 条名字要你定（⚠️ 结论变了：aka 早就有了，卡的是别处）
+## 3. 二级命中里 2 条名字要你定 —— ✅ 已修（2026-10-16）
 
 | 节点 | 现在采用 | 为什么不对 | 真正卡在哪 |
 |---|---|---|---|
@@ -117,12 +118,17 @@ T2.4 是给这些**界面外壳文案**加英文模式。你的规矩是「>200 
 `compactly generated spaces form a coreflective subcategory`，处理办法同上（去掉 `kification`，
 但它是搜索词 ⇒ 要么接受丢失，要么加在别的 aka 条目里）。
 
+**处理结果**：照 (a) 做了 —— `Noether` / `Delta` 都从 aka 里去掉，两个名字都已修正。
+⚠️ 第 3 处 `prop.cg-coreflective` → `kification` 我**按原样留着没动**（任务书没点名），
+它现在的名字仍是 `kification`；要改就说一声（改法与上面两条一样：把 `kification` 从 aka 里去掉，
+再补一个真正的名字）。
+
 **选项**：(a) 按上面删 aka（推荐，不需要新机制）；(b) 保持现状（`i18n/second-tier.md` 里标着 ⚠️）；
 (c) 加人工排除名单（要新机制，我不建议）。
 
-**选了会动什么**：只动 `src/data/aliases.js`（唯一真源）+ 重跑
-`bun tools/i18n-backfill.mjs`；aka 也喂**内文跳转**，所以我会在改完后跑
-`_xlmissing` / `_xlnoise` 看 `Noether` / `Delta` / `kification` 三个词有没有变噪音或漏链。
+**实际动了什么**：只动 `src/data/aliases.js`（唯一真源）+ 重跑 `bun tools/i18n-backfill.mjs`。
+`Noether` / `Delta` 两个词都**还在**同一个节点的搜索文本里（`Noether` 在 aka 的
+`Noether 第一同构定理` 里、`Delta` 在 title 的 `$\Delta$` 里）⇒ **搜索没损失**。
 
 ---
 

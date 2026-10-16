@@ -1,7 +1,7 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
-- Stone-Cech 紧化 | Stone-Čech | βX | beta X | 紧化 | Definition 2.1.6 | Def 2.1.6 | Proposition 2.1.7 | Prop 2.1.7 → prop.chaus-reflective
+- Stone-Cech 紧化 | Stone–Čech compactification | βX | 紧化 | Definition 2.1.6 | Def 2.1.6 | Proposition 2.1.7 | Prop 2.1.7 → prop.chaus-reflective
 
 - 满射的极小闭子集 | Lemma 2.1.5 → lem.minimal-closed-surjection
 

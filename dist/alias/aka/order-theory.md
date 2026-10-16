@@ -13,11 +13,11 @@
 
 - 有限特征 | finite character → def.finchar
 
-- 良序定理 | well-ordering theorem | Zermelo → thm.wellordering
+- 良序定理 | well-ordering theorem → thm.wellordering
 
 - 佐恩引理 | Zorn's lemma | Zorn 引理 → lem.zorn
 
-- Hausdorff 极大原理 | 极大原理 → thm.hausdorff
+- Hausdorff 极大原理 | 极大原理 | Hausdorff maximal principle → thm.hausdorff
 
 - Tukey 引理 | Tukey → lem.tukey
 

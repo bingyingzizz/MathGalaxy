@@ -1,6 +1,6 @@
 # 二级命中清单（title 定下来的英文名）
 
-> 由 `bun tools/i18n-backfill.mjs` 现算，共 **44** 条（占全部 709 个节点）。
+> 由 `bun tools/i18n-backfill.mjs` 现算，共 **41** 条（占全部 709 个节点）。
 > 规则（作者 2026-10-16 拍板）：候选 = 该节点 aka 里**名字样**的英文条目；
 > 匹配 = **大小写不敏感 + 词边界精确匹配**，**只扫 title**；恰好命中一个才采用；
 > 值取 **aka 源字符串**。⛔ 不做子串、不做词形还原、不扩大到 label / statement。
@@ -42,34 +42,30 @@
 | 27 | `def.filtration` | 过滤 | `filtration` | `Filtration` ⚠️ |  | 过滤（Filtration） |
 | 28 | `def.presheaf-valued` | 取值一般的预层与层 | `sheaf with values` | `Sheaf with Values` ⚠️ |  | 取值在一般范畴里的层（Sheaf with Values in a Category） |
 | 29 | `def.abelian-sheaf` | 阿贝尔层 | `abelian sheaf` | `Abelian Sheaf` ⚠️ |  | 阿贝尔层（Abelian Sheaf） |
-| 30 | `def.compactly-generated` | 紧生成空间 | `compactly generated` | `Compactly Generated` ⚠️ |  | 紧生成空间 / $k$-空间（Compactly Generated Space） |
-| 31 | `def.group` | 群 | `group` | `Group` ⚠️ |  | 群与阿贝尔群（Group） |
-| 32 | `def.normal-subgroup` | 正规子群 | `normal subgroup` | `Normal Subgroup` ⚠️ |  | 正规子群与陪集（Normal Subgroup） |
-| 33 | `def.group-hom` | 群同态、核与像 | `group homomorphism` | `Group Homomorphism` ⚠️ |  | 群同态（Group Homomorphism） |
-| 34 | `thm.first-iso` | 第一同构定理（Noether） | `Noether` | `Noether` |  | 第一同构定理（Noether） |
-| 35 | `def.ideal` | 理想 | `ideal` | `Ideal` ⚠️ |  | 理想与商环（Ideal） |
-| 36 | `def.monoid-object` | 幺半群对象 | `monoid object` | `Monoid Object` ⚠️ |  | 幺半群对象（Monoid Object） |
-| 37 | `def.group-object` | 群对象与阿贝尔群对象 | `group object` | `Group Object` ⚠️ |  | 群对象与阿贝尔群对象（Group Object） |
-| 38 | `thm.snake-lemma` | 蛇引理 | `snake lemma` | `Snake Lemma` ⚠️ |  | 蛇引理（Snake Lemma） |
-| 39 | `def.simplex-category` | 单纯形范畴 | `Delta` | `Delta` | title 里是 LaTeX 符号 `\Delta` | 单纯形范畴 $\Delta$ |
-| 40 | `def.exact-functor` | 正合函子 | `exact functor` | `Exact Functor` ⚠️ |  | 左正合 / 右正合 / 正合函子（Exact Functor） |
-| 41 | `def.split-exact` | 分裂短正合列 | `split exact` | `Split Exact` ⚠️ |  | 分裂的短正合列（Split Exact Sequence） |
-| 42 | `def.enough-projectives` | 足够多投射对象 | `enough projectives` | `Enough Projectives` ⚠️ |  | 足够多投射对象（Enough Projectives） |
-| 43 | `def.finitely-presented` | 有限表现对象 | `finitely presented` | `Finitely Presented` ⚠️ |  | 有限表现（紧）对象（Finitely Presented Object） |
-| 44 | `thm.tykhonov` | Tychonoff 定理 | `Tychonoff` | `Tychonoff` |  | Tychonoff 定理：紧空间的任意积紧 |
+| 30 | `def.group` | 群 | `group` | `Group` ⚠️ |  | 群与阿贝尔群（Group） |
+| 31 | `def.normal-subgroup` | 正规子群 | `normal subgroup` | `Normal Subgroup` ⚠️ |  | 正规子群与陪集（Normal Subgroup） |
+| 32 | `def.group-hom` | 群同态、核与像 | `group homomorphism` | `Group Homomorphism` ⚠️ |  | 群同态（Group Homomorphism） |
+| 33 | `def.ideal` | 理想 | `ideal` | `Ideal` ⚠️ |  | 理想与商环（Ideal） |
+| 34 | `def.monoid-object` | 幺半群对象 | `monoid object` | `Monoid Object` ⚠️ |  | 幺半群对象（Monoid Object） |
+| 35 | `def.group-object` | 群对象与阿贝尔群对象 | `group object` | `Group Object` ⚠️ |  | 群对象与阿贝尔群对象（Group Object） |
+| 36 | `thm.snake-lemma` | 蛇引理 | `snake lemma` | `Snake Lemma` ⚠️ |  | 蛇引理（Snake Lemma） |
+| 37 | `def.exact-functor` | 正合函子 | `exact functor` | `Exact Functor` ⚠️ |  | 左正合 / 右正合 / 正合函子（Exact Functor） |
+| 38 | `def.split-exact` | 分裂短正合列 | `split exact` | `Split Exact` ⚠️ |  | 分裂的短正合列（Split Exact Sequence） |
+| 39 | `def.enough-projectives` | 足够多投射对象 | `enough projectives` | `Enough Projectives` ⚠️ |  | 足够多投射对象（Enough Projectives） |
+| 40 | `def.finitely-presented` | 有限表现对象 | `finitely presented` | `Finitely Presented` ⚠️ |  | 有限表现（紧）对象（Finitely Presented Object） |
+| 41 | `thm.tykhonov` | Tychonoff 定理 | `Tychonoff` | `Tychonoff` |  | Tychonoff 定理：紧空间的任意积紧 |
 
 「备注」列只写机械看得出来的事实（节点含两个概念 / title 里是 LaTeX 符号），不猜。
 ---
 
-## ⚠️ 跨节点重复的 title_en（3 组，只记录、不自动改）
+## ⚠️ 跨节点重复的 title_en（2 组，只记录、不自动改）
 
 | 英文名 | 用在哪些节点 |
 |---|---|
 | `sections functor` | `prop.condab-section`（截面函子保极限余极限） · `def.section-functor`（截面函子） |
 | `Internal Hom` | `def.internal-hom`（内 Hom） · `prop.cond-internal-hom`（内部 Hom 的函数空间刻画） |
-| `k-ification` | `def.k-topology`（k-开、k-闭与 k-拓扑） · `prop.cg-coreflective`（紧生成空间是余反射子范畴） |
 
-## 大小写差异（40 处，只记录）
+## 大小写差异（39 处，只记录）
 
 aka 里写作一种大小写、title 里写作另一种 —— 采用的一律是 **aka 源字符串**。
 
@@ -103,7 +99,6 @@ aka 里写作一种大小写、title 里写作另一种 —— 采用的一律�
 | `def.filtration` | `filtration` | `Filtration` |
 | `def.presheaf-valued` | `sheaf with values` | `Sheaf with Values` |
 | `def.abelian-sheaf` | `abelian sheaf` | `Abelian Sheaf` |
-| `def.compactly-generated` | `compactly generated` | `Compactly Generated` |
 | `def.group` | `group` | `Group` |
 | `def.normal-subgroup` | `normal subgroup` | `Normal Subgroup` |
 | `def.group-hom` | `group homomorphism` | `Group Homomorphism` |
@@ -116,7 +111,7 @@ aka 里写作一种大小写、title 里写作另一种 —— 采用的一律�
 | `def.enough-projectives` | `enough projectives` | `Enough Projectives` |
 | `def.finitely-presented` | `finitely presented` | `Finitely Presented` |
 
-## 形差：title 里有更长的英文写法（13 处，只记录）
+## 形差：title 里有更长的英文写法（12 处，只记录）
 
 title 括号里的英文与采用的名字「互相包含」（如 aka `limit` / title `Limit of a Sequence`）。
 按护栏**值取 aka 源字符串**，所以这里不改 —— 要改成 title 那种更正式的写法请说一声。
@@ -133,6 +128,5 @@ title 括号里的英文与采用的名字「互相包含」（如 aka `limit` /
 | `def.final-initial` | `initial object` | Terminal / Initial Object |
 | `def.projective-object` | `injective object` | Projective / Injective Object |
 | `def.presheaf-valued` | `sheaf with values` | Sheaf with Values in a Category |
-| `def.compactly-generated` | `compactly generated` | Compactly Generated Space |
 | `def.split-exact` | `split exact` | Split Exact Sequence |
 | `def.finitely-presented` | `finitely presented` | Finitely Presented Object |

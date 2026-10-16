@@ -21,7 +21,7 @@
 
 - 积分的绝对连续性 → cor.ac-integral-continuity
 
-- Radon–Nikodym | RN 定理 | 拉东-尼科迪姆 | Radon-Nikodym theorem → thm.lebesgue-radon-nikodym
+- RN 定理 | 拉东-尼科迪姆 | Radon-Nikodym theorem → thm.lebesgue-radon-nikodym
 
 - 链式法则 | RN 链式法则 → prop.rn-chain-rule
 

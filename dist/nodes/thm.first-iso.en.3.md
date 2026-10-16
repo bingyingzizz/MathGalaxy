@@ -1,6 +1,9 @@
-# Noether　`thm.first-iso`
+# first isomorphism theorem　`thm.first-iso`
 English entry · root `../`
 [in graph](../#n=thm.first-iso)　·　[Chinese page (authoritative)](./thm.first-iso.md)
+
+## Statement
+Let $\varphi : G \to G'$ be a **group homomorphism**. Then $\varphi$ induces an isomorphism
 
 $$G \big/ \ker\varphi \;\cong\; \operatorname{im}\varphi, \qquad g \ker\varphi \;\longmapsto\; \varphi(g).$$
 

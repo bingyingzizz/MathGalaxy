@@ -9,7 +9,7 @@
 
 - 范畴 | category | Cat | 态射 | Definition 1.1.1 | Def 1.1.1 → def.category
 
-- 截面 | 收缩 | section | retraction | 分裂 | Definition 1.1.3 | Def 1.1.3 → def.section-retraction
+- 截面 | 收缩 | section / retraction | 分裂 | Definition 1.1.3 | Def 1.1.3 → def.section-retraction
 
 - 函子 | functor | 反变函子 | 共变函子 | 遗忘函子 → def.functor
 

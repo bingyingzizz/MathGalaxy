@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 8 · definition · cluster 范畴与图 (`cat.basic`) · Category Theory
-names: `retraction` (short) · `Section / Retraction` (full)
+names: `section / retraction` (short) · `Section / Retraction` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.section-retraction.md` and `proofs/`.

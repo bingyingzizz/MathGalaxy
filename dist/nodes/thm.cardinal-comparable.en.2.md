@@ -1,13 +1,11 @@
-# 基数可比定理　`thm.cardinal-comparable`
+# comparability of cardinals　`thm.cardinal-comparable`
 English entry · root `../`
 [in graph](../#n=thm.cardinal-comparable)　·　[Chinese page (authoritative)](./thm.cardinal-comparable.md)
+
+## Abstract
+Assuming the axiom of choice, any two sets $A$, $B$ satisfy $|A| \le |B|$ or $|B| \le |A|$, that is, any two cardinals are comparable. This is the licence for ordering cardinals at all: without it even "$A$ is bigger than $B$" can be meaningless. The proof runs through the well-ordering theorem: well-order both sets, compare the corresponding ordinals, and read off an injection in one direction. Without AC there really are incomparable cardinals.
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.cardinal-comparable.md` and `proofs/`.
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Cardinal_number · nLab: https://ncatlab.org/nlab/show/cardinal+number
-
-
-Cite: `thm.cardinal-comparable` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
-
+> 续见 nodes/thm.cardinal-comparable.en.3.md

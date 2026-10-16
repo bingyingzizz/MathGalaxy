@@ -49,6 +49,11 @@ MG.i18nDocs = {
     { zh: '深链', en: 'deep link', note: '#n=<节点id>' },
     { zh: '内容版本', en: 'content version', note: 'tools/ids.snapshot.json 里的 vX.Y.Z' },
     { zh: '概念页', en: 'concept page', note: 'nodes/<id>.html' },
+    /* T2.1 拼写口径（2026-10-16 现算后定）：全库英文一律**美式拼写**，
+       ⛔ 不要混英式。理由是现成的英文名里 `-ize` 有 4 处、`-ise` 0 处，
+       把已有的说成错的代价更大。人名/地名保留原有变音符（Čech、Hölder、Teichmüller）。 */
+    { zh: '拼写口径', en: 'spelling: American English (-ize, -ization)', note: 'T2.1 定；⛔ 不混英式 -ise / -our / centre。人名保留变音符：Čech / Hölder / Teichmüller / Radon–Nikodym' },
+    { zh: '连字符人名', en: 'hyphenated names keep their hyphen', note: 'Heine-Borel / Cartan-Leray / Lebesgue–Stieltjes；aka 里 ASCII 连字符与 en dash 两种写法都收' },
   ],
 
   docs: {

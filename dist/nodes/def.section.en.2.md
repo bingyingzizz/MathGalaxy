@@ -1,4 +1,4 @@
-# 截口　`def.section`
+# Section　`def.section`
 English entry · root `../`
 [in graph](../#n=def.section)　·　[Chinese page (authoritative)](./def.section.md)
 

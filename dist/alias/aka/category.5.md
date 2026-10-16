@@ -5,7 +5,7 @@
 
 - 右伴随存在的判据 | adjoint functor existence → thm.right-adjoint-criterion
 
-- 全忠实等价于单位同构 → prop.adjoint-full-faithful
+- 全忠实等价于单位同构 | fully faithful iff the unit is an isomorphism → prop.adjoint-full-faithful
 
 - 极限即伴随 | 常图函子的伴随 | Proposition 1.5.4 | Prop 1.5.4 → prop.limit-adjoint
 

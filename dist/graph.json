@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T02:19:20.497Z",
+  "generated": "2026-10-16T02:38:21.298Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -14,7 +14,7 @@
    "edges": 1398,
    "strong": 1389,
    "weak": 9,
-   "en_pages": 290
+   "en_pages": 294
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -1833,13 +1833,16 @@
    "type": "theorem",
    "label": "良序定理",
    "title": "良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904）",
+   "label_en": "well-ordering theorem",
+   "title_en": "Well-Ordering Theorem, Zermelo 1904",
    "abstract_en": "Every set can be well ordered: $\\forall X\\, \\exists \\preceq$ a well-ordering of $X$, equivalently every set is equinumerous with an ordinal. Zermelo introduced the axiom of choice in 1904 precisely to prove this, and over ZF the statement is equivalent to AC. Immediate consequence: any two cardinals are comparable, and $\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -1918,13 +1921,16 @@
    "type": "theorem",
    "label": "Hausdorff 极大原理",
    "title": "Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914）",
+   "label_en": "Hausdorff maximal principle",
+   "title_en": "Hausdorff Maximal Principle, 1914",
    "abstract_en": "Every chain in a poset extends to a maximal one: for a chain $C_0 \\subseteq P$ there is a maximal chain $M$ with $C_0 \\subseteq M$, maximal under inclusion. Taking $C_0 = \\emptyset$ gives that every non-empty poset has a maximal chain. The statement predates Zorn's lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise form of \"keep adding elements until you cannot add any more\".",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -2201,13 +2207,16 @@
    "type": "theorem",
    "label": "紧的三个等价刻画",
    "title": "度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界",
+   "label_en": "Heine-Borel",
+   "title_en": "Heine-Borel",
    "abstract_en": "In a metric space the following are equivalent: compact, sequentially compact, and complete together with totally bounded. The skeleton lives in the implications: compact implies sequentially compact; sequentially compact implies totally bounded (the one place dependent choice is used) and complete; sequentially compact implies compact by the \"bad ball\" argument; complete and totally bounded implies sequentially compact by diagonalisation. In general topological spaces only the first implication survives — sequential compactness is a metric-space luxury.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -2432,13 +2441,16 @@
    "type": "theorem",
    "label": "环 → σ-环 的判据",
    "title": "定理：环是 σ-环 $\\iff$ 它是单调类 $\\iff$ 它对可数不交并封闭",
+   "label_en": "when a ring is a sigma-ring",
+   "title_en": "when a ring is a sigma-ring",
    "abstract_en": "For a ring $\\mathfrak{A}$ of sets, the following are equivalent: $\\mathfrak{A}$ is a $\\sigma$-ring, $\\mathfrak{A}$ is a monotone class, and $\\mathfrak{A}$ is closed under countable disjoint unions. The hypothesis that $\\mathfrak{A}$ is a ring cannot be dropped: a monotone class need not be closed under finite unions. This equivalence is the technical core of the monotone class theorem, since it reduces \"true for the $\\sigma$-algebra\" to \"check a ring, then take monotone limits\".",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -3060,6 +3072,9 @@
    "type": "definition",
    "label": "Lebesgue–Stieltjes 测度",
    "title": "Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure $\\mu_F$）",
+   "label_en": "Lebesgue–Stieltjes",
+   "title_en": "Lebesgue–Stieltjes",
+   "en_page": "nodes/def.lebesgue-stieltjes.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4010,13 +4025,16 @@
    "type": "definition",
    "label": "截口",
    "title": "截口（Section）$E_{x}$ 与 $E^{y}$",
+   "label_en": "section",
+   "title_en": "Section",
    "abstract_en": "For $E \\subseteq X \\times Y$ the vertical and horizontal sections are $E_x := \\{y \\in Y : (x,y) \\in E\\}$ and $E^y := \\{x \\in X : (x,y) \\in E\\}$; for a function $f : X \\times Y \\to \\mathbb{C}$ one sets $f_x(y) = f^y(x) = f(x,y)$. Geometrically, cut the picture with a line and look at what remains. Sections are the language in which Fubini is stated: integrate along the sections first, then integrate the resulting function against the other variable.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -4042,13 +4060,15 @@
    "type": "proposition",
    "label": "截口可测",
    "title": "命题：可测集的截口可测，可测函数的截口可测",
+   "title_en": "sections of measurable sets and functions",
    "abstract_en": "Sections of measurable sets are measurable: if $E \\in \\mathcal{M} \\otimes \\mathcal{N}$ then $E_x \\in \\mathcal{N}$ for every $x$ and $E^y \\in \\mathcal{M}$ for every $y$; likewise the sections of an $\\mathcal{M} \\otimes \\mathcal{N}$-measurable $f$ are measurable, because $f_x^{-1}(B) = (f^{-1}(B))_x$ and dually. The proof is the standard one: the class of sets all of whose sections are measurable contains every rectangle and is a $\\sigma$-algebra. Note that this holds for every point, whereas Fubini can only promise almost every point once integrability enters.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -5197,13 +5217,15 @@
    "type": "proposition",
    "label": "NBV 函数的导数与测度的关系",
    "title": "命题：$\\mu_F \\perp m \\iff F' = 0 \\text{a.e.}$；$\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F'$",
+   "title_en": "derivative of an NBV function and its measure",
    "abstract_en": "For $F$ of normalised bounded variation, $F' \\in L^1(m)$ and $\\mu_F \\perp m \\iff F' = 0$ a.e., while $\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F'(t)\\,dt$. Both follow by writing the Lebesgue decomposition $d\\mu_F = d\\lambda + f\\,dm$ and using $f = F'$ a.e.: vanishing of the absolutely continuous part is the first case, $\\lambda = 0$ is the second. This is the measure-theoretic form of the fundamental theorem of calculus — $F'$ integrates back to $F$ exactly when $\\mu_F$ is absolutely continuous.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -5506,13 +5528,16 @@
    "type": "definition",
    "label": "本性上界与 L^∞",
    "title": "本性上界 $\\|f\\|_\\infty$ 与空间 $L^\\infty$",
+   "label_en": "essential supremum",
+   "title_en": "essential supremum",
    "abstract_en": "The essential supremum is $\\|f\\|_\\infty := \\inf \\{a \\ge 0 : \\mu(\\{|f| > a\\}) = 0\\}$: the true bound of $f$ once its values on null sets are ignored. The infimum is attained at $a = \\|f\\|_\\infty$ itself, and $\\|f\\|_\\infty \\le M \\iff |f| \\le M$ almost everywhere. Then $L^\\infty$ consists of the measurable $f$ with $\\|f\\|_\\infty < \\infty$. Note the difference from $\\sup |f|$, which a single value on a null set can spoil.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -6259,13 +6284,16 @@
    "type": "theorem",
    "label": "基数可比定理",
    "title": "基数可比定理（需要选择公理）",
+   "label_en": "comparability of cardinals",
+   "title_en": "comparability of cardinals",
    "abstract_en": "Assuming the axiom of choice, any two sets $A$, $B$ satisfy $|A| \\le |B|$ or $|B| \\le |A|$, that is, any two cardinals are comparable. This is the licence for ordering cardinals at all: without it even \"$A$ is bigger than $B$\" can be meaningless. The proof runs through the well-ordering theorem: well-order both sets, compare the corresponding ordinals, and read off an injection in one direction. Without AC there really are incomparable cardinals.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -6752,13 +6780,15 @@
    "type": "definition",
    "label": "Cauchy 列与零列",
    "title": "有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）",
+   "title_en": "Cauchy sequences and null sequences",
    "abstract_en": "Over $\\mathbb{Q}$ alone — $\\varepsilon$ ranges over positive rationals, so no reals are presupposed — a rational sequence $(x_n)$ is Cauchy when $\\forall \\varepsilon > 0\\, \\exists N\\, \\forall m,n \\ge N : |x_m - x_n| < \\varepsilon$, is null when $\\forall \\varepsilon > 0\\, \\exists N\\, \\forall n \\ge N : |x_n| < \\varepsilon$, and two Cauchy sequences are equivalent when their difference is null. The quotient by this relation is how $\\mathbb{R}$ is built: it glues together the many ways of approximating one number. Three facts are used later: Cauchy sequences are bounded, sums and products of Cauchy sequences are Cauchy, and a non-null Cauchy sequence satisfies $|x_n| \\ge \\delta > 0$ from some point on, so its reciprocal is Cauchy again.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -6895,13 +6925,16 @@
    "type": "theorem",
    "label": "ℝ 不可数",
    "title": "实数集是稠密而不可数的：$|\\mathbb{R}| = 2^{\\aleph_0}$",
+   "label_en": "uncountability of the reals",
+   "title_en": "uncountability of the reals",
    "abstract_en": "$\\mathbb{R}$ is uncountable — there is no surjection $\\mathbb{N} \\to \\mathbb{R}$ — and in fact $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$. Uncountability is proved by nested closed intervals and completeness alone, with no cardinal theory; the cardinality statement pairs binary expansions with $\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density and cardinality are different things, which is why analysis needs $\\mathbb{R}$.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -7119,6 +7152,9 @@
    "type": "theorem",
    "label": "序数全体是真类",
    "title": "Burali–Forti：序数全体不构成集合",
+   "label_en": "Burali-Forti",
+   "title_en": "Burali-Forti",
+   "en_page": "nodes/thm.burali-forti.en.md",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -7349,7 +7385,7 @@
    "type": "definition",
    "label": "截面与收缩",
    "title": "截面与收缩（Section / Retraction）",
-   "label_en": "retraction",
+   "label_en": "section / retraction",
    "title_en": "Section / Retraction",
    "en_page": "nodes/def.section-retraction.en.md",
    "region": "category",
@@ -8148,13 +8184,15 @@
    "type": "proposition",
    "label": "全忠实与单位",
    "title": "全忠实 $\\iff$ 单位（余单位）是同构",
+   "title_en": "fully faithful iff the unit is an isomorphism",
    "abstract_en": "For an adjunction $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$: $F$ is full and faithful iff $\\eta$ is an isomorphism, and $G$ is full and faithful iff $\\varepsilon$ is an isomorphism. So fullness and faithfulness of the left adjoint is checked on a single natural transformation rather than on every Hom-set. This is also the dividing line between reflections and coreflections: an inclusion of a full subcategory is always fully faithful, so a reflection has an invertible counit.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -8366,13 +8404,15 @@
    "type": "proposition",
    "label": "Kan 延拓的两个例子",
    "title": "余极限与右伴随都是 Kan 延拓",
+   "title_en": "Kan extensions: colimits and right adjoints",
    "abstract_en": "Two examples showing that Kan extensions absorb the earlier notions. (1) A diagram $D : I \\to \\mathcal{C}$ has a colimit iff the left Kan extension of $D$ along $p : I \\to \\mathbf{1}$ exists, and then $(p_!D)(\\ast) = \\varinjlim_{i \\in I} D(i)$. (2) $F : \\mathcal{C} \\to \\mathcal{D}$ has a right adjoint iff the left Kan extension of $1_{\\mathcal{C}}$ along $F$ exists, and then $G = F_!1_{\\mathcal{C}}$, the unit being the transpose of $1_{\\mathcal{C}} \\implies G \\circ F$.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -8453,13 +8493,16 @@
    "type": "proposition",
    "label": "紧 Haus 是反射子范畴",
    "title": "Stone–Čech 紧化",
+   "label_en": "Stone–Čech compactification",
+   "title_en": "Stone–Čech compactification",
    "abstract_en": "The category $\\mathbf{CHaus}$ is a reflective subcategory of $\\mathbf{Top}$, the reflection being the Stone–Čech compactification: $\\operatorname{Hom}_{\\mathbf{CHaus}}(\\beta X, K) \\cong \\operatorname{Hom}_{\\mathbf{Top}}(X, K)$ for every compact Hausdorff $K$. Construction: embed $X$ into the Tychonoff cube $[0,1]^{C(X,[0,1])}$ and take the closure, which is compact Hausdorff as a closed subset of a compact Hausdorff space. The embedding is injective iff $X$ is Tychonoff. Corollary: any limit of compact Hausdorff spaces is again compact Hausdorff.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -10134,13 +10177,16 @@
    "type": "definition",
    "label": "加法 / 阿贝尔范畴",
    "title": "加法范畴与阿贝尔范畴（Additive / Abelian Category）",
+   "label_en": "additive and abelian categories",
+   "title_en": "additive and abelian categories",
    "abstract_en": "The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to \\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian means that kernels and cokernels exist, and abelian means any one of four equivalent conditions: every monomorphism is regular; $N \\cong \\ker(M \\to \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every map factors uniquely as an epimorphism followed by a monomorphism; $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. Abelian categories are the working environment of homological algebra — exactness needs kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a topos are abelian; $\\mathbf{AbTop}$ is not.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -10605,13 +10651,15 @@
    "type": "theorem",
    "label": "拓扑斯上的阿贝尔群是 Grothendieck 范畴",
    "title": "$\\mathcal{T}(\\mathbf{Ab})$ 是 Grothendieck 范畴",
+   "title_en": "abelian groups in a topos form a Grothendieck category",
    "abstract_en": "For a topos $\\mathcal{T}$, the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian group objects in sheaves is a Grothendieck category: abelian, with a small set of generators, all colimits, and filtered colimits exact. Abelianness is checked componentwise in the presheaf category and transported along the exact sheafification reflection; limits and colimits exist by that reflection; and if $S$ generates $\\mathcal{T}$ then $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$. Those generators are moreover projective.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.0",
      "fields": [
-      "abstract"
+      "abstract",
+      "name"
      ]
     }
    },
@@ -10715,7 +10763,7 @@
    "label": "紧生成空间",
    "title": "紧生成空间 / $k$-空间（Compactly Generated Space）",
    "label_en": "compactly generated",
-   "title_en": "compactly generated",
+   "title_en": "Compactly Generated Space",
    "en_page": "nodes/def.compactly-generated.en.md",
    "region": "topology",
    "regions": [
@@ -10785,9 +10833,6 @@
    "type": "definition",
    "label": "k-开、k-闭与 k-拓扑",
    "title": "$k$-开集与 $k$-化（$k$-Topology）",
-   "label_en": "k-ification",
-   "title_en": "k-ification",
-   "en_page": "nodes/def.k-topology.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -11350,8 +11395,8 @@
    "type": "theorem",
    "label": "第一同构定理（Noether）",
    "title": "第一同构定理（Noether）",
-   "label_en": "Noether",
-   "title_en": "Noether",
+   "label_en": "first isomorphism theorem",
+   "title_en": "first isomorphism theorem",
    "abstract_en": "For a group homomorphism $\\varphi : G \\to G'$, the assignment $g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective homomorphism has the quotient as image. The proof is three steps: well-definedness, multiplicativity, bijectivity. The same proof works verbatim for any \"set + operations + axioms\" structure, $A/\\ker f \\cong \\operatorname{im} f$, and the set-level prototype is that every map induces a bijection from the quotient by $a \\sim a' \\iff f(a) = f(a')$ onto its image.",
    "statement_en": "Let $\\varphi : G \\to G'$ be a **group homomorphism**. Then $\\varphi$ induces an isomorphism\n\n$$G \\big/ \\ker\\varphi \\;\\cong\\; \\operatorname{im}\\varphi, \\qquad g \\ker\\varphi \\;\\longmapsto\\; \\varphi(g).$$\n\nIn particular: **the image of a surjective homomorphism is the quotient group** ($G/\\ker\\varphi \\cong G'$ when $\\varphi$ is surjective).",
    "notes_en": "**The three steps of the proof.** Write $K = \\ker\\varphi$.\n\n- **Well defined**: if $gK = g'K$ then $g' = gk$ for some $k \\in K$, hence $\\varphi(g') = \\varphi(g)\\varphi(k) = \\varphi(g)e' = \\varphi(g)$ — elements of the same coset are sent to the same value.\n- **Homomorphism**: $\\overline{\\varphi}\\bigl((gK)(g'K)\\bigr) = \\overline{\\varphi}(gg'K) = \\varphi(gg') = \\varphi(g)\\varphi(g') = \\overline{\\varphi}(gK)\\,\\overline{\\varphi}(g'K)$.\n- **Bijection**: injective, because $\\overline{\\varphi}(gK) = e'$ means $\\varphi(g) = e'$, i.e. $g \\in K$, so $gK = K$; surjective, because the image is $\\varphi(G)$ by construction. ∎\n\n⭐ **It is really a theorem about the format \"set + operations + axioms\", not a privilege of groups.** The same proof carries over verbatim, provided one replaces \"homomorphism\" by the corresponding notion:\n\n$$A \\big/ \\ker f \\;\\cong\\; \\operatorname{im} f.$$\n\n⭐ **The set-level prototype**: for any map $f : A \\to B$, put $a \\sim a' \\iff f(a) = f(a')$ on $A$; then $f$ induces a **bijection** $A/{\\sim} \\;\\to\\; \\operatorname{im} f$ (see \"quotient set and equivalence classes\"). The group version adds exactly one sentence: **after dividing by the kernel, what remains is a group**. The first two steps (well defined, bijection) are the set-level content; only the third (homomorphism) is new.\n\n**What question does it answer?** \"Where does a homomorphism send a group?\" has a two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), locked together by a single isomorphism. So studying homomorphisms is studying normal subgroups — which is why group theory turns into the study of the lattice of subgroups.",
@@ -12219,8 +12264,8 @@
    "type": "definition",
    "label": "单纯形范畴",
    "title": "单纯形范畴 $\\Delta$",
-   "label_en": "Delta",
-   "title_en": "Delta",
+   "label_en": "simplex category",
+   "title_en": "simplex category",
    "en_page": "nodes/def.simplex-category.en.md",
    "region": "category",
    "regions": [
@@ -13387,8 +13432,8 @@
    "type": "definition",
    "label": "Čech 上同调",
    "title": "Čech 上同调 $\\check{H}^{n}(X, M^{\\bullet})$",
-   "label_en": "Cech cohomology",
-   "title_en": "Cech cohomology",
+   "label_en": "Čech cohomology",
+   "title_en": "Čech cohomology",
    "en_page": "nodes/def.cech-cohomology.en.md",
    "region": "homology",
    "regions": [
@@ -13437,6 +13482,9 @@
    "type": "theorem",
    "label": "Cartan–Leray 谱序列",
    "title": "Cartan–Leray：Čech 到层上同调的谱序列",
+   "label_en": "Cartan-Leray",
+   "title_en": "Cartan-Leray",
+   "en_page": "nodes/thm.cartan-leray.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -14165,6 +14213,9 @@
    "type": "theorem",
    "label": "Breen–Deligne 分解",
    "title": "Breen–Deligne 分解：自由阿贝尔群的有限直和消解",
+   "label_en": "Breen-Deligne",
+   "title_en": "Breen-Deligne",
+   "en_page": "nodes/thm.breen-deligne.en.md",
    "region": "condensed",
    "regions": [
     "condensed",
@@ -14785,6 +14836,9 @@
    "type": "lemma",
    "label": "Cartan–Eilenberg 分解",
    "title": "Cartan–Eilenberg 分解（双复形内射消解）",
+   "label_en": "Cartan-Eilenberg",
+   "title_en": "Cartan-Eilenberg",
+   "en_page": "nodes/lem.cartan-eilenberg.en.md",
    "region": "homology",
    "regions": [
     "homology"

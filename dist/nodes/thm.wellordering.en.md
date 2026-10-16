@@ -1,4 +1,4 @@
-# 良序定理　`thm.wellordering`
+# Well-Ordering Theorem, Zermelo 1904　`thm.wellordering`
 English entry · root `../`
 [in graph](../#n=thm.wellordering)　·　[Chinese page (authoritative)](./thm.wellordering.md)
 

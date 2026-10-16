@@ -1,4 +1,4 @@
-# 紧的三个等价刻画　`thm.metric-compact-equiv`
+# Heine-Borel　`thm.metric-compact-equiv`
 English entry · root `../`
 [in graph](../#n=thm.metric-compact-equiv)　·　[Chinese page (authoritative)](./thm.metric-compact-equiv.md)
 

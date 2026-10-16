@@ -1,7 +1,7 @@
 # 别名 → 节点 · 抽象代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../algebra.md`
 
-- Noether 第一同构定理 | 第一同构定理 | 同构定理 | first isomorphism theorem | Noether → thm.first-iso
+- Noether 第一同构定理 | 第一同构定理 | 同构定理 | first isomorphism theorem → thm.first-iso
 
 - 环 | ring | 交换环 | 含幺环 → def.ring
 

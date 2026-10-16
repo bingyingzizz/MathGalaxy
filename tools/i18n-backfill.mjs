@@ -61,8 +61,11 @@ export const CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3000-\u303f\u2018\
 export const lat = (s) => (String(s).match(/[A-Za-z]/g) || []).length;
 export const isEnglish = (s) => !!s && !CJK.test(s) && lat(s) >= 2;
 /** ⛔ 书号 / 编号（Exercise 2.25、Theorem 8.3.9、Definition 5.2.5…）——
-    它们是搜索用的坐标，不是名字。aliases.js 里这类条目有 200 多条。 */
-export const refCode = (s) => /^\s*(exercise|problem|theorem|thm|definition|def|lemma|proposition|prop|corollary|cor|example|remark|chapter|section|part|table|figure|equation|eq|item)\b[\s.:§\d]*\s*$/i.test(String(s || ''));
+    它们是搜索用的坐标，不是名字。aliases.js 里这类条目有 200 多条。
+    ⚠️ 2026-10-16 修：**必须带编号**才算书号。原来裸的 `section` 也被当成书号，
+    于是 `def.section`（截口，aka 里就写着 `section`）明明有名字却填不上。
+    现在 `Section 2.3` 是书号、`section` 是名字。 */
+export const refCode = (s) => /^\s*(exercise|problem|theorem|thm|definition|def|lemma|proposition|prop|corollary|cor|example|remark|chapter|section|part|table|figure|equation|eq|item)\b(?=[\s.:§]*[§\d])[\s.:§\d]*\s*$/i.test(String(s || ''));
 /** 一个词是不是「像词」：正常的词（≥5 字母且不全大写），或小写实词；⛔ sup/inf/wff/MCT/a.e. 都不算 */
 const wordish = (w) => {
   const letters = String(w).replace(/[^A-Za-z]/g, '');
@@ -71,15 +74,26 @@ const wordish = (w) => {
   return /[a-z]/.test(w) && letters.length >= 4 && !/\d/.test(w);
 };
 /** 单个词算不算英文名：只认「纯字母（允许变音符、连字符、撇号）」，
-    要有元音、不是全大写、不是驼峰（kTop 这种排除）。 */
+    要有元音、不是全大写、不是驼峰（kTop 这种排除）。
+    ⚠️ 2026-10-16 两处修正（都是**误杀**，不是放松）：
+      ① 驼峰判据按**连字符 / 撇号切开的每一段**分别做 —— 原来把整条去掉标点后一起看，
+         `Heine-Borel` 会被读成 `HeineBorel`（看到第二个大写）而误判成驼峰记号；
+         `Burali-Forti` / `Cartan-Leray` / `Breen-Deligne` / `Cartan-Eilenberg` /
+         `Lebesgue–Stieltjes` 同理。这些都是正常专名，该收。
+      ② 每一段**至少两个字母** —— 这样 `L-infinity` / `k-ification` 这种
+         「单个字母 + 连字符 + 词」的记号仍然挡在外面（L^∞、k-化 是记号不是名字）。
+      ③ 字符集补上 en dash `–` 与弯撇号 `’`（aka 里两种都出现过）。 */
 export const nameLike = (s) => {
   const t = String(s).trim();
   if (refCode(t)) return false;
   if (/\s/.test(t)) return t.split(/\s+/).some(wordish);
-  if (!/^[A-Za-z\u00c0-\u024f'’-]+$/.test(t)) return false;
+  if (!/^[A-Za-z\u00c0-\u024f'’\u2010-\u2015-]+$/.test(t)) return false;
+  for (const p of t.split(/[-'’\u2010-\u2015]+/)) {
+    if (p.length < 2) return false;                                // ②
+    if (/[A-Z\u00c0-\u00dd]/.test(p.slice(1))) return false;        // ① 驼峰：kTop
+  }
   const core = t.replace(/[^A-Za-z\u00c0-\u024f]/g, '');
   if (core.length < 4) return false;
-  if (/[A-Z\u00c0-\u00dd]/.test(core.slice(1))) return false;      // 驼峰：kTop
   if (!/[a-z\u00e0-\u00ff]/.test(core)) return false;              // 全大写：NBV
   if (!/[aeiouy\u00e0-\u00fc]/.test(core.toLowerCase())) return false; // 没有元音：qcqs / wff
   return true;

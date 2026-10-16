@@ -1,4 +1,4 @@
-# NBV 函数的导数与测度的关系　`prop.nbv-derivative`
+# derivative of an NBV function and its measure　`prop.nbv-derivative`
 English entry · root `../`
 [in graph](../#n=prop.nbv-derivative)　·　[Chinese page (authoritative)](./prop.nbv-derivative.md)
 

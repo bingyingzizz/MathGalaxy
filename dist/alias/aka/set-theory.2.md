@@ -27,6 +27,4 @@
 
 - 对角线论证 | diagonal argument | 幂集比原集大 → thm.cantor
 
-- 基数可比 | 三分律 → thm.cardinal-comparable
-
 > 续见 alias/aka/set-theory.3.md

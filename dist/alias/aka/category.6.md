@@ -5,7 +5,7 @@
 
 - 子范畴 | subcategory | 满子范畴 | Definition 1.1.5 | Def 1.1.5 → def.subcategory
 
-- 单纯形范畴 | simplex category | Delta | 面映射 | 退化映射 | Definition 1.1.2 | Def 1.1.2 → def.simplex-category
+- 单纯形范畴 | simplex category | 面映射 | 退化映射 | Definition 1.1.2 | Def 1.1.2 → def.simplex-category
 
 - Proposition 1.1.4 | Prop 1.1.4 | 同构的截面唯一 → prop.iso-unique-section
 

@@ -1,4 +1,4 @@
-# 加法 / 阿贝尔范畴　`def.abelian-category`
+# additive and abelian categories　`def.abelian-category`
 English entry · root `../`
 [in graph](../#n=def.abelian-category)　·　[Chinese page (authoritative)](./def.abelian-category.md)
 

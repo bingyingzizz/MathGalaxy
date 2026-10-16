@@ -1,7 +1,7 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
-- Čech 上同调 | Cech 上同调 | Cech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
+- Čech 上同调 | Cech 上同调 | Čech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
 
 - Čech 上同调是余极限 | Exercise 7.46 | Proposition 7.3.4 → prop.cech-as-colim
 

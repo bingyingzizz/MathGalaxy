@@ -15,7 +15,7 @@
 
 - 层上同调 | sheaf cohomology | H^n(X,M) | Definition 7.3.1 | Def 7.3.1 → def.sheaf-cohomology
 
-- Čech 上同调 | Cech 上同调 | Cech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
+- Čech 上同调 | Cech 上同调 | Čech cohomology | Definition 7.3.5 | Def 7.3.5 → def.cech-cohomology
 
 - 拓扑斯态射的导出函子 | Proposition 7.4.1 | Prop 7.4.1 | Exercise 7.53 → prop.topos-morphism-derived
 

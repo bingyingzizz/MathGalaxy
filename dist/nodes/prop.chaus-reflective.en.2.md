@@ -1,4 +1,4 @@
-# 紧 Haus 是反射子范畴　`prop.chaus-reflective`
+# Stone–Čech compactification　`prop.chaus-reflective`
 English entry · root `../`
 [in graph](../#n=prop.chaus-reflective)　·　[Chinese page (authoritative)](./prop.chaus-reflective.md)
 

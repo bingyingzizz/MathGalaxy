@@ -77,7 +77,7 @@ MG.aliases = {
     { id: 'def.countable', aka: ['可数', 'countable', '可数无穷', '可列'] },
     { id: 'def.cardinal', aka: ['基数', 'cardinality', '势', 'cardinal number'] },
     { id: 'thm.cantor', aka: ['对角线论证', 'diagonal argument', '幂集比原集大'] },
-    { id: 'thm.cardinal-comparable', aka: ['基数可比', '三分律'] },
+    { id: 'thm.cardinal-comparable', aka: ['基数可比', '三分律', 'comparability of cardinals'] },
 
     /* 数系的构造 */
     { id: 'thm.omega', aka: ['自然数', 'natural numbers', 'ℕ'] },
@@ -86,11 +86,11 @@ MG.aliases = {
     { id: 'def.rat', aka: ['有理数', 'rationals', 'ℚ'] },
     { id: 'def.abs', aka: ['绝对值', 'absolute value'] },
     { id: 'thm.triangle', aka: ['三角不等式', 'triangle inequality'] },
-    { id: 'def.cauchy-null', aka: ['Cauchy 列', '柯西列', 'Cauchy sequence', '零列', 'null sequence'] },
+    { id: 'def.cauchy-null', aka: ['Cauchy 列', '柯西列', '零列', 'Cauchy sequences and null sequences'] },
     { id: 'def.real', aka: ['实数', 'real numbers', 'ℝ', '实数系', '实数构造'] },
     { id: 'def.complex', aka: ['复数', 'complex numbers', 'ℂ'] },
     { id: 'lem.archimedean', aka: ['阿基米德', 'Archimedean', '阿基米德性质'] },
-    { id: 'thm.real-uncountable', aka: ['实数不可数', 'ℝ 不可数'] },
+    { id: 'thm.real-uncountable', aka: ['实数不可数', 'ℝ 不可数', 'uncountability of the reals'] },
     { id: 'thm.real-unique', aka: ['完备有序域唯一', '实数唯一'] },
 
     /* 序数与超限 */
@@ -111,9 +111,9 @@ MG.aliases = {
     /* 选择原理 */
     { id: 'def.choicefn', aka: ['选择函数', 'choice function', '选取函数'] },
     { id: 'ax.choice', aka: ['选择公理', 'AC', 'axiom of choice', 'Zorn'] },
-    { id: 'thm.wellordering', aka: ['良序定理', 'well-ordering theorem', 'Zermelo'] },
+    { id: 'thm.wellordering', aka: ['良序定理', 'well-ordering theorem'] },
     { id: 'lem.zorn', aka: ['佐恩引理', "Zorn's lemma", 'Zorn 引理'] },
-    { id: 'thm.hausdorff', aka: ['Hausdorff 极大原理', '极大原理'] },
+    { id: 'thm.hausdorff', aka: ['Hausdorff 极大原理', '极大原理', 'Hausdorff maximal principle'] },
     { id: 'lem.tukey', aka: ['Tukey 引理', 'Tukey'] },
 
     /* 代数结构 */
@@ -153,7 +153,7 @@ MG.aliases = {
     { id: 'def.monotone-class', aka: ['单调类', 'monotone class'] },
     { id: 'def.sigma-ring', aka: ['σ-环', 'sigma-ring'] },
     { id: 'def.sigma-algebra', aka: ['σ-代数', 'sigma-algebra', 'sigma-field', 'σ域', '可测空间'] },
-    { id: 'thm.ring-monotone-sigma', aka: ['环到σ环', '从环到σ代数'] },
+    { id: 'thm.ring-monotone-sigma', aka: ['环到σ环', '从环到σ代数', 'when a ring is a sigma-ring'] },
     { id: 'def.generated-sigma', aka: ['生成', '生成的σ代数', 'generated sigma-algebra'] },
     { id: 'thm.monotone-class', aka: ['单调类定理', 'monotone class theorem'] },
     { id: 'def.borel', aka: ['Borel', 'Borel 集', 'Borel σ代数'] },
@@ -227,7 +227,7 @@ MG.aliases = {
     { id: 'def.section', aka: ['截口', 'section', '切片'] },
     { id: 'prop.product-sigma-base', aka: ['积 σ代数的生成基'] },
     { id: 'prop.product-sigma-generated', aka: ['可数积的生成'] },
-    { id: 'prop.section-measurable', aka: ['截口可测'] },
+    { id: 'prop.section-measurable', aka: ['截口可测', 'sections of measurable sets and functions'] },
     { id: 'cor.borel-product', aka: ['可数积的 Borel 代数'] },
     { id: 'def.product-measure', aka: ['乘积测度', 'product measure'] },
     { id: 'thm.product-measure-sections', aka: ['乘积测度由截口给出'] },
@@ -253,7 +253,7 @@ MG.aliases = {
     { id: 'prop.integral-gives-ac', aka: ['积分给出绝对连续'] },
     { id: 'thm.rn-complex', aka: ['复测度的 RN 定理'] },
     { id: 'cor.ac-integral-continuity', aka: ['积分的绝对连续性'] },
-    { id: 'thm.lebesgue-radon-nikodym', aka: ['Radon–Nikodym', 'RN 定理', '拉东-尼科迪姆', 'Radon-Nikodym theorem'] },
+    { id: 'thm.lebesgue-radon-nikodym', aka: ['RN 定理', '拉东-尼科迪姆', 'Radon-Nikodym theorem'] },
     { id: 'prop.rn-chain-rule', aka: ['链式法则', 'RN 链式法则'] },
 
     /* 微分定理 */
@@ -285,10 +285,10 @@ MG.aliases = {
     { id: 'prop.monotone-integral-derivative', aka: ['递增函数的导数积分不等式'] },
     { id: 'prop.bv-regularity', aka: ['BV 函数的正则性'] },
     { id: 'thm.borel-measure-nbv', aka: ['测度与 NBV 一一对应'] },
-    { id: 'prop.nbv-derivative', aka: ['NBV 的导数与测度'] },
+    { id: 'prop.nbv-derivative', aka: ['NBV 的导数与测度', 'derivative of an NBV function and its measure'] },
     { id: 'cor.integral-is-ac-nbv', aka: ['积出来的函数是 AC'] },
     { id: 'prop.ac-iff-measure-ac', aka: ['函数绝对连续等价于测度绝对连续'] },
-    { id: 'thm.ftc-lebesgue', aka: ['微积分基本定理', 'FTC', 'fundamental theorem of calculus', 'Newton-Leibniz', '牛顿-莱布尼茨'] },
+    { id: 'thm.ftc-lebesgue', aka: ['微积分基本定理', 'FTC', 'fundamental theorem of calculus', 'Newton-Leibniz 定理', '牛顿-莱布尼茨'] },
 
     /* L^p 空间 */
     { id: 'def.conjugate-exponents', aka: ['共轭指数', 'conjugate exponents', '对偶指数'] },
@@ -322,7 +322,7 @@ MG.aliases = {
     { id: 'def.graph', aka: ['图', 'graph', '有向图', '对象与态射'] },
     { id: 'def.graph-morphism', aka: ['图的态射', 'graph morphism', '图的同态'] },
     { id: 'def.category', aka: ['范畴', 'category', 'Cat', '态射', 'Definition 1.1.1', 'Def 1.1.1'] },
-    { id: 'def.section-retraction', aka: ['截面', '收缩', 'section', 'retraction', '分裂', 'Definition 1.1.3', 'Def 1.1.3'] },
+    { id: 'def.section-retraction', aka: ['截面', '收缩', 'section / retraction', '分裂', 'Definition 1.1.3', 'Def 1.1.3'] },
 
     /* 函子与自然变换 */
     { id: 'def.functor', aka: ['函子', 'functor', '反变函子', '共变函子', '遗忘函子'] },
@@ -362,7 +362,7 @@ MG.aliases = {
     { id: 'def.adjoint', aka: ['伴随函子', 'adjoint functor', '左伴随', '右伴随', 'adjunction', 'Definition 1.5.1', 'Def 1.5.1'] },
     { id: 'def.adjunction-unit', aka: ['单位', '余单位', 'unit', 'counit', '三角等式', 'Proposition 1.5.2', 'Prop 1.5.2', 'Definition 1.5.3', 'Def 1.5.3'] },
     { id: 'thm.right-adjoint-criterion', aka: ['右伴随存在的判据', 'adjoint functor existence'] },
-    { id: 'prop.adjoint-full-faithful', aka: ['全忠实等价于单位同构'] },
+    { id: 'prop.adjoint-full-faithful', aka: ['全忠实等价于单位同构', 'fully faithful iff the unit is an isomorphism'] },
     { id: 'prop.limit-adjoint', aka: ['极限即伴随', '常图函子的伴随', 'Proposition 1.5.4', 'Prop 1.5.4'] },
     { id: 'thm.right-adjoint-preserves-limits', aka: ['右伴随保极限', 'RAPL', '左伴随保余极限', 'Theorem 1.5.5', 'Thm 1.5.5'] },
     { id: 'thm.saft', aka: ['伴随函子定理', 'SAFT', 'special adjoint functor theorem', 'Theorem 1.5.6', 'Thm 1.5.6'] },
@@ -374,7 +374,7 @@ MG.aliases = {
 
     /* 原书第 1–4 章的定义骨架（按书号可搜） */
     { id: 'def.subcategory', aka: ['子范畴', 'subcategory', '满子范畴', 'Definition 1.1.5', 'Def 1.1.5'] },
-    { id: 'def.simplex-category', aka: ['单纯形范畴', 'simplex category', 'Delta', '面映射', '退化映射', 'Definition 1.1.2', 'Def 1.1.2'] },
+    { id: 'def.simplex-category', aka: ['单纯形范畴', 'simplex category', '面映射', '退化映射', 'Definition 1.1.2', 'Def 1.1.2'] },
     { id: 'prop.iso-unique-section', aka: ['Proposition 1.1.4', 'Prop 1.1.4', '同构的截面唯一'] },
     { id: 'def.ind-object', aka: ['Ind-对象', 'ind-object', 'Ind(C)', 'Definition 1.4.3', 'Def 1.4.3'] },
     { id: 'def.preserves-limit', aka: ['保极限', 'preserves limits', '保余极限', '连续函子', 'Definition 1.4.4', 'Def 1.4.4'] },
@@ -462,7 +462,7 @@ MG.aliases = {
     { id: 'def.bicomplex', aka: ['双复形', 'bicomplex', '复形的复形', 'Definition 7.2.17', 'Def 7.2.17'] },
     { id: 'cor.grothendieck-spectral', aka: ['Grothendieck 谱序列', 'Corollary 7.2.13', 'Cor 7.2.13', 'Corollary 7.2.21', 'Proposition 7.2.20'] },
     { id: 'def.sheaf-cohomology', aka: ['层上同调', 'sheaf cohomology', 'H^n(X,M)', 'Definition 7.3.1', 'Def 7.3.1'] },
-    { id: 'def.cech-cohomology', aka: ['Čech 上同调', 'Cech 上同调', 'Cech cohomology', 'Definition 7.3.5', 'Def 7.3.5'] },
+    { id: 'def.cech-cohomology', aka: ['Čech 上同调', 'Cech 上同调', 'Čech cohomology', 'Definition 7.3.5', 'Def 7.3.5'] },
     { id: 'prop.cech-as-colim', aka: ['Čech 上同调是余极限', 'Exercise 7.46', 'Proposition 7.3.4'] },
     { id: 'thm.cartan-leray', aka: ['Cartan-Leray', 'Cartan–Leray 谱序列', 'Theorem 7.3.6', 'Thm 7.3.6', 'Corollary 7.3.7'] },
     { id: 'def.acyclic-sheaf', aka: ['无环层', 'acyclic sheaf', 'Definition 7.3.9', 'Def 7.3.9'] },
@@ -475,12 +475,12 @@ MG.aliases = {
     { id: 'def.reflective-subcategory', aka: ['反射子范畴', 'reflective subcategory', '余反射', '反射函子', 'Definition 1.5.8', 'Def 1.5.8'] },
     { id: 'prop.reflective-limits', aka: ['反射子范畴里的极限', 'Exercise 1.64', 'Exercise 1.70'] },
     { id: 'def.kan-extension', aka: ['Kan 延拓', 'Kan extension', '左 Kan 延拓', '右 Kan 延拓', 'Definition 1.5.9', 'Def 1.5.9'] },
-    { id: 'ex.kan-extension', aka: ['余极限是 Kan 延拓', '伴随是 Kan 延拓'] },
+    { id: 'ex.kan-extension', aka: ['余极限是 Kan 延拓', '伴随是 Kan 延拓', 'Kan extensions: colimits and right adjoints'] },
     { id: 'prop.filtered-exact', aka: ['滤过余极限正合', 'filtered colimits are exact', 'Proposition 1.5.7', 'Prop 1.5.7', 'Exercise 1.68'] },
 
     /* 紧 Haus 与 Stone */
     { id: 'def.chaus', aka: ['CHaus', '紧 Hausdorff 空间', 'compact Hausdorff', '紧豪斯多夫空间'] },
-    { id: 'prop.chaus-reflective', aka: ['Stone-Cech 紧化', 'Stone-Čech', 'βX', 'beta X', '紧化', 'Definition 2.1.6', 'Def 2.1.6', 'Proposition 2.1.7', 'Prop 2.1.7'] },
+    { id: 'prop.chaus-reflective', aka: ['Stone-Cech 紧化', 'Stone–Čech compactification', 'βX', '紧化', 'Definition 2.1.6', 'Def 2.1.6', 'Proposition 2.1.7', 'Prop 2.1.7'] },
     { id: 'lem.minimal-closed-surjection', aka: ['满射的极小闭子集', 'Lemma 2.1.5'] },
     { id: 'def.free-compact-hausdorff', aka: ['自由紧 Hausdorff 空间', 'free compact Hausdorff', 'FCHaus', 'Definition 2.2.1', 'Def 2.2.1', 'Exercise 2.11'] },
     { id: 'prop.chaus-quotient-of-free', aka: ['紧 Haus 是自由的商'] },
@@ -556,7 +556,7 @@ MG.aliases = {
     { id: 'thm.top-cond-adjoint', aka: ['拓扑空间到凝聚态集', 'Top 到 Cond', 'kTop', 'Theorem 4.2.4', 'Thm 4.2.4'] },
     { id: 'def.condensed-abelian-group', aka: ['凝聚态阿贝尔群', 'condensed abelian group', 'CondAb', 'Ab(Cond)', 'Definition 6.1.1', 'Proposition 6.1.2', 'Prop 6.1.2'] },
     { id: 'def.grothendieck-category', aka: ['Grothendieck 范畴', 'Grothendieck category', 'AB5', 'Definition 5.2.6'] },
-    { id: 'def.abelian-category', aka: ['预加法范畴', '加法范畴', '预阿贝尔范畴', '阿贝尔范畴', 'Ab-范畴', 'Definition 5.1.1', 'Definition 5.1.4', 'Definition 5.2.1', 'Definition 5.2.2', 'Exercise 5.8'] },
+    { id: 'def.abelian-category', aka: ['预加法范畴', '加法范畴', '预阿贝尔范畴', '阿贝尔范畴', 'Ab-范畴', 'additive and abelian categories', 'Definition 5.1.1', 'Definition 5.1.4', 'Definition 5.2.1', 'Definition 5.2.2', 'Exercise 5.8'] },
     { id: 'def.ab-axioms', aka: ['AB 公理', 'AB 公理的例子', 'Definition 5.2.5'] },
     { id: 'prop.condab-section', aka: ['截面函子', 'Gamma(F,-)', 'sections functor', 'Exercise 5.17'] },
     { id: 'thm.condab-ab', aka: ['CondAb 满足 AB6', 'AB4*', 'AB 公理', 'Theorem 6.1.4', 'Corollary 6.1.5'] },
@@ -566,7 +566,7 @@ MG.aliases = {
     /* 阿贝尔层 */
     { id: 'def.presheaf-valued', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
     { id: 'def.abelian-sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14', 'Exercise 5.22'] },
-    { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'Theorem 5.3.2'] },
+    { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'abelian groups in a topos form a Grothendieck category', 'Theorem 5.3.2'] },
     { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8', 'Exercise 5.21', 'Exercise 5.23', 'Exercise 5.30', 'Exercise 3.44'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28', 'Exercise 5.26', 'Exercise 5.27'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3', 'Exercise 5.31'] },
@@ -595,7 +595,7 @@ MG.aliases = {
     { id: 'def.normal-subgroup', aka: ['正规子群', 'normal subgroup', '陪集', 'coset'] },
     { id: 'def.quotient-group', aka: ['商群', 'quotient group', 'G/N', '商映射'] },
     { id: 'def.group-hom', aka: ['群同态', 'group homomorphism', '核', 'kernel', '像', 'image'] },
-    { id: 'thm.first-iso', aka: ['Noether 第一同构定理', '第一同构定理', '同构定理', 'first isomorphism theorem', 'Noether'] },
+    { id: 'thm.first-iso', aka: ['Noether 第一同构定理', '第一同构定理', '同构定理', 'first isomorphism theorem'] },
     { id: 'def.product-topology', aka: ['积拓扑', 'product topology', '乘积空间', '投影'] },
 
     /* 书里的编号（按编号直接搜） */

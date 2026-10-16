@@ -1,6 +1,9 @@
-# 全忠实与单位　`prop.adjoint-full-faithful`
+# fully faithful iff the unit is an isomorphism　`prop.adjoint-full-faithful`
 English entry · root `../`
 [in graph](../#n=prop.adjoint-full-faithful)　·　[Chinese page (authoritative)](./prop.adjoint-full-faithful.md)
+
+## Statement and proof
+Chinese only — see the Chinese page `nodes/prop.adjoint-full-faithful.md` and `proofs/`.
 
 ## Elsewhere
 Wikipedia: https://en.wikipedia.org/wiki/Full_and_faithful_functors · nLab: https://ncatlab.org/nlab/show/full+and+faithful+functor

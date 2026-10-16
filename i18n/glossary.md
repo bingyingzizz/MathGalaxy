@@ -60,3 +60,5 @@
 - 深链　→　deep link　`+`　— #n=<节点id>
 - 内容版本　→　content version　`+`　— tools/ids.snapshot.json 里的 vX.Y.Z
 - 概念页　→　concept page　`+`　— nodes/<id>.html
+- 拼写口径　→　spelling: American English (-ize, -ization)　`+`　— T2.1 定；⛔ 不混英式 -ise / -our / centre。人名保留变音符：Čech / Hölder / Teichmüller / Radon–Nikodym
+- 连字符人名　→　hyphenated names keep their hyphen　`+`　— Heine-Borel / Cartan-Leray / Lebesgue–Stieltjes；aka 里 ASCII 连字符与 en dash 两种写法都收

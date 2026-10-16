@@ -1,4 +1,4 @@
-# 本性上界与 L^∞　`def.essential-sup`
+# essential supremum　`def.essential-sup`
 English entry · root `../`
 [in graph](../#n=def.essential-sup)　·　[Chinese page (authoritative)](./def.essential-sup.md)
 

@@ -27,32 +27,32 @@
 
 | 桶 | 节点数 | 占比 | 意思 |
 |---|---|---|---|
-| ✅ 一级填入（`from: aka` / `from: title`） | 230 | 32.4% | aka 里恰好一条名字样英文 |
-| ✅ 二级填入（`from: aka-title`） | 44 | 6.2% | title 里恰好命中一个 aka 候选 —— 清单见 `i18n/second-tier.md`（可整批回滚）|
-| ⛔ 缺口 | 435 | 61.4% | 下面第二节逐条列 |
-| **合计** | **709** | 100% | 覆盖 274（38.6%），缺口 435 |
+| ✅ 一级填入（`from: aka` / `from: title`） | 253 | 35.7% | aka 里恰好一条名字样英文 |
+| ✅ 二级填入（`from: aka-title`） | 41 | 5.8% | title 里恰好命中一个 aka 候选 —— 清单见 `i18n/second-tier.md`（可整批回滚）|
+| ⛔ 缺口 | 415 | 58.5% | 下面第二节逐条列 |
+| **合计** | **709** | 100% | 覆盖 294（41.5%），缺口 415 |
 
 ## 二、缺口为什么填不了（互斥，合计 = 缺口数）
 
 | 桶 | 节点数 | 意思 |
 |---|---|---|
-| ⚠️ 歧义（二级也没捞着） | 54 | aka 里有 ≥2 条英文写法，且 title 里没出现其中一个 |
-| ⚠️ 只有缩写 | 23 | aka 里只有 AC / FOL / sup / MCT a.e. 这种缩写 |
-| ⚠️ 只有书号 | 259 | aka 里只有 Exercise 2.25 / Theorem 8.3.9 这种坐标（搜索用，不是名字）|
-| ⚠️ 只有 title 有 | 4 | aka 没有英文，但 title 括号里是英文 |
-| ⛔ 完全没有 | 95 | aka 与 title 都没有英文名 |
-| **合计** | **435** | = 全部节点 709 − 已覆盖 274 |
+| ⚠️ 歧义（二级也没捞着） | 51 | aka 里有 ≥2 条英文写法，且 title 里没出现其中一个 |
+| ⚠️ 只有缩写 | 17 | aka 里只有 AC / FOL / sup / MCT a.e. 这种缩写 |
+| ⚠️ 只有书号 | 256 | aka 里只有 Exercise 2.25 / Theorem 8.3.9 这种坐标（搜索用，不是名字）|
+| ⚠️ 只有 title 有 | 3 | aka 没有英文，但 title 括号里是英文 |
+| ⛔ 完全没有 | 88 | aka 与 title 都没有英文名 |
+| **合计** | **415** | = 全部节点 709 − 已覆盖 294 |
 
-⚠️ **口径提醒**：脚本内部的分桶是在**二级之前**做的，所以「歧义」原始数是 98，其中 **44** 条被二级捞走了 —— 上表用的是减完的 54。
+⚠️ **口径提醒**：脚本内部的分桶是在**二级之前**做的，所以「歧义」原始数是 92，其中 **41** 条被二级捞走了 —— 上表用的是减完的 51。
 两张表各自互斥、各自合计对得上；⛔ 别把两张表的行混着加。
 
 ---
 
-## 缺口按星系分组（435）
+## 缺口按星系分组（415）
 
 每行都带上候选集，方便照着 `aliases.js` 补。同一节点属多个星系时只列在第一个里。
 
-### 集合论 · `set-theory`（19）
+### 集合论 · `set-theory`（15）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
@@ -60,29 +60,24 @@
 | `thm.empty` | 空集存在 | — | 空集存在且唯一 | 无候选（aka 与 title 都没有英文） |
 | `thm.noself` | 无自属集合 | — | 任何集合都不属于自身 | 无候选（aka 与 title 都没有英文） |
 | `thm.binunion` | 二元并存在 | — | 二元并 $a \cup b$ 存在 | 无候选（aka 与 title 都没有英文） |
-| `thm.wellordering` | 良序定理 | `well-ordering theorem` / `Zermelo` | 良序定理 / 良序原理（Well-Ordering Theorem, Zermelo 1904） | 多命中：`well-ordering theorem` / `Zermelo` |
 | `def.union-inter` | 并集与交集 | `union` / `intersection` | 并集 / 交集（Union & Intersection） | 多命中：`union` / `intersection` |
 | `def.diff-complement` | 差集与补集 | `difference` / `complement` | 差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference） | 多命中：`difference` / `complement` |
 | `def.bijection` | 单射 / 满射 / 双射 | `injective` / `surjective` / `bijective` | 单射 / 满射 / 双射（Injective / Surjective / Bijective） | 多命中：`injective` / `surjective` / `bijective` |
 | `def.equinumerous` | 等势 | `equipotent` / `same cardinality` | 等势（Equinumerous） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
-| `thm.schroder-bernstein` | Schröder–Bernstein 定理 | `Cantor–Bernstein` / `Cantor-Bernstein-Schroeder` | Schröder–Bernstein 定理 | 零命中（候选没出现在 title 里） |
-| `thm.cardinal-comparable` | 基数可比定理 | — | 基数可比定理（需要选择公理） | 无候选（aka 与 title 都没有英文） |
+| `thm.schroder-bernstein` | Schröder–Bernstein 定理 | `Cantor–Bernstein` / `Cantor-Bernstein-Schroeder` | Schröder–Bernstein 定理 | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `thm.induction` | 归纳原理与递推定义 | `induction` / `recursion` | 归纳原理 / 递推定义（Induction & Recursion） | 多命中：`induction` / `recursion` |
 | `def.nat-arith` | 自然数的加法与乘法 | — | 自然数上的加法与乘法（由递推定义） | 无候选（aka 与 title 都没有英文） |
-| `def.cauchy-null` | Cauchy 列与零列 | `Cauchy sequence` / `null sequence` | 有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `thm.real-ordered-field` | ℝ 是完备有序域 | `least upper bound property` / `completeness of R` | $\mathbb{R}$ 是完备有序域（确界原理） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `thm.real-unique` | 完备有序域的唯一性 | — | 任何完备有序域都与 $\mathbb{R}$ 同构（构造无关性） | 无候选（aka 与 title 都没有英文） |
 | `thm.recursion-wellorder` | 超限递归 | `transfinite recursion` / `transfinite induction` | 良序集上的递归定理（含超限归纳） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `thm.ordinal-trichotomy` | 序数可比 | — | 序数的三歧性：$\in$ 在 $\mathrm{On}$ 上是良序 | 无候选（aka 与 title 都没有英文） |
-| `thm.burali-forti` | 序数全体是真类 | `Burali-Forti` | Burali–Forti：序数全体不构成集合 | 零命中（候选没出现在 title 里） |
 
-### 序理论 · `order-theory`（3）
+### 序理论 · `order-theory`（2）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
 | `def.poset` | 偏序集 | `partial order` / `poset` | 偏序集 / 全序集（Partially Ordered Set） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `def.wellorder` | 良序集 | `well-order` / `well-ordering` | 良序集（Well-Ordered Set） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
-| `thm.hausdorff` | Hausdorff 极大原理 | — | Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle, 1914） | 无候选（aka 没英文，title 里有） |
 
 ### 抽象代数 · `algebra`（6）
 
@@ -95,17 +90,15 @@
 | `prop.module-tensor-universal` | 张量积对双线性映射万有 | （只有书号：`Exercise 1.21`） | 命题：$\operatorname{Bil}(M \times N,\ P) \cong \operatorname{H | 无候选（aka 里只有书号） |
 | `prop.zmod-is-ab` | Z-模就是阿贝尔群 | （只有书号：`Exercise 1.10`） | 命题：$\mathbb{Z}\text{-}\mathbf{Mod} \cong \mathbf{Ab}$、$\math | 无候选（aka 里只有书号） |
 
-### 拓扑学 · `topology`（46）
+### 拓扑学 · `topology`（45）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
-| `thm.metric-compact-equiv` | 紧的三个等价刻画 | `Heine-Borel` | 度量空间中：紧 $\iff$ 列紧 $\iff$ 完备 + 全有界 | 零命中（候选没出现在 title 里） |
 | `prop.compact-subset-closed` | 紧子集是闭的 | — | 命题：紧子集在 X 中是闭集 | 无候选（aka 与 title 都没有英文） |
 | `prop.subset-compact-equiv` | 子集的紧性刻画 | — | 命题：X 完备时，A 紧 $\iff A$ 闭且全有界 | 无候选（aka 与 title 都没有英文） |
 | `def.topology` | 拓扑空间与开集 | `topology` / `open set` | 拓扑空间 / 开集（Topological Space） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `def.closed-set` | 闭集与闭包 | `closed set` / `closure` | 闭集 / 闭包 / 稠密（Closed Set, Closure） | 多命中：`closed set` / `closure` |
 | `def.topology-base` | 基与子基 | `base` / `subbase` | 拓扑的基 / 子基（Basis, Subbasis） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
-| `prop.chaus-reflective` | 紧 Haus 是反射子范畴 | `Stone-Čech` / `beta X` | Stone–Čech 紧化 | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `lem.minimal-closed-surjection` | 满射的极小闭子集 | （只有书号：`Lemma 2.1.5`） | 满连续映射的极小闭子集 | 无候选（aka 里只有书号） |
 | `prop.chaus-quotient-of-free` | 紧 Haus 是自由的商 | — | 每个紧 Hausdorff 空间都是自由紧 Hausdorff 空间的商 | 无候选（aka 与 title 都没有英文） |
 | `prop.free-projective` | 自由紧 Haus 是投射对象 | — | 自由紧 Hausdorff 空间是 $\mathbf{CHaus}$ 的投射对象 | 无候选（aka 与 title 都没有英文） |
@@ -118,6 +111,7 @@
 | `def.profinite` | 投射有限空间 | `profinite space` / `profinite` | 投射有限空间（Profinite Space） | 多命中：`profinite space` / `profinite` |
 | `ex.cg-examples` | 紧生成空间的例子 | （只有书号：`Exercise 6.2`） | 哪些空间是紧生成的 | 无候选（aka 里只有书号） |
 | `prop.cg-equivalent-conditions` | 紧生成空间的等价刻画 | （只有书号：`Exercise 2.24`） | 紧生成性的六条等价说法 | 无候选（aka 里只有书号） |
+| `def.k-topology` | k-开、k-闭与 k-拓扑 | `k-ification` / `kX` | $k$-开集与 $k$-化（$k$-Topology） | 零命中（候选没出现在 title 里） |
 | `prop.ktx-colimit` | kX 是紧空间的余极限 | （只有书号：`Exercise 2.26`） | $kX = \varinjlim S$ | 无候选（aka 里只有书号） |
 | `cor.cg-product` | 紧生成空间对积封闭 | （只有书号：`Exercise 2.25`） | 紧生成空间作积仍紧生成 | 无候选（aka 里只有书号） |
 | `prop.k-product` | k-化与积 | `k(X×Y)` | $k(kX \times Y) = k(X \times Y)$ | 零命中（候选没出现在 title 里） |
@@ -146,14 +140,13 @@
 | `prop.chaus-quotient-equiv` | 紧 Hausdorff 上商映射的四种说法 | （只有书号：`Exercise 2.9`） | 命题：商映射 $\iff$ 正则满 $\iff$ 满态射 $\iff$ 满射 | 无候选（aka 里只有书号） |
 | `prop.weak-hausdorff-k-closed` | 弱 Hausdorff 的对角线与核 | （只有书号：`Exercise 2.36` / `Exercise 2.37`） | 命题：对角线 $k$-闭 $\iff$ 弱 Hausdorff；$\ker(f,g)$ 也 $k$-闭 | 无候选（aka 里只有书号） |
 
-### 分析学 · `analysis`（86）
+### 分析学 · `analysis`（79）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
 | `def.set-ring` | 环与代数 | `ring of sets` / `algebra of sets` | 环与代数（Ring, Algebra） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `def.sigma-algebra` | σ-代数 | `sigma-algebra` / `sigma-field` | σ-代数（σ-Algebra） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `prop.set-class-properties` | 集合族的基本性质 | — | 命题：基本类 / 环 / σ-代数的几条基本性质 | 无候选（aka 与 title 都没有英文） |
-| `thm.ring-monotone-sigma` | 环 → σ-环 的判据 | — | 定理：环是 σ-环 $\iff$ 它是单调类 $\iff$ 它对可数不交并封闭 | 无候选（aka 与 title 都没有英文） |
 | `prop.product-sigma-base` | 积 σ-代数的生成基 | — | 命题：把各坐标的 σ-代数换成生成元，积 σ-代数不变 | 无候选（aka 与 title 都没有英文） |
 | `prop.product-sigma-generated` | 可数积的生成集 | — | 命题：指标集可数时，积 σ-代数由「矩形」生成 | 无候选（aka 与 title 都没有英文） |
 | `cor.borel-product` | 可数积的 Borel 代数 | — | 推论：可数积距离空间的 Borel σ-代数（可分时相等） | 无候选（aka 与 title 都没有英文） |
@@ -166,7 +159,6 @@
 | `thm.caratheodory-uniqueness` | 扩张的唯一性 | — | 定理：Carathéodory 扩张是最大的，σ-有限时唯一 | 无候选（aka 与 title 都没有英文） |
 | `prop.ls-premeasure` | F 给出的预测度 | — | 命题：单调右连续的 F 给出半开区间上的预测度 | 无候选（aka 与 title 都没有英文） |
 | `thm.ls-exists` | F ↔ Borel 测度 | — | 定理：每个单调右连续的 F 对应一个 Borel 测度（差常数意义下） | 无候选（aka 与 title 都没有英文） |
-| `def.lebesgue-stieltjes` | Lebesgue–Stieltjes 测度 | `Lebesgue–Stieltjes` | Lebesgue–Stieltjes 测度（Lebesgue–Stieltjes Measure $\mu_F$） | 零命中（候选没出现在 title 里） |
 | `prop.measurable-criterion` | 可测性的两条判定准则 | — | 命题：复合保持可测；只需在生成元上验证 | 无候选（aka 与 title 都没有英文） |
 | `cor.continuous-measurable` | 连续 ⟹ Borel 可测 | — | 推论：连续函数是 Borel 可测的 | 无候选（aka 与 title 都没有英文） |
 | `def.lebesgue-measurable` | Lebesgue 可测 | — | Lebesgue 可测 / Borel 可测（$\mathbb{R} \to \mathbb{C}$ 的情形） | 无候选（aka 与 title 都没有英文） |
@@ -194,8 +186,6 @@
 | `def.cauchy-in-measure` | 依测度 Cauchy | — | 依测度 Cauchy 序列 | 无候选（aka 与 title 都没有英文） |
 | `thm.cauchy-in-measure` | 依测度 Cauchy ⟹ 收敛 | — | 定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛 | 无候选（aka 与 title 都没有英文） |
 | `prop.L1-implies-measure` | L¹ 收敛 ⟹ 依测度收敛 | — | 命题：$L^{1}$ 收敛蕴含依测度收敛（Markov 不等式） | 无候选（aka 与 title 都没有英文） |
-| `def.section` | 截口 | （只有书号：`section`） | 截口（Section）$E_{x}$ 与 $E^{y}$ | 无候选（aka 里只有书号） |
-| `prop.section-measurable` | 截口可测 | — | 命题：可测集的截口可测，可测函数的截口可测 | 无候选（aka 与 title 都没有英文） |
 | `thm.product-measure-sections` | 乘积测度由截口给出 | — | 定理：$\mu \times \nu(E) = \int \nu(E_{x}) d\mu(x) = \int \mu(E | 无候选（aka 与 title 都没有英文） |
 | `thm.fubini-tonelli` | Fubini–Tonelli | `Fubini` / `Tonelli` | Fubini–Tonelli 定理（重积分可交换次序） | 多命中：`Fubini` / `Tonelli` |
 | `thm.fubini-complete` | 完备情形的 F–T | — | 定理：完备化的乘积测度上，Fubini–Tonelli 仍然成立 | 无候选（aka 与 title 都没有英文） |
@@ -224,18 +214,15 @@
 | `lem.nbv-variation` | 全变差的 NBV 性质 | — | 引理：$T_F(-\infty) = 0$；F 右连续 $\implies T_F$ 右连续 | 无候选（aka 与 title 都没有英文） |
 | `prop.monotone-integral-derivative` | 递增函数的导数积分不等式 | — | 命题：$\int_{a}^{b} F' \le F(b) - F(a)$ | 无候选（aka 与 title 都没有英文） |
 | `thm.borel-measure-nbv` | 测度 ↔ NBV 的一一对应 | — | 定理：$\mathbb{R}$ 上的复 Borel 测度 $\longleftrightarrow$ NBV 函数 | 无候选（aka 与 title 都没有英文） |
-| `prop.nbv-derivative` | NBV 函数的导数与测度的关系 | — | 命题：$\mu_F \perp m \iff F' = 0 \text{a.e.}$；$\mu_F \ll m \iff | 无候选（aka 与 title 都没有英文） |
 | `prop.ac-iff-measure-ac` | 函数绝对连续 ⟺ 测度绝对连续 | — | 命题：F 绝对连续 $\iff \mu_F \ll m$ | 无候选（aka 与 title 都没有英文） |
 | `cor.integral-is-ac-nbv` | 积出来的函数是 AC · NBV | — | 推论：$f \in L^{1}(m) \implies F(x) = \int_{-\infty}^{x} f$ 是 A | 无候选（aka 与 title 都没有英文） |
 | `lem.ac-subset-bv` | AC ⊆ BV | — | 引理：绝对连续蕴含绝对变差（紧区间上） | 无候选（aka 与 title 都没有英文） |
-| `def.essential-sup` | 本性上界与 L^∞ | `essential supremum` / `L-infinity` | 本性上界 $\\|f\\|_\infty$ 与空间 $L^\infty$ | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `thm.linf-properties` | L^∞ 的性质 | — | 定理：$L^\infty$ 的五条基本性质 | 无候选（aka 与 title 都没有英文） |
 | `prop.lq-in-lp-plus-lr` | L^q 落在 L^p + L^r 里 | — | 命题：$L^q \subseteq L^p + L^r$（$0 < p < q < r \le \infty$） | 无候选（aka 与 title 都没有英文） |
 | `prop.lp-inter-lr-in-lq` | L^p ∩ L^r ⊆ L^q | — | 命题（插值）：$L^p \cap L^r \subseteq L^q$ | 无候选（aka 与 title 都没有英文） |
 | `prop.ell-p-inclusion` | ℓ^p ⊆ ℓ^q | — | 命题（只有衰减的场合）：$\ell^p \subseteq \ell^q$（$0 < p < q \le \infty$ | 无候选（aka 与 title 都没有英文） |
 | `prop.lp-inclusion-finite` | 有限测度时方向反过来 | — | 命题（只有爆破的场合）：$\mu(X) < \infty$ 时 $L^p(\mu) \supseteq L^q(\mu) | 无候选（aka 与 title 都没有英文） |
 | `prop.bounded-functional-gives-lq` | 有界 ⟹ g ∈ L^q | — | 命题：若 $f \mapsto \int fg$ 在简单函数上有界，则 $g \in L^q$ | 无候选（aka 与 title 都没有英文） |
-| `thm.real-uncountable` | ℝ 不可数 | — | 实数集是稠密而不可数的：$\|\mathbb{R}\| = 2^{\aleph_0}$ | 无候选（aka 与 title 都没有英文） |
 
 ### 数理逻辑 · `logic`（1）
 
@@ -243,7 +230,7 @@
 |---|---|---|---|---|
 | `def.satisfaction` | 满足关系 | `satisfaction` / `semantics` | 结构与满足关系 $\models$（Tarski） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 
-### 范畴论 · `category`（126）
+### 范畴论 · `category`（124）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
@@ -261,11 +248,9 @@
 | `lem.presheaf-mono-pointwise` | 预层态射的单满按点检验 | — | 预层是逐点算的 | 无候选（aka 与 title 都没有英文） |
 | `def.adjoint` | 伴随函子 | `adjoint functor` / `adjunction` | 伴随函子（Adjoint Functors） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `def.adjunction-unit` | 单位与余单位 | `unit` / `counit` | 单位与余单位（Unit and Counit） | 多命中：`unit` / `counit` |
-| `prop.adjoint-full-faithful` | 全忠实与单位 | — | 全忠实 $\iff$ 单位（余单位）是同构 | 无候选（aka 与 title 都没有英文） |
 | `prop.limit-adjoint` | 极限即伴随 | （只有书号：`Proposition 1.5.4` / `Prop 1.5.4`） | 极限 $\iff$ 常图函子有伴随 | 无候选（aka 里只有书号） |
 | `thm.right-adjoint-preserves-limits` | 右伴随保极限 | `RAPL` | 右伴随保持所有极限 | 零命中（候选没出现在 title 里） |
 | `prop.reflective-limits` | 反射子范畴里的极限 | （只有书号：`Exercise 1.64` / `Exercise 1.70`） | 反射子范畴中的极限与余极限 | 无候选（aka 里只有书号） |
-| `ex.kan-extension` | Kan 延拓的两个例子 | — | 余极限与右伴随都是 Kan 延拓 | 无候选（aka 与 title 都没有英文） |
 | `def.grothendieck-topology` | Grothendieck 拓扑 | `Grothendieck topology` / `site` | Grothendieck 拓扑与 site（Grothendieck Topology, Site） | 多命中：`Grothendieck topology` / `site` |
 | `prop.cech-properties` | Čech 函子的性质 | （只有书号：`Lemma 3.2.6`） | Čech 函子的三条性质 | 无候选（aka 里只有书号） |
 | `thm.sheafification` | 层化 | `sheafification` / `sheafify` | 层化：层范畴是预层范畴的反射子范畴 | 零命中（aka 有 2 条候选，title 里一条都没出现） |
@@ -374,7 +359,7 @@
 | `prop.coreflective-monoids-full` | 余反射子范畴上的幺半群 | （只有书号：`Exercise 1.72`） | 命题：$\mathcal{C}'$ 余反射 $\implies \mathrm{Mon}(\mathcal{C}')$  | 无候选（aka 里只有书号） |
 | `prop.slice-covering-sieve` | 切片里的覆盖筛 | （只有书号：`Exercise 3.62`） | 命题：$R$ 在 $\mathcal{C}/T$ 里覆盖 $\iff$ $\hat j_{T!}R$ 在 $\mathc | 无候选（aka 里只有书号） |
 
-### 凝聚态数学 · `condensed`（63）
+### 凝聚态数学 · `condensed`（62）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
@@ -401,7 +386,6 @@
 | `prop.banach-stone-acyclic` | Banach 在 Stone 上零调 | （只有书号：`Proposition 8.2.6`） | Banach 阿贝尔群在 Stone 空间上零调 | 无候选（aka 里只有书号） |
 | `thm.real-banach-chaus-acyclic` | 实 Banach 在紧 Hausdorff 上零调 | （只有书号：`Theorem 8.2.8`） | 实 Banach 空间在紧 Hausdorff 空间上零调 | 无候选（aka 里只有书号） |
 | `lem.ext-stonean-section` | Stonean 上 Ext 的截面公式 | （只有书号：`Lemma 8.3.1`） | $\operatorname{Ext}^{n}(M, N)(S) \cong \operatorname{Ext}^{n | 无候选（aka 里只有书号） |
-| `thm.breen-deligne` | Breen–Deligne 分解 | `Breen-Deligne` | Breen–Deligne 分解：自由阿贝尔群的有限直和消解 | 零命中（候选没出现在 title 里） |
 | `prop.breen-deligne-ss-stonean` | Stonean 上 Breen–Deligne 的谱序列 | （只有书号：`Proposition 8.3.4`） | $E^{p,q}_{1} = \bigoplus_{i} H^{q}(M^{s_{p,i}} \times S,\ N) | 无候选（aka 里只有书号） |
 | `prop.rhom-banach-discrete-zero` | 有限维 Banach 到离散群全零 | （只有书号：`Proposition 8.3.5`） | $\operatorname{RHom}_{\mathbb{Z}}(M, N) = 0$（Banach 到 离散） | 无候选（aka 里只有书号） |
 | `prop.rhom-chaus-banach-zero` | 紧 Haus 到实 Banach 全零 | （只有书号：`Proposition 8.3.6`） | $\operatorname{RHom}_{\mathbb{Z}}(M, N) = 0$（紧 Haus 到 Banach | 无候选（aka 里只有书号） |
@@ -442,18 +426,16 @@
 | `prop.discrete-functor-coproduct` | 离散函子保直和 | （只有书号：`Exercise 6.3`） | 命题：$\bigl(\bigoplus_{i} M_{i}\bigr)^{\mathrm{disc}} \cong \b | 无候选（aka 里只有书号） |
 | `prop.cond-quotient-topological` | 商群在凝聚态意义下一致 | （只有书号：`Exercise 6.5`） | 命题：$\underline{M/N} \cong \underline{M}/\underline{N}$（$N$ 闭 | 无候选（aka 里只有书号） |
 
-### 同调代数 · `homology`（85）
+### 同调代数 · `homology`（81）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
 | `def.ab-axioms` | Grothendieck 的 AB 公理 | （只有书号：`Definition 5.2.5`） | Grothendieck 的 AB 公理（AB1–AB6） | 无候选（aka 里只有书号） |
-| `def.abelian-category` | 加法 / 阿贝尔范畴 | （只有书号：`Definition 5.1.1` / `Definition 5.1.4`） | 加法范畴与阿贝尔范畴（Additive / Abelian Category） | 无候选（aka 里只有书号） |
 | `prop.complex-additive` | 复形范畴是加法范畴 | （只有书号：`Exercise 7.1` / `Exercise 7.7`） | 复形范畴的性质 | 无候选（aka 里只有书号） |
 | `def.distinguished-triangle` | 导出三角 | `distinguished triangle` / `triangle` | 导出三角（Distinguished Triangle） | 多命中：`distinguished triangle` / `triangle` |
 | `lem.triangle-morphism` | 三角态射的性质 | （只有书号：`Proposition 7.1.9` / `Prop 7.1.9`） | 导出三角之间态射的性质 | 无候选（aka 里只有书号） |
 | `prop.cohomology-exact-sequence` | 同调的短正合列 | — | 把同调夹在两个余核 / 核之间 | 无候选（aka 与 title 都没有英文） |
 | `thm.long-exact` | 长正合列 | `long exact sequence` / `snake lemma` | 短正合列给出长正合列（蛇引理） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
-| `thm.topos-abelian-grothendieck` | 拓扑斯上的阿贝尔群是 Grothendieck 范畴 | （只有书号：`Theorem 5.3.2`） | $\mathcal{T}(\mathbf{Ab})$ 是 Grothendieck 范畴 | 无候选（aka 里只有书号） |
 | `def.tensor-abelian-sheaf` | 阿贝尔层的张量积 | `closed symmetric monoidal` / `Tensor` / `internal hom` | 张量积与封闭幺半结构 | 零命中（aka 有 3 条候选，title 里一条都没出现） |
 | `thm.freyd-mitchell` | Freyd–Mitchell 嵌入定理 | `Freyd-Mitchell` / `Freyd` / `Mitchell` | Freyd–Mitchell 嵌入定理 | 多命中：`Freyd` / `Mitchell` |
 | `prop.projective-coproduct` | 投射对象的余积投射 | （只有书号：`Exercise 1.48`） | 投射对象的余积还是投射的 | 无候选（aka 里只有书号） |
@@ -469,7 +451,6 @@
 | `thm.filtered-complex-spectral` | 过滤复形给出谱序列 | （只有书号：`Theorem 7.2.16` / `Thm 7.2.16`） | 下有界过滤复形 $\implies$ 谱序列 | 无候选（aka 里只有书号） |
 | `cor.grothendieck-spectral` | Grothendieck 谱序列 | （只有书号：`Corollary 7.2.13` / `Cor 7.2.13`） | Grothendieck 谱序列 | 无候选（aka 里只有书号） |
 | `prop.cech-as-colim` | Čech 上同调是沿覆盖筛的余极限 | （只有书号：`Exercise 7.46` / `Proposition 7.3.4`） | $\check{H}^{n}(X, M) = \varinjlim_{R \in J(X)} H^{n}(R, M)$ | 无候选（aka 里只有书号） |
-| `thm.cartan-leray` | Cartan–Leray 谱序列 | `Cartan-Leray` | Cartan–Leray：Čech 到层上同调的谱序列 | 零命中（候选没出现在 title 里） |
 | `prop.acyclic-iff-cech` | 无环 ⟺ Čech 上同调为零 | （只有书号：`Proposition 7.3.10` / `Prop 7.3.10`） | $M$ 无环 $\iff \check{H}^{n}(M) = 0$（$n \ne 0$） | 无候选（aka 里只有书号） |
 | `prop.chaus-cech-eq-h` | 紧 Hausdorff 上 Čech 就是上同调 | （只有书号：`Proposition 7.3.11` / `Prop 7.3.11`） | 紧 Hausdorff：$\check{H}^{n}(X, M) = H^{n}(X, M)$ | 无候选（aka 里只有书号） |
 | `prop.filtered-limit-cohomology` | 滤过极限的上同调 | （只有书号：`Proposition 7.3.12` / `Prop 7.3.12`） | 紧 Hausdorff 的滤过极限上，常值系数的上同调是余极限 | 无候选（aka 里只有书号） |
@@ -479,7 +460,6 @@
 | `prop.ab5-implications` | AB5 与 AB3*/AB4* 的关系 | （只有书号：`Proposition 5.2.7`） | AB 公理之间的蕴含关系 | 无候选（aka 里只有书号） |
 | `prop.ab-axioms-examples` | AB 公理的例子表 | — | 哪些范畴满足哪些 AB 公理 | 无候选（aka 与 title 都没有英文） |
 | `method.simplicial-cohomology` | 单纯方法算层上同调 | `hypercover` / `Godement` | 用单纯超覆盖计算 $H^{n}(X, M)$ | 零命中（aka 有 2 条候选，title 里一条都没出现） |
-| `lem.cartan-eilenberg` | Cartan–Eilenberg 分解 | `Cartan-Eilenberg` | Cartan–Eilenberg 分解（双复形内射消解） | 零命中（候选没出现在 title 里） |
 | `prop.cech-section-vanishing` | 带截面的覆盖上 Čech 零调 | （只有书号：`Proposition 7.3.3` / `Prop 7.3.3`） | 命题：满射有截面时增广 Čech 复形同伦平凡 | 无候选（aka 里只有书号） |
 | `prop.cohomology-of-coproduct` | 上同调与不交并 | （只有书号：`Exercise 7.38`） | 命题：$H^{n}(\coprod_{i} X_{i}, M) \cong \prod_{i} H^{n}(X_{i}, | 无候选（aka 里只有书号） |
 | `prop.tensor-rhom-natural-map` | 张量与 RHom 的配对 | （只有书号：`Exercise 8.16`） | 命题：$M \otimes^{\mathbf{L}} \operatorname{RHom}(P, N) \to \op | 无候选（aka 里只有书号） |

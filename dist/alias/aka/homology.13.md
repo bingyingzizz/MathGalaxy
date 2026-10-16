@@ -1,6 +1,10 @@
 # 别名 → 节点 · 同调代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../homology.md`
 
+- Proposition 7.2.18 | Prop 7.2.18 | Exercise 7.32 | Exercise 7.33 → prop.bicomplex-spectral
+
+- Lemma 7.3.2 → lem.covering-free-acyclic
+
 - Corollary 7.3.8 | Cor 7.3.8 → cor.cech-cohomology-spectral
 
 - Exercise 5.18 | Exercise 5.24 → def.free-abelian-sheaf
@@ -26,9 +30,5 @@
 - Exercise 7.29 → prop.spectral-degenerate-row
 
 - Exercise 7.30 → prop.five-term-spectral-sequence
-
-- Exercise 7.31 → prop.filtered-first-page
-
-- Exercise 7.34 → prop.total-complex-injective-resolution
 
 > 续见 alias/aka/homology.14.md

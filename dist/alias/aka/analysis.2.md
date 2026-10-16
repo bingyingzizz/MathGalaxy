@@ -17,7 +17,7 @@
 
 - σ-代数 | sigma-algebra | sigma-field | σ域 | 可测空间 → def.sigma-algebra
 
-- 环到σ环 | 从环到σ代数 → thm.ring-monotone-sigma
+- 环到σ环 | 从环到σ代数 | when a ring is a sigma-ring → thm.ring-monotone-sigma
 
 - 生成 | 生成的σ代数 | generated sigma-algebra → def.generated-sigma
 
