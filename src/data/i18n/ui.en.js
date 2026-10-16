@@ -38,6 +38,8 @@ MG.uiEn = {
     '探索模式：把「类比」这类弱边提亮（平时压得很淡）':
       'Explore mode: brighten weak edges such as analogies (kept very faint otherwise)',
     '滚轮：缩放 ⇄ 平移': 'Wheel: zoom ⇄ pan',
+    '界面语言：中文 / English —— 点一下切成英文':
+      'Interface language: Chinese / English — click to switch to English',
     '回到站点首页（bingyingzizz.github.io）': 'Back to the site home (bingyingzizz.github.io)',
     '设置：显示 / 隐藏界面元素': 'Settings: show / hide interface elements',
 

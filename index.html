@@ -99,6 +99,10 @@ window.addEventListener('error', function (e) {
   <button data-act="toggle-explore" class="toggle" title="探索模式：把「类比」这类弱边提亮（平时压得很淡）" data-t-title="探索模式：把「类比」这类弱边提亮（平时压得很淡）" data-t="探索">探索</button>
   <button data-act="toggle-wheel"  class="toggle on" title="滚轮：缩放 ⇄ 平移" data-t-title="滚轮：缩放 ⇄ 平移" data-t="滚轮·缩放">滚轮·缩放</button>
   <span class="tb-sep"></span>
+  <!-- 界面语言（T2.4 的入口，2026-10-16 补）：**按钮上写的是「切过去之后会变成什么语言」** ——
+       中文模式显示 EN、英文模式显示 中文。点击 = 写入 localStorage + 重载（⛔ 不做运行时热切换：
+       那样会出现「半个界面是英文」的中间态）。语言判定与阅读页同一套，见 src/core/i18n.js。 -->
+  <button data-act="lang" id="tb-lang" class="toggle" title="界面语言：中文 / English">EN</button>
   <!-- 回站点首页。用 <a> 而不是 <button>：它是导航，能中键/右键新标签打开、能复制链接。
        ⚠️ 别人从 GitHub 或帖子里点进来是**直接落在 /mathgalaxy/**，此前页面上没有一条
           回到站点首页的路（只有底部那行小字里的链接），这个按钮补的就是它。 -->

@@ -641,9 +641,41 @@
         C.wheelZooms = !C.wheelZooms;
         btn.classList.toggle('on', C.wheelZooms);
         btn.textContent = C.wheelZooms ? tf('滚轮·缩放') : tf('滚轮·平移');
+      } else if (act === 'lang') {
+        switchLang();
+        return;
       }
       if (act && act.indexOf('toggle-') === 0) syncHash('push');
     });
+
+    /* -------------------------------------------------- 界面语言开关（T2.4） */
+    /* 按钮上写的是「切过去之后会变成什么」：中文模式显示 EN、英文模式显示 中文。
+       ⚠️ 点击 = 写 localStorage + 带着 `?lang=` 重载，**不做运行时热切换** ——
+          热切换会留下一半中文一半英文的中间态（图例、面板、canvas 都得重画）。
+       ⚠️ 必须把 `lang` 写进 URL：URL 里的 lang **优先级高于 localStorage**，
+          否则「从 ?lang=en 进来、再点回中文」会被旧参数盖回去。 */
+    function switchLang() {
+      var next = MG.isEn ? 'zh' : 'en';
+      try {
+        MG.setLang(next);
+        var u = new URL(global.location.href);
+        u.searchParams.set('lang', next);
+        global.location.replace(u.toString());     // 保留 hash（深链不丢）
+      } catch (e) {
+        try { MG.setLang(next); } catch (e2) {}
+        global.location.reload();
+      }
+    }
+    (function initLangBtn() {
+      var b = document.getElementById('tb-lang');
+      if (!b) return;
+      /* 显示「目标语言」；title 两边都写清楚 */
+      b.textContent = MG.isEn ? '中文' : 'EN';
+      b.setAttribute('title', MG.isEn
+        ? 'Switch the interface to Chinese（界面语言：English → 中文）'
+        : tf('界面语言：中文 / English —— 点一下切成英文'));
+      b.classList.toggle('on', MG.isEn);
+    })();
 
     /* ------------------------------------------ 设置面板（界面元素显隐） */
     /*
