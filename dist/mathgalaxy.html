@@ -1958,6 +1958,19 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     return n;
   }
 
+  /** ⭐ 画布上的显示名：**启动时算一次**，渲染循环直接读 `labelShow` / `nameShow`。
+      ⛔ 别在每帧里调 labelOf —— 那是往每帧 4.2ms（240Hz）的预算里塞一次查表。
+      ⚠️ 名字只在**建图之后、开始画之前**定一次；换语言走的是整页重载（见 app.js 的 switchLang），
+         所以不存在「画到一半换语言」的情况。 */
+  function localizeDisplay(graph) {
+    if (!graph) return 0;
+    var n = 0;
+    (graph.nodes || []).forEach(function (x) { x.labelShow = labelOf(x); n++; });
+    (graph.clusters || []).forEach(function (c) { c.nameShow = clusterName(c); });
+    (graph.regions || []).forEach(function (r) { r.nameShow = regionName(r); });
+    return n;
+  }
+
   /** 换语言（目前只有「载入时定」，没有运行时热切换 —— 免得半个界面是英文） */
   function set(next) {
     if (next !== 'en' && next !== 'zh') return;
@@ -1974,6 +1987,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
   MG.nameOf = nameOf;
   MG.clusterName = clusterName;
   MG.regionName = regionName;
+  MG.localizeDisplay = localizeDisplay;
   MG.applyStatic = applyStatic;
   MG.setLang = set;
   MG.LANG_KEY = KEY;
@@ -4274,7 +4288,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         if (view.isNodeVisible && !regionHasVisible(r.id)) return;
         var p = w2s(r.stat.cx, r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
-        var text = r.name;
+        /* ⭐ T2.4 收尾：画布上的名字也要跟语言走。`nameShow` 是**启动时算一次**的
+           （见 src/core/i18n.js 的 MG.localizeDisplay）—— ⛔ 不在每帧里查表。 */
+        var text = r.nameShow || r.name;
         var tw = ctx.measureText(text).width;
         var ls = fs * 0.18;
         var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
@@ -4477,7 +4493,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         if (view.isNodeVisible && !visibleIn(c.nodes)) return;   // 整团都藏起来了
         var p = w2s(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
-        var text = c.name;
+        var text = c.nameShow || c.name;      // ⭐ T2.4：星团名跟语言走（启动时算一次）
         var tw = ctx.measureText(text).width;
         var pad = C.cluster.namePad;
         var bw = tw + pad * 2, bh = fs + 9;
@@ -4756,7 +4772,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         var p = screenOf(n);
         if (!inView(p.x, p.y, PAD_NODE)) return;   // 屏幕外的名字：既不量宽也不画
         var r = nodeRadius(n);
-        var text = n.label;
+        var text = n.labelShow || n.label;         // ⭐ T2.4：节点名跟语言走（启动时算一次）
         var tw = measure(ctx, text, ctx.font);
         var x = p.x, y = p.y + r + C.node.labelOffset * Math.max(k, 0.62);
         var box = { x0: x - tw / 2 - C.node.labelPad, y0: y - 1, x1: x + tw / 2 + C.node.labelPad, y1: y + fs + 2 };
@@ -4794,11 +4810,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         if (!n || !nodeOk(id)) return;
         var p = screenOf(n), r = nodeRadius(n);
         var y = p.y + r + 10;
+        var label = n.labelShow || n.label;      // ⭐ T2.4：跟语言走
         ctx.lineWidth = 3;
         ctx.strokeStyle = T.labelHalo;
-        ctx.strokeText(n.label, p.x, y);
+        ctx.strokeText(label, p.x, y);
         ctx.fillStyle = T.ink;
-        ctx.fillText(n.label, p.x, y);
+        ctx.fillText(label, p.x, y);
       });
     }
 
@@ -40403,6 +40420,9 @@ MG.trunk = [
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
     MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
+    /* 画布上的显示名（节点 / 星团 / 星系）：**启动时算一次**，渲染循环只读 `labelShow`。
+       ⛔ 不在每帧里查表。见 src/core/i18n.js 的 localizeDisplay。 */
+    MG.localizeDisplay(graph);
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
     }
@@ -42114,6 +42134,7 @@ MG.trunk = [
         var packs = localPacks.concat(res.packs);
         graph = MG.buildGraph(packs, MG.regions, MG.clusters);
         MG.computeLayout(graph);
+        MG.localizeDisplay(graph);    // ⭐ 并入外部内容包之后要把显示名再算一遍
         view.graph = graph;
         vis.rebind(graph);            // 挑选结果保留，丢掉已经不存在的 id
         view.visible = visibleEdgeList();

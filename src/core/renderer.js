@@ -774,7 +774,9 @@
         if (view.isNodeVisible && !regionHasVisible(r.id)) return;
         var p = w2s(r.stat.cx, r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
-        var text = r.name;
+        /* ⭐ T2.4 收尾：画布上的名字也要跟语言走。`nameShow` 是**启动时算一次**的
+           （见 src/core/i18n.js 的 MG.localizeDisplay）—— ⛔ 不在每帧里查表。 */
+        var text = r.nameShow || r.name;
         var tw = ctx.measureText(text).width;
         var ls = fs * 0.18;
         var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
@@ -977,7 +979,7 @@
         if (view.isNodeVisible && !visibleIn(c.nodes)) return;   // 整团都藏起来了
         var p = w2s(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
-        var text = c.name;
+        var text = c.nameShow || c.name;      // ⭐ T2.4：星团名跟语言走（启动时算一次）
         var tw = ctx.measureText(text).width;
         var pad = C.cluster.namePad;
         var bw = tw + pad * 2, bh = fs + 9;
@@ -1256,7 +1258,7 @@
         var p = screenOf(n);
         if (!inView(p.x, p.y, PAD_NODE)) return;   // 屏幕外的名字：既不量宽也不画
         var r = nodeRadius(n);
-        var text = n.label;
+        var text = n.labelShow || n.label;         // ⭐ T2.4：节点名跟语言走（启动时算一次）
         var tw = measure(ctx, text, ctx.font);
         var x = p.x, y = p.y + r + C.node.labelOffset * Math.max(k, 0.62);
         var box = { x0: x - tw / 2 - C.node.labelPad, y0: y - 1, x1: x + tw / 2 + C.node.labelPad, y1: y + fs + 2 };
@@ -1294,11 +1296,12 @@
         if (!n || !nodeOk(id)) return;
         var p = screenOf(n), r = nodeRadius(n);
         var y = p.y + r + 10;
+        var label = n.labelShow || n.label;      // ⭐ T2.4：跟语言走
         ctx.lineWidth = 3;
         ctx.strokeStyle = T.labelHalo;
-        ctx.strokeText(n.label, p.x, y);
+        ctx.strokeText(label, p.x, y);
         ctx.fillStyle = T.ink;
-        ctx.fillText(n.label, p.x, y);
+        ctx.fillText(label, p.x, y);
       });
     }
 

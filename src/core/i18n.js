@@ -95,6 +95,19 @@
     return n;
   }
 
+  /** ⭐ 画布上的显示名：**启动时算一次**，渲染循环直接读 `labelShow` / `nameShow`。
+      ⛔ 别在每帧里调 labelOf —— 那是往每帧 4.2ms（240Hz）的预算里塞一次查表。
+      ⚠️ 名字只在**建图之后、开始画之前**定一次；换语言走的是整页重载（见 app.js 的 switchLang），
+         所以不存在「画到一半换语言」的情况。 */
+  function localizeDisplay(graph) {
+    if (!graph) return 0;
+    var n = 0;
+    (graph.nodes || []).forEach(function (x) { x.labelShow = labelOf(x); n++; });
+    (graph.clusters || []).forEach(function (c) { c.nameShow = clusterName(c); });
+    (graph.regions || []).forEach(function (r) { r.nameShow = regionName(r); });
+    return n;
+  }
+
   /** 换语言（目前只有「载入时定」，没有运行时热切换 —— 免得半个界面是英文） */
   function set(next) {
     if (next !== 'en' && next !== 'zh') return;
@@ -111,6 +124,7 @@
   MG.nameOf = nameOf;
   MG.clusterName = clusterName;
   MG.regionName = regionName;
+  MG.localizeDisplay = localizeDisplay;
   MG.applyStatic = applyStatic;
   MG.setLang = set;
   MG.LANG_KEY = KEY;

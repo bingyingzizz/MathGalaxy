@@ -67,6 +67,9 @@
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
     MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
+    /* 画布上的显示名（节点 / 星团 / 星系）：**启动时算一次**，渲染循环只读 `labelShow`。
+       ⛔ 不在每帧里查表。见 src/core/i18n.js 的 localizeDisplay。 */
+    MG.localizeDisplay(graph);
     if (graph.warnings.length) {
       console.warn('[数学星图] 数据校验提示：\n' + graph.warnings.join('\n'));
     }
@@ -1778,6 +1781,7 @@
         var packs = localPacks.concat(res.packs);
         graph = MG.buildGraph(packs, MG.regions, MG.clusters);
         MG.computeLayout(graph);
+        MG.localizeDisplay(graph);    // ⭐ 并入外部内容包之后要把显示名再算一遍
         view.graph = graph;
         vis.rebind(graph);            // 挑选结果保留，丢掉已经不存在的 id
         view.visible = visibleEdgeList();
