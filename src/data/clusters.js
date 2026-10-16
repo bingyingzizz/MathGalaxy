@@ -216,6 +216,30 @@ MG.clusters = [
     desc: '造出「把函数的增量翻译成导数」这套工具：Fermat 引理 → Rolle → Lagrange → Cauchy → L\'Hôpital，顶点是 Taylor 公式 —— 用导数把一个函数局部地重写成多项式。'
   },
   {
+    id: 'analysis.riemann',
+    name: 'Riemann 积分',
+    en: 'The Riemann Integral',
+    parent: 'analysis',
+    hub: 'thm.ftc-riemann-part2',
+    desc: '造出「曲线下的面积」这套工具：分割 → 上和 / 下和 → 可积性判据 → 微积分基本定理（Newton–Leibniz）。顶点是那条**把可积性翻译成零测集语言**的判据 —— 它在这里与 Lebesgue 积分那一侧正式接头。'
+  },
+  {
+    id: 'analysis.series',
+    name: '数项级数的敛散性',
+    en: 'Convergence Tests for Series',
+    parent: 'analysis',
+    hub: 'def.absolute-convergence',
+    desc: '造出「无限多项相加靠不靠谱」这套判据：Cauchy 准则 → 比较判别法 → **Kummer 判别法**（d\'Alembert / Raabe / Bertrand / Gauss 全是它的特例）→ 根值 / 积分 / 凝聚判别法 → Abel–Dirichlet 判别法。分水岭是**绝对收敛**：绝对收敛的级数可以随便重排、相乘，条件收敛的不行。'
+  },
+  {
+    id: 'analysis.uniform',
+    name: '函数列、幂级数与初等函数',
+    en: 'Sequences of Functions, Power Series and Elementary Functions',
+    parent: 'analysis',
+    hub: 'def.uniform-convergence',
+    desc: '造出「取极限与积分 / 求导能不能交换」的判据：逐点收敛 → **一致收敛**（三种交换定理）→ Weierstrass 判别法 → Dini 定理。**幂级数**是一致收敛的旗舰应用 —— 而 $\\exp$、$\\log$、$\\sin$、$\\cos$、$\\pi$ 全都由幂级数定义，初等函数在这里第一次有了合法出身。'
+  },
+  {
     id: 'analysis.setclass',
     name: '集合族与 σ-代数',
     en: 'Families of Sets and Sigma-Algebras',

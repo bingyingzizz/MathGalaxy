@@ -29,7 +29,7 @@
 - `num`　数系与分析基础　→　Number systems and real analysis　26 条
 - `topo`　拓扑与度量　→　Topology and metrics　6 条
 - `measure`　测度与 σ-代数　→　Measure and σ-algebras　25 条
-- `integral`　积分与函数空间　→　Integration and function spaces　12 条
+- `integral`　积分与函数空间　→　Integration and function spaces　17 条
 - `layout`　排版与箭头　→　Typesetting and arrows　13 条
 - `cat`　范畴与同调　→　Categories and homology　21 条
 - `letters`　字母约定　→　Letter conventions　22 条
