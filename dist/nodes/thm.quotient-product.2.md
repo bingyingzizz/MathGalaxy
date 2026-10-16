@@ -2,9 +2,9 @@
 [在星图里打开](../#n=thm.quotient-product)　·　第 1 页 [nodes/thm.quotient-product.md](./thm.quotient-product.md)
 
 ## 陈述（续）
-紧 Hausdorff** 空间。则
-$$q \times \mathrm{id}_{Z} : X \times
- Z \longrightarrow Y \times Z$$
+空间。则
+$$q \times \mathrm{id}_{Z} : X \times Z \longrightar
+row Y \times Z$$
 也是商映射。
 
 > 续见 [nodes/thm.quotient-product.3.md](./thm.quotient-product.3.md)

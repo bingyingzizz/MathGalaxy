@@ -12,7 +12,7 @@ $$F(X) \;=\; \varprojlim_{(Y,\, f) \in (X \downarrow G)} Y$$
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.saft.3.md](./thm.saft.3.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/thm.saft.2.md](./thm.saft.2.md)
 
 refs: Mac Lane, Categories for the Working Mathematician, V.8

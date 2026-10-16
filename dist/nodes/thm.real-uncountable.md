@@ -3,14 +3,14 @@
 layer 14 · 定理 · 数系的构造 · 分析学+集合论
 [在星图里打开](../#n=thm.real-uncountable)　·　[节点索引](../index.md)
 
-*
+**实
 > 陈述续见 [nodes/thm.real-uncountable.2.md](./thm.real-uncountable.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.real-uncountable.5.md](./thm.real-uncountable.5.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/thm.real-uncountable.3.md](./thm.real-uncountable.3.md)
 
 refs: Tao, Analysis I, Ch. 8（可数性）；Rudin, Principles of Mathematical Analysis, Ch. 2

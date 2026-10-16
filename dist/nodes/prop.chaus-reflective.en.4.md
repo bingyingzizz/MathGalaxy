@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=prop.chaus-reflective)　·　[Chinese page (authoritative)](./prop.chaus-reflective.md)
 
-## Notes · **draft**
+## Notes · **reviewed**
 Construction: send $X$ into the Tychonoff cube
 
 $$e_{X} : X \longrightarrow [0,1]^{C(X,[0,1])}, \qquad x \mapsto (f(x))_{f}$$

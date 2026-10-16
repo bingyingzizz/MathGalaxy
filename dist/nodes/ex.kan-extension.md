@@ -3,14 +3,14 @@
 layer 12 · 命题 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=ex.kan-extension)　·　[节点索引](../index.md)
 
-**(1)** 图 $D : I \to \mathcal{C}$ 有余极限 $X$ $\if
+**(1)** 图 $D : I \to \mathcal{C}$ 有余极限 $X$ $\iff$ 沿投影
 > 陈述续见 [nodes/ex.kan-extension.2.md](./ex.kan-extension.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/ex.kan-extension.4.md](./ex.kan-extension.4.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/ex.kan-extension.3.md](./ex.kan-extension.3.md)
 
 refs: Mac Lane, Categories for the Working Mathematician, X.3

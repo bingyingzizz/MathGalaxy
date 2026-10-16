@@ -2,12 +2,17 @@
 English entry · root `../`
 [in graph](../#n=def.essential-sup)　·　[Chinese page (authoritative)](./def.essential-sup.md)
 
-## Abstract · **stale**
-The essential supremum is $\|f\|_\infty := \inf \{a \ge 0 : \mu(\{|f| > a\}) = 0\}$: the true bound of $f$ once its values on null sets are ignored. The infimum is attained at $a = \|f\|_\infty$ itself, and $\|f\|_\infty \le M \iff |f| \le M$ almost everywhere. Then $L^\infty$ consists of the measurable $f$ with $\|f\|_\infty < \infty$. Note the difference from $\sup |f|$, which a single value on a null set can spoil.
-
-## Statement · **draft**
+## Statement · **reviewed**
 Definition
 
 $$\|f\|_\infty := \inf \{\, a \ge 0 : \mu(\{\, |f| > a \,\}) = 0 \,\}$$
+
+(After ignoring completely the values of $f$ on null sets, this is its "true" upper bound.) This infimum **is attained**: for $a = \|f\|_\infty$ itself we have $\mu(\{|f| > a\}) = 0$.
+
+For a **measurable** function $f : X \to \mathbb{C}$ (measurability is defined at "measurable function") put
+
+$$
+L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : \|f\|_\infty < \infty \,\}
+$$
 
 > 续见 nodes/def.essential-sup.en.3.md

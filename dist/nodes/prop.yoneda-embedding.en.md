@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=prop.yoneda-embedding)　·　[Chinese page (authoritative)](./prop.yoneda-embedding.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 14 · proposition · cluster Presheaves and Yoneda (`cat.yoneda`) · Category Theory
 

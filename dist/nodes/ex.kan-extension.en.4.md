@@ -4,7 +4,7 @@ English entry · root `../`
 
 The map $1_{\mathcal{C}} \implies G \circ F$ corresponding to the right-hand side is exactly the **unit** $\eta$.
 
-## Notes · **draft**
+## Notes · **reviewed**
 Read the two together: **colimits and right adjoints are special cases of Kan extensions**. The Kan extension is the unifying exit of this whole cluster — the definitions scattered earlier (limit, adjunction, reflection) each fall into place inside it.
 
 > Proofs of the edges are still Chinese only: `proofs/`; the Chinese page remains authoritative.

@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T07:21:52.807Z",
+  "generated": "2026-10-16T07:34:28.477Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -2170,7 +2170,7 @@
    "notes_en": "Zermelo introduced the axiom of choice explicitly in 1904 in order to prove that every set can be well-ordered; this is where AC first appears.\n\nThe well-ordering theorem immediately yields the **comparability theorem for cardinals**: any two sets have comparable cardinalities.\n\nIt cannot be proved in ZF; but ZF together with it proves AC, so the two are equivalent.",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -2184,16 +2184,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#4716d94b",
+      "abstract": "v0.9.1#5ba4f775",
       "statement": "v0.9.1#f0e20930",
       "notes": "v0.9.1#bf8c5d7a"
      }
@@ -2298,7 +2296,7 @@
    "notes_en": "In form it predates Zorn's lemma (Hausdorff, 1914), and it is equivalent to it.\n\nThe existence of a maximal chain is exactly the rigorous version of the intuition \"keep adding elements from below until you can add no more\".",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -2312,9 +2310,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -2712,7 +2710,7 @@
    "notes_en": "The whole logical skeleton is in the arrows (click an arrow to see its proof):\n\n- compact $\\implies$ sequentially compact\n- sequentially compact $\\implies$ totally bounded　(the **only** step in this cluster that genuinely uses a choice principle — DC)\n- sequentially compact $\\implies$ complete\n- sequentially compact $\\implies$ compact　(the \"bad balls\" argument; it uses total boundedness only, and no choice)\n- compact $\\implies$ complete, compact $\\implies$ totally bounded\n- complete + totally bounded $\\implies$ sequentially compact　(the diagonal argument; again no choice)\n\nSo \"sequentially compact $\\implies$ totally bounded $\\implies$ compact\" and \"compact $\\implies$ sequentially compact\" close the circle, and the three notions agree.\n\n⚠ In a general topological space only \"compact $\\implies$ sequentially compact\" holds — **the converse fails**: sequential compactness is a piece of luck peculiar to metric spaces.",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -2726,16 +2724,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#b29d24a7",
+      "abstract": "v0.9.1#90481f72",
       "statement": "v0.9.1#8c5b3033",
       "notes": "v0.9.1#8e05fc76"
      }
@@ -3117,7 +3113,7 @@
    "notes_en": "**This is the combined \"standard + strengthened\" version.**\n\n**Standard version** (Halmos §6 / Folland 2.37): if $\\mathcal{A}$ is an **algebra** then $\\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$.\n\nWhat is stated above is the **strengthened version**: \"$mathcal{E}$ is an algebra\" is replaced by two weaker conditions — the **complements** and the **unions** of sets in $\\mathcal{E}$ only have to land in $\\mathfrak{m}(\\mathcal{E})$. The proof is still the usual three steps of the monotone class theorem:\n\n**①** Let $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$. It contains $\\mathcal{E}$ (first condition), and is itself a monotone class ($\\mathfrak{m}$ is monotone $\\implies$ limits stay in $\\mathfrak{m}$; complements use one decreasing limit) $\\implies \\mathcal{K}_{1} = \\mathfrak{m}$, i.e. $\\mathfrak{m}$ is closed under **complements**.\n\n**②** Fix $A \\in \\mathcal{E}$ and let $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$. By the second condition $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$.\n\n**③** Fix $B \\in \\mathfrak{m}$ and let $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$. By ②, $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$, i.e. $\\mathfrak{m}$ is closed under **unions**.\n\nHence $\\mathfrak{m}$ is closed under $\\cup$ and complements, and is a monotone class $\\implies$ $\\mathfrak{m}$ is a $\\sigma$-algebra $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$; the reverse inclusion always holds, so the two sides are equal. (One needs $\\mathcal{E} \\ne \\emptyset$, otherwise $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$.)\n\n⚠ Replacing $\\cup$ by $\\cap$ or $\\setminus$ gives the same conclusion — once complements are available, the various closure properties imply each other, so the symbol used here does not affect whether the theorem is true.\n\n**How it is used** (the same for either version): to prove that a property holds for all sets in $\\mathcal{M}(\\mathcal{E})$, it suffices to ($i$) prove it for $\\mathcal{E}$ and (ii) prove that \"it holds\" is preserved by increasing unions and decreasing intersections — then the sets for which it holds form a monotone class containing $\\mathcal{E}$, hence one containing $\\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$. Uniqueness of the measure extension, the section formula for product measures and the approximation of measurable functions all follow this pattern.\n\n⚠ It is a sister result of \"the criterion for a ring to be a $\\sigma$-ring\": that one says ring $+$ monotone $\\implies$ $\\sigma$-ring, this one says algebra $\\implies$ monotone class and $\\sigma$-algebra coincide.",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -3131,16 +3127,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#78753395",
+      "abstract": "v0.9.1#6d41f268",
       "statement": "v0.9.1#48f20867",
       "notes": "v0.9.1#15101468"
      }
@@ -3620,7 +3614,7 @@
    "notes_en": "An outer measure is defined on **all** subsets ($\\mathcal{P}(X)$, not on some $\\sigma$-algebra); the price is that it only has **sub**additivity.\n\nSo an outer measure is not a measure — it is too large even to be additive on $\\mathcal{P}(X)$. Carathéodory's idea is to single out the sets that \"behave well\" (the next definition); on those the outer measure does become a genuine measure.\n\nWhat Lebesgue first constructed was an outer measure: $\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -3634,9 +3628,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -4999,7 +4993,7 @@
    "notes_en": "Intuition: cut a plane figure with a vertical (or horizontal) line; the segment you cut out is the section.\n\nSections are the language of Fubini's theorem: the double integral $\\iint f d(\\mu \\times \\nu)$ is \"integrate along the sections first, then integrate the resulting function of the other variable\".",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -5013,9 +5007,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -5054,7 +5048,7 @@
    "notes_en": "The proof is the standard pattern \"rectangles first, then $\\sigma$-algebras\". Let\n\n$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} \\ \\wedge\\ E^y \\in \\mathcal{M}\\quad \\forall(x, y)\\}$$\n\nThen $\\mathcal{R}$ contains all rectangles, and **$\\mathcal{R}$ is a $\\sigma$-algebra** (the section operations preserve unions, intersections and complements). Hence $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$.\n\n(b) follows from (a) and two identities:\n\n$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$\n\n⚠ Note that (b) says \"**every** $x$ works\", whereas Fubini's theorem can only guarantee \"almost every\" — because Fubini also needs integrability.",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -5068,16 +5062,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#05ea13af",
+      "abstract": "v0.9.1#56ffe956",
       "statement": "v0.9.1#2db4532b",
       "notes": "v0.9.1#bd705c8a"
      }
@@ -5687,7 +5679,7 @@
    "notes_en": "⚠ Compared with a signed measure, a complex measure is **automatically finite** (its values lie in $\\mathbb{C}$, no $\\pm \\infty$ is involved), and the series in countable additivity **converges absolutely automatically**.\n\nSo in the world of complex measures the headaches of \"finiteness\" and \"rearrangement\" disappear entirely — at the cost of no longer having examples with \"infinite mass\".",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -5701,16 +5693,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#792f3f7b",
+      "abstract": "v0.9.1#38afc3f7",
       "statement": "v0.9.1#bde1a964",
       "notes": "v0.9.1#e5f47458"
      }
@@ -6153,7 +6143,7 @@
    "notes_en": "What the two conditions say: **it fits inside** ($E_r$ lies in the ball) and **it is not too flat** (its volume is at least $alpha$ times that of the ball).\n\nTypical examples: take $E_r = B(r, x)$ itself ($alpha = 1$); or take $E_r$ to be a fixed shape inside the ball (a cube, say), rescaled proportionally.\n\nCounterexample: let $E_r$ be a long thin sliver inside the ball — the volume ratio can tend to 0, and such a family does not shrink nicely to $x$.\n\n⭐ The notion was introduced so that differentiation theorems **do not depend on the shape of the ball**: as long as it is not flat, the conclusion stands.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -6167,9 +6157,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -6986,7 +6976,7 @@
    "notes_en": "An equivalent form: $\\|f\\|_\\infty \\le M \\iff |f(x)| \\le M$ holds for a.e. $x$.\n\nWhat the word \"essential\" means: **bad values on null sets simply do not count**. For instance, if $f = 0$ a.e. but $f$ takes the value $+\\infty$ on some null set, we still have $\\|f\\|_\\infty = 0$.\n\n⚠ $\\|f\\|_\\infty$ differs from \"$\\sup |f|$\": the latter can become large because of a single point on a null set.",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -7000,16 +6990,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#877ac0d0",
+      "abstract": "v0.9.1#0d075471",
       "statement": "v0.9.1#fd63d442",
       "notes": "v0.9.1#667e877a"
      }
@@ -8050,7 +8038,7 @@
    "notes_en": "⭐ This is the licence to *order* cardinals: without it, even the sentence \"$A$ is bigger than $B$\" can be meaningless.\n\nRoute of the proof (see the edge): the **well-ordering theorem** well-orders both $A$ and $B$, the corresponding ordinals are comparable, and hence one direction admits an injection. So this theorem, AC and the well-ordering theorem are three ways of saying the same thing.\n\n⚠ Without AC there really are incomparable cardinals (Jech, *The Axiom of Choice*).",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -8064,16 +8052,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#de40e4ba",
+      "abstract": "v0.9.1#ac47a0af",
       "statement": "v0.9.1#65d602d2",
       "notes": "v0.9.1#f4afd520"
      }
@@ -8587,7 +8573,7 @@
    "notes_en": "⭐ The motivation in one sentence: **subtraction does not work inside $\\mathbb{N}$** ($3 - 5$ does not exist), yet the *pair* \"$3 - 5$\" always makes sense — so one takes the difference itself as a new object.\n\nBy-product: $\\mathbb{Z}$ has an additive zero $[0, 0] = 0$ and additive inverses $-[a, b] = [b, a]$ — precisely what $\\mathbb{N}$ lacks.\n\n⚠ Inside $\\mathbb{Z}$, the copy of $\\mathbb{N}$ is **embedded** via $a \\mapsto [a, 0]$ (injective, and preserving the operations and the order), so writing $3 \\in \\mathbb{Z}$ uses this embedding — that step cannot be skipped.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -8601,9 +8587,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -8966,7 +8952,7 @@
    "notes_en": "⭐ The proof goes by **nested closed intervals + diagonalisation** (see the edge): assume $\\mathbb{R}$ can be arranged as $x_1, x_2, \\ldots$, then bisect to build a nested sequence of closed intervals, ruling out the $x_n$ one by one, and use **completeness** to extract their unique common point — which differs from every $x_n$.\n\n⚠ The whole proof uses **only the completeness of $\\mathbb{R}$** (the least-upper-bound principle); cardinal theory is not needed. The half saying $|\\mathbb{R}| = 2^{\\aleph_0}$ matches binary expansions against $\\mathcal{P}(\\mathbb{N})$ and then quotes Cantor's theorem.\n\n**The most counter-intuitive point of this theorem**: $\\mathbb{Q}$ and $\\mathbb{R}$ are both dense and each can be approximated by the other, yet $\\mathbb{Q}$ is countable (it can be arranged as a sequence) while $\\mathbb{R}$ is not. **\"Dense\" and \"equally many\" are two different things** — and this is precisely why analysis has to be done over the reals rather than over the rationals.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -8980,9 +8966,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -10449,7 +10435,7 @@
    "notes_en": "Fully faithful means $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_{X}, h_{Y}) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$ — the arrows among the $h_{X}$ reproduce the arrows among the $X$ exactly, no more and no less.\n\nOnce $\\mathcal{C}$ is embedded in $\\widehat{\\mathcal{C}}$, questions inside $\\mathcal{C}$ can be solved in a category that **has all limits and colimits** — this is the standard way of \"completing\" a category.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -10463,9 +10449,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -10722,7 +10708,7 @@
    "notes_en": "So \"a left adjoint is fully faithful\" reduces to checking that every component of a single natural transformation is invertible — far easier than checking Hom-sets pair by pair.\n\nThis is also the dividing line between **reflective** and **coreflective**: reflective means \"the inclusion functor has a left adjoint\", and an inclusion functor is always fully faithful (full subcategory), so for a reflection the counit is always an isomorphism.",
    "translations": {
     "en": {
-     "status": "stale",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -10736,16 +10722,14 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#b504654a",
+      "abstract": "v0.9.1#c81ceb51",
       "statement": "v0.9.1#315d7da7",
       "notes": "v0.9.1#9b807211"
      }
@@ -10829,7 +10813,7 @@
    "notes_en": "**Preservation of limits is the only obstruction.** Together with \"a right adjoint preserves limits\" this gives a complete criterion: preservation of limits is necessary, and on a complete small category it is also sufficient.\n\nWhat the construction means: all the ways of mapping $X$ into the image of $G$ form a category $X \\downarrow G$, and one takes a limit in it — $F(X)$ is the object of $\\mathcal{D}$ \"closest\" to $X$. Every $X \\to G(Y)$ can be organised as $X \\to G(F(X)) \\to G(Y)$.\n\nThe proof is the derivation on the edge.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -10843,9 +10827,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -11031,7 +11015,7 @@
    "notes_en": "Read the two together: **colimits and right adjoints are special cases of Kan extensions**. The Kan extension is the unifying exit of this whole cluster — the definitions scattered earlier (limit, adjunction, reflection) each fall into place inside it.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -11045,9 +11029,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -11172,7 +11156,7 @@
    "notes_en": "Construction: send $X$ into the Tychonoff cube\n\n$$e_{X} : X \\longrightarrow [0,1]^{C(X,[0,1])}, \\qquad x \\mapsto (f(x))_{f}$$\n\nand then take the closure $\\beta X := \\overline{e_{X}(X)}$. The cube is compact Hausdorff, hence so is every closed subset of it.\n\n⭐ **$e_{X}$ is injective $\\iff$ $X$ is a Tychonoff ($T_{3.5}$) space** — that is, there are enough continuous functions to separate distinct points. So for a general topological space, $\\beta X$ is the compactification obtained after collecting all the information that continuous functions can see.\n\nCorollary: **any limit of compact Hausdorff spaces is again compact Hausdorff**. This is what the general statement \"a reflective subcategory is closed under limits\" looks like here — from now on, taking limits in $\\mathbf{CHaus}$ no longer requires re-checking compactness and Hausdorffness.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -11186,9 +11170,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -14371,7 +14355,7 @@
    "notes_en": "⭐ **This is the engine behind \"compactly generated spaces are closed under products\"**, and it is where a search for \"quotient map\" or \"locally compact\" should land.\n\n**How the proof goes (continuity of the inverse).** Write $W := (q \\times \\mathrm{id}_{Z})^{-1}(U)$ and show that $W$ is open. Take a point $(x, z) \\in W$ and put $y = q(x)$. Since $U$ is open in $Y \\times Z$, one can pick a basic open set\n\n$$V \\times K \\;\\subseteq\\; U, \\qquad y \\in V,\\;\\; z \\in K,$$\n\nwhere $V$ is open and $K$ is a **compact neighbourhood** of $z$ (a locally compact Hausdorff space has a base of compact neighbourhoods at every point, and $K$ may be required to lie inside any prescribed neighbourhood). Since $q$ is a quotient map, $q^{-1}(V)$ is open in $X$, so\n\n$$q^{-1}(V) \\times K \\;\\subseteq\\; W$$\n\nis an open neighbourhood of $(x, z)$ — hence $(x, z)$ is an interior point of $W$, so $W$ is open. ∎\n\n⚠ **The locally compact hypothesis cannot be dropped.** In general \"a quotient map times the identity\" is not a quotient map: take $q$ to be some badly behaved quotient and $Z$ a space that is neither locally compact nor compactly generated; the product topology is then strictly finer than the topology the quotient space should have.\n\nTerminology: some write this as \"$Z$ locally compact Hausdorff $\\implies$ the functor $- \\times Z$ preserves quotient maps\".",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -14385,9 +14369,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],

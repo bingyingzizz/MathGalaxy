@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.outer-measure)　·　[Chinese page (authoritative)](./def.outer-measure.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 14 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
 

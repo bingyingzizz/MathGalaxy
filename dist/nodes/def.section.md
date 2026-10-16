@@ -18,7 +18,7 @@ $$E^y := \{x \in X : (x, y) \in E\}$$
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/def.section.5.md](./def.section.5.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/def.section.3.md](./def.section.3.md)
 
 refs: Folland, Real Analysis, §2.5

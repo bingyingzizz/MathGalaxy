@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=prop.chaus-reflective)　·　[Chinese page (authoritative)](./prop.chaus-reflective.md)
 
-## Statement · **draft**
+## Statement · **reviewed**
 $\mathbf{CHaus}$ is a **reflective subcategory** of $\mathbf{Top}$; the reflection is called the **Stone–Čech compactification**:
 
 $$\beta : \mathbf{Top} \longrightarrow \mathbf{CHaus}, \qquad X \mapsto \beta X$$

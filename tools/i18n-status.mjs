@@ -149,6 +149,88 @@ if (REBUMP) {
   process.exit(0);
 }
 
+/* ------------------------------------------------ 只换指纹的「重新基线」（谨慎使用） */
+/* 干什么：某些条目的**中文底稿改过**（指纹对不上），但改动是**排版/公式清理**性质的
+   （例如把 `\text{ 是}` 换成 `\wedge`、把汉字移出公式），英文那一段的语义没变。
+   这时把 `basedOn` 的**指纹段**重记一遍，stale 就消掉。
+   ⛔⛔ 只有在**人工核对过「改动没有影响这条英文」**之后才能用 —— 所以要**强制写明理由**
+      （`--why '…'`），并且它会打印 旧指纹 → 新指纹 与理由，方便在提交信息里留痕。
+   ⛔ 它**不翻状态**（`reviewed` 还是 `reviewed`）、**不动版本段**。
+   用法： bun tools/i18n-status.mjs --rebase id1,id2 --why '…' [--apply] */
+function rebaseFingerprints(ids, why) {
+  const FILES = ['data/i18n/abstracts.en.js', 'data/i18n/statements.en.js'];
+  const hit = new Set();
+  for (const rel of FILES) {
+    const p = path.join(SRC, rel);
+    const src = fs.readFileSync(p, 'utf8');
+    const lines = src.split('\n');
+    let cur = null;
+    /* 这一行属于哪个字段：**向上扫到最近的那个键**（`statement: {` / `notes: {`）——
+       ⚠️ 别按「窗口里出现过 statement 吗」判：陈述短的时候 notes 的窗口里也会出现 statement。 */
+    const fieldOf = (i) => {
+      for (let j = i - 1; j >= 0 && j > i - 60; j--) {
+        const s = lines[j].trim();
+        if (/^(statement|notes): \{$/.test(s)) return s.replace(/: \{$/, '');
+        if (/^'[^']+': \{$/.test(lines[j]) || /^    \},?$/.test(lines[j])) break;
+      }
+      return 'abstract';
+    };
+    const out = lines.map((line, i) => {
+      const mItem = /^    '([^']+)': \{$/.exec(line);
+      if (mItem) { cur = mItem[1]; return line; }
+      if (/^    \},?$/.test(line)) { cur = null; return line; }
+      const mSt = /^(\s*)status: (?:'draft'|'reviewed'), basedOn: '([^'#]*)#([0-9a-f]{8})', reviewed: (.*)$/.exec(line);
+      if (!mSt || !cur || ids.indexOf(cur) < 0) return line;
+      const n = graphNodes[cur];
+      const f = fieldOf(i);
+      /* 摘要的底稿 = statement + notes；陈述/说明 = 那个字段自己 */
+      const hash = f === 'statement' ? MG.zhHash(n.statement)
+        : f === 'notes' ? MG.zhHash(n.notes)
+          : MG.zhHash((n.statement || '') + '\n' + (n.notes || ''));
+      if (mSt[3] === hash) return line;
+      hit.add(`${rel}:${cur}.${f}`);
+      console.log(`  ${rel} · ${cur}.${f}：${mSt[3]} → ${hash}`);
+      return `${mSt[1]}status: ${/'reviewed'/.test(mSt[4]) || /'reviewed'/.test(line) ? "'reviewed'" : "'draft'"}, ` +
+        `basedOn: '${mSt[2]}#${hash}', reviewed: ${mSt[4]}`;
+    }).join('\n');
+    if (APPLY && out !== src) fs.writeFileSync(p, out, 'utf8');
+  }
+  console.log(hit.size
+    ? (APPLY ? `✓ 重记了 ${hit.size} 处指纹（理由：${why}）` : `（干跑）会重记 ${hit.size} 处指纹；加 --apply 才写`)
+    : '✓ 没有需要重记的指纹');
+  return hit.size;
+}
+const graphNodes = {};
+{
+  const w = {
+    MG: {}, console,
+    document: { createElement: () => ({ getContext: () => ({}), width: 0, height: 0 }),
+      addEventListener() {}, getElementById: () => null },
+    performance: { now: () => Date.now() }, requestAnimationFrame: () => 0, addEventListener() {},
+  };
+  w.window = w; w.self = w;
+  const c = vm.createContext(w);
+  for (const rel of ['core/config.js', 'core/util.js', 'core/i18n.js', 'core/graph.js', 'core/layout.js',
+    'data/regions.js', 'data/clusters.js']) {
+    vm.runInContext(fs.readFileSync(path.join(SRC, rel), 'utf8'), c, { filename: rel });
+  }
+  for (const f of fs.readdirSync(path.join(SRC, 'data/packs')).sort()) {
+    if (f.endsWith('.js')) vm.runInContext(fs.readFileSync(path.join(SRC, 'data/packs', f), 'utf8'), c, { filename: f });
+  }
+  const gg = w.MG.buildGraph(w.MG.packs, w.MG.regions, w.MG.clusters);
+  Object.assign(graphNodes, gg.byId);
+}
+const RB = argv.indexOf('--rebase');
+if (RB >= 0) {
+  const ids = (argv[RB + 1] || '').split(',').map((s) => s.trim()).filter(Boolean);
+  const wi = argv.indexOf('--why');
+  const why = wi >= 0 ? argv[wi + 1] : '';
+  if (!ids.length) { console.error('用法：--rebase id1,id2 --why "理由" [--apply]'); process.exit(2); }
+  if (!why) { console.error('⛔ --rebase 必须写 --why "为什么改指纹不影响这条英文"（会打进提交信息）。'); process.exit(2); }
+  rebaseFingerprints(ids, why);
+  process.exit(0);
+}
+
 /* --------------------------------------------------------------- 输出 */
 if (JSONOUT) {
   console.log(JSON.stringify({ version: VERSION, rows, errs }, null, 2));

@@ -4,7 +4,7 @@ English entry · root `../`
 
 That is, any two cardinals are comparable.
 
-## Notes · **draft**
+## Notes · **reviewed**
 ⭐ This is the licence to *order* cardinals: without it, even the sentence "$A$ is bigger than $B$" can be meaningless.
 
 Route of the proof (see the edge): the **well-ordering theorem** well-orders both $A$ and $B$, the corresponding ordinals are comparable, and hence one direction admits an injection. So this theorem, AC and the well-ordering theorem are three ways of saying the same thing.

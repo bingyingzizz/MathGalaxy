@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=ex.kan-extension)　·　[Chinese page (authoritative)](./ex.kan-extension.md)
 
-## Statement · **draft**
+## Statement · **reviewed**
 **(1)** A diagram $D : I \to \mathcal{C}$ has a colimit $X$ $\iff$ the left Kan extension $p_{!}D : \mathbf{1} \to \mathcal{C}$ along the projection $p : I \to \mathbf{1}$ exists, and its value is
 
 $$(p_{!}D)(\ast) = \varinjlim_{i \in I} D(i) = X$$

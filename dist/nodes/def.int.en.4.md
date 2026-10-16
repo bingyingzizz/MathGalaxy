@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.int)　·　[Chinese page (authoritative)](./def.int.md)
 
-## Notes · **draft**
+## Notes · **reviewed**
 ⭐ The motivation in one sentence: **subtraction does not work inside $\mathbb{N}$** ($3 - 5$ does not exist), yet the *pair* "$3 - 5$" always makes sense — so one takes the difference itself as a new object.
 
 By-product: $\mathbb{Z}$ has an additive zero $[0, 0] = 0$ and additive inverses $-[a, b] = [b, a]$ — precisely what $\mathbb{N}$ lacks.

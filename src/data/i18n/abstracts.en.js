@@ -166,7 +166,7 @@ MG.i18nAbstracts = {
       'monotone class. With "$\\mathcal{E}$ is an algebra" this is the standard monotone class ' +
       'theorem; the form above weakens that hypothesis to the two closure conditions, and the ' +
       'proof is the same two-step argument with the monotone class as the running object.',
-      status: 'draft', basedOn: 'v0.9.1#78753395', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#6d41f268', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.section': {
@@ -177,7 +177,7 @@ MG.i18nAbstracts = {
       'Geometrically, cut the picture with a line and look at what remains. Sections are the ' +
       'language in which Fubini is stated: integrate along the sections first, then integrate ' +
       'the resulting function against the other variable.',
-      status: 'draft', basedOn: 'v0.9.1#0a85dee1', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#0a85dee1', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'prop.section-measurable': {
@@ -189,7 +189,7 @@ MG.i18nAbstracts = {
       'standard one: the class of sets all of whose sections are measurable contains every ' +
       'rectangle and is a $\\sigma$-algebra. Note that this holds for every point, whereas ' +
       'Fubini can only promise almost every point once integrability enters.',
-      status: 'draft', basedOn: 'v0.9.1#05ea13af', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#56ffe956', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'thm.quotient-product': {
@@ -201,7 +201,7 @@ MG.i18nAbstracts = {
       '$q^{-1}(V) \\times K$ is an open neighbourhood of $(x,z)$ inside that preimage. Local ' +
       'compactness cannot be dropped. This is the engine behind "compactly generated spaces ' +
       'are closed under products".',
-      status: 'draft', basedOn: 'v0.9.1#b724ea06', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#b724ea06', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.int': {
@@ -214,7 +214,7 @@ MG.i18nAbstracts = {
       '$3 - 5$ is meaningful, so the difference itself is taken as the object; $[0,0]$ and ' +
       '$[b,a]$ supply the missing zero and inverses. $\\mathbb{N}$ embeds via ' +
       '$a \\mapsto [a,0]$.',
-      status: 'draft', basedOn: 'v0.9.1#481df90f', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#481df90f', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'thm.wellordering': {
@@ -224,7 +224,7 @@ MG.i18nAbstracts = {
       'axiom of choice in 1904 precisely to prove this, and over ZF the statement is ' +
       'equivalent to AC. Immediate consequence: any two cardinals are comparable, and ' +
       '$\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.',
-      status: 'draft', basedOn: 'v0.9.1#4716d94b', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#5ba4f775', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'thm.hausdorff': {
@@ -234,7 +234,7 @@ MG.i18nAbstracts = {
       '$C_0 = \\emptyset$ gives that every non-empty poset has a maximal chain. The statement ' +
       'predates Zorn\'s lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise ' +
       'form of "keep adding elements until you cannot add any more".',
-      status: 'draft', basedOn: 'v0.9.1#dece7db3', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#dece7db3', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'thm.cardinal-comparable': {
@@ -245,7 +245,7 @@ MG.i18nAbstracts = {
       'The proof runs through the well-ordering theorem: well-order both sets, compare the ' +
       'corresponding ordinals, and read off an injection in one direction. Without AC there ' +
       'really are incomparable cardinals.',
-      status: 'draft', basedOn: 'v0.9.1#de40e4ba', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#ac47a0af', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'prop.adjoint-full-faithful': {
@@ -256,7 +256,7 @@ MG.i18nAbstracts = {
       'checked on a single natural transformation rather than on every Hom-set. This is also ' +
       'the dividing line between reflections and coreflections: an inclusion of a full ' +
       'subcategory is always fully faithful, so a reflection has an invertible counit.',
-      status: 'draft', basedOn: 'v0.9.1#b504654a', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#c81ceb51', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'ex.kan-extension': {
@@ -267,7 +267,7 @@ MG.i18nAbstracts = {
       '(2) $F : \\mathcal{C} \\to \\mathcal{D}$ has a right adjoint iff the left Kan extension ' +
       'of $1_{\\mathcal{C}}$ along $F$ exists, and then $G = F_!1_{\\mathcal{C}}$, the unit ' +
       'being the transpose of $1_{\\mathcal{C}} \\implies G \\circ F$.',
-      status: 'draft', basedOn: 'v0.9.1#118bf379', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#118bf379', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.metric-space': {
@@ -290,7 +290,7 @@ MG.i18nAbstracts = {
       'is automatic for right adjoints, is also sufficient under these hypotheses. The ' +
       'construction reads: $F(X)$ is the object of $\\mathcal{D}$ closest to $X$, and every ' +
       '$X \\to G(Y)$ factors through $X \\to G(FX) \\to G(Y)$.',
-      status: 'draft', basedOn: 'v0.9.1#5b78b019', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#5b78b019', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.outer-measure': {
@@ -302,7 +302,7 @@ MG.i18nAbstracts = {
       'the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. ' +
       'Lebesgue\'s original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable ' +
       'interval covers, is the prototypical example.',
-      status: 'draft', basedOn: 'v0.9.1#1d1a972f', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#1d1a972f', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'thm.real-uncountable': {
@@ -314,7 +314,7 @@ MG.i18nAbstracts = {
       '$\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ ' +
       'and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density ' +
       'and cardinality are different things, which is why analysis needs $\\mathbb{R}$.',
-      status: 'draft', basedOn: 'v0.9.1#ea2cb38a', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#ea2cb38a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'prop.yoneda-embedding': {
@@ -326,7 +326,7 @@ MG.i18nAbstracts = {
       '\\operatorname{Hom}_{\\mathcal{C}}(X, Y)$: the arrows between representable functors ' +
       'reproduce the arrows of $\\mathcal{C}$ exactly, no more and no fewer. Embedding ' +
       '$\\mathcal{C}$ this way moves problems into a category that has all limits and colimits.',
-      status: 'draft', basedOn: 'v0.9.1#1bc8f10f', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#1bc8f10f', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'thm.metric-compact-equiv': {
@@ -338,7 +338,7 @@ MG.i18nAbstracts = {
       'compact by the "bad ball" argument; complete and totally bounded implies sequentially ' +
       'compact by diagonalisation. In general topological spaces only the first implication ' +
       'survives — sequential compactness is a metric-space luxury.',
-      status: 'draft', basedOn: 'v0.9.1#b29d24a7', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#90481f72', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.shrinks-nicely': {
@@ -349,7 +349,7 @@ MG.i18nAbstracts = {
       'the ball" and "is not too thin". Balls themselves qualify, as does any fixed shape ' +
       'rescaled inside them; a thin sliver does not. The notion exists so that ' +
       'differentiation theorems do not depend on the shape of the sets being shrunk.',
-      status: 'draft', basedOn: 'v0.9.1#a792035c', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#a792035c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.complex-measure': {
@@ -361,7 +361,7 @@ MG.i18nAbstracts = {
       'finite and that series is automatically absolutely convergent, so questions of ' +
       'finiteness and rearrangement never arise — at the cost of losing examples with ' +
       'infinite mass.',
-      status: 'draft', basedOn: 'v0.9.1#792f3f7b', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#38afc3f7', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'def.essential-sup': {
@@ -373,7 +373,7 @@ MG.i18nAbstracts = {
       'everywhere. Then $L^\\infty$ consists of the measurable $f$ with ' +
       '$\\|f\\|_\\infty < \\infty$. Note the difference from $\\sup |f|$, which a single value ' +
       'on a null set can spoil.',
-      status: 'draft', basedOn: 'v0.9.1#877ac0d0', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#0d075471', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'prop.chaus-reflective': {
@@ -386,7 +386,7 @@ MG.i18nAbstracts = {
       'closure, which is compact Hausdorff as a closed subset of a compact Hausdorff space. ' +
       'The embedding is injective iff $X$ is Tychonoff. Corollary: any limit of compact ' +
       'Hausdorff spaces is again compact Hausdorff.',
-      status: 'draft', basedOn: 'v0.9.1#f1673aca', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1#f1673aca', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
   },
 };

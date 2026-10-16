@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.real-uncountable)　·　[Chinese page (authoritative)](./thm.real-uncountable.md)
 
-## Statement · **draft**
+## Statement · **reviewed**
 **The real line $\mathbb{R}$ is uncountable**: there is no surjection from $\mathbb{N}$ onto $\mathbb{R}$, that is, $\mathbb{R}$ cannot be arranged as a sequence.
 
 A stronger conclusion:

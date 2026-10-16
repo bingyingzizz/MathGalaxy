@@ -10,6 +10,8 @@ $$\nu : \mathcal{M} \to \mathbb{C}$$
 满足
 
 $$\nu(\emptyset) = 0, $$
+
+且对两两不交的 $\{E_j\} \subseteq \mathcal{M}$：
 > 陈述续见 [nodes/def.complex-measure.2.md](./def.complex-measure.2.md)
 
 
@@ -19,7 +21,7 @@ $$\nu(\emptyset) = 0, $$
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/def.complex-measure.5.md](./def.complex-measure.5.md)
 
-## English abstract · **stale** (the Chinese wording changed since this translation) · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/def.complex-measure.3.md](./def.complex-measure.3.md)
 
 refs: Folland, Real Analysis, §3.3

@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=ex.kan-extension)　·　[Chinese page (authoritative)](./ex.kan-extension.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 12 · proposition · cluster Adjunctions and Reflections (`cat.adjoint`) · Category Theory
 

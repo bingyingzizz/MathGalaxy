@@ -13,7 +13,7 @@ layer 14 · 命题 · 预层与米田 · 范畴论
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.yoneda-embedding.4.md](./prop.yoneda-embedding.4.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/prop.yoneda-embedding.3.md](./prop.yoneda-embedding.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
