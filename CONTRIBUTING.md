@@ -112,6 +112,50 @@ review), `reviewed` (checked by the author) or `stale` (the content version move
 the translation). Status is computed at build time from `status` + `basedOn`; you never write
 it by hand. Node `id`s are the citation contract and are stable across versions.
 
+**Contributing a translation.** Translations are welcome for any language — English is just
+the first one. The path is deliberately narrow, because the Chinese text is the single source
+of truth and a second copy would rot within a week.
+
+1. **Pick a scope.** One node's `statement` + `notes` is a good unit; a whole cluster is a
+   good batch. Start from the hubs: the top-30 by in-degree are ranked in `dist/hubs.md`.
+2. **Say what you will take, before you start.** Name the node ids in an issue (or to the
+   author) so that two people do not translate the same node. The author keeps a per-batch
+   review list under `i18n/review-batch-N.md` — see `i18n/review-batch-1.md` for the format.
+3. **Translate into the existing sidecar files** — never a second tree:
+   `src/data/i18n/statements.en.js` (statements / notes), `src/data/i18n/abstracts.en.js`
+   (hub abstracts), `src/data/i18n/docs.en.js` (read docs).
+   ⛔ Do not create `en/` copies of packs, and do not edit `src/data/i18n.js` (generated).
+4. **Follow the glossary.** `i18n/glossary.md` is generated from the code; any term already
+   in it must be used as written. New terms go in through `docs.en.js` → `glossaryExtra`
+   (one entry, once) rather than being invented per node.
+5. **Formulas are copied verbatim.** `$…$` and `$$…$$` are not translated, not re-wrapped and
+   not re-spaced. Prose is translated literally. If the Chinese is genuinely ambiguous, leave
+   a `⚠️ TODO(author): …` marker — ⛔ never guess a meaning.
+6. **Write down what you were unsure about.** Every batch carries its own list:
+   node id / Chinese source / English draft / new terms / open questions.
+7. **Run the checks and open a PR.**
+   ```bash
+   bun tools/build.mjs          # build + all hard assertions (incl. the translation ones)
+   bun tools/_stcheck.mjs       # every English statement fed to the real KaTeX
+   ```
+
+**Review rules.** A translation lands as `status: 'draft'` with a `basedOn` content version.
+**Only the author flips it to `reviewed`** — that is what removes the "unreviewed draft"
+banner from the page. When the Chinese content version moves past `basedOn`, the build marks
+the translation `stale` automatically; the fix is to re-read the Chinese and bump `basedOn`,
+⛔ never to delete the header or silently keep the old text.
+
+**Attribution.** A translated node is credited as **node id + translator**. Your name (or
+handle) is recorded in the batch file `i18n/review-batch-N.md` next to the ids you translated.
+Content is CC BY 4.0, so you keep the copyright on your translation and grant it under the
+same licence; code contributions are MIT.
+
+**When does a full translation make sense?** Not yet. The graph is still growing, so a 100%
+translation would be `stale` within a week. The trigger we agreed on is all three of:
+(a) the hub set (top-30) is translated **and** reviewed; (b) the content version has not moved
+for a month; (c) someone other than the author is willing to maintain the translation. Until
+then translations stay per-batch, each carrying its own status header.
+
 **Before you commit**, run:
 
 ```bash
