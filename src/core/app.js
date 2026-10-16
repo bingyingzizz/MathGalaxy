@@ -370,16 +370,23 @@
             见 xlink.js 头部注释。
          ⭐⭐ `priority`：正文（`.pn-body`）**先扫**。面板顶上那行「还差 N 条前置：
             群同态、核与像…」是提示，用节点 label 拼的，排在陈述前面；不给优先级的话
-            它会把概念名额吃光，正文里的「群同态」反而点不动（用户实测报过）。 */
+            它会把概念名额吃光，正文里的「群同态」反而点不动（用户实测报过）。
+         ⭐⭐ `only`：只扫**数学正文**（`.pn-body` / `.pn-note`）。面板上其余全是
+            界面文字（标题 / id / 芯片 / 那行提示 / 按钮）—— 它们本来就是拿节点名
+            拼的，链上去没用，还会把「第一次」的名额从正文手里抢走
+            （2026-10-16：英文提示里的 `prerequisites` 被从词内部截出了 `site`）。 */
       linkify: function (root, fromId) {
-        return xlink.linkify(root, { fromId: fromId, priority: '.pn-body', shortAka: true });
+        return xlink.linkify(root, { fromId: fromId, priority: '.pn-body',
+          only: '.pn-body, .pn-note', shortAka: true });
       },
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
+      /* 「独立页面」的地址（T1.5）。面板只负责画这个 <a>，地址规则在这里。 */
+      pageHref: pageHref,
       onToggleRead: function (id) {
         reads.toggle(id);
-        /* 重画面板让按钮与「还差几条前置」跟着变。
+        /* 重画面板让按钮与「相关依赖还有几项没标已读」跟着变。
            ⚠️ show() 会把 scrollTop 归零 ⇒ 先把位置存下来再恢复，
               否则在长面板中间点一下「已读」会跳回顶部。 */
         var keep = panelEl.scrollTop;
@@ -404,6 +411,23 @@
       }
     });
 
+    /** 「独立页面」的地址（T1.5）：概念页规则 = `<站点根>nodes/<id>.html`（构建期生成）。
+        ⭐ 判据用**实体**、不用猜：
+          · 页面真的是从站点根下打开的（http/https 且地址就以站点根开头）⇒ 写**相对路径**，
+            同源、可复制、浏览器翻译与「在新标签页打开」都最自然；
+          · 其它情况（**双击本地 index.html** 的 file://、或别处托管的副本）⇒ 本机
+            并没有 nodes/ 目录，写相对路径会变成 `file:///…/nodes/x.html` 的**死链**。
+            所以退回站点**绝对地址** —— 有网就能开，没网时链接仍然是一个正确的网址。
+        ⛔ 别用 location.protocol === 'file:' 当唯一判据：镜像/预览站也一样没有 nodes/。 */
+    function pageHref(id) {
+      var origin = siteOrigin();
+      var href = '';
+      try { href = String(location.href); } catch (e) { href = ''; }
+      var onSite = /^https?:$/.test(location.protocol) && href.indexOf(origin) === 0;
+      return onSite ? 'nodes/' + encodeURIComponent(id) + '.html'
+        : origin + 'nodes/' + encodeURIComponent(id) + '.html';
+    }
+
     /* -------------------------------------------------- 引用此节点（T1.4） */
     /** 站点原点：现读 <link rel=canonical>（那是站点自己声明的地址），读不到再退回常量。
         ⚠️ 不用 location —— file:// 打开时地址是本地路径，而引文要的是正式网址。 */
@@ -424,7 +448,7 @@
       var en = n && (n.title_en || n.label_en);
       var inside = [en, v ? '内容 ' + v : ''].filter(Boolean).join('，');
       var text = 'MathGalaxy 节点 ' + id + (inside ? '（' + inside + '）' : '') + '\n' +
-        siteOrigin() + 'nodes/' + id + '.html';
+        siteOrigin() + 'nodes/' + encodeURIComponent(id) + '.html';
       return copyText(text);
     }
     /** 复制：先走异步剪贴板，失败退回 execCommand，再失败就如实报 false。 */

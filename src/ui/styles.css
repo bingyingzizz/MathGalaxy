@@ -563,12 +563,23 @@ html.ui-no-hint #hint { display: none; }
 .pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
 .pn-read-tip.ok { color: #23794A; }
 
-/* ---------- 详情面板：引用此节点（T1.4） ---------- */
+/* ---------- 详情面板：引用此节点（T1.4）/ 独立页面（T1.5） ---------- */
 /* 中性的灰蓝，与「只看子图」（蓝）和「已读」（绿）都区分开 —— 它不改图，只复制一段字。 */
-.pn-cite-row { margin: 2px 0 10px; }
+.pn-cite-row { margin: 2px 0 10px; display: flex; flex-wrap: wrap; gap: 8px; }
 .pn-btn.pn-cite { border-color: rgba(120, 128, 148, .42); background: rgba(120, 128, 148, .07); color: #4A5262; }
 .pn-btn.pn-cite:hover { background: rgba(120, 128, 148, .16); border-color: rgba(120, 128, 148, .55); }
 .pn-btn.pn-cite.on { background: rgba(46, 158, 91, .13); border-color: rgba(46, 158, 91, .48); color: #23794A; font-weight: 600; }
+/* 「独立页面」是个真 <a>（不是按钮）：去掉下划线、沿用按钮外观，
+   光标给 pointer，让「能复制地址 / 能新标签页打开」这件事看得出来。 */
+.pn-btn.pn-open {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-color: rgba(60, 112, 245, .34);
+  background: rgba(60, 112, 245, .06);
+  color: #2F5BD0;
+}
+.pn-btn.pn-open:hover { background: rgba(60, 112, 245, .14); border-color: rgba(60, 112, 245, .5); }
 /* 复制失败时的退路：摊开的引文输入框（只读、已选中） */
 .pn-cite-box { margin: -4px 0 10px; }
 .pn-cite-box textarea {

@@ -38,12 +38,78 @@
       那些是行文词（满足 / 推出 / 代数…），只是碰巧和某个 aka 同写法。
       「吃掉」是必需的：「把**短正合列**送成」里如果只把『正合列』设成「不链」，
       游标会退到更短的『正合』，于是链出一个错的。表在**内容**里，引擎只读表。
+
+   ⛔⛔ **拉丁词条要在词边界上命中，专名要整体识别**（2026-10-16 修）——
+      起因是英文面板里观察到的两处错链：
+        · `prerequisites`（界面提示里的普通英文词）内部的 `site`
+          被链到了 def.grothendieck-topology；
+        · `Heine–Borel` 里被拆出来的 `Borel` 被链到了 def.borel。
+      词表本身没错（`site` / `Borel` 都是货真价实的 aka），错的是**匹配方式**：
+      原先按字符滑、不看边界，于是拉丁术语能从单词内部被截出来，
+      连字符也不算「词的一部分」，复合专名就被拆成了两半。现在的规则：
+        · 拉丁命中区间的**左右**都不能是「词内字符」
+          （字母 / 数字 / 变音符 / 连字符与各种破折号）⇒ `prerequisites` 里的
+          `site` 前面是字母、`Heine–Borel` 里的 `Borel` 前面是破折号，都不命中；
+        · 顺带就有了「复合专名整体识别、拿不准宁可不链」：`Heine-Borel` 整段
+          真在表里（thm.metric-compact-equiv 的 aka）⇒ 整段链；
+          只能对上 `Borel` 一半时 ⇒ 拒掉，不猜。
+        · 归一化是**逐字符 1:1** 的（变音字母去组合符、各种破折号统一成 '-'），
+          所以正文写 `Schroder–Bernstein` / `Schroder-Bernstein` 也能命中 aka 里的
+          `Schröder–Bernstein`，而正文字符下标与词表长度始终对齐。
+      ⚠️ 规则只作用于**拉丁**词条 —— 中文没有词边界这一说，中文词条行为一字不变。
+
+   ⛔ 自动链接只做在**数学正文**上（`opts.only` 白名单）。面板里还有一大片
+      **界面提示文字**（标题 / id / 芯片 / 「还差 N 条」那行 / 按钮），
+      它们本来就是用节点名拼出来的，链上去没用，还会把正文的「第一次」名额吃掉。
+      面板传的是 `only: '.pn-body, .pn-note'`；不给 `only` 就整棵子树照旧。
    ========================================================================== */
 (function (global) {
   'use strict';
   var MG = (global.MG = global.MG || {});
 
   var MIN_LEN = 2;
+
+  /* ------------------------------------------------------------ 字符归一 */
+  /* ⭐ 逐字符 1:1 归一（长度不变 ⇒ 正文下标与词表下标始终对齐）：
+       · 各种连字符 / 破折号 → '-'（ASCII 减号、‐ ‑ ‒ – — − 全角等）
+       · 变音字母 → 基字母（é→e、ö→o、š→s…；NFD 去组合符）
+     于是「表里写 Schröder–Bernstein、正文写 Schroder-Bernstein」也能互相命中。
+     ⛔ 只对拉丁字母做 NFD —— 别去动汉字/希腊字母。 */
+  var DASHES = '-\u2010\u2011\u2012\u2013\u2014\u2212\uFE63\uFF0D';
+
+  /* 「词内字符」：拉丁字母（含扩展区）、数字、变音符、各色破折号。
+     ⛔ 故意**不含**撇号 —— `Zorn's lemma` 里的 `Zorn` 要能链。
+     拉丁词条命中区间的左右若落在词内字符上，就算越界（见 boundsOk）。 */
+  var WORDCHAR = /[0-9A-Za-z\u00C0-\u024F\u1E00-\u1EFF\u0300-\u036F\u2010\u2011\u2012\u2013\u2014\u2212\uFE63\uFF0D]/;
+  /* 词条里有没有拉丁字母/数字 —— 有才讲词边界（中文词条不受影响） */
+  var HAS_LATIN = /[0-9A-Za-z]/;
+
+  function isWordChar(ch) { return !!ch && WORDCHAR.test(ch); }
+
+  function normChar(ch) {
+    if (!ch) return ch;
+    if (DASHES.indexOf(ch) >= 0) return '-';
+    var c = ch.charCodeAt(0);
+    if (c < 0x80) return ch;
+    if ((c >= 0xC0 && c <= 0x24F) || (c >= 0x1E00 && c <= 0x1EFF)) {
+      var d = ch.normalize ? ch.normalize('NFD') : ch;
+      return d.charAt(0);
+    }
+    return ch;
+  }
+  function norm(s) {
+    s = String(s == null ? '' : s);
+    var out = '';
+    for (var i = 0; i < s.length; i++) out += normChar(s.charAt(i));
+    return out;
+  }
+
+  /** 拉丁命中区间的左右必须是词边界（中文词条恒真）。 */
+  function boundsOk(text, at, len, latin) {
+    if (!latin) return true;
+    return !isWordChar(at > 0 ? text.charAt(at - 1) : '') &&
+      !isWordChar(at + len < text.length ? text.charAt(at + len) : '');
+  }
 
   function createXLink(graph, aliases) {
     /* 首字 → [{w, id, n}]，按 n 降序（长的优先） */
@@ -63,16 +129,20 @@
     function add(word, id, isLabel) {
       var w = String(word == null ? '' : word).trim();
       if (w.length < MIN_LEN && !single[w]) return;
-      var f = w.charAt(0);
+      /* ⭐ 词表里存**归一化**后的写法（破折号统一、变音去符）——
+         正文匹配时走同一个归一，两边才对得上；长度不变，下标不错位。 */
+      var nw = norm(w);
+      var f = nw.charAt(0);
       if (!byFirst[f]) byFirst[f] = [];
+      var lat = HAS_LATIN.test(nw);
       // 同一个词已经指向这个 id 就不重复加（label 与 aka 常常一样）
       for (var i = 0; i < byFirst[f].length; i++) {
-        if (byFirst[f][i].w === w && byFirst[f][i].id === id) {
+        if (byFirst[f][i].w === nw && byFirst[f][i].id === id) {
           if (isLabel) byFirst[f][i].isLabel = true;   // label 优先
           return;
         }
       }
-      byFirst[f].push({ w: w, id: id, n: w.length, isLabel: !!isLabel });
+      byFirst[f].push({ w: nw, id: id, n: nw.length, isLabel: !!isLabel, lat: lat });
     }
 
     /* ⛔ 「拦词」：**不链**，而且要把这一整段**吃掉**。
@@ -82,9 +152,11 @@
     function addBlocker(word) {
       var w = String(word == null ? '' : word).trim();
       if (w.length < MIN_LEN) return;
-      var f = w.charAt(0);
+      var nw = norm(w);
+      var f = nw.charAt(0);
       if (!byFirst[f]) byFirst[f] = [];
-      byFirst[f].push({ w: w, id: null, n: w.length, isLabel: true, block: true });
+      byFirst[f].push({ w: nw, id: null, n: nw.length, isLabel: true, block: true,
+        lat: HAS_LATIN.test(nw) });
     }
 
     graph.nodes.forEach(function (n) {
@@ -152,13 +224,19 @@
       var hits = [];
       var i = 0;
       while (i < text.length) {
-        var cands = byFirst[text.charAt(i)];
+        var cands = byFirst[normChar(text.charAt(i))];
         var got = null, blocked = false;
         if (cands) {
           for (var k = 0; k < cands.length; k++) {
             var c = cands[k];
             // ⚠️ 先看字面：不匹配的候选直接跳过（长度不够 / 字不对）
-            if (i + c.n > text.length || text.substr(i, c.n) !== c.w) continue;
+            if (i + c.n > text.length) continue;
+            var slice = text.substr(i, c.n);
+            if (slice !== c.w && norm(slice) !== c.w) continue;
+            /* ⛔ 拉丁词条必须在**词边界**上 —— 不的话 `prerequisites` 里的
+               `site`、`Heine–Borel` 里的 `Borel` 都会被链出去（见文件头）。
+               越界的候选直接跳过（更短的候选还有机会）。 */
+            if (c.lat && !boundsOk(text, i, c.n, true)) continue;
             // 拦词：吃掉整段，不给更短的候选留机会
             if (c.block) { i += c.n; blocked = true; break; }
             if (c.id === fromId) continue;                    // 自指不链
@@ -212,9 +290,10 @@
     /**
      * 把 root 里出现的概念名包成可点的 <a>。
      * @param {Element} root    已经渲染好的容器（面板正文 / 概念页正文…）
-     * @param {Object}  opts    { fromId, priority, shortAka }
+     * @param {Object}  opts    { fromId, priority, only, shortAka }
      *        fromId   站在哪个节点上看 —— 决定 near / far（不再限制链不链）
      *        priority 选择器；命中的子树里的文字**先扫**（正文优先于提示，见 inside()）
+     *        only     选择器白名单；只扫落在它里面的文字（面板用它把界面提示排除掉）
      *        shortAka true = 2 字 aka 不再要求邻域（默认 false，噪音大）
      * @returns {number} 加了多少个链接
      */
@@ -223,6 +302,7 @@
       opts = opts || {};
       var fromId = opts.fromId || null;
       var prio = opts.priority || null;
+      var only = opts.only || null;
       var allowShortAka = !!opts.shortAka;
 
       // 先收集、后修改：边遍历边改 DOM，TreeWalker 会被自己改乱
@@ -232,6 +312,9 @@
       while ((t = walker.nextNode())) {
         if (!t.nodeValue || !t.nodeValue.trim()) continue;
         if (insideSkipped(t, root)) continue;
+        /* ⛔ 只链**正文**（白名单）：界面提示文字（标题 / 芯片 / 「还差 N 条」那行）
+           不参与 —— 它们是拿节点名拼出来的，链上去没用还挤掉正文的名额。 */
+        if (only && !inside(t, root, only)) continue;
         (prio && inside(t, root, prio) ? prioTexts : restTexts).push(t);
       }
       var texts = prioTexts.concat(restTexts);
@@ -277,7 +360,9 @@
       return { words: n, firstChars: Object.keys(byFirst).length };
     }
 
-    return { linkify: linkify, stats: stats };
+    /* ⭐ 回归体检用的**纯匹配**入口（`tools/xlinkcheck.mjs`）：只跑匹配、不碰 DOM。
+       ⛔ 体检要跑的就是这个函数本身 —— 别在工具里另写一份口径。 */
+    return { linkify: linkify, scan: scan, stats: stats };
   }
 
   MG.createXLink = createXLink;

@@ -11,6 +11,9 @@
 
    `{名}` = 嵌进来的名字（节点 / 星团 / 星系 / 层号），`{n}` = 数字。
    口径（作者 2026-10-16 定）：折成模板 **105** 条；逐条 236 个实例。
+   ⚠️ 105/236 是**作者拍板当时的快照**（那份调查在 i18n/ui-strings.md），不是实时计数；
+      2026-10-16 第二轮又动过面板文案（「前置提示」改成「相关依赖的已读情况」、
+      新增「独立页面」入口）⇒ 本表的键 138 → 141。要重算口径得按 ui-strings.md 的办法重跑。
    拼写：**美式英语**（-ize / -ization，见 i18n/glossary.md）。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -161,8 +164,21 @@ MG.uiEn = {
     '两个方向都要': 'Both directions',
     '✓ 标记已读': '✓ Mark as read',
     '✓ 已读 · 点一下取消': '✓ Read · click to undo',
-    '前置都读过了': 'all prerequisites read',
-    '还差 {n} 条前置：{名}': '{n} prerequisites missing: {名}',
+    /* ⚠️ 这两条的说法改过一次（2026-10-16）：原文案是
+       '前置都读过了' / '还差 {n} 条前置：{名}' —— 读起来像「学完这些才能读」。
+       合起来的关系（推出的前提 + 引用的定义）不构成学习顺序，见 panel.js 的注释。
+       ⛔ 英文别再写 prerequisite 那个词：它会被内文跳转从单词内部截出 `site`
+       （就是这轮修掉的那个 bug 的现场）。 */
+    '已标记全部相关依赖': 'all related dependencies marked as read',
+    '相关依赖中还有 {n} 项未标记已读：{名}':
+      '{n} related dependencies not marked as read yet: {名}',
+    '「相关依赖」= 推出它的前提 + 陈述里引用的定义（等价与类比不算）；这只是已读情况的记录，不代表必须先学它们。':
+      '“Related dependencies” = the premisses it is derived from + definitions cited in its statement ' +
+      '(equivalences and analogies do not count). This is only a record of what is marked read — ' +
+      'it does not mean you must study them first.',
+    '独立页面 ↗': 'Standalone page ↗',
+    '在新标签页打开这个概念页（普通网页，便于复制地址与浏览器翻译）':
+      'Open this concept page in a new tab (a plain web page: easy to copy the address and to translate)',
     '陈述': 'Statement',
     '说明 / 备注': 'Notes',
     '说明': 'Notes',

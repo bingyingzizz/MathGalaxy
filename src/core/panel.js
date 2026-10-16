@@ -158,35 +158,58 @@
         '</div>';
       html += regionChips(n);
 
-      /* 「引用此节点」（T1.4）。内容以 CC BY 4.0 授权，标 id + 版本是**请求** ——
-         这个按钮把请求变成一次点击（引文 = 节点 id + 内容版本 + 概念页地址）。
-         ⚠️ panel 不碰剪贴板、也不知道站点地址：由 app 注入 onCite；
+      /* 「引用此节点」（T1.4）与「独立页面」（T1.5）。内容以 CC BY 4.0 授权，
+         标 id + 版本是**请求** —— 「引用」按钮把这个请求变成一次点击
+         （引文 = 节点 id + 内容版本 + 概念页地址）；「独立页面」是**普通链接**，
+         指向构建期为每个节点产出的 `nodes/<id>.html` 单页版 ——
+         方便复制地址、新标签页打开、浏览器翻译。
+         ⚠️ panel 不碰剪贴板、也不知道站点地址：由 app 注入 onCite / pageHref；
             没注入就整块不出现（导出器复用面板时不会画出半个按钮）。 */
-      if (hooks && hooks.onCite) {
-        html += '<div class="pn-cite-row">' +
-          '<button class="pn-btn pn-cite" data-cite="' + U.escapeHtml(n.id) + '"' +
-          ' title="' + U.escapeHtml(tf('复制引文（节点 id + 内容版本 + 概念页链接）')) + '">' +
-          U.escapeHtml(tf('引用此节点')) + '</button>' +
-          '</div>';
+      var pageHref = hooks && hooks.pageHref ? hooks.pageHref(n.id) : '';
+      if ((hooks && hooks.onCite) || pageHref) {
+        html += '<div class="pn-cite-row">';
+        if (pageHref) {
+          html += '<a class="pn-btn pn-open" href="' + U.escapeHtml(pageHref) + '"' +
+            ' target="_blank" rel="noopener"' +
+            ' title="' + U.escapeHtml(tf('在新标签页打开这个概念页（普通网页，便于复制地址与浏览器翻译）')) + '">' +
+            U.escapeHtml(tf('独立页面 ↗')) + '</a>';
+        }
+        if (hooks && hooks.onCite) {
+          html += '<button class="pn-btn pn-cite" data-cite="' + U.escapeHtml(n.id) + '"' +
+            ' title="' + U.escapeHtml(tf('复制引文（节点 id + 内容版本 + 概念页链接）')) + '">' +
+            U.escapeHtml(tf('引用此节点')) + '</button>';
+        }
+        html += '</div>';
       }
 
-      /* 已读标记 + 「下一步」提示。
-         ⚠️ panel 不认识 localStorage —— 三个钩子都由 app 注入（见 createPanel 的 hooks）。
-            没注入就整块不出现，导出器之类复用面板时不会画出半个按钮。 */
+      /* 已读标记 + **相关依赖的已读情况**。
+         ⚠️ 这里的说法改过一次（2026-10-16）：原来是「还差 N 条前置 / 前置都读过了」，
+            读起来像「学完这些才能读、读完了就可以开始」—— 但那不成立：
+              · 合起来的关系 = 推出的前提 + 陈述里引用的定义，既不是理解本陈述的
+                必要条件，也不是能推出结论的充分条件（定义引用只是「用到了它」）；
+              · 不同证明路线的来源被并在一起（紧 ⇒ 列紧 与 列紧 ⇒ 紧 互为来源）；
+              · 「紧 ⇒ 完备」「列紧 ⇒ 完备」也不意味着学「完备」得先把两条都学完。
+            ⇒ 只说**已读情况**：这几项还没标已读。⛔ 不宣称「可以开始学了」，
+              也不据此推荐下一步（图里本来就没有那个入口）。
+         判据与数据一字未动：还是 `hooks.missingPrereqs`（readstate.js）。 */
       if (hooks && hooks.onToggleRead) {
         var isRead = hooks.isRead ? !!hooks.isRead(n.id) : false;
         var tip = '';
         if (!isRead) {
           var miss = hooks.missingPrereqs ? hooks.missingPrereqs(n.id) : [];
+          var why = tf('「相关依赖」= 推出它的前提 + 陈述里引用的定义（等价与类比不算）；' +
+            '这只是已读情况的记录，不代表必须先学它们。');
           if (!miss.length) {
-            tip = '<span class="pn-read-tip ok">' + U.escapeHtml(tf('前置都读过了')) + '</span>';
+            tip = '<span class="pn-read-tip ok" title="' + U.escapeHtml(why) + '">' +
+              U.escapeHtml(tf('已标记全部相关依赖')) + '</span>';
           } else {
             var names = miss.slice(0, 4).map(function (id) {
               var m = g.byId[id];
               return m ? U.escapeHtml(MG.labelOf(m)) : U.escapeHtml(id);
             }).join('、');
-            tip = '<span class="pn-read-tip">' +
-              U.escapeHtml(tf('还差 {n} 条前置：{名}', { n: miss.length, 名: names + (miss.length > 4 ? ' …' : '') })) +
+            tip = '<span class="pn-read-tip" title="' + U.escapeHtml(why) + '">' +
+              U.escapeHtml(tf('相关依赖中还有 {n} 项未标记已读：{名}',
+                { n: miss.length, 名: names + (miss.length > 4 ? ' …' : '') })) +
               '</span>';
           }
         }

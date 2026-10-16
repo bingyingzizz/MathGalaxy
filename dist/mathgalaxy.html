@@ -595,12 +595,23 @@ html.ui-no-hint #hint { display: none; }
 .pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
 .pn-read-tip.ok { color: #23794A; }
 
-/* ---------- 详情面板：引用此节点（T1.4） ---------- */
+/* ---------- 详情面板：引用此节点（T1.4）/ 独立页面（T1.5） ---------- */
 /* 中性的灰蓝，与「只看子图」（蓝）和「已读」（绿）都区分开 —— 它不改图，只复制一段字。 */
-.pn-cite-row { margin: 2px 0 10px; }
+.pn-cite-row { margin: 2px 0 10px; display: flex; flex-wrap: wrap; gap: 8px; }
 .pn-btn.pn-cite { border-color: rgba(120, 128, 148, .42); background: rgba(120, 128, 148, .07); color: #4A5262; }
 .pn-btn.pn-cite:hover { background: rgba(120, 128, 148, .16); border-color: rgba(120, 128, 148, .55); }
 .pn-btn.pn-cite.on { background: rgba(46, 158, 91, .13); border-color: rgba(46, 158, 91, .48); color: #23794A; font-weight: 600; }
+/* 「独立页面」是个真 <a>（不是按钮）：去掉下划线、沿用按钮外观，
+   光标给 pointer，让「能复制地址 / 能新标签页打开」这件事看得出来。 */
+.pn-btn.pn-open {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-color: rgba(60, 112, 245, .34);
+  background: rgba(60, 112, 245, .06);
+  color: #2F5BD0;
+}
+.pn-btn.pn-open:hover { background: rgba(60, 112, 245, .14); border-color: rgba(60, 112, 245, .5); }
 /* 复制失败时的退路：摊开的引文输入框（只读、已选中） */
 .pn-cite-box { margin: -4px 0 10px; }
 .pn-cite-box textarea {
@@ -6278,21 +6289,58 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     }
 
     /* ----------------------------------------------------------- 打分 */
+    /* ⭐⭐ 中英名字**同等待遇**（2026-10-16 修）。踩过的坑：精确匹配原先只认中文
+       `label`，于是搜 `compact` 时 —— `label_en` 正好是 `compact` 的 def.compact
+       只拿到「别名含」那档的分，被 `compactly generated` 压住；两者最后只差
+       degree 那两分，**谁连得多谁排前面**，跟「匹不匹配」已经没关系了。
+       现在按「匹配得有多准」分档，**取最高的那一档、不叠加**：
+         精确名（中文名 / 英文短名 / 英文正式名）     1000
+         精确 id                                     850
+         名字前缀                                    500
+         精确别名                                    400
+         名字包含                                    260
+         id 含                                       240
+         别名包含                                    150
+         标签含 110 · 类型名含 60 · 正文（hay）含 40
+       ⛔ degree **不再是加分项**：它只在总分相同时当次序（见 run()），
+          这样「连接多」永远挤不掉「匹配得更准」。
+       ⚠️ 为什么「精确别名」压在「名字前缀」下面：aka 里混着大量**搜索关键词**
+          （ax.choice 的 aka 就有个光秃秃的 `Zorn`）。要是精确别名给最高档，
+          搜 `zorn` 会让「选择公理」压过「佐恩引理」—— 实测就是这个结果，
+          而 `Zorn's Lemma` 才是那个名字。别名再准也只是别名。 */
     function score(entry, q) {
-      var label = entry.label.toLowerCase();
-      var title = entry.title.toLowerCase();
+      var nf = [entry.label, entry.title, entry.label_en, entry.title_en];
+      var i, v, exact = false, prefix = false, has = false;
+      for (i = 0; i < nf.length; i++) {
+        v = String(nf[i] || '').toLowerCase();
+        if (!v) continue;
+        if (v.indexOf(q) >= 0) has = true;
+        if (v === q) exact = true;
+        if (v.indexOf(q) === 0) prefix = true;
+      }
+      var aka = entry.aka || [], akaExact = false, akaHas = false;
+      for (i = 0; i < aka.length; i++) {
+        v = String(aka[i] || '').toLowerCase();
+        if (!v) continue;
+        if (v === q) akaExact = true;
+        if (v.indexOf(q) >= 0) akaHas = true;
+      }
+      var id = entry.node.id.toLowerCase();
       var s = 0;
-      if (label === q) s += 1000;
-      if (label.indexOf(q) === 0) s += 500;
-      if (label.indexOf(q) >= 0) s += 260;
-      if (title.indexOf(q) >= 0) s += 150;
-      if (entry.node.id.toLowerCase().indexOf(q) >= 0) s += 120;
-      if ((entry.node.tags || []).join(' ').toLowerCase().indexOf(q) >= 0) s += 110;
-      if ((entry.aka || []).join(' ').toLowerCase().indexOf(q) >= 0) s += 140;
-      if (entry.node.type.toLowerCase().indexOf(q) >= 0) s += 60;
-      var i = entry.hay.indexOf(q);
-      if (i >= 0) s += 40;
-      if (s > 0) s += Math.min(20, entry.node.degree || 0);
+      if (exact) s = 1000;
+      else if (id === q) s = 850;
+      else if (prefix) s = 500;
+      else if (akaExact) s = 400;
+      else if (has) s = 260;
+      /* id 里含（`prop.measurable-closure` 这类）—— id 是英文词干，英文查询的实际
+         检索面之一。⛔ 别把这档删掉：删了之后「只有 id 里有这个英文词」的节点会
+         掉到「正文里提过一句」的节点后面（2026-10-16 实测过）。 */
+      else if (id.indexOf(q) >= 0) s = 240;
+      else if (akaHas) s = 150;
+      else if (String((entry.node.tags || []).join(' ')).toLowerCase().indexOf(q) >= 0) s = 110;
+      else if (entry.node.type.toLowerCase().indexOf(q) >= 0) s = 60;
+      /* 正文 / 英文摘要 / 别的字段里也提到了 —— 宽泛命中，加一点但不改档 */
+      if (entry.hay.indexOf(q) >= 0) s += 40;
       return s;
     }
 
@@ -6331,17 +6379,25 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       var hits = Object.keys(tot).map(function (id) {
         var s = tot[id] * (1 + 0.5 * (cnt[id] - 1));
         if (boost[id]) s += 5000;
-        return { id: id, s: s, grp: boost[id] ? 'hook' : 'all' };
+        var e = byEnt[id];
+        return { id: id, s: s, deg: e ? (e.node.degree || 0) : 0, grp: boost[id] ? 'hook' : 'all' };
       });
 
       /* ⚠️ 问法指向的节点**可能一个词都没命中**（「怎么比较两个无穷的大小」
          指向的 `def.cardinal` 里既没有「无穷」也没有「大小」）—— 它们进不了
          `tot`，就永远加不上分。所以必须单独补进来。 */
       Object.keys(boost).forEach(function (id) {
-        if (byEnt[id] && !tot[id]) hits.push({ id: id, s: 5000, grp: 'hook' });
+        var e = byEnt[id];
+        if (e && !tot[id]) hits.push({ id: id, s: 5000, deg: e.node.degree || 0, grp: 'hook' });
       });
 
-      hits.sort(function (a, b) { return b.s - a.s; });
+      /* ⭐ 同分时的次序：连接多的在前（degree），再按 id 定死。
+         全是**次序**，不是加分项 —— ⛔ 早先 degree 是加进总分的（最高 +20），
+         于是「连得多」的宽泛命中能把「名字正好就是它」的那条顶下去
+         （用户报的 compact 就是这么翻的）。 */
+      hits.sort(function (a, b) {
+        return (b.s - a.s) || (b.deg - a.deg) || (a.id < b.id ? -1 : 1);
+      });
 
       hits.slice(0, 14).forEach(function (h) {
         var e = byEnt[h.id];
@@ -6679,35 +6735,58 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         '</div>';
       html += regionChips(n);
 
-      /* 「引用此节点」（T1.4）。内容以 CC BY 4.0 授权，标 id + 版本是**请求** ——
-         这个按钮把请求变成一次点击（引文 = 节点 id + 内容版本 + 概念页地址）。
-         ⚠️ panel 不碰剪贴板、也不知道站点地址：由 app 注入 onCite；
+      /* 「引用此节点」（T1.4）与「独立页面」（T1.5）。内容以 CC BY 4.0 授权，
+         标 id + 版本是**请求** —— 「引用」按钮把这个请求变成一次点击
+         （引文 = 节点 id + 内容版本 + 概念页地址）；「独立页面」是**普通链接**，
+         指向构建期为每个节点产出的 `nodes/<id>.html` 单页版 ——
+         方便复制地址、新标签页打开、浏览器翻译。
+         ⚠️ panel 不碰剪贴板、也不知道站点地址：由 app 注入 onCite / pageHref；
             没注入就整块不出现（导出器复用面板时不会画出半个按钮）。 */
-      if (hooks && hooks.onCite) {
-        html += '<div class="pn-cite-row">' +
-          '<button class="pn-btn pn-cite" data-cite="' + U.escapeHtml(n.id) + '"' +
-          ' title="' + U.escapeHtml(tf('复制引文（节点 id + 内容版本 + 概念页链接）')) + '">' +
-          U.escapeHtml(tf('引用此节点')) + '</button>' +
-          '</div>';
+      var pageHref = hooks && hooks.pageHref ? hooks.pageHref(n.id) : '';
+      if ((hooks && hooks.onCite) || pageHref) {
+        html += '<div class="pn-cite-row">';
+        if (pageHref) {
+          html += '<a class="pn-btn pn-open" href="' + U.escapeHtml(pageHref) + '"' +
+            ' target="_blank" rel="noopener"' +
+            ' title="' + U.escapeHtml(tf('在新标签页打开这个概念页（普通网页，便于复制地址与浏览器翻译）')) + '">' +
+            U.escapeHtml(tf('独立页面 ↗')) + '</a>';
+        }
+        if (hooks && hooks.onCite) {
+          html += '<button class="pn-btn pn-cite" data-cite="' + U.escapeHtml(n.id) + '"' +
+            ' title="' + U.escapeHtml(tf('复制引文（节点 id + 内容版本 + 概念页链接）')) + '">' +
+            U.escapeHtml(tf('引用此节点')) + '</button>';
+        }
+        html += '</div>';
       }
 
-      /* 已读标记 + 「下一步」提示。
-         ⚠️ panel 不认识 localStorage —— 三个钩子都由 app 注入（见 createPanel 的 hooks）。
-            没注入就整块不出现，导出器之类复用面板时不会画出半个按钮。 */
+      /* 已读标记 + **相关依赖的已读情况**。
+         ⚠️ 这里的说法改过一次（2026-10-16）：原来是「还差 N 条前置 / 前置都读过了」，
+            读起来像「学完这些才能读、读完了就可以开始」—— 但那不成立：
+              · 合起来的关系 = 推出的前提 + 陈述里引用的定义，既不是理解本陈述的
+                必要条件，也不是能推出结论的充分条件（定义引用只是「用到了它」）；
+              · 不同证明路线的来源被并在一起（紧 ⇒ 列紧 与 列紧 ⇒ 紧 互为来源）；
+              · 「紧 ⇒ 完备」「列紧 ⇒ 完备」也不意味着学「完备」得先把两条都学完。
+            ⇒ 只说**已读情况**：这几项还没标已读。⛔ 不宣称「可以开始学了」，
+              也不据此推荐下一步（图里本来就没有那个入口）。
+         判据与数据一字未动：还是 `hooks.missingPrereqs`（readstate.js）。 */
       if (hooks && hooks.onToggleRead) {
         var isRead = hooks.isRead ? !!hooks.isRead(n.id) : false;
         var tip = '';
         if (!isRead) {
           var miss = hooks.missingPrereqs ? hooks.missingPrereqs(n.id) : [];
+          var why = tf('「相关依赖」= 推出它的前提 + 陈述里引用的定义（等价与类比不算）；' +
+            '这只是已读情况的记录，不代表必须先学它们。');
           if (!miss.length) {
-            tip = '<span class="pn-read-tip ok">' + U.escapeHtml(tf('前置都读过了')) + '</span>';
+            tip = '<span class="pn-read-tip ok" title="' + U.escapeHtml(why) + '">' +
+              U.escapeHtml(tf('已标记全部相关依赖')) + '</span>';
           } else {
             var names = miss.slice(0, 4).map(function (id) {
               var m = g.byId[id];
               return m ? U.escapeHtml(MG.labelOf(m)) : U.escapeHtml(id);
             }).join('、');
-            tip = '<span class="pn-read-tip">' +
-              U.escapeHtml(tf('还差 {n} 条前置：{名}', { n: miss.length, 名: names + (miss.length > 4 ? ' …' : '') })) +
+            tip = '<span class="pn-read-tip" title="' + U.escapeHtml(why) + '">' +
+              U.escapeHtml(tf('相关依赖中还有 {n} 项未标记已读：{名}',
+                { n: miss.length, 名: names + (miss.length > 4 ? ' …' : '') })) +
               '</span>';
           }
         }
@@ -7114,12 +7193,20 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
      · 图上的标记画在**叠加层**，⛔ 不进位图烘焙 —— 否则每标记一个点就要重烘全图
      · 换设备 / 清缓存就没了：这是**私人状态**，不是账号，也不做云同步
 
-   除了「记没记住」，它还回答一个问题：**下一步该读什么**。
+   除了「记没记住」，它还回答一个问题：**这一个节点周围，我标了哪些、还剩哪些**。
    图里每个节点的入边是有方向的：
-     · implication 的 sources  = 前提
-     · definition 的 definition = 用到的定义
-     （等价与类比不算前置。）
-   凡是「前置全都读过了」的未读节点，就是**现在可以读**的。
+     · implication 的 sources  = 推出它的前提
+     · definition 的 definition = 陈述里引用的定义
+     （等价与类比不算。）
+
+   ⛔⛔ **这不是学习顺序，也不再算「能不能开始读了」**（2026-10-16 改的口径）：
+     · 这两类来源**合起来**既不是理解本陈述的必要条件，也不是能推出结论的充分条件
+       （引用一个定义只是「用到了它」）；
+     · 不同证明路线的来源被并在一起（「紧 ⇒ 列紧」与「列紧 ⇒ 紧」互为来源）；
+     · 「紧 ⇒ 完备」「列紧 ⇒ 完备」也不意味着学「完备」得先把两条都学完。
+     ⇒ 这里只如实回答「相关依赖里还有哪几项没标记已读」。早先导出过
+       `isReady` / `readyList`（「前置全读完 = 现在可以读」）—— 那套说法已经删掉，
+       免得哪天被当成推荐学习路径接进界面。真要建学习路径，是另一件事。
 
    ⚠️ 与 visibility.js 的分工：那边管「画不画」，这边管「读没读」。
       两个互不干涉 —— 藏起来的节点照样可以是已读。
@@ -7133,13 +7220,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
   function createReadState(graph) {
     var read = Object.create(null);     // id → true（节点 id 带点和冒号，不能用普通对象）
     var listeners = [];
-    var nodes = graph.nodes;
     var showMarks = true;               // 图上画不画已读标记（**不持久化**，见 setShowMarks）
     var MARK_KEY = 'mathgalaxy.read.show.v1';   // 旧版本用过的键，现在启动时删掉
 
-    /* ------------------------------------------------ 前置索引（建一次） */
-    /* id → [前置 id…]。只认 implication 的前提和 definition 引用的定义：
-       等价是「同一个东西的两种说法」，不是前置；类比更不是。 */
+    /* ------------------------------------------------ 相关依赖索引（建一次） */
+    /* id → [来源 id…]。只认 implication 的前提和 definition 引用的定义：
+       等价是「同一个东西的两种说法」，不是来源；类比更不是。
+       ⛔ 这是**事实**（谁推出它、它引用了谁），不是「学习前置」—— 见文件头。 */
     var prereqOf = Object.create(null);
     function buildPrereq(g) {
       prereqOf = Object.create(null);
@@ -7192,30 +7279,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
     function prereqsOf(id) { return (prereqOf[id] || []).slice(); }
 
-    /** 前置全读过了吗（没有前置 ⇒ 一开始就能读） */
-    function isReady(id) {
-      var pre = prereqOf[id];
-      if (!pre || !pre.length) return true;
-      for (var i = 0; i < pre.length; i++) if (!read[pre[i]]) return false;
-      return true;
-    }
-
-    /** 还差哪些前置没读（面板上用来告诉人「先去看这几条」） */
+    /** 相关依赖里还没标记已读的（面板上如实报「还有 N 项没标已读」）。
+        ⛔ 别把它读成「先去看这几条才能读本节点」—— 见 readstate.js 文件头。
+        ⚠️ 函数名是历史遗留（旧口径叫 prereq），要改就得连 app.js 的钩子一起改。 */
     function missingPrereqs(id) {
       var pre = prereqOf[id] || [];
       return pre.filter(function (pid) { return !read[pid]; });
-    }
-
-    /** 现在能读的未读节点，按 layer 从小到大（浅的在前，和学习顺序一致） */
-    function readyList(limit) {
-      var out = [];
-      for (var i = 0; i < nodes.length; i++) {
-        var n = nodes[i];
-        if (read[n.id]) continue;
-        if (isReady(n.id)) out.push(n);
-      }
-      out.sort(function (a, b) { return (a.layer - b.layer) || (a.id < b.id ? -1 : 1); });
-      return limit ? out.slice(0, limit) : out;
     }
 
     /* ------------------------------------------------------------ 改动 */
@@ -7256,7 +7325,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     /* 换了一张图（别的 agent 改了内容 / 外部包加载完）：保留进度，丢掉不存在的 id */
     function rebind(g) {
       graph = g;
-      nodes = g.nodes;
       var dropped = 0;
       Object.keys(read).forEach(function (id) {
         if (!g.byId[id]) { delete read[id]; dropped++; }
@@ -7286,9 +7354,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       readCount: readCount,
       readIds: readIds,
       prereqsOf: prereqsOf,
-      isReady: isReady,
       missingPrereqs: missingPrereqs,
-      readyList: readyList,
       setNode: setNode,
       toggle: toggle,
       markMany: markMany,
@@ -7346,12 +7412,78 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       那些是行文词（满足 / 推出 / 代数…），只是碰巧和某个 aka 同写法。
       「吃掉」是必需的：「把**短正合列**送成」里如果只把『正合列』设成「不链」，
       游标会退到更短的『正合』，于是链出一个错的。表在**内容**里，引擎只读表。
+
+   ⛔⛔ **拉丁词条要在词边界上命中，专名要整体识别**（2026-10-16 修）——
+      起因是英文面板里观察到的两处错链：
+        · `prerequisites`（界面提示里的普通英文词）内部的 `site`
+          被链到了 def.grothendieck-topology；
+        · `Heine–Borel` 里被拆出来的 `Borel` 被链到了 def.borel。
+      词表本身没错（`site` / `Borel` 都是货真价实的 aka），错的是**匹配方式**：
+      原先按字符滑、不看边界，于是拉丁术语能从单词内部被截出来，
+      连字符也不算「词的一部分」，复合专名就被拆成了两半。现在的规则：
+        · 拉丁命中区间的**左右**都不能是「词内字符」
+          （字母 / 数字 / 变音符 / 连字符与各种破折号）⇒ `prerequisites` 里的
+          `site` 前面是字母、`Heine–Borel` 里的 `Borel` 前面是破折号，都不命中；
+        · 顺带就有了「复合专名整体识别、拿不准宁可不链」：`Heine-Borel` 整段
+          真在表里（thm.metric-compact-equiv 的 aka）⇒ 整段链；
+          只能对上 `Borel` 一半时 ⇒ 拒掉，不猜。
+        · 归一化是**逐字符 1:1** 的（变音字母去组合符、各种破折号统一成 '-'），
+          所以正文写 `Schroder–Bernstein` / `Schroder-Bernstein` 也能命中 aka 里的
+          `Schröder–Bernstein`，而正文字符下标与词表长度始终对齐。
+      ⚠️ 规则只作用于**拉丁**词条 —— 中文没有词边界这一说，中文词条行为一字不变。
+
+   ⛔ 自动链接只做在**数学正文**上（`opts.only` 白名单）。面板里还有一大片
+      **界面提示文字**（标题 / id / 芯片 / 「还差 N 条」那行 / 按钮），
+      它们本来就是用节点名拼出来的，链上去没用，还会把正文的「第一次」名额吃掉。
+      面板传的是 `only: '.pn-body, .pn-note'`；不给 `only` 就整棵子树照旧。
    ========================================================================== */
 (function (global) {
   'use strict';
   var MG = (global.MG = global.MG || {});
 
   var MIN_LEN = 2;
+
+  /* ------------------------------------------------------------ 字符归一 */
+  /* ⭐ 逐字符 1:1 归一（长度不变 ⇒ 正文下标与词表下标始终对齐）：
+       · 各种连字符 / 破折号 → '-'（ASCII 减号、‐ ‑ ‒ – — − 全角等）
+       · 变音字母 → 基字母（é→e、ö→o、š→s…；NFD 去组合符）
+     于是「表里写 Schröder–Bernstein、正文写 Schroder-Bernstein」也能互相命中。
+     ⛔ 只对拉丁字母做 NFD —— 别去动汉字/希腊字母。 */
+  var DASHES = '-\u2010\u2011\u2012\u2013\u2014\u2212\uFE63\uFF0D';
+
+  /* 「词内字符」：拉丁字母（含扩展区）、数字、变音符、各色破折号。
+     ⛔ 故意**不含**撇号 —— `Zorn's lemma` 里的 `Zorn` 要能链。
+     拉丁词条命中区间的左右若落在词内字符上，就算越界（见 boundsOk）。 */
+  var WORDCHAR = /[0-9A-Za-z\u00C0-\u024F\u1E00-\u1EFF\u0300-\u036F\u2010\u2011\u2012\u2013\u2014\u2212\uFE63\uFF0D]/;
+  /* 词条里有没有拉丁字母/数字 —— 有才讲词边界（中文词条不受影响） */
+  var HAS_LATIN = /[0-9A-Za-z]/;
+
+  function isWordChar(ch) { return !!ch && WORDCHAR.test(ch); }
+
+  function normChar(ch) {
+    if (!ch) return ch;
+    if (DASHES.indexOf(ch) >= 0) return '-';
+    var c = ch.charCodeAt(0);
+    if (c < 0x80) return ch;
+    if ((c >= 0xC0 && c <= 0x24F) || (c >= 0x1E00 && c <= 0x1EFF)) {
+      var d = ch.normalize ? ch.normalize('NFD') : ch;
+      return d.charAt(0);
+    }
+    return ch;
+  }
+  function norm(s) {
+    s = String(s == null ? '' : s);
+    var out = '';
+    for (var i = 0; i < s.length; i++) out += normChar(s.charAt(i));
+    return out;
+  }
+
+  /** 拉丁命中区间的左右必须是词边界（中文词条恒真）。 */
+  function boundsOk(text, at, len, latin) {
+    if (!latin) return true;
+    return !isWordChar(at > 0 ? text.charAt(at - 1) : '') &&
+      !isWordChar(at + len < text.length ? text.charAt(at + len) : '');
+  }
 
   function createXLink(graph, aliases) {
     /* 首字 → [{w, id, n}]，按 n 降序（长的优先） */
@@ -7371,16 +7503,20 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     function add(word, id, isLabel) {
       var w = String(word == null ? '' : word).trim();
       if (w.length < MIN_LEN && !single[w]) return;
-      var f = w.charAt(0);
+      /* ⭐ 词表里存**归一化**后的写法（破折号统一、变音去符）——
+         正文匹配时走同一个归一，两边才对得上；长度不变，下标不错位。 */
+      var nw = norm(w);
+      var f = nw.charAt(0);
       if (!byFirst[f]) byFirst[f] = [];
+      var lat = HAS_LATIN.test(nw);
       // 同一个词已经指向这个 id 就不重复加（label 与 aka 常常一样）
       for (var i = 0; i < byFirst[f].length; i++) {
-        if (byFirst[f][i].w === w && byFirst[f][i].id === id) {
+        if (byFirst[f][i].w === nw && byFirst[f][i].id === id) {
           if (isLabel) byFirst[f][i].isLabel = true;   // label 优先
           return;
         }
       }
-      byFirst[f].push({ w: w, id: id, n: w.length, isLabel: !!isLabel });
+      byFirst[f].push({ w: nw, id: id, n: nw.length, isLabel: !!isLabel, lat: lat });
     }
 
     /* ⛔ 「拦词」：**不链**，而且要把这一整段**吃掉**。
@@ -7390,9 +7526,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     function addBlocker(word) {
       var w = String(word == null ? '' : word).trim();
       if (w.length < MIN_LEN) return;
-      var f = w.charAt(0);
+      var nw = norm(w);
+      var f = nw.charAt(0);
       if (!byFirst[f]) byFirst[f] = [];
-      byFirst[f].push({ w: w, id: null, n: w.length, isLabel: true, block: true });
+      byFirst[f].push({ w: nw, id: null, n: nw.length, isLabel: true, block: true,
+        lat: HAS_LATIN.test(nw) });
     }
 
     graph.nodes.forEach(function (n) {
@@ -7460,13 +7598,19 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       var hits = [];
       var i = 0;
       while (i < text.length) {
-        var cands = byFirst[text.charAt(i)];
+        var cands = byFirst[normChar(text.charAt(i))];
         var got = null, blocked = false;
         if (cands) {
           for (var k = 0; k < cands.length; k++) {
             var c = cands[k];
             // ⚠️ 先看字面：不匹配的候选直接跳过（长度不够 / 字不对）
-            if (i + c.n > text.length || text.substr(i, c.n) !== c.w) continue;
+            if (i + c.n > text.length) continue;
+            var slice = text.substr(i, c.n);
+            if (slice !== c.w && norm(slice) !== c.w) continue;
+            /* ⛔ 拉丁词条必须在**词边界**上 —— 不的话 `prerequisites` 里的
+               `site`、`Heine–Borel` 里的 `Borel` 都会被链出去（见文件头）。
+               越界的候选直接跳过（更短的候选还有机会）。 */
+            if (c.lat && !boundsOk(text, i, c.n, true)) continue;
             // 拦词：吃掉整段，不给更短的候选留机会
             if (c.block) { i += c.n; blocked = true; break; }
             if (c.id === fromId) continue;                    // 自指不链
@@ -7520,9 +7664,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     /**
      * 把 root 里出现的概念名包成可点的 <a>。
      * @param {Element} root    已经渲染好的容器（面板正文 / 概念页正文…）
-     * @param {Object}  opts    { fromId, priority, shortAka }
+     * @param {Object}  opts    { fromId, priority, only, shortAka }
      *        fromId   站在哪个节点上看 —— 决定 near / far（不再限制链不链）
      *        priority 选择器；命中的子树里的文字**先扫**（正文优先于提示，见 inside()）
+     *        only     选择器白名单；只扫落在它里面的文字（面板用它把界面提示排除掉）
      *        shortAka true = 2 字 aka 不再要求邻域（默认 false，噪音大）
      * @returns {number} 加了多少个链接
      */
@@ -7531,6 +7676,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       opts = opts || {};
       var fromId = opts.fromId || null;
       var prio = opts.priority || null;
+      var only = opts.only || null;
       var allowShortAka = !!opts.shortAka;
 
       // 先收集、后修改：边遍历边改 DOM，TreeWalker 会被自己改乱
@@ -7540,6 +7686,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       while ((t = walker.nextNode())) {
         if (!t.nodeValue || !t.nodeValue.trim()) continue;
         if (insideSkipped(t, root)) continue;
+        /* ⛔ 只链**正文**（白名单）：界面提示文字（标题 / 芯片 / 「还差 N 条」那行）
+           不参与 —— 它们是拿节点名拼出来的，链上去没用还挤掉正文的名额。 */
+        if (only && !inside(t, root, only)) continue;
         (prio && inside(t, root, prio) ? prioTexts : restTexts).push(t);
       }
       var texts = prioTexts.concat(restTexts);
@@ -7585,7 +7734,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       return { words: n, firstChars: Object.keys(byFirst).length };
     }
 
-    return { linkify: linkify, stats: stats };
+    /* ⭐ 回归体检用的**纯匹配**入口（`tools/xlinkcheck.mjs`）：只跑匹配、不碰 DOM。
+       ⛔ 体检要跑的就是这个函数本身 —— 别在工具里另写一份口径。 */
+    return { linkify: linkify, scan: scan, stats: stats };
   }
 
   MG.createXLink = createXLink;
@@ -11211,8 +11362,21 @@ MG.uiEn = {
     '两个方向都要': 'Both directions',
     '✓ 标记已读': '✓ Mark as read',
     '✓ 已读 · 点一下取消': '✓ Read · click to undo',
-    '前置都读过了': 'all prerequisites read',
-    '还差 {n} 条前置：{名}': '{n} prerequisites missing: {名}',
+    /* ⚠️ 这两条的说法改过一次（2026-10-16）：原文案是
+       '前置都读过了' / '还差 {n} 条前置：{名}' —— 读起来像「学完这些才能读」。
+       合起来的关系（推出的前提 + 引用的定义）不构成学习顺序，见 panel.js 的注释。
+       ⛔ 英文别再写 prerequisite 那个词：它会被内文跳转从单词内部截出 `site`
+       （就是这轮修掉的那个 bug 的现场）。 */
+    '已标记全部相关依赖': 'all related dependencies marked as read',
+    '相关依赖中还有 {n} 项未标记已读：{名}':
+      '{n} related dependencies not marked as read yet: {名}',
+    '「相关依赖」= 推出它的前提 + 陈述里引用的定义（等价与类比不算）；这只是已读情况的记录，不代表必须先学它们。':
+      '“Related dependencies” = the premisses it is derived from + definitions cited in its statement ' +
+      '(equivalences and analogies do not count). This is only a record of what is marked read — ' +
+      'it does not mean you must study them first.',
+    '独立页面 ↗': 'Standalone page ↗',
+    '在新标签页打开这个概念页（普通网页，便于复制地址与浏览器翻译）':
+      'Open this concept page in a new tab (a plain web page: easy to copy the address and to translate)',
     '陈述': 'Statement',
     '说明 / 备注': 'Notes',
     '说明': 'Notes',
@@ -41594,16 +41758,23 @@ MG.trunk = [
             见 xlink.js 头部注释。
          ⭐⭐ `priority`：正文（`.pn-body`）**先扫**。面板顶上那行「还差 N 条前置：
             群同态、核与像…」是提示，用节点 label 拼的，排在陈述前面；不给优先级的话
-            它会把概念名额吃光，正文里的「群同态」反而点不动（用户实测报过）。 */
+            它会把概念名额吃光，正文里的「群同态」反而点不动（用户实测报过）。
+         ⭐⭐ `only`：只扫**数学正文**（`.pn-body` / `.pn-note`）。面板上其余全是
+            界面文字（标题 / id / 芯片 / 那行提示 / 按钮）—— 它们本来就是拿节点名
+            拼的，链上去没用，还会把「第一次」的名额从正文手里抢走
+            （2026-10-16：英文提示里的 `prerequisites` 被从词内部截出了 `site`）。 */
       linkify: function (root, fromId) {
-        return xlink.linkify(root, { fromId: fromId, priority: '.pn-body', shortAka: true });
+        return xlink.linkify(root, { fromId: fromId, priority: '.pn-body',
+          only: '.pn-body, .pn-note', shortAka: true });
       },
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
+      /* 「独立页面」的地址（T1.5）。面板只负责画这个 <a>，地址规则在这里。 */
+      pageHref: pageHref,
       onToggleRead: function (id) {
         reads.toggle(id);
-        /* 重画面板让按钮与「还差几条前置」跟着变。
+        /* 重画面板让按钮与「相关依赖还有几项没标已读」跟着变。
            ⚠️ show() 会把 scrollTop 归零 ⇒ 先把位置存下来再恢复，
               否则在长面板中间点一下「已读」会跳回顶部。 */
         var keep = panelEl.scrollTop;
@@ -41628,6 +41799,23 @@ MG.trunk = [
       }
     });
 
+    /** 「独立页面」的地址（T1.5）：概念页规则 = `<站点根>nodes/<id>.html`（构建期生成）。
+        ⭐ 判据用**实体**、不用猜：
+          · 页面真的是从站点根下打开的（http/https 且地址就以站点根开头）⇒ 写**相对路径**，
+            同源、可复制、浏览器翻译与「在新标签页打开」都最自然；
+          · 其它情况（**双击本地 index.html** 的 file://、或别处托管的副本）⇒ 本机
+            并没有 nodes/ 目录，写相对路径会变成 `file:///…/nodes/x.html` 的**死链**。
+            所以退回站点**绝对地址** —— 有网就能开，没网时链接仍然是一个正确的网址。
+        ⛔ 别用 location.protocol === 'file:' 当唯一判据：镜像/预览站也一样没有 nodes/。 */
+    function pageHref(id) {
+      var origin = siteOrigin();
+      var href = '';
+      try { href = String(location.href); } catch (e) { href = ''; }
+      var onSite = /^https?:$/.test(location.protocol) && href.indexOf(origin) === 0;
+      return onSite ? 'nodes/' + encodeURIComponent(id) + '.html'
+        : origin + 'nodes/' + encodeURIComponent(id) + '.html';
+    }
+
     /* -------------------------------------------------- 引用此节点（T1.4） */
     /** 站点原点：现读 <link rel=canonical>（那是站点自己声明的地址），读不到再退回常量。
         ⚠️ 不用 location —— file:// 打开时地址是本地路径，而引文要的是正式网址。 */
@@ -41648,7 +41836,7 @@ MG.trunk = [
       var en = n && (n.title_en || n.label_en);
       var inside = [en, v ? '内容 ' + v : ''].filter(Boolean).join('，');
       var text = 'MathGalaxy 节点 ' + id + (inside ? '（' + inside + '）' : '') + '\n' +
-        siteOrigin() + 'nodes/' + id + '.html';
+        siteOrigin() + 'nodes/' + encodeURIComponent(id) + '.html';
       return copyText(text);
     }
     /** 复制：先走异步剪贴板，失败退回 execCommand，再失败就如实报 false。 */

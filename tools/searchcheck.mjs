@@ -36,32 +36,44 @@ const RECORD = argv.includes('--record');
 /* q     查询串（原样打进搜索框）
    n     期望命中条数（界面口径，最多 14）；null = 只比 top，不卡条数
    top   期望的前几条 id（写几条就比几条）
-   why   一句话记住这条为什么值得盯 */
+   why   一句话记住这条为什么值得盯
+
+   ⭐⭐ 2026-10-16 打分口径改过一次（用户报「搜 compact，compactly generated 排在
+   精确名 compact 前面」）。改的是**档位**，不是给某个词加分：
+     · 精确名（中文名 / 英文短名 / 英文正式名）> 精确 id > 名字前缀 > 精确别名
+       > 名字包含 > id 含 > 别名含 > 标签/类型/正文含；
+     · 中英名字**同等待遇**（旧代码的「精确档」只认中文 label ⇒ 英文名吃亏）；
+     · degree **不再是加分项**，只在同分时当次序（旧代码最高 +20，正是它把
+       def.compact 挤到了第二）。
+   ⇒ 下面这些查询的次序**有意**变了，每条都注明了原因（⛔ 不是「照着输出抄一遍」）。
+   ⚠️ 序号变了但**条数**没变的，多半是同档同分、由 degree/id 决定次序 —— 那属于
+      「都一样合理」的抖动，不是退化。 */
 const CASES = [
   { q: 'preadditive', n: 1, top: ['def.abelian-category'], why: '长英文词被词表碎片切开（2026-10-16 真 bug）—— 必须只回 1 条' },
-  { q: 'additive', n: 10, top: ['def.additive-functor', 'def.finitely-additive'], why: '短词就该多回几条，但不能被碎片规则误伤' },
-  { q: 'zorn', n: 5, top: ['lem.zorn', 'thm.vsbasis'], why: '人名 aka 排第一；其余是**正文里用到它**的节点（hay 含陈述，属正常）' },
+  { q: 'compact', n: 14, top: ['def.compact', 'def.chaus', 'def.compactly-generated'], why: '⭐⭐ 本轮修的：`compact` 正是 def.compact 的 label_en ⇒ 精确名档必须排第一。旧代码只认中文 label 的精确档，它只拿到别名档的分，被 compactly generated 靠 degree 挤到第二' },
+  { q: 'zorn', n: 5, top: ['lem.zorn', 'ax.choice', 'thm.vsbasis'], why: 'lem.zorn 靠 `Zorn\'s lemma`（名字前缀档）压住 ax.choice 的精确别名 `Zorn` —— 别名档**在名字档之下**；thm.vsbasis 是正文提到它。旧次序里 #2/#3 是 degree 凑出来的' },
+  { q: 'yoneda', n: 13, top: ['prop.yoneda-embedding', 'lem.yoneda', 'prop.sieve-generated-by-family'], why: 'prop 的 label_en 是 `Yoneda embedding`（前缀档）；lem.yoneda **没有 label_en/title_en**，只靠 aka 的 `Yoneda`（别名档）⇒ 退到第二。⚠️ 要它领跑得给 lem.yoneda 补英文名（数据侧的决定，另议）' },
+  { q: 'additive', n: 10, top: ['def.abelian-category', 'def.additive-functor', 'def.finitely-additive'], why: '两个 label_en 前缀命中（additive and abelian categories / additive functor）同档，degree 决定先后；旧代码靠堆叠加分把 additive-functor 放前面' },
+  { q: 'abelian', n: 14, top: ['def.abelian-sheaf', 'thm.topos-abelian-grothendieck', 'prop.abelianization'], why: '名字前缀档（abelian sheaf / abelian Grothendieck topos…）在前；def.abelian-category 的英文名是 `additive and abelian categories`（包含档）⇒ 掉到第 4。旧代码靠 label/title/aka/id 四项堆叠把它顶到第一' },
   { q: 'fubini', n: 9, top: ['thm.fubini-tonelli', 'def.product-measure', 'thm.fubini-complete'], why: '两条 Fubini 定理都在前 3；其余是正文提到它的' },
-  { q: 'radon', n: 14, top: ['thm.lebesgue-radon-nikodym', 'thm.rn-complex'], why: 'Radon–Nikodym 那批顶到上限 14（一屏）—— 条数变了要看看是不是挤掉了谁' },
+  { q: 'radon', n: 14, top: ['thm.lebesgue-radon-nikodym', 'def.rn-derivative', 'thm.rn-complex'], why: '前两个是 label_en 前缀（Radon-Nikodym theorem / derivative）；thm.rn-complex 只在前者中文名里出现（包含档）⇒ 退到第三' },
+  { q: 'isomorphism', n: 7, top: ['def.mono', 'def.quasi-iso', 'prop.adjoint-full-faithful'], why: '英文长词：前 5 条都是名字/标题里含 isomorphism 的（旧记录写 6 条，是把 prop.adjoint-full-faithful 的 title_en 漏算了）' },
+  { q: 'measurable', n: 14, top: ['def.measurable-function', 'prop.section-measurable', 'def.caratheodory-measurable'], why: '英文长词：同档同分的一批，次序由 degree 决定（集合与旧记录相同，只是 #2 起换位）' },
   { q: 'schroder', n: 1, top: ['thm.schroder-bernstein'], why: '不带变音符的写法也要能搜到 Schröder–Bernstein' },
-  { q: 'isomorphism', n: 6, top: ['def.mono', 'def.quasi-iso'], why: '英文长词（老查询）—— 词边界修好之后只剩 6 条，没有碎片噪音' },
-  { q: 'measurable', n: 14, top: ['def.measurable-function', 'def.caratheodory-measurable'], why: '英文长词（老查询）—— 覆盖 def 与 prop 两批' },
-  { q: 'yoneda', n: 13, top: ['lem.yoneda', 'prop.yoneda-embedding'], why: '前两条是 Yoneda 引理与嵌入；其余是正文里用到它的' },
   { q: 'snake lemma', n: 2, top: ['thm.snake-lemma', 'thm.long-exact'], why: '多词查询：词表切分 + 两词同时命中加权' },
-  { q: 'section', n: 13, top: ['def.section', 'def.section-retraction'], why: '通用词：多节点共享这个名字，条数与排序都值得盯' },
+  { q: 'section', n: 13, top: ['def.section', 'def.section-retraction', 'prop.section-measurable'], why: '通用词：多节点共享这个名字，条数与排序都值得盯' },
   { q: 'Exercise 2.25', n: 1, top: ['cor.cg-product'], why: '⭐ 命中的是**陈述里写了这句话**的那个节点 —— refs（书目）不进检索字段，见下一条' },
   { q: 'I.5', n: 0, top: [], why: '⭐ 书号/章节坐标（refs 里的 `I.5`）**搜不到**：hay 不含 refs。记 0 是为了把这条口径钉住（要改就得改 hay，另议）' },
-  { q: 'L^p', n: 14, top: ['def.lp-norm', 'thm.lp-banach'], why: '记号表命中（tex 形式）' },
-  { q: 'ℵ₀', n: 5, top: ['def.ordinal', 'thm.real-ordered-field'], why: 'Unicode 记号命中（可数与超限那条线的入口）' },
-  { q: 'σ-algebra', n: 3, top: ['def.sigma-algebra', 'def.borel', 'def.product-sigma'], why: '希腊字母 + 连字符的记号写法' },
-  { q: 'kC', n: 3, top: ['prop.cg-function-space', 'cor.cg-exponential-adjoint'], why: '缩写/记号：被明确排除出「英文名」的那些，但要能搜到' },
-  { q: 'NBV', n: 5, top: ['def.nbv', 'prop.nbv-derivative'], why: '全大写缩写（aka 里算「名字样」的例外）' },
-  { q: 'Noether', n: 4, top: ['thm.first-iso', 'def.quotient-group'], why: '⭐ 从 aka 里删掉之后**仍然**要能搜到（走 title / 别的 aka）' },
-  { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
-  { q: '测度', n: 14, top: ['def.measure', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响' },
-  { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-coreflective'], why: '中文词 + 星团名命中' },
+  { q: 'L^p', n: 14, top: ['def.lp-norm', 'thm.lp-banach', 'prop.lp-inter-lr-in-lq'], why: '记号表命中（tex 形式）' },
+  { q: 'ℵ₀', n: 5, top: ['def.ordinal', 'thm.real-ordered-field', 'def.cardinal'], why: 'Unicode 记号命中（可数与超限那条线的入口）' },
+  { q: 'σ-algebra', n: 3, top: ['def.borel', 'def.sigma-algebra', 'def.product-sigma'], why: '希腊字母 + 连字符：三个都靠标题里的英文括注命中（同档）⇒ degree/id 定次序。⚠️ 想让 def.sigma-algebra 领跑，得做「σ ↔ sigma」等价，另一件事' },
+  { q: 'kC', n: 3, top: ['cor.cg-exponential-adjoint', 'prop.cg-function-space', 'prop.cg-kclosed-quotient'], why: '缩写/记号：被明确排除出「英文名」的那些，但要能搜到' },
+  { q: 'NBV', n: 5, top: ['def.nbv', 'prop.nbv-derivative', 'thm.borel-measure-nbv'], why: '全大写缩写（aka 里算「名字样」的例外）' },
+  { q: 'Noether', n: 4, top: ['thm.first-iso', 'def.quotient-group', 'def.group-hom'], why: '⭐ 从 aka 里删掉之后**仍然**要能搜到（走 title / 别的 aka）' },
+  { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta', 'prop.constant-sheaf-preserves-limits', 'def.simplex-category'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
+  { q: '测度', n: 14, top: ['def.measure', 'def.measure-space', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响（同档的一批换了位，集合与旧记录相同）' },
+  { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-cartesian-closed', 'prop.cg-coreflective'], why: '中文词 + 星团名命中（同档批次，degree 定次序）' },
   { q: '定义', n: 14, top: [], why: '类型名命中：清单型查询，会顶到上限 14' },
-  { q: 'abelian', n: 14, top: ['def.abelian-category', 'def.condensed-abelian-group'], why: '高频英文词：跨星团的大批命中' },
 ];
 
 /* --------------------------------------------------------- 最小 loadMG */

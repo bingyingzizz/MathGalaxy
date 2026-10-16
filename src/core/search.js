@@ -220,21 +220,58 @@
     }
 
     /* ----------------------------------------------------------- 打分 */
+    /* ⭐⭐ 中英名字**同等待遇**（2026-10-16 修）。踩过的坑：精确匹配原先只认中文
+       `label`，于是搜 `compact` 时 —— `label_en` 正好是 `compact` 的 def.compact
+       只拿到「别名含」那档的分，被 `compactly generated` 压住；两者最后只差
+       degree 那两分，**谁连得多谁排前面**，跟「匹不匹配」已经没关系了。
+       现在按「匹配得有多准」分档，**取最高的那一档、不叠加**：
+         精确名（中文名 / 英文短名 / 英文正式名）     1000
+         精确 id                                     850
+         名字前缀                                    500
+         精确别名                                    400
+         名字包含                                    260
+         id 含                                       240
+         别名包含                                    150
+         标签含 110 · 类型名含 60 · 正文（hay）含 40
+       ⛔ degree **不再是加分项**：它只在总分相同时当次序（见 run()），
+          这样「连接多」永远挤不掉「匹配得更准」。
+       ⚠️ 为什么「精确别名」压在「名字前缀」下面：aka 里混着大量**搜索关键词**
+          （ax.choice 的 aka 就有个光秃秃的 `Zorn`）。要是精确别名给最高档，
+          搜 `zorn` 会让「选择公理」压过「佐恩引理」—— 实测就是这个结果，
+          而 `Zorn's Lemma` 才是那个名字。别名再准也只是别名。 */
     function score(entry, q) {
-      var label = entry.label.toLowerCase();
-      var title = entry.title.toLowerCase();
+      var nf = [entry.label, entry.title, entry.label_en, entry.title_en];
+      var i, v, exact = false, prefix = false, has = false;
+      for (i = 0; i < nf.length; i++) {
+        v = String(nf[i] || '').toLowerCase();
+        if (!v) continue;
+        if (v.indexOf(q) >= 0) has = true;
+        if (v === q) exact = true;
+        if (v.indexOf(q) === 0) prefix = true;
+      }
+      var aka = entry.aka || [], akaExact = false, akaHas = false;
+      for (i = 0; i < aka.length; i++) {
+        v = String(aka[i] || '').toLowerCase();
+        if (!v) continue;
+        if (v === q) akaExact = true;
+        if (v.indexOf(q) >= 0) akaHas = true;
+      }
+      var id = entry.node.id.toLowerCase();
       var s = 0;
-      if (label === q) s += 1000;
-      if (label.indexOf(q) === 0) s += 500;
-      if (label.indexOf(q) >= 0) s += 260;
-      if (title.indexOf(q) >= 0) s += 150;
-      if (entry.node.id.toLowerCase().indexOf(q) >= 0) s += 120;
-      if ((entry.node.tags || []).join(' ').toLowerCase().indexOf(q) >= 0) s += 110;
-      if ((entry.aka || []).join(' ').toLowerCase().indexOf(q) >= 0) s += 140;
-      if (entry.node.type.toLowerCase().indexOf(q) >= 0) s += 60;
-      var i = entry.hay.indexOf(q);
-      if (i >= 0) s += 40;
-      if (s > 0) s += Math.min(20, entry.node.degree || 0);
+      if (exact) s = 1000;
+      else if (id === q) s = 850;
+      else if (prefix) s = 500;
+      else if (akaExact) s = 400;
+      else if (has) s = 260;
+      /* id 里含（`prop.measurable-closure` 这类）—— id 是英文词干，英文查询的实际
+         检索面之一。⛔ 别把这档删掉：删了之后「只有 id 里有这个英文词」的节点会
+         掉到「正文里提过一句」的节点后面（2026-10-16 实测过）。 */
+      else if (id.indexOf(q) >= 0) s = 240;
+      else if (akaHas) s = 150;
+      else if (String((entry.node.tags || []).join(' ')).toLowerCase().indexOf(q) >= 0) s = 110;
+      else if (entry.node.type.toLowerCase().indexOf(q) >= 0) s = 60;
+      /* 正文 / 英文摘要 / 别的字段里也提到了 —— 宽泛命中，加一点但不改档 */
+      if (entry.hay.indexOf(q) >= 0) s += 40;
       return s;
     }
 
@@ -273,17 +310,25 @@
       var hits = Object.keys(tot).map(function (id) {
         var s = tot[id] * (1 + 0.5 * (cnt[id] - 1));
         if (boost[id]) s += 5000;
-        return { id: id, s: s, grp: boost[id] ? 'hook' : 'all' };
+        var e = byEnt[id];
+        return { id: id, s: s, deg: e ? (e.node.degree || 0) : 0, grp: boost[id] ? 'hook' : 'all' };
       });
 
       /* ⚠️ 问法指向的节点**可能一个词都没命中**（「怎么比较两个无穷的大小」
          指向的 `def.cardinal` 里既没有「无穷」也没有「大小」）—— 它们进不了
          `tot`，就永远加不上分。所以必须单独补进来。 */
       Object.keys(boost).forEach(function (id) {
-        if (byEnt[id] && !tot[id]) hits.push({ id: id, s: 5000, grp: 'hook' });
+        var e = byEnt[id];
+        if (e && !tot[id]) hits.push({ id: id, s: 5000, deg: e.node.degree || 0, grp: 'hook' });
       });
 
-      hits.sort(function (a, b) { return b.s - a.s; });
+      /* ⭐ 同分时的次序：连接多的在前（degree），再按 id 定死。
+         全是**次序**，不是加分项 —— ⛔ 早先 degree 是加进总分的（最高 +20），
+         于是「连得多」的宽泛命中能把「名字正好就是它」的那条顶下去
+         （用户报的 compact 就是这么翻的）。 */
+      hits.sort(function (a, b) {
+        return (b.s - a.s) || (b.deg - a.deg) || (a.id < b.id ? -1 : 1);
+      });
 
       hits.slice(0, 14).forEach(function (h) {
         var e = byEnt[h.id];
