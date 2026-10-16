@@ -713,5 +713,111 @@ MG.i18nStatements = {
         status: 'draft', basedOn: 'v0.9.1#77203f35', reviewed: null,
       },
     },
+
+    /* ================================================ 批次 3a（枢纽榜第 21–30 名，前四条） */
+
+    /* -------------------------------------------------- 紧的三个等价刻画 */
+    'thm.metric-compact-equiv': {
+      statement: {
+        en:
+        'Let (X, d) be a metric space. Then the following three conditions are ' +
+        '**equivalent**: $X$ is compact $\\iff$ $X$ is sequentially compact $\\iff$ $X$ is ' +
+        'complete and totally bounded.',
+        status: 'draft', basedOn: 'v0.9.1#8c5b3033', reviewed: null,
+      },
+      notes: {
+        en:
+        'The whole logical skeleton is in the arrows (click an arrow to see its proof):\n\n' +
+        '- compact $\\implies$ sequentially compact\n' +
+        '- sequentially compact $\\implies$ totally bounded　(the **only** step in this ' +
+        'cluster that genuinely uses a choice principle — DC)\n' +
+        '- sequentially compact $\\implies$ complete\n' +
+        '- sequentially compact $\\implies$ compact　(the "bad balls" argument; it uses ' +
+        'total boundedness only, and no choice)\n' +
+        '- compact $\\implies$ complete, compact $\\implies$ totally bounded\n' +
+        '- complete + totally bounded $\\implies$ sequentially compact　(the diagonal ' +
+        'argument; again no choice)\n\n' +
+        'So "sequentially compact $\\implies$ totally bounded $\\implies$ compact" and ' +
+        '"compact $\\implies$ sequentially compact" close the circle, and the three notions ' +
+        'agree.\n\n' +
+        '⚠ In a general topological space only "compact $\\implies$ sequentially compact" ' +
+        'holds — **the converse fails**: sequential compactness is a piece of luck peculiar ' +
+        'to metric spaces.',
+        status: 'draft', basedOn: 'v0.9.1#8e05fc76', reviewed: null,
+      },
+    },
+
+    /* -------------------------------------------------------- 伴随函子定理 */
+    'thm.saft': {
+      statement: {
+        en:
+        'Let $\\mathcal{D}$ be a **small** and **complete** category. Then a functor ' +
+        '$G : \\mathcal{D} \\to \\mathcal{C}$ has a left adjoint $\\iff$ $G$ preserves all ' +
+        'limits.\n\n' +
+        'The left adjoint is given by a limit construction:\n\n' +
+        '$$F(X) \\;=\\; \\varprojlim_{(Y,\\, f) \\in (X \\downarrow G)} Y$$',
+        status: 'draft', basedOn: 'v0.9.1#f6d84124', reviewed: null,
+      },
+      notes: {
+        en:
+        '**Preservation of limits is the only obstruction.** Together with "a right adjoint ' +
+        'preserves limits" this gives a complete criterion: preservation of limits is ' +
+        'necessary, and on a complete small category it is also sufficient.\n\n' +
+        'What the construction means: all the ways of mapping $X$ into the image of $G$ ' +
+        'form a category $X \\downarrow G$, and one takes a limit in it — $F(X)$ is the ' +
+        'object of $\\mathcal{D}$ "closest" to $X$. Every $X \\to G(Y)$ can be organised as ' +
+        '$X \\to G(F(X)) \\to G(Y)$.\n\n' +
+        'The proof is the derivation on the edge.',
+        status: 'draft', basedOn: 'v0.9.1#bdd6e136', reviewed: null,
+      },
+    },
+
+    /* ---------------------------------------------------------- 米田嵌入 */
+    'prop.yoneda-embedding': {
+      statement: {
+        en:
+        'The correspondence\n\n' +
+        '$$\\delta : \\mathcal{C} \\longrightarrow \\widehat{\\mathcal{C}}, \\qquad ' +
+        'X \\mapsto h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$$\n\n' +
+        'is a **fully faithful** functor, and it **preserves all limits**.',
+        status: 'draft', basedOn: 'v0.9.1#f759aee2', reviewed: null,
+      },
+      notes: {
+        en:
+        'Fully faithful means ' +
+        '$\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_{X}, h_{Y}) \\cong ' +
+        '\\operatorname{Hom}_{\\mathcal{C}}(X, Y)$ — the arrows among the $h_{X}$ reproduce ' +
+        'the arrows among the $X$ exactly, no more and no less.\n\n' +
+        'Once $\\mathcal{C}$ is embedded in $\\widehat{\\mathcal{C}}$, questions inside ' +
+        '$\\mathcal{C}$ can be solved in a category that **has all limits and colimits** — ' +
+        'this is the standard way of "completing" a category.',
+        status: 'draft', basedOn: 'v0.9.1#94b15f1c', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------------ 可缩族 */
+    'def.shrinks-nicely': {
+      statement: {
+        en:
+        'A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ is said to ' +
+        '**shrink nicely to $x$** iff\n\n' +
+        '$\\cdot$ $E_r \\subseteq B(r, x)$ holds for every $r$;\n' +
+        '$\\cdot$ there is $\\alpha > 0$ with ' +
+        '$m(E_r) > \\alpha\\cdot m(B(r, x))$ for every $r$.',
+        status: 'draft', basedOn: 'v0.9.1#def659f2', reviewed: null,
+      },
+      notes: {
+        en:
+        'What the two conditions say: **it fits inside** ($E_r$ lies in the ball) and **it ' +
+        'is not too flat** (its volume is at least $\alpha$ times that of the ball).\n\n' +
+        'Typical examples: take $E_r = B(r, x)$ itself ($\alpha = 1$); or take $E_r$ to be ' +
+        'a fixed shape inside the ball (a cube, say), rescaled proportionally.\n\n' +
+        'Counterexample: let $E_r$ be a long thin sliver inside the ball — the volume ratio ' +
+        'can tend to 0, and such a family does not shrink nicely to $x$.\n\n' +
+        '⭐ The notion was introduced so that differentiation theorems **do not depend on ' +
+        'the shape of the ball**: as long as it is not flat, the conclusion stands.',
+        status: 'draft', basedOn: 'v0.9.1#cd8d3dd5', reviewed: null,
+      },
+    },
   },
 };

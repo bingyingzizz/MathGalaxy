@@ -429,7 +429,9 @@ window.MG = window.MG || {};
         '',
         '且对两两不交的 $\\{E_j\\} \\subseteq \\mathcal{M}$：',
         '',
-        '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),\\text{ 右边的级数绝对收敛}$$'
+        '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)$$',
+        '',
+        '（右边的级数绝对收敛。）'
       ].join('\n'),
       notes: [
         '⚠ 与符号测度相比，复测度**自动有限**（取值在 $\\mathbb{C}$ 里，不涉及 $\\pm \\infty$），而且可数可加性里的那个级数**自动绝对收敛**。',

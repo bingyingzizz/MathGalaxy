@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-16T06:52:44.024Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-16T07:06:29.031Z
 > 9 星系 / 45 星团 / 709 节点 / 1398 连线（强边 1389，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -1738,9 +1738,7 @@ $$\forall\{U_i\}_{i \in I} (\text{ 每个} U_i\text{ 开且} X = \bigcup_{i \in 
 #### 紧的三个等价刻画　`thm.metric-compact-equiv`
 *定理*　度量空间中：紧 $\iff$ 列紧 $\iff$ 完备 + 全有界
 
-设 (X, d) 是距离空间。则下列三条**彼此等价**：
-
-$$X\text{ 紧} \iff X\text{ 列紧} \iff X\text{ 完备且全有界}$$
+设 (X, d) 是距离空间。则下列三条**彼此等价**：$X$ 紧 $\iff$ $X$ 列紧 $\iff$ $X$ 完备且全有界。
 
 逻辑骨架全在箭头里（点箭头看证明）：
 
@@ -5137,7 +5135,9 @@ $$\nu(\emptyset) = 0, $$
 
 且对两两不交的 $\{E_j\} \subseteq \mathcal{M}$：
 
-$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 右边的级数绝对收敛}$$
+$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j)$$
+
+（右边的级数绝对收敛。）
 
 ⚠ 与符号测度相比，复测度**自动有限**（取值在 $\mathbb{C}$ 里，不涉及 $\pm \infty$），而且可数可加性里的那个级数**自动绝对收敛**。
 
@@ -6021,8 +6021,10 @@ $$\|f\|_\infty := \inf \{\, a \ge 0 : \mu(\{\, |f| > a \,\}) = 0 \,\}$$
 
 （把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \|f\|_\infty$ 本身就有 $\mu(\{|f| > a\}) = 0$。
 
+对**可测**函数 $f : X \to \mathbb{C}$（可测性的定义见「可测函数」）令
+
 $$
-L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f\|_\infty < \infty \,\}
+L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : \|f\|_\infty < \infty \,\}
 $$
 
 等价说法：$\|f\|_\infty \le M \iff |f(x)| \le M$ 对 a.e. $x$ 成立。

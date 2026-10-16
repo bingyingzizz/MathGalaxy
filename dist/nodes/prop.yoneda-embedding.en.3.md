@@ -2,12 +2,11 @@
 English entry · root `../`
 [in graph](../#n=prop.yoneda-embedding)　·　[Chinese page (authoritative)](./prop.yoneda-embedding.md)
 
-## Statement and proof
-Chinese only — see the Chinese page `nodes/prop.yoneda-embedding.md` and `proofs/`.
+$$\delta : \mathcal{C} \longrightarrow \widehat{\mathcal{C}}, \qquad X \mapsto h_{X} = \operatorname{Hom}_{\mathcal{C}}(-, X)$$
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Yoneda_embedding · nLab: https://ncatlab.org/nlab/show/Yoneda+embedding
+is a **fully faithful** functor, and it **preserves all limits**.
 
+## Notes · **draft**
+Fully faithful means $\operatorname{Hom}_{\widehat{\mathcal{C}}}(h_{X}, h_{Y}) \cong \operatorname{Hom}_{\mathcal{C}}(X, Y)$ — the arrows among the $h_{X}$ reproduce the arrows among the $X$ exactly, no more and no less.
 
-Cite: `prop.yoneda-embedding` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
-
+> 续见 nodes/prop.yoneda-embedding.en.4.md

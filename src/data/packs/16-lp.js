@@ -196,7 +196,9 @@ window.MG = window.MG || {};
         '',
         '（把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \\|f\\|_\\infty$ 本身就有 $\\mu(\\{|f| > a\\}) = 0$。',
         '',
-        '$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : f \\text{ 可测},\\ \\|f\\|_\\infty < \\infty \\,\\}\n$$'
+        '对**可测**函数 $f : X \\to \\mathbb{C}$（可测性的定义见「可测函数」）令',
+        '',
+        '$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : \\|f\\|_\\infty < \\infty \\,\\}\n$$'
       ].join('\n'),
       notes: [
         '等价说法：$\\|f\\|_\\infty \\le M \\iff |f(x)| \\le M$ 对 a.e. $x$ 成立。',

@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T06:52:44.024Z",
+  "generated": "2026-10-16T07:06:29.031Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -2708,24 +2708,36 @@
    "label_en": "Heine-Borel",
    "title_en": "Heine-Borel",
    "abstract_en": "In a metric space the following are equivalent: compact, sequentially compact, and complete together with totally bounded. The skeleton lives in the implications: compact implies sequentially compact; sequentially compact implies totally bounded (the one place dependent choice is used) and complete; sequentially compact implies compact by the \"bad ball\" argument; complete and totally bounded implies sequentially compact by diagonalisation. In general topological spaces only the first implication survives — sequential compactness is a metric-space luxury.",
+   "statement_en": "Let (X, d) be a metric space. Then the following three conditions are **equivalent**: $X$ is compact $\\iff$ $X$ is sequentially compact $\\iff$ $X$ is complete and totally bounded.",
+   "notes_en": "The whole logical skeleton is in the arrows (click an arrow to see its proof):\n\n- compact $\\implies$ sequentially compact\n- sequentially compact $\\implies$ totally bounded　(the **only** step in this cluster that genuinely uses a choice principle — DC)\n- sequentially compact $\\implies$ complete\n- sequentially compact $\\implies$ compact　(the \"bad balls\" argument; it uses total boundedness only, and no choice)\n- compact $\\implies$ complete, compact $\\implies$ totally bounded\n- complete + totally bounded $\\implies$ sequentially compact　(the diagonal argument; again no choice)\n\nSo \"sequentially compact $\\implies$ totally bounded $\\implies$ compact\" and \"compact $\\implies$ sequentially compact\" close the circle, and the three notions agree.\n\n⚠ In a general topological space only \"compact $\\implies$ sequentially compact\" holds — **the converse fails**: sequential compactness is a piece of luck peculiar to metric spaces.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
-      "abstract": "v0.9.1#b29d24a7"
+      "abstract": "v0.9.1#b29d24a7",
+      "statement": "v0.9.1#8c5b3033",
+      "notes": "v0.9.1#8e05fc76"
      }
     }
    },
@@ -2743,7 +2755,7 @@
     "完备",
     "全有界"
    ],
-   "statement": "设 (X, d) 是距离空间。则下列三条**彼此等价**：\n\n$$X\\text{ 紧} \\iff X\\text{ 列紧} \\iff X\\text{ 完备且全有界}$$",
+   "statement": "设 (X, d) 是距离空间。则下列三条**彼此等价**：$X$ 紧 $\\iff$ $X$ 列紧 $\\iff$ $X$ 完备且全有界。",
    "notes": "逻辑骨架全在箭头里（点箭头看证明）：\n\n\n\n- 紧 $\\implies$ 列紧\n- 列紧 $\\implies$ 全有界　（整段里**唯一**实质用到选择原理的一步，用的是 DC）\n- 列紧 $\\implies$ 完备\n- 列紧 $\\implies$ 紧　（「坏球」法，只用到全有界，不动选择公理）\n- 紧 $\\implies$ 完备、紧 $\\implies$ 全有界\n- 完备 + 全有界 $\\implies$ 列紧　（对角线法，也不动选择公理）\n\n\n\n于是「列紧 $\\implies$ 全有界 $\\implies$ 紧」与「紧 $\\implies$ 列紧」闭合，三个概念打通。\n\n⚠ 在一般拓扑空间里只有「紧 $\\implies$ 列紧」成立、**反向不成立** —— 列紧是度量空间特有的好运气。",
    "refs": [
     "Munkres, Topology, §28 与 §43"
@@ -5663,7 +5675,7 @@
    "abstract_en": "A complex measure on a measurable space $(X, \\mathcal{M})$ is a map $\\nu : \\mathcal{M} \\to \\mathbb{C}$ with $\\nu(\\emptyset) = 0$ and $\\nu(\\bigsqcup_j E_j) = \\sum_j \\nu(E_j)$ for pairwise disjoint families, the series converging absolutely. Unlike signed measures, complex measures are automatically finite and that series is automatically absolutely convergent, so questions of finiteness and rearrangement never arise — at the cost of losing examples with infinite mass.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -5673,10 +5685,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
       "abstract": "v0.9.1#792f3f7b"
      }
@@ -5693,7 +5707,7 @@
     "定义",
     "复测度"
    ],
-   "statement": "可测空间 $(X, \\mathcal{M})$ 上的**复测度**是一个映射\n\n$$\\nu : \\mathcal{M} \\to \\mathbb{C}$$\n\n满足\n\n$$\\nu(\\emptyset) = 0, $$\n\n且对两两不交的 $\\{E_j\\} \\subseteq \\mathcal{M}$：\n\n$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),\\text{ 右边的级数绝对收敛}$$",
+   "statement": "可测空间 $(X, \\mathcal{M})$ 上的**复测度**是一个映射\n\n$$\\nu : \\mathcal{M} \\to \\mathbb{C}$$\n\n满足\n\n$$\\nu(\\emptyset) = 0, $$\n\n且对两两不交的 $\\{E_j\\} \\subseteq \\mathcal{M}$：\n\n$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)$$\n\n（右边的级数绝对收敛。）",
    "notes": "⚠ 与符号测度相比，复测度**自动有限**（取值在 $\\mathbb{C}$ 里，不涉及 $\\pm \\infty$），而且可数可加性里的那个级数**自动绝对收敛**。\n\n所以在复测度的世界里，「有限性」「重排问题」这些麻烦全部消失 —— 代价是不能再有「无穷质量」的例子。",
    "refs": [
     "Folland, Real Analysis, §3.3"
@@ -6115,24 +6129,34 @@
    "label_en": "shrinking",
    "title_en": "shrinking",
    "abstract_en": "A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ when $E_r \\subseteq B(r,x)$ for every $r$ and there is $\\alpha > 0$ with $m(E_r) > \\alpha \\cdot m(B(r,x))$ for all $r$. The two conditions say \"fits inside the ball\" and \"is not too thin\". Balls themselves qualify, as does any fixed shape rescaled inside them; a thin sliver does not. The notion exists so that differentiation theorems do not depend on the shape of the sets being shrunk.",
+   "statement_en": "A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ is said to **shrink nicely to $x$** iff\n\n$\\cdot$ $E_r \\subseteq B(r, x)$ holds for every $r$;\n$\\cdot$ there is $\\alpha > 0$ with $m(E_r) > \\alpha\\cdot m(B(r, x))$ for every $r$.",
+   "notes_en": "What the two conditions say: **it fits inside** ($E_r$ lies in the ball) and **it is not too flat** (its volume is at least $alpha$ times that of the ball).\n\nTypical examples: take $E_r = B(r, x)$ itself ($alpha = 1$); or take $E_r$ to be a fixed shape inside the ball (a cube, say), rescaled proportionally.\n\nCounterexample: let $E_r$ be a long thin sliver inside the ball — the volume ratio can tend to 0, and such a family does not shrink nicely to $x$.\n\n⭐ The notion was introduced so that differentiation theorems **do not depend on the shape of the ball**: as long as it is not flat, the conclusion stands.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#a792035c"
+      "abstract": "v0.9.1#a792035c",
+      "statement": "v0.9.1#def659f2",
+      "notes": "v0.9.1#cd8d3dd5"
      }
     }
    },
@@ -6940,7 +6964,7 @@
    "abstract_en": "The essential supremum is $\\|f\\|_\\infty := \\inf \\{a \\ge 0 : \\mu(\\{|f| > a\\}) = 0\\}$: the true bound of $f$ once its values on null sets are ignored. The infimum is attained at $a = \\|f\\|_\\infty$ itself, and $\\|f\\|_\\infty \\le M \\iff |f| \\le M$ almost everywhere. Then $L^\\infty$ consists of the measurable $f$ with $\\|f\\|_\\infty < \\infty$. Note the difference from $\\sup |f|$, which a single value on a null set can spoil.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -6950,10 +6974,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "draft",
+      "abstract": "stale",
       "name": "derived"
      },
-     "staleFields": [],
+     "staleFields": [
+      "abstract"
+     ],
      "basedOn": {
       "abstract": "v0.9.1#877ac0d0"
      }
@@ -6971,7 +6997,7 @@
     "L∞",
     "本性上界"
    ],
-   "statement": "定义\n\n$$\\|f\\|_\\infty := \\inf \\{\\, a \\ge 0 : \\mu(\\{\\, |f| > a \\,\\}) = 0 \\,\\}$$\n\n（把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \\|f\\|_\\infty$ 本身就有 $\\mu(\\{|f| > a\\}) = 0$。\n\n$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : f \\text{ 可测},\\ \\|f\\|_\\infty < \\infty \\,\\}\n$$",
+   "statement": "定义\n\n$$\\|f\\|_\\infty := \\inf \\{\\, a \\ge 0 : \\mu(\\{\\, |f| > a \\,\\}) = 0 \\,\\}$$\n\n（把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \\|f\\|_\\infty$ 本身就有 $\\mu(\\{|f| > a\\}) = 0$。\n\n对**可测**函数 $f : X \\to \\mathbb{C}$（可测性的定义见「可测函数」）令\n\n$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : \\|f\\|_\\infty < \\infty \\,\\}\n$$",
    "notes": "等价说法：$\\|f\\|_\\infty \\le M \\iff |f(x)| \\le M$ 对 a.e. $x$ 成立。\n\n「本性」两个字的意思是：**把零集上的糟糕取值统统不算**。比如 $f = 0$ a.e. 但 $f$ 在某个零集上取 $+\\infty$，仍然有 $\\|f\\|_\\infty = 0$。\n\n⚠ $\\|f\\|_\\infty$ 与「$\\sup |f|$」不同：后者可能因为零集上的一点而变得很大。",
    "refs": [
     "Folland, Real Analysis, §6.1"
@@ -10379,24 +10405,34 @@
    "label_en": "Yoneda embedding",
    "title_en": "Yoneda Embedding",
    "abstract_en": "The assignment $\\delta : \\mathcal{C} \\to \\widehat{\\mathcal{C}}$, $X \\mapsto h_X = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$, is fully faithful and preserves all limits. Fully faithful means $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_X, h_Y) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$: the arrows between representable functors reproduce the arrows of $\\mathcal{C}$ exactly, no more and no fewer. Embedding $\\mathcal{C}$ this way moves problems into a category that has all limits and colimits.",
+   "statement_en": "The correspondence\n\n$$\\delta : \\mathcal{C} \\longrightarrow \\widehat{\\mathcal{C}}, \\qquad X \\mapsto h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$$\n\nis a **fully faithful** functor, and it **preserves all limits**.",
+   "notes_en": "Fully faithful means $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_{X}, h_{Y}) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$ — the arrows among the $h_{X}$ reproduce the arrows among the $X$ exactly, no more and no less.\n\nOnce $\\mathcal{C}$ is embedded in $\\widehat{\\mathcal{C}}$, questions inside $\\mathcal{C}$ can be solved in a category that **has all limits and colimits** — this is the standard way of \"completing\" a category.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#1bc8f10f"
+      "abstract": "v0.9.1#1bc8f10f",
+      "statement": "v0.9.1#f759aee2",
+      "notes": "v0.9.1#94b15f1c"
      }
     }
    },
@@ -10749,24 +10785,34 @@
    "label_en": "special adjoint functor theorem",
    "title_en": "special adjoint functor theorem",
    "abstract_en": "Let $\\mathcal{D}$ be small and complete. A functor $G : \\mathcal{D} \\to \\mathcal{C}$ has a left adjoint iff it preserves all limits; when it does, one may take $F(X) = \\varprojlim_{(Y,f) \\in (X \\downarrow G)} Y$. So preservation of limits, which is automatic for right adjoints, is also sufficient under these hypotheses. The construction reads: $F(X)$ is the object of $\\mathcal{D}$ closest to $X$, and every $X \\to G(Y)$ factors through $X \\to G(FX) \\to G(Y)$.",
+   "statement_en": "Let $\\mathcal{D}$ be a **small** and **complete** category. Then a functor $G : \\mathcal{D} \\to \\mathcal{C}$ has a left adjoint $\\iff$ $G$ preserves all limits.\n\nThe left adjoint is given by a limit construction:\n\n$$F(X) \\;=\\; \\varprojlim_{(Y,\\, f) \\in (X \\downarrow G)} Y$$",
+   "notes_en": "**Preservation of limits is the only obstruction.** Together with \"a right adjoint preserves limits\" this gives a complete criterion: preservation of limits is necessary, and on a complete small category it is also sufficient.\n\nWhat the construction means: all the ways of mapping $X$ into the image of $G$ form a category $X \\downarrow G$, and one takes a limit in it — $F(X)$ is the object of $\\mathcal{D}$ \"closest\" to $X$. Every $X \\to G(Y)$ can be organised as $X \\to G(F(X)) \\to G(Y)$.\n\nThe proof is the derivation on the edge.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#5b78b019"
+      "abstract": "v0.9.1#5b78b019",
+      "statement": "v0.9.1#f6d84124",
+      "notes": "v0.9.1#bdd6e136"
      }
     }
    },
