@@ -10,5 +10,5 @@ layer 18 · definition · cluster L^p 空间 (`analysis.lp`) · Analysis
 Chinese only — see the Chinese page `nodes/def.lp-norm.md` and `proofs/`.
 
 
-Cite: `def.lp-norm` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.lp-norm` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

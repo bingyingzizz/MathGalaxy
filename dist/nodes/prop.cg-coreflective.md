@@ -3,7 +3,7 @@
 layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=prop.cg-coreflective)　·　[节点索引](../index.md)
 
-紧生成空间构成的范畴 $k\mathb
+紧生成空间构成的范畴 $k
 > 陈述续见 [nodes/prop.cg-coreflective.2.md](./prop.cg-coreflective.2.md)
 
 
@@ -22,4 +22,4 @@ refs: Le Stum, An introduction to condensed mathematics, §2.3
 
 > 说明见 `notes/prop.cg-coreflective.md`
 
-引用：`prop.cg-coreflective`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.cg-coreflective`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

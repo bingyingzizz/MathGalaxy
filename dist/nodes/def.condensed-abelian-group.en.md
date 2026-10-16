@@ -11,5 +11,5 @@ names: `condensed abelian group` (short) · `Condensed Abelian Group` (full)
 Chinese only — see the Chinese page `nodes/def.condensed-abelian-group.md` and `proofs/`.
 
 
-Cite: `def.condensed-abelian-group` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.condensed-abelian-group` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

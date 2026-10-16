@@ -10,5 +10,5 @@ layer 22 · theorem · cluster 有界变差与绝对连续 (`analysis.bv`) · An
 Chinese only — see the Chinese page `nodes/thm.ftc-lebesgue.md` and `proofs/`.
 
 
-Cite: `thm.ftc-lebesgue` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.ftc-lebesgue` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,16 +11,14 @@ $$X^{\sharp} \;:=\; h_{X}^{\#}, \qquad h_{X} = \operatorname{Hom}_{\mathcal{C}}(
 
 $$\operatorname{Hom}\bigl(X^{\sharp},\ F\bigr) \;\cong\; F(X).$$
 
-## 它能推出什么 / 谁在用它
-- 被 [`prop.sheafification-slice-colimit`](../nodes/prop.sheafification-slice-colimit.md) 层化是切片上的余极限 用
-
-- …另有出边，续页见 [nodes/def.associated-sheaf.3.md](./def.associated-sheaf.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.associated-sheaf.2.md](./def.associated-sheaf.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.associated-sheaf.3.md](./def.associated-sheaf.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, Definition 3.2.10
 
 > 说明见 `notes/def.associated-sheaf.md`
 
-引用：`def.associated-sheaf`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.associated-sheaf`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -10,5 +10,5 @@ layer 11 · definition · cluster 单满、子对象与像 (`cat.structure`) · 
 Chinese only — see the Chinese page `nodes/def.elements-category.md` and `proofs/`.
 
 
-Cite: `def.elements-category` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.elements-category` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 7 · definition · cluster 凝聚态上同调 (`cond.cohomology`) · Conde
 Chinese only — see the Chinese page `nodes/def.semi-normed-ab-group.md` and `proofs/`.
 
 
-Cite: `def.semi-normed-ab-group` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.semi-normed-ab-group` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

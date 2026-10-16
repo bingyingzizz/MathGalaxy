@@ -7,16 +7,14 @@ layer 17 · 定理 · 过滤与谱序列 · 同调代数
 
 $$E^{p,q}_{0} = \operatorname{Gr}^{p}K^{p+q} \;\Longrightarrow\; H^{p+q}(K^{\bullet}).$$
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.bicomplex-spectral`](../nodes/prop.bicomplex-spectral.md) 双复形给出谱序列
-
-- …另有出边，续页见 [nodes/thm.filtered-complex-spectral.3.md](./thm.filtered-complex-spectral.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.filtered-complex-spectral.2.md](./thm.filtered-complex-spectral.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.filtered-complex-spectral.3.md](./thm.filtered-complex-spectral.3.md)
 
 refs: Le Stum, Theorem 7.2.16；Weibel, An Introduction to Homological Algebra, 5.4.1
 
 > 说明见 `notes/thm.filtered-complex-spectral.md`
 
-引用：`thm.filtered-complex-spectral`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.filtered-complex-spectral`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

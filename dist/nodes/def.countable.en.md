@@ -11,5 +11,5 @@ names: `countable` (short) · `Countable` (full)
 Chinese only — see the Chinese page `nodes/def.countable.md` and `proofs/`.
 
 
-Cite: `def.countable` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.countable` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

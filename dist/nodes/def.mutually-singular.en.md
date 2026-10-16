@@ -10,5 +10,5 @@ layer 16 · definition · cluster 符号测度与分解 (`analysis.signed`) · A
 Chinese only — see the Chinese page `nodes/def.mutually-singular.md` and `proofs/`.
 
 
-Cite: `def.mutually-singular` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.mutually-singular` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

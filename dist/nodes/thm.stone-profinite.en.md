@@ -10,5 +10,5 @@ layer 18 · theorem · cluster Stone 与 Stonean (`topo.stone`) · Topology
 Chinese only — see the Chinese page `nodes/thm.stone-profinite.md` and `proofs/`.
 
 
-Cite: `thm.stone-profinite` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.stone-profinite` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 10 · definition · cluster 阿贝尔层 (`hom.sheaf`) · Homological Alge
 Chinese only — see the Chinese page `nodes/def.presheaf-valued.md` and `proofs/`.
 
 
-Cite: `def.presheaf-valued` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.presheaf-valued` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

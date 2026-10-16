@@ -15,4 +15,4 @@ refs: Le Stum, An introduction to condensed mathematics, §8.3
 
 > 说明见 `notes/prop.paracompact-partition-unity.md`
 
-引用：`prop.paracompact-partition-unity`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.paracompact-partition-unity`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

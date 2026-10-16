@@ -11,5 +11,5 @@ names: `normal space` (short) · `Normal Space` (full)
 Chinese only — see the Chinese page `nodes/def.normal-space.md` and `proofs/`.
 
 
-Cite: `def.normal-space` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.normal-space` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 22 · definition · cluster 微分定理 (`analysis.differentiation`) · A
 Chinese only — see the Chinese page `nodes/def.lebesgue-set.md` and `proofs/`.
 
 
-Cite: `def.lebesgue-set` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.lebesgue-set` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

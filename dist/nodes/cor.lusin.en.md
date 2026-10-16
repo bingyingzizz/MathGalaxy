@@ -10,5 +10,5 @@ layer 22 · corollary · cluster 可测函数与收敛 (`analysis.measurable`) �
 Chinese only — see the Chinese page `nodes/cor.lusin.md` and `proofs/`.
 
 
-Cite: `cor.lusin` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `cor.lusin` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 19 · corollary · cluster L^p 空间 (`analysis.lp`) · Analysis
 Chinese only — see the Chinese page `nodes/cor.lp-reflexive.md` and `proofs/`.
 
 
-Cite: `cor.lp-reflexive` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `cor.lp-reflexive` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

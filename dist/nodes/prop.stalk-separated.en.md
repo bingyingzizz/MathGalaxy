@@ -10,5 +10,5 @@ layer 17 · proposition · cluster 层与拓扑 (`cat.sheaf`) · Category Theory
 Chinese only — see the Chinese page `nodes/prop.stalk-separated.md` and `proofs/`.
 
 
-Cite: `prop.stalk-separated` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.stalk-separated` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

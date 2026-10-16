@@ -6,5 +6,5 @@ English entry · root `../`
 Wikipedia: https://en.wikipedia.org/wiki/Integer · nLab: https://ncatlab.org/nlab/show/integer
 
 
-Cite: `def.int` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.int` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

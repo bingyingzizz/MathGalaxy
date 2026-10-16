@@ -10,5 +10,5 @@ layer 0 · definition · cluster 一阶语言与公式 (`logic.fol`) · Mathemat
 Chinese only — see the Chinese page `nodes/def.first-order-language.md` and `proofs/`.
 
 
-Cite: `def.first-order-language` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.first-order-language` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

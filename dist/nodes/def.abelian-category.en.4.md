@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/def.abelian-category.md` and `proof
 Wikipedia: https://en.wikipedia.org/wiki/Abelian_category · nLab: https://ncatlab.org/nlab/show/abelian+category
 
 
-Cite: `def.abelian-category` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.abelian-category` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

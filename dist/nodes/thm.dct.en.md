@@ -14,5 +14,5 @@ Chinese only — see the Chinese page `nodes/thm.dct.md` and `proofs/`.
 Wikipedia: https://en.wikipedia.org/wiki/Dominated_convergence_theorem · Mathlib: https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/DominatedConvergence.html
 
 
-Cite: `thm.dct` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.dct` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

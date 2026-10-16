@@ -10,5 +10,5 @@ layer 17 · proposition · cluster 凝聚态集 (`cond.set`) · Condensed Mathem
 Chinese only — see the Chinese page `nodes/prop.cg-wh-iff-qseparated.md` and `proofs/`.
 
 
-Cite: `prop.cg-wh-iff-qseparated` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.cg-wh-iff-qseparated` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

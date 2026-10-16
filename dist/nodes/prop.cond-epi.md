@@ -16,4 +16,4 @@ layer 17 · 命题 · 凝聚态集 · 凝聚态数学
 
 refs: Le Stum, An introduction to condensed mathematics, §4
 
-引用：`prop.cond-epi`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.cond-epi`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

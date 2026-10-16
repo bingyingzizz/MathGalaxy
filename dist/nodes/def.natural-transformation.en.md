@@ -11,5 +11,5 @@ names: `natural transformation` (short) · `Natural Transformation` (full)
 Chinese only — see the Chinese page `nodes/def.natural-transformation.md` and `proofs/`.
 
 
-Cite: `def.natural-transformation` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.natural-transformation` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

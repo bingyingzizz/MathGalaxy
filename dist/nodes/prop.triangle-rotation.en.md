@@ -10,5 +10,5 @@ layer 15 · proposition · cluster 复形与导出三角 (`hom.complex`) · Homo
 Chinese only — see the Chinese page `nodes/prop.triangle-rotation.md` and `proofs/`.
 
 
-Cite: `prop.triangle-rotation` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.triangle-rotation` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

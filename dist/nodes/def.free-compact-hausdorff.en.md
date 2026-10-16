@@ -11,5 +11,5 @@ names: `free compact Hausdorff` (short) · `Free Compact Hausdorff Space` (full)
 Chinese only — see the Chinese page `nodes/def.free-compact-hausdorff.md` and `proofs/`.
 
 
-Cite: `def.free-compact-hausdorff` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.free-compact-hausdorff` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -3,7 +3,7 @@
 layer 16 · 定义 · 加法与阿贝尔范畴 · 同调代数
 [在星图里打开](../#n=def.abelian-category)　·　[节点索引](../index.md)
 
-- **预加法范畴**（$\mathbf{Ab}$-范
+- **预加法范畴**（$\mathbf{
 > 陈述续见 [nodes/def.abelian-category.2.md](./def.abelian-category.2.md)
 
 
@@ -22,4 +22,4 @@ refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 > 说明见 `notes/def.abelian-category.md`
 
-引用：`def.abelian-category`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.abelian-category`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -11,5 +11,5 @@ names: `cohomological functor` (short) · `Cohomological Functor` (full)
 Chinese only — see the Chinese page `nodes/def.cohomological-functor.md` and `proofs/`.
 
 
-Cite: `def.cohomological-functor` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.cohomological-functor` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

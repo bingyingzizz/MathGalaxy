@@ -10,5 +10,5 @@ layer 18 · theorem · cluster 凝聚态集 (`cond.set`) · Condensed Mathematic
 Chinese only — see the Chinese page `nodes/thm.cond-topos.md` and `proofs/`.
 
 
-Cite: `thm.cond-topos` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.cond-topos` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

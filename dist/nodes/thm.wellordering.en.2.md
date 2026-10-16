@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/thm.wellordering.md` and `proofs/`.
 Wikipedia: https://en.wikipedia.org/wiki/Well-ordering_theorem
 
 
-Cite: `thm.wellordering` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.wellordering` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `flat` (short) · `Flatness` (full)
 Chinese only — see the Chinese page `nodes/def.flat-abelian-sheaf.md` and `proofs/`.
 
 
-Cite: `def.flat-abelian-sheaf` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.flat-abelian-sheaf` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

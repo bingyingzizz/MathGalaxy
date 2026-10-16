@@ -10,5 +10,5 @@ layer 10 · proposition · cluster 代数结构 (`algebra.structures`) · Abstra
 Chinese only — see the Chinese page `nodes/prop.abelianization.md` and `proofs/`.
 
 
-Cite: `prop.abelianization` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.abelianization` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 13 · definition · cluster 预层与米田 (`cat.yoneda`) · Category The
 Chinese only — see the Chinese page `nodes/def.finitely-presented.md` and `proofs/`.
 
 
-Cite: `def.finitely-presented` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.finitely-presented` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

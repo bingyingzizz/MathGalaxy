@@ -37,7 +37,11 @@
 > fetch (~1300 B); overflow continues in `<path>.2.md`, and the first page is always `<path>.md`.
 > Node ids are stable — they are the citation contract.
 >
-> **Cite as:** `MathGalaxy node ⟨id⟩ (content v0.9.0)` — see [`LICENSE`](LICENSE).
+> **Licence:** graph content **CC BY 4.0** (SPDX `CC-BY-4.0`) — attribution only;
+> copying, mirroring, renaming and commercial reuse are all allowed. Code: MIT.
+> Citing is a request, not a condition: please name the node `id` and the content
+> version — `MathGalaxy node ⟨id⟩ (content v0.9.0)`. See [`LICENSE`](LICENSE);
+> full legal code in [`LICENSE-CC-BY-4.0.txt`](LICENSE-CC-BY-4.0.txt).
 >
 > *Chinese original follows below.*
 
@@ -660,3 +664,29 @@ python -m http.server 8000     # 然后访问 http://localhost:8000
 
 **怎么读这张图**：站点的 <https://bingyingzizz.github.io/read.html#reading>（读图指南）、
 仓库根的 `notation.md`（记号对照表）、`policy.md`（内容准则）、`alias.md`（别名与常见问法）。
+
+---
+
+## 许可与引用
+
+| 部分 | 许可 | 说明 |
+|---|---|---|
+| **图的内容**（节点、边、证明、笔记，以及 `graph.json` / `graph.md` / `nodes/*` 等产物） | **CC BY 4.0**（SPDX `CC-BY-4.0`） | 署名即可：**可以**整份转载、**镜像**、改名再分发、并进别的知识库 / 语料库、商用、抓取进 AI 管线 |
+| **代码**（`src/` `tools/` `site/`） | **MIT** | 标准 MIT |
+
+- 条款与引用格式：[`LICENSE`](LICENSE)（中文 + English citation guide + 镜像影响表）
+- CC BY 4.0 法律文本全文：[`LICENSE-CC-BY-4.0.txt`](LICENSE-CC-BY-4.0.txt)（逐字节来自 creativecommons.org）
+- 许可官方地址：<https://creativecommons.org/licenses/by/4.0/>
+
+⭐ **引用**是**请求**（不是许可条件，没有法律强制力，但强烈建议）：
+写明**节点 id** 与**内容版本号**。
+
+```
+参见 MathGalaxy 节点 thm.cantor（内容 v0.9.0）。
+MathGalaxy, node thm.cantor (content v0.9.0),
+https://bingyingzizz.github.io/mathgalaxy/nodes/thm.cantor.html
+```
+
+为什么这么请求：节点 id 是读者唯一能追回原始陈述与完整证明的线索。
+完整模板（夹注 / 脚注 / BibTeX / 数据集 / 引一条边）与「怎样算合格」见 [`LICENSE`](LICENSE) 第五节；
+应用里每个节点面板也有「**引用此节点**」按钮，点一下直接复制引文。

@@ -15,4 +15,4 @@ refs: Le Stum, Exercise 8.19
 
 > 说明见 `notes/ex.nonlc-rhom.md`
 
-引用：`ex.nonlc-rhom`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`ex.nonlc-rhom`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

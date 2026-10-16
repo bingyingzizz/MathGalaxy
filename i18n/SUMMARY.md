@@ -11,7 +11,7 @@
 | 英文名 `title_en` / `label_en` | **274 / 709 = 38.6%** | 一级 230（aka 恰好一条名字样英文）+ 二级 44（title 里恰好命中一个 aka 候选） |
 | 英文摘要 `abstract_en` | **30**（枢纽榜前 30 = 30/30） | 机器起草，`status: draft`，中文为准 |
 | 英文陈述 `statement_en` / `notes_en` | **3**（试点） | `lem.zorn` · `thm.first-iso` · `def.metric-space`，逐句对译 |
-| 英文入口页 `nodes/<id>.en.md` | **290 个节点 / 349 个文件**（59 页是续页） | 有英文名或摘要就有；最大 890 B |
+| 英文入口页 `nodes/<id>.en.md` | **290 个节点 / 351 个文件**（61 页是续页） | 有英文名或摘要就有；最大 890 B |
 | read 文档英文版 | **4 份 / 11 页** | reading · policy · hubs · notation（+ 仓库根副本 7 个） |
 | 术语表 | 1 份 | `i18n/glossary.md`（有英文键的一律现算） |
 | 外链锚点 `xref` | **45 个节点 / 80 个链接** | Wikipedia 45 · nLab 30 · Mathlib 5（45 个节点里 45 个有 Wikipedia 条），逐条 HTTP 200 + title 核对 |
@@ -46,7 +46,7 @@
 | 文件 | 是什么 |
 |---|---|
 | `CONTRIBUTING.md` | 新建：中文 + `## Contributing in English` |
-| `LICENSE-PROPOSAL.md` | 许可迁移草案（**PROPOSAL — NOT IN EFFECT**，`LICENSE` 一字未改） |
+| `LICENSE-MIGRATION.md` | 许可**迁移记录**（原 `LICENSE-PROPOSAL.md`，2026-10-16 已生效）：方案 B 落地、镜像影响表、故意没做的事 |
 | `tools/i18n-backfill.mjs` | 英文名回填（一二级规则唯一真源，build 直接 import 复用） |
 | `_tools/_xrefcand.mjs` · `_xrefverify.mjs` · `_xreview.mjs` | 外链候选 / 核对（并发、双网络路、抓 title）/ 人眼复核 |
 | `_tools/_uistr.mjs` · `_uiprobe.js` · `_uifmt.mjs` · `_uistate.js` | UI 文案清单（源码扫 + 真跑界面 + 折模板 + 状态截图） |
@@ -63,7 +63,7 @@
 | 4 | **前 30 枢纽里 16 个没有英文名** | 摘要正文里用标准英文术语写了它们，但名字字段仍空。补法：`aliases.js` 加 aka —— 16 个 id 与建议英文名见 `i18n/DECISIONS.md`（⚠️ 该文件里先写的是 14，以本节 16 为准；口径见下） |
 | 4′ | ⚠️ **口径更正（2026-10-16 晚）** | 枢纽榜前 30 名按「入度降序 + layer 升序」定；入度 = 4 的节点有 **36 个**并列跨在第 30 名附近，**不 computeLayers 的探针排出来的前 30 是任意集合** —— 我先前报的「14」就是那么来的。以构建口径为准：**没有英文名的是 16 个**，补完后英文名覆盖 **290 / 709 = 40.9%**（不是 288） |
 | 5 | 二级命中里 2 条要人眼 | `thm.first-iso` → `Noether`（是归属不是名字）· `def.simplex-category` → `Delta`（LaTeX 符号） |
-| 6 | 许可迁移 | ✅ 已定 **方案 B**：内容 → CC BY 4.0、代码维持 MIT，`LICENSE-PROPOSAL.md` 转正，待执行（T1.4） |
+| 6 | 许可迁移 | ✅ **已执行**：内容 → CC BY 4.0、代码 MIT；`LICENSE` 重写，新增 `LICENSE-CC-BY-4.0.txt`（官方原文）；`LICENSE-PROPOSAL.md` → `LICENSE-MIGRATION.md` |
 | 7 | 英文陈述只做了 3 条 | 试点性质；扩展是纯人工量（审校产能） |
 | 8 | 边上的证明（`proofs/`）没有英文 | 英文页明确写着「证明仍以中文页为准」 |
 | 9 | 内容瑕疵 1 处 | `prop.chaus-two-term-resolution` 的 `\text{}` 里嵌了 `$` —— ✅ 已定：改掉（报告 diff） |

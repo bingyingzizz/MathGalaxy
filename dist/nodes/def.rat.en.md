@@ -10,5 +10,5 @@ layer 9 · definition · cluster 数系的构造 (`set.numbers`) · Set Theory
 Chinese only — see the Chinese page `nodes/def.rat.md` and `proofs/`.
 
 
-Cite: `def.rat` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.rat` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

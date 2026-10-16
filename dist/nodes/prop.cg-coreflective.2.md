@@ -2,18 +2,24 @@
 [在星图里打开](../#n=prop.cg-coreflective)　·　第 1 页 [nodes/prop.cg-coreflective.md](./prop.cg-coreflective.md)
 
 ## 陈述（续）
-f{Top}$ 是 $\mathbf{
-Top}$ 的**余反射子范畴*
-*：含入函子 $i : k\math
-bf{Top} \hookrighta
-rrow \mathbf{Top}$ 
-有**右**伴随
-$$k : \mathbf{Top} 
-\longrightarrow k\
-mathbf{Top}, \qquad
- X \mapsto kX$$
-即 $i \dashv k$。$kX$
- 与 $X$ 有同一个集合，拓扑换成 $
-k$-拓扑。
+\mathbf{Top}$
+ 是 $\mathbf{T
+op}$ 的**余反射子
+范畴**：含入函子 $i
+ : k\mathbf{T
+op} \hookrigh
+tarrow \mathb
+f{Top}$ 有**右
+**伴随
+$$k : \mathbf
+{Top} \longri
+ghtarrow k\ma
+thbf{Top}, \q
+quad X \mapst
+o kX$$
+即 $i \dashv k
+$。$kX$ 与 $X$ 有
+同一个集合，拓扑换成 $k$
+-拓扑。
 
 > 续见 [nodes/prop.cg-coreflective.3.md](./prop.cg-coreflective.3.md)

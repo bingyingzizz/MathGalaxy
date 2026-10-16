@@ -11,5 +11,5 @@ names: `Hartogs` (short) · `Hartogs' Theorem, 1915` (full)
 Chinese only — see the Chinese page `nodes/thm.hartogs.md` and `proofs/`.
 
 
-Cite: `thm.hartogs` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.hartogs` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

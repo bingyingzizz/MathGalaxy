@@ -6,5 +6,5 @@ English entry · root `../`
 Wikipedia: https://en.wikipedia.org/wiki/Full_and_faithful_functors · nLab: https://ncatlab.org/nlab/show/full+and+faithful+functor
 
 
-Cite: `prop.adjoint-full-faithful` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.adjoint-full-faithful` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `localization` (short) · `Localization` (full)
 Chinese only — see the Chinese page `nodes/def.localization.md` and `proofs/`.
 
 
-Cite: `def.localization` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.localization` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

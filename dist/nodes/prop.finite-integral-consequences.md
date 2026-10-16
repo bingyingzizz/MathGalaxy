@@ -9,12 +9,10 @@ layer 16 · 命题 · 积分 · 分析学
 - $\{x : f(x) > 0\}$ 是 **$\sigma$有限**的（即它是可数个有限测度集之并）。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.lplus`](../nodes/def.lplus.md) L⁺：用到了定义 L⁺　[proofs/def-link.lplus-finite-integral.md](../proofs/def-link.lplus-finite-integral.md)
-
 - …另有入边，续页见 [nodes/prop.finite-integral-consequences.2.md](./prop.finite-integral-consequences.2.md)
 
 refs: Folland, Real Analysis, Prop. 2.20
 
 > 说明见 `notes/prop.finite-integral-consequences.md`
 
-引用：`prop.finite-integral-consequences`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.finite-integral-consequences`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

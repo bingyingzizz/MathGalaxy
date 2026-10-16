@@ -10,5 +10,5 @@ layer 12 · proposition · cluster 伴随与反射 (`cat.adjoint`) · Category T
 Chinese only — see the Chinese page `nodes/prop.filtered-exact.md` and `proofs/`.
 
 
-Cite: `prop.filtered-exact` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.filtered-exact` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 14 · definition · cluster 范畴里的代数结构 (`cat.algebra`) · Ca
 Chinese only — see the Chinese page `nodes/def.group-object.md` and `proofs/`.
 
 
-Cite: `def.group-object` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.group-object` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

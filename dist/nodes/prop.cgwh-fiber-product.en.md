@@ -10,5 +10,5 @@ layer 13 · proposition · cluster 紧生成空间与弱 Hausdorff (`topo.cg`) �
 Chinese only — see the Chinese page `nodes/prop.cgwh-fiber-product.md` and `proofs/`.
 
 
-Cite: `prop.cgwh-fiber-product` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.cgwh-fiber-product` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

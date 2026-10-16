@@ -10,5 +10,5 @@ layer 13 · definition · cluster 函子与自然变换 (`cat.functor`) · Categ
 Chinese only — see the Chinese page `nodes/def.exact-functor.md` and `proofs/`.
 
 
-Cite: `def.exact-functor` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.exact-functor` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

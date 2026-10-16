@@ -10,5 +10,5 @@ layer 13 · definition · cluster 同调与正合列 (`hom.cohomology`) · Homol
 Chinese only — see the Chinese page `nodes/def.cohomology.md` and `proofs/`.
 
 
-Cite: `def.cohomology` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.cohomology` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

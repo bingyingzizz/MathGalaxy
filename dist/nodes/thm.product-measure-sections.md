@@ -12,14 +12,14 @@ layer 18 · 定理 · 乘积测度与 Fubini · 分析学
 > 陈述续见 [nodes/thm.product-measure-sections.2.md](./thm.product-measure-sections.2.md)
 
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.product-measure-sections.3.md](./thm.product-measure-sections.3.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.product-measure-sections.5.md](./thm.product-measure-sections.5.md)
 
 refs: Folland, Real Analysis, Theorem 2.36
 
 > 说明见 `notes/thm.product-measure-sections.md`
 
-引用：`thm.product-measure-sections`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.product-measure-sections`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

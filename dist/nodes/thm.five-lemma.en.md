@@ -11,5 +11,5 @@ names: `five lemma` (short) · `Five Lemma` (full)
 Chinese only — see the Chinese page `nodes/thm.five-lemma.md` and `proofs/`.
 
 
-Cite: `thm.five-lemma` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.five-lemma` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

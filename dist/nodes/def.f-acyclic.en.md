@@ -10,5 +10,5 @@ layer 12 · definition · cluster 复形与导出三角 (`hom.complex`) · Homol
 Chinese only — see the Chinese page `nodes/def.f-acyclic.md` and `proofs/`.
 
 
-Cite: `def.f-acyclic` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.f-acyclic` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

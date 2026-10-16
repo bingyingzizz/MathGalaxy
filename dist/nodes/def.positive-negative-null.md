@@ -21,4 +21,4 @@ refs: Folland, Real Analysis, §3.1
 
 > 说明见 `notes/def.positive-negative-null.md`
 
-引用：`def.positive-negative-null`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.positive-negative-null`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

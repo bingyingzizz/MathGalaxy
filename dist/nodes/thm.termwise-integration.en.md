@@ -10,5 +10,5 @@ layer 19 · theorem · cluster 积分 (`analysis.integral`) · Analysis
 Chinese only — see the Chinese page `nodes/thm.termwise-integration.md` and `proofs/`.
 
 
-Cite: `thm.termwise-integration` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.termwise-integration` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

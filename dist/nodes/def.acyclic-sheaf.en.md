@@ -11,5 +11,5 @@ names: `acyclic sheaf` (short) · `Acyclic Sheaf` (full)
 Chinese only — see the Chinese page `nodes/def.acyclic-sheaf.md` and `proofs/`.
 
 
-Cite: `def.acyclic-sheaf` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.acyclic-sheaf` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

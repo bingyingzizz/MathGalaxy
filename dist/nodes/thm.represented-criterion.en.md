@@ -10,5 +10,5 @@ layer 14 · theorem · cluster 预层与米田 (`cat.yoneda`) · Category Theory
 Chinese only — see the Chinese page `nodes/thm.represented-criterion.md` and `proofs/`.
 
 
-Cite: `thm.represented-criterion` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.represented-criterion` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

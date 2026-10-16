@@ -10,5 +10,5 @@ layer 8 · definition · cluster 基数与等势 (`set.cardinal`) · Set Theory
 Chinese only — see the Chinese page `nodes/def.cardinal.md` and `proofs/`.
 
 
-Cite: `def.cardinal` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.cardinal` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

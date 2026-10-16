@@ -3,7 +3,7 @@
 layer 14 · 命题 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=prop.site-covering-families-pretopology)　·　[节点索引](../index.md)
 
-设 $\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑*
+设 $\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大
 > 陈述续见 [nodes/prop.site-covering-families-pretopology.2.md](./prop.site-covering-families-pretopology.2.md)
 
 
@@ -14,4 +14,4 @@ refs: Le Stum, An introduction to condensed mathematics, Exercise 3.14
 
 > 说明见 `notes/prop.site-covering-families-pretopology.md`
 
-引用：`prop.site-covering-families-pretopology`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.site-covering-families-pretopology`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

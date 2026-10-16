@@ -14,4 +14,4 @@ refs: Le Stum, Lemma 6.1.6
 
 > 说明见 `notes/lem.stonean-projective.md`
 
-引用：`lem.stonean-projective`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`lem.stonean-projective`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -11,5 +11,5 @@ names: `simple function` (short) · `Simple Function` (full)
 Chinese only — see the Chinese page `nodes/def.simple-function.md` and `proofs/`.
 
 
-Cite: `def.simple-function` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.simple-function` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/def.cauchy-null.md` and `proofs/`.
 Wikipedia: https://en.wikipedia.org/wiki/Cauchy_sequence · nLab: https://ncatlab.org/nlab/show/Cauchy+sequence
 
 
-Cite: `def.cauchy-null` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.cauchy-null` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 17 · proposition · cluster 拓扑阿贝尔群 (`cond.topo`) · Condensed
 Chinese only — see the Chinese page `nodes/prop.lc-ab-preabelian.md` and `proofs/`.
 
 
-Cite: `prop.lc-ab-preabelian` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.lc-ab-preabelian` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `ordered field` (short) · `Ordered Field` (full)
 Chinese only — see the Chinese page `nodes/def.ordered-field.md` and `proofs/`.
 
 
-Cite: `def.ordered-field` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.ordered-field` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -16,4 +16,4 @@ refs: Folland, Real Analysis, Prop. 2.22
 
 > 说明见 `notes/prop.integral-abs-ineq.md`
 
-引用：`prop.integral-abs-ineq`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.integral-abs-ineq`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -11,5 +11,5 @@ names: `retraction` (short) · `Section / Retraction` (full)
 Chinese only — see the Chinese page `nodes/def.section-retraction.md` and `proofs/`.
 
 
-Cite: `def.section-retraction` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.section-retraction` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

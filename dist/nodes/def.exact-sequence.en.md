@@ -10,5 +10,5 @@ layer 16 · definition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homolog
 Chinese only — see the Chinese page `nodes/def.exact-sequence.md` and `proofs/`.
 
 
-Cite: `def.exact-sequence` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.exact-sequence` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

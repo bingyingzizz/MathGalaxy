@@ -10,5 +10,5 @@ layer 5 · definition · cluster 关系与函数 (`set.rel`) · Set Theory
 Chinese only — see the Chinese page `nodes/def.quotient-set.md` and `proofs/`.
 
 
-Cite: `def.quotient-set` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.quotient-set` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

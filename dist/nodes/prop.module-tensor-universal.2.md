@@ -5,3 +5,5 @@
 $$\operatorname{Bil}_{\mathbb{Z}}(M \times N,\ P) \;\cong\; \operatorname{Hom}_{\mathbb{Z}}\bigl(M \otimes_{\mathbb{Z}} N,\ P\bigr),$$
 
 左边的双线性映射与右边的群同态一一对应。
+
+> 续见 [nodes/prop.module-tensor-universal.3.md](./prop.module-tensor-universal.3.md)

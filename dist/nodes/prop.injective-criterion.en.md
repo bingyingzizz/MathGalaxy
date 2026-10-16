@@ -10,5 +10,5 @@ layer 15 · proposition · cluster 同调与正合列 (`hom.cohomology`) · Homo
 Chinese only — see the Chinese page `nodes/prop.injective-criterion.md` and `proofs/`.
 
 
-Cite: `prop.injective-criterion` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.injective-criterion` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

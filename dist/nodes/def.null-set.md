@@ -23,4 +23,4 @@ refs: Halmos, Measure Theory, §11
 
 > 说明见 `notes/def.null-set.md`
 
-引用：`def.null-set`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.null-set`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

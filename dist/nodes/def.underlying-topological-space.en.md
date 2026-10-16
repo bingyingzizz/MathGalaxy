@@ -10,5 +10,5 @@ layer 16 · definition · cluster 凝聚态集 (`cond.set`) · Condensed Mathema
 Chinese only — see the Chinese page `nodes/def.underlying-topological-space.md` and `proofs/`.
 
 
-Cite: `def.underlying-topological-space` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.underlying-topological-space` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

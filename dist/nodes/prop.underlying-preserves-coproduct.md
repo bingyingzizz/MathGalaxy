@@ -14,4 +14,4 @@ refs: Le Stum, An introduction to condensed mathematics, Exercise 4.8
 
 > 说明见 `notes/prop.underlying-preserves-coproduct.md`
 
-引用：`prop.underlying-preserves-coproduct`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.underlying-preserves-coproduct`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

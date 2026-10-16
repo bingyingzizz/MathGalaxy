@@ -544,6 +544,28 @@ html.ui-no-hint #hint { display: none; }
 .pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
 .pn-read-tip.ok { color: #23794A; }
 
+/* ---------- 详情面板：引用此节点（T1.4） ---------- */
+/* 中性的灰蓝，与「只看子图」（蓝）和「已读」（绿）都区分开 —— 它不改图，只复制一段字。 */
+.pn-cite-row { margin: 2px 0 10px; }
+.pn-btn.pn-cite { border-color: rgba(120, 128, 148, .42); background: rgba(120, 128, 148, .07); color: #4A5262; }
+.pn-btn.pn-cite:hover { background: rgba(120, 128, 148, .16); border-color: rgba(120, 128, 148, .55); }
+.pn-btn.pn-cite.on { background: rgba(46, 158, 91, .13); border-color: rgba(46, 158, 91, .48); color: #23794A; font-weight: 600; }
+/* 复制失败时的退路：摊开的引文输入框（只读、已选中） */
+.pn-cite-box { margin: -4px 0 10px; }
+.pn-cite-box textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 11.5px;
+  line-height: 1.5;
+  padding: 5px 7px;
+  border: 1px solid rgba(120, 128, 148, .42);
+  border-radius: 6px;
+  background: rgba(120, 128, 148, .05);
+  color: #4A5262;
+  resize: vertical;
+}
+
 /* ---------- 正文里可点的概念名（xlink） ---------- */
 /* 分寸：看得出能点，但别打断阅读 —— 底色与正文同色，只给一条淡下划线，
    hover 才上色。毕竟一段陈述里可能有两三个这样的词。 */

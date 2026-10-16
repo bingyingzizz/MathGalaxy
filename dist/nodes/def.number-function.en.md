@@ -11,5 +11,5 @@ names: `function` (short) · `Function` (full)
 Chinese only — see the Chinese page `nodes/def.number-function.md` and `proofs/`.
 
 
-Cite: `def.number-function` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.number-function` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 24 · theorem · cluster 微分定理 (`analysis.differentiation`) · Anal
 Chinese only — see the Chinese page `nodes/thm.lebesgue-differentiation.md` and `proofs/`.
 
 
-Cite: `thm.lebesgue-differentiation` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.lebesgue-differentiation` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

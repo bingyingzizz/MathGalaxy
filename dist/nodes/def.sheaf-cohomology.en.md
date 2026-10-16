@@ -10,5 +10,5 @@ layer 17 · definition · cluster 层上同调 (`hom.sheafcoh`) · Homological A
 Chinese only — see the Chinese page `nodes/def.sheaf-cohomology.md` and `proofs/`.
 
 
-Cite: `def.sheaf-cohomology` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.sheaf-cohomology` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

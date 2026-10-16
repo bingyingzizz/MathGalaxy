@@ -6,5 +6,5 @@ English entry · root `../`
 Wikipedia: https://en.wikipedia.org/wiki/Complex_measure
 
 
-Cite: `def.complex-measure` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.complex-measure` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

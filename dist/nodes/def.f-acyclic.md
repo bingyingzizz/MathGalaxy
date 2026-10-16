@@ -21,4 +21,4 @@ refs: Le Stum, Definition 7.2.11
 
 > 说明见 `notes/def.f-acyclic.md`
 
-引用：`def.f-acyclic`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.f-acyclic`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

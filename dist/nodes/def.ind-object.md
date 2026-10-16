@@ -11,12 +11,10 @@ layer 11 · 定义 · 图与极限 · 范畴论
 - [`def.filtered-category`](../nodes/def.filtered-category.md) 滤过范畴：用到了定义 滤过范畴　[proofs/def-dep.indobj-filtered.md](../proofs/def-dep.indobj-filtered.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 [`prop.ind-representable-iff-left-exact`](../nodes/prop.ind-representable-iff-left-exact.md) ind-可表示即左正合 用
-
 - …另有出边，续页见 [nodes/def.ind-object.3.md](./def.ind-object.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.3
 
 > 说明见 `notes/def.ind-object.md`
 
-引用：`def.ind-object`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.ind-object`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

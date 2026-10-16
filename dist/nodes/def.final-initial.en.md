@@ -10,5 +10,5 @@ layer 12 · definition · cluster 图与极限 (`cat.limit`) · Category Theory
 Chinese only — see the Chinese page `nodes/def.final-initial.md` and `proofs/`.
 
 
-Cite: `def.final-initial` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.final-initial` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

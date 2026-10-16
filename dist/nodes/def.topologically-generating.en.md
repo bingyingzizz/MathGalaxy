@@ -11,5 +11,5 @@ names: `topologically generating` (short) · `Topologically Generating Set` (ful
 Chinese only — see the Chinese page `nodes/def.topologically-generating.md` and `proofs/`.
 
 
-Cite: `def.topologically-generating` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.topologically-generating` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

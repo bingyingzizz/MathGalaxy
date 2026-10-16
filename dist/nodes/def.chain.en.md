@@ -11,5 +11,5 @@ names: `chain` (short) · `Chain / Antichain` (full)
 Chinese only — see the Chinese page `nodes/def.chain.md` and `proofs/`.
 
 
-Cite: `def.chain` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.chain` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

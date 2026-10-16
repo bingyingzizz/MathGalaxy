@@ -11,5 +11,5 @@ names: `reflective subcategory` (short) · `Reflective Subcategory` (full)
 Chinese only — see the Chinese page `nodes/def.reflective-subcategory.md` and `proofs/`.
 
 
-Cite: `def.reflective-subcategory` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.reflective-subcategory` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

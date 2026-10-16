@@ -25,4 +25,4 @@ refs: Kunen, Set Theory, I.2
 ## 说明
 $\emptyset \subseteq A$ 对一切 $A$ 成立（空泛真）。
 
-引用：`def.subset`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.subset`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

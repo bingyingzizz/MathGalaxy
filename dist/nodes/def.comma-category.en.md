@@ -10,5 +10,5 @@ layer 12 · definition · cluster 伴随与反射 (`cat.adjoint`) · Category Th
 Chinese only — see the Chinese page `nodes/def.comma-category.md` and `proofs/`.
 
 
-Cite: `def.comma-category` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.comma-category` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 17 · lemma · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homological 
 Chinese only — see the Chinese page `nodes/thm.snake-lemma.md` and `proofs/`.
 
 
-Cite: `thm.snake-lemma` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.snake-lemma` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

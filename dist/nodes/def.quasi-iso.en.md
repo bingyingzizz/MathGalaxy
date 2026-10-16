@@ -10,5 +10,5 @@ layer 14 · definition · cluster 同调与正合列 (`hom.cohomology`) · Homol
 Chinese only — see the Chinese page `nodes/def.quasi-iso.md` and `proofs/`.
 
 
-Cite: `def.quasi-iso` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.quasi-iso` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

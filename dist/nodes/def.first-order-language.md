@@ -15,4 +15,4 @@ refs: Kunen, Set Theory, I.2；Enderton, A Mathematical Introduction to Logic, C
 
 > 说明见 `notes/def.first-order-language.md`
 
-引用：`def.first-order-language`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.first-order-language`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

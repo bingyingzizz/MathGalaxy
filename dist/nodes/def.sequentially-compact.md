@@ -20,4 +20,4 @@ refs: Munkres, Topology, §28
 ## 说明
 在度量空间里「列紧 $\iff$ 紧」（见下面的箭头），但在一般拓扑空间里**不等价** —— 列紧严格更强。度量空间好用的地方正是这里。$n$$n$注意子列收敛到的是 $X$ 中的点：列紧是内蕴性质，不看外面那个空间。
 
-引用：`def.sequentially-compact`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.sequentially-compact`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

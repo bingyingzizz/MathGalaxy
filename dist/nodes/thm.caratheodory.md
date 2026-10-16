@@ -9,13 +9,11 @@ layer 16 · 定理 · 测度的构造 · 分析学
 2. **$\mu^*|_\mathcal{M}$ 是 $(X, \mathcal{M})$ 上的一个测度**（即 $\mu^{*}$ 在 $\mathcal{M}$ 上真的可加）；
 3. 这个测度是**完备**的。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.caratheodory-extension`](../nodes/prop.caratheodory-extension.md) 预测度还原
-
-- …另有出边，续页见 [nodes/thm.caratheodory.3.md](./thm.caratheodory.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.caratheodory.2.md](./thm.caratheodory.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.caratheodory.3.md](./thm.caratheodory.3.md)
 
 refs: Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
 
@@ -23,4 +21,4 @@ refs: Halmos, Measure Theory, §11；Folland, Real Analysis, Theorem 1.11
 
 > 说明见 `notes/thm.caratheodory.md`
 
-引用：`thm.caratheodory`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.caratheodory`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

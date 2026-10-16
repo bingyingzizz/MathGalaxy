@@ -10,5 +10,5 @@ layer 16 · theorem · cluster 测度的构造 (`analysis.measure`) · Analysis
 Chinese only — see the Chinese page `nodes/thm.completion.md` and `proofs/`.
 
 
-Cite: `thm.completion` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.completion` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 19 · proposition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homolo
 Chinese only — see the Chinese page `nodes/prop.grothendieck-enough-injectives.md` and `proofs/`.
 
 
-Cite: `prop.grothendieck-enough-injectives` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.grothendieck-enough-injectives` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

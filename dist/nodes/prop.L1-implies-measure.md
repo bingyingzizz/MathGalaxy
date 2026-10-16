@@ -16,4 +16,4 @@ refs: Folland, Real Analysis, Prop. 2.29
 
 > 说明见 `notes/prop.L1-implies-measure.md`
 
-引用：`prop.L1-implies-measure`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.L1-implies-measure`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

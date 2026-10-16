@@ -10,5 +10,5 @@ layer 5 · theorem · cluster 数系的构造 (`set.numbers`) · Set Theory
 Chinese only — see the Chinese page `nodes/thm.omega.md` and `proofs/`.
 
 
-Cite: `thm.omega` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.omega` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

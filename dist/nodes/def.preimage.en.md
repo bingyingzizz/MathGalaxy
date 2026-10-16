@@ -10,5 +10,5 @@ layer 6 · definition · cluster 关系与函数 (`set.rel`) · Set Theory / Ana
 Chinese only — see the Chinese page `nodes/def.preimage.md` and `proofs/`.
 
 
-Cite: `def.preimage` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.preimage` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

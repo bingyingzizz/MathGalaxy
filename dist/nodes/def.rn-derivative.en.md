@@ -10,5 +10,5 @@ layer 17 · definition · cluster 符号测度与分解 (`analysis.signed`) · A
 Chinese only — see the Chinese page `nodes/def.rn-derivative.md` and `proofs/`.
 
 
-Cite: `def.rn-derivative` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.rn-derivative` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -23,4 +23,4 @@ refs: Le Stum, An introduction to condensed mathematics, §2.3
 
 > 说明见 `notes/prop.cg-cartesian-closed.md`
 
-引用：`prop.cg-cartesian-closed`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.cg-cartesian-closed`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

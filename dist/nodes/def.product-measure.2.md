@@ -2,8 +2,8 @@
 [在星图里打开](../#n=def.product-measure)　·　第 1 页 [nodes/def.product-measure.md](./def.product-measure.md)
 
 ## 陈述（续）
-**① 矩形**：形如 $A \times B$（$A \in \mathcal{M}$，$B \in \mathcal{N}$）的集合叫（可测）矩形。全体矩形**生成** $\mat
-hcal{M} \otimes  \mathcal{N}$。
+**① 矩形**：形如 $A \times B$（$A \in \mathcal{M}$，$B \in \mathcal{N}$）的集合叫（可测）矩形。全体矩形**生成** 
+$\mathcal{M} \otimes  \mathcal{N}$。
 **② 矩形上的预测度**：令 $\mathcal{A}$ 为**矩形的有限不交并**全体。对
 $$E = \bigsqcup_{j=1}^{n} (A_j \times B_j)$$
 

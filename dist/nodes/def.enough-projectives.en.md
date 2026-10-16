@@ -10,5 +10,5 @@ layer 15 · definition · cluster 加法与阿贝尔范畴 (`hom.ab`) · Homolog
 Chinese only — see the Chinese page `nodes/def.enough-projectives.md` and `proofs/`.
 
 
-Cite: `def.enough-projectives` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.enough-projectives` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `locally compact` (short) · `Locally Compact Hausdorff` (full)
 Chinese only — see the Chinese page `nodes/def.locally-compact.md` and `proofs/`.
 
 
-Cite: `def.locally-compact` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.locally-compact` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

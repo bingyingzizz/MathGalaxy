@@ -10,5 +10,5 @@ layer 20 · definition · cluster 可测函数与收敛 (`analysis.measurable`) 
 Chinese only — see the Chinese page `nodes/def.convergence-modes.md` and `proofs/`.
 
 
-Cite: `def.convergence-modes` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.convergence-modes` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `replacement` (short) · `Axiom Schema of Replacement` (full)
 Chinese only — see the Chinese page `nodes/ax.repl.md` and `proofs/`.
 
 
-Cite: `ax.repl` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `ax.repl` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

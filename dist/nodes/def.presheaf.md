@@ -15,12 +15,10 @@ $$T : \mathcal{C}^{\mathrm{op}} \longrightarrow \mathbf{Set}$$
 - …另有入边，续页见 [nodes/def.presheaf.2.md](./def.presheaf.2.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 [`prop.constant-sheaf-preserves-limits`](../nodes/prop.constant-sheaf-preserves-limits.md) 常层函子保极限 用
-
 - …另有出边，续页见 [nodes/def.presheaf.3.md](./def.presheaf.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 > 说明见 `notes/def.presheaf.md`
 
-引用：`def.presheaf`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.presheaf`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

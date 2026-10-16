@@ -10,5 +10,5 @@ layer 18 · theorem · cluster 拓扑阿贝尔群 (`cond.topo`) · Condensed Mat
 Chinese only — see the Chinese page `nodes/thm.pontryagin-van-kampen.md` and `proofs/`.
 
 
-Cite: `thm.pontryagin-van-kampen` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.pontryagin-van-kampen` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

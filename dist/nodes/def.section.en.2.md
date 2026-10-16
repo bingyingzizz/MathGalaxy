@@ -6,5 +6,5 @@ English entry · root `../`
 Chinese only — see the Chinese page `nodes/def.section.md` and `proofs/`.
 
 
-Cite: `def.section` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.section` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

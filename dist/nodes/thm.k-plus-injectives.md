@@ -16,4 +16,4 @@ refs: Le Stum, Theorem 7.2.6；Le Stum, Proposition 7.1.21
 
 > 说明见 `notes/thm.k-plus-injectives.md`
 
-引用：`thm.k-plus-injectives`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.k-plus-injectives`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

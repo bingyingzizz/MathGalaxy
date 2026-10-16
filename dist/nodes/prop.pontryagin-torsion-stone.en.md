@@ -10,5 +10,5 @@ layer 18 · proposition · cluster 拓扑阿贝尔群 (`cond.topo`) · Condensed
 Chinese only — see the Chinese page `nodes/prop.pontryagin-torsion-stone.md` and `proofs/`.
 
 
-Cite: `prop.pontryagin-torsion-stone` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.pontryagin-torsion-stone` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

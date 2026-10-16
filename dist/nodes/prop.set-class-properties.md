@@ -24,4 +24,4 @@ refs: Halmos, Measure Theory, §4
 
 > 说明见 `notes/prop.set-class-properties.md`
 
-引用：`prop.set-class-properties`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.set-class-properties`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

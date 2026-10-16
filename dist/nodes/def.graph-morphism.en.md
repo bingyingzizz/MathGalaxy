@@ -10,5 +10,5 @@ layer 7 · definition · cluster 范畴与图 (`cat.basic`) · Category Theory
 Chinese only — see the Chinese page `nodes/def.graph-morphism.md` and `proofs/`.
 
 
-Cite: `def.graph-morphism` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.graph-morphism` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

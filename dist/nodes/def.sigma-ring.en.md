@@ -10,5 +10,5 @@ layer 3 · definition · cluster 集合族与 σ-代数 (`analysis.setclass`) ·
 Chinese only — see the Chinese page `nodes/def.sigma-ring.md` and `proofs/`.
 
 
-Cite: `def.sigma-ring` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.sigma-ring` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

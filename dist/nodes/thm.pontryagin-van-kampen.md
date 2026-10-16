@@ -23,4 +23,4 @@ refs: Le Stum, Theorem 6.2.4；Morris, Pontryagin Duality and the Structure of L
 
 > 说明见 `notes/thm.pontryagin-van-kampen.md`
 
-引用：`thm.pontryagin-van-kampen`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.pontryagin-van-kampen`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

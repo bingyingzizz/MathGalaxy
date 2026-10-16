@@ -11,5 +11,5 @@ names: `finite character` (short) · `Family of Finite Character` (full)
 Chinese only — see the Chinese page `nodes/def.finchar.md` and `proofs/`.
 
 
-Cite: `def.finchar` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.finchar` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

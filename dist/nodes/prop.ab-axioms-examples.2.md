@@ -2,6 +2,6 @@
 [在星图里打开](../#n=prop.ab-axioms-examples)　·　第 1 页 [nodes/prop.ab-axioms-examples.md](./prop.ab-axioms-examples.md)
 
 ## 陈述（续）
-**AB6** 与 **AB4\***。
+Ab}$：**AB6** 与 **AB4\***。
 
 > 续见 [nodes/prop.ab-axioms-examples.3.md](./prop.ab-axioms-examples.3.md)

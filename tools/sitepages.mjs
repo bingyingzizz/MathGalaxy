@@ -432,6 +432,10 @@ function nodePage(node, rel, ctx) {
     description,
     url,
     inLanguage: 'zh-CN',
+    /* T1.4：内容 CC BY 4.0。许可写在每一个概念页上（这是被引用的最小单位），
+       ⛔ 不是只在 all.html 上说一次。 */
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    termsOfUse: origin + '/mathgalaxy/LICENSE.txt',
     isPartOf: {
       '@type': 'DefinedTermSet',
       '@id': origin + '/mathgalaxy/all.html#graph',
@@ -592,8 +596,9 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
 </main>
 
 <footer class="np-foot">
-  <p>数学星图 MathGalaxy · 内容 ${esc(version)}</p>
-  <p>引用请标注节点 id <code>${esc(node.id)}</code> 与内容版本 ·
+  <p>数学星图 MathGalaxy · 内容 ${esc(version)} · 内容以
+     <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 授权，代码 MIT</p>
+  <p>引用请写节点 id <code>${esc(node.id)}</code> 与内容版本 ·
     条款见 <a href="../LICENSE.txt">LICENSE</a> ·
     由 <a href="https://github.com/${esc(ctx.user)}/MathGalaxy">MathGalaxy</a> 生成</p>
 </footer>
@@ -663,7 +668,10 @@ function allPage(ctx) {
         description,
         url,
         inLanguage: 'zh-CN',
-        license: origin + '/mathgalaxy/LICENSE.txt',
+        /* T1.4：内容以 CC BY 4.0 授权 ⇒ schema.org 的 license 指许可本身，
+           条款与引用格式那一页另放 termsOfUse。 */
+        license: 'https://creativecommons.org/licenses/by/4.0/',
+        termsOfUse: origin + '/mathgalaxy/LICENSE.txt',
         version,
         dateModified: updated,
         hasDefinedTerm: graph.nodes.map((n) => ({
@@ -741,7 +749,7 @@ ${blocks.join('\n\n')}
 
 <footer class="np-foot">
   <p>数学星图 MathGalaxy · 内容 ${esc(version)} · 更新 ${esc(updated)}</p>
-  <p>引用请标注节点 id 与内容版本 · 条款见 <a href="LICENSE.txt">LICENSE</a></p>
+  <p>引用请写节点 id 与内容版本 · 内容 CC BY 4.0 · 条款见 <a href="LICENSE.txt">LICENSE</a></p>
 </footer>
 
 </body>
@@ -857,7 +865,7 @@ ${items}
 
 <footer class="np-foot">
   <p>数学星图 MathGalaxy · 内容 ${esc(ctx.version)} · 更新 ${esc(ctx.updated)}</p>
-  <p>引用请标注节点 id 与内容版本 · 条款见 <a href="LICENSE.txt">LICENSE</a></p>
+  <p>引用请写节点 id 与内容版本 · 内容 CC BY 4.0 · 条款见 <a href="LICENSE.txt">LICENSE</a></p>
 </footer>
 
 </body>

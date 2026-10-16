@@ -6,5 +6,3 @@
 - [`thm.omega`](../nodes/thm.omega.md) 自然数集存在：用到了定义 自然数集存在　[proofs/dep.omega-int.md](../proofs/dep.omega-int.md)
 - [`def.quotient-set`](../nodes/def.quotient-set.md) 商集与等价类：用到了定义 商集与等价类　[proofs/dep.quotient-int.md](../proofs/dep.quotient-int.md)
 - [`thm.induction`](../nodes/thm.induction.md) 归纳原理与递推定义：用到了定义 归纳原理与递推定义　[proofs/dep.induction-int.md](../proofs/dep.induction-int.md)
-
-> 续见 [nodes/def.int.5.md](./def.int.5.md)

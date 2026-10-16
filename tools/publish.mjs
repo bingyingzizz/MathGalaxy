@@ -135,7 +135,7 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
 for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'index.md',
-                 'notation.md', 'notation-full.md', 'alias.md', 'LICENSE.txt']) {
+                 'notation.md', 'notation-full.md', 'alias.md', 'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']) {
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
@@ -299,7 +299,7 @@ const DOCS = [
   { id: 'hubs',     file: 'hubs.md',          en: 'hubs.en.md',    nav: '枢纽定理榜', navEn: 'Hub theorems',
     sub: '哪些东西是地基',                        subEn: 'what the foundations are' },
   { id: 'license',  file: 'LICENSE.txt',                            nav: '许可与引用', navEn: 'Licence & citation',
-    sub: '引用请标注节点 id',                     subEn: 'cite by node id' },
+    sub: '内容 CC BY 4.0 · 引用请写节点 id',       subEn: 'content CC BY 4.0 · cite by node id' },
 ];
 /* 英文文档是**分页**的（一次抓取装不下，见 build.mjs 的 paginateEnDoc）：
    `hubs.en.md` + `hubs.en.2.md` + …。给人读的阅读页要把它们接回一整篇 ——
@@ -456,7 +456,8 @@ const smEntries = [
   { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0' },
   { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9' },        // 全部概念的入口，爬虫从这儿进
   { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8' },  // 184 条真实问法，长尾入口
-  ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md', 'LICENSE.txt']
+  ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md',
+      'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']
     .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.4' })),
   // 概念页：一个概念一页，这才是能被「搜概念名」命中的东西
   ...conceptPages.filter((p) => p.rel.startsWith('nodes/')).map((p) => ({
@@ -503,10 +504,10 @@ const rootLlms = `# ${USER}.github.io
 
 - \`/mathgalaxy/graph.json\`  全量图（约 1.7 MB），schema 见 \`/mathgalaxy/reading.md\`
 
-## 引用
+## 许可
 
-引用请标注**节点 id** 与内容版本（例：节点 \`thm.cantor\`，内容 ${distMeta.version}），
-完整条款见 \`/mathgalaxy/LICENSE.txt\`。
+内容 **CC BY 4.0**（署名即可）；代码 MIT。引用请写节点 id + 版本，
+条款见 \`/mathgalaxy/LICENSE.txt\`。
 `;
 const rootLlmsBytes = Buffer.byteLength(rootLlms, 'utf8');
 if (rootLlmsBytes > 1250) {

@@ -10,5 +10,5 @@ layer 19 · definition · cluster L^p 空间 (`analysis.lp`) · Analysis
 Chinese only — see the Chinese page `nodes/def.duality-map.md` and `proofs/`.
 
 
-Cite: `def.duality-map` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.duality-map` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

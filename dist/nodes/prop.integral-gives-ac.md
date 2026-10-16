@@ -15,12 +15,10 @@ $$\nu\text{ 有限} \iff f \in L^1(\mu)$$
 - [`def.integrable`](../nodes/def.integrable.md) 可积 / L¹：用到了定义 可积 / L¹　[proofs/def-link.integral-ac.md](../proofs/def-link.integral-ac.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.rn-chain-rule`](../nodes/prop.rn-chain-rule.md) RN 导数的链式法则
-
 - …另有出边，续页见 [nodes/prop.integral-gives-ac.2.md](./prop.integral-gives-ac.2.md)
 
 refs: Folland, Real Analysis, §3.2
 
 > 说明见 `notes/prop.integral-gives-ac.md`
 
-引用：`prop.integral-gives-ac`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.integral-gives-ac`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

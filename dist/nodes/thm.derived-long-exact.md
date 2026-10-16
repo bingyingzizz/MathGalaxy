@@ -8,12 +8,10 @@ layer 17 · 定理 · 复形与导出三角 · 同调代数
 $$\cdots \to R^{n}FK^{\bullet} \to R^{n}FL^{\bullet} \to R^{n}FM^{\bullet} \xrightarrow{\ \delta\ } R^{n+1}FK^{\bullet} \to \cdots$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.right-derived-functor`](../nodes/def.right-derived-functor.md) 右导出函子：用到了定义 右导出函子　[proofs/def-dep.derlex-rdf.md](../proofs/def-dep.derlex-rdf.md)
-
 - …另有入边，续页见 [nodes/thm.derived-long-exact.2.md](./thm.derived-long-exact.2.md)
 
 refs: Le Stum, Theorem 7.2.8
 
 > 说明见 `notes/thm.derived-long-exact.md`
 
-引用：`thm.derived-long-exact`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.derived-long-exact`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

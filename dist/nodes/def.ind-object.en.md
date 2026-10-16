@@ -10,5 +10,5 @@ layer 11 · definition · cluster 图与极限 (`cat.limit`) · Category Theory
 Chinese only — see the Chinese page `nodes/def.ind-object.md` and `proofs/`.
 
 
-Cite: `def.ind-object` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.ind-object` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

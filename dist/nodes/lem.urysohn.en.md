@@ -10,5 +10,5 @@ layer 15 · lemma · cluster 拓扑空间 (`topology.general`) · Topology
 Chinese only — see the Chinese page `nodes/lem.urysohn.md` and `proofs/`.
 
 
-Cite: `lem.urysohn` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `lem.urysohn` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

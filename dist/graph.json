@@ -3,7 +3,10 @@
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
   "version": "v0.9.0",
-  "generated": "2026-10-15T10:31:16.274Z",
+  "license": "CC-BY-4.0",
+  "licenseCode": "MIT",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "generated": "2026-10-16T02:19:20.497Z",
   "counts": {
    "regions": 9,
    "clusters": 45,

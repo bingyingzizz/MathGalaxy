@@ -11,5 +11,5 @@ names: `infinity` (short) · `Axiom of Infinity` (full)
 Chinese only — see the Chinese page `nodes/ax.inf.md` and `proofs/`.
 
 
-Cite: `ax.inf` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `ax.inf` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -19,4 +19,4 @@ refs: Tao, Analysis I, Ch. 8（可数性）；Rudin, Principles of Mathematical 
 
 > 说明见 `notes/thm.real-uncountable.md`
 
-引用：`thm.real-uncountable`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.real-uncountable`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

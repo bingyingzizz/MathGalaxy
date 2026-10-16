@@ -10,5 +10,5 @@ layer 15 · definition · cluster 紧 Hausdorff 空间 (`topo.chaus`) · Topolog
 Chinese only — see the Chinese page `nodes/def.chaus.md` and `proofs/`.
 
 
-Cite: `def.chaus` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.chaus` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

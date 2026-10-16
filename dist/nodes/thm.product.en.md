@@ -10,5 +10,5 @@ layer 5 · theorem · cluster 集合的构造 (`set.construct`) · Set Theory
 Chinese only — see the Chinese page `nodes/thm.product.md` and `proofs/`.
 
 
-Cite: `thm.product` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.product` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

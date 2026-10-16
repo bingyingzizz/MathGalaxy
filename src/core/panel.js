@@ -150,6 +150,17 @@
         '</div>';
       html += regionChips(n);
 
+      /* 「引用此节点」（T1.4）。内容以 CC BY 4.0 授权，标 id + 版本是**请求** ——
+         这个按钮把请求变成一次点击（引文 = 节点 id + 内容版本 + 概念页地址）。
+         ⚠️ panel 不碰剪贴板、也不知道站点地址：由 app 注入 onCite；
+            没注入就整块不出现（导出器复用面板时不会画出半个按钮）。 */
+      if (hooks && hooks.onCite) {
+        html += '<div class="pn-cite-row">' +
+          '<button class="pn-btn pn-cite" data-cite="' + U.escapeHtml(n.id) + '"' +
+          ' title="复制引文（节点 id + 内容版本 + 概念页链接）">引用此节点</button>' +
+          '</div>';
+      }
+
       /* 已读标记 + 「下一步」提示。
          ⚠️ panel 不认识 localStorage —— 三个钩子都由 app 注入（见 createPanel 的 hooks）。
             没注入就整块不出现，导出器之类复用面板时不会画出半个按钮。 */
@@ -323,6 +334,11 @@
       }
       /* ⚠️ 「只看子图」按钮要排在 [data-kind][data-id] 之前判：
          按钮将来若被塞进 pn-link 里，就会被当成跳转。 */
+      var citeBtn = ev.target.closest ? ev.target.closest('[data-cite]') : null;
+      if (citeBtn) {
+        hooks.onCite && hooks.onCite(citeBtn.getAttribute('data-cite'), citeBtn);
+        return;
+      }
       var readBtn = ev.target.closest ? ev.target.closest('[data-read]') : null;
       if (readBtn) {
         hooks.onToggleRead && hooks.onToggleRead(readBtn.getAttribute('data-read'));

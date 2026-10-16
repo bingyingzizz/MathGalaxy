@@ -10,5 +10,5 @@ layer 14 · proposition · cluster 图与极限 (`cat.limit`) · Category Theory
 Chinese only — see the Chinese page `nodes/prop.filtered-directed.md` and `proofs/`.
 
 
-Cite: `prop.filtered-directed` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.filtered-directed` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

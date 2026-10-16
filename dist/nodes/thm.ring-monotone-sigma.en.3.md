@@ -6,5 +6,5 @@ English entry · root `../`
 Wikipedia: https://en.wikipedia.org/wiki/Sigma-ring
 
 
-Cite: `thm.ring-monotone-sigma` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.ring-monotone-sigma` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -9,14 +9,14 @@ $$\widetilde{E}_{\mathbf{Top}} \;\cong\; \underline{E^{\mathrm{disc}}},$$
 
 并且 $\widetilde{E}_{\mathbf{Top}}(X) = E$ $\iff$ $X$ **连通**。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.topos-morphism-final-map`](../nodes/prop.topos-morphism-final-map.md) 终映射给出的拓扑斯态射
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.constant-sheaf-top.2.md](./prop.constant-sheaf-top.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.constant-sheaf-top.3.md](./prop.constant-sheaf-top.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, Exercise 3.23
 
 > 说明见 `notes/prop.constant-sheaf-top.md`
 
-引用：`prop.constant-sheaf-top`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.constant-sheaf-top`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -10,5 +10,5 @@ layer 6 · definition · cluster 集合族与 σ-代数 (`analysis.setclass`) ·
 Chinese only — see the Chinese page `nodes/def.borel.md` and `proofs/`.
 
 
-Cite: `def.borel` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.borel` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

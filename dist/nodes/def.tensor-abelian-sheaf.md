@@ -11,16 +11,16 @@ $$P \longmapsto \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ \operatorname{Hom}_{\ma
 > 陈述续见 [nodes/def.tensor-abelian-sheaf.2.md](./def.tensor-abelian-sheaf.2.md)
 
 
-## 为什么成立（入边，证明在 proofs/）
-- [`def.internal-hom`](../nodes/def.internal-hom.md) 内 Hom：用到了定义 内 Hom　[proofs/def-dep.tensor-internalhom.md](../proofs/def-dep.tensor-internalhom.md)
-
-- …另有入边，续页见 [nodes/def.tensor-abelian-sheaf.3.md](./def.tensor-abelian-sheaf.3.md)
-
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.tensor-abelian-sheaf.4.md](./def.tensor-abelian-sheaf.4.md)
+- 被 [`prop.tensor-rhom-natural-map`](../nodes/prop.tensor-rhom-natural-map.md) 张量与 RHom 的配对 用
+
+- …另有出边，续页见 [nodes/def.tensor-abelian-sheaf.5.md](./def.tensor-abelian-sheaf.5.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/def.tensor-abelian-sheaf.3.md](./def.tensor-abelian-sheaf.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §5.3
 
 > 说明见 `notes/def.tensor-abelian-sheaf.md`
 
-引用：`def.tensor-abelian-sheaf`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.tensor-abelian-sheaf`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

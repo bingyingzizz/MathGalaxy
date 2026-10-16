@@ -10,5 +10,5 @@ layer 14 · definition · cluster 实数与极限 (`analysis.real`) · Analysis 
 Chinese only — see the Chinese page `nodes/def.continuous.md` and `proofs/`.
 
 
-Cite: `def.continuous` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.continuous` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

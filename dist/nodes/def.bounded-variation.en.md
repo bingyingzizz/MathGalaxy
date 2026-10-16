@@ -10,5 +10,5 @@ layer 16 · definition · cluster 有界变差与绝对连续 (`analysis.bv`) ·
 Chinese only — see the Chinese page `nodes/def.bounded-variation.md` and `proofs/`.
 
 
-Cite: `def.bounded-variation` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.bounded-variation` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

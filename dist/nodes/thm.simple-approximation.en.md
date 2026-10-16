@@ -10,5 +10,5 @@ layer 8 · theorem · cluster 可测函数与收敛 (`analysis.measurable`) · A
 Chinese only — see the Chinese page `nodes/thm.simple-approximation.md` and `proofs/`.
 
 
-Cite: `thm.simple-approximation` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.simple-approximation` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

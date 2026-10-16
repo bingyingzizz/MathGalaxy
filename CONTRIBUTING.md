@@ -122,6 +122,8 @@ bun tools/_katexcheck-all.mjs   # every formula fed to the real KaTeX (must be 0
 …and then actually look at the result (screenshot or open `index.html`). Publishing is
 `bun tools/publish.mjs`; it force-pushes the site repository, so run it serially.
 
-**Licence and citation.** Code is MIT; graph content is © the author with a citation
-requirement — cite a node by its `id` and the content version. See `LICENSE`; the English
-citation guide and a migration proposal are in `LICENSE-PROPOSAL.md` (a proposal, not in effect).
+**Licence and citation.** Code is MIT; graph content is **CC BY 4.0** (SPDX `CC-BY-4.0`) —
+attribution only, so copying, mirroring, renaming and commercial reuse are all allowed.
+Citing is a **request**, not a condition: please cite a node by its `id` and the content
+version. See `LICENSE` (which contains the English citation guide, templates and the
+mirror-impact table); the full legal code is in `LICENSE-CC-BY-4.0.txt`.

@@ -10,5 +10,5 @@ layer 20 · definition · cluster 微分定理 (`analysis.differentiation`) · A
 Chinese only — see the Chinese page `nodes/def.locally-integrable.md` and `proofs/`.
 
 
-Cite: `def.locally-integrable` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.locally-integrable` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

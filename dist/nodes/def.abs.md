@@ -21,4 +21,4 @@ refs: Rudin, Principles of Mathematical Analysis, Ch. 1
 
 > 说明见 `notes/def.abs.md`
 
-引用：`def.abs`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.abs`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

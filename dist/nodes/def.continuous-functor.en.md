@@ -11,5 +11,5 @@ names: `continuous functor` (short) · `Continuous Functor between Sites` (full)
 Chinese only — see the Chinese page `nodes/def.continuous-functor.md` and `proofs/`.
 
 
-Cite: `def.continuous-functor` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.continuous-functor` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

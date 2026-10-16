@@ -10,5 +10,5 @@ layer 16 · proposition · cluster 层与拓扑 (`cat.sheaf`) · Category Theory
 Chinese only — see the Chinese page `nodes/prop.sheaf-epi-criterion.md` and `proofs/`.
 
 
-Cite: `prop.sheaf-epi-criterion` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.sheaf-epi-criterion` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -22,4 +22,4 @@ refs: Le Stum, Proposition 6.2.3
 
 > 说明见 `notes/prop.exact-sequence-topo-ab.md`
 
-引用：`prop.exact-sequence-topo-ab`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.exact-sequence-topo-ab`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

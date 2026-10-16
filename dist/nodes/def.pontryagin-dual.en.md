@@ -11,5 +11,5 @@ names: `Pontryagin dual` (short) · `Pontryagin Dual` (full)
 Chinese only — see the Chinese page `nodes/def.pontryagin-dual.md` and `proofs/`.
 
 
-Cite: `def.pontryagin-dual` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.pontryagin-dual` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

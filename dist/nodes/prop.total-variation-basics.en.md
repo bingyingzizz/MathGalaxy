@@ -10,5 +10,5 @@ layer 17 · proposition · cluster 符号测度与分解 (`analysis.signed`) · 
 Chinese only — see the Chinese page `nodes/prop.total-variation-basics.md` and `proofs/`.
 
 
-Cite: `prop.total-variation-basics` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.total-variation-basics` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

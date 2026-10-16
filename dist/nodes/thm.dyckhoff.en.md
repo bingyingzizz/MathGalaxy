@@ -10,5 +10,5 @@ layer 18 · theorem · cluster 凝聚态上同调 (`cond.cohomology`) · Condens
 Chinese only — see the Chinese page `nodes/thm.dyckhoff.md` and `proofs/`.
 
 
-Cite: `thm.dyckhoff` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.dyckhoff` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 7 · definition · cluster 代数结构 (`algebra.structures`) · Abstract
 Chinese only — see the Chinese page `nodes/def.ring.md` and `proofs/`.
 
 
-Cite: `def.ring` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.ring` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -14,4 +14,4 @@ refs: Le Stum, Exercise 8.17
 
 > 说明见 `notes/table.rhom-zrt.md`
 
-引用：`table.rhom-zrt`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`table.rhom-zrt`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

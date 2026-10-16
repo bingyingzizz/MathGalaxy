@@ -10,5 +10,5 @@ layer 5 · definition · cluster 拓扑空间 (`topology.general`) · Topology
 Chinese only — see the Chinese page `nodes/def.hausdorff.md` and `proofs/`.
 
 
-Cite: `def.hausdorff` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.hausdorff` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

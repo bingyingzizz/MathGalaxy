@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/thm.cardinal-comparable.md` and `pr
 Wikipedia: https://en.wikipedia.org/wiki/Cardinal_number · nLab: https://ncatlab.org/nlab/show/cardinal+number
 
 
-Cite: `thm.cardinal-comparable` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.cardinal-comparable` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

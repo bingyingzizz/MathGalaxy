@@ -10,5 +10,5 @@ layer 6 · definition · cluster 序结构 (`order.structure`) · Order Theory
 Chinese only — see the Chinese page `nodes/def.bound.md` and `proofs/`.
 
 
-Cite: `def.bound` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.bound` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

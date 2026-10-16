@@ -10,5 +10,5 @@ layer 17 · lemma · cluster 凝聚态集 (`cond.set`) · Condensed Mathematics
 Chinese only — see the Chinese page `nodes/lem.qseparated-underlying-weak-hausdorff.md` and `proofs/`.
 
 
-Cite: `lem.qseparated-underlying-weak-hausdorff` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `lem.qseparated-underlying-weak-hausdorff` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

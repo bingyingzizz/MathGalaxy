@@ -21,4 +21,4 @@ refs: Le Stum, An introduction to condensed mathematics, §3.3
 
 > 说明见 `notes/lem.representable-quotient.md`
 
-引用：`lem.representable-quotient`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`lem.representable-quotient`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

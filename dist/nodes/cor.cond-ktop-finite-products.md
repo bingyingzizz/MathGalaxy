@@ -19,4 +19,4 @@ refs: Le Stum, An introduction to condensed mathematics, Corollary 4.2.7
 
 > 说明见 `notes/cor.cond-ktop-finite-products.md`
 
-引用：`cor.cond-ktop-finite-products`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`cor.cond-ktop-finite-products`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

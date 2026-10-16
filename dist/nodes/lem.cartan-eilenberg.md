@@ -9,12 +9,10 @@ layer 17 · 引理 · 层上同调 · 同调代数
 - 每个 $H^{p}(K^{\bullet}) \to H^{p}(I^{\bullet,\bullet})$ 也是**内射消解**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.bicomplex`](../nodes/def.bicomplex.md) 双复形：用到了定义 双复形　[proofs/def-dep.carteil-bicomplex.md](../proofs/def-dep.carteil-bicomplex.md)
-
 - …另有入边，续页见 [nodes/lem.cartan-eilenberg.2.md](./lem.cartan-eilenberg.2.md)
 
 refs: Le Stum, Lemma 7.2.19
 
 > 说明见 `notes/lem.cartan-eilenberg.md`
 
-引用：`lem.cartan-eilenberg`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`lem.cartan-eilenberg`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

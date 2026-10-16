@@ -11,5 +11,5 @@ names: `presheaf` (short) · `Presheaf` (full)
 Chinese only — see the Chinese page `nodes/def.presheaf.md` and `proofs/`.
 
 
-Cite: `def.presheaf` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.presheaf` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -11,5 +11,5 @@ names: `complex numbers` (short) · `Complex Numbers` (full)
 Chinese only — see the Chinese page `nodes/def.complex.md` and `proofs/`.
 
 
-Cite: `def.complex` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.complex` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

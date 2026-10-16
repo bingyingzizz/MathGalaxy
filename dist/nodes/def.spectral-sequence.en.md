@@ -11,5 +11,5 @@ names: `spectral sequence` (short) · `Spectral Sequence` (full)
 Chinese only — see the Chinese page `nodes/def.spectral-sequence.md` and `proofs/`.
 
 
-Cite: `def.spectral-sequence` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.spectral-sequence` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

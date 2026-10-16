@@ -30,4 +30,4 @@ refs: Kunen, Set Theory, I.5
 ## 说明
 用集合「编码」有序对之后，关系、函数、序型等等才都能在 ZFC 内部说清楚。
 
-引用：`def.pair`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.pair`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

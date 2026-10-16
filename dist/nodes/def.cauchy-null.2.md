@@ -2,7 +2,7 @@
 [在星图里打开](../#n=def.cauchy-null)　·　第 1 页 [nodes/def.cauchy-null.md](./def.cauchy-null.md)
 
 ## 陈述（续）
-*正有理数**（此时还不需要实数）。
+一律取**正有理数**（此时还不需要实数）。
 $(x_n)$ 是 **Cauchy 列**：
 $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \varepsilon$$
 $(x_n)$ 是**零列**：

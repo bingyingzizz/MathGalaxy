@@ -5,6 +5,7 @@
 （把 $f$ 在零集上的取值完全忽略之后，它的「真正」上界。）这个下确界**是可以取到的**：对 $a = \|f\|_\infty$ 本身就有 $\mu(\{|f| > a\}) = 0$。
 $$
 L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f\|_\infty < \infty \,\}
-$$
+$
+$
 
 > 续见 [nodes/def.essential-sup.3.md](./def.essential-sup.3.md)

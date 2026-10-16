@@ -155,6 +155,12 @@ function exportJSON(MG, graph) {
       name: '数学星图 MathGalaxy',
       schema: 'mathgalaxy/v1',
       version: CONTENT_VERSION || undefined,
+      /* 许可（T1.4）：内容 CC BY 4.0、代码 MIT。机器可读的标识符放这里，
+         声明正文在仓库根 LICENSE，法律文本在 LICENSE-CC-BY-4.0.txt。
+         ⚠️ 这是**声明**，不是真源 —— 要改许可先改 LICENSE 再改这一行。 */
+      license: 'CC-BY-4.0',
+      licenseCode: 'MIT',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
       generated: new Date().toISOString(),
       counts: {
         regions: graph.regions.length,
@@ -285,6 +291,10 @@ function exportMarkdown(MG, graph, data) {
   p('> 会拿到同样的开头。**要检索请走 `llms.txt` 里的检索协议**：');
   p('> `index.md` → `index/<星团id>.md` → `nodes/<节点id>.md`。');
   p('> 这份文件只在「一次性下载 / 离线打包 / 本地处理」时才用。');
+  p('');
+  p('许可：内容 **CC BY 4.0**（署名即可，可转载 / 镜像 / 商用）、代码 MIT。');
+  p('引用请写明节点 id 与内容版本，例如 `thm.cantor`（内容 ' + (CONTENT_VERSION || 'dev') + '）。');
+  p('条款与引用格式见 `LICENSE.txt`，CC BY 4.0 法律文本见 `LICENSE-CC-BY-4.0.txt`。');
   p('');
   p('两个检索模式（见文末「强弱边」）：');
   p('- **常规模式**：只走 `implication` / `equivalence` / `definition` —— 做题、查证明用');
@@ -648,8 +658,10 @@ function exportAIProducts(MG, graph, data) {
     const notesTail = !notes ? '' : (notesInline ? '\n## 说明\n' + notes + '\n' : notesPtr);
     /* 引用方式写在每页尾部 —— 公开之后「怎么引用」的落地形态：
        节点 id 是别人唯一能追回这一页的线索。⚠️ 写短：这一行占的是 AI 单次抓取的
-       预算（1050 字符），每个节点都有，写长了分页会翻倍。 */
-    const citeTail = `\n引用：\`${n.id}\`（内容 ${CONTENT_VERSION || 'dev'}）· 条款见 ${mdLink('LICENSE.txt', '../LICENSE.txt')}\n`;
+       预算（1050 字符），每个节点都有，写长了分页会翻倍 ——
+       T1.4 改措辞时**一个字节都没加**（只把「条款见」换成许可标识符）。
+       T1.4 起内容以 CC BY 4.0 授权，「标 id + 版本」是**请求**而非许可条件。 */
+    const citeTail = `\n引用：\`${n.id}\`（内容 ${CONTENT_VERSION || 'dev'}）· CC BY 4.0 ${mdLink('LICENSE.txt', '../LICENSE.txt')}\n`;
     const mandatoryTail = refs + xrefLine + notesTail + citeTail;
 
     const stmtChunks = aiChunk((n.statement || '').trim(), head, refs,
@@ -1026,15 +1038,14 @@ function exportReading(data, base = '') {
 ## 三层尺度
 
 星系（数学领域）→ 星团（一套自足的装置）→ 节点（定理 / 定义 / 引理）。
-**星团 = 为了造出某个「能用的东西」而存在的一整套结果**，不按课程分。
-星团的 \`hub\` 是**中心天体**：装置被造出来就是为了得到它。
+**星团 = 为了造出某个「能用的东西」而存在的一整套结果**，不按课程分；它的 \`hub\` 是**中心天体**。
 
 ## 边的四种 kind
 
 - \`implication\`（sources → target，带证明）、\`equivalence\`（a ⟺ b，双向证明）、
   \`definition\`（定义 → 用到它的结论）—— 这三类是 **strong** 边，逻辑骨架。
 - \`analogy\` 是 **weak** 边：思想相通，没有逻辑蕴含，只用来找远房灵感。
-  用了必须对用户明说「以下是弱边联想，不是逻辑结论」。⚠️ 弱边**不参与分层**。
+  用时须对用户明说「弱边联想，非逻辑结论」。⚠️ 弱边**不参与分层**。
 
 ## layer（依赖深度）
 
@@ -1047,8 +1058,7 @@ function exportReading(data, base = '') {
 \`id\` \`type\` \`label\` \`title\` \`region\` \`cluster\` \`layer\`
 \`statement\` \`notes\` \`refs\`；节点用 \`id\` 引用，深链 \`#n=<节点id>\`。
 
-引用见 \`${base}LICENSE.txt\`。
-
+内容以 CC BY 4.0 授权；引用请写 \`id\` + 内容版本，见 \`${base}LICENSE.txt\`。
 记号见 \`${base}notation.md\`。
 `;
 }
@@ -1344,7 +1354,9 @@ function enNodeText(n, MG) {
     L.push('', '## Elsewhere');
     L.push(Object.keys(XR_NAME).filter((k) => xr[k]).map((k) => `${XR_NAME[k]}: ${xr[k]}`).join(' · '));
   }
-  const tail = `\nCite: \`${n.id}\` (content ${CONTENT_VERSION || 'dev'}) · terms: ` +
+  /* T1.4：内容以 CC BY 4.0 授权，「标 id + 版本」是请求 ⇒ 英文尾巴同步改措辞。
+     ⚠️ 英文入口页的余量比中文页宽（目前最大 890 B），但长度仍然只增不减地写清楚。 */
+  const tail = `\nCite: \`${n.id}\` (content ${CONTENT_VERSION || 'dev'}) · CC BY 4.0: ` +
     mdLink('LICENSE.txt', '../LICENSE.txt') + '\n';
   /* ⚠️ 预留要给**真实尾巴**的大小：传大了 page 1 会把正文挤到续页
      （踩过：lem.zorn.en.md 只剩 464 B，摘要整段跑到第 2 页）。 */
@@ -1994,10 +2006,14 @@ if (doJSON) {
 
   /* ---------------------------------------------------------- 许可 */
   /* 单一真源是仓库根目录的 LICENSE（给人读的正式文本，不进体积断言，也不被改写）。
-     dist 版只加一行 markdown 标题 —— 站点阅读页 renderDoc() 要求第一行是 `# 标题`。 */
+     dist 版只加一行 markdown 标题 —— 站点阅读页 renderDoc() 要求第一行是 `# 标题`。
+     T1.4：CC BY 4.0 的**法律文本**（仓库根 LICENSE-CC-BY-4.0.txt，逐字节来自
+     creativecommons.org）也复制一份到 dist —— 站点要能直接链到它。
+     ⚠️ 新增产物必须同时加进 publish.mjs 的拷贝清单，否则线上 404（踩过）。 */
   fs.writeFileSync(path.join(DIST, 'LICENSE.txt'),
     `# 许可与引用\n\n${fs.readFileSync(path.join(ROOT, 'LICENSE'), 'utf8')}`, 'utf8');
-  console.log('  → dist/LICENSE.txt（复制自仓库根 LICENSE + 一行标题）');
+  fs.copyFileSync(path.join(ROOT, 'LICENSE-CC-BY-4.0.txt'), path.join(DIST, 'LICENSE-CC-BY-4.0.txt'));
+  console.log('  → dist/LICENSE.txt + dist/LICENSE-CC-BY-4.0.txt（复制自仓库根 LICENSE / LICENSE-CC-BY-4.0.txt）');
 
   const errs = assertAI(MG, graph, files, pagesOf);
   errs.push(...enErrs);

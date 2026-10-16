@@ -11,7 +11,6 @@ $$\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n \in X : X = \bi
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧
-- 被 [`thm.metric-compact-equiv`](../nodes/thm.metric-compact-equiv.md) 紧的三个等价刻画 用
 
 - …另有出边，续页见 [nodes/def.totally-bounded.3.md](./def.totally-bounded.3.md)
 
@@ -22,4 +21,4 @@ refs: Munkres, Topology, §43
 
 > 说明见 `notes/def.totally-bounded.md`
 
-引用：`def.totally-bounded`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.totally-bounded`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

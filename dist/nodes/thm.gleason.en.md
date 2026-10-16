@@ -10,5 +10,5 @@ layer 17 · theorem · cluster Stone 与 Stonean (`topo.stone`) · Topology
 Chinese only — see the Chinese page `nodes/thm.gleason.md` and `proofs/`.
 
 
-Cite: `thm.gleason` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.gleason` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

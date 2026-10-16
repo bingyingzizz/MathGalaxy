@@ -8,10 +8,10 @@ layer 9 · 命题 · 代数结构 · 抽象代数
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.module`](../nodes/def.module.md) 模：用到了定义 模　[proofs/def-link.tensoruniv-bilinear.md](../proofs/def-link.tensoruniv-bilinear.md)
+- …另有入边，续页见 [nodes/prop.module-tensor-universal.3.md](./prop.module-tensor-universal.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, Exercise 1.21
 
 > 说明见 `notes/prop.module-tensor-universal.md`
 
-引用：`prop.module-tensor-universal`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.module-tensor-universal`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

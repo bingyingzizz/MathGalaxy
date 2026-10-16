@@ -13,5 +13,5 @@ Chinese only — see the Chinese page `nodes/def.condensed-set.md` and `proofs/`
 Wikipedia: https://en.wikipedia.org/wiki/Condensed_mathematics · nLab: https://ncatlab.org/nlab/show/condensed+mathematics
 
 
-Cite: `def.condensed-set` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.condensed-set` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

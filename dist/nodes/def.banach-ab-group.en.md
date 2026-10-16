@@ -10,5 +10,5 @@ layer 15 · definition · cluster 凝聚态上同调 (`cond.cohomology`) · Cond
 Chinese only — see the Chinese page `nodes/def.banach-ab-group.md` and `proofs/`.
 
 
-Cite: `def.banach-ab-group` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.banach-ab-group` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

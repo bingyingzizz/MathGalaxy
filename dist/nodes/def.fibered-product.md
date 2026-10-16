@@ -19,4 +19,4 @@ refs: Le Stum, An introduction to condensed mathematics, §1.3
 
 > 说明见 `notes/def.fibered-product.md`
 
-引用：`def.fibered-product`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.fibered-product`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

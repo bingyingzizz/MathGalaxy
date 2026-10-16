@@ -2,7 +2,7 @@
 [在星图里打开](../#n=thm.metric-compact-equiv)　·　第 1 页 [nodes/thm.metric-compact-equiv.md](./thm.metric-compact-equiv.md)
 
 ## 陈述（续）
-$$X\text{ 紧} \iff X\text{ 列紧} \iff X\text{ 完
-备且全有界}$$
+$$X\text{ 紧} \iff X\text{ 列紧} \iff X\t
+ext{ 完备且全有界}$$
 
 > 续见 [nodes/thm.metric-compact-equiv.3.md](./thm.metric-compact-equiv.3.md)

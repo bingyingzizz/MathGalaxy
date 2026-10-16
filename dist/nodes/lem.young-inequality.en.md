@@ -10,5 +10,5 @@ layer 15 · lemma · cluster L^p 空间 (`analysis.lp`) · Analysis
 Chinese only — see the Chinese page `nodes/lem.young-inequality.md` and `proofs/`.
 
 
-Cite: `lem.young-inequality` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `lem.young-inequality` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

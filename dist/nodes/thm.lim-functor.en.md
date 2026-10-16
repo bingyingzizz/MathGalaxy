@@ -10,5 +10,5 @@ layer 12 · theorem · cluster 图与极限 (`cat.limit`) · Category Theory
 Chinese only — see the Chinese page `nodes/thm.lim-functor.md` and `proofs/`.
 
 
-Cite: `thm.lim-functor` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.lim-functor` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

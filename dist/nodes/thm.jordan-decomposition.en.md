@@ -11,5 +11,5 @@ names: `Jordan decomposition` (short) · `Jordan Decomposition Theorem` (full)
 Chinese only — see the Chinese page `nodes/thm.jordan-decomposition.md` and `proofs/`.
 
 
-Cite: `thm.jordan-decomposition` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.jordan-decomposition` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

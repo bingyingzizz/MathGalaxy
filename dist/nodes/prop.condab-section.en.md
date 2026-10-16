@@ -10,5 +10,5 @@ layer 17 · proposition · cluster 凝聚态阿贝尔群 (`cond.ab`) · Condense
 Chinese only — see the Chinese page `nodes/prop.condab-section.md` and `proofs/`.
 
 
-Cite: `prop.condab-section` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `prop.condab-section` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

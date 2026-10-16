@@ -3,6 +3,6 @@ English entry · root `../`
 [in graph](../#n=def.cauchy-null)　·　[Chinese page (authoritative)](./def.cauchy-null.md)
 
 ## Abstract
-Over $\mathbb{Q}$ alone — $\varepsilon$ ranges over positive rationals, so no reals are presupposed — a rational sequence $(x_n)$ is Cauchy when $\forall \varepsilon > 0\, \exists N\, \forall m,n \ge N : |x_m - x_n| < \varepsilon$, is null when $\forall \varepsilon > 0\, \exists N\, \forall n \ge N : |x_n| < \varepsilon$, and two Cauchy sequences are equivalent when their difference is null. The quotient by this relation is how $\mathbb{R}$ is built: it glues together the many ways of approximating one number. Three facts are used later: Cauchy sequences are bounded, sums and products of Cauchy sequences are Cauchy, and a non-null Cauchy sequence s
+Over $\mathbb{Q}$ alone — $\varepsilon$ ranges over positive rationals, so no reals are presupposed — a rational sequence $(x_n)$ is Cauchy when $\forall \varepsilon > 0\, \exists N\, \forall m,n \ge N : |x_m - x_n| < \varepsilon$, is null when $\forall \varepsilon > 0\, \exists N\, \forall n \ge N : |x_n| < \varepsilon$, and two Cauchy sequences are equivalent when their difference is null. The quotient by this relation is how $\mathbb{R}$ is built: it glues together the many ways of approximating one number. Three facts are used later: Cauchy sequences are bounded, sums and products of Cauchy sequences are Cauchy, and a non-null Cauchy se
 
 > 续见 nodes/def.cauchy-null.en.3.md

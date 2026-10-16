@@ -25,4 +25,4 @@ refs: Tao, Analysis I, Ch. 5（实数的构造）；Rudin, Principles of Mathema
 
 > 说明见 `notes/lem.archimedean.md`
 
-引用：`lem.archimedean`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`lem.archimedean`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

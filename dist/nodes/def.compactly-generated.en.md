@@ -10,5 +10,5 @@ layer 16 · definition · cluster 紧生成空间与弱 Hausdorff (`topo.cg`) ·
 Chinese only — see the Chinese page `nodes/def.compactly-generated.md` and `proofs/`.
 
 
-Cite: `def.compactly-generated` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.compactly-generated` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

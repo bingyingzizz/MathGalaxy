@@ -3,7 +3,7 @@
 layer 20 · 命题 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=prop.nbv-derivative)　·　[节点索引](../index.md)
 
-设 $F \
+设
 > 陈述续见 [nodes/prop.nbv-derivative.2.md](./prop.nbv-derivative.2.md)
 
 
@@ -22,4 +22,4 @@ refs: Folland, Real Analysis, Theorem 3.35
 
 > 说明见 `notes/prop.nbv-derivative.md`
 
-引用：`prop.nbv-derivative`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.nbv-derivative`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

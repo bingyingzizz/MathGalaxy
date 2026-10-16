@@ -11,5 +11,5 @@ names: `Hahn decomposition` (short) · `Hahn Decomposition Theorem` (full)
 Chinese only — see the Chinese page `nodes/thm.hahn-decomposition.md` and `proofs/`.
 
 
-Cite: `thm.hahn-decomposition` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.hahn-decomposition` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -19,4 +19,4 @@ refs: Folland, Real Analysis, Theorem 3.27
 
 > 说明见 `notes/lem.variation-monotone.md`
 
-引用：`lem.variation-monotone`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`lem.variation-monotone`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

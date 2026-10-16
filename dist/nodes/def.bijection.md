@@ -25,4 +25,4 @@ refs: Kunen, Set Theory, I.5
 
 > 说明见 `notes/def.bijection.md`
 
-引用：`def.bijection`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.bijection`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

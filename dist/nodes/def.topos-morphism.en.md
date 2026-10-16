@@ -10,5 +10,5 @@ layer 17 · definition · cluster 拓扑斯 (`cat.topos`) · Category Theory
 Chinese only — see the Chinese page `nodes/def.topos-morphism.md` and `proofs/`.
 
 
-Cite: `def.topos-morphism` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.topos-morphism` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

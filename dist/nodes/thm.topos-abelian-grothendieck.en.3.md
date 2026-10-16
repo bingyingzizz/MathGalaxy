@@ -9,5 +9,5 @@ Chinese only — see the Chinese page `nodes/thm.topos-abelian-grothendieck.md` 
 Wikipedia: https://en.wikipedia.org/wiki/Grothendieck_category · nLab: https://ncatlab.org/nlab/show/Grothendieck+category
 
 
-Cite: `thm.topos-abelian-grothendieck` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.topos-abelian-grothendieck` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -18,4 +18,4 @@ refs: Folland, Real Analysis, Theorem 3.21
 
 > 说明见 `notes/thm.differentiation-general.md`
 
-引用：`thm.differentiation-general`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.differentiation-general`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

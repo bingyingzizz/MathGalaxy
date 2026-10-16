@@ -21,4 +21,4 @@ refs: Folland, Real Analysis, §3.1；Halmos, Measure Theory, §28
 
 > 说明见 `notes/def.signed-measure.md`
 
-引用：`def.signed-measure`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`def.signed-measure`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

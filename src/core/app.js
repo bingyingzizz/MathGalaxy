@@ -361,8 +361,105 @@
         var keep = panelEl.scrollTop;
         panel.show({ type: 'node', id: id });
         panelEl.scrollTop = keep;
+      },
+      /* 「引用此节点」（T1.4）。引文 = 节点 id + 内容版本 + 概念页地址 ——
+         LICENSE 里的引用模板就是这一句。⚠️ panel 不碰剪贴板，所以实现在这里。 */
+      onCite: function (id, btn) {
+        citeText(id).then(function (res) {
+          if (!res.copied) {
+            /* 两条复制路都不成（file:// 下 navigator.clipboard 常常不给用）：
+               在按钮下面摊开一个**只读、已选中**的输入框，用户自己 Ctrl+C。
+               ⛔ 不要用 window.prompt —— 那是个模态框，会卡住页面（headless 下截图直接超时）。 */
+            showCiteText(btn, res.text);
+            flashBtn(btn, '请手动复制');
+            return;
+          }
+          hideCiteText();
+          flashBtn(btn, '已复制 ✓');
+        });
       }
     });
+
+    /* -------------------------------------------------- 引用此节点（T1.4） */
+    /** 站点原点：现读 <link rel=canonical>（那是站点自己声明的地址），读不到再退回常量。
+        ⚠️ 不用 location —— file:// 打开时地址是本地路径，而引文要的是正式网址。 */
+    function siteOrigin() {
+      var l = document.querySelector && document.querySelector('link[rel="canonical"]');
+      var h = l && l.getAttribute('href');
+      var m = h && /^(https?:\/\/[^/]+\/[^/?#]*\/)/.exec(h);
+      return m ? m[1] : 'https://bingyingzizz.github.io/mathgalaxy/';
+    }
+    /** 引文：两行，第一行是人读的，第二行是能点的地址。
+        英文名有就带上（英文读者认它），没有就不写 —— 中文为准。
+        ⚠️ 版本号：`MG.contentVersion` 在**源码 index.html** 里是占位符 `dev`，
+           构建时才换成真版本（`dist/mathgalaxy.html` 与线上都是 vX.Y.Z）。
+           开发副本里宁可不写，也不把 `dev` 印进引文。 */
+    function citeText(id) {
+      var v = MG.contentVersion && MG.contentVersion !== 'dev' ? MG.contentVersion : '';
+      var n = view.graph.byId[id];
+      var en = n && (n.title_en || n.label_en);
+      var inside = [en, v ? '内容 ' + v : ''].filter(Boolean).join('，');
+      var text = 'MathGalaxy 节点 ' + id + (inside ? '（' + inside + '）' : '') + '\n' +
+        siteOrigin() + 'nodes/' + id + '.html';
+      return copyText(text);
+    }
+    /** 复制：先走异步剪贴板，失败退回 execCommand，再失败就如实报 false。 */
+    function copyText(text) {
+      var legacy = function () { return { text: text, copied: legacyCopy(text) }; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).then(
+          function () { return { text: text, copied: true }; },
+          function () { return legacy(); });
+      }
+      return Promise.resolve(legacy());
+    }
+    function legacyCopy(text) {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return !!ok;
+      } catch (e) { return false; }
+    }
+    /** 按钮闪一下反馈。⚠️ 一次性 setTimeout，不是逐帧动画 —— 不碰 rAF。 */
+    function flashBtn(btn, msg) {
+      if (!btn) return;
+      if (!btn.getAttribute('data-label')) btn.setAttribute('data-label', btn.textContent);
+      btn.textContent = msg;
+      btn.classList.add('on');
+      clearTimeout(btn._citeTimer);
+      btn._citeTimer = setTimeout(function () {
+        btn.textContent = btn.getAttribute('data-label');
+        btn.classList.remove('on');
+      }, 1400);
+    }
+    /** 复制失败时的退路：在按钮下面摊开引文，**已经选中**，用户按 Ctrl+C 就行。
+        没有模态框 —— 关掉的方式就是再点一次按钮（或切走），不新增需要学的交互。 */
+    function showCiteText(btn, text) {
+      hideCiteText();
+      var row = btn && btn.parentNode;
+      if (!row) return;
+      var box = document.createElement('div');
+      box.className = 'pn-cite-box';
+      var ta = document.createElement('textarea');
+      ta.readOnly = true;
+      ta.rows = 2;
+      ta.value = text;
+      box.appendChild(ta);
+      row.parentNode.insertBefore(box, row.nextSibling);
+      ta.focus();
+      ta.select();
+    }
+    function hideCiteText() {
+      var old = panelBody.querySelector('.pn-cite-box');
+      if (old && old.parentNode) old.parentNode.removeChild(old);
+    }
 
     /* ------------------------------------- 可见性变化后的统一善后 */
     /** 挑了显示哪一块之后：连线、星团级粗线、云雾、聚焦状态、图例全部跟着走 */

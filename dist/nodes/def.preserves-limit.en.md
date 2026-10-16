@@ -10,5 +10,5 @@ layer 12 · definition · cluster 函子与自然变换 (`cat.functor`) · Categ
 Chinese only — see the Chinese page `nodes/def.preserves-limit.md` and `proofs/`.
 
 
-Cite: `def.preserves-limit` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.preserves-limit` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

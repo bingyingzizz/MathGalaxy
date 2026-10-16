@@ -20,4 +20,4 @@ refs: Lang, Linear Algebra；Brunner, The Axiom of Choice in Topology
 
 这是「序理论的结论在代数里落地」的标准范例，也是本星图上跨板块连线的一个实例。
 
-引用：`thm.vsbasis`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.vsbasis`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

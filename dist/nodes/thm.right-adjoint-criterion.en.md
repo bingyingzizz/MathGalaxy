@@ -10,5 +10,5 @@ layer 13 · theorem · cluster 伴随与反射 (`cat.adjoint`) · Category Theor
 Chinese only — see the Chinese page `nodes/thm.right-adjoint-criterion.md` and `proofs/`.
 
 
-Cite: `thm.right-adjoint-criterion` (content v0.9.0) · terms: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.right-adjoint-criterion` (content v0.9.0) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

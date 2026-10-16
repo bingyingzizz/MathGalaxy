@@ -14,4 +14,4 @@ refs: Le Stum, Proposition 7.2.1
 
 > 说明见 `notes/prop.k-calculus-fractions.md`
 
-引用：`prop.k-calculus-fractions`（内容 v0.9.0）· 条款见 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.k-calculus-fractions`（内容 v0.9.0）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
