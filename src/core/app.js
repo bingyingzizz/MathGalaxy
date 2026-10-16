@@ -680,6 +680,42 @@
       b.classList.toggle('on', MG.isEn);
     })();
 
+    /* ---------------------------------------- 画布名字的语言开关（T2.4b） */
+    /* 作者 2026-10-16 拍板：画布上的名字跟语言走，但**要留一个一键开关** ——
+       界面可以是英文、画布名字仍用中文（或反过来）。三选一：
+         跟随界面（默认）/ 强制中文 / 强制英文（没英文名的节点回落中文 label）。
+       ⚠️ 与界面语言同一个套路：写 localStorage + 整页重载，不做热切换
+          （显示名是启动时算一次写进 labelShow 的缓存）。
+       ⚠️ 必须把 `?labellang=` 从 URL 里**删掉** —— URL 参数优先级更高，
+          不删的话「用 ?labellang=en 看过之后点回『跟随界面』」会被旧参数盖回去。
+       截图对照用：`?labellang=en` / `?labellang=zh` 可以直接贴在 URL 上，见 i18n/SUMMARY.md。 */
+    function switchCanvasLang(next) {
+      try { localStorage.setItem(MG.CANVAS_KEY, next); } catch (e) { /* 隐私模式：忽略 */ }
+      try {
+        var u = new URL(global.location.href);
+        u.searchParams.delete('labellang');
+        global.location.replace(u.toString());     // 保留 hash（深机位不丢）
+      } catch (e) {
+        global.location.reload();
+      }
+    }
+    (function initCanvasLang() {
+      var box = document.getElementById('set-canvaslang');
+      if (!box) return;
+      var cur = MG.canvasLangPref();               // 'follow' | 'zh' | 'en'
+      var inputs = box.querySelectorAll('input[name="canvaslang"]');
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].checked = inputs[i].value === cur;
+      }
+      box.addEventListener('change', function (e) {
+        var t = e.target;
+        if (!t || t.name !== 'canvaslang') return;
+        /* 当前就是它 ⇒ 什么都不做（免得白白重载一次） */
+        if (t.value === MG.canvasLangPref()) return;
+        switchCanvasLang(t.value);
+      });
+    })();
+
     /* ------------------------------------------ 设置面板（界面元素显隐） */
     /*
       管的是「界面**显示什么**」，和工具条上那 5 个 toggle（管「图怎么画」）分开。
@@ -1183,6 +1219,13 @@
         &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
         &fps=1             右下角显示诊断角标（帧耗时 / 连线层耗时 / dpr / canvas 尺寸）
 
+      ⭐ 这两个是 **query 参数**（不是 hash），因为它们改的是「用哪种语言」，
+         而语言类状态一律在 search 里（和 `?lang=` 同一套约定，见 src/core/i18n.js）：
+
+        ?lang=en|zh           界面文案的语言（缺省中文；会记进 localStorage）
+        ?labellang=en|zh       **只**改画布上名字的语言（界面不动）—— 对照截图用；
+                               它也会记进 localStorage，要回到默认就去设置窗口选「跟随界面语言」
+
       ⚠️ 绝不用 ?query + history.pushState：`file://` 下 origin 是 null，
          pushState / replaceState 会抛 SecurityError —— 而「双击 index.html 就能用」
          是硬要求。这里一律走 hash，pushState/replaceState 只是**能成功时**的优雅路径。
@@ -1433,6 +1476,9 @@
                           三者相加 ≈ 帧。**「绘制」只算 JS，不含光栅化。**
         · 峰(自开)       = 打开页面以来的最大值；**已剔除 gap**（见下）
         · 分项 边/节点/标签 = renderer.prof 的低频汇总（每帧累加 ÷ 帧数，⛔ 不引入 flush/readback）
+                           ⚠️ 「标签 N 条 / X ms」是**两件事**：条数 = 这一帧真画上去的名字个数
+                           （含星系名与星团名），ms = 画这些名字花的时间。别再把 ms 当条数。
+        · 画布名字      = 当前画布用的是哪种语言的名字（zh / en，见设置窗口与 ?labellang=）
         · 抽样           = 额外做一次绘制/铺雾来估「连线层/云雾层」的成本，**属于侵入式测量，不计入帧**
                           （空闲行里「帧 4.6 / 绘制 0.00 / 抽样连线层 7.00」不矛盾：三者窗口与口径本来就不同）
         · gap            = 帧间隔 > 2s 或采样时页面 hidden（切标签/截图工具/断档伪影）⇒ 只计数，不进峰值
@@ -1508,7 +1554,7 @@
             位图: bs,
             计数: { 节点: graph.nodes.length, 连线: view.visible.length, 隐藏: vis.hiddenCount() },
             prof每帧: { 边: +(pr.edges / f).toFixed(2), 节点: +(pr.nodes / f).toFixed(2),
-              标签: +(pr.labels / f).toFixed(2), 帧: pr.frames },
+              标签: +(pr.labels / f).toFixed(2), 标签条数: +(pr.labelCount / f).toFixed(1), 帧: pr.frames },
             峰: { 帧: +hudPeak.toFixed(1), 绘制: +hudPeakDraw.toFixed(2), 输入: +hudPeakInp.toFixed(2), 其余: +hudPeakRest.toFixed(2) },
             gap计数: gaps, 长帧: ring.slice()
           };
@@ -1575,14 +1621,16 @@
           '实时 帧 ' + ms.toFixed(1) + ' ms · ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
           '实时 绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
           '峰(自开) 帧 ' + hudPeak.toFixed(0) + ' ｜ 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + '\n' +
-          '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) + ' ｜ 标签 ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
+          '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) +
+            // ⚠️ 条数与耗时分开写：早先把 labels(ms) 当成「条数」过，别再混
+            ' ｜ 标签 ' + (pr.labelCount / pF).toFixed(1) + ' 条 / ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
           '抽样(侵入) 连线层 ' + drawMs.toFixed(2) + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) : '') + ' ms\n' +
           '位图 ' + (bs ? ((bs.ready ? 'on' : 'off') + (bs.inRange ? '' : '(超范围)') + ' k_bake ' + bs.k.toFixed(3) + ' ' + bs.size
             + ' 烘' + bs.bakes + '次 末' + bs.lastMs + '/峰' + bs.peakMs + 'ms 换' + bs.swaps) : '未装') + '\n' +
           'gap ' + gaps + ' 次（>2s 或 hidden，不进峰值）\n' +
           alignLine() + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
-          ' · canvas ' + c.width + '×' + c.height +
+          ' · canvas ' + c.width + '×' + c.height + ' · 画布名字 ' + (MG.displayLang || 'zh') +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
           (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
           (glInfo ? '\n' + glInfo : '');

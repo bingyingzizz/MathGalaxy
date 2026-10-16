@@ -127,6 +127,16 @@ window.addEventListener('error', function (e) {
     <label class="set-row"><input type="checkbox" data-ui="legend" checked> <span data-t="图例（左下）">图例（左下）</span></label>
     <label class="set-row"><input type="checkbox" data-ui="hint" checked> <span data-t="底部说明（标题与操作提示）">底部说明（标题与操作提示）</span></label>
     <div class="set-sep"></div>
+    <div class="set-title" data-t="画布上的名字">画布上的名字</div>
+    <!-- ⭐ 一键开关（T2.4b）：只改**画布上**用哪种语言的名字，不动界面文案。
+         选完立即整页重载 —— 显示名是启动时算一次的缓存，热切会出现半个画布是旧语言。
+         ⛔ 三个都要在：少了「跟随界面」就没法从「强制英文」回到默认。 -->
+    <div id="set-canvaslang" class="set-row">
+      <label class="set-rad"><input type="radio" name="canvaslang" value="follow" checked> <span data-t="跟随界面语言">跟随界面语言</span></label>
+      <label class="set-rad"><input type="radio" name="canvaslang" value="zh"> <span data-t="中文名">中文名</span></label>
+      <label class="set-rad"><input type="radio" name="canvaslang" value="en"> <span data-t="英文名（没有的回落中文）">英文名（没有的回落中文）</span></label>
+    </div>
+    <div class="set-sep"></div>
     <div class="set-title" data-t="已读标记">已读标记</div>
     <!-- ⛔ 这个复选框必须有：showMarks 会从 localStorage 读，只要存过 '0' 就整个关掉。
          原来唯一的开关是图例里那个 data-readmarks 小芯片，2026-10-15 删进度组时被一起删了，

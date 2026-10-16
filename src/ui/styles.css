@@ -333,6 +333,25 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   accent-color: #4f7cf5;
   cursor: pointer;
 }
+/* 画布名字的语言：三选一（跟随界面 / 中文 / 英文）—— 一行三颗单选，窄了会自动换行。
+   ⚠️ 用 label 包住 input + 文字：点整块都能选中，不用只点那个小圆点。 */
+#set-canvaslang { flex-wrap: wrap; gap: 4px 14px; cursor: default; }
+#set-canvaslang .set-rad {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#set-canvaslang .set-rad:hover { color: var(--ink); }
+#set-canvaslang input[type='radio'] {
+  margin: 0;
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  accent-color: #4f7cf5;
+  cursor: pointer;
+}
 .set-sep { height: 1px; background: var(--line); margin: 10px 4px; }
 .set-link {
   display: block;

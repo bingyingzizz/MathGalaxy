@@ -38,6 +38,35 @@
 
   var lang = detect();
 
+  /* ------------------------------------------------ 画布名字用哪种语言（T2.4b） */
+  /* 作者 2026-10-16 拍板：画布上的名字跟语言走，并且**留一个开关** ——
+     界面文案的语言（`MG.lang`）与「画布上的名字用哪国字」是两件事：
+       · 默认「跟随界面」= 界面英文时画布也用英文名；
+       · 可以强制中文名 / 强制英文名（英文名没有的节点回落中文 label）。
+     优先级与界面语言同一套约定：URL `?labellang=zh|en`（临时，给对照截图用，会记下来）
+       → localStorage `mathgalaxy.canvas.lang`（'follow' | 'zh' | 'en'）→ 'follow'。
+     ⛔ 名字是**建图之后算一次**写进 labelShow / nameShow 的缓存（渲染循环只读），
+        所以换它必须整页重载 —— 热切会出现「半个画布是旧语言」。 */
+  var CANVAS_KEY = 'mathgalaxy.canvas.lang';
+
+  function canvasLangPref() {
+    var search = (global.location && global.location.search) || '';
+    var m = /[?&]labellang=(zh|en)\b/.exec(search);
+    if (m) { try { global.localStorage.setItem(CANVAS_KEY, m[1]); } catch (e) {} return m[1]; }
+    try {
+      var v = global.localStorage.getItem(CANVAS_KEY);
+      if (v === 'follow' || v === 'en' || v === 'zh') return v;
+    } catch (e) {}
+    return 'follow';
+  }
+
+  /** 画布名字实际用哪种语言：'zh' | 'en'（渲染层只读 MG.displayLang） */
+  function displayLang() {
+    var p = canvasLangPref();
+    return p === 'follow' ? lang : p;
+  }
+  MG.displayLang = displayLang();
+
   /** t('中文原文', {占位符: 值}) —— 英文模式查表，缺键回落中文 */
   function t(s, params) {
     var out = s;
@@ -97,14 +126,30 @@
 
   /** ⭐ 画布上的显示名：**启动时算一次**，渲染循环直接读 `labelShow` / `nameShow`。
       ⛔ 别在每帧里调 labelOf —— 那是往每帧 4.2ms（240Hz）的预算里塞一次查表。
-      ⚠️ 名字只在**建图之后、开始画之前**定一次；换语言走的是整页重载（见 app.js 的 switchLang），
-         所以不存在「画到一半换语言」的情况。 */
+      ⚠️ 名字只在**建图之后、开始画之前**定一次；换语言（界面或画布）走的是整页重载
+         （见 app.js 的 switchLang / switchCanvasLang），所以不存在「画到一半换语言」。
+      ⭐ 用的是**画布语言**（MG.displayLang），不是界面语言：作者可以「英文界面 + 中文名字」。
+      ⭐ 算完做两件事：清掉量过的文本宽度（布局缓存里量的是**另一种语言的字符串**）、
+         displayEpoch +1（万一以后有谁缓存了与名字有关的布局，用它当 key 的一部分）。 */
   function localizeDisplay(graph) {
     if (!graph) return 0;
+    MG.displayLang = displayLang();
+    var useEn = MG.displayLang === 'en';
     var n = 0;
-    (graph.nodes || []).forEach(function (x) { x.labelShow = labelOf(x); n++; });
-    (graph.clusters || []).forEach(function (c) { c.nameShow = clusterName(c); });
-    (graph.regions || []).forEach(function (r) { r.nameShow = regionName(r); });
+    (graph.nodes || []).forEach(function (x) {
+      x.labelShow = useEn ? (x.label_en || x.title_en || x.label || x.id) : (x.label || x.id);
+      n++;
+    });
+    (graph.clusters || []).forEach(function (c) {
+      c.nameShow = useEn ? (c.en || c.name) : c.name;
+    });
+    (graph.regions || []).forEach(function (r) {
+      r.nameShow = useEn ? (r.en || r.name) : r.name;
+    });
+    MG.displayEpoch = (MG.displayEpoch || 0) + 1;
+    /* 文本量缓存：键里已经带 displayLang（见 renderer.js 的 textCacheKey），
+       这里再整体作废一次 —— 两条一起才叫「语言进了缓存 key」。 */
+    if (MG.clearTextCache) MG.clearTextCache();
     return n;
   }
 
@@ -160,6 +205,8 @@
 
   MG.lang = lang;
   MG.isEn = lang === 'en';
+  MG.canvasLangPref = canvasLangPref;
+  MG.CANVAS_KEY = CANVAS_KEY;
   MG.t = t;
   MG.num = num;
   MG.labelOf = labelOf;

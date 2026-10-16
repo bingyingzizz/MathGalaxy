@@ -51,6 +51,11 @@ MG.uiEn = {
     '搜索框': 'Search box',
     '图例（左下）': 'Legend (bottom left)',
     '底部说明（标题与操作提示）': 'Page note (title and controls)',
+    /* 画布名字的语言（T2.4b 一键开关）：三选一，改完整页重载 */
+    '画布上的名字': 'Names on the canvas',
+    '跟随界面语言': 'Follow the interface language',
+    '中文名': 'Chinese names',
+    '英文名（没有的回落中文）': 'English names (falls back to Chinese)',
     '已读标记': 'Read marks',
     '图上显示已读标记（绿环）': 'Show read marks on the graph (green rings)',
     '清空已读进度': 'Clear reading progress',

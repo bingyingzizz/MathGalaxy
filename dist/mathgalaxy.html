@@ -365,6 +365,25 @@ mark { background: #ffe9a8; color: inherit; padding: 0 1px; border-radius: 3px; 
   accent-color: #4f7cf5;
   cursor: pointer;
 }
+/* 画布名字的语言：三选一（跟随界面 / 中文 / 英文）—— 一行三颗单选，窄了会自动换行。
+   ⚠️ 用 label 包住 input + 文字：点整块都能选中，不用只点那个小圆点。 */
+#set-canvaslang { flex-wrap: wrap; gap: 4px 14px; cursor: default; }
+#set-canvaslang .set-rad {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#set-canvaslang .set-rad:hover { color: var(--ink); }
+#set-canvaslang input[type='radio'] {
+  margin: 0;
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  accent-color: #4f7cf5;
+  cursor: pointer;
+}
 .set-sep { height: 1px; background: var(--line); margin: 10px 4px; }
 .set-link {
   display: block;
@@ -1048,6 +1067,16 @@ window.addEventListener('error', function (e) {
     <label class="set-row"><input type="checkbox" data-ui="search" checked> <span data-t="搜索框">搜索框</span></label>
     <label class="set-row"><input type="checkbox" data-ui="legend" checked> <span data-t="图例（左下）">图例（左下）</span></label>
     <label class="set-row"><input type="checkbox" data-ui="hint" checked> <span data-t="底部说明（标题与操作提示）">底部说明（标题与操作提示）</span></label>
+    <div class="set-sep"></div>
+    <div class="set-title" data-t="画布上的名字">画布上的名字</div>
+    <!-- ⭐ 一键开关（T2.4b）：只改**画布上**用哪种语言的名字，不动界面文案。
+         选完立即整页重载 —— 显示名是启动时算一次的缓存，热切会出现半个画布是旧语言。
+         ⛔ 三个都要在：少了「跟随界面」就没法从「强制英文」回到默认。 -->
+    <div id="set-canvaslang" class="set-row">
+      <label class="set-rad"><input type="radio" name="canvaslang" value="follow" checked> <span data-t="跟随界面语言">跟随界面语言</span></label>
+      <label class="set-rad"><input type="radio" name="canvaslang" value="zh"> <span data-t="中文名">中文名</span></label>
+      <label class="set-rad"><input type="radio" name="canvaslang" value="en"> <span data-t="英文名（没有的回落中文）">英文名（没有的回落中文）</span></label>
+    </div>
     <div class="set-sep"></div>
     <div class="set-title" data-t="已读标记">已读标记</div>
     <!-- ⛔ 这个复选框必须有：showMarks 会从 localStorage 读，只要存过 '0' 就整个关掉。
@@ -1901,6 +1930,35 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
   var lang = detect();
 
+  /* ------------------------------------------------ 画布名字用哪种语言（T2.4b） */
+  /* 作者 2026-10-16 拍板：画布上的名字跟语言走，并且**留一个开关** ——
+     界面文案的语言（`MG.lang`）与「画布上的名字用哪国字」是两件事：
+       · 默认「跟随界面」= 界面英文时画布也用英文名；
+       · 可以强制中文名 / 强制英文名（英文名没有的节点回落中文 label）。
+     优先级与界面语言同一套约定：URL `?labellang=zh|en`（临时，给对照截图用，会记下来）
+       → localStorage `mathgalaxy.canvas.lang`（'follow' | 'zh' | 'en'）→ 'follow'。
+     ⛔ 名字是**建图之后算一次**写进 labelShow / nameShow 的缓存（渲染循环只读），
+        所以换它必须整页重载 —— 热切会出现「半个画布是旧语言」。 */
+  var CANVAS_KEY = 'mathgalaxy.canvas.lang';
+
+  function canvasLangPref() {
+    var search = (global.location && global.location.search) || '';
+    var m = /[?&]labellang=(zh|en)\b/.exec(search);
+    if (m) { try { global.localStorage.setItem(CANVAS_KEY, m[1]); } catch (e) {} return m[1]; }
+    try {
+      var v = global.localStorage.getItem(CANVAS_KEY);
+      if (v === 'follow' || v === 'en' || v === 'zh') return v;
+    } catch (e) {}
+    return 'follow';
+  }
+
+  /** 画布名字实际用哪种语言：'zh' | 'en'（渲染层只读 MG.displayLang） */
+  function displayLang() {
+    var p = canvasLangPref();
+    return p === 'follow' ? lang : p;
+  }
+  MG.displayLang = displayLang();
+
   /** t('中文原文', {占位符: 值}) —— 英文模式查表，缺键回落中文 */
   function t(s, params) {
     var out = s;
@@ -1960,14 +2018,30 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
   /** ⭐ 画布上的显示名：**启动时算一次**，渲染循环直接读 `labelShow` / `nameShow`。
       ⛔ 别在每帧里调 labelOf —— 那是往每帧 4.2ms（240Hz）的预算里塞一次查表。
-      ⚠️ 名字只在**建图之后、开始画之前**定一次；换语言走的是整页重载（见 app.js 的 switchLang），
-         所以不存在「画到一半换语言」的情况。 */
+      ⚠️ 名字只在**建图之后、开始画之前**定一次；换语言（界面或画布）走的是整页重载
+         （见 app.js 的 switchLang / switchCanvasLang），所以不存在「画到一半换语言」。
+      ⭐ 用的是**画布语言**（MG.displayLang），不是界面语言：作者可以「英文界面 + 中文名字」。
+      ⭐ 算完做两件事：清掉量过的文本宽度（布局缓存里量的是**另一种语言的字符串**）、
+         displayEpoch +1（万一以后有谁缓存了与名字有关的布局，用它当 key 的一部分）。 */
   function localizeDisplay(graph) {
     if (!graph) return 0;
+    MG.displayLang = displayLang();
+    var useEn = MG.displayLang === 'en';
     var n = 0;
-    (graph.nodes || []).forEach(function (x) { x.labelShow = labelOf(x); n++; });
-    (graph.clusters || []).forEach(function (c) { c.nameShow = clusterName(c); });
-    (graph.regions || []).forEach(function (r) { r.nameShow = regionName(r); });
+    (graph.nodes || []).forEach(function (x) {
+      x.labelShow = useEn ? (x.label_en || x.title_en || x.label || x.id) : (x.label || x.id);
+      n++;
+    });
+    (graph.clusters || []).forEach(function (c) {
+      c.nameShow = useEn ? (c.en || c.name) : c.name;
+    });
+    (graph.regions || []).forEach(function (r) {
+      r.nameShow = useEn ? (r.en || r.name) : r.name;
+    });
+    MG.displayEpoch = (MG.displayEpoch || 0) + 1;
+    /* 文本量缓存：键里已经带 displayLang（见 renderer.js 的 textCacheKey），
+       这里再整体作废一次 —— 两条一起才叫「语言进了缓存 key」。 */
+    if (MG.clearTextCache) MG.clearTextCache();
     return n;
   }
 
@@ -2023,6 +2097,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
 
   MG.lang = lang;
   MG.isEn = lang === 'en';
+  MG.canvasLangPref = canvasLangPref;
+  MG.CANVAS_KEY = CANVAS_KEY;
   MG.t = t;
   MG.num = num;
   MG.labelOf = labelOf;
@@ -3613,9 +3689,15 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
   }
 
   /* ------------------------------------------------------------ 文本量缓存 */
+  /* ⭐ 键里带**画布显示语言**（MG.displayLang）+ 字体 + 文本本身。
+     为什么带语言：同一个节点在 zh 下量「度量空间」、在 en 下量「metric space」，
+     字宽完全不同；不带语言的缓存一旦跨语言复用，排出来的标签就会互相压叠。
+     换语言时 `MG.localizeDisplay` 还会整体清一次（两条一起才算数）。
+     ⚠️ 这是**防回归**（现在换语言走整页重载），不是修 bug。 */
   var textCache = Object.create(null);
+  function textCacheKey(text, font) { return (MG.displayLang || 'zh') + '|' + font + '|' + text; }
   function measure(ctx, text, font) {
-    var key = font + '|' + text;
+    var key = textCacheKey(text, font);
     var w = textCache[key];
     if (w == null) {
       var old = ctx.font;
@@ -3626,6 +3708,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     }
     return w;
   }
+  /** 换语言后把量过的宽度全部作废（由 MG.localizeDisplay 调用） */
+  function clearTextCache() { textCache = Object.create(null); }
+  MG.clearTextCache = clearTextCache;
+  MG.textCacheSize = function () { return Object.keys(textCache).length; };
+  MG.textCacheKey = textCacheKey;
 
   /* ------------------------------------------------------------ LOD 工具 */
   function smoothstep(e0, e1, x) {
@@ -4067,8 +4154,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
        所以：staticCam 覆盖相机读数、cullOff 关掉视口裁剪、staticHidden 让实时层
        把静态部分让给位图图层（标签/hover 仍实时画）。⛔ 只在 drawStatic 的同步区间里置位。 */
     var staticCam = null, cullOff = false, staticHidden = false, glowLive = false, envLive = false, hoverFull = false;
-    /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback */
-    var prof = { edges: 0, nodes: 0, labels: 0, frames: 0 };
+    /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback。
+       ⭐ labels = 标签**绘制耗时**（ms，低频汇总口径，不是条数）；
+          labelCount = 这一帧真的画上去的标签**条数**（星系名+星团名+节点名）。
+          ⚠️ 早先的报告把 labels(ms) 当成「条数」过 —— 所以这两个字段名字必须分开写清楚。 */
+    var prof = { edges: 0, nodes: 0, labels: 0, labelCount: 0, frames: 0 };
     function camNow() { return staticCam || view.cam; }
     function setStaticHidden(v) { staticHidden = !!v; }
     function bbox() { return view.graph.bbox(); }
@@ -4375,6 +4465,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         });
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
+        prof.labelCount++;                  // 星系名算一个「画上去的标签」
         nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2 });
       });
       ctx.restore();
@@ -4573,6 +4664,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         ctx.fillStyle = 'rgba(30,32,40,0.90)';
         ctx.fillText(text, p.x, y + 0.5);
         ctx.globalAlpha = 1;
+        prof.labelCount++;                   // 星团名也是一个「画上去的标签」
         nameBoxes.push(slot.box);
       });
       ctx.restore();
@@ -4852,6 +4944,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         ctx.strokeText(text, x, y);
         ctx.fillStyle = isSpecial ? U.rgba(MG.typeStyle(n.type).color, alpha) : 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
         ctx.fillText(text, x, y);
+        prof.labelCount++;                    // 节点名：真正画上去了才算一条
       });
     }
 
@@ -4875,6 +4968,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
         ctx.strokeText(label, p.x, y);
         ctx.fillStyle = T.ink;
         ctx.fillText(label, p.x, y);
+        prof.labelCount++;                    // 聚焦/悬停时那个「关键名字」也算一条
       });
     }
 
@@ -4942,7 +5036,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
       drawReadRings: drawReadRings,                          // 已读脉冲环 → #layer-read（见上）
       bbox: bbox,
       prof: prof,
-      profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.frames = 0; },
+      profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.labelCount = 0; prof.frames = 0; },
       get size() { return { w: W, h: H }; }
     };
   }
@@ -10454,6 +10548,11 @@ MG.uiEn = {
     '搜索框': 'Search box',
     '图例（左下）': 'Legend (bottom left)',
     '底部说明（标题与操作提示）': 'Page note (title and controls)',
+    /* 画布名字的语言（T2.4b 一键开关）：三选一，改完整页重载 */
+    '画布上的名字': 'Names on the canvas',
+    '跟随界面语言': 'Follow the interface language',
+    '中文名': 'Chinese names',
+    '英文名（没有的回落中文）': 'English names (falls back to Chinese)',
     '已读标记': 'Read marks',
     '图上显示已读标记（绿环）': 'Show read marks on the graph (green rings)',
     '清空已读进度': 'Clear reading progress',
@@ -41253,6 +41352,42 @@ MG.trunk = [
       b.classList.toggle('on', MG.isEn);
     })();
 
+    /* ---------------------------------------- 画布名字的语言开关（T2.4b） */
+    /* 作者 2026-10-16 拍板：画布上的名字跟语言走，但**要留一个一键开关** ——
+       界面可以是英文、画布名字仍用中文（或反过来）。三选一：
+         跟随界面（默认）/ 强制中文 / 强制英文（没英文名的节点回落中文 label）。
+       ⚠️ 与界面语言同一个套路：写 localStorage + 整页重载，不做热切换
+          （显示名是启动时算一次写进 labelShow 的缓存）。
+       ⚠️ 必须把 `?labellang=` 从 URL 里**删掉** —— URL 参数优先级更高，
+          不删的话「用 ?labellang=en 看过之后点回『跟随界面』」会被旧参数盖回去。
+       截图对照用：`?labellang=en` / `?labellang=zh` 可以直接贴在 URL 上，见 i18n/SUMMARY.md。 */
+    function switchCanvasLang(next) {
+      try { localStorage.setItem(MG.CANVAS_KEY, next); } catch (e) { /* 隐私模式：忽略 */ }
+      try {
+        var u = new URL(global.location.href);
+        u.searchParams.delete('labellang');
+        global.location.replace(u.toString());     // 保留 hash（深机位不丢）
+      } catch (e) {
+        global.location.reload();
+      }
+    }
+    (function initCanvasLang() {
+      var box = document.getElementById('set-canvaslang');
+      if (!box) return;
+      var cur = MG.canvasLangPref();               // 'follow' | 'zh' | 'en'
+      var inputs = box.querySelectorAll('input[name="canvaslang"]');
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].checked = inputs[i].value === cur;
+      }
+      box.addEventListener('change', function (e) {
+        var t = e.target;
+        if (!t || t.name !== 'canvaslang') return;
+        /* 当前就是它 ⇒ 什么都不做（免得白白重载一次） */
+        if (t.value === MG.canvasLangPref()) return;
+        switchCanvasLang(t.value);
+      });
+    })();
+
     /* ------------------------------------------ 设置面板（界面元素显隐） */
     /*
       管的是「界面**显示什么**」，和工具条上那 5 个 toggle（管「图怎么画」）分开。
@@ -41756,6 +41891,13 @@ MG.trunk = [
         &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
         &fps=1             右下角显示诊断角标（帧耗时 / 连线层耗时 / dpr / canvas 尺寸）
 
+      ⭐ 这两个是 **query 参数**（不是 hash），因为它们改的是「用哪种语言」，
+         而语言类状态一律在 search 里（和 `?lang=` 同一套约定，见 src/core/i18n.js）：
+
+        ?lang=en|zh           界面文案的语言（缺省中文；会记进 localStorage）
+        ?labellang=en|zh       **只**改画布上名字的语言（界面不动）—— 对照截图用；
+                               它也会记进 localStorage，要回到默认就去设置窗口选「跟随界面语言」
+
       ⚠️ 绝不用 ?query + history.pushState：`file://` 下 origin 是 null，
          pushState / replaceState 会抛 SecurityError —— 而「双击 index.html 就能用」
          是硬要求。这里一律走 hash，pushState/replaceState 只是**能成功时**的优雅路径。
@@ -42006,6 +42148,9 @@ MG.trunk = [
                           三者相加 ≈ 帧。**「绘制」只算 JS，不含光栅化。**
         · 峰(自开)       = 打开页面以来的最大值；**已剔除 gap**（见下）
         · 分项 边/节点/标签 = renderer.prof 的低频汇总（每帧累加 ÷ 帧数，⛔ 不引入 flush/readback）
+                           ⚠️ 「标签 N 条 / X ms」是**两件事**：条数 = 这一帧真画上去的名字个数
+                           （含星系名与星团名），ms = 画这些名字花的时间。别再把 ms 当条数。
+        · 画布名字      = 当前画布用的是哪种语言的名字（zh / en，见设置窗口与 ?labellang=）
         · 抽样           = 额外做一次绘制/铺雾来估「连线层/云雾层」的成本，**属于侵入式测量，不计入帧**
                           （空闲行里「帧 4.6 / 绘制 0.00 / 抽样连线层 7.00」不矛盾：三者窗口与口径本来就不同）
         · gap            = 帧间隔 > 2s 或采样时页面 hidden（切标签/截图工具/断档伪影）⇒ 只计数，不进峰值
@@ -42081,7 +42226,7 @@ MG.trunk = [
             位图: bs,
             计数: { 节点: graph.nodes.length, 连线: view.visible.length, 隐藏: vis.hiddenCount() },
             prof每帧: { 边: +(pr.edges / f).toFixed(2), 节点: +(pr.nodes / f).toFixed(2),
-              标签: +(pr.labels / f).toFixed(2), 帧: pr.frames },
+              标签: +(pr.labels / f).toFixed(2), 标签条数: +(pr.labelCount / f).toFixed(1), 帧: pr.frames },
             峰: { 帧: +hudPeak.toFixed(1), 绘制: +hudPeakDraw.toFixed(2), 输入: +hudPeakInp.toFixed(2), 其余: +hudPeakRest.toFixed(2) },
             gap计数: gaps, 长帧: ring.slice()
           };
@@ -42148,14 +42293,16 @@ MG.trunk = [
           '实时 帧 ' + ms.toFixed(1) + ' ms · ' + (ms ? (1000 / ms).toFixed(0) : '-') + ' fps\n' +
           '实时 绘制 ' + drawPer.toFixed(2) + ' ｜ 输入 ' + inpPer.toFixed(2) + ' ｜ 其余 ' + rest.toFixed(2) + ' ms\n' +
           '峰(自开) 帧 ' + hudPeak.toFixed(0) + ' ｜ 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + '\n' +
-          '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) + ' ｜ 标签 ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
+          '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) +
+            // ⚠️ 条数与耗时分开写：早先把 labels(ms) 当成「条数」过，别再混
+            ' ｜ 标签 ' + (pr.labelCount / pF).toFixed(1) + ' 条 / ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
           '抽样(侵入) 连线层 ' + drawMs.toFixed(2) + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) : '') + ' ms\n' +
           '位图 ' + (bs ? ((bs.ready ? 'on' : 'off') + (bs.inRange ? '' : '(超范围)') + ' k_bake ' + bs.k.toFixed(3) + ' ' + bs.size
             + ' 烘' + bs.bakes + '次 末' + bs.lastMs + '/峰' + bs.peakMs + 'ms 换' + bs.swaps) : '未装') + '\n' +
           'gap ' + gaps + ' 次（>2s 或 hidden，不进峰值）\n' +
           alignLine() + '\n' +
           global.innerWidth + '×' + global.innerHeight + ' · dpr ' + global.devicePixelRatio +
-          ' · canvas ' + c.width + '×' + c.height +
+          ' · canvas ' + c.width + '×' + c.height + ' · 画布名字 ' + (MG.displayLang || 'zh') +
           '\n节点 ' + graph.nodes.length + ' · 连线 ' + view.visible.length +
           (hudTex ? ' · 云雾纹理 ' + hudTex.canvas.width + '×' + hudTex.canvas.height : '') +
           (glInfo ? '\n' + glInfo : '');

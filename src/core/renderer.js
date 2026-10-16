@@ -40,9 +40,15 @@
   }
 
   /* ------------------------------------------------------------ 文本量缓存 */
+  /* ⭐ 键里带**画布显示语言**（MG.displayLang）+ 字体 + 文本本身。
+     为什么带语言：同一个节点在 zh 下量「度量空间」、在 en 下量「metric space」，
+     字宽完全不同；不带语言的缓存一旦跨语言复用，排出来的标签就会互相压叠。
+     换语言时 `MG.localizeDisplay` 还会整体清一次（两条一起才算数）。
+     ⚠️ 这是**防回归**（现在换语言走整页重载），不是修 bug。 */
   var textCache = Object.create(null);
+  function textCacheKey(text, font) { return (MG.displayLang || 'zh') + '|' + font + '|' + text; }
   function measure(ctx, text, font) {
-    var key = font + '|' + text;
+    var key = textCacheKey(text, font);
     var w = textCache[key];
     if (w == null) {
       var old = ctx.font;
@@ -53,6 +59,11 @@
     }
     return w;
   }
+  /** 换语言后把量过的宽度全部作废（由 MG.localizeDisplay 调用） */
+  function clearTextCache() { textCache = Object.create(null); }
+  MG.clearTextCache = clearTextCache;
+  MG.textCacheSize = function () { return Object.keys(textCache).length; };
+  MG.textCacheKey = textCacheKey;
 
   /* ------------------------------------------------------------ LOD 工具 */
   function smoothstep(e0, e1, x) {
@@ -494,8 +505,11 @@
        所以：staticCam 覆盖相机读数、cullOff 关掉视口裁剪、staticHidden 让实时层
        把静态部分让给位图图层（标签/hover 仍实时画）。⛔ 只在 drawStatic 的同步区间里置位。 */
     var staticCam = null, cullOff = false, staticHidden = false, glowLive = false, envLive = false, hoverFull = false;
-    /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback */
-    var prof = { edges: 0, nodes: 0, labels: 0, frames: 0 };
+    /* 低频汇总用：只累加 performance.now 的差值，⛔ 绝不引入 flush/readback。
+       ⭐ labels = 标签**绘制耗时**（ms，低频汇总口径，不是条数）；
+          labelCount = 这一帧真的画上去的标签**条数**（星系名+星团名+节点名）。
+          ⚠️ 早先的报告把 labels(ms) 当成「条数」过 —— 所以这两个字段名字必须分开写清楚。 */
+    var prof = { edges: 0, nodes: 0, labels: 0, labelCount: 0, frames: 0 };
     function camNow() { return staticCam || view.cam; }
     function setStaticHidden(v) { staticHidden = !!v; }
     function bbox() { return view.graph.bbox(); }
@@ -802,6 +816,7 @@
         });
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
+        prof.labelCount++;                  // 星系名算一个「画上去的标签」
         nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2 });
       });
       ctx.restore();
@@ -1000,6 +1015,7 @@
         ctx.fillStyle = 'rgba(30,32,40,0.90)';
         ctx.fillText(text, p.x, y + 0.5);
         ctx.globalAlpha = 1;
+        prof.labelCount++;                   // 星团名也是一个「画上去的标签」
         nameBoxes.push(slot.box);
       });
       ctx.restore();
@@ -1279,6 +1295,7 @@
         ctx.strokeText(text, x, y);
         ctx.fillStyle = isSpecial ? U.rgba(MG.typeStyle(n.type).color, alpha) : 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
         ctx.fillText(text, x, y);
+        prof.labelCount++;                    // 节点名：真正画上去了才算一条
       });
     }
 
@@ -1302,6 +1319,7 @@
         ctx.strokeText(label, p.x, y);
         ctx.fillStyle = T.ink;
         ctx.fillText(label, p.x, y);
+        prof.labelCount++;                    // 聚焦/悬停时那个「关键名字」也算一条
       });
     }
 
@@ -1369,7 +1387,7 @@
       drawReadRings: drawReadRings,                          // 已读脉冲环 → #layer-read（见上）
       bbox: bbox,
       prof: prof,
-      profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.frames = 0; },
+      profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.labelCount = 0; prof.frames = 0; },
       get size() { return { w: W, h: H }; }
     };
   }
