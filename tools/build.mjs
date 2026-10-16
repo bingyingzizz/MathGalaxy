@@ -1310,7 +1310,9 @@ function enNodeText(n, MG) {
   };
   const clusterName = (cid) => {
     const c = ((MG && MG.clusters) || []).find((x) => x.id === cid);
-    return c ? `${c.name} (\`${cid}\`)` : cid;
+    /* ⭐ 英文入口页用**星团的英文名**（clusters.js 的 en 字段，T2.4）；
+       ⛔ 缺了就回落中文 —— 这是「没有英文就按中文读」那条规矩。 */
+    return c ? `${c.en || c.name} (\`${cid}\`)` : cid;
   };
   const head = `# ${name || n.label}　\`${n.id}\`\n` +
     `English entry · root \`../\`\n` +
