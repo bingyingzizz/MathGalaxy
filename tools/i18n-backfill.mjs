@@ -8,7 +8,7 @@
      ① `src/data/i18n.js`        —— 英文名字段（title_en / label_en）的内容侧旁挂表，
                                     按 id 索引，运行时由 graph.js 挂到节点上。
      ② `i18n/second-tier.md`     —— **二级命中清单**：供快速扫读与整批回滚。
-     ③ `i18n-gaps.md`            —— 填不了的清单，按星系分组、带候选集，交作者定夺。
+     ③ `i18n/gaps.md`            —— 填不了的清单，按星系分组、带候选集，交作者定夺。
 
    判定口径（**唯一真源就是这个文件**；build.mjs 直接 import 下面的函数复用，
    不另抄一份 —— 抄一份就会漂）：
@@ -53,7 +53,7 @@ import vm from 'node:vm';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SRC = path.join(ROOT, 'src');
 const SIDECAR = path.join(SRC, 'data', 'i18n.js');
-const GAPS = path.join(ROOT, 'i18n-gaps.md');
+const GAPS = path.join(ROOT, 'i18n', 'gaps.md');
 const TIER2 = path.join(ROOT, 'i18n', 'second-tier.md');
 
 /* ------------------------------------------------------------ 判定口径 */
@@ -255,7 +255,7 @@ export function sidecarText(entries, updated) {
   L.push('        二级 from: aka-title           = title 里恰好命中一个 aka 候选');
   L.push('                                        （大小写不敏感 + 词边界，只扫 title）。');
   L.push('      歧义 / 只有缩写 / 只有书号 / 哪儿都没有的，一个都没填 ——');
-  L.push('      清单在 i18n-gaps.md，二级命中另有一份 i18n/second-tier.md（可整批回滚）。');
+  L.push('      清单在 i18n/gaps.md，二级命中另有一份 i18n/second-tier.md（可整批回滚）。');
   L.push('');
   L.push('   字段语义（消费方按这个回落）：');
   L.push('      title_en  正式英文名');
@@ -346,22 +346,57 @@ export function secondTierText(t2, checks, nAll) {
 export function gapsText(rows, b, dec, regionName) {
   const g = [];
   const t1 = dec.t1.length, t2 = dec.t2.length;
-  g.push('# 英文名缺口清单（i18n-gaps）');
+  const ambLeft = b.ambiguous.length - t2;   // ⚠️ 二级是从「歧义」桶里捞出来的 ⇒ 要减掉，表才互斥
+  const covered = t1 + t2;
+  const pct = (x) => (100 * x / rows.length).toFixed(1) + '%';
+  g.push('# 英文名缺口清单');
   g.push('');
-  g.push('> 由 `bun tools/i18n-backfill.mjs` 从 `src/data/aliases.js` + 节点 `title` 现算。');
-  g.push('> **这里一个名字都没猜过** —— 能机械定的已经写进 `src/data/i18n.js`，剩下的都在下面。');
-  g.push('> 补法：把缺的英文名加到 `src/data/aliases.js` 的那条 aka 里，再重跑一次回填脚本。');
+  g.push('> ⚠️ **自动生成，勿手改** —— 本文件由 `bun tools/i18n-backfill.mjs` 从');
+  g.push('> `src/data/aliases.js`（aka）+ 各节点 `title` 现算，每次跑都会整份覆盖。');
+  g.push('> 要改内容：改**真源**，然后重跑；直接编辑本文件会在 `--check` 里报「过期」。');
+  g.push('');
+  g.push('**这个清单是干什么的**：把「机械规则填不出英文名」的节点摊开，按星系分组、');
+  g.push('每行带候选集 —— 它是**给作者（或来接活的协作者）补名字用的工作面板**，不是产物。');
+  g.push('**这里一个名字都没猜过**：能机械定的已经写进 `src/data/i18n.js`（同样是生成物）。');
+  g.push('');
+  g.push('## 认领方式（怎么把一条缺口填掉）');
+  g.push('');
+  g.push('1. 在表里挑一条（或一片），记下节点 id；');
+  g.push('2. 打开 `src/data/aliases.js`，在**该节点的 `aka` 数组里加上英文名**');
+  g.push('   （唯一真源就是这里 —— ⛔ 别去改 `src/data/i18n.js`，那是生成物）；');
+  g.push('   · 加完要让 aka 里**恰好只剩一条「名字样」英文条目**，一级规则才认；');
+  g.push('   · 「名字样」= 多个词时至少一个是实词；单个词要纯字母、有元音、不是全大写、不是驼峰；');
+  g.push('   · 书号（`Exercise 2.25` / `Theorem 8.3.9`）**不算名字**，加不加都不影响。');
+  g.push('3. 跑 `bun tools/i18n-backfill.mjs`（只写生成物，不动内容）；');
+  g.push('4. 跑 `bun tools/build.mjs` 看断言过不过，再跑 `bun tools/i18n-backfill.mjs --check` 确认不漂。');
+  g.push('');
+  g.push('⚠️ **aka 同时喂三处**：① 英文名（本清单）② 搜索 ③ **内文跳转**（正文里出现该词会变链接）。');
+  g.push('所以加了通用词（`section` / `ring` 这类）之后，要看一眼跳转噪音 ——');
+  g.push('真吵的话把词放进 `aliases.js` 的 `linkStop`，或按「只填字段、不喂跳转」处理。');
+  g.push('');
+  g.push('## 一、结果（互斥，合计 = 全部节点）');
+  g.push('');
+  g.push('| 桶 | 节点数 | 占比 | 意思 |');
+  g.push('|---|---|---|---|');
+  g.push(`| ✅ 一级填入（\`from: aka\` / \`from: title\`） | ${t1} | ${pct(t1)} | aka 里恰好一条名字样英文 |`);
+  g.push(`| ✅ 二级填入（\`from: aka-title\`） | ${t2} | ${pct(t2)} | title 里恰好命中一个 aka 候选 —— 清单见 \`i18n/second-tier.md\`（可整批回滚）|`);
+  g.push(`| ⛔ 缺口 | ${dec.gaps.length} | ${pct(dec.gaps.length)} | 下面第二节逐条列 |`);
+  g.push(`| **合计** | **${rows.length}** | 100% | 覆盖 ${covered}（${pct(covered)}），缺口 ${dec.gaps.length} |`);
+  g.push('');
+  g.push('## 二、缺口为什么填不了（互斥，合计 = 缺口数）');
   g.push('');
   g.push('| 桶 | 节点数 | 意思 |');
   g.push('|---|---|---|');
-  g.push(`| ✅ 一级填入（from: aka / title） | ${t1} | aka 里恰好一条名字样英文 |`);
-  g.push(`| ✅ 二级填入（from: aka-title） | ${t2} | title 里恰好命中一个 aka 候选 —— 见 \`i18n/second-tier.md\` |`);
-  g.push(`| ⚠️ 歧义 | ${b.ambiguous.length} | aka 里有 ≥2 条英文写法，谁也没在 title 里出现 |`);
+  g.push(`| ⚠️ 歧义（二级也没捞着） | ${ambLeft} | aka 里有 ≥2 条英文写法，且 title 里没出现其中一个 |`);
   g.push(`| ⚠️ 只有缩写 | ${b.abbrev.length} | aka 里只有 AC / FOL / sup / MCT a.e. 这种缩写 |`);
   g.push(`| ⚠️ 只有书号 | ${b.refOnly.length} | aka 里只有 Exercise 2.25 / Theorem 8.3.9 这种坐标（搜索用，不是名字）|`);
   g.push(`| ⚠️ 只有 title 有 | ${b.titleOnly.length} | aka 没有英文，但 title 括号里是英文 |`);
   g.push(`| ⛔ 完全没有 | ${b.none.length} | aka 与 title 都没有英文名 |`);
-  g.push(`| **合计** | **${rows.length}** | 覆盖 ${t1 + t2}（${(100 * (t1 + t2) / rows.length).toFixed(1)}%），缺口 ${dec.gaps.length} |`);
+  g.push(`| **合计** | **${dec.gaps.length}** | = 全部节点 ${rows.length} − 已覆盖 ${covered} |`);
+  g.push('');
+  g.push('⚠️ **口径提醒**：脚本内部的分桶是在**二级之前**做的，所以「歧义」原始数是 ' +
+    `${b.ambiguous.length}，其中 **${t2}** 条被二级捞走了 —— 上表用的是减完的 ${ambLeft}。`);
+  g.push('两张表各自互斥、各自合计对得上；⛔ 别把两张表的行混着加。');
   g.push('');
   g.push('---');
   g.push('');
@@ -426,7 +461,7 @@ function main() {
     const t2Cur = fs.existsSync(TIER2) ? fs.readFileSync(TIER2, 'utf8') : '';
     if (!cur) drift.push('src/data/i18n.js 不存在');
     else if (key(cur) !== key(body)) drift.push('src/data/i18n.js 与源不一致');
-    if (gapsCur !== gaps) drift.push('i18n-gaps.md 过期');
+    if (gapsCur !== gaps) drift.push('i18n/gaps.md 过期');
     if (t2Cur !== t2txt) drift.push('i18n/second-tier.md 过期');
     if (drift.length) {
       console.error('✗ 漂移 ' + drift.length + ' 处：' + drift.slice(0, 5).join('；') + '（跑 bun tools/i18n-backfill.mjs）');
@@ -453,7 +488,7 @@ function main() {
   console.log(`  ⚠️ 歧义 ${b.ambiguous.length} · 只有缩写 ${b.abbrev.length} · 只有书号 ${b.refOnly.length}` +
     ` · 只有 title ${b.titleOnly.length} · 完全没有 ${b.none.length}  ⇒ 缺口合计 ${dec.gaps.length}`);
   console.log(`  🔎 跨节点重复 title_en：${checks.dups.length} 组 · title 里有更长英文写法：${checks.shapeDiff.length} 处（只记录）`);
-  console.log(`  → ${wrote} 个文件被更新（src/data/i18n.js · i18n-gaps.md · i18n/second-tier.md）`);
+  console.log(`  → ${wrote} 个文件被更新（src/data/i18n.js · i18n/gaps.md · i18n/second-tier.md）`);
 }
 
 if (import.meta.main) main();

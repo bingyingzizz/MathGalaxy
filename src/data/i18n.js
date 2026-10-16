@@ -10,7 +10,7 @@
         二级 from: aka-title           = title 里恰好命中一个 aka 候选
                                         （大小写不敏感 + 词边界，只扫 title）。
       歧义 / 只有缩写 / 只有书号 / 哪儿都没有的，一个都没填 ——
-      清单在 i18n-gaps.md，二级命中另有一份 i18n/second-tier.md（可整批回滚）。
+      清单在 i18n/gaps.md，二级命中另有一份 i18n/second-tier.md（可整批回滚）。
 
    字段语义（消费方按这个回落）：
       title_en  正式英文名
