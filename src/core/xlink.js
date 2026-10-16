@@ -258,7 +258,7 @@
           a.setAttribute('data-xlink', h.id);
           a.setAttribute('href', '#');
           a.setAttribute('title',
-            (h.near ? '它依赖：' : '图里也有：') + (labelOf[h.id] || h.id));
+            MG.t(h.near ? '它依赖：{名}' : '图里也有：{名}', { 名: labelOf[h.id] || h.id }));
           a.textContent = s.substr(h.at, h.len);
           frag.appendChild(a);
           pos = h.at + h.len;

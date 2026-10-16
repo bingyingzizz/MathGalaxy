@@ -10,6 +10,8 @@
   var U = MG.util;
   var T = MG.theme;
   var GU = MG.graphUtil;
+  /* 界面语言（T2.4）：tf = 查表，缺键回落中文 */
+  var tf = MG.t;
 
   function createPanel(panelEl, bodyEl, closeBtn, view, hooks) {
     var current = null;
@@ -48,30 +50,34 @@
         var col = node.clusterObj.color || (g ? g.color : '#8892A0');
         head = '<span class="pn-chip" data-cluster="' + node.clusterObj.id + '">' +
           '<span class="lg-swatch" style="background:' + U.mixWithWhite(col, 0.62) + '"></span>' +
-          U.escapeHtml(node.clusterObj.name) + '</span>';
+          U.escapeHtml(MG.clusterName(node.clusterObj)) + '</span>';
       }
       return '<div class="pn-regions">' + head + node.regions.map(function (rid) {
         var r = view.graph.regionById[rid];
         if (!r) return '';
         return '<span class="pn-chip" data-region="' + r.id + '">' +
           '<span class="lg-swatch" style="background:' + r.color + '"></span>' +
-          U.escapeHtml(r.name) + '</span>';
+          U.escapeHtml(MG.regionName(r)) + '</span>';
       }).join('') + '</div>';
     }
 
     function nodeRow(n, prefix, keyword) {
       var st = MG.typeStyle(n.type);
-      var desc = U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title);
+      /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文） */
+      var desc = MG.isEn
+        ? (U.plain(n.abstract_en) || U.plain(n.statement_en) || U.plain(n.notes_en) ||
+           U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title))
+        : (U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title));
       return '<div class="pn-link" data-kind="node" data-id="' + n.id + '">' +
         '<span class="dot" style="background:' + st.color + '"></span>' +
         (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
-        '<span><span class="nm">' + U.escapeHtml(n.label) + '</span>' +
+        '<span><span class="nm">' + U.escapeHtml(MG.labelOf(n)) + '</span>' +
         '<div class="ds">' + U.escapeHtml(U.truncate(desc, 56)) + '</div></span>' +
         '</div>';
     }
 
     function edgeRow(e, keyword) {
-      var name = T.edgeNames[e.kind] || e.kind;
+      var name = MG.edgeName(e.kind);
       var arrow = e.kind === 'implication' ? '⟹'
         : e.kind === 'equivalence' ? '⟺'
           : e.kind === 'analogy' ? '～' : '·';
@@ -110,7 +116,7 @@
       return U.truncate(s + ' ⟹ ' + lbl(g, e.target), n);
     }
 
-    function lbl(g, id) { var n = g.byId[id]; return n ? n.label : id; }
+    function lbl(g, id) { var n = g.byId[id]; return n ? MG.labelOf(n) : id; }
 
     function section(title, html) {
       return '<div class="pn-sec"><h4>' + U.escapeHtml(title) + '</h4>' + html + '</div>';
@@ -127,7 +133,8 @@
       var g = view.graph;
       var html = '';
       html += kindBadge(n.type);
-      html += '<h1 class="pn-h1">' + U.titleHtml(n.title) + '</h1>';
+      /* ⭐ T2.4：英文模式下面板大标题走 title_en（缺了回落 label_en → 中文 title） */
+      html += '<h1 class="pn-h1">' + U.titleHtml(MG.isEn ? MG.titleOf(n) : n.title) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(n.id) + '</div>';
       /* 依赖深度：由连线现算（见 core/layers.js），不写在内容里 */
       if (typeof n.layer === 'number') {
@@ -139,14 +146,15 @@
             if (e.usedBy === n.id) pre.push(e); else if (e.definition === n.id) post.push(e);
           }
         });
-        html += '<div class="pn-h2">第 ' + n.layer + ' 层（依赖深度）· 它依赖 ' + pre.length +
-          ' 个 · 被 ' + post.length + ' 个依赖</div>';
+        html += '<div class="pn-h2">' +
+          U.escapeHtml(tf('第 {n} 层（依赖深度）· 它依赖 {k} 个 · 被 {m} 个依赖',
+            { n: n.layer, k: pre.length, m: post.length })) + '</div>';
       }
       /* 「只看这个子图」的入口。真正的开关状态在图例里（不另开窗口）。 */
       html += '<div class="pn-btns">' +
-        '<button class="pn-btn" data-sub="deps" title="只留下它依赖的东西 —— 看它是靠什么撑起来的">只看它靠什么</button>' +
-        '<button class="pn-btn" data-sub="users" title="只留下用到它的东西">只看谁用它</button>' +
-        '<button class="pn-btn" data-sub="both" title="两个方向都要">看它周围</button>' +
+        '<button class="pn-btn" data-sub="deps" title="' + U.escapeHtml(tf('只留下它依赖的东西 —— 看它是靠什么撑起来的')) + '">' + U.escapeHtml(tf('只看它靠什么')) + '</button>' +
+        '<button class="pn-btn" data-sub="users" title="' + U.escapeHtml(tf('只留下用到它的东西')) + '">' + U.escapeHtml(tf('只看谁用它')) + '</button>' +
+        '<button class="pn-btn" data-sub="both" title="' + U.escapeHtml(tf('两个方向都要')) + '">' + U.escapeHtml(tf('看它周围')) + '</button>' +
         '</div>';
       html += regionChips(n);
 
@@ -157,7 +165,8 @@
       if (hooks && hooks.onCite) {
         html += '<div class="pn-cite-row">' +
           '<button class="pn-btn pn-cite" data-cite="' + U.escapeHtml(n.id) + '"' +
-          ' title="复制引文（节点 id + 内容版本 + 概念页链接）">引用此节点</button>' +
+          ' title="' + U.escapeHtml(tf('复制引文（节点 id + 内容版本 + 概念页链接）')) + '">' +
+          U.escapeHtml(tf('引用此节点')) + '</button>' +
           '</div>';
       }
 
@@ -170,26 +179,27 @@
         if (!isRead) {
           var miss = hooks.missingPrereqs ? hooks.missingPrereqs(n.id) : [];
           if (!miss.length) {
-            tip = '<span class="pn-read-tip ok">前置都读过了</span>';
+            tip = '<span class="pn-read-tip ok">' + U.escapeHtml(tf('前置都读过了')) + '</span>';
           } else {
             var names = miss.slice(0, 4).map(function (id) {
               var m = g.byId[id];
-              return m ? U.escapeHtml(m.label) : U.escapeHtml(id);
+              return m ? U.escapeHtml(MG.labelOf(m)) : U.escapeHtml(id);
             }).join('、');
-            tip = '<span class="pn-read-tip">还差 ' + miss.length + ' 条前置：' + names +
-              (miss.length > 4 ? ' …' : '') + '</span>';
+            tip = '<span class="pn-read-tip">' +
+              U.escapeHtml(tf('还差 {n} 条前置：{名}', { n: miss.length, 名: names + (miss.length > 4 ? ' …' : '') })) +
+              '</span>';
           }
         }
         html += '<div class="pn-read">' +
           '<button class="pn-btn pn-read-btn' + (isRead ? ' on' : '') +
           '" data-read="' + U.escapeHtml(n.id) + '">' +
-          (isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读') + '</button>' + tip + '</div>';
+          U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + '</div>';
       }
 
-      if (n.statement) html += section('陈述', '<div class="pn-body">' + U.md(n.statement) + '</div>');
-      if (n.notes) html += section('说明 / 备注', '<div class="pn-body">' + U.md(n.notes) + '</div>');
+      if (n.statement) html += section(tf('陈述'), '<div class="pn-body">' + U.md(n.statement) + '</div>');
+      if (n.notes) html += section(tf('说明 / 备注'), '<div class="pn-body">' + U.md(n.notes) + '</div>');
       if (n.refs && n.refs.length) {
-        html += section('参考', '<div class="pn-body"><ul>' + n.refs.map(function (r) {
+        html += section(tf('参考'), '<div class="pn-body"><ul>' + n.refs.map(function (r) {
           return '<li>' + U.escapeHtml(r) + '</li>';
         }).join('') + '</ul></div>');
       }
@@ -198,39 +208,39 @@
       var out = [], inc = [], eqs = [], defs = [], users = [], anas = [];
       (g.edgesOf[n.id] || []).forEach(function (e) {
         if (e.kind === 'implication') {
-          if (e.target === n.id) inc.push(edgeRow(e, '被推出'));
-          else out.push(edgeRow(e, '推出'));
+          if (e.target === n.id) inc.push(edgeRow(e, tf('被推出')));
+          else out.push(edgeRow(e, tf('推出')));
         } else if (e.kind === 'equivalence') {
-          eqs.push(edgeRow(e, '等价'));
+          eqs.push(edgeRow(e, tf('等价')));
         } else if (e.kind === 'analogy') {
-          anas.push(edgeRow(e, '类比'));
+          anas.push(edgeRow(e, tf('类比')));
         } else if (e.kind === 'definition') {
           if (e.usedBy === n.id) {
             var d = g.byId[e.definition];
-            if (d) defs.push(nodeRow(d, '定义', ''));
+            if (d) defs.push(nodeRow(d, tf('定义'), ''));
           } else {
-            users.push(edgeRow(e, '用于'));
+            users.push(edgeRow(e, tf('用于')));
           }
         }
       });
 
-      html += section('由本节点推出的结论（' + out.length + '）',
-        listOrNone(out, '暂无'));
-      html += section('推出本节点的结论（' + inc.length + '）',
-        listOrNone(inc, '暂无（可能是原始公理或定义）'));
-      html += section('等价命题（' + eqs.length + '）',
-        listOrNone(eqs, '暂无'));
+      html += section(tf('由本节点推出的结论（{n}）', { n: out.length }),
+        listOrNone(out, tf('暂无')));
+      html += section(tf('推出本节点的结论（{n}）', { n: inc.length }),
+        listOrNone(inc, tf('暂无（可能是原始公理或定义）')));
+      html += section(tf('等价命题（{n}）', { n: eqs.length }),
+        listOrNone(eqs, tf('暂无')));
       if (anas.length) {
-        html += section('类比 / 思想相通（' + anas.length + '）',
-          '<div class="pn-hint">⚠️ 弱边：不是逻辑蕴含，只提供联想线索</div>' +
-          listOrNone(anas, '暂无'));
+        html += section(tf('类比 / 思想相通（{n}）', { n: anas.length }),
+          '<div class="pn-hint">' + U.escapeHtml(tf('⚠️ 弱边：不是逻辑蕴含，只提供联想线索')) + '</div>' +
+          listOrNone(anas, tf('暂无')));
       }
       if (MG.config.highlightDefinitions) {
-        html += section('陈述中用到的定义（' + defs.length + '）',
-          listOrNone(defs, '暂无'));
+        html += section(tf('陈述中用到的定义（{n}）', { n: defs.length }),
+          listOrNone(defs, tf('暂无')));
         if (users.length) {
-          html += section('本定义被以下结论引用（' + users.length + '）',
-            listOrNone(users, '暂无'));
+          html += section(tf('本定义被以下结论引用（{n}）', { n: users.length }),
+            listOrNone(users, tf('暂无')));
         }
       }
       bodyEl.innerHTML = html;
@@ -243,7 +253,7 @@
     function renderEdge(e) {
       if (!e) { hide(); return; }
       var g = view.graph;
-      var name = T.edgeNames[e.kind] || e.kind;
+      var name = MG.edgeName(e.kind);
       var color = e.kind === 'definition' ? '#3C70F5' : '#1C1C1E';
       var html = '';
 
@@ -269,9 +279,9 @@
           '<span class="pn-link" data-kind="node" data-id="' + e.b + '" style="display:inline-flex;padding:0"><b>' +
           U.escapeHtml(lbl(g, e.b)) + '</b></span>';
       } else {
-        gph = '「<b>' + U.escapeHtml(lbl(g, e.definition)) + '</b>」 出现在 ' +
+        gph = '「<b>' + U.escapeHtml(lbl(g, e.definition)) + '</b>」 ' + U.escapeHtml(tf('出现在')) + ' ' +
           '<span class="pn-link" data-kind="node" data-id="' + e.usedBy + '" style="display:inline-flex;padding:0"><b>' +
-          U.escapeHtml(lbl(g, e.usedBy)) + '</b></span> 的陈述中';
+          U.escapeHtml(lbl(g, e.usedBy)) + '</b></span> ' + U.escapeHtml(tf('的陈述中'));
       }
       html += '<div class="pn-arith">' + gph + '</div>';
 
@@ -286,27 +296,27 @@
             if (o.kind !== 'implication' || o.sources.length !== 1) return;
             var s = o.sources[0];
             if ((s === e.a && o.target === e.b) || (s === e.b && o.target === e.a)) {
-              steps.push({ label: o.title || (lbl(g, s) + ' ⇒ ' + lbl(g, o.target)), text: o.proof || '', tag: '箭头' });
+              steps.push({ label: o.title || (lbl(g, s) + ' ⇒ ' + lbl(g, o.target)), text: o.proof || '', tag: tf('箭头') });
             }
           });
         }
       }
 
       if (steps.length) {
-        html += section('为什么等价', steps.map(function (p, i) {
+        html += section(tf('为什么等价'), steps.map(function (p, i) {
           return '<div class="pn-step">' +
             '<div class="pn-step-title"><span class="badge">' + (p.tag || (i + 1)) + '</span>' +
             U.titleHtml(p.label || '') + '</div>' +
             '<div class="pn-body">' + U.md(p.text || '') + '</div></div>';
         }).join(''));
       } else if (e.proof) {
-        html += section(e.kind === 'implication' ? '推导过程' : '说明', '<div class="pn-body">' + U.md(e.proof) + '</div>');
+        html += section(tf(e.kind === 'implication' ? '推导过程' : '说明'), '<div class="pn-body">' + U.md(e.proof) + '</div>');
       } else if (e.kind === 'definition') {
         var d = g.byId[e.definition];
-        html += section('说明', '<div class="pn-body">' +
-          U.md(e.note || ('该结论的陈述中使用了定义「' + lbl(g, e.definition) + '」。')) + '</div>');
+        html += section(tf('说明'), '<div class="pn-body">' +
+          U.md(e.note || tf('该结论的陈述中使用了定义「{名}」。', { 名: lbl(g, e.definition) })) + '</div>');
         if (d && d.statement) {
-          html += section('定义原文 · ' + d.label, '<div class="pn-body">' + U.md(d.statement) + '</div>');
+          html += section(tf('定义原文 · {名}', { 名: MG.labelOf(d) }), '<div class="pn-body">' + U.md(d.statement) + '</div>');
         }
       }
 
