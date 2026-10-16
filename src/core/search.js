@@ -173,12 +173,31 @@
        ⚠️ 不要把「被更长命中项包含的词」丢掉：`实数完备` 同时命中别名「实数完备」
           和词「实数」「完备」，只留最长的那个会让下面一整片节点全部召不回来。
           长词在前、短词在后，靠打分自然分层。 */
+    /* 一个词条在查询里的每次出现，前后是不是「词边界」。
+       ⭐ T3.1 修：词表里有 `ive` / `id` 这类从记号表、缩写里来的**短 ASCII 碎片**，
+          它们会钻到长英文词里面去 —— 搜 `preadditive` 会被切成 `ive` 之类的词，
+          于是一堆含 `-ive` 的节点涌上来，真正含 `preadditive` 的那个反而被挤出去。
+          现在拉丁词条要求**词边界命中**（中文词条不受影响 —— CJK 没有词边界可言）。 */
+    function wordAligned(Q, v) {
+      if (!/^[a-z]/.test(v)) return true;            // 非拉丁开头：照旧（中文 / 符号）
+      var from = 0, i;
+      while ((i = Q.indexOf(v, from)) >= 0) {
+        var before = i === 0 ? '' : Q[i - 1];
+        var after = Q[i + v.length] || '';
+        var okB = !/[a-z0-9]/.test(before);
+        var okA = !/[a-z0-9]/.test(after);
+        if (okB && okA) return true;
+        from = i + 1;
+      }
+      return false;
+    }
+
     function termsOf(q) {
       var Q = q.toLowerCase();
       var hit = [];
       for (var i = 0; i < vocab.length; i++) {
         var v = vocab[i];
-        if (v.length <= Q.length && Q.indexOf(v) >= 0) hit.push(v);
+        if (v.length <= Q.length && Q.indexOf(v) >= 0 && wordAligned(Q, v)) hit.push(v);
       }
       hit = hit.filter(function (v, i, a) { return a.indexOf(v) === i; });
       hit.sort(function (a, b) { return b.length - a.length; });
