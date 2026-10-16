@@ -226,12 +226,17 @@ const readSite = (f) => fs.readFileSync(path.join(SITE, f), 'utf8');
  * 分享卡片 / 收录用的 head 片段：canonical + OG + Twitter + 一段 JSON-LD。
  * 没有 og:image —— 站点没有位图素材（favicon 是内联 SVG，做不了 og:image）；
  * 要加就得先生成一张 1200×630 的图，那是另一件事。
+ *
+ * ⛔⛔ `og:site_name` 和 JSON-LD 的 `name` **绝不能再写 `${USER}.github.io`**。
+ *     原来就是这么写的 ⇒ Google 把**域名**当成了站点名，搜索结果的标题显示
+ *     一个光秃秃的「bingyingzizz」，看着像个人主页而不是一个网站（用户 2026-10-15 报的）。
+ *     站点名必须和 `<title>` / `<h1>` 里那几个字**完全一致**：数学星图 MathGalaxy。
  */
 function headExtra({ title, desc, url, ld, en }) {
   return [
     `<link rel="canonical" href="${url}">`,
     `<meta property="og:type" content="website">`,
-    `<meta property="og:site_name" content="${esc(USER)}.github.io">`,
+    `<meta property="og:site_name" content="${SITE_NAME}">`,
     `<meta property="og:title" content="${esc(title)}">`,
     `<meta property="og:description" content="${esc(desc)}">`,
     `<meta property="og:url" content="${url}">`,
@@ -244,6 +249,10 @@ function headExtra({ title, desc, url, ld, en }) {
   ].filter(Boolean).join('\n');
 }
 
+/* 站点名：一个常量，所有地方都用它 —— `<title>` / `<h1>` / `og:site_name` /
+   JSON-LD 的 `name` 必须是**同一个字符串**，否则 Google 会自己挑一个（它挑了域名）。 */
+const SITE_NAME = '数学星图 MathGalaxy';
+
 const SITE_ORIGIN = LIVE_URL.replace(/\/$/, '');   // 站点绝对地址（无尾斜杠）
 
 // 首页
@@ -255,17 +264,19 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
   REPO: REPO_URL,
   SITE_REPO: SITE_REPO_URL,
   HEAD_EXTRA: headExtra({
-    title: `${USER} · 数学笔记`,
-    desc: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。'
-      + ' MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 709 nodes,'
-      + ' 1398 edges, four kinds of edges (implication / equivalence / definition / analogy).',
+    title: `${SITE_NAME} · 可交互的数学知识图谱`,
+    desc: '数学星图 MathGalaxy —— 可交互的数学知识图谱：定理、定义、引理按「星系 / 星团 / 恒星」'
+      + ' 三层组织，概念之间由推出、等价与定义引用连成一张可缩放、可检索的图。每个概念一页。'
+      + ' A zoomable, searchable knowledge graph of mathematics.',
     url: `${SITE_ORIGIN}/`,
     en: true,
     ld: {
       '@context': 'https://schema.org', '@type': 'WebSite',
-      name: `${USER}.github.io`, url: `${SITE_ORIGIN}/`, inLanguage: 'zh-CN',
-      alternateName: 'MathGalaxy',
-      description: '个人站点：数学笔记与一些别的，主体是数学星图 MathGalaxy。',
+      name: SITE_NAME, alternateName: 'MathGalaxy',
+      url: `${SITE_ORIGIN}/`, inLanguage: 'zh-CN',
+      description: '数学星图 MathGalaxy —— 可交互的数学知识图谱，把人可读、AI 可查的数学笔记'
+        + '组织成「星系 / 星团 / 恒星」三层尺度的依赖图。',
+      sameAs: REPO_URL,
     },
   }),
 }, 'site/index.html'));
