@@ -382,6 +382,8 @@
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
+      /* ⚠️ 保存失败（无痕 / 受限的 file://）要让面板能如实说一句「没能保存」。 */
+      readSaveOk: reads.saveOk,
       /* 「独立页面」的地址（T1.5）。面板只负责画这个 <a>，地址规则在这里。 */
       pageHref: pageHref,
       onToggleRead: function (id) {
@@ -788,6 +790,7 @@
       settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
       if (on) {
         syncReadShow();                      // 复选框跟着 state 走（可能在别处被改过）
+        syncReadNote();                      // 「没能保存」那行也现算一次
         if (settingsClose) settingsClose.focus();
       } else if (settingsEl.contains(document.activeElement)) {
         settingsBtn.focus();
@@ -807,8 +810,79 @@
       /* 「清空已读进度」的按钮在设置窗口里 ⇒ 处理也要挂这儿（原来挂在图例上）。
          ⛔ 别只写 stopPropagation 就完事 —— 那条只是不让事件冒泡关窗口。 */
       var t = e.target;
-      if (t && t.closest && t.closest('[data-readreset]')) reads.reset();
+      if (t && t.closest && t.closest('[data-readreset]')) { reads.reset(); syncReadNote(); return; }
+      if (t && t.closest && t.closest('[data-readexport]')) { exportRead(); return; }
+      if (t && t.closest && t.closest('[data-readimport]')) {
+        var f = document.getElementById('set-readfile');
+        if (f) f.click();                       // 交给 <input type=file>，浏览器自己开选择框
+        return;
+      }
     });
+    /* ------------------------------------------------ 已读进度：导出 / 导入 */
+    /* 进度是**私人状态**（localStorage），换设备 / 清缓存就没了 —— 用户要求给一条
+       「自己搬」的路，⛔ 但**不做云同步**（那要账号、要服务端，和零依赖冲突）。
+       文件格式带 app/kind，导入时先认出自己的文件再并集合并（不删本地已有的）。 */
+    function exportRead() {
+      var ids = reads.readIds().slice().sort();
+      var payload = {
+        app: 'MathGalaxy', kind: 'read-progress', version: 1,
+        savedAt: new Date().toISOString(), count: ids.length, ids: ids
+      };
+      var name = 'mathgalaxy-read-' + new Date().toISOString().slice(0, 10) + '.json';
+      try {
+        var blob = new Blob([JSON.stringify(payload, null, 1)], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        setReadNote(MG.t('已导出 {n} 条已读记录：{名}', { n: ids.length, 名: name }), 'ok');
+      } catch (err) {
+        setReadNote(MG.t('导出失败：{因}', { 因: String(err && err.message || err) }), 'warn');
+      }
+    }
+    var readFileEl = document.getElementById('set-readfile');
+    if (readFileEl) {
+      readFileEl.addEventListener('change', function () {
+        var file = readFileEl.files && readFileEl.files[0];
+        readFileEl.value = '';                  // 同一个文件连选两次也要触发 change
+        if (!file) return;
+        var fr = new FileReader();
+        fr.onload = function () {
+          var data = null;
+          try { data = JSON.parse(String(fr.result)); } catch (err) { data = null; }
+          if (!data || data.app !== 'MathGalaxy' || !data.ids || typeof data.ids.forEach !== 'function') {
+            setReadNote(MG.t('导入失败：这不是 MathGalaxy 的已读进度文件'), 'warn');
+            return;
+          }
+          var before = reads.readCount();
+          var ids = data.ids.filter(function (x) { return typeof x === 'string'; });
+          reads.markMany(ids, true);
+          var added = reads.readCount() - before;
+          setReadNote(MG.t('已导入：文件里 {n} 条，其中 {新} 条是新的（导入是并集，不会删掉本地已有的）',
+            { n: ids.length, 新: added }), 'ok');
+          syncReadNote();
+        };
+        fr.onerror = function () { setReadNote(MG.t('导入失败：文件读不出来'), 'warn'); };
+        fr.readAsText(file);
+      });
+    }
+    /** 设置窗口里那行提示：保存失败常驻（warn），导入/导出的结果闪一下 */
+    var readNoteEl = document.getElementById('set-readonce');
+    function setReadNote(msg, kind) {
+      if (!readNoteEl) return;
+      readNoteEl.textContent = msg || '';
+      readNoteEl.className = 'set-hint' + (msg ? ' ' + (kind || '') : ' hidden');
+    }
+    function syncReadNote() {
+      var warn = document.getElementById('set-readwarn');
+      if (warn) warn.classList.toggle('hidden', reads.saveOk());
+      if (!readNoteEl) return;
+      if (!reads.readCount()) setReadNote('', '');
+    }
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
       /* 「图上显示已读标记」：state 在 readstate 里（存 localStorage），这里只接线。
@@ -1058,7 +1132,11 @@
         setLayerMax(lv === 'all' ? null : parseInt(lv, 10));
         return;
       }
-      if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
+      if (t.closest('[data-toggle]')) {
+        legendEl.classList.toggle('collapsed');
+        saveLegendChoice();                     // 记住用户自己的选择（窄屏默认不覆盖它）
+        return;
+      }
 
       // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）
       var nav = t.closest('[data-nav]');
@@ -1124,6 +1202,30 @@
       renderLegend();
     });
 
+    /* ------------------------------------------- 首屏「少占地方」（T4.4 建议 ⑤） */
+    /* 图例 300×726 ≈ 17%、底部说明卡 ≈ 8%（1600×900 实测）—— 桌面首屏一起吃掉 24.9%。
+       已经有的是：图例可折叠、窄屏自动折叠、设置里能把两者关掉（且记住）。
+       这里补两件**不改变桌面默认布局**的事：
+         ① 图例折没折**记住**（用户自己折的，下次打开还是折的）；
+         ② 窄屏时把**说明卡**也折成一行（原来只有图例折，手机上那张卡照样占 8%）。
+       ⛔ 桌面默认仍是「图例展开 + 说明展开」—— 要改默认得先问。 */
+    var LEGEND_KEY = 'mg.ui.legend';           // 'collapsed' | 'open'
+    function legendChoice() {
+      try { return localStorage.getItem(LEGEND_KEY); } catch (_) { return null; }
+    }
+    function saveLegendChoice() {
+      try {
+        localStorage.setItem(LEGEND_KEY,
+          legendEl.classList.contains('collapsed') ? 'collapsed' : 'open');
+      } catch (_) { /* 记不住就算了 */ }
+    }
+    /* 用户手动折过 / 展过 ⇒ 尊重他的选择；没表过态时才用「窄屏折起来」的默认。 */
+    (function restoreLegend() {
+      var c = legendChoice();
+      if (c === 'collapsed') legendEl.classList.add('collapsed');
+      else if (c === 'open') legendEl.classList.remove('collapsed');
+    })();
+
     /* 窄屏（竖屏手机 / 窄窗口）默认把图例**折起来**，而不是藏掉。
        ⚠️ 阈值必须和 styles.css 里那条 @media 保持一致。
        ⚠️ 只在「刚进入窄屏」时折一次 —— 每次都折的话，用户自己展开完一动窗口又没了。 */
@@ -1131,9 +1233,27 @@
     var wasNarrow = null;
     function syncNarrowLegend() {
       var now = window.innerWidth <= NARROW_W;
-      if (now && wasNarrow !== true) legendEl.classList.add('collapsed');
+      var choice = legendChoice();
+      if (now && wasNarrow !== true && !choice) legendEl.classList.add('collapsed');
+      var hint = document.getElementById('hint');
+      var det = hint && hint.querySelector('details');
+      if (det) {
+        if (now && wasNarrow !== true && !det.getAttribute('data-user')) det.open = false;
+        else if (!now && wasNarrow === true && !det.getAttribute('data-user')) det.open = true;
+      }
       wasNarrow = now;
     }
+    /* 说明卡被用户点过就记一笔：之后窗口大小怎么变都不再替他做主。
+       ⚠️ 加个时间闸：初始解析带 `open` 时某些浏览器也会抛一次 toggle ——
+          不拦住的话，「用户表过态」会在开页瞬间就被误标上，窄屏默认就失效了。 */
+    (function watchHint() {
+      var hint = document.getElementById('hint');
+      var det = hint && hint.querySelector('details');
+      if (!det) return;
+      var armed = false;
+      setTimeout(function () { armed = true; }, 1200);
+      det.addEventListener('toggle', function () { if (armed) det.setAttribute('data-user', '1'); });
+    })();
     syncNarrowLegend();
     window.addEventListener('resize', syncNarrowLegend);
 

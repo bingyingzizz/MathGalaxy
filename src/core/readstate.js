@@ -58,6 +58,12 @@
     }
 
     /* ------------------------------------------------------------ 读写 */
+    /* ⚠️ 保存失败（无痕模式 / 受限的 file:// / 配额满）以前是**静默**的 —— 用户
+       点了「标记已读」却不知道这次标记根本没留下。现在记一个状态位，
+       由界面（面板那行 + 设置窗口）如实告诉人:这一轮只在当前页面有效。
+       ⛔ 只记状态，**不弹窗、不阻塞** —— 看图不该被存储问题打断。 */
+    var saveOk = true;
+
     function load() {
       var raw = null;
       try { raw = global.localStorage ? global.localStorage.getItem(KEY) : null; }
@@ -72,12 +78,16 @@
     }
 
     function save() {
+      var ok = true;
       try {
-        if (!global.localStorage) return;
-        var ids = Object.keys(read);
-        if (ids.length) global.localStorage.setItem(KEY, JSON.stringify(ids));
-        else global.localStorage.removeItem(KEY);
-      } catch (e) { /* 记不住就算了，不影响看 */ }
+        if (!global.localStorage) ok = false;
+        else {
+          var ids = Object.keys(read);
+          if (ids.length) global.localStorage.setItem(KEY, JSON.stringify(ids));
+          else global.localStorage.removeItem(KEY);
+        }
+      } catch (e) { ok = false; }                  // 记不住就算了，不影响看图
+      saveOk = ok;
     }
 
     function commit() {
@@ -168,6 +178,7 @@
       isRead: isRead,
       readCount: readCount,
       readIds: readIds,
+      saveOk: function () { return saveOk; },
       prereqsOf: prereqsOf,
       missingPrereqs: missingPrereqs,
       setNode: setNode,

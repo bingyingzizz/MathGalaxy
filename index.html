@@ -143,6 +143,16 @@ window.addEventListener('error', function (e) {
          结果「关掉之后再也打不开」——用户就是这么看不见绿环的。 -->
     <label class="set-row"><input type="checkbox" id="set-readshow" checked> <span data-t="图上显示已读标记（绿环）">图上显示已读标记（绿环）</span></label>
     <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset data-t="清空已读进度">清空已读进度</button></div>
+    <!-- 进度是 localStorage 里的私人状态（不做云同步）—— 换设备/清缓存就没了，
+         所以给一条**自己搬**的路：导出成一个 JSON 文件、在另一台机器上导入。
+         导入 = 并集（把文件里的节点也标成已读），⛔ 不删本地已有的。 -->
+    <div class="set-row set-row-btn">
+      <button type="button" id="set-readexport" data-readexport data-t="导出已读进度（JSON）">导出已读进度（JSON）</button>
+      <button type="button" id="set-readimport" data-readimport data-t="导入已读进度（JSON）">导入已读进度（JSON）</button>
+    </div>
+    <input type="file" id="set-readfile" accept=".json,application/json" class="hidden">
+    <div class="set-hint hidden" id="set-readwarn" data-t="⚠️ 浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 进度只在本页有效，可以导出成文件留着">⚠️ 浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 进度只在本页有效，可以导出成文件留着</div>
+    <div class="set-hint hidden" id="set-readonce" role="status"></div>
     <div class="set-sep"></div>
     <div class="set-title" data-t="去别处">去别处</div>
     <a class="set-link" href="../" data-t="⌂ 站点首页">⌂ 站点首页</a>

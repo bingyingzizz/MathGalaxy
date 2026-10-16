@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T07:34:28.477Z",
+  "generated": "2026-10-16T10:47:49.971Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -14,7 +14,7 @@
    "edges": 1398,
    "strong": 1389,
    "weak": 9,
-   "en_pages": 294
+   "en_pages": 299
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -4364,6 +4364,24 @@
    "type": "lemma",
    "label": "Fatou 引理",
    "title": "Fatou 引理（Fatou's Lemma）",
+   "label_en": "Fatou's lemma",
+   "title_en": "Fatou's lemma",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.fatou.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -10362,6 +10380,24 @@
    "type": "lemma",
    "label": "米田引理",
    "title": "米田引理（Yoneda Lemma）",
+   "label_en": "Yoneda lemma",
+   "title_en": "Yoneda lemma",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.yoneda.en.md",
    "region": "category",
    "regions": [
     "category"
@@ -11528,6 +11564,24 @@
    "type": "definition",
    "label": "投射有限空间",
    "title": "投射有限空间（Profinite Space）",
+   "label_en": "profinite space",
+   "title_en": "profinite space",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.profinite.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -15620,6 +15674,24 @@
    "type": "definition",
    "label": "共尾函子",
    "title": "共尾函子（Cofinal Functor）",
+   "label_en": "cofinal functor",
+   "title_en": "cofinal functor",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.cofinal-functor.en.md",
    "region": "category",
    "regions": [
     "category"
@@ -15685,6 +15757,24 @@
    "type": "definition",
    "label": "滤过范畴",
    "title": "滤过范畴与滤过余极限（Filtered Category）",
+   "label_en": "filtered category",
+   "title_en": "filtered category",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.filtered-category.en.md",
    "region": "category",
    "regions": [
     "category"

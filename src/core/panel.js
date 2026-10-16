@@ -63,11 +63,13 @@
 
     function nodeRow(n, prefix, keyword) {
       var st = MG.typeStyle(n.type);
-      /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文） */
+      /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文）
+         ⚠️ 用 `plainMath`（保留可读公式）而不是 `plain`（公式→空格）——
+            否则这一行会出现「设 是偏序集， 。」这种空句。 */
       var desc = MG.isEn
-        ? (U.plain(n.abstract_en) || U.plain(n.statement_en) || U.plain(n.notes_en) ||
-           U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title))
-        : (U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title));
+        ? (U.plainMath(n.abstract_en) || U.plainMath(n.statement_en) || U.plainMath(n.notes_en) ||
+           U.plainMath(n.statement) || U.plainMath(n.notes) || U.plain(n.title))
+        : (U.plainMath(n.statement) || U.plainMath(n.notes) || U.plain(n.title));
       return '<div class="pn-link" data-kind="node" data-id="' + n.id + '">' +
         '<span class="dot" style="background:' + st.color + '"></span>' +
         (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
@@ -213,10 +215,17 @@
               '</span>';
           }
         }
+        /* ⚠️ 保存失败时如实说一句（无痕模式 / 受限的 file://）：以前是静默的，
+           用户点了「标记已读」却不知道这次标记根本没留下。 */
+        var warn = (hooks.readSaveOk && !hooks.readSaveOk())
+          ? '<span class="pn-read-warn" title="' +
+            U.escapeHtml(tf('浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 这次标记只在本页有效')) +
+            '">' + U.escapeHtml(tf('⚠ 没能保存')) + '</span>'
+          : '';
         html += '<div class="pn-read">' +
           '<button class="pn-btn pn-read-btn' + (isRead ? ' on' : '') +
           '" data-read="' + U.escapeHtml(n.id) + '">' +
-          U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + '</div>';
+          U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + warn + '</div>';
       }
 
       if (n.statement) html += section(tf('陈述'), '<div class="pn-body">' + U.md(n.statement) + '</div>');

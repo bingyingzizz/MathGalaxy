@@ -25,6 +25,9 @@
     var items = [];
     var active = -1;
     var open = false;
+    /* ⭐ 命中总数（**没有截断过的**）与展示条数：结果列表底部那行「共 N 项」要用，
+       读屏的那句也要用（原来它报的是「14 条结果」—— 那是展示条数，不是命中数）。 */
+    var hitTotal = 0;
 
     /* --------------------------------------------------------- 建立索引 */
     var index = [];
@@ -130,8 +133,15 @@
         /* T2.4：英文模式下搜索结果的**显示**也要用英文名（hay 里早就有它们，
            这里是把它们端到结果行上）。⛔ 中文模式一字不变。 */
         return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka,
+          /* ⭐ 摘要的两种口径都在这里算好（索引期一次，别在每次按键时算）：
+             `st`  = 剥掉公式（旧口径，仍有别的用处）
+             `stm` = **保留可读公式**（plainMath：`$x$`→`x`、`$\emptyset$`→`∅`）—— 结果行用它 */
+          stm: U.plainMath(n.statement),
+          ttl: U.plain(n.title),
+          refs: (n.refs || []).slice(),
           label_en: n.label_en || '', title_en: n.title_en || '',
-          st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : '') };
+          st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : ''),
+          stm_en: n.abstract_en ? U.plainMath(n.abstract_en) : (n.statement_en ? U.plainMath(n.statement_en) : '') };
       });
 
       /* 星团名也进词表：「测度的构造」贡献 `测度`；英文模式下英文星团名也要能搜到 */
@@ -278,6 +288,14 @@
     function run(q) {
       q = q.trim().toLowerCase();
       items = [];
+      /* ⭐ `ref:` 前缀 = **只搜书目/出处**（`ref:I.5`、`ref:Munkres`）。
+         为什么单开一条路：refs 不进 hay（章节号进了 hay 会把普通搜索淹掉，
+         `I.5` 那种坐标会到处误命中），但「按书号找节点」是真需求 —— 所以做成
+         显式前缀，只在用户明说要搜出处时才查，且只按 refs 打分。 */
+      var refMode = false;
+      var refQ = '';
+      var m0 = /^ref\s*[:：]\s*(.*)$/.exec(q);
+      if (m0) { refMode = true; refQ = m0[1].trim(); q = refQ; }
       if (!q) { render(); return; }
 
       var terms = termsOf(q);
@@ -286,22 +304,37 @@
 
       /* 命中的问法 → 它指向的节点直接顶到最前（最多认 4 个问法，免得全被顶上来） */
       var boost = Object.create(null), fired = 0;
-      for (var hi = 0; hi < hookIndex.length; hi++) {
-        var h = hookIndex[hi];
-        if (!hookHit(h, q, termSet)) continue;
-        if (++fired > 4) break;
-        h.to.forEach(function (id) { boost[id] = (boost[id] || 0) + 1; });
+      if (!refMode) {
+        for (var hi = 0; hi < hookIndex.length; hi++) {
+          var h = hookIndex[hi];
+          if (!hookHit(h, q, termSet)) continue;
+          if (++fired > 4) break;
+          h.to.forEach(function (id) { boost[id] = (boost[id] || 0) + 1; });
+        }
       }
 
       var tot = Object.create(null), cnt = Object.create(null);
-      terms.forEach(function (t) {
+      if (refMode) {
+        /* 只按 refs 打分：整条出处完全等于输入 1000，含它 800 */
         index.forEach(function (e) {
-          var s = score(e, t);
-          if (s <= 0) return;
-          tot[e.node.id] = (tot[e.node.id] || 0) + s;
-          cnt[e.node.id] = (cnt[e.node.id] || 0) + 1;
+          var best = 0;
+          for (var i = 0; i < e.refs.length; i++) {
+            var r = String(e.refs[i]).toLowerCase();
+            if (r === q) { best = 1000; break; }
+            if (r.indexOf(q) >= 0) best = 800;
+          }
+          if (best) { tot[e.node.id] = best; cnt[e.node.id] = 1; }
         });
-      });
+      } else {
+        terms.forEach(function (t) {
+          index.forEach(function (e) {
+            var s = score(e, t);
+            if (s <= 0) return;
+            tot[e.node.id] = (tot[e.node.id] || 0) + s;
+            cnt[e.node.id] = (cnt[e.node.id] || 0) + 1;
+          });
+        });
+      }
 
       /* 被多个词同时命中的节点加权 —— 「积分」和「极限」都沾的排前面 */
       var byEnt = Object.create(null);
@@ -330,6 +363,9 @@
         return (b.s - a.s) || (b.deg - a.deg) || (a.id < b.id ? -1 : 1);
       });
 
+      /* ⭐ 只展示前 14 条，但**真实总数要说出来**（2026-10-16 用户报的：
+         搜「定义」实际 345 条、界面只显示 14 条，此前界面上没有任何提示）。 */
+      hitTotal = hits.length;
       hits.slice(0, 14).forEach(function (h) {
         var e = byEnt[h.id];
         if (!e) return;
@@ -341,26 +377,61 @@
       });
 
       // 板块也当作一种结果
-      view.graph.regions.forEach(function (r) {
-        if (!r.stat) return;
-        if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
-          items.push({ kind: 'region', id: r.id, label: MG.regionName(r),
-            sub: MG.t('{n} 个节点', { n: r.stat.count }), q: q, grp: 'all' });
-        }
-      });
+      if (!refMode) {
+        view.graph.regions.forEach(function (r) {
+          if (!r.stat) return;
+          if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
+            items.push({ kind: 'region', id: r.id, label: MG.regionName(r),
+              sub: MG.t('{n} 个节点', { n: r.stat.count }), q: q, grp: 'all' });
+          }
+        });
+      }
 
       active = items.length ? 0 : -1;
       render();
     }
 
-    function subOf(e) {
-      /* 英文模式：副标题优先英文摘要/英文陈述，再退到英文名 —— 都没有就还是中文 */
-      if (MG.isEn) {
-        var en = e.st_en || e.title_en || e.label_en;
-        if (en) return U.truncate(U.plain(en), 64);
+    /* ----------------------------------------------------------- 摘要行 */
+    /* ⭐ 结果行底下那行摘要（2026-10-16 改口径）。
+       旧做法：`U.plain(statement)` —— 公式整个被换成空格，于是出现
+         「设 是一个集合族，且 。 是 的选择函数，当且仅当 是函数， ； 。」
+       这种空句（709 个节点里 153 个，用户报的）。
+       现在按「读得通」优先挑：
+         ① 用 `plainMath`（简单公式转成 Unicode 记号后**留下**）：设 F 是一个集合族，且 ∅ ∉ F。
+         ② 整段不通顺就取**第一句通顺的**（句子级挑，别把破句子端出去）
+         ③ 还不行退回 title（多半本来就是一句干净的话）
+         ④ 最后才用类型名
+       ⛔ 判据是「有没有空槽 + 有没有足够的内容」，不是「长度」——
+          宁可少给信息，也别给一句读不通的。 */
+    var BAD_SNIPPET = /([，,、；;]\s*[。．，,、；;])|((of|is|are|in|to|the|a|an|on)\s*[,.;])|(^\s*[,.;。])|([（(]\s*[）)])/;
+    function meaningful(s) { return (String(s).match(/[\u4e00-\u9fff0-9A-Za-z]/g) || []).length; }
+    function cleanSnippet(s) { return !!s && !BAD_SNIPPET.test(s) && meaningful(s) >= 8; }
+    /** 第一句读得通的（句号 / 分号 / 叹问号断句，连标点一起留下）
+        ⚠️ 手写切句、不用后行断言（`(?<=…)`）—— 用户的安卓平板 Chromium 偏旧，别赌它支持 */
+    var SENT_END = '。．！？；;.!?';
+    function firstCleanSentence(s) {
+      var t = String(s), buf = '';
+      for (var i = 0; i < t.length; i++) {
+        buf += t.charAt(i);
+        if (SENT_END.indexOf(t.charAt(i)) < 0) continue;
+        if (cleanSnippet(buf)) return buf.trim();
+        buf = '';
       }
-      var st = e.st || U.plain(e.title);
-      return U.truncate(st || MG.typeStyle(e.node.type).name, 64);
+      return cleanSnippet(buf) ? buf.trim() : '';
+    }
+
+    function subOf(e) {
+      var cands = MG.isEn
+        ? [e.stm_en, e.st_en, e.title_en, e.ttl, e.label_en]
+        : [e.stm, e.ttl];
+      for (var i = 0; i < cands.length; i++) {
+        var s = cands[i];
+        if (!s) continue;
+        if (cleanSnippet(s)) return U.truncate(s, 64);
+        var one = firstCleanSentence(s);
+        if (one) return U.truncate(one, 64);
+      }
+      return MG.typeStyle(e.node.type).name;
     }
 
     function mark(text, q) {
@@ -395,7 +466,9 @@
       if (!items.length) {
         var v = input.value.trim();
         results.innerHTML = v
-          ? '<div class="sr-empty">' + U.escapeHtml(MG.t('没有找到「{名}」相关的节点', { 名: v })) + '</div>'
+          ? '<div class="sr-empty">' + U.escapeHtml(MG.t('没有找到「{名}」相关的节点', { 名: v })) +
+            '<br><span class="sr-empty-tip">' +
+            U.escapeHtml(MG.t('按书号 / 章节号找的话，用 ref: 前缀，例如 ref:I.5')) + '</span></div>'
           : '';
         open = !!v;
       } else {
@@ -411,6 +484,12 @@
           }
           html += itemHtml(it, i);
         });
+        /* ⭐ 截断要说出来（⛔ 不是 .sr-item：它不可点，也不算一条结果） */
+        if (hitTotal > items.length) {
+          html += '<div class="sr-more">' +
+            U.escapeHtml(MG.t('共 {n} 项，只显示前 {m} 项 —— 继续打字缩小范围',
+              { n: hitTotal, m: items.length })) + '</div>';
+        }
         results.innerHTML = html;
         open = true;
       }
@@ -420,7 +499,8 @@
     }
 
     /* 可达性：把「下拉开没开 / 当前高亮第几条 / 一共几条」同步给读屏。
-       ⚠️ 键盘 ↑↓ / Enter / Esc 早就有了，缺的一直是这几个属性。 */
+       ⚠️ 键盘 ↑↓ / Enter / Esc 早就有了，缺的一直是这几个属性。
+       ⚠️ 「一共几条」要用**命中总数**，不是展示条数 —— 否则读屏也听到「14 条结果」。 */
     var liveEl = document.getElementById('search-live');
     function syncA11y() {
       input.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -430,7 +510,7 @@
       if (liveEl) {
         liveEl.textContent = !open ? ''
           : (items.length
-            ? MG.t('{n} 条结果，当前第 {k} 条', { n: items.length, k: ok ? active + 1 : '—' })
+            ? MG.t('{n} 条结果，当前第 {k} 条', { n: hitTotal || items.length, k: ok ? active + 1 : '—' })
             : MG.t('没有结果'));
       }
     }

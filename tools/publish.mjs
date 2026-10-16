@@ -97,6 +97,56 @@ function run(cmd, argv, cwd, quiet = false) {
   return r.status === 0;
 }
 
+/* ------------------------------------------------ sitemap 用的「最后改动」 */
+/* ⚠️ 原来所有 URL 的 lastmod 都是**构建日期**（`meta.generated` 前十位）——
+   每次发布 723 条一起「变」，等于没有信息（用户 2026-10-16 指出）。
+   现在按**内容**算：某个路径最后一次被提交的日期。
+     · 概念页 → 定义这个节点的 pack 文件
+     · 其余页 → 它自己的源文件（site/*.html、dist/*.md…）
+     · 拿不到 git 信息（浅克隆 / 不是 git 仓库 / 文件没提交过）⇒ 那一条**不写 lastmod**：
+       sitemap 里 lastmod 是可选字段，写个假的比不写更糟。 */
+const dateCache = new Map();
+function gitDate(rel) {
+  if (dateCache.has(rel)) return dateCache.get(rel);
+  let out = '';
+  try {
+    const r = spawnSync(GIT, ['log', '-1', '--format=%cs', '--', rel],
+      { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    const d = r.status === 0 && r.stdout ? String(r.stdout).trim() : '';
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) out = d;
+  } catch (_) { out = ''; }                      // 取不到就当没有
+  dateCache.set(rel, out);
+  return out;
+}
+
+/* 节点 id → 它在哪个 pack 里（708 个节点分散在 82 个包里 ⇒ 日期才有区分度） */
+const packDir = path.join(SRC, 'data', 'packs');
+const packsOfId = new Map();
+let packDates = 0;
+try {
+  for (const f of fs.readdirSync(packDir).filter((x) => x.endsWith('.js'))) {
+    const rel = 'src/data/packs/' + f;
+    const t = fs.readFileSync(path.join(packDir, f), 'utf8');
+    const re = /\bid\s*:\s*['"]([A-Za-z0-9._-]+)['"]/g;
+    let m;
+    while ((m = re.exec(t))) {
+      if (!packsOfId.has(m[1])) packsOfId.set(m[1], []);
+      packsOfId.get(m[1]).push(rel);
+    }
+  }
+  for (const rel of new Set([...packsOfId.values()].flat())) if (gitDate(rel)) packDates++;
+} catch (_) { /* 没有 packs 目录就整条不算 */ }
+/** 某个节点页的日期 = 提到它的那些 pack 里**最晚**的那个 */
+function nodeDate(id) {
+  const rels = packsOfId.get(id) || [];
+  let best = '';
+  for (const rel of rels) {
+    const d = gitDate(rel);
+    if (d && d > best) best = d;
+  }
+  return best;
+}
+
 if (noBuild) {
   console.log('① 跳过构建（--no-build）：直接拿现有 dist/ 组装');
 } else {
@@ -451,24 +501,32 @@ for (const d of contentDirs) {
    文件本身一个都没动，AI 走根 llms.txt 那条协议照旧能找到 —— 那条协议本来
    就不是给搜索引擎看的。 */
 const smEntries = [
-  { loc: `${SITE_ORIGIN}/`, pri: '1.0' },
-  { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8' },
-  { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0' },
-  { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9' },        // 全部概念的入口，爬虫从这儿进
-  { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8' },  // 184 条真实问法，长尾入口
+  { loc: `${SITE_ORIGIN}/`, pri: '1.0', date: gitDate('site') },
+  { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8', date: gitDate('site') },
+  { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0', date: gitDate('src') },
+  { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9', date: gitDate('src') },        // 全部概念的入口，爬虫从这儿进
+  { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8', date: gitDate('src') },  // 184 条真实问法，长尾入口
   ...['index.md', 'llms.txt', 'reading.md', 'policy.md', 'hubs.md', 'notation.md', 'alias.md',
       'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']
-    .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.4' })),
+    .map((f) => ({ loc: `${SITE_ORIGIN}/mathgalaxy/${f}`, pri: '0.4', date: gitDate('dist/' + f) })),
   // 概念页：一个概念一页，这才是能被「搜概念名」命中的东西
   ...conceptPages.filter((p) => p.rel.startsWith('nodes/')).map((p) => ({
     loc: `${SITE_ORIGIN}/mathgalaxy/${p.rel}`, pri: '0.7',
+    date: nodeDate(path.basename(p.rel, '.html')),
   })),
 ];
+const withDate = smEntries.filter((u) => u.date).length;
 fs.writeFileSync(path.join(STAGE, 'sitemap.xml'),
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  smEntries.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${updated}</lastmod><priority>${u.pri}</priority></url>`).join('\n') +
+  smEntries.map((u) => '  <url><loc>' + u.loc + '</loc>' +
+    (u.date ? `<lastmod>${u.date}</lastmod>` : '') +
+    `<priority>${u.pri}</priority></url>`).join('\n') +
   '\n</urlset>\n', 'utf8');
+/* ⚠️ 报告一句：日期从哪来（没带日期的是「取不到 git 信息」的，不是漏写） */
+console.log(`   sitemap：${smEntries.length} 条 URL，其中带 lastmod ${withDate} 条` +
+  `（按内容改动日期算：${packDates} 个 pack 有提交日期）` +
+  (withDate < smEntries.length ? `，${smEntries.length - withDate} 条取不到日期 ⇒ 不写 lastmod` : ''));
 fs.writeFileSync(path.join(STAGE, 'robots.txt'),
   '# 全部允许抓取 —— 这张图就是给人看、给 AI 读的\n' +
   'User-agent: *\nAllow: /\n\n' +

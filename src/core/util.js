@@ -133,14 +133,18 @@
 
   /** 取纯文本（去掉 LaTeX 记号），用于搜索与摘要 */
   function plain(text) {
-    return String(text || '')
+    return stripMd(String(text || '')
       .replace(/\$\$[\s\S]*?\$\$/g, ' ')
-      .replace(/\$[^$\n]*\$/g, ' ')
-      // 标记语法要剥干净 —— 这里是纯文本预览（搜索行、证据链摘要），
-      // 漏了这一步页面上就会直接显示 ** 和 ## 的字面量。
-      // 与 inlineMd 同一套，但这里允许夹一个换行：md() 会把段内换行
-      // 折成空格（para.join(' ')），plain() 拿到的是原文，不放过就会漏 **。
-      // 只放单个 \n，空行（段落断开）仍然不许跨。
+      .replace(/\$[^$\n]*\$/g, ' '));
+  }
+
+  /* 标记语法要剥干净 —— 这里是纯文本预览（搜索行、证据链摘要），
+     漏了这一步页面上就会直接显示 ** 和 ## 的字面量。
+     与 inlineMd 同一套，但这里允许夹一个换行：md() 会把段内换行
+     折成空格（para.join(' ')），plain() 拿到的是原文，不放过就会漏 **。
+     只放单个 \n，空行（段落断开）仍然不许跨。 */
+  function stripMd(text) {
+    return String(text || '')
       .replace(/\*\*((?:[^*\n]|\n(?!\n)|\*(?!\*))+?)\*\*/g, '$1')
       .replace(/\*([^*\n]+)\*/g, '$1')
       .replace(/`([^`\n]*)`/g, '$1')
@@ -151,6 +155,89 @@
       .replace(/[{}\\]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
+  }
+
+  /* ---------------------------------------------- 公式 → 可读文本（摘要用） */
+  /* ⛔ 这不是渲染（渲染走 KaTeX），也不是给 AI 的 LaTeX —— 只给**摘要**用。
+     为什么要它：`plain()` 把公式整个换成空格，于是
+       `设 $F$ 是一个集合族，且 $\emptyset \notin F$。`
+     变成「设 是一个集合族，且 。」—— 搜索结果行里就是这种空句（153/709 个节点）。
+     这里把**简单**的公式转成 Unicode 记号后留下：`设 F 是一个集合族，且 ∅ ∉ F。`
+     长/嵌套的公式照样会剩下噪声，所以调用方还要过一道「够不够干净」的闸（见 search.js）。 */
+  var TEX_SYM = {
+    '\\emptyset': '∅', '\\varnothing': '∅', '\\in': '∈', '\\notin': '∉', '\\ni': '∋',
+    '\\subseteq': '⊆', '\\subsetneq': '⊊', '\\subset': '⊂', '\\supseteq': '⊇',
+    '\\supsetneq': '⊋', '\\supset': '⊃', '\\sqsubseteq': '⊑', '\\sqsupseteq': '⊒',
+    '\\cup': '∪', '\\cap': '∩', '\\setminus': '∖', '\\smallsetminus': '∖',
+    '\\times': '×', '\\cdot': '·', '\\pm': '±', '\\mp': '∓', '\\ast': '∗', '\\star': '⋆',
+    '\\bullet': '•', '\\dagger': '†', '\\ddagger': '‡',
+    '\\to': '→', '\\rightarrow': '→', '\\longrightarrow': '⟶', '\\leftarrow': '←',
+    '\\longleftarrow': '⟵', '\\mapsto': '↦', '\\Rightarrow': '⇒', '\\implies': '⟹',
+    '\\leftrightarrow': '↔', '\\Longleftrightarrow': '⟺', '\\iff': '⟺',
+    '\\hookrightarrow': '↪', '\\hookleftarrow': '↩', '\\twoheadrightarrow': '↠',
+    '\\le': '≤', '\\leq': '≤', '\\ge': '≥', '\\geq': '≥', '\\neq': '≠', '\\ne': '≠',
+    '\\preceq': '≼', '\\succeq': '≽', '\\prec': '≺', '\\succ': '≻',
+    '\\approx': '≈', '\\cong': '≅', '\\simeq': '≃', '\\sim': '∼', '\\equiv': '≡',
+    '\\triangleq': '≜', '\\coloneqq': '≔', '\\colon': ':', '\\mid': '∣', '\\nmid': '∤',
+    '\\vdash': '⊢', '\\dashv': '⊣', '\\models': '⊨', '\\Vdash': '⊩',
+    '\\infty': '∞', '\\partial': '∂', '\\nabla': '∇', '\\forall': '∀', '\\exists': '∃',
+    '\\neg': '¬', '\\lnot': '¬', '\\wedge': '∧', '\\vee': '∨', '\\land': '∧', '\\lor': '∨',
+    '\\perp': '⊥', '\\parallel': '∥', '\\angle': '∠', '\\triangle': '△',
+    '\\circ': '∘', '\\sum': '∑', '\\prod': '∏', '\\coprod': '∐', '\\int': '∫',
+    '\\bigcup': '⋃', '\\bigcap': '⋂', '\\bigoplus': '⨁', '\\bigotimes': '⨂',
+    '\\oplus': '⊕', '\\otimes': '⊗', '\\ominus': '⊖', '\\sqcup': '⊔', '\\sqcap': '⊓',
+    '\\aleph': 'ℵ', '\\ell': 'ℓ', '\\cdots': '⋯', '\\ldots': '…', '\\dots': '…', '\\vdots': '⋮',
+    '\\square': '□', '\\checkmark': '✓',
+    '\\alpha': 'α', '\\beta': 'β', '\\gamma': 'γ', '\\Gamma': 'Γ', '\\delta': 'δ', '\\Delta': 'Δ',
+    '\\epsilon': 'ε', '\\varepsilon': 'ε', '\\zeta': 'ζ', '\\eta': 'η', '\\theta': 'θ',
+    '\\kappa': 'κ', '\\lambda': 'λ', '\\Lambda': 'Λ', '\\mu': 'μ', '\\nu': 'ν', '\\xi': 'ξ',
+    '\\pi': 'π', '\\Pi': 'Π', '\\rho': 'ρ', '\\sigma': 'σ', '\\Sigma': 'Σ', '\\tau': 'τ',
+    '\\phi': 'φ', '\\varphi': 'φ', '\\Phi': 'Φ', '\\chi': 'χ', '\\psi': 'ψ', '\\Psi': 'Ψ',
+    '\\omega': 'ω', '\\Omega': 'Ω',
+    '\\mathbb{R}': 'ℝ', '\\mathbb{N}': 'ℕ', '\\mathbb{Z}': 'ℤ', '\\mathbb{Q}': 'ℚ',
+    '\\mathbb{C}': 'ℂ', '\\mathbb{H}': 'ℍ', '\\mathbb{P}': 'ℙ', '\\mathbb{E}': '𝔼',
+    '\\mathcal{P}': '𝒫', '\\mathcal{U}': '𝒰', '\\mathcal{F}': 'ℱ', '\\mathcal{O}': '𝒪',
+    '\\mathcal{C}': '𝒞', '\\mathcal{M}': 'ℳ', '\\mathcal{L}': 'ℒ',
+    '\\mathfrak{A}': '𝔄', '\\mathfrak{m}': '𝔪', '\\mathfrak{p}': '𝔭', '\\mathfrak{q}': '𝔮'
+  };
+  var TEX_KEYS = Object.keys(TEX_SYM).sort(function (a, b) { return b.length - a.length; });
+
+  /* 这些命令**当词留下**（sup S、ker f…）—— 丢掉的话句子里就多个洞 */
+  var TEX_OPS = ('sup inf lim limsup liminf max min ker im coker dom cod det dim deg rank id ' +
+    'pr ev spec hom Hom ext Ext tor Tor colim mod gcd lcm exp log sin cos tan arctan sgn ' +
+    'supp card span Span tr Tr diag vol diam dist closure interior').split(' ');
+  var TEX_OP_SET = Object.create(null);
+  TEX_OPS.forEach(function (w) { TEX_OP_SET[w] = 1; });
+
+  /** 一段 TeX → 可读文本（未知命令直接丢掉，宁可少几个字也别留下 `\preceq`） */
+  function texToText(tex) {
+    var s = String(tex || '');
+    s = s.replace(/\\(?:left|right|big|Big|bigg|Bigg|l|r)\b/g, ' ');   // \left( \right) \big[
+    s = s.replace(/\\(?:quad|qquad|,|;|:|!| )/g, ' ');
+    for (var i = 0; i < TEX_KEYS.length; i++) {
+      var k = TEX_KEYS[i];
+      if (s.indexOf(k) >= 0) s = s.split(k).join(TEX_SYM[k]);
+    }
+    /* 重音 / 字体命令：{...} 里的内容留下（\overline{A} → A）
+       ⚠️ 只处理**不带嵌套花括号**的（够用了：这些命令的参数基本是单层） */
+    s = s.replace(
+      /\\(?:overline|underline|widehat|widetilde|hat|tilde|bar|vec|dot|ddot|mathbf|boldsymbol|mathcal|mathfrak|mathsf|mathtt|mathrm|text|textrm|textnormal|operatorname|mathbb|mathnormal|mathscr)\s*\{([^{}]*)\}/g,
+      ' $1 ');
+    s = s.replace(/\\([a-zA-Z]+)/g, function (m, name) {
+      return TEX_OP_SET[name] ? ' ' + name + ' ' : ' ';
+    });
+    s = s.replace(/\\([^a-zA-Z])/g, '$1');
+    s = s.replace(/[{}$]/g, '');
+    s = s.replace(/\s+/g, ' ').trim();
+    return s;
+  }
+
+  /** 摘要专用：保留**可读**的公式（`$x$` → `x`，`$\emptyset$` → `∅`），再剥 markdown 标记 */
+  function plainMath(text) {
+    var s = String(text || '')
+      .replace(/\$\$([\s\S]*?)\$\$/g, function (m, tex) { return ' ' + texToText(tex) + ' '; })
+      .replace(/\$([^$\n]*)\$/g, function (m, tex) { return texToText(tex); });
+    return stripMd(s);
   }
 
   function truncate(s, n) {
@@ -336,6 +423,7 @@
     escapeHtml: escapeHtml,
     escapeRegExp: escapeRegExp,
     plain: plain,
+    plainMath: plainMath,
     truncate: truncate,
     md: md,
     inlineMd: inlineMd,

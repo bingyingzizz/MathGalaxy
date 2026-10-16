@@ -196,7 +196,20 @@ export function tier2Of(r) {
   const cands = r.clean;                    // 候选 = aka 里名字样的英文条目
   if (!cands.length) return null;
   const hit = cands.filter((c) => wordHitRe(c).test(String(r.title || '')));
-  return hit.length === 1 ? hit[0] : null;
+  /* ⭐ 命中项里若有**短写法是长写法的开头、且在那儿正好断词**（`Yoneda` ⊂ `Yoneda lemma`），
+     那是同一个名字的简写，不算「另一条候选」—— 否则 title 写全称时长短两条一起命中，
+     规则会判成「多命中」而落空（`lem.yoneda` 就是这么漏掉的：aka 里既有
+     `Yoneda lemma` 又有裸 `Yoneda`，title 写的是「米田引理（Yoneda Lemma）」）。
+     ⛔ 必须断词才算简写：`unit` ⊂ `counit`、`cone` ⊂ `cocone`、`equalizer` ⊂ `coequalizer`
+        是**两个不同的概念**（余单位/余锥/余等化子），绝不能把前者当后者的简写
+        —— 实测试过按裸子串判，会把 def.cone 的英文名写成 `cocone`（错的）。 */
+  const isShorthand = (c, o) => {
+    const lo = o.toLowerCase(), lc = c.toLowerCase();
+    if (lo === lc || lo.indexOf(lc) !== 0) return false;
+    return !/[a-z0-9]/.test(lo.charAt(lc.length));   // 后面接空格/标点/结尾 = 断词
+  };
+  const maximal = hit.filter((c) => !hit.some((o) => isShorthand(c, o)));
+  return maximal.length === 1 ? maximal[0] : null;
 }
 /** 二级条目 */
 export const tier2Entry = (cand) => ({

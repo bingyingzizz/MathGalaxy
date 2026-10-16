@@ -28,27 +28,27 @@
 | 桶 | 节点数 | 占比 | 意思 |
 |---|---|---|---|
 | ✅ 一级填入（`from: aka` / `from: title`） | 253 | 35.7% | aka 里恰好一条名字样英文 |
-| ✅ 二级填入（`from: aka-title`） | 41 | 5.8% | title 里恰好命中一个 aka 候选 —— 清单见 `i18n/second-tier.md`（可整批回滚）|
-| ⛔ 缺口 | 415 | 58.5% | 下面第二节逐条列 |
-| **合计** | **709** | 100% | 覆盖 294（41.5%），缺口 415 |
+| ✅ 二级填入（`from: aka-title`） | 46 | 6.5% | title 里恰好命中一个 aka 候选 —— 清单见 `i18n/second-tier.md`（可整批回滚）|
+| ⛔ 缺口 | 410 | 57.8% | 下面第二节逐条列 |
+| **合计** | **709** | 100% | 覆盖 299（42.2%），缺口 410 |
 
 ## 二、缺口为什么填不了（互斥，合计 = 缺口数）
 
 | 桶 | 节点数 | 意思 |
 |---|---|---|
-| ⚠️ 歧义（二级也没捞着） | 51 | aka 里有 ≥2 条英文写法，且 title 里没出现其中一个 |
+| ⚠️ 歧义（二级也没捞着） | 46 | aka 里有 ≥2 条英文写法，且 title 里没出现其中一个 |
 | ⚠️ 只有缩写 | 17 | aka 里只有 AC / FOL / sup / MCT a.e. 这种缩写 |
 | ⚠️ 只有书号 | 256 | aka 里只有 Exercise 2.25 / Theorem 8.3.9 这种坐标（搜索用，不是名字）|
 | ⚠️ 只有 title 有 | 3 | aka 没有英文，但 title 括号里是英文 |
 | ⛔ 完全没有 | 88 | aka 与 title 都没有英文名 |
-| **合计** | **415** | = 全部节点 709 − 已覆盖 294 |
+| **合计** | **410** | = 全部节点 709 − 已覆盖 299 |
 
-⚠️ **口径提醒**：脚本内部的分桶是在**二级之前**做的，所以「歧义」原始数是 92，其中 **41** 条被二级捞走了 —— 上表用的是减完的 51。
+⚠️ **口径提醒**：脚本内部的分桶是在**二级之前**做的，所以「歧义」原始数是 92，其中 **46** 条被二级捞走了 —— 上表用的是减完的 46。
 两张表各自互斥、各自合计对得上；⛔ 别把两张表的行混着加。
 
 ---
 
-## 缺口按星系分组（415）
+## 缺口按星系分组（410）
 
 每行都带上候选集，方便照着 `aliases.js` 补。同一节点属多个星系时只列在第一个里。
 
@@ -90,7 +90,7 @@
 | `prop.module-tensor-universal` | 张量积对双线性映射万有 | （只有书号：`Exercise 1.21`） | 命题：$\operatorname{Bil}(M \times N,\ P) \cong \operatorname{H | 无候选（aka 里只有书号） |
 | `prop.zmod-is-ab` | Z-模就是阿贝尔群 | （只有书号：`Exercise 1.10`） | 命题：$\mathbb{Z}\text{-}\mathbf{Mod} \cong \mathbf{Ab}$、$\math | 无候选（aka 里只有书号） |
 
-### 拓扑学 · `topology`（45）
+### 拓扑学 · `topology`（44）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
@@ -108,7 +108,6 @@
 | `prop.stonean-basic` | 极端不连通的基本性质 | （只有书号：`Lemma 2.2.10` / `Exercise 2.23`） | 极端不连通的性质 | 无候选（aka 里只有书号） |
 | `prop.td-reflective` | 全不连通空间是反射子范畴 | `pi_0` | 全不连通空间是 $\mathbf{Top}$ 的反射子范畴 | 零命中（候选没出现在 title 里） |
 | `prop.stone-reflective` | Stone 空间是 CHaus 的反射子范畴 | （只有书号：`Exercise 2.17`） | Stone 空间是 $\mathbf{CHaus}$ 的反射子范畴 | 无候选（aka 里只有书号） |
-| `def.profinite` | 投射有限空间 | `profinite space` / `profinite` | 投射有限空间（Profinite Space） | 多命中：`profinite space` / `profinite` |
 | `ex.cg-examples` | 紧生成空间的例子 | （只有书号：`Exercise 6.2`） | 哪些空间是紧生成的 | 无候选（aka 里只有书号） |
 | `prop.cg-equivalent-conditions` | 紧生成空间的等价刻画 | （只有书号：`Exercise 2.24`） | 紧生成性的六条等价说法 | 无候选（aka 里只有书号） |
 | `def.k-topology` | k-开、k-闭与 k-拓扑 | `k-ification` / `kX` | $k$-开集与 $k$-化（$k$-Topology） | 零命中（候选没出现在 title 里） |
@@ -140,7 +139,7 @@
 | `prop.chaus-quotient-equiv` | 紧 Hausdorff 上商映射的四种说法 | （只有书号：`Exercise 2.9`） | 命题：商映射 $\iff$ 正则满 $\iff$ 满态射 $\iff$ 满射 | 无候选（aka 里只有书号） |
 | `prop.weak-hausdorff-k-closed` | 弱 Hausdorff 的对角线与核 | （只有书号：`Exercise 2.36` / `Exercise 2.37`） | 命题：对角线 $k$-闭 $\iff$ 弱 Hausdorff；$\ker(f,g)$ 也 $k$-闭 | 无候选（aka 里只有书号） |
 
-### 分析学 · `analysis`（79）
+### 分析学 · `analysis`（78）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
@@ -172,7 +171,6 @@
 | `def.integral-nonneg` | 非负函数的积分 | — | 非负可测函数的积分：从下面取上确界 | 无候选（aka 与 title 都没有英文） |
 | `prop.integral-zero-iff` | 积分为零 ⟺ 几乎处处为零 | — | 命题：$\int f = 0 \iff f = 0 \text{a.e.}$ | 无候选（aka 与 title 都没有英文） |
 | `cor.mct-ae` | MCT（a.e. 版本） | `MCT a.e.` | 推论：单调收敛定理的几乎处处版本 | 零命中（候选没出现在 title 里） |
-| `lem.fatou` | Fatou 引理 | `Fatou` / `Fatou's lemma` | Fatou 引理（Fatou's Lemma） | 多命中：`Fatou` / `Fatou's lemma` |
 | `cor.fatou` | Fatou 的推论 | — | 推论：$f_{n} \to f \text{a.e.} \implies \int f \le \lim \int f_ | 无候选（aka 与 title 都没有英文） |
 | `prop.finite-integral-consequences` | 积分有限的后果 | — | 命题：$\int f < \infty$ 时，f 几乎处处有限、支撑 σ-有限 | 无候选（aka 与 title 都没有英文） |
 | `def.integral-complex` | 复函数的积分 | — | 复值函数的积分：正负部相减 | 无候选（aka 与 title 都没有英文） |
@@ -230,7 +228,7 @@
 |---|---|---|---|---|
 | `def.satisfaction` | 满足关系 | `satisfaction` / `semantics` | 结构与满足关系 $\models$（Tarski） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 
-### 范畴论 · `category`（124）
+### 范畴论 · `category`（121）
 
 | 节点 id | 中文名 | aka 候选（英文） | title | 为什么填不了 |
 |---|---|---|---|---|
@@ -243,7 +241,6 @@
 | `def.equalizer` | 等化子 / 余等化子 | `equalizer` / `coequalizer` / `ker` / `coker` | 等化子与余等化子（Equalizer / Coequalizer） | 多命中：`equalizer` / `coequalizer` |
 | `def.mono` | 单态射 / 满态射 / 同构 | `mono` / `epi` / `monomorphism` / `epimorphism` / `isomorphism` / `isomorphic` | 单态射、满态射与同构（Mono / Epi / Isomorphism） | 多命中：`mono` / `epi` / `isomorphism` |
 | `def.image` | 像 / 余像 | `image` / `coimage` / `strict` | 像与余像（Image / Coimage） | 多命中：`image` / `coimage` |
-| `lem.yoneda` | 米田引理 | `Yoneda lemma` / `Yoneda` | 米田引理（Yoneda Lemma） | 多命中：`Yoneda lemma` / `Yoneda` |
 | `prop.slice-cartesian` | 切片范畴是拉回 | — | 切片范畴的方块是笛卡尔的 | 无候选（aka 与 title 都没有英文） |
 | `lem.presheaf-mono-pointwise` | 预层态射的单满按点检验 | — | 预层是逐点算的 | 无候选（aka 与 title 都没有英文） |
 | `def.adjoint` | 伴随函子 | `adjoint functor` / `adjunction` | 伴随函子（Adjoint Functors） | 零命中（aka 有 2 条候选，title 里一条都没出现） |
@@ -269,8 +266,6 @@
 | `prop.topos-sheaf-limits` | 拓扑斯上的层即保极限的预层 | （只有书号：`Exercise 3.42`） | 拓扑斯上的层 $\iff$ 保持所有极限 | 无候选（aka 里只有书号） |
 | `prop.quasi-compact-properties` | 拟紧的性质 | （只有书号：`Exercise 3.46` / `Proposition 3.3.9`） | 拟紧对象的性质 | 无候选（aka 里只有书号） |
 | `thm.pretopos-qcqs` | 预拓扑斯由拓扑斯唯一确定 | `qcqs` | 预拓扑斯 $\simeq$ 拟紧拟分离层 | 零命中（候选没出现在 title 里） |
-| `def.cofinal-functor` | 共尾函子 | `cofinal` / `cofinal functor` / `final functor` / `coinitial` | 共尾函子（Cofinal Functor） | 多命中：`cofinal` / `cofinal functor` |
-| `def.filtered-category` | 滤过范畴 | `filtered category` / `filtered` / `cocone` | 滤过范畴与滤过余极限（Filtered Category） | 多命中：`filtered category` / `filtered` |
 | `prop.representable-preserves-limits` | 可表函子保所有极限 | `representable preserves limits` / `left exact` | 可表函子保所有极限 | 零命中（aka 有 2 条候选，title 里一条都没出现） |
 | `ex.ab-of-categories` | Ab(C) 的例子 | `Ab(Top)` / `Ab(Set)` | $\mathrm{Ab}(-)$ 在几个范畴上的样子 | 零命中（候选没出现在 title 里） |
 | `prop.localization-hom-colim` | 局部化的 Hom 是滤过余极限 | — | $\operatorname{Hom}_{\mathrm{ho}}(X,Y) = \varinjlim_{X' \to  | 无候选（aka 与 title 都没有英文） |

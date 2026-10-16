@@ -1,6 +1,6 @@
 # 二级命中清单（title 定下来的英文名）
 
-> 由 `bun tools/i18n-backfill.mjs` 现算，共 **41** 条（占全部 709 个节点）。
+> 由 `bun tools/i18n-backfill.mjs` 现算，共 **46** 条（占全部 709 个节点）。
 > 规则（作者 2026-10-16 拍板）：候选 = 该节点 aka 里**名字样**的英文条目；
 > 匹配 = **大小写不敏感 + 词边界精确匹配**，**只扫 title**；恰好命中一个才采用；
 > 值取 **aka 源字符串**。⛔ 不做子串、不做词形还原、不扩大到 label / statement。
@@ -17,43 +17,48 @@
 | 2 | `ax.found` | 正则公理 | `foundation` | `Foundation` ⚠️ |  | 正则公理 / 基础公理（Axiom of Foundation） |
 | 3 | `ax.choice` | 选择公理 | `axiom of choice` | `Axiom of Choice` ⚠️ |  | 选择公理（Axiom of Choice, AC） |
 | 4 | `def.subset` | 子集 | `subset` | `Subset` ⚠️ |  | 子集 / 真子集（Subset） |
-| 5 | `def.sequence-limit` | 数列极限 | `limit` | `Limit` ⚠️ |  | 数列极限 $x_n \to x$（Limit of a Sequence） |
-| 6 | `def.preimage` | 像与原像 | `preimage` | `Preimage` ⚠️ |  | 像与原像（Image / Preimage） |
-| 7 | `def.cardinal` | 基数 |A| | `cardinality` | `Cardinality` ⚠️ |  | 基数与基数的比较（Cardinality） |
-| 8 | `def.hausdorff` | Hausdorff 空间 | `Hausdorff` | `Hausdorff` |  | Hausdorff 空间 / $T_{2}$（Hausdorff Space） |
-| 9 | `def.quotient-set` | 商集与等价类 | `quotient` | `Quotient` ⚠️ |  | 商集 / 等价类（Quotient Set） |
-| 10 | `def.final-initial` | 终对象 / 始对象 | `initial object` | `Initial Object` ⚠️ | 节点含两个概念，命中的只是一个 | 终对象与始对象（Terminal / Initial Object） |
-| 11 | `def.elements-category` | 元素范畴 | `category of elements` | `Category of Elements` ⚠️ |  | 元素范畴（Category of Elements） |
-| 12 | `def.representable` | 表示函子 | `representable functor` | `Representable Functor` ⚠️ |  | 表示函子与万有元素（Representable Functor） |
-| 13 | `def.comma-category` | 逗号范畴 | `comma category` | `Comma Category` ⚠️ |  | 逗号范畴（Comma Category） |
-| 14 | `def.projective-object` | 投射 / 内射对象 | `injective object` | `Injective Object` ⚠️ | 节点含两个概念，命中的只是一个 | 投射对象与内射对象（Projective / Injective Object） |
-| 15 | `def.sieve` | 筛 | `sieve` | `Sieve` ⚠️ |  | 筛（Sieve） |
-| 16 | `def.pretopology` | 预拓扑 | `pretopology` | `Pretopology` ⚠️ |  | 预拓扑（Pretopology） |
-| 17 | `def.sheaf` | 层 | `sheaf` | `Sheaf` ⚠️ |  | 层与分离预层（Sheaf） |
-| 18 | `def.regular-epi` | 正则满态射 | `regular epimorphism` | `Regular Epimorphism` ⚠️ |  | 正则满态射（Regular Epimorphism） |
-| 19 | `def.canonical-topology` | 标准拓扑 | `canonical topology` | `Canonical Topology` ⚠️ |  | 标准拓扑与次标准拓扑（Canonical Topology） |
-| 20 | `def.topos` | 拓扑斯 | `topos` | `Topos` ⚠️ |  | 拓扑斯（Topos） |
-| 21 | `def.condensed-set` | 凝聚态集 | `condensed set` | `Condensed Set` ⚠️ |  | 凝聚态集（Condensed Set） |
-| 22 | `def.cochain-complex` | 上链复形 | `complex` | `Complex` ⚠️ |  | 复形（Complex） |
-| 23 | `def.homotopy` | 同伦 | `homotopy` | `Homotopy` ⚠️ |  | 同伦（Homotopy） |
-| 24 | `def.mapping-cone` | 映射锥 | `mapping cone` | `Mapping Cone` ⚠️ |  | 映射锥与位移（Mapping Cone） |
-| 25 | `def.cohomology` | 同调 | `cohomology` | `Cohomology` ⚠️ |  | 同调（Cohomology） |
-| 26 | `def.quasi-iso` | 拟同构 | `quasi-isomorphism` | `Quasi-Isomorphism` ⚠️ |  | 拟同构与零调复形（Quasi-Isomorphism） |
-| 27 | `def.filtration` | 过滤 | `filtration` | `Filtration` ⚠️ |  | 过滤（Filtration） |
-| 28 | `def.presheaf-valued` | 取值一般的预层与层 | `sheaf with values` | `Sheaf with Values` ⚠️ |  | 取值在一般范畴里的层（Sheaf with Values in a Category） |
-| 29 | `def.abelian-sheaf` | 阿贝尔层 | `abelian sheaf` | `Abelian Sheaf` ⚠️ |  | 阿贝尔层（Abelian Sheaf） |
-| 30 | `def.group` | 群 | `group` | `Group` ⚠️ |  | 群与阿贝尔群（Group） |
-| 31 | `def.normal-subgroup` | 正规子群 | `normal subgroup` | `Normal Subgroup` ⚠️ |  | 正规子群与陪集（Normal Subgroup） |
-| 32 | `def.group-hom` | 群同态、核与像 | `group homomorphism` | `Group Homomorphism` ⚠️ |  | 群同态（Group Homomorphism） |
-| 33 | `def.ideal` | 理想 | `ideal` | `Ideal` ⚠️ |  | 理想与商环（Ideal） |
-| 34 | `def.monoid-object` | 幺半群对象 | `monoid object` | `Monoid Object` ⚠️ |  | 幺半群对象（Monoid Object） |
-| 35 | `def.group-object` | 群对象与阿贝尔群对象 | `group object` | `Group Object` ⚠️ |  | 群对象与阿贝尔群对象（Group Object） |
-| 36 | `thm.snake-lemma` | 蛇引理 | `snake lemma` | `Snake Lemma` ⚠️ |  | 蛇引理（Snake Lemma） |
-| 37 | `def.exact-functor` | 正合函子 | `exact functor` | `Exact Functor` ⚠️ |  | 左正合 / 右正合 / 正合函子（Exact Functor） |
-| 38 | `def.split-exact` | 分裂短正合列 | `split exact` | `Split Exact` ⚠️ |  | 分裂的短正合列（Split Exact Sequence） |
-| 39 | `def.enough-projectives` | 足够多投射对象 | `enough projectives` | `Enough Projectives` ⚠️ |  | 足够多投射对象（Enough Projectives） |
-| 40 | `def.finitely-presented` | 有限表现对象 | `finitely presented` | `Finitely Presented` ⚠️ |  | 有限表现（紧）对象（Finitely Presented Object） |
-| 41 | `thm.tykhonov` | Tychonoff 定理 | `Tychonoff` | `Tychonoff` |  | Tychonoff 定理：紧空间的任意积紧 |
+| 5 | `lem.fatou` | Fatou 引理 | `Fatou's lemma` | `Fatou's Lemma` ⚠️ |  | Fatou 引理（Fatou's Lemma） |
+| 6 | `def.sequence-limit` | 数列极限 | `limit` | `Limit` ⚠️ |  | 数列极限 $x_n \to x$（Limit of a Sequence） |
+| 7 | `def.preimage` | 像与原像 | `preimage` | `Preimage` ⚠️ |  | 像与原像（Image / Preimage） |
+| 8 | `def.cardinal` | 基数 |A| | `cardinality` | `Cardinality` ⚠️ |  | 基数与基数的比较（Cardinality） |
+| 9 | `def.hausdorff` | Hausdorff 空间 | `Hausdorff` | `Hausdorff` |  | Hausdorff 空间 / $T_{2}$（Hausdorff Space） |
+| 10 | `def.quotient-set` | 商集与等价类 | `quotient` | `Quotient` ⚠️ |  | 商集 / 等价类（Quotient Set） |
+| 11 | `def.final-initial` | 终对象 / 始对象 | `initial object` | `Initial Object` ⚠️ | 节点含两个概念，命中的只是一个 | 终对象与始对象（Terminal / Initial Object） |
+| 12 | `def.elements-category` | 元素范畴 | `category of elements` | `Category of Elements` ⚠️ |  | 元素范畴（Category of Elements） |
+| 13 | `def.representable` | 表示函子 | `representable functor` | `Representable Functor` ⚠️ |  | 表示函子与万有元素（Representable Functor） |
+| 14 | `lem.yoneda` | 米田引理 | `Yoneda lemma` | `Yoneda Lemma` ⚠️ |  | 米田引理（Yoneda Lemma） |
+| 15 | `def.comma-category` | 逗号范畴 | `comma category` | `Comma Category` ⚠️ |  | 逗号范畴（Comma Category） |
+| 16 | `def.projective-object` | 投射 / 内射对象 | `injective object` | `Injective Object` ⚠️ | 节点含两个概念，命中的只是一个 | 投射对象与内射对象（Projective / Injective Object） |
+| 17 | `def.profinite` | 投射有限空间 | `profinite space` | `Profinite Space` ⚠️ |  | 投射有限空间（Profinite Space） |
+| 18 | `def.sieve` | 筛 | `sieve` | `Sieve` ⚠️ |  | 筛（Sieve） |
+| 19 | `def.pretopology` | 预拓扑 | `pretopology` | `Pretopology` ⚠️ |  | 预拓扑（Pretopology） |
+| 20 | `def.sheaf` | 层 | `sheaf` | `Sheaf` ⚠️ |  | 层与分离预层（Sheaf） |
+| 21 | `def.regular-epi` | 正则满态射 | `regular epimorphism` | `Regular Epimorphism` ⚠️ |  | 正则满态射（Regular Epimorphism） |
+| 22 | `def.canonical-topology` | 标准拓扑 | `canonical topology` | `Canonical Topology` ⚠️ |  | 标准拓扑与次标准拓扑（Canonical Topology） |
+| 23 | `def.topos` | 拓扑斯 | `topos` | `Topos` ⚠️ |  | 拓扑斯（Topos） |
+| 24 | `def.condensed-set` | 凝聚态集 | `condensed set` | `Condensed Set` ⚠️ |  | 凝聚态集（Condensed Set） |
+| 25 | `def.cochain-complex` | 上链复形 | `complex` | `Complex` ⚠️ |  | 复形（Complex） |
+| 26 | `def.homotopy` | 同伦 | `homotopy` | `Homotopy` ⚠️ |  | 同伦（Homotopy） |
+| 27 | `def.mapping-cone` | 映射锥 | `mapping cone` | `Mapping Cone` ⚠️ |  | 映射锥与位移（Mapping Cone） |
+| 28 | `def.cohomology` | 同调 | `cohomology` | `Cohomology` ⚠️ |  | 同调（Cohomology） |
+| 29 | `def.quasi-iso` | 拟同构 | `quasi-isomorphism` | `Quasi-Isomorphism` ⚠️ |  | 拟同构与零调复形（Quasi-Isomorphism） |
+| 30 | `def.filtration` | 过滤 | `filtration` | `Filtration` ⚠️ |  | 过滤（Filtration） |
+| 31 | `def.presheaf-valued` | 取值一般的预层与层 | `sheaf with values` | `Sheaf with Values` ⚠️ |  | 取值在一般范畴里的层（Sheaf with Values in a Category） |
+| 32 | `def.abelian-sheaf` | 阿贝尔层 | `abelian sheaf` | `Abelian Sheaf` ⚠️ |  | 阿贝尔层（Abelian Sheaf） |
+| 33 | `def.group` | 群 | `group` | `Group` ⚠️ |  | 群与阿贝尔群（Group） |
+| 34 | `def.normal-subgroup` | 正规子群 | `normal subgroup` | `Normal Subgroup` ⚠️ |  | 正规子群与陪集（Normal Subgroup） |
+| 35 | `def.group-hom` | 群同态、核与像 | `group homomorphism` | `Group Homomorphism` ⚠️ |  | 群同态（Group Homomorphism） |
+| 36 | `def.ideal` | 理想 | `ideal` | `Ideal` ⚠️ |  | 理想与商环（Ideal） |
+| 37 | `def.cofinal-functor` | 共尾函子 | `cofinal functor` | `Cofinal Functor` ⚠️ |  | 共尾函子（Cofinal Functor） |
+| 38 | `def.filtered-category` | 滤过范畴 | `filtered category` | `Filtered Category` ⚠️ |  | 滤过范畴与滤过余极限（Filtered Category） |
+| 39 | `def.monoid-object` | 幺半群对象 | `monoid object` | `Monoid Object` ⚠️ |  | 幺半群对象（Monoid Object） |
+| 40 | `def.group-object` | 群对象与阿贝尔群对象 | `group object` | `Group Object` ⚠️ |  | 群对象与阿贝尔群对象（Group Object） |
+| 41 | `thm.snake-lemma` | 蛇引理 | `snake lemma` | `Snake Lemma` ⚠️ |  | 蛇引理（Snake Lemma） |
+| 42 | `def.exact-functor` | 正合函子 | `exact functor` | `Exact Functor` ⚠️ |  | 左正合 / 右正合 / 正合函子（Exact Functor） |
+| 43 | `def.split-exact` | 分裂短正合列 | `split exact` | `Split Exact` ⚠️ |  | 分裂的短正合列（Split Exact Sequence） |
+| 44 | `def.enough-projectives` | 足够多投射对象 | `enough projectives` | `Enough Projectives` ⚠️ |  | 足够多投射对象（Enough Projectives） |
+| 45 | `def.finitely-presented` | 有限表现对象 | `finitely presented` | `Finitely Presented` ⚠️ |  | 有限表现（紧）对象（Finitely Presented Object） |
+| 46 | `thm.tykhonov` | Tychonoff 定理 | `Tychonoff` | `Tychonoff` |  | Tychonoff 定理：紧空间的任意积紧 |
 
 「备注」列只写机械看得出来的事实（节点含两个概念 / title 里是 LaTeX 符号），不猜。
 ---
@@ -65,7 +70,7 @@
 | `sections functor` | `prop.condab-section`（截面函子保极限余极限） · `def.section-functor`（截面函子） |
 | `Internal Hom` | `def.internal-hom`（内 Hom） · `prop.cond-internal-hom`（内部 Hom 的函数空间刻画） |
 
-## 大小写差异（39 处，只记录）
+## 大小写差异（44 处，只记录）
 
 aka 里写作一种大小写、title 里写作另一种 —— 采用的一律是 **aka 源字符串**。
 
@@ -75,6 +80,7 @@ aka 里写作一种大小写、title 里写作另一种 —— 采用的一律�
 | `ax.found` | `foundation` | `Foundation` |
 | `ax.choice` | `axiom of choice` | `Axiom of Choice` |
 | `def.subset` | `subset` | `Subset` |
+| `lem.fatou` | `Fatou's lemma` | `Fatou's Lemma` |
 | `def.sequence-limit` | `limit` | `Limit` |
 | `def.preimage` | `preimage` | `Preimage` |
 | `def.cardinal` | `cardinality` | `Cardinality` |
@@ -82,8 +88,10 @@ aka 里写作一种大小写、title 里写作另一种 —— 采用的一律�
 | `def.final-initial` | `initial object` | `Initial Object` |
 | `def.elements-category` | `category of elements` | `Category of Elements` |
 | `def.representable` | `representable functor` | `Representable Functor` |
+| `lem.yoneda` | `Yoneda lemma` | `Yoneda Lemma` |
 | `def.comma-category` | `comma category` | `Comma Category` |
 | `def.projective-object` | `injective object` | `Injective Object` |
+| `def.profinite` | `profinite space` | `Profinite Space` |
 | `def.sieve` | `sieve` | `Sieve` |
 | `def.pretopology` | `pretopology` | `Pretopology` |
 | `def.sheaf` | `sheaf` | `Sheaf` |
@@ -103,6 +111,8 @@ aka 里写作一种大小写、title 里写作另一种 —— 采用的一律�
 | `def.normal-subgroup` | `normal subgroup` | `Normal Subgroup` |
 | `def.group-hom` | `group homomorphism` | `Group Homomorphism` |
 | `def.ideal` | `ideal` | `Ideal` |
+| `def.cofinal-functor` | `cofinal functor` | `Cofinal Functor` |
+| `def.filtered-category` | `filtered category` | `Filtered Category` |
 | `def.monoid-object` | `monoid object` | `Monoid Object` |
 | `def.group-object` | `group object` | `Group Object` |
 | `thm.snake-lemma` | `snake lemma` | `Snake Lemma` |

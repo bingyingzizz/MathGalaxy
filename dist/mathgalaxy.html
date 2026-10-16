@@ -206,6 +206,18 @@ html.dragging .floating {
   text-overflow: ellipsis;
 }
 .sr-empty { padding: 12px 10px; color: var(--ink-faint); font-size: 13px; }
+/* 空结果时的那句提示（ref: 用法）—— 比正文再淡一档，只当路标 */
+.sr-empty-tip { font-size: 11.5px; opacity: .85; }
+/* 「共 N 项，只显示前 M 项」：**不是**一条结果（不可点、不进 items），
+   所以样式上要和 .sr-item 明确分开：无 hover、无边框、居中偏淡。 */
+.sr-more {
+  padding: 7px 10px 9px;
+  margin-top: 2px;
+  border-top: 1px solid rgba(120, 128, 148, .18);
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  cursor: default;
+}
 .sr-group {
   padding: 8px 10px 3px;
   font-size: 11px;
@@ -594,6 +606,17 @@ html.ui-no-hint #hint { display: none; }
 }
 .pn-read-tip { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; }
 .pn-read-tip.ok { color: #23794A; }
+/* 「没能保存」：橙色（警示）而不是红（错误）—— 图还能看，只是进度留不下 */
+.pn-read-warn {
+  font-size: 11.5px;
+  color: #A8621B;
+  border-bottom: 1px dotted rgba(168, 98, 27, .5);
+  cursor: help;
+}
+/* 设置窗口里的一行小字提示（保存失败 / 导入结果） */
+.set-hint { font-size: 11.5px; line-height: 1.6; color: var(--ink-faint); margin: 2px 0 6px; }
+.set-hint.warn { color: #A8621B; }
+.set-hint.ok { color: #23794A; }
 
 /* ---------- 详情面板：引用此节点（T1.4）/ 独立页面（T1.5） ---------- */
 /* 中性的灰蓝，与「只看子图」（蓝）和「已读」（绿）都区分开 —— 它不改图，只复制一段字。 */
@@ -1095,6 +1118,16 @@ window.addEventListener('error', function (e) {
          结果「关掉之后再也打不开」——用户就是这么看不见绿环的。 -->
     <label class="set-row"><input type="checkbox" id="set-readshow" checked> <span data-t="图上显示已读标记（绿环）">图上显示已读标记（绿环）</span></label>
     <div class="set-row set-row-btn"><button type="button" id="set-readreset" data-readreset data-t="清空已读进度">清空已读进度</button></div>
+    <!-- 进度是 localStorage 里的私人状态（不做云同步）—— 换设备/清缓存就没了，
+         所以给一条**自己搬**的路：导出成一个 JSON 文件、在另一台机器上导入。
+         导入 = 并集（把文件里的节点也标成已读），⛔ 不删本地已有的。 -->
+    <div class="set-row set-row-btn">
+      <button type="button" id="set-readexport" data-readexport data-t="导出已读进度（JSON）">导出已读进度（JSON）</button>
+      <button type="button" id="set-readimport" data-readimport data-t="导入已读进度（JSON）">导入已读进度（JSON）</button>
+    </div>
+    <input type="file" id="set-readfile" accept=".json,application/json" class="hidden">
+    <div class="set-hint hidden" id="set-readwarn" data-t="⚠️ 浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 进度只在本页有效，可以导出成文件留着">⚠️ 浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 进度只在本页有效，可以导出成文件留着</div>
+    <div class="set-hint hidden" id="set-readonce" role="status"></div>
     <div class="set-sep"></div>
     <div class="set-title" data-t="去别处">去别处</div>
     <a class="set-link" href="../" data-t="⌂ 站点首页">⌂ 站点首页</a>
@@ -1687,14 +1720,18 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
   /** 取纯文本（去掉 LaTeX 记号），用于搜索与摘要 */
   function plain(text) {
-    return String(text || '')
+    return stripMd(String(text || '')
       .replace(/\$\$[\s\S]*?\$\$/g, ' ')
-      .replace(/\$[^$\n]*\$/g, ' ')
-      // 标记语法要剥干净 —— 这里是纯文本预览（搜索行、证据链摘要），
-      // 漏了这一步页面上就会直接显示 ** 和 ## 的字面量。
-      // 与 inlineMd 同一套，但这里允许夹一个换行：md() 会把段内换行
-      // 折成空格（para.join(' ')），plain() 拿到的是原文，不放过就会漏 **。
-      // 只放单个 \n，空行（段落断开）仍然不许跨。
+      .replace(/\$[^$\n]*\$/g, ' '));
+  }
+
+  /* 标记语法要剥干净 —— 这里是纯文本预览（搜索行、证据链摘要），
+     漏了这一步页面上就会直接显示 ** 和 ## 的字面量。
+     与 inlineMd 同一套，但这里允许夹一个换行：md() 会把段内换行
+     折成空格（para.join(' ')），plain() 拿到的是原文，不放过就会漏 **。
+     只放单个 \n，空行（段落断开）仍然不许跨。 */
+  function stripMd(text) {
+    return String(text || '')
       .replace(/\*\*((?:[^*\n]|\n(?!\n)|\*(?!\*))+?)\*\*/g, '$1')
       .replace(/\*([^*\n]+)\*/g, '$1')
       .replace(/`([^`\n]*)`/g, '$1')
@@ -1705,6 +1742,89 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       .replace(/[{}\\]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
+  }
+
+  /* ---------------------------------------------- 公式 → 可读文本（摘要用） */
+  /* ⛔ 这不是渲染（渲染走 KaTeX），也不是给 AI 的 LaTeX —— 只给**摘要**用。
+     为什么要它：`plain()` 把公式整个换成空格，于是
+       `设 $F$ 是一个集合族，且 $\emptyset \notin F$。`
+     变成「设 是一个集合族，且 。」—— 搜索结果行里就是这种空句（153/709 个节点）。
+     这里把**简单**的公式转成 Unicode 记号后留下：`设 F 是一个集合族，且 ∅ ∉ F。`
+     长/嵌套的公式照样会剩下噪声，所以调用方还要过一道「够不够干净」的闸（见 search.js）。 */
+  var TEX_SYM = {
+    '\\emptyset': '∅', '\\varnothing': '∅', '\\in': '∈', '\\notin': '∉', '\\ni': '∋',
+    '\\subseteq': '⊆', '\\subsetneq': '⊊', '\\subset': '⊂', '\\supseteq': '⊇',
+    '\\supsetneq': '⊋', '\\supset': '⊃', '\\sqsubseteq': '⊑', '\\sqsupseteq': '⊒',
+    '\\cup': '∪', '\\cap': '∩', '\\setminus': '∖', '\\smallsetminus': '∖',
+    '\\times': '×', '\\cdot': '·', '\\pm': '±', '\\mp': '∓', '\\ast': '∗', '\\star': '⋆',
+    '\\bullet': '•', '\\dagger': '†', '\\ddagger': '‡',
+    '\\to': '→', '\\rightarrow': '→', '\\longrightarrow': '⟶', '\\leftarrow': '←',
+    '\\longleftarrow': '⟵', '\\mapsto': '↦', '\\Rightarrow': '⇒', '\\implies': '⟹',
+    '\\leftrightarrow': '↔', '\\Longleftrightarrow': '⟺', '\\iff': '⟺',
+    '\\hookrightarrow': '↪', '\\hookleftarrow': '↩', '\\twoheadrightarrow': '↠',
+    '\\le': '≤', '\\leq': '≤', '\\ge': '≥', '\\geq': '≥', '\\neq': '≠', '\\ne': '≠',
+    '\\preceq': '≼', '\\succeq': '≽', '\\prec': '≺', '\\succ': '≻',
+    '\\approx': '≈', '\\cong': '≅', '\\simeq': '≃', '\\sim': '∼', '\\equiv': '≡',
+    '\\triangleq': '≜', '\\coloneqq': '≔', '\\colon': ':', '\\mid': '∣', '\\nmid': '∤',
+    '\\vdash': '⊢', '\\dashv': '⊣', '\\models': '⊨', '\\Vdash': '⊩',
+    '\\infty': '∞', '\\partial': '∂', '\\nabla': '∇', '\\forall': '∀', '\\exists': '∃',
+    '\\neg': '¬', '\\lnot': '¬', '\\wedge': '∧', '\\vee': '∨', '\\land': '∧', '\\lor': '∨',
+    '\\perp': '⊥', '\\parallel': '∥', '\\angle': '∠', '\\triangle': '△',
+    '\\circ': '∘', '\\sum': '∑', '\\prod': '∏', '\\coprod': '∐', '\\int': '∫',
+    '\\bigcup': '⋃', '\\bigcap': '⋂', '\\bigoplus': '⨁', '\\bigotimes': '⨂',
+    '\\oplus': '⊕', '\\otimes': '⊗', '\\ominus': '⊖', '\\sqcup': '⊔', '\\sqcap': '⊓',
+    '\\aleph': 'ℵ', '\\ell': 'ℓ', '\\cdots': '⋯', '\\ldots': '…', '\\dots': '…', '\\vdots': '⋮',
+    '\\square': '□', '\\checkmark': '✓',
+    '\\alpha': 'α', '\\beta': 'β', '\\gamma': 'γ', '\\Gamma': 'Γ', '\\delta': 'δ', '\\Delta': 'Δ',
+    '\\epsilon': 'ε', '\\varepsilon': 'ε', '\\zeta': 'ζ', '\\eta': 'η', '\\theta': 'θ',
+    '\\kappa': 'κ', '\\lambda': 'λ', '\\Lambda': 'Λ', '\\mu': 'μ', '\\nu': 'ν', '\\xi': 'ξ',
+    '\\pi': 'π', '\\Pi': 'Π', '\\rho': 'ρ', '\\sigma': 'σ', '\\Sigma': 'Σ', '\\tau': 'τ',
+    '\\phi': 'φ', '\\varphi': 'φ', '\\Phi': 'Φ', '\\chi': 'χ', '\\psi': 'ψ', '\\Psi': 'Ψ',
+    '\\omega': 'ω', '\\Omega': 'Ω',
+    '\\mathbb{R}': 'ℝ', '\\mathbb{N}': 'ℕ', '\\mathbb{Z}': 'ℤ', '\\mathbb{Q}': 'ℚ',
+    '\\mathbb{C}': 'ℂ', '\\mathbb{H}': 'ℍ', '\\mathbb{P}': 'ℙ', '\\mathbb{E}': '𝔼',
+    '\\mathcal{P}': '𝒫', '\\mathcal{U}': '𝒰', '\\mathcal{F}': 'ℱ', '\\mathcal{O}': '𝒪',
+    '\\mathcal{C}': '𝒞', '\\mathcal{M}': 'ℳ', '\\mathcal{L}': 'ℒ',
+    '\\mathfrak{A}': '𝔄', '\\mathfrak{m}': '𝔪', '\\mathfrak{p}': '𝔭', '\\mathfrak{q}': '𝔮'
+  };
+  var TEX_KEYS = Object.keys(TEX_SYM).sort(function (a, b) { return b.length - a.length; });
+
+  /* 这些命令**当词留下**（sup S、ker f…）—— 丢掉的话句子里就多个洞 */
+  var TEX_OPS = ('sup inf lim limsup liminf max min ker im coker dom cod det dim deg rank id ' +
+    'pr ev spec hom Hom ext Ext tor Tor colim mod gcd lcm exp log sin cos tan arctan sgn ' +
+    'supp card span Span tr Tr diag vol diam dist closure interior').split(' ');
+  var TEX_OP_SET = Object.create(null);
+  TEX_OPS.forEach(function (w) { TEX_OP_SET[w] = 1; });
+
+  /** 一段 TeX → 可读文本（未知命令直接丢掉，宁可少几个字也别留下 `\preceq`） */
+  function texToText(tex) {
+    var s = String(tex || '');
+    s = s.replace(/\\(?:left|right|big|Big|bigg|Bigg|l|r)\b/g, ' ');   // \left( \right) \big[
+    s = s.replace(/\\(?:quad|qquad|,|;|:|!| )/g, ' ');
+    for (var i = 0; i < TEX_KEYS.length; i++) {
+      var k = TEX_KEYS[i];
+      if (s.indexOf(k) >= 0) s = s.split(k).join(TEX_SYM[k]);
+    }
+    /* 重音 / 字体命令：{...} 里的内容留下（\overline{A} → A）
+       ⚠️ 只处理**不带嵌套花括号**的（够用了：这些命令的参数基本是单层） */
+    s = s.replace(
+      /\\(?:overline|underline|widehat|widetilde|hat|tilde|bar|vec|dot|ddot|mathbf|boldsymbol|mathcal|mathfrak|mathsf|mathtt|mathrm|text|textrm|textnormal|operatorname|mathbb|mathnormal|mathscr)\s*\{([^{}]*)\}/g,
+      ' $1 ');
+    s = s.replace(/\\([a-zA-Z]+)/g, function (m, name) {
+      return TEX_OP_SET[name] ? ' ' + name + ' ' : ' ';
+    });
+    s = s.replace(/\\([^a-zA-Z])/g, '$1');
+    s = s.replace(/[{}$]/g, '');
+    s = s.replace(/\s+/g, ' ').trim();
+    return s;
+  }
+
+  /** 摘要专用：保留**可读**的公式（`$x$` → `x`，`$\emptyset$` → `∅`），再剥 markdown 标记 */
+  function plainMath(text) {
+    var s = String(text || '')
+      .replace(/\$\$([\s\S]*?)\$\$/g, function (m, tex) { return ' ' + texToText(tex) + ' '; })
+      .replace(/\$([^$\n]*)\$/g, function (m, tex) { return texToText(tex); });
+    return stripMd(s);
   }
 
   function truncate(s, n) {
@@ -1890,6 +2010,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     escapeHtml: escapeHtml,
     escapeRegExp: escapeRegExp,
     plain: plain,
+    plainMath: plainMath,
     truncate: truncate,
     md: md,
     inlineMd: inlineMd,
@@ -6094,6 +6215,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     var items = [];
     var active = -1;
     var open = false;
+    /* ⭐ 命中总数（**没有截断过的**）与展示条数：结果列表底部那行「共 N 项」要用，
+       读屏的那句也要用（原来它报的是「14 条结果」—— 那是展示条数，不是命中数）。 */
+    var hitTotal = 0;
 
     /* --------------------------------------------------------- 建立索引 */
     var index = [];
@@ -6199,8 +6323,15 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         /* T2.4：英文模式下搜索结果的**显示**也要用英文名（hay 里早就有它们，
            这里是把它们端到结果行上）。⛔ 中文模式一字不变。 */
         return { node: n, hay: hay, label: n.label, title: n.title, st: st, aka: aka,
+          /* ⭐ 摘要的两种口径都在这里算好（索引期一次，别在每次按键时算）：
+             `st`  = 剥掉公式（旧口径，仍有别的用处）
+             `stm` = **保留可读公式**（plainMath：`$x$`→`x`、`$\emptyset$`→`∅`）—— 结果行用它 */
+          stm: U.plainMath(n.statement),
+          ttl: U.plain(n.title),
+          refs: (n.refs || []).slice(),
           label_en: n.label_en || '', title_en: n.title_en || '',
-          st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : '') };
+          st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : ''),
+          stm_en: n.abstract_en ? U.plainMath(n.abstract_en) : (n.statement_en ? U.plainMath(n.statement_en) : '') };
       });
 
       /* 星团名也进词表：「测度的构造」贡献 `测度`；英文模式下英文星团名也要能搜到 */
@@ -6347,6 +6478,14 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     function run(q) {
       q = q.trim().toLowerCase();
       items = [];
+      /* ⭐ `ref:` 前缀 = **只搜书目/出处**（`ref:I.5`、`ref:Munkres`）。
+         为什么单开一条路：refs 不进 hay（章节号进了 hay 会把普通搜索淹掉，
+         `I.5` 那种坐标会到处误命中），但「按书号找节点」是真需求 —— 所以做成
+         显式前缀，只在用户明说要搜出处时才查，且只按 refs 打分。 */
+      var refMode = false;
+      var refQ = '';
+      var m0 = /^ref\s*[:：]\s*(.*)$/.exec(q);
+      if (m0) { refMode = true; refQ = m0[1].trim(); q = refQ; }
       if (!q) { render(); return; }
 
       var terms = termsOf(q);
@@ -6355,22 +6494,37 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
       /* 命中的问法 → 它指向的节点直接顶到最前（最多认 4 个问法，免得全被顶上来） */
       var boost = Object.create(null), fired = 0;
-      for (var hi = 0; hi < hookIndex.length; hi++) {
-        var h = hookIndex[hi];
-        if (!hookHit(h, q, termSet)) continue;
-        if (++fired > 4) break;
-        h.to.forEach(function (id) { boost[id] = (boost[id] || 0) + 1; });
+      if (!refMode) {
+        for (var hi = 0; hi < hookIndex.length; hi++) {
+          var h = hookIndex[hi];
+          if (!hookHit(h, q, termSet)) continue;
+          if (++fired > 4) break;
+          h.to.forEach(function (id) { boost[id] = (boost[id] || 0) + 1; });
+        }
       }
 
       var tot = Object.create(null), cnt = Object.create(null);
-      terms.forEach(function (t) {
+      if (refMode) {
+        /* 只按 refs 打分：整条出处完全等于输入 1000，含它 800 */
         index.forEach(function (e) {
-          var s = score(e, t);
-          if (s <= 0) return;
-          tot[e.node.id] = (tot[e.node.id] || 0) + s;
-          cnt[e.node.id] = (cnt[e.node.id] || 0) + 1;
+          var best = 0;
+          for (var i = 0; i < e.refs.length; i++) {
+            var r = String(e.refs[i]).toLowerCase();
+            if (r === q) { best = 1000; break; }
+            if (r.indexOf(q) >= 0) best = 800;
+          }
+          if (best) { tot[e.node.id] = best; cnt[e.node.id] = 1; }
         });
-      });
+      } else {
+        terms.forEach(function (t) {
+          index.forEach(function (e) {
+            var s = score(e, t);
+            if (s <= 0) return;
+            tot[e.node.id] = (tot[e.node.id] || 0) + s;
+            cnt[e.node.id] = (cnt[e.node.id] || 0) + 1;
+          });
+        });
+      }
 
       /* 被多个词同时命中的节点加权 —— 「积分」和「极限」都沾的排前面 */
       var byEnt = Object.create(null);
@@ -6399,6 +6553,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         return (b.s - a.s) || (b.deg - a.deg) || (a.id < b.id ? -1 : 1);
       });
 
+      /* ⭐ 只展示前 14 条，但**真实总数要说出来**（2026-10-16 用户报的：
+         搜「定义」实际 345 条、界面只显示 14 条，此前界面上没有任何提示）。 */
+      hitTotal = hits.length;
       hits.slice(0, 14).forEach(function (h) {
         var e = byEnt[h.id];
         if (!e) return;
@@ -6410,26 +6567,61 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       });
 
       // 板块也当作一种结果
-      view.graph.regions.forEach(function (r) {
-        if (!r.stat) return;
-        if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
-          items.push({ kind: 'region', id: r.id, label: MG.regionName(r),
-            sub: MG.t('{n} 个节点', { n: r.stat.count }), q: q, grp: 'all' });
-        }
-      });
+      if (!refMode) {
+        view.graph.regions.forEach(function (r) {
+          if (!r.stat) return;
+          if ((r.name + ' ' + (r.en || '')).toLowerCase().indexOf(q) >= 0) {
+            items.push({ kind: 'region', id: r.id, label: MG.regionName(r),
+              sub: MG.t('{n} 个节点', { n: r.stat.count }), q: q, grp: 'all' });
+          }
+        });
+      }
 
       active = items.length ? 0 : -1;
       render();
     }
 
-    function subOf(e) {
-      /* 英文模式：副标题优先英文摘要/英文陈述，再退到英文名 —— 都没有就还是中文 */
-      if (MG.isEn) {
-        var en = e.st_en || e.title_en || e.label_en;
-        if (en) return U.truncate(U.plain(en), 64);
+    /* ----------------------------------------------------------- 摘要行 */
+    /* ⭐ 结果行底下那行摘要（2026-10-16 改口径）。
+       旧做法：`U.plain(statement)` —— 公式整个被换成空格，于是出现
+         「设 是一个集合族，且 。 是 的选择函数，当且仅当 是函数， ； 。」
+       这种空句（709 个节点里 153 个，用户报的）。
+       现在按「读得通」优先挑：
+         ① 用 `plainMath`（简单公式转成 Unicode 记号后**留下**）：设 F 是一个集合族，且 ∅ ∉ F。
+         ② 整段不通顺就取**第一句通顺的**（句子级挑，别把破句子端出去）
+         ③ 还不行退回 title（多半本来就是一句干净的话）
+         ④ 最后才用类型名
+       ⛔ 判据是「有没有空槽 + 有没有足够的内容」，不是「长度」——
+          宁可少给信息，也别给一句读不通的。 */
+    var BAD_SNIPPET = /([，,、；;]\s*[。．，,、；;])|((of|is|are|in|to|the|a|an|on)\s*[,.;])|(^\s*[,.;。])|([（(]\s*[）)])/;
+    function meaningful(s) { return (String(s).match(/[\u4e00-\u9fff0-9A-Za-z]/g) || []).length; }
+    function cleanSnippet(s) { return !!s && !BAD_SNIPPET.test(s) && meaningful(s) >= 8; }
+    /** 第一句读得通的（句号 / 分号 / 叹问号断句，连标点一起留下）
+        ⚠️ 手写切句、不用后行断言（`(?<=…)`）—— 用户的安卓平板 Chromium 偏旧，别赌它支持 */
+    var SENT_END = '。．！？；;.!?';
+    function firstCleanSentence(s) {
+      var t = String(s), buf = '';
+      for (var i = 0; i < t.length; i++) {
+        buf += t.charAt(i);
+        if (SENT_END.indexOf(t.charAt(i)) < 0) continue;
+        if (cleanSnippet(buf)) return buf.trim();
+        buf = '';
       }
-      var st = e.st || U.plain(e.title);
-      return U.truncate(st || MG.typeStyle(e.node.type).name, 64);
+      return cleanSnippet(buf) ? buf.trim() : '';
+    }
+
+    function subOf(e) {
+      var cands = MG.isEn
+        ? [e.stm_en, e.st_en, e.title_en, e.ttl, e.label_en]
+        : [e.stm, e.ttl];
+      for (var i = 0; i < cands.length; i++) {
+        var s = cands[i];
+        if (!s) continue;
+        if (cleanSnippet(s)) return U.truncate(s, 64);
+        var one = firstCleanSentence(s);
+        if (one) return U.truncate(one, 64);
+      }
+      return MG.typeStyle(e.node.type).name;
     }
 
     function mark(text, q) {
@@ -6464,7 +6656,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       if (!items.length) {
         var v = input.value.trim();
         results.innerHTML = v
-          ? '<div class="sr-empty">' + U.escapeHtml(MG.t('没有找到「{名}」相关的节点', { 名: v })) + '</div>'
+          ? '<div class="sr-empty">' + U.escapeHtml(MG.t('没有找到「{名}」相关的节点', { 名: v })) +
+            '<br><span class="sr-empty-tip">' +
+            U.escapeHtml(MG.t('按书号 / 章节号找的话，用 ref: 前缀，例如 ref:I.5')) + '</span></div>'
           : '';
         open = !!v;
       } else {
@@ -6480,6 +6674,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
           }
           html += itemHtml(it, i);
         });
+        /* ⭐ 截断要说出来（⛔ 不是 .sr-item：它不可点，也不算一条结果） */
+        if (hitTotal > items.length) {
+          html += '<div class="sr-more">' +
+            U.escapeHtml(MG.t('共 {n} 项，只显示前 {m} 项 —— 继续打字缩小范围',
+              { n: hitTotal, m: items.length })) + '</div>';
+        }
         results.innerHTML = html;
         open = true;
       }
@@ -6489,7 +6689,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     }
 
     /* 可达性：把「下拉开没开 / 当前高亮第几条 / 一共几条」同步给读屏。
-       ⚠️ 键盘 ↑↓ / Enter / Esc 早就有了，缺的一直是这几个属性。 */
+       ⚠️ 键盘 ↑↓ / Enter / Esc 早就有了，缺的一直是这几个属性。
+       ⚠️ 「一共几条」要用**命中总数**，不是展示条数 —— 否则读屏也听到「14 条结果」。 */
     var liveEl = document.getElementById('search-live');
     function syncA11y() {
       input.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -6499,7 +6700,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       if (liveEl) {
         liveEl.textContent = !open ? ''
           : (items.length
-            ? MG.t('{n} 条结果，当前第 {k} 条', { n: items.length, k: ok ? active + 1 : '—' })
+            ? MG.t('{n} 条结果，当前第 {k} 条', { n: hitTotal || items.length, k: ok ? active + 1 : '—' })
             : MG.t('没有结果'));
       }
     }
@@ -6640,11 +6841,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
     function nodeRow(n, prefix, keyword) {
       var st = MG.typeStyle(n.type);
-      /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文） */
+      /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文）
+         ⚠️ 用 `plainMath`（保留可读公式）而不是 `plain`（公式→空格）——
+            否则这一行会出现「设 是偏序集， 。」这种空句。 */
       var desc = MG.isEn
-        ? (U.plain(n.abstract_en) || U.plain(n.statement_en) || U.plain(n.notes_en) ||
-           U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title))
-        : (U.plain(n.statement) || U.plain(n.notes) || U.plain(n.title));
+        ? (U.plainMath(n.abstract_en) || U.plainMath(n.statement_en) || U.plainMath(n.notes_en) ||
+           U.plainMath(n.statement) || U.plainMath(n.notes) || U.plain(n.title))
+        : (U.plainMath(n.statement) || U.plainMath(n.notes) || U.plain(n.title));
       return '<div class="pn-link" data-kind="node" data-id="' + n.id + '">' +
         '<span class="dot" style="background:' + st.color + '"></span>' +
         (keyword ? '<span class="kw">' + U.escapeHtml(keyword) + '</span>' : '') +
@@ -6790,10 +6993,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
               '</span>';
           }
         }
+        /* ⚠️ 保存失败时如实说一句（无痕模式 / 受限的 file://）：以前是静默的，
+           用户点了「标记已读」却不知道这次标记根本没留下。 */
+        var warn = (hooks.readSaveOk && !hooks.readSaveOk())
+          ? '<span class="pn-read-warn" title="' +
+            U.escapeHtml(tf('浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 这次标记只在本页有效')) +
+            '">' + U.escapeHtml(tf('⚠ 没能保存')) + '</span>'
+          : '';
         html += '<div class="pn-read">' +
           '<button class="pn-btn pn-read-btn' + (isRead ? ' on' : '') +
           '" data-read="' + U.escapeHtml(n.id) + '">' +
-          U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + '</div>';
+          U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + warn + '</div>';
       }
 
       if (n.statement) html += section(tf('陈述'), '<div class="pn-body">' + U.md(n.statement) + '</div>');
@@ -7243,6 +7453,12 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     }
 
     /* ------------------------------------------------------------ 读写 */
+    /* ⚠️ 保存失败（无痕模式 / 受限的 file:// / 配额满）以前是**静默**的 —— 用户
+       点了「标记已读」却不知道这次标记根本没留下。现在记一个状态位，
+       由界面（面板那行 + 设置窗口）如实告诉人:这一轮只在当前页面有效。
+       ⛔ 只记状态，**不弹窗、不阻塞** —— 看图不该被存储问题打断。 */
+    var saveOk = true;
+
     function load() {
       var raw = null;
       try { raw = global.localStorage ? global.localStorage.getItem(KEY) : null; }
@@ -7257,12 +7473,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     }
 
     function save() {
+      var ok = true;
       try {
-        if (!global.localStorage) return;
-        var ids = Object.keys(read);
-        if (ids.length) global.localStorage.setItem(KEY, JSON.stringify(ids));
-        else global.localStorage.removeItem(KEY);
-      } catch (e) { /* 记不住就算了，不影响看 */ }
+        if (!global.localStorage) ok = false;
+        else {
+          var ids = Object.keys(read);
+          if (ids.length) global.localStorage.setItem(KEY, JSON.stringify(ids));
+          else global.localStorage.removeItem(KEY);
+        }
+      } catch (e) { ok = false; }                  // 记不住就算了，不影响看图
+      saveOk = ok;
     }
 
     function commit() {
@@ -7353,6 +7573,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       isRead: isRead,
       readCount: readCount,
       readIds: readIds,
+      saveOk: function () { return saveOk; },
       prereqsOf: prereqsOf,
       missingPrereqs: missingPrereqs,
       setNode: setNode,
@@ -9569,6 +9790,7 @@ MG.i18n = {
     'def.clopen': { title_en: 'Clopen Set', label_en: 'clopen', from: 'title' },
     'def.cochain-complex': { title_en: 'complex', label_en: 'complex', from: 'aka-title' },
     'def.cocontinuous-functor': { title_en: 'Cocontinuous Functor', label_en: 'cocontinuous', from: 'title' },
+    'def.cofinal-functor': { title_en: 'cofinal functor', label_en: 'cofinal functor', from: 'aka-title' },
     'def.cohomological-functor': { title_en: 'Cohomological Functor', label_en: 'cohomological functor', from: 'title' },
     'def.cohomology': { title_en: 'cohomology', label_en: 'cohomology', from: 'aka-title' },
     'def.comma-category': { title_en: 'comma category', label_en: 'comma category', from: 'aka-title' },
@@ -9603,6 +9825,7 @@ MG.i18n = {
     'def.extended-real': { title_en: 'Extended Reals', label_en: 'extended real', from: 'title' },
     'def.f-acyclic': { title_en: 'acyclic', label_en: 'acyclic', from: 'aka' },
     'def.field': { title_en: 'Field', label_en: 'field', from: 'title' },
+    'def.filtered-category': { title_en: 'filtered category', label_en: 'filtered category', from: 'aka-title' },
     'def.filtration': { title_en: 'filtration', label_en: 'filtration', from: 'aka-title' },
     'def.final-initial': { title_en: 'initial object', label_en: 'initial object', from: 'aka-title' },
     'def.finchar': { title_en: 'Family of Finite Character', label_en: 'finite character', from: 'title' },
@@ -9676,6 +9899,7 @@ MG.i18n = {
     'def.product-measure': { title_en: 'product measure', label_en: 'product measure', from: 'aka' },
     'def.product-sigma': { title_en: 'product sigma-algebra', label_en: 'product sigma-algebra', from: 'aka' },
     'def.product-topology': { title_en: 'Product Topology', label_en: 'product topology', from: 'title' },
+    'def.profinite': { title_en: 'profinite space', label_en: 'profinite space', from: 'aka-title' },
     'def.projective-object': { title_en: 'injective object', label_en: 'injective object', from: 'aka-title' },
     'def.quasi-compact': { title_en: 'Quasi-Compact Object', label_en: 'quasi-compact', from: 'title' },
     'def.quasi-iso': { title_en: 'quasi-isomorphism', label_en: 'quasi-isomorphism', from: 'aka-title' },
@@ -9732,12 +9956,14 @@ MG.i18n = {
     'lem.breen-deligne-scalar-homotopy': { title_en: 'scalar homotopy', label_en: 'scalar homotopy', from: 'aka' },
     'lem.cartan-eilenberg': { title_en: 'Cartan-Eilenberg', label_en: 'Cartan-Eilenberg', from: 'aka' },
     'lem.covering': { title_en: 'covering lemma', label_en: 'covering lemma', from: 'aka' },
+    'lem.fatou': { title_en: 'Fatou\'s lemma', label_en: 'Fatou\'s lemma', from: 'aka-title' },
     'lem.k-bounded-completion': { title_en: 'k-bounded completion', label_en: 'k-bounded completion', from: 'aka' },
     'lem.qseparated-underlying-weak-hausdorff': { title_en: 'underlying weak Hausdorff', label_en: 'underlying weak Hausdorff', from: 'aka' },
     'lem.stone-constant-acyclic': { title_en: 'Stone acyclic constant', label_en: 'Stone acyclic constant', from: 'aka' },
     'lem.tukey': { title_en: 'Tukey\'s Lemma / Teichmüller–Tukey', label_en: 'Tukey', from: 'title' },
     'lem.urysohn': { title_en: 'Urysohn', label_en: 'Urysohn', from: 'aka' },
     'lem.weak-hausdorff-qseparated': { title_en: 'weak Hausdorff quasi-separated', label_en: 'weak Hausdorff quasi-separated', from: 'aka' },
+    'lem.yoneda': { title_en: 'Yoneda lemma', label_en: 'Yoneda lemma', from: 'aka-title' },
     'lem.young-inequality': { title_en: 'Young', label_en: 'Young', from: 'aka' },
     'lem.zorn': { title_en: 'Zorn\'s Lemma', label_en: 'Zorn\'s lemma', from: 'title' },
     'prop.abelianization': { title_en: 'abelianization', label_en: 'abelianization', from: 'aka' },
@@ -11212,6 +11438,9 @@ MG.i18nStatements = {
 
    `{名}` = 嵌进来的名字（节点 / 星团 / 星系 / 层号），`{n}` = 数字。
    口径（作者 2026-10-16 定）：折成模板 **105** 条；逐条 236 个实例。
+   ⚠️ 105/236 是**作者拍板当时的快照**（那份调查在 i18n/ui-strings.md），不是实时计数；
+      2026-10-16 第二轮又动过面板文案（「前置提示」改成「相关依赖的已读情况」、
+      新增「独立页面」入口）⇒ 本表的键 138 → 141。要重算口径得按 ui-strings.md 的办法重跑。
    拼写：**美式英语**（-ize / -ization，见 i18n/glossary.md）。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -11288,6 +11517,10 @@ MG.uiEn = {
     '{n} 条结果，当前第 {k} 条': '{n} results, item {k} selected',
     '没有结果': 'No results',
     '没有找到「{名}」相关的节点': 'No node matches “{名}”',
+    '按书号 / 章节号找的话，用 ref: 前缀，例如 ref:I.5':
+      'Looking up a book reference? Use the ref: prefix, e.g. ref:I.5',
+    '共 {n} 项，只显示前 {m} 项 —— 继续打字缩小范围':
+      '{n} matches in total, showing the first {m} — keep typing to narrow down',
     '相关问题': 'Related questions',
     '全部结果': 'All results',
     '板块': 'Field',
@@ -11368,6 +11601,19 @@ MG.uiEn = {
        ⛔ 英文别再写 prerequisite 那个词：它会被内文跳转从单词内部截出 `site`
        （就是这轮修掉的那个 bug 的现场）。 */
     '已标记全部相关依赖': 'all related dependencies marked as read',
+    '⚠ 没能保存': '⚠ not saved',
+    '浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 这次标记只在本页有效':
+      'The browser does not allow local storage (private mode / restricted file://) — this mark only lasts for this page',
+    '⚠️ 浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 进度只在本页有效，可以导出成文件留着':
+      '⚠️ The browser does not allow local storage (private mode / restricted file://) — progress only lasts for this page; you can export it to a file',
+    '导出已读进度（JSON）': 'Export reading progress (JSON)',
+    '导入已读进度（JSON）': 'Import reading progress (JSON)',
+    '已导出 {n} 条已读记录：{名}': 'Exported {n} read records: {名}',
+    '导出失败：{因}': 'Export failed: {因}',
+    '导入失败：这不是 MathGalaxy 的已读进度文件': 'Import failed: not a MathGalaxy reading-progress file',
+    '导入失败：文件读不出来': 'Import failed: the file could not be read',
+    '已导入：文件里 {n} 条，其中 {新} 条是新的（导入是并集，不会删掉本地已有的）':
+      'Imported: {n} records in the file, {新} of them new (import merges — local records are kept)',
     '相关依赖中还有 {n} 项未标记已读：{名}':
       '{n} related dependencies not marked as read yet: {名}',
     '「相关依赖」= 推出它的前提 + 陈述里引用的定义（等价与类比不算）；这只是已读情况的记录，不代表必须先学它们。':
@@ -41770,6 +42016,8 @@ MG.trunk = [
       /* 已读三件套。panel 只管画按钮，状态在这里 —— 它不认识 localStorage。 */
       isRead: reads.isRead,
       missingPrereqs: reads.missingPrereqs,
+      /* ⚠️ 保存失败（无痕 / 受限的 file://）要让面板能如实说一句「没能保存」。 */
+      readSaveOk: reads.saveOk,
       /* 「独立页面」的地址（T1.5）。面板只负责画这个 <a>，地址规则在这里。 */
       pageHref: pageHref,
       onToggleRead: function (id) {
@@ -42176,6 +42424,7 @@ MG.trunk = [
       settingsBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
       if (on) {
         syncReadShow();                      // 复选框跟着 state 走（可能在别处被改过）
+        syncReadNote();                      // 「没能保存」那行也现算一次
         if (settingsClose) settingsClose.focus();
       } else if (settingsEl.contains(document.activeElement)) {
         settingsBtn.focus();
@@ -42195,8 +42444,79 @@ MG.trunk = [
       /* 「清空已读进度」的按钮在设置窗口里 ⇒ 处理也要挂这儿（原来挂在图例上）。
          ⛔ 别只写 stopPropagation 就完事 —— 那条只是不让事件冒泡关窗口。 */
       var t = e.target;
-      if (t && t.closest && t.closest('[data-readreset]')) reads.reset();
+      if (t && t.closest && t.closest('[data-readreset]')) { reads.reset(); syncReadNote(); return; }
+      if (t && t.closest && t.closest('[data-readexport]')) { exportRead(); return; }
+      if (t && t.closest && t.closest('[data-readimport]')) {
+        var f = document.getElementById('set-readfile');
+        if (f) f.click();                       // 交给 <input type=file>，浏览器自己开选择框
+        return;
+      }
     });
+    /* ------------------------------------------------ 已读进度：导出 / 导入 */
+    /* 进度是**私人状态**（localStorage），换设备 / 清缓存就没了 —— 用户要求给一条
+       「自己搬」的路，⛔ 但**不做云同步**（那要账号、要服务端，和零依赖冲突）。
+       文件格式带 app/kind，导入时先认出自己的文件再并集合并（不删本地已有的）。 */
+    function exportRead() {
+      var ids = reads.readIds().slice().sort();
+      var payload = {
+        app: 'MathGalaxy', kind: 'read-progress', version: 1,
+        savedAt: new Date().toISOString(), count: ids.length, ids: ids
+      };
+      var name = 'mathgalaxy-read-' + new Date().toISOString().slice(0, 10) + '.json';
+      try {
+        var blob = new Blob([JSON.stringify(payload, null, 1)], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        setReadNote(MG.t('已导出 {n} 条已读记录：{名}', { n: ids.length, 名: name }), 'ok');
+      } catch (err) {
+        setReadNote(MG.t('导出失败：{因}', { 因: String(err && err.message || err) }), 'warn');
+      }
+    }
+    var readFileEl = document.getElementById('set-readfile');
+    if (readFileEl) {
+      readFileEl.addEventListener('change', function () {
+        var file = readFileEl.files && readFileEl.files[0];
+        readFileEl.value = '';                  // 同一个文件连选两次也要触发 change
+        if (!file) return;
+        var fr = new FileReader();
+        fr.onload = function () {
+          var data = null;
+          try { data = JSON.parse(String(fr.result)); } catch (err) { data = null; }
+          if (!data || data.app !== 'MathGalaxy' || !data.ids || typeof data.ids.forEach !== 'function') {
+            setReadNote(MG.t('导入失败：这不是 MathGalaxy 的已读进度文件'), 'warn');
+            return;
+          }
+          var before = reads.readCount();
+          var ids = data.ids.filter(function (x) { return typeof x === 'string'; });
+          reads.markMany(ids, true);
+          var added = reads.readCount() - before;
+          setReadNote(MG.t('已导入：文件里 {n} 条，其中 {新} 条是新的（导入是并集，不会删掉本地已有的）',
+            { n: ids.length, 新: added }), 'ok');
+          syncReadNote();
+        };
+        fr.onerror = function () { setReadNote(MG.t('导入失败：文件读不出来'), 'warn'); };
+        fr.readAsText(file);
+      });
+    }
+    /** 设置窗口里那行提示：保存失败常驻（warn），导入/导出的结果闪一下 */
+    var readNoteEl = document.getElementById('set-readonce');
+    function setReadNote(msg, kind) {
+      if (!readNoteEl) return;
+      readNoteEl.textContent = msg || '';
+      readNoteEl.className = 'set-hint' + (msg ? ' ' + (kind || '') : ' hidden');
+    }
+    function syncReadNote() {
+      var warn = document.getElementById('set-readwarn');
+      if (warn) warn.classList.toggle('hidden', reads.saveOk());
+      if (!readNoteEl) return;
+      if (!reads.readCount()) setReadNote('', '');
+    }
     settingsEl.addEventListener('change', function (e) {
       var t = e.target;
       /* 「图上显示已读标记」：state 在 readstate 里（存 localStorage），这里只接线。
@@ -42446,7 +42766,11 @@ MG.trunk = [
         setLayerMax(lv === 'all' ? null : parseInt(lv, 10));
         return;
       }
-      if (t.closest('[data-toggle]')) { legendEl.classList.toggle('collapsed'); return; }
+      if (t.closest('[data-toggle]')) {
+        legendEl.classList.toggle('collapsed');
+        saveLegendChoice();                     // 记住用户自己的选择（窄屏默认不覆盖它）
+        return;
+      }
 
       // 名字 = 跳过去看（它套在开关芯片里面，所以要先判）
       var nav = t.closest('[data-nav]');
@@ -42512,6 +42836,30 @@ MG.trunk = [
       renderLegend();
     });
 
+    /* ------------------------------------------- 首屏「少占地方」（T4.4 建议 ⑤） */
+    /* 图例 300×726 ≈ 17%、底部说明卡 ≈ 8%（1600×900 实测）—— 桌面首屏一起吃掉 24.9%。
+       已经有的是：图例可折叠、窄屏自动折叠、设置里能把两者关掉（且记住）。
+       这里补两件**不改变桌面默认布局**的事：
+         ① 图例折没折**记住**（用户自己折的，下次打开还是折的）；
+         ② 窄屏时把**说明卡**也折成一行（原来只有图例折，手机上那张卡照样占 8%）。
+       ⛔ 桌面默认仍是「图例展开 + 说明展开」—— 要改默认得先问。 */
+    var LEGEND_KEY = 'mg.ui.legend';           // 'collapsed' | 'open'
+    function legendChoice() {
+      try { return localStorage.getItem(LEGEND_KEY); } catch (_) { return null; }
+    }
+    function saveLegendChoice() {
+      try {
+        localStorage.setItem(LEGEND_KEY,
+          legendEl.classList.contains('collapsed') ? 'collapsed' : 'open');
+      } catch (_) { /* 记不住就算了 */ }
+    }
+    /* 用户手动折过 / 展过 ⇒ 尊重他的选择；没表过态时才用「窄屏折起来」的默认。 */
+    (function restoreLegend() {
+      var c = legendChoice();
+      if (c === 'collapsed') legendEl.classList.add('collapsed');
+      else if (c === 'open') legendEl.classList.remove('collapsed');
+    })();
+
     /* 窄屏（竖屏手机 / 窄窗口）默认把图例**折起来**，而不是藏掉。
        ⚠️ 阈值必须和 styles.css 里那条 @media 保持一致。
        ⚠️ 只在「刚进入窄屏」时折一次 —— 每次都折的话，用户自己展开完一动窗口又没了。 */
@@ -42519,9 +42867,27 @@ MG.trunk = [
     var wasNarrow = null;
     function syncNarrowLegend() {
       var now = window.innerWidth <= NARROW_W;
-      if (now && wasNarrow !== true) legendEl.classList.add('collapsed');
+      var choice = legendChoice();
+      if (now && wasNarrow !== true && !choice) legendEl.classList.add('collapsed');
+      var hint = document.getElementById('hint');
+      var det = hint && hint.querySelector('details');
+      if (det) {
+        if (now && wasNarrow !== true && !det.getAttribute('data-user')) det.open = false;
+        else if (!now && wasNarrow === true && !det.getAttribute('data-user')) det.open = true;
+      }
       wasNarrow = now;
     }
+    /* 说明卡被用户点过就记一笔：之后窗口大小怎么变都不再替他做主。
+       ⚠️ 加个时间闸：初始解析带 `open` 时某些浏览器也会抛一次 toggle ——
+          不拦住的话，「用户表过态」会在开页瞬间就被误标上，窄屏默认就失效了。 */
+    (function watchHint() {
+      var hint = document.getElementById('hint');
+      var det = hint && hint.querySelector('details');
+      if (!det) return;
+      var armed = false;
+      setTimeout(function () { armed = true; }, 1200);
+      det.addEventListener('toggle', function () { if (armed) det.setAttribute('data-user', '1'); });
+    })();
     syncNarrowLegend();
     window.addEventListener('resize', syncNarrowLegend);
 

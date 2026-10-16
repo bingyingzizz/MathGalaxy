@@ -90,6 +90,10 @@ MG.uiEn = {
     '{n} 条结果，当前第 {k} 条': '{n} results, item {k} selected',
     '没有结果': 'No results',
     '没有找到「{名}」相关的节点': 'No node matches “{名}”',
+    '按书号 / 章节号找的话，用 ref: 前缀，例如 ref:I.5':
+      'Looking up a book reference? Use the ref: prefix, e.g. ref:I.5',
+    '共 {n} 项，只显示前 {m} 项 —— 继续打字缩小范围':
+      '{n} matches in total, showing the first {m} — keep typing to narrow down',
     '相关问题': 'Related questions',
     '全部结果': 'All results',
     '板块': 'Field',
@@ -170,6 +174,19 @@ MG.uiEn = {
        ⛔ 英文别再写 prerequisite 那个词：它会被内文跳转从单词内部截出 `site`
        （就是这轮修掉的那个 bug 的现场）。 */
     '已标记全部相关依赖': 'all related dependencies marked as read',
+    '⚠ 没能保存': '⚠ not saved',
+    '浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 这次标记只在本页有效':
+      'The browser does not allow local storage (private mode / restricted file://) — this mark only lasts for this page',
+    '⚠️ 浏览器不允许本地存储（无痕模式 / 受限的 file://）—— 进度只在本页有效，可以导出成文件留着':
+      '⚠️ The browser does not allow local storage (private mode / restricted file://) — progress only lasts for this page; you can export it to a file',
+    '导出已读进度（JSON）': 'Export reading progress (JSON)',
+    '导入已读进度（JSON）': 'Import reading progress (JSON)',
+    '已导出 {n} 条已读记录：{名}': 'Exported {n} read records: {名}',
+    '导出失败：{因}': 'Export failed: {因}',
+    '导入失败：这不是 MathGalaxy 的已读进度文件': 'Import failed: not a MathGalaxy reading-progress file',
+    '导入失败：文件读不出来': 'Import failed: the file could not be read',
+    '已导入：文件里 {n} 条，其中 {新} 条是新的（导入是并集，不会删掉本地已有的）':
+      'Imported: {n} records in the file, {新} of them new (import merges — local records are kept)',
     '相关依赖中还有 {n} 项未标记已读：{名}':
       '{n} related dependencies not marked as read yet: {名}',
     '「相关依赖」= 推出它的前提 + 陈述里引用的定义（等价与类比不算）；这只是已读情况的记录，不代表必须先学它们。':

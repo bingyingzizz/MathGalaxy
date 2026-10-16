@@ -36,6 +36,7 @@ const RECORD = argv.includes('--record');
 /* q     查询串（原样打进搜索框）
    n     期望命中条数（界面口径，最多 14）；null = 只比 top，不卡条数
    top   期望的前几条 id（写几条就比几条）
+   total 期望的**真实命中总数**（列表底部那行「共 N 项」里的 N）—— 不写就不查
    why   一句话记住这条为什么值得盯
 
    ⭐⭐ 2026-10-16 打分口径改过一次（用户报「搜 compact，compactly generated 排在
@@ -52,7 +53,7 @@ const CASES = [
   { q: 'preadditive', n: 1, top: ['def.abelian-category'], why: '长英文词被词表碎片切开（2026-10-16 真 bug）—— 必须只回 1 条' },
   { q: 'compact', n: 14, top: ['def.compact', 'def.chaus', 'def.compactly-generated'], why: '⭐⭐ 本轮修的：`compact` 正是 def.compact 的 label_en ⇒ 精确名档必须排第一。旧代码只认中文 label 的精确档，它只拿到别名档的分，被 compactly generated 靠 degree 挤到第二' },
   { q: 'zorn', n: 5, top: ['lem.zorn', 'ax.choice', 'thm.vsbasis'], why: 'lem.zorn 靠 `Zorn\'s lemma`（名字前缀档）压住 ax.choice 的精确别名 `Zorn` —— 别名档**在名字档之下**；thm.vsbasis 是正文提到它。旧次序里 #2/#3 是 degree 凑出来的' },
-  { q: 'yoneda', n: 13, top: ['prop.yoneda-embedding', 'lem.yoneda', 'prop.sieve-generated-by-family'], why: 'prop 的 label_en 是 `Yoneda embedding`（前缀档）；lem.yoneda **没有 label_en/title_en**，只靠 aka 的 `Yoneda`（别名档）⇒ 退到第二。⚠️ 要它领跑得给 lem.yoneda 补英文名（数据侧的决定，另议）' },
+  { q: 'yoneda', n: 13, top: ['lem.yoneda', 'prop.yoneda-embedding', 'prop.sieve-generated-by-family'], why: '⭐ 2026-10-16 第二轮给 lem.yoneda 补了英文名（回填的二级规则修了一处：`Yoneda` ⊂ `Yoneda lemma` 是简写、不算两条候选）⇒ 它靠 label_en 前缀档回到第一；以前只靠 aka 的 `Yoneda`（别名档）排第二' },
   { q: 'additive', n: 10, top: ['def.abelian-category', 'def.additive-functor', 'def.finitely-additive'], why: '两个 label_en 前缀命中（additive and abelian categories / additive functor）同档，degree 决定先后；旧代码靠堆叠加分把 additive-functor 放前面' },
   { q: 'abelian', n: 14, top: ['def.abelian-sheaf', 'thm.topos-abelian-grothendieck', 'prop.abelianization'], why: '名字前缀档（abelian sheaf / abelian Grothendieck topos…）在前；def.abelian-category 的英文名是 `additive and abelian categories`（包含档）⇒ 掉到第 4。旧代码靠 label/title/aka/id 四项堆叠把它顶到第一' },
   { q: 'fubini', n: 9, top: ['thm.fubini-tonelli', 'def.product-measure', 'thm.fubini-complete'], why: '两条 Fubini 定理都在前 3；其余是正文提到它的' },
@@ -73,7 +74,13 @@ const CASES = [
   { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta', 'prop.constant-sheaf-preserves-limits', 'def.simplex-category'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
   { q: '测度', n: 14, top: ['def.measure', 'def.measure-space', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响（同档的一批换了位，集合与旧记录相同）' },
   { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-cartesian-closed', 'prop.cg-coreflective'], why: '中文词 + 星团名命中（同档批次，degree 定次序）' },
-  { q: '定义', n: 14, top: [], why: '类型名命中：清单型查询，会顶到上限 14' },
+  { q: '定义', n: 14, total: 345, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）' },
+  { q: 'compact', total: 26, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 26' },
+  /* ⭐ `ref:` 前缀 = 只搜书目/出处（2026-10-16 建议④）。
+     ⛔ refs **不进 hay**（上一批 `I.5` 那条记 0 就是为了钉住这点），
+        要按书号找节点只能走这个显式前缀，免得章节号污染普通搜索。 */
+  { q: 'ref:Zorn (1935)', n: 1, top: ['lem.zorn'], why: 'ref: 精确到一个节点的出处（Zorn (1935) 只挂在佐恩引理上）' },
+  { q: 'ref:I.5', n: 14, total: 18, top: ['def.function', 'thm.product', 'def.pair'], why: 'ref: 命中一批（Kunen 的 I.5 那一节）—— 条数、总数、次序都盯着；⛔ 不带 ref: 时它仍然搜不到（下一条）' },
 ];
 
 /* --------------------------------------------------------- 最小 loadMG */
@@ -133,6 +140,9 @@ function search(q) {
   input.value = q;
   if (input.__ev.input) input.__ev.input({ target: input });
   const n = (String(results.innerHTML).match(/class="sr-item/g) || []).length;
+  /* ⭐ 列表底部那行「共 N 项，只显示前 M 项」——真总数（没被 14 截断过的） */
+  const more = /共 (\d+) 项/.exec(String(results.innerHTML));
+  const total = more ? Number(more[1]) : null;
   /* ⚠️ 事件对象要**像真的一样**：search.js 的 mousedown 处理里先 e.preventDefault()、
      再用 e.target.closest('[data-i]') 找行 —— 少一个方法就整条回调抛错，
      表现是「渲染出来的条数对、拿到的命中恒为 0」。 */
@@ -145,7 +155,7 @@ function search(q) {
   }
   /* ⚠️ 必须 `slice()` 复制：`hits` 是**共用的一个数组**（hooks 闭包抓着它），
      直接返回引用的话，最后打印出来的每一条都是「最后一次查询」的命中。 */
-  return { n: hits.filter((x) => x !== '(没有点击钩子)').length, hits: hits.slice() };
+  return { n: hits.filter((x) => x !== '(没有点击钩子)').length, hits: hits.slice(), total: total };
 }
 
 /* ------------------------------------------------------------------ 跑 */
@@ -155,7 +165,8 @@ for (const c of CASES) {
   const r = search(c.q);
   const top = (c.top || []).every((id, i) => r.hits[i] === id);
   const nOk = c.n == null ? true : r.n === c.n;
-  const ok = nOk && top;
+  const tOk = c.total == null ? true : r.total === c.total;
+  const ok = nOk && top && tOk;
   if (!ok && !RECORD) bad++;
   rows.push({ c, r, ok });
 }
@@ -171,8 +182,10 @@ if (RECORD) {
   console.log(`搜索回归体检 · ${CASES.length} 条查询`);
   for (const { c, r, ok } of rows) {
     if (ok && !LIST) continue;
-    console.log(`${ok ? '  ✓' : '  ✗'} ${JSON.stringify(c.q).padEnd(15)} 命中 ${String(r.n).padStart(2)}` +
-      (c.n == null ? '' : `（期望 ${c.n}）`) + `  ← ${c.why}`);
+    console.log(`${ok ? '  ✓' : '  ✗'} ${JSON.stringify(c.q).padEnd(18)} 命中 ${String(r.n).padStart(2)}` +
+      (c.n == null ? '' : `（期望 ${c.n}）`) +
+      (c.total == null ? '' : ` · 总数 ${r.total}（期望 ${c.total}）`) +
+      `  ← ${c.why}`);
     if (LIST || !ok) console.log('      ' + (r.hits.slice(0, 8).join(' ') || '(空)') + (r.hits.length > 8 ? ' …' : ''));
   }
   console.log(bad ? `\n✗ ${bad} 条与基准不符（上面的 ✓ 是 --list 才列出的）` : '\n✓ 全部与基准一致');
