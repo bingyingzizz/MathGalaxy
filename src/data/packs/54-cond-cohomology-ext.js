@@ -173,7 +173,7 @@ window.MG = window.MG || {};
         '$$\\operatorname{RHom}_{\\mathbb{Z}}(M,\\ N) = 0.$$'
       ].join('\n'),
       notes: [
-        '**与上一条对偶**：上一条说「实向量空间 $\to$ 离散」全零；这条说「紧 Hausdorff 群 $\to$ 实 Banach」全零。两条合起来正好是后面「分三类归约」时用来掐掉两端的两把剪刀。',
+        '**与上一条对偶**：上一条说「实向量空间 $\\to$ 离散」全零；这条说「紧 Hausdorff 群 $\\to$ 实 Banach」全零。两条合起来正好是后面「分三类归约」时用来掐掉两端的两把剪刀。',
         '**证法里的关键工具**是分解上乘 $p$ 的同伦：紧 Hausdorff 群上有「乘 $2$」这个映射，它在 Banach 空间里**可逆**（除以 $2$）；利用 $2 - [2]$ 的同伦，可以把一个闭链写成 $d$(一个收敛级数)，即每个闭链都是边界。收敛用 Banach 的完备性。',
         '⚠️ 要求 $N$ 是**实** Banach 空间（带 $\\mathbb{R}$-模结构），不是任意 Banach 阿贝尔群 —— 除以 $2$ 那一步要用到标量结构。',
         ['**证明（把闭链写成收敛级数）。** 仍用 Breen–Deligne 谱序列 $E^{p,q}_{1} = \\bigoplus_{i} H^{q}(M^{s_{p,i}}\\times S, N) \\implies \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M,N)(S)$。',
@@ -240,7 +240,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**在说什么。** 经典的 Pontryagin 对偶 $M^{\\vee} = \\operatorname{Hom}_{\\mathrm{cts}}(M, T)$ 说的是「取到圆里的连续同态」。这条给出它在**导出层面**的三种等价写法 —— 于是「取对偶」这个操作可以在导出的世界里做，进而参与 RHom / 张量的计算。',
-        '**三条为什么互相相容**。用 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$：对**紧**的 $M$，$\\operatorname{RHom}(M, \\mathbb{R}) = 0$（紧 $\to$ Banach 全零），于是 $\\operatorname{RHom}(M, T) \\cong \\operatorname{RHom}(M, \\mathbb{Z})[1]$，第二条就是这么来的。',
+        '**三条为什么互相相容**。用 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$：对**紧**的 $M$，$\\operatorname{RHom}(M, \\mathbb{R}) = 0$（紧 $\\to$ Banach 全零），于是 $\\operatorname{RHom}(M, T) \\cong \\operatorname{RHom}(M, \\mathbb{Z})[1]$，第二条就是这么来的。',
         '**注意三种情形的「位移」不同**：紧的情形多一个 $[1]$、Banach 的情形换成靶 $\\mathbb{R}$。这说明「对偶」在导出层面不是一个统一的操作 —— 具体走哪条，取决于 $M$ 属于哪一类。',
         '📌 **用法**：把「算 Pontryagin 对偶」归约成「算 RHom」，而 RHom 有 Breen–Deligne 谱序列与逐类归零定理可用。',
         ['**证明（由结构定理化归到三类）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的，所以只要对三类分别验证。',
@@ -269,7 +269,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **这是 §8.3 的终点**：局部紧 Hausdorff 阿贝尔群之间的 Ext 只在 $0$ 次和 $1$ 次上可能非零，再高一律消失。凝聚态数学对局部紧阿贝尔群给出的最终结论就是这个。',
-        '**证法：先归约、再逐类掐掉**。由局部紧阿贝尔群的**结构定理**（每个这样的群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 群」扩张出来的），只要对三类源与三类靶交叉验证即可。$M$ 离散时用两段自由消解，$N$ 离散时用那条练习（连通局部紧群对离散群）；$N$ 是 Banach 时用「紧 $\to$ Banach 全零」与「有限维 Banach 之间的 RHom 只有 0 次」。',
+        '**证法：先归约、再逐类掐掉**。由局部紧阿贝尔群的**结构定理**（每个这样的群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 群」扩张出来的），只要对三类源与三类靶交叉验证即可。$M$ 离散时用两段自由消解，$N$ 离散时用那条练习（连通局部紧群对离散群）；$N$ 是 Banach 时用「紧 $\\to$ Banach 全零」与「有限维 Banach 之间的 RHom 只有 0 次」。',
         '**为什么是「只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$」**：$\\operatorname{Ext}^{0}$ 就是 $\\operatorname{Hom}$，$\\operatorname{Ext}^{1}$ 分类扩张 —— 这两项是**代数**上本来就该有的；这条定理说的是**没有更多**，即凝聚态阿贝尔群的范畴在局部紧对象上「同调维数 $\\le 1$」。',
         '⚠️ 结论**不适用于非局部紧**的对象：像 $\\mathbb{R}^{I}$（任意大的积）这类东西，$\\operatorname{RHom}$ 的行为完全是另一回事。',
         ['**证明（按结构定理分三类，逐类掐掉）。** 局部紧 Hausdorff 阿贝尔群都是「离散群」被「有限维实 Banach 空间 $\\oplus$ 连通紧 Hausdorff 阿贝尔群」扩张出来的。于是只需对三类源与三类靶交叉处理：',
@@ -302,9 +302,9 @@ window.MG = window.MG || {};
         '',
         [
           '- 第一行（源是 $\\mathbb{Z}$）：$\\operatorname{RHom}(\\mathbb{Z}, N) = N$ —— 自由对象上没有高阶，只剩 0 次；',
-          '- 第二行第一列 $0$：**实向量空间 $\to$ 离散**全零（可除性塌掉）；',
+          '- 第二行第一列 $0$：**实向量空间 $\\to$ 离散**全零（可除性塌掉）；',
           '- 第二行其余：有限维实 Banach 之间的 RHom 只有 0 次，值为 $\\operatorname{Hom}_{\\mathbb{R}}(M, N)$ —— 这里是 $\\operatorname{Hom}_{\\mathbb{R}}(\\mathbb{R}, \\mathbb{R}) = \\mathbb{R}$ 与 $\\operatorname{Hom}_{\\mathbb{R}}(\\mathbb{R}, T)$；',
-          '- 第三行第二列 $0$：**紧 Hausdorff $\to$ 实 Banach** 全零；',
+          '- 第三行第二列 $0$：**紧 Hausdorff $\\to$ 实 Banach** 全零；',
           '- 第三行第一列 $\\mathbb{Z}[-1]$：由 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$，中间项是 $0$，只剩下一步降一次的 $\\mathbb{Z}$；',
           '- 右下角 $\\mathbb{Z}$：同样由 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$ 与 $\\operatorname{RHom}(T, \\mathbb{R}) = 0$ 得到。'
         ].join('\n'),
@@ -378,7 +378,7 @@ window.MG = window.MG || {};
       statement: '设 $M$ 是**连通**局部紧 Hausdorff 阿贝尔群、$N$ 是**离散**阿贝尔群。则 $\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N) = 0$，对一切 $n \\ne 1$。',
       notes: [
         '**和主定理的差别**：主定理（局部紧之间只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$）对源与靶都要求局部紧；这条把条件收窄到「源连通 + 靶离散」，结论里连 $\\operatorname{Ext}^{0}$ 也没了 —— 因为连通群到离散群的连续同态只能是平凡的（连通像落在离散拓扑里必为单点）。',
-        '**证法思路**：连通局部紧阿贝尔群可写成「紧连通部分 $\\oplus$ 实向量空间」；实向量空间那一块用「实向量空间 $\to$ 离散全零」，紧连通那一块用紧群的技术。',
+        '**证法思路**：连通局部紧阿贝尔群可写成「紧连通部分 $\\oplus$ 实向量空间」；实向量空间那一块用「实向量空间 $\\to$ 离散全零」，紧连通那一块用紧群的技术。',
         '⭐ 这条是主定理里「$N$ 离散」那一支的关键零件。'
       ].join('\n\n'),
       refs: ['Le Stum, Exercise 8.18']
@@ -402,7 +402,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么要单列这条**：$\\mathbb{R}^{I}$ 与 $\\mathbb{Z}^{I}$（任意大的积）一般**不是**局部紧的，所以主定理管不着它们。这条给出它们的具体答案，说明**结构定理之外也能处理**。',
-        '**第一条**：$\\mathbb{R}^{I}$ 仍是可除的（可除性的积还是可除），于是「可除 $\to$ 离散全零」那一套照样管用，$\\operatorname{RHom}$ 整个归零。',
+        '**第一条**：$\\mathbb{R}^{I}$ 仍是可除的（可除性的积还是可除），于是「可除 $\\to$ 离散全零」那一套照样管用，$\\operatorname{RHom}$ 整个归零。',
         '**第二条**：$\\mathbb{Z}^{I}$ 上的同态由 $I$ 上取值决定的那些（有限支撑的）—— 得到自由阿贝尔群 $\\mathbb{Z} \\cdot I$，且没有高阶项。',
         '⚠️ 关键在于这些对象**不是局部紧**的，所以不能靠「局部紧阿贝尔群结构定理」把它们拆成三类；但结论照样干净。'
       ].join('\n\n'),

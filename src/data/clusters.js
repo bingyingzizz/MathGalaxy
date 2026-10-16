@@ -288,6 +288,14 @@ MG.clusters = [
     desc: '造出「取极限与积分 / 求导能不能交换」的判据：逐点收敛 → **一致收敛**（三种交换定理）→ Weierstrass 判别法 → Dini 定理。**幂级数**是一致收敛的旗舰应用 —— 而 $\\exp$、$\\log$、$\\sin$、$\\cos$、$\\pi$ 全都由幂级数定义，初等函数在这里第一次有了合法出身。'
   },
   {
+    id: 'analysis.multivariable',
+    name: '多元微分',
+    en: 'Multivariable Differentiation',
+    parent: 'analysis',
+    hub: 'thm.inverse-function',
+    desc: '造出「把微分学线性代数化」的整套装置：偏导 / 方向导数 → **可微 = 存在一个线性映射** → 梯度、Jacobi、Hessian → 链式法则（矩阵乘法）→ 混合偏导可交换 → 中值定理与 Taylor → 极值判别（Hessian 正定 $\\iff$ 极小）。后半段是「局部 → 标准形」：压缩映射原理当引擎，撑起逆映射定理、隐函数定理、**秩定理**，再加上浸入 / 淹没、正则值原像、Lagrange 乘子、Morse 引理与 Sard 定理。'
+  },
+  {
     id: 'analysis.setclass',
     name: '集合族与 σ-代数',
     en: 'Families of Sets and Sigma-Algebras',
