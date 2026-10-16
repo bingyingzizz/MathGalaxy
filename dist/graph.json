@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T10:47:49.971Z",
+  "generated": "2026-10-16T14:27:09.948Z",
   "counts": {
    "regions": 9,
-   "clusters": 45,
-   "nodes": 709,
-   "edges": 1398,
-   "strong": 1389,
+   "clusters": 48,
+   "nodes": 744,
+   "edges": 1437,
+   "strong": 1428,
    "weak": 9,
    "en_pages": 299
   },
@@ -60,7 +60,7 @@
    "en": "Order Theory",
    "desc": "偏序、格、链与完备性；佐恩引理一类「极大原理」的舞台。",
    "color": "#2FA96B",
-   "nodeCount": 13
+   "nodeCount": 14
   },
   {
    "id": "topology",
@@ -68,7 +68,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。",
    "color": "#D9649F",
-   "nodeCount": 95
+   "nodeCount": 100
   },
   {
    "id": "algebra",
@@ -84,7 +84,7 @@
    "en": "Analysis",
    "desc": "极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。",
    "color": "#3AA8D8",
-   "nodeCount": 164
+   "nodeCount": 199
   },
   {
    "id": "category",
@@ -441,7 +441,7 @@
    "en": "Real Numbers and Limits",
    "parent": "analysis",
    "desc": "在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）",
-   "nodeCount": 7,
+   "nodeCount": 12,
    "nodes": [
     "def.extended-real",
     "def.interval",
@@ -449,7 +449,72 @@
     "def.series",
     "def.continuous",
     "def.derivative",
-    "thm.real-ordered-field"
+    "def.function-limit",
+    "def.function-limit-onesided",
+    "thm.squeeze",
+    "prop.limit-arithmetic",
+    "def.cauchy-sequence",
+    "def.limsup-liminf"
+   ]
+  },
+  {
+   "id": "analysis.completeness",
+   "name": "实数完备性的等价刻画",
+   "en": "Equivalent Forms of Completeness of the Reals",
+   "parent": "analysis",
+   "desc": "造出「$\\mathbb{R}$ 没有洞」的各种说法：确界原理 → 单调有界 → 区间套 → Bolzano–Weierstrass → Cauchy 准则 → 度量完备。它们是同一件事的六副面孔，永远同层 —— 初等分析里一切「存在某个极限」的定理都从这里取发动机。",
+   "nodeCount": 9,
+   "nodes": [
+    "thm.real-ordered-field",
+    "def.limit-point",
+    "thm.monotone-convergence",
+    "lem.nested-intervals",
+    "thm.bolzano-weierstrass",
+    "thm.cauchy-criterion",
+    "thm.real-complete-metric",
+    "thm.completeness-equivalent",
+    "cor.heine-borel"
+   ]
+  },
+  {
+   "id": "analysis.continuity",
+   "name": "连续与紧性",
+   "en": "Continuity and Compactness",
+   "parent": "analysis",
+   "desc": "造出「连续函数长什么样」：紧集上有界、取到最值、一致连续；介值定理与零点定理。反函数的连续性、初等函数的合法性都挂在这里。",
+   "nodeCount": 8,
+   "nodes": [
+    "def.uniform-continuity",
+    "prop.continuous-bounded-on-compact",
+    "thm.evt",
+    "thm.ivt",
+    "cor.zero-point",
+    "thm.uniform-continuity-compact",
+    "thm.monotone-inverse",
+    "prop.discontinuity-types"
+   ]
+  },
+  {
+   "id": "analysis.mvt",
+   "name": "微分中值定理与 Taylor",
+   "en": "Mean Value Theorems and Taylor",
+   "parent": "analysis",
+   "desc": "造出「把函数的增量翻译成导数」这套工具：Fermat 引理 → Rolle → Lagrange → Cauchy → L'Hôpital，顶点是 Taylor 公式 —— 用导数把一个函数局部地重写成多项式。",
+   "nodeCount": 13,
+   "nodes": [
+    "def.local-extremum",
+    "thm.fermat",
+    "thm.rolle",
+    "thm.mvt",
+    "thm.cauchy-mvt",
+    "cor.constant-iff-zero-derivative",
+    "prop.derivative-monotone",
+    "thm.lhopital",
+    "def.higher-derivative",
+    "def.convex-function",
+    "thm.convex-criterion",
+    "thm.taylor",
+    "prop.taylor-peano"
    ]
   },
   {
@@ -8876,7 +8941,7 @@
     "set-theory",
     "analysis"
    ],
-   "cluster": "analysis.real",
+   "cluster": "analysis.completeness",
    "layer": 13,
    "tags": [
     "定理",
@@ -23481,6 +23546,770 @@
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.28"
    ]
+  },
+  {
+   "id": "def.function-limit",
+   "type": "definition",
+   "label": "函数极限",
+   "title": "函数极限 $\\lim_{x \\to x_0} f(x) = L$（Limit of a Function）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "layer": 14,
+   "tags": [
+    "定义",
+    "极限"
+   ],
+   "statement": "设 $f$ 在 $x_0$ 的某个**去心邻域**上有定义，$L \\in \\mathbb{R}$。称 $x \\to x_0$ 时 $f(x)$ 趋于 $L$（记 $\\lim_{x \\to x_0} f(x) = L$），当且仅当\n\n$$\\forall \\varepsilon > 0,\\ \\exists \\delta > 0 :\\ 0 < |x - x_0| < \\delta \\implies |f(x) - L| < \\varepsilon$$\n\n**Heine 刻画**：$\\lim_{x \\to x_0} f(x) = L$，当且仅当对每个满足 $x_n \\ne x_0$ 且 $x_n \\to x_0$ 的数列，都有 $f(x_n) \\to L$。\n\n把 $0 < |x - x_0| < \\delta$ 换成别的范围（$x > M$、$x \\to x_0^{+}$、$|x| > M$ 等），就得到 $x \\to \\pm\\infty$、单侧极限等各式各样的变体。",
+   "notes": "⭐ 与**数列**极限的区别只有一处：这里自变量是连续地靠近的，所以要有一层额外的量词 $\\delta$ 管住「多近才算够近」。$\\varepsilon$-$\\delta$ 语言的全部新意就在这个双层量词上。\n\n⚠ **去心**是必须的：$x = x_0$ 那一点不参与极限，所以 $f$ 在 $x_0$ 处有没有定义、取值是多少，都不影响这个极限。也正因为如此，「极限存在且恰好等于 $f(x_0)$」才能拿来当**连续**的定义。\n\n⚠ 极限若存在则唯一 —— 这一条与数列版证法相同（取两点各用一半 $\\varepsilon$）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4",
+    "Tao, Analysis I, Ch. 9"
+   ]
+  },
+  {
+   "id": "def.function-limit-onesided",
+   "type": "definition",
+   "label": "单侧极限",
+   "title": "左极限与右极限（One-Sided Limits）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "layer": 15,
+   "tags": [
+    "定义",
+    "极限"
+   ],
+   "statement": "**左极限** $\\lim_{x \\to x_0^{-}} f(x) = L$ 指\n\n$$\\forall \\varepsilon > 0,\\ \\exists \\delta > 0 :\\ x_0 - \\delta < x < x_0 \\implies |f(x) - L| < \\varepsilon$$\n\n**右极限** $\\lim_{x \\to x_0^{+}} f(x) = L$ 把条件换成 $x_0 < x < x_0 + \\delta$。\n\n于是得到极限存在的**判别法**：极限 $\\lim_{x \\to x_0} f(x)$ 存在，当且仅当左右极限都存在且相等，即\n\n$$\\lim_{x \\to x_0^{-}} f(x) = \\lim_{x \\to x_0^{+}} f(x)$$",
+   "notes": "⭐ 单侧极限在图上出现在三处：分段函数接缝处的连续性、**单调函数**的跳跃（BV 那一团用 $F(x+) - F(x-)$ 定义跳跃）、区间端点上的连续性。\n\n⭐ 单调函数在每一点的两个单侧极限**都存在**（不必相等、不必连续）—— 这是「单调函数的不连续点可数」的第一步。\n\n⚠ 记号里 $x \\to x_0^{-}$ 的短横是「从左边靠近」，不是减号。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "thm.squeeze",
+   "type": "theorem",
+   "label": "夹逼定理",
+   "title": "夹逼定理（Squeeze Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "layer": 15,
+   "tags": [
+    "定理",
+    "极限"
+   ],
+   "statement": "**(数列版)** 设存在 $N_0$，使 $n \\ge N_0$ 时 $a_n \\le x_n \\le b_n$。若 $a_n \\to L$ 且 $b_n \\to L$，则 $x_n \\to L$。\n\n**(函数版)** 设 $g(x) \\le f(x) \\le h(x)$ 在 $x_0$ 的某个去心邻域上成立。若\n\n$$\\lim_{x \\to x_0} g(x) = \\lim_{x \\to x_0} h(x) = L$$\n\n则 $\\lim_{x \\to x_0} f(x) = L$。",
+   "notes": "⭐ 夹逼定理是**少数几个「不必先知道极限是多少」就能断言极限存在**的工具（另外两个是单调有界定理与 Cauchy 准则）。它最典型的用途是定义 $e$、证明 $\\lim_{n} q^{n} = 0$（$|q| < 1$）、$\\lim_{n} \\sqrt[n]{n} = 1$。\n\n⚠ 两个条件缺一不可：**双向**夹住，且两侧极限**相等**。只夹一边是没有任何结论的。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "prop.limit-arithmetic",
+   "type": "proposition",
+   "label": "极限的四则运算与保序性",
+   "title": "命题：极限的四则运算、保序性与绝对值（Algebra of Limits）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "layer": 15,
+   "tags": [
+    "命题",
+    "极限"
+   ],
+   "statement": "设 $x_n \\to x$、$y_n \\to y$（有限），$c \\in \\mathbb{R}$。则\n\n- $x_n \\pm y_n \\to x \\pm y$，$c\\,x_n \\to c\\,x$，$x_n y_n \\to xy$；\n- 若 $y \\ne 0$，则当 $n$ 充分大时 $y_n \\ne 0$，且 $x_n / y_n \\to x / y$；\n- $|x_n| \\to |x|$；\n- **保序性**：若存在 $N_0$ 使 $n \\ge N_0$ 时 $x_n \\le y_n$，则 $x \\le y$。\n\n函数版逐字照搬（把「存在 $N$」换成「存在 $\\delta$」）。",
+   "notes": "⭐ 这一组是**运算律**：它说的是「取极限」这个操作与四则运算交换。整个分析学的计算都建立在它上面。\n\n⚠ 保序性只能得到 $\\le$，得不到 $<$：例 $0 < 1/n$ 对一切 $n$ 成立，但极限 $0 \\le 0$。**严格不等号在取极限时会被抹平**。\n\n⚠ 「极限存在则唯一」「收敛则必有界」也出自同一定义，写法与数列版一模一样。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "def.cauchy-sequence",
+   "type": "definition",
+   "label": "Cauchy 列",
+   "title": "Cauchy 列（Cauchy Sequence）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "layer": 14,
+   "tags": [
+    "定义",
+    "极限",
+    "完备性"
+   ],
+   "statement": "实数列 $\\{x_n\\}$ 是 **Cauchy 列**，当且仅当\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall m, n \\ge N :\\ |x_m - x_n| < \\varepsilon$$\n\n即：只要取得足够靠后，**任意两项**都互相接近。",
+   "notes": "⭐ 与「收敛」的差别是**信息方向**：验证收敛要先有 $x$ 才能算 $|x_n - x|$，而 Cauchy 列只让数列**自己人互相比** —— 一个不知道极限是多少的人也能验证它。\n\n⭐ 在 $\\mathbb{R}$ 里两者**等价**（Cauchy 收敛准则）；在 $\\mathbb{Q}$ 里不等价（$1, 1.4, 1.41, \\ldots$ 是 Cauchy 列却没有有理极限）。$\\mathbb{R}$ 之所以要被造出来，正是为了补上这个缺口。\n\n⚠ 别与 `def.cauchy-null` 混淆：那个是**有理** Cauchy 列，是构造 $\\mathbb{R}$ 用的零件；这一条是 $\\mathbb{R}$ 造好之后判收敛的工具。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "def.limsup-liminf",
+   "type": "definition",
+   "label": "上极限与下极限",
+   "title": "上极限与下极限 $\\limsup$ / $\\liminf$（Limit Superior and Inferior）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.real",
+   "layer": 7,
+   "tags": [
+    "定义",
+    "极限"
+   ],
+   "statement": "对实数列 $\\{x_n\\}$，令\n\n$$\\limsup_{n \\to \\infty} x_n := \\lim_{n \\to \\infty} \\Bigl( \\sup_{k \\ge n} x_k \\Bigr), \\qquad \\liminf_{n \\to \\infty} x_n := \\lim_{n \\to \\infty} \\Bigl( \\inf_{k \\ge n} x_k \\Bigr)$$\n\n（$n \\mapsto \\sup_{k \\ge n} x_k$ 单调递减、$n \\mapsto \\inf_{k \\ge n} x_k$ 单调递增，所以在 $\\overline{\\mathbb{R}}$ 里的这两个极限**总是存在**。）\n\n并且数列的极限存在（允许取值 $\\pm\\infty$），当且仅当上下极限相等，即\n\n$$\\liminf_{n \\to \\infty} x_n = \\limsup_{n \\to \\infty} x_n$$",
+   "notes": "⭐ 上极限就是「所有收敛子列的极限之中最大的那个」（把 $\\pm \\infty$ 也算进来）—— 于是**每个**实数列都有上下极限，而只有收敛的数列才有极限：上下极限是极限的**放宽版**。\n\n⭐ 测度论里它们的出场方式很关键：Fatou 引理就是 $\\int \\liminf f_n \\le \\liminf \\int f_n$ —— 那里用不了「极限」，因为 $f_n$ 未必收敛。\n\n⚠ $\\limsup$ 与 $\\sup$ 不是一回事：$\\sup_n x_n$ 是全体项的上确界，$\\limsup_n x_n$ 只看**尾部**，所以对 $x_n = (-1)^{n}$ 有 $\\sup x_n = 1$ 而 $\\limsup x_n = 1$、$\\liminf x_n = -1$。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "def.limit-point",
+   "type": "definition",
+   "label": "聚点",
+   "title": "聚点 / 极限点（Limit Point）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 14,
+   "tags": [
+    "定义",
+    "完备性"
+   ],
+   "statement": "设 $S \\subseteq \\mathbb{R}$，$x \\in \\mathbb{R}$。称 $x$ 是 $S$ 的**聚点**（也叫极限点），当且仅当 $x$ 的每个去心邻域都与 $S$ 相交：\n\n$$\\forall \\varepsilon > 0,\\ \\exists s \\in S :\\ 0 < |s - x| < \\varepsilon$$\n\n等价的序列说法：存在 $S \\setminus \\{x\\}$ 中的数列 $s_n \\to x$。\n\n把 $S$ 换成一个数列的项集，就得到「$x$ 是 $\\{x_n\\}$ 的聚点」=「$\\{x_n\\}$ 有子列收敛到 $x$」。",
+   "notes": "⭐ 「有界数列必有聚点」就是 Bolzano–Weierstrass 定理 —— 它是实数完备性的六副面孔之一。\n\n⚠ 聚点**不必属于** $S$：全体有理数构成的集合 $\\mathbb{Q}$ 的聚点集是整个 $\\mathbb{R}$（这正是 $\\mathbb{Q}$ 不完备的样子）。\n\n⚠ 别与上确界混：$\\sup S$ 面向「$S$ 的上界」，聚点面向「$S$ 的点任意接近谁」；$\\sup\\{1, 1/2, 1/3, \\ldots\\} = 1$ 同时也是那个集合唯一的聚点，而 $\\sup\\{1\\} = 1$ 却不是聚点。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 2"
+   ]
+  },
+  {
+   "id": "thm.monotone-convergence",
+   "type": "theorem",
+   "label": "单调有界定理",
+   "title": "单调有界定理（Monotone Convergence Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 14,
+   "tags": [
+    "定理",
+    "完备性"
+   ],
+   "statement": "设 $\\{x_n\\} \\subseteq \\mathbb{R}$。\n\n- 若 $x_n$ 递增（$x_1 \\le x_2 \\le \\cdots$）且有上界，则 $\\{x_n\\}$ 收敛，且\n\n$$\\lim_{n \\to \\infty} x_n = \\sup_{n} x_n$$\n\n- 若 $x_n$ 递减且有下界，则 $\\{x_n\\}$ 收敛，且 $\\lim_{n \\to \\infty} x_n = \\inf_{n} x_n$。",
+   "notes": "⭐ 这条定理的价值在于：它**不必知道极限是谁**就断言了极限存在 —— 而在证明里我们顺手就把极限认出来了（就是那一列的上确界）。整个实分析大量使用这个套路（非负项级数、单调函数、测度的连续性、单调收敛定理的雏形）。\n\n⚠ 两个前提都不能丢：单调不必有界则发散（$x_n = n$）；有界不必单调则可能不收敛（$x_n = (-1)^{n}$）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "lem.nested-intervals",
+   "type": "lemma",
+   "label": "闭区间套定理",
+   "title": "引理：闭区间套定理（Nested Interval Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 15,
+   "tags": [
+    "引理",
+    "完备性"
+   ],
+   "statement": "设 $I_n = [a_n, b_n]$ 是一列**闭**区间，满足\n\n- $I_1 \\supseteq I_2 \\supseteq \\cdots$（嵌套），\n- $b_n - a_n \\to 0$（长度趋于零）。\n\n则 $\\bigcap_{n=1}^{\\infty} I_n$ 恰含**一个**点。",
+   "notes": "⭐ 这是「二分法」的正式形态：把它用于有界数列，就得到 Bolzano–Weierstrass 定理；用于证明中「不断把区间砍一半」的每一步，都是它。\n\n⚠ 两个条件都不能松：**闭**——$\\bigcap_{n} (0, 1/n] = \\emptyset$；**长度趋于零**——$\\bigcap_{n} [n, +\\infty) = \\emptyset$ 而长度不趋于零。若只要求嵌套不要求长度趋于零，结论要弱化成「交集非空」（此时交集是一个点或一个闭区间）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "thm.bolzano-weierstrass",
+   "type": "theorem",
+   "label": "Bolzano–Weierstrass",
+   "title": "Bolzano–Weierstrass 定理（有界列必有收敛子列）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 16,
+   "tags": [
+    "定理",
+    "完备性"
+   ],
+   "statement": "每个有界实数列都有收敛子列。等价地：$\\mathbb{R}$ 的每个有界无限子集都有聚点。\n\n在 $\\mathbb{R}^{n}$ 里逐坐标使用它，得到：$\\mathbb{R}^{n}$ 的有界列必有收敛子列。",
+   "notes": "⭐ 这是「$\\mathbb{R}^{n}$ 里紧 $\\iff$ 有界闭」那一条（Heine–Borel）的分析内核：有界闭集上的连续函数之所以能取到最值，根子在这里。\n\n⚠ 完备性在这里**不可省**：在 $\\mathbb{Q}$ 里，$1, 1.4, 1.41, 1.414, \\ldots$ 有界，却没有收敛到有理数的子列。\n\n⭐ 证明的标准手法是**二分法**：每次把区间砍一半、留下含无穷多项的那一半，套用闭区间套定理。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "thm.cauchy-criterion",
+   "type": "theorem",
+   "label": "Cauchy 收敛准则",
+   "title": "定理：收敛 $\\iff$ Cauchy（Cauchy Criterion）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 17,
+   "tags": [
+    "定理",
+    "完备性"
+   ],
+   "statement": "实数列 $\\{x_n\\}$ 收敛（到某个实数），当且仅当它是 Cauchy 列。",
+   "notes": "⭐ 两个方向的分量完全不同：「收敛 $\\implies$ Cauchy」只用三角不等式，是**平凡**的；「Cauchy $\\implies$ 收敛」才是**完备性本身** —— 它说的是「自己人互相比就够了的数列，一定有极限等着它」。\n\n⭐ 实用价值：判收敛时不必先猜极限。后面幂级数的收敛半径、函数的完备性、Banach 空间的定义（每个 Cauchy 列都收敛）都是这一条的直系后代。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3"
+   ]
+  },
+  {
+   "id": "thm.real-complete-metric",
+   "type": "theorem",
+   "label": "ℝ 是完备度量空间",
+   "title": "定理：$(\\mathbb{R}, |x - y|)$ 是完备度量空间",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 18,
+   "tags": [
+    "定理",
+    "完备性",
+    "度量空间"
+   ],
+   "statement": "在 $\\mathbb{R}$ 上取距离 $d(x, y) := |x - y|$。则 $(\\mathbb{R}, d)$ 是**完备**度量空间：其中每个 Cauchy 列都收敛。\n\n这正是 Cauchy 收敛准则用距离空间的语言重写一遍 —— 一句话：$\\mathbb{R}$ 是完备的。",
+   "notes": "⭐ 这是两条线的**接口**：一边是「$\\mathbb{R}$ 是完备有序域」（确界原理），另一边是「$X$ 是完备度量空间」（每个 Cauchy 列收敛）。在 $\\mathbb{R}$ 上两者重合，但它们**来源不同**：前者是序性质，后者是度量性质。\n\n⭐ 顺着这条边往外走，就是**完备化**：任何度量空间都能嵌进一个完备度量空间（拿 Cauchy 列取商），而 $\\mathbb{R}$ 的构造正是它的原型 —— 把 $\\mathbb{Q}$ 完备化就是 $\\mathbb{R}$。\n\n⚠ 一般度量空间里「完备」与「紧」是两回事：$\\mathbb{R}$ 完备但不紧。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3",
+    "Munkres, Topology, Ch. 43"
+   ]
+  },
+  {
+   "id": "thm.completeness-equivalent",
+   "type": "theorem",
+   "label": "完备性的六条等价",
+   "title": "定理：下列六条彼此等价（TFAE）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 19,
+   "tags": [
+    "定理",
+    "完备性",
+    "等价"
+   ],
+   "statement": "在 $\\mathbb{R}$ 上，下列六条**彼此等价**：\n\n**(1) 确界原理**：$\\mathbb{R}$ 的每个非空有上界的子集都有上确界。\n\n**(2) 单调有界定理**：递增有上界的数列收敛。\n\n**(3) 闭区间套定理**：嵌套的闭区间若长度趋于零，交集恰含一个点。\n\n**(4) Bolzano–Weierstrass**：每个有界数列都有收敛子列。\n\n**(5) Cauchy 收敛准则**：Cauchy 列收敛。\n\n**(6) 度量完备**：$(\\mathbb{R}, |x - y|)$ 是完备度量空间。\n\n六条构成一个**强连通块**：任取一条都能推出其余五条。",
+   "notes": "⭐ 这是本图里**第二个**「同一件事的多种说法构成强连通块」的例子 —— 第一个是选择原理（选择公理 $\\iff$ 良序定理 $\\iff$ 佐恩引理 $\\iff$ Hausdorff 极大原理 $\\iff$ Tukey 引理）。它们在图上的待遇也一样：**永远同层**。\n\n⭐ 为什么值得单独立一个节点：选哪条当前提，决定了后续所有证明的**风格** —— 用确界原理（序）证明、用区间套（几何）证明、用 Cauchy 准则（列）证明是三条不同的路。这块节点就是那张「换乘图」。\n\n⚠ 「完备」在这里有**两种语境**：确界原理那种是**序完备**（有上界就有上确界），度量空间那种是**度量完备**（Cauchy 列收敛）。在 $\\mathbb{R}$ 上它们等价，但别把这个等价当成一般事实带出去。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 3",
+    "Tao, Analysis I, Ch. 6"
+   ]
+  },
+  {
+   "id": "cor.heine-borel",
+   "type": "corollary",
+   "label": "有界闭 ⟺ 紧（ℝⁿ）",
+   "title": "推论：Heine–Borel 定理 —— $\\mathbb{R}^{n}$ 中紧 $\\iff$ 有界且闭",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "topology"
+   ],
+   "cluster": "analysis.completeness",
+   "layer": 17,
+   "tags": [
+    "推论",
+    "完备性",
+    "紧"
+   ],
+   "statement": "设 $K \\subseteq \\mathbb{R}^{n}$，按 Euclidean 距离看成一个度量空间。则 $K$ 是紧空间，当且仅当 $K$ 有界且闭。\n\n（「紧」取「每个开覆盖都有有限子覆盖」，或等价的「每个数列都有收敛到 $K$ 内一点的子列」。）",
+   "notes": "⭐ 这是**推论的推论**：$\\mathbb{R}^{n}$ 完备 + 有界集全有界 $\\implies$ 有界闭集列紧 $\\implies$ 紧（见「度量空间中紧的三个等价刻画」）。真正用到的是 Bolzano–Weierstrass 的逐坐标版本。\n\n⚠ 它**不是**一般度量空间的定理：一般度量空间里「紧 $\\implies$ 有界闭」永远成立，反之不成立（离散步的充分例子、$\\ell^{2}$ 的单位球）。\n\n⭐ 立刻可用的结论：闭区间 $[a, b]$ 紧 —— 于是连续函数在它上面取到最值、一致连续、可积。初等微积分的三大存在性定理全靠这一条。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 2",
+    "Munkres, Topology, Ch. 28"
+   ]
+  },
+  {
+   "id": "def.uniform-continuity",
+   "type": "definition",
+   "label": "一致连续",
+   "title": "一致连续（Uniform Continuity）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "topology"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 15,
+   "tags": [
+    "定义",
+    "连续"
+   ],
+   "statement": "设 $X \\subseteq \\mathbb{R}$，$f : X \\to \\mathbb{R}$。称 $f$ **一致连续**，当且仅当\n\n$$\\forall \\varepsilon > 0,\\ \\exists \\delta > 0,\\ \\forall x, x' \\in X :\\ |x - x'| < \\delta \\implies |f(x) - f(x')| < \\varepsilon$$\n\n与「连续」的唯一差别是量词的**顺序**：这里 $\\delta$ 出现在 $\\forall x$ 之前，所以同一个 $\\delta$ 要对 $X$ 上所有点同时管用。",
+   "notes": "⭐ 一句话：连续是「每一点各自有一个 $\\delta$」，一致连续是「有一个 $\\delta$ 通吃全 $X$」。\n\n⚠ 两者**不等价**：$f(x) = x^{2}$ 在 $\\mathbb{R}$ 上连续，但取 $x = n$、$x' = n + 1/n$ 就有 $|f(x) - f(x')| = 2 + 1/n^{2} > 2$，无论 $\\delta$ 多小都能撞上 —— 所以它不一致连续。$f(x) = 1/x$ 在 $(0, 1)$ 上同理。\n\n⭐ 紧集上两者**重合**（Cantor 定理）—— 这就是为什么初等微积分里可以只谈连续却随手用一致连续的性质。\n\n⭐ 一致连续是后面一切「把极限搬进积分 / 导数」的通行证：一致收敛的函数列才保连续、保积分。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "prop.continuous-bounded-on-compact",
+   "type": "proposition",
+   "label": "紧集上连续 ⟹ 有界",
+   "title": "命题：紧空间上的连续实值函数有界",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "topology"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 18,
+   "tags": [
+    "命题",
+    "连续",
+    "紧"
+   ],
+   "statement": "设 $X$ 是紧度量空间（例如 $\\mathbb{R}$ 中的闭区间 $[a, b]$），$f : X \\to \\mathbb{R}$ 连续。则 $f$ 在 $X$ 上有界：存在 $M$ 使 $|f(x)| \\le M$ 对一切 $x \\in X$ 成立。",
+   "notes": "⭐ 结论里**两个前提都不能丢**：\n- 不紧：$f(x) = 1/x$ 在 $(0, 1)$ 上连续但无界；\n- 不连续：$f(x) = 1/x$ 在 $[0, 1]$ 上（$f(0)$ 任意指定）无界。\n\n⚠ 一般拓扑空间里更干净的写法是「紧集的连续像是紧集」（连续像紧），再配合「$\\mathbb{R}$ 中的紧集有界」得到结论 —— 这里走的是序列路线，两条路都对，图上这条更省事。\n\n**证明**（反证 + 列紧）。设 $f$ 无界，则对每个 $n$ 存在 $x_n \\in X$ 使 $|f(x_n)| > n$。$X$ 紧 $\\implies$ 列紧，故 $\\{x_n\\}$ 有子列 $x_{n_k} \\to x^{*} \\in X$；$f$ 连续给出 $f(x_{n_k}) \\to f(x^{*})$，而收敛的数列有界，于是存在 $M$ 使 $|f(x_{n_k})| \\le M$ 对一切 $k$ 成立。另一方面由构造 $|f(x_{n_k})| > n_k \\to \\infty$，矛盾。∎",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "thm.evt",
+   "type": "theorem",
+   "label": "最值定理",
+   "title": "最值定理（Extreme Value Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "topology"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 19,
+   "tags": [
+    "定理",
+    "连续",
+    "紧"
+   ],
+   "statement": "设 $X$ 是紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\\min}, x_{\\max} \\in X$，使对一切 $x \\in X$ 有\n\n$$f(x_{\\min}) \\le f(x) \\le f(x_{\\max})$$",
+   "notes": "⭐ 「有界」与「取到最值」是两件事，这也是图上把它们分成两个节点的原因：有界只说明 $\\sup f(X)$ 是**有限的**，取到最值说明这个上确界**被某个点实打实地达到**。紧性负责后者。\n\n⚠ 换成开区间立刻失败：$f(x) = x$ 在 $(0, 1)$ 上有界，却既取不到最大值也取不到最小值。\n\n⭐ 在 $\\mathbb{R}$ 上的常用形式：**闭区间 $[a, b]$ 上的连续函数取到最值** —— 证明的第一步是「闭区间紧」（Heine–Borel）。初等微积分里求极值的整套流程（找驻点 + 比端点）就建立在这条上。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "thm.ivt",
+   "type": "theorem",
+   "label": "介值定理",
+   "title": "介值定理（Intermediate Value Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 15,
+   "tags": [
+    "定理",
+    "连续"
+   ],
+   "statement": "设 $f$ 在 $[a, b]$ 上连续，$c$ 是介于 $f(a)$ 与 $f(b)$ 之间的**任意**实数。则存在 $\\xi \\in [a, b]$ 使\n\n$$f(\\xi) = c$$",
+   "notes": "⭐ 几何内容：连续函数的图像从 $f(a)$ 走到 $f(b)$ 时**不能跳过中间的任何一个值** —— 连续函数把区间映成区间。\n\n⭐ 这是初等分析里最常用的存在性工具：方程有根、反函数存在、不动点、中间值比较，全都从它出来。它有**构造性**的内容：证明用的二分法本身就是求根的算法，而且每一步都能算。\n\n⚠ 它只保证**存在**，不保证唯一（$x^{3} - x$ 在 $[-2, 2]$ 上有三个零点）；唯一性要另外加**严格单调**。\n\n⚠ 它用到的是 $\\mathbb{R}$ 的完备性（确界原理），不是紧性：$[a, b]$ 换成一般的连通空间也成立，那是不动点/连通性那一支。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "cor.zero-point",
+   "type": "corollary",
+   "label": "零点定理",
+   "title": "推论：零点定理（Bolzano 定理）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 16,
+   "tags": [
+    "推论",
+    "连续"
+   ],
+   "statement": "设 $f$ 在 $[a, b]$ 上连续，且 $f(a)$ 与 $f(b)$ **异号**（$f(a) f(b) < 0$）。则存在 $\\xi \\in (a, b)$ 使\n\n$$f(\\xi) = 0$$",
+   "notes": "⭐ 它是介值定理取 $c = 0$ 的特例，之所以单独立一条，是因为它用得太频繁（数值分析里的二分法就是它的算法化）。\n\n⚠ 条件是**异号**，不是「不取零」：$f(a) = 0$ 时结论平凡但取不到 $(a, b)$ 内。\n\n⚠ 反过来不成立：零点不必异号（$f(x) = x^{2}$ 在 $[-1, 1]$ 上）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "thm.uniform-continuity-compact",
+   "type": "theorem",
+   "label": "紧集上连续 ⟹ 一致连续",
+   "title": "定理（Cantor）：紧集上的连续函数一致连续",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "topology"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 17,
+   "tags": [
+    "定理",
+    "连续",
+    "紧"
+   ],
+   "statement": "设 $X$ 是紧度量空间，$f : X \\to \\mathbb{R}$ 连续。则 $f$ 在 $X$ 上**一致连续**。\n\n特别地：闭区间 $[a, b]$ 上的连续函数一致连续。",
+   "notes": "⭐ 这条把「连续」升级成「一致连续」的唯一代价是**紧性** —— 它让 $\\delta$ 可以从「逐点选」变成「一次性选」，这是初等微积分里一切「先取有限子覆盖再取最小 $\\delta$」的证明的模板。\n\n⚠ 换成开区间立刻失败：$f(x) = 1/x$ 在 $(0, 1)$ 上连续但一致连续 —— 越靠近 $0$ 需要越小的 $\\delta$，而 $0$ 不在定义域里，无处安放这个下界。\n\n⭐ 直接用途：Riemann 可积性（分割的振幅和可以一致地小下去）、函数列的一致收敛、参数积分。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "thm.monotone-inverse",
+   "type": "theorem",
+   "label": "反函数连续",
+   "title": "定理：严格单调连续函数的反函数连续",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 16,
+   "tags": [
+    "定理",
+    "连续",
+    "单调"
+   ],
+   "statement": "设 $f$ 在区间 $I$ 上**严格单调**且连续。则\n\n- $f(I)$ 是一个区间（$f$ 把区间映成区间）；\n- $f : I \\to f(I)$ 是双射，其反函数 $f^{-1} : f(I) \\to I$ 也连续，而且**同向**单调（$f$ 增则 $f^{-1}$ 增）。",
+   "notes": "⭐ 这条定理是**初等函数的合法性证书**：它保证 $\\exp$ 有连续的反函数 $\\log$、$\\sin$ 在 $[-\\pi/2, \\pi/2]$ 上有连续的 $\\arcsin$。没有它，那些反三角、反双曲函数就只能靠「显然连续」含糊过去。\n\n⚠ 严格单调是**必须**的：常数函数没有反函数；$\\sin$ 不单调，只能先限制到一个单调区间再取反函数。\n\n⭐ 它也说明「单调函数的间断点只能是跳跃」：单调函数没有振荡式的不连续，因为两侧的极限必然存在（单调有界）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "prop.discontinuity-types",
+   "type": "proposition",
+   "label": "间断点分类",
+   "title": "命题：间断点的两类分法",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.continuity",
+   "layer": 15,
+   "tags": [
+    "命题",
+    "连续"
+   ],
+   "statement": "设 $f$ 在 $x_0$ 的去心邻域上有定义，但在 $x_0$ 处**不连续**。称 $x_0$ 是 $f$ 的**间断点**，并按两个单侧极限是否存在分成两类：\n\n**第一类**：$\\lim_{x \\to x_0^{-}} f(x)$ 与 $\\lim_{x \\to x_0^{+}} f(x)$ 都存在（有限）。其中\n\n- **可去间断**：两个单侧极限相等（记公共值 $L$）。此时把 $f(x_0)$ 改定义为 $L$ 就连续了；\n- **跳跃间断**：两个单侧极限不相等，差 $f(x_0^{+}) - f(x_0^{-})$ 叫**跳跃**。\n\n**第二类**：至少有一个单侧极限不存在，或为 $\\pm\\infty$。",
+   "notes": "⭐ 这一分类在图上不只是名词：**单调函数的间断点全是跳跃间断，而且这样的点至多可数** —— 那是 BV 与测度论那一团（$\\mu_F$ 的原子、$F' = 0$ a.e.）的起点。\n\n⚠ 「可去」的关键是 $f$ 在 $x_0$ 处**有定义但不等于极限**：例如 $f(x) = \\sin x / x$ 补上 $f(0) = 1$ 就连续。$x_0$ 根本不在定义域里时（如 $1/x$ 在 $0$）不算以 $0$ 为定义域上的间断点。\n\n⭐ 第二类的典型：$\\sin(1/x)$ 在 $0$ 处（振荡，极限不存在）。\n\n**证明**（分类是穷尽的）。在间断点 $x_0$ 处，每个单侧极限只有两种状态：存在且有限，或不存在 / 为无穷。于是「两个单侧极限都有限」与「至少一个不满足」互斥且穷尽，前者再按两侧极限是否相等分成可去与跳跃两类 —— 三种情形互斥且已列出全部可能。∎",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 4"
+   ]
+  },
+  {
+   "id": "def.local-extremum",
+   "type": "definition",
+   "label": "局部极值",
+   "title": "局部极大与局部极小（Local Extremum）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 16,
+   "tags": [
+    "定义",
+    "导数"
+   ],
+   "statement": "设 $f$ 在 $x_0$ 的某个邻域上有定义。称 $x_0$ 是 $f$ 的\n\n- **局部极大值点**：存在 $\\delta > 0$，使 $|x - x_0| < \\delta$ 时 $f(x) \\le f(x_0)$；\n- **局部极小值点**：存在 $\\delta > 0$，使 $|x - x_0| < \\delta$ 时 $f(x) \\ge f(x_0)$。\n\n两者统称**局部极值点**。把 $\\le$、$\\ge$ 换成 $<$、$>$（对 $x \\ne x_0$）就得到**严格**局部极值。\n\n若 $x_0$ 在定义域**内部**且是局部极值点，则称它是**内点极值点**。",
+   "notes": "⭐ 「局部」二字是全部要害：定义只比较 $x_0$ 附近的值，与远处的值无关。所以局部极值点可以有很多个（$\\sin x$ 有无穷多个），而**整体**最值（最值定理给的那个）最多两个。\n\n⚠ 端点不算内点极值点 —— 这一点是 Fermat 引理的前提，因为端点处导数的**单侧**性会毁掉论证。\n\n⚠ 局部极大**不必**是整体最大：$f(x) = x^{3} - x$ 在 $x = -1$ 附近局部极大，但全局无界。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5",
+    "Spivak, Calculus, Ch. 11"
+   ]
+  },
+  {
+   "id": "thm.fermat",
+   "type": "theorem",
+   "label": "Fermat 引理",
+   "title": "Fermat 引理：内点极值 $\\implies$ 导数为零",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 17,
+   "tags": [
+    "定理",
+    "导数"
+   ],
+   "statement": "设 $f$ 在 $x_0$ 的某个邻域上有定义、在 $x_0$ 处可导，且 $x_0$ 是 $f$ 的**内点**局部极值点。则\n\n$$f'(x_0) = 0$$",
+   "notes": "⭐ 这是整个微分学的**第一推动**：它把「极值」这个纯序的概念翻译成了「导数取零」这个纯代数的条件，于是求极值变成了解方程 $f' = 0$。\n\n⚠ 三个前提一个都不能少：可导性（$|x|$ 在 $0$ 处是内点极小但不可导）、内点性（$f(x) = x$ 在 $[0, 1]$ 的端点 $0$ 处取最小值而 $f'(0) = 1 \\ne 0$）、极值性。\n\n⚠ **逆命题不成立**：$f'(x_0) = 0$ 不保证极值（$f(x) = x^{3}$ 在 $0$ 处）。满足 $f' = 0$ 的点叫**驻点**，驻点要与不可导点、端点一起排队检查。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "thm.rolle",
+   "type": "theorem",
+   "label": "Rolle 中值定理",
+   "title": "Rolle 中值定理（Rolle's Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 20,
+   "tags": [
+    "定理",
+    "导数"
+   ],
+   "statement": "设 $f$ 在闭区间 $[a, b]$ 上连续、在开区间 $(a, b)$ 内可导，且 $f(a) = f(b)$。则存在 $\\xi \\in (a, b)$ 使\n\n$$f'(\\xi) = 0$$",
+   "notes": "⭐ 几何内容：两端等高时，中间必有一个水平切线点。它是中值定理家族里**唯一需要紧性**的一条（用最值定理找内部极值点），后面几条都是它换一件衣服。\n\n⚠ 两个前提同样不能丢：「$[a, b]$ 上连续」保证最值存在（紧性），「$(a, b)$ 内可导」保证那个极值点是内点、可以用 Fermat 引理。$f(a) = f(b)$ 若换成 $f(a) \\ne f(b)$ 就是 Lagrange 中值定理。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "thm.mvt",
+   "type": "theorem",
+   "label": "Lagrange 中值定理",
+   "title": "Lagrange 中值定理（Mean Value Theorem）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 21,
+   "tags": [
+    "定理",
+    "导数"
+   ],
+   "statement": "设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\\xi \\in (a, b)$ 使\n\n$$f(b) - f(a) = f'(\\xi)\\,(b - a)$$\n\n等价地 $f'(\\xi) = \\dfrac{f(b) - f(a)}{b - a}$：**平均变化率必在某点被瞬时变化率取到**。",
+   "notes": "⭐ 这是整个微分学的**总开关**：凡是要「从逐点的导数信息推出整体结论」的定理，第一个动作都是「用中值定理把差写成导数」。单调性判据、常函数判据、L'Hôpital、Taylor 公式、凸性判据，全都是它的推论。\n\n⚠ **$\\xi$ 不可控**：定理只保证存在，不说在哪 —— 这就是为什么中值定理不能用来**计算** $f(b) - f(a)$，只能用来证明不等式与结构性质。\n\n⚠ 一般情形的反例说明「连续」不能丢：$f(x) = x$ 在 $[0, 1] \\setminus \\{1/2\\}$ 上加一点跳跃就能让平均斜率无处可取。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5",
+    "Spivak, Calculus, Ch. 11"
+   ]
+  },
+  {
+   "id": "thm.cauchy-mvt",
+   "type": "theorem",
+   "label": "Cauchy 中值定理",
+   "title": "Cauchy 中值定理（广义中值定理）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 21,
+   "tags": [
+    "定理",
+    "导数"
+   ],
+   "statement": "设 $f, g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且 $g'(x) \\ne 0$ 在 $(a, b)$ 内处处成立。则存在 $\\xi \\in (a, b)$ 使\n\n$$\\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f'(\\xi)}{g'(\\xi)}$$",
+   "notes": "⭐ 它不是 Lagrange 的「取 $g(x) = x$」那么简单：把两个函数的增量**同时**用同一个点 $\\xi$ 表示出来，这是 L'Hôpital 法则能成立的全部理由。\n\n⚠ $g' \\ne 0$ 的条件不可省 —— 它同时保证 $g(b) \\ne g(a)$（由 Rolle 定理），分母才有意义。\n\n⚠ 参数曲线读法：$t \\mapsto (g(t), f(t))$ 是一条曲线，结论说的是曲线在某个内点处的切线**平行于**两端点的连线 —— 与 Lagrange 的「平行于弦」是同一个几何意思，只是现在弦不必是函数的图像。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "cor.constant-iff-zero-derivative",
+   "type": "corollary",
+   "label": "导数为零 ⟺ 常函数",
+   "title": "推论：区间上导数恒为零 $\\iff$ 函数为常数",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 22,
+   "tags": [
+    "推论",
+    "导数"
+   ],
+   "statement": "设 $f$ 在区间 $I$ 上可导。则 $f$ 在 $I$ 上恒为常数，当且仅当对一切 $x \\in I$ 有\n\n$$f'(x) = 0$$",
+   "notes": "⭐ 这条推论的含义比它看起来大：**「求导」在区间上丢失的信息只有一个常数**。所以「求原函数」这件事才有意义、才只差一个常数（微积分基本定理的另一半）。\n\n⚠ 定义域必须是**区间**：在 $(0, 1) \\cup (2, 3)$ 上导数处处为零的函数可以在两段上分别取不同的常数。\n\n⭐ 在测度论里它的地位被改写：$f' = 0$ a.e. 而 $f$ 不必是常数（Cantor 函数）—— 「几乎处处」不足以锁住函数，那正是绝对连续要补的那一刀。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "prop.derivative-monotone",
+   "type": "proposition",
+   "label": "导数符号 ⟹ 单调性",
+   "title": "命题：导数符号与单调性",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 22,
+   "tags": [
+    "命题",
+    "导数",
+    "单调"
+   ],
+   "statement": "设 $f$ 在区间 $I$ 上可导。\n\n- $f' \\ge 0$ 在 $I$ 上处处成立 $\\implies$ $f$ 在 $I$ 上递增；\n- $f' \\le 0$ 处处成立 $\\implies$ $f$ 递减；\n- $f' > 0$ 处处成立 $\\implies$ $f$ **严格**递增。\n\n反之：若 $f$ 递增且可导，则 $f' \\ge 0$。",
+   "notes": "⭐ 「$f' > 0 \\implies$ 严格递增」的反命题**不成立**：$f(x) = x^{3}$ 严格递增而 $f'(0) = 0$。要得到严格单调，只能用 Lagrange 中值定理逐段验证（每一段上导数不恒为零即可），不能指望点点为正。\n\n⚠ 「$f' \\ge 0$ 处处成立」也推不出严格递增（常数函数）；反之那一半（递增 $\\implies f' \\ge 0$）是差商的极限，与中值定理无关。\n\n⭐ 这是微积分里第一个「局部信息（导数）决定整体形状（单调）」的定理，也是求最值那套流程的理论依据。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "thm.lhopital",
+   "type": "theorem",
+   "label": "L'Hôpital 法则",
+   "title": "L'Hôpital 法则（不定式极限）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 22,
+   "tags": [
+    "定理",
+    "导数",
+    "极限"
+   ],
+   "statement": "设 $f, g$ 在 $x_0$ 的某去心邻域内可导、$g' \\ne 0$，且\n\n$$\\lim_{x \\to x_0} f(x) = \\lim_{x \\to x_0} g(x) = 0$$\n\n（或两者都趋于 $\\pm\\infty$）。若 $\\lim_{x \\to x_0} \\dfrac{f'(x)}{g'(x)}$ 存在（允许 $\\pm\\infty$），则\n\n$$\\lim_{x \\to x_0} \\frac{f(x)}{g(x)} = \\lim_{x \\to x_0} \\frac{f'(x)}{g'(x)}$$",
+   "notes": "⭐ 它把「两个都趋于零的东西之比」换成了「导数之比」—— 唯一的依据就是 Cauchy 中值定理，而且是**逆命题式**的使用习惯：先算出导数之比好算，再宣布原比值相等。\n\n⚠ 三个前提不要漏：**不定式**（$0/0$ 或 $\\infty/\\infty$；$\\dfrac{0}{\\infty}$ 之类直接是 $0$，用不上它）、$g' \\ne 0$、右边那个极限**存在**。最后一个最要命：$\\lim f'/g'$ 不存在时，右边不等于左边 —— 除了不能说，什么都不能说（典型：$f = x + \\sin x$、$g = x$）。\n\n⚠ 「$\\infty/\\infty$ 型」的证明比 $0/0$ 型麻烦一些（要先用 $g$ 的单调性做截断），但结论一样。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "def.higher-derivative",
+   "type": "definition",
+   "label": "高阶导数与 C^k",
+   "title": "高阶导数与 $C^{k}$ 类（Higher Derivatives）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 16,
+   "tags": [
+    "定义",
+    "导数"
+   ],
+   "statement": "若 $f'$ 在 $x_0$ 处可导，记\n\n$$f''(x_0) := (f')'(x_0), \\qquad f^{(n+1)}(x_0) := \\bigl( f^{(n)} \\bigr)'(x_0)$$\n\n称 $f^{(n)}$ 为 $f$ 的 **$n$ 阶导数**。约定 $f^{(0)} := f$。\n\n**连续可导类**：$f \\in C^{0}(I)$ 表示 $f$ 在 $I$ 上连续；递归地，$f \\in C^{k}(I)$ 表示 $f$ 可导且 $f' \\in C^{k-1}(I)$；$f \\in C^{\\infty}(I)$ 表示对一切 $k$ 都有 $f \\in C^{k}(I)$（称光滑）。",
+   "notes": "⭐ 记号上的坑：$f^{(n)}$ 用的是**括号上标**，因为 $f^{n}$ 已经被「$f$ 的 $n$ 次幂」占用了。\n\n⭐ $C^{2}$ 是凸性判据的入场券（要谈 $f''$ 就得先有二阶导数），$C^{n}$ 是 Taylor 公式的入场券。\n\n⚠ $C^{k}$ 是**严格递减**的一串（本图的真包含写 $\\subset$）：$C^{\\infty} \\subset C^{k} \\subset \\cdots \\subset C^{1} \\subset C^{0}$。反例：$f(x) = x^{2} \\sin(1/x)$（补 $f(0) = 0$）在 $0$ 处可导但导数不连续，所以 $f \\in C^{0} \\setminus C^{1}$。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
+  },
+  {
+   "id": "def.convex-function",
+   "type": "definition",
+   "label": "凸函数",
+   "title": "凸函数与 Jensen 不等式（Convex Function）",
+   "region": "analysis",
+   "regions": [
+    "analysis",
+    "order-theory"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 14,
+   "tags": [
+    "定义",
+    "导数",
+    "凸性"
+   ],
+   "statement": "设 $I$ 是区间，$f : I \\to \\mathbb{R}$。称 $f$ **凸**，当且仅当对一切 $x, y \\in I$ 与一切 $t \\in [0, 1]$，\n\n$$f\\bigl( (1 - t) x + t y \\bigr) \\le (1 - t) f(x) + t f(y)$$\n\n即图像总在弦的**下方**。把 $\\le$ 换成 $\\ge$ 得**凹函数**（concave）。\n\n由此归纳得到 **Jensen 不等式**：若 $\\lambda_i \\ge 0$、$\\sum_i \\lambda_i = 1$，则\n\n$$f\\Bigl( \\sum_i \\lambda_i x_i \\Bigr) \\le \\sum_i \\lambda_i f(x_i)$$",
+   "notes": "⭐ 凸性是**序与几何**的性质（两点之间的值受两端值约束），不需要可导就能定义 —— 这一点很重要：$|x|$、$e^{x}$、$x^{2}$ 都凸，但 $|x|$ 在 $0$ 处不可导。\n\n⭐ Jensen 不等式是概率论与分析里大量不等式的统一来源（AM–GM、Hölder、$e^{\\mathbb{E}} \\le \\mathbb{E} e^{\\cdot}$）。\n\n⚠ 别把「凸」与「严格凸」混：严格凸要 $t \\in (0, 1)$、$x \\ne y$ 时不等号严格。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5",
+    "Rockafellar, Convex Analysis"
+   ]
+  },
+  {
+   "id": "thm.convex-criterion",
+   "type": "theorem",
+   "label": "凸性的导数判据",
+   "title": "定理：凸 $\\iff$ 导数递增 $\\iff f'' \\ge 0$",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 22,
+   "tags": [
+    "定理",
+    "导数",
+    "凸性"
+   ],
+   "statement": "设 $f$ 在区间 $I$ 上可导。则 $f$ 是凸函数，当且仅当 $f'$ 在 $I$ 上递增。\n\n若 $f$ 二阶可导，则 $f$ 凸 $\\iff f''(x) \\ge 0$ 对一切 $x \\in I$ 成立。",
+   "notes": "⭐ 这条把凸性这个**几何**条件翻译成了**导数单调**这个分析条件 —— 与「导数符号 $\\implies$ 单调性」合起来，就得到完整的「二阶导数的符号 $\\implies$ 函数的弯曲方向」这条链。\n\n⚠ 只用二阶导数的**符号**判定凸性时要求二阶可导；$|x|$ 凸但无二阶导数，所以在 $C^{2}$ 之外必须回到导数递增或弦的判据。\n\n⚠ 严格凸（$f'' > 0$）与凸（$f'' \\ge 0$）同样不能互换：$f(x) = x^{4}$ 在 $0$ 处 $f''(0) = 0$ 但仍严格凸。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5",
+    "Rockafellar, Convex Analysis"
+   ]
+  },
+  {
+   "id": "thm.taylor",
+   "type": "theorem",
+   "label": "Taylor 公式",
+   "title": "Taylor 公式（带 Lagrange 余项）",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 22,
+   "tags": [
+    "定理",
+    "导数",
+    "Taylor"
+   ],
+   "statement": "设 $f$ 在 $[a, b]$ 上有 $n$ 阶连续导数、在 $(a, b)$ 内 $n+1$ 阶可导，取 $x_0 \\in [a, b]$。则对每个 $x \\in [a, b]$，$x \\ne x_0$，存在介于 $x_0$ 与 $x$ 之间的 $\\xi$，使\n\n$$f(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(x_0)}{k!}\\,(x - x_0)^{k} + \\frac{f^{(n+1)}(\\xi)}{(n+1)!}\\,(x - x_0)^{n+1}$$\n\n右边第二项叫 **Lagrange 余项**。",
+   "notes": "⭐ 一句话：**高阶可导的函数局部就是多项式**，误差由那一项余项控制。这是初等微积分里唯一一个「把函数还原成有限信息」的定理，也是后来幂级数、解析函数那一整条线的入口。\n\n⭐ 余项的形状与中值定理同源：$n = 0$ 时 Taylor 公式**就是** Lagrange 中值定理。\n\n⚠ 余项只保证存在 $\\xi$，不给出位置；要**估计**误差必须另外知道 $f^{(n+1)}$ 的界（这是「余项写成 sup 形式」的用处）。\n\n⚠ 两个前提：区间上要足够多次可导；$\\xi$ 与 $x$、$n$ 都有关。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5",
+    "Spivak, Calculus, Ch. 20"
+   ]
+  },
+  {
+   "id": "prop.taylor-peano",
+   "type": "proposition",
+   "label": "Taylor 公式（Peano 余项）",
+   "title": "命题：Taylor 公式的 Peano 余项形式",
+   "region": "analysis",
+   "regions": [
+    "analysis"
+   ],
+   "cluster": "analysis.mvt",
+   "layer": 23,
+   "tags": [
+    "命题",
+    "导数",
+    "Taylor"
+   ],
+   "statement": "设 $f$ 在 $x_0$ 的邻域内有 $n$ 阶导数（第 $n$ 阶在 $x_0$ 处连续即可），则当 $x \\to x_0$ 时\n\n$$f(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(x_0)}{k!}\\,(x - x_0)^{k} + o\\bigl( (x - x_0)^{n} \\bigr)$$\n\n即余项关于 $(x - x_0)^{n}$ 是**高阶无穷小**。",
+   "notes": "⭐ 与 Lagrange 余项的分工：**Peano 说的是「余项有多小」，Lagrange 说的是「余项等于什么」**。前者只要 $n$ 阶导数、只要局部，用来算极限最好用；后者要 $n+1$ 阶导数、要整个区间，用来估误差最好用。图上把两者分成两个节点就是为了这件事。\n\n⚠ Peano 余项是**局部**结论：$x$ 必须趋于 $x_0$，离开 $x_0$ 就没有任何控制。\n\n⭐ 典型用途：算 $\\lim_{x \\to 0} (\\sin x - x)/x^{3}$ 这类极限（把 $\\sin x$ 展到三阶，余项一除就没了）。",
+   "refs": [
+    "Rudin, Principles of Mathematical Analysis, Ch. 5"
+   ]
   }
  ],
  "edges": [
@@ -35358,6 +36187,432 @@
    "definition": "def.weak-hausdorff",
    "usedBy": "prop.closed-inclusion-filtered-limit",
    "note": "结论断言余极限仍**弱 Hausdorff**。"
+  },
+  {
+   "id": "dep.seqlimit-fnlimit",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sequence-limit",
+   "usedBy": "def.function-limit",
+   "note": "两者用的是同一套 $\\varepsilon$ 语言；函数版多一层 $\\delta$ 来管住自变量靠近的程度，Heine 刻画则把函数版**还原**成数列版。"
+  },
+  {
+   "id": "dep.fnlimit-onesided",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.function-limit",
+   "usedBy": "def.function-limit-onesided",
+   "note": "单侧极限就是把 $0 < |x - x_0| < \\delta$ 换成半边：$x_0 - \\delta < x < x_0$ 或 $x_0 < x < x_0 + \\delta$。"
+  },
+  {
+   "id": "dep.seqlimit-cauchyseq",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.sequence-limit",
+   "usedBy": "def.cauchy-sequence",
+   "note": "Cauchy 列把「与极限比较」换成「数列内部互相比较」：量词形状一样，$|x_n - x|$ 换成了 $|x_m - x_n|$。"
+  },
+  {
+   "id": "dep.bound-limsup",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.bound",
+   "usedBy": "def.limsup-liminf",
+   "note": "上下极限用的是**尾部的**上确界与下确界：$\\sup_{k \\ge n} x_k$ 对每个 $n$ 都是一次确界运算。"
+  },
+  {
+   "id": "dep.interval-limitpoint",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.interval",
+   "usedBy": "def.limit-point",
+   "note": "聚点是用「每个 $\\varepsilon$ 邻域」说的，而邻域就是开区间 $(x - \\varepsilon, x + \\varepsilon)$。"
+  },
+  {
+   "id": "dep.cauchyseq-criterion",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cauchy-sequence",
+   "usedBy": "thm.cauchy-criterion",
+   "note": "定理的两边一边是收敛、一边是 Cauchy 列 —— 后者刚在这一包定义。"
+  },
+  {
+   "id": "dep.complete-realm",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complete",
+   "usedBy": "thm.real-complete-metric",
+   "note": "把度量空间「完备」的定义原封不动搬到 $\\mathbb{R}$ 上：每个 Cauchy 列都收敛。"
+  },
+  {
+   "id": "dep.compact-hb",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.compact",
+   "usedBy": "cor.heine-borel",
+   "note": "Heine–Borel 是一条判别**紧性**的定理，用的就是紧空间的定义。"
+  },
+  {
+   "id": "imp.squeeze",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.sequence-limit",
+    "def.function-limit"
+   ],
+   "target": "thm.squeeze",
+   "title": "数列/函数极限的定义 $\\implies$ 夹逼定理",
+   "proof": "**数列版。** 设 $a_n \\to L$、$b_n \\to L$，且 $n \\ge N_0$ 时 $a_n \\le x_n \\le b_n$。给定 $\\varepsilon > 0$。\n\n1. 由 $a_n \\to L$，存在 $N_1$，使得 $n \\ge N_1$ 时 $|a_n - L| < \\varepsilon$，特别地 $a_n > L - \\varepsilon$。\n2. 由 $b_n \\to L$，存在 $N_2$，使得 $n \\ge N_2$ 时 $b_n < L + \\varepsilon$。\n3. 取 $N = \\max\\{N_0, N_1, N_2\\}$。当 $n \\ge N$ 时\n\n$$L - \\varepsilon < a_n \\le x_n \\le b_n < L + \\varepsilon$$\n\n即 $|x_n - L| < \\varepsilon$。故 $x_n \\to L$。\n\n**函数版。** 把上面第 1、2 步里的「存在 $N_1$」换成「存在 $\\delta_1 > 0$」，第 3 步取 $\\delta = \\min\\{\\delta_0, \\delta_1, \\delta_2\\}$，逐字照搬即可。∎",
+   "note": "夹逼定理没有任何「存在性」内容：它的两个前提本身已经给出了极限 $L$，所以只用定义就够了 —— 这也是它为什么在实数的任何完备化里都成立的原因。"
+  },
+  {
+   "id": "imp.limit-arithmetic",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.function-limit"
+   ],
+   "target": "prop.limit-arithmetic",
+   "title": "极限的定义 $\\implies$ 四则运算与保序性",
+   "proof": "以函数版为例（数列版把 $\\delta$ 换成 $N$ 即可），记 $A = \\lim_{x \\to x_0} f(x)$，$B = \\lim_{x \\to x_0} g(x)$，给定 $\\varepsilon > 0$。\n\n**(i) 加法。** 取 $\\delta_1, \\delta_2$ 分别使 $0 < |x - x_0| < \\delta_1$ 时 $|f(x) - A| < \\varepsilon / 2$、$0 < |x - x_0| < \\delta_2$ 时 $|g(x) - B| < \\varepsilon / 2$。取 $\\delta = \\min\\{\\delta_1, \\delta_2\\}$，则\n\n$$|(f + g)(x) - (A + B)| \\le |f(x) - A| + |g(x) - B| < \\varepsilon$$\n\n**(ii) 乘法。** 先注意 $f$ 在 $x_0$ 附近有界：存在 $\\delta_0$ 与 $M$ 使 $|f(x)| \\le M$。于是\n\n$$|f(x)g(x) - AB| \\le |f(x)|\\,|g(x) - B| + |B|\\,|f(x) - A| \\le M\\,|g(x) - B| + |B|\\,|f(x) - A|$$\n\n右边两项各自可小于 $\\varepsilon / 2$，取相应的 $\\delta$ 之小者即可。\n\n**(iii) 倒数。** 由 $B \\ne 0$，取 $\\delta_0$ 使 $0 < |x - x_0| < \\delta_0$ 时 $|g(x) - B| < |B| / 2$，于是 $|g(x)| > |B| / 2$，从而\n\n$$\\Bigl| \\frac{1}{g(x)} - \\frac{1}{B} \\Bigr| = \\frac{|g(x) - B|}{|g(x)|\\,|B|} \\le \\frac{2}{|B|^{2}}\\,|g(x) - B|$$\n\n**(iv) 保序性。** 设 $f(x) \\le g(x)$ 在去心邻域上成立而 $A > B$。取 $\\varepsilon = (A - B) / 2$，则充分靠近 $x_0$ 时 $f(x) > A - \\varepsilon > B + \\varepsilon > g(x)$，与 $f \\le g$ 矛盾。故 $A \\le B$。∎\n\n**(v) 绝对值。** 由 $|\\,|f(x)| - |A|\\,| \\le |f(x) - A|$（三角不等式的变形）直接得到。",
+   "note": "「保序性」之所以结论是 $\\le$ 而不是 $<$，看证明的最后一步就明白了：反证法只排除了 $A > B$。"
+  },
+  {
+   "id": "imp.sup-monotone",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.real-ordered-field"
+   ],
+   "target": "thm.monotone-convergence",
+   "title": "确界原理 $\\implies$ 单调有界定理",
+   "proof": "设 $\\{x_n\\}$ 递增且有上界。令 $s := \\sup_{n} x_n$ —— 由确界原理，这个上确界存在（集合非空且有上界）。\n\n要证 $x_n \\to s$。给定 $\\varepsilon > 0$。$s - \\varepsilon$ 不是 $\\{x_n\\}$ 的上界（$s$ 是最小上界），所以存在 $N$ 使 $x_N > s - \\varepsilon$。由单调性，$n \\ge N$ 时 $x_n \\ge x_N > s - \\varepsilon$；又恒有 $x_n \\le s$。故 $n \\ge N$ 时 $|x_n - s| < \\varepsilon$。\n\n递减且有下界的情形取 $\\inf$ 同理。∎",
+   "note": "这一步是整条等价链的**唯一入口**：后面五条都从它出发，最后再转回来（见「完备性的六条等价」）。"
+  },
+  {
+   "id": "imp.monotone-nested",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.monotone-convergence"
+   ],
+   "target": "lem.nested-intervals",
+   "title": "单调有界定理 $\\implies$ 闭区间套定理",
+   "proof": "设 $I_n = [a_n, b_n]$ 嵌套且 $b_n - a_n \\to 0$。\n\n1. 由 $I_{n+1} \\subseteq I_n$ 得 $a_1 \\le a_2 \\le \\cdots$ 且 $b_1 \\ge b_2 \\ge \\cdots$。于是 $\\{a_n\\}$ 递增且有上界 $b_1$，$\\{b_n\\}$ 递减且有下界 $a_1$。\n2. 由单调有界定理，$a_n \\to a$、$b_n \\to b$，其中 $a = \\sup_n a_n$、$b = \\inf_n b_n$。\n3. $b - a = \\lim (b_n - a_n) = 0$，故 $a = b$，记这个公共值为 $x$。\n4. 对每个 $n$ 有 $a_n \\le x \\le b_n$（$x$ 是 $\\{a_n\\}$ 的上界、又是 $\\{b_n\\}$ 的下界），所以 $x \\in \\bigcap_n I_n$。\n5. 若 $y \\in \\bigcap_n I_n$，则 $a_n \\le y \\le b_n$ 对一切 $n$ 成立，令 $n \\to \\infty$ 得 $y = x$。故交集恰含一点。∎",
+   "note": "注意第 3 步用的是「长度趋于零」这个前提，第 4、5 步用的是「闭」。"
+  },
+  {
+   "id": "imp.nested-bw",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "lem.nested-intervals"
+   ],
+   "target": "thm.bolzano-weierstrass",
+   "title": "闭区间套定理 $\\implies$ Bolzano–Weierstrass",
+   "proof": "设 $\\{x_n\\}$ 有界，取 $M > 0$ 使一切 $x_n \\in [-M, M]$。二分法：令 $I_0 = [-M, M]$。\n\n归纳地，设 $I_k$ 已作出且其中含有 $\\{x_n\\}$ 的无穷多项。把 $I_k$ 从中间二等分，两个半区间里至少有一个仍含无穷多项（否则 $I_k$ 里只有有限多项），取它为 $I_{k+1}$。于是\n\n- $I_0 \\supseteq I_1 \\supseteq \\cdots$，每个都闭，长度为 $2M / 2^{k} \\to 0$。\n\n由闭区间套定理，$\\bigcap_k I_k$ 恰含一点 $x$。\n\n现在构造子列：对每个 $k$，因为 $I_k$ 含无穷多项，可以取 $n_k > n_{k-1}$ 使 $x_{n_k} \\in I_k$（这一步只用到「无穷多项」可以在选完前一项之后继续往下选）。于是 $x_{n_k}$ 与 $x$ 同属 $I_k$，而 $|I_k| = 2M/2^{k} \\to 0$，故 $|x_{n_k} - x| \\le 2M / 2^{k} \\to 0$，即 $x_{n_k} \\to x$。∎\n\n「每个有界无限子集都有聚点」是同一句话的集合版本：把子集排成一个各项互异的数列即可。",
+   "note": "$\\mathbb{R}^{n}$ 的情形逐坐标使用本定理：一个有界列的第 $i$ 个坐标是有界实数列，先取一个收敛的子列，再在其上对下一个坐标取子列，依次进行 $n$ 次。"
+  },
+  {
+   "id": "imp.bw-cauchy",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.bolzano-weierstrass"
+   ],
+   "target": "thm.cauchy-criterion",
+   "title": "Bolzano–Weierstrass $\\implies$ Cauchy 收敛准则",
+   "proof": "「$\\implies$」：设 $x_n \\to x$。给定 $\\varepsilon > 0$，取 $N$ 使 $n \\ge N$ 时 $|x_n - x| < \\varepsilon / 2$。则 $m, n \\ge N$ 时\n\n$$|x_m - x_n| \\le |x_m - x| + |x_n - x| < \\varepsilon$$\n\n故 $\\{x_n\\}$ 是 Cauchy 列。\n\n「$\\Longleftarrow$」：设 $\\{x_n\\}$ 是 Cauchy 列。\n\n1. **先证有界**：取 $\\varepsilon = 1$ 得 $N_0$，使 $m, n \\ge N_0$ 时 $|x_m - x_n| < 1$。于是 $n \\ge N_0$ 时 $|x_n| \\le |x_{N_0}| + 1$，而前 $N_0 - 1$ 项有限，故 $\\{x_n\\}$ 有界。\n2. 由 Bolzano–Weierstrass，存在子列 $x_{n_k} \\to x$。\n3. **证原列也收敛到 $x$**：给定 $\\varepsilon > 0$，取 $N_1$ 使 $m, n \\ge N_1$ 时 $|x_m - x_n| < \\varepsilon / 2$（Cauchy 性），再取 $k$ 使 $n_k \\ge N_1$ 且 $|x_{n_k} - x| < \\varepsilon / 2$。则 $n \\ge N_1$ 时\n\n$$|x_n - x| \\le |x_n - x_{n_k}| + |x_{n_k} - x| < \\varepsilon$$\n\n注意第 3 步里 $n_k \\ge N_1$ 是关键 —— 它保证 $|x_n - x_{n_k}|$ 可以按 Cauchy 性来估。∎",
+   "note": "第 1 步（Cauchy 列必有界）是最容易被忽略、但必须写出来的一步 —— 没有它就用不上 Bolzano–Weierstrass。"
+  },
+  {
+   "id": "imp.cauchy-complete",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.cauchy-criterion"
+   ],
+   "target": "thm.real-complete-metric",
+   "title": "Cauchy 准则 $\\implies$ $\\mathbb{R}$ 完备",
+   "proof": "把 Cauchy 准则的结论**逐字**翻译成距离空间的语言：$\\mathbb{R}$ 中的 Cauchy 列（即 $\\forall \\varepsilon > 0, \\exists N, \\forall m, n \\ge N : d(x_m, x_n) < \\varepsilon$）都收敛，这恰恰就是「$(\\mathbb{R}, d)$ 完备」的定义。故不需要新的论证。∎",
+   "note": "这条边的作用是把两套语言对上：**序**那一侧的「确界原理」与**度量**那一侧的「完备」在 $\\mathbb{R}$ 上说的是同一件事。"
+  },
+  {
+   "id": "imp.completeness-cycle",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.real-ordered-field",
+    "thm.monotone-convergence",
+    "lem.nested-intervals",
+    "thm.bolzano-weierstrass",
+    "thm.cauchy-criterion",
+    "thm.real-complete-metric"
+   ],
+   "target": "thm.completeness-equivalent",
+   "title": "六条（强连通块）",
+   "proof": "记六条为 (1)–(6)。已有四条箭头：\n\n- (1) $\\implies$ (2)：见「确界原理 $\\implies$ 单调有界定理」；\n- (2) $\\implies$ (3)：见「单调有界定理 $\\implies$ 闭区间套定理」；\n- (3) $\\implies$ (4)：见「闭区间套定理 $\\implies$ Bolzano–Weierstrass」；\n- (4) $\\implies$ (5)：见「Bolzano–Weierstrass $\\implies$ Cauchy 收敛准则」；\n- (5) $\\implies$ (6)：见「Cauchy 准则 $\\implies$ $\\mathbb{R}$ 完备」。\n\n还差最后一条：\n\n**(6) $\\implies$ (1)**：设 $S \\subseteq \\mathbb{R}$ 非空、有上界，要证 $\\sup S$ 存在。取 $a_0 \\in S$ 与 $S$ 的一个上界 $b_0$，令 $I_0 = [a_0, b_0]$。归纳地，设 $I_n = [a_n, b_n]$ 已作出，其中 $a_n$ 是 $S$ 的下界方向上的一个点、$b_n$ 是 $S$ 的上界。取中点 $m_n = (a_n + b_n) / 2$：若 $m_n$ 是 $S$ 的上界则令 $I_{n+1} = [a_n, m_n]$，否则（此时可取出 $a_{n+1} \\in S$ 且 $a_{n+1} > m_n$）令 $I_{n+1} = [m_n, b_n]$。于是 $b_n - a_n = (b_0 - a_0)/2^{n} \\to 0$，且 $a_n$ 递增有上界 —— 由 (2)（已由 (1) 推出，但这里可直接用 (6) 的完备性）$a_n$ 收敛，记极限为 $s$。\n\n1. $s$ 是 $S$ 的上界：若存在 $t \\in S$ 且 $t > s$，取 $n$ 使 $b_n - a_n < t - s$；由 $b_n$ 也是上界得 $t \\le b_n$，于是 $b_n \\ge t > s > a_n$ 且 $b_n - a_n \\ge t - a_n > t - s$（因为 $a_n \\le s$），矛盾。\n2. $s$ 是最小上界：任取上界 $u$，恒有 $a_n \\le u$（$a_n$ 附近有 $S$ 的点），令 $n \\to \\infty$ 得 $s \\le u$。\n\n故 $s = \\sup S$，即 (1)。六条首尾相接，故彼此等价。∎",
+   "note": "这正是「强连通块」的含义：**任取一条作公理，其余五条都是定理**。所以要问的不是「哪条对」，而是「哪一种说法在当前语境里最方便」—— 后来在一般完备度量空间里只剩 (6)，在完备格（如 $\\overline{\\mathbb{R}}$）里只剩 (1)。"
+  },
+  {
+   "id": "imp.bw-heineborel",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.bolzano-weierstrass",
+    "thm.metric-compact-equiv"
+   ],
+   "target": "cor.heine-borel",
+   "title": "Bolzano–Weierstrass + 紧的三个等价刻画 $\\implies$ Heine–Borel",
+   "proof": "按「序列紧」来用「紧的三个等价刻画」：在度量空间里 $K$ 紧 $\\iff K$ 列紧。\n\n**($\\Longleftarrow$)** 设 $K \\subseteq \\mathbb{R}^{n}$ 有界且闭。取 $K$ 中任一数列 $\\{x_k\\}$。它作为 $\\mathbb{R}^{n}$ 中的数列有界，由 Bolzano–Weierstrass 的 $\\mathbb{R}^{n}$ 版本有子列收敛到某点 $x$。$K$ 闭，故 $x \\in K$。于是 $K$ 列紧，从而紧。\n\n**($\\implies$)** 设 $K$ 紧。紧集在度量空间里总是闭的（见「紧子集是闭的」）。若有界性不成立，则对每个 $k$ 可取 $x_k \\in K \\setminus B(0, k)$，这样的数列没有任何收敛子列（$|x_k| \\to \\infty$），与列紧矛盾。故 $K$ 有界。∎",
+   "note": "两条前提缺一不可：$\\mathbb{R}^{n}$ 的**完备性**（Bolzano–Weierstrass）给出「有界 $\\implies$ 有子列收敛」，度量空间的**一般事实**给出「紧 $\\iff$ 列紧」与「紧 $\\implies$ 闭」。"
+  },
+  {
+   "id": "dep.continuous-uniform",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.continuous",
+   "usedBy": "def.uniform-continuity",
+   "note": "把连续的定义里 $\\delta$ 的位置挪到 $\\forall x$ 前面，就得到一致连续 —— 两个定义用同一套 $\\varepsilon$-$\\delta$ 语言。"
+  },
+  {
+   "id": "dep.compact-continuousbounded",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.compact",
+   "usedBy": "prop.continuous-bounded-on-compact",
+   "note": "命题的证明只用到紧性的一个用途：从任一开覆盖里取有限子覆盖（或等价地，列紧）。"
+  },
+  {
+   "id": "dep.continuous-discontinuity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.continuous",
+   "usedBy": "prop.discontinuity-types",
+   "note": "间断点就是「不连续的点」，分类的判据是单侧极限，而单侧极限的定义来自函数极限。"
+  },
+  {
+   "id": "imp.bounded-evt",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "prop.continuous-bounded-on-compact",
+    "thm.real-ordered-field"
+   ],
+   "target": "thm.evt",
+   "title": "有界 + 确界原理 $\\implies$ 取到最值",
+   "proof": "设 $X$ 紧、$f : X \\to \\mathbb{R}$ 连续。由上一条，$f(X)$ 非空且有上界，令\n\n$$M := \\sup f(X) \\in \\mathbb{R}$$\n\n（确界原理保证它存在）。\n\n1. 对每个 $n \\ge 1$，$M - 1/n$ 不是 $f(X)$ 的上界，所以存在 $x_n \\in X$ 使 $f(x_n) > M - 1/n$。\n2. $X$ 紧 $\\implies$ 列紧（见「紧的三个等价刻画」），所以 $\\{x_n\\}$ 有子列 $x_{n_k} \\to x^{*} \\in X$。\n3. $f$ 连续 $\\implies$ $f(x_{n_k}) \\to f(x^{*})$；另一方面由第 1 步 $f(x_{n_k}) \\to M$（夹逼：$M - 1/n_k < f(x_{n_k}) \\le M$）。极限唯一，故 $f(x^{*}) = M$。\n4. 于是 $f(x^{*}) = M = \\sup f(X) \\ge f(x)$ 对一切 $x \\in X$ 成立，即 $x_{\\max} = x^{*}$。\n\n把 $f$ 换成 $-f$ 得最小值。∎",
+   "note": "第 3 步的两个极限必须都存在才能用「极限唯一」：左式的存在性来自连续性，右式来自 $\\sup$ 的定义。紧性只在第 2 步用了一次。"
+  },
+  {
+   "id": "imp.ivt",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.real-ordered-field",
+    "def.continuous"
+   ],
+   "target": "thm.ivt",
+   "title": "确界原理 + 连续的定义 $\\implies$ 介值定理",
+   "proof": "不妨设 $f(a) < c < f(b)$。令\n\n$$S := \\{ x \\in [a, b] : f(x) \\le c \\}$$\n\n1. $a \\in S$，$b \\notin S$，所以 $S$ 非空且有上界 $b$。由确界原理，$\\xi := \\sup S$ 存在，且 $\\xi \\in [a, b]$。\n2. **$f(\\xi) \\le c$**：由上确界的定义，存在 $s_n \\in S$ 且 $s_n \\to \\xi$；$f$ 连续给出 $f(s_n) \\to f(\\xi)$，而 $f(s_n) \\le c$，由保序性得 $f(\\xi) \\le c$。\n3. **$f(\\xi) \\ge c$**：若 $f(\\xi) < c$，取 $\\eta := (c - f(\\xi)) / 2 > 0$ 在连续性里，得到 $\\delta > 0$ 使 $|x - \\xi| < \\delta$ 时 $f(x) < c$。于是 $x := \\min\\{\\xi + \\delta / 2,\\ b\\}$ 满足 $f(x) < c$，即 $x \\in S$；但 $x > \\xi$ 与 $\\xi = \\sup S$ 矛盾（当 $\\xi = b$ 时第 2 步已给出 $f(b) \\le c$，而 $f(b) > c$，矛盾）。\n4. 两步合起来：$f(\\xi) = c$。∎",
+   "note": "证明里 $S$ 取了「$f \\le c$」而不是「$f < c$」：这样第 2 步可以直接用保序性，不必先证「取到上确界的点仍在 $S$ 里」。"
+  },
+  {
+   "id": "imp.zero-point",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.ivt"
+   ],
+   "target": "cor.zero-point",
+   "title": "介值定理 $\\implies$ 零点定理",
+   "proof": "设 $f(a) f(b) < 0$。不妨设 $f(a) < 0 < f(b)$ —— 于是 $c = 0$ 介于 $f(a)$ 与 $f(b)$ 之间。由介值定理，存在 $\\xi \\in [a, b]$ 使 $f(\\xi) = 0$。\n\n再把 $\\xi$ 取到端点之内：若 $f(a) f(b) < 0$ 则 $f(a) \\ne 0$、$f(b) \\ne 0$，所以 $\\xi \\ne a$、$\\xi \\ne b$，即 $\\xi \\in (a, b)$。∎",
+   "note": "「取到端点之内」这一步正是零点定理比介值定理多出来的那一点内容。"
+  },
+  {
+   "id": "imp.uniform-compact",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.bolzano-weierstrass",
+    "def.uniform-continuity"
+   ],
+   "target": "thm.uniform-continuity-compact",
+   "title": "列紧性 + 一致连续的定义 $\\implies$ Cantor 定理",
+   "proof": "反证。设 $f$ 在紧度量空间 $X$ 上连续但不一致连续。则存在 $\\varepsilon_0 > 0$，使对每个 $\\delta > 0$ 都能找到两点距离小于 $\\delta$、函数值却相差至少 $\\varepsilon_0$：\n\n即：对每个 $n$ 都能在 $X$ 中取到两点，同时满足下面两个条件 ——\n\n$$d(x_n, x_n') < \\frac{1}{n}, \\qquad |f(x_n) - f(x_n')| \\ge \\varepsilon_0$$\n\n1. $X$ 紧 $\\implies$ 列紧，故 $\\{x_n\\}$ 有子列 $x_{n_k} \\to x^{*} \\in X$。\n2. 由 $d(x_{n_k}, x_{n_k}') < 1/n_k \\to 0$ 与三角不等式，$x_{n_k}' \\to x^{*}$ 也成立。\n3. $f$ 在 $x^{*}$ 连续，所以 $f(x_{n_k}) \\to f(x^{*})$ 且 $f(x_{n_k}') \\to f(x^{*})$。\n4. 于是 $|f(x_{n_k}) - f(x_{n_k}')| \\le |f(x_{n_k}) - f(x^{*})| + |f(x^{*}) - f(x_{n_k}')| \\to 0$，与它恒 $\\ge \\varepsilon_0$ 矛盾。∎",
+   "note": "这个证明的骨架是「把一致性失败翻译成两列点」，这正是紧性最擅长处理的形式 —— 同样的套路在「紧集上连续函数取到最值」「紧算子」里反复出现。"
+  },
+  {
+   "id": "imp.monotone-inverse",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.ivt",
+    "thm.monotone-convergence"
+   ],
+   "target": "thm.monotone-inverse",
+   "title": "介值定理 + 单调有界 $\\implies$ 反函数连续",
+   "proof": "设 $f$ 在区间 $I$ 上严格递增且连续。\n\n1. **$f(I)$ 是区间**：取 $y_1 < y_2$ 属于 $f(I)$，即 $y_i = f(x_i)$。由严格递增 $x_1 < x_2$。任取 $y \\in (y_1, y_2)$，则 $f(x_1) < y < f(x_2)$，由介值定理在 $[x_1, x_2]$ 上存在 $x$ 使 $f(x) = y$，故 $y \\in f(I)$。\n2. **$f$ 是双射**：严格递增给出单射，$f(I)$ 的定义给出满射。\n3. **$f^{-1}$ 递增**：若 $y_1 < y_2$ 而 $f^{-1}(y_1) \\ge f^{-1}(y_2)$，由 $f$ 递增就有 $y_1 \\ge y_2$，矛盾。\n4. **$f^{-1}$ 连续**：设 $y_0 = f(x_0)$，给定 $\\varepsilon > 0$。由 $x_0$ 在 $I$ 内部的情形（端点同理）取 $x_0 - \\varepsilon < x_0 < x_0 + \\varepsilon$ 都落在 $I$ 内。令 $y_{-} := f(x_0 - \\varepsilon)$、$y_{+} := f(x_0 + \\varepsilon)$，取 $\\delta := \\min\\{y_0 - y_{-},\\ y_{+} - y_0\\} > 0$。则 $|y - y_0| < \\delta$ 时 $y_{-} < y < y_{+}$，由第 3 步的单调性得 $x_0 - \\varepsilon < f^{-1}(y) < x_0 + \\varepsilon$，即 $|f^{-1}(y) - x_0| < \\varepsilon$。∎",
+   "note": "证明里只用到了「严格单调 + 介值」，**没有**用到一致连续 —— 反函数连续是比「$f$ 一致连续」更弱的条件就能得到的结论。"
+  },
+  {
+   "id": "imp.heineborel-bounded",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "cor.heine-borel"
+   ],
+   "target": "prop.continuous-bounded-on-compact",
+   "title": "闭区间紧（Heine–Borel）$\\implies$ 闭区间上的连续函数有界",
+   "proof": "在 $\\mathbb{R}$ 上取 $X = [a, b]$。由 Heine–Borel，$[a, b]$ 是 $\\mathbb{R}$ 的有界闭子集，从而是紧的。于是「紧空间上的连续实值函数有界」这条命题**原封不动地**适用于 $X = [a, b]$，结论就是：$[a, b]$ 上的连续函数有界。∎",
+   "note": "这条边的方向是「一般 $\\implies$ 特例」：命题是紧度量空间的版本，$[a, b]$ 是它的一个实例。图上把它标出来，是因为初等微积分里大家用的都是这个特例。"
+  },
+  {
+   "id": "dep.derivative-localextremum",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.derivative",
+   "usedBy": "def.local-extremum",
+   "note": "局部极值只在 $x_0$ 的邻域里比较函数值，是纯序的概念；但它与导数的联系（Fermat 引理）才是整个微分学的起点。"
+  },
+  {
+   "id": "dep.derivative-higher",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.derivative",
+   "usedBy": "def.higher-derivative",
+   "note": "高阶导数就是把求导这个操作反复做：$f^{(n+1)} := (f^{(n)})'$。"
+  },
+  {
+   "id": "dep.interval-convex",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.interval",
+   "usedBy": "def.convex-function",
+   "note": "凸性的定义要求 $(1 - t)x + ty$ 仍落在定义域内 —— 这正是「定义域必须是区间」的原因，换成一般的集合这个定义根本写不出来。"
+  },
+  {
+   "id": "imp.fermat",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "def.local-extremum",
+    "def.derivative"
+   ],
+   "target": "thm.fermat",
+   "title": "导数与局部极值的定义 $\\implies$ Fermat 引理",
+   "proof": "设 $x_0$ 是内点局部极大值点（极小同理，把不等号反向）。由定义存在 $\\delta > 0$，使 $|x - x_0| < \\delta$ 时 $f(x) \\le f(x_0)$。\n\n对 $0 < h < \\delta$ 有 $f(x_0 + h) - f(x_0) \\le 0$，故差商 $\\le 0$；对 $-\\delta < h < 0$ 差商的分子 $\\le 0$ 而分母 $< 0$，故差商 $\\ge 0$。\n\n于是\n\n$$\\lim_{h \\to 0^{+}} \\frac{f(x_0 + h) - f(x_0)}{h} \\le 0, \\qquad \\lim_{h \\to 0^{-}} \\frac{f(x_0 + h) - f(x_0)}{h} \\ge 0$$\n\n而 $f$ 在 $x_0$ 可导，两个单侧极限都等于 $f'(x_0)$，故 $f'(x_0) \\le 0$ 且 $f'(x_0) \\ge 0$，即 $f'(x_0) = 0$。∎",
+   "note": "「内点」用在了 $h$ 可以取正负两侧 —— 若 $x_0$ 是端点，只有一侧的差商可谈，结论就不成立（$f(x) = x$ 在 $[0, 1]$ 的端点）。"
+  },
+  {
+   "id": "imp.rolle",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.fermat",
+    "thm.evt"
+   ],
+   "target": "thm.rolle",
+   "title": "Fermat 引理 + 最值定理 $\\implies$ Rolle 中值定理",
+   "proof": "设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导、$f(a) = f(b)$。\n\n1. 由最值定理，$f$ 在 $[a, b]$ 上取到最大值 $M$ 与最小值 $m$。\n2. 若 $M = m$，则 $f$ 是常数，于是 $(a, b)$ 内任取 $\\xi$ 都有 $f'(\\xi) = 0$。\n3. 否则 $M > m$。因为 $f(a) = f(b)$，两个数 $M, m$ 中至少有一个**不等于** $f(a)$，所以它在 $(a, b)$ 内的某点 $\\xi$ 处被取到 —— 这个 $\\xi$ 是内点极值点。\n4. 由 Fermat 引理，$f'(\\xi) = 0$。∎",
+   "note": "第 3 步是全部技巧所在：「两端相等」保证最值不能在两个端点同时取到，于是必有一个最值被内点取到 —— 紧性（由最值定理提供）与可导性（由 Fermat 引理使用）就在这一点上汇合。"
+  },
+  {
+   "id": "imp.mvt",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.rolle"
+   ],
+   "target": "thm.mvt",
+   "title": "Rolle 定理 $\\implies$ Lagrange 中值定理",
+   "proof": "令\n\n$$g(x) := f(x) - \\frac{f(b) - f(a)}{b - a}\\,(x - a)$$\n\n即把 $f$ 减去那条弦。$g$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导（差一个线性函数），且\n\n$$g(a) = f(a), \\qquad g(b) = f(b) - (f(b) - f(a)) = f(a)$$\n\n故 $g(a) = g(b)$。由 Rolle 定理，存在 $\\xi \\in (a, b)$ 使 $g'(\\xi) = 0$，即\n\n$$f'(\\xi) = \\frac{f(b) - f(a)}{b - a}$$\n\n整理即得 $f(b) - f(a) = f'(\\xi)(b - a)$。∎",
+   "note": "「减去弦」这个手法（找一个辅助函数让它满足 Rolle 的条件）在中值定理家族里是标准动作，下面 Cauchy 版也是同一招。"
+  },
+  {
+   "id": "imp.cauchy-mvt",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.rolle"
+   ],
+   "target": "thm.cauchy-mvt",
+   "title": "Rolle 定理 $\\implies$ Cauchy 中值定理",
+   "proof": "先注意 $g(b) \\ne g(a)$：若 $g(b) = g(a)$，由 Rolle 定理存在内点使 $g' = 0$，与 $g' \\ne 0$ 矛盾。于是下面的分母不为零。\n\n令\n\n$$h(x) := \\bigl( f(b) - f(a) \\bigr) g(x) - \\bigl( g(b) - g(a) \\bigr) f(x)$$\n\n$h$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导，且\n\n$$h(a) = (f(b) - f(a)) g(a) - (g(b) - g(a)) f(a), \\qquad h(b) = (f(b) - f(a)) g(b) - (g(b) - g(a)) f(b)$$\n\n两式相减得 $h(b) - h(a) = (f(b) - f(a))(g(b) - g(a)) - (g(b) - g(a))(f(b) - f(a)) = 0$。由 Rolle 定理存在 $\\xi \\in (a, b)$ 使 $h'(\\xi) = 0$，即\n\n$$\\bigl( f(b) - f(a) \\bigr) g'(\\xi) = \\bigl( g(b) - g(a) \\bigr) f'(\\xi)$$\n\n两边同除 $g'(\\xi)\\,(g(b) - g(a))$（都不为零）即得结论。∎",
+   "note": "辅助函数 $h$ 是「弦」的推广：$g(x) = x$ 时 $h$ 就是 Lagrange 版里那个 $g$ 的常数倍。"
+  },
+  {
+   "id": "imp.constant-derivative",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.mvt"
+   ],
+   "target": "cor.constant-iff-zero-derivative",
+   "title": "Lagrange 中值定理 $\\implies$ 导数为零 $\\implies$ 常函数",
+   "proof": "「$\\Longleftarrow$」平凡：常数函数的导数为零。\n\n「$\\implies$」设 $f' = 0$ 在区间 $I$ 上处处成立。任取 $x < y \\in I$，对 $[x, y]$ 用 Lagrange 中值定理：存在 $\\xi \\in (x, y)$ 使\n\n$$f(y) - f(x) = f'(\\xi)\\,(y - x) = 0$$\n\n故 $f(y) = f(x)$。由 $x, y$ 任意，$f$ 在 $I$ 上是常数。∎",
+   "note": "$I$ 必须是区间（任意两点之间都落在 $I$ 里）—— 这正是证明里要能对 $[x, y]$ 用中值定理的原因。"
+  },
+  {
+   "id": "imp.derivative-monotone",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.mvt"
+   ],
+   "target": "prop.derivative-monotone",
+   "title": "Lagrange 中值定理 $\\implies$ 导数符号 $\\implies$ 单调性",
+   "proof": "设 $f' \\ge 0$ 在区间 $I$ 上处处成立。取 $x < y \\in I$，由中值定理存在 $\\xi \\in (x, y)$ 使\n\n$$f(y) - f(x) = f'(\\xi)\\,(y - x) \\ge 0$$\n\n故 $f(x) \\le f(y)$，即 $f$ 递增。$f' \\le 0$ 的情形同法。\n\n若 $f' > 0$ 处处成立，则上式严格为正，于是 $f$ **严格**递增。\n\n反之设 $f$ 递增且可导。对 $h > 0$，$\\dfrac{f(x + h) - f(x)}{h} \\ge 0$，取极限得 $f'(x) \\ge 0$。∎",
+   "note": "「严格递增」那一半只用到 $f' > 0$ 的**处处**成立；若只知道「导数非负且不恒为零」，要严格单调得逐段用中值定理，不能用现在这个论证。"
+  },
+  {
+   "id": "imp.lhopital",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.cauchy-mvt"
+   ],
+   "target": "thm.lhopital",
+   "title": "Cauchy 中值定理 $\\implies$ L'Hôpital 法则",
+   "proof": "先讲 $0/0$ 型在 $x \\to x_0^{+}$ 的情形。把 $f, g$ 在 $x_0$ 处补充定义为 $f(x_0) = g(x_0) = 0$，则它们在 $[x_0, x]$ 上连续、在 $(x_0, x)$ 内可导。对区间 $[x_0, x]$ 用 Cauchy 中值定理：存在 $\\xi \\in (x_0, x)$ 使\n\n$$\\frac{f(x)}{g(x)} = \\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \\frac{f'(\\xi)}{g'(\\xi)}$$\n\n当 $x \\to x_0^{+}$ 时 $\\xi \\to x_0^{+}$，故右端的极限就是 $\\lim_{x \\to x_0^{+}} f'(x) / g'(x)$。左邻域与双侧的情形同法。\n\n$\\infty/\\infty$ 型要多一步：对给定的 $\\varepsilon > 0$，先用 $g$ 在 $x_0$ 附近的单调性挑一个 $x_1$，把 $|g|$ 压得足够大，再用 Cauchy 中值定理处理 $[x_1, x]$，最后让 $x_1 \\to x_0$。∎",
+   "note": "注意证明里 $\\xi$ **依赖**于 $x$ —— 但这不妨碍取极限，因为 $x \\to x_0$ 时 $\\xi$ 被夹在 $x_0$ 与 $x$ 之间，必然也趋于 $x_0$。"
+  },
+  {
+   "id": "imp.convex-criterion",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.mvt"
+   ],
+   "target": "thm.convex-criterion",
+   "title": "中值定理 $\\implies$ 凸性的导数判据",
+   "proof": "记 $R(x, y) := \\dfrac{f(x) - f(y)}{x - y}$（$x \\ne y$）。凸性的定义等价于：$R(x, y)$ 关于 $x$ 递增（固定 $y$）。\n\n**(i) 凸 $\\implies f'$ 递增。** 由中值定理，对 $x < z$ 存在 $\\xi \\in (x, z)$ 使 $f' (\\xi) = R(z, x)$；把上式里的 $y$ 分别取成 $x$ 与 $z$ 并比较，可得\n\n$$f'(x) \\le R(z, x) \\le f'(z)$$\n\n（左不等式对 $h \\to 0^{+}$ 取极限即得；右不等式同理。）故 $f'$ 递增。\n\n**(ii) $f'$ 递增 $\\implies$ 凸。** 给定 $x < z$ 与 $t \\in [0, 1]$，记 $w := (1 - t)x + tz$。对 $[x, w]$ 与 $[w, z]$ 各用一次中值定理，得两点 $\\xi_1 < \\xi_2$，于是 $f'(\\xi_1) \\le f'(\\xi_2)$，展开整理即得凸性不等式。\n\n**(iii) $f'' \\ge 0 \\iff f'$ 递增**：这正是「导数符号 $\\implies$ 单调性」用在 $f'$ 上。∎",
+   "note": "整条链子是「凸性（几何）$\\iff$ 斜率单调（序）$\\iff f'$ 递增（分析）$\\iff f'' \\ge 0$（代数）」—— 每一段换的都是一件衣服。"
+  },
+  {
+   "id": "imp.taylor",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.rolle",
+    "thm.cauchy-mvt"
+   ],
+   "target": "thm.taylor",
+   "title": "Rolle / Cauchy 中值定理 $\\implies$ Taylor 公式",
+   "proof": "固定 $x \\ne x_0$，记多项式部分为\n\n$$P(t) := \\sum_{k=0}^{n} \\frac{f^{(k)}(x_0)}{k!}\\,(t - x_0)^{k}$$\n\n待定的常数 $M$ 由方程 $f(x) = P(x) + M (x - x_0)^{n+1}$ 确定，即 $M := \\dfrac{f(x) - P(x)}{(x - x_0)^{n+1}}$。要证的就是 $M = \\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}$ 对某个介于 $x_0$ 与 $x$ 之间的 $\\xi$ 成立。\n\n令辅助函数\n\n$$\\Phi(t) := f(t) - P(t) - M (t - x_0)^{n+1}$$\n\n则 $\\Phi$ 有 $n+1$ 阶导数，且 $\\Phi^{(k)}(x_0) = 0$（$k = 0, 1, \\ldots, n$，因为 $P$ 逐项消掉了 $f$ 在 $x_0$ 的各阶导数），而 $\\Phi(x) = 0$（$M$ 的定义）。\n\n于是 $\\Phi$ 在 $x_0$ 与 $x$ 之间有 $n+2$ 个零点（$x_0$ 处按重数算 $n+1$ 阶）。反复用 Rolle 定理 $n+1$ 次：$\\Phi'$ 有 $n+1$ 个零点，$\\Phi''$ 有 $n$ 个……最后 $\\Phi^{(n+1)}$ 在 $x_0$ 与 $x$ 之间有零点 $\\xi$。\n\n而 $\\Phi^{(n+1)}(t) = f^{(n+1)}(t) - M\\,(n+1)!$（$P$ 是 $n$ 次多项式，$n+1$ 阶导数为零），故 $0 = \\Phi^{(n+1)}(\\xi) = f^{(n+1)}(\\xi) - M(n+1)!$，即 $M = f^{(n+1)}(\\xi)/(n+1)!$。代回 $M$ 的定义即得结论。∎\n\n$n = 0$ 时这一串退化成 $f(x) = f(x_0) + f'(\\xi)(x - x_0)$，正是 Lagrange 中值定理。",
+   "note": "「$\\Phi^{(n+1)}$ 有零点」这一步用的是 Rolle 定理被反复套用的形式：一个函数若有 $m$ 个零点，它的导函数在相邻零点之间各有一个零点 —— 每套一次零点数减一。"
+  },
+  {
+   "id": "imp.taylor-peano",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.lhopital"
+   ],
+   "target": "prop.taylor-peano",
+   "title": "L'Hôpital 法则 $\\implies$ Peano 余项",
+   "proof": "记 $R(x) := f(x) - \\sum_{k=0}^{n} \\frac{f^{(k)}(x_0)}{k!}(x - x_0)^{k}$。要证 $R(x) = o((x - x_0)^{n})$，即\n\n$$\\lim_{x \\to x_0} \\frac{R(x)}{(x - x_0)^{n}} = 0$$\n\n对分子分母反复用 L'Hôpital 法则 $n$ 次：每次求导后分母降一阶、分子把多项式部分再消掉一项。$n$ 次之后\n\n$$\\frac{R^{(n)}(x)}{n!} = \\frac{f^{(n)}(x) - f^{(n)}(x_0)}{n!}$$\n\n由 $f^{(n)}$ 在 $x_0$ 连续，这个商当 $x \\to x_0$ 时趋于 $0$。∎",
+   "note": "所以「Peano 余项」这件事的代价是**第 $n$ 阶导数在 $x_0$ 连续**（否则 L'Hôpital 的头几步代价太大）；而 Lagrange 余项要求的是 $n+1$ 阶可导，两者是不同方向的条件。"
   }
  ],
  "clusterLinks": [
@@ -35511,7 +36766,7 @@
   {
    "a": "analysis.real",
    "b": "set.numbers",
-   "count": 6,
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -35624,6 +36879,13 @@
    "a": "algebra.structures",
    "b": "set.numbers",
    "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.completeness",
+   "b": "set.numbers",
+   "count": 3,
    "label": "",
    "explicit": false
   },
@@ -36338,6 +37600,41 @@
    "a": "cond.topo",
    "b": "topo.chaus",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.completeness",
+   "b": "analysis.real",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.completeness",
+   "b": "topology.metric",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.continuity",
+   "b": "analysis.real",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.completeness",
+   "b": "analysis.continuity",
+   "count": 5,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "analysis.mvt",
+   "b": "analysis.real",
+   "count": 4,
    "label": "",
    "explicit": false
   }

@@ -32,7 +32,7 @@
 - `integral`　积分与函数空间　→　Integration and function spaces　12 条
 - `layout`　排版与箭头　→　Typesetting and arrows　13 条
 - `cat`　范畴与同调　→　Categories and homology　21 条
-- `letters`　字母约定　→　Letter conventions　21 条
+- `letters`　字母约定　→　Letter conventions　22 条
 
 ## 九个星系（`regions.js` 的 `en` 字段）
 

@@ -5,3 +5,4 @@
 - 被 [`def.integral-nonneg`](../nodes/def.integral-nonneg.md) 非负函数的积分 用
 - 被 [`lem.zorn`](../nodes/lem.zorn.md) 佐恩引理 用
 - 被 [`thm.real-ordered-field`](../nodes/thm.real-ordered-field.md) ℝ 是完备有序域 用
+- 被 [`def.limsup-liminf`](../nodes/def.limsup-liminf.md) 上极限与下极限 用

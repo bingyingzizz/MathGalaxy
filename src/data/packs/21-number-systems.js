@@ -270,7 +270,9 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.real-ordered-field',
-      cluster: 'analysis.real',
+      /* 2026-10-16 挪团（用户已批）：它是「实数完备性的等价刻画」那一团的**入口**，
+         不再挂在 analysis.real 下。只改这一行，引用它的 13 处全是按 id 指的。 */
+      cluster: 'analysis.completeness',
       type: 'theorem',
       label: 'ℝ 是完备有序域',
       title: '$\\mathbb{R}$ 是完备有序域（确界原理）',

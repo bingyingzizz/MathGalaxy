@@ -10,6 +10,9 @@ layer 15 · 定理 · 度量空间 · 拓扑学
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.metric-compact-equiv.5.md](./thm.metric-compact-equiv.5.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.metric-compact-equiv.6.md](./thm.metric-compact-equiv.6.md)
+
 ## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/thm.metric-compact-equiv.3.md](./thm.metric-compact-equiv.3.md)
 

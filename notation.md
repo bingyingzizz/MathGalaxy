@@ -10,5 +10,5 @@
 - `dist/notation/integral.md` 积分与函数空间 12
 - `dist/notation/layout.md` 排版与箭头 13
 - `dist/notation/cat.md` 范畴与同调 21
-- `dist/notation/letters.md` 字母约定 21
+- `dist/notation/letters.md` 字母约定 22
 

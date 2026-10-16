@@ -344,6 +344,8 @@ MG.notation = {
     { g: 'letters', tex: '\\pi',      uni: 'π', name: '投影 $\\pi_{\\alpha}$' },
     { g: 'letters', tex: '\\theta',   uni: 'θ', name: '角度' },
     { g: 'letters', tex: '\\tau',     uni: 'τ', name: '停时 / 一般函数（罕见）' },
+    { g: 'letters', tex: '\\xi',      uni: 'ξ', name: '中值定理里那个「介于两者之间」的点',
+      note: '$\\xi$ 只表示**存在**，位置不可控 —— 所以中值定理只能证明结构性质，不能用来计算差。' },
     { g: 'letters', tex: '\\zeta',    uni: 'ζ', name: '（罕见）' },
     { g: 'letters', tex: '\\mathcal{C}', uni: '𝒞', name: '证明内局部：Cauchy 列全体 / 递升集合族；**范畴论里作范畴**' },
     { g: 'letters', tex: '\\mathcal{F}', uni: 'ℱ', name: '证明内局部：部分选择函数全体 / 生成元族' },

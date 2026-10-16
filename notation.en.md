@@ -22,5 +22,5 @@ are not. Whole table: `notation-full.md`.
 - `dist/notation/integral.md` Integration and function spaces 12
 - `dist/notation/layout.md` Typesetting and arrows 13
 - `dist/notation/cat.md` Categories and homology 21
-- `dist/notation/letters.md` Letter conventions 21
+- `dist/notation/letters.md` Letter conventions 22
 

@@ -192,6 +192,30 @@ MG.clusters = [
     desc: '在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）'
   },
   {
+    id: 'analysis.completeness',
+    name: '实数完备性的等价刻画',
+    en: 'Equivalent Forms of Completeness of the Reals',
+    parent: 'analysis',
+    hub: 'thm.completeness-equivalent',
+    desc: '造出「$\\mathbb{R}$ 没有洞」的各种说法：确界原理 → 单调有界 → 区间套 → Bolzano–Weierstrass → Cauchy 准则 → 度量完备。它们是同一件事的六副面孔，永远同层 —— 初等分析里一切「存在某个极限」的定理都从这里取发动机。'
+  },
+  {
+    id: 'analysis.continuity',
+    name: '连续与紧性',
+    en: 'Continuity and Compactness',
+    parent: 'analysis',
+    hub: 'thm.ivt',
+    desc: '造出「连续函数长什么样」：紧集上有界、取到最值、一致连续；介值定理与零点定理。反函数的连续性、初等函数的合法性都挂在这里。'
+  },
+  {
+    id: 'analysis.mvt',
+    name: '微分中值定理与 Taylor',
+    en: 'Mean Value Theorems and Taylor',
+    parent: 'analysis',
+    hub: 'thm.taylor',
+    desc: '造出「把函数的增量翻译成导数」这套工具：Fermat 引理 → Rolle → Lagrange → Cauchy → L\'Hôpital，顶点是 Taylor 公式 —— 用导数把一个函数局部地重写成多项式。'
+  },
+  {
     id: 'analysis.setclass',
     name: '集合族与 σ-代数',
     en: 'Families of Sets and Sigma-Algebras',

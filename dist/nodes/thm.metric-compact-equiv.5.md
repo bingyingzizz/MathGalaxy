@@ -6,3 +6,5 @@
 - [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧：用到了定义 列紧　[proofs/def-link.seqcompact-theorem.md](../proofs/def-link.seqcompact-theorem.md)
 - [`def.complete`](../nodes/def.complete.md) 完备：用到了定义 完备　[proofs/def-link.complete-theorem.md](../proofs/def-link.complete-theorem.md)
 - [`def.totally-bounded`](../nodes/def.totally-bounded.md) 全有界：用到了定义 全有界　[proofs/def-link.totbdd-theorem.md](../proofs/def-link.totbdd-theorem.md)
+
+> 续见 [nodes/thm.metric-compact-equiv.6.md](./thm.metric-compact-equiv.6.md)

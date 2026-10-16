@@ -66,7 +66,7 @@ const CASES = [
   { q: 'Exercise 2.25', n: 1, top: ['cor.cg-product'], why: '⭐ 命中的是**陈述里写了这句话**的那个节点 —— refs（书目）不进检索字段，见下一条' },
   { q: 'I.5', n: 0, top: [], why: '⭐ 书号/章节坐标（refs 里的 `I.5`）**搜不到**：hay 不含 refs。记 0 是为了把这条口径钉住（要改就得改 hay，另议）' },
   { q: 'L^p', n: 14, top: ['def.lp-norm', 'thm.lp-banach', 'prop.lp-inter-lr-in-lq'], why: '记号表命中（tex 形式）' },
-  { q: 'ℵ₀', n: 5, top: ['def.ordinal', 'thm.real-ordered-field', 'def.cardinal'], why: 'Unicode 记号命中（可数与超限那条线的入口）' },
+  { q: 'ℵ₀', n: 5, top: ['thm.real-ordered-field', 'def.ordinal', 'def.cardinal'], why: 'Unicode 记号命中（可数与超限那条线的入口）。⭐ 2026-10-16 初等微积分第一批后确界原理反超 `def.ordinal`：新增的 `imp.completeness-cycle` 给了它一条出边（degree 5→6），而同档是靠 degree 定次序的 —— 次序变了，**集合没变**' },
   { q: 'σ-algebra', n: 3, top: ['def.borel', 'def.sigma-algebra', 'def.product-sigma'], why: '希腊字母 + 连字符：三个都靠标题里的英文括注命中（同档）⇒ degree/id 定次序。⚠️ 想让 def.sigma-algebra 领跑，得做「σ ↔ sigma」等价，另一件事' },
   { q: 'kC', n: 3, top: ['cor.cg-exponential-adjoint', 'prop.cg-function-space', 'prop.cg-kclosed-quotient'], why: '缩写/记号：被明确排除出「英文名」的那些，但要能搜到' },
   { q: 'NBV', n: 5, top: ['def.nbv', 'prop.nbv-derivative', 'thm.borel-measure-nbv'], why: '全大写缩写（aka 里算「名字样」的例外）' },
@@ -74,8 +74,8 @@ const CASES = [
   { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta', 'prop.constant-sheaf-preserves-limits', 'def.simplex-category'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
   { q: '测度', n: 14, top: ['def.measure', 'def.measure-space', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响（同档的一批换了位，集合与旧记录相同）' },
   { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-cartesian-closed', 'prop.cg-coreflective'], why: '中文词 + 星团名命中（同档批次，degree 定次序）' },
-  { q: '定义', n: 14, total: 345, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）' },
-  { q: 'compact', total: 26, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 26' },
+  { q: '定义', n: 14, total: 361, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 345→353→361 是初等微积分第一批 35 个新节点带进来的（新增的 definition 类型节点 + 正文里出现的「定义」二字），**每次加内容这个数都会动，动就是预期的**' },
+  { q: 'compact', total: 28, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 28。⚠️ 26→28 来自新增的 `prop.continuous-bounded-on-compact` 与 `thm.uniform-continuity-compact` —— **id 也在 hay 里**，所以新节点的 id 会直接抬高这类拉丁词的总数' },
   /* ⭐ `ref:` 前缀 = 只搜书目/出处（2026-10-16 建议④）。
      ⛔ refs **不进 hay**（上一批 `I.5` 那条记 0 就是为了钉住这点），
         要按书号找节点只能走这个显式前缀，免得章节号污染普通搜索。 */
