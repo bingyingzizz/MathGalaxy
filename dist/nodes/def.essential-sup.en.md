@@ -3,6 +3,7 @@ English entry · root `../`
 [in graph](../#n=def.essential-sup)　·　[Chinese page (authoritative)](./def.essential-sup.md)
 
 > English: **stale** · stale fields: abstract (the Chinese wording changed since this translation); the Chinese page is authoritative.
+> fields: abstract stale · statement draft · notes draft · name derived
 
 layer 16 · definition · cluster L^p Spaces (`analysis.lp`) · Analysis
 

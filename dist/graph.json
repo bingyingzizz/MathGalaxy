@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T07:06:29.031Z",
+  "generated": "2026-10-16T07:21:52.807Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -3616,24 +3616,34 @@
    "label_en": "outer measure",
    "title_en": "Outer Measure",
    "abstract_en": "An outer measure on a non-empty set $X$ is a function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is monotone and countably subadditive. It is defined on every subset, and the price is exactly that subadditivity: it is not a measure. Carathéodory's idea is to single out the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. Lebesgue's original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable interval covers, is the prototypical example.",
+   "statement_en": "Let $X$ be a non-empty set. A function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ is an **outer measure** iff\n\n- $\\mu^*(\\emptyset) = 0$\n- **Monotone**: $A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n- **Countably subadditive**: $\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$",
+   "notes_en": "An outer measure is defined on **all** subsets ($\\mathcal{P}(X)$, not on some $\\sigma$-algebra); the price is that it only has **sub**additivity.\n\nSo an outer measure is not a measure — it is too large even to be additive on $\\mathcal{P}(X)$. Carathéodory's idea is to single out the sets that \"behave well\" (the next definition); on those the outer measure does become a genuine measure.\n\nWhat Lebesgue first constructed was an outer measure: $\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#1d1a972f"
+      "abstract": "v0.9.1#1d1a972f",
+      "statement": "v0.9.1#24d3359e",
+      "notes": "v0.9.1#32c28e62"
      }
     }
    },
@@ -5673,26 +5683,36 @@
    "label_en": "complex measure",
    "title_en": "Complex Measure",
    "abstract_en": "A complex measure on a measurable space $(X, \\mathcal{M})$ is a map $\\nu : \\mathcal{M} \\to \\mathbb{C}$ with $\\nu(\\emptyset) = 0$ and $\\nu(\\bigsqcup_j E_j) = \\sum_j \\nu(E_j)$ for pairwise disjoint families, the series converging absolutely. Unlike signed measures, complex measures are automatically finite and that series is automatically absolutely convergent, so questions of finiteness and rearrangement never arise — at the cost of losing examples with infinite mass.",
+   "statement_en": "A **complex measure** on a measurable space $(X, \\mathcal{M})$ is a map\n\n$$\\nu : \\mathcal{M} \\to \\mathbb{C}$$\n\nsuch that\n\n$$\\nu(\\emptyset) = 0, $$\n\nand for pairwise disjoint $\\{E_j\\} \\subseteq \\mathcal{M}$:\n\n$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)$$\n\n(the series on the right converges absolutely).",
+   "notes_en": "⚠ Compared with a signed measure, a complex measure is **automatically finite** (its values lie in $\\mathbb{C}$, no $\\pm \\infty$ is involved), and the series in countable additivity **converges absolutely automatically**.\n\nSo in the world of complex measures the headaches of \"finiteness\" and \"rearrangement\" disappear entirely — at the cost of no longer having examples with \"infinite mass\".",
    "translations": {
     "en": {
      "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "stale",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [
       "abstract"
      ],
      "basedOn": {
-      "abstract": "v0.9.1#792f3f7b"
+      "abstract": "v0.9.1#792f3f7b",
+      "statement": "v0.9.1#bde1a964",
+      "notes": "v0.9.1#e5f47458"
      }
     }
    },
@@ -6962,26 +6982,36 @@
    "label_en": "essential supremum",
    "title_en": "essential supremum",
    "abstract_en": "The essential supremum is $\\|f\\|_\\infty := \\inf \\{a \\ge 0 : \\mu(\\{|f| > a\\}) = 0\\}$: the true bound of $f$ once its values on null sets are ignored. The infimum is attained at $a = \\|f\\|_\\infty$ itself, and $\\|f\\|_\\infty \\le M \\iff |f| \\le M$ almost everywhere. Then $L^\\infty$ consists of the measurable $f$ with $\\|f\\|_\\infty < \\infty$. Note the difference from $\\sup |f|$, which a single value on a null set can spoil.",
+   "statement_en": "Definition\n\n$$\\|f\\|_\\infty := \\inf \\{\\, a \\ge 0 : \\mu(\\{\\, |f| > a \\,\\}) = 0 \\,\\}$$\n\n(After ignoring completely the values of $f$ on null sets, this is its \"true\" upper bound.) This infimum **is attained**: for $a = \\|f\\|_\\infty$ itself we have $\\mu(\\{|f| > a\\}) = 0$.\n\nFor a **measurable** function $f : X \\to \\mathbb{C}$ (measurability is defined at \"measurable function\") put\n\n$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : \\|f\\|_\\infty < \\infty \\,\\}\n$$",
+   "notes_en": "An equivalent form: $\\|f\\|_\\infty \\le M \\iff |f(x)| \\le M$ holds for a.e. $x$.\n\nWhat the word \"essential\" means: **bad values on null sets simply do not count**. For instance, if $f = 0$ a.e. but $f$ takes the value $+\\infty$ on some null set, we still have $\\|f\\|_\\infty = 0$.\n\n⚠ $\\|f\\|_\\infty$ differs from \"$\\sup |f|$\": the latter can become large because of a single point on a null set.",
    "translations": {
     "en": {
      "status": "stale",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "stale",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [
       "abstract"
      ],
      "basedOn": {
-      "abstract": "v0.9.1#877ac0d0"
+      "abstract": "v0.9.1#877ac0d0",
+      "statement": "v0.9.1#fd63d442",
+      "notes": "v0.9.1#667e877a"
      }
     }
    },
@@ -8932,24 +8962,34 @@
    "label_en": "uncountability of the reals",
    "title_en": "uncountability of the reals",
    "abstract_en": "$\\mathbb{R}$ is uncountable — there is no surjection $\\mathbb{N} \\to \\mathbb{R}$ — and in fact $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$. Uncountability is proved by nested closed intervals and completeness alone, with no cardinal theory; the cardinality statement pairs binary expansions with $\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density and cardinality are different things, which is why analysis needs $\\mathbb{R}$.",
+   "statement_en": "**The real line $\\mathbb{R}$ is uncountable**: there is no surjection from $\\mathbb{N}$ onto $\\mathbb{R}$, that is, $\\mathbb{R}$ cannot be arranged as a sequence.\n\nA stronger conclusion:\n\n$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$",
+   "notes_en": "⭐ The proof goes by **nested closed intervals + diagonalisation** (see the edge): assume $\\mathbb{R}$ can be arranged as $x_1, x_2, \\ldots$, then bisect to build a nested sequence of closed intervals, ruling out the $x_n$ one by one, and use **completeness** to extract their unique common point — which differs from every $x_n$.\n\n⚠ The whole proof uses **only the completeness of $\\mathbb{R}$** (the least-upper-bound principle); cardinal theory is not needed. The half saying $|\\mathbb{R}| = 2^{\\aleph_0}$ matches binary expansions against $\\mathcal{P}(\\mathbb{N})$ and then quotes Cantor's theorem.\n\n**The most counter-intuitive point of this theorem**: $\\mathbb{Q}$ and $\\mathbb{R}$ are both dense and each can be approximated by the other, yet $\\mathbb{Q}$ is countable (it can be arranged as a sequence) while $\\mathbb{R}$ is not. **\"Dense\" and \"equally many\" are two different things** — and this is precisely why analysis has to be done over the reals rather than over the rationals.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#ea2cb38a"
+      "abstract": "v0.9.1#ea2cb38a",
+      "statement": "v0.9.1#40ca76c6",
+      "notes": "v0.9.1#4475a98b"
      }
     }
    },
@@ -11128,24 +11168,34 @@
    "label_en": "Stone–Čech compactification",
    "title_en": "Stone–Čech compactification",
    "abstract_en": "The category $\\mathbf{CHaus}$ is a reflective subcategory of $\\mathbf{Top}$, the reflection being the Stone–Čech compactification: $\\operatorname{Hom}_{\\mathbf{CHaus}}(\\beta X, K) \\cong \\operatorname{Hom}_{\\mathbf{Top}}(X, K)$ for every compact Hausdorff $K$. Construction: embed $X$ into the Tychonoff cube $[0,1]^{C(X,[0,1])}$ and take the closure, which is compact Hausdorff as a closed subset of a compact Hausdorff space. The embedding is injective iff $X$ is Tychonoff. Corollary: any limit of compact Hausdorff spaces is again compact Hausdorff.",
+   "statement_en": "$\\mathbf{CHaus}$ is a **reflective subcategory** of $\\mathbf{Top}$; the reflection is called the **Stone–Čech compactification**:\n\n$$\\beta : \\mathbf{Top} \\longrightarrow \\mathbf{CHaus}, \\qquad X \\mapsto \\beta X$$\n\nthat is, for every $X \\in \\mathbf{Top}$ and every compact Hausdorff space $K$,\n\n$$\\operatorname{Hom}_{\\mathbf{CHaus}}\\bigl(\\beta X,\\ K\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Top}}\\bigl(X,\\ K\\bigr)$$\n\nand the inclusion $X \\to \\beta X$ is an isomorphism whenever $X$ itself is compact Hausdorff.",
+   "notes_en": "Construction: send $X$ into the Tychonoff cube\n\n$$e_{X} : X \\longrightarrow [0,1]^{C(X,[0,1])}, \\qquad x \\mapsto (f(x))_{f}$$\n\nand then take the closure $\\beta X := \\overline{e_{X}(X)}$. The cube is compact Hausdorff, hence so is every closed subset of it.\n\n⭐ **$e_{X}$ is injective $\\iff$ $X$ is a Tychonoff ($T_{3.5}$) space** — that is, there are enough continuous functions to separate distinct points. So for a general topological space, $\\beta X$ is the compactification obtained after collecting all the information that continuous functions can see.\n\nCorollary: **any limit of compact Hausdorff spaces is again compact Hausdorff**. This is what the general statement \"a reflective subcategory is closed under limits\" looks like here — from now on, taking limits in $\\mathbf{CHaus}$ no longer requires re-checking compactness and Hausdorffness.",
    "translations": {
     "en": {
      "status": "draft",
      "version": "v0.9.1",
      "fields": [
       "abstract",
+      "statement",
+      "notes",
       "name"
      ],
      "creative": [
-      "abstract"
+      "abstract",
+      "statement",
+      "notes"
      ],
      "fieldStatus": {
       "abstract": "draft",
+      "statement": "draft",
+      "notes": "draft",
       "name": "derived"
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.1#f1673aca"
+      "abstract": "v0.9.1#f1673aca",
+      "statement": "v0.9.1#2b01d3a4",
+      "notes": "v0.9.1#5e7e6161"
      }
     }
    },

@@ -2,9 +2,19 @@
 English entry · root `../`
 [in graph](../#n=def.complex-measure)　·　[Chinese page (authoritative)](./def.complex-measure.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Complex_measure
+$$\nu : \mathcal{M} \to \mathbb{C}$$
 
+such that
 
-Cite: `def.complex-measure` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+$$\nu(\emptyset) = 0, $$
 
+and for pairwise disjoint $\{E_j\} \subseteq \mathcal{M}$:
+
+$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j)$$
+
+(the series on the right converges absolutely).
+
+## Notes · **draft**
+⚠ Compared with a signed measure, a complex measure is **automatically finite** (its values lie in $\mathbb{C}$, no $\pm \infty$ is involved), and the series in countable additivity **converges absolutely automatically**.
+
+> 续见 nodes/def.complex-measure.en.4.md

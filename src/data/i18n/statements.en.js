@@ -819,5 +819,151 @@ MG.i18nStatements = {
         status: 'draft', basedOn: 'v0.9.1#cd8d3dd5', reviewed: null,
       },
     },
+
+    /* ================================================ 批次 3b（枢纽榜第 21–30 名，最后五条） */
+
+    /* ------------------------------------------------------------ 外测度 */
+    'def.outer-measure': {
+      statement: {
+        en:
+        'Let $X$ be a non-empty set. A function ' +
+        '$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ is an **outer measure** iff\n\n' +
+        '- $\\mu^*(\\emptyset) = 0$\n' +
+        '- **Monotone**: $A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n' +
+        '- **Countably subadditive**: ' +
+        '$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$',
+        status: 'draft', basedOn: 'v0.9.1#24d3359e', reviewed: null,
+      },
+      notes: {
+        en:
+        'An outer measure is defined on **all** subsets ($\\mathcal{P}(X)$, not on some ' +
+        '$\\sigma$-algebra); the price is that it only has **sub**additivity.\n\n' +
+        'So an outer measure is not a measure — it is too large even to be additive on ' +
+        '$\\mathcal{P}(X)$. Carathéodory\'s idea is to single out the sets that "behave ' +
+        'well" (the next definition); on those the outer measure does become a genuine ' +
+        'measure.\n\n' +
+        'What Lebesgue first constructed was an outer measure: ' +
+        '$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.',
+        status: 'draft', basedOn: 'v0.9.1#32c28e62', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------- ℝ 不可数 */
+    'thm.real-uncountable': {
+      statement: {
+        en:
+        '**The real line $\\mathbb{R}$ is uncountable**: there is no surjection from ' +
+        '$\\mathbb{N}$ onto $\\mathbb{R}$, that is, $\\mathbb{R}$ cannot be arranged as a ' +
+        'sequence.\n\n' +
+        'A stronger conclusion:\n\n' +
+        '$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$',
+        status: 'draft', basedOn: 'v0.9.1#40ca76c6', reviewed: null,
+      },
+      notes: {
+        en:
+        '⭐ The proof goes by **nested closed intervals + diagonalisation** (see the edge): ' +
+        'assume $\\mathbb{R}$ can be arranged as $x_1, x_2, \\ldots$, then bisect to build a ' +
+        'nested sequence of closed intervals, ruling out the $x_n$ one by one, and use ' +
+        '**completeness** to extract their unique common point — which differs from every ' +
+        '$x_n$.\n\n' +
+        '⚠ The whole proof uses **only the completeness of $\\mathbb{R}$** (the ' +
+        'least-upper-bound principle); cardinal theory is not needed. The half saying ' +
+        '$|\\mathbb{R}| = 2^{\\aleph_0}$ matches binary expansions against ' +
+        '$\\mathcal{P}(\\mathbb{N})$ and then quotes Cantor\'s theorem.\n\n' +
+        '**The most counter-intuitive point of this theorem**: $\\mathbb{Q}$ and ' +
+        '$\\mathbb{R}$ are both dense and each can be approximated by the other, yet ' +
+        '$\\mathbb{Q}$ is countable (it can be arranged as a sequence) while ' +
+        '$\\mathbb{R}$ is not. **"Dense" and "equally many" are two different things** — ' +
+        'and this is precisely why analysis has to be done over the reals rather than over ' +
+        'the rationals.',
+        status: 'draft', basedOn: 'v0.9.1#4475a98b', reviewed: null,
+      },
+    },
+
+    /* ---------------------------------------------------- 紧 Haus 是反射子范畴 */
+    'prop.chaus-reflective': {
+      statement: {
+        en:
+        '$\\mathbf{CHaus}$ is a **reflective subcategory** of $\\mathbf{Top}$; the ' +
+        'reflection is called the **Stone–Čech compactification**:\n\n' +
+        '$$\\beta : \\mathbf{Top} \\longrightarrow \\mathbf{CHaus}, \\qquad ' +
+        'X \\mapsto \\beta X$$\n\n' +
+        'that is, for every $X \\in \\mathbf{Top}$ and every compact Hausdorff space $K$,\n\n' +
+        '$$\\operatorname{Hom}_{\\mathbf{CHaus}}\\bigl(\\beta X,\\ K\\bigr) \\;\\cong\\; ' +
+        '\\operatorname{Hom}_{\\mathbf{Top}}\\bigl(X,\\ K\\bigr)$$\n\n' +
+        'and the inclusion $X \\to \\beta X$ is an isomorphism whenever $X$ itself is ' +
+        'compact Hausdorff.',
+        status: 'draft', basedOn: 'v0.9.1#2b01d3a4', reviewed: null,
+      },
+      notes: {
+        en:
+        'Construction: send $X$ into the Tychonoff cube\n\n' +
+        '$$e_{X} : X \\longrightarrow [0,1]^{C(X,[0,1])}, \\qquad x \\mapsto (f(x))_{f}$$\n\n' +
+        'and then take the closure $\\beta X := \\overline{e_{X}(X)}$. The cube is compact ' +
+        'Hausdorff, hence so is every closed subset of it.\n\n' +
+        '⭐ **$e_{X}$ is injective $\\iff$ $X$ is a Tychonoff ($T_{3.5}$) space** — that ' +
+        'is, there are enough continuous functions to separate distinct points. So for a ' +
+        'general topological space, $\\beta X$ is the compactification obtained after ' +
+        'collecting all the information that continuous functions can see.\n\n' +
+        'Corollary: **any limit of compact Hausdorff spaces is again compact Hausdorff**. ' +
+        'This is what the general statement "a reflective subcategory is closed under ' +
+        'limits" looks like here — from now on, taking limits in $\\mathbf{CHaus}$ no ' +
+        'longer requires re-checking compactness and Hausdorffness.',
+        status: 'draft', basedOn: 'v0.9.1#5e7e6161', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------------ 复测度 */
+    'def.complex-measure': {
+      statement: {
+        en:
+        'A **complex measure** on a measurable space $(X, \\mathcal{M})$ is a map\n\n' +
+        '$$\\nu : \\mathcal{M} \\to \\mathbb{C}$$\n\n' +
+        'such that\n\n' +
+        '$$\\nu(\\emptyset) = 0, $$\n\n' +
+        'and for pairwise disjoint $\\{E_j\\} \\subseteq \\mathcal{M}$:\n\n' +
+        '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)$$\n\n' +
+        '(the series on the right converges absolutely).',
+        status: 'draft', basedOn: 'v0.9.1#bde1a964', reviewed: null,
+      },
+      notes: {
+        en:
+        '⚠ Compared with a signed measure, a complex measure is **automatically finite** ' +
+        '(its values lie in $\\mathbb{C}$, no $\\pm \\infty$ is involved), and the series in ' +
+        'countable additivity **converges absolutely automatically**.\n\n' +
+        'So in the world of complex measures the headaches of "finiteness" and ' +
+        '"rearrangement" disappear entirely — at the cost of no longer having examples ' +
+        'with "infinite mass".',
+        status: 'draft', basedOn: 'v0.9.1#e5f47458', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------ 本性上界与 L^∞ */
+    'def.essential-sup': {
+      statement: {
+        en:
+        'Definition\n\n' +
+        '$$\\|f\\|_\\infty := \\inf \\{\\, a \\ge 0 : \\mu(\\{\\, |f| > a \\,\\}) = 0 \\,\\}$$\n\n' +
+        '(After ignoring completely the values of $f$ on null sets, this is its "true" ' +
+        'upper bound.) This infimum **is attained**: for $a = \\|f\\|_\\infty$ itself we ' +
+        'have $\\mu(\\{|f| > a\\}) = 0$.\n\n' +
+        'For a **measurable** function $f : X \\to \\mathbb{C}$ (measurability is defined ' +
+        'at "measurable function") put\n\n' +
+        '$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : ' +
+        '\\|f\\|_\\infty < \\infty \\,\\}\n$$',
+        status: 'draft', basedOn: 'v0.9.1#fd63d442', reviewed: null,
+      },
+      notes: {
+        en:
+        'An equivalent form: $\\|f\\|_\\infty \\le M \\iff |f(x)| \\le M$ holds for a.e. ' +
+        '$x$.\n\n' +
+        'What the word "essential" means: **bad values on null sets simply do not count**. ' +
+        'For instance, if $f = 0$ a.e. but $f$ takes the value $+\\infty$ on some null set, ' +
+        'we still have $\\|f\\|_\\infty = 0$.\n\n' +
+        '⚠ $\\|f\\|_\\infty$ differs from "$\\sup |f|$": the latter can become large ' +
+        'because of a single point on a null set.',
+        status: 'draft', basedOn: 'v0.9.1#667e877a', reviewed: null,
+      },
+    },
   },
 };

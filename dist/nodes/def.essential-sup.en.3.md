@@ -2,9 +2,15 @@
 English entry · root `../`
 [in graph](../#n=def.essential-sup)　·　[Chinese page (authoritative)](./def.essential-sup.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Essential_supremum · nLab: https://ncatlab.org/nlab/show/essential+supremum
+(After ignoring completely the values of $f$ on null sets, this is its "true" upper bound.) This infimum **is attained**: for $a = \|f\|_\infty$ itself we have $\mu(\{|f| > a\}) = 0$.
 
+For a **measurable** function $f : X \to \mathbb{C}$ (measurability is defined at "measurable function") put
 
-Cite: `def.essential-sup` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+$$
+L^\infty(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : \|f\|_\infty < \infty \,\}
+$$
 
+## Notes · **draft**
+An equivalent form: $\|f\|_\infty \le M \iff |f(x)| \le M$ holds for a.e. $x$.
+
+> 续见 nodes/def.essential-sup.en.4.md
