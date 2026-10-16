@@ -8,7 +8,7 @@ $$\mu \times \nu$$
 
 that is, the **product measure**.
 
-## Notes
+## Notes · **draft**
 Well-definedness of $\mu_{0} $ has to be checked (the same $E$ can be split into different disjoint unions of rectangles) — this is exactly why "rectangles" are replaced by "**disjoint** unions of rectangles": under disjoint unions, additivity is easy to verify.
 
 > 续见 nodes/def.product-measure.en.5.md

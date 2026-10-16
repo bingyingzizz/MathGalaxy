@@ -108,6 +108,49 @@
     return n;
   }
 
+  /* ---------------------------------------------- 英文旁挂内容的逐条状态 */
+  /* 作者 2026-10-16 拍板（决策二.3）：审校状态**逐条**判定，不再整份一个 status。
+     每条英文记录自带：
+       status   'draft' | 'reviewed'  —— 人写的那个开关（作者审过才改 reviewed）
+       basedOn  'v0.9.0#a1b2c3d4'     —— 底稿标识：内容版本 + 中文原文指纹
+       reviewed { by, date }           —— 审校记录（status='reviewed' 时才有）
+     ⭐ stale 是**算出来**的，两个来源任一不符即 stale：
+       ① 内容版本对不上（tools/ids.snapshot.json 的 vX.Y.Z）；
+       ② 中文底稿的指纹对不上（说明这句话本身被改过了）。
+     ⛔ 判定只有这一处实现（tools/build.mjs 也调这一个函数），
+        免得「网页说 draft、构建说 stale」两处漂。 */
+
+  /** 中文指纹：把空白折叠后取 FNV-1a 32 位（8 位十六进制）。
+      ⚠️ 只用它判「底稿变没变」——不是签名、不是加密。
+      ⚠️ 空白折叠是**故意的**：`$g K$` 与 `$gK$` 这种纯排版微调不该让整段译文作废。 */
+  function zhHash(s) {
+    var t = String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
+    var h = 0x811c9dc5;
+    for (var i = 0; i < t.length; i++) {
+      h ^= t.charCodeAt(i);
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return ('0000000' + h.toString(16)).slice(-8);
+  }
+
+  /** 一条英文记录的逐字段状态 → 'reviewed' | 'stale' | 'draft'
+      @param rec    英文记录（{status, basedOn}）
+      @param zhText 它的中文底稿（算指纹用）；给 null 就只比内容版本 */
+  function enFieldStatus(rec, zhText) {
+    if (!rec) return null;
+    var base = String(rec.basedOn || '');
+    var m = /^([^#]*)(?:#(.*))?$/.exec(base) || [];
+    var ver = m[1] || '', hash = m[2] || '';
+    /* ⚠️ `MG.contentVersion === 'dev'` = 这是**仓库源码里的 index.html**（构建才会把
+       真版本号写进 dist/mathgalaxy.html）⇒ 版本这一条判不了，就不判：
+       只靠指纹。⛔ 别在这里把 'dev' 当成「版本变了」—— 那会让双击源码页时
+       满屏 stale（假的），而真检查（中文底稿有没有改）指纹那条照样在跑。 */
+    var cv = MG.contentVersion;
+    if (ver && cv && cv !== 'dev' && ver !== cv) return 'stale';
+    if (hash && zhText != null && hash !== zhHash(zhText)) return 'stale';
+    return rec.status === 'reviewed' ? 'reviewed' : 'draft';
+  }
+
   /** 换语言（目前只有「载入时定」，没有运行时热切换 —— 免得半个界面是英文） */
   function set(next) {
     if (next !== 'en' && next !== 'zh') return;
@@ -125,6 +168,8 @@
   MG.clusterName = clusterName;
   MG.regionName = regionName;
   MG.localizeDisplay = localizeDisplay;
+  MG.zhHash = zhHash;
+  MG.enFieldStatus = enFieldStatus;
   MG.applyStatic = applyStatic;
   MG.setLang = set;
   MG.LANG_KEY = KEY;

@@ -11,13 +11,18 @@
       所以 `status: 'draft'` 时每份产物第一行是状态头，⛔ 不许冒充官方版本。
       作者审校后：把 `status` 改成 `'reviewed'`、填 `reviewed: { by, date }`，状态头自动换。
 
-   ⭐⭐ **状态只有一个来源，就是下面这两个字段：`status` 与 `basedOn`。**
-      · `status`      = 'draft' | 'reviewed' —— 人写的那个开关；
-      · `basedOn`     = 这份英文是从**哪个内容版本**译出来的（tools/ids.snapshot.json 的 vX.Y.Z）。
-      · **stale 是算出来的**：内容版本 bump 到 `basedOn` 之外 ⇒ 状态自动变成 stale
+   ⭐⭐ 状态**逐份判定**（作者 2026-10-16 拍板）：`docs` 下面**每一份文档**各有
+      `status` / `basedOn` / `reviewed` 三个字段 —— 一份审过了不必等其余的。
+      · 下面文件级的那三个字段只是**默认值**：某份没写就取它（历史上就是这么用的）。
+      · `status`  = 'draft' | 'reviewed' —— 人写的那个开关；
+      · `basedOn` = 这份英文是从**哪个内容版本**译出来的（tools/ids.snapshot.json 的 vX.Y.Z）。
+      ⭐ **文档的 stale 只按内容版本判**（不像摘要/陈述那样另有中文底稿指纹）：
+         文档的数字、清单、路径都是构建期现算的，它没有「一句中文原文」可对。
+      · **stale 是算出来的**：内容版本 bump 到 `basedOn` 之外 ⇒ 状态自动变 stale
         （不需要谁记得去改），状态头会写明「译自 v0.9.0 / 当前 v0.9.1」。
       ⛔ 状态头与页面横幅都由构建生成，一个字都不许手写；
         要翻状态就改这里一处，然后 bun tools/build.mjs。
+      ⚠️ 判定只有一处实现 = `src/core/i18n.js` 的 MG.enFieldStatus。
 
    ⚠️ 这个文件**不挂进 index.html**：只有构建期用它（浏览器端不需要）。
       加载它的地方在 tools/build.mjs 的 loadMG()。
@@ -25,8 +30,9 @@
 window.MG = window.MG || {};
 
 MG.i18nDocs = {
-  version: 1,
-  /* draft | reviewed —— 见上面 §0.4 的规矩；stale 由构建算出来（basedOn ≠ 当前内容版本） */
+  version: 2,              // 2 = 逐份状态（每份文档自带 status/basedOn）；1 = 文件级一个 status
+  /* ↓ 这三行是**默认值**：docs 下面哪一份没写自己的，就取这里的（见文件头）。
+     draft | reviewed —— 见上面 §0.4 的规矩；stale 由构建算出来（basedOn ≠ 当前内容版本） */
   status: 'draft',
   /* 这份英文是从哪个内容版本译出来的（tools/ids.snapshot.json 的 vX.Y.Z）。
      ⚠️ 内容版本变了但英文没跟着更新 ⇒ 构建自动把它标成 stale，不是靠人记得改。 */
@@ -60,6 +66,8 @@ MG.i18nDocs = {
     /* ------------------------------------------------------------- reading */
     reading: {
       title: 'MathGalaxy · How to read this map',
+      /* 逐份状态（决策二.3）：审过这一份就把 status 改 'reviewed' 并填 reviewed */
+      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
       body: [
         'Data starts at `{{base}}index.md`.',
         '',
@@ -101,6 +109,7 @@ MG.i18nDocs = {
     /* -------------------------------------------------------------- policy */
     policy: {
       title: 'MathGalaxy · Content policy',
+      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
       body: [
         '## 1. Every layer is *constructed* from the layer below',
         '',
@@ -141,6 +150,7 @@ MG.i18nDocs = {
     /* ---------------------------------------------------------------- hubs */
     hubs: {
       title: 'MathGalaxy · Hub theorems',
+      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
       head: [
         'Ranked by **in-degree**: how many strong edges point at it. It answers one question —',
         '**which things are the real foundation and worth learning first.** (Weak edges do not',
@@ -155,6 +165,7 @@ MG.i18nDocs = {
     /* ------------------------------------------------------------ notation */
     notation: {
       title: 'MathGalaxy · Notation',
+      status: 'draft', basedOn: 'v0.9.0', reviewed: null,
       body: [
         'One symbol, one meaning per cluster; clashes between clusters are listed below.',
         '',

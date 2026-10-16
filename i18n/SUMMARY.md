@@ -9,8 +9,8 @@
 | 项 | 覆盖 | 说明 |
 |---|---|---|
 | 英文名 `title_en` / `label_en` | **294 / 709 = 41.5%** | 一级 253（aka 恰好一条名字样英文）+ 二级 41（title 里恰好命中一个 aka 候选）。T2.2 修了两处闸门误杀（连字符专名 / 裸 `section` 被当书号）并补了 13 个枢纽名 |
-| 英文摘要 `abstract_en` | **30**（枢纽榜前 30 = 30/30） | 机器起草，`status: draft`，中文为准 |
-| 英文陈述 `statement_en` / `notes_en` | **3**（试点） | `lem.zorn` · `thm.first-iso` · `def.metric-space`，逐句对译 |
+| 英文摘要 `abstract_en` | **30**（枢纽榜前 30 = 30/30） | 机器起草，**逐条** `status: draft`，中文为准 |
+| 英文陈述 `statement` / `notes` | **11 个节点 / 22 个字段**（试点 3 + 批次 1 的 8） | 逐句对译；状态**逐字段**（决策二.3）|
 | 英文入口页 `nodes/<id>.en.md` | **290 个节点 / 351 个文件**（61 页是续页） | 有英文名或摘要就有；最大 890 B |
 | read 文档英文版 | **4 份 / 11 页** | reading · policy · hubs · notation（+ 仓库根副本 7 个） |
 | 术语表 | 1 份 | `i18n/glossary.md`（有英文键的一律现算） |
@@ -26,8 +26,8 @@
 |---|---|
 | `src/data/i18n.js` | 英文名旁挂表（**由 `tools/i18n-backfill.mjs` 生成**，⛔ 不手写） |
 | `src/data/i18n/docs.en.js` | read 文档英文正文（4 份） |
-| `src/data/i18n/abstracts.en.js` | 30 条英文摘要 |
-| `src/data/i18n/statements.en.js` | 3 条英文陈述/说明（试点） |
+| `src/data/i18n/abstracts.en.js` | 30 条英文摘要（每条自带逐条状态） |
+| `src/data/i18n/statements.en.js` | 11 个节点的英文陈述/说明（每字段自带逐条状态） |
 | `src/data/xref.js` | 外链锚点（45 节点 / 80 链接，逐条核过） |
 
 **构建产物**
@@ -48,6 +48,7 @@
 | `CONTRIBUTING.md` | 新建：中文 + `## Contributing in English` |
 | `LICENSE-MIGRATION.md` | 许可**迁移记录**（原 `LICENSE-PROPOSAL.md`，2026-10-16 已生效）：方案 B 落地、镜像影响表、故意没做的事 |
 | `tools/i18n-backfill.mjs` | 英文名回填（一二级规则唯一真源，build 直接 import 复用） |
+| `tools/i18n-status.mjs` | **逐条状态体检**（决策二.3）：列出每条/每字段 draft / reviewed / stale + 为什么；`--md` 出批次 rollup、`--patch` 打印缺的 basedOn。⛔ 只报不写 |
 | `_tools/_xrefcand.mjs` · `_xrefverify.mjs` · `_xreview.mjs` | 外链候选 / 核对（并发、双网络路、抓 title）/ 人眼复核 |
 | `_tools/_uistr.mjs` · `_uiprobe.js` · `_uifmt.mjs` · `_uistate.js` | UI 文案清单（源码扫 + 真跑界面 + 折模板 + 状态截图） |
 | `_tools/_abcheck.mjs` · `_stcheck.mjs` | 摘要 / 陈述译文逐条喂真 KaTeX |
@@ -64,18 +65,33 @@
 | 4′ | ⚠️ **口径更正（2026-10-16 晚）** | 枢纽榜前 30 名按「入度降序 + layer 升序」定；入度 = 4 的节点有 **36 个**并列跨在第 30 名附近，**不 computeLayers 的探针排出来的前 30 是任意集合** —— 我先前报的「14」就是那么来的。以构建口径为准：**没有英文名的是 16 个**。这 16 个已在 T2.2 补完，英文名覆盖最终 **294 / 709 = 41.5%** |
 | 5 | 二级命中里 2 条要人眼 | ✅ **已修**：`thm.first-iso` → `first isomorphism theorem`（原 `Noether`）· `def.simplex-category` → `simplex category`（原 `Delta`）。修法是**把那条不是名字的从 aka 里去掉**，不是补一条 |
 | 6 | 许可迁移 | ✅ **已执行**：内容 → CC BY 4.0、代码 MIT；`LICENSE` 重写，新增 `LICENSE-CC-BY-4.0.txt`（官方原文）；`LICENSE-PROPOSAL.md` → `LICENSE-MIGRATION.md` |
-| 7 | 英文陈述只做了 3 条 | 试点性质；扩展是纯人工量（审校产能） |
+| 7 | 英文陈述只做了 3 条 | ✅ 已扩到 **11 条**（批次 1 完成，`i18n/review-batch-1.md`）；再往上扩是纯人工量（审校产能），批次 2/3 **冻结**等作者审完批次 1 |
 | 8 | 边上的证明（`proofs/`）没有英文 | 英文页明确写着「证明仍以中文页为准」 |
 | 9 | 内容瑕疵 1 处 | `prop.chaus-two-term-resolution` 的 `\text{}` 里嵌了 `$` —— ✅ 已定：改掉（报告 diff） |
 | 10 | T1.1 缺口的一个选项 | 若允许「title 兜底」还能再填 106 条 —— 但那个池子不干净（混着 `X, M` 这种公式碎片），所以没做 |
 
-## 四、状态与 stale 的规矩（全线一致）
+## 四、状态与 stale 的规矩（2026-10-16 起：**逐条**判定）
 
-- **唯一来源**：每个英文内容文件两个字段 —— `status`（draft / reviewed）+ `basedOn`（译自哪个内容版本）。
-- **stale 是算出来的**：内容版本（`tools/ids.snapshot.json`）跑到 `basedOn` 之外 ⇒ 构建自动标 stale，
-  状态头写明「from vX / content is vY」，构建日志同时打 ⚠️。翻 reviewed 只改一处。
-- **状态头在三处出现同一句话**：`.md` 文件里、概念页/阅读页的横幅里、`graph.json` 的 `translations` 里。
+- ⭐ **逐条 = 审校与 stale 的最小单位**（作者拍板，决策二.3）：
+  | 内容 | 一条 = | 底稿（算指纹用的中文） |
+  |---|---|---|
+  | 英文摘要 | 一个节点 | 该节点的 `statement` + `notes` |
+  | 英文陈述 / 说明 | 一个字段（`statement` / `notes`） | 就是那个字段本身 |
+  | 英文文档 | 一份（reading / policy / hubs / notation） | 无（数字与清单都是构建现算 ⇒ 只按内容版本判） |
+  | 界面文案（`ui.en.js`） | 整表一个状态（**口径**：UI 是照着屏幕整体审的，逐条没有意义） | 无 |
+- **每条自带三个字段**：`status`（draft / reviewed，人的开关）· `basedOn`
+  （`'<内容版本>#<中文底稿指纹>'`，指纹 = `MG.zhHash`，8 位十六进制）· `reviewed`（{ by, date }）。
+- **stale 是算出来的**，两个来源任一不符即 stale：① 内容版本（`tools/ids.snapshot.json`）变了；
+  ② **这条的中文底稿改过了**（指纹不符）—— 后者比老的「版本变了」细得多，
+  改一个字的陈述也会让**那一条**变 stale，而不是整份文件。
+  `.md` 状态头写明是哪一种（`from vX; content is vY` / `the Chinese wording changed…`）。
+- ⛔ **判定只有一处实现**：`src/core/i18n.js` 的 `MG.enFieldStatus`（+ `MG.zhHash`）；
+  `tools/build.mjs` 调的是同一个函数，所以**网页上看到的状态与产物里写的不会漂**。
+- **状态头在三处出现同一句话**：`.md` 文件里、概念页/阅读页的横幅里、`graph.json` 的
+  `translations.en` 里（`fieldStatus` 逐字段、`staleFields` 列出过期的那几个）。
   横幅的文本是 publish.mjs 从 `.md` 里抠出来的 ⇒ 不可能漂。
+- ⛔ **别手工「刷新」`basedOn` 来消掉 stale** —— 那等于悄悄作废审校记录；要重新对稿。
+  体检与批次 rollup 走 `bun tools/i18n-status.mjs`（只报不写）。
 - **中文永远是权威版本**，每处英文旁边都写着这句。
 
 ## 五、搜索口径（T3.1）

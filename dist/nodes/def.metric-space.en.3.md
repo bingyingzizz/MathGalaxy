@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.metric-space)　·　[Chinese page (authoritative)](./def.metric-space.md)
 
-## Statement
+## Statement · **draft**
 A **metric space** is a pair (X, d): $X$ is a set and $d : X \times X \to [0, +\infty )$ is a **metric** on $X$, satisfying
 
 - **non-degeneracy**: $d(x, y) = 0 \iff x = y$

@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.product-measure)　·　[Chinese page (authoritative)](./def.product-measure.md)
 
-## Statement
+## Statement · **draft**
 Let $(X, \mathcal{M}, \mu )$ and $(Y, \mathcal{N}, \nu )$ be measure spaces.
 
 **① Rectangles**: sets of the form $A \times B$ (with $A \in \mathcal{M}$, $B \in \mathcal{N}$) are called (measurable) rectangles. All rectangles **generate** $\mathcal{M} \otimes  \mathcal{N}$.

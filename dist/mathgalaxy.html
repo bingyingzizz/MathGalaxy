@@ -1971,6 +1971,49 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     return n;
   }
 
+  /* ---------------------------------------------- 英文旁挂内容的逐条状态 */
+  /* 作者 2026-10-16 拍板（决策二.3）：审校状态**逐条**判定，不再整份一个 status。
+     每条英文记录自带：
+       status   'draft' | 'reviewed'  —— 人写的那个开关（作者审过才改 reviewed）
+       basedOn  'v0.9.0#a1b2c3d4'     —— 底稿标识：内容版本 + 中文原文指纹
+       reviewed { by, date }           —— 审校记录（status='reviewed' 时才有）
+     ⭐ stale 是**算出来**的，两个来源任一不符即 stale：
+       ① 内容版本对不上（tools/ids.snapshot.json 的 vX.Y.Z）；
+       ② 中文底稿的指纹对不上（说明这句话本身被改过了）。
+     ⛔ 判定只有这一处实现（tools/build.mjs 也调这一个函数），
+        免得「网页说 draft、构建说 stale」两处漂。 */
+
+  /** 中文指纹：把空白折叠后取 FNV-1a 32 位（8 位十六进制）。
+      ⚠️ 只用它判「底稿变没变」——不是签名、不是加密。
+      ⚠️ 空白折叠是**故意的**：`$g K$` 与 `$gK$` 这种纯排版微调不该让整段译文作废。 */
+  function zhHash(s) {
+    var t = String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
+    var h = 0x811c9dc5;
+    for (var i = 0; i < t.length; i++) {
+      h ^= t.charCodeAt(i);
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return ('0000000' + h.toString(16)).slice(-8);
+  }
+
+  /** 一条英文记录的逐字段状态 → 'reviewed' | 'stale' | 'draft'
+      @param rec    英文记录（{status, basedOn}）
+      @param zhText 它的中文底稿（算指纹用）；给 null 就只比内容版本 */
+  function enFieldStatus(rec, zhText) {
+    if (!rec) return null;
+    var base = String(rec.basedOn || '');
+    var m = /^([^#]*)(?:#(.*))?$/.exec(base) || [];
+    var ver = m[1] || '', hash = m[2] || '';
+    /* ⚠️ `MG.contentVersion === 'dev'` = 这是**仓库源码里的 index.html**（构建才会把
+       真版本号写进 dist/mathgalaxy.html）⇒ 版本这一条判不了，就不判：
+       只靠指纹。⛔ 别在这里把 'dev' 当成「版本变了」—— 那会让双击源码页时
+       满屏 stale（假的），而真检查（中文底稿有没有改）指纹那条照样在跑。 */
+    var cv = MG.contentVersion;
+    if (ver && cv && cv !== 'dev' && ver !== cv) return 'stale';
+    if (hash && zhText != null && hash !== zhHash(zhText)) return 'stale';
+    return rec.status === 'reviewed' ? 'reviewed' : 'draft';
+  }
+
   /** 换语言（目前只有「载入时定」，没有运行时热切换 —— 免得半个界面是英文） */
   function set(next) {
     if (next !== 'en' && next !== 'zh') return;
@@ -1988,6 +2031,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
   MG.clusterName = clusterName;
   MG.regionName = regionName;
   MG.localizeDisplay = localizeDisplay;
+  MG.zhHash = zhHash;
+  MG.enFieldStatus = enFieldStatus;
   MG.applyStatic = applyStatic;
   MG.setLang = set;
   MG.LANG_KEY = KEY;
@@ -2256,26 +2301,40 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.0';</script>
     /* -------------------------------------------------- 英文摘要（T2.2） */
     /* `src/data/i18n/abstracts.en.js`：给枢纽榜前列的节点旁挂一段英文导读。
        ⛔ 不是正文（陈述/说明/证明的真源仍在 packs），只是「这条讲什么」的译文。
-       状态（draft / reviewed / stale）由构建期决定，这里只抄字段。 */
+       ⭐ 状态是**逐条**的（作者 2026-10-16 拍板）⇒ 用 MG.enFieldStatus 现算：
+          'reviewed'（作者审过）/ 'draft'（机器起草，待审）/ 'stale'（中文底稿变了）。
+       ⚠️ 摘要的底稿 = 该节点的 statement + notes（改其一即 stale）。 */
     var abs = (MG.i18nAbstracts && MG.i18nAbstracts.items) || null;
     if (abs) {
       nodes.forEach(function (n) {
         var a = abs[n.id];
-        if (a) n.abstract_en = a;
+        if (!a) return;
+        n.abstract_en = a.en || (typeof a === 'string' ? a : '');
+        if (!n.abstract_en) return;
+        n.enReview = n.enReview || {};
+        n.enReview.abstract = MG.enFieldStatus ? MG.enFieldStatus(a, (n.statement || '') + '\n' + (n.notes || '')) : 'draft';
       });
     }
 
     /* ------------------------------------------- 英文陈述 / 说明（T3.2） */
     /* `src/data/i18n/statements.en.js`：只给少数枢纽节点的**逐句对译**。
        ⛔ 中文陈述仍是唯一真源；这里只是把译文抄到节点上，消费方按有没有回落。
-       ⚠️ 边的证明（proofs）不在本批 —— 英文页会写明证明仍以中文页为准。 */
+       ⚠️ 边的证明（proofs）不在本批 —— 英文页会写明证明仍以中文页为准。
+       ⭐ 逐字段状态：statement 的底稿 = 中文 statement；notes 的底稿 = 中文 notes。 */
     var stm = (MG.i18nStatements && MG.i18nStatements.items) || null;
     if (stm) {
       nodes.forEach(function (n) {
         var s = stm[n.id];
         if (!s) return;
-        if (s.statement_en) n.statement_en = s.statement_en;
-        if (s.notes_en) n.notes_en = s.notes_en;
+        n.enReview = n.enReview || {};
+        [['statement', 'statement_en'], ['notes', 'notes_en']].forEach(function (pair) {
+          var rec = s[pair[0]];
+          if (!rec) return;
+          var txt = rec.en || (typeof rec === 'string' ? rec : '');
+          if (!txt) return;
+          n[pair[1]] = txt;
+          n.enReview[pair[0]] = MG.enFieldStatus ? MG.enFieldStatus(rec, n[pair[0]]) : 'draft';
+        });
       });
     }
 
@@ -9533,8 +9592,15 @@ MG.i18n = {
    ⛔ 不是正文的替代：中文陈述为准；摘要只是「导读」，不含新命题、不含新推导。
 
    ⚠️ 这是**创译型**内容：agent 起草 → 作者审校 → 才可标 reviewed。
-      状态与 stale 的口径和 read 文档英文版完全一致（见 src/data/i18n/docs.en.js）：
-      **唯一来源 = `status` + `basedOn`**；内容版本一变，构建自动把它标成 stale。
+      ⭐⭐ 状态**逐条判定**（作者 2026-10-16 拍板）：每条 = 一个节点，自带
+         · status    'draft'（机器起草，待审）| 'reviewed'（作者审过）
+         · basedOn   `'<内容版本>#<中文底稿指纹>'` —— 指纹 = MG.zhHash，8 位十六进制
+         · reviewed  { by, date }（status = 'reviewed' 时填）
+      ⭐ **摘要的底稿 = 该节点的 statement + notes**（改其一即 stale）；
+         stale 另有一个来源：内容版本变了（tools/ids.snapshot.json 的 vX.Y.Z）。
+      ⛔ 别手工「刷新」basedOn 来消掉 stale —— 那等于悄悄作废审校记录。
+         要重新对稿就跑 `bun tools/i18n-status.mjs`（默认只报不写）。
+      ⚠️ 判定只有一处实现 = `src/core/i18n.js` 的 MG.enFieldStatus。
 
    ⚠️ 这个文件**挂进 index.html**（挂在 i18n.js 之后）：它是**节点字段**的来源，
       浏览器端要用 —— graph.js 建图时把 abstract_en 抄到节点上，
@@ -9544,27 +9610,26 @@ MG.i18n = {
 window.MG = window.MG || {};
 
 MG.i18nAbstracts = {
-  version: 1,
-  /* draft | reviewed —— stale 由构建算出来（basedOn ≠ 当前内容版本） */
-  status: 'draft',
-  /* 这份摘要译自哪个内容版本（tools/ids.snapshot.json 的 vX.Y.Z） */
-  basedOn: 'v0.9.0',
-  drafted: '2026-10-16',
-  reviewed: null,          // 审校后：{ by: '作者名', date: 'YYYY-MM-DD' }
+  version: 2,               // 2 = 逐条状态（每条 status/basedOn）；1 = 文件级一个 status
+  drafted: '2026-10-16',    // 本文件第一次起草的日期（只是历史记录，不参与状态判定）
 
   /* 选取口径：dist/hubs.md 的那张榜（只数强边入边）前 30 名。
      每段 2~4 句：先写「说的是什么」，再写「它在这一团里干什么」。
      ⭐ 公式与记号一律行内 LaTeX（$…$）；⛔ 不写中文、不写收录/整理过程。 */
   items: {
-    'lem.zorn':
+    'lem.zorn': {
+      en:
       'Let $(P, \\preceq)$ be a non-empty poset in which every chain has an upper bound ' +
       'in $P$. Then $P$ has a maximal element. Both hypotheses are needed: the empty poset ' +
       'has none, and an upper bound for every chain yields maximality only, never a greatest ' +
       'element. It is the standard engine of existence proofs — bases, maximal ideals, ' +
       'compactness, Hahn–Banach — and it is non-constructive: an element is produced without ' +
       'telling you which one.',
+      status: 'draft', basedOn: 'v0.9.0#bb7411b4', reviewed: null,
+    },
 
-    'thm.first-iso':
+    'thm.first-iso': {
+      en:
       'For a group homomorphism $\\varphi : G \\to G\'$, the assignment ' +
       '$g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism ' +
       '$G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective ' +
@@ -9573,8 +9638,11 @@ MG.i18nAbstracts = {
       '"set + operations + axioms" structure, $A/\\ker f \\cong \\operatorname{im} f$, ' +
       'and the set-level prototype is that every map induces a bijection from the quotient by ' +
       '$a \\sim a\' \\iff f(a) = f(a\')$ onto its image.',
+      status: 'draft', basedOn: 'v0.9.0#d50659a4', reviewed: null,
+    },
 
-    'def.cauchy-null':
+    'def.cauchy-null': {
+      en:
       'Over $\\mathbb{Q}$ alone — $\\varepsilon$ ranges over positive rationals, so no reals ' +
       'are presupposed — a rational sequence $(x_n)$ is Cauchy when ' +
       '$\\forall \\varepsilon > 0\\, \\exists N\\, \\forall m,n \\ge N : |x_m - x_n| < \\varepsilon$, ' +
@@ -9584,16 +9652,22 @@ MG.i18nAbstracts = {
       'approximating one number. Three facts are used later: Cauchy sequences are bounded, ' +
       'sums and products of Cauchy sequences are Cauchy, and a non-null Cauchy sequence ' +
       'satisfies $|x_n| \\ge \\delta > 0$ from some point on, so its reciprocal is Cauchy again.',
+      status: 'draft', basedOn: 'v0.9.0#d376e5cb', reviewed: null,
+    },
 
-    'def.representable':
+    'def.representable': {
+      en:
       'A functor $F : \\mathcal{C} \\to \\mathbf{Set}$ is represented by an object $X$ ' +
       'together with $s \\in F(X)$ when every $t \\in F(Y)$ is $F(f)(s)$ for exactly one ' +
       '$f : X \\to Y$; equivalently $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$. All the ' +
       'data of $F$ is generated by the single element $s$. Equivalently $(X, s)$ is an ' +
       'initial object of the category of elements of $F$. Examples: $k[t]$ represents the ' +
       'forgetful functor on $k$-algebras, $\\mathbb{Z}$ represents the constant functor on rings.',
+      status: 'draft', basedOn: 'v0.9.0#db3381b4', reviewed: null,
+    },
 
-    'def.abelian-category':
+    'def.abelian-category': {
+      en:
       'The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to ' +
       '\\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, ' +
       'where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian ' +
@@ -9605,8 +9679,11 @@ MG.i18nAbstracts = {
       'Abelian categories are the working environment of homological algebra — exactness needs ' +
       'kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a ' +
       'topos are abelian; $\\mathbf{AbTop}$ is not.',
+      status: 'draft', basedOn: 'v0.9.0#b132a277', reviewed: null,
+    },
 
-    'def.product-measure':
+    'def.product-measure': {
+      en:
       'For measure spaces $(X, \\mathcal{M}, \\mu)$ and $(Y, \\mathcal{N}, \\nu)$: rectangles ' +
       '$A \\times B$ generate $\\mathcal{M} \\otimes \\mathcal{N}$; on finite disjoint unions of ' +
       'rectangles set $\\mu_0(\\bigsqcup_j A_j \\times B_j) := \\sum_j \\mu(A_j)\\nu(B_j)$, which ' +
@@ -9615,16 +9692,22 @@ MG.i18nAbstracts = {
       '$\\mu \\times \\nu$. Disjointness is exactly what makes $\\mu_0$ well defined. When both ' +
       'factors are $\\sigma$-finite so is the product, and Carathéodory uniqueness makes it the ' +
       'only such measure.',
+      status: 'draft', basedOn: 'v0.9.0#1b243432', reviewed: null,
+    },
 
-    'prop.cg-coreflective':
+    'prop.cg-coreflective': {
+      en:
       'The category $k\\mathbf{Top}$ of compactly generated spaces is a coreflective ' +
       'subcategory of $\\mathbf{Top}$: the inclusion $i$ has a right adjoint $k$ that keeps the ' +
       'underlying set and replaces the topology by the $k$-topology, $i \\dashv k$, i.e. ' +
       '$\\operatorname{Hom}_{\\mathbf{Top}}(X, Y) \\cong ' +
       '\\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$ for compactly generated $X$. The counit ' +
       '$kY \\to Y$ is the identity map, continuous because the $k$-topology is the finer one.',
+      status: 'draft', basedOn: 'v0.9.0#7b38c5fc', reviewed: null,
+    },
 
-    'thm.topos-abelian-grothendieck':
+    'thm.topos-abelian-grothendieck': {
+      en:
       'For a topos $\\mathcal{T}$, the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian group ' +
       'objects in sheaves is a Grothendieck category: abelian, with a small set of generators, ' +
       'all colimits, and filtered colimits exact. Abelianness is checked componentwise in the ' +
@@ -9632,8 +9715,11 @@ MG.i18nAbstracts = {
       'colimits exist by that reflection; and if $S$ generates $\\mathcal{T}$ then ' +
       '$\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$. Those ' +
       'generators are moreover projective.',
+      status: 'draft', basedOn: 'v0.9.0#d5dcdf37', reviewed: null,
+    },
 
-    'prop.nbv-derivative':
+    'prop.nbv-derivative': {
+      en:
       'For $F$ of normalised bounded variation, $F\' \\in L^1(m)$ and ' +
       '$\\mu_F \\perp m \\iff F\' = 0$ a.e., while ' +
       '$\\mu_F \\ll m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t)\\,dt$. Both follow by writing the ' +
@@ -9641,32 +9727,44 @@ MG.i18nAbstracts = {
       'of the absolutely continuous part is the first case, $\\lambda = 0$ is the second. This ' +
       'is the measure-theoretic form of the fundamental theorem of calculus — $F\'$ integrates ' +
       'back to $F$ exactly when $\\mu_F$ is absolutely continuous.',
+      status: 'draft', basedOn: 'v0.9.0#aa637905', reviewed: null,
+    },
 
-    'thm.ring-monotone-sigma':
+    'thm.ring-monotone-sigma': {
+      en:
       'For a ring $\\mathfrak{A}$ of sets, the following are equivalent: $\\mathfrak{A}$ is a ' +
       '$\\sigma$-ring, $\\mathfrak{A}$ is a monotone class, and $\\mathfrak{A}$ is closed under ' +
       'countable disjoint unions. The hypothesis that $\\mathfrak{A}$ is a ring cannot be ' +
       'dropped: a monotone class need not be closed under finite unions. This equivalence is ' +
       'the technical core of the monotone class theorem, since it reduces "true for the ' +
       '$\\sigma$-algebra" to "check a ring, then take monotone limits".',
+      status: 'draft', basedOn: 'v0.9.0#a6257d0e', reviewed: null,
+    },
 
-    'thm.monotone-class':
+    'thm.monotone-class': {
+      en:
       'For $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, the $\\sigma$-algebra generated by ' +
       '$\\mathcal{E}$ equals the monotone class generated by $\\mathcal{E}$ if complements of ' +
       'members of $\\mathcal{E}$ and unions of two members of $\\mathcal{E}$ lie in that ' +
       'monotone class. With "$\\mathcal{E}$ is an algebra" this is the standard monotone class ' +
       'theorem; the form above weakens that hypothesis to the two closure conditions, and the ' +
       'proof is the same two-step argument with the monotone class as the running object.',
+      status: 'draft', basedOn: 'v0.9.0#78753395', reviewed: null,
+    },
 
-    'def.section':
+    'def.section': {
+      en:
       'For $E \\subseteq X \\times Y$ the vertical and horizontal sections are ' +
       '$E_x := \\{y \\in Y : (x,y) \\in E\\}$ and $E^y := \\{x \\in X : (x,y) \\in E\\}$; for a ' +
       'function $f : X \\times Y \\to \\mathbb{C}$ one sets $f_x(y) = f^y(x) = f(x,y)$. ' +
       'Geometrically, cut the picture with a line and look at what remains. Sections are the ' +
       'language in which Fubini is stated: integrate along the sections first, then integrate ' +
       'the resulting function against the other variable.',
+      status: 'draft', basedOn: 'v0.9.0#0a85dee1', reviewed: null,
+    },
 
-    'prop.section-measurable':
+    'prop.section-measurable': {
+      en:
       'Sections of measurable sets are measurable: if $E \\in \\mathcal{M} \\otimes ' +
       '\\mathcal{N}$ then $E_x \\in \\mathcal{N}$ for every $x$ and $E^y \\in \\mathcal{M}$ for ' +
       'every $y$; likewise the sections of an $\\mathcal{M} \\otimes \\mathcal{N}$-measurable ' +
@@ -9674,8 +9772,11 @@ MG.i18nAbstracts = {
       'standard one: the class of sets all of whose sections are measurable contains every ' +
       'rectangle and is a $\\sigma$-algebra. Note that this holds for every point, whereas ' +
       'Fubini can only promise almost every point once integrability enters.',
+      status: 'draft', basedOn: 'v0.9.0#05ea13af', reviewed: null,
+    },
 
-    'thm.quotient-product':
+    'thm.quotient-product': {
+      en:
       'If $q : X \\to Y$ is a quotient map and $Z$ is locally compact Hausdorff, then ' +
       '$q \\times \\mathrm{id}_Z : X \\times Z \\to Y \\times Z$ is again a quotient map. For a ' +
       'point $(x,z)$ of the preimage of an open set one picks a basic open ' +
@@ -9683,8 +9784,11 @@ MG.i18nAbstracts = {
       '$q^{-1}(V) \\times K$ is an open neighbourhood of $(x,z)$ inside that preimage. Local ' +
       'compactness cannot be dropped. This is the engine behind "compactly generated spaces ' +
       'are closed under products".',
+      status: 'draft', basedOn: 'v0.9.0#b724ea06', reviewed: null,
+    },
 
-    'def.int':
+    'def.int': {
+      en:
       'The integers as a quotient: on $\\mathbb{N} \\times \\mathbb{N}$ put ' +
       '$(a,b) \\sim (c,d) \\iff a + d = b + c$ (same difference) and set ' +
       '$\\mathbb{Z} := (\\mathbb{N} \\times \\mathbb{N})/{\\sim}$, writing $[a,b]$ for $a - b$. ' +
@@ -9693,46 +9797,64 @@ MG.i18nAbstracts = {
       '$3 - 5$ is meaningful, so the difference itself is taken as the object; $[0,0]$ and ' +
       '$[b,a]$ supply the missing zero and inverses. $\\mathbb{N}$ embeds via ' +
       '$a \\mapsto [a,0]$.',
+      status: 'draft', basedOn: 'v0.9.0#481df90f', reviewed: null,
+    },
 
-    'thm.wellordering':
+    'thm.wellordering': {
+      en:
       'Every set can be well ordered: $\\forall X\\, \\exists \\preceq$ a well-ordering of ' +
       '$X$, equivalently every set is equinumerous with an ordinal. Zermelo introduced the ' +
       'axiom of choice in 1904 precisely to prove this, and over ZF the statement is ' +
       'equivalent to AC. Immediate consequence: any two cardinals are comparable, and ' +
       '$\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.',
+      status: 'draft', basedOn: 'v0.9.0#4716d94b', reviewed: null,
+    },
 
-    'thm.hausdorff':
+    'thm.hausdorff': {
+      en:
       'Every chain in a poset extends to a maximal one: for a chain $C_0 \\subseteq P$ there ' +
       'is a maximal chain $M$ with $C_0 \\subseteq M$, maximal under inclusion. Taking ' +
       '$C_0 = \\emptyset$ gives that every non-empty poset has a maximal chain. The statement ' +
       'predates Zorn\'s lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise ' +
       'form of "keep adding elements until you cannot add any more".',
+      status: 'draft', basedOn: 'v0.9.0#dece7db3', reviewed: null,
+    },
 
-    'thm.cardinal-comparable':
+    'thm.cardinal-comparable': {
+      en:
       'Assuming the axiom of choice, any two sets $A$, $B$ satisfy $|A| \\le |B|$ or ' +
       '$|B| \\le |A|$, that is, any two cardinals are comparable. This is the licence for ' +
       'ordering cardinals at all: without it even "$A$ is bigger than $B$" can be meaningless. ' +
       'The proof runs through the well-ordering theorem: well-order both sets, compare the ' +
       'corresponding ordinals, and read off an injection in one direction. Without AC there ' +
       'really are incomparable cardinals.',
+      status: 'draft', basedOn: 'v0.9.0#de40e4ba', reviewed: null,
+    },
 
-    'prop.adjoint-full-faithful':
+    'prop.adjoint-full-faithful': {
+      en:
       'For an adjunction $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$: $F$ is ' +
       'full and faithful iff $\\eta$ is an isomorphism, and $G$ is full and faithful iff ' +
       '$\\varepsilon$ is an isomorphism. So fullness and faithfulness of the left adjoint is ' +
       'checked on a single natural transformation rather than on every Hom-set. This is also ' +
       'the dividing line between reflections and coreflections: an inclusion of a full ' +
       'subcategory is always fully faithful, so a reflection has an invertible counit.',
+      status: 'draft', basedOn: 'v0.9.0#b504654a', reviewed: null,
+    },
 
-    'ex.kan-extension':
+    'ex.kan-extension': {
+      en:
       'Two examples showing that Kan extensions absorb the earlier notions. (1) A diagram ' +
       '$D : I \\to \\mathcal{C}$ has a colimit iff the left Kan extension of $D$ along ' +
       '$p : I \\to \\mathbf{1}$ exists, and then $(p_!D)(\\ast) = \\varinjlim_{i \\in I} D(i)$. ' +
       '(2) $F : \\mathcal{C} \\to \\mathcal{D}$ has a right adjoint iff the left Kan extension ' +
       'of $1_{\\mathcal{C}}$ along $F$ exists, and then $G = F_!1_{\\mathcal{C}}$, the unit ' +
       'being the transpose of $1_{\\mathcal{C}} \\implies G \\circ F$.',
+      status: 'draft', basedOn: 'v0.9.0#118bf379', reviewed: null,
+    },
 
-    'def.metric-space':
+    'def.metric-space': {
+      en:
       'A metric space is a pair $(X, d)$ with $d : X \\times X \\to [0, +\\infty)$ satisfying ' +
       '$d(x,y) = 0 \\iff x = y$, symmetry and the triangle inequality; open balls ' +
       '$B(x,r) = \\{y : d(x,y) < r\\}$ generate a topology, and they form a base for it. The ' +
@@ -9740,16 +9862,22 @@ MG.i18nAbstracts = {
       'only the open sets, while completeness and total boundedness use $d$. Completeness is ' +
       'genuinely not topological — $\\mathbb{R}$ and $(0,1)$ are homeomorphic but only the ' +
       'first is complete.',
+      status: 'draft', basedOn: 'v0.9.0#00da69f8', reviewed: null,
+    },
 
-    'thm.saft':
+    'thm.saft': {
+      en:
       'Let $\\mathcal{D}$ be small and complete. A functor $G : \\mathcal{D} \\to ' +
       '\\mathcal{C}$ has a left adjoint iff it preserves all limits; when it does, one may take ' +
       '$F(X) = \\varprojlim_{(Y,f) \\in (X \\downarrow G)} Y$. So preservation of limits, which ' +
       'is automatic for right adjoints, is also sufficient under these hypotheses. The ' +
       'construction reads: $F(X)$ is the object of $\\mathcal{D}$ closest to $X$, and every ' +
       '$X \\to G(Y)$ factors through $X \\to G(FX) \\to G(Y)$.',
+      status: 'draft', basedOn: 'v0.9.0#5b78b019', reviewed: null,
+    },
 
-    'def.outer-measure':
+    'def.outer-measure': {
+      en:
       'An outer measure on a non-empty set $X$ is a function ' +
       '$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is ' +
       'monotone and countably subadditive. It is defined on every subset, and the price is ' +
@@ -9757,8 +9885,11 @@ MG.i18nAbstracts = {
       'the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. ' +
       'Lebesgue\'s original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable ' +
       'interval covers, is the prototypical example.',
+      status: 'draft', basedOn: 'v0.9.0#1d1a972f', reviewed: null,
+    },
 
-    'thm.real-uncountable':
+    'thm.real-uncountable': {
+      en:
       '$\\mathbb{R}$ is uncountable — there is no surjection $\\mathbb{N} \\to \\mathbb{R}$ — ' +
       'and in fact $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$. ' +
       'Uncountability is proved by nested closed intervals and completeness alone, with no ' +
@@ -9766,8 +9897,11 @@ MG.i18nAbstracts = {
       '$\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ ' +
       'and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density ' +
       'and cardinality are different things, which is why analysis needs $\\mathbb{R}$.',
+      status: 'draft', basedOn: 'v0.9.0#ea2cb38a', reviewed: null,
+    },
 
-    'prop.yoneda-embedding':
+    'prop.yoneda-embedding': {
+      en:
       'The assignment $\\delta : \\mathcal{C} \\to \\widehat{\\mathcal{C}}$, ' +
       '$X \\mapsto h_X = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$, is fully faithful and ' +
       'preserves all limits. Fully faithful means ' +
@@ -9775,8 +9909,11 @@ MG.i18nAbstracts = {
       '\\operatorname{Hom}_{\\mathcal{C}}(X, Y)$: the arrows between representable functors ' +
       'reproduce the arrows of $\\mathcal{C}$ exactly, no more and no fewer. Embedding ' +
       '$\\mathcal{C}$ this way moves problems into a category that has all limits and colimits.',
+      status: 'draft', basedOn: 'v0.9.0#1bc8f10f', reviewed: null,
+    },
 
-    'thm.metric-compact-equiv':
+    'thm.metric-compact-equiv': {
+      en:
       'In a metric space the following are equivalent: compact, sequentially compact, and ' +
       'complete together with totally bounded. The skeleton lives in the implications: ' +
       'compact implies sequentially compact; sequentially compact implies totally bounded ' +
@@ -9784,16 +9921,22 @@ MG.i18nAbstracts = {
       'compact by the "bad ball" argument; complete and totally bounded implies sequentially ' +
       'compact by diagonalisation. In general topological spaces only the first implication ' +
       'survives — sequential compactness is a metric-space luxury.',
+      status: 'draft', basedOn: 'v0.9.0#b29d24a7', reviewed: null,
+    },
 
-    'def.shrinks-nicely':
+    'def.shrinks-nicely': {
+      en:
       'A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ ' +
       'when $E_r \\subseteq B(r,x)$ for every $r$ and there is $\\alpha > 0$ with ' +
       '$m(E_r) > \\alpha \\cdot m(B(r,x))$ for all $r$. The two conditions say "fits inside ' +
       'the ball" and "is not too thin". Balls themselves qualify, as does any fixed shape ' +
       'rescaled inside them; a thin sliver does not. The notion exists so that ' +
       'differentiation theorems do not depend on the shape of the sets being shrunk.',
+      status: 'draft', basedOn: 'v0.9.0#a792035c', reviewed: null,
+    },
 
-    'def.complex-measure':
+    'def.complex-measure': {
+      en:
       'A complex measure on a measurable space $(X, \\mathcal{M})$ is a map ' +
       '$\\nu : \\mathcal{M} \\to \\mathbb{C}$ with $\\nu(\\emptyset) = 0$ and ' +
       '$\\nu(\\bigsqcup_j E_j) = \\sum_j \\nu(E_j)$ for pairwise disjoint families, the series ' +
@@ -9801,8 +9944,11 @@ MG.i18nAbstracts = {
       'finite and that series is automatically absolutely convergent, so questions of ' +
       'finiteness and rearrangement never arise — at the cost of losing examples with ' +
       'infinite mass.',
+      status: 'draft', basedOn: 'v0.9.0#792f3f7b', reviewed: null,
+    },
 
-    'def.essential-sup':
+    'def.essential-sup': {
+      en:
       'The essential supremum is ' +
       '$\\|f\\|_\\infty := \\inf \\{a \\ge 0 : \\mu(\\{|f| > a\\}) = 0\\}$: the true bound of ' +
       '$f$ once its values on null sets are ignored. The infimum is attained at ' +
@@ -9810,8 +9956,11 @@ MG.i18nAbstracts = {
       'everywhere. Then $L^\\infty$ consists of the measurable $f$ with ' +
       '$\\|f\\|_\\infty < \\infty$. Note the difference from $\\sup |f|$, which a single value ' +
       'on a null set can spoil.',
+      status: 'draft', basedOn: 'v0.9.0#877ac0d0', reviewed: null,
+    },
 
-    'prop.chaus-reflective':
+    'prop.chaus-reflective': {
+      en:
       'The category $\\mathbf{CHaus}$ is a reflective subcategory of $\\mathbf{Top}$, the ' +
       'reflection being the Stone–Čech compactification: ' +
       '$\\operatorname{Hom}_{\\mathbf{CHaus}}(\\beta X, K) \\cong ' +
@@ -9820,6 +9969,8 @@ MG.i18nAbstracts = {
       'closure, which is compact Hausdorff as a closed subset of a compact Hausdorff space. ' +
       'The embedding is injective iff $X$ is Tychonoff. Corollary: any limit of compact ' +
       'Hausdorff spaces is again compact Hausdorff.',
+      status: 'draft', basedOn: 'v0.9.0#f1673aca', reviewed: null,
+    },
   },
 };
 
@@ -9827,7 +9978,7 @@ MG.i18nAbstracts = {
 <!-- 英文陈述/说明（statement_en / notes_en，T3.2 试点）：逐句对译，中文仍是真源 -->
 <script>
 /* ==========================================================================
-   数学星图 · 英文陈述与说明（statement_en / notes_en · T3.2）
+   数学星图 · 英文陈述与说明（statement / notes · T3.2）
    --------------------------------------------------------------------------
    这是什么：把**枢纽节点**的陈述（statement）与说明（notes）译成英文。
    现有 11 条 = 试点 3 条（T3.2，2026-10-16）+ **第一批 8 条**（T3.2 批次 1，
@@ -9838,32 +9989,41 @@ MG.i18nAbstracts = {
       这里按 id 旁挂译文，graph.js 建图时抄到节点上。
    ⛔ 不含新命题、不含新推导：**逐句对译**，中文说什么就说什么。
    ⛔ 边的证明（`proofs/`）**不在**本批范围 —— 英文页会写明「证明仍以中文页为准」。
-   ⚠️ **公式原样搬**：`$…$` / `$$…$$` 一字不改（包括公式里 `\text{中文}` 的部分）——
-      本批刻意不译公式内的中文，理由与待作者裁决清单见 review-batch-1.md。
+   ⭐ **公式一字不改**：`$…$` / `$$…$$` 必须与中文逐字相同，公式里也不许出现汉字
+      （汉字要移进散文，或换成中英皆可的记号）。构建有硬断言，见 i18n/deviations.md。
 
-   ⚠️ 这是**创译型**内容：agent 起草 → 作者审校 → 才可标 reviewed。
-      状态与 stale 的口径与 read 文档、摘要完全一致（单一来源 = status + basedOn）：
-      内容版本一变，构建自动把它标成 stale。
+   ⭐⭐ 状态**逐条判定**（作者 2026-10-16 拍板）：每条 = 一个字段，
+       statement / notes 各自带
+         · status    'draft'（机器起草，待审）| 'reviewed'（作者审过）
+         · basedOn   `'<内容版本>#<中文底稿指纹>'` —— 指纹 = MG.zhHash，8 位十六进制
+         · reviewed  { by, date }（status = 'reviewed' 时填）
+       ⭐ stale **由构建现算**，两个来源任一不符即 stale：
+          ① 内容版本变了（tools/ids.snapshot.json 的 vX.Y.Z）；
+          ② 这条中文底稿的指纹变了 —— 说明**这句中文本身**被改过。
+       ⛔ 别手工「刷新」basedOn 来消掉 stale：那等于悄悄作废审校记录。
+          要重新对稿就跑 `bun tools/i18n-status.mjs`（默认只报不写）。
+       ⚠️ 判定只有一处实现 = `src/core/i18n.js` 的 MG.enFieldStatus；
+          tools/build.mjs 调的是同一个函数，所以网页与产物不会各说各话。
    ⚠️ 这个文件**挂进 index.html**（它是节点字段来源：搜索索引要用），
       加载它的地方在 index.html；挂到节点上的地方在 src/core/graph.js。
    ========================================================================== */
 window.MG = window.MG || {};
 
 MG.i18nStatements = {
-  version: 1,
-  /* draft | reviewed —— stale 由构建算出来（basedOn ≠ 当前内容版本） */
-  status: 'draft',
-  basedOn: 'v0.9.0',
-  drafted: '2026-10-16',
-  reviewed: null,          // 审校后：{ by: '作者名', date: 'YYYY-MM-DD' }
+  version: 2,               // 2 = 逐条状态（每字段 status/basedOn）；1 = 文件级一个 status
+  drafted: '2026-10-16',    // 本文件第一次起草的日期（只是历史记录，不参与状态判定）
 
   items: {
     /* ---------------------------------------------------------- 佐恩引理 */
     'lem.zorn': {
-      statement_en:
+      statement: {
+        en:
         'Let $(P, \\preceq )$ be a **non-empty** poset. If every chain in $P$ has an upper bound ' +
         'in $P$, then $P$ has a **maximal element**.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#88c083ff', reviewed: null,
+      },
+      notes: {
+        en:
         'Neither hypothesis can be dropped: the empty poset has no maximal element, and ' +
         '"every chain has an upper bound" does not give a *greatest* element — only a maximal one.\n\n' +
         'It is "the universal engine of existence proofs": every vector space has a basis, ' +
@@ -9874,18 +10034,24 @@ MG.i18nStatements = {
         'Kuratowski–Zorn lemma.\n\n' +
         '⚠ Non-constructive: what one obtains is "there exists a maximal element", and usually ' +
         'one cannot say which.',
+        status: 'draft', basedOn: 'v0.9.0#4e157a1c', reviewed: null,
+      },
     },
 
     /* ------------------------------------------------------ 第一同构定理 */
     'thm.first-iso': {
-      statement_en:
+      statement: {
+        en:
         'Let $\\varphi : G \\to G\'$ be a **group homomorphism**. Then $\\varphi$ induces an ' +
         'isomorphism\n\n' +
         '$$G \\big/ \\ker\\varphi \\;\\cong\\; \\operatorname{im}\\varphi, \\qquad ' +
         'g \\ker\\varphi \\;\\longmapsto\\; \\varphi(g).$$\n\n' +
         'In particular: **the image of a surjective homomorphism is the quotient group** ' +
         '($G/\\ker\\varphi \\cong G\'$ when $\\varphi$ is surjective).',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#1f75f342', reviewed: null,
+      },
+      notes: {
+        en:
         '**The three steps of the proof.** Write $K = \\ker\\varphi$.\n\n' +
         '- **Well defined**: if $gK = g\'K$ then $g\' = gk$ for some $k \\in K$, hence ' +
         '$\\varphi(g\') = \\varphi(g)\\varphi(k) = \\varphi(g)e\' = \\varphi(g)$ — elements of ' +
@@ -9910,11 +10076,14 @@ MG.i18nStatements = {
         'two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), ' +
         'locked together by a single isomorphism. So studying homomorphisms is studying normal ' +
         'subgroups — which is why group theory turns into the study of the lattice of subgroups.',
+        status: 'draft', basedOn: 'v0.9.0#8164331f', reviewed: null,
+      },
     },
 
     /* -------------------------------------------------------- 距离空间 */
     'def.metric-space': {
-      statement_en:
+      statement: {
+        en:
         'A **metric space** is a pair (X, d): $X$ is a set and ' +
         '$d : X \\times X \\to [0, +\\infty )$ is a **metric** on $X$, satisfying\n\n' +
         '- **non-degeneracy**: $d(x, y) = 0 \\iff x = y$\n' +
@@ -9925,7 +10094,10 @@ MG.i18nStatements = {
         'topology on $X$.\n\n' +
         'Given $\\varepsilon > 0$, a set $D \\subseteq X$ is called an **$\\varepsilon$-net** if ' +
         '$\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#31649b03', reviewed: null,
+      },
+      notes: {
+        en:
         'The open balls form a **base** for this topology. Every metric space is first ' +
         'countable and normal (hence Hausdorff).\n\n' +
         'The properties that follow fall into two classes: **compactness / closedness** depend ' +
@@ -9933,6 +10105,8 @@ MG.i18nStatements = {
         'use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n' +
         '⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval ' +
         '(0, 1) are homeomorphic, yet only the first is complete.',
+        status: 'draft', basedOn: 'v0.9.0#a1cebdb4', reviewed: null,
+      },
     },
 
     /* ======================================================================
@@ -9943,7 +10117,8 @@ MG.i18nStatements = {
 
     /* -------------------------------------------- 3. Cauchy 列与零列 */
     'def.cauchy-null': {
-      statement_en:
+      statement: {
+        en:
         'Let $(x_n)$ be a **sequence of rational numbers** (that is, a function ' +
         '$\\omega \\to \\mathbb{Q}$), let $|x|$ be the absolute value on $\\mathbb{Q}$, and let ' +
         '$\\varepsilon$ always range over **positive rationals** (no real numbers are needed yet).\n\n' +
@@ -9957,7 +10132,10 @@ MG.i18nStatements = {
         '$(x_n - y_n)$ is a null sequence.\n\n' +
         '($\\sim$ is an equivalence relation: reflexivity and symmetry are immediate, ' +
         'transitivity follows from the triangle inequality.)',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#4ba3632c', reviewed: null,
+      },
+      notes: {
+        en:
         '⭐ **Why divide by the null sequences**: the same real number has many approximating ' +
         'sequences — for instance $(1, 1, 1, \\ldots)$ and $(1.1,\\ 1.01,\\ 1.001,\\ \\ldots)$ ' +
         'should both represent $1$, and their difference is a null sequence. Equivalence classes ' +
@@ -9974,11 +10152,14 @@ MG.i18nStatements = {
         'some index on** (for some positive rational $\\delta$) — hence its reciprocal, after ' +
         'discarding finitely many terms, is again Cauchy. The third fact is the entire basis ' +
         'for "multiplication has inverses".',
+        status: 'draft', basedOn: 'v0.9.0#a43dd73a', reviewed: null,
+      },
     },
 
     /* ------------------------------------------------ 4. 表示函子 */
     'def.representable': {
-      statement_en:
+      statement: {
+        en:
         'Let $F : \\mathcal{C} \\to \\mathbf{Set}$ be a functor.\n\n' +
         '**(i) Universal element.** An object $X \\in \\mathcal{C}$ together with an element ' +
         '$s \\in F(X)$ is called **universal** for $F$ if\n\n' +
@@ -9987,7 +10168,10 @@ MG.i18nStatements = {
         'One then also says that $F$ is **represented** by $(X, s)$.\n\n' +
         '**(ii) Representable.** If $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$, one says ' +
         'that $F$ is **represented** by $X$, and $X$ is called a **representing object** of $F$.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#befbd619', reviewed: null,
+      },
+      notes: {
+        en:
         'In one sentence: **all the data of $F$ is generated by one element $s$ of $X$**. Given ' +
         'any other $t$, there is a unique $f$ pushing $s$ across to it — so elements elsewhere ' +
         'do not come from nowhere; they are pushed out of $s$.\n\n' +
@@ -10007,11 +10191,14 @@ MG.i18nStatements = {
         '\\{\\, f \\in \\mathcal{C}(Z, X) \\ \\mid\\ f(Z) \\subseteq Y \\,\\}$$\n\n' +
         '  (here $\\mathcal{C}(Z, X)$ denotes the set of continuous maps $Z \\to X$). ' +
         'It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.',
+        status: 'draft', basedOn: 'v0.9.0#d1444966', reviewed: null,
+      },
     },
 
     /* ------------------------------------------ 5. 加法 / 阿贝尔范畴 */
     'def.abelian-category': {
-      statement_en:
+      statement: {
+        en:
         '- A **preadditive category** (an $\\mathbf{Ab}$-category) is a category in which every ' +
         '$\\operatorname{Hom}$ set carries an abelian group structure and composition is ' +
         'bilinear;\n' +
@@ -10035,7 +10222,10 @@ MG.i18nStatements = {
         '4. for every $f : M \\to N$, ' +
         '$\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong ' +
         '\\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#70512d43', reviewed: null,
+      },
+      notes: {
+        en:
         'In an abelian category one says **injective / surjective** rather than monomorphism / ' +
         'epimorphism — because condition 1 guarantees that "regular" and "cancellable" are the ' +
         'same thing.\n\n' +
@@ -10046,11 +10236,14 @@ MG.i18nStatements = {
         'An abelian category is the **working environment** of homological algebra as a whole: ' +
         'with kernels and cokernels one can even state "exact sequence"; an additive category ' +
         'only supplies the additive skeleton (zero object and direct sums).',
+        status: 'draft', basedOn: 'v0.9.0#a8da619b', reviewed: null,
+      },
     },
 
     /* ------------------------------------------------- 6. 乘积测度 */
     'def.product-measure': {
-      statement_en:
+      statement: {
+        en:
         'Let $(X, \\mathcal{M}, \\mu )$ and $(Y, \\mathcal{N}, \\nu )$ be measure spaces.\n\n' +
         '**① Rectangles**: sets of the form $A \\times B$ (with $A \\in \\mathcal{M}$, ' +
         '$B \\in \\mathcal{N}$) are called (measurable) rectangles. All rectangles **generate** ' +
@@ -10065,7 +10258,10 @@ MG.i18nStatements = {
         'it to $\\mathcal{M} \\otimes  \\mathcal{N}$ gives a measure, written\n\n' +
         '$$\\mu \\times \\nu$$\n\n' +
         'that is, the **product measure**.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#174abecd', reviewed: null,
+      },
+      notes: {
+        en:
         'Well-definedness of $\\mu_{0} $ has to be checked (the same $E$ can be split into ' +
         'different disjoint unions of rectangles) — this is exactly why "rectangles" are ' +
         'replaced by "**disjoint** unions of rectangles": under disjoint unions, additivity is ' +
@@ -10076,18 +10272,24 @@ MG.i18nStatements = {
         '⚠ The whole machine of this step (premeasure $\\to$ outer measure $\\to$ Carathéodory ' +
         'extension $\\to$ uniqueness) is exactly the off-the-shelf quartet from the ' +
         '"constructing measures" cluster.',
+        status: 'draft', basedOn: 'v0.9.0#15d8cb14', reviewed: null,
+      },
     },
 
     /* ------------------------------------- 7. 紧生成空间是余反射子范畴 */
     'prop.cg-coreflective': {
-      statement_en:
+      statement: {
+        en:
         'The category $k\\mathbf{Top}$ of compactly generated spaces is a **coreflective ' +
         'subcategory** of $\\mathbf{Top}$: the inclusion functor ' +
         '$i : k\\mathbf{Top} \\hookrightarrow \\mathbf{Top}$ has a **right** adjoint\n\n' +
         '$$k : \\mathbf{Top} \\longrightarrow k\\mathbf{Top}, \\qquad X \\mapsto kX$$\n\n' +
         'that is, $i \\dashv k$. The space $kX$ has the same underlying set as $X$, with the ' +
         'topology replaced by the $k$-topology.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#0d2ec83c', reviewed: null,
+      },
+      notes: {
+        en:
         '**What has to be shown**: for every compactly generated space $X$ and every topological ' +
         'space $Y$,\n\n' +
         '$$\\operatorname{Hom}_{\\mathbf{Top}}(X,\\ Y) \\;\\cong\\; ' +
@@ -10112,15 +10314,21 @@ MG.i18nStatements = {
         '$k\\mathbf{Top}$ is **coreflective** (the inclusion has a **right** adjoint $k$). One ' +
         '"tightens" a space, the other "loosens" it — hence the former is closed under limits ' +
         'and the latter under **colimits**.',
+        status: 'draft', basedOn: 'v0.9.0#66941903', reviewed: null,
+      },
     },
 
     /* ------------------------- 8. 拓扑斯上的阿贝尔群是 Grothendieck 范畴 */
     'thm.topos-abelian-grothendieck': {
-      statement_en:
+      statement: {
+        en:
         'If $\\mathcal{T}$ is a topos, then the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian ' +
         'sheaves on $\\mathcal{T}$ is a **Grothendieck category**: it has a small set of ' +
         'generators, has all colimits, and filtered colimits are exact.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#f13b85f8', reviewed: null,
+      },
+      notes: {
+        en:
         'The proof has three parts:\n\n' +
         '- **Abelian**: first verify componentwise in the presheaf category ' +
         '$\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ (there one simply has pointwise abelian groups) ' +
@@ -10137,15 +10345,21 @@ MG.i18nStatements = {
         '$\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: ' +
         '$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ ' +
         'is exact on presheaves).',
+        status: 'draft', basedOn: 'v0.9.0#66118814', reviewed: null,
+      },
     },
 
     /* --------------------------- 9. NBV 函数的导数与测度的关系 */
     'prop.nbv-derivative': {
-      statement_en:
+      statement: {
+        en:
         'Let $F \\in NBV$. Then $F\' \\in L^1(m)$, and\n\n' +
         '$$\\mu_F \\perp  m \\iff F\' = 0\\quad  \\text{a.e.}$$\n' +
         '$$\\mu_F \\ll  m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#2fff7b16', reviewed: null,
+      },
+      notes: {
+        en:
         'Proof: write $d\\mu_F = d\\lambda + f\\cdot dm$ (Lebesgue decomposition); by the ' +
         'corresponding theorem for measures, $f = F\'$ a.e. Hence\n\n' +
         '$\\cdot$ $\\mu_F \\perp  m$ means the absolutely continuous part vanishes, that is ' +
@@ -10155,22 +10369,30 @@ MG.i18nStatements = {
         '⭐ This is the measure-theoretic version of the fundamental theorem of calculus: ' +
         '**whether a function can be integrated back depends on whether $\\mu _F$ is absolutely ' +
         'continuous**.',
+        status: 'draft', basedOn: 'v0.9.0#e730d43c', reviewed: null,
+      },
     },
 
     /* --------------------------------------- 10. 环 → σ-环 的判据 */
     'thm.ring-monotone-sigma': {
-      statement_en:
+      statement: {
+        en:
         'Let $\\mathfrak{A}$ be a **ring**. Then the following three conditions are equivalent:\n\n' +
         '1. $\\mathfrak{A}$ is a $\\sigma$-ring;\n' +
         '2. $\\mathfrak{A}$ is a monotone class;\n' +
         '3. $\\mathfrak{A}$ is closed under countable disjoint unions.',
-      notes_en:
+        status: 'draft', basedOn: 'v0.9.0#5d3aa74a', reviewed: null,
+      },
+      notes: {
+        en:
         'Note that the hypothesis "$\\mathfrak{A}$ is a ring" cannot be dropped — a monotone ' +
         'class is in general not closed under finite unions, so being a monotone class by ' +
         'itself does not imply being a $\\sigma$-ring.\n\n' +
         'This theorem is the technical core of the monotone class theorem: it is precisely what ' +
         'lets one reduce "true for all $\\sigma$-algebras" to "first verify it on a ring, then ' +
         'pass to monotone limits".',
+        status: 'draft', basedOn: 'v0.9.0#ce1b4b57', reviewed: null,
+      },
     },
   },
 };

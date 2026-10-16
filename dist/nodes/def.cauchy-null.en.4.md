@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.cauchy-null)　·　[Chinese page (authoritative)](./def.cauchy-null.md)
 
-## Statement
+## Statement · **draft**
 Let $(x_n)$ be a **sequence of rational numbers** (that is, a function $\omega \to \mathbb{Q}$), let $|x|$ be the absolute value on $\mathbb{Q}$, and let $\varepsilon$ always range over **positive rationals** (no real numbers are needed yet).
 
 $(x_n)$ is a **Cauchy sequence**:

@@ -103,14 +103,18 @@ House rules:
 |---|---|---|
 | English name (`label_en` / `title_en`) | the `aka` list in `src/data/aliases.js` | `bun tools/i18n-backfill.mjs` |
 | English abstract (hubs only, `abstract_en`) | `src/data/i18n/abstracts.en.js` | `bun tools/build.mjs` |
-| English statement / notes (pilot, `statement_en`, `notes_en`) | `src/data/i18n/statements.en.js` | `bun tools/build.mjs` |
+| English statement / notes (`statement`, `notes`) | `src/data/i18n/statements.en.js` | `bun tools/build.mjs` |
 | English read docs (`*.en.md`) | `src/data/i18n/docs.en.js` | `bun tools/build.mjs` |
 
 English text is *never* the sole source of anything: Chinese is authoritative, and every
 unreviewed translation carries a status header — `draft` (machine-drafted, pending author
-review), `reviewed` (checked by the author) or `stale` (the content version moved on since
-the translation). Status is computed at build time from `status` + `basedOn`; you never write
-it by hand. Node `id`s are the citation contract and are stable across versions.
+review), `reviewed` (checked by the author) or `stale` (the Chinese wording, or the content
+version, moved on since the translation).
+⭐ **Status is per item, not per file**: an abstract carries its own `status` / `basedOn`, and a
+statement carries one for `statement` and one for `notes` — reviewing one field does not bless
+the others (read docs carry one status each). Status is computed at build time by
+`MG.enFieldStatus` from `status` + `basedOn`; you never write the banner by hand.
+Node `id`s are the citation contract and are stable across versions.
 
 **Contributing a translation.** Translations are welcome for any language — English is just
 the first one. The path is deliberately narrow, because the Chinese text is the single source
@@ -129,21 +133,29 @@ of truth and a second copy would rot within a week.
    in it must be used as written. New terms go in through `docs.en.js` → `glossaryExtra`
    (one entry, once) rather than being invented per node.
 5. **Formulas are copied verbatim.** `$…$` and `$$…$$` are not translated, not re-wrapped and
-   not re-spaced. Prose is translated literally. If the Chinese is genuinely ambiguous, leave
-   a `⚠️ TODO(author): …` marker — ⛔ never guess a meaning.
+   not re-spaced — the build asserts that both languages carry the *same* formulas (same count,
+   same text, and **no Han characters inside any formula**; if the Chinese has `\text{汉字}` in a
+   formula, move that Han out into prose first — see `i18n/deviations.md`). Prose is translated
+   literally. If the Chinese is genuinely ambiguous, leave a `⚠️ TODO(author): …` marker —
+   ⛔ never guess a meaning.
 6. **Write down what you were unsure about.** Every batch carries its own list:
    node id / Chinese source / English draft / new terms / open questions.
 7. **Run the checks and open a PR.**
    ```bash
    bun tools/build.mjs          # build + all hard assertions (incl. the translation ones)
+   bun tools/i18n-status.mjs    # per-item status: draft / reviewed / stale, and why
    bun tools/_stcheck.mjs       # every English statement fed to the real KaTeX
    ```
+   New items must carry a `basedOn`; `bun tools/i18n-status.mjs --patch` prints the exact value
+   (it is the fingerprint of the Chinese source you translated, so it has to be taken now).
 
-**Review rules.** A translation lands as `status: 'draft'` with a `basedOn` content version.
+**Review rules.** A translation lands as `status: 'draft'` with a `basedOn` marker of the form
+`'<content version>#<fingerprint of the Chinese source>'`.
 **Only the author flips it to `reviewed`** — that is what removes the "unreviewed draft"
-banner from the page. When the Chinese content version moves past `basedOn`, the build marks
-the translation `stale` automatically; the fix is to re-read the Chinese and bump `basedOn`,
-⛔ never to delete the header or silently keep the old text.
+banner for that item. Two things mark an item `stale` automatically: the content version moving
+past `basedOn`, or **that item's Chinese source being edited** (fingerprint mismatch). The fix is
+to re-read the Chinese and re-set `basedOn` to the newly printed value —
+⛔ never to bump `basedOn` without re-reading, and never to delete the header.
 
 **Attribution.** A translated node is credited as **node id + translator**. Your name (or
 handle) is recorded in the batch file `i18n/review-batch-N.md` next to the ids you translated.

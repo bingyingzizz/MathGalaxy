@@ -142,26 +142,40 @@
     /* -------------------------------------------------- 英文摘要（T2.2） */
     /* `src/data/i18n/abstracts.en.js`：给枢纽榜前列的节点旁挂一段英文导读。
        ⛔ 不是正文（陈述/说明/证明的真源仍在 packs），只是「这条讲什么」的译文。
-       状态（draft / reviewed / stale）由构建期决定，这里只抄字段。 */
+       ⭐ 状态是**逐条**的（作者 2026-10-16 拍板）⇒ 用 MG.enFieldStatus 现算：
+          'reviewed'（作者审过）/ 'draft'（机器起草，待审）/ 'stale'（中文底稿变了）。
+       ⚠️ 摘要的底稿 = 该节点的 statement + notes（改其一即 stale）。 */
     var abs = (MG.i18nAbstracts && MG.i18nAbstracts.items) || null;
     if (abs) {
       nodes.forEach(function (n) {
         var a = abs[n.id];
-        if (a) n.abstract_en = a;
+        if (!a) return;
+        n.abstract_en = a.en || (typeof a === 'string' ? a : '');
+        if (!n.abstract_en) return;
+        n.enReview = n.enReview || {};
+        n.enReview.abstract = MG.enFieldStatus ? MG.enFieldStatus(a, (n.statement || '') + '\n' + (n.notes || '')) : 'draft';
       });
     }
 
     /* ------------------------------------------- 英文陈述 / 说明（T3.2） */
     /* `src/data/i18n/statements.en.js`：只给少数枢纽节点的**逐句对译**。
        ⛔ 中文陈述仍是唯一真源；这里只是把译文抄到节点上，消费方按有没有回落。
-       ⚠️ 边的证明（proofs）不在本批 —— 英文页会写明证明仍以中文页为准。 */
+       ⚠️ 边的证明（proofs）不在本批 —— 英文页会写明证明仍以中文页为准。
+       ⭐ 逐字段状态：statement 的底稿 = 中文 statement；notes 的底稿 = 中文 notes。 */
     var stm = (MG.i18nStatements && MG.i18nStatements.items) || null;
     if (stm) {
       nodes.forEach(function (n) {
         var s = stm[n.id];
         if (!s) return;
-        if (s.statement_en) n.statement_en = s.statement_en;
-        if (s.notes_en) n.notes_en = s.notes_en;
+        n.enReview = n.enReview || {};
+        [['statement', 'statement_en'], ['notes', 'notes_en']].forEach(function (pair) {
+          var rec = s[pair[0]];
+          if (!rec) return;
+          var txt = rec.en || (typeof rec === 'string' ? rec : '');
+          if (!txt) return;
+          n[pair[1]] = txt;
+          n.enReview[pair[0]] = MG.enFieldStatus ? MG.enFieldStatus(rec, n[pair[0]]) : 'draft';
+        });
       });
     }
 

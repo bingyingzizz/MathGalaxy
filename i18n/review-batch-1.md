@@ -4,12 +4,49 @@
 > （前两名 `lem.zorn` / `thm.first-iso` 已在试点里，见 `statements.en.js` 开头）。
 > 本批共 **11 条** 英文陈述/说明（试点 3 + 本批 8）。
 >
-> 状态：全部 `status: 'draft'`、`basedOn: v0.9.0` —— **只有作者能改成 `reviewed`**，
-> 改了之后页面上那条「英文未经审校」的横幅才会消失。
+> ⭐ **状态是逐条的**（作者 2026-10-16 拍板 · 决策二.3）—— 不再是整份文件一个 `status`：
+> 每条 = 一个节点 × 一个字段（`statement` / `notes`），各自带
+> `status`（draft / reviewed）+ `basedOn`（`内容版本#中文底稿指纹`）+ `reviewed`。
+> **只有作者能改成 `reviewed`**；改哪一条都不影响别的条。
+> 本批的计数见下面「零、逐条状态」。
 >
 > 译文位置：`src/data/i18n/statements.en.js`（按 id 旁挂，中文页 `src/data/packs/*.js` 是真源）。
-> 产物：`dist/nodes/<id>.en.md` 里的 `## Statement` / `## Notes` 两节。
-> 公式体检：`bun tools/_stcheck.mjs` → 11 个节点 / 22 个字段 / 行内公式 213 · 块级 16 · **失败 0**。
+> 产物：`dist/nodes/<id>.en.md` 里的 `## Statement` / `## Notes` 两节（标题上带该字段自己的状态）。
+> 公式体检：`bun tools/_stcheck.mjs` → 11 个节点 / 22 个字段 / 行内公式 221 · 块级 13 · **失败 0**。
+> 状态体检：`bun tools/i18n-status.mjs`（默认只报不写；改完内容一定要跑一次）。
+
+---
+
+## 零、逐条状态（本批 33 条 = 11 条摘要 + 11 条陈述 + 11 条说明）
+
+**rollup：reviewed 0 · draft 33 · stale 0**（内容版本 `v0.9.0`，2026-10-16 现算）。
+
+| 部分 | 条数 | reviewed | draft | stale |
+|---|---|---|---|---|
+| 英文摘要 `abstract_en`（这 11 个节点都在枢纽榜前 30 里，都有摘要） | 11 | 0 | 11 | 0 |
+| 英文陈述 `statement` | 11 | 0 | 11 | 0 |
+| 英文说明 `notes` | 11 | 0 | 11 | 0 |
+| **合计** | **33** | **0** | **33** | **0** |
+
+**逐条清单**（`basedOn` 的 `#` 后面是**中文底稿指纹** —— 中文那句话改了，那一行自动变 stale）：
+
+| 条目 | 摘要 | 陈述 | 说明 |
+|---|---|---|---|
+| `lem.zorn` | draft | draft | draft |
+| `thm.first-iso` | draft | draft | draft |
+| `def.metric-space` | draft | draft | draft |
+| `def.cauchy-null` | draft | draft | draft |
+| `def.representable` | draft | draft | draft |
+| `def.abelian-category` | draft | draft | draft |
+| `def.product-measure` | draft | draft | draft |
+| `prop.cg-coreflective` | draft | draft | draft |
+| `thm.topos-abelian-grothendieck` | draft | draft | draft |
+| `prop.nbv-derivative` | draft | draft | draft |
+| `thm.ring-monotone-sigma` | draft | draft | draft |
+
+> 完整的 `basedOn` 值（33 行）用
+> `bun tools/i18n-status.mjs --md --ids lem.zorn,thm.first-iso,…` 随时可再打印一份；
+> ⛔ 那份表的 `basedOn` 是**记录**不是**开关** —— 消掉 stale 的唯一办法是重新对稿。
 
 ---
 
@@ -120,13 +157,13 @@
 
 | # | 事 | 我的处理 | 要你定什么 |
 |---|---|---|---|
-| 1 | **公式里 `\text{中文}`**：中文页有三处公式把中文写进了 `\text{}`（`\text{ 是零列}`、`\text{ 连续且 }`、`\text{ 是} \sigma-\text{环}`） | 英文页按构建的硬规则**不能含汉字**（`assertStatements` 会失败），所以我把 `\text{}` 里的中文也译了 ⇒ 英文页的这三条公式与中文页**不是逐字相同**（只有 `\text{}` 内部不同） | 这样行不行？若你要「公式完全逐字一致」，唯一的办法是**改中文页**：把中文挪出公式（例如写成 `$(x_n - y_n)$ 是零列`）。你说改我就改 |
+| 1 | **公式里 `\text{中文}`**：中文页有三处公式把中文写进了 `\text{}`（`\text{ 是零列}`、`\text{ 连续且 }`、`\text{ 是} \sigma-\text{环}`） | ✅ **已按你的批复执行**：改**中文页**，把汉字移出公式 —— ① 变成散文里的两条行内公式；② 换成中英皆可的记号 $\mathcal{C}(Z,X)$ 并在散文里说明它；③ 变成散文三条并列。两条硬不变量已进构建：**公式里不得出现汉字** + **中英公式条数与多重集完全相同**（0 例外，见 `i18n/deviations.md`） | —（已结案） |
 | 2 | `\mathbf{AbCHaus}`、`\mathbf{AbTop}`、`\mathbf{AbHaus}` 这类记号 | 原样保留 | 是不是应该写成 $\mathbf{AbCHaus}$ 以外的标准记号？（我按中文页原样） |
 | 3 | 「不严格」 | "is not strict" | ⚠️ 这里的「严格」是 strict morphism 还是别的意思？ |
 | 4 | 「可列」vs「可数」 | 英文统一 **countable** | 中文页两种写法混用（`对可列不交并封闭` / `可数可加`），要不要统一中文？ |
 | 5 | `prop.cg-coreflective` 的英文名 | 仍是 `kification`（T2.2 报告过，那是**函子**不是节点名） | 建议改成 `compactly generated spaces form a coreflective subcategory` —— 本批的英文页大标题正用着 `kification` |
 | 6 | 「说明」这一节的英文 | **Notes**（与 `.en.md` 的 `## Notes`、面板的 `NOTES` 一致） | — |
-| 7 | 状态 | 全部 `draft` | 审完哪几条，说一声我就把 `status` 改成 `reviewed`（可以只改一部分吗？现在 `status` 是**整份文件**一个值 —— 若你要逐条标状态，我需要加一个 per-item 字段，说一声就做）|
+| 7 | 状态 | ✅ **已按你的批复改成逐条**（每个字段一行 `status` + `basedOn`，见上面「零、逐条状态」）：审完哪几条、哪些字段，说一声我就把那一行的 `status` 改成 `'reviewed'`（顺带填 `reviewed: { by, date }`），其余条不受影响 | 可以只批一部分（例如只批陈述、说明留下批）|
 
 ---
 

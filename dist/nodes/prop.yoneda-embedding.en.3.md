@@ -2,6 +2,9 @@
 English entry · root `../`
 [in graph](../#n=prop.yoneda-embedding)　·　[Chinese page (authoritative)](./prop.yoneda-embedding.md)
 
+## Statement and proof
+Chinese only — see the Chinese page `nodes/prop.yoneda-embedding.md` and `proofs/`.
+
 ## Elsewhere
 Wikipedia: https://en.wikipedia.org/wiki/Yoneda_embedding · nLab: https://ncatlab.org/nlab/show/Yoneda+embedding
 

@@ -69,7 +69,9 @@ function stableStamp(file, data) {
 /** 造一个最小的 window，把引擎和内容脚本按顺序跑起来（不碰 DOM 的那部分） */
 function loadMG() {
   const win = {
-    MG: {}, console,
+    /* ⚠️ contentVersion 要事先塞进去：MG.enFieldStatus（core/i18n.js）靠它判
+       「这条英文是译自哪个内容版本」；浏览器里那个值来自 index.html 的 MG.contentVersion。 */
+    MG: { contentVersion: CONTENT_VERSION }, console,
     document: {
       createElement: () => ({ getContext: () => ({}), width: 0, height: 0 }),
       addEventListener() {}, getElementById: () => null
@@ -82,7 +84,7 @@ function loadMG() {
   win.self = win;
 
   const files = [
-    'core/config.js', 'core/util.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
+    'core/config.js', 'core/util.js', 'core/i18n.js', 'core/camera.js', 'core/graph.js', 'core/layout.js',
     'core/layers.js',
     'data/regions.js', 'data/clusters.js', 'data/aliases.js', 'data/i18n.js', 'data/notation.js', 'data/xref.js',
     /* ⚠️ 只给构建用：浏览器端不需要英文文档正文（read.html 的英文版由 publish.mjs 组装），
@@ -117,35 +119,57 @@ function buildGraph(MG) {
 }
 
 /* -------------------------------------------- 英文译文的状态汇总（T3.2） */
-/* 一个节点可能同时有：抽象（T2.2，创译）、陈述/说明（T3.2，创译）、英文名（T1.1，派生）。
-   这里把「创译型的那几件」合起来报成一个状态 + 一份字段清单，消费方一眼能看清
-   「这条英文到底译到了哪一步、审过没有」。
-   ⚠️ 状态取**最保守**的那个：只要有一件是 stale 就 stale；否则有一件 draft 就 draft；
-     全是 reviewed 才是 reviewed。 */
+/* 一个节点可能同时有：摘要（T2.2，创译）、陈述/说明（T3.2，创译）、英文名（T1.1，派生）。
+   作者 2026-10-16 拍板：状态**逐条**判定 ⇒ 这里逐字段报，再给一个最保守的汇总，
+   好让消费方「一眼看到汇总结论、再下钻到具体字段」。
+   ⚠️ 每个字段的状态由 MG.enFieldStatus 现算（src/core/i18n.js）——
+      ⛔ 构建不自己判断，免得网页与产物各说各话（第二处实现就是漂移的源头）。
+   ⚠️ 摘要的底稿 = 该节点的 statement + notes；陈述/说明的底稿就是它自己那个字段。 */
 function enTranslationOf(n, MG) {
-  const parts = [];
-  if (n.abstract_en) parts.push(MG.i18nAbstracts || null);
-  if (n.statement_en || n.notes_en) parts.push(MG.i18nStatements || null);
-  if (!parts.length) return undefined;
-  let status = 'reviewed', version = null;
-  for (const src of parts) {
-    const st = src ? i18nState(src) : { state: 'draft', cv: null };
-    if (!version && src && src.basedOn) version = src.basedOn;
-    if (st.state === 'stale') status = 'stale';
-    else if (st.state === 'draft' && status !== 'stale') status = 'draft';
+  const rec = {};                       // 字段 → { status, basedOn }
+  const abs = MG.i18nAbstracts && MG.i18nAbstracts.items && MG.i18nAbstracts.items[n.id];
+  if (abs) {
+    rec.abstract = { status: MG.enFieldStatus(abs, absZhOf(n)), basedOn: abs.basedOn };
   }
-  const fields = [];
-  if (n.abstract_en) fields.push('abstract');
-  if (n.statement_en) fields.push('statement');
-  if (n.notes_en) fields.push('notes');
-  if (n.title_en || n.label_en) fields.push('name');
-  return { en: { status, version, fields } };
+  const st = MG.i18nStatements && MG.i18nStatements.items && MG.i18nStatements.items[n.id];
+  if (st && st.statement && st.statement.en) {
+    rec.statement = { status: MG.enFieldStatus(st.statement, n.statement), basedOn: st.statement.basedOn };
+  }
+  if (st && st.notes && st.notes.en) {
+    rec.notes = { status: MG.enFieldStatus(st.notes, n.notes), basedOn: st.notes.basedOn };
+  }
+  const fields = Object.keys(rec);
+  /* 英文名（T1.1）是**派生型**：全自动生成，没有「待审」这回事。 */
+  if (n.title_en || n.label_en) { rec.name = { status: 'derived', basedOn: null }; fields.push('name'); }
+  if (!fields.length) return undefined;
+  const versionOf = (b) => String(b || '').split('#')[0] || null;
+  const firstBase = fields.map(f => rec[f].basedOn).find(Boolean) || null;
+  /* ⭐ 汇总只算**创译型**的那几个字段（摘要/陈述/说明）——
+     name 是派生的，把它算进去会让「只有一个英文名」的节点从
+     「name only」变成看着像「有译文待审」（290 个节点会集体说谎）。 */
+  const creative = fields.filter(f => f !== 'name');
+  return { en: {
+    status: worstStatus(creative.map(f => rec[f].status)),   // 最保守的汇总（兼容旧消费方）
+    version: versionOf(firstBase),                  // 这条英文当初是对着哪个内容版本写的
+    fields,                                         // 有哪些英文内容（字段名，含 name）
+    creative,                                       // 其中真正需要人审的那几个
+    fieldStatus: fields.reduce((o, f) => (o[f] = rec[f].status, o), {}),   // ⭐ 逐字段状态
+    staleFields: fields.filter(f => rec[f].status === 'stale'),            // ⭐ 哪几个字段过期了
+    basedOn: fields.reduce((o, f) => (rec[f].basedOn ? (o[f] = rec[f].basedOn) : o, o), {}),
+  } };
 }
+/** 状态合并：取**最保守**的那个（stale > draft/derived > reviewed）；空集 = reviewed */
+const STATUS_RANK = { reviewed: 0, derived: 1, draft: 1, stale: 2 };
+function worstStatus(list) {
+  let worst = 'reviewed';
+  for (const s of list) if (STATUS_RANK[s] > STATUS_RANK[worst]) worst = s;
+  return worst;
+}
+/** 摘要的中文底稿 = 该节点的 statement + notes（改其一即 stale） */
+const absZhOf = n => String(n.statement || '') + '\n' + String(n.notes || '');
 
 /* ---------------------------------------------------------------- JSON 导出 */
 function exportJSON(MG, graph) {
-  const ABS = MG.i18nAbstracts || null;
-  const ABSSTATUS = ABS ? i18nState(ABS).state : null;
   const T = MG.theme;
   const XREF = MG.xref || {};          // 外部锚点（src/data/xref.js）
   const strengthOf = e => e.strength || (T.edgeStrength && T.edgeStrength[e.kind]) || 'strong';
@@ -564,10 +588,8 @@ function emitChunks(files, dir, base, head, body, tail, resB) {
 function exportAIProducts(MG, graph, data) {
   const files = [];
   const ABS = MG.i18nAbstracts || { items: {}, status: 'draft', basedOn: null };
-  /* 英文摘要的小节标题（状态由 absHeading 现算；整份文件同一行，所以只算一次）。
-     它同时是 packPages 的「小节名」—— 换小节一定另起一页，所以摘要要么在第 1 页，
-     要么整段进续页（不会被切两半）。 */
-  const ABSEC = absHeading(ABS);
+  /* ⚠️ 摘要的小节标题是**逐条**的（决策二.3）⇒ 每个节点现算一次，
+     见下面循环里的 `const ABSEC = absHeading(ABS, n)`。 */
   const XREF = MG.xref || {};      // 外部锚点（T2.3）：节点 .md 里也要给出来
   const byId = graph.byId;
   const label = id => (byId[id] ? byId[id].label : id);
@@ -638,6 +660,9 @@ function exportAIProducts(MG, graph, data) {
        字节与转义字符**分别**算（中文页的字节远大于字符数），各自再留 80 的零头余量
        （空行、id 长短不一、行尾换行）。真顶破了还有构建断言兜底。 */
     const nodePageRef = (k) => mdLink('nodes/' + n.id + '.' + k + '.md', './' + n.id + '.' + k + '.md');
+    /* 英文摘要的小节标题（含逐条状态）—— 它同时是 packPages 的「小节名」：
+       换小节一定另起一页，所以摘要要么在第 1 页，要么整段进续页（不会被切两半）。 */
+    const ABSEC = absHeading(ABS, n);
     const jumpLines = [
       `> 陈述续见 ${nodePageRef(99)}`,
       `- …另有入边，续页见 ${nodePageRef(99)}`,
@@ -1230,36 +1255,43 @@ function exportNotationProducts(MG, base = '') {
    ⚠️ 路径：英文版与中文版**同目录同 URL 规则**（第 0 节：同一 URL 承载双语，
    中英并存不冲突）—— 所以 `reading.en.md` 里的相对路径和 `reading.md` 一样，
    `{{base}}` 的替换规则也照抄中文版。 */
-/* ⭐⭐ 状态只有一个来源：`src/data/i18n/docs.en.js` 的 `status` + `basedOn`。
-   stale 是**算出来的**：内容版本（tools/ids.snapshot.json 的 vX.Y.Z）跑到 `basedOn`
-   之外就自动标 stale —— 不指望谁记得去改状态。
+/* ⭐⭐ 状态逐条判定（作者 2026-10-16 拍板），判定的**唯一算法**在
+   `src/core/i18n.js` 的 MG.enFieldStatus —— 网页端与构建端调的是同一个函数。
+   这里只负责「把记录合成到文档/摘要的形状」再渲染文案。
    ⚠️ 措辞三件必须同时出现（作者 2026-10-16 护栏）：Chinese source is authoritative ·
       machine-drafted · pending author review；页面横幅读的就是这一行的文本本身
       （publish.mjs 从 .en.md 里抠出来渲染），所以两处永远不会漂。 */
-/** 英文层状态的**唯一算法**（文档、摘要、以后的任何英文产物共用）：
-    `status` 是人的开关，`basedOn` 是「译自哪个内容版本」；
-    两者之外还看**当前内容版本** —— 对不上 ⇒ stale（不用谁记得去改）。 */
-function i18nState(D) {
+/** **一份文档**的状态：它自己的 status/basedOn/reviewed，缺省回落文件级默认（见 docs.en.js 文件头）。
+    ⚠️ 文档的 stale 只看内容版本 —— 它没有「一句中文原文」可指纹（数字/清单都是现算的）。 */
+function docRec(D, name) {
+  const d = (D && D.docs && D.docs[name]) || {};
+  return {
+    status: d.status || (D && D.status) || 'draft',
+    basedOn: d.basedOn || (D && D.basedOn) || null,
+    reviewed: d.reviewed !== undefined ? d.reviewed : ((D && D.reviewed) || null),
+  };
+}
+function i18nState(D, name) {
+  const rec = name ? docRec(D, name) : D;
   const cv = contentVersion();
-  const stale = !!(D && D.basedOn && cv && D.basedOn !== cv);
-  return { cv, stale, state: stale ? 'stale' : ((D && D.status === 'reviewed') ? 'reviewed' : 'draft') };
+  const state = MG.enFieldStatus(rec, null) || 'draft';
+  return { cv, stale: state === 'stale', state, rec };
 }
 
-function enStatus(D) {
-  const r = D.reviewed || {};
-  const st = i18nState(D);
+function enStatus(D, name) {
+  const st = i18nState(D, name);
+  const r = st.rec.reviewed || {};
   const cv = st.cv;
-  const stale = st.stale;
   /* ⚠️ 这三行也是**体积预算的一部分**（单次抓取 ≤1050 转义字符）：
      `notation.en.md` 贴着上限，所以措辞能省就省 —— 加字之前先看 _tools/_docsize.mjs。 */
   const tail = 'Chinese source is authoritative · machine-drafted, pending author review.';
-  if (stale) {
+  if (st.stale) {
     return {
       state: 'stale',
-      line: `> English version: **stale** (from ${D.basedOn}; content is ${cv}). ${tail}`,
+      line: `> English version: **stale** (from ${st.rec.basedOn}; content is ${cv}). ${tail}`,
     };
   }
-  if (D.status === 'reviewed') {
+  if (st.state === 'reviewed') {
     return {
       state: 'reviewed',
       line: `> English version: **reviewed**${r.by ? ' · ' + r.by : ''}${r.date ? ' · ' + r.date : ''} · ` +
@@ -1269,21 +1301,45 @@ function enStatus(D) {
   return { state: 'draft', line: `> English version: **draft** · ${tail}` };
 }
 
-/** 英文摘要的小节标题（T2.2）—— 状态同样由 i18nState 算，⛔ 不许手写。 */
-function absHeading(A) {
-  const st = i18nState(A);
-  const r = (A && A.reviewed) || {};
-  if (st.state === 'stale') {
-    return `## English abstract · **stale** (from ${A.basedOn}; content is ${st.cv}) · ` +
+/** 英文小节的标题（含**逐条**状态）—— 摘要、陈述、说明共用这一套措辞，⛔ 不许手写。
+    作者 2026-10-16 拍板：同一份文件里的两条内容各自可以 draft / reviewed / stale，
+    所以标题必须**按条目**算，不能整份文件算一次（那是老的「文件级一个状态」）。
+    ⚠️ 三件措辞（machine-drafted · pending author review · Chinese is authoritative）是护栏，
+       publish.mjs 会把这一行当状态横幅渲染，所以别在这里省字。 */
+function enSectionHeading(rec, zh, title, long) {
+  const state = MG.enFieldStatus(rec, zh) || 'draft';
+  const r = (rec && rec.reviewed) || {};
+  const base = rec && rec.basedOn ? String(rec.basedOn).split('#')[0] : null;
+  /* ⚠️ long=false 用在**英文入口页**：那里页首横幅已经把「machine-drafted, pending
+     author review; Chinese is authoritative」整句说过了，小节标题只报自己那一个词
+     —— 标题写长了会把正文挤到第 2 页（实测 lem.zorn 的摘要就被挤下去过）。
+     long=true 用在**中文节点页**：那一页只有这一行英文声明，护栏必须写在标题里。 */
+  if (!long) return `## ${title} · **${state}**`;
+  if (state === 'stale') {
+    /* ⚠️ stale 有两个来源，说清楚是哪一个：版本变了 / 这句中文本身被改过 */
+    const why = base && base !== CONTENT_VERSION
+      ? `from ${base}; content is ${CONTENT_VERSION}`
+      : 'the Chinese wording changed since this translation';
+    return `## ${title} · **stale** (${why}) · ` +
       'machine-drafted, pending author review; Chinese is authoritative';
   }
-  if (st.state === 'reviewed') {
-    return `## English abstract${r.by ? ' · reviewed by ' + r.by : ' · reviewed'}` +
+  if (state === 'reviewed') {
+    return `## ${title}${r.by ? ' · reviewed by ' + r.by : ' · reviewed'}` +
       `${r.date ? ' (' + r.date + ')' : ''} · Chinese is authoritative`;
   }
-  return '## English abstract · **draft** · machine-drafted, pending author review; ' +
+  return `## ${title} · **draft** · machine-drafted, pending author review; ` +
     'Chinese is authoritative';
 }
+/** 摘要小节标题（中文节点页里插的那一节）—— long=true：那一页只有这一行英文声明 */
+const absHeading = (A, n) =>
+  enSectionHeading((A && A.items && A.items[n.id]) || null, absZhOf(n), 'English abstract', true);
+/** 陈述/说明小节标题（英文入口页里插的那两节）；field 取 'statement' | 'notes'
+    —— long=false：页首横幅已说全，小节只报自己那一个词 */
+const enSecHeading = (S, n, field, title) => enSectionHeading(
+  (S && S.items && S.items[n.id] && S.items[n.id][field]) || null,
+  field === 'notes' ? n.notes : n.statement, title, false);
+/** 英文入口页顶部那行「fields: …」用的字段顺序与名字 */
+const fieldsOf = (rl) => (rl && rl.fields || []);
 /** 把文档体里的 `{{base}}` 展开成中文版同样的相对前缀（'' 或 'dist/'） */
 const fillBase = (s, base) => String(s).replace(/\{\{base\}\}/g, base);
 /** 英文名回落链：label_en → title_en → 中文 label（与 graph.js 抄下来的口径一致） */
@@ -1319,15 +1375,33 @@ function enNodeText(n, MG) {
     `${mdLink('in graph', `../#n=${n.id}`)}　·　` +
     `${mdLink('Chinese page (authoritative)', './' + n.id + '.md')}\n\n`;
   const L = [];
-  if (hasAbs) {
-    const st = i18nState(ABS);
-    const why = st.state === 'stale'
-      ? `revision ${ABS.basedOn} of the content; the Chinese page is authoritative.`
-      : st.state === 'reviewed'
+  /* ⭐ 逐条状态（决策二.3）：先给一行**汇总**（最保守），再在每个小节标题上标出
+     该字段自己的状态 —— 这样「摘要审过了、陈述还没」这种半成品不会被抹平成一句话。 */
+  const tr = enTranslationOf(n, MG);
+  const rl = (tr && tr.en) || null;
+  const creative = (rl && rl.creative) || [];
+  if (creative.length) {
+    const st = worstStatus(creative.map((f) => rl.fieldStatus[f]));
+    const why = st === 'stale'
+      ? `stale fields: ${rl.staleFields.join(', ')}` +
+        (rl.version && rl.version !== CONTENT_VERSION
+          ? ` (from ${rl.version}; content is ${CONTENT_VERSION})`
+          : ' (the Chinese wording changed since this translation)') +
+        '; the Chinese page is authoritative.'
+      : st === 'reviewed'
         ? 'reviewed by the author; the Chinese page is authoritative.'
         : 'machine-drafted, pending author review; the Chinese page is authoritative.';
-    L.push(`> English: **${st.state}** · ${why}`);
+    L.push(`> English: **${st}** · ${why}`);
+    /* ⚠️ 逐字段那行**只在状态不一致时**才写（例如陈述审过了、说明还没有）——
+       全部同状态时它一个字都不多给，而它占的是 AI 单次抓取的预算
+       （写了会把摘要挤到第 2 页 ⇒ 白白多一页）。 */
+    const sts = creative.map((f) => rl.fieldStatus[f]);
+    if (sts.some((s) => s !== sts[0])) {
+      L.push(`> fields: ${fieldsOf(rl).map((f) => `${f} ${rl.fieldStatus[f]}`).join(' · ')}`);
+    }
   } else {
+    /* ⚠️ 只有英文名（派生型）的节点**必须**说「name only」—— 那 290 个节点的英文
+       没有任何人审过、也没有任何一句正文，⛔ 不能让人以为读到了译文。 */
     L.push('> English: **name only** · auto-derived from the source data; ' +
       'the Chinese page is authoritative.');
   }
@@ -1338,13 +1412,13 @@ function enNodeText(n, MG) {
   if (!hasAbs && n.label_en && n.title_en && n.label_en !== n.title_en) {
     L.push(`names: \`${n.label_en}\` (short) · \`${n.title_en}\` (full)`);
   }
-  if (n.abstract_en) L.push('', '## Abstract', n.abstract_en);
+  if (n.abstract_en) L.push('', enSectionHeading(ABS && ABS.items && ABS.items[n.id], absZhOf(n), 'Abstract'), n.abstract_en);
   /* 英文陈述 / 说明（T3.2）：有就直接给 —— 这可是英文页上最要紧的东西。
      ⚠️ 没有的时候必须**明说没有**，不能让人以为中文页只是多余的。 */
   const STM = (MG && MG.i18nStatements) || null;
-  const hasStm = !!(STM && STM.items && (STM.items[n.id] || {}).statement_en);
-  if (n.statement_en) L.push('', '## Statement', n.statement_en);
-  if (n.notes_en) L.push('', '## Notes', n.notes_en);
+  const hasStm = !!(STM && STM.items && (STM.items[n.id] || {}).statement && (STM.items[n.id].statement || {}).en);
+  if (n.statement_en) L.push('', enSecHeading(STM, n, 'statement', 'Statement'), n.statement_en);
+  if (n.notes_en) L.push('', enSecHeading(STM, n, 'notes', 'Notes'), n.notes_en);
   if (!hasStm) {
     L.push('', '## Statement and proof');
     L.push('Chinese only — see the Chinese page ' + `\`nodes/${n.id}.md\` and \`proofs/\`.`);
@@ -1408,7 +1482,7 @@ function exportNotationEn(MG, base = '') {
   const D = MG.i18nDocs, d = D.docs.notation;
   const N = MG.notation || { groups: [], entries: [] };
   const nb = g => (N.entries || []).filter(e => e.g === g.id).length;
-  const L = [`# ${d.title}`, '', enStatus(D).line, '', fillBase(d.body, base), ''];
+  const L = [`# ${d.title}`, '', enStatus(D, 'notation').line, '', fillBase(d.body, base), ''];
   for (const g of (N.groups || [])) {
     L.push(`- \`${base}notation/${g.id}.md\` ${d.groups[g.id] || g.name} ${nb(g)}`);
   }
@@ -1665,15 +1739,18 @@ function assertAbstracts(MG, graph) {
   if (!A) return ['英文摘要：`src/data/i18n/abstracts.en.js` 没有挂上（loadMG 少了它？）'];
   const errs = [];
   const items = A.items || {};
-  if (!A.status) errs.push('英文摘要：缺 status（状态与 stale 判定的唯一来源）');
-  if (!A.basedOn) errs.push('英文摘要：缺 basedOn（译自哪个内容版本）');
+  /* ⭐ 状态**逐条**（作者 2026-10-16 拍板）：文件级不再有 status/basedOn，
+     每条自带 { en, status, basedOn, reviewed }。缺一个字段就是漏写状态。 */
   const BAN = ['\\dots', '\\Rightarrow', '\\leq', '\\geq', '\\neq', '\\impliedby'];
-  for (const [id, s] of Object.entries(items)) {
+  for (const [id, rec] of Object.entries(items)) {
     if (!graph.byId[id]) { errs.push(`英文摘要：节点不存在 \`${id}\``); continue; }
-    if (typeof s !== 'string' || !s.trim()) { errs.push(`英文摘要：\`${id}\` 是空的`); continue; }
-    if (/[\u4e00-\u9fff]/.test(s)) errs.push(`英文摘要：\`${id}\` 含汉字 —— 摘要必须是英文`);
+    if (!rec || typeof rec !== 'object') { errs.push(`英文摘要：\`${id}\` 不是逐条记录（要 { en, status, basedOn }）`); continue; }
+    if (typeof rec.en !== 'string' || !rec.en.trim()) { errs.push(`英文摘要：\`${id}\` 的 en 是空的`); continue; }
+    if (!rec.status) errs.push(`英文摘要：\`${id}\` 缺 status（逐条状态的唯一来源）`);
+    if (!rec.basedOn) errs.push(`英文摘要：\`${id}\` 缺 basedOn（译自哪个内容版本 + 中文底稿指纹）`);
+    if (/[\u4e00-\u9fff]/.test(rec.en)) errs.push(`英文摘要：\`${id}\` 含汉字 —— 摘要必须是英文`);
     for (const b of BAN) {
-      if (String(s).includes(b)) errs.push(`英文摘要：\`${id}\` 用了禁用命令 ${b}`);
+      if (rec.en.includes(b)) errs.push(`英文摘要：\`${id}\` 用了禁用命令 ${b}`);
     }
   }
   /* 报告：当前枢纽榜前 30 里覆盖了几个（只报告） */
@@ -1689,9 +1766,15 @@ function assertAbstracts(MG, graph) {
     .sort((a, b) => b.d - a.d || (graph.byId[a.id].layer - graph.byId[b.id].layer))
     .slice(0, 30).map(x => x.id);
   const have = top.filter(id => items[id]).length;
-  const st = i18nState(A);
-  console.log(`  i18n：abstract_en ${Object.keys(items).length} 条（枢纽榜前 30 覆盖 ${have}/30）· 状态 ${st.state}` +
-    (st.stale ? `（译自 ${A.basedOn}，当前 ${st.cv}）` : ''));
+  /* ⭐ 逐条状态报告（决策二.3）：条数 + 三种状态各多少 —— 只报告，不拦构建。 */
+  const tally = { draft: 0, reviewed: 0, stale: 0 };
+  for (const [id, rec] of Object.entries(items)) {
+    const n = graph.byId[id];
+    if (!n || !rec) continue;
+    tally[MG.enFieldStatus(rec, absZhOf(n))]++;
+  }
+  console.log(`  i18n：abstract_en ${Object.keys(items).length} 条（枢纽榜前 30 覆盖 ${have}/30）—— ` +
+    `draft ${tally.draft} · reviewed ${tally.reviewed} · stale ${tally.stale}`);
   if (have < top.length) {
     const miss = top.filter(id => !items[id]);
     console.log(`        ⚠️ 前 30 里还没有摘要的：${miss.join(' ')}`);
@@ -1701,8 +1784,8 @@ function assertAbstracts(MG, graph) {
 
 /* ------------------------------------------- 英文陈述/说明的硬断言（T3.2） */
 /* 真源 = `src/data/i18n/statements.en.js`（创译型，agent 起草、作者审校）。
-   断言：① id 真实存在；② 有 status / basedOn；③ 字段非空、不含汉字、不含禁用命令；
-        ④ 每条至少有 statement_en 或 notes_en 之一（空条目等于没写）。 */
+   断言：① id 真实存在；② **每个字段**（statement / notes）自带 status + basedOn；
+        ③ 字段非空、不含汉字、不含禁用命令；④ 每条至少有一个字段（空条目等于没写）。 */
 /* ---------------------------------------------- 公式抽取（公式不变量用） */
 /** 把一段正文里的公式抠出来（块级优先，避免 `$$` 被当成两个 `$`） */
 function formulasOf(s) {
@@ -1728,19 +1811,22 @@ function assertStatements(MG, graph) {
   if (!S) return ['英文陈述：`src/data/i18n/statements.en.js` 没有挂上（loadMG 少了它？）'];
   const errs = [];
   const items = S.items || {};
-  if (!S.status) errs.push('英文陈述：缺 status');
-  if (!S.basedOn) errs.push('英文陈述：缺 basedOn（译自哪个内容版本）');
   const BAN = ['\\dots', '\\Rightarrow', '\\leq', '\\geq', '\\neq', '\\impliedby'];
   for (const [id, rec] of Object.entries(items)) {
     const n = graph.byId[id];
     if (!n) { errs.push(`英文陈述：节点不存在 \`${id}\``); continue; }
-    const fields = Object.keys(rec || {}).filter((k) => rec[k]);
+    const fields = ['statement', 'notes'].filter((f) => rec && rec[f]);
     if (!fields.length) { errs.push(`英文陈述：\`${id}\` 是空条目（要么写，要么删）`); continue; }
-    for (const f of ['statement_en', 'notes_en']) {
-      const s = rec[f];
-      if (s == null) continue;
-      if (/[\u4e00-\u9fff]/.test(s)) errs.push(`英文陈述：\`${id}.${f}\` 含汉字`);
-      for (const b of BAN) if (String(s).includes(b)) errs.push(`英文陈述：\`${id}.${f}\` 用了禁用命令 ${b}`);
+    for (const f of fields) {
+      const r = rec[f];
+      if (typeof r !== 'object' || typeof r.en !== 'string' || !r.en.trim()) {
+        errs.push(`英文陈述：\`${id}.${f}\` 要写成 { en, status, basedOn, reviewed }`);
+        continue;
+      }
+      if (!r.status) errs.push(`英文陈述：\`${id}.${f}\` 缺 status（逐条状态的唯一来源）`);
+      if (!r.basedOn) errs.push(`英文陈述：\`${id}.${f}\` 缺 basedOn（译自哪个内容版本 + 中文底稿指纹）`);
+      if (/[\u4e00-\u9fff]/.test(r.en)) errs.push(`英文陈述：\`${id}.${f}\` 含汉字`);
+      for (const b of BAN) if (r.en.includes(b)) errs.push(`英文陈述：\`${id}.${f}\` 用了禁用命令 ${b}`);
     }
     /* ⭐⭐ 公式不变量（作者 2026-10-16 拍板：两语言公式**逐字一致**）
        ① 公式里不得出现汉字（中文页也不行 —— 汉字要移进散文或换成中英皆可的记号）；
@@ -1748,14 +1834,15 @@ function assertStatements(MG, graph) {
        ③ 公式的**多重集**完全相同（顺序可以随译文语序变，内容不许变）。
        ⛔ 只查 statement（散文里英文把词粘在一起的方式跟中文不同，
           notes 的公式条数天然可以对不上 —— 那部分只查「公式无汉字」）。 */
-    for (const [zf, ef] of [['statement', 'statement_en'], ['notes', 'notes_en']]) {
-      if (!rec[ef]) continue;
-      const z = formulasOf(n[zf]), e = formulasOf(rec[ef]);
+    for (const zf of ['statement', 'notes']) {
+      const sec = rec[zf];
+      if (!sec || !sec.en) continue;
+      const z = formulasOf(n[zf]), e = formulasOf(sec.en);
       const zc = [z.filter((x) => !x.block).length, z.filter((x) => x.block).length];
       const ec = [e.filter((x) => !x.block).length, e.filter((x) => x.block).length];
       const han2 = z.concat(e).filter((x) => /[\u4e00-\u9fff]/.test(x.tex));
       if (han2.length) {
-        errs.push(`公式不变量：\`${id}.${zf === 'statement' ? 'statement' : 'notes'}\` 的公式里有汉字 ` +
+        errs.push(`公式不变量：\`${id}.${zf}\` 的公式里有汉字 ` +
           `（要移进散文，或换成中英皆可的记号）：${han2[0].tex.slice(0, 50)}`);
       }
       if (zf === 'statement' && (zc[0] !== ec[0] || zc[1] !== ec[1])) {
@@ -1772,7 +1859,6 @@ function assertStatements(MG, graph) {
       }
     }
   }
-  const st = i18nState(S);
   /* ⭐ 顺带报一次「公式含汉字」的待办账（不失败：那些节点还没翻译，见 i18n/formula-han.md） */
   if (MG.i18nStatements) {
     let debt = 0;
@@ -1784,7 +1870,46 @@ function assertStatements(MG, graph) {
       console.log(`  i18n：另有 ${debt} 个未翻译节点的陈述里公式含汉字（翻译它们前要先改公式，账本 i18n/formula-han.md）`);
     }
   }
-  console.log(`  i18n：statement_en/notes_en ${Object.keys(items).length} 个节点 · 状态 ${st.state}`);
+  /* ⭐ 逐字段状态的体检报告（决策二.3）：多少字段 draft / reviewed / stale —— 只报告不拦。 */
+  const tally = { draft: 0, reviewed: 0, stale: 0 };
+  let nFields = 0;
+  for (const [id, rec] of Object.entries(items)) {
+    const n = graph.byId[id];
+    if (!n) continue;
+    for (const f of ['statement', 'notes']) {
+      if (!rec || !rec[f] || !rec[f].en) continue;
+      nFields++;
+      tally[MG.enFieldStatus(rec[f], f === 'notes' ? n.notes : n.statement)]++;
+    }
+  }
+  console.log(`  i18n：英文陈述/说明 ${Object.keys(items).length} 个节点 · ${nFields} 个字段 —— ` +
+    `draft ${tally.draft} · reviewed ${tally.reviewed} · stale ${tally.stale}`);
+  return errs;
+}
+
+/* ------------------------------------------- 英文文档的逐份状态（决策二.3） */
+/* 真源 = `src/data/i18n/docs.en.js`。断言：四份文档每份都能算出一个状态，
+   且「文件级默认值」没被某一份的字段漏掉（缺 basedOn 就没法判 stale）。
+   ⭐ 这是**逐份**判定：一份审过了不必等其余的（改那一份的 status/basedOn 即可）。 */
+function assertDocsEn(MG) {
+  const D = MG.i18nDocs;
+  if (!D) return ['英文文档：`src/data/i18n/docs.en.js` 没有挂上（loadMG 少了它？）'];
+  const errs = [];
+  const names = Object.keys(D.docs || {});
+  if (!names.length) errs.push('英文文档：`docs` 是空的');
+  if (!D.status) errs.push('英文文档：文件级缺 status（逐份都没写时要用它兜底）');
+  if (!D.basedOn) errs.push('英文文档：文件级缺 basedOn');
+  const tally = { draft: 0, reviewed: 0, stale: 0 };
+  for (const name of names) {
+    const r = docRec(D, name);
+    if (!r.basedOn) { errs.push(`英文文档：\`${name}\` 既没写 basedOn，文件级也没有 —— 判不了 stale`); continue; }
+    if (!/^v\d+\.\d+\.\d+$/.test(String(r.basedOn))) {
+      errs.push(`英文文档：\`${name}\` 的 basedOn 应当是 vX.Y.Z（文档没有中文底稿指纹）：${r.basedOn}`);
+    }
+    tally[i18nState(D, name).state]++;
+  }
+  console.log(`  i18n：英文文档 ${names.length} 份（${names.join(' / ')}）—— ` +
+    `draft ${tally.draft} · reviewed ${tally.reviewed} · stale ${tally.stale}`);
   return errs;
 }
 
@@ -1990,11 +2115,13 @@ if (doJSON) {
         照项目老规矩切成 `X.en.2.md`；hubs / notation 是索引型，本来就只有一页。
      ⚠️ 根目录那份也要（和中文版一致，给直接翻仓库的人 / AI）；`{{base}}` 展开成 dist/。 */
   const EN_DOCS = MG.i18nDocs;
-  const enState = enStatus(EN_DOCS);
-  const enStatusLine = enState.line;
-  if (enState.state === 'stale') {
-    console.log(`  ⚠️ 英文文档标记为 **stale**：译自 ${EN_DOCS.basedOn}，当前内容版本 ${contentVersion()}` +
-      ' —— 把 src/data/i18n/docs.en.js 的 basedOn 更新/重译后才会变回 draft');
+  /* ⭐ 逐份状态（决策二.3）：四份文档各自带 status/basedOn，所以状态头**每份现算**。
+     缺自己那份的字段就回落文件级默认（见 docs.en.js 文件头）。 */
+  const staleDocs = Object.keys(EN_DOCS.docs || {}).filter((k) => enStatus(EN_DOCS, k).state === 'stale');
+  if (staleDocs.length) {
+    console.log(`  ⚠️ 英文文档标记为 **stale**：${staleDocs.join(' / ')} —— 译自 ` +
+      `${EN_DOCS.basedOn}，当前内容版本 ${contentVersion()}` +
+      ' —— 把 src/data/i18n/docs.en.js 里那份的 basedOn 更新/重译后才会变回 draft');
   }
   const enOut = [];
   /* 每份英文文档：正文页（dist/）与仓库根页各一套，`{{base}}` 分别展开
@@ -2006,7 +2133,7 @@ if (doJSON) {
       const d = EN_DOCS.docs[docKey];
       const body = blocksOf ? '' : fillBase(d.body, base);
       const blocks = blocksOf ? blocksOf(base) : null;
-      for (const p of paginateEnDoc(name, d, enStatusLine, body, blocks)) {
+      for (const p of paginateEnDoc(name, d, enStatus(EN_DOCS, docKey).line, body, blocks)) {
         enOut.push({ file: path.join(dir, `${name}.en${p.suffix}.md`), text: p.text });
       }
     }
@@ -2039,7 +2166,8 @@ if (doJSON) {
     }
     fs.writeFileSync(f.file, f.text, 'utf8');
   }
-  console.log(`  → 英文文档（状态：${EN_DOCS.status}）：` +
+  console.log(`  → 英文文档（逐份状态：` +
+    Object.keys(EN_DOCS.docs).map((k) => `${k} ${enStatus(EN_DOCS, k).state}`).join(' · ') + '）：' +
     enOut.map(f => path.relative(ROOT, f.file).replace(/\\/g, '/')).join(' · ') +
     ' + i18n/glossary.md');
 
@@ -2088,6 +2216,7 @@ if (doJSON) {
   errs.push(...assertI18n(MG, graph));
   errs.push(...assertAbstracts(MG, graph));
   errs.push(...assertStatements(MG, graph));
+  errs.push(...assertDocsEn(MG));
   // 给 AI 看的说明文档也必须在一次抓取之内
   for (const extra of ['llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'notation.md', 'alias.md']) {
     const p = path.join(DIST, extra);
