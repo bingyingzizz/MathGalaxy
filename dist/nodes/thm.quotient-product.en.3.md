@@ -2,9 +2,14 @@
 English entry · root `../`
 [in graph](../#n=thm.quotient-product)　·　[Chinese page (authoritative)](./thm.quotient-product.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Quotient_space_(topology) · nLab: https://ncatlab.org/nlab/show/quotient+space
+## Statement · **draft**
+Let $q : X \to Y$ be a **quotient map** and $Z$ a **locally compact Hausdorff** space. Then
 
+$$q \times \mathrm{id}_{Z} : X \times Z \longrightarrow Y \times Z$$
 
-Cite: `thm.quotient-product` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+is again a quotient map.
 
+## Notes · **draft**
+⭐ **This is the engine behind "compactly generated spaces are closed under products"**, and it is where a search for "quotient map" or "locally compact" should land.
+
+> 续见 nodes/thm.quotient-product.en.4.md

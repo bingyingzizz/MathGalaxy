@@ -2,9 +2,11 @@
 English entry · root `../`
 [in graph](../#n=thm.monotone-class)　·　[Chinese page (authoritative)](./thm.monotone-class.md)
 
-## Elsewhere
-Wikipedia: https://en.wikipedia.org/wiki/Monotone_class_theorem
+$$\mathcal{M}(\mathcal{E}) = \mathfrak{m}(\mathcal{E}) \iff \forall A \in \mathcal{E} : A^c \in \mathfrak{m}(\mathcal{E})\ \wedge\ \forall A, B \in \mathcal{E} : A \cup B \in \mathfrak{m}(\mathcal{E})$$
 
+## Notes · **draft**
+**This is the combined "standard + strengthened" version.**
 
-Cite: `thm.monotone-class` (content v0.9.1) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+**Standard version** (Halmos §6 / Folland 2.37): if $\mathcal{A}$ is an **algebra** then $\mathfrak{m}(\mathcal{A}) = \mathcal{M}(\mathcal{A})$.
 
+> 续见 nodes/thm.monotone-class.en.4.md

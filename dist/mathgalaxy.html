@@ -10605,6 +10605,190 @@ MG.i18nStatements = {
         status: 'draft', basedOn: 'v0.9.1#9b807211', reviewed: null,
       },
     },
+
+    /* ================================================ 批次 2b（枢纽榜第 11–20 名剩下的 5 条） */
+
+    /* -------------------------------------------------------- 单调类定理 */
+    'thm.monotone-class': {
+      statement: {
+        en:
+        'Let $\\mathcal{E} \\subseteq \\mathcal{P}(X)$. Then\n\n' +
+        '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff ' +
+        '\\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ ' +
+        '\\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$',
+        status: 'draft', basedOn: 'v0.9.1#48f20867', reviewed: null,
+      },
+      notes: {
+        en:
+        '**This is the combined "standard + strengthened" version.**\n\n' +
+        '**Standard version** (Halmos §6 / Folland 2.37): if $\\mathcal{A}$ is an **algebra** ' +
+        'then $\\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$.\n\n' +
+        'What is stated above is the **strengthened version**: "$\mathcal{E}$ is an algebra" ' +
+        'is replaced by two weaker conditions — the **complements** and the **unions** of ' +
+        'sets in $\\mathcal{E}$ only have to land in $\\mathfrak{m}(\\mathcal{E})$. The proof ' +
+        'is still the usual three steps of the monotone class theorem:\n\n' +
+        '**①** Let $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$. ' +
+        'It contains $\\mathcal{E}$ (first condition), and is itself a monotone class ' +
+        '($\\mathfrak{m}$ is monotone $\\implies$ limits stay in $\\mathfrak{m}$; complements ' +
+        'use one decreasing limit) $\\implies \\mathcal{K}_{1} = \\mathfrak{m}$, i.e. ' +
+        '$\\mathfrak{m}$ is closed under **complements**.\n\n' +
+        '**②** Fix $A \\in \\mathcal{E}$ and let ' +
+        '$\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$. By the ' +
+        'second condition $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies ' +
+        '\\mathcal{K}_{2} = \\mathfrak{m}$.\n\n' +
+        '**③** Fix $B \\in \\mathfrak{m}$ and let ' +
+        '$\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$. By ②, ' +
+        '$\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$, ' +
+        'i.e. $\\mathfrak{m}$ is closed under **unions**.\n\n' +
+        'Hence $\\mathfrak{m}$ is closed under $\\cup$ and complements, and is a monotone ' +
+        'class $\\implies$ $\\mathfrak{m}$ is a $\\sigma$-algebra $\\implies ' +
+        '\\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$; the reverse ' +
+        'inclusion always holds, so the two sides are equal. (One needs ' +
+        '$\\mathcal{E} \\ne \\emptyset$, otherwise ' +
+        '$\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$.)\n\n' +
+        '⚠ Replacing $\\cup$ by $\\cap$ or $\\setminus$ gives the same conclusion — once ' +
+        'complements are available, the various closure properties imply each other, so the ' +
+        'symbol used here does not affect whether the theorem is true.\n\n' +
+        '**How it is used** (the same for either version): to prove that a property holds ' +
+        'for all sets in $\\mathcal{M}(\\mathcal{E})$, it suffices to ($i$) prove it for ' +
+        '$\\mathcal{E}$ and (ii) prove that "it holds" is preserved by increasing unions and ' +
+        'decreasing intersections — then the sets for which it holds form a monotone class ' +
+        'containing $\\mathcal{E}$, hence one containing ' +
+        '$\\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$. Uniqueness of the measure ' +
+        'extension, the section formula for product measures and the approximation of ' +
+        'measurable functions all follow this pattern.\n\n' +
+        '⚠ It is a sister result of "the criterion for a ring to be a $\\sigma$-ring": that ' +
+        'one says ring $+$ monotone $\\implies$ $\\sigma$-ring, this one says algebra ' +
+        '$\\implies$ monotone class and $\\sigma$-algebra coincide.',
+        status: 'draft', basedOn: 'v0.9.1#15101468', reviewed: null,
+      },
+    },
+
+    /* ---------------------------------------------------------- 截口可测 */
+    'prop.section-measurable': {
+      statement: {
+        en:
+        '**(a)** If $E \\in \\mathcal{M} \\otimes  \\mathcal{N}$, then for every ' +
+        '$x \\in X$ we have $E_x \\in \\mathcal{N}$, and for every $y \\in Y$ we have ' +
+        '$E^y \\in \\mathcal{M}$.\n\n' +
+        '**(b)** If $f$ is $\\mathcal{M} \\otimes  \\mathcal{N}$-measurable, then for every ' +
+        '$x$ the function $f_x$ is $\\mathcal{N}$-measurable, and for every $y$ the function ' +
+        '$f^y$ is $\\mathcal{M}$-measurable.',
+        status: 'draft', basedOn: 'v0.9.1#2db4532b', reviewed: null,
+      },
+      notes: {
+        en:
+        'The proof is the standard pattern "rectangles first, then $\\sigma$-algebras". Let\n\n' +
+        '$$\\mathcal{R} = \\{E \\subseteq X \\times Y : E_x \\in \\mathcal{N} \\ \\wedge\\ ' +
+        'E^y \\in \\mathcal{M}\\quad \\forall(x, y)\\}$$\n\n' +
+        'Then $\\mathcal{R}$ contains all rectangles, and **$\\mathcal{R}$ is a ' +
+        '$\\sigma$-algebra** (the section operations preserve unions, intersections and ' +
+        'complements). Hence $\\mathcal{R} \\supseteq \\mathcal{M} \\otimes \\mathcal{N}$.\n\n' +
+        '(b) follows from (a) and two identities:\n\n' +
+        '$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$\n\n' +
+        '⚠ Note that (b) says "**every** $x$ works", whereas Fubini\'s theorem can only ' +
+        'guarantee "almost every" — because Fubini also needs integrability.',
+        status: 'draft', basedOn: 'v0.9.1#bd705c8a', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------ 商映射与局部紧空间作积 */
+    'thm.quotient-product': {
+      statement: {
+        en:
+        'Let $q : X \\to Y$ be a **quotient map** and $Z$ a **locally compact Hausdorff** ' +
+        'space. Then\n\n' +
+        '$$q \\times \\mathrm{id}_{Z} : X \\times Z \\longrightarrow Y \\times Z$$\n\n' +
+        'is again a quotient map.',
+        status: 'draft', basedOn: 'v0.9.1#aca983a4', reviewed: null,
+      },
+      notes: {
+        en:
+        '⭐ **This is the engine behind "compactly generated spaces are closed under ' +
+        'products"**, and it is where a search for "quotient map" or "locally compact" ' +
+        'should land.\n\n' +
+        '**How the proof goes (continuity of the inverse).** Write ' +
+        '$W := (q \\times \\mathrm{id}_{Z})^{-1}(U)$ and show that $W$ is open. Take a point ' +
+        '$(x, z) \\in W$ and put $y = q(x)$. Since $U$ is open in $Y \\times Z$, one can pick ' +
+        'a basic open set\n\n' +
+        '$$V \\times K \\;\\subseteq\\; U, \\qquad y \\in V,\\;\\; z \\in K,$$\n\n' +
+        'where $V$ is open and $K$ is a **compact neighbourhood** of $z$ (a locally compact ' +
+        'Hausdorff space has a base of compact neighbourhoods at every point, and $K$ may be ' +
+        'required to lie inside any prescribed neighbourhood). Since $q$ is a quotient map, ' +
+        '$q^{-1}(V)$ is open in $X$, so\n\n' +
+        '$$q^{-1}(V) \\times K \\;\\subseteq\\; W$$\n\n' +
+        'is an open neighbourhood of $(x, z)$ — hence $(x, z)$ is an interior point of $W$, ' +
+        'so $W$ is open. ∎\n\n' +
+        '⚠ **The locally compact hypothesis cannot be dropped.** In general "a quotient map ' +
+        'times the identity" is not a quotient map: take $q$ to be some badly behaved ' +
+        'quotient and $Z$ a space that is neither locally compact nor compactly generated; ' +
+        'the product topology is then strictly finer than the topology the quotient space ' +
+        'should have.\n\n' +
+        'Terminology: some write this as "$Z$ locally compact Hausdorff $\\implies$ the ' +
+        'functor $- \\times Z$ preserves quotient maps".',
+        status: 'draft', basedOn: 'v0.9.1#34fccb9f', reviewed: null,
+      },
+    },
+
+    /* ------------------------------------------------------------ 整数 ℤ */
+    'def.int': {
+      statement: {
+        en:
+        'On $\\mathbb{N} \\times \\mathbb{N}$ define\n\n' +
+        '$$(a, b) \\sim (c, d) :\\iff a + d = b + c$$\n\n' +
+        '(intuition: $(a, b)$ stands for $a - b$; this equivalence relation says precisely ' +
+        'that the differences are equal). It really is an equivalence relation. Put\n\n' +
+        '$$\\mathbb{Z} := (\\mathbb{N} \\times \\mathbb{N}) / \\sim$$\n\n' +
+        'Its elements are written $[a, b]$ (that is, $a - b$). The **operations and order** ' +
+        'on $\\mathbb{Z}$ (both must first be checked to be independent of the choice of ' +
+        'representatives):\n\n' +
+        '$$[a, b] + [c, d] := [a + c,\\ b + d]$$\n\n' +
+        '$$[a, b] \\cdot [c, d] := [ac + bd,\\ ad + bc]$$\n\n' +
+        '$$[a, b] \\le [c, d] :\\iff a + d \\le b + c$$\n\n' +
+        'Here addition and order come from those of $\\mathbb{N}$, and the formula for ' +
+        'multiplication is copied from $(a - b)(c - d) = ac + bd - (ad + bc)$.',
+        status: 'draft', basedOn: 'v0.9.1#5c26a908', reviewed: null,
+      },
+      notes: {
+        en:
+        '⭐ The motivation in one sentence: **subtraction does not work inside ' +
+        '$\\mathbb{N}$** ($3 - 5$ does not exist), yet the *pair* "$3 - 5$" always makes ' +
+        'sense — so one takes the difference itself as a new object.\n\n' +
+        'By-product: $\\mathbb{Z}$ has an additive zero $[0, 0] = 0$ and additive inverses ' +
+        '$-[a, b] = [b, a]$ — precisely what $\\mathbb{N}$ lacks.\n\n' +
+        '⚠ Inside $\\mathbb{Z}$, the copy of $\\mathbb{N}$ is **embedded** via ' +
+        '$a \\mapsto [a, 0]$ (injective, and preserving the operations and the order), so ' +
+        'writing $3 \\in \\mathbb{Z}$ uses this embedding — that step cannot be skipped.',
+        status: 'draft', basedOn: 'v0.9.1#fe258a30', reviewed: null,
+      },
+    },
+
+    /* --------------------------------------------- Kan 延拓的两个例子 */
+    'ex.kan-extension': {
+      statement: {
+        en:
+        '**(1)** A diagram $D : I \\to \\mathcal{C}$ has a colimit $X$ $\\iff$ the left Kan ' +
+        'extension $p_{!}D : \\mathbf{1} \\to \\mathcal{C}$ along the projection ' +
+        '$p : I \\to \\mathbf{1}$ exists, and its value is\n\n' +
+        '$$(p_{!}D)(\\ast) = \\varinjlim_{i \\in I} D(i) = X$$\n\n' +
+        '**(2)** A functor $F : \\mathcal{C} \\to \\mathcal{D}$ has a right adjoint $G$ ' +
+        '$\\iff$ the left Kan extension of the identity functor $1_{\\mathcal{C}}$ along ' +
+        '$F$ exists, and then\n\n' +
+        '$$G = F_{!}1_{\\mathcal{C}}, \\qquad \\operatorname{Hom}(F_{!}1_{\\mathcal{C}},\\ ' +
+        'G) \\cong \\operatorname{Hom}(1_{\\mathcal{C}},\\ G \\circ F)$$\n\n' +
+        'The map $1_{\\mathcal{C}} \\implies G \\circ F$ corresponding to the right-hand ' +
+        'side is exactly the **unit** $\\eta$.',
+        status: 'draft', basedOn: 'v0.9.1#15b421bb', reviewed: null,
+      },
+      notes: {
+        en:
+        'Read the two together: **colimits and right adjoints are special cases of Kan ' +
+        'extensions**. The Kan extension is the unifying exit of this whole cluster — the ' +
+        'definitions scattered earlier (limit, adjunction, reflection) each fall into place ' +
+        'inside it.',
+        status: 'draft', basedOn: 'v0.9.1#77203f35', reviewed: null,
+      },
+    },
   },
 };
 
