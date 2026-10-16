@@ -3,7 +3,7 @@
 > page 1 `hubs.en.md`
 
 - **5** `def.product-measure` product measure · layer 17 · 乘积测度与 Fubini
-- **5** `prop.cg-coreflective` kification · layer 18 · 紧生成空间与弱 Hausdorff
+- **5** `prop.cg-coreflective` compactly generated spaces form a coreflective subcategory · layer 18 · 紧生成空间与弱 Hausdorff
 - **5** `thm.topos-abelian-grothendieck` abelian groups in a topos form a Grothendieck category · layer 19 · 阿贝尔层
 - **5** `prop.nbv-derivative` derivative of an NBV function and its measure · layer 20 · 有界变差与绝对连续
 - **4** `thm.ring-monotone-sigma` when a ring is a sigma-ring · layer 5 · 集合族与 σ-代数

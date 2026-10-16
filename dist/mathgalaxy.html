@@ -8755,7 +8755,10 @@ MG.aliases = {
 
     /* 紧生成空间 */
     { id: 'def.compactly-generated', aka: ['紧生成空间', 'compactly generated', 'k-space', 'k-空间', 'k空间', 'k化', '紧生成'] },
-    { id: 'prop.cg-coreflective', aka: ['紧生成空间是余反射的', 'kification', '紧生成是余反射子范畴', 'k 是右伴随', 'Proposition 2.3.4', 'Prop 2.3.4'] },
+    /* ⚠️ 这里的英文名原来误填成 `kification`（那是函子 $k$ 的动作，且不是标准用词）——
+       作者 2026-10-16 批复「根本就不是标准用词，你改掉」，换成陈述本身的名字。
+       ⛔ 别再往里加第二条名字样英文：一级规则要求 aka 里**恰好一条**名字样英文。 */
+    { id: 'prop.cg-coreflective', aka: ['紧生成空间是余反射的', 'compactly generated spaces form a coreflective subcategory', '紧生成是余反射子范畴', 'k 是右伴随', 'Proposition 2.3.4', 'Prop 2.3.4'] },
 
     /* 凝聚态集 */
     { id: 'def.chaus-pretopos', aka: ['CHaus 是预拓扑斯', 'Proposition 4.1.1', 'Corollary 4.1.2'] },
@@ -9589,7 +9592,7 @@ MG.i18n = {
     'prop.abelianization': { title_en: 'abelianization', label_en: 'abelianization', from: 'aka' },
     'prop.adjoint-full-faithful': { title_en: 'fully faithful iff the unit is an isomorphism', label_en: null, from: 'aka' },
     'prop.calculus-of-fractions': { title_en: 'calculus of fractions', label_en: 'calculus of fractions', from: 'aka' },
-    'prop.cg-coreflective': { title_en: 'kification', label_en: 'kification', from: 'aka' },
+    'prop.cg-coreflective': { title_en: 'compactly generated spaces form a coreflective subcategory', label_en: null, from: 'aka' },
     'prop.cg-wh-iff-qseparated': { title_en: 'weak Hausdorff iff quasi-separated', label_en: null, from: 'aka' },
     'prop.cgwh-fiber-product': { title_en: 'fiber product compact', label_en: 'fiber product compact', from: 'aka' },
     'prop.chaus-reflective': { title_en: 'Stone–Čech compactification', label_en: 'Stone–Čech compactification', from: 'aka' },

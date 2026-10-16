@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T04:23:14.966Z",
+  "generated": "2026-10-16T04:40:33.419Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -14107,8 +14107,7 @@
    "type": "proposition",
    "label": "紧生成空间是余反射子范畴",
    "title": "紧生成空间是 $\\mathbf{Top}$ 的余反射子范畴",
-   "label_en": "kification",
-   "title_en": "kification",
+   "title_en": "compactly generated spaces form a coreflective subcategory",
    "abstract_en": "The category $k\\mathbf{Top}$ of compactly generated spaces is a coreflective subcategory of $\\mathbf{Top}$: the inclusion $i$ has a right adjoint $k$ that keeps the underlying set and replaces the topology by the $k$-topology, $i \\dashv k$, i.e. $\\operatorname{Hom}_{\\mathbf{Top}}(X, Y) \\cong \\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$ for compactly generated $X$. The counit $kY \\to Y$ is the identity map, continuous because the $k$-topology is the finer one.",
    "statement_en": "The category $k\\mathbf{Top}$ of compactly generated spaces is a **coreflective subcategory** of $\\mathbf{Top}$: the inclusion functor $i : k\\mathbf{Top} \\hookrightarrow \\mathbf{Top}$ has a **right** adjoint\n\n$$k : \\mathbf{Top} \\longrightarrow k\\mathbf{Top}, \\qquad X \\mapsto kX$$\n\nthat is, $i \\dashv k$. The space $kX$ has the same underlying set as $X$, with the topology replaced by the $k$-topology.",
    "notes_en": "**What has to be shown**: for every compactly generated space $X$ and every topological space $Y$,\n\n$$\\operatorname{Hom}_{\\mathbf{Top}}(X,\\ Y) \\;\\cong\\; \\operatorname{Hom}_{k\\mathbf{Top}}\\bigl(X,\\ kY\\bigr).$$\n\n**Proof.** The counit is $\\varepsilon_{Y} : kY \\to Y$ (the identity map, topology from finer to coarser, continuous).\n\n- First, $kY$ really is compactly generated: compose every continuous map $S \\to Y$ ($S$ compact Hausdorff) with $\\varepsilon_{Y}$ to lift it to $S \\to kY$, then use the definition of $kY$ (how $k$-open sets are taken) to verify that \"the topology is determined by these maps\".\n- So whenever $f : X \\to Y$ is continuous (with $X$ compactly generated), $f = \\varepsilon_{Y} \\circ f': X \\to kY$ yields a continuous map $f'$ into $kY$: let $U \\subseteq kY$ be open; we must show that $f'^{-1}(U)$ is open in $X$. Since $X$ is compactly generated, it suffices to check for every compact $L \\subseteq X$ that $f'^{-1}(U) \\cap L$ is open in $L$. But $f|_{L} : L \\to Y$ is continuous and $L$ is compact, so $f(L)$ is compact; $U \\cap f(L)$ is open in $f(L)$, hence $(f|_{L})^{-1}\\bigl(U \\cap f(L)\\bigr) = f'^{-1}(U) \\cap L$ is open in $L$. ∎\n- The converse direction follows directly from continuity of $\\varepsilon_{Y}$. The two directions are mutually inverse, which is the isomorphism.\n\n⭐ Keep this side by side with compact Hausdorff: $\\mathbf{CHaus}$ is a **reflective** subcategory of $\\mathbf{Top}$ (the inclusion has a **left** adjoint $\\beta$), whereas $k\\mathbf{Top}$ is **coreflective** (the inclusion has a **right** adjoint $k$). One \"tightens\" a space, the other \"loosens\" it — hence the former is closed under limits and the latter under **colimits**.",

@@ -1,6 +1,8 @@
 # 别名 → 节点 · 拓扑学
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../topology.md`
 
+- 积拓扑 | product topology | 乘积空间 | 投影 → def.product-topology
+
 - 笛卡尔闭 | cartesian closed | currying | 指数对象 | Theorem 2.3.6 | Thm 2.3.6 | Exercise 2.30 → prop.cg-cartesian-closed
 
 - 指数伴随 | Corollary 2.3.7 | Cor 2.3.7 | 余极限万有 → cor.cg-exponential-adjoint
@@ -16,7 +18,5 @@
 - Pontryagin-van Kampen | 庞特里亚金对偶定理 | Theorem 6.2.4 | Thm 6.2.4 | 自等价 | Exercise 6.7 → thm.pontryagin-van-kampen
 
 - Tietze 延拓 | Tietze | Banach 值 Tietze | Theorem 8.2.7 → thm.tietze-banach
-
-- 局部紧阿贝尔群结构定理 | 结构定理 | V⊕K | Theorem 6.2.5 → thm.lc-structure
 
 > 续见 alias/aka/topology.9.md

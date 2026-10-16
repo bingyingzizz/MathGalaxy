@@ -14,6 +14,13 @@
 > 产物：`dist/nodes/<id>.en.md` 里的 `## Statement` / `## Notes` 两节（标题上带该字段自己的状态）。
 > 公式体检：`bun tools/_stcheck.mjs` → 11 个节点 / 22 个字段 / 行内公式 221 · 块级 13 · **失败 0**。
 > 状态体检：`bun tools/i18n-status.mjs`（默认只报不写；改完内容一定要跑一次）。
+>
+> ⭐ **作者 2026-10-16 批复（原话）**：「那个 kification 根本就不是标准用词，你改掉，其他没啥问题，
+> 星团也没啥问题。」
+> ⇒ 第 5 条（英文名）已改（见第四节）；②③④⑥ 按「其他没啥问题」**照原样通过**；
+> 45 个星团英文名通过（见 `i18n/review-clusters.md`）。
+> ⚠️ **本批的 33 条状态仍是 `draft`** —— 「逐条标 reviewed」是要单独点头的动作（决策③：
+> 只有作者能把 `status` 改成 `'reviewed'`），翻完这几处「机器起草、待审」的横幅才会消失。
 
 ---
 
@@ -161,7 +168,7 @@
 | 2 | `\mathbf{AbCHaus}`、`\mathbf{AbTop}`、`\mathbf{AbHaus}` 这类记号 | 原样保留 | 是不是应该写成 $\mathbf{AbCHaus}$ 以外的标准记号？（我按中文页原样） |
 | 3 | 「不严格」 | "is not strict" | ⚠️ 这里的「严格」是 strict morphism 还是别的意思？ |
 | 4 | 「可列」vs「可数」 | 英文统一 **countable** | 中文页两种写法混用（`对可列不交并封闭` / `可数可加`），要不要统一中文？ |
-| 5 | `prop.cg-coreflective` 的英文名 | 仍是 `kification`（T2.2 报告过，那是**函子**不是节点名） | 建议改成 `compactly generated spaces form a coreflective subcategory` —— 本批的英文页大标题正用着 `kification` |
+| 5 | `prop.cg-coreflective` 的英文名 | ✅ **已按你的批复改掉**（「kification 根本就不是标准用词」）：`kification` 从 aka 删掉，新名字 = `compactly generated spaces form a coreflective subcategory`（重跑 `i18n-backfill.mjs`；58 字符 > 32 ⇒ 只填 `title_en`，`label_en` 留空、回落 title_en）| —（已结案）|
 | 6 | 「说明」这一节的英文 | **Notes**（与 `.en.md` 的 `## Notes`、面板的 `NOTES` 一致） | — |
 | 7 | 状态 | ✅ **已按你的批复改成逐条**（每个字段一行 `status` + `basedOn`，见上面「零、逐条状态」）：审完哪几条、哪些字段，说一声我就把那一行的 `status` 改成 `'reviewed'`（顺带填 `reviewed: { by, date }`），其余条不受影响 | 可以只批一部分（例如只批陈述、说明留下批）|
 

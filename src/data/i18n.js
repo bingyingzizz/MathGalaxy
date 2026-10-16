@@ -240,7 +240,7 @@ MG.i18n = {
     'prop.abelianization': { title_en: 'abelianization', label_en: 'abelianization', from: 'aka' },
     'prop.adjoint-full-faithful': { title_en: 'fully faithful iff the unit is an isomorphism', label_en: null, from: 'aka' },
     'prop.calculus-of-fractions': { title_en: 'calculus of fractions', label_en: 'calculus of fractions', from: 'aka' },
-    'prop.cg-coreflective': { title_en: 'kification', label_en: 'kification', from: 'aka' },
+    'prop.cg-coreflective': { title_en: 'compactly generated spaces form a coreflective subcategory', label_en: null, from: 'aka' },
     'prop.cg-wh-iff-qseparated': { title_en: 'weak Hausdorff iff quasi-separated', label_en: null, from: 'aka' },
     'prop.cgwh-fiber-product': { title_en: 'fiber product compact', label_en: 'fiber product compact', from: 'aka' },
     'prop.chaus-reflective': { title_en: 'Stone–Čech compactification', label_en: 'Stone–Čech compactification', from: 'aka' },

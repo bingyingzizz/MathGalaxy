@@ -119,9 +119,17 @@ T2.4 是给这些**界面外壳文案**加英文模式。你的规矩是「>200 
 但它是搜索词 ⇒ 要么接受丢失，要么加在别的 aka 条目里）。
 
 **处理结果**：照 (a) 做了 —— `Noether` / `Delta` 都从 aka 里去掉，两个名字都已修正。
-⚠️ 第 3 处 `prop.cg-coreflective` → `kification` 我**按原样留着没动**（任务书没点名），
-它现在的名字仍是 `kification`；要改就说一声（改法与上面两条一样：把 `kification` 从 aka 里去掉，
-再补一个真正的名字）。
+✅ **第 3 处 `prop.cg-coreflective` 也改掉了**（作者 2026-10-16 批复：「那个 kification 根本就不是
+标准用词，你改掉」）：`kification` 从 aka 里**删掉**，换成
+`compactly generated spaces form a coreflective subcategory`（= 上面建议的那条），
+重跑 `bun tools/i18n-backfill.mjs`。
+⚠️ 连带的两点如实记下：
+· 新名字 58 字符 > 32 ⇒ 按既定规则**只填 `title_en`，`label_en` 留空**（画布与面板回落 title_en）。
+  这是全库最长的英文名（第二名 54：`thm.topos-abelian-grothendieck`），
+  同类的「只有 title_en」节点共有 10 个 —— 不是异类，但确实是最长的一个。
+· 搜索里 `kification` 现在是 **0 命中**（它不再是 aka）——既然不是标准用词，这个代价可以接受。
+  `def.k-topology` 的 aka 里仍留着 `k-ification`（对应中文「k-化」，只当**搜索词**，
+  它本来就被 `nameLike` 闸门挡在名字之外）——要不要一起删，说一声即可。
 
 **选项**：(a) 按上面删 aka（推荐，不需要新机制）；(b) 保持现状（`i18n/second-tier.md` 里标着 ⚠️）；
 (c) 加人工排除名单（要新机制，我不建议）。
