@@ -180,7 +180,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathfrak{A}$ 是一个**环**。则下列三条等价：',
         '',
-        '$$\\mathfrak{A}\\text{ 是} \\sigma-\\text{环} \\iff \\mathfrak{A}\\text{ 是单调类} \\iff \\mathfrak{A}\\text{ 对可列不交并封闭}$$'
+        '1. $\\mathfrak{A}$ 是 $\\sigma$-环；',
+        '2. $\\mathfrak{A}$ 是单调类；',
+        '3. $\\mathfrak{A}$ 对可列不交并封闭。'
       ].join('\n'),
       notes: [
         '注意前提「$\\mathfrak{A}$ 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 $\\sigma$环。',

@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.product-measure)　·　[Chinese page (authoritative)](./def.product-measure.md)
 
-**Everything goes through when the measures are σ-finite**: if $\mu$ and $\nu$ are both σ-finite, then so is $\mu \times \nu$, and by Carathéodory uniqueness the measure constructed this way is unique.
+**Everything goes through when the measures are $\sigma$-finite**: if $\mu$ and $\nu$ are both $\sigma$-finite, then $\mu \times \nu$ is $\sigma$-finite as well, and by Carathéodory uniqueness the measure constructed this way is unique.
 
 ⚠ The whole machine of this step (premeasure $\to$ outer measure $\to$ Carathéodory extension $\to$ uniqueness) is exactly the off-the-shelf quartet from the "constructing measures" cluster.
 

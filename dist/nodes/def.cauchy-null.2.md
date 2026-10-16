@@ -7,9 +7,7 @@ $(x_n)$ 是 **Cauchy 列**：
 $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N : |x_m - x_n| < \varepsilon$$
 $(x_n)$ 是**零列**：
 $$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
-两个 Cauchy 列**等价**：
-
-$$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ 是零列}$$
+两个 Cauchy 列**等价**（记作 $(x_n) \sim (y_n)$）当且仅当 $(x_n - y_n)$ 是零列。
 （$\sim$ 是等价关系：自反、对称显然，传递由三角不等式。）
 
 > 续见 [nodes/def.cauchy-null.3.md](./def.cauchy-null.3.md)

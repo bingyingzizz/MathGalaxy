@@ -15,6 +15,4 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
 
 Two Cauchy sequences are **equivalent**:
 
-$$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ is a null sequence}$$
-
 > 续见 nodes/def.cauchy-null.en.5.md

@@ -93,9 +93,9 @@ window.MG = window.MG || {};
           '- 固定拓扑空间 $X$ 与子空间 $Y \\subseteq X$，反变函子',
         ].join('\n'),
         '',
-        '  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto \\{\\, f : Z \\to X \\ \\mid\\ f \\text{ 连续且 } f(Z) \\subseteq Y \\,\\}$$',
+        '  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto \\{\\, f \\in \\mathcal{C}(Z, X) \\ \\mid\\ f(Z) \\subseteq Y \\,\\}$$',
         '',
-        '  被 $F(Y)$ 里那个自然元素 $i : Y \\rightarrowtail X$ 表示。'
+        '  （$\\mathcal{C}(Z, X)$ 记 $Z \\to X$ 的连续映射全体）被 $F(Y)$ 里那个自然元素 $i : Y \\rightarrowtail X$ 表示。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },

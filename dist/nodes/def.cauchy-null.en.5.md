@@ -2,6 +2,8 @@
 English entry · root `../`
 [in graph](../#n=def.cauchy-null)　·　[Chinese page (authoritative)](./def.cauchy-null.md)
 
+Two Cauchy sequences are **equivalent** (written $(x_n) \sim (y_n)$) if and only if $(x_n - y_n)$ is a null sequence.
+
 ($\sim$ is an equivalence relation: reflexivity and symmetry are immediate, transitivity follows from the triangle inequality.)
 
 ## Notes

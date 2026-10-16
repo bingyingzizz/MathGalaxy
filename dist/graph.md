@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-16T02:56:02.804Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-16T03:49:14.632Z
 > 9 星系 / 45 星团 / 709 节点 / 1398 连线（强边 1389，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -860,9 +860,7 @@ $(x_n)$ 是**零列**：
 
 $$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N : |x_n| < \varepsilon$$
 
-两个 Cauchy 列**等价**：
-
-$$(x_n) \sim (y_n) :\iff (x_n - y_n) \text{ 是零列}$$
+两个 Cauchy 列**等价**（记作 $(x_n) \sim (y_n)$）当且仅当 $(x_n - y_n)$ 是零列。
 
 （$\sim$ 是等价关系：自反、对称显然，传递由三角不等式。）
 
@@ -1247,8 +1245,6 @@ Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公�
 *引理*　佐恩引理（Zorn's Lemma）
 
 设 $(P, \preceq )$ 是**非空**偏序集。若 $P$ 的每个链在 $P$ 中都有上界，则 $P$ 有**极大元**。
-
-$$P \ne \emptyset \wedge  ( \forall C \subseteq P, C\text{ 是链} \to \exists u \in P, u\text{ 是} C\text{ 的上界} ) \implies \exists m \in P, m\text{ 是极大元}$$
 
 两个条件都不可省：空偏序集没有极大元；"每个链有上界"保证不了「最大元」——只能保证极大元。
 
@@ -2833,7 +2829,7 @@ $$G \big/ \ker\varphi \;\cong\; \operatorname{im}\varphi, \qquad g \ker\varphi \
 
 
 
-- **良定义**：若 $g K = g' K$，则 $g' = g k$（某个 $k \in K$），于是 $\varphi(g') = \varphi(g)\varphi(k) = \varphi(g) e' = \varphi(g)$ —— 同一陪集里的元素被送到同一个值。
+- **良定义**：若 $gK = g'K$，则 $g' = gk$（某个 $k \in K$），于是 $\varphi(g') = \varphi(g)\varphi(k) = \varphi(g)e' = \varphi(g)$ —— 同一陪集里的元素被送到同一个值。
 - **同态**：$\overline{\varphi}\bigl((gK)(g'K)\bigr) = \overline{\varphi}(gg'K) = \varphi(gg') = \varphi(g)\varphi(g') = \overline{\varphi}(gK)\,\overline{\varphi}(g'K)$。
 - **双射**：单，因为 $\overline{\varphi}(gK) = e'$ 意味着 $\varphi(g) = e'$，即 $g \in K$，于是 $gK = K$；满，因为像本来就是 $\varphi(G)$。∎
 
@@ -3361,7 +3357,9 @@ $$\mathfrak{A} = \{ \mathcal{E}\text{ 中有限多个两两不交集合之并} \
 
 设 $\mathfrak{A}$ 是一个**环**。则下列三条等价：
 
-$$\mathfrak{A}\text{ 是} \sigma-\text{环} \iff \mathfrak{A}\text{ 是单调类} \iff \mathfrak{A}\text{ 对可列不交并封闭}$$
+1. $\mathfrak{A}$ 是 $\sigma$-环；
+2. $\mathfrak{A}$ 是单调类；
+3. $\mathfrak{A}$ 对可列不交并封闭。
 
 注意前提「$\mathfrak{A}$ 是环」不可省 —— 单调类一般不封闭于有限并，所以单调类本身推不出 $\sigma$环。
 
@@ -7656,11 +7654,11 @@ $$\forall Y \in \mathcal{C},\ \forall t \in F(Y),\ \exists! \, f : X \to Y,\qqua
 
 
 
-  $$F : \mathbf{Top}^{\mathrm{op}} \to \mathbf{Set}, \qquad Z \mapsto \{\, f : Z \to X \ \mid\ f \text{ 连续且 } f(Z) \subseteq Y \,\}$$
+  $$F : \mathbf{Top}^{\mathrm{op}} \to \mathbf{Set}, \qquad Z \mapsto \{\, f \in \mathcal{C}(Z, X) \ \mid\ f(Z) \subseteq Y \,\}$$
 
 
 
-  被 $F(Y)$ 里那个自然元素 $i : Y \rightarrowtail X$ 表示。
+  （$\mathcal{C}(Z, X)$ 记 $Z \to X$ 的连续映射全体）被 $F(Y)$ 里那个自然元素 $i : Y \rightarrowtail X$ 表示。
 
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 

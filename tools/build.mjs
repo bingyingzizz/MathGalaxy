@@ -1703,6 +1703,26 @@ function assertAbstracts(MG, graph) {
 /* 真源 = `src/data/i18n/statements.en.js`（创译型，agent 起草、作者审校）。
    断言：① id 真实存在；② 有 status / basedOn；③ 字段非空、不含汉字、不含禁用命令；
         ④ 每条至少有 statement_en 或 notes_en 之一（空条目等于没写）。 */
+/* ---------------------------------------------- 公式抽取（公式不变量用） */
+/** 把一段正文里的公式抠出来（块级优先，避免 `$$` 被当成两个 `$`） */
+function formulasOf(s) {
+  const out = [];
+  const re = /\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g;
+  let m;
+  while ((m = re.exec(String(s || '')))) out.push({ block: m[1] != null, tex: m[1] != null ? m[1] : m[2] });
+  return out;
+}
+/** a 里有、b 里没有的元素（多重集差，⛔ 不折叠空白 —— 要的就是逐字） */
+function multisetDiff(a, b) {
+  const rest = b.slice();
+  const only = [];
+  for (const x of a) {
+    const i = rest.indexOf(x);
+    if (i >= 0) rest.splice(i, 1); else only.push(x);
+  }
+  return only;
+}
+
 function assertStatements(MG, graph) {
   const S = MG.i18nStatements;
   if (!S) return ['英文陈述：`src/data/i18n/statements.en.js` 没有挂上（loadMG 少了它？）'];
@@ -1712,7 +1732,8 @@ function assertStatements(MG, graph) {
   if (!S.basedOn) errs.push('英文陈述：缺 basedOn（译自哪个内容版本）');
   const BAN = ['\\dots', '\\Rightarrow', '\\leq', '\\geq', '\\neq', '\\impliedby'];
   for (const [id, rec] of Object.entries(items)) {
-    if (!graph.byId[id]) { errs.push(`英文陈述：节点不存在 \`${id}\``); continue; }
+    const n = graph.byId[id];
+    if (!n) { errs.push(`英文陈述：节点不存在 \`${id}\``); continue; }
     const fields = Object.keys(rec || {}).filter((k) => rec[k]);
     if (!fields.length) { errs.push(`英文陈述：\`${id}\` 是空条目（要么写，要么删）`); continue; }
     for (const f of ['statement_en', 'notes_en']) {
@@ -1721,8 +1742,48 @@ function assertStatements(MG, graph) {
       if (/[\u4e00-\u9fff]/.test(s)) errs.push(`英文陈述：\`${id}.${f}\` 含汉字`);
       for (const b of BAN) if (String(s).includes(b)) errs.push(`英文陈述：\`${id}.${f}\` 用了禁用命令 ${b}`);
     }
+    /* ⭐⭐ 公式不变量（作者 2026-10-16 拍板：两语言公式**逐字一致**）
+       ① 公式里不得出现汉字（中文页也不行 —— 汉字要移进散文或换成中英皆可的记号）；
+       ② 行内 / 块级公式**条数相等**；
+       ③ 公式的**多重集**完全相同（顺序可以随译文语序变，内容不许变）。
+       ⛔ 只查 statement（散文里英文把词粘在一起的方式跟中文不同，
+          notes 的公式条数天然可以对不上 —— 那部分只查「公式无汉字」）。 */
+    for (const [zf, ef] of [['statement', 'statement_en'], ['notes', 'notes_en']]) {
+      if (!rec[ef]) continue;
+      const z = formulasOf(n[zf]), e = formulasOf(rec[ef]);
+      const zc = [z.filter((x) => !x.block).length, z.filter((x) => x.block).length];
+      const ec = [e.filter((x) => !x.block).length, e.filter((x) => x.block).length];
+      const han2 = z.concat(e).filter((x) => /[\u4e00-\u9fff]/.test(x.tex));
+      if (han2.length) {
+        errs.push(`公式不变量：\`${id}.${zf === 'statement' ? 'statement' : 'notes'}\` 的公式里有汉字 ` +
+          `（要移进散文，或换成中英皆可的记号）：${han2[0].tex.slice(0, 50)}`);
+      }
+      if (zf === 'statement' && (zc[0] !== ec[0] || zc[1] !== ec[1])) {
+        errs.push(`公式不变量：\`${id}\` 中英公式条数不等 —— 中（行内 ${zc[0]} / 块级 ${zc[1]}）` +
+          ` vs 英（行内 ${ec[0]} / 块级 ${ec[1]}）`);
+      }
+      if (zf === 'statement') {
+        const key = (x) => (x.block ? 'B:' : 'I:') + x.tex;
+        const diffZ = multisetDiff(z.map(key), e.map(key));
+        if (diffZ.length) {
+          errs.push(`公式不变量：\`${id}\` 中英公式多重集不同 —— ` +
+            `只在中文里 ${JSON.stringify(diffZ[0])}${diffZ.length > 1 ? ` 等 ${diffZ.length} 条` : ''}`);
+        }
+      }
+    }
   }
   const st = i18nState(S);
+  /* ⭐ 顺带报一次「公式含汉字」的待办账（不失败：那些节点还没翻译，见 i18n/formula-han.md） */
+  if (MG.i18nStatements) {
+    let debt = 0;
+    for (const n of graph.nodes) {
+      if (Object.prototype.hasOwnProperty.call(items, n.id)) continue;   // 已翻译的上面已经逐个查过
+      if (formulasOf(n.statement).some((x) => /[\u4e00-\u9fff]/.test(x.tex))) debt++;
+    }
+    if (debt) {
+      console.log(`  i18n：另有 ${debt} 个未翻译节点的陈述里公式含汉字（翻译它们前要先改公式，账本 i18n/formula-han.md）`);
+    }
+  }
   console.log(`  i18n：statement_en/notes_en ${Object.keys(items).length} 个节点 · 状态 ${st.state}`);
   return errs;
 }

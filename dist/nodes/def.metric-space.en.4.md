@@ -7,7 +7,7 @@ The open balls form a **base** for this topology. Every metric space is first co
 
 The properties that follow fall into two classes: **compactness / closedness** depend only on the open sets and are **topological**; **completeness / total boundedness** use $d$ and are **metric**. This dividing line is the point of the whole cluster.
 
-⚠ Completeness is **not** a topological property: $\mathbb{R}$ and the open interval $(0, 1)$ are homeomorphic, yet only the first is complete.
+⚠ Completeness is **not** a topological property: $\mathbb{R}$ and the open interval (0, 1) are homeomorphic, yet only the first is complete.
 
 > Proofs of the edges are still Chinese only: `proofs/`; the Chinese page remains authoritative.
 

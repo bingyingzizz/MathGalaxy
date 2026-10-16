@@ -33,11 +33,8 @@ MG.i18nStatements = {
     /* ---------------------------------------------------------- 佐恩引理 */
     'lem.zorn': {
       statement_en:
-        'Let $(P, \\preceq)$ be a **non-empty** poset. If every chain in $P$ has an upper bound ' +
-        'in $P$, then $P$ has a **maximal element**.\n\n' +
-        '$$P \\ne \\emptyset \\wedge ( \\forall C \\subseteq P, C\\text{ is a chain} \\to ' +
-        '\\exists u \\in P, u\\text{ is an upper bound of } C ) \\implies \\exists m \\in P, ' +
-        'm\\text{ is maximal}$$',
+        'Let $(P, \\preceq )$ be a **non-empty** poset. If every chain in $P$ has an upper bound ' +
+        'in $P$, then $P$ has a **maximal element**.',
       notes_en:
         'Neither hypothesis can be dropped: the empty poset has no maximal element, and ' +
         '"every chain has an upper bound" does not give a *greatest* element — only a maximal one.\n\n' +
@@ -90,8 +87,8 @@ MG.i18nStatements = {
     /* -------------------------------------------------------- 距离空间 */
     'def.metric-space': {
       statement_en:
-        'A **metric space** is a pair $(X, d)$: $X$ is a set and ' +
-        '$d : X \\times X \\to [0, +\\infty)$ is a **metric** on $X$, satisfying\n\n' +
+        'A **metric space** is a pair (X, d): $X$ is a set and ' +
+        '$d : X \\times X \\to [0, +\\infty )$ is a **metric** on $X$, satisfying\n\n' +
         '- **non-degeneracy**: $d(x, y) = 0 \\iff x = y$\n' +
         '- **symmetry**: $d(x, y) = d(y, x)$\n' +
         '- **triangle inequality**: $d(x, z) \\le d(x, y) + d(y, z)$\n\n' +
@@ -107,7 +104,7 @@ MG.i18nStatements = {
         'only on the open sets and are **topological**; **completeness / total boundedness** ' +
         'use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n' +
         '⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval ' +
-        '$(0, 1)$ are homeomorphic, yet only the first is complete.',
+        '(0, 1) are homeomorphic, yet only the first is complete.',
     },
 
     /* ======================================================================
@@ -128,7 +125,8 @@ MG.i18nStatements = {
         '$(x_n)$ is a **null sequence**:\n\n' +
         '$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n \\ge N : |x_n| < \\varepsilon$$\n\n' +
         'Two Cauchy sequences are **equivalent**:\n\n' +
-        '$$(x_n) \\sim (y_n) :\\iff (x_n - y_n) \\text{ is a null sequence}$$\n\n' +
+        'Two Cauchy sequences are **equivalent** (written $(x_n) \\sim (y_n)$) if and only if ' +
+        '$(x_n - y_n)$ is a null sequence.\n\n' +
         '($\\sim$ is an equivalence relation: reflexivity and symmetry are immediate, ' +
         'transitivity follows from the triangle inequality.)',
       notes_en:
@@ -178,8 +176,9 @@ MG.i18nStatements = {
         '- Fix a topological space $X$ and a subspace $Y \\subseteq X$, and take the ' +
         'contravariant functor\n\n' +
         '  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto ' +
-        '\\{\\, f : Z \\to X \\ \\mid\\ f \\text{ continuous and } f(Z) \\subseteq Y \\,\\}$$\n\n' +
-        '  It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.',
+        '\\{\\, f \\in \\mathcal{C}(Z, X) \\ \\mid\\ f(Z) \\subseteq Y \\,\\}$$\n\n' +
+        '  (here $\\mathcal{C}(Z, X)$ denotes the set of continuous maps $Z \\to X$). ' +
+        'It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.',
     },
 
     /* ------------------------------------------ 5. 加法 / 阿贝尔范畴 */
@@ -213,7 +212,7 @@ MG.i18nStatements = {
         'epimorphism — because condition 1 guarantees that "regular" and "cancellable" are the ' +
         'same thing.\n\n' +
         'Examples: $A\\text{-}\\mathbf{Mod}$ is abelian; so is $\\mathbf{Ab}(\\mathcal{T})$ for a ' +
-        'topos $\\mathcal{T}$; so is $\\mathbf{AbCHaus}$. But $\\mathbf{AbTop}$ is **not** (the ' +
+        'topos; so is $\\mathbf{AbCHaus}$. But $\\mathbf{AbTop}$ is **not** (the ' +
         'identity map $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is not ' +
         'strict), and neither is $\\mathbf{AbHaus}$.\n\n' +
         'An abelian category is the **working environment** of homological algebra as a whole: ' +
@@ -243,9 +242,9 @@ MG.i18nStatements = {
         'different disjoint unions of rectangles) — this is exactly why "rectangles" are ' +
         'replaced by "**disjoint** unions of rectangles": under disjoint unions, additivity is ' +
         'easy to verify.\n\n' +
-        '**Everything goes through when the measures are σ-finite**: if $\\mu$ and $\\nu$ are ' +
-        'both σ-finite, then so is $\\mu \\times \\nu$, and by Carathéodory uniqueness the measure ' +
-        'constructed this way is unique.\n\n' +
+        '**Everything goes through when the measures are $\\sigma$-finite**: if $\\mu$ and $\\nu$ ' +
+        'are both $\\sigma$-finite, then $\\mu \\times \\nu$ is $\\sigma$-finite as well, and by ' +
+        'Carathéodory uniqueness the measure constructed this way is unique.\n\n' +
         '⚠ The whole machine of this step (premeasure $\\to$ outer measure $\\to$ Carathéodory ' +
         'extension $\\to$ uniqueness) is exactly the off-the-shelf quartet from the ' +
         '"constructing measures" cluster.',
@@ -334,8 +333,9 @@ MG.i18nStatements = {
     'thm.ring-monotone-sigma': {
       statement_en:
         'Let $\\mathfrak{A}$ be a **ring**. Then the following three conditions are equivalent:\n\n' +
-        '$$\\mathfrak{A}\\text{ is a } \\sigma\\text{-ring} \\iff \\mathfrak{A}\\text{ is a ' +
-        'monotone class} \\iff \\mathfrak{A}\\text{ is closed under countable disjoint unions}$$',
+        '1. $\\mathfrak{A}$ is a $\\sigma$-ring;\n' +
+        '2. $\\mathfrak{A}$ is a monotone class;\n' +
+        '3. $\\mathfrak{A}$ is closed under countable disjoint unions.',
       notes_en:
         'Note that the hypothesis "$\\mathfrak{A}$ is a ring" cannot be dropped — a monotone ' +
         'class is in general not closed under finite unions, so being a monotone class by ' +

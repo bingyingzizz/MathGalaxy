@@ -50,9 +50,7 @@ window.MG = window.MG || {};
       regions: ['order-theory', 'set-theory'],
       tags: ['ZFC', '等价命题', '极大原理'],
       statement: [
-        '设 $(P, \\preceq )$ 是**非空**偏序集。若 $P$ 的每个链在 $P$ 中都有上界，则 $P$ 有**极大元**。',
-        '',
-        '$$P \\ne \\emptyset \\wedge  ( \\forall C \\subseteq P, C\\text{ 是链} \\to \\exists u \\in P, u\\text{ 是} C\\text{ 的上界} ) \\implies \\exists m \\in P, m\\text{ 是极大元}$$'
+        '设 $(P, \\preceq )$ 是**非空**偏序集。若 $P$ 的每个链在 $P$ 中都有上界，则 $P$ 有**极大元**。'
       ].join('\n'),
       notes: [
         '两个条件都不可省：空偏序集没有极大元；"每个链有上界"保证不了「最大元」——只能保证极大元。',
