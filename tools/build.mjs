@@ -839,18 +839,36 @@ function exportAIProducts(MG, graph, data) {
     return { r, cs };
   }).filter(x => x.cs.length);
 
-  files.push({
-    path: 'index.md',
-    text: `# 数学星图 · 目录\n\n` +
+  /* ⚠️ 入口页只有 1300 B 的预算（硬断言）：只写「星系 → 星团 id」，
+     星团的名字（中文 + 英文）在 `index/<星系id>.md` 那一页 —— 别往这里加名字。
+     ⭐ 2026-10-16：星团数涨到 52 之后这一页顶破了 1300 B，于是**按星系分页**
+     （`index.md` + `index.2.md` + …，与其他产物同一套分页约定）。 */
+  {
+    const head = `# 数学星图 · 目录\n\n` +
       `数据根 = 本目录。下一步：读 \`index/<星团id>.md\` 拿节点清单。\n` +
       `星团的名字见 \`index/<星系id>.md\`（那页还有中心天体与点数）。\n` +
       `规模：${data.meta.counts.regions} 星系 / ${data.meta.counts.clusters} 星团 / ` +
-      `${data.meta.counts.nodes} 节点 / ${data.meta.counts.edges} 连线。\n\n` +
-      /* ⚠️ 这份是**入口页**，只有 1300 B 的预算（硬断言）：只写「星系 → 星团 id」，
-         星团的名字（中文 + 英文）在 `index/<星系id>.md` 那一页 —— 别往这里加名字。 */
-      regions.map(({ r, cs }) =>
-        `## ${r.name}（${r.id}）\n` + cs.map(c => c.id).join('　')).join('\n\n') + '\n',
-  });
+      `${data.meta.counts.nodes} 节点 / ${data.meta.counts.edges} 连线。\n\n`;
+    const blocks = regions.map(({ r, cs }) =>
+      `## ${r.name}（${r.id}）\n` + cs.map(c => c.id).join('　'));
+    const parts = [];
+    let cur = '';
+    for (const b of blocks) {
+      if (cur && aiBytes(head + cur + b + '\n') > AI_MAXB - 150) { parts.push(cur); cur = ''; }
+      cur += b + '\n\n';
+    }
+    if (cur) parts.push(cur);
+    const N = parts.length;
+    parts.forEach((t, i) => {
+      const k = i + 1;
+      const h = k === 1
+        ? head
+        : `# 数学星图 · 目录（第 ${k}/${N} 页）\n\n根 \`../\`　·　第 1 页 \`index.md\`\n\n`;
+      let text = h + t.trim() + '\n';
+      if (k < N) text += `\n> 续见 \`index.${k + 1}.md\`\n`;
+      files.push({ path: k === 1 ? 'index.md' : `index.${k}.md`, text });
+    });
+  }
 
   for (const { r, cs } of regions) {
     /* ⭐ 星团英文名（clusters.js 的 en，T2.4）也排进目录：英文读者/AI 顺着 id 走进来时，

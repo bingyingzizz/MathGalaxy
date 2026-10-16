@@ -137,7 +137,31 @@ MG.clusters = [
     en: 'Bases of Vector Spaces',
     parent: 'algebra',
     hub: 'def.vs',
-    desc: '造出线性代数的地基：每个向量空间都有基。'
+    desc: '造出线性代数的地基：线性无关 / 张成 → 基 → 维数（任意两组基等势）。$\\operatorname{span} S = \\bigcap \\{W \\supseteq S\\}$ 这个「取一切之交」的模板与 $\\sigma$-代数的生成是同一招。'
+  },
+  {
+    id: 'algebra.matrix',
+    name: '矩阵与行列式',
+    en: 'Matrices and Determinants',
+    parent: 'algebra',
+    hub: 'def.determinant',
+    desc: '造出「把线性映射写成数字阵列」的整套工具：矩阵 → 选定基后的线性映射 ⟷ 矩阵 → 基变换与相似 → 初等变换与秩 → 线性方程组的解结构 → **行列式**（交错多重线性的唯一刻画）→ 乘性 → Laplace 展开与 Cramer 法则。'
+  },
+  {
+    id: 'algebra.polynomial',
+    name: '多项式与因式分解',
+    en: 'Polynomials and Factorization',
+    parent: 'algebra',
+    hub: 'thm.fundamental-algebra',
+    desc: '造出 $K[x]$ 这套装置：多项式 → 带余除法（$K[x]$ 是欧几里得整环）→ 因式定理 → **代数基本定理**（$\\mathbb{C}$ 代数闭）→ 不可约多项式与唯一分解。它是特征多项式、有理标准型与 Galois 理论的共同地基。'
+  },
+  {
+    id: 'algebra.linmap',
+    name: '线性映射与秩',
+    en: 'Linear Maps and Rank',
+    parent: 'algebra',
+    hub: 'thm.rank-nullity',
+    desc: '造出「线性映射」这套语言：线性映射 → 核与像 → 商空间与第一同构定理 → **秩-零化度定理** → 对偶空间与零化子。它是「群同态 → 正规子群 → 第一同构定理」那套模板在向量空间上的重演。'
   },
 
   /* ------------------------------------------------ 星系：拓扑学 */

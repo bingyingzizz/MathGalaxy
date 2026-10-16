@@ -7,7 +7,8 @@
 - `dist/notation/num.md` 数系与分析基础 26
 - `dist/notation/topo.md` 拓扑与度量 6
 - `dist/notation/measure.md` 测度与 σ-代数 25
-- `dist/notation/integral.md` 积分与函数空间 17
+- `dist/notation/integral.md` 积分与函数空间 16
+- `dist/notation/linalg.md` 线性代数 16
 - `dist/notation/layout.md` 排版与箭头 13
 - `dist/notation/cat.md` 范畴与同调 21
 - `dist/notation/letters.md` 字母约定 22
