@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.product-measure)　·　[Chinese page (authoritative)](./def.product-measure.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 17 · definition · cluster Product Measures and Fubini (`analysis.product`) · Analysis
 

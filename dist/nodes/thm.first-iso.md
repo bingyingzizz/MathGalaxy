@@ -4,13 +4,15 @@ layer 9 · 定理 · 代数结构 · 抽象代数+集合论
 [在星图里打开](../#n=thm.first-iso)　·　[节点索引](../index.md)
 
 设 $\varphi : G \to G'$ 是**群同态**。则 $\varphi$ 诱导出同构
+
+$$G \big/ \ker\varphi \;\cong\; \operatorname{im}\varphi, \qquad g \ker\varphi \;\longmapsto\; \varphi(g).$$
 > 陈述续见 [nodes/thm.first-iso.2.md](./thm.first-iso.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.first-iso.4.md](./thm.first-iso.4.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/thm.first-iso.3.md](./thm.first-iso.3.md)
 
 refs: Lang, Algebra, Ch. I §4；Dummit & Foote, Abstract Algebra, §10.2

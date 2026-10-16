@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=prop.nbv-derivative)　·　[Chinese page (authoritative)](./prop.nbv-derivative.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 20 · proposition · cluster Bounded Variation and Absolute Continuity (`analysis.bv`) · Analysis
 

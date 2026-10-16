@@ -13,7 +13,7 @@ layer 9 · 引理 · 选择原理 · 序理论+集合论
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/lem.zorn.3.md](./lem.zorn.3.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/lem.zorn.2.md](./lem.zorn.2.md)
 
 refs: Zorn (1935)；Kunen, Set Theory, I.12

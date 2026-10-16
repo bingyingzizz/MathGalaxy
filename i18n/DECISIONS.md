@@ -236,3 +236,7 @@ T2.4 是给这些**界面外壳文案**加英文模式。你的规矩是「>200 
   ⛔ 只报不写（手工刷新 `basedOn` 会悄悄作废审校记录）。
 - `graph.json` 的 `translations.en` 增 `fieldStatus` / `staleFields` / `basedOn`（逐字段）；
   `.md` 与概念页的小节标题也逐条带状态。
+- ⭐ **翻 `reviewed` 的入口**：`bun tools/i18n-review.mjs --ids … --by <审校者> [--date] [--fields] [--apply]`
+  （干跑默认；**不动 `basedOn`**）。⛔ 只有作者点头才跑 —— 决策③：`reviewed` 是作者的动作。
+  第一次使用：2026-10-16 作者批复「标」⇒ 批次 1 的 **33 条**（11 摘要 + 22 陈述/说明字段）已翻；
+  批次 2/3 的 19 条摘要仍是 draft。当前统计 **reviewed 33 · draft 23 · stale 0**。

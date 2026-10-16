@@ -13,7 +13,7 @@ layer 13 · 定义 · 度量空间 · 拓扑学
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/def.metric-space.6.md](./def.metric-space.6.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/def.metric-space.4.md](./def.metric-space.4.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 2；Munkres, Topology, §20

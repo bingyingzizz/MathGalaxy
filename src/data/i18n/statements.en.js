@@ -41,7 +41,7 @@ MG.i18nStatements = {
         en:
         'Let $(P, \\preceq )$ be a **non-empty** poset. If every chain in $P$ has an upper bound ' +
         'in $P$, then $P$ has a **maximal element**.',
-        status: 'draft', basedOn: 'v0.9.1#88c083ff', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#88c083ff', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -55,7 +55,7 @@ MG.i18nStatements = {
         'Kuratowski–Zorn lemma.\n\n' +
         '⚠ Non-constructive: what one obtains is "there exists a maximal element", and usually ' +
         'one cannot say which.',
-        status: 'draft', basedOn: 'v0.9.1#4e157a1c', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#4e157a1c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -69,7 +69,7 @@ MG.i18nStatements = {
         'g \\ker\\varphi \\;\\longmapsto\\; \\varphi(g).$$\n\n' +
         'In particular: **the image of a surjective homomorphism is the quotient group** ' +
         '($G/\\ker\\varphi \\cong G\'$ when $\\varphi$ is surjective).',
-        status: 'draft', basedOn: 'v0.9.1#1f75f342', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#1f75f342', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -97,7 +97,7 @@ MG.i18nStatements = {
         'two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), ' +
         'locked together by a single isomorphism. So studying homomorphisms is studying normal ' +
         'subgroups — which is why group theory turns into the study of the lattice of subgroups.',
-        status: 'draft', basedOn: 'v0.9.1#8164331f', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#8164331f', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -115,7 +115,7 @@ MG.i18nStatements = {
         'topology on $X$.\n\n' +
         'Given $\\varepsilon > 0$, a set $D \\subseteq X$ is called an **$\\varepsilon$-net** if ' +
         '$\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$.',
-        status: 'draft', basedOn: 'v0.9.1#31649b03', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#31649b03', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -126,7 +126,7 @@ MG.i18nStatements = {
         'use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n' +
         '⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval ' +
         '(0, 1) are homeomorphic, yet only the first is complete.',
-        status: 'draft', basedOn: 'v0.9.1#a1cebdb4', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#a1cebdb4', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -153,7 +153,7 @@ MG.i18nStatements = {
         '$(x_n - y_n)$ is a null sequence.\n\n' +
         '($\\sim$ is an equivalence relation: reflexivity and symmetry are immediate, ' +
         'transitivity follows from the triangle inequality.)',
-        status: 'draft', basedOn: 'v0.9.1#4ba3632c', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#4ba3632c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -173,7 +173,7 @@ MG.i18nStatements = {
         'some index on** (for some positive rational $\\delta$) — hence its reciprocal, after ' +
         'discarding finitely many terms, is again Cauchy. The third fact is the entire basis ' +
         'for "multiplication has inverses".',
-        status: 'draft', basedOn: 'v0.9.1#a43dd73a', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#a43dd73a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -189,7 +189,7 @@ MG.i18nStatements = {
         'One then also says that $F$ is **represented** by $(X, s)$.\n\n' +
         '**(ii) Representable.** If $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$, one says ' +
         'that $F$ is **represented** by $X$, and $X$ is called a **representing object** of $F$.',
-        status: 'draft', basedOn: 'v0.9.1#befbd619', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#befbd619', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -212,7 +212,7 @@ MG.i18nStatements = {
         '\\{\\, f \\in \\mathcal{C}(Z, X) \\ \\mid\\ f(Z) \\subseteq Y \\,\\}$$\n\n' +
         '  (here $\\mathcal{C}(Z, X)$ denotes the set of continuous maps $Z \\to X$). ' +
         'It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.',
-        status: 'draft', basedOn: 'v0.9.1#d1444966', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#d1444966', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -243,7 +243,7 @@ MG.i18nStatements = {
         '4. for every $f : M \\to N$, ' +
         '$\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong ' +
         '\\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$.',
-        status: 'draft', basedOn: 'v0.9.1#70512d43', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#70512d43', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -257,7 +257,7 @@ MG.i18nStatements = {
         'An abelian category is the **working environment** of homological algebra as a whole: ' +
         'with kernels and cokernels one can even state "exact sequence"; an additive category ' +
         'only supplies the additive skeleton (zero object and direct sums).',
-        status: 'draft', basedOn: 'v0.9.1#a8da619b', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#a8da619b', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -279,7 +279,7 @@ MG.i18nStatements = {
         'it to $\\mathcal{M} \\otimes  \\mathcal{N}$ gives a measure, written\n\n' +
         '$$\\mu \\times \\nu$$\n\n' +
         'that is, the **product measure**.',
-        status: 'draft', basedOn: 'v0.9.1#174abecd', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#174abecd', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -293,7 +293,7 @@ MG.i18nStatements = {
         '⚠ The whole machine of this step (premeasure $\\to$ outer measure $\\to$ Carathéodory ' +
         'extension $\\to$ uniqueness) is exactly the off-the-shelf quartet from the ' +
         '"constructing measures" cluster.',
-        status: 'draft', basedOn: 'v0.9.1#15d8cb14', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#15d8cb14', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -307,7 +307,7 @@ MG.i18nStatements = {
         '$$k : \\mathbf{Top} \\longrightarrow k\\mathbf{Top}, \\qquad X \\mapsto kX$$\n\n' +
         'that is, $i \\dashv k$. The space $kX$ has the same underlying set as $X$, with the ' +
         'topology replaced by the $k$-topology.',
-        status: 'draft', basedOn: 'v0.9.1#0d2ec83c', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#0d2ec83c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -335,7 +335,7 @@ MG.i18nStatements = {
         '$k\\mathbf{Top}$ is **coreflective** (the inclusion has a **right** adjoint $k$). One ' +
         '"tightens" a space, the other "loosens" it — hence the former is closed under limits ' +
         'and the latter under **colimits**.',
-        status: 'draft', basedOn: 'v0.9.1#66941903', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#66941903', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -346,7 +346,7 @@ MG.i18nStatements = {
         'If $\\mathcal{T}$ is a topos, then the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian ' +
         'sheaves on $\\mathcal{T}$ is a **Grothendieck category**: it has a small set of ' +
         'generators, has all colimits, and filtered colimits are exact.',
-        status: 'draft', basedOn: 'v0.9.1#f13b85f8', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#f13b85f8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -366,7 +366,7 @@ MG.i18nStatements = {
         '$\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: ' +
         '$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ ' +
         'is exact on presheaves).',
-        status: 'draft', basedOn: 'v0.9.1#66118814', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#66118814', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -377,7 +377,7 @@ MG.i18nStatements = {
         'Let $F \\in NBV$. Then $F\' \\in L^1(m)$, and\n\n' +
         '$$\\mu_F \\perp  m \\iff F\' = 0\\quad  \\text{a.e.}$$\n' +
         '$$\\mu_F \\ll  m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$',
-        status: 'draft', basedOn: 'v0.9.1#2fff7b16', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#2fff7b16', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -390,7 +390,7 @@ MG.i18nStatements = {
         '⭐ This is the measure-theoretic version of the fundamental theorem of calculus: ' +
         '**whether a function can be integrated back depends on whether $\\mu _F$ is absolutely ' +
         'continuous**.',
-        status: 'draft', basedOn: 'v0.9.1#e730d43c', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#e730d43c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -402,7 +402,7 @@ MG.i18nStatements = {
         '1. $\\mathfrak{A}$ is a $\\sigma$-ring;\n' +
         '2. $\\mathfrak{A}$ is a monotone class;\n' +
         '3. $\\mathfrak{A}$ is closed under countable disjoint unions.',
-        status: 'draft', basedOn: 'v0.9.1#5d3aa74a', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#5d3aa74a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -412,7 +412,7 @@ MG.i18nStatements = {
         'This theorem is the technical core of the monotone class theorem: it is precisely what ' +
         'lets one reduce "true for all $\\sigma$-algebras" to "first verify it on a ring, then ' +
         'pass to monotone limits".',
-        status: 'draft', basedOn: 'v0.9.1#ce1b4b57', reviewed: null,
+        status: 'reviewed', basedOn: 'v0.9.1#ce1b4b57', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
   },

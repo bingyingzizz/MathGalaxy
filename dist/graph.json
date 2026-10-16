@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-16T04:40:33.419Z",
+  "generated": "2026-10-16T06:38:48.925Z",
   "counts": {
    "regions": 9,
    "clusters": 45,
@@ -2222,7 +2222,7 @@
    "notes_en": "Neither hypothesis can be dropped: the empty poset has no maximal element, and \"every chain has an upper bound\" does not give a *greatest* element — only a maximal one.\n\nIt is \"the universal engine of existence proofs\": every vector space has a basis, every ring has a maximal ideal, the compactness theorem, Hahn–Banach — all of them rely on it.\n\nThe name is a historical accident: Zorn popularised the statement in the 1940s, while Kuratowski had already proved an equivalent form in 1922, so it is also called the Kuratowski–Zorn lemma.\n\n⚠ Non-constructive: what one obtains is \"there exists a maximal element\", and usually one cannot say which.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -2236,9 +2236,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -2467,7 +2467,7 @@
    "notes_en": "The open balls form a **base** for this topology. Every metric space is first countable and normal (hence Hausdorff).\n\nThe properties that follow fall into two classes: **compactness / closedness** depend only on the open sets and are **topological**; **completeness / total boundedness** use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval (0, 1) are homeomorphic, yet only the first is complete.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -2481,9 +2481,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -2980,7 +2980,7 @@
    "notes_en": "Note that the hypothesis \"$\\mathfrak{A}$ is a ring\" cannot be dropped — a monotone class is in general not closed under finite unions, so being a monotone class by itself does not imply being a $\\sigma$-ring.\n\nThis theorem is the technical core of the monotone class theorem: it is precisely what lets one reduce \"true for all $\\sigma$-algebras\" to \"first verify it on a ring, then pass to monotone limits\".",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -2994,9 +2994,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -4881,7 +4881,7 @@
    "notes_en": "Well-definedness of $\\mu_{0} $ has to be checked (the same $E$ can be split into different disjoint unions of rectangles) — this is exactly why \"rectangles\" are replaced by \"**disjoint** unions of rectangles\": under disjoint unions, additivity is easy to verify.\n\n**Everything goes through when the measures are $\\sigma$-finite**: if $\\mu$ and $\\nu$ are both $\\sigma$-finite, then $\\mu \\times \\nu$ is $\\sigma$-finite as well, and by Carathéodory uniqueness the measure constructed this way is unique.\n\n⚠ The whole machine of this step (premeasure $\\to$ outer measure $\\to$ Carathéodory extension $\\to$ uniqueness) is exactly the off-the-shelf quartet from the \"constructing measures\" cluster.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -4895,9 +4895,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -6433,7 +6433,7 @@
    "notes_en": "Proof: write $d\\mu_F = d\\lambda + f\\cdot dm$ (Lebesgue decomposition); by the corresponding theorem for measures, $f = F'$ a.e. Hence\n\n$\\cdot$ $\\mu_F \\perp  m$ means the absolutely continuous part vanishes, that is $f = 0 \\implies F' = 0 \\text{a.e.}$;\n\n$\\cdot$ $\\mu_F \\ll  m$ means $\\lambda = 0$, so $F(x) = \\mu_F((-\\infty,x]) = \\int_{-\\infty}^x f\\cdot dm = \\int_{-\\infty}^x F'\\cdot dt$.\n\n⭐ This is the measure-theoretic version of the fundamental theorem of calculus: **whether a function can be integrated back depends on whether $\\mu _F$ is absolutely continuous**.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -6447,9 +6447,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -8635,7 +8635,7 @@
    "notes_en": "⭐ **Why divide by the null sequences**: the same real number has many approximating sequences — for instance $(1, 1, 1, \\ldots)$ and $(1.1,\\ 1.01,\\ 1.001,\\ \\ldots)$ should both represent $1$, and their difference is a null sequence. Equivalence classes glue \"different approximations of one and the same number\" into a single object.\n\n⚠ Here we use **only the order and the absolute value of $\\mathbb{Q}$** ($\\varepsilon$ ranges over positive rationals, and the absolute value is the one on $\\mathbb{Q}$), so there is **no circularity**: this step makes perfect sense before $\\mathbb{R}$ is constructed. The language of \"distance, Cauchy sequence, completeness\" in metric spaces is exactly what was abstracted out of this construction.\n\nThree facts needed later:\n- a Cauchy sequence is **bounded**;\n- **sum, difference and product of Cauchy sequences are again Cauchy**;\n- **a Cauchy sequence that is not a null sequence satisfies $|x_n| \\ge \\delta$ from some index on** (for some positive rational $\\delta$) — hence its reciprocal, after discarding finitely many terms, is again Cauchy. The third fact is the entire basis for \"multiplication has inverses\".",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -8649,9 +8649,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -10178,7 +10178,7 @@
    "notes_en": "In one sentence: **all the data of $F$ is generated by one element $s$ of $X$**. Given any other $t$, there is a unique $f$ pushing $s$ across to it — so elements elsewhere do not come from nowhere; they are pushed out of $s$.\n\nAn equivalent phrasing: $(X, s)$ is universal $\\iff$ $(X, s)$ is an initial object of the category of elements $\\operatorname{el}(F)$ — the word \"universal\" is used in the same way on this level and on the level below.\n\nExamples:\n\n- Let $k \\in \\operatorname{Ob}(\\mathbf{CRng})$ and let $F : k\\text{-}\\mathbf{Alg} \\to \\mathbf{Set}$ be the forgetful functor. Then $(k[t],\\ t)$ represents $F$: for $A \\in k\\text{-}\\mathbf{Alg}$ and $a \\in F(A)$, sending $t \\mapsto a$ induces a unique $k$-algebra homomorphism $k[t] \\to A$.\n- Let $F : \\mathbf{Ring} \\to \\mathbf{Set}$ be the constant functor at the one-point set. Then $\\mathbb{Z}$ represents $F$: every ring has a unique $\\mathbb{Z} \\to R$.\n- Fix a topological space $X$ and a subspace $Y \\subseteq X$, and take the contravariant functor\n\n  $$F : \\mathbf{Top}^{\\mathrm{op}} \\to \\mathbf{Set}, \\qquad Z \\mapsto \\{\\, f \\in \\mathcal{C}(Z, X) \\ \\mid\\ f(Z) \\subseteq Y \\,\\}$$\n\n  (here $\\mathcal{C}(Z, X)$ denotes the set of continuous maps $Z \\to X$). It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -10192,9 +10192,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -13131,7 +13131,7 @@
    "notes_en": "In an abelian category one says **injective / surjective** rather than monomorphism / epimorphism — because condition 1 guarantees that \"regular\" and \"cancellable\" are the same thing.\n\nExamples: $A\\text{-}\\mathbf{Mod}$ is abelian; so is $\\mathbf{Ab}(\\mathcal{T})$ for a topos; so is $\\mathbf{AbCHaus}$. But $\\mathbf{AbTop}$ is **not** (the identity map $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is not strict), and neither is $\\mathbf{AbHaus}$.\n\nAn abelian category is the **working environment** of homological algebra as a whole: with kernels and cokernels one can even state \"exact sequence\"; an additive category only supplies the additive skeleton (zero object and direct sums).",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -13145,9 +13145,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -13820,7 +13820,7 @@
    "notes_en": "The proof has three parts:\n\n- **Abelian**: first verify componentwise in the presheaf category $\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ (there one simply has pointwise abelian groups) — concretely, for an arbitrary morphism $u$ verify $\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$; then transport these identities back to the sheaf category along the **exact reflection** (sheafification). The same argument gives exactness of filtered colimits.\n- **All limits and colimits exist**: because the sheaf category is a reflective subcategory of the presheaf category.\n- **Small set of generators**: if $S$ is a small set of generators of $\\mathcal{T}$, then $\\{\\mathbb{Z}\\cdot X : X \\in S\\}$ generates $\\mathcal{T}(\\mathbf{Ab})$ — their coproduct is a generator.\n\nOne more fact along the way: $\\mathbb{Z}\\cdot X$ is **projective** in $\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ is exact on presheaves).",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -13834,9 +13834,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -14113,7 +14113,7 @@
    "notes_en": "**What has to be shown**: for every compactly generated space $X$ and every topological space $Y$,\n\n$$\\operatorname{Hom}_{\\mathbf{Top}}(X,\\ Y) \\;\\cong\\; \\operatorname{Hom}_{k\\mathbf{Top}}\\bigl(X,\\ kY\\bigr).$$\n\n**Proof.** The counit is $\\varepsilon_{Y} : kY \\to Y$ (the identity map, topology from finer to coarser, continuous).\n\n- First, $kY$ really is compactly generated: compose every continuous map $S \\to Y$ ($S$ compact Hausdorff) with $\\varepsilon_{Y}$ to lift it to $S \\to kY$, then use the definition of $kY$ (how $k$-open sets are taken) to verify that \"the topology is determined by these maps\".\n- So whenever $f : X \\to Y$ is continuous (with $X$ compactly generated), $f = \\varepsilon_{Y} \\circ f': X \\to kY$ yields a continuous map $f'$ into $kY$: let $U \\subseteq kY$ be open; we must show that $f'^{-1}(U)$ is open in $X$. Since $X$ is compactly generated, it suffices to check for every compact $L \\subseteq X$ that $f'^{-1}(U) \\cap L$ is open in $L$. But $f|_{L} : L \\to Y$ is continuous and $L$ is compact, so $f(L)$ is compact; $U \\cap f(L)$ is open in $f(L)$, hence $(f|_{L})^{-1}\\bigl(U \\cap f(L)\\bigr) = f'^{-1}(U) \\cap L$ is open in $L$. ∎\n- The converse direction follows directly from continuity of $\\varepsilon_{Y}$. The two directions are mutually inverse, which is the isomorphism.\n\n⭐ Keep this side by side with compact Hausdorff: $\\mathbf{CHaus}$ is a **reflective** subcategory of $\\mathbf{Top}$ (the inclusion has a **left** adjoint $\\beta$), whereas $k\\mathbf{Top}$ is **coreflective** (the inclusion has a **right** adjoint $k$). One \"tightens\" a space, the other \"loosens\" it — hence the former is closed under limits and the latter under **colimits**.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -14127,9 +14127,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
@@ -14782,7 +14782,7 @@
    "notes_en": "**The three steps of the proof.** Write $K = \\ker\\varphi$.\n\n- **Well defined**: if $gK = g'K$ then $g' = gk$ for some $k \\in K$, hence $\\varphi(g') = \\varphi(g)\\varphi(k) = \\varphi(g)e' = \\varphi(g)$ — elements of the same coset are sent to the same value.\n- **Homomorphism**: $\\overline{\\varphi}\\bigl((gK)(g'K)\\bigr) = \\overline{\\varphi}(gg'K) = \\varphi(gg') = \\varphi(g)\\varphi(g') = \\overline{\\varphi}(gK)\\,\\overline{\\varphi}(g'K)$.\n- **Bijection**: injective, because $\\overline{\\varphi}(gK) = e'$ means $\\varphi(g) = e'$, i.e. $g \\in K$, so $gK = K$; surjective, because the image is $\\varphi(G)$ by construction. ∎\n\n⭐ **It is really a theorem about the format \"set + operations + axioms\", not a privilege of groups.** The same proof carries over verbatim, provided one replaces \"homomorphism\" by the corresponding notion:\n\n$$A \\big/ \\ker f \\;\\cong\\; \\operatorname{im} f.$$\n\n⭐ **The set-level prototype**: for any map $f : A \\to B$, put $a \\sim a' \\iff f(a) = f(a')$ on $A$; then $f$ induces a **bijection** $A/{\\sim} \\;\\to\\; \\operatorname{im} f$ (see \"quotient set and equivalence classes\"). The group version adds exactly one sentence: **after dividing by the kernel, what remains is a group**. The first two steps (well defined, bijection) are the set-level content; only the third (homomorphism) is new.\n\n**What question does it answer?** \"Where does a homomorphism send a group?\" has a two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), locked together by a single isomorphism. So studying homomorphisms is studying normal subgroups — which is why group theory turns into the study of the lattice of subgroups.",
    "translations": {
     "en": {
-     "status": "draft",
+     "status": "reviewed",
      "version": "v0.9.1",
      "fields": [
       "abstract",
@@ -14796,9 +14796,9 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "draft",
-      "statement": "draft",
-      "notes": "draft",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
      "staleFields": [],

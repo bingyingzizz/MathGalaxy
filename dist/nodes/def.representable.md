@@ -13,7 +13,7 @@ layer 12 · 定义 · 预层与米田 · 范畴论
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/def.representable.6.md](./def.representable.6.md)
 
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/def.representable.3.md](./def.representable.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1–1.5

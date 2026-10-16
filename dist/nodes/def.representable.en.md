@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=def.representable)　·　[Chinese page (authoritative)](./def.representable.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 12 · definition · cluster Presheaves and Yoneda (`cat.yoneda`) · Category Theory
 

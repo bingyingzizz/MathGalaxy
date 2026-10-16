@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=prop.cg-coreflective)　·　[Chinese page (authoritative)](./prop.cg-coreflective.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 18 · proposition · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
 

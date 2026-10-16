@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.ring-monotone-sigma)　·　[Chinese page (authoritative)](./thm.ring-monotone-sigma.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 5 · theorem · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis
 

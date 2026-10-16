@@ -7,13 +7,15 @@ layer 17 · 定义 · 乘积测度与 Fubini · 分析学
 > 陈述续见 [nodes/def.product-measure.2.md](./def.product-measure.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`prop.product-incomplete`](../nodes/prop.product-incomplete.md) 乘积测度通常不完备
+
+- …另有出边，续页见 [nodes/def.product-measure.7.md](./def.product-measure.7.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.product-measure.5.md](./def.product-measure.5.md)
 
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.product-measure.7.md](./def.product-measure.7.md)
-
-## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/def.product-measure.3.md](./def.product-measure.3.md)
 
 refs: Folland, Real Analysis, §2.5；Halmos, Measure Theory, §35

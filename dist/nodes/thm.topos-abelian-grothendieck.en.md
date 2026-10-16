@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.topos-abelian-grothendieck)　·　[Chinese page (authoritative)](./thm.topos-abelian-grothendieck.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 19 · theorem · cluster Abelian Sheaves (`hom.sheaf`) · Homological Algebra
 

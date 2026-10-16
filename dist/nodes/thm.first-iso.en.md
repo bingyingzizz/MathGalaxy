@@ -2,7 +2,7 @@
 English entry · root `../`
 [in graph](../#n=thm.first-iso)　·　[Chinese page (authoritative)](./thm.first-iso.md)
 
-> English: **draft** · machine-drafted, pending author review; the Chinese page is authoritative.
+> English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
 layer 9 · theorem · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Set Theory
 
