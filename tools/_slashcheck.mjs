@@ -16,6 +16,12 @@
         该 `\` 之后那串字母正好等于一个已知的「转义字母开头的命令」就算命中。
         （起因：批 5 的 `$\times$` → `$` + 制表符 + `imes$`，全部体检放行、线上渲染成 `imes`。）
         精确整串匹配是关键 —— 否则真换行 `\n` 后面跟的单词会被误判（`$$\nL^\infty` 的 run 是 `nL`）。
+     c) ⭐ **非字母命令的盲区**（2026-10-16 批 6 加）：`\{ \} \% \& \# \_ \$` 里的 `\` 也不是
+        合法 JS 转义，同样会被吃掉（`'$\{e\}$'` → `${e}$`）。这几种在 JS 里**没有任何理由**
+        出现，所以见到就报，不必判断上下文。
+        （起因：批 6 的 `$\{e\} \trianglelefteq G$` 变成 `${e} \trianglelefteq G$`，
+        KaTeX 报 `Expected '}', got 'EOF'` —— 这是**唯一**被 katexcheck 抓到的一次，
+        因为它真的破坏了公式结构；若换成 `\,` 之类就抓不到了。）
 
    用法：bun tools/_slashcheck.mjs
    ========================================================================== */
@@ -56,6 +62,8 @@ for (const f of files) {
           const nxt = ln[i + 1];
           if (nxt && /[A-Za-z]/.test(nxt) && !OKESC.has(nxt)) {
             hits.push({ file: f, line: li + 1, frag: ln.slice(Math.max(0, i - 34), i + 34) });
+          } else if (nxt && '{}%&#_$'.includes(nxt)) {
+            hits.push({ file: f, line: li + 1, frag: ln.slice(Math.max(0, i - 34), i + 34), esc: true });
           } else if (nxt && OKESC.has(nxt)) {
             const run = (ln.slice(i + 1).match(/^[A-Za-z]+/) || [''])[0];
             if (ESC_CMDS.has(run)) {
