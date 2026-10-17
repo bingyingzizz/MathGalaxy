@@ -58,7 +58,7 @@ const CASES = [
   { q: 'abelian', n: 14, top: ['def.abelian-sheaf', 'thm.topos-abelian-grothendieck', 'prop.abelianization'], why: '名字前缀档（abelian sheaf / abelian Grothendieck topos…）在前；def.abelian-category 的英文名是 `additive and abelian categories`（包含档）⇒ 掉到第 4。旧代码靠 label/title/aka/id 四项堆叠把它顶到第一' },
   { q: 'fubini', n: 10, top: ['thm.fubini-tonelli', 'def.product-measure', 'thm.fubini-complete'], why: '两条 Fubini 定理都在前 3；其余是正文提到它的。⚠️ 命中数会随内容长（批 5 加了 Sard 定理的证明提纲，里面提到 Fubini）—— 9 → 10，**前 3 没动**，属预期漂移' },
   { q: 'radon', n: 14, top: ['thm.lebesgue-radon-nikodym', 'def.rn-derivative', 'thm.rn-complex'], why: '前两个是 label_en 前缀（Radon-Nikodym theorem / derivative）；thm.rn-complex 只在前者中文名里出现（包含档）⇒ 退到第三' },
-  { q: 'isomorphism', n: 8, top: ['def.mono', 'def.quasi-iso', 'prop.adjoint-full-faithful'], why: '英文长词：前 5 条都是名字/标题里含 isomorphism 的（旧记录写 6 条，是把 prop.adjoint-full-faithful 的 title_en 漏算了）。⚠️ 7→8 是批 3 新增的 `def.linear-isomorphism`（标题里带 Isomorphism）' },
+  { q: 'isomorphism', n: 8, top: ['def.mono', 'def.quasi-iso', 'thm.first-iso'], why: '英文长词：前 5 条都是名字/标题里含 isomorphism 的（旧记录写 6 条，是把 prop.adjoint-full-faithful 的 title_en 漏算了）。⚠️ 7→8 是批 3 新增的 `def.linear-isomorphism`（标题里带 Isomorphism）。⚠️ 批 6 换了 top 第 3 名：`thm.first-iso` 因为新边 `imp.solvable-quotients` 把它当来源，degree 涨了，在同分（标题命中 260）时挤到前面 —— 分数没变，只是同分次序' },
   { q: 'measurable', n: 14, top: ['def.measurable-function', 'prop.section-measurable', 'def.caratheodory-measurable'], why: '英文长词：同档同分的一批，次序由 degree 决定（集合与旧记录相同，只是 #2 起换位）' },
   { q: 'schroder', n: 1, top: ['thm.schroder-bernstein'], why: '不带变音符的写法也要能搜到 Schröder–Bernstein' },
   { q: 'snake lemma', n: 2, top: ['thm.snake-lemma', 'thm.long-exact'], why: '多词查询：词表切分 + 两词同时命中加权' },
@@ -74,7 +74,7 @@ const CASES = [
   { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta', 'prop.constant-sheaf-preserves-limits', 'def.simplex-category'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
   { q: '测度', n: 14, top: ['def.measure', 'def.measure-space', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响（同档的一批换了位，集合与旧记录相同）' },
   { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-cartesian-closed', 'prop.cg-coreflective'], why: '中文词 + 星团名命中（同档批次，degree 定次序）' },
-  { q: '定义', n: 14, total: 444, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 这个数**每加一批内容就会长**：345 → 353（批 1，35 点）→ 361（批 1 收尾）→ 381（批 2，48 点）→ 412（批 3，42 点）→ 433（批 4，36 点）→ 444（批 5，25 点）。它统计的是「命中次数」而不是节点数，所以正文里出现的「定义」二字也计入。加完内容按新值重钉即可，**动就是预期的**' },
+  { q: '定义', n: 14, total: 451, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 这个数**每加一批内容就会长**：345 → 353（批 1，35 点）→ 361（批 1 收尾）→ 381（批 2，48 点）→ 412（批 3，42 点）→ 433（批 4，36 点）→ 444（批 5，25 点）→ 451（批 6，15 点）。它统计的是「命中次数」而不是节点数，所以正文里出现的「定义」二字也计入。加完内容按新值重钉即可，**动就是预期的**' },
   { q: 'compact', total: 28, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 28。⚠️ 26→28 来自新增的 `prop.continuous-bounded-on-compact` 与 `thm.uniform-continuity-compact` —— **id 也在 hay 里**，所以新节点的 id 会直接抬高这类拉丁词的总数' },
   /* ⭐ `ref:` 前缀 = 只搜书目/出处（2026-10-16 建议④）。
      ⛔ refs **不进 hay**（上一批 `I.5` 那条记 0 就是为了钉住这点），

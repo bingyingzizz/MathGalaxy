@@ -164,6 +164,22 @@ MG.clusters = [
     desc: '造出「把双线性型变成线性映射」的机器：双线性型 → **张量积的万有性质** → 张量 ⊣ 内 Hom（伴随）→ 外幂与外代数 → 对称代数 → **行列式 = 最高外幂上的作用**（把行列式的来源统一到外代数）。'
   },
   {
+    id: 'algebra.group-action',
+    name: '群作用与置换',
+    en: 'Group Actions and Permutations',
+    parent: 'algebra',
+    hub: 'def.group-action',
+    desc: '造出「让群去搬东西」这套机器：群作用（轨道 / 稳定子）→ **轨道–稳定子定理** → 类方程 → Lagrange 定理 → 置换群 $S_n$ 与循环分解 → 符号与交错群 $A_n$ → Cayley 定理 → 循环群 → Sylow 定理。核心一句话：**数轨道的大小 = 算稳定子的指数**。'
+  },
+  {
+    id: 'algebra.solvable',
+    name: '合成列与可解群',
+    en: 'Composition Series and Solvable Groups',
+    parent: 'algebra',
+    hub: 'thm.jordan-holder',
+    desc: '造出「把群拆成不可再分的零件」这套语言：单群 → 合成列 → **Jordan–Hölder**（合成因子与重数唯一）→ 可解群（阿贝尔商链 / 导出列终止）→ 可解性对子群、商群与正规扩张的封闭性 → **$S_n$ 可解 $\\iff n \\le 4$**。最后一个命题是 Abel–Ruffini 的群论一半：分界线落在 $A_4$ 与 $A_5$ 之间。'
+  },
+  {
     id: 'algebra.matrix',
     name: '矩阵与行列式',
     en: 'Matrices and Determinants',
