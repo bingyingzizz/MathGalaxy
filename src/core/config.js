@@ -74,7 +74,7 @@
         rScale: 0.9,          // ⭐ R_i = rScale·gap·√n_i（0.6→0.9：团盘占空 70%→34%，两团叠才 68%）
         distFactor: 0.6,      // L_ij = R_i + R_j + distFactor·D̂·R̄（只给有关系的对）
         collide: 0.35,        // （已停用：团级碰撞删掉了，只留节点级 PBD）
-        kRep: 0.04,           // 无平衡点软斥力系数（正比于 (R_i+R_j)²/d²）
+        kRep: 0.02,           // 无平衡点软斥力系数（扫描最优：0.9/0.02 → 硬重叠 0、ρ(269,W)=−0.415）
         repScale: 60,         // 把 kRep 换算到位移量纲的倍率（gap 量级）
         collisionRadius: 0.42, // C_i = 0.42·gap·√n_i（≈0.8×节点占位半径），只用于单侧碰撞
         gravity: 0.02,        // 全局弱引力 F = gravity·(p−质心)，Phase 1 与 2 都加
