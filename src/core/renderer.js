@@ -112,7 +112,7 @@
       galaxyName: 1, clusterName: 1, nodeDot: 1,
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0,
       trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1, crossEdge: 0,
-      defDim: 1, tier: 0, regionEdge: 0
+      defDim: 1, tier: 0, regionEdge: 0, sectorLink: 1
     };
 
     /* ⭐ 尺度档位的**回差**：0 大板块 / 1 领域 / 2 星团 / 3 节点近景。
@@ -222,6 +222,10 @@
       /* 跨**领域**（不是跨团）的逐条边：中景收起，近景才回来（见 config.lod.regionEdgeIn） */
       var tReg = thr(L.regionEdgeIn || { rel: [4.20, 5.60] });
       lodA.regionEdge = smoothstep(tReg[0], tReg[1], k);
+      /* 全景的一层：**每对板块最多一条很淡的聚合线**（1.00~1.30×k₀），
+         放大一档就交给团级聚合线（它们自己按 clusterLinkOut 退场）。 */
+      var tSecLink = thr({ rel: [1.00, 1.30] });
+      lodA.sectorLink = 1 - smoothstep(tSecLink[0], tSecLink[1], k);
       /* 定义引用线在中景降权（见 config.edge.definitionMidScale）：
          两个 draw 路径共用这一个系数 —— 定义线大部分走的是**合并描边**快路径，
          只改 drawEdgeOne 会「改了没效果」（这条坑写在 HANDOVER 里）。 */
@@ -960,7 +964,9 @@
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
         prof.labelCount++;                  // 大板块名也算一个「画上去的标签」
-        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2 });
+        /* pad = 给**节点名**留的禁入边距（见 drawLabels 里 placed 的膨胀）。
+           板块名是最大的字，离它太近的节点名会把它读成一团。 */
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2, pad: 10 });
       });
       ctx.restore();
     }
@@ -1009,14 +1015,76 @@
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
         prof.labelCount++;                  // 星系名算一个「画上去的标签」
-        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2 });
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2, pad: 8 });
+      });
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 板块骨架（全景） */
+    /* 用户 2026-10-18：「全景里基础与逻辑—代数—几何与拓扑之间仍有多条粗长线」。
+       核实过：那不是普通边，也不是主干边 —— 是 `drawClusterLinks` 的**聚合线**
+       （276 条，按团心连，远看就是一片灰网）。
+       全景改成「每对板块只留一条很淡的线」，放大一档才交回团级聚合线。 */
+    var sectorPairCache = null;
+    function sectorPairs() {
+      if (sectorPairCache) return sectorPairCache;
+      var out = [], agg = Object.create(null), byId = Object.create(null);
+      (view.graph.sectors || []).forEach(function (s) { if (!s.empty) byId[s.id] = s; });
+      (view.graph.clusterLinks || []).forEach(function (l) {
+        var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
+        if (!A || !B || !A.stat || !B.stat) return;
+        var sA = clusterSector(l.a), sB = clusterSector(l.b);
+        if (!sA || !sB || sA === sB) return;
+        var key = sA < sB ? sA + '|' + sB : sB + '|' + sA;
+        var o = agg[key];
+        if (!o) o = agg[key] = { a: sA < sB ? sA : sB, b: sA < sB ? sB : sA, count: 0 };
+        o.count += l.count;
+      });
+      Object.keys(agg).forEach(function (key) {
+        var o = agg[key];
+        if (o.count < 6) return;                       // 太弱的板块对不画
+        var sa = byId[o.a], sb = byId[o.b];
+        var pa = sa && sectorAnchor(sa), pb = sb && sectorAnchor(sb);
+        if (!pa || !pb) return;
+        o.pa = pa; o.pb = pb;
+        out.push(o);
+      });
+      out.sort(function (x, y) { return y.count - x.count; });
+      sectorPairCache = out;
+      return out;
+    }
+
+    /** 全景的板块骨架：每对板块一条，alpha ≈0.05~0.13（远看只是「它们有关系」） */
+    function drawSectorLinks(alpha) {
+      var list = sectorPairs();
+      if (!list.length) return;
+      var cfgL = C.clusterLink;
+      ctx.save();
+      ctx.lineCap = 'round';
+      list.forEach(function (o) {
+        var p0 = w2s(o.pa.x, o.pa.y), p1 = w2s(o.pb.x, o.pb.y);
+        var dx = p1.x - p0.x, dy = p1.y - p0.y;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var bow = Math.min(110, len * 0.07);
+        var cx = (p0.x + p1.x) / 2 - (dy / len) * bow;
+        var cy = (p0.y + p1.y) / 2 + (dx / len) * bow;
+        var t = Math.min(1, o.count / 120);
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.quadraticCurveTo(cx, cy, p1.x, p1.y);
+        ctx.lineWidth = 1.0 + 1.2 * t;
+        ctx.strokeStyle = 'rgba(' + cfgL.color + ',' + (alpha * (0.055 + 0.075 * t)).toFixed(3) + ')';
+        ctx.stroke();
       });
       ctx.restore();
     }
 
     /* ------------------------------------------------ 星团级连线 */
     function drawClusterLinks() {
-      var a = lodA.clusterLink;
+      var secA = lodA.sectorLink;
+      if (secA > 0.02) drawSectorLinks(secA);
+      /* 全景那一档：团级聚合线让位给板块骨架（1 - secA） */
+      var a = lodA.clusterLink * (1 - secA);
       if (a <= 0.02) return;
       var links = view.graph.clusterLinks || [];
       if (!links.length) return;
@@ -1238,6 +1306,7 @@
         ctx.fillText(text, p.x, y + 0.5);
         ctx.globalAlpha = 1;
         prof.labelCount++;                   // 星团名也是一个「画上去的标签」
+        slot.box.pad = 5;                    // 节点名离团名至少 5px（见 drawLabels）
         nameBoxes.push(slot.box);
       });
       ctx.restore();
@@ -1265,12 +1334,15 @@
         if (g.edge.kind !== 'definition') { drawEdgeOne(g); return; }
         var e = g.edge, style = T.edgeStyles.definition;
         var spine = isSpine(e);
+        var active = isEdgeActive(g);
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
-        if (!isEdgeActive(g)) a *= edgeFade(g); // 长边在屏幕空间降权
+        if (!active) a *= edgeFade(g);          // 长边在屏幕空间降权
+        /* ⚠️ 选中 / 悬停的边：全景下节点级 LOD 的 alpha 是 0，会整条消失。
+           用户点了一个点就想知道它连到哪 —— 和 drawEdgeOne 用同一个下限。 */
+        if (active) a = Math.max(a, 0.55);
         if (a <= 0.02) return;
         if (!C.showDefinitionLines) return;
-        var active = isEdgeActive(g);
         /* 中景：跨领域的定义引用也先收起（和 drawEdgeOne 同一口径） */
         if (!C.showAllEdges && !active && lodA.regionEdge < 0.5 && edgeCrossRegion(e)) return;
         /* 定义引用线**不跟着放大**（89% 的线都是它）。放大后如果它也变粗，
@@ -1364,6 +1436,9 @@
          只改这里等于没改。 */
       if (e.kind === 'definition') a *= lodA.defDim;
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
+      /* 选中 / 悬停的边：哪怕在全景（节点级 LOD 的 alpha 是 0）也要看得见 ——
+         用户点了一个点，就想知道它连到哪。 */
+      if (active) a = Math.max(a, 0.55);
       if (a <= 0.02) return;
 
       /* ⭐ 中景：**跨领域的逐条边默认收起**（用户 2026-10-18：
@@ -1451,10 +1526,13 @@
 
     function drawArrow(g) {
       var e = g.edge;
+      var active = isEdgeActive(g);
       var a = alphaForEdge(e) * lodA.nodeEdge;
-      if (!isEdgeActive(g)) a *= edgeFade(g);
+      if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
+      /* 与线同一个下限：否则整条线回来了、箭头却没有，看起来像「没方向」。 */
+      if (active) a = Math.max(a, 0.55);
       if (a <= 0.02) return;
-      var sz = U.clamp(C.edge.arrowSize * Math.pow(camNow().k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
+      var sz = U.clamp(C.edge.arrowSize * Math.pow(camNow().k, 0.35), 6, 17) * (active ? 1.2 : 1);
       var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;
       ctx.save();
       ctx.translate(x, y);
@@ -1611,9 +1689,24 @@
       if (lodA.nodeName <= 0.02 && lodA.trunkName <= 0.02) return;
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
-      var keepAll = k >= C.node.labelMinZoomAll;
+      /* ⭐ 标签密度分档（用户 2026-10-18：「一个领域内部名字太密，看不清团名」）：
+         · 星团档（tier 2，团名正亮着）⇒ 只放**结构性**的点（主干 / 枢纽 / 度数 ≥5），
+           把版面让给团名；
+         · 节点档（tier ≥3，团名正在退场）⇒ 放宽到度数 ≥3；
+         · 再放大（k ≥ labelMinZoomAll）⇒ 全放，只靠去重叠兜底。
+         ⚠️ 判据用 `lodA.tier`（和板块名 / 领域名 / 团名同一套档位），不另起一套阈值。 */
+      var tier = lodA.tier | 0;
+      var allNames = k >= C.node.labelMinZoomAll;
+      var minDeg = allNames ? 1 : (tier >= 3 ? 3 : 5);
       // 板块 / 领域 / 星团名 + 特殊标签先占位 —— 节点名不许压上去
-      var placed = nameBoxes.slice();
+      /* 结构性名字（板块 / 领域 / 星团）自己带一圈禁入边距：节点名压到它们边上时，
+         那个大标题会被读成一团糊。只在这里膨胀，⛔ 不去改 nameBoxes 本身
+         （placeName 还要拿原框判「大标题之间」的避让）。 */
+      var placed = nameBoxes.map(function (b) {
+        var q = b.pad || 0;
+        if (!q) return b;
+        return { x0: b.x0 - q, y0: b.y0 - q, x1: b.x1 + q, y1: b.y1 + q, rank: b.rank };
+      });
       var nodes = view.graph.nodes.slice().sort(function (a, b) {
         return labelPriority(b) - labelPriority(a);
       });
@@ -1633,8 +1726,8 @@
         if (nameAlpha <= 0.06) return;
         var a = alphaForNode(n.id);
         if (a <= 0.06) return;
-        // 缩小时只画重要的：主干一律画，其余要 degree >= 3
-        if (!keepAll && !trunk && n.degree < 3) return;
+        // 缩小时只画重要的：主干一律画，其余按上面那三档
+        if (!trunk && !allNames && !n.isHub && n.degree < minDeg) return;
 
         var p = screenOf(n);
         if (!inView(p.x, p.y, PAD_NODE)) return;   // 屏幕外的名字：既不量宽也不画
@@ -1711,7 +1804,7 @@
       return hitEdge ? { type: 'edge', id: hitEdge } : null;
     }
 
-    function invalidate() { geomCache = null; }
+    function invalidate() { geomCache = null; sectorPairCache = null; }
 
     return {
       resize: resize,
@@ -1732,8 +1825,12 @@
          ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
       lodState: function () {
         return {
+          k: camNow().k,
           tier: lodA.tier, sector: lodA.sectorName, region: lodA.galaxyName,
-          cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName
+          cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName,
+          /* 下面这些是 2026-10-18 加的：判「全景还是一条网吗」「导出计数对不对」要读它们 */
+          trunkName: lodA.trunkName, clusterLink: lodA.clusterLink, sectorLink: lodA.sectorLink,
+          crossEdge: lodA.crossEdge, regionEdge: lodA.regionEdge, labelCount: prof.labelCount
         };
       },
       profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.labelCount = 0; prof.frames = 0; },

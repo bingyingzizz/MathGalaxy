@@ -134,6 +134,10 @@
     var xlink = MG.createXLink(graph, MG.aliases);
     /* 导出（当前视图 → 子图 JSON / SVG / TikZ）。引擎模块，不碰任何内容。 */
     var exporter = MG.createExport ? MG.createExport(view, cam, renderer.nodeRadius) : null;
+    /* 图例里「导出当前视图（N 点 / K 线）」上一次写进去的数字。
+       视角一动这个数就变了，但**图例不能每帧重建** ⇒ 见 syncExportCount()。 */
+    var lastExCount = { n: -1, k: -1 };
+    var exCountSig = '', exCountTimer = 0;
     var cloudTex = null;
     var cloudDirty = true;
     /* 云雾层上一次是按什么参数画的 —— 相机 / 视口 / dpr / 纹理四样都没变就不必再画。
@@ -212,6 +216,8 @@
       drawProf.ms += performance.now() - tp; drawProf.n++;
       if (animating) requestDraw();
       noteCamera();
+      /* 图例里「导出当前视图（N 点 / K 线）」跟视角走：相机停稳 350ms 后重数一次 */
+      noteExportCount();
 
     }
 
@@ -1043,6 +1049,42 @@
         name + '<span class="lg-num">' + num + '</span></span>';
     }
 
+    /* ------------------------------------------- 图例里的「当前视图」计数 */
+    /* 用户 2026-10-18：「开页写着 44 点 / 28 线，展开分析之后变成 910 / 1637」。
+       根因两条：① renderLegend() 在 cam.fit() **之前**跑（适配还没发生）；
+       ② 视角变化后没有任何东西去刷新这个数。
+       口径先钉死：**当前视图 = 屏幕内的点**（和 exporter.collect 同一个函数，
+       ⛔ 不另写一套判据）。刷新时机 = 相机停稳 350ms 之后，不是每帧。 */
+    function exCamSig() {
+      return cam.k.toFixed(5) + ',' + cam.tx.toFixed(1) + ',' + cam.ty.toFixed(1) +
+        ',' + cam.viewW + ',' + cam.viewH;
+    }
+    /** 只改那一个标题的 textContent；数字没变就一个字符都不碰 */
+    function syncExportCount(force) {
+      if (!exporter || !legendEl) return;
+      var el = document.getElementById('lg-ex-title');
+      if (!el) return;                       // 图例折叠成壳 / 没渲染
+      var c = exporter.collect();
+      var n = c.nodes.length, k = c.edges.length;
+      if (!force && n === lastExCount.n && k === lastExCount.k) return;
+      lastExCount = { n: n, k: k };
+      el.textContent = tf('导出当前视图（{n} 点 / {k} 线）', { n: n, k: k });
+    }
+    /** 相机一动就重新计时；停稳 350ms 才真的去数一遍（数 910 个点不值得每帧做）
+        ⚠️ 只有**签名真的变了**才重置计时器。写成「sig 相同但计时器还在也重置」
+          会变成：只要还有零星重画（hover、已读脉冲、HUD），计时器永远被推后 → 数
+          永远不更新（踩过：开页停在 42 点 / 14 线）。 */
+    function noteExportCount() {
+      var sig = exCamSig();
+      if (sig === exCountSig) return;
+      exCountSig = sig;
+      if (exCountTimer) clearTimeout(exCountTimer);
+      exCountTimer = setTimeout(function () {
+        exCountTimer = 0;
+        syncExportCount(false);
+      }, 350);
+    }
+
     function renderLegend() {
       var types = T.typeOrder || Object.keys(T.nodeTypes || {});
       var total = graph.nodes.length;
@@ -1182,11 +1224,15 @@
           '</div></div>'
         : '';
 
-      /* ---------- 导出：导出的是「你现在看到的这一块」 ---------- */
+      /* ---------- 导出：导出的是「你现在看到的这一块」 ----------
+         ⚠️ 数字单独装在 #lg-ex-title 里：它随视角变（屏幕内有多少点 / 线），
+            但图例不能跟着每一帧重画。syncExportCount() 只改这一个节点的
+            textContent，不重建 DOM（否则「拖层号滑杆」之类的拖拽会断）。 */
       var exN = 0, exE = 0;
       if (exporter) { var _c = exporter.collect(); exN = _c.nodes.length; exE = _c.edges.length; }
+      lastExCount = { n: exN, k: exE };
       var exportGroup =
-        '<div class="lg-group"><div class="lg-title">' +
+        '<div class="lg-group"><div class="lg-title" id="lg-ex-title">' +
         U.escapeHtml(tf('导出当前视图（{n} 点 / {k} 线）', { n: exN, k: exE })) + '</div>' +
         '<div class="lg-row lg-layers">' +
         '<button class="lg-reset" data-export="svg" title="' + U.escapeHtml(tf('导出 SVG 矢量图：当前屏幕内的点 + 这些点之间的线（可直接放进文档）')) + '">SVG</button>' +
@@ -2069,6 +2115,9 @@
         cam.centerOn(cx, cy);
         cam.animateTo({ k: fitK, cx: cx, cy: cy }, REDUCE_MOTION ? 1 : 700);
       }
+      /* 图例是**适配之前**渲染的（必须先有 DOM 才量得出可用矩形）⇒ 里面那个
+         「导出当前视图（N 点 / K 线）」是拿适配前的相机数的。这里补一次真数。 */
+      syncExportCount(true);
       requestDraw();
     }
 

@@ -317,6 +317,73 @@
       reg._cap = Math.max(reg._cap, far + 60);
     });
 
+    /* ⭐ 2026-10-18 · 四层结构的最后一刀：**大板块聚成一团，板块之间留空**
+       ------------------------------------------------------------------
+       改之前 9 个领域的圆盘是「贴着长」的：最大的几对边缘只差 150~300
+       世界单位（拓扑学 ↔ 凝聚态甚至**重叠** 446），于是全景是一片连绵的岛链，
+       不像 4 块板。验收口径是用户转述的那句：**遮住标题也要认得出板块**。
+
+       两条规则，都是纯几何（不动任何内容，不改星团/节点的摆法）：
+         · **同板块内**：领域之间不该拉太开 —— 净空超过 `sectorInnerGap`
+           就互相拉近（否则「数理逻辑」4 个点会孤零零飘在板块外面）。
+         · **跨板块**：净空至少 `sectorGap`，不够就各让一半推开。
+
+       ⚠️ 顺序是先收拢、再推开：反过来的话，收拢那一步会把好不容易推开的板块
+          又拉回来。
+       ⚠️ 位置在**星团打包之后、节点锚点之前**：这时 `reg._cap` 才是最终值
+          （上面那行 `max(reg._cap, far+60)` 量的是星团真实外接半径）。
+          早一步用「按节点数估的容量盘」会小看大领域，推了等于没推。
+       ⚠️ 移动领域 = 连同它的星团一起平移（节点锚点在下一步才由星团中心算）。 */
+    (function packSectors() {
+      var outer = cfg.sectorGap || 0;
+      var inner = cfg.sectorInnerGap == null ? 160 : cfg.sectorInnerGap;
+      var list = graph.regions.filter(function (r) { return !!r.center; });
+      if (list.length < 2) return;
+
+      function resolve(maxIt, damp, cross) {
+        /* cross = true：**跨**板块，够不着就推开；false：**同**板块，太远就拉近 */
+        var limit = cross ? outer : inner;
+        for (var it = 0; it < maxIt; it++) {
+          var worst = 0;
+          for (var i = 0; i < list.length; i++) {
+            for (var j = i + 1; j < list.length; j++) {
+              var a = list[i], b = list[j];
+              /* 没写板块的领域（理论上不该有）一律按「不同板块」处理，安全 */
+              var sameSector = (a.sector && b.sector && a.sector === b.sector);
+              if (cross === sameSector) continue;
+              var dx = b.center.x - a.center.x, dy = b.center.y - a.center.y;
+              var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+              var need = a._cap + b._cap + limit;
+              var delta = cross ? (need - d) : (d - need);
+              if (delta <= 0.5) continue;
+              if (delta > worst) worst = delta;
+              var move = delta * 0.5 * damp;
+              var ux = dx / d, uy = dy / d;
+              /* ⚠️ 方向：`u` 是 a → b。收拢时 a 朝 b 走（+u），推开时 a 背离 b（−u）。
+                 两条规则共用同一段代码，符号写反就会「越推越近」（踩过）。 */
+              var sgn = cross ? -1 : 1;
+              /* 稀疏时方向由 dx,dy 决定；两点重合时 dx,dy 会退化，前面 ||0.01 兜住 */
+              a.center.x += ux * move * sgn; a.center.y += uy * move * sgn;
+              b.center.x -= ux * move * sgn; b.center.y -= uy * move * sgn;
+            }
+          }
+          if (worst < 0.5) break;
+        }
+      }
+
+      var before = list.map(function (r) { return { x: r.center.x, y: r.center.y }; });
+      if (inner >= 0) resolve(120, 0.5, false);       // 1) 板块内收拢
+      if (outer > 0) resolve(240, 1.0, true);         // 2) 板块间推开
+      list.forEach(function (r, i) {
+        var mx = r.center.x - before[i].x, my = r.center.y - before[i].y;
+        if (!mx && !my) return;
+        graph.clusters.forEach(function (c) {
+          if (c.parent !== r.id || !c.center) return;
+          c.center = { x: c.center.x + mx, y: c.center.y + my };
+        });
+      });
+    })();
+
     /* ------------------------------------------------ 2. 节点锚点 */
     var buckets = Object.create(null);   // 无星团节点按星系分桶
     var borders = [], orphans = [];
