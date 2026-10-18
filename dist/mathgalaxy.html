@@ -1338,13 +1338,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          云雾本来就是糊的，形状与浓淡无差别；成本 0.2ms 且只在开页 / 改显隐时发生。 */
       texBlur: 1.6,
       blobsPerRegion: 15,         // 每个板块的云朵数
-      blobAlpha: 0.075,           // 单朵云的基础不透明度（多朵叠加后会更深）
-      centerAlpha: 0.065,         // 板块中心大团雾
-      nodeAlpha: 0.050,           // 每个节点周围的小团雾
-      spread: 0.72,               // 云朵分布半径 / 板块半径
+      blobAlpha: 0.038,           // 单朵云的基础不透明度（多朵叠加后会更深）
+      centerAlpha: 0.033,         // 板块中心大团雾
+      nodeAlpha: 0.025,           // 每个节点周围的小团雾
+      spread: 0.60,               // 云朵分布半径 / 板块半径
       blobRadiusMin: 0.30,
       blobRadiusMax: 0.50,
-      cloudMargin: 110,           // 板块云半径 = 专属节点最大离心距 + 该余量
+      cloudMargin: 60,           // 板块云半径 = 专属节点最大离心距 + 该余量
       cloudRadiusMin: 200,
       dilate: 1.45                // 纹理画布在内容范围外多留的边距
     },
@@ -1428,7 +1428,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       },
       cloudPadding: 42,     // 星团云比节点分布外扩多少（世界单位）—— 收紧，让团的边界看得清
       cloudMinRadius: 120,
-      cloudAlpha: 0.14,     // 星团云不透明度（叠在星系云上，形成"更密的结"）
+      cloudAlpha: 0.08,     // 星团云不透明度（叠在星系云上，形成"更密的结"）
       labelSize: 13.5,
       labelOffset: 0,       // 星团名放在星团中心上方
       namePad: 6            // 星团名底下那块底色的内边距
