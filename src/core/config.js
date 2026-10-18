@@ -71,9 +71,11 @@
       mode: 'packed',
       organic: {
         gap: 26,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
-        rScale: 0.6,          // R_i = rScale·gap·√n_i —— 团半径
+        rScale: 0.9,          // ⭐ R_i = rScale·gap·√n_i（0.6→0.9：团盘占空 70%→34%，两团叠才 68%）
         distFactor: 0.6,      // L_ij = R_i + R_j + distFactor·D̂·R̄（只给有关系的对）
-        collide: 0.35,        // 单侧碰撞刚度
+        collide: 0.35,        // （已停用：团级碰撞删掉了，只留节点级 PBD）
+        kRep: 0.04,           // 无平衡点软斥力系数（正比于 (R_i+R_j)²/d²）
+        repScale: 60,         // 把 kRep 换算到位移量纲的倍率（gap 量级）
         collisionRadius: 0.42, // C_i = 0.42·gap·√n_i（≈0.8×节点占位半径），只用于单侧碰撞
         gravity: 0.02,        // 全局弱引力 F = gravity·(p−质心)，Phase 1 与 2 都加
         /* ⚠️ 节点级的力单位和团级不一样：0.02 在节点尺度上是斥力的 3 倍（实测塌成一坨、

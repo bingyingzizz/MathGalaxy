@@ -296,7 +296,7 @@
            最强的一对目标是 0.45·(Ri+Rj)（深咬合），最弱的 1.0（相切）。
            ⚠️ 工单写的是 1−Ŵ（W/maxW）；这里用 D̂（关系图上的归一化最短路，
               与强度反序）等价：强 ⇒ D̂≈0 ⇒ 0.45，弱 ⇒ D̂≈1 ⇒ 1.0。 */
-        var v = (R[i] + R[j]) * (0.45 + 0.55 * dh);
+        var v = (R[i] + R[j]) * (0.35 + 0.65 * dh);
         L[i * n + j] = L[j * n + i] = v;
         hasL[i * n + j] = hasL[j * n + i] = 1;
       }
@@ -357,6 +357,20 @@
           var ux = dx / d, uy = dy / d;
           px[a] -= ux * F; py[a] -= uy * F;
           px[b] += ux * F; py[b] += uy * F;
+        }
+      }
+      /* ⭐ 无平衡点的软斥力（对所有团对，永远存在、无阈值、随距离衰减）：
+         F = kRep·(R_i+R_j)²/d²。它不产生环、不产生相切平衡 —— 平衡由「弹簧 vs 它」共同决定。
+         ⛔ 不能用「碰撞 + 目标距离」的混合，那必然回到环或塌。 */
+      for (a = 0; a < n; a++) {
+        for (b = a + 1; b < n; b++) {
+          var dd2 = (px[b] - px[a]) * (px[b] - px[a]) + (py[b] - py[a]) * (py[b] - py[a]);
+          var d1 = Math.sqrt(dd2) || 1e-6;
+          var rs = R[a] + R[b];
+          var F2 = O.kRep * rs * rs / (d1 * d1) * O.repScale;
+          var ux2 = (px[b] - px[a]) / d1, uy2 = (py[b] - py[a]) / d1;
+          px[a] -= ux2 * F2; py[a] -= uy2 * F2;
+          px[b] += ux2 * F2; py[b] += uy2 * F2;
         }
       }
       for (q = 0; q < n; q++) {                        // 全局弱引力
