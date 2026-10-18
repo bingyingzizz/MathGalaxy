@@ -185,9 +185,9 @@
       lodA.clusterLink = 1 - smoothstep(tCLink[0], tCLink[1], k);
       /* 大板块名：**只有它在最远视角**。星团名一起来就让位（领域名更早一点让位）。 */
       lodA.sectorName = smoothstep(tSec[0], tSec[1], k) * (1 - smoothstep(tSecOut[0], tSecOut[1], k));
-      /* 跨团长线：远尺度为 0（收起），放大到领域/星团尺度才回来 */
+      /* 跨团长线：**远尺度收起**（crossEdge→0），放大到领域/星团尺度才回来 */
       var tCross = thr(L.crossEdgeOut);
-      lodA.crossEdge = 1 - smoothstep(tCross[0], tCross[1], k);
+      lodA.crossEdge = smoothstep(tCross[0], tCross[1], k);
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -902,6 +902,16 @@
       ctx.lineCap = 'round';
       links.forEach(function (l) {
         if (l.count < cfgL.minEdges) return;
+        /* ⭐ 阶段 3：远尺度只留**主要关系**。
+           · 同板块的聚合线照画（它们是板块内部的骨架）；
+           · **跨板块**的聚合线要够粗才画（count ≥ crossSectorMinEdges），
+             否则远看就是一地斜穿的细线。
+           这一层本来就是「聚合」而不是逐条边，筛掉不等于关系消失 ——
+           放大、选中、搜索都还能找到它。 */
+        if (!C.showAllEdges && lodA.crossEdge < 0.5) {
+          var sA = clusterSector(l.a), sB = clusterSector(l.b);
+          if (sA && sB && sA !== sB && l.count < (cfgL.crossSectorMinEdges || 4)) return;
+        }
         var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
         if (!A || !B || !A.stat || !B.stat) return;
         if (view.isNodeVisible && (!visibleIn(A.nodes) || !visibleIn(B.nodes))) return;
@@ -1148,6 +1158,14 @@
         ctx.stroke();
         ctx.restore();
       });
+    }
+
+    /** 星团 → 它所在的大板块 id（没挂上就返回空串） */
+    function clusterSector(cid) {
+      var c = view.graph.clusterById && view.graph.clusterById[cid];
+      if (!c || !c.parent) return '';
+      var r = view.graph.regionById[c.parent];
+      return (r && r.sector) || '';
     }
 
     /** 这条边的两端是否属于**不同星团**（多来源边：任一对不同就算跨团） */

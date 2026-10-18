@@ -250,6 +250,9 @@
     /* 星团级连线（自动从节点级连线聚合出来，不需要手写） */
     clusterLink: {
       minEdges: 2,          // 两个星团之间至少这么多条节点连线才画
+      /* 阶段 3：远尺度（`crossEdgeOut` 以下）**跨板块**的聚合线要更粗才画，
+         否则远看满屏斜穿的细线。同板块的不受这条限制。 */
+      crossSectorMinEdges: 4,
       widthMin: 1.6,
       widthMax: 7.5,
       color: '86, 104, 140',
