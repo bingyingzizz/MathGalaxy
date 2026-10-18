@@ -6244,6 +6244,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
      *    所以定义线相交处由「更深」变成「同样深浅」—— 观感反而更干净。
      */
     function drawEdges(list) {
+      /* ⭐ 线条三档（r = k/kFit）：定义引用线**只在 L3（r ≥ 2.8）**画。
+         L0 一条不画、L1–L2 只画推出/等价骨架 —— 都在 drawEdgeOne 里判。
+         「全部连线」绕过所有闸门。 */
+      if (!C.showAllEdges && (lodA.rRel || 1) < 2.8) return;
       /* 只有**定义引用线**走「合并描边」的快路径：它占全部连线 89%（1244/1391），
          逐条 stroke() 在用户机器上约 0.05ms/条 ⇒ 一帧六十多毫秒
          （实测：把它一关，同一页面 13fps → 240fps；而把像素量砍到 1/4 毫无变化）。
@@ -6353,6 +6357,28 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
       var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
       var active = isEdgeActive(g);
+      /* ⭐⭐ 线条三档 + 端点计数（2026-10-18 Stage 1b，取代所有「按绝对 k 藏长线」的旧逻辑）：
+         L0（r<1.15）一条不画；L1–L2（r<2.8）只画 implication / equivalence；
+         L3 起画实体边，但**至少一端在视口内**；
+         只有一端在视口内 ⇒ alpha × exp(−屏幕长/320)；两端都在外 ⇒ 不画。
+         选中 / 悬停 /「全部连线」照旧放行。 */
+      if (!active && !C.showAllEdges) {
+        var rT = lodA.rRel || 1;
+        if (rT < 1.15) return;
+        if (rT < 2.8 && e.kind !== 'implication' && e.kind !== 'equivalence') return;
+        if (rT >= 2.8) {
+          var c0 = camNow();
+          var endIds = GU.edgeNodes(e), inside = 0;
+          for (var ei = 0; ei < endIds.length; ei++) {
+            var en = view.graph.byId[endIds[ei]];
+            if (!en) continue;
+            var sp = w2s(en.x, en.y);
+            if (sp.x >= 0 && sp.x <= W && sp.y >= 0 && sp.y <= H) inside++;
+          }
+          if (inside === 0) return;
+          if (inside === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
+        }
+      }
       /* 定义引用线在中景降权（领域 / 星团尺度 ×0.60）。⚠️ 定义线绝大多数走的是
          drawEdges() 的合并描边快路径，那里也必须乘同一个 lodA.defDim ——
          只改这里等于没改。 */
