@@ -458,12 +458,22 @@
       /* 用户主动打开「全部连线」= 他就是想看全，别再替他把长的压掉。 */
       if (C.showAllEdges) return 1;
       var c = camNow();
-      var vw = c.viewW || W, vh = c.viewH || H;
-      var diag = Math.sqrt(vw * vw + vh * vh) || 1;
-      var t = (g.lenPx / diag - F.start) / Math.max(0.001, F.end - F.start);
+      /* ⚠️ 用**世界长度**（lenPx / k），不是屏幕长度：屏幕口径会把放大后
+         正常的局部关系也压掉（k=1.5 时 500 单位 ≈ 4 条边，屏幕 750px）。 */
+      var worldLen = g.lenPx / Math.max(1e-6, c.k || 1);
+      var t = (worldLen - F.start) / Math.max(1, F.end - F.start);
       if (t <= 0) return 1;
       if (t > 1) t = 1;
       return 1 - (1 - F.floor) * t;
+    }
+
+    /** 线宽随缩放生长的倍率（见 config.edge.widthPow） */
+    function edgeWidthMul() {
+      var E = C.edge;
+      var c = camNow();
+      var k = c.k || (E.widthRefK || 0.62);
+      return U.clamp(Math.pow(k / (E.widthRefK || 0.62), E.widthPow == null ? 0.45 : E.widthPow),
+        1, E.widthMax == null ? 2.6 : E.widthMax);
     }
 
     function computeEdge(e, cam) {
@@ -1248,6 +1258,8 @@
         if (a <= 0.02) return;
         if (!C.showDefinitionLines) return;
         var active = isEdgeActive(g);
+        /* 定义引用线**不跟着放大**（89% 的线都是它）。放大后如果它也变粗，
+           整个画面会被蓝网盖住；「定义线降权」的既定口径不能破。 */
         var w = C.edge.definitionWidth * (active ? 1.85 : 1);
         var spineOnly = spine && lodA.nodeEdge < 0.9;
         if (spineOnly) { a *= 0.55 + 0.45 * lodA.nodeEdge; w = 1.25; }
@@ -1329,7 +1341,8 @@
       var w = (e.kind === 'implication' ? C.edge.implicationWidth
         : e.kind === 'equivalence' ? C.edge.equivalenceWidth
           : e.kind === 'analogy' ? T.edgeStyles.analogy.width
-            : C.edge.definitionWidth) * (active ? 1.85 : 1);
+            : C.edge.definitionWidth) * (active ? 1.85 : 1)
+        * (e.kind === 'definition' ? 1 : edgeWidthMul());
 
       // 全图尺度：主干画成一条低调的暖色细线，不抢云雾和装置名
       var spineOnly = spine && lodA.nodeEdge < 0.9;
