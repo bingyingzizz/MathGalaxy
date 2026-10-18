@@ -512,7 +512,7 @@
          把 maxd 拉得很长，云半径跟着涨，而那里其实没什么点。
          分位数既保住了「云把内容包住」的观感，又不会为个别远点空摊一大片。 */
       var ds = basis.map(function (nd) { return U.dist(nd.x, nd.y, cx, cy); }).sort(function (a, b) { return a - b; });
-      var maxd = ds.length ? ds[Math.min(ds.length - 1, Math.floor(ds.length * 0.92))] : 0;
+      var maxd = ds.length ? ds[Math.min(ds.length - 1, Math.floor(ds.length * 0.88))] : 0;
       r.stat = {
         cx: cx, cy: cy, count: list.length,
         radius: Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin)

@@ -112,7 +112,7 @@
       galaxyName: 1, clusterName: 1, nodeDot: 1,
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0,
       trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1, crossEdge: 0,
-      defDim: 1, tier: 0
+      defDim: 1, tier: 0, regionEdge: 0
     };
 
     /* ⭐ 尺度档位的**回差**：0 大板块 / 1 领域 / 2 星团 / 3 节点近景。
@@ -219,6 +219,9 @@
       /* 跨团长线：**远尺度收起**（crossEdge→0），放大到领域/星团尺度才回来 */
       var tCross = thr(L.crossEdgeOut);
       lodA.crossEdge = smoothstep(tCross[0], tCross[1], k);
+      /* 跨**领域**（不是跨团）的逐条边：中景收起，近景才回来（见 config.lod.regionEdgeIn） */
+      var tReg = thr(L.regionEdgeIn || { rel: [4.20, 5.60] });
+      lodA.regionEdge = smoothstep(tReg[0], tReg[1], k);
       /* 定义引用线在中景降权（见 config.edge.definitionMidScale）：
          两个 draw 路径共用这一个系数 —— 定义线大部分走的是**合并描边**快路径，
          只改 drawEdgeOne 会「改了没效果」（这条坑写在 HANDOVER 里）。 */
@@ -1024,6 +1027,13 @@
          聚合线也一样 —— 如果它连着我正在看的那个团，跨板块也照画。 */
       var focusNode = (view.focus && view.focus.type === 'node') ? view.graph.byId[view.focus.id] : null;
       var focusCluster = focusNode ? focusNode.cluster : null;
+      /* ⭐ 中景（1.3~2.2×k₀）只留**同一个领域内部**的聚合线。
+         远景（<1.3×k₀）保留跨板块的骨架，近景（>4.2×k₀）聚合线本来就退场了。 */
+      var midZone = lodA.crossEdge > 0.5 && lodA.regionEdge < 0.5;
+      var regionOfCluster = function (cid) {
+        var cc = view.graph.clusterById && view.graph.clusterById[cid];
+        return (cc && cc.parent) || '';
+      };
 
       ctx.save();
       ctx.lineCap = 'round';
@@ -1033,11 +1043,14 @@
            · 同板块的聚合线照画（它们是板块内部的骨架）；
            · **跨板块**的聚合线要够粗才画（count ≥ crossSectorMinEdges），
              否则远看就是一地斜穿的细线。
-           这一层本来就是「聚合」而不是逐条边，筛掉不等于关系消失 ——
-           放大、选中、搜索都还能找到它。 */
-        if (!C.showAllEdges && lodA.crossEdge < 0.5) {
+           ⭐ 2026-10-18：这条筛选**不再只作用于最远那一档**。原来它只在
+              crossEdge<0.5（≈1.3×k₀ 以下）生效，中景 1.3~2.8×k₀ 之间
+              所有跨板块聚合线都放出来 → 用户看到的「中景像一张网」。
+              现在只要不是「全部连线」就一直筛；选中团的线仍然放行。 */
+        if (!C.showAllEdges) {
           var sA = clusterSector(l.a), sB = clusterSector(l.b);
           var touchesFocus = !!(focusCluster && (l.a === focusCluster || l.b === focusCluster));
+          if (midZone && regionOfCluster(l.a) !== regionOfCluster(l.b) && !touchesFocus) return;
           if (!touchesFocus && sA && sB && sA !== sB && l.count < (cfgL.crossSectorMinEdges || 4)) return;
         }
         var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
@@ -1258,6 +1271,8 @@
         if (a <= 0.02) return;
         if (!C.showDefinitionLines) return;
         var active = isEdgeActive(g);
+        /* 中景：跨领域的定义引用也先收起（和 drawEdgeOne 同一口径） */
+        if (!C.showAllEdges && !active && lodA.regionEdge < 0.5 && edgeCrossRegion(e)) return;
         /* 定义引用线**不跟着放大**（89% 的线都是它）。放大后如果它也变粗，
            整个画面会被蓝网盖住；「定义线降权」的既定口径不能破。 */
         var w = C.edge.definitionWidth * (active ? 1.85 : 1);
@@ -1319,6 +1334,23 @@
       return false;
     }
 
+    /** 这条边的两端是否属于**不同领域**（物理归属：星团所属星系；无星团取 regions[0]）。
+        结果缓存在边上（内容不变，不必每帧重算）。 */
+    function edgeCrossRegion(e) {
+      if (e._crossRegion != null) return e._crossRegion;
+      var ids = GU.edgeNodes(e);
+      var first = null, cross = false;
+      for (var i = 0; i < ids.length; i++) {
+        var n = view.graph.byId[ids[i]];
+        if (!n) continue;
+        var r = (n.clusterObj && n.clusterObj.parent) || (n.regions && n.regions[0]) || '';
+        if (first === null) { first = r; continue; }
+        if (r && first && r !== first) { cross = true; break; }
+      }
+      e._crossRegion = cross;
+      return cross;
+    }
+
     /** 逐条绘制（推出 / 等价 / 类比，以及定义线在别的调用点单画时）—— 与原来逐字一致 */
     function drawEdgeOne(g) {
       var e = g.edge;
@@ -1333,6 +1365,11 @@
       if (e.kind === 'definition') a *= lodA.defDim;
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       if (a <= 0.02) return;
+
+      /* ⭐ 中景：**跨领域的逐条边默认收起**（用户 2026-10-18：
+         「中景像一张网，压过节点和文字」）。选中 / 悬停 / 「全部连线」放行；
+         放大到近景（regionEdgeIn）自己会回来。 */
+      if (!C.showAllEdges && !active && lodA.regionEdge < 0.5 && edgeCrossRegion(e)) return;
 
       /* ⭐ 阶段 3：远尺度收起「逐条跨团长线」。
          只看「两端星团是否相同」——团内关系不受影响；选中/聚焦的边、以及

@@ -368,13 +368,21 @@
       return { k: k, cx: base.cx, cy: base.cy };
     }
 
-    /** 适配到某个星系（只算还看得见的点） */
+    /** 适配到某个星系（只算**物理上住在这个星系里**的点）。
+        ⚠️ 不能直接按 `regions[]` 取：跨领域的点（比如 `def.complex` 声明了
+        analysis+algebra，但物理上在 `set.numbers` 团里）会把 bbox 拉到整张图，
+        于是「点分析学」得到的是全景（用户 2026-10-18 报的正是这个）。
+        判据用**星团所属星系**（团是物理位置的真源）；没有星团的点才看 regions[0]。 */
     function fitRegion(rid) {
       var list = graph.nodes.filter(function (n) {
-        return n.regions.indexOf(rid) >= 0 && vis.isNodeVisible(n.id);
+        if (!vis.isNodeVisible(n.id)) return false;
+        var home = (n.clusterObj && n.clusterObj.parent) || (n.regions && n.regions[0]);
+        return home === rid;
       });
       if (!list.length) return;
-      cam.animateTo(targetFor(bboxOf(list), 170, 1.35));
+      /* 留白 170 → 70：星系本来就是一大团，留太多会显得「没聚焦」。
+         仍然走 targetFor（⇒ cam.availRect，扣掉左栏图例；右侧面板由 panelInset 补）。 */
+      cam.animateTo(targetFor(bboxOf(list), 70, 1.6));
       requestDraw();
     }
 
@@ -1006,10 +1014,12 @@
       return out;
     }
 
-    /* 图例三级折叠状态：**大板块默认展开、领域默认收起**。
+    /* 图例三级折叠状态：**默认收起大板块**（图例短一点），点三角逐级展开。
+       2026-10-18 按反馈改：原来大板块默认全展开 → 图例 707px 高，
+       手机上要滚很久；现在初始只有 4 个大板块行。
        ⚠️ 只存内存，不写 localStorage —— 这是「临时看一眼」的展开，不是长期偏好。 */
     var legendFold = { sec: Object.create(null), reg: Object.create(null) };
-    function sectorOpen(id) { return legendFold.sec[id] !== false; }
+    function sectorOpen(id) { return legendFold.sec[id] === true; }
     function regionOpen(id) { return legendFold.reg[id] === true; }
 
     /**
