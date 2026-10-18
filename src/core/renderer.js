@@ -185,6 +185,9 @@
       lodA.clusterLink = 1 - smoothstep(tCLink[0], tCLink[1], k);
       /* 大板块名：**只有它在最远视角**。星团名一起来就让位（领域名更早一点让位）。 */
       lodA.sectorName = smoothstep(tSec[0], tSec[1], k) * (1 - smoothstep(tSecOut[0], tSecOut[1], k));
+      /* 跨团长线：远尺度为 0（收起），放大到领域/星团尺度才回来 */
+      var tCross = thr(L.crossEdgeOut);
+      lodA.crossEdge = 1 - smoothstep(tCross[0], tCross[1], k);
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -1147,6 +1150,20 @@
       });
     }
 
+    /** 这条边的两端是否属于**不同星团**（多来源边：任一对不同就算跨团） */
+    function edgeCrossCluster(e) {
+      var ids = MG.graphUtil.edgeNodes(e);
+      var first = null;
+      for (var i = 0; i < ids.length; i++) {
+        var n = view.graph.byId[ids[i]];
+        if (!n) continue;
+        var c = n.cluster || '';
+        if (first === null) first = c;
+        else if (c !== first) return true;
+      }
+      return false;
+    }
+
     /** 逐条绘制（推出 / 等价 / 类比，以及定义线在别的调用点单画时）—— 与原来逐字一致 */
     function drawEdgeOne(g) {
       var e = g.edge;
@@ -1157,6 +1174,10 @@
       if (a <= 0.02) return;
 
       var active = isEdgeActive(g);
+      /* ⭐ 阶段 3：远尺度收起「逐条跨团长线」。
+         只看「两端星团是否相同」——团内关系不受影响；选中/聚焦的边、以及
+         用户打开 `showAllEdges` 时一律放行。⛔ 不画聚合箭头。 */
+      if (!C.showAllEdges && !active && lodA.crossEdge < 0.5 && edgeCrossCluster(e)) return;
       var w = (e.kind === 'implication' ? C.edge.implicationWidth
         : e.kind === 'equivalence' ? C.edge.equivalenceWidth
           : e.kind === 'analogy' ? T.edgeStyles.analogy.width

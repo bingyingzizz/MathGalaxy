@@ -219,7 +219,12 @@
 
       /* 星团包络：和装置名同一档出现，放大到节点名出来之前就退场 */
       envelopeIn:  { rel: [0.25, 0.85] },
-      envelopeOut: { rel: [1.40, 2.80] }
+      envelopeOut: { rel: [1.40, 2.80] },
+
+      /* ⭐ 阶段 3：远尺度**默认收起「逐条跨团长线」**（团内的关系照旧画）。
+         这条只作用于「两端不在同一个星团」的边；选中 / 聚焦的边一律放行，
+         `showAllEdges` 打开时也放行。⛔ 不画任何「板块 A ⟹ 板块 B」的聚合箭头。 */
+      crossEdgeOut: { rel: [0.90, 1.70] }
     },
 
     /* 星团（一套自足的装置，内部关系密、对外整块连接） */
@@ -270,6 +275,8 @@
     /* 开关默认值 */
     exploreMode: false,     // true → 打开弱边（探索模式）
     showDefinitionLines: true,    showLabels: true,
+    /* 阶段 3：远尺度收起跨团长线。打开它就「全部连线」都画（不新增渲染路径）。 */
+    showAllEdges: false,
     wheelZooms: true,             // false → 滚轮平移（触控板手感）
     hideParallelImplications: true, // 已有等价线时不再叠画同对节点的箭头
     highlightDefinitions: true,   // 面板上把「定义引用」单独分组
