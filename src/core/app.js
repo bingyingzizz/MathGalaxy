@@ -149,9 +149,13 @@
        它一变（显隐 / 开关 / 聚焦 / 数据）就允许重烘一次 —— 平移与纯 k 变不重烘。 */
     var bitmap = null, perfRec = null, lastUseBmp = false;
     function paintKey() {
+      /* ⚠️ `showAllEdges` 必须算进绘制输入：它改的是**画出来的线**，
+         漏了它就会「点了按钮、位图照旧」——运行时切「全部连线」什么都不发生
+         （用 `#ae=1` 开页反而是对的，因为那时还没烘焙）。踩过。 */
       return graph.nodes.length + '|' + vis.hiddenCount() + '|'
         + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
-        + (C.hideParallelImplications ? 1 : 0) + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
+        + (C.hideParallelImplications ? 1 : 0) + (C.showAllEdges ? 1 : 0) + '|'
+        + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
     }
     var rafId = 0;
     var dirty = true;
