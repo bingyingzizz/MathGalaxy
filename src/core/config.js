@@ -73,8 +73,8 @@
         gap: 26,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
         rScale: 0.6,          // R_i = rScale·gap·√n_i —— 团半径
         distFactor: 0.6,      // L_ij = R_i + R_j + distFactor·D̂·R̄（只给有关系的对）
-        repulse: 0.15,        // 软斥力刚度（Stage 1b：0.5 → 0.15）
-        repTarget: 0.65,      // 斥力目标 = repTarget·(R_i+R_j)：0.65 ⇒ 允许重叠 35%
+        collide: 0.35,        // 单侧碰撞刚度
+        collisionRadius: 0.42, // C_i = 0.42·gap·√n_i（≈0.8×节点占位半径），只用于单侧碰撞
         gravity: 0.02,        // 全局弱引力 F = gravity·(p−质心)，Phase 1 与 2 都加
         /* ⚠️ 节点级的力单位和团级不一样：0.02 在节点尺度上是斥力的 3 倍（实测塌成一坨、
            ρ 掉到 0.03、硬重叠 1316）。节点用 gravity·nodeGravityMul。 */
@@ -85,13 +85,13 @@
            半径 ≈ 0.94·R_c（R_c=0.6·26·√n），而软井从 0.75·R_c 就开始拉回 ⇒
            团内被压出 283 对硬重叠。改成 0.95（井在自然半径外一点点开始）后归零。 */
         wellFrom: 0.95,       // 软团井从 0.95·R_c 开始
-        wellPull: 0.015,      // 越界部分 × 0.015 拉回（Stage 1b：0.03 → 0.015）
+        wellPull: 0.02,       // 软团井刚度（追当前质心）
         worldScale: 1.0,      // 世界尺度倍率（?world=2 试「更像星图」的版本）
         nodeRepel: 2.0,       // 节点斥力只算 nodeRepel·gap 以内的邻居（均匀网格）
-        nodeIter: 250,        // Phase 2 步数（或最大位移 <0.5 提前停）
+        nodeIter: 300,        // Phase 2 步数（或最大位移 <0.5 提前停）
         aspectLo: 1.50,       // 世界盒宽高比低于它就把 x 拉宽
         aspectHi: 1.75,       // 高于它就把 y 拉高
-        aspectCap: 1.35,      // 各向异性缩放系数上限
+        aspectCap: 1.8,       // 各向异性缩放系数上限（1.5/0.94 = 1.6 需要它）
         densityIters: 5,      // mean-shift 次数
         weight: { implication: 1.0, equivalence: 0.8, definition: 0.15, analogy: 0 }
       },

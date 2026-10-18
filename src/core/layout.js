@@ -268,9 +268,15 @@
     var D = gd.D;
 
     /* R_i = rScale · gap · sqrt(n_i)：一个「nodes 以 gap 为间距排开」的团有多大 */
-    var R = new Float64Array(n), sumR = 0;
+    /* ⭐ Stage 1b 裁决版：**碰撞半径** C_i = 0.42·gap·√n_i（≈0.8×节点占位半径）。
+       ⛔ 只用于单侧碰撞与初始化，不是视觉半径；R 只用于应力目标 L。
+       几何事实：R=15.6√n 而按 gap 排满 n 点只需 14.67√n ⇒ R 只余 6.3%，
+       所以「圆盘重叠 35%」必然与硬 gap 打架。碰撞半径必须另算。 */
+    var R = new Float64Array(n), C = new Float64Array(n), sumR = 0;
     for (var i = 0; i < n; i++) {
-      R[i] = O.rScale * O.gap * Math.sqrt(Math.max(1, cs[i].nodes.length));
+      var sq = Math.sqrt(Math.max(1, cs[i].nodes.length));
+      R[i] = O.rScale * O.gap * sq;
+      C[i] = O.collisionRadius * O.gap * sq;     // 单侧碰撞半径
       sumR += R[i];
     }
     var Rbar = sumR / n;
@@ -326,15 +332,16 @@
       }
       px = nx; py = ny;
     }
-    /* 软斥力：只在 d < 0.65·(R_i+R_j) 时推（允许相邻团重叠 35% —— 这是「四团压进中心」的关键），
-       刚度 0.15。另加**全局弱引力** 0.02·(p−质心)：没有它，团只会互相顶开、稳态在空心环上。 */
+    /* 单侧碰撞（Stage 1b 裁决版）：只有 d < C_i+C_j 才推，**没有任何理想距离**。
+       平衡距离由应力（弹簧）决定 ⇒ 有关系的团能互相插进去，hub 自然占中心。
+       全局弱引力只在团心上加（0.02），节点级不加。 */
     function repulseStep() {
       var gx = 0, gy = 0;
       for (var q = 0; q < n; q++) { gx += px[q]; gy += py[q]; }
       gx /= n; gy /= n;
       for (var a = 0; a < n; a++) {
         for (var b = a + 1; b < n; b++) {
-          var need = O.repTarget * (R[a] + R[b]);      // 0.65 ⇒ 允许重叠
+          var need = C[a] + C[b];                     // ⛔ 单侧碰撞：不重叠就没有力
           var dx = px[b] - px[a], dy = py[b] - py[a];
           var d = Math.sqrt(dx * dx + dy * dy);
           if (d >= need) continue;
@@ -342,7 +349,7 @@
             var ang = (((a * 7 + b * 13) % 8) * Math.PI) / 4;
             dx = Math.cos(ang); dy = Math.sin(ang); d = 1e-6;
           }
-          var F = O.repulse * (need - d) / 2;         // 各推 F/2
+          var F = O.collide * (need - d) / 2;         // 各推 F/2
           var ux = dx / d, uy = dy / d;
           px[a] -= ux * F; py[a] -= uy * F;
           px[b] += ux * F; py[b] += uy * F;
@@ -1125,8 +1132,23 @@
 
     for (var iter = 0; iter < iters; iter++) {
       var t = iter / Math.max(1, iters - 1);
-      var temp = U.lerp(cfg.temp0, cfg.temp1, t * t) * LEN;
+      var temp = U.lerp(cfg.temp0, cfg.temp1, t * t) * LEN * (organic ? (1 - 0.95 * t) : 1);
       for (i = 0; i < N * 2; i++) disp[i] = 0;
+
+      /* 每 5 步刷新各团的**当前质心**（软井追它） */
+      if (organic && iter % 5 === 0) {
+        var acc = Object.create(null);
+        for (i = 0; i < N; i++) {
+          var cn = nodes[i].clusterObj;
+          if (!cn) continue;
+          var ac = acc[cn.id] || (acc[cn.id] = { c: cn, x: 0, y: 0, n: 0 });
+          ac.x += nodes[i].x; ac.y += nodes[i].y; ac.n++;
+        }
+        Object.keys(acc).forEach(function (kk) {
+          var a2 = acc[kk];
+          a2.c._cur = { x: a2.x / a2.n, y: a2.y / a2.n };
+        });
+      }
 
       /* 3a. 排斥（organic：短程网格，只算 nodeRepel·gap 内的邻居；packed：原样 O(n²)） */
       if (organic) {
@@ -1198,17 +1220,14 @@
         f = n.isBorder ? cfg.borderPull : cfg.anchorPull;
         disp[i * 2] += (n.anchor.x - n.x) * f;
         disp[i * 2 + 1] += (n.anchor.y - n.y) * f;
-        /* organic：全局弱引力（和 Phase 1 同一个系数）—— 没有它，节点会被各团的
-           软井绑在原地，团与团之间永远留着一圈空。 ⚠️ 必须弱：0.02。 */
-        if (organic) {
-          var gm = cfg.organic.gravity * (cfg.organic.nodeGravityMul == null ? 1 : cfg.organic.nodeGravityMul);
-          disp[i * 2] += gm * (gcx - n.x);
-          disp[i * 2 + 1] += gm * (gcy - n.y);
-        }
+        /* ⛔ 节点级不加全局引力（1b 实测会把密度压平、ρ 掉到 0）。 */
 
         // 团容器：organic = **软团井**（越出去越被拉回，不是不许出去）；packed = 软墙
         if (n.clusterObj && n.clusterObj.center) {
-          var cx = n.clusterObj.center.x, cy = n.clusterObj.center.y;
+          /* 软团井追**当前质心**（每 5 步刷新），不是 Phase 1 的种子中心 ——
+             否则交叠区会把节点顶出去又被拽回来，就是那 1307 个硬重叠。 */
+          var cc0 = n.clusterObj._cur || n.clusterObj.center;
+          var cx = cc0.x, cy = cc0.y;
           var vx = n.x - cx, vy = n.y - cy;
           var vd = Math.sqrt(vx * vx + vy * vy) || 1;
           if (organic) {

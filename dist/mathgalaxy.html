@@ -1282,8 +1282,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         gap: 26,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
         rScale: 0.6,          // R_i = rScale·gap·√n_i —— 团半径
         distFactor: 0.6,      // L_ij = R_i + R_j + distFactor·D̂·R̄（只给有关系的对）
-        repulse: 0.15,        // 软斥力刚度（Stage 1b：0.5 → 0.15）
-        repTarget: 0.65,      // 斥力目标 = repTarget·(R_i+R_j)：0.65 ⇒ 允许重叠 35%
+        collide: 0.35,        // 单侧碰撞刚度
+        collisionRadius: 0.42, // C_i = 0.42·gap·√n_i（≈0.8×节点占位半径），只用于单侧碰撞
         gravity: 0.02,        // 全局弱引力 F = gravity·(p−质心)，Phase 1 与 2 都加
         /* ⚠️ 节点级的力单位和团级不一样：0.02 在节点尺度上是斥力的 3 倍（实测塌成一坨、
            ρ 掉到 0.03、硬重叠 1316）。节点用 gravity·nodeGravityMul。 */
@@ -1294,13 +1294,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
            半径 ≈ 0.94·R_c（R_c=0.6·26·√n），而软井从 0.75·R_c 就开始拉回 ⇒
            团内被压出 283 对硬重叠。改成 0.95（井在自然半径外一点点开始）后归零。 */
         wellFrom: 0.95,       // 软团井从 0.95·R_c 开始
-        wellPull: 0.015,      // 越界部分 × 0.015 拉回（Stage 1b：0.03 → 0.015）
+        wellPull: 0.02,       // 软团井刚度（追当前质心）
         worldScale: 1.0,      // 世界尺度倍率（?world=2 试「更像星图」的版本）
         nodeRepel: 2.0,       // 节点斥力只算 nodeRepel·gap 以内的邻居（均匀网格）
-        nodeIter: 250,        // Phase 2 步数（或最大位移 <0.5 提前停）
+        nodeIter: 300,        // Phase 2 步数（或最大位移 <0.5 提前停）
         aspectLo: 1.50,       // 世界盒宽高比低于它就把 x 拉宽
         aspectHi: 1.75,       // 高于它就把 y 拉高
-        aspectCap: 1.35,      // 各向异性缩放系数上限
+        aspectCap: 1.8,       // 各向异性缩放系数上限（1.5/0.94 = 1.6 需要它）
         densityIters: 5,      // mean-shift 次数
         weight: { implication: 1.0, equivalence: 0.8, definition: 0.15, analogy: 0 }
       },
@@ -3482,9 +3482,15 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     var D = gd.D;
 
     /* R_i = rScale · gap · sqrt(n_i)：一个「nodes 以 gap 为间距排开」的团有多大 */
-    var R = new Float64Array(n), sumR = 0;
+    /* ⭐ Stage 1b 裁决版：**碰撞半径** C_i = 0.42·gap·√n_i（≈0.8×节点占位半径）。
+       ⛔ 只用于单侧碰撞与初始化，不是视觉半径；R 只用于应力目标 L。
+       几何事实：R=15.6√n 而按 gap 排满 n 点只需 14.67√n ⇒ R 只余 6.3%，
+       所以「圆盘重叠 35%」必然与硬 gap 打架。碰撞半径必须另算。 */
+    var R = new Float64Array(n), C = new Float64Array(n), sumR = 0;
     for (var i = 0; i < n; i++) {
-      R[i] = O.rScale * O.gap * Math.sqrt(Math.max(1, cs[i].nodes.length));
+      var sq = Math.sqrt(Math.max(1, cs[i].nodes.length));
+      R[i] = O.rScale * O.gap * sq;
+      C[i] = O.collisionRadius * O.gap * sq;     // 单侧碰撞半径
       sumR += R[i];
     }
     var Rbar = sumR / n;
@@ -3540,15 +3546,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       }
       px = nx; py = ny;
     }
-    /* 软斥力：只在 d < 0.65·(R_i+R_j) 时推（允许相邻团重叠 35% —— 这是「四团压进中心」的关键），
-       刚度 0.15。另加**全局弱引力** 0.02·(p−质心)：没有它，团只会互相顶开、稳态在空心环上。 */
+    /* 单侧碰撞（Stage 1b 裁决版）：只有 d < C_i+C_j 才推，**没有任何理想距离**。
+       平衡距离由应力（弹簧）决定 ⇒ 有关系的团能互相插进去，hub 自然占中心。
+       全局弱引力只在团心上加（0.02），节点级不加。 */
     function repulseStep() {
       var gx = 0, gy = 0;
       for (var q = 0; q < n; q++) { gx += px[q]; gy += py[q]; }
       gx /= n; gy /= n;
       for (var a = 0; a < n; a++) {
         for (var b = a + 1; b < n; b++) {
-          var need = O.repTarget * (R[a] + R[b]);      // 0.65 ⇒ 允许重叠
+          var need = C[a] + C[b];                     // ⛔ 单侧碰撞：不重叠就没有力
           var dx = px[b] - px[a], dy = py[b] - py[a];
           var d = Math.sqrt(dx * dx + dy * dy);
           if (d >= need) continue;
@@ -3556,7 +3563,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
             var ang = (((a * 7 + b * 13) % 8) * Math.PI) / 4;
             dx = Math.cos(ang); dy = Math.sin(ang); d = 1e-6;
           }
-          var F = O.repulse * (need - d) / 2;         // 各推 F/2
+          var F = O.collide * (need - d) / 2;         // 各推 F/2
           var ux = dx / d, uy = dy / d;
           px[a] -= ux * F; py[a] -= uy * F;
           px[b] += ux * F; py[b] += uy * F;
@@ -4339,8 +4346,23 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
     for (var iter = 0; iter < iters; iter++) {
       var t = iter / Math.max(1, iters - 1);
-      var temp = U.lerp(cfg.temp0, cfg.temp1, t * t) * LEN;
+      var temp = U.lerp(cfg.temp0, cfg.temp1, t * t) * LEN * (organic ? (1 - 0.95 * t) : 1);
       for (i = 0; i < N * 2; i++) disp[i] = 0;
+
+      /* 每 5 步刷新各团的**当前质心**（软井追它） */
+      if (organic && iter % 5 === 0) {
+        var acc = Object.create(null);
+        for (i = 0; i < N; i++) {
+          var cn = nodes[i].clusterObj;
+          if (!cn) continue;
+          var ac = acc[cn.id] || (acc[cn.id] = { c: cn, x: 0, y: 0, n: 0 });
+          ac.x += nodes[i].x; ac.y += nodes[i].y; ac.n++;
+        }
+        Object.keys(acc).forEach(function (kk) {
+          var a2 = acc[kk];
+          a2.c._cur = { x: a2.x / a2.n, y: a2.y / a2.n };
+        });
+      }
 
       /* 3a. 排斥（organic：短程网格，只算 nodeRepel·gap 内的邻居；packed：原样 O(n²)） */
       if (organic) {
@@ -4412,17 +4434,14 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         f = n.isBorder ? cfg.borderPull : cfg.anchorPull;
         disp[i * 2] += (n.anchor.x - n.x) * f;
         disp[i * 2 + 1] += (n.anchor.y - n.y) * f;
-        /* organic：全局弱引力（和 Phase 1 同一个系数）—— 没有它，节点会被各团的
-           软井绑在原地，团与团之间永远留着一圈空。 ⚠️ 必须弱：0.02。 */
-        if (organic) {
-          var gm = cfg.organic.gravity * (cfg.organic.nodeGravityMul == null ? 1 : cfg.organic.nodeGravityMul);
-          disp[i * 2] += gm * (gcx - n.x);
-          disp[i * 2 + 1] += gm * (gcy - n.y);
-        }
+        /* ⛔ 节点级不加全局引力（1b 实测会把密度压平、ρ 掉到 0）。 */
 
         // 团容器：organic = **软团井**（越出去越被拉回，不是不许出去）；packed = 软墙
         if (n.clusterObj && n.clusterObj.center) {
-          var cx = n.clusterObj.center.x, cy = n.clusterObj.center.y;
+          /* 软团井追**当前质心**（每 5 步刷新），不是 Phase 1 的种子中心 ——
+             否则交叠区会把节点顶出去又被拽回来，就是那 1307 个硬重叠。 */
+          var cc0 = n.clusterObj._cur || n.clusterObj.center;
+          var cx = cc0.x, cy = cc0.y;
           var vx = n.x - cx, vy = n.y - cy;
           var vd = Math.sqrt(vx * vx + vy * vy) || 1;
           if (organic) {
