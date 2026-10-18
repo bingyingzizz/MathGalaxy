@@ -70,13 +70,16 @@
          ⛔ mode 默认仍是 'packed'（今天的样子），验收通过前不许改。 */
       mode: 'packed',
       organic: {
-        gap: 26,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
-        rScale: 0.9,          // ⭐ R_i = rScale·gap·√n_i（0.6→0.9：团盘占空 70%→34%，两团叠才 68%）
+        gap: 11,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
+        rScale: 0.65,         // ⭐ 团内井半径 R_c = 0.58·gap·√n（=15.1√n，只比最紧排列大 3%）
+        bandFactor: 1.12,     // 团间**软带**：d < 1.30·(r_i+r_j) 施加向外的力
+        bandStiff: 0.08,      // 软带刚度（线性）
         distFactor: 0.6,      // L_ij = R_i + R_j + distFactor·D̂·R̄（只给有关系的对）
         collide: 0.35,        // （已停用：团级碰撞删掉了，只留节点级 PBD）
         kRep: 0.02,           // 无平衡点软斥力系数（扫描最优：0.9/0.02 → 硬重叠 0、ρ(269,W)=−0.415）
         repScale: 60,         // 把 kRep 换算到位移量纲的倍率（gap 量级）
         collisionRadius: 0.42, // C_i = 0.42·gap·√n_i（≈0.8×节点占位半径），只用于单侧碰撞
+        centerPull: 0.006,    // ⭐ 按度数加权的向心力 λ（只此一条；不是点汇）
         gravity: 0.02,        // 全局弱引力 F = gravity·(p−质心)，Phase 1 与 2 都加
         /* ⚠️ 节点级的力单位和团级不一样：0.02 在节点尺度上是斥力的 3 倍（实测塌成一坨、
            ρ 掉到 0.03、硬重叠 1316）。节点用 gravity·nodeGravityMul。 */
@@ -91,8 +94,8 @@
         worldScale: 1.0,      // 世界尺度倍率（?world=2 试「更像星图」的版本）
         nodeRepel: 2.0,       // 节点斥力只算 nodeRepel·gap 以内的邻居（均匀网格）
         nodeIter: 300,        // Phase 2 步数（或最大位移 <0.5 提前停）
-        aspectLo: 1.50,       // 世界盒宽高比低于它就把 x 拉宽
-        aspectHi: 1.75,       // 高于它就把 y 拉高
+        aspectLo: 0.01,       // ⛔ 已停用（不许各向异性拉伸凑宽高比）
+        aspectHi: 99,
         aspectCap: 1.8,       // 各向异性缩放系数上限（1.5/0.94 = 1.6 需要它）
         densityIters: 5,      // mean-shift 次数
         weight: { implication: 1.0, equivalence: 0.8, definition: 0.15, analogy: 0 }
@@ -120,7 +123,7 @@
 
     /* 节点 */
     node: {
-      baseRadius: 8.5,
+      baseRadius: 6,             // ⭐ Stage 1b：8.5 → 6（fit 档屏幕直径 ≤4px，看起来是星不是泡）
       minRadius: 3.0,
       maxRadius: 26,
       radiusPower: 0.62,          // 半径随缩放增长指数（<1 → 缩小时仍看得见）
@@ -204,12 +207,13 @@
       smooth: 3,                  // 半径序列平滑几遍（消掉尖角）
       fillAlpha: 0.30,            // 中心浓度（渐变，平均值比它低）
       gradSpan: 0.90,             // 渐变半径 / 最远采样半径 —— <1 保证各方向都化到 0
-      strokeAlpha: 0.12,          // 淡轮廓线（0 = 不描边；0.05~0.10 之间比较合适）
+      strokeAlpha: 0,          // 淡轮廓线（0 = 不描边；0.05~0.10 之间比较合适）
       width: 1.6
     },
 
     /* 电子云背景 */
     background: {
+      colorFieldK: 3.6,          // 色场 alpha = 1−exp(−K·Σw)：越大越浓（最浓处 ≈0.55）
       /* ⚠️ 世界（约 10661×9176）× 这个比例 = 云雾纹理的像素数。
        原来写 0.42 → 4478×3854 ≈ **17.3 M 像素**（≈69MB）：既浪费内存，又可能超过 GPU 的
        MAX_TEXTURE_SIZE —— 有些环境只给 4096，一旦超了 Chrome 会走软件路径，表现正是

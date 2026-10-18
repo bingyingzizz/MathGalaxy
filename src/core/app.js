@@ -155,6 +155,9 @@
       return graph.nodes.length + '|' + vis.hiddenCount() + '|'
         + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
         + (C.hideParallelImplications ? 1 : 0) + (C.showAllEdges ? 1 : 0) + '|'
+        /* ⚠️ LOD 档位（r=k/kFit）必须进绘制输入：全景不画节点/边/箭头，
+           相机一变就得重烘，否则位图继续显示「上一档」的内容（踩过）。 */
+        + Math.round((cam.k / Math.max(1e-6, renderer.fitZoom())) * 4) + '|'
         + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
     }
     var rafId = 0;
@@ -2112,6 +2115,7 @@
       var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
+      view.kFit0 = fitK;                 // ⭐ 缓存「适配全部」的 k：r=k/kFit 的唯一真源（不随相机漂）
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
       if (!applyHash()) {
         // 初始视角：先稍微留白，再平滑推进到「全部适配」

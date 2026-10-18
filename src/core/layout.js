@@ -345,7 +345,7 @@
       gx /= n; gy /= n;
       for (var a = 0; a < n; a++) {
         for (var b = a + 1; b < n; b++) {
-          var need = C[a] + C[b];                     // ⛔ 单侧碰撞：不重叠就没有力
+          var need = O.bandFactor * (R[a] + R[b]);    // 团间**软带**：d < 1.30·(r_i+r_j) 才推（不是硬碰撞）
           var dx = px[b] - px[a], dy = py[b] - py[a];
           var d = Math.sqrt(dx * dx + dy * dy);
           if (d >= need) continue;
@@ -353,7 +353,7 @@
             var ang = (((a * 7 + b * 13) % 8) * Math.PI) / 4;
             dx = Math.cos(ang); dy = Math.sin(ang); d = 1e-6;
           }
-          var F = O.collide * (need - d) / 2;         // 各推 F/2
+          var F = O.bandStiff * (need - d) / 2;       // 各推 F/2
           var ux = dx / d, uy = dy / d;
           px[a] -= ux * F; py[a] -= uy * F;
           px[b] += ux * F; py[b] += uy * F;
@@ -385,6 +385,25 @@
       stressStep();
       repulseStep();
       recenter();
+    }
+    /* ⭐⭐ 团间留白（Stage 1b 收口）：主循环里的软带会被下一步 stress（整位替换）
+       抹掉，所以它必须放在**主循环之后**做投影：d < 1.30·(R_i+R_j) 就把两团各推一半，
+       迭代到不再需要推为止。这不是硬碰撞（有目标带、只作用于团心、按 0.5 阻尼）。 */
+    for (var band = 0; band < 120; band++) {
+      var worstB = 0;
+      for (var ba = 0; ba < n; ba++) {
+        for (var bb = ba + 1; bb < n; bb++) {
+          var needB = O.bandFactor * (R[ba] + R[bb]);
+          var dxB = px[bb] - px[ba], dyB = py[bb] - py[ba];
+          var dB = Math.sqrt(dxB * dxB + dyB * dyB) || 1e-6;
+          if (dB >= needB) continue;
+          var half = (needB - dB) * 0.25;
+          if (half > worstB) worstB = half;
+          px[ba] -= (dxB / dB) * half; py[ba] -= (dyB / dB) * half;
+          px[bb] += (dxB / dB) * half; py[bb] += (dyB / dB) * half;
+        }
+      }
+      if (worstB < 0.3) break;
     }
     for (i = 0; i < n; i++) cs[i].center = { x: px[i], y: py[i] };
 
@@ -495,8 +514,9 @@
     var O = cfg.organic;
 
     /* ---- 3.0 世界尺度倍率（?world=2 试「更像星图」的版本；默认 1.0） ---- */
-    if (O.worldScale && O.worldScale !== 1) {
-      var sw = O.worldScale;
+    var _ws = (O.worldScale || 1) * 1.7;          // ⭐ 等比 ×1.7：60 个团各自要有可辨认边界
+    if (_ws !== 1) {
+      var sw = _ws;
       nodes.forEach(function (nd) { nd.x *= sw; nd.y *= sw; });
     }
 
@@ -869,6 +889,23 @@
       overlap: { pairs: pairs, sameSector: sameSector, crossSector: crossSector,
         deepest: +deepest.toFixed(3), deepestPair: deepestPair },
       crossRegion: table,
+      pairGap: (function () {
+        var rs2 = [], cs2 = graph.clusters.filter(function (c) { return c.stat && c._Rc; });
+        cs2.forEach(function (a) {
+          var best = Infinity;
+          cs2.forEach(function (b) {
+            if (a === b) return;
+            var d = U.dist(a.stat.cx, a.stat.cy, b.stat.cx, b.stat.cy);
+            var r2 = (a._Rc + b._Rc);
+            if (r2 > 0) best = Math.min(best, d / r2);
+          });
+          if (isFinite(best)) rs2.push(best);
+        });
+        rs2.sort(function (x, y) { return x - y; });
+        return { med: rs2.length ? +rs2[Math.floor(rs2.length / 2)].toFixed(3) : 0,
+          p10: rs2.length ? +rs2[Math.floor(rs2.length * 0.1)].toFixed(3) : 0,
+          p90: rs2.length ? +rs2[Math.floor(rs2.length * 0.9)].toFixed(3) : 0 };
+      })(),
       bbox: { w: Math.round(bb.maxX - bb.minX), h: Math.round(bb.maxY - bb.minY) },
       shape: shape
     };
@@ -1324,7 +1361,20 @@
         f = n.isBorder ? cfg.borderPull : cfg.anchorPull;
         disp[i * 2] += (n.anchor.x - n.x) * f;
         disp[i * 2 + 1] += (n.anchor.y - n.y) * f;
-        /* ⛔ 节点级不加全局引力（1b 实测会把密度压平、ρ 掉到 0）。 */
+        /* ⭐ Stage 1b 唯一新增的力：按度数加权的向心力 λ·(deg/degMax)·(中心−p)。
+           高连接度的 hub 被拉向核心 ⇒ 生成「亮核 + 外晕」的密度梯度；
+           ⚠️ 不是点汇塌陷（PBD 硬碰撞还在，重叠会被推开）。λ = centerPull。 */
+        if (organic && n.degree) {
+          var dMax = cfg.organic._degMax;
+          if (!dMax) {
+            dMax = 1;
+            for (var zi = 0; zi < N; zi++) if ((nodes[zi].degree || 0) > dMax) dMax = nodes[zi].degree;
+            cfg.organic._degMax = dMax;
+          }
+          var lam = (cfg.organic.centerPull || 0) * (n.degree / dMax);
+          disp[i * 2] += lam * (gcx - n.x);
+          disp[i * 2 + 1] += lam * (gcy - n.y);
+        }
 
         // 团容器：organic = **软团井**（越出去越被拉回，不是不许出去）；packed = 软墙
         if (n.clusterObj && n.clusterObj.center) {
@@ -1376,7 +1426,7 @@
 
       /* 3e. 硬性碰撞 */
       var collideFrom = organic ? 0 : cfg.iterations * 0.3;
-      if (iter > collideFrom) {
+      if (iter > collideFrom && (!organic || iter % 4 === 0)) {   // organic：碰撞每 4 步做一次（省 3/4）
         var minGap = nodeGap;
         for (i = 0; i < N; i++) {
           for (j = i + 1; j < N; j++) {

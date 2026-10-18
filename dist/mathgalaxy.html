@@ -1279,13 +1279,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          ⛔ mode 默认仍是 'packed'（今天的样子），验收通过前不许改。 */
       mode: 'packed',
       organic: {
-        gap: 26,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
-        rScale: 0.9,          // ⭐ R_i = rScale·gap·√n_i（0.6→0.9：团盘占空 70%→34%，两团叠才 68%）
+        gap: 11,              // 目标中位最近邻距离（世界单位）；斥力/弹簧/温度都按它缩放
+        rScale: 0.65,         // ⭐ 团内井半径 R_c = 0.58·gap·√n（=15.1√n，只比最紧排列大 3%）
+        bandFactor: 1.12,     // 团间**软带**：d < 1.30·(r_i+r_j) 施加向外的力
+        bandStiff: 0.08,      // 软带刚度（线性）
         distFactor: 0.6,      // L_ij = R_i + R_j + distFactor·D̂·R̄（只给有关系的对）
         collide: 0.35,        // （已停用：团级碰撞删掉了，只留节点级 PBD）
         kRep: 0.02,           // 无平衡点软斥力系数（扫描最优：0.9/0.02 → 硬重叠 0、ρ(269,W)=−0.415）
         repScale: 60,         // 把 kRep 换算到位移量纲的倍率（gap 量级）
         collisionRadius: 0.42, // C_i = 0.42·gap·√n_i（≈0.8×节点占位半径），只用于单侧碰撞
+        centerPull: 0.006,    // ⭐ 按度数加权的向心力 λ（只此一条；不是点汇）
         gravity: 0.02,        // 全局弱引力 F = gravity·(p−质心)，Phase 1 与 2 都加
         /* ⚠️ 节点级的力单位和团级不一样：0.02 在节点尺度上是斥力的 3 倍（实测塌成一坨、
            ρ 掉到 0.03、硬重叠 1316）。节点用 gravity·nodeGravityMul。 */
@@ -1300,8 +1303,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         worldScale: 1.0,      // 世界尺度倍率（?world=2 试「更像星图」的版本）
         nodeRepel: 2.0,       // 节点斥力只算 nodeRepel·gap 以内的邻居（均匀网格）
         nodeIter: 300,        // Phase 2 步数（或最大位移 <0.5 提前停）
-        aspectLo: 1.50,       // 世界盒宽高比低于它就把 x 拉宽
-        aspectHi: 1.75,       // 高于它就把 y 拉高
+        aspectLo: 0.01,       // ⛔ 已停用（不许各向异性拉伸凑宽高比）
+        aspectHi: 99,
         aspectCap: 1.8,       // 各向异性缩放系数上限（1.5/0.94 = 1.6 需要它）
         densityIters: 5,      // mean-shift 次数
         weight: { implication: 1.0, equivalence: 0.8, definition: 0.15, analogy: 0 }
@@ -1329,7 +1332,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
     /* 节点 */
     node: {
-      baseRadius: 8.5,
+      baseRadius: 6,             // ⭐ Stage 1b：8.5 → 6（fit 档屏幕直径 ≤4px，看起来是星不是泡）
       minRadius: 3.0,
       maxRadius: 26,
       radiusPower: 0.62,          // 半径随缩放增长指数（<1 → 缩小时仍看得见）
@@ -1413,12 +1416,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       smooth: 3,                  // 半径序列平滑几遍（消掉尖角）
       fillAlpha: 0.30,            // 中心浓度（渐变，平均值比它低）
       gradSpan: 0.90,             // 渐变半径 / 最远采样半径 —— <1 保证各方向都化到 0
-      strokeAlpha: 0.12,          // 淡轮廓线（0 = 不描边；0.05~0.10 之间比较合适）
+      strokeAlpha: 0,          // 淡轮廓线（0 = 不描边；0.05~0.10 之间比较合适）
       width: 1.6
     },
 
     /* 电子云背景 */
     background: {
+      colorFieldK: 3.6,          // 色场 alpha = 1−exp(−K·Σw)：越大越浓（最浓处 ≈0.55）
       /* ⚠️ 世界（约 10661×9176）× 这个比例 = 云雾纹理的像素数。
        原来写 0.42 → 4478×3854 ≈ **17.3 M 像素**（≈69MB）：既浪费内存，又可能超过 GPU 的
        MAX_TEXTURE_SIZE —— 有些环境只给 4096，一旦超了 Chrome 会走软件路径，表现正是
@@ -3561,7 +3565,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       gx /= n; gy /= n;
       for (var a = 0; a < n; a++) {
         for (var b = a + 1; b < n; b++) {
-          var need = C[a] + C[b];                     // ⛔ 单侧碰撞：不重叠就没有力
+          var need = O.bandFactor * (R[a] + R[b]);    // 团间**软带**：d < 1.30·(r_i+r_j) 才推（不是硬碰撞）
           var dx = px[b] - px[a], dy = py[b] - py[a];
           var d = Math.sqrt(dx * dx + dy * dy);
           if (d >= need) continue;
@@ -3569,7 +3573,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
             var ang = (((a * 7 + b * 13) % 8) * Math.PI) / 4;
             dx = Math.cos(ang); dy = Math.sin(ang); d = 1e-6;
           }
-          var F = O.collide * (need - d) / 2;         // 各推 F/2
+          var F = O.bandStiff * (need - d) / 2;       // 各推 F/2
           var ux = dx / d, uy = dy / d;
           px[a] -= ux * F; py[a] -= uy * F;
           px[b] += ux * F; py[b] += uy * F;
@@ -3601,6 +3605,25 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       stressStep();
       repulseStep();
       recenter();
+    }
+    /* ⭐⭐ 团间留白（Stage 1b 收口）：主循环里的软带会被下一步 stress（整位替换）
+       抹掉，所以它必须放在**主循环之后**做投影：d < 1.30·(R_i+R_j) 就把两团各推一半，
+       迭代到不再需要推为止。这不是硬碰撞（有目标带、只作用于团心、按 0.5 阻尼）。 */
+    for (var band = 0; band < 120; band++) {
+      var worstB = 0;
+      for (var ba = 0; ba < n; ba++) {
+        for (var bb = ba + 1; bb < n; bb++) {
+          var needB = O.bandFactor * (R[ba] + R[bb]);
+          var dxB = px[bb] - px[ba], dyB = py[bb] - py[ba];
+          var dB = Math.sqrt(dxB * dxB + dyB * dyB) || 1e-6;
+          if (dB >= needB) continue;
+          var half = (needB - dB) * 0.25;
+          if (half > worstB) worstB = half;
+          px[ba] -= (dxB / dB) * half; py[ba] -= (dyB / dB) * half;
+          px[bb] += (dxB / dB) * half; py[bb] += (dyB / dB) * half;
+        }
+      }
+      if (worstB < 0.3) break;
     }
     for (i = 0; i < n; i++) cs[i].center = { x: px[i], y: py[i] };
 
@@ -3711,8 +3734,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     var O = cfg.organic;
 
     /* ---- 3.0 世界尺度倍率（?world=2 试「更像星图」的版本；默认 1.0） ---- */
-    if (O.worldScale && O.worldScale !== 1) {
-      var sw = O.worldScale;
+    var _ws = (O.worldScale || 1) * 1.7;          // ⭐ 等比 ×1.7：60 个团各自要有可辨认边界
+    if (_ws !== 1) {
+      var sw = _ws;
       nodes.forEach(function (nd) { nd.x *= sw; nd.y *= sw; });
     }
 
@@ -4085,6 +4109,23 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       overlap: { pairs: pairs, sameSector: sameSector, crossSector: crossSector,
         deepest: +deepest.toFixed(3), deepestPair: deepestPair },
       crossRegion: table,
+      pairGap: (function () {
+        var rs2 = [], cs2 = graph.clusters.filter(function (c) { return c.stat && c._Rc; });
+        cs2.forEach(function (a) {
+          var best = Infinity;
+          cs2.forEach(function (b) {
+            if (a === b) return;
+            var d = U.dist(a.stat.cx, a.stat.cy, b.stat.cx, b.stat.cy);
+            var r2 = (a._Rc + b._Rc);
+            if (r2 > 0) best = Math.min(best, d / r2);
+          });
+          if (isFinite(best)) rs2.push(best);
+        });
+        rs2.sort(function (x, y) { return x - y; });
+        return { med: rs2.length ? +rs2[Math.floor(rs2.length / 2)].toFixed(3) : 0,
+          p10: rs2.length ? +rs2[Math.floor(rs2.length * 0.1)].toFixed(3) : 0,
+          p90: rs2.length ? +rs2[Math.floor(rs2.length * 0.9)].toFixed(3) : 0 };
+      })(),
       bbox: { w: Math.round(bb.maxX - bb.minX), h: Math.round(bb.maxY - bb.minY) },
       shape: shape
     };
@@ -4540,7 +4581,20 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         f = n.isBorder ? cfg.borderPull : cfg.anchorPull;
         disp[i * 2] += (n.anchor.x - n.x) * f;
         disp[i * 2 + 1] += (n.anchor.y - n.y) * f;
-        /* ⛔ 节点级不加全局引力（1b 实测会把密度压平、ρ 掉到 0）。 */
+        /* ⭐ Stage 1b 唯一新增的力：按度数加权的向心力 λ·(deg/degMax)·(中心−p)。
+           高连接度的 hub 被拉向核心 ⇒ 生成「亮核 + 外晕」的密度梯度；
+           ⚠️ 不是点汇塌陷（PBD 硬碰撞还在，重叠会被推开）。λ = centerPull。 */
+        if (organic && n.degree) {
+          var dMax = cfg.organic._degMax;
+          if (!dMax) {
+            dMax = 1;
+            for (var zi = 0; zi < N; zi++) if ((nodes[zi].degree || 0) > dMax) dMax = nodes[zi].degree;
+            cfg.organic._degMax = dMax;
+          }
+          var lam = (cfg.organic.centerPull || 0) * (n.degree / dMax);
+          disp[i * 2] += lam * (gcx - n.x);
+          disp[i * 2 + 1] += lam * (gcy - n.y);
+        }
 
         // 团容器：organic = **软团井**（越出去越被拉回，不是不许出去）；packed = 软墙
         if (n.clusterObj && n.clusterObj.center) {
@@ -4592,7 +4646,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
       /* 3e. 硬性碰撞 */
       var collideFrom = organic ? 0 : cfg.iterations * 0.3;
-      if (iter > collideFrom) {
+      if (iter > collideFrom && (!organic || iter % 4 === 0)) {   // organic：碰撞每 4 步做一次（省 3/4）
         var minGap = nodeGap;
         for (i = 0; i < N; i++) {
           for (j = i + 1; j < N; j++) {
@@ -4729,28 +4783,66 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
        改成节点泼溅密度场：每个节点按所属领域色泼一个半径 40 世界单位、
        中心 α 0.03、边缘 0 的径向渐变，整体模糊一次（smoothTexture）。
        910 × 0.03 叠加最浓处 ≈ 0.94，不会过曝。 */
+    /* ⭐⭐ 归一化领域色场（Stage 1b）：颜色 = Σ(rgb·a) / Σa，alpha = 1−exp(−k·Σa)。
+       为什么必须归一化：一堆独立径向渐变直接叠起来会浑浊、圆边互相打断 —— 眼睛看到
+       的就是「一堆透明圆」。归一化后颜色只由「这一像素周围各领域的权重比」决定，
+       形状是自由有机的，没有圆边。 */
+    var CW = 1024, CH = 768;
+    var cvC = document.createElement('canvas'), cvW = document.createElement('canvas');
+    cvC.width = CW; cvC.height = CH; cvW.width = CW; cvW.height = CH;
+    var ctxC = cvC.getContext('2d'), ctxW = cvW.getContext('2d');
+    ctxC.globalCompositeOperation = 'lighter';
+    ctxW.globalCompositeOperation = 'lighter';
+    var scx = CW / w, scy = CH / h;
     var drawn = 0;
-    var splatR = 40, splatA = 0.03;
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
       var rid = (n.regions && n.regions[0]) || '';
       var reg = graph.regionById && graph.regionById[rid];
       var hex = (reg && reg.color) || '#7A8699';
-      var g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, splatR);
-      g.addColorStop(0, U.rgba(hex, splatA));
-      g.addColorStop(1, U.rgba(hex, 0));
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, splatR, 0, Math.PI * 2);
-      ctx.fill();
+      var rgb = U.hexToRgb(hex);
+      var sr = 40;                                    // 世界单位（工单：40）
+      var px = (n.x - minX) * scx, py = (n.y - minY) * scy;
+      var pr = Math.max(2, sr * scx);
+      var gC = ctxC.createRadialGradient(px, py, 0, px, py, pr);
+      gC.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.05)');
+      gC.addColorStop(1, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
+      ctxC.fillStyle = gC;
+      ctxC.beginPath(); ctxC.arc(px, py, pr, 0, Math.PI * 2); ctxC.fill();
+      var gW = ctxW.createRadialGradient(px, py, 0, px, py, pr);
+      gW.addColorStop(0, 'rgba(255,255,255,0.05)');
+      gW.addColorStop(1, 'rgba(255,255,255,0)');
+      ctxW.fillStyle = gW;
+      ctxW.beginPath(); ctxW.arc(px, py, pr, 0, Math.PI * 2); ctxW.fill();
       drawn++;
     });
+    /* 合成：读回两条通道，逐像素归一化（1024×768 ≈ 79 万像素，一次 ~40ms） */
+    var outCv = document.createElement('canvas');
+    outCv.width = CW; outCv.height = CH;
+    var octx = outCv.getContext('2d');
+    var img = octx.createImageData(CW, CH);
+    var dC = ctxC.getImageData(0, 0, CW, CH).data;
+    var dW = ctxW.getImageData(0, 0, CW, CH).data;
+    var o = img.data;
+    var K = (bc.colorFieldK == null ? 1.4 : bc.colorFieldK);
+    for (var pi = 0; pi < o.length; pi += 4) {
+      var wsum = dW[pi + 3] / 255;
+      if (wsum < 0.004) { o[pi + 3] = 0; continue; }
+      /* ⚠️ getImageData 返回的是**已反预乘**的值（canvas 内部按预乘累加，读回时除以 alpha）——
+         所以颜色通道已经是 Σrgb·a/Σa，**不能再除一次 wsum**（第一版就多除了一次，
+         于是整张色场淡到几乎看不见）。这里直接用 dC，wsum 只用来算 alpha。 */
+      o[pi] = dC[pi];
+      o[pi + 1] = dC[pi + 1];
+      o[pi + 2] = dC[pi + 2];
+      o[pi + 3] = Math.round(255 * (1 - Math.exp(-K * wsum)));
+    }
+    octx.putImageData(img, 0, 0);
     var cdrawn = 0;
 
     return {
-      canvas: smoothTexture(cv, bc.texBlur),
+      canvas: smoothTexture(outCv, 1.2),
       x: minX, y: minY, w: w, h: h,
-      scale: scale,
+      scale: 1,
       regions: drawn,
       clusters: cdrawn
     };
@@ -5226,7 +5318,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       /* ⭐⭐ 2026-10-18 Stage 1b：闸门换 **r = k / kFit**（与缩放尺度无关）。
          绝对 k 在 organic 里会误判 ⇒ 全景把节点名全放出来（labelCount=92）。 */
       var kFit0 = 0;
-      try { kFit0 = fitZoom(); } catch (e) { kFit0 = 0; }
+      kFit0 = (view.kFit0 > 0) ? view.kFit0 : (function () { try { return fitZoom(); } catch (e) { return 0; } })();
       var rRel = kFit0 > 0 ? k / kFit0 : 1;
       lodA.rRel = rRel;
       lodA.sectorName = smoothstep(0.20, 0.55, rRel) * (1 - smoothstep(1.30, 1.60, rRel));
@@ -5237,6 +5329,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       lodA.skeletonEdge = smoothstep(1.10, 1.20, rRel);
       lodA.bodyEdge = smoothstep(2.70, 2.90, rRel);
       lodA.sectorLink = 0;
+      /* ⭐⭐ 全景档（r<1.35）**不画节点**，只画团块 + 领域色场：1600×900 里铺 910 个点，
+         任何布局都会变成均匀纹理（地图不在全览档画每栋楼）。r≥1.35 才淡入节点。 */
+      lodA.nodeDot = smoothstep(1.32, 1.42, rRel);
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -6087,6 +6182,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
     /* ------------------------------------------------ 星团级连线 */
     function drawClusterLinks() {
+      /* ⛔ 全景档（r<1.35）团级聚合线也不画 —— 画面上那片「穿过团块的折线」
+         就是它（不是实体边、也不是包络描边）。 */
+      if (!C.showAllEdges && (lodA.rRel || 1) < 1.35) return;
       var secA = lodA.sectorLink;
       if (secA > 0.02) drawSectorLinks(secA);
       /* 全景那一档：团级聚合线让位给板块骨架（1 - secA） */
@@ -6238,15 +6336,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         var gR = Math.max(1, rmax * camNow().k * cfgE.gradSpan);
         var g = ctx.createRadialGradient(cs.x, cs.y, 0, cs.x, cs.y, gR);
         var rgbS = rgb.r + ',' + rgb.g + ',' + rgb.b + ',';
-        g.addColorStop(0.00, 'rgba(' + rgbS + (cfgE.fillAlpha * a).toFixed(4) + ')');
-        g.addColorStop(0.45, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.52 * a).toFixed(4) + ')');
-        g.addColorStop(0.78, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.16 * a).toFixed(4) + ')');
+        g.addColorStop(0.00, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.45 * a).toFixed(4) + ')');
+        g.addColorStop(0.45, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.45 * 0.52 * a).toFixed(4) + ')');
+        g.addColorStop(0.78, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.45 * 0.16 * a).toFixed(4) + ')');
         g.addColorStop(1.00, 'rgba(' + rgbS + '0)');
+        /* ⛔ Stage 1b：包络**不再填充**（9 个巨淡圆叠在一起会把 10 个岛连成一坨），
+           只留一条 α≤0.06 的极淡描边。 */
         ctx.fillStyle = g;
         ctx.fill();
 
         if (cfgE.strokeAlpha > 0.002) {           // 留着的：要一条很淡的轮廓线时把它调起来
-          ctx.lineWidth = cfgE.width;
+          ctx.lineWidth = 1;
           ctx.strokeStyle = 'rgba(' + rgbS + (cfgE.strokeAlpha * a).toFixed(3) + ')';
           ctx.stroke();
         }
@@ -6451,7 +6551,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          选中 / 悬停 /「全部连线」照旧放行。 */
       if (!active && !C.showAllEdges) {
         var rT = lodA.rRel || 1;
-        if (rT < 1.15) return;
+        if (rT < 1.35) return;                      // ⭐ 全景档：节点不画，边也不画（否则只剩浮空箭头）
         if (rT < 2.8 && e.kind !== 'implication' && e.kind !== 'equivalence') return;
         if (rT >= 2.8) {
           var c0 = camNow();
@@ -6464,6 +6564,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
           }
           if (inside === 0) return;
           if (inside === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
+          /* 长线一律按屏幕长度指数降权（下限 0.10）：实测 r=3 时两端都在屏内、>400px 的线有 76 条，
+             不压的话画面仍被切碎。 */
+          if (!C.showAllEdges && (g.lenPx || 0) > 200) {
+            a *= Math.max(0.03, Math.exp(-((g.lenPx || 0) - 200) / 55));
+          }
         }
       }
       /* 定义引用线在中景降权（领域 / 星团尺度 ×0.60）。⚠️ 定义线绝大多数走的是
@@ -6566,6 +6671,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     function drawArrow(g) {
       var e = g.edge;
       var active = isEdgeActive(g);
+      /* ⭐ 全景档（r<1.35）连箭头也不画 —— 节点不画了，只剩浮空箭头最刺眼。 */
+      if (!isEdgeActive(g) && !C.showAllEdges && (lodA.rRel || 1) < 1.35) return;
       var a = alphaForEdge(e) * lodA.nodeEdge;
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       /* 与线同一个下限：否则整条线回来了、箭头却没有，看起来像「没方向」。 */
@@ -6862,9 +6969,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       prof: prof,
       /* 诊断用：当前帧的 LOD 读数（档位 / 三档名字 / 定义线系数）。
          ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
+      fitZoom: fitZoom,                                  // 给 paintKey 现算 r=k/kFit 用
       lodState: function () {
         return {
-          k: camNow().k,
+          k: camNow().k, rRel: lodA.rRel || 1,
           tier: lodA.tier, sector: lodA.sectorName, region: lodA.galaxyName,
           cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName,
           /* 下面这些是 2026-10-18 加的：判「全景还是一条网吗」「导出计数对不对」要读它们 */
@@ -51583,6 +51691,9 @@ MG.trunk = [
       return graph.nodes.length + '|' + vis.hiddenCount() + '|'
         + (C.showDefinitionLines ? 1 : 0) + (C.showLabels ? 1 : 0) + (C.exploreMode ? 1 : 0) + '|'
         + (C.hideParallelImplications ? 1 : 0) + (C.showAllEdges ? 1 : 0) + '|'
+        /* ⚠️ LOD 档位（r=k/kFit）必须进绘制输入：全景不画节点/边/箭头，
+           相机一变就得重烘，否则位图继续显示「上一档」的内容（踩过）。 */
+        + Math.round((cam.k / Math.max(1e-6, renderer.fitZoom())) * 4) + '|'
         + (view.focus ? view.focus.type + ':' + view.focus.id : '-');
     }
     var rafId = 0;
@@ -53540,6 +53651,7 @@ MG.trunk = [
       var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();
       cam.fit(bb, C.camera.fitPadding);
       var fitK = cam.k;
+      view.kFit0 = fitK;                 // ⭐ 缓存「适配全部」的 k：r=k/kFit 的唯一真源（不随相机漂）
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
       if (!applyHash()) {
         // 初始视角：先稍微留白，再平滑推进到「全部适配」

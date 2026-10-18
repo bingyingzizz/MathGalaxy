@@ -44,28 +44,66 @@
        改成节点泼溅密度场：每个节点按所属领域色泼一个半径 40 世界单位、
        中心 α 0.03、边缘 0 的径向渐变，整体模糊一次（smoothTexture）。
        910 × 0.03 叠加最浓处 ≈ 0.94，不会过曝。 */
+    /* ⭐⭐ 归一化领域色场（Stage 1b）：颜色 = Σ(rgb·a) / Σa，alpha = 1−exp(−k·Σa)。
+       为什么必须归一化：一堆独立径向渐变直接叠起来会浑浊、圆边互相打断 —— 眼睛看到
+       的就是「一堆透明圆」。归一化后颜色只由「这一像素周围各领域的权重比」决定，
+       形状是自由有机的，没有圆边。 */
+    var CW = 1024, CH = 768;
+    var cvC = document.createElement('canvas'), cvW = document.createElement('canvas');
+    cvC.width = CW; cvC.height = CH; cvW.width = CW; cvW.height = CH;
+    var ctxC = cvC.getContext('2d'), ctxW = cvW.getContext('2d');
+    ctxC.globalCompositeOperation = 'lighter';
+    ctxW.globalCompositeOperation = 'lighter';
+    var scx = CW / w, scy = CH / h;
     var drawn = 0;
-    var splatR = 40, splatA = 0.03;
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
       var rid = (n.regions && n.regions[0]) || '';
       var reg = graph.regionById && graph.regionById[rid];
       var hex = (reg && reg.color) || '#7A8699';
-      var g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, splatR);
-      g.addColorStop(0, U.rgba(hex, splatA));
-      g.addColorStop(1, U.rgba(hex, 0));
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, splatR, 0, Math.PI * 2);
-      ctx.fill();
+      var rgb = U.hexToRgb(hex);
+      var sr = 40;                                    // 世界单位（工单：40）
+      var px = (n.x - minX) * scx, py = (n.y - minY) * scy;
+      var pr = Math.max(2, sr * scx);
+      var gC = ctxC.createRadialGradient(px, py, 0, px, py, pr);
+      gC.addColorStop(0, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.05)');
+      gC.addColorStop(1, 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0)');
+      ctxC.fillStyle = gC;
+      ctxC.beginPath(); ctxC.arc(px, py, pr, 0, Math.PI * 2); ctxC.fill();
+      var gW = ctxW.createRadialGradient(px, py, 0, px, py, pr);
+      gW.addColorStop(0, 'rgba(255,255,255,0.05)');
+      gW.addColorStop(1, 'rgba(255,255,255,0)');
+      ctxW.fillStyle = gW;
+      ctxW.beginPath(); ctxW.arc(px, py, pr, 0, Math.PI * 2); ctxW.fill();
       drawn++;
     });
+    /* 合成：读回两条通道，逐像素归一化（1024×768 ≈ 79 万像素，一次 ~40ms） */
+    var outCv = document.createElement('canvas');
+    outCv.width = CW; outCv.height = CH;
+    var octx = outCv.getContext('2d');
+    var img = octx.createImageData(CW, CH);
+    var dC = ctxC.getImageData(0, 0, CW, CH).data;
+    var dW = ctxW.getImageData(0, 0, CW, CH).data;
+    var o = img.data;
+    var K = (bc.colorFieldK == null ? 1.4 : bc.colorFieldK);
+    for (var pi = 0; pi < o.length; pi += 4) {
+      var wsum = dW[pi + 3] / 255;
+      if (wsum < 0.004) { o[pi + 3] = 0; continue; }
+      /* ⚠️ getImageData 返回的是**已反预乘**的值（canvas 内部按预乘累加，读回时除以 alpha）——
+         所以颜色通道已经是 Σrgb·a/Σa，**不能再除一次 wsum**（第一版就多除了一次，
+         于是整张色场淡到几乎看不见）。这里直接用 dC，wsum 只用来算 alpha。 */
+      o[pi] = dC[pi];
+      o[pi + 1] = dC[pi + 1];
+      o[pi + 2] = dC[pi + 2];
+      o[pi + 3] = Math.round(255 * (1 - Math.exp(-K * wsum)));
+    }
+    octx.putImageData(img, 0, 0);
     var cdrawn = 0;
 
     return {
-      canvas: smoothTexture(cv, bc.texBlur),
+      canvas: smoothTexture(outCv, 1.2),
       x: minX, y: minY, w: w, h: h,
-      scale: scale,
+      scale: 1,
       regions: drawn,
       clusters: cdrawn
     };

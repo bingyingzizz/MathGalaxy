@@ -237,7 +237,7 @@
       /* ⭐⭐ 2026-10-18 Stage 1b：闸门换 **r = k / kFit**（与缩放尺度无关）。
          绝对 k 在 organic 里会误判 ⇒ 全景把节点名全放出来（labelCount=92）。 */
       var kFit0 = 0;
-      try { kFit0 = fitZoom(); } catch (e) { kFit0 = 0; }
+      kFit0 = (view.kFit0 > 0) ? view.kFit0 : (function () { try { return fitZoom(); } catch (e) { return 0; } })();
       var rRel = kFit0 > 0 ? k / kFit0 : 1;
       lodA.rRel = rRel;
       lodA.sectorName = smoothstep(0.20, 0.55, rRel) * (1 - smoothstep(1.30, 1.60, rRel));
@@ -248,6 +248,9 @@
       lodA.skeletonEdge = smoothstep(1.10, 1.20, rRel);
       lodA.bodyEdge = smoothstep(2.70, 2.90, rRel);
       lodA.sectorLink = 0;
+      /* ⭐⭐ 全景档（r<1.35）**不画节点**，只画团块 + 领域色场：1600×900 里铺 910 个点，
+         任何布局都会变成均匀纹理（地图不在全览档画每栋楼）。r≥1.35 才淡入节点。 */
+      lodA.nodeDot = smoothstep(1.32, 1.42, rRel);
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -1098,6 +1101,9 @@
 
     /* ------------------------------------------------ 星团级连线 */
     function drawClusterLinks() {
+      /* ⛔ 全景档（r<1.35）团级聚合线也不画 —— 画面上那片「穿过团块的折线」
+         就是它（不是实体边、也不是包络描边）。 */
+      if (!C.showAllEdges && (lodA.rRel || 1) < 1.35) return;
       var secA = lodA.sectorLink;
       if (secA > 0.02) drawSectorLinks(secA);
       /* 全景那一档：团级聚合线让位给板块骨架（1 - secA） */
@@ -1249,15 +1255,17 @@
         var gR = Math.max(1, rmax * camNow().k * cfgE.gradSpan);
         var g = ctx.createRadialGradient(cs.x, cs.y, 0, cs.x, cs.y, gR);
         var rgbS = rgb.r + ',' + rgb.g + ',' + rgb.b + ',';
-        g.addColorStop(0.00, 'rgba(' + rgbS + (cfgE.fillAlpha * a).toFixed(4) + ')');
-        g.addColorStop(0.45, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.52 * a).toFixed(4) + ')');
-        g.addColorStop(0.78, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.16 * a).toFixed(4) + ')');
+        g.addColorStop(0.00, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.45 * a).toFixed(4) + ')');
+        g.addColorStop(0.45, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.45 * 0.52 * a).toFixed(4) + ')');
+        g.addColorStop(0.78, 'rgba(' + rgbS + (cfgE.fillAlpha * 0.45 * 0.16 * a).toFixed(4) + ')');
         g.addColorStop(1.00, 'rgba(' + rgbS + '0)');
+        /* ⛔ Stage 1b：包络**不再填充**（9 个巨淡圆叠在一起会把 10 个岛连成一坨），
+           只留一条 α≤0.06 的极淡描边。 */
         ctx.fillStyle = g;
         ctx.fill();
 
         if (cfgE.strokeAlpha > 0.002) {           // 留着的：要一条很淡的轮廓线时把它调起来
-          ctx.lineWidth = cfgE.width;
+          ctx.lineWidth = 1;
           ctx.strokeStyle = 'rgba(' + rgbS + (cfgE.strokeAlpha * a).toFixed(3) + ')';
           ctx.stroke();
         }
@@ -1462,7 +1470,7 @@
          选中 / 悬停 /「全部连线」照旧放行。 */
       if (!active && !C.showAllEdges) {
         var rT = lodA.rRel || 1;
-        if (rT < 1.15) return;
+        if (rT < 1.35) return;                      // ⭐ 全景档：节点不画，边也不画（否则只剩浮空箭头）
         if (rT < 2.8 && e.kind !== 'implication' && e.kind !== 'equivalence') return;
         if (rT >= 2.8) {
           var c0 = camNow();
@@ -1475,6 +1483,11 @@
           }
           if (inside === 0) return;
           if (inside === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
+          /* 长线一律按屏幕长度指数降权（下限 0.10）：实测 r=3 时两端都在屏内、>400px 的线有 76 条，
+             不压的话画面仍被切碎。 */
+          if (!C.showAllEdges && (g.lenPx || 0) > 200) {
+            a *= Math.max(0.03, Math.exp(-((g.lenPx || 0) - 200) / 55));
+          }
         }
       }
       /* 定义引用线在中景降权（领域 / 星团尺度 ×0.60）。⚠️ 定义线绝大多数走的是
@@ -1577,6 +1590,8 @@
     function drawArrow(g) {
       var e = g.edge;
       var active = isEdgeActive(g);
+      /* ⭐ 全景档（r<1.35）连箭头也不画 —— 节点不画了，只剩浮空箭头最刺眼。 */
+      if (!isEdgeActive(g) && !C.showAllEdges && (lodA.rRel || 1) < 1.35) return;
       var a = alphaForEdge(e) * lodA.nodeEdge;
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       /* 与线同一个下限：否则整条线回来了、箭头却没有，看起来像「没方向」。 */
@@ -1873,9 +1888,10 @@
       prof: prof,
       /* 诊断用：当前帧的 LOD 读数（档位 / 三档名字 / 定义线系数）。
          ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
+      fitZoom: fitZoom,                                  // 给 paintKey 现算 r=k/kFit 用
       lodState: function () {
         return {
-          k: camNow().k,
+          k: camNow().k, rRel: lodA.rRel || 1,
           tier: lodA.tier, sector: lodA.sectorName, region: lodA.galaxyName,
           cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName,
           /* 下面这些是 2026-10-18 加的：判「全景还是一条网吗」「导出计数对不对」要读它们 */
