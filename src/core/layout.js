@@ -190,6 +190,9 @@
       n.isBorder = n.regionObjs.length > 1;
       n.degree = (graph.adj[n.id] || []).length;
       n.galaxy = n.clusterObj ? graph.galaxyOf(n.clusterObj) : (n.regionObjs[0] || null);
+      /* 四层结构：节点属于哪个**大板块**（取主归属领域那一块）。
+         只用来给跨板块的边打折，不影响任何坐标的语义。 */
+      n._sector = (n.regionObjs[0] && n.regionObjs[0].sector) || '';
     });
 
     graph.regions.forEach(function (r) {
@@ -325,7 +328,7 @@
         for (var b = a + 1; b < ids.length; b++) {
           var ia = indexOf(nodes, ids[a]), ib = indexOf(nodes, ids[b]);
           if (ia < 0 || ib < 0) continue;
-          pairs.push([ia, ib, w]);
+          pairs.push([ia, ib, w, nodes[ia]._sector !== nodes[ib]._sector]);
         }
       }
     });
@@ -362,6 +365,8 @@
         dx = nodes[i].x - nodes[j].x; dy = nodes[i].y - nodes[j].y;
         d = Math.sqrt(dx * dx + dy * dy) || 1;
         f = ((d - springLen) / d) * cfg.spring * pairs[s][2] * k * 0.55;
+        /* 跨大板块的边打折：关系照画，但别把四个板块往中间拽。 */
+        if (pairs[s][3]) f *= (cfg.crossSectorPull == null ? 1 : cfg.crossSectorPull);
         if (f > cfg.springMax) f = cfg.springMax;
         else if (f < -cfg.springMax) f = -cfg.springMax;
         disp[i * 2] -= (dx / d) * f; disp[i * 2 + 1] -= (dy / d) * f;

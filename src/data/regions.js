@@ -58,7 +58,7 @@ MG.regions = [
     name: '分析学',
     en: 'Analysis',
     color: '#3AA8D8',
-    center: { x: -420, y: 720 },
+    center: { x: -180, y: 880 },
     radius: 500,
     desc: '极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。'
   },
@@ -67,7 +67,7 @@ MG.regions = [
     name: '范畴论',
     en: 'Category Theory',
     color: '#B03A5B',
-    center: { x: 1600, y: 1250 },
+    center: { x: -1500, y: 40 },
     radius: 520,
     desc: '范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。'
   },
@@ -100,7 +100,7 @@ MG.regions = [
          · 全图超过 4000 的长边 **42 条 → 1 条**，超过 3000 的 105 → 25
          · 世界盒 6.75k×5.72k → 6.77k×5.21k（世界变扁，全图适配的 k 0.112 → 0.123）
        云重心落在 (1830, 135)，离圈的圆心 (1847, 132) 只有 14 个单位。 */
-    center: { x: 1192, y: -40 },
+    center: { x: 1560, y: -120 },
     radius: 500,
     desc: '把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。'
   }

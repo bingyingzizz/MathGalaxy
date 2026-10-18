@@ -1231,6 +1231,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          代价：世界盒 6.77k×5.21k → 7.44k×5.68k，全图适配的 k 0.123 → 0.113
          （lod 阈值全是 rel/px 写法，跟着 k₀ 自动走，不用重标）。 */
       regionSpread: 1.80,
+      /* ⭐ 2026-10-17 四层结构：**跨大板块的边只按这个折扣牵引**。
+         全库 2101 条边里有 302 条跨板块，它们的平均长 2008、同板块的只有 759 ——
+         不折扣的话这 302 条边会合力把四个板块往中间拽（实测板块质心几乎重合）。
+         折扣只改「弹簧的拉力」，不改线的画法：跨板块的关系照旧画出来。 */
+      crossSectorPull: 0.35,
       temp0: 62,                  // 初始温度（同时是每步位移上限）
       temp1: 0.5,                 // 终止温度
       maxStep: 26
@@ -1375,10 +1380,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       sectorNameOut:  { rel: [1.15, 1.90] },  // 领域名起来之后大板块名退场
       galaxyNameIn:   { rel: [0.95, 1.35] },  // 领域名：全图那一档**不出**，放大后才出
       galaxyNameHold: 0.50,                   // 装置名出来时，星系名最多压掉多少
-      clusterNameIn:  { rel: [0.45, 1.15] },  // 装置名：全图就基本全亮，放大后让位给节点名
-      clusterNameOut: { rel: [2.00, 3.60] },
+      clusterNameIn:  { rel: [1.45, 2.30] },  // 装置名：**全图那一档不出**，放大到领域尺度才出
+      clusterNameOut: { rel: [3.30, 5.20] },
       clusterLinkOut: { rel: [1.00, 2.80] },  // 团级粗线：全图最亮，放大后退场
-      trunkNameIn:    { rel: [0.85, 1.05] },  // 主干名：全图就全亮（去重叠会筛掉挤的）
+      trunkNameIn:    { rel: [1.35, 1.75] },  // 主干名：和领域名同一档出现（全图只剩大板块名）
 
       /* —— 节点级：屏幕上相邻两点的像素距离 —— */
       nodeDotIn:  { px: [8, 20] },            // 圆点：几乎一直在
@@ -3239,6 +3244,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       n.isBorder = n.regionObjs.length > 1;
       n.degree = (graph.adj[n.id] || []).length;
       n.galaxy = n.clusterObj ? graph.galaxyOf(n.clusterObj) : (n.regionObjs[0] || null);
+      /* 四层结构：节点属于哪个**大板块**（取主归属领域那一块）。
+         只用来给跨板块的边打折，不影响任何坐标的语义。 */
+      n._sector = (n.regionObjs[0] && n.regionObjs[0].sector) || '';
     });
 
     graph.regions.forEach(function (r) {
@@ -3374,7 +3382,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         for (var b = a + 1; b < ids.length; b++) {
           var ia = indexOf(nodes, ids[a]), ib = indexOf(nodes, ids[b]);
           if (ia < 0 || ib < 0) continue;
-          pairs.push([ia, ib, w]);
+          pairs.push([ia, ib, w, nodes[ia]._sector !== nodes[ib]._sector]);
         }
       }
     });
@@ -3411,6 +3419,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         dx = nodes[i].x - nodes[j].x; dy = nodes[i].y - nodes[j].y;
         d = Math.sqrt(dx * dx + dy * dy) || 1;
         f = ((d - springLen) / d) * cfg.spring * pairs[s][2] * k * 0.55;
+        /* 跨大板块的边打折：关系照画，但别把四个板块往中间拽。 */
+        if (pairs[s][3]) f *= (cfg.crossSectorPull == null ? 1 : cfg.crossSectorPull);
         if (f > cfg.springMax) f = cfg.springMax;
         else if (f < -cfg.springMax) f = -cfg.springMax;
         disp[i * 2] -= (dx / d) * f; disp[i * 2 + 1] -= (dy / d) * f;
@@ -8208,7 +8218,7 @@ MG.regions = [
     name: '分析学',
     en: 'Analysis',
     color: '#3AA8D8',
-    center: { x: -420, y: 720 },
+    center: { x: -180, y: 880 },
     radius: 500,
     desc: '极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。'
   },
@@ -8217,7 +8227,7 @@ MG.regions = [
     name: '范畴论',
     en: 'Category Theory',
     color: '#B03A5B',
-    center: { x: 1600, y: 1250 },
+    center: { x: -1500, y: 40 },
     radius: 520,
     desc: '范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。'
   },
@@ -8250,7 +8260,7 @@ MG.regions = [
          · 全图超过 4000 的长边 **42 条 → 1 条**，超过 3000 的 105 → 25
          · 世界盒 6.75k×5.72k → 6.77k×5.21k（世界变扁，全图适配的 k 0.112 → 0.123）
        云重心落在 (1830, 135)，离圈的圆心 (1847, 132) 只有 14 个单位。 */
-    center: { x: 1192, y: -40 },
+    center: { x: 1560, y: -120 },
     radius: 500,
     desc: '把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。'
   }
