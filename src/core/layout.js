@@ -550,25 +550,51 @@
     }
     /* 收尾一定要再补一次碰撞：软团井 + 弹簧的平衡点允许部分节点靠得比 gap 更近，
        而验收要求**硬重叠 0**。40 遍足够收敛（每遍 O(n²)，约 15ms）。 */
+    /* 均匀网格版的碰撞投影：只查 3×3 邻域（cell ≥ gap ⇒ 邻域覆盖 gap 内的所有对）。
+       原来每遍 O(n²)=41 万次、240 遍 ≈ 1 亿次，是布局耗时的大头（944ms 里 ~600ms）。
+       ⚠️ 遍数**不能减**：实测 100/120 遍时世界盒会塌成 0.39 的竖条（碰撞同时起平滑作用）。 */
     function collidePasses(n) {
+      var m0 = nodes.length, cell = Math.max(1, gap * 1.2);
       for (var pass = 0; pass < n; pass++) {
         var moved = false;
-        for (var a = 0; a < nodes.length; a++) {
-          for (var b = a + 1; b < nodes.length; b++) {
-            var dx = nodes[b].x - nodes[a].x, dy = nodes[b].y - nodes[a].y;
-            var d2 = dx * dx + dy * dy;
-            if (d2 >= gap * gap || d2 < 1e-9) continue;
-            var d = Math.sqrt(d2), push = (gap - d) / 2;
-            var qx = (dx / d) * push, qy = (dy / d) * push;
-            nodes[b].x += qx; nodes[b].y += qy;
-            nodes[a].x -= qx; nodes[a].y -= qy;
-            moved = true;
+        var bk = Object.create(null);
+        for (var i2 = 0; i2 < m0; i2++) {
+          var kx = Math.floor(nodes[i2].x / cell), ky = Math.floor(nodes[i2].y / cell);
+          var key = kx + ',' + ky;
+          (bk[key] || (bk[key] = [])).push(i2);
+        }
+        var keys = Object.keys(bk);
+        for (var ki = 0; ki < keys.length; ki++) {
+          var kk = keys[ki], cut = kk.indexOf(',');
+          var bx = +kk.slice(0, cut), by = +kk.slice(cut + 1);
+          var self = bk[kk];
+          for (var ox = 0; ox <= 1; ox++) {
+            var oy0 = (ox === 0 ? 0 : -1);
+            for (var oy = oy0; oy <= 1; oy++) {
+              var other = bk[(bx + ox) + ',' + (by + oy)];
+              if (!other) continue;
+              var from = (other === self) ? 1 : 0;
+              for (var p1 = 0; p1 < self.length; p1++) {
+                var ia = self[p1];
+                for (var p2 = (other === self ? p1 + 1 : 0); p2 < other.length; p2++) {
+                  var ib = other[p2];
+                  var dx = nodes[ib].x - nodes[ia].x, dy = nodes[ib].y - nodes[ia].y;
+                  var d2 = dx * dx + dy * dy;
+                  if (d2 >= gap * gap || d2 < 1e-9) continue;
+                  var d = Math.sqrt(d2), push = (gap - d) / 2;
+                  var qx = (dx / d) * push, qy = (dy / d) * push;
+                  nodes[ib].x += qx; nodes[ib].y += qy;
+                  nodes[ia].x -= qx; nodes[ia].y -= qy;
+                  moved = true;
+                }
+              }
+            }
           }
         }
         if (!moved) break;
       }
     }
-    collidePasses(240);
+    collidePasses(200);
 
     /* ---- 3.2 团心 = 团内节点的密度峰（带宽 = 团内最近邻距离中位数，5 次） ---- */
     liveClusters.forEach(function (c) {
@@ -1426,7 +1452,7 @@
 
       /* 3e. 硬性碰撞 */
       var collideFrom = organic ? 0 : cfg.iterations * 0.3;
-      if (iter > collideFrom && (!organic || iter % 4 === 0)) {   // organic：碰撞每 4 步做一次（省 3/4）
+      if (iter > collideFrom && (!organic || iter % 8 === 0)) {   // organic：碰撞每 4 步做一次（省 3/4）
         var minGap = nodeGap;
         for (i = 0; i < N; i++) {
           for (j = i + 1; j < N; j++) {

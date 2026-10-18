@@ -93,7 +93,7 @@
         wellPull: 0.02,       // 软团井刚度（追当前质心）
         worldScale: 1.0,      // 世界尺度倍率（?world=2 试「更像星图」的版本）
         nodeRepel: 2.0,       // 节点斥力只算 nodeRepel·gap 以内的邻居（均匀网格）
-        nodeIter: 300,        // Phase 2 步数（或最大位移 <0.5 提前停）
+        nodeIter: 260,        // Phase 2 步数（或最大位移 <0.5 提前停）
         aspectLo: 0.01,       // ⛔ 已停用（不许各向异性拉伸凑宽高比）
         aspectHi: 99,
         aspectCap: 1.8,       // 各向异性缩放系数上限（1.5/0.94 = 1.6 需要它）
