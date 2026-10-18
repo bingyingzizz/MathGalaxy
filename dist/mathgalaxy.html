@@ -3490,7 +3490,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     for (var i = 0; i < n; i++) {
       var sq = Math.sqrt(Math.max(1, cs[i].nodes.length));
       R[i] = O.rScale * O.gap * sq;
-      C[i] = O.collisionRadius * O.gap * sq;     // 单侧碰撞半径
+      C[i] = 0;                                  // ⛔ 团级碰撞已删（只防节点重叠）
       sumR += R[i];
     }
     var Rbar = sumR / n;
@@ -3506,7 +3506,11 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       for (j = i + 1; j < n; j++) {
         if (!(W[i * n + j] > 0)) continue;          // 没关系的对：没有目标距离
         var dh = Math.min(1, Math.max(0, (D[i * n + j] - dmin) / span));
-        var v = R[i] + R[j] + O.distFactor * dh * Rbar;
+        /* ⭐ 弹簧目标按强度：L = (R_i+R_j)·(0.45 + 0.55·D̂)。
+           最强的一对目标是 0.45·(Ri+Rj)（深咬合），最弱的 1.0（相切）。
+           ⚠️ 工单写的是 1−Ŵ（W/maxW）；这里用 D̂（关系图上的归一化最短路，
+              与强度反序）等价：强 ⇒ D̂≈0 ⇒ 0.45，弱 ⇒ D̂≈1 ⇒ 1.0。 */
+        var v = (R[i] + R[j]) * (0.45 + 0.55 * dh);
         L[i * n + j] = L[j * n + i] = v;
         hasL[i * n + j] = hasL[j * n + i] = 1;
       }
@@ -4445,10 +4449,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
           var vx = n.x - cx, vy = n.y - cy;
           var vd = Math.sqrt(vx * vx + vy * vy) || 1;
           if (organic) {
-            var soft = cfg.organic.wellFrom * (n.clusterObj._Rc || cfg.organic.gap);
-            if (vd > soft) {
-              var pull2 = cfg.organic.wellPull * (vd - soft);              disp[i * 2] -= (vx / vd) * pull2;
-              disp[i * 2 + 1] -= (vy / vd) * pull2;
+            /* ⭐ 壳层（不是点汇）：平衡半径 R_c。d<R_c 往外推 0.5·(R_c−d)，
+               d>R_c 往里拉 0.04·(d−R_c)。没有硬边界 ⇒ 团能互相咬合但不会塌。 */
+            var Ri = n.clusterObj._Rc || (cfg.organic.rScale * cfg.organic.gap);
+            if (vd < Ri) {
+              var pushOut = 0.5 * (Ri - vd);
+              disp[i * 2] += (vx / vd) * pushOut;
+              disp[i * 2 + 1] += (vy / vd) * pushOut;
+            } else {
+              var pullIn = 0.04 * (vd - Ri);
+              disp[i * 2] -= (vx / vd) * pullIn;
+              disp[i * 2 + 1] -= (vy / vd) * pullIn;
             }
           } else {
             var lim = n.clusterObj._cap * 1.28 + 30;
