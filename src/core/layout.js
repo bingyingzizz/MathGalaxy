@@ -326,11 +326,15 @@
       }
       px = nx; py = ny;
     }
-    /* 软斥力：只在 d < R_i+R_j 时推，F = repulse·重叠量，各推 F/2（不是硬切） */
+    /* 软斥力：只在 d < 0.65·(R_i+R_j) 时推（允许相邻团重叠 35% —— 这是「四团压进中心」的关键），
+       刚度 0.15。另加**全局弱引力** 0.02·(p−质心)：没有它，团只会互相顶开、稳态在空心环上。 */
     function repulseStep() {
+      var gx = 0, gy = 0;
+      for (var q = 0; q < n; q++) { gx += px[q]; gy += py[q]; }
+      gx /= n; gy /= n;
       for (var a = 0; a < n; a++) {
         for (var b = a + 1; b < n; b++) {
-          var need = R[a] + R[b];
+          var need = O.repTarget * (R[a] + R[b]);      // 0.65 ⇒ 允许重叠
           var dx = px[b] - px[a], dy = py[b] - py[a];
           var d = Math.sqrt(dx * dx + dy * dy);
           if (d >= need) continue;
@@ -338,11 +342,15 @@
             var ang = (((a * 7 + b * 13) % 8) * Math.PI) / 4;
             dx = Math.cos(ang); dy = Math.sin(ang); d = 1e-6;
           }
-          var F = O.repulse * (need - d) / 2;       // 各推 F/2
+          var F = O.repulse * (need - d) / 2;         // 各推 F/2
           var ux = dx / d, uy = dy / d;
           px[a] -= ux * F; py[a] -= uy * F;
           px[b] += ux * F; py[b] += uy * F;
         }
+      }
+      for (q = 0; q < n; q++) {                        // 全局弱引力
+        px[q] += O.gravity * (gx - px[q]);
+        py[q] += O.gravity * (gy - py[q]);
       }
     }
 
@@ -460,6 +468,12 @@
   function organicFinish(graph, liveClusters, cfg, nodes, gap) {
     var t0 = layoutNow();
     var O = cfg.organic;
+
+    /* ---- 3.0 世界尺度倍率（?world=2 试「更像星图」的版本；默认 1.0） ---- */
+    if (O.worldScale && O.worldScale !== 1) {
+      var sw = O.worldScale;
+      nodes.forEach(function (nd) { nd.x *= sw; nd.y *= sw; });
+    }
 
     /* ---- 3.1 宽高比：偏离 [lo,hi] 才做各向异性缩放，系数上限 cap ---- */
     function bboxNow() {
@@ -1094,6 +1108,9 @@
     });
 
     var N = nodes.length;
+    var gcx = 0, gcy = 0;
+    liveClusters.forEach(function (c) { gcx += c.center.x; gcy += c.center.y; });
+    gcx /= Math.max(1, liveClusters.length); gcy /= Math.max(1, liveClusters.length);
     var disp = new Float64Array(N * 2);
     var i, j, dx, dy, d, d2, f, ux, uy, step, n;
 
@@ -1102,27 +1119,61 @@
        步数 250（或最大位移 < 0.5 提前停），不是 700。 */
     var iters = organic ? cfg.organic.nodeIter : cfg.iterations;
     var nodeGap = organic ? cfg.organic.gap : cfg.minGap;
+    var nodeRepelR = organic ? cfg.organic.nodeRepel * cfg.organic.gap : 0;
     var ranIters = iters;
+    if (organic) { cutoff = nodeRepelR; cutoff2 = cutoff * cutoff; }   // 短程斥力半径
 
     for (var iter = 0; iter < iters; iter++) {
       var t = iter / Math.max(1, iters - 1);
       var temp = U.lerp(cfg.temp0, cfg.temp1, t * t) * LEN;
       for (i = 0; i < N * 2; i++) disp[i] = 0;
 
-      /* 3a. 排斥 */
-      for (i = 0; i < N; i++) {
-        var ni = nodes[i];
-        for (j = i + 1; j < N; j++) {
-          var nj = nodes[j];
-          dx = ni.x - nj.x; dy = ni.y - nj.y;
-          d2 = dx * dx + dy * dy;
-          if (d2 < 1e-6) { dx = 0.7 + (i - j) * 0.13; dy = 0.4; d2 = dx * dx + dy * dy; }
-          if (d2 > cutoff2) continue;
-          d = Math.sqrt(d2);
-          f = (k * k / d) * cfg.repulsion;
-          ux = dx / d; uy = dy / d;
-          disp[i * 2] += ux * f; disp[i * 2 + 1] += uy * f;
-          disp[j * 2] -= ux * f; disp[j * 2 + 1] -= uy * f;
+      /* 3a. 排斥（organic：短程网格，只算 nodeRepel·gap 内的邻居；packed：原样 O(n²)） */
+      if (organic) {
+        var cell = Math.max(1, nodeRepelR);
+        var buckets = Object.create(null);
+        for (i = 0; i < N; i++) {
+          var bx = Math.floor(nodes[i].x / cell), by = Math.floor(nodes[i].y / cell);
+          var bk = bx + ',' + by;
+          (buckets[bk] || (buckets[bk] = [])).push(i);
+        }
+        for (i = 0; i < N; i++) {
+          var bx0 = Math.floor(nodes[i].x / cell), by0 = Math.floor(nodes[i].y / cell);
+          for (var ox = -1; ox <= 1; ox++) {
+            for (var oy = -1; oy <= 1; oy++) {
+              var lst = buckets[(bx0 + ox) + ',' + (by0 + oy)];
+              if (!lst) continue;
+              for (var li = 0; li < lst.length; li++) {
+                j = lst[li];
+                if (j <= i) continue;
+                dx = nodes[i].x - nodes[j].x; dy = nodes[i].y - nodes[j].y;
+                d2 = dx * dx + dy * dy;
+                if (d2 < 1e-6) { dx = 0.7 + (i - j) * 0.13; dy = 0.4; d2 = dx * dx + dy * dy; }
+                if (d2 > cutoff2) continue;
+                d = Math.sqrt(d2);
+                f = (k * k / d) * cfg.repulsion;
+                ux = dx / d; uy = dy / d;
+                disp[i * 2] += ux * f; disp[i * 2 + 1] += uy * f;
+                disp[j * 2] -= ux * f; disp[j * 2 + 1] -= uy * f;
+              }
+            }
+          }
+        }
+      } else {
+        for (i = 0; i < N; i++) {
+          var ni = nodes[i];
+          for (j = i + 1; j < N; j++) {
+            var nj = nodes[j];
+            dx = ni.x - nj.x; dy = ni.y - nj.y;
+            d2 = dx * dx + dy * dy;
+            if (d2 < 1e-6) { dx = 0.7 + (i - j) * 0.13; dy = 0.4; d2 = dx * dx + dy * dy; }
+            if (d2 > cutoff2) continue;
+            d = Math.sqrt(d2);
+            f = (k * k / d) * cfg.repulsion;
+            ux = dx / d; uy = dy / d;
+            disp[i * 2] += ux * f; disp[i * 2 + 1] += uy * f;
+            disp[j * 2] -= ux * f; disp[j * 2 + 1] -= uy * f;
+          }
         }
       }
 
@@ -1147,6 +1198,13 @@
         f = n.isBorder ? cfg.borderPull : cfg.anchorPull;
         disp[i * 2] += (n.anchor.x - n.x) * f;
         disp[i * 2 + 1] += (n.anchor.y - n.y) * f;
+        /* organic：全局弱引力（和 Phase 1 同一个系数）—— 没有它，节点会被各团的
+           软井绑在原地，团与团之间永远留着一圈空。 ⚠️ 必须弱：0.02。 */
+        if (organic) {
+          var gm = cfg.organic.gravity * (cfg.organic.nodeGravityMul == null ? 1 : cfg.organic.nodeGravityMul);
+          disp[i * 2] += gm * (gcx - n.x);
+          disp[i * 2 + 1] += gm * (gcy - n.y);
+        }
 
         // 团容器：organic = **软团井**（越出去越被拉回，不是不许出去）；packed = 软墙
         if (n.clusterObj && n.clusterObj.center) {
@@ -1156,8 +1214,7 @@
           if (organic) {
             var soft = cfg.organic.wellFrom * (n.clusterObj._Rc || cfg.organic.gap);
             if (vd > soft) {
-              var pull2 = cfg.organic.wellPull * (vd - soft);
-              disp[i * 2] -= (vx / vd) * pull2;
+              var pull2 = cfg.organic.wellPull * (vd - soft);              disp[i * 2] -= (vx / vd) * pull2;
               disp[i * 2 + 1] -= (vy / vd) * pull2;
             }
           } else {
