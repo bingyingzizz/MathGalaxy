@@ -419,6 +419,53 @@
       return { x: from.x + (dx / d) * r, y: from.y + (dy / d) * r, ux: dx / d, uy: dy / d, len: d };
     }
 
+    /** 这条线在屏幕上横跨多少像素（取折线外框的长边）—— 长边降权要用 */
+    function polySpan(polys) {
+      var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (var i = 0; i < polys.length; i++) {
+        var pts = polys[i];
+        for (var j = 0; j < pts.length; j++) {
+          var p = pts[j];
+          if (p.x < x0) x0 = p.x;
+          if (p.x > x1) x1 = p.x;
+          if (p.y < y0) y0 = p.y;
+          if (p.y > y1) y1 = p.y;
+        }
+      }
+      if (x0 > x1) return 0;
+      return Math.max(x1 - x0, y1 - y0);
+    }
+
+    /** 几何对象统一出口（顺便量屏幕跨度） */
+    function edgeGeom(e, quads, polys, arrow, glyph, ends) {
+      return {
+        edge: e, quads: quads, polys: polys, arrow: arrow, glyph: glyph,
+        ends: ends, lenPx: polySpan(polys)
+      };
+    }
+
+    /* ⭐ 长边在屏幕空间降权（2026-10-18）。
+       用户：「现在有很多超长线」。一条横穿整个视口的线，放大后既提供不了局部信息，
+       又把画面切成碎片；可它也不能直接删（早先试过「两端点都在屏外就丢」，
+       k=1.44 时 175 条只剩 7 条，屏幕变成一堆互不相连的点 —— renderer 里那条注释）。
+       折中：按**屏幕跨度 ÷ 视口对角线**做 1 → floor 的淡出。
+         · 全图适配时所有线都短（世界再大也被缩到一屏）⇒ 骨架照常可见；
+         · 放大后同一条线在屏幕上越来越长 ⇒ 自动退到 floor，局部结构才浮得出来。
+       ⛔ 选中 / 悬停的边不降权（它在讲「我看的这一条从哪来」。） */
+    function edgeFade(g) {
+      var F = C.edge.longFade;
+      if (!F || F.floor == null || F.floor >= 1) return 1;
+      /* 用户主动打开「全部连线」= 他就是想看全，别再替他把长的压掉。 */
+      if (C.showAllEdges) return 1;
+      var c = camNow();
+      var vw = c.viewW || W, vh = c.viewH || H;
+      var diag = Math.sqrt(vw * vw + vh * vh) || 1;
+      var t = (g.lenPx / diag - F.start) / Math.max(0.001, F.end - F.start);
+      if (t <= 0) return 1;
+      if (t > 1) t = 1;
+      return 1 - (1 - F.floor) * t;
+    }
+
     function computeEdge(e, cam) {
       var byId = view.graph.byId;
       var quads = [], polys = [], arrow = null, glyph = null, ends = [];
@@ -439,7 +486,7 @@
         quads.push({ p0: p0, p1: ctl, p2: p2 });
         polys.push(U.flattenQuad(p0, ctl, p2, 16));
         ends = [dn.id, un.id];
-        return { edge: e, quads: quads, polys: polys, arrow: null, glyph: null, ends: ends };
+        return edgeGeom(e, quads, polys, null, null, ends);
 
       }
 
@@ -456,7 +503,7 @@
           glyph = { x: (q.x + w.x) / 2, y: (q.y + w.y) / 2, text: '⟺' };
         }
         ends = [e.a, e.b];
-        return { edge: e, quads: [], polys: polys, arrow: null, glyph: glyph, ends: ends };
+        return edgeGeom(e, [], polys, null, glyph, ends);
       }
 
       /* implication */
@@ -495,7 +542,7 @@
         arrow = { x: tip.x, y: tip.y, angle: Math.atan2(-tip.uy, -tip.ux) };
         ends.push(tg.id);
       }
-      return { edge: e, quads: quads, polys: polys, arrow: arrow, glyph: null, ends: ends };
+      return edgeGeom(e, quads, polys, arrow, null, ends);
     }
 
     /* -------------------------------------------------------- 可见性权重 */
@@ -1197,6 +1244,7 @@
         var spine = isSpine(e);
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
+        if (!isEdgeActive(g)) a *= edgeFade(g); // 长边在屏幕空间降权
         if (a <= 0.02) return;
         if (!C.showDefinitionLines) return;
         var active = isEdgeActive(g);
@@ -1266,13 +1314,14 @@
       var spine = isSpine(e);
       // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
       var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
+      var active = isEdgeActive(g);
       /* 定义引用线在中景降权（领域 / 星团尺度 ×0.60）。⚠️ 定义线绝大多数走的是
          drawEdges() 的合并描边快路径，那里也必须乘同一个 lodA.defDim ——
          只改这里等于没改。 */
       if (e.kind === 'definition') a *= lodA.defDim;
+      if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       if (a <= 0.02) return;
 
-      var active = isEdgeActive(g);
       /* ⭐ 阶段 3：远尺度收起「逐条跨团长线」。
          只看「两端星团是否相同」——团内关系不受影响；选中/聚焦的边、以及
          用户打开 `showAllEdges` 时一律放行。⛔ 不画聚合箭头。 */
@@ -1353,6 +1402,7 @@
     function drawArrow(g) {
       var e = g.edge;
       var a = alphaForEdge(e) * lodA.nodeEdge;
+      if (!isEdgeActive(g)) a *= edgeFade(g);
       if (a <= 0.02) return;
       var sz = U.clamp(C.edge.arrowSize * Math.pow(camNow().k, 0.35), 6, 17) * (isEdgeActive(g) ? 1.2 : 1);
       var x = g.arrow.x, y = g.arrow.y, ang = g.arrow.angle;

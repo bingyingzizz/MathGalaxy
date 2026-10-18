@@ -214,33 +214,107 @@
       liveClusters.push(c);
     });
 
+    /* -------------------------------------------- 1b. 团间耦合 → 摆放方向 */
+    /* 每个团往「它连得最多的那些团所在的星系」那一侧靠。
+       为什么需要：团的位置以前只由「星系内第几个」决定，于是范畴论里跟同调代数
+       关系最紧的「拓扑斯」被摆到星系西缘、离同调 8000 —— 用户看到的
+       「很多超长线」有一半是这么来的。这里只改**星系内的方位**，不动星系中心。
+       ⚠️ 权重按边的语义分档：定义引用几乎占全部连线（1373/1637），
+          如果按条数算，一个节点的定义被谁引用得多就会压过真正的推导关系。 */
+    var KIND_W = { implication: 3, equivalence: 2, definition: 1, analogy: 0 };
+    var pairW = Object.create(null);          // "a|b" → 权重
+    graph.edges.forEach(function (e) {
+      var w = KIND_W[e.kind] == null ? 1 : KIND_W[e.kind];
+      if (!w) return;
+      var ids = MG.graphUtil.edgeNodes(e);
+      var cs = [];
+      for (var i = 0; i < ids.length; i++) {
+        var nd = graph.byId[ids[i]];
+        if (nd && nd.cluster) cs.push(nd.cluster);
+      }
+      for (var a = 0; a < cs.length; a++) {
+        for (var b = a + 1; b < cs.length; b++) {
+          if (cs[a] === cs[b]) continue;
+          var key = cs[a] < cs[b] ? cs[a] + '|' + cs[b] : cs[b] + '|' + cs[a];
+          pairW[key] = (pairW[key] || 0) + w;
+        }
+      }
+    });
+    var clusterW = Object.create(null);        // cid → [{to, w}]
+    Object.keys(pairW).forEach(function (key) {
+      var p = key.split('|');
+      (clusterW[p[0]] = clusterW[p[0]] || []).push({ to: p[1], w: pairW[key] });
+      (clusterW[p[1]] = clusterW[p[1]] || []).push({ to: p[0], w: pairW[key] });
+    });
+    liveClusters.forEach(function (c) {
+      var reg = graph.galaxyOf(c);
+      var base = (U.hashString(c.id) % 628) / 100;   // 没有外连时的兜底角度
+      var wsum = 0, vx = 0, vy = 0;
+      (clusterW[c.id] || []).forEach(function (t) {
+        var o = graph.clusterById[t.to];
+        var r2 = (o && o.parent) ? graph.regionById[o.parent] : null;
+        if (!r2) return;
+        wsum += t.w; vx += r2.center.x * t.w; vy += r2.center.y * t.w;
+      });
+      c._extW = wsum;
+      if (!wsum || !reg) { c._prefAngle = base; return; }
+      var dx = vx / wsum - reg.center.x, dy = vy / wsum - reg.center.y;
+      c._prefAngle = (Math.abs(dx) + Math.abs(dy) < 1) ? base : Math.atan2(dy, dx);
+    });
+
     graph.regions.forEach(function (reg) {
       var mine = liveClusters.filter(function (c) { return c.parent === reg.id; });
       if (!mine.length) return;
-      // 大的排前面，视觉上更像"星系核 + 外环"
-      mine.sort(function (a, b) { return b.nodes.length - a.nodes.length; });
-      var maxCap = 0;
-      mine.forEach(function (c) { maxCap = Math.max(maxCap, c._cap); });
 
       if (mine.length === 1) {
         mine[0].center = { x: reg.center.x, y: reg.center.y };
+        reg._cap = Math.max(reg._cap, mine[0]._cap + 60);
         return;
       }
-      // 团与团之间要**离得够远**：K 个团均布在半径 ringR 的圈上时，相邻中心距
-      // = 2·ringR·sin(π/K)；要求它 ≥ 两个盘 + 一条空带（`cluster.blank`）。
-      // 盘挨着盘的话，一眼看不出哪个点属于哪个团。
-      var K = mine.length;
-      var ringR = Math.max((2 * maxCap + ccfg.blank) / (2 * Math.sin(Math.PI / K)),
-        reg._cap * (0.34 + 0.05 * Math.min(K, 6)));
-      var phase = (U.hashString(reg.id) % 628) / 100;
-      mine.forEach(function (c, i) {
-        var th = phase + i * (Math.PI * 2 / mine.length);
-        // 团越大，稍微往外挪一点，避免挤在一起
-        var rr = ringR + c._cap * 0.18;
-        c.center = { x: reg.center.x + Math.cos(th) * rr, y: reg.center.y + Math.sin(th) * rr };
+
+      /* ⭐ 紧凑圆盘打包（2026-10-18）。旧写法把所有团均布在**一条圆环**上：
+         K 个团时 ringR = (2·maxCap + blank) / (2 sin(π/K))，K=17（分析学）时
+         ≈ 2100 —— 团被甩到离星系中心 2000 外，两个星系的环在中间交叉，
+         于是「预层」和「测度」摆到了同一块（用户原话），跨星系的线也跟着变长。
+         新写法：从内往外一圈圈找空位，盘与盘只留 gap；方向优先朝向
+         「它的边连得最多的那个星系」（_prefAngle）。
+         ⇒ 星系是紧凑的圆盘而不是空心大环，团不会越界，外连多的团靠向对方。 */
+      var gap = Math.max(48, ccfg.blank * 0.20);       // blank 300 → 60
+      var placed = [];
+      mine.slice().sort(function (a, b) {
+        /* 大的先放（占位能力强），连得多的次之 —— 免得大团被挤到外圈 */
+        return (b._cap - a._cap) || (b._extW - a._extW) || (a.id < b.id ? -1 : 1);
+      }).forEach(function (c) {
+        var pick = null;
+        for (var rr = 0; rr <= 3200 && !pick; rr += 50) {
+          var slots = rr < 1 ? 1 : Math.max(6,
+            Math.round(2 * Math.PI * rr / Math.max(150, (c._cap + gap) * 1.6)));
+          for (var s = 0; s < slots; s++) {
+            /* 从「朝向伙伴星系」的角度开始，左右交替试 —— 越近越优先 */
+            var off = (s % 2 ? 1 : -1) * Math.ceil(s / 2) * (2 * Math.PI / slots);
+            var th = c._prefAngle + off;
+            var x = Math.cos(th) * rr, y = Math.sin(th) * rr;
+            var ok = true;
+            for (var q = 0; q < placed.length; q++) {
+              var pp = placed[q];
+              var ddx = x - pp.x, ddy = y - pp.y;
+              var need = c._cap + pp.c._cap + gap;
+              if (ddx * ddx + ddy * ddy < need * need) { ok = false; break; }
+            }
+            if (ok) { pick = { x: x, y: y }; break; }
+          }
+        }
+        if (!pick) pick = { x: 0, y: 0 };             // 兜底（不该发生）
+        placed.push({ c: c, x: pick.x, y: pick.y });
+        c.center = { x: reg.center.x + pick.x, y: reg.center.y + pick.y };
       });
-      // 星系圆盘要装得下所有星团
-      reg._cap = Math.max(reg._cap, ringR + maxCap * 1.15 + 60);
+
+      /* 星系圆盘 = 实际外接半径（不是环半径）；给跨星系节点/云留一点余量 */
+      var far = 0;
+      placed.forEach(function (p) {
+        far = Math.max(far, Math.sqrt(p.x * p.x + p.y * p.y) + p.c._cap);
+      });
+      reg._cap = Math.max(reg._cap, far + 60);
     });
 
     /* ------------------------------------------------ 2. 节点锚点 */
