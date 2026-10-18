@@ -3960,6 +3960,91 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       table.push({ region: regs[i].id, name: regs[i].name, cells: row });
     }
     var bb = graph.bbox();
+    /* ---------- 形状四项（归一化坐标，世界缩放不变）---------- */
+    var shape = (function () {
+      var G = 200;                                   // 网格（200×200 够用且快）
+      var minX = bb.minX, minY = bb.minY;
+      var w = Math.max(1e-6, bb.maxX - bb.minX), h = Math.max(1e-6, bb.maxY - bb.minY);
+      var medNN = medianOf(nnDistances(graph.nodes.map(function (n) { return { x: n.x, y: n.y }; })));
+      var rad = Math.max(1.2 * medNN, 1e-6);
+      var gx = (G - 1) / w, gy = (G - 1) / h;
+      var mask = new Uint8Array(G * G);
+      var cellW = w / (G - 1);
+      var rc = rad / Math.min(cellW, h / (G - 1));
+      graph.nodes.forEach(function (n) {
+        var cx = Math.round((n.x - minX) * gx), cy = Math.round((n.y - minY) * gy);
+        var rr = Math.ceil(rc) + 1;
+        for (var yy = cy - rr; yy <= cy + rr; yy++) {
+          if (yy < 0 || yy >= G) continue;
+          for (var xx = cx - rr; xx <= cx + rr; xx++) {
+            if (xx < 0 || xx >= G) continue;
+            var ddx = xx - cx, ddy = yy - cy;
+            if (ddx * ddx + ddy * ddy <= rc * rc) mask[yy * G + xx] = 1;
+          }
+        }
+      });
+      var covered = 0;
+      for (var q = 0; q < mask.length; q++) if (mask[q]) covered++;
+      /* 连通块（4-邻域 BFS） */
+      var seen = new Uint8Array(G * G), comps = [];
+      var stack = new Int32Array(G * G);
+      for (var s0 = 0; s0 < mask.length; s0++) {
+        if (!mask[s0] || seen[s0]) continue;
+        var sp = 0; stack[sp++] = s0; seen[s0] = 1;
+        var cnt0 = 0;
+        while (sp > 0) {
+          var cu = stack[--sp]; cnt0++;
+          var ux = cu % G, uy = (cu - ux) / G;
+          if (ux > 0 && mask[cu - 1] && !seen[cu - 1]) { seen[cu - 1] = 1; stack[sp++] = cu - 1; }
+          if (ux < G - 1 && mask[cu + 1] && !seen[cu + 1]) { seen[cu + 1] = 1; stack[sp++] = cu + 1; }
+          if (uy > 0 && mask[cu - G] && !seen[cu - G]) { seen[cu - G] = 1; stack[sp++] = cu - G; }
+          if (uy < G - 1 && mask[cu + G] && !seen[cu + G]) { seen[cu + G] = 1; stack[sp++] = cu + G; }
+        }
+        comps.push(cnt0);
+      }
+      comps.sort(function (a, b) { return b - a; });
+      var big = comps.length ? comps[0] : 0;
+      var islands = comps.filter(function (c) { return covered && c / covered > 0.02; }).length;
+      /* 实心度：覆盖面积 / 凸包面积（凸包用节点位置的单调链） */
+      var pts = graph.nodes.map(function (n) { return { x: (n.x - minX) / w, y: (n.y - minY) / h }; })
+        .sort(function (a, b) { return a.x - b.x || a.y - b.y; });
+      function cross(o, a, b) { return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x); }
+      var lo = [], up = [];
+      pts.forEach(function (p) {
+        while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop();
+        lo.push(p);
+      });
+      pts.slice().reverse().forEach(function (p) {
+        while (up.length >= 2 && cross(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop();
+        up.push(p);
+      });
+      var hull = lo.slice(0, -1).concat(up.slice(0, -1));
+      var hullArea = 0;
+      for (var hi = 0; hi < hull.length; hi++) {
+        var h2 = hull[(hi + 1) % hull.length];
+        hullArea += hull[hi].x * h2.y - h2.x * hull[hi].y;
+      }
+      hullArea = Math.abs(hullArea) / 2;
+      /* 中心密度比：质心 0.35·R90 内的节点密度 / 全图平均 */
+      var mx = 0, my = 0;
+      graph.nodes.forEach(function (n) { mx += n.x; my += n.y; });
+      mx /= graph.nodes.length; my /= graph.nodes.length;
+      var ds = graph.nodes.map(function (n) { return U.dist(n.x, n.y, mx, my); }).sort(function (a, b) { return a - b; });
+      var r90 = ds[Math.floor(ds.length * 0.9)] || 1;
+      var inner = ds.filter(function (d) { return d <= 0.35 * r90; }).length;
+      var boxArea = w * h;
+      var innerArea = Math.PI * Math.pow(0.35 * r90, 2);
+      var centerRatio = (graph.nodes.length / boxArea) > 0
+        ? (inner / Math.max(1e-6, innerArea)) / (graph.nodes.length / boxArea) : 0;
+      return {
+        grid: G, coveredCells: covered,
+        contiguity: +(covered ? big / covered : 0).toFixed(4),
+        solidity: +(hullArea > 0 ? (covered / Math.pow(G - 1, 2)) / hullArea : 0).toFixed(4),
+        centerDensity: +centerRatio.toFixed(3),
+        islands: islands,
+        components: comps.length
+      };
+    })();
     return {
       clusters: n,
       pairs: xs.length,
@@ -4000,7 +4085,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       overlap: { pairs: pairs, sameSector: sameSector, crossSector: crossSector,
         deepest: +deepest.toFixed(3), deepestPair: deepestPair },
       crossRegion: table,
-      bbox: { w: Math.round(bb.maxX - bb.minX), h: Math.round(bb.maxY - bb.minY) }
+      bbox: { w: Math.round(bb.maxX - bb.minX), h: Math.round(bb.maxY - bb.minY) },
+      shape: shape
     };
   };
 
@@ -4639,26 +4725,27 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     // 世界坐标 → 纹理像素
     ctx.setTransform(scale, 0, 0, scale, -minX * scale, -minY * scale);
 
+    /* ⭐⭐ Stage 1b：**不再画任何圆形云盘**（星团盘 / 领域盘 / 板块盘全删）。
+       改成节点泼溅密度场：每个节点按所属领域色泼一个半径 40 世界单位、
+       中心 α 0.03、边缘 0 的径向渐变，整体模糊一次（smoothTexture）。
+       910 × 0.03 叠加最浓处 ≈ 0.94，不会过曝。 */
     var drawn = 0;
-    (graph.regions || []).forEach(function (region) {
-      if (!region.stat) return;                       // 空星系不画云
-      var list = graph.nodes.filter(function (n) {
-        return n.regions.indexOf(region.id) >= 0 && ok(n.id);
-      });
-      if (!list.length) return;                       // 点全被藏了 → 这一团云也收掉
+    var splatR = 40, splatA = 0.03;
+    (graph.nodes || []).forEach(function (n) {
+      if (!ok(n.id)) return;
+      var rid = (n.regions && n.regions[0]) || '';
+      var reg = graph.regionById && graph.regionById[rid];
+      var hex = (reg && reg.color) || '#7A8699';
+      var g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, splatR);
+      g.addColorStop(0, U.rgba(hex, splatA));
+      g.addColorStop(1, U.rgba(hex, 0));
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, splatR, 0, Math.PI * 2);
+      ctx.fill();
       drawn++;
-      paintRegion(ctx, region, list, bc);
     });
-
-    // 星团：在星系云之上再叠一层更小更浓的云 → 看起来像星云里更密的结
     var cdrawn = 0;
-    (graph.clusters || []).forEach(function (c) {
-      if (!c.stat) return;
-      var list = c.nodes.filter(function (n) { return ok(n.id); });
-      if (!list.length) return;
-      cdrawn++;
-      paintCluster(ctx, c, list, graph, bc);
-    });
 
     return {
       canvas: smoothTexture(cv, bc.texBlur),

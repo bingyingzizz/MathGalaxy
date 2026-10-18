@@ -40,26 +40,27 @@
     // 世界坐标 → 纹理像素
     ctx.setTransform(scale, 0, 0, scale, -minX * scale, -minY * scale);
 
+    /* ⭐⭐ Stage 1b：**不再画任何圆形云盘**（星团盘 / 领域盘 / 板块盘全删）。
+       改成节点泼溅密度场：每个节点按所属领域色泼一个半径 40 世界单位、
+       中心 α 0.03、边缘 0 的径向渐变，整体模糊一次（smoothTexture）。
+       910 × 0.03 叠加最浓处 ≈ 0.94，不会过曝。 */
     var drawn = 0;
-    (graph.regions || []).forEach(function (region) {
-      if (!region.stat) return;                       // 空星系不画云
-      var list = graph.nodes.filter(function (n) {
-        return n.regions.indexOf(region.id) >= 0 && ok(n.id);
-      });
-      if (!list.length) return;                       // 点全被藏了 → 这一团云也收掉
+    var splatR = 40, splatA = 0.03;
+    (graph.nodes || []).forEach(function (n) {
+      if (!ok(n.id)) return;
+      var rid = (n.regions && n.regions[0]) || '';
+      var reg = graph.regionById && graph.regionById[rid];
+      var hex = (reg && reg.color) || '#7A8699';
+      var g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, splatR);
+      g.addColorStop(0, U.rgba(hex, splatA));
+      g.addColorStop(1, U.rgba(hex, 0));
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, splatR, 0, Math.PI * 2);
+      ctx.fill();
       drawn++;
-      paintRegion(ctx, region, list, bc);
     });
-
-    // 星团：在星系云之上再叠一层更小更浓的云 → 看起来像星云里更密的结
     var cdrawn = 0;
-    (graph.clusters || []).forEach(function (c) {
-      if (!c.stat) return;
-      var list = c.nodes.filter(function (n) { return ok(n.id); });
-      if (!list.length) return;
-      cdrawn++;
-      paintCluster(ctx, c, list, graph, bc);
-    });
 
     return {
       canvas: smoothTexture(cv, bc.texBlur),
