@@ -912,6 +912,9 @@
     /* 板块落在哪：**成员领域 stat 重心的加权平均**（按节点数加权）。
        Stage 1 只读现有重心，不动布局；Stage 2 会改成 sectors.js 里手写的 center。 */
     function sectorAnchor(s) {
+      /* organic 布局里板块名是**成员节点的密度峰**（layout.js 的 Phase 3 算好后挂在 s.stat）；
+         packed 没有这个字段 ⇒ 退回「成员领域重心按节点数加权」。 */
+      if (s.stat && isFinite(s.stat.x) && isFinite(s.stat.y)) return { x: s.stat.x, y: s.stat.y };
       var wsum = 0, x = 0, y = 0;
       (s.regions || []).forEach(function (r) {
         if (!r.stat) return;
