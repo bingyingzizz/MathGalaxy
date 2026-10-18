@@ -3703,8 +3703,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
        规则与 layout.js 里算 stat.radius 时一致：跨星系的点不参与。 */
     var core = list.filter(function (n) { return !n.isBorder; });
     var basis = core.length >= 2 ? core : list;
-    var maxd = 0;
-    basis.forEach(function (n) { maxd = Math.max(maxd, U.dist(n.x, n.y, cx, cy)); });
+    /* ⭐ 阶段 4：半径改用 **92 分位**而不是最大值。
+       ⚠️ 这里和 layout.js 的 stat.radius 是**两处独立计算** —— 上一刀改的是
+       layout 那处，截图逐字节没变，就是因为云其实用的是这里的 maxd。
+       几个离心很远的点（尤其跨板块的）会把 max 拉长一大截，而那里并没有点，
+       云就糊成一大片。分位数保住「包住内容」，又不为个别远点空摊。 */
+    var ds = basis.map(function (n) { return U.dist(n.x, n.y, cx, cy); }).sort(function (a, b) { return a - b; });
+    var maxd = ds.length ? ds[Math.min(ds.length - 1, Math.floor(ds.length * 0.92))] : 0;
     var R = Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin);
     var rand = U.rngFrom(region.id, MG.config.seed);
 
