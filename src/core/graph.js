@@ -241,6 +241,36 @@
 
     graph.regions.forEach(function (r) { graph.regionById[r.id] = r; });
 
+    /* ------------------------------------------------------- 大板块索引 */
+    /* 四层结构的第一层。真源是 src/data/sectors.js 的 `regions` 归属表 ——
+       ⛔ regions.js 里**不**再写 sector 字段（两处并存一定会漂）。
+       这里反向把 sector 写到 region 上，供布局与渲染读。
+       `empty: true`（没有挂任何领域）的板块保留登记但不参与显示。 */
+    graph.sectors = (MG.sectors || []).map(function (s) {
+      var rs = (s.regions || []).map(function (id) { return graph.regionById[id]; }).filter(Boolean);
+      return {
+        id: s.id, name: s.name, en: s.en, color: s.color,
+        desc: s.desc, secondary: s.secondary || null,
+        empty: !!s.empty || rs.length === 0,
+        regions: rs
+      };
+    });
+    graph.sectorOf = Object.create(null);      // regionId → sector
+    graph.sectors.forEach(function (s) {
+      s.regions.forEach(function (r) { r.sector = s.id; graph.sectorOf[r.id] = s; });
+    });
+    // 没挂在任何板块上的领域：留个兜底板块，免得渲染时找不到颜色
+    graph.regions.forEach(function (r) {
+      if (graph.sectorOf[r.id]) return;
+      var loose = graph.sectors.filter(function (s) { return s.id === '__loose'; })[0];
+      if (!loose) {
+        loose = { id: '__loose', name: '其他', en: 'Other', color: '#7A7F8C', empty: false, regions: [] };
+        graph.sectors.push(loose);
+      }
+      loose.regions.push(r);
+      graph.sectorOf[r.id] = loose;
+    });
+
     /* ---------------------------------------------------------- 星团索引 */
     /* 星团 = 星系内部一套「自足的装置」。节点写 cluster 字段即归属；
        不写就直属于星系。星团的 parent 指向它所属的星系。            */

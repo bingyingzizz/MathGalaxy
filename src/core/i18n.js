@@ -146,6 +146,9 @@
     (graph.regions || []).forEach(function (r) {
       r.nameShow = useEn ? (r.en || r.name) : r.name;
     });
+    (graph.sectors || []).forEach(function (s) {
+      s.nameShow = useEn ? (s.en || s.name) : s.name;
+    });
     MG.displayEpoch = (MG.displayEpoch || 0) + 1;
     /* 文本量缓存：键里已经带 displayLang（见 renderer.js 的 textCacheKey），
        这里再整体作废一次 —— 两条一起才叫「语言进了缓存 key」。 */

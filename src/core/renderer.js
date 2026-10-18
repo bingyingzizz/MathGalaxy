@@ -159,6 +159,7 @@
       var tTrunk = thr(L.trunkNameIn), tGal = thr(L.galaxyNameIn);
       var tCIn = thr(L.clusterNameIn), tCOut = thr(L.clusterNameOut);
       var tCLink = thr(L.clusterLinkOut);
+      var tSec = thr(L.sectorNameIn), tSecOut = thr(L.sectorNameOut);
 
       lodA.nodeDot = smoothstep(tDot[0], tDot[1], k);
       lodA.nodeName = smoothstep(tName[0], tName[1], k);
@@ -182,6 +183,8 @@
       lodA.galaxyName = (1 - (L.galaxyNameHold || 0) * cNameIn) * smoothstep(tGal[0], tGal[1], k);
       // 星团级粗线与节点级细线交叉淡入淡出
       lodA.clusterLink = 1 - smoothstep(tCLink[0], tCLink[1], k);
+      /* 大板块名：**只有它在最远视角**。星团名一起来就让位（领域名更早一点让位）。 */
+      lodA.sectorName = smoothstep(tSec[0], tSec[1], k) * (1 - smoothstep(tSecOut[0], tSecOut[1], k));
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -572,6 +575,7 @@
          （实测同机位位图路 vs 实画路差 5.6% 像素、集中在各团的软色区）。
          放在名字/标签**之前**画，免得色块压住字。 */
       if (envLive) drawEnvelopes();
+      if (lodA.sectorName > 0.02) drawSectorNames();
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
       if (C.showLabels) drawLabels();
@@ -771,6 +775,65 @@
         drawEdgeOne(g);
         if (g.arrow) drawArrow(g);
       }
+      ctx.restore();
+    }
+
+    /* ------------------------------------------------ 大板块名（最远视角） */
+    /* 板块落在哪：**成员领域 stat 重心的加权平均**（按节点数加权）。
+       Stage 1 只读现有重心，不动布局；Stage 2 会改成 sectors.js 里手写的 center。 */
+    function sectorAnchor(s) {
+      var wsum = 0, x = 0, y = 0;
+      (s.regions || []).forEach(function (r) {
+        if (!r.stat) return;
+        var w = Math.max(1, r.stat.count);
+        wsum += w; x += r.stat.cx * w; y += r.stat.cy * w;
+      });
+      if (!wsum) return null;
+      return { x: x / wsum, y: y / wsum };
+    }
+
+    function drawSectorNames() {
+      var a = lodA.sectorName;
+      var fs = U.clamp(26 * Math.pow(view.cam.k, 0.12), 17, 34);
+      ctx.save();
+      ctx.font = '800 ' + fs.toFixed(1) + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      (view.graph.sectors || []).forEach(function (s) {
+        if (s.empty || !s.regions.length) return;          // 空板块不占画面
+        var c = sectorAnchor(s);
+        if (!c) return;
+        var p = w2s(c.x, c.y);
+        if (p.x < -400 || p.x > W + 400 || p.y < -300 || p.y > H + 300) return;
+        var text = s.nameShow || s.name;
+        var tw = ctx.measureText(text).width;
+        var ls = fs * 0.22;
+        var bw = tw + ls * (text.length - 1) + 40, bh = fs + 22;
+        var slot = placeName(p.x, p.y, bw, bh);
+        var cy = slot ? slot.y : p.y;
+        ctx.globalAlpha = a;
+        ctx.fillStyle = 'rgba(255,255,255,0.94)';
+        ctx.beginPath();
+        roundPath(ctx, p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);
+        ctx.fill();
+        ctx.strokeStyle = U.rgba(s.color, 0.85);
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+        // 手动加字距（和领域名同一手感，但更粗、更有颜色）
+        var chars = text.split('');
+        var total = tw + ls * (chars.length - 1);
+        var cx = p.x - total / 2;
+        ctx.fillStyle = U.rgba(s.color, 0.96);
+        ctx.textAlign = 'left';
+        chars.forEach(function (ch) {
+          ctx.fillText(ch, cx, cy + 1);
+          cx += ctx.measureText(ch).width + ls;
+        });
+        ctx.textAlign = 'center';
+        ctx.globalAlpha = 1;
+        prof.labelCount++;                  // 大板块名也算一个「画上去的标签」
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2 });
+      });
       ctx.restore();
     }
 
