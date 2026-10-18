@@ -433,7 +433,12 @@
       var singles = list.filter(function (nd) { return !nd.isBorder; });
       var basis = singles.length >= 2 ? singles : list;
       var cx = r.center.x, cy = r.center.y, maxd = 0;
-      basis.forEach(function (nd) { maxd = Math.max(maxd, U.dist(nd.x, nd.y, cx, cy)); });
+      /* ⭐ 阶段 4：板块云的半径改用**92 分位**而不是最大值。
+         用户指着左边那团粉雾说「糊成一片」—— 根因是几个离心很远的跨板块节点
+         把 maxd 拉得很长，云半径跟着涨，而那里其实没什么点。
+         分位数既保住了「云把内容包住」的观感，又不会为个别远点空摊一大片。 */
+      var ds = basis.map(function (nd) { return U.dist(nd.x, nd.y, cx, cy); }).sort(function (a, b) { return a - b; });
+      var maxd = ds.length ? ds[Math.min(ds.length - 1, Math.floor(ds.length * 0.92))] : 0;
       r.stat = {
         cx: cx, cy: cy, count: list.length,
         radius: Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin)
