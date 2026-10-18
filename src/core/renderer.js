@@ -111,8 +111,25 @@
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0,
-      trunkEdge: 0, trunkDim: 1, envelope: 0
+      trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1, crossEdge: 0,
+      defDim: 1, tier: 0
     };
+
+    /* ⭐ 尺度档位的**回差**：0 大板块 / 1 领域 / 2 星团 / 3 节点近景。
+       为什么需要：临界位置上「上一档还没走、下一档已经来」，两份名字抢同一块屏幕，
+       缩放只要抖一下，placeName() 的落位就翻来覆去 —— 看起来就是闪。
+       做法：进入下一档要越过边界 ×(1+h)（**晚**），退回上一档要低于 ×(1−h)（**早**），
+       死区里档位不动。⛔ 只在这里更新 holdTier，别处只读 lodA.tier。 */
+    var holdTier = 0;
+    function updateTier(k) {
+      var L = C.lod;
+      var spec = L.tierBound || [1.03, 2.03, 4.90];
+      var h = L.tierHysteresis == null ? 0.05 : L.tierHysteresis;
+      var k0 = fitZoom();
+      while (holdTier < spec.length && k > spec[holdTier] * k0 * (1 + h)) holdTier++;
+      while (holdTier > 0 && k < spec[holdTier - 1] * k0 * (1 - h)) holdTier--;
+      return holdTier;
+    }
 
     /* ------------------------------------------------------------------
        LOD 阈值换算（写法见 config.lod 的注释）
@@ -131,10 +148,16 @@
          判据要用 camNow().viewW/viewH（staticCam 也带这两个字段）。 */
       var c = camNow();
       var vw = c.viewW || W, vh = c.viewH || H;
-      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh].join(',');
+      /* ⭐ 与 camera.fit() 用**同一块可用矩形**（扣掉左栏 / 底部说明条）。
+         以前这里按整个视口算 k₀，而「适配全部」按视口算 ⇒ 两边一致；
+         2026-10-17 给相机加了内缩之后，这里必须跟着读 availRect()，
+         否则 {rel:…} 的阈值全部和「用户看到的那一档」错位
+         （正是 config 注释里那条铁律：同一个量不许在两个文件里各算一遍）。 */
+      var av = (typeof c.availRect === 'function') ? c.availRect() : { w: vw, h: vh };
+      var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh, av.w, av.h].join(',');
       if (key === fitKKey) return fitKCache;
-      var pad = Math.min(C.camera.fitPadding, Math.min(vw, vh) * 0.18);
-      var aw = Math.max(40, vw - pad * 2), ah = Math.max(40, vh - pad * 2);
+      var pad = Math.min(C.camera.fitPadding, Math.min(av.w, av.h) * 0.18);
+      var aw = Math.max(40, av.w - pad * 2), ah = Math.max(40, av.h - pad * 2);
       var w = Math.max(1, bb.maxX - bb.minX), h = Math.max(1, bb.maxY - bb.minY);
       fitKCache = U.clamp(Math.min(aw / w, ah / h),
         Math.max(C.camera.minZoom, C.camera.fitMinZoom),
@@ -155,8 +178,13 @@
 
     function computeLod() {
       var k = camNow().k, L = C.lod;
+      /* 档位先定（带返回差），三档名字**互斥**：同一时刻只有一档在画。
+         曲线本身已经在缝隙里归零，所以档位切换不会出现「啪」的一下。 */
+      var tier = updateTier(k);
+      lodA.tier = tier;
       var tDot = thr(L.nodeDotIn), tEdge = thr(L.nodeEdgeIn), tName = thr(L.nodeNameIn);
       var tTrunk = thr(L.trunkNameIn), tGal = thr(L.galaxyNameIn);
+      var tGalOut = thr(L.galaxyNameOut || { rel: [1.94, 2.005] });
       var tCIn = thr(L.clusterNameIn), tCOut = thr(L.clusterNameOut);
       var tCLink = thr(L.clusterLinkOut);
       var tSec = thr(L.sectorNameIn), tSecOut = thr(L.sectorNameOut);
@@ -175,19 +203,30 @@
       // 星团包络：中等缩放出现，放大后让位
       var tEnvIn = thr(L.envelopeIn), tEnvOut = thr(L.envelopeOut);
       lodA.envelope = smoothstep(tEnvIn[0], tEnvIn[1], k) * (1 - smoothstep(tEnvOut[0], tEnvOut[1], k));
-      // 星团名：放大到看得见节点名时就退场，避免和节点名打架
+      /* 星团名：放大到看得见节点名时就退场，避免和节点名打架。
+         ⚠️ 只有 holdTier ≥ 2（星团档）才画 —— 档位之外一律 0。 */
       var cNameIn = smoothstep(tCIn[0], tCIn[1], k);
       var cNameOut = smoothstep(tCOut[0], tCOut[1], k);
-      lodA.clusterName = cNameIn * (1 - cNameOut);
-      // 星系名：最小的时候出现，星团名起来之后压掉一部分（但不清零，留个方位感）
-      lodA.galaxyName = (1 - (L.galaxyNameHold || 0) * cNameIn) * smoothstep(tGal[0], tGal[1], k);
+      lodA.clusterName = tier >= 2 ? cNameIn * (1 - cNameOut) : 0;
+      /* 领域名：**只在领域档**画（以前它会一直留到 50% 去和星团名抢位置） */
+      var galName = smoothstep(tGal[0], tGal[1], k) * (1 - smoothstep(tGalOut[0], tGalOut[1], k));
+      lodA.galaxyName = tier === 1 ? galName : 0;
       // 星团级粗线与节点级细线交叉淡入淡出
       lodA.clusterLink = 1 - smoothstep(tCLink[0], tCLink[1], k);
-      /* 大板块名：**只有它在最远视角**。星团名一起来就让位（领域名更早一点让位）。 */
-      lodA.sectorName = smoothstep(tSec[0], tSec[1], k) * (1 - smoothstep(tSecOut[0], tSecOut[1], k));
+      /* 大板块名：**只有它在最远视角**。档位 0 之外一律不画。 */
+      var secName = smoothstep(tSec[0], tSec[1], k) * (1 - smoothstep(tSecOut[0], tSecOut[1], k));
+      lodA.sectorName = tier === 0 ? secName : 0;
       /* 跨团长线：**远尺度收起**（crossEdge→0），放大到领域/星团尺度才回来 */
       var tCross = thr(L.crossEdgeOut);
       lodA.crossEdge = smoothstep(tCross[0], tCross[1], k);
+      /* 定义引用线在中景降权（见 config.edge.definitionMidScale）：
+         两个 draw 路径共用这一个系数 —— 定义线大部分走的是**合并描边**快路径，
+         只改 drawEdgeOne 会「改了没效果」（这条坑写在 HANDOVER 里）。 */
+      var dIn = thr(L.defDimIn || { rel: [1.05, 1.25] });
+      var dOut = thr(L.defDimOut || { rel: [3.80, 4.70] });
+      var mid = smoothstep(dIn[0], dIn[1], k) * (1 - smoothstep(dOut[0], dOut[1], k));
+      var floor = C.edge.definitionMidScale == null ? 0.60 : C.edge.definitionMidScale;
+      lodA.defDim = 1 - (1 - floor) * mid;
     }
 
     /* ------------------------------------------------------------ 尺寸 */
@@ -542,6 +581,10 @@
     /* ============================================================ 绘制 */
     /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
     var nameBoxes = [];
+    /* 本帧**预留**给特殊标签（选中 → 悬停 → 搜索命中）的位置。
+       ⚠️ 它们必须在板块 / 领域 / 星团名**之前**占位，否则「我刚搜到的那个点」
+          名字会被大标题挤掉 —— 见 reserveSpecialLabels()。 */
+    var reservedLabels = [];
 
     /* ---------- 静态层（可烘）：包络 → 星团连线 → 边 → 节点 → 箭头 ---------- */
     function paintStatic(geoms) {
@@ -578,6 +621,10 @@
          （实测同机位位图路 vs 实画路差 5.6% 像素、集中在各团的软色区）。
          放在名字/标签**之前**画，免得色块压住字。 */
       if (envLive) drawEnvelopes();
+      /* ⭐ 标签避让的优先级在这里就定死：**选中项 → 悬停 → 搜索命中**先占位，
+         然后才是「当前尺度的主要名称」（板块 / 领域 / 星团），最后是普通节点名。
+         ⛔ 放不下就隐藏低优先级，不缩字号、不降对比度（用户 2026-10-17 拍板）。 */
+      if (C.showLabels) reserveSpecialLabels();
       if (lodA.sectorName > 0.02) drawSectorNames();
       if (lodA.galaxyName > 0.02) drawGalaxyNames();
       if (lodA.clusterName > 0.02) drawClusterNames();
@@ -592,6 +639,7 @@
       var geoms = ensureGeom();     // ⚠️ 照常建几何：命中测试（hitTest）依赖它
       computeLod();
       nameBoxes.length = 0;
+      reservedLabels.length = 0;
 
       if (!staticHidden) paintStatic(geoms);   // 位图模式：静态层交给 DOM 图层
 
@@ -617,7 +665,8 @@
          ⚠️ 清空写在裁剪**里面**：调用方不必管清底，也不会误清掉别的带。 */
     function drawStatic(target, scale, rect, band) {
       var save = { ctx: ctx, W: W, H: H, dpr: dpr, cam: staticCam, cull: cullOff,
-        hover: view.hover, labels: C.showLabels, glow: C.node.glow, glowLiveV: glowLive };
+        hover: view.hover, labels: C.showLabels, glow: C.node.glow,
+        glowSel: C.node.glowSelected, glowLiveV: glowLive };
       ctx = target;
       W = target.canvas.width; H = target.canvas.height; dpr = 1;
       /* ⚠️ staticCam 必须是「够用的相机」：凡是用 camNow() 的地方都会拿到它，
@@ -630,6 +679,10 @@
       staticCam = {
         k: scale, tx: -rect.minX * scale, ty: -rect.minY * scale,
         viewW: view.cam.viewW, viewH: view.cam.viewH,
+        /* ⚠️ fitZoom() 现在按「可用矩形」算 k₀（与 camera.fit 同一套）。
+           烘焙时相机是这张假对象，所以必须把同一个 availRect 递过去 ——
+           漏了就会退回「整个视口」口径，烘出来的 LOD 和实时画对不上。 */
+        availRect: function () { return view.cam.availRect(); },
         toScreen: function (x, y) { return { x: x * this.k + this.tx, y: y * this.k + this.ty }; }
       };
       /* ⭐ cullOff = false：**按烘焙画布裁剪**。
@@ -642,6 +695,9 @@
       view.hover = null;                    // hover 不进烘焙
       C.showLabels = false;                 // 标签不进烘焙
       C.node.glow = false;                  // 光晕实时画（实测 ≈0.05ms）
+      /* ⚠️ 选中光圈也要在这里关掉：烘焙时 view.focus 不清空，若只关普通光晕，
+         选中的那颗点会把光晕**烘进静态图**里，取消选中后还留在画布上。 */
+      C.node.glowSelected = false;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       var clipped = false;
       if (band && band.h > 0) {
@@ -659,18 +715,20 @@
       geomCache = null; geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };
       computeLod();
       nameBoxes.length = 0;
+      reservedLabels.length = 0;
       paintStatic(geomForBake());
       if (clipped) ctx.restore();       // ⛔ 必须在切回实时 ctx 之前 restore
 
       ctx = save.ctx; W = save.W; H = save.H; dpr = save.dpr;
       staticCam = save.cam; cullOff = save.cull;
-      view.hover = save.hover; C.showLabels = save.labels; C.node.glow = save.glow; glowLive = save.glowLiveV;
+      view.hover = save.hover; C.showLabels = save.labels; C.node.glow = save.glow;
+      C.node.glowSelected = save.glowSel; glowLive = save.glowLiveV;
       geomCache = null; geomCam = { k: -1, tx: 0, ty: 0, w: 0, h: 0 };   // 实时层下一帧重建
     }
 
     /* 光晕实时画（烘焙集里没有它）：与 drawNode 里那段逐字一致，只是独立成一遍 */
     function drawGlows() {
-      if (!C.node.glow) return;
+      if (!C.node.glow && !C.node.glowSelected) return;
       view.graph.nodes.forEach(function (n) {
         if (!nodeOk(n.id) || !nodeInView(n)) return;
         var p = screenOf(n), r = nodeRadius(n);
@@ -680,9 +738,14 @@
         var isHover = (view.hover && view.hover.type === 'node' && view.hover.id === n.id) ||
           (view.hover && view.hover.type === 'edge' && edgeById(view.hover.id) &&
             GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
+        /* ⭐ 普通光晕关掉了也要把选中 / 悬停的那几颗画出来（光圈是「我在看它」的记号，
+           不该被「少点光晕」这个审美开关一起关掉）。 */
+        var emph = isFocus || isHover;
+        if (!emph && !C.node.glow) return;
         var gs = glowSprite(MG.typeStyle(n.type).color);
         var gsz = r * 5.4;
-        ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
+        ctx.globalAlpha = a * (emph ? 1 :
+          (C.node.glowNormalAlpha == null ? 0.72 : C.node.glowNormalAlpha));
         ctx.drawImage(gs, p.x - gsz / 2, p.y - gsz / 2, gsz, gsz);
         ctx.globalAlpha = 1;
       });
@@ -809,11 +872,13 @@
         var p = w2s(c.x, c.y);
         if (p.x < -400 || p.x > W + 400 || p.y < -300 || p.y > H + 300) return;
         var text = s.nameShow || s.name;
-        var tw = ctx.measureText(text).width;
+        var tw = measure(ctx, text, ctx.font);   // 缓存键含 displayLang ⇒ 中英分别量
         var ls = fs * 0.22;
         var bw = tw + ls * (text.length - 1) + 40, bh = fs + 22;
-        var slot = placeName(p.x, p.y, bw, bh);
-        var cy = slot ? slot.y : p.y;
+        // rank 2 = 当前尺度主名；放不下就**不画**（不缩字号、不叠到别人身上）
+        var slot = placeName(p.x, p.y, bw, bh, 2);
+        if (!slot) return;
+        var cy = slot.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.94)';
         ctx.beginPath();
@@ -835,7 +900,7 @@
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
         prof.labelCount++;                  // 大板块名也算一个「画上去的标签」
-        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2 });
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2 });
       });
       ctx.restore();
     }
@@ -857,12 +922,13 @@
         /* ⭐ T2.4 收尾：画布上的名字也要跟语言走。`nameShow` 是**启动时算一次**的
            （见 src/core/i18n.js 的 MG.localizeDisplay）—— ⛔ 不在每帧里查表。 */
         var text = r.nameShow || r.name;
-        var tw = ctx.measureText(text).width;
+        var tw = measure(ctx, text, ctx.font);
         var ls = fs * 0.18;
         var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
-        // 星系名之间也尽量不叠（它们最先占位，所以通常就在原位）
-        var slot = placeName(p.x, p.y, bw, bh);
-        var cy = slot ? slot.y : p.y;
+        // rank 2 = 当前尺度主名；放不下就不画（优先保选中 / 搜索命中的标签）
+        var slot = placeName(p.x, p.y, bw, bh, 2);
+        if (!slot) return;
+        var cy = slot.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.86)';
         ctx.beginPath();
@@ -883,7 +949,7 @@
         ctx.textAlign = 'center';
         ctx.globalAlpha = 1;
         prof.labelCount++;                  // 星系名算一个「画上去的标签」
-        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2 });
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2 });
       });
       ctx.restore();
     }
@@ -897,6 +963,10 @@
       var cfgL = C.clusterLink;
       var maxCount = 1;
       links.forEach(function (l) { if (l.count > maxCount) maxCount = l.count; });
+      /* ⭐ 选中节点的跨板块关系**优先于任何隐藏规则**（用户 2026-10-17 的判据）：
+         聚合线也一样 —— 如果它连着我正在看的那个团，跨板块也照画。 */
+      var focusNode = (view.focus && view.focus.type === 'node') ? view.graph.byId[view.focus.id] : null;
+      var focusCluster = focusNode ? focusNode.cluster : null;
 
       ctx.save();
       ctx.lineCap = 'round';
@@ -910,7 +980,8 @@
            放大、选中、搜索都还能找到它。 */
         if (!C.showAllEdges && lodA.crossEdge < 0.5) {
           var sA = clusterSector(l.a), sB = clusterSector(l.b);
-          if (sA && sB && sA !== sB && l.count < (cfgL.crossSectorMinEdges || 4)) return;
+          var touchesFocus = !!(focusCluster && (l.a === focusCluster || l.b === focusCluster));
+          if (!touchesFocus && sA && sB && sA !== sB && l.count < (cfgL.crossSectorMinEdges || 4)) return;
         }
         var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
         if (!A || !B || !A.stat || !B.stat) return;
@@ -1041,13 +1112,18 @@
 
     /* ------------------------------------------------ 星团名 */
     /** 给一个名字找位置：先试原位，再试上下几个偏移；都不行就返回 null。
-        依据是 nameBoxes（星系名 → 装置名 → 节点名，按这个优先级依次占位）。 */
-    function placeName(cx, cy, bw, bh) {
+        依据是 nameBoxes（**选中/搜索 → 当前尺度主名 → 节点名**，按这个优先级依次占位）。
+        rank：0 选中 / 1 悬停 / 2 当前尺度主名（板块·领域·星团）/ 3 其他。
+        ⛔ 放不下就返回 null（调用方隐藏），**不缩字号、不降对比度**。 */
+    function placeName(cx, cy, bw, bh, rank) {
       var step = bh + 6;
       var gaps = [0, -step, step, -2 * step, 2 * step];
       for (var gi = 0; gi < gaps.length; gi++) {
         var y = cy + gaps[gi];
-        var box = { x0: cx - bw / 2, y0: y - bh / 2, x1: cx + bw / 2, y1: y + bh / 2 };
+        var box = {
+          x0: cx - bw / 2, y0: y - bh / 2, x1: cx + bw / 2, y1: y + bh / 2,
+          rank: rank == null ? 3 : rank
+        };
         var hit = false;
         for (var i = 0; i < nameBoxes.length; i++) {
           var b = nameBoxes[i];
@@ -1071,13 +1147,13 @@
         var p = w2s(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = c.nameShow || c.name;      // ⭐ T2.4：星团名跟语言走（启动时算一次）
-        var tw = ctx.measureText(text).width;
+        var tw = measure(ctx, text, ctx.font);
         var pad = C.cluster.namePad;
         var bw = tw + pad * 2, bh = fs + 9;
         // ⚠️ 装置名之间也要互相避让：两个团挨得近时（比如「代数结构」与
         //    「向量空间的基」）名字会直接叠在一起，读不清。放不下就不画 ——
         //    包络还在，放大一点名字自然回来。
-        var slot = placeName(p.x, p.y, bw, bh);
+        var slot = placeName(p.x, p.y, bw, bh, 2);
         if (!slot) return;
         var y = slot.y;
         ctx.globalAlpha = a;
@@ -1119,7 +1195,8 @@
         if (g.edge.kind !== 'definition') { drawEdgeOne(g); return; }
         var e = g.edge, style = T.edgeStyles.definition;
         var spine = isSpine(e);
-        var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
+        var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
+          * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
         if (a <= 0.02) return;
         if (!C.showDefinitionLines) return;
         var active = isEdgeActive(g);
@@ -1189,6 +1266,10 @@
       var spine = isSpine(e);
       // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
       var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
+      /* 定义引用线在中景降权（领域 / 星团尺度 ×0.60）。⚠️ 定义线绝大多数走的是
+         drawEdges() 的合并描边快路径，那里也必须乘同一个 lodA.defDim ——
+         只改这里等于没改。 */
+      if (e.kind === 'definition') a *= lodA.defDim;
       if (a <= 0.02) return;
 
       var active = isEdgeActive(g);
@@ -1305,10 +1386,13 @@
           GU.edgeNodes(edgeById(view.hover.id)).indexOf(n.id) >= 0);
 
       // 光晕（位图模式下由 drawGlows() 单独实时画一遍，这里跳过）
-      if (C.node.glow && !glowLive) {
+      // ⭐ 两档：普通光晕跟 C.node.glow，选中/悬停的光圈跟 C.node.glowSelected。
+      var emph = isFocus || isHover;
+      if ((emph ? C.node.glowSelected : C.node.glow) && !glowLive) {
         var gs = glowSprite(st.color);
         var gsz = r * 5.4;
-        ctx.globalAlpha = a * (isFocus || isHover ? 1 : 0.72);
+        ctx.globalAlpha = a * (emph ? 1 :
+          (C.node.glowNormalAlpha == null ? 0.72 : C.node.glowNormalAlpha));
         ctx.drawImage(gs, p.x - gsz / 2, p.y - gsz / 2, gsz, gsz);
         ctx.globalAlpha = 1;
       }
@@ -1342,36 +1426,115 @@
     /* ---------------------------------------------------------- 名称 */
     function isTrunk(n) { return !!(n && n.trunk); }
 
+    /** 这一帧「必须赢」的标签：**选中 → 悬停 → 搜索命中**。
+        为什么要在画板块名之前先占位：placeName() 是「先到先得」的队列，
+        大标题（18px 粗体）比节点名大得多，晚一步就永远挤不进去 ——
+        用户点了搜索结果却看不到那个点的名字。 */
+    function reserveSpecialLabels() {
+      var k = view.cam.k;
+      /* ⚠️ 缩到全图时 labelFont() 只有 9.5px —— 选中/搜索命中的名字是「我为什么在看这一屏」
+         的线索，不能跟着变小。这里给它 12px 的下限（⛔ 不是给普通节点名放大）。 */
+      var fs = Math.max(labelFont(), 12);
+      var order = [];
+      if (view.focus && view.focus.type === 'node') order.push({ id: view.focus.id, rank: 0 });
+      if (view.hover && view.hover.type === 'node') order.push({ id: view.hover.id, rank: 1 });
+      if (view.searchIds) {
+        Object.keys(view.searchIds).forEach(function (id) { order.push({ id: id, rank: 2 }); });
+      }
+      if (!order.length) return;
+      ctx.font = '600 ' + fs + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      var seen = Object.create(null);
+      for (var i = 0; i < order.length && reservedLabels.length < 24; i++) {
+        var it = order[i];
+        if (seen[it.id]) continue;
+        seen[it.id] = 1;
+        var n = view.graph.byId[it.id];
+        if (!n || !nodeOk(it.id)) continue;
+        var p = screenOf(n);
+        if (!inView(p.x, p.y, PAD_NODE)) continue;
+        var r = nodeRadius(n);
+        var text = n.labelShow || n.label;
+        var tw = measure(ctx, text, ctx.font);
+        var x = p.x, y = p.y + r + C.node.labelOffset * Math.max(k, 0.62);
+        var box = {
+          x0: x - tw / 2 - C.node.labelPad, y0: y - 1,
+          x1: x + tw / 2 + C.node.labelPad, y1: y + fs + 2, rank: it.rank
+        };
+        /* 特殊标签之间也避让；但**选中 / 悬停那一颗必须出现**（放不下就压上去）。 */
+        var hit = false;
+        for (var j = 0; j < reservedLabels.length; j++) {
+          var b = reservedLabels[j].box;
+          if (box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0) { hit = true; break; }
+        }
+        if (hit && it.rank > 1) continue;
+        nameBoxes.push(box);
+        reservedLabels.push({
+          id: it.id, rank: it.rank, x: x, y: y, fs: fs, text: text,
+          alpha: alphaForNode(it.id), type: n.type, box: box
+        });
+      }
+    }
+
+    /** 把预留好的特殊标签画出来（位置已经占好，这里只落笔） */
+    function drawReservedLabels() {
+      if (!reservedLabels.length) return;
+      ctx.font = '600 ' + labelFont() + 'px ' + T.font;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      reservedLabels.forEach(function (L) {
+        if (L.alpha <= 0.06) return;
+        /* 字号跟着当前缩放走（预留时同一帧算的 fs）；高亮色 = 类型色，
+           和普通节点名的墨色区分开 —— 但**不加粗、不放大**（优先级靠占位，不靠抢眼）。 */
+        ctx.font = '600 ' + L.fs + 'px ' + T.font;
+        var alpha = L.alpha;
+        ctx.lineWidth = Math.max(2.5, L.fs * 0.28);
+        ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
+        ctx.strokeText(L.text, L.x, L.y);
+        ctx.fillStyle = (L.rank <= 1)
+          ? U.rgba(MG.typeStyle(L.type).color, alpha)
+          : 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
+        ctx.fillText(L.text, L.x, L.y);
+        prof.labelCount++;
+      });
+    }
+
     function drawLabels() {
+      /* 特殊标签（选中 / 悬停 / 搜索命中）**先画**：它们在 reserveSpecialLabels()
+         里已经占好位，普通名字不会压上去。 */
+      drawReservedLabels();
+
       var k = view.cam.k;
       var fs = labelFont();
-      // 连主干的名字都还没到出现的时候 → 只画聚焦/悬停的那一个
-      if (lodA.nodeName <= 0.02 && lodA.trunkName <= 0.02) { drawKeyLabels(fs); return; }
+      // 连主干的名字都还没到出现的时候 → 只剩上面那几个特殊标签
+      if (lodA.nodeName <= 0.02 && lodA.trunkName <= 0.02) return;
 
       // 缩得很小时只留「重要」节点的名字；重叠的名字一律让位（永远去重叠）
       var keepAll = k >= C.node.labelMinZoomAll;
-      // 星系名 / 装置名先占位（它们在上面已经画过了）—— 节点名不许压上去
+      // 板块 / 领域 / 星团名 + 特殊标签先占位 —— 节点名不许压上去
       var placed = nameBoxes.slice();
       var nodes = view.graph.nodes.slice().sort(function (a, b) {
         return labelPriority(b) - labelPriority(a);
       });
+      var reserved = Object.create(null);
+      reservedLabels.forEach(function (L) { reserved[L.id] = 1; });
 
       ctx.font = '600 ' + fs + 'px ' + T.font;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
 
       nodes.forEach(function (n) {
+        if (reserved[n.id]) return;                // 已经画过的特殊标签不再画第二遍
         if (!nodeOk(n.id)) return;
         var trunk = isTrunk(n);
         // 主干的名字用更早出现的那条曲线；其余仍按原节奏
         var nameAlpha = trunk ? Math.max(lodA.nodeName, lodA.trunkName) : lodA.nodeName;
         if (nameAlpha <= 0.06) return;
         var a = alphaForNode(n.id);
-        var isSpecial = (view.focus && view.focus.id === n.id) ||
-          (view.hover && view.hover.type === 'node' && view.hover.id === n.id);
         if (a <= 0.06) return;
         // 缩小时只画重要的：主干一律画，其余要 degree >= 3
-        if (!keepAll && !isSpecial && !trunk && n.degree < 3) return;
+        if (!keepAll && !trunk && n.degree < 3) return;
 
         var p = screenOf(n);
         if (!inView(p.x, p.y, PAD_NODE)) return;   // 屏幕外的名字：既不量宽也不画
@@ -1381,47 +1544,21 @@
         var x = p.x, y = p.y + r + C.node.labelOffset * Math.max(k, 0.62);
         var box = { x0: x - tw / 2 - C.node.labelPad, y0: y - 1, x1: x + tw / 2 + C.node.labelPad, y1: y + fs + 2 };
 
-        if (!isSpecial) {
-          var hit = false;
-          for (var i = 0; i < placed.length; i++) {
-            var b = placed[i];
-            if (box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0) { hit = true; break; }
-          }
-          if (hit) return;
+        var hit = false;
+        for (var i = 0; i < placed.length; i++) {
+          var b = placed[i];
+          if (box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0) { hit = true; break; }
         }
+        if (hit) return;
         placed.push(box);
 
-        var alpha = a * (isSpecial ? 1 : 0.92 * nameAlpha);
+        var alpha = a * 0.92 * nameAlpha;
         ctx.lineWidth = Math.max(2.5, fs * 0.28);
         ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * alpha).toFixed(3) + ')';
         ctx.strokeText(text, x, y);
-        ctx.fillStyle = isSpecial ? U.rgba(MG.typeStyle(n.type).color, alpha) : 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
+        ctx.fillStyle = 'rgba(28,28,30,' + alpha.toFixed(3) + ')';
         ctx.fillText(text, x, y);
         prof.labelCount++;                    // 节点名：真正画上去了才算一条
-      });
-    }
-
-    /** 缩得太小时只画关键节点的名字 */
-    function drawKeyLabels(fs) {
-      var special = [];
-      if (view.focus && view.focus.type === 'node') special.push(view.focus.id);
-      if (view.hover && view.hover.type === 'node') special.push(view.hover.id);
-      if (!special.length) return;
-      ctx.font = '600 ' + Math.max(fs, 12) + 'px ' + T.font;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'top';
-      special.forEach(function (id) {
-        var n = view.graph.byId[id];
-        if (!n || !nodeOk(id)) return;
-        var p = screenOf(n), r = nodeRadius(n);
-        var y = p.y + r + 10;
-        var label = n.labelShow || n.label;      // ⭐ T2.4：跟语言走
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = T.labelHalo;
-        ctx.strokeText(label, p.x, y);
-        ctx.fillStyle = T.ink;
-        ctx.fillText(label, p.x, y);
-        prof.labelCount++;                    // 聚焦/悬停时那个「关键名字」也算一条
       });
     }
 
@@ -1430,6 +1567,8 @@
       if (n.trunk) s += 400;                       // 主干的名字优先留下（去重叠时赢）
       if (view.focus && view.focus.id === n.id) s += 1000;
       if (view.hover && view.hover.id === n.id) s += 800;
+      /* 搜索命中：排在选中 / 悬停之后、普通名字之前（同一屏里让「刚搜到的」先落位）。 */
+      if (view.searchIds && view.searchIds[n.id]) s += 600;
       if (n.type === 'definition') s -= 6;
       return s;
     }
@@ -1489,6 +1628,14 @@
       drawReadRings: drawReadRings,                          // 已读脉冲环 → #layer-read（见上）
       bbox: bbox,
       prof: prof,
+      /* 诊断用：当前帧的 LOD 读数（档位 / 三档名字 / 定义线系数）。
+         ⚠️ 只读快照，别拿它当状态改 —— holdTier 的真源在 computeLod 里。 */
+      lodState: function () {
+        return {
+          tier: lodA.tier, sector: lodA.sectorName, region: lodA.galaxyName,
+          cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName
+        };
+      },
       profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.labelCount = 0; prof.frames = 0; },
       get size() { return { w: W, h: H }; }
     };

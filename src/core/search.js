@@ -296,7 +296,7 @@
       var refQ = '';
       var m0 = /^ref\s*[:：]\s*(.*)$/.exec(q);
       if (m0) { refMode = true; refQ = m0[1].trim(); q = refQ; }
-      if (!q) { render(); return; }
+      if (!q) { notifyHits([]); render(); return; }
 
       var terms = termsOf(q);
       var termSet = Object.create(null);
@@ -388,6 +388,7 @@
       }
 
       active = items.length ? 0 : -1;
+      notifyHits(items);
       render();
     }
 
@@ -529,6 +530,17 @@
       results.classList.add('hidden');
       box.classList.remove('active');
       syncA11y();
+      /* ⭐ 关掉结果列表 ⇒ 画布上「搜索命中优先占标签位」也一起失效。
+         否则搜完再点空白关掉，那几个名字还会一直挤在别人的位置前面。 */
+      notifyHits([]);
+    }
+
+    /** 把当前展示的命中 id 交给画布（标签避让的优先级：选中 → 搜索命中 → 本档主名）。 */
+    function notifyHits(list) {
+      if (!hooks.onHits) return;
+      var ids = [];
+      (list || []).forEach(function (it) { if (it && it.kind === 'node') ids.push(it.id); });
+      hooks.onHits(ids);
     }
 
     function clear() {

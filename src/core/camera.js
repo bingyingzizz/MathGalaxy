@@ -9,6 +9,24 @@
   var CFG = MG.config.camera;
 
   function createCamera() {
+    /* ⭐ 「可用画布」的内缩：左栏（图例导航）、底部说明条、右侧详情抽屉。
+       以前视口中心一律 = viewW/2, viewH/2，于是「适配全部」把图的左半边画到面板背后
+       （用户 2026-10-17 报的「图有一截藏在侧栏后面」）。
+       内缩由 app 量 DOM **实体**（getBoundingClientRect / display）后 setInsets 传进来 ——
+       引擎不认识界面，也不该猜宽度。
+       ⛔ 可用矩形只在这里算一处：renderer.fitZoom() 的 k₀ 也必须读 availRect()，
+          两处各算一遍就会像 layout.stat.radius / background.paintRegion 那样漂。 */
+    var insets = { left: 0, right: 0, top: 0, bottom: 0 };
+
+    function availRect() {
+      var w = Math.max(40, cam.viewW - insets.left - insets.right);
+      var h = Math.max(40, cam.viewH - insets.top - insets.bottom);
+      return {
+        x0: insets.left, y0: insets.top, w: w, h: h,
+        cx: insets.left + w / 2, cy: insets.top + h / 2
+      };
+    }
+
     var cam = {
       k: 1, tx: 0, ty: 0,
       viewW: 1, viewH: 1,
@@ -19,6 +37,19 @@
       setViewport: function (w, h) {
         cam.viewW = w; cam.viewH = h;
       },
+
+      /** 设置面板内缩（屏幕像素）。缺省 0 ⇒ 与旧行为完全一致。 */
+      setInsets: function (o) {
+        o = o || {};
+        insets = {
+          left: Math.max(0, +o.left || 0), right: Math.max(0, +o.right || 0),
+          top: Math.max(0, +o.top || 0), bottom: Math.max(0, +o.bottom || 0)
+        };
+      },
+      insets: function () {
+        return { left: insets.left, right: insets.right, top: insets.top, bottom: insets.bottom };
+      },
+      availRect: availRect,
 
       toScreen: function (wx, wy) {
         return { x: wx * cam.k + cam.tx, y: wy * cam.k + cam.ty };
@@ -54,21 +85,23 @@
         cam._anim = null;
       },
 
-      /** 把世界坐标点移到屏幕中心 */
+      /** 把世界坐标点移到**可用区**中心（扣掉面板之后） */
       centerOn: function (wx, wy) {
-        cam.tx = cam.viewW / 2 - wx * cam.k;
-        cam.ty = cam.viewH / 2 - wy * cam.k;
+        var av = availRect();
+        cam.tx = av.cx - wx * cam.k;
+        cam.ty = av.cy - wy * cam.k;
       },
 
-      /** 让世界矩形 bbox 适配视口 */
+      /** 让世界矩形 bbox 适配**可用区** */
       fit: function (bbox, padding) {
+        var av = availRect();
         var pad = padding == null ? CFG.fitPadding : padding;
         // 小屏幕上别让留白吃掉整个视野
-        pad = Math.min(pad, Math.min(cam.viewW, cam.viewH) * 0.18);
+        pad = Math.min(pad, Math.min(av.w, av.h) * 0.18);
         var w = Math.max(1, bbox.maxX - bbox.minX);
         var h = Math.max(1, bbox.maxY - bbox.minY);
-        var availW = Math.max(40, cam.viewW - pad * 2);
-        var availH = Math.max(40, cam.viewH - pad * 2);
+        var availW = Math.max(40, av.w - pad * 2);
+        var availH = Math.max(40, av.h - pad * 2);
         var k = Math.min(availW / w, availH / h);
         k = U.clamp(k, Math.max(CFG.minZoom, CFG.fitMinZoom),
           Math.min(CFG.maxZoom, CFG.maxFitZoom));
@@ -80,9 +113,10 @@
       /** 平滑移动到目标视角；target = {k, cx, cy}（cx,cy 为世界中心） */
       animateTo: function (target, ms) {
         var k0 = cam.k, tx0 = cam.tx, ty0 = cam.ty;
+        var av = availRect();
         var k1 = U.clamp(target.k == null ? cam.k : target.k, CFG.minZoom, CFG.maxZoom);
-        var tx1 = target.cx != null ? cam.viewW / 2 - target.cx * k1 : cam.tx;
-        var ty1 = target.cy != null ? cam.viewH / 2 - target.cy * k1 : cam.ty;
+        var tx1 = target.cx != null ? av.cx - target.cx * k1 : cam.tx;
+        var ty1 = target.cy != null ? av.cy - target.cy * k1 : cam.ty;
         cam._anim = { t0: now(), dur: ms == null ? CFG.animateMs : ms, k0: k0, tx0: tx0, ty0: ty0, k1: k1, tx1: tx1, ty1: ty1 };
       },
 

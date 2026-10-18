@@ -96,6 +96,9 @@
       visible: [],
       focus: null,
       hover: null,
+      /* 搜索命中的节点（id → 1）：渲染器按「选中 → 搜索命中 → 本档主名」排标签。
+         ⚠️ 只是**本帧的标签优先级**，不影响显隐、不改图。 */
+      searchIds: null,
       isNodeVisible: vis.isNodeVisible,
       isNodeRead: reads.isRead,
       showReadMarks: reads.isShowMarks
@@ -213,6 +216,36 @@
     }
 
     /* ------------------------------------------------------------ 尺寸 */
+    /* ⭐ 可用画布：扣掉**挡在画布上**的左栏（#legend）与底部说明条（#hint）。
+       判据一律是 DOM **实体**（getBoundingClientRect 的宽高），不是 class 名：
+         · 设置里把图例 / 说明关掉 ⇒ display:none ⇒ 矩形 0×0 ⇒ 不扣；
+         · 图例折叠 / 说明条 details 展开，高度会变 ⇒ 每次用前现量。
+       右侧详情抽屉**不在这里** —— 它由 panelInset() 在 targetFor/ensureCenter 里补，
+       两处都加会扣两次。
+       ⚠️ 窄屏要设上限：手机上图例几乎占满宽度，全扣掉会把图缩成一条。 */
+    function uiInsets() {
+      var out = { left: 0, right: 0, top: 0, bottom: 0 };
+      /* ⚠️ 开页时 applyUI / syncNarrowLegend 都在 resize() 之前跑，cam.viewW 还是 1 ——
+         这时用 window.innerWidth（同一块视口，不是代理指标）。 */
+      var vw = cam.viewW > 1 ? cam.viewW : global.innerWidth;
+      var vh = cam.viewH > 1 ? cam.viewH : global.innerHeight;
+      if (legendEl) {
+        var r = legendEl.getBoundingClientRect();
+        if (r.width > 1 && r.height > 1) {
+          out.left = Math.round(Math.min(vw * 0.45, r.right + 8));
+        }
+      }
+      if (hintEl) {
+        var hr = hintEl.getBoundingClientRect();
+        if (hr.width > 1 && hr.height > 1) {
+          out.bottom = Math.round(Math.min(vh * 0.40, vh - hr.top + 8));
+        }
+      }
+      return out;
+    }
+    /** 把最新内缩交给相机（相机再传给 renderer 的 fitZoom ⇒ k₀ 同一口径） */
+    function syncInsets() { cam.setInsets(uiInsets()); }
+
     function resize() {
       var s = renderer.resize();
       dpr = s.dpr;
@@ -220,6 +253,7 @@
       cloudEl.height = Math.max(1, Math.round(s.h * dpr));
       readEl.width = Math.max(1, Math.round(s.w * dpr));
       readEl.height = Math.max(1, Math.round(s.h * dpr));
+      syncInsets();
       requestDraw();
     }
     global.addEventListener('resize', resize);
@@ -295,10 +329,14 @@
     }
 
     function ensureCenter(pt) {
+      syncInsets();                       // 面板可能刚展开/收起，先重量一次
       var inset = panelInset();
+      var ins = cam.insets();             // 左栏 / 底部说明条
       var p = cam.toScreen(pt.x, pt.y);
-      var outside = p.x < 90 || p.x > cam.viewW - 90 - inset.x ||
-        p.y < 110 || p.y > cam.viewH - 90 - inset.y;
+      /* ⚠️ 判据要用**可用区**：左栏 300px 宽，若仍按 p.x < 90 判，落在栏后的点
+         会被当成「已经在视野里」，跳转过去什么也看不到（用户报的就是这个）。 */
+      var outside = p.x < ins.left + 70 || p.x > cam.viewW - 90 - inset.x ||
+        p.y < 110 || p.y > cam.viewH - 90 - inset.y - ins.bottom;
       if (!outside) return;
       cam.animateTo(centerTargetFor(pt));
     }
@@ -314,13 +352,15 @@
 
     /** 让一个世界矩形铺满可视区（右侧留给面板），返回相机目标 */
     function targetFor(bb, padding, maxZoom) {
+      syncInsets();
       var inset = panelInset();
+      var av = cam.availRect();             // 已扣掉左栏 / 底部说明条
       // 小屏幕上把留白收窄，否则整张图会缩得看不动
-      var pad = Math.min(padding, Math.min(cam.viewW, cam.viewH) * 0.18);
+      var pad = Math.min(padding, Math.min(av.w, av.h) * 0.18);
       var w = Math.max(40, bb.maxX - bb.minX);
       var h = Math.max(40, bb.maxY - bb.minY);
-      var availW = Math.max(80, cam.viewW - pad * 2 - inset.x);
-      var availH = Math.max(80, cam.viewH - pad * 2 - inset.y);
+      var availW = Math.max(80, av.w - pad * 2 - inset.x);
+      var availH = Math.max(80, av.h - pad * 2 - inset.y);
       var k = U.clamp(Math.min(availW / w, availH / h),
         Math.max(C.camera.minZoom, C.camera.fitMinZoom),
         Math.min(C.camera.maxZoom, maxZoom == null ? C.camera.maxFitZoom : maxZoom));
@@ -640,7 +680,14 @@
     /* ---------------------------------------------------------- 搜索 */
     var search = MG.createSearch(searchBox, searchInput, searchResults, view, {
       onNode: function (id) { focusNode(id, { force: true }); },
-      onRegion: function (rid) { fitRegion(rid); }
+      onRegion: function (rid) { fitRegion(rid); },
+      /* 结果列表变了就把命中 id 交给渲染器（只用于标签占位优先级）。 */
+      onHits: function (ids) {
+        var map = Object.create(null);
+        (ids || []).forEach(function (id) { map[id] = 1; });
+        view.searchIds = map;
+        requestDraw();
+      }
     });
     search.reindex();
 
@@ -661,6 +708,12 @@
         C.exploreMode = !C.exploreMode;
         btn.classList.toggle('on', C.exploreMode);
         renderLegend();
+        requestDraw();
+      } else if (act === 'toggle-alledges') {
+        /* ⭐ 2026-10-17：`showAllEdges` 早就被两条闸门读着（逐条跨团长线 /
+           跨板块聚合线），但一直没有入口。这里只改这个开关，不新增渲染路径。 */
+        C.showAllEdges = !C.showAllEdges;
+        btn.classList.toggle('on', C.showAllEdges);
         requestDraw();
       } else if (act === 'toggle-labels') {
         C.showLabels = !C.showLabels;
@@ -770,6 +823,8 @@
       for (var i = 0; i < boxes.length; i++) {
         boxes[i].checked = !hid[boxes[i].getAttribute('data-ui')];
       }
+      /* 关掉 / 打开图例与说明条会改变可用画布 ⇒ 重新量内缩（顺带让 LOD 的 k₀ 跟上）。 */
+      if (cam.viewW > 1) { syncInsets(); requestDraw(); }
     }
     function toggleUI(k, visible) {
       var hid = uiHidden();
@@ -937,6 +992,25 @@
     function regionNodes(id) {
       return graph.nodes.filter(function (n) { return n.regions.indexOf(id) >= 0; });
     }
+    /** 一个**大板块**里的全部节点（各领域求并集 —— 跨领域节点只算一次） */
+    function sectorNodes(sid) {
+      var s = (graph.sectors || []).filter(function (x) { return x.id === sid; })[0];
+      if (!s) return [];
+      var seen = Object.create(null), out = [];
+      s.regions.forEach(function (r) {
+        regionNodes(r.id).forEach(function (n) {
+          if (seen[n.id]) return;
+          seen[n.id] = 1; out.push(n);
+        });
+      });
+      return out;
+    }
+
+    /* 图例三级折叠状态：**大板块默认展开、领域默认收起**。
+       ⚠️ 只存内存，不写 localStorage —— 这是「临时看一眼」的展开，不是长期偏好。 */
+    var legendFold = { sec: Object.create(null), reg: Object.create(null) };
+    function sectorOpen(id) { return legendFold.sec[id] !== false; }
+    function regionOpen(id) { return legendFold.reg[id] === true; }
 
     /**
      * 一个可点的开关芯片。
@@ -960,9 +1034,7 @@
     }
 
     function renderLegend() {
-      var regions = graph.regions || [];
       var types = T.typeOrder || Object.keys(T.nodeTypes || {});
-      var live = regions.filter(function (r) { return r.stat; });
       var total = graph.nodes.length;
       var shown = vis.visibleCount();
 
@@ -992,27 +1064,64 @@
               (C.exploreMode ? '' : tf('（点右上角「探索」显示）'))) + '</em></span>'
           : '');
 
-      /* ---------- 数学板块：星系 + 它下面的星团（缩进一层） ---------- */
-      var regionRows = live.map(function (r) {
-        var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
-        var rname = MG.regionName(r);
+      /* ---------- 数学板块：**大板块 → 领域 → 星团**（三级折叠） ----------
+         ⭐ 2026-10-17：原来是「领域 → 星团」两层平铺，60 个团全摊开 ⇒ 图例占掉
+            17% 的屏幕还得滚动。改成三级：
+              · 大板块默认**展开**（于是能一眼看到 9 个领域的分布）；
+              · 领域默认**收起**（团名要单独点开）；
+              · 每一项都保留原来的开关芯片（data-vs / data-vr / data-vc）——
+                点色块 = 显示/隐藏整块，点名字 = 跳过去看，点三角 = 折叠。
+            ⛔ 折叠状态只存在内存里（刷新回默认），不写 localStorage：
+               这是「看一眼就走」的临时展开，不是用户的长期偏好。 */
+      var liveSectors = (graph.sectors || []).filter(function (s) {
+        return !s.empty && s.regions && s.regions.length;
+      });
+      var sectorRows = liveSectors.map(function (s) {
+        var rs = s.regions.filter(function (r) { return r.stat; });
+        if (!rs.length) return '';
+        var sname = s.nameShow || s.name;
+        var sOpen = sectorOpen(s.id);
         var head = togChip({
-          label: rname, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
-          attr: 'data-vr="' + r.id + '"',
-          tip: tf('点色块：显示 / 隐藏整个「{名}」；点名字：跳过去看', { 名: rname }),
-          nav: r.id, navTip: tf('跳过去看「{名}」', { 名: rname })
+          label: sname, color: U.mixWithWhite(s.color, 0.30), list: sectorNodes(s.id),
+          attr: 'data-vs="' + s.id + '"',
+          tip: tf('点色块：显示 / 隐藏整个「{名}」（{n} 个领域）；点三角：展开 / 收起', {
+            名: sname, n: rs.length
+          })
         });
-        if (!mine.length) return head;
-        var kids = mine.map(function (c) {
-          var cname = MG.clusterName(c);
-          return togChip({
-            label: cname, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
-            attr: 'data-vc="' + c.id + '"', round: true,
-            tip: tf('点圆点：显示 / 隐藏「{名}」；点名字：跳过去看', { 名: cname }),
-            nav: c.id, navTip: tf('跳过去看「{名}」', { 名: cname })
+        var regs = rs.map(function (r) {
+          var mine = graph.clusters.filter(function (c) { return c.parent === r.id && c.stat; });
+          var rname = MG.regionName(r);
+          var rOpen = regionOpen(r.id);
+          var rhead = togChip({
+            label: rname, color: U.mixWithWhite(r.color, 0.45), list: regionNodes(r.id),
+            attr: 'data-vr="' + r.id + '"',
+            tip: tf('点色块：显示 / 隐藏整个「{名}」；点名字：跳过去看', { 名: rname }),
+            nav: r.id, navTip: tf('跳过去看「{名}」', { 名: rname })
           });
+          var kids = '';
+          if (mine.length && rOpen) {
+            kids = '<span class="lg-kids">' + mine.map(function (c) {
+              var cname = MG.clusterName(c);
+              return togChip({
+                label: cname, color: U.mixWithWhite(c.color || r.color, 0.62), list: c.nodes,
+                attr: 'data-vc="' + c.id + '"', round: true,
+                tip: tf('点圆点：显示 / 隐藏「{名}」；点名字：跳过去看', { 名: cname }),
+                nav: c.id, navTip: tf('跳过去看「{名}」', { 名: cname })
+              });
+            }).join('') + '</span>';
+          }
+          return '<div class="lg-reg' + (kids ? ' open' : '') + '">' +
+            '<div class="lg-reg-head">' +
+            '<span class="lg-fold" data-vr-open="' + r.id + '" title="' +
+            U.escapeHtml(rOpen ? tf('收起这个领域的星团') : tf('展开这个领域的星团')) + '">' +
+            (rOpen ? '▾' : '▸') + '</span>' + rhead + '</div>' + kids + '</div>';
         }).join('');
-        return head + '<span class="lg-kids">' + kids + '</span>';
+        return '<div class="lg-sec' + (sOpen ? ' open' : '') + '">' +
+          '<div class="lg-sec-head">' +
+          '<span class="lg-fold" data-vs-open="' + s.id + '" title="' +
+          U.escapeHtml(sOpen ? tf('收起这个大板块的领域') : tf('展开这个大板块的领域')) + '">' +
+          (sOpen ? '▾' : '▸') + '</span>' + head + '</div>' +
+          (sOpen ? '<div class="lg-regs">' + regs + '</div>' : '') + '</div>';
       }).join('');
 
       var hidden = total - shown;
@@ -1102,7 +1211,7 @@
         '<div class="lg-row lg-layers">' + layerChips + '</div></div>' +
         subGroup +
         '<div class="lg-group"><div class="lg-title">' + U.escapeHtml(tf('数学板块')) + '</div>' +
-        '<div class="lg-row">' + regionRows + '</div></div>' +
+        '<div class="lg-sectors">' + sectorRows + '</div></div>' +
         exportGroup +
         '<div class="lg-hint">' + U.escapeHtml(legendHint) + '</div>' +
         '</div>';
@@ -1135,6 +1244,24 @@
       if (t.closest('[data-toggle]')) {
         legendEl.classList.toggle('collapsed');
         saveLegendChoice();                     // 记住用户自己的选择（窄屏默认不覆盖它）
+        return;
+      }
+
+      /* 三级折叠的三角：只展开 / 收起，**不动显隐**（点色块才是显隐）。
+         ⚠️ 必须排在 [data-nav] / 芯片之前判：三角和芯片是同一行的兄弟节点，
+            但鼠标点到三角时 target 就是它，closest 不会串到芯片上。 */
+      var foldSec = t.closest('[data-vs-open]');
+      if (foldSec) {
+        var fsid = foldSec.getAttribute('data-vs-open');
+        legendFold.sec[fsid] = !sectorOpen(fsid);
+        renderLegend();
+        return;
+      }
+      var foldReg = t.closest('[data-vr-open]');
+      if (foldReg) {
+        var frid = foldReg.getAttribute('data-vr-open');
+        legendFold.reg[frid] = !regionOpen(frid);
+        renderLegend();
         return;
       }
 
@@ -1175,6 +1302,8 @@
       }
       chip = t.closest('[data-vr]');
       if (chip) toggleList(regionNodes(chip.getAttribute('data-vr')));
+      chip = t.closest('[data-vs]');
+      if (chip) toggleList(sectorNodes(chip.getAttribute('data-vs')));
     });
 
     /* 层号滑杆：拖的过程中只更新读数 + 过滤（不重画图例、不重新适配镜头），
@@ -1252,7 +1381,12 @@
       if (!det) return;
       var armed = false;
       setTimeout(function () { armed = true; }, 1200);
-      det.addEventListener('toggle', function () { if (armed) det.setAttribute('data-user', '1'); });
+      det.addEventListener('toggle', function () {
+        if (armed) det.setAttribute('data-user', '1');
+        /* 说明条展开 / 收起 ⇒ 底部内缩变了 ⇒ 相机可用区与 LOD 的 k₀ 都要跟上。 */
+        syncInsets();
+        requestDraw();
+      });
     })();
     syncNarrowLegend();
     window.addEventListener('resize', syncNarrowLegend);
@@ -1360,6 +1494,7 @@
         &hide=R:<星系>,C:<星团>,T:<类别>,<节点id>,…          藏起来的点：
                            能整块表达就整块，剩下的才写 id，所以整块开关的链接很短
         &dl=0 &lb=0 &ex=1  定义线 / 名字 / 探索（弱边）的开关
+        &ae=1              全部连线（跨星团长线 + 跨板块聚合线也画）
         &v=<k>,<cx>,<cy>   相机的缩放与世界中心（写的时候按屏幕中心算，换窗口也对得上）
         &fps=1             右下角显示诊断角标（帧耗时 / 连线层耗时 / dpr / canvas 尺寸）
 
@@ -1388,9 +1523,13 @@
     function enc(s) { return encodeURIComponent(String(s)); }
     function dec(s) { try { return decodeURIComponent(String(s)); } catch (e) { return String(s); } }
 
-    /** 屏幕中心的世界坐标（相机存中心而不是 tx/ty，换个窗口大小也还原得对） */
+    /** 相机「看得见的那块」的世界中心（相机存中心而不是 tx/ty，换个窗口大小也还原得对）
+        ⚠️ 必须用**可用区**中心（cam.availRect().cx），不是视口中心：
+           相机现在把世界点对到可用区中心，URL 里若按视口中心写，
+           带面板时一进一出就会整体偏移 160px。 */
     function camCenter() {
-      return { x: (cam.viewW / 2 - cam.tx) / cam.k, y: (cam.viewH / 2 - cam.ty) / cam.k };
+      var av = cam.availRect();
+      return { x: (av.cx - cam.tx) / cam.k, y: (av.cy - cam.ty) / cam.k };
     }
     function camSig() {
       var c = camCenter();
@@ -1432,6 +1571,7 @@
       if (!C.showDefinitionLines) p.push('dl=0');
       if (!C.showLabels) p.push('lb=0');
       if (C.exploreMode) p.push('ex=1');
+      if (C.showAllEdges) p.push('ae=1');
       var hide = hideTokens();
       if (hide.length) p.push('hide=' + hide.join(','));
       if (fpsHud) p.push('fps=1');       // 诊断角标开着 → 让它留在 URL 里（刷新、分享都还在）
@@ -1516,7 +1656,8 @@
     function syncToolbar() {
       var map = {
         'toggle-defs': C.showDefinitionLines, 'toggle-labels': C.showLabels,
-        'toggle-explore': C.exploreMode, 'toggle-trunk': trunkOnly, 'toggle-wheel': C.wheelZooms
+        'toggle-explore': C.exploreMode, 'toggle-trunk': trunkOnly, 'toggle-wheel': C.wheelZooms,
+        'toggle-alledges': C.showAllEdges
       };
       Object.keys(map).forEach(function (act) {
         var btn = toolbar.querySelector('[data-act="' + act + '"]');
@@ -1539,7 +1680,8 @@
       if (!Object.keys(kv).length) return false;
       var hasCam = !!kv.v;
       var isView = hasCam || kv.ly != null || kv.tr != null || kv.sub != null ||
-        kv.hide != null || kv.dl != null || kv.lb != null || kv.ex != null;
+        kv.hide != null || kv.dl != null || kv.lb != null || kv.ex != null ||
+        kv.ae != null;
       if (!isView && kv.n == null && kv.e == null && kv.r == null && kv.c == null) return false;
 
       hashState.applying = true;
@@ -1551,6 +1693,7 @@
           C.showDefinitionLines = kv.dl != null ? dec(kv.dl) !== '0' : true;
           C.showLabels = kv.lb != null ? dec(kv.lb) !== '0' : true;
           C.exploreMode = kv.ex != null ? dec(kv.ex) === '1' : false;
+          C.showAllEdges = kv.ae != null ? dec(kv.ae) === '1' : false;
 
           var ly = kv.ly != null ? parseInt(dec(kv.ly), 10) : NaN;
           setLayerMax(isFinite(ly) ? ly : null);
@@ -1902,6 +2045,8 @@
       }
       syncToolbar();
       renderLegend();
+      // 图例 / 说明条的高度是上面两行才定下来的 ⇒ 适配前重量一次可用矩形
+      syncInsets();
       // 上次藏了一批点（或开着主干模式）→ 开局就只把「还看得见的那些」铺满屏幕
       var live = visibleNodes();
       var bb = (live.length && live.length < graph.nodes.length) ? bboxOf(live) : graph.bbox();

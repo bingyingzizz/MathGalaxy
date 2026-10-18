@@ -29,6 +29,7 @@ MG.uiEn = {
     '定义线': 'Def. lines',
     '名称': 'Names',
     '探索': 'Explore',
+    '全部连线': 'All edges',
     '滚轮·缩放': 'Wheel: zoom',
     '滚轮·平移': 'Wheel: pan',
     '放大（+）': 'Zoom in (+)',
@@ -40,6 +41,8 @@ MG.uiEn = {
     '显示 / 隐藏节点名称': 'Show / hide node names',
     '探索模式：把「类比」这类弱边提亮（平时压得很淡）':
       'Explore mode: brighten weak edges such as analogies (kept very faint otherwise)',
+    '全部连线：连跨星团、跨板块的长线也画出来（远看会更密；平时只在放大后出现）':
+      'All edges: also draw cross-cluster and cross-field long edges (denser when zoomed out; normally they appear only after zooming in)',
     '滚轮：缩放 ⇄ 平移': 'Wheel: zoom ⇄ pan',
     '界面语言：中文 / English —— 点一下切成英文':
       'Interface language: Chinese / English — click to switch to English',
@@ -121,6 +124,13 @@ MG.uiEn = {
     '点色块：显示 / 隐藏整个「{名}」；点名字：跳过去看':
       'Click the swatch to show / hide all of “{名}”; click the name to jump there',
     '跳过去看「{名}」': 'Jump to “{名}”',
+    /* 三级折叠（大板块 → 领域 → 星团）的三角按钮 */
+    '展开这个大板块的领域': 'Expand the fields of this sector',
+    '收起这个大板块的领域': 'Collapse the fields of this sector',
+    '展开这个领域的星团': 'Expand the clusters of this field',
+    '收起这个领域的星团': 'Collapse the clusters of this field',
+    '点色块：显示 / 隐藏整个「{名}」（{n} 个领域）；点三角：展开 / 收起':
+      'Click the swatch to show / hide all of “{名}” ({n} fields); click the triangle to expand / collapse',
     '第 {n} 层（{k} 个）：{名}': 'Layer {n} ({k}): {名}',
     '拖动：只显示「离地基不超过 k 步」的点。': 'Drag: keep only points within k steps of the foundations. ',
     '不限层数（全部 {n} 个点）': 'No layer limit (all {n} nodes)',
