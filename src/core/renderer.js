@@ -1330,8 +1330,10 @@
         /* 定义引用线**不跟着放大**（89% 的线都是它）。放大后如果它也变粗，
            整个画面会被蓝网盖住；「定义线降权」的既定口径不能破。 */
         var w = C.edge.definitionWidth * (active ? 1.85 : 1);
-        var spineOnly = spine && lodA.nodeEdge < 0.9;
-        if (spineOnly) { a *= 0.55 + 0.45 * lodA.nodeEdge; w = 1.25; }
+        /* ⛔ 2026-10-19：定义引用线**永远用蓝**。原来 spineOnly（低缩放下 nodeEdge<0.9）会把
+           定义线改画成主干色（T.spineColor 橙棕，低透明下看着就是黑的）—— 于是同一条定义线
+           在全景是黑的、放大才变蓝（用户报）。主干强调只属于推出/等价，不该接管定义线。 */
+        var spineOnly = false;
         var color = spineOnly
           ? U.rgba(T.spineColor || 'B4661A', a)
           : 'rgba(' + style.color + ',' + ((style.alpha != null ? style.alpha : 1) * a).toFixed(3) + ')';
