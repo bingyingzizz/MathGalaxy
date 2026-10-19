@@ -61,12 +61,12 @@
     (graph.regions || []).forEach(function (reg) {
       if (!reg.stat) return;
       var rgb0 = U.hexToRgb(reg.color || '#7A8699');
-      var pr0 = Math.max(4, reg.stat.radius * 1.15 * scx);
+      var pr0 = Math.max(4, reg.stat.radius * 0.72 * scx);
       var px0 = (reg.stat.cx - minX) * scx, py0 = (reg.stat.cy - minY) * scy;
       var g0 = ctxC.createRadialGradient(px0, py0, 0, px0, py0, pr0);
       var s0 = rgb0.r + ',' + rgb0.g + ',' + rgb0.b + ',';
-      g0.addColorStop(0, 'rgba(' + s0 + '0.16)');
-      g0.addColorStop(0.55, 'rgba(' + s0 + '0.09)');
+      g0.addColorStop(0, 'rgba(' + s0 + '0.10)');
+      g0.addColorStop(0.55, 'rgba(' + s0 + '0.055)');
       g0.addColorStop(1, 'rgba(' + s0 + '0)');
       ctxC.fillStyle = g0;
       ctxC.beginPath(); ctxC.arc(px0, py0, pr0, 0, Math.PI * 2); ctxC.fill();

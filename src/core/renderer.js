@@ -1296,6 +1296,10 @@
         var e = g.edge, style = T.edgeStyles.definition;
         var spine = isSpine(e);
         var active = isEdgeActive(g);
+        /* ⛔ 2026-10-19 性能回退：全景/中景画**全部** 1244 条定义线，每帧都在描
+           曲线（约 0.05ms/条 ⇒ 一帧几十毫秒）。这一档只保留「主干」（至少一端是
+           hub/trunk 的定义引用），近景（r≥2.8）才全画。观感仍是蓝色雾网，成本降到 1/6。 */
+        if (!active && !C.showAllEdges && (lodA.rRel || 1) < 2.8 && !spine) return;
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
         /* ⭐ 2026-10-19：全景/中景同样顶一个下限 —— 定义线占 89%，不顶就「只有推出线」 */
