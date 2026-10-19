@@ -3968,6 +3968,21 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     ctxW.globalCompositeOperation = 'lighter';
     var scx = CW / w, scy = CH / h;
     var drawn = 0;
+    /* ⭐ 2026-10-19：**领域大云**这一层（5a840a9 配方里最关键的一层，之前漏了）。
+       每节点小雾只够做颗粒；整块领域的色底要靠这一层，两层叠起来才是连续渐变。 */
+    (graph.regions || []).forEach(function (reg) {
+      if (!reg.stat) return;
+      var rgb0 = U.hexToRgb(reg.color || '#7A8699');
+      var pr0 = Math.max(4, reg.stat.radius * 1.15 * scx);
+      var px0 = (reg.stat.cx - minX) * scx, py0 = (reg.stat.cy - minY) * scy;
+      var g0 = ctxC.createRadialGradient(px0, py0, 0, px0, py0, pr0);
+      var s0 = rgb0.r + ',' + rgb0.g + ',' + rgb0.b + ',';
+      g0.addColorStop(0, 'rgba(' + s0 + '0.16)');
+      g0.addColorStop(0.55, 'rgba(' + s0 + '0.09)');
+      g0.addColorStop(1, 'rgba(' + s0 + '0)');
+      ctxC.fillStyle = g0;
+      ctxC.beginPath(); ctxC.arc(px0, py0, pr0, 0, Math.PI * 2); ctxC.fill();
+    });
     (graph.nodes || []).forEach(function (n) {
       if (!ok(n.id)) return;
       var rid = (n.regions && n.regions[0]) || '';
@@ -3997,17 +4012,13 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     var dC = ctxC.getImageData(0, 0, CW, CH).data;
     var dW = ctxW.getImageData(0, 0, CW, CH).data;
     var o = img.data;
-    var K = (bc.colorFieldK == null ? 1.4 : bc.colorFieldK);
+    /* ⭐ 2026-10-19：回到**加法叠加**（5a840a9 那套配方）——
+       不再做 alpha = 1−exp(−K·Σw) 的饱和压缩。饱和会把浓淡压平，
+       于是每一块地方都是一片均匀的色块；直接取画布叠加出来的 alpha，
+       才是「越靠中心越浓、越往外越淡」的连续过渡。 */
     for (var pi = 0; pi < o.length; pi += 4) {
-      var wsum = dW[pi + 3] / 255;
-      if (wsum < 0.004) { o[pi + 3] = 0; continue; }
-      /* ⚠️ getImageData 返回的是**已反预乘**的值（canvas 内部按预乘累加，读回时除以 alpha）——
-         所以颜色通道已经是 Σrgb·a/Σa，**不能再除一次 wsum**（第一版就多除了一次，
-         于是整张色场淡到几乎看不见）。这里直接用 dC，wsum 只用来算 alpha。 */
-      o[pi] = dC[pi];
-      o[pi + 1] = dC[pi + 1];
-      o[pi + 2] = dC[pi + 2];
-      o[pi + 3] = Math.round(255 * (1 - Math.exp(-K * wsum)));
+      o[pi] = dC[pi]; o[pi + 1] = dC[pi + 1]; o[pi + 2] = dC[pi + 2];
+      o[pi + 3] = dC[pi + 3];
     }
     octx.putImageData(img, 0, 0);
     var cdrawn = 0;
