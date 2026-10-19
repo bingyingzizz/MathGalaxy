@@ -494,6 +494,38 @@
     /* ⭐ 2026-10-19：**团级硬净空**。板块缝收到 0 之后，「不粘连」不能再靠留白保证 ——
        这里对团心做一遍圆盘碰撞（半径 = 团自己的 `_cap`），保证「挨着但不叠」。
        只推团心（节点锚点随后由团心算），不动板块、不动领域中心。无随机数。 */
+    /* ⭐ 2026-10-19 用户定稿：**跨领域星团**（次要领域成员 ≥15%）不再硬归一边 ——
+       圆心落在两个领域中心连线上（按成员比例插值），颜色按比例混合；
+       之后由 separateClusters 的硬净空把它嵌在两块之间，不重叠。 */
+    (function crossClusters() {
+      var HEX = '0123456789ABCDEF';
+      function hex2(r, g, b) {
+        var f = function (v) { return HEX[(v >> 4) & 15] + HEX[v & 15]; };
+        return '#' + f(r) + f(g) + f(b);
+      }
+      liveClusters.forEach(function (c) {
+        var cnt = Object.create(null), tot = 0;
+        c.nodes.forEach(function (nd) {
+          tot++;
+          (nd.regions || []).forEach(function (r) { cnt[r] = (cnt[r] || 0) + 1; });
+        });
+        var keys = Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a]; });
+        if (keys.length < 2) return;
+        if (cnt[keys[1]] / Math.max(1, tot) < 0.15) return;
+        var A = graph.regionById[keys[0]], B = graph.regionById[keys[1]];
+        if (!A || !B || !A.center || !B.center) return;
+        var t = cnt[keys[1]] / (cnt[keys[0]] + cnt[keys[1]]);
+        c.cross = [keys[0], keys[1]];
+        c.center = {
+          x: A.center.x * (1 - t) + B.center.x * t,
+          y: A.center.y * (1 - t) + B.center.y * t
+        };
+        var ca = U.hexToRgb(A.color || '#7A8699'), cb = U.hexToRgb(B.color || '#7A8699');
+        c.color = hex2(Math.round(ca.r * (1 - t) + cb.r * t),
+                       Math.round(ca.g * (1 - t) + cb.g * t),
+                       Math.round(ca.b * (1 - t) + cb.b * t));
+      });
+    })();
     (function separateClusters() {
       var list = liveClusters.filter(function (c) { return c.center && c._cap > 0; });
       var gap = cfg.clusterGap == null ? 24 : cfg.clusterGap;
@@ -765,6 +797,7 @@
       if (dd > 2000) _long.push({ d: Math.round(dd), id: e.id, kind: e.kind }); });
     _long.sort(function (x, y) { return y.d - x.d; });
     graph.layoutInfo = {
+      crossClusters: liveClusters.filter(function (c) { return !!c.cross; }).map(function (c) { return { id: c.id, cross: c.cross }; }),
       longEdges: _long.slice(0, 12),
       longCount: _long.length,
       longMax: _long.length ? _long[0].d : 0,
