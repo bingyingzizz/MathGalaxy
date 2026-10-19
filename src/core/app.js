@@ -213,7 +213,11 @@
         }
         /* Phase A：位图图层承担静态部分 ⇒ 实时层只画标签/hover/光晕。
            位置与缩放由 bitmap 自己按相机写 transform（吸附到设备像素网格）。 */
-        var useBmp = bitmap ? bitmap.tick(c, dpr, paintKey()) : false;
+        /* ⭐ 2026-10-19：**相机在动就不烘焙**。平板上单带烘焙 20.6ms，拖动时每帧都在烘
+           ⇒ 15~25fps（fps=1 角标实测：绘制 6.2ms / 其余 27.6ms，全在烘）。
+           交互期间沿用上一代位图（清晰度略降、位置正确），停稳后再补。
+         注意：这里不 tick 时位图图层留着上一帧的图，不会闪空。 */
+        var useBmp = bitmap ? (animating ? !!lastUseBmp : bitmap.tick(c, dpr, paintKey())) : false;
         lastUseBmp = useBmp;
         renderer.setStaticHidden(useBmp);
         renderer.setGlowLive(useBmp);

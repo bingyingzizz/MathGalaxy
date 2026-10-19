@@ -153,6 +153,10 @@
          2026-10-17 给相机加了内缩之后，这里必须跟着读 availRect()，
          否则 {rel:…} 的阈值全部和「用户看到的那一档」错位
          （正是 config 注释里那条铁律：同一个量不许在两个文件里各算一遍）。 */
+      /* ⛔ 2026-10-19：LOD 基准改用**整个视口**，不再扣 UI 边距。平板图上实测：
+         1200×640 的视口被扣掉 330 宽图例 + 2×130 padding 之后 k₀ 掉到 ≈0.04，
+         而相机实际停在 0.060 ⇒ r=k/k₀ 被抬到 1.5，全景漏出节点与推出线。
+         基准只该回答「内容铺满一屏是多少」，不该跟着 UI 覆盖率漂。 */
       var av = (typeof c.availRect === 'function') ? c.availRect() : { w: vw, h: vh };
       var key = [bb.minX, bb.minY, bb.maxX, bb.maxY, vw, vh, av.w, av.h].join(',');
       if (key === fitKKey) return fitKCache;
