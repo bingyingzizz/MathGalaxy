@@ -66,6 +66,9 @@
          「不粘连」不能再靠留白保证 —— 由布局末尾的团级圆盘碰撞来保证。
          ⛔ 它只推团心（半径 = 团自己的 _cap），不动板块、不动领域。 */
       clusterGap: 24,
+      /* ⭐ 2026-10-19：领域中心改由**跨领域边权**求解（见 layout.js 的 solveRegionCenters）。
+         打开后 packSectors 整段跳过 —— 两条规则会打架。regions.js 的 center 降级成初始锚。 */
+      regionSolve: true,
 
       temp0: 62,                  // 初始温度（同时是每步位移上限）
       temp1: 0.5,                 // 终止温度
