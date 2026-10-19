@@ -1433,7 +1433,10 @@
             if (sp.x >= 0 && sp.x <= W && sp.y >= 0 && sp.y <= H) inside++;
           }
           if (inside === 0) return;
-          if (inside === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
+          /* ⭐ 2026-10-19：定义线**不按屏幕长度衰减** —— 长定义边在深缩放下 lenPx 上下、
+             指数一乘就归零，于是「群在视窗里、另一端在屏外」时整条线消失（用户报）。
+             非定义线保留这条（它本来就短，衰减只是防糊）。 */
+          if (inside === 1 && e.kind !== 'definition') a *= Math.exp(-(g.lenPx || 0) / 320);
           /* ⛔ 两端都在屏内但横穿整屏的线同样算「长线」—— 原来只在 inside===1 时衰减，
              于是屏内一条 1200px 的蓝线永远活着（用户截图里那几条就是它）。 */
           /* ⛔ 2026-10-19：近景的长线**不留下限**。原来 max(0.03,…) 会让 0.8×0.03=0.024
@@ -1789,22 +1792,7 @@
       if (e.kind === 'definition' && !C.showDefinitionLines) return false;
       if (GU.isWeak(e) && !C.exploreMode) return false;
       if (r < 1.35 && e.kind !== 'definition') return false;   // 全景不画黑线
-      if (r >= 2.8) {
-        var ids = GU.edgeNodes(e), inside = 0;
-        for (var i = 0; i < ids.length; i++) {
-          var nd = view.graph.byId[ids[i]];
-          if (!nd) continue;
-          var p = w2s(nd.x, nd.y);
-          if (p.x >= 0 && p.x <= W && p.y >= 0 && p.y <= H) inside++;
-        }
-        if (inside === 0) return false;
-      }
-      /* 长线衰减到 0.06 以下就等于没画（与绘制端同一个阈值） */
-      if ((g.lenPx || 0) > 200) {
-        var f = Math.exp(-((g.lenPx || 0) - 200) / 55);
-        if (0.34 * f <= 0.06) return false;
-      }
-      return true;
+
     }
     /* ⭐ 2026-10-19：长线降权改回**世界长度**（用户报：同一条线越放大越长、越淡、最后消失，
        而它两头都在视野里）。屏幕长度的惩罚由「一端在屏外」那一支负责，这里只看世界长度，
