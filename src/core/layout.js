@@ -356,6 +356,9 @@
           wt[kk] = (wt[kk] || 0) + 1;
         }
       });
+      var wsum0 = 0, wn0 = 0;
+      Object.keys(wt).forEach(function (k2) { wsum0 += wt[k2]; wn0++; });
+      var wMean = wn0 ? wsum0 / wn0 : 1;
       var c0x = 0, c0y = 0;
       regs.forEach(function (r) { c0x += r.center.x; c0y += r.center.y; });
       c0x /= regs.length; c0y /= regs.length;
@@ -369,7 +372,10 @@
             var d = Math.sqrt(dx * dx + dy * dy) || 0.01, ux = dx / d, uy = dy / d;
             var key = A.id < B.id ? A.id + '|' + B.id : B.id + '|' + A.id;
             var w = wt[key] || 0, touch = A._cap + B._cap + 8;
-            if (w) { var pull = (d - touch) * 0.05 * Math.min(1, w / 6); fx += ux * pull; fy += uy * pull; }
+            /* ⭐ 2026-10-19：权重不封顶 —— 原来 min(1, w/6) 让「一条 4400 长的强边」只拿到
+               0.5 的权重，等于承认它不重要。现在按「相对平均权重」放大（上限 3×），
+               强关系优先被拉近，长边清单才降得下来。 */
+            if (w) { var mul = Math.min(3, w / Math.max(1, wMean)); var pull = (d - touch) * 0.05 * mul; fx += ux * pull; fy += uy * pull; }
             if (d < touch) { var push = (touch - d) * 0.25; fx -= ux * push; fy -= uy * push; }
           });
           fx += (c0x - A.center.x) * 0.002; fy += (c0y - A.center.y) * 0.002;
@@ -750,7 +756,18 @@
     /* 回执用：松弛诊断 / 总耗时（⛔ 不含随机，跑几次都一样） */
     var bb0 = graph.bbox();
     graph.layoutMs = Math.round(layoutNow() - tAll);
+    /* ⭐ 长边巡检（2026-10-19）：布局是否局部性良好，用「超过 2000 世界单位的边」验收，
+       不再靠肉眼发现。看 graph.layoutInfo.longEdges。 */
+    var _long = [];
+    graph.edges.forEach(function (e) { var ids = MG.graphUtil.edgeNodes(e); if (ids.length < 2) return;
+      var a = graph.byId[ids[0]], b = graph.byId[ids[1]]; if (!a || !b) return;
+      var dd = U.dist(a.x, a.y, b.x, b.y);
+      if (dd > 2000) _long.push({ d: Math.round(dd), id: e.id, kind: e.kind }); });
+    _long.sort(function (x, y) { return y.d - x.d; });
     graph.layoutInfo = {
+      longEdges: _long.slice(0, 12),
+      longCount: _long.length,
+      longMax: _long.length ? _long[0].d : 0,
       condPlace: condPlace,
       cond: condInfo,
       ranIters: ranIters,
