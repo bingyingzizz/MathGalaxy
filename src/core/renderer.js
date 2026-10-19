@@ -235,7 +235,8 @@
       var floor = C.edge.definitionMidScale == null ? 0.60 : C.edge.definitionMidScale;
       lodA.defDim = 1 - (1 - floor) * mid;
       /* ⭐⭐ 2026-10-18 Stage 1b：闸门换 **r = k / kFit**（与缩放尺度无关）。
-         绝对 k 在 organic 里会误判 ⇒ 全景把节点名全放出来（labelCount=92）。 */
+         绝对 k 会把「适配全部」和「放大到某个 k」混为一谈：世界盒一变，
+         同样的 k 就是另一个缩放档，全景反而把节点名全放出来（labelCount=92）。 */
       var kFit0 = 0;
       kFit0 = (view.kFit0 > 0) ? view.kFit0 : (function () { try { return fitZoom(); } catch (e) { return 0; } })();
       var rRel = kFit0 > 0 ? k / kFit0 : 1;
@@ -926,12 +927,8 @@
     }
 
     /* ------------------------------------------------ 大板块名（最远视角） */
-    /* 板块落在哪：**成员领域 stat 重心的加权平均**（按节点数加权）。
-       Stage 1 只读现有重心，不动布局；Stage 2 会改成 sectors.js 里手写的 center。 */
+    /* 板块落在哪：**成员领域 stat 重心的加权平均**（按节点数加权）。 */
     function sectorAnchor(s) {
-      /* organic 布局里板块名是**成员节点的密度峰**（layout.js 的 Phase 3 算好后挂在 s.stat）；
-         packed 没有这个字段 ⇒ 退回「成员领域重心按节点数加权」。 */
-      if (s.stat && isFinite(s.stat.x) && isFinite(s.stat.y)) return { x: s.stat.x, y: s.stat.y };
       var wsum = 0, x = 0, y = 0;
       (s.regions || []).forEach(function (r) {
         if (!r.stat) return;
