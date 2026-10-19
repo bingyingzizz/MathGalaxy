@@ -284,7 +284,7 @@
       var gen = ++buildGen;
       var t0 = now();
       try {
-        renderer.drawStatic(cv.getContext('2d'), s.scale, r);
+        renderer.drawStatic(cv.getContext('2d'), s.scale, r, null, k);
       } catch (err) {
         stats.reason = '降档：' + ((err && err.message) || err);
         if (ti < tiers.length - 1) { ti++; cv.width = 1; cv.height = 1; return runBake(); }
@@ -388,7 +388,9 @@
         if (h <= 0) { finishRound(); return; }
         var t0 = now();
         try {
-          renderer.drawStatic(cv.getContext('2d'), round.scale, round.rect, { y0: y0, h: h });
+          /* ⚠️ 第 5 个参数 = **真实相机 k**：烘焙画布的 scale 是 k×dpr，LOD 必须按屏幕
+             CSS 尺度判（否则 dpr≥2 时烘焙层整整多走一档，全景把节点和细线全烘进去）。 */
+          renderer.drawStatic(cv.getContext('2d'), round.scale, round.rect, { y0: y0, h: h }, round.k);
         } catch (err) {
           stats.reason = '降档：' + ((err && err.message) || err);
           round = null; snap.ready = false; buildGen++;
