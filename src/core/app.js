@@ -1995,7 +1995,7 @@
           '峰(自开) 帧 ' + hudPeak.toFixed(0) + ' ｜ 绘制 ' + hudPeakDraw.toFixed(2) + ' ｜ 输入 ' + hudPeakInp.toFixed(2) + ' ｜ 其余 ' + hudPeakRest.toFixed(2) + '\n' +
           '分项 边 ' + (pr.edges / pF).toFixed(2) + ' ｜ 节点 ' + (pr.nodes / pF).toFixed(2) +
             // ⚠️ 条数与耗时分开写：早先把 labels(ms) 当成「条数」过，别再混
-            ' ｜ 标签 ' + (pr.labelCount / pF).toFixed(1) + ' 条 / ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
+            ' ｜ 标签 ' + (pr.labelCount / pF).toFixed(1) + ' 条 · 回放 ' + ((pr.labelReplay||0) / pF).toFixed(0) + ' · 重算 ' + ((pr.labelRecalc||0) / pF).toFixed(2) + ' 次 / ' + (pr.labels / pF).toFixed(2) + ' ms\n' +
           '抽样(侵入) 连线层 ' + drawMs.toFixed(2) + (isFinite(cloudMs) ? ' ｜ 云雾层 ' + cloudMs.toFixed(2) : '') + ' ms\n' +
           '位图 ' + (bs ? ((bs.ready ? 'on' : 'off') + (bs.inRange ? '' : '(超范围)') + ' k_bake ' + bs.k.toFixed(3) + ' ' + bs.size
             + ' 烘' + bs.bakes + '次 末' + bs.lastMs + '/峰' + bs.peakMs + 'ms 换' + bs.swaps) : '未装') + '\n' +

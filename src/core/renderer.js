@@ -1654,6 +1654,7 @@
     var labelCache = null;
 
     function replayLabels(dx, dy) {
+      prof.labelReplay = (prof.labelReplay || 0) + labelCache.ops.length;
       var ops = labelCache.ops;
       ctx.save();
       ctx.translate(dx, dy);
@@ -1699,6 +1700,7 @@
       drawLabelsCached();
       ctx.fillText = of; ctx.strokeText = os;
       labelCache = { k: c.k, tx: c.tx, ty: c.ty, ops: rec };
+      prof.labelRecalc = (prof.labelRecalc || 0) + 1;
     }
 
     function drawLabels() {
