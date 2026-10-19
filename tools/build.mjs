@@ -39,6 +39,25 @@ function contentVersion() {
     return s && s.version ? s.version : '';
   } catch (e) { return ''; }
 }
+/* ⛔ 2026-10-19 硬门：**src/core 的每个文件都必须能被解析**。
+   为什么加：build 以前只把 src/data/* 塞进 vm 跑，core/*.js 是原样内联进产物的，
+   从来没被解析过 —— 于是「删除两个逗号」这种语法错可以一路过构建、推上线、白屏。
+   这里只解析不执行（new vm.Script 只编译），零副作用。 */
+(function syntaxGateCore() {
+  const dir = path.join(SRC, 'core');
+  const bad = [];
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith('.js')) continue;
+    const code = fs.readFileSync(path.join(dir, f), 'utf8');
+    try { new Function(code); }   // ⚠️ 必须用 new Function：bun 的 node:vm 不解析（实测 new vm.Script 对坏语法不报错）
+    catch (e) { bad.push(f + '：' + e.message); }
+  }
+  if (bad.length) {
+    console.error('✗ src/core 语法检查失败：');
+    bad.forEach(m => console.error('   ' + m));
+    process.exit(1);
+  }
+})();
 const CONTENT_VERSION = contentVersion();
 
 /* ------------------------------------------------------------ 时间戳策略 */
