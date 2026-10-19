@@ -111,7 +111,7 @@
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0,
-      trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1
+      trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1,
       defDim: 1, tier: 0
     };
 
@@ -1807,8 +1807,8 @@
           tier: lodA.tier, sector: lodA.sectorName, region: lodA.galaxyName,
           cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName,
           /* 下面这些是 2026-10-18 加的：判「全景还是一条网吗」「导出计数对不对」要读它们 */
-          trunkName: lodA.trunkName, clusterLink: lodA.clusterLink
-        labelCount: prof.labelCount
+          trunkName: lodA.trunkName, clusterLink: lodA.clusterLink,
+          labelCount: prof.labelCount
         };
       },
       profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.labelCount = 0; prof.frames = 0; },
