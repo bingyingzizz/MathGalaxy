@@ -5612,7 +5612,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
         /* ⭐ 2026-10-19：全景/中景同样顶一个下限 —— 定义线占 89%，不顶就「只有推出线」 */
-        if (!active && !C.showAllEdges) a = Math.max(a, lodA.edgeFloor);
+        if (!active && !C.showAllEdges && !view.focus) a = Math.max(a, lodA.edgeFloor);
         if (!active) a *= edgeFade(g);          // 长边在屏幕空间降权
         /* ⭐ 2026-10-19：**定义线这条「合并描边」路径以前完全没有视口裁剪** ——
            两端都在屏外、只是线段横穿视口的线照样画。用户上报的「空白处几条长蓝线」
@@ -5857,7 +5857,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       var active = isEdgeActive(g);
       var a = alphaForEdge(e) * lodA.nodeEdge;
       /* 箭头跟线同一条规则：全景/中景顶一个下限，否则「线回来了箭头没有」。 */
-      if (!active && !C.showAllEdges) a = Math.max(a, lodA.edgeFloor * 0.42);
+      if (!active && !C.showAllEdges && !view.focus) a = Math.max(a, lodA.edgeFloor * 0.42);
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       /* 与线同一个下限：否则整条线回来了、箭头却没有，看起来像「没方向」。 */
       if (active) a = Math.max(a, 0.55);
