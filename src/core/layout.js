@@ -439,116 +439,6 @@
       });
     })();
 
-    /* ⭐ 2026-10-19 试装：**跨板块领域放在哪里**（`?cond=cross` 才走）。
-       现在的规则是「跟着主板块平移」，于是凝聚态数学整个落在代数板块里；
-       但它的料来自拓扑（63 条）、同调（28 条）、范畴（29 条）——
-       该站在那几门的交界上。这里按**真实边数**加权，把它的圆心挪到加权重心。
-       ⛔ 默认 'sector'（今天的样子）；等挑完再删掉另一条。 */
-    var condPlace = (function () {
-      var s = String(global.location && global.location.search || '');
-      var m = /[?&]cond=(cross|gap)/.exec(s);
-      return m ? m[1] : 'sector';
-    })();
-    var condInfo = null;
-    if (condPlace !== 'sector') {
-      var primReg = Object.create(null);
-      nodes.forEach(function (n) { if (n.regions && n.regions.length) primReg[n.id] = n.regions[0]; });
-      (graph.regions || []).forEach(function (r) {
-        var sec = (graph.sectors || []).filter(function (s) {
-          return (s.secondary && s.secondary[r.id]) || (s.regions || []).indexOf(r.id) >= 0;
-        });
-        var extra = [];
-        sec.forEach(function (s) { if (s.secondary && s.secondary[r.id]) extra = extra.concat(s.secondary[r.id]); });
-        if (!extra.length) return;
-        /* 权重 = 与「同属那几个板块的其它领域」之间的边数 */
-        var wts = Object.create(null);
-        graph.edges.forEach(function (e) {
-          var ids = MG.graphUtil.edgeNodes(e);
-          for (var a = 0; a < ids.length; a++) for (var b = 0; b < ids.length; b++) {
-            if (a === b) continue;
-            if (primReg[ids[a]] !== r.id) continue;
-            var other = primReg[ids[b]];
-            if (!other || other === r.id) continue;
-            wts[other] = (wts[other] || 0) + 1;
-          }
-        });
-        var sum = 0, tx = 0, ty = 0, parts = [];
-        Object.keys(wts).forEach(function (rid) {
-          var rr = graph.regionById[rid];
-          if (!rr || !rr.center) return;
-          sum += wts[rid]; tx += rr.center.x * wts[rid]; ty += rr.center.y * wts[rid];
-          parts.push({ id: rid, w: wts[rid] });
-        });
-        if (!sum) return;
-        parts.sort(function (x, y) { return y.w - x.w; });
-        var delta = { x: tx / sum - r.center.x, y: ty / sum - r.center.y };
-        r.center = { x: tx / sum, y: ty / sum };
-        graph.clusters.forEach(function (c) {
-          if (c.parent !== r.id || !c.center) return;
-          c.center = { x: c.center.x + delta.x, y: c.center.y + delta.y };
-        });
-        condInfo = { region: r.id, parts: parts.slice(0, 5), center: { x: Math.round(r.center.x), y: Math.round(r.center.y) } };
-      });
-    }
-
-    /* ⭐ 2026-10-19：**团级硬净空**。板块缝收到 0 之后，「不粘连」不能再靠留白保证 ——
-       这里对团心做一遍圆盘碰撞（半径 = 团自己的 `_cap`），保证「挨着但不叠」。
-       只推团心（节点锚点随后由团心算），不动板块、不动领域中心。无随机数。 */
-    /* ⭐ 2026-10-19 用户定稿：**跨领域星团**（次要领域成员 ≥15%）不再硬归一边 ——
-       圆心落在两个领域中心连线上（按成员比例插值），颜色按比例混合；
-       之后由 separateClusters 的硬净空把它嵌在两块之间，不重叠。 */
-    (function crossClusters() {
-      var HEX = '0123456789ABCDEF';
-      function hex2(r, g, b) {
-        var f = function (v) { return HEX[(v >> 4) & 15] + HEX[v & 15]; };
-        return '#' + f(r) + f(g) + f(b);
-      }
-      liveClusters.forEach(function (c) {
-        var cnt = Object.create(null), tot = 0;
-        c.nodes.forEach(function (nd) {
-          tot++;
-          (nd.regions || []).forEach(function (r) { cnt[r] = (cnt[r] || 0) + 1; });
-        });
-        var keys = Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a]; });
-        if (keys.length < 2) return;
-        if (cnt[keys[1]] / Math.max(1, tot) < 0.15) return;
-        var A = graph.regionById[keys[0]], B = graph.regionById[keys[1]];
-        if (!A || !B || !A.center || !B.center) return;
-        var t = cnt[keys[1]] / (cnt[keys[0]] + cnt[keys[1]]);
-        c.cross = [keys[0], keys[1]];
-        c.center = {
-          x: A.center.x * (1 - t) + B.center.x * t,
-          y: A.center.y * (1 - t) + B.center.y * t
-        };
-        var ca = U.hexToRgb(A.color || '#7A8699'), cb = U.hexToRgb(B.color || '#7A8699');
-        c.color = hex2(Math.round(ca.r * (1 - t) + cb.r * t),
-                       Math.round(ca.g * (1 - t) + cb.g * t),
-                       Math.round(ca.b * (1 - t) + cb.b * t));
-      });
-    })();
-    (function separateClusters() {
-      var list = liveClusters.filter(function (c) { return c.center && c._cap > 0; });
-      var gap = cfg.clusterGap == null ? 24 : cfg.clusterGap;
-      for (var it = 0; it < 120; it++) {
-        var worst = 0;
-        for (var a = 0; a < list.length; a++) {
-          for (var b = a + 1; b < list.length; b++) {
-            var A = list[a], B = list[b];
-            var dx = B.center.x - A.center.x, dy = B.center.y - A.center.y;
-            var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
-            var need = A._cap + B._cap + gap;
-            var delta = need - d;
-            if (delta <= 0.5) continue;
-            if (delta > worst) worst = delta;
-            var ux = dx / d, uy = dy / d, move = delta * 0.5 * 0.65;
-            A.center.x -= ux * move; A.center.y -= uy * move;
-            B.center.x += ux * move; B.center.y += uy * move;
-          }
-        }
-        if (worst < 0.5) break;
-      }
-    })();
-
     /* ------------------------------------------------ 2. 节点锚点 */
     var buckets = Object.create(null);   // 无星团节点按星系分桶
     var borders = [], orphans = [];
@@ -801,8 +691,6 @@
       longEdges: _long.slice(0, 12),
       longCount: _long.length,
       longMax: _long.length ? _long[0].d : 0,
-      condPlace: condPlace,
-      cond: condInfo,
       ranIters: ranIters,
       bbox: { w: Math.round(bb0.maxX - bb0.minX), h: Math.round(bb0.maxY - bb0.minY) }
     };

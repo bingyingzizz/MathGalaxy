@@ -111,8 +111,8 @@
     var lodA = {
       galaxyName: 1, clusterName: 1, nodeDot: 1,
       nodeName: 1, trunkName: 0, nodeEdge: 1, clusterLink: 0,
-      trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1, crossEdge: 0,
-      defDim: 1, tier: 0, regionEdge: 0, sectorLink: 1
+      trunkEdge: 0, trunkDim: 1, envelope: 0, sectorName: 1
+      defDim: 1, tier: 0
     };
 
     /* ⭐ 尺度档位的**回差**：0 大板块 / 1 领域 / 2 星团 / 3 节点近景。
@@ -216,16 +216,9 @@
       /* 大板块名：**只有它在最远视角**。档位 0 之外一律不画。 */
       var secName = smoothstep(tSec[0], tSec[1], k) * (1 - smoothstep(tSecOut[0], tSecOut[1], k));
       lodA.sectorName = tier === 0 ? secName : 0;
-      /* 跨团长线：**远尺度收起**（crossEdge→0），放大到领域/星团尺度才回来 */
-      var tCross = thr(L.crossEdgeOut);
-      lodA.crossEdge = smoothstep(tCross[0], tCross[1], k);
-      /* 跨**领域**（不是跨团）的逐条边：中景收起，近景才回来（见 config.lod.regionEdgeIn） */
-      var tReg = thr(L.regionEdgeIn || { rel: [4.20, 5.60] });
-      lodA.regionEdge = smoothstep(tReg[0], tReg[1], k);
       /* 全景的一层：**每对板块最多一条很淡的聚合线**（1.00~1.30×k₀），
          放大一档就交给团级聚合线（它们自己按 clusterLinkOut 退场）。 */
       var tSecLink = thr({ rel: [1.00, 1.30] });
-      lodA.sectorLink = 1 - smoothstep(tSecLink[0], tSecLink[1], k);
       /* 定义引用线在中景降权（见 config.edge.definitionMidScale）：
          两个 draw 路径共用这一个系数 —— 定义线大部分走的是**合并描边**快路径，
          只改 drawEdgeOne 会「改了没效果」（这条坑写在 HANDOVER 里）。 */
@@ -249,7 +242,6 @@
       lodA.clusterName = smoothstep(1.50, 1.70, rRel) * (1 - smoothstep(3.85, 4.80, rRel));
       lodA.nodeName = rRel < 2.8 ? 0 : smoothstep(2.8, 3.0, rRel);
       lodA.trunkName = rRel < 2.4 ? 0 : smoothstep(2.4, 2.6, rRel);
-      lodA.sectorLink = 0;
       /* ⭐⭐ 全景档（r<1.35）**不画节点**，只画团块 + 领域色场：1600×900 里铺 910 个点，
          任何布局都会变成均匀纹理（地图不在全览档画每栋楼）。r≥1.35 才淡入节点。 */
       lodA.nodeDot = smoothstep(1.32, 1.42, rRel);
@@ -1815,8 +1807,8 @@
           tier: lodA.tier, sector: lodA.sectorName, region: lodA.galaxyName,
           cluster: lodA.clusterName, defDim: lodA.defDim, nodeName: lodA.nodeName,
           /* 下面这些是 2026-10-18 加的：判「全景还是一条网吗」「导出计数对不对」要读它们 */
-          trunkName: lodA.trunkName, clusterLink: lodA.clusterLink, sectorLink: lodA.sectorLink,
-          crossEdge: lodA.crossEdge, regionEdge: lodA.regionEdge, labelCount: prof.labelCount
+          trunkName: lodA.trunkName, clusterLink: lodA.clusterLink
+        labelCount: prof.labelCount
         };
       },
       profReset: function () { prof.edges = 0; prof.nodes = 0; prof.labels = 0; prof.labelCount = 0; prof.frames = 0; },
