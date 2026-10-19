@@ -4611,8 +4611,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       lodA.clusterName = smoothstep(1.50, 1.70, rRel) * (1 - smoothstep(3.85, 4.80, rRel));
       lodA.nodeName = rRel < 2.8 ? 0 : smoothstep(2.8, 3.0, rRel);
       lodA.trunkName = rRel < 2.4 ? 0 : smoothstep(2.4, 2.6, rRel);
-      lodA.skeletonEdge = smoothstep(1.10, 1.20, rRel);
-      lodA.bodyEdge = smoothstep(2.70, 2.90, rRel);
       lodA.sectorLink = 0;
       /* ⭐⭐ 全景档（r<1.35）**不画节点**，只画团块 + 领域色场：1600×900 里铺 910 个点，
          任何布局都会变成均匀纹理（地图不在全览档画每栋楼）。r≥1.35 才淡入节点。 */
@@ -5407,59 +5405,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
        （276 条，按团心连，远看就是一片灰网）。
        全景改成「每对板块只留一条很淡的线」，放大一档才交回团级聚合线。 */
     var sectorPairCache = null;
-    function sectorPairs() {
-      if (sectorPairCache) return sectorPairCache;
-      var out = [], agg = Object.create(null), byId = Object.create(null);
-      (view.graph.sectors || []).forEach(function (s) { if (!s.empty) byId[s.id] = s; });
-      (view.graph.clusterLinks || []).forEach(function (l) {
-        var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
-        if (!A || !B || !A.stat || !B.stat) return;
-        var sA = clusterSector(l.a), sB = clusterSector(l.b);
-        if (!sA || !sB || sA === sB) return;
-        var key = sA < sB ? sA + '|' + sB : sB + '|' + sA;
-        var o = agg[key];
-        if (!o) o = agg[key] = { a: sA < sB ? sA : sB, b: sA < sB ? sB : sA, count: 0 };
-        o.count += l.count;
-      });
-      Object.keys(agg).forEach(function (key) {
-        var o = agg[key];
-        if (o.count < 6) return;                       // 太弱的板块对不画
-        var sa = byId[o.a], sb = byId[o.b];
-        var pa = sa && sectorAnchor(sa), pb = sb && sectorAnchor(sb);
-        if (!pa || !pb) return;
-        o.pa = pa; o.pb = pb;
-        out.push(o);
-      });
-      out.sort(function (x, y) { return y.count - x.count; });
-      sectorPairCache = out;
-      return out;
-    }
-
     /** 全景的板块骨架：每对板块一条，alpha ≈0.05~0.13（远看只是「它们有关系」） */
-    function drawSectorLinks(alpha) {
-      var list = sectorPairs();
-      if (!list.length) return;
-      var cfgL = C.clusterLink;
-      ctx.save();
-      ctx.lineCap = 'round';
-      list.forEach(function (o) {
-        var p0 = w2s(o.pa.x, o.pa.y), p1 = w2s(o.pb.x, o.pb.y);
-        var dx = p1.x - p0.x, dy = p1.y - p0.y;
-        var len = Math.sqrt(dx * dx + dy * dy) || 1;
-        var bow = Math.min(110, len * 0.07);
-        var cx = (p0.x + p1.x) / 2 - (dy / len) * bow;
-        var cy = (p0.y + p1.y) / 2 + (dx / len) * bow;
-        var t = Math.min(1, o.count / 120);
-        ctx.beginPath();
-        ctx.moveTo(p0.x, p0.y);
-        ctx.quadraticCurveTo(cx, cy, p1.x, p1.y);
-        ctx.lineWidth = 1.0 + 1.2 * t;
-        ctx.strokeStyle = 'rgba(' + cfgL.color + ',' + (alpha * (0.055 + 0.075 * t)).toFixed(3) + ')';
-        ctx.stroke();
-      });
-      ctx.restore();
-    }
-
     /* ------------------------------------------------ 星团包络 */
     /**
      * 给一堆点画一圈闭合的平滑边界：绕一圈取 samples 个方向，
