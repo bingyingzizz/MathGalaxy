@@ -62,7 +62,7 @@
       var reg = graph.regionById && graph.regionById[rid];
       var hex = (reg && reg.color) || '#7A8699';
       var rgb = U.hexToRgb(hex);
-      var sr = 40;                                    // 世界单位（工单：40）
+      var sr = (bc.splatRadius == null ? 130 : bc.splatRadius);   // 世界单位
       var px = (n.x - minX) * scx, py = (n.y - minY) * scy;
       var pr = Math.max(2, sr * scx);
       var gC = ctxC.createRadialGradient(px, py, 0, px, py, pr);

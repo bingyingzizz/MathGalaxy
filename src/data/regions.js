@@ -66,7 +66,7 @@ MG.regions = [
     name: '抽象代数',
     en: 'Abstract Algebra',
     color: '#E08A3C',
-    center: { x: 960, y: 430 },
+    center: { x: 1250, y: 780 },
     radius: 500,
     desc: '群、环、域、模与线性代数；佐恩引理的经典应用场。'
   },
@@ -95,7 +95,7 @@ MG.regions = [
     name: '同调代数',
     en: 'Homological Algebra',
     color: '#C89A2B',
-    center: { x: 2250, y: 120 },
+    center: { x: 900, y: 60 },
     radius: 480,
     desc: '加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。'
   },

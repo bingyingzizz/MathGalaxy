@@ -441,6 +441,32 @@
       });
     }
 
+    /* ⭐ 2026-10-19：**团级硬净空**。板块缝收到 0 之后，「不粘连」不能再靠留白保证 ——
+       这里对团心做一遍圆盘碰撞（半径 = 团自己的 `_cap`），保证「挨着但不叠」。
+       只推团心（节点锚点随后由团心算），不动板块、不动领域中心。无随机数。 */
+    (function separateClusters() {
+      var list = liveClusters.filter(function (c) { return c.center && c._cap > 0; });
+      var gap = cfg.clusterGap == null ? 24 : cfg.clusterGap;
+      for (var it = 0; it < 120; it++) {
+        var worst = 0;
+        for (var a = 0; a < list.length; a++) {
+          for (var b = a + 1; b < list.length; b++) {
+            var A = list[a], B = list[b];
+            var dx = B.center.x - A.center.x, dy = B.center.y - A.center.y;
+            var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+            var need = A._cap + B._cap + gap;
+            var delta = need - d;
+            if (delta <= 0.5) continue;
+            if (delta > worst) worst = delta;
+            var ux = dx / d, uy = dy / d, move = delta * 0.5 * 0.65;
+            A.center.x -= ux * move; A.center.y -= uy * move;
+            B.center.x += ux * move; B.center.y += uy * move;
+          }
+        }
+        if (worst < 0.5) break;
+      }
+    })();
+
     /* ------------------------------------------------ 2. 节点锚点 */
     var buckets = Object.create(null);   // 无星团节点按星系分桶
     var borders = [], orphans = [];

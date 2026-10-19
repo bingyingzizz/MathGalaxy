@@ -1264,13 +1264,17 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          ⚠️ 2026-10-19：480 → **160**。用户看完两版说「星系之间的边界太大」——
          480 是为了「一眼看出这里是四块」调的，但那同时把颜色过渡也切断了。
          160 让跨板块的云重新接触，混色带才长得出来。 */
-      sectorGap: 160,
+      sectorGap: 0,
       /* 同一板块**内部**的领域之间最多留多少净空（世界单位）。超过就互相拉近 ——
          「数理逻辑」只有 4 个点，不拉近就会孤零零飘在板块外面（全景里像一块碎片）。
          ⚠️ **0 是对的**：再大就会逼着同一板块的领域彼此重叠（实测 160 时
             代数板块的领域云互相压了 805，连同它们的星团也叠在一起）。
          0 = 刚好相切 —— 既是一块板，又没有真的叠在一起。-1 或更小 = 不拉近。 */
       sectorInnerGap: 0,
+      /* ⭐ 2026-10-19：**团与团之间的硬净空**（世界单位）。板块缝收到 0 之后，
+         「不粘连」不能再靠留白保证 —— 由布局末尾的团级圆盘碰撞来保证。
+         ⛔ 它只推团心（半径 = 团自己的 _cap），不动板块、不动领域。 */
+      clusterGap: 24,
 
       temp0: 62,                  // 初始温度（同时是每步位移上限）
       temp1: 0.5,                 // 终止温度
@@ -1385,7 +1389,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
 
     /* 电子云背景 */
     background: {
-      colorFieldK: 3.6,          // 色场 alpha = 1−exp(−K·Σw)：越大越浓（最浓处 ≈0.55）
+      colorFieldK: 1.2,          // 色场 alpha = 1−exp(−K·Σw)：越大越浓（最浓处 ≈0.55）
       /* ⚠️ 世界（约 10661×9176）× 这个比例 = 云雾纹理的像素数。
        原来写 0.42 → 4478×3854 ≈ **17.3 M 像素**（≈69MB）：既浪费内存，又可能超过 GPU 的
        MAX_TEXTURE_SIZE —— 有些环境只给 4096，一旦超了 Chrome 会走软件路径，表现正是
@@ -1400,7 +1404,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          云雾本来就是糊的，形状与浓淡无差别；成本 0.2ms 且只在开页 / 改显隐时发生。 */
       texBlur: 1.6,
       blobsPerRegion: 12,         // 每个板块的云朵数
-      blobAlpha: 0.075,           // 单朵云的基础不透明度（多朵叠加后会更深）—— 2026-10-19 回到旧值
+      blobAlpha: 0.075,
+      splatRadius: 130,           // 单节点撒点的世界半径 —— 40 时相邻节点（间距 64）的雾团不重叠，才是一片一片的           // 单朵云的基础不透明度（多朵叠加后会更深）—— 2026-10-19 回到旧值
       centerAlpha: 0.025,         // 板块中心大团雾
       nodeAlpha: 0.025,           // 每个节点周围的小团雾
       spread: 0.52,               // 云朵分布半径 / 板块半径
@@ -3624,6 +3629,32 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       });
     }
 
+    /* ⭐ 2026-10-19：**团级硬净空**。板块缝收到 0 之后，「不粘连」不能再靠留白保证 ——
+       这里对团心做一遍圆盘碰撞（半径 = 团自己的 `_cap`），保证「挨着但不叠」。
+       只推团心（节点锚点随后由团心算），不动板块、不动领域中心。无随机数。 */
+    (function separateClusters() {
+      var list = liveClusters.filter(function (c) { return c.center && c._cap > 0; });
+      var gap = cfg.clusterGap == null ? 24 : cfg.clusterGap;
+      for (var it = 0; it < 120; it++) {
+        var worst = 0;
+        for (var a = 0; a < list.length; a++) {
+          for (var b = a + 1; b < list.length; b++) {
+            var A = list[a], B = list[b];
+            var dx = B.center.x - A.center.x, dy = B.center.y - A.center.y;
+            var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+            var need = A._cap + B._cap + gap;
+            var delta = need - d;
+            if (delta <= 0.5) continue;
+            if (delta > worst) worst = delta;
+            var ux = dx / d, uy = dy / d, move = delta * 0.5 * 0.65;
+            A.center.x -= ux * move; A.center.y -= uy * move;
+            B.center.x += ux * move; B.center.y += uy * move;
+          }
+        }
+        if (worst < 0.5) break;
+      }
+    })();
+
     /* ------------------------------------------------ 2. 节点锚点 */
     var buckets = Object.create(null);   // 无星团节点按星系分桶
     var borders = [], orphans = [];
@@ -3943,7 +3974,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       var reg = graph.regionById && graph.regionById[rid];
       var hex = (reg && reg.color) || '#7A8699';
       var rgb = U.hexToRgb(hex);
-      var sr = 40;                                    // 世界单位（工单：40）
+      var sr = (bc.splatRadius == null ? 130 : bc.splatRadius);   // 世界单位
       var px = (n.x - minX) * scx, py = (n.y - minY) * scy;
       var pr = Math.max(2, sr * scx);
       var gC = ctxC.createRadialGradient(px, py, 0, px, py, pr);
@@ -4464,6 +4495,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       kFit0 = (view.kFit0 > 0) ? view.kFit0 : (function () { try { return fitZoom(); } catch (e) { return 0; } })();
       var rRel = kFit0 > 0 ? k / kFit0 : 1;
       lodA.rRel = rRel;
+      /* ⭐ 2026-10-19：线的「最低可见度」只能是 r 的**一条连续曲线** —— 原来全景顶 0.30、
+         中景顶 0.34、近景靠 px 闸门自然满值，三段拼出来就是「蓝→淡→蓝」的台阶。 */
+      lodA.edgeFloor = 0.30 + 0.45 * smoothstep(1.20, 2.80, rRel);
       lodA.sectorName = smoothstep(0.20, 0.55, rRel) * (1 - smoothstep(1.30, 1.60, rRel));
       lodA.galaxyName = smoothstep(0.95, 1.02, rRel) * (1 - smoothstep(1.45, 1.85, rRel));
       lodA.clusterName = smoothstep(1.50, 1.70, rRel) * (1 - smoothstep(3.85, 4.80, rRel));
@@ -4895,7 +4929,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     function paintStatic(geoms) {
       var tE = performance.now();
       if (!envLive) drawEnvelopes();       // 位图模式：包络交给实时层（见 paintDynamic）
-      drawClusterLinks();
 
       var defs = [], eqs = [], imps = [], anas = [];
       geoms.forEach(function (g) {
@@ -5319,72 +5352,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       ctx.restore();
     }
 
-    /* ------------------------------------------------ 星团级连线 */
-    function drawClusterLinks() {
-      /* ⛔ 全景档（r<1.35）团级聚合线也不画 —— 画面上那片「穿过团块的折线」
-         就是它（不是实体边、也不是包络描边）。 */
-      if (!C.showAllEdges && (lodA.rRel || 1) < 1.35) return;
-      var secA = lodA.sectorLink;
-      if (secA > 0.02) drawSectorLinks(secA);
-      /* 全景那一档：团级聚合线让位给板块骨架（1 - secA） */
-      var a = lodA.clusterLink * (1 - secA);
-      if (a <= 0.02) return;
-      var links = view.graph.clusterLinks || [];
-      if (!links.length) return;
-      var cfgL = C.clusterLink;
-      var maxCount = 1;
-      links.forEach(function (l) { if (l.count > maxCount) maxCount = l.count; });
-      /* ⭐ 选中节点的跨板块关系**优先于任何隐藏规则**（用户 2026-10-17 的判据）：
-         聚合线也一样 —— 如果它连着我正在看的那个团，跨板块也照画。 */
-      var focusNode = (view.focus && view.focus.type === 'node') ? view.graph.byId[view.focus.id] : null;
-      var focusCluster = focusNode ? focusNode.cluster : null;
-      /* ⭐ 中景（1.3~2.2×k₀）只留**同一个领域内部**的聚合线。
-         远景（<1.3×k₀）保留跨板块的骨架，近景（>4.2×k₀）聚合线本来就退场了。 */
-      var midZone = lodA.crossEdge > 0.5 && lodA.regionEdge < 0.5;
-      var regionOfCluster = function (cid) {
-        var cc = view.graph.clusterById && view.graph.clusterById[cid];
-        return (cc && cc.parent) || '';
-      };
-
-      ctx.save();
-      ctx.lineCap = 'round';
-      links.forEach(function (l) {
-        if (l.count < cfgL.minEdges) return;
-        /* ⭐ 阶段 3：远尺度只留**主要关系**。
-           · 同板块的聚合线照画（它们是板块内部的骨架）；
-           · **跨板块**的聚合线要够粗才画（count ≥ crossSectorMinEdges），
-             否则远看就是一地斜穿的细线。
-           ⭐ 2026-10-18：这条筛选**不再只作用于最远那一档**。原来它只在
-              crossEdge<0.5（≈1.3×k₀ 以下）生效，中景 1.3~2.8×k₀ 之间
-              所有跨板块聚合线都放出来 → 用户看到的「中景像一张网」。
-              现在只要不是「全部连线」就一直筛；选中团的线仍然放行。 */
-        if (!C.showAllEdges) {
-          var sA = clusterSector(l.a), sB = clusterSector(l.b);
-          var touchesFocus = !!(focusCluster && (l.a === focusCluster || l.b === focusCluster));
-          if (midZone && regionOfCluster(l.a) !== regionOfCluster(l.b) && !touchesFocus) return;
-          if (!touchesFocus && sA && sB && sA !== sB && l.count < (cfgL.crossSectorMinEdges || 4)) return;
-        }
-        var A = view.graph.clusterById[l.a], B = view.graph.clusterById[l.b];
-        if (!A || !B || !A.stat || !B.stat) return;
-        if (view.isNodeVisible && (!visibleIn(A.nodes) || !visibleIn(B.nodes))) return;
-        var p0 = w2s(A.stat.cx, A.stat.cy);
-        var p1 = w2s(B.stat.cx, B.stat.cy);
-        var len = U.dist(p0.x, p0.y, p1.x, p1.y);
-        if (len < 2) return;
-        var t = Math.min(1, l.count / Math.max(2, maxCount));
-        var w = U.lerp(cfgL.widthMin, cfgL.widthMax, Math.sqrt(t)) * Math.min(1.4, Math.max(0.6, camNow().k));
-        var bend = (l.a < l.b ? 1 : -1) * len * cfgL.curve;
-        var ctl = U.perpControl(p0.x, p0.y, p1.x, p1.y, bend);
-        ctx.beginPath();
-        ctx.moveTo(p0.x, p0.y);
-        ctx.quadraticCurveTo(ctl.x, ctl.y, p1.x, p1.y);
-        ctx.lineWidth = w;
-        ctx.strokeStyle = 'rgba(' + cfgL.color + ',' + (cfgL.alpha * a).toFixed(3) + ')';
-        ctx.stroke();
-      });
-      ctx.restore();
-    }
-
     /* ------------------------------------------------ 星团包络 */
     /**
      * 给一堆点画一圈闭合的平滑边界：绕一圈取 samples 个方向，
@@ -5573,7 +5540,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       /* ⭐ 线条三档（r = k/kFit）：定义引用线**只在 L3（r ≥ 2.8）**画。
          L0 一条不画、L1–L2 只画推出/等价骨架 —— 都在 drawEdgeOne 里判。
          「全部连线」绕过所有闸门。 */
-      if (!C.showAllEdges && (lodA.rRel || 1) < 2.8) return;
       /* 只有**定义引用线**走「合并描边」的快路径：它占全部连线 89%（1244/1391），
          逐条 stroke() 在用户机器上约 0.05ms/条 ⇒ 一帧六十多毫秒
          （实测：把它一关，同一页面 13fps → 240fps；而把像素量砍到 1/4 毫无变化）。
@@ -5586,7 +5552,26 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         var active = isEdgeActive(g);
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
+        /* ⭐ 2026-10-19：全景/中景同样顶一个下限 —— 定义线占 89%，不顶就「只有推出线」 */
+        if (!active && !C.showAllEdges) a = Math.max(a, lodA.edgeFloor);
         if (!active) a *= edgeFade(g);          // 长边在屏幕空间降权
+        /* ⭐ 2026-10-19：**定义线这条「合并描边」路径以前完全没有视口裁剪** ——
+           两端都在屏外、只是线段横穿视口的线照样画。用户上报的「空白处几条长蓝线」
+           就是它（改前改后逐像素相同，正因为这两条路径压根不是同一条）。
+           口径：≥1.35 起，两端都在外 ⇒ 不画；只有一端在 ⇒ 按屏幕长度衰减。 */
+        if (!active && !C.showAllEdges && (lodA.rRel || 1) >= 1.35) {
+          var dEnds = GU.edgeNodes(e), dIn = 0;
+          for (var di = 0; di < dEnds.length; di++) {
+            var dn = view.graph.byId[dEnds[di]];
+            if (!dn) continue;
+            var dp = w2s(dn.x, dn.y);
+            if (dp.x >= 0 && dp.x <= W && dp.y >= 0 && dp.y <= H) dIn++;
+          }
+          if (dIn === 0) return;
+          if (dIn === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
+          if ((g.lenPx || 0) > 200) a *= Math.exp(-((g.lenPx || 0) - 200) / 90);
+          if (a <= 0.06) return;
+        }
         /* ⚠️ 选中 / 悬停的边：全景下节点级 LOD 的 alpha 是 0，会整条消失。
            用户点了一个点就想知道它连到哪 —— 和 drawEdgeOne 用同一个下限。 */
         if (active) a = Math.max(a, 0.55);
@@ -5596,7 +5581,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         if (a <= 0.02) return;
         if (!C.showDefinitionLines) return;
         /* 中景：跨领域的定义引用也先收起（和 drawEdgeOne 同一口径） */
-        if (!C.showAllEdges && !active && lodA.regionEdge < 0.5 && edgeCrossRegion(e)) return;
         /* 定义引用线**不跟着放大**（89% 的线都是它）。放大后如果它也变粗，
            整个画面会被蓝网盖住；「定义线降权」的既定口径不能破。 */
         var w = C.edge.definitionWidth * (active ? 1.85 : 1);
@@ -5683,17 +5667,18 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
       var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
       var active = isEdgeActive(g);
-      /* ⭐⭐ 线条三档 + 端点计数（2026-10-18 Stage 1b，取代所有「按绝对 k 藏长线」的旧逻辑）：
-         L0（r<1.15）一条不画；L1–L2（r<2.8）只画 implication / equivalence；
-         L3 起画实体边，但**至少一端在视口内**；
-         只有一端在视口内 ⇒ alpha × exp(−屏幕长/320)；两端都在外 ⇒ 不画。
-         选中 / 悬停 /「全部连线」照旧放行。 */
+      /* ⭐⭐ 2026-10-19 用户定稿的线条规则（取代 Stage 1b 的三档）：
+         · 全景（r<1.35）：**全都画**，整体顶到 0.30 —— 一层「雾网」，不是空的；
+         · 中景（1.35≤r<2.8）：全都画，不按 kind 过滤、不藏跨领域线；
+         · 近景（r≥2.8）：只画**至少一端在视口内**的（另一端在外按屏幕长度衰减）。
+         ⛔ clusterLinks 聚合线已删（用户：「实在是不明显指代什么」）。
+         ⚠️ 全景那档节点级 px 闸门是 0，必须顶一个下限，否则一条线都没有。 */
+      var rT = lodA.rRel || 1;
       if (!active && !C.showAllEdges) {
-        var rT = lodA.rRel || 1;
-        if (rT < 1.35) return;                      // ⭐ 全景档：节点不画，边也不画（否则只剩浮空箭头）
-        if (rT < 2.8 && e.kind !== 'implication' && e.kind !== 'equivalence') return;
+        /* ⭐ 2026-10-19：全景不画节点，黑线（推出/等价）就只剩「浮空的箭头骨架」——
+           用户要求这一档只留蓝色的定义引用当雾网。 */
+        if (rT < 1.35 && e.kind !== 'definition') return;
         if (rT >= 2.8) {
-          var c0 = camNow();
           var endIds = GU.edgeNodes(e), inside = 0;
           for (var ei = 0; ei < endIds.length; ei++) {
             var en = view.graph.byId[endIds[ei]];
@@ -5703,16 +5688,19 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
           }
           if (inside === 0) return;
           if (inside === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
-          /* 长线一律按屏幕长度指数降权（下限 0.10）：实测 r=3 时两端都在屏内、>400px 的线有 76 条，
-             不压的话画面仍被切碎。 */
-          if (!C.showAllEdges && (g.lenPx || 0) > 200) {
-            a *= Math.max(0.03, Math.exp(-((g.lenPx || 0) - 200) / 55));
-          }
+          /* ⛔ 两端都在屏内但横穿整屏的线同样算「长线」—— 原来只在 inside===1 时衰减，
+             于是屏内一条 1200px 的蓝线永远活着（用户截图里那几条就是它）。 */
+          /* ⛔ 2026-10-19：近景的长线**不留下限**。原来 max(0.03,…) 会让 0.8×0.03=0.024
+             刚好压线通过 α>0.02 的闸门 ⇒ 空白区域里飘几条横穿全屏的蓝线（用户报了）。 */
+          if ((g.lenPx || 0) > 200) a *= Math.exp(-((g.lenPx || 0) - 200) / 90);
+          if (a <= 0.06) return;
+        } else {
+          a = Math.max(a, lodA.edgeFloor);
+        }
+        if ((g.lenPx || 0) > 200) {
+          a *= Math.max(0.03, Math.exp(-((g.lenPx || 0) - 200) / 55));
         }
       }
-      /* 定义引用线在中景降权（领域 / 星团尺度 ×0.60）。⚠️ 定义线绝大多数走的是
-         drawEdges() 的合并描边快路径，那里也必须乘同一个 lodA.defDim ——
-         只改这里等于没改。 */
       if (e.kind === 'definition') a *= lodA.defDim;
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       /* 选中 / 悬停的边：哪怕在全景（节点级 LOD 的 alpha 是 0）也要看得见 ——
@@ -5727,12 +5715,10 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       /* ⭐ 中景：**跨领域的逐条边默认收起**（用户 2026-10-18：
          「中景像一张网，压过节点和文字」）。选中 / 悬停 / 「全部连线」放行；
          放大到近景（regionEdgeIn）自己会回来。 */
-      if (!C.showAllEdges && !active && lodA.regionEdge < 0.5 && edgeCrossRegion(e)) return;
 
       /* ⭐ 阶段 3：远尺度收起「逐条跨团长线」。
          只看「两端星团是否相同」——团内关系不受影响；选中/聚焦的边、以及
          用户打开 `showAllEdges` 时一律放行。⛔ 不画聚合箭头。 */
-      if (!C.showAllEdges && !active && lodA.crossEdge < 0.5 && edgeCrossCluster(e)) return;
       var w = (e.kind === 'implication' ? C.edge.implicationWidth
         : e.kind === 'equivalence' ? C.edge.equivalenceWidth
           : e.kind === 'analogy' ? T.edgeStyles.analogy.width
@@ -5810,9 +5796,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     function drawArrow(g) {
       var e = g.edge;
       var active = isEdgeActive(g);
-      /* ⭐ 全景档（r<1.35）连箭头也不画 —— 节点不画了，只剩浮空箭头最刺眼。 */
-      if (!isEdgeActive(g) && !C.showAllEdges && (lodA.rRel || 1) < 1.35) return;
       var a = alphaForEdge(e) * lodA.nodeEdge;
+      /* 箭头跟线同一条规则：全景/中景顶一个下限，否则「线回来了箭头没有」。 */
+      if (!active && !C.showAllEdges) a = Math.max(a, lodA.edgeFloor * 0.42);
       if (!active) a *= edgeFade(g);           // 长边在屏幕空间降权（选中的不降）
       /* 与线同一个下限：否则整条线回来了、箭头却没有，看起来像「没方向」。 */
       if (active) a = Math.max(a, 0.55);
@@ -9077,7 +9063,7 @@ MG.regions = [
     name: '抽象代数',
     en: 'Abstract Algebra',
     color: '#E08A3C',
-    center: { x: 960, y: 430 },
+    center: { x: 1250, y: 780 },
     radius: 500,
     desc: '群、环、域、模与线性代数；佐恩引理的经典应用场。'
   },
@@ -9106,7 +9092,7 @@ MG.regions = [
     name: '同调代数',
     en: 'Homological Algebra',
     color: '#C89A2B',
-    center: { x: 2250, y: 120 },
+    center: { x: 900, y: 60 },
     radius: 480,
     desc: '加法与阿贝尔范畴、复形与导出三角、同调与长正合列、谱序列。'
   },
