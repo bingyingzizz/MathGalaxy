@@ -59,7 +59,15 @@
           document.documentElement.classList.add('dragging');
         }
         if (dragStateTimer) { clearTimeout(dragStateTimer); dragStateTimer = 0; }
-        if (holdMs) dragStateTimer = setTimeout(function () { setDragState(false); }, holdMs);
+        if (holdMs) dragStateTimer = setTimeout(function () {
+          setDragState(false);
+          /* ⭐ 2026-10-19：**滚轮没有「松手」事件**，这 260ms 去抖就是它的收尾 ——
+             那一帧必须补一次重绘。不然最后一帧停在「回放」上，相机停稳之后再没人画，
+             名字就永远留在旧的一屏（用户报的「滚轮平移完，露出来的区域没名字」）。
+             ⚠️ 这里只是**踢一脚**重绘；「回放还是重算」由 renderer 判（本帧机位 ==
+                上一帧机位 ⇒ 停住 ⇒ 重算），交互层不碰标签逻辑。 */
+          requestDraw();
+        }, holdMs);
       } else {
         if (dragStateTimer) { clearTimeout(dragStateTimer); dragStateTimer = 0; }
         if (dragStateOn) {

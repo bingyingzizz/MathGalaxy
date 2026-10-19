@@ -202,9 +202,15 @@
         cloudDrawn.tex = null;              // 纹理换了：这一次必须重铺
       }
       var tp = performance.now();
-      if (typeof prevCam === 'undefined') { var prevCam = null; var bakeIdleAt = 0; }
+      if (typeof prevCam === 'undefined') { var prevCam = null; var bakeIdleAt = 0; var wasAnimating = false; }
       var animating = cam.tick();
-      if (dirty || animating) {
+      /* ⭐ 2026-10-19：**动画刚结束的那一帧也要画一次**（settleDraw）。
+         否则「最后一帧」画的是「上一帧机位 + 回放」的标签，此后没人再画 ⇒ 名字永远差
+         最后一步的位移（松手 / 滚轮去抖是同一个病，见 interaction.js 的 260ms 收尾）。
+         renderer 判「本帧机位 == 上一帧机位 ⇒ 停住 ⇒ 重算」，这一帧正好喂给它。 */
+      var settleDraw = wasAnimating && !animating;
+      wasAnimating = animating;
+      if (dirty || animating || settleDraw) {
         var c = cam;
         if (cloudDrawn.tex !== cloudTex || cloudDrawn.k !== c.k ||
           cloudDrawn.tx !== c.tx || cloudDrawn.ty !== c.ty || cloudDrawn.w !== c.viewW ||
