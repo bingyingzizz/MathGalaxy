@@ -5608,10 +5608,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         var e = g.edge, style = T.edgeStyles.definition;
         var spine = isSpine(e);
         var active = isEdgeActive(g);
-        /* ⛔ 2026-10-19 性能回退：全景/中景画**全部** 1244 条定义线，每帧都在描
-           曲线（约 0.05ms/条 ⇒ 一帧几十毫秒）。这一档只保留「主干」（至少一端是
-           hub/trunk 的定义引用），近景（r≥2.8）才全画。观感仍是蓝色雾网，成本降到 1/6。 */
-        if (!active && !C.showAllEdges && (lodA.rRel || 1) < 2.8 && !spine) return;
+        /* 2026-10-19：不再「只画主干」—— 那一版在全景留下几根稀疏长线，用户报「像 bug」。 */
         var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0)
           * lodA.defDim;                       // 中景降权（与 drawEdgeOne 同一系数）
         /* ⭐ 2026-10-19：全景/中景同样顶一个下限 —— 定义线占 89%，不顶就「只有推出线」 */
@@ -6100,6 +6097,32 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
     }
 
     /* ========================================================== 命中检测 */
+    /* 当前缩放下这条边到底画不画 —— 与 drawEdgeOne / drawEdges 同一口径的近似。
+       ⛔ 2026-10-19：用户报「看不见的线还能点到」。命中检测以前只看 alphaForEdge，
+       完全不看缩放闸门，所以全景里那些没画的线照样能被点中并弹出面板。 */
+    function edgeShown(g) {
+      var e = g.edge, r = lodA.rRel || 1;
+      if (C.showAllEdges) return true;
+      if (e.kind === 'definition' && !C.showDefinitionLines) return false;
+      if (GU.isWeak(e) && !C.exploreMode) return false;
+      if (r < 1.35 && e.kind !== 'definition') return false;   // 全景不画黑线
+      if (r >= 2.8) {
+        var ids = GU.edgeNodes(e), inside = 0;
+        for (var i = 0; i < ids.length; i++) {
+          var nd = view.graph.byId[ids[i]];
+          if (!nd) continue;
+          var p = w2s(nd.x, nd.y);
+          if (p.x >= 0 && p.x <= W && p.y >= 0 && p.y <= H) inside++;
+        }
+        if (inside === 0) return false;
+      }
+      /* 长线衰减到 0.06 以下就等于没画（与绘制端同一个阈值） */
+      if ((g.lenPx || 0) > 200) {
+        var f = Math.exp(-((g.lenPx || 0) - 200) / 55);
+        if (0.34 * f <= 0.06) return false;
+      }
+      return true;
+    }
     function hitTest(sx, sy) {
       ensureGeom();
       // 先节点
@@ -6120,7 +6143,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       var list = geomCache ? Object.keys(geomCache).map(function (k) { return geomCache[k]; }) : [];
       var hitEdge = null, hitD = Infinity;
       list.forEach(function (g) {
-        if (g.edge.kind === 'definition' && !C.showDefinitionLines) return;
+        if (!edgeShown(g)) return;
         // 弱边没开探索模式时不响应点击（它本来就几乎看不见）
         if (GU.isWeak(g.edge) && !C.exploreMode) return;
         var a = alphaForEdge(g.edge);
