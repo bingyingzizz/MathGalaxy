@@ -5628,7 +5628,6 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
           }
           if (dIn === 0) return;
           if (dIn === 1) a *= Math.exp(-(g.lenPx || 0) / 320);
-          if ((g.lenPx || 0) > 200) a *= Math.exp(-((g.lenPx || 0) - 200) / 90);
           if (a <= 0.06) return;
         }
         /* ⚠️ 选中 / 悬停的边：全景下节点级 LOD 的 alpha 是 0，会整条消失。
@@ -5751,13 +5750,9 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
              于是屏内一条 1200px 的蓝线永远活着（用户截图里那几条就是它）。 */
           /* ⛔ 2026-10-19：近景的长线**不留下限**。原来 max(0.03,…) 会让 0.8×0.03=0.024
              刚好压线通过 α>0.02 的闸门 ⇒ 空白区域里飘几条横穿全屏的蓝线（用户报了）。 */
-          if ((g.lenPx || 0) > 200) a *= Math.exp(-((g.lenPx || 0) - 200) / 90);
           if (a <= 0.06) return;
         } else {
           a = Math.max(a, lodA.edgeFloor);
-        }
-        if ((g.lenPx || 0) > 200) {
-          a *= Math.max(0.03, Math.exp(-((g.lenPx || 0) - 200) / 55));
         }
       }
       if (e.kind === 'definition') a *= lodA.defDim;
@@ -6122,6 +6117,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
         if (0.34 * f <= 0.06) return false;
       }
       return true;
+    }
+    /* ⭐ 2026-10-19：长线降权改回**世界长度**（用户报：同一条线越放大越长、越淡、最后消失，
+       而它两头都在视野里）。屏幕长度的惩罚由「一端在屏外」那一支负责，这里只看世界长度，
+       这样任何缩放下同一条边的浓淡都是同一个值。 */
+    function worldLen(e) {
+      if (e._wlen != null) return e._wlen;
+      var ids = GU.edgeNodes(e);
+      var a0 = ids[0] && view.graph.byId[ids[0]], b0 = ids[1] && view.graph.byId[ids[1]];
+      e._wlen = (a0 && b0) ? U.dist(a0.x, a0.y, b0.x, b0.y) : 0;
+      return e._wlen;
     }
     function hitTest(sx, sy) {
       ensureGeom();
