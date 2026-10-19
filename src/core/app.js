@@ -148,6 +148,15 @@
     /* Phase A：世界位图（挂载见文件末尾）。paintKey 把「绘制输入」压成一个串，
        它一变（显隐 / 开关 / 聚焦 / 数据）就允许重烘一次 —— 平移与纯 k 变不重烘。 */
     var bitmap = null, perfRec = null, lastUseBmp = false;
+    /* ⭐ 2026-10-20 **这三个必须在工厂作用域里，不能写在 frame() 里**。
+       以前写成 `if (typeof prevCam === 'undefined') { var prevCam = null; … }` ——
+       `var` 会被提升到 frame() 顶部（值恒为 undefined）⇒ 那句判据**每一帧都为真** ⇒
+       三项每帧被重置：
+         · prevCam = null ⇒ `_moving` 恒为 false ⇒ bakeIdleAt 永远是 0
+           ⇒ `_canBake` 恒为 `!animating`（「停稳 120ms 才烘」形同虚设：拖动时照样每帧开一轮）；
+         · wasAnimating = false ⇒ `settleDraw` 恒为 false ⇒ 「动画结束那一帧补画」从来没发生。
+       判据要的是**跨帧**状态，所以提到这里。 */
+    var prevCam = null, bakeIdleAt = 0, wasAnimating = false;
     function paintKey() {
       /* ⚠️ `showAllEdges` 必须算进绘制输入：它改的是**画出来的线**，
          漏了它就会「点了按钮、位图照旧」——运行时切「全部连线」什么都不发生
@@ -202,7 +211,6 @@
         cloudDrawn.tex = null;              // 纹理换了：这一次必须重铺
       }
       var tp = performance.now();
-      if (typeof prevCam === 'undefined') { var prevCam = null; var bakeIdleAt = 0; var wasAnimating = false; }
       var animating = cam.tick();
       /* ⭐ 2026-10-19：**动画刚结束的那一帧也要画一次**（settleDraw）。
          否则「最后一帧」画的是「上一帧机位 + 回放」的标签，此后没人再画 ⇒ 名字永远差
@@ -222,16 +230,24 @@
            位置与缩放由 bitmap 自己按相机写 transform（吸附到设备像素网格）。 */
         /* ⭐ 2026-10-19：**相机在动就不烘焙**。平板上单带烘焙 20.6ms，拖动时每帧都在烘
            ⇒ 15~25fps（fps=1 角标实测：绘制 6.2ms / 其余 27.6ms，全在烘）。
-           交互期间沿用上一代位图（清晰度略降、位置正确），停稳后再补。
-         注意：这里不 tick 时位图图层留着上一帧的图，不会闪空。 */
-        /* ⭐ 2026-10-19：**「停稳 250ms 才烘」**。原来只判 animating，可拖动/滚轮并不走
-           相机动画那条路 ⇒ 照样每帧烘一条带（平板实测：其余 36.9ms，绘制只有 8.8）。
-           这里用「相机这一帧动没动」当判据，比 animating 可靠。 */
+           交互期间沿用上一代位图（清晰度略降），停稳后再补。
+          ⛔⛔ 但 **`tick()` 必须每帧都调**：它除了决定烘不烘，还负责
+              `syncCam()` + `applyTransform()` —— 也就是把位图图层按**当前**相机摆好。
+              以前整帧不调 ⇒ 相机一动，位图图层就停在上一帧的机位上（拖动时整个静态层
+              冻住，动画期间更是 700ms 不动），而实时层又因为 `staticHidden` 不画节点
+              ⇒ 屏幕上就是「节点不渲染 / 停在老位置」。
+              省电应该只省**烘焙**，不能省**落位**。
+          ⭐ 2026-10-19：**「停稳 120ms 才烘」**。原来只判 animating，可拖动/滚轮并不走
+             相机动画那条路 ⇒ 照样每帧烘一条带（平板实测：其余 36.9ms，绘制只有 8.8）。
+             这里用「相机这一帧动没动」当判据，比 animating 可靠。
+          ⭐ 2026-10-20：判据是「省电只在不缺覆盖时生效」—— `lazy:true` 传下去，
+             worldbitmap 会跳过「只为清晰度」的重烘（k 变了 / 尺寸变了），
+             但**覆盖不够就照烘**（即将露洞 / 换档 / 带轮在飞）。见 worldbitmap.tick。 */
         var _moving = (prevCam && (prevCam.k !== c.k || prevCam.tx !== c.tx || prevCam.ty !== c.ty));
         if (_moving) bakeIdleAt = performance.now();
         prevCam = { k: c.k, tx: c.tx, ty: c.ty };
         var _canBake = !animating && (performance.now() - bakeIdleAt > 120);
-        var useBmp = bitmap ? (_canBake ? bitmap.tick(c, dpr, paintKey()) : !!lastUseBmp) : false;
+        var useBmp = bitmap ? bitmap.tick(c, dpr, paintKey(), { lazy: !_canBake }) : false;
         lastUseBmp = useBmp;
         renderer.setStaticHidden(useBmp);
         renderer.setGlowLive(useBmp);

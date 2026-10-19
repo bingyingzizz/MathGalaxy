@@ -573,8 +573,17 @@
       chainId = global.requestAnimationFrame(chainStep);
     }
 
-    /** 每帧调一次（在 renderer.draw() 之前）；返回 true = 本帧静态层由位图承担 */
-    function tick(cam, dpr, paintKey) {
+    /** 每帧调一次（在 renderer.draw() 之前）；返回 true = 本帧静态层由位图承担。
+        ⭐⭐ 第 4 个参数 opt.lazy = 「省电模式」（相机正在动：拖动 / 滚轮 / 动画）。
+            规则：**省电只在不缺覆盖时生效**。
+              · 落位（syncCam + applyTransform）**永远做** —— 它决定图层摆在哪，
+                不做就是「节点停在老位置 / 不渲染」；
+              · 纯清晰度的重烘（k 变了、尺寸变了）在 lazy 下跳过 —— 旧图几何上还盖得住；
+              · **覆盖不够就照烘**：`!adequate()`（换档 / 真露洞）与 `lowSlack`
+                （余量撑不到一轮跑完）两条一律放行；缩放手势的 zoomMs 节流也保留。
+            ⛔ 别把 lazy 做成「整帧不 tick」—— 那就是把落位也省掉了。 */
+    function tick(cam, dpr, paintKey, opt) {
+      var lazy = !!(opt && opt.lazy);
       if (!els[0]) attach();
       dpr = Math.max(1, dpr || 1);
       var k = cam.k;
@@ -613,6 +622,10 @@
         var settled = !moved && (now() - lastMove) > settleMs;
         var zoomNow = zoomDue(k, paintKey);        // 手势里到点该补一帧了吗
         var lowSlack = pick.mode === 'region' && snapshotRegion() && sl < needPx(sNow.h);
+        /* ⭐ lazy（相机在动）时只允许「覆盖驱动」的重烘：
+             · !adequate()   —— 旧图已经框不住视口 / k 出了世界档（会露洞或换档）
+             · lowSlack      —— 余量撑不住一轮带轮（马上就要露洞）
+           其余两处（换尺寸换档、纯 k 变）都只是清晰度问题，旧图几何上盖得住 ⇒ 等停稳再补。 */
         if (!adequate(k)) {
           stats.emerg++;
           if (slog.length > 8) slog.shift();
@@ -631,16 +644,18 @@
           /* 换档 / 换视口：画布尺寸要变（那一次分配躲不掉），但**烘的部分照样能切带**。
              同步全烘 = 「分配 + 整张烘」一根 ~200ms；开轮 = 「分配 + 第一条带」~75ms。
              ⚠️ 手势里要跟 zoomMs 一样限频：世界档的尺寸随 k 走（已量化到 128 的格），
-             不限频就变成「k 每动一点 ⇒ 尺寸又变了 ⇒ 又开一轮」——实测每帧一轮。 */
-          if (settled || zoomNow) { lastKey = paintKey; wantRound = true; }
+             不限频就变成「k 每动一点 ⇒ 尺寸又变了 ⇒ 又开一轮」——实测每帧一轮。
+             ⭐ lazy 时只认 settled：这一支纯属清晰度，旧图还盖得住（上面 !adequate 已经判过）。 */
+          if (settled || (!lazy && zoomNow)) { lastKey = paintKey; wantRound = true; }
         } else if (lowSlack) {
           /* ⭐ 提前开轮：余量不够轮跑完就别等露洞。平移、缩放都走这一条
              （⛔ 必须排在 stale 前面 —— 缩放时 stale 恒真，排后面就会被它挡住 ⇒ 每次都是露洞后
-             才补救）。 */
+             才补救）。⭐ lazy 下也放行：这就是「相机即将移出已烘覆盖区」那条。 */
           wantRound = true;
         } else if (stale && (settled || zoomNow)) {
           /* k / dpr / 绘制输入变了 ⇒ **停手补一次**；⭐ 手势里也按 zoomMs 补一次（见 zoomDue）。
-             两条都走带轮 —— 同步全烘只有「真露洞」才配得上。 */
+             两条都走带轮 —— 同步全烘只有「真露洞」才配得上。
+             ⭐ lazy 时只剩 zoomNow 这一条：纯平移 stale 恒为假，根本走不到这里。 */
           lastKey = paintKey;
           wantRound = true;
         }

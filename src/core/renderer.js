@@ -1653,26 +1653,64 @@
        ⛔ 这里包的是「名字」这一**组**，不是原来那个只包节点名的半成品 ——
           用户在拖动时看到的名字来自四个函数：大板块名 / 领域名 / 星团名 / 节点名。
        两条路：
-         · 相机 k 没变、且这一帧**确实在平移** ⇒ 回放上一帧记下的文字操作，
-           整体 translate 位移量；**不测量、不避让、不重排** ⇒ 名字跟着画面走，不会闪；
+         · 相机 k 没变、且这一帧**确实在平移** ⇒ 把离屏标签层整体按位移贴回去；
+           **不测量、不避让、不重排** ⇒ 名字跟着画面走，不会闪；
          · 其余情况（k 变了 / 没有缓存 / **相机停住了**）⇒ 重算一次。
        ⭐ 失效入口一共**四条**（2026-10-19 收尾补后三条）：
          ① k / 画布尺寸变了；
-         ② **累计位移超过半屏** —— 新露出来的那半屏压根没被测量过，回放再多也补不上；
+         ② **累计位移超过可回放范围**（= min(半屏, 离屏层余量×0.9)）—— 再往外就没画过了；
          ③ **相机停住了**（本帧机位与上一帧逐位相同 = 松手 / 滚轮去抖收尾 / 动画结束）；
          ④ `labelSig()` 变了（选中 / 悬停 / 搜索命中 / 「名称」开关 / 画布语言）。
        ⛔ ②③ 之外还有一条隐含的：`dx == dy == 0`（机位与**重算那一帧**相同）也重算。
        ⚠️ ③ 必须比「c.tx === labelCache.tx」—— 后者记的是**重算那一帧**的机位，
           平移之后就永远差一个 dx，于是「停住」那条分支一辈子进不去（旧实现就是这样：
           滚轮平移完，最后一帧仍是回放，没人再画 ⇒ 名字停在旧的一屏）。
+
+       ⭐⭐ 2026-10-20 **换实现：记录文字调用 → 独立离屏图层**。
+          为什么必须换：大板块名 / 领域名 / 星团名外面那圈圆角底框是
+          `roundPath()` + `fill()`/`stroke()` 画的，**不是文字**；旧实现只接管
+          `fillText`/`strokeText` 记账，回放时框根本没有被重放 ⇒
+          一拖动，框就没了、只剩字（用户报的 Bug 1）。
+          现在：`drawAllNames()` 整块画进离屏 canvas（只把 `ctx` 换成它的 2d context，
+          四个出字函数**一行都不改**：圆角框、字距、alpha、避让全都照原样画），
+          每帧再按 (dx,dy) 把那一块 `drawImage` 回主画布 ⇒ 任何非文本装饰自动保住。
+          · 离屏层尺寸 = 视口 + 四周各 `LAB_MARGIN` CSS px，按 dpr 放大（不放大字会糊）；
+          · 回放只贴「屏幕上要的那一块」（源矩形自动裁到图层内），成本 ≈ 一张视口大小的位图。
        ⛔ 不要记 ctx 的变换矩阵：回放时外层已按同一相机画过背景，差的只是一个平移量。
-       ⛔ 不要在这里改四个绘制点里的任何一行（接管 fillText/strokeText 就够了）。 */
-    var labelCache = null;      // { k, tx, ty, w, h, sig, ops: [...] }
+       ⛔ 不要在这里改四个绘制点里的任何一行（换 ctx + 贴图层就够了）。 */
+    var labelCache = null;      // { k, tx, ty, w, h, sig, count }
     var labelBase = 0;          // 本帧起点（prof.labelCount）→ 节点名的「每帧预算」靠它
     /* 上一帧画完时的机位 —— 判「相机停住」用（⛔ 不能用 labelCache.tx，理由见上） */
     var labelPrevCam = null;
+    /* 离屏标签层。margin 越大幅度上能走更远才重算一次，代价是画布内存 ∝ (W+2m)(H+2m)。 */
+    var LAB_MARGIN = 200;
+    var labLayer = null;        // { cv, g, w, h, dpr, margin, ox }
 
-    /** 「名字集合」的指纹：任一项变了 ⇒ 上一帧记下的 ops 已经不代表现在，必须重算。
+    /** 离屏标签层（按 W/H/dpr 复用；尺寸或 dpr 变了就重建） */
+    function ensureLabelLayer() {
+      var m = LAB_MARGIN, d = dpr;
+      if (labLayer && labLayer.w === W && labLayer.h === H && labLayer.dpr === d) return labLayer;
+      var ox = Math.round(m * d);        // 整数设备像素：内容落位不抖，文字不会被半像素糊一下
+      var cv = document.createElement('canvas');
+      cv.width = Math.max(1, Math.round(W * d) + 2 * ox);
+      cv.height = Math.max(1, Math.round(H * d) + 2 * ox);
+      labLayer = { cv: cv, g: cv.getContext('2d'), w: W, h: H, dpr: d, margin: m, ox: ox };
+      return labLayer;
+    }
+
+    /** 把离屏层按 (dx,dy) 贴回主画布。
+        (dx,dy) = 当前机位 − 重算那一帧的机位；只贴屏幕上真正要的那一块。 */
+    function blitLabels(dx, dy) {
+      var L = labLayer;
+      if (!L) return;
+      var d = L.dpr;
+      /* 源矩形：当前屏 (0,0) 在图层里是 (L.ox − dx*d, L.ox − dy*d)。
+         ⚠️ |dx| 超过余量时源矩形会越界 —— 自动被裁掉（drawImage 会把目标按比例裁），
+            所以 ② 的判据必须保证永远走不到那里（见 far）。 */
+      ctx.drawImage(L.cv, L.ox - dx * d, L.ox - dy * d, W * d, H * d, 0, 0, W, H);
+    }
+
+    /** 「名字集合」的指纹：任一项变了 ⇒ 离屏层里那块内容已经不代表现在，必须重算。
         覆盖面 = 特殊标签（选中 → 悬停 → 搜索命中，见 reserveSpecialLabels 的 rank 0/1/2）
         + 「名称」开关（关掉时 drawLabels 不画，节点名整批消失）+ 画布语言（labelShow 换了）。 */
     function labelSig() {
@@ -1684,83 +1722,61 @@
       return f + '|' + h + '|' + s + '|' + (C.showLabels ? '1' : '0') + '|' + (MG.displayLang || 'zh');
     }
 
-    /** 回放：把上一帧记下的文字按 (dx,dy) 整体搬一次 —— 零测量、零避让 */
+    /** 回放：把离屏标签层整块按 (dx,dy) 搬一次 —— 零测量、零避让、零重排 */
     function replayLabels(dx, dy) {
-      var ops = labelCache.ops, n = 0;
-      ctx.save();
-      ctx.translate(dx, dy);
-      for (var i = 0; i < ops.length; i++) {
-        var o = ops[i];
-        /* ⚠️ 逐条还原六项状态：四个函数各自 ctx.save() 过，回放不能假设任何继承值 */
-        ctx.globalAlpha = o.a;
-        ctx.font = o.f;
-        ctx.textAlign = o.al;
-        ctx.textBaseline = o.bl;
-        if (o.s) {
-          ctx.strokeStyle = o.ss;
-          ctx.lineWidth = o.lw;
-          ctx.strokeText(o.t, o.x, o.y);
-        } else {
-          ctx.fillStyle = o.fs;
-          ctx.fillText(o.t, o.x, o.y);
-          n++;
-        }
-      }
-      ctx.restore();
-      prof.labelCount += n;          // HUD 的「标签 N 条」把回放出来的也算上
+      blitLabels(dx, dy);
+      /* HUD 的「标签 N 条」把回放出来的也算上（离屏层里画了几条，重算时数过） */
+      var n = labelCache.count || 0;
+      prof.labelCount += n;
       prof.labelReplay += n;
     }
 
-    /** 统一入口：四类名字一次画完（顺序 = 避让优先级：板块 → 领域 → 星团 → 节点） */
+    /** 统一入口：四类名字一次画完（顺序 = 避让优先级：板块 → 领域 → 星团 → 节点）
+        画进**离屏标签层**，再贴回主画布（见上面那段注释）。 */
     function drawAllNames() {
       var c = camNow();
       /* ⚠️ 先取上一帧机位再覆盖：本帧要判的是「这一帧相机动没动」 */
       var prevCam = labelPrevCam;
       labelPrevCam = { k: c.k, tx: c.tx, ty: c.ty };
       var sig = labelSig();
-      if (labelCache && labelCache.k === c.k && labelCache.w === W && labelCache.h === H &&
-          labelCache.sig === sig) {
+      if (labelCache && labLayer && labLayer.dpr === dpr && labelCache.k === c.k &&
+          labelCache.w === W && labelCache.h === H && labelCache.sig === sig) {
         var dx = c.tx - labelCache.tx, dy = c.ty - labelCache.ty;
         if (dx || dy) {                                   // 纯平移才回放；停住（dx=dy=0）⇒ 往下重算
-          /* ② 累计位移 > 半屏 ⇒ 新露出来的那一块没有任何名字（它从来没被测量/避让过） */
+          /* ② 累计位移超过**离屏层余量**或半屏 ⇒ 再往外那一块压根没画过（它从来没被测量/避让） */
           var vw = c.viewW || W, vh = c.viewH || H;
-          var far = Math.abs(dx) > vw * 0.5 || Math.abs(dy) > vh * 0.5;
+          var limX = Math.min(vw * 0.5, LAB_MARGIN * 0.9);
+          var limY = Math.min(vh * 0.5, LAB_MARGIN * 0.9);
+          var far = Math.abs(dx) > limX || Math.abs(dy) > limY;
           /* ③ 本帧机位 == 上一帧机位 ⇒ 相机停了，这帧就该重算（松手 / 滚轮去抖 / 动画收尾） */
           var stopped = !!(prevCam && prevCam.k === c.k && prevCam.tx === c.tx && prevCam.ty === c.ty);
           if (!far && !stopped) { replayLabels(dx, dy); return; }
         }
       }
-      var ops = [];
+      /* 重算：清空离屏层，把四个出字函数的落点整体挪到层的坐标系里 */
+      var L = ensureLabelLayer();
+      var g = L.g;
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.clearRect(0, 0, L.cv.width, L.cv.height);
+      g.setTransform(dpr, 0, 0, dpr, L.ox, L.ox);
       labelBase = prof.labelCount;
-      /* ⚠️ 还原**不能一律赋值**：赋值会给 ctx 留下「自己的」fillText 属性，永久盖住原型上的
-         方法（实测后果：之后任何「拦 prototype 数 fillText」的探针都数到 0 次）。
-         原来有就放回，原来没有就 delete —— delete 一个可配置的自有属性在严格模式下也合法。 */
-      var ownF = Object.prototype.hasOwnProperty.call(ctx, 'fillText');
-      var ownS = Object.prototype.hasOwnProperty.call(ctx, 'strokeText');
-      var of = ctx.fillText, os = ctx.strokeText;
-      /* 记的是**调用那一刻**的 ctx 状态（alpha / 颜色 / 字体 / 对齐 / 基线）：
-         回放时按原值复位，所以记录里不带任何「变换」也不带 save/restore 栈。 */
-      ctx.fillText = function (t, x, y) {
-        ops.push({ t: t, x: x, y: y, a: ctx.globalAlpha, fs: ctx.fillStyle,
-          f: ctx.font, al: ctx.textAlign, bl: ctx.textBaseline });
-        return of.call(ctx, t, x, y);
-      };
-      ctx.strokeText = function (t, x, y) {
-        ops.push({ t: t, x: x, y: y, a: ctx.globalAlpha, ss: ctx.strokeStyle,
-          lw: ctx.lineWidth, f: ctx.font, al: ctx.textAlign, bl: ctx.textBaseline, s: 1 });
-        return os.call(ctx, t, x, y);
-      };
+      var before = prof.labelCount;
+      /* ⚠️ 只在这一段里把 ctx 换成离屏层的 context：四个绘制函数（含 roundPath 画的
+          圆角底框、手动字距、alpha、避让）**一行都不改**。drawStatic 也是这么换 ctx 的。 */
+      var saveCtx = ctx;
+      ctx = g;
       try {
         if (lodA.sectorName > 0.02) drawSectorNames();
         if (lodA.galaxyName > 0.02) drawGalaxyNames();
         if (lodA.clusterName > 0.02) drawClusterNames();
         if (C.showLabels) drawLabels();
       } finally {
-        if (ownF) ctx.fillText = of; else delete ctx.fillText;
-        if (ownS) ctx.strokeText = os; else delete ctx.strokeText;
+        ctx = saveCtx;
       }
-      labelCache = { k: c.k, tx: c.tx, ty: c.ty, w: W, h: H, sig: sig, ops: ops };
+      labelCache = { k: c.k, tx: c.tx, ty: c.ty, w: W, h: H, sig: sig,
+        count: prof.labelCount - before };
       prof.labelRecalc++;
+      blitLabels(0, 0);
     }
 
     function drawLabels() {
