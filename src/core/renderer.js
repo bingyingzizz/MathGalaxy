@@ -1792,7 +1792,7 @@
       if (e.kind === 'definition' && !C.showDefinitionLines) return false;
       if (GU.isWeak(e) && !C.exploreMode) return false;
       if (r < 1.35 && e.kind !== 'definition') return false;   // 全景不画黑线
-
+      return true;
     }
     /* ⭐ 2026-10-19：长线降权改回**世界长度**（用户报：同一条线越放大越长、越淡、最后消失，
        而它两头都在视野里）。屏幕长度的惩罚由「一端在屏外」那一支负责，这里只看世界长度，
