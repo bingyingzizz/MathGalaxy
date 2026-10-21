@@ -271,6 +271,10 @@ function fill(tpl, map, name) {
   return out;
 }
 const readSite = (f) => fs.readFileSync(path.join(SITE, f), 'utf8');
+/* ⭐ 2026-10-20：站点图标要**真实文件**（搜索引擎只认能抓到的 ico/png，
+   内联 data: URI 的 SVG 不会被 SERP 采用）。这三个文件由 site/ 拷到站点根。 */
+const FICONS = ['favicon.ico', 'favicon.png', 'apple-touch-icon.png'];
+
 
 /**
  * 分享卡片 / 收录用的 head 片段：canonical + OG + Twitter + 一段 JSON-LD。
@@ -430,6 +434,7 @@ const docsHtml = DOCS.map((d) => {
   ].filter(Boolean).join('\n');
 }).join('\n\n');
 
+FICONS.forEach(function (f) { const src = path.join(SITE, f); if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, f)); });
 fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
   USER,
   UPDATED: updated,
