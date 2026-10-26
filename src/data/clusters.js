@@ -548,6 +548,22 @@ MG.clusters = [
     parent: 'condensed',
     hub: 'thm.real-banach-chaus-acyclic',
     desc: '造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$。'
+  },
+  {
+    id: 'cond.solid',
+    name: '固态阿贝尔群',
+    en: 'Solid Abelian Groups',
+    parent: 'condensed',
+    hub: 'thm.solid-abelian',
+    desc: '造出凝聚态世界里的**完备化 / 完备张量积**：测度 $M(S,\\mathbb{Z})$ → 自由固态 $Z[S]^{\\blacksquare}$ → 固态群（唯一延拓）→ $C(S,\\mathbb{Z})$ 自由（Specker–Nöbeling）→ 固态子范畴是阿贝尔的、以 $\\prod_I \\mathbb{Z}$ 为紧投射生成元 → 固态张量积 $\\otimes^{\\blacksquare}$。来源：Clausen–Scholze 讲义 Lectures V–VI。'
+  },
+  {
+    id: 'cond.analytic',
+    name: '解析环与固态模',
+    en: 'Analytic Rings and Solid Modules',
+    parent: 'condensed',
+    hub: 'thm.za-analytic',
+    desc: '把「自由完备模」抽成函子：预解析环 → 解析环 → 解析环上的固态模范畴（阿贝尔、有紧投射生成元）→ base change → 有限生成 $\\mathbb{Z}$-代数的 $A_\\blacksquare$ 是解析环 → 仿射相干对偶 $f_! \\dashv f^!$。来源：Clausen–Scholze 讲义 Lectures VII–VIII。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

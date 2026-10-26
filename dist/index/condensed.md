@@ -7,3 +7,5 @@
 - cond.ab　凝聚态阿贝尔群 / Condensed Abelian Groups　中心天体 def.condensed-abelian-group　7 点
 - cond.topo　拓扑阿贝尔群 / Topological Abelian Groups　中心天体 thm.pontryagin-van-kampen　13 点
 - cond.cohomology　凝聚态上同调 / Condensed Cohomology　中心天体 thm.real-banach-chaus-acyclic　38 点
+- cond.solid　固态阿贝尔群 / Solid Abelian Groups　中心天体 thm.solid-abelian　13 点
+- cond.analytic　解析环与固态模 / Analytic Rings and Solid Modules　中心天体 thm.za-analytic　8 点

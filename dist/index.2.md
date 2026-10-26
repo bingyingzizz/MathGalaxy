@@ -12,4 +12,4 @@ cat.basic　cat.functor　cat.limit　cat.structure　cat.algebra　cat.yoneda�
 hom.ab　hom.complex　hom.cohomology　hom.spectral　hom.sheafcoh　hom.sheaf
 
 ## 凝聚态数学（condensed）
-cond.set　cond.ab　cond.topo　cond.cohomology
+cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic

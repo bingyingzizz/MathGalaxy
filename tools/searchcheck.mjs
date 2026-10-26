@@ -70,12 +70,12 @@ const CASES = [
   { q: 'σ-algebra', n: 3, top: ['def.borel', 'def.sigma-algebra', 'def.product-sigma'], why: '希腊字母 + 连字符：三个都靠标题里的英文括注命中（同档）⇒ degree/id 定次序。⚠️ 想让 def.sigma-algebra 领跑，得做「σ ↔ sigma」等价，另一件事' },
   { q: 'kC', n: 3, top: ['cor.cg-exponential-adjoint', 'prop.cg-function-space', 'prop.cg-kclosed-quotient'], why: '缩写/记号：被明确排除出「英文名」的那些，但要能搜到' },
   { q: 'NBV', n: 5, top: ['def.nbv', 'prop.nbv-derivative', 'thm.borel-measure-nbv'], why: '全大写缩写（aka 里算「名字样」的例外）' },
-  { q: 'Noether', n: 4, top: ['thm.first-iso', 'def.quotient-group', 'def.group-hom'], why: '⭐ 从 aka 里删掉之后**仍然**要能搜到（走 title / 别的 aka）' },
+  { q: 'Noether', n: 5, top: ['thm.first-iso', 'def.quotient-group', 'def.group-hom'], why: '⚠️ 4→5：新增 `thm.za-analytic` 的说明提到 Noether 归一化（前三条没动）。⭐ 从 aka 里删掉之后**仍然**要能搜到（走 title / 别的 aka）' },
   { q: 'Delta', n: 14, top: ['thm.ac-epsilon-delta', 'prop.constant-sheaf-preserves-limits', 'def.simplex-category'], why: '⭐ 同上去掉 aka 之后仍可搜（`def.simplex-category` 也在命中里；另有 ε-δ 与正文里的 δ）' },
   { q: '测度', n: 14, top: ['def.measure', 'def.measure-space', 'thm.borel-measure-nbv'], why: '中文词：不该受英文词边界规则影响（同档的一批换了位，集合与旧记录相同）' },
   { q: '紧生成', n: 14, top: ['def.compactly-generated', 'prop.cg-cartesian-closed', 'prop.cg-coreflective'], why: '中文词 + 星团名命中（同档批次，degree 定次序）' },
-  { q: '定义', n: 14, total: 460, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 这个数**每加一批内容就会长**：345 → 353（批 1，35 点）→ 361（批 1 收尾）→ 381（批 2，48 点）→ 412（批 3，42 点）→ 433（批 4，36 点）→ 444（批 5，25 点）→ 451（批 6，15 点）→ 460（批 7，24 点）。它统计的是「命中次数」而不是节点数，所以正文里出现的「定义」二字也计入。加完内容按新值重钉即可，**动就是预期的**' },
-  { q: 'compact', total: 28, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 28。⚠️ 26→28 来自新增的 `prop.continuous-bounded-on-compact` 与 `thm.uniform-continuity-compact` —— **id 也在 hay 里**，所以新节点的 id 会直接抬高这类拉丁词的总数' },
+  { q: '定义', n: 14, total: 469, why: '类型名命中：清单型查询，会顶到上限 14 —— ⭐ total 钉住「真总数要说出来」（2026-10-16 建议①）。⚠️ 这个数**每加一批内容就会长**：345 → 353（批 1，35 点）→ 361（批 1 收尾）→ 381（批 2，48 点）→ 412（批 3，42 点）→ 433（批 4，36 点）→ 444（批 5，25 点）→ 451（批 6，15 点）→ 460（批 7，24 点）→ 469（批 8，固态/解析 21 点）。它统计的是「命中次数」而不是节点数，所以正文里出现的「定义」二字也计入。加完内容按新值重钉即可，**动就是预期的**' },
+  { q: 'compact', total: 32, n: 14, why: '同上：界面只显示 14 条，但底部那行必须报出真实的 32。⚠️ 28→32 是批 8 带进来的：`cor.solid-compact-generators` 的 **id 含 compact**，另外 `prop.analytic-examples` 等节点的正文提到 compact 情形。⚠️ 26→28 来自新增的 `prop.continuous-bounded-on-compact` 与 `thm.uniform-continuity-compact` —— **id 也在 hay 里**，所以新节点的 id 会直接抬高这类拉丁词的总数' },
   /* ⭐ `ref:` 前缀 = 只搜书目/出处（2026-10-16 建议④）。
      ⛔ refs **不进 hay**（上一批 `I.5` 那条记 0 就是为了钉住这点），
         要按书号找节点只能走这个显式前缀，免得章节号污染普通搜索。 */

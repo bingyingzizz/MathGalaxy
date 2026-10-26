@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-26T03:28:16.910Z
-> 9 星系 / 61 星团 / 934 节点 / 1687 连线（强边 1678，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-26T15:20:02.863Z
+> 9 星系 / 63 星团 / 955 节点 / 1709 连线（强边 1700，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -17990,6 +17990,443 @@ $$S = \bigcup_{m \in M} f^{-1}\bigl(B(m, \varepsilon/2)\bigr)$$
 
 参考：Le Stum, An introduction to condensed mathematics, §8.2
 
+### 星团：固态阿贝尔群
+> 造出凝聚态世界里的**完备化 / 完备张量积**：测度 $M(S,\mathbb{Z})$ → 自由固态 $Z[S]^{\blacksquare}$ → 固态群（唯一延拓）→ $C(S,\mathbb{Z})$ 自由（Specker–Nöbeling）→ 固态子范畴是阿贝尔的、以 $\prod_I \mathbb{Z}$ 为紧投射生成元 → 固态张量积 $\otimes^{\blacksquare}$。来源：Clausen–Scholze 讲义 Lectures V–VI。
+
+#### 整值测度　`def.cond-measure`
+*定义*　整值测度 $M(S,\mathbb{Z})$（Integer-Valued Measures）
+
+设 $S$ 是 profinite 集（紧 Hausdorff 全不连通空间），$C(S, \mathbb{Z})$ 是连续函数 $S \to \mathbb{Z}$ 的群（离散拓扑）。定义 $S$ 上的**整值测度**群
+
+$$M(S, \mathbb{Z}) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ \mathbb{Z}\bigr).$$
+
+更一般地，对任意阿贝尔群 $A$ 记
+
+$$M(S, A) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ A\bigr),$$
+
+特别地有 $M(S, \mathbb{R})$ 与 $M(S, \mathbb{R}/\mathbb{Z})$（$\mathbb{R}$ 值、$\mathbb{R}/\mathbb{Z}$ 值测度）。
+
+⭐ 名字的来源：$C(S,\mathbb{Z})$ 的元素是「$S$ 上的整数函数」，把测度 $\mu$ 作用上去就得到 $\int f\,d\mu$。当 $S$ 有限时 $M(S,\mathbb{Z}) = \mathbb{Z}^{S}$，就是「每个点放一个整数」；当 $S$ 是无限 profinite 时，$M(S,\mathbb{Z})$ 是**形式无穷和**，一般比 $\mathbb{Z}[S]$ 大得多。
+
+⭐ 关键的 一步是 `thm.csz-free`：$C(S,\mathbb{Z})$ 是自由阿贝尔群，所以 $M(S,\mathbb{Z}) \cong \prod_I \mathbb{Z}$ 是**可数积以外的**大乘积 —— 这正是固态理论要的「完备化」。
+
+⚠ $C(S,\mathbb{Z})$ 取**离散**拓扑：$S$ 紧、$\mathbb{Z}$ 离散，连续函数的像是有限集，所以它作为抽象群是自由的（Nöbeling 定理），但一般不是有限生成。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1
+
+#### 固态阿贝尔群　`def.solid-group`
+*定义*　固态阿贝尔群（Solid Abelian Groups）
+
+**(i) 自由固态群。** 对 profinite 集 $S = \varprojlim_i S_i$（$S_i$ 有限），定义
+
+$$Z[S]^{\blacksquare} := \varprojlim_i \mathbb{Z}[S_i].$$
+
+有自然映射 $S = \varprojlim_i S_i \to \varprojlim_i \mathbb{Z}[S_i]$，从而 $\mathbb{Z}[S] \to Z[S]^{\blacksquare}$。
+
+**(ii) 固态群。** 凝聚态阿贝尔群 $A$ 叫**固态的**，当且仅当：对每个 profinite 集 $S$ 与每个映射 $f : S \to A$，存在**唯一**的映射 $\tilde f : Z[S]^{\blacksquare} \to A$ 使
+
+$$S \longrightarrow Z[S]^{\blacksquare} \xrightarrow{\ \tilde f\ } A$$
+
+等于 $f$。
+
+**(iii) 固态复形。** 复形 $C \in D(\operatorname{Cond}(\mathbf{Ab}))$ 叫**固态的**，当且仅当对每个 profinite 集 $S$，自然映射
+
+$$\operatorname{RHom}(Z[S]^{\blacksquare}, C) \longrightarrow \operatorname{RHom}(\mathbb{Z}[S], C) = R\Gamma(S, C)$$
+
+是同构。
+
+⭐ 一句话：**「$S$ 上的函数」可以唯一地积分成 $A$ 里的元素**。这就是「完备化」在凝聚态世界里的正确形态 —— 名字叫 solid 而不是 complete，是因为它不是经典的拓扑完备（$\mathbb{R}$ 的固态化反而是 $0$，见 `cor.solid-compact-generators`）。
+
+⭐ (ii) 等价于「$\operatorname{Hom}(Z[S]^{\blacksquare}, A) \cong \operatorname{Hom}(\mathbb{Z}[S], A) = A(S)$」，即 free solid 群表示函子 $A \mapsto A(S)$。
+
+⚠ (ii) 与 (iii) 的关系不是免费的：由 (ii) 只推出 $A[0]$ 固态；反过来「固态群的 $H^i$ 仍固态」要到 `thm.solid-derived` 才成立。
+
+⚠ 这里只写了**固态阿贝尔群**。模的情形要等解析环（`def.analytic-ring`）才有干净的语言。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1
+
+#### 连续函数群是自由的　`thm.csz-free`
+*定理*　定理：$C(S,\mathbb{Z})$ 是自由阿贝尔群（Specker–Nöbeling）
+
+对任意 profinite 集 $S$，连续函数群
+
+$$C(S, \mathbb{Z}) = \{\, f : S \to \mathbb{Z}\ \text{连续} \,\}$$
+
+是**自由阿贝尔群**。
+
+⭐ 这是 Specker（1950，$S$ 为 $\mathbb{Z}_p$ 型）与 Nöbeling（1968，一般 profinite）的结果。反直觉的地方：$C(S,\mathbb{Z})$ 看起来像「无穷多个 $\mathbb{Z}$ 的函数」，却**总是自由**的 —— 而它的对偶 $M(S,\mathbb{Z}) = \prod_I \mathbb{Z}$ 才是大的那一头。
+
+⭐ 它是整个固态理论的支点：没有它，$Z[S]^{\blacksquare}$ 就说不成 $\prod_I \mathbb{Z}$，`thm.solid-abelian` 里的「紧投射生成元」也就无从谈起。
+
+⚠ 注意 $C(S,\mathbb{Z})$ 的**有界**版本 $C(S,\mathbb{Z})$ 与 $C(S,\mathbb{R})$ 行为完全不同：$C(S,\mathbb{R})$ 一般不是自由 $\mathbb{R}$-向量空间。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Theorem 5.4
+
+#### 自由固态群是大乘积　`cor.free-solid-product`
+*推论*　推论：$Z[S]^{\blacksquare} \cong \prod_I \mathbb{Z}$
+
+对任意 profinite 集 $S$，存在集合 $I$（$|I| \le 2^{|S|}$）与凝聚态阿贝尔群的同构
+
+$$Z[S]^{\blacksquare} \cong \prod_{I} \mathbb{Z}.$$
+
+其下垫阿贝尔群就是测度群 $M(S,\mathbb{Z})$。
+
+⭐ 这条把「自由固态群」翻译成「大乘积」—— 后面所有计算都靠它。特别地，固态理论里的紧投射对象不是有限生成的自由模，而是**任意乘积** $\prod_I \mathbb{Z}$。
+
+⚠ $I$ 一般不可数：例如 $S = \mathbb{Z}_p$ 时 $C(S,\mathbb{Z})$ 的自由基数是可数的，但 $M(S,\mathbb{Z}) = \prod_{\mathbb{N}} \mathbb{Z}$ 不可数。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Corollary 5.5
+
+#### 固态化把超覆盖变成正合列　`prop.solid-hypercover`
+*命题*　命题：超覆盖的固态化正合（Hypercover Exactness）
+
+设 $S_\bullet \to S$ 是 profinite 集的一个 hypercover（即单纯对象 $S_\bullet$ 配上增广 $S_\bullet \to S$，使得每一层的退化都给出同伦等价）。则凝聚态阿贝尔群的复形
+
+$$\cdots \longrightarrow Z[S_1]^{\blacksquare} \longrightarrow Z[S_0]^{\blacksquare} \longrightarrow Z[S]^{\blacksquare} \longrightarrow 0$$
+
+正合。
+
+⭐ 这条说明定义里把「profinite 集」换成「extremally disconnected 集」不会改变固态群：两者由 hypercover 互相逼近。
+
+⭐ 证明用两件事：$H^i(S,\mathbb{Z}) = 0$（$i > 0$，profinite 集上常层上同调），以及 `thm.csz-free` 把每个 $C(S_i,\mathbb{Z})$ 写成自由群再做对偶。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Proposition 5.6
+
+#### 自由固态群是固态的　`prop.free-solid-solid`
+*命题*　命题：$Z[S]^{\blacksquare}$ 是固态的（作为模与复形）
+
+对任意 profinite 集 $S$，$Z[S]^{\blacksquare}$ 是固态阿贝尔群；并且 $Z[S]^{\blacksquare}[0] \in D(\operatorname{Cond}(\mathbf{Ab}))$ 是固态复形。
+
+⭐ 这条让「自由固态群」这个叫法合法：它确实是固态范畴里的自由对象。
+
+⭐ 证明归约到 $Z[S]^{\blacksquare} = \mathbb{Z}$ 的情形（用 `cor.free-solid-product` 把一般情形写成 $\prod_J \mathbb{Z}$，再逐项算），此时两边分别是 $H^i(T,\mathbb{Z})$ 与 $\operatorname{RHom}(\prod_J\mathbb{Z},\mathbb{Z})$，用 $0 \to \prod_J \mathbb{Z} \to \prod_J \mathbb{R} \to \prod_J \mathbb{R}/\mathbb{Z} \to 0$ 和 $\mathbb{R}$ 的可缩性算出来。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Proposition 5.7
+
+#### 完备化判据　`lem.solid-completion-criterion`
+*引理*　引理：把子范畴做成阿贝尔子范畴的抽象判据（Lemma 5.9）
+
+设 $\mathcal{A}$ 是有任意余极限的阿贝尔范畴，$\mathcal{A}_0 \subset \mathcal{A}$ 是一族紧投射生成元。设 $F : \mathcal{A}_0 \to \mathcal{A}$ 带自然变换 $X \to F(X)$，满足：
+
+对任意 $X \in \mathcal{A}_0$、任意由 $F$ 的像的直和构成的映射 $f : Y \to Z$ 及其核 $K$，
+
+$$\operatorname{RHom}(F(X), K) \longrightarrow \operatorname{RHom}(X, K)$$
+
+是同构。令 $\mathcal{A}_F$ 为所有满足「$\operatorname{Hom}(F(X), Y) \to \operatorname{Hom}(X, Y)$ 对一切 $X \in \mathcal{A}_0$ 是同构」的 $Y$ 组成的全子范畴。则：
+
+**(i)** $\mathcal{A}_F \subset \mathcal{A}$ 是阿贝尔子范畴，对一切极限、余极限与扩张稳定；$F(X)$（$X \in \mathcal{A}_0$）是 $\mathcal{A}_F$ 的一族紧投射生成元；含入有左伴随 $L$，它是 $F$ 的唯一保余极限延拓。
+
+**(ii)** $D(\mathcal{A}_F) \to D(\mathcal{A})$ 全忠实，像恰为那些满足 $\operatorname{RHom}(F(X), C) \cong \operatorname{RHom}(X, C)$ 的复形；$C \in D(\mathcal{A}_F)$ 当且仅当所有 $H^i(C) \in \mathcal{A}_F$；含入有左伴随（$L$ 的左导出）。
+
+⭐ 这是一条**纯范畴论**的引理：它把「证明某个完备化子范畴性质良好」压缩成一条 Ext-消没条件。`thm.solid-abelian` 就是它的实例（$\mathcal{A} = \operatorname{Cond}(\mathbf{Ab})$，$F(\mathbb{Z}[S]) = Z[S]^{\blacksquare}$）。
+
+⚠ 条件里只对**核**要求同构，不对余核要求 —— 但对偶地写成余核也一样（见原文 Remark 5.11）。
+
+📌 证明是标准的同调代数：先证 $\mathcal{A}_F$ 对核与极限封闭，再用「两个直和之间的映射」把余核也拉进来，最后用 Postnikov 截断把复形的情形归约到单点。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Lemma 5.9
+
+#### 固态群构成阿贝尔子范畴　`thm.solid-abelian`
+*定理*　定理：$\mathbf{Solid}$ 是阿贝尔子范畴，$\prod_I\mathbb{Z}$ 是紧投射生成元
+
+设 $\mathbf{Solid} \subset \operatorname{Cond}(\mathbf{Ab})$ 是固态阿贝尔群的全子范畴。则：
+
+**(i)** $\mathbf{Solid}$ 是阿贝尔子范畴，对一切极限、余极限与扩张稳定；对象 $\prod_I \mathbb{Z}$（$I$ 任意）构成一族**紧投射生成元**；含入有左伴随
+
+$$M \longmapsto M^{\blacksquare} : \operatorname{Cond}(\mathbf{Ab}) \longrightarrow \mathbf{Solid},$$
+
+它是 $\mathbb{Z}[S] \mapsto Z[S]^{\blacksquare}$ 的唯一保余极限延拓（**固态化**）。
+
+⭐ 这是整套理论的引擎：凝聚态阿贝尔群**不是**局部化的，但固态子范畴是，而且还有足够多紧投射对象 —— 于是可以像模范畴一样做同调代数。
+
+⭐ 证明路线：对 $\mathcal{A} = \operatorname{Cond}(\mathbf{Ab})$、$\mathcal{A}_0 = \{\mathbb{Z}[S] : S\ \text{extremally disconnected}\}$ 验证 `lem.solid-completion-criterion` 的条件。关键计算是：对由 $\prod_I \mathbb{Z}$ 的直和构成的复形 $C$，
+
+$$\operatorname{RHom}(Z[S]^{\blacksquare}, C) \cong R\Gamma(S, C).$$
+
+它是 Lecture VI 的主计算（把 $C$ 换成 $C \to C_{\mathbb{R}} \to C_{\mathbb{R}/\mathbb{Z}}$，再用紧阿贝尔群的两步消解与 $\mathbb{R}$-模的可缩性）。
+
+⚠ 细节在原文 Lecture VI（pp. 38–41），我们只在这里给出结构与关键计算。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Theorem 5.8 (i)
+
+#### 固态复形与导出范畴　`thm.solid-derived`
+*定理*　定理：$D(\mathbf{Solid}) \subset D(\operatorname{Cond}(\mathbf{Ab}))$ 全忠实
+
+**(ii)** 函子 $D(\mathbf{Solid}) \to D(\operatorname{Cond}(\mathbf{Ab}))$ 全忠实，其本质像恰为 $D(\operatorname{Cond}(\mathbf{Ab}))$ 中的固态复形。复形 $C$ 固态当且仅当所有 $H^i(C)$ 都是固态阿贝尔群。含入有左伴随
+
+$$C \longmapsto C^{L\blacksquare} : D(\operatorname{Cond}(\mathbf{Ab})) \longrightarrow D(\mathbf{Solid}),$$
+
+它是 $M \mapsto M^{\blacksquare}$ 的左导出函子。
+
+⭐ 这条把「固态」从对象层面抬到复形层面：不必逐项检查，只看上同调。
+
+⚠ 与 (i) 合起来才是完整的 Theorem 5.8；这里拆成两个节点是因为它们的用途不同 —— (i) 用于构造，(ii) 用于计算。
+
+⭐ 推论：$\mathbf{Solid}$ 的导出范畴可以当成 $D(\operatorname{Cond}(\mathbf{Ab}))$ 的一个**反射**全子范畴，反射函子就是 $C \mapsto C^{L\blacksquare}$。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Theorem 5.8 (ii)
+
+#### 固态的紧投射对象　`cor.solid-compact-generators`
+*推论*　推论：紧投射对象恰为 $\prod_I\mathbb{Z}$；$D(\mathbf{Solid})^\omega \simeq D^b(\mathbb{Z})^{\mathrm{op}}$
+
+**(i)** $\mathbf{Solid}$ 的紧投射对象恰为形如 $\prod_I \mathbb{Z}$ 的群（$I$ 任意）。
+
+**(ii)** $D(\mathbf{Solid})$ 由紧对象生成，紧对象是各项为 $\prod_I \mathbb{Z}$ 的有界复形；函子
+
+$$D^b(\mathbb{Z})^{\mathrm{op}} \longrightarrow D(\mathbf{Solid})^\omega, \qquad C \longmapsto \operatorname{RHom}(C, \mathbb{Z})$$
+
+是范畴等价。
+
+**(iii)** $\mathbb{R}$ 的导出固态化消失：$\mathbb{R}^{L\blacksquare} = 0$。
+
+⭐ (iii) 是「非阿基米德完备化」最刺眼的地方：$\mathbb{R}$ 在固态意义下**完备化成 $0$**。这不是 bug —— 固态理论是为 $p$-进/解析几何设计的，阿基米德方向要另做（Clausen–Scholze 后来的“analytic stacks”里用液态/解析环处理）。
+
+⚠ 对照：$\mathbb{Z}_p$ 固态化后还是自己（$p$-进完备），$\mathbb{R}$ 却没了 —— 「solid」不能译成「完备」。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VI, Corollary 6.1
+
+#### 固态张量积　`thm.solid-tensor`
+*定理*　定理：$\mathbf{Solid}$ 上的对称幺半张量积 $\otimes^{\blacksquare}$
+
+**(i)** $\mathbf{Solid}$ 上有唯一的对称幺半张量积 $\otimes^{\blacksquare}$，使固态化函子 $M \mapsto M^{\blacksquare}$ 对称幺半；具体地
+
+$$M \otimes^{\blacksquare} N := (M \otimes N)^{\blacksquare}.$$
+
+**(ii)** $D(\mathbf{Solid})$ 上有唯一的对称幺半结构 $\otimes^{L\blacksquare}$，使 $C \mapsto C^{L\blacksquare}$ 对称幺半；它是 $\otimes^{\blacksquare}$ 的左导出。
+
+⭐ 这是整套理论**要造的那个东西**：一个行为良好的完备张量积。对照：经典的 $\mathbb{Z}_p \hat\otimes \mathbb{R}$ 没有好定义，而 $\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{R} = 0$（见 `ex.solid-tensor-computations`）。
+
+⚠ 唯一性来自「保余极限的函子由自由对象上的值决定」；存在性要验证 $(M \otimes N)^{\blacksquare} \to (M^{\blacksquare} \otimes N^{\blacksquare})^{\blacksquare}$ 是同构，归约到 $M = \mathbb{Z}[S]$、$N = \mathbb{Z}[T]$ 后用 `cor.solid-compact-generators` 的 (iv) 型计算。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VI, Theorem 6.2
+
+#### 大乘积的固态张量积　`prop.solid-product-tensor`
+*命题*　命题：$\prod_I\mathbb{Z} \otimes^{L\blacksquare} \prod_J\mathbb{Z} \cong \prod_{I\times J}\mathbb{Z}$
+
+设 $M = \prod_I \mathbb{Z}$、$N = \prod_J \mathbb{Z}$。则
+
+$$M \otimes^{L\blacksquare} N \cong \prod_{I \times J} \mathbb{Z},$$
+
+特别地 $M \otimes^{L\blacksquare} N$ 集中在同调次数 $0$。
+
+⭐ 这条说明固态张量积在**紧投射对象**上就是「指标集相乘」—— 与有限自由模的张量积完全一致，只是允许无穷乘积。
+
+⭐ 证明：把自由阿贝尔群写成 $C(S,\mathbb{Z})$ 的收缩，归约到 $C(S,\mathbb{Z}) \otimes C(T,\mathbb{Z}) = C(S \times T, \mathbb{Z})$，再用 $\otimes^{L\blacksquare}$ 的幺半性。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VI, Proposition 6.3
+
+#### 固态张量积的计算　`ex.solid-tensor-computations`
+*例*　例：$\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{R} = 0$ 及其它
+
+设 $p \ne \ell$ 是两个素数。则
+
+$$\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{R} = 0, \qquad \mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{Z}_\ell = 0, \qquad \mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{Z}_p = \mathbb{Z}_p,$$
+
+$$\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{Z}[[T]] = \mathbb{Z}_p[[T]], \qquad \mathbb{Z}[[U]] \otimes^{L\blacksquare} \mathbb{Z}[[T]] = \mathbb{Z}[[U,T]].$$
+
+⭐ 读法：固态张量积**同时读取两个因子的 $I$-进拓扑，再把它们合起来**。$\mathbb{Z}_p$ 自带 $p$-进完备，$\mathbb{Z}[[T]]$ 自带 $T$-进完备，合起来就是 $\mathbb{Z}_p[[T]]$。
+
+⚠ 第一条（$\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{R} = 0$）不是「算错」：它等于说 $\mathbb{R}$ 的固态化是 $0$（`cor.solid-compact-generators` (iii)）。
+
+📌 推导顺序：最后一条由 `prop.solid-product-tensor` 得到；往上是商掉 $U - p$、$T - \ell$、$T - p$ 得到的。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VI, Example 6.4
+
+### 星团：解析环与固态模
+> 把「自由完备模」抽成函子：预解析环 → 解析环 → 解析环上的固态模范畴（阿贝尔、有紧投射生成元）→ base change → 有限生成 $\mathbb{Z}$-代数的 $A_\blacksquare$ 是解析环 → 仿射相干对偶 $f_! \dashv f^!$。来源：Clausen–Scholze 讲义 Lectures VII–VIII。
+
+#### 预解析环　`def.pre-analytic-ring`
+*定义*　预解析环（Pre-Analytic Ring）
+
+一个**预解析环** $mathcal{A}$ 由两部分组成：
+
+- 一个凝聚态环 $A$；
+- 一个函子
+
+$$\{\text{extremally disconnected 集}\} \longrightarrow \operatorname{Mod}^{\mathrm{cond}}_{A}, \qquad S \longmapsto \mathcal{A}[S],$$
+
+它把有限不交并送到**乘积**，并带一个自然变换 $S \to \mathcal{A}[S]$。
+
+换句话说，$mathcal{A}$ 就是「环 $A$ 加上一套指定的自由完备 $A$-模 $mathcal{A}[S]$」。
+
+⭐ 这个定义是在抽公理：固态理论里真正用到的不是 $A$ 本身，而是「$S$ 上的自由完备模是什么」。把这件事做成一个函子，就能对任意环（甚至解析空间）复制整套构造。
+
+⭐ 三个基本例子：
+- $mathbb{Z}_\blacksquare$：$A = mathbb{Z}$，$mathbb{Z}_\blacksquare[S] = Z[S]^{\blacksquare}$；
+- $mathbb{Z}_{p,\blacksquare}$：$A = mathbb{Z}_p$，$mathbb{Z}_{p,\blacksquare}[S] = \varprojlim_i \mathbb{Z}_p[S_i]$（$p$-进测度）；
+- $(A,\mathbb{Z})_\blacksquare$（$A$ 离散）：$A[S] = Z[S]^{\blacksquare} \otimes_{\mathbb{Z}} A$。
+
+⚠ 这个定义在原文里带一条警告：它应当允许「导出」版本（$A$ 是单纯环）才足够一般。本图只写经典版本，够用到现在这一步。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.1
+
+#### 解析环　`def.analytic-ring`
+*定义*　解析环（Analytic Ring）
+
+预解析环 $mathcal{A}$ 叫**解析环**，当且仅当：对任意复形
+
+$$C : \cdots \to C_i \to \cdots \to C_1 \to C_0 \to 0$$
+
+（其中每个 $C_i$ 是若干 $\mathcal{A}[T]$ 的直和，$T$ extremally disconnected），以及对任意 extremally disconnected 集 $S$，自然映射
+
+$$\operatorname{RHom}_{\mathcal{A}}\bigl(\mathcal{A}[S],\ C\bigr) \longrightarrow \operatorname{RHom}_{A}\bigl(A[S],\ C\bigr)$$
+
+是同构。
+
+⭐ 读法：**「$mathcal{A}[S]$ 与普通自由模 $A[S]$ 在 $\operatorname{RHom}$ 里无法区分」**。这正是固态群定义 (ii) 的相对版本；取 $A = \mathbb{Z}$、$mathcal{A}[S] = Z[S]^{\blacksquare}$ 就回到固态。
+
+⚠ 为什么要求**所有**这样的复形而不只是单个模？因为要得到导出范畴层面的结论（`thm.analytic-modules` (ii)），单点的同构不够，需要它对复形也成立。
+
+⭐ 判定「是不是解析环」通常靠 `prop.analytic-examples` 与 `thm.za-analytic` 这类具体定理，而不是逐条验证定义。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.4
+
+#### 解析环上的模　`thm.analytic-modules`
+*定理*　定理：$\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 是阿贝尔范畴（Prop 7.5）
+
+设 $mathcal{A}$ 是解析环。考虑全子范畴
+
+$$\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}} \subset \operatorname{Mod}^{\mathrm{cond}}_{A}$$
+
+由所有满足「$\operatorname{Hom}_{\mathcal{A}}(\mathcal{A}[S], M) \to M(S)$ 对一切 extremally disconnected $S$ 是同构」的 $A$-模 $M$ 组成。则：
+
+**(i)** 它是阿贝尔范畴，对一切极限、余极限与扩张稳定；$\mathcal{A}[S]$ 构成一族紧投射生成元；含入有左伴随
+
+$$M \longmapsto M \otimes_{\mathcal{A}} \mathcal{A},$$
+
+它是 $A[S] \mapsto \mathcal{A}[S]$ 的唯一保余极限延拓。若 $A$ 交换，$\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 上有唯一的对称幺半张量积 $\otimes_{\mathcal{A}}$。
+
+**(ii)** $D(\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}) \to D(\operatorname{Mod}^{\mathrm{cond}}_{A})$ 全忠实，像由那些「$\operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C) \cong \operatorname{RHom}_{A}(A[S], C)$」的复形组成；$C$ 在像里当且仅当所有 $H^i(C)$ 在 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 里。含入有左伴随 $C \mapsto C \otimes^{L}_{\mathcal{A}} \mathcal{A}$。
+
+⭐ 这是 `thm.solid-abelian` 的相对版本：把 $\mathbb{Z}$ 换成任意解析环。**固态模**就是 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 的对象，$D(mathcal{A}) := D(\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}})$ 就是「$mathcal{A}$ 上固态模的导出范畴」。
+
+⭐ 证明就是 `lem.solid-completion-criterion` 的第二次应用：解析环的定义正好是那条判据的假设。
+
+⚠ 原文留了一个警告：$\otimes^{L}_{\mathcal{A}}$ 未必是 $\otimes_{\mathcal{A}}$ 的左导出（已知例子都成立）。这一点不影响这里的用法。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Proposition 7.5
+
+#### 解析环的 base change　`prop.analytic-base-change`
+*命题*　命题：解析环映射给出 $-otimes_{\mathcal{A}}\mathcal{B}$（Prop 7.7）
+
+设 $f : \mathcal{A} \to \mathcal{B}$ 是解析环之间的映射（即凝聚态环映射，且每个 $\mathcal{B}[S]$ 作为 $A$-模落在 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 里）。则：
+
+**(i)** 复合函子 $\operatorname{Mod}^{\mathrm{cond}}_{A} \xrightarrow{-\otimes_{A} B} \operatorname{Mod}^{\mathrm{cond}}_{B} \xrightarrow{-\otimes_{\mathcal{B}}\mathcal{B}} \operatorname{Mod}^{\mathrm{cond}}_{\mathcal{B}}$ 穿过 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$，记作
+
+$$M \longmapsto M \otimes_{\mathcal{A}} \mathcal{B} : \operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}} \longrightarrow \operatorname{Mod}^{\mathrm{cond}}_{\mathcal{B}}.$$
+
+**(ii)** 导出版本 $C \mapsto C \otimes^{L}_{\mathcal{A}} \mathcal{B}$ 是它的左导出。
+
+⭐ 这条让 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 对 $\mathcal{A}$ 函子化：换解析环就是做 base change。
+
+⭐ 证明很短：由映射的定义，$\mathcal{B}[S]$ 已经在 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 里，而它们是紧投射生成元，所以整个 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{B}}$ 都落进去。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Proposition 7.7
+
+#### 解析环的例子　`prop.analytic-examples`
+*命题*　命题：$\mathbb{Z}_{p,\blacksquare}$ 与 $(A,\mathbb{Z})_\blacksquare$ 是解析环（Prop 7.9）
+
+下列预解析环是解析环：
+
+**(i)** $\mathbb{Z}_{p,\blacksquare}$（$p$-进固态环）；
+
+**(ii)** 对任意离散环 $A$，$(A, \mathbb{Z})_\blacksquare$，其自由模为
+
+$$(A,\mathbb{Z})_\blacksquare[S] = Z[S]^{\blacksquare} \otimes_{\mathbb{Z}} A.$$
+
+⭐ (i) 与 (ii) 其实有同一个证明：两种情形下都有
+
+$$mathcal{A}[S] = \mathbb{Z}_\blacksquare[S] \otimes^{L}_{\mathbb{Z}_\blacksquare} \mathcal{A},$$
+
+而 $C$ 是 $D(\mathbf{Solid})$ 里的 $\mathcal{A}$-模，于是
+
+$$\operatorname{RHom}(\mathbb{Z}_\blacksquare[S], C) \cong \operatorname{RHom}_{\mathcal{A}}(\mathbb{Z}_\blacksquare[S] \otimes^{L}_{\mathbb{Z}_\blacksquare} \mathcal{A},\ C),$$
+
+左边是 $\operatorname{RHom}(\mathbb{Z}[S], C)$（$C$ 固态），右边是 $\operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C)$。
+
+⚠ $A$ 必须**离散**：对一般凝聚态环这个论断不成立，这也是 `thm.za-analytic` 需要「有限生成 $\mathbb{Z}$-代数」的原因。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Proposition 7.9
+
+#### 有限生成代数的解析环　`thm.za-analytic`
+*定理*　定理：$A$ 有限生成 $\mathbb{Z}$-代数 $\implies$ $A_\blacksquare$ 是解析环（Thm 8.1）
+
+设 $A$ 是有限生成 $\mathbb{Z}$-代数，$A_\blacksquare$ 是自由模为
+
+$$A_\blacksquare[S] := \varprojlim_i A[S_i] \qquad (S = \varprojlim_i S_i)$$
+
+的预解析环（即 $A$ 值测度 $M(S,A)$）。则 $A_\blacksquare$ 是解析环，且遗忘函子
+
+$$j^* : D(A_\blacksquare) \hookrightarrow D((A,\mathbb{Z})_\blacksquare)$$
+
+有左伴随 $j^* = -\otimes^{L}_{(A,\mathbb{Z})_\blacksquare} A_\blacksquare$，后者又有左伴随
+
+$$j_! : D(A_\blacksquare) \longrightarrow D((A,\mathbb{Z})_\blacksquare),$$
+
+满足 $j_! j^* M = M \otimes_{(A,\mathbb{Z})_\blacksquare} j_! A$。
+
+⭐ 这一条是 `thm.za-analytic` 名字里的「解析环」第一次真正覆盖几何情形：$A = \mathbb{Z}[T]$ 时 $A_\blacksquare$ 就是「$\mathbb{Z}[T]$ 上的固态模」，后面相干对偶全踩在它上面。
+
+⭐ 证明骨架（$A = \mathbb{Z}[T]$ 的情形）：把 $A_\infty := \mathbb{Z}((T^{-1}))$ 看成「$\operatorname{Spec} A$ 边界附近的函数」，它有短正合列
+
+$$0 \to \mathbb{Z}[[U]] \otimes_{\mathbb{Z}} A \xrightarrow{U \mapsto T^{-1}} \mathbb{Z}[[U]] \otimes_{\mathbb{Z}} A \to A_\infty \to 0,$$
+
+从而 $A_\infty$ 紧、幂等、且 $\operatorname{RHom}_A(A_\infty, C) = 0$ 对一切由 $\prod A$ 的直和构成的复形成立；再用 $\prod_I A / (\prod_I \mathbb{Z} \otimes A)$ 的余核构造 $j_!$。一般有限生成 $A$ 由 Noether 归一化归约到 $A = \mathbb{Z}[T]$。
+
+⚠ 细节在原文 pp. 53–58。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VIII, Theorem 8.1
+
+#### 仿射相干对偶　`thm.coherent-duality`
+*定理*　定理：仿射相干对偶（Thm 8.2）
+
+设 $A$ 是有限生成 $\mathbb{Z}$-代数，$f : \operatorname{Spec} A \to \operatorname{Spec} \mathbb{Z}$ 是投影。定义
+
+$$f_! : D(A_\blacksquare) \xrightarrow{j_!} D((A,\mathbb{Z})_\blacksquare) \longrightarrow D(\mathbb{Z}_\blacksquare).$$
+
+则 $f_!$ 保一切直和、保紧对象，并满足**投影公式**
+
+$$f_!\bigl((M \otimes^{L}_{\mathbb{Z}_\blacksquare} A_\blacksquare) \otimes^{L}_{A_\blacksquare} N\bigr) \cong M \otimes^{L}_{\mathbb{Z}_\blacksquare} f_! N,$$
+
+其中 $M \in D(\mathbb{Z}_\blacksquare)$、$N \in D(A_\blacksquare)$。函子 $f_!$ 有右伴随
+
+$$f^! : D(\mathbb{Z}_\blacksquare) \longrightarrow D(A_\blacksquare), \qquad f^! M = (M \otimes^{L}_{\mathbb{Z}_\blacksquare} A_\blacksquare) \otimes^{L}_{A_\blacksquare} f^! \mathbb{Z},$$
+
+它保直和；$f^! \mathbb{Z} \in D(A_\blacksquare)$ 是有限生成离散 $A$-模的有界复形。若 $f$ 是完全交，则 $f^!\mathbb{Z}$ 在 $D(A)$ 里可逆（局部是某个次数上的一条线丛）。
+
+⭐ 这就是 Grothendieck 相干对偶的「仿射模型」：$f_!$ 是**紧支撑上同调**，$f^!$ 是**对偶复形**，投影公式与 Serre 对偶都由伴随形式地推出。
+
+⭐ 与经典做法的区别：经典相干对偶里 $f_!$ 在仿射情形只能靠「形式函数」硬造；这里 $f_!$ 是一对伴随（$j_! \dashv j^*$）的直接产物，而且**不保持离散对象** —— 这正是凝聚态方法的收益。
+
+⚠ $f^!\mathbb{Z}$ 与经典对偶复形 $omega_A$ 的等同要在 `thm.za-analytic` 的框架里证（原文 Lecture XI）。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VIII, Theorem 8.2
+
+#### R_{ℓ¹} 不是解析环　`prop.rl1-not-analytic`
+*命题*　命题：$\mathbb{R}_{\ell^1}$ 不是解析环（Ribe 扩张）
+
+设 $mathbb{R}_{\ell^1}$ 是如下预解析环：下垫凝聚态环为 $mathbb{R}$，对 extremally disconnected 集 $S$ 令
+
+$$mathbb{R}_{\ell^1}[S] := M_b(S, \mathbb{R})$$
+
+为**有界** $mathbb{R}$ 值测度（拓扑对偶于 Banach 空间 $C(S,\mathbb{R})$），即 $ell^1$-范数下的完备化。则对无限 extremally disconnected 集 $S$，
+
+$$operatorname{Ext}^1_{\mathbb{R}}\bigl(mathbb{R}_{\ell^1}[S],\ \mathbb{R}_{\ell^1}[S]\bigr) \ne 0.$$
+
+因此 $mathbb{R}_{\ell^1}$ **不是**解析环。
+
+⭐ 这条是整套理论的**边界标记**：固态/解析的好性质在阿基米德方向（$ell^1$ 完备化）失效。$p$-进方向可以，实数方向不行 —— 这正是 Clausen–Scholze 后来要另做“analytic stacks / liquid modules”的动机。
+
+⭐ 非零的 $operatorname{Ext}^1$ 类与**熵函数** $(x_i) \mapsto \sum_i x_i \log|x_i|$ 有关：Ribe 的扩张定理给出一个典范自扩张
+
+$$0 \to mathbb{R}_{\ell^1}[S] \to E \to mathbb{R}_{\ell^1}[S] \to 0,$$
+
+其中 $E$ 的「$\le r$ 部分」同时约束 $sum |x_i|$ 与 $sum |y_i - x_i \log|x_i||$。
+
+⚠ 这条不证明，只引 Ribe（1979）与原文 Remark 7.11–Prop 7.12。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Example 7.11 and Proposition 7.12
+
 ---
 
 ## 全部连线（含推导过程）
@@ -21076,6 +21513,218 @@ Young 不等式里的 $a^{\lambda} b^{1-\lambda}$ 中 $\lambda \in (0,1)$ 是**�
 #### 定义引用：「n 次方根」→ p-级数　`def-link.nthroot-p-series`
 
 凝聚判别法把 $1/n^{p}$ 换成 $2^{k(1-p)}$ 时，写的是 $2^{k} \cdot 2^{-kp}$；指数与根号在这里是同一套约定。
+
+#### 投射有限空间 + 整值测度 ⟹ 连续函数群是自由的　`imp.csz-free`
+*profinite 集的结构 $\implies$ $C(S,\mathbb{Z})$ 自由*
+
+把 $S$ 嵌入某个乘积 $\prod_{I}\{0,1\}$，并给 $I$ 一个良序，写成序数 $\lambda$。对 $\lambda$ 作超限归纳。
+
+**极限序数。** $S$ 是诸 $S_\mu$（$\mu < \lambda$）的滤过极限，$C(S,\mathbb{Z}) = \varinjlim_\mu C(S_\mu,\mathbb{Z})$ 是自由群的滤过余极限，仍自由。
+
+**后继序数 $\lambda = \rho + 1$。** 设 $S \subset S_\rho \times \{0,1\}$，令 $S_i = S \cap (S_\rho \times \{i\})$（$i = 0,1$），$S' = S_0 \cap S_1$。有短正合列
+
+$$0 \longrightarrow C(S_\rho, \mathbb{Z}) \longrightarrow C(S_\rho, \mathbb{Z}) \longrightarrow C(S', \mathbb{Z}) \longrightarrow 0,$$
+
+第二个箭头是「在 $S' \times \{1\}$ 与 $S' \times \{0\}$ 上取值之差」。由归纳假设 $C(S_\rho,\mathbb{Z})$ 与 $C(S',\mathbb{Z})$ 都自由，且自由群的满射分裂，故中间项自由。取基时按「从 $e_\rho$ 出发的单项式」作字典序，可把两边的基拼起来。$\blacksquare$
+
+#### 连续函数群是自由的 ⟹ 自由固态群是大乘积　`imp.free-solid-product`
+*$C(S,\mathbb{Z})$ 自由 $\implies$ $Z[S]^{\blacksquare} \cong \prod_I\mathbb{Z}$*
+
+由 `thm.csz-free` 取同构 $C(S,\mathbb{Z}) \cong \bigoplus_I \mathbb{Z}$，则
+
+$$Z[S]^{\blacksquare} = \varprojlim_i \mathbb{Z}[S_i] = \varprojlim_i \operatorname{Hom}(C(S_i,\mathbb{Z}), \mathbb{Z}) = \operatorname{Hom}\Bigl(\varinjlim_i C(S_i,\mathbb{Z}),\ \mathbb{Z}\Bigr),$$
+
+而 $\varinjlim_i C(S_i,\mathbb{Z}) = C(S,\mathbb{Z})$（连续函数由有限商决定）。于是
+
+$$Z[S]^{\blacksquare} \cong \operatorname{Hom}\Bigl(\bigoplus_I \mathbb{Z},\ \mathbb{Z}\Bigr) \cong \prod_I \mathbb{Z}. \blacksquare$$
+
+#### 连续函数群是自由的 + 整值测度 ⟹ 固态化把超覆盖变成正合列　`imp.solid-hypercover`
+*常层上同调消没 $\implies$ 固态化正合*
+
+对 hypercover $S_\bullet \to S$，有正合列
+
+$$0 \to C(S,\mathbb{Z}) \to C(S_0,\mathbb{Z}) \to C(S_1,\mathbb{Z}) \to \cdots,$$
+
+因为 $H^i(S,\mathbb{Z}) = 0$（$i > 0$，profinite 集上常层上同调）。由 `thm.csz-free` 每一项都自由，取 $\operatorname{RHom}(-,\mathbb{Z})$ 得
+
+$$\cdots \to \operatorname{Hom}(C(S_1,\mathbb{Z}),\mathbb{Z}) \to \operatorname{Hom}(C(S_0,\mathbb{Z}),\mathbb{Z}) \to \operatorname{Hom}(C(S,\mathbb{Z}),\mathbb{Z}) \to 0,$$
+
+即 $\cdots \to Z[S_1]^{\blacksquare} \to Z[S_0]^{\blacksquare} \to Z[S]^{\blacksquare} \to 0$ 正合。$\blacksquare$
+
+#### 自由固态群是大乘积 + 连续函数群是自由的 + 固态化把超覆盖变成正合列 ⟹ 自由固态群是固态的　`imp.free-solid-solid`
+*大乘积 + $\mathbb{R}$ 可缩 $\implies$ 自由固态群固态*
+
+要证对一切 profinite $T$，$\operatorname{RHom}(Z[T]^{\blacksquare}, Z[S]^{\blacksquare}) \cong \operatorname{RHom}(\mathbb{Z}[T], Z[S]^{\blacksquare})$。由 `cor.free-solid-product` 可设 $Z[S]^{\blacksquare} = \mathbb{Z}$（一般情形是 $\prod$ 的直和，逐项算）。此时左边用
+
+$$0 \to \prod_J \mathbb{Z} \to \prod_J \mathbb{R} \to \prod_J \mathbb{R}/\mathbb{Z} \to 0$$
+
+计算：$\prod_J \mathbb{R}$ 是凝聚态 $\mathbb{R}$-模，故 $\operatorname{RHom}(\prod_J \mathbb{R}, \mathbb{Z}) = 0$；而 $\operatorname{RHom}(\prod_J \mathbb{R}/\mathbb{Z}, \mathbb{Z}) = \bigoplus_J \mathbb{Z}[-1]$。合起来
+
+$$\operatorname{RHom}(\prod_J \mathbb{Z},\ \mathbb{Z}) = \bigoplus_J \mathbb{Z}.$$
+
+右边是 $R\Gamma(T,\mathbb{Z}) = C(T,\mathbb{Z})$（$H^{>0} = 0$），由 `thm.csz-free` 也等于 $\bigoplus_J \mathbb{Z}$。两边一致。$\blacksquare$
+
+#### 完备化判据 + 自由固态群是固态的 + 自由固态群是大乘积 ⟹ 固态群构成阿贝尔子范畴　`imp.solid-abelian`
+*完备化判据 + 关键计算 $\implies$ $\mathbf{Solid}$ 是阿贝尔子范畴*
+
+在 `lem.solid-completion-criterion` 中取 $\mathcal{A} = \operatorname{Cond}(\mathbf{Ab})$、$\mathcal{A}_0 = \{\mathbb{Z}[S]\}$（$S$ extremally disconnected）、$F(\mathbb{Z}[S]) = Z[S]^{\blacksquare}$。
+
+需要验证：对由 $\prod_I \mathbb{Z}$ 的直和构成的复形 $C$，
+
+$$\operatorname{RHom}(Z[S]^{\blacksquare}, C) \longrightarrow \operatorname{RHom}(\mathbb{Z}[S], C) = R\Gamma(S, C)$$
+
+是同构。这是 Lecture VI 的主计算：把 $C$ 放进短正合列 $0 \to C \to C_{\mathbb{R}} \to C_{\mathbb{R}/\mathbb{Z}} \to 0$，两边对 $\mathbb{R}$-模项都消没（$\operatorname{RHom}(\mathbb{R}, -) = 0$），于是只需分别算 $C_{\mathbb{R}}$ 与 $C_{\mathbb{R}/\mathbb{Z}}$；再把它们写成有限复形的滤过极限，逐项用紧阿贝尔群的两步消解归约到 $\operatorname{RHom}(M(S,\mathbb{R}/\mathbb{Z}), \prod\mathbb{R}/\mathbb{Z})$ 的度 $\le 1$ 估计。
+
+条件满足后，`lem.solid-completion-criterion` 直接给出：$\mathbf{Solid}$ 是阿贝尔子范畴、对极限余极限扩张稳定、$\prod_I \mathbb{Z} = Z[S]^{\blacksquare}$ 是紧投射生成元、含入有保余极限左伴随 $M \mapsto M^{\blacksquare}$。$\blacksquare$
+
+#### 固态群构成阿贝尔子范畴 + 完备化判据 ⟹ 固态复形与导出范畴　`imp.solid-derived`
+*阿贝尔子范畴 $\implies$ 导出范畴全忠实*
+
+这是 `lem.solid-completion-criterion` (ii) 的直接翻译：取 $\mathcal{A}_F = \mathbf{Solid}$，则 $D(\mathbf{Solid}) \to D(\operatorname{Cond}(\mathbf{Ab}))$ 全忠实，像为满足 $\operatorname{RHom}(Z[S]^{\blacksquare}, C) \cong \operatorname{RHom}(\mathbb{Z}[S], C)$ 的复形 —— 正是`def.solid-group` (iii) 的固态复形。
+
+「固态当且仅当所有 $H^i$ 固态」与「左伴随是左导出」也都是该引理 (ii) 的结论。$\blacksquare$
+
+#### 固态群构成阿贝尔子范畴 + 自由固态群是大乘积 ⟹ 固态的紧投射对象　`imp.solid-compact-generators`
+*生成元 + 自由固态群是大乘积 $\implies$ 紧投射对象*
+
+**(i)** `thm.solid-abelian` 给出一族紧投射生成元 $Z[S]^{\blacksquare}$（$S$ extremally disconnected），由 `cor.free-solid-product` 它们都是 $\prod_I \mathbb{Z}$。任意 $\prod_I \mathbb{Z}$ 可写成某个更大的 $Z[S]^{\blacksquare}$ 的收缩，而紧投射对象的收缩仍紧投射。反之，紧投射 $P$ 是某个 $\prod_I \mathbb{Z}$ 的收缩；自由阿贝尔群的收缩仍自由，逐项取对偶即知 $P$ 仍是 $\prod_J \mathbb{Z}$ 形。
+
+**(ii)** 第一句由 (i) 形式推出。$D^b(\mathbb{Z})^{\mathrm{op}} \to D(\mathbf{Solid})^\omega$ 把有界复形送到紧对象；反向 $C \mapsto \operatorname{RHom}(C,\mathbb{Z})$ 取有界复形（用自由消解）。两者互逆。
+
+**(iii)** 要证 $\operatorname{RHom}(\mathbb{R}, C) = 0$ 对一切固态 $C$。可设 $C$ 右有界且集中在 $\ge 0$，用投射消解化成「各项是 $\prod_I \mathbb{Z}$ 的直和」的复形，再用上一条证明里的 $R\Gamma$ 计算得 $0$。$\blacksquare$
+
+#### 固态的紧投射对象 + 固态复形与导出范畴 ⟹ 固态张量积　`imp.solid-tensor`
+*紧投射对象上的计算 $\implies$ 对称幺半张量积*
+
+**唯一性。** 保余极限的函子由紧投射生成元上的值决定，所以 $\otimes^{\blacksquare}$ 若存在必唯一。
+
+**存在性（对象层）。** 定义 $M \otimes^{\blacksquare} N := (M \otimes N)^{\blacksquare}$。要证 $M \mapsto M^{\blacksquare}$ 对称幺半，即
+
+$$(M \otimes N)^{\blacksquare} \longrightarrow (M^{\blacksquare} \otimes N^{\blacksquare})^{\blacksquare}$$
+
+是同构。两边都保余极限，归约到 $M = \mathbb{Z}[S]$、$N = \mathbb{Z}[T]$；再用 `cor.solid-compact-generators` (iv) 的对偶计算，把两边分别算成 $Z[S \times T]^{\blacksquare}$。
+
+**导出层。** 同样的论证给出 $\otimes^{L\blacksquare}$；它是左导出，因为两个紧投射对象的张量仍集中在度 $0$（$Z[S]^{\blacksquare} \otimes^{L\blacksquare} Z[T]^{\blacksquare} = Z[S \times T]^{\blacksquare}$）。$\blacksquare$
+
+#### 固态张量积 + 连续函数群是自由的 ⟹ 大乘积的固态张量积　`imp.solid-product-tensor`
+*幺半性 + $C(S)\otimes C(T) = C(S\times T)$ $\implies$ 乘积公式*
+
+写 $M = \operatorname{Hom}(M',\mathbb{Z})$、$N = \operatorname{Hom}(N',\mathbb{Z})$（$M', N'$ 自由）。要证
+
+$$\operatorname{Hom}(M',\mathbb{Z}) \otimes^{L\blacksquare} \operatorname{Hom}(N',\mathbb{Z}) \cong \operatorname{Hom}(M' \otimes N',\ \mathbb{Z}).$$
+
+把 $M'$、$N'$ 分别写成 $C(S,\mathbb{Z})$、$C(T,\mathbb{Z})$ 的收缩（`thm.csz-free`），归约到 $M' = C(S,\mathbb{Z})$、$N' = C(T,\mathbb{Z})$。此时 $M' \otimes N' = C(S \times T,\mathbb{Z})$，命题变成
+
+$$Z[S]^{\blacksquare} \otimes^{L\blacksquare} Z[T]^{\blacksquare} \cong Z[S \times T]^{\blacksquare},$$
+
+即 `thm.solid-tensor` 的幺半性。$\blacksquare$
+
+#### 大乘积的固态张量积 + 固态的紧投射对象 ⟹ 固态张量积的计算　`imp.solid-tensor-computations`
+*乘积公式 + $\mathbb{R}^{L\blacksquare}=0$ $\implies$ 具体计算*
+
+第一条：$\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{R} = \mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{R}^{L\blacksquare} = (\mathbb{Z}_p \otimes \mathbb{R})^{L\blacksquare} = 0$，因为 $\mathbb{R}^{L\blacksquare} = 0$（`cor.solid-compact-generators` (iii)）。
+
+最后一条：$\mathbb{Z}[[U]] = \prod_{\mathbb{N}} \mathbb{Z}$、$\mathbb{Z}[[T]] = \prod_{\mathbb{N}} \mathbb{Z}$，由 `prop.solid-product-tensor` 得 $\prod_{\mathbb{N}\times\mathbb{N}} \mathbb{Z} = \mathbb{Z}[[U,T]]$。
+
+中间几条：对 $U - p$、$T - \ell$、$T - p$ 取商（固态张量积保余极限），分别得到 $\mathbb{Z}_p[[T]]$、$\mathbb{Z}_\ell$、$\mathbb{Z}_p$。$\blacksquare$
+
+#### 定义引用：「投射有限空间」→ 整值测度　`def-link.profinite-measure`
+
+测度定义在 **profinite 集**上；$C(S,\mathbb{Z})$ 的「连续」指的正是 profinite 拓扑。
+
+#### 定义引用：「凝聚态阿贝尔群」→ 固态阿贝尔群　`def-link.condab-solid`
+
+固态群首先是凝聚态阿贝尔群 —— 固态性是在它上面再加一条「唯一延拓」条件。
+
+#### 定义引用：「整值测度」→ 固态阿贝尔群　`def-link.measure-solid`
+
+自由固态群 $Z[S]^{\blacksquare}$ 的下垫群就是测度群 $M(S,\mathbb{Z})$，见 `cor.free-solid-product`。
+
+#### 解析环 + 完备化判据 ⟹ 解析环上的模　`imp.analytic-modules`
+*解析环的定义 $\implies$ 模范畴是阿贝尔的*
+
+这是 `lem.solid-completion-criterion` 的直接应用：取 $\mathcal{A} = \operatorname{Mod}^{\mathrm{cond}}_{A}$、$\mathcal{A}_0 = \{A[S]\}$（$S$ extremally disconnected）、$F(A[S]) = \mathcal{A}[S]$。
+
+解析环的定义（`def.analytic-ring`）正是该引理的假设：对由 $\mathcal{A}[T]$ 的直和构成的复形 $C$，$\operatorname{RHom}(\mathcal{A}[S], C) \cong \operatorname{RHom}(A[S], C)$。
+
+于是引理 (i) 给出阿贝尔子范畴、紧投射生成元与左伴随；引理 (ii) 给出导出范畴的全忠实与左伴随。$\blacksquare$
+
+#### 解析环 + 解析环的例子 ⟹ 解析环的 base change　`imp.analytic-base-change`
+*解析环映射 $\implies$ base change*
+
+**(i)** 由映射 $f : \mathcal{A} \to \mathcal{B}$ 的定义，每个 $\mathcal{B}[S]$ 作为 $A$-模都在 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 里；而这些 $\mathcal{B}[S]$ 是 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{B}}$ 的紧投射生成元，故整个 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{B}}$ 都落进 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$。
+
+**(ii)** 检验 $C \in D(\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{B}})$ 作为 $A$-模是否在 $D(\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}})$ 里：由 (ii) 的判据只需看上同调，归约到 (i)。得到的函子保余极限、把 $A[S]$ 送到 $\mathcal{B}[S]$，故是左导出。$\blacksquare$
+
+#### 固态群构成阿贝尔子范畴 + 解析环 ⟹ 解析环的例子　`imp.analytic-examples`
+*固态群的相对化 $\implies$ 两个解析环*
+
+两种情形统一处理：设 $\mathcal{A}$ 是 $\mathbb{Z}_{p,\blacksquare}$ 或 $(A,\mathbb{Z})_\blacksquare$，则
+
+$$\mathcal{A}[S] = \mathbb{Z}_\blacksquare[S] \otimes^{L}_{\mathbb{Z}_\blacksquare} \mathcal{A}.$$
+
+取复形 $C$（各项为 $\mathcal{A}[T]$ 的直和），它是 $D(\mathbf{Solid})$ 里的 $\mathcal{A}$-模。于是
+
+$$\operatorname{RHom}(\mathbb{Z}_\blacksquare[S], C) \cong \operatorname{RHom}_{\mathcal{A}}\bigl(\mathbb{Z}_\blacksquare[S] \otimes^{L}_{\mathbb{Z}_\blacksquare} \mathcal{A},\ C\bigr) = \operatorname{RHom}_{\mathcal{A}}(\mathcal{A}[S], C).$$
+
+左边由 $C$ 固态等于 $\operatorname{RHom}(\mathbb{Z}[S], C)$，正是解析环定义要求的同构。$\blacksquare$
+
+#### 解析环的例子 + 解析环 + 固态群构成阿贝尔子范畴 ⟹ 有限生成代数的解析环　`imp.za-analytic`
+*边界函数 $A_\infty$ $\implies$ $A_\blacksquare$ 是解析环*
+
+先设 $A = \mathbb{Z}[T]$，令 $A_\infty = \mathbb{Z}((T^{-1}))$（「$\operatorname{Spec} A$ 边界附近的函数」）。
+
+**① $A_\infty$ 紧。** 有短正合列$0 \to \mathbb{Z}[[U]] \otimes A \to \mathbb{Z}[[U]] \otimes A \to A_\infty \to 0$（$U \mapsto T^{-1}$），前两项在 $(A,\mathbb{Z})_\blacksquare$ 上紧投射。
+
+**② $A_\infty$ 幂等。** 由上面的表现直接算出 $A_\infty \otimes^{L} A_\infty \cong A_\infty$，故 $A_\infty$-模构成全子范畴。
+
+**③ $\operatorname{RHom}_A(A_\infty, C) = 0$** 对一切由 $\prod A$ 的直和构成的复形成立：归约到 $C = A$，用 ① 的消解化成复形 $A[U^{-1}]/A \xrightarrow{U - T^{-1}} A[U^{-1}]/A$，它无环。
+
+**④ 定义 $j_!M := M \otimes_{A \otimes^{L} \mathbb{Z}_\blacksquare} (A_\infty/A)[-1]$。** 由 ②③ 可验证 $j_!$ 穿过 $D(A_\blacksquare)$、全忠实，且是 $j^*$ 的左伴随。
+
+**⑤ 解析性。** 对 $\prod_I \mathbb{Z} \otimes A \to \prod_I A$ 的余核用 ③（它 $\otimes A_\infty$ 为零），得 $\operatorname{RHom}_A(\prod_I \mathbb{Z} \otimes A, C) \cong \operatorname{RHom}_A(\prod_I A, C)$，即 $A_\blacksquare$ 的定义条件。
+
+一般有限生成 $A$ 用 Noether 归一化写成有限 $\mathbb{Z}[T]$-模，逐步归约。$\blacksquare$
+
+#### 有限生成代数的解析环 ⟹ 仿射相干对偶　`imp.coherent-duality`
+*$j_! \dashv j^* \dashv j_*$ $\implies$ 仿射相干对偶*
+
+把 $f_!$ 定义为复合 $D(A_\blacksquare) \xrightarrow{j_!} D((A,\mathbb{Z})_\blacksquare) \to D(\mathbb{Z}_\blacksquare)$。
+
+**保直和与紧。** $j_!$ 由 $M \mapsto M \otimes (A_\infty/A)[-1]$ 给出，保直和；$\operatorname{Mod}^{\mathrm{cond}}_{(A,\mathbb{Z})_\blacksquare} \to \mathbf{Solid}$ 是 base change，也保直和与紧（`prop.analytic-base-change` 与 `cor.solid-compact-generators`）。
+
+**投影公式。** 由 $j_!$ 的定义（张量积）与 $\otimes$ 的结合律形式地得到。
+
+**右伴随。** $f^!$ 存在且由伴随函子定理给出；其显式公式 $f^!M = (M \otimes A_\blacksquare) \otimes f^!\mathbb{Z}$ 由投影公式与 $f^!$ 的右伴随性解出。$f^!\mathbb{Z} = \operatorname{RHom}_{\mathbb{Z}}(f_! A, \mathbb{Z})$，由 $f_!A$ 紧得它是离散有限生成复形。
+
+完全交情形 $f^!\mathbb{Z}$ 可逆是局部计算（Koszul 复形）。$\blacksquare$
+
+#### 解析环 ⟹ R_{ℓ¹} 不是解析环　`imp.rl1-not-analytic`
+*解析性要求 $\operatorname{Ext}^1 = 0$ $\implies$ $\mathbb{R}_{\ell^1}$ 不是解析环*
+
+若 $\mathcal{A}$ 是解析环，则对 extremally disconnected 的 $S, T$ 与 $i > 0$，由解析性取 $C = \mathcal{A}[T]$ 得
+
+$$\operatorname{Ext}^i_{\mathcal{A}}(\mathcal{A}[S], \mathcal{A}[T]) = H^i(S, \mathcal{A}[T]) = 0,$$
+
+因为 $\mathcal{A}[T]$ 是 $\prod$ 形（见 `cor.free-solid-product` 的相对版本），而 $S$ 上常层的高次上同调消没。
+
+但对 $\mathbb{R}_{\ell^1}$，Ribe 扩张定理给出无限 extremally disconnected $S$ 上的非零类
+
+$$0 \ne \operatorname{Ext}^1_{\mathbb{R}}(\mathbb{R}_{\ell^1}[S], \mathbb{R}_{\ell^1}[S]),$$
+
+与解析性矛盾。$\blacksquare$
+
+#### 定义引用：「凝聚态集」→ 预解析环　`def-link.condset-preanalytic`
+
+预解析环的 $A$ 是一个**凝聚态环** —— 即凝聚态集上的环对象。
+
+#### 定义引用：「预解析环」→ 解析环　`def-link.preanalytic-analytic`
+
+解析环 = 预解析环 + 一条 $\operatorname{RHom}$ 条件，所以先是预解析环。
+
+#### 定义引用：「固态阿贝尔群」→ 解析环的例子　`def-link.solid-za`
+
+$\mathbb{Z}_{p,\blacksquare}$ 与 $(A,\mathbb{Z})_\blacksquare$ 的解析性直接归约到 $\mathbb{Z}_\blacksquare$ 的固态性。
 
 #### 预测度 + Carathéodory 定理 ⟹ 乘积测度　`imp.product-measure`
 *矩形上的预测度 $\implies$ Carathéodory 扩张得到乘积测度*
@@ -28865,6 +29514,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **实数的运算与不等式 ↔ 数项级数的敛散性**　6 条节点级连线
 - **实数的运算与不等式 ↔ Riemann 积分**　2 条节点级连线
 - **L^p 空间 ↔ 实数的运算与不等式**　3 条节点级连线
+- **固态阿贝尔群 ↔ Stone 与 Stonean**　2 条节点级连线
+- **解析环与固态模 ↔ 固态阿贝尔群**　4 条节点级连线
 - **测度的构造 ↔ 乘积测度与 Fubini**　6 条节点级连线
 - **积分 ↔ 乘积测度与 Fubini**　2 条节点级连线
 - **乘积测度与 Fubini ↔ 集合的构造**　3 条节点级连线
