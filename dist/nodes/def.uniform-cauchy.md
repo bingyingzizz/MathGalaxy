@@ -10,10 +10,12 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N,\ \forall x \in X :\ 
 即 $\sup_{x} |f_m(x) - f_n(x)| \to 0$（$m, n \to \infty$）。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.uniform-convergence`](../nodes/def.uniform-convergence.md) 一致收敛：用到了定义 一致收敛　[proofs/dep.uniform-uniformcauchy.md](../proofs/dep.uniform-uniformcauchy.md)
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-uniform-cauchy.md](../proofs/def-link.abs-uniform-cauchy.md)
+
+- …另有入边，续页见 [nodes/def.uniform-cauchy.2.md](./def.uniform-cauchy.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.uniform-cauchy.2.md](./def.uniform-cauchy.2.md)
+- …另有出边，续页见 [nodes/def.uniform-cauchy.3.md](./def.uniform-cauchy.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 7
 

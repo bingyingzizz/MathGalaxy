@@ -15,6 +15,9 @@ $$f'(x) = \sum_{n=1}^{\infty} n\, a_n (x - x_0)^{n-1}$$
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.power-series-analytic.2.md](./thm.power-series-analytic.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.power-series-analytic.3.md](./thm.power-series-analytic.3.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 8
 
 > 说明见 `notes/thm.power-series-analytic.md`

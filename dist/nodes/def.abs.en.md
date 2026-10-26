@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster Constructing the Number Systems (`set.numbers`) · Set Theory / Analysis
+layer 9 · definition · cluster Arithmetic and Inequalities on the Reals (`analysis.real-calc`) · Set Theory / Analysis
 names: `absolute value` (short) · `Absolute Value` (full)
 
 ## Statement and proof

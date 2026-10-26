@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`thm.omega`](../nodes/thm.omega.md) 自然数集存在：用到了定义 自然数集存在　[proofs/dep.omega-induction.md](../proofs/dep.omega-induction.md)
+
+> 续见 [nodes/thm.induction.3.md](./thm.induction.3.md)

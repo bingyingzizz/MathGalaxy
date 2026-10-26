@@ -13,7 +13,7 @@ $$\|f\|_\infty := \inf \{\, a \ge 0 : \mu(\{\, |f| > a \,\}) = 0 \,\}$$
 - …另有入边，续页见 [nodes/def.essential-sup.4.md](./def.essential-sup.4.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.essential-sup.5.md](./def.essential-sup.5.md)
+- …另有出边，续页见 [nodes/def.essential-sup.6.md](./def.essential-sup.6.md)
 
 ## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/def.essential-sup.3.md](./def.essential-sup.3.md)

@@ -16,6 +16,11 @@ $$a x \in I \quad \text{与} \quad x a \in I.$$
 
 - …另有入边，续页见 [nodes/def.ideal.2.md](./def.ideal.2.md)
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`prop.ideal-basic`](../nodes/prop.ideal-basic.md) 理想的运算与商环泛性质
+
+- …另有出边，续页见 [nodes/def.ideal.3.md](./def.ideal.3.md)
+
 refs: Lang, Algebra
 
 > 说明见 `notes/def.ideal.md`

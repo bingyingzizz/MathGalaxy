@@ -1,6 +1,6 @@
 # 阿基米德性质　`lem.archimedean`
 阿基米德性质与 $\mathbb{Q}$ 的稠密性
-layer 14 · 引理 · 数系的构造 · 集合论+分析学
+layer 14 · 引理 · 实数的运算与不等式 · 集合论+分析学
 [在星图里打开](../#n=lem.archimedean)　·　[节点索引](../index.md)
 
 设 $K$ 是一个**完备有序域**（比如 $\mathbb{R}$）。则：
@@ -16,7 +16,9 @@ $$\forall x, y \in K,\ x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
 
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.real-unique`](../nodes/thm.real-unique.md) 完备有序域的唯一性
+- ⇒ [`cor.archimedean-epsilon`](../nodes/cor.archimedean-epsilon.md) 阿基米德的 ε 形式与取整
+
+- …另有出边，续页见 [nodes/lem.archimedean.4.md](./lem.archimedean.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/lem.archimedean.3.md](./lem.archimedean.3.md)

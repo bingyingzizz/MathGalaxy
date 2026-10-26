@@ -16,8 +16,10 @@ $$\emptyset \in S, \qquad x \in S \implies x \cup \{x\} \in S$$
 $$g(\emptyset) = a_0, \qquad g(x \cup \{x\}) = F(g(x)) \quad \forall x \in \omega$$
 
 ## 它能推出什么 / 谁在用它
-- 被 [`def.nat-arith`](../nodes/def.nat-arith.md) 自然数的加法与乘法 用
-- 被 [`def.int`](../nodes/def.int.md) 整数 ℤ 用
+- ⇒ [`thm.binomial`](../nodes/thm.binomial.md) 二项式定理
+- ⇒ [`thm.bernoulli`](../nodes/thm.bernoulli.md) Bernoulli 不等式
+
+- …另有出边，续页见 [nodes/thm.induction.3.md](./thm.induction.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.induction.2.md](./thm.induction.2.md)

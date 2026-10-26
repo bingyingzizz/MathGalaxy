@@ -7,12 +7,11 @@ layer 17 · 定理 · 实数完备性的等价刻画 · 分析学
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`thm.bolzano-weierstrass`](../nodes/thm.bolzano-weierstrass.md) Bolzano–Weierstrass：Bolzano–Weierstrass $\implies$ Cauchy 收敛准则　[proofs/imp.bw-cauchy.md](../proofs/imp.bw-cauchy.md)
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-cauchy-criterion.md](../proofs/def-link.abs-cauchy-criterion.md)
 
 - …另有入边，续页见 [nodes/thm.cauchy-criterion.2.md](./thm.cauchy-criterion.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.real-complete-metric`](../nodes/thm.real-complete-metric.md) ℝ 是完备度量空间
-
 - …另有出边，续页见 [nodes/thm.cauchy-criterion.3.md](./thm.cauchy-criterion.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3

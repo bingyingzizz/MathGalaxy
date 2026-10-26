@@ -11,6 +11,6 @@ Data root `./`: every entry can be followed to `nodes/<id>.md`.
 - **5** `thm.first-iso` first isomorphism theorem · layer 9 · 代数结构
 - **5** `def.cauchy-null` Cauchy sequences and null sequences · layer 11 · 数系的构造
 - **5** `def.representable` representable functor · layer 12 · 预层与米田
-- **5** `def.abelian-category` additive and abelian categories · layer 16 · 加法与阿贝尔范畴
+- **5** `def.metric-space` metric space · layer 13 · 度量空间
 
 > continued in `hubs.en.2.md`

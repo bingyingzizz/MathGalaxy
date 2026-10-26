@@ -5,6 +5,7 @@
 - 被 [`def.group-action`](../nodes/def.group-action.md) 群作用 用
 - 被 [`def.permutation-group`](../nodes/def.permutation-group.md) 置换群与对称群 用
 - 被 [`def.cyclic-group`](../nodes/def.cyclic-group.md) 循环群 用
+- ⇒ [`prop.group-basic`](../nodes/prop.group-basic.md) 群的基本性质
 - 被 [`def.subgroup`](../nodes/def.subgroup.md) 子群 用
 - 被 [`def.normal-subgroup`](../nodes/def.normal-subgroup.md) 正规子群 用
 - 被 [`def.group-hom`](../nodes/def.group-hom.md) 群同态、核与像 用
@@ -13,6 +14,5 @@
 - 被 [`def.ring`](../nodes/def.ring.md) 环 用
 - 被 [`def.module`](../nodes/def.module.md) 模 用
 - 被 [`def.group-object`](../nodes/def.group-object.md) 群对象与阿贝尔群对象 用
-- 被 [`def.additive-functor`](../nodes/def.additive-functor.md) 加法函子 用
 
 > 续见 [nodes/def.group.3.md](./def.group.3.md)

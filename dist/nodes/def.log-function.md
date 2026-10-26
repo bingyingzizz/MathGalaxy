@@ -14,6 +14,9 @@ $$\log(xy) = \log x + \log y, \qquad \frac{d}{dx}\log x = \frac{1}{x}$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.exp-function`](../nodes/def.exp-function.md) 指数函数：用到了定义 指数函数　[proofs/dep.exp-log.md](../proofs/dep.exp-log.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.log-function.2.md](./def.log-function.2.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 8
 
 > 说明见 `notes/def.log-function.md`

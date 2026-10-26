@@ -14,6 +14,8 @@ $$\lim_{x \to x_0} g(x) = \lim_{x \to x_0} h(x) = L$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.sequence-limit`](../nodes/def.sequence-limit.md) 数列极限 + [`def.function-limit`](../nodes/def.function-limit.md) 函数极限：数列/函数极限的定义 $\implies$ 夹逼定理　[proofs/imp.squeeze.md](../proofs/imp.squeeze.md)
 
+- …另有入边，续页见 [nodes/thm.squeeze.2.md](./thm.squeeze.2.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 
 > 说明见 `notes/thm.squeeze.md`

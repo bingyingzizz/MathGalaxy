@@ -1,8 +1,7 @@
 # 幂级数　`def.power-series`　·　续页（第 2 页）
 [在星图里打开](../#n=def.power-series)　·　第 1 页 [nodes/def.power-series.md](./def.power-series.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 [`def.exp-function`](../nodes/def.exp-function.md) 指数函数 用
-- 被 [`def.trig-function`](../nodes/def.trig-function.md) 正弦与余弦 用
-- ⇒ [`thm.convergence-radius`](../nodes/thm.convergence-radius.md) 收敛半径
-- ⇒ [`thm.abel-endpoint`](../nodes/thm.abel-endpoint.md) Abel 第二定理
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.series`](../nodes/def.series.md) 级数收敛：用到了定义 级数收敛　[proofs/dep.series-powerseries.md](../proofs/dep.series-powerseries.md)
+
+> 续见 [nodes/def.power-series.3.md](./def.power-series.3.md)

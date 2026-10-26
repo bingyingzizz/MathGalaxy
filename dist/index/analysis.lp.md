@@ -4,7 +4,7 @@
 中心天体 def.lp-norm　·　18 个节点　·　根 `../`　·　续页 `index/analysis.lp.2.md`
 
 - def.conjugate-exponents　共轭指数　layer 14
-- lem.young-inequality　Young 不等式　layer 15
+- lem.young-inequality　Young 不等式　layer 16
 - def.essential-sup　本性上界与 L^∞　layer 16
 - def.lp-norm　L^p 范数　layer 18
 - thm.holder　Hölder 不等式　layer 19

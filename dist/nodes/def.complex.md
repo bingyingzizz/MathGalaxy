@@ -1,6 +1,6 @@
 # 复数 ℂ　`def.complex`
 复数系 $\mathbb{C}$（Complex Numbers）
-layer 13 · 定义 · 数系的构造 · 分析学+抽象代数
+layer 15 · 定义 · 数系的构造 · 分析学+抽象代数
 [在星图里打开](../#n=def.complex)　·　[节点索引](../index.md)
 
 **复数系** $\mathbb{C} := \mathbb{R}^2$，配以下运算：

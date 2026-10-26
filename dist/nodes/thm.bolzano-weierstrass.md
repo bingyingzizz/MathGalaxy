@@ -10,8 +10,10 @@ layer 16 · 定理 · 实数完备性的等价刻画 · 分析学
 ## 为什么成立（入边，证明在 proofs/）
 - [`lem.nested-intervals`](../nodes/lem.nested-intervals.md) 闭区间套定理：闭区间套定理 $\implies$ Bolzano–Weierstrass　[proofs/imp.nested-bw.md](../proofs/imp.nested-bw.md)
 
+- …另有入边，续页见 [nodes/thm.bolzano-weierstrass.2.md](./thm.bolzano-weierstrass.2.md)
+
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/thm.bolzano-weierstrass.2.md](./thm.bolzano-weierstrass.2.md)
+- …另有出边，续页见 [nodes/thm.bolzano-weierstrass.3.md](./thm.bolzano-weierstrass.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

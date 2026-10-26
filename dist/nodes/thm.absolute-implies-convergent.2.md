@@ -3,3 +3,4 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`thm.cauchy-criterion-series`](../nodes/thm.cauchy-criterion-series.md) 级数的 Cauchy 准则：级数的 Cauchy 准则 $\implies$ 绝对收敛蕴含收敛　[proofs/imp.absolute-implies.md](../proofs/imp.absolute-implies.md)
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-absolute-conv.md](../proofs/def-link.abs-absolute-conv.md)

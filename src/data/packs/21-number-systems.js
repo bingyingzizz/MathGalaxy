@@ -171,7 +171,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 绝对值 */
     {
       id: 'def.abs',
-      cluster: 'set.numbers',
+      cluster: 'analysis.real-calc',
       type: 'definition',
       label: '绝对值 |x|',
       title: '绝对值 $|x|$（Absolute Value）',
@@ -189,7 +189,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.triangle',
-      cluster: 'set.numbers',
+      cluster: 'analysis.real-calc',
       type: 'theorem',
       label: '三角不等式',
       title: '三角不等式 $|x + y| \\le |x| + |y|$',
@@ -297,7 +297,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------ 完备有序域的两条基本性质 */
     {
       id: 'lem.archimedean',
-      cluster: 'set.numbers',
+      cluster: 'analysis.real-calc',
       type: 'lemma',
       label: '阿基米德性质',
       title: '阿基米德性质与 $\\mathbb{Q}$ 的稠密性',

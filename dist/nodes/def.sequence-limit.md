@@ -11,11 +11,14 @@ $$\forall \varepsilon > 0, \exists N, \forall n \ge N : |x_n - x| < \varepsilon$
 
 不收敛的数列叫**发散**。
 
-## 为什么成立（入边，证明在 proofs/）
-- [`def.real`](../nodes/def.real.md) 实数系 ℝ：用到了定义 实数系 ℝ　[proofs/dep.real-sequence.md](../proofs/dep.real-sequence.md)
-
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.sequence-limit.2.md](./def.sequence-limit.2.md)
+- ⇒ [`prop.limit-basic`](../nodes/prop.limit-basic.md) 极限的基本性质
+- 被 [`def.series`](../nodes/def.series.md) 级数收敛 用
+
+- …另有出边，续页见 [nodes/def.sequence-limit.3.md](./def.sequence-limit.3.md)
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/def.sequence-limit.2.md](./def.sequence-limit.2.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

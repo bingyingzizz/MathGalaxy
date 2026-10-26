@@ -12,14 +12,12 @@ $$\|f\|_p := \left[ \int |f|^p \, d\mu \right]^{1/p}$$
 $$L^p(X, \mathcal{M}, \mu) := \{\, f : X \to \mathbb{C} : f \text{ 可测},\ \|f\|_p < \infty \,\}$$
 
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-lp-norm.md](../proofs/def-link.abs-lp-norm.md)
 - [`def.complex`](../nodes/def.complex.md) 复数 ℂ：用到了定义 复数 ℂ　[proofs/dep.complex-lp.md](../proofs/dep.complex-lp.md)
 
 - …另有入边，续页见 [nodes/def.lp-norm.2.md](./def.lp-norm.2.md)
 
 ## 它能推出什么 / 谁在用它
-- 被 [`thm.holder`](../nodes/thm.holder.md) Hölder 不等式 用
-- 被 [`thm.minkowski`](../nodes/thm.minkowski.md) Minkowski 不等式 用
-
 - …另有出边，续页见 [nodes/def.lp-norm.3.md](./def.lp-norm.3.md)
 
 refs: Folland, Real Analysis, §6.1

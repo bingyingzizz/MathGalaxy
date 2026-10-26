@@ -256,6 +256,14 @@ MG.clusters = [
     desc: '在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）'
   },
   {
+    id: 'analysis.real-calc',
+    name: '实数的运算与不等式',
+    en: 'Arithmetic and Inequalities on the Reals',
+    parent: 'analysis',
+    hub: 'thm.nth-root',
+    desc: '把「在 ℝ 上算」与「比大小」的规则一次立全：域等式 → 序与四则运算 → 绝对值 → 阿基米德的 ε 形式与取整 → 整数幂 → 指数律 → n 次方根 → 有理/实数指数 → 二项式 → Bernoulli。这一团是后面所有 ε 估计与放缩的**许可证**。'
+  },
+  {
     id: 'analysis.completeness',
     name: '实数完备性的等价刻画',
     en: 'Equivalent Forms of Completeness of the Reals',

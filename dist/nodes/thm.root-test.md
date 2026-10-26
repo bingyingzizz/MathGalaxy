@@ -12,6 +12,8 @@ $$\alpha := \limsup_{n \to \infty} \sqrt[n]{a_n}$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`thm.comparison-test`](../nodes/thm.comparison-test.md) 比较判别法：与几何级数比较 $\implies$ 根值判别法　[proofs/imp.root-test.md](../proofs/imp.root-test.md)
 
+- …另有入边，续页见 [nodes/thm.root-test.2.md](./thm.root-test.2.md)
+
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.convergence-radius`](../nodes/thm.convergence-radius.md) 收敛半径
 

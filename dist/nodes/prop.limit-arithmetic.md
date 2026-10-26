@@ -15,6 +15,9 @@ layer 15 · 命题 · 实数与极限 · 分析学
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.limit-arithmetic.2.md](./prop.limit-arithmetic.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.limit-arithmetic.3.md](./prop.limit-arithmetic.3.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 
 > 说明见 `notes/prop.limit-arithmetic.md`

@@ -10,6 +10,9 @@ $$\sum_{n=1}^{\infty} a_n < +\infty \iff \sum_{k=0}^{\infty} 2^{k}\, a_{2^{k}} <
 ## 为什么成立（入边，证明在 proofs/）
 - [`thm.comparison-test`](../nodes/thm.comparison-test.md) 比较判别法：按 $2^{k}$ 分组 + 比较 $\implies$ 凝聚判别法　[proofs/imp.cauchy-condensation.md](../proofs/imp.cauchy-condensation.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.cauchy-condensation.2.md](./thm.cauchy-condensation.2.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 
 > 说明见 `notes/thm.cauchy-condensation.md`

@@ -6,13 +6,13 @@
 - thm.omega　自然数集存在　layer 5
 - thm.induction　归纳原理与递推定义　layer 6
 - def.nat-arith　自然数的加法与乘法　layer 7
+- thm.nat-arith-laws　自然数的运算律　layer 8
 - def.int　整数 ℤ　layer 8
+- thm.int-ring　ℤ 是交换整环　layer 9
 - def.rat　有理数 ℚ　layer 9
-- def.abs　绝对值 |x|　layer 9
-- thm.triangle　三角不等式　layer 10
+- thm.rat-ordered-field　ℚ 是有序域　layer 10
 - def.cauchy-null　Cauchy 列与零列　layer 11
 - def.real　实数系 ℝ　layer 12
-- def.complex　复数 ℂ　layer 13
-- lem.archimedean　阿基米德性质　layer 14
 - thm.real-uncountable　ℝ 不可数　layer 14
+- def.complex　复数 ℂ　layer 15
 - thm.real-unique　完备有序域的唯一性　layer 15

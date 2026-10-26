@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-17T15:13:33.182Z
-> 9 星系 / 60 星团 / 910 节点 / 1637 连线（强边 1628，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-26T03:28:16.910Z
+> 9 星系 / 61 星团 / 934 节点 / 1687 连线（强边 1678，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -684,6 +684,73 @@ $\omega$ 同时也是最小的极限序数。构造它需要无穷公理 + 幂�
 
 参考：Kunen, Set Theory, I.5
 
+#### 自然数的运算律　`thm.nat-arith-laws`
+*定理*　定理：$\mathbb{N}$ 上加法与乘法的运算律（Laws of Arithmetic on $\mathbb{N}$）
+
+在 $\mathbb{N} = \omega$ 上取 `def.nat-arith` 定义的加法与乘法。则对一切 $m, n, k \in \mathbb{N}$：
+
+$$0 + n = n, \qquad S(m) + n = S(m + n),$$
+
+$$m + n = n + m, \qquad (m + n) + k = m + (n + k),$$
+
+$$m \cdot 0 = 0, \qquad m \cdot n = n \cdot m, \qquad (m n) k = m (n k), \qquad m(n + k) = m n + m k,$$
+
+以及**消去律**
+
+$$m + k = n + k \implies m = n.$$
+
+⭐ 这些**不是**定义的一部分：`def.nat-arith` 只递归地规定了 $m+0$ 与 $m+S(n)$，交换律、结合律、分配律全都要另外证。
+
+⭐ 顺序有讲究，不能乱：先证两条辅助等式 $0+n=n$ 与 $S(m)+n=S(m+n)$（都对 $n$ 归纳），再做加法交换律（对 $n$ 归纳，归纳步正好用这两条），然后结合律、乘法交换、分配律。后面的每一步都踩在前一步上。
+
+⭐ 有了这些，$\mathbb{N}$ 才是一个「半环」（没有加法逆元）；$\mathbb{Z}$ 的构造（`def.int`）正是为了补上那个逆元。
+
+参考：Kunen, Set Theory, Ch. I；Enderton, Elements of Set Theory, Ch. 4
+
+#### ℤ 是交换整环　`thm.int-ring`
+*定理*　定理：$\mathbb{Z}$ 是含幺交换整环，且序与运算相容
+
+在 $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/{\sim}$ 上取 `def.int` 定义的运算与序。则：
+
+**(i)** 两个运算**良定义**（与代表元的选取无关）；
+
+**(ii)** $(\mathbb{Z}, +, \cdot)$ 是**含幺交换环**；
+
+**(iii)** $\mathbb{Z}$ **无零因子**（是整环）：$xy = 0 \implies x = 0$ 或 $y = 0$；
+
+**(iv)** $\le$ 是全序，且与运算相容：$x \le y \implies x + z \le y + z$，$x \le y,\ 0 \le z \implies xz \le yz$；
+
+**(v)** $n \mapsto [n, 0]$ 是 $\mathbb{N}$ 到 $\mathbb{Z}$ 的**单射**，保持加法、乘法与序。
+
+⭐ 每一项都是「搬到代表元上，用 $\mathbb{N}$ 的运算律」。$\mathbb{N}$ 里没有减法，所以 $\mathbb{Z}$ 的加法写成 $[a,b] + [c,d] = [a+c, b+d]$ —— 代表元里的 $+$ 就是 `thm.nat-arith-laws` 的那个 $+$。
+
+⭐ **无零因子**是最有意思的一条：设 $x = [a,b]$、$y = [c,d]$ 都为正，即 $a > b$、$c > d$，写 $a = b + p$、$c = d + q$（$p, q \ge 1$）。则 $xy = [ac + bd,\ ad + bc]$，而
+
+$$(ac + bd) - (ad + bc) = pq > 0,$$
+
+故 $xy > 0$，不可能为 $0$。符号相反时乘积为负，同理。
+
+⚠ 这一步做完，`def.rat` 里「于是 $\mathbb{Q}$ 是一个有序域」才有依据 —— 有理数的分母取自 $\mathbb{Z} \setminus \{0\}$，而「$0$ 不能作分母」的前提正是「整环里 $bd = 0$ 只有平凡解」。
+
+参考：Kunen, Set Theory, Ch. I；Enderton, Elements of Set Theory, Ch. 4
+
+#### ℚ 是有序域　`thm.rat-ordered-field`
+*定理*　定理：$\mathbb{Q}$ 是有序域（$\mathbb{Q}$ is an Ordered Field）
+
+在 $\mathbb{Q} = (\mathbb{Z} \times (\mathbb{Z}\setminus\{0\}))/{\sim}$ 上取 `def.rat` 定义的运算与序。则 $(\mathbb{Q}, +, \cdot, \le)$ 是**有序域**：
+
+- $(\mathbb{Q}, +, \cdot)$ 是域（每个非零元有乘法逆元）；
+
+- $\le$ 是全序，且 $a \le b \implies a + c \le b + c$、$a \le b,\ 0 \le c \implies ac \le bc$；
+
+- $n \mapsto n/1$ 把 $\mathbb{Z}$ 嵌入 $\mathbb{Q}$，保持运算与序。
+
+⭐ 证明的骨架：**良定义**（$a/b = a'/b'$ 时两种算法结果相同）用 $\mathbb{Z}$ 的整环消去律；**域公理**逐条搬到代表元上（$\mathbb{Z}$ 是交换环，`thm.int-ring`）；**逆元**是 $(a/b)^{-1} = b/a$（$a \ne 0$，交换性使 $a b = b a \ne 0$ 自动成立，这里用到无零因子）；**序**在 $b, d > 0$ 的表示下就是 $ad \le bc$，换代表元时两边同乘正元 $b'd'$ 不改变不等号。
+
+⭐ 到这一步「四则运算齐全 + 有序」全部落实，但**不完备**：$\{q \in \mathbb{Q} : q^{2} < 2\}$ 有上界却没有上确界。这不是缺陷，正是 `def.real` 要把它补成 $\mathbb{R}$ 的理由。
+
+参考：Kunen, Set Theory, Ch. I；Enderton, Elements of Set Theory, Ch. 4
+
 #### 复数 ℂ　`def.complex`
 *定义*　复数系 $\mathbb{C}$（Complex Numbers）
 
@@ -807,44 +874,6 @@ $$\frac{a}{b} + \frac{c}{d} := \frac{ad + bc}{bd}, \qquad \frac{a}{b} \cdot \fra
 
 参考：Kunen, Set Theory, I.5
 
-#### 绝对值 |x|　`def.abs`
-*定义*　绝对值 $|x|$（Absolute Value）
-
-设 $K$ 是**有序域**（$\mathbb{Q}$ 与 $\mathbb{R}$ 都是），$x \in K$。定义
-
-$$|x| := \begin{cases} x, & x \ge 0 \\ -x, & x < 0 \end{cases} \qquad\text{即}\qquad |x| = \max\{x, -x\}$$
-
-于是 $|x| \ge 0$ 恒成立，且 $|x| = 0 \iff x = 0$。
-
-⭐ 读法：$|x|$ 是**到原点的距离**，与符号无关。两点之间的距离就是 $|x - y|$ —— 这就是后来**距离空间**里那个距离的原型：把「差」扔掉，只留下「距离」这个概念本身。
-
-立刻能验证的两条（都由定义分情形）：
-- $|-x| = |x|$；
-- $|xy| = |x|\,|y|$。
-
-⚠ **不等号那一侧的估计不属于定义**：$|x + y| \le |x| + |y|$ 是一条**定理**（见「三角不等式」）—— 定义里只有分情形，没有不等式。
-
-参考：Rudin, Principles of Mathematical Analysis, Ch. 1
-
-#### 三角不等式　`thm.triangle`
-*定理*　三角不等式 $|x + y| \le |x| + |y|$
-
-设 $K$ 是有序域（如 $\mathbb{Q}$、$\mathbb{R}$），$x, y \in K$。则
-
-$$|x + y| \le |x| + |y|$$
-
-并且由此得到两个常用的变形：
-
-$$\big| |x| - |y| \big| \le |x - y|, \qquad |x_1 + x_2 + \cdots + x_n| \le |x_1| + |x_2| + \cdots + |x_n|$$
-
-（后者由前者对 $n$ 归纳。）
-
-⭐ 这是**一切估计的起点**：Cauchy 列的线性运算、极限的四则运算、级数的比较判别法、距离空间里那条 $d(x, z) \le d(x, y) + d(y, z)$，归根到底都是它（距离空间那条是把它**取作公理**）。
-
-⚠ 证明只有分情形，没有任何技巧 —— 但**「$a \le |a|$ 且 $-a \le |a|$」这两句是全部的关键**：由它得 $-(|x| + |y|) \le x + y \le |x| + |y|$，而 $|t| \le c \iff -c \le t \le c$（$c \ge 0$）。
-
-参考：Rudin, Principles of Mathematical Analysis, Ch. 1
-
 #### Cauchy 列与零列　`def.cauchy-null`
 *定义*　有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）
 
@@ -906,33 +935,6 @@ $$q \mapsto [(q, q, q, \ldots)]$$
 📌 另一条路是**戴德金分割**（取 $\mathbb{Q}$ 的满足「非空、有上界、无最大元」的子集作为元素）：路数不同，造出来的对象同构 —— 见「完备有序域的唯一性」。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3；Tao, Analysis I, Ch. 5
-
-#### 阿基米德性质　`lem.archimedean`
-*引理*　阿基米德性质与 $\mathbb{Q}$ 的稠密性
-
-设 $K$ 是一个**完备有序域**（比如 $\mathbb{R}$）。则：
-
-**(i) 阿基米德性质**：自然数在 $K$ 中没有上界 ——
-
-$$\forall x \in K,\ \exists n \in \mathbb{N} : n > x$$
-
-**(ii) $\mathbb{Q}$ 在 $K$ 中稠密**：任意两个元素之间都夹着一个有理数 ——
-
-$$\forall x, y \in K,\ x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
-
-（这里的 $\mathbb{Q}$ 指 $\mathbb{Q}$ 在 $K$ 中的嵌入像：$1$ 在 $K$ 中生成 $\mathbb{Z}$，再取分式得到 $\mathbb{Q}$。）
-
-⭐ 两条都是**完备性（确界原理）的推论**，不需要任何别的假设。
-
-它们的用处很大：
-- 证明**完备有序域的唯一性**（$\mathbb{R}$ 的良定义性）时要靠 (ii) —— 有理数在两边都稠密，才能用「有理数的像」去逼近任意元；
-- 分析里所有的「取 $n$ 足够大」「取 $\varepsilon = 1/n$」实质上都是在用 (i)；
-- (ii) 也是「用有理数逼近实数」的许可证：任何实数都是有理数的上确界。
-
-⚠ 完备性 $\implies$ 阿基米德性，但**反过来不成立**：$\mathbb{Q}$ 是阿基米德的，然而不完备。
-⚠ (ii) 中夹着的那个 $q$ 必须**严格**在两个数之间 —— 这正是「稠密」比「有任意接近的有理数」强的地方。
-
-参考：Tao, Analysis I, Ch. 5（实数的构造）；Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 完备有序域的唯一性　`thm.real-unique`
 *定理*　任何完备有序域都与 $\mathbb{R}$ 同构（构造无关性）
@@ -2659,6 +2661,73 @@ $$d(f, g) := \sup_{s \in S}\ d\bigl(f(s),\ g(s)\bigr).$$
 
 ### 星团：代数结构
 > 造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。
+
+#### 群的基本性质　`prop.group-basic`
+*命题*　命题：群的消去律与逆的公式（Elementary Group Theory）
+
+设 $G$ 是群，$a, b, c \in G$。则：
+
+**(i) 消去律**：$ab = ac \implies b = c$，$ba = ca \implies b = c$；
+
+**(ii) 逆的公式**：$(ab)^{-1} = b^{-1}a^{-1}$，$(a^{-1})^{-1} = a$，$e^{-1} = e$；
+
+**(iii)** 对 $m, n \in \mathbb{Z}$：$a^{m}a^{n} = a^{m+n}$，$(a^{m})^{n} = a^{mn}$，$a^{0} = e$。
+
+⭐ 消去律是「群」与「幺半群」的分水岭：$(\mathbb{N}, \cdot)$ 是幺半群，但 $0 \cdot 2 = 0 \cdot 3$ 消不掉 $0$ —— 缺的正是逆元。
+
+⚠ 非交换群里 $(ab)^{-1} = b^{-1}a^{-1}$ 的顺序**必须反过来**：$(ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = aa^{-1} = e$。写成 $a^{-1}b^{-1}$ 一般是错的（$S_3$ 里取两个对换就能试出来）。
+
+⭐ (iii) 是 `def.power` 在群里的版本；证明同样是「先对非负整数归纳，再用逆元过渡到负指数」。
+
+参考：Lang, Algebra, Ch. I
+
+#### 理想的运算与商环泛性质　`prop.ideal-basic`
+*命题*　命题：理想的交、和、积与商环的泛性质（Operations on Ideals）
+
+设 $A$ 是环，$I, J \subseteq A$ 是理想。则：
+
+**(i)** $I \cap J$ 与
+
+$$I + J := \{\, x + y : x \in I,\ y \in J \,\}$$
+
+都是理想；$I + J$ 是包含 $I \cup J$ 的**最小**理想；
+
+**(ii)** 有限和组成的集合
+
+$$IJ := \left\{ \sum_{k=1}^{n} x_k y_k : x_k \in I,\ y_k \in J,\ n \ge 0 \right\}$$
+
+是理想，且 $IJ \subseteq I \cap J$；
+
+**(iii) 商环的泛性质**：若 $\varphi : A \to B$ 是环同态且 $\varphi(I) = 0$，则存在**唯一**的环同态 $\bar{\varphi} : A/I \to B$ 使 $\bar{\varphi} \circ \pi = \varphi$，其中 $\pi : A \to A/I$ 是商映射。
+
+⭐ 对照群：群要商出群，商掉的是**正规子群**；环要商出环，商掉的是**理想**。两者的理由一模一样 —— 要让商集上的运算与代表元无关。
+
+⚠ 理想的**并**一般不是理想：$2\mathbb{Z} \cup 3\mathbb{Z}$ 不含 $2 + 3 = 5$。所以「并」的替代品是**和** $I + J$，它才是包含两者的最小理想。
+
+⭐ 商环泛性质是「第一同构定理」的另一面：$\ker \varphi \supseteq I$ 时 $\varphi$ 穿过 $A/I$，且 $A/\ker\varphi \cong \operatorname{im}\varphi$。
+
+参考：Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1
+
+#### 素理想与极大理想　`prop.prime-ideal`
+*命题*　命题：素理想、极大理想与商环（Prime and Maximal Ideals）
+
+设 $A$ 是含幺交换环，$P, M \subset A$ 是理想。
+
+**(i)** $P$ 叫**素理想**，若 $ab \in P \implies a \in P$ 或 $b \in P$。等价地：$A/P$ 是**整环**。
+
+**(ii)** $M$ 叫**极大理想**，若不存在理想 $J$ 使 $M \subset J \subset A$。等价地：$A/M$ 是**域**。
+
+**(iii)** 极大 $\implies$ 素（$A/M$ 是域 $\implies$ 是整环）。
+
+⭐ 素理想是「整除」的抽象：在 $\mathbb{Z}$ 里 $(p)$ 素 $\iff$ $p$ 是素数；在 $k[x]$ 里 $(f)$ 素 $\iff$ $f$ 不可约。
+
+⭐ 极大理想是「商掉之后最简单」：$\mathbb{Z}/p\mathbb{Z}$ 是域，$\mathbb{Z}/(6)$ 不是（有零因子）。
+
+⚠ 极大 $\implies$ 素，但**反之不然**：$k[x,y]$ 里 $(x)$ 是素理想（$k[x,y]/(x) \cong k[y]$ 是整环），却不极大（$(x) \subset (x, y) \subset k[x,y]$）。一维的整环（如 $\mathbb{Z}$、$k[x]$）里两者才重合。
+
+📌 存在性（每个真理想都含在一个极大理想里）要用佐恩引理；那是 `lem.zorn` 的应用，不在本条里。
+
+参考：Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1
 
 #### 域　`def.field`
 *定义*　域 $F$（Field）
@@ -5011,6 +5080,27 @@ $$V = U \oplus W$$
 ### 星团：实数与极限
 > 在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）
 
+#### 极限的基本性质　`prop.limit-basic`
+*命题*　命题：极限的唯一性、有界性与保号性（Basic Properties of Limits）
+
+设数列 $\{x_n\} \subseteq \mathbb{R}$ 收敛到 $x$。则：
+
+**(i) 唯一性**：若 $x_n \to x$ 且 $x_n \to x'$，则 $x = x'$；
+
+**(ii) 有界性**：存在 $M$ 使 $|x_n| \le M$ 对一切 $n$ 成立；
+
+**(iii) 保号性**：若 $x > 0$，则存在 $N$ 使 $n \ge N$ 时 $x_n > x/2 > 0$；若 $x < 0$，则存在 $N$ 使 $n \ge N$ 时 $x_n < x/2 < 0$；
+
+**(iv) 子列**：任何子列 $x_{n_k} \to x$。
+
+⭐ 这四条是 $\varepsilon$-$N$ 语言的「第一批练习」，但后面每一处都在默认使用：唯一性给夹逼定理收尾，有界性给乘积法则（$|f(x)| \le M$）用，保号性给倒数法则（$|g(x)| > |B|/2$）用，子列那条给聚点与紧性用。
+
+⭐ 保号性的常数取 $x/2$ 是个技巧：留出一半余量，后面才能对 $|x_n - x|$ 做估计而不必担心符号翻转。
+
+⚠ 有界**不**保证收敛（$(-1)^{n}$），保号**不**说明极限存在 —— 它们都是收敛的**后果**，不是判据。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3
+
 #### 扩充实数 [−∞,+∞]　`def.extended-real`
 *定义*　扩充实数系 $\overline{\mathbb{R}}$（Extended Reals）
 
@@ -5251,6 +5341,295 @@ $$\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n$$
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
+### 星团：实数的运算与不等式
+> 把「在 ℝ 上算」与「比大小」的规则一次立全：域等式 → 序与四则运算 → 绝对值 → 阿基米德的 ε 形式与取整 → 整数幂 → 指数律 → n 次方根 → 有理/实数指数 → 二项式 → Bernoulli。这一团是后面所有 ε 估计与放缩的**许可证**。
+
+#### 环与域的基本等式　`prop.field-rules`
+*命题*　命题：环与域里的基本等式（Consequences of the Ring Axioms）
+
+设 $A$ 是环，$a, b \in A$。则
+
+**(i)** $0 \cdot a = a \cdot 0 = 0$；
+
+**(ii)** $(-a)b = -(ab) = a(-b)$，且 $(-a)(-b) = ab$；
+
+**(iii)** 若 $A$ 含幺元 $1$，则 $(-1)a = -a$；
+
+**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则
+
+$$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b = c.$$
+
+⭐ 这些等式在 $\mathbb{R}$、$\mathbb{Q}$ 上就是**移项、通分、约分**的许可证 —— 极限四则运算、行列式展开、多项式除法里每一处「两边同乘」「约掉」都是在用它，但平时没人把它们单独写下来。
+
+⚠ **无零因子不是环公理**：$\mathbb{Z}/6\mathbb{Z}$ 里 $2 \cdot 3 = 0$，$\mathbb{Z}/4\mathbb{Z}$ 里 $2 \cdot 2 = 0$。所以「$ab = 0 \implies a=0$ 或 $b=0$」在整环里才成立，在一般环里不能默认。
+
+⭐ 证明只用两样东西：**分配律**与**加法群的消去**（即两边加同一个元素）。这就是「环公理很少，但能推出来的很多」。
+
+参考：Lang, Algebra, Ch. I；Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1
+
+#### 序与四则运算　`prop.order-rules`
+*命题*　命题：不等式的基本运算（Order and the Field Operations）
+
+设 $K$ 是有序域，$a, b, c, d \in K$。则
+
+**(i)** $a < b \iff a + c < b + c$；
+
+**(ii)** $a < b$ 且 $c < d$ $\implies$ $a + c < b + d$；
+
+**(iii)** $c > 0$ 时 $a < b \implies ac < bc$；$c < 0$ 时 $a < b \implies ac > bc$；
+
+**(iv)** $0 < a < b \implies 0 < \dfrac{1}{b} < \dfrac{1}{a}$；
+
+**(v)** $0 < 1$；且 $a \ne 0 \implies a^{2} > 0$；
+
+**(vi)** $a < b \implies a < \dfrac{a + b}{2} < b$。
+
+⭐ 这是一切**不等式放缩**的规则表。第 (iii) 条最容易出错：乘负数要**反向**，所以做 $\varepsilon$ 估计时永远要先看清乘的那个量是不是正的。
+
+⭐ 第 (iv) 条（倒数反序）在「$|g(x)| > |B|/2 \implies 1/|g(x)| < 2/|B|$」这种地方天天用 —— 极限的倒数法则就是靠它把 $1/|g|$ 放大。
+
+⚠ 整套东西只依赖定义里的**两条相容性**：加法保序、乘正数保序。其余全是推论。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 绝对值的运算性质　`prop.abs-properties`
+*命题*　命题：绝对值的运算性质（Properties of the Absolute Value）
+
+设 $K$ 是有序域，$x, y \in K$，$c \ge 0$。则
+
+**(i)** $|x| \ge 0$，$|x| = 0 \iff x = 0$，$|-x| = |x|$，$-|x| \le x \le |x|$；
+
+**(ii)** $|xy| = |x|\,|y|$，且 $y \ne 0 \implies \left|\dfrac{x}{y}\right| = \dfrac{|x|}{|y|}$；
+
+**(iii)** $|x|^{2} = x^{2}$；
+
+**(iv)** $|x| \le c \iff -c \le x \le c$；$|x| < c \iff -c < x < c$；
+
+**(v)** $|x| > c \iff x > c \text{ 或 } x < -c$。
+
+⭐ **三角不等式是另一条**（见「三角不等式」），这里只收「乘、商、平方、三段式」这些**等式型**的规则。两者合起来才是完整的绝对值工具箱。
+
+⭐ (iv) 是 $\varepsilon$ 论证里最常用的一句：把「$|f(x) - L| < \varepsilon$」改写成「$L - \varepsilon < f(x) < L + \varepsilon$」，才能与序公理对接。(v) 是它的补集形态。
+
+⚠ $|x|^{2} = x^{2}$ 看着废话，但它把绝对值**去掉了**：需要平方的时候不必再分情形 —— 这也是为什么 $\ell^{2}$、$L^{2}$ 里的范数可以写成内积。
+
+📌 全部由定义 $|x| = \max\{x, -x\}$ 分 $x \ge 0$、$x < 0$ 两种情形验证。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 阿基米德的 ε 形式与取整　`cor.archimedean-epsilon`
+*推论*　推论：$1/n < \varepsilon$ 与取整函数（Archimedean Corollaries）
+
+设 $K$ 是完备有序域（如 $\mathbb{R}$）。
+
+**(i)** 对每个 $\varepsilon > 0$ 存在 $n \ge 1$ 使
+
+$$\frac{1}{n} < \varepsilon; \qquad \text{等价地} \qquad \inf\left\{ \frac{1}{n} : n \ge 1 \right\} = 0.$$
+
+**(ii)** 对每个 $x \in K$ 存在**唯一**的整数 $n$ 使
+
+$$n \le x < n + 1.$$
+
+记 $n = \lfloor x \rfloor$，叫 $x$ 的**整数部分**（取整函数）；$\{x\} := x - \lfloor x \rfloor \in [0, 1)$ 叫**小数部分**。
+
+⭐ (i) 是分析里「取 $n$ 足够大」的**标准形态**。阿基米德性质原来说的是「$\mathbb{N}$ 无上界」，但实际写证明时用的几乎总是 (i)：给 $\varepsilon$，取 $n > 1/\varepsilon$。
+
+⭐ (ii) 是把实数「夹到两个相邻整数之间」—— 有理数稠密的证明（`lem.archimedean` 的 (ii)）里就用了它。它依赖 $\mathbb{Z}$ 在 $K$ 中的**离散性**（相邻整数之间没有别的整数），而不只是无界性。
+
+⚠ $\mathbb{Q}$ 也满足 (i)（它是阿基米德的），但 $\mathbb{Q}$ 不满足确界原理 —— 所以 (i) 本身**不**需要完备性，只需要阿基米德性；这里写成完备有序域只是为了和 `lem.archimedean` 对齐。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 整数幂　`def.power`
+*定义*　整数幂 $a^{n}$（Integer Powers）
+
+设 $A$ 是含幺环（如 $\mathbb{Z}$、$\mathbb{R}$），$a \in A$。**整数幂**由递推定义：
+
+$$a^{0} := 1, \qquad a^{n+1} := a^{n} \cdot a \quad (n \in \mathbb{N});$$
+
+若 $a$ 可逆（在 $\mathbb{R}$ 中即 $a \ne 0$），再对 $n \ge 1$ 定义
+
+$$a^{-n} := (a^{-1})^{n} = \frac{1}{a^{n}}.$$
+
+⭐ 幂只是「乘法写多少遍」的压缩记号，本身没有新内容 —— 但它把「$n$ 次」变成一个**可以归纳的对象**：`thm.binomial`、`thm.bernoulli`、几何级数、幂级数全都在对 $n$ 归纳。
+
+⚠ 这里只定义**整数**指数。$a^{1/2}$ 要等 `thm.nth-root`（n 次方根），$a^{\sqrt{2}}$ 要等 `def.real-power` —— 顺序不能倒过来，否则「开方」就成了没有定义的东西。
+
+⚠ $0^{0}$ 本图**不定义**（组合计数里约定 $0^{0}=1$，那是另一套约定）。
+
+⚠ 非交换环里 $a^{n+1} = a^{n}a$ 与 $a \cdot a^{n}$ 可能不同；本图只在交换情形使用。
+
+参考：Lang, Algebra, Ch. I
+
+#### 指数律与幂的单调性　`prop.power-rules`
+*命题*　命题：指数律（Laws of Exponents）
+
+设 $A$ 是交换环，$a, b \in A$，$m, n \in \mathbb{Z}$（出现负指数时要求 $a, b$ 可逆）。则
+
+$$a^{m+n} = a^{m}\,a^{n}, \qquad (a^{m})^{n} = a^{mn}, \qquad (ab)^{n} = a^{n}\,b^{n}.$$
+
+若 $K$ 是有序域、$a > 1$，则对 $m, n \in \mathbb{Z}$：
+
+$$m < n \iff a^{m} < a^{n};$$
+
+而 $0 < a < 1$ 时不等号反向；$a = 1$ 时 $a^{n} = 1$ 恒成立。
+
+⭐ 三条指数律都是「对 $n$ 归纳」，没有技巧。真正有用的是**单调性**：$a > 1$ 时 $n \mapsto a^{n}$ 严格递增，所以 $q^{n} \to 0$（$0 < q < 1$）可以写成 $q^{n} \le 1/(1+nh)$ 再夹逼 —— 几何级数收敛的证明就靠这一条。
+
+⚠ 负指数那半边要先把 $a^{-n}$ 写成 $(a^{-1})^{n}$，再用**正指数**的结论；交换性在这里是必需的（$(ab)^{-1} = b^{-1}a^{-1} = a^{-1}b^{-1}$ 只在交换时成立）。
+
+参考：Lang, Algebra, Ch. I
+
+#### n 次方根　`thm.nth-root`
+*定理*　定理：$n$ 次方根的存在唯一性（Existence of $n$-th Roots）
+
+设 $K$ 是完备有序域（如 $\mathbb{R}$），$a > 0$，$n \ge 1$。则存在**唯一**的 $b > 0$ 使
+
+$$b^{n} = a;$$
+
+记 $b = \sqrt[n]{a} = a^{1/n}$。并且：
+
+- $a \mapsto \sqrt[n]{a}$ 在 $(0, +\infty)$ 上严格递增；
+- $\sqrt[n]{ab} = \sqrt[n]{a}\,\sqrt[n]{b}$，$\sqrt[n]{a^{m}} = \left(\sqrt[n]{a}\right)^{m}$（$m \in \mathbb{Z}$）。
+
+⭐ $n = 2$、$a = 2$ 就是 **$\sqrt{2}$ 的存在性**：$\{q \in \mathbb{Q} : q^{2} < 2\}$ 在 $\mathbb{Q}$ 里没有上确界，在 $\mathbb{R}$ 里有 —— 那个上确界就是 $\sqrt{2}$。所以这条定理是「$\mathbb{R}$ 比 $\mathbb{Q}$ 多出来的东西」第一次被具体造出来。
+
+⭐ 证明是**确界原理的模板**：令 $S = \{t \ge 0 : t^{n} \le a\}$，取 $b = \sup S$，再证 $b^{n} = a$（两边都不能不等：小了可以往上抬一点，大了可以往下压一点）。
+
+⚠ 两处估计的方向相反：往上抬用**二项式**（$ (b+h)^{n} $ 展开后只需保留一阶项），往下压用 **Bernoulli**（$(1 - h/b)^{n} \ge 1 - nh/b$）。这就是 `thm.binomial` 与 `thm.bernoulli` 在图上第一次真正被用到。
+
+⚠ 唯一性靠**严格单调**：$0 \le u < v \implies u^{n} < v^{n}$（因式分解 $v^{n} - u^{n} = (v-u)(v^{n-1} + \cdots + u^{n-1}) > 0$）。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 有理指数与实数指数幂　`def.real-power`
+*定义*　有理指数与实数指数幂（Rational and Real Powers）
+
+设 $a > 0$。
+
+**(i) 有理指数。** 对 $r = m/n$（$m \in \mathbb{Z}$，$n \ge 1$）定义
+
+$$a^{r} := \sqrt[n]{a^{m}}.$$
+
+这与 $m/n$ 的表示无关：若 $m/n = m'/n'$，则 $mn' = m'n$，于是 $(a^{m})^{n'} = (a^{m'})^{n}$，由 n 次方根的唯一性两者相等。
+
+**(ii) 实数指数。** 对 $x \in \mathbb{R}$：当 $a > 1$ 时
+
+$$a^{x} := \sup\{\, a^{q} : q \in \mathbb{Q},\ q < x \,\};$$
+
+当 $0 < a < 1$ 时 $a^{x} := 1/(1/a)^{x}$；$a = 1$ 时 $a^{x} := 1$。
+
+⭐ 思路一句话：**用有理指数从下面逼近**。有理指数靠 n 次方根定义，实数指数靠确界定义 —— 一层一层往上搭，每一步都不引入新的神秘对象。
+
+⭐ 良定义要检查两件事：集合 $\{a^{q} : q < x\}$ **非空**（取 $q < x$，有理数稠密）且**有上界**（$a > 1$ 时取 $q < x+1$，则 $a^{q} < a^{x+1}$）；上确界于是存在。
+
+⭐ 与 `exp` / `log` 是同一件事：$a^{x} = \exp(x \log a)$。但那条路要先有幂级数，这里只用确界 —— 所以 `lem.young-inequality` 里的 $a^{\lambda}b^{1-\lambda}$（$\lambda$ 是实数）在这条定义下是有意义的。
+
+⚠ 有理指数的指数律（$a^{r+s} = a^{r}a^{s}$ 等）要对表示做消去，繁琐但不难；实数指数的指数律要用「上确界与加法相容」，是 `prop.order-rules` 与确界性质的练习。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 二项式定理　`thm.binomial`
+*定理*　定理：二项式定理（Binomial Theorem）
+
+设 $A$ 是交换环，$a, b \in A$，$n \in \mathbb{N}$。则
+
+$$(a + b)^{n} = \sum_{k=0}^{n} \binom{n}{k} a^{k}\, b^{n-k}, \qquad \binom{n}{k} := \frac{n!}{k!\,(n-k)!}.$$
+
+系数满足 **Pascal 递推**
+
+$$\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k},$$
+
+从而是自然数（$\binom{n}{k}$ 就是「从 $n$ 个里挑 $k$ 个」的个数）。
+
+⭐ 这条定理在图上被两处用到：`def.exp-function` 的函数方程 $\exp(z+w) = \exp z\,\exp w$（把 $(z+w)^{n}$ 展开再重排），以及 `thm.nth-root` 里放大 $(b+h)^{n}$。
+
+⭐ 证明只对 $n$ 归纳：把 $(a+b)^{n+1} = (a+b)^{n}(a+b)$ 展开，用 Pascal 把两组系数并起来。
+
+⚠ 非交换环里不成立（$ab \ne ba$），所以条件写的是交换环。
+
+参考：Lang, Algebra, Ch. I
+
+#### Bernoulli 不等式　`thm.bernoulli`
+*定理*　定理：Bernoulli 不等式（Bernoulli's Inequality）
+
+设 $x \ge -1$，$n \in \mathbb{N}$。则
+
+$$(1 + x)^{n} \ge 1 + n x.$$
+
+若 $x \ne 0$ 且 $n \ge 2$，则不等号**严格**。
+
+⭐ 这是把「反复乘同一个 $1+x$」压成**线性**的最小估计，$x$ 可以任意小。分析里用它把 $(1+h)^{n}$ 从上面撑住、把 $(1-h)^{n}$ 从下面兜住 —— `thm.nth-root` 的第二个方向就是它。
+
+⚠ 条件 $x \ge -1$ 是为了让 $1+x \ge 0$：归纳步要把不等式两边同乘 $1+x$，只有它非负才不反向。$x < -1$ 时命题可以失效或失去归纳基础。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 绝对值 |x|　`def.abs`
+*定义*　绝对值 $|x|$（Absolute Value）
+
+设 $K$ 是**有序域**（$\mathbb{Q}$ 与 $\mathbb{R}$ 都是），$x \in K$。定义
+
+$$|x| := \begin{cases} x, & x \ge 0 \\ -x, & x < 0 \end{cases} \qquad\text{即}\qquad |x| = \max\{x, -x\}$$
+
+于是 $|x| \ge 0$ 恒成立，且 $|x| = 0 \iff x = 0$。
+
+⭐ 读法：$|x|$ 是**到原点的距离**，与符号无关。两点之间的距离就是 $|x - y|$ —— 这就是后来**距离空间**里那个距离的原型：把「差」扔掉，只留下「距离」这个概念本身。
+
+立刻能验证的两条（都由定义分情形）：
+- $|-x| = |x|$；
+- $|xy| = |x|\,|y|$。
+
+⚠ **不等号那一侧的估计不属于定义**：$|x + y| \le |x| + |y|$ 是一条**定理**（见「三角不等式」）—— 定义里只有分情形，没有不等式。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 三角不等式　`thm.triangle`
+*定理*　三角不等式 $|x + y| \le |x| + |y|$
+
+设 $K$ 是有序域（如 $\mathbb{Q}$、$\mathbb{R}$），$x, y \in K$。则
+
+$$|x + y| \le |x| + |y|$$
+
+并且由此得到两个常用的变形：
+
+$$\big| |x| - |y| \big| \le |x - y|, \qquad |x_1 + x_2 + \cdots + x_n| \le |x_1| + |x_2| + \cdots + |x_n|$$
+
+（后者由前者对 $n$ 归纳。）
+
+⭐ 这是**一切估计的起点**：Cauchy 列的线性运算、极限的四则运算、级数的比较判别法、距离空间里那条 $d(x, z) \le d(x, y) + d(y, z)$，归根到底都是它（距离空间那条是把它**取作公理**）。
+
+⚠ 证明只有分情形，没有任何技巧 —— 但**「$a \le |a|$ 且 $-a \le |a|$」这两句是全部的关键**：由它得 $-(|x| + |y|) \le x + y \le |x| + |y|$，而 $|t| \le c \iff -c \le t \le c$（$c \ge 0$）。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 1
+
+#### 阿基米德性质　`lem.archimedean`
+*引理*　阿基米德性质与 $\mathbb{Q}$ 的稠密性
+
+设 $K$ 是一个**完备有序域**（比如 $\mathbb{R}$）。则：
+
+**(i) 阿基米德性质**：自然数在 $K$ 中没有上界 ——
+
+$$\forall x \in K,\ \exists n \in \mathbb{N} : n > x$$
+
+**(ii) $\mathbb{Q}$ 在 $K$ 中稠密**：任意两个元素之间都夹着一个有理数 ——
+
+$$\forall x, y \in K,\ x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
+
+（这里的 $\mathbb{Q}$ 指 $\mathbb{Q}$ 在 $K$ 中的嵌入像：$1$ 在 $K$ 中生成 $\mathbb{Z}$，再取分式得到 $\mathbb{Q}$。）
+
+⭐ 两条都是**完备性（确界原理）的推论**，不需要任何别的假设。
+
+它们的用处很大：
+- 证明**完备有序域的唯一性**（$\mathbb{R}$ 的良定义性）时要靠 (ii) —— 有理数在两边都稠密，才能用「有理数的像」去逼近任意元；
+- 分析里所有的「取 $n$ 足够大」「取 $\varepsilon = 1/n$」实质上都是在用 (i)；
+- (ii) 也是「用有理数逼近实数」的许可证：任何实数都是有理数的上确界。
+
+⚠ 完备性 $\implies$ 阿基米德性，但**反过来不成立**：$\mathbb{Q}$ 是阿基米德的，然而不完备。
+⚠ (ii) 中夹着的那个 $q$ 必须**严格**在两个数之间 —— 这正是「稠密」比「有任意接近的有理数」强的地方。
+
+参考：Tao, Analysis I, Ch. 5（实数的构造）；Rudin, Principles of Mathematical Analysis, Ch. 1
+
 ### 星团：实数完备性的等价刻画
 > 造出「$\mathbb{R}$ 没有洞」的各种说法：确界原理 → 单调有界 → 区间套 → Bolzano–Weierstrass → Cauchy 准则 → 度量完备。它们是同一件事的六副面孔，永远同层 —— 初等分析里一切「存在某个极限」的定理都从这里取发动机。
 
@@ -5422,6 +5801,23 @@ $$\lim_{n \to \infty} x_n = \sup_{n} x_n$$
 ### 星团：连续与紧性
 > 造出「连续函数长什么样」：紧集上有界、取到最值、一致连续；介值定理与零点定理。反函数的连续性、初等函数的合法性都挂在这里。
 
+#### 连续函数的运算　`prop.continuous-arithmetic`
+*命题*　命题：连续函数的和差积商与复合（Algebra of Continuous Functions）
+
+设 $f, g : \mathbb{R} \to \mathbb{R}$ 在 $x_0$ 连续，$c \in \mathbb{R}$。则下列函数在 $x_0$ 连续：
+
+$$f + g, \quad f - g, \quad cf, \quad fg, \quad |f|;$$
+
+若 $g(x_0) \ne 0$，则 $f/g$ 在 $x_0$ 连续。若 $g$ 在 $f(x_0)$ 连续，则复合 $g \circ f$ 在 $x_0$ 连续。
+
+⭐ 前五条由**极限的四则运算**（`prop.limit-arithmetic`）直接翻译过来：连续就是「极限等于函数值」，所以极限能做的运算连续也能做。
+
+⚠ 复合那条**不能**照搬：$\lim_{x \to x_0} f(x) = f(x_0)$ 与 $\lim_{y \to y_0} g(y) = g(y_0)$ 要拼成 $\lim_{x \to x_0} g(f(x)) = g(f(x_0))$，中间要过一道 $\varepsilon$-$\delta$ 的传递。
+
+⭐ 推论：多项式处处连续；有理函数在分母不为零处连续；由 `thm.elementary-derivatives` 与幂级数，$\exp$、$\sin$、$\cos$ 也连续 —— 于是「初等函数在其定义域内连续」这句话是**证出来的**，不是约定。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 4
+
 #### 一致连续　`def.uniform-continuity`
 *定义*　一致连续（Uniform Continuity）
 
@@ -5558,6 +5954,59 @@ $$f(\xi) = 0$$
 
 ### 星团：微分中值定理与 Taylor
 > 造出「把函数的增量翻译成导数」这套工具：Fermat 引理 → Rolle → Lagrange → Cauchy → L'Hôpital，顶点是 Taylor 公式 —— 用导数把一个函数局部地重写成多项式。
+
+#### 可导 ⟹ 连续　`prop.differentiable-implies-continuous`
+*命题*　命题：可导蕴含连续（Differentiable $\implies$ Continuous）
+
+若 $f$ 在 $x_0$ 可导，则 $f$ 在 $x_0$ 连续。
+
+⭐ 一句话证明：$f(x) - f(x_0) = \dfrac{f(x) - f(x_0)}{x - x_0}\,(x - x_0)$，右边第一个因子趋于 $f'(x_0)$、第二个趋于 $0$，乘积趋于 $0$。
+
+⚠ 逆命题不成立：$f(x) = |x|$ 在 $0$ 连续但不可导（左右导数差一个符号）。所以「连续」是比「可导」严格更弱的条件 —— 图上的层号里 $\text{可导}$ 在 $\text{连续}$ 之上。
+
+⭐ 这条在 `thm.derivative-rules` 的乘积法则里要用：$g(x) \to g(x_0)$ 那一步就是它。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 5
+
+#### 求导法则　`thm.derivative-rules`
+*定理*　定理：求导的四则运算与链式法则（Derivative Rules）
+
+设 $f, g$ 在 $x_0$ 可导，$c \in \mathbb{R}$。则
+
+$$(f \pm g)'(x_0) = f'(x_0) \pm g'(x_0), \qquad (cf)'(x_0) = c\,f'(x_0),$$
+
+$$(fg)'(x_0) = f'(x_0)\,g(x_0) + f(x_0)\,g'(x_0),$$
+
+$$\left(\frac{f}{g}\right)'(x_0) = \frac{f'(x_0)\,g(x_0) - f(x_0)\,g'(x_0)}{g(x_0)^{2}} \quad (g(x_0) \ne 0),$$
+
+$$(g \circ f)'(x_0) = g'(f(x_0))\,f'(x_0).$$
+
+⭐ 乘积法则的证明要点是**加一项减一项**：$f(x)g(x) - f(x_0)g(x_0) = [f(x) - f(x_0)]\,g(x) + f(x_0)[g(x) - g(x_0)]$。第一项里的 $g(x)$ 要用「可导 $\implies$ 连续」换成 $g(x_0)$ —— 这就是为什么 `prop.differentiable-implies-continuous` 必须排在它前面。
+
+⚠ 链式法则**不能**直接写 $\dfrac{\Delta g}{\Delta f}\cdot\dfrac{\Delta f}{\Delta x}$：$\Delta f$ 可能为 $0$（$f$ 在 $x_0$ 附近取值相同），分母会消失。正确写法是把 $g$ 的增量写成「线性主部 + 余项」：$g(y) - g(y_0) = [g'(y_0) + \varepsilon(y)]\,(y - y_0)$，其中 $\varepsilon(y) \to 0$。
+
+⭐ 商法则由乘积法则与 $\left(\dfrac{1}{g}\right)' = -\dfrac{g'}{g^{2}}$ 合成；后者是把 $\dfrac{1}{g(x)} - \dfrac{1}{g(x_0)} = -\dfrac{g(x) - g(x_0)}{g(x)g(x_0)}$ 除以 $x - x_0$ 再取极限。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 5
+
+#### 初等函数的导数　`thm.elementary-derivatives`
+*定理*　定理：初等函数的导数表（Derivatives of Elementary Functions）
+
+在各自的定义域内：
+
+$$(x^{n})' = n x^{n-1} \quad (n \in \mathbb{Z}), \qquad (\sqrt{x})' = \frac{1}{2\sqrt{x}} \quad (x > 0),$$
+
+$$(\sin x)' = \cos x, \qquad (\cos x)' = -\sin x,$$
+
+$$(\exp x)' = \exp x, \qquad (\ln x)' = \frac{1}{x} \quad (x > 0).$$
+
+⭐ 三个来源：$x^{n}$ 用乘积法则归纳（负指数用商法则）；$\sin$、$\cos$、$\exp$ 由**幂级数**定义，所以求导就是**逐项求导**（`thm.power-series-analytic`）；$\ln$ 是 $\exp$ 的反函数，用链式法则从 $\exp(\ln y) = y$ 两边求导得到。
+
+⭐ $\sqrt{x}$ 由 $x = (\sqrt{x})^{2}$ 两边求导：$1 = 2\sqrt{x}\,(\sqrt{x})'$。
+
+⚠ 这张表是**定理**，不是定义的一部分：`def.trig-function` 与 `def.exp-function` 只用级数规定了函数值，导数要另外算。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 8
 
 #### 局部极值　`def.local-extremum`
 *定义*　局部极大与局部极小（Local Extremum）
@@ -6125,6 +6574,36 @@ $$\int_{[a, b]} f\,dm = \int_a^b f$$
 
 ### 星团：数项级数的敛散性
 > 造出「无限多项相加靠不靠谱」这套判据：Cauchy 准则 → 比较判别法 → **Kummer 判别法**（d'Alembert / Raabe / Bertrand / Gauss 全是它的特例）→ 根值 / 积分 / 凝聚判别法 → Abel–Dirichlet 判别法。分水岭是**绝对收敛**：绝对收敛的级数可以随便重排、相乘，条件收敛的不行。
+
+#### 几何级数　`thm.geometric-series`
+*定理*　定理：几何级数（Geometric Series）
+
+设 $q \in \mathbb{R}$。则级数 $\sum_{n=0}^{\infty} q^{n}$ 收敛**当且仅当** $|q| < 1$；此时
+
+$$\sum_{n=0}^{\infty} q^{n} = \frac{1}{1 - q}.$$
+
+⭐ 这是所有级数判别法的**标尺**：比较判别法、根值判别法、比值判别法最后都归结到「某个几何级数收敛」。`imp.root-test` 与 `imp.banach-fixed-point` 里那句「几何级数收敛」指的就是这条。
+
+⭐ $|q| < 1$ 时 $q^{n} \to 0$ 的证明要用 Bernoulli + 阿基米德性：写 $1/|q| = 1 + h$（$h > 0$），则 $(1+h)^{n} \ge 1 + nh$，于是 $|q|^{n} \le \dfrac{1}{1 + nh} \le \dfrac{1}{n h}$ 可以任意小。
+
+⚠ $|q| \ge 1$ 时通项不趋于 $0$，级数必发散 —— 这一半不需要任何判据。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3
+
+#### p-级数　`thm.p-series`
+*定理*　定理：$p$-级数的敛散性（$p$-Series）
+
+设 $p \in \mathbb{R}$。则级数
+
+$$\sum_{n=1}^{\infty} \frac{1}{n^{p}}$$
+
+收敛**当且仅当** $p > 1$。
+
+⭐ $p = 1$ 是调和级数（发散），$p = 2$ 是 $\sum 1/n^{2} = \pi^{2}/6$（收敛）—— 两者是「判别法在边界上失灵」的标准例子：根值判别法对它们都给出 $\alpha = 1$。
+
+⭐ 证明是 `thm.cauchy-condensation`（Cauchy 凝聚判别法）最漂亮的应用：$a_n = n^{-p}$ 单调递减时，原级数收敛 $\iff$ $\sum 2^{k} a_{2^{k}} = \sum (2^{1-p})^{k}$ 收敛，而后者是公比 $2^{1-p}$ 的几何级数，收敛 $\iff$ $2^{1-p} < 1 \iff p > 1$。
+
+参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 级数的 Cauchy 准则　`thm.cauchy-criterion-series`
 *定理*　定理：级数收敛 $\iff$ 尾部可以任意小
@@ -10635,6 +11114,21 @@ $\mathbf{Cat}$ 有**终对象**（单对象范畴 $\mathbf{1}$）、有**始对�
 
 ### 星团：函子与自然变换
 > 造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。
+
+#### 函子保同构　`prop.functor-preserves-iso`
+*命题*　命题：函子把同构送到同构（Functors Preserve Isomorphisms）
+
+设 $F : \mathcal{C} \to \mathcal{D}$ 是函子，$f : X \to Y$ 是 $\mathcal{C}$ 中的同构，逆为 $f^{-1} : Y \to X$。则 $F(f)$ 是同构，且
+
+$$F(f)^{-1} = F\left(f^{-1}\right).$$
+
+⭐ 一句话：$F(f)\,F(f^{-1}) = F(f f^{-1}) = F(1_Y) = 1_{F(Y)}$，另一边同理。用的正是函子的两条要求：**保复合、保单位**。
+
+⚠ 反过来**不**成立：$F(f)$ 是同构推不出 $f$ 是同构（遗忘函子把线性同构与可逆线性映射看成同一件事，但把不可逆的方阵也映射成映射）。要反推需要 $F$ **全忠实**，那正是 `prop.adjoint-full-faithful` 那一类命题的内容。
+
+⭐ 这条虽小，却是「同构是范畴论性质」的第一块砖：任何函子都不区分同构对象，所以同构不变量（秩、迹、行列式、同调）才有意义。
+
+参考：Mac Lane, Categories for the Working Mathematician, Ch. I
 
 #### 函子　`def.functor`
 *定义*　函子（Functor）
@@ -20040,6 +20534,131 @@ $$|N| = 1 + (\text{若干个 } 15, 20, 12, 12 \text{ 之和}).$$
 
 ⚠ 第四步用了一个小事实：$A_5 \le A_n$（$n \ge 5$）—— 固定后 $n-5$ 个点、在前 $5$ 个点上做偶置换即可。它是 $A_n$ 的子群，而子群可解性向下传（`thm.solvable-quotients` (a)）。
 
+#### 环 ⟹ 环与域的基本等式　`imp.field-rules`
+*环公理 $\implies$ 基本等式*
+
+**(i)** $0 \cdot a = (0 + 0)\cdot a = 0 \cdot a + 0 \cdot a$。两边加上 $-(0 \cdot a)$ 得 $0 = 0 \cdot a$；$a \cdot 0 = 0$ 同理。
+
+**(ii)** $(-a)b + ab = ((-a) + a)b = 0 \cdot b = 0$，故 $(-a)b = -(ab)$（加法逆元唯一）。同理 $a(-b) = -(ab)$。再用一次：
+
+$$(-a)(-b) = -\bigl(a(-b)\bigr) = -\bigl(-(ab)\bigr) = ab.$$
+
+**(iii)** $(-1)a = -(1 \cdot a) = -a$（用 (ii) 与幺元）。
+
+**(iv)** 若 $ab = ac$，则 $a(b - c) = ab - ac = 0$。若 $a \ne 0$ 且 $A$ 无零因子，则 $b - c = 0$，即 $b = c$。$ab = 0$ 的断言就是无零因子的定义。$\blacksquare$
+
+#### 有序域 ⟹ 序与四则运算　`imp.order-rules`
+*有序域公理 $\implies$ 不等式运算*
+
+**(i)** 由相容性 $a < b \implies a + c < b + c$。反向：若 $a + c < b + c$，把 $c$ 换成 $-c$ 得 $a < b$。
+
+**(ii)** $a < b \implies a + c < b + c$；$c < d \implies b + c < b + d$；传递得 $a + c < b + d$。
+
+**(iii)** $a < b$ 即 $b - a > 0$。若 $c > 0$，由乘正数保序得 $(b - a)c > 0$，即 $bc > ac$。若 $c < 0$，则 $-c > 0$，$(b-a)(-c) > 0$，即 $ac - bc > 0$，故 $ac > bc$。
+
+**(iv)** 先证 $a > 0 \implies 1/a > 0$：若 $1/a < 0$，两边乘 $a > 0$ 得 $1 < 0$，与 (v)（下面证）矛盾。于是 $a, b, ab$ 都为正，$\dfrac{1}{a} - \dfrac{1}{b} = \dfrac{b - a}{ab} > 0$（分子分母都正）。
+
+**(v)** $1 = 1^{2}$；若 $1 = 0$ 则环平凡（排除），故由下面的平方非负得 $1 > 0$。平方非负：$a > 0 \implies a^{2} = a \cdot a > 0$（乘正数保序，$a > 0$）；$a < 0 \implies -a > 0 \implies a^{2} = (-a)^{2} > 0$。
+
+**(vi)** $a < b \implies 2a < a + b < 2b$（(ii)），两边除以 $2 > 0$ 得 $a < \dfrac{a+b}{2} < b$。$\blacksquare$
+
+#### 绝对值 |x| ⟹ 绝对值的运算性质　`imp.abs-properties`
+*绝对值的定义 $\implies$ 运算性质*
+
+以下都按 $x \ge 0$ 与 $x < 0$ 分情形，用 $|x| = \max\{x, -x\}$。
+
+**(i)** 两种情形下 $|x|$ 分别是 $x$ 或 $-x$，都 $\ge 0$；$|x| = 0$ 迫使 $x = 0$。$|-x|$：若 $x \ge 0$ 则 $-x \le 0$，$|-x| = -(-x) = x = |x|$；另一情形对称。$-|x| \le x \le |x|$ 由 $x \le \max\{x,-x\}$ 与 $-x \le \max\{x,-x\}$ 直接读出。
+
+**(ii)** 四种符号组合分别验证：$x, y \ge 0$ 时 $xy \ge 0$，$|xy| = xy = |x||y|$；$x \ge 0 > y$ 时 $xy \le 0$，$|xy| = -xy = x \cdot (-y) = |x||y|$；其余两种对称。商由 $|x| = |y| \cdot |x/y|$ 与 $|y| > 0$ 两边除以 $|y|$ 得到。
+
+**(iii)** 两种情形都有 $|x|^{2} = x^{2}$（$(-x)^{2} = x^{2}$）。
+
+**(iv)** 若 $|x| \le c$，由 (i) 的 $-|x| \le x \le |x|$ 得 $-c \le x \le c$。反之若 $-c \le x \le c$：$x \ge 0$ 时 $|x| = x \le c$；$x < 0$ 时 $|x| = -x \le c$。严格版同理。
+
+**(v)** $|x| > c$ 即「并非 $|x| \le c$」，由 (iv) 的等价取反得 $x > c$ 或 $x < -c$。$\blacksquare$
+
+#### 阿基米德性质 ⟹ 阿基米德的 ε 形式与取整　`imp.archimedean-epsilon`
+*阿基米德性质 $\implies$ $1/n < \varepsilon$ 与取整*
+
+**(i)** 给定 $\varepsilon > 0$。由阿基米德性质（用于 $x = 1/\varepsilon$）存在 $n \in \mathbb{N}$ 使 $n > 1/\varepsilon$。这样的 $n \ge 1$；两边除以 $n\varepsilon > 0$ 得 $1/n < \varepsilon$。
+
+**(ii) 存在性。** 由阿基米德性质取 $N \in \mathbb{N}$ 使 $N > |x|$，则 $-N < x < N$。令
+
+$$S := \{ m \in \mathbb{Z} : m \le x \}.$$
+
+$S$ 非空（$-N \in S$）且有上界 $x$。$\mathbb{Z}$ 的每个非空有上界子集有最大元（$\mathbb{N}$ 的良序性向上搬一层），取 $n := \max S$。则 $n \le x$；又 $n + 1 \notin S$，即 $n + 1 > x$。
+
+**唯一性。** 若 $n \le x < n+1$ 且 $m \le x < m+1$，设 $n < m$。则 $m \ge n+1 > x$，与 $m \le x$ 矛盾；$m < n$ 对称。故 $n = m$。$\blacksquare$
+
+#### 整数幂 + 自然数的运算律 ⟹ 指数律与幂的单调性　`imp.power-rules`
+*幂的定义 $\implies$ 指数律*
+
+**正指数。** 固定 $m \ge 0$，对 $n$ 归纳证 $a^{m+n} = a^{m}a^{n}$：$n = 0$ 时两边都是 $a^{m}$；$n \to n+1$ 时 $a^{m+n+1} = a^{m+n}a = a^{m}a^{n}a = a^{m}a^{n+1}$。
+
+$(a^{m})^{n} = a^{mn}$：对 $n$ 归纳，用上一条。$(ab)^{n} = a^{n}b^{n}$：对 $n$ 归纳，用交换性。
+
+**负指数。** $a^{-n} = (a^{-1})^{n}$，把上面三条用于 $a^{-1}, b^{-1}$ 即可。
+
+**单调性。** $a > 1$ 时 $a^{n+1} - a^{n} = a^{n}(a - 1) > 0$（$a^{n} > 0$ 由 $a > 0$ 归纳），故 $n \mapsto a^{n}$ 严格递增；$m < n \iff a^{m} < a^{n}$ 随之成立。$0 < a < 1$ 时 $1/a > 1$，把结论用于 $1/a$ 并取倒数（正数取倒数反序）。$\blacksquare$
+
+#### ℝ 是完备有序域 + 整数幂 + 二项式定理 + Bernoulli 不等式 ⟹ n 次方根　`imp.nth-root`
+*确界原理 + 二项式 $\implies$ n 次方根存在*
+
+令 $S := \{ t \in K : t \ge 0,\ t^{n} \le a \}$。$0 \in S$；且 $t > \max\{1, a\}$ 时 $t^{n} \ge t > a$，故 $\max\{1,a\}$ 是上界。由确界原理，$b := \sup S$ 存在。又 $t_{0} := \min\{a,1\}/2$ 满足 $t_{0} > 0$、$t_{0}^{n} \le t_{0} < a$，故 $t_{0} \in S$，从而 $b \ge t_{0} > 0$。
+
+**断言 $b^{n} = a$。** 反设 $b^{n} \ne a$。
+
+若 $b^{n} < a$：取 $0 < h < 1$ 且 $h(b+1)^{n} < a - b^{n}$。由二项式定理，
+
+$$(b+h)^{n} = \sum_{k=0}^{n} \binom{n}{k} b^{n-k} h^{k} \le b^{n} + h \sum_{k=1}^{n} \binom{n}{k} b^{n-k} \le b^{n} + h(b+1)^{n} < a,$$
+
+故 $b + h \in S$，与 $b = \sup S$ 矛盾。
+
+若 $b^{n} > a$：取 $0 < h < b$ 且 $n h b^{n-1} < b^{n} - a$。由 Bernoulli（$x = -h/b \ge -1$），
+
+$$(b-h)^{n} = b^{n}\left(1 - \frac{h}{b}\right)^{n} \ge b^{n}\left(1 - \frac{nh}{b}\right) = b^{n} - n h b^{n-1} > a.$$
+
+于是任何 $t \in S$ 都满足 $t^{n} \le a < (b-h)^{n}$，故 $t < b - h$（$t \ge 0$，正数上 $t \mapsto t^{n}$ 严格增）。即 $b - h$ 是 $S$ 的上界，与 $b$ 最小矛盾。
+
+**唯一性与单调性。** $0 \le u < v$ 时
+
+$$v^{n} - u^{n} = (v - u)\,(v^{n-1} + v^{n-2}u + \cdots + u^{n-1}) > 0,$$
+
+故 $t \mapsto t^{n}$ 在 $[0, +\infty)$ 上严格递增；$b^{n} = c^{n}$ 且 $b, c > 0$ 迫使 $b = c$。于是 $\sqrt[n]{a}$ 是唯一确定的，且 $a < a' \implies \sqrt[n]{a} < \sqrt[n]{a'}$。
+
+**乘法。** $(\sqrt[n]{a}\,\sqrt[n]{b})^{n} = ab$，两边都是正数，由唯一性得 $\sqrt[n]{ab} = \sqrt[n]{a}\,\sqrt[n]{b}$。$\blacksquare$
+
+#### n 次方根 + 阿基米德性质 ⟹ 有理指数与实数指数幂　`imp.real-power`
+*n 次方根 $\implies$ 有理指数良定义；确界 $\implies$ 实数指数*
+
+**有理指数良定义。** 设 $m/n = m'/n'$（$n, n' \ge 1$），则 $mn' = m'n$。取 $n n'$ 次方根：
+
+$$(a^{m})^{n'} = a^{mn'} = a^{m'n} = (a^{m'})^{n}.$$
+
+由 `thm.nth-root` 的唯一性（两边都为正），$\sqrt[nn']{(a^{m})^{n'}} = \sqrt[nn']{(a^{m'})^{n}}$，即 $\sqrt[n]{a^{m}} = \sqrt[n']{a^{m'}}$。所以 $a^{r}$ 只依赖 $r$。
+
+**实数指数。** 设 $a > 1$、$x \in \mathbb{R}$。集合 $T := \{a^{q} : q \in \mathbb{Q},\ q < x\}$ 非空（有理数稠密取 $q < x$）且有上界：取有理 $q_{1}$ 使 $x < q_{1}$，由 $a > 1$ 时 $a^{q}$ 关于 $q$ 递增（`prop.power-rules` 的有理版本）知 $a^{q} < a^{q_{1}}$ 对一切 $q < x$ 成立。故 $a^{x} := \sup T$ 存在。$0 < a < 1$ 与 $a = 1$ 的情形按定义化归。$\blacksquare$
+
+#### 整数幂 + 归纳原理与递推定义 ⟹ 二项式定理　`imp.binomial`
+*归纳 $\implies$ 二项式定理*
+
+$n = 0$ 时两边都是 $1$。设对 $n$ 成立，则
+
+$$(a+b)^{n+1} = \left(\sum_{k=0}^{n} \binom{n}{k} a^{k}b^{n-k}\right)(a+b) = \sum_{k=0}^{n} \binom{n}{k} a^{k+1}b^{n-k} + \sum_{k=0}^{n} \binom{n}{k} a^{k}b^{n-k+1}.$$
+
+第一个和里令 $j = k+1$，得 $\sum_{j=1}^{n+1} \binom{n}{j-1} a^{j}b^{n+1-j}$；第二个和是 $\sum_{j=0}^{n} \binom{n}{j} a^{j}b^{n+1-j}$。两者相加，$1 \le j \le n$ 的系数是 $\binom{n}{j-1} + \binom{n}{j} = \binom{n+1}{j}$（Pascal），端点系数为 $1$。这正是 $(a+b)^{n+1}$ 的展开。
+
+Pascal 递推本身由 $\binom{n}{k} = \dfrac{n!}{k!(n-k)!}$ 直接算得；$\binom{n}{k} \in \mathbb{N}$ 由递推与归纳（或在 $\mathbb{N}$ 上直接做组合计数）得到。$\blacksquare$
+
+#### 归纳原理与递推定义 ⟹ Bernoulli 不等式　`imp.bernoulli`
+*归纳 $\implies$ Bernoulli 不等式*
+
+$n = 0$：$1 \ge 1$。$n = 1$：两边都是 $1 + x$。设对 $n$ 成立。因 $x \ge -1$，有 $1 + x \ge 0$，两边同乘不反向：
+
+$$(1+x)^{n+1} = (1+x)^{n}(1+x) \ge (1 + nx)(1+x) = 1 + (n+1)x + n x^{2} \ge 1 + (n+1)x.$$
+
+严格性：若 $x \ne 0$ 且 $n \ge 2$，则上式最后一步的 $n x^{2} > 0$；归纳中至少用一次严格不等号。$\blacksquare$
+
 #### 依测度 Cauchy ⟹ 依测度 Cauchy ⟹ 收敛　`imp.cauchy-in-measure`
 *依测度 Cauchy $\implies$ 依测度收敛且有一子列 a.e. 收敛*
 
@@ -20165,6 +20784,298 @@ $L^{1}$ 收敛的定义里用到 $\int |f_{n} - f|$。
 #### 定义引用：「测度」→ Egorov 定理　`def-link.measure-egorov`
 
 证明的 ③ 靠测度的上连续性，而那是可数可加性的推论。
+
+#### 自然数的加法与乘法 + 归纳原理与递推定义 ⟹ 自然数的运算律　`imp.nat-arith-laws`
+*递推定义 + 归纳原理 $\implies$ 运算律*
+
+全部对某个变量归纳，用 `def.nat-arith` 的两条递推式。
+
+**① $0 + n = n$**（对 $n$ 归纳）：$n = 0$ 时 $0 + 0 = 0$；设 $0 + n = n$，则 $0 + S(n) = S(0 + n) = S(n)$。
+
+**② $S(m) + n = S(m + n)$**（对 $n$ 归纳）：$n = 0$ 时两边都是 $S(m)$；归纳步 $S(m) + S(n) = S(S(m) + n) = S(S(m+n)) = S(m + S(n))$。
+
+**③ 交换律 $m + n = n + m$**（对 $n$ 归纳）：$n = 0$ 时是 ①。归纳步：
+
+$$m + S(n) = S(m + n) = S(n + m) = n + S(m) = S(n) + m,$$
+
+最后一个等号用 ②（把 $m$ 与 $n$ 换位后再用一次）。
+
+**④ 结合律**：对 $k$ 归纳，归纳步直接由 $S$ 的定义。**⑤ 乘法**：先证 $0 \cdot n = 0$ 与 $S(m)\cdot n = m\cdot n + n$（都对 $n$ 归纳，用 ③④），再对 $n$ 归纳得乘法交换律；结合律与分配律同样对 $k$ 归纳（分配律的归纳步是 $m(n + S(k)) = m S(n+k) = m(n+k) + m$）。
+
+**⑥ 消去律**（对 $k$ 归纳）：$k = 0$ 平凡；若 $m + S(k) = n + S(k)$，则 $S(m+k) = S(n+k)$，由 $S$ 的单射得 $m + k = n + k$，再用归纳假设。$\blacksquare$
+
+#### 整数 ℤ + 自然数的运算律 ⟹ ℤ 是交换整环　`imp.int-ring`
+*商构造 + $\mathbb{N}$ 的运算律 $\implies$ $\mathbb{Z}$ 是整环*
+
+**良定义。** 若 $[a,b] = [a',b']$、$[c,d] = [c',d']$（即 $a + b' = a' + b$、$c + d' = c' + d$），则把两式相加并重排得 $(a+c) + (b'+d') = (a'+c') + (b+d)$，即加法良定义。乘法要长一点：由 $a + b' = a' + b$ 两边乘 $c + d'$、$c + d' = c' + d$ 两边乘 $a' + b$，再比较两个展开式，用 $\mathbb{N}$ 的分配律与消去律得 $ac + bd + a'd' + b'c' = a'c' + b'd' + ad + bc$，即 $[ac+bd,\ ad+bc] = [a'c'+b'd',\ a'd'+b'c']$。
+
+**环公理。** 逐条搬到代表元：结合、交换、分配都变成 $\mathbb{N}$ 的对应等式（`thm.nat-arith-laws`）。零元是 $[0,0]$，幺元是 $[1,0]$，加法逆元是 $-[a,b] = [b,a]$（因 $[a,b] + [b,a] = [a+b,\ a+b] = 0$）。
+
+**序。** $[a,b] \le [c,d] :\iff a + d \le b + c$ 与代表元无关（同上，两边加同一个量）；全序由 $\mathbb{N}$ 的全序（三分）得到；相容性逐项验证。
+
+**无零因子。** 见节点说明里的 $p q > 0$ 论证：两个正元的积为正，故 $xy = 0$ 迫使某个因子为 $0$。
+
+**嵌入。** $n \mapsto [n,0]$ 显然单射，且 $[m,0] + [n,0] = [m+n,0]$、$[m,0][n,0] = [mn,0]$、$[m,0] \le [n,0] \iff m \le n$。$\blacksquare$
+
+#### 有理数 ℚ + ℤ 是交换整环 ⟹ ℚ 是有序域　`imp.rat-ordered-field`
+*商构造 + $\mathbb{Z}$ 是整环 $\implies$ $\mathbb{Q}$ 是有序域*
+
+**良定义。** 设 $a/b = a'/b'$、$c/d = c'/d'$（即 $ab' = a'b$、$cd' = c'd$，且分母非零）。加法：要证 $(ad + bc)(b'd') = (a'd' + b'c')(bd)$，把 $ab' = a'b$ 乘 $dd'$、$cd' = c'd$ 乘 $bb'$，相加即得。乘法同理（用 $ac b'd' = a'c' bd$）。
+
+**域公理。** 全部搬到代表元上，就是 $\mathbb{Z}$ 的环公理（`thm.int-ring`）；加法逆元 $-a/b = (-a)/b$。
+
+**乘法逆元。** $a/b \ne 0$ 即 $a \ne 0$，此时 $(a/b)(b/a) = ab/ba = 1$（交换性用上了；$b a \ne 0$ 用到 $\mathbb{Z}$ 无零因子）。
+
+**序。** 把每个元素写成 $b > 0$ 的 $a/b$（分母取相反数即可）。定义 $a/b \le c/d :\iff ad \le bc$。良定义：换代表元时两边同乘正元 $b'd' > 0$，由 `thm.int-ring` 的序相容性不等号不变。全序与两条相容性逐项验证（加法直接；乘法用 $bd > 0$ 时同乘正数保序）。
+
+**嵌入。** $n \mapsto n/1$，保持运算与序。$\blacksquare$
+
+#### 数列极限 + 序与四则运算 ⟹ 极限的基本性质　`imp.limit-basic`
+*$\varepsilon$-$N$ 定义 $\implies$ 极限的基本性质*
+
+**(i)** 设 $x_n \to x$、$x_n \to x'$ 且 $x \ne x'$，不妨 $x < x'$。取 $\varepsilon = (x' - x)/2 > 0$，则 $n$ 充分大时同时有 $|x_n - x| < \varepsilon$、$|x_n - x'| < \varepsilon$，于是
+
+$$x' - x \le |x' - x_n| + |x_n - x| < 2\varepsilon = x' - x,$$
+
+矛盾。
+
+**(ii)** 取 $\varepsilon = 1$，存在 $N$ 使 $n \ge N$ 时 $|x_n - x| < 1$，故 $|x_n| \le |x| + 1$。令 $M := \max\{|x_1|, \ldots, |x_{N-1}|, |x| + 1\}$ 即可。
+
+**(iii)** 设 $x > 0$，取 $\varepsilon = x/2$，则 $n \ge N$ 时 $|x_n - x| < x/2$，即 $x_n > x - x/2 = x/2 > 0$。$x < 0$ 时对 $-x_n$ 用同一结论。
+
+**(iv)** 若 $n_k \ge k$（子列指标的单调性），则 $n_k \ge N$ 当 $k \ge N$，于是 $|x_{n_k} - x| < \varepsilon$。$\blacksquare$
+
+#### 连续 + 极限的四则运算与保序性 ⟹ 连续函数的运算　`imp.continuous-arithmetic`
+*连续的定义 + 极限四则运算 $\implies$ 连续函数的运算*
+
+前五条：连续等价于 $\lim_{x \to x_0} f(x) = f(x_0)$，把 `prop.limit-arithmetic` 的结论逐条翻译过来即可（和、差、数乘、积、绝对值）。
+
+**商。** 由 $g(x_0) \ne 0$ 与保号性，$g$ 在 $x_0$ 附近不为零，再用极限的商法则。
+
+**复合。** 给定 $\varepsilon > 0$。$g$ 在 $y_0 := f(x_0)$ 连续，故存在 $\eta > 0$ 使 $|y - y_0| < \eta \implies |g(y) - g(y_0)| < \varepsilon$。$f$ 在 $x_0$ 连续，故存在 $\delta > 0$ 使 $|x - x_0| < \delta \implies |f(x) - f(x_0)| < \eta$。于是 $|x - x_0| < \delta \implies |g(f(x)) - g(f(x_0))| < \varepsilon$。$\blacksquare$
+
+#### 导数 + 极限的四则运算与保序性 ⟹ 可导 ⟹ 连续　`imp.differentiable-continuous`
+*导数定义 $\implies$ 可导蕴含连续*
+
+对 $x \ne x_0$，
+
+$$f(x) - f(x_0) = \frac{f(x) - f(x_0)}{x - x_0}\,(x - x_0).$$
+
+由可导性，第一个因子当 $x \to x_0$ 时趋于 $f'(x_0)$；第二个因子趋于 $0$。由极限的乘积法则（`prop.limit-arithmetic`），$f(x) - f(x_0) \to 0$，即 $f(x) \to f(x_0)$。$\blacksquare$
+
+#### 导数 + 极限的四则运算与保序性 + 可导 ⟹ 连续 ⟹ 求导法则　`imp.derivative-rules`
+*导数定义 + 极限四则运算 $\implies$ 求导法则*
+
+**线性。** 差商 $(f \pm g)(x) - (f \pm g)(x_0)$ 拆成两个差商之和，取极限。
+
+**乘积。** 加一项减一项：
+
+$$\frac{(fg)(x) - (fg)(x_0)}{x - x_0} = \frac{f(x) - f(x_0)}{x - x_0}\,g(x) + f(x_0)\,\frac{g(x) - g(x_0)}{x - x_0}.$$
+
+第一项：差商 $\to f'(x_0)$，$g(x) \to g(x_0)$（可导 $\implies$ 连续），乘积 $\to f'(x_0)g(x_0)$。第二项 $\to f(x_0)g'(x_0)$。
+
+**倒数。** 对 $g(x_0) \ne 0$，$x$ 靠近 $x_0$ 时 $g(x) \ne 0$，且
+
+$$\frac{1}{g(x)} - \frac{1}{g(x_0)} = -\frac{g(x) - g(x_0)}{g(x)\,g(x_0)},$$
+
+除以 $x - x_0$ 后两个因子分别趋于 $g'(x_0)$ 与 $-1/g(x_0)^{2}$。商法则再由乘积法则合成。
+
+**链式。** 记 $y_0 = f(x_0)$。由 $g$ 在 $y_0$ 可导，存在函数 $\varepsilon$ 使 $\varepsilon(y) \to 0$（$y \to y_0$）且
+
+$$g(y) - g(y_0) = \bigl(g'(y_0) + \varepsilon(y)\bigr)(y - y_0).$$
+
+取 $y = f(x)$、$y_0 = f(x_0)$，除以 $x - x_0$：
+
+$$\frac{g(f(x)) - g(f(x_0))}{x - x_0} = \bigl(g'(f(x_0)) + \varepsilon(f(x))\bigr)\,\frac{f(x) - f(x_0)}{x - x_0}.$$
+
+因 $f$ 连续，$x \to x_0$ 时 $f(x) \to f(x_0)$，故 $\varepsilon(f(x)) \to 0$；第二个因子 $\to f'(x_0)$。取极限得 $(g \circ f)'(x_0) = g'(f(x_0))f'(x_0)$。$\blacksquare$
+
+#### 整数幂 + 求导法则 + 幂级数的逐项运算 + 对数函数与 e ⟹ 初等函数的导数　`imp.elementary-derivatives`
+*求导法则 + 幂级数逐项求导 $\implies$ 初等函数导数表*
+
+**$x^{n}$（$n \ge 0$）**：对 $n$ 归纳，$n = 0$ 时为常函数；归纳步用乘积法则与 $(x)' = 1$。$n < 0$ 时用商法则 $(x^{n})' = \left(1/x^{-n}\right)'$。
+
+**$\exp$、$\sin$、$\cos$**：三者都由收敛半径 $+\infty$ 的幂级数定义，由 `thm.power-series-analytic` 可在收敛区间内逐项求导：
+
+$$(\exp x)' = \sum_{n \ge 1} \frac{n x^{n-1}}{n!} = \sum_{m \ge 0} \frac{x^{m}}{m!} = \exp x,$$
+
+$$(\sin x)' = \sum_{k \ge 0} \frac{(-1)^{k}(2k+1)x^{2k}}{(2k+1)!} = \cos x, \qquad (\cos x)' = -\sin x \ \text{同理}.$$
+
+**$\ln$**：由 $\exp(\ln y) = y$（$y > 0$）两边求导，链式法则给 $\exp(\ln y)\,(\ln y)' = 1$，即 $y\,(\ln y)' = 1$。
+
+**$\sqrt{x}$**：由 $x = (\sqrt{x})^{2}$ 两边求导得 $1 = 2\sqrt{x}\,(\sqrt{x})'$。$\blacksquare$
+
+#### 级数收敛 + Bernoulli 不等式 + 阿基米德的 ε 形式与取整 ⟹ 几何级数　`imp.geometric-series`
+*部分和公式 + Bernoulli $\implies$ 几何级数*
+
+**$|q| < 1$。** 部分和（$q \ne 1$）
+
+$$s_N = \sum_{n=0}^{N} q^{n} = \frac{1 - q^{N+1}}{1 - q}.$$
+
+要证 $q^{N} \to 0$。写 $1/|q| = 1 + h$（$h > 0$）。由 Bernoulli，$(1 + h)^{N} \ge 1 + Nh$，故
+
+$$|q|^{N} \le \frac{1}{1 + Nh} \le \frac{1}{Nh}.$$
+
+给定 $\varepsilon > 0$，由 `cor.archimedean-epsilon` 取 $N$ 使 $1/(Nh) < \varepsilon$。于是 $s_N \to 1/(1-q)$。
+
+**$|q| \ge 1$。** 此时 $|q^{n}| \ge 1$，通项不趋于 $0$，由级数收敛的必要条件（`thm.cauchy-criterion-series`）发散。$\blacksquare$
+
+#### Cauchy 凝聚判别法 + 几何级数 ⟹ p-级数　`imp.p-series`
+*凝聚判别法 + 几何级数 $\implies$ p-级数*
+
+**$p \le 0$**：$1/n^{p} \ge 1$，通项不趋于 $0$，发散。
+
+**$p > 0$**：$a_n = n^{-p}$ 非负且单调递减。由 Cauchy 凝聚判别法（`thm.cauchy-condensation`），
+
+$$\sum_{n \ge 1} \frac{1}{n^{p}} \ \text{收敛} \iff \sum_{k \ge 0} 2^{k} \cdot \frac{1}{(2^{k})^{p}} = \sum_{k \ge 0} \left(2^{1-p}\right)^{k} \ \text{收敛}.$$
+
+右边是公比 $q = 2^{1-p}$ 的几何级数。由 `thm.geometric-series`，它收敛 $\iff$ $q < 1$ $\iff$ $2^{1-p} < 1$ $\iff$ $p > 1$。$\blacksquare$
+
+#### 群 ⟹ 群的基本性质　`imp.group-basic`
+*群公理 $\implies$ 消去律与逆公式*
+
+**(i)** 若 $ab = ac$，两边左乘 $a^{-1}$：$a^{-1}(ab) = a^{-1}(ac)$，由结合律得 $b = c$。右消去对称。
+
+**(ii)** $(ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = aea^{-1} = aa^{-1} = e$，同理 $(b^{-1}a^{-1})(ab) = e$，由逆元唯一得 $(ab)^{-1} = b^{-1}a^{-1}$。$a^{-1}$ 的逆是 $a$ 由 $a^{-1}a = e$ 直接读出；$e^{-1} = e$ 同理。
+
+**(iii)** 非负指数对 $n$ 归纳（`def.power`）；负指数写成 $(a^{-1})^{k}$，再用 $(a^{-1})^{k} = (a^{k})^{-1}$（对 $k$ 归纳，用 (ii)）。$\blacksquare$
+
+#### 理想 + 环 ⟹ 理想的运算与商环泛性质　`imp.ideal-basic`
+*理想的定义 $\implies$ 交、和、积与商环泛性质*
+
+**(i)** $I \cap J$：加法子群显然；对 $a \in A$、$x \in I\cap J$ 有 $ax, xa \in I$ 且 $\in J$。$I + J$：加法子群（两个子群之和）；对 $x + y \in I + J$，$a(x+y) = ax + ay \in I + J$。包含性：$I = I + 0 \subseteq I + J$，同理 $J$；若理想 $K \supseteq I \cup J$，则对 $x + y \in I + J$ 有 $x, y \in K$，故 $x + y \in K$，即 $I + J \subseteq K$。
+
+**(ii)** $IJ$ 对加法封闭（两个有限和相加仍是有限和）。对 $a \in A$，$a\sum x_k y_k = \sum (a x_k) y_k$，而 $a x_k \in I$，故仍在 $IJ$；右乘同理。$IJ \subseteq I \cap J$：每个 $x_k y_k \in I$（$x_k \in I$，$I$ 是理想）且 $\in J$（$y_k \in J$），有限和仍在 $I \cap J$。
+
+**(iii)** 定义 $\bar{\varphi}(a + I) := \varphi(a)$。良定义：若 $a - a' \in I$，则 $\varphi(a) - \varphi(a') = \varphi(a - a') = 0$（因 $\varphi(I) = 0$）。它是环同态，因为 $\pi$ 是满同态且 $\varphi$ 是。唯一性：$\pi$ 满，故 $\bar{\varphi}$ 由 $\bar{\varphi}\circ\pi = \varphi$ 唯一确定。$\blacksquare$
+
+#### 理想的运算与商环泛性质 + 理想 ⟹ 素理想与极大理想　`imp.prime-ideal`
+*商环 + 理想对应 $\implies$ 素 / 极大理想的刻画*
+
+记 $\pi : A \to A/P$。交换环的商环仍是含幺交换环（`prop.ideal-basic` 的构造）。
+
+**(i)** 若 $P$ 素：设 $\bar a \bar b = 0$，即 $ab \in P$，则 $a \in P$ 或 $b \in P$，即 $\bar a = 0$ 或 $\bar b = 0$ —— $A/P$ 无零因子，是整环。反之若 $A/P$ 是整环且 $ab \in P$，则 $\bar a \bar b = 0$，故 $\bar a = 0$ 或 $\bar b = 0$。
+
+**(ii)** 商环的理想与「包含 $P$ 的理想」一一对应（$J \mapsto \pi^{-1}(J)$、$\bar J \mapsto \pi^{-1}(\bar J)$ 互逆）。于是 $A/P$ 只有 $0$ 与自身两个理想 $\iff$ 没有理想严格夹在 $P$ 与 $A$ 之间 $\iff$ $P$ 极大。含幺交换环是域 $\iff$ 只有平凡理想（若 $a \ne 0$ 不可逆，则 $(a)$ 是真理想；反之真理想里的非零元不可逆）。
+
+**(iii)** 域是整环，由 (i)(ii) 得极大 $\implies$ 素。$\blacksquare$
+
+#### 函子 ⟹ 函子保同构　`imp.functor-preserves-iso`
+*函子保复合与单位 $\implies$ 保同构*
+
+由 $f f^{-1} = 1_Y$ 与函子保复合：
+
+$$F(f)\,F(f^{-1}) = F(f f^{-1}) = F(1_Y) = 1_{F(Y)}.$$
+
+同理由 $f^{-1} f = 1_X$ 得 $F(f^{-1})\,F(f) = 1_{F(X)}$。故 $F(f)$ 可逆且逆为 $F(f^{-1})$。$\blacksquare$
+
+#### 定义引用：「绝对值 |x|」→ 数列极限　`def-link.abs-seq-limit`
+
+收敛的定义就是 $|x_n - x| < \varepsilon$ —— 没有绝对值，这句话写不出来。
+
+#### 定义引用：「绝对值 |x|」→ 函数极限　`def-link.abs-fn-limit`
+
+函数极限的 $\varepsilon$-$\delta$ 定义里，两个不等式都是绝对值的。
+
+#### 定义引用：「绝对值 |x|」→ 连续　`def-link.abs-continuous`
+
+连续的定义把「接近」写成 $|x - x_0| < \delta$ 与 $|f(x) - f(x_0)| < \varepsilon$。
+
+#### 定义引用：「绝对值 |x|」→ Cauchy 列　`def-link.abs-cauchy-seq`
+
+Cauchy 列要求任意两项的距离 $|x_m - x_n|$ 可控。
+
+#### 定义引用：「绝对值 |x|」→ 一致收敛　`def-link.abs-uniform-conv`
+
+一致收敛把 $\sup_x |f_n(x) - f(x)| \to 0$ 作为判据，绝对值是它的内核。
+
+#### 定义引用：「绝对值 |x|」→ 一致 Cauchy 列　`def-link.abs-uniform-cauchy`
+
+一致 Cauchy 列的条件 $|f_m(x) - f_n(x)| < \varepsilon$ 对所有 $x$ 同时成立。
+
+#### 定义引用：「绝对值 |x|」→ 夹逼定理　`def-link.abs-squeeze`
+
+夹逼定理的结论要写成 $|x_n - L| < \varepsilon$，靠绝对值与序的转换。
+
+#### 定义引用：「绝对值 |x|」→ Cauchy 收敛准则　`def-link.abs-cauchy-criterion`
+
+Cauchy 准则两边都是 $\varepsilon$-$N$ 语句，即绝对的差。
+
+#### 定义引用：「绝对值 |x|」→ Bolzano–Weierstrass　`def-link.abs-bw`
+
+子列收敛仍然是 $|x_{n_k} - x| < \varepsilon$。
+
+#### 定义引用：「绝对值 |x|」→ 极限的四则运算与保序性　`def-link.abs-limit-arithmetic`
+
+四则运算的证明通篇在估计 $|f(x) - A|$、$|g(x) - B|$，还要用 $|xy| = |x||y|$（`prop.abs-properties`）。
+
+#### 定义引用：「绝对值 |x|」→ 距离空间　`def-link.abs-metric`
+
+距离空间的公理就是从 $d(x, y) = |x - y|$ 抽出来的：正定、对称、三角不等式逐条对应。
+
+#### 定义引用：「绝对值 |x|」→ Riemann 可积　`def-link.abs-riemann`
+
+Riemann 可积的定义要求 $|S(f, P, \xi) - I| < \varepsilon$ 对一切分割与标记成立。
+
+#### 定义引用：「绝对值 |x|」→ 积分的保序与估计　`def-link.abs-integral-order`
+
+积分估计的核心是 $\left|\int_a^b f\right| \le \int_a^b |f|$，两边都是绝对值。
+
+#### 定义引用：「绝对值 |x|」→ 绝对收敛 ⟹ 收敛　`def-link.abs-absolute-conv`
+
+绝对收敛就是 $\sum |a_n| < \infty$；证明用三角不等式把部分和夹住。
+
+#### 定义引用：「绝对值 |x|」→ L^p 范数　`def-link.abs-lp-norm`
+
+$\|f\|_p = \left(\int |f|^{p}\right)^{1/p}$：绝对值取模，$p$ 次幂再开方。
+
+#### 定义引用：「绝对值 |x|」→ 本性上界与 L^∞　`def-link.abs-essential-sup`
+
+本性上界是 $|f|$ 的本质上确界 —— 没有绝对值就没有「大小」。
+
+#### 定义引用：「绝对值 |x|」→ 有界变差 BV　`def-link.abs-variation`
+
+全变差是 $\sup \sum |F(x_{i+1}) - F(x_i)|$，逐段取绝对值。
+
+#### 定义引用：「自然数的加法与乘法」→ 整数幂　`def-link.power-nat`
+
+整数幂是对自然数的乘法做递推：$a^{n+1} = a^{n} \cdot a$，那个 $\cdot$ 就是 `def.nat-arith` 的乘法。
+
+#### 定义引用：「整数幂」→ 幂级数　`def-link.power-series-power`
+
+幂级数 $\sum a_n (x - x_0)^{n}$ 里的 $n$ 次幂就是 `def.power` 的整数幂。
+
+#### 定义引用：「整数幂」→ 根值判别法　`def-link.power-root-test`
+
+根值判别法要比较 $a_n$ 与 $q^{n}$，用的是整数幂（$q$ 固定，$n$ 变）。
+
+#### 定义引用：「整数幂」→ 几何级数　`def-link.power-geometric`
+
+几何级数的通项 $q^{n}$ 就是整数幂；部分和公式也只用指数律。
+
+#### 定义引用：「有理指数与实数指数幂」→ Young 不等式　`def-link.realpower-young`
+
+Young 不等式里的 $a^{\lambda} b^{1-\lambda}$ 中 $\lambda \in (0,1)$ 是**实数**指数 —— 没有 `def.real-power`，这个式子在图上就没有定义。
+
+#### 定义引用：「n 次方根」→ 复数 ℂ　`def-link.nthroot-complex`
+
+复数模 $|z| = \sqrt{a^{2} + b^{2}}$ 用的是实数平方根；没有 n 次方根的存在性，这个定义是空的。
+
+#### 定义引用：「n 次方根」→ 诱导范数与距离　`def-link.nthroot-induced-norm`
+
+内积诱导的范数 $\|v\| = \sqrt{\langle v, v\rangle}$ 同样要实数平方根。
+
+#### 定义引用：「n 次方根」→ 根值判别法　`def-link.nthroot-root-test`
+
+根值判别法里的 $\sqrt[n]{a_n}$ 是 n 次方根；$n$ 逐项变化，所以需要一般 $n$ 的存在性。
+
+#### 定义引用：「n 次方根」→ 收敛半径　`def-link.nthroot-convergence-radius`
+
+收敛半径的证明要把 $\sqrt[n]{|a_n (x - x_0)^{n}|}$ 拆成 $|x - x_0| \cdot \sqrt[n]{|a_n|}$，靠 $\sqrt[n]{uv} = \sqrt[n]{u}\sqrt[n]{v}$。
+
+#### 定义引用：「n 次方根」→ p-级数　`def-link.nthroot-p-series`
+
+凝聚判别法把 $1/n^{p}$ 换成 $2^{k(1-p)}$ 时，写的是 $2^{k} \cdot 2^{-kp}$；指数与根号在这里是同一套约定。
 
 #### 预测度 + Carathéodory 定理 ⟹ 乘积测度　`imp.product-measure`
 *矩形上的预测度 $\implies$ Carathéodory 扩张得到乘积测度*
@@ -27942,6 +28853,18 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **多元微分 ↔ 微分中值定理与 Taylor**　2 条节点级连线
 - **群作用与置换 ↔ 代数结构**　7 条节点级连线
 - **合成列与可解群 ↔ 代数结构**　6 条节点级连线
+- **代数结构 ↔ 实数的运算与不等式**　5 条节点级连线
+- **实数的运算与不等式 ↔ 数系的构造**　9 条节点级连线
+- **实数完备性的等价刻画 ↔ 实数的运算与不等式**　4 条节点级连线
+- **实数与极限 ↔ 实数的运算与不等式**　8 条节点级连线
+- **连续与紧性 ↔ 实数与极限**　4 条节点级连线
+- **微分中值定理与 Taylor ↔ 实数与极限**　6 条节点级连线
+- **实数的运算与不等式 ↔ 函数列、幂级数与初等函数**　5 条节点级连线
+- **微分中值定理与 Taylor ↔ 函数列、幂级数与初等函数**　2 条节点级连线
+- **实数与极限 ↔ 数项级数的敛散性**　4 条节点级连线
+- **实数的运算与不等式 ↔ 数项级数的敛散性**　6 条节点级连线
+- **实数的运算与不等式 ↔ Riemann 积分**　2 条节点级连线
+- **L^p 空间 ↔ 实数的运算与不等式**　3 条节点级连线
 - **测度的构造 ↔ 乘积测度与 Fubini**　6 条节点级连线
 - **积分 ↔ 乘积测度与 Fubini**　2 条节点级连线
 - **乘积测度与 Fubini ↔ 集合的构造**　3 条节点级连线
@@ -27970,8 +28893,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑空间 ↔ 度量空间**　6 条节点级连线
 - **实数与极限 ↔ 拓扑空间**　2 条节点级连线
 - **数系的构造 ↔ 关系与函数**　6 条节点级连线
-- **代数结构 ↔ 数系的构造**　5 条节点级连线
-- **实数完备性的等价刻画 ↔ 数系的构造**　3 条节点级连线
+- **代数结构 ↔ 数系的构造**　2 条节点级连线
+- **实数完备性的等价刻画 ↔ 数系的构造**　2 条节点级连线
 - **代数结构 ↔ 关系与函数**　3 条节点级连线
 - **序结构 ↔ 序数与超限**　3 条节点级连线
 - **基数与等势 ↔ 序数与超限**　3 条节点级连线
@@ -28076,12 +28999,9 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑阿贝尔群 ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **实数完备性的等价刻画 ↔ 实数与极限**　5 条节点级连线
 - **实数完备性的等价刻画 ↔ 度量空间**　3 条节点级连线
-- **连续与紧性 ↔ 实数与极限**　3 条节点级连线
 - **实数完备性的等价刻画 ↔ 连续与紧性**　5 条节点级连线
-- **微分中值定理与 Taylor ↔ 实数与极限**　4 条节点级连线
 - **实数与极限 ↔ Riemann 积分**　2 条节点级连线
 - **连续与紧性 ↔ Riemann 积分**　2 条节点级连线
-- **实数与极限 ↔ 数项级数的敛散性**　3 条节点级连线
 - **实数完备性的等价刻画 ↔ 数项级数的敛散性**　2 条节点级连线
 - **实数与极限 ↔ 函数列、幂级数与初等函数**　4 条节点级连线
 - **数项级数的敛散性 ↔ 函数列、幂级数与初等函数**　3 条节点级连线

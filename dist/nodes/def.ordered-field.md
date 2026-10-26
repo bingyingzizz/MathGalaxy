@@ -11,13 +11,11 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 
 $$|a| := \begin{cases} a, & a \ge 0 \\ -a, & a < 0 \end{cases}$$
 
-## 它能推出什么 / 谁在用它
-- 被 [`def.rat`](../nodes/def.rat.md) 有理数 ℚ 用
-
-- …另有出边，续页见 [nodes/def.ordered-field.3.md](./def.ordered-field.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.ordered-field.2.md](./def.ordered-field.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.ordered-field.3.md](./def.ordered-field.3.md)
 
 refs: Lang, Algebra, Ch. VI；Rudin, Principles of Mathematical Analysis, Ch. 1
 

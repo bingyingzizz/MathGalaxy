@@ -12,9 +12,9 @@
 - def.quadratic-form　二次型　layer 11
 - def.orthogonal-projection　正交投影　layer 12
 - thm.gram-schmidt　Gram–Schmidt 正交化　layer 13
-- def.induced-norm　诱导范数与距离　layer 14
 - thm.projection-formula　最佳逼近与投影公式　layer 14
-- thm.cauchy-schwarz　Cauchy–Schwarz　layer 15
+- def.induced-norm　诱导范数与距离　layer 15
+- thm.cauchy-schwarz　Cauchy–Schwarz　layer 16
 - thm.spectral-theorem　谱定理（实对称）　layer 20
 
 > 续见 `index/algebra.inner.2.md`
