@@ -642,8 +642,29 @@
          分位数既保住了「云把内容包住」的观感，又不会为个别远点空摊一大片。 */
       var ds = basis.map(function (nd) { return U.dist(nd.x, nd.y, cx, cy); }).sort(function (a, b) { return a - b; });
       var maxd = ds.length ? ds[Math.min(ds.length - 1, Math.floor(ds.length * 0.88))] : 0;
+      /* ⭐ 2026-10-20 领域名的落点改用**密度峰**（用户报「范畴论/拓扑学的名字飞太高」）。
+         质心是把上下两端的跨领域节点平均出来的，会被拽到远离主团的地方；
+         密度峰落在人最多的地方，才是「这块地的中心」。mean-shift，无随机数。 */
+      var _pkx = cx, _pky = cy;
+      (function () {
+        var bw = Math.max(40, maxd * 0.35);
+        var x = cx, y = cy;
+        for (var _it = 0; _it < 12; _it++) {
+          var sx = 0, sy = 0, sw = 0;
+          for (var _i = 0; _i < basis.length; _i++) {
+            var dx = basis[_i].x - x, dy = basis[_i].y - y;
+            var d2 = dx * dx + dy * dy;
+            if (d2 > bw * bw) continue;
+            var w = 1 - d2 / (bw * bw); w *= w;
+            sx += basis[_i].x * w; sy += basis[_i].y * w; sw += w;
+          }
+          if (sw <= 1e-9) break;
+          x = sx / sw; y = sy / sw;
+        }
+        _pkx = x; _pky = y;
+      })();
       r.stat = {
-        cx: cx, cy: cy, count: list.length,
+        cx: cx, cy: cy, nameX: _pkx, nameY: _pky, count: list.length,
         radius: Math.max(bc.cloudRadiusMin, maxd + bc.cloudMargin)
       };
     });

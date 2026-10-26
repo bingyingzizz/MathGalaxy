@@ -1061,7 +1061,8 @@
         if (!r.stat || !r.name) return;
         // 整个星系的点都被藏起来了 → 只剩云雾，名字也不必出
         if (view.isNodeVisible && !regionHasVisible(r.id)) return;
-        var p = w2s(r.stat.cx, r.stat.cy);
+        var p = w2s(r.stat.nameX != null ? r.stat.nameX : r.stat.cx,
+                   r.stat.nameY != null ? r.stat.nameY : r.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         /* ⭐ T2.4 收尾：画布上的名字也要跟语言走。`nameShow` 是**启动时算一次**的
            （见 src/core/i18n.js 的 MG.localizeDisplay）—— ⛔ 不在每帧里查表。 */
