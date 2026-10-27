@@ -1,5 +1,5 @@
 # 正合函子　`def.exact-functor`
-左正合 / 右正合 / 正合函子（Exact Functor）
+左正合 / 右正合 / 正合函子
 layer 13 · 定义 · 函子与自然变换 · 范畴论
 [在星图里打开](../#n=def.exact-functor)　·　[节点索引](../index.md)
 
@@ -9,6 +9,8 @@ layer 13 · 定义 · 函子与自然变换 · 范畴论
 - [`def.preserves-limit`](../nodes/def.preserves-limit.md) 保极限的函子：用到了定义 保极限的函子　[proofs/def-dep.exact-preslim.md](../proofs/def-dep.exact-preslim.md)
 
 ## 它能推出什么 / 谁在用它
+- 被 [`prop.left-exact-criterion`](../nodes/prop.left-exact-criterion.md) 左正合性的判据 用
+
 - …另有出边，续页见 [nodes/def.exact-functor.2.md](./def.exact-functor.2.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.2

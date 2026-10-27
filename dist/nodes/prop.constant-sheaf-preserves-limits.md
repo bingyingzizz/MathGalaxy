@@ -3,7 +3,7 @@
 layer 16 · 命题 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=prop.constant-sheaf-preserves-limits)　·　[节点索引](../index.md)
 
-设 $\mathcal{C}$ 是 site，$\Delta : \mathbf{Set} \to \widehat{\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\underline{(-)}$ 表示对应的**常层**。则：
+设 $\mathcal{C}$ 是景，$\Delta : \mathbf{Set} \to \widehat{\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\underline{(-)}$ 表示对应的**常层**。则：
 > 陈述续见 [nodes/prop.constant-sheaf-preserves-limits.2.md](./prop.constant-sheaf-preserves-limits.2.md)
 
 

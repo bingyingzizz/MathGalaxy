@@ -3,7 +3,7 @@
 layer 16 · 定义 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=def.cech-functor)　·　[节点索引](../index.md)
 
-site $\mathcal{C}$ 上的 **Čech 函子** $\widehat{H}$ 定义在预层上：
+景 $\mathcal{C}$ 上的 **Čech 函子** $\widehat{H}$ 定义在预层上：
 
 $$\widehat{H}(T)(X) \;:=\; \varinjlim_{R \in J(X)} \operatorname{Hom}(R, T)$$
 > 陈述续见 [nodes/def.cech-functor.2.md](./def.cech-functor.2.md)

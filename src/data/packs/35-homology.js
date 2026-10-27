@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '加法 / 阿贝尔范畴',
-      title: '加法范畴与阿贝尔范畴（Additive / Abelian Category）',
+      title: '加法范畴与阿贝尔范畴',
       regions: ['homology'],
       tags: ['同调代数', '阿贝尔范畴', '加法范畴'],
       statement: [
@@ -48,7 +48,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '上链复形',
-      title: '复形（Complex）',
+      title: '复形',
       regions: ['homology'],
       tags: ['同调代数', '复形', '微分'],
       statement: [
@@ -91,7 +91,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '同伦',
-      title: '同伦（Homotopy）',
+      title: '同伦',
       regions: ['homology'],
       tags: ['同调代数', '同伦', '零伦'],
       statement: [
@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '同伦范畴',
-      title: '同伦范畴（Homotopy Category）',
+      title: '同伦范畴',
       regions: ['homology'],
       tags: ['同调代数', '同伦范畴'],
       statement: [
@@ -139,7 +139,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '映射锥',
-      title: '映射锥与位移（Mapping Cone）',
+      title: '映射锥与位移',
       regions: ['homology'],
       tags: ['同调代数', '映射锥', '位移'],
       statement: [
@@ -159,7 +159,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '导出三角',
-      title: '导出三角（Distinguished Triangle）',
+      title: '导出三角',
       regions: ['homology'],
       tags: ['同调代数', '三角', '映射锥'],
       statement: [
@@ -237,7 +237,7 @@ window.MG = window.MG || {};
       cluster: 'hom.cohomology',
       type: 'definition',
       label: '同调',
-      title: '同调（Cohomology）',
+      title: '同调',
       regions: ['homology'],
       tags: ['同调代数', '同调', '复形'],
       statement: [
@@ -286,7 +286,7 @@ window.MG = window.MG || {};
       cluster: 'hom.cohomology',
       type: 'definition',
       label: '上同调函子',
-      title: '上同调函子（Cohomological Functor）',
+      title: '上同调函子',
       regions: ['homology'],
       tags: ['同调代数', '上同调函子', '正合'],
       statement: [
@@ -327,7 +327,7 @@ window.MG = window.MG || {};
       cluster: 'hom.cohomology',
       type: 'definition',
       label: '拟同构',
-      title: '拟同构与零调复形（Quasi-Isomorphism）',
+      title: '拟同构与零调复形',
       regions: ['homology'],
       tags: ['同调代数', '拟同构', '零调'],
       statement: [
@@ -372,7 +372,7 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'definition',
       label: '过滤',
-      title: '过滤（Filtration）',
+      title: '过滤',
       regions: ['homology'],
       tags: ['同调代数', '过滤', '关联分次'],
       statement: [
@@ -392,7 +392,7 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'definition',
       label: '谱序列',
-      title: '谱序列（Spectral Sequence）',
+      title: '谱序列',
       regions: ['homology'],
       tags: ['同调代数', '谱序列', '过滤'],
       statement: [

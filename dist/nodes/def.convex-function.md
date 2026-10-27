@@ -1,5 +1,5 @@
 # 凸函数　`def.convex-function`
-凸函数与 Jensen 不等式（Convex Function）
+凸函数与 Jensen 不等式
 layer 14 · 定义 · 微分中值定理与 Taylor · 分析学+序理论
 [在星图里打开](../#n=def.convex-function)　·　[节点索引](../index.md)
 

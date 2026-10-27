@@ -1,5 +1,5 @@
 # 正则公理　`ax.found`
-正则公理 / 基础公理（Axiom of Foundation）
+正则公理 / 基础公理
 layer 0 · 公理 · ZFC 公理系统 · 集合论
 [在星图里打开](../#n=ax.found)　·　[节点索引](../index.md)
 
@@ -14,10 +14,9 @@ $$x_0 \ni  x_1 \ni  x_2 \ni  \cdots$$
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.noself`](../nodes/thm.noself.md) 无自属集合
 - ⇒ [`thm.ordinal-trichotomy`](../nodes/thm.ordinal-trichotomy.md) 序数可比
+- ⇒ [`thm.wellorder-ordinal`](../nodes/thm.wellorder-ordinal.md) 良序集的序型
 
 refs: Kunen, Set Theory, I.9
-
-- …另有出边，续页见 [nodes/ax.found.2.md](./ax.found.2.md)
 
 ## 说明
 它排除了 $A \in A$ 这类循环集合，也排除了「集合的无穷下降」。

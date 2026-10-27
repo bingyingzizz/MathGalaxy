@@ -16,7 +16,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '外延公理',
-      title: '外延公理（Axiom of Extensionality）',
+      title: '外延公理',
       regions: ['set-theory'],
       tags: ['ZFC', '集合相等'],
       statement: [
@@ -40,7 +40,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '分离公理模式',
-      title: '分离公理模式（Axiom Schema of Separation）',
+      title: '分离公理模式',
       regions: ['set-theory'],
       tags: ['ZFC', '子集', '公理模式'],
       statement: [
@@ -63,7 +63,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '配对公理',
-      title: '配对公理（Axiom of Pairing）',
+      title: '配对公理',
       regions: ['set-theory'],
       tags: ['ZFC'],
       statement: [
@@ -83,7 +83,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '并集公理',
-      title: '并集公理（Axiom of Union）',
+      title: '并集公理',
       regions: ['set-theory'],
       tags: ['ZFC'],
       statement: [
@@ -103,7 +103,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '幂集公理',
-      title: '幂集公理（Axiom of Power Set）',
+      title: '幂集公理',
       regions: ['set-theory'],
       tags: ['ZFC', '子集'],
       statement: [
@@ -123,7 +123,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '无穷公理',
-      title: '无穷公理（Axiom of Infinity）',
+      title: '无穷公理',
       regions: ['set-theory'],
       tags: ['ZFC', '归纳集', '自然数'],
       statement: [
@@ -144,7 +144,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '替换公理模式',
-      title: '替换公理模式（Axiom Schema of Replacement）',
+      title: '替换公理模式',
       regions: ['set-theory'],
       tags: ['ZFC', '公理模式', '函数'],
       statement: [
@@ -164,7 +164,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '正则公理',
-      title: '正则公理 / 基础公理（Axiom of Foundation）',
+      title: '正则公理 / 基础公理',
       regions: ['set-theory'],
       tags: ['ZFC', '良基', '∈-链'],
       statement: [
@@ -189,7 +189,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'axiom',
       label: '选择公理',
-      title: '选择公理（Axiom of Choice, AC）',
+      title: '选择公理',
       regions: ['set-theory'],
       tags: ['ZFC', '选择', '等价命题'],
       statement: [

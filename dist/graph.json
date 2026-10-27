@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-27T06:36:23.156Z",
+  "generated": "2026-10-27T07:11:29.753Z",
   "counts": {
    "regions": 10,
    "clusters": 65,
@@ -1266,7 +1266,7 @@
    "name": "层与拓扑",
    "en": "Sheaves and Topologies",
    "parent": "category",
-   "desc": "造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。",
+   "desc": "造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → 景的层范畴的好性质。",
    "nodeCount": 37,
    "nodes": [
     "def.sieve",
@@ -1746,7 +1746,7 @@
    "id": "ax.ext",
    "type": "axiom",
    "label": "外延公理",
-   "title": "外延公理（Axiom of Extensionality）",
+   "title": "外延公理",
    "label_en": "extensionality",
    "title_en": "Axiom of Extensionality",
    "translations": {
@@ -1786,7 +1786,7 @@
    "id": "ax.sep",
    "type": "axiom",
    "label": "分离公理模式",
-   "title": "分离公理模式（Axiom Schema of Separation）",
+   "title": "分离公理模式",
    "label_en": "separation",
    "title_en": "separation",
    "translations": {
@@ -1826,7 +1826,7 @@
    "id": "ax.pair",
    "type": "axiom",
    "label": "配对公理",
-   "title": "配对公理（Axiom of Pairing）",
+   "title": "配对公理",
    "label_en": "pairing",
    "title_en": "Axiom of Pairing",
    "translations": {
@@ -1864,7 +1864,7 @@
    "id": "ax.union",
    "type": "axiom",
    "label": "并集公理",
-   "title": "并集公理（Axiom of Union）",
+   "title": "并集公理",
    "label_en": "union",
    "title_en": "Axiom of Union",
    "translations": {
@@ -1902,7 +1902,7 @@
    "id": "ax.power",
    "type": "axiom",
    "label": "幂集公理",
-   "title": "幂集公理（Axiom of Power Set）",
+   "title": "幂集公理",
    "label_en": "power set",
    "title_en": "Axiom of Power Set",
    "translations": {
@@ -1941,7 +1941,7 @@
    "id": "ax.inf",
    "type": "axiom",
    "label": "无穷公理",
-   "title": "无穷公理（Axiom of Infinity）",
+   "title": "无穷公理",
    "label_en": "infinity",
    "title_en": "Axiom of Infinity",
    "translations": {
@@ -1981,7 +1981,7 @@
    "id": "ax.repl",
    "type": "axiom",
    "label": "替换公理模式",
-   "title": "替换公理模式（Axiom Schema of Replacement）",
+   "title": "替换公理模式",
    "label_en": "replacement",
    "title_en": "Axiom Schema of Replacement",
    "translations": {
@@ -2021,7 +2021,7 @@
    "id": "ax.found",
    "type": "axiom",
    "label": "正则公理",
-   "title": "正则公理 / 基础公理（Axiom of Foundation）",
+   "title": "正则公理 / 基础公理",
    "label_en": "foundation",
    "title_en": "foundation",
    "translations": {
@@ -2061,7 +2061,7 @@
    "id": "ax.choice",
    "type": "axiom",
    "label": "选择公理",
-   "title": "选择公理（Axiom of Choice, AC）",
+   "title": "选择公理",
    "label_en": "axiom of choice",
    "title_en": "axiom of choice",
    "translations": {
@@ -2106,7 +2106,7 @@
    "id": "def.subset",
    "type": "definition",
    "label": "子集",
-   "title": "子集 / 真子集（Subset）",
+   "title": "子集 / 真子集",
    "label_en": "subset",
    "title_en": "subset",
    "translations": {
@@ -2145,7 +2145,7 @@
    "id": "def.pair",
    "type": "definition",
    "label": "有序对",
-   "title": "有序对（Ordered Pair, Kuratowski）",
+   "title": "有序对",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -2166,7 +2166,7 @@
    "id": "def.rel",
    "type": "definition",
    "label": "关系",
-   "title": "关系（Relation）",
+   "title": "关系",
    "label_en": "binary relation",
    "title_en": "Relation",
    "translations": {
@@ -2205,7 +2205,7 @@
    "id": "def.function",
    "type": "definition",
    "label": "映射",
-   "title": "映射（Mapping）",
+   "title": "映射",
    "label_en": "mapping",
    "title_en": "Mapping",
    "translations": {
@@ -2245,7 +2245,7 @@
    "id": "def.number-function",
    "type": "definition",
    "label": "函数",
-   "title": "函数（Function）",
+   "title": "函数",
    "label_en": "function",
    "title_en": "Function",
    "translations": {
@@ -2286,7 +2286,7 @@
    "id": "def.choicefn",
    "type": "definition",
    "label": "选择函数",
-   "title": "选择函数（Choice Function）",
+   "title": "选择函数",
    "label_en": "choice function",
    "title_en": "Choice Function",
    "translations": {
@@ -2465,7 +2465,7 @@
    "id": "def.poset",
    "type": "definition",
    "label": "偏序集",
-   "title": "偏序集 / 全序集（Partially Ordered Set）",
+   "title": "偏序集 / 全序集",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -2487,7 +2487,7 @@
    "id": "def.chain",
    "type": "definition",
    "label": "链",
-   "title": "链 / 反链（Chain / Antichain）",
+   "title": "链 / 反链",
    "label_en": "chain",
    "title_en": "Chain / Antichain",
    "translations": {
@@ -2526,7 +2526,7 @@
    "id": "def.bound",
    "type": "definition",
    "label": "界与确界",
-   "title": "上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）",
+   "title": "上界 / 下界 / 确界 / 极大元",
    "label_en": "least upper bound",
    "title_en": "least upper bound",
    "translations": {
@@ -2569,7 +2569,7 @@
    "id": "def.wellorder",
    "type": "definition",
    "label": "良序集",
-   "title": "良序集（Well-Ordered Set）",
+   "title": "良序集",
    "region": "order-theory",
    "regions": [
     "order-theory"
@@ -2591,7 +2591,7 @@
    "id": "def.finchar",
    "type": "definition",
    "label": "有限特征",
-   "title": "有限特征族（Family of Finite Character）",
+   "title": "有限特征族",
    "label_en": "finite character",
    "title_en": "Family of Finite Character",
    "translations": {
@@ -2631,7 +2631,7 @@
    "id": "thm.wellordering",
    "type": "theorem",
    "label": "良序定理",
-   "title": "良序定理 / 良序原理（Well-Ordering Theorem）",
+   "title": "良序定理 / 良序原理",
    "label_en": "well-ordering theorem",
    "title_en": "Well-Ordering Theorem",
    "abstract_en": "Every set can be well ordered: $\\forall X\\, \\exists \\preceq$ a well-ordering of $X$, equivalently every set is equinumerous with an ordinal. Zermelo introduced the axiom of choice in 1904 precisely to prove this, and over ZF the statement is equivalent to AC. Immediate consequence: any two cardinals are comparable, and $\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.",
@@ -2757,7 +2757,7 @@
    "id": "thm.hausdorff",
    "type": "theorem",
    "label": "Hausdorff 极大原理",
-   "title": "Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）",
+   "title": "Hausdorff 极大原理 / 极大公理",
    "label_en": "Hausdorff maximal principle",
    "title_en": "Hausdorff Maximal Principle",
    "abstract_en": "Every chain in a poset extends to a maximal one: for a chain $C_0 \\subseteq P$ there is a maximal chain $M$ with $C_0 \\subseteq M$, maximal under inclusion. Taking $C_0 = \\emptyset$ gives that every non-empty poset has a maximal chain. The statement predates Zorn's lemma (Hausdorff, 1914) and is equivalent to it, and it is the precise form of \"keep adding elements until you cannot add any more\".",
@@ -2948,7 +2948,7 @@
    "id": "def.metric-space",
    "type": "definition",
    "label": "距离空间",
-   "title": "距离空间 / 度量空间（Metric Space）",
+   "title": "距离空间 / 度量空间",
    "label_en": "metric space",
    "title_en": "Metric Space",
    "abstract_en": "A metric space is a pair $(X, d)$ with $d : X \\times X \\to [0, +\\infty)$ satisfying $d(x,y) = 0 \\iff x = y$, symmetry and the triangle inequality; open balls $B(x,r) = \\{y : d(x,y) < r\\}$ generate a topology, and they form a base for it. The point of the definition here is the split that follows: compactness and closedness use only the open sets, while completeness and total boundedness use $d$. Completeness is genuinely not topological — $\\mathbb{R}$ and $(0,1)$ are homeomorphic but only the first is complete.",
@@ -3011,7 +3011,7 @@
    "id": "def.complete",
    "type": "definition",
    "label": "完备",
-   "title": "完备距离空间（Complete Metric Space）",
+   "title": "完备距离空间",
    "label_en": "complete",
    "title_en": "Complete Metric Space",
    "translations": {
@@ -3051,7 +3051,7 @@
    "id": "def.totally-bounded",
    "type": "definition",
    "label": "全有界",
-   "title": "全有界 / 预紧（Totally Bounded）",
+   "title": "全有界 / 预紧",
    "label_en": "totally bounded",
    "title_en": "Totally Bounded",
    "translations": {
@@ -3091,7 +3091,7 @@
    "id": "def.sequentially-compact",
    "type": "definition",
    "label": "列紧",
-   "title": "列紧 / 序列紧（Sequentially Compact）",
+   "title": "列紧 / 序列紧",
    "label_en": "sequentially compact",
    "title_en": "Sequentially Compact",
    "translations": {
@@ -3131,7 +3131,7 @@
    "id": "def.compact",
    "type": "definition",
    "label": "紧",
-   "title": "紧空间（Compact Space）",
+   "title": "紧空间",
    "label_en": "compact",
    "title_en": "Compact Space",
    "translations": {
@@ -3280,7 +3280,7 @@
    "id": "def.fundamental-class",
    "type": "definition",
    "label": "基本类",
-   "title": "基本类（Fundamental Class）",
+   "title": "基本类",
    "label_en": "fundamental class",
    "title_en": "Fundamental Class",
    "translations": {
@@ -3321,7 +3321,7 @@
    "id": "def.set-ring",
    "type": "definition",
    "label": "环与代数",
-   "title": "环与代数（Ring, Algebra）",
+   "title": "环与代数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -3409,7 +3409,7 @@
    "id": "def.monotone-class",
    "type": "definition",
    "label": "单调类",
-   "title": "单调类（Monotone Class）",
+   "title": "单调类",
    "label_en": "monotone class",
    "title_en": "Monotone Class",
    "translations": {
@@ -3574,7 +3574,7 @@
    "id": "thm.monotone-class",
    "type": "theorem",
    "label": "单调类定理",
-   "title": "单调类定理（Monotone Class Theorem）",
+   "title": "单调类定理",
    "label_en": "monotone class theorem",
    "title_en": "Monotone Class Theorem",
    "abstract_en": "For $\\mathcal{E} \\subseteq \\mathcal{P}(X)$, the $\\sigma$-algebra generated by $\\mathcal{E}$ equals the monotone class generated by $\\mathcal{E}$ if complements of members of $\\mathcal{E}$ and unions of two members of $\\mathcal{E}$ lie in that monotone class. With \"$\\mathcal{E}$ is an algebra\" this is the standard monotone class theorem; the form above weakens that hypothesis to the two closure conditions, and the proof is the same two-step argument with the monotone class as the running object.",
@@ -3785,7 +3785,7 @@
    "id": "def.measure",
    "type": "definition",
    "label": "测度",
-   "title": "测度（Measure）",
+   "title": "测度",
    "label_en": "measure",
    "title_en": "Measure",
    "translations": {
@@ -3870,7 +3870,7 @@
    "id": "def.finitely-additive",
    "type": "definition",
    "label": "有限可加测度",
-   "title": "有限可加测度（Finitely Additive Measure）",
+   "title": "有限可加测度",
    "label_en": "finitely additive",
    "title_en": "Finitely Additive Measure",
    "translations": {
@@ -3973,7 +3973,7 @@
    "id": "def.null-set",
    "type": "definition",
    "label": "零集与完备",
-   "title": "μ-零集 / 完备测度空间（Null Set & Complete Measure Space）",
+   "title": "μ-零集 / 完备测度空间",
    "label_en": "null set",
    "title_en": "Null Set & Complete Measure Space",
    "translations": {
@@ -4054,7 +4054,7 @@
    "id": "def.semifinite-part",
    "type": "definition",
    "label": "半有限部分",
-   "title": "半有限部分（Semifinite Part of a Measure）",
+   "title": "半有限部分",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -4075,7 +4075,7 @@
    "id": "def.outer-measure",
    "type": "definition",
    "label": "外测度",
-   "title": "外测度（Outer Measure）",
+   "title": "外测度",
    "label_en": "outer measure",
    "title_en": "Outer Measure",
    "abstract_en": "An outer measure on a non-empty set $X$ is a function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is monotone and countably subadditive. It is defined on every subset, and the price is exactly that subadditivity: it is not a measure. Carathéodory's idea is to single out the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. Lebesgue's original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable interval covers, is the prototypical example.",
@@ -4340,7 +4340,7 @@
    "id": "def.measurable-function",
    "type": "definition",
    "label": "可测函数",
-   "title": "可测函数（Measurable Function）",
+   "title": "可测函数",
    "label_en": "measurable function",
    "title_en": "Measurable Function",
    "translations": {
@@ -4494,7 +4494,7 @@
    "id": "def.simple-function",
    "type": "definition",
    "label": "简单函数",
-   "title": "简单函数（Simple Function）",
+   "title": "简单函数",
    "label_en": "simple function",
    "title_en": "Simple Function",
    "translations": {
@@ -4704,7 +4704,7 @@
    "id": "thm.mct",
    "type": "theorem",
    "label": "单调收敛定理",
-   "title": "单调收敛定理（MCT, Monotone Convergence Theorem）",
+   "title": "单调收敛定理",
    "label_en": "monotone convergence theorem",
    "title_en": "MCT, Monotone Convergence Theorem",
    "translations": {
@@ -5069,7 +5069,7 @@
    "id": "thm.dct",
    "type": "theorem",
    "label": "控制收敛定理",
-   "title": "控制收敛定理（DCT, Dominated Convergence Theorem）",
+   "title": "控制收敛定理",
    "label_en": "dominated convergence",
    "title_en": "DCT, Dominated Convergence Theorem",
    "translations": {
@@ -5198,7 +5198,7 @@
    "id": "def.subspace",
    "type": "definition",
    "label": "子空间",
-   "title": "线性子空间（Linear Subspace）",
+   "title": "线性子空间",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5241,7 +5241,7 @@
    "id": "def.coordinate",
    "type": "definition",
    "label": "坐标",
-   "title": "坐标与有序基（Coordinates）",
+   "title": "坐标与有序基",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5308,7 +5308,7 @@
    "id": "def.linear-map",
    "type": "definition",
    "label": "线性映射",
-   "title": "线性映射（Linear Map）",
+   "title": "线性映射",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5330,7 +5330,7 @@
    "id": "def.linear-isomorphism",
    "type": "definition",
    "label": "线性同构",
-   "title": "线性同构（Linear Isomorphism）",
+   "title": "线性同构",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5351,7 +5351,7 @@
    "id": "def.kernel-image-vs",
    "type": "definition",
    "label": "核与像",
-   "title": "核与像（Kernel and Image）",
+   "title": "核与像",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5373,7 +5373,7 @@
    "id": "def.quotient-vs",
    "type": "definition",
    "label": "商空间",
-   "title": "商空间 $V / U$（Quotient Space）",
+   "title": "商空间 $V / U$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5437,7 +5437,7 @@
    "id": "def.rank",
    "type": "definition",
    "label": "秩",
-   "title": "秩 $\\operatorname{rank} T$（Rank）",
+   "title": "秩 $\\operatorname{rank} T$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5458,7 +5458,7 @@
    "id": "def.nullity",
    "type": "definition",
    "label": "零化度",
-   "title": "零化度 $\\operatorname{null} T$（Nullity）",
+   "title": "零化度 $\\operatorname{null} T$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5502,7 +5502,7 @@
    "id": "def.dual-space",
    "type": "definition",
    "label": "对偶空间",
-   "title": "对偶空间 $V^{\\ast}$（Dual Space）",
+   "title": "对偶空间 $V^{\\ast}$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5524,7 +5524,7 @@
    "id": "def.dual-basis",
    "type": "definition",
    "label": "对偶基",
-   "title": "对偶基（Dual Basis）",
+   "title": "对偶基",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5545,7 +5545,7 @@
    "id": "def.annihilator",
    "type": "definition",
    "label": "零化子",
-   "title": "零化子 $U^{0}$（Annihilator）",
+   "title": "零化子 $U^{0}$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5589,7 +5589,7 @@
    "id": "def.matrix",
    "type": "definition",
    "label": "矩阵",
-   "title": "矩阵（Matrix）",
+   "title": "矩阵",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5698,7 +5698,7 @@
    "id": "def.elementary-matrix",
    "type": "definition",
    "label": "初等变换与初等矩阵",
-   "title": "初等变换与初等矩阵（Elementary Matrices）",
+   "title": "初等变换与初等矩阵",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5784,7 +5784,7 @@
    "id": "def.multilinear-form",
    "type": "definition",
    "label": "多重线性型",
-   "title": "多重线性型 $V^{n} \\to K$（Multilinear Form）",
+   "title": "多重线性型 $V^{n} \\to K$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5851,7 +5851,7 @@
    "id": "def.determinant",
    "type": "definition",
    "label": "行列式",
-   "title": "行列式 $\\det A$（Determinant）",
+   "title": "行列式 $\\det A$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5941,7 +5941,7 @@
    "id": "def.polynomial",
    "type": "definition",
    "label": "一元多项式",
-   "title": "一元多项式（Polynomial）",
+   "title": "一元多项式",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -5964,7 +5964,7 @@
    "id": "def.polynomial-ring",
    "type": "definition",
    "label": "多项式环",
-   "title": "多项式环 $K[x]$（Polynomial Ring）",
+   "title": "多项式环 $K[x]$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6080,7 +6080,7 @@
    "id": "def.irreducible-poly",
    "type": "definition",
    "label": "不可约多项式",
-   "title": "不可约多项式（Irreducible Polynomial）",
+   "title": "不可约多项式",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6103,7 +6103,7 @@
    "id": "thm.poly-ufd",
    "type": "theorem",
    "label": "K[x] 是唯一分解整环",
-   "title": "定理：$K[x]$ 是唯一分解整环（UFD）",
+   "title": "定理：$K[x]$ 是唯一分解整环",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6127,7 +6127,7 @@
    "id": "def.invariant-subspace",
    "type": "definition",
    "label": "不变子空间",
-   "title": "不变子空间（Invariant Subspace）",
+   "title": "不变子空间",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6150,7 +6150,7 @@
    "id": "def.eigenvalue",
    "type": "definition",
    "label": "特征值与特征向量",
-   "title": "特征值与特征向量（Eigenvalue & Eigenvector）",
+   "title": "特征值与特征向量",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6196,7 +6196,7 @@
    "id": "def.trace",
    "type": "definition",
    "label": "迹",
-   "title": "迹 $\\operatorname{tr} A$（Trace）",
+   "title": "迹 $\\operatorname{tr} A$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6218,7 +6218,7 @@
    "id": "def.similarity",
    "type": "definition",
    "label": "相似",
-   "title": "相似（Similarity）",
+   "title": "相似",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6402,7 +6402,7 @@
    "id": "def.inner-product",
    "type": "definition",
    "label": "内积",
-   "title": "内积与内积空间（Inner Product Space）",
+   "title": "内积与内积空间",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6538,7 +6538,7 @@
    "id": "def.orthogonal-projection",
    "type": "definition",
    "label": "正交投影",
-   "title": "正交投影（Orthogonal Projection）",
+   "title": "正交投影",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6583,7 +6583,7 @@
    "id": "def.operator-adjoint",
    "type": "definition",
    "label": "伴随算子",
-   "title": "伴随算子 $T^{\\ast}$（Adjoint Operator）",
+   "title": "伴随算子 $T^{\\ast}$",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6605,7 +6605,7 @@
    "id": "def.isometry",
    "type": "definition",
    "label": "等距与正交变换",
-   "title": "等距、正交变换与酉变换（Isometry）",
+   "title": "等距、正交变换与酉变换",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6698,7 +6698,7 @@
    "id": "def.quadratic-form",
    "type": "definition",
    "label": "二次型",
-   "title": "二次型与正定性（Quadratic Form）",
+   "title": "二次型与正定性",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6768,7 +6768,7 @@
    "id": "def.bilinear-form",
    "type": "definition",
    "label": "双线性型",
-   "title": "双线性型（Bilinear Form）",
+   "title": "双线性型",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6951,7 +6951,7 @@
    "id": "def.normed-space",
    "type": "definition",
    "label": "赋范空间",
-   "title": "赋范空间（Normed Space）",
+   "title": "赋范空间",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -6997,7 +6997,7 @@
    "id": "def.partial-derivative",
    "type": "definition",
    "label": "偏导数",
-   "title": "偏导数（Partial Derivative）",
+   "title": "偏导数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7020,7 +7020,7 @@
    "id": "def.directional-derivative",
    "type": "definition",
    "label": "方向导数",
-   "title": "方向导数（Directional Derivative）",
+   "title": "方向导数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7043,7 +7043,7 @@
    "id": "def.total-differential",
    "type": "definition",
    "label": "可微与全微分",
-   "title": "可微与全微分（Total Differential）",
+   "title": "可微与全微分",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7067,7 +7067,7 @@
    "id": "def.gradient",
    "type": "definition",
    "label": "梯度",
-   "title": "梯度（Gradient）",
+   "title": "梯度",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7090,7 +7090,7 @@
    "id": "def.jacobian",
    "type": "definition",
    "label": "Jacobi 矩阵",
-   "title": "Jacobi 矩阵（Jacobian Matrix）",
+   "title": "Jacobi 矩阵",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7113,7 +7113,7 @@
    "id": "def.hessian",
    "type": "definition",
    "label": "Hessian 矩阵",
-   "title": "Hessian 矩阵（Hessian）",
+   "title": "Hessian 矩阵",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7251,7 +7251,7 @@
    "id": "def.contraction",
    "type": "definition",
    "label": "压缩映射",
-   "title": "压缩映射（Contraction）",
+   "title": "压缩映射",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7419,7 +7419,7 @@
    "id": "def.submersion-immersion",
    "type": "definition",
    "label": "浸入 / 淹没 / 嵌入",
-   "title": "浸入、淹没与嵌入（Immersion / Submersion / Embedding）",
+   "title": "浸入、淹没与嵌入",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7535,7 +7535,7 @@
    "id": "def.group-action",
    "type": "definition",
    "label": "群作用",
-   "title": "群作用、轨道与稳定子（Group Action）",
+   "title": "群作用、轨道与稳定子",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7631,7 +7631,7 @@
    "id": "def.alternating-group",
    "type": "definition",
    "label": "符号与交错群",
-   "title": "置换的符号与交错群（Sign and Alternating Group）",
+   "title": "置换的符号与交错群",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7655,7 +7655,7 @@
    "id": "def.cyclic-group",
    "type": "definition",
    "label": "循环群",
-   "title": "循环群（Cyclic Group）",
+   "title": "循环群",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7751,7 +7751,7 @@
    "id": "def.simple-group",
    "type": "definition",
    "label": "单群",
-   "title": "单群（Simple Group）",
+   "title": "单群",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7775,7 +7775,7 @@
    "id": "def.composition-series",
    "type": "definition",
    "label": "合成列",
-   "title": "合成列与合成因子（Composition Series）",
+   "title": "合成列与合成因子",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7896,7 +7896,7 @@
    "id": "prop.field-rules",
    "type": "proposition",
    "label": "环与域的基本等式",
-   "title": "命题：环与域里的基本等式（Consequences of the Ring Axioms）",
+   "title": "命题：环与域里的基本等式",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -7920,7 +7920,7 @@
    "id": "prop.order-rules",
    "type": "proposition",
    "label": "序与四则运算",
-   "title": "命题：不等式的基本运算（Order and the Field Operations）",
+   "title": "命题：不等式的基本运算",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -7943,7 +7943,7 @@
    "id": "prop.abs-properties",
    "type": "proposition",
    "label": "绝对值的运算性质",
-   "title": "命题：绝对值的运算性质（Properties of the Absolute Value）",
+   "title": "命题：绝对值的运算性质",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7965,7 +7965,7 @@
    "id": "cor.archimedean-epsilon",
    "type": "corollary",
    "label": "阿基米德的 ε 形式与取整",
-   "title": "推论：$1/n < \\varepsilon$ 与取整函数（Archimedean Corollaries）",
+   "title": "推论：$1/n < \\varepsilon$ 与取整函数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -7987,7 +7987,7 @@
    "id": "def.power",
    "type": "definition",
    "label": "整数幂",
-   "title": "整数幂 $a^{n}$（Integer Powers）",
+   "title": "整数幂 $a^{n}$",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8009,7 +8009,7 @@
    "id": "prop.power-rules",
    "type": "proposition",
    "label": "指数律与幂的单调性",
-   "title": "命题：指数律（Laws of Exponents）",
+   "title": "命题：指数律",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8053,7 +8053,7 @@
    "id": "def.real-power",
    "type": "definition",
    "label": "有理指数与实数指数幂",
-   "title": "有理指数与实数指数幂（Rational and Real Powers）",
+   "title": "有理指数与实数指数幂",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8075,7 +8075,7 @@
    "id": "thm.binomial",
    "type": "theorem",
    "label": "二项式定理",
-   "title": "定理：二项式定理（Binomial Theorem）",
+   "title": "定理：二项式定理",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8402,7 +8402,7 @@
    "id": "prop.limit-basic",
    "type": "proposition",
    "label": "极限的基本性质",
-   "title": "命题：极限的唯一性、有界性与保号性（Basic Properties of Limits）",
+   "title": "命题：极限的唯一性、有界性与保号性",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8424,7 +8424,7 @@
    "id": "prop.continuous-arithmetic",
    "type": "proposition",
    "label": "连续函数的运算",
-   "title": "命题：连续函数的和差积商与复合（Algebra of Continuous Functions）",
+   "title": "命题：连续函数的和差积商与复合",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8468,7 +8468,7 @@
    "id": "thm.derivative-rules",
    "type": "theorem",
    "label": "求导法则",
-   "title": "定理：求导的四则运算与链式法则（Derivative Rules）",
+   "title": "定理：求导的四则运算与链式法则",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8490,7 +8490,7 @@
    "id": "thm.elementary-derivatives",
    "type": "theorem",
    "label": "初等函数的导数",
-   "title": "定理：初等函数的导数表（Derivatives of Elementary Functions）",
+   "title": "定理：初等函数的导数表",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8512,7 +8512,7 @@
    "id": "thm.geometric-series",
    "type": "theorem",
    "label": "几何级数",
-   "title": "定理：几何级数（Geometric Series）",
+   "title": "定理：几何级数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -8556,7 +8556,7 @@
    "id": "prop.group-basic",
    "type": "proposition",
    "label": "群的基本性质",
-   "title": "命题：群的消去律与逆的公式（Elementary Group Theory）",
+   "title": "命题：群的消去律与逆的公式",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -8578,7 +8578,7 @@
    "id": "prop.ideal-basic",
    "type": "proposition",
    "label": "理想的运算与商环泛性质",
-   "title": "命题：理想的交、和、积与商环的泛性质（Operations on Ideals）",
+   "title": "命题：理想的交、和、积与商环的泛性质",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -8601,7 +8601,7 @@
    "id": "prop.prime-ideal",
    "type": "proposition",
    "label": "素理想与极大理想",
-   "title": "命题：素理想、极大理想与商环（Prime and Maximal Ideals）",
+   "title": "命题：素理想、极大理想与商环",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -8624,7 +8624,7 @@
    "id": "prop.functor-preserves-iso",
    "type": "proposition",
    "label": "函子保同构",
-   "title": "命题：函子把同构送到同构（Functors Preserve Isomorphisms）",
+   "title": "命题：函子把同构送到同构",
    "region": "category",
    "regions": [
     "category"
@@ -8646,7 +8646,7 @@
    "id": "def.cond-measure",
    "type": "definition",
    "label": "整值测度",
-   "title": "整值测度 $M(S,\\mathbb{Z})$（Integer-Valued Measures）",
+   "title": "整值测度 $M(S,\\mathbb{Z})$",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -8669,7 +8669,7 @@
    "id": "def.solid-group",
    "type": "definition",
    "label": "固态阿贝尔群",
-   "title": "固态阿贝尔群（Solid Abelian Groups）",
+   "title": "固态阿贝尔群",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -8735,7 +8735,7 @@
    "id": "prop.solid-hypercover",
    "type": "proposition",
    "label": "固态化把超覆盖变成正合列",
-   "title": "命题：超覆盖的固态化正合（Hypercover Exactness）",
+   "title": "命题：超覆盖的固态化正合",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -8933,7 +8933,7 @@
    "id": "def.pre-analytic-ring",
    "type": "definition",
    "label": "预解析环",
-   "title": "预解析环（Pre-Analytic Ring）",
+   "title": "预解析环",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -8955,7 +8955,7 @@
    "id": "def.analytic-ring",
    "type": "definition",
    "label": "解析环",
-   "title": "解析环（Analytic Ring）",
+   "title": "解析环",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -9112,7 +9112,7 @@
    "id": "def.discrete-huber-pair",
    "type": "definition",
    "label": "离散 Huber pair",
-   "title": "离散 Huber pair（Discrete Huber Pair）",
+   "title": "离散 Huber pair",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -9134,7 +9134,7 @@
    "id": "def.adic-spectrum",
    "type": "definition",
    "label": "adic 谱 Spa",
-   "title": "adic 谱 $\\operatorname{Spa}(A,A^+)$（Adic Spectrum）",
+   "title": "adic 谱 $\\operatorname{Spa}(A,A^+)$",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -9225,7 +9225,7 @@
    "id": "def.discrete-adic-space",
    "type": "definition",
    "label": "离散 adic 空间",
-   "title": "离散 adic 空间（Discrete Adic Space）",
+   "title": "离散 adic 空间",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -9293,7 +9293,7 @@
    "id": "def.six-functors",
    "type": "definition",
    "label": "6-函子形式",
-   "title": "6-函子形式（Six-Functor Formalism）",
+   "title": "6-函子形式",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -9715,7 +9715,7 @@
    "id": "def.signed-measure",
    "type": "definition",
    "label": "符号测度",
-   "title": "符号测度（Signed Measure）",
+   "title": "符号测度",
    "label_en": "signed measure",
    "title_en": "Signed Measure",
    "translations": {
@@ -9755,7 +9755,7 @@
    "id": "def.positive-negative-null",
    "type": "definition",
    "label": "正集 / 负集 / 零集",
-   "title": "正集 / 负集 / 零集（Positive, Negative, Null Set）",
+   "title": "正集 / 负集 / 零集",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9798,7 +9798,7 @@
    "id": "thm.hahn-decomposition",
    "type": "theorem",
    "label": "Hahn 分解定理",
-   "title": "Hahn 分解定理（Hahn Decomposition Theorem）",
+   "title": "Hahn 分解定理",
    "label_en": "Hahn decomposition",
    "title_en": "Hahn Decomposition Theorem",
    "translations": {
@@ -9880,7 +9880,7 @@
    "id": "thm.jordan-decomposition",
    "type": "theorem",
    "label": "Jordan 分解定理",
-   "title": "Jordan 分解定理（Jordan Decomposition Theorem）",
+   "title": "Jordan 分解定理",
    "label_en": "Jordan decomposition",
    "title_en": "Jordan Decomposition Theorem",
    "translations": {
@@ -10196,7 +10196,7 @@
    "id": "def.complex-measure",
    "type": "definition",
    "label": "复测度",
-   "title": "复测度（Complex Measure）",
+   "title": "复测度",
    "label_en": "complex measure",
    "title_en": "Complex Measure",
    "abstract_en": "A complex measure on a measurable space $(X, \\mathcal{M})$ is a map $\\nu : \\mathcal{M} \\to \\mathbb{C}$ with $\\nu(\\emptyset) = 0$ and $\\nu(\\bigsqcup_j E_j) = \\sum_j \\nu(E_j)$ for pairwise disjoint families, the series converging absolutely. Unlike signed measures, complex measures are automatically finite and that series is automatically absolutely convergent, so questions of finiteness and rearrangement never arise — at the cost of losing examples with infinite mass.",
@@ -10660,7 +10660,7 @@
    "id": "def.shrinks-nicely",
    "type": "definition",
    "label": "可缩族",
-   "title": "可缩地趋于 x（Shrinks Nicely）",
+   "title": "可缩地趋于 x",
    "label_en": "shrinking",
    "title_en": "shrinking",
    "abstract_en": "A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ when $E_r \\subseteq B(r,x)$ for every $r$ and there is $\\alpha > 0$ with $m(E_r) > \\alpha \\cdot m(B(r,x))$ for all $r$. The two conditions say \"fits inside the ball\" and \"is not too thin\". Balls themselves qualify, as does any fixed shape rescaled inside them; a thin sliver does not. The notion exists so that differentiation theorems do not depend on the shape of the sets being shrunk.",
@@ -10738,7 +10738,7 @@
    "id": "def.regular-measure",
    "type": "definition",
    "label": "正则 Borel 测度",
-   "title": "正则 Borel 测度（Regular Borel Measure）",
+   "title": "正则 Borel 测度",
    "label_en": "regular measure",
    "title_en": "regular measure",
    "translations": {
@@ -10823,7 +10823,7 @@
    "id": "def.bounded-variation",
    "type": "definition",
    "label": "有界变差 BV",
-   "title": "全变差与有界变差函数（Total Variation, BV）",
+   "title": "全变差与有界变差函数",
    "label_en": "bounded variation",
    "title_en": "bounded variation",
    "translations": {
@@ -11101,7 +11101,7 @@
    "id": "def.ac-function",
    "type": "definition",
    "label": "绝对连续函数",
-   "title": "绝对连续函数 AC（Absolutely Continuous Function）",
+   "title": "绝对连续函数 AC",
    "label_en": "absolutely continuous function",
    "title_en": "Absolutely Continuous Function",
    "translations": {
@@ -11665,7 +11665,7 @@
    "id": "def.conjugate-exponents",
    "type": "definition",
    "label": "共轭指数",
-   "title": "共轭指数（Conjugate Exponents）",
+   "title": "共轭指数",
    "label_en": "conjugate exponents",
    "title_en": "Conjugate Exponents",
    "translations": {
@@ -11891,7 +11891,7 @@
    "id": "def.extended-real",
    "type": "definition",
    "label": "扩充实数 [−∞,+∞]",
-   "title": "扩充实数系 $\\overline{\\mathbb{R}}$（Extended Reals）",
+   "title": "扩充实数系 $\\overline{\\mathbb{R}}$",
    "label_en": "extended real",
    "title_en": "Extended Reals",
    "translations": {
@@ -11930,7 +11930,7 @@
    "id": "def.interval",
    "type": "definition",
    "label": "区间",
-   "title": "区间（Interval）",
+   "title": "区间",
    "label_en": "interval",
    "title_en": "Interval",
    "translations": {
@@ -11970,7 +11970,7 @@
    "id": "def.sequence-limit",
    "type": "definition",
    "label": "数列极限",
-   "title": "数列极限 $x_n \\to x$（Limit of a Sequence）",
+   "title": "数列极限 $x_n \\to x$",
    "label_en": "limit",
    "title_en": "limit",
    "translations": {
@@ -12009,7 +12009,7 @@
    "id": "def.series",
    "type": "definition",
    "label": "级数收敛",
-   "title": "级数 $\\sum a_n$（Series）",
+   "title": "级数 $\\sum a_n$",
    "label_en": "series",
    "title_en": "Series",
    "translations": {
@@ -12048,7 +12048,7 @@
    "id": "def.continuous",
    "type": "definition",
    "label": "连续",
-   "title": "连续（Continuity）",
+   "title": "连续",
    "label_en": "continuous",
    "title_en": "continuous",
    "translations": {
@@ -12089,7 +12089,7 @@
    "id": "def.derivative",
    "type": "definition",
    "label": "导数",
-   "title": "导数 $F'$（Derivative）",
+   "title": "导数 $F'$",
    "label_en": "derivative",
    "title_en": "Derivative",
    "translations": {
@@ -12128,7 +12128,7 @@
    "id": "def.complex",
    "type": "definition",
    "label": "复数 ℂ",
-   "title": "复数系 $\\mathbb{C}$（Complex Numbers）",
+   "title": "复数系 $\\mathbb{C}$",
    "label_en": "complex numbers",
    "title_en": "Complex Numbers",
    "translations": {
@@ -12168,7 +12168,7 @@
    "id": "def.union-inter",
    "type": "definition",
    "label": "并集与交集",
-   "title": "并集 / 交集（Union & Intersection）",
+   "title": "并集 / 交集",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -12189,7 +12189,7 @@
    "id": "def.diff-complement",
    "type": "definition",
    "label": "差集与补集",
-   "title": "差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）",
+   "title": "差集 / 补集 / 对称差",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -12210,7 +12210,7 @@
    "id": "def.empty",
    "type": "definition",
    "label": "空集 ∅",
-   "title": "空集（Empty Set）",
+   "title": "空集",
    "label_en": "empty set",
    "title_en": "Empty Set",
    "translations": {
@@ -12249,7 +12249,7 @@
    "id": "def.bijection",
    "type": "definition",
    "label": "单射 / 满射 / 双射",
-   "title": "单射 / 满射 / 双射（Injective / Surjective / Bijective）",
+   "title": "单射 / 满射 / 双射",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -12270,7 +12270,7 @@
    "id": "def.preimage",
    "type": "definition",
    "label": "像与原像",
-   "title": "像与原像（Image / Preimage）",
+   "title": "像与原像",
    "label_en": "preimage",
    "title_en": "preimage",
    "translations": {
@@ -12312,7 +12312,7 @@
    "id": "def.countable",
    "type": "definition",
    "label": "可数与不可数",
-   "title": "可数 / 至多可数（Countable）",
+   "title": "可数 / 至多可数",
    "label_en": "countable",
    "title_en": "Countable",
    "translations": {
@@ -12352,7 +12352,7 @@
    "id": "def.ae",
    "type": "definition",
    "label": "几乎处处",
-   "title": "几乎处处（Almost Everywhere, a.e.）",
+   "title": "几乎处处",
    "label_en": "almost everywhere",
    "title_en": "Almost Everywhere, a.e.",
    "translations": {
@@ -12391,7 +12391,7 @@
    "id": "def.power-set",
    "type": "definition",
    "label": "幂集 𝒫(X)",
-   "title": "幂集（Power Set）",
+   "title": "幂集",
    "label_en": "power set",
    "title_en": "Power Set",
    "translations": {
@@ -12430,7 +12430,7 @@
    "id": "def.equinumerous",
    "type": "definition",
    "label": "等势",
-   "title": "等势（Equinumerous）",
+   "title": "等势",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -12451,7 +12451,7 @@
    "id": "def.cardinal",
    "type": "definition",
    "label": "基数 |A|",
-   "title": "基数与基数的比较（Cardinality）",
+   "title": "基数与基数的比较",
    "label_en": "cardinality",
    "title_en": "cardinality",
    "translations": {
@@ -12616,7 +12616,7 @@
    "id": "def.topology",
    "type": "definition",
    "label": "拓扑空间与开集",
-   "title": "拓扑空间 / 开集（Topological Space）",
+   "title": "拓扑空间 / 开集",
    "region": "topology",
    "regions": [
     "topology"
@@ -12638,7 +12638,7 @@
    "id": "def.closed-set",
    "type": "definition",
    "label": "闭集与闭包",
-   "title": "闭集 / 闭包 / 稠密（Closed Set, Closure）",
+   "title": "闭集 / 闭包 / 稠密",
    "region": "topology",
    "regions": [
     "topology"
@@ -12660,7 +12660,7 @@
    "id": "def.topology-base",
    "type": "definition",
    "label": "基与子基",
-   "title": "拓扑的基 / 子基（Basis, Subbasis）",
+   "title": "拓扑的基 / 子基",
    "region": "topology",
    "regions": [
     "topology"
@@ -12682,7 +12682,7 @@
    "id": "def.continuous-map",
    "type": "definition",
    "label": "连续映射",
-   "title": "连续映射（Continuous Map）",
+   "title": "连续映射",
    "label_en": "continuous map",
    "title_en": "Continuous Map",
    "translations": {
@@ -12723,7 +12723,7 @@
    "id": "def.homeomorphism",
    "type": "definition",
    "label": "同胚",
-   "title": "同胚（Homeomorphism）",
+   "title": "同胚",
    "label_en": "homeomorphism",
    "title_en": "Homeomorphism",
    "translations": {
@@ -12763,7 +12763,7 @@
    "id": "def.subspace-topology",
    "type": "definition",
    "label": "子空间拓扑",
-   "title": "子空间拓扑（Subspace Topology）",
+   "title": "子空间拓扑",
    "label_en": "subspace topology",
    "title_en": "Subspace Topology",
    "translations": {
@@ -12803,7 +12803,7 @@
    "id": "def.quotient-topology",
    "type": "definition",
    "label": "商拓扑",
-   "title": "商拓扑（Quotient Topology）",
+   "title": "商拓扑",
    "label_en": "quotient topology",
    "title_en": "Quotient Topology",
    "translations": {
@@ -12843,7 +12843,7 @@
    "id": "def.product-topology",
    "type": "definition",
    "label": "积拓扑",
-   "title": "积拓扑与乘积空间（Product Topology）",
+   "title": "积拓扑与乘积空间",
    "label_en": "product topology",
    "title_en": "Product Topology",
    "translations": {
@@ -12884,7 +12884,7 @@
    "id": "def.hausdorff",
    "type": "definition",
    "label": "Hausdorff 空间",
-   "title": "Hausdorff 空间 / $T_{2}$（Hausdorff Space）",
+   "title": "Hausdorff 空间 / $T_{2}$",
    "label_en": "Hausdorff",
    "title_en": "Hausdorff",
    "translations": {
@@ -12924,7 +12924,7 @@
    "id": "def.connected",
    "type": "definition",
    "label": "连通与连通分量",
-   "title": "连通空间与连通分量（Connectedness）",
+   "title": "连通空间与连通分量",
    "label_en": "connected",
    "title_en": "Connectedness",
    "translations": {
@@ -12964,7 +12964,7 @@
    "id": "def.clopen",
    "type": "definition",
    "label": "闭开集",
-   "title": "闭开集（Clopen Set）",
+   "title": "闭开集",
    "label_en": "clopen",
    "title_en": "Clopen Set",
    "translations": {
@@ -13004,7 +13004,7 @@
    "id": "def.quotient-set",
    "type": "definition",
    "label": "商集与等价类",
-   "title": "商集 / 等价类（Quotient Set）",
+   "title": "商集 / 等价类",
    "label_en": "quotient",
    "title_en": "quotient",
    "translations": {
@@ -13044,7 +13044,7 @@
    "id": "thm.induction",
    "type": "theorem",
    "label": "归纳原理与递推定义",
-   "title": "归纳原理 / 递推定义（Induction & Recursion）",
+   "title": "归纳原理 / 递推定义",
    "region": "set-theory",
    "regions": [
     "set-theory"
@@ -13191,7 +13191,7 @@
    "id": "def.abs",
    "type": "definition",
    "label": "绝对值 |x|",
-   "title": "绝对值 $|x|$（Absolute Value）",
+   "title": "绝对值 $|x|$",
    "label_en": "absolute value",
    "title_en": "Absolute Value",
    "translations": {
@@ -13273,7 +13273,7 @@
    "id": "def.cauchy-null",
    "type": "definition",
    "label": "Cauchy 列与零列",
-   "title": "有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）",
+   "title": "有理 Cauchy 列 / 零列 / 等价",
    "title_en": "Cauchy sequences and null sequences",
    "abstract_en": "Over $\\mathbb{Q}$ alone — $\\varepsilon$ ranges over positive rationals, so no reals are presupposed — a rational sequence $(x_n)$ is Cauchy when $\\forall \\varepsilon > 0\\, \\exists N\\, \\forall m,n \\ge N : |x_m - x_n| < \\varepsilon$, is null when $\\forall \\varepsilon > 0\\, \\exists N\\, \\forall n \\ge N : |x_n| < \\varepsilon$, and two Cauchy sequences are equivalent when their difference is null. The quotient by this relation is how $\\mathbb{R}$ is built: it glues together the many ways of approximating one number. Three facts are used later: Cauchy sequences are bounded, sums and products of Cauchy sequences are Cauchy, and a non-null Cauchy sequence satisfies $|x_n| \\ge \\delta > 0$ from some point on, so its reciprocal is Cauchy again.",
    "statement_en": "Let $(x_n)$ be a **sequence of rational numbers** (that is, a function $\\omega \\to \\mathbb{Q}$), let $|x|$ be the absolute value on $\\mathbb{Q}$, and let $\\varepsilon$ always range over **positive rationals** (no real numbers are needed yet).\n\n$(x_n)$ is a **Cauchy sequence**:\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall m, n \\ge N : |x_m - x_n| < \\varepsilon$$\n\n$(x_n)$ is a **null sequence**:\n\n$$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n \\ge N : |x_n| < \\varepsilon$$\n\nTwo Cauchy sequences are **equivalent**:\n\nTwo Cauchy sequences are **equivalent** (written $(x_n) \\sim (y_n)$) if and only if $(x_n - y_n)$ is a null sequence.\n\n($\\sim$ is an equivalence relation: reflexivity and symmetry are immediate, transitivity follows from the triangle inequality.)",
@@ -13533,7 +13533,7 @@
    "id": "def.field",
    "type": "definition",
    "label": "域",
-   "title": "域 $F$（Field）",
+   "title": "域 $F$",
    "label_en": "field",
    "title_en": "Field",
    "translations": {
@@ -13574,7 +13574,7 @@
    "id": "def.ordered-field",
    "type": "definition",
    "label": "有序域",
-   "title": "有序域（Ordered Field）",
+   "title": "有序域",
    "label_en": "ordered field",
    "title_en": "Ordered Field",
    "translations": {
@@ -13617,7 +13617,7 @@
    "id": "def.order-iso",
    "type": "definition",
    "label": "序同构",
-   "title": "序同构与序型（Order Isomorphism）",
+   "title": "序同构与序型",
    "label_en": "order isomorphism",
    "title_en": "Order Isomorphism",
    "translations": {
@@ -13659,7 +13659,7 @@
    "id": "def.ordinal",
    "type": "definition",
    "label": "序数",
-   "title": "序数（von Neumann Ordinal）",
+   "title": "序数",
    "label_en": "ordinal",
    "title_en": "von Neumann Ordinal",
    "translations": {
@@ -13835,7 +13835,7 @@
    "id": "def.first-order-language",
    "type": "definition",
    "label": "一阶语言",
-   "title": "一阶语言 $\\mathcal{L}$（First-Order Language）",
+   "title": "一阶语言 $\\mathcal{L}$",
    "label_en": "first-order logic",
    "title_en": "first-order logic",
    "translations": {
@@ -13877,7 +13877,7 @@
    "id": "def.formula",
    "type": "definition",
    "label": "公式",
-   "title": "项与公式 / 语句（Formula, Sentence）",
+   "title": "项与公式 / 语句",
    "label_en": "well-formed formula",
    "title_en": "well-formed formula",
    "translations": {
@@ -13920,7 +13920,7 @@
    "id": "def.substitution",
    "type": "definition",
    "label": "代入",
-   "title": "代入 $\\varphi (x/t)$（Substitution）",
+   "title": "代入 $\\varphi (x/t)$",
    "label_en": "substitution",
    "title_en": "substitution",
    "translations": {
@@ -13961,7 +13961,7 @@
    "id": "def.satisfaction",
    "type": "definition",
    "label": "满足关系",
-   "title": "结构与满足关系 $\\models$（Tarski）",
+   "title": "结构与满足关系 $\\models$",
    "region": "logic",
    "regions": [
     "logic"
@@ -13986,7 +13986,7 @@
    "id": "def.universe",
    "type": "definition",
    "label": "Grothendieck 宇宙",
-   "title": "Grothendieck 宇宙（Grothendieck Universe）",
+   "title": "Grothendieck 宇宙",
    "label_en": "universe",
    "title_en": "Grothendieck Universe",
    "translations": {
@@ -14026,7 +14026,7 @@
    "id": "def.graph",
    "type": "definition",
    "label": "图",
-   "title": "图（Graph）",
+   "title": "图",
    "label_en": "graph",
    "title_en": "Graph",
    "translations": {
@@ -14065,7 +14065,7 @@
    "id": "def.graph-morphism",
    "type": "definition",
    "label": "图的态射",
-   "title": "图的态射（Morphism of Graphs）",
+   "title": "图的态射",
    "label_en": "graph morphism",
    "title_en": "graph morphism",
    "translations": {
@@ -14105,7 +14105,7 @@
    "id": "def.category",
    "type": "definition",
    "label": "范畴",
-   "title": "范畴（Category）",
+   "title": "范畴",
    "label_en": "category",
    "title_en": "Category",
    "translations": {
@@ -14145,7 +14145,7 @@
    "id": "def.section-retraction",
    "type": "definition",
    "label": "截面与收缩",
-   "title": "截面与收缩（Section / Retraction）",
+   "title": "截面与收缩",
    "label_en": "section / retraction",
    "title_en": "Section / Retraction",
    "translations": {
@@ -14185,7 +14185,7 @@
    "id": "def.functor",
    "type": "definition",
    "label": "函子",
-   "title": "函子（Functor）",
+   "title": "函子",
    "label_en": "functor",
    "title_en": "Functor",
    "translations": {
@@ -14225,7 +14225,7 @@
    "id": "def.natural-transformation",
    "type": "definition",
    "label": "自然变换",
-   "title": "自然变换（Natural Transformation）",
+   "title": "自然变换",
    "label_en": "natural transformation",
    "title_en": "Natural Transformation",
    "translations": {
@@ -14265,7 +14265,7 @@
    "id": "def.ff-faithful",
    "type": "definition",
    "label": "忠实 / 满 / 全忠实",
-   "title": "忠实、满、全忠实函子（Faithful / Full / Fully Faithful）",
+   "title": "忠实、满、全忠实函子",
    "region": "category",
    "regions": [
     "category"
@@ -14287,7 +14287,7 @@
    "id": "def.essentially-surjective",
    "type": "definition",
    "label": "本质满",
-   "title": "本质满函子（Essentially Surjective）",
+   "title": "本质满函子",
    "label_en": "essentially surjective",
    "title_en": "Essentially Surjective",
    "translations": {
@@ -14327,7 +14327,7 @@
    "id": "def.cat-equivalence",
    "type": "definition",
    "label": "范畴等价",
-   "title": "范畴等价（Equivalence of Categories）",
+   "title": "范畴等价",
    "label_en": "equivalence of categories",
    "title_en": "Equivalence of Categories",
    "translations": {
@@ -14367,7 +14367,7 @@
    "id": "def.commutative-diagram",
    "type": "definition",
    "label": "图与交换图",
-   "title": "图与交换图（Diagram / Commutative Diagram）",
+   "title": "图与交换图",
    "region": "category",
    "regions": [
     "category"
@@ -14389,7 +14389,7 @@
    "id": "def.simplicial",
    "type": "definition",
    "label": "单纯对象",
-   "title": "单纯对象（Simplicial Object）",
+   "title": "单纯对象",
    "label_en": "simplicial object",
    "title_en": "Simplicial Object",
    "translations": {
@@ -14429,7 +14429,7 @@
    "id": "def.cone",
    "type": "definition",
    "label": "锥",
-   "title": "锥与余锥（Cone / Cocone）",
+   "title": "锥与余锥",
    "region": "category",
    "regions": [
     "category"
@@ -14451,7 +14451,7 @@
    "id": "def.limit",
    "type": "definition",
    "label": "极限",
-   "title": "极限与余极限（Limit / Colimit）",
+   "title": "极限与余极限",
    "region": "category",
    "regions": [
     "category"
@@ -14473,7 +14473,7 @@
    "id": "def.final-initial",
    "type": "definition",
    "label": "终对象 / 始对象",
-   "title": "终对象与始对象（Terminal / Initial Object）",
+   "title": "终对象与始对象",
    "label_en": "initial object",
    "title_en": "initial object",
    "translations": {
@@ -14513,7 +14513,7 @@
    "id": "def.product",
    "type": "definition",
    "label": "积 / 余积",
-   "title": "积与余积（Product / Coproduct）",
+   "title": "积与余积",
    "region": "category",
    "regions": [
     "category"
@@ -14535,7 +14535,7 @@
    "id": "def.fibered-product",
    "type": "definition",
    "label": "纤维积 / 纤维余积",
-   "title": "纤维积与纤维余积（Pullback / Pushout）",
+   "title": "纤维积与纤维余积",
    "region": "category",
    "regions": [
     "category"
@@ -14557,7 +14557,7 @@
    "id": "def.equalizer",
    "type": "definition",
    "label": "等化子 / 余等化子",
-   "title": "等化子与余等化子（Equalizer / Coequalizer）",
+   "title": "等化子与余等化子",
    "region": "category",
    "regions": [
     "category"
@@ -14579,7 +14579,7 @@
    "id": "def.mono",
    "type": "definition",
    "label": "单态射 / 满态射 / 同构",
-   "title": "单态射、满态射与同构（Mono / Epi / Isomorphism）",
+   "title": "单态射、满态射与同构",
    "region": "category",
    "regions": [
     "category"
@@ -14603,7 +14603,7 @@
    "id": "def.subobject",
    "type": "definition",
    "label": "子对象",
-   "title": "子对象（Subobject）",
+   "title": "子对象",
    "label_en": "subobject",
    "title_en": "Subobject",
    "translations": {
@@ -14643,7 +14643,7 @@
    "id": "thm.lim-functor",
    "type": "theorem",
    "label": "极限的函子性",
-   "title": "极限是函子（Limits as a Functor）",
+   "title": "极限是函子",
    "label_en": "lim functor",
    "title_en": "lim functor",
    "translations": {
@@ -14683,7 +14683,7 @@
    "id": "def.image",
    "type": "definition",
    "label": "像 / 余像",
-   "title": "像与余像（Image / Coimage）",
+   "title": "像与余像",
    "region": "category",
    "regions": [
     "category"
@@ -14705,7 +14705,7 @@
    "id": "def.elements-category",
    "type": "definition",
    "label": "元素范畴",
-   "title": "元素范畴（Category of Elements）",
+   "title": "元素范畴",
    "label_en": "category of elements",
    "title_en": "category of elements",
    "translations": {
@@ -14745,7 +14745,7 @@
    "id": "def.presheaf",
    "type": "definition",
    "label": "预层",
-   "title": "预层（Presheaf）",
+   "title": "预层",
    "label_en": "presheaf",
    "title_en": "Presheaf",
    "translations": {
@@ -14785,7 +14785,7 @@
    "id": "def.presheaf-cat",
    "type": "definition",
    "label": "预层范畴",
-   "title": "预层范畴（Category of Presheaves）",
+   "title": "预层范畴",
    "label_en": "presheaf category",
    "title_en": "presheaf category",
    "translations": {
@@ -14825,7 +14825,7 @@
    "id": "def.representable",
    "type": "definition",
    "label": "表示函子",
-   "title": "表示函子与万有元素（Representable Functor）",
+   "title": "表示函子与万有元素",
    "label_en": "representable functor",
    "title_en": "representable functor",
    "abstract_en": "A functor $F : \\mathcal{C} \\to \\mathbf{Set}$ is represented by an object $X$ together with $s \\in F(X)$ when every $t \\in F(Y)$ is $F(f)(s)$ for exactly one $f : X \\to Y$; equivalently $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$. All the data of $F$ is generated by the single element $s$. Equivalently $(X, s)$ is an initial object of the category of elements of $F$. Examples: $k[t]$ represents the forgetful functor on $k$-algebras, $\\mathbb{Z}$ represents the constant functor on rings.",
@@ -14886,7 +14886,7 @@
    "id": "lem.yoneda",
    "type": "lemma",
    "label": "米田引理",
-   "title": "米田引理（Yoneda Lemma）",
+   "title": "米田引理",
    "label_en": "Yoneda lemma",
    "title_en": "Yoneda lemma",
    "translations": {
@@ -14970,7 +14970,7 @@
    "id": "prop.yoneda-embedding",
    "type": "proposition",
    "label": "米田嵌入",
-   "title": "米田嵌入（Yoneda Embedding）",
+   "title": "米田嵌入",
    "label_en": "Yoneda embedding",
    "title_en": "Yoneda Embedding",
    "abstract_en": "The assignment $\\delta : \\mathcal{C} \\to \\widehat{\\mathcal{C}}$, $X \\mapsto h_X = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$, is fully faithful and preserves all limits. Fully faithful means $\\operatorname{Hom}_{\\widehat{\\mathcal{C}}}(h_X, h_Y) \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, Y)$: the arrows between representable functors reproduce the arrows of $\\mathcal{C}$ exactly, no more and no fewer. Embedding $\\mathcal{C}$ this way moves problems into a category that has all limits and colimits.",
@@ -15031,7 +15031,7 @@
    "id": "def.slice-category",
    "type": "definition",
    "label": "切片范畴",
-   "title": "预层的切片范畴（Slice Category）",
+   "title": "预层的切片范畴",
    "label_en": "slice category",
    "title_en": "Slice Category",
    "translations": {
@@ -15094,7 +15094,7 @@
    "id": "thm.density",
    "type": "theorem",
    "label": "稠密性定理",
-   "title": "稠密性定理（Density Theorem）",
+   "title": "稠密性定理",
    "label_en": "density theorem",
    "title_en": "Density Theorem",
    "translations": {
@@ -15156,7 +15156,7 @@
    "id": "def.adjoint",
    "type": "definition",
    "label": "伴随函子",
-   "title": "伴随函子（Adjoint Functors）",
+   "title": "伴随函子",
    "region": "category",
    "regions": [
     "category"
@@ -15182,7 +15182,7 @@
    "id": "def.adjunction-unit",
    "type": "definition",
    "label": "单位与余单位",
-   "title": "单位与余单位（Unit and Counit）",
+   "title": "单位与余单位",
    "region": "category",
    "regions": [
     "category"
@@ -15348,7 +15348,7 @@
    "id": "thm.saft",
    "type": "theorem",
    "label": "伴随函子定理",
-   "title": "伴随函子定理（SAFT）",
+   "title": "伴随函子定理",
    "label_en": "special adjoint functor theorem",
    "title_en": "special adjoint functor theorem",
    "abstract_en": "Let $\\mathcal{D}$ be small and complete. A functor $G : \\mathcal{D} \\to \\mathcal{C}$ has a left adjoint iff it preserves all limits; when it does, one may take $F(X) = \\varprojlim_{(Y,f) \\in (X \\downarrow G)} Y$. So preservation of limits, which is automatic for right adjoints, is also sufficient under these hypotheses. The construction reads: $F(X)$ is the object of $\\mathcal{D}$ closest to $X$, and every $X \\to G(Y)$ factors through $X \\to G(FX) \\to G(Y)$.",
@@ -15409,7 +15409,7 @@
    "id": "def.comma-category",
    "type": "definition",
    "label": "逗号范畴",
-   "title": "逗号范畴（Comma Category）",
+   "title": "逗号范畴",
    "label_en": "comma category",
    "title_en": "comma category",
    "translations": {
@@ -15449,7 +15449,7 @@
    "id": "def.reflective-subcategory",
    "type": "definition",
    "label": "反射子范畴",
-   "title": "反射子范畴（Reflective Subcategory）",
+   "title": "反射子范畴",
    "label_en": "reflective subcategory",
    "title_en": "Reflective Subcategory",
    "translations": {
@@ -15511,7 +15511,7 @@
    "id": "def.kan-extension",
    "type": "definition",
    "label": "Kan 延拓",
-   "title": "Kan 延拓（Kan Extension）",
+   "title": "Kan 延拓",
    "label_en": "Kan extension",
    "title_en": "Kan Extension",
    "translations": {
@@ -15774,7 +15774,7 @@
    "id": "def.free-compact-hausdorff",
    "type": "definition",
    "label": "自由紧 Hausdorff 空间",
-   "title": "自由紧 Hausdorff 空间（Free Compact Hausdorff Space）",
+   "title": "自由紧 Hausdorff 空间",
    "label_en": "free compact Hausdorff",
    "title_en": "Free Compact Hausdorff Space",
    "translations": {
@@ -15836,7 +15836,7 @@
    "id": "def.projective-object",
    "type": "definition",
    "label": "投射 / 内射对象",
-   "title": "投射对象与内射对象（Projective / Injective Object）",
+   "title": "投射对象与内射对象",
    "label_en": "injective object",
    "title_en": "injective object",
    "translations": {
@@ -15898,7 +15898,7 @@
    "id": "def.free-presentation",
    "type": "definition",
    "label": "自由表示",
-   "title": "自由表示（Free Presentation）",
+   "title": "自由表示",
    "label_en": "free presentation",
    "title_en": "Free Presentation",
    "translations": {
@@ -15982,7 +15982,7 @@
    "id": "def.stone-space",
    "type": "definition",
    "label": "全不连通与 Stone 空间",
-   "title": "Stone 空间与 Stonean 空间（Stone / Stonean Space）",
+   "title": "Stone 空间与 Stonean 空间",
    "region": "topology",
    "regions": [
     "topology"
@@ -16070,7 +16070,7 @@
    "id": "def.profinite",
    "type": "definition",
    "label": "投射有限空间",
-   "title": "投射有限空间（Profinite Space）",
+   "title": "投射有限空间",
    "label_en": "profinite space",
    "title_en": "profinite space",
    "translations": {
@@ -16230,7 +16230,7 @@
    "id": "def.sieve",
    "type": "definition",
    "label": "筛",
-   "title": "筛（Sieve）",
+   "title": "筛",
    "label_en": "sieve",
    "title_en": "sieve",
    "translations": {
@@ -16270,7 +16270,7 @@
    "id": "def.pretopology",
    "type": "definition",
    "label": "预拓扑",
-   "title": "预拓扑（Pretopology）",
+   "title": "预拓扑",
    "label_en": "pretopology",
    "title_en": "pretopology",
    "translations": {
@@ -16310,7 +16310,7 @@
    "id": "def.grothendieck-topology",
    "type": "definition",
    "label": "Grothendieck 拓扑",
-   "title": "Grothendieck 拓扑与 site（Grothendieck Topology, Site）",
+   "title": "Grothendieck 拓扑与景",
    "region": "category",
    "regions": [
     "category"
@@ -16320,9 +16320,9 @@
    "tags": [
     "范畴论",
     "拓扑",
-    "site"
+    "景"
    ],
-   "statement": "范畴 $\\mathcal{C}$ 上的 **Grothendieck 拓扑**是对每个 $X$ 指定一族**覆盖筛** $J(X)$，满足：\n\n1. $h_{X} \\in J(X)$；\n2. **拉回稳定**：$R \\in J(X)$、$f : Y \\to X$ $\\implies$ $f^{*}(R) := R \\times_{h_{X}} h_{Y} \\in J(Y)$；\n3. **传递**：$R, R' \\subseteq h_{X}$，若 $R' \\in J(X)$ 且对每个 $f \\in R'(Y)$ 有 $f^{*}(R) \\in J(Y)$，则 $R \\in J(X)$。\n\n带 Grothendieck 拓扑的范畴叫 **site**。",
+   "statement": "范畴 $\\mathcal{C}$ 上的 **Grothendieck 拓扑**是对每个 $X$ 指定一族**覆盖筛** $J(X)$，满足：\n\n1. $h_{X} \\in J(X)$；\n2. **拉回稳定**：$R \\in J(X)$、$f : Y \\to X$ $\\implies$ $f^{*}(R) := R \\times_{h_{X}} h_{Y} \\in J(Y)$；\n3. **传递**：$R, R' \\subseteq h_{X}$，若 $R' \\in J(X)$ 且对每个 $f \\in R'(Y)$ 有 $f^{*}(R) \\in J(Y)$，则 $R \\in J(X)$。\n\n带 Grothendieck 拓扑的范畴叫 **景**。",
    "notes": "$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R' \\in J(X) \\implies R \\cap R' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R'$、$R \\in J(X) \\implies R' \\in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。\n\n由预拓扑可以生成拓扑：把每个覆盖族换成它生成的筛，再取全部这样的筛。**拓扑比预拓扑更一般** —— 预拓扑要求那些纤维积存在，而在预层范畴里筛的拉回总是存在的。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
@@ -16336,7 +16336,7 @@
    "id": "def.sheaf",
    "type": "definition",
    "label": "层",
-   "title": "层与分离预层（Sheaf）",
+   "title": "层与分离预层",
    "label_en": "sheaf",
    "title_en": "sheaf",
    "translations": {
@@ -16366,7 +16366,7 @@
     "层",
     "粘合"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site，$F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是预层。\n\n- $F$ 叫**分离的**，如果对每个 $X$ 与每个 $R \\in J(X)$，限制映射\n\n$$\\operatorname{Hom}(h_{X}, F) \\longrightarrow \\operatorname{Hom}(R, F)$$\n\n是**单射**；\n- $F$ 叫**层**，如果这个映射是**双射**。",
+   "statement": "设 $\\mathcal{C}$ 是景，$F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是预层。\n\n- $F$ 叫**分离的**，如果对每个 $X$ 与每个 $R \\in J(X)$，限制映射\n\n$$\\operatorname{Hom}(h_{X}, F) \\longrightarrow \\operatorname{Hom}(R, F)$$\n\n是**单射**；\n- $F$ 叫**层**，如果这个映射是**双射**。",
    "notes": "用米田引理 $\\operatorname{Hom}(h_{X}, F) \\cong F(X)$，可以把这个定义读成两句话：左边是 $F(X)$（整体截面），右边是「沿 $R$ 的一族相容截面」：\n\n\n\n- **单射 = 分离公理**：两个整体截面若在 $R$ 上一致，就必定相等；\n- **双射 = 粘合公理**：任何一族相容截面都能**唯一**地拼成整体截面。\n\n\n\n在拓扑空间的老写法里（$\\mathcal{C} = \\operatorname{Open}(X)^{\\mathrm{op}}$），这两条就是：$s|_{U_{i}} = t|_{U_{i}}$ 处处成立则 $s = t$；以及局部截面 $s_{i}$ 在交叠处一致时能拼出整体截面。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
@@ -16451,7 +16451,7 @@
     "层化",
     "滤过余极限"
    ],
-   "statement": "site $\\mathcal{C}$ 上的 **Čech 函子** $\\widehat{H}$ 定义在预层上：\n\n$$\\widehat{H}(T)(X) \\;:=\\; \\varinjlim_{R \\in J(X)} \\operatorname{Hom}(R, T)$$\n\n（因为 $J(X)$ 是滤子，这是一个**滤过余极限**。）由 $h_{X} \\in J(X)$ 与 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，得到自然映射 $T \\to \\widehat{H}(T)$。",
+   "statement": "景 $\\mathcal{C}$ 上的 **Čech 函子** $\\widehat{H}$ 定义在预层上：\n\n$$\\widehat{H}(T)(X) \\;:=\\; \\varinjlim_{R \\in J(X)} \\operatorname{Hom}(R, T)$$\n\n（因为 $J(X)$ 是滤子，这是一个**滤过余极限**。）由 $h_{X} \\in J(X)$ 与 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，得到自然映射 $T \\to \\widehat{H}(T)$。",
    "notes": "「沿越来越大的覆盖筛取极限」在 $T$ 这一侧翻成了余极限 —— 因为 $\\operatorname{Hom}(-, T)$ 是**反变**的，反变函子沿滤子取极限等于共变函子的滤过余极限。$\\widehat{H}$ 是把预层朝层的方向推一把的第一步。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
@@ -16505,7 +16505,7 @@
    "id": "def.regular-epi",
    "type": "definition",
    "label": "正则满态射",
-   "title": "正则满态射（Regular Epimorphism）",
+   "title": "正则满态射",
    "label_en": "regular epimorphism",
    "title_en": "regular epimorphism",
    "translations": {
@@ -16566,7 +16566,7 @@
   {
    "id": "prop.site-properties",
    "type": "proposition",
-   "label": "site 的层范畴的好性质",
+   "label": "景的层范畴的好性质",
    "title": "Grothendieck 拓扑下的层范畴",
    "region": "category",
    "regions": [
@@ -16579,7 +16579,7 @@
     "层",
     "预拓扑斯"
    ],
-   "statement": "若 $\\mathcal{C}$ 是 site，则层范畴 $\\widehat{\\mathcal{C}}$ 中所有极限与余极限存在，并且：\n\n1. 余极限是**万有**的；\n2. **滤过余极限正合**；\n3. 满态射都是**正则的**且**万有**的；\n4. 余积是**不交**的；\n5. 等价关系是**有效的**且**万有**的。",
+   "statement": "若 $\\mathcal{C}$ 是景，则层范畴 $\\widehat{\\mathcal{C}}$ 中所有极限与余极限存在，并且：\n\n1. 余极限是**万有**的；\n2. **滤过余极限正合**；\n3. 满态射都是**正则的**且**万有**的；\n4. 余积是**不交**的；\n5. 等价关系是**有效的**且**万有**的。",
    "notes": "理由一句话：**这些性质在 $\\mathbf{Set}$ 里成立，而层范畴里的构造逐点继承 $\\mathbf{Set}$ 的性质**，再配合层化保有限极限与余极限。第 3 条尤其值得记：在这里「满 = 正则满」是自动的，不必额外假设 —— 这正是后面预拓扑斯公理里那一条的来源。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
@@ -16669,7 +16669,7 @@
    "id": "def.effective-equivalence",
    "type": "definition",
    "label": "有效等价关系",
-   "title": "有效等价关系（Effective Equivalence Relation）",
+   "title": "有效等价关系",
    "label_en": "effective equivalence relation",
    "title_en": "Effective Equivalence Relation",
    "translations": {
@@ -16731,7 +16731,7 @@
    "id": "def.canonical-topology",
    "type": "definition",
    "label": "标准拓扑",
-   "title": "标准拓扑与次标准拓扑（Canonical Topology）",
+   "title": "标准拓扑与次标准拓扑",
    "label_en": "canonical topology",
    "title_en": "canonical topology",
    "translations": {
@@ -16815,7 +16815,7 @@
    "id": "def.pretopos",
    "type": "definition",
    "label": "预拓扑斯",
-   "title": "预拓扑斯（Pretopos）",
+   "title": "预拓扑斯",
    "label_en": "pretopos",
    "title_en": "Pretopos",
    "translations": {
@@ -16846,7 +16846,7 @@
     "正合"
    ],
    "statement": "范畴 $\\mathcal{C}$ 叫**预拓扑斯**，如果\n\n1. **有限极限存在**；\n2. **有限余积存在**，并且是**不交的**与**万有的**；\n3. **等价关系是有效的且万有的**；\n4. **满态射是正则的且万有的**。",
-   "notes": "第 4 条**不是独立的** —— 它可以由前三条推出，所以有些课本只写三条。写下来的好处是提醒一件事：**在这里满态射自动是正则的**，于是「满」与「商映射」是同一件事。\n\n标准事实：**单态射可以通过极限来定义**（$i$ 是单态射 $\\iff$ 那个方形是笛卡尔的），而拉回与极限都保持单态射；这保证了推出也保单态射 —— 第 2、3 条里那些「不交」「有效」才有意义。\n\n例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何 site 的层范畴都是预拓扑斯。",
+   "notes": "第 4 条**不是独立的** —— 它可以由前三条推出，所以有些课本只写三条。写下来的好处是提醒一件事：**在这里满态射自动是正则的**，于是「满」与「商映射」是同一件事。\n\n标准事实：**单态射可以通过极限来定义**（$i$ 是单态射 $\\iff$ 那个方形是笛卡尔的），而拉回与极限都保持单态射；这保证了推出也保单态射 —— 第 2、3 条里那些「不交」「有效」才有意义。\n\n例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何景的层范畴都是预拓扑斯。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -16917,7 +16917,7 @@
    "id": "def.precanonical-topology",
    "type": "definition",
    "label": "预标准拓扑",
-   "title": "预标准拓扑（Precanonical Topology）",
+   "title": "预标准拓扑",
    "label_en": "precanonical topology",
    "title_en": "Precanonical Topology",
    "translations": {
@@ -16947,7 +16947,7 @@
     "预拓扑斯",
     "预标准"
    ],
-   "statement": "预拓扑斯 $\\mathcal{C}$ 上的**预标准预拓扑**由所有**有限**族 $(X_{i} \\to X)_{i \\in I}$ 组成，使得\n\n$$\\coprod_{i \\in I} X_{i} \\longrightarrow X$$\n\n是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个 site。",
+   "statement": "预拓扑斯 $\\mathcal{C}$ 上的**预标准预拓扑**由所有**有限**族 $(X_{i} \\to X)_{i \\in I}$ 组成，使得\n\n$$\\coprod_{i \\in I} X_{i} \\longrightarrow X$$\n\n是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个景。",
    "notes": "生成它的其实是两类覆盖：**有限不交并**（$\\coprod_{i \\in I} X_{i} \\cong X$）与**满射** $(X_{i} \\to X)$。名字里的「预」是因为它比标准拓扑**粗** —— 但仍然是次标准的。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
@@ -17023,7 +17023,7 @@
    "id": "def.generator",
    "type": "definition",
    "label": "生成元集",
-   "title": "生成元集与生成元（Generators）",
+   "title": "生成元集与生成元",
    "region": "category",
    "regions": [
     "category"
@@ -17045,7 +17045,7 @@
    "id": "def.topos",
    "type": "definition",
    "label": "拓扑斯",
-   "title": "拓扑斯（Topos）",
+   "title": "拓扑斯",
    "label_en": "topos",
    "title_en": "topos",
    "translations": {
@@ -17075,7 +17075,7 @@
     "拓扑斯"
    ],
    "statement": "范畴 $\\mathcal{T}$ 叫**拓扑斯**，如果\n\n1. 存在一个**小**的生成元集；\n2. 有限极限存在；\n3. 余积存在，并且是不交的、万有的（等价地说：所有余极限存在）；\n4. 等价关系是有效的且万有的。",
-   "notes": "与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。\n\n例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；site 的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**\n\n⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。",
+   "notes": "与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。\n\n例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；景的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**\n\n⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ],
@@ -17118,7 +17118,7 @@
     "Giraud",
     "拓扑斯"
    ],
-   "statement": "对范畴 $\\mathcal{T}$，下列四条等价：\n\n1. $\\mathcal{T}$ 是拓扑斯；\n2. $\\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；\n3. 存在 site $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；\n4. 存在范畴使 $\\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。",
+   "statement": "对范畴 $\\mathcal{T}$，下列四条等价：\n\n1. $\\mathcal{T}$ 是拓扑斯；\n2. $\\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；\n3. 存在景 $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；\n4. 存在范畴使 $\\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。",
    "notes": "四条的对译：(2)$\\iff$(3) 取 $\\mathcal{C} = \\mathcal{T}$ 配上标准拓扑；(3)$\\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；(1)$\\implies$(2) 也给 $\\mathcal{T}$ 配标准拓扑。\n\n第 4 条是最好用的一条：**要造一个拓扑斯，只要造一个预层范畴加一个正合反射**。凝聚态集正是这么来的 —— 取紧 Hausdorff 空间上的层。",
    "refs": [
     "Mac Lane–Moerdijk, Sheaves in Geometry and Logic, Appendix"
@@ -17163,7 +17163,7 @@
     "覆盖"
    ],
    "statement": "拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。",
-   "notes": "**证明。**\n- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。\n- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。\n- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎\n\n这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。",
+   "notes": "**证明。**\n- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。\n- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。\n- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎\n\n这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -17194,7 +17194,7 @@
    "id": "def.quasi-compact",
    "type": "definition",
    "label": "拟紧对象",
-   "title": "拟紧对象（Quasi-Compact Object）",
+   "title": "拟紧对象",
    "label_en": "quasi-compact",
    "title_en": "Quasi-Compact Object",
    "translations": {
@@ -17224,7 +17224,7 @@
     "拟紧",
     "紧性"
    ],
-   "statement": "site $\\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \\to X)_{i \\in I}$，都存在**有限**的 $J \\subseteq I$，使 $(X_{i} \\to X)_{i \\in J}$ 生成的筛**也是**覆盖筛。\n\n在拓扑斯中，等价的说法是：任给满射 $\\coprod_{i \\in I} X_{i} \\to X$，都存在有限 $J \\subseteq I$ 使 $\\coprod_{i \\in J} X_{i} \\to X$ 仍是满射。",
+   "statement": "景 $\\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \\to X)_{i \\in I}$，都存在**有限**的 $J \\subseteq I$，使 $(X_{i} \\to X)_{i \\in J}$ 生成的筛**也是**覆盖筛。\n\n在拓扑斯中，等价的说法是：任给满射 $\\coprod_{i \\in I} X_{i} \\to X$，都存在有限 $J \\subseteq I$ 使 $\\coprod_{i \\in J} X_{i} \\to X$ 仍是满射。",
    "notes": "这就是**紧性**在剥掉拓扑之后剩下的形状：**任何覆盖都有有限子覆盖**。紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里正是「拟紧」的那批对象 —— 后面凝聚态集的定义就是靠它写下来的，所以这个名字值得记牢。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
@@ -17246,8 +17246,8 @@
     "拟紧",
     "覆盖"
    ],
-   "statement": "1. site $\\mathcal{C}$ 中 $X$ 拟紧 $\\iff$ $X$ 在标准拓扑下拟紧；\n2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；\n3. 预拓扑斯 $\\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\\iff$ 存在满射 $X \\to F$ 且 $X \\in \\mathcal{C}$。",
-   "notes": "**逐条证明。**\n**1.** site 里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。\n**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。\n**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。\n$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎\n\n第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。",
+   "statement": "1. 景 $\\mathcal{C}$ 中 $X$ 拟紧 $\\iff$ $X$ 在标准拓扑下拟紧；\n2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；\n3. 预拓扑斯 $\\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\\iff$ 存在满射 $X \\to F$ 且 $X \\in \\mathcal{C}$。",
+   "notes": "**逐条证明。**\n**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。\n**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。\n**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。\n$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎\n\n第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -17256,7 +17256,7 @@
    "id": "def.quasi-separated",
    "type": "definition",
    "label": "拟分离对象",
-   "title": "拟分离对象（Quasi-Separated Object）",
+   "title": "拟分离对象",
    "label_en": "quasi-separated",
    "title_en": "Quasi-Separated Object",
    "translations": {
@@ -17309,7 +17309,7 @@
     "等价"
    ],
    "statement": "若 $\\mathcal{C}$ 是预拓扑斯（配预标准拓扑），则函子\n\n$$X \\mapsto h_{X}$$\n\n给出 $\\mathcal{C}$ 与「$\\mathcal{C}$ 上**拟紧且拟分离**的层」所成范畴之间的**等价**。",
-   "notes": "也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ site $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。",
+   "notes": "也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ 景 $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -17318,7 +17318,7 @@
    "id": "def.topos-morphism",
    "type": "definition",
    "label": "拓扑斯的态射",
-   "title": "拓扑斯的态射（Morphism of Toposes）",
+   "title": "拓扑斯的态射",
    "label_en": "geometric morphism",
    "title_en": "geometric morphism",
    "translations": {
@@ -17381,7 +17381,7 @@
    "id": "def.condensed-set",
    "type": "definition",
    "label": "凝聚态集",
-   "title": "凝聚态集（Condensed Set）",
+   "title": "凝聚态集",
    "label_en": "condensed set",
    "title_en": "condensed set",
    "translations": {
@@ -17655,7 +17655,7 @@
    "id": "def.condensed-abelian-group",
    "type": "definition",
    "label": "凝聚态阿贝尔群",
-   "title": "凝聚态阿贝尔群（Condensed Abelian Group）",
+   "title": "凝聚态阿贝尔群",
    "label_en": "condensed abelian group",
    "title_en": "Condensed Abelian Group",
    "translations": {
@@ -17757,7 +17757,7 @@
    "id": "def.grothendieck-category",
    "type": "definition",
    "label": "Grothendieck 范畴",
-   "title": "Grothendieck 范畴（Grothendieck Category）",
+   "title": "Grothendieck 范畴",
    "label_en": "Grothendieck category",
    "title_en": "Grothendieck Category",
    "translations": {
@@ -17864,7 +17864,7 @@
    "id": "def.abelian-category",
    "type": "definition",
    "label": "加法 / 阿贝尔范畴",
-   "title": "加法范畴与阿贝尔范畴（Additive / Abelian Category）",
+   "title": "加法范畴与阿贝尔范畴",
    "label_en": "additive and abelian categories",
    "title_en": "additive and abelian categories",
    "abstract_en": "The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to \\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian means that kernels and cokernels exist, and abelian means any one of four equivalent conditions: every monomorphism is regular; $N \\cong \\ker(M \\to \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every map factors uniquely as an epimorphism followed by a monomorphism; $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. Abelian categories are the working environment of homological algebra — exactness needs kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a topos are abelian; $\\mathbf{AbTop}$ is not.",
@@ -17925,7 +17925,7 @@
    "id": "def.cochain-complex",
    "type": "definition",
    "label": "上链复形",
-   "title": "复形（Complex）",
+   "title": "复形",
    "label_en": "complex",
    "title_en": "complex",
    "translations": {
@@ -17987,7 +17987,7 @@
    "id": "def.homotopy",
    "type": "definition",
    "label": "同伦",
-   "title": "同伦（Homotopy）",
+   "title": "同伦",
    "label_en": "homotopy",
    "title_en": "homotopy",
    "translations": {
@@ -18027,7 +18027,7 @@
    "id": "def.homotopy-category",
    "type": "definition",
    "label": "同伦范畴",
-   "title": "同伦范畴（Homotopy Category）",
+   "title": "同伦范畴",
    "label_en": "homotopy category",
    "title_en": "Homotopy Category",
    "translations": {
@@ -18066,7 +18066,7 @@
    "id": "def.mapping-cone",
    "type": "definition",
    "label": "映射锥",
-   "title": "映射锥与位移（Mapping Cone）",
+   "title": "映射锥与位移",
    "label_en": "mapping cone",
    "title_en": "mapping cone",
    "translations": {
@@ -18106,7 +18106,7 @@
    "id": "def.distinguished-triangle",
    "type": "definition",
    "label": "导出三角",
-   "title": "导出三角（Distinguished Triangle）",
+   "title": "导出三角",
    "region": "homology",
    "regions": [
     "homology"
@@ -18190,7 +18190,7 @@
    "id": "def.cohomology",
    "type": "definition",
    "label": "同调",
-   "title": "同调（Cohomology）",
+   "title": "同调",
    "label_en": "cohomology",
    "title_en": "cohomology",
    "translations": {
@@ -18252,7 +18252,7 @@
    "id": "def.cohomological-functor",
    "type": "definition",
    "label": "上同调函子",
-   "title": "上同调函子（Cohomological Functor）",
+   "title": "上同调函子",
    "label_en": "cohomological functor",
    "title_en": "Cohomological Functor",
    "translations": {
@@ -18314,7 +18314,7 @@
    "id": "def.quasi-iso",
    "type": "definition",
    "label": "拟同构",
-   "title": "拟同构与零调复形（Quasi-Isomorphism）",
+   "title": "拟同构与零调复形",
    "label_en": "quasi-isomorphism",
    "title_en": "quasi-isomorphism",
    "translations": {
@@ -18394,7 +18394,7 @@
    "id": "def.filtration",
    "type": "definition",
    "label": "过滤",
-   "title": "过滤（Filtration）",
+   "title": "过滤",
    "label_en": "filtration",
    "title_en": "filtration",
    "translations": {
@@ -18434,7 +18434,7 @@
    "id": "def.spectral-sequence",
    "type": "definition",
    "label": "谱序列",
-   "title": "谱序列（Spectral Sequence）",
+   "title": "谱序列",
    "label_en": "spectral sequence",
    "title_en": "Spectral Sequence",
    "translations": {
@@ -18474,7 +18474,7 @@
    "id": "def.presheaf-valued",
    "type": "definition",
    "label": "取值一般的预层与层",
-   "title": "取值在一般范畴里的层（Sheaf with Values in a Category）",
+   "title": "取值在一般范畴里的层",
    "label_en": "sheaf with values",
    "title_en": "sheaf with values",
    "translations": {
@@ -18504,7 +18504,7 @@
     "层",
     "阿贝尔层"
    ],
-   "statement": "设 $\\mathcal{C}$、$\\mathcal{D}$ 是范畴。\n\n1. 取值在 $\\mathcal{D}$ 的**预层**是反变函子 $T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$；预层之间的**态射**是自然变换。\n2. $\\mathcal{C}$ 是 site 时，**层** $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$ 是这样的预层：对每个 $Y \\in \\mathcal{D}$，集合值预层\n\n$$X \\longmapsto \\operatorname{Hom}_{\\mathcal{D}}\\bigl(Y,\\ F(X)\\bigr)$$\n\n都是层。",
+   "statement": "设 $\\mathcal{C}$、$\\mathcal{D}$ 是范畴。\n\n1. 取值在 $\\mathcal{D}$ 的**预层**是反变函子 $T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$；预层之间的**态射**是自然变换。\n2. $\\mathcal{C}$ 是景时，**层** $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$ 是这样的预层：对每个 $Y \\in \\mathcal{D}$，集合值预层\n\n$$X \\longmapsto \\operatorname{Hom}_{\\mathcal{D}}\\bigl(Y,\\ F(X)\\bigr)$$\n\n都是层。",
    "notes": "把 $\\mathcal{D}$ 取成 $\\mathbf{Set}$ 就回到原来的层；取成 $\\mathbf{Ab}$ 就得到**阿贝尔层**。\n\n定义里的技巧是：**用「射入 $Y$ 的映射」把 $\\mathcal{D}$ 里的层条件降回集合层**。于是集合层的每一条结论，只要它的表述里那些构造在 $\\mathcal{D}$ 里也有（极限、积……），就能逐条搬过来 —— 这是「层可以取一般值」的全部秘密。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §5.3"
@@ -18514,7 +18514,7 @@
    "id": "def.abelian-sheaf",
    "type": "definition",
    "label": "阿贝尔层",
-   "title": "阿贝尔层（Abelian Sheaf）",
+   "title": "阿贝尔层",
    "label_en": "abelian sheaf",
    "title_en": "abelian sheaf",
    "translations": {
@@ -18544,7 +18544,7 @@
     "层",
     "阿贝尔群"
    ],
-   "statement": "固定 site $\\mathcal{C}$。记\n\n$$\\widehat{\\mathcal{C}}(\\mathbf{Ab}) := \\operatorname{Hom}(\\mathcal{C}^{\\mathrm{op}}, \\mathbf{Ab})$$\n\n为**阿贝尔群预层**的范畴，$\\widetilde{\\mathcal{C}}(\\mathbf{Ab})$ 为它里面**层**的满子范畴。后者叫 $\\mathcal{C}$ 上的**阿贝尔层**，也叫 $\\mathcal{C}$ 上的**阿贝尔群**。\n\n记号：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) := \\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}(M, N) = \\operatorname{Hom}_{\\widetilde{\\mathcal{C}}(\\mathbf{Ab})}(M, N)$。",
+   "statement": "固定景 $\\mathcal{C}$。记\n\n$$\\widehat{\\mathcal{C}}(\\mathbf{Ab}) := \\operatorname{Hom}(\\mathcal{C}^{\\mathrm{op}}, \\mathbf{Ab})$$\n\n为**阿贝尔群预层**的范畴，$\\widetilde{\\mathcal{C}}(\\mathbf{Ab})$ 为它里面**层**的满子范畴。后者叫 $\\mathcal{C}$ 上的**阿贝尔层**，也叫 $\\mathcal{C}$ 上的**阿贝尔群**。\n\n记号：$\\operatorname{Hom}_{\\mathbb{Z}}(M, N) := \\operatorname{Hom}_{\\widehat{\\mathcal{C}}(\\mathbf{Ab})}(M, N) = \\operatorname{Hom}_{\\widetilde{\\mathcal{C}}(\\mathbf{Ab})}(M, N)$。",
    "notes": "⭐ **阿贝尔群预层就是「最粗拓扑下的层」** —— 两种说法是一套东西。\n\n遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 沿复合给出遗忘函子 $\\widehat{\\mathcal{C}}(\\mathbf{Ab}) \\to \\widehat{\\mathcal{C}}$。\n\n两条基本事实：\n\n- **阿贝尔层按底集合层来判**：$M$ 是阿贝尔层 $\\iff$ 它的底集合预层是层。因为遗忘函子保所有极限，而层条件是一个极限图 —— 用米田引理把 $\\operatorname{Hom}_{\\mathbb{Z}}(N, M(-))$ 换回 $M(-)$，条件就同一条。\n- **阿贝尔层 = 层范畴里的阿贝尔群对象**：$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\simeq \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr)$。这正是「凝聚态阿贝尔群 = 凝聚态集范畴里的阿贝尔群」那条定义的一般版本。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §5.3"
@@ -18614,7 +18614,7 @@
    "id": "def.internal-hom",
    "type": "definition",
    "label": "内 Hom",
-   "title": "内 Hom（Internal Hom）",
+   "title": "内 Hom",
    "label_en": "internal hom",
    "title_en": "Internal Hom",
    "translations": {
@@ -18676,7 +18676,7 @@
    "id": "def.flat-abelian-sheaf",
    "type": "definition",
    "label": "平坦阿贝尔层",
-   "title": "平坦性（Flatness）",
+   "title": "平坦性",
    "label_en": "flat",
    "title_en": "Flatness",
    "translations": {
@@ -18716,7 +18716,7 @@
    "id": "def.compactly-generated",
    "type": "definition",
    "label": "紧生成空间",
-   "title": "紧生成空间 / $k$-空间（Compactly Generated Space）",
+   "title": "紧生成空间 / $k$-空间",
    "label_en": "compactly generated",
    "title_en": "Compactly Generated Space",
    "translations": {
@@ -19015,7 +19015,7 @@
    "id": "def.compact-open-topology",
    "type": "definition",
    "label": "紧开拓扑",
-   "title": "紧开拓扑（Compact-Open Topology）",
+   "title": "紧开拓扑",
    "label_en": "compact-open topology",
    "title_en": "Compact-Open Topology",
    "translations": {
@@ -19077,7 +19077,7 @@
    "id": "def.weak-hausdorff",
    "type": "definition",
    "label": "弱 Hausdorff 空间",
-   "title": "弱 Hausdorff 空间（Weak Hausdorff Space）",
+   "title": "弱 Hausdorff 空间",
    "label_en": "weak Hausdorff",
    "title_en": "Weak Hausdorff Space",
    "translations": {
@@ -19320,7 +19320,7 @@
    "id": "def.group",
    "type": "definition",
    "label": "群",
-   "title": "群与阿贝尔群（Group）",
+   "title": "群与阿贝尔群",
    "label_en": "group",
    "title_en": "group",
    "translations": {
@@ -19361,7 +19361,7 @@
    "id": "def.subgroup",
    "type": "definition",
    "label": "子群",
-   "title": "子群（Subgroup）",
+   "title": "子群",
    "label_en": "subgroup",
    "title_en": "Subgroup",
    "translations": {
@@ -19401,7 +19401,7 @@
    "id": "def.normal-subgroup",
    "type": "definition",
    "label": "正规子群",
-   "title": "正规子群与陪集（Normal Subgroup）",
+   "title": "正规子群与陪集",
    "label_en": "normal subgroup",
    "title_en": "normal subgroup",
    "translations": {
@@ -19442,7 +19442,7 @@
    "id": "def.quotient-group",
    "type": "definition",
    "label": "商群",
-   "title": "商群（Quotient Group）",
+   "title": "商群",
    "label_en": "quotient group",
    "title_en": "Quotient Group",
    "translations": {
@@ -19483,7 +19483,7 @@
    "id": "def.group-hom",
    "type": "definition",
    "label": "群同态、核与像",
-   "title": "群同态（Group Homomorphism）",
+   "title": "群同态",
    "label_en": "group homomorphism",
    "title_en": "group homomorphism",
    "translations": {
@@ -19525,7 +19525,7 @@
    "id": "thm.first-iso",
    "type": "theorem",
    "label": "第一同构定理（Noether）",
-   "title": "第一同构定理（Noether）",
+   "title": "第一同构定理",
    "label_en": "first isomorphism theorem",
    "title_en": "first isomorphism theorem",
    "abstract_en": "For a group homomorphism $\\varphi : G \\to G'$, the assignment $g\\ker\\varphi \\mapsto \\varphi(g)$ is an isomorphism $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$; in particular a surjective homomorphism has the quotient as image. The proof is three steps: well-definedness, multiplicativity, bijectivity. The same proof works verbatim for any \"set + operations + axioms\" structure, $A/\\ker f \\cong \\operatorname{im} f$, and the set-level prototype is that every map induces a bijection from the quotient by $a \\sim a' \\iff f(a) = f(a')$ onto its image.",
@@ -19590,7 +19590,7 @@
    "id": "def.localization",
    "type": "definition",
    "label": "局部化",
-   "title": "范畴的局部化（Localization）",
+   "title": "范畴的局部化",
    "label_en": "localization",
    "title_en": "Localization",
    "translations": {
@@ -19672,7 +19672,7 @@
    "id": "def.normal-space",
    "type": "definition",
    "label": "正规空间",
-   "title": "正规空间（Normal Space）",
+   "title": "正规空间",
    "label_en": "normal space",
    "title_en": "Normal Space",
    "translations": {
@@ -19754,7 +19754,7 @@
    "id": "def.topo-ab-group",
    "type": "definition",
    "label": "拓扑阿贝尔群",
-   "title": "拓扑阿贝尔群与连续同态（Topological Abelian Group）",
+   "title": "拓扑阿贝尔群与连续同态",
    "label_en": "topological abelian group",
    "title_en": "Topological Abelian Group",
    "translations": {
@@ -19907,7 +19907,7 @@
    "id": "def.pontryagin-dual",
    "type": "definition",
    "label": "Pontryagin 对偶",
-   "title": "Pontryagin 对偶（Pontryagin Dual）",
+   "title": "Pontryagin 对偶",
    "label_en": "Pontryagin dual",
    "title_en": "Pontryagin Dual",
    "translations": {
@@ -19991,7 +19991,7 @@
    "id": "def.ring",
    "type": "definition",
    "label": "环",
-   "title": "环与交换环（Ring）",
+   "title": "环与交换环",
    "label_en": "ring",
    "title_en": "ring",
    "translations": {
@@ -20032,7 +20032,7 @@
    "id": "def.ideal",
    "type": "definition",
    "label": "理想",
-   "title": "理想与商环（Ideal）",
+   "title": "理想与商环",
    "label_en": "ideal",
    "title_en": "ideal",
    "translations": {
@@ -20073,7 +20073,7 @@
    "id": "def.module",
    "type": "definition",
    "label": "模",
-   "title": "模与模同态（Module）",
+   "title": "模与模同态",
    "label_en": "module",
    "title_en": "Module",
    "translations": {
@@ -20139,7 +20139,7 @@
    "id": "def.connected-category",
    "type": "definition",
    "label": "连通范畴",
-   "title": "连通范畴（Connected Category）",
+   "title": "连通范畴",
    "label_en": "connected category",
    "title_en": "Connected Category",
    "translations": {
@@ -20180,7 +20180,7 @@
    "id": "def.cofinal-functor",
    "type": "definition",
    "label": "共尾函子",
-   "title": "共尾函子（Cofinal Functor）",
+   "title": "共尾函子",
    "label_en": "cofinal functor",
    "title_en": "cofinal functor",
    "translations": {
@@ -20263,7 +20263,7 @@
    "id": "def.filtered-category",
    "type": "definition",
    "label": "滤过范畴",
-   "title": "滤过范畴与滤过余极限（Filtered Category）",
+   "title": "滤过范畴与滤过余极限",
    "label_en": "filtered category",
    "title_en": "filtered category",
    "translations": {
@@ -20371,7 +20371,7 @@
    "id": "def.monoid-object",
    "type": "definition",
    "label": "幺半群对象",
-   "title": "幺半群对象（Monoid Object）",
+   "title": "幺半群对象",
    "label_en": "monoid object",
    "title_en": "monoid object",
    "translations": {
@@ -20413,7 +20413,7 @@
    "id": "def.group-object",
    "type": "definition",
    "label": "群对象与阿贝尔群对象",
-   "title": "群对象与阿贝尔群对象（Group Object）",
+   "title": "群对象与阿贝尔群对象",
    "label_en": "group object",
    "title_en": "group object",
    "translations": {
@@ -20480,7 +20480,7 @@
    "id": "prop.ring-localization",
    "type": "example",
    "label": "环的局部化 W⁻¹R",
-   "title": "环的局部化（Localization of a Ring）",
+   "title": "环的局部化",
    "label_en": "localization of a ring",
    "title_en": "Localization of a Ring",
    "translations": {
@@ -20561,7 +20561,7 @@
     "覆盖",
     "层化"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：\n\n1. $R \\in J(X)$（即 $R$ 是 $X$ 上的**覆盖筛**）；\n2. $\\widetilde{R} \\simeq \\underline{X}$；\n3. $\\underline{X} \\simeq \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$；\n4. $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\longrightarrow \\underline{X}$ 是**满态射**。",
+   "statement": "设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：\n\n1. $R \\in J(X)$（即 $R$ 是 $X$ 上的**覆盖筛**）；\n2. $\\widetilde{R} \\simeq \\underline{X}$；\n3. $\\underline{X} \\simeq \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$；\n4. $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\longrightarrow \\underline{X}$ 是**满态射**。",
    "notes": "记号：$\\underline{X} := \\widetilde{h_{X}}$ 是 $X$ 对应的**层**；$\\mathcal{C}/R$ 是由「筛 $R$ 里的那些态射」组成的范畴（对象是 $f \\in R(Y)$，态射是使 $\\ast$ 交换的那些 $g$）。\n\n⭐ **读法**：第 1 条是「$R$ 被拓扑 $J$ 承认」，第 2、3、4 条都**只提到层**。所以这一条说的是：**「是不是覆盖」这件事可以由层来刻画，不必回头看 $J$。** 这正是「拓扑 $\\leftrightarrow$ 层范畴」那条对应能够一一对上的原因。\n\n**证明走法。** 合成 $R \\hookrightarrow h_{X} \\to \\widetilde{h_{X}} = \\underline{X}$ 唯一地延拓出 $u : \\widetilde{R} \\to \\underline{X}$（层化是左伴随，层是余完备的）。\n\n\n\n- **$1 \\implies 2$**：$R \\in J(X)$ 时 $R \\to \\widetilde{R}$ 又由**层化的粘合公理**唯一延拓出 $v : \\underline{X} = \\widetilde{h_{X}} \\to \\widetilde{R}$；把 $v \\circ u$ 与 $u \\circ v$ 分别与 $R \\to \\widetilde{R}$、$h_{X} \\to \\underline{X}$ 比较，由延拓的**唯一性**它们分别是 $\\mathrm{id}_{\\widetilde{R}}$ 与 $\\mathrm{id}_{\\underline{X}}$，故 $u$ 是同构。\n- **$2 \\implies 1$**：设 $u$ 是同构。由**传递性公理**，只要造出一个 $R' \\in J(X)$ 使每个 $f \\in R'(Y)$ 都有 $f^{-1}(R) \\in J(Y)$ 就够了。由 2 有 $h_{X} \\to \\underline{X} \\cong \\widetilde{R} = \\mathcal{H}(\\mathcal{H}(R))$，于是可造出 $R' \\in J(X)$ 与 $\\varphi : R' \\to \\mathcal{H}(R)$。对 $f \\in R'(Y)$，它在 $\\mathcal{H}(R)(Y)$ 里的像来自某个 $S \\to R$（$S \\in J(Y)$）—— 沿 $h_{Y} \\to R' \\to \\mathcal{H}(R)$ 走一圈可知 $S \\subseteq f^{-1}(R)$，于是 $f^{-1}(R) \\in J(Y)$。再用一次传递性，得 $R \\in J(X)$。\n- **$2 \\iff 3$**：由「层化是左 Kan 延拓」（$\\sharp T = \\varinjlim_{X \\in \\mathcal{C}/T} \\underline{X}$）取 $T = R$，得 $\\widetilde{R} = \\sharp R = \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$。于是「$\\widetilde{R} = \\underline{X}$」与「$\\underline{X} = \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$」是同一句话。\n- **$3 \\implies 4$**：余极限是余积的**商** —— 自然映射 $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\to \\varinjlim_{Y} \\underline{Y}$ 总是满态射；3 成立时右端就是 $\\underline{X}$。\n- **$4 \\iff 2$**：靠一个恒等式。先看**预层**层面：$\\coprod_{Y \\in \\mathcal{C}/R} h_{Y} \\to h_{X}$ 的**像恰好是 $R$** —— 它在 $Z$ 处的像是「能穿过某个 $Y \\to X \\in R$ 的那些 $Z \\to X$」，而这正是筛的定义。再对两边作用 $\\sharp$：**层化是正合的**（保有限极限），正合函子保像，于是\n\n$$\\widetilde{R} \\;=\\; \\sharp\\Bigl(\\operatorname{im}\\bigl(\\coprod_{Y \\in \\mathcal{C}/R} h_{Y} \\to h_{X}\\bigr)\\Bigr) \\;=\\; \\operatorname{im}\\Bigl(\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\to \\underline{X}\\Bigr).$$\n\n于是 4（那个映射是满态射）$\\iff$ 那个像是整个 $\\underline{X}$ $\\iff$ $\\widetilde{R} = \\underline{X}$ $\\iff$ 2。∎\n\n**一族态射的版本**（紧跟着的推论）：族 $(X_{i} \\to X)_{i \\in I}$ 生成覆盖筛 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。",
    "refs": [
     "Le Stum, Proposition 3.2.12",
@@ -20596,7 +20596,7 @@
    "id": "def.section-functor",
    "type": "definition",
    "label": "截面函子",
-   "title": "截面函子与全局截面（Sections Functor）",
+   "title": "截面函子与全局截面",
    "label_en": "sections functor",
    "title_en": "Sections Functor",
    "translations": {
@@ -20628,7 +20628,7 @@
     "全局截面",
     "函数空间"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$\\widetilde{\\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是\n\n$$\\Gamma(X, -) : \\widetilde{\\mathcal{C}} \\longrightarrow \\mathbf{Set}, \\qquad F \\longmapsto \\Gamma(X, F) := F(X).$$\n\n取 $X = \\mathbf{1}$（终对象）时叫**全局截面函子**，记 $\\Gamma(F) := F(\\mathbf{1})$。",
+   "statement": "设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$，$\\widetilde{\\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是\n\n$$\\Gamma(X, -) : \\widetilde{\\mathcal{C}} \\longrightarrow \\mathbf{Set}, \\qquad F \\longmapsto \\Gamma(X, F) := F(X).$$\n\n取 $X = \\mathbf{1}$（终对象）时叫**全局截面函子**，记 $\\Gamma(F) := F(\\mathbf{1})$。",
    "notes": "**它就是 $h_{X}$ 的 Hom 函子**：$\\Gamma(X, F) = \\operatorname{Hom}_{\\widetilde{\\mathcal{C}}}(h_{X}, F) = F(X)$（米田引理）—— 所以截面函子不是新东西，它就是「用可表示预层去测 $F$」。\n\n⭐ **保什么、不保什么**：\n\n\n\n- **保所有极限**：层范畴里的极限是在预层范畴里逐点算的，而逐点算的极限在 $X$ 处当然还是那个极限。\n- **一般不保余极限**：余极限要先在预层里算、再**层化**，而层化之后在 $X$ 处取的值可能严格大于余极限。**这就是「截面函子不正合」的全部内容。**\n\n\n\n**什么时候保余极限**：当 $X$ 在层范畴里**投射**时（$\\operatorname{Hom}(h_{X}, -) = \\Gamma(X,-)$ 保满态射），它保余极限。\n\n⭐ **凝聚态那一侧的例子**：$F \\in \\mathbf{FCHaus}$ 时 $\\mathbb{Z}\\cdot F$ 是投射的，于是 $\\Gamma(F, -)$ 保所有极限**与**所有余极限 —— 那条命题是这里的一个特例。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
@@ -20638,7 +20638,7 @@
    "id": "thm.snake-lemma",
    "type": "lemma",
    "label": "蛇引理",
-   "title": "蛇引理（Snake Lemma）",
+   "title": "蛇引理",
    "label_en": "snake lemma",
    "title_en": "snake lemma",
    "translations": {
@@ -20680,7 +20680,7 @@
    "id": "thm.five-lemma",
    "type": "lemma",
    "label": "五引理",
-   "title": "五引理（Five Lemma）",
+   "title": "五引理",
    "label_en": "five lemma",
    "title_en": "Five Lemma",
    "translations": {
@@ -20722,7 +20722,7 @@
    "id": "def.subcategory",
    "type": "definition",
    "label": "子范畴",
-   "title": "子范畴与满子范畴（Subcategory）",
+   "title": "子范畴与满子范畴",
    "label_en": "subcategory",
    "title_en": "Subcategory",
    "translations": {
@@ -20845,7 +20845,7 @@
    "id": "def.preserves-limit",
    "type": "definition",
    "label": "保极限的函子",
-   "title": "函子保极限（Preservation of Limits）",
+   "title": "函子保极限",
    "label_en": "preserves limits",
    "title_en": "preserves limits",
    "translations": {
@@ -20886,7 +20886,7 @@
    "id": "def.exact-functor",
    "type": "definition",
    "label": "正合函子",
-   "title": "左正合 / 右正合 / 正合函子（Exact Functor）",
+   "title": "左正合 / 右正合 / 正合函子",
    "label_en": "exact functor",
    "title_en": "exact functor",
    "translations": {
@@ -20951,7 +20951,7 @@
    "id": "def.additive-functor",
    "type": "definition",
    "label": "加法函子",
-   "title": "加法函子（Additive Functor）",
+   "title": "加法函子",
    "label_en": "additive functor",
    "title_en": "Additive Functor",
    "translations": {
@@ -20992,7 +20992,7 @@
    "id": "def.split-exact",
    "type": "definition",
    "label": "分裂短正合列",
-   "title": "分裂的短正合列（Split Exact Sequence）",
+   "title": "分裂的短正合列",
    "label_en": "split exact",
    "title_en": "split exact",
    "translations": {
@@ -21033,7 +21033,7 @@
    "id": "def.enough-projectives",
    "type": "definition",
    "label": "足够多投射对象",
-   "title": "足够多投射对象（Enough Projectives）",
+   "title": "足够多投射对象",
    "label_en": "enough projectives",
    "title_en": "enough projectives",
    "translations": {
@@ -21074,7 +21074,7 @@
    "id": "def.finitely-presented",
    "type": "definition",
    "label": "有限表现对象",
-   "title": "有限表现（紧）对象（Finitely Presented Object）",
+   "title": "有限表现（紧）对象",
    "label_en": "finitely presented",
    "title_en": "finitely presented",
    "translations": {
@@ -21162,7 +21162,7 @@
    "id": "def.locally-compact",
    "type": "definition",
    "label": "局部紧 Hausdorff 空间",
-   "title": "局部紧 Hausdorff 空间（Locally Compact Hausdorff）",
+   "title": "局部紧 Hausdorff 空间",
    "label_en": "locally compact",
    "title_en": "Locally Compact Hausdorff",
    "translations": {
@@ -21246,7 +21246,7 @@
    "id": "def.topologically-generating",
    "type": "definition",
    "label": "拓扑生成集",
-   "title": "拓扑生成集（Topologically Generating Set）",
+   "title": "拓扑生成集",
    "label_en": "topologically generating",
    "title_en": "Topologically Generating Set",
    "translations": {
@@ -21273,11 +21273,11 @@
    "layer": 15,
    "tags": [
     "范畴论",
-    "site",
+    "景",
     "生成集",
     "筛"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。",
+   "statement": "设 $\\mathcal{C}$ 是景。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。",
    "notes": "",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.1–3.2"
@@ -21286,8 +21286,8 @@
   {
    "id": "def.continuous-functor",
    "type": "definition",
-   "label": "连续函子（site 之间）",
-   "title": "连续函子（Continuous Functor between Sites）",
+   "label": "连续函子（景之间）",
+   "title": "连续函子",
    "label_en": "continuous functor",
    "title_en": "Continuous Functor between Sites",
    "translations": {
@@ -21314,12 +21314,12 @@
    "layer": 16,
    "tags": [
     "范畴论",
-    "site",
+    "景",
     "连续函子",
     "态射"
    ],
-   "statement": "设 $\\mathcal{C}, \\mathcal{C}'$ 是两个 site。函子\n\n$$f^{-1} := g : \\mathcal{C} \\longrightarrow \\mathcal{C}'$$\n叫**连续的**，如果沿 $g$ 的预复合把 $\\mathcal{C}'$ 上的层拉回成 $\\mathcal{C}$ 上的层：\n\n$$g^{*} : \\widetilde{\\mathcal{C}'} \\longrightarrow \\widetilde{\\mathcal{C}}, \\qquad F \\longmapsto F \\circ g, \\qquad \\text{落在层范畴里。}$$",
-   "notes": "**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。\n\n⭐ **它等价于**：$g$ 把 $\\mathcal{C}'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。\n\n**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。\n\n📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。",
+   "statement": "设 $\\mathcal{C}, \\mathcal{C}'$ 是两个景。函子\n\n$$f^{-1} := g : \\mathcal{C} \\longrightarrow \\mathcal{C}'$$\n叫**连续的**，如果沿 $g$ 的预复合把 $\\mathcal{C}'$ 上的层拉回成 $\\mathcal{C}$ 上的层：\n\n$$g^{*} : \\widetilde{\\mathcal{C}'} \\longrightarrow \\widetilde{\\mathcal{C}}, \\qquad F \\longmapsto F \\circ g, \\qquad \\text{落在层范畴里。}$$",
+   "notes": "**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是景态射的一切别扭之处。\n\n⭐ **它等价于**：$g$ 把 $\\mathcal{C}'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。\n\n**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。\n\n📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **景的态射**。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -21327,8 +21327,8 @@
   {
    "id": "def.morphism-of-sites",
    "type": "definition",
-   "label": "site 的态射",
-   "title": "site 的态射（Morphism of Sites）",
+   "label": "景的态射",
+   "title": "景的态射",
    "label_en": "morphism of sites",
    "title_en": "Morphism of Sites",
    "translations": {
@@ -21355,12 +21355,12 @@
    "layer": 17,
    "tags": [
     "范畴论",
-    "site",
+    "景",
     "态射",
     "左正合"
    ],
-   "statement": "**site 的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \\dashv f_{*}$。",
-   "notes": "⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。\n\n**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在 site 这一层先保有限极限。\n\n**几何直觉**：空间之间的连续映射给出 site 的态射；site 的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「site」换成「层范畴」。",
+   "statement": "**景的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \\dashv f_{*}$。",
+   "notes": "⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。\n\n**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在景这一层先保有限极限。\n\n**几何直觉**：空间之间的连续映射给出景的态射；景的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「景」换成「层范畴」。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ]
@@ -21369,7 +21369,7 @@
    "id": "def.cocontinuous-functor",
    "type": "definition",
    "label": "余连续函子",
-   "title": "余连续函子（Cocontinuous Functor）",
+   "title": "余连续函子",
    "label_en": "cocontinuous",
    "title_en": "Cocontinuous Functor",
    "translations": {
@@ -21396,11 +21396,11 @@
    "layer": 16,
    "tags": [
     "范畴论",
-    "site",
+    "景",
     "余连续",
     "层"
    ],
-   "statement": "设 $g : \\mathcal{C}' \\to \\mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。",
+   "statement": "设 $g : \\mathcal{C}' \\to \\mathcal{C}$ 是两个景之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。",
    "notes": "",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
@@ -21410,7 +21410,7 @@
    "id": "def.induced-topology",
    "type": "definition",
    "label": "诱导拓扑",
-   "title": "诱导拓扑（Induced Topology）",
+   "title": "诱导拓扑",
    "label_en": "induced topology",
    "title_en": "Induced Topology",
    "translations": {
@@ -21437,10 +21437,10 @@
    "layer": 17,
    "tags": [
     "范畴论",
-    "site",
+    "景",
     "诱导拓扑"
    ],
-   "statement": "设 $\\mathcal{C}'$ 是 site，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。",
+   "statement": "设 $\\mathcal{C}'$ 是景，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。",
    "notes": "",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
@@ -21542,7 +21542,7 @@
    "id": "def.strict-morphism",
    "type": "definition",
    "label": "严格态射",
-   "title": "严格态射（Strict Morphism）",
+   "title": "严格态射",
    "label_en": "strict morphism",
    "title_en": "Strict Morphism",
    "translations": {
@@ -22169,7 +22169,7 @@
    "id": "def.bicomplex",
    "type": "definition",
    "label": "双复形",
-   "title": "双复形（Bicomplex）",
+   "title": "双复形",
    "label_en": "bicomplex",
    "title_en": "Bicomplex",
    "translations": {
@@ -22265,7 +22265,7 @@
     "导出函子",
     "截面函子"
    ],
-   "statement": "设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是\n\n$$H^{n}(X, M^{\\bullet}) := R^{n}\\Gamma(X, M^{\\bullet}),$$\n\n其中 $\\Gamma(X, -)$ 是 $X$ 处的**截面函子**。",
+   "statement": "设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是\n\n$$H^{n}(X, M^{\\bullet}) := R^{n}\\Gamma(X, M^{\\bullet}),$$\n\n其中 $\\Gamma(X, -)$ 是 $X$ 处的**截面函子**。",
    "notes": "⭐ **一句话**：层上同调就是**截面函子的右导出函子**。$\\Gamma(X,-)$ 左正合但不右正合（层化会捣乱），$R^{n}\\Gamma$ 正是补上断口的那半个。\n\n**为什么需要它**：单看 $H^{0}(X, M) = \\Gamma(X, M) = M(X)$ 只有整体截面；$H^{1}$ 起才开始记录「层粘不上去」的信息（$H^{1}$ 分类层的主丛 / torsor）。",
    "refs": [
     "Le Stum, Definition 7.3.1"
@@ -22307,7 +22307,7 @@
     "预层",
     "覆盖"
    ],
-   "statement": "设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是\n\n$$\\check{H}^{n}(X, M^{\\bullet}) := \\Gamma\\bigl(X,\\ \\check{H}^{n}(M^{\\bullet})\\bigr).$$",
+   "statement": "设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是\n\n$$\\check{H}^{n}(X, M^{\\bullet}) := \\Gamma\\bigl(X,\\ \\check{H}^{n}(M^{\\bullet})\\bigr).$$",
    "notes": "**与层上同调的区别**：层上同调要**先取内射消解**（贵）；Čech 上同调**直接用覆盖算**（便宜），代价是它一般只是「逼近」。\n\n**为什么叫 Čech**：它照着 Čech 那套「用开覆盖的交叠来算整体信息」的直觉造出来的 —— 覆盖的每一层交叠给一个群，交叠的包含关系给微分，取同调就是 Čech 上同调。",
    "refs": [
     "Le Stum, Definition 7.3.5"
@@ -22382,7 +22382,7 @@
    "id": "def.acyclic-sheaf",
    "type": "definition",
    "label": "无环层",
-   "title": "无环层（Acyclic Sheaf）",
+   "title": "无环层",
    "label_en": "acyclic sheaf",
    "title_en": "Acyclic Sheaf",
    "translations": {
@@ -22412,8 +22412,8 @@
     "无环层",
     "层上同调"
    ],
-   "statement": "site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。",
-   "notes": "⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。",
+   "statement": "景 $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。",
+   "notes": "⚠️ 专门提醒：**这个定义依赖景 $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个景（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §7.3"
    ]
@@ -22607,8 +22607,8 @@
   {
    "id": "thm.qcqs-chaus-equiv",
    "type": "theorem",
-   "label": "qc 与 qcqs 的判定",
-   "title": "紧 Hausdorff 空间 $\\cong$ qcqs 凝聚态集",
+   "label": "拟紧 与 拟紧拟分离 的判定",
+   "title": "紧 Hausdorff 空间 $\\cong$ 拟紧拟分离 凝聚态集",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -22622,7 +22622,7 @@
     "紧 Hausdorff"
    ],
    "statement": "1. 凝聚态集 $X$ 是**拟紧**的 $\\iff$ 存在**自由**紧 Hausdorff 空间 $F$ 与满态射\n\n$$F \\twoheadrightarrow X.$$\n\n2. 函子 $S \\mapsto \\underline{S}$（把紧 Hausdorff 空间看成它表示的凝聚态集）给出范畴等价\n\n$$\\mathbf{CHaus}\\ \\simeq\\ \\{\\text{紧 Hausdorff 空间}\\} \\longrightarrow \\{\\text{拟紧且拟分离的凝聚态集}\\}.$$",
-   "notes": "**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（qcqs 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。\n\n**第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。\n\n**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。\n\n⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。\n\n**证明（两条都是一般拓扑斯上的定理在 $\\mathrm{Cond}$ 上的特例）。**\n- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。\n- **第 2 条**：qcqs 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 qcqs 的（qc 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎",
+   "notes": "**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（拟紧拟分离 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。\n\n**第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。\n\n**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。\n\n⭐ 一般拓扑斯上的对应结论是「拟紧拟分离 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。\n\n**证明（两条都是一般拓扑斯上的定理在 $\\mathrm{Cond}$ 上的特例）。**\n- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。\n- **第 2 条**：拟紧拟分离 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 拟紧拟分离 的（拟紧 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎",
    "refs": [
     "Le Stum, Theorem 4.2.8"
    ]
@@ -22685,8 +22685,8 @@
     "Ind-对象",
     "滤过余极限"
    ],
-   "statement": "凝聚态集 $X$ 是**拟分离**的 $\\iff$ 它可以写成\n\n$$X \\cong \\varinjlim_{i \\in I}\\ S_{i},$$\n\n其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \\hookrightarrow S_{j}$ 都是**含入**。\n\n**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 qcqs 的凝聚态集。",
-   "notes": "⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 qcqs 的对象。\n\n**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。\n\n⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。\n\n**证明。** 只需证正向（反向是定义）。\n- 任何凝聚态集 $X$ 都能写成 $X \\cong \\varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。\n- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「qcqs $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。\n- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。∎",
+   "statement": "凝聚态集 $X$ 是**拟分离**的 $\\iff$ 它可以写成\n\n$$X \\cong \\varinjlim_{i \\in I}\\ S_{i},$$\n\n其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \\hookrightarrow S_{j}$ 都是**含入**。\n\n**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 拟紧拟分离 的凝聚态集。",
+   "notes": "⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 拟紧拟分离 的对象。\n\n**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。\n\n⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。\n\n**证明。** 只需证正向（反向是定义）。\n- 任何凝聚态集 $X$ 都能写成 $X \\cong \\varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。\n- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「拟紧拟分离 $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。\n- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。∎",
    "refs": [
     "Le Stum, Lemma 4.2.10"
    ]
@@ -23832,7 +23832,7 @@
     "Giraud"
    ],
    "statement": "在 $\\mathrm{Cond}$ 中，每个等价关系 $R \\rightrightarrows X$（即 $R \\subseteq X \\times X$ 是一个「自反、对称、传递」的子对象）都是**有效的**：\n\n$$R \\cong X \\times_{Y} X,\\qquad Y := \\operatorname{coeq}\\bigl(R \\rightrightarrows X\\bigr).$$\n\n也就是说：等价关系的商存在，而且 $R$ 恰好是那个商的核对。",
-   "notes": "**「有效」是什么意思。** 给定一个等价关系，先取商 $Y = X/R$（这总能做），再把 $Y$ 沿商映射拉回 $X \\times X$。一般范畴里拉回来的东西可能**比 $R$ 大**（多粘了一些东西）。有效等价关系就是**恰好拉回 $R$ 自己**的那些。\n\n**为什么它重要**：只有有效等价关系才能「商了再拉回来还原」，也就是「取商」这个操作**不丢信息**。聚集到 $\\mathrm{Cond}$ 上，这条保证：把两个紧 Hausdorff 块按一个等价关系粘起来，得到的商对象在层论意义上「就是」那个等价关系本身。\n\n⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个 site 上的层范畴」那个定义。\n\n📌 与「Cond 是拓扑斯」那条合起来看：那条给**结论**，这三条给**理由**；有了理由，才知道 $\\mathrm{Cond}$ 的拓扑斯结构具体好在哪里（能做商、能做内部 Hom、能做层上同调）。\n\n**证明。** 给定 $R \\rightrightarrows X$。因为 $\\mathrm{Cond}$ 有余极限，商 $Y := \\operatorname{coeq}(R \\rightrightarrows X)$ 存在，且商映射 $q : X \\to Y$ 满（余等化子总是满）。由**上一条**，$q$ 是有效满：$q$ 是 $X \\times_{Y} X \\rightrightarrows X$ 的余等化子。\n现在比较 $R$ 与 $X\\times_{Y} X$：\n- 两个投影 $R \\rightrightarrows X$ 复合到 $Y$ 相同（余等化子的定义），故 $R \\subseteq X \\times_{Y} X$；\n- 反过来，$X \\times_{Y} X$ 是「被 $q$ 认同的点对」，而层论上「$q$ 在两个点上取同值」这件事可以在**覆盖上逐点验**：取覆盖 $(X_{i} \\to X)$，$X\\times_{Y}X$ 在每块上就是 $R$ 在每块上的值（用 $X$ 与 $R$ 的层条件 + 余等化子的泛性质），于是 $X \\times_{Y} X \\subseteq R$。\n两边互包，$R \\cong X \\times_{Y} X$ —— 这正是有效性，也正是 Giraud 判据里那一条。∎",
+   "notes": "**「有效」是什么意思。** 给定一个等价关系，先取商 $Y = X/R$（这总能做），再把 $Y$ 沿商映射拉回 $X \\times X$。一般范畴里拉回来的东西可能**比 $R$ 大**（多粘了一些东西）。有效等价关系就是**恰好拉回 $R$ 自己**的那些。\n\n**为什么它重要**：只有有效等价关系才能「商了再拉回来还原」，也就是「取商」这个操作**不丢信息**。聚集到 $\\mathrm{Cond}$ 上，这条保证：把两个紧 Hausdorff 块按一个等价关系粘起来，得到的商对象在层论意义上「就是」那个等价关系本身。\n\n⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个景上的层范畴」那个定义。\n\n📌 与「Cond 是拓扑斯」那条合起来看：那条给**结论**，这三条给**理由**；有了理由，才知道 $\\mathrm{Cond}$ 的拓扑斯结构具体好在哪里（能做商、能做内部 Hom、能做层上同调）。\n\n**证明。** 给定 $R \\rightrightarrows X$。因为 $\\mathrm{Cond}$ 有余极限，商 $Y := \\operatorname{coeq}(R \\rightrightarrows X)$ 存在，且商映射 $q : X \\to Y$ 满（余等化子总是满）。由**上一条**，$q$ 是有效满：$q$ 是 $X \\times_{Y} X \\rightrightarrows X$ 的余等化子。\n现在比较 $R$ 与 $X\\times_{Y} X$：\n- 两个投影 $R \\rightrightarrows X$ 复合到 $Y$ 相同（余等化子的定义），故 $R \\subseteq X \\times_{Y} X$；\n- 反过来，$X \\times_{Y} X$ 是「被 $q$ 认同的点对」，而层论上「$q$ 在两个点上取同值」这件事可以在**覆盖上逐点验**：取覆盖 $(X_{i} \\to X)$，$X\\times_{Y}X$ 在每块上就是 $R$ 在每块上的值（用 $X$ 与 $R$ 的层条件 + 余等化子的泛性质），于是 $X \\times_{Y} X \\subseteq R$。\n两边互包，$R \\cong X \\times_{Y} X$ —— 这正是有效性，也正是 Giraud 判据里那一条。∎",
    "refs": [
     "Le Stum, §4.1"
    ]
@@ -23937,7 +23937,7 @@
     "Grothendieck"
    ],
    "statement": "1. **Grothendieck 范畴自动满足 AB3\\***（有所有极限）—— 即 AB5 加上生成元，就免费得到 AB3\\*；\n2. 除零范畴 $\\{0\\}$ 外，**没有范畴能同时满足 AB5 与 AB5\\***；\n3. 拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 满足 **AB5 与 AB3\\***，但**一般并不满足 AB6 或 AB4\\***。",
-   "notes": "**第 1 条为什么值得单说**：AB3 与 AB3* 是**对偶**的两条（一个有所有余极限、一个有所有极限），一般不能互相推出。「有生成元 + 滤过余极限正合」这两条合起来却把对偶那一条也带出来了 —— 这是 Grothendieck 范畴理论里最不平凡的一条「免费午餐」。\n\n**第 2 条的意思**：AB5（滤过余极限正合）与 AB5*（滤过极限正合）是**互相排斥**的，只能一边倒。零范畴是唯一例外（它什么都没有，两边都满足）。\n\n**第 3 条是「为什么凝聚态数学要用 CondAb 而不是随便一个拓扑斯」的答案**：$\\mathbf{Ab}(\\mathcal{T})$ 只有 AB5 与 AB3*，做一般的同调代数够用；但 $\\mathrm{CondAb}$ 额外满足 **AB6 与 AB4\\*** —— 即「滤过余极限与积交换」「积正合」。有了这两条才能像在 $\\mathbf{Ab}$ 里一样自由地交换极限与余极限。\n\n**三条各自的理由。**\n- **第 1 条**：用 **Freyd 的特殊伴随函子定理**。一个**余完备**范畴若有**小的余生成集**且**余良幂**（每个对象只有一个小集合那么多的商），则它**完备**。Grothendieck 范畴 $\\mathcal{A}$：余完备 ✓（AB5）；余良幂与小的余生成集都来自**生成元** $U$ —— 一个商由它「在 $U$ 上的点」决定，于是 $U$ 的商构成一个集合，而它们的积就是余生成元。SAFT 于是给出所有极限存在 ✓。\n- **第 2 条**：这是 **Roos** 的经典结果。思路：AB5 让 $\\mathbb{N}$ 形状的**余**极限行为良好、AB5\\* 让 $\\mathbb{N}$ 形状的**逆**极限行为良好；两者同时成立时会逼出一条 Milnor 型的正合列（$\\prod$ 与 $\\bigoplus$ 的比较），在阿贝尔范畴里只能对零对象成立 ✓。\n- **第 3 条**：前半 —— $\\mathbf{Ab}(\\mathcal{T})$ 是拓扑斯上的层范畴，是 Grothendieck 范畴，故 AB5 + AB3\\*（第 1 条）✓；后半 —— 「AB6 与 AB4\\* 一般不成立」在一般拓扑斯上有反例（阿贝尔层的积一般不正合、滤过余极限一般不与积交换），这两条**不能白拿** ✓。∎\n⭐ 所以 $\\mathrm{CondAb}$ 的 AB6 / AB4\\* 是**额外**的收获，来自 $\\mathbf{CHaus}$ 这个 site 的具体形状（逐项归约到 $\\mathbf{Ab}$），而不是任何拓扑斯都有的。",
+   "notes": "**第 1 条为什么值得单说**：AB3 与 AB3* 是**对偶**的两条（一个有所有余极限、一个有所有极限），一般不能互相推出。「有生成元 + 滤过余极限正合」这两条合起来却把对偶那一条也带出来了 —— 这是 Grothendieck 范畴理论里最不平凡的一条「免费午餐」。\n\n**第 2 条的意思**：AB5（滤过余极限正合）与 AB5*（滤过极限正合）是**互相排斥**的，只能一边倒。零范畴是唯一例外（它什么都没有，两边都满足）。\n\n**第 3 条是「为什么凝聚态数学要用 CondAb 而不是随便一个拓扑斯」的答案**：$\\mathbf{Ab}(\\mathcal{T})$ 只有 AB5 与 AB3*，做一般的同调代数够用；但 $\\mathrm{CondAb}$ 额外满足 **AB6 与 AB4\\*** —— 即「滤过余极限与积交换」「积正合」。有了这两条才能像在 $\\mathbf{Ab}$ 里一样自由地交换极限与余极限。\n\n**三条各自的理由。**\n- **第 1 条**：用 **Freyd 的特殊伴随函子定理**。一个**余完备**范畴若有**小的余生成集**且**余良幂**（每个对象只有一个小集合那么多的商），则它**完备**。Grothendieck 范畴 $\\mathcal{A}$：余完备 ✓（AB5）；余良幂与小的余生成集都来自**生成元** $U$ —— 一个商由它「在 $U$ 上的点」决定，于是 $U$ 的商构成一个集合，而它们的积就是余生成元。SAFT 于是给出所有极限存在 ✓。\n- **第 2 条**：这是 **Roos** 的经典结果。思路：AB5 让 $\\mathbb{N}$ 形状的**余**极限行为良好、AB5\\* 让 $\\mathbb{N}$ 形状的**逆**极限行为良好；两者同时成立时会逼出一条 Milnor 型的正合列（$\\prod$ 与 $\\bigoplus$ 的比较），在阿贝尔范畴里只能对零对象成立 ✓。\n- **第 3 条**：前半 —— $\\mathbf{Ab}(\\mathcal{T})$ 是拓扑斯上的层范畴，是 Grothendieck 范畴，故 AB5 + AB3\\*（第 1 条）✓；后半 —— 「AB6 与 AB4\\* 一般不成立」在一般拓扑斯上有反例（阿贝尔层的积一般不正合、滤过余极限一般不与积交换），这两条**不能白拿** ✓。∎\n⭐ 所以 $\\mathrm{CondAb}$ 的 AB6 / AB4\\* 是**额外**的收获，来自 $\\mathbf{CHaus}$ 这个景的具体形状（逐项归约到 $\\mathbf{Ab}$），而不是任何拓扑斯都有的。",
    "refs": [
     "Le Stum, Proposition 5.2.7",
     "Freyd, Abelian Categories",
@@ -23984,7 +23984,7 @@
     "超覆盖",
     "单纯对象"
    ],
-   "statement": "设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层，$X \\in \\mathcal{C}$。取 $M$ 的一个**超覆盖**（即一个复形 $F_{\\bullet} \\to M$，其中每个 $F_{n}$ 是若干可表层的直和，且增广后处处正合）。则 $M$ 的上同调等于「逐层取截面」得到的**单纯阿贝尔群**的同伦群：\n\n$$H^{n}(X,\\ M) \\cong \\pi^{n}\\bigl(\\Gamma(X,\\ F_{\\bullet})\\bigr).$$",
+   "statement": "设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层，$X \\in \\mathcal{C}$。取 $M$ 的一个**超覆盖**（即一个复形 $F_{\\bullet} \\to M$，其中每个 $F_{n}$ 是若干可表层的直和，且增广后处处正合）。则 $M$ 的上同调等于「逐层取截面」得到的**单纯阿贝尔群**的同伦群：\n\n$$H^{n}(X,\\ M) \\cong \\pi^{n}\\bigl(\\Gamma(X,\\ F_{\\bullet})\\bigr).$$",
    "notes": "**在说什么。** 层上同调的定义是「取内射消解、取截面、取上同调」，而内射消解**无法计算**（内射对象太大）。这条给出一个**能算的替代品**：把内射消解换成「自由 / 可表对象的消解」，逐层取截面之后得到一个单纯阿贝尔群（或链复形），它的同伦群就是 $H^{n}$。\n\n**为什么可行**：$F_{n}$ 由可表对象组成时，截面 $\\Gamma(X, F_{n})$ 是可以直接写下来的（就是 $F_{n}$ 在该对象上的值）。而两个消解之间的映射给出**链同伦**，所以算出来的同伦群与消解的选取无关。\n\n⭐ **这就是 Godement 分解的现代形式，也是 $\\infty$-范畴方法的入口**：在 $\\infty$-范畴的语言里，「超覆盖」被换成「$X$ 的单纯分解」，而上同调就是那个单纯对象的映射空间的同伦群。整个导出代数几何的层上同调计算都走这条路。\n\n**证明。** 分两步。\n- **超覆盖的每一项在 $\\Gamma(X, -)$ 下零调。** $F_{n}$ 是可表层的直和，而 $\\Gamma(X, h_{U}) = \\operatorname{Hom}(X, U)$ 直接可算；「有截面 $\\implies$ 高阶为零」那套（$\\mathbb{Z}\\cdot h_{X}$ 是投射对象，投射 $\\implies$ 无环）保证 $H^{p}(\\Gamma(X, F_{n})) = 0$（$p > 0$）。\n- **于是 $F_{\\bullet} \\to M$ 就是一个「由 $\\Gamma(X, -)$-零调对象组成的消解」。** 把 Leray 零调性搬过来：$R\\Gamma(X, M)$ 可以直接用 $\\Gamma(X, F_{\\bullet})$ 这个复形算，即 $H^{n}(X, M) = H^{n}\\bigl(\\Gamma(X, F_{\\bullet})\\bigr)$。\n最后把链复形读成单纯阿贝尔群（Dold–Kan：单纯阿贝尔群的同伦群就是归一化链复形的上同调），就得到 $H^{n}(X, M) \\cong \\pi^{n}(\\Gamma(X, F_{\\bullet}))$。两个超覆盖之间的比较给出链同伦（投射性 / 已有的 Ext 论证），所以右边与超覆盖的选取无关。∎\n\n📌 **三个输入**：单纯对象、单纯形范畴的定义（已有），以及 Čech 复形（已有的「便宜算法」）。这条把它们接成一台计算上同调的机器。",
    "refs": [
     "Le Stum, §7.3（配合 Lemma 7.3.2）"
@@ -24035,7 +24035,7 @@
    "id": "def.boolean-ring",
    "type": "definition",
    "label": "布尔环",
-   "title": "布尔环（Boolean Ring）",
+   "title": "布尔环",
    "label_en": "Boolean ring",
    "title_en": "Boolean Ring",
    "translations": {
@@ -24144,7 +24144,7 @@
    "id": "def.kernel-cokernel",
    "type": "definition",
    "label": "核与余核",
-   "title": "核 / 余核与左正合、右正合列（Kernel, Cokernel）",
+   "title": "核 / 余核与左正合、右正合列",
    "region": "category",
    "regions": [
     "category"
@@ -24849,7 +24849,7 @@
     "极限",
     "拓扑斯"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site，$\\Delta : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\\underline{(-)}$ 表示对应的**常层**。则：\n\n1. 若 $E = \\varprojlim_{i} E_{i}$ 是集合里的极限，则 $\\Delta E = \\varprojlim_{i}\\Delta E_{i}$；\n2. 同样地 $\\underline{E} = \\varprojlim_{i}\\underline{E_{i}}$ —— 常层函子也保极限。",
+   "statement": "设 $\\mathcal{C}$ 是景，$\\Delta : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\\underline{(-)}$ 表示对应的**常层**。则：\n\n1. 若 $E = \\varprojlim_{i} E_{i}$ 是集合里的极限，则 $\\Delta E = \\varprojlim_{i}\\Delta E_{i}$；\n2. 同样地 $\\underline{E} = \\varprojlim_{i}\\underline{E_{i}}$ —— 常层函子也保极限。",
    "notes": "**证明。**\n**1.** 预层范畴里的极限与余极限是**逐点计算**的：$(\\varprojlim \\Delta E_{i})(X) = \\varprojlim (\\Delta E_{i})(X) = \\varprojlim E_{i} = E = (\\Delta E)(X)$，且这在 $X$ 上自然（转移映射都是恒等）✓。于是 $\\Delta E = \\varprojlim \\Delta E_{i}$ ✓。\n**2.** 常层函子可以写成 $\\underline{E} = a(\\Delta E)$（$a$ 是层化）。而 $\\Delta$ 还有一条更本质的刻画：**它有一个左伴随**，就是整体截面函子\n$$\\Gamma : \\mathcal{T} \\longrightarrow \\mathbf{Set}, \\qquad \\Gamma(F) = \\operatorname{Hom}(1, F) = F(*)$$\n（$1$ 是终对象）✓ —— 因为 $\\operatorname{Hom}_{\\mathcal{T}}(1, \\Delta E) = E$ 给出自然双射 $\\Gamma \\dashv \\Delta$ ✓。**右伴随保极限**，所以 $\\Delta$ 保一切极限；再由「层范畴中的极限与预层范畴中的极限一致」（层范畴中的极限逐点算，层化在极限上是恒等）得 $\\underline{E} = \\varprojlim\\underline{E_{i}}$ ✓。∎\n\n⭐ 一句话：**「常」这个操作是右伴随，所以它把集合里的极限原样搬到层里。** 后面把 $E = \\varinjlim E_{i}$、$E \\times S$ 这类构造搬进凝聚态世界时，用的就是这条。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.2"
@@ -25216,7 +25216,7 @@
     "米田嵌入",
     "左正合"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：\n\n$$X^{\\sharp} \\;:=\\; h_{X}^{\\#}, \\qquad h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X).$$\n\n它由一条**万有性质**刻画：对任何层 $F$，\n\n$$\\operatorname{Hom}\\bigl(X^{\\sharp},\\ F\\bigr) \\;\\cong\\; F(X).$$",
+   "statement": "设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：\n\n$$X^{\\sharp} \\;:=\\; h_{X}^{\\#}, \\qquad h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X).$$\n\n它由一条**万有性质**刻画：对任何层 $F$，\n\n$$\\operatorname{Hom}\\bigl(X^{\\sharp},\\ F\\bigr) \\;\\cong\\; F(X).$$",
    "notes": "**这个同构怎么来的。** 层化 $(-)^{\\#}$ 与含入 $\\widehat{\\mathcal{C}}^{\\#} \\hookrightarrow \\widehat{\\mathcal{C}}$ 互为伴随，所以\n\n$$\\operatorname{Hom}\\bigl(h_{X}^{\\#},\\ F\\bigr) \\cong \\operatorname{Hom}(h_{X}, F) \\cong F(X),$$\n\n最后一步是米田引理 ✓。\n\n⭐ **用处**：它给出「把 $\\mathcal{C}$ 的对象当成层看」的规范做法 $X \\mapsto X^{\\sharp}$。当拓扑**次标准**时 $h_{X}$ 本来就是层，于是 $X^{\\sharp} = h_{X}$，米田嵌入直接经过层范畴 ✓（这也是「次标准」最常用的等价说法）。\n\n⚠️ 这个函子**左正合**（米田嵌入保极限、层化也左正合），但一般**不忠实**，也不保余极限与无穷极限：层化会把「同一个对象的不同预层描述」粘起来。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Definition 3.2.10"
@@ -25241,7 +25241,7 @@
     "右伴随"
    ],
    "statement": "设 $g : \\mathcal{C} \\to \\mathcal{C}'$ 是任意函子。则预复合\n\n$$\\hat{g}^{-1} : \\widehat{\\mathcal{C}'} \\longrightarrow \\widehat{\\mathcal{C}}, \\qquad T' \\longmapsto T' \\circ g^{\\mathrm{op}}$$\n\n**既有一个左伴随 $\\hat{g}_{!}$，又有一个右伴随 $\\hat{g}_{*}$**。特别地 $\\hat{g}^{-1}$ 正合，于是\n\n$$\\hat{g} : \\widehat{\\mathcal{C}} \\longrightarrow \\widehat{\\mathcal{C}'}, \\qquad \\hat{g}^{*} := \\hat{g}^{-1} \\ \\dashv\\ \\hat{g}_{*}$$\n\n是拓扑斯的态射。也就是说，**任意函子都诱导预层范畴之间的态射**，方向与 $g$ 相反。",
-   "notes": "⭐ 一句话读法：$g$ 只是范畴之间的一条箭头，可是一旦取预层范畴，它自动长出**两边**的伴随 —— 左边 $\\hat{g}_{!}$ 与右边 $\\hat{g}_{*}$。于是「函子」到了预层这一层就升级成「拓扑斯态射」。\n\n⚠️ 方向容易记反：$g : \\mathcal{C} \\to \\mathcal{C}'$ 而 $\\hat{g} : \\widehat{\\mathcal{C}} \\to \\widehat{\\mathcal{C}'}$，**推前** $\\hat{g}_{*}$ 沿 $g$ 的方向走、**拉回** $\\hat{g}^{-1}$ 反着走。\n\n📌 这条是「拓扑空间 / site 之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\\mathbf{CHaus}$ 上的层与更小 site 上的层对齐。",
+   "notes": "⭐ 一句话读法：$g$ 只是范畴之间的一条箭头，可是一旦取预层范畴，它自动长出**两边**的伴随 —— 左边 $\\hat{g}_{!}$ 与右边 $\\hat{g}_{*}$。于是「函子」到了预层这一层就升级成「拓扑斯态射」。\n\n⚠️ 方向容易记反：$g : \\mathcal{C} \\to \\mathcal{C}'$ 而 $\\hat{g} : \\widehat{\\mathcal{C}} \\to \\widehat{\\mathcal{C}'}$，**推前** $\\hat{g}_{*}$ 沿 $g$ 的方向走、**拉回** $\\hat{g}^{-1}$ 反着走。\n\n📌 这条是「拓扑空间 / 景之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\\mathbf{CHaus}$ 上的层与更小景上的层对齐。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Theorem 3.4.2, Corollary 3.4.3"
    ]
@@ -25361,7 +25361,7 @@
     "谱序列",
     "滤过余极限"
    ],
-   "statement": "设 $\\mathcal{C}$ 是有纤维积的 site、$X \\in \\mathcal{C}$、$M$ 是 $\\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列\n\n$$E^{p,q}_{2} \\;=\\; \\check{H}^{p}\\bigl(X,\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X,\\ M),$$\n\n其中 $H^{q}(M)$ 记预层 $U \\mapsto H^{q}(U, M)$，而 $\\check{H}^{p}(X, -)$ 是沿覆盖取滤过余极限的 Čech 上同调。",
+   "statement": "设 $\\mathcal{C}$ 是有纤维积的景、$X \\in \\mathcal{C}$、$M$ 是 $\\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列\n\n$$E^{p,q}_{2} \\;=\\; \\check{H}^{p}\\bigl(X,\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X,\\ M),$$\n\n其中 $H^{q}(M)$ 记预层 $U \\mapsto H^{q}(U, M)$，而 $\\check{H}^{p}(X, -)$ 是沿覆盖取滤过余极限的 Čech 上同调。",
    "notes": "⭐ **用处**：这是「用 Čech 上同调算层上同调」的一般依据。要让两者直接**相等**（而不只是被一条谱序列联系），只要再要求高次 Čech 群在 $E_{2}$ 页退化 —— 这正是「无环 $\\iff$ Čech 上同调为零」的证明里用的那一步 ✓。\n\n⚠️ 与 Cartan–Leray 那条谱序列的区别：那条**固定一个覆盖** $\\mathfrak{X}$；这条把所有覆盖都取了余极限，所以左端可以直接写成 $\\check{H}^{p}(X, \\cdot)$。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Corollary 7.3.8"
@@ -25648,7 +25648,7 @@
     "阿贝尔群对象",
     "范畴等价"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site。则「site 上的**阿贝尔层**」与「拓扑斯 $\\widetilde{\\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：\n\n$$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\;\\simeq\\; \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr).$$",
+   "statement": "设 $\\mathcal{C}$ 是景。则「景上的**阿贝尔层**」与「拓扑斯 $\\widetilde{\\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：\n\n$$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\;\\simeq\\; \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr).$$",
    "notes": "**证明的思路。** 两个方向都是「**逐点取值**」：\n\n- $\\to$：拓扑斯里的阿贝尔群对象 $M$ 在 $X \\in \\mathcal{C}$ 上取值，用的是**整体截面函子保积**（群的运算、$0$、逆元逐点读出来）✓，于是 $X \\mapsto M(X)$ 给出一个阿贝尔预层，而且它是层 ✓；\n\n- $\\leftarrow$：反过来给阿贝尔层 $M$，在每个 $X$ 处的取值自动带阿贝尔群结构，而层范畴里的群结构由这些值逐点决定（预层范畴里的群对象就是逐点的群）✓。\n\n两个方向互逆，因为都是「取遍每个 $X$ 的值」✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 5.15"
@@ -25905,7 +25905,7 @@
     "上链",
     "纤维积"
    ],
-   "statement": "设 site $\\mathcal{C}$ 有纤维积，$\\mathfrak{X} = (X_{i} \\to X)_{i \\in I}$ 是一族态射，$M$ 是阿贝尔层。则\n\n$$\\check{C}^{n}(\\mathfrak{X}, M) \\;=\\; \\prod_{i_{0}, \\ldots, i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr).$$",
+   "statement": "设景 $\\mathcal{C}$ 有纤维积，$\\mathfrak{X} = (X_{i} \\to X)_{i \\in I}$ 是一族态射，$M$ 是阿贝尔层。则\n\n$$\\check{C}^{n}(\\mathfrak{X}, M) \\;=\\; \\prod_{i_{0}, \\ldots, i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr).$$",
    "notes": "**证明。** 按定义 $\\check{C}^{\\bullet}(\\mathfrak{X}, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$ ✓，而 Čech 脉的 $n$ 次项是 $X_{n} = \\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}$ ✓。自由对象把余积换成直和、把取值写成 Hom：\n\n$$\\operatorname{Hom}_{\\mathbb{Z}}\\Bigl(\\bigoplus_{i_{0},\\ldots,i_{n}} \\mathbb{Z}\\cdot\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr),\\ M\\Bigr) = \\prod_{i_{0},\\ldots,i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr) ✓$$\n\n∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.40"
@@ -25928,7 +25928,7 @@
     "关联层",
     "内射消解"
    ],
-   "statement": "设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层、$n \\ne 0$。则预层\n\n$$U \\longmapsto H^{n}(U,\\ M)$$\n\n的**关联层为零**：它的层化是零层。",
+   "statement": "设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层、$n \\ne 0$。则预层\n\n$$U \\longmapsto H^{n}(U,\\ M)$$\n\n的**关联层为零**：它的层化是零层。",
    "notes": "**证明。** 取 $M$ 的一条内射消解 $I^{\\bullet}$ ✓，则 $H^{n}(U, M) = H^{n}\\Gamma(U, I^{\\bullet})$ ✓。给一个上同调类 $s$，用它在某条覆盖的每一块上的代表上链 $c$：因为 $I^{\\bullet}$ 作为复形在每个点处正合，$c$ 在局部是某个上链的**边界** ✓ —— 于是 $s$ 限制到覆盖的每一块上都是 $0$ ✓，也就是说它在关联层里的芽为 $0$ ✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.43"
@@ -25951,7 +25951,7 @@
     "上同调预层",
     "层化"
    ],
-   "statement": "设 $M$ 是 site 上的阿贝尔层、$n \\ne 0$，并把 $H^{n}(M)$ 记作预层 $U \\mapsto H^{n}(U, M)$。则\n\n$$\\check{H}^{p}\\bigl(H^{n}(M)\\bigr) = 0 \\qquad (\\forall p \\ge 0).$$",
+   "statement": "设 $M$ 是景上的阿贝尔层、$n \\ne 0$，并把 $H^{n}(M)$ 记作预层 $U \\mapsto H^{n}(U, M)$。则\n\n$$\\check{H}^{p}\\bigl(H^{n}(M)\\bigr) = 0 \\qquad (\\forall p \\ge 0).$$",
    "notes": "**证明。** 由「高次上同调预层的关联层为零」，$H^{n}(M)$ 层化之后是零层 ✓；而 Čech 上同调只依赖预层的**层化**（Čech 函子分解成两趟 $(-)^{+}$）✓ —— 零层上当然没有 Čech 上同调 ✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.45"
@@ -25998,7 +25998,7 @@
     "谱序列",
     "五项正合列"
    ],
-   "statement": "设 $\\mathcal{C}$ 是有纤维积的 site、$X \\in \\mathcal{C}$、$M$ 是阿贝尔层。则\n\n$$\\check{H}^{1}(X,\\ M) \\;\\cong\\; H^{1}(X,\\ M).$$",
+   "statement": "设 $\\mathcal{C}$ 是有纤维积的景、$X \\in \\mathcal{C}$、$M$ 是阿贝尔层。则\n\n$$\\check{H}^{1}(X,\\ M) \\;\\cong\\; H^{1}(X,\\ M).$$",
    "notes": "**证明。** 用 Čech 到上同调的谱序列\n$$E^{p,q}_{2} = \\check{H}^{p}\\bigl(X,\\ H^{q}(M)\\bigr) \\implies H^{p+q}(X, M) ✓$$\n由「高次上同调预层没有 Čech 上同调」，$q \\ne 0$ 那一整块都为零 ✓，特别地 $E^{0,1}_{2} = 0$。\n再由第一象限谱序列的五项正合列\n$$0 \\to E^{1,0}_{2} \\to H^{1} \\to E^{0,1}_{2} \\to \\cdots$$\n最后一项为零，故 $E^{1,0}_{2} \\cong H^{1}$ ✓；而 $E^{1,0}_{2} = \\check{H}^{1}(X, H^{0}(M)) = \\check{H}^{1}(X, M)$ ✓（$H^{0}(M) = M$）。∎\n\n⭐ 于是**一次** Čech 上同调永远等于一次层上同调，高次才会差（差多少由谱序列量出来）。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.48"
@@ -26021,7 +26021,7 @@
     "Čech 上同调",
     "层上同调"
    ],
-   "statement": "设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：\n\n1. $M$ **无环**：$H^{n}(M) = 0$（$n \\ne 0$）；\n2. 对每个 $X \\in \\mathcal{C}$：$H^{n}(X, M) = 0$（$n \\ne 0$）；\n3. 对每个覆盖族 $\\mathfrak{X}$：$\\check{H}^{n}(\\mathfrak{X}, M) = 0$（$n \\ne 0$）；\n4. 对每个 $X \\in \\mathcal{C}$：$\\check{H}^{n}(X, M) = 0$（$n \\ne 0$）。",
+   "statement": "设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：\n\n1. $M$ **无环**：$H^{n}(M) = 0$（$n \\ne 0$）；\n2. 对每个 $X \\in \\mathcal{C}$：$H^{n}(X, M) = 0$（$n \\ne 0$）；\n3. 对每个覆盖族 $\\mathfrak{X}$：$\\check{H}^{n}(\\mathfrak{X}, M) = 0$（$n \\ne 0$）；\n4. 对每个 $X \\in \\mathcal{C}$：$\\check{H}^{n}(X, M) = 0$（$n \\ne 0$）。",
    "notes": "**证明。**\n**(1) $\\iff$ (2)**：层上同调就是「高次上同调预层」的整体截面，$H^{n}(X, M) = \\Gamma\\bigl(X, H^{n}(M)\\bigr)$ ✓，两边同时为零 ✓。\n**(1) $\\implies$ (3)**：对固定覆盖用 Cartan–Leray 谱序列 $E^{p,q}_{2} = \\check{H}^{p}(\\mathfrak{X}, H^{q}(M)) \\implies H^{p+q}(X,M)$ ✓；(1) 让 $q \\ne 0$ 的行全为零、$H^{p+q}$ 也全为零（$p+q \\ne 0$），谱序列退化给出 $\\check{H}^{n}(\\mathfrak{X}, M) = 0$ ✓。\n**(3) $\\implies$ (4)**：$\\check{H}^{n}(X, -)$ 是沿覆盖取的滤过余极限 ✓，每个覆盖上都为零故为零 ✓。\n**(4) $\\implies$ (1)**：把同一句话反过来 —— 用 Čech 到上同调的谱序列逐次消去，$E^{p,q}_{2}$ 的右端全为零，故全为零 ✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.49"
@@ -26642,7 +26642,7 @@
    "id": "prop.site-covering-families-pretopology",
    "type": "proposition",
    "label": "覆盖族构成预拓扑",
-   "title": "命题：site 里所有生成覆盖筛的族构成预拓扑",
+   "title": "命题：景里所有生成覆盖筛的族构成预拓扑",
    "region": "category",
    "regions": [
     "category"
@@ -26651,12 +26651,12 @@
    "layer": 14,
    "tags": [
     "命题",
-    "site",
+    "景",
     "预拓扑",
     "覆盖族"
    ],
-   "statement": "设 $\\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \\to X)_{i \\in I}$ 构成 $\\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。\n\n⚠️ 注意：生成覆盖筛的族**未必**是**给定**预拓扑下的覆盖族 —— 「极大」说的是「对给定的拓扑」，不是「对给定的预拓扑」。",
-   "notes": "**证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎\n\n⭐ 读法：**site 与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。",
+   "statement": "设 $\\mathcal{C}$ 是有纤维积的景。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \\to X)_{i \\in I}$ 构成 $\\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。\n\n⚠️ 注意：生成覆盖筛的族**未必**是**给定**预拓扑下的覆盖族 —— 「极大」说的是「对给定的拓扑」，不是「对给定的预拓扑」。",
+   "notes": "**证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎\n\n⭐ 读法：**景与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.14"
    ]
@@ -26678,7 +26678,7 @@
     "像",
     "正合"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site、$u : T \\to T'$ 是预层态射。则\n\n$$\\operatorname{im}\\bigl(T^{\\#} \\to T'^{\\#}\\bigr) \\;=\\; \\Bigl(\\operatorname{im}\\bigl(T \\to T'\\bigr)\\Bigr)^{\\#}.$$",
+   "statement": "设 $\\mathcal{C}$ 是景、$u : T \\to T'$ 是预层态射。则\n\n$$\\operatorname{im}\\bigl(T^{\\#} \\to T'^{\\#}\\bigr) \\;=\\; \\Bigl(\\operatorname{im}\\bigl(T \\to T'\\bigr)\\Bigr)^{\\#}.$$",
    "notes": "**证明。** 层化**正合**（既保有限极限又保余极限）✓，所以它把预层里的像（$\\ker(\\operatorname{coker})$ 形式）逐项送过去；层范畴里的像同样由 $\\operatorname{im} = \\ker(\\operatorname{coker})$ 给出 ✓，两条路走到同一处 ✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.20"
@@ -26702,7 +26702,7 @@
     "余极限",
     "关联层"
    ],
-   "statement": "设 $T$ 是 site $\\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限\n\n$$T^{\\#} \\;\\cong\\; \\varinjlim_{X \\in \\mathcal{C}/T}\\ X^{\\sharp},$$\n\n这里每个 $X$ 都看成它的关联层 $X^{\\sharp} = h_{X}^{\\#}$。",
+   "statement": "设 $T$ 是景 $\\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限\n\n$$T^{\\#} \\;\\cong\\; \\varinjlim_{X \\in \\mathcal{C}/T}\\ X^{\\sharp},$$\n\n这里每个 $X$ 都看成它的关联层 $X^{\\sharp} = h_{X}^{\\#}$。",
    "notes": "**证明。** $T = \\varinjlim_{(X \\to T)} h_{X}$ ✓（元素范畴给出的余极限），层化保余极限 ✓，而 $h_{X}^{\\#} = X^{\\sharp}$ ✓，于是 $T^{\\#} = \\varinjlim X^{\\sharp}$ ✓。∎\n\n⭐ 读法：**层化就是「把 $T$ 按它的元素拆开、逐个关联层化再拼回去」**。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.26"
@@ -26725,7 +26725,7 @@
     "伴随",
     "Hom"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site、$T$ 是预层、$F$ 是**层**。则\n\n$$\\operatorname{Hom}_{\\widetilde{\\mathcal{C}}}\\bigl(T^{\\#},\\ F\\bigr) \\;=\\; \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T,\\ F\\bigr).$$",
+   "statement": "设 $\\mathcal{C}$ 是景、$T$ 是预层、$F$ 是**层**。则\n\n$$\\operatorname{Hom}_{\\widetilde{\\mathcal{C}}}\\bigl(T^{\\#},\\ F\\bigr) \\;=\\; \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T,\\ F\\bigr).$$",
    "notes": "**证明。** 层化 $(-)^{\\#}$ 与含入互为一对伴随 ✓，于是\n\n$$\\operatorname{Hom}_{\\widetilde{\\mathcal{C}}}\\bigl(T^{\\#}, F\\bigr) = \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T,\\ F\\bigr) ✓$$\n\n（右边把 $F$ 看成预层）✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.45"
@@ -27026,7 +27026,7 @@
     "伴随",
     "终对象"
    ],
-   "statement": "设 $E$ 是集合、$F$ 是 site $\\mathcal{C}$ 上的层。则\n\n$$\\operatorname{Hom}\\bigl(\\widetilde{E}_{\\mathcal{C}},\\ F\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Set}}\\bigl(E,\\ \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)\\bigr) \\;\\cong\\; \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)^{E},$$\n\n其中 $\\mathbf{1}_{\\mathcal{C}}$ 是终对象。",
+   "statement": "设 $E$ 是集合、$F$ 是景 $\\mathcal{C}$ 上的层。则\n\n$$\\operatorname{Hom}\\bigl(\\widetilde{E}_{\\mathcal{C}},\\ F\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Set}}\\bigl(E,\\ \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)\\bigr) \\;\\cong\\; \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)^{E},$$\n\n其中 $\\mathbf{1}_{\\mathcal{C}}$ 是终对象。",
    "notes": "**证明。** 常层是「$E$ 份终对象」的余积的层化 ✓，而层化与含入互为伴随、余积的 Hom 是积 ✓，于是\n\n$$\\operatorname{Hom}\\bigl(\\widetilde{E},\\ F\\bigr) \\cong \\operatorname{Hom}\\Bigl(\\coprod_{E} \\mathbf{1}_{\\mathcal{C}},\\ F\\Bigr) \\cong \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)^{E} ✓$$\n\n左端再换成 $\\operatorname{Hom}_{\\mathbf{Set}}(E, \\operatorname{Hom}(\\mathbf{1}, F))$ 即可 ✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.22"
@@ -27142,7 +27142,7 @@
     "余连续",
     "拓扑斯态射"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site、$T \\in \\widehat{\\mathcal{C}}$。则\n\n1. $j_{T}$ **余连续**，因而给出拓扑斯态射 $j_{T} : \\widetilde{\\mathcal{C}/T} \\to \\widetilde{\\mathcal{C}}$；\n2. $\\widetilde{\\mathcal{C}/T} \\;\\simeq\\; \\widetilde{\\mathcal{C}}/\\widetilde{T}$；\n3. 在这个等价下，$j_{T!}$ 对应遗忘函子 $\\widetilde{\\mathcal{C}}/\\widetilde{T} \\to \\widetilde{\\mathcal{C}}$，$j_{T}^{-1}$ 对应 $\\mathcal{F} \\mapsto (\\mathcal{F} \\times \\widetilde{T} \\to \\widetilde{T})$。",
+   "statement": "设 $\\mathcal{C}$ 是景、$T \\in \\widehat{\\mathcal{C}}$。则\n\n1. $j_{T}$ **余连续**，因而给出拓扑斯态射 $j_{T} : \\widetilde{\\mathcal{C}/T} \\to \\widetilde{\\mathcal{C}}$；\n2. $\\widetilde{\\mathcal{C}/T} \\;\\simeq\\; \\widetilde{\\mathcal{C}}/\\widetilde{T}$；\n3. 在这个等价下，$j_{T!}$ 对应遗忘函子 $\\widetilde{\\mathcal{C}}/\\widetilde{T} \\to \\widetilde{\\mathcal{C}}$，$j_{T}^{-1}$ 对应 $\\mathcal{F} \\mapsto (\\mathcal{F} \\times \\widetilde{T} \\to \\widetilde{T})$。",
    "notes": "**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。(2) 两个范畴的对象都是「$X \\in \\mathcal{C}$ 加一个截面 $s \\in T(X)$」，层条件也逐字对应 ✓。(3) 把两边的函子按定义写出来即得 ✓。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.63, Exercise 3.64"
@@ -27958,10 +27958,10 @@
     "命题",
     "切片范畴",
     "覆盖筛",
-    "site 的态射"
+    "景的态射"
    ],
-   "statement": "设 $\\mathcal{C}$ 是 site、$T \\in \\widehat{\\mathcal{C}}$、$s \\in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\\mathcal{C}/T$ 里是**覆盖** $\\iff$ $\\hat j_{T!}R$ 是 $X$ 在 $\\mathcal{C}$ 里的**覆盖筛**。",
-   "notes": "**证明。** 两边都是「沿 $R$ 的余锥能不能覆盖」这件事的翻译 ✓：$\\mathcal{C}/T$ 里的覆盖由 $\\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来，而 $j_{T!}$ 正是把 $\\mathcal{C}/T$ 里的筛搬回 $\\mathcal{C}$ 的函子 ✓。\n⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出 site 的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎",
+   "statement": "设 $\\mathcal{C}$ 是景、$T \\in \\widehat{\\mathcal{C}}$、$s \\in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\\mathcal{C}/T$ 里是**覆盖** $\\iff$ $\\hat j_{T!}R$ 是 $X$ 在 $\\mathcal{C}$ 里的**覆盖筛**。",
+   "notes": "**证明。** 两边都是「沿 $R$ 的余锥能不能覆盖」这件事的翻译 ✓：$\\mathcal{C}/T$ 里的覆盖由 $\\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来，而 $j_{T!}$ 正是把 $\\mathcal{C}/T$ 里的筛搬回 $\\mathcal{C}$ 的函子 ✓。\n⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出景的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 3.62"
    ]
@@ -27993,7 +27993,7 @@
    "id": "def.function-limit",
    "type": "definition",
    "label": "函数极限",
-   "title": "函数极限 $\\lim_{x \\to x_0} f(x) = L$（Limit of a Function）",
+   "title": "函数极限 $\\lim_{x \\to x_0} f(x) = L$",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28015,7 +28015,7 @@
    "id": "def.function-limit-onesided",
    "type": "definition",
    "label": "单侧极限",
-   "title": "左极限与右极限（One-Sided Limits）",
+   "title": "左极限与右极限",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28036,7 +28036,7 @@
    "id": "thm.squeeze",
    "type": "theorem",
    "label": "夹逼定理",
-   "title": "夹逼定理（Squeeze Theorem）",
+   "title": "夹逼定理",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28057,7 +28057,7 @@
    "id": "prop.limit-arithmetic",
    "type": "proposition",
    "label": "极限的四则运算与保序性",
-   "title": "命题：极限的四则运算、保序性与绝对值（Algebra of Limits）",
+   "title": "命题：极限的四则运算、保序性与绝对值",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28078,7 +28078,7 @@
    "id": "def.cauchy-sequence",
    "type": "definition",
    "label": "Cauchy 列",
-   "title": "Cauchy 列（Cauchy Sequence）",
+   "title": "Cauchy 列",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28100,7 +28100,7 @@
    "id": "def.limsup-liminf",
    "type": "definition",
    "label": "上极限与下极限",
-   "title": "上极限与下极限 $\\limsup$ / $\\liminf$（Limit Superior and Inferior）",
+   "title": "上极限与下极限 $\\limsup$ / $\\liminf$",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28121,7 +28121,7 @@
    "id": "def.limit-point",
    "type": "definition",
    "label": "聚点",
-   "title": "聚点 / 极限点（Limit Point）",
+   "title": "聚点 / 极限点",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28142,7 +28142,7 @@
    "id": "thm.monotone-convergence",
    "type": "theorem",
    "label": "单调有界定理",
-   "title": "单调有界定理（Monotone Convergence Theorem）",
+   "title": "单调有界定理",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28163,7 +28163,7 @@
    "id": "lem.nested-intervals",
    "type": "lemma",
    "label": "闭区间套定理",
-   "title": "引理：闭区间套定理（Nested Interval Theorem）",
+   "title": "引理：闭区间套定理",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28205,7 +28205,7 @@
    "id": "thm.cauchy-criterion",
    "type": "theorem",
    "label": "Cauchy 收敛准则",
-   "title": "定理：收敛 $\\iff$ Cauchy（Cauchy Criterion）",
+   "title": "定理：收敛 $\\iff$ Cauchy",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28249,7 +28249,7 @@
    "id": "thm.completeness-equivalent",
    "type": "theorem",
    "label": "完备性的六条等价",
-   "title": "定理：下列六条彼此等价（TFAE）",
+   "title": "定理：下列六条彼此等价",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28296,7 +28296,7 @@
    "id": "def.uniform-continuity",
    "type": "definition",
    "label": "一致连续",
-   "title": "一致连续（Uniform Continuity）",
+   "title": "一致连续",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -28341,7 +28341,7 @@
    "id": "thm.evt",
    "type": "theorem",
    "label": "最值定理",
-   "title": "最值定理（Extreme Value Theorem）",
+   "title": "最值定理",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -28364,7 +28364,7 @@
    "id": "thm.ivt",
    "type": "theorem",
    "label": "介值定理",
-   "title": "介值定理（Intermediate Value Theorem）",
+   "title": "介值定理",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28472,7 +28472,7 @@
    "id": "def.local-extremum",
    "type": "definition",
    "label": "局部极值",
-   "title": "局部极大与局部极小（Local Extremum）",
+   "title": "局部极大与局部极小",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28536,7 +28536,7 @@
    "id": "thm.mvt",
    "type": "theorem",
    "label": "Lagrange 中值定理",
-   "title": "Lagrange 中值定理（Mean Value Theorem）",
+   "title": "Lagrange 中值定理",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28644,7 +28644,7 @@
    "id": "def.higher-derivative",
    "type": "definition",
    "label": "高阶导数与 C^k",
-   "title": "高阶导数与 $C^{k}$ 类（Higher Derivatives）",
+   "title": "高阶导数与 $C^{k}$ 类",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28665,7 +28665,7 @@
    "id": "def.convex-function",
    "type": "definition",
    "label": "凸函数",
-   "title": "凸函数与 Jensen 不等式（Convex Function）",
+   "title": "凸函数与 Jensen 不等式",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -28757,7 +28757,7 @@
    "id": "def.partition",
    "type": "definition",
    "label": "分割",
-   "title": "分割与加细（Partition）",
+   "title": "分割与加细",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -28800,7 +28800,7 @@
    "id": "def.darboux-sum",
    "type": "definition",
    "label": "上和与下和",
-   "title": "上和 $U(f, P)$ 与下和 $L(f, P)$（Darboux Sums）",
+   "title": "上和 $U(f, P)$ 与下和 $L(f, P)$",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29020,7 +29020,7 @@
    "id": "prop.integration-substitution",
    "type": "proposition",
    "label": "换元积分",
-   "title": "命题：换元公式（Substitution）",
+   "title": "命题：换元公式",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29041,7 +29041,7 @@
    "id": "prop.integration-by-parts",
    "type": "proposition",
    "label": "分部积分",
-   "title": "命题：分部积分公式（Integration by Parts）",
+   "title": "命题：分部积分公式",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29083,7 +29083,7 @@
    "id": "def.improper-integral",
    "type": "definition",
    "label": "反常积分",
-   "title": "反常积分：无穷区间与无界函数（Improper Integral）",
+   "title": "反常积分：无穷区间与无界函数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29171,7 +29171,7 @@
    "id": "thm.comparison-test",
    "type": "theorem",
    "label": "比较判别法",
-   "title": "定理：比较判别法（Comparison Test）",
+   "title": "定理：比较判别法",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29306,7 +29306,7 @@
    "id": "def.absolute-convergence",
    "type": "definition",
    "label": "绝对收敛",
-   "title": "绝对收敛（Absolute Convergence）",
+   "title": "绝对收敛",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29328,7 +29328,7 @@
    "id": "def.conditional-convergence",
    "type": "definition",
    "label": "条件收敛",
-   "title": "条件收敛（Conditional Convergence）",
+   "title": "条件收敛",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29439,7 +29439,7 @@
    "id": "def.pointwise-convergence",
    "type": "definition",
    "label": "逐点收敛",
-   "title": "逐点收敛（Pointwise Convergence）",
+   "title": "逐点收敛",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29461,7 +29461,7 @@
    "id": "def.uniform-convergence",
    "type": "definition",
    "label": "一致收敛",
-   "title": "一致收敛 $f_n \\rightrightarrows f$（Uniform Convergence）",
+   "title": "一致收敛 $f_n \\rightrightarrows f$",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29483,7 +29483,7 @@
    "id": "def.uniform-cauchy",
    "type": "definition",
    "label": "一致 Cauchy 列",
-   "title": "一致 Cauchy 列（Uniformly Cauchy）",
+   "title": "一致 Cauchy 列",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -29620,7 +29620,7 @@
    "id": "def.power-series",
    "type": "definition",
    "label": "幂级数",
-   "title": "幂级数（Power Series）",
+   "title": "幂级数",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -33253,7 +33253,7 @@
    ],
    "target": "thm.adic-gluing",
    "title": "结构层 + 局部化的全忠实 $\\implies$ $\\infty$-范畴粘合",
-   "proof": "**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的 site，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。\n\n**第一步：$\\operatorname{Spec}$ 是层。** 对标准覆盖 $\\{(A,A^+) \\to (A_i,A_i^+)\\}$，$\\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \\to \\varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。\n\n**第二步：全忠实。** 对 adic 空间 $X, Y$，\n$$\\operatorname{Hom}(X,Y) \\longrightarrow \\operatorname{Hom}\\big((|X|,\\mathcal{O}_X), (|Y|,\\mathcal{O}_Y)\\big)$$\n是双射（Prop 10.1(b)）。化到 $Y = \\operatorname{Spec}(A,A^+)$ 仿射：一个「空间」映射 $X \\to \\operatorname{Spec}(A,A^+)$ 等价于 Huber 对映射 $(A,A^+) \\to (\\mathcal{O}_X(X), \\mathcal{O}_X(X)^\\circ)$ —— 由第一步的层性，$\\mathcal{O}_X(X)$ 上带自然的拓扑与整环，逐点取局部化即得 adic 空间映射。反方向显然。于是 $\\Phi$ 全忠实。\n\n**第三步：仿射的纤维积。** 对 Huber 对映射 $A \\to B$、$A \\to C$（$A^+$ 的情形同），\n$$\\begin{aligned}\n&\\operatorname{Spec}(B,B^+) \\times_{\\operatorname{Spec}(A,A^+)} \\operatorname{Spec}(C,C^+) \\\\\n&\\qquad \\cong \\operatorname{Spec}\\big((B,B^+) \\hat\\otimes_{(A,A^+)} (C,C^+)\\big),\n\\end{aligned}$$\n即基变换方块是笛卡尔方块（Prop 10.2）；其中 $\\hat\\otimes$ 是 Huber 对的完备张量积。\n\n**第四步：覆盖可细化。** 任一 $\\mathcal{C}$ 的覆盖都能被标准覆盖细化（Lemma 10.4，Huber 的逼近论证）：把每个 $A \\to A_i$ 换成有理局部化 $A \\to A\\langle T_1,\\ldots,T_n\\rangle/(\\ldots)$ 的复合，用强 Noether 性与「开浸入的复合仍是开浸入」逐项对齐。\n\n**第五步：范畴判据。** 设 $F$ 是 $\\mathcal{C}$ 上的层。$F$ 落在 $\\Phi$ 的本质像中，当且仅当\n1. $F$ 有覆盖 $\\{F_i \\to F\\}$，每个 $F_i \\cong \\operatorname{Spec}(A_i,A_i^+)$；\n2. 对每个 $i$，$F_i \\times_F F_i$ 也是仿射的（$\\cong \\operatorname{Spec}$ 的某个有理局部化），且两个投影是开浸入。\n\n（Prop 10.5 的一般判据；这里用在 $\\mathcal{C}$ 上。）条件 1 给出一族仿射；条件 2 保证胶合数据一致：由第三步，纤维积存在且仍是仿射；由第四步，可用标准覆盖细化；由第一步，胶合出的层与 $\\Phi$ 的像一致。\n\n**第六步：构造逆函子。** 给定满足 1、2 的 $F$，取所有 $F_i \\to F$，按第四步把覆盖细化为标准覆盖，用第三步的笛卡尔方块作转移映射。第五步的 2 保证 cocycle 条件；第一步的层性保证粘合唯一。所得 adic 空间 $X$ 满足 $\\Phi(X) \\cong F$，且由第二步全忠实，$X$ 在等价意义下唯一。于是 $\\Phi$ 本质满，因而是范畴等价。$\\blacksquare$",
+   "proof": "**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。\n\n**第一步：$\\operatorname{Spec}$ 是层。** 对标准覆盖 $\\{(A,A^+) \\to (A_i,A_i^+)\\}$，$\\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \\to \\varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。\n\n**第二步：全忠实。** 对 adic 空间 $X, Y$，\n$$\\operatorname{Hom}(X,Y) \\longrightarrow \\operatorname{Hom}\\big((|X|,\\mathcal{O}_X), (|Y|,\\mathcal{O}_Y)\\big)$$\n是双射（Prop 10.1(b)）。化到 $Y = \\operatorname{Spec}(A,A^+)$ 仿射：一个「空间」映射 $X \\to \\operatorname{Spec}(A,A^+)$ 等价于 Huber 对映射 $(A,A^+) \\to (\\mathcal{O}_X(X), \\mathcal{O}_X(X)^\\circ)$ —— 由第一步的层性，$\\mathcal{O}_X(X)$ 上带自然的拓扑与整环，逐点取局部化即得 adic 空间映射。反方向显然。于是 $\\Phi$ 全忠实。\n\n**第三步：仿射的纤维积。** 对 Huber 对映射 $A \\to B$、$A \\to C$（$A^+$ 的情形同），\n$$\\begin{aligned}\n&\\operatorname{Spec}(B,B^+) \\times_{\\operatorname{Spec}(A,A^+)} \\operatorname{Spec}(C,C^+) \\\\\n&\\qquad \\cong \\operatorname{Spec}\\big((B,B^+) \\hat\\otimes_{(A,A^+)} (C,C^+)\\big),\n\\end{aligned}$$\n即基变换方块是笛卡尔方块（Prop 10.2）；其中 $\\hat\\otimes$ 是 Huber 对的完备张量积。\n\n**第四步：覆盖可细化。** 任一 $\\mathcal{C}$ 的覆盖都能被标准覆盖细化（Lemma 10.4，Huber 的逼近论证）：把每个 $A \\to A_i$ 换成有理局部化 $A \\to A\\langle T_1,\\ldots,T_n\\rangle/(\\ldots)$ 的复合，用强 Noether 性与「开浸入的复合仍是开浸入」逐项对齐。\n\n**第五步：范畴判据。** 设 $F$ 是 $\\mathcal{C}$ 上的层。$F$ 落在 $\\Phi$ 的本质像中，当且仅当\n1. $F$ 有覆盖 $\\{F_i \\to F\\}$，每个 $F_i \\cong \\operatorname{Spec}(A_i,A_i^+)$；\n2. 对每个 $i$，$F_i \\times_F F_i$ 也是仿射的（$\\cong \\operatorname{Spec}$ 的某个有理局部化），且两个投影是开浸入。\n\n（Prop 10.5 的一般判据；这里用在 $\\mathcal{C}$ 上。）条件 1 给出一族仿射；条件 2 保证胶合数据一致：由第三步，纤维积存在且仍是仿射；由第四步，可用标准覆盖细化；由第一步，胶合出的层与 $\\Phi$ 的像一致。\n\n**第六步：构造逆函子。** 给定满足 1、2 的 $F$，取所有 $F_i \\to F$，按第四步把覆盖细化为标准覆盖，用第三步的笛卡尔方块作转移映射。第五步的 2 保证 cocycle 条件；第一步的层性保证粘合唯一。所得 adic 空间 $X$ 满足 $\\Phi(X) \\cong F$，且由第二步全忠实，$X$ 在等价意义下唯一。于是 $\\Phi$ 本质满，因而是范畴等价。$\\blacksquare$",
    "note": ""
   },
   {
@@ -35542,7 +35542,7 @@
    "target": "prop.covering-sieve-epi",
    "title": "覆盖族生成覆盖筛 $\\iff$ 余积满",
    "proof": "记覆盖族为 $(f_{i} : X_{i} \\to X)_{i \\in I}$，它生成的筛为 $R \\subseteq h_{X}$，并记 $q : \\coprod_{i} X_{i} \\to X$ 为余积给出的那个态射。\n\n**$R = h_{X}$ 这件事的意义。** $R(Y) \\subseteq \\operatorname{Hom}(Y, X)$ 是「能穿过某个 $X_{i}$」的那些映射。$R = h_{X}$ 就是说**每个** $Y \\to X$ 都能穿过某个 $X_{i}$。\n\n**（$\\Longleftarrow$）** 设 $q$ 是满态射，即对任意 $T$ 与任意 $u, v : X \\to T$，$u \\circ q = v \\circ q \\implies u = v$。设 $g : Y \\to X$。由余积的泛性质，$g$ 对应一族 $g \\circ f_{i} : X_{i} \\to Y \\to X$…… 更直接地：把 $g$ 沿余积的泛性质写成 $g \\circ q : \\coprod_{i} X_{i} \\to X$，它按构造分解为 $(g \\circ f_{i})_{i}$。由 $q$ 满（右可消）得 $g$ 必须已经是 $q$ 的「商」—— 即存在某个 $i$ 与 $h : Y \\to X_{i}$ 使 $g = f_{i} \\circ h$。所以 $R(Y) = \\operatorname{Hom}(Y, X)$ 对所有 $Y$ 成立，$R = h_{X}$。\n\n**（$\\Longrightarrow$）** 设 $R = h_{X}$。要证 $q$ 右可消。设 $u, v : X \\to T$ 且 $u \\circ q = v \\circ q$。对每个 $i$ 有 $u \\circ f_{i} = v \\circ f_{i}$。对任意 $Y$ 与任意 $g : Y \\to X$，由 $R = h_{X}$ 存在 $i$ 与 $h : Y \\to X_{i}$ 使 $g = f_{i} \\circ h$，于是\n\n$$u \\circ g = u \\circ f_{i} \\circ h = v \\circ f_{i} \\circ h = v \\circ g$$\n\n取 $Y = X$、$g = 1_{X}$ 即得 $u = v$。所以 $q$ 是满态射。∎",
-   "note": "这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在 site 上验覆盖，都可以改写成一个余积是否满射的问题。"
+   "note": "这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在景上验覆盖，都可以改写成一个余积是否满射的问题。"
   },
   {
    "id": "imp.pretopos-factorization",
@@ -36531,7 +36531,7 @@
    ],
    "target": "lem.covering-free-acyclic",
    "title": "有截面的 Čech 同伦 $\\implies$ 任意覆盖上自由复形零调",
-   "proof": "**（一）化到单个满态射。** 令 $X_{0} := \\coprod_{i} X_{i}$。满态射 $X_{0} \\to X$ 的 Čech 脉的第 $n$ 项正是 $\\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}} = X_{n}$ ✓，所以只需证明 $X_{0} \\twoheadrightarrow X$ 的情形。\n**（二）$\\mathcal{T} = \\mathbf{Set}$。** 满射有截面 $s$（选择公理）✓。沿截面取\n$$s^{n} := s \\times_{X} 1_{X_{n}} : X_{n} \\longrightarrow X_{n+1},$$\n它满足收缩同伦的恒等式 $1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}$ ✓（逐面展开即得），于是增广复形同伦平凡，特别地零调 ✓。这正是「带截面的覆盖上 Čech 零调」那条命题。\n**（三）$\\mathcal{T} = \\widehat{\\mathcal{C}}$（预层）。** 由上一条定理，预层范畴里的极限与余极限逐点算，而零调是「逐点取同调为零」，于是在每个 $X \\in \\mathcal{C}$ 处化回 (二) ✓。\n**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（site 上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎",
+   "proof": "**（一）化到单个满态射。** 令 $X_{0} := \\coprod_{i} X_{i}$。满态射 $X_{0} \\to X$ 的 Čech 脉的第 $n$ 项正是 $\\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}} = X_{n}$ ✓，所以只需证明 $X_{0} \\twoheadrightarrow X$ 的情形。\n**（二）$\\mathcal{T} = \\mathbf{Set}$。** 满射有截面 $s$（选择公理）✓。沿截面取\n$$s^{n} := s \\times_{X} 1_{X_{n}} : X_{n} \\longrightarrow X_{n+1},$$\n它满足收缩同伦的恒等式 $1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}$ ✓（逐面展开即得），于是增广复形同伦平凡，特别地零调 ✓。这正是「带截面的覆盖上 Čech 零调」那条命题。\n**（三）$\\mathcal{T} = \\widehat{\\mathcal{C}}$（预层）。** 由上一条定理，预层范畴里的极限与余极限逐点算，而零调是「逐点取同调为零」，于是在每个 $X \\in \\mathcal{C}$ 处化回 (二) ✓。\n**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（景上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎",
    "note": ""
   },
   {
@@ -42734,7 +42734,7 @@
    "strength": "strong",
    "definition": "def.grothendieck-topology",
    "usedBy": "def.topologically-generating",
-   "note": "拓扑生成集是相对 **site 的拓扑**说的。"
+   "note": "拓扑生成集是相对 **景的拓扑**说的。"
   },
   {
    "id": "def-dep.contfunctor-sheaf",
@@ -42750,7 +42750,7 @@
    "strength": "strong",
    "definition": "def.continuous-functor",
    "usedBy": "def.morphism-of-sites",
-   "note": "site 的态射先要是一个**连续函子**。"
+   "note": "景的态射先要是一个**连续函子**。"
   },
   {
    "id": "def-dep.sitesmorphism-adjoint",
@@ -43406,7 +43406,7 @@
    "strength": "strong",
    "definition": "def.quasi-separated",
    "usedBy": "thm.qcqs-chaus-equiv",
-   "note": "「qcqs」的另一半是**拟分离**。"
+   "note": "「拟紧拟分离」的另一半是**拟分离**。"
   },
   {
    "id": "def-dep.qcqs-free",

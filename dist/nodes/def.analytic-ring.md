@@ -1,5 +1,5 @@
 # 解析环　`def.analytic-ring`
-解析环（Analytic Ring）
+解析环
 layer 18 · 定义 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=def.analytic-ring)　·　[节点索引](../index.md)
 

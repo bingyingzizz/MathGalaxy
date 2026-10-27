@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       /* ⚠️ 括号里的英文名**不要带年份**：一级英文名规则会在「title 括号里的英文与 aka 一致」时
          取 title 那一条 ⇒ 带年份的话 `title_en` 就成了「Well-Ordering Theorem, Zermelo 1904」
          （作者 2026-10-16 点过这个毛病）。年份在 notes 与 refs 里都写着，不丢信息。 */
-      title: '良序定理 / 良序原理（Well-Ordering Theorem）',
+      title: '良序定理 / 良序原理',
       // 既是集合论的定理，也是序理论的定理 → 落在两块的边界上
       regions: ['set-theory', 'order-theory'],
       tags: ['ZFC', '等价命题', '选择'],
@@ -67,7 +67,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
-      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）',
+      title: 'Hausdorff 极大原理 / 极大公理',
       regions: ['order-theory'],
       tags: ['ZFC', '等价命题', '极大原理', '链'],
       statement: [

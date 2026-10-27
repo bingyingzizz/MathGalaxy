@@ -1,5 +1,5 @@
 # 比较判别法　`thm.comparison-test`
-定理：比较判别法（Comparison Test）
+定理：比较判别法
 layer 15 · 定理 · 数项级数的敛散性 · 分析学
 [在星图里打开](../#n=thm.comparison-test)　·　[节点索引](../index.md)
 

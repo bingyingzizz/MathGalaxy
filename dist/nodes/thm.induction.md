@@ -1,5 +1,5 @@
 # 归纳原理与递推定义　`thm.induction`
-归纳原理 / 递推定义（Induction & Recursion）
+归纳原理 / 递推定义
 layer 6 · 定理 · 数系的构造 · 集合论
 [在星图里打开](../#n=thm.induction)　·　[节点索引](../index.md)
 
@@ -15,14 +15,11 @@ $$\emptyset \in S, \qquad x \in S \implies x \cup \{x\} \in S$$
 
 $$g(\emptyset) = a_0, \qquad g(x \cup \{x\}) = F(g(x)) \quad \forall x \in \omega$$
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`thm.binomial`](../nodes/thm.binomial.md) 二项式定理
-- ⇒ [`thm.bernoulli`](../nodes/thm.bernoulli.md) Bernoulli 不等式
-
-- …另有出边，续页见 [nodes/thm.induction.3.md](./thm.induction.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/thm.induction.2.md](./thm.induction.2.md)
+- [`thm.omega`](../nodes/thm.omega.md) 自然数集存在：用到了定义 自然数集存在　[proofs/dep.omega-induction.md](../proofs/dep.omega-induction.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.induction.2.md](./thm.induction.2.md)
 
 refs: Kunen, Set Theory, I.5
 

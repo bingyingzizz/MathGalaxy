@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '连通范畴',
-      title: '连通范畴（Connected Category）',
+      title: '连通范畴',
       regions: ['category'],
       tags: ['范畴论', '连通', '共尾', '指标范畴'],
       statement: [
@@ -47,7 +47,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '共尾函子',
-      title: '共尾函子（Cofinal Functor）',
+      title: '共尾函子',
       regions: ['category'],
       tags: ['范畴论', '共尾', 'cofinal', 'final', '余极限'],
       statement: [
@@ -101,7 +101,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '滤过范畴',
-      title: '滤过范畴与滤过余极限（Filtered Category）',
+      title: '滤过范畴与滤过余极限',
       regions: ['category'],
       tags: ['范畴论', '滤过', 'filtered', '余极限', '有向集'],
       statement: [

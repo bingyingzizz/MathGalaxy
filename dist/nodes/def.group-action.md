@@ -1,5 +1,5 @@
 # 群作用　`def.group-action`
-群作用、轨道与稳定子（Group Action）
+群作用、轨道与稳定子
 layer 9 · 定义 · 群作用与置换 · 抽象代数
 [在星图里打开](../#n=def.group-action)　·　[节点索引](../index.md)
 

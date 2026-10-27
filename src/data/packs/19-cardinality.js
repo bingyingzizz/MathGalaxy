@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '幂集 𝒫(X)',
-      title: '幂集（Power Set）',
+      title: '幂集',
       regions: ['set-theory'],
       tags: ['定义', '幂集'],
       statement: [
@@ -43,7 +43,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'definition',
       label: '等势',
-      title: '等势（Equinumerous）',
+      title: '等势',
       regions: ['set-theory'],
       tags: ['定义', '基数'],
       statement: [
@@ -63,7 +63,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'definition',
       label: '基数 |A|',
-      title: '基数与基数的比较（Cardinality）',
+      title: '基数与基数的比较',
       regions: ['set-theory'],
       tags: ['定义', '基数'],
       statement: [

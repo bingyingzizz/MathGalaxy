@@ -1,5 +1,5 @@
 # 单态射 / 满态射 / 同构　`def.mono`
-单态射、满态射与同构（Mono / Epi / Isomorphism）
+单态射、满态射与同构
 layer 13 · 定义 · 单满、子对象与像 · 范畴论
 [在星图里打开](../#n=def.mono)　·　[节点索引](../index.md)
 

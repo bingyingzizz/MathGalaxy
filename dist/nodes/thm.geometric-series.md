@@ -1,5 +1,5 @@
 # 几何级数　`thm.geometric-series`
-定理：几何级数（Geometric Series）
+定理：几何级数
 layer 16 · 定理 · 数项级数的敛散性 · 分析学
 [在星图里打开](../#n=thm.geometric-series)　·　[节点索引](../index.md)
 

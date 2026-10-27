@@ -1,5 +1,5 @@
 # 二项式定理　`thm.binomial`
-定理：二项式定理（Binomial Theorem）
+定理：二项式定理
 layer 9 · 定理 · 实数的运算与不等式 · 分析学
 [在星图里打开](../#n=thm.binomial)　·　[节点索引](../index.md)
 

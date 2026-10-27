@@ -1,5 +1,5 @@
 # 拓扑阿贝尔群　`def.topo-ab-group`
-拓扑阿贝尔群与连续同态（Topological Abelian Group）
+拓扑阿贝尔群与连续同态
 layer 16 · 定义 · 拓扑阿贝尔群 · 凝聚态数学+拓扑学
 [在星图里打开](../#n=def.topo-ab-group)　·　[节点索引](../index.md)
 

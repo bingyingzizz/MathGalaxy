@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       cluster: 'cat.algebra',
       type: 'definition',
       label: '幺半群对象',
-      title: '幺半群对象（Monoid Object）',
+      title: '幺半群对象',
       regions: ['category', 'algebra'],
       tags: ['范畴论', '代数结构', '幺半群对象', '笛卡尔范畴'],
       statement: [
@@ -49,7 +49,7 @@ window.MG = window.MG || {};
       cluster: 'cat.algebra',
       type: 'definition',
       label: '群对象与阿贝尔群对象',
-      title: '群对象与阿贝尔群对象（Group Object）',
+      title: '群对象与阿贝尔群对象',
       regions: ['category', 'algebra'],
       tags: ['范畴论', '代数结构', '群对象', '阿贝尔群对象', 'CondAb'],
       statement: [

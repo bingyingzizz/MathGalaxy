@@ -1,5 +1,5 @@
 # 选择函数　`def.choicefn`
-选择函数（Choice Function）
+选择函数
 layer 6 · 定义 · 选择原理 · 集合论
 [在星图里打开](../#n=def.choicefn)　·　[节点索引](../index.md)
 

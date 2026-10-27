@@ -1,5 +1,5 @@
 # 复数 ℂ　`def.complex`
-复数系 $\mathbb{C}$（Complex Numbers）
+复数系 $\mathbb{C}$
 layer 15 · 定义 · 数系的构造 · 分析学+抽象代数
 [在星图里打开](../#n=def.complex)　·　[节点索引](../index.md)
 

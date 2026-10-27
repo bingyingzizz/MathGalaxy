@@ -18,7 +18,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: 'Grothendieck 宇宙',
-      title: 'Grothendieck 宇宙（Grothendieck Universe）',
+      title: 'Grothendieck 宇宙',
       regions: ['category'],
       tags: ['范畴论', '大与小', '集合论'],
       statement: [
@@ -45,7 +45,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '图',
-      title: '图（Graph）',
+      title: '图',
       regions: ['category'],
       tags: ['范畴论', '有向图'],
       statement: [
@@ -72,7 +72,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '图的态射',
-      title: '图的态射（Morphism of Graphs）',
+      title: '图的态射',
       regions: ['category'],
       tags: ['范畴论', '有向图', '交换图'],
       statement: [
@@ -96,7 +96,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '范畴',
-      title: '范畴（Category）',
+      title: '范畴',
       regions: ['category'],
       tags: ['范畴论', '复合', '单位'],
       statement: [
@@ -143,7 +143,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '截面与收缩',
-      title: '截面与收缩（Section / Retraction）',
+      title: '截面与收缩',
       regions: ['category'],
       tags: ['范畴论', '态射', '左逆右逆'],
       statement: [

@@ -3,7 +3,7 @@
 layer 19 · 命题 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=prop.sieve-covering-equivalent)　·　[节点索引](../index.md)
 
-设 $\mathcal{C}$ 是 site，$X \in \mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：
+设 $\mathcal{C}$ 是景，$X \in \mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：
 > 陈述续见 [nodes/prop.sieve-covering-equivalent.2.md](./prop.sieve-covering-equivalent.2.md)
 
 

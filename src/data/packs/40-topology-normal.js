@@ -17,7 +17,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '正规空间',
-      title: '正规空间（Normal Space）',
+      title: '正规空间',
       regions: ['topology'],
       tags: ['拓扑', '分离公理', '正规', '闭集'],
       statement: [

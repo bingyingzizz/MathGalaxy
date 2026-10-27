@@ -15,7 +15,7 @@ $$\varinjlim : \mathbf{Set}^{I} \longrightarrow \mathbf{Set}$$
 - …另有入边，续页见 [nodes/prop.filtered-exact.2.md](./prop.filtered-exact.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.site-properties`](../nodes/prop.site-properties.md) site 的层范畴的好性质
+- ⇒ [`prop.site-properties`](../nodes/prop.site-properties.md) 景的层范畴的好性质
 
 - …另有出边，续页见 [nodes/prop.filtered-exact.3.md](./prop.filtered-exact.3.md)
 

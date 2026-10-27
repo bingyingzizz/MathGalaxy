@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'example',
       label: '环的局部化 W⁻¹R',
-      title: '环的局部化（Localization of a Ring）',
+      title: '环的局部化',
       regions: ['algebra', 'category'],
       tags: ['代数', '环', '局部化', '分式', '乘性子集'],
       statement: [
@@ -80,7 +80,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '层', '筛', '覆盖', '层化'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：',
+        '设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：',
         '',
         [
           '1. $R \\in J(X)$（即 $R$ 是 $X$ 上的**覆盖筛**）；',

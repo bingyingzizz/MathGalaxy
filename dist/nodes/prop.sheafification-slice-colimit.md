@@ -3,7 +3,7 @@
 layer 17 · 命题 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=prop.sheafification-slice-colimit)　·　[节点索引](../index.md)
 
-设 $T$ 是 site $\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限
+设 $T$ 是景 $\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限
 
 $$T^{\#} \;\cong\; \varinjlim_{X \in \mathcal{C}/T}\ X^{\sharp},$$
 

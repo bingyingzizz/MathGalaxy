@@ -1,5 +1,5 @@
 # 函数　`def.number-function`
-函数（Function）
+函数
 layer 13 · 定义 · 关系与函数 · 集合论+分析学
 [在星图里打开](../#n=def.number-function)　·　[节点索引](../index.md)
 

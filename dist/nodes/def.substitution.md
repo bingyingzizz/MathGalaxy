@@ -1,5 +1,5 @@
 # 代入　`def.substitution`
-代入 $\varphi (x/t)$（Substitution）
+代入 $\varphi (x/t)$
 layer 2 · 定义 · 一阶语言与公式 · 数理逻辑
 [在星图里打开](../#n=def.substitution)　·　[节点索引](../index.md)
 

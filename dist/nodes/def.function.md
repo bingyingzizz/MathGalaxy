@@ -1,5 +1,5 @@
 # 映射　`def.function`
-映射（Mapping）
+映射
 layer 5 · 定义 · 关系与函数 · 集合论
 [在星图里打开](../#n=def.function)　·　[节点索引](../index.md)
 

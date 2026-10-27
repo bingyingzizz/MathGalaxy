@@ -1,5 +1,5 @@
 # 商空间　`def.quotient-vs`
-商空间 $V / U$（Quotient Space）
+商空间 $V / U$
 layer 6 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.quotient-vs)　·　[节点索引](../index.md)
 

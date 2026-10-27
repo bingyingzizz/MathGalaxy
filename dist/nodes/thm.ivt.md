@@ -1,5 +1,5 @@
 # 介值定理　`thm.ivt`
-介值定理（Intermediate Value Theorem）
+介值定理
 layer 15 · 定理 · 连续与紧性 · 分析学
 [在星图里打开](../#n=thm.ivt)　·　[节点索引](../index.md)
 

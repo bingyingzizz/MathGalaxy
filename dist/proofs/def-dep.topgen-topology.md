@@ -3,4 +3,4 @@
 
 `def.grothendieck-topology` Grothendieck 拓扑 → `def.topologically-generating` 拓扑生成集
 
-拓扑生成集是相对 **site 的拓扑**说的。
+拓扑生成集是相对 **景的拓扑**说的。

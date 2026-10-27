@@ -328,7 +328,7 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'definition',
       label: '双复形',
-      title: '双复形（Bicomplex）',
+      title: '双复形',
       regions: ['homology'],
       tags: ['同调代数', '双复形', '复形的复形'],
       statement: [

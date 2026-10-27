@@ -1,5 +1,5 @@
 # 数列极限　`def.sequence-limit`
-数列极限 $x_n \to x$（Limit of a Sequence）
+数列极限 $x_n \to x$
 layer 13 · 定义 · 实数与极限 · 分析学
 [在星图里打开](../#n=def.sequence-limit)　·　[节点索引](../index.md)
 
@@ -11,14 +11,13 @@ $$\forall \varepsilon > 0, \exists N, \forall n \ge N : |x_n - x| < \varepsilon$
 
 不收敛的数列叫**发散**。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.limit-basic`](../nodes/prop.limit-basic.md) 极限的基本性质
-- 被 [`def.series`](../nodes/def.series.md) 级数收敛 用
-
-- …另有出边，续页见 [nodes/def.sequence-limit.3.md](./def.sequence-limit.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-seq-limit.md](../proofs/def-link.abs-seq-limit.md)
+
 - …另有入边，续页见 [nodes/def.sequence-limit.2.md](./def.sequence-limit.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.sequence-limit.3.md](./def.sequence-limit.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

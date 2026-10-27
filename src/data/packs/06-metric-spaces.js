@@ -20,7 +20,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '距离空间',
-      title: '距离空间 / 度量空间（Metric Space）',
+      title: '距离空间 / 度量空间',
       regions: ['topology'],
       tags: ['定义', '度量', '开球'],
       statement: [
@@ -47,7 +47,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '完备',
-      title: '完备距离空间（Complete Metric Space）',
+      title: '完备距离空间',
       regions: ['topology'],
       tags: ['定义', '完备', 'Cauchy 列'],
       statement: [
@@ -72,7 +72,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '全有界',
-      title: '全有界 / 预紧（Totally Bounded）',
+      title: '全有界 / 预紧',
       regions: ['topology'],
       tags: ['定义', '全有界', 'ε-网'],
       statement: [
@@ -95,7 +95,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '列紧',
-      title: '列紧 / 序列紧（Sequentially Compact）',
+      title: '列紧 / 序列紧',
       regions: ['topology'],
       tags: ['定义', '列紧', '子列'],
       statement: [
@@ -112,7 +112,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '紧',
-      title: '紧空间（Compact Space）',
+      title: '紧空间',
       regions: ['topology'],
       tags: ['定义', '紧', '开覆盖'],
       statement: [

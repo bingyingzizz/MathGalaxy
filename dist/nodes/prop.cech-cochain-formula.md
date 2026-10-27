@@ -3,7 +3,7 @@
 layer 18 · 命题 · 层上同调 · 同调代数
 [在星图里打开](../#n=prop.cech-cochain-formula)　·　[节点索引](../index.md)
 
-设 site $\mathcal{C}$ 有纤维积，$\mathfrak{X} = (X_{i} \to X)_{i \in I}$ 是一族态射，$M$ 是阿贝尔层。则
+设景 $\mathcal{C}$ 有纤维积，$\mathfrak{X} = (X_{i} \to X)_{i \in I}$ 是一族态射，$M$ 是阿贝尔层。则
 > 陈述续见 [nodes/prop.cech-cochain-formula.2.md](./prop.cech-cochain-formula.2.md)
 
 

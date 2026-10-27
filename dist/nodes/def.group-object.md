@@ -1,5 +1,5 @@
 # 群对象与阿贝尔群对象　`def.group-object`
-群对象与阿贝尔群对象（Group Object）
+群对象与阿贝尔群对象
 layer 14 · 定义 · 范畴里的代数结构 · 范畴论+抽象代数
 [在星图里打开](../#n=def.group-object)　·　[节点索引](../index.md)
 

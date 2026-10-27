@@ -167,7 +167,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', 'Čech 复形', '上链', '纤维积'],
       statement: [
-        '设 site $\\mathcal{C}$ 有纤维积，$\\mathfrak{X} = (X_{i} \\to X)_{i \\in I}$ 是一族态射，$M$ 是阿贝尔层。则',
+        '设景 $\\mathcal{C}$ 有纤维积，$\\mathfrak{X} = (X_{i} \\to X)_{i \\in I}$ 是一族态射，$M$ 是阿贝尔层。则',
         '',
         '$$\\check{C}^{n}(\\mathfrak{X}, M) \\;=\\; \\prod_{i_{0}, \\ldots, i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr).$$'
       ].join('\n'),

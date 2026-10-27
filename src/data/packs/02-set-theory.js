@@ -13,7 +13,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '子集',
-      title: '子集 / 真子集（Subset）',
+      title: '子集 / 真子集',
       regions: ['set-theory'],
       tags: ['定义', '包含关系'],
       statement: [
@@ -38,7 +38,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '有序对',
-      title: '有序对（Ordered Pair, Kuratowski）',
+      title: '有序对',
       regions: ['set-theory'],
       tags: ['定义', 'Kuratowski'],
       statement: [
@@ -64,7 +64,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '关系',
-      title: '关系（Relation）',
+      title: '关系',
       regions: ['set-theory'],
       tags: ['定义', '关系'],
       statement: [
@@ -86,7 +86,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '映射',
-      title: '映射（Mapping）',
+      title: '映射',
       regions: ['set-theory'],
       tags: ['定义', '映射', '对应'],
       statement: [
@@ -108,7 +108,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '函数',
-      title: '函数（Function）',
+      title: '函数',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '函数', '数集'],
       statement: [
@@ -130,7 +130,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'definition',
       label: '选择函数',
-      title: '选择函数（Choice Function）',
+      title: '选择函数',
       regions: ['set-theory'],
       tags: ['定义', '选择'],
       statement: [

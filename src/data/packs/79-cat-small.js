@@ -335,11 +335,11 @@ window.MG = window.MG || {};
       label: '切片里的覆盖筛',
       title: '命题：$R$ 在 $\\mathcal{C}/T$ 里覆盖 $\\iff$ $\\hat j_{T!}R$ 在 $\\mathcal{C}$ 里是覆盖筛',
       regions: ['category'],
-      tags: ['命题', '切片范畴', '覆盖筛', 'site 的态射'],
-      statement: '设 $\\mathcal{C}$ 是 site、$T \\in \\widehat{\\mathcal{C}}$、$s \\in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\\mathcal{C}/T$ 里是**覆盖** $\\iff$ $\\hat j_{T!}R$ 是 $X$ 在 $\\mathcal{C}$ 里的**覆盖筛**。',
+      tags: ['命题', '切片范畴', '覆盖筛', '景的态射'],
+      statement: '设 $\\mathcal{C}$ 是景、$T \\in \\widehat{\\mathcal{C}}$、$s \\in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\\mathcal{C}/T$ 里是**覆盖** $\\iff$ $\\hat j_{T!}R$ 是 $X$ 在 $\\mathcal{C}$ 里的**覆盖筛**。',
       notes: [
         '**证明。** 两边都是「沿 $R$ 的余锥能不能覆盖」这件事的翻译 ✓：$\\mathcal{C}/T$ 里的覆盖由 $\\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来，而 $j_{T!}$ 正是把 $\\mathcal{C}/T$ 里的筛搬回 $\\mathcal{C}$ 的函子 ✓。',
-        '⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出 site 的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎'
+        '⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出景的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎'
       ].join('\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.62']
     },

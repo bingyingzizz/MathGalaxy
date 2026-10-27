@@ -1,5 +1,5 @@
 # 指数律与幂的单调性　`prop.power-rules`
-命题：指数律（Laws of Exponents）
+命题：指数律
 layer 9 · 命题 · 实数的运算与不等式 · 分析学
 [在星图里打开](../#n=prop.power-rules)　·　[节点索引](../index.md)
 

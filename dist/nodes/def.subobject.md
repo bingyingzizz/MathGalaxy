@@ -1,5 +1,5 @@
 # 子对象　`def.subobject`
-子对象（Subobject）
+子对象
 layer 14 · 定义 · 单满、子对象与像 · 范畴论
 [在星图里打开](../#n=def.subobject)　·　[节点索引](../index.md)
 

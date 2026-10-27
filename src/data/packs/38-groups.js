@@ -20,7 +20,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '群',
-      title: '群与阿贝尔群（Group）',
+      title: '群与阿贝尔群',
       regions: ['algebra'],
       tags: ['代数', '群', '阿贝尔群', '运算'],
       statement: [
@@ -49,7 +49,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '子群',
-      title: '子群（Subgroup）',
+      title: '子群',
       regions: ['algebra'],
       tags: ['代数', '群', '子群'],
       statement: [
@@ -73,7 +73,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '正规子群',
-      title: '正规子群与陪集（Normal Subgroup）',
+      title: '正规子群与陪集',
       regions: ['algebra'],
       tags: ['代数', '群', '正规子群', '陪集'],
       statement: [
@@ -101,7 +101,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '商群',
-      title: '商群（Quotient Group）',
+      title: '商群',
       regions: ['algebra'],
       tags: ['代数', '群', '商群', '商集'],
       statement: [
@@ -127,7 +127,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '群同态、核与像',
-      title: '群同态（Group Homomorphism）',
+      title: '群同态',
       regions: ['algebra'],
       tags: ['代数', '群', '同态', '核', '像'],
       statement: [
@@ -158,7 +158,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'theorem',
       label: '第一同构定理（Noether）',
-      title: '第一同构定理（Noether）',
+      title: '第一同构定理',
       regions: ['algebra', 'set-theory'],
       tags: ['代数', '群', '同构定理', 'Noether', '商群', '商映射'],
       statement: [

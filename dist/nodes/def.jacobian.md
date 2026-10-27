@@ -1,5 +1,5 @@
 # Jacobi 矩阵　`def.jacobian`
-Jacobi 矩阵（Jacobian Matrix）
+Jacobi 矩阵
 layer 19 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.jacobian)　·　[节点索引](../index.md)
 

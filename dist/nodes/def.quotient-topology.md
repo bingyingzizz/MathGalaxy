@@ -1,5 +1,5 @@
 # 商拓扑　`def.quotient-topology`
-商拓扑（Quotient Topology）
+商拓扑
 layer 6 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.quotient-topology)　·　[节点索引](../index.md)
 

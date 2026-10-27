@@ -87,7 +87,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '常层', '伴随', '终对象'],
       statement: [
-        '设 $E$ 是集合、$F$ 是 site $\\mathcal{C}$ 上的层。则',
+        '设 $E$ 是集合、$F$ 是景 $\\mathcal{C}$ 上的层。则',
         '',
         '$$\\operatorname{Hom}\\bigl(\\widetilde{E}_{\\mathcal{C}},\\ F\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Set}}\\bigl(E,\\ \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)\\bigr) \\;\\cong\\; \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)^{E},$$',
         '',
@@ -198,7 +198,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '切片拓扑斯', '余连续', '拓扑斯态射'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site、$T \\in \\widehat{\\mathcal{C}}$。则',
+        '设 $\\mathcal{C}$ 是景、$T \\in \\widehat{\\mathcal{C}}$。则',
         '',
         '1. $j_{T}$ **余连续**，因而给出拓扑斯态射 $j_{T} : \\widetilde{\\mathcal{C}/T} \\to \\widetilde{\\mathcal{C}}$；',
         '2. $\\widetilde{\\mathcal{C}/T} \\;\\simeq\\; \\widetilde{\\mathcal{C}}/\\widetilde{T}$；',

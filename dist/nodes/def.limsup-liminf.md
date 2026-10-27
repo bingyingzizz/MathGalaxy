@@ -1,5 +1,5 @@
 # 上极限与下极限　`def.limsup-liminf`
-上极限与下极限 $\limsup$ / $\liminf$（Limit Superior and Inferior）
+上极限与下极限 $\limsup$ / $\liminf$
 layer 7 · 定义 · 实数与极限 · 分析学
 [在星图里打开](../#n=def.limsup-liminf)　·　[节点索引](../index.md)
 

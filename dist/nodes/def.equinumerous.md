@@ -1,5 +1,5 @@
 # 等势　`def.equinumerous`
-等势（Equinumerous）
+等势
 layer 7 · 定义 · 基数与等势 · 集合论
 [在星图里打开](../#n=def.equinumerous)　·　[节点索引](../index.md)
 
@@ -14,8 +14,7 @@ $$f : A \to B$$
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.cardinal`](../nodes/def.cardinal.md) 基数 |A| 用
-
-- …另有出边，续页见 [nodes/def.equinumerous.2.md](./def.equinumerous.2.md)
+- 被 [`def.countable`](../nodes/def.countable.md) 可数与不可数 用
 
 refs: Kunen, Set Theory, I.6
 

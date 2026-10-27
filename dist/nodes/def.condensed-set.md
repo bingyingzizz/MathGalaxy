@@ -1,5 +1,5 @@
 # 凝聚态集　`def.condensed-set`
-凝聚态集（Condensed Set）
+凝聚态集
 layer 16 · 定义 · 凝聚态集 · 凝聚态数学
 [在星图里打开](../#n=def.condensed-set)　·　[节点索引](../index.md)
 

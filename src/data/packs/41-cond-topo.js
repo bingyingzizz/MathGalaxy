@@ -20,7 +20,7 @@ window.MG = window.MG || {};
       cluster: 'cond.topo',
       type: 'definition',
       label: '拓扑阿贝尔群',
-      title: '拓扑阿贝尔群与连续同态（Topological Abelian Group）',
+      title: '拓扑阿贝尔群与连续同态',
       regions: ['condensed', 'topology'],
       tags: ['凝聚态', '拓扑阿贝尔群', '连续同态', '紧开拓扑'],
       statement: [
@@ -176,7 +176,7 @@ window.MG = window.MG || {};
       cluster: 'cond.topo',
       type: 'definition',
       label: 'Pontryagin 对偶',
-      title: 'Pontryagin 对偶（Pontryagin Dual）',
+      title: 'Pontryagin 对偶',
       regions: ['condensed'],
       tags: ['凝聚态', 'Pontryagin', '对偶', '圆群'],
       statement: [

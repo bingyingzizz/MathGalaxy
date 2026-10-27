@@ -1,5 +1,5 @@
 # 合成列　`def.composition-series`
-合成列与合成因子（Composition Series）
+合成列与合成因子
 layer 9 · 定义 · 合成列与可解群 · 抽象代数
 [在星图里打开](../#n=def.composition-series)　·　[节点索引](../index.md)
 
@@ -11,11 +11,13 @@ $$\{e\} = G_0 \trianglelefteq G_1 \trianglelefteq \cdots \trianglelefteq G_n = G
 > 陈述续见 [nodes/def.composition-series.2.md](./def.composition-series.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`thm.jordan-holder`](../nodes/thm.jordan-holder.md) Jordan–Hölder 定理 用
+
+- …另有出边，续页见 [nodes/def.composition-series.4.md](./def.composition-series.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.composition-series.3.md](./def.composition-series.3.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.composition-series.4.md](./def.composition-series.4.md)
 
 refs: Lang, Algebra, Ch. I §5；Dummit–Foote, Abstract Algebra, §3.4
 

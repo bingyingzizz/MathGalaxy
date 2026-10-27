@@ -1,5 +1,5 @@
 # 极限　`def.limit`
-极限与余极限（Limit / Colimit）
+极限与余极限
 layer 11 · 定义 · 图与极限 · 范畴论
 [在星图里打开](../#n=def.limit)　·　[节点索引](../index.md)
 

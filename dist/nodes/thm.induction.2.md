@@ -1,7 +1,9 @@
 # 归纳原理与递推定义　`thm.induction`　·　续页（第 2 页）
 [在星图里打开](../#n=thm.induction)　·　第 1 页 [nodes/thm.induction.md](./thm.induction.md)
 
-## 为什么成立（入边，证明在 proofs/）（续）
-- [`thm.omega`](../nodes/thm.omega.md) 自然数集存在：用到了定义 自然数集存在　[proofs/dep.omega-induction.md](../proofs/dep.omega-induction.md)
-
-> 续见 [nodes/thm.induction.3.md](./thm.induction.3.md)
+## 它能推出什么 / 谁在用它（续）
+- ⇒ [`thm.binomial`](../nodes/thm.binomial.md) 二项式定理
+- ⇒ [`thm.bernoulli`](../nodes/thm.bernoulli.md) Bernoulli 不等式
+- ⇒ [`thm.nat-arith-laws`](../nodes/thm.nat-arith-laws.md) 自然数的运算律
+- 被 [`def.nat-arith`](../nodes/def.nat-arith.md) 自然数的加法与乘法 用
+- 被 [`def.int`](../nodes/def.int.md) 整数 ℤ 用

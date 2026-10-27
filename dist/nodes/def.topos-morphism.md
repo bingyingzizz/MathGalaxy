@@ -1,5 +1,5 @@
 # 拓扑斯的态射　`def.topos-morphism`
-拓扑斯的态射（Morphism of Toposes）
+拓扑斯的态射
 layer 17 · 定义 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=def.topos-morphism)　·　[节点索引](../index.md)
 

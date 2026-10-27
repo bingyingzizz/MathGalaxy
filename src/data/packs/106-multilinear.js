@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.multilinear',
       type: 'definition',
       label: '双线性型',
-      title: '双线性型（Bilinear Form）',
+      title: '双线性型',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '张量'],
       statement: [

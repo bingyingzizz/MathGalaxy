@@ -1,5 +1,5 @@
 # 预解析环　`def.pre-analytic-ring`
-预解析环（Pre-Analytic Ring）
+预解析环
 layer 17 · 定义 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=def.pre-analytic-ring)　·　[节点索引](../index.md)
 

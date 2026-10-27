@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '矩阵',
-      title: '矩阵（Matrix）',
+      title: '矩阵',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -127,7 +127,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '初等变换与初等矩阵',
-      title: '初等变换与初等矩阵（Elementary Matrices）',
+      title: '初等变换与初等矩阵',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -215,7 +215,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '多重线性型',
-      title: '多重线性型 $V^{n} \\to K$（Multilinear Form）',
+      title: '多重线性型 $V^{n} \\to K$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -279,7 +279,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '行列式',
-      title: '行列式 $\\det A$（Determinant）',
+      title: '行列式 $\\det A$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '行列式'],
       statement: [

@@ -1,5 +1,5 @@
 # 导数　`def.derivative`
-导数 $F'$（Derivative）
+导数 $F'$
 layer 15 · 定义 · 实数与极限 · 分析学
 [在星图里打开](../#n=def.derivative)　·　[节点索引](../index.md)
 

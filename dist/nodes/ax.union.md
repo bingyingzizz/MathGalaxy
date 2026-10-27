@@ -1,5 +1,5 @@
 # 并集公理　`ax.union`
-并集公理（Axiom of Union）
+并集公理
 layer 0 · 公理 · ZFC 公理系统 · 集合论
 [在星图里打开](../#n=ax.union)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 浸入 / 淹没 / 嵌入　`def.submersion-immersion`
-浸入、淹没与嵌入（Immersion / Submersion / Embedding）
+浸入、淹没与嵌入
 layer 12 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.submersion-immersion)　·　[节点索引](../index.md)
 

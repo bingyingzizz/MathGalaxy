@@ -59,7 +59,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'definition',
       label: '有界变差 BV',
-      title: '全变差与有界变差函数（Total Variation, BV）',
+      title: '全变差与有界变差函数',
       regions: ['analysis'],
       tags: ['定义', '全变差', 'BV'],
       statement: [
@@ -313,7 +313,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'definition',
       label: '绝对连续函数',
-      title: '绝对连续函数 AC（Absolutely Continuous Function）',
+      title: '绝对连续函数 AC',
       regions: ['analysis'],
       tags: ['定义', '绝对连续', 'AC'],
       statement: [

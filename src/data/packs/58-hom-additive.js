@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '核与余核',
-      title: '核 / 余核与左正合、右正合列（Kernel, Cokernel）',
+      title: '核 / 余核与左正合、右正合列',
       regions: ['category'],
       tags: ['定义', '范畴论', '核', '余核', '正合列'],
       statement: [

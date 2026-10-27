@@ -1,5 +1,5 @@
 # Kan 延拓　`def.kan-extension`
-Kan 延拓（Kan Extension）
+Kan 延拓
 layer 10 · 定义 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=def.kan-extension)　·　[节点索引](../index.md)
 

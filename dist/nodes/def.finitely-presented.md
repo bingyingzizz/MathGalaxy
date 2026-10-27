@@ -1,5 +1,5 @@
 # 有限表现对象　`def.finitely-presented`
-有限表现（紧）对象（Finitely Presented Object）
+有限表现（紧）对象
 layer 13 · 定义 · 预层与米田 · 范畴论
 [在星图里打开](../#n=def.finitely-presented)　·　[节点索引](../index.md)
 

@@ -3,7 +3,7 @@
 layer 17 · 定义 · 层上同调 · 同调代数+范畴论
 [在星图里打开](../#n=def.sheaf-cohomology)　·　[节点索引](../index.md)
 
-设 $M^{\bullet}$ 是 site $\mathcal{C}$ 上的**阿贝尔层复形**，$X \in \mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是
+设 $M^{\bullet}$ 是景 $\mathcal{C}$ 上的**阿贝尔层复形**，$X \in \mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是
 
 $$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
 

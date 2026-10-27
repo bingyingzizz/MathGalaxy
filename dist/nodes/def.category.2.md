@@ -2,8 +2,6 @@
 [在星图里打开](../#n=def.category)　·　第 1 页 [nodes/def.category.md](./def.category.md)
 
 ## 陈述（续）
-这是「$g$ 的靶等于 $f$ 的源」的全部态射对；$\circ : M \times_{s,t} M \to M$ 把 $(f, g)$ 送到 $f \circ g$，并满足**结合律**
-
 $$h \circ (g \circ f) = (h \circ g) \circ f$$
 
 （只要两边都有定义）。

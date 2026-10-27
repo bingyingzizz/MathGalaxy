@@ -1,5 +1,5 @@
 # 双线性型　`def.bilinear-form`
-双线性型（Bilinear Form）
+双线性型
 layer 10 · 定义 · 多重线性与张量 · 抽象代数
 [在星图里打开](../#n=def.bilinear-form)　·　[节点索引](../index.md)
 

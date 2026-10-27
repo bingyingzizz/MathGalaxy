@@ -1,5 +1,5 @@
 # 同胚　`def.homeomorphism`
-同胚（Homeomorphism）
+同胚
 layer 7 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.homeomorphism)　·　[节点索引](../index.md)
 

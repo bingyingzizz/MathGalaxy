@@ -1,5 +1,5 @@
 # 逗号范畴　`def.comma-category`
-逗号范畴（Comma Category）
+逗号范畴
 layer 12 · 定义 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=def.comma-category)　·　[节点索引](../index.md)
 

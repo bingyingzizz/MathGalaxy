@@ -1,4 +1,4 @@
-# site 的层范畴的好性质　`prop.site-properties`　·　续页（第 2 页）
+# 景的层范畴的好性质　`prop.site-properties`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.site-properties)　·　第 1 页 [nodes/prop.site-properties.md](./prop.site-properties.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

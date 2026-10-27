@@ -17,7 +17,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '基本类',
-      title: '基本类（Fundamental Class）',
+      title: '基本类',
       regions: ['analysis', 'set-theory'],
       tags: ['定义', '集合族', '测度论'],
       statement: [
@@ -39,7 +39,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '环与代数',
-      title: '环与代数（Ring, Algebra）',
+      title: '环与代数',
       regions: ['analysis'],
       tags: ['定义', '环', '代数'],
       statement: [
@@ -120,7 +120,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '单调类',
-      title: '单调类（Monotone Class）',
+      title: '单调类',
       regions: ['analysis'],
       tags: ['定义', '单调类'],
       statement: [
@@ -219,7 +219,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'theorem',
       label: '单调类定理',
-      title: '单调类定理（Monotone Class Theorem）',
+      title: '单调类定理',
       regions: ['analysis'],
       tags: ['定理', '单调类', '生成'],
       statement: [

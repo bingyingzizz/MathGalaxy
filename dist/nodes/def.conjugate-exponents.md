@@ -1,5 +1,5 @@
 # 共轭指数　`def.conjugate-exponents`
-共轭指数（Conjugate Exponents）
+共轭指数
 layer 14 · 定义 · L^p 空间 · 分析学
 [在星图里打开](../#n=def.conjugate-exponents)　·　[节点索引](../index.md)
 

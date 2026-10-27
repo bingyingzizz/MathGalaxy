@@ -3,5 +3,3 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`thm.nth-root`](../nodes/thm.nth-root.md) n 次方根 + [`lem.archimedean`](../nodes/lem.archimedean.md) 阿基米德性质：n 次方根 $\implies$ 有理指数良定义；确界 $\implies$ 实数指数　[proofs/imp.real-power.md](../proofs/imp.real-power.md)
-
-> 续见 [nodes/def.real-power.3.md](./def.real-power.3.md)

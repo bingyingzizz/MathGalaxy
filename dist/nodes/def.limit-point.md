@@ -1,5 +1,5 @@
 # 聚点　`def.limit-point`
-聚点 / 极限点（Limit Point）
+聚点 / 极限点
 layer 14 · 定义 · 实数完备性的等价刻画 · 分析学
 [在星图里打开](../#n=def.limit-point)　·　[节点索引](../index.md)
 

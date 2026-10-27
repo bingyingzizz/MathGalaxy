@@ -7,5 +7,5 @@
 - prop.constant-sheaf-top　拓扑空间上的常层就是离散空间的层　layer 17
 - thm.sheafification　层化　layer 18
 - prop.inverse-image-constant-sheaf　常层沿拉回不变　layer 18
-- prop.site-properties　site 的层范畴的好性质　layer 19
+- prop.site-properties　景的层范畴的好性质　layer 19
 - prop.sieve-covering-equivalent　覆盖筛的四条等价　layer 19

@@ -1,5 +1,5 @@
 # 赋范空间　`def.normed-space`
-赋范空间（Normed Space）
+赋范空间
 layer 9 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.normed-space)　·　[节点索引](../index.md)
 

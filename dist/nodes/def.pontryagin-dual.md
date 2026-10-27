@@ -1,5 +1,5 @@
 # Pontryagin 对偶　`def.pontryagin-dual`
-Pontryagin 对偶（Pontryagin Dual）
+Pontryagin 对偶
 layer 17 · 定义 · 拓扑阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=def.pontryagin-dual)　·　[节点索引](../index.md)
 

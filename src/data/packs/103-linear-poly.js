@@ -20,7 +20,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'definition',
       label: '一元多项式',
-      title: '一元多项式（Polynomial）',
+      title: '一元多项式',
       regions: ['algebra'],
       tags: ['定义', '代数', '多项式'],
       statement: [
@@ -42,7 +42,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'definition',
       label: '多项式环',
-      title: '多项式环 $K[x]$（Polynomial Ring）',
+      title: '多项式环 $K[x]$',
       regions: ['algebra'],
       tags: ['定义', '代数', '多项式', '环'],
       statement: [
@@ -141,7 +141,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'definition',
       label: '不可约多项式',
-      title: '不可约多项式（Irreducible Polynomial）',
+      title: '不可约多项式',
       regions: ['algebra'],
       tags: ['定义', '代数', '多项式'],
       statement: [
@@ -161,7 +161,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'theorem',
       label: 'K[x] 是唯一分解整环',
-      title: '定理：$K[x]$ 是唯一分解整环（UFD）',
+      title: '定理：$K[x]$ 是唯一分解整环',
       regions: ['algebra'],
       tags: ['定理', '代数', '多项式', '环'],
       statement: [

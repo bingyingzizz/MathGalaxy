@@ -32,7 +32,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '序同构',
-      title: '序同构与序型（Order Isomorphism）',
+      title: '序同构与序型',
       regions: ['order-theory'],
       tags: ['定义', '序', '序同构', '序型'],
       statement: [
@@ -52,7 +52,7 @@ window.MG = window.MG || {};
       cluster: 'set.ordinal',
       type: 'definition',
       label: '序数',
-      title: '序数（von Neumann Ordinal）',
+      title: '序数',
       regions: ['set-theory'],
       tags: ['定义', '序数', '传递集', '良序'],
       statement: [

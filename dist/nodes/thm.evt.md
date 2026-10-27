@@ -1,5 +1,5 @@
 # 最值定理　`thm.evt`
-最值定理（Extreme Value Theorem）
+最值定理
 layer 19 · 定理 · 连续与紧性 · 分析学+拓扑学
 [在星图里打开](../#n=thm.evt)　·　[节点索引](../index.md)
 

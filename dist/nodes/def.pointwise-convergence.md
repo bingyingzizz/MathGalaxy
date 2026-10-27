@@ -1,5 +1,5 @@
 # 逐点收敛　`def.pointwise-convergence`
-逐点收敛（Pointwise Convergence）
+逐点收敛
 layer 14 · 定义 · 函数列、幂级数与初等函数 · 分析学
 [在星图里打开](../#n=def.pointwise-convergence)　·　[节点索引](../index.md)
 

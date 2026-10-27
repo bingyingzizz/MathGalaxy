@@ -1,5 +1,5 @@
 # 零化度　`def.nullity`
-零化度 $\operatorname{null} T$（Nullity）
+零化度 $\operatorname{null} T$
 layer 11 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.nullity)　·　[节点索引](../index.md)
 

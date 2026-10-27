@@ -1,5 +1,5 @@
 # 紧生成空间　`def.compactly-generated`
-紧生成空间 / $k$-空间（Compactly Generated Space）
+紧生成空间 / $k$-空间
 layer 16 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=def.compactly-generated)　·　[节点索引](../index.md)
 

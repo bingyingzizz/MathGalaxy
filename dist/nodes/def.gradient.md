@@ -1,5 +1,5 @@
 # 梯度　`def.gradient`
-梯度（Gradient）
+梯度
 layer 11 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.gradient)　·　[节点索引](../index.md)
 

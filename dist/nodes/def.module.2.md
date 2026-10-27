@@ -1,7 +1,7 @@
 # 模　`def.module`　·　续页（第 2 页）
 [在星图里打开](../#n=def.module)　·　第 1 页 [nodes/def.module.md](./def.module.md)
 
-## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.ring`](../nodes/def.ring.md) 环：用到了定义 环　[proofs/def-dep.module-ring.md](../proofs/def-dep.module-ring.md)
-
-> 续见 [nodes/def.module.3.md](./def.module.3.md)
+## 它能推出什么 / 谁在用它（续）
+- 被 [`prop.module-tensor-universal`](../nodes/prop.module-tensor-universal.md) 张量积对双线性映射万有 用
+- 被 [`thm.freyd-mitchell`](../nodes/thm.freyd-mitchell.md) Freyd–Mitchell 嵌入定理 用
+- 被 [`ex.algebra-categories`](../nodes/ex.algebra-categories.md) 代数的几个范畴 用

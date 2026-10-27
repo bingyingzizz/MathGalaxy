@@ -1,5 +1,5 @@
 # 整值测度　`def.cond-measure`
-整值测度 $M(S,\mathbb{Z})$（Integer-Valued Measures）
+整值测度 $M(S,\mathbb{Z})$
 layer 13 · 定义 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=def.cond-measure)　·　[节点索引](../index.md)
 
@@ -8,6 +8,8 @@ layer 13 · 定义 · 固态阿贝尔群 · 凝聚态数学
 $$M(S, \mathbb{Z}) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ \mathbb{Z}\bigr).$$
 
 更一般地，对任意阿贝尔群 $A$ 记
+
+$$M(S, A) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ A\bigr),$$
 > 陈述续见 [nodes/def.cond-measure.2.md](./def.cond-measure.2.md)
 
 

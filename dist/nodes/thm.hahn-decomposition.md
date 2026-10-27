@@ -1,5 +1,5 @@
 # Hahn 分解定理　`thm.hahn-decomposition`
-Hahn 分解定理（Hahn Decomposition Theorem）
+Hahn 分解定理
 layer 18 · 定理 · 符号测度与分解 · 分析学
 [在星图里打开](../#n=thm.hahn-decomposition)　·　[节点索引](../index.md)
 

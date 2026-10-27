@@ -1,5 +1,5 @@
 # 空集 ∅　`def.empty`
-空集（Empty Set）
+空集
 layer 0 · 定义 · 集合的构造 · 集合论
 [在星图里打开](../#n=def.empty)　·　[节点索引](../index.md)
 

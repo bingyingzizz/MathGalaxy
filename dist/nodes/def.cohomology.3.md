@@ -1,9 +1,8 @@
 # 同调　`def.cohomology`　·　续页（第 3 页）
 [在星图里打开](../#n=def.cohomology)　·　第 1 页 [nodes/def.cohomology.md](./def.cohomology.md)　·　上一页 [nodes/def.cohomology.2.md](./def.cohomology.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- ⇒ [`thm.long-exact`](../nodes/thm.long-exact.md) 长正合列
-- 被 [`prop.cohomology-short-exact`](../nodes/prop.cohomology-short-exact.md) 同调的两条正合列 用
-- 被 [`thm.long-exact`](../nodes/thm.long-exact.md) 长正合列 用
-- 被 [`def.cohomological-functor`](../nodes/def.cohomological-functor.md) 上同调函子 用
-- 被 [`def.quasi-iso`](../nodes/def.quasi-iso.md) 拟同构 用
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.cochain-complex`](../nodes/def.cochain-complex.md) 上链复形：用到了定义 上链复形　[proofs/def-dep.complex-cohomology.md](../proofs/def-dep.complex-cohomology.md)
+- [`def.equalizer`](../nodes/def.equalizer.md) 等化子 / 余等化子：用到了定义 等化子 / 余等化子　[proofs/def-dep.equalizer-cohomology.md](../proofs/def-dep.equalizer-cohomology.md)
+
+> 续见 [nodes/def.cohomology.4.md](./def.cohomology.4.md)

@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '线性映射',
-      title: '线性映射（Linear Map）',
+      title: '线性映射',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -48,7 +48,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '线性同构',
-      title: '线性同构（Linear Isomorphism）',
+      title: '线性同构',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -68,7 +68,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '核与像',
-      title: '核与像（Kernel and Image）',
+      title: '核与像',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -92,7 +92,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '商空间',
-      title: '商空间 $V / U$（Quotient Space）',
+      title: '商空间 $V / U$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -154,7 +154,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '秩',
-      title: '秩 $\\operatorname{rank} T$（Rank）',
+      title: '秩 $\\operatorname{rank} T$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '零化度',
-      title: '零化度 $\\operatorname{null} T$（Nullity）',
+      title: '零化度 $\\operatorname{null} T$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -206,7 +206,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '对偶空间',
-      title: '对偶空间 $V^{\\ast}$（Dual Space）',
+      title: '对偶空间 $V^{\\ast}$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -230,7 +230,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '对偶基',
-      title: '对偶基（Dual Basis）',
+      title: '对偶基',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -252,7 +252,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '零化子',
-      title: '零化子 $U^{0}$（Annihilator）',
+      title: '零化子 $U^{0}$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [

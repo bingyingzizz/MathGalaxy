@@ -18,7 +18,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '函子',
-      title: '函子（Functor）',
+      title: '函子',
       regions: ['category'],
       tags: ['范畴论', '函子', '保持复合'],
       statement: [
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '自然变换',
-      title: '自然变换（Natural Transformation）',
+      title: '自然变换',
       regions: ['category'],
       tags: ['范畴论', '自然变换', '自然性'],
       statement: [
@@ -87,7 +87,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '忠实 / 满 / 全忠实',
-      title: '忠实、满、全忠实函子（Faithful / Full / Fully Faithful）',
+      title: '忠实、满、全忠实函子',
       regions: ['category'],
       tags: ['范畴论', '函子', 'Hom 集'],
       statement: [
@@ -114,7 +114,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '本质满',
-      title: '本质满函子（Essentially Surjective）',
+      title: '本质满函子',
       regions: ['category'],
       tags: ['范畴论', '函子', '同构'],
       statement: [
@@ -132,7 +132,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '范畴等价',
-      title: '范畴等价（Equivalence of Categories）',
+      title: '范畴等价',
       regions: ['category'],
       tags: ['范畴论', '等价', '同构'],
       statement: [

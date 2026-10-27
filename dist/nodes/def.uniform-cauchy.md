@@ -1,5 +1,5 @@
 # 一致 Cauchy 列　`def.uniform-cauchy`
-一致 Cauchy 列（Uniformly Cauchy）
+一致 Cauchy 列
 layer 16 · 定义 · 函数列、幂级数与初等函数 · 分析学
 [在星图里打开](../#n=def.uniform-cauchy)　·　[节点索引](../index.md)
 

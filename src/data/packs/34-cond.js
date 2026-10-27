@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       cluster: 'cond.set',
       type: 'definition',
       label: '凝聚态集',
-      title: '凝聚态集（Condensed Set）',
+      title: '凝聚态集',
       regions: ['condensed'],
       tags: ['凝聚态', '层', '定义'],
       statement: [
@@ -282,7 +282,7 @@ window.MG = window.MG || {};
       cluster: 'cond.ab',
       type: 'definition',
       label: '凝聚态阿贝尔群',
-      title: '凝聚态阿贝尔群（Condensed Abelian Group）',
+      title: '凝聚态阿贝尔群',
       regions: ['condensed'],
       tags: ['凝聚态', '阿贝尔群', '层'],
       statement: [
@@ -362,7 +362,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: 'Grothendieck 范畴',
-      title: 'Grothendieck 范畴（Grothendieck Category）',
+      title: 'Grothendieck 范畴',
       regions: ['homology'],
       tags: ['范畴论', '同调代数', '生成元'],
       statement: [

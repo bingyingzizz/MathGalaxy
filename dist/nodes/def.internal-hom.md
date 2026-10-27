@@ -1,5 +1,5 @@
 # 内 Hom　`def.internal-hom`
-内 Hom（Internal Hom）
+内 Hom
 layer 17 · 定义 · 阿贝尔层 · 同调代数
 [在星图里打开](../#n=def.internal-hom)　·　[节点索引](../index.md)
 

@@ -273,7 +273,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '可缩族',
-      title: '可缩地趋于 x（Shrinks Nicely）',
+      title: '可缩地趋于 x',
       regions: ['analysis'],
       tags: ['定义', '可缩族'],
       statement: [
@@ -321,7 +321,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '正则 Borel 测度',
-      title: '正则 Borel 测度（Regular Borel Measure）',
+      title: '正则 Borel 测度',
       regions: ['analysis'],
       tags: ['定义', '正则', 'Borel 测度'],
       statement: [

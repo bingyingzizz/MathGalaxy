@@ -7,8 +7,8 @@
 $$S \longrightarrow Z[S]^{\blacksquare} \xrightarrow{\ \tilde f\ } A$$
 
 等于 $f$。
-**(iii) 固态复形。** 复形 $C \in D(\operatorname{Cond}(\mathbf{Ab}))$ 叫**固态的**，当且仅当对每个 profinite 集 $S$，自然映射
 
+**(iii) 固态复形。** 复形 $C \in D(\operatorname{Cond}(\mathbf{Ab}))$ 叫**固态的**，当且仅当对每个 profinite 集 $S$，自然映射
 $$\operatorname{RHom}(Z[S]^{\blacksquare}, C) \longrightarrow \operatorname{RHom}(\mathbb{Z}[S], C) = R\Gamma(S, C)$$
 
 是同构。

@@ -1,5 +1,5 @@
 # 偏序集　`def.poset`
-偏序集 / 全序集（Partially Ordered Set）
+偏序集 / 全序集
 layer 5 · 定义 · 序结构 · 序理论
 [在星图里打开](../#n=def.poset)　·　[节点索引](../index.md)
 
@@ -12,13 +12,16 @@ layer 5 · 定义 · 序结构 · 序理论
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.rel`](../nodes/def.rel.md) 关系：用到了定义 关系　[proofs/def-dep.rel-poset.md](../proofs/def-dep.rel-poset.md)
+- …另有入边，续页见 [nodes/def.poset.3.md](./def.poset.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.poset.3.md](./def.poset.3.md)
+- …另有出边，续页见 [nodes/def.poset.4.md](./def.poset.4.md)
 
 refs: Kunen, Set Theory, I.11；Davey & Priestley, Introduction to Lattices and Order
 
-> 说明见 `notes/def.poset.md`
+## 说明
+典型例子：$\langle \mathcal{P}(S), \subseteq \rangle$ 是偏序集但不是全序集；$\langle \mathbb{R}, \le \rangle$ 是全序集。
+
+反对称性是说：只允许「相等」这一种互相 $\le$ 的方式，所以偏序可以看成「$\le$ 的抽象」。
 
 引用：`def.poset`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

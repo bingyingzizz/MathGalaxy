@@ -1,5 +1,5 @@
 # adic 谱 Spa　`def.adic-spectrum`
-adic 谱 $\operatorname{Spa}(A,A^+)$（Adic Spectrum）
+adic 谱 $\operatorname{Spa}(A,A^+)$
 layer 9 · 定义 · adic 空间 · 解析几何
 [在星图里打开](../#n=def.adic-spectrum)　·　[节点索引](../index.md)
 

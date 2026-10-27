@@ -1,5 +1,5 @@
 # 幂集 𝒫(X)　`def.power-set`
-幂集（Power Set）
+幂集
 layer 3 · 定义 · 集合的构造 · 集合论
 [在星图里打开](../#n=def.power-set)　·　[节点索引](../index.md)
 

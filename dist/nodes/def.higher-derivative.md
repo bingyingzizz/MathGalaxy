@@ -1,5 +1,5 @@
 # 高阶导数与 C^k　`def.higher-derivative`
-高阶导数与 $C^{k}$ 类（Higher Derivatives）
+高阶导数与 $C^{k}$ 类
 layer 16 · 定义 · 微分中值定理与 Taylor · 分析学
 [在星图里打开](../#n=def.higher-derivative)　·　[节点索引](../index.md)
 

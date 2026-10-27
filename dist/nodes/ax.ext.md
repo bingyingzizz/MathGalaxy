@@ -1,5 +1,5 @@
 # 外延公理　`ax.ext`
-外延公理（Axiom of Extensionality）
+外延公理
 layer 0 · 公理 · ZFC 公理系统 · 集合论
 [在星图里打开](../#n=ax.ext)　·　[节点索引](../index.md)
 

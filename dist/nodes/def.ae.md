@@ -1,5 +1,5 @@
 # 几乎处处　`def.ae`
-几乎处处（Almost Everywhere, a.e.）
+几乎处处
 layer 16 · 定义 · 测度的构造 · 分析学
 [在星图里打开](../#n=def.ae)　·　[节点索引](../index.md)
 

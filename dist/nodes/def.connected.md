@@ -1,5 +1,5 @@
 # 连通与连通分量　`def.connected`
-连通空间与连通分量（Connectedness）
+连通空间与连通分量
 layer 5 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.connected)　·　[节点索引](../index.md)
 

@@ -25,7 +25,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '群作用',
-      title: '群作用、轨道与稳定子（Group Action）',
+      title: '群作用、轨道与稳定子',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '群作用'],
       statement: [
@@ -114,7 +114,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '符号与交错群',
-      title: '置换的符号与交错群（Sign and Alternating Group）',
+      title: '置换的符号与交错群',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '置换'],
       statement: [
@@ -140,7 +140,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '循环群',
-      title: '循环群（Cyclic Group）',
+      title: '循环群',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '循环群'],
       statement: [
@@ -224,7 +224,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.solvable',
       type: 'definition',
       label: '单群',
-      title: '单群（Simple Group）',
+      title: '单群',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '单群'],
       statement: [
@@ -238,7 +238,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.solvable',
       type: 'definition',
       label: '合成列',
-      title: '合成列与合成因子（Composition Series）',
+      title: '合成列与合成因子',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '合成列'],
       statement: [

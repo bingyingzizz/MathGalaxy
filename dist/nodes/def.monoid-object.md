@@ -1,5 +1,5 @@
 # 幺半群对象　`def.monoid-object`
-幺半群对象（Monoid Object）
+幺半群对象
 layer 13 · 定义 · 范畴里的代数结构 · 范畴论+抽象代数
 [在星图里打开](../#n=def.monoid-object)　·　[节点索引](../index.md)
 

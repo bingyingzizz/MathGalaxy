@@ -1,5 +1,5 @@
 # 特征值与特征向量　`def.eigenvalue`
-特征值与特征向量（Eigenvalue & Eigenvector）
+特征值与特征向量
 layer 11 · 定义 · 特征值与 Jordan 型 · 抽象代数
 [在星图里打开](../#n=def.eigenvalue)　·　[节点索引](../index.md)
 

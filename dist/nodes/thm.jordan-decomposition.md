@@ -1,5 +1,5 @@
 # Jordan 分解定理　`thm.jordan-decomposition`
-Jordan 分解定理（Jordan Decomposition Theorem）
+Jordan 分解定理
 layer 19 · 定理 · 符号测度与分解 · 分析学
 [在星图里打开](../#n=thm.jordan-decomposition)　·　[节点索引](../index.md)
 

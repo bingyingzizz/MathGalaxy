@@ -1,5 +1,5 @@
 # 零集与完备　`def.null-set`
-μ-零集 / 完备测度空间（Null Set & Complete Measure Space）
+μ-零集 / 完备测度空间
 layer 15 · 定义 · 测度的构造 · 分析学
 [在星图里打开](../#n=def.null-set)　·　[节点索引](../index.md)
 
@@ -17,6 +17,8 @@ $$\forall E \in \mathcal{M}, \forall F \subseteq E : \mu(E) = 0 \implies F \in \
 - [`def.measure`](../nodes/def.measure.md) 测度：用到了定义 测度　[proofs/def-dep.measure-null-set.md](../proofs/def-dep.measure-null-set.md)
 
 ## 它能推出什么 / 谁在用它
+- ⇒ [`thm.completion`](../nodes/thm.completion.md) 完备化定理
+
 - …另有出边，续页见 [nodes/def.null-set.2.md](./def.null-set.2.md)
 
 refs: Halmos, Measure Theory, §11

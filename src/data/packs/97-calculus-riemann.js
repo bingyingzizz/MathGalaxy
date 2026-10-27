@@ -25,7 +25,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'definition',
       label: '分割',
-      title: '分割与加细（Partition）',
+      title: '分割与加细',
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
@@ -65,7 +65,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'definition',
       label: '上和与下和',
-      title: '上和 $U(f, P)$ 与下和 $L(f, P)$（Darboux Sums）',
+      title: '上和 $U(f, P)$ 与下和 $L(f, P)$',
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
@@ -264,7 +264,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'proposition',
       label: '换元积分',
-      title: '命题：换元公式（Substitution）',
+      title: '命题：换元公式',
       regions: ['analysis'],
       tags: ['命题', '积分'],
       statement: [
@@ -280,7 +280,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'proposition',
       label: '分部积分',
-      title: '命题：分部积分公式（Integration by Parts）',
+      title: '命题：分部积分公式',
       regions: ['analysis'],
       tags: ['命题', '积分'],
       statement: [
@@ -316,7 +316,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'definition',
       label: '反常积分',
-      title: '反常积分：无穷区间与无界函数（Improper Integral）',
+      title: '反常积分：无穷区间与无界函数',
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [

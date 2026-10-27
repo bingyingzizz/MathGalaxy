@@ -1,5 +1,5 @@
 # 初等变换与初等矩阵　`def.elementary-matrix`
-初等变换与初等矩阵（Elementary Matrices）
+初等变换与初等矩阵
 layer 10 · 定义 · 矩阵与行列式 · 抽象代数
 [在星图里打开](../#n=def.elementary-matrix)　·　[节点索引](../index.md)
 

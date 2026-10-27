@@ -26,7 +26,7 @@ window.MG = window.MG || {};
       cluster: 'analytic.dual',
       type: 'definition',
       label: '6-函子形式',
-      title: '6-函子形式（Six-Functor Formalism）',
+      title: '6-函子形式',
       regions: ['analytic'],
       tags: ['定义', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, p. 72'],

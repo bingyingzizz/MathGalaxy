@@ -1,5 +1,5 @@
 # 阿基米德的 ε 形式与取整　`cor.archimedean-epsilon`
-推论：$1/n < \varepsilon$ 与取整函数（Archimedean Corollaries）
+推论：$1/n < \varepsilon$ 与取整函数
 layer 15 · 推论 · 实数的运算与不等式 · 分析学
 [在星图里打开](../#n=cor.archimedean-epsilon)　·　[节点索引](../index.md)
 
@@ -15,11 +15,11 @@ $$n \le x < n + 1.$$
 > 陈述续见 [nodes/cor.archimedean-epsilon.2.md](./cor.archimedean-epsilon.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.geometric-series`](../nodes/thm.geometric-series.md) 几何级数
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/cor.archimedean-epsilon.3.md](./cor.archimedean-epsilon.3.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/cor.archimedean-epsilon.4.md](./cor.archimedean-epsilon.4.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 1
 

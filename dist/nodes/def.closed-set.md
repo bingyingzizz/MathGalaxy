@@ -1,5 +1,5 @@
 # 闭集与闭包　`def.closed-set`
-闭集 / 闭包 / 稠密（Closed Set, Closure）
+闭集 / 闭包 / 稠密
 layer 5 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.closed-set)　·　[节点索引](../index.md)
 

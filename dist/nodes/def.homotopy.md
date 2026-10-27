@@ -1,5 +1,5 @@
 # 同伦　`def.homotopy`
-同伦（Homotopy）
+同伦
 layer 11 · 定义 · 复形与导出三角 · 同调代数
 [在星图里打开](../#n=def.homotopy)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 差集与补集　`def.diff-complement`
-差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）
+差集 / 补集 / 对称差
 layer 2 · 定义 · 集合的构造 · 集合论
 [在星图里打开](../#n=def.diff-complement)　·　[节点索引](../index.md)
 
@@ -15,11 +15,11 @@ $$A \setminus B = A \cap B^{c}, \qquad (A^{c})^{c} = A, \qquad (\bigcup_i A_i)^{
 
 最后一条就是 **De Morgan 律**。
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.closed-set`](../nodes/def.closed-set.md) 闭集与闭包 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.diff-complement.2.md](./def.diff-complement.2.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.diff-complement.3.md](./def.diff-complement.3.md)
 
 refs: Kunen, Set Theory, I.5
 

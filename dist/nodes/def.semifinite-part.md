@@ -1,5 +1,5 @@
 # 半有限部分　`def.semifinite-part`
-半有限部分（Semifinite Part of a Measure）
+半有限部分
 layer 16 · 定义 · 测度的构造 · 分析学
 [在星图里打开](../#n=def.semifinite-part)　·　[节点索引](../index.md)
 

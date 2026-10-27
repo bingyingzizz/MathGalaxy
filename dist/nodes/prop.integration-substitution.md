@@ -1,5 +1,5 @@
 # 换元积分　`prop.integration-substitution`
-命题：换元公式（Substitution）
+命题：换元公式
 layer 22 · 命题 · Riemann 积分 · 分析学
 [在星图里打开](../#n=prop.integration-substitution)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 范畴　`def.category`
-范畴（Category）
+范畴
 layer 7 · 定义 · 范畴与图 · 范畴论
 [在星图里打开](../#n=def.category)　·　[节点索引](../index.md)
 
@@ -12,12 +12,12 @@ $$( \mathcal{O}, M, s, t, \circ, i )$$
 **复合** $\circ$ 定义在可复合的态射对上。记
 
 $$M \times_{s,t} M = \{ (f, g) \in M \times M : s(f) = t(g) \}$$
+
+这是「$g$ 的靶等于 $f$ 的源」的全部态射对；$\circ : M \times_{s,t} M \to M$ 把 $(f, g)$ 送到 $f \circ g$，并满足**结合律**
 > 陈述续见 [nodes/def.category.2.md](./def.category.2.md)
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.graph`](../nodes/def.graph.md) 图：用到了定义 图　[proofs/def-dep.graph-category.md](../proofs/def-dep.graph-category.md)
-
 - …另有入边，续页见 [nodes/def.category.3.md](./def.category.3.md)
 
 ## 它能推出什么 / 谁在用它

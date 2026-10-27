@@ -1,5 +1,5 @@
 # 完备性的六条等价　`thm.completeness-equivalent`
-定理：下列六条彼此等价（TFAE）
+定理：下列六条彼此等价
 layer 19 · 定理 · 实数完备性的等价刻画 · 分析学
 [在星图里打开](../#n=thm.completeness-equivalent)　·　[节点索引](../index.md)
 
@@ -10,6 +10,8 @@ layer 19 · 定理 · 实数完备性的等价刻画 · 分析学
 **(2) 单调有界定理**：递增有上界的数列收敛。
 
 **(3) 闭区间套定理**：嵌套的闭区间若长度趋于零，交集恰含一个点。
+
+**(4) Bolzano–Weierstrass**：每个有界数列都有收敛子列。
 > 陈述续见 [nodes/thm.completeness-equivalent.2.md](./thm.completeness-equivalent.2.md)
 
 

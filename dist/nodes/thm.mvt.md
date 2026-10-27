@@ -1,5 +1,5 @@
 # Lagrange 中值定理　`thm.mvt`
-Lagrange 中值定理（Mean Value Theorem）
+Lagrange 中值定理
 layer 21 · 定理 · 微分中值定理与 Taylor · 分析学
 [在星图里打开](../#n=thm.mvt)　·　[节点索引](../index.md)
 
@@ -14,6 +14,7 @@ $$f(b) - f(a) = f'(\xi)\,(b - a)$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.mixed-partials`](../nodes/thm.mixed-partials.md) 混合偏导相等
+- ⇒ [`thm.mean-value-multi`](../nodes/thm.mean-value-multi.md) 多元中值定理
 
 - …另有出边，续页见 [nodes/thm.mvt.2.md](./thm.mvt.2.md)
 

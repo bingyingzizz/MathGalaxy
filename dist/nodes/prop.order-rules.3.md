@@ -3,5 +3,3 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.ordered-field`](../nodes/def.ordered-field.md) 有序域：有序域公理 $\implies$ 不等式运算　[proofs/imp.order-rules.md](../proofs/imp.order-rules.md)
-
-> 续见 [nodes/prop.order-rules.4.md](./prop.order-rules.4.md)

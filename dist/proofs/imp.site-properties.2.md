@@ -1,7 +1,7 @@
 # 逐点继承 $\mathbf{Set}$ 的性质
 `imp.site-properties` · 推出 · strong 边 · 根 `../`
 
-`prop.filtered-exact` 滤过余极限正合 + `def.universal-colimit` 万有关系 + `thm.sheafification` 层化 → `prop.site-properties` site 的层范畴的好性质
+`prop.filtered-exact` 滤过余极限正合 + `def.universal-colimit` 万有关系 + `thm.sheafification` 层化 → `prop.site-properties` 景的层范畴的好性质
 
 第 3 条具体证一下（其余同法）。设 $F \to G$ 是层范畴里的满态射。取它在层范畴中的满-单分解 $F \to I \rightarrowtail G$。对该分解层化（层上的层化是恒等），并用满态射的右可消性得 $I \to G$ 既满又单，于是是同构（前一条命题），所以 $I \cong G$ 落在 $F$ 的像里。
 

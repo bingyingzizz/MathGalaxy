@@ -1,5 +1,5 @@
 # 基本类　`def.fundamental-class`
-基本类（Fundamental Class）
+基本类
 layer 14 · 定义 · 集合族与 σ-代数 · 分析学+集合论
 [在星图里打开](../#n=def.fundamental-class)　·　[节点索引](../index.md)
 

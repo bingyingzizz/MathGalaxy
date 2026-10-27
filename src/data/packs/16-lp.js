@@ -372,7 +372,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'definition',
       label: '共轭指数',
-      title: '共轭指数（Conjugate Exponents）',
+      title: '共轭指数',
       regions: ['analysis'],
       tags: ['定义', '共轭', '对偶'],
       statement: [

@@ -99,7 +99,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '严格态射',
-      title: '严格态射（Strict Morphism）',
+      title: '严格态射',
       regions: ['category'],
       tags: ['范畴论', '严格', '余像', '像'],
       statement: [

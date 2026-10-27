@@ -1,5 +1,5 @@
 # 完备　`def.complete`
-完备距离空间（Complete Metric Space）
+完备距离空间
 layer 14 · 定义 · 度量空间 · 拓扑学
 [在星图里打开](../#n=def.complete)　·　[节点索引](../index.md)
 

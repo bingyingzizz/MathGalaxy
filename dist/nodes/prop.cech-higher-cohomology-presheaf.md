@@ -3,7 +3,7 @@
 layer 19 · 命题 · 层上同调 · 同调代数
 [在星图里打开](../#n=prop.cech-higher-cohomology-presheaf)　·　[节点索引](../index.md)
 
-设 $M$ 是 site 上的阿贝尔层、$n \ne 0$，并把 $H^{n}(M)$ 记作预层 $U \mapsto H^{n}(U, M)$。则
+设 $M$ 是景上的阿贝尔层、$n \ne 0$，并把 $H^{n}(M)$ 记作预层 $U \mapsto H^{n}(U, M)$。则
 > 陈述续见 [nodes/prop.cech-higher-cohomology-presheaf.2.md](./prop.cech-higher-cohomology-presheaf.2.md)
 
 

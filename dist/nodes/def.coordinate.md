@@ -1,5 +1,5 @@
 # 坐标　`def.coordinate`
-坐标与有序基（Coordinates）
+坐标与有序基
 layer 9 · 定义 · 向量空间的基 · 抽象代数
 [在星图里打开](../#n=def.coordinate)　·　[节点索引](../index.md)
 

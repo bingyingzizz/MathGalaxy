@@ -455,7 +455,7 @@ MG.clusters = [
     en: 'Sheaves and Topologies',
     parent: 'category',
     hub: 'def.sheaf',
-    desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。'
+    desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → 景的层范畴的好性质。'
   },
   {
     id: 'cat.topos',
@@ -580,6 +580,63 @@ MG.clusters = [
     parent: 'analytic',
     hub: 'thm.poincare-solid',
     desc: '造出 6-函子形式与固态 Serre 对偶：开浸入的 $j_!$ → $f_! = f^{\\mathrm{ad}/Y}_* j_!$ → $f^!$ 的扭转与平坦基变换 → 正则闭浸入与光滑映射的对偶复形 → 迹配对。来源：Clausen–Scholze 讲义 Lecture XI。'
+  },
+
+  {
+    id: 'hom.module',
+    name: '模的张量积与标量限制',
+    en: 'Tensor Products and Scalar Restriction',
+    parent: 'homology',
+    hub: 'def.tensor-module',
+    desc: '把「换环」这件事做成一套装置：$M \\otimes_R N$ 的构造与万有性质 → $\\operatorname{Hom}$-张量伴随 → 标量限制与标量扩张的伴随对 → 交换环上的对称性与结合律。后面平坦、Tor、基变换全站在这里。'
+  },
+  {
+    id: 'hom.flat',
+    name: '平坦模',
+    en: 'Flat Modules',
+    parent: 'homology',
+    hub: 'def.flat-module',
+    desc: '「张量不伤正合」的模：定义与一族等价判据 → 自由模平坦、直和项平坦、整环上平坦即无挠 → Lambek 判据（只需对有限生成理想检验）→ Lazard 定理（平坦 = 有限生成自由模的滤过余极限）→ Watts 定理（保直和的正合函子都是张量）。'
+  },
+  {
+    id: 'hom.injective',
+    name: '内射模与可除群',
+    en: 'Injective Modules and Divisible Groups',
+    parent: 'homology',
+    hub: 'thm.baer-criterion',
+    desc: '造出「足够多内射」这件事：内射对象与提升性质 → Baer 判据（只需对理想检验）→ $\\mathbb{Z}$-模即阿贝尔群时内射等价于可除 → $R$-Mod 有足够多内射（嵌入 $\\operatorname{Hom}_{\\mathbb{Z}}(R,\\mathbb{Q}/\\mathbb{Z})$ 的对偶）。这是层上同调能定义的地基。'
+  },
+  {
+    id: 'hom.resolution',
+    name: '消解与维数',
+    en: 'Resolutions and Dimensions',
+    parent: 'homology',
+    hub: 'thm.comparison-theorem',
+    desc: '把「算导出函子」变成可操作的机器：投射/内射消解 → 删除消解与比较定理（消解在同伦意义下唯一）→ 马蹄引理（短正合列的三个消解拼成双复形）→ 合冲 → 维数转移 → 投射维数与内射维数。'
+  },
+  {
+    id: 'hom.group',
+    name: '群上同调',
+    en: 'Group Cohomology',
+    parent: 'homology',
+    hub: 'def.group-cohomology',
+    desc: '从群作用造出不变量：群环与 $G$-模 → 不变量函子 $(-)^G$ 及其导出函子 $H^n(G,-)$ → 标准（bar）消解 → $H^1$ 与半直积、$H^2$ 与群扩张、$2$-上圈 → 低次正合序列。'
+  },
+  {
+    id: 'topology.paracompact',
+    name: '仿紧与单位分解',
+    en: 'Paracompact Spaces and Partitions of Unity',
+    parent: 'topology',
+    hub: 'def.paracompact',
+    desc: '把「局部有限」这件技术做成可用的工具：仿紧的定义与等价刻画 → 收缩引理 → Hausdorff 仿紧空间正规 → 单位分解的存在 → 它在分析（光滑化）与层论（Čech 等于层上同调）里的两个用途。'
+  },
+  {
+    id: 'topology.metrizable',
+    name: '可度量化',
+    en: 'Metrizability',
+    parent: 'topology',
+    hub: 'thm.urysohn-metrization',
+    desc: '回答「这个拓扑能不能由一个度量给出」：正则 + 第二可数 ⇒ 可度量化（Urysohn）→ Nagata–Smirnov 与 Bing 的充要条件（局部有限/离散的基）→ 度量化与仿紧、紧性的关系。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

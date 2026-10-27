@@ -1,5 +1,5 @@
 # 投射有限空间　`def.profinite`
-投射有限空间（Profinite Space）
+投射有限空间
 layer 12 · 定义 · Stone 与 Stonean · 拓扑学
 [在星图里打开](../#n=def.profinite)　·　[节点索引](../index.md)
 

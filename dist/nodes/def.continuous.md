@@ -1,5 +1,5 @@
 # 连续　`def.continuous`
-连续（Continuity）
+连续
 layer 14 · 定义 · 实数与极限 · 分析学+拓扑学
 [在星图里打开](../#n=def.continuous)　·　[节点索引](../index.md)
 
@@ -13,13 +13,13 @@ $f$ **连续**（在 $\mathbb{R}$ 上连续）当且仅当它在每一点连续�
 
 **一致连续**是更强的要求：$\delta$ 只依赖 $\varepsilon$，不依赖 $x_0$。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.continuous-arithmetic`](../nodes/prop.continuous-arithmetic.md) 连续函数的运算
-
-- …另有出边，续页见 [nodes/def.continuous.3.md](./def.continuous.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-continuous.md](../proofs/def-link.abs-continuous.md)
+
 - …另有入边，续页见 [nodes/def.continuous.2.md](./def.continuous.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.continuous.3.md](./def.continuous.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 4
 

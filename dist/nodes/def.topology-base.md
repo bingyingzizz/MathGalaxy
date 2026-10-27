@@ -1,5 +1,5 @@
 # 基与子基　`def.topology-base`
-拓扑的基 / 子基（Basis, Subbasis）
+拓扑的基 / 子基
 layer 5 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.topology-base)　·　[节点索引](../index.md)
 

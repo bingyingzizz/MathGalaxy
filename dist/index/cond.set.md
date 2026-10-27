@@ -14,8 +14,7 @@
 - prop.fchaus-sheaf　FCHaus 上层的判据　layer 17
 - prop.cond-epi　凝聚态集满态射的判据　layer 17
 - prop.cond-internal-hom　内部 Hom 的函数空间刻画　layer 17
-- thm.qcqs-chaus-equiv　qc 与 qcqs 的判定　layer 17
+- thm.qcqs-chaus-equiv　拟紧 与 拟紧拟分离 的判定　layer 17
 - lem.weak-hausdorff-qseparated　弱 Hausdorff 推出 拟分离　layer 17
-- lem.qseparated-ind-inclusions　拟分离即含入的滤过余极限　layer 17
 
 > 续见 `index/cond.set.2.md`

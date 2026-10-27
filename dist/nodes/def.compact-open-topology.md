@@ -1,5 +1,5 @@
 # 紧开拓扑　`def.compact-open-topology`
-紧开拓扑（Compact-Open Topology）
+紧开拓扑
 layer 15 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=def.compact-open-topology)　·　[节点索引](../index.md)
 

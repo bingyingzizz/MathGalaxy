@@ -1,5 +1,5 @@
 # 环与代数　`def.set-ring`
-环与代数（Ring, Algebra）
+环与代数
 layer 2 · 定义 · 集合族与 σ-代数 · 分析学
 [在星图里打开](../#n=def.set-ring)　·　[节点索引](../index.md)
 

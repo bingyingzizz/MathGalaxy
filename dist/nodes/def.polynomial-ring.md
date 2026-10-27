@@ -1,5 +1,5 @@
 # 多项式环　`def.polynomial-ring`
-多项式环 $K[x]$（Polynomial Ring）
+多项式环 $K[x]$
 layer 9 · 定义 · 多项式与因式分解 · 抽象代数
 [在星图里打开](../#n=def.polynomial-ring)　·　[节点索引](../index.md)
 

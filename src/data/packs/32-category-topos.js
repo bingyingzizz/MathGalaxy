@@ -4,7 +4,7 @@
    第八团：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理
    → 拟紧 / 拟分离 → 预拓扑斯由拓扑斯唯一确定 → 拓扑斯的态射。
 
-   依赖顺序：预拓扑斯是「商与余积都规规矩矩」的范畴；配上预标准拓扑变成 site；
+   依赖顺序：预拓扑斯是「商与余积都规规矩矩」的范畴；配上预标准拓扑变成景；
    再加一个小生成元集就是拓扑斯；Giraud 定理给出四个等价说法。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '预拓扑斯',
-      title: '预拓扑斯（Pretopos）',
+      title: '预拓扑斯',
       regions: ['category'],
       tags: ['范畴论', '预拓扑斯', '正合'],
       statement: [
@@ -33,7 +33,7 @@ window.MG = window.MG || {};
       notes: [
         '第 4 条**不是独立的** —— 它可以由前三条推出，所以有些课本只写三条。写下来的好处是提醒一件事：**在这里满态射自动是正则的**，于是「满」与「商映射」是同一件事。',
         '标准事实：**单态射可以通过极限来定义**（$i$ 是单态射 $\\iff$ 那个方形是笛卡尔的），而拉回与极限都保持单态射；这保证了推出也保单态射 —— 第 2、3 条里那些「不交」「有效」才有意义。',
-        '例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何 site 的层范畴都是预拓扑斯。'
+        '例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何景的层范畴都是预拓扑斯。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '预标准拓扑',
-      title: '预标准拓扑（Precanonical Topology）',
+      title: '预标准拓扑',
       regions: ['category'],
       tags: ['范畴论', '预拓扑斯', '预标准'],
       statement: [
@@ -96,7 +96,7 @@ window.MG = window.MG || {};
         '',
         '$$\\coprod_{i \\in I} X_{i} \\longrightarrow X$$',
         '',
-        '是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个 site。'
+        '是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个景。'
       ].join('\n'),
       notes: '生成它的其实是两类覆盖：**有限不交并**（$\\coprod_{i \\in I} X_{i} \\cong X$）与**满射** $(X_{i} \\to X)$。名字里的「预」是因为它比标准拓扑**粗** —— 但仍然是次标准的。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
@@ -175,7 +175,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '生成元集',
-      title: '生成元集与生成元（Generators）',
+      title: '生成元集与生成元',
       regions: ['category'],
       tags: ['范畴论', '生成元', '忠实'],
       statement: [
@@ -195,7 +195,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拓扑斯',
-      title: '拓扑斯（Topos）',
+      title: '拓扑斯',
       regions: ['category'],
       tags: ['范畴论', '拓扑斯'],
       statement: [
@@ -208,7 +208,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。',
-        '例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；site 的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**',
+        '例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；景的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**',
         '⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
         '',
         '1. $\\mathcal{T}$ 是拓扑斯；',
         '2. $\\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；',
-        '3. 存在 site $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；',
+        '3. 存在景 $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；',
         '4. 存在范畴使 $\\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。'
       ].join('\n'),
       notes: [
@@ -272,7 +272,7 @@ window.MG = window.MG || {};
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。',
       notes: [
         ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
-'这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
+'这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -296,11 +296,11 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拟紧对象',
-      title: '拟紧对象（Quasi-Compact Object）',
+      title: '拟紧对象',
       regions: ['category'],
       tags: ['范畴论', '拟紧', '紧性'],
       statement: [
-        'site $\\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \\to X)_{i \\in I}$，都存在**有限**的 $J \\subseteq I$，使 $(X_{i} \\to X)_{i \\in J}$ 生成的筛**也是**覆盖筛。',
+        '景 $\\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \\to X)_{i \\in I}$，都存在**有限**的 $J \\subseteq I$，使 $(X_{i} \\to X)_{i \\in J}$ 生成的筛**也是**覆盖筛。',
         '',
         '在拓扑斯中，等价的说法是：任给满射 $\\coprod_{i \\in I} X_{i} \\to X$，都存在有限 $J \\subseteq I$ 使 $\\coprod_{i \\in J} X_{i} \\to X$ 仍是满射。'
       ].join('\n'),
@@ -318,12 +318,12 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '拟紧', '覆盖'],
       statement: [
-        '1. site $\\mathcal{C}$ 中 $X$ 拟紧 $\\iff$ $X$ 在标准拓扑下拟紧；',
+        '1. 景 $\\mathcal{C}$ 中 $X$ 拟紧 $\\iff$ $X$ 在标准拓扑下拟紧；',
         '2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；',
         '3. 预拓扑斯 $\\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\\iff$ 存在满射 $X \\to F$ 且 $X \\in \\mathcal{C}$。'
       ].join('\n'),
       notes: [
-        ['**逐条证明。**','**1.** site 里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
+        ['**逐条证明。**','**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
 '第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -334,7 +334,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拟分离对象',
-      title: '拟分离对象（Quasi-Separated Object）',
+      title: '拟分离对象',
       regions: ['category'],
       tags: ['范畴论', '拟分离', '纤维积'],
       statement: [
@@ -364,7 +364,7 @@ window.MG = window.MG || {};
         '',
         '给出 $\\mathcal{C}$ 与「$\\mathcal{C}$ 上**拟紧且拟分离**的层」所成范畴之间的**等价**。'
       ].join('\n'),
-      notes: '也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ site $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。',
+      notes: '也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ 景 $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -374,7 +374,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拓扑斯的态射',
-      title: '拓扑斯的态射（Morphism of Toposes）',
+      title: '拓扑斯的态射',
       regions: ['category'],
       tags: ['范畴论', '拓扑斯', '几何态射'],
       statement: [

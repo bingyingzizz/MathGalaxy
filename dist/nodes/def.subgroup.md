@@ -1,5 +1,5 @@
 # 子群　`def.subgroup`
-子群（Subgroup）
+子群
 layer 7 · 定义 · 代数结构 · 抽象代数
 [在星图里打开](../#n=def.subgroup)　·　[节点索引](../index.md)
 

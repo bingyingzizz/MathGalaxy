@@ -3,7 +3,7 @@
 layer 16 · 命题 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=prop.constant-sheaf-adjunction)　·　[节点索引](../index.md)
 
-设 $E$ 是集合、$F$ 是 site $\mathcal{C}$ 上的层。则
+设 $E$ 是集合、$F$ 是景 $\mathcal{C}$ 上的层。则
 > 陈述续见 [nodes/prop.constant-sheaf-adjunction.2.md](./prop.constant-sheaf-adjunction.2.md)
 
 

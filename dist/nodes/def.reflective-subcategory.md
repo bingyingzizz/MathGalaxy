@@ -1,5 +1,5 @@
 # 反射子范畴　`def.reflective-subcategory`
-反射子范畴（Reflective Subcategory）
+反射子范畴
 layer 10 · 定义 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=def.reflective-subcategory)　·　[节点索引](../index.md)
 
@@ -9,13 +9,13 @@ layer 10 · 定义 · 伴随与反射 · 范畴论
 > 陈述续见 [nodes/def.reflective-subcategory.2.md](./def.reflective-subcategory.2.md)
 
 
-## 它能推出什么 / 谁在用它
-- 被 [`prop.hausdorff-reflective`](../nodes/prop.hausdorff-reflective.md) Hausdorff 空间是反射子范畴 用
-
-- …另有出边，续页见 [nodes/def.reflective-subcategory.4.md](./def.reflective-subcategory.4.md)
-
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.adjoint`](../nodes/def.adjoint.md) 伴随函子：用到了定义 伴随函子　[proofs/def-dep.adjoint-reflective.md](../proofs/def-dep.adjoint-reflective.md)
+
 - …另有入边，续页见 [nodes/def.reflective-subcategory.3.md](./def.reflective-subcategory.3.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.reflective-subcategory.4.md](./def.reflective-subcategory.4.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.5
 

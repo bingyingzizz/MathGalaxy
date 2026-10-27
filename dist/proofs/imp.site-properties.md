@@ -1,7 +1,7 @@
 # 逐点继承 $\mathbf{Set}$ 的性质
 `imp.site-properties` · 推出 · strong 边 · 根 `../`
 
-`prop.filtered-exact` 滤过余极限正合 + `def.universal-colimit` 万有关系 + `thm.sheafification` 层化 → `prop.site-properties` site 的层范畴的好性质
+`prop.filtered-exact` 滤过余极限正合 + `def.universal-colimit` 万有关系 + `thm.sheafification` 层化 → `prop.site-properties` 景的层范畴的好性质
 
 几条性质在 $\mathbf{Set}$ 里都是熟知的：余积就是不交并（万有）、满射就是像的商（正则）、滤过余极限与有限极限交换。
 

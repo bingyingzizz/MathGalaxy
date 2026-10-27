@@ -1,5 +1,5 @@
 # 绝对值 |x|　`def.abs`
-绝对值 $|x|$（Absolute Value）
+绝对值 $|x|$
 layer 9 · 定义 · 实数的运算与不等式 · 集合论+分析学
 [在星图里打开](../#n=def.abs)　·　[节点索引](../index.md)
 

@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'topo.stone',
       type: 'definition',
       label: '布尔环',
-      title: '布尔环（Boolean Ring）',
+      title: '布尔环',
       regions: ['topology', 'algebra'],
       tags: ['拓扑', 'Stone 空间', '布尔环', '幂等'],
       statement: [

@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '伴随函子',
-      title: '伴随函子（Adjoint Functors）',
+      title: '伴随函子',
       regions: ['category'],
       tags: ['范畴论', '伴随', 'Hom 集'],
       statement: [
@@ -56,7 +56,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '单位与余单位',
-      title: '单位与余单位（Unit and Counit）',
+      title: '单位与余单位',
       regions: ['category'],
       tags: ['范畴论', '伴随', '三角等式'],
       statement: [
@@ -177,7 +177,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'theorem',
       label: '伴随函子定理',
-      title: '伴随函子定理（SAFT）',
+      title: '伴随函子定理',
       regions: ['category'],
       tags: ['范畴论', '伴随', '完备'],
       statement: [
@@ -201,7 +201,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '逗号范畴',
-      title: '逗号范畴（Comma Category）',
+      title: '逗号范畴',
       regions: ['category'],
       tags: ['范畴论', '逗号范畴', '辅助范畴'],
       statement: [
@@ -236,7 +236,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '反射子范畴',
-      title: '反射子范畴（Reflective Subcategory）',
+      title: '反射子范畴',
       regions: ['category'],
       tags: ['范畴论', '反射', '满子范畴'],
       statement: [
@@ -287,7 +287,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: 'Kan 延拓',
-      title: 'Kan 延拓（Kan Extension）',
+      title: 'Kan 延拓',
       regions: ['category'],
       tags: ['范畴论', 'Kan 延拓', '伴随'],
       statement: [

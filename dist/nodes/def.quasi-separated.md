@@ -1,5 +1,5 @@
 # 拟分离对象　`def.quasi-separated`
-拟分离对象（Quasi-Separated Object）
+拟分离对象
 layer 16 · 定义 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=def.quasi-separated)　·　[节点索引](../index.md)
 

@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'definition',
       label: '局部极值',
-      title: '局部极大与局部极小（Local Extremum）',
+      title: '局部极大与局部极小',
       regions: ['analysis'],
       tags: ['定义', '导数'],
       statement: [
@@ -75,7 +75,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'theorem',
       label: 'Lagrange 中值定理',
-      title: 'Lagrange 中值定理（Mean Value Theorem）',
+      title: 'Lagrange 中值定理',
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
@@ -165,7 +165,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'definition',
       label: '高阶导数与 C^k',
-      title: '高阶导数与 $C^{k}$ 类（Higher Derivatives）',
+      title: '高阶导数与 $C^{k}$ 类',
       regions: ['analysis'],
       tags: ['定义', '导数'],
       statement: [
@@ -185,7 +185,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'definition',
       label: '凸函数',
-      title: '凸函数与 Jensen 不等式（Convex Function）',
+      title: '凸函数与 Jensen 不等式',
       regions: ['analysis', 'order-theory'],
       tags: ['定义', '导数', '凸性'],
       statement: [

@@ -86,7 +86,7 @@ window.MG = window.MG || {};
       cluster: 'topo.chaus',
       type: 'definition',
       label: '自由紧 Hausdorff 空间',
-      title: '自由紧 Hausdorff 空间（Free Compact Hausdorff Space）',
+      title: '自由紧 Hausdorff 空间',
       regions: ['topology'],
       tags: ['范畴论', '自由', 'Stone–Čech'],
       statement: [
@@ -134,7 +134,7 @@ window.MG = window.MG || {};
       cluster: 'topo.chaus',
       type: 'definition',
       label: '投射 / 内射对象',
-      title: '投射对象与内射对象（Projective / Injective Object）',
+      title: '投射对象与内射对象',
       regions: ['topology'],
       tags: ['范畴论', '投射', '提升'],
       statement: [
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       cluster: 'topo.chaus',
       type: 'definition',
       label: '自由表示',
-      title: '自由表示（Free Presentation）',
+      title: '自由表示',
       regions: ['topology'],
       tags: ['范畴论', '商', '等价关系'],
       statement: [
@@ -232,7 +232,7 @@ window.MG = window.MG || {};
       cluster: 'topo.stone',
       type: 'definition',
       label: '全不连通与 Stone 空间',
-      title: 'Stone 空间与 Stonean 空间（Stone / Stonean Space）',
+      title: 'Stone 空间与 Stonean 空间',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '不连通'],
       statement: [
@@ -331,7 +331,7 @@ window.MG = window.MG || {};
       cluster: 'topo.stone',
       type: 'definition',
       label: '投射有限空间',
-      title: '投射有限空间（Profinite Space）',
+      title: '投射有限空间',
       regions: ['topology'],
       tags: ['范畴论', '投射有限', '有向极限'],
       statement: [

@@ -1,5 +1,5 @@
 # 有限可加测度　`def.finitely-additive`
-有限可加测度（Finitely Additive Measure）
+有限可加测度
 layer 15 · 定义 · 测度的构造 · 分析学
 [在星图里打开](../#n=def.finitely-additive)　·　[节点索引](../index.md)
 

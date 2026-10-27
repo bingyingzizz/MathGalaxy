@@ -1,5 +1,5 @@
 # 分割　`def.partition`
-分割与加细（Partition）
+分割与加细
 layer 14 · 定义 · Riemann 积分 · 分析学
 [在星图里打开](../#n=def.partition)　·　[节点索引](../index.md)
 
@@ -15,8 +15,7 @@ $$\|P\| := \max_{1 \le i \le n} \Delta x_i$$
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.riemann-sum`](../nodes/def.riemann-sum.md) Riemann 和 用
-
-- …另有出边，续页见 [nodes/def.partition.3.md](./def.partition.3.md)
+- 被 [`def.darboux-sum`](../nodes/def.darboux-sum.md) 上和与下和 用
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.partition.2.md](./def.partition.2.md)

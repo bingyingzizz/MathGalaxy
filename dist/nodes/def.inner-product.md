@@ -1,5 +1,5 @@
 # 内积　`def.inner-product`
-内积与内积空间（Inner Product Space）
+内积与内积空间
 layer 9 · 定义 · 内积空间与正交性 · 抽象代数
 [在星图里打开](../#n=def.inner-product)　·　[节点索引](../index.md)
 

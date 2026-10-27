@@ -1,5 +1,5 @@
 # 连续映射　`def.continuous-map`
-连续映射（Continuous Map）
+连续映射
 layer 5 · 定义 · 拓扑空间 · 拓扑学+分析学
 [在星图里打开](../#n=def.continuous-map)　·　[节点索引](../index.md)
 

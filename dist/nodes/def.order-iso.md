@@ -1,5 +1,5 @@
 # 序同构　`def.order-iso`
-序同构与序型（Order Isomorphism）
+序同构与序型
 layer 6 · 定义 · 序结构 · 序理论
 [在星图里打开](../#n=def.order-iso)　·　[节点索引](../index.md)
 

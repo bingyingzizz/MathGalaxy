@@ -1,5 +1,5 @@
 # 区间　`def.interval`
-区间（Interval）
+区间
 layer 13 · 定义 · 实数与极限 · 分析学+序理论
 [在星图里打开](../#n=def.interval)　·　[节点索引](../index.md)
 

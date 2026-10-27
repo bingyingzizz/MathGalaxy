@@ -13,7 +13,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '偏序集',
-      title: '偏序集 / 全序集（Partially Ordered Set）',
+      title: '偏序集 / 全序集',
       regions: ['order-theory'],
       tags: ['定义', '序'],
       statement: [
@@ -39,7 +39,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '链',
-      title: '链 / 反链（Chain / Antichain）',
+      title: '链 / 反链',
       regions: ['order-theory'],
       tags: ['定义', '链'],
       statement: [
@@ -62,7 +62,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '界与确界',
-      title: '上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）',
+      title: '上界 / 下界 / 确界 / 极大元',
       regions: ['order-theory'],
       tags: ['定义', '上界', '下界', '上确界', '极大元'],
       statement: [
@@ -95,7 +95,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '良序集',
-      title: '良序集（Well-Ordered Set）',
+      title: '良序集',
       regions: ['order-theory'],
       tags: ['定义', '良序', '超限归纳'],
       statement: [
@@ -114,7 +114,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '有限特征',
-      title: '有限特征族（Family of Finite Character）',
+      title: '有限特征族',
       regions: ['order-theory'],
       tags: ['定义', '有限特征', 'Tukey'],
       statement: [

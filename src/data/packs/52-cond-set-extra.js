@@ -4,7 +4,7 @@
    §4.2 的后半段。这一批要造出的东西是：**「紧 Hausdorff 空间」这个范畴
    恰好等于凝聚态集里「拟紧且拟分离」的那部分**（Thm 4.2.8）。
 
-   链条：内部 Hom 的函数空间刻画 $\to$ qc/qcqs 判定 $\to$ 弱 Hausdorff 与拟分离的
+   链条：内部 Hom 的函数空间刻画 $\to$ 拟紧/拟紧拟分离 判定 $\to$ 弱 Hausdorff 与拟分离的
    两条互相反向的技术引理 $\to$ 紧生成情形的合璧。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -49,8 +49,8 @@ window.MG = window.MG || {};
       id: 'thm.qcqs-chaus-equiv',
       cluster: 'cond.set',
       type: 'theorem',
-      label: 'qc 与 qcqs 的判定',
-      title: '紧 Hausdorff 空间 $\\cong$ qcqs 凝聚态集',
+      label: '拟紧 与 拟紧拟分离 的判定',
+      title: '紧 Hausdorff 空间 $\\cong$ 拟紧拟分离 凝聚态集',
       regions: ['condensed'],
       tags: ['凝聚态数学', '拟紧', '拟分离', '紧 Hausdorff'],
       statement: [
@@ -63,13 +63,13 @@ window.MG = window.MG || {};
         '$$\\mathbf{CHaus}\\ \\simeq\\ \\{\\text{紧 Hausdorff 空间}\\} \\longrightarrow \\{\\text{拟紧且拟分离的凝聚态集}\\}.$$'
       ].join('\n'),
       notes: [
-        '**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（qcqs 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。',
+        '**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（拟紧拟分离 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。',
         '**第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。',
         '**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。',
-        '⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。',
+        '⭐ 一般拓扑斯上的对应结论是「拟紧拟分离 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。',
         ['**证明（两条都是一般拓扑斯上的定理在 $\\mathrm{Cond}$ 上的特例）。**',
           '- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。',
-          '- **第 2 条**：qcqs 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 qcqs 的（qc 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎'
+          '- **第 2 条**：拟紧拟分离 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 拟紧拟分离 的（拟紧 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 4.2.8']
@@ -117,15 +117,15 @@ window.MG = window.MG || {};
         '',
         '其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \\hookrightarrow S_{j}$ 都是**含入**。',
         '',
-        '**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 qcqs 的凝聚态集。'
+        '**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 拟紧拟分离 的凝聚态集。'
       ].join('\n'),
       notes: [
-        '⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 qcqs 的对象。',
+        '⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 拟紧拟分离 的对象。',
         '**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。',
         '⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。',
         ['**证明。** 只需证正向（反向是定义）。',
           '- 任何凝聚态集 $X$ 都能写成 $X \\cong \\varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。',
-          '- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「qcqs $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。',
+          '- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「拟紧拟分离 $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。',
           '- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。∎'
         ].join('\n')
       ].join('\n\n'),

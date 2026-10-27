@@ -3,7 +3,7 @@
 layer 18 · 命题 · 层上同调 · 同调代数
 [在星图里打开](../#n=prop.higher-cohomology-presheaf-zero)　·　[节点索引](../index.md)
 
-设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层、$n \ne 0$。则预层
+设 $M$ 是景 $\mathcal{C}$ 上的阿贝尔层、$n \ne 0$。则预层
 
 $$U \longmapsto H^{n}(U,\ M)$$
 

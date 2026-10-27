@@ -1,5 +1,5 @@
 # 等距与正交变换　`def.isometry`
-等距、正交变换与酉变换（Isometry）
+等距、正交变换与酉变换
 layer 10 · 定义 · 内积空间与正交性 · 抽象代数
 [在星图里打开](../#n=def.isometry)　·　[节点索引](../index.md)
 

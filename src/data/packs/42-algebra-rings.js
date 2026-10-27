@@ -17,7 +17,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '环',
-      title: '环与交换环（Ring）',
+      title: '环与交换环',
       regions: ['algebra'],
       tags: ['代数', '环', '交换环'],
       statement: [
@@ -38,7 +38,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '理想',
-      title: '理想与商环（Ideal）',
+      title: '理想与商环',
       regions: ['algebra'],
       tags: ['代数', '环', '理想', '商环'],
       statement: [
@@ -63,7 +63,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '模',
-      title: '模与模同态（Module）',
+      title: '模与模同态',
       regions: ['algebra'],
       tags: ['代数', '模', '环', '同态'],
       statement: [

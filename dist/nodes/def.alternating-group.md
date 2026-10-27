@@ -1,5 +1,5 @@
 # 符号与交错群　`def.alternating-group`
-置换的符号与交错群（Sign and Alternating Group）
+置换的符号与交错群
 layer 11 · 定义 · 群作用与置换 · 抽象代数
 [在星图里打开](../#n=def.alternating-group)　·　[节点索引](../index.md)
 
@@ -13,11 +13,11 @@ $$\operatorname{sgn}(\sigma) = \prod_{1 \le i < j \le n} \frac{\sigma(j) - \sigm
 > 陈述续见 [nodes/def.alternating-group.2.md](./def.alternating-group.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`prop.sn-solvable`](../nodes/prop.sn-solvable.md) 对称群的可解性
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.alternating-group.3.md](./def.alternating-group.3.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.alternating-group.4.md](./def.alternating-group.4.md)
 
 refs: Lang, Algebra, Ch. I §5；Dummit–Foote, Abstract Algebra, §3.5
 

@@ -26,7 +26,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '并集与交集',
-      title: '并集 / 交集（Union & Intersection）',
+      title: '并集 / 交集',
       regions: ['set-theory'],
       tags: ['定义', '集合运算'],
       statement: [
@@ -47,7 +47,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '差集与补集',
-      title: '差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）',
+      title: '差集 / 补集 / 对称差',
       regions: ['set-theory'],
       tags: ['定义', '集合运算'],
       statement: [
@@ -71,7 +71,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '空集 ∅',
-      title: '空集（Empty Set）',
+      title: '空集',
       regions: ['set-theory'],
       tags: ['定义', '空集'],
       statement: [
@@ -93,7 +93,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '单射 / 满射 / 双射',
-      title: '单射 / 满射 / 双射（Injective / Surjective / Bijective）',
+      title: '单射 / 满射 / 双射',
       regions: ['set-theory'],
       tags: ['定义', '函数'],
       statement: [
@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '像与原像',
-      title: '像与原像（Image / Preimage）',
+      title: '像与原像',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '映射', '像', '原像'],
       statement: [
@@ -140,7 +140,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'definition',
       label: '可数与不可数',
-      title: '可数 / 至多可数（Countable）',
+      title: '可数 / 至多可数',
       regions: ['set-theory'],
       tags: ['定义', '基数', '可数'],
       statement: [
@@ -162,7 +162,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '几乎处处',
-      title: '几乎处处（Almost Everywhere, a.e.）',
+      title: '几乎处处',
       regions: ['analysis'],
       tags: ['定义', '零集'],
       statement: [

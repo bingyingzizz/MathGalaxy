@@ -18,7 +18,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '局部化',
-      title: '范畴的局部化（Localization）',
+      title: '范畴的局部化',
       regions: ['category'],
       tags: ['范畴论', '局部化', '分式', '同伦范畴'],
       statement: [

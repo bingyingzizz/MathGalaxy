@@ -1,5 +1,5 @@
 # 迹　`def.trace`
-迹 $\operatorname{tr} A$（Trace）
+迹 $\operatorname{tr} A$
 layer 14 · 定义 · 特征值与 Jordan 型 · 抽象代数
 [在星图里打开](../#n=def.trace)　·　[节点索引](../index.md)
 

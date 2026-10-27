@@ -7,7 +7,7 @@
 window.MG = window.MG || {};
 (window.MG.packs = window.MG.packs || []).push({
 
-  name: '拓扑与 site 的性质',
+  name: '拓扑与景的性质',
 
   nodes: [
 
@@ -198,17 +198,17 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'proposition',
       label: '覆盖族构成预拓扑',
-      title: '命题：site 里所有生成覆盖筛的族构成预拓扑',
+      title: '命题：景里所有生成覆盖筛的族构成预拓扑',
       regions: ['category'],
-      tags: ['命题', 'site', '预拓扑', '覆盖族'],
+      tags: ['命题', '景', '预拓扑', '覆盖族'],
       statement: [
-        '设 $\\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \\to X)_{i \\in I}$ 构成 $\\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。',
+        '设 $\\mathcal{C}$ 是有纤维积的景。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \\to X)_{i \\in I}$ 构成 $\\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。',
         '',
         '⚠️ 注意：生成覆盖筛的族**未必**是**给定**预拓扑下的覆盖族 —— 「极大」说的是「对给定的拓扑」，不是「对给定的预拓扑」。'
       ].join('\n'),
       notes: [
         '**证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎',
-        '⭐ 读法：**site 与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。'
+        '⭐ 读法：**景与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.14']
     },
@@ -223,7 +223,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '层化', '像', '正合'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site、$u : T \\to T\'$ 是预层态射。则',
+        '设 $\\mathcal{C}$ 是景、$u : T \\to T\'$ 是预层态射。则',
         '',
         '$$\\operatorname{im}\\bigl(T^{\\#} \\to T\'^{\\#}\\bigr) \\;=\\; \\Bigl(\\operatorname{im}\\bigl(T \\to T\'\\bigr)\\Bigr)^{\\#}.$$'
       ].join('\n'),
@@ -243,7 +243,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '层化', '切片范畴', '余极限', '关联层'],
       statement: [
-        '设 $T$ 是 site $\\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限',
+        '设 $T$ 是景 $\\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限',
         '',
         '$$T^{\\#} \\;\\cong\\; \\varinjlim_{X \\in \\mathcal{C}/T}\\ X^{\\sharp},$$',
         '',
@@ -266,7 +266,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '层化', '伴随', 'Hom'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site、$T$ 是预层、$F$ 是**层**。则',
+        '设 $\\mathcal{C}$ 是景、$T$ 是预层、$F$ 是**层**。则',
         '',
         '$$\\operatorname{Hom}_{\\widetilde{\\mathcal{C}}}\\bigl(T^{\\#},\\ F\\bigr) \\;=\\; \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T,\\ F\\bigr).$$'
       ].join('\n'),

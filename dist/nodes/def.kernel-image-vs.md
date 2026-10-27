@@ -1,5 +1,5 @@
 # 核与像　`def.kernel-image-vs`
-核与像（Kernel and Image）
+核与像
 layer 10 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.kernel-image-vs)　·　[节点索引](../index.md)
 

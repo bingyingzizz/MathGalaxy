@@ -1,5 +1,5 @@
 # 拓扑空间与开集　`def.topology`
-拓扑空间 / 开集（Topological Space）
+拓扑空间 / 开集
 layer 4 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.topology)　·　[节点索引](../index.md)
 

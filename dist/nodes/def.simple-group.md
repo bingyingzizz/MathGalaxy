@@ -1,5 +1,5 @@
 # 单群　`def.simple-group`
-单群（Simple Group）
+单群
 layer 8 · 定义 · 合成列与可解群 · 抽象代数
 [在星图里打开](../#n=def.simple-group)　·　[节点索引](../index.md)
 

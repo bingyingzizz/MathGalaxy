@@ -1,5 +1,5 @@
 # 绝对值的运算性质　`prop.abs-properties`
-命题：绝对值的运算性质（Properties of the Absolute Value）
+命题：绝对值的运算性质
 layer 10 · 命题 · 实数的运算与不等式 · 分析学
 [在星图里打开](../#n=prop.abs-properties)　·　[节点索引](../index.md)
 

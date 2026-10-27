@@ -1,9 +1,14 @@
 # 层　`def.sheaf`　·　续页（第 3 页）
 [在星图里打开](../#n=def.sheaf)　·　第 1 页 [nodes/def.sheaf.md](./def.sheaf.md)　·　上一页 [nodes/def.sheaf.2.md](./def.sheaf.2.md)
 
-## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.grothendieck-topology`](../nodes/def.grothendieck-topology.md) Grothendieck 拓扑：用到了定义 Grothendieck 拓扑　[proofs/def-dep.topology-sheaf.md](../proofs/def-dep.topology-sheaf.md)
-- [`def.presheaf`](../nodes/def.presheaf.md) 预层：用到了定义 预层　[proofs/def-dep.presheaf-sheaf.md](../proofs/def-dep.presheaf-sheaf.md)
-- [`def.limit`](../nodes/def.limit.md) 极限：用到了定义 极限　[proofs/def-dep.limit-sheaf.md](../proofs/def-dep.limit-sheaf.md)
+## 它能推出什么 / 谁在用它（续）
+- ⇒ [`thm.sheaf-descent`](../nodes/thm.sheaf-descent.md) 层的下降条件
+- ⇒ [`prop.topos-sheaf-limits`](../nodes/prop.topos-sheaf-limits.md) 拓扑斯上的层即保极限的预层
+- ⇒ [`prop.cond-epi`](../nodes/prop.cond-epi.md) 凝聚态集满态射的判据
+- 被 [`prop.constant-sheaf-preserves-limits`](../nodes/prop.constant-sheaf-preserves-limits.md) 常层函子保极限 用
+- 被 [`prop.stalk-separated`](../nodes/prop.stalk-separated.md) 茎与分离预层 用
+- 被 [`def.associated-sheaf`](../nodes/def.associated-sheaf.md) 关联层 用
+- 被 [`prop.sheafification-image`](../nodes/prop.sheafification-image.md) 层化与像交换 用
+- 被 [`prop.stalk-of-sheafification`](../nodes/prop.stalk-of-sheafification.md) 层化不改变茎 用
 
 > 续见 [nodes/def.sheaf.4.md](./def.sheaf.4.md)

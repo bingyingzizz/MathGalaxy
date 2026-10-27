@@ -9,7 +9,7 @@ $$X \cong \varinjlim_{i \in I}\ S_{i},$$
 
 其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \hookrightarrow S_{j}$ 都是**含入**。
 
-**推论**：$\operatorname{Ind}(\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 qcqs 的凝聚态集。
+**推论**：$\operatorname{Ind}(\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 拟紧拟分离 的凝聚态集。
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/lem.qseparated-ind-inclusions.2.md](./lem.qseparated-ind-inclusions.2.md)

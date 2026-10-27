@@ -1,5 +1,5 @@
 # 环的局部化 W⁻¹R　`prop.ring-localization`
-环的局部化（Localization of a Ring）
+环的局部化
 layer 11 · 例 · 代数结构 · 抽象代数+范畴论
 [在星图里打开](../#n=prop.ring-localization)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 凝聚态阿贝尔群　`def.condensed-abelian-group`
-凝聚态阿贝尔群（Condensed Abelian Group）
+凝聚态阿贝尔群
 layer 17 · 定义 · 凝聚态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=def.condensed-abelian-group)　·　[节点索引](../index.md)
 
@@ -9,11 +9,13 @@ $$\mathrm{Ab}(\mathrm{Cond}) \;\simeq\; \mathrm{Cond}(\mathrm{Ab}) \;\simeq\; \w
 
 记作 $\mathrm{CondAb}$。
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.solid-group`](../nodes/def.solid-group.md) 固态阿贝尔群 用
+
+- …另有出边，续页见 [nodes/def.condensed-abelian-group.3.md](./def.condensed-abelian-group.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.condensed-abelian-group.2.md](./def.condensed-abelian-group.2.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.condensed-abelian-group.3.md](./def.condensed-abelian-group.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §6.1
 

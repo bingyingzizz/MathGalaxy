@@ -1,5 +1,5 @@
 # 满足关系　`def.satisfaction`
-结构与满足关系 $\models$（Tarski）
+结构与满足关系 $\models$
 layer 2 · 定义 · 一阶语言与公式 · 数理逻辑
 [在星图里打开](../#n=def.satisfaction)　·　[节点索引](../index.md)
 

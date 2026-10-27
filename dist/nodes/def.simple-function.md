@@ -1,5 +1,5 @@
 # 简单函数　`def.simple-function`
-简单函数（Simple Function）
+简单函数
 layer 7 · 定义 · 可测函数与收敛 · 分析学
 [在星图里打开](../#n=def.simple-function)　·　[节点索引](../index.md)
 

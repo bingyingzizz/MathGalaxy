@@ -7,7 +7,7 @@ layer 17 · 定理 · 拓扑斯 · 范畴论
 
 1. $\mathcal{T}$ 是拓扑斯；
 2. $\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；
-3. 存在 site $\mathcal{C}$ 使 $\mathcal{T} \simeq \widehat{\mathcal{C}}$；
+3. 存在景 $\mathcal{C}$ 使 $\mathcal{T} \simeq \widehat{\mathcal{C}}$；
 4. 存在范畴使 $\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。
 
 ## 它能推出什么 / 谁在用它

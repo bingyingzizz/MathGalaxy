@@ -26,7 +26,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '函数极限',
-      title: '函数极限 $\\lim_{x \\to x_0} f(x) = L$（Limit of a Function）',
+      title: '函数极限 $\\lim_{x \\to x_0} f(x) = L$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -46,7 +46,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '单侧极限',
-      title: '左极限与右极限（One-Sided Limits）',
+      title: '左极限与右极限',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -68,7 +68,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'theorem',
       label: '夹逼定理',
-      title: '夹逼定理（Squeeze Theorem）',
+      title: '夹逼定理',
       regions: ['analysis'],
       tags: ['定理', '极限'],
       statement: [
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'proposition',
       label: '极限的四则运算与保序性',
-      title: '命题：极限的四则运算、保序性与绝对值（Algebra of Limits）',
+      title: '命题：极限的四则运算、保序性与绝对值',
       regions: ['analysis'],
       tags: ['命题', '极限'],
       statement: [
@@ -109,7 +109,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: 'Cauchy 列',
-      title: 'Cauchy 列（Cauchy Sequence）',
+      title: 'Cauchy 列',
       regions: ['analysis'],
       tags: ['定义', '极限', '完备性'],
       statement: [
@@ -127,7 +127,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '上极限与下极限',
-      title: '上极限与下极限 $\\limsup$ / $\\liminf$（Limit Superior and Inferior）',
+      title: '上极限与下极限 $\\limsup$ / $\\liminf$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'definition',
       label: '聚点',
-      title: '聚点 / 极限点（Limit Point）',
+      title: '聚点 / 极限点',
       regions: ['analysis'],
       tags: ['定义', '完备性'],
       statement: [
@@ -173,7 +173,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'theorem',
       label: '单调有界定理',
-      title: '单调有界定理（Monotone Convergence Theorem）',
+      title: '单调有界定理',
       regions: ['analysis'],
       tags: ['定理', '完备性'],
       statement: [
@@ -193,7 +193,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'lemma',
       label: '闭区间套定理',
-      title: '引理：闭区间套定理（Nested Interval Theorem）',
+      title: '引理：闭区间套定理',
       regions: ['analysis'],
       tags: ['引理', '完备性'],
       statement: [
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'theorem',
       label: 'Cauchy 收敛准则',
-      title: '定理：收敛 $\\iff$ Cauchy（Cauchy Criterion）',
+      title: '定理：收敛 $\\iff$ Cauchy',
       regions: ['analysis'],
       tags: ['定理', '完备性'],
       statement: [
@@ -258,7 +258,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'theorem',
       label: '完备性的六条等价',
-      title: '定理：下列六条彼此等价（TFAE）',
+      title: '定理：下列六条彼此等价',
       regions: ['analysis'],
       tags: ['定理', '完备性', '等价'],
       statement: [

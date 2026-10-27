@@ -1,5 +1,5 @@
 # 多重线性型　`def.multilinear-form`
-多重线性型 $V^{n} \to K$（Multilinear Form）
+多重线性型 $V^{n} \to K$
 layer 9 · 定义 · 矩阵与行列式 · 抽象代数
 [在星图里打开](../#n=def.multilinear-form)　·　[节点索引](../index.md)
 

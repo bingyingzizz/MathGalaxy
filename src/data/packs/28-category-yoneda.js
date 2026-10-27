@@ -18,7 +18,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '预层',
-      title: '预层（Presheaf）',
+      title: '预层',
       regions: ['category'],
       tags: ['范畴论', '预层', '反变函子'],
       statement: [
@@ -47,7 +47,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '预层范畴',
-      title: '预层范畴（Category of Presheaves）',
+      title: '预层范畴',
       regions: ['category'],
       tags: ['范畴论', '预层', '函子范畴'],
       statement: [
@@ -68,7 +68,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '表示函子',
-      title: '表示函子与万有元素（Representable Functor）',
+      title: '表示函子与万有元素',
       regions: ['category'],
       tags: ['范畴论', '表示', '万有元素'],
       statement: [
@@ -106,7 +106,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'lemma',
       label: '米田引理',
-      title: '米田引理（Yoneda Lemma）',
+      title: '米田引理',
       regions: ['category'],
       tags: ['范畴论', '米田', '自然变换'],
       statement: [
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'proposition',
       label: '米田嵌入',
-      title: '米田嵌入（Yoneda Embedding）',
+      title: '米田嵌入',
       regions: ['category'],
       tags: ['范畴论', '米田', '全忠实'],
       statement: [
@@ -176,7 +176,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '切片范畴',
-      title: '预层的切片范畴（Slice Category）',
+      title: '预层的切片范畴',
       regions: ['category'],
       tags: ['范畴论', '切片', '元素范畴'],
       statement: [
@@ -225,7 +225,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'theorem',
       label: '稠密性定理',
-      title: '稠密性定理（Density Theorem）',
+      title: '稠密性定理',
       regions: ['category'],
       tags: ['范畴论', '米田', '余极限'],
       statement: [

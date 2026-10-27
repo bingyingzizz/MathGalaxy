@@ -1,5 +1,5 @@
 # 预拓扑　`def.pretopology`
-预拓扑（Pretopology）
+预拓扑
 layer 13 · 定义 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=def.pretopology)　·　[节点索引](../index.md)
 

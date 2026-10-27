@@ -1,5 +1,5 @@
 # 切片范畴　`def.slice-category`
-预层的切片范畴（Slice Category）
+预层的切片范畴
 layer 12 · 定义 · 预层与米田 · 范畴论
 [在星图里打开](../#n=def.slice-category)　·　[节点索引](../index.md)
 

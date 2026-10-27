@@ -1,5 +1,5 @@
 # 子空间　`def.subspace`
-线性子空间（Linear Subspace）
+线性子空间
 layer 9 · 定义 · 向量空间的基 · 抽象代数
 [在星图里打开](../#n=def.subspace)　·　[节点索引](../index.md)
 

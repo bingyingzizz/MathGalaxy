@@ -1,5 +1,5 @@
 # 压缩映射　`def.contraction`
-压缩映射（Contraction）
+压缩映射
 layer 14 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.contraction)　·　[节点索引](../index.md)
 

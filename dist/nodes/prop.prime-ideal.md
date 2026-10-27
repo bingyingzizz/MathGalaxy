@@ -1,5 +1,5 @@
 # 素理想与极大理想　`prop.prime-ideal`
-命题：素理想、极大理想与商环（Prime and Maximal Ideals）
+命题：素理想、极大理想与商环
 layer 11 · 命题 · 代数结构 · 抽象代数
 [在星图里打开](../#n=prop.prime-ideal)　·　[节点索引](../index.md)
 

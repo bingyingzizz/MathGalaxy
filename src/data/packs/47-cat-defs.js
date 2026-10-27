@@ -18,7 +18,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '子范畴',
-      title: '子范畴与满子范畴（Subcategory）',
+      title: '子范畴与满子范畴',
       regions: ['category'],
       tags: ['范畴论', '子范畴', '满子范畴'],
       statement: [
@@ -96,7 +96,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '保极限的函子',
-      title: '函子保极限（Preservation of Limits）',
+      title: '函子保极限',
       regions: ['category'],
       tags: ['范畴论', '保极限', '保余极限', '函子'],
       statement: [
@@ -121,7 +121,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '正合函子',
-      title: '左正合 / 右正合 / 正合函子（Exact Functor）',
+      title: '左正合 / 右正合 / 正合函子',
       regions: ['category'],
       tags: ['范畴论', '正合函子', '左正合', '右正合'],
       statement: [
@@ -164,7 +164,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '加法函子',
-      title: '加法函子（Additive Functor）',
+      title: '加法函子',
       regions: ['homology'],
       tags: ['同调代数', '加法函子', '预加性', '直和'],
       statement: [
@@ -189,7 +189,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '分裂短正合列',
-      title: '分裂的短正合列（Split Exact Sequence）',
+      title: '分裂的短正合列',
       regions: ['homology'],
       tags: ['同调代数', '短正合列', '分裂', '直和'],
       statement: [
@@ -223,7 +223,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '足够多投射对象',
-      title: '足够多投射对象（Enough Projectives）',
+      title: '足够多投射对象',
       regions: ['homology'],
       tags: ['同调代数', '投射对象', '足够多', '消解'],
       statement: [
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '有限表现对象',
-      title: '有限表现（紧）对象（Finitely Presented Object）',
+      title: '有限表现（紧）对象',
       regions: ['category'],
       tags: ['范畴论', '有限表现', '紧对象', '可表函子'],
       statement: [

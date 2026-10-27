@@ -1,5 +1,5 @@
 # 极限的四则运算与保序性　`prop.limit-arithmetic`
-命题：极限的四则运算、保序性与绝对值（Algebra of Limits）
+命题：极限的四则运算、保序性与绝对值
 layer 15 · 命题 · 实数与极限 · 分析学
 [在星图里打开](../#n=prop.limit-arithmetic)　·　[节点索引](../index.md)
 

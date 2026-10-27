@@ -1,5 +1,5 @@
 # 列紧　`def.sequentially-compact`
-列紧 / 序列紧（Sequentially Compact）
+列紧 / 序列紧
 layer 14 · 定义 · 度量空间 · 拓扑学
 [在星图里打开](../#n=def.sequentially-compact)　·　[节点索引](../index.md)
 

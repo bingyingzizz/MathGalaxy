@@ -1,5 +1,5 @@
 # 弱 Hausdorff 空间　`def.weak-hausdorff`
-弱 Hausdorff 空间（Weak Hausdorff Space）
+弱 Hausdorff 空间
 layer 6 · 定义 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=def.weak-hausdorff)　·　[节点索引](../index.md)
 

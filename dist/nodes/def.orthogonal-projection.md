@@ -1,5 +1,5 @@
 # 正交投影　`def.orthogonal-projection`
-正交投影（Orthogonal Projection）
+正交投影
 layer 12 · 定义 · 内积空间与正交性 · 抽象代数
 [在星图里打开](../#n=def.orthogonal-projection)　·　[节点索引](../index.md)
 

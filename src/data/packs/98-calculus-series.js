@@ -43,7 +43,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'theorem',
       label: '比较判别法',
-      title: '定理：比较判别法（Comparison Test）',
+      title: '定理：比较判别法',
       regions: ['analysis'],
       tags: ['定理', '级数', '收敛'],
       statement: [
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'definition',
       label: '绝对收敛',
-      title: '绝对收敛（Absolute Convergence）',
+      title: '绝对收敛',
       regions: ['analysis'],
       tags: ['定义', '级数', '收敛'],
       statement: [
@@ -171,7 +171,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'definition',
       label: '条件收敛',
-      title: '条件收敛（Conditional Convergence）',
+      title: '条件收敛',
       regions: ['analysis'],
       tags: ['定义', '级数', '收敛'],
       statement: [

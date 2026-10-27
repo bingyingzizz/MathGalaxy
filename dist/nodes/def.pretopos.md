@@ -1,5 +1,5 @@
 # 预拓扑斯　`def.pretopos`
-预拓扑斯（Pretopos）
+预拓扑斯
 layer 15 · 定义 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=def.pretopos)　·　[节点索引](../index.md)
 

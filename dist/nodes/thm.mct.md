@@ -1,5 +1,5 @@
 # 单调收敛定理　`thm.mct`
-单调收敛定理（MCT, Monotone Convergence Theorem）
+单调收敛定理
 layer 18 · 定理 · 积分 · 分析学
 [在星图里打开](../#n=thm.mct)　·　[节点索引](../index.md)
 

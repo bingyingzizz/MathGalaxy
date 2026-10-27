@@ -1,5 +1,5 @@
 # 基数 |A|　`def.cardinal`
-基数与基数的比较（Cardinality）
+基数与基数的比较
 layer 8 · 定义 · 基数与等势 · 集合论
 [在星图里打开](../#n=def.cardinal)　·　[节点索引](../index.md)
 
@@ -13,14 +13,13 @@ layer 8 · 定义 · 基数与等势 · 集合论
 
 若 $|A| \le |B|$ 且 $|B| \le |A|$，则 $|A| = |B|$（Schröder–Bernstein 定理）。
 
-## 它能推出什么 / 谁在用它
-- 被 [`thm.cantor`](../nodes/thm.cantor.md) Cantor 定理 用
-- 被 [`thm.cardinal-comparable`](../nodes/thm.cardinal-comparable.md) 基数可比定理 用
-
-- …另有出边，续页见 [nodes/def.cardinal.3.md](./def.cardinal.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.equinumerous`](../nodes/def.equinumerous.md) 等势：用到了定义 等势　[proofs/dep.equinumerous-cardinal.md](../proofs/dep.equinumerous-cardinal.md)
+
 - …另有入边，续页见 [nodes/def.cardinal.2.md](./def.cardinal.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.cardinal.3.md](./def.cardinal.3.md)
 
 refs: Kunen, Set Theory, I.6
 

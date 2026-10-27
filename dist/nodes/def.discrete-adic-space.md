@@ -1,5 +1,5 @@
 # 离散 adic 空间　`def.discrete-adic-space`
-离散 adic 空间（Discrete Adic Space）
+离散 adic 空间
 layer 10 · 定义 · adic 空间 · 解析几何
 [在星图里打开](../#n=def.discrete-adic-space)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 子集　`def.subset`
-子集 / 真子集（Subset）
+子集 / 真子集
 layer 1 · 定义 · 集合的构造 · 集合论
 [在星图里打开](../#n=def.subset)　·　[节点索引](../index.md)
 

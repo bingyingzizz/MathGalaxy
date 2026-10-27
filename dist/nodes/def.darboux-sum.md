@@ -1,5 +1,5 @@
 # 上和与下和　`def.darboux-sum`
-上和 $U(f, P)$ 与下和 $L(f, P)$（Darboux Sums）
+上和 $U(f, P)$ 与下和 $L(f, P)$
 layer 15 · 定义 · Riemann 积分 · 分析学
 [在星图里打开](../#n=def.darboux-sum)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 离散 Huber pair　`def.discrete-huber-pair`
-离散 Huber pair（Discrete Huber Pair）
+离散 Huber pair
 layer 8 · 定义 · adic 空间 · 解析几何
 [在星图里打开](../#n=def.discrete-huber-pair)　·　[节点索引](../index.md)
 
@@ -14,13 +14,11 @@ $$(A, A^+)_\blacksquare := \varinjlim_{(B,B^+) \to (A,A^+)} (B, B^+)_\blacksquar
 > 陈述续见 [nodes/def.discrete-huber-pair.2.md](./def.discrete-huber-pair.2.md)
 
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`prop.huber-subring-recovery`](../nodes/prop.huber-subring-recovery.md) A⁺ 由谱决定
-
-- …另有出边，续页见 [nodes/def.discrete-huber-pair.4.md](./def.discrete-huber-pair.4.md)
-
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/def.discrete-huber-pair.3.md](./def.discrete-huber-pair.3.md)
+- [`def.ring`](../nodes/def.ring.md) 环：用到了定义 环　[proofs/def-link.ring-huber.md](../proofs/def-link.ring-huber.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.discrete-huber-pair.3.md](./def.discrete-huber-pair.3.md)
 
 refs: Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1
 

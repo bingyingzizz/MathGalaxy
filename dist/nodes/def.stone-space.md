@@ -1,5 +1,5 @@
 # 全不连通与 Stone 空间　`def.stone-space`
-Stone 空间与 Stonean 空间（Stone / Stonean Space）
+Stone 空间与 Stonean 空间
 layer 16 · 定义 · Stone 与 Stonean · 拓扑学
 [在星图里打开](../#n=def.stone-space)　·　[节点索引](../index.md)
 

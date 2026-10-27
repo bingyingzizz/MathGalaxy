@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '逐点收敛',
-      title: '逐点收敛（Pointwise Convergence）',
+      title: '逐点收敛',
       regions: ['analysis'],
       tags: ['定义', '函数列', '收敛'],
       statement: [
@@ -41,7 +41,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '一致收敛',
-      title: '一致收敛 $f_n \\rightrightarrows f$（Uniform Convergence）',
+      title: '一致收敛 $f_n \\rightrightarrows f$',
       regions: ['analysis'],
       tags: ['定义', '函数列', '收敛'],
       statement: [
@@ -61,7 +61,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '一致 Cauchy 列',
-      title: '一致 Cauchy 列（Uniformly Cauchy）',
+      title: '一致 Cauchy 列',
       regions: ['analysis'],
       tags: ['定义', '函数列', '收敛'],
       statement: [
@@ -170,7 +170,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '幂级数',
-      title: '幂级数（Power Series）',
+      title: '幂级数',
       regions: ['analysis'],
       tags: ['定义', '幂级数', '级数'],
       statement: [

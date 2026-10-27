@@ -1,5 +1,5 @@
 # 可测函数　`def.measurable-function`
-可测函数（Measurable Function）
+可测函数
 layer 6 · 定义 · 可测函数与收敛 · 分析学
 [在星图里打开](../#n=def.measurable-function)　·　[节点索引](../index.md)
 

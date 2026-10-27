@@ -1,5 +1,5 @@
 # 并集与交集　`def.union-inter`
-并集 / 交集（Union & Intersection）
+并集 / 交集
 layer 2 · 定义 · 集合的构造 · 集合论
 [在星图里打开](../#n=def.union-inter)　·　[节点索引](../index.md)
 
@@ -12,11 +12,13 @@ $$\bigcap \mathcal{A} := \{ x : \forall A \in \mathcal{A},\ x \in A \}$$
 
 显然 $A \cap B \subseteq A \subseteq A \cup B$。
 
-## 它能推出什么 / 谁在用它
-- 被 [`def.universe`](../nodes/def.universe.md) Grothendieck 宇宙 用
-
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.subset`](../nodes/def.subset.md) 子集：用到了定义 子集　[proofs/dep.subset-union-inter.md](../proofs/dep.subset-union-inter.md)
+
 - …另有入边，续页见 [nodes/def.union-inter.2.md](./def.union-inter.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.union-inter.3.md](./def.union-inter.3.md)
 
 refs: Kunen, Set Theory, I.5
 

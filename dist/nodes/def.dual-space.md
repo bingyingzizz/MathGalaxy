@@ -1,5 +1,5 @@
 # 对偶空间　`def.dual-space`
-对偶空间 $V^{\ast}$（Dual Space）
+对偶空间 $V^{\ast}$
 layer 10 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.dual-space)　·　[节点索引](../index.md)
 

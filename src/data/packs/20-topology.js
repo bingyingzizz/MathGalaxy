@@ -21,7 +21,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '拓扑空间与开集',
-      title: '拓扑空间 / 开集（Topological Space）',
+      title: '拓扑空间 / 开集',
       regions: ['topology'],
       tags: ['定义', '拓扑', '开集'],
       statement: [
@@ -43,7 +43,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '闭集与闭包',
-      title: '闭集 / 闭包 / 稠密（Closed Set, Closure）',
+      title: '闭集 / 闭包 / 稠密',
       regions: ['topology'],
       tags: ['定义', '拓扑', '闭集'],
       statement: [
@@ -66,7 +66,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '基与子基',
-      title: '拓扑的基 / 子基（Basis, Subbasis）',
+      title: '拓扑的基 / 子基',
       regions: ['topology'],
       tags: ['定义', '拓扑', '基'],
       statement: [
@@ -87,7 +87,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '连续映射',
-      title: '连续映射（Continuous Map）',
+      title: '连续映射',
       regions: ['topology', 'analysis'],
       tags: ['定义', '拓扑', '连续'],
       statement: [
@@ -109,7 +109,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '同胚',
-      title: '同胚（Homeomorphism）',
+      title: '同胚',
       regions: ['topology'],
       tags: ['定义', '拓扑', '同胚'],
       statement: [
@@ -130,7 +130,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '子空间拓扑',
-      title: '子空间拓扑（Subspace Topology）',
+      title: '子空间拓扑',
       regions: ['topology'],
       tags: ['定义', '拓扑', '子空间'],
       statement: [
@@ -148,7 +148,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '商拓扑',
-      title: '商拓扑（Quotient Topology）',
+      title: '商拓扑',
       regions: ['topology'],
       tags: ['定义', '拓扑', '商'],
       statement: [
@@ -167,7 +167,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '积拓扑',
-      title: '积拓扑与乘积空间（Product Topology）',
+      title: '积拓扑与乘积空间',
       regions: ['topology'],
       tags: ['定义', '拓扑', '乘积', '投影'],
       statement: [
@@ -190,7 +190,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: 'Hausdorff 空间',
-      title: 'Hausdorff 空间 / $T_{2}$（Hausdorff Space）',
+      title: 'Hausdorff 空间 / $T_{2}$',
       regions: ['topology'],
       tags: ['定义', '拓扑', '分离公理'],
       statement: [
@@ -212,7 +212,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '连通与连通分量',
-      title: '连通空间与连通分量（Connectedness）',
+      title: '连通空间与连通分量',
       regions: ['topology'],
       tags: ['定义', '拓扑', '连通'],
       statement: [
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '闭开集',
-      title: '闭开集（Clopen Set）',
+      title: '闭开集',
       regions: ['topology'],
       tags: ['定义', '拓扑', '闭开集'],
       statement: [

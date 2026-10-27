@@ -1,5 +1,5 @@
 # 无穷公理　`ax.inf`
-无穷公理（Axiom of Infinity）
+无穷公理
 layer 0 · 公理 · ZFC 公理系统 · 集合论
 [在星图里打开](../#n=ax.inf)　·　[节点索引](../index.md)
 

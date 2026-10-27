@@ -1,5 +1,5 @@
 # 幂级数　`def.power-series`
-幂级数（Power Series）
+幂级数
 layer 15 · 定义 · 函数列、幂级数与初等函数 · 分析学
 [在星图里打开](../#n=def.power-series)　·　[节点索引](../index.md)
 

@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: '单调收敛定理',
-      title: '单调收敛定理（MCT, Monotone Convergence Theorem）',
+      title: '单调收敛定理',
       regions: ['analysis'],
       tags: ['定理', 'MCT', '收敛'],
       statement: [
@@ -404,7 +404,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: '控制收敛定理',
-      title: '控制收敛定理（DCT, Dominated Convergence Theorem）',
+      title: '控制收敛定理',
       regions: ['analysis'],
       tags: ['定理', 'DCT', '控制函数'],
       statement: [

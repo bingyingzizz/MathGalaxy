@@ -21,7 +21,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.vectorspace',
       type: 'definition',
       label: '子空间',
-      title: '线性子空间（Linear Subspace）',
+      title: '线性子空间',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -65,7 +65,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.vectorspace',
       type: 'definition',
       label: '坐标',
-      title: '坐标与有序基（Coordinates）',
+      title: '坐标与有序基',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [

@@ -3,7 +3,7 @@
 layer 10 · 命题 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=prop.sheaf-hom-computed-in-presheaves)　·　[节点索引](../index.md)
 
-设 $\mathcal{C}$ 是 site、$T$ 是预层、$F$ 是**层**。则
+设 $\mathcal{C}$ 是景、$T$ 是预层、$F$ 是**层**。则
 > 陈述续见 [nodes/prop.sheaf-hom-computed-in-presheaves.2.md](./prop.sheaf-hom-computed-in-presheaves.2.md)
 
 

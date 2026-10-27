@@ -2,8 +2,6 @@
 [在星图里打开](../#n=thm.completeness-equivalent)　·　第 1 页 [nodes/thm.completeness-equivalent.md](./thm.completeness-equivalent.md)
 
 ## 陈述（续）
-**(4) Bolzano–Weierstrass**：每个有界数列都有收敛子列。
-
 **(5) Cauchy 收敛准则**：Cauchy 列收敛。
 
 **(6) 度量完备**：$(\mathbb{R}, |x - y|)$ 是完备度量空间。

@@ -1,5 +1,5 @@
 # 谱序列　`def.spectral-sequence`
-谱序列（Spectral Sequence）
+谱序列
 layer 16 · 定义 · 过滤与谱序列 · 同调代数
 [在星图里打开](../#n=def.spectral-sequence)　·　[节点索引](../index.md)
 

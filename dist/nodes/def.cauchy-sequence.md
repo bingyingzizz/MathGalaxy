@@ -1,5 +1,5 @@
 # Cauchy 列　`def.cauchy-sequence`
-Cauchy 列（Cauchy Sequence）
+Cauchy 列
 layer 14 · 定义 · 实数与极限 · 分析学
 [在星图里打开](../#n=def.cauchy-sequence)　·　[节点索引](../index.md)
 

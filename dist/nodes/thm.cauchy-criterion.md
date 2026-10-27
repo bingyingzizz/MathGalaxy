@@ -1,5 +1,5 @@
 # Cauchy 收敛准则　`thm.cauchy-criterion`
-定理：收敛 $\iff$ Cauchy（Cauchy Criterion）
+定理：收敛 $\iff$ Cauchy
 layer 17 · 定理 · 实数完备性的等价刻画 · 分析学
 [在星图里打开](../#n=thm.cauchy-criterion)　·　[节点索引](../index.md)
 

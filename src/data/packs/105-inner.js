@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '内积',
-      title: '内积与内积空间（Inner Product Space）',
+      title: '内积与内积空间',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -151,7 +151,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '正交投影',
-      title: '正交投影（Orthogonal Projection）',
+      title: '正交投影',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -195,7 +195,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '伴随算子',
-      title: '伴随算子 $T^{\\ast}$（Adjoint Operator）',
+      title: '伴随算子 $T^{\\ast}$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -217,7 +217,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '等距与正交变换',
-      title: '等距、正交变换与酉变换（Isometry）',
+      title: '等距、正交变换与酉变换',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -299,7 +299,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '二次型',
-      title: '二次型与正定性（Quadratic Form）',
+      title: '二次型与正定性',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [

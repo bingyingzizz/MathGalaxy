@@ -1,5 +1,5 @@
 # 拓扑斯　`def.topos`
-拓扑斯（Topos）
+拓扑斯
 layer 16 · 定义 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=def.topos)　·　[节点索引](../index.md)
 

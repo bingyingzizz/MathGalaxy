@@ -1,5 +1,5 @@
 # 相似　`def.similarity`
-相似（Similarity）
+相似
 layer 12 · 定义 · 特征值与 Jordan 型 · 抽象代数
 [在星图里打开](../#n=def.similarity)　·　[节点索引](../index.md)
 

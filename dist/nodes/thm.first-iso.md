@@ -1,5 +1,5 @@
 # 第一同构定理（Noether）　`thm.first-iso`
-第一同构定理（Noether）
+第一同构定理
 layer 9 · 定理 · 代数结构 · 抽象代数+集合论
 [在星图里打开](../#n=thm.first-iso)　·　[节点索引](../index.md)
 

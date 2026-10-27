@@ -33,7 +33,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '商集与等价类',
-      title: '商集 / 等价类（Quotient Set）',
+      title: '商集 / 等价类',
       regions: ['set-theory'],
       tags: ['定义', '等价类', '商集'],
       statement: [
@@ -61,7 +61,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'theorem',
       label: '归纳原理与递推定义',
-      title: '归纳原理 / 递推定义（Induction & Recursion）',
+      title: '归纳原理 / 递推定义',
       regions: ['set-theory'],
       tags: ['定理', '归纳', '递归'],
       statement: [
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'definition',
       label: '绝对值 |x|',
-      title: '绝对值 $|x|$（Absolute Value）',
+      title: '绝对值 $|x|$',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '绝对值', '序'],
       statement: [
@@ -216,7 +216,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'definition',
       label: 'Cauchy 列与零列',
-      title: '有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）',
+      title: '有理 Cauchy 列 / 零列 / 等价',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', 'Cauchy 列', '完备化'],
       statement: [

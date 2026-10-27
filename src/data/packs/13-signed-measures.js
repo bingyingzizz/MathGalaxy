@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '符号测度',
-      title: '符号测度（Signed Measure）',
+      title: '符号测度',
       regions: ['analysis'],
       tags: ['定义', '符号测度'],
       statement: [
@@ -51,7 +51,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '正集 / 负集 / 零集',
-      title: '正集 / 负集 / 零集（Positive, Negative, Null Set）',
+      title: '正集 / 负集 / 零集',
       regions: ['analysis'],
       tags: ['定义', '正集', '负集'],
       statement: [
@@ -94,7 +94,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: 'Hahn 分解定理',
-      title: 'Hahn 分解定理（Hahn Decomposition Theorem）',
+      title: 'Hahn 分解定理',
       regions: ['analysis'],
       tags: ['定理', 'Hahn 分解', '正集', '负集'],
       statement: [
@@ -142,7 +142,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: 'Jordan 分解定理',
-      title: 'Jordan 分解定理（Jordan Decomposition Theorem）',
+      title: 'Jordan 分解定理',
       regions: ['analysis'],
       tags: ['定理', 'Jordan 分解', '全变差'],
       statement: [
@@ -415,7 +415,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '复测度',
-      title: '复测度（Complex Measure）',
+      title: '复测度',
       regions: ['analysis'],
       tags: ['定义', '复测度'],
       statement: [

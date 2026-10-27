@@ -1,5 +1,5 @@
 # 分裂短正合列　`def.split-exact`
-分裂的短正合列（Split Exact Sequence）
+分裂的短正合列
 layer 14 · 定义 · 加法与阿贝尔范畴 · 同调代数
 [在星图里打开](../#n=def.split-exact)　·　[节点索引](../index.md)
 

@@ -5,4 +5,4 @@
 - 被 [`prop.qc-sheaf-etale`](../nodes/prop.qc-sheaf-etale.md) 拟紧层与紧的 étale 空间 用
 - 被 [`thm.pretopos-qcqs`](../nodes/thm.pretopos-qcqs.md) 预拓扑斯由拓扑斯唯一确定 用
 - 被 [`def.quasi-separated`](../nodes/def.quasi-separated.md) 拟分离对象 用
-- 被 [`thm.qcqs-chaus-equiv`](../nodes/thm.qcqs-chaus-equiv.md) qc 与 qcqs 的判定 用
+- 被 [`thm.qcqs-chaus-equiv`](../nodes/thm.qcqs-chaus-equiv.md) 拟紧 与 拟紧拟分离 的判定 用

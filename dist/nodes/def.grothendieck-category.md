@@ -1,5 +1,5 @@
 # Grothendieck 范畴　`def.grothendieck-category`
-Grothendieck 范畴（Grothendieck Category）
+Grothendieck 范畴
 layer 18 · 定义 · 加法与阿贝尔范畴 · 同调代数
 [在星图里打开](../#n=def.grothendieck-category)　·　[节点索引](../index.md)
 
@@ -11,6 +11,8 @@ layer 18 · 定义 · 加法与阿贝尔范畴 · 同调代数
 - …另有入边，续页见 [nodes/def.grothendieck-category.2.md](./def.grothendieck-category.2.md)
 
 ## 它能推出什么 / 谁在用它
+- 被 [`thm.condab-ab`](../nodes/thm.condab-ab.md) CondAb 满足 AB6 与 AB4* 用
+
 - …另有出边，续页见 [nodes/def.grothendieck-category.3.md](./def.grothendieck-category.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2

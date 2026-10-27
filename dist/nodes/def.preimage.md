@@ -1,5 +1,5 @@
 # 像与原像　`def.preimage`
-像与原像（Image / Preimage）
+像与原像
 layer 6 · 定义 · 关系与函数 · 集合论+分析学
 [在星图里打开](../#n=def.preimage)　·　[节点索引](../index.md)
 

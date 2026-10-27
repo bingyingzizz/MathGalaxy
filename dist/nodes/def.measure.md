@@ -1,5 +1,5 @@
 # 测度　`def.measure`
-测度（Measure）
+测度
 layer 14 · 定义 · 测度的构造 · 分析学
 [在星图里打开](../#n=def.measure)　·　[节点索引](../index.md)
 

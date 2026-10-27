@@ -1,5 +1,5 @@
 # 严格态射　`def.strict-morphism`
-严格态射（Strict Morphism）
+严格态射
 layer 16 · 定义 · 单满、子对象与像 · 范畴论
 [在星图里打开](../#n=def.strict-morphism)　·　[节点索引](../index.md)
 

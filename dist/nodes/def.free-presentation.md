@@ -1,5 +1,5 @@
 # 自由表示　`def.free-presentation`
-自由表示（Free Presentation）
+自由表示
 layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 [在星图里打开](../#n=def.free-presentation)　·　[节点索引](../index.md)
 

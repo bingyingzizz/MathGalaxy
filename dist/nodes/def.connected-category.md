@@ -1,5 +1,5 @@
 # 连通范畴　`def.connected-category`
-连通范畴（Connected Category）
+连通范畴
 layer 9 · 定义 · 图与极限 · 范畴论
 [在星图里打开](../#n=def.connected-category)　·　[节点索引](../index.md)
 

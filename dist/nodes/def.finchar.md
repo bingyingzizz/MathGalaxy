@@ -1,5 +1,5 @@
 # 有限特征　`def.finchar`
-有限特征族（Family of Finite Character）
+有限特征族
 layer 7 · 定义 · 序结构 · 序理论
 [在星图里打开](../#n=def.finchar)　·　[节点索引](../index.md)
 

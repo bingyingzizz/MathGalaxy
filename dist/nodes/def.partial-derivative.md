@@ -1,5 +1,5 @@
 # 偏导数　`def.partial-derivative`
-偏导数（Partial Derivative）
+偏导数
 layer 16 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.partial-derivative)　·　[节点索引](../index.md)
 
@@ -11,11 +11,13 @@ $$\frac{\partial f}{\partial x_j}(a) := \lim_{h \to 0} \frac{f(a + h e_j) - f(a)
 > 陈述续见 [nodes/def.partial-derivative.2.md](./def.partial-derivative.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.directional-derivative`](../nodes/def.directional-derivative.md) 方向导数 用
+
+- …另有出边，续页见 [nodes/def.partial-derivative.4.md](./def.partial-derivative.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.partial-derivative.3.md](./def.partial-derivative.3.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.partial-derivative.4.md](./def.partial-derivative.4.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 9；Spivak, Calculus on Manifolds, Ch. 2
 

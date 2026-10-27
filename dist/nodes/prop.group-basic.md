@@ -1,5 +1,5 @@
 # 群的基本性质　`prop.group-basic`
-命题：群的消去律与逆的公式（Elementary Group Theory）
+命题：群的消去律与逆的公式
 layer 7 · 命题 · 代数结构 · 抽象代数
 [在星图里打开](../#n=prop.group-basic)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 终对象 / 始对象　`def.final-initial`
-终对象与始对象（Terminal / Initial Object）
+终对象与始对象
 layer 12 · 定义 · 图与极限 · 范畴论
 [在星图里打开](../#n=def.final-initial)　·　[节点索引](../index.md)
 

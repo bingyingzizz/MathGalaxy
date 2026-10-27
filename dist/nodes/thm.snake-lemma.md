@@ -1,5 +1,5 @@
 # 蛇引理　`thm.snake-lemma`
-蛇引理（Snake Lemma）
+蛇引理
 layer 17 · 引理 · 加法与阿贝尔范畴 · 同调代数
 [在星图里打开](../#n=thm.snake-lemma)　·　[节点索引](../index.md)
 

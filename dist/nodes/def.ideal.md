@@ -1,5 +1,5 @@
 # 理想　`def.ideal`
-理想与商环（Ideal）
+理想与商环
 layer 9 · 定义 · 代数结构 · 抽象代数
 [在星图里打开](../#n=def.ideal)　·　[节点索引](../index.md)
 

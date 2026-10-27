@@ -1,5 +1,5 @@
 # 极限的基本性质　`prop.limit-basic`
-命题：极限的唯一性、有界性与保号性（Basic Properties of Limits）
+命题：极限的唯一性、有界性与保号性
 layer 14 · 命题 · 实数与极限 · 分析学
 [在星图里打开](../#n=prop.limit-basic)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 矩阵　`def.matrix`
-矩阵（Matrix）
+矩阵
 layer 9 · 定义 · 矩阵与行列式 · 抽象代数
 [在星图里打开](../#n=def.matrix)　·　[节点索引](../index.md)
 

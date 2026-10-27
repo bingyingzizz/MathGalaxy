@@ -1,5 +1,5 @@
 # 截面与收缩　`def.section-retraction`
-截面与收缩（Section / Retraction）
+截面与收缩
 layer 8 · 定义 · 范畴与图 · 范畴论
 [在星图里打开](../#n=def.section-retraction)　·　[节点索引](../index.md)
 
@@ -14,13 +14,14 @@ $$f \circ g = 1_Y$$
 $$g \circ f = 1_X$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.category`](../nodes/def.category.md) 范畴：用到了定义 范畴　[proofs/def-dep.category-section.md](../proofs/def-dep.category-section.md)
+- …另有入边，续页见 [nodes/def.section-retraction.2.md](./def.section-retraction.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.section-retraction.2.md](./def.section-retraction.2.md)
+- …另有出边，续页见 [nodes/def.section-retraction.3.md](./def.section-retraction.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §1.1
 
-> 说明见 `notes/def.section-retraction.md`
+## 说明
+两条等式方向相反：截面是「先 $g$ 再 $f$，回到 $Y$ 原地」，收缩是「先 $f$ 再 $g$，回到 $X$ 原地」。换句话说，截面是 $f$ 的右逆，收缩是 $f$ 的左逆 —— 名字不同是因为复合的写法与映射的写法反着来。
 
 引用：`def.section-retraction`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

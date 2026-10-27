@@ -1,9 +1,9 @@
 # 加法 / 阿贝尔范畴　`def.abelian-category`
-加法范畴与阿贝尔范畴（Additive / Abelian Category）
+加法范畴与阿贝尔范畴
 layer 16 · 定义 · 加法与阿贝尔范畴 · 同调代数
 [在星图里打开](../#n=def.abelian-category)　·　[节点索引](../index.md)
 
-- **预加法范畴**（$\mathbf{Ab}$-范畴）是每个 $\o
+- **预加法范畴**（$\mathbf{Ab}$-范畴）是每个 $\operatorname{Hom}$ 集都带有阿贝尔群结构、
 > 陈述续见 [nodes/def.abelian-category.2.md](./def.abelian-category.2.md)
 
 

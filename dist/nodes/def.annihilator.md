@@ -1,5 +1,5 @@
 # 零化子　`def.annihilator`
-零化子 $U^{0}$（Annihilator）
+零化子 $U^{0}$
 layer 11 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.annihilator)　·　[节点索引](../index.md)
 

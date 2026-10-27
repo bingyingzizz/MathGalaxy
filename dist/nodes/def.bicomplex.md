@@ -1,5 +1,5 @@
 # 双复形　`def.bicomplex`
-双复形（Bicomplex）
+双复形
 layer 11 · 定义 · 过滤与谱序列 · 同调代数
 [在星图里打开](../#n=def.bicomplex)　·　[节点索引](../index.md)
 

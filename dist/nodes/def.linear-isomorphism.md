@@ -1,5 +1,5 @@
 # 线性同构　`def.linear-isomorphism`
-线性同构（Linear Isomorphism）
+线性同构
 layer 10 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.linear-isomorphism)　·　[节点索引](../index.md)
 

@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', '上同调预层', '关联层', '内射消解'],
       statement: [
-        '设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层、$n \\ne 0$。则预层',
+        '设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层、$n \\ne 0$。则预层',
         '',
         '$$U \\longmapsto H^{n}(U,\\ M)$$',
         '',
@@ -45,7 +45,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', 'Čech 上同调', '上同调预层', '层化'],
       statement: [
-        '设 $M$ 是 site 上的阿贝尔层、$n \\ne 0$，并把 $H^{n}(M)$ 记作预层 $U \\mapsto H^{n}(U, M)$。则',
+        '设 $M$ 是景上的阿贝尔层、$n \\ne 0$，并把 $H^{n}(M)$ 记作预层 $U \\mapsto H^{n}(U, M)$。则',
         '',
         '$$\\check{H}^{p}\\bigl(H^{n}(M)\\bigr) = 0 \\qquad (\\forall p \\ge 0).$$'
       ].join('\n'),
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', 'Čech 上同调', '层上同调', '谱序列', '五项正合列'],
       statement: [
-        '设 $\\mathcal{C}$ 是有纤维积的 site、$X \\in \\mathcal{C}$、$M$ 是阿贝尔层。则',
+        '设 $\\mathcal{C}$ 是有纤维积的景、$X \\in \\mathcal{C}$、$M$ 是阿贝尔层。则',
         '',
         '$$\\check{H}^{1}(X,\\ M) \\;\\cong\\; H^{1}(X,\\ M).$$'
       ].join('\n'),
@@ -116,7 +116,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', '无环层', 'Čech 上同调', '层上同调'],
       statement: [
-        '设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：',
+        '设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：',
         '',
         '1. $M$ **无环**：$H^{n}(M) = 0$（$n \\ne 0$）；',
         '2. 对每个 $X \\in \\mathcal{C}$：$H^{n}(X, M) = 0$（$n \\ne 0$）；',

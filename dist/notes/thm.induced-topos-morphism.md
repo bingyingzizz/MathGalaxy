@@ -5,4 +5,4 @@
 
 ⚠️ 方向容易记反：$g : \mathcal{C} \to \mathcal{C}'$ 而 $\hat{g} : \widehat{\mathcal{C}} \to \widehat{\mathcal{C}'}$，**推前** $\hat{g}_{*}$ 沿 $g$ 的方向走、**拉回** $\hat{g}^{-1}$ 反着走。
 
-📌 这条是「拓扑空间 / site 之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\mathbf{CHaus}$ 上的层与更小 site 上的层对齐。
+📌 这条是「拓扑空间 / 景之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\mathbf{CHaus}$ 上的层与更小景上的层对齐。

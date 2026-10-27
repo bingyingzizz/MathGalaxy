@@ -1,5 +1,5 @@
 # 单调类定理　`thm.monotone-class`
-单调类定理（Monotone Class Theorem）
+单调类定理
 layer 6 · 定理 · 集合族与 σ-代数 · 分析学
 [在星图里打开](../#n=thm.monotone-class)　·　[节点索引](../index.md)
 

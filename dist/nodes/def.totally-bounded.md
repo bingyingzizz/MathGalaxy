@@ -1,5 +1,5 @@
 # 全有界　`def.totally-bounded`
-全有界 / 预紧（Totally Bounded）
+全有界 / 预紧
 layer 14 · 定义 · 度量空间 · 拓扑学
 [在星图里打开](../#n=def.totally-bounded)　·　[节点索引](../index.md)
 
@@ -9,13 +9,13 @@ $$\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n \in X : X = \bi
 
 等价说法：对每个 $\varepsilon > 0$，$X$ 都能被**有限个**半径 $\varepsilon$ 的开球盖住。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧
-
-- …另有出边，续页见 [nodes/def.totally-bounded.3.md](./def.totally-bounded.3.md)
-
 ## 为什么成立（入边，证明在 proofs/）
+- [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧：列紧 $\implies$ 全有界　[proofs/imp.seqcompact-totbdd.md](../proofs/imp.seqcompact-totbdd.md)
+
 - …另有入边，续页见 [nodes/def.totally-bounded.2.md](./def.totally-bounded.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.totally-bounded.3.md](./def.totally-bounded.3.md)
 
 refs: Munkres, Topology, §43
 

@@ -1,5 +1,5 @@
 # 夹逼定理　`thm.squeeze`
-夹逼定理（Squeeze Theorem）
+夹逼定理
 layer 15 · 定理 · 实数与极限 · 分析学
 [在星图里打开](../#n=thm.squeeze)　·　[节点索引](../index.md)
 

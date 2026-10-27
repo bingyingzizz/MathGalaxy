@@ -1,5 +1,5 @@
 # 米田嵌入　`prop.yoneda-embedding`
-米田嵌入（Yoneda Embedding）
+米田嵌入
 layer 14 · 命题 · 预层与米田 · 范畴论
 [在星图里打开](../#n=prop.yoneda-embedding)　·　[节点索引](../index.md)
 

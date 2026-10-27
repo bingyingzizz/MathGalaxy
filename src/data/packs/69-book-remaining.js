@@ -163,7 +163,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['定义', '关联层', '层化', '米田嵌入', '左正合'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：',
+        '设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：',
         '',
         '$$X^{\\sharp} \\;:=\\; h_{X}^{\\#}, \\qquad h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X).$$',
         '',
@@ -204,7 +204,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ 一句话读法：$g$ 只是范畴之间的一条箭头，可是一旦取预层范畴，它自动长出**两边**的伴随 —— 左边 $\\hat{g}_{!}$ 与右边 $\\hat{g}_{*}$。于是「函子」到了预层这一层就升级成「拓扑斯态射」。',
         '⚠️ 方向容易记反：$g : \\mathcal{C} \\to \\mathcal{C}\'$ 而 $\\hat{g} : \\widehat{\\mathcal{C}} \\to \\widehat{\\mathcal{C}\'}$，**推前** $\\hat{g}_{*}$ 沿 $g$ 的方向走、**拉回** $\\hat{g}^{-1}$ 反着走。',
-        '📌 这条是「拓扑空间 / site 之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\\mathbf{CHaus}$ 上的层与更小 site 上的层对齐。'
+        '📌 这条是「拓扑空间 / 景之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\\mathbf{CHaus}$ 上的层与更小景上的层对齐。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Theorem 3.4.2, Corollary 3.4.3']
     },
@@ -320,7 +320,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['推论', 'Čech 上同调', '层上同调', '谱序列', '滤过余极限'],
       statement: [
-        '设 $\\mathcal{C}$ 是有纤维积的 site、$X \\in \\mathcal{C}$、$M$ 是 $\\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列',
+        '设 $\\mathcal{C}$ 是有纤维积的景、$X \\in \\mathcal{C}$、$M$ 是 $\\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列',
         '',
         '$$E^{p,q}_{2} \\;=\\; \\check{H}^{p}\\bigl(X,\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X,\\ M),$$',
         '',
@@ -531,7 +531,7 @@ window.MG = window.MG || {};
         '$$s^{n} := s \\times_{X} 1_{X_{n}} : X_{n} \\longrightarrow X_{n+1},$$',
         '它满足收缩同伦的恒等式 $1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}$ ✓（逐面展开即得），于是增广复形同伦平凡，特别地零调 ✓。这正是「带截面的覆盖上 Čech 零调」那条命题。',
         '**（三）$\\mathcal{T} = \\widehat{\\mathcal{C}}$（预层）。** 由上一条定理，预层范畴里的极限与余极限逐点算，而零调是「逐点取同调为零」，于是在每个 $X \\in \\mathcal{C}$ 处化回 (二) ✓。',
-        '**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（site 上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎'
+        '**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（景上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎'
       ].join('\n')
     },
 

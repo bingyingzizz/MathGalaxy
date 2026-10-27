@@ -1,5 +1,5 @@
 # 一元多项式　`def.polynomial`
-一元多项式（Polynomial）
+一元多项式
 layer 8 · 定义 · 多项式与因式分解 · 抽象代数
 [在星图里打开](../#n=def.polynomial)　·　[节点索引](../index.md)
 

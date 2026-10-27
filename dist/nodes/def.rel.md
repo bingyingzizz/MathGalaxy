@@ -1,5 +1,5 @@
 # 关系　`def.rel`
-关系（Relation）
+关系
 layer 4 · 定义 · 关系与函数 · 集合论
 [在星图里打开](../#n=def.rel)　·　[节点索引](../index.md)
 

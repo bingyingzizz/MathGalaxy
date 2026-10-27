@@ -1,5 +1,5 @@
 # 循环群　`def.cyclic-group`
-循环群（Cyclic Group）
+循环群
 layer 7 · 定义 · 群作用与置换 · 抽象代数
 [在星图里打开](../#n=def.cyclic-group)　·　[节点索引](../index.md)
 

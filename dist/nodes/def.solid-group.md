@@ -1,5 +1,5 @@
 # 固态阿贝尔群　`def.solid-group`
-固态阿贝尔群（Solid Abelian Groups）
+固态阿贝尔群
 layer 18 · 定义 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=def.solid-group)　·　[节点索引](../index.md)
 

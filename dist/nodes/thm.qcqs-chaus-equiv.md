@@ -1,5 +1,5 @@
-# qc 与 qcqs 的判定　`thm.qcqs-chaus-equiv`
-紧 Hausdorff 空间 $\cong$ qcqs 凝聚态集
+# 拟紧 与 拟紧拟分离 的判定　`thm.qcqs-chaus-equiv`
+紧 Hausdorff 空间 $\cong$ 拟紧拟分离 凝聚态集
 layer 17 · 定理 · 凝聚态集 · 凝聚态数学
 [在星图里打开](../#n=thm.qcqs-chaus-equiv)　·　[节点索引](../index.md)
 
@@ -12,8 +12,6 @@ $$F \twoheadrightarrow X.$$
 $$\mathbf{CHaus}\ \simeq\ \{\text{紧 Hausdorff 空间}\} \longrightarrow \{\text{拟紧且拟分离的凝聚态集}\}.$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.quasi-compact`](../nodes/def.quasi-compact.md) 拟紧对象：用到了定义 拟紧对象　[proofs/def-dep.qcqs-qc.md](../proofs/def-dep.qcqs-qc.md)
-
 - …另有入边，续页见 [nodes/thm.qcqs-chaus-equiv.2.md](./thm.qcqs-chaus-equiv.2.md)
 
 refs: Le Stum, Theorem 4.2.8

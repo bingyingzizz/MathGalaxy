@@ -1,5 +1,5 @@
 # 加法函子　`def.additive-functor`
-加法函子（Additive Functor）
+加法函子
 layer 9 · 定义 · 加法与阿贝尔范畴 · 同调代数
 [在星图里打开](../#n=def.additive-functor)　·　[节点索引](../index.md)
 
@@ -9,11 +9,13 @@ $$\operatorname{Hom}_{\mathcal{C}}(M, N) \longrightarrow \operatorname{Hom}_{\ma
 
 是**阿贝尔群同态**（即保加法、保 $0$）。
 
+## 它能推出什么 / 谁在用它
+- 被 [`prop.additive-iff-preserves-biproduct`](../nodes/prop.additive-iff-preserves-biproduct.md) 加法函子的刻画 用
+
+- …另有出边，续页见 [nodes/def.additive-functor.3.md](./def.additive-functor.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.additive-functor.2.md](./def.additive-functor.2.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.additive-functor.3.md](./def.additive-functor.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §5.1–5.2
 

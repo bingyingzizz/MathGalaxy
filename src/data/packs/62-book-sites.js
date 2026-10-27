@@ -20,7 +20,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '常层', '极限', '拓扑斯'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$\\Delta : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\\underline{(-)}$ 表示对应的**常层**。则：',
+        '设 $\\mathcal{C}$ 是景，$\\Delta : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\\underline{(-)}$ 表示对应的**常层**。则：',
         '',
         '1. 若 $E = \\varprojlim_{i} E_{i}$ 是集合里的极限，则 $\\Delta E = \\varprojlim_{i}\\Delta E_{i}$；',
         '2. 同样地 $\\underline{E} = \\varprojlim_{i}\\underline{E_{i}}$ —— 常层函子也保极限。'

@@ -1,5 +1,5 @@
 # 整数幂　`def.power`
-整数幂 $a^{n}$（Integer Powers）
+整数幂 $a^{n}$
 layer 8 · 定义 · 实数的运算与不等式 · 分析学
 [在星图里打开](../#n=def.power)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 线性映射　`def.linear-map`
-线性映射（Linear Map）
+线性映射
 layer 9 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.linear-map)　·　[节点索引](../index.md)
 

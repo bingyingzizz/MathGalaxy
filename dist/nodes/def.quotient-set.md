@@ -1,5 +1,5 @@
 # 商集与等价类　`def.quotient-set`
-商集 / 等价类（Quotient Set）
+商集 / 等价类
 layer 5 · 定义 · 关系与函数 · 集合论
 [在星图里打开](../#n=def.quotient-set)　·　[节点索引](../index.md)
 

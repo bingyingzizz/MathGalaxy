@@ -1,5 +1,5 @@
 # 良序定理　`thm.wellordering`
-良序定理 / 良序原理（Well-Ordering Theorem）
+良序定理 / 良序原理
 layer 9 · 定理 · 选择原理 · 集合论+序理论
 [在星图里打开](../#n=thm.wellordering)　·　[节点索引](../index.md)
 
@@ -9,11 +9,13 @@ layer 9 · 定理 · 选择原理 · 集合论+序理论
 
 特别地，每个集合都有基数；实数集上存在良序（但这个良序无法被显式写出）。
 
+## 它能推出什么 / 谁在用它
+- ⟺ [`ax.choice`](../nodes/ax.choice.md) 选择公理
+
+- …另有出边，续页见 [nodes/thm.wellordering.4.md](./thm.wellordering.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.wellordering.3.md](./thm.wellordering.3.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/thm.wellordering.4.md](./thm.wellordering.4.md)
 
 ## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/thm.wellordering.2.md](./thm.wellordering.2.md)

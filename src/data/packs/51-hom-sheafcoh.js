@@ -21,7 +21,7 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', '层上同调', '导出函子', '截面函子'],
       statement: [
-        '设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是',
+        '设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是',
         '',
         '$$H^{n}(X, M^{\\bullet}) := R^{n}\\Gamma(X, M^{\\bullet}),$$',
         '',
@@ -43,7 +43,7 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', 'Čech 上同调', '预层', '覆盖'],
       statement: [
-        '设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是',
+        '设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是',
         '',
         '$$\\check{H}^{n}(X, M^{\\bullet}) := \\Gamma\\bigl(X,\\ \\check{H}^{n}(M^{\\bullet})\\bigr).$$'
       ].join('\n'),
@@ -99,11 +99,11 @@ window.MG = window.MG || {};
       cluster: 'hom.sheafcoh',
       type: 'definition',
       label: '无环层',
-      title: '无环层（Acyclic Sheaf）',
+      title: '无环层',
       regions: ['homology'],
       tags: ['同调代数', '无环层', '层上同调'],
-      statement: 'site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。',
-      notes: '⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。',
+      statement: '景 $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。',
+      notes: '⚠️ 专门提醒：**这个定义依赖景 $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个景（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。',
       refs: ['Le Stum, An introduction to condensed mathematics, §7.3']
     },
 

@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '测度',
-      title: '测度（Measure）',
+      title: '测度',
       regions: ['analysis'],
       tags: ['定义', '测度', '可数可加'],
       statement: [
@@ -71,7 +71,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '有限可加测度',
-      title: '有限可加测度（Finitely Additive Measure）',
+      title: '有限可加测度',
       regions: ['analysis'],
       tags: ['定义', '有限可加'],
       statement: [
@@ -145,7 +145,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '零集与完备',
-      title: 'μ-零集 / 完备测度空间（Null Set & Complete Measure Space）',
+      title: 'μ-零集 / 完备测度空间',
       regions: ['analysis'],
       tags: ['定义', '零集', '完备'],
       statement: [
@@ -200,7 +200,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '半有限部分',
-      title: '半有限部分（Semifinite Part of a Measure）',
+      title: '半有限部分',
       regions: ['analysis'],
       tags: ['定义', '半有限'],
       statement: [
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '外测度',
-      title: '外测度（Outer Measure）',
+      title: '外测度',
       regions: ['analysis'],
       tags: ['定义', '外测度', '次可加'],
       statement: [

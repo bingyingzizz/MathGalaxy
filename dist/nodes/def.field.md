@@ -1,5 +1,5 @@
 # 域　`def.field`
-域 $F$（Field）
+域 $F$
 layer 7 · 定义 · 代数结构 · 抽象代数
 [在星图里打开](../#n=def.field)　·　[节点索引](../index.md)
 

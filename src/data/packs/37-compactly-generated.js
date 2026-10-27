@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       cluster: 'topo.cg',
       type: 'definition',
       label: '紧生成空间',
-      title: '紧生成空间 / $k$-空间（Compactly Generated Space）',
+      title: '紧生成空间 / $k$-空间',
       regions: ['topology'],
       tags: ['拓扑', '紧生成', 'k-空间', 'k-拓扑'],
       statement: [
@@ -261,7 +261,7 @@ window.MG = window.MG || {};
       cluster: 'topo.cg',
       type: 'definition',
       label: '紧开拓扑',
-      title: '紧开拓扑（Compact-Open Topology）',
+      title: '紧开拓扑',
       regions: ['topology'],
       tags: ['拓扑', '紧开拓扑', '函数空间'],
       statement: [
@@ -304,7 +304,7 @@ window.MG = window.MG || {};
       cluster: 'topo.cg',
       type: 'definition',
       label: '弱 Hausdorff 空间',
-      title: '弱 Hausdorff 空间（Weak Hausdorff Space）',
+      title: '弱 Hausdorff 空间',
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', 'CGWH'],
       statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。',

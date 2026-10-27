@@ -17,7 +17,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: '可测函数',
-      title: '可测函数（Measurable Function）',
+      title: '可测函数',
       regions: ['analysis'],
       tags: ['定义', '可测函数'],
       statement: [
@@ -155,7 +155,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: '简单函数',
-      title: '简单函数（Simple Function）',
+      title: '简单函数',
       regions: ['analysis'],
       tags: ['定义', '简单函数'],
       statement: [

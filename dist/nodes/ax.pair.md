@@ -1,5 +1,5 @@
 # 配对公理　`ax.pair`
-配对公理（Axiom of Pairing）
+配对公理
 layer 0 · 公理 · ZFC 公理系统 · 集合论
 [在星图里打开](../#n=ax.pair)　·　[节点索引](../index.md)
 

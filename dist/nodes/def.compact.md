@@ -1,5 +1,5 @@
 # 紧　`def.compact`
-紧空间（Compact Space）
+紧空间
 layer 14 · 定义 · 度量空间 · 拓扑学
 [在星图里打开](../#n=def.compact)　·　[节点索引](../index.md)
 
@@ -9,13 +9,10 @@ $$\forall\{U_i\}_{i \in I} (\text{ 每个} U_i\text{ 开且} X = \bigcup_{i \in 
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧：列紧 $\implies$ 紧　[proofs/imp.seqcompact-compact.md](../proofs/imp.seqcompact-compact.md)
-
-- …另有入边，续页见 [nodes/def.compact.2.md](./def.compact.2.md)
+- [`def.metric-space`](../nodes/def.metric-space.md) 距离空间：用到了定义 距离空间　[proofs/def-dep.metric-compact.md](../proofs/def-dep.metric-compact.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧
-
-- …另有出边，续页见 [nodes/def.compact.3.md](./def.compact.3.md)
+- …另有出边，续页见 [nodes/def.compact.2.md](./def.compact.2.md)
 
 refs: Munkres, Topology, §26
 

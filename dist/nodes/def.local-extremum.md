@@ -1,5 +1,5 @@
 # 局部极值　`def.local-extremum`
-局部极大与局部极小（Local Extremum）
+局部极大与局部极小
 layer 16 · 定义 · 微分中值定理与 Taylor · 分析学
 [在星图里打开](../#n=def.local-extremum)　·　[节点索引](../index.md)
 

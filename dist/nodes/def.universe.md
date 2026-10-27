@@ -1,5 +1,5 @@
 # Grothendieck 宇宙　`def.universe`
-Grothendieck 宇宙（Grothendieck Universe）
+Grothendieck 宇宙
 layer 4 · 定义 · 范畴与图 · 范畴论
 [在星图里打开](../#n=def.universe)　·　[节点索引](../index.md)
 

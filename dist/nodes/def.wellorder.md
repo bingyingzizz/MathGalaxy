@@ -1,5 +1,5 @@
 # 良序集　`def.wellorder`
-良序集（Well-Ordered Set）
+良序集
 layer 6 · 定义 · 序结构 · 序理论
 [在星图里打开](../#n=def.wellorder)　·　[节点索引](../index.md)
 

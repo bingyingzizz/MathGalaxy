@@ -1,5 +1,5 @@
 # Hausdorff 空间　`def.hausdorff`
-Hausdorff 空间 / $T_{2}$（Hausdorff Space）
+Hausdorff 空间 / $T_{2}$
 layer 5 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.hausdorff)　·　[节点索引](../index.md)
 

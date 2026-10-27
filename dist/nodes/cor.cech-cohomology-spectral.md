@@ -3,7 +3,7 @@
 layer 19 · 推论 · 层上同调 · 同调代数
 [在星图里打开](../#n=cor.cech-cohomology-spectral)　·　[节点索引](../index.md)
 
-设 $\mathcal{C}$ 是有纤维积的 site、$X \in \mathcal{C}$、$M$ 是 $\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列
+设 $\mathcal{C}$ 是有纤维积的景、$X \in \mathcal{C}$、$M$ 是 $\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列
 
 $$E^{p,q}_{2} \;=\; \check{H}^{p}\bigl(X,\ H^{q}(M)\bigr) \;\Longrightarrow\; H^{p+q}(X,\ M),$$
 > 陈述续见 [nodes/cor.cech-cohomology-spectral.2.md](./cor.cech-cohomology-spectral.2.md)

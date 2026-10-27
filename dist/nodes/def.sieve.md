@@ -1,5 +1,5 @@
 # 筛　`def.sieve`
-筛（Sieve）
+筛
 layer 10 · 定义 · 层与拓扑 · 范畴论
 [在星图里打开](../#n=def.sieve)　·　[节点索引](../index.md)
 

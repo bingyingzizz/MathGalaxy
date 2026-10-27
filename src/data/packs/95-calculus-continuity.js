@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'definition',
       label: '一致连续',
-      title: '一致连续（Uniform Continuity）',
+      title: '一致连续',
       regions: ['analysis', 'topology'],
       tags: ['定义', '连续'],
       statement: [
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'theorem',
       label: '最值定理',
-      title: '最值定理（Extreme Value Theorem）',
+      title: '最值定理',
       regions: ['analysis', 'topology'],
       tags: ['定理', '连续', '紧'],
       statement: [
@@ -71,7 +71,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'theorem',
       label: '介值定理',
-      title: '介值定理（Intermediate Value Theorem）',
+      title: '介值定理',
       regions: ['analysis'],
       tags: ['定理', '连续'],
       statement: [

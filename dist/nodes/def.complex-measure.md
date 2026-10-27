@@ -1,5 +1,5 @@
 # 复测度　`def.complex-measure`
-复测度（Complex Measure）
+复测度
 layer 16 · 定义 · 符号测度与分解 · 分析学
 [在星图里打开](../#n=def.complex-measure)　·　[节点索引](../index.md)
 

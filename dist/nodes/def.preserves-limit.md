@@ -1,5 +1,5 @@
 # 保极限的函子　`def.preserves-limit`
-函子保极限（Preservation of Limits）
+函子保极限
 layer 12 · 定义 · 函子与自然变换 · 范畴论
 [在星图里打开](../#n=def.preserves-limit)　·　[节点索引](../index.md)
 

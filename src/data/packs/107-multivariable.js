@@ -28,7 +28,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '赋范空间',
-      title: '赋范空间（Normed Space）',
+      title: '赋范空间',
       regions: ['analysis'],
       tags: ['定义', '泛函', '范数'],
       statement: [
@@ -61,7 +61,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '偏导数',
-      title: '偏导数（Partial Derivative）',
+      title: '偏导数',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -81,7 +81,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '方向导数',
-      title: '方向导数（Directional Derivative）',
+      title: '方向导数',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -99,7 +99,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '可微与全微分',
-      title: '可微与全微分（Total Differential）',
+      title: '可微与全微分',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '梯度',
-      title: '梯度（Gradient）',
+      title: '梯度',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -139,7 +139,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: 'Jacobi 矩阵',
-      title: 'Jacobi 矩阵（Jacobian Matrix）',
+      title: 'Jacobi 矩阵',
       regions: ['analysis'],
       tags: ['定义', '微积分', '线性代数'],
       statement: [
@@ -157,7 +157,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: 'Hessian 矩阵',
-      title: 'Hessian 矩阵（Hessian）',
+      title: 'Hessian 矩阵',
       regions: ['analysis'],
       tags: ['定义', '微积分', '线性代数'],
       statement: [
@@ -280,7 +280,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '压缩映射',
-      title: '压缩映射（Contraction）',
+      title: '压缩映射',
       regions: ['analysis'],
       tags: ['定义', '度量空间', '不动点'],
       statement: [
@@ -417,7 +417,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '浸入 / 淹没 / 嵌入',
-      title: '浸入、淹没与嵌入（Immersion / Submersion / Embedding）',
+      title: '浸入、淹没与嵌入',
       regions: ['analysis'],
       tags: ['定义', '微积分', '流形'],
       statement: [

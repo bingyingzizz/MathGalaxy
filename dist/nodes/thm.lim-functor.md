@@ -1,5 +1,5 @@
 # 极限的函子性　`thm.lim-functor`
-极限是函子（Limits as a Functor）
+极限是函子
 layer 12 · 定理 · 图与极限 · 范畴论
 [在星图里打开](../#n=thm.lim-functor)　·　[节点索引](../index.md)
 

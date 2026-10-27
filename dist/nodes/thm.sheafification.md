@@ -14,7 +14,7 @@ $$\operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T^{\sharp},\ F\bigr) \;\cong\;
 
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.site-properties`](../nodes/prop.site-properties.md) site 的层范畴的好性质
+- ⇒ [`prop.site-properties`](../nodes/prop.site-properties.md) 景的层范畴的好性质
 
 - …另有出边，续页见 [nodes/thm.sheafification.4.md](./thm.sheafification.4.md)
 

@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.inner-product`](../nodes/def.inner-product.md) 内积：用到了定义 内积　[proofs/dep.innerproduct-operatoradjoint.md](../proofs/dep.innerproduct-operatoradjoint.md)
+
+> 续见 [nodes/def.operator-adjoint.4.md](./def.operator-adjoint.4.md)

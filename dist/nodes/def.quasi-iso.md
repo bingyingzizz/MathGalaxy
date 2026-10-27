@@ -1,5 +1,5 @@
 # 拟同构　`def.quasi-iso`
-拟同构与零调复形（Quasi-Isomorphism）
+拟同构与零调复形
 layer 14 · 定义 · 同调与正合列 · 同调代数
 [在星图里打开](../#n=def.quasi-iso)　·　[节点索引](../index.md)
 

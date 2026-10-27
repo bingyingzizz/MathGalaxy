@@ -2,7 +2,7 @@
    内容包 · 层与拓扑（19 条）
    --------------------------------------------------------------------------
    第七团：筛 → 预拓扑 → Grothendieck 拓扑 → 层 → Čech 函子 → 层化
-   → site 的层范畴的好性质 → 标准拓扑。
+   → 景的层范畴的好性质 → 标准拓扑。
 
    依赖顺序：拓扑（＝一族覆盖筛）说「什么算覆盖」，层说「在覆盖上能不能粘」，
    Čech 函子与层化把预层改造成层，最后一批性质为拓扑斯铺路。
@@ -19,7 +19,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '筛',
-      title: '筛（Sieve）',
+      title: '筛',
       regions: ['category'],
       tags: ['范畴论', '筛', '覆盖'],
       statement: [
@@ -39,7 +39,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '预拓扑',
-      title: '预拓扑（Pretopology）',
+      title: '预拓扑',
       regions: ['category'],
       tags: ['范畴论', '预拓扑', '覆盖'],
       statement: [
@@ -56,15 +56,15 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
-    /* --------------------------------------- Grothendieck 拓扑 / site */
+    /* --------------------------------------- Grothendieck 拓扑 / 景 */
     {
       id: 'def.grothendieck-topology',
       cluster: 'cat.sheaf',
       type: 'definition',
       label: 'Grothendieck 拓扑',
-      title: 'Grothendieck 拓扑与 site（Grothendieck Topology, Site）',
+      title: 'Grothendieck 拓扑与景',
       regions: ['category'],
-      tags: ['范畴论', '拓扑', 'site'],
+      tags: ['范畴论', '拓扑', '景'],
       statement: [
         '范畴 $\\mathcal{C}$ 上的 **Grothendieck 拓扑**是对每个 $X$ 指定一族**覆盖筛** $J(X)$，满足：',
         '',
@@ -72,7 +72,7 @@ window.MG = window.MG || {};
         '2. **拉回稳定**：$R \\in J(X)$、$f : Y \\to X$ $\\implies$ $f^{*}(R) := R \\times_{h_{X}} h_{Y} \\in J(Y)$；',
         '3. **传递**：$R, R\' \\subseteq h_{X}$，若 $R\' \\in J(X)$ 且对每个 $f \\in R\'(Y)$ 有 $f^{*}(R) \\in J(Y)$，则 $R \\in J(X)$。',
         '',
-        '带 Grothendieck 拓扑的范畴叫 **site**。'
+        '带 Grothendieck 拓扑的范畴叫 **景**。'
       ].join('\n'),
       notes: [
         '$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R\' \\in J(X) \\implies R \\cap R\' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R\'$、$R \\in J(X) \\implies R\' \\in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。',
@@ -87,11 +87,11 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '层',
-      title: '层与分离预层（Sheaf）',
+      title: '层与分离预层',
       regions: ['category'],
       tags: ['范畴论', '层', '粘合'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是预层。',
+        '设 $\\mathcal{C}$ 是景，$F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是预层。',
         '',
         '- $F$ 叫**分离的**，如果对每个 $X$ 与每个 $R \\in J(X)$，限制映射',
         '',
@@ -148,7 +148,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '层化', '滤过余极限'],
       statement: [
-        'site $\\mathcal{C}$ 上的 **Čech 函子** $\\widehat{H}$ 定义在预层上：',
+        '景 $\\mathcal{C}$ 上的 **Čech 函子** $\\widehat{H}$ 定义在预层上：',
         '',
         '$$\\widehat{H}(T)(X) \\;:=\\; \\varinjlim_{R \\in J(X)} \\operatorname{Hom}(R, T)$$',
         '',
@@ -223,7 +223,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '正则满态射',
-      title: '正则满态射（Regular Epimorphism）',
+      title: '正则满态射',
       regions: ['category'],
       tags: ['范畴论', '满态射', '余等化子'],
       statement: [
@@ -258,17 +258,17 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
-    /* -------------------------------------------- site 的层范畴的好性质 */
+    /* -------------------------------------------- 景的层范畴的好性质 */
     {
       id: 'prop.site-properties',
       cluster: 'cat.sheaf',
       type: 'proposition',
-      label: 'site 的层范畴的好性质',
+      label: '景的层范畴的好性质',
       title: 'Grothendieck 拓扑下的层范畴',
       regions: ['category'],
       tags: ['范畴论', '层', '预拓扑斯'],
       statement: [
-        '若 $\\mathcal{C}$ 是 site，则层范畴 $\\widehat{\\mathcal{C}}$ 中所有极限与余极限存在，并且：',
+        '若 $\\mathcal{C}$ 是景，则层范畴 $\\widehat{\\mathcal{C}}$ 中所有极限与余极限存在，并且：',
         '',
         '1. 余极限是**万有**的；',
         '2. **滤过余极限正合**；',
@@ -327,7 +327,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '有效等价关系',
-      title: '有效等价关系（Effective Equivalence Relation）',
+      title: '有效等价关系',
       regions: ['category'],
       tags: ['范畴论', '等价关系', '商'],
       statement: [
@@ -369,7 +369,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '标准拓扑',
-      title: '标准拓扑与次标准拓扑（Canonical Topology）',
+      title: '标准拓扑与次标准拓扑',
       regions: ['category'],
       tags: ['范畴论', '标准拓扑', '次标准'],
       statement: [
@@ -492,7 +492,7 @@ window.MG = window.MG || {};
       note: '注意「做两次」不是凑出来的：**第一次把预算层变成分离的，第二次才把分离的变成层** —— 差的正是「分离」与「层」之间的那一步（性质 3）。'
     },
 
-    /* ------------------------------------------- site 层范畴的性质 */
+    /* ------------------------------------------- 景层范畴的性质 */
     {
       id: 'imp.site-properties',
       kind: 'implication',
@@ -533,7 +533,7 @@ window.MG = window.MG || {};
         '',
         '取 $Y = X$、$g = 1_{X}$ 即得 $u = v$。所以 $q$ 是满态射。∎'
       ].join('\n'),
-      note: '这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在 site 上验覆盖，都可以改写成一个余积是否满射的问题。'
+      note: '这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在景上验覆盖，都可以改写成一个余积是否满射的问题。'
     }
   ]
 });

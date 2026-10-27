@@ -1,5 +1,5 @@
 # 正规空间　`def.normal-space`
-正规空间（Normal Space）
+正规空间
 layer 6 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.normal-space)　·　[节点索引](../index.md)
 

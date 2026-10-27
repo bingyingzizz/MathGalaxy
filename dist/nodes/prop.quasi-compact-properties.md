@@ -3,7 +3,7 @@
 layer 13 · 命题 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=prop.quasi-compact-properties)　·　[节点索引](../index.md)
 
-1. site $\mathcal{C}$ 中 $X$ 拟紧 $\iff$ $X$ 在标准拓扑下拟紧；
+1. 景 $\mathcal{C}$ 中 $X$ 拟紧 $\iff$ $X$ 在标准拓扑下拟紧；
 2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；
 3. 预拓扑斯 $\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\iff$ 存在满射 $X \to F$ 且 $X \in \mathcal{C}$。
 

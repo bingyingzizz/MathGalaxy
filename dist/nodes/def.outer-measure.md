@@ -1,5 +1,5 @@
 # 外测度　`def.outer-measure`
-外测度（Outer Measure）
+外测度
 layer 14 · 定义 · 测度的构造 · 分析学
 [在星图里打开](../#n=def.outer-measure)　·　[节点索引](../index.md)
 

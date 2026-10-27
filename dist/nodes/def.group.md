@@ -1,5 +1,5 @@
 # 群　`def.group`
-群与阿贝尔群（Group）
+群与阿贝尔群
 layer 6 · 定义 · 代数结构 · 抽象代数
 [在星图里打开](../#n=def.group)　·　[节点索引](../index.md)
 

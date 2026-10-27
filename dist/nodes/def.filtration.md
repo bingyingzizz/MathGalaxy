@@ -1,5 +1,5 @@
 # 过滤　`def.filtration`
-过滤（Filtration）
+过滤
 layer 15 · 定义 · 过滤与谱序列 · 同调代数
 [在星图里打开](../#n=def.filtration)　·　[节点索引](../index.md)
 

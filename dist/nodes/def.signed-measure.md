@@ -1,5 +1,5 @@
 # 符号测度　`def.signed-measure`
-符号测度（Signed Measure）
+符号测度
 layer 15 · 定义 · 符号测度与分解 · 分析学
 [在星图里打开](../#n=def.signed-measure)　·　[节点索引](../index.md)
 

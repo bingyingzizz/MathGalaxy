@@ -1,5 +1,5 @@
 # 环与域的基本等式　`prop.field-rules`
-命题：环与域里的基本等式（Consequences of the Ring Axioms）
+命题：环与域里的基本等式
 layer 8 · 命题 · 实数的运算与不等式 · 分析学+抽象代数
 [在星图里打开](../#n=prop.field-rules)　·　[节点索引](../index.md)
 

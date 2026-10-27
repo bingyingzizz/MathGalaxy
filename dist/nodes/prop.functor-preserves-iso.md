@@ -1,5 +1,5 @@
 # 函子保同构　`prop.functor-preserves-iso`
-命题：函子把同构送到同构（Functors Preserve Isomorphisms）
+命题：函子把同构送到同构
 layer 9 · 命题 · 函子与自然变换 · 范畴论
 [在星图里打开](../#n=prop.functor-preserves-iso)　·　[节点索引](../index.md)
 

@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-27T06:36:23.156Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-27T07:11:29.753Z
 > 10 星系 / 65 星团 / 970 节点 / 1730 连线（强边 1721，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -26,7 +26,7 @@
 > 造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。
 
 #### 一阶语言　`def.first-order-language`
-*定义*　一阶语言 $\mathcal{L}$（First-Order Language）
+*定义*　一阶语言 $\mathcal{L}$
 
 **一阶语言** $\mathcal{L}$ 由一张**符号表**给定，符号分两类：
 
@@ -50,7 +50,7 @@
 参考：Kunen, Set Theory, I.2；Enderton, A Mathematical Introduction to Logic, Ch. 1
 
 #### 公式　`def.formula`
-*定义*　项与公式 / 语句（Formula, Sentence）
+*定义*　项与公式 / 语句
 
 （在给定的**一阶语言** $\mathcal{L}$ 里）**公式**就是按语法规则 3 生成的表达式，即
 
@@ -73,7 +73,7 @@ $$\varphi ::= R(t_{1}, \ldots, t_{n}) \;\mid\; \neg \varphi \;\mid\; (\varphi \w
 参考：Enderton, A Mathematical Introduction to Logic, Ch. 1；Kunen, Set Theory, I.2
 
 #### 代入　`def.substitution`
-*定义*　代入 $\varphi (x/t)$（Substitution）
+*定义*　代入 $\varphi (x/t)$
 
 设 $x$ 是变元，$t$ 是项，$\varphi$ 是公式。把 $\varphi$ 中 $x$ 的**自由出现**全部换成 $t$，得到的公式记作
 
@@ -92,7 +92,7 @@ $$\varphi (x/t)$$
 参考：Enderton, A Mathematical Introduction to Logic, §2.4
 
 #### 满足关系　`def.satisfaction`
-*定义*　结构与满足关系 $\models$（Tarski）
+*定义*　结构与满足关系 $\models$
 
 设 $\mathcal{L}$ 是**一阶语言**。$\mathcal{L}$ 的一个**结构** $\mathfrak{A}$ 指：一个非空集合 $A$（**论域**），连同每个常元符号、$n$ 元函数符号、$n$ 元关系符号在 $A$ 上的**解释**。再给定一个**赋值** $s$（给每个变元指定 $A$ 中一个元素）。
 
@@ -120,7 +120,7 @@ $$\varphi (x/t)$$
 > 造出「集合」这套语言本身：九条公理定下什么叫集合、怎么造集合。
 
 #### 外延公理　`ax.ext`
-*公理*　外延公理（Axiom of Extensionality）
+*公理*　外延公理
 
 集合由它的元素唯一决定：
 
@@ -136,7 +136,7 @@ $$\forall A \forall B [ \forall x ( x \in A \leftrightarrow  x \in B ) \to A = B
 参考：Kunen, Set Theory, I.2；Jech, Set Theory, 1.2
 
 #### 分离公理模式　`ax.sep`
-*公理*　分离公理模式（Axiom Schema of Separation）
+*公理*　分离公理模式
 
 对每个公式 $\varphi (x, p)$（其中 $B$ 不出现），下面是一条公理：
 
@@ -151,7 +151,7 @@ $$\forall p \forall A \exists B \forall x [ x \in B \leftrightarrow  ( x \in A \
 参考：Kunen, Set Theory, I.4
 
 #### 配对公理　`ax.pair`
-*公理*　配对公理（Axiom of Pairing）
+*公理*　配对公理
 
 任给两个集合，可以打包成「只含这两个元素的集合」：
 
@@ -164,7 +164,7 @@ $$\forall a \forall b \exists A \forall x [ x \in A \leftrightarrow  ( x = a \ve
 参考：Kunen, Set Theory, I.3
 
 #### 并集公理　`ax.union`
-*公理*　并集公理（Axiom of Union）
+*公理*　并集公理
 
 一个集合族的所有成员的元素，仍然构成一个集合：
 
@@ -177,7 +177,7 @@ $$\forall F \exists A \forall x [ x \in A \leftrightarrow  \exists Y ( Y \in F \
 参考：Kunen, Set Theory, I.3
 
 #### 幂集公理　`ax.power`
-*公理*　幂集公理（Axiom of Power Set）
+*公理*　幂集公理
 
 一个集合的所有子集构成一个集合：
 
@@ -190,7 +190,7 @@ $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 参考：Kunen, Set Theory, I.3
 
 #### 无穷公理　`ax.inf`
-*公理*　无穷公理（Axiom of Infinity）
+*公理*　无穷公理
 
 存在一个「归纳集」——含有 $\emptyset$ 且对后继封闭的集合：
 
@@ -206,7 +206,7 @@ $$\exists I [ \emptyset \in I \wedge  \forall x ( x \in I \to x \cup \{ x \} \in
 参考：Kunen, Set Theory, I.5
 
 #### 替换公理模式　`ax.repl`
-*公理*　替换公理模式（Axiom Schema of Replacement）
+*公理*　替换公理模式
 
 若一个公式定义了「函数关系」，则任一集合的像仍是集合。对每个公式 $\varphi (x, y, p)$（其中 $B$ 不出现）：
 
@@ -219,7 +219,7 @@ $$\forall p [ \forall x\forall y\forall z ( \varphi(x,y,p) \wedge  \varphi(x,z,p
 参考：Kunen, Set Theory, I.6
 
 #### 正则公理　`ax.found`
-*公理*　正则公理 / 基础公理（Axiom of Foundation）
+*公理*　正则公理 / 基础公理
 
 每个非空集合都有「$\in$极小元」：
 
@@ -252,7 +252,7 @@ $$A_0 \ni  A_1 \ni  \cdots \ni  A_n = A_0$$
 > 造出日常要用的零件：空集、子集、并交差补、幂集、有序对、笛卡尔积。
 
 #### 子集　`def.subset`
-*定义*　子集 / 真子集（Subset）
+*定义*　子集 / 真子集
 
 设 $A$、$B$ 是集合。
 
@@ -270,7 +270,7 @@ $\emptyset \subseteq A$ 对一切 $A$ 成立（空泛真）。
 参考：Kunen, Set Theory, I.2
 
 #### 有序对　`def.pair`
-*定义*　有序对（Ordered Pair, Kuratowski）
+*定义*　有序对
 
 Kuratowski 定义：
 
@@ -330,7 +330,7 @@ $$\forall A \forall B \exists C \forall z [ z \in C \leftrightarrow  \exists a \
 参考：Kunen, Set Theory, I.5
 
 #### 并集与交集　`def.union-inter`
-*定义*　并集 / 交集（Union & Intersection）
+*定义*　并集 / 交集
 
 设 $\mathcal{A}$ 是一族集合（$A$ 的**并**与**交**是它只有两个成员时的特例）：
 
@@ -350,7 +350,7 @@ $$\bigcap \mathcal{A} := \{ x : \forall A \in \mathcal{A},\ x \in A \}$$
 参考：Kunen, Set Theory, I.5
 
 #### 差集与补集　`def.diff-complement`
-*定义*　差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）
+*定义*　差集 / 补集 / 对称差
 
 设 $A$、$B$、$X$ 是集合且 $A, B \subseteq X$：
 
@@ -371,7 +371,7 @@ $$A \setminus B = A \cap B^{c}, \qquad (A^{c})^{c} = A, \qquad (\bigcup_i A_i)^{
 参考：Kunen, Set Theory, I.5
 
 #### 空集 ∅　`def.empty`
-*定义*　空集（Empty Set）
+*定义*　空集
 
 **空集**是不含任何元素的集合，记作 $\emptyset$：
 
@@ -391,7 +391,7 @@ $$\emptyset := \{ x : x \ne x \}$$
 参考：Kunen, Set Theory, I.5
 
 #### 幂集 𝒫(X)　`def.power-set`
-*定义*　幂集（Power Set）
+*定义*　幂集
 
 设 $X$ 是集合。$X$ 的**幂集**是「$X$ 的全部子集」装成的集合：
 
@@ -416,7 +416,7 @@ $$\mathcal{P}(X) := \{ A : A \subseteq X \}$$
 > 造出函数：关系加上单值性。顺带造出等价关系与商集 —— 后面 ℤ / ℚ / ℝ 全靠这一招粘出来。
 
 #### 关系　`def.rel`
-*定义*　关系（Relation）
+*定义*　关系
 
 设 $A$、$B$ 是集合。
 
@@ -433,7 +433,7 @@ $$\mathcal{P}(X) := \{ A : A \subseteq X \}$$
 参考：Kunen, Set Theory, I.5
 
 #### 映射　`def.function`
-*定义*　映射（Mapping）
+*定义*　映射
 
 设 $f$ 是 $A$ 到 $B$ 的关系。$f$ 是一个**映射**（记 $f : A \to B$），当且仅当对每个输入恰有一个输出：
 
@@ -454,7 +454,7 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 参考：Kunen, Set Theory, I.5
 
 #### 函数　`def.number-function`
-*定义*　函数（Function）
+*定义*　函数
 
 设 $f : X \to Y$ 是**映射**。若它的取值落在**数集**里 —— 即 $Y \subseteq \mathbb{R}$ 或 $Y \subseteq \mathbb{C}$ —— 就叫 $f$ 是一个**函数**。
 
@@ -469,7 +469,7 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 参考：Rudin, Principles of Mathematical Analysis
 
 #### 单射 / 满射 / 双射　`def.bijection`
-*定义*　单射 / 满射 / 双射（Injective / Surjective / Bijective）
+*定义*　单射 / 满射 / 双射
 
 设 $f : A \to B$。
 
@@ -488,7 +488,7 @@ $$\forall a \in A, \exists! b \in B, (a, b) \in f$$
 参考：Kunen, Set Theory, I.5
 
 #### 像与原像　`def.preimage`
-*定义*　像与原像（Image / Preimage）
+*定义*　像与原像
 
 设 $f : X \to Y$ 是映射。
 
@@ -512,7 +512,7 @@ $$f^{-1}\Bigl(\bigcup_{i} B_{i}\Bigr) = \bigcup_{i} f^{-1}(B_{i}), \qquad f^{-1}
 参考：Kunen, Set Theory, I.5
 
 #### 商集与等价类　`def.quotient-set`
-*定义*　商集 / 等价类（Quotient Set）
+*定义*　商集 / 等价类
 
 设 $\sim$ 是集合 $A$ 上的一个**等价关系**。对 $a \in A$，称
 
@@ -559,7 +559,7 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 参考：Hartogs (1915)；Kunen, Set Theory, I.11；Jech, The Axiom of Choice, Ch. 2
 
 #### 可数与不可数　`def.countable`
-*定义*　可数 / 至多可数（Countable）
+*定义*　可数 / 至多可数
 
 设 $\mathbb{N} = \{0, 1, 2, \ldots\}$ 是自然数集。
 
@@ -580,7 +580,7 @@ $$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 
 参考：Kunen, Set Theory, I.6
 
 #### 等势　`def.equinumerous`
-*定义*　等势（Equinumerous）
+*定义*　等势
 
 集合 $A$ 与 $B$ **等势**（记 $|A| = |B|$ 或 $A \approx B$），当且仅当存在**双射**
 
@@ -600,7 +600,7 @@ $$f : A \to B$$
 参考：Kunen, Set Theory, I.6
 
 #### 基数 |A|　`def.cardinal`
-*定义*　基数与基数的比较（Cardinality）
+*定义*　基数与基数的比较
 
 等势把「所有集合」分成一个个类。「集合 $A$ 的**基数**」$|A|$ 指的就是 $A$ 所在的这个等势类 —— 它衡量 $A$ 有多大，而不关心 $A$ 的元素是什么。
 
@@ -752,7 +752,7 @@ $$(ac + bd) - (ad + bc) = pq > 0,$$
 参考：Kunen, Set Theory, Ch. I；Enderton, Elements of Set Theory, Ch. 4
 
 #### 复数 ℂ　`def.complex`
-*定义*　复数系 $\mathbb{C}$（Complex Numbers）
+*定义*　复数系 $\mathbb{C}$
 
 **复数系** $\mathbb{C} := \mathbb{R}^2$，配以下运算：
 
@@ -775,7 +775,7 @@ $$|zw| = |z|\,|w|, \qquad z \bar{z} = |z|^2$$
 参考：Rudin, Real and Complex Analysis, Ch. 1
 
 #### 归纳原理与递推定义　`thm.induction`
-*定理*　归纳原理 / 递推定义（Induction & Recursion）
+*定理*　归纳原理 / 递推定义
 
 设 $\omega$ 是最小归纳集（即 $\mathbb{N}$）。
 
@@ -875,7 +875,7 @@ $$\frac{a}{b} + \frac{c}{d} := \frac{ad + bc}{bd}, \qquad \frac{a}{b} \cdot \fra
 参考：Kunen, Set Theory, I.5
 
 #### Cauchy 列与零列　`def.cauchy-null`
-*定义*　有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）
+*定义*　有理 Cauchy 列 / 零列 / 等价
 
 设 $(x_n)$ 是**有理数列**（即函数 $\omega \to \mathbb{Q}$），$|x|$ 是 $\mathbb{Q}$ 上的绝对值，$\varepsilon$ 一律取**正有理数**（此时还不需要实数）。
 
@@ -974,7 +974,7 @@ $$|\mathbb{R}| = |\mathcal{P}(\mathbb{N})| = 2^{\aleph_0} > \aleph_0$$
 > 造出「无穷有多长」这把尺子：良序集的序型 → von Neumann 序数（传递的良序集）→ 三歧性 → 超限递归 / 超限归纳，顺带发现序数全体是真类。
 
 #### 序数　`def.ordinal`
-*定义*　序数（von Neumann Ordinal）
+*定义*　序数
 
 集合 $\alpha$ 称为**序数**（von Neumann 序数），当且仅当：
 
@@ -1064,7 +1064,7 @@ $$\alpha \in \beta, \qquad \alpha = \beta, \qquad \beta \in \alpha$$
 > 造出「偏序集」这套舞台：链、上界、极大元、良序、有限特征。
 
 #### 偏序集　`def.poset`
-*定义*　偏序集 / 全序集（Partially Ordered Set）
+*定义*　偏序集 / 全序集
 
 设 $\preceq$ 是集合 $A$ 上的二元关系。$\preceq$ 是 **$A$ 上的偏序**，当且仅当：
 
@@ -1083,7 +1083,7 @@ $$\alpha \in \beta, \qquad \alpha = \beta, \qquad \beta \in \alpha$$
 参考：Kunen, Set Theory, I.11；Davey & Priestley, Introduction to Lattices and Order
 
 #### 链　`def.chain`
-*定义*　链 / 反链（Chain / Antichain）
+*定义*　链 / 反链
 
 设 $(P, \preceq )$ 是偏序集，$C \subseteq P$。
 
@@ -1100,7 +1100,7 @@ $$\forall x, y \in C ( x \preceq y \vee  y \preceq x )$$
 参考：Kunen, Set Theory, I.11
 
 #### 界与确界　`def.bound`
-*定义*　上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）
+*定义*　上界 / 下界 / 确界 / 极大元
 
 设 $(P, \preceq )$ 是偏序集，$S \subseteq P$，$u, l, m \in P$。
 
@@ -1128,7 +1128,7 @@ $$\forall x, y \in C ( x \preceq y \vee  y \preceq x )$$
 参考：Kunen, Set Theory, I.11；Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 良序集　`def.wellorder`
-*定义*　良序集（Well-Ordered Set）
+*定义*　良序集
 
 全序集 $(W, \preceq )$ 是**良序的**，当且仅当 $W$ 的每个非空子集都有最小元：
 
@@ -1145,7 +1145,7 @@ $\langle \mathbb{N}, \le \rangle$ 是良序的；$\langle \mathbb{Z}, \le \rangl
 参考：Kunen, Set Theory, I.11
 
 #### 有限特征　`def.finchar`
-*定义*　有限特征族（Family of Finite Character）
+*定义*　有限特征族
 
 集合族 $\mathcal{A}$ 具有**有限特征**，当且仅当对任意集合 $X$：
 
@@ -1166,7 +1166,7 @@ $$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
 参考：Jech, The Axiom of Choice, Ch. 2
 
 #### 序同构　`def.order-iso`
-*定义*　序同构与序型（Order Isomorphism）
+*定义*　序同构与序型
 
 设 $(A, \preceq )$ 与 $(B, \sqsubseteq )$ 是**偏序集**。双射 $f : A \to B$ 称为**序同构**，当且仅当
 
@@ -1186,7 +1186,7 @@ $$\forall a, b \in A\; ( a \preceq b \iff f(a) \sqsubseteq f(b) )$$
 > 造出存在性证明的万能发动机：选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理。五个说法是一个强连通块，永远同层。
 
 #### 选择公理　`ax.choice`
-*公理*　选择公理（Axiom of Choice, AC）
+*公理*　选择公理
 
 任意一族非空集合都可以「同时」各挑出一个元素。写成选择函数的形式：
 
@@ -1205,7 +1205,7 @@ AC 与 ZF 独立：Gödel (1938) 证明 $Con(ZF) \to Con(ZF + AC)$，Cohen (1963
 参考：Jech, The Axiom of Choice；Kunen, Set Theory, I.12
 
 #### 选择函数　`def.choicefn`
-*定义*　选择函数（Choice Function）
+*定义*　选择函数
 
 设 $F$ 是一个集合族，且 $\emptyset \notin F$。
 
@@ -1223,7 +1223,7 @@ $\forall X \in F, f(X) \in X$。
 参考：Jech, The Axiom of Choice
 
 #### 良序定理　`thm.wellordering`
-*定理*　良序定理 / 良序原理（Well-Ordering Theorem）
+*定理*　良序定理 / 良序原理
 
 每个集合都能被赋予一个良序：对任何集合 $X$，都存在 $X$ 上的良序关系 $\preceq$。
 
@@ -1255,7 +1255,7 @@ Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公�
 参考：Zorn (1935)；Kunen, Set Theory, I.12
 
 #### Hausdorff 极大原理　`thm.hausdorff`
-*定理*　Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）
+*定理*　Hausdorff 极大原理 / 极大公理
 
 设 $(P, \preceq )$ 是偏序集，$C_{0} \subseteq P$ 是链。则存在 $P$ 的**极大链** $M$ 使 $C_{0} \subseteq M$。
 
@@ -1291,7 +1291,7 @@ Tukey 引理的好处是「免验证」：只要目标族具有有限特征，�
 > 造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。
 
 #### 拓扑空间与开集　`def.topology`
-*定义*　拓扑空间 / 开集（Topological Space）
+*定义*　拓扑空间 / 开集
 
 设 $X$ 是集合，$\mathcal{T} \subseteq \mathcal{P}(X)$ 是 $X$ 的一族子集。$(X, \mathcal{T})$ 是一个**拓扑空间**，$\mathcal{T}$ 叫作 $X$ 上的一个**拓扑**，当且仅当：
 
@@ -1310,7 +1310,7 @@ $\mathcal{T}$ 的成员称为**开集**，它们的补集称为**闭集**。
 参考：Munkres, Topology, Ch. 2
 
 #### 闭集与闭包　`def.closed-set`
-*定义*　闭集 / 闭包 / 稠密（Closed Set, Closure）
+*定义*　闭集 / 闭包 / 稠密
 
 设 $(X, \mathcal{T})$ 是拓扑空间。
 
@@ -1328,7 +1328,7 @@ $\mathcal{T}$ 的成员称为**开集**，它们的补集称为**闭集**。
 参考：Munkres, Topology, Ch. 2
 
 #### 基与子基　`def.topology-base`
-*定义*　拓扑的基 / 子基（Basis, Subbasis）
+*定义*　拓扑的基 / 子基
 
 设 $(X, \mathcal{T})$ 是拓扑空间，$\mathcal{B} \subseteq \mathcal{T}$。$\mathcal{B}$ 是拓扑 $\mathcal{T}$ 的一组**基**，当且仅当每个开集都是 $\mathcal{B}$ 中若干成员之并；等价条件：
 
@@ -1347,7 +1347,7 @@ $\mathcal{S} \subseteq \mathcal{P}(X)$ 是**子基**，当且仅当它的**有�
 参考：Munkres, Topology, Ch. 2
 
 #### 连续映射　`def.continuous-map`
-*定义*　连续映射（Continuous Map）
+*定义*　连续映射
 
 设 $X$、$Y$ 是拓扑空间。映射 $f : X \to Y$ **连续**，当且仅当**每个开集的原像是开集**：
 
@@ -1364,7 +1364,7 @@ $$V \in \mathcal{T}_Y \implies f^{-1}(V) \in \mathcal{T}_X$$
 参考：Munkres, Topology, Ch. 2
 
 #### 同胚　`def.homeomorphism`
-*定义*　同胚（Homeomorphism）
+*定义*　同胚
 
 设 $X$、$Y$ 是拓扑空间。$f : X \to Y$ 是**同胚**，当且仅当
 
@@ -1380,7 +1380,7 @@ $$V \in \mathcal{T}_Y \implies f^{-1}(V) \in \mathcal{T}_X$$
 参考：Munkres, Topology, Ch. 2
 
 #### 子空间拓扑　`def.subspace-topology`
-*定义*　子空间拓扑（Subspace Topology）
+*定义*　子空间拓扑
 
 设 $(X, \mathcal{T})$ 是拓扑空间，$Y \subseteq X$。$Y$ 上的**子空间拓扑**取
 
@@ -1393,7 +1393,7 @@ $$\mathcal{T}_{Y} := \{\, U \cap Y : U \in \mathcal{T} \,\}$$
 参考：Munkres, Topology
 
 #### 商拓扑　`def.quotient-topology`
-*定义*　商拓扑（Quotient Topology）
+*定义*　商拓扑
 
 设 $(X, \mathcal{T})$ 是拓扑空间，$\pi : X \twoheadrightarrow Y$ 是满射。$Y$ 上的**商拓扑**取
 
@@ -1408,7 +1408,7 @@ $$\mathcal{T}_{Y} := \{\, V \subseteq Y : \pi^{-1}(V) \in \mathcal{T} \,\}$$
 参考：Munkres, Topology
 
 #### 积拓扑　`def.product-topology`
-*定义*　积拓扑与乘积空间（Product Topology）
+*定义*　积拓扑与乘积空间
 
 设 $(X_{i}, \mathcal{T}_{i})_{i \in I}$ 是一族拓扑空间。$\prod_{i \in I} X_{i}$ 上的**积拓扑**是以
 
@@ -1423,7 +1423,7 @@ $$\prod_{i \in I} U_{i} \qquad (U_{i} \in \mathcal{T}_{i},\ \text{除有限多�
 参考：Munkres, Topology
 
 #### Hausdorff 空间　`def.hausdorff`
-*定义*　Hausdorff 空间 / $T_{2}$（Hausdorff Space）
+*定义*　Hausdorff 空间 / $T_{2}$
 
 拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：
 
@@ -1438,7 +1438,7 @@ $T_{3}$（正则）与 $T_{3.5}$（Tychonoff）夹在中间：$T_{3.5}$ 说的�
 参考：Munkres, Topology
 
 #### 连通与连通分量　`def.connected`
-*定义*　连通空间与连通分量（Connectedness）
+*定义*　连通空间与连通分量
 
 拓扑空间 $X$ 叫**不连通的**，如果它可以写成两个不交非空开集之并 $X = U \sqcup V$；否则叫**连通的**。
 
@@ -1449,7 +1449,7 @@ $T_{3}$（正则）与 $T_{3.5}$（Tychonoff）夹在中间：$T_{3.5}$ 说的�
 参考：Munkres, Topology
 
 #### 闭开集　`def.clopen`
-*定义*　闭开集（Clopen Set）
+*定义*　闭开集
 
 $X$ 的子集 $K$ 叫**闭开集**，如果它同时是开集与闭集。等价地：$K$ 与它的补 $K^{c}$ 都是开集，即 $X = K \sqcup K^{c}$ 是一个不交非空开集之并（$K$ 非平凡时）。
 
@@ -1458,7 +1458,7 @@ $X$ 的子集 $K$ 叫**闭开集**，如果它同时是开集与闭集。等价�
 参考：Munkres, Topology
 
 #### 正规空间　`def.normal-space`
-*定义*　正规空间（Normal Space）
+*定义*　正规空间
 
 拓扑空间 $X$ 叫**正规的**，如果它是 $T_{1}$ 的，并且任意两个**不交闭集** $A, B$ 都能被开集分开：存在开集 $U \supseteq A$、$V \supseteq B$ 使 $U \cap V = \emptyset$。
 
@@ -1513,7 +1513,7 @@ $$f(x) := \inf\{\, q : x \in U_{q} \,\}$$
 参考：Munkres, Topology
 
 #### 局部紧 Hausdorff 空间　`def.locally-compact`
-*定义*　局部紧 Hausdorff 空间（Locally Compact Hausdorff）
+*定义*　局部紧 Hausdorff 空间
 
 拓扑空间 $X$ 叫**局部紧**的，如果**每个点都有紧邻域**：对每个 $x \in X$，存在紧集 $K$ 使
 
@@ -1655,7 +1655,7 @@ $\pi$ **闭**说明 $\pi(Y\setminus V)$ 闭，故 $U$ 是开集 ✓。逐条验�
 > 造出「用距离算出来的拓扑」：完备、全有界、列紧，以及紧性的几种等价刻画。
 
 #### 距离空间　`def.metric-space`
-*定义*　距离空间 / 度量空间（Metric Space）
+*定义*　距离空间 / 度量空间
 
 **距离空间**是一对 (X, d)：$X$ 是集合，$d : X \times X \to [0, +\infty )$ 是 $X$ 上的**距离**，满足
 
@@ -1676,7 +1676,7 @@ $\pi$ **闭**说明 $\pi(Y\setminus V)$ 闭，故 $U$ 是开集 ✓。逐条验�
 参考：Rudin, Principles of Mathematical Analysis, Ch. 2；Munkres, Topology, §20
 
 #### 完备　`def.complete`
-*定义*　完备距离空间（Complete Metric Space）
+*定义*　完备距离空间
 
 序列 $\{x_{n}\}$ 是 **Cauchy 列**，当且仅当
 
@@ -1695,7 +1695,7 @@ $$\{x_n\}\text{ 是} Cauchy\text{ 列} \implies \exists x \in X : x_n \to x$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 全有界　`def.totally-bounded`
-*定义*　全有界 / 预紧（Totally Bounded）
+*定义*　全有界 / 预紧
 
 距离空间 (X, d) **全有界**（也叫**预紧**），当且仅当对每个 $\varepsilon > 0$ 都存在**有限的 $\varepsilon$网**：
 
@@ -1712,7 +1712,7 @@ $$\forall\varepsilon > 0, \exists n\text{ 与} x_1, \ldots , x_n \in X : X = \bi
 参考：Munkres, Topology, §43
 
 #### 列紧　`def.sequentially-compact`
-*定义*　列紧 / 序列紧（Sequentially Compact）
+*定义*　列紧 / 序列紧
 
 距离空间 (X, d) **列紧**（序列紧），当且仅当 $X$ 中每个序列都有收敛到 $X$ 中的子列：
 
@@ -1725,7 +1725,7 @@ $$\forall\{x_n\} \subseteq X, \exists\{x_{n_k}\}\text{ 与} \exists x \in X : x_
 参考：Munkres, Topology, §28
 
 #### 紧　`def.compact`
-*定义*　紧空间（Compact Space）
+*定义*　紧空间
 
 距离空间 (X, d) **紧**，当且仅当 $X$ 的每个**开覆盖**都有有限子覆盖：
 
@@ -1855,7 +1855,7 @@ $$e_{X} : X \longrightarrow [0,1]^{C(X,[0,1])}, \qquad x \mapsto (f(x))_{f}$$
 参考：Le Stum, An introduction to condensed mathematics, §2.1–2.2
 
 #### 自由紧 Hausdorff 空间　`def.free-compact-hausdorff`
-*定义*　自由紧 Hausdorff 空间（Free Compact Hausdorff Space）
+*定义*　自由紧 Hausdorff 空间
 
 **自由紧 Hausdorff 空间**就是某个离散空间 $I$ 的 Stone–Čech 紧化 $F \cong \beta I$。称 $I$ 是 $F$ 的一组**基**：此时
 
@@ -1887,7 +1887,7 @@ $$F := \beta\, S^{\mathrm{disc}} \longrightarrow S$$
 参考：Le Stum, An introduction to condensed mathematics, §2.1–2.2
 
 #### 投射 / 内射对象　`def.projective-object`
-*定义*　投射对象与内射对象（Projective / Injective Object）
+*定义*　投射对象与内射对象
 
 范畴 $\mathcal{C}$ 中对象 $P$ 叫**投射的**，如果函子 $h_{P} = \operatorname{Hom}_{\mathcal{C}}(P, -)$ **保持满态射**。对偶地，$I$ 叫**内射的**，如果 $h^{I}$ 把单态射送到满态射。
 
@@ -1915,7 +1915,7 @@ $$\begin{array}{ccc} & P & \\ \swarrow & \downarrow & \searrow \\ A & \twoheadri
 参考：Le Stum, An introduction to condensed mathematics, §2.1–2.2
 
 #### 自由表示　`def.free-presentation`
-*定义*　自由表示（Free Presentation）
+*定义*　自由表示
 
 紧 Hausdorff 空间之间的连续满射 $F \twoheadrightarrow S$ 叫 $S$ 的**自由表示**，如果
 
@@ -1988,7 +1988,7 @@ $$C(x) \;=\; \bigcap \{\, K \subseteq S : K \text{ 闭开},\ x \in K \,\}$$
 参考：Le Stum, An introduction to condensed mathematics, §2.2
 
 #### 全不连通与 Stone 空间　`def.stone-space`
-*定义*　Stone 空间与 Stonean 空间（Stone / Stonean Space）
+*定义*　Stone 空间与 Stonean 空间
 
 - $X$ **全不连通**（totally disconnected），如果其中每个连通分量都是单点；
 - $X$ **极端不连通**（extremally disconnected），如果任一开集的**闭包仍是闭开集**；
@@ -2055,7 +2055,7 @@ Stone 空间构成的范畴是 $\mathbf{CHaus}$ 的反射子范畴。
 参考：Le Stum, An introduction to condensed mathematics, §2.2
 
 #### 投射有限空间　`def.profinite`
-*定义*　投射有限空间（Profinite Space）
+*定义*　投射有限空间
 
 **投射有限空间**是有限离散空间沿一个**有向**系统取极限得到的拓扑空间：
 
@@ -2116,7 +2116,7 @@ Stonean 空间恰好是自由紧 Hausdorff 空间的**收缩核**：存在连续
 参考：Le Stum, An introduction to condensed mathematics, §2.2
 
 #### 布尔环　`def.boolean-ring`
-*定义*　布尔环（Boolean Ring）
+*定义*　布尔环
 
 **布尔环**是一个环 $B$，其中每个元素都**幂等**：
 
@@ -2221,7 +2221,7 @@ $$C_{\varepsilon} \subseteq D_{j} \subseteq U_{\alpha(j)} ✓$$
 > 造出「乘积好用的拓扑空间范畴」：紧生成空间（$k$-空间）→ $k$-拓扑与 $k$-化 → 商映射与积 → 紧开拓扑 → 弱 Hausdorff → $\mathrm{CGWH}$ 是反射子范畴。
 
 #### 紧生成空间　`def.compactly-generated`
-*定义*　紧生成空间 / $k$-空间（Compactly Generated Space）
+*定义*　紧生成空间 / $k$-空间
 
 拓扑空间 $X$ 叫**紧生成的**（也叫 **$k$-空间**），如果它是紧 Hausdorff 空间的余极限。
 
@@ -2403,7 +2403,7 @@ $$kX \times Y \;=\; k(X \times Y).$$
 参考：Le Stum, An introduction to condensed mathematics, §2.3
 
 #### 紧开拓扑　`def.compact-open-topology`
-*定义*　紧开拓扑（Compact-Open Topology）
+*定义*　紧开拓扑
 
 设 $X, Y \in \mathbf{Top}$。对每个连续映射 $g : S \to X$（$S$ 紧 Hausdorff）与每个开集 $V \subseteq Y$，令
 
@@ -2431,7 +2431,7 @@ $$W_{S,V} = \{\, f : X\to Y \;\mid\; f\bigl(g(S)\bigr)\subseteq V \,\} = \bigcap
 参考：Le Stum, An introduction to condensed mathematics, §2.3
 
 #### 弱 Hausdorff 空间　`def.weak-hausdorff`
-*定义*　弱 Hausdorff 空间（Weak Hausdorff Space）
+*定义*　弱 Hausdorff 空间
 
 拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。
 
@@ -2663,7 +2663,7 @@ $$d(f, g) := \sup_{s \in S}\ d\bigl(f(s),\ g(s)\bigr).$$
 > 造出代数语言本身：**群** = 集合 + 运算 + 公理 → 子群 → 正规子群 → 商群 → 第一同构定理；再往上叠**域**（= 两个阿贝尔群 + 分配律）与**有序域**。
 
 #### 群的基本性质　`prop.group-basic`
-*命题*　命题：群的消去律与逆的公式（Elementary Group Theory）
+*命题*　命题：群的消去律与逆的公式
 
 设 $G$ 是群，$a, b, c \in G$。则：
 
@@ -2682,7 +2682,7 @@ $$d(f, g) := \sup_{s \in S}\ d\bigl(f(s),\ g(s)\bigr).$$
 参考：Lang, Algebra, Ch. I
 
 #### 理想的运算与商环泛性质　`prop.ideal-basic`
-*命题*　命题：理想的交、和、积与商环的泛性质（Operations on Ideals）
+*命题*　命题：理想的交、和、积与商环的泛性质
 
 设 $A$ 是环，$I, J \subseteq A$ 是理想。则：
 
@@ -2709,7 +2709,7 @@ $$IJ := \left\{ \sum_{k=1}^{n} x_k y_k : x_k \in I,\ y_k \in J,\ n \ge 0 \right\
 参考：Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1
 
 #### 素理想与极大理想　`prop.prime-ideal`
-*命题*　命题：素理想、极大理想与商环（Prime and Maximal Ideals）
+*命题*　命题：素理想、极大理想与商环
 
 设 $A$ 是含幺交换环，$P, M \subset A$ 是理想。
 
@@ -2730,7 +2730,7 @@ $$IJ := \left\{ \sum_{k=1}^{n} x_k y_k : x_k \in I,\ y_k \in J,\ n \ge 0 \right\
 参考：Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1
 
 #### 域　`def.field`
-*定义*　域 $F$（Field）
+*定义*　域 $F$
 
 设 $F$ 是一个**集合**，$+$ 与 $\cdot$ 是 $F$ 上的两个**二元运算**（即两个函数 $F \times F \to F$）。称 $(F, +, \cdot)$ 是一个**域**，当且仅当：
 
@@ -2752,7 +2752,7 @@ $$IJ := \left\{ \sum_{k=1}^{n} x_k y_k : x_k \in I,\ y_k \in J,\ n \ge 0 \right\
 参考：Lang, Algebra, Ch. I；Dummit & Foote, Abstract Algebra, §13.1
 
 #### 有序域　`def.ordered-field`
-*定义*　有序域（Ordered Field）
+*定义*　有序域
 
 设 $(F, +, \cdot)$ 是**域**，$\le$ 是 $F$ 上的**全序**（偏序，且任意两元可比）。若 $\le$ 与两个运算**相容**：
 
@@ -2771,7 +2771,7 @@ $$|a| := \begin{cases} a, & a \ge 0 \\ -a, & a < 0 \end{cases}$$
 参考：Lang, Algebra, Ch. VI；Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 群　`def.group`
-*定义*　群与阿贝尔群（Group）
+*定义*　群与阿贝尔群
 
 设 $G$ 是**集合**，$\cdot$ 是 $G$ 上的**二元运算**（即函数 $G \times G \to G$，$(a, b) \mapsto a \cdot b$）。称 $(G, \cdot)$ 是一个**群**，当且仅当：
 
@@ -2792,7 +2792,7 @@ $$|a| := \begin{cases} a, & a \ge 0 \\ -a, & a < 0 \end{cases}$$
 参考：Lang, Algebra
 
 #### 子群　`def.subgroup`
-*定义*　子群（Subgroup）
+*定义*　子群
 
 设 $(G, \cdot)$ 是群，$H \subseteq G$。称 $H$ 是 $G$ 的**子群**（记 $H \le G$），如果 $H$ 在**限制过来的运算**下自己构成一个群 —— 也就是：
 
@@ -2809,7 +2809,7 @@ $$|a| := \begin{cases} a, & a \ge 0 \\ -a, & a < 0 \end{cases}$$
 参考：Lang, Algebra
 
 #### 正规子群　`def.normal-subgroup`
-*定义*　正规子群与陪集（Normal Subgroup）
+*定义*　正规子群与陪集
 
 设 $H \le G$，$g \in G$。**左陪集**与**右陪集**分别是
 
@@ -2834,7 +2834,7 @@ $$(g h)(g' h') = g g' \cdot \bigl((g')^{-1} h g'\bigr) h',$$
 参考：Lang, Algebra
 
 #### 商群　`def.quotient-group`
-*定义*　商群（Quotient Group）
+*定义*　商群
 
 设 $N \trianglelefteq G$。全体左陪集 $\{\, gN : g \in G \,\}$ 记作 $G/N$，在上面定义
 
@@ -2853,7 +2853,7 @@ $$(g N) \cdot (g' N) := (g g') N.$$
 参考：Lang, Algebra
 
 #### 群同态、核与像　`def.group-hom`
-*定义*　群同态（Group Homomorphism）
+*定义*　群同态
 
 设 $(G, \cdot)$、$(G', \ast)$ 是群。映射 $\varphi : G \to G'$ 叫**群同态**，如果
 
@@ -2882,7 +2882,7 @@ $$\varphi(g k g^{-1}) = \varphi(g)\, e'\, \varphi(g)^{-1} = e',$$
 参考：Lang, Algebra
 
 #### 第一同构定理（Noether）　`thm.first-iso`
-*定理*　第一同构定理（Noether）
+*定理*　第一同构定理
 
 设 $\varphi : G \to G'$ 是**群同态**。则 $\varphi$ 诱导出同构
 
@@ -2913,7 +2913,7 @@ $$A \big/ \ker f \;\cong\; \operatorname{im} f.$$
 参考：Lang, Algebra, Ch. I §4；Dummit & Foote, Abstract Algebra, §10.2
 
 #### 环　`def.ring`
-*定义*　环与交换环（Ring）
+*定义*　环与交换环
 
 设 $A$ 是**集合**，$+$ 与 $\cdot$ 是 $A$ 上的两个**二元运算**。称 $(A, +, \cdot)$ 是一个**环**，当且仅当：
 
@@ -2930,7 +2930,7 @@ $$A \big/ \ker f \;\cong\; \operatorname{im} f.$$
 参考：Lang, Algebra, Ch. II；Dummit & Foote, Abstract Algebra, §7.1
 
 #### 理想　`def.ideal`
-*定义*　理想与商环（Ideal）
+*定义*　理想与商环
 
 设 $A$ 是环。子集 $I \subseteq A$ 叫**（双边）理想**，如果 $(I, +)$ 是加法子群，并且对一切 $a \in A$、$x \in I$ 有
 
@@ -2949,7 +2949,7 @@ $$a x \in I \quad \text{与} \quad x a \in I.$$
 参考：Lang, Algebra
 
 #### 模　`def.module`
-*定义*　模与模同态（Module）
+*定义*　模与模同态
 
 设 $A$ 是含幺环、$M$ 是**阿贝尔群**。称 $M$ 是一个 **$A$-模**，如果给定了一个映射
 
@@ -2977,7 +2977,7 @@ $$A \times M \longrightarrow M, \qquad (a, m) \longmapsto a \cdot m,$$
 参考：Lang, Algebra
 
 #### 环的局部化 W⁻¹R　`prop.ring-localization`
-*例*　环的局部化（Localization of a Ring）
+*例*　环的局部化
 
 设 $R$ 是**交换环**，$W \subseteq R$ 是**乘性子集**（$1 \in W$，且 $f, g \in W \implies fg \in W$）。
 
@@ -3122,7 +3122,7 @@ $V$ 有基；
 参考：Lang, Linear Algebra；Brunner, The Axiom of Choice in Topology
 
 #### 子空间　`def.subspace`
-*定义*　线性子空间（Linear Subspace）
+*定义*　线性子空间
 
 设 $V$ 是域 $K$ 上的向量空间。$U \subseteq V$ 叫 $V$ 的**（线性）子空间**，当且仅当
 
@@ -3166,7 +3166,7 @@ $$\operatorname{span} S := \bigcap \mathcal{U} = \bigcap \{ U : S \subseteq U \s
 参考：Lang, Linear Algebra
 
 #### 坐标　`def.coordinate`
-*定义*　坐标与有序基（Coordinates）
+*定义*　坐标与有序基
 
 设 $\mathcal{B} = (v_1, \ldots, v_n)$ 是 $V$ 的**有序**基（顺序算进去）。由「基」的定义，每个 $v \in V$ 都能**唯一**地写成
 
@@ -3229,7 +3229,7 @@ $$\dim_K V := |\mathcal{B}|$$
 > 造出「一个算子在换基下长什么样」的完整答案：特征值与特征多项式 → Cayley–Hamilton → 极小多项式 → **可对角化判据** → 根子空间分解 → **Jordan 标准形**（代数闭域上相似分类的最终形态）。多项式环 $K[x]$ 那套语言（唯一分解整环）在这里第三次出场。
 
 #### 不变子空间　`def.invariant-subspace`
-*定义*　不变子空间（Invariant Subspace）
+*定义*　不变子空间
 
 设 $T : V \to V$ 线性。子空间 $U \subseteq V$ 叫 $T$-**不变**的，当且仅当
 
@@ -3248,7 +3248,7 @@ $\{0\}$ 与 $V$ 永远是 $T$-不变的（**平凡**不变子空间）；$T$ 的
 参考：Hoffman–Kunze, Linear Algebra, Ch. 6；Lang, Linear Algebra
 
 #### 特征值与特征向量　`def.eigenvalue`
-*定义*　特征值与特征向量（Eigenvalue & Eigenvector）
+*定义*　特征值与特征向量
 
 设 $T : V \to V$ 线性，$V \ne \{0\}$。数 $\lambda \in K$ 叫 $T$ 的**特征值**，当且仅当存在**非零**向量 $v \in V$ 使
 
@@ -3290,7 +3290,7 @@ $$\chi_T(x) = x^{n} - (\operatorname{tr} T)\,x^{n-1} + \cdots + (-1)^{n} \det T$
 参考：Hoffman–Kunze, Linear Algebra, Ch. 6；Lang, Linear Algebra
 
 #### 迹　`def.trace`
-*定义*　迹 $\operatorname{tr} A$（Trace）
+*定义*　迹 $\operatorname{tr} A$
 
 对方阵 $A = (a_{ij}) \in M_n(K)$，定义**迹**为对角线之和：
 
@@ -3311,7 +3311,7 @@ $$\operatorname{tr} A := \sum_{i=1}^{n} a_{ii}$$
 参考：Hoffman–Kunze, Linear Algebra, Ch. 6
 
 #### 相似　`def.similarity`
-*定义*　相似（Similarity）
+*定义*　相似
 
 两个方阵 $A, B \in M_n(K)$ 叫**相似**，记 $A \sim B$，当且仅当存在可逆矩阵 $P$ 使
 
@@ -3470,7 +3470,7 @@ $$A \sim B \iff \mu_A(\lambda) = \mu_B(\lambda) \ \ (\forall \lambda)$$
 > 在向量空间上加一把「尺子」：内积 → 诱导范数与距离 → Cauchy–Schwarz → 正交与正交补 → **Gram–Schmidt** 与正交投影 → 伴随算子 → **谱定理**（实对称 / 复正规可正交对角化）→ 二次型与 Sylvester 判据 → 奇异值分解。
 
 #### 内积　`def.inner-product`
-*定义*　内积与内积空间（Inner Product Space）
+*定义*　内积与内积空间
 
 设 $V$ 是 $K$-向量空间（$K = \mathbb{R}$ 或 $\mathbb{C}$）。映射
 
@@ -3601,7 +3601,7 @@ $$w_j := v_j - \sum_{i < j} \langle e_i, v_j \rangle\, e_i, \qquad e_j := \frac{
 参考：Hoffman–Kunze, Linear Algebra, Ch. 8
 
 #### 正交投影　`def.orthogonal-projection`
-*定义*　正交投影（Orthogonal Projection）
+*定义*　正交投影
 
 设 $U \subseteq V$ 是有限维子空间，$V = U \oplus U^{\perp}$。对 $v \in V$ 唯一地写 $v = u + w$（$u \in U$、$w \in U^{\perp}$），定义
 
@@ -3641,7 +3641,7 @@ $$P_U v = \sum_{j=1}^{k} \langle e_j, v \rangle\, e_j, \qquad \|v\|^{2} = \|P_U 
 参考：Hoffman–Kunze, Linear Algebra, Ch. 8
 
 #### 伴随算子　`def.operator-adjoint`
-*定义*　伴随算子 $T^{\ast}$（Adjoint Operator）
+*定义*　伴随算子 $T^{\ast}$
 
 设 $V, W$ 是有限维内积空间，$T : V \to W$ 线性。则存在**唯一**的线性映射 $T^{\ast} : W \to V$ 使
 
@@ -3660,7 +3660,7 @@ $T^{\ast}$ 叫 $T$ 的**伴随**。在标准正交基下，$[T^{\ast}] = [T]^{\d
 参考：Hoffman–Kunze, Linear Algebra, Ch. 8
 
 #### 等距与正交变换　`def.isometry`
-*定义*　等距、正交变换与酉变换（Isometry）
+*定义*　等距、正交变换与酉变换
 
 线性映射 $T : V \to V$ 叫**等距**，当且仅当它保持内积（等价地保持范数）：
 
@@ -3738,7 +3738,7 @@ $$T = U \Lambda\, U^{\dagger}, \qquad U^{\dagger}U = I,\ \Lambda = \operatorname
 参考：Roman, Advanced Linear Algebra, Ch. 11
 
 #### 二次型　`def.quadratic-form`
-*定义*　二次型与正定性（Quadratic Form）
+*定义*　二次型与正定性
 
 设 $A \in M_n(\mathbb{R})$ 对称。由它给出的函数
 
@@ -3796,7 +3796,7 @@ $\sigma_i$ 叫 $A$ 的**奇异值**，它们是 $A^{\dagger}A$（或 $AA^{\dagge
 > 造出「把双线性型变成线性映射」的机器：双线性型 → **张量积的万有性质** → 张量 ⊣ 内 Hom（伴随）→ 外幂与外代数 → 对称代数 → **行列式 = 最高外幂上的作用**（把行列式的来源统一到外代数）。
 
 #### 双线性型　`def.bilinear-form`
-*定义*　双线性型（Bilinear Form）
+*定义*　双线性型
 
 设 $V, W, U$ 是 $K$-向量空间。映射 $B : V \times W \to U$ 叫**双线性**的，当且仅当固定一个变元后，对另一个变元是线性的：
 
@@ -3968,7 +3968,7 @@ $$\bigl( \textstyle\bigwedge^{n} T \bigr)(v_1 \wedge \cdots \wedge v_n) = (\det 
 > 造出「让群去搬东西」这套机器：群作用（轨道 / 稳定子）→ **轨道–稳定子定理** → 类方程 → Lagrange 定理 → 置换群 $S_n$ 与循环分解 → 符号与交错群 $A_n$ → Cayley 定理 → 循环群 → Sylow 定理。核心一句话：**数轨道的大小 = 算稳定子的指数**。
 
 #### 群作用　`def.group-action`
-*定义*　群作用、轨道与稳定子（Group Action）
+*定义*　群作用、轨道与稳定子
 
 设 $G$ 是群、$X$ 是集合。$G$ 在 $X$ 上的**（左）作用**是一个映射
 
@@ -4064,7 +4064,7 @@ $$\operatorname{ord}(\sigma) = \text{各循环长度的最小公倍数}$$
 参考：Lang, Algebra, Ch. I §5；Dummit–Foote, Abstract Algebra, §3.1
 
 #### 符号与交错群　`def.alternating-group`
-*定义*　置换的符号与交错群（Sign and Alternating Group）
+*定义*　置换的符号与交错群
 
 每个 $\sigma \in S_n$ 都能写成**对换**（两个点的交换）之积，且所用对换个数的**奇偶性**与分解方式无关。据此定义**符号**
 
@@ -4091,7 +4091,7 @@ $$A_n := \ker \operatorname{sgn} = \{\, \sigma \in S_n : \operatorname{sgn}(\sig
 参考：Lang, Algebra, Ch. I §5；Dummit–Foote, Abstract Algebra, §3.5
 
 #### 循环群　`def.cyclic-group`
-*定义*　循环群（Cyclic Group）
+*定义*　循环群
 
 设 $G$ 是群、$g \in G$。集合
 
@@ -4181,7 +4181,7 @@ $$n_p \equiv 1 \pmod{p}, \qquad n_p \mid m, \qquad n_p = [G : N_G(P)]$$
 > 造出「把群拆成不可再分的零件」这套语言：单群 → 合成列 → **Jordan–Hölder**（合成因子与重数唯一）→ 可解群（阿贝尔商链 / 导出列终止）→ 可解性对子群、商群与正规扩张的封闭性 → **$S_n$ 可解 $\iff n \le 4$**。最后一个命题是 Abel–Ruffini 的群论一半：分界线落在 $A_4$ 与 $A_5$ 之间。
 
 #### 单群　`def.simple-group`
-*定义*　单群（Simple Group）
+*定义*　单群
 
 群 $G \ne \{e\}$ 叫**单群**，当且仅当它只有两个正规子群：$\{e\}$ 与 $G$ 自身（即它没有非平凡的**真**正规子群）。
 
@@ -4198,7 +4198,7 @@ $$n_p \equiv 1 \pmod{p}, \qquad n_p \mid m, \qquad n_p = [G : N_G(P)]$$
 参考：Lang, Algebra, Ch. I §5；Dummit–Foote, Abstract Algebra, §3.4
 
 #### 合成列　`def.composition-series`
-*定义*　合成列与合成因子（Composition Series）
+*定义*　合成列与合成因子
 
 群 $G$ 的一条**正规链**是一串子群
 
@@ -4326,7 +4326,7 @@ $$G = G^{(0)} \trianglerighteq G^{(1)} \trianglerighteq G^{(2)} \trianglerighteq
 > 造出「把线性映射写成数字阵列」的整套工具：矩阵 → 选定基后的线性映射 ⟷ 矩阵 → 基变换与相似 → 初等变换与秩 → 线性方程组的解结构 → **行列式**（交错多重线性的唯一刻画）→ 乘性 → Laplace 展开与 Cramer 法则。
 
 #### 矩阵　`def.matrix`
-*定义*　矩阵（Matrix）
+*定义*　矩阵
 
 设 $K$ 是域，$m, n \ge 1$。一个 $m \times n$ 的**矩阵**是 $K$ 中元素排成的长方形阵列
 
@@ -4425,7 +4425,7 @@ $$[T]_{\mathcal{B}'} = P^{-1}\,[T]_{\mathcal{B}}\,P$$
 参考：Hoffman–Kunze, Linear Algebra, Ch. 4
 
 #### 初等变换与初等矩阵　`def.elementary-matrix`
-*定义*　初等变换与初等矩阵（Elementary Matrices）
+*定义*　初等变换与初等矩阵
 
 **初等行变换**指下列三种操作：
 
@@ -4515,7 +4515,7 @@ $$\operatorname{GL}_n(K) := \{\, A \in M_n(K) : A \text{ is invertible} \,\}$$
 参考：Hoffman–Kunze, Linear Algebra, Ch. 1
 
 #### 多重线性型　`def.multilinear-form`
-*定义*　多重线性型 $V^{n} \to K$（Multilinear Form）
+*定义*　多重线性型 $V^{n} \to K$
 
 设 $V$ 是 $K$-向量空间。映射 $f : V^{n} := V \times \cdots \times V \to K$ 叫 **$n$ 重线性型**，当且仅当固定任意 $n - 1$ 个变元后，剩下的那个变元是线性的：对每个 $i$，
 
@@ -4578,7 +4578,7 @@ $$D : V^{n} \longrightarrow K$$
 参考：Lang, Linear Algebra；Hoffman–Kunze, Linear Algebra, Ch. 5
 
 #### 行列式　`def.determinant`
-*定义*　行列式 $\det A$（Determinant）
+*定义*　行列式 $\det A$
 
 对 $A = (a_{ij}) \in M_n(K)$，定义**行列式**
 
@@ -4655,7 +4655,7 @@ $$x_j = \frac{\det A_j}{\det A}, \qquad j = 1, \ldots, n$$
 > 造出 $K[x]$ 这套装置：多项式 → 带余除法（$K[x]$ 是欧几里得整环）→ 因式定理 → **代数基本定理**（$\mathbb{C}$ 代数闭）→ 不可约多项式与唯一分解。它是特征多项式、有理标准型与 Galois 理论的共同地基。
 
 #### 一元多项式　`def.polynomial`
-*定义*　一元多项式（Polynomial）
+*定义*　一元多项式
 
 设 $K$ 是域。$K$ 上的一个**一元多项式**是形式表达式
 
@@ -4678,7 +4678,7 @@ $$f = a_0 + a_1 x + a_2 x^{2} + \cdots + a_n x^{n}, \qquad a_i \in K$$
 参考：Lang, Algebra, Ch. IV；Dummit–Foote, Abstract Algebra, Ch. 9
 
 #### 多项式环　`def.polynomial-ring`
-*定义*　多项式环 $K[x]$（Polynomial Ring）
+*定义*　多项式环 $K[x]$
 
 在 $K$ 上全体一元多项式构成的集合 $K[x]$ 上定义
 
@@ -4775,7 +4775,7 @@ $$p(z) = c\,(z - z_1)^{e_1} \cdots (z - z_m)^{e_m}, \qquad c \in \mathbb{C}^{\ti
 参考：Lang, Algebra, Ch. IV；Rudin, Real and Complex Analysis, Ch. 10
 
 #### 不可约多项式　`def.irreducible-poly`
-*定义*　不可约多项式（Irreducible Polynomial）
+*定义*　不可约多项式
 
 设 $f \in K[x]$ 是非零、非单位（即 $\deg f \ge 1$）。称 $f$ **可约**，当且仅当存在 $g, h \in K[x]$ 满足
 
@@ -4794,7 +4794,7 @@ $$f = g\,h, \qquad \deg g \ge 1, \ \deg h \ge 1$$
 参考：Lang, Algebra, Ch. IV；Dummit–Foote, Abstract Algebra, Ch. 9
 
 #### K[x] 是唯一分解整环　`thm.poly-ufd`
-*定理*　定理：$K[x]$ 是唯一分解整环（UFD）
+*定理*　定理：$K[x]$ 是唯一分解整环
 
 设 $K$ 是域。则每个非零、非单位的多项式 $f \in K[x]$ 都可以写成有限多个不可约多项式的乘积
 
@@ -4814,7 +4814,7 @@ $$f = c\, p_1 p_2 \cdots p_r, \qquad c \in K^{\times},\ p_i \text{ monic irreduc
 > 造出「线性映射」这套语言：线性映射 → 核与像 → 商空间与第一同构定理 → **秩-零化度定理** → 对偶空间与零化子。它是「群同态 → 正规子群 → 第一同构定理」那套模板在向量空间上的重演。
 
 #### 线性映射　`def.linear-map`
-*定义*　线性映射（Linear Map）
+*定义*　线性映射
 
 设 $V, W$ 是域 $K$ 上的向量空间。映射 $T : V \to W$ 叫 **$K$-线性的**（或线性映射），当且仅当
 
@@ -4837,7 +4837,7 @@ $$\operatorname{Hom}_K(V, W) := \{\, T : V \to W \ \text{linear} \,\}$$
 参考：Lang, Linear Algebra；Hoffman–Kunze, Linear Algebra, Ch. 3
 
 #### 线性同构　`def.linear-isomorphism`
-*定义*　线性同构（Linear Isomorphism）
+*定义*　线性同构
 
 线性映射 $T : V \to W$ 叫**线性同构**，当且仅当 $T$ 是**双射**。此时记 $V \cong W$，并称 $V$ 与 $W$ 同构。
 
@@ -4856,7 +4856,7 @@ $$V \cong W \iff \dim V = \dim W$$
 参考：Lang, Linear Algebra
 
 #### 核与像　`def.kernel-image-vs`
-*定义*　核与像（Kernel and Image）
+*定义*　核与像
 
 设 $T : V \to W$ 线性。定义
 
@@ -4879,7 +4879,7 @@ $T$ **满射**，当且仅当 $\operatorname{im} T = W$。
 参考：Lang, Linear Algebra；Hoffman–Kunze, Linear Algebra, Ch. 3
 
 #### 商空间　`def.quotient-vs`
-*定义*　商空间 $V / U$（Quotient Space）
+*定义*　商空间 $V / U$
 
 设 $U \subseteq V$ 是子空间。在 $V$ 上定义等价关系
 
@@ -4938,7 +4938,7 @@ $$T = \overline{T} \circ \pi$$
 参考：Lang, Linear Algebra
 
 #### 秩　`def.rank`
-*定义*　秩 $\operatorname{rank} T$（Rank）
+*定义*　秩 $\operatorname{rank} T$
 
 设 $T : V \to W$ 线性。$T$ 的**秩**定义为像的维数：
 
@@ -4955,7 +4955,7 @@ $$\operatorname{rank} T := \dim \operatorname{im} T$$
 参考：Hoffman–Kunze, Linear Algebra, Ch. 3
 
 #### 零化度　`def.nullity`
-*定义*　零化度 $\operatorname{null} T$（Nullity）
+*定义*　零化度 $\operatorname{null} T$
 
 设 $T : V \to W$ 线性。$T$ 的**零化度**定义为核的维数：
 
@@ -4988,7 +4988,7 @@ $$\dim V = \operatorname{rank} T + \operatorname{null} T = \dim \operatorname{im
 参考：Hoffman–Kunze, Linear Algebra, Ch. 3；Lang, Linear Algebra
 
 #### 对偶空间　`def.dual-space`
-*定义*　对偶空间 $V^{\ast}$（Dual Space）
+*定义*　对偶空间 $V^{\ast}$
 
 设 $V$ 是 $K$-向量空间。$V$ 的**对偶空间**定义为从 $V$ 到 $K$ 的线性映射全体：
 
@@ -5011,7 +5011,7 @@ $$T^{\ast} : W^{\ast} \to V^{\ast}, \qquad \varphi \longmapsto \varphi \circ T$$
 参考：Lang, Linear Algebra；Hoffman–Kunze, Linear Algebra, Ch. 3
 
 #### 对偶基　`def.dual-basis`
-*定义*　对偶基（Dual Basis）
+*定义*　对偶基
 
 设 $\mathcal{B} = (v_1, \ldots, v_n)$ 是 $V$ 的有序基。对每个 $i$ 定义 $v_i^{\ast} : V \to K$ 为
 
@@ -5032,7 +5032,7 @@ $$\dim V^{\ast} = \dim V$$
 参考：Lang, Linear Algebra
 
 #### 零化子　`def.annihilator`
-*定义*　零化子 $U^{0}$（Annihilator）
+*定义*　零化子 $U^{0}$
 
 设 $U \subseteq V$ 是子空间。$U$ 的**零化子**定义为
 
@@ -5081,7 +5081,7 @@ $$V = U \oplus W$$
 > 在造好的 ℝ 上搭起分析的语言：区间 → 数列极限与级数 → 连续 → 导数。**确界原理**（ℝ 是完备有序域）也在这里 —— 它是分析学的引擎。（ℝ 与 ℂ 本身的构造在「数系的构造」里。）
 
 #### 极限的基本性质　`prop.limit-basic`
-*命题*　命题：极限的唯一性、有界性与保号性（Basic Properties of Limits）
+*命题*　命题：极限的唯一性、有界性与保号性
 
 设数列 $\{x_n\} \subseteq \mathbb{R}$ 收敛到 $x$。则：
 
@@ -5102,7 +5102,7 @@ $$V = U \oplus W$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 扩充实数 [−∞,+∞]　`def.extended-real`
-*定义*　扩充实数系 $\overline{\mathbb{R}}$（Extended Reals）
+*定义*　扩充实数系 $\overline{\mathbb{R}}$
 
 在 $\mathbb{R}$ 上添两个记号 $+\infty$、$-\infty$，得到**扩充实数系**
 
@@ -5122,7 +5122,7 @@ $$x + (\pm\infty) = \pm\infty, \qquad 0 \cdot (\pm\infty) = 0$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 区间　`def.interval`
-*定义*　区间（Interval）
+*定义*　区间
 
 $\mathbb{R}$ 的**区间**是满足下式的子集 $I$：
 
@@ -5143,7 +5143,7 @@ $$(a, b), \quad [a, b], \quad [a, b), \quad (a, b]$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 2
 
 #### 数列极限　`def.sequence-limit`
-*定义*　数列极限 $x_n \to x$（Limit of a Sequence）
+*定义*　数列极限 $x_n \to x$
 
 数列 $\{x_n\} \subseteq \mathbb{R}$ **收敛到** $x$（记 $x_n \to x$ 或 $\lim_{n \to \infty} x_n = x$），当且仅当
 
@@ -5165,7 +5165,7 @@ $$\forall \varepsilon > 0, \exists N, \forall n \ge N : |x_n - x| < \varepsilon$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 级数收敛　`def.series`
-*定义*　级数 $\sum a_n$（Series）
+*定义*　级数 $\sum a_n$
 
 给定数列 $\{a_n\}$，令**部分和** $s_N := \sum_{n=1}^{N} a_n$。
 
@@ -5186,7 +5186,7 @@ $$\sum_{n=1}^{\infty} a_n = \sup_N s_N \in [0, +\infty]$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 连续　`def.continuous`
-*定义*　连续（Continuity）
+*定义*　连续
 
 $f : \mathbb{R} \to \mathbb{R}$ 在 $x_0$ **连续**，当且仅当
 
@@ -5205,7 +5205,7 @@ $f$ **连续**（在 $\mathbb{R}$ 上连续）当且仅当它在每一点连续�
 参考：Rudin, Principles of Mathematical Analysis, Ch. 4
 
 #### 导数　`def.derivative`
-*定义*　导数 $F'$（Derivative）
+*定义*　导数 $F'$
 
 $F : (a, b) \to \mathbb{C}$ 在 $x_0 \in (a, b)$ **可导**，当且仅当极限
 
@@ -5227,7 +5227,7 @@ $$F'(x_0) := \lim_{h \to 0} \frac{F(x_0 + h) - F(x_0)}{h}$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
 #### 函数极限　`def.function-limit`
-*定义*　函数极限 $\lim_{x \to x_0} f(x) = L$（Limit of a Function）
+*定义*　函数极限 $\lim_{x \to x_0} f(x) = L$
 
 设 $f$ 在 $x_0$ 的某个**去心邻域**上有定义，$L \in \mathbb{R}$。称 $x \to x_0$ 时 $f(x)$ 趋于 $L$（记 $\lim_{x \to x_0} f(x) = L$），当且仅当
 
@@ -5246,7 +5246,7 @@ $$\forall \varepsilon > 0,\ \exists \delta > 0 :\ 0 < |x - x_0| < \delta \implie
 参考：Rudin, Principles of Mathematical Analysis, Ch. 4；Tao, Analysis I, Ch. 9
 
 #### 单侧极限　`def.function-limit-onesided`
-*定义*　左极限与右极限（One-Sided Limits）
+*定义*　左极限与右极限
 
 **左极限** $\lim_{x \to x_0^{-}} f(x) = L$ 指
 
@@ -5267,7 +5267,7 @@ $$\lim_{x \to x_0^{-}} f(x) = \lim_{x \to x_0^{+}} f(x)$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 4
 
 #### 夹逼定理　`thm.squeeze`
-*定理*　夹逼定理（Squeeze Theorem）
+*定理*　夹逼定理
 
 **(数列版)** 设存在 $N_0$，使 $n \ge N_0$ 时 $a_n \le x_n \le b_n$。若 $a_n \to L$ 且 $b_n \to L$，则 $x_n \to L$。
 
@@ -5284,7 +5284,7 @@ $$\lim_{x \to x_0} g(x) = \lim_{x \to x_0} h(x) = L$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 极限的四则运算与保序性　`prop.limit-arithmetic`
-*命题*　命题：极限的四则运算、保序性与绝对值（Algebra of Limits）
+*命题*　命题：极限的四则运算、保序性与绝对值
 
 设 $x_n \to x$、$y_n \to y$（有限），$c \in \mathbb{R}$。则
 
@@ -5304,7 +5304,7 @@ $$\lim_{x \to x_0} g(x) = \lim_{x \to x_0} h(x) = L$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### Cauchy 列　`def.cauchy-sequence`
-*定义*　Cauchy 列（Cauchy Sequence）
+*定义*　Cauchy 列
 
 实数列 $\{x_n\}$ 是 **Cauchy 列**，当且仅当
 
@@ -5321,7 +5321,7 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall m, n \ge N :\ |x_m - x_n| < \var
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 上极限与下极限　`def.limsup-liminf`
-*定义*　上极限与下极限 $\limsup$ / $\liminf$（Limit Superior and Inferior）
+*定义*　上极限与下极限 $\limsup$ / $\liminf$
 
 对实数列 $\{x_n\}$，令
 
@@ -5345,7 +5345,7 @@ $$\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n$$
 > 把「在 ℝ 上算」与「比大小」的规则一次立全：域等式 → 序与四则运算 → 绝对值 → 阿基米德的 ε 形式与取整 → 整数幂 → 指数律 → n 次方根 → 有理/实数指数 → 二项式 → Bernoulli。这一团是后面所有 ε 估计与放缩的**许可证**。
 
 #### 环与域的基本等式　`prop.field-rules`
-*命题*　命题：环与域里的基本等式（Consequences of the Ring Axioms）
+*命题*　命题：环与域里的基本等式
 
 设 $A$ 是环，$a, b \in A$。则
 
@@ -5368,7 +5368,7 @@ $$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b 
 参考：Lang, Algebra, Ch. I；Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1
 
 #### 序与四则运算　`prop.order-rules`
-*命题*　命题：不等式的基本运算（Order and the Field Operations）
+*命题*　命题：不等式的基本运算
 
 设 $K$ 是有序域，$a, b, c, d \in K$。则
 
@@ -5393,7 +5393,7 @@ $$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 绝对值的运算性质　`prop.abs-properties`
-*命题*　命题：绝对值的运算性质（Properties of the Absolute Value）
+*命题*　命题：绝对值的运算性质
 
 设 $K$ 是有序域，$x, y \in K$，$c \ge 0$。则
 
@@ -5418,7 +5418,7 @@ $$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 阿基米德的 ε 形式与取整　`cor.archimedean-epsilon`
-*推论*　推论：$1/n < \varepsilon$ 与取整函数（Archimedean Corollaries）
+*推论*　推论：$1/n < \varepsilon$ 与取整函数
 
 设 $K$ 是完备有序域（如 $\mathbb{R}$）。
 
@@ -5441,7 +5441,7 @@ $$n \le x < n + 1.$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 整数幂　`def.power`
-*定义*　整数幂 $a^{n}$（Integer Powers）
+*定义*　整数幂 $a^{n}$
 
 设 $A$ 是含幺环（如 $\mathbb{Z}$、$\mathbb{R}$），$a \in A$。**整数幂**由递推定义：
 
@@ -5462,7 +5462,7 @@ $$a^{-n} := (a^{-1})^{n} = \frac{1}{a^{n}}.$$
 参考：Lang, Algebra, Ch. I
 
 #### 指数律与幂的单调性　`prop.power-rules`
-*命题*　命题：指数律（Laws of Exponents）
+*命题*　命题：指数律
 
 设 $A$ 是交换环，$a, b \in A$，$m, n \in \mathbb{Z}$（出现负指数时要求 $a, b$ 可逆）。则
 
@@ -5503,7 +5503,7 @@ $$b^{n} = a;$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 有理指数与实数指数幂　`def.real-power`
-*定义*　有理指数与实数指数幂（Rational and Real Powers）
+*定义*　有理指数与实数指数幂
 
 设 $a > 0$。
 
@@ -5530,7 +5530,7 @@ $$a^{x} := \sup\{\, a^{q} : q \in \mathbb{Q},\ q < x \,\};$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 二项式定理　`thm.binomial`
-*定理*　定理：二项式定理（Binomial Theorem）
+*定理*　定理：二项式定理
 
 设 $A$ 是交换环，$a, b \in A$，$n \in \mathbb{N}$。则
 
@@ -5566,7 +5566,7 @@ $$(1 + x)^{n} \ge 1 + n x.$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### 绝对值 |x|　`def.abs`
-*定义*　绝对值 $|x|$（Absolute Value）
+*定义*　绝对值 $|x|$
 
 设 $K$ 是**有序域**（$\mathbb{Q}$ 与 $\mathbb{R}$ 都是），$x \in K$。定义
 
@@ -5664,7 +5664,7 @@ $$a \le b \implies a + c \le b + c, \qquad a \le b,\ 0 \le c \implies ac \le bc$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1；Ch. 3
 
 #### 聚点　`def.limit-point`
-*定义*　聚点 / 极限点（Limit Point）
+*定义*　聚点 / 极限点
 
 设 $S \subseteq \mathbb{R}$，$x \in \mathbb{R}$。称 $x$ 是 $S$ 的**聚点**（也叫极限点），当且仅当 $x$ 的每个去心邻域都与 $S$ 相交：
 
@@ -5683,7 +5683,7 @@ $$\forall \varepsilon > 0,\ \exists s \in S :\ 0 < |s - x| < \varepsilon$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 2
 
 #### 单调有界定理　`thm.monotone-convergence`
-*定理*　单调有界定理（Monotone Convergence Theorem）
+*定理*　单调有界定理
 
 设 $\{x_n\} \subseteq \mathbb{R}$。
 
@@ -5700,7 +5700,7 @@ $$\lim_{n \to \infty} x_n = \sup_{n} x_n$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 闭区间套定理　`lem.nested-intervals`
-*引理*　引理：闭区间套定理（Nested Interval Theorem）
+*引理*　引理：闭区间套定理
 
 设 $I_n = [a_n, b_n]$ 是一列**闭**区间，满足
 
@@ -5731,7 +5731,7 @@ $$\lim_{n \to \infty} x_n = \sup_{n} x_n$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### Cauchy 收敛准则　`thm.cauchy-criterion`
-*定理*　定理：收敛 $\iff$ Cauchy（Cauchy Criterion）
+*定理*　定理：收敛 $\iff$ Cauchy
 
 实数列 $\{x_n\}$ 收敛（到某个实数），当且仅当它是 Cauchy 列。
 
@@ -5757,7 +5757,7 @@ $$\lim_{n \to \infty} x_n = \sup_{n} x_n$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3；Munkres, Topology, Ch. 43
 
 #### 完备性的六条等价　`thm.completeness-equivalent`
-*定理*　定理：下列六条彼此等价（TFAE）
+*定理*　定理：下列六条彼此等价
 
 在 $\mathbb{R}$ 上，下列六条**彼此等价**：
 
@@ -5802,7 +5802,7 @@ $$\lim_{n \to \infty} x_n = \sup_{n} x_n$$
 > 造出「连续函数长什么样」：紧集上有界、取到最值、一致连续；介值定理与零点定理。反函数的连续性、初等函数的合法性都挂在这里。
 
 #### 连续函数的运算　`prop.continuous-arithmetic`
-*命题*　命题：连续函数的和差积商与复合（Algebra of Continuous Functions）
+*命题*　命题：连续函数的和差积商与复合
 
 设 $f, g : \mathbb{R} \to \mathbb{R}$ 在 $x_0$ 连续，$c \in \mathbb{R}$。则下列函数在 $x_0$ 连续：
 
@@ -5819,7 +5819,7 @@ $$f + g, \quad f - g, \quad cf, \quad fg, \quad |f|;$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 4
 
 #### 一致连续　`def.uniform-continuity`
-*定义*　一致连续（Uniform Continuity）
+*定义*　一致连续
 
 设 $X \subseteq \mathbb{R}$，$f : X \to \mathbb{R}$。称 $f$ **一致连续**，当且仅当
 
@@ -5853,7 +5853,7 @@ $$\forall \varepsilon > 0,\ \exists \delta > 0,\ \forall x, x' \in X :\ |x - x'|
 参考：Rudin, Principles of Mathematical Analysis, Ch. 4
 
 #### 最值定理　`thm.evt`
-*定理*　最值定理（Extreme Value Theorem）
+*定理*　最值定理
 
 设 $X$ 是紧度量空间，$f : X \to \mathbb{R}$ 连续。则 $f$ **取到**最大值与最小值：存在 $x_{\min}, x_{\max} \in X$，使对一切 $x \in X$ 有
 
@@ -5868,7 +5868,7 @@ $$f(x_{\min}) \le f(x) \le f(x_{\max})$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 4
 
 #### 介值定理　`thm.ivt`
-*定理*　介值定理（Intermediate Value Theorem）
+*定理*　介值定理
 
 设 $f$ 在 $[a, b]$ 上连续，$c$ 是介于 $f(a)$ 与 $f(b)$ 之间的**任意**实数。则存在 $\xi \in [a, b]$ 使
 
@@ -5969,7 +5969,7 @@ $$f(\xi) = 0$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
 #### 求导法则　`thm.derivative-rules`
-*定理*　定理：求导的四则运算与链式法则（Derivative Rules）
+*定理*　定理：求导的四则运算与链式法则
 
 设 $f, g$ 在 $x_0$ 可导，$c \in \mathbb{R}$。则
 
@@ -5990,7 +5990,7 @@ $$(g \circ f)'(x_0) = g'(f(x_0))\,f'(x_0).$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
 #### 初等函数的导数　`thm.elementary-derivatives`
-*定理*　定理：初等函数的导数表（Derivatives of Elementary Functions）
+*定理*　定理：初等函数的导数表
 
 在各自的定义域内：
 
@@ -6009,7 +6009,7 @@ $$(\exp x)' = \exp x, \qquad (\ln x)' = \frac{1}{x} \quad (x > 0).$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 8
 
 #### 局部极值　`def.local-extremum`
-*定义*　局部极大与局部极小（Local Extremum）
+*定义*　局部极大与局部极小
 
 设 $f$ 在 $x_0$ 的某个邻域上有定义。称 $x_0$ 是 $f$ 的
 
@@ -6057,7 +6057,7 @@ $$f'(\xi) = 0$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
 #### Lagrange 中值定理　`thm.mvt`
-*定理*　Lagrange 中值定理（Mean Value Theorem）
+*定理*　Lagrange 中值定理
 
 设 $f$ 在 $[a, b]$ 上连续、在 $(a, b)$ 内可导。则存在 $\xi \in (a, b)$ 使
 
@@ -6142,7 +6142,7 @@ $$\lim_{x \to x_0} \frac{f(x)}{g(x)} = \lim_{x \to x_0} \frac{f'(x)}{g'(x)}$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
 #### 高阶导数与 C^k　`def.higher-derivative`
-*定义*　高阶导数与 $C^{k}$ 类（Higher Derivatives）
+*定义*　高阶导数与 $C^{k}$ 类
 
 若 $f'$ 在 $x_0$ 处可导，记
 
@@ -6161,7 +6161,7 @@ $$f''(x_0) := (f')'(x_0), \qquad f^{(n+1)}(x_0) := \bigl( f^{(n)} \bigr)'(x_0)$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 5
 
 #### 凸函数　`def.convex-function`
-*定义*　凸函数与 Jensen 不等式（Convex Function）
+*定义*　凸函数与 Jensen 不等式
 
 设 $I$ 是区间，$f : I \to \mathbb{R}$。称 $f$ **凸**，当且仅当对一切 $x, y \in I$ 与一切 $t \in [0, 1]$，
 
@@ -6236,7 +6236,7 @@ $$f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!}\,(x - x_0)^{k} + o\bigl( (x - x_
 > 造出「曲线下的面积」这套工具：分割 → 上和 / 下和 → 可积性判据 → 微积分基本定理（Newton–Leibniz）。顶点是那条**把可积性翻译成零测集语言**的判据 —— 它在这里与 Lebesgue 积分那一侧正式接头。
 
 #### 分割　`def.partition`
-*定义*　分割与加细（Partition）
+*定义*　分割与加细
 
 闭区间 $[a, b]$ 的一个**分割**是一组有限点
 
@@ -6272,7 +6272,7 @@ $$S(f, P, \xi) := \sum_{i=1}^{n} f(\xi_i)\,\Delta x_i$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 6
 
 #### 上和与下和　`def.darboux-sum`
-*定义*　上和 $U(f, P)$ 与下和 $L(f, P)$（Darboux Sums）
+*定义*　上和 $U(f, P)$ 与下和 $L(f, P)$
 
 设 $f$ 在 $[a, b]$ 上有界，$P = \{ x_0 < \cdots < x_n \}$ 是分割。记
 
@@ -6469,7 +6469,7 @@ $$\int_a^b F'(x)\,dx = F(b) - F(a)$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 6
 
 #### 换元积分　`prop.integration-substitution`
-*命题*　命题：换元公式（Substitution）
+*命题*　命题：换元公式
 
 设 $\varphi : [\alpha, \beta] \to [a, b]$ 有连续导数，$f$ 在 $[a, b]$ 上连续。则
 
@@ -6484,7 +6484,7 @@ $$\int_{\alpha}^{\beta} f\bigl(\varphi(t)\bigr)\,\varphi'(t)\,dt = \int_{\varphi
 参考：Rudin, Principles of Mathematical Analysis, Ch. 6
 
 #### 分部积分　`prop.integration-by-parts`
-*命题*　命题：分部积分公式（Integration by Parts）
+*命题*　命题：分部积分公式
 
 设 $F, G : [a, b] \to \mathbb{R}$ 可导、$F', G'$ 可积。则
 
@@ -6518,7 +6518,7 @@ $$\int_a^b f g = f(\xi) \int_a^b g$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 6
 
 #### 反常积分　`def.improper-integral`
-*定义*　反常积分：无穷区间与无界函数（Improper Integral）
+*定义*　反常积分：无穷区间与无界函数
 
 **无穷区间**：若 $f$ 在每个 $[a, R]$ 上可积，定义
 
@@ -6576,7 +6576,7 @@ $$\int_{[a, b]} f\,dm = \int_a^b f$$
 > 造出「无限多项相加靠不靠谱」这套判据：Cauchy 准则 → 比较判别法 → **Kummer 判别法**（d'Alembert / Raabe / Bertrand / Gauss 全是它的特例）→ 根值 / 积分 / 凝聚判别法 → Abel–Dirichlet 判别法。分水岭是**绝对收敛**：绝对收敛的级数可以随便重排、相乘，条件收敛的不行。
 
 #### 几何级数　`thm.geometric-series`
-*定理*　定理：几何级数（Geometric Series）
+*定理*　定理：几何级数
 
 设 $q \in \mathbb{R}$。则级数 $\sum_{n=0}^{\infty} q^{n}$ 收敛**当且仅当** $|q| < 1$；此时
 
@@ -6623,7 +6623,7 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall n > m \ge N :\ \Bigl| \sum_{k=m+
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 比较判别法　`thm.comparison-test`
-*定理*　定理：比较判别法（Comparison Test）
+*定理*　定理：比较判别法
 
 设 $0 \le a_n \le b_n$ 对充分大的 $n$ 成立。则
 
@@ -6740,7 +6740,7 @@ $$\sum_{n=1}^{\infty} a_n < +\infty \iff \sum_{k=0}^{\infty} 2^{k}\, a_{2^{k}} <
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 绝对收敛　`def.absolute-convergence`
-*定义*　绝对收敛（Absolute Convergence）
+*定义*　绝对收敛
 
 设 $\{a_n\} \subseteq \mathbb{R}$（或 $\mathbb{C}$）。称级数 $\sum a_n$ **绝对收敛**，当且仅当正项级数
 
@@ -6757,7 +6757,7 @@ $$\sum_{n=1}^{\infty} |a_n|$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
 #### 条件收敛　`def.conditional-convergence`
-*定义*　条件收敛（Conditional Convergence）
+*定义*　条件收敛
 
 称实（或复）级数 $\sum a_n$ **条件收敛**，当且仅当它收敛，但 $\sum |a_n|$ **发散**。
 
@@ -6845,7 +6845,7 @@ $$\sum_{n=0}^{\infty} c_n = \Bigl( \sum_{n=0}^{\infty} a_n \Bigr)\Bigl( \sum_{n=
 > 造出「取极限与积分 / 求导能不能交换」的判据：逐点收敛 → **一致收敛**（三种交换定理）→ Weierstrass 判别法 → Dini 定理。**幂级数**是一致收敛的旗舰应用 —— 而 $\exp$、$\log$、$\sin$、$\cos$、$\pi$ 全都由幂级数定义，初等函数在这里第一次有了合法出身。
 
 #### 逐点收敛　`def.pointwise-convergence`
-*定义*　逐点收敛（Pointwise Convergence）
+*定义*　逐点收敛
 
 设 $f_n : X \to \mathbb{R}$（$n = 1, 2, \ldots$）与 $f : X \to \mathbb{R}$。称 $\{f_n\}$ **逐点收敛**到 $f$，当且仅当对**每个固定的** $x \in X$ 都有
 
@@ -6862,7 +6862,7 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N :\ |f_n(x) - f(x)| < \va
 参考：Rudin, Principles of Mathematical Analysis, Ch. 7
 
 #### 一致收敛　`def.uniform-convergence`
-*定义*　一致收敛 $f_n \rightrightarrows f$（Uniform Convergence）
+*定义*　一致收敛 $f_n \rightrightarrows f$
 
 沿用上面的记号。称 $\{f_n\}$ **一致收敛**到 $f$，当且仅当
 
@@ -6883,7 +6883,7 @@ $$\sup_{x \in X} |f_n(x) - f(x)| \xrightarrow{\;n \to \infty\;} 0$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 7
 
 #### 一致 Cauchy 列　`def.uniform-cauchy`
-*定义*　一致 Cauchy 列（Uniformly Cauchy）
+*定义*　一致 Cauchy 列
 
 称 $\{f_n\}$ 是**一致 Cauchy 列**，当且仅当
 
@@ -6985,7 +6985,7 @@ $$f_n \rightrightarrows f$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 7
 
 #### 幂级数　`def.power-series`
-*定义*　幂级数（Power Series）
+*定义*　幂级数
 
 给定数列 $\{a_n\} \subseteq \mathbb{R}$（或 $\mathbb{C}$）与中心 $x_0$，形如
 
@@ -7148,7 +7148,7 @@ $$\exp(i\theta) = e^{i\theta} = \cos\theta + i\sin\theta$$
 > 造出「把微分学线性代数化」的整套装置：偏导 / 方向导数 → **可微 = 存在一个线性映射** → 梯度、Jacobi、Hessian → 链式法则（矩阵乘法）→ 混合偏导可交换 → 中值定理与 Taylor → 极值判别（Hessian 正定 $\iff$ 极小）。后半段是「局部 → 标准形」：压缩映射原理当引擎，撑起逆映射定理、隐函数定理、**秩定理**，再加上浸入 / 淹没、正则值原像、Lagrange 乘子、Morse 引理与 Sard 定理。
 
 #### 赋范空间　`def.normed-space`
-*定义*　赋范空间（Normed Space）
+*定义*　赋范空间
 
 设 $V$ 是 $K$-向量空间（$K = \mathbb{R}$ 或 $\mathbb{C}$）。映射 $\|\cdot\| : V \to \mathbb{R}$ 叫 $V$ 上的**范数**，当且仅当对一切 $v, w \in V$、$c \in K$：
 
@@ -7180,7 +7180,7 @@ $$\|v\| \ge 0, \qquad \|v\| = 0 \iff v = 0; \qquad \|cv\| = |c|\,\|v\|; \qquad \
 参考：Rudin, Functional Analysis, Ch. 1；Zeidler, Nonlinear Functional Analysis I, Ch. 1
 
 #### 偏导数　`def.partial-derivative`
-*定义*　偏导数（Partial Derivative）
+*定义*　偏导数
 
 设 $U \subseteq \mathbb{R}^{n}$ 是开集，$f : U \to \mathbb{R}^{m}$，$a \in U$。$f$ 在 $a$ 处关于第 $j$ 个变元的**偏导数**是（若该极限存在）
 
@@ -7201,7 +7201,7 @@ $$\frac{\partial f}{\partial x_j}(a) := \lim_{h \to 0} \frac{f(a + h e_j) - f(a)
 参考：Rudin, Principles of Mathematical Analysis, Ch. 9；Spivak, Calculus on Manifolds, Ch. 2
 
 #### 方向导数　`def.directional-derivative`
-*定义*　方向导数（Directional Derivative）
+*定义*　方向导数
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{m}$，$a \in U$，$v \in \mathbb{R}^{n}$。$f$ 在 $a$ 沿方向 $v$ 的**方向导数**是（若该极限存在）
 
@@ -7220,7 +7220,7 @@ $$D_v f(a) := \lim_{t \to 0} \frac{f(a + t v) - f(a)}{t}$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 9；Spivak, Calculus on Manifolds, Ch. 2
 
 #### 可微与全微分　`def.total-differential`
-*定义*　可微与全微分（Total Differential）
+*定义*　可微与全微分
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{m}$，$a \in U$。称 $f$ 在 $a$ **可微**，当且仅当存在**线性映射** $L : \mathbb{R}^{n} \to \mathbb{R}^{m}$ 使
 
@@ -7243,7 +7243,7 @@ $$f(a + h) = f(a) + L(h) + o(\|h\|) \qquad (\|h\| \to 0)$$
 参考：Rudin, Principles of Mathematical Analysis, Ch. 9；Spivak, Calculus on Manifolds, Ch. 2；Lang, Undergraduate Analysis, Ch. XVI
 
 #### 梯度　`def.gradient`
-*定义*　梯度（Gradient）
+*定义*　梯度
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}$ 在 $a$ 可微。则 $Df(a)$ 是 $\mathbb{R}^{n} \to \mathbb{R}$ 的线性映射，即对偶空间 $(\mathbb{R}^{n})^{\ast}$ 中的元素。由 $\mathbb{R}^{n}$ 的标准内积与 Riesz 表示，存在**唯一**的 $\nabla f(a) \in \mathbb{R}^{n}$ 使
 
@@ -7267,7 +7267,7 @@ $$\nabla f(a) = \bigl( \partial_1 f(a), \ldots, \partial_n f(a) \bigr)^{\mathsf{
 参考：Spivak, Calculus on Manifolds, Ch. 2；Rudin, Principles of Mathematical Analysis, Ch. 9
 
 #### Jacobi 矩阵　`def.jacobian`
-*定义*　Jacobi 矩阵（Jacobian Matrix）
+*定义*　Jacobi 矩阵
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f = (f_1, \ldots, f_m) : U \to \mathbb{R}^{m}$ 在 $a$ 处各偏导都存在。$f$ 在 $a$ 的 **Jacobi 矩阵**是
 
@@ -7287,7 +7287,7 @@ $$J_f(a) := \Bigl( \frac{\partial f_i}{\partial x_j}(a) \Bigr)_{\substack{1 \le 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 9；Spivak, Calculus on Manifolds, Ch. 2
 
 #### Hessian 矩阵　`def.hessian`
-*定义*　Hessian 矩阵（Hessian）
+*定义*　Hessian 矩阵
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}$ 在 $a$ 的二阶偏导都存在。**Hessian 矩阵**是
 
@@ -7407,7 +7407,7 @@ $$f(a+h) = f(a) + Df(a)(h) + \frac{1}{2}\, D^{2}f(a)(h, h) + o\bigl(\|h\|^{2}\bi
 参考：Rudin, Principles of Mathematical Analysis, Ch. 9；Spivak, Calculus on Manifolds, Ch. 2
 
 #### 压缩映射　`def.contraction`
-*定义*　压缩映射（Contraction）
+*定义*　压缩映射
 
 设 $(X, d)$ 是度量空间，$T : X \to X$。$T$ 叫**压缩映射**，当且仅当存在常数 $q \in [0, 1)$ 使
 
@@ -7555,7 +7555,7 @@ $$\psi \circ f \circ \varphi^{-1} (x_1, \ldots, x_n) = (x_1, \ldots, x_r, 0, \ld
 参考：Rudin, Principles of Mathematical Analysis, Ch. 9；Lang, Undergraduate Analysis, Ch. XVI
 
 #### 浸入 / 淹没 / 嵌入　`def.submersion-immersion`
-*定义*　浸入、淹没与嵌入（Immersion / Submersion / Embedding）
+*定义*　浸入、淹没与嵌入
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{m}$ 是 $C^{1}$，$a \in U$。
 
@@ -7662,7 +7662,7 @@ $$f\bigl( \{ x \in U : \operatorname{rank} Df(x) < m \} \bigr) \subseteq \mathbb
 > 造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。
 
 #### 基本类　`def.fundamental-class`
-*定义*　基本类（Fundamental Class）
+*定义*　基本类
 
 设 $X$ 是集合，$\mathfrak{A} \subseteq \mathcal{P}(X)$。$\mathfrak{A}$ 是 $X$ 上的一个**基本类**，当且仅当
 
@@ -7678,7 +7678,7 @@ $$f\bigl( \{ x \in U : \operatorname{rank} Df(x) < m \} \bigr) \subseteq \mathbb
 参考：Halmos, Measure Theory, §4
 
 #### 环与代数　`def.set-ring`
-*定义*　环与代数（Ring, Algebra）
+*定义*　环与代数
 
 设 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 的一族子集。
 
@@ -7744,7 +7744,7 @@ $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 上的一个 **$\sigma$环**，�
 参考：Halmos, Measure Theory, §4；Folland, Real Analysis, §1.2；Rudin, Real and Complex Analysis, Ch. 1
 
 #### 单调类　`def.monotone-class`
-*定义*　单调类（Monotone Class）
+*定义*　单调类
 
 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是**单调类**，当且仅当它对两种单调极限都封闭：
 
@@ -7825,7 +7825,7 @@ $\mathcal{M}(\mathcal{E})$ 称为**由 $\mathcal{E}$ 生成的 $\sigma$代数**�
 参考：Halmos, Measure Theory, §6；Folland, Real Analysis, §1.2
 
 #### 单调类定理　`thm.monotone-class`
-*定理*　单调类定理（Monotone Class Theorem）
+*定理*　单调类定理
 
 设 $\mathcal{E} \subseteq \mathcal{P}(X)$。则
 
@@ -7872,7 +7872,7 @@ $\mathbb{R}$ 上 $\mathfrak{B}_\mathbb{R}$ 也可以由半开区间 $\{ (a, b] :
 > 造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。
 
 #### 测度　`def.measure`
-*定义*　测度（Measure）
+*定义*　测度
 
 设 $\mathcal{M}$ 是 $X$ 上的 $\sigma$代数。函数 $\mu : \mathcal{M} \to [0, +\infty]$ 是一个**测度**，当且仅当
 
@@ -7907,7 +7907,7 @@ Carathéodory 扩张定理的作用就是把预测度从环一路提升到生成
 参考：Halmos, Measure Theory, §9；Folland, Real Analysis, §1.4
 
 #### 有限可加测度　`def.finitely-additive`
-*定义*　有限可加测度（Finitely Additive Measure）
+*定义*　有限可加测度
 
 若 $\mu$ 只满足 (i) 与**有限**可加性：
 
@@ -7964,7 +7964,7 @@ $\sigma$有限是**最常用的技术假设**：$\mathbb{R}$ 上的 Lebesgue 测
 参考：Halmos, Measure Theory, §9；Folland, Real Analysis, Prop. 1.3
 
 #### 零集与完备　`def.null-set`
-*定义*　μ-零集 / 完备测度空间（Null Set & Complete Measure Space）
+*定义*　μ-零集 / 完备测度空间
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间，$E \in \mathcal{M}$。
 
@@ -8006,7 +8006,7 @@ $\bar{\mathcal{M}}$ 的直观：在原来的可测集上「撒一点零集的小
 参考：Halmos, Measure Theory, §13；Folland, Real Analysis, Prop. 1.6
 
 #### 半有限部分　`def.semifinite-part`
-*定义*　半有限部分（Semifinite Part of a Measure）
+*定义*　半有限部分
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间。定义
 
@@ -8021,7 +8021,7 @@ $$\mu_0(E) := \sup \{ \mu(F) : F \subseteq E, F \in \mathcal{M}, \mu(F) < \infty
 参考：Folland, Real Analysis, §1.2
 
 #### 外测度　`def.outer-measure`
-*定义*　外测度（Outer Measure）
+*定义*　外测度
 
 设 $X$ 是非空集合。函数 $\mu^* : \mathcal{P}(X) \to [0, +\infty]$ 是一个**外测度**，当且仅当
 
@@ -8187,7 +8187,7 @@ $\mu _F$ 的**分布函数**视角：若 $F$ 还满足 $F(-\infty ) = 0$、$F(+\
 参考：Folland, Real Analysis, Theorem 1.16
 
 #### 几乎处处　`def.ae`
-*定义*　几乎处处（Almost Everywhere, a.e.）
+*定义*　几乎处处
 
 设 $(X, \mathcal{M}, \mu)$ 是测度空间。称一个关于点 $x$ 的命题 $P(x)$ **几乎处处成立**（记 a.e.），当且仅当
 
@@ -8208,7 +8208,7 @@ $$\exists E \in \mathcal{M}:\ \mu(E) = 0 \quad \text{且} \quad \forall x \in X 
 > 造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。
 
 #### 可测函数　`def.measurable-function`
-*定义*　可测函数（Measurable Function）
+*定义*　可测函数
 
 设 $(X, \mathcal{M})$ 与 $(Y, \mathcal{N})$ 是可测空间。函数 $f : X \to Y$ 是 **$(\mathcal{M}, \mathcal{N})$可测的**，当且仅当每个可测集的原像可测：
 
@@ -8323,7 +8323,7 @@ max 是 sup 的有限特例（把不够的地方补成 $-\infty$）。
 参考：Folland, Real Analysis, Prop. 2.7
 
 #### 简单函数　`def.simple-function`
-*定义*　简单函数（Simple Function）
+*定义*　简单函数
 
 可测函数 $\varphi : X \to \mathbb{C}$ 是**简单函数**，当且仅当它只取**有限多个值**。等价地，它可以写成
 
@@ -8652,7 +8652,7 @@ $$\int f d\mu := \sup \{ \int \varphi d\mu : 0 \le \varphi \le f, \varphi\text{ 
 参考：Folland, Real Analysis, §2.2
 
 #### 单调收敛定理　`thm.mct`
-*定理*　单调收敛定理（MCT, Monotone Convergence Theorem）
+*定理*　单调收敛定理
 
 设 $\{f_n\} \subseteq L^+$ 满足
 
@@ -8890,7 +8890,7 @@ $$f = g\quad  \mu-\text{a.e.}$$
 参考：Folland, Real Analysis, Cor. 2.23
 
 #### 控制收敛定理　`thm.dct`
-*定理*　控制收敛定理（DCT, Dominated Convergence Theorem）
+*定理*　控制收敛定理
 
 设 $\{f_n\} \subseteq L^1$，$f_n \to f$ a.e.，且存在**控制函数** $g \in L^1$ 使
 
@@ -9258,7 +9258,7 @@ $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\n
 > 造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。
 
 #### 符号测度　`def.signed-measure`
-*定义*　符号测度（Signed Measure）
+*定义*　符号测度
 
 设 $(X, \mathcal{M})$ 是可测空间。$\nu : \mathcal{M} \to [-\infty, +\infty]$ 是**符号测度**，当且仅当
 
@@ -9285,7 +9285,7 @@ $$\nu(E) := \int_E f d\mu$$
 参考：Folland, Real Analysis, §3.1；Halmos, Measure Theory, §28
 
 #### 正集 / 负集 / 零集　`def.positive-negative-null`
-*定义*　正集 / 负集 / 零集（Positive, Negative, Null Set）
+*定义*　正集 / 负集 / 零集
 
 设 $\nu$ 是符号测度，$E \in \mathcal{M}$。
 
@@ -9314,7 +9314,7 @@ $E$ 是**零的**：$\nu(F) = 0$ 对一切可测 $F \subseteq E$ 成立。
 参考：Folland, Real Analysis, Lemma 3.1
 
 #### Hahn 分解定理　`thm.hahn-decomposition`
-*定理*　Hahn 分解定理（Hahn Decomposition Theorem）
+*定理*　Hahn 分解定理
 
 设 $\nu$ 是 $(X, \mathcal{M})$ 上的符号测度。则存在 $P, N \in \mathcal{M}$ 使
 
@@ -9350,7 +9350,7 @@ $$E \cap F = \emptyset, \quad  E \cup F = X, $$
 参考：Folland, Real Analysis, §3.2
 
 #### Jordan 分解定理　`thm.jordan-decomposition`
-*定理*　Jordan 分解定理（Jordan Decomposition Theorem）
+*定理*　Jordan 分解定理
 
 设 $\nu$ 是符号测度。则存在**测度** $\mu_1, \mu_2$ 使
 
@@ -9570,7 +9570,7 @@ $$\frac{d\mu}{d\lambda}\cdot\frac{d\lambda}{d\mu} = \frac{d\mu}{d\mu} = 1 \quad 
 参考：Folland, Real Analysis, Theorem 3.9
 
 #### 复测度　`def.complex-measure`
-*定义*　复测度（Complex Measure）
+*定义*　复测度
 
 可测空间 $(X, \mathcal{M})$ 上的**复测度**是一个映射
 
@@ -9864,7 +9864,7 @@ $$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le |f(x) - c|
 参考：Folland, Real Analysis, Theorem 3.20
 
 #### 可缩族　`def.shrinks-nicely`
-*定义*　可缩地趋于 x（Shrinks Nicely）
+*定义*　可缩地趋于 x
 
 $\mathbb{R}^n$ 的一族 Borel 子集 $\{E_r\}_{r > 0}$ 叫**可缩地趋于 $x$**，当且仅当
 
@@ -9904,7 +9904,7 @@ $$\frac{1}{m(E_r)} \int_{E_r} |f - f(x)| \le \frac{1}{m(E_r)} \int_{B(r,x)} |f -
 参考：Folland, Real Analysis, Theorem 3.21
 
 #### 正则 Borel 测度　`def.regular-measure`
-*定义*　正则 Borel 测度（Regular Borel Measure）
+*定义*　正则 Borel 测度
 
 $\mathbb{R}^{n}$ 上的 Borel 测度 $\nu$ 是**正则的**，当且仅当
 
@@ -9991,7 +9991,7 @@ $$0 \le H(x+h) / h \le (\bar{F}(x+h) - \bar{F}(x)) / h\quad  (h > 0)$$
 参考：Folland, Real Analysis, Theorem 3.23
 
 #### 有界变差 BV　`def.bounded-variation`
-*定义*　全变差与有界变差函数（Total Variation, BV）
+*定义*　全变差与有界变差函数
 
 设 $F : \mathbb{R} \to \mathbb{C}$。定义它的**全变差函数**
 
@@ -10212,7 +10212,7 @@ $\cdot$ $\mu_F \ll  m$ 意味着 $\lambda = 0$，于是 $F(x) = \mu_F((-\infty,x
 参考：Folland, Real Analysis, Theorem 3.35
 
 #### 绝对连续函数　`def.ac-function`
-*定义*　绝对连续函数 AC（Absolutely Continuous Function）
+*定义*　绝对连续函数 AC
 
 函数 $F : [a, b] \to \mathbb{C}$ 是**绝对连续的**，当且仅当
 
@@ -10649,7 +10649,7 @@ $$\|f\|_p^p = \int |f|^p \cdot 1 \le \big\| |f|^p \big\|_{q/p} \, \|1\|_{q/(q-p)
 参考：Folland, Real Analysis, §6.1
 
 #### 共轭指数　`def.conjugate-exponents`
-*定义*　共轭指数（Conjugate Exponents）
+*定义*　共轭指数
 
 设 $1 \le p \le \infty$。称 $q$ 是 $p$ 的**共轭指数**，当且仅当
 
@@ -10810,7 +10810,7 @@ $$(L^{p})^{**} \cong (L^{q})^{*} \cong L^{p},$$
 > 造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。
 
 #### Grothendieck 宇宙　`def.universe`
-*定义*　Grothendieck 宇宙（Grothendieck Universe）
+*定义*　Grothendieck 宇宙
 
 一个集合 $U$ 叫**宇宙**，如果它对集合论的基本构造封闭：
 
@@ -10830,7 +10830,7 @@ $$(L^{p})^{**} \cong (L^{q})^{*} \cong L^{p},$$
 参考：SGA 4, I.0
 
 #### 图　`def.graph`
-*定义*　图（Graph）
+*定义*　图
 
 一个**图**是一个四元组
 
@@ -10853,7 +10853,7 @@ $$(a, b) = (c, d) \iff a = c \wedge b = d$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 图的态射　`def.graph-morphism`
-*定义*　图的态射（Morphism of Graphs）
+*定义*　图的态射
 
 从图 $(V, E, s, t)$ 到图 $(V', E', s', t')$ 的**态射**是一对函数
 
@@ -10870,7 +10870,7 @@ $$s' \circ \varphi_2 = \varphi_1 \circ s, \qquad t' \circ \varphi_2 = \varphi_1 
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 范畴　`def.category`
-*定义*　范畴（Category）
+*定义*　范畴
 
 一个**范畴**是一个六元组
 
@@ -10919,7 +10919,7 @@ $$M = \{ (u, v) : u \subseteq v \} \subseteq \tau \times \tau$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 截面与收缩　`def.section-retraction`
-*定义*　截面与收缩（Section / Retraction）
+*定义*　截面与收缩
 
 设 $f : X \to Y$ 是范畴里的一条态射。
 
@@ -10936,7 +10936,7 @@ $$g \circ f = 1_X$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 局部化　`def.localization`
-*定义*　范畴的局部化（Localization）
+*定义*　范畴的局部化
 
 设 $\mathcal{C}$ 是范畴，$W$ 是 $\mathcal{C}$ 中一族态射（想「当成同构」的那些）。$\mathcal{C}$ 关于 $W$ 的**局部化** $\mathrm{ho}(\mathcal{C})$ 是这样一个范畴，连同函子 $\gamma : \mathcal{C} \to \mathrm{ho}(\mathcal{C})$：
 
@@ -11010,7 +11010,7 @@ $$\varinjlim_{(X'\to X)\in J}\operatorname{Hom}_{\mathcal{C}}(X', Y)$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 子范畴　`def.subcategory`
-*定义*　子范畴与满子范畴（Subcategory）
+*定义*　子范畴与满子范畴
 
 范畴 $\mathcal{C}$ 的**子范畴** $\mathcal{C}'$ 由以下数据组成：
 
@@ -11116,7 +11116,7 @@ $\mathbf{Cat}$ 有**终对象**（单对象范畴 $\mathbf{1}$）、有**始对�
 > 造出「范畴之间的翻译」：函子 → 忠实 / 满 / 全忠实 → 自然变换 → 范畴等价。
 
 #### 函子保同构　`prop.functor-preserves-iso`
-*命题*　命题：函子把同构送到同构（Functors Preserve Isomorphisms）
+*命题*　命题：函子把同构送到同构
 
 设 $F : \mathcal{C} \to \mathcal{D}$ 是函子，$f : X \to Y$ 是 $\mathcal{C}$ 中的同构，逆为 $f^{-1} : Y \to X$。则 $F(f)$ 是同构，且
 
@@ -11131,7 +11131,7 @@ $$F(f)^{-1} = F\left(f^{-1}\right).$$
 参考：Mac Lane, Categories for the Working Mathematician, Ch. I
 
 #### 函子　`def.functor`
-*定义*　函子（Functor）
+*定义*　函子
 
 从范畴 $\mathcal{C}$ 到范畴 $\mathcal{D}$ 的**函子** $F : \mathcal{C} \to \mathcal{D}$ 由两部分组成：
 
@@ -11160,7 +11160,7 @@ $$F(1_X) = 1_{F(X)}, \qquad F(g \circ f) = F(g) \circ F(f)$$
 参考：Le Stum, An introduction to condensed mathematics, §1.2
 
 #### 自然变换　`def.natural-transformation`
-*定义*　自然变换（Natural Transformation）
+*定义*　自然变换
 
 设 $F, G : \mathcal{C} \to \mathcal{D}$ 是两个函子。从 $F$ 到 $G$ 的**自然变换** $\alpha : F \implies G$ 是一族态射
 
@@ -11189,7 +11189,7 @@ $$\det_A : GL_n(A) \to A^{*}$$
 参考：Le Stum, An introduction to condensed mathematics, §1.2
 
 #### 忠实 / 满 / 全忠实　`def.ff-faithful`
-*定义*　忠实、满、全忠实函子（Faithful / Full / Fully Faithful）
+*定义*　忠实、满、全忠实函子
 
 函子 $F : \mathcal{C} \to \mathcal{C}'$ 对每一对对象 $X, Y$ 给出一个映射
 
@@ -11208,7 +11208,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow \operatorname{Hom}_{\ma
 参考：Le Stum, An introduction to condensed mathematics, §1.2
 
 #### 本质满　`def.essentially-surjective`
-*定义*　本质满函子（Essentially Surjective）
+*定义*　本质满函子
 
 函子 $F : \mathcal{C} \to \mathcal{C}'$ 叫**本质满**，如果对 $\mathcal{C}'$ 的每个对象 $X'$，都存在 $\mathcal{C}$ 中的对象 $X$ 使
 
@@ -11219,7 +11219,7 @@ $$F(X) \cong X'$$
 参考：Le Stum, An introduction to condensed mathematics, §1.2
 
 #### 范畴等价　`def.cat-equivalence`
-*定义*　范畴等价（Equivalence of Categories）
+*定义*　范畴等价
 
 函子 $F : \mathcal{C} \to \mathcal{C}'$ 叫**范畴等价**，如果存在函子 $G : \mathcal{C}' \to \mathcal{C}$ 与自然同构
 
@@ -11234,7 +11234,7 @@ $$F \circ G \cong 1_{\mathcal{C}'}, \qquad G \circ F \cong 1_{\mathcal{C}}$$
 参考：Le Stum, An introduction to condensed mathematics, §1.2
 
 #### 保极限的函子　`def.preserves-limit`
-*定义*　函子保极限（Preservation of Limits）
+*定义*　函子保极限
 
 设 $D : I \to \mathcal{C}$ 是图、$F : \mathcal{C} \to \mathcal{D}$ 是函子。$F$ 诱导出锥之间的比较映射
 
@@ -11253,7 +11253,7 @@ $$F(\lim D) \longrightarrow \lim (F \circ D).$$
 参考：Le Stum, An introduction to condensed mathematics, §1.2
 
 #### 正合函子　`def.exact-functor`
-*定义*　左正合 / 右正合 / 正合函子（Exact Functor）
+*定义*　左正合 / 右正合 / 正合函子
 
 函子 $F$ 叫**左正合的**（left exact），如果它保所有**有限极限**；叫**右正合的**（right exact），如果它保所有**有限余极限**；两者都对时叫**正合的**（exact）。
 
@@ -11359,7 +11359,7 @@ $$F(X) \cong F(Y) \implies X \cong Y.$$
 > 造出「在图上取值」这件事：交换图 → 锥 → 极限（泛锥）→ 积 / 纤维积 / 等化子。
 
 #### 图与交换图　`def.commutative-diagram`
-*定义*　图与交换图（Diagram / Commutative Diagram）
+*定义*　图与交换图
 
 设 $I$ 是一个**小范畴**（只有一个小集合那么多对象与态射）。$\mathcal{C}$ 中**以 $I$ 为索引范畴的图**就是一个函子
 
@@ -11384,7 +11384,7 @@ $I$ 叫**索引范畴**：它只规定图的形状，不规定内容。
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 单纯对象　`def.simplicial`
-*定义*　单纯对象（Simplicial Object）
+*定义*　单纯对象
 
 **单纯形范畴** $\Delta$ 的对象是
 
@@ -11408,7 +11408,7 @@ $$X : \Delta^{\mathrm{op}} \longrightarrow \mathcal{C}$$
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 锥　`def.cone`
-*定义*　锥与余锥（Cone / Cocone）
+*定义*　锥与余锥
 
 设 $D : I \to \mathcal{C}$ 是一个图。$D$ 上的**锥**是一个对象 $X \in \mathcal{C}$ 连同一族态射
 
@@ -11427,7 +11427,7 @@ $X$ 固定时，$D$ 上的锥恰好是自然变换集 $\operatorname{Nat}(\Delta
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 极限　`def.limit`
-*定义*　极限与余极限（Limit / Colimit）
+*定义*　极限与余极限
 
 图 $D : I \to \mathcal{C}$ 的**极限**是对 $D$ 上的锥具有泛性质的那一个：锥 $(\lim D,\ p_i)$ 使得对任意锥 $(Y,\ g_i)$，存在**唯一**的态射 $g : Y \to \lim D$ 使
 
@@ -11448,7 +11448,7 @@ $$\operatorname{Hom}_{\mathcal{C}^{I}}(\Delta Y, D) \;\cong\; \operatorname{Hom}
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 终对象 / 始对象　`def.final-initial`
-*定义*　终对象与始对象（Terminal / Initial Object）
+*定义*　终对象与始对象
 
 $\mathcal{C}$ 的**终对象** $\mathbf{1}_{\mathcal{C}}$ 是空图 $\emptyset \to \mathcal{C}$ 的极限，**始对象** $\mathbf{0}_{\mathcal{C}}$ 是它的余极限。用同构集来刻画：
 
@@ -11463,7 +11463,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(X, \mathbf{1}_{\mathcal{C}}) = \{*\}, \qquad 
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 积 / 余积　`def.product`
-*定义*　积与余积（Product / Coproduct）
+*定义*　积与余积
 
 取 $I$ 为**离散范畴**（只有对象，没有非恒等的态射），图 $D : I \to \mathcal{C}$ 就只是一族对象 $(X_i)_{i \in I}$。它的极限叫**积** $\prod_{i} X_i$，余极限叫**余积** $\coprod_{i} X_i$。泛性质写成同构集就是
 
@@ -11476,7 +11476,7 @@ $$\operatorname{Hom}_{\mathcal{C}}\Bigl(Y, \prod_{i} X_i\Bigr) \;\cong\; \prod_{
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 纤维积 / 纤维余积　`def.fibered-product`
-*定义*　纤维积与纤维余积（Pullback / Pushout）
+*定义*　纤维积与纤维余积
 
 形状为 $X_1 \xrightarrow{f_1} X_0 \xleftarrow{f_2} X_2$ 的图的极限叫**纤维积**，记 $X_1 \times_{X_0} X_2$，也叫 $f_1$ 沿 $f_2$ 的**拉回**。它补成一个交换方块
 
@@ -11501,7 +11501,7 @@ $\mathbf{Ab}$ 里两个都化成核与余核：把 $f: X \to S$、$g: Y \to S$ �
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 等化子 / 余等化子　`def.equalizer`
-*定义*　等化子与余等化子（Equalizer / Coequalizer）
+*定义*　等化子与余等化子
 
 平行对 $f, g : X \rightrightarrows Y$ 的极限叫**等化子**，记 $\operatorname{eq}(f,g) = \ker(f,g)$；余极限叫**余等化子**，记 $\operatorname{coker}(f,g)$。它们接成
 
@@ -11516,7 +11516,7 @@ $$\ker(f,g) \longrightarrow X \overset{f}{\underset{g}{\rightrightarrows}} Y \lo
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 极限的函子性　`thm.lim-functor`
-*定理*　极限是函子（Limits as a Functor）
+*定理*　极限是函子
 
 设 $\mathcal{C}$ 具有所有以 $I$ 为索引的极限。给定图 $F, G : I \to \mathcal{C}$ 与自然变换 $\alpha : F \implies G$，族
 
@@ -11543,7 +11543,7 @@ $$G(u)\circ\alpha_{i}\circ\pi^{F}_{i} = \alpha_{j}\circ F(u)\circ\pi^{F}_{i} = \
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 连通范畴　`def.connected-category`
-*定义*　连通范畴（Connected Category）
+*定义*　连通范畴
 
 范畴 $\mathcal{C}$ 叫**连通的**，如果对任意两个对象 $A, B \in \mathcal{C}$，都存在一条**有限锯齿**
 
@@ -11562,7 +11562,7 @@ $$A = X_{0} \longrightarrow X_{1} \longleftarrow X_{2} \longrightarrow \cdots \l
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 共尾函子　`def.cofinal-functor`
-*定义*　共尾函子（Cofinal Functor）
+*定义*　共尾函子
 
 设 $F : J \to I$ 是函子。对 $i \in I$，记 $i \downarrow F$ 为逗号范畴，它的对象是 $\{\, f : i \to F(j) \,\}$（$j \in J$）。
 
@@ -11602,7 +11602,7 @@ $$\varinjlim_{j \in J} D\bigl(F(j)\bigr) \;\cong\; \varinjlim_{i \in I} D(i).$$
 参考：Le Stum, An introduction to condensed mathematics, §1.3
 
 #### 滤过范畴　`def.filtered-category`
-*定义*　滤过范畴与滤过余极限（Filtered Category）
+*定义*　滤过范畴与滤过余极限
 
 范畴 $I$ 叫**滤过的**（filtered），如果：
 
@@ -11803,7 +11803,7 @@ $\mathbf{Set}$、$\mathbf{Top}$、$\mathbf{Ab}$ 都有**所有小极限与小余
 > 造出「用箭头替代元素」这套语言：可消性（单 / 满）→ 子对象 → 像与余像 → 泛元素。
 
 #### 单态射 / 满态射 / 同构　`def.mono`
-*定义*　单态射、满态射与同构（Mono / Epi / Isomorphism）
+*定义*　单态射、满态射与同构
 
 态射 $i : Y \to X$ 叫**单态射**（mono），如果对任意对象 $Z$ 与任意 $f, g : Z \to Y$，
 
@@ -11834,7 +11834,7 @@ $(\Longleftarrow)$ 设 $f \circ g = 1_{Y}$。则 $f \circ (g \circ f) = (f \circ
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 子对象　`def.subobject`
-*定义*　子对象（Subobject）
+*定义*　子对象
 
 把单态射 $Y \rightarrowtail X$ 看作 $X$ 的一个**子对象**，记 $Y \subseteq X$。两个子对象的**交**与原像都用拉回定义：
 
@@ -11847,7 +11847,7 @@ $$Y \cap Z := Y \times_{X} Z, \qquad f^{-1}(Y) := Y \times_{X} X'$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 像 / 余像　`def.image`
-*定义*　像与余像（Image / Coimage）
+*定义*　像与余像
 
 态射 $f : X \to Y$ 的**像** $\operatorname{im} f$ 是 $Y$ 的一个子对象，它在一切分解 $f : X \to I \rightarrowtail Y$ 组成的范畴中是**始对象**（即：任何别的分解都唯一地穿过它）。对偶地，$\operatorname{coim} f$ 是分解 $X \twoheadrightarrow I \to Y$ 的余泛对象。
 
@@ -11864,7 +11864,7 @@ $$\operatorname{coim} f \longrightarrow \operatorname{im} f$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1
 
 #### 元素范畴　`def.elements-category`
-*定义*　元素范畴（Category of Elements）
+*定义*　元素范畴
 
 函子 $F : \mathcal{C} \to \mathbf{Set}$ 的**元素范畴** $\operatorname{el}(F)$ 以
 
@@ -11881,7 +11881,7 @@ $$\bigl\{(Y, t) : Y \in \mathcal{C},\ t \in F(Y)\bigr\}$$
 参考：Mac Lane, Categories for the Working Mathematician, III.7
 
 #### 严格态射　`def.strict-morphism`
-*定义*　严格态射（Strict Morphism）
+*定义*　严格态射
 
 态射 $f : X \to Y$ 叫**严格的**（strict），如果它在**余像**上的分解 $X \twoheadrightarrow \operatorname{coim} f \to \operatorname{im} f \hookrightarrow Y$ 中间那一步是**同构** —— 即「余像与像之间的自然映射」可逆。
 
@@ -11914,7 +11914,7 @@ $$\mathcal{C}/Y \longrightarrow \mathcal{C}/X, \qquad (A \to Y) \longmapsto (A \
 > 把「集合 + 运算 + 公理」搬到任意有有限积的范畴里：幺半群对象 → 群对象 → 阿贝尔群对象。⭐ $\mathrm{Ab}(\mathbf{Set})=\mathbf{Ab}$、$\mathrm{Ab}(\mathbf{Top})$ = 拓扑阿贝尔群、$\mathrm{Ab}(\mathrm{Cond})=\mathrm{CondAb}$ —— 代数那条线与凝聚态那条线在这里接上。
 
 #### 幺半群对象　`def.monoid-object`
-*定义*　幺半群对象（Monoid Object）
+*定义*　幺半群对象
 
 设 $\mathcal{C}$ 是有**有限积**的范畴（也叫**笛卡尔范畴**），$1$ 是它的终对象。$\mathcal{C}$ 中的**幺半群对象**是一个对象 $G$ 连同一个**乘法**
 
@@ -11935,7 +11935,7 @@ $$\begin{array}{ccc} G\times G\times G & \xrightarrow{\;\mu \times \mathrm{id}\;
 参考：Mac Lane, Categories for the Working Mathematician, III.6
 
 #### 群对象与阿贝尔群对象　`def.group-object`
-*定义*　群对象与阿贝尔群对象（Group Object）
+*定义*　群对象与阿贝尔群对象
 
 设 $G$ 是笛卡尔范畴 $\mathcal{C}$ 里的一个**幺半群对象**。若存在态射
 
@@ -12054,7 +12054,7 @@ $\mathbf{Mon}$、$\mathbf{Gr}$、$\mathbf{Rng}$、$G\text{-}\mathbf{Set}$、$A\t
 > 造出「表示」这套语言：预层范畴是落点，米田引理说自然变换集与 $F(X)$ 一一对应，稠密性定理说每个预层都是可表示预层的余极限。
 
 #### 预层　`def.presheaf`
-*定义*　预层（Presheaf）
+*定义*　预层
 
 范畴 $\mathcal{C}$ 上的**（集合值）预层**是函子
 
@@ -12075,7 +12075,7 @@ $$T : \mathcal{C}^{\mathrm{op}} \longrightarrow \mathbf{Set}$$
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 预层范畴　`def.presheaf-cat`
-*定义*　预层范畴（Category of Presheaves）
+*定义*　预层范畴
 
 $\mathcal{C}$ 上全体预层以自然变换为态射，组成范畴
 
@@ -12088,7 +12088,7 @@ $$\widehat{\mathcal{C}} := \operatorname{Hom}(\mathcal{C}^{\mathrm{op}}, \mathbf
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 表示函子　`def.representable`
-*定义*　表示函子与万有元素（Representable Functor）
+*定义*　表示函子与万有元素
 
 设 $F : \mathcal{C} \to \mathbf{Set}$ 是函子。
 
@@ -12123,7 +12123,7 @@ $$\forall Y \in \mathcal{C},\ \forall t \in F(Y),\ \exists! \, f : X \to Y,\qqua
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 米田引理　`lem.yoneda`
-*引理*　米田引理（Yoneda Lemma）
+*引理*　米田引理
 
 设 $F : \mathcal{C} \to \mathbf{Set}$ 是函子，$X \in \mathcal{C}$，并记
 
@@ -12166,7 +12166,7 @@ $$\alpha_{Y}\circ h^{X}(f) = F(f)\circ \alpha_{X} \;\implies\; \alpha_{Y}(f) = F
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 米田嵌入　`prop.yoneda-embedding`
-*命题*　米田嵌入（Yoneda Embedding）
+*命题*　米田嵌入
 
 对应
 
@@ -12181,7 +12181,7 @@ $$\delta : \mathcal{C} \longrightarrow \widehat{\mathcal{C}}, \qquad X \mapsto h
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 切片范畴　`def.slice-category`
-*定义*　预层的切片范畴（Slice Category）
+*定义*　预层的切片范畴
 
 设 $\mathcal{C}$ 是范畴，$T$ 是 $\mathcal{C}$ 上的预层。**切片范畴** $\mathcal{C}/T$（也记 $\mathcal{C}_{T}$）定义如下：
 
@@ -12222,7 +12222,7 @@ $$\begin{array}{ccc} \mathcal{C}/T & \hookrightarrow & \widehat{\mathcal{C}}/T \
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 稠密性定理　`thm.density`
-*定理*　稠密性定理（Density Theorem）
+*定理*　稠密性定理
 
 $\widehat{\mathcal{C}}$ 中的每个预层 $T$ 都是**可表示预层的余极限**：
 
@@ -12276,7 +12276,7 @@ $$\operatorname{Hom}_{\mathcal{C}}\bigl(X,\ \lim D\bigr) \;\cong\; \operatorname
 参考：Le Stum, An introduction to condensed mathematics, §1.1–1.5
 
 #### 有限表现对象　`def.finitely-presented`
-*定义*　有限表现（紧）对象（Finitely Presented Object）
+*定义*　有限表现（紧）对象
 
 对象 $X \in \mathcal{C}$ 叫**有限表现的**（也叫**紧的**，compact），如果可表函子
 
@@ -12360,7 +12360,7 @@ $$\Bigl(\varinjlim_{i} T_{i}\Bigr)(X) \;\cong\; \varinjlim_{i} T_{i}(X), \qquad 
 > 造出「两个方向之间的最佳翻译」：伴随 → 单位与余单位 → 保极限 → 伴随函子定理 → 反射子范畴 → Kan 延拓。
 
 #### 伴随函子　`def.adjoint`
-*定义*　伴随函子（Adjoint Functors）
+*定义*　伴随函子
 
 设 $F : \mathcal{C} \to \mathcal{D}$、$G : \mathcal{D} \to \mathcal{C}$ 是一对函子。$(F, G)$ 叫一对**伴随函子**，如果存在自然同构
 
@@ -12393,7 +12393,7 @@ $$\operatorname{Hom}_{\mathcal{D}}\bigl(F(X),\ Y\bigr) \;\cong\; \operatorname{H
 参考：Le Stum, An introduction to condensed mathematics, §1.5
 
 #### 单位与余单位　`def.adjunction-unit`
-*定义*　单位与余单位（Unit and Counit）
+*定义*　单位与余单位
 
 设 $F \dashv G$，记那个自然同构为
 
@@ -12480,7 +12480,7 @@ $$G\bigl(\lim D\bigr) \;\cong\; \lim\, (G \circ D)$$
 参考：Le Stum, An introduction to condensed mathematics, §1.5
 
 #### 伴随函子定理　`thm.saft`
-*定理*　伴随函子定理（SAFT）
+*定理*　伴随函子定理
 
 设 $\mathcal{D}$ 是**小**且**完备**的范畴。则函子 $G : \mathcal{D} \to \mathcal{C}$ 有左伴随 $\iff$ $G$ 保持所有极限。
 
@@ -12497,7 +12497,7 @@ $$F(X) \;=\; \varprojlim_{(Y,\, f) \in (X \downarrow G)} Y$$
 参考：Mac Lane, Categories for the Working Mathematician, V.8
 
 #### 逗号范畴　`def.comma-category`
-*定义*　逗号范畴（Comma Category）
+*定义*　逗号范畴
 
 设 $F : \mathcal{A} \to \mathcal{C}$、$G : \mathcal{B} \to \mathcal{C}$ 是两个**靶相同**的函子。**逗号范畴** $F \downarrow G$ 以
 
@@ -12526,7 +12526,7 @@ $$\begin{array}{ccc} F(A) & \xrightarrow{\;f\;} & G(B) \\[2pt] {\scriptstyle F(a
 参考：Mac Lane, Categories for the Working Mathematician, II.6
 
 #### 反射子范畴　`def.reflective-subcategory`
-*定义*　反射子范畴（Reflective Subcategory）
+*定义*　反射子范畴
 
 满子范畴 $\mathcal{C}' \subseteq \mathcal{C}$ 叫**反射的**，如果含入函子 $\mathcal{C}' \hookrightarrow \mathcal{C}$ 有左伴随；这个左伴随叫**反射**。对偶的说法是**余反射的**。
 
@@ -12569,7 +12569,7 @@ $$\operatorname{Hom}_{\mathcal{C}'}\bigl(C', \operatorname{lim}_{\mathcal{C}}D'\
 参考：Le Stum, An introduction to condensed mathematics, §1.5
 
 #### Kan 延拓　`def.kan-extension`
-*定义*　Kan 延拓（Kan Extension）
+*定义*　Kan 延拓
 
 设 $p : \mathcal{C} \to \mathcal{C}'$ 是小范畴之间的函子，$F : \mathcal{C} \to \mathcal{D}$。$F$ 沿 $p$ 的**左 Kan 延拓**是一个函子 $p_{!}F : \mathcal{C}' \to \mathcal{D}$ 连同一个自然变换
 
@@ -12839,10 +12839,10 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.72
 
 ### 星团：层与拓扑
-> 造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。
+> 造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → 景的层范畴的好性质。
 
 #### 筛　`def.sieve`
-*定义*　筛（Sieve）
+*定义*　筛
 
 设 $X \in \mathcal{C}$。$X$ 上的**筛**是预层 $h_{X} = \operatorname{Hom}_{\mathcal{C}}(-, X)$ 的一个子函子 $R \subseteq h_{X}$：对每个 $X'$ 给一个子集 $R(X') \subseteq \operatorname{Hom}_{\mathcal{C}}(X', X)$，使得只要 $f \in R(X')$，任何 $g : X'' \to X'$ 都满足 $f \circ g \in R(X'')$。
 
@@ -12855,7 +12855,7 @@ $$S = \{\, g : Y \to X \ \mid\ \exists i,\ \exists h : Y \to X_{i},\ g = f_{i} \
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 预拓扑　`def.pretopology`
-*定义*　预拓扑（Pretopology）
+*定义*　预拓扑
 
 范畴 $\mathcal{C}$ 上的**预拓扑**是对每个 $X$ 指定一族**覆盖族** $\operatorname{Cov}(X)$（每个元素是一族态射 $(X_{i} \to X)_{i \in I}$），满足：
 
@@ -12873,7 +12873,7 @@ $$\bigl(\, X_{i} \times_{X} Y \to Y \,\bigr)_{i \in I} \in \operatorname{Cov}(Y)
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### Grothendieck 拓扑　`def.grothendieck-topology`
-*定义*　Grothendieck 拓扑与 site（Grothendieck Topology, Site）
+*定义*　Grothendieck 拓扑与景
 
 范畴 $\mathcal{C}$ 上的 **Grothendieck 拓扑**是对每个 $X$ 指定一族**覆盖筛** $J(X)$，满足：
 
@@ -12881,7 +12881,7 @@ $$\bigl(\, X_{i} \times_{X} Y \to Y \,\bigr)_{i \in I} \in \operatorname{Cov}(Y)
 2. **拉回稳定**：$R \in J(X)$、$f : Y \to X$ $\implies$ $f^{*}(R) := R \times_{h_{X}} h_{Y} \in J(Y)$；
 3. **传递**：$R, R' \subseteq h_{X}$，若 $R' \in J(X)$ 且对每个 $f \in R'(Y)$ 有 $f^{*}(R) \in J(Y)$，则 $R \in J(X)$。
 
-带 Grothendieck 拓扑的范畴叫 **site**。
+带 Grothendieck 拓扑的范畴叫 **景**。
 
 $J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R' \in J(X) \implies R \cap R' \in J(X)$）；对更大的筛封闭（$R \subseteq R'$、$R \in J(X) \implies R' \in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。
 
@@ -12890,9 +12890,9 @@ $J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 层　`def.sheaf`
-*定义*　层与分离预层（Sheaf）
+*定义*　层与分离预层
 
-设 $\mathcal{C}$ 是 site，$F : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$ 是预层。
+设 $\mathcal{C}$ 是景，$F : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$ 是预层。
 
 - $F$ 叫**分离的**，如果对每个 $X$ 与每个 $R \in J(X)$，限制映射
 
@@ -12934,7 +12934,7 @@ $$\alpha\bigl((s_{i})_{i}\bigr) = \bigl(s_{i}|_{X_{i} \times_{X} X_{j}}\bigr)_{i
 #### Čech 函子　`def.cech-functor`
 *定义*　Čech 函子（Čech Functor）
 
-site $\mathcal{C}$ 上的 **Čech 函子** $\widehat{H}$ 定义在预层上：
+景 $\mathcal{C}$ 上的 **Čech 函子** $\widehat{H}$ 定义在预层上：
 
 $$\widehat{H}(T)(X) \;:=\; \varinjlim_{R \in J(X)} \operatorname{Hom}(R, T)$$
 
@@ -12993,7 +12993,7 @@ $$\operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T^{\sharp},\ F\bigr) \;\cong\;
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 正则满态射　`def.regular-epi`
-*定义*　正则满态射（Regular Epimorphism）
+*定义*　正则满态射
 
 态射 $f : X \to Y$ 叫**正则满态射**，如果它是某个平行对的**余等化子**：存在 $u, v : W \rightrightarrows X$ 使 $f = \operatorname{coker}(u, v)$。
 
@@ -13017,10 +13017,10 @@ $$X \times_{Y} Y' \;\cong\; \varinjlim_{i} \bigl(X_{i} \times_{Y} Y'\bigr)$$
 
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
-#### site 的层范畴的好性质　`prop.site-properties`
+#### 景的层范畴的好性质　`prop.site-properties`
 *命题*　Grothendieck 拓扑下的层范畴
 
-若 $\mathcal{C}$ 是 site，则层范畴 $\widehat{\mathcal{C}}$ 中所有极限与余极限存在，并且：
+若 $\mathcal{C}$ 是景，则层范畴 $\widehat{\mathcal{C}}$ 中所有极限与余极限存在，并且：
 
 1. 余极限是**万有**的；
 2. **滤过余极限正合**；
@@ -13067,7 +13067,7 @@ $$\begin{array}{ccc} h_{X}\times_{G}F & \xrightarrow{\ \ } & F\\ \big\downarrow 
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 有效等价关系　`def.effective-equivalence`
-*定义*　有效等价关系（Effective Equivalence Relation）
+*定义*　有效等价关系
 
 对象 $X$ 上的**等价关系**是一个图 $R \rightrightarrows X$，使得对每个 $Y$，$\operatorname{Hom}(Y, R) \to \operatorname{Hom}(Y, X) \times \operatorname{Hom}(Y, X)$ 是等价关系（在 $\mathbf{Set}$ 里取）。
 
@@ -13101,7 +13101,7 @@ $$\bigl(T/R\bigr)^{\sharp} \;\cong\; T^{\sharp} / R^{\sharp}$$
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 标准拓扑　`def.canonical-topology`
-*定义*　标准拓扑与次标准拓扑（Canonical Topology）
+*定义*　标准拓扑与次标准拓扑
 
 在任何范畴 $\mathcal{C}$ 上，存在**最细**的拓扑使得所有可表示预层都是层：规定 $X$ 上的筛 $R$ 是覆盖筛，当且仅当
 
@@ -13149,7 +13149,7 @@ $$\text{次标准} \iff \text{可表示预层都是层} \iff X^{\sharp} = h_{X}\
 #### 覆盖筛的四条等价　`prop.sieve-covering-equivalent`
 *命题*　覆盖筛的等价刻画（$\widetilde{R} \simeq \underline{X}$）
 
-设 $\mathcal{C}$ 是 site，$X \in \mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：
+设 $\mathcal{C}$ 是景，$X \in \mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：
 
 1. $R \in J(X)$（即 $R$ 是 $X$ 上的**覆盖筛**）；
 2. $\widetilde{R} \simeq \underline{X}$；
@@ -13179,9 +13179,9 @@ $$\widetilde{R} \;=\; \sharp\Bigl(\operatorname{im}\bigl(\coprod_{Y \in \mathcal
 参考：Le Stum, Proposition 3.2.12；Le Stum, Exercise 3.26
 
 #### 截面函子　`def.section-functor`
-*定义*　截面函子与全局截面（Sections Functor）
+*定义*　截面函子与全局截面
 
-设 $\mathcal{C}$ 是 site，$X \in \mathcal{C}$，$\widetilde{\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是
+设 $\mathcal{C}$ 是景，$X \in \mathcal{C}$，$\widetilde{\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是
 
 $$\Gamma(X, -) : \widetilde{\mathcal{C}} \longrightarrow \mathbf{Set}, \qquad F \longmapsto \Gamma(X, F) := F(X).$$
 
@@ -13205,16 +13205,16 @@ $$\Gamma(X, -) : \widetilde{\mathcal{C}} \longrightarrow \mathbf{Set}, \qquad F 
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 拓扑生成集　`def.topologically-generating`
-*定义*　拓扑生成集（Topologically Generating Set）
+*定义*　拓扑生成集
 
-设 $\mathcal{C}$ 是 site。集合 $G \subseteq \mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \in \mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \to X)_{i}$。
+设 $\mathcal{C}$ 是景。集合 $G \subseteq \mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \in \mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \to X)_{i}$。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.1–3.2
 
 #### 常层函子保极限　`prop.constant-sheaf-preserves-limits`
 *命题*　命题：常（预）层函子 $\Delta$ 保所有极限
 
-设 $\mathcal{C}$ 是 site，$\Delta : \mathbf{Set} \to \widehat{\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\underline{(-)}$ 表示对应的**常层**。则：
+设 $\mathcal{C}$ 是景，$\Delta : \mathbf{Set} \to \widehat{\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\underline{(-)}$ 表示对应的**常层**。则：
 
 1. 若 $E = \varprojlim_{i} E_{i}$ 是集合里的极限，则 $\Delta E = \varprojlim_{i}\Delta E_{i}$；
 2. 同样地 $\underline{E} = \varprojlim_{i}\underline{E_{i}}$ —— 常层函子也保极限。
@@ -13257,7 +13257,7 @@ $(\Longleftarrow)$ 反过来设 $s, t \in T(U)$ 在某个开覆盖 $(U_{i})$ 的
 #### 关联层　`def.associated-sheaf`
 *定义*　定义：$X^{\sharp} := h_{X}^{\#}$
 
-设 $\mathcal{C}$ 是 site，$X \in \mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：
+设 $\mathcal{C}$ 是景，$X \in \mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：
 
 $$X^{\sharp} \;:=\; h_{X}^{\#}, \qquad h_{X} = \operatorname{Hom}_{\mathcal{C}}(-, X).$$
 
@@ -13293,22 +13293,22 @@ $$\operatorname{Hom}\bigl(h_{X}^{\#},\ F\bigr) \cong \operatorname{Hom}(h_{X}, F
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.11
 
 #### 覆盖族构成预拓扑　`prop.site-covering-families-pretopology`
-*命题*　命题：site 里所有生成覆盖筛的族构成预拓扑
+*命题*　命题：景里所有生成覆盖筛的族构成预拓扑
 
-设 $\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。
+设 $\mathcal{C}$ 是有纤维积的景。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \to X)_{i \in I}$ 构成 $\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。
 
 ⚠️ 注意：生成覆盖筛的族**未必**是**给定**预拓扑下的覆盖族 —— 「极大」说的是「对给定的拓扑」，不是「对给定的预拓扑」。
 
 **证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎
 
-⭐ 读法：**site 与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。
+⭐ 读法：**景与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.14
 
 #### 层化与像交换　`prop.sheafification-image`
 *命题*　命题：$\operatorname{im}(T^{\#} \to T'^{\#}) = \bigl(\operatorname{im}(T \to T')\bigr)^{\#}$
 
-设 $\mathcal{C}$ 是 site、$u : T \to T'$ 是预层态射。则
+设 $\mathcal{C}$ 是景、$u : T \to T'$ 是预层态射。则
 
 $$\operatorname{im}\bigl(T^{\#} \to T'^{\#}\bigr) \;=\; \Bigl(\operatorname{im}\bigl(T \to T'\bigr)\Bigr)^{\#}.$$
 
@@ -13319,7 +13319,7 @@ $$\operatorname{im}\bigl(T^{\#} \to T'^{\#}\bigr) \;=\; \Bigl(\operatorname{im}\
 #### 层化是切片上的余极限　`prop.sheafification-slice-colimit`
 *命题*　命题：$T^{\#} \cong \varinjlim_{X \in \mathcal{C}/T} X$
 
-设 $T$ 是 site $\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限
+设 $T$ 是景 $\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限
 
 $$T^{\#} \;\cong\; \varinjlim_{X \in \mathcal{C}/T}\ X^{\sharp},$$
 
@@ -13334,7 +13334,7 @@ $$T^{\#} \;\cong\; \varinjlim_{X \in \mathcal{C}/T}\ X^{\sharp},$$
 #### 层之间的 Hom 在预层里算　`prop.sheaf-hom-computed-in-presheaves`
 *命题*　命题：$\operatorname{Hom}_{\widetilde{\mathcal{C}}}(T^{\#}, F) = \operatorname{Hom}_{\widehat{\mathcal{C}}}(T, F)$
 
-设 $\mathcal{C}$ 是 site、$T$ 是预层、$F$ 是**层**。则
+设 $\mathcal{C}$ 是景、$T$ 是预层、$F$ 是**层**。则
 
 $$\operatorname{Hom}_{\widetilde{\mathcal{C}}}\bigl(T^{\#},\ F\bigr) \;=\; \operatorname{Hom}_{\widehat{\mathcal{C}}}\bigl(T,\ F\bigr).$$
 
@@ -13397,7 +13397,7 @@ $$R \in J(X) \implies R' \in J(X), \qquad \bigl(R' \in J(X) \text{ 且 } \forall
 #### 常层的伴随　`prop.constant-sheaf-adjunction`
 *命题*　命题：$\operatorname{Hom}(\widetilde{E}_{\mathcal{C}}, F) \cong \operatorname{Hom}_{\mathbf{Set}}\bigl(E, \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)\bigr)$
 
-设 $E$ 是集合、$F$ 是 site $\mathcal{C}$ 上的层。则
+设 $E$ 是集合、$F$ 是景 $\mathcal{C}$ 上的层。则
 
 $$\operatorname{Hom}\bigl(\widetilde{E}_{\mathcal{C}},\ F\bigr) \;\cong\; \operatorname{Hom}_{\mathbf{Set}}\bigl(E,\ \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)\bigr) \;\cong\; \operatorname{Hom}(\mathbf{1}_{\mathcal{C}}, F)^{E},$$
 
@@ -13455,7 +13455,7 @@ $$\alpha_{f} : f^{-1}\mathcal{F}_{Y} \longrightarrow \mathcal{F}_{Z} \qquad (f :
 > 造出「几何的代数替身」：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理 → 拟紧拟分离 → 拓扑斯的态射。
 
 #### 预拓扑斯　`def.pretopos`
-*定义*　预拓扑斯（Pretopos）
+*定义*　预拓扑斯
 
 范畴 $\mathcal{C}$ 叫**预拓扑斯**，如果
 
@@ -13468,7 +13468,7 @@ $$\alpha_{f} : f^{-1}\mathcal{F}_{Y} \longrightarrow \mathcal{F}_{Z} \qquad (f :
 
 标准事实：**单态射可以通过极限来定义**（$i$ 是单态射 $\iff$ 那个方形是笛卡尔的），而拉回与极限都保持单态射；这保证了推出也保单态射 —— 第 2、3 条里那些「不交」「有效」才有意义。
 
-例：$\mathbf{Set}$、$\mathbf{FinSet}$ 是预拓扑斯；$\mathbf{CHaus}$ 是拓扑斯；**$\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何 site 的层范畴都是预拓扑斯。
+例：$\mathbf{Set}$、$\mathbf{FinSet}$ 是预拓扑斯；$\mathbf{CHaus}$ 是拓扑斯；**$\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何景的层范畴都是预拓扑斯。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
@@ -13508,13 +13508,13 @@ $$X_{1} \cup X_{2} := \operatorname{im}\bigl(X_{1} \coprod X_{2} \to X\bigr)$$
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 预标准拓扑　`def.precanonical-topology`
-*定义*　预标准拓扑（Precanonical Topology）
+*定义*　预标准拓扑
 
 预拓扑斯 $\mathcal{C}$ 上的**预标准预拓扑**由所有**有限**族 $(X_{i} \to X)_{i \in I}$ 组成，使得
 
 $$\coprod_{i \in I} X_{i} \longrightarrow X$$
 
-是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\mathcal{C}$ 是一个 site。
+是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\mathcal{C}$ 是一个景。
 
 生成它的其实是两类覆盖：**有限不交并**（$\coprod_{i \in I} X_{i} \cong X$）与**满射** $(X_{i} \to X)$。名字里的「预」是因为它比标准拓扑**粗** —— 但仍然是次标准的。
 
@@ -13577,7 +13577,7 @@ $$f \text{ 是单态射（满态射）} \iff X^{\sharp} \to Y^{\sharp} \text{ �
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 生成元集　`def.generator`
-*定义*　生成元集与生成元（Generators）
+*定义*　生成元集与生成元
 
 范畴 $\mathcal{C}$ 的一个集合 $S \subseteq \mathcal{C}$ 叫**生成元集**，如果函子
 
@@ -13592,7 +13592,7 @@ $$\prod_{a \in S} h_{a} : \mathcal{C} \longrightarrow \mathbf{Set}^{S}, \qquad X
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 拓扑斯　`def.topos`
-*定义*　拓扑斯（Topos）
+*定义*　拓扑斯
 
 范畴 $\mathcal{T}$ 叫**拓扑斯**，如果
 
@@ -13603,7 +13603,7 @@ $$\prod_{a \in S} h_{a} : \mathcal{C} \longrightarrow \mathbf{Set}^{S}, \qquad X
 
 与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。
 
-例：$\mathbf{Set}$、$G\text{-}\mathbf{Set}$ 是拓扑斯；预层范畴 $\widehat{\mathcal{C}}$ 是拓扑斯；site 的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\mathbf{Top}$ 不是拓扑斯。**
+例：$\mathbf{Set}$、$G\text{-}\mathbf{Set}$ 是拓扑斯；预层范畴 $\widehat{\mathcal{C}}$ 是拓扑斯；景的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\mathbf{Top}$ 不是拓扑斯。**
 
 ⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。
 
@@ -13616,7 +13616,7 @@ $$\prod_{a \in S} h_{a} : \mathcal{C} \longrightarrow \mathbf{Set}^{S}, \qquad X
 
 1. $\mathcal{T}$ 是拓扑斯；
 2. $\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；
-3. 存在 site $\mathcal{C}$ 使 $\mathcal{T} \simeq \widehat{\mathcal{C}}$；
+3. 存在景 $\mathcal{C}$ 使 $\mathcal{T} \simeq \widehat{\mathcal{C}}$；
 4. 存在范畴使 $\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。
 
 四条的对译：(2)$\iff$(3) 取 $\mathcal{C} = \mathcal{T}$ 配上标准拓扑；(3)$\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；(1)$\implies$(2) 也给 $\mathcal{T}$ 配标准拓扑。
@@ -13655,7 +13655,7 @@ $$\coprod_{i,j}F_{i}\times_{F}F_{j} \rightrightarrows \coprod_{i}F_{i} \longrigh
 - **$(\implies)$**：设 $(X_{i}\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\coprod_{i}h_{X_{i}} \to h_{X}$ 是满态射 ✓。
 - 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎
 
-这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。
+这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
@@ -13671,9 +13671,9 @@ $$\coprod_{i,j}F_{i}\times_{F}F_{j} \rightrightarrows \coprod_{i}F_{i} \longrigh
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 拟紧对象　`def.quasi-compact`
-*定义*　拟紧对象（Quasi-Compact Object）
+*定义*　拟紧对象
 
-site $\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \to X)_{i \in I}$，都存在**有限**的 $J \subseteq I$，使 $(X_{i} \to X)_{i \in J}$ 生成的筛**也是**覆盖筛。
+景 $\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \to X)_{i \in I}$，都存在**有限**的 $J \subseteq I$，使 $(X_{i} \to X)_{i \in J}$ 生成的筛**也是**覆盖筛。
 
 在拓扑斯中，等价的说法是：任给满射 $\coprod_{i \in I} X_{i} \to X$，都存在有限 $J \subseteq I$ 使 $\coprod_{i \in J} X_{i} \to X$ 仍是满射。
 
@@ -13684,12 +13684,12 @@ site $\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛�
 #### 拟紧的性质　`prop.quasi-compact-properties`
 *命题*　拟紧对象的性质
 
-1. site $\mathcal{C}$ 中 $X$ 拟紧 $\iff$ $X$ 在标准拓扑下拟紧；
+1. 景 $\mathcal{C}$ 中 $X$ 拟紧 $\iff$ $X$ 在标准拓扑下拟紧；
 2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；
 3. 预拓扑斯 $\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\iff$ 存在满射 $X \to F$ 且 $X \in \mathcal{C}$。
 
 **逐条证明。**
-**1.** site 里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。
+**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。
 **2.** 设 $X$ 被拟紧对象 $X_{1}, \ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\to X)$。对每个 $k$ 沿 $X_{k}\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\times_{X}X_{k} \to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \in J_{k})$。则 $J := \bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\to X)_{j\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\{X_{k}\}$ 覆盖 $X$）✓。
 **3.** $(\Longleftarrow)$ 若 $X \to F$ 满且 $X \in \mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \to F)$ 沿 $X \to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \in \mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \to h_{X} \to F$ 给出 $F$ 的有限子覆盖 ✓。
 $(\implies)$ 反之，$\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\coprod_{i}h_{X_{i}} \to F$；由 $F$ 拟紧抽出有限子族 $(i \in I,\ |I| < \infty)$，令 $X := \coprod_{i\in I}X_{i} \in \mathcal{C}$，则 $h_{X} = \coprod_{i\in I}h_{X_{i}} \to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎
@@ -13699,7 +13699,7 @@ $(\implies)$ 反之，$\mathcal{C}$ 的对象构成层范畴的生成元族，�
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 拟分离对象　`def.quasi-separated`
-*定义*　拟分离对象（Quasi-Separated Object）
+*定义*　拟分离对象
 
 拓扑斯 $\mathcal{T}$ 的对象 $X$ 叫**拟分离的**，如果任给 $Y \to X$、$Z \to X$（其中 $Y, Z$ 都拟紧），纤维积
 
@@ -13724,12 +13724,12 @@ $$X \mapsto h_{X}$$
 
 也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。
 
-这条把这一段的结构说圆了：预拓扑斯 $\to$ 配上预标准拓扑 $\to$ site $\to$ 层范畴（拓扑斯）$\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。
+这条把这一段的结构说圆了：预拓扑斯 $\to$ 配上预标准拓扑 $\to$ 景 $\to$ 层范畴（拓扑斯）$\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 拓扑斯的态射　`def.topos-morphism`
-*定义*　拓扑斯的态射（Morphism of Toposes）
+*定义*　拓扑斯的态射
 
 拓扑斯的**态射** $f : \mathcal{T} \to \mathcal{T}'$ 是一对函子
 
@@ -13741,50 +13741,50 @@ $$f^{*} : \mathcal{T}' \longrightarrow \mathcal{T}, \qquad f_{*} : \mathcal{T} \
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
-#### 连续函子（site 之间）　`def.continuous-functor`
-*定义*　连续函子（Continuous Functor between Sites）
+#### 连续函子（景之间）　`def.continuous-functor`
+*定义*　连续函子
 
-设 $\mathcal{C}, \mathcal{C}'$ 是两个 site。函子
+设 $\mathcal{C}, \mathcal{C}'$ 是两个景。函子
 
 $$f^{-1} := g : \mathcal{C} \longrightarrow \mathcal{C}'$$
 叫**连续的**，如果沿 $g$ 的预复合把 $\mathcal{C}'$ 上的层拉回成 $\mathcal{C}$ 上的层：
 
 $$g^{*} : \widetilde{\mathcal{C}'} \longrightarrow \widetilde{\mathcal{C}}, \qquad F \longmapsto F \circ g, \qquad \text{落在层范畴里。}$$
 
-**读法**：$g$ 的方向是 $\mathcal{C} \to \mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\mathcal{C}'$ 上的层**拉回**到 $\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。
+**读法**：$g$ 的方向是 $\mathcal{C} \to \mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\mathcal{C}'$ 上的层**拉回**到 $\mathcal{C}$ 上。这个「方向拧一下」是景态射的一切别扭之处。
 
 ⭐ **它等价于**：$g$ 把 $\mathcal{C}'$ 的覆盖族拉回成 $\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。
 
 **记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \to Y$ 给出开集范畴之间的函子 $f^{-1} : \operatorname{Open}(Y) \to \operatorname{Open}(X)$（取原像），而层沿它拉回。
 
-📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。
+📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **景的态射**。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
-#### site 的态射　`def.morphism-of-sites`
-*定义*　site 的态射（Morphism of Sites）
+#### 景的态射　`def.morphism-of-sites`
+*定义*　景的态射
 
-**site 的态射**是一个**连续函子** $f^{-1} := g : \mathcal{C} \to \mathcal{C}'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \dashv f_{*}$。
+**景的态射**是一个**连续函子** $f^{-1} := g : \mathcal{C} \to \mathcal{C}'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \dashv f_{*}$。
 
 ⭐ **一对伴随**：$f^{-1} \dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。
 
-**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在 site 这一层先保有限极限。
+**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在景这一层先保有限极限。
 
-**几何直觉**：空间之间的连续映射给出 site 的态射；site 的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「site」换成「层范畴」。
+**几何直觉**：空间之间的连续映射给出景的态射；景的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「景」换成「层范畴」。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 余连续函子　`def.cocontinuous-functor`
-*定义*　余连续函子（Cocontinuous Functor）
+*定义*　余连续函子
 
-设 $g : \mathcal{C}' \to \mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。
+设 $g : \mathcal{C}' \to \mathcal{C}$ 是两个景之间的函子。叫**余连续的**，如果函子 $g^{\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
 #### 诱导拓扑　`def.induced-topology`
-*定义*　诱导拓扑（Induced Topology）
+*定义*　诱导拓扑
 
-设 $\mathcal{C}'$ 是 site，$f^{-1} : \mathcal{C} \to \mathcal{C}'$ 是任何函子。$\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。
+设 $\mathcal{C}'$ 是景，$f^{-1} : \mathcal{C} \to \mathcal{C}'$ 是任何函子。$\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。
 
 参考：Le Stum, An introduction to condensed mathematics, §3.3
 
@@ -13805,7 +13805,7 @@ $$\hat{g} : \widehat{\mathcal{C}} \longrightarrow \widehat{\mathcal{C}'}, \qquad
 
 ⚠️ 方向容易记反：$g : \mathcal{C} \to \mathcal{C}'$ 而 $\hat{g} : \widehat{\mathcal{C}} \to \widehat{\mathcal{C}'}$，**推前** $\hat{g}_{*}$ 沿 $g$ 的方向走、**拉回** $\hat{g}^{-1}$ 反着走。
 
-📌 这条是「拓扑空间 / site 之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\mathbf{CHaus}$ 上的层与更小 site 上的层对齐。
+📌 这条是「拓扑空间 / 景之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\mathbf{CHaus}$ 上的层与更小景上的层对齐。
 
 参考：Le Stum, An introduction to condensed mathematics, Theorem 3.4.2, Corollary 3.4.3
 
@@ -13948,7 +13948,7 @@ $$(x_{*}E)(U) = \begin{cases} E & x \in U,\\ \emptyset & x \notin U,\end{cases} 
 #### 切片拓扑斯　`prop.slice-topos`
 *命题*　命题：$\widetilde{\mathcal{C}/T} \simeq \widetilde{\mathcal{C}}/\widetilde{T}$，且 $j_{T} : \widetilde{\mathcal{C}/T} \to \widetilde{\mathcal{C}}$ 是拓扑斯态射
 
-设 $\mathcal{C}$ 是 site、$T \in \widehat{\mathcal{C}}$。则
+设 $\mathcal{C}$ 是景、$T \in \widehat{\mathcal{C}}$。则
 
 1. $j_{T}$ **余连续**，因而给出拓扑斯态射 $j_{T} : \widetilde{\mathcal{C}/T} \to \widetilde{\mathcal{C}}$；
 2. $\widetilde{\mathcal{C}/T} \;\simeq\; \widetilde{\mathcal{C}}/\widetilde{T}$；
@@ -13972,10 +13972,10 @@ $$(x_{*}E)(U) = \begin{cases} E & x \in U,\\ \emptyset & x \notin U,\end{cases} 
 #### 切片里的覆盖筛　`prop.slice-covering-sieve`
 *命题*　命题：$R$ 在 $\mathcal{C}/T$ 里覆盖 $\iff$ $\hat j_{T!}R$ 在 $\mathcal{C}$ 里是覆盖筛
 
-设 $\mathcal{C}$ 是 site、$T \in \widehat{\mathcal{C}}$、$s \in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\mathcal{C}/T$ 里是**覆盖** $\iff$ $\hat j_{T!}R$ 是 $X$ 在 $\mathcal{C}$ 里的**覆盖筛**。
+设 $\mathcal{C}$ 是景、$T \in \widehat{\mathcal{C}}$、$s \in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\mathcal{C}/T$ 里是**覆盖** $\iff$ $\hat j_{T!}R$ 是 $X$ 在 $\mathcal{C}$ 里的**覆盖筛**。
 
 **证明。** 两边都是「沿 $R$ 的余锥能不能覆盖」这件事的翻译 ✓：$\mathcal{C}/T$ 里的覆盖由 $\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来，而 $j_{T!}$ 正是把 $\mathcal{C}/T$ 里的筛搬回 $\mathcal{C}$ 的函子 ✓。
-⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出 site 的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎
+⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出景的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 3.62
 
@@ -14008,7 +14008,7 @@ $$(x_{*}E)(U) = \begin{cases} E & x \in U,\\ \emptyset & x \notin U,\end{cases} 
 参考：Le Stum, Definition 5.2.5
 
 #### Grothendieck 范畴　`def.grothendieck-category`
-*定义*　Grothendieck 范畴（Grothendieck Category）
+*定义*　Grothendieck 范畴
 
 **Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。
 
@@ -14021,7 +14021,7 @@ $$(x_{*}E)(U) = \begin{cases} E & x \in U,\\ \emptyset & x \notin U,\end{cases} 
 参考：Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 #### 加法 / 阿贝尔范畴　`def.abelian-category`
-*定义*　加法范畴与阿贝尔范畴（Additive / Abelian Category）
+*定义*　加法范畴与阿贝尔范畴
 
 - **预加法范畴**（$\mathbf{Ab}$-范畴）是每个 $\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；
 - **零对象**是 $\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \oplus M_{2}$，如果存在 $p_{k} : M \to M_{k}$、$i_{k} : M_{k} \to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；
@@ -14062,7 +14062,7 @@ $$\mathcal{C} \longrightarrow A\text{-}\mathbf{Mod}.$$
 参考：Freyd, Abelian Categories (1964)；Mitchell, The full imbedding theorem (1964)
 
 #### 蛇引理　`thm.snake-lemma`
-*引理*　蛇引理（Snake Lemma）
+*引理*　蛇引理
 
 设 $\mathcal{A}$ 是阿贝尔范畴，下面这张交换图的两行都正合：
 
@@ -14096,7 +14096,7 @@ $$\delta : K \longrightarrow \operatorname{coker} a, \qquad \delta \circ q = (A'
 参考：Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 #### 五引理　`thm.five-lemma`
-*引理*　五引理（Five Lemma）
+*引理*　五引理
 
 设 $\mathcal{A}$ 是阿贝尔范畴，下面这张交换图的两行都正合：
 
@@ -14118,7 +14118,7 @@ $$\begin{array}{ccccccccc} A_{1} & \to & A_{2} & \to & A_{3} & \to & A_{4} & \to
 参考：Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 #### 加法函子　`def.additive-functor`
-*定义*　加法函子（Additive Functor）
+*定义*　加法函子
 
 设 $\mathcal{C}, \mathcal{D}$ 是两个**预加性范畴**。函子 $F : \mathcal{C} \to \mathcal{D}$ 叫**加法函子**，如果对每对 $M, N \in \mathcal{C}$，映射
 
@@ -14137,7 +14137,7 @@ $$\operatorname{Hom}_{\mathcal{C}}(M, N) \longrightarrow \operatorname{Hom}_{\ma
 参考：Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 #### 分裂短正合列　`def.split-exact`
-*定义*　分裂的短正合列（Split Exact Sequence）
+*定义*　分裂的短正合列
 
 短正合列
 
@@ -14170,7 +14170,7 @@ $$i r = 1_{M} - s p.$$
 参考：Le Stum, An introduction to condensed mathematics, §5.1–5.2
 
 #### 足够多投射对象　`def.enough-projectives`
-*定义*　足够多投射对象（Enough Projectives）
+*定义*　足够多投射对象
 
 范畴 $\mathcal{C}$ **有足够多的投射对象**，如果对每个 $X \in \mathcal{C}$，都存在投射对象 $P$ 与**满态射**
 
@@ -14315,7 +14315,7 @@ $$0 \longrightarrow M \longrightarrow I^{0} \longrightarrow I^{1} \longrightarro
 - **第 1 条**：用 **Freyd 的特殊伴随函子定理**。一个**余完备**范畴若有**小的余生成集**且**余良幂**（每个对象只有一个小集合那么多的商），则它**完备**。Grothendieck 范畴 $\mathcal{A}$：余完备 ✓（AB5）；余良幂与小的余生成集都来自**生成元** $U$ —— 一个商由它「在 $U$ 上的点」决定，于是 $U$ 的商构成一个集合，而它们的积就是余生成元。SAFT 于是给出所有极限存在 ✓。
 - **第 2 条**：这是 **Roos** 的经典结果。思路：AB5 让 $\mathbb{N}$ 形状的**余**极限行为良好、AB5\* 让 $\mathbb{N}$ 形状的**逆**极限行为良好；两者同时成立时会逼出一条 Milnor 型的正合列（$\prod$ 与 $\bigoplus$ 的比较），在阿贝尔范畴里只能对零对象成立 ✓。
 - **第 3 条**：前半 —— $\mathbf{Ab}(\mathcal{T})$ 是拓扑斯上的层范畴，是 Grothendieck 范畴，故 AB5 + AB3\*（第 1 条）✓；后半 —— 「AB6 与 AB4\* 一般不成立」在一般拓扑斯上有反例（阿贝尔层的积一般不正合、滤过余极限一般不与积交换），这两条**不能白拿** ✓。∎
-⭐ 所以 $\mathrm{CondAb}$ 的 AB6 / AB4\* 是**额外**的收获，来自 $\mathbf{CHaus}$ 这个 site 的具体形状（逐项归约到 $\mathbf{Ab}$），而不是任何拓扑斯都有的。
+⭐ 所以 $\mathrm{CondAb}$ 的 AB6 / AB4\* 是**额外**的收获，来自 $\mathbf{CHaus}$ 这个景的具体形状（逐项归约到 $\mathbf{Ab}$），而不是任何拓扑斯都有的。
 
 参考：Le Stum, Proposition 5.2.7；Freyd, Abelian Categories；Roos, Derived functors of inverse limits (AB5 与 AB5\* 互斥)
 
@@ -14340,7 +14340,7 @@ $$0 \longrightarrow M \longrightarrow I^{0} \longrightarrow I^{1} \longrightarro
 参考：Le Stum, §5.2
 
 #### 核与余核　`def.kernel-cokernel`
-*定义*　核 / 余核与左正合、右正合列（Kernel, Cokernel）
+*定义*　核 / 余核与左正合、右正合列
 
 设 $\mathcal{C}$ 是（预）加法范畴，$f : M \to N$。
 
@@ -14567,7 +14567,7 @@ $$G \text{ 是生成元} \iff \text{对每个 } M \in \mathcal{C},\ \exists I:\ 
 > 造出「两两复合为零」的机器：复形 → 同伦 → 同伦范畴 → 映射锥 → 导出三角，以及三角的旋转与延拓。
 
 #### 上链复形　`def.cochain-complex`
-*定义*　复形（Complex）
+*定义*　复形
 
 设 $\mathcal{C}$ 是加法范畴。$\mathcal{C}$ 中的**（长）序列**是有序集 $(\mathbb{Z}, \le)$ 上的图
 
@@ -14595,7 +14595,7 @@ $K$ 叫**下有界**（$n \ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**
 参考：Le Stum, An introduction to condensed mathematics, §7.1
 
 #### 同伦　`def.homotopy`
-*定义*　同伦（Homotopy）
+*定义*　同伦
 
 复形态射 $f, g : K \to L$ 叫**同伦的**，如果存在一族态射
 
@@ -14612,7 +14612,7 @@ $$f^{n} - g^{n} \;=\; s^{n+1} \circ d_{K}^{n} + d_{L}^{n-1} \circ s^{n}$$
 参考：Le Stum, An introduction to condensed mathematics, §7.1
 
 #### 同伦范畴　`def.homotopy-category`
-*定义*　同伦范畴（Homotopy Category）
+*定义*　同伦范畴
 
 **同伦范畴** $\mathbf{K}(\mathcal{C})$ 的对象与 $\mathcal{C}(\mathcal{C})$ 相同，态射取
 
@@ -14629,7 +14629,7 @@ $\mathbf{K}(\mathcal{C})$ 是**加法范畴**，且 $\mathcal{C}(\mathcal{C}) \t
 参考：Le Stum, An introduction to condensed mathematics, §7.1
 
 #### 映射锥　`def.mapping-cone`
-*定义*　映射锥与位移（Mapping Cone）
+*定义*　映射锥与位移
 
 态射 $f : K \to L$ 的**映射锥**是复形
 
@@ -14642,7 +14642,7 @@ $$M(f)^{n} := K^{n+1} \oplus L^{n}, \qquad d^{n} := \begin{pmatrix} -d^{n+1} & 0
 参考：Le Stum, An introduction to condensed mathematics, §7.1
 
 #### 导出三角　`def.distinguished-triangle`
-*定义*　导出三角（Distinguished Triangle）
+*定义*　导出三角
 
 $\mathbf{K}(\mathcal{C})$ 中的**导出三角**是形状为
 
@@ -15214,7 +15214,7 @@ $$\mathbf{K}^{+}(\mathcal{A}) \xrightarrow{\ F\ } \mathbf{K}^{+}(\mathcal{A}') \
 > 造出「把复形读成不变量」这件事：同调 → 上同调函子 → 长正合列 → 拟同构与零调 → 内射对象。
 
 #### 同调　`def.cohomology`
-*定义*　同调（Cohomology）
+*定义*　同调
 
 设 $\mathcal{A}$ 是阿贝尔范畴，$K$ 是 $\mathcal{A}$ 中的上链复形。$K$ 的**第 $n$ 阶同调**是
 
@@ -15246,7 +15246,7 @@ $$0 \longrightarrow H^{k}(K) \longrightarrow \operatorname{coker} d^{k-1} \longr
 参考：Le Stum, An introduction to condensed mathematics, §7.1–7.3
 
 #### 上同调函子　`def.cohomological-functor`
-*定义*　上同调函子（Cohomological Functor）
+*定义*　上同调函子
 
 设 $\mathcal{C}$ 是加法范畴、$\mathcal{A}$ 是阿贝尔范畴。函子 $F : \mathbf{K}(\mathcal{C}) \to \mathcal{A}$ 叫**上同调函子**，如果对每个导出三角 $K \to L \to M \to K[1]$，序列
 
@@ -15274,7 +15274,7 @@ $$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}
 参考：Le Stum, An introduction to condensed mathematics, §7.1–7.3
 
 #### 拟同构　`def.quasi-iso`
-*定义*　拟同构与零调复形（Quasi-Isomorphism）
+*定义*　拟同构与零调复形
 
 复形态射 $f : K \to L$ 叫**拟同构**，如果对每个 $n$，$H^{n}(f)$ 都是同构。复形 $K$ 叫**零调的**，如果 $H^{n}(K) = 0$ 对所有 $n$。
 
@@ -15325,7 +15325,7 @@ $$M \text{ 内射} \iff M'' \text{ 内射}$$
 > 造出「逐层逼近同调」的工具：带过滤的对象 → 关联分次 → 谱序列从 $E_{r}$ 页逐页算到 $E_{\infty}$。
 
 #### 过滤　`def.filtration`
-*定义*　过滤（Filtration）
+*定义*　过滤
 
 设 $\mathcal{A}$ 是阿贝尔范畴。$M \in \mathcal{A}$ 上的（**递降**）**过滤**是 $M$ 的子对象沿 $(\mathbb{Z}, \ge)$ 的图：
 
@@ -15338,7 +15338,7 @@ $$\cdots \subseteq F^{n}M \subseteq F^{n+1}M \subseteq \cdots \subseteq M$$
 参考：Le Stum, An introduction to condensed mathematics, §7.2
 
 #### 谱序列　`def.spectral-sequence`
-*定义*　谱序列（Spectral Sequence）
+*定义*　谱序列
 
 **谱序列**由两部分组成：
 
@@ -15389,7 +15389,7 @@ $$Z^{p,q}_{r} := F^{p}K^{p+q} \cap (d^{p+q})^{-1}\bigl(F^{p+r}K^{p+q+1}\bigr), \
 参考：Le Stum, Theorem 7.2.16；Weibel, An Introduction to Homological Algebra, 5.4.1
 
 #### 双复形　`def.bicomplex`
-*定义*　双复形（Bicomplex）
+*定义*　双复形
 
 加法范畴里的**双复形**就是**复形的复形**：即 $(\mathbb{Z}, \preceq)^{2}$ 上的图 $(K^{p,q}, d^{p,q}, d'^{p,q})$，使对一切 $p, q$
 
@@ -15517,7 +15517,7 @@ $$R^{n}G\bigl(F(K)\bigr) \;\cong\; R^{n}(G \circ F)(K);$$
 #### 层上同调　`def.sheaf-cohomology`
 *定义*　层上同调 $H^{n}(X, M^{\bullet})$
 
-设 $M^{\bullet}$ 是 site $\mathcal{C}$ 上的**阿贝尔层复形**，$X \in \mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是
+设 $M^{\bullet}$ 是景 $\mathcal{C}$ 上的**阿贝尔层复形**，$X \in \mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是
 
 $$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
 
@@ -15532,7 +15532,7 @@ $$H^{n}(X, M^{\bullet}) := R^{n}\Gamma(X, M^{\bullet}),$$
 #### Čech 上同调　`def.cech-cohomology`
 *定义*　Čech 上同调 $\check{H}^{n}(X, M^{\bullet})$
 
-设 $M^{\bullet}$ 是 site $\mathcal{C}$ 上的**阿贝尔预层复形**，$X \in \mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是
+设 $M^{\bullet}$ 是景 $\mathcal{C}$ 上的**阿贝尔预层复形**，$X \in \mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是
 
 $$\check{H}^{n}(X, M^{\bullet}) := \Gamma\bigl(X,\ \check{H}^{n}(M^{\bullet})\bigr).$$
 
@@ -15570,11 +15570,11 @@ $$E^{p,q}_{2} := \check{H}^{p}\bigl(\mathfrak{X},\ H^{q}(M)\bigr) \;\Longrightar
 参考：Le Stum, Theorem 7.3.6
 
 #### 无环层　`def.acyclic-sheaf`
-*定义*　无环层（Acyclic Sheaf）
+*定义*　无环层
 
-site $\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \ne 0$。
+景 $\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \ne 0$。
 
-⚠️ 专门提醒：**这个定义依赖 site $\mathcal{C}$，不只是依赖拓扑斯 $\widetilde{\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。
+⚠️ 专门提醒：**这个定义依赖景 $\mathcal{C}$，不只是依赖拓扑斯 $\widetilde{\mathcal{C}}$** —— 换个景（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。
 
 参考：Le Stum, An introduction to condensed mathematics, §7.3
 
@@ -15675,7 +15675,7 @@ $$\bigl(\hat{f}_{*}H^{n}(M)\bigr)(X') = H^{n}(M)\bigl(f^{-1}(X')\bigr) = H^{n}\b
 #### 单纯方法算层上同调　`method.simplicial-cohomology`
 *命题*　用单纯超覆盖计算 $H^{n}(X, M)$
 
-设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层，$X \in \mathcal{C}$。取 $M$ 的一个**超覆盖**（即一个复形 $F_{\bullet} \to M$，其中每个 $F_{n}$ 是若干可表层的直和，且增广后处处正合）。则 $M$ 的上同调等于「逐层取截面」得到的**单纯阿贝尔群**的同伦群：
+设 $M$ 是景 $\mathcal{C}$ 上的阿贝尔层，$X \in \mathcal{C}$。取 $M$ 的一个**超覆盖**（即一个复形 $F_{\bullet} \to M$，其中每个 $F_{n}$ 是若干可表层的直和，且增广后处处正合）。则 $M$ 的上同调等于「逐层取截面」得到的**单纯阿贝尔群**的同伦群：
 
 $$H^{n}(X,\ M) \cong \pi^{n}\bigl(\Gamma(X,\ F_{\bullet})\bigr).$$
 
@@ -15817,7 +15817,7 @@ $$H^{n}\bigl(\mathbb{Z}\cdot X_{\bullet}\bigr) = 0 \qquad (n \ge 0).$$
 #### Čech 到上同调的谱序列　`cor.cech-cohomology-spectral`
 *推论*　推论：$\check{H}^{p}\bigl(X, H^{q}(M)\bigr) \Longrightarrow H^{p+q}(X, M)$
 
-设 $\mathcal{C}$ 是有纤维积的 site、$X \in \mathcal{C}$、$M$ 是 $\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列
+设 $\mathcal{C}$ 是有纤维积的景、$X \in \mathcal{C}$、$M$ 是 $\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列
 
 $$E^{p,q}_{2} \;=\; \check{H}^{p}\bigl(X,\ H^{q}(M)\bigr) \;\Longrightarrow\; H^{p+q}(X,\ M),$$
 
@@ -15832,7 +15832,7 @@ $$E^{p,q}_{2} \;=\; \check{H}^{p}\bigl(X,\ H^{q}(M)\bigr) \;\Longrightarrow\; H^
 #### Čech 上链的具体公式　`prop.cech-cochain-formula`
 *命题*　命题：$\check{C}^{n}(\mathfrak{X}, M) = \prod M(X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}})$
 
-设 site $\mathcal{C}$ 有纤维积，$\mathfrak{X} = (X_{i} \to X)_{i \in I}$ 是一族态射，$M$ 是阿贝尔层。则
+设景 $\mathcal{C}$ 有纤维积，$\mathfrak{X} = (X_{i} \to X)_{i \in I}$ 是一族态射，$M$ 是阿贝尔层。则
 
 $$\check{C}^{n}(\mathfrak{X}, M) \;=\; \prod_{i_{0}, \ldots, i_{n}} M\bigl(X_{i_{0}} \times_{X} \cdots \times_{X} X_{i_{n}}\bigr).$$
 
@@ -15847,7 +15847,7 @@ $$\operatorname{Hom}_{\mathbb{Z}}\Bigl(\bigoplus_{i_{0},\ldots,i_{n}} \mathbb{Z}
 #### 高次上同调预层的关联层为零　`prop.higher-cohomology-presheaf-zero`
 *命题*　命题：$n \ne 0$ 时 $\widetilde{H^{n}(M)} = 0$
 
-设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层、$n \ne 0$。则预层
+设 $M$ 是景 $\mathcal{C}$ 上的阿贝尔层、$n \ne 0$。则预层
 
 $$U \longmapsto H^{n}(U,\ M)$$
 
@@ -15860,7 +15860,7 @@ $$U \longmapsto H^{n}(U,\ M)$$
 #### 高次上同调预层没有 Čech 上同调　`prop.cech-higher-cohomology-presheaf`
 *命题*　命题：$n \ne 0 \implies \check{H}^{p}\bigl(H^{n}(M)\bigr) = 0$
 
-设 $M$ 是 site 上的阿贝尔层、$n \ne 0$，并把 $H^{n}(M)$ 记作预层 $U \mapsto H^{n}(U, M)$。则
+设 $M$ 是景上的阿贝尔层、$n \ne 0$，并把 $H^{n}(M)$ 记作预层 $U \mapsto H^{n}(U, M)$。则
 
 $$\check{H}^{p}\bigl(H^{n}(M)\bigr) = 0 \qquad (\forall p \ge 0).$$
 
@@ -15888,7 +15888,7 @@ $$[0,1] = \bigcup_{k=0}^{r} I_{k}, \qquad I_{k} \cap I_{k+1} = J_{k} \text{ 也�
 #### 一次 Čech 就是一次上同调　`prop.cech-h1-equals-h1`
 *命题*　命题：$\check{H}^{1}(X, M) \cong H^{1}(X, M)$
 
-设 $\mathcal{C}$ 是有纤维积的 site、$X \in \mathcal{C}$、$M$ 是阿贝尔层。则
+设 $\mathcal{C}$ 是有纤维积的景、$X \in \mathcal{C}$、$M$ 是阿贝尔层。则
 
 $$\check{H}^{1}(X,\ M) \;\cong\; H^{1}(X,\ M).$$
 
@@ -15906,7 +15906,7 @@ $$0 \to E^{1,0}_{2} \to H^{1} \to E^{0,1}_{2} \to \cdots$$
 #### 无环性的四条等价说法　`prop.acyclic-equivalent-conditions`
 *命题*　命题：$M$ 无环 $\iff$ 处处上同调为零 $\iff$ 处处 Čech 为零
 
-设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层。以下四条等价：
+设 $M$ 是景 $\mathcal{C}$ 上的阿贝尔层。以下四条等价：
 
 1. $M$ **无环**：$H^{n}(M) = 0$（$n \ne 0$）；
 2. 对每个 $X \in \mathcal{C}$：$H^{n}(X, M) = 0$（$n \ne 0$）；
@@ -15994,12 +15994,12 @@ $$\Gamma\bigl(X,\ R\mathcal{H}(M^{\bullet})\bigr) \;=\; R\Gamma\bigl(X,\ M^{\bul
 > 造出「拓扑斯里的阿贝尔群」：取值一般的层 → 阿贝尔层 → 拓扑斯上的阿贝尔群是 Grothendieck 范畴 → 内 Hom → 张量积 → 平坦性。
 
 #### 取值一般的预层与层　`def.presheaf-valued`
-*定义*　取值在一般范畴里的层（Sheaf with Values in a Category）
+*定义*　取值在一般范畴里的层
 
 设 $\mathcal{C}$、$\mathcal{D}$ 是范畴。
 
 1. 取值在 $\mathcal{D}$ 的**预层**是反变函子 $T : \mathcal{C}^{\mathrm{op}} \to \mathcal{D}$；预层之间的**态射**是自然变换。
-2. $\mathcal{C}$ 是 site 时，**层** $F : \mathcal{C}^{\mathrm{op}} \to \mathcal{D}$ 是这样的预层：对每个 $Y \in \mathcal{D}$，集合值预层
+2. $\mathcal{C}$ 是景时，**层** $F : \mathcal{C}^{\mathrm{op}} \to \mathcal{D}$ 是这样的预层：对每个 $Y \in \mathcal{D}$，集合值预层
 
 $$X \longmapsto \operatorname{Hom}_{\mathcal{D}}\bigl(Y,\ F(X)\bigr)$$
 
@@ -16012,9 +16012,9 @@ $$X \longmapsto \operatorname{Hom}_{\mathcal{D}}\bigl(Y,\ F(X)\bigr)$$
 参考：Le Stum, An introduction to condensed mathematics, §5.3
 
 #### 阿贝尔层　`def.abelian-sheaf`
-*定义*　阿贝尔层（Abelian Sheaf）
+*定义*　阿贝尔层
 
-固定 site $\mathcal{C}$。记
+固定景 $\mathcal{C}$。记
 
 $$\widehat{\mathcal{C}}(\mathbf{Ab}) := \operatorname{Hom}(\mathcal{C}^{\mathrm{op}}, \mathbf{Ab})$$
 
@@ -16053,7 +16053,7 @@ $$\widehat{\mathcal{C}}(\mathbf{Ab}) := \operatorname{Hom}(\mathcal{C}^{\mathrm{
 参考：Le Stum, An introduction to condensed mathematics, §5.3
 
 #### 内 Hom　`def.internal-hom`
-*定义*　内 Hom（Internal Hom）
+*定义*　内 Hom
 
 设 $\mathcal{T}$ 是拓扑斯，$X \in \mathcal{T}$、$M \in \mathcal{T}(\mathbf{Ab})$。则
 
@@ -16111,7 +16111,7 @@ $$\mathbb{Z}\cdot X \;\otimes_{\mathbb{Z}}\; \mathbb{Z}\cdot Y \;\cong\; \mathbb
 参考：Le Stum, An introduction to condensed mathematics, §5.3
 
 #### 平坦阿贝尔层　`def.flat-abelian-sheaf`
-*定义*　平坦性（Flatness）
+*定义*　平坦性
 
 拓扑斯 $\mathcal{T}$ 中的阿贝尔群 $P$ 叫**平坦的**，如果函子
 
@@ -16179,7 +16179,7 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot X,\ M\bigr) = \operatorna
 #### 阿贝尔层即拓扑斯里的阿贝尔群　`thm.abelian-sheaf-equiv`
 *定理*　定理：$\widetilde{\mathcal{C}}(\mathbf{Ab}) \simeq \mathbf{Ab}(\widetilde{\mathcal{C}})$
 
-设 $\mathcal{C}$ 是 site。则「site 上的**阿贝尔层**」与「拓扑斯 $\widetilde{\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：
+设 $\mathcal{C}$ 是景。则「景上的**阿贝尔层**」与「拓扑斯 $\widetilde{\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：
 
 $$\widetilde{\mathcal{C}}(\mathbf{Ab}) \;\simeq\; \mathbf{Ab}\bigl(\widetilde{\mathcal{C}}\bigr).$$
 
@@ -16280,7 +16280,7 @@ $$\varprojlim{}^{\mathbf{CHaus}} D \;\cong\; \varprojlim{}^{\mathbf{Top}} D, \qq
 参考：Le Stum, Proposition 4.1.1；Le Stum, Corollary 4.1.2
 
 #### 凝聚态集　`def.condensed-set`
-*定义*　凝聚态集（Condensed Set）
+*定义*　凝聚态集
 
 **凝聚态集**是 $\mathbf{CHaus}$ 上的（集合值）**层**。其范畴记
 
@@ -16465,8 +16465,8 @@ $$\operatorname{Hom}(X, \underline{Y})(S) \cong \operatorname{Hom}(S, \operatorn
 
 参考：Le Stum, Proposition 4.2.6
 
-#### qc 与 qcqs 的判定　`thm.qcqs-chaus-equiv`
-*定理*　紧 Hausdorff 空间 $\cong$ qcqs 凝聚态集
+#### 拟紧 与 拟紧拟分离 的判定　`thm.qcqs-chaus-equiv`
+*定理*　紧 Hausdorff 空间 $\cong$ 拟紧拟分离 凝聚态集
 
 1. 凝聚态集 $X$ 是**拟紧**的 $\iff$ 存在**自由**紧 Hausdorff 空间 $F$ 与满态射
 
@@ -16476,17 +16476,17 @@ $$F \twoheadrightarrow X.$$
 
 $$\mathbf{CHaus}\ \simeq\ \{\text{紧 Hausdorff 空间}\} \longrightarrow \{\text{拟紧且拟分离的凝聚态集}\}.$$
 
-**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（qcqs 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\mathrm{Cond}$ 里，作为它的「紧块部分」。
+**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（拟紧拟分离 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\mathrm{Cond}$ 里，作为它的「紧块部分」。
 
 **第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。
 
 **「自由」的含义**：$\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。
 
-⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\cong$ 紧 Hausdorff 对象」，这里做的是 $\mathrm{Cond}$ 这个特例。
+⭐ 一般拓扑斯上的对应结论是「拟紧拟分离 对象 $\cong$ 紧 Hausdorff 对象」，这里做的是 $\mathrm{Cond}$ 这个特例。
 
 **证明（两条都是一般拓扑斯上的定理在 $\mathrm{Cond}$ 上的特例）。**
 - **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\mathbf{FCHaus}$ 张成 $\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。
-- **第 2 条**：qcqs 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\underline{S} = h_{S}$ 正是 qcqs 的（qc 由 $S \to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \mapsto \underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎
+- **第 2 条**：拟紧拟分离 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\underline{S} = h_{S}$ 正是 拟紧拟分离 的（拟紧 由 $S \to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \mapsto \underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎
 
 参考：Le Stum, Theorem 4.2.8
 
@@ -16519,9 +16519,9 @@ $$X \cong \varinjlim_{i \in I}\ S_{i},$$
 
 其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \hookrightarrow S_{j}$ 都是**含入**。
 
-**推论**：$\operatorname{Ind}(\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 qcqs 的凝聚态集。
+**推论**：$\operatorname{Ind}(\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 拟紧拟分离 的凝聚态集。
 
-⚠️ **不要读成 $\operatorname{Ind}(\mathbf{CHaus}) \cong \mathrm{Cond}$。** 整块 $\operatorname{Ind}(\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 qcqs 的对象。
+⚠️ **不要读成 $\operatorname{Ind}(\mathbf{CHaus}) \cong \mathrm{Cond}$。** 整块 $\operatorname{Ind}(\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 拟紧拟分离 的对象。
 
 **为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \hookrightarrow S_{2} \hookrightarrow \cdots$ 的余极限。$\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。
 
@@ -16529,7 +16529,7 @@ $$X \cong \varinjlim_{i \in I}\ S_{i},$$
 
 **证明。** 只需证正向（反向是定义）。
 - 任何凝聚态集 $X$ 都能写成 $X \cong \varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。
-- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「qcqs $\cong$ 紧 Hausdorff」得 $X_{i} \cong S_{i}$，$S_{i}$ 紧 Hausdorff。
+- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「拟紧拟分离 $\cong$ 紧 Hausdorff」得 $X_{i} \cong S_{i}$，$S_{i}$ 紧 Hausdorff。
 - 把族 $(S_{i})$ 换成 $S_{J} := \bigcup_{i \in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \varinjlim_{J} S_{J}$，过渡映射都是含入。∎
 
 参考：Le Stum, Lemma 4.2.10
@@ -16622,7 +16622,7 @@ $$R \cong X \times_{Y} X,\qquad Y := \operatorname{coeq}\bigl(R \rightrightarrow
 
 **为什么它重要**：只有有效等价关系才能「商了再拉回来还原」，也就是「取商」这个操作**不丢信息**。聚集到 $\mathrm{Cond}$ 上，这条保证：把两个紧 Hausdorff 块按一个等价关系粘起来，得到的商对象在层论意义上「就是」那个等价关系本身。
 
-⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个 site 上的层范畴」那个定义。
+⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个景上的层范畴」那个定义。
 
 📌 与「Cond 是拓扑斯」那条合起来看：那条给**结论**，这三条给**理由**；有了理由，才知道 $\mathrm{Cond}$ 的拓扑斯结构具体好在哪里（能做商、能做内部 Hom、能做层上同调）。
 
@@ -16776,7 +16776,7 @@ $$\underline{X} \;=\; \coprod_{i \in I} \underline{X_{i}}.$$
 > 在凝聚态集上做代数：阿贝尔群值层 → 截面函子 → 足够多投射对象 → 张量与内 Hom。
 
 #### 凝聚态阿贝尔群　`def.condensed-abelian-group`
-*定义*　凝聚态阿贝尔群（Condensed Abelian Group）
+*定义*　凝聚态阿贝尔群
 
 **凝聚态阿贝尔群**就是 $\mathrm{Cond}$ 上的**阿贝尔层**。四种说法给出同一个范畴：
 
@@ -16894,7 +16894,7 @@ $$\underline{M/N} \;\cong\; \underline{M}\big/\underline{N}.$$
 > 造出「拓扑阿贝尔群 → 凝聚态阿贝尔群」这条通道：关联凝聚态群（保所有极限）→ 连续同态即内部 Hom → 正合列的搬运 → Pontryagin 对偶 → 局部紧阿贝尔群不是阿贝尔范畴。
 
 #### 拓扑阿贝尔群　`def.topo-ab-group`
-*定义*　拓扑阿贝尔群与连续同态（Topological Abelian Group）
+*定义*　拓扑阿贝尔群与连续同态
 
 **拓扑阿贝尔群** $(M, +, \tau)$ 是一个**阿贝尔群** $M$ 连带一个拓扑 $\tau$，使运算连续：
 
@@ -17018,7 +17018,7 @@ $$\mathrm{id} : \mathbb{R}^{\mathrm{disc}} \longrightarrow \mathbb{R}$$
 参考：Le Stum, Exercise 6.4
 
 #### Pontryagin 对偶　`def.pontryagin-dual`
-*定义*　Pontryagin 对偶（Pontryagin Dual）
+*定义*　Pontryagin 对偶
 
 记**圆群**
 
@@ -17994,7 +17994,7 @@ $$S = \bigcup_{m \in M} f^{-1}\bigl(B(m, \varepsilon/2)\bigr)$$
 > 造出凝聚态世界里的**完备化 / 完备张量积**：测度 $M(S,\mathbb{Z})$ → 自由固态 $Z[S]^{\blacksquare}$ → 固态群（唯一延拓）→ $C(S,\mathbb{Z})$ 自由（Specker–Nöbeling）→ 固态子范畴是阿贝尔的、以 $\prod_I \mathbb{Z}$ 为紧投射生成元 → 固态张量积 $\otimes^{\blacksquare}$。来源：Clausen–Scholze 讲义 Lectures V–VI。
 
 #### 整值测度　`def.cond-measure`
-*定义*　整值测度 $M(S,\mathbb{Z})$（Integer-Valued Measures）
+*定义*　整值测度 $M(S,\mathbb{Z})$
 
 设 $S$ 是 profinite 集（紧 Hausdorff 全不连通空间），$C(S, \mathbb{Z})$ 是连续函数 $S \to \mathbb{Z}$ 的群（离散拓扑）。定义 $S$ 上的**整值测度**群
 
@@ -18015,7 +18015,7 @@ $$M(S, A) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ A\bigr),$$
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1
 
 #### 固态阿贝尔群　`def.solid-group`
-*定义*　固态阿贝尔群（Solid Abelian Groups）
+*定义*　固态阿贝尔群
 
 **(i) 自由固态群。** 对 profinite 集 $S = \varprojlim_i S_i$（$S_i$ 有限），定义
 
@@ -18078,7 +18078,7 @@ $$Z[S]^{\blacksquare} \cong \prod_{I} \mathbb{Z}.$$
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Corollary 5.5
 
 #### 固态化把超覆盖变成正合列　`prop.solid-hypercover`
-*命题*　命题：超覆盖的固态化正合（Hypercover Exactness）
+*命题*　命题：超覆盖的固态化正合
 
 设 $S_\bullet \to S$ 是 profinite 集的一个 hypercover（即单纯对象 $S_\bullet$ 配上增广 $S_\bullet \to S$，使得每一层的退化都给出同伦等价）。则凝聚态阿贝尔群的复形
 
@@ -18236,7 +18236,7 @@ $$\mathbb{Z}_p \otimes^{L\blacksquare} \mathbb{Z}[[T]] = \mathbb{Z}_p[[T]], \qqu
 > 把「自由完备模」抽成函子：预解析环 → 解析环 → 解析环上的固态模范畴（阿贝尔、有紧投射生成元）→ base change → 有限生成 $\mathbb{Z}$-代数的 $A_\blacksquare$ 是解析环 → 仿射相干对偶 $f_! \dashv f^!$。来源：Clausen–Scholze 讲义 Lectures VII–VIII。
 
 #### 预解析环　`def.pre-analytic-ring`
-*定义*　预解析环（Pre-Analytic Ring）
+*定义*　预解析环
 
 一个**预解析环** $\mathcal{A}$ 由两部分组成：
 
@@ -18261,7 +18261,7 @@ $$\{\text{extremally disconnected 集}\} \longrightarrow \operatorname{Mod}^{\ma
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.1
 
 #### 解析环　`def.analytic-ring`
-*定义*　解析环（Analytic Ring）
+*定义*　解析环
 
 预解析环 $\mathcal{A}$ 叫**解析环**，当且仅当：对任意复形
 
@@ -18434,7 +18434,7 @@ $$0 \to \mathbb{R}_{\ell^1}[S] \to E \to \mathbb{R}_{\ell^1}[S] \to 0,$$
 > 造出解析几何的舞台：离散 Huber pair $(A,A^+)$ → 谱 $\operatorname{Spa}$ → 有理开集上的局部化 → 结构层是层 → 离散 adic 空间 → 概形的全忠实嵌入 → 导出范畴按 ∞-范畴粘合。来源：Clausen–Scholze 讲义 Lectures IX–X。
 
 #### 离散 Huber pair　`def.discrete-huber-pair`
-*定义*　离散 Huber pair（Discrete Huber Pair）
+*定义*　离散 Huber pair
 
 一个**离散 Huber pair** 是一对 $(A, A^+)$：
 
@@ -18456,7 +18456,7 @@ $$(A, A^+)_\blacksquare := \varinjlim_{(B,B^+) \to (A,A^+)} (B, B^+)_\blacksquar
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1
 
 #### adic 谱 Spa　`def.adic-spectrum`
-*定义*　adic 谱 $\operatorname{Spa}(A,A^+)$（Adic Spectrum）
+*定义*　adic 谱 $\operatorname{Spa}(A,A^+)$
 
 设 $(A, A^+)$ 是离散 Huber pair。**adic 谱**
 
@@ -18542,7 +18542,7 @@ $$\mathcal{O}_X(U) := A\bigl[\tfrac{1}{f}\bigr], \qquad \mathcal{O}_X^+(U) := \w
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.4
 
 #### 离散 adic 空间　`def.discrete-adic-space`
-*定义*　离散 adic 空间（Discrete Adic Space）
+*定义*　离散 adic 空间
 
 一个**离散 adic 空间**是一个三元组 $(X, \mathcal{O}_X, (|\cdot(x)|)_{x \in X})$：
 
@@ -18604,7 +18604,7 @@ $$D\bigl((\mathcal{O}_X, \mathcal{O}_X^+)_\blacksquare\bigr),$$
 > 造出 6-函子形式与固态 Serre 对偶：开浸入的 $j_!$ → $f_! = f^{\mathrm{ad}/Y}_* j_!$ → $f^!$ 的扭转与平坦基变换 → 正则闭浸入与光滑映射的对偶复形 → 迹配对。来源：Clausen–Scholze 讲义 Lecture XI。
 
 #### 6-函子形式　`def.six-functors`
-*定义*　6-函子形式（Six-Functor Formalism）
+*定义*　6-函子形式
 
 一个**6-函子形式**由下列数据组成：
 
@@ -22137,7 +22137,7 @@ $$|f(x)|^n = |a_{n-1}f^{n-1} + \cdots + a_0| \le \max_{i} |a_i(x)|\,|f(x)|^{i} \
 #### adic 结构层是层 + 解析环的 base change ⟹ 导出范畴按无穷范畴粘合　`imp.adic-gluing`
 *结构层 + 局部化的全忠实 $\implies$ $\infty$-范畴粘合*
 
-**记号。** $\mathcal{C}$ = 离散 Huber 对构成的 site，覆盖取「标准覆盖」；$\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\Phi : X \mapsto (|X|, \mathcal{O}_X)$ 从离散 adic 空间到 $\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。
+**记号。** $\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\Phi : X \mapsto (|X|, \mathcal{O}_X)$ 从离散 adic 空间到 $\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。
 
 **第一步：$\operatorname{Spec}$ 是层。** 对标准覆盖 $\{(A,A^+) \to (A_i,A_i^+)\}$，$\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \to \varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。
 
@@ -24371,7 +24371,7 @@ $$\operatorname{Hom}\bigl(\varinjlim_{R} \operatorname{Hom}(R, T),\ F(X)\bigr) \
 
 > 注意「做两次」不是凑出来的：**第一次把预算层变成分离的，第二次才把分离的变成层** —— 差的正是「分离」与「层」之间的那一步（性质 3）。
 
-#### 滤过余极限正合 + 万有关系 + 层化 ⟹ site 的层范畴的好性质　`imp.site-properties`
+#### 滤过余极限正合 + 万有关系 + 层化 ⟹ 景的层范畴的好性质　`imp.site-properties`
 *逐点继承 $\mathbf{Set}$ 的性质*
 
 几条性质在 $\mathbf{Set}$ 里都是熟知的：余积就是不交并（万有）、满射就是像的商（正则）、滤过余极限与有限极限交换。
@@ -24401,7 +24401,7 @@ $$u \circ g = u \circ f_{i} \circ h = v \circ f_{i} \circ h = v \circ g$$
 
 取 $Y = X$、$g = 1_{X}$ 即得 $u = v$。所以 $q$ 是满态射。∎
 
-> 这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在 site 上验覆盖，都可以改写成一个余积是否满射的问题。
+> 这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在景上验覆盖，都可以改写成一个余积是否满射的问题。
 
 #### 预拓扑斯 + 有效等价关系 + 正则满态射 ⟹ 满-单分解　`imp.pretopos-factorization`
 *预拓扑斯 $\implies$ 满-单分解*
@@ -25074,7 +25074,7 @@ $$F^{p}K^{n} \;:=\; \bigoplus_{i+j=n,\ i \ge p} K^{i,j}$$
 $$s^{n} := s \times_{X} 1_{X_{n}} : X_{n} \longrightarrow X_{n+1},$$
 它满足收缩同伦的恒等式 $1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}$ ✓（逐面展开即得），于是增广复形同伦平凡，特别地零调 ✓。这正是「带截面的覆盖上 Čech 零调」那条命题。
 **（三）$\mathcal{T} = \widehat{\mathcal{C}}$（预层）。** 由上一条定理，预层范畴里的极限与余极限逐点算，而零调是「逐点取同调为零」，于是在每个 $X \in \mathcal{C}$ 处化回 (二) ✓。
-**（四）$\mathcal{T} = \widehat{\mathcal{C}}^{\#}$（site 上的层）。** 任意满态射都是 $\widehat{\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎
+**（四）$\mathcal{T} = \widehat{\mathcal{C}}^{\#}$（景上的层）。** 任意满态射都是 $\widehat{\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎
 
 #### 定义引用：「层上同调」→ Čech 到上同调的谱序列　`def-link.cechss-sheafcoh`
 
@@ -26287,7 +26287,7 @@ $e_{K}$ 是单射那一步用的是**紧 Hausdorff 空间是 $T_{3.5}$ 的**。
 
 定理的结论是「层范畴是**反射子范畴**」。
 
-#### 定义引用：「万有关系」→ site 的层范畴的好性质　`def-dep.universal-site`
+#### 定义引用：「万有关系」→ 景的层范畴的好性质　`def-dep.universal-site`
 
 五条性质里出现了**万有余极限、万有满态射、不交余积**。
 
@@ -28129,17 +28129,17 @@ $\operatorname{Hom}$ 集上要有**阿贝尔群**结构才谈得上保加法。
 
 #### 定义引用：「Grothendieck 拓扑」→ 拓扑生成集　`def-dep.topgen-topology`
 
-拓扑生成集是相对 **site 的拓扑**说的。
+拓扑生成集是相对 **景的拓扑**说的。
 
-#### 定义引用：「层」→ 连续函子（site 之间）　`def-dep.contfunctor-sheaf`
+#### 定义引用：「层」→ 连续函子（景之间）　`def-dep.contfunctor-sheaf`
 
 「连续」的定义就是**层**沿它拉回还是层。
 
-#### 定义引用：「连续函子（site 之间）」→ site 的态射　`def-dep.sitesmorphism-continuous`
+#### 定义引用：「连续函子（景之间）」→ 景的态射　`def-dep.sitesmorphism-continuous`
 
-site 的态射先要是一个**连续函子**。
+景的态射先要是一个**连续函子**。
 
-#### 定义引用：「伴随函子」→ site 的态射　`def-dep.sitesmorphism-adjoint`
+#### 定义引用：「伴随函子」→ 景的态射　`def-dep.sitesmorphism-adjoint`
 
 等价形式是 $f^{-1}$ 有**右伴随** $f_{*}$。
 
@@ -28151,7 +28151,7 @@ site 的态射先要是一个**连续函子**。
 
 诱导拓扑本身是一条**拓扑**。
 
-#### 定义引用：「连续函子（site 之间）」→ 诱导拓扑　`def-dep.inducedtopo-continuous`
+#### 定义引用：「连续函子（景之间）」→ 诱导拓扑　`def-dep.inducedtopo-continuous`
 
 诱导拓扑取的是使 $f^{-1}$ **连续**的最细拓扑。
 
@@ -28459,15 +28459,15 @@ $H^{n} := R^{n}\Gamma$。
 
 右边的靶 $Y$ 要求是**紧生成**空间，紧开拓扑才够用。
 
-#### 定义引用：「拟紧对象」→ qc 与 qcqs 的判定　`def-dep.qcqs-qc`
+#### 定义引用：「拟紧对象」→ 拟紧 与 拟紧拟分离 的判定　`def-dep.qcqs-qc`
 
 结论判定的就是**拟紧**性。
 
-#### 定义引用：「拟分离对象」→ qc 与 qcqs 的判定　`def-dep.qcqs-qs`
+#### 定义引用：「拟分离对象」→ 拟紧 与 拟紧拟分离 的判定　`def-dep.qcqs-qs`
 
-「qcqs」的另一半是**拟分离**。
+「拟紧拟分离」的另一半是**拟分离**。
 
-#### 定义引用：「自由紧 Hausdorff 空间」→ qc 与 qcqs 的判定　`def-dep.qcqs-free`
+#### 定义引用：「自由紧 Hausdorff 空间」→ 拟紧 与 拟紧拟分离 的判定　`def-dep.qcqs-free`
 
 第 1 条要求满射来自**自由**紧 Hausdorff 空间。
 

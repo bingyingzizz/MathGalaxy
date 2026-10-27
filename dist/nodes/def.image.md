@@ -1,5 +1,5 @@
 # 像 / 余像　`def.image`
-像与余像（Image / Coimage）
+像与余像
 layer 15 · 定义 · 单满、子对象与像 · 范畴论
 [在星图里打开](../#n=def.image)　·　[节点索引](../index.md)
 

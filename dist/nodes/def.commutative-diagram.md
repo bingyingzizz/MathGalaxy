@@ -1,5 +1,5 @@
 # 图与交换图　`def.commutative-diagram`
-图与交换图（Diagram / Commutative Diagram）
+图与交换图
 layer 9 · 定义 · 图与极限 · 范畴论
 [在星图里打开](../#n=def.commutative-diagram)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 级数收敛　`def.series`
-级数 $\sum a_n$（Series）
+级数 $\sum a_n$
 layer 14 · 定义 · 实数与极限 · 分析学
 [在星图里打开](../#n=def.series)　·　[节点索引](../index.md)
 

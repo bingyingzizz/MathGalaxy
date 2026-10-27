@@ -1,5 +1,5 @@
 # 平坦阿贝尔层　`def.flat-abelian-sheaf`
-平坦性（Flatness）
+平坦性
 layer 19 · 定义 · 阿贝尔层 · 同调代数
 [在星图里打开](../#n=def.flat-abelian-sheaf)　·　[节点索引](../index.md)
 

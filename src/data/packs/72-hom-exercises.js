@@ -92,7 +92,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', '阿贝尔层', '拓扑斯', '阿贝尔群对象', '范畴等价'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site。则「site 上的**阿贝尔层**」与「拓扑斯 $\\widetilde{\\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：',
+        '设 $\\mathcal{C}$ 是景。则「景上的**阿贝尔层**」与「拓扑斯 $\\widetilde{\\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：',
         '',
         '$$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\;\\simeq\\; \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr).$$'
       ].join('\n'),

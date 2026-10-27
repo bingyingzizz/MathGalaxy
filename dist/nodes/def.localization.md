@@ -1,5 +1,5 @@
 # 局部化　`def.localization`
-范畴的局部化（Localization）
+范畴的局部化
 layer 10 · 定义 · 范畴与图 · 范畴论
 [在星图里打开](../#n=def.localization)　·　[节点索引](../index.md)
 

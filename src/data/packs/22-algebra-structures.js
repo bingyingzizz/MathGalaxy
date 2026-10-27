@@ -28,7 +28,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '域',
-      title: '域 $F$（Field）',
+      title: '域 $F$',
       regions: ['algebra'],
       tags: ['定义', '代数', '域'],
       statement: [
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '有序域',
-      title: '有序域（Ordered Field）',
+      title: '有序域',
       regions: ['algebra', 'order-theory'],
       tags: ['定义', '代数', '序', '有序域'],
       statement: [

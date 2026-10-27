@@ -33,7 +33,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '一阶语言',
-      title: '一阶语言 $\\mathcal{L}$（First-Order Language）',
+      title: '一阶语言 $\\mathcal{L}$',
       regions: ['logic'],
       tags: ['定义', '逻辑', '一阶语言', '语法'],
       statement: [
@@ -64,7 +64,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '公式',
-      title: '项与公式 / 语句（Formula, Sentence）',
+      title: '项与公式 / 语句',
       regions: ['logic'],
       tags: ['定义', '逻辑', '公式', '自由变元', '语句'],
       statement: [
@@ -93,7 +93,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '代入',
-      title: '代入 $\\varphi (x/t)$（Substitution）',
+      title: '代入 $\\varphi (x/t)$',
       regions: ['logic'],
       tags: ['定义', '逻辑', '代入', '变元捕获'],
       statement: [
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '满足关系',
-      title: '结构与满足关系 $\\models$（Tarski）',
+      title: '结构与满足关系 $\\models$',
       regions: ['logic'],
       tags: ['定义', '逻辑', '模型论', 'Tarski', '语义'],
       statement: [

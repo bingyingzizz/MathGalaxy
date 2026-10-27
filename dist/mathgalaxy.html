@@ -10295,7 +10295,7 @@ MG.clusters = [
     en: 'Sheaves and Topologies',
     parent: 'category',
     hub: 'def.sheaf',
-    desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → site 的层范畴的好性质。'
+    desc: '造出「覆盖」这套语言：筛 → 预拓扑 / Grothendieck 拓扑 → 层（下降条件）→ Čech 函子与层化 → 景的层范畴的好性质。'
   },
   {
     id: 'cat.topos',
@@ -10420,6 +10420,63 @@ MG.clusters = [
     parent: 'analytic',
     hub: 'thm.poincare-solid',
     desc: '造出 6-函子形式与固态 Serre 对偶：开浸入的 $j_!$ → $f_! = f^{\\mathrm{ad}/Y}_* j_!$ → $f^!$ 的扭转与平坦基变换 → 正则闭浸入与光滑映射的对偶复形 → 迹配对。来源：Clausen–Scholze 讲义 Lecture XI。'
+  },
+
+  {
+    id: 'hom.module',
+    name: '模的张量积与标量限制',
+    en: 'Tensor Products and Scalar Restriction',
+    parent: 'homology',
+    hub: 'def.tensor-module',
+    desc: '把「换环」这件事做成一套装置：$M \\otimes_R N$ 的构造与万有性质 → $\\operatorname{Hom}$-张量伴随 → 标量限制与标量扩张的伴随对 → 交换环上的对称性与结合律。后面平坦、Tor、基变换全站在这里。'
+  },
+  {
+    id: 'hom.flat',
+    name: '平坦模',
+    en: 'Flat Modules',
+    parent: 'homology',
+    hub: 'def.flat-module',
+    desc: '「张量不伤正合」的模：定义与一族等价判据 → 自由模平坦、直和项平坦、整环上平坦即无挠 → Lambek 判据（只需对有限生成理想检验）→ Lazard 定理（平坦 = 有限生成自由模的滤过余极限）→ Watts 定理（保直和的正合函子都是张量）。'
+  },
+  {
+    id: 'hom.injective',
+    name: '内射模与可除群',
+    en: 'Injective Modules and Divisible Groups',
+    parent: 'homology',
+    hub: 'thm.baer-criterion',
+    desc: '造出「足够多内射」这件事：内射对象与提升性质 → Baer 判据（只需对理想检验）→ $\\mathbb{Z}$-模即阿贝尔群时内射等价于可除 → $R$-Mod 有足够多内射（嵌入 $\\operatorname{Hom}_{\\mathbb{Z}}(R,\\mathbb{Q}/\\mathbb{Z})$ 的对偶）。这是层上同调能定义的地基。'
+  },
+  {
+    id: 'hom.resolution',
+    name: '消解与维数',
+    en: 'Resolutions and Dimensions',
+    parent: 'homology',
+    hub: 'thm.comparison-theorem',
+    desc: '把「算导出函子」变成可操作的机器：投射/内射消解 → 删除消解与比较定理（消解在同伦意义下唯一）→ 马蹄引理（短正合列的三个消解拼成双复形）→ 合冲 → 维数转移 → 投射维数与内射维数。'
+  },
+  {
+    id: 'hom.group',
+    name: '群上同调',
+    en: 'Group Cohomology',
+    parent: 'homology',
+    hub: 'def.group-cohomology',
+    desc: '从群作用造出不变量：群环与 $G$-模 → 不变量函子 $(-)^G$ 及其导出函子 $H^n(G,-)$ → 标准（bar）消解 → $H^1$ 与半直积、$H^2$ 与群扩张、$2$-上圈 → 低次正合序列。'
+  },
+  {
+    id: 'topology.paracompact',
+    name: '仿紧与单位分解',
+    en: 'Paracompact Spaces and Partitions of Unity',
+    parent: 'topology',
+    hub: 'def.paracompact',
+    desc: '把「局部有限」这件技术做成可用的工具：仿紧的定义与等价刻画 → 收缩引理 → Hausdorff 仿紧空间正规 → 单位分解的存在 → 它在分析（光滑化）与层论（Čech 等于层上同调）里的两个用途。'
+  },
+  {
+    id: 'topology.metrizable',
+    name: '可度量化',
+    en: 'Metrizability',
+    parent: 'topology',
+    hub: 'thm.urysohn-metrization',
+    desc: '回答「这个拓扑能不能由一个度量给出」：正则 + 第二可数 ⇒ 可度量化（Urysohn）→ Nagata–Smirnov 与 Bing 的充要条件（局部有限/离散的基）→ 度量化与仿紧、紧性的关系。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
@@ -14208,7 +14265,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '外延公理',
-      title: '外延公理（Axiom of Extensionality）',
+      title: '外延公理',
       regions: ['set-theory'],
       tags: ['ZFC', '集合相等'],
       statement: [
@@ -14232,7 +14289,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '分离公理模式',
-      title: '分离公理模式（Axiom Schema of Separation）',
+      title: '分离公理模式',
       regions: ['set-theory'],
       tags: ['ZFC', '子集', '公理模式'],
       statement: [
@@ -14255,7 +14312,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '配对公理',
-      title: '配对公理（Axiom of Pairing）',
+      title: '配对公理',
       regions: ['set-theory'],
       tags: ['ZFC'],
       statement: [
@@ -14275,7 +14332,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '并集公理',
-      title: '并集公理（Axiom of Union）',
+      title: '并集公理',
       regions: ['set-theory'],
       tags: ['ZFC'],
       statement: [
@@ -14295,7 +14352,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '幂集公理',
-      title: '幂集公理（Axiom of Power Set）',
+      title: '幂集公理',
       regions: ['set-theory'],
       tags: ['ZFC', '子集'],
       statement: [
@@ -14315,7 +14372,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '无穷公理',
-      title: '无穷公理（Axiom of Infinity）',
+      title: '无穷公理',
       regions: ['set-theory'],
       tags: ['ZFC', '归纳集', '自然数'],
       statement: [
@@ -14336,7 +14393,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '替换公理模式',
-      title: '替换公理模式（Axiom Schema of Replacement）',
+      title: '替换公理模式',
       regions: ['set-theory'],
       tags: ['ZFC', '公理模式', '函数'],
       statement: [
@@ -14356,7 +14413,7 @@ window.MG = window.MG || {};
       cluster: 'set.zfc',
       type: 'axiom',
       label: '正则公理',
-      title: '正则公理 / 基础公理（Axiom of Foundation）',
+      title: '正则公理 / 基础公理',
       regions: ['set-theory'],
       tags: ['ZFC', '良基', '∈-链'],
       statement: [
@@ -14381,7 +14438,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'axiom',
       label: '选择公理',
-      title: '选择公理（Axiom of Choice, AC）',
+      title: '选择公理',
       regions: ['set-theory'],
       tags: ['ZFC', '选择', '等价命题'],
       statement: [
@@ -14442,7 +14499,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '子集',
-      title: '子集 / 真子集（Subset）',
+      title: '子集 / 真子集',
       regions: ['set-theory'],
       tags: ['定义', '包含关系'],
       statement: [
@@ -14467,7 +14524,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '有序对',
-      title: '有序对（Ordered Pair, Kuratowski）',
+      title: '有序对',
       regions: ['set-theory'],
       tags: ['定义', 'Kuratowski'],
       statement: [
@@ -14493,7 +14550,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '关系',
-      title: '关系（Relation）',
+      title: '关系',
       regions: ['set-theory'],
       tags: ['定义', '关系'],
       statement: [
@@ -14515,7 +14572,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '映射',
-      title: '映射（Mapping）',
+      title: '映射',
       regions: ['set-theory'],
       tags: ['定义', '映射', '对应'],
       statement: [
@@ -14537,7 +14594,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '函数',
-      title: '函数（Function）',
+      title: '函数',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '函数', '数集'],
       statement: [
@@ -14559,7 +14616,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'definition',
       label: '选择函数',
-      title: '选择函数（Choice Function）',
+      title: '选择函数',
       regions: ['set-theory'],
       tags: ['定义', '选择'],
       statement: [
@@ -14805,7 +14862,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '偏序集',
-      title: '偏序集 / 全序集（Partially Ordered Set）',
+      title: '偏序集 / 全序集',
       regions: ['order-theory'],
       tags: ['定义', '序'],
       statement: [
@@ -14831,7 +14888,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '链',
-      title: '链 / 反链（Chain / Antichain）',
+      title: '链 / 反链',
       regions: ['order-theory'],
       tags: ['定义', '链'],
       statement: [
@@ -14854,7 +14911,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '界与确界',
-      title: '上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）',
+      title: '上界 / 下界 / 确界 / 极大元',
       regions: ['order-theory'],
       tags: ['定义', '上界', '下界', '上确界', '极大元'],
       statement: [
@@ -14887,7 +14944,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '良序集',
-      title: '良序集（Well-Ordered Set）',
+      title: '良序集',
       regions: ['order-theory'],
       tags: ['定义', '良序', '超限归纳'],
       statement: [
@@ -14906,7 +14963,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '有限特征',
-      title: '有限特征族（Family of Finite Character）',
+      title: '有限特征族',
       regions: ['order-theory'],
       tags: ['定义', '有限特征', 'Tukey'],
       statement: [
@@ -14959,7 +15016,7 @@ window.MG = window.MG || {};
       /* ⚠️ 括号里的英文名**不要带年份**：一级英文名规则会在「title 括号里的英文与 aka 一致」时
          取 title 那一条 ⇒ 带年份的话 `title_en` 就成了「Well-Ordering Theorem, Zermelo 1904」
          （作者 2026-10-16 点过这个毛病）。年份在 notes 与 refs 里都写着，不丢信息。 */
-      title: '良序定理 / 良序原理（Well-Ordering Theorem）',
+      title: '良序定理 / 良序原理',
       // 既是集合论的定理，也是序理论的定理 → 落在两块的边界上
       regions: ['set-theory', 'order-theory'],
       tags: ['ZFC', '等价命题', '选择'],
@@ -15004,7 +15061,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'theorem',
       label: 'Hausdorff 极大原理',
-      title: 'Hausdorff 极大原理 / 极大公理（Hausdorff Maximal Principle）',
+      title: 'Hausdorff 极大原理 / 极大公理',
       regions: ['order-theory'],
       tags: ['ZFC', '等价命题', '极大原理', '链'],
       statement: [
@@ -15440,7 +15497,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '距离空间',
-      title: '距离空间 / 度量空间（Metric Space）',
+      title: '距离空间 / 度量空间',
       regions: ['topology'],
       tags: ['定义', '度量', '开球'],
       statement: [
@@ -15467,7 +15524,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '完备',
-      title: '完备距离空间（Complete Metric Space）',
+      title: '完备距离空间',
       regions: ['topology'],
       tags: ['定义', '完备', 'Cauchy 列'],
       statement: [
@@ -15492,7 +15549,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '全有界',
-      title: '全有界 / 预紧（Totally Bounded）',
+      title: '全有界 / 预紧',
       regions: ['topology'],
       tags: ['定义', '全有界', 'ε-网'],
       statement: [
@@ -15515,7 +15572,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '列紧',
-      title: '列紧 / 序列紧（Sequentially Compact）',
+      title: '列紧 / 序列紧',
       regions: ['topology'],
       tags: ['定义', '列紧', '子列'],
       statement: [
@@ -15532,7 +15589,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'definition',
       label: '紧',
-      title: '紧空间（Compact Space）',
+      title: '紧空间',
       regions: ['topology'],
       tags: ['定义', '紧', '开覆盖'],
       statement: [
@@ -15898,7 +15955,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '基本类',
-      title: '基本类（Fundamental Class）',
+      title: '基本类',
       regions: ['analysis', 'set-theory'],
       tags: ['定义', '集合族', '测度论'],
       statement: [
@@ -15920,7 +15977,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '环与代数',
-      title: '环与代数（Ring, Algebra）',
+      title: '环与代数',
       regions: ['analysis'],
       tags: ['定义', '环', '代数'],
       statement: [
@@ -16001,7 +16058,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'definition',
       label: '单调类',
-      title: '单调类（Monotone Class）',
+      title: '单调类',
       regions: ['analysis'],
       tags: ['定义', '单调类'],
       statement: [
@@ -16100,7 +16157,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.setclass',
       type: 'theorem',
       label: '单调类定理',
-      title: '单调类定理（Monotone Class Theorem）',
+      title: '单调类定理',
       regions: ['analysis'],
       tags: ['定理', '单调类', '生成'],
       statement: [
@@ -16449,7 +16506,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '测度',
-      title: '测度（Measure）',
+      title: '测度',
       regions: ['analysis'],
       tags: ['定义', '测度', '可数可加'],
       statement: [
@@ -16497,7 +16554,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '有限可加测度',
-      title: '有限可加测度（Finitely Additive Measure）',
+      title: '有限可加测度',
       regions: ['analysis'],
       tags: ['定义', '有限可加'],
       statement: [
@@ -16571,7 +16628,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '零集与完备',
-      title: 'μ-零集 / 完备测度空间（Null Set & Complete Measure Space）',
+      title: 'μ-零集 / 完备测度空间',
       regions: ['analysis'],
       tags: ['定义', '零集', '完备'],
       statement: [
@@ -16626,7 +16683,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '半有限部分',
-      title: '半有限部分（Semifinite Part of a Measure）',
+      title: '半有限部分',
       regions: ['analysis'],
       tags: ['定义', '半有限'],
       statement: [
@@ -16648,7 +16705,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '外测度',
-      title: '外测度（Outer Measure）',
+      title: '外测度',
       regions: ['analysis'],
       tags: ['定义', '外测度', '次可加'],
       statement: [
@@ -17146,7 +17203,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: '可测函数',
-      title: '可测函数（Measurable Function）',
+      title: '可测函数',
       regions: ['analysis'],
       tags: ['定义', '可测函数'],
       statement: [
@@ -17284,7 +17341,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'definition',
       label: '简单函数',
-      title: '简单函数（Simple Function）',
+      title: '简单函数',
       regions: ['analysis'],
       tags: ['定义', '简单函数'],
       statement: [
@@ -17637,7 +17694,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: '单调收敛定理',
-      title: '单调收敛定理（MCT, Monotone Convergence Theorem）',
+      title: '单调收敛定理',
       regions: ['analysis'],
       tags: ['定理', 'MCT', '收敛'],
       statement: [
@@ -17926,7 +17983,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.integral',
       type: 'theorem',
       label: '控制收敛定理',
-      title: '控制收敛定理（DCT, Dominated Convergence Theorem）',
+      title: '控制收敛定理',
       regions: ['analysis'],
       tags: ['定理', 'DCT', '控制函数'],
       statement: [
@@ -19248,7 +19305,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '符号测度',
-      title: '符号测度（Signed Measure）',
+      title: '符号测度',
       regions: ['analysis'],
       tags: ['定义', '符号测度'],
       statement: [
@@ -19277,7 +19334,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '正集 / 负集 / 零集',
-      title: '正集 / 负集 / 零集（Positive, Negative, Null Set）',
+      title: '正集 / 负集 / 零集',
       regions: ['analysis'],
       tags: ['定义', '正集', '负集'],
       statement: [
@@ -19320,7 +19377,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: 'Hahn 分解定理',
-      title: 'Hahn 分解定理（Hahn Decomposition Theorem）',
+      title: 'Hahn 分解定理',
       regions: ['analysis'],
       tags: ['定理', 'Hahn 分解', '正集', '负集'],
       statement: [
@@ -19368,7 +19425,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'theorem',
       label: 'Jordan 分解定理',
-      title: 'Jordan 分解定理（Jordan Decomposition Theorem）',
+      title: 'Jordan 分解定理',
       regions: ['analysis'],
       tags: ['定理', 'Jordan 分解', '全变差'],
       statement: [
@@ -19641,7 +19698,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.signed',
       type: 'definition',
       label: '复测度',
-      title: '复测度（Complex Measure）',
+      title: '复测度',
       regions: ['analysis'],
       tags: ['定义', '复测度'],
       statement: [
@@ -20307,7 +20364,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '可缩族',
-      title: '可缩地趋于 x（Shrinks Nicely）',
+      title: '可缩地趋于 x',
       regions: ['analysis'],
       tags: ['定义', '可缩族'],
       statement: [
@@ -20355,7 +20412,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.differentiation',
       type: 'definition',
       label: '正则 Borel 测度',
-      title: '正则 Borel 测度（Regular Borel Measure）',
+      title: '正则 Borel 测度',
       regions: ['analysis'],
       tags: ['定义', '正则', 'Borel 测度'],
       statement: [
@@ -20724,7 +20781,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'definition',
       label: '有界变差 BV',
-      title: '全变差与有界变差函数（Total Variation, BV）',
+      title: '全变差与有界变差函数',
       regions: ['analysis'],
       tags: ['定义', '全变差', 'BV'],
       statement: [
@@ -20978,7 +21035,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.bv',
       type: 'definition',
       label: '绝对连续函数',
-      title: '绝对连续函数 AC（Absolutely Continuous Function）',
+      title: '绝对连续函数 AC',
       regions: ['analysis'],
       tags: ['定义', '绝对连续', 'AC'],
       statement: [
@@ -21680,7 +21737,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.lp',
       type: 'definition',
       label: '共轭指数',
-      title: '共轭指数（Conjugate Exponents）',
+      title: '共轭指数',
       regions: ['analysis'],
       tags: ['定义', '共轭', '对偶'],
       statement: [
@@ -22126,7 +22183,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '扩充实数 [−∞,+∞]',
-      title: '扩充实数系 $\\overline{\\mathbb{R}}$（Extended Reals）',
+      title: '扩充实数系 $\\overline{\\mathbb{R}}$',
       regions: ['analysis'],
       tags: ['定义', '实数'],
       statement: [
@@ -22150,7 +22207,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '区间',
-      title: '区间（Interval）',
+      title: '区间',
       regions: ['analysis', 'order-theory'],
       tags: ['定义', '实数'],
       statement: [
@@ -22176,7 +22233,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '数列极限',
-      title: '数列极限 $x_n \\to x$（Limit of a Sequence）',
+      title: '数列极限 $x_n \\to x$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -22196,7 +22253,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '级数收敛',
-      title: '级数 $\\sum a_n$（Series）',
+      title: '级数 $\\sum a_n$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -22222,7 +22279,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '连续',
-      title: '连续（Continuity）',
+      title: '连续',
       regions: ['analysis', 'topology'],
       tags: ['定义', '极限', '连续'],
       statement: [
@@ -22244,7 +22301,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '导数',
-      title: '导数 $F\'$（Derivative）',
+      title: '导数 $F\'$',
       regions: ['analysis'],
       tags: ['定义', '导数'],
       statement: [
@@ -22266,7 +22323,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'definition',
       label: '复数 ℂ',
-      title: '复数系 $\\mathbb{C}$（Complex Numbers）',
+      title: '复数系 $\\mathbb{C}$',
       regions: ['analysis', 'algebra'],
       tags: ['定义', '复数'],
       statement: [
@@ -22386,7 +22443,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '并集与交集',
-      title: '并集 / 交集（Union & Intersection）',
+      title: '并集 / 交集',
       regions: ['set-theory'],
       tags: ['定义', '集合运算'],
       statement: [
@@ -22407,7 +22464,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '差集与补集',
-      title: '差集 / 补集 / 对称差（Difference, Complement & Symmetric Difference）',
+      title: '差集 / 补集 / 对称差',
       regions: ['set-theory'],
       tags: ['定义', '集合运算'],
       statement: [
@@ -22431,7 +22488,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '空集 ∅',
-      title: '空集（Empty Set）',
+      title: '空集',
       regions: ['set-theory'],
       tags: ['定义', '空集'],
       statement: [
@@ -22453,7 +22510,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '单射 / 满射 / 双射',
-      title: '单射 / 满射 / 双射（Injective / Surjective / Bijective）',
+      title: '单射 / 满射 / 双射',
       regions: ['set-theory'],
       tags: ['定义', '函数'],
       statement: [
@@ -22475,7 +22532,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '像与原像',
-      title: '像与原像（Image / Preimage）',
+      title: '像与原像',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '映射', '像', '原像'],
       statement: [
@@ -22500,7 +22557,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'definition',
       label: '可数与不可数',
-      title: '可数 / 至多可数（Countable）',
+      title: '可数 / 至多可数',
       regions: ['set-theory'],
       tags: ['定义', '基数', '可数'],
       statement: [
@@ -22522,7 +22579,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measure',
       type: 'definition',
       label: '几乎处处',
-      title: '几乎处处（Almost Everywhere, a.e.）',
+      title: '几乎处处',
       regions: ['analysis'],
       tags: ['定义', '零集'],
       statement: [
@@ -22733,7 +22790,7 @@ window.MG = window.MG || {};
       cluster: 'set.construct',
       type: 'definition',
       label: '幂集 𝒫(X)',
-      title: '幂集（Power Set）',
+      title: '幂集',
       regions: ['set-theory'],
       tags: ['定义', '幂集'],
       statement: [
@@ -22757,7 +22814,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'definition',
       label: '等势',
-      title: '等势（Equinumerous）',
+      title: '等势',
       regions: ['set-theory'],
       tags: ['定义', '基数'],
       statement: [
@@ -22777,7 +22834,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'definition',
       label: '基数 |A|',
-      title: '基数与基数的比较（Cardinality）',
+      title: '基数与基数的比较',
       regions: ['set-theory'],
       tags: ['定义', '基数'],
       statement: [
@@ -23039,7 +23096,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '拓扑空间与开集',
-      title: '拓扑空间 / 开集（Topological Space）',
+      title: '拓扑空间 / 开集',
       regions: ['topology'],
       tags: ['定义', '拓扑', '开集'],
       statement: [
@@ -23061,7 +23118,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '闭集与闭包',
-      title: '闭集 / 闭包 / 稠密（Closed Set, Closure）',
+      title: '闭集 / 闭包 / 稠密',
       regions: ['topology'],
       tags: ['定义', '拓扑', '闭集'],
       statement: [
@@ -23084,7 +23141,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '基与子基',
-      title: '拓扑的基 / 子基（Basis, Subbasis）',
+      title: '拓扑的基 / 子基',
       regions: ['topology'],
       tags: ['定义', '拓扑', '基'],
       statement: [
@@ -23105,7 +23162,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '连续映射',
-      title: '连续映射（Continuous Map）',
+      title: '连续映射',
       regions: ['topology', 'analysis'],
       tags: ['定义', '拓扑', '连续'],
       statement: [
@@ -23127,7 +23184,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '同胚',
-      title: '同胚（Homeomorphism）',
+      title: '同胚',
       regions: ['topology'],
       tags: ['定义', '拓扑', '同胚'],
       statement: [
@@ -23148,7 +23205,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '子空间拓扑',
-      title: '子空间拓扑（Subspace Topology）',
+      title: '子空间拓扑',
       regions: ['topology'],
       tags: ['定义', '拓扑', '子空间'],
       statement: [
@@ -23166,7 +23223,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '商拓扑',
-      title: '商拓扑（Quotient Topology）',
+      title: '商拓扑',
       regions: ['topology'],
       tags: ['定义', '拓扑', '商'],
       statement: [
@@ -23185,7 +23242,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '积拓扑',
-      title: '积拓扑与乘积空间（Product Topology）',
+      title: '积拓扑与乘积空间',
       regions: ['topology'],
       tags: ['定义', '拓扑', '乘积', '投影'],
       statement: [
@@ -23208,7 +23265,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: 'Hausdorff 空间',
-      title: 'Hausdorff 空间 / $T_{2}$（Hausdorff Space）',
+      title: 'Hausdorff 空间 / $T_{2}$',
       regions: ['topology'],
       tags: ['定义', '拓扑', '分离公理'],
       statement: [
@@ -23230,7 +23287,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '连通与连通分量',
-      title: '连通空间与连通分量（Connectedness）',
+      title: '连通空间与连通分量',
       regions: ['topology'],
       tags: ['定义', '拓扑', '连通'],
       statement: [
@@ -23246,7 +23303,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '闭开集',
-      title: '闭开集（Clopen Set）',
+      title: '闭开集',
       regions: ['topology'],
       tags: ['定义', '拓扑', '闭开集'],
       statement: [
@@ -23442,7 +23499,7 @@ window.MG = window.MG || {};
       cluster: 'set.rel',
       type: 'definition',
       label: '商集与等价类',
-      title: '商集 / 等价类（Quotient Set）',
+      title: '商集 / 等价类',
       regions: ['set-theory'],
       tags: ['定义', '等价类', '商集'],
       statement: [
@@ -23470,7 +23527,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'theorem',
       label: '归纳原理与递推定义',
-      title: '归纳原理 / 递推定义（Induction & Recursion）',
+      title: '归纳原理 / 递推定义',
       regions: ['set-theory'],
       tags: ['定理', '归纳', '递归'],
       statement: [
@@ -23583,7 +23640,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'definition',
       label: '绝对值 |x|',
-      title: '绝对值 $|x|$（Absolute Value）',
+      title: '绝对值 $|x|$',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '绝对值', '序'],
       statement: [
@@ -23625,7 +23682,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'definition',
       label: 'Cauchy 列与零列',
-      title: '有理 Cauchy 列 / 零列 / 等价（Cauchy & Null Sequences）',
+      title: '有理 Cauchy 列 / 零列 / 等价',
       regions: ['set-theory', 'analysis'],
       tags: ['定义', 'Cauchy 列', '完备化'],
       statement: [
@@ -24196,7 +24253,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '域',
-      title: '域 $F$（Field）',
+      title: '域 $F$',
       regions: ['algebra'],
       tags: ['定义', '代数', '域'],
       statement: [
@@ -24218,7 +24275,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '有序域',
-      title: '有序域（Ordered Field）',
+      title: '有序域',
       regions: ['algebra', 'order-theory'],
       tags: ['定义', '代数', '序', '有序域'],
       statement: [
@@ -24303,7 +24360,7 @@ window.MG = window.MG || {};
       cluster: 'order.structure',
       type: 'definition',
       label: '序同构',
-      title: '序同构与序型（Order Isomorphism）',
+      title: '序同构与序型',
       regions: ['order-theory'],
       tags: ['定义', '序', '序同构', '序型'],
       statement: [
@@ -24323,7 +24380,7 @@ window.MG = window.MG || {};
       cluster: 'set.ordinal',
       type: 'definition',
       label: '序数',
-      title: '序数（von Neumann Ordinal）',
+      title: '序数',
       regions: ['set-theory'],
       tags: ['定义', '序数', '传递集', '良序'],
       statement: [
@@ -24636,7 +24693,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '一阶语言',
-      title: '一阶语言 $\\mathcal{L}$（First-Order Language）',
+      title: '一阶语言 $\\mathcal{L}$',
       regions: ['logic'],
       tags: ['定义', '逻辑', '一阶语言', '语法'],
       statement: [
@@ -24667,7 +24724,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '公式',
-      title: '项与公式 / 语句（Formula, Sentence）',
+      title: '项与公式 / 语句',
       regions: ['logic'],
       tags: ['定义', '逻辑', '公式', '自由变元', '语句'],
       statement: [
@@ -24696,7 +24753,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '代入',
-      title: '代入 $\\varphi (x/t)$（Substitution）',
+      title: '代入 $\\varphi (x/t)$',
       regions: ['logic'],
       tags: ['定义', '逻辑', '代入', '变元捕获'],
       statement: [
@@ -24722,7 +24779,7 @@ window.MG = window.MG || {};
       cluster: 'logic.fol',
       type: 'definition',
       label: '满足关系',
-      title: '结构与满足关系 $\\models$（Tarski）',
+      title: '结构与满足关系 $\\models$',
       regions: ['logic'],
       tags: ['定义', '逻辑', '模型论', 'Tarski', '语义'],
       statement: [
@@ -24825,7 +24882,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: 'Grothendieck 宇宙',
-      title: 'Grothendieck 宇宙（Grothendieck Universe）',
+      title: 'Grothendieck 宇宙',
       regions: ['category'],
       tags: ['范畴论', '大与小', '集合论'],
       statement: [
@@ -24852,7 +24909,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '图',
-      title: '图（Graph）',
+      title: '图',
       regions: ['category'],
       tags: ['范畴论', '有向图'],
       statement: [
@@ -24879,7 +24936,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '图的态射',
-      title: '图的态射（Morphism of Graphs）',
+      title: '图的态射',
       regions: ['category'],
       tags: ['范畴论', '有向图', '交换图'],
       statement: [
@@ -24903,7 +24960,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '范畴',
-      title: '范畴（Category）',
+      title: '范畴',
       regions: ['category'],
       tags: ['范畴论', '复合', '单位'],
       statement: [
@@ -24950,7 +25007,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '截面与收缩',
-      title: '截面与收缩（Section / Retraction）',
+      title: '截面与收缩',
       regions: ['category'],
       tags: ['范畴论', '态射', '左逆右逆'],
       statement: [
@@ -24994,7 +25051,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '函子',
-      title: '函子（Functor）',
+      title: '函子',
       regions: ['category'],
       tags: ['范畴论', '函子', '保持复合'],
       statement: [
@@ -25031,7 +25088,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '自然变换',
-      title: '自然变换（Natural Transformation）',
+      title: '自然变换',
       regions: ['category'],
       tags: ['范畴论', '自然变换', '自然性'],
       statement: [
@@ -25063,7 +25120,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '忠实 / 满 / 全忠实',
-      title: '忠实、满、全忠实函子（Faithful / Full / Fully Faithful）',
+      title: '忠实、满、全忠实函子',
       regions: ['category'],
       tags: ['范畴论', '函子', 'Hom 集'],
       statement: [
@@ -25090,7 +25147,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '本质满',
-      title: '本质满函子（Essentially Surjective）',
+      title: '本质满函子',
       regions: ['category'],
       tags: ['范畴论', '函子', '同构'],
       statement: [
@@ -25108,7 +25165,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '范畴等价',
-      title: '范畴等价（Equivalence of Categories）',
+      title: '范畴等价',
       regions: ['category'],
       tags: ['范畴论', '等价', '同构'],
       statement: [
@@ -25190,7 +25247,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '图与交换图',
-      title: '图与交换图（Diagram / Commutative Diagram）',
+      title: '图与交换图',
       regions: ['category'],
       tags: ['范畴论', '图', '索引范畴'],
       statement: [
@@ -25220,7 +25277,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '单纯对象',
-      title: '单纯对象（Simplicial Object）',
+      title: '单纯对象',
       regions: ['category'],
       tags: ['范畴论', '单纯', '索引范畴'],
       statement: [
@@ -25252,7 +25309,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '锥',
-      title: '锥与余锥（Cone / Cocone）',
+      title: '锥与余锥',
       regions: ['category'],
       tags: ['范畴论', '锥', '自然变换'],
       statement: [
@@ -25279,7 +25336,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '极限',
-      title: '极限与余极限（Limit / Colimit）',
+      title: '极限与余极限',
       regions: ['category'],
       tags: ['范畴论', '极限', '泛性质'],
       statement: [
@@ -25307,7 +25364,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '终对象 / 始对象',
-      title: '终对象与始对象（Terminal / Initial Object）',
+      title: '终对象与始对象',
       regions: ['category'],
       tags: ['范畴论', '极限', '空图'],
       statement: [
@@ -25330,7 +25387,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '积 / 余积',
-      title: '积与余积（Product / Coproduct）',
+      title: '积与余积',
       regions: ['category'],
       tags: ['范畴论', '极限', '离散范畴'],
       statement: [
@@ -25351,7 +25408,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '纤维积 / 纤维余积',
-      title: '纤维积与纤维余积（Pullback / Pushout）',
+      title: '纤维积与纤维余积',
       regions: ['category'],
       tags: ['范畴论', '极限', '拉回'],
       statement: [
@@ -25379,7 +25436,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '等化子 / 余等化子',
-      title: '等化子与余等化子（Equalizer / Coequalizer）',
+      title: '等化子与余等化子',
       regions: ['category'],
       tags: ['范畴论', '极限', '核'],
       statement: [
@@ -25402,7 +25459,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '单态射 / 满态射 / 同构',
-      title: '单态射、满态射与同构（Mono / Epi / Isomorphism）',
+      title: '单态射、满态射与同构',
       regions: ['category'],
       tags: ['范畴论', '单态射', '满态射', '同构', '可消'],
       statement: [
@@ -25436,7 +25493,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '子对象',
-      title: '子对象（Subobject）',
+      title: '子对象',
       regions: ['category'],
       tags: ['范畴论', '子对象', '拉回'],
       statement: [
@@ -25458,7 +25515,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'theorem',
       label: '极限的函子性',
-      title: '极限是函子（Limits as a Functor）',
+      title: '极限是函子',
       regions: ['category'],
       tags: ['范畴论', '极限', '函子'],
       statement: [
@@ -25486,7 +25543,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '像 / 余像',
-      title: '像与余像（Image / Coimage）',
+      title: '像与余像',
       regions: ['category'],
       tags: ['范畴论', '像', '泛性质'],
       statement: [
@@ -25511,7 +25568,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '元素范畴',
-      title: '元素范畴（Category of Elements）',
+      title: '元素范畴',
       regions: ['category'],
       tags: ['范畴论', '泛性', '始对象'],
       statement: [
@@ -25556,7 +25613,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '预层',
-      title: '预层（Presheaf）',
+      title: '预层',
       regions: ['category'],
       tags: ['范畴论', '预层', '反变函子'],
       statement: [
@@ -25585,7 +25642,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '预层范畴',
-      title: '预层范畴（Category of Presheaves）',
+      title: '预层范畴',
       regions: ['category'],
       tags: ['范畴论', '预层', '函子范畴'],
       statement: [
@@ -25606,7 +25663,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '表示函子',
-      title: '表示函子与万有元素（Representable Functor）',
+      title: '表示函子与万有元素',
       regions: ['category'],
       tags: ['范畴论', '表示', '万有元素'],
       statement: [
@@ -25644,7 +25701,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'lemma',
       label: '米田引理',
-      title: '米田引理（Yoneda Lemma）',
+      title: '米田引理',
       regions: ['category'],
       tags: ['范畴论', '米田', '自然变换'],
       statement: [
@@ -25691,7 +25748,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'proposition',
       label: '米田嵌入',
-      title: '米田嵌入（Yoneda Embedding）',
+      title: '米田嵌入',
       regions: ['category'],
       tags: ['范畴论', '米田', '全忠实'],
       statement: [
@@ -25714,7 +25771,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '切片范畴',
-      title: '预层的切片范畴（Slice Category）',
+      title: '预层的切片范畴',
       regions: ['category'],
       tags: ['范畴论', '切片', '元素范畴'],
       statement: [
@@ -25763,7 +25820,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'theorem',
       label: '稠密性定理',
-      title: '稠密性定理（Density Theorem）',
+      title: '稠密性定理',
       regions: ['category'],
       tags: ['范畴论', '米田', '余极限'],
       statement: [
@@ -25924,7 +25981,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '伴随函子',
-      title: '伴随函子（Adjoint Functors）',
+      title: '伴随函子',
       regions: ['category'],
       tags: ['范畴论', '伴随', 'Hom 集'],
       statement: [
@@ -25961,7 +26018,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '单位与余单位',
-      title: '单位与余单位（Unit and Counit）',
+      title: '单位与余单位',
       regions: ['category'],
       tags: ['范畴论', '伴随', '三角等式'],
       statement: [
@@ -26082,7 +26139,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'theorem',
       label: '伴随函子定理',
-      title: '伴随函子定理（SAFT）',
+      title: '伴随函子定理',
       regions: ['category'],
       tags: ['范畴论', '伴随', '完备'],
       statement: [
@@ -26106,7 +26163,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '逗号范畴',
-      title: '逗号范畴（Comma Category）',
+      title: '逗号范畴',
       regions: ['category'],
       tags: ['范畴论', '逗号范畴', '辅助范畴'],
       statement: [
@@ -26141,7 +26198,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: '反射子范畴',
-      title: '反射子范畴（Reflective Subcategory）',
+      title: '反射子范畴',
       regions: ['category'],
       tags: ['范畴论', '反射', '满子范畴'],
       statement: [
@@ -26192,7 +26249,7 @@ window.MG = window.MG || {};
       cluster: 'cat.adjoint',
       type: 'definition',
       label: 'Kan 延拓',
-      title: 'Kan 延拓（Kan Extension）',
+      title: 'Kan 延拓',
       regions: ['category'],
       tags: ['范畴论', 'Kan 延拓', '伴随'],
       statement: [
@@ -26535,7 +26592,7 @@ window.MG = window.MG || {};
       cluster: 'topo.chaus',
       type: 'definition',
       label: '自由紧 Hausdorff 空间',
-      title: '自由紧 Hausdorff 空间（Free Compact Hausdorff Space）',
+      title: '自由紧 Hausdorff 空间',
       regions: ['topology'],
       tags: ['范畴论', '自由', 'Stone–Čech'],
       statement: [
@@ -26583,7 +26640,7 @@ window.MG = window.MG || {};
       cluster: 'topo.chaus',
       type: 'definition',
       label: '投射 / 内射对象',
-      title: '投射对象与内射对象（Projective / Injective Object）',
+      title: '投射对象与内射对象',
       regions: ['topology'],
       tags: ['范畴论', '投射', '提升'],
       statement: [
@@ -26623,7 +26680,7 @@ window.MG = window.MG || {};
       cluster: 'topo.chaus',
       type: 'definition',
       label: '自由表示',
-      title: '自由表示（Free Presentation）',
+      title: '自由表示',
       regions: ['topology'],
       tags: ['范畴论', '商', '等价关系'],
       statement: [
@@ -26681,7 +26738,7 @@ window.MG = window.MG || {};
       cluster: 'topo.stone',
       type: 'definition',
       label: '全不连通与 Stone 空间',
-      title: 'Stone 空间与 Stonean 空间（Stone / Stonean Space）',
+      title: 'Stone 空间与 Stonean 空间',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '不连通'],
       statement: [
@@ -26780,7 +26837,7 @@ window.MG = window.MG || {};
       cluster: 'topo.stone',
       type: 'definition',
       label: '投射有限空间',
-      title: '投射有限空间（Profinite Space）',
+      title: '投射有限空间',
       regions: ['topology'],
       tags: ['范畴论', '投射有限', '有向极限'],
       statement: [
@@ -26964,7 +27021,7 @@ window.MG = window.MG || {};
    内容包 · 层与拓扑（19 条）
    --------------------------------------------------------------------------
    第七团：筛 → 预拓扑 → Grothendieck 拓扑 → 层 → Čech 函子 → 层化
-   → site 的层范畴的好性质 → 标准拓扑。
+   → 景的层范畴的好性质 → 标准拓扑。
 
    依赖顺序：拓扑（＝一族覆盖筛）说「什么算覆盖」，层说「在覆盖上能不能粘」，
    Čech 函子与层化把预层改造成层，最后一批性质为拓扑斯铺路。
@@ -26981,7 +27038,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '筛',
-      title: '筛（Sieve）',
+      title: '筛',
       regions: ['category'],
       tags: ['范畴论', '筛', '覆盖'],
       statement: [
@@ -27001,7 +27058,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '预拓扑',
-      title: '预拓扑（Pretopology）',
+      title: '预拓扑',
       regions: ['category'],
       tags: ['范畴论', '预拓扑', '覆盖'],
       statement: [
@@ -27018,15 +27075,15 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
-    /* --------------------------------------- Grothendieck 拓扑 / site */
+    /* --------------------------------------- Grothendieck 拓扑 / 景 */
     {
       id: 'def.grothendieck-topology',
       cluster: 'cat.sheaf',
       type: 'definition',
       label: 'Grothendieck 拓扑',
-      title: 'Grothendieck 拓扑与 site（Grothendieck Topology, Site）',
+      title: 'Grothendieck 拓扑与景',
       regions: ['category'],
-      tags: ['范畴论', '拓扑', 'site'],
+      tags: ['范畴论', '拓扑', '景'],
       statement: [
         '范畴 $\\mathcal{C}$ 上的 **Grothendieck 拓扑**是对每个 $X$ 指定一族**覆盖筛** $J(X)$，满足：',
         '',
@@ -27034,7 +27091,7 @@ window.MG = window.MG || {};
         '2. **拉回稳定**：$R \\in J(X)$、$f : Y \\to X$ $\\implies$ $f^{*}(R) := R \\times_{h_{X}} h_{Y} \\in J(Y)$；',
         '3. **传递**：$R, R\' \\subseteq h_{X}$，若 $R\' \\in J(X)$ 且对每个 $f \\in R\'(Y)$ 有 $f^{*}(R) \\in J(Y)$，则 $R \\in J(X)$。',
         '',
-        '带 Grothendieck 拓扑的范畴叫 **site**。'
+        '带 Grothendieck 拓扑的范畴叫 **景**。'
       ].join('\n'),
       notes: [
         '$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R\' \\in J(X) \\implies R \\cap R\' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R\'$、$R \\in J(X) \\implies R\' \\in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。',
@@ -27049,11 +27106,11 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '层',
-      title: '层与分离预层（Sheaf）',
+      title: '层与分离预层',
       regions: ['category'],
       tags: ['范畴论', '层', '粘合'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是预层。',
+        '设 $\\mathcal{C}$ 是景，$F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是预层。',
         '',
         '- $F$ 叫**分离的**，如果对每个 $X$ 与每个 $R \\in J(X)$，限制映射',
         '',
@@ -27110,7 +27167,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '层化', '滤过余极限'],
       statement: [
-        'site $\\mathcal{C}$ 上的 **Čech 函子** $\\widehat{H}$ 定义在预层上：',
+        '景 $\\mathcal{C}$ 上的 **Čech 函子** $\\widehat{H}$ 定义在预层上：',
         '',
         '$$\\widehat{H}(T)(X) \\;:=\\; \\varinjlim_{R \\in J(X)} \\operatorname{Hom}(R, T)$$',
         '',
@@ -27185,7 +27242,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '正则满态射',
-      title: '正则满态射（Regular Epimorphism）',
+      title: '正则满态射',
       regions: ['category'],
       tags: ['范畴论', '满态射', '余等化子'],
       statement: [
@@ -27220,17 +27277,17 @@ window.MG = window.MG || {};
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
-    /* -------------------------------------------- site 的层范畴的好性质 */
+    /* -------------------------------------------- 景的层范畴的好性质 */
     {
       id: 'prop.site-properties',
       cluster: 'cat.sheaf',
       type: 'proposition',
-      label: 'site 的层范畴的好性质',
+      label: '景的层范畴的好性质',
       title: 'Grothendieck 拓扑下的层范畴',
       regions: ['category'],
       tags: ['范畴论', '层', '预拓扑斯'],
       statement: [
-        '若 $\\mathcal{C}$ 是 site，则层范畴 $\\widehat{\\mathcal{C}}$ 中所有极限与余极限存在，并且：',
+        '若 $\\mathcal{C}$ 是景，则层范畴 $\\widehat{\\mathcal{C}}$ 中所有极限与余极限存在，并且：',
         '',
         '1. 余极限是**万有**的；',
         '2. **滤过余极限正合**；',
@@ -27289,7 +27346,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '有效等价关系',
-      title: '有效等价关系（Effective Equivalence Relation）',
+      title: '有效等价关系',
       regions: ['category'],
       tags: ['范畴论', '等价关系', '商'],
       statement: [
@@ -27331,7 +27388,7 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '标准拓扑',
-      title: '标准拓扑与次标准拓扑（Canonical Topology）',
+      title: '标准拓扑与次标准拓扑',
       regions: ['category'],
       tags: ['范畴论', '标准拓扑', '次标准'],
       statement: [
@@ -27454,7 +27511,7 @@ window.MG = window.MG || {};
       note: '注意「做两次」不是凑出来的：**第一次把预算层变成分离的，第二次才把分离的变成层** —— 差的正是「分离」与「层」之间的那一步（性质 3）。'
     },
 
-    /* ------------------------------------------- site 层范畴的性质 */
+    /* ------------------------------------------- 景层范畴的性质 */
     {
       id: 'imp.site-properties',
       kind: 'implication',
@@ -27495,7 +27552,7 @@ window.MG = window.MG || {};
         '',
         '取 $Y = X$、$g = 1_{X}$ 即得 $u = v$。所以 $q$ 是满态射。∎'
       ].join('\n'),
-      note: '这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在 site 上验覆盖，都可以改写成一个余积是否满射的问题。'
+      note: '这条把「覆盖」这件听起来很几何的事，变成了一句纯箭头的话。以后凡是要在景上验覆盖，都可以改写成一个余积是否满射的问题。'
     }
   ]
 });
@@ -27508,7 +27565,7 @@ window.MG = window.MG || {};
    第八团：预拓扑斯 → 预标准拓扑 → 生成元 → 拓扑斯 → Giraud 定理
    → 拟紧 / 拟分离 → 预拓扑斯由拓扑斯唯一确定 → 拓扑斯的态射。
 
-   依赖顺序：预拓扑斯是「商与余积都规规矩矩」的范畴；配上预标准拓扑变成 site；
+   依赖顺序：预拓扑斯是「商与余积都规规矩矩」的范畴；配上预标准拓扑变成景；
    再加一个小生成元集就是拓扑斯；Giraud 定理给出四个等价说法。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -27523,7 +27580,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '预拓扑斯',
-      title: '预拓扑斯（Pretopos）',
+      title: '预拓扑斯',
       regions: ['category'],
       tags: ['范畴论', '预拓扑斯', '正合'],
       statement: [
@@ -27537,7 +27594,7 @@ window.MG = window.MG || {};
       notes: [
         '第 4 条**不是独立的** —— 它可以由前三条推出，所以有些课本只写三条。写下来的好处是提醒一件事：**在这里满态射自动是正则的**，于是「满」与「商映射」是同一件事。',
         '标准事实：**单态射可以通过极限来定义**（$i$ 是单态射 $\\iff$ 那个方形是笛卡尔的），而拉回与极限都保持单态射；这保证了推出也保单态射 —— 第 2、3 条里那些「不交」「有效」才有意义。',
-        '例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何 site 的层范畴都是预拓扑斯。'
+        '例：$\\mathbf{Set}$、$\\mathbf{FinSet}$ 是预拓扑斯；$\\mathbf{CHaus}$ 是拓扑斯；**$\\mathbf{Top}$ 不是预拓扑斯**（满态射不一定是商映射）。任何景的层范畴都是预拓扑斯。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -27592,7 +27649,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '预标准拓扑',
-      title: '预标准拓扑（Precanonical Topology）',
+      title: '预标准拓扑',
       regions: ['category'],
       tags: ['范畴论', '预拓扑斯', '预标准'],
       statement: [
@@ -27600,7 +27657,7 @@ window.MG = window.MG || {};
         '',
         '$$\\coprod_{i \\in I} X_{i} \\longrightarrow X$$',
         '',
-        '是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个 site。'
+        '是满态射。它生成的 Grothendieck 拓扑叫**预标准拓扑**，配它的 $\\mathcal{C}$ 是一个景。'
       ].join('\n'),
       notes: '生成它的其实是两类覆盖：**有限不交并**（$\\coprod_{i \\in I} X_{i} \\cong X$）与**满射** $(X_{i} \\to X)$。名字里的「预」是因为它比标准拓扑**粗** —— 但仍然是次标准的。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
@@ -27679,7 +27736,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '生成元集',
-      title: '生成元集与生成元（Generators）',
+      title: '生成元集与生成元',
       regions: ['category'],
       tags: ['范畴论', '生成元', '忠实'],
       statement: [
@@ -27699,7 +27756,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拓扑斯',
-      title: '拓扑斯（Topos）',
+      title: '拓扑斯',
       regions: ['category'],
       tags: ['范畴论', '拓扑斯'],
       statement: [
@@ -27712,7 +27769,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。',
-        '例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；site 的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**',
+        '例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；景的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**',
         '⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
@@ -27732,7 +27789,7 @@ window.MG = window.MG || {};
         '',
         '1. $\\mathcal{T}$ 是拓扑斯；',
         '2. $\\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；',
-        '3. 存在 site $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；',
+        '3. 存在景 $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；',
         '4. 存在范畴使 $\\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。'
       ].join('\n'),
       notes: [
@@ -27776,7 +27833,7 @@ window.MG = window.MG || {};
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。',
       notes: [
         ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
-'这条在一般 site 里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
+'这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -27800,11 +27857,11 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拟紧对象',
-      title: '拟紧对象（Quasi-Compact Object）',
+      title: '拟紧对象',
       regions: ['category'],
       tags: ['范畴论', '拟紧', '紧性'],
       statement: [
-        'site $\\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \\to X)_{i \\in I}$，都存在**有限**的 $J \\subseteq I$，使 $(X_{i} \\to X)_{i \\in J}$ 生成的筛**也是**覆盖筛。',
+        '景 $\\mathcal{C}$ 的对象 $X$ 叫**拟紧的**，如果任给生成覆盖筛的族 $(X_{i} \\to X)_{i \\in I}$，都存在**有限**的 $J \\subseteq I$，使 $(X_{i} \\to X)_{i \\in J}$ 生成的筛**也是**覆盖筛。',
         '',
         '在拓扑斯中，等价的说法是：任给满射 $\\coprod_{i \\in I} X_{i} \\to X$，都存在有限 $J \\subseteq I$ 使 $\\coprod_{i \\in J} X_{i} \\to X$ 仍是满射。'
       ].join('\n'),
@@ -27822,12 +27879,12 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '拟紧', '覆盖'],
       statement: [
-        '1. site $\\mathcal{C}$ 中 $X$ 拟紧 $\\iff$ $X$ 在标准拓扑下拟紧；',
+        '1. 景 $\\mathcal{C}$ 中 $X$ 拟紧 $\\iff$ $X$ 在标准拓扑下拟紧；',
         '2. 若 $X$ 有一个由**拟紧**对象组成的**有限**覆盖，则 $X$ 拟紧；',
         '3. 预拓扑斯 $\\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\\iff$ 存在满射 $X \\to F$ 且 $X \\in \\mathcal{C}$。'
       ].join('\n'),
       notes: [
-        ['**逐条证明。**','**1.** site 里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
+        ['**逐条证明。**','**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
 '第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -27838,7 +27895,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拟分离对象',
-      title: '拟分离对象（Quasi-Separated Object）',
+      title: '拟分离对象',
       regions: ['category'],
       tags: ['范畴论', '拟分离', '纤维积'],
       statement: [
@@ -27868,7 +27925,7 @@ window.MG = window.MG || {};
         '',
         '给出 $\\mathcal{C}$ 与「$\\mathcal{C}$ 上**拟紧且拟分离**的层」所成范畴之间的**等价**。'
       ].join('\n'),
-      notes: '也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ site $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。',
+      notes: '也就是说：**预拓扑斯由它的拓扑斯唯一确定**。一边是「小的对象」，一边是「拓扑斯里那种小而好的层」，两者是同一批东西的两个名字。\n\n这条把这一段的结构说圆了：预拓扑斯 $\\to$ 配上预标准拓扑 $\\to$ 景 $\\to$ 层范畴（拓扑斯）$\\to$ 从拓扑斯里捞回「小而好的层」，回到预拓扑斯。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -27878,7 +27935,7 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '拓扑斯的态射',
-      title: '拓扑斯的态射（Morphism of Toposes）',
+      title: '拓扑斯的态射',
       regions: ['category'],
       tags: ['范畴论', '拓扑斯', '几何态射'],
       statement: [
@@ -28066,7 +28123,7 @@ window.MG = window.MG || {};
       cluster: 'cond.set',
       type: 'definition',
       label: '凝聚态集',
-      title: '凝聚态集（Condensed Set）',
+      title: '凝聚态集',
       regions: ['condensed'],
       tags: ['凝聚态', '层', '定义'],
       statement: [
@@ -28293,7 +28350,7 @@ window.MG = window.MG || {};
       cluster: 'cond.ab',
       type: 'definition',
       label: '凝聚态阿贝尔群',
-      title: '凝聚态阿贝尔群（Condensed Abelian Group）',
+      title: '凝聚态阿贝尔群',
       regions: ['condensed'],
       tags: ['凝聚态', '阿贝尔群', '层'],
       statement: [
@@ -28373,7 +28430,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: 'Grothendieck 范畴',
-      title: 'Grothendieck 范畴（Grothendieck Category）',
+      title: 'Grothendieck 范畴',
       regions: ['homology'],
       tags: ['范畴论', '同调代数', '生成元'],
       statement: [
@@ -28599,7 +28656,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '加法 / 阿贝尔范畴',
-      title: '加法范畴与阿贝尔范畴（Additive / Abelian Category）',
+      title: '加法范畴与阿贝尔范畴',
       regions: ['homology'],
       tags: ['同调代数', '阿贝尔范畴', '加法范畴'],
       statement: [
@@ -28628,7 +28685,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '上链复形',
-      title: '复形（Complex）',
+      title: '复形',
       regions: ['homology'],
       tags: ['同调代数', '复形', '微分'],
       statement: [
@@ -28671,7 +28728,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '同伦',
-      title: '同伦（Homotopy）',
+      title: '同伦',
       regions: ['homology'],
       tags: ['同调代数', '同伦', '零伦'],
       statement: [
@@ -28695,7 +28752,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '同伦范畴',
-      title: '同伦范畴（Homotopy Category）',
+      title: '同伦范畴',
       regions: ['homology'],
       tags: ['同调代数', '同伦范畴'],
       statement: [
@@ -28719,7 +28776,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '映射锥',
-      title: '映射锥与位移（Mapping Cone）',
+      title: '映射锥与位移',
       regions: ['homology'],
       tags: ['同调代数', '映射锥', '位移'],
       statement: [
@@ -28739,7 +28796,7 @@ window.MG = window.MG || {};
       cluster: 'hom.complex',
       type: 'definition',
       label: '导出三角',
-      title: '导出三角（Distinguished Triangle）',
+      title: '导出三角',
       regions: ['homology'],
       tags: ['同调代数', '三角', '映射锥'],
       statement: [
@@ -28817,7 +28874,7 @@ window.MG = window.MG || {};
       cluster: 'hom.cohomology',
       type: 'definition',
       label: '同调',
-      title: '同调（Cohomology）',
+      title: '同调',
       regions: ['homology'],
       tags: ['同调代数', '同调', '复形'],
       statement: [
@@ -28866,7 +28923,7 @@ window.MG = window.MG || {};
       cluster: 'hom.cohomology',
       type: 'definition',
       label: '上同调函子',
-      title: '上同调函子（Cohomological Functor）',
+      title: '上同调函子',
       regions: ['homology'],
       tags: ['同调代数', '上同调函子', '正合'],
       statement: [
@@ -28907,7 +28964,7 @@ window.MG = window.MG || {};
       cluster: 'hom.cohomology',
       type: 'definition',
       label: '拟同构',
-      title: '拟同构与零调复形（Quasi-Isomorphism）',
+      title: '拟同构与零调复形',
       regions: ['homology'],
       tags: ['同调代数', '拟同构', '零调'],
       statement: [
@@ -28952,7 +29009,7 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'definition',
       label: '过滤',
-      title: '过滤（Filtration）',
+      title: '过滤',
       regions: ['homology'],
       tags: ['同调代数', '过滤', '关联分次'],
       statement: [
@@ -28972,7 +29029,7 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'definition',
       label: '谱序列',
-      title: '谱序列（Spectral Sequence）',
+      title: '谱序列',
       regions: ['homology'],
       tags: ['同调代数', '谱序列', '过滤'],
       statement: [
@@ -29097,14 +29154,14 @@ window.MG = window.MG || {};
       cluster: 'hom.sheaf',
       type: 'definition',
       label: '取值一般的预层与层',
-      title: '取值在一般范畴里的层（Sheaf with Values in a Category）',
+      title: '取值在一般范畴里的层',
       regions: ['homology'],
       tags: ['同调代数', '层', '阿贝尔层'],
       statement: [
         '设 $\\mathcal{C}$、$\\mathcal{D}$ 是范畴。',
         '',
         '1. 取值在 $\\mathcal{D}$ 的**预层**是反变函子 $T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$；预层之间的**态射**是自然变换。',
-        '2. $\\mathcal{C}$ 是 site 时，**层** $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$ 是这样的预层：对每个 $Y \\in \\mathcal{D}$，集合值预层',
+        '2. $\\mathcal{C}$ 是景时，**层** $F : \\mathcal{C}^{\\mathrm{op}} \\to \\mathcal{D}$ 是这样的预层：对每个 $Y \\in \\mathcal{D}$，集合值预层',
         '',
         '$$X \\longmapsto \\operatorname{Hom}_{\\mathcal{D}}\\bigl(Y,\\ F(X)\\bigr)$$',
         '',
@@ -29123,11 +29180,11 @@ window.MG = window.MG || {};
       cluster: 'hom.sheaf',
       type: 'definition',
       label: '阿贝尔层',
-      title: '阿贝尔层（Abelian Sheaf）',
+      title: '阿贝尔层',
       regions: ['homology'],
       tags: ['同调代数', '层', '阿贝尔群'],
       statement: [
-        '固定 site $\\mathcal{C}$。记',
+        '固定景 $\\mathcal{C}$。记',
         '',
         '$$\\widehat{\\mathcal{C}}(\\mathbf{Ab}) := \\operatorname{Hom}(\\mathcal{C}^{\\mathrm{op}}, \\mathbf{Ab})$$',
         '',
@@ -29175,7 +29232,7 @@ window.MG = window.MG || {};
       cluster: 'hom.sheaf',
       type: 'definition',
       label: '内 Hom',
-      title: '内 Hom（Internal Hom）',
+      title: '内 Hom',
       regions: ['homology'],
       tags: ['同调代数', '拓扑斯', '内 Hom'],
       statement: [
@@ -29238,7 +29295,7 @@ window.MG = window.MG || {};
       cluster: 'hom.sheaf',
       type: 'definition',
       label: '平坦阿贝尔层',
-      title: '平坦性（Flatness）',
+      title: '平坦性',
       regions: ['homology'],
       tags: ['同调代数', '平坦', '张量积'],
       statement: [
@@ -29284,7 +29341,7 @@ window.MG = window.MG || {};
       cluster: 'topo.cg',
       type: 'definition',
       label: '紧生成空间',
-      title: '紧生成空间 / $k$-空间（Compactly Generated Space）',
+      title: '紧生成空间 / $k$-空间',
       regions: ['topology'],
       tags: ['拓扑', '紧生成', 'k-空间', 'k-拓扑'],
       statement: [
@@ -29521,7 +29578,7 @@ window.MG = window.MG || {};
       cluster: 'topo.cg',
       type: 'definition',
       label: '紧开拓扑',
-      title: '紧开拓扑（Compact-Open Topology）',
+      title: '紧开拓扑',
       regions: ['topology'],
       tags: ['拓扑', '紧开拓扑', '函数空间'],
       statement: [
@@ -29564,7 +29621,7 @@ window.MG = window.MG || {};
       cluster: 'topo.cg',
       type: 'definition',
       label: '弱 Hausdorff 空间',
-      title: '弱 Hausdorff 空间（Weak Hausdorff Space）',
+      title: '弱 Hausdorff 空间',
       regions: ['topology'],
       tags: ['拓扑', '弱 Hausdorff', 'CGWH'],
       statement: '拓扑空间 $X$ 叫**弱 Hausdorff** 的，如果对每个连续映射 $f : S \\to X$（$S$ 紧 Hausdorff），像 $f(S)$ 都在 $X$ 中**闭**。',
@@ -29824,7 +29881,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '群',
-      title: '群与阿贝尔群（Group）',
+      title: '群与阿贝尔群',
       regions: ['algebra'],
       tags: ['代数', '群', '阿贝尔群', '运算'],
       statement: [
@@ -29853,7 +29910,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '子群',
-      title: '子群（Subgroup）',
+      title: '子群',
       regions: ['algebra'],
       tags: ['代数', '群', '子群'],
       statement: [
@@ -29877,7 +29934,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '正规子群',
-      title: '正规子群与陪集（Normal Subgroup）',
+      title: '正规子群与陪集',
       regions: ['algebra'],
       tags: ['代数', '群', '正规子群', '陪集'],
       statement: [
@@ -29905,7 +29962,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '商群',
-      title: '商群（Quotient Group）',
+      title: '商群',
       regions: ['algebra'],
       tags: ['代数', '群', '商群', '商集'],
       statement: [
@@ -29931,7 +29988,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '群同态、核与像',
-      title: '群同态（Group Homomorphism）',
+      title: '群同态',
       regions: ['algebra'],
       tags: ['代数', '群', '同态', '核', '像'],
       statement: [
@@ -29962,7 +30019,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'theorem',
       label: '第一同构定理（Noether）',
-      title: '第一同构定理（Noether）',
+      title: '第一同构定理',
       regions: ['algebra', 'set-theory'],
       tags: ['代数', '群', '同构定理', 'Noether', '商群', '商映射'],
       statement: [
@@ -30016,7 +30073,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '局部化',
-      title: '范畴的局部化（Localization）',
+      title: '范畴的局部化',
       regions: ['category'],
       tags: ['范畴论', '局部化', '分式', '同伦范畴'],
       statement: [
@@ -30087,7 +30144,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '正规空间',
-      title: '正规空间（Normal Space）',
+      title: '正规空间',
       regions: ['topology'],
       tags: ['拓扑', '分离公理', '正规', '闭集'],
       statement: [
@@ -30168,7 +30225,7 @@ window.MG = window.MG || {};
       cluster: 'cond.topo',
       type: 'definition',
       label: '拓扑阿贝尔群',
-      title: '拓扑阿贝尔群与连续同态（Topological Abelian Group）',
+      title: '拓扑阿贝尔群与连续同态',
       regions: ['condensed', 'topology'],
       tags: ['凝聚态', '拓扑阿贝尔群', '连续同态', '紧开拓扑'],
       statement: [
@@ -30324,7 +30381,7 @@ window.MG = window.MG || {};
       cluster: 'cond.topo',
       type: 'definition',
       label: 'Pontryagin 对偶',
-      title: 'Pontryagin 对偶（Pontryagin Dual）',
+      title: 'Pontryagin 对偶',
       regions: ['condensed'],
       tags: ['凝聚态', 'Pontryagin', '对偶', '圆群'],
       statement: [
@@ -30411,7 +30468,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '环',
-      title: '环与交换环（Ring）',
+      title: '环与交换环',
       regions: ['algebra'],
       tags: ['代数', '环', '交换环'],
       statement: [
@@ -30432,7 +30489,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '理想',
-      title: '理想与商环（Ideal）',
+      title: '理想与商环',
       regions: ['algebra'],
       tags: ['代数', '环', '理想', '商环'],
       statement: [
@@ -30457,7 +30514,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'definition',
       label: '模',
-      title: '模与模同态（Module）',
+      title: '模与模同态',
       regions: ['algebra'],
       tags: ['代数', '模', '环', '同态'],
       statement: [
@@ -30538,7 +30595,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '连通范畴',
-      title: '连通范畴（Connected Category）',
+      title: '连通范畴',
       regions: ['category'],
       tags: ['范畴论', '连通', '共尾', '指标范畴'],
       statement: [
@@ -30563,7 +30620,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '共尾函子',
-      title: '共尾函子（Cofinal Functor）',
+      title: '共尾函子',
       regions: ['category'],
       tags: ['范畴论', '共尾', 'cofinal', 'final', '余极限'],
       statement: [
@@ -30617,7 +30674,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '滤过范畴',
-      title: '滤过范畴与滤过余极限（Filtered Category）',
+      title: '滤过范畴与滤过余极限',
       regions: ['category'],
       tags: ['范畴论', '滤过', 'filtered', '余极限', '有向集'],
       statement: [
@@ -30734,7 +30791,7 @@ window.MG = window.MG || {};
       cluster: 'cat.algebra',
       type: 'definition',
       label: '幺半群对象',
-      title: '幺半群对象（Monoid Object）',
+      title: '幺半群对象',
       regions: ['category', 'algebra'],
       tags: ['范畴论', '代数结构', '幺半群对象', '笛卡尔范畴'],
       statement: [
@@ -30761,7 +30818,7 @@ window.MG = window.MG || {};
       cluster: 'cat.algebra',
       type: 'definition',
       label: '群对象与阿贝尔群对象',
-      title: '群对象与阿贝尔群对象（Group Object）',
+      title: '群对象与阿贝尔群对象',
       regions: ['category', 'algebra'],
       tags: ['范畴论', '代数结构', '群对象', '阿贝尔群对象', 'CondAb'],
       statement: [
@@ -30841,7 +30898,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'example',
       label: '环的局部化 W⁻¹R',
-      title: '环的局部化（Localization of a Ring）',
+      title: '环的局部化',
       regions: ['algebra', 'category'],
       tags: ['代数', '环', '局部化', '分式', '乘性子集'],
       statement: [
@@ -30902,7 +30959,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '层', '筛', '覆盖', '层化'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：',
+        '设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$，$R$ 是 $X$ 上的一个**筛**。则下列四条等价：',
         '',
         [
           '1. $R \\in J(X)$（即 $R$ 是 $X$ 上的**覆盖筛**）；',
@@ -30988,11 +31045,11 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '截面函子',
-      title: '截面函子与全局截面（Sections Functor）',
+      title: '截面函子与全局截面',
       regions: ['category'],
       tags: ['范畴论', '层', '截面', '全局截面', '函数空间'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$\\widetilde{\\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是',
+        '设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$，$\\widetilde{\\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是',
         '',
         '$$\\Gamma(X, -) : \\widetilde{\\mathcal{C}} \\longrightarrow \\mathbf{Set}, \\qquad F \\longmapsto \\Gamma(X, F) := F(X).$$',
         '',
@@ -31019,7 +31076,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'lemma',
       label: '蛇引理',
-      title: '蛇引理（Snake Lemma）',
+      title: '蛇引理',
       regions: ['homology'],
       tags: ['同调代数', '蛇引理', '追图', '正合列', '连接同态'],
       statement: [
@@ -31056,7 +31113,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'lemma',
       label: '五引理',
-      title: '五引理（Five Lemma）',
+      title: '五引理',
       regions: ['homology'],
       tags: ['同调代数', '五引理', '追图', '正合列', '同构'],
       statement: [
@@ -31105,7 +31162,7 @@ window.MG = window.MG || {};
       cluster: 'cat.basic',
       type: 'definition',
       label: '子范畴',
-      title: '子范畴与满子范畴（Subcategory）',
+      title: '子范畴与满子范畴',
       regions: ['category'],
       tags: ['范畴论', '子范畴', '满子范畴'],
       statement: [
@@ -31183,7 +31240,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '保极限的函子',
-      title: '函子保极限（Preservation of Limits）',
+      title: '函子保极限',
       regions: ['category'],
       tags: ['范畴论', '保极限', '保余极限', '函子'],
       statement: [
@@ -31208,7 +31265,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'definition',
       label: '正合函子',
-      title: '左正合 / 右正合 / 正合函子（Exact Functor）',
+      title: '左正合 / 右正合 / 正合函子',
       regions: ['category'],
       tags: ['范畴论', '正合函子', '左正合', '右正合'],
       statement: [
@@ -31251,7 +31308,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '加法函子',
-      title: '加法函子（Additive Functor）',
+      title: '加法函子',
       regions: ['homology'],
       tags: ['同调代数', '加法函子', '预加性', '直和'],
       statement: [
@@ -31276,7 +31333,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '分裂短正合列',
-      title: '分裂的短正合列（Split Exact Sequence）',
+      title: '分裂的短正合列',
       regions: ['homology'],
       tags: ['同调代数', '短正合列', '分裂', '直和'],
       statement: [
@@ -31310,7 +31367,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '足够多投射对象',
-      title: '足够多投射对象（Enough Projectives）',
+      title: '足够多投射对象',
       regions: ['homology'],
       tags: ['同调代数', '投射对象', '足够多', '消解'],
       statement: [
@@ -31338,7 +31395,7 @@ window.MG = window.MG || {};
       cluster: 'cat.yoneda',
       type: 'definition',
       label: '有限表现对象',
-      title: '有限表现（紧）对象（Finitely Presented Object）',
+      title: '有限表现（紧）对象',
       regions: ['category'],
       tags: ['范畴论', '有限表现', '紧对象', '可表函子'],
       statement: [
@@ -31380,15 +31437,14 @@ window.MG = window.MG || {};
 /* ==========================================================================
    内容包 · 第 2–4 章的定义骨架（8 条）
    --------------------------------------------------------------------------
-   拓扑与 site 那边一直缺的编号定义：完全不连通 / 极不连通（2.2.7）、
+   拓扑与景那边一直缺的编号定义：完全不连通 / 极不连通（2.2.7）、
    局部紧 Hausdorff（2.3.1）、Tychonoff（2.1.4）、
-   拓扑生成集（3.2.3）、以及 site 之间函子的四条：连续（3.4.4）、
-   site 的态射（3.4.5）、余连续（3.4.6）、诱导拓扑（3.4.7）。
+   拓扑生成集（3.2.3）、以及景之间函子的四条：连续（3.4.4）、景的态射（3.4.5）、余连续（3.4.6）、诱导拓扑（3.4.7）。
    ========================================================================== */
 window.MG = window.MG || {};
 (window.MG.packs = window.MG.packs || []).push({
 
-  name: '拓扑与 site 的定义骨架',
+  name: '拓扑与景的定义骨架',
   nodes: [
 
     /* -------------------------------------------- 完全不连通 / 极不连通 */
@@ -31425,7 +31481,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '局部紧 Hausdorff 空间',
-      title: '局部紧 Hausdorff 空间（Locally Compact Hausdorff）',
+      title: '局部紧 Hausdorff 空间',
       regions: ['topology'],
       tags: ['拓扑', '局部紧', 'Hausdorff', '紧邻域'],
       statement: [
@@ -31473,30 +31529,30 @@ window.MG = window.MG || {};
       refs: ['Munkres, Topology, §37', 'Le Stum, Exercise 2.19']
     },
 
-    /* -------------------------------------------- site 的拓扑生成集 */
+    /* -------------------------------------------- 景的拓扑生成集 */
     {
       id: 'def.topologically-generating',
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '拓扑生成集',
-      title: '拓扑生成集（Topologically Generating Set）',
+      title: '拓扑生成集',
       regions: ['category'],
-      tags: ['范畴论', 'site', '生成集', '筛'],
-      statement: '设 $\\mathcal{C}$ 是 site。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。',
+      tags: ['范畴论', '景', '生成集', '筛'],
+      statement: '设 $\\mathcal{C}$ 是景。集合 $G \\subseteq \\mathcal{C}$ 叫**拓扑生成集**，如果每个 $X \\in \\mathcal{C}$ 都容许一个由**落在 $G$ 里的对象**组成的覆盖族 $(G_{i} \\to X)_{i}$。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
-    /* ------------------------------------------------ 连续函子（site） */
+    /* ------------------------------------------------ 连续函子（景） */
     {
       id: 'def.continuous-functor',
       cluster: 'cat.topos',
       type: 'definition',
-      label: '连续函子（site 之间）',
-      title: '连续函子（Continuous Functor between Sites）',
+      label: '连续函子（景之间）',
+      title: '连续函子',
       regions: ['category'],
-      tags: ['范畴论', 'site', '连续函子', '态射'],
+      tags: ['范畴论', '景', '连续函子', '态射'],
       statement: [
-        '设 $\\mathcal{C}, \\mathcal{C}\'$ 是两个 site。函子',
+        '设 $\\mathcal{C}, \\mathcal{C}\'$ 是两个景。函子',
         '',
         '$$f^{-1} := g : \\mathcal{C} \\longrightarrow \\mathcal{C}\'$$',
         '叫**连续的**，如果沿 $g$ 的预复合把 $\\mathcal{C}\'$ 上的层拉回成 $\\mathcal{C}$ 上的层：',
@@ -31504,30 +31560,30 @@ window.MG = window.MG || {};
         '$$g^{*} : \\widetilde{\\mathcal{C}\'} \\longrightarrow \\widetilde{\\mathcal{C}}, \\qquad F \\longmapsto F \\circ g, \\qquad \\text{落在层范畴里。}$$'
       ].join('\n'),
       notes: [
-        '**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}\'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}\'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是 site 态射的一切别扭之处。',
+        '**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}\'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}\'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是景态射的一切别扭之处。',
         '⭐ **它等价于**：$g$ 把 $\\mathcal{C}\'$ 的覆盖族拉回成 $\\mathcal{C}$ 的覆盖族（覆盖筛的原像还是覆盖筛）。所以「连续」= 「覆盖关系被保住了」。',
         '**记号**：$f^{-1}$ 这个名字来自拓扑：空间之间的连续映射 $f : X \\to Y$ 给出开集范畴之间的函子 $f^{-1} : \\operatorname{Open}(Y) \\to \\operatorname{Open}(X)$（取原像），而层沿它拉回。',
-        '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **site 的态射**。'
+        '📌 下一步：再加一条「$f^{-1}$ 是左正合的」，就得到 **景的态射**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
-    /* -------------------------------------------------- site 的态射 */
+    /* -------------------------------------------------- 景的态射 */
     {
       id: 'def.morphism-of-sites',
       cluster: 'cat.topos',
       type: 'definition',
-      label: 'site 的态射',
-      title: 'site 的态射（Morphism of Sites）',
+      label: '景的态射',
+      title: '景的态射',
       regions: ['category'],
-      tags: ['范畴论', 'site', '态射', '左正合'],
+      tags: ['范畴论', '景', '态射', '左正合'],
       statement: [
-        '**site 的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}\'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \\dashv f_{*}$。'
+        '**景的态射**是一个**连续函子** $f^{-1} := g : \\mathcal{C} \\to \\mathcal{C}\'$，并且要求 $f^{-1}$ 是**左正合**的（保有限极限）。等价地：$f^{-1}$ 有右伴随 $f_{*}$，而 $f^{-1} \\dashv f_{*}$。'
       ].join('\n'),
       notes: [
         '⭐ **一对伴随**：$f^{-1} \\dashv f_{*}$ —— $f^{-1}$ 是左伴随（所以保余极限），$f_{*}$ 是右伴随（所以保极限）。加上「连续」那一条（$f^{-1}$ 把层拉回成层），这一对就构成拓扑斯之间的态射（见「拓扑斯的态射」）。',
-        '**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在 site 这一层先保有限极限。',
-        '**几何直觉**：空间之间的连续映射给出 site 的态射；site 的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「site」换成「层范畴」。'
+        '**为什么要求左正合**：层范畴里的有限极限是在预层里逐点算的，要让 $f^{-1}$ 把层送到层之后**还保有限极限**，就得让它在景这一层先保有限极限。',
+        '**几何直觉**：空间之间的连续映射给出景的态射；景的态射是这条的「代数替身」—— 之后拓扑斯的态射也是照这个模式定义的，只是把「景」换成「层范畴」。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -31538,10 +31594,10 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '余连续函子',
-      title: '余连续函子（Cocontinuous Functor）',
+      title: '余连续函子',
       regions: ['category'],
-      tags: ['范畴论', 'site', '余连续', '层'],
-      statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个 site 之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
+      tags: ['范畴论', '景', '余连续', '层'],
+      statement: '设 $g : \\mathcal{C}\' \\to \\mathcal{C}$ 是两个景之间的函子。叫**余连续的**，如果函子 $g^{\\sharp}$（把预层沿 $g$ 推出、再层化）**把层送到层**。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -31551,10 +31607,10 @@ window.MG = window.MG || {};
       cluster: 'cat.topos',
       type: 'definition',
       label: '诱导拓扑',
-      title: '诱导拓扑（Induced Topology）',
+      title: '诱导拓扑',
       regions: ['category'],
-      tags: ['范畴论', 'site', '诱导拓扑'],
-      statement: '设 $\\mathcal{C}\'$ 是 site，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。',
+      tags: ['范畴论', '景', '诱导拓扑'],
+      statement: '设 $\\mathcal{C}\'$ 是景，$f^{-1} : \\mathcal{C} \\to \\mathcal{C}\'$ 是任何函子。$\\mathcal{C}$ 上的**诱导拓扑**是使 $f^{-1}$ **连续**的最细拓扑。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }
   ],
@@ -31665,7 +31721,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '严格态射',
-      title: '严格态射（Strict Morphism）',
+      title: '严格态射',
       regions: ['category'],
       tags: ['范畴论', '严格', '余像', '像'],
       statement: [
@@ -32194,7 +32250,7 @@ window.MG = window.MG || {};
       cluster: 'hom.spectral',
       type: 'definition',
       label: '双复形',
-      title: '双复形（Bicomplex）',
+      title: '双复形',
       regions: ['homology'],
       tags: ['同调代数', '双复形', '复形的复形'],
       statement: [
@@ -32266,7 +32322,7 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', '层上同调', '导出函子', '截面函子'],
       statement: [
-        '设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是',
+        '设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔层复形**，$X \\in \\mathcal{C}$。它在 $X$ 上的**第 $n$ 个上同调群**是',
         '',
         '$$H^{n}(X, M^{\\bullet}) := R^{n}\\Gamma(X, M^{\\bullet}),$$',
         '',
@@ -32288,7 +32344,7 @@ window.MG = window.MG || {};
       regions: ['homology', 'category'],
       tags: ['同调代数', 'Čech 上同调', '预层', '覆盖'],
       statement: [
-        '设 $M^{\\bullet}$ 是 site $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是',
+        '设 $M^{\\bullet}$ 是景 $\\mathcal{C}$ 上的**阿贝尔预层复形**，$X \\in \\mathcal{C}$。它的第 $n$ 个 **Čech 上同调群**是',
         '',
         '$$\\check{H}^{n}(X, M^{\\bullet}) := \\Gamma\\bigl(X,\\ \\check{H}^{n}(M^{\\bullet})\\bigr).$$'
       ].join('\n'),
@@ -32344,11 +32400,11 @@ window.MG = window.MG || {};
       cluster: 'hom.sheafcoh',
       type: 'definition',
       label: '无环层',
-      title: '无环层（Acyclic Sheaf）',
+      title: '无环层',
       regions: ['homology'],
       tags: ['同调代数', '无环层', '层上同调'],
-      statement: 'site $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。',
-      notes: '⚠️ 专门提醒：**这个定义依赖 site $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个 site（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。',
+      statement: '景 $\\mathcal{C}$ 上的阿贝尔层 $M$ 叫**无环的**，如果 $H^{n}(M) = 0$ 对一切 $n \\ne 0$。',
+      notes: '⚠️ 专门提醒：**这个定义依赖景 $\\mathcal{C}$，不只是依赖拓扑斯 $\\widetilde{\\mathcal{C}}$** —— 换个景（同一拓扑斯）无环性可能变。这一点和「层的概念只依赖拓扑斯」形成对比。',
       refs: ['Le Stum, An introduction to condensed mathematics, §7.3']
     },
 
@@ -32494,7 +32550,7 @@ window.MG = window.MG || {};
    §4.2 的后半段。这一批要造出的东西是：**「紧 Hausdorff 空间」这个范畴
    恰好等于凝聚态集里「拟紧且拟分离」的那部分**（Thm 4.2.8）。
 
-   链条：内部 Hom 的函数空间刻画 $\to$ qc/qcqs 判定 $\to$ 弱 Hausdorff 与拟分离的
+   链条：内部 Hom 的函数空间刻画 $\to$ 拟紧/拟紧拟分离 判定 $\to$ 弱 Hausdorff 与拟分离的
    两条互相反向的技术引理 $\to$ 紧生成情形的合璧。
    ========================================================================== */
 window.MG = window.MG || {};
@@ -32539,8 +32595,8 @@ window.MG = window.MG || {};
       id: 'thm.qcqs-chaus-equiv',
       cluster: 'cond.set',
       type: 'theorem',
-      label: 'qc 与 qcqs 的判定',
-      title: '紧 Hausdorff 空间 $\\cong$ qcqs 凝聚态集',
+      label: '拟紧 与 拟紧拟分离 的判定',
+      title: '紧 Hausdorff 空间 $\\cong$ 拟紧拟分离 凝聚态集',
       regions: ['condensed'],
       tags: ['凝聚态数学', '拟紧', '拟分离', '紧 Hausdorff'],
       statement: [
@@ -32553,13 +32609,13 @@ window.MG = window.MG || {};
         '$$\\mathbf{CHaus}\\ \\simeq\\ \\{\\text{紧 Hausdorff 空间}\\} \\longrightarrow \\{\\text{拟紧且拟分离的凝聚态集}\\}.$$'
       ].join('\n'),
       notes: [
-        '**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（qcqs 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。',
+        '**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（拟紧拟分离 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。',
         '**第 1 条为什么用「自由」的 $F$。** 「拟紧」的一般定义是「任何覆盖都有有限子覆盖」，这是纯逻辑条件。这条把它换成了一个**几何**条件：能从一个（无限可能是很大的）自由紧 Hausdorff 块**满射**过来。于是拟紧变成了「可以被一个紧 Hausdorff 块盖住」。',
         '**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。',
-        '⭐ 一般拓扑斯上的对应结论是「qcqs 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。',
+        '⭐ 一般拓扑斯上的对应结论是「拟紧拟分离 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。',
         ['**证明（两条都是一般拓扑斯上的定理在 $\\mathrm{Cond}$ 上的特例）。**',
           '- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。',
-          '- **第 2 条**：qcqs 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 qcqs 的（qc 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎'
+          '- **第 2 条**：拟紧拟分离 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 拟紧拟分离 的（拟紧 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 4.2.8']
@@ -32607,15 +32663,15 @@ window.MG = window.MG || {};
         '',
         '其中每个 $S_{i}$ 是紧 Hausdorff 空间、每个过渡映射 $S_{i} \\hookrightarrow S_{j}$ 都是**含入**。',
         '',
-        '**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 qcqs 的凝聚态集。'
+        '**推论**：$\\operatorname{Ind}(\\mathbf{CHaus})$ 中那些「过渡映射为单射」的对象，恰好就是 拟紧拟分离 的凝聚态集。'
       ].join('\n'),
       notes: [
-        '⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 qcqs 的对象。',
+        '⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 拟紧拟分离 的对象。',
         '**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。',
         '⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。',
         ['**证明。** 只需证正向（反向是定义）。',
           '- 任何凝聚态集 $X$ 都能写成 $X \\cong \\varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。',
-          '- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「qcqs $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。',
+          '- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「拟紧拟分离 $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。',
           '- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。∎'
         ].join('\n')
       ].join('\n\n'),
@@ -33702,7 +33758,7 @@ window.MG = window.MG || {};
       notes: [
         '**「有效」是什么意思。** 给定一个等价关系，先取商 $Y = X/R$（这总能做），再把 $Y$ 沿商映射拉回 $X \\times X$。一般范畴里拉回来的东西可能**比 $R$ 大**（多粘了一些东西）。有效等价关系就是**恰好拉回 $R$ 自己**的那些。',
         '**为什么它重要**：只有有效等价关系才能「商了再拉回来还原」，也就是「取商」这个操作**不丢信息**。聚集到 $\\mathrm{Cond}$ 上，这条保证：把两个紧 Hausdorff 块按一个等价关系粘起来，得到的商对象在层论意义上「就是」那个等价关系本身。',
-        '⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个 site 上的层范畴」那个定义。',
+        '⭐ **这三条合起来正好是 Giraud 定理的输入**：一个有所有余极限、余极限万有且有效等价关系有效的范畴就是拓扑斯。反过来说，$\\mathrm{Cond}$ 是拓扑斯这件事可以从这三条**逐条验证**，不必回到「它是一个景上的层范畴」那个定义。',
         '📌 与「Cond 是拓扑斯」那条合起来看：那条给**结论**，这三条给**理由**；有了理由，才知道 $\\mathrm{Cond}$ 的拓扑斯结构具体好在哪里（能做商、能做内部 Hom、能做层上同调）。',
         ['**证明。** 给定 $R \\rightrightarrows X$。因为 $\\mathrm{Cond}$ 有余极限，商 $Y := \\operatorname{coeq}(R \\rightrightarrows X)$ 存在，且商映射 $q : X \\to Y$ 满（余等化子总是满）。由**上一条**，$q$ 是有效满：$q$ 是 $X \\times_{Y} X \\rightrightarrows X$ 的余等化子。',
           '现在比较 $R$ 与 $X\\times_{Y} X$：',
@@ -33803,7 +33859,7 @@ window.MG = window.MG || {};
           '- **第 1 条**：用 **Freyd 的特殊伴随函子定理**。一个**余完备**范畴若有**小的余生成集**且**余良幂**（每个对象只有一个小集合那么多的商），则它**完备**。Grothendieck 范畴 $\\mathcal{A}$：余完备 ✓（AB5）；余良幂与小的余生成集都来自**生成元** $U$ —— 一个商由它「在 $U$ 上的点」决定，于是 $U$ 的商构成一个集合，而它们的积就是余生成元。SAFT 于是给出所有极限存在 ✓。',
           '- **第 2 条**：这是 **Roos** 的经典结果。思路：AB5 让 $\\mathbb{N}$ 形状的**余**极限行为良好、AB5\\* 让 $\\mathbb{N}$ 形状的**逆**极限行为良好；两者同时成立时会逼出一条 Milnor 型的正合列（$\\prod$ 与 $\\bigoplus$ 的比较），在阿贝尔范畴里只能对零对象成立 ✓。',
           '- **第 3 条**：前半 —— $\\mathbf{Ab}(\\mathcal{T})$ 是拓扑斯上的层范畴，是 Grothendieck 范畴，故 AB5 + AB3\\*（第 1 条）✓；后半 —— 「AB6 与 AB4\\* 一般不成立」在一般拓扑斯上有反例（阿贝尔层的积一般不正合、滤过余极限一般不与积交换），这两条**不能白拿** ✓。∎',
-          '⭐ 所以 $\\mathrm{CondAb}$ 的 AB6 / AB4\\* 是**额外**的收获，来自 $\\mathbf{CHaus}$ 这个 site 的具体形状（逐项归约到 $\\mathbf{Ab}$），而不是任何拓扑斯都有的。'
+          '⭐ 所以 $\\mathrm{CondAb}$ 的 AB6 / AB4\\* 是**额外**的收获，来自 $\\mathbf{CHaus}$ 这个景的具体形状（逐项归约到 $\\mathbf{Ab}$），而不是任何拓扑斯都有的。'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 5.2.7', 'Freyd, Abelian Categories', 'Roos, Derived functors of inverse limits (AB5 与 AB5\\* 互斥)']
@@ -33850,7 +33906,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['同调代数', '层上同调', '超覆盖', '单纯对象'],
       statement: [
-        '设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层，$X \\in \\mathcal{C}$。取 $M$ 的一个**超覆盖**（即一个复形 $F_{\\bullet} \\to M$，其中每个 $F_{n}$ 是若干可表层的直和，且增广后处处正合）。则 $M$ 的上同调等于「逐层取截面」得到的**单纯阿贝尔群**的同伦群：',
+        '设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层，$X \\in \\mathcal{C}$。取 $M$ 的一个**超覆盖**（即一个复形 $F_{\\bullet} \\to M$，其中每个 $F_{n}$ 是若干可表层的直和，且增广后处处正合）。则 $M$ 的上同调等于「逐层取截面」得到的**单纯阿贝尔群**的同伦群：',
         '',
         '$$H^{n}(X,\\ M) \\cong \\pi^{n}\\bigl(\\Gamma(X,\\ F_{\\bullet})\\bigr).$$'
       ].join('\n'),
@@ -33925,7 +33981,7 @@ window.MG = window.MG || {};
       cluster: 'topo.stone',
       type: 'definition',
       label: '布尔环',
-      title: '布尔环（Boolean Ring）',
+      title: '布尔环',
       regions: ['topology', 'algebra'],
       tags: ['拓扑', 'Stone 空间', '布尔环', '幂等'],
       statement: [
@@ -34044,7 +34100,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'definition',
       label: '核与余核',
-      title: '核 / 余核与左正合、右正合列（Kernel, Cokernel）',
+      title: '核 / 余核与左正合、右正合列',
       regions: ['category'],
       tags: ['定义', '范畴论', '核', '余核', '正合列'],
       statement: [
@@ -35257,7 +35313,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '常层', '极限', '拓扑斯'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$\\Delta : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\\underline{(-)}$ 表示对应的**常层**。则：',
+        '设 $\\mathcal{C}$ 是景，$\\Delta : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$ 把集合 $E$ 送到**常预层**，$\\underline{(-)}$ 表示对应的**常层**。则：',
         '',
         '1. 若 $E = \\varprojlim_{i} E_{i}$ 是集合里的极限，则 $\\Delta E = \\varprojlim_{i}\\Delta E_{i}$；',
         '2. 同样地 $\\underline{E} = \\varprojlim_{i}\\underline{E_{i}}$ —— 常层函子也保极限。'
@@ -35971,7 +36027,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['定义', '关联层', '层化', '米田嵌入', '左正合'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：',
+        '设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$。**关联层**（associated sheaf）是「先米田嵌入、再层化」：',
         '',
         '$$X^{\\sharp} \\;:=\\; h_{X}^{\\#}, \\qquad h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X).$$',
         '',
@@ -36012,7 +36068,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ 一句话读法：$g$ 只是范畴之间的一条箭头，可是一旦取预层范畴，它自动长出**两边**的伴随 —— 左边 $\\hat{g}_{!}$ 与右边 $\\hat{g}_{*}$。于是「函子」到了预层这一层就升级成「拓扑斯态射」。',
         '⚠️ 方向容易记反：$g : \\mathcal{C} \\to \\mathcal{C}\'$ 而 $\\hat{g} : \\widehat{\\mathcal{C}} \\to \\widehat{\\mathcal{C}\'}$，**推前** $\\hat{g}_{*}$ 沿 $g$ 的方向走、**拉回** $\\hat{g}^{-1}$ 反着走。',
-        '📌 这条是「拓扑空间 / site 之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\\mathbf{CHaus}$ 上的层与更小 site 上的层对齐。'
+        '📌 这条是「拓扑空间 / 景之间的映射给出拓扑斯态射」的一般引擎；它在第 4 章被用来把 $\\mathbf{CHaus}$ 上的层与更小景上的层对齐。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Theorem 3.4.2, Corollary 3.4.3']
     },
@@ -36128,7 +36184,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['推论', 'Čech 上同调', '层上同调', '谱序列', '滤过余极限'],
       statement: [
-        '设 $\\mathcal{C}$ 是有纤维积的 site、$X \\in \\mathcal{C}$、$M$ 是 $\\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列',
+        '设 $\\mathcal{C}$ 是有纤维积的景、$X \\in \\mathcal{C}$、$M$ 是 $\\mathcal{C}$ 上的**阿贝尔层**。则存在谱序列',
         '',
         '$$E^{p,q}_{2} \\;=\\; \\check{H}^{p}\\bigl(X,\\ H^{q}(M)\\bigr) \\;\\Longrightarrow\\; H^{p+q}(X,\\ M),$$',
         '',
@@ -36339,7 +36395,7 @@ window.MG = window.MG || {};
         '$$s^{n} := s \\times_{X} 1_{X_{n}} : X_{n} \\longrightarrow X_{n+1},$$',
         '它满足收缩同伦的恒等式 $1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}$ ✓（逐面展开即得），于是增广复形同伦平凡，特别地零调 ✓。这正是「带截面的覆盖上 Čech 零调」那条命题。',
         '**（三）$\\mathcal{T} = \\widehat{\\mathcal{C}}$（预层）。** 由上一条定理，预层范畴里的极限与余极限逐点算，而零调是「逐点取同调为零」，于是在每个 $X \\in \\mathcal{C}$ 处化回 (二) ✓。',
-        '**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（site 上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎'
+        '**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（景上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎'
       ].join('\n')
     },
 
@@ -36852,7 +36908,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', '阿贝尔层', '拓扑斯', '阿贝尔群对象', '范畴等价'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site。则「site 上的**阿贝尔层**」与「拓扑斯 $\\widetilde{\\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：',
+        '设 $\\mathcal{C}$ 是景。则「景上的**阿贝尔层**」与「拓扑斯 $\\widetilde{\\mathcal{C}}$ 里的**阿贝尔群对象**」是同一个范畴：',
         '',
         '$$\\widetilde{\\mathcal{C}}(\\mathbf{Ab}) \\;\\simeq\\; \\mathbf{Ab}\\bigl(\\widetilde{\\mathcal{C}}\\bigr).$$'
       ].join('\n'),
@@ -37203,7 +37259,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', 'Čech 复形', '上链', '纤维积'],
       statement: [
-        '设 site $\\mathcal{C}$ 有纤维积，$\\mathfrak{X} = (X_{i} \\to X)_{i \\in I}$ 是一族态射，$M$ 是阿贝尔层。则',
+        '设景 $\\mathcal{C}$ 有纤维积，$\\mathfrak{X} = (X_{i} \\to X)_{i \\in I}$ 是一族态射，$M$ 是阿贝尔层。则',
         '',
         '$$\\check{C}^{n}(\\mathfrak{X}, M) \\;=\\; \\prod_{i_{0}, \\ldots, i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr).$$'
       ].join('\n'),
@@ -37366,7 +37422,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', '上同调预层', '关联层', '内射消解'],
       statement: [
-        '设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层、$n \\ne 0$。则预层',
+        '设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层、$n \\ne 0$。则预层',
         '',
         '$$U \\longmapsto H^{n}(U,\\ M)$$',
         '',
@@ -37388,7 +37444,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', 'Čech 上同调', '上同调预层', '层化'],
       statement: [
-        '设 $M$ 是 site 上的阿贝尔层、$n \\ne 0$，并把 $H^{n}(M)$ 记作预层 $U \\mapsto H^{n}(U, M)$。则',
+        '设 $M$ 是景上的阿贝尔层、$n \\ne 0$，并把 $H^{n}(M)$ 记作预层 $U \\mapsto H^{n}(U, M)$。则',
         '',
         '$$\\check{H}^{p}\\bigl(H^{n}(M)\\bigr) = 0 \\qquad (\\forall p \\ge 0).$$'
       ].join('\n'),
@@ -37431,7 +37487,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', 'Čech 上同调', '层上同调', '谱序列', '五项正合列'],
       statement: [
-        '设 $\\mathcal{C}$ 是有纤维积的 site、$X \\in \\mathcal{C}$、$M$ 是阿贝尔层。则',
+        '设 $\\mathcal{C}$ 是有纤维积的景、$X \\in \\mathcal{C}$、$M$ 是阿贝尔层。则',
         '',
         '$$\\check{H}^{1}(X,\\ M) \\;\\cong\\; H^{1}(X,\\ M).$$'
       ].join('\n'),
@@ -37459,7 +37515,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['命题', '无环层', 'Čech 上同调', '层上同调'],
       statement: [
-        '设 $M$ 是 site $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：',
+        '设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：',
         '',
         '1. $M$ **无环**：$H^{n}(M) = 0$（$n \\ne 0$）；',
         '2. 对每个 $X \\in \\mathcal{C}$：$H^{n}(X, M) = 0$（$n \\ne 0$）；',
@@ -38129,7 +38185,7 @@ window.MG = window.MG || {};
 window.MG = window.MG || {};
 (window.MG.packs = window.MG.packs || []).push({
 
-  name: '拓扑与 site 的性质',
+  name: '拓扑与景的性质',
 
   nodes: [
 
@@ -38320,17 +38376,17 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'proposition',
       label: '覆盖族构成预拓扑',
-      title: '命题：site 里所有生成覆盖筛的族构成预拓扑',
+      title: '命题：景里所有生成覆盖筛的族构成预拓扑',
       regions: ['category'],
-      tags: ['命题', 'site', '预拓扑', '覆盖族'],
+      tags: ['命题', '景', '预拓扑', '覆盖族'],
       statement: [
-        '设 $\\mathcal{C}$ 是有纤维积的 site。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \\to X)_{i \\in I}$ 构成 $\\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。',
+        '设 $\\mathcal{C}$ 是有纤维积的景。则全体「生成 $X$ 的覆盖筛」的族 $(X_{i} \\to X)_{i \\in I}$ 构成 $\\mathcal{C}$ 上的一个**预拓扑**，而且它**生成 $\\mathcal{C}$ 原来的拓扑** —— 这个预拓扑叫**极大预拓扑**。',
         '',
         '⚠️ 注意：生成覆盖筛的族**未必**是**给定**预拓扑下的覆盖族 —— 「极大」说的是「对给定的拓扑」，不是「对给定的预拓扑」。'
       ].join('\n'),
       notes: [
         '**证明。** 逐条验证预拓扑公理 ✓：恒等同构是覆盖 ✓；覆盖沿任意态射拉回仍是覆盖（用 (T2) 与纤维积）✓；两个覆盖的公共细化是覆盖（用 (T3)）✓。∎',
-        '⭐ 读法：**site 与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。'
+        '⭐ 读法：**景与（带纤维积的）预拓扑是同一份数据的两种写法** —— 用筛写方便讲层，用族写方便实际算。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.14']
     },
@@ -38345,7 +38401,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '层化', '像', '正合'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site、$u : T \\to T\'$ 是预层态射。则',
+        '设 $\\mathcal{C}$ 是景、$u : T \\to T\'$ 是预层态射。则',
         '',
         '$$\\operatorname{im}\\bigl(T^{\\#} \\to T\'^{\\#}\\bigr) \\;=\\; \\Bigl(\\operatorname{im}\\bigl(T \\to T\'\\bigr)\\Bigr)^{\\#}.$$'
       ].join('\n'),
@@ -38365,7 +38421,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '层化', '切片范畴', '余极限', '关联层'],
       statement: [
-        '设 $T$ 是 site $\\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限',
+        '设 $T$ 是景 $\\mathcal{C}$ 上的预层。则它的层化是切片范畴上的余极限',
         '',
         '$$T^{\\#} \\;\\cong\\; \\varinjlim_{X \\in \\mathcal{C}/T}\\ X^{\\sharp},$$',
         '',
@@ -38388,7 +38444,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '层化', '伴随', 'Hom'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site、$T$ 是预层、$F$ 是**层**。则',
+        '设 $\\mathcal{C}$ 是景、$T$ 是预层、$F$ 是**层**。则',
         '',
         '$$\\operatorname{Hom}_{\\widetilde{\\mathcal{C}}}\\bigl(T^{\\#},\\ F\\bigr) \\;=\\; \\operatorname{Hom}_{\\widehat{\\mathcal{C}}}\\bigl(T,\\ F\\bigr).$$'
       ].join('\n'),
@@ -38906,7 +38962,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '常层', '伴随', '终对象'],
       statement: [
-        '设 $E$ 是集合、$F$ 是 site $\\mathcal{C}$ 上的层。则',
+        '设 $E$ 是集合、$F$ 是景 $\\mathcal{C}$ 上的层。则',
         '',
         '$$\\operatorname{Hom}\\bigl(\\widetilde{E}_{\\mathcal{C}},\\ F\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Set}}\\bigl(E,\\ \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)\\bigr) \\;\\cong\\; \\operatorname{Hom}(\\mathbf{1}_{\\mathcal{C}}, F)^{E},$$',
         '',
@@ -39017,7 +39073,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['命题', '切片拓扑斯', '余连续', '拓扑斯态射'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site、$T \\in \\widehat{\\mathcal{C}}$。则',
+        '设 $\\mathcal{C}$ 是景、$T \\in \\widehat{\\mathcal{C}}$。则',
         '',
         '1. $j_{T}$ **余连续**，因而给出拓扑斯态射 $j_{T} : \\widetilde{\\mathcal{C}/T} \\to \\widetilde{\\mathcal{C}}$；',
         '2. $\\widetilde{\\mathcal{C}/T} \\;\\simeq\\; \\widetilde{\\mathcal{C}}/\\widetilde{T}$；',
@@ -39775,11 +39831,11 @@ window.MG = window.MG || {};
       label: '切片里的覆盖筛',
       title: '命题：$R$ 在 $\\mathcal{C}/T$ 里覆盖 $\\iff$ $\\hat j_{T!}R$ 在 $\\mathcal{C}$ 里是覆盖筛',
       regions: ['category'],
-      tags: ['命题', '切片范畴', '覆盖筛', 'site 的态射'],
-      statement: '设 $\\mathcal{C}$ 是 site、$T \\in \\widehat{\\mathcal{C}}$、$s \\in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\\mathcal{C}/T$ 里是**覆盖** $\\iff$ $\\hat j_{T!}R$ 是 $X$ 在 $\\mathcal{C}$ 里的**覆盖筛**。',
+      tags: ['命题', '切片范畴', '覆盖筛', '景的态射'],
+      statement: '设 $\\mathcal{C}$ 是景、$T \\in \\widehat{\\mathcal{C}}$、$s \\in T(X)$。则 $s$ 上的一个筛 $R$ 在 $\\mathcal{C}/T$ 里是**覆盖** $\\iff$ $\\hat j_{T!}R$ 是 $X$ 在 $\\mathcal{C}$ 里的**覆盖筛**。',
       notes: [
         '**证明。** 两边都是「沿 $R$ 的余锥能不能覆盖」这件事的翻译 ✓：$\\mathcal{C}/T$ 里的覆盖由 $\\mathcal{C}$ 的覆盖沿 $j_{T}$ 拉来，而 $j_{T!}$ 正是把 $\\mathcal{C}/T$ 里的筛搬回 $\\mathcal{C}$ 的函子 ✓。',
-        '⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出 site 的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎'
+        '⚠️ 但 $j_{T!}$ **一般不左正合** —— 所以这条给不出景的态射（这正是为什么后面要用 $j_{T}$ 的**余连续性**去造拓扑斯态射）。∎'
       ].join('\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.62']
     },
@@ -40023,7 +40079,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '函数极限',
-      title: '函数极限 $\\lim_{x \\to x_0} f(x) = L$（Limit of a Function）',
+      title: '函数极限 $\\lim_{x \\to x_0} f(x) = L$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -40043,7 +40099,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '单侧极限',
-      title: '左极限与右极限（One-Sided Limits）',
+      title: '左极限与右极限',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -40065,7 +40121,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'theorem',
       label: '夹逼定理',
-      title: '夹逼定理（Squeeze Theorem）',
+      title: '夹逼定理',
       regions: ['analysis'],
       tags: ['定理', '极限'],
       statement: [
@@ -40085,7 +40141,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'proposition',
       label: '极限的四则运算与保序性',
-      title: '命题：极限的四则运算、保序性与绝对值（Algebra of Limits）',
+      title: '命题：极限的四则运算、保序性与绝对值',
       regions: ['analysis'],
       tags: ['命题', '极限'],
       statement: [
@@ -40106,7 +40162,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: 'Cauchy 列',
-      title: 'Cauchy 列（Cauchy Sequence）',
+      title: 'Cauchy 列',
       regions: ['analysis'],
       tags: ['定义', '极限', '完备性'],
       statement: [
@@ -40124,7 +40180,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '上极限与下极限',
-      title: '上极限与下极限 $\\limsup$ / $\\liminf$（Limit Superior and Inferior）',
+      title: '上极限与下极限 $\\limsup$ / $\\liminf$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -40150,7 +40206,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'definition',
       label: '聚点',
-      title: '聚点 / 极限点（Limit Point）',
+      title: '聚点 / 极限点',
       regions: ['analysis'],
       tags: ['定义', '完备性'],
       statement: [
@@ -40170,7 +40226,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'theorem',
       label: '单调有界定理',
-      title: '单调有界定理（Monotone Convergence Theorem）',
+      title: '单调有界定理',
       regions: ['analysis'],
       tags: ['定理', '完备性'],
       statement: [
@@ -40190,7 +40246,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'lemma',
       label: '闭区间套定理',
-      title: '引理：闭区间套定理（Nested Interval Theorem）',
+      title: '引理：闭区间套定理',
       regions: ['analysis'],
       tags: ['引理', '完备性'],
       statement: [
@@ -40225,7 +40281,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'theorem',
       label: 'Cauchy 收敛准则',
-      title: '定理：收敛 $\\iff$ Cauchy（Cauchy Criterion）',
+      title: '定理：收敛 $\\iff$ Cauchy',
       regions: ['analysis'],
       tags: ['定理', '完备性'],
       statement: [
@@ -40255,7 +40311,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.completeness',
       type: 'theorem',
       label: '完备性的六条等价',
-      title: '定理：下列六条彼此等价（TFAE）',
+      title: '定理：下列六条彼此等价',
       regions: ['analysis'],
       tags: ['定理', '完备性', '等价'],
       statement: [
@@ -40576,7 +40632,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'definition',
       label: '一致连续',
-      title: '一致连续（Uniform Continuity）',
+      title: '一致连续',
       regions: ['analysis', 'topology'],
       tags: ['定义', '连续'],
       statement: [
@@ -40608,7 +40664,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'theorem',
       label: '最值定理',
-      title: '最值定理（Extreme Value Theorem）',
+      title: '最值定理',
       regions: ['analysis', 'topology'],
       tags: ['定理', '连续', '紧'],
       statement: [
@@ -40624,7 +40680,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'theorem',
       label: '介值定理',
-      title: '介值定理（Intermediate Value Theorem）',
+      title: '介值定理',
       regions: ['analysis'],
       tags: ['定理', '连续'],
       statement: [
@@ -40861,7 +40917,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'definition',
       label: '局部极值',
-      title: '局部极大与局部极小（Local Extremum）',
+      title: '局部极大与局部极小',
       regions: ['analysis'],
       tags: ['定义', '导数'],
       statement: [
@@ -40914,7 +40970,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'theorem',
       label: 'Lagrange 中值定理',
-      title: 'Lagrange 中值定理（Mean Value Theorem）',
+      title: 'Lagrange 中值定理',
       regions: ['analysis'],
       tags: ['定理', '导数'],
       statement: [
@@ -41004,7 +41060,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'definition',
       label: '高阶导数与 C^k',
-      title: '高阶导数与 $C^{k}$ 类（Higher Derivatives）',
+      title: '高阶导数与 $C^{k}$ 类',
       regions: ['analysis'],
       tags: ['定义', '导数'],
       statement: [
@@ -41024,7 +41080,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'definition',
       label: '凸函数',
-      title: '凸函数与 Jensen 不等式（Convex Function）',
+      title: '凸函数与 Jensen 不等式',
       regions: ['analysis', 'order-theory'],
       tags: ['定义', '导数', '凸性'],
       statement: [
@@ -41356,7 +41412,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'definition',
       label: '分割',
-      title: '分割与加细（Partition）',
+      title: '分割与加细',
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
@@ -41396,7 +41452,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'definition',
       label: '上和与下和',
-      title: '上和 $U(f, P)$ 与下和 $L(f, P)$（Darboux Sums）',
+      title: '上和 $U(f, P)$ 与下和 $L(f, P)$',
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
@@ -41595,7 +41651,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'proposition',
       label: '换元积分',
-      title: '命题：换元公式（Substitution）',
+      title: '命题：换元公式',
       regions: ['analysis'],
       tags: ['命题', '积分'],
       statement: [
@@ -41611,7 +41667,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'proposition',
       label: '分部积分',
-      title: '命题：分部积分公式（Integration by Parts）',
+      title: '命题：分部积分公式',
       regions: ['analysis'],
       tags: ['命题', '积分'],
       statement: [
@@ -41647,7 +41703,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.riemann',
       type: 'definition',
       label: '反常积分',
-      title: '反常积分：无穷区间与无界函数（Improper Integral）',
+      title: '反常积分：无穷区间与无界函数',
       regions: ['analysis'],
       tags: ['定义', '积分'],
       statement: [
@@ -42066,7 +42122,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'theorem',
       label: '比较判别法',
-      title: '定理：比较判别法（Comparison Test）',
+      title: '定理：比较判别法',
       regions: ['analysis'],
       tags: ['定理', '级数', '收敛'],
       statement: [
@@ -42176,7 +42232,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'definition',
       label: '绝对收敛',
-      title: '绝对收敛（Absolute Convergence）',
+      title: '绝对收敛',
       regions: ['analysis'],
       tags: ['定义', '级数', '收敛'],
       statement: [
@@ -42194,7 +42250,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'definition',
       label: '条件收敛',
-      title: '条件收敛（Conditional Convergence）',
+      title: '条件收敛',
       regions: ['analysis'],
       tags: ['定义', '级数', '收敛'],
       statement: [
@@ -42544,7 +42600,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '逐点收敛',
-      title: '逐点收敛（Pointwise Convergence）',
+      title: '逐点收敛',
       regions: ['analysis'],
       tags: ['定义', '函数列', '收敛'],
       statement: [
@@ -42562,7 +42618,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '一致收敛',
-      title: '一致收敛 $f_n \\rightrightarrows f$（Uniform Convergence）',
+      title: '一致收敛 $f_n \\rightrightarrows f$',
       regions: ['analysis'],
       tags: ['定义', '函数列', '收敛'],
       statement: [
@@ -42582,7 +42638,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '一致 Cauchy 列',
-      title: '一致 Cauchy 列（Uniformly Cauchy）',
+      title: '一致 Cauchy 列',
       regions: ['analysis'],
       tags: ['定义', '函数列', '收敛'],
       statement: [
@@ -42691,7 +42747,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.uniform',
       type: 'definition',
       label: '幂级数',
-      title: '幂级数（Power Series）',
+      title: '幂级数',
       regions: ['analysis'],
       tags: ['定义', '幂级数', '级数'],
       statement: [
@@ -43122,7 +43178,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.vectorspace',
       type: 'definition',
       label: '子空间',
-      title: '线性子空间（Linear Subspace）',
+      title: '线性子空间',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43166,7 +43222,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.vectorspace',
       type: 'definition',
       label: '坐标',
-      title: '坐标与有序基（Coordinates）',
+      title: '坐标与有序基',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43354,7 +43410,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '线性映射',
-      title: '线性映射（Linear Map）',
+      title: '线性映射',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43378,7 +43434,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '线性同构',
-      title: '线性同构（Linear Isomorphism）',
+      title: '线性同构',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43398,7 +43454,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '核与像',
-      title: '核与像（Kernel and Image）',
+      title: '核与像',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43422,7 +43478,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '商空间',
-      title: '商空间 $V / U$（Quotient Space）',
+      title: '商空间 $V / U$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43484,7 +43540,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '秩',
-      title: '秩 $\\operatorname{rank} T$（Rank）',
+      title: '秩 $\\operatorname{rank} T$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43502,7 +43558,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '零化度',
-      title: '零化度 $\\operatorname{null} T$（Nullity）',
+      title: '零化度 $\\operatorname{null} T$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43536,7 +43592,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '对偶空间',
-      title: '对偶空间 $V^{\\ast}$（Dual Space）',
+      title: '对偶空间 $V^{\\ast}$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43560,7 +43616,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '对偶基',
-      title: '对偶基（Dual Basis）',
+      title: '对偶基',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43582,7 +43638,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.linmap',
       type: 'definition',
       label: '零化子',
-      title: '零化子 $U^{0}$（Annihilator）',
+      title: '零化子 $U^{0}$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43798,7 +43854,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '矩阵',
-      title: '矩阵（Matrix）',
+      title: '矩阵',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43902,7 +43958,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '初等变换与初等矩阵',
-      title: '初等变换与初等矩阵（Elementary Matrices）',
+      title: '初等变换与初等矩阵',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -43990,7 +44046,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '多重线性型',
-      title: '多重线性型 $V^{n} \\to K$（Multilinear Form）',
+      title: '多重线性型 $V^{n} \\to K$',
       regions: ['algebra'],
       tags: ['定义', '线性代数'],
       statement: [
@@ -44054,7 +44110,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.matrix',
       type: 'definition',
       label: '行列式',
-      title: '行列式 $\\det A$（Determinant）',
+      title: '行列式 $\\det A$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '行列式'],
       statement: [
@@ -44417,7 +44473,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'definition',
       label: '一元多项式',
-      title: '一元多项式（Polynomial）',
+      title: '一元多项式',
       regions: ['algebra'],
       tags: ['定义', '代数', '多项式'],
       statement: [
@@ -44439,7 +44495,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'definition',
       label: '多项式环',
-      title: '多项式环 $K[x]$（Polynomial Ring）',
+      title: '多项式环 $K[x]$',
       regions: ['algebra'],
       tags: ['定义', '代数', '多项式', '环'],
       statement: [
@@ -44538,7 +44594,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'definition',
       label: '不可约多项式',
-      title: '不可约多项式（Irreducible Polynomial）',
+      title: '不可约多项式',
       regions: ['algebra'],
       tags: ['定义', '代数', '多项式'],
       statement: [
@@ -44558,7 +44614,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.polynomial',
       type: 'theorem',
       label: 'K[x] 是唯一分解整环',
-      title: '定理：$K[x]$ 是唯一分解整环（UFD）',
+      title: '定理：$K[x]$ 是唯一分解整环',
       regions: ['algebra'],
       tags: ['定理', '代数', '多项式', '环'],
       statement: [
@@ -44752,7 +44808,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '不变子空间',
-      title: '不变子空间（Invariant Subspace）',
+      title: '不变子空间',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -44772,7 +44828,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '特征值与特征向量',
-      title: '特征值与特征向量（Eigenvalue & Eigenvector）',
+      title: '特征值与特征向量',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -44816,7 +44872,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '迹',
-      title: '迹 $\\operatorname{tr} A$（Trace）',
+      title: '迹 $\\operatorname{tr} A$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -44838,7 +44894,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '相似',
-      title: '相似（Similarity）',
+      title: '相似',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -45215,7 +45271,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '内积',
-      title: '内积与内积空间（Inner Product Space）',
+      title: '内积与内积空间',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -45342,7 +45398,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '正交投影',
-      title: '正交投影（Orthogonal Projection）',
+      title: '正交投影',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -45386,7 +45442,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '伴随算子',
-      title: '伴随算子 $T^{\\ast}$（Adjoint Operator）',
+      title: '伴随算子 $T^{\\ast}$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -45408,7 +45464,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '等距与正交变换',
-      title: '等距、正交变换与酉变换（Isometry）',
+      title: '等距、正交变换与酉变换',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -45490,7 +45546,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'definition',
       label: '二次型',
-      title: '二次型与正定性（Quadratic Form）',
+      title: '二次型与正定性',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '内积'],
       statement: [
@@ -45787,7 +45843,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.multilinear',
       type: 'definition',
       label: '双线性型',
-      title: '双线性型（Bilinear Form）',
+      title: '双线性型',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '张量'],
       statement: [
@@ -46081,7 +46137,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '赋范空间',
-      title: '赋范空间（Normed Space）',
+      title: '赋范空间',
       regions: ['analysis'],
       tags: ['定义', '泛函', '范数'],
       statement: [
@@ -46114,7 +46170,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '偏导数',
-      title: '偏导数（Partial Derivative）',
+      title: '偏导数',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -46134,7 +46190,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '方向导数',
-      title: '方向导数（Directional Derivative）',
+      title: '方向导数',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -46152,7 +46208,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '可微与全微分',
-      title: '可微与全微分（Total Differential）',
+      title: '可微与全微分',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -46172,7 +46228,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '梯度',
-      title: '梯度（Gradient）',
+      title: '梯度',
       regions: ['analysis'],
       tags: ['定义', '微积分', '多元'],
       statement: [
@@ -46192,7 +46248,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: 'Jacobi 矩阵',
-      title: 'Jacobi 矩阵（Jacobian Matrix）',
+      title: 'Jacobi 矩阵',
       regions: ['analysis'],
       tags: ['定义', '微积分', '线性代数'],
       statement: [
@@ -46210,7 +46266,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: 'Hessian 矩阵',
-      title: 'Hessian 矩阵（Hessian）',
+      title: 'Hessian 矩阵',
       regions: ['analysis'],
       tags: ['定义', '微积分', '线性代数'],
       statement: [
@@ -46333,7 +46389,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '压缩映射',
-      title: '压缩映射（Contraction）',
+      title: '压缩映射',
       regions: ['analysis'],
       tags: ['定义', '度量空间', '不动点'],
       statement: [
@@ -46470,7 +46526,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.multivariable',
       type: 'definition',
       label: '浸入 / 淹没 / 嵌入',
-      title: '浸入、淹没与嵌入（Immersion / Submersion / Embedding）',
+      title: '浸入、淹没与嵌入',
       regions: ['analysis'],
       tags: ['定义', '微积分', '流形'],
       statement: [
@@ -47140,7 +47196,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '群作用',
-      title: '群作用、轨道与稳定子（Group Action）',
+      title: '群作用、轨道与稳定子',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '群作用'],
       statement: [
@@ -47229,7 +47285,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '符号与交错群',
-      title: '置换的符号与交错群（Sign and Alternating Group）',
+      title: '置换的符号与交错群',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '置换'],
       statement: [
@@ -47255,7 +47311,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.group-action',
       type: 'definition',
       label: '循环群',
-      title: '循环群（Cyclic Group）',
+      title: '循环群',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '循环群'],
       statement: [
@@ -47339,7 +47395,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.solvable',
       type: 'definition',
       label: '单群',
-      title: '单群（Simple Group）',
+      title: '单群',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '单群'],
       statement: [
@@ -47353,7 +47409,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.solvable',
       type: 'definition',
       label: '合成列',
-      title: '合成列与合成因子（Composition Series）',
+      title: '合成列与合成因子',
       regions: ['algebra'],
       tags: ['定义', '代数', '群', '合成列'],
       statement: [
@@ -47844,7 +47900,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'proposition',
       label: '环与域的基本等式',
-      title: '命题：环与域里的基本等式（Consequences of the Ring Axioms）',
+      title: '命题：环与域里的基本等式',
       regions: ['analysis', 'algebra'],
       tags: ['命题', '代数', '运算'],
       refs: ['Lang, Algebra, Ch. I', 'Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1'],
@@ -47868,7 +47924,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'proposition',
       label: '序与四则运算',
-      title: '命题：不等式的基本运算（Order and the Field Operations）',
+      title: '命题：不等式的基本运算',
       regions: ['analysis', 'algebra'],
       tags: ['命题', '序', '不等式'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1'],
@@ -47894,7 +47950,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'proposition',
       label: '绝对值的运算性质',
-      title: '命题：绝对值的运算性质（Properties of the Absolute Value）',
+      title: '命题：绝对值的运算性质',
       regions: ['analysis'],
       tags: ['命题', '绝对值', '不等式'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1'],
@@ -47918,7 +47974,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'corollary',
       label: '阿基米德的 ε 形式与取整',
-      title: '推论：$1/n < \\varepsilon$ 与取整函数（Archimedean Corollaries）',
+      title: '推论：$1/n < \\varepsilon$ 与取整函数',
       regions: ['analysis'],
       tags: ['推论', '阿基米德', '取整'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1'],
@@ -47944,7 +48000,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'definition',
       label: '整数幂',
-      title: '整数幂 $a^{n}$（Integer Powers）',
+      title: '整数幂 $a^{n}$',
       regions: ['analysis'],
       tags: ['定义', '幂', '运算'],
       refs: ['Lang, Algebra, Ch. I'],
@@ -47964,7 +48020,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'proposition',
       label: '指数律与幂的单调性',
-      title: '命题：指数律（Laws of Exponents）',
+      title: '命题：指数律',
       regions: ['analysis'],
       tags: ['命题', '幂', '运算'],
       refs: ['Lang, Algebra, Ch. I'],
@@ -48007,7 +48063,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'definition',
       label: '有理指数与实数指数幂',
-      title: '有理指数与实数指数幂（Rational and Real Powers）',
+      title: '有理指数与实数指数幂',
       regions: ['analysis'],
       tags: ['定义', '幂', '指数'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1'],
@@ -48035,7 +48091,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'theorem',
       label: '二项式定理',
-      title: '定理：二项式定理（Binomial Theorem）',
+      title: '定理：二项式定理',
       regions: ['analysis'],
       tags: ['定理', '组合', '代数'],
       refs: ['Lang, Algebra, Ch. I'],
@@ -48447,7 +48503,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'proposition',
       label: '极限的基本性质',
-      title: '命题：极限的唯一性、有界性与保号性（Basic Properties of Limits）',
+      title: '命题：极限的唯一性、有界性与保号性',
       regions: ['analysis'],
       tags: ['命题', '极限', '数列'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3'],
@@ -48469,7 +48525,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.continuity',
       type: 'proposition',
       label: '连续函数的运算',
-      title: '命题：连续函数的和差积商与复合（Algebra of Continuous Functions）',
+      title: '命题：连续函数的和差积商与复合',
       regions: ['analysis'],
       tags: ['命题', '连续', '运算'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 4'],
@@ -48501,7 +48557,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'theorem',
       label: '求导法则',
-      title: '定理：求导的四则运算与链式法则（Derivative Rules）',
+      title: '定理：求导的四则运算与链式法则',
       regions: ['analysis'],
       tags: ['定理', '导数', '运算'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 5'],
@@ -48523,7 +48579,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.mvt',
       type: 'theorem',
       label: '初等函数的导数',
-      title: '定理：初等函数的导数表（Derivatives of Elementary Functions）',
+      title: '定理：初等函数的导数表',
       regions: ['analysis'],
       tags: ['定理', '导数', '初等函数'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 8'],
@@ -48543,7 +48599,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.series',
       type: 'theorem',
       label: '几何级数',
-      title: '定理：几何级数（Geometric Series）',
+      title: '定理：几何级数',
       regions: ['analysis'],
       tags: ['定理', '级数', '几何级数'],
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 3'],
@@ -48740,7 +48796,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'proposition',
       label: '群的基本性质',
-      title: '命题：群的消去律与逆的公式（Elementary Group Theory）',
+      title: '命题：群的消去律与逆的公式',
       regions: ['algebra'],
       tags: ['命题', '群', '运算'],
       refs: ['Lang, Algebra, Ch. I'],
@@ -48760,7 +48816,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'proposition',
       label: '理想的运算与商环泛性质',
-      title: '命题：理想的交、和、积与商环的泛性质（Operations on Ideals）',
+      title: '命题：理想的交、和、积与商环的泛性质',
       regions: ['algebra'],
       tags: ['命题', '环', '理想', '商环'],
       refs: ['Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1'],
@@ -48788,7 +48844,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.structures',
       type: 'proposition',
       label: '素理想与极大理想',
-      title: '命题：素理想、极大理想与商环（Prime and Maximal Ideals）',
+      title: '命题：素理想、极大理想与商环',
       regions: ['algebra'],
       tags: ['命题', '环', '理想', '商环'],
       refs: ['Atiyah–Macdonald, Introduction to Commutative Algebra, Ch. 1'],
@@ -48808,7 +48864,7 @@ window.MG = window.MG || {};
       cluster: 'cat.functor',
       type: 'proposition',
       label: '函子保同构',
-      title: '命题：函子把同构送到同构（Functors Preserve Isomorphisms）',
+      title: '命题：函子把同构送到同构',
       regions: ['category'],
       tags: ['命题', '范畴论', '函子'],
       refs: ['Mac Lane, Categories for the Working Mathematician, Ch. I'],
@@ -49132,7 +49188,7 @@ window.MG = window.MG || {};
       cluster: 'cond.solid',
       type: 'definition',
       label: '整值测度',
-      title: '整值测度 $M(S,\\mathbb{Z})$（Integer-Valued Measures）',
+      title: '整值测度 $M(S,\\mathbb{Z})$',
       regions: ['condensed'],
       tags: ['定义', '凝聚态', '测度', '固态'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1'],
@@ -49154,7 +49210,7 @@ window.MG = window.MG || {};
       cluster: 'cond.solid',
       type: 'definition',
       label: '固态阿贝尔群',
-      title: '固态阿贝尔群（Solid Abelian Groups）',
+      title: '固态阿贝尔群',
       regions: ['condensed'],
       tags: ['定义', '凝聚态', '固态'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1'],
@@ -49220,7 +49276,7 @@ window.MG = window.MG || {};
       cluster: 'cond.solid',
       type: 'proposition',
       label: '固态化把超覆盖变成正合列',
-      title: '命题：超覆盖的固态化正合（Hypercover Exactness）',
+      title: '命题：超覆盖的固态化正合',
       regions: ['condensed'],
       tags: ['命题', '固态', '超覆盖'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Proposition 5.6'],
@@ -49635,7 +49691,7 @@ window.MG = window.MG || {};
       cluster: 'cond.analytic',
       type: 'definition',
       label: '预解析环',
-      title: '预解析环（Pre-Analytic Ring）',
+      title: '预解析环',
       regions: ['condensed'],
       tags: ['定义', '凝聚态', '解析环'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.1'],
@@ -49658,7 +49714,7 @@ window.MG = window.MG || {};
       cluster: 'cond.analytic',
       type: 'definition',
       label: '解析环',
-      title: '解析环（Analytic Ring）',
+      title: '解析环',
       regions: ['condensed'],
       tags: ['定义', '凝聚态', '解析环'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.4'],
@@ -50022,7 +50078,7 @@ window.MG = window.MG || {};
       cluster: 'analytic.adic',
       type: 'definition',
       label: '离散 Huber pair',
-      title: '离散 Huber pair（Discrete Huber Pair）',
+      title: '离散 Huber pair',
       regions: ['analytic'],
       tags: ['定义', '解析几何', 'adic'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1'],
@@ -50045,7 +50101,7 @@ window.MG = window.MG || {};
       cluster: 'analytic.adic',
       type: 'definition',
       label: 'adic 谱 Spa',
-      title: 'adic 谱 $\\operatorname{Spa}(A,A^+)$（Adic Spectrum）',
+      title: 'adic 谱 $\\operatorname{Spa}(A,A^+)$',
       regions: ['analytic'],
       tags: ['定义', '解析几何', 'adic', '谱'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1'],
@@ -50139,7 +50195,7 @@ window.MG = window.MG || {};
       cluster: 'analytic.adic',
       type: 'definition',
       label: '离散 adic 空间',
-      title: '离散 adic 空间（Discrete Adic Space）',
+      title: '离散 adic 空间',
       regions: ['analytic'],
       tags: ['定义', '解析几何', 'adic'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.5'],
@@ -50258,7 +50314,7 @@ window.MG = window.MG || {};
       target: 'thm.adic-gluing',
       title: '结构层 + 局部化的全忠实 $\\implies$ $\\infty$-范畴粘合',
       proof: [
-        '**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的 site，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。',
+        '**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。',
         '',
         '**第一步：$\\operatorname{Spec}$ 是层。** 对标准覆盖 $\\{(A,A^+) \\to (A_i,A_i^+)\\}$，$\\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \\to \\varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。',
         '',
@@ -50347,7 +50403,7 @@ window.MG = window.MG || {};
       cluster: 'analytic.dual',
       type: 'definition',
       label: '6-函子形式',
-      title: '6-函子形式（Six-Functor Formalism）',
+      title: '6-函子形式',
       regions: ['analytic'],
       tags: ['定义', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, p. 72'],
@@ -53366,11 +53422,11 @@ window.MG = window.MG || {};
     ['def.product-topology', 'thm.tykhonov', 'def-dep.tykhonov-product',
       '积**带积拓扑**。'],
     ['def.grothendieck-topology', 'def.topologically-generating', 'def-dep.topgen-topology',
-      '拓扑生成集是相对 **site 的拓扑**说的。'],
+      '拓扑生成集是相对 **景的拓扑**说的。'],
     ['def.sheaf', 'def.continuous-functor', 'def-dep.contfunctor-sheaf',
       '「连续」的定义就是**层**沿它拉回还是层。'],
     ['def.continuous-functor', 'def.morphism-of-sites', 'def-dep.sitesmorphism-continuous',
-      'site 的态射先要是一个**连续函子**。'],
+      '景的态射先要是一个**连续函子**。'],
     ['def.adjoint', 'def.morphism-of-sites', 'def-dep.sitesmorphism-adjoint',
       '等价形式是 $f^{-1}$ 有**右伴随** $f_{*}$。'],
     ['def.sheaf', 'def.cocontinuous-functor', 'def-dep.cocontfunctor-sheaf',
@@ -53542,7 +53598,7 @@ window.MG = window.MG || {};
     ['def.quasi-compact', 'thm.qcqs-chaus-equiv', 'def-dep.qcqs-qc',
       '结论判定的就是**拟紧**性。'],
     ['def.quasi-separated', 'thm.qcqs-chaus-equiv', 'def-dep.qcqs-qs',
-      '「qcqs」的另一半是**拟分离**。'],
+      '「拟紧拟分离」的另一半是**拟分离**。'],
     ['def.free-compact-hausdorff', 'thm.qcqs-chaus-equiv', 'def-dep.qcqs-free',
       '第 1 条要求满射来自**自由**紧 Hausdorff 空间。'],
     ['def.weak-hausdorff', 'lem.weak-hausdorff-qseparated', 'def-dep.whqs-wh',

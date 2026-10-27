@@ -1,5 +1,5 @@
 # 界与确界　`def.bound`
-上界 / 下界 / 确界 / 极大元（Bounds, Suprema & Extremal Elements）
+上界 / 下界 / 确界 / 极大元
 layer 6 · 定义 · 序结构 · 序理论
 [在星图里打开](../#n=def.bound)　·　[节点索引](../index.md)
 
@@ -13,6 +13,7 @@ layer 6 · 定义 · 序结构 · 序理论
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.series`](../nodes/def.series.md) 级数收敛 用
+- 被 [`def.integral-nonneg`](../nodes/def.integral-nonneg.md) 非负函数的积分 用
 
 - …另有出边，续页见 [nodes/def.bound.4.md](./def.bound.4.md)
 

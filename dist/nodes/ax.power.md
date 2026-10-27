@@ -1,5 +1,5 @@
 # 幂集公理　`ax.power`
-幂集公理（Axiom of Power Set）
+幂集公理
 layer 2 · 公理 · ZFC 公理系统 · 集合论
 [在星图里打开](../#n=ax.power)　·　[节点索引](../index.md)
 
@@ -14,6 +14,7 @@ $$\forall A \exists P \forall x [ x \in P \leftrightarrow  x \subseteq A ]$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.omega`](../nodes/thm.omega.md) 自然数集存在
+- ⇒ [`thm.product`](../nodes/thm.product.md) 笛卡尔积存在
 
 refs: Kunen, Set Theory, I.3
 

@@ -3,7 +3,7 @@
 layer 13 · 命题 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=prop.slice-topos)　·　[节点索引](../index.md)
 
-设 $\mathcal{C}$ 是 site、$T \in \widehat{\mathcal{C}}$。则
+设 $\mathcal{C}$ 是景、$T \in \widehat{\mathcal{C}}$。则
 > 陈述续见 [nodes/prop.slice-topos.2.md](./prop.slice-topos.2.md)
 
 

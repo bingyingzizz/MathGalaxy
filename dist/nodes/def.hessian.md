@@ -1,5 +1,5 @@
 # Hessian 矩阵　`def.hessian`
-Hessian 矩阵（Hessian）
+Hessian 矩阵
 layer 17 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.hessian)　·　[节点索引](../index.md)
 

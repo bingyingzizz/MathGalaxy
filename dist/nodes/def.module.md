@@ -1,5 +1,5 @@
 # 模　`def.module`
-模与模同态（Module）
+模与模同态
 layer 8 · 定义 · 代数结构 · 抽象代数
 [在星图里打开](../#n=def.module)　·　[节点索引](../index.md)
 
@@ -13,11 +13,10 @@ $$A \times M \longrightarrow M, \qquad (a, m) \longmapsto a \cdot m,$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.group`](../nodes/def.group.md) 群：用到了定义 群　[proofs/def-dep.module-group.md](../proofs/def-dep.module-group.md)
-
-- …另有入边，续页见 [nodes/def.module.2.md](./def.module.2.md)
+- [`def.ring`](../nodes/def.ring.md) 环：用到了定义 环　[proofs/def-dep.module-ring.md](../proofs/def-dep.module-ring.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.module.3.md](./def.module.3.md)
+- …另有出边，续页见 [nodes/def.module.2.md](./def.module.2.md)
 
 refs: Lang, Algebra
 

@@ -1,5 +1,5 @@
 # 群同态、核与像　`def.group-hom`
-群同态（Group Homomorphism）
+群同态
 layer 8 · 定义 · 代数结构 · 抽象代数
 [在星图里打开](../#n=def.group-hom)　·　[节点索引](../index.md)
 

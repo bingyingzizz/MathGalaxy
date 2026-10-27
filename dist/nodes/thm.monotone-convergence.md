@@ -1,5 +1,5 @@
 # 单调有界定理　`thm.monotone-convergence`
-单调有界定理（Monotone Convergence Theorem）
+单调有界定理
 layer 14 · 定理 · 实数完备性的等价刻画 · 分析学
 [在星图里打开](../#n=thm.monotone-convergence)　·　[节点索引](../index.md)
 

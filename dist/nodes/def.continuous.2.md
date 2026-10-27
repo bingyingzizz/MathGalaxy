@@ -2,7 +2,6 @@
 [在星图里打开](../#n=def.continuous)　·　第 1 页 [nodes/def.continuous.md](./def.continuous.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-continuous.md](../proofs/def-link.abs-continuous.md)
 - [`def.sequence-limit`](../nodes/def.sequence-limit.md) 数列极限：用到了定义 数列极限　[proofs/dep.real-continuous.md](../proofs/dep.real-continuous.md)
 - [`def.topology`](../nodes/def.topology.md) 拓扑空间与开集：用到了定义 拓扑空间与开集　[proofs/dep.topology-engine-continuous.md](../proofs/dep.topology-engine-continuous.md)
 

@@ -18,7 +18,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '图与交换图',
-      title: '图与交换图（Diagram / Commutative Diagram）',
+      title: '图与交换图',
       regions: ['category'],
       tags: ['范畴论', '图', '索引范畴'],
       statement: [
@@ -48,7 +48,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '单纯对象',
-      title: '单纯对象（Simplicial Object）',
+      title: '单纯对象',
       regions: ['category'],
       tags: ['范畴论', '单纯', '索引范畴'],
       statement: [
@@ -80,7 +80,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '锥',
-      title: '锥与余锥（Cone / Cocone）',
+      title: '锥与余锥',
       regions: ['category'],
       tags: ['范畴论', '锥', '自然变换'],
       statement: [
@@ -107,7 +107,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '极限',
-      title: '极限与余极限（Limit / Colimit）',
+      title: '极限与余极限',
       regions: ['category'],
       tags: ['范畴论', '极限', '泛性质'],
       statement: [
@@ -135,7 +135,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '终对象 / 始对象',
-      title: '终对象与始对象（Terminal / Initial Object）',
+      title: '终对象与始对象',
       regions: ['category'],
       tags: ['范畴论', '极限', '空图'],
       statement: [
@@ -158,7 +158,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '积 / 余积',
-      title: '积与余积（Product / Coproduct）',
+      title: '积与余积',
       regions: ['category'],
       tags: ['范畴论', '极限', '离散范畴'],
       statement: [
@@ -179,7 +179,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '纤维积 / 纤维余积',
-      title: '纤维积与纤维余积（Pullback / Pushout）',
+      title: '纤维积与纤维余积',
       regions: ['category'],
       tags: ['范畴论', '极限', '拉回'],
       statement: [
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'definition',
       label: '等化子 / 余等化子',
-      title: '等化子与余等化子（Equalizer / Coequalizer）',
+      title: '等化子与余等化子',
       regions: ['category'],
       tags: ['范畴论', '极限', '核'],
       statement: [
@@ -230,7 +230,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '单态射 / 满态射 / 同构',
-      title: '单态射、满态射与同构（Mono / Epi / Isomorphism）',
+      title: '单态射、满态射与同构',
       regions: ['category'],
       tags: ['范畴论', '单态射', '满态射', '同构', '可消'],
       statement: [
@@ -264,7 +264,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '子对象',
-      title: '子对象（Subobject）',
+      title: '子对象',
       regions: ['category'],
       tags: ['范畴论', '子对象', '拉回'],
       statement: [
@@ -286,7 +286,7 @@ window.MG = window.MG || {};
       cluster: 'cat.limit',
       type: 'theorem',
       label: '极限的函子性',
-      title: '极限是函子（Limits as a Functor）',
+      title: '极限是函子',
       regions: ['category'],
       tags: ['范畴论', '极限', '函子'],
       statement: [
@@ -314,7 +314,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '像 / 余像',
-      title: '像与余像（Image / Coimage）',
+      title: '像与余像',
       regions: ['category'],
       tags: ['范畴论', '像', '泛性质'],
       statement: [
@@ -339,7 +339,7 @@ window.MG = window.MG || {};
       cluster: 'cat.structure',
       type: 'definition',
       label: '元素范畴',
-      title: '元素范畴（Category of Elements）',
+      title: '元素范畴',
       regions: ['category'],
       tags: ['范畴论', '泛性', '始对象'],
       statement: [

@@ -1,5 +1,5 @@
 # 连续函数的运算　`prop.continuous-arithmetic`
-命题：连续函数的和差积商与复合（Algebra of Continuous Functions）
+命题：连续函数的和差积商与复合
 layer 16 · 命题 · 连续与紧性 · 分析学
 [在星图里打开](../#n=prop.continuous-arithmetic)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 闭开集　`def.clopen`
-闭开集（Clopen Set）
+闭开集
 layer 6 · 定义 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=def.clopen)　·　[节点索引](../index.md)
 

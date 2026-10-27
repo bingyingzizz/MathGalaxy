@@ -1,5 +1,5 @@
 # 行列式　`def.determinant`
-行列式 $\det A$（Determinant）
+行列式 $\det A$
 layer 12 · 定义 · 矩阵与行列式 · 抽象代数
 [在星图里打开](../#n=def.determinant)　·　[节点索引](../index.md)
 

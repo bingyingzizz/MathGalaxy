@@ -1,5 +1,5 @@
 # 条件收敛　`def.conditional-convergence`
-条件收敛（Conditional Convergence）
+条件收敛
 layer 16 · 定义 · 数项级数的敛散性 · 分析学
 [在星图里打开](../#n=def.conditional-convergence)　·　[节点索引](../index.md)
 
@@ -11,11 +11,11 @@ $$\sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} = \ln 2$$
 
 它收敛，而取绝对值之后就是发散的调和级数。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`thm.riemann-rearrangement`](../nodes/thm.riemann-rearrangement.md) Riemann 重排定理
-
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/def.conditional-convergence.2.md](./def.conditional-convergence.2.md)
+- [`def.absolute-convergence`](../nodes/def.absolute-convergence.md) 绝对收敛：用到了定义 绝对收敛　[proofs/dep.absolute-conditional.md](../proofs/dep.absolute-conditional.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.conditional-convergence.2.md](./def.conditional-convergence.2.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 3
 

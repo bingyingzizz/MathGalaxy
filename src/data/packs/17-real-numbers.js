@@ -25,7 +25,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '扩充实数 [−∞,+∞]',
-      title: '扩充实数系 $\\overline{\\mathbb{R}}$（Extended Reals）',
+      title: '扩充实数系 $\\overline{\\mathbb{R}}$',
       regions: ['analysis'],
       tags: ['定义', '实数'],
       statement: [
@@ -49,7 +49,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '区间',
-      title: '区间（Interval）',
+      title: '区间',
       regions: ['analysis', 'order-theory'],
       tags: ['定义', '实数'],
       statement: [
@@ -75,7 +75,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '数列极限',
-      title: '数列极限 $x_n \\to x$（Limit of a Sequence）',
+      title: '数列极限 $x_n \\to x$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -95,7 +95,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '级数收敛',
-      title: '级数 $\\sum a_n$（Series）',
+      title: '级数 $\\sum a_n$',
       regions: ['analysis'],
       tags: ['定义', '极限'],
       statement: [
@@ -121,7 +121,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '连续',
-      title: '连续（Continuity）',
+      title: '连续',
       regions: ['analysis', 'topology'],
       tags: ['定义', '极限', '连续'],
       statement: [
@@ -143,7 +143,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real',
       type: 'definition',
       label: '导数',
-      title: '导数 $F\'$（Derivative）',
+      title: '导数 $F\'$',
       regions: ['analysis'],
       tags: ['定义', '导数'],
       statement: [
@@ -165,7 +165,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'definition',
       label: '复数 ℂ',
-      title: '复数系 $\\mathbb{C}$（Complex Numbers）',
+      title: '复数系 $\\mathbb{C}$',
       regions: ['analysis', 'algebra'],
       tags: ['定义', '复数'],
       statement: [

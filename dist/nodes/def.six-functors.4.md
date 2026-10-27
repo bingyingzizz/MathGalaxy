@@ -2,4 +2,5 @@
 [在星图里打开](../#n=def.six-functors)　·　第 1 页 [nodes/def.six-functors.md](./def.six-functors.md)　·　上一页 [nodes/def.six-functors.3.md](./def.six-functors.3.md)
 
 ## 它能推出什么 / 谁在用它（续）
+- ⇒ [`def.f-shriek`](../nodes/def.f-shriek.md) 紧支撑推前 f_!
 - ⇒ [`thm.poincare-solid`](../nodes/thm.poincare-solid.md) 固态 Serre 对偶

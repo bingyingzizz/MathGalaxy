@@ -1,5 +1,5 @@
 # 稠密性定理　`thm.density`
-稠密性定理（Density Theorem）
+稠密性定理
 layer 14 · 定理 · 预层与米田 · 范畴论
 [在星图里打开](../#n=thm.density)　·　[节点索引](../index.md)
 

@@ -1,5 +1,5 @@
 # 有理指数与实数指数幂　`def.real-power`
-有理指数与实数指数幂（Rational and Real Powers）
+有理指数与实数指数幂
 layer 15 · 定义 · 实数的运算与不等式 · 分析学
 [在星图里打开](../#n=def.real-power)　·　[节点索引](../index.md)
 
@@ -17,11 +17,11 @@ $$a^{x} := \sup\{\, a^{q} : q \in \mathbb{Q},\ q < x \,\};$$
 
 当 $0 < a < 1$ 时 $a^{x} := 1/(1/a)^{x}$；$a = 1$ 时 $a^{x} := 1$。
 
+## 它能推出什么 / 谁在用它
+- 被 [`lem.young-inequality`](../nodes/lem.young-inequality.md) Young 不等式 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.real-power.2.md](./def.real-power.2.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.real-power.3.md](./def.real-power.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 1
 

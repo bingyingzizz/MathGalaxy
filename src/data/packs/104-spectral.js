@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '不变子空间',
-      title: '不变子空间（Invariant Subspace）',
+      title: '不变子空间',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -44,7 +44,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '特征值与特征向量',
-      title: '特征值与特征向量（Eigenvalue & Eigenvector）',
+      title: '特征值与特征向量',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '迹',
-      title: '迹 $\\operatorname{tr} A$（Trace）',
+      title: '迹 $\\operatorname{tr} A$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [
@@ -110,7 +110,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.spectral',
       type: 'definition',
       label: '相似',
-      title: '相似（Similarity）',
+      title: '相似',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '谱'],
       statement: [

@@ -1,5 +1,5 @@
 # 生成元集　`def.generator`
-生成元集与生成元（Generators）
+生成元集与生成元
 layer 10 · 定义 · 拓扑斯 · 范畴论
 [在星图里打开](../#n=def.generator)　·　[节点索引](../index.md)
 

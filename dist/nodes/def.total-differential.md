@@ -1,15 +1,18 @@
 # 可微与全微分　`def.total-differential`
-可微与全微分（Total Differential）
+可微与全微分
 layer 18 · 定义 · 多元微分 · 分析学
 [在星图里打开](../#n=def.total-differential)　·　[节点索引](../index.md)
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{m}$，$a \in U$。称 $f$ 在 $a$ **可微**，当且仅当存在**线性映射** $L : \mathbb{R}^{n} \to \mathbb{R}^{m}$ 使
+
+$$f(a + h) = f(a) + L(h) + o(\|h\|) \qquad (\|h\| \to 0)$$
 > 陈述续见 [nodes/def.total-differential.2.md](./def.total-differential.2.md)
 
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.jacobian`](../nodes/def.jacobian.md) Jacobi 矩阵 用
-- ⇒ [`thm.chain-rule-multi`](../nodes/thm.chain-rule-multi.md) 多元链式法则
+
+- …另有出边，续页见 [nodes/def.total-differential.4.md](./def.total-differential.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.total-differential.3.md](./def.total-differential.3.md)

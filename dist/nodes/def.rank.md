@@ -1,5 +1,5 @@
 # 秩　`def.rank`
-秩 $\operatorname{rank} T$（Rank）
+秩 $\operatorname{rank} T$
 layer 11 · 定义 · 线性映射与秩 · 抽象代数
 [在星图里打开](../#n=def.rank)　·　[节点索引](../index.md)
 

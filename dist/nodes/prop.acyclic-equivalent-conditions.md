@@ -3,7 +3,7 @@
 layer 19 · 命题 · 层上同调 · 同调代数
 [在星图里打开](../#n=prop.acyclic-equivalent-conditions)　·　[节点索引](../index.md)
 
-设 $M$ 是 site $\mathcal{C}$ 上的阿贝尔层。以下四条等价：
+设 $M$ 是景 $\mathcal{C}$ 上的阿贝尔层。以下四条等价：
 > 陈述续见 [nodes/prop.acyclic-equivalent-conditions.2.md](./prop.acyclic-equivalent-conditions.2.md)
 
 

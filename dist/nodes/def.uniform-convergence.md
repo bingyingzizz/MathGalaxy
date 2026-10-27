@@ -1,5 +1,5 @@
 # 一致收敛　`def.uniform-convergence`
-一致收敛 $f_n \rightrightarrows f$（Uniform Convergence）
+一致收敛 $f_n \rightrightarrows f$
 layer 15 · 定义 · 函数列、幂级数与初等函数 · 分析学
 [在星图里打开](../#n=def.uniform-convergence)　·　[节点索引](../index.md)
 
@@ -11,11 +11,13 @@ $$\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N,\ \forall x \in X :\ |f_
 
 $$\sup_{x \in X} |f_n(x) - f(x)| \xrightarrow{\;n \to \infty\;} 0$$
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.uniform-cauchy`](../nodes/def.uniform-cauchy.md) 一致 Cauchy 列 用
+
+- …另有出边，续页见 [nodes/def.uniform-convergence.3.md](./def.uniform-convergence.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.uniform-convergence.2.md](./def.uniform-convergence.2.md)
-
-## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.uniform-convergence.3.md](./def.uniform-convergence.3.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 7
 

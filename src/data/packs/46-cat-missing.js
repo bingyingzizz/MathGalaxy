@@ -48,11 +48,11 @@ window.MG = window.MG || {};
       cluster: 'cat.sheaf',
       type: 'definition',
       label: '截面函子',
-      title: '截面函子与全局截面（Sections Functor）',
+      title: '截面函子与全局截面',
       regions: ['category'],
       tags: ['范畴论', '层', '截面', '全局截面', '函数空间'],
       statement: [
-        '设 $\\mathcal{C}$ 是 site，$X \\in \\mathcal{C}$，$\\widetilde{\\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是',
+        '设 $\\mathcal{C}$ 是景，$X \\in \\mathcal{C}$，$\\widetilde{\\mathcal{C}}$ 是层范畴。**在 $X$ 处的截面函子**是',
         '',
         '$$\\Gamma(X, -) : \\widetilde{\\mathcal{C}} \\longrightarrow \\mathbf{Set}, \\qquad F \\longmapsto \\Gamma(X, F) := F(X).$$',
         '',
@@ -79,7 +79,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'lemma',
       label: '蛇引理',
-      title: '蛇引理（Snake Lemma）',
+      title: '蛇引理',
       regions: ['homology'],
       tags: ['同调代数', '蛇引理', '追图', '正合列', '连接同态'],
       statement: [
@@ -116,7 +116,7 @@ window.MG = window.MG || {};
       cluster: 'hom.ab',
       type: 'lemma',
       label: '五引理',
-      title: '五引理（Five Lemma）',
+      title: '五引理',
       regions: ['homology'],
       tags: ['同调代数', '五引理', '追图', '正合列', '同构'],
       statement: [
