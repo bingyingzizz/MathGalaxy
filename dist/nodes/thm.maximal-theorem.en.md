@@ -1,4 +1,4 @@
-# Maximal Theorem　`thm.maximal-theorem`
+# maximal theorem　`thm.maximal-theorem`
 English entry · root `../`
 [in graph](../#n=thm.maximal-theorem)　·　[Chinese page (authoritative)](./thm.maximal-theorem.md)
 

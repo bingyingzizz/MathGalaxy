@@ -1,4 +1,4 @@
-# Field　`def.field`
+# field　`def.field`
 English entry · root `../`
 [in graph](../#n=def.field)　·　[Chinese page (authoritative)](./def.field.md)
 

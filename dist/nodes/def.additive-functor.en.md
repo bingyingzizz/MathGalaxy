@@ -1,4 +1,4 @@
-# Additive Functor　`def.additive-functor`
+# additive functor　`def.additive-functor`
 English entry · root `../`
 [in graph](../#n=def.additive-functor)　·　[Chinese page (authoritative)](./def.additive-functor.md)
 

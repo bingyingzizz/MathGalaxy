@@ -10,3 +10,5 @@
 - ⇒ [`lem.poincare-lemma`](../nodes/lem.poincare-lemma.md) Poincaré 引理
 - 被 [`lem.single-cube-stokes`](../nodes/lem.single-cube-stokes.md) 方块上的 Stokes 公式 用
 - ⇒ [`lem.single-cube-stokes`](../nodes/lem.single-cube-stokes.md) 方块上的 Stokes 公式
+
+> 续见 [nodes/def.exterior-derivative.5.md](./def.exterior-derivative.5.md)

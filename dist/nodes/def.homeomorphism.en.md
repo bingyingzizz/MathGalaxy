@@ -1,4 +1,4 @@
-# Homeomorphism　`def.homeomorphism`
+# homeomorphism　`def.homeomorphism`
 English entry · root `../`
 [in graph](../#n=def.homeomorphism)　·　[Chinese page (authoritative)](./def.homeomorphism.md)
 

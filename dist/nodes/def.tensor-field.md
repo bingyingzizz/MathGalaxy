@@ -7,6 +7,10 @@ layer 20 · 定义 · 微分流形 · 微分几何
 > 陈述续见 [nodes/def.tensor-field.2.md](./def.tensor-field.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.tensor-contraction`](../nodes/def.tensor-contraction.md) 缩并 用
+- 被 [`def.lie-derivative`](../nodes/def.lie-derivative.md) Lie 导数 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.tensor-field.4.md](./def.tensor-field.4.md)
 

@@ -1,4 +1,4 @@
-# Presheaf　`def.presheaf`
+# presheaf　`def.presheaf`
 English entry · root `../`
 [in graph](../#n=def.presheaf)　·　[Chinese page (authoritative)](./def.presheaf.md)
 

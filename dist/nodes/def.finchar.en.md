@@ -1,11 +1,10 @@
-# Family of Finite Character　`def.finchar`
+# finite character　`def.finchar`
 English entry · root `../`
 [in graph](../#n=def.finchar)　·　[Chinese page (authoritative)](./def.finchar.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 7 · definition · cluster Order Structures (`order.structure`) · Order Theory
-names: `Finite Character` (short) · `Family of Finite Character` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.finchar.md` and `proofs/`.

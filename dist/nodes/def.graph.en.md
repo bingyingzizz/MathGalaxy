@@ -1,4 +1,4 @@
-# Graph　`def.graph`
+# graph　`def.graph`
 English entry · root `../`
 [in graph](../#n=def.graph)　·　[Chinese page (authoritative)](./def.graph.md)
 

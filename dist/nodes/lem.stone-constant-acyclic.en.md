@@ -1,4 +1,4 @@
-# Stone Acyclic Constant　`lem.stone-constant-acyclic`
+# Stone acyclic constant　`lem.stone-constant-acyclic`
 English entry · root `../`
 [in graph](../#n=lem.stone-constant-acyclic)　·　[Chinese page (authoritative)](./lem.stone-constant-acyclic.md)
 

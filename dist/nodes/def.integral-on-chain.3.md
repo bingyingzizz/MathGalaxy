@@ -4,3 +4,5 @@
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.integral-form`](../nodes/def.integral-form.md) 形式的积分：用到了定义 形式的积分　[proofs/dep.spivak-form-chain-integral.md](../proofs/dep.spivak-form-chain-integral.md)
 - [`def.singular-chain`](../nodes/def.singular-chain.md) 奇异链：用到了定义 奇异链　[proofs/dep.spivak-chain-integral.md](../proofs/dep.spivak-chain-integral.md)
+
+> 续见 [nodes/def.integral-on-chain.4.md](./def.integral-on-chain.4.md)

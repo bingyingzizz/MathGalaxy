@@ -1,4 +1,4 @@
-# Totally Bounded　`def.totally-bounded`
+# totally bounded　`def.totally-bounded`
 English entry · root `../`
 [in graph](../#n=def.totally-bounded)　·　[Chinese page (authoritative)](./def.totally-bounded.md)
 

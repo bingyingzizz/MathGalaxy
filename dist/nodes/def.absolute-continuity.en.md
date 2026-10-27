@@ -1,4 +1,4 @@
-# Absolutely Continuous　`def.absolute-continuity`
+# absolutely continuous　`def.absolute-continuity`
 English entry · root `../`
 [in graph](../#n=def.absolute-continuity)　·　[Chinese page (authoritative)](./def.absolute-continuity.md)
 

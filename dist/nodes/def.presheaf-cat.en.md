@@ -1,4 +1,4 @@
-# Presheaf Category　`def.presheaf-cat`
+# presheaf category　`def.presheaf-cat`
 English entry · root `../`
 [in graph](../#n=def.presheaf-cat)　·　[Chinese page (authoritative)](./def.presheaf-cat.md)
 

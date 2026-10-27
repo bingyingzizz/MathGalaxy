@@ -1,4 +1,4 @@
-# First Isomorphism Theorem　`thm.first-iso`
+# first isomorphism theorem　`thm.first-iso`
 English entry · root `../`
 [in graph](../#n=thm.first-iso)　·　[Chinese page (authoritative)](./thm.first-iso.md)
 

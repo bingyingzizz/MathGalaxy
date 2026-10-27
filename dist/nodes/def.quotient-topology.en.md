@@ -1,4 +1,4 @@
-# Quotient Topology　`def.quotient-topology`
+# quotient topology　`def.quotient-topology`
 English entry · root `../`
 [in graph](../#n=def.quotient-topology)　·　[Chinese page (authoritative)](./def.quotient-topology.md)
 

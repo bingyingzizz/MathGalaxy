@@ -1,4 +1,4 @@
-# Substitution　`def.substitution`
+# substitution　`def.substitution`
 English entry · root `../`
 [in graph](../#n=def.substitution)　·　[Chinese page (authoritative)](./def.substitution.md)
 

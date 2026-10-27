@@ -1,4 +1,4 @@
-# Boolean Ring　`def.boolean-ring`
+# Boolean ring　`def.boolean-ring`
 English entry · root `../`
 [in graph](../#n=def.boolean-ring)　·　[Chinese page (authoritative)](./def.boolean-ring.md)
 

@@ -1,11 +1,10 @@
-# Chain / Antichain　`def.chain`
+# chain　`def.chain`
 English entry · root `../`
 [in graph](../#n=def.chain)　·　[Chinese page (authoritative)](./def.chain.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 6 · definition · cluster Order Structures (`order.structure`) · Order Theory
-names: `Chain` (short) · `Chain / Antichain` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.chain.md` and `proofs/`.

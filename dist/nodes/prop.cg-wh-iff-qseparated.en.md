@@ -1,4 +1,4 @@
-# Weak Hausdorff Iff Quasi-separated　`prop.cg-wh-iff-qseparated`
+# weak Hausdorff iff quasi-separated　`prop.cg-wh-iff-qseparated`
 English entry · root `../`
 [in graph](../#n=prop.cg-wh-iff-qseparated)　·　[Chinese page (authoritative)](./prop.cg-wh-iff-qseparated.md)
 

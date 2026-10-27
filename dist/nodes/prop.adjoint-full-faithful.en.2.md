@@ -1,4 +1,4 @@
-# Fully Faithful Iff the Unit Is an Isomorphism　`prop.adjoint-full-faithful`
+# fully faithful iff the unit is an isomorphism　`prop.adjoint-full-faithful`
 English entry · root `../`
 [in graph](../#n=prop.adjoint-full-faithful)　·　[Chinese page (authoritative)](./prop.adjoint-full-faithful.md)
 

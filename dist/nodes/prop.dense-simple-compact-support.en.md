@@ -1,4 +1,4 @@
-# Dense　`prop.dense-simple-compact-support`
+# dense　`prop.dense-simple-compact-support`
 English entry · root `../`
 [in graph](../#n=prop.dense-simple-compact-support)　·　[Chinese page (authoritative)](./prop.dense-simple-compact-support.md)
 

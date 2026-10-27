@@ -1,4 +1,4 @@
-# Measure　`def.measure`
+# measure　`def.measure`
 English entry · root `../`
 [in graph](../#n=def.measure)　·　[Chinese page (authoritative)](./def.measure.md)
 

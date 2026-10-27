@@ -1,4 +1,4 @@
-# Five Lemma　`thm.five-lemma`
+# five lemma　`thm.five-lemma`
 English entry · root `../`
 [in graph](../#n=thm.five-lemma)　·　[Chinese page (authoritative)](./thm.five-lemma.md)
 

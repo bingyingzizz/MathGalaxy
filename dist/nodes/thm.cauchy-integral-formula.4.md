@@ -5,3 +5,5 @@
 - ⇒ [`thm.taylor-complex`](../nodes/thm.taylor-complex.md) 全纯函数的 Taylor 展开
 - ⇒ [`thm.laurent`](../nodes/thm.laurent.md) Laurent 展开定理
 - ⇒ [`thm.riemann-removable`](../nodes/thm.riemann-removable.md) Riemann 可去奇点定理
+- ⇒ [`thm.harmonic-mean-value`](../nodes/thm.harmonic-mean-value.md) 调和函数的均值性质
+- ⇒ [`thm.poisson-formula`](../nodes/thm.poisson-formula.md) Poisson 积分公式

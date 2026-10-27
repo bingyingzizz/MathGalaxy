@@ -1,4 +1,4 @@
-# Category　`def.category`
+# category　`def.category`
 English entry · root `../`
 [in graph](../#n=def.category)　·　[Chinese page (authoritative)](./def.category.md)
 

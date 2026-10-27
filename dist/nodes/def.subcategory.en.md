@@ -1,4 +1,4 @@
-# Subcategory　`def.subcategory`
+# subcategory　`def.subcategory`
 English entry · root `../`
 [in graph](../#n=def.subcategory)　·　[Chinese page (authoritative)](./def.subcategory.md)
 

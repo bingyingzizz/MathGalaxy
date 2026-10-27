@@ -1,4 +1,4 @@
-# Bicomplex　`def.bicomplex`
+# bicomplex　`def.bicomplex`
 English entry · root `../`
 [in graph](../#n=def.bicomplex)　·　[Chinese page (authoritative)](./def.bicomplex.md)
 

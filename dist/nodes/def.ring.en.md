@@ -1,4 +1,4 @@
-# Ring　`def.ring`
+# ring　`def.ring`
 English entry · root `../`
 [in graph](../#n=def.ring)　·　[Chinese page (authoritative)](./def.ring.md)
 

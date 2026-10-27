@@ -1,4 +1,4 @@
-# Integrable　`def.integrable`
+# integrable　`def.integrable`
 English entry · root `../`
 [in graph](../#n=def.integrable)　·　[Chinese page (authoritative)](./def.integrable.md)
 

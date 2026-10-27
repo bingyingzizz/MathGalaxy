@@ -1,4 +1,4 @@
-# Grothendieck Category　`def.grothendieck-category`
+# Grothendieck category　`def.grothendieck-category`
 English entry · root `../`
 [in graph](../#n=def.grothendieck-category)　·　[Chinese page (authoritative)](./def.grothendieck-category.md)
 

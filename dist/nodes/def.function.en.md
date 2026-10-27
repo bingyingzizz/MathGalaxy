@@ -1,4 +1,4 @@
-# Mapping　`def.function`
+# mapping　`def.function`
 English entry · root `../`
 [in graph](../#n=def.function)　·　[Chinese page (authoritative)](./def.function.md)
 

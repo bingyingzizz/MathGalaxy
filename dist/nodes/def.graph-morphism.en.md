@@ -1,4 +1,4 @@
-# Graph Morphism　`def.graph-morphism`
+# graph morphism　`def.graph-morphism`
 English entry · root `../`
 [in graph](../#n=def.graph-morphism)　·　[Chinese page (authoritative)](./def.graph-morphism.md)
 

@@ -14,6 +14,11 @@ $$f(z) = \frac{az + b}{cz + d}, \qquad a, b, c, d \in \mathbb{C},\ ad - bc \ne 0
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.complex`](../nodes/def.complex.md) 复数 ℂ：用到了定义 复数 ℂ　[proofs/def-link.mobius-complex.md](../proofs/def-link.mobius-complex.md)
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.schwarz-pick`](../nodes/thm.schwarz-pick.md) Schwarz–Pick 定理
+
+- …另有出边，续页见 [nodes/def.mobius.3.md](./def.mobius.3.md)
+
 refs: 王晓光《复变函数》笔记，第 13 章 · 分式线性变换；Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping
 
 > 说明见 `notes/def.mobius.md`

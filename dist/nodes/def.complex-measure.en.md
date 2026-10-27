@@ -1,4 +1,4 @@
-# Complex Measure　`def.complex-measure`
+# complex measure　`def.complex-measure`
 English entry · root `../`
 [in graph](../#n=def.complex-measure)　·　[Chinese page (authoritative)](./def.complex-measure.md)
 

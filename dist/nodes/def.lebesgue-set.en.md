@@ -1,4 +1,4 @@
-# Lebesgue Point　`def.lebesgue-set`
+# Lebesgue point　`def.lebesgue-set`
 English entry · root `../`
 [in graph](../#n=def.lebesgue-set)　·　[Chinese page (authoritative)](./def.lebesgue-set.md)
 

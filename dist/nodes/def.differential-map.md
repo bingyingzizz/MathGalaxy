@@ -11,6 +11,9 @@ $$\mathrm{d}F_{p} : T_{p}N \longrightarrow T_{F(p)}M,\qquad \mathrm{d}F_{p}([\ga
 > 陈述续见 [nodes/def.differential-map.2.md](./def.differential-map.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.integral-manifold`](../nodes/def.integral-manifold.md) 积分流形 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.differential-map.3.md](./def.differential-map.3.md)
 

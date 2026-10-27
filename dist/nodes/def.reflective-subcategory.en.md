@@ -1,4 +1,4 @@
-# Reflective Subcategory　`def.reflective-subcategory`
+# reflective subcategory　`def.reflective-subcategory`
 English entry · root `../`
 [in graph](../#n=def.reflective-subcategory)　·　[Chinese page (authoritative)](./def.reflective-subcategory.md)
 

@@ -11,6 +11,8 @@ layer 28 · 定义 · 微分流形 · 微分几何
 - ⇒ [`prop.integral-chain-linear`](../nodes/prop.integral-chain-linear.md) 链上积分的双线性
 - ⇒ [`thm.stokes-chain`](../nodes/thm.stokes-chain.md) 链上的 Stokes 定理
 
+- …另有出边，续页见 [nodes/def.integral-on-chain.4.md](./def.integral-on-chain.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.integral-on-chain.3.md](./def.integral-on-chain.3.md)
 

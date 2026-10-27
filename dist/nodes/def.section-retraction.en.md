@@ -1,4 +1,4 @@
-# Section / Retraction　`def.section-retraction`
+# section / retraction　`def.section-retraction`
 English entry · root `../`
 [in graph](../#n=def.section-retraction)　·　[Chinese page (authoritative)](./def.section-retraction.md)
 

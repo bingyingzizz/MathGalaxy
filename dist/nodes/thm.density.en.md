@@ -1,4 +1,4 @@
-# Density Theorem　`thm.density`
+# density theorem　`thm.density`
 English entry · root `../`
 [in graph](../#n=thm.density)　·　[Chinese page (authoritative)](./thm.density.md)
 

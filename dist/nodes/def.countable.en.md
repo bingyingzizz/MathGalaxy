@@ -1,4 +1,4 @@
-# Countable　`def.countable`
+# countable　`def.countable`
 English entry · root `../`
 [in graph](../#n=def.countable)　·　[Chinese page (authoritative)](./def.countable.md)
 

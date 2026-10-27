@@ -1,4 +1,4 @@
-# Metric Space　`def.metric-space`
+# metric space　`def.metric-space`
 English entry · root `../`
 [in graph](../#n=def.metric-space)　·　[Chinese page (authoritative)](./def.metric-space.md)
 

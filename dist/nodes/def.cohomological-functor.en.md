@@ -1,4 +1,4 @@
-# Cohomological Functor　`def.cohomological-functor`
+# cohomological functor　`def.cohomological-functor`
 English entry · root `../`
 [in graph](../#n=def.cohomological-functor)　·　[Chinese page (authoritative)](./def.cohomological-functor.md)
 

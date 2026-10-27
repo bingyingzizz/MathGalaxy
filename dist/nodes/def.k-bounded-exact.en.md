@@ -1,4 +1,4 @@
-# K-bounded Exact　`def.k-bounded-exact`
+# K-bounded exact　`def.k-bounded-exact`
 English entry · root `../`
 [in graph](../#n=def.k-bounded-exact)　·　[Chinese page (authoritative)](./def.k-bounded-exact.md)
 

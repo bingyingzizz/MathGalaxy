@@ -4,3 +4,5 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`lem.poincare-lemma`](../nodes/lem.poincare-lemma.md) Poincaré 引理
 - ⇒ [`thm.mayer-vietoris`](../nodes/thm.mayer-vietoris.md) Mayer–Vietoris 序列
+- 被 [`thm.de-rham`](../nodes/thm.de-rham.md) de Rham 定理 用
+- ⇒ [`thm.de-rham`](../nodes/thm.de-rham.md) de Rham 定理

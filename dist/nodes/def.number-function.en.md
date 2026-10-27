@@ -1,4 +1,4 @@
-# Function　`def.number-function`
+# function　`def.number-function`
 English entry · root `../`
 [in graph](../#n=def.number-function)　·　[Chinese page (authoritative)](./def.number-function.md)
 

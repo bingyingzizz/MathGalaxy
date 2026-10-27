@@ -2,6 +2,7 @@
 [在星图里打开](../#n=def.compact)　·　第 1 页 [nodes/def.compact.md](./def.compact.md)　·　上一页 [nodes/def.compact.2.md](./def.compact.2.md)
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 [`prop.chaus-reflective`](../nodes/prop.chaus-reflective.md) 紧 Haus 是反射子范畴 用
 - 被 [`lem.minimal-closed-surjection`](../nodes/lem.minimal-closed-surjection.md) 满射的极小闭子集 用
 - 被 [`def.regular-measure`](../nodes/def.regular-measure.md) 正则 Borel 测度 用
 - 被 [`def.chaus`](../nodes/def.chaus.md) 紧 Hausdorff 空间范畴 用

@@ -1,4 +1,4 @@
-# Empty Set　`def.empty`
+# empty set　`def.empty`
 English entry · root `../`
 [in graph](../#n=def.empty)　·　[Chinese page (authoritative)](./def.empty.md)
 

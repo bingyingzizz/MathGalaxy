@@ -461,6 +461,23 @@ function main() {
   const all = dec.t1.concat(dec.t2);
   const checks = checksOf(all);
   const entries = all.map(({ r, e }) => ({ id: r.id, title_en: e.title_en, label_en: e.label_en, from: e.from }));
+  /* MANUAL-KEEP: 手工条目（from:'manual'）永远保留 —— 这些是人工审过的英文名，
+     回填脚本不能把它们冲掉。⛔ 删掉这段 = 下一次回填会丢掉全部 manual。 */
+  const manual = new Map();
+  if (fs.existsSync(SIDECAR)) {
+    const cur = fs.readFileSync(SIDECAR, 'utf8');
+    const re = /'([^']+)':\s*\{\s*title_en:\s*'((?:[^'\\]|\\.)*)',\s*label_en:\s*(null|'((?:[^'\\]|\\.)*)'),\s*from:\s*'manual'\s*\}/g;
+    let m;
+    while ((m = re.exec(cur))) {
+      const un = (t) => t.replace(/\\'/g, "'");
+      manual.set(m[1], { id: m[1], title_en: un(m[2]), label_en: m[3] === 'null' ? null : un(m[4]), from: 'manual' });
+    }
+  }
+  if (manual.size) {
+    const kept = entries.filter((e) => !manual.has(e.id));
+    entries.length = 0;
+    entries.push(...kept, ...manual.values());
+  }
   const regionName = (rid) => {
     const R = (MG.regions || []).find((x) => x.id === rid);
     return R ? R.name : rid;

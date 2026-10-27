@@ -1,4 +1,4 @@
-# Sheaf Condition　`thm.sheaf-descent`
+# sheaf condition　`thm.sheaf-descent`
 English entry · root `../`
 [in graph](../#n=thm.sheaf-descent)　·　[Chinese page (authoritative)](./thm.sheaf-descent.md)
 

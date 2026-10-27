@@ -1,4 +1,4 @@
-# Scalar Homotopy　`lem.breen-deligne-scalar-homotopy`
+# scalar homotopy　`lem.breen-deligne-scalar-homotopy`
 English entry · root `../`
 [in graph](../#n=lem.breen-deligne-scalar-homotopy)　·　[Chinese page (authoritative)](./lem.breen-deligne-scalar-homotopy.md)
 

@@ -1,4 +1,4 @@
-# Pretopos　`def.pretopos`
+# pretopos　`def.pretopos`
 English entry · root `../`
 [in graph](../#n=def.pretopos)　·　[Chinese page (authoritative)](./def.pretopos.md)
 

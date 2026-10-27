@@ -1,4 +1,4 @@
-# Fundamental Theorem of Calculus　`thm.ftc-lebesgue`
+# fundamental theorem of calculus　`thm.ftc-lebesgue`
 English entry · root `../`
 [in graph](../#n=thm.ftc-lebesgue)　·　[Chinese page (authoritative)](./thm.ftc-lebesgue.md)
 

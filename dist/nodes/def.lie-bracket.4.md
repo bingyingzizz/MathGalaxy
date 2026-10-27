@@ -5,3 +5,6 @@
 - 被 [`prop.left-invariant-fields`](../nodes/prop.left-invariant-fields.md) 左不变向量场 用
 - ⇒ [`def.lie-algebra`](../nodes/def.lie-algebra.md) Lie 代数
 - ⇒ [`prop.left-invariant-fields`](../nodes/prop.left-invariant-fields.md) 左不变向量场
+- 被 [`def.involutive-distribution`](../nodes/def.involutive-distribution.md) 对合分布 用
+- ⇒ [`thm.frobenius`](../nodes/thm.frobenius.md) Frobenius 定理
+- ⇒ [`thm.frobenius`](../nodes/thm.frobenius.md) Frobenius 定理

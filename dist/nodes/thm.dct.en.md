@@ -1,11 +1,10 @@
-# DCT, Dominated Convergence Theorem　`thm.dct`
+# dominated convergence　`thm.dct`
 English entry · root `../`
 [in graph](../#n=thm.dct)　·　[Chinese page (authoritative)](./thm.dct.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 20 · theorem · cluster Integration (`analysis.integral`) · Functions of a Real Variable / Mathematical Analysis
-names: `Dominated Convergence` (short) · `DCT, Dominated Convergence Theorem` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.dct.md` and `proofs/`.

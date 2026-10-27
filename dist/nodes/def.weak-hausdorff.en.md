@@ -1,11 +1,10 @@
-# Weak Hausdorff Space　`def.weak-hausdorff`
+# weak Hausdorff　`def.weak-hausdorff`
 English entry · root `../`
 [in graph](../#n=def.weak-hausdorff)　·　[Chinese page (authoritative)](./def.weak-hausdorff.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 6 · definition · cluster Compactly Generated Spaces and Weak Hausdorff (`topo.cg`) · Topology
-names: `Weak Hausdorff` (short) · `Weak Hausdorff Space` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.weak-hausdorff.md` and `proofs/`.

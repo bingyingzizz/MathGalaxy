@@ -1,4 +1,4 @@
-# Series　`def.series`
+# series　`def.series`
 English entry · root `../`
 [in graph](../#n=def.series)　·　[Chinese page (authoritative)](./def.series.md)
 

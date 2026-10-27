@@ -1,4 +1,4 @@
-# Essentially Surjective　`def.essentially-surjective`
+# essentially surjective　`def.essentially-surjective`
 English entry · root `../`
 [in graph](../#n=def.essentially-surjective)　·　[Chinese page (authoritative)](./def.essentially-surjective.md)
 

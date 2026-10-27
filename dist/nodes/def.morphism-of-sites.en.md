@@ -1,4 +1,4 @@
-# Morphism of Sites　`def.morphism-of-sites`
+# morphism of sites　`def.morphism-of-sites`
 English entry · root `../`
 [in graph](../#n=def.morphism-of-sites)　·　[Chinese page (authoritative)](./def.morphism-of-sites.md)
 

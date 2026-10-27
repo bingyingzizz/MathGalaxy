@@ -1,4 +1,4 @@
-# Ind-object　`def.ind-object`
+# ind-object　`def.ind-object`
 English entry · root `../`
 [in graph](../#n=def.ind-object)　·　[Chinese page (authoritative)](./def.ind-object.md)
 

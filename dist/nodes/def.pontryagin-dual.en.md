@@ -1,4 +1,4 @@
-# Pontryagin Dual　`def.pontryagin-dual`
+# Pontryagin dual　`def.pontryagin-dual`
 English entry · root `../`
 [in graph](../#n=def.pontryagin-dual)　·　[Chinese page (authoritative)](./def.pontryagin-dual.md)
 

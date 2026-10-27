@@ -1,4 +1,4 @@
-# Interval　`def.interval`
+# interval　`def.interval`
 English entry · root `../`
 [in graph](../#n=def.interval)　·　[Chinese page (authoritative)](./def.interval.md)
 

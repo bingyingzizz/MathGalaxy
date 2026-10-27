@@ -1,4 +1,4 @@
-# Localization of a Ring　`prop.ring-localization`
+# localization of a ring　`prop.ring-localization`
 English entry · root `../`
 [in graph](../#n=prop.ring-localization)　·　[Chinese page (authoritative)](./prop.ring-localization.md)
 

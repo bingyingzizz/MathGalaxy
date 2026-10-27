@@ -1,4 +1,4 @@
-# Triangle Inequality　`thm.triangle`
+# triangle inequality　`thm.triangle`
 English entry · root `../`
 [in graph](../#n=thm.triangle)　·　[Chinese page (authoritative)](./thm.triangle.md)
 

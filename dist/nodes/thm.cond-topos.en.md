@@ -1,4 +1,4 @@
-# Cond Is a Topos　`thm.cond-topos`
+# Cond is a topos　`thm.cond-topos`
 English entry · root `../`
 [in graph](../#n=thm.cond-topos)　·　[Chinese page (authoritative)](./thm.cond-topos.md)
 

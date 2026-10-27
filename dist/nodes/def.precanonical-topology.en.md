@@ -1,4 +1,4 @@
-# Precanonical Topology　`def.precanonical-topology`
+# precanonical topology　`def.precanonical-topology`
 English entry · root `../`
 [in graph](../#n=def.precanonical-topology)　·　[Chinese page (authoritative)](./def.precanonical-topology.md)
 

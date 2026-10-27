@@ -1,4 +1,4 @@
-# Dual Pairing　`def.duality-map`
+# dual pairing　`def.duality-map`
 English entry · root `../`
 [in graph](../#n=def.duality-map)　·　[Chinese page (authoritative)](./def.duality-map.md)
 

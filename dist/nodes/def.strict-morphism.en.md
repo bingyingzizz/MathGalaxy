@@ -1,4 +1,4 @@
-# Strict Morphism　`def.strict-morphism`
+# strict morphism　`def.strict-morphism`
 English entry · root `../`
 [in graph](../#n=def.strict-morphism)　·　[Chinese page (authoritative)](./def.strict-morphism.md)
 

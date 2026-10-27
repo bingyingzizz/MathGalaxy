@@ -1,4 +1,4 @@
-# Spectral Sequence　`def.spectral-sequence`
+# spectral sequence　`def.spectral-sequence`
 English entry · root `../`
 [in graph](../#n=def.spectral-sequence)　·　[Chinese page (authoritative)](./def.spectral-sequence.md)
 

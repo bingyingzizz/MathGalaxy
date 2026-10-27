@@ -6,3 +6,4 @@
 - ⇒ [`thm.mixed-partials`](../nodes/thm.mixed-partials.md) 混合偏导相等
 - 被 [`def.tangent-space-manifold`](../nodes/def.tangent-space-manifold.md) 切空间 用
 - ⇒ [`def.tangent-space-manifold`](../nodes/def.tangent-space-manifold.md) 切空间
+- 被 [`def.harmonic`](../nodes/def.harmonic.md) 调和函数 用

@@ -1,4 +1,4 @@
-# Functor　`def.functor`
+# functor　`def.functor`
 English entry · root `../`
 [in graph](../#n=def.functor)　·　[Chinese page (authoritative)](./def.functor.md)
 

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-27T11:45:14.581Z
-> 12 星系 / 77 星团 / 1177 节点 / 2124 连线（强边 2115，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-27T12:10:55.811Z
+> 12 星系 / 77 星团 / 1214 节点 / 2211 连线（强边 2202，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -8577,6 +8577,554 @@ $$(z_1, z_2; z_3, z_4) = \frac{(z_1 - z_3)(z_2 - z_4)}{(z_1 - z_4)(z_2 - z_3)}.$
 ⚠ 球面上的 $\infty$ 不是「很大的数」：它是用球极投影添进来的一个点。只有在球面上，「$f$ 是双射」这句话才干净 —— 在 $\mathbb{C}$ 上它总漏掉一两个点。
 
 参考：王晓光《复变函数》笔记，第 13 章 · 分式线性变换；Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping
+
+#### Morera 定理　`thm.morera`
+*定理*　定理：Morera 定理（Cauchy 定理的逆）
+
+**白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。
+
+设 $\Omega \subset \mathbb{C}$ 是区域，$f: \Omega \to \mathbb{C}$ **连续**。若对每个闭三角形 $T \subset \Omega$ 都有
+
+$$\oint_{\partial T} f(\zeta)\,\mathrm{d}\zeta = 0,$$
+
+则 $f$ 在 $\Omega$ 上全纯；并且 $f'$ 也全纯，$f$ 在每点都有 Taylor 展开。
+
+把「闭三角形」换成「边平行于坐标轴的闭矩形」，结论不变（矩形沿一条对角线分成两个三角形）。
+
+⭐ 用途：这是**判定全纯**最省事的工具 —— 不需要先验可微，只要「连续」加「某个积分恒为零」。全纯性被换成了一条积分方程。
+
+⭐ 最常用的推论：**内闭一致收敛的全纯函数列，其极限必全纯**。因为 $\partial T$ 是紧的，$\oint_{\partial T} f_k = 0$ 可以取极限得 $\oint_{\partial T} f = 0$，再喂给 Morera。Hurwitz 定理是这条的「零点版」。
+
+⚠ 连续性不能省。少了它，同样的积分条件推不出可微。
+
+⚠ 假设里的「所有三角形」也不能换成「所有圆周」：只知道圆周上的积分为零，不足以保证全纯。
+
+📌 与 Cauchy–Goursat 定理合起来：$f$ 连续时，「$f$ 全纯」与「$f$ 沿每个闭三角形积分恒为零」是**等价**的两句话。
+
+参考：王晓光《复变函数》· Cauchy 定理的逆命题；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration；Stein–Shakarchi, Complex Analysis, Ch. 2 · Cauchy’s Theorem and Its Applications
+
+#### 绕数　`def.winding-number`
+*定义*　定义：绕数（闭曲线关于一点的指数）
+
+**白话**：绕数是一个整数，数的是「闭曲线绕某个点转了几圈」—— 逆时针一圈记 $+1$，顺时针记 $-1$，没绕记 $0$。
+
+设 $\gamma: [a, b] \to \mathbb{C}$ 是分段光滑闭曲线，$a_0 \notin \gamma$。定义 $\gamma$ 关于 $a_0$ 的**绕数**（也叫指数）
+
+$$n(\gamma, a_0) := \frac{1}{2\pi i}\oint_{\gamma} \frac{\mathrm{d}\zeta}{\zeta - a_0}.$$
+
+它等于 $\arg(\gamma(t) - a_0)$ 沿 $\gamma$ 走完一周的连续变化量除以 $2\pi$：
+
+$$n(\gamma, a_0) = \frac{1}{2\pi}\,\Delta_{\gamma}\,\arg(\zeta - a_0).$$
+
+三条基本性质：(1) $n(\gamma, \cdot)$ 在 $\mathbb{C} \setminus \gamma$ 的每个连通分支上是常数，且取整数值；(2) 在无界分支上取 $0$；(3) $\gamma$ 若是正定向的简单闭曲线，则内部 $n = 1$、外部 $n = 0$。
+
+⭐ 整数性是**证**出来的，不是看出来的：沿 $\gamma$ 把 $t$ 从 $a$ 走到 $b$，令
+
+$$g(t) := \frac{\gamma(t) - a_0}{\exp\left( \int_a^t \frac{\gamma'(s)}{\gamma(s) - a_0}\,\mathrm{d}s \right)}.$$
+
+求导可知分子分母的导数恰好抵消，故 $g$ 是常数；取 $t = b$ 得 $\exp\left( \int_a^b \cdot \right) = 1$，于是积分是 $2\pi i$ 的整数倍。
+
+⭐ 与辐角的关系：指数里那个积分正是 $\log(\gamma(t) - a_0)$ 沿 $\gamma$ 连续变动的一个取法（对数只能沿一条路径取定一支），它的虚部就是辐角的变化量。
+
+⚠ 绕数依赖**定向**：同一条曲线反着走，绕数变号。
+
+⚠ 「$n(\gamma, a_0) = 0$」**不等于**「$a_0$ 在曲线外」—— 绕进去又绕出来同样给 $0$。只有对简单闭曲线（Jordan 曲线）它才是内外的判据。
+
+📌 辐角原理会把零极点之差写成 $f \circ \gamma$ 关于 $0$ 的绕数。
+
+参考：王晓光《复变函数》· 辐角原理（曲线的绕数）；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 辐角原理　`thm.argument-principle`
+*定理*　定理：辐角原理
+
+**白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。
+
+设 $\gamma$ 是分段光滑闭曲线，$\Omega$ 含 $\gamma$ 及其内部，$f$ 在 $\Omega$ 上除有限个极点外全纯，且在 $\gamma$ 上既无零点也无极点。则
+
+$$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = Z - P = n(f \circ \gamma,\, 0),$$
+
+其中 $Z$ 是 $f$ 在 $\gamma$ 内部的零点个数（按重数计），$P$ 是极点个数（按阶数计），$n$ 是绕数。
+
+⭐ 特例最常见：$f$ 在内部**全纯**时 $P = 0$，于是 $\oint_{\gamma} f'/f = 2\pi i Z$ —— 「零点个数」变成一个积分。
+
+⭐ 几何读法：$f \circ \gamma$ 是一条绕 $0$ 的闭曲线，$Z - P$ 就是它绕 $0$ 的圈数。零点把像曲线往外「拧」一圈，极点往里「拧」一圈。
+
+⚠ 边界上不能有零点和极点 —— 否则 $f'/f$ 在 $\gamma$ 上无定义，积分根本不存在。
+
+⭐ 顺带的结论：$Z - P$ 对曲线的微小形变**不变**（只要形变过程中不扫过零点或极点），因为它是整数且连续变化。
+
+📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。
+
+参考：王晓光《复变函数》· 辐角原理；Ahlfors, Complex Analysis · 辐角原理与 Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Rouché 定理　`thm.rouche`
+*定理*　定理：Rouché 定理
+
+**白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。
+
+设 $\gamma$ 是分段光滑闭曲线，$f, g$ 在 $\gamma$ 及其内部全纯，且在 $\gamma$ 上处处
+
+$$|g(z)| < |f(z)|.$$
+
+则 $f$ 与 $f + g$ 在 $\gamma$ 内部有同样多的零点（都按重数计）。
+
+⭐ 用途：数零点不用解方程，只要在边界上比大小。例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。
+
+⭐ 代数基本定理的另一条证明：$f(z) = a_n z^n$、$g(z) = a_{n-1}z^{n-1} + \cdots + a_0$，在 $|z| = R$ 上取 $R$ 充分大就有 $|g| < |f|$，于是 $p$ 与 $a_n z^n$ 在 $|z| < R$ 内零点数相同，都是 $n$ 个。
+
+⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。
+
+📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。
+
+参考：王晓光《复变函数》· Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Hurwitz 定理　`thm.hurwitz`
+*定理*　定理：Hurwitz 定理（零点的极限）
+
+**白话**：一列都没有零点的全纯函数，如果在内闭一致收敛，那么极限函数要么恒等于零，要么也没有零点。
+
+设 $\Omega$ 是区域，$f_k$ 在 $\Omega$ 上全纯，且在 $\Omega$ 的每个紧子集上一致收敛到 $f$。若每个 $f_k$ 在 $\Omega$ 上**无零点**，则极限 $f$ 或者恒等于零，或者在 $\Omega$ 上处处不为零。
+
+等价的说法：若 $f$ 不恒为零而 $f(z_0) = 0$，则对每个充分大的 $k$，$f_k$ 在 $z_0$ 的任意小邻域内都有零点。
+
+⭐ 「恒为零」这个例外**不能删**：$f_k(z) = 1/k$ 在单位圆盘上处处无零点、内闭一致收敛到 $0$。
+
+⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。
+
+⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \min_{|z - z_0| = r}|f| > 0$；$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。
+
+📌 与 Morera 定理互补：Morera 管「极限全纯」，Hurwitz 管「极限的零点从哪来」。两者一起说明：全纯函数的一些**离散**性质在一致极限下是封闭的。
+
+参考：王晓光《复变函数》· Hurwitz 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Schwarz 引理　`lem.schwarz`
+*引理*　引理：Schwarz 引理
+
+**白话**：把单位圆盘映到自身、并且固定原点的全纯映射，一定被 $z \mapsto z$ 压住：像点比原像更靠近圆心。
+
+设 $\mathbb{D} = \{\, z : |z| < 1 \,\}$，$f: \mathbb{D} \to \mathbb{D}$ 全纯且 $f(0) = 0$。则
+
+(1) $|f(z)| \le |z|$ 对一切 $z \in \mathbb{D}$ 成立；
+
+(2) $|f'(0)| \le 1$；
+
+(3) 若存在 $z_0 \ne 0$ 使 $|f(z_0)| = |z_0|$，或者 $|f'(0)| = 1$，则 $f$ 是旋转 $f(z) = e^{i\theta} z$。
+
+⭐ 证明的路子：$f(0) = 0$ 让 $f(z)/z$ 在 $0$ 处可去奇点，补上 $f'(0)$ 后得到圆盘上的全纯函数 $g$；在 $|z| = r$ 上 $|g| \le 1/r$，用最大模原理后令 $r \to 1$。
+
+⭐ 三个结论其实是同一个不等式链：$|g(z)| \le 1$ 立即给出 (1) 与 (2)；(3) 是「最大模原理什么时候取等」。
+
+⚠ $f(0) = 0$ 不能省。$f(z) = (z + 1)/2$ 把圆盘映到圆盘，但 $|f(0)| = 1/2 > 0$ —— 只要把原点挪开，引理的结论就全不成立。
+
+⚠ $|f(z)| \le |z|$ 里的等号**只在一个内点**出现就够了，不必处处取等 —— 这是最大模原理的刚性。
+
+📌 不假设 $f(0) = 0$ 的版本是 Schwarz–Pick 定理。这条引理也是「圆盘上的自同构群很小」的根源，是共形映射里的基本工具。
+
+参考：王晓光《复变函数》· Schwarz 引理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
+
+#### Schwarz–Pick 定理　`thm.schwarz-pick`
+*定理*　定理：Schwarz–Pick 定理
+
+**白话**：把「圆盘到圆盘」的全纯映射用分式线性变换把两个点各自挪到原点之后，Schwarz 引理就成了一条不含原点的、对任意基准点都成立的估计。
+
+设 $f: \mathbb{D} \to \mathbb{D}$ 全纯，$z_0 \in \mathbb{D}$。则对一切 $z \in \mathbb{D}$，
+
+$$\left| \frac{f(z) - f(z_0)}{1 - \overline{f(z_0)}\, f(z)} \right| \le \left| \frac{z - z_0}{1 - \overline{z_0}\, z} \right|,$$
+
+微分形式（双曲度量的压缩性）：
+
+$$\frac{|f'(z_0)|}{1 - |f(z_0)|^2} \le \frac{1}{1 - |z_0|^2}.$$
+
+两处等号（对某个 $z \ne z_0$，或对导数）成立当且仅当 $f$ 是 $\mathbb{D}$ 的分式线性自同构。
+
+⭐ 这两个式子都是「把基准点搬到 0」的产物：$\varphi_a(z) = (z - a)/(1 - \overline{a} z)$ 是圆盘的自同构，把 $a$ 送到 $0$；用 $\varphi_{f(z_0)} \circ f \circ \varphi_{z_0}^{-1}$ 造一个固定原点的映射，套 Schwarz 引理，再变回来。
+
+⭐ 双曲度量的读法：$\dfrac{|\mathrm{d}w|}{1 - |w|^2}$ 是圆盘上的双曲长度元，上式说全纯自映射**不会放大**它。等号成立时叫等距。
+
+⚠ 这个不等式对所有 $z_0$ 同时成立，等价于「$f$ 是双曲度量的 $1$-Lipschitz 映射」。这是 Schwarz 引理的完整形式 —— Schwarz 引理只是 $z_0 = 0$、$f(z_0) = 0$ 的特例。
+
+📌 推论：$\mathbb{D}$ 的自同构恰是 $z \mapsto e^{i\theta}\dfrac{z - a}{1 - \overline{a} z}$（$|a| < 1$，$\theta \in \mathbb{R}$）。取等号时 $f$ 必是这种形状，反过来这些映射显然取等号。
+
+参考：王晓光《复变函数》· Schwarz–Pick 定理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
+
+#### 多值函数与分支　`def.branch`
+*定义*　定义：多值函数、分支与分支切割
+
+**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在某个区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常常要沿一条曲线把平面剪开，那条缝叫**分支切割**。
+
+设 $D \subset \mathbb{C}$ 是区域，$F$ 是「每个 $z \in D$ 对应一个非空值集 $F(z) \subset \mathbb{C}$」的对应。若连续函数 $\varphi: D \to \mathbb{C}$ 满足
+
+$$\varphi(z) \in F(z) \qquad (\forall z \in D),$$
+
+称 $\varphi$ 是 $F$ 在 $D$ 上的一个**分支**；若 $\varphi$ 还在 $D$ 上全纯，称它是**全纯分支**。
+
+**分支切割**：从 $\mathbb{C}$ 中删去一条曲线（通常是射线或线段），使剩下的区域 $D$ 单连通，从而 $F$ 在 $D$ 上能分出单值全纯分支；被删去的那条曲线就是**分支切割**。
+
+⭐ 多值性的根源只有一个：**辐角**。$z$ 绕 $0$ 走一圈，$\arg z$ 增加 $2\pi$，凡是依赖 $\arg z$ 的公式都跟着变，所以它在 $\mathbb{C} \setminus \{0\}$ 上不可能单值且连续。反过来，只要区域里绕不了原点（单连通），辐角就能连续地取定一支。
+
+⭐ 例：$F(z) = \{\, w : w^2 = z \,\}$ 有两个分支，两者相差一个符号；$F(z) = \{\, w : w^n = z \,\}$ 有 $n$ 个分支，相互差 $e^{2\pi i k/n}$ 倍。
+
+⚠ 分支切割**不是唯一的**：对数可以在「$\mathbb{C}$ 减去任意一条从 $0$ 射出的射线」上定义，割的位置随你挑，只要它把原点围住。所以「$\log$ 在哪个区域上有分支」问的是区域，不是函数。
+
+⚠ 割线上的函数值不连续（两侧差一个跳跃），所以割线不属于定义域；在割线上讨论「$\operatorname{Log}$ 的连续性」没有意义。
+
+📌 严格的说法要走覆盖空间：分支 = 多值对应所对应的那个覆盖的单值截面。初等处理里只需要记住「单连通才保证能挑」。
+
+参考：王晓光《复变函数》· 多值函数与分支；Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### 对数与幂的分支　`def.logarithm-branch`
+*定义*　定义：复对数、复幂及其分支
+
+**白话**：复对数有无穷多个值，两两差 $2\pi i$ 的整数倍；把虚部限制在 $(-\pi, \pi]$ 就得到主值。幂函数用 $e^{\alpha \log z}$ 定义，挑哪个对数分支就得到哪个幂分支。
+
+**复对数**（多值）：
+
+$$\log z := \ln|z| + i(\arg z + 2k\pi), \qquad k \in \mathbb{Z}.$$
+
+**主值**（$\operatorname{Arg} \in (-\pi, \pi]$），定义在 $\mathbb{C} \setminus (-\infty, 0]$ 上：
+
+$$\operatorname{Log} z := \ln|z| + i\operatorname{Arg} z.$$
+
+**复幂**：对 $\alpha \in \mathbb{C}$，
+
+$$z^{\alpha} := e^{\alpha \log z},$$
+
+即 $z^{\alpha} = e^{\alpha \ln|z|}\, e^{i\alpha(\arg z + 2k\pi)}$，$k \in \mathbb{Z}$。取主值对数得到**主值幂** $z^{\alpha} = e^{\alpha \operatorname{Log} z}$，它在 $\mathbb{C} \setminus (-\infty, 0]$ 上全纯。
+
+⭐ 单值的判据：$z^{\alpha}$ 单值当且仅当 $\alpha \in \mathbb{Z}$。理由：绕一圈多出来的是因子 $e^{2\pi i \alpha}$，它等于 $1$ 当且仅当 $\alpha$ 是整数。于是 $z^{1/n}$ 恰有 $n$ 支，$z^{i}$ 有可数无穷多支。
+
+⭐ 导数：在主值域上 $(\operatorname{Log} z)' = 1/z$。这是反函数定理的结论 —— $\exp$ 在带形 $\{\, |\operatorname{Im} w| < \pi \,\}$ 上是一一的，反函数就是 $\operatorname{Log}$。
+
+⭐ 负实轴上的跳跃：从上方逼近 $-x$（$x > 0$）时 $\operatorname{Arg} \to \pi$，从下方逼近时 $\operatorname{Arg} \to -\pi$，差 $2\pi$。这就是 $\operatorname{Log}$ 必须在 $(-\infty, 0]$ 上开一刀的原因。
+
+⚠ 指数法则会坏：$\log(z_1 z_2) = \log z_1 + \log z_2$ 只在**模 $2\pi i$** 的意义下成立；$(z^{a})^{b} = z^{ab}$ 一般不成立（两边取的对数分支可能不同）。
+
+📌 分支点：$z = 0$ 与 $\infty$ 是对数的分支点 —— 绕它们一圈，函数值回不到原处。$z^{1/n}$ 的分支点也是这两个。
+
+参考：王晓光《复变函数》· 对数函数与幂函数；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Riemann 曲面　`def.riemann-surface`
+*定义*　定义：Riemann 曲面（多值函数的「定义域」）
+
+**白话**：Riemann 曲面是把多值函数的各支「叠」在一起得到的一层一层的曲面 —— 在它上面，原本多值的函数变成单值全纯函数；平面上看起来的「绕一圈换一支」，在曲面上就是「走到另一层」。
+
+**定义（一维复流形）**：设 $S$ 是连通、Hausdorff、第二可数的拓扑空间，带一族开覆盖 $\{U_{\alpha}\}$ 与同胚
+
+$$\varphi_{\alpha}: U_{\alpha} \to \varphi_{\alpha}(U_{\alpha}) \subset \mathbb{C},$$
+
+使得对任意 $\alpha, \beta$，转移映射 $\varphi_{\beta} \circ \varphi_{\alpha}^{-1}$ 在其定义域上**全纯**。这样的一张 $(S, \{\varphi_{\alpha}\})$ 称为 **Riemann 曲面**。
+
+**多值函数的展开**：若 $F$ 在平面区域上有多个值，令 $S$ 由「点对 $(z, w)$，其中 $w$ 是 $F$ 在 $z$ 处的一个值」连成一个连通空间，投影 $\pi: S \to \mathbb{C}$、$(z, w) \mapsto z$ 在局部是一对一的全纯映射，则 $F$ 提升成 $S$ 上的**单值**全纯函数。
+
+⭐ 例子（只要形状对，不必会证）：
+
+① 对数的曲面是**无穷叶螺旋面**：每绕原点一圈就爬上一层，永不回到原处。
+
+② $z^{1/n}$ 的曲面是 $n$ 叶的，绕原点一圈换一叶，绕 $n$ 圈才回到原处 —— 所以它在 $S$ 上是单值的。
+
+③ Riemann 球面 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 是最简单的紧 Riemann 曲面：两张坐标卡 $z$ 与 $w = 1/z$，转移映射 $z \mapsto 1/z$ 在 $\mathbb{C}^{\times}$ 上全纯。
+
+⭐ 关键的一句话：**分支切割换成了「层」**。割开平面是为了让映射单值，叠成曲面则是把被割掉的部分再接回去 —— 曲线绕过分支点时，走的其实是另一层。
+
+⚠ 单值化定理（任何 Riemann 曲面都全纯同构于商 $\tilde{S}/\Gamma$，$\tilde{S}$ 是球面、平面或圆盘之一）是深定理，这里只作**定义与例子**，不证。
+
+📌 曲面上「全纯」的意义就靠转移映射：一个函数在每张坐标卡里读出来都全纯，就叫全纯。$\hat{\mathbb{C}}$ 上的全纯函数只有常数，但全纯**映射**可以非常多（$\hat{\mathbb{C}} \to \hat{\mathbb{C}}$ 恰当的就是分式线性变换）。
+
+参考：Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### 调和函数　`def.harmonic`
+*定义*　定义：调和函数
+
+**白话**：二阶偏导连续、并且满足 Laplace 方程 $\Delta u = 0$ 的实值函数。通俗说就是「处处不会比周围更凸也不会更凹」的函数。
+
+设 $\Omega \subset \mathbb{R}^2 \cong \mathbb{C}$ 是区域，$u: \Omega \to \mathbb{R}$ 属于 $C^2$。若
+
+$$\Delta u := \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$$
+
+在 $\Omega$ 上处处成立，称 $u$ 是 $\Omega$ 上的**调和函数**。
+
+等价的刻画（局部）：$u$ 是某个全纯函数的实部（圆盘上总可以，单连通区域上也可以，见「调和函数的共轭」那条）。
+
+⭐ 全纯函数的实部、虚部都调和：由 Cauchy–Riemann 方程 $u_x = v_y$、$u_y = -v_x$，得
+
+$$\Delta u = (u_x)_x + (u_y)_y = (v_y)_x + (-v_x)_y = v_{xy} - v_{yx} = 0,$$
+
+最后一步用了混合偏导相等（$v$ 充分光滑）。
+
+⭐ 例子：$\operatorname{Re} z^n$、$x^2 - y^2$、$\ln|z|$（在 $\mathbb{C}^{\times}$ 上）、$e^{x}\cos y$。
+
+⚠ 反例：$|z|^2 = x^2 + y^2$ 不调和，$\Delta(x^2 + y^2) = 4$。$x^3$ 也不调和，$\Delta x^3 = 6x$。
+
+⚠ 定义只要求 $C^2$，但调和函数自动是 $C^{\infty}$ 且实解析 —— 这是「它是全纯函数的实部」的直接后果。
+
+📌 调和函数没有「全纯」那样的刚性：两个调和函数的乘积一般既不调和也不全纯，$u + v$、$cu$ 才是。
+
+参考：王晓光《复变函数》· 调和函数；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 调和函数的均值性质　`thm.harmonic-mean-value`
+*定理*　定理：调和函数的均值性质
+
+**白话**：调和函数在一点的值，等于它在以该点为心、任意半径的圆周上的平均值；也等于圆盘上的面积平均值。
+
+设 $u$ 在 $D(a, R)$ 上调和，$0 < r < R$。则
+
+$$u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta,$$
+
+并且（面积平均）
+
+$$u(a) = \frac{1}{\pi r^2}\iint_{D(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
+
+⭐ 证明只有两步：把 $u$ 写成全纯函数 $f$ 的实部（圆盘单连通），再对 Cauchy 积分公式 $f(a) = \frac{1}{2\pi}\int_0^{2\pi} f(a + r e^{i\theta})\,\mathrm{d}\theta$ 两边取实部。
+
+⭐ 逆命题也成立：若 $u$ 连续且有圆周均值性质，则 $u$ 调和。所以「均值性质」可以当作调和函数的另一个定义 —— 很多书就是这么做（为了绕开二阶可微）。
+
+⚠ 均值必须对**整个圆周**取，不能只对正上方那几个点取；也不能对任意闭曲线取 —— 那正是 Poisson 公式要回答的事。
+
+⚠ $u$ 只需在 $D(a, r)$ 的**内部**调和，不要求闭圆盘上调和。
+
+📌 均值性质直接推出最大值原理（见「调和函数的最大值原理」那条），也是「调和函数实解析」的出发点（把积分展成幂级数）。
+
+参考：王晓光《复变函数》· 调和函数的均值性质；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### Poisson 积分公式　`thm.poisson-formula`
+*定理*　定理：Poisson 积分公式
+
+**白话**：圆内的取值由边界上的取值**唯一决定**，而且是有明确公式的加权平均 —— 权重就是 Poisson 核，它在边界附近会「尖起来」。
+
+设 $f$ 在 $D(0, R)$ 的邻域上全纯，$u = \operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，
+
+$$u(z) = \frac{1}{2\pi}\int_0^{2\pi} \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}\, u(r e^{i\theta})\,\mathrm{d}\theta.$$
+
+权函数
+
+$$P_r(z, \theta) := \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}$$
+
+称为 **Poisson 核**。它对固定的 $z$ 满足 $P_r \ge 0$、且 $\frac{1}{2\pi}\int_0^{2\pi} P_r\,\mathrm{d}\theta = 1$。
+
+⭐ 用途：解圆盘上的 **Dirichlet 问题** —— 给定边界上的连续函数 $b$，把上面公式里的 $u(r e^{i\theta})$ 换成 $b$，得到的函数在圆内调和、在内部趋于边界值时趋于 $b$。调和函数在内部的取值「由边界完全决定」，这就是全部内容。
+
+⭐ 核的形状：$z = 0$ 时 $P_r = 1$，公式退化成均值性质；$|z| \to r$ 且方向对准 $e^{i\theta_0}$ 时核在该处爆到 $\infty$ 而在别处趋零 —— 所以说它像一个「近似单位」，把权重堆到边界上的对应点。
+
+⚠ $\operatorname{Re} f$ 版本与 $f$ 版本都成立（核是**实值**的，所以 $f$ 的公式可以直接取实部）。
+
+📌 由 $P_r \ge 0$ 与 $\int P_r = 1$ 立得：调和函数满足**极值不等式** $|u(z)| \le \max_{|\zeta| = r}|u(\zeta)|$，这正是最大值原理。
+
+参考：王晓光《复变函数》· Poisson 积分公式；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 调和函数的共轭　`thm.harmonic-conjugate`
+*定理*　定理：调和函数局部是全纯函数的实部
+
+**白话**：在单连通区域上，每个调和函数都是某个全纯函数的实部 —— 那个虚部叫它的「共轭调和函数」，只差一个常数。
+
+设 $\Omega$ 是**单连通**区域，$u$ 在 $\Omega$ 上调和。则存在 $\Omega$ 上的全纯函数 $f$，使
+
+$$\operatorname{Re} f = u.$$
+
+并且 $v$（**共轭调和函数**，满足 $v_x = -u_y$、$v_y = u_x$）在相差一个**实**常数的意义下唯一 —— 等价地，$f = u + iv$ 在相差一个**纯虚**常数的意义下唯一。
+
+⭐ 证明是「闭 1-形式必恰当」：令 $\omega = -u_y\,\mathrm{d}x + u_x\,\mathrm{d}y$，则
+
+$$\mathrm{d}\omega = (u_{xx} + u_{yy})\,\mathrm{d}x \wedge \mathrm{d}y = 0,$$
+
+$\Omega$ 单连通 $\implies$ 存在 $v$ 使 $\mathrm{d}v = \omega$，即 $v_x = -u_y$、$v_y = u_x$；这两式正是 $(u, v)$ 的 Cauchy–Riemann 方程，故 $f = u + iv$ 全纯。
+
+⭐ 唯一性：若 $\operatorname{Re} f_1 = \operatorname{Re} f_2 = u$，则 $g = f_1 - f_2$ 纯虚且全纯；写 $g = iy$（$y$ 实值），Cauchy–Riemann 给 $y_x = y_y = 0$，故 $y$ 是常数。
+
+⚠ 单连通**不能去掉**：$u(z) = \ln|z|$ 在 $\mathbb{C}^{\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\operatorname{Log}$ 本身，而 $\operatorname{Log}$ 是多值的。绕原点一圈，$\oint \omega = 2\pi \ne 0$。
+
+📌 反方向（全纯 $\implies$ 实部调和）**不需要**单连通，只要 Cauchy–Riemann 方程。所以「调和」比「全纯的实部」宽一点点，缺的正是拓扑条件。
+
+参考：王晓光《复变函数》· 共轭调和函数；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 调和函数的最大值原理　`thm.harmonic-maximum`
+*定理*　定理：调和函数的最大值原理
+
+**白话**：非常数的调和函数在区域内部既取不到最大值，也取不到最小值 —— 要取极值只能跑到边界上去。
+
+设 $u$ 在区域 $\Omega$ 上调和且**不是**常数。则 $u$ 在 $\Omega$ 内既取不到最大值，也取不到最小值。
+
+等价说法：若 $u$ 在 $\Omega$ 内部某点达到最大值（或最小值），则 $u$ 是常数。
+
+⭐ 这是**双边**的原理：最大值和最小值同时被排除。原因是 $-u$ 也调和，对它用一遍就得到最小值那一半。全纯函数没有这个对称性 —— 全纯的 $|f|$ 有最大值原理，但 $f$ 本身可以取到 $0$。
+
+⭐ 证明靠均值性质：若 $u(a)$ 是内部最大 $M$，则
+
+$$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta \le M,$$
+
+被积函数处处 $\le M$ 而平均值恰是 $M$ $\implies$ 整个圆周上 $u \equiv M$。于是取值集合 $\{\, u = M \,\}$ 既开又闭，由连通性等于整个 $\Omega$。
+
+⚠ 「不是常数」这个前提不能省：常函数当然处处是最大值。
+
+⭐ 推论（有用的形式）：$|u|$ 在内部取不到最大值，除非 $u$ 是常数 —— 因为 $|u|$ 的最大值要么是 $u$ 的最大值要么是 $-u$ 的最大值。
+
+📌 与全纯的最大模原理对照：那边限制的是 $|f|$，这边限制的是 $u$ 本身；而且这边两头都堵 —— 对 $u$ 用一遍得「取不到最大」，对 $-u$ 用一遍得「取不到最小」。所以调和函数的极值**只能**出在边界上，这也是 Dirichlet 问题能只谈「边值」的根据。
+
+参考：王晓光《复变函数》· 调和函数的最大值原理；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 整函数与亚纯函数　`def.entire-meromorphic`
+*定义*　定义：整函数与亚纯函数
+
+**白话**：整函数就是在整个复平面上处处全纯的函数；亚纯函数是「除了一堆孤立极点之外处处全纯」的函数，也就是局部上两个全纯函数的商。
+
+**整函数**：$f$ 在 $\mathbb{C}$ 上处处全纯。由 Liouville 定理，有界的整函数必为常数；非常数的整函数在 $\infty$ 处有奇点（多项式是极点，$e^{z}$ 是本性奇点）。
+
+**亚纯函数**：设 $\Omega$ 是区域。若 $f$ 在 $\Omega$ 上除一个**孤立**点集 $P$ 外全纯，且 $P$ 的每一点都是 $f$ 的极点，称 $f$ 在 $\Omega$ 上**亚纯**。
+
+等价刻画：对每个 $a \in \Omega$，存在 $a$ 的邻域 $U$ 与 $U$ 上的全纯函数 $p, q$（$q \not\equiv 0$），使 $f = p/q$ 在 $U$ 上成立。
+
+⭐ 球面上的观点最干净：把 $\Omega$ 换成 $\hat{\mathbb{C}}$，亚纯函数就是 $\hat{\mathbb{C}} \to \hat{\mathbb{C}}$ 的全纯映射 —— 极点就是被映到 $\infty$ 的点。$\hat{\mathbb{C}}$ 上的亚纯函数恰是有理函数。
+
+⭐ 例子：$1/\sin z$（极点在 $k\pi$）、$\tan z$、$\Gamma$ 函数（极点在 $0, -1, -2, \ldots$）。
+
+⚠ 本性奇点**不算**亚纯：$e^{1/z}$ 在 $0$ 附近的行为不是极点，所以 $e^{1/z}$ 在含 $0$ 的区域上不是亚纯的。亚纯要求每个坏点都是极点。
+
+⚠ 「孤立」也不能省：若奇点有聚点，那不叫极点。
+
+📌 极点处的 Laurent 展开只有有限个负幂项；亚纯函数在极点附近就是「有限阶的爆破」。整函数是亚纯函数在 $P = \emptyset$ 时的特例。
+
+参考：王晓光《复变函数》· 整函数与亚纯函数；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Mittag-Leffler 定理　`thm.mittag-leffler`
+*定理*　定理：Mittag-Leffler 定理（只陈述）
+
+**白话**：给定一串没有聚点的点和每个点处的一截「极点主部」，总能造出一个亚纯函数，使它在这些点处的行为恰好就是给定的那些主部。
+
+设 $\Omega \subset \mathbb{C}$ 是区域，$\{a_k\} \subset \Omega$ 在 $\Omega$ 内没有聚点，每个 $a_k$ 配一个主部
+
+$$P_k\left( \frac{1}{z - a_k} \right) = \sum_{j=1}^{m_k} \frac{c_{k j}}{(z - a_k)^{j}}.$$
+
+则存在 $\Omega$ 上的亚纯函数 $f$，它恰以 $\{a_k\}$ 为极点（$a_k$ 处的阶不超过 $m_k$），且 $f - P_k$ 在 $a_k$ 处全纯，即 $a_k$ 处的主部正是 $P_k$；这样的 $f$ 在相差一个 $\Omega$ 上整函数的意义下唯一。
+
+⭐ 一句话：这是「按主部插值」的存在定理。Weierstrass 乘积定理是它的**零点**版，Mittag-Leffler 是**极点**版 —— 一个指定零点的位置与重数，一个指定极点的位置与主部。
+
+⚠ 本条只**陈述**结论。完整证明要用 Runge 逼近或 Weierstrass 收敛因子逐项修正，属于逼近论，这里不展开；边上只记证明的骨架。
+
+⭐ 收敛的障碍在哪：极点无穷多个时 $\sum_k P_k$ 一般处处发散。修正的办法是逐项减去一个在 $a_k$ 附近全纯的函数（通常是 $P_k$ 在 $a_k$ 处的 Taylor 多项式），把它在越来越大的紧集上压得足够小。
+
+⭐ 例子（经典的两个）：
+
+$$\pi^2 \csc^2(\pi z) = \sum_{n \in \mathbb{Z}} \frac{1}{(z - n)^2}, \qquad \pi \cot(\pi z) = \frac{1}{z} + \sum_{n \ne 0} \left( \frac{1}{z - n} + \frac{1}{n} \right).$$
+
+第二个里的 $+1/n$ 就是收敛因子。
+
+📌 与留数的接口：主部里的一次项系数 $c_{k 1}$ 正是 $\operatorname{Res}(f, a_k)$，所以 Mittag-Leffler 也可以读成「任意指定留数与高阶主部」。
+
+参考：王晓光《复变函数》· Mittag-Leffler 定理；Stein–Shakarchi, Complex Analysis · 整函数与亚纯函数
+
+#### Jordan 引理　`lem.jordan`
+*引理*　引理：Jordan 引理（大圆弧上的指数衰减）
+
+**白话**：上半平面的大半圆弧上，$e^{iaz}$（$a > 0$）在圆弧顶部指数衰减；只要 $f$ 在弧上一致趋于零，$f e^{iaz}$ 在弧上的积分就趋于零 —— 比「弧长乘最大模」的粗糙估计强得多。
+
+设 $f$ 在 $\{\, \operatorname{Im} z \ge 0,\ |z| \ge R_0 \,\}$ 上连续，且
+
+$$\lim_{R \to \infty}\ \max_{|z| = R,\ \operatorname{Im} z \ge 0} |f(z)| = 0.$$
+
+则对任意 $a > 0$，以 $C_R$ 记上半平面内半径为 $R$ 的半圆弧（从 $R$ 到 $-R$，逆时针），有
+
+$$\lim_{R \to \infty} \int_{C_R} f(z)\, e^{i a z}\,\mathrm{d}z = 0.$$
+
+定量形式：若 $|f(z)| \le M_R$ 于 $C_R$ 上，则
+
+$$\left| \int_{C_R} f(z)\, e^{i a z}\,\mathrm{d}z \right| \le \frac{\pi M_R}{a}.$$
+
+⭐ 关键不等式 $\sin\theta \ge \dfrac{2\theta}{\pi}$（$0 \le \theta \le \pi/2$）：在 $C_R$ 上 $z = R e^{i\theta}$，$\operatorname{Im} z = R\sin\theta$，故
+
+$$\left| e^{i a z} \right| = e^{-a\, \operatorname{Im} z} = e^{-a R \sin\theta} \le e^{-2 a R \theta/\pi}.$$
+
+沿 $\theta$ 积分得 $\dfrac{2}{a R}$ 量级，再乘弧长 $\pi R$ 与 $M_R$，得 $\pi M_R/a$。**注意这里并没有用到 $R$ 很大** —— 衰减全来自 $e^{iaz}$。
+
+⭐ 与「弧长乘最大模」的对比：只对 $f$ 用 ML 估计得 $\pi R M_R$，只有当 $M_R = O(1/R^{1+\delta})$ 时才趋零；Jordan 引理把要求降到 $M_R \to 0$，也就是 $f$ 只要「不增长」就够。
+
+⚠ $a > 0$ 不可省：$a < 0$ 时 $e^{iaz}$ 在上半平面里指数**增长**，要改到下半平面（顺时针）去做，符号跟着变。
+
+📌 完整计算例（第三个标准型，$a > 0$）：
+
+$$\int_{-\infty}^{\infty} \frac{e^{i a x}}{x^2 + 1}\,\mathrm{d}x.$$
+
+被积函数在 $|z| = R$ 上一致趋于零（$|1/(z^2 + 1)| \le 2/R^2$），Jordan 引理把大弧的贡献抹掉，剩下的就是留数：
+
+$$\int_{-\infty}^{\infty} \frac{e^{i a x}}{x^2 + 1}\,\mathrm{d}x = 2\pi i \, \operatorname{Res}\left( \frac{e^{i a z}}{z^2 + 1},\, i \right) = 2\pi i \cdot \frac{e^{-a}}{2 i} = \pi e^{-a}.$$
+
+取实部、虚部得到两个经典积分（$a > 0$）：
+
+$$\int_{-\infty}^{\infty} \frac{\cos(a x)}{x^2 + 1}\,\mathrm{d}x = \pi e^{-a}, \qquad \int_{-\infty}^{\infty} \frac{\sin(a x)}{x^2 + 1}\,\mathrm{d}x = 0,$$
+
+第二式为 $0$ 是因为被积函数是奇函数。这里 $M_R \le 2/R^2$，这个幂次其实够粗糙的 ML 估计用；但把分母换成一次式（比如 $z$），就只剩 Jordan 引理这一条路 —— 那正是本引理存在的理由。
+
+参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 实轴上有理函数的积分　`thm.integral-rational`
+*定理*　定理：用留数计算实轴上有理函数的积分
+
+**白话**：分母比分子至少高两次、并且在实轴上没有零点的有理函数，它在整条实轴上的积分等于 $2\pi i$ 乘上半平面所有极点的留数之和。
+
+设 $R(x) = P(x)/Q(x)$，$P, Q$ 是实系数多项式，$\deg Q \ge \deg P + 2$，且 $Q$ 在 $\mathbb{R}$ 上无零点。则
+
+$$\int_{-\infty}^{\infty} R(x)\,\mathrm{d}x = 2\pi i \sum_{\operatorname{Im} a_k > 0} \operatorname{Res}(R, a_k),$$
+
+右端对上半平面内的全部极点求和。因为 $R$ 取实值，这个和自动是实数。
+
+⭐ 完整计算一：
+
+$$\int_{-\infty}^{\infty} \frac{\mathrm{d}x}{(x^2 + 1)^2} = \frac{\pi}{2}.$$
+
+上半平面只有一个极点 $i$，阶为 $2$。用极点留数公式（$m = 2$）：
+
+$$\operatorname{Res}\left( \frac{1}{(z^2+1)^2},\, i \right) = \frac{\mathrm{d}}{\mathrm{d}z}\left[ \frac{(z - i)^2}{(z^2+1)^2} \right]_{z=i} = \frac{\mathrm{d}}{\mathrm{d}z}\left[ \frac{1}{(z+i)^2} \right]_{z=i} = \frac{-2}{(2i)^3} = \frac{1}{4i}.$$
+
+于是积分 $= 2\pi i \cdot \dfrac{1}{4i} = \dfrac{\pi}{2}$。$\checkmark$
+
+⭐ 完整计算二：
+
+$$\int_{-\infty}^{\infty} \frac{\mathrm{d}x}{x^4 + 1} = \frac{\pi}{\sqrt{2}}.$$
+
+$x^4 + 1$ 的根是 $e^{i\pi/4}, e^{3i\pi/4}$（上半平面两个）与它们的共轭。一阶极点的留数：由 $R = 1/(z^4+1)$、$R = p/q$ 且 $q$ 在一阶零点 $a$ 处，$\operatorname{Res}(R, a) = 1/(4a^3) = -a/4$（因为 $a^4 = -1$）。两只相加：
+
+$$\sum \operatorname{Res} = -\frac{1}{4}\left( e^{i\pi/4} + e^{3i\pi/4} \right) = -\frac{1}{4}\cdot\frac{\sqrt{2}}{2}\cdot 2i = -\frac{\sqrt{2}}{4}\, i,$$
+
+故积分 $= 2\pi i \cdot \left( -\dfrac{\sqrt{2}}{4} i \right) = \dfrac{\pi\sqrt{2}}{2} = \dfrac{\pi}{\sqrt{2}}$。$\checkmark$
+
+⚠ $\deg Q \ge \deg P + 2$ 是硬条件：只高一次时 $\int R$ 是条件收敛的**主值**，大圆弧不再趋于零，公式要改。
+
+⚠ 实轴上的极点必须不存在（否则积分发散）；若有，需要在小半圆上挖洞，取主值。
+
+参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 三角有理函数的积分　`thm.integral-trig`
+*定理*　定理：用留数计算三角有理函数的定积分
+
+**白话**：$\cos\theta$、$\sin\theta$ 的有理式在整圈上的积分，用 $z = e^{i\theta}$ 换成单位圆上的围道积分，就化成了留数计算。
+
+设 $R(u, v)$ 是 $u, v$ 的有理函数，在圆周（即 $[0, 2\pi]$ 上对应的全部 $\theta$）处无极点。则
+
+$$\int_0^{2\pi} R(\cos\theta, \sin\theta)\,\mathrm{d}\theta = \oint_{|z| = 1} R\left( \frac{z + z^{-1}}{2},\ \frac{z - z^{-1}}{2 i} \right) \frac{\mathrm{d}z}{i z}.$$
+
+⭐ 代换的三个要素：$z = e^{i\theta}$、$\cos\theta = \dfrac{z + z^{-1}}{2}$、$\sin\theta = \dfrac{z - z^{-1}}{2i}$、$\mathrm{d}\theta = \dfrac{\mathrm{d}z}{i z}$。于是整圈 $\theta$ 变成单位圆一圈（逆时针），三角有理式变成 $z$ 的有理函数。
+
+⭐ 完整计算：对 $a > 1$，
+
+$$\int_0^{2\pi} \frac{\mathrm{d}\theta}{a + \cos\theta} = \frac{2\pi}{\sqrt{a^2 - 1}}.$$
+
+代换后
+
+$$\int_0^{2\pi} \frac{\mathrm{d}\theta}{a + \cos\theta} = \oint_{|z|=1} \frac{1}{a + (z + z^{-1})/2}\cdot\frac{\mathrm{d}z}{i z} = \frac{2}{i}\oint_{|z|=1} \frac{\mathrm{d}z}{z^2 + 2 a z + 1}.$$
+
+分母的根是 $z_{\pm} = -a \pm \sqrt{a^2 - 1}$，乘积为 $1$，故恰有一个在单位圆内：$z_{+} = -a + \sqrt{a^2 - 1}$（$|z_{+}| < 1$）。一阶留数
+
+$$\operatorname{Res}\left( \frac{1}{z^2 + 2az + 1},\, z_{+} \right) = \frac{1}{2 z_{+} + 2a} = \frac{1}{2\sqrt{a^2 - 1}}.$$
+
+于是
+
+$$\frac{2}{i}\cdot 2\pi i \cdot \frac{1}{2\sqrt{a^2 - 1}} = \frac{4\pi}{2\sqrt{a^2 - 1}} = \frac{2\pi}{\sqrt{a^2 - 1}}. \checkmark$$
+
+⭐ 立刻的检验：$a = 2$ 时得 $2\pi/\sqrt{3}$，与直接查表一致。
+
+⚠ 条件 $a > 1$ 是为了「分母在整圈上不为零」；$a = 1$ 时 $\theta = \pi$ 处分母为零，积分发散（$\int \mathrm{d}\theta/(1 + \cos\theta)$ 在 $\pi$ 附近像 $\mathrm{d}\theta/\theta^2$）。
+
+📌 这类积分的通病：代换后分子分母可能同乘 $z^{n}$，必须先乘开看清楚有几个根在单位圆内 —— 只有内部的极点才进留数。
+
+参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
 
 ## 星系：实变函数（Functions of a Real Variable）
 > 换一套更听话的积分：σ-代数 → 测度 → 可测函数 → Lebesgue 积分（单调收敛 / Fatou / 控制收敛）→ 乘积测度与 Fubini → 符号测度与 Radon–Nikodym → 微分定理 → $L^p$ 空间。
@@ -24136,6 +24684,562 @@ $$\int_{M}f^{\ast}\omega = -\int_{N}\omega .$$
 
 参考：Spivak, Calculus on Manifolds, 第 3 章「Integration」· 换元公式；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 流形上的积分与换元
 
+#### 切分布　`def.tangent-distribution`
+*定义*　切分布与光滑性
+
+**白话**：把「每点挑一个 $k$ 维方向」摊在整个流形上，就得到一个切分布 —— 它是「一族方向」，不是「一个方向的场」；Frobenius 定理问的是这族方向能不能被拼成真正的 $k$ 维薄片。
+
+设 $M$ 是 $n$ 维光滑流形，$0 \le k \le n$。$M$ 上的 **$k$ 阶切分布**（简称 **$k$-分布**）是给每点 $p \in M$ 指定一个 $k$ 维线性子空间
+
+$$\mathcal{D}_{p} \subseteq T_{p}M,\qquad \dim \mathcal{D}_{p} = k,$$
+
+并把它并起来记 $\mathcal{D} := \bigsqcup_{p \in M}\mathcal{D}_{p} \subseteq TM$。称 $\mathcal{D}$ **光滑**（也叫**光滑分布**），如果 $\mathcal{D}$ 是切丛的 **$k$ 秩光滑子丛**；等价地，每点有开邻域 $U$ 与 $U$ 上的 $k$ 个光滑向量场 $X_{1},\ldots,X_{k}$，使
+
+$$\mathcal{D}_{p} = \operatorname{span}\bigl\{(X_{1})_{p},\ldots,(X_{k})_{p}\bigr\}\qquad (p \in U),$$
+
+即 $\mathcal{D}$ 在 $U$ 上由这 $k$ 个向量场**生成**。
+
+**特例**：$k = 0$ 时 $\mathcal{D}_{p} = 0$；$k = n$ 时 $\mathcal{D} = TM$；$k = 1$ 时每点给一条线，叫**线分布**（$\mathbb{R}^{2}$ 上 $\mathcal{D}_{p} = \operatorname{span}\{\partial_{x} + y\,\partial_{y}\}$ 就是一条随点转动的线）。
+
+**不是**什么：这里的「分布」是**切丛的子丛**，与概率论里说的「分布」、广义函数论里的「分布」毫无关系 —— 同字不同义，取用时看星团。
+
+**为什么要求「子丛」而不只是「每点一个子空间」**：只逐点给子空间，$\mathcal{D}$ 可以极不光滑（把 $\mathbb{R}^{2}$ 的每条线按某个病态函数转动）。Frobenius 是可微的命题，必须让「转动」也光滑 —— 这就是「局部由 $k$ 个光滑向量场生成」的作用：它把「选方向」变成「选场」，于是可以求导、可以取括号。
+
+**光滑性等价于子丛**：若 $\mathcal{D}$ 局部由 $X_{1},\ldots,X_{k}$ 生成且这 $k$ 个场在每点线性无关，则 $\mathcal{D}$ 是 $TM$ 的嵌入子流形、$\pi|_{\mathcal{D}}$ 仍是秩 $k$ 向量丛（图卡由 $M$ 的卡与这组基拼成）。反向由局部平凡化取常值截面即得。本图把这两条当同一件事用，不另立节点。
+
+**生成元不唯一，秩唯一**：把 $k$ 个生成元按任意光滑 $\operatorname{GL}(k,\mathbb{R})$-值函数矩阵线性组合，仍是生成元。所以「光滑」是分布的性质，不是某一组场的性质 —— 与 `def.vector-field` 里「换卡乘 Jacobi 矩阵」是同一类记账。
+
+**与辛几何、接触几何的接口**：秩 $n-1$ 的分布常写成某个处处非零 $1$-形式的核 $\ker\omega$；辛流形上 $\ker(\iota_{X}\omega)$ 是 $X$ 的**辛正交补**（秩 $n-1$，含 $X$ 本身，因为 $\omega(X,X) = 0$，见 `def.interior-product`）。这些核分布可不可积，正是 Frobenius（`thm.frobenius`）要判的事。
+
+⚠️ 记号冲突：$\Gamma(\mathcal{D})$ 记「落在 $\mathcal{D}$ 里的向量场的全体」，它是 $C^{\infty}(M)$-模而不是向量空间；本图沿用 `def.bundle-section` 的 $\Gamma$。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 切分布与光滑性；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 子丛与截面的模结构
+
+#### 对合分布　`def.involutive-distribution`
+*定义*　对合分布
+
+**白话**：一族方向「对合」，说的是：沿其中两个方向各走一步、交换次序后的那点偏差，仍然落在这族方向里。这一条就是「能被拼成薄片」的全部障碍。
+
+设 $\mathcal{D}$ 是 $M$ 上的光滑 $k$ 阶切分布（`def.tangent-distribution`）。称 $\mathcal{D}$ **对合**（involutive），如果对任意开集 $U \subseteq M$ 与任意 $X, Y \in \Gamma(\mathcal{D}|_{U})$（取值落在 $\mathcal{D}$ 里的光滑向量场），都有
+
+$$[X,Y] \in \Gamma(\mathcal{D}|_{U}),$$
+
+其中 $[\cdot,\cdot]$ 是向量场的 Lie 括号（`def.lie-bracket`）。
+
+**只需查生成元**：设 $\mathcal{D}$ 在 $U$ 上由 $X_{1},\ldots,X_{k}$ 生成，则 $\mathcal{D}$ 在 $U$ 上对合，当且仅当每个括号都能写成生成元的 $C^{\infty}$-线性组合
+
+$$[X_{i},X_{j}] = \sum_{l=1}^{k} a^{l}_{\ ij}\,X_{l},\qquad a^{l}_{\ ij} \in C^{\infty}(U).$$
+
+这一条判据是 Frobenius 定理证明里真正动手验的东西。
+
+**为什么只需查生成元**：$\Gamma(\mathcal{D}|_{U})$ 是 $C^{\infty}(U)$-模，任意两个截面写成 $f^{i}X_{i}$、$g^{j}X_{j}$。由 `def.lie-bracket` 的第 4 条（Leibniz 律）
+
+$$[fX_{i},\,gX_{j}] = fg\,[X_{i},X_{j}] + f(X_{i}g)\,X_{j} - g(X_{j}f)\,X_{i},$$
+
+后两项只是生成元的组合，所以「括号落在 $\mathcal{D}$ 里」逐点由 $[X_{i},X_{j}]$ 决定。
+
+**秩 $1$ 永远对合**：局部取处处非零的 $X$ 生成 $\mathcal{D}$，任意两个截面是 $fX$、$gX$，而 $[fX,gX] = f(Xg)X - g(Xf)X$ 仍是 $X$ 的倍数。所以**线分布永远可积**（`thm.frobenius`）；可积性是从秩 $2$ 才开始的问题 —— 这与「一个一阶常微分方程总有解、一阶偏微分方程组才有障碍」是同一句话。
+
+**为什么对合是「正确」的条件**：若有积分流形 $N$（`def.integral-manifold`），则「$X, Y$ 落在 $\mathcal{D}$ 里」等于「$X, Y$ 是 $N$ 上的向量场」，于是 $[X,Y]$ 必落在 $TN = \mathcal{D}$ 里 —— 对合是必要条件，而且它只用括号就能验。Frobenius 定理说它也是**充分**的。
+
+**反例（Heisenberg 接触分布）**：$\mathbb{R}^{3}$ 上令 $\mathcal{D} = \ker\omega$，$\omega = \mathrm{d}z - x\,\mathrm{d}y$。$X = \partial_{x}$ 与 $Y = \partial_{y} + x\,\partial_{z}$ 满足 $\omega(X) = 0$、$\omega(Y) = -x + x = 0$，所以它们是 $\mathcal{D}$ 的生成元；但
+
+$$[X,Y] = [\partial_{x},\ \partial_{y} + x\,\partial_{z}] = \partial_{z},\qquad \omega(\partial_{z}) = 1 \ne 0,$$
+
+故 $[X,Y] \notin \mathcal{D}$：这个秩 $2$ 的接触分布不对合，因而**不可能有积分曲面**。它每点附近都「绕着拧」，任何曲面都装不下 —— 这是 Frobenius 定理最省事的反例。
+
+⚠️ 「对合」是分布的性质，与生成元的选取无关（换生成元只是乘以 $\operatorname{GL}(k)$-值函数矩阵，括号的封闭性不变）。所以反例里只验一组生成元就够。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 对合分布；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号
+
+#### 积分流形　`def.integral-manifold`
+*定义*　积分流形与叶片坐标
+
+**白话**：一块 $k$ 维薄片，如果它在每点的切空间正好是分布给的那个子空间，它就是这分布的**积分流形** —— 「积分」就是把一堆方向积成一整块地。
+
+设 $\mathcal{D}$ 是 $M$ 上的光滑 $k$ 阶切分布。$M$ 的 $k$ 维**浸入子流形**（即单浸入 $i : N^{k} \to M$ 的像：$i$ 光滑、$\mathrm{d}i$ 处处单射）叫 $\mathcal{D}$ 的**积分流形**，如果
+
+$$\mathrm{d}i_{p}\bigl(T_{p}N\bigr) = \mathcal{D}_{i(p)}\qquad (p \in N).$$
+
+两边都是 $k$ 维，所以「包含」与「相等」等价：条件就是 $\mathrm{d}i_{p}(T_{p}N) \subseteq \mathcal{D}_{i(p)}$ 对每点成立。
+
+**局部形式（叶片坐标）**：若 $p$ 附近有坐标 $(x^{1},\ldots,x^{n})$ 使 $\mathcal{D}$ 由 $\partial_{1},\ldots,\partial_{k}$ 生成，则每块**叶片**
+
+$$\{x^{k+1} = c^{k+1},\ \ldots,\ x^{n} = c^{n}\}$$
+
+（$c^{k+1},\ldots,c^{n}$ 是常数）都是积分流形。这样的坐标叫**平坦坐标**，也叫叶片坐标。
+
+**整体形式**：把 $M$ 按「过同一点的积分流形」切开，得到的极大连通积分流形叫**叶**，全体叶叫 $\mathcal{D}$ 的**叶状结构**（foliation）。
+
+**为什么只要求「浸入」不要求「嵌入」**：叶常常是稠密的（环面 $\mathbb{T}^{2}$ 上斜率为无理数的线分布，每条叶都稠密），它作为子集不可能是嵌入子流形（嵌入要求子空间拓扑），但作为浸入子流形完全合法。所以积分流形的正确语言是浸入 —— 这是「叶」与「嵌入子流形」必须分开的地方。
+
+**维数必须正好是 $k$**：$\mathcal{D}$ 里的积分曲线（$k = 1$ 时就是它）是积分流形的例子；但一条躺在 $\mathcal{D}$ 里的低维曲线在高秩情形一般不叫积分流形，因为它的切空间只有更低维。本图的定义要求维数相等，正是为了让「$\mathrm{d}i(TN) \subseteq \mathcal{D}$」能升成等号。
+
+**局部唯一性**：若 $N_{1}, N_{2}$ 是过同一点的两块积分流形，则它们在交点附近重合。理由：在平坦坐标里两者都只能沿前 $k$ 个坐标方向伸展，而叶片是唯一那样的 $k$ 维薄片。这条是「叶把流形分开」的来源，也是把局部叶片拼成整体叶的依据。
+
+**与常微分方程的类比**：$k = 1$ 时积分流形就是积分曲线（`def.flow`），存在唯一性由 ODE 给，没有障碍；$k \ge 2$ 时方程变成**偏**微分方程组，于是出现障碍，障碍正是对合（`def.involutive-distribution`）。这就是 Frobenius 定理的全部内容。
+
+**整体存在不是自动的**：定理（`thm.frobenius`）只保证**局部**有积分流形。整体上「过每点有唯一的极大叶」还要一次把局部叶片粘起来的手续（用 Zorn 引理取极大的连通并，或用局部唯一性证明两个叶要么相等要么不交）。本图只陈述结论。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 积分流形与叶片坐标；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 浸入子流形
+
+#### Frobenius 定理　`thm.frobenius`
+*定理*　Frobenius 定理
+
+**白话**：一族光滑方向能被拼成薄片，当且仅当这族方向对合 —— 没有别的障碍。这是一阶偏微分方程组可解的几何版本，也是叶状结构的出生证。
+
+设 $\mathcal{D}$ 是 $n$ 维光滑流形 $M$ 上的光滑 $k$ 阶切分布。以下四条等价：
+
+1. $\mathcal{D}$ 对合（`def.involutive-distribution`）；
+2. **平坦坐标存在**：每点 $p$ 有邻域 $U$ 与坐标 $(x^{1},\ldots,x^{n})$，使 $\mathcal{D}|_{U}$ 由 $\partial_{1},\ldots,\partial_{k}$ 生成；
+3. **局部可积**：每点 $p$ 落在某块 $k$ 维积分流形里（`def.integral-manifold`）；
+4. **叶状结构存在**：$M$ 被一族互不相交的极大连通积分流形（叶）覆盖，每片叶是浸入子流形。
+
+特别地：对合**当且仅当**局部总有「把 $\mathcal{D}$ 拉直成坐标面」的坐标。$k = n-1$ 且 $\mathcal{D} = \ker\omega$（$\omega$ 处处非零）时，对合等价于
+
+$$\omega \wedge \mathrm{d}\omega = 0,$$
+
+这就是经典教材里的 Frobenius 条件；本图只陈述这一支，不展开。
+
+**证明的骨架**（详细提纲写在两条边上）：(2)$\implies$(3)$\implies$(1) 与 (2)$\implies$(4) 都是一行计算，内容全在 (1)$\implies$(2) —— 先把一个生成元拉直成 $\partial_{1}$（用局部流 + 流盒定理），再在横截超曲面上**降秩归纳**。关键技巧是：把其余生成元换成「没有 $\partial_{1}$ 分量」的新生成元，于是它们的括号也落在其余生成元张成的空间里（这一步只在对合时才做得到）；最后沿 $\partial_{1}$ 把坐标平移出去，用一个线性 ODE 的初值问题把「相切」验完。
+
+**条件是最优的**：反例就是接触分布（`def.involutive-distribution` 的 notes 里那个）—— 它光滑、秩 $2$、处处非零，就是不对合，于是任何曲面都装不下它。所以「对合」不是技术假设，是充要条件的一半。
+
+**「局部」不能升成「整体」**：定理给的是每点附近有叶片坐标，**不**保证整体上有坐标把 $\mathcal{D}$ 拉直成 $\mathbb{R}^{n}$ 的坐标面（那要求叶空间本身是乘积流形）。稠密叶（环面上的无理斜率线）就是反例：局部全是直线，整体却绕回来稠密。
+
+**分析版本**：Frobenius 等价于「一阶线性偏微分方程组 $\partial_{i}f = \sum_{j} a^{j}_{i}\partial_{j}f$（$i > k$）局部可解」的相容性条件。相容性条件就是对合，而它恰好是「混合偏导可交换」（$\mathrm{d}^{2} = 0$）的读法 —— 与 `def.exterior-derivative` 的 notes 里那句「$\mathrm{d}^{2} = 0$ 与结构方程同源」是同一件事。
+
+**口径**：本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I \subseteq \Omega^{\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。
+
+⚠️ 定理的 $k = n$ 情形平凡（$\mathcal{D} = TM$ 总对合、任意坐标都平坦），$k = 0$ 也平凡；**有内容的只有 $1 \le k \le n-1$**，而 $k = 1$ 又总是对合（见 `def.involutive-distribution`）。所以真正的例子从「$2 \le k \le n-1$」才开始。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 一阶偏微分方程组的相容性
+
+#### 左不变形式　`def.left-invariant-form`
+*定义*　左不变形式与左不变余标架
+
+**白话**：Lie 群上的微分形式如果对左平移「纹丝不动」，它就被单位元处的一个多重线性型完全决定 —— 于是 $G$ 上的左不变 $k$-形式与 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 是同一个东西。
+
+设 $G$ 是 $n$ 维 Lie 群（`def.lie-group`），$\mathfrak{g} = T_{e}G$，$L_{g}$ 是左平移。$k$-形式 $\omega \in \Omega^{k}(G)$ 叫**左不变**，如果
+
+$$L_{g}^{\ast}\omega = \omega\qquad (g \in G),$$
+
+等价地 $\omega_{g}(v_{1},\ldots,v_{k}) = \omega_{e}\bigl(\mathrm{d}(L_{g^{-1}})_{g}v_{1},\ldots,\mathrm{d}(L_{g^{-1}})_{g}v_{k}\bigr)$ —— 即 $\omega$ 在 $G$ 上的值由 $\omega_{e}$ 唯一决定。于是赋值
+
+$$\omega \longmapsto \omega_{e}$$
+
+是「左不变 $k$-形式」的空间到 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 的线性同构，维数为 $\binom{n}{k}$。
+
+**左不变余标架**：取 $\mathfrak{g}$ 的基 $e_{1},\ldots,e_{n}$ 与对偶基 $\omega^{1}_{e},\ldots,\omega^{n}_{e}$（$\omega^{i}_{e}(e_{j}) = \delta^{i}_{\ j}$），把它们左平移出去：
+
+$$\omega^{i}_{g} := \mathrm{d}(L_{g^{-1}})^{\ast}_{e}\,\omega^{i}_{e},\qquad \omega^{i}_{g}\bigl((\tilde e_{j})_{g}\bigr) = \delta^{i}_{\ j},$$
+
+其中 $\tilde e_{j}$ 是 $e_{j}$ 对应的左不变向量场（`prop.left-invariant-fields`）。这组 $\omega^{1},\ldots,\omega^{n}$ 叫**左不变余标架**，结构常数由 $[e_{j},e_{k}] = \sum_{i}c^{i}_{\ jk}e_{i}$ 定义。
+
+**为什么赋值是同构**：左不变性取 $h = e$ 得 $\omega_{g}(\mathrm{d}(L_{g})_{e}w) = \omega_{e}(w)$，故 $\omega_{g} = \mathrm{d}(L_{g^{-1}})^{\ast}\omega_{e}$，即 $\omega$ 由 $\omega_{e}$ 决定（单射）。反向：给定 $\alpha \in \bigwedge^{k}\mathfrak{g}^{\ast}$ 令 $\omega_{g} := \mathrm{d}(L_{g^{-1}})^{\ast}\alpha$，则 $L_{h}^{\ast}\omega = \omega$，因为
+
+$$L_{(hg)^{-1}} = L_{g^{-1}}\circ L_{h^{-1}},\qquad L_{h^{-1}}\circ L_{h} = \operatorname{id},$$
+
+两个左平移把 $\mathrm{d}(L_{h})$ 吃掉，恰好还原。所以 $\omega \mapsto \omega_{e}$ 是双射，线性显然。
+
+**与左不变向量场互为对偶**：`prop.left-invariant-fields` 说左不变向量场与 $\mathfrak{g}$ 同构；这里说左不变 $k$-形式与 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 同构。$k = 1$ 时两组互为对偶基 —— 这正是活动标架法（`def.moving-frame`）在群上的版本：标架自身不动，动的只是点。
+
+**可定向性**：$k = n$ 时 $\bigwedge^{n}\mathfrak{g}^{\ast}$ 一维，取非零元左平移出去得到一个处处非零的 $n$-形式，由 `prop.volume-form-orientation` 得**每个 Lie 群都可定向**（$S^{1}$、$\operatorname{SO}(3)$、$\operatorname{GL}(n,\mathbb{R})$ 都如此，而一般流形未必）。
+
+**Haar 测度的那一半**：$\omega^{1}\wedge\cdots\wedge\omega^{n}$ 是左不变的体积形式，它的绝对值给出左不变测度（Haar 测度）。紧群上左不变与右不变只差一个常数（模函数），非紧时未必 —— 本图只用形式这一面。
+
+⚠️ 左不变**形式**与左不变**向量场**是两族不同的对象，都记下标 $g$，别混：前者的分量矩阵是 Jacobi 矩阵的逆转置，后者是 Jacobi 矩阵本身。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变形式与余标架；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变向量场与 Lie 代数
+
+#### Maurer–Cartan 方程　`thm.maurer-cartan`
+*定理*　Maurer–Cartan 方程
+
+**白话**：Lie 群上那组「随群一起平移」的 $1$-形式，其外微分完全由结构常数决定 —— 一条公式把群的乘法（结构常数）和流形的微分（$\mathrm{d}$）扣在一起。
+
+设 $G$ 是 $n$ 维 Lie 群，$\mathfrak{g} = T_{e}G$，$e_{1},\ldots,e_{n}$ 是 $\mathfrak{g}$ 的基，$\omega^{1},\ldots,\omega^{n}$ 是左不变对偶余标架（`def.left-invariant-form`），**结构常数**由
+
+$$[e_{j},e_{k}] = \sum_{i=1}^{n} c^{i}_{\ jk}\,e_{i}$$
+
+定义（等价地用左不变向量场写：$[\tilde e_{j},\tilde e_{k}] = \sum_{i}c^{i}_{\ jk}\tilde e_{i}$）。则
+
+$$\mathrm{d}\omega^{i} = -\frac{1}{2}\sum_{j,k=1}^{n} c^{i}_{\ jk}\,\omega^{j}\wedge\omega^{k}\qquad (i = 1,\ldots,n).$$
+
+把 $\omega := \sum_{i}\omega^{i}e_{i} \in \Omega^{1}(G;\mathfrak{g})$ 看成一个 $\mathfrak{g}$-值 $1$-形式（**Maurer–Cartan 形式**），并对 $\mathfrak{g}$-值形式定义分次括号 $[\alpha\wedge\beta]$，上式就是 **Maurer–Cartan 方程**
+
+$$\mathrm{d}\omega + \frac{1}{2}[\omega\wedge\omega] = 0,\qquad\mathrm{d}\omega = -\frac{1}{2}[\omega\wedge\omega],$$
+
+两个 $1$-形式的约定是：把 $[\omega\wedge\omega]$ 放在 $(X,Y)$ 上取值，得 $2\,[\omega(X),\omega(Y)]$。
+
+**系数与符号的来历**：把 $[\omega\wedge\omega]$ 逐项写开时，$(j,k)$ 与 $(k,j)$ 两项给出 $c^{i}_{\ jk} - c^{i}_{\ kj} = 2c^{i}_{\ jk}$，恰好抵掉 $\frac{1}{2}$；符号来自「$\mathrm{d}\theta(X,Y) = X\theta(Y) - Y\theta(X) - \theta([X,Y])$」里的最后一项。所以这条公式没有一处自由度是多余的：有的书把括号归一化成不除 $2$，系数就跟着变（$\mathrm{d}\omega = -\frac{1}{2}[\omega,\omega]$ 与 $\mathrm{d}\omega + [\omega\wedge\omega] = 0$ 是同一句话的两种写法）。
+
+**它就是 Cartan 结构方程的群版本**：曲面上的结构方程 $\mathrm{d}\omega^{i} = \sum_{j}\omega^{j}\wedge\omega^{i}_{\ j}$ 描述「标架怎么转」；这里标架不动、群在动，于是 $\mathrm{d}\omega^{i}$ 只剩结构常数这一项。同一套记账，一个描述空间弯曲，一个描述乘法非交换。
+
+**反推 Jacobi**：对 MC 方程两边取 $\mathrm{d}$ 并用 $\mathrm{d}^{2} = 0$，比较 $\omega^{j}\wedge\omega^{k}\wedge\omega^{l}$ 的系数，得到
+
+$$\sum_{i}\bigl(c^{i}_{\ jk}c^{m}_{\ il} + c^{i}_{\ kl}c^{m}_{\ ij} + c^{i}_{\ lj}c^{m}_{\ ik}\bigr) = 0,$$
+
+这正是 $[[e_{j},e_{k}],e_{l}] + [[e_{k},e_{l}],e_{j}] + [[e_{l},e_{j}],e_{k}] = 0$。于是「$\mathfrak{g}$ 是 Lie 代数（Jacobi 成立）」与「$\omega$ 满足 MC 方程」是同一件事 —— 这就是 MC 方程被称为「平坦性条件」的原因。
+
+**与 $H^{1}$、平坦联络的接口**：$\mathrm{d}\omega + \frac{1}{2}[\omega\wedge\omega] = 0$ 是「联络形式零曲率」的方程（把 $\omega$ 看成平凡主丛上的联络）。所以「结构常数」与「平坦联络的模空间」在这个层次上是同一串数；本图只提这一句，不展开。
+
+⚠️ 上标 $i$ 是「结果的第几个分量」、下面两个 $j,k$ 是「输入的两个下标」。反称性只发生在下面两个之间（$c^{i}_{\ jk} = -c^{i}_{\ kj}$），$i$ 与它们之间没有任何对称性可言 —— 抄公式时把 $i$ 写到下标位置，就会凭空多出一次反称，符号全错。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Maurer–Cartan 方程；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 结构常数与 Jacobi 恒等式
+
+#### Lie 第三定理　`thm.lie-third`
+*定理*　Lie 第三定理
+
+**白话**：反过来也成立 —— 随便给一个有限维 Lie 代数，总能找到一个 Lie 群以它为 Lie 代数。这条保证了「Lie 代数」不是凭空造出来的对象。
+
+设 $\mathfrak{g}$ 是有限维**实** Lie 代数（`def.lie-algebra`）。则存在连通且单连通的 Lie 群 $G$ 与 Lie 代数同构
+
+$$\operatorname{Lie}(G) \cong \mathfrak{g},$$
+
+其中 $\operatorname{Lie}(G) := T_{e}G$ 配上左不变向量场的括号（`prop.left-invariant-fields`）。
+
+**唯一性（配套的一半）**：若 $G_{1}, G_{2}$ 都连通单连通且 $\operatorname{Lie}(G_{i}) \cong \mathfrak{g}$，则存在唯一同构 $G_{1} \to G_{2}$。所以「连通单连通 Lie 群」与「有限维实 Lie 代数」在这一层上是同一个东西的两副样子。
+
+**本图只陈述，不证。**
+
+**为什么这里不证**：标准证明要经过三步深结果 —— Ado 定理（每个有限维 Lie 代数有忠实的有限维表示，于是可嵌入 $\mathfrak{gl}(n,\mathbb{R})$）、Baker–Campbell–Hausdorff 公式的收敛性（在 $\mathfrak{g}$ 的某个邻域上把括号积成群的乘法）、以及把局部群「长成」单连通整体群（单连通时局部同构可以整体化）。三步各自是一章的篇幅，本图不承担 —— 这与 `thm.solid-abelian` 等深定理的处理口径一致：**只陈述，如实声明**。
+
+**三个 Lie 定理的分工**（常被混说，这里分开）：第一定理说 $\mathfrak{g} = T_{e}G$ 且左不变向量场与 $\mathfrak{g}$ 同构（`prop.left-invariant-fields`）；第二定理说 $G$ 连通单连通时 $\operatorname{Hom}(G,H) \cong \operatorname{Hom}(\mathfrak{g},\mathfrak{h})$（群同态与 Lie 代数同态一一对应）；第三定理就是本条，管**存在性**。
+
+**单连通为什么不能去掉**：$\mathfrak{g}$ 只记录单位元附近的乘法（「无穷小」），而覆盖映射 $\mathbb{R} \to S^{1}$ 在单位元附近是局部同构、整体却不同构 —— 所以 $\mathfrak{g}$ 只能决定**万有覆盖**。要得到别的连通群，取单连通群对离散中心子群作商（$S^{1} = \mathbb{R}/\mathbb{Z}$ 就是最省事的例子）。
+
+**这条定理的用处**：它把「构造 Lie 群」化归成「写下满足 Jacobi 的括号」（往往容易得多）。给定结构常数表，`thm.maurer-cartan` 保证 Jacobi 成立就自洽，本条保证自洽的结构常数真来自某个群 —— 两条配套使用。
+
+⚠️ **别把它读成范畴等价**：对应只在「连通单连通 Lie 群」与「有限维实 Lie 代数」之间是范畴等价；一般 Lie 群会漏掉信息（$S^{1}$ 与 $\mathbb{R}$ 的 Lie 代数都是 $\mathbb{R}$，但两者不同构）。131 的 `def.lie-algebra` notes 里那句「Lie 代数不能复原群」说的就是这件事。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 第三定理与 Lie 对应；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 单连通 Lie 群与 Lie 代数
+
+#### 丛的分类　`thm.bundle-classification`
+*定理*　向量丛的分类与 Čech 上同调
+
+**白话**：向量丛怎么「粘」，全记在转移函数上；所以「有多少种秩 $k$ 丛」这个问题就是「这些转移函数模掉换基还剩多少」—— 答案是 Čech 的 $H^{1}$。
+
+设 $M$ 是光滑流形（第二可数、Hausdorff），$k \ge 1$，$\mathfrak{U} = \{U_{\alpha}\}$ 是开覆盖。记 $U_{\alpha\beta} := U_{\alpha}\cap U_{\beta}$、$U_{\alpha\beta\gamma} := U_{\alpha}\cap U_{\beta}\cap U_{\gamma}$。**$1$-上闭链**是光滑函数族
+
+$$g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \operatorname{GL}(k,\mathbb{R}),\qquad g_{\alpha\beta}\,g_{\beta\gamma} = g_{\alpha\gamma}\quad(\text{on } U_{\alpha\beta\gamma}).$$
+
+两条上闭链**等价**，如果存在光滑的 $h_{\alpha} : U_{\alpha} \to \operatorname{GL}(k,\mathbb{R})$ 使
+
+$$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}\qquad(\text{on } U_{\alpha\beta}).$$
+
+则 $M$ 上秩 $k$ 实向量丛的**同构类**与「$1$-上闭链模等价」一一对应。取遍所有覆盖与它们的加细，得到的集合记
+
+$$\check{H}^{1}\bigl(M;\operatorname{GL}(k,\mathbb{R})\bigr),$$
+
+于是：秩 $k$ 实向量丛的同构类**就是**这个集合的元素。把 $\operatorname{GL}(k,\mathbb{R})$ 换成任意结构群 $G \le \operatorname{GL}(k,\mathbb{R})$，同一句话给出「秩 $k$ 的 $G$-丛」的分类。
+
+**Čech 口径要说清三件事**：
+
+1. **系数不是阿贝尔群**：$\operatorname{GL}(k,\mathbb{R})$ 非交换，所以 $\check{H}^{1}(M;\operatorname{GL}(k))$ 只是一个**带基点的集合**（基点是平凡丛），不是群、不是向量空间。只有当系数落在阿贝尔群层里，Čech 上同调才是群 —— 本图 `def.cech-cohomology` 那条定义取的是阿贝尔预层复形，与本条不是同一个层级的东西，别混。
+2. **只有 $0$ 次与 $1$ 次有意义**：$\check{H}^{0}$ 是整体截面（对 $\operatorname{GL}(k)$ 而言就是常值 $1$，因为 $M$ 连通），$\check{H}^{1}$ 是上面那个「上闭链模上边界」；$\check{H}^{2}$ 起要非阿贝尔上同调的技术（系数带群作用），本图完全不用。
+3. **必须取余极限**：不同覆盖给出不同的 $\check{H}^{1}(\mathfrak{U};\cdot)$，但它们沿加细相容（每步是一个映射，而两个加细有公共加细），取余极限才是不依赖覆盖的量。
+
+**为什么是 $H^{1}$ 而不是 $H^{0}$**：$H^{0}$ 记的是「什么都不用粘」的数据（整体平凡化），$H^{1}$ 记的是「粘起来差多少」—— 前者数整体对象，后者数障碍。这与层上同调的分工完全一致。
+
+**换结构群就是换系数**：$\operatorname{GL}(k,\mathbb{R})$ 换成 $\operatorname{O}(k)$ 得「配了纤维度量的丛」（`prop.bundle-metric` 保证总能配上，所以这一步不丢信息）；换成 $\operatorname{GL}(k,\mathbb{C})$ 得复丛；换成 $\operatorname{GL}(k,\mathbb{Z})$ 得平坦丛。所以分类定理的真正形状是「对每个结构群 $G$，秩 $k$ 的 $G$-丛由 $\check{H}^{1}(M;G)$ 分类」。
+
+**例子（只列结论）**：$S^{1}$ 上的实线丛有两个同构类（平凡丛与 Möbius 带），对应 $\check{H}^{1}(S^{1};\mathbb{R}^{\times}) \cong \mathbb{Z}/2$；$S^{2}$ 上的复线丛由 $\mathbb{Z}$ 分类（Hopf 丛是生成元）。这两个数都不「局部」看得出来 —— 正是上同调该管的事。
+
+⚠️ $\operatorname{GL}(k,\mathbb{R})$ 里的 $k$ 是**丛的秩**；$k = 1$ 时它是 $\mathbb{R}^{\times}$，其连通分支是两个（$\mathbb{R}_{>0}$ 与 $\mathbb{R}_{<0}$），这正是「实线丛只有两种粘法」的来源。
+
+⚠️ 本条的证明是**构造级**的（写在边上）：两个方向的映射都给出、同构对应上边界都验证；「余极限是良定义的」这一步只给论证思路，不给逐字证明 —— 与深定理的折衷口径一致，如实说明。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 转移函数与上闭链条件；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛的同构与结构群
+
+#### de Rham 定理　`thm.de-rham`
+*定理*　de Rham 定理
+
+**白话**：用微积分造出来的上同调（闭形式模恰当形式），与用「三角形」造出来的拓扑上同调（奇异链取对偶），是同一个东西。这条定理把分析、几何、拓扑焊在一起。
+
+设 $M$ 是光滑流形。对每个 $k \ge 0$ 存在同构
+
+$$\Phi^{k} : H^{k}_{\mathrm{dR}}(M) \longrightarrow H^{k}_{\mathrm{sing}}(M;\mathbb{R}),\qquad [\omega] \longmapsto \Bigl([c] \mapsto \int_{c}\omega\Bigr),$$
+
+其中 $H^{k}_{\mathrm{sing}}(M;\mathbb{R}) := H^{k}\bigl(\operatorname{Hom}(C^{\mathrm{sing}}_{\bullet}(M),\mathbb{R})\bigr)$ 是奇异链复形（`def.singular-chain`）取对偶后的上同调（`def.cohomology`），$\int_{c}\omega$ 是形式在链上的积分（`def.integral-on-chain`）。$\Phi^{k}$ 与拉回相容，故 $k \mapsto \Phi^{k}$ 是一族自然同构：$H^{\bullet}_{\mathrm{dR}}$ 与 $H^{\bullet}_{\mathrm{sing}}$ 是同一个函子的两种算法。
+
+**证明路线的骨架**（细节写在边上）：
+
+1. **配对先良定义**：$\int_{c}\omega$ 只依赖 $[\omega]$ 与 $[c]$ —— 换 $c$ 为同调等价的链差一个边界，而闭形式在边界上的积分为零（`thm.stokes-chain` 的一个方向）；换 $\omega$ 为相差 $\mathrm{d}\eta$ 的形式，差为 $\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（同一条 Stokes 的另一个方向）。
+2. **认成层上同调**：$\Omega^{\bullet}$ 是常层 $\underline{\mathbb{R}}$ 的消解（正合性逐点成立，逐点核为 $\mathbb{R}$，就是 Poincaré 引理 `lem.poincare-lemma`），于是 $H^{\bullet}_{\mathrm{dR}}(M) \cong H^{\bullet}(M;\underline{\mathbb{R}})$。
+3. **Čech–de Rham 双复形**：取「好的覆盖」，把 $\check{C}^{p}(\mathfrak{U},\Omega^{q})$ 排成双复形（横向 Čech 微分、纵向 $\mathrm{d}$），两条谱序列算出同一个全上同调，得到 $H^{\bullet}_{\mathrm{dR}}(M) \cong \check{H}^{\bullet}(M;\underline{\mathbb{R}})$。
+4. **Čech = 层上同调**：仿紧流形上 $\check{H}^{\bullet} \cong H^{\bullet}$（`thm.paracompact-cech-equals-sheaf`）。
+5. **层上同调 = 奇异上同调**：常层的层上同调由「同伦不变 $+$ 单点的值 $+$ 长正合列」唯一确定，奇异上同调满足同一组公理 —— 两者同构（代数拓扑的标准定理，本图不证）。
+
+**为什么它是定理而不是定义**：两边的复形长得完全不同（一边是光滑形式、一边是拓扑单形），能对上不是形式化的。核心内容是第 2 步：「$\Omega^{\bullet}$ 是常层的消解」—— 也就是 Poincaré 引理的**整体化**。
+
+**推论**：$H^{k}_{\mathrm{dR}}$ 是同伦不变量（函子性 + 同伦不变），紧流形上每个 $H^{k}_{\mathrm{dR}}$ 有限维，$k > \dim M$ 时为零。所以「闭而不恰当的形式有多少种」是纯拓扑数据 —— Betti 数。
+
+**与 131 那三条 de Rham 节点接得上**：$H^{0}$ 数连通分支（`thm.de-rham-h0`）、局部为零（`lem.poincare-lemma`）、加减开集有长正合列（`thm.mayer-vietoris`）—— 这三条恰好是上面路线里第 2、5 步的局部版本。
+
+⚠️ **本图的折衷**：这里给的是路线与关键计算，**不**给逐字证明。Čech–de Rham 双复形的谱序列论证、以及「层上同调 = 奇异上同调」都需要单独篇幅；这一条与 `thm.solid-abelian` 那批深定理同一口径：**结构 + 关键计算 + 出处**，如实声明。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 定理；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理与 Mayer–Vietoris 序列
+
+#### 缩并　`def.tensor-contraction`
+*定义*　张量缩并
+
+**白话**：张量上有一个上标和一个下标时，可以把它们「配对吃掉」，得到一个少两阶的张量 —— 这就是缩并；矩阵的取迹是它最熟悉的特例。
+
+设 $T$ 是 $M$ 上的 $(r,s)$ 型张量场（`def.tensor-field`），$r, s \ge 1$。取定第 $i$ 个上标（$1 \le i \le r$）与第 $j$ 个下标（$1 \le j \le s$），**缩并** $\mathrm{C}^{i}_{\ j}T$ 是 $(r-1,s-1)$ 型张量场，逐点定义为
+
+$$\bigl(\mathrm{C}^{i}_{\ j}T\bigr)_{p}\bigl(\alpha^{1},\ldots,\widehat{\alpha^{i}},\ldots;\ v_{1},\ldots,\widehat{v_{j}},\ldots\bigr) := \sum_{a=1}^{n} T_{p}\bigl(\ldots,\mathrm{d}x^{a},\ldots;\ \ldots,\partial_{a},\ldots\bigr),$$
+
+即把第 $i$ 个余向量槽与第 $j$ 个向量槽**用同一组基配对求和**（帽子记「去掉这一项」）。在卡里就是
+
+$$\bigl(\mathrm{C}^{i}_{\ j}T\bigr)^{\ldots}_{\ldots} = \sum_{a=1}^{n} T^{\ldots\,a\,\ldots}_{\ldots\,a\,\ldots},$$
+
+一上一下两个指标同名求和 —— 爱因斯坦求和约定。
+
+**为什么必须一上一下**：缩并的实质是用配对 $\mathrm{d}x^{a}(\partial_{b}) = \delta^{a}_{\ b}$ 吃掉一对指标，而这样的配对只存在于「一个余向量槽、一个向量槽」之间。两个上标想配对，得先借度量把其中一个拉下来（$T^{ab} \mapsto g_{ac}T^{cb}$ 再缩并，得 $T^{a}_{\ a}$）—— 那是**用了额外结构**的运算，不是张量代数自带的。
+
+**$(1,1)$ 型时就是取迹**：$\mathrm{C}^{1}_{\ 1}T = \operatorname{tr}T$（把 $T$ 看成逐点的线性变换 $T_{p}M \to T_{p}M$）。所以缩并是取迹的推广，`def.trace` 里那条「$\operatorname{tr}(AB) = \operatorname{tr}(BA)$」在这里读作「缩并的次序可以调换」。
+
+**例子**：曲率张量是 $(1,3)$ 型的，缩并一次（上标与第二个下标）得 Ricci 张量（`def.ricci-curvature`），再缩并一次得标量曲率。Einstein 张量是 Ricci 张量与 $g$ 的组合 —— 所以「曲率的三个层次」就是「缩并 $0/1/2$ 次」。
+
+**与坐标无关**：换卡时上标各乘一次 $\partial y/\partial x$、下标各乘一次 $\partial x/\partial y$；被缩的那一对恰好一个上标一个下标，两个 Jacobi 矩阵互逆，乘起来是 $\delta$。这一步是「缩并是张量运算」的全部内容（对照 `def.tensor-field` 的 notes：变化律只含一阶导）。
+
+⚠️ 记号冲突：`def.trace` 是「矩阵取迹」，这里的缩并是它在张量场上的推广；而 $\mathrm{C}^{i}_{\ j}$ 里的 $\mathrm{C}$ 不是「连续函数空间」的 $C$。三处同字母，取用时看上下文。
+
+**和楔积的关系**：楔积是「交错化加张量积」，缩并是「配对吃掉一对指标」。两者生成张量代数上的全部自然运算 —— 这条是古典不变量理论的结论，本图只提不证。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 张量场的缩并与取迹；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 张量丛的截面
+
+#### 内乘　`def.interior-product`
+*定义*　内乘（内积）
+
+**白话**：把一个向量场塞进形式的第一个槽，次数降一 —— 这就是内乘。它是 Cartan 公式里与外微分配对的那一半。
+
+设 $X \in \mathfrak{X}(M)$、$\omega \in \Omega^{k}(M)$（$k \ge 1$）。**内乘**（也叫内积）$\iota_{X}\omega \in \Omega^{k-1}(M)$ 逐点定义为
+
+$$(\iota_{X}\omega)_{p}(v_{2},\ldots,v_{k}) := \omega_{p}\bigl(X_{p},v_{2},\ldots,v_{k}\bigr);$$
+
+对函数规定 $\iota_{X}f := 0$。性质（$\omega$ 是 $k$-形式、$\eta$ 是 $\ell$-形式、$f, g$ 光滑）：
+
+1. **反导子**：$\iota_{X}(\omega\wedge\eta) = (\iota_{X}\omega)\wedge\eta + (-1)^{k}\,\omega\wedge(\iota_{X}\eta)$；
+2. $\iota_{X}^{2} = 0$；
+3. **$C^{\infty}(M)$-线性**：$\iota_{fX+gY} = f\,\iota_{X} + g\,\iota_{Y}$；
+4. **坐标公式**：$\iota_{\partial_{i}}\mathrm{d}x^{j} = \delta^{j}_{\ i}$，并且
+$$\iota_{\partial_{i}}\bigl(\mathrm{d}x^{j_{1}}\wedge\cdots\wedge\mathrm{d}x^{j_{k}}\bigr) = \sum_{r=1}^{k}(-1)^{r-1}\delta^{j_{r}}_{\ \ i}\ \mathrm{d}x^{j_{1}}\wedge\cdots\widehat{\mathrm{d}x^{j_{r}}}\cdots\wedge\mathrm{d}x^{j_{k}}.$$
+
+名字叫**内积**（interior product），但它与内积空间里的 $\langle\cdot,\cdot\rangle$ **不是**一回事：前者吃「一个向量 $+$ 一个形式」吐一个低一阶的形式，后者吃「两个向量」吐一个数。
+
+**为什么它是「逐点」的而 Lie 导数是「整体」的**：内乘只用 $X_{p}$ 就能算出 $(\iota_{X}\omega)_{p}$，所以它是张量运算（对 $X$ 也 $C^{\infty}$-线性），不需要解任何方程；Lie 导数（`def.lie-derivative`）要对流求导，只对向量场有定义、且对 $X$ 只 $\mathbb{R}$-线性。这条区别在 Cartan 公式（`thm.cartan-formula`）里正好互补：$\mathrm{d}\iota_{X}$ 是「先缩再导」，$\iota_{X}\mathrm{d}$ 是「先导再缩」。
+
+**$\iota_{X}^{2} = 0$ 的理由**：缩两次等于同一个槽被塞进两个向量，而形式是交错的，把两次缩并交换次序会出 $-$ 号，于是 $(\iota_{X}^{2}\omega)(v_{3},\ldots) = \omega(X,X,v_{3},\ldots) = 0$（交错性 + 同一向量自配为零）。
+
+**物理记号里它就是「缩一个指标」**：电磁场 $F = \frac{1}{2}F_{ij}\,\mathrm{d}x^{i}\wedge\mathrm{d}x^{j}$ 与 $\iota_{E}F$ 给出「电场方向上的磁场通量」这类量；Maxwell 方程组里 $\mathrm{d}F = 0$、$\mathrm{d}\star F = J$，其中 $\star$ 依赖度量，而 $\iota$ 与 $\mathrm{d}$ 是纯组合的。
+
+**与缩并（`def.tensor-contraction`）的关系**：$\iota_{X}\omega$ 就是把 $X$ 塞进第一个槽再缩并 —— 它是张量缩并在交错张量上的特例，只是塞进去的向量不必是基向量。
+
+**与楔积的搭配**：$\mathrm{d}\iota_{X} + \iota_{X}\mathrm{d}$ 这个组合之所以自然，是因为 $\mathrm{d}$ 是 $+1$ 次反导子、$\iota_{X}$ 是 $-1$ 次反导子，两个反导子复合出「次数 $0$ 的导子」—— 与 Lie 导数同一个类型。Cartan 公式的证明就是拿这个类型去比对。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 内乘与反导子；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 内乘的坐标公式
+
+#### 流　`def.flow`
+*定义*　流与单参数群
+
+**白话**：向量场给每点一个「该往哪走」，沿着走得出的曲线叫积分曲线；把「从 $p$ 出发走 $t$ 时间到哪」记成 $\varphi_{t}(p)$，这一族映射就是流。它是向量场的「解」。
+
+设 $X \in \mathfrak{X}(M)$（`def.vector-field`）。
+
+**积分曲线**：光滑曲线 $\gamma : J \to M$（$J \subseteq \mathbb{R}$ 开区间）叫 $X$ 的积分曲线，如果
+
+$$\dot\gamma(t) = X\bigl(\gamma(t)\bigr)\qquad (t \in J).$$
+
+**流**：$X$ 的流是光滑映射 $\varphi : \mathcal{W} \to M$，其中 $\mathcal{W} \subseteq \mathbb{R}\times M$ 是开集、$\{0\}\times M \subseteq \mathcal{W}$，满足
+
+$$\varphi(0,p) = p,\qquad \frac{\partial}{\partial t}\varphi(t,p) = X\bigl(\varphi(t,p)\bigr),$$
+
+记 $\varphi_{t}(p) := \varphi(t,p)$。于是 $t \mapsto \varphi_{t}(p)$ 是过 $p$ 的积分曲线。
+
+**单参数群（局部）性质**：在两边都有定义的范围内
+
+$$\varphi_{s+t} = \varphi_{s}\circ\varphi_{t},\qquad \varphi_{0} = \operatorname{id},\qquad \varphi_{-t} = \varphi_{t}^{-1}.$$
+
+**完备**：若 $\mathcal{W} = \mathbb{R}\times M$（每条积分曲线都能延拓到整个 $\mathbb{R}$），称 $X$ **完备**；此时 $t \mapsto \varphi_{t}$ 是 $\mathbb{R}$ 到 $\operatorname{Diff}(M)$ 的群同态，叫 $X$ 生成的**单参数微分同胚群**。
+
+**「局部」两个字不能省**：$\mathcal{W}$ 一般不是整个 $\mathbb{R}\times M$。最简单的反例是 $M = \mathbb{R}$、$X = x^{2}\partial_{x}$：过 $x_{0} > 0$ 的解是 $\gamma(t) = x_{0}/(1 - x_{0}t)$，在 $t = 1/x_{0}$ 处爆破，走不过去。所以流天生是局部的，完备性是要证明或假设的性质（`thm.flow-complete`）。
+
+**单参数群性质为什么只是局部的**：$\varphi_{s+t}(p)$ 要在 $s+t$ 处有定义，$\varphi_{s}(\varphi_{t}(p))$ 还要求中间点有定义。两条曲线 $\tau \mapsto \varphi_{s+\tau}(p)$ 与 $\tau \mapsto \varphi_{\tau}(\varphi_{s}(p))$ 满足同一个初值问题，由唯一性相等 —— 唯一性是 `thm.flow-local` 给的。
+
+**光滑依赖初值**：$\varphi$ 对 $(t,p)$ 光滑（不只是每个 $p$ 单独有解），这是把 ODE 理论搬上流形时最常被漏掉的一条；它保证 $\varphi_{t}$ 是**局部微分同胚**，因而 $\mathrm{d}\varphi_{t}$ 有意义 —— Lie 导数（`def.lie-derivative`）正是拿它求导。
+
+**流的三个用途**：① 把向量场「积分」成变换（单参数群）；② 定义 Lie 导数与括号（用 $\varphi^{X}_{t}$ 把 $Y$ 推来推去再对 $t$ 求导）；③ 判断完备性与整体存在（测地流、Hamilton 流都走这条）。所以「流」是向量场这一族的**表示论**。
+
+⚠️ 记号：本图用 $\varphi_{t}$ 记流（小写 phi 一律写 `\varphi`，见 `notation.js` 的禁用表）；曲面论里的参数化也爱用 $\varphi$，取用时看星团。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 向量场的流与单参数群；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 积分曲线
+
+#### 局部流　`thm.flow-local`
+*定理*　流的局部存在唯一性
+
+**白话**：向量场的积分曲线在局部一定存在、一定唯一，而且这一族解光滑地依赖起点与时间 —— 也就是说，局部一定有流。
+
+设 $X \in \mathfrak{X}(M)$，$p \in M$。则存在 $p$ 的开邻域 $U$、$\varepsilon > 0$ 与光滑映射 $\varphi : (-\varepsilon,\varepsilon)\times U \to M$，使
+
+1. $\varphi_{0} = \operatorname{id}_{U}$；
+2. $\dfrac{\partial}{\partial t}\varphi_{t}(q) = X\bigl(\varphi_{t}(q)\bigr)$ 对一切 $t \in (-\varepsilon,\varepsilon)$、$q \in U$ 成立；
+3. **唯一性**：过同一点的两条积分曲线在公共定义区间上相同；
+4. **局部单参数群**：$|s|, |t|, |s+t| < \varepsilon$ 且中间点都落在 $U$ 内时，$\varphi_{s+t} = \varphi_{s}\circ\varphi_{t}$。
+
+并且把各点的局部流沿曲线拼接，得到唯一的**极大流**（定义域 $\mathcal{W} \subseteq \mathbb{R}\times M$ 开，见 `def.flow`）。
+
+**这是纯 ODE 定理**：在卡 $(V,x)$ 里 $X = \sum_{i}X^{i}\partial_{i}$，方程化为自治方程组
+
+$$\dot y^{i}(t) = X^{i}\bigl(y(t)\bigr)\qquad (i = 1,\ldots,n),$$
+
+右端光滑（$X^{i}$ 光滑），于是 Picard–Lindelöf 给出局部存在唯一，加上「解对初值 $C^{\infty}$ 依赖」给出 $\varphi$ 的光滑性。全程只有一处用到流形：**在卡里做**。
+
+**「自治」是单参数群性质的来源**：非自治方程 $\dot y = f(t,y)$ 的解不构成群（先走 $s$ 再走 $t$ 与直接走 $s+t$ 不同，因为「环境」在变）。向量场的流是自治方程，所以对时间平移不变 —— 这就是 $\varphi_{s}\circ\varphi_{t} = \varphi_{s+t}$。
+
+**极大流为什么唯一**：两个极大流在交点处解的初值问题相同，由唯一性局部重合；再把所有局部解沿曲线接起来，得到定义域极大的那一个。定义域 $\mathcal{W}$ 是开的：每点附近有存在性给的一个时间区间，而这个时间可以取得对 $p$ 下半连续。
+
+**代价**：本图不证 Picard–Lindelöf（那是常微分方程课的定理），只做「把流形上的流化成 $\mathbb{R}^{n}$ 上的自治方程组」这一步化归。同类折衷见 `prop.geodesic-existence`（测地线的存在唯一性也是这么处理的）。
+
+⚠️ 唯一性说的是「**同一条曲线**意义下的唯一」：换参数化得到的仍是同一条曲线的重参数化，不是第二个解。$\varphi_{t}(q)$ 已经把参数固定成「流的时间」，所以没有这层歧义。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 流的局部存在唯一性；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 局部坐标下的常微分方程组
+
+#### 流完备性　`thm.flow-complete`
+*定理*　流的完备性与紧流形
+
+**白话**：一条积分曲线走不下去，只可能是「跑向无穷远」，不会是「走到时间的尽头」；于是在紧流形上没有地方可逃，每个向量场都完备。
+
+设 $X \in \mathfrak{X}(M)$，$\varphi : \mathcal{W} \to M$ 是它的极大流（`def.flow`），$J_{q} = (a_{q},b_{q})$ 是过 $q$ 的极大积分曲线的存在区间。则：
+
+1. **区间是开的**：$J_{q}$ 是开区间（$a_{q} \in [-\infty,+\infty)$、$b_{q} \in (-\infty,+\infty]$）；
+2. **逃逸引理**：若 $b_{q} < +\infty$，则 $t \to b_{q}^{-}$ 时曲线离开每个紧集 —— 即对任意紧集 $K \subseteq M$ 与任意 $t_{1} < b_{q}$，存在 $t_{2} \in (t_{1},b_{q})$ 使 $\varphi_{t_{2}}(q) \notin K$（$t \to a_{q}^{+}$ 一端同理）；
+3. **完备判据**：$X$ 完备（$\mathcal{W} = \mathbb{R}\times M$）当且仅当对每点 $q$ 有 $a_{q} = -\infty$ 且 $b_{q} = +\infty$。
+
+**推论**：$M$ 紧时**每个** $X \in \mathfrak{X}(M)$ 都完备；$M$ 非紧时可以不完备（$M = (0,1)$、$X = \partial_{x}$；$M = \mathbb{R}$、$X = x^{2}\partial_{x}$）。
+
+**第 1 条只是「极大」的读法**：$J_{q}$ 若是 $(a_{q},b_{q}]$，则在 $b_{q}$ 处曲线还有定义，而 `thm.flow-local` 允许把它再延拓一点 —— 与极大矛盾。
+
+**第 2 条是本节真正的技术内容**：不是「跑向无穷」，而是「跑进某个紧集里也走不下去」这种情况不存在。证明是「有限覆盖给一致时间步长」—— 紧集用有限张卡盖住，每张卡给一个统一的时间 $\varepsilon > 0$，于是曲线只要待在紧集里就能一步步跨过端点。
+
+**第 3 条是定义的改写**，但它是**可判定**的形式：实际用的时候都走第 2 条（「能不能逃出去」）。
+
+**紧流形为什么完备**：若 $b_{q} < +\infty$，由第 2 条曲线必须离开每个紧集；取 $K = M$（紧），这要求 $\varphi_{t}(q) \notin M$ —— 不可能。所以 $b_{q} = +\infty$，$a_{q}$ 同理。这就是「紧流形上谈单参数群不必担心定义域」的全部依据。
+
+**非紧时的两个反例**：$M = (0,1)$、$X = \partial_{x}$ 的解 $\gamma(t) = t + 1/2$ 在 $t = 1/2$ 处撞到端点（端点不在 $M$ 里）；$M = \mathbb{R}$、$X = x^{2}\partial_{x}$ 的解在有限时刻爆破。前者是「流形本身的洞」，后者是「场长得太快」—— 两种病不同，但都表现为「在有限时刻离开每个紧集」。
+
+**Riemann 情形**：$(M,g)$ 度量完备时测地流也完备（Hopf–Rinow 的一半）。本图只用「紧 $\implies$ 完备」这一条，Hopf–Rinow 不展开。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 流的极大性与完备性；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 紧性与局部有限覆盖
+
+#### Lie 导数　`def.lie-derivative`
+*定义*　Lie 导数
+
+**白话**：Lie 导数就是「沿 $X$ 的流把张量拖回来，再对时间求导」—— 它量的是张量在流下的变化率；对函数它是方向导数，对向量场它就是 Lie 括号。
+
+设 $X \in \mathfrak{X}(M)$，$\varphi_{t}$ 是它的（局部）流（`def.flow`）。对张量场 $T$（`def.tensor-field`）定义 **Lie 导数**
+
+$$(\mathcal{L}_{X}T)_{p} := \left.\frac{\mathrm{d}}{\mathrm{d}t}\right|_{t=0}\bigl(\varphi_{t}^{\ast}T\bigr)_{p},$$
+
+其中 $\varphi_{t}^{\ast}$ 是「沿微分同胚的拉回」：函数与形式用拉回，向量场则用 $\mathrm{d}\varphi_{-t}$ 推过去（向量场没有拉回，只有推前）。逐类写出：
+
+- **函数**：$\mathcal{L}_{X}f = Xf$；
+- **向量场**：$\mathcal{L}_{X}Y = [X,Y]$（`def.lie-bracket`）；
+- **$1$-形式**：$(\mathcal{L}_{X}\omega)(Y) = X\bigl(\omega(Y)\bigr) - \omega\bigl([X,Y]\bigr)$；
+- **张量积**：$\mathcal{L}_{X}(T\otimes S) = (\mathcal{L}_{X}T)\otimes S + T\otimes(\mathcal{L}_{X}S)$，且 $\mathcal{L}_{X}$ 与缩并交换。
+
+于是 $\mathcal{L}_{X}$ 是张量代数上**次数 $0$ 的导子**，并满足
+
+$$\mathcal{L}_{[X,Y]} = [\mathcal{L}_{X},\mathcal{L}_{Y}]$$
+
+（括号给出导子的交换子）。
+
+**三类的统一**：函数与形式的拉回是 $\omega \mapsto \varphi_{t}^{\ast}\omega$，向量场没有拉回（要用推前 $\mathrm{d}\varphi_{t}$），所以定义里得按类型选方向。但**结果**是统一的：$\mathcal{L}_{X}$ 是张量代数上的导子，作用在函数上是 $X$，作用在向量场上就是括号 —— 两条都是从同一个「拖回来求导」算出来的。
+
+**为什么 $\mathcal{L}_{X}$ 对 $X$ 不是 $C^{\infty}$-线性的**：$\mathcal{L}_{fX}T \ne f\,\mathcal{L}_{X}T$（例如 $\mathcal{L}_{fX}Y = f[X,Y] - (Yf)X$）。所以 $X \mapsto \mathcal{L}_{X}$ 不是张量，而是 Lie 代数同态 $\mathfrak{X}(M) \to \operatorname{Der}(\Omega^{\bullet}M)$ —— 这与 `def.lie-bracket` 的 notes 里「括号不是张量」是同一条性质。
+
+**与协变导数的区别**：$\nabla_{X}T$ 需要额外结构（连络，`def.affine-connection`），但对函数两者给出同样的东西（都是 $Xf$），对向量场不同（$\nabla_{X}Y$ 与 $[X,Y]$ 差一个「形变」项）。Lie 导数是流形的**内在**运算 —— 不需要度量、不需要连络，这是它比 $\nabla$ 更「免费」的地方。
+
+**分量公式（$1$-形式）**：
+
+$$\mathcal{L}_{X}\omega = \sum_{j}\Bigl(\sum_{i}X^{i}\partial_{i}\omega_{j} + \sum_{i}\omega_{i}\,\partial_{j}X^{i}\Bigr)\mathrm{d}x^{j}.$$
+
+第二项是「$\mathrm{d}x^{j}$ 随流变形」的修正；少了它就得到「对 $X$ 是 $C^{\infty}$-线性」的假结论。
+
+**流的定义域不完整时也成立**：$\varphi_{t}$ 只需在 $p$ 附近、$|t| < \varepsilon$ 有定义（`thm.flow-local` 就够），因为 Lie 导数只用 $t = 0$ 处的导数。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 导数；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 形式的 Lie 导数
+
+#### Cartan 公式　`thm.cartan-formula`
+*定理*　Cartan 公式
+
+**白话**：Lie 导数可以拆成「先缩再外微分」加「先外微分再缩」两部分 —— 一条公式把三个算子捆在一起，代价为零。
+
+设 $X \in \mathfrak{X}(M)$、$\omega \in \Omega^{k}(M)$（$k \ge 0$）。则
+
+$$\mathcal{L}_{X}\omega = \mathrm{d}\bigl(\iota_{X}\omega\bigr) + \iota_{X}\bigl(\mathrm{d}\omega\bigr),$$
+
+等价地，作为 $\Omega^{\bullet}(M)$ 上的算子
+
+$$\mathcal{L}_{X} = \mathrm{d}\,\iota_{X} + \iota_{X}\,\mathrm{d},$$
+
+其中 $\mathcal{L}_{X}$ 是 Lie 导数（`def.lie-derivative`）、$\iota_{X}$ 是内乘（`def.interior-product`）、$\mathrm{d}$ 是外微分（`def.exterior-derivative`），并规定 $\iota_{X}$ 作用在函数上为 $0$。
+
+**推论**：
+
+1. $\mathcal{L}_{X}\mathrm{d} = \mathrm{d}\mathcal{L}_{X}$（因为 $\mathrm{d}^{2} = 0$）；
+2. 在闭形式上有 $\mathcal{L}_{X}\omega = \mathrm{d}\iota_{X}\omega$，即 $\mathcal{L}_{X}\omega$ 恰当；
+3. $\mathcal{L}_{X}$ 保持闭形式空间与恰当形式空间。
+
+**证明的形状**（写在边上）：两边都是「与 $\mathrm{d}$ 交换的次数 $0$ 的导子」，所以只要在函数上验一遍 —— 这是 Cartan 公式三行证完的原因。注意「与 $\mathrm{d}$ 交换」在左边用了「流拉回与外微分交换」，在右边用了 $\mathrm{d}^{2} = 0$。
+
+**它是「同伦算子」的原型**：$\mathrm{d}\iota_{X} + \iota_{X}\mathrm{d} = \mathcal{L}_{X}$ 的形状与 Poincaré 引理的 $\mathrm{d}K + K\mathrm{d} = \operatorname{id}$（`lem.poincare-lemma`）完全一样 —— 都把「求导」拆成两条链映射之和。差别在于 $\mathcal{L}_{X}$ 不必是 $\operatorname{id}$：给定 $\mathcal{L}_{X}$ 后想解 $\iota_{X}\omega = \eta$，就是一个「同伦方程」。
+
+**为什么物理里爱用它**：$\mathcal{L}_{X}$ 是沿流的变化率，$\mathrm{d}\iota_{X}$ 与 $\iota_{X}\mathrm{d}$ 分掉了「恰当部分」与「闭部分」。像「场的对称性」这类陈述（$\mathcal{L}_{X}F = 0$）以及规范变换的存在性，都从这条公式出发。
+
+**两个边界情形**：$k = 0$ 时 $\iota_{X}f = 0$，故 $\mathcal{L}_{X}f = \iota_{X}\mathrm{d}f = \mathrm{d}f(X) = Xf$，与 `def.lie-derivative` 的第一条一致；$k = n$ 时 $\mathrm{d}\omega = 0$，故 $\mathcal{L}_{X}\omega = \mathrm{d}\iota_{X}\omega$ 恰当 —— 这是「体积沿流的变率等于散度乘体积」那条公式的起点。
+
+⚠️ 符号约定：本图的 $\iota_{X}$ 用「塞进第一个槽」的约定，故 $(\mathcal{L}_{X}\omega)(Y) = X\omega(Y) - \omega([X,Y])$；若有人把内乘定义成「塞进最后一个槽」，那 Cartan 公式要补一个 $(-1)^{k}$。抄公式前先看对方的内乘约定。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· Cartan 公式；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 内乘与 Lie 导数的关系
+
+#### 诱导体积　`def.submanifold-volume`
+*定义*　子流形的诱导体积
+
+**白话**：子流形上的体积不能靠「把 $n$-形式拉回来」得到（拉回来是零），必须用**诱导度量**重新算一个 $k$ 维的体积；这一步就是「$k$ 维薄片上的积分」的全部内容。
+
+设 $i : N^{k} \to (M^{n},g)$ 是浸入子流形（$k \le n$），$g$ 是黎曼度量（`def.riemannian-metric`）。**诱导度量**是
+
+$$g_{N} := i^{\ast}g,\qquad (g_{N})_{p}(u,v) := g_{i(p)}\bigl(\mathrm{d}i_{p}u,\ \mathrm{d}i_{p}v\bigr),$$
+
+它是 $N$ 上的黎曼度量（$\mathrm{d}i$ 单射保证正定）。给 $N$ 取定定向后，$N$ 的**体积形式**在保向卡 $(U,x)$ 里是
+
+$$\mathrm{d}V_{N} := \sqrt{\det\bigl(g_{ab}\bigr)}\ \mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k},\qquad g_{ab} := g\Bigl(\frac{\partial i}{\partial x^{a}},\ \frac{\partial i}{\partial x^{b}}\Bigr),$$
+
+与 `def.volume-form` 的定义逐字相同，只是把 $M$ 换成 $N$、$g$ 换成 $g_{N}$。不定向时改用**密度**
+
+$$\mathrm{d}A_{N} := \sqrt{\det\bigl(g_{ab}\bigr)}\ \mathrm{d}x^{1}\cdots\mathrm{d}x^{k},$$
+
+即 `def.volume-density` 在 $N$ 上的版本；$N$ 的 $k$ 维**体积**是 $\mu_{N}(N) = \int_{N}\mathrm{d}A_{N}$。
+
+**为什么不能拉回体积形式**：$i^{\ast}$ 把 $M$ 的 $n$-形式拉成 $N$ 上的 $n$-形式，而 $\dim N = k < n$ 时 $k$ 维流形上没有非零的 $n$-形式 —— 所以 $i^{\ast}(\mathrm{d}V_{g}) = 0$。次数必须先降下来：要么用 $\iota_{\nu}$ 沿法向缩一次（超曲面情形），要么换诱导度量重算。这是最常卡住的一步。
+
+**超曲面（$k = n-1$）的特例**：取单位法向 $\nu$，则
+
+$$\mathrm{d}V_{N} = \pm\,\iota_{\nu}\,\mathrm{d}V_{g},$$
+
+符号取决于 $\nu$ 与 $N$ 的定向是否相容。这就是 Gauss 公式与散度定理（`thm.divergence-theorem`）里「边界上的面积元」的来历：内乘（`def.interior-product`）把 $n$-形式沿法向缩成 $(n-1)$-形式。
+
+**二维情形就是面积元**：$i : S \to \mathbb{R}^{3}$ 时 $g_{ab}$ 是曲面的第一基本形式 $E, F, G$，$\sqrt{\det} = \sqrt{EG - F^{2}}$，与 `def.area-element` 逐字相同。所以「曲面的面积」是这条的一般情形，不是另一套定义。
+
+**定向与密度必须分开**：$\mathrm{d}V_{N}$ 要 $N$ 的定向（换向变号），$\mathrm{d}A_{N}$ 不要（$\sqrt{\det}$ 恒非负）。$M$ 可定向**不**蕴含 $N$ 可定向：Möbius 带嵌在 $\mathbb{R}^{3}$ 里就是反例（$\mathbb{R}^{3}$ 可定向，Möbius 带不可）。
+
+**为什么单独立一个节点**：131 有 `def.volume-form`（全流形的黎曼体积）、132 有 `def.volume-density`（密度的换卡不变性）与 `def.area-element`（二维曲面），但「$k$ 维子流形的体积 = 诱导度量的体积」这一格是空的 —— 而它正是 Stokes 之后「在子流形上积分」的全部内容。
+
+⚠️ 本图只做「$k$ 维体积」这一层：余面积公式（coarea）、以及「把 $M$ 上的 $k$-形式积在 $N$ 上」的一般理论（要 $N$ 定向 + $i^{\ast}$）不展开。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 子流形上的诱导度量与体积；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架
+
 ---
 
 ## 全部连线（含推导过程）
@@ -31192,6 +32296,764 @@ $$|\eta_n|\le \varepsilon\cdot 2^{-n}\operatorname{diam}T\cdot 2^{-n}\operatorna
 代回得 $|\eta|\le 4^{n}\cdot\varepsilon\,4^{-n}\operatorname{diam}T\operatorname{perim}T=\varepsilon\operatorname{diam}T\operatorname{perim}T$。$\varepsilon$ 任意，故 $\eta=0$。$\blacksquare$
 
 > 二分法只用「$f$ 复可微」，不需要 $f'$ 连续 —— 这正是 Goursat 对 Cauchy 的改进。
+
+#### 复围道积分 + 全纯函数 ⟹ Morera 定理　`imp.morera`
+*连续 + 沿闭三角形积分为零 $\implies$ 全纯*
+
+在 $\Omega$ 内任取一个圆盘 $D(a, r) \subset \Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。
+
+**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \in D(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义
+
+$$F(z) := \int_{x_0}^{x} f(t + i y_0)\,\mathrm{d}t + \int_{y_0}^{y} f(x + i t)\,\mathrm{d}t.$$
+
+要说明它与折线的具体走法无关：两条从 $a$ 到 $z$ 的折线围成一个多边形，把多边形三角剖分，每个三角形的边界积分都是零（假设），内部边两两抵消，故两条折线的积分相等。（这就是「矩形假设」的用处：矩形沿对角线分成两个三角形。）
+
+**第二步：$F' = f$。** 沿水平方向把终点挪 $h$（$h$ 为实数）：
+
+$$F(z + h) - F(z) = \int_{x}^{x + h} f(t + i y)\,\mathrm{d}t,$$
+
+除以 $h$ 后用 $f$ 的**连续性**：$\dfrac{1}{h}\displaystyle\int_x^{x+h} f(t + iy)\,\mathrm{d}t \to f(x + iy) = f(z)$（$h \to 0$）。竖直方向同理。所以 $F$ 在 $D(a, r)$ 内复可微且 $F' = f$。
+
+**第三步：$f$ 全纯。** $F$ 全纯 $\implies$ $F$ 无穷次可微（Taylor 展开）$\implies$ $F' = f$ 也全纯，且 $f$ 在该点有 Taylor 展开。圆盘任取，故 $f$ 在 $\Omega$ 上全纯。$\blacksquare$
+
+> 连续性只用在「差商极限」那一步 —— 这正是 Morera 比 Cauchy 定理弱的地方：它假设了结论要用的东西（连续），却不需要预先知道可微。
+
+#### 留数定理 + 绕数 ⟹ 辐角原理　`imp.argument-principle`
+*留数定理 + 绕数 $\implies$ 辐角原理*
+
+设 $f$ 在 $\gamma$ 内部的零点为 $a_1, \ldots, a_N$（重数 $m_1, \ldots, m_N$），极点为 $b_1, \ldots, b_M$（阶 $n_1, \ldots, n_M$），$\gamma$ 上既无零点也无极点。
+
+**第一步：把零极点一次剥掉。** 令
+
+$$g(z) := f(z)\cdot\prod_{k=1}^{N} (z - a_k)^{-m_k}\cdot\prod_{j=1}^{M} (z - b_j)^{n_j}.$$
+
+每个零点都被 $m_k$ 次幂除尽、每个极点都被 $n_j$ 次幂乘掉，故 $g$ 在 $\gamma$ 及其内部全纯，且**处处非零**。
+
+**第二步：取对数导数。** 乘积的导数给出
+
+$$\frac{f'(z)}{f(z)} = \sum_{k=1}^{N} \frac{m_k}{z - a_k} - \sum_{j=1}^{M} \frac{n_j}{z - b_j} + \frac{g'(z)}{g(z)}.$$
+
+**第三步：逐项算留数。** 每一项都是 $\gamma$ 内部的一阶极点：$\operatorname{Res}\left( \dfrac{m_k}{z - a_k}, a_k \right) = m_k$，$\operatorname{Res}\left( \dfrac{-n_j}{z - b_j}, b_j \right) = -n_j$；而 $g'/g$ 在内部全纯，没有留数。由留数定理
+
+$$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = \sum_{k} m_k - \sum_{j} n_j = Z - P.$$
+
+**第四步：左边也是绕数。** 令 $w = f(z)$，则 $\mathrm{d}w = f'(z)\,\mathrm{d}z$，$f \circ \gamma$ 是绕 $0$ 的闭曲线：
+
+$$n(f \circ \gamma, 0) = \frac{1}{2\pi i}\oint_{f \circ \gamma} \frac{\mathrm{d}w}{w} = \frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z.$$
+
+两式相合即得 $Z - P = n(f \circ \gamma, 0)$。$\blacksquare$
+
+#### 辐角原理 ⟹ Rouché 定理　`imp.rouche`
+*辐角原理 $\implies$ Rouché 定理*
+
+**第一步：把 $f$ 与 $f + g$ 连起来。** 对 $t \in [0, 1]$ 令 $h_t := f + t g$。在 $\gamma$ 上
+
+$$|h_t| \ge |f| - t|g| \ge |f| - |g| > 0,$$
+
+所以每个 $h_t$ 在 $\gamma$ 上都没有零点，辐角原理对每个 $t$ 都能用。
+
+**第二步：数零点的量是整数。** 令
+
+$$N(t) := \frac{1}{2\pi i}\oint_{\gamma} \frac{h_t'(z)}{h_t(z)}\,\mathrm{d}z.$$
+
+由辐角原理，$N(t)$ 就是 $h_t$ 在 $\gamma$ 内部的零点数（按重数），是整数。
+
+**第三步：它连续。** 被积函数 $(z, t) \mapsto \dfrac{h_t'(z)}{h_t(z)} = \dfrac{f'(z) + t g'(z)}{f(z) + t g(z)}$ 在紧集 $\gamma \times [0, 1]$ 上连续（分母那里 $|f + tg| \ge |f| - |g| > 0$），故关于 $t$ 一致连续，$N$ 连续。
+
+**第四步：整数 + 连续 = 常数。** 于是 $N(0) = N(1)$，即 $f$ 与 $f + g$ 在 $\gamma$ 内部的零点数相同。$\blacksquare$
+
+> 整个证明只用一件事：零点个数会随参数连续变化，而它只能取整数值。所以除了「$|g| < |f|$ 保证分母不为零」之外，没有任何定量估计。
+
+#### Rouché 定理 ⟹ Hurwitz 定理　`imp.hurwitz`
+*Rouché 定理 $\implies$ Hurwitz 定理*
+
+设 $f$ 不恒为零，且 $f(z_0) = 0$。只需在这个零点处导出矛盾。
+
+**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\overline{D(z_0, r)} \subset \Omega$，且 $f$ 在 $\overline{D(z_0, r)}$ 内只有 $z_0$ 一个零点。令
+
+$$m := \min_{|z - z_0| = r} |f(z)| > 0$$
+
+（圆周上无零点，连续函数在紧集上有正的最小值）。
+
+**第二步：一致收敛让扰动变小。** 在紧集 $\overline{D(z_0, r)}$ 上 $f_k \rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点
+
+$$|f_k(z) - f(z)| \le \|f_k - f\|_{\infty} < m \le |f(z)|.$$
+
+**第三步：用 Rouché。** 在圆周 $|z - z_0| = r$ 上以 $f$ 为主项、以 $f_k - f$ 为扰动，Rouché 定理说 $f$ 与 $f + (f_k - f) = f_k$ 在这条圆周内部的零点数相同。
+
+**第四步：矛盾。** $f$ 在里面至少有 $z_0$ 这个零点，所以 $f_k$ 在里面也至少有一个零点 —— 与「每个 $f_k$ 处处无零点」矛盾。
+
+故 $f$ 不恒为零时**没有**任何零点；剩下的唯一可能是 $f \equiv 0$。$\blacksquare$
+
+#### 全纯函数 + 最大模原理 ⟹ Schwarz 引理　`imp.schwarz`
+*全纯 + 最大模原理 $\implies$ Schwarz 引理*
+
+**第一步：把因子 $z$ 剥掉。** $f(0) = 0$ 且 $f$ 全纯，故 $f$ 的 Taylor 展开没有常数项，$f(z) = z\,g(z)$，其中
+
+$$g(z) := \begin{cases} \dfrac{f(z)}{z}, & z \ne 0, \\ f'(0), & z = 0 \end{cases}$$
+
+在 $\mathbb{D}$ 上全纯（$0$ 处是**可去**奇点，补上 $f'(0)$ 即可）。
+
+**第二步：在圆周 $|z| = r$ 上用最大模原理。** 对 $0 < r < 1$，$|z| = r$ 时 $|g(z)| = |f(z)|/r \le 1/r$（因为 $|f| \le 1$）。最大模原理给出
+
+$$|g(z)| \le \frac{1}{r} \qquad (|z| \le r).$$
+
+**第三步：令 $r \to 1$。** 固定 $z \in \mathbb{D}$，取 $r > |z|$ 并令 $r \to 1$，得 $|g(z)| \le 1$，即
+
+$$|f(z)| \le |z| \qquad (z \in \mathbb{D}), \qquad |f'(0)| = |g(0)| \le 1.$$
+
+**第四步：等号。** 若存在 $z_0 \in \mathbb{D}$ 使 $|g(z_0)| = 1$（$|f(z_0)| = |z_0|$ 时），或 $|g(0)| = 1$（$|f'(0)| = 1$ 时），最大模原理说 $g$ 是常数 $c$ 且 $|c| = 1$，即 $f(z) = e^{i\theta} z$。$\blacksquare$
+
+> 要点是「$f(0) = 0$ 时 $f/z$ 仍全纯」—— 这全靠可去奇点那一侧：$f$ 的 Taylor 展开从 $z^1$ 起，除以 $z$ 之后还是幂级数。
+
+#### Schwarz 引理 + 分式线性变换 ⟹ Schwarz–Pick 定理　`imp.schwarz-pick`
+*Schwarz 引理 + 圆盘自同构 $\implies$ Schwarz–Pick 定理*
+
+**第一步：造圆盘的自同构。** 对 $|a| < 1$ 令
+
+$$\varphi_a(z) := \frac{z - a}{1 - \overline{a}\, z}.$$
+
+分母在 $|z| < 1$ 上不为零（$|\overline{a} z| < 1$）；$\varphi_a(a) = 0$；直接代入可验 $\varphi_{-a}(\varphi_a(z)) = z$，故它是 $\mathbb{D}$ 到自身的双射。
+
+**第二步：把两个点都挪到原点。** 令
+
+$$F := \varphi_{f(z_0)} \circ f \circ \varphi_{z_0}^{-1}.$$
+
+这是 $\mathbb{D} \to \mathbb{D}$ 的全纯映射，且 $F(0) = \varphi_{f(z_0)}(f(z_0)) = 0$。
+
+**第三步：套 Schwarz 引理。** 得 $|F(w)| \le |w|$，把 $w = \varphi_{z_0}(z)$ 代回即
+
+$$\left| \frac{f(z) - f(z_0)}{1 - \overline{f(z_0)} f(z)} \right| \le \left| \frac{z - z_0}{1 - \overline{z_0} z} \right|.$$
+
+**第四步：导数形式。** 链式法则在 $w = 0$（$z = z_0$）处拆开：
+
+$$F'(0) = \varphi_{f(z_0)}'(f(z_0))\cdot f'(z_0)\cdot \frac{1}{\varphi_{z_0}'(z_0)}.$$
+
+代入 $\varphi_a'(w) = \dfrac{1 - |a|^2}{(1 - \overline{a}\, w)^2}$、$\varphi_a'(a) = \dfrac{1}{1 - |a|^2}$，得
+
+$$F'(0) = \frac{f'(z_0)(1 - |z_0|^2)}{1 - |f(z_0)|^2}.$$
+
+由 $|F'(0)| \le 1$ 即得微分形式。
+
+**第五步：等号。** 某处取等 $\implies$ $F$ 是旋转（Schwarz 引理的 (3)）$\implies$ $f = \varphi_{f(z_0)}^{-1} \circ F \circ \varphi_{z_0}$ 是三个分式线性变换的复合，仍是 $\mathbb{D}$ 的自同构。反之自同构显然处处取等。$\blacksquare$
+
+#### Cauchy 积分公式 + 调和函数 ⟹ 调和函数的均值性质　`imp.harmonic-mean-value`
+*Cauchy 积分公式 + 调和 $\implies$ 均值性质*
+
+**第一步：把 $u$ 写成全纯函数的实部。** 圆盘单连通，由「调和函数的共轭」那条定理，存在全纯 $f$ 使 $u = \operatorname{Re} f$（这一步只用圆盘，不需要 $\Omega$ 单连通）。
+
+**第二步：Cauchy 积分公式 + 圆周参数化。** 取 $\zeta = a + r e^{i\theta}$，$\mathrm{d}\zeta = i r e^{i\theta}\mathrm{d}\theta$，于是 $\dfrac{\mathrm{d}\zeta}{\zeta - a} = i\,\mathrm{d}\theta$：
+
+$$f(a) = \frac{1}{2\pi i}\oint_{|\zeta - a| = r} \frac{f(\zeta)}{\zeta - a}\,\mathrm{d}\zeta = \frac{1}{2\pi}\int_0^{2\pi} f(a + r e^{i\theta})\,\mathrm{d}\theta.$$
+
+**第三步：取实部。** 左端 $f(a) = u(a) + i v(a)$，右端实部是 $u$ 的平均，得
+
+$$u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.$$
+
+**第四步：面积平均。** 把上式中的 $r$ 换成 $\rho$ 再乘 $\rho$，在 $0 < \rho < r$ 上积分：
+
+$$\int_0^{r} 2\pi u(a)\,\rho\,\mathrm{d}\rho = \int_0^{r}\int_0^{2\pi} u(a + \rho e^{i\theta})\,\rho\,\mathrm{d}\theta\,\mathrm{d}\rho = \iint_{D(a, r)} u\,\mathrm{d}A.$$
+
+左边 $= \pi r^2 u(a)$，两边除以 $\pi r^2$ 即得面积形式。$\blacksquare$
+
+#### Cauchy 积分公式 + 调和函数 ⟹ Poisson 积分公式　`imp.poisson-formula`
+*Cauchy 积分公式 + 调和 $\implies$ Poisson 公式*
+
+设 $f$ 在 $D(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \operatorname{Re} f$。
+
+**第一步：把圆周积分写成 $\theta$。** 在 $|\zeta| = r$ 上 $\mathrm{d}\zeta = i\zeta\,\mathrm{d}\theta$，故
+
+$$f(z) = \frac{1}{2\pi i}\oint_{|\zeta| = r} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta = \frac{1}{2\pi}\int_0^{2\pi} \frac{\zeta\, f(\zeta)}{\zeta - z}\,\mathrm{d}\theta.$$
+
+**第二步：凑一个零积分。** 点 $r^2/\overline{z}$ 在圆**外**（$r^2/|z| > r$），故 $\dfrac{f(\zeta)}{\zeta - r^2/\overline{z}}$ 在 $|\zeta| \le r$ 上全纯，积分为零：
+
+$$0 = \frac{1}{2\pi}\int_0^{2\pi} \frac{\zeta\, f(\zeta)}{\zeta - r^2/\overline{z}}\,\mathrm{d}\theta.$$
+
+**第三步：相减，算核。** 在 $|\zeta| = r$ 上 $\zeta\overline{\zeta} = r^2$，故 $r^2/\overline{z} = \zeta\overline{\zeta}/\overline{z}$，于是 $\dfrac{\zeta}{\zeta - r^2/\overline{z}} = \dfrac{\overline{z}}{\overline{z} - \overline{\zeta}}$。通分得
+
+$$\frac{\zeta}{\zeta - z} - \frac{\overline{z}}{\overline{z} - \overline{\zeta}} = \frac{\zeta(\overline{z} - \overline{\zeta}) - \overline{z}(\zeta - z)}{(\zeta - z)(\overline{z} - \overline{\zeta})} = \frac{|z|^2 - r^2}{-|\zeta - z|^2} = \frac{r^2 - |z|^2}{|\zeta - z|^2},$$
+
+其中 $(\zeta - z)(\overline{z} - \overline{\zeta}) = -(\zeta - z)\overline{(\zeta - z)} = -|\zeta - z|^2$。所以核是**实值**的，且
+
+$$f(z) = \frac{1}{2\pi}\int_0^{2\pi} \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}\, f(r e^{i\theta})\,\mathrm{d}\theta.$$
+
+**第四步：取实部。** 核实值 $\implies$ 逐点取实部即得 $u$ 的公式。
+
+**第五步：核的两条性质。** $r^2 - |z|^2 > 0$ 给 $P_r \ge 0$；把 $f \equiv 1$ 代入（此时 $u \equiv 1$）得 $\dfrac{1}{2\pi}\int P_r = 1$。$\blacksquare$
+
+#### 调和函数 + Cauchy–Riemann 方程 ⟹ 调和函数的共轭　`imp.harmonic-conjugate`
+*调和 + Cauchy–Riemann $\implies$ 局部是全纯函数的实部*
+
+**第一步：造 1-形式。** 令
+
+$$\omega := -u_y\,\mathrm{d}x + u_x\,\mathrm{d}y.$$
+
+它是**闭**的：$\mathrm{d}\omega = \left( \dfrac{\partial u_x}{\partial x} + \dfrac{\partial u_y}{\partial y} \right)\mathrm{d}x \wedge \mathrm{d}y = \Delta u\,\mathrm{d}x \wedge \mathrm{d}y = 0$。
+
+**第二步：单连通给出原函数。** 闭 1-形式在单连通区域上恰当，故存在 $v \in C^1(\Omega)$ 使 $\mathrm{d}v = \omega$，也就是
+
+$$v_x = -u_y, \qquad v_y = u_x.$$
+
+**第三步：验证 Cauchy–Riemann。** 这两式正是 $u_x = v_y$、$u_y = -v_x$。$u, v \in C^1$，故 $f := u + iv$ 在 $\Omega$ 上全纯，且 $\operatorname{Re} f = u$。
+
+**第四步：唯一性。** 若 $\operatorname{Re} f_1 = \operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i y$（$y$ 实值）。对 $(0, y)$ 用 Cauchy–Riemann 方程：$0 = y_y$ 与 $0 = -y_x$，故 $y$ 是常数，$g$ 是纯虚常数。
+
+**第五步：单连通不能去掉。** $u(z) = \ln|z|$ 在 $\mathbb{C}^{\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\operatorname{Log}$，而 $\operatorname{Log}$ 多值。等价地：$\oint_{|z| = 1} \omega = 2\pi \ne 0$，闭形式在这里不恰当。$\blacksquare$
+
+#### 调和函数的均值性质 ⟹ 调和函数的最大值原理　`imp.harmonic-maximum`
+*均值性质 $\implies$ 调和函数的最大值原理*
+
+**第一步：设出最大值点。** 设 $u$ 在 $\Omega$ 上调和，且在某点取到最大值 $M$。令
+
+$$E := \{\, z \in \Omega : u(z) = M \,\} \ne \emptyset.$$
+
+**第二步：$E$ 是闭的。** $u$ 连续，$E$ 是闭集 $\{M\}$ 在 $\Omega$ 中的原像。
+
+**第三步：$E$ 是开的。** 取 $a \in E$，取 $r > 0$ 使 $\overline{D(a, r)} \subset \Omega$。由均值性质
+
+$$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.$$
+
+被积函数逐点 $\le M$，而它们的平均恰好是 $M$ $\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。所以圆周落在 $E$ 里；对每个 $0 < \rho \le r$ 同理，于是 $D(a, r) \subset E$。
+
+**第四步：连通性。** $\Omega$ 连通而 $E$ 非空、既开又闭，故 $E = \Omega$，即 $u \equiv M$。取逆否命题：$u$ 非常数 $\implies$ 内部取不到最大值。
+
+**第五步：最小值。** $-u$ 仍调和，对它用前四步即得最小值那一半。$\blacksquare$
+
+#### 整函数与亚纯函数 ⟹ Mittag-Leffler 定理　`imp.mittag-leffler`
+*亚纯函数的定义 $\implies$ Mittag-Leffler 定理（只给证明骨架）*
+
+⚠ 这一条只记**证明骨架**，不是逐行完整的证明：完整证明要用 Runge 逼近或 Weierstrass 收敛因子，属于逼近论的内容，这里不展开。
+
+**第一步：先排成一个没有聚点的序列。** 假设里 $\{a_k\}$ 在 $\Omega$ 内没有聚点，把它按 $|a_k|$ 从小到大排好（若序列有限，直接减去有限和即可，没有收敛问题）。
+
+**第二步：造一个「差不多对」的候选。** 取
+
+$$F(z) := \sum_{k=1}^{\infty} P_k\left( \frac{1}{z - a_k} \right).$$
+
+若这个级数在每个紧集上一致收敛，它就直接是答案：在每个 $a_k$ 附近只有 $P_k$ 那一项有极点，其余各项全纯。
+
+**第三步：修正发散。** 一般地级数并不收敛。取一列紧集 $K_n \nearrow \Omega$，对每个 $k$ 在 $a_k$ 处把 $P_k$ 减去它的 Taylor 多项式 $T_k$（次数足够高），使得
+
+$$\left| P_k\left( \frac{1}{z - a_k} \right) - T_k(z) \right| \le 2^{-k} \qquad (z \in K_k).$$
+
+这样的 $T_k$ 存在，因为 $P_k$ 在 $a_k$ 之外全纯，可以在 $K_k$ 上用 Taylor 展开逼近。
+
+**第四步：收敛与主部。** 修正后的级数 $\sum_k (P_k - T_k)$ 在每个 $K_n$ 上一致收敛（从第 $n$ 项起每项都 $\le 2^{-k}$）。而减去的 $T_k$ 在 $a_k$ 处全纯、不影响主部，故极限函数在 $a_k$ 处的主部仍是 $P_k$。
+
+**第五步：唯一性。** 两个解之差处处全纯（极点与主部都被消掉），是 $\Omega$ 上的整函数。$\blacksquare$
+
+> ⚠ 这条边给的是「结构 + 关键构造」，第三步的逼近细节（$T_k$ 的存在性）依赖 Runge 逼近，这里没有证。
+
+#### 复围道积分 ⟹ Jordan 引理　`imp.jordan-lemma`
+*围道积分 $\implies$ Jordan 引理*
+
+**第一步：把弧上的模写清楚。** 在 $C_R$ 上取 $z = R e^{i\theta}$，$0 \le \theta \le \pi$。则
+
+$$\left| e^{i a z} \right| = \left| e^{i a R(\cos\theta + i\sin\theta)} \right| = e^{-a R \sin\theta}.$$
+
+**第二步：关键不等式。** 对 $0 \le \theta \le \pi/2$ 有 $\sin\theta \ge \dfrac{2\theta}{\pi}$（弦在弧下），右边同样成立（用 $\sin(\pi - \theta) = \sin\theta$）。于是整段上
+
+$$e^{-a R \sin\theta} \le e^{-2 a R \theta/\pi}.$$
+
+**第三步：估积分。** 记 $M_R := \max_{C_R}|f|$，则
+
+$$\left| \int_{C_R} f e^{iaz}\,\mathrm{d}z \right| \le M_R \int_{C_R} e^{-a R \sin\theta}\,|\mathrm{d}z| = M_R R \int_0^{\pi} e^{-a R \sin\theta}\,\mathrm{d}\theta.$$
+
+**第四步：积掉 $\theta$。** 用第二步的不等式（被积函数关于 $\pi/2$ 对称，算一半乘 $2$）：
+
+$$R\int_0^{\pi} e^{-a R \sin\theta}\,\mathrm{d}\theta \le 2 R \int_0^{\pi/2} e^{-2 a R \theta/\pi}\,\mathrm{d}\theta = 2 R \cdot \frac{\pi}{2 a R}\left( 1 - e^{-a R} \right) \le \frac{\pi}{a}.$$
+
+**第五步：结论。** 于是 $\left| \int_{C_R} f e^{iaz}\mathrm{d}z \right| \le \dfrac{\pi M_R}{a} \to 0$（因为 $M_R \to 0$）。$\blacksquare$
+
+> 整段估计里**没有**出现 $R \to \infty$ 的衰减假设 —— 指数因子自己就把弧长 $\pi R$ 抵消掉了，这才是 Jordan 引理比粗糙 ML 估计强的地方。
+
+#### 留数定理 ⟹ 实轴上有理函数的积分　`imp.integral-rational`
+*留数定理 $\implies$ 实轴上有理函数的积分*
+
+**第一步：围道。** 取 $\Gamma_R$ 为 $[-R, R]$ 加以上半平面的半圆弧 $C_R$（逆时针）。$R$ 充分大时 $\Gamma_R$ 围住 $R(z)$ 的全部上半平面极点。
+
+**第二步：$C_R$ 上一致趋零。** $\deg Q \ge \deg P + 2$ $\implies$ 存在 $C$、$R_0$ 使 $|R(z)| \le C/|z|^2$（$|z| \ge R_0$）。于是
+
+$$\left| \int_{C_R} R(z)\,\mathrm{d}z \right| \le \frac{C}{R^2}\cdot \pi R = \frac{\pi C}{R} \to 0.$$
+
+**第三步：留数定理。** 由留数定理
+
+$$\int_{-R}^{R} R(x)\,\mathrm{d}x + \int_{C_R} R(z)\,\mathrm{d}z = 2\pi i \sum_{\operatorname{Im} a_k > 0} \operatorname{Res}(R, a_k).$$
+
+**第四步：令 $R \to \infty$。** 第二项趋零，第一项趋所要的积分，右端是常数 —— 于是
+
+$$\int_{-\infty}^{\infty} R(x)\,\mathrm{d}x = 2\pi i \sum_{\operatorname{Im} a_k > 0} \operatorname{Res}(R, a_k).$$
+
+**第五步：为什么右边是实数。** $R$ 取实值 $\implies$ 左边是实数；也可以从共轭对称性直接看：实系数多项式使非实极点与留数成共轭对出现，$2\pi i$ 乘虚部就落到实数上。$\blacksquare$
+
+> 两个关键条件各管一件事：$\deg Q \ge \deg P + 2$ 让大弧上的估计有 $1/R$ 的余量；$Q$ 在实轴上无零点让积分真的收敛（否则要绕小半圆取主值）。
+
+#### 留数定理 ⟹ 三角有理函数的积分　`imp.integral-trig`
+*留数定理 $\implies$ 三角有理函数的积分*
+
+**第一步：代换。** 令 $z = e^{i\theta}$，$\theta$ 从 $0$ 走到 $2\pi$ 时 $z$ 逆时针走完单位圆一圈。此时
+
+$$\cos\theta = \frac{z + z^{-1}}{2}, \qquad \sin\theta = \frac{z - z^{-1}}{2 i}, \qquad \mathrm{d}\theta = \frac{\mathrm{d}z}{i z}.$$
+
+**第二步：化成有理函数的围道积分。** 代入得
+
+$$\int_0^{2\pi} R(\cos\theta, \sin\theta)\,\mathrm{d}\theta = \oint_{|z| = 1} R\left( \frac{z + z^{-1}}{2}, \frac{z - z^{-1}}{2i} \right)\frac{\mathrm{d}z}{i z},$$
+
+被积函数是 $z$ 的有理函数（$z^{\pm 1}$ 的有限和）。
+
+**第三步：用留数定理。** 把代换后的被积函数记作 $g(z)$。若 $g$ 在单位圆上无极点，则积分 $= 2\pi i \sum_{|a_k| < 1} \operatorname{Res}(g, a_k)$，只对**圆内**的极点求和。
+
+**第四步：检验一个算例。** 对 $a > 1$，代换后
+
+$$\int_0^{2\pi}\frac{\mathrm{d}\theta}{a + \cos\theta} = \frac{2}{i}\oint_{|z|=1}\frac{\mathrm{d}z}{z^2 + 2az + 1}.$$
+
+分母两根之积为 $1$，故恰有一根 $z_{+} = -a + \sqrt{a^2 - 1}$ 在圆内，其留数为 $\dfrac{1}{2\sqrt{a^2 - 1}}$。于是积分 $= \dfrac{2}{i}\cdot\dfrac{2\pi i}{2\sqrt{a^2 - 1}} = \dfrac{2\pi}{\sqrt{a^2 - 1}}$，与标准答案相符。$\blacksquare$
+
+#### 定义引用：「复围道积分」→ 绕数　`def-link.winding-contour`
+
+绕数就是**用围道积分定义的**：$\oint_{\gamma} \mathrm{d}\zeta/(\zeta - a_0)$ 再除以 $2\pi i$。那个「与 $r$ 无关」的技巧在这里也用得上 —— 只是这次连半径都换了。
+
+#### 定义引用：「绕数」→ 辐角原理　`def-link.argument-winding`
+
+定理右端的 $n(f \circ \gamma, 0)$ 就是定义里的绕数：把曲线换成 $f \circ \gamma$、把点换成 $0$。整条定理的内容是「左边那个积分等于这个绕数」。
+
+#### 定义引用：「全纯函数」→ 多值函数与分支　`def-link.branch-holomorphic`
+
+「全纯分支」的「全纯」就是这里的全纯 —— 分支本身是区域上的单值复值函数，所以能直接问它是否复可微。
+
+#### 定义引用：「多值函数与分支」→ 对数与幂的分支　`def-link.log-branch`
+
+对数与幂都是**多值对应**：$\log z$ 的值集是 $\ln|z| + i(\arg z + 2k\pi)$。取主值就是挑其中一个分支，割掉负实轴正是为了让这个挑选连续。
+
+#### 定义引用：「复数 ℂ」→ 对数与幂的分支　`def-link.log-complex`
+
+式子里出现的 $|z|$、$\arg z$、$\overline{z}$ 都是复数的模与辐角；而 $e^{\alpha \log z}$ 用的是复指数 —— 幂的定义完全建立在复数的极坐标表示上。
+
+#### 定义引用：「多值函数与分支」→ Riemann 曲面　`def-link.riemann-branch`
+
+Riemann 曲面存在的理由就是「把分支全部接起来」：平面上割开才能取的单值分支，在曲面上每层放一支，于是整体单值。所以「分支」是理解这个定义的前置。
+
+#### 定义引用：「偏导数」→ 调和函数　`def-link.harmonic-partial`
+
+Laplace 方程 $\Delta u = u_{xx} + u_{yy}$ 是四个二阶偏导的组合，先把二阶偏导写清楚才谈得上「$\Delta u = 0$」。
+
+#### 定义引用：「调和函数」→ 调和函数的均值性质　`def-link.meanvalue-harmonic`
+
+定理的主语就是「调和函数」，而调和的判据是 $\Delta u = 0$。
+
+#### 定义引用：「调和函数」→ Poisson 积分公式　`def-link.poisson-harmonic`
+
+Poisson 公式给的是调和函数 $u = \operatorname{Re} f$ 的取值表示；它顺便回答了 Dirichlet 问题里「解调和」那一半。
+
+#### 定义引用：「调和函数」→ 调和函数的共轭　`def-link.conjugate-harmonic`
+
+「共轭调和」的 $v$ 是作为 $u$ 的搭档出现的：$u$ 调和是前提，$v$ 由 Cauchy–Riemann 方程反解出来。
+
+#### 定义引用：「调和函数」→ 调和函数的最大值原理　`def-link.harmonicmax-harmonic`
+
+最大值原理是调和函数的性质，判据仍是 $\Delta u = 0$；证明里用的均值性质也是从同一个定义推出来的。
+
+#### 定义引用：「全纯函数」→ 整函数与亚纯函数　`def-link.entire-holomorphic`
+
+整函数就是「在 $\mathbb{C}$ 上处处全纯」；亚纯函数是「除掉孤立极点后全纯」。两者都是全纯概念的加限定版，所以必须先有全纯。
+
+#### 定义引用：「孤立奇点及其分类」→ 整函数与亚纯函数　`def-link.meromorphic-pole`
+
+亚纯的定义里要求每个坏点都是**极点**，而「极点」是按孤立奇点的三分法定义的。主张「$e^{1/z}$ 不是亚纯」时，用的正是这条分类。
+
+#### 定义引用：「整函数与亚纯函数」→ Mittag-Leffler 定理　`def-link.mittag-meromorphic`
+
+定理的结论「存在亚纯函数」用的是这里的亚纯定义：极点集必须没有聚点、坏点只能是极点。
+
+#### 定义引用：「分式线性变换」→ Schwarz–Pick 定理　`def-link.schwarzpick-mobius`
+
+证明里用的 $\varphi_a(z) = (z - a)/(1 - \overline{a} z)$ 就是 $a = 1$、$b = -a$、$c = -\overline{a}$、$d = 1$ 的分式线性变换；而「等号成立当且仅当 $f$ 是自同构」那句话里的自同构也仍是分式线性变换。
+
+#### 定义引用：「复围道积分」→ Jordan 引理　`def-link.jordan-contour`
+
+引理估的就是**围道积分** $\int_{C_R} f e^{iaz}\,\mathrm{d}z$；「半圆弧从 $R$ 到 $-R$ 逆时针」这句话的定向也要按围道积分的规矩读。
+
+#### 定义引用：「留数」→ 实轴上有理函数的积分　`def-link.rational-residue`
+
+公式右端就是上半平面诸极点的留数之和 —— 留数在这里是唯一真正要手算的量。
+
+#### 定义引用：「留数」→ 三角有理函数的积分　`def-link.trig-residue`
+
+代换之后积分变成单位圆上的围道积分，最后仍靠算单位圆内的极点留数得到数值。
+
+#### 定义引用：「切丛」→ 切分布　`dep.mf2-tangentbundle-distribution`
+
+分布是「每点一个子空间」再并起来，所以它天然住在 $TM$ 里；要谈光滑就必须把它看成 $TM$ 的子丛，而不只是一族子空间。
+
+#### 定义引用：「向量丛」→ 切分布　`dep.mf2-vectorbundle-distribution`
+
+「$k$ 秩光滑子丛」这句话用的是向量丛的语言：局部平凡化、转移函数、截面模。分布的「秩」就是子丛的秩，与向量空间的维数同一个词。
+
+#### 定义引用：「向量场」→ 切分布　`dep.mf2-vf-distribution`
+
+光滑性的可用判据是「局部由 $k$ 个光滑向量场生成」—— 于是「分布的选取」变成「场的选取」，可以对它求导、取括号。
+
+#### 定义引用：「向量场」→ 对合分布　`dep.mf2-vf-involutive`
+
+对合性说的是「落在 $\mathcal{D}$ 里的向量场」这个集合的封闭性；没有向量场就没有 $\Gamma(\mathcal{D})$ 可说。
+
+#### 定义引用：「Lie 括号」→ 对合分布　`dep.mf2-bracket-involutive`
+
+判据就是「生成元的括号仍是生成元的组合」；Leibniz 律保证只需查生成元（见边 `imp.mf2-frobenius-flat` 的证明里那一步）。
+
+#### 定义引用：「切分布」→ 对合分布　`dep.mf2-distribution-involutive`
+
+对合是分布的属性：没有「$k$ 维子空间族」这个对象，就无从说括号落在哪里。
+
+#### 定义引用：「浸入 / 淹没 / 嵌入」→ 积分流形　`dep.mf2-immersion-integral`
+
+积分流形是**浸入**子流形（$\mathrm{d}i$ 处处单射），不是任意子集；「浸入」这个词的出处就是 `def.submersion-immersion`。
+
+#### 定义引用：「切分布」→ 积分流形　`dep.mf2-distribution-integral`
+
+「积分流形」永远是「某个分布 $\mathcal{D}$ 的积分流形」；定义里 $\mathrm{d}i(TN) = \mathcal{D}$ 的右边就是分布。
+
+#### 定义引用：「切映射」→ 积分流形　`dep.mf2-diff-integral`
+
+条件写成 $\mathrm{d}i_{p}(T_{p}N) = \mathcal{D}_{i(p)}$，用的是切映射的像 —— 不写下 $\mathrm{d}i$，就无法把「$N$ 的切空间」搬到 $M$ 里比较。
+
+#### 定义引用：「图卡」→ Frobenius 定理　`dep.mf2-chart-frobenius`
+
+定理的结论 (2) 是「存在坐标把分布拉直成坐标面」，这句话本身就是关于图卡（坐标）的断言；平坦坐标是图卡的一个特例。
+
+#### 定义引用：「切分布」→ Frobenius 定理　`dep.mf2-distribution-frobenius`
+
+定理的主语是光滑 $k$ 阶切分布；「$k$ 维」这个前提在归纳证明里正好用来降秩。
+
+#### 定义引用：「Lie 群」→ 左不变形式　`dep.mf2-liegroup-liform`
+
+左不变性是「对左平移 $L_{g}$ 的拉回不变」；$L_{g}$ 光滑（因而可拉回）正是 Lie 群定义的一部分。
+
+#### 定义引用：「微分形式」→ 左不变形式　`dep.mf2-dform-liform`
+
+$k$-形式才谈得上左不变；$k = n$ 时那个左不变 $n$-形式同时是体积形式 —— 这条推论用的是形式论，不是群论。
+
+#### 定义引用：「拉回」→ 左不变形式　`dep.mf2-pullback-liform`
+
+「$L_{g}^{\ast}\omega = \omega$」用的是形式的拉回；拉回与外微分交换这一条又是 `thm.maurer-cartan` 证明里必需的。
+
+#### 定义引用：「左不变形式」→ Maurer–Cartan 方程　`dep.mf2-liform-maurercartan`
+
+方程左边是左不变余标架 $\omega^{i}$ 的外微分，右边是结构常数 —— 两样都在左不变形式的定义里。
+
+#### 定义引用：「Lie 代数」→ Maurer–Cartan 方程　`dep.mf2-liealgebra-maurercartan`
+
+结构常数 $c^{i}_{\ jk}$ 是 Lie 代数的括号在基下的坐标；MC 方程就是说「这些坐标决定了 $\mathrm{d}\omega^{i}$」。
+
+#### 定义引用：「外微分」→ Maurer–Cartan 方程　`dep.mf2-extd-maurercartan`
+
+方程是 $\mathrm{d}$ 的等式；证明用的桥是「$\mathrm{d}\theta(X,Y) = X\theta(Y) - Y\theta(X) - \theta([X,Y])$」，那是外微分的坐标无关刻画。
+
+#### 定义引用：「Lie 代数」→ Lie 第三定理　`dep.mf2-liealgebra-liethird`
+
+定理的输入是「有限维实 Lie 代数」：反称加 Jacobi 两条公理就这些，不需要别的结构。
+
+#### 定义引用：「Lie 群」→ Lie 第三定理　`dep.mf2-liegroup-liethird`
+
+输出是「连通单连通的 Lie 群」：光滑流形、群结构、以及单连通这个拓扑条件一起构成结论的主语。
+
+#### 定义引用：「左不变向量场」→ Lie 第三定理　`dep.mf2-leftinv-liethird`
+
+$\operatorname{Lie}(G) \cong \mathfrak{g}$ 这句话里的 $\operatorname{Lie}(G)$ 就是「$T_{e}G$ 配上左不变向量场的括号」，出处是那条命题。
+
+#### 定义引用：「向量丛」→ 丛的分类　`dep.mf2-vectorbundle-bundleclass`
+
+分类的对象是向量丛、用的数据是局部平凡化的转移函数与上闭链条件 —— 两者都在 `def.vector-bundle` 里。
+
+#### 定义引用：「Čech 上同调」→ 丛的分类　`dep.mf2-cech-bundleclass`
+
+⚠️ 只借「$1$-上闭链模上边界」这个口径：那条定义取的是**阿贝尔**预层复形（$\check{H}^{n}$ 是群），本条系数是非阿贝尔的 $\operatorname{GL}(k)$，所以只有 $\check{H}^{1}$ 是集合。这一点在节点 notes 里明写了。
+
+#### 定义引用：「仿紧空间」→ 丛的分类　`dep.mf2-paracompact-bundleclass`
+
+分类要「取遍所有覆盖的加细」再取余极限；流形仿紧（第二可数 + Hausdorff + 局部欧氏），所以加细可以取成局部有限的，余极限才良定义。
+
+#### 定义引用：「de Rham 上同调」→ de Rham 定理　`dep.mf2-derham-derhamthm`
+
+左边的 $H^{k}_{\mathrm{dR}}$ 是「闭形式模恰当形式」，全部依赖 $\mathrm{d}^{2} = 0$ 与商空间的构造。
+
+#### 定义引用：「奇异链」→ de Rham 定理　`dep.mf2-singchain-derhamthm`
+
+右边的 $H^{k}_{\mathrm{sing}}$ 是奇异链取对偶再取上同调；链群是「单形的形式和」，边界算子由 $\partial^{2} = 0$ 支撑。
+
+#### 定义引用：「同调」→ de Rham 定理　`dep.mf2-cohomology-derhamthm`
+
+「取上同调」这个操作在两边的含义一致（$\ker/\operatorname{im}$）；同构说的是两个不同复形算出的同调群相同。
+
+#### 定义引用：「链上的积分」→ de Rham 定理　`dep.mf2-integralonchain-derhamthm`
+
+同构由 $[\omega] \mapsto \bigl([c] \mapsto \int_{c}\omega\bigr)$ 给出，所以「形式在链上的积分」是这条定理的**构造**而不是例子：没有它就没有映射。
+
+#### 定义引用：「Stokes 定理」→ de Rham 定理　`dep.mf2-stokes-derhamthm`
+
+配对能「下到同调与上同调」全靠 Stokes 的两个方向：$\int_{\partial b}\omega = \int_{b}\mathrm{d}\omega$ 与 $\int_{\partial c}\eta = \int_{c}\mathrm{d}\eta$ —— 一句话：边界算子是 $\mathrm{d}$ 的伴随。本条的证明里逐字算的是链版（`thm.stokes-chain`），概念形式就是这一条。
+
+#### 定义引用：「张量场」→ 缩并　`dep.mf2-tensor-contraction`
+
+缩并吃 $(r,s)$ 型、吐 $(r-1,s-1)$ 型 —— 上下标的记账全在张量场的定义里；换卡时两个 Jacobi 矩阵互逆正是它能良定义的原因。
+
+#### 定义引用：「迹」→ 缩并　`dep.mf2-trace-contraction`
+
+$(1,1)$ 型缩并就是逐点取迹；「缩并是取迹的推广」这句话靠的就是那条定义。
+
+#### 定义引用：「微分形式」→ 内乘　`dep.mf2-dform-iop`
+
+内乘的定义是「把 $X_{p}$ 塞进交错多重线性映射的第一个槽」；形式是交错的，所以塞两个向量必然为零（$\iota_{X}^{2} = 0$）。
+
+#### 定义引用：「向量场」→ 内乘　`dep.mf2-vf-iop`
+
+内乘吃一个向量场与一个形式；它对向量场 $C^{\infty}$-线性（可逐点算），这一点与 Lie 导数形成对照。
+
+#### 定义引用：「向量场」→ 流　`dep.mf2-vf-flow`
+
+流是向量场的「解」：定义里的 $\dot\gamma = X(\gamma)$ 左边是曲线、右边是向量场；把每点该往哪走写下来，才有方程。
+
+#### 定义引用：「流」→ 局部流　`dep.mf2-flow-flowlocal`
+
+定理要证的对象就是流（连同单参数群性质），所以先得有「流」这个定义；「极大流」也正是定义里那个 $\mathcal{W}$ 的极大版本。
+
+#### 定义引用：「流」→ 流完备性　`dep.mf2-flow-flowcomplete`
+
+「完备」在 `def.flow` 里已经定义为 $\mathcal{W} = \mathbb{R}\times M$；本条把它换成可判定的等价条件（区间无有限端点 / 有限端点必逃逸）。
+
+#### 定义引用：「紧」→ 流完备性　`dep.mf2-compact-flowcomplete`
+
+「紧 $\implies$ 完备」用的正是紧性的有限覆盖形式：紧集用有限张卡盖住，才取得出一致的时间步长。
+
+#### 定义引用：「流」→ Lie 导数　`dep.mf2-flow-liederiv`
+
+Lie 导数的定义是「沿流拉回再对 $t$ 求导」；流只需局部存在（`thm.flow-local`），所以这个定义对任意向量场都有意义。
+
+#### 定义引用：「张量场」→ Lie 导数　`dep.mf2-tensor-liederiv`
+
+Lie 导数作用在**张量场**上；三类的具体写法（函数 / 向量场 / 形式）都是张量场的特例，统一在「次数 $0$ 的导子」这个描述下。
+
+#### 定义引用：「Lie 导数」→ Cartan 公式　`dep.mf2-liederiv-cartan`
+
+公式左边就是 Lie 导数；证明的收尾用「它是与 $\mathrm{d}$ 交换的次数 $0$ 导子」这条性质。
+
+#### 定义引用：「内乘」→ Cartan 公式　`dep.mf2-iop-cartan`
+
+公式右边两项都含内乘；它与 $\mathrm{d}$ 都是**反导子**，复合出来才是导子 —— 这是证明能三行收束的技术核心。
+
+#### 定义引用：「外微分」→ Cartan 公式　`dep.mf2-extd-cartan`
+
+「$\mathrm{d}\iota_{X} + \iota_{X}\mathrm{d}$ 与 $\mathrm{d}$ 交换」这一步用了 $\mathrm{d}^{2} = 0$；没有它，右边那个组合连类型都对不上。
+
+#### 定义引用：「黎曼度量」→ 诱导体积　`dep.mf2-riem-subvol`
+
+诱导度量 $i^{\ast}g$ 是把 $g$ 沿着 $\mathrm{d}i$ 拉回；$\sqrt{\det(g_{ab})}$ 这个因子则完全来自 $g$（对照 `def.volume-form`）。
+
+#### 定义引用：「面积元」→ 诱导体积　`dep.mf2-area-subvol`
+
+$k = 2$ 时本条退化成曲面的面积元 $\mathrm{d}A = \sqrt{EG - F^{2}}\,\mathrm{d}u\wedge\mathrm{d}v$，与那条定义逐字相同 —— 本条是它的一般 $k$。
+
+#### 定义引用：「可定向流形」→ 诱导体积　`dep.mf2-orient-subvol`
+
+有符号的 $\mathrm{d}V_{N}$ 需要 $N$ 自己的定向；注意 $M$ 可定向不蕴含 $N$ 可定向（Möbius 带嵌在 $\mathbb{R}^{3}$ 里）。
+
+#### 定义引用：「体积密度与体积形式」→ 诱导体积　`dep.mf2-density-subvol`
+
+不定向时积的是密度 $\mathrm{d}A_{N}$，它的换卡不变性（$|\det|$ 抵消）是 `prop.volume-density-well-defined` 给的，本条只把它搬到 $N$ 上。
+
+#### 定义引用：「内乘」→ 诱导体积　`dep.mf2-iop-subvol`
+
+超曲面情形 $\mathrm{d}V_{N} = \pm\iota_{\nu}\mathrm{d}V_{g}$ 用的是内乘：沿单位法向缩一次，把 $n$-形式降成 $(n-1)$-形式 —— 这是「次数必须先降下来」的两条路之一。
+
+#### 定义引用：「形式的积分」→ 诱导体积　`dep.mf2-integral-subvol`
+
+体积是积分 $\int_{N}\mathrm{d}A_{N}$；「怎么在流形上积」的记账（保向卡 + 单位分解）不重写，直接引用那条定义。
+
+#### 对合分布 + 局部流 + Lie 括号 ⟹ Frobenius 定理　`imp.mf2-frobenius-flat`
+*对合 $\implies$ 平坦坐标（流盒拉直 $+$ 降秩归纳）*
+
+证 (1)$\implies$(2)。对 $k$ 归纳。$k = 0$ 时 $\mathcal{D} = 0$，任意坐标都平坦。设 $k \ge 1$，$p \in M$ 任意。
+
+**第一步：把第一个生成元拉直。** 取 $p$ 附近处处非零的生成元 $X_{1}$（由光滑性，$k \ge 1$ 时局部总有）。用 `thm.flow-local` 的局部流 $\varphi_{t}$：取过 $p$ 的横截超曲面 $H$（$\dim H = n-1$，与 $X_{1}(p)$ 横截），则
+
+$$\Psi(t, q) := \varphi_{t}(q)\qquad (q \in H,\ |t| < \varepsilon)$$
+
+在 $p$ 附近是微分同胚（$\mathrm{d}\Psi$ 在 $(0,p)$ 处满秩），于是可以取坐标 $y^{1} := t$、$y^{2},\ldots,y^{n}$ 为 $H$ 上的坐标。由构造 $\partial_{1} = X_{1}$，即 $X_{1}$ 已拉直。
+
+**第二步：换成没有 $\partial_{1}$ 分量的生成元。** 设其余生成元为 $Y_{2},\ldots,Y_{k}$。把每个 $Y_{i}$ 换成
+
+$$\tilde Y_{i} := Y_{i} - \bigl\langle \mathrm{d}y^{1},\ Y_{i}\bigr\rangle\,\partial_{1}\qquad (i = 2,\ldots,k),$$
+
+它们与 $\partial_{1}$ 一起仍生成 $\mathcal{D}$（只是把 $\partial_{1}$ 那部分扣掉）。由对合性，$[\partial_{1},\tilde Y_{i}] \in \Gamma(\mathcal{D})$；而
+
+$$\mathrm{d}y^{1}\bigl([\partial_{1},\tilde Y_{i}]\bigr) = \partial_{1}\bigl(\mathrm{d}y^{1}(\tilde Y_{i})\bigr) - \tilde Y_{i}\bigl(\mathrm{d}y^{1}(\partial_{1})\bigr) = \partial_{1}(0) - 0 = 0,$$
+
+（用了 $\mathrm{d}y^{1}$ 是闭形式与 $\mathrm{d}y^{1}(\tilde Y_{i}) = 0$、$\mathrm{d}y^{1}(\partial_{1}) = 1$ 为常数），故 $[\partial_{1},\tilde Y_{i}]$ 落在 $\mathcal{D} \cap \ker\mathrm{d}y^{1}$ 里，也就是落在 $\tilde Y_{2},\ldots,\tilde Y_{k}$ 张成的空间里。
+
+**第三步：在横截超曲面上降秩。** 固定 $c$，令 $H_{c} := \{y^{1} = c\}$（$n-1$ 维），$\mathcal{D}^{\prime} := \mathcal{D}\cap TH_{c}$。由第二步，$\mathcal{D}^{\prime}$ 在 $H_{c}$ 上由 $\tilde Y_{2},\ldots,\tilde Y_{k}$ 张成，秩 $k-1$；对 $i, j \ge 2$，$[\tilde Y_{i},\tilde Y_{j}] \in \Gamma(\mathcal{D})$ 且 $\mathrm{d}y^{1}([\tilde Y_{i},\tilde Y_{j}]) = 0$（同上计算），故 $\mathcal{D}^{\prime}$ 对合。由归纳假设，$H_{0}$ 上有坐标 $(z^{2},\ldots,z^{n})$ 使 $\mathcal{D}^{\prime}$ 由 $\partial_{z^{2}},\ldots,\partial_{z^{k}}$ 张成。
+
+**第四步：沿 $\partial_{1}$ 平移坐标。** 把 $z^{2},\ldots,z^{n}$ 沿 $\partial_{1}$ 的流不变地延拓（即令 $z^{a}(\varphi_{t}(q)) := z^{a}(q)$ 对 $q \in H_{0}$），并令 $z^{1} := y^{1}$。这是一组坐标（$\partial_{1}$ 横截 $H_{0}$），且 $\partial_{1} = \partial_{z^{1}}$、$\partial_{1}z^{a} = 0$（$a \ge 2$）。
+
+剩下要证 $\tilde Y_{i}$ 与切片 $\{z^{k+1} = c^{k+1},\ldots,z^{n} = c^{n}\}$ 相切，即 $f^{a}_{i} := \tilde Y_{i}z^{a} \equiv 0$（$a \ge k+1$）。在 $H_{0}$ 上 $f^{a}_{i} = 0$（归纳假设）。沿 $\partial_{1}$ 的流线，记 $[\partial_{1},\tilde Y_{i}] = \sum_{j \ge 2} b^{j}_{\ i}\,\tilde Y_{j}$（第二步给的），则
+
+$$\partial_{1} f^{a}_{i} = \bigl[\partial_{1},\tilde Y_{i}\bigr]\,(z^{a}) + \tilde Y_{i}\bigl(\partial_{1}z^{a}\bigr) = \sum_{j \ge 2} b^{j}_{\ i}\,f^{a}_{j} + 0 .$$
+
+固定 $a \ge k+1$，这就是未知向量 $(f^{a}_{2},\ldots,f^{a}_{k})$ 沿流线的一阶**线性**方程组，初值在 $H_{0}$ 上为零；由线性方程解的唯一性，$f^{a}_{i}$ 在每条流线上恒为零。故 $\tilde Y_{i}$ 落在 $\operatorname{span}\{\partial_{z^{1}},\ldots,\partial_{z^{k}}\}$ 里，而 $\partial_{1} = \partial_{z^{1}}$ 也在其中，于是 $\mathcal{D} = \operatorname{span}\{\partial_{1},\tilde Y_{2},\ldots,\tilde Y_{k}\}$ 含于 $\operatorname{span}\{\partial_{z^{1}},\ldots,\partial_{z^{k}}\}$，维数相同故相等 —— $(z^{1},\ldots,z^{n})$ 就是所求的平坦坐标。∎
+
+⭐ 这段证明只用两件东西：**流盒**（把 $X_{1}$ 拉直，来自 `thm.flow-local`）与**括号封闭**（保证 $\mathcal{D}^{\prime}$ 仍对合、且 $[\partial_{1},\tilde Y_{i}]$ 没有 $\partial_{1}$ 分量）。对合在这里被用了两次，正好是「必要条件」升级成「充分条件」的全部代价。
+
+#### 积分流形 + Lie 括号 + 图卡 ⟹ Frobenius 定理　`imp.mf2-frobenius-integral`
+*平坦坐标 $\implies$ 积分流形 $\implies$ 对合，且叶片粘成叶状结构*
+
+证 (2)$\implies$(3)、 (3)$\implies$(1)、 (2)$\implies$(4)。
+
+**(2)$\implies$(3)。** 在平坦坐标里 $\mathcal{D}$ 由 $\partial_{1},\ldots,\partial_{k}$ 生成。取 $p = (0,\ldots,0)$，令
+
+$$N := \{x^{k+1} = 0,\ \ldots,\ x^{n} = 0\}\cap U,$$
+
+它是 $k$ 维嵌入子流形，且 $T_{q}N = \operatorname{span}\{\partial_{1},\ldots,\partial_{k}\} = \mathcal{D}_{q}$ 对 $q \in N$ 成立。包含映射 $i$ 是单浸入，$\mathrm{d}i(TN) = \mathcal{D}$ —— 故 $N$ 是过 $p$ 的积分流形。
+
+**(3)$\implies$(1)。** 设 $X, Y \in \Gamma(\mathcal{D}|_{U})$，$q \in U$ 落在积分流形 $i : N \to M$ 里。因 $\mathrm{d}i : TN \to \mathcal{D}$ 是逐纤维同构，$X, Y$ 在 $i^{-1}(U)$ 上分别是 $\mathrm{d}i(X_{N})$、$\mathrm{d}i(Y_{N})$ 的形式（$X_{N}, Y_{N}$ 是 $N$ 上的向量场）。在卡里逐项验算即得括号的自然性
+
+$$\mathrm{d}i\bigl([X_{N},Y_{N}]_{p}\bigr) = \bigl[\mathrm{d}i(X_{N}),\ \mathrm{d}i(Y_{N})\bigr]_{i(p)} = [X,Y]_{i(p)},$$
+
+故 $[X,Y]$ 落在 $\mathrm{d}i(TN) = \mathcal{D}$ 里 —— 对合成立。
+
+**(2)$\implies$(4)。** 把平坦坐标里所有形如 $\{x^{k+1} = c^{k+1},\ldots,x^{n} = c^{n}\}$ 的切片按「过同一点则重合」粘起来：由 `def.integral-manifold` 的 notes 里的局部唯一性，粘出来的是一族互不相交的极大连通积分流形，覆盖 $M$（每点在自己的卡里落在一片切片上）。（这一步的严格写法要对「所有的叶」用一个极大的不相交族取并，属于集合论层面的手续，本图只给口径。）
+
+**为什么 (1) 是本定理的核心**：(2)、(3)、(4) 都是「存在某个几何对象」，而 (1) 只是「有限个括号的封闭性」。定理真正说的是：**一条纯代数的条件等价于一条纯几何的结论** —— 前者有限步可验，后者要解偏微分方程组。∎
+
+#### 左不变形式 + 外微分 + 左不变向量场 ⟹ Maurer–Cartan 方程　`imp.mf2-maurer-cartan`
+*左不变性 $+$ 括号在左不变场上封闭 $\implies$ Maurer–Cartan 方程*
+
+**预备公式**：对任意 $1$-形式 $\theta$ 与向量场 $X, Y$，
+
+$$\mathrm{d}\theta(X,Y) = X\bigl(\theta(Y)\bigr) - Y\bigl(\theta(X)\bigr) - \theta\bigl([X,Y]\bigr).$$
+
+这是 $\mathrm{d}$ 的坐标无关刻画：在卡里把 $\theta = \sum a_{i}\mathrm{d}x^{i}$ 与 $X, Y$ 的分量代入 $\mathrm{d}\theta = \sum\partial_{j}a_{i}\,\mathrm{d}x^{j}\wedge\mathrm{d}x^{i}$，与上式逐项吻合（`def.exterior-derivative` 的定义式加 Leibniz 律）。
+
+**两边都是左不变的 $2$-形式。** 左边：$\mathrm{d}(L_{h}^{\ast}\omega^{i}) = L_{h}^{\ast}\mathrm{d}\omega^{i}$（拉回与外微分交换，`prop.pullback-forms`），而 $L_{h}^{\ast}\omega^{i} = \omega^{i}$，故 $L_{h}^{\ast}\mathrm{d}\omega^{i} = \mathrm{d}\omega^{i}$。右边：$\omega^{j}\wedge\omega^{k}$ 由左不变形式组成，也左不变。所以只需在一点（或在一组左不变基上）比较。
+
+**取左不变向量场比较。** 令 $X = \tilde e_{j}$、$Y = \tilde e_{k}$。$\omega^{i}(\tilde e_{l}) = \delta^{i}_{\ l}$ 是常数，故预备公式前两项为零，
+
+$$\mathrm{d}\omega^{i}(\tilde e_{j},\tilde e_{k}) = -\omega^{i}\bigl([\tilde e_{j},\tilde e_{k}]\bigr) = -\omega^{i}\Bigl(\sum_{l}c^{l}_{\ jk}\tilde e_{l}\Bigr) = -c^{i}_{\ jk},$$
+
+其中第二个等号用了 $[\tilde e_{j},\tilde e_{k}]$ 左不变（`prop.left-invariant-fields` 第 2 条），因而可以按 $\mathfrak{g}$ 的基展开。
+
+**右边同一点的值。** 由 $(\omega^{a}\wedge\omega^{b})(\tilde e_{j},\tilde e_{k}) = \delta^{a}_{\ j}\delta^{b}_{\ k} - \delta^{a}_{\ k}\delta^{b}_{\ j}$，
+
+$$-\frac{1}{2}\sum_{a,b}c^{i}_{\ ab}\bigl(\omega^{a}\wedge\omega^{b}\bigr)(\tilde e_{j},\tilde e_{k}) = -\frac{1}{2}\bigl(c^{i}_{\ jk} - c^{i}_{\ kj}\bigr) = -c^{i}_{\ jk},$$
+
+最后一步用了反称性 $c^{i}_{\ kj} = -c^{i}_{\ jk}$。两个左不变 $2$-形式在每点的基 $(\tilde e_{j}\wedge\tilde e_{k})_{j<k}$ 上取值处处相同，故相等。
+
+**$\mathfrak{g}$-值版本**：把上式按 $\omega = \sum\omega^{i}e_{i}$ 组装，右端是 $-\frac{1}{2}\sum_{j,k}\omega^{j}\wedge\omega^{k}\,(\sum_{i}c^{i}_{\ jk}e_{i}) = -\frac{1}{2}\sum_{j,k}\omega^{j}\wedge\omega^{k}\,[e_{j},e_{k}] = -\frac{1}{2}[\omega\wedge\omega]$，正是 $\mathrm{d}\omega = -\frac{1}{2}[\omega\wedge\omega]$。∎
+
+⭐ 证明里没有一处用到「群的具体样子」：只用左不变性（把 $\omega^{i}(\tilde e_{l})$ 变成常数）与括号在左不变场上封闭。所以这条公式是纯结构常数的事 —— 也正是它能把「群」与「Lie 代数」直接对上的原因。
+
+#### 向量丛 + Čech 上同调 ⟹ 丛的分类　`imp.mf2-bundle-classification`
+*局部平凡化给出上闭链 $\implies$ 丛的同构类 $=$ $1$-上闭链模等价*
+
+**丛 $\mapsto$ 上闭链。** 取局部平凡化 $\Phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha}\times\mathbb{R}^{k}$，令 $g_{\alpha\beta} := \Phi_{\alpha}\circ\Phi_{\beta}^{-1}$。它光滑、取值 $\operatorname{GL}(k,\mathbb{R})$，且
+
+$$g_{\alpha\beta}\,g_{\beta\gamma} = \bigl(\Phi_{\alpha}\Phi_{\beta}^{-1}\bigr)\bigl(\Phi_{\beta}\Phi_{\gamma}^{-1}\bigr) = \Phi_{\alpha}\Phi_{\gamma}^{-1} = g_{\alpha\gamma}$$
+
+在 $U_{\alpha\beta\gamma}$ 上成立（`def.vector-bundle` 的上闭链条件）。
+
+**上闭链 $\mapsto$ 丛。** 给定 $g_{\alpha\beta}$，在 $\bigsqcup_{\alpha}U_{\alpha}\times\mathbb{R}^{k}$ 上令
+
+$$(p, v) \sim \bigl(p,\ g_{\beta\alpha}(p)\,v\bigr)\qquad (p \in U_{\alpha\beta}),$$
+
+上闭链条件保证它是等价关系（自反：$g_{\alpha\alpha} = 1$；传递：$g_{\alpha\beta}g_{\beta\gamma} = g_{\alpha\gamma}$），商空间 $E$ 带自然投影与逐纤维线性结构，各块嵌入即局部平凡化 —— 于是 $E \to M$ 是秩 $k$ 向量丛。
+
+**同构 $\iff$ 上边界。** 若 $\Psi : E \to E^{\prime}$ 是丛同构，在 $U_{\alpha}$ 上读成 $\mathbb{R}^{k}$ 的自同构 $h_{\alpha}(p) \in \operatorname{GL}(k,\mathbb{R})$，则
+
+$$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}$$
+
+（左侧与右侧在同一点作用 $v$ 相同）。反之给定这样的 $h_{\alpha}$，逐块 $h_{\alpha}$ 在重叠处一致（正是那条等式），故拼成整体同构。
+
+**覆盖与加细。** 换覆盖时把 $g_{\alpha\beta}$ 限制到细块的像上，得 $\check{H}^{1}(\mathfrak{U}) \to \check{H}^{1}(\mathfrak{V})$；两个加细有公共加细，于是三角形交换、余极限有意义（这一步是形式的，只用到覆盖族的有向性）。仿紧性保证可以只取局部有限的覆盖（`def.paracompact`），本条的构造在任何情形都不需要单位分解 —— 单位分解出场的地方是「把局部截面拼成整体截面」那类问题，不是分类。∎
+
+⚠️ 余极限的逐字证明（以及「$\check{H}^{1}$ 与层上同调 $H^{1}$ 在非阿贝尔系数下的关系」）本图不给，只给到「构造 + 相容」这一层；与深定理的折衷口径一致。
+
+#### de Rham 上同调 + 奇异链 + 链上的积分 ⟹ de Rham 定理　`imp.mf2-de-rham`
+*闭链上的积分 $\implies$ de Rham 上同调与奇异上同调同构*
+
+**第一步：配对良定义（唯一真正要做计算的地方）。** 对 $[\omega] \in H^{k}_{\mathrm{dR}}(M)$、$[c] \in H^{\mathrm{sing}}_{k}(M;\mathbb{R})$ 令
+
+$$\langle[\omega],[c]\rangle := \int_{c}\omega .$$
+
+换 $c$ 为 $c + \partial b$：$\int_{\partial b}\omega = \int_{b}\mathrm{d}\omega = 0$（`thm.stokes-chain`，用 $\omega$ 闭）。换 $\omega$ 为 $\omega + \mathrm{d}\eta$：$\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（$c$ 闭）。所以这是良定义的配对 $H^{k}_{\mathrm{dR}} \otimes H^{\mathrm{sing}}_{k} \to \mathbb{R}$，等价地一个线性映射 $\Phi^{k} : H^{k}_{\mathrm{dR}} \to (H^{\mathrm{sing}}_{k})^{\ast} = H^{k}_{\mathrm{sing}}$。
+
+**第二步：把左边认成层上同调。** $\Omega^{\bullet}$ 是常层 $\underline{\mathbb{R}}$ 的消解：逐点的正合性就是 Poincaré 引理（`lem.poincare-lemma`），逐点的核是 $\mathbb{R}$；而 $\Omega^{0}$ 中 $\mathrm{d}$-闭的元素正是局部常函数（`thm.de-rham-h0` 的论证），即 $\underline{\mathbb{R}}$ 的截面。于是复形的上同调 $H^{\bullet}_{\mathrm{dR}}(M)$ 就是层上同调 $H^{\bullet}(M;\underline{\mathbb{R}})$。
+
+**第三步：Čech–de Rham 双复形。** 取「好的覆盖」$\mathfrak{U}$（每点邻域与每个有限交都可缩），把 $\check{C}^{p}(\mathfrak{U},\Omega^{q})$ 排成双复形：横向是 Čech 微分 $\delta$、纵向是 $\mathrm{d}$。两条谱序列算出同一个全上同调：
+
+- 沿 $q$ 先算：每行是 $\Omega^{\bullet}$ 在可缩开集上的截面，由 Poincaré 引理正合，得 $\check{H}^{\bullet}(\mathfrak{U};\underline{\mathbb{R}})$；
+
+- 沿 $p$ 先算：Čech 方向正合（层条件），得 $H^{\bullet}_{\mathrm{dR}}(M)$。
+
+两者收敛到同一极限，故 $H^{\bullet}_{\mathrm{dR}}(M) \cong \check{H}^{\bullet}(M;\underline{\mathbb{R}})$。再用 `thm.paracompact-cech-equals-sheaf`（仿紧流形上 Čech 等于层上同调）得 $H^{\bullet}_{\mathrm{dR}}(M) \cong H^{\bullet}(M;\underline{\mathbb{R}})$。
+
+**第四步：层上同调 = 奇异上同调。** 常层 $\underline{\mathbb{R}}$ 的层上同调由「同伦不变 $+$ 单点的值 $+$ 长正合列」这组性质唯一确定；奇异上同调满足同一组性质（奇异链给出 $\underline{\mathbb{R}}$ 的一个消解：$\mathrm{Hom}(C^{\mathrm{sing}}_{\bullet}(-),\mathbb{R})$ 在可缩空间上正合）。于是两者自然同构 —— 这是代数拓扑的标准定理，本图不证。
+
+**收尾**：把第三步、第四步拼起来，得到同构 $H^{k}_{\mathrm{dR}}(M) \cong H^{k}_{\mathrm{sing}}(M;\mathbb{R})$；它与第一步的配对 $\langle\cdot,\cdot\rangle$ 是同一个映射（两种算法算同一个积分），故 $\Phi^{k}$ 就是它。
+
+⚠️ 本条的第三步两条谱序列、第四步的公理刻画都只给结论 —— 这是**证明路线**，不是逐字证明。第一、二步是逐字写的；三步以后的细节见 Bott–Tu 的 Čech–de Rham 双复形一章（refs 里给了 Tu 自己的 de Rham 章）。
+
+#### 向量场 + 图卡 ⟹ 局部流　`imp.mf2-flow-local`
+*卡里化归为自治 ODE $\implies$ 局部流存在唯一且光滑*
+
+**化归。** 取 $p$ 的卡 $(V,x)$，在 $V$ 上 $X = \sum_{i}X^{i}\partial_{i}$，$X^{i} \in C^{\infty}(V)$。于是「$\gamma$ 是积分曲线」等价于「$y := x\circ\gamma$ 满足 $\dot y^{i} = X^{i}(y)$」。
+
+**存在唯一（Picard–Lindelöf）。** $f(y) := (X^{1}(y),\ldots,X^{n}(y))$ 在 $y_{0} := x(p)$ 附近光滑，因而局部 Lipschitz。取 $r > 0$ 使闭球 $\overline{B}(y_{0},r) \subseteq x(V)$，令 $M_{0} := \max_{\overline{B}}\lVert f\rVert$、$\varepsilon := r/(2M_{0})$。则对每个 $y_{1} \in B(y_{0}, r/2)$，方程有唯一解 $y : (-\varepsilon,\varepsilon) \to B(y_{0},r)$ 满足 $y(0) = y_{1}$（压缩映射迭代：$\dot y = f(y)$ 的积分形式在 $C^{0}([-\varepsilon,\varepsilon])$ 上是压缩）。
+
+**解对初值光滑。** 同一套 Picard 迭代给出 $\Phi(t,y_{1}) := y(t)$ 对 $(t,y_{1})$ 的各阶偏导数的收敛性（$f$ 光滑），于是 $\Phi$ 光滑；令 $\varphi_{t} := x^{-1}\circ\Phi_{t}\circ x$，得 $(t,q) \mapsto \varphi_{t}(q)$ 光滑（在 $x^{-1}B(y_{0},r/2)$ 上）。
+
+**单参数群。** 固定 $s$，两条曲线
+
+$$\tau \mapsto \Phi(s+\tau, y_{1}),\qquad \tau \mapsto \Phi\bigl(\tau, \Phi(s,y_{1})\bigr)$$
+
+在 $\tau = 0$ 处同值（都是 $\Phi(s,y_{1})$）、同导数（都是 $f$），由唯一性在公共定义区间上相等。共轭回 $M$ 得 $\varphi_{s+t} = \varphi_{s}\circ\varphi_{t}$（限制在 $|s|,|t|,|s+t|<\varepsilon$ 且中间点落在 $U$ 内的范围）。
+
+**$\varphi_{t}$ 是局部微分同胚。** 取 $s = -t$ 得 $\varphi_{-t}\circ\varphi_{t} = \varphi_{0} = \operatorname{id}$，故 $\varphi_{t}$ 有光滑逆 $\varphi_{-t}$。
+
+**极大流的拼接。** 每点附近都有局部流，两个局部流在公共点附近由唯一性重合；把这一点当作等价关系把局部解接起来，得到定义域极大的那一个 $\mathcal{W} \subseteq \mathbb{R}\times M$。∎
+
+⭐ 全程只有一处用到流形结构：**在卡里做**。「流形上的 ODE」与「$\mathbb{R}^{n}$ 上的 ODE」在局部没有区别，区别只出现在**整体**行为（`thm.flow-complete`）。
+
+#### 流 + 局部流 + 紧 ⟹ 流完备性　`imp.mf2-flow-complete`
+*局部存在 $+$ 紧性 $\implies$ 有限端点必逃逸，紧流形上处处完备*
+
+**第 1 条（区间是开的）。** 设 $\gamma : J \to M$ 极大，$t_{0} \in J$。由 `thm.flow-local`，$\gamma(t_{0})$ 附近有局部流 $\varphi$（时间 $\varepsilon > 0$）；把它与 $\gamma$ 在 $\gamma(t_{0})$ 处接起来，得解在 $(t_{0}-\varepsilon,t_{0}+\varepsilon)$ 上存在。故「可延拓」的点集在 $J$ 中开，而 $J$ 是极大区间 —— 于是 $J$ 是开区间。
+
+**第 2 条（逃逸引理）。** 反设存在紧集 $K$ 与 $t_{1} < b_{q}$ 使 $\gamma([t_{1}, b_{q})) \subseteq K$。对每点 $y \in K$ 取一张卡 $V_{y}$ 与 `thm.flow-local` 给的时间 $\varepsilon_{y} > 0$；$K$ 紧，取有限个 $y_{1},\ldots,y_{m}$ 使 $K \subseteq \bigcup_{i}V_{y_{i}}$，令 $\varepsilon := \min_{i}\varepsilon_{y_{i}} > 0$。取 $t_{1}$ 使 $b_{q} - t_{1} < \varepsilon$，在 $\gamma(t_{1}) \in K$ 处用第 $i$ 个局部流把解延拓到 $b_{q} + (\varepsilon - (b_{q}-t_{1})) > b_{q}$ —— 与 $b_{q}$ 是极大右端点矛盾。$a_{q}$ 一端把 $t$ 换成 $-t$ 同证。
+
+**第 3 条（完备判据）。** 若所有端点都是无穷，则每点的积分曲线都在整个 $\mathbb{R}$ 上有定义，即 $\mathcal{W} = \mathbb{R}\times M$，$X$ 完备。反之若某个 $b_{q} < +\infty$，则 $(b_{q},q) \notin \mathcal{W}$，故 $\mathcal{W} \ne \mathbb{R}\times M$，不完备。
+
+**紧 $M$ 的推论。** 设 $M$ 紧而 $b_{q} < +\infty$。在第 2 条里取 $K = M$（紧）：结论要求存在 $t_{2}$ 使 $\varphi_{t_{2}}(q) \notin M$，不可能 —— 矛盾。故 $b_{q} = +\infty$；同理 $a_{q} = -\infty$。于是每个 $X \in \mathfrak{X}(M)$ 完备。∎
+
+⚠️ 第 2 条与第 3 条合起来才是「完备性可判定」的原因：**端点有限 $\implies$ 曲线跑出每个紧集**，而「跑出每个紧集」正是曲线无法再延拓的几何形态。紧流形上「跑不出去」，所以端点不可能有限 —— 这就是整条定理的全部内容。
+
+#### Lie 导数 + 内乘 + 外微分 ⟹ Cartan 公式　`imp.mf2-cartan-formula`
+*两者都是与 $\mathrm{d}$ 交换的次数 $0$ 导子 $\implies$ Cartan 公式*
+
+记 $D := \mathrm{d}\,\iota_{X} + \iota_{X}\,\mathrm{d}$，要证 $D = \mathcal{L}_{X}$ 作用在 $\Omega^{\bullet}(M)$ 上。分四步。
+
+**(1) 两者都保次数。** $\mathrm{d}$ 次数 $+1$、$\iota_{X}$ 次数 $-1$，故 $D$ 次数 $0$；$\mathcal{L}_{X}$ 由拉回定义，而拉回保次数。
+
+**(2) 两者都是导子。** $\mathcal{L}_{X}$：$\varphi_{t}^{\ast}(\omega\wedge\eta) = \varphi_{t}^{\ast}\omega\wedge\varphi_{t}^{\ast}\eta$，对 $t$ 求导即得 Leibniz 律。$D$：$\mathrm{d}$ 是 $+1$ 次**反导子**，$\iota_{X}$ 是 $-1$ 次**反导子**（`def.interior-product` 的第 1 条），两个反导子的复合是次数 $0$ 的导子，两个导子之和仍是导子。
+
+**(3) 两者都与 $\mathrm{d}$ 交换。** $D\mathrm{d} = \mathrm{d}\iota_{X}\mathrm{d} + \iota_{X}\mathrm{d}^{2} = \mathrm{d}\iota_{X}\mathrm{d}$，而 $\mathrm{d}D = \mathrm{d}^{2}\iota_{X} + \mathrm{d}\iota_{X}\mathrm{d} = \mathrm{d}\iota_{X}\mathrm{d}$（用了 $\mathrm{d}^{2} = 0$），故 $D\mathrm{d} = \mathrm{d}D$。$\mathcal{L}_{X}\mathrm{d} = \mathrm{d}\mathcal{L}_{X}$：两边都是对 $t$ 求导，而 $\varphi_{t}^{\ast}\mathrm{d} = \mathrm{d}\varphi_{t}^{\ast}$（拉回与外微分交换，`prop.pullback-forms`）。
+
+**(4) 在函数上相等。** 对 $f \in C^{\infty}(M)$：$Df = \mathrm{d}\bigl(\iota_{X}f\bigr) + \iota_{X}\mathrm{d}f = 0 + \mathrm{d}f(X) = Xf = \mathcal{L}_{X}f$。
+
+**唯一性收尾。** 一个保次数 $0$、与 $\mathrm{d}$ 交换的导子，由它在 $C^{\infty}(M)$ 上的值决定：局部任意 $k$-形式是 $\sum f_{0}\,\mathrm{d}g_{1}\wedge\cdots\wedge\mathrm{d}g_{k}$ 的有限和（每个系数写成这样的形状靠 $k$-形式的局部展开），而导子性给出
+
+$$D(f_{0}\,\mathrm{d}g_{1}\wedge\cdots\wedge\mathrm{d}g_{k}) = D(f_{0})\,\mathrm{d}g_{1}\wedge\cdots + f_{0}\,D(\mathrm{d}g_{1}\wedge\cdots\wedge\mathrm{d}g_{k}),$$
+
+且 $D(\mathrm{d}g_{i}) = \mathrm{d}(Dg_{i})$（第 3 步），于是每一步都由 $D|_{C^{\infty}(M)}$ 决定。由 (4)，$D$ 与 $\mathcal{L}_{X}$ 在所有函数上相同，故处处相同。∎
+
+⭐ 这条定理的形状值得记住：**两个「同类型的算子」在生成元上一致就整体一致**。第 (2)(3) 步是「同类型」的验证，第 (4) 步是「生成元上一致」。$\Omega^{\bullet}(M)$ 由函数与它们的外微分生成，是整个证明唯一的「几何输入」。
 
 #### 覆盖引理 + 极大函数 ⟹ 极大定理　`imp.maximal-theorem`
 *覆盖引理 $\implies$ 极大定理*
@@ -38591,17 +40453,20 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **特征值与 Jordan 型 ↔ 内蕴几何**　2 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
 - **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
-- **复变函数 ↔ 数系的构造**　4 条节点级连线
+- **复变函数 ↔ 数系的构造**　5 条节点级连线
 - **复变函数 ↔ Riemann 积分**　2 条节点级连线
 - **复变函数 ↔ 函数列、幂级数与初等函数**　2 条节点级连线
 - **微分流形 ↔ 拓扑空间**　10 条节点级连线
-- **内蕴几何 ↔ 微分流形**　17 条节点级连线
-- **多元微分 ↔ 微分流形**　3 条节点级连线
+- **内蕴几何 ↔ 微分流形**　20 条节点级连线
+- **多元微分 ↔ 微分流形**　4 条节点级连线
 - **多重线性与张量 ↔ 微分流形**　3 条节点级连线
-- **微分流形 ↔ 仿紧与单位分解**　2 条节点级连线
+- **特征值与 Jordan 型 ↔ 微分流形**　2 条节点级连线
+- **微分流形 ↔ 仿紧与单位分解**　3 条节点级连线
 - **矩阵与行列式 ↔ 微分流形**　3 条节点级连线
-- **活动标架与结构方程 ↔ 微分流形**　10 条节点级连线
-- **微分流形 ↔ 曲面论**　2 条节点级连线
+- **活动标架与结构方程 ↔ 微分流形**　17 条节点级连线
+- **微分流形 ↔ 曲面论**　3 条节点级连线
+- **微分流形 ↔ 层上同调**　2 条节点级连线
+- **微分流形 ↔ 度量空间**　2 条节点级连线
 - **微分定理 ↔ 积分**　3 条节点级连线
 - **微分定理 ↔ 符号测度与分解**　4 条节点级连线
 - **有界变差与绝对连续 ↔ 符号测度与分解**　5 条节点级连线

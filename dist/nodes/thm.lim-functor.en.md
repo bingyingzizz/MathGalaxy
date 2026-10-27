@@ -1,4 +1,4 @@
-# Lim Functor　`thm.lim-functor`
+# lim functor　`thm.lim-functor`
 English entry · root `../`
 [in graph](../#n=thm.lim-functor)　·　[Chinese page (authoritative)](./thm.lim-functor.md)
 

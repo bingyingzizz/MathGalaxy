@@ -1,4 +1,4 @@
-# Choice Function　`def.choicefn`
+# choice function　`def.choicefn`
 English entry · root `../`
 [in graph](../#n=def.choicefn)　·　[Chinese page (authoritative)](./def.choicefn.md)
 

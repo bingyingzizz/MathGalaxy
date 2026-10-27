@@ -1,4 +1,4 @@
-# Comparability of Cardinals　`thm.cardinal-comparable`
+# comparability of cardinals　`thm.cardinal-comparable`
 English entry · root `../`
 [in graph](../#n=thm.cardinal-comparable)　·　[Chinese page (authoritative)](./thm.cardinal-comparable.md)
 

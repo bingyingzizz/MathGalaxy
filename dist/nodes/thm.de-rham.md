@@ -1,0 +1,19 @@
+# de Rham 定理　`thm.de-rham`
+de Rham 定理
+layer 29 · 定理 · 微分流形 · 微分几何
+[在星图里打开](../#n=thm.de-rham)　·　[节点索引](../index.md)
+
+**白话**：用微积分造出来的上同调（闭形式模恰当形式），与用「三角形」造出来的拓扑上同调（奇异链取对偶），是同一个东西。这条定理把分析、几何、拓扑焊在一起。
+
+设 $M$ 是光滑流形。对每个 $k \ge 0$ 存在同构
+> 陈述续见 [nodes/thm.de-rham.2.md](./thm.de-rham.2.md)
+
+
+## 为什么成立（入边，证明在 proofs/）
+- …另有入边，续页见 [nodes/thm.de-rham.3.md](./thm.de-rham.3.md)
+
+refs: Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 定理；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理与 Mayer–Vietoris 序列
+
+> 说明见 `notes/thm.de-rham.md`
+
+引用：`thm.de-rham`（内容 v0.9.1）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

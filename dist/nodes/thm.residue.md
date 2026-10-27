@@ -9,6 +9,11 @@ layer 20 · 定理 · 复变函数 · 数学分析
 > 陈述续见 [nodes/thm.residue.2.md](./thm.residue.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.argument-principle`](../nodes/thm.argument-principle.md) 辐角原理
+
+- …另有出边，续页见 [nodes/thm.residue.4.md](./thm.residue.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.residue.3.md](./thm.residue.3.md)
 

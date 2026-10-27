@@ -1,4 +1,4 @@
-# Monotone Class Theorem　`thm.monotone-class`
+# monotone class theorem　`thm.monotone-class`
 English entry · root `../`
 [in graph](../#n=thm.monotone-class)　·　[Chinese page (authoritative)](./thm.monotone-class.md)
 

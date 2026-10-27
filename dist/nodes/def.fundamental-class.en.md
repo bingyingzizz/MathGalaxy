@@ -1,4 +1,4 @@
-# Fundamental Class　`def.fundamental-class`
+# fundamental class　`def.fundamental-class`
 English entry · root `../`
 [in graph](../#n=def.fundamental-class)　·　[Chinese page (authoritative)](./def.fundamental-class.md)
 

@@ -1,4 +1,4 @@
-# Differentiation Under the Integral Sign　`thm.differentiate-under-integral`
+# differentiation under the integral sign　`thm.differentiate-under-integral`
 English entry · root `../`
 [in graph](../#n=thm.differentiate-under-integral)　·　[Chinese page (authoritative)](./thm.differentiate-under-integral.md)
 

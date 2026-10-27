@@ -1,4 +1,4 @@
-# Sections of Measurable Sets and Functions　`prop.section-measurable`
+# sections of measurable sets and functions　`prop.section-measurable`
 English entry · root `../`
 [in graph](../#n=prop.section-measurable)　·　[Chinese page (authoritative)](./prop.section-measurable.md)
 

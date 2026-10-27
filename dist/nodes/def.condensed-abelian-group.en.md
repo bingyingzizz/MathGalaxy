@@ -1,4 +1,4 @@
-# Condensed Abelian Group　`def.condensed-abelian-group`
+# condensed abelian group　`def.condensed-abelian-group`
 English entry · root `../`
 [in graph](../#n=def.condensed-abelian-group)　·　[Chinese page (authoritative)](./def.condensed-abelian-group.md)
 

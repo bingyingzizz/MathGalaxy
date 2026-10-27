@@ -1,4 +1,4 @@
-# Yoneda Embedding　`prop.yoneda-embedding`
+# Yoneda embedding　`prop.yoneda-embedding`
 English entry · root `../`
 [in graph](../#n=prop.yoneda-embedding)　·　[Chinese page (authoritative)](./prop.yoneda-embedding.md)
 

@@ -1,4 +1,4 @@
-# Connected Category　`def.connected-category`
+# connected category　`def.connected-category`
 English entry · root `../`
 [in graph](../#n=def.connected-category)　·　[Chinese page (authoritative)](./def.connected-category.md)
 

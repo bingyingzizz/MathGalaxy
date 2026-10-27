@@ -1,4 +1,4 @@
-# Directed Set　`prop.filtered-directed`
+# directed set　`prop.filtered-directed`
 English entry · root `../`
 [in graph](../#n=prop.filtered-directed)　·　[Chinese page (authoritative)](./prop.filtered-directed.md)
 

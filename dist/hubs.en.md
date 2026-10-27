@@ -8,9 +8,9 @@ count.)
 Data root `./`: every entry can be followed to `nodes/<id>.md`.
 
 - **6** `lem.zorn` Zorn's lemma · layer 9 · 选择原理
-- **5** `thm.first-iso` First Isomorphism Theorem · layer 9 · 代数结构
-- **5** `def.cauchy-null` Cauchy Sequences and Null Sequences · layer 11 · 数系的构造
-- **5** `def.representable` Representable Functor · layer 12 · 预层与米田
-- **5** `def.metric-space` Metric Space · layer 13 · 度量空间
+- **6** `def.submanifold-volume` 诱导体积 · layer 28 · 微分流形
+- **6** `thm.de-rham` de Rham 定理 · layer 29 · 微分流形
+- **5** `thm.first-iso` first isomorphism theorem · layer 9 · 代数结构
+- **5** `def.cauchy-null` Cauchy sequences and null sequences · layer 11 · 数系的构造
 
 > continued in `hubs.en.2.md`

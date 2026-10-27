@@ -1,4 +1,4 @@
-# Simplex Category　`def.simplex-category`
+# simplex category　`def.simplex-category`
 English entry · root `../`
 [in graph](../#n=def.simplex-category)　·　[Chinese page (authoritative)](./def.simplex-category.md)
 

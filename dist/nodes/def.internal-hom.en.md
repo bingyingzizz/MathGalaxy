@@ -1,4 +1,4 @@
-# Internal Hom　`def.internal-hom`
+# internal hom　`def.internal-hom`
 English entry · root `../`
 [in graph](../#n=def.internal-hom)　·　[Chinese page (authoritative)](./def.internal-hom.md)
 

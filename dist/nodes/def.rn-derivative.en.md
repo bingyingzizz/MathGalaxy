@@ -1,4 +1,4 @@
-# Radon-Nikodym Derivative　`def.rn-derivative`
+# Radon-Nikodym derivative　`def.rn-derivative`
 English entry · root `../`
 [in graph](../#n=def.rn-derivative)　·　[Chinese page (authoritative)](./def.rn-derivative.md)
 

@@ -1,4 +1,4 @@
-# Subgroup　`def.subgroup`
+# subgroup　`def.subgroup`
 English entry · root `../`
 [in graph](../#n=def.subgroup)　·　[Chinese page (authoritative)](./def.subgroup.md)
 

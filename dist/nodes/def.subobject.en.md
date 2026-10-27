@@ -1,4 +1,4 @@
-# Subobject　`def.subobject`
+# subobject　`def.subobject`
 English entry · root `../`
 [in graph](../#n=def.subobject)　·　[Chinese page (authoritative)](./def.subobject.md)
 

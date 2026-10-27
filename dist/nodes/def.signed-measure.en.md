@@ -1,4 +1,4 @@
-# Signed Measure　`def.signed-measure`
+# signed measure　`def.signed-measure`
 English entry · root `../`
 [in graph](../#n=def.signed-measure)　·　[Chinese page (authoritative)](./def.signed-measure.md)
 

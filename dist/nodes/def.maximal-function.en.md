@@ -1,4 +1,4 @@
-# Maximal Function　`def.maximal-function`
+# maximal function　`def.maximal-function`
 English entry · root `../`
 [in graph](../#n=def.maximal-function)　·　[Chinese page (authoritative)](./def.maximal-function.md)
 

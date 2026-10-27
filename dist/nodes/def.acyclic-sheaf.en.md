@@ -1,4 +1,4 @@
-# Acyclic Sheaf　`def.acyclic-sheaf`
+# acyclic sheaf　`def.acyclic-sheaf`
 English entry · root `../`
 [in graph](../#n=def.acyclic-sheaf)　·　[Chinese page (authoritative)](./def.acyclic-sheaf.md)
 

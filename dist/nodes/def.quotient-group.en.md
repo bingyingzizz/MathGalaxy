@@ -1,4 +1,4 @@
-# Quotient Group　`def.quotient-group`
+# quotient group　`def.quotient-group`
 English entry · root `../`
 [in graph](../#n=def.quotient-group)　·　[Chinese page (authoritative)](./def.quotient-group.md)
 

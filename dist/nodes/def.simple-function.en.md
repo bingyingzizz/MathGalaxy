@@ -1,4 +1,4 @@
-# Simple Function　`def.simple-function`
+# simple function　`def.simple-function`
 English entry · root `../`
 [in graph](../#n=def.simple-function)　·　[Chinese page (authoritative)](./def.simple-function.md)
 

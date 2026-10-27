@@ -1,4 +1,4 @@
-# Underlying Topological Space　`def.underlying-topological-space`
+# underlying topological space　`def.underlying-topological-space`
 English entry · root `../`
 [in graph](../#n=def.underlying-topological-space)　·　[Chinese page (authoritative)](./def.underlying-topological-space.md)
 

@@ -1,4 +1,4 @@
-# When a Ring Is a Sigma-ring　`thm.ring-monotone-sigma`
+# when a ring is a sigma-ring　`thm.ring-monotone-sigma`
 English entry · root `../`
 [in graph](../#n=thm.ring-monotone-sigma)　·　[Chinese page (authoritative)](./thm.ring-monotone-sigma.md)
 

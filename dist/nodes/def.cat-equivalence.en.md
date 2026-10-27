@@ -1,4 +1,4 @@
-# Equivalence of Categories　`def.cat-equivalence`
+# equivalence of categories　`def.cat-equivalence`
 English entry · root `../`
 [in graph](../#n=def.cat-equivalence)　·　[Chinese page (authoritative)](./def.cat-equivalence.md)
 

@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`lem.cauchy-green`](../nodes/lem.cauchy-green.md) Cauchy–Green 恒等式
 - ⇒ [`thm.cauchy-goursat`](../nodes/thm.cauchy-goursat.md) Cauchy–Goursat 积分定理
+- ⇒ [`thm.harmonic-conjugate`](../nodes/thm.harmonic-conjugate.md) 调和函数的共轭

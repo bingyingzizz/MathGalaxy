@@ -1,4 +1,4 @@
-# Diagonal Argument　`thm.cantor`
+# diagonal argument　`thm.cantor`
 English entry · root `../`
 [in graph](../#n=thm.cantor)　·　[Chinese page (authoritative)](./thm.cantor.md)
 

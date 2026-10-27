@@ -1,11 +1,10 @@
-# Free Compact Hausdorff Space　`def.free-compact-hausdorff`
+# free compact Hausdorff　`def.free-compact-hausdorff`
 English entry · root `../`
 [in graph](../#n=def.free-compact-hausdorff)　·　[Chinese page (authoritative)](./def.free-compact-hausdorff.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Compact Hausdorff Spaces (`topo.chaus`) · Topology
-names: `Free Compact Hausdorff` (short) · `Free Compact Hausdorff Space` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.free-compact-hausdorff.md` and `proofs/`.

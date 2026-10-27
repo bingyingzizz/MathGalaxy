@@ -2,10 +2,10 @@
 
 > page 1 `hubs.en.md`
 
-- **4** `thm.cardinal-comparable` Comparability of Cardinals · layer 10 · 基数与等势
-- **4** `prop.adjoint-full-faithful` Fully Faithful Iff the Unit Is an Isomorphism · layer 11 · 伴随与反射
-- **4** `ex.kan-extension` Kan Extensions: Colimits and Right Adjoints · layer 12 · 伴随与反射
-- **4** `thm.saft` Special Adjoint Functor Theorem · layer 13 · 伴随与反射
-- **4** `def.outer-measure` Outer Measure · layer 14 · 测度的构造
+- **4** `thm.wellordering` well-ordering theorem · layer 9 · 选择原理
+- **4** `thm.hausdorff` Hausdorff maximal principle · layer 9 · 选择原理
+- **4** `thm.cardinal-comparable` comparability of cardinals · layer 10 · 基数与等势
+- **4** `prop.adjoint-full-faithful` fully faithful iff the unit is an isomorphism · layer 11 · 伴随与反射
+- **4** `ex.kan-extension` Kan extensions: colimits and right adjoints · layer 12 · 伴随与反射
 
-(1170 of 1177 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)
+(1207 of 1214 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)

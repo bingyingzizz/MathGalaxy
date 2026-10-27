@@ -1,4 +1,4 @@
-# Product Measure　`def.product-measure`
+# product measure　`def.product-measure`
 English entry · root `../`
 [in graph](../#n=def.product-measure)　·　[Chinese page (authoritative)](./def.product-measure.md)
 

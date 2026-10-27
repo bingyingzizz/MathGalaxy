@@ -1,4 +1,4 @@
-# Free Presentation　`def.free-presentation`
+# free presentation　`def.free-presentation`
 English entry · root `../`
 [in graph](../#n=def.free-presentation)　·　[Chinese page (authoritative)](./def.free-presentation.md)
 

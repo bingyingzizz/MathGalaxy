@@ -1,4 +1,4 @@
-# Conjugate Exponents　`def.conjugate-exponents`
+# conjugate exponents　`def.conjugate-exponents`
 English entry · root `../`
 [in graph](../#n=def.conjugate-exponents)　·　[Chinese page (authoritative)](./def.conjugate-exponents.md)
 

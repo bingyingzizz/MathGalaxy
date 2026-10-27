@@ -1,4 +1,4 @@
-# Effective Equivalence Relation　`def.effective-equivalence`
+# effective equivalence relation　`def.effective-equivalence`
 English entry · root `../`
 [in graph](../#n=def.effective-equivalence)　·　[Chinese page (authoritative)](./def.effective-equivalence.md)
 

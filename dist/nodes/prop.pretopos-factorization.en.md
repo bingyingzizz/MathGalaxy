@@ -1,4 +1,4 @@
-# Balanced　`prop.pretopos-factorization`
+# balanced　`prop.pretopos-factorization`
 English entry · root `../`
 [in graph](../#n=prop.pretopos-factorization)　·　[Chinese page (authoritative)](./prop.pretopos-factorization.md)
 

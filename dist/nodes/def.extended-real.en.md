@@ -1,11 +1,10 @@
-# Extended Reals　`def.extended-real`
+# extended real　`def.extended-real`
 English entry · root `../`
 [in graph](../#n=def.extended-real)　·　[Chinese page (authoritative)](./def.extended-real.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 13 · definition · cluster Real Numbers and Limits (`analysis.real`) · Mathematical Analysis
-names: `Extended Real` (short) · `Extended Reals` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.extended-real.md` and `proofs/`.

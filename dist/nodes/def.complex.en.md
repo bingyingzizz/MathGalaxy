@@ -1,4 +1,4 @@
-# Complex Numbers　`def.complex`
+# complex numbers　`def.complex`
 English entry · root `../`
 [in graph](../#n=def.complex)　·　[Chinese page (authoritative)](./def.complex.md)
 

@@ -1,4 +1,4 @@
-# Slice Category　`def.slice-category`
+# slice category　`def.slice-category`
 English entry · root `../`
 [in graph](../#n=def.slice-category)　·　[Chinese page (authoritative)](./def.slice-category.md)
 

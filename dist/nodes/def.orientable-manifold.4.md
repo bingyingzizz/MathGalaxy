@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.volume-form-orientation`](../nodes/prop.volume-form-orientation.md) 定向与体积形式
+- 被 [`def.submanifold-volume`](../nodes/def.submanifold-volume.md) 诱导体积 用

@@ -1,4 +1,4 @@
-# Outer Measure　`def.outer-measure`
+# outer measure　`def.outer-measure`
 English entry · root `../`
 [in graph](../#n=def.outer-measure)　·　[Chinese page (authoritative)](./def.outer-measure.md)
 

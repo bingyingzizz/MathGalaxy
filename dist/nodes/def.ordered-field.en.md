@@ -1,4 +1,4 @@
-# Ordered Field　`def.ordered-field`
+# ordered field　`def.ordered-field`
 English entry · root `../`
 [in graph](../#n=def.ordered-field)　·　[Chinese page (authoritative)](./def.ordered-field.md)
 

@@ -1,4 +1,4 @@
-# Epi Regular　`prop.cond-epi-regular`
+# epi regular　`prop.cond-epi-regular`
 English entry · root `../`
 [in graph](../#n=prop.cond-epi-regular)　·　[Chinese page (authoritative)](./prop.cond-epi-regular.md)
 

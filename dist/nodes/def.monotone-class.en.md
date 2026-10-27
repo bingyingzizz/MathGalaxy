@@ -1,4 +1,4 @@
-# Monotone Class　`def.monotone-class`
+# monotone class　`def.monotone-class`
 English entry · root `../`
 [in graph](../#n=def.monotone-class)　·　[Chinese page (authoritative)](./def.monotone-class.md)
 

@@ -1,4 +1,4 @@
-# Sections Functor　`def.section-functor`
+# sections functor　`def.section-functor`
 English entry · root `../`
 [in graph](../#n=def.section-functor)　·　[Chinese page (authoritative)](./def.section-functor.md)
 

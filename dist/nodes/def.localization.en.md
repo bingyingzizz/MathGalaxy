@@ -1,4 +1,4 @@
-# Localization　`def.localization`
+# localization　`def.localization`
 English entry · root `../`
 [in graph](../#n=def.localization)　·　[Chinese page (authoritative)](./def.localization.md)
 

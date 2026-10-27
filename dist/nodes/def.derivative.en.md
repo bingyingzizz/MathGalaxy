@@ -1,4 +1,4 @@
-# Derivative　`def.derivative`
+# derivative　`def.derivative`
 English entry · root `../`
 [in graph](../#n=def.derivative)　·　[Chinese page (authoritative)](./def.derivative.md)
 

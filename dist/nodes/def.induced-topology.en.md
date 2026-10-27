@@ -1,4 +1,4 @@
-# Induced Topology　`def.induced-topology`
+# induced topology　`def.induced-topology`
 English entry · root `../`
 [in graph](../#n=def.induced-topology)　·　[Chinese page (authoritative)](./def.induced-topology.md)
 

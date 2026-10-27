@@ -1,4 +1,4 @@
-# Continuous Map　`def.continuous-map`
+# continuous map　`def.continuous-map`
 English entry · root `../`
 [in graph](../#n=def.continuous-map)　·　[Chinese page (authoritative)](./def.continuous-map.md)
 

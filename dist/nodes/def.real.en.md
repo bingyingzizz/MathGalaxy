@@ -1,4 +1,4 @@
-# Real Numbers　`def.real`
+# real numbers　`def.real`
 English entry · root `../`
 [in graph](../#n=def.real)　·　[Chinese page (authoritative)](./def.real.md)
 

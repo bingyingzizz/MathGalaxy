@@ -1,4 +1,4 @@
-# Simplicial Object　`def.simplicial`
+# simplicial object　`def.simplicial`
 English entry · root `../`
 [in graph](../#n=def.simplicial)　·　[Chinese page (authoritative)](./def.simplicial.md)
 

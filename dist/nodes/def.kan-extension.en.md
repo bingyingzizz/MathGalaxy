@@ -1,4 +1,4 @@
-# Kan Extension　`def.kan-extension`
+# Kan extension　`def.kan-extension`
 English entry · root `../`
 [in graph](../#n=def.kan-extension)　·　[Chinese page (authoritative)](./def.kan-extension.md)
 

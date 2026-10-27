@@ -7,6 +7,10 @@ layer 26 · 命题 · 微分流形 · 微分几何
 > 陈述续见 [nodes/prop.left-invariant-fields.2.md](./prop.left-invariant-fields.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`thm.lie-third`](../nodes/thm.lie-third.md) Lie 第三定理 用
+- ⇒ [`thm.maurer-cartan`](../nodes/thm.maurer-cartan.md) Maurer–Cartan 方程
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.left-invariant-fields.4.md](./prop.left-invariant-fields.4.md)
 

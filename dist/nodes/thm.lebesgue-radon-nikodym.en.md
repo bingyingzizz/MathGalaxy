@@ -1,4 +1,4 @@
-# Radon-Nikodym Theorem　`thm.lebesgue-radon-nikodym`
+# Radon-Nikodym theorem　`thm.lebesgue-radon-nikodym`
 English entry · root `../`
 [in graph](../#n=thm.lebesgue-radon-nikodym)　·　[Chinese page (authoritative)](./thm.lebesgue-radon-nikodym.md)
 

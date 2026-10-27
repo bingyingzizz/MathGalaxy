@@ -1,4 +1,4 @@
-# Retract　`cor.stonean-retract`
+# retract　`cor.stonean-retract`
 English entry · root `../`
 [in graph](../#n=cor.stonean-retract)　·　[Chinese page (authoritative)](./cor.stonean-retract.md)
 

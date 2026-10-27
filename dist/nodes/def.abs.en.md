@@ -1,4 +1,4 @@
-# Absolute Value　`def.abs`
+# absolute value　`def.abs`
 English entry · root `../`
 [in graph](../#n=def.abs)　·　[Chinese page (authoritative)](./def.abs.md)
 

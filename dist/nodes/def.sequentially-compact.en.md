@@ -1,4 +1,4 @@
-# Sequentially Compact　`def.sequentially-compact`
+# sequentially compact　`def.sequentially-compact`
 English entry · root `../`
 [in graph](../#n=def.sequentially-compact)　·　[Chinese page (authoritative)](./def.sequentially-compact.md)
 

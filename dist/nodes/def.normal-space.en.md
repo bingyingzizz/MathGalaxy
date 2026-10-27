@@ -1,4 +1,4 @@
-# Normal Space　`def.normal-space`
+# normal space　`def.normal-space`
 English entry · root `../`
 [in graph](../#n=def.normal-space)　·　[Chinese page (authoritative)](./def.normal-space.md)
 

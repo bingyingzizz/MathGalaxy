@@ -10,6 +10,9 @@ layer 12 · 定义 · 多元微分 · 数学分析
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.rank`](../nodes/def.rank.md) 秩：用到了定义 秩　[proofs/dep.rank-submersion.md](../proofs/dep.rank-submersion.md)
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.integral-manifold`](../nodes/def.integral-manifold.md) 积分流形 用
+
 refs: Lang, Undergraduate Analysis, Ch. XVI；Guillemin–Pollack, Differential Topology, §1
 
 > 说明见 `notes/def.submersion-immersion.md`

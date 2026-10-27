@@ -1,4 +1,4 @@
-# Homotopy Category　`def.homotopy-category`
+# homotopy category　`def.homotopy-category`
 English entry · root `../`
 [in graph](../#n=def.homotopy-category)　·　[Chinese page (authoritative)](./def.homotopy-category.md)
 

@@ -1,4 +1,4 @@
-# Power Set　`def.power-set`
+# power set　`def.power-set`
 English entry · root `../`
 [in graph](../#n=def.power-set)　·　[Chinese page (authoritative)](./def.power-set.md)
 

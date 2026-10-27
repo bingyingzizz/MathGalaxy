@@ -1,4 +1,4 @@
-# Product Topology　`def.product-topology`
+# product topology　`def.product-topology`
 English entry · root `../`
 [in graph](../#n=def.product-topology)　·　[Chinese page (authoritative)](./def.product-topology.md)
 

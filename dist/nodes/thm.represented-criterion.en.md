@@ -1,4 +1,4 @@
-# Representable Iff Hom　`thm.represented-criterion`
+# representable iff hom　`thm.represented-criterion`
 English entry · root `../`
 [in graph](../#n=thm.represented-criterion)　·　[Chinese page (authoritative)](./thm.represented-criterion.md)
 

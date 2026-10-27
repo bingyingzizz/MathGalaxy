@@ -9,6 +9,9 @@ layer 21 · 定理 · 复变函数 · 数学分析
 
 $$|f(z)| < \|f\|_{\Omega} := \sup_{\zeta \in \Omega} |f(\zeta)|, \qquad \forall z \in \Omega.$$
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`lem.schwarz`](../nodes/lem.schwarz.md) Schwarz 引理
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.max-modulus.2.md](./thm.max-modulus.2.md)
 

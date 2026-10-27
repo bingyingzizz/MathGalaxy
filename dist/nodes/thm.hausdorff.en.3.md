@@ -1,4 +1,4 @@
-# Hausdorff Maximal Principle　`thm.hausdorff`
+# Hausdorff maximal principle　`thm.hausdorff`
 English entry · root `../`
 [in graph](../#n=thm.hausdorff)　·　[Chinese page (authoritative)](./thm.hausdorff.md)
 

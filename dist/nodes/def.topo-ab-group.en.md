@@ -1,4 +1,4 @@
-# Topological Abelian Group　`def.topo-ab-group`
+# topological abelian group　`def.topo-ab-group`
 English entry · root `../`
 [in graph](../#n=def.topo-ab-group)　·　[Chinese page (authoritative)](./def.topo-ab-group.md)
 

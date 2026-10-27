@@ -1,4 +1,4 @@
-# Module　`def.module`
+# module　`def.module`
 English entry · root `../`
 [in graph](../#n=def.module)　·　[Chinese page (authoritative)](./def.module.md)
 

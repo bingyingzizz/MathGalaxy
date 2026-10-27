@@ -1,4 +1,4 @@
-# Rotation　`prop.triangle-rotation`
+# rotation　`prop.triangle-rotation`
 English entry · root `../`
 [in graph](../#n=prop.triangle-rotation)　·　[Chinese page (authoritative)](./prop.triangle-rotation.md)
 

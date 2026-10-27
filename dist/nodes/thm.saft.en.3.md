@@ -1,4 +1,4 @@
-# Special Adjoint Functor Theorem　`thm.saft`
+# special adjoint functor theorem　`thm.saft`
 English entry · root `../`
 [in graph](../#n=thm.saft)　·　[Chinese page (authoritative)](./thm.saft.md)
 

@@ -1,4 +1,4 @@
-# Compact Hausdorff　`def.chaus`
+# compact Hausdorff　`def.chaus`
 English entry · root `../`
 [in graph](../#n=def.chaus)　·　[Chinese page (authoritative)](./def.chaus.md)
 

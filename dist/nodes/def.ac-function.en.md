@@ -1,4 +1,4 @@
-# Absolutely Continuous Function　`def.ac-function`
+# absolutely continuous function　`def.ac-function`
 English entry · root `../`
 [in graph](../#n=def.ac-function)　·　[Chinese page (authoritative)](./def.ac-function.md)
 

@@ -1,4 +1,4 @@
-# Uncountability of the Reals　`thm.real-uncountable`
+# uncountability of the reals　`thm.real-uncountable`
 English entry · root `../`
 [in graph](../#n=thm.real-uncountable)　·　[Chinese page (authoritative)](./thm.real-uncountable.md)
 

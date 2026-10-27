@@ -1,4 +1,4 @@
-# Extension Group　`def.ext`
+# extension group　`def.ext`
 English entry · root `../`
 [in graph](../#n=def.ext)　·　[Chinese page (authoritative)](./def.ext.md)
 

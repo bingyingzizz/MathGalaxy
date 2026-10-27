@@ -6,6 +6,7 @@
 - 被 [`def.holomorphic`](../nodes/def.holomorphic.md) 全纯函数 用
 - 被 [`def.complex-partial`](../nodes/def.complex-partial.md) 复偏导数 用
 - 被 [`def.mobius`](../nodes/def.mobius.md) 分式线性变换 用
+- 被 [`def.logarithm-branch`](../nodes/def.logarithm-branch.md) 对数与幂的分支 用
 - 被 [`def.integral-complex`](../nodes/def.integral-complex.md) 复函数的积分 用
 - 被 [`def.complex-measure`](../nodes/def.complex-measure.md) 复测度 用
 - 被 [`def.lp-norm`](../nodes/def.lp-norm.md) L^p 范数 用

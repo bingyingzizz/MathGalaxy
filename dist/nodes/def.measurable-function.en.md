@@ -1,4 +1,4 @@
-# Measurable Function　`def.measurable-function`
+# measurable function　`def.measurable-function`
 English entry · root `../`
 [in graph](../#n=def.measurable-function)　·　[Chinese page (authoritative)](./def.measurable-function.md)
 

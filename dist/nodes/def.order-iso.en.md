@@ -1,4 +1,4 @@
-# Order Isomorphism　`def.order-iso`
+# order isomorphism　`def.order-iso`
 English entry · root `../`
 [in graph](../#n=def.order-iso)　·　[Chinese page (authoritative)](./def.order-iso.md)
 

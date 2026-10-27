@@ -7,3 +7,6 @@
 - ⇒ [`prop.maximal-atlas`](../nodes/prop.maximal-atlas.md) 极大图册
 - ⇒ [`def.differential-map`](../nodes/def.differential-map.md) 切映射
 - ⇒ [`def.tangent-bundle`](../nodes/def.tangent-bundle.md) 切丛
+- 被 [`thm.frobenius`](../nodes/thm.frobenius.md) Frobenius 定理 用
+- ⇒ [`thm.frobenius`](../nodes/thm.frobenius.md) Frobenius 定理
+- ⇒ [`thm.flow-local`](../nodes/thm.flow-local.md) 局部流

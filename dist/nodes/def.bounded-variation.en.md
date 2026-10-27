@@ -1,4 +1,4 @@
-# Bounded Variation　`def.bounded-variation`
+# bounded variation　`def.bounded-variation`
 English entry · root `../`
 [in graph](../#n=def.bounded-variation)　·　[Chinese page (authoritative)](./def.bounded-variation.md)
 

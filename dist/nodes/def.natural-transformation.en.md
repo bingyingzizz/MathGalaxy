@@ -1,4 +1,4 @@
-# Natural Transformation　`def.natural-transformation`
+# natural transformation　`def.natural-transformation`
 English entry · root `../`
 [in graph](../#n=def.natural-transformation)　·　[Chinese page (authoritative)](./def.natural-transformation.md)
 

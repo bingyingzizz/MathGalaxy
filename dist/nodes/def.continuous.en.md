@@ -1,4 +1,4 @@
-# Continuous　`def.continuous`
+# continuous　`def.continuous`
 English entry · root `../`
 [in graph](../#n=def.continuous)　·　[Chinese page (authoritative)](./def.continuous.md)
 

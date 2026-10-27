@@ -1,4 +1,4 @@
-# Subspace Topology　`def.subspace-topology`
+# subspace topology　`def.subspace-topology`
 English entry · root `../`
 [in graph](../#n=def.subspace-topology)　·　[Chinese page (authoritative)](./def.subspace-topology.md)
 

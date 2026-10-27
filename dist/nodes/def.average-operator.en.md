@@ -1,4 +1,4 @@
-# Average Operator　`def.average-operator`
+# average operator　`def.average-operator`
 English entry · root `../`
 [in graph](../#n=def.average-operator)　·　[Chinese page (authoritative)](./def.average-operator.md)
 
