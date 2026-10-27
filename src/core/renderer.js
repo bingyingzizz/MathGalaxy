@@ -1439,7 +1439,8 @@
       var style = T.edgeStyles[e.kind];
       var spine = isSpine(e);
       // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
-      var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
+      var aFocus = alphaForEdge(e);
+      var a = aFocus * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
       var aLod = a, insideN = -1;      // 诊断：LOD 之后的 a / 两端在屏内的个数
       var active = isEdgeActive(g);
       /* ⭐⭐ 2026-10-19 用户定稿的线条规则（取代 Stage 1b 的三档）：
@@ -1485,7 +1486,15 @@
                 用户报过的（当时的 0.03 下限正好压线通过 α>0.02 的闸门）。 */
           if (a <= 0.06) { edgeTrace(g, 'faded', a, aLod, insideN); return; }
         } else {
-          a = Math.max(a, lodA.edgeFloor);
+          /* ⚠️ 下限只该把「本来就该画、只是太淡」的边托起来 —— 绝不能把聚焦时被
+             alphaForEdge 压到 dimEdge(0.05) 的无关边再顶回 0.75。
+             2026-10-27 用户报的「放的不大的倍率下点一个点，就看见所有黑线」正是这里：
+             同一个函数里近景（下面那条）和 drawArrow 都带了 `!view.focus` 的保护，
+             唯独中景这一档没带 —— 于是黑线全亮、而箭头照旧被压掉，
+             看起来就是「满屏黑线没有箭头」。
+             改成按 aFocus 缩放：无关边 = 0.75×0.05 ≈ 0.04（压暗、连方位感都还在），
+             焦点边 aFocus = 1 ⇒ 与改动前逐位一致。 */
+          a = Math.max(a, lodA.edgeFloor * aFocus);
         }
       }
       if (e.kind === 'definition') a *= lodA.defDim;

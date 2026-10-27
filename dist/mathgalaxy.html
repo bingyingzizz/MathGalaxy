@@ -3565,40 +3565,112 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
          「它的边连得最多的那个星系」（_prefAngle）。
          ⇒ 星系是紧凑的圆盘而不是空心大环，团不会越界，外连多的团靠向对方。 */
       var gap = Math.max(48, ccfg.blank * 0.20);       // blank 300 → 60
-      var placed = [];
-      mine.slice().sort(function (a, b) {
-        /* 大的先放（占位能力强），连得多的次之 —— 免得大团被挤到外圈 */
-        return (b._cap - a._cap) || (b._extW - a._extW) || (a.id < b.id ? -1 : 1);
-      }).forEach(function (c) {
-        var pick = null;
-        for (var rr = 0; rr <= 3200 && !pick; rr += 50) {
-          var slots = rr < 1 ? 1 : Math.max(6,
-            Math.round(2 * Math.PI * rr / Math.max(150, (c._cap + gap) * 1.6)));
-          for (var s = 0; s < slots; s++) {
-            /* 从「朝向伙伴星系」的角度开始，左右交替试 —— 越近越优先 */
-            var off = (s % 2 ? 1 : -1) * Math.ceil(s / 2) * (2 * Math.PI / slots);
-            var th = c._prefAngle + off;
-            var x = Math.cos(th) * rr, y = Math.sin(th) * rr;
-            var ok = true;
-            for (var q = 0; q < placed.length; q++) {
-              var pp = placed[q];
-              var ddx = x - pp.x, ddy = y - pp.y;
-              var need = c._cap + pp.c._cap + gap;
-              if (ddx * ddx + ddy * ddy < need * need) { ok = false; break; }
+
+      /* ⭐ 2026-10-27：**每个领域打两遍包，留好的那个**。
+         ------------------------------------------------------------------
+         病根：老的打包是「谁大谁先坐」，从中心往外一圈圈找空位 —— 一个团跟它的
+         伙伴挨不挨着，纯靠运气。`_prefAngle` 也救不了：它累加的是伙伴团**所属
+         领域**的中心，同领域的伙伴在那个和里等于自己的领域中心，到
+         `vx/wsum − reg.center` 一步被整项减掉，贡献恒等于 0。
+         实测「分析学」拆开之前 Σ(边权×距离)/Σ(边权×最小距离) = 2.72，全库最差。
+
+         试过两条路，都不满意：
+           · 直接全局改成「朝已摆好的伙伴摆」：耦合距离降了，但槽位被拉成链、
+             盘变大 ⇒ 领域互相顶开 ⇒ `>2000` 的长边 77 → 87，而且「数学分析」
+             自己反而更差（1.94 → 2.26）。**拿全局换局部。**
+           · 摆好之后两两换座位（2-opt）：空操作。团是按大小降序放的，下标靠前的
+             一定更大，把大盘塞进小盘占过的槽必然撞上，`fits()` 全部否决。
+
+         所以：**同一套槽位规则，用两种朝向各打一遍，取分数低的那个**。
+           判据 = 领域内 Σ(边权 × 距离) 更小，且**外接半径不许变大**（容忍 1）。
+         半径不变 ⇒ `_cap` 不变 ⇒ 领域中心、跨领域的每一段距离、世界盒全都不动，
+         变的只有领域内部谁跟谁挨着。老打法是候选之一 ⇒ **结果不可能比现在差**。 */
+      function packRegion(list, useCoupling) {
+        var placedLocal = [], pos = Object.create(null);
+        list.forEach(function (c) {
+          var aim = c._prefAngle;
+          if (useCoupling) {
+            var iw = 0, ix = 0, iy = 0, ew = 0;
+            (clusterW[c.id] || []).forEach(function (t) {
+              var o = graph.clusterById[t.to];
+              var p = pos[t.to];
+              if (p && o && o.parent === reg.id) { iw += t.w; ix += p.x * t.w; iy += p.y * t.w; return; }
+              if (o && o.parent && o.parent !== reg.id) ew += t.w;
+            });
+            var an = Math.sqrt(ix * ix + iy * iy);
+            if (iw > 1e-6 && an > 1e-6) {
+              /* 比例固定 0.6 / 0.4，不用原始权重：领域内部的连边总数总是压过
+                 跨领域的，按原始权重混合等于把 2026-10-18「朝伙伴星系」那条全盖掉。 */
+              var wx = (ix / an) * 0.6, wy = (iy / an) * 0.6;
+              if (ew > 0) { wx += Math.cos(c._prefAngle) * 0.4; wy += Math.sin(c._prefAngle) * 0.4; }
+              if (Math.abs(wx) + Math.abs(wy) > 1e-6) aim = Math.atan2(wy, wx);
             }
-            if (ok) { pick = { x: x, y: y }; break; }
+          }
+          var pick = null;
+          for (var rr = 0; rr <= 3200 && !pick; rr += 50) {
+            var slots = rr < 1 ? 1 : Math.max(6,
+              Math.round(2 * Math.PI * rr / Math.max(150, (c._cap + gap) * 1.6)));
+            for (var s = 0; s < slots; s++) {
+              /* 从 aim 那个角度开始，左右交替试 —— 越近越优先 */
+              var off = (s % 2 ? 1 : -1) * Math.ceil(s / 2) * (2 * Math.PI / slots);
+              var th = aim + off;
+              var x = Math.cos(th) * rr, y = Math.sin(th) * rr;
+              var ok = true;
+              for (var q = 0; q < placedLocal.length; q++) {
+                var pp = placedLocal[q];
+                var ddx = x - pp.x, ddy = y - pp.y;
+                var need = c._cap + pp.c._cap + gap;
+                if (ddx * ddx + ddy * ddy < need * need) { ok = false; break; }
+              }
+              if (ok) { pick = { x: x, y: y }; break; }
+            }
+          }
+          if (!pick) pick = { x: 0, y: 0 };             // 兜底（不该发生）
+          placedLocal.push({ c: c, x: pick.x, y: pick.y });
+          pos[c.id] = pick;
+        });
+        return placedLocal;
+      }
+
+      function outerRadius(list) {
+        var f = 0;
+        list.forEach(function (p) {
+          f = Math.max(f, Math.sqrt(p.x * p.x + p.y * p.y) + p.c._cap);
+        });
+        return f;
+      }
+
+      function couplingScore(list) {
+        var sum = 0;
+        for (var i = 0; i < list.length; i++) {
+          for (var j = i + 1; j < list.length; j++) {
+            var a = list[i], b = list[j];
+            var key = a.c.id < b.c.id ? a.c.id + '|' + b.c.id : b.c.id + '|' + a.c.id;
+            var w = pairW[key] || 0;
+            if (!w) continue;
+            sum += w * Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
           }
         }
-        if (!pick) pick = { x: 0, y: 0 };             // 兜底（不该发生）
-        placed.push({ c: c, x: pick.x, y: pick.y });
-        c.center = { x: reg.center.x + pick.x, y: reg.center.y + pick.y };
+        return sum;
+      }
+
+      var order = mine.slice().sort(function (a, b) {
+        /* 大的先放（占位能力强），连得多的次之 —— 免得大团被挤到外圈 */
+        return (b._cap - a._cap) || (b._extW - a._extW) || (a.id < b.id ? -1 : 1);
+      });
+
+      var placed = packRegion(order, false);          // 老打法（基线）
+      var far = outerRadius(placed);
+      var alt = packRegion(order, true);              // 按耦合朝向
+      var farAlt = outerRadius(alt);
+      if (farAlt <= far + 1 && couplingScore(alt) < couplingScore(placed) - 1) {
+        placed = alt; far = farAlt;
+      }
+      placed.forEach(function (p) {
+        p.c.center = { x: reg.center.x + p.x, y: reg.center.y + p.y };
       });
 
       /* 星系圆盘 = 实际外接半径（不是环半径）；给跨星系节点/云留一点余量 */
-      var far = 0;
-      placed.forEach(function (p) {
-        far = Math.max(far, Math.sqrt(p.x * p.x + p.y * p.y) + p.c._cap);
-      });
       reg._cap = Math.max(reg._cap, far + 60);
     });
 
@@ -5751,7 +5823,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
       var style = T.edgeStyles[e.kind];
       var spine = isSpine(e);
       // 主干骨架：它有自己的淡入曲线，缩小时也能看见；放大后让位给全部连线
-      var a = alphaForEdge(e) * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
+      var aFocus = alphaForEdge(e);
+      var a = aFocus * Math.max(lodA.nodeEdge, spine ? lodA.trunkEdge : 0);
       var aLod = a, insideN = -1;      // 诊断：LOD 之后的 a / 两端在屏内的个数
       var active = isEdgeActive(g);
       /* ⭐⭐ 2026-10-19 用户定稿的线条规则（取代 Stage 1b 的三档）：
@@ -5797,7 +5870,15 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.1';</script>
                 用户报过的（当时的 0.03 下限正好压线通过 α>0.02 的闸门）。 */
           if (a <= 0.06) { edgeTrace(g, 'faded', a, aLod, insideN); return; }
         } else {
-          a = Math.max(a, lodA.edgeFloor);
+          /* ⚠️ 下限只该把「本来就该画、只是太淡」的边托起来 —— 绝不能把聚焦时被
+             alphaForEdge 压到 dimEdge(0.05) 的无关边再顶回 0.75。
+             2026-10-27 用户报的「放的不大的倍率下点一个点，就看见所有黑线」正是这里：
+             同一个函数里近景（下面那条）和 drawArrow 都带了 `!view.focus` 的保护，
+             唯独中景这一档没带 —— 于是黑线全亮、而箭头照旧被压掉，
+             看起来就是「满屏黑线没有箭头」。
+             改成按 aFocus 缩放：无关边 = 0.75×0.05 ≈ 0.04（压暗、连方位感都还在），
+             焦点边 aFocus = 1 ⇒ 与改动前逐位一致。 */
+          a = Math.max(a, lodA.edgeFloor * aFocus);
         }
       }
       if (e.kind === 'definition') a *= lodA.defDim;
