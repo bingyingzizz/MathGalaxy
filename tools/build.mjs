@@ -1032,6 +1032,9 @@ function assertAI(MG, graph, files, pagesOf) {
     const fromDir = path.posix.dirname(f.path);
     for (const m of f.text.matchAll(/\]\(([^)\s]+)\)/g)) {
       const href = m[1];
+      /* ⛔ 数学里的 `](…)` 不是链接：例如 $[\omega\wedge\omega](X,Y)$。
+         只认「带扩展名的文件」或「以 ./ ../ / 开头的路径」；其余一律当公式放过。 */
+      if (!/(^|\/)[\w.-]+\.(html|md|txt|png|svg|json|xml)$/.test(href) && !/^(\.{1,2}\/|\/)/.test(href)) continue;
       if (/^(https?:|#|\.\.\/#)/.test(href)) continue;      // 外链 / 页内锚点 / 星图深链
       const target = path.posix.normalize(path.posix.join(fromDir, href.replace(/^\.\//, '')));
       if (!paths.has(target) && !alwaysThere.has(target)) {
