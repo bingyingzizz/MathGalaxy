@@ -1,6 +1,6 @@
 # σ-环　`def.sigma-ring`
 σ-环（σ-Ring）
-layer 3 · 定义 · 集合族与 σ-代数 · 分析学
+layer 3 · 定义 · 集合族与 σ-代数 · 实变函数+数学分析
 [在星图里打开](../#n=def.sigma-ring)　·　[节点索引](../index.md)
 
 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 上的一个 **$\sigma$环**，当且仅当把「有限」都换成「可数」之后仍封闭：

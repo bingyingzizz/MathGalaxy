@@ -1,9 +1,9 @@
-# 数学星图 · 目录（第 2/3 页）
+# 数学星图 · 目录（第 2/2 页）
 
 根 `../`　·　第 1 页 `index.md`
 
-## 分析学（analysis）
-analysis.real　analysis.real-calc　analysis.completeness　analysis.continuity　analysis.mvt　analysis.riemann　analysis.series　analysis.uniform　analysis.multivariable　analysis.setclass　analysis.measure　analysis.measurable　analysis.integral　analysis.product　analysis.signed　analysis.differentiation　analysis.bv　analysis.lp
+## 实变函数（analysis-measure）
+analysis.setclass　analysis.measure　analysis.measurable　analysis.integral　analysis.product　analysis.signed　analysis.differentiation　analysis.bv　analysis.lp
 
 ## 范畴论（category）
 cat.basic　cat.functor　cat.limit　cat.structure　cat.algebra　cat.yoneda　cat.adjoint　cat.sheaf　cat.topos
@@ -17,4 +17,5 @@ cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
 ## 解析空间（analytic）
 analytic.adic　analytic.dual
 
-> 续见 `index.3.md`
+## 微分几何（diffgeom）
+diffgeom.frame　diffgeom.surface　diffgeom.intrinsic

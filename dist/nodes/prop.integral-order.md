@@ -1,6 +1,6 @@
 # 积分的保序与估计　`prop.integral-order`
 命题：保序性、绝对值不等式与基本估计
-layer 17 · 命题 · Riemann 积分 · 分析学
+layer 17 · 命题 · Riemann 积分 · 数学分析
 [在星图里打开](../#n=prop.integral-order)　·　[节点索引](../index.md)
 
 设 $f, g$ 在 $[a, b]$ 上可积。

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · definition · cluster Relations and Mappings (`set.rel`) · Set Theory / Analysis
+layer 13 · definition · cluster Relations and Mappings (`set.rel`) · Set Theory / Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.number-function.md` and `proofs/`.

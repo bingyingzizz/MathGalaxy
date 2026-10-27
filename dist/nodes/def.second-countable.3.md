@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`def.first-countable`](../nodes/def.first-countable.md) 第一可数空间
 - ⇒ [`thm.urysohn-metrization`](../nodes/thm.urysohn-metrization.md) 乌雷松度量化定理
+- 被 [`def.smooth-manifold`](../nodes/def.smooth-manifold.md) 光滑流形 用

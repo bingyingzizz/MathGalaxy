@@ -42,11 +42,12 @@
 - `order-theory`　序理论　→　Order Theory
 - `topology`　拓扑学　→　Topology
 - `algebra`　抽象代数　→　Abstract Algebra
-- `analysis`　分析学　→　Analysis
+- `analysis`　数学分析　→　Mathematical Analysis
+- `analysis-measure`　实变函数　→　Functions of a Real Variable
 - `category`　范畴论　→　Category Theory
 - `homology`　同调代数　→　Homological Algebra
 - `condensed`　凝聚态数学　→　Condensed Mathematics
-- `analytic`　解析几何　→　Analytic Geometry
+- `analytic`　解析空间　→　Analytic Spaces
 - `diffgeom`　微分几何　→　Differential Geometry
 
 ## 其它（`+` = 手工新造）

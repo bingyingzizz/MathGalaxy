@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · definition · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis / Set Theory
+layer 14 · definition · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Functions of a Real Variable / Mathematical Analysis / Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.fundamental-class.md` and `proofs/`.

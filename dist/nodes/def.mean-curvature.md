@@ -3,9 +3,7 @@
 layer 27 · 定义 · 曲面论 · 微分几何
 [在星图里打开](../#n=def.mean-curvature)　·　[节点索引](../index.md)
 
-$$H := \frac{1}{2}\operatorname{tr}W = \frac{1}{2}(k_{1}+k_{2}),\qquad K := \det W = k_{1}k_{2}.$$
-
-$H$ 叫**平均曲率**，$K$ 叫 **Gauss 曲率**（与 `thm.gauss-equation` 的定义一致）。用 $I, II$ 的分量写：
+白话：一个点上有两个主曲率 $k_{1}, k_{2}$（沿两个主方向的弯曲程度），它们的**平均**叫平均曲率 $H$、**乘积**叫 Gauss 曲率 $K$。$H$ 与「极小曲面」（肥皂膜）有关，$K$ 与「曲面弯不弯得平」有关
 > 陈述续见 [nodes/def.mean-curvature.2.md](./def.mean-curvature.2.md)
 
 

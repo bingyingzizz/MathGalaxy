@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.char-poly`](../nodes/def.char-poly.md) 特征多项式：用到了定义 特征多项式　[proofs/dep.charpoly-trace.md](../proofs/dep.charpoly-trace.md)
+
+> 续见 [nodes/def.trace.3.md](./def.trace.3.md)

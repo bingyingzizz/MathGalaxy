@@ -3,7 +3,7 @@
 layer 28 · 定理 · 内蕴几何 · 微分几何
 [在星图里打开](../#n=thm.liouville-formula)　·　[节点索引](../index.md)
 
-设 $(u,v)$ 是 $S$ 的**正交**参数网（$F = 0$，$I = E\,\mathrm{d}u^{2}+G\,\mathrm{d}v^{2}$），$\gamma$ 按弧长参数化，$\theta(s)$ 是 $\dot\gamma(s)$ 与 $u$ 线（$\pa
+白话：**测地曲率 = 曲线自己转的角度减去标架被度量「带着转」的角度**，而后者只由 $E, G$ 的偏导数决定。所以只要知道度量（也就是 $I$
 > 陈述续见 [nodes/thm.liouville-formula.2.md](./thm.liouville-formula.2.md)
 
 

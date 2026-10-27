@@ -3,11 +3,7 @@
 layer 22 · 定理 · 活动标架与结构方程 · 微分几何
 [在星图里打开](../#n=thm.structure-equations)　·　[节点索引](../index.md)
 
-设 $\omega^{i}$ 是对偶余标架（$\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$）、$\omega^{i}_{\ j}$ 是联络形式。则
-
-**第一结构方程**（无挠）
-
-$$\mathrm{d}\omega^{i} = \sum_{j}\omega^{j}\wedge\omega^{i}_{\ j} ;$$
+白话：**这两条方程管着「标架怎么动」**。第一式（挠率为零）说「余标架的变化完全由联络形式决定，没有额外的拧劲」；第二式（$\mathbb{R}^{3}$ 是平的）说「沿两个方向各转一次，结果与先后
 > 陈述续见 [nodes/thm.structure-equations.2.md](./thm.structure-equations.2.md)
 
 

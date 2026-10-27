@@ -6,5 +6,5 @@
 - 被 [`def.principal-curvature`](../nodes/def.principal-curvature.md) 主曲率 用
 - ⇒ [`def.second-fundamental-form`](../nodes/def.second-fundamental-form.md) 第二基本形式
 - ⇒ [`thm.rodrigues`](../nodes/thm.rodrigues.md) Rodrigues 定理
-- ⇒ [`thm.euler-formula`](../nodes/thm.euler-formula.md) Euler 公式
+- ⇒ [`thm.euler-formula-surface`](../nodes/thm.euler-formula-surface.md) Euler 公式
 - 被 [`prop.curvature-split`](../nodes/prop.curvature-split.md) 曲率分解 用

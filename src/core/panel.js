@@ -26,6 +26,11 @@
       current = what;
       panelEl.classList.remove('hidden');
       panelEl.scrollTop = 0;
+      /* 正文里 `节点 id` 要渲染成可点的中文名 ⇒ 先把 id 表交给 util（它不认识图）。
+         在这里登记一次就够了：节点面板与连线面板的正文都由 U.md 出 HTML。
+         ⚠️ 必须**在 renderNode / renderEdge 之前**；深链（#n=…）开局也会走到这儿
+            —— 那时候 MG.app 还没赋值，所以别让 util 自己去摸 MG.app.graph。 */
+      U.setNodeTable(view.graph && view.graph.byId);
       if (what.type === 'node') renderNode(view.graph.byId[what.id]);
       else renderEdge(findEdge(what.id));
     }

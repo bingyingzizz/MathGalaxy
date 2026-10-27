@@ -245,6 +245,34 @@
     return s.length > n ? s.slice(0, n - 1) + '…' : s;
   }
 
+  /* --------------------------------- 反引号里的节点 id → 可点的中文名 ------ */
+  /*  正文里写 `thm.analytic-modules` 是**提到**另一个节点（全库 400 多处）。
+     渲染成灰底等宽代码块既不像话也点不动 ⇒ 查得到就变成和 xlink 一样的链接：
+     显示节点的中文名，点它等同 `#n=<id>` 深链（复用面板对 [data-xlink] 的处理）。
+     ⭐ 表和 xlink 的词表一样由**渲染方**登记（panel.js 的 show() 调 setNodeTable）——
+        引擎不该知道图里有哪些节点。
+     ⛔ 没登记（Node 里跑 tools/sitepages.mjs 产概念页）或查不到这个 id ⇒ 原样 <code>。
+     ⛔ 只在**拼 HTML 字符串**时查一次 O(1) 哈希表；渲染循环根本不走 md()。 */
+  var nodeTable = null;
+
+  function setNodeTable(byId) {
+    nodeTable = (byId && typeof byId === 'object') ? byId : null;
+    return nodeTable;
+  }
+
+  /** 反引号里的内容（**已转义**过的文本）→ 链接 HTML；不是已知节点 ⇒ 空串。
+      ⚠️ 拿到的是 escapeHtml 之后的文本：节点 id 只含 [a-z0-9.:/-]，转义不会改动它；
+         真被改动过，说明它本来也不是 id ⇒ 走 <code> 兜底。
+      ⛔ 名字、id、属性一律走 escapeHtml —— label 里有 & < " 的可能性不能排除。 */
+  function idLink(escId) {
+    if (!nodeTable) return '';
+    var n = nodeTable[escId];
+    if (!n) return '';
+    var name = (MG.labelOf ? MG.labelOf(n) : '') || n.label || n.id;
+    return '<a class="pn-xlink" data-xlink="' + escapeHtml(n.id) + '"' +
+      ' href="#" title="' + escapeHtml(n.id) + '">' + escapeHtml(name) + '</a>';
+  }
+
   /* ------------------------------------------- 极简 Markdown → HTML ------ */
   /*  支持： ## 标题 / 段落 / - 列表 / 1. 列表 / > 引用 / **粗** / *斜* /
              `行内代码` / ```代码块``` / $行内公式$ / $$独立公式$$        */
@@ -267,7 +295,11 @@
       if (MG.renderInlineMath) return MG.renderInlineMath(tex);
       return '<code>' + escapeHtml(tex) + '</code>';
     });
-    out = out.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+    /* `行内代码`：内容正好是图里某个节点的 id ⇒ 渲染成可点链接（显示中文名），
+       否则仍是 <code>。⭐ 见上面 idLink() 的说明。 */
+    out = out.replace(/`([^`\n]+?)`/g, function (m, body) {
+      return idLink(body) || ('<code>' + body + '</code>');
+    });
     // 粗体：内容里允许出现单个 *（数学记号里 μ^*、f^* 很常见），
     // 只把 ** 当成定界符，别被里面那个 * 打断。
     // ⚠ 内容类里**不能**排除换行：这里的换行只可能来自上一步塞进去的
@@ -427,6 +459,7 @@
     truncate: truncate,
     md: md,
     inlineMd: inlineMd,
-    titleHtml: titleHtml
+    titleHtml: titleHtml,
+    setNodeTable: setNodeTable
   };
 })(typeof window !== 'undefined' ? window : globalThis);

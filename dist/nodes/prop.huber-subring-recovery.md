@@ -3,9 +3,7 @@
 layer 10 · 命题 · adic 空间 · 解析空间
 [在星图里打开](../#n=prop.huber-subring-recovery)　·　[节点索引](../index.md)
 
-记 $\operatorname{Spv}(A) := \operatorname{Spa}(A, \widetilde{\mathbb{Z}})$ 为 $A$ 上全部赋值等价类。则
-
-$$A^+ \longmapsto U = \operatorname{Spa}(A, A^+) = \bigcap_{f \in A^+} U_{1,f} \subseteq \operatorname{Spv}(A),$$
+白话：**$A^+$ 看着像「额外数据」，其实由谱自己决定** —— 「整闭子环 $A^+$」与「谱里形如 $\bigcap U_{1,f}$ 的那块子集 $U$」一一对应。所以 $(A,A^+)$ 与「环 $A$ 加上谱里的一块区域」是同一件事，这就是把环论翻译成几何的那一步。
 > 陈述续见 [nodes/prop.huber-subring-recovery.2.md](./prop.huber-subring-recovery.2.md)
 
 

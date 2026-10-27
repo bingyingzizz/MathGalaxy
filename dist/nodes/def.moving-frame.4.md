@@ -7,3 +7,4 @@
 - ⇒ [`thm.structure-equations`](../nodes/thm.structure-equations.md) 结构方程
 - ⇒ [`def.first-fundamental-form`](../nodes/def.first-fundamental-form.md) 第一基本形式
 - 被 [`prop.christoffel-frame`](../nodes/prop.christoffel-frame.md) 标架下的联络系数 用
+- ⇒ [`def.affine-connection`](../nodes/def.affine-connection.md) 仿射联络

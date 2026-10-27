@@ -1,6 +1,7 @@
 # 6-函子形式　`def.six-functors`　·　续页（第 4 页）
 [在星图里打开](../#n=def.six-functors)　·　第 1 页 [nodes/def.six-functors.md](./def.six-functors.md)　·　上一页 [nodes/def.six-functors.3.md](./def.six-functors.3.md)
 
-## 它能推出什么 / 谁在用它（续）
-- ⇒ [`def.f-shriek`](../nodes/def.f-shriek.md) 紧支撑推前 f_!
-- ⇒ [`thm.poincare-solid`](../nodes/thm.poincare-solid.md) 固态 Serre 对偶
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.analytic-ring`](../nodes/def.analytic-ring.md) 解析环：用到了定义 解析环　[proofs/def-link.analyticring-dual.md](../proofs/def-link.analyticring-dual.md)
+
+> 续见 [nodes/def.six-functors.5.md](./def.six-functors.5.md)

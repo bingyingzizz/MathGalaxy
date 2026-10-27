@@ -323,7 +323,7 @@ MG.clusters = [
     id: 'analysis.setclass',
     name: '集合族与 σ-代数',
     en: 'Families of Sets and Sigma-Algebras',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.sigma-algebra',
     desc: '造出「能承载测度的集合族」：环 → σ-环 → σ-代数 → 生成、Borel、单调类判据。测度本身在下一个团里。'
   },
@@ -331,7 +331,7 @@ MG.clusters = [
     id: 'analysis.measure',
     name: '测度的构造',
     en: 'Constructing Measures',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.measure',
     desc: '造出「测度」这个对象本身：预测度 → 外测度 → Carathéodory 扩张 → 完备化与唯一性 → Lebesgue–Stieltjes 测度。'
   },
@@ -339,7 +339,7 @@ MG.clusters = [
     id: 'analysis.measurable',
     name: '可测函数与收敛',
     en: 'Measurable Functions and Convergence',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.measurable-function',
     desc: '造出「可测」这套语言：可测函数 → 简单函数逼近 → 五种收敛 → Egorov / Lusin。有了它才能谈积分。'
   },
@@ -347,7 +347,7 @@ MG.clusters = [
     id: 'analysis.integral',
     name: '积分',
     en: 'Integration',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.integrable',
     desc: '造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。'
   },
@@ -355,7 +355,7 @@ MG.clusters = [
     id: 'analysis.product',
     name: '乘积测度与 Fubini',
     en: 'Product Measures and Fubini',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.product-measure',
     desc: '造出「一块块算」的办法：积 σ-代数 → 截口 → 乘积测度 → Fubini–Tonelli。'
   },
@@ -363,7 +363,7 @@ MG.clusters = [
     id: 'analysis.signed',
     name: '符号测度与分解',
     en: 'Signed Measures and Decompositions',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.signed-measure',
     desc: '造出「带符号的测度」及其结构定理：Hahn 分解 → Jordan 分解 → 全变差 → Radon–Nikodym。'
   },
@@ -371,7 +371,7 @@ MG.clusters = [
     id: 'analysis.differentiation',
     name: '微分定理',
     en: 'Differentiation Theorems',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.maximal-function',
     desc: '造出「逐点求导」这套工具：覆盖引理 → 极大函数 → Lebesgue 微分定理 → RN 导数的点态公式。'
   },
@@ -379,7 +379,7 @@ MG.clusters = [
     id: 'analysis.bv',
     name: '有界变差与绝对连续',
     en: 'Bounded Variation and Absolute Continuity',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.bounded-variation',
     desc: '造出「测度 ↔ 函数」的字典：全变差 → BV 的 Jordan 分解 → NBV 与 Borel 测度一一对应 → 微积分基本定理。'
   },
@@ -387,7 +387,7 @@ MG.clusters = [
     id: 'analysis.lp',
     name: 'L^p 空间',
     en: 'L^p Spaces',
-    parent: 'analysis',
+    parent: 'analysis-measure',
     hub: 'def.lp-norm',
     desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
   },

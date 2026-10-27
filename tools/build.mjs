@@ -1672,14 +1672,12 @@ function exportAlias(MG, graph, base = '') {
   L.push('');
   L.push('用别的叫法（英文名 / 老名字 / 大白话）查不到东西时，先来这里换节点 id。');
   L.push('');
-  L.push('`alias/<星系id>.md` 是**问法**（一句人话 → 节点 id）；');
-  L.push('`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）。');
+  L.push('`alias/<星系id>.md` 是**问法**（一句人话 → 节点 id），`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）；行尾 `a+b` 是这两份的条数。');
   L.push('');
   for (const r of graph.regions) {
     const f = aliasFilter(A, graph, r.id);
     if (!f.nodes.length && !f.hooks.length) continue;
-    L.push(`- ${r.name}　\`${base}alias/${r.id}.md\` ${f.hooks.length} 问法　·　` +
-      `\`${base}alias/aka/${r.id}.md\` ${f.nodes.length} 别名`);
+    L.push(`- ${r.name}　\`${base}alias/${r.id}.md\` ${f.hooks.length}+${f.nodes.length}`);
   }
   L.push('');
   return L.join('\n') + '\n';

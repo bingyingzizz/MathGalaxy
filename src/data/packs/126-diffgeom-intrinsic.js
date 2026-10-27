@@ -96,6 +96,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '联络', '克里斯托费尔记号'],
       statement: [
+        '白话：在曲面上「把向量沿曲线搬家」要一个规则，这个规则叫**联络**；一旦选了局部坐标，联络就退化成 $2^{3}$ 个函数 $\\Gamma^{k}_{ij}$，它们说「$\\partial_{j}$ 沿 $\\partial_{i}$ 方向搬一点，会多出多少 $\\partial_{k}$ 分量」。全部内容只用到度量系数 $g_{ij}$ 和它的一阶导数 —— 所以它是最早出现的**内蕴**对象。',
+        '',
         '设 $(x^{1},x^{2})$ 是曲面 $S$ 的局部坐标，$g_{ij} = \\langle \\partial_{i},\\partial_{j}\\rangle$，$(g^{ij})$ 是 $(g_{ij})$ 的逆矩阵。**克里斯托费尔记号**定义为',
         '',
         '$$\\Gamma^{k}_{ij} = \\frac{1}{2}g^{k\\ell}\\left(\\partial_{i}g_{j\\ell}+\\partial_{j}g_{i\\ell}-\\partial_{\\ell}g_{ij}\\right).$$',
@@ -107,7 +109,7 @@ window.MG = window.MG || {};
         '（Christoffel symbols。整套内蕴几何的第一台发动机。）'
       ].join('\n'),
       notes: [
-        '**来处只有 Koszul 公式**。「无挠」与「保度量」两条要求合起来给出唯一解：',
+        '**来处只有 Koszul 公式**。「挠率为零」与「保度量」两条要求合起来给出唯一解：',
         '$$2\\langle \\nabla_{X}Y,Z\\rangle = X\\langle Y,Z\\rangle+Y\\langle Z,X\\rangle-Z\\langle X,Y\\rangle+\\langle [X,Y],Z\\rangle-\\langle [Y,Z],X\\rangle+\\langle [Z,X],Y\\rangle.$$',
         '对坐标标架 $[\\partial_{i},\\partial_{j}] = 0$，右端只剩两个导数项，左端是 $2\\Gamma^{\\ell}_{ij}g_{\\ell k}$，解出来就是上面的公式。**推导里只用到 $g_{ij}$ 和它的一阶导数** —— 这是第一个内蕴量。',
         '⚠️ $\\Gamma^{k}_{ij}$ **不是张量**：换坐标时多出一个非齐次的二阶导数项，所以「$\\Gamma$ 在 $p$ 处等于某个数」随坐标变。但「**存在**使 $\\Gamma(p) = 0$ 的坐标」是坐标无关的事实（法坐标），两者的区别是「数值」与「存在性」。',
@@ -201,6 +203,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['命题', '微分几何', '内蕴几何', '测地线', '常微分方程'],
       statement: [
+        '白话：**从任意一点、朝任意方向，都能画出唯一一条「笔直走」的曲线（测地线）** —— 至少在一小段上。这是解二阶常微分方程的存在唯一性，没有任何几何玄机；它的用途是把「方向」变成「位置」（下一站的指数映射）。',
+        '',
         '对任意 $p \\in S$ 与任意 $v \\in T_{p}S$，存在 $\\varepsilon > 0$ 与唯一的测地线 $\\gamma_{v} : (-\\varepsilon,\\varepsilon)\\to S$ 使 $\\gamma_{v}(0) = p$、$\\dot\\gamma_{v}(0) = v$。并且解光滑依赖于初值 $(p,v)$，还满足齐次性',
         '',
         '$$\\gamma_{cv}(t) = \\gamma_{v}(ct)\\qquad (c > 0).$$',
@@ -259,6 +263,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定理', '微分几何', '内蕴几何', '测地曲率', '刘维尔公式'],
       statement: [
+        '白话：**测地曲率 = 曲线自己转的角度减去标架被度量「带着转」的角度**，而后者只由 $E, G$ 的偏导数决定。所以只要知道度量（也就是 $I$），就能算出任何曲线的测地曲率 —— 不需要曲面怎么嵌在 $\\mathbb{R}^{3}$ 里。',
+        '',
         '设 $(u,v)$ 是 $S$ 的**正交**参数网（$F = 0$，$I = E\\,\\mathrm{d}u^{2}+G\\,\\mathrm{d}v^{2}$），$\\gamma$ 按弧长参数化，$\\theta(s)$ 是 $\\dot\\gamma(s)$ 与 $u$ 线（$\\partial_{u}$ 方向）的夹角。则',
         '',
         '$$k_{g}(\\gamma) = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\frac{(\\ln E)_{v}}{2\\sqrt{G}}\\cos\\theta+\\frac{(\\ln G)_{u}}{2\\sqrt{E}}\\sin\\theta.$$',
@@ -319,6 +325,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '指数映射', '法坐标'],
       statement: [
+        '白话：**指数映射把「朝哪个方向走多远」变成「最后落在哪一点」** —— 从一个切向量 $v$ 出发、沿测地线走 $1$ 秒，落点就是 $\\exp_{p}(v)$。有了它，弯曲曲面在 $p$ 附近就能用平面上的极坐标 $(\\rho,\\theta)$ 记账。',
+        '',
         '固定 $p \\in S$。由测地线的存在唯一性，每个 $v \\in T_{p}S$ 有唯一测地线 $\\gamma_{v}$ 满足 $\\gamma_{v}(0) = p$、$\\dot\\gamma_{v}(0) = v$。**指数映射**定义为',
         '',
         '$$\\exp_{p}(v) = \\gamma_{v}(1) = \\gamma_{v/|v|}(|v|),\\qquad \\exp_{p}(0) = p,$$',
@@ -391,7 +399,7 @@ window.MG = window.MG || {};
       notes: [
         '**$\\Gamma(p) = 0$ 的证明**（细节在边上）：$T_{p}S$ 中过原点的每条直线 $t\\mapsto tv$（$v = \\cos\\theta_{0}\\,e_{1}+\\sin\\theta_{0}\\,e_{2}$）在 $\\exp_{p}$ 下都是测地线，坐标就是 $x^{k}(t) = tv^{k}$。代入测地线方程得 $\\Gamma^{k}_{ij}(p)v^{i}v^{j} = 0$，对一切方向 $v$ 成立；于是 $\\Gamma$ 的对称部分为零，而 $\\Gamma$ 本来就关于下指标对称。',
         '**$\\partial_{k}g_{ij}(p) = 0$ 是它的推论**：$\\partial_{k}g_{ij} = \\langle \\nabla_{\\partial_{k}}\\partial_{i},\\partial_{j}\\rangle+\\langle \\partial_{i},\\nabla_{\\partial_{k}}\\partial_{j}\\rangle = \\Gamma^{\\ell}_{ki}g_{\\ell j}+\\Gamma^{\\ell}_{kj}g_{i\\ell}$，在 $p$ 处为零。',
-        '⭐ **与曲率的关系**：既然 $\\Gamma$ 可以在一阶上被坐标杀掉，曲率张量里唯一杀不掉的就是 $\\partial\\Gamma$ 那一部分，而它由 $g$ 的二阶导数决定。这就是「曲率是二阶不可消除的度量信息」的准确含义 —— 也正是它内蕴的理由。',
+        '⭐ **与曲率的关系**：既然 $\\Gamma$ 可以在一阶上被坐标杀掉，曲率张量里唯一杀不掉的就是 $\\partial\\Gamma$ 那一部分，而它由 $g$ 的二阶导数决定。这就是「曲率是二阶不可去掉的度量信息」的准确含义 —— 也正是它内蕴的理由。',
         '⚠️ 只在一个点上成立。若要求整个邻域上 $\\Gamma\\equiv0$，那等价于局部等距于平面（$R\\equiv0$）；两者的差距就是曲率。',
         '**用起来最爽的地方**：需要算一个张量恒等式时，挑 $p$ 为任意点、用 $p$ 处的法坐标，$\\Gamma$ 与 $\\partial g$ 全消失，只剩 $g_{ij} = \\delta_{ij}$ —— 对称性论证就退化成线性代数。因为恒等式是张量等式，一点成立即处处成立。'
       ].join('\n\n'),
@@ -411,6 +419,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '曲率张量', '比安基恒等式'],
       statement: [
+        '白话：**曲率张量量的是「沿两个方向搬来搬去，顺序换一下，结果差多少」**。在平坦的平面里怎么换都对，差为零；在球面上换顺序就会差一点，那一点就是曲率。它是内蕴的：公式里只出现 $g$ 与它的导数，没有法向、没有第二基本形式。',
+        '',
         '曲面上的 Levi-Civita 联络定义**曲率算子**',
         '',
         '$$R(X,Y)Z = \\nabla_{X}\\nabla_{Y}Z-\\nabla_{Y}\\nabla_{X}Z-\\nabla_{[X,Y]}Z,$$',
@@ -447,6 +457,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '高斯曲率', '曲率张量'],
       statement: [
+        '白话：二维曲面上「曲率」其实只有**一个数**，这个数就是高斯曲率 $K$。这里用曲率张量的一个分量算出它，下一节点（绝妙定理）再说明它和 $k_{1}k_{2}$ 是同一个数。',
+        '',
         '曲面 $S$ 在点 $p$ 的**高斯曲率**由曲率张量定义为',
         '',
         '$$K(p) = \\frac{\\langle R(\\partial_{1},\\partial_{2})\\partial_{2},\\partial_{1}\\rangle}{\\det(g_{ij})} = \\frac{R_{1221}}{g_{11}g_{22}-g_{12}^{2}},$$',

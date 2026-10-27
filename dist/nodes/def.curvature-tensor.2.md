@@ -2,6 +2,10 @@
 [在星图里打开](../#n=def.curvature-tensor)　·　第 1 页 [nodes/def.curvature-tensor.md](./def.curvature-tensor.md)
 
 ## 陈述（续）
+。它是内蕴的：公式里只出现 $g$ 与它的导数，没有法向、没有第二基本形式。
+曲面上的 Levi-Civita 联络定义**曲率算子**
+
+$$R(X,Y)Z = \nabla_{X}\nabla_{Y}Z-\nabla_{Y}\nabla_{X}Z-\nabla_{[X,Y]}Z,$$
 在坐标下记 $R(\partial_{i},\partial_{j})\partial_{k} = R^{\ell}_{ijk}\partial_{\ell}$，其中
 $$R^{\ell}_{ijk} = \partial_{i}\Gamma^{\ell}_{jk}-\partial_{j}\Gamma^{\ell}_{ik}+\Gamma^{\ell}_{ip}\Gamma^{p}_{jk}-\Gamma^{\ell}_{jp}\Gamma^{p}_{ik},$$
 

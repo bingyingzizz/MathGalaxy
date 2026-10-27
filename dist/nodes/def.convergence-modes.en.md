@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · definition · cluster Measurable Functions and Convergence (`analysis.measurable`) · Analysis
+layer 20 · definition · cluster Measurable Functions and Convergence (`analysis.measurable`) · Functions of a Real Variable / Mathematical Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.convergence-modes.md` and `proofs/`.

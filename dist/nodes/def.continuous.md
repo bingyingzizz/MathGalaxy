@@ -1,6 +1,6 @@
 # 连续　`def.continuous`
 连续
-layer 14 · 定义 · 实数与极限 · 分析学+拓扑学
+layer 14 · 定义 · 实数与极限 · 数学分析+拓扑学
 [在星图里打开](../#n=def.continuous)　·　[节点索引](../index.md)
 
 $f : \mathbb{R} \to \mathbb{R}$ 在 $x_0$ **连续**，当且仅当

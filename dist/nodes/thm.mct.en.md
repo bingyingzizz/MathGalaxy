@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Integration (`analysis.integral`) · Analysis
+layer 18 · theorem · cluster Integration (`analysis.integral`) · Functions of a Real Variable / Mathematical Analysis
 names: `Monotone Convergence Theorem` (short) · `MCT, Monotone Convergence Theorem` (full)
 
 ## Statement and proof

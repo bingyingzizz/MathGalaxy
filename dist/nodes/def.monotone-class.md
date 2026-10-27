@@ -1,6 +1,6 @@
 # 单调类　`def.monotone-class`
 单调类
-layer 2 · 定义 · 集合族与 σ-代数 · 分析学
+layer 2 · 定义 · 集合族与 σ-代数 · 实变函数+数学分析
 [在星图里打开](../#n=def.monotone-class)　·　[节点索引](../index.md)
 
 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是**单调类**，当且仅当它对两种单调极限都封闭：

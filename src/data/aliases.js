@@ -834,6 +834,17 @@ MG.aliases = {
     { id: 'prop.coreflective-monoids-full', aka: ['Exercise 1.72'] },
     { id: 'prop.slice-covering-sieve', aka: ['Exercise 3.62'] },
     { id: 'prop.spectral-sequence-page-picture', aka: ['Exercise 7.28'] },
+
+    /* — 凝聚态 / 解析几何：2026-10-27 可读性审计补的检索别名 — */
+    /* 起因：用户搜「完备模」搜不到。图上这个词只在正文里出现（「自由完备模」），
+       没进 label / tags / aka ⇒ 搜索召回不到。这里接到真正讲它的那个节点。
+       ⚠️ `dist/alias.md` 有 1300 B 上限，所以只留最高频的几个词。 */
+    { id: 'thm.analytic-modules', aka: ['完备模', '固态模'] },
+    { id: 'def.pre-analytic-ring', aka: ['自由完备模'] },
+    { id: 'def.solid-group', aka: ['固态群'] },
+    { id: 'lem.solid-completion-criterion', aka: ['补全判据'] },
+    { id: 'def.discrete-huber-pair', aka: ['Huber 对'] },
+    { id: 'def.adic-spectrum', aka: ['赋值谱'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */
@@ -869,6 +880,13 @@ MG.aliases = {
     '推出',   // 17 —— def.fibered-product（推出 = pushout），但「由此推出」更常见
     '正合列', // —— 不是「正合函子」：把它拦掉，「短正合列 / 长正合列」里的「正合」
               //    才不会退化成 def.exact-functor 的错链（见 xlink.js 的 addBlocker）
+    '紧投射', // —— 范畴里的「紧投射对象」（compact projective），不是 def.compact 的拓扑紧。
+              //    不拦的话「紧投射生成元」会退化成单字「紧」→ def.compact 的错链。
+    '整闭包', // —— 交换代数的整闭包（integral closure），不是 def.closed-set 的拓扑闭包
+    '可积性', // —— 微分方程组的可积性条件（Frobenius），不是 def.integrable 的 Lebesgue 可积
+    '微分同胚', // —— 微分几何的 diffeomorphism，不是 def.cochain-complex 里的「微分」
+    '微分方程', // —— ODE/PDE 的行文词，同上
+    '偏微分',   // —— 同上（「一阶线性偏微分方程组」）
     '三角',   // 9  —— def.distinguished-triangle，「三角」当图形讲的时候更多
     '幺半群', // —— 实测放行「群」之后撞出来的：幺半群是 monoid，不是 def.group
     '要紧',   // —— 同上，「它最要紧的性质」里的「紧」不是 def.compact

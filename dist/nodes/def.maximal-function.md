@@ -1,6 +1,6 @@
 # 极大函数　`def.maximal-function`
 Hardy–Littlewood 极大函数 Hf
-layer 22 · 定义 · 微分定理 · 分析学
+layer 22 · 定义 · 微分定理 · 实变函数+数学分析
 [在星图里打开](../#n=def.maximal-function)　·　[节点索引](../index.md)
 
 设 $f \in L^1_{loc}$。定义
@@ -15,8 +15,6 @@ $$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r 
 - …另有入边，续页见 [nodes/def.maximal-function.2.md](./def.maximal-function.2.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.maximal-theorem`](../nodes/thm.maximal-theorem.md) 极大定理
-
 - …另有出边，续页见 [nodes/def.maximal-function.3.md](./def.maximal-function.3.md)
 
 refs: Folland, Real Analysis, §3.4

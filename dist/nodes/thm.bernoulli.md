@@ -1,6 +1,6 @@
 # Bernoulli 不等式　`thm.bernoulli`
 定理：Bernoulli 不等式（Bernoulli's Inequality）
-layer 7 · 定理 · 实数的运算与不等式 · 分析学
+layer 7 · 定理 · 实数的运算与不等式 · 数学分析
 [在星图里打开](../#n=thm.bernoulli)　·　[节点索引](../index.md)
 
 设 $x \ge -1$，$n \in \mathbb{N}$。则

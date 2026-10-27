@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 6 · definition · cluster Choice Principles (`order.choice`) · Set Theory
+layer 6 · definition · cluster Choice Principles (`order.choice`) · Order Theory / Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.choicefn.md` and `proofs/`.

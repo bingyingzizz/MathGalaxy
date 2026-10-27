@@ -1,6 +1,6 @@
 # 单调类定理　`thm.monotone-class`
 单调类定理
-layer 6 · 定理 · 集合族与 σ-代数 · 分析学
+layer 6 · 定理 · 集合族与 σ-代数 · 实变函数+数学分析
 [在星图里打开](../#n=thm.monotone-class)　·　[节点索引](../index.md)
 
 设 $\mathcal{E} \subseteq \mathcal{P}(X)$。则

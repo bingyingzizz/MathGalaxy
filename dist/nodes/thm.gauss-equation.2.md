@@ -5,7 +5,7 @@
 定义 **Gauss 曲率** $K$ 为 $\mathrm{d}\omega^{1}_{\ 2} = K\,\omega^{1}\wedge\omega^{2}$，则
 
 $$K = \det(c_{ij}) = \det(h_{ij}) = \frac{LN-M^{2}}{EG-F^{2}} .$$
-等价的无指标形式（$\mathbb{R}^{3}$ 平坦性的曲面分量）：
+等价的无指标形式（$\mathbb{R}^{3}$ 是平的、曲率为零这件事在曲面上的分量）：
 
 $$\langle R(X,Y)Z, W\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W).$$
 

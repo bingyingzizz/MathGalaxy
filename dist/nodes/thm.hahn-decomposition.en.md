@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
+layer 18 · theorem · cluster Signed Measures and Decompositions (`analysis.signed`) · Functions of a Real Variable / Mathematical Analysis
 names: `Hahn Decomposition` (short) · `Hahn Decomposition Theorem` (full)
 
 ## Statement and proof

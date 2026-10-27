@@ -3,13 +3,9 @@
 layer 13 · 定义 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=def.cond-measure)　·　[节点索引](../index.md)
 
-设 $S$ 是 profinite 集（紧 Hausdorff 全不连通空间），$C(S, \mathbb{Z})$ 是连续函数 $S \to \mathbb{Z}$ 的群（离散拓扑）。定义 $S$ 上的**整值测度**群
+白话：$S$ 上取值在 $\mathbb{Z}$ 的连续函数全体记作 $C(S,\mathbb{Z})$（按逐点相加成群）；**整值测度**就是「能对这些函数做带权和（也就是『积分』）的东西」，即从 $C(S,\mathbb{Z})$ 到 $\mathbb{Z}$ 的群同态。
 
-$$M(S, \mathbb{Z}) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ \mathbb{Z}\bigr).$$
-
-更一般地，对任意阿贝尔群 $A$ 记
-
-$$M(S, A) := \operatorname{Hom}_{\mathbb{Z}}\bigl(C(S, \mathbb{Z}),\ A\bigr),$$
+设 $S$ 是 profinite 集（紧 Hausdorff 全不连通空间），$C(S, \mathbb{Z})$ 上的 $\mathbb{Z}$-线性同态全体记作
 > 陈述续见 [nodes/def.cond-measure.2.md](./def.cond-measure.2.md)
 
 

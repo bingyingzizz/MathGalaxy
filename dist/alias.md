@@ -4,16 +4,17 @@
 
 用别的叫法（英文名 / 老名字 / 大白话）查不到东西时，先来这里换节点 id。
 
-`alias/<星系id>.md` 是**问法**（一句人话 → 节点 id）；
-`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）。
+`alias/<星系id>.md` 是**问法**（一句人话 → 节点 id），`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）；行尾 `a+b` 是这两份的条数。
 
-- 数理逻辑　`alias/logic.md` 0 问法　·　`alias/aka/logic.md` 4 别名
-- 集合论　`alias/set-theory.md` 20 问法　·　`alias/aka/set-theory.md` 55 别名
-- 序理论　`alias/order-theory.md` 8 问法　·　`alias/aka/order-theory.md` 13 别名
-- 拓扑学　`alias/topology.md` 44 问法　·　`alias/aka/topology.md` 95 别名
-- 抽象代数　`alias/algebra.md` 13 问法　·　`alias/aka/algebra.md` 25 别名
-- 分析学　`alias/analysis.md` 43 问法　·　`alias/aka/analysis.md` 164 别名
-- 范畴论　`alias/category.md` 63 问法　·　`alias/aka/category.md` 201 别名
-- 同调代数　`alias/homology.md` 47 问法　·　`alias/aka/homology.md` 141 别名
-- 凝聚态数学　`alias/condensed.md` 40 问法　·　`alias/aka/condensed.md` 87 别名
+- 数理逻辑　`alias/logic.md` 0+4
+- 集合论　`alias/set-theory.md` 20+56
+- 序理论　`alias/order-theory.md` 9+15
+- 拓扑学　`alias/topology.md` 44+95
+- 抽象代数　`alias/algebra.md` 13+25
+- 数学分析　`alias/analysis.md` 43+164
+- 实变函数　`alias/analysis-measure.md` 35+144
+- 范畴论　`alias/category.md` 63+201
+- 同调代数　`alias/homology.md` 47+148
+- 凝聚态数学　`alias/condensed.md` 40+91
+- 解析空间　`alias/analytic.md` 0+2
 

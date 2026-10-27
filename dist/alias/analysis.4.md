@@ -1,4 +1,4 @@
-# 问法 → 节点 · 分析学
+# 问法 → 节点 · 数学分析
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/analysis.md`
 
 - Hölder 不等式怎么用 → thm.holder def.conjugate-exponents lem.young-inequality

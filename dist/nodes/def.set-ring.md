@@ -1,6 +1,6 @@
 # 环与代数　`def.set-ring`
 环与代数
-layer 2 · 定义 · 集合族与 σ-代数 · 分析学
+layer 2 · 定义 · 集合族与 σ-代数 · 实变函数+数学分析
 [在星图里打开](../#n=def.set-ring)　·　[节点索引](../index.md)
 
 设 $\mathfrak{A} \subseteq \mathcal{P}(X)$ 是 $X$ 的一族子集。

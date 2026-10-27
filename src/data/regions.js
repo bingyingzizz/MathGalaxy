@@ -72,12 +72,30 @@ MG.regions = [
   },
   {
     id: 'analysis',
-    name: '分析学',
-    en: 'Analysis',
+    name: '数学分析',
+    en: 'Mathematical Analysis',
     color: '#3AA8D8',
-    center: { x: -180, y: 880 },
-    radius: 500,
-    desc: '极限、测度、泛函分析；Hahn–Banach 等定理也依赖选择原理。'
+    /* ⭐ 2026-10-27：原来的「分析学」一整个 279 点 / 18 团，占全库 25% ——
+       领域内部的星团跨度太大，跨团的连线被拉成一团（实测 Σ(权×距离) 是全库
+       最小可能值的 2.72 倍，最差的一个领域）。按数学内容拆成两个领域：
+         数学分析  = 实数与极限 → 连续 → 微分 → 级数 → 一致收敛 → Riemann 积分
+         实变函数  = σ-代数 → 测度 → 可测函数 → Lebesgue 积分 → L^p
+       切分依据是**已有的耦合**：182 条跨团边里只有 20 条会变成跨领域边（11%），
+       几乎是沿着一条现成的缝切的。两个领域各 9 团。
+       ⚠️ 节点正文里的 regions 多为拆分前的旧值（都写着 analysis）—— 主归属由
+          `graph.js` 按**星团的 parent** 归一化，不再逐包改内容。 */
+    center: { x: -330, y: 830 },
+    radius: 470,
+    desc: '从实数出发的初等分析：极限与完备性、连续与紧性、中值定理与 Taylor、多元微分与逆映射定理、级数、一致收敛，顶点是 Riemann 积分与 Newton–Leibniz 公式。'
+  },
+  {
+    id: 'analysis-measure',
+    name: '实变函数',
+    en: 'Functions of a Real Variable',
+    color: '#1C86B0',
+    center: { x: 170, y: 1010 },
+    radius: 470,
+    desc: '换一套更听话的积分：σ-代数 → 测度 → 可测函数 → Lebesgue 积分（单调收敛 / Fatou / 控制收敛）→ 乘积测度与 Fubini → 符号测度与 Radon–Nikodym → 微分定理 → $L^p$ 空间。'
   },
   {
     id: 'category',

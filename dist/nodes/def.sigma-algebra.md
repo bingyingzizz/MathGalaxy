@@ -1,6 +1,6 @@
 # σ-代数　`def.sigma-algebra`
 σ-代数（σ-Algebra）
-layer 4 · 定义 · 集合族与 σ-代数 · 分析学
+layer 4 · 定义 · 集合族与 σ-代数 · 实变函数+数学分析
 [在星图里打开](../#n=def.sigma-algebra)　·　[节点索引](../index.md)
 
 设 $X$ 是集合，$\mathfrak{A} \subseteq \mathcal{P}(X)$。$\mathfrak{A}$ 是 $X$ 上的一个 **$\sigma$代数**，当且仅当它同时满足三条：

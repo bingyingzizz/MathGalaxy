@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · theorem · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
+layer 19 · theorem · cluster Signed Measures and Decompositions (`analysis.signed`) · Functions of a Real Variable / Mathematical Analysis
 names: `Jordan Decomposition` (short) · `Jordan Decomposition Theorem` (full)
 
 ## Statement and proof

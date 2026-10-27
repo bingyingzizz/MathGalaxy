@@ -4,3 +4,5 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.hessian`](../nodes/def.hessian.md) Hessian 矩阵 用
 - ⇒ [`thm.mixed-partials`](../nodes/thm.mixed-partials.md) 混合偏导相等
+- 被 [`def.tangent-space-manifold`](../nodes/def.tangent-space-manifold.md) 切空间 用
+- ⇒ [`def.tangent-space-manifold`](../nodes/def.tangent-space-manifold.md) 切空间

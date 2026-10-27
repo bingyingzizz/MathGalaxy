@@ -1,6 +1,6 @@
 # 非负函数的积分　`def.integral-nonneg`
 非负可测函数的积分：从下面取上确界
-layer 17 · 定义 · 积分 · 分析学
+layer 17 · 定义 · 积分 · 实变函数+数学分析
 [在星图里打开](../#n=def.integral-nonneg)　·　[节点索引](../index.md)
 
 设 $f \in L^+$。定义

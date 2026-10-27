@@ -1,7 +1,7 @@
 # 固态阿贝尔群　`def.solid-group`　·　说明
 根 `../`
 
-⭐ 一句话：**「$S$ 上的函数」可以唯一地积分成 $A$ 里的元素**。这就是「完备化」在凝聚态世界里的正确形态 —— 名字叫 solid 而不是 complete，是因为它不是经典的拓扑完备（$\mathbb{R}$ 的固态化反而是 $0$，见 `cor.solid-compact-generators`）。
+⭐ 一句话：**「$S$ 上的函数」可以唯一地积分成 $A$ 里的元素**。这就是固态理论里「补全」的正确形态 —— 名字叫 solid 而不是 complete，是因为它不是「拓扑上把 Cauchy 列补全」那个意思（$\mathbb{R}$ 的固态化反而是 $0$，见 `cor.solid-compact-generators`）。
 
 ⭐ (ii) 等价于「$\operatorname{Hom}(Z[S]^{\blacksquare}, A) \cong \operatorname{Hom}(\mathbb{Z}[S], A) = A(S)$」，即 free solid 群表示函子 $A \mapsto A(S)$。
 

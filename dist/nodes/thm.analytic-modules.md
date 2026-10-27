@@ -3,9 +3,7 @@
 layer 19 · 定理 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=thm.analytic-modules)　·　[节点索引](../index.md)
 
-设 $\mathcal{A}$ 是解析环。考虑全子范畴
-
-$$\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}} \subset \operatorname{Mod}^{\mathrm{cond}}_{A}$$
+白话：解析环上的**固态模**（也就是**完备模**、$\mathcal{A}$-完备模）就是那些「长得跟自由完备模 $\mathcal{A}[S]$ 一模一样」的 $A$-模 —— 判别法只有一条：从 $\mathcal{A}[S]$ 出发的线性映射不多不少等于 $S$ 上的「函数」。下面这个全子范畴把它们挑出来，并说明它们能
 > 陈述续见 [nodes/thm.analytic-modules.2.md](./thm.analytic-modules.2.md)
 
 

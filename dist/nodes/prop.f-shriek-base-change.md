@@ -3,11 +3,7 @@
 layer 21 · 命题 · 相干对偶 · 解析空间
 [在星图里打开](../#n=prop.f-shriek-base-change)　·　[节点索引](../index.md)
 
-设 $f : R \to A$ 是有限生成、有限 Tor 维数的环映射（诺特环之间映射的基变换）。则自然映射
-
-$$f^!R \otimes^{L}_{A_\blacksquare} f^* \longrightarrow f^!$$
-
-是函子的等价。若 $g : R \to S$ 平坦、$f' : S \to B = A \otimes_R S$ 是基变换（$g' : A \to B$），则
+白话：**$f^!$ 不必单独造 —— 它就是「先 $f^*$ 拉回来，再乘一个固定的东西 $f^!R$」**。这个固定的东西叫**对偶复形**（扭转，twist：把 $f^*$ 扭一下）。于是算对偶这件事被压成算一个复形 $f^!R$；再往下两个节点就是把这个复形算出来（正则闭浸
 > 陈述续见 [nodes/prop.f-shriek-base-change.2.md](./prop.f-shriek-base-change.2.md)
 
 

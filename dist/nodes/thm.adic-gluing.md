@@ -3,11 +3,7 @@
 layer 21 · 定理 · adic 空间 · 解析空间
 [在星图里打开](../#n=thm.adic-gluing)　·　[节点索引](../index.md)
 
-设 $X$ 是离散 adic 空间。把仿射开集 $U = \operatorname{Spa}(A,A^+) \subseteq X$ 送到
-
-$$D\bigl((A,A^+)_\blacksquare\bigr) \subset D(\operatorname{Cond}(A)),$$
-
-这个对应定义了一个 $X$ 上的 **$\infty$-范畴层**（严格说：从仿射开集范畴到 $\infty$-范畴的函子，所有函子有左伴随）。取整体截面得
+白话：**在 adic 空间上，「层」这件事要按无穷范畴来做，不能按普通层（阿贝尔范畴）做**。原因很具体：把「在每个仿射开集上给出的导出范畴」沿开集粘起来时，阿贝尔层面的基变换不保持正合，粘不上；只有把同伦也留住（$\infty$-范畴层）才能粘。
 > 陈述续见 [nodes/thm.adic-gluing.2.md](./thm.adic-gluing.2.md)
 
 

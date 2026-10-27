@@ -13,6 +13,10 @@
 
 - 有限特征 | finite character → def.finchar
 
+- 选择函数 | choice function | 选取函数 → def.choicefn
+
+- 选择公理 | AC | axiom of choice | Zorn → ax.choice
+
 - 良序定理 | well-ordering theorem → thm.wellordering
 
 - 佐恩引理 | Zorn's lemma | Zorn 引理 → lem.zorn

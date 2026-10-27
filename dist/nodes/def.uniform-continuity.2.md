@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.continuous`](../nodes/def.continuous.md) 连续：用到了定义 连续　[proofs/dep.continuous-uniform.md](../proofs/dep.continuous-uniform.md)
+
+> 续见 [nodes/def.uniform-continuity.3.md](./def.uniform-continuity.3.md)

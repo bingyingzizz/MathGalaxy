@@ -13,6 +13,9 @@ $$(u \wedge v) \wedge w = u \wedge (v \wedge w), \qquad v \wedge w = (-1)^{|v| |
 
 （$|v|$ 是元素的次数。「分次交换」意味着奇次元素之间反交换。）
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.differential-form`](../nodes/def.differential-form.md) 微分形式 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.exterior-algebra.2.md](./def.exterior-algebra.2.md)
 

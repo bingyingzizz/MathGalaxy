@@ -1,6 +1,6 @@
 # 绝对收敛　`def.absolute-convergence`
 绝对收敛
-layer 15 · 定义 · 数项级数的敛散性 · 分析学
+layer 15 · 定义 · 数项级数的敛散性 · 数学分析
 [在星图里打开](../#n=def.absolute-convergence)　·　[节点索引](../index.md)
 
 设 $\{a_n\} \subseteq \mathbb{R}$（或 $\mathbb{C}$）。称级数 $\sum a_n$ **绝对收敛**，当且仅当正项级数

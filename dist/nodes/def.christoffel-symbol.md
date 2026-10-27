@@ -3,7 +3,7 @@
 layer 25 · 定义 · 内蕴几何 · 微分几何
 [在星图里打开](../#n=def.christoffel-symbol)　·　[节点索引](../index.md)
 
-设 $(x^{1},x^{2})$ 是曲面 $S$ 的局部坐标，$g_{ij} = \langle \partial_{i},\partial_{j}\rangle$，$(g^{ij})$ 是 $(g_{ij})$ 的逆矩阵。**克里斯托费尔记号**
+白话：在曲面上「把向量沿曲线搬家」要一个规则，这个规则叫**联络**；一旦选了局部坐标，联络就退化成 $2^{3}$ 个函数 $\Gamma^{k}_{ij}
 > 陈述续见 [nodes/def.christoffel-symbol.2.md](./def.christoffel-symbol.2.md)
 
 

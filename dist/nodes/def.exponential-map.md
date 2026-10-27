@@ -3,7 +3,7 @@
 layer 27 · 定义 · 内蕴几何 · 微分几何
 [在星图里打开](../#n=def.exponential-map)　·　[节点索引](../index.md)
 
-固定 $p \in S$。由测地线的存在唯一性，每个 $v \in T_{p}S$ 有唯一测地线 $\gamma_{v}$ 满足 $\gamma_{v}(0) = p$、$\dot\gamma_{v}(0) = v$。**指数映射**定义为
+白话：**指数映射把「朝哪个方向走多远」变成「最后落在哪一点」** —— 从一个切向量 $v$ 出发、沿测地线走 $1$ 秒，落点就是 $\exp_{p}(v)$。有了它，弯曲曲面在
 > 陈述续见 [nodes/def.exponential-map.2.md](./def.exponential-map.2.md)
 
 

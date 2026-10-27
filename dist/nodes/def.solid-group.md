@@ -3,11 +3,9 @@
 layer 18 · 定义 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=def.solid-group)　·　[节点索引](../index.md)
 
+白话：**固态群 = 一个凝聚态阿贝尔群 $A$，其中「$S$ 上的任意函数」都能唯一地求和（积分）成 $A$ 里的元素**。它要回答的问题是「无穷和什么时候有意义」。下面 (i) 先造自由的那一个，(ii) 用「唯一延拓」把「固态」这个词定死，(iii) 再把同一句话搬到复形上。
+
 **(i) 自由固态群。** 对 profinite 集 $S = \varprojlim_i S_i$（$S_i$ 有限），定义
-
-$$Z[S]^{\blacksquare} := \varprojlim_i \mathbb{Z}[S_i].$$
-
-有自然映射 $S = \varprojlim_i S_i \to \varprojlim_i \mathbb{Z}[S_i]$，从而 $\mathbb{Z}[S] \to Z[S]^{\blacksquare}$。
 > 陈述续见 [nodes/def.solid-group.2.md](./def.solid-group.2.md)
 
 

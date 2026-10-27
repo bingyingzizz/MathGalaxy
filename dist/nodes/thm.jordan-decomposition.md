@@ -1,6 +1,6 @@
 # Jordan 分解定理　`thm.jordan-decomposition`
 Jordan 分解定理
-layer 19 · 定理 · 符号测度与分解 · 分析学
+layer 19 · 定理 · 符号测度与分解 · 实变函数+数学分析
 [在星图里打开](../#n=thm.jordan-decomposition)　·　[节点索引](../index.md)
 
 设 $\nu$ 是符号测度。则存在**测度** $\mu_1, \mu_2$ 使

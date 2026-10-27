@@ -1,4 +1,4 @@
-# 别名 → 节点 · 分析学
+# 别名 → 节点 · 数学分析
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
 - 要么奇异要么有下界 → lem.singular-or-lower-bound

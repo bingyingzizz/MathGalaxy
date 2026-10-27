@@ -288,6 +288,17 @@
       }
       n.clusterObj = co || null;
       if (co) co.nodes.push(n);
+      /* ⭐ 主归属以**星团的 parent** 为准（团是物理位置的真源，见 app.js 的 fitRegion）。
+         节点正文里的 `regions` 经常是迁移前的旧值 —— 例如 `def.abs` 还写着
+         set-theory，而它早就搬进 `analysis.real-calc` 了。不归一化的话，
+         领域盘的容量按旧归属算、而星团按新归属摆位，两者对不上
+         （实测曾有 72% 的星团落在自己领域盘外面）。
+         这里只决定**主归属**：把 `[0]` 改成团的 parent，其余成员原样留在后面。
+         ⛔ 没有星团的点仍按正文的 `regions[0]` 摆。 */
+      if (co && co.parent && graph.regionById[co.parent]) {
+        var homeR = co.parent;
+        n.regions = [homeR].concat(n.regions.filter(function (rid) { return rid !== homeR; }));
+      }
     });
     graph.clusters = clusters;
     graph.clusterById = clusterById;

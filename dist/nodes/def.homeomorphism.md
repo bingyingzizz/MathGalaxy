@@ -15,6 +15,9 @@ layer 7 · 定义 · 拓扑空间 · 拓扑学
 
 - …另有入边，续页见 [nodes/def.homeomorphism.2.md](./def.homeomorphism.2.md)
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.smooth-manifold`](../nodes/def.smooth-manifold.md) 光滑流形 用
+
 refs: Munkres, Topology, Ch. 2
 
 > 说明见 `notes/def.homeomorphism.md`

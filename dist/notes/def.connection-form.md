@@ -7,4 +7,4 @@
 
 ⚠️ $\omega^{i}_{\ j}$ 与 $\omega^{j}_{\ i}$ 差一个负号，是全图最容易抄错的地方。判据只有一条：对 $\langle e_{i}, e_{j}\rangle = \delta_{ij}$ 取外微分，不要凭记忆。
 
-**与 Christoffel 符号的关系**：在**不正交**的标架 $\{r_{u}, r_{v}, n\}$ 上把它写开，系数就是 $\Gamma^{k}_{\ ij}$ 与 $h_{ij}$ 的混合体（见）；只有在正交标架下它才变成干净的反对称矩阵。
+**与 Christoffel 符号的关系**：在**不正交**的标架 $\{r_{u}, r_{v}, n\}$ 上把它写开，系数就是 $\Gamma^{k}_{\ ij}$ 与 $h_{ij}$ 的混合体（对照 `def.second-fundamental-form` 与 `def.christoffel-symbol`）；只有在正交标架下它才变成干净的反对称矩阵。

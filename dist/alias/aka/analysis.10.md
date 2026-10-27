@@ -1,4 +1,4 @@
-# 别名 → 节点 · 分析学
+# 别名 → 节点 · 数学分析
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
 - BV 的例子 → prop.bv-examples
@@ -30,7 +30,5 @@
 - 共轭指数 | conjugate exponents | 对偶指数 → def.conjugate-exponents
 
 - Young 不等式 | Young → lem.young-inequality
-
-- 本性上界 | essential supremum | L-infinity | L∞ 范数 → def.essential-sup
 
 > 续见 alias/aka/analysis.11.md

@@ -1,6 +1,6 @@
 # Riemann 可积　`def.riemann-integrable`
 Riemann 可积与积分 $\int_a^b f$
-layer 16 · 定义 · Riemann 积分 · 分析学
+layer 16 · 定义 · Riemann 积分 · 数学分析
 [在星图里打开](../#n=def.riemann-integrable)　·　[节点索引](../index.md)
 
 设 $f$ 在 $[a, b]$ 上有界。称 $f$ **Riemann 可积**，当且仅当存在实数 $I$ 使

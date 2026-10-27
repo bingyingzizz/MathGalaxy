@@ -1,6 +1,6 @@
 # 简单函数逼近　`thm.simple-approximation`
 定理：可测函数都是简单函数列的极限
-layer 8 · 定理 · 可测函数与收敛 · 分析学
+layer 8 · 定理 · 可测函数与收敛 · 实变函数+数学分析
 [在星图里打开](../#n=thm.simple-approximation)　·　[节点索引](../index.md)
 
 **(a)** 若 $f : X \to [0, +\infty]$ 可测，则存在简单函数列 $\{\varphi_n\}$ 使

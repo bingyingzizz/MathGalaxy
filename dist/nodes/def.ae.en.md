@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
+layer 16 · definition · cluster Constructing Measures (`analysis.measure`) · Functions of a Real Variable / Mathematical Analysis
 names: `Almost Everywhere` (short) · `Almost Everywhere, A.e.` (full)
 
 ## Statement and proof

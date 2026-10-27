@@ -1,4 +1,4 @@
-# 别名 → 节点 · 分析学
+# 别名 → 节点 · 数学分析
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
 - 确界原理 | 实数完备 | 完备性 | least upper bound property | completeness of R → thm.real-ordered-field

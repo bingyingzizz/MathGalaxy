@@ -16,6 +16,8 @@ $$\operatorname{tr} A := \sum_{i=1}^{n} a_{ii}$$
 ## 它能推出什么 / 谁在用它
 - 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
 
+- …另有出边，续页见 [nodes/def.trace.3.md](./def.trace.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.trace.2.md](./def.trace.2.md)
 

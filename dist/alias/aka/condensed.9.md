@@ -7,4 +7,12 @@
 
 - Exercise 6.5 → prop.cond-quotient-topological
 
+- 完备模 | 固态模 → thm.analytic-modules
+
+- 自由完备模 → def.pre-analytic-ring
+
+- 固态群 → def.solid-group
+
+- 补全判据 → lem.solid-completion-criterion
+
 见 `../../alias.md`。

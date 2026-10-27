@@ -1,6 +1,6 @@
 # 完备化定理　`thm.completion`
 定理：任何测度空间都能完备化
-layer 16 · 定理 · 测度的构造 · 分析学
+layer 16 · 定理 · 测度的构造 · 实变函数+数学分析
 [在星图里打开](../#n=thm.completion)　·　[节点索引](../index.md)
 
 设 $(X, \mathcal{M}, \mu )$ 是测度空间。令
@@ -19,8 +19,6 @@ $$\bar{\mathcal{M}} = \{ E \cup F : E \in \mathcal{M},\ F \subseteq N,\ N \in \m
 - …另有入边，续页见 [nodes/thm.completion.3.md](./thm.completion.3.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.completion-measurable-function`](../nodes/prop.completion-measurable-function.md) 完备化后可改在零集上
-
 - …另有出边，续页见 [nodes/thm.completion.4.md](./thm.completion.4.md)
 
 refs: Halmos, Measure Theory, §13；Folland, Real Analysis, Prop. 1.6

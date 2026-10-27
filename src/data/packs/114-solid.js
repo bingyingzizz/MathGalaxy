@@ -32,7 +32,9 @@ window.MG = window.MG || {};
       tags: ['定义', '凝聚态', '测度', '固态'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1'],
       statement: [
-        '设 $S$ 是 profinite 集（紧 Hausdorff 全不连通空间），$C(S, \\mathbb{Z})$ 是连续函数 $S \\to \\mathbb{Z}$ 的群（离散拓扑）。定义 $S$ 上的**整值测度**群',
+        '白话：$S$ 上取值在 $\\mathbb{Z}$ 的连续函数全体记作 $C(S,\\mathbb{Z})$（按逐点相加成群）；**整值测度**就是「能对这些函数做带权和（也就是『积分』）的东西」，即从 $C(S,\\mathbb{Z})$ 到 $\\mathbb{Z}$ 的群同态。',
+        '',
+        '设 $S$ 是 profinite 集（紧 Hausdorff 全不连通空间），$C(S, \\mathbb{Z})$ 上的 $\\mathbb{Z}$-线性同态全体记作',
         '',
         '$$M(S, \\mathbb{Z}) := \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(C(S, \\mathbb{Z}),\\ \\mathbb{Z}\\bigr).$$',
         '',
@@ -42,7 +44,7 @@ window.MG = window.MG || {};
         '',
         '特别地有 $M(S, \\mathbb{R})$ 与 $M(S, \\mathbb{R}/\\mathbb{Z})$（$\\mathbb{R}$ 值、$\\mathbb{R}/\\mathbb{Z}$ 值测度）。'
       ].join('\n'),
-      notes: '⭐ 名字的来源：$C(S,\\mathbb{Z})$ 的元素是「$S$ 上的整数函数」，把测度 $\\mu$ 作用上去就得到 $\\int f\\,d\\mu$。当 $S$ 有限时 $M(S,\\mathbb{Z}) = \\mathbb{Z}^{S}$，就是「每个点放一个整数」；当 $S$ 是无限 profinite 时，$M(S,\\mathbb{Z})$ 是**形式无穷和**，一般比 $\\mathbb{Z}[S]$ 大得多。\n\n⭐ 关键的 一步是 `thm.csz-free`：$C(S,\\mathbb{Z})$ 是自由阿贝尔群，所以 $M(S,\\mathbb{Z}) \\cong \\prod_I \\mathbb{Z}$ 是**可数积以外的**大乘积 —— 这正是固态理论要的「完备化」。\n\n⚠ $C(S,\\mathbb{Z})$ 取**离散**拓扑：$S$ 紧、$\\mathbb{Z}$ 离散，连续函数的像是有限集，所以它作为抽象群是自由的（Nöbeling 定理），但一般不是有限生成。'
+      notes: '⭐ 名字的来源：$C(S,\\mathbb{Z})$ 的元素是「$S$ 上的整数值连续函数」，把测度 $\\mu$ 作用上去就得到 $\\int f\\,d\\mu$。当 $S$ 有限时 $M(S,\\mathbb{Z}) = \\mathbb{Z}^{S}$，就是「每个点放一个整数」；当 $S$ 是无限 profinite 时，$M(S,\\mathbb{Z})$ 是**形式无穷和**，一般比 $\\mathbb{Z}[S]$ 大得多。\n\n⭐ 关键的一步是 `thm.csz-free`：$C(S,\\mathbb{Z})$ 是自由阿贝尔群，所以 $M(S,\\mathbb{Z}) \\cong \\prod_I \\mathbb{Z}$ 是**可数积以外的**大乘积 —— 这正是固态理论要的那种补全（不是拓扑上的「把 Cauchy 列补全」，见 `def.solid-group`）。\n\n⚠ $C(S,\\mathbb{Z})$ 取**离散**拓扑：$S$ 紧、$\\mathbb{Z}$ 离散，连续函数的像是有限集，所以它作为抽象群是自由的（Nöbeling 定理），但一般不是有限生成。'
     },
     {
       id: 'def.solid-group',
@@ -54,6 +56,8 @@ window.MG = window.MG || {};
       tags: ['定义', '凝聚态', '固态'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Definition 5.1'],
       statement: [
+        '白话：**固态群 = 一个凝聚态阿贝尔群 $A$，其中「$S$ 上的任意函数」都能唯一地求和（积分）成 $A$ 里的元素**。它要回答的问题是「无穷和什么时候有意义」。下面 (i) 先造自由的那一个，(ii) 用「唯一延拓」把「固态」这个词定死，(iii) 再把同一句话搬到复形上。',
+        '',
         '**(i) 自由固态群。** 对 profinite 集 $S = \\varprojlim_i S_i$（$S_i$ 有限），定义',
         '',
         '$$Z[S]^{\\blacksquare} := \\varprojlim_i \\mathbb{Z}[S_i].$$',
@@ -72,7 +76,7 @@ window.MG = window.MG || {};
         '',
         '是同构。'
       ].join('\n'),
-      notes: '⭐ 一句话：**「$S$ 上的函数」可以唯一地积分成 $A$ 里的元素**。这就是「完备化」在凝聚态世界里的正确形态 —— 名字叫 solid 而不是 complete，是因为它不是经典的拓扑完备（$\\mathbb{R}$ 的固态化反而是 $0$，见 `cor.solid-compact-generators`）。\n\n⭐ (ii) 等价于「$\\operatorname{Hom}(Z[S]^{\\blacksquare}, A) \\cong \\operatorname{Hom}(\\mathbb{Z}[S], A) = A(S)$」，即 free solid 群表示函子 $A \\mapsto A(S)$。\n\n⚠ (ii) 与 (iii) 的关系不是免费的：由 (ii) 只推出 $A[0]$ 固态；反过来「固态群的 $H^i$ 仍固态」要到 `thm.solid-derived` 才成立。\n\n⚠ 这里只写了**固态阿贝尔群**。模的情形要等解析环（`def.analytic-ring`）才有干净的语言。'
+      notes: '⭐ 一句话：**「$S$ 上的函数」可以唯一地积分成 $A$ 里的元素**。这就是固态理论里「补全」的正确形态 —— 名字叫 solid 而不是 complete，是因为它不是「拓扑上把 Cauchy 列补全」那个意思（$\\mathbb{R}$ 的固态化反而是 $0$，见 `cor.solid-compact-generators`）。\n\n⭐ (ii) 等价于「$\\operatorname{Hom}(Z[S]^{\\blacksquare}, A) \\cong \\operatorname{Hom}(\\mathbb{Z}[S], A) = A(S)$」，即 free solid 群表示函子 $A \\mapsto A(S)$。\n\n⚠ (ii) 与 (iii) 的关系不是免费的：由 (ii) 只推出 $A[0]$ 固态；反过来「固态群的 $H^i$ 仍固态」要到 `thm.solid-derived` 才成立。\n\n⚠ 这里只写了**固态阿贝尔群**。模的情形要等解析环（`def.analytic-ring`）才有干净的语言。'
     },
     {
       id: 'thm.csz-free',
@@ -84,13 +88,15 @@ window.MG = window.MG || {};
       tags: ['定理', '固态', '自由群'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Theorem 5.4'],
       statement: [
-        '对任意 profinite 集 $S$，连续函数群',
+        '白话：一件反直觉的事 —— 「$S$ 上取整数值的连续函数」看上去像「无穷多个 $\\mathbb{Z}$ 拼起来」的东西，它却**总是**自由阿贝尔群（有基、无关系）。这是整块固态理论能立住的那根钉子。',
+        '',
+        '对任意 profinite 集 $S$，连续函数群 $C(S, \\mathbb{Z})$（见 `def.cond-measure`）',
         '',
         '$$C(S, \\mathbb{Z}) = \\{\\, f : S \\to \\mathbb{Z}\\ \\text{连续} \\,\\}$$',
         '',
         '是**自由阿贝尔群**。'
       ].join('\n'),
-      notes: '⭐ 这是 Specker（1950，$S$ 为 $\\mathbb{Z}_p$ 型）与 Nöbeling（1968，一般 profinite）的结果。反直觉的地方：$C(S,\\mathbb{Z})$ 看起来像「无穷多个 $\\mathbb{Z}$ 的函数」，却**总是自由**的 —— 而它的对偶 $M(S,\\mathbb{Z}) = \\prod_I \\mathbb{Z}$ 才是大的那一头。\n\n⭐ 它是整个固态理论的支点：没有它，$Z[S]^{\\blacksquare}$ 就说不成 $\\prod_I \\mathbb{Z}$，`thm.solid-abelian` 里的「紧投射生成元」也就无从谈起。\n\n⚠ 注意 $C(S,\\mathbb{Z})$ 的**有界**版本 $C(S,\\mathbb{Z})$ 与 $C(S,\\mathbb{R})$ 行为完全不同：$C(S,\\mathbb{R})$ 一般不是自由 $\\mathbb{R}$-向量空间。'
+      notes: '⭐ 这是 Specker（1950，$S$ 为 $\\mathbb{Z}_p$ 型）与 Nöbeling（1968，一般 profinite）的结果。反直觉的地方：$C(S,\\mathbb{Z})$ 看起来像「每点给一个整数」的无穷乘积，却**总是自由**的 —— 而它的对偶 $M(S,\\mathbb{Z}) = \\prod_I \\mathbb{Z}$ 才是大的那一头。\n\n⭐ 它是整个固态理论的支点：没有它，$Z[S]^{\\blacksquare}$ 就说不成 $\\prod_I \\mathbb{Z}$，`thm.solid-abelian` 里的「紧投射生成元」也就无从谈起。\n\n⚠ 注意 $C(S,\\mathbb{Z})$ 与它的**有界**版本以及 $C(S,\\mathbb{R})$ 行为完全不同：$C(S,\\mathbb{R})$ 一般不是自由 $\\mathbb{R}$-向量空间。'
     },
     {
       id: 'cor.free-solid-product',
@@ -120,7 +126,7 @@ window.MG = window.MG || {};
       tags: ['命题', '固态', '超覆盖'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Proposition 5.6'],
       statement: [
-        '设 $S_\\bullet \\to S$ 是 profinite 集的一个 hypercover（即单纯对象 $S_\\bullet$ 配上增广 $S_\\bullet \\to S$，使得每一层的退化都给出同伦等价）。则凝聚态阿贝尔群的复形',
+        '设 $S_\\bullet \\to S$ 是 profinite 集的一个 hypercover（**超覆盖**：一般的「覆盖」只铺一层 $S_0 \\to S$，超覆盖用一列 $S_0, S_1, S_2, \\ldots$ 层层记录「上一层哪里重叠、重叠又怎么重叠」，形如单纯对象 $S_\\bullet$ 配上增广 $S_\\bullet \\to S$，且每一层的退化都是同伦等价）。则凝聚态阿贝尔群的复形',
         '',
         '$$\\cdots \\longrightarrow Z[S_1]^{\\blacksquare} \\longrightarrow Z[S_0]^{\\blacksquare} \\longrightarrow Z[S]^{\\blacksquare} \\longrightarrow 0$$',
         '',
@@ -152,7 +158,9 @@ window.MG = window.MG || {};
       tags: ['引理', '固态', '范畴'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Lemma 5.9'],
       statement: [
-        '设 $\\mathcal{A}$ 是有任意余极限的阿贝尔范畴，$\\mathcal{A}_0 \\subset \\mathcal{A}$ 是一族紧投射生成元。设 $F : \\mathcal{A}_0 \\to \\mathcal{A}$ 带自然变换 $X \\to F(X)$，满足：',
+        '白话：这条引理是一把**通用扳手** —— 想说明「某个子范畴像模范畴一样好用（有紧对象、有左伴随、导出范畴全忠实）」，不用逐条验，只要验一条 $\\operatorname{RHom}$ 条件。',
+        '',
+        '设 $\\mathcal{A}$ 是有任意余极限的阿贝尔范畴，$\\mathcal{A}_0 \\subset \\mathcal{A}$ 是一族紧投射生成元（= 一族生成元，其中每个对象既是**紧对象**又是**投射对象**；这是模范畴里「有限自由模」的抽象版）。设 $F : \\mathcal{A}_0 \\to \\mathcal{A}$ 带**自然变换** $X \\to F(X)$，即一族映射 $\\eta_X : X \\to F(X)$，且对 $\\mathcal{A}_0$ 里每个映射 $u : X \\to X\'$ 都有 $F(u) \\circ \\eta_X = \\eta_{X\'} \\circ u$（「$F$ 与 $u$ 可交换」），它满足：',
         '',
         '对任意 $X \\in \\mathcal{A}_0$、任意由 $F$ 的像的直和构成的映射 $f : Y \\to Z$ 及其核 $K$，',
         '',
@@ -164,7 +172,7 @@ window.MG = window.MG || {};
         '',
         '**(ii)** $D(\\mathcal{A}_F) \\to D(\\mathcal{A})$ 全忠实，像恰为那些满足 $\\operatorname{RHom}(F(X), C) \\cong \\operatorname{RHom}(X, C)$ 的复形；$C \\in D(\\mathcal{A}_F)$ 当且仅当所有 $H^i(C) \\in \\mathcal{A}_F$；含入有左伴随（$L$ 的左导出）。'
       ].join('\n'),
-      notes: '⭐ 这是一条**纯范畴论**的引理：它把「证明某个完备化子范畴性质良好」压缩成一条 Ext-消没条件。`thm.solid-abelian` 就是它的实例（$\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$，$F(\\mathbb{Z}[S]) = Z[S]^{\\blacksquare}$）。\n\n⚠ 条件里只对**核**要求同构，不对余核要求 —— 但对偶地写成余核也一样（见原文 Remark 5.11）。\n\n📌 证明是标准的同调代数：先证 $\\mathcal{A}_F$ 对核与极限封闭，再用「两个直和之间的映射」把余核也拉进来，最后用 Postnikov 截断把复形的情形归约到单点。'
+      notes: '⭐ 这是一条**纯范畴论**的引理：它把「证明某个补全出来的子范畴性质良好」压缩成一条 Ext-消没条件。`thm.solid-abelian` 就是它的实例（$\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$，$F(\\mathbb{Z}[S]) = Z[S]^{\\blacksquare}$）。\n\n⚠ 条件里只对**核**要求同构，不对余核要求 —— 但对偶地写成余核也一样（见原文 Remark 5.11）。\n\n📌 证明是标准的同调代数：先证 $\\mathcal{A}_F$ 对核与极限封闭，再用「两个直和之间的映射」把余核也拉进来，最后用 Postnikov 截断把复形的情形归约到单点。'
     },
     {
       id: 'thm.solid-abelian',
@@ -176,6 +184,8 @@ window.MG = window.MG || {};
       tags: ['定理', '固态', '阿贝尔范畴'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Theorem 5.8 (i)'],
       statement: [
+        '白话：**固态子范畴 $\\mathbf{Solid}$ 是一个「像模范畴一样好用」的地方** —— 它有足够多的紧投射对象（$\\prod_I \\mathbb{Z}$），所以能造张量积、Ext、导出范畴而不出怪事。这是整套理论的引擎。',
+        '',
         '设 $\\mathbf{Solid} \\subset \\operatorname{Cond}(\\mathbf{Ab})$ 是固态阿贝尔群的全子范畴。则：',
         '',
         '**(i)** $\\mathbf{Solid}$ 是阿贝尔子范畴，对一切极限、余极限与扩张稳定；对象 $\\prod_I \\mathbb{Z}$（$I$ 任意）构成一族**紧投射生成元**；含入有左伴随',
@@ -220,6 +230,8 @@ window.MG = window.MG || {};
       tags: ['推论', '固态', '紧对象'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VI, Corollary 6.1'],
       statement: [
+        '白话：固态范畴里「最好用」的对象（紧对象兼投射对象）不多不少，正好是那些大乘积 $\\prod_I \\mathbb{Z}$ —— 有限自由模的无穷版。而且 $D(\\mathbf{Solid})$ 整个由它们生成，所以对它做同调代数就像对 $D^b(\\mathbb{Z})$ 做一样。',
+        '',
         '**(i)** $\\mathbf{Solid}$ 的紧投射对象恰为形如 $\\prod_I \\mathbb{Z}$ 的群（$I$ 任意）。',
         '',
         '**(ii)** $D(\\mathbf{Solid})$ 由紧对象生成，紧对象是各项为 $\\prod_I \\mathbb{Z}$ 的有界复形；函子',
@@ -230,7 +242,7 @@ window.MG = window.MG || {};
         '',
         '**(iii)** $\\mathbb{R}$ 的导出固态化消失：$\\mathbb{R}^{L\\blacksquare} = 0$。'
       ].join('\n'),
-      notes: '⭐ (iii) 是「非阿基米德完备化」最刺眼的地方：$\\mathbb{R}$ 在固态意义下**完备化成 $0$**。这不是 bug —— 固态理论是为 $p$-进/解析几何设计的，阿基米德方向要另做（Clausen–Scholze 后来的“analytic stacks”里用液态/解析环处理）。\n\n⚠ 对照：$\\mathbb{Z}_p$ 固态化后还是自己（$p$-进完备），$\\mathbb{R}$ 却没了 —— 「solid」不能译成「完备」。'
+      notes: '⭐ (iii) 是「非阿基米德式补全」最刺眼的地方：$\\mathbb{R}$ 在固态意义下**补全成 $0$**。这不是 bug —— 固态理论是为 $p$-进/解析几何设计的，阿基米德方向要另做（Clausen–Scholze 后来的“analytic stacks”里用液态/解析环处理）。\n\n⚠ 对照：$\\mathbb{Z}_p$ 固态化后还是自己（$p$-进意义下已经补全过了），$\\mathbb{R}$ 却没了 —— 「solid」不能理解成「把空间补全」。'
     },
     {
       id: 'thm.solid-tensor',
@@ -248,7 +260,7 @@ window.MG = window.MG || {};
         '',
         '**(ii)** $D(\\mathbf{Solid})$ 上有唯一的对称幺半结构 $\\otimes^{L\\blacksquare}$，使 $C \\mapsto C^{L\\blacksquare}$ 对称幺半；它是 $\\otimes^{\\blacksquare}$ 的左导出。'
       ].join('\n'),
-      notes: '⭐ 这是整套理论**要造的那个东西**：一个行为良好的完备张量积。对照：经典的 $\\mathbb{Z}_p \\hat\\otimes \\mathbb{R}$ 没有好定义，而 $\\mathbb{Z}_p \\otimes^{L\\blacksquare} \\mathbb{R} = 0$（见 `ex.solid-tensor-computations`）。\n\n⚠ 唯一性来自「保余极限的函子由自由对象上的值决定」；存在性要验证 $(M \\otimes N)^{\\blacksquare} \\to (M^{\\blacksquare} \\otimes N^{\\blacksquare})^{\\blacksquare}$ 是同构，归约到 $M = \\mathbb{Z}[S]$、$N = \\mathbb{Z}[T]$ 后用 `cor.solid-compact-generators` 的 (iv) 型计算。'
+      notes: '⭐ 这是整套理论**要造的那个东西**：一个能和「补全」相容的张量积。对照：经典的 $\\mathbb{Z}_p \\hat\\otimes \\mathbb{R}$ 没有好定义，而 $\\mathbb{Z}_p \\otimes^{L\\blacksquare} \\mathbb{R} = 0$（见 `ex.solid-tensor-computations`）。\n\n⚠ 唯一性来自「保余极限的函子由自由对象上的值决定」；存在性要验证 $(M \\otimes N)^{\\blacksquare} \\to (M^{\\blacksquare} \\otimes N^{\\blacksquare})^{\\blacksquare}$ 是同构，归约到 $M = \\mathbb{Z}[S]$、$N = \\mathbb{Z}[T]$ 后用 `cor.solid-compact-generators` 的 (iv) 型计算。'
     },
     {
       id: 'prop.solid-product-tensor',
@@ -284,7 +296,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathbb{Z}_p \\otimes^{L\\blacksquare} \\mathbb{Z}[[T]] = \\mathbb{Z}_p[[T]], \\qquad \\mathbb{Z}[[U]] \\otimes^{L\\blacksquare} \\mathbb{Z}[[T]] = \\mathbb{Z}[[U,T]].$$'
       ].join('\n'),
-      notes: '⭐ 读法：固态张量积**同时读取两个因子的 $I$-进拓扑，再把它们合起来**。$\\mathbb{Z}_p$ 自带 $p$-进完备，$\\mathbb{Z}[[T]]$ 自带 $T$-进完备，合起来就是 $\\mathbb{Z}_p[[T]]$。\n\n⚠ 第一条（$\\mathbb{Z}_p \\otimes^{L\\blacksquare} \\mathbb{R} = 0$）不是「算错」：它等于说 $\\mathbb{R}$ 的固态化是 $0$（`cor.solid-compact-generators` (iii)）。\n\n📌 推导顺序：最后一条由 `prop.solid-product-tensor` 得到；往上是商掉 $U - p$、$T - \\ell$、$T - p$ 得到的。'
+      notes: '⭐ 读法：固态张量积**同时读取两个因子的 $I$-进拓扑，再把它们合起来**。$\\mathbb{Z}_p$ 自带 $p$-进补全，$\\mathbb{Z}[[T]]$ 自带 $T$-进补全，合起来就是 $\\mathbb{Z}_p[[T]]$。\n\n⚠ 第一条（$\\mathbb{Z}_p \\otimes^{L\\blacksquare} \\mathbb{R} = 0$）不是「算错」：它等于说 $\\mathbb{R}$ 的固态化是 $0$（`cor.solid-compact-generators` (iii)）。\n\n📌 推导顺序：最后一条由 `prop.solid-product-tensor` 得到；往上是商掉 $U - p$、$T - \\ell$、$T - p$ 得到的。'
     }
   ],
 

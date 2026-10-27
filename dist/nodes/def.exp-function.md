@@ -1,6 +1,6 @@
 # 指数函数　`def.exp-function`
 指数函数 $\exp$（由幂级数定义）
-layer 16 · 定义 · 函数列、幂级数与初等函数 · 分析学
+layer 16 · 定义 · 函数列、幂级数与初等函数 · 数学分析
 [在星图里打开](../#n=def.exp-function)　·　[节点索引](../index.md)
 
 对 $z \in \mathbb{C}$，定义

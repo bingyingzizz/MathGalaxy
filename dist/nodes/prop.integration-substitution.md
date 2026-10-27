@@ -1,6 +1,6 @@
 # 换元积分　`prop.integration-substitution`
 命题：换元公式
-layer 22 · 命题 · Riemann 积分 · 分析学
+layer 22 · 命题 · Riemann 积分 · 数学分析
 [在星图里打开](../#n=prop.integration-substitution)　·　[节点索引](../index.md)
 
 设 $\varphi : [\alpha, \beta] \to [a, b]$ 有连续导数，$f$ 在 $[a, b]$ 上连续。则

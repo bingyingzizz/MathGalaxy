@@ -1,7 +1,7 @@
 # 完备化判据　`lem.solid-completion-criterion`　·　说明
 根 `../`
 
-⭐ 这是一条**纯范畴论**的引理：它把「证明某个完备化子范畴性质良好」压缩成一条 Ext-消没条件。`thm.solid-abelian` 就是它的实例（$\mathcal{A} = \operatorname{Cond}(\mathbf{Ab})$，$F(\mathbb{Z}[S]) = Z[S]^{\blacksquare}$）。
+⭐ 这是一条**纯范畴论**的引理：它把「证明某个补全出来的子范畴性质良好」压缩成一条 Ext-消没条件。`thm.solid-abelian` 就是它的实例（$\mathcal{A} = \operatorname{Cond}(\mathbf{Ab})$，$F(\mathbb{Z}[S]) = Z[S]^{\blacksquare}$）。
 
 ⚠ 条件里只对**核**要求同构，不对余核要求 —— 但对偶地写成余核也一样（见原文 Remark 5.11）。
 

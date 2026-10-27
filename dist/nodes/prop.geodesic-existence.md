@@ -3,7 +3,7 @@
 layer 27 · 命题 · 内蕴几何 · 微分几何
 [在星图里打开](../#n=prop.geodesic-existence)　·　[节点索引](../index.md)
 
-对任意 $p \in S$ 与任意 $v \in T_{p}S$，存在 $\varepsilon > 0$ 与唯一的测地线 $\gamma_{v} : (-\varepsilon,\varepsilon)\to S$ 使 $\gamma_{v}(0) = p$、$\dot\gamma_{v}(
+白话：**从任意一点、朝任意方向，都能画出唯一一条「笔直走」的曲线（测地线）** —— 至少在一小段上。这是解二阶常微分方程的存在
 > 陈述续见 [nodes/prop.geodesic-existence.2.md](./prop.geodesic-existence.2.md)
 
 

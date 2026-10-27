@@ -19,6 +19,8 @@
 
 - 实数 | real numbers | ℝ | 实数系 | 实数构造 → def.real
 
+- 复数 | complex numbers | ℂ → def.complex
+
 - 阿基米德 | Archimedean | 阿基米德性质 → lem.archimedean
 
 - 实数不可数 | ℝ 不可数 | uncountability of the reals → thm.real-uncountable
@@ -28,7 +30,5 @@
 - 序数 | ordinal | 序数定义 → def.ordinal
 
 - 超限归纳 | 超限递归 | transfinite recursion | transfinite induction → thm.recursion-wellorder
-
-- 序数可比 | 序数三分 → thm.ordinal-trichotomy
 
 > 续见 alias/aka/set-theory.4.md

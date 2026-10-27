@@ -90,6 +90,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '联络形式', '活动标架'],
       statement: [
+        '白话：标架**自己也会转** —— 沿某个方向走一小步，$(e_{1},e_{2},e_{3})$ 就微微转动一点。**联络形式**就是把这件「转动」记下来的九个 $1$-形式：喂给它一个方向，它告诉你标架绕哪个轴、转多快。和 Christoffel 符号是一回事，只是换了正交标架来记。',
+        '',
         '把 $\\mathrm{d}e_{i}$ 按标架展开，系数记作 $\\omega^{j}_{\\ i}$：',
         '',
         '$$\\mathrm{d}e_{i} = \\sum_{j=1}^{3}\\omega^{j}_{\\ i}\\,e_{j},\\qquad \\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle .$$',
@@ -105,7 +107,7 @@ window.MG = window.MG || {};
         '**名字的来历**：$\\omega^{j}_{\\ i}$ 描述「沿某个方向走时，标架怎么转」。它不是无端造出来的外形式：每一点上是 $\\mathbb{R}^{3}$ 的一个 $3\\times3$ 反称矩阵（$3$ 个自由度），沿方向取值就成了 $1$-形式。',
         '⭐ **这一拆分就是曲面论**：$\\mathbb{R}^{3}$ 里曲率形式恒为零；限制到曲面上，$\\omega^{1}_{\\ 2}$ 那部分由内蕴度量决定（Gauss 方程），剩下的外蕴部分给出 $II$ 与 Codazzi 方程。整本曲面论都在读这两类形式的系数。',
         '⚠️ $\\omega^{i}_{\\ j}$ 与 $\\omega^{j}_{\\ i}$ 差一个负号，是全图最容易抄错的地方。判据只有一条：对 $\\langle e_{i}, e_{j}\\rangle = \\delta_{ij}$ 取外微分，不要凭记忆。',
-        '**与 Christoffel 符号的关系**：在**不正交**的标架 $\\{r_{u}, r_{v}, n\\}$ 上把它写开，系数就是 $\\Gamma^{k}_{\\ ij}$ 与 $h_{ij}$ 的混合体（见）；只有在正交标架下它才变成干净的反对称矩阵。'
+        '**与 Christoffel 符号的关系**：在**不正交**的标架 $\\{r_{u}, r_{v}, n\\}$ 上把它写开，系数就是 $\\Gamma^{k}_{\\ ij}$ 与 $h_{ij}$ 的混合体（对照 `def.second-fundamental-form` 与 `def.christoffel-symbol`）；只有在正交标架下它才变成干净的反对称矩阵。'
       ].join('\n\n'),
       refs: [
         'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式',
@@ -148,9 +150,11 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定理', '微分几何', '结构方程', '活动标架', '可积性'],
       statement: [
+        '白话：**这两条方程管着「标架怎么动」**。第一式（挠率为零）说「余标架的变化完全由联络形式决定，没有额外的拧劲」；第二式（$\\mathbb{R}^{3}$ 是平的）说「沿两个方向各转一次，结果与先后顺序无关」。合起来就是 $\\mathrm{d}^{2} = 0$ 在标架下的样子。',
+        '',
         '设 $\\omega^{i}$ 是对偶余标架（$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$）、$\\omega^{i}_{\\ j}$ 是联络形式。则',
         '',
-        '**第一结构方程**（无挠）',
+        '**第一结构方程**（挠率为零）',
         '',
         '$$\\mathrm{d}\\omega^{i} = \\sum_{j}\\omega^{j}\\wedge\\omega^{i}_{\\ j} ;$$',
         '',
@@ -377,7 +381,7 @@ window.MG = window.MG || {};
         '',
         '$$K = \\det(c_{ij}) = \\det(h_{ij}) = \\frac{LN-M^{2}}{EG-F^{2}} .$$',
         '',
-        '等价的无指标形式（$\\mathbb{R}^{3}$ 平坦性的曲面分量）：',
+        '等价的无指标形式（$\\mathbb{R}^{3}$ 是平的、曲率为零这件事在曲面上的分量）：',
         '',
         '$$\\langle R(X,Y)Z, W\\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W).$$'
       ].join('\n'),
@@ -387,7 +391,7 @@ window.MG = window.MG || {};
         '⚠️ **指标次序是约定**：若记 $R_{ijkl} = \\langle R(e_{i}, e_{j})e_{k}, e_{l}\\rangle$，上面的向量形式写成 $R_{ijkl} = h_{jk}h_{il}-h_{ik}h_{jl}$，符号与另一种指标次序相反；若取 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$ 对应把 $W$ 放在后一对位置的约定，那时 $R_{1212} = LN-M^{2} = K(EG-F^{2})$ 成立。用指标式之前先对齐 $R$ 的约定，符号才有意义。',
         '**二维只剩一个独立分量**：$R_{ijkl}$ 的分量被对称性锁死，二维时只有一个（$R_{1212}$），所以二维的 Gauss 方程是**一个**方程 —— 这也是二维曲面论能算得动的原因。',
         '**点的分类**：$K > 0$ 椭圆点、$K = 0$ 且主曲率不全为零是抛物点、$K < 0$ 双曲点；$k_{1} = k_{2}$ 为脐点。',
-        '⭐ **读出来的推论（绝妙定理）**：$K = \\mathrm{d}\\omega^{1}_{\\ 2}/(\\omega^{1}\\wedge\\omega^{2})$ 里只出现 $\\omega^{1},\\omega^{2}$；而 $\\omega^{1}_{\\ 2}$ 由 $\\mathrm{d}\\omega^{1},\\mathrm{d}\\omega^{2}$ 加无挠条件唯一解出（写 $\\omega^{1}_{\\ 2} = a_{1}\\omega^{1}+a_{2}\\omega^{2}$，两个方程给两个系数），所以 $K$ 只依赖 $I$ —— 即 Gauss 曲率是**内蕴**量。这条结果在 `diffgeom.intrinsic` 里有独立节点 `thm.theorema-egregium`（证明走标架与测地极坐标两条路），本包按「一个概念一个节点」不再重复建点，只把这一步记在这里。',
+        '⭐ **读出来的推论（绝妙定理）**：$K = \\mathrm{d}\\omega^{1}_{\\ 2}/(\\omega^{1}\\wedge\\omega^{2})$ 里只出现 $\\omega^{1},\\omega^{2}$；而 $\\omega^{1}_{\\ 2}$ 由 $\\mathrm{d}\\omega^{1},\\mathrm{d}\\omega^{2}$ 加挠率为零的条件唯一解出（写 $\\omega^{1}_{\\ 2} = a_{1}\\omega^{1}+a_{2}\\omega^{2}$，两个方程给两个系数），所以 $K$ 只依赖 $I$ —— 即 Gauss 曲率是**内蕴**量。这条结果在 `diffgeom.intrinsic` 里有独立节点 `thm.theorema-egregium`（证明走标架与测地极坐标两条路），本包按「一个概念一个节点」不再重复建点，只把这一步记在这里。',
         '**面积读法**：Gauss 映射把面积元放大 $\\det(\\mathrm{d}n) = \\det W = K$ 倍（带符号），所以 $K = \\pm|n_{u}\\times n_{v}|/|r_{u}\\times r_{v}|$。这与 $\\det h$ 是同一个量。'
       ].join('\n\n'),
       refs: [
@@ -520,6 +524,8 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '平均曲率', 'Gauss 曲率'],
       statement: [
+        '白话：一个点上有两个主曲率 $k_{1}, k_{2}$（沿两个主方向的弯曲程度），它们的**平均**叫平均曲率 $H$、**乘积**叫 Gauss 曲率 $K$。$H$ 与「极小曲面」（肥皂膜）有关，$K$ 与「曲面弯不弯得平」有关。这两个数就是形状算子 $W$ 的全部不变量（一个 $2\\times2$ 对称矩阵只有迹与行列式两个）。',
+        '',
         '$$H := \\frac{1}{2}\\operatorname{tr}W = \\frac{1}{2}(k_{1}+k_{2}),\\qquad K := \\det W = k_{1}k_{2}.$$',
         '',
         '$H$ 叫**平均曲率**，$K$ 叫 **Gauss 曲率**（与 `thm.gauss-equation` 的定义一致）。用 $I, II$ 的分量写：',
@@ -529,7 +535,7 @@ window.MG = window.MG || {};
       notes: [
         '**为什么是这两个**：$W$ 是 $2\\times2$ 对称矩阵，它的两个不变量就是迹与行列式 —— 也就是特征多项式的两个系数。所以 $H, K$ 不是随便挑的组合，它们是 $II$ 相对 $I$ 的**全部**不变量。',
         '**特征方程**：$W^{2}-2HW+K\\,\\mathrm{id} = 0$（Cayley–Hamilton），翻成二次形式是 $III-2H\\,II+K\\,I = 0$。写的就是这条恒等式（原文中间项看起来像 $2H\\,I$，按推导应是 $2H\\,II$ —— 我按正确形式记在这里）。',
-        '**两个极端**：极小曲面 $H \\equiv 0$（「定边界曲面中面积取极值」）；可展曲面 $K \\equiv 0$（等价于「直纹且 $\\langle a^{\\prime}, b^{\\prime}, b\\rangle = 0$」，）。',
+        '**两个极端**：极小曲面 $H \\equiv 0$（「定边界曲面中面积取极值」）；可展曲面 $K \\equiv 0$（等价于「直纹且 $\\langle a^{\\prime}, b^{\\prime}, b\\rangle = 0$」，即「整片能摊平在平面上」）。',
         '⚠️ $H$ 的符号随 $n$ 变，$K$ 不变。所以「$H = 0$」「$K = 0$」是与法向无关的陈述，而「$H > 0$」不是。'
       ].join('\n\n'),
       refs: [
@@ -539,7 +545,7 @@ window.MG = window.MG || {};
     },
 
     {
-      id: 'thm.euler-formula',
+      id: 'thm.euler-formula-surface',
       cluster: 'diffgeom.surface',
       type: 'theorem',
       label: 'Euler 公式',
@@ -640,7 +646,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **为什么 Gauss–Codazzi 恰好是充要条件**：结构方程 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$、$\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$ 是关于 $(r, e_{1}, e_{2}, e_{3})$ 的一阶线性偏微分方程组，系数 $\\omega^{i}, \\omega^{i}_{\\ j}$ 由 $g, h$ 代数地给出。相容性条件只有 $\\mathrm{d}^{2} = 0$，它拆成两块：$\\Omega^{1}_{\\ 2} = 0$（Gauss）与 $\\Omega^{i}_{\\ 3} = 0$（Codazzi）。这就是「Gauss–Codazzi 是唯一障碍」的全部内容。',
-        '**三步构造**：(i) 由 $g$ 取正交余标架 $\\omega^{1}, \\omega^{2}$，用无挠条件解出 $\\omega^{1}_{\\ 2}$；(ii) 由 $h$ 定 $\\omega^{i}_{\\ 3}$，Gauss–Codazzi 保证 $\\mathrm{d}^{2} = 0$，于是（Frobenius 定理）局部解出正交标架 $(e_{1}, e_{2}, e_{3})$；(iii) 再解 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ —— 这一支只需 $\\mathrm{d}^{2}r = 0$，而它正是第一结构方程。',
+        '**三步构造**：(i) 由 $g$ 取正交余标架 $\\omega^{1}, \\omega^{2}$，用挠率为零的条件解出 $\\omega^{1}_{\\ 2}$；(ii) 由 $h$ 定 $\\omega^{i}_{\\ 3}$，Gauss–Codazzi 保证 $\\mathrm{d}^{2} = 0$，于是（Frobenius 定理）局部解出正交标架 $(e_{1}, e_{2}, e_{3})$；(iii) 再解 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ —— 这一支只需 $\\mathrm{d}^{2}r = 0$，而它正是第一结构方程。',
         '**唯一性**：两组解之差是一个平行的（常）正交变换加平移；把初始标架对齐就重合。',
         '⚠️ **单连通去不掉**：否则整体平行移动会出现和乐（holonomy），局部解拼不成整体曲面。',
         '📌 结论是「既给 C–C 方程是结构方程可积性条件；满足 C–C 方程的曲面局部存在解」，正是本定理的两半。这里把「可积性条件」明确成 $\\Omega = 0$ 的两组分量。'
@@ -788,7 +794,7 @@ window.MG = window.MG || {};
       id: 'dep.dg-principal-euler',
       kind: 'definition',
       definition: 'def.principal-curvature',
-      usedBy: 'thm.euler-formula',
+      usedBy: 'thm.euler-formula-surface',
       note: 'Euler 公式里的 $k_{1}, k_{2}$ 与 $\\theta$ 分别是主曲率与相对主方向的夹角。'
     },
     {
@@ -1041,7 +1047,7 @@ window.MG = window.MG || {};
       id: 'imp.dg-euler',
       kind: 'implication',
       sources: ['def.principal-curvature', 'def.weingarten-map'],
-      target: 'thm.euler-formula',
+      target: 'thm.euler-formula-surface',
       title: '谱定理 $\\implies$ Euler 公式',
       proof: [
         '主方向标架下 $W(e_{1}) = k_{1}e_{1}$、$W(e_{2}) = k_{2}e_{2}$，且 $e_{1}\\perp e_{2}$、$\\lVert e_{1}\\rVert = \\lVert e_{2}\\rVert = 1$（`thm.rodrigues` 给出特征向量的几何意义）。设单位向量 $V = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$，则',

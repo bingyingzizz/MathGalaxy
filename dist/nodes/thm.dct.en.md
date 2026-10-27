@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · theorem · cluster Integration (`analysis.integral`) · Analysis
+layer 20 · theorem · cluster Integration (`analysis.integral`) · Functions of a Real Variable / Mathematical Analysis
 names: `Dominated Convergence` (short) · `DCT, Dominated Convergence Theorem` (full)
 
 ## Statement and proof

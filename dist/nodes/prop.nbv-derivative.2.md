@@ -2,16 +2,23 @@
 [在星图里打开](../#n=prop.nbv-derivative)　·　第 1 页 [nodes/prop.nbv-derivative.md](./prop.nbv-derivative.md)
 
 ## 陈述（续）
-则 $F' \in L^1(
-m)$，并且
-$$\mu_F \per
-p  m \iff F' =
- 0\quad  \tex
+ NBV$。则 $
+F' \in L
+^1(m)$，并且
+$$\mu_F
+ \perp  
+m \iff F
+' = 0\qu
+ad  \tex
 t{a.e.}$$
-$$\m
-u_F \ll  m \
-iff F(x) = \in
-t_{-\infty}^{
-x} F'(t) dt$$
+
+$$\mu_
+F \ll  m
+ \iff F(
+x) = \in
+t_{-\in
+fty}^{x} 
+F'(t) dt$
+$
 
 > 续见 [nodes/prop.nbv-derivative.3.md](./prop.nbv-derivative.3.md)

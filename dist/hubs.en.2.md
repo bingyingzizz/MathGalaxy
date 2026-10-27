@@ -12,6 +12,6 @@
 - **5** `prop.cg-coreflective` Compactly Generated Spaces Form a Coreflective Subcategory · layer 18 · 紧生成空间与弱 Hausdorff
 - **5** `thm.topos-abelian-grothendieck` Abelian Groups in a Topos Form a Grothendieck Category · layer 19 · 阿贝尔层
 - **5** `prop.nbv-derivative` Derivative of an NBV Function and Its Measure · layer 20 · 有界变差与绝对连续
-- **4** `thm.ring-monotone-sigma` When a Ring Is a Sigma-ring · layer 5 · 集合族与 σ-代数
+- **5** `thm.gauss-bonnet` 高斯博内定理 · layer 29 · 内蕴几何
 
 > continued in `hubs.en.3.md`

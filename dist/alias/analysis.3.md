@@ -1,4 +1,4 @@
-# 问法 → 节点 · 分析学
+# 问法 → 节点 · 数学分析
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/analysis.md`
 
 - 什么时候一个测度有密度 → thm.lebesgue-radon-nikodym def.absolute-continuity def.rn-derivative

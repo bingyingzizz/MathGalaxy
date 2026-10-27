@@ -1,7 +1,7 @@
 # 克里斯托费尔记号　`def.christoffel-symbol`　·　说明
 根 `../`
 
-**来处只有 Koszul 公式**。「无挠」与「保度量」两条要求合起来给出唯一解：
+**来处只有 Koszul 公式**。「挠率为零」与「保度量」两条要求合起来给出唯一解：
 
 $$2\langle \nabla_{X}Y,Z\rangle = X\langle Y,Z\rangle+Y\langle Z,X\rangle-Z\langle X,Y\rangle+\langle [X,Y],Z\rangle-\langle [Y,Z],X\rangle+\langle [Z,X],Y\rangle.$$
 

@@ -1,6 +1,8 @@
 # 别名 → 节点 · 集合论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../set-theory.md`
 
+- 序数可比 | 序数三分 → thm.ordinal-trichotomy
+
 - 序型 | order type | 序数表示 → thm.wellorder-ordinal
 
 - Burali-Forti | 序数全体是真类 | 布拉利-福尔蒂 → thm.burali-forti

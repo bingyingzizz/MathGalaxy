@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · lemma · cluster Arithmetic and Inequalities on the Reals (`analysis.real-calc`) · Set Theory / Analysis
+layer 14 · lemma · cluster Arithmetic and Inequalities on the Reals (`analysis.real-calc`) · Mathematical Analysis / Set Theory
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/lem.archimedean.md` and `proofs/`.

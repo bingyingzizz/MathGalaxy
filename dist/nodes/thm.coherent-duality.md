@@ -3,7 +3,7 @@
 layer 21 · 定理 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=thm.coherent-duality)　·　[节点索引](../index.md)
 
-设 $A$ 是有限生成 $\mathbb{Z}$-代数，$f : \operatorname{Spec} A \to \operatorname{Spec} \mathbb{Z}$ 是投影。定义
+设 $A$ 是有限生成 $\mathbb{Z}$-代数，$f : \operatorname{Spec} A \to \operatorname{Spec} \mathbb{Z}$ 是结构映射（把系数环的谱投下来）。定义
 
 $$f_! : D(A_\blacksquare) \xrightarrow{j_!} D((A,\mathbb{Z})_\blacksquare) \longrightarrow D(\mathbb{Z}_\blacksquare).$$
 

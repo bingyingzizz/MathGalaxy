@@ -1,5 +1,7 @@
-# 别名 → 节点 · 分析学
+# 别名 → 节点 · 数学分析
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
+
+- 本性上界 | essential supremum | L-infinity | L∞ 范数 → def.essential-sup
 
 - Lp 范数 | Lp norm | L^p 空间 → def.lp-norm
 
@@ -28,7 +30,5 @@
 - 有界泛函给出 Lq → prop.bounded-functional-gives-lq
 
 - Banach | 巴拿赫空间 | Lp 完备 → thm.lp-banach
-
-- Riesz 表示 | 对偶空间 | dual space | (Lp)* = Lq → thm.riesz-representation-lp
 
 > 续见 alias/aka/analysis.12.md

@@ -6,3 +6,4 @@
 - ⇒ [`thm.cramer`](../nodes/thm.cramer.md) Cramer 法则
 - 被 [`def.char-poly`](../nodes/def.char-poly.md) 特征多项式 用
 - 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
+- 被 [`def.area-element`](../nodes/def.area-element.md) 面积元 用

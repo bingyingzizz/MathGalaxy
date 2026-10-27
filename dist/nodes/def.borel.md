@@ -1,6 +1,6 @@
 # Borel σ-代数　`def.borel`
 Borel σ-代数（Borel σ-Algebra $\mathfrak{B}_X$）
-layer 6 · 定义 · 集合族与 σ-代数 · 分析学+拓扑学
+layer 6 · 定义 · 集合族与 σ-代数 · 实变函数+数学分析+拓扑学
 [在星图里打开](../#n=def.borel)　·　[节点索引](../index.md)
 
 设 $X$ 是拓扑空间。$X$ 上的 **$Borel \sigma$代数**是由全体开集生成的 $\sigma$代数：

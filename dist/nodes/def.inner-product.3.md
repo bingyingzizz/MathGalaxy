@@ -8,3 +8,5 @@
 - ⇒ [`thm.cauchy-schwarz`](../nodes/thm.cauchy-schwarz.md) Cauchy–Schwarz 不等式
 - 被 [`def.gradient`](../nodes/def.gradient.md) 梯度 用
 - 被 [`def.regular-surface`](../nodes/def.regular-surface.md) 曲面与参数化 用
+- 被 [`def.arc-length`](../nodes/def.arc-length.md) 弧长 用
+- 被 [`def.riemannian-metric`](../nodes/def.riemannian-metric.md) 黎曼度量 用

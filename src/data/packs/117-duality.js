@@ -31,11 +31,13 @@ window.MG = window.MG || {};
       tags: ['定义', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, p. 72'],
       statement: [
+        '白话：**6-函子形式 = 给每个空间配「换底、推前、对偶」六个操作，并且要求它们像经典的 Poincaré / Serre 对偶那样相容**。目的只有一个：把「上同调」变成「内积」，于是能把上同调类互相点乘、并算出结果。经典几何（层、$\\ell$-进上同调）和固态几何都各自有一套这样的六个函子。',
+        '',
         '一个**6-函子形式**由下列数据组成：',
         '',
         '- 每个概形 $X$ 给一个闭对称幺半三角范畴 $D(X)$（张量积 $- \\otimes_X -$ 有右伴随 $\\operatorname{Hom}_X$）；',
-        '- 每个映射 $f : X \\to Y$ 给**拉回** $f^* : D(Y) \\to D(X)$，它有右伴随 $f_*$；',
-        '- 每个（满足适当条件的）映射 $f : X \\to Y$ 给**紧支撑推前** $f_! : D(X) \\to D(Y)$，它有右伴随 $f^!$。',
+        '- 每个映射 $f : X \\to Y$ 给**拉回** $f^* : D(Y) \\to D(X)$，它有右伴随 $f_*$（推前）；',
+        '- 每个（满足适当条件的）映射 $f : X \\to Y$ 给**紧支撑推前** $f_! : D(X) \\to D(Y)$（只保留「支撑落在 $f$ 的纤维紧集里」的那部分，类比积分只在紧区域上才有意义），它有右伴随 $f^!$（对偶）。',
         '',
         '合计六个函子：$\\otimes,\\ \\operatorname{Hom},\\ f^*,\\ f_*,\\ f_!,\\ f^!$。它们应当满足：',
         '',
@@ -61,7 +63,9 @@ window.MG = window.MG || {};
       tags: ['命题', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.2'],
       statement: [
-        '设 $j : X_{\\mathrm{ad}} \\to X_{\\mathrm{ad}/Y}$ 是开浸入。则遗忘函子',
+        '白话：**开浸入 $j$（把开子集塞进去）总该有一个「反常」的推前 $j_!$：只在开子集里面存东西、外面一律零**。经典层论里这是显然的（直接令 $j_!\\mathcal{F}$ 在 $U$ 外为 $0$），但在固态模里要证明它存在 —— 这需要 $\\prod$ 与局部化交换，正是固态理论刚好补上的那块。',
+        '',
+        '设 $j : X_{\\mathrm{ad}} \\to X_{\\mathrm{ad}/Y}$ 是**开浸入**（开子集到全空间的包含映射；$U \\subseteq V$ 开，$j$ 让 $U$ 的点原样落进 $V$），$j^*$ 是沿它拉回（限制）的遗忘函子。则遗忘函子',
         '',
         '$$j^* : D\\bigl((\\mathcal{O}_{X_{\\mathrm{ad}/Y}}, \\mathcal{O}^+_{X_{\\mathrm{ad}/Y}})_\\blacksquare\\bigr) \\longrightarrow D\\bigl((\\mathcal{O}_{X_{\\mathrm{ad}}}, \\mathcal{O}^+_{X_{\\mathrm{ad}}})_\\blacksquare\\bigr)$$',
         '',
@@ -89,6 +93,8 @@ window.MG = window.MG || {};
       tags: ['定义', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Definition 11.3'],
       statement: [
+        '白话：**$f_!$ 就是「先在开的地方塞进去、再沿相对化的空间正常推前」两步的复合**；它的右伴随 $f^!$ 就是对偶复形函子。名字里的「紧支撑」来自直觉：$f_!$ 只记得「支撑在每根纤维的紧集上」的那部分上同调，就像积分只在有界区域上算。',
+        '',
         '设 $f : X \\to Y$ 是分离、有限型的概形映射，对应 adic 空间图',
         '',
         '$$\\begin{array}{ccc} X_{\\mathrm{ad}} & \\xrightarrow{\\ j\\ } & X_{\\mathrm{ad}/Y} \\\\ & f_{\\mathrm{ad}} \\searrow & \\downarrow f_{\\mathrm{ad}/Y} \\\\ & & Y_{\\mathrm{ad}} \\end{array}$$',
@@ -111,6 +117,8 @@ window.MG = window.MG || {};
       tags: ['命题', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.4'],
       statement: [
+        '白话：**$f^!$ 不必单独造 —— 它就是「先 $f^*$ 拉回来，再乘一个固定的东西 $f^!R$」**。这个固定的东西叫**对偶复形**（扭转，twist：把 $f^*$ 扭一下）。于是算对偶这件事被压成算一个复形 $f^!R$；再往下两个节点就是把这个复形算出来（正则闭浸入、光滑映射）。',
+        '',
         '设 $f : R \\to A$ 是有限生成、有限 Tor 维数的环映射（诺特环之间映射的基变换）。则自然映射',
         '',
         '$$f^!R \\otimes^{L}_{A_\\blacksquare} f^* \\longrightarrow f^!$$',
@@ -131,6 +139,8 @@ window.MG = window.MG || {};
       tags: ['命题', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.5'],
       statement: [
+        '白话：**闭浸入（把 $\\operatorname{Spec} A$ 塞进 $\\operatorname{Spec} R$）情形下，对偶复形能算成一行**：就是「法丛的行列式」挪到余维那么多次。所谓「正则」，是说 $A$ 由 $R$ 模掉一个**正则序列**（$f_1, \\ldots, f_c$：每个 $f_i$ 都不是前面那些的零因子，像「切得干净、不打架」）得到；此时余维处处是 $c$。',
+        '',
         '设 $f : R \\to A$ 是**正则闭浸入**：$f$ 满射，核 $I$ 在 $\\operatorname{Spec} R$ 上局部由正则序列生成；并设 $\\operatorname{Spec} A \\subset \\operatorname{Spec} R$ 处处纯余维 $c$。则',
         '',
         '$$f^!R = \\operatorname{RHom}_R(A, R) \\;\\cong\\; \\det\\nolimits_A(I/I^2)^*[-c].$$'
@@ -147,6 +157,10 @@ window.MG = window.MG || {};
       tags: ['定理', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.6'],
       statement: [
+        '白话：**光滑映射情形下 $f^!R$ 是一条「扭过来的线丛」，由微分形式的行列式给出**。这就是经典几何里的**对偶丛** $\\omega_{X/Y}$（典范丛）。',
+        '',
+        '这里 $\\Omega^1_{A/R}$ 是**相对 Kähler 微分模**：形式上由 $\\mathrm{d}a$（$a \\in A$）生成、模掉 Leibniz 规则 $\\mathrm{d}(ab) = a\\,\\mathrm{d}b + b\\,\\mathrm{d}a$ 与 $\\mathrm{d}r = 0$（$r \\in R$），即「$A$ 相对 $R$ 的微分形式」全体（它是 $A$-模，$\\det$ 指取它的最高外幂）。$d$ 是相对维数，公式里的 $[d]$ 表示整个复形挪到同调次数 $d$。',
+        '',
         '设 $f : R \\to A$ 是维数 $d$ 的光滑环映射。则存在自然同构',
         '',
         '$$f^!R \\;\\cong\\; \\det\\nolimits_A\\bigl(\\Omega^1_{A/R}\\bigr)[d].$$',
@@ -154,7 +168,7 @@ window.MG = window.MG || {};
         '由于同构自然、且一切都局部定义，它整体化到任意光滑映射 $f : X \\to Y$。'
       ].join('\n'),
       notes: [
-        '⭐ 这就是**对偶复形**：光滑情形下 $f^!\\mathbf{1}_Y$ 是一条可逆层（线丛）挪到次数 $d$，由 Kähler 微分的行列式给出。\n\n⭐ 证明用对角：$g : A \\otimes_R A \\to A$ 是余维 $d$ 的正则闭浸入（对角 $\\Delta_f$），把 $f^!R$ 用 $g^!$ 与两个投影拆开，再用正则闭浸入的公式，得到',
+        '⭐ 这就是**对偶复形**：光滑情形下 $f^!\\mathbf{1}_Y$ 是一条可逆层（线丛）挪到次数 $d$，由 Kähler 微分 $\\Omega^1_{A/R}$ 的行列式给出。\n\n⭐ 证明用对角：$g : A \\otimes_R A \\to A$ 是余维 $d$ 的正则闭浸入（对角 $\\Delta_f$），把 $f^!R$ 用 $g^!$ 与「$A \\otimes_R A$ 的两条分量映射」拆开，再用正则闭浸入的公式，得到',
         '',
         '$$f^!R \\otimes f^!R \\otimes g^!(A \\otimes_R A) \\;\\cong\\; f^!R,$$',
         '',
@@ -171,6 +185,8 @@ window.MG = window.MG || {};
       tags: ['定理', '解析几何', '对偶', 'Serre 对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.1'],
       statement: [
+        '白话：**这就是固态版的 Serre 对偶 / Poincaré 对偶 —— 一句话：「上同调上的内积非退化」**。左边是把 $C$ 与对偶复形配起来，右边是把 $C$ 推到基环再配；断言这两个内积给出同一个答案。那个「积分」的动作就是**迹映射** $f_!\\omega_{X/R}[d] \\to R$（把顶次紧支撑上同调送到基环，类比「把微分形式积分成数」）。',
+        '',
         '设 $f : X \\to \\operatorname{Spec} R$ 是分离、光滑、有限型、维数 $d$ 的映射，$\\omega_{X/R} = \\bigwedge^d \\Omega^1_{X/R}$。则存在典范函子',
         '',
         '$$f_! : D(\\mathcal{O}_{X,\\blacksquare}) \\longrightarrow D(R_\\blacksquare),$$',
@@ -185,7 +201,7 @@ window.MG = window.MG || {};
         '',
         '是同构。'
       ].join('\n'),
-      notes: '⭐ 这就是**固态版的 Serre 对偶 / Poincaré 对偶**：$f_!$ 是紧支撑上同调，$\\omega_{X/R}[d]$ 是对偶复形，迹映射把顶次紧支撑上同调送到基环。\n\n⭐ 「保紧对象」是**局部有限性**的版本：$f_!$ 把紧对象送到紧对象，等价于说相干上同调在紧支撑下有限。经典证明要 Chow 引理 + 消解；这里有 6-函子形式后是形式推论。\n\n⚠ 与 `thm.coherent-duality`（仿射版，Lecture VIII）的关系：那是 $f_!$ 的定义与投影公式；这里是**光滑情形**下把 $f^!$ 具体算成 $\\omega[d]$ 并给出迹配对。\n\n📌 原文 Lecture XI（pp. 71–76）。'
+      notes: '⭐ 这就是**固态版的 Serre 对偶 / Poincaré 对偶**：$f_!$ 是紧支撑上同调，$\\omega_{X/R}[d]$ 是对偶复形，迹映射把顶次紧支撑上同调送到基环。\n\n⭐ 「保紧对象」是**局部有限性**的版本：$f_!$ 把紧对象送到紧对象，等价于说相干上同调在紧支撑下有限。经典证明要 Chow 引理 + 消解；这里有 6-函子形式后是形式推论。\n\n⚠ 与 `thm.coherent-duality`（仿射版，Lecture VIII）的关系：那是 $f_!$ 的定义与投影公式；这里是**光滑情形**下把 $f^!$ 具体算成 $\\omega[d]$ 并给出迹映射。\n\n📌 原文 Lecture XI（pp. 71–76）。'
     }
   ],
 

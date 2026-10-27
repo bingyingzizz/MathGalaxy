@@ -1,8 +1,7 @@
 # 高斯曲率　`def.gauss-curvature`　·　续页（第 3 页）
 [在星图里打开](../#n=def.gauss-curvature)　·　第 1 页 [nodes/def.gauss-curvature.md](./def.gauss-curvature.md)　·　上一页 [nodes/def.gauss-curvature.2.md](./def.gauss-curvature.2.md)
 
-## 它能推出什么 / 谁在用它（续）
-- 被 [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) 高斯博内定理 用
-- ⇒ [`thm.theorema-egregium`](../nodes/thm.theorema-egregium.md) 绝妙定理
-- ⇒ [`thm.theorema-egregium`](../nodes/thm.theorema-egregium.md) 绝妙定理
-- ⇒ [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) 高斯博内定理
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.curvature-tensor`](../nodes/def.curvature-tensor.md) 黎曼曲率张量：用到了定义 黎曼曲率张量　[proofs/dep.curv-gauss.md](../proofs/dep.curv-gauss.md)
+
+> 续见 [nodes/def.gauss-curvature.4.md](./def.gauss-curvature.4.md)

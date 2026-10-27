@@ -1,6 +1,6 @@
 # 简单函数积分的性质　`prop.simple-integral-props`
 命题：简单函数积分的四条基本性质
-layer 17 · 命题 · 积分 · 分析学
+layer 17 · 命题 · 积分 · 实变函数+数学分析
 [在星图里打开](../#n=prop.simple-integral-props)　·　[节点索引](../index.md)
 
 设 $\varphi, \psi$ 是简单函数。
@@ -10,11 +10,11 @@ layer 17 · 命题 · 积分 · 分析学
 - **(c)** $\varphi \le \psi \implies \int \varphi \le \int \psi$
 - **(d)** $A \mapsto \int_A \varphi d\mu$ 是 $\mathcal{M}$ 上的**测度**。
 
-## 它能推出什么 / 谁在用它
-- ⇒ [`thm.mct`](../nodes/thm.mct.md) 单调收敛定理
-
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.simple-integral-props.2.md](./prop.simple-integral-props.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.simple-integral-props.3.md](./prop.simple-integral-props.3.md)
 
 refs: Folland, Real Analysis, Theorem 2.13
 

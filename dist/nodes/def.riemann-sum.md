@@ -1,6 +1,6 @@
 # Riemann 和　`def.riemann-sum`
 Riemann 和（标记和）
-layer 15 · 定义 · Riemann 积分 · 分析学
+layer 15 · 定义 · Riemann 积分 · 数学分析
 [在星图里打开](../#n=def.riemann-sum)　·　[节点索引](../index.md)
 
 设 $f : [a, b] \to \mathbb{R}$ 有界，$P = \{ x_0 < \cdots < x_n \}$ 是分割，并在每个小区间里各取一个**标记点** $\xi_i \in I_i$。**Riemann 和**是

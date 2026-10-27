@@ -1,4 +1,4 @@
-# 别名 → 节点 · 分析学
+# 别名 → 节点 · 数学分析
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analysis.md`
 
 - Fatou | Fatou's lemma | 法图引理 | 法都引理 → lem.fatou

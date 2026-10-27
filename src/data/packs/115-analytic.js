@@ -32,16 +32,20 @@ window.MG = window.MG || {};
       tags: ['定义', '凝聚态', '解析环'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.1'],
       statement: [
+        '白话：**预解析环 = 一个环 $A$，加上「$S$ 上的自由完备模长什么样」这套指定**。固态理论真正用到的是后者（自由模），所以干脆把后者抽出来当公理。',
+        '',
         '一个**预解析环** $\\mathcal{A}$ 由两部分组成：',
         '',
-        '- 一个**凝聚态环** $A$ —— 即凝聚态集范畴里的环对象（等价地：取值在环范畴里的层）；',
+        '- 一个**凝聚态环** $A$ —— 白话：凝聚态集（「对每个紧 Hausdorff 空间 $S$ 给出一个集合 $A(S)$、且随 $S$ 变小而相容」的那套规则，见 `def.condensed-set`）里**还能做加法与乘法**。等价说法：对每个 $S$，$A(S)$ 是一个普通环，且 $S \\to T$ 诱导的映射是环同态。所以「凝聚态环」不是新对象，就是把「环」搬进凝聚态集的范畴；点开「凝聚态」跳到凝聚态集那页是对的，环这一层就写在下面这句里。最省事的例子：任意普通环取离散拓扑。',
         '- 一个函子',
         '',
         '$$\\{\\text{extremally disconnected 集}\\} \\longrightarrow \\operatorname{Mod}^{\\mathrm{cond}}_{A}, \\qquad S \\longmapsto \\mathcal{A}[S],$$',
         '',
         '它把有限不交并送到**乘积**，并带一族与 $S \\to T$ 相容的映射 $S \\to \\mathcal{A}[S]$：对每个 $s \\in S$ 给出自由完备模里的一个元素 —— 这就是「自由生成元」的抽象版。',
         '',
-        '换句话说，$\\mathcal{A}$ 就是「环 $A$ 加上一套指定的自由完备 $A$-模 $\\mathcal{A}[S]$」。'
+        '记号说明：$\\mathcal{A}[S]$ 叫 **$S$ 上的自由完备模**（相对 $A$ 而言）。直觉：普通自由模 $A[S] = \\bigoplus_{s \\in S} A$ 只允许**有限**和；$\\mathcal{A}[S]$ 把它补全，允许「无穷和」收敛，是最小的一步补全。$\\mathbb{Z}$ 上它就是 $Z[S]^{\\blacksquare} = \\varprojlim_i \\mathbb{Z}[S_i]$。',
+        '',
+        '换句话说，$\\mathcal{A}$ 就是「环 $A$ 加上一套指定的自由完备模 $\\mathcal{A}[S]$」。'
       ].join('\n'),
       notes: '⭐ 这个定义是在抽公理：固态理论里真正用到的不是 $A$ 本身，而是「$S$ 上的自由完备模是什么」。把这件事做成一个函子，就能对任意环（甚至解析空间）复制整套构造。\n\n⭐ 三个基本例子：\n- $\\mathbb{Z}_\\blacksquare$：$A = \\mathbb{Z}$，$\\mathbb{Z}_\\blacksquare[S] = Z[S]^{\\blacksquare}$；\n- $\\mathbb{Z}_{p,\\blacksquare}$：$A = \\mathbb{Z}_p$，$\\mathbb{Z}_{p,\\blacksquare}[S] = \\varprojlim_i \\mathbb{Z}_p[S_i]$（$p$-进测度）；\n- $(A,\\mathbb{Z})_\\blacksquare$（$A$ 离散）：$A[S] = Z[S]^{\\blacksquare} \\otimes_{\\mathbb{Z}} A$。\n\n⚠ 这个定义在原文里带一条警告：它应当允许「导出」版本（$A$ 是单纯环）才足够一般。本图只写经典版本，够用到现在这一步。'
     },
@@ -63,7 +67,13 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{RHom}_{\\mathcal{A}}\\bigl(\\mathcal{A}[S],\\ C\\bigr) \\longrightarrow \\operatorname{RHom}_{A}\\bigl(A[S],\\ C\\bigr)$$',
         '',
-        '是同构。这里「自然映射」是：先有典范映射 $A[S] \\to \\mathcal{A}[S]$（把形式的自由和送进自由完备模），再把 $C$ 看成 $A$-模、沿它拉回得到 $\\operatorname{RHom}_{A}(A[S], C) \\to \\operatorname{RHom}_{A}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C)$ —— 与左边比较即得。'
+        '是同构。这里「自然映射」是**一个具体的映射**，不是修辞：它从 $\\mathcal{A}$ 那一边走到 $A$ 那一边，由「沿 $\\iota_S$ 复合」诱导。三步写清：',
+        '',
+        '1. **先有典范映射** $\\iota_S : A[S] \\to \\mathcal{A}[S]$ —— 把形式的有限和 $\\sum a_s s$ 送进自由完备模（预解析环的数据里自带这族映射，见 `def.pre-analytic-ring`）。',
+        '2. **沿它拉回**：$\\operatorname{RHom}_A(-, C)$ 是反变函子，$\\iota_S$ 给出 $\\operatorname{RHom}_A(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$，规则是 $g \\mapsto g \\circ \\iota_S$。',
+        '3. **左边换个写法**：$\\mathcal{A}[S]$ 是自由 $\\mathcal{A}$-模，所以 $\\mathcal{A}$-线性映射与「逐生成元给一个 $A$-线性映射」是一回事，于是 $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) = \\operatorname{RHom}_A(\\mathcal{A}[S], C)$ —— 同一个集合，只是记法不同。',
+        '',
+        '把 2、3 接起来，就是公式里那个箭头 $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$。'
       ].join('\n'),
       notes: '⭐ 读法：**「$\\mathcal{A}[S]$ 与普通自由模 $A[S]$ 在 $\\operatorname{RHom}$ 里无法区分」**。这正是固态群定义 (ii) 的相对版本；取 $A = \\mathbb{Z}$、$\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ 就回到固态。\n\n⚠ 为什么要求**所有**这样的复形而不只是单个模？因为要得到导出范畴层面的结论（`thm.analytic-modules` (ii)），单点的同构不够，需要它对复形也成立。\n\n⭐ 判定「是不是解析环」通常靠 `prop.analytic-examples` 与 `thm.za-analytic` 这类具体定理，而不是逐条验证定义。'
     },
@@ -77,6 +87,8 @@ window.MG = window.MG || {};
       tags: ['定理', '凝聚态', '解析环', '固态模'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Proposition 7.5'],
       statement: [
+        '白话：解析环上的**固态模**（也就是**完备模**、$\\mathcal{A}$-完备模）就是那些「长得跟自由完备模 $\\mathcal{A}[S]$ 一模一样」的 $A$-模 —— 判别法只有一条：从 $\\mathcal{A}[S]$ 出发的线性映射不多不少等于 $S$ 上的「函数」。下面这个全子范畴把它们挑出来，并说明它们能像普通模范畴那样做同调代数。',
+        '',
         '设 $\\mathcal{A}$ 是解析环。考虑全子范畴',
         '',
         '$$\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}} \\subset \\operatorname{Mod}^{\\mathrm{cond}}_{A}$$',
@@ -91,7 +103,7 @@ window.MG = window.MG || {};
         '',
         '**(ii)** $D(\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}) \\to D(\\operatorname{Mod}^{\\mathrm{cond}}_{A})$ 全忠实，像由那些「$\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_{A}(A[S], C)$」的复形组成；$C$ 在像里当且仅当所有 $H^i(C)$ 在 $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 里。含入有左伴随 $C \\mapsto C \\otimes^{L}_{\\mathcal{A}} \\mathcal{A}$。'
       ].join('\n'),
-      notes: '⭐ 这是 `thm.solid-abelian` 的相对版本：把 $\\mathbb{Z}$ 换成任意解析环。**固态模**就是 $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 的对象，$D(\\mathcal{A}) := D(\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}})$ 就是「$\\mathcal{A}$ 上固态模的导出范畴」。\n\n⭐ 证明就是 `lem.solid-completion-criterion` 的第二次应用：解析环的定义正好是那条判据的假设。\n\n⚠ 原文留了一个警告：$\\otimes^{L}_{\\mathcal{A}}$ 未必是 $\\otimes_{\\mathcal{A}}$ 的左导出（已知例子都成立）。这一点不影响这里的用法。'
+      notes: '⭐ 这是 `thm.solid-abelian` 的相对版本：把 $\\mathbb{Z}$ 换成任意解析环。**固态模**就是 $\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 的对象，$D(\\mathcal{A}) := D(\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}})$ 就是「$\\mathcal{A}$ 上固态模的导出范畴」。\n\n⭐ 三个叫法指同一件事：**固态模 = 完备模 = $\\mathcal{A}$-完备模**。叫「完备模」是因为它是相对自由完备模 $\\mathcal{A}[S]$ 补全出来的，和「拓扑上把 Cauchy 列补全」无关。\n\n⭐ 证明就是 `lem.solid-completion-criterion` 的第二次应用：解析环的定义正好是那条判据的假设。\n\n⚠ 原文留了一个警告：$\\otimes^{L}_{\\mathcal{A}}$ 未必是 $\\otimes_{\\mathcal{A}}$ 的左导出（已知例子都成立）。这一点不影响这里的用法。'
     },
     {
       id: 'prop.analytic-base-change',
@@ -171,7 +183,7 @@ window.MG = window.MG || {};
         '',
         '$$0 \\to \\mathbb{Z}[[U]] \\otimes_{\\mathbb{Z}} A \\xrightarrow{U \\mapsto T^{-1}} \\mathbb{Z}[[U]] \\otimes_{\\mathbb{Z}} A \\to A_\\infty \\to 0,$$',
         '',
-        '从而 $A_\\infty$ 紧、幂等、且 $\\operatorname{RHom}_A(A_\\infty, C) = 0$ 对一切由 $\\prod A$ 的直和构成的复形成立；再用 $\\prod_I A / (\\prod_I \\mathbb{Z} \\otimes A)$ 的余核构造 $j_!$。一般有限生成 $A$ 由 Noether 归一化归约到 $A = \\mathbb{Z}[T]$。\n\n⭐ **完整证明**见边 `imp.za-analytic`：$A_\\infty$ 紧与幂等 $\\to$ $\\operatorname{RHom}_A(A_\\infty,-)$ 消没 $\\to$ 余核是 $A_\\infty$-模 $\\to$ 解析性 $\\to$ $j_!$ 与全忠实 $\\to$ Noether 归一化。'
+        '从而 $A_\\infty$ 紧、幂等（幂等 = $A_\\infty \\otimes^{L} A_\\infty \\cong A_\\infty$，即「乘两次等于乘一次」）、且 $\\operatorname{RHom}_A(A_\\infty, C) = 0$ 对一切由 $\\prod A$ 的直和构成的复形成立；再用 $\\prod_I A / (\\prod_I \\mathbb{Z} \\otimes A)$ 的余核构造 $j_!$。一般有限生成 $A$ 由 Noether 归一化归约到 $A = \\mathbb{Z}[T]$。\n\n⭐ **完整证明**见边 `imp.za-analytic`：$A_\\infty$ 紧与幂等 $\\to$ $\\operatorname{RHom}_A(A_\\infty,-)$ 消没 $\\to$ 余核是 $A_\\infty$-模 $\\to$ 解析性 $\\to$ $j_!$ 与全忠实 $\\to$ Noether 归一化。'
       ].join('\n'),
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VIII, Theorem 8.1']
     },
@@ -184,7 +196,7 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['定理', '凝聚态', '相干对偶'],
       statement: [
-        '设 $A$ 是有限生成 $\\mathbb{Z}$-代数，$f : \\operatorname{Spec} A \\to \\operatorname{Spec} \\mathbb{Z}$ 是投影。定义',
+        '设 $A$ 是有限生成 $\\mathbb{Z}$-代数，$f : \\operatorname{Spec} A \\to \\operatorname{Spec} \\mathbb{Z}$ 是结构映射（把系数环的谱投下来）。定义',
         '',
         '$$f_! : D(A_\\blacksquare) \\xrightarrow{j_!} D((A,\\mathbb{Z})_\\blacksquare) \\longrightarrow D(\\mathbb{Z}_\\blacksquare).$$',
         '',
@@ -196,7 +208,7 @@ window.MG = window.MG || {};
         '',
         '$$f^! : D(\\mathbb{Z}_\\blacksquare) \\longrightarrow D(A_\\blacksquare), \\qquad f^! M = (M \\otimes^{L}_{\\mathbb{Z}_\\blacksquare} A_\\blacksquare) \\otimes^{L}_{A_\\blacksquare} f^! \\mathbb{Z},$$',
         '',
-        '它保直和；$f^! \\mathbb{Z} \\in D(A_\\blacksquare)$ 是有限生成离散 $A$-模的有界复形。若 $f$ 是完全交，则 $f^!\\mathbb{Z}$ 在 $D(A)$ 里可逆（局部是某个次数上的一条线丛）。'
+        '它保直和；$f^! \\mathbb{Z} \\in D(A_\\blacksquare)$ 是有限生成离散 $A$-模的有界复形。若 $f$ 是**完全交**（complete intersection：局部上 $A$ 由 $R$ 再模掉一个正则序列得到，即「切口干净、没有多余的关系」），则 $f^!\\mathbb{Z}$ 在 $D(A)$ 里可逆（局部是某个次数上的一条线丛）。'
       ].join('\n'),
       notes: '⭐ 这就是 Grothendieck 相干对偶的「仿射模型」：$f_!$ 是**紧支撑上同调**，$f^!$ 是**对偶复形**，投影公式与 Serre 对偶都由伴随形式地推出。\n\n⭐ 与经典做法的区别：经典相干对偶里 $f_!$ 在仿射情形只能靠「形式函数」硬造；这里 $f_!$ 是一对伴随（$j_! \\dashv j^*$）的直接产物，而且**不保持离散对象** —— 这正是凝聚态方法的收益。\n\n⚠ $f^!\\mathbb{Z}$ 与经典对偶复形 $\\omega_A$ 的等同要在 `thm.za-analytic` 的框架里证（原文 Lecture XI）。',
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VIII, Theorem 8.2']
@@ -215,14 +227,14 @@ window.MG = window.MG || {};
         '',
         '$$\\mathbb{R}_{\\ell^1}[S] := M_b(S, \\mathbb{R})$$',
         '',
-        '为**有界** $\\mathbb{R}$ 值测度（拓扑对偶于 Banach 空间 $C(S,\\mathbb{R})$），即 $\\ell^1$-范数下的完备化。则对无限 extremally disconnected 集 $S$，',
+        '为**有界** $\\mathbb{R}$ 值测度（拓扑对偶于 Banach 空间 $C(S,\\mathbb{R})$），即 $\\ell^1$-范数下补全出来的那一个（把「有限和」补成「可数绝对收敛和」）。则对无限 extremally disconnected 集 $S$，',
         '',
         '$$\\operatorname{Ext}^1_{\\mathbb{R}}\\bigl(\\mathbb{R}_{\\ell^1}[S],\\ \\mathbb{R}_{\\ell^1}[S]\\bigr) \\ne 0.$$',
         '',
         '因此 $\\mathbb{R}_{\\ell^1}$ **不是**解析环。'
       ].join('\n'),
       notes: [
-        '⭐ 这条是整套理论的**边界标记**：固态/解析的好性质在阿基米德方向（$\\ell^1$ 完备化）失效。$p$-进方向可以，实数方向不行 —— 这正是 Clausen–Scholze 后来要另做“analytic stacks / liquid modules”的动机。\n\n⭐ 非零的 $\\operatorname{Ext}^1$ 类与**熵函数** $(x_i) \\mapsto \\sum_i x_i \\log|x_i|$ 有关：Ribe 的扩张定理给出一个典范自扩张',
+        '⭐ 这条是整套理论的**边界标记**：固态/解析的好性质在阿基米德方向（$\\ell^1$ 补全）失效。$p$-进方向可以，实数方向不行 —— 这正是 Clausen–Scholze 后来要另做“analytic stacks / liquid modules”的动机。\n\n⭐ 非零的 $\\operatorname{Ext}^1$ 类与**熵函数** $(x_i) \\mapsto \\sum_i x_i \\log|x_i|$ 有关：Ribe 的扩张定理给出一个典范自扩张',
         '',
         '$$0 \\to \\mathbb{R}_{\\ell^1}[S] \\to E \\to \\mathbb{R}_{\\ell^1}[S] \\to 0,$$',
         '',

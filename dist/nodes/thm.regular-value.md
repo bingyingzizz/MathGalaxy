@@ -1,6 +1,6 @@
 # 正则值原像定理　`thm.regular-value`
 定理：正则值的原像是子流形
-layer 25 · 定理 · 多元微分 · 分析学
+layer 25 · 定理 · 多元微分 · 数学分析
 [在星图里打开](../#n=thm.regular-value)　·　[节点索引](../index.md)
 
 设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{m}$ 是 $C^{1}$（$m \le n$）。点 $c \in \mathbb{R}^{m}$ 叫 $f$ 的**正则值**，当且仅当对每个 $x \in f^{-1}(c)$，$Df(x)$ 都**满射**；否则叫**临界值**。

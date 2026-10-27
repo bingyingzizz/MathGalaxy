@@ -1,4 +1,4 @@
-# 问法 → 节点 · 分析学
+# 问法 → 节点 · 数学分析
 根 `../`　·　索引 `../alias.md`　·　别名在 `aka/analysis.md`
 
 - Egorov 定理说的是什么 → thm.egorov def.convergence-modes

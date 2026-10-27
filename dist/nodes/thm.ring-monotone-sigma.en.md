@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **reviewed** · reviewed by the author; the Chinese page is authoritative.
 
-layer 5 · theorem · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis
+layer 5 · theorem · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Functions of a Real Variable / Mathematical Analysis
 
 > 续见 nodes/thm.ring-monotone-sigma.en.2.md

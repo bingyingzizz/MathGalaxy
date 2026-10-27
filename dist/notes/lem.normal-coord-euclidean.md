@@ -5,6 +5,6 @@
 
 **$\partial_{k}g_{ij}(p) = 0$ 是它的推论**：$\partial_{k}g_{ij} = \langle \nabla_{\partial_{k}}\partial_{i},\partial_{j}\rangle+\langle \partial_{i},\nabla_{\partial_{k}}\partial_{j}\rangle = \Gamma^{\ell}_{ki}g_{\ell j}+\Gamma^{\ell}_{kj}g_{i\ell}$，在 $p$ 处为零。
 
-⭐ **与曲率的关系**：既然 $\Gamma$ 可以在一阶上被坐标杀掉，曲率张量里唯一杀不掉的就是 $\partial\Gamma$ 那一部分，而它由 $g$ 的二阶导数决定。这就是「曲率是二阶不可消除的度量信息」的准确含义 —— 也正是它内蕴的理由。
+⭐ **与曲率的关系**：既然 $\Gamma$ 可以在一阶上被坐标杀掉，曲率张量里唯一杀不掉的就是 $\partial\Gamma$ 那一部分，而它由 $g$ 的二阶导数决定。这就是「曲率是二阶不可去掉的度量信息」的准确含义 —— 也正是它内蕴的理由。
 
 > 续见 notes/lem.normal-coord-euclidean.2.md

@@ -34,8 +34,8 @@ MG.sectors = [
     name: '分析',
     en: 'Analysis',
     color: '#2E9BD4',
-    regions: ['analysis'],
-    desc: '极限与完备性、连续与紧性、中值定理与 Taylor、Riemann 积分、级数、多元微分，再往上到测度、积分、Fubini、微分定理与 L^p。'
+    regions: ['analysis', 'analysis-measure'],
+    desc: '**数学分析**：极限与完备性、连续与紧性、中值定理与 Taylor、Riemann 积分、级数、多元微分。\n**实变函数**：σ-代数、测度、可测函数、Lebesgue 积分、Fubini、微分定理与 $L^p$。\n（2026-10-27 从原来的单个「分析学」拆开：那一块有 279 点，占全库 25%，领域内部的跨度撑不住了。）'
   },
   {
     id: 'algebra',

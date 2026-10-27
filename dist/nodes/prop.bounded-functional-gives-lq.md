@@ -1,6 +1,6 @@
 # 有界 ⟹ g ∈ L^q　`prop.bounded-functional-gives-lq`
 命题：若 $f \mapsto \int fg$ 在简单函数上有界，则 $g \in L^q$
-layer 20 · 命题 · L^p 空间 · 分析学
+layer 20 · 命题 · L^p 空间 · 实变函数+数学分析
 [在星图里打开](../#n=prop.bounded-functional-gives-lq)　·　[节点索引](../index.md)
 
 设 $g$ 在 $(X, \mathcal{M})$ 上可测，且对**每个有限支集的简单函数** $f$ 都有 $fg \in L^1$。记

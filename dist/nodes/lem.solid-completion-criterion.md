@@ -3,7 +3,7 @@
 layer 17 · 引理 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=lem.solid-completion-criterion)　·　[节点索引](../index.md)
 
-设 $\mathcal{A}$ 是有任意余极限的阿贝尔范畴，$\mathcal{A}_0 \subset \mathcal{A}$ 是一族紧投射生成元。设 $F : \mathcal{A}_0 \to \mathcal{A}$ 带自然变换 $X \to F(X)$，满足：
+白话：这条引理是一把**通用扳手** —— 想说明「某个子范畴像模范畴一样好用（有紧对象、有左伴随、导出范畴全忠实）」，不用逐条验，只要验一条 $\operatorname{RHom}$ 条件。
 > 陈述续见 [nodes/lem.solid-completion-criterion.2.md](./lem.solid-completion-criterion.2.md)
 
 

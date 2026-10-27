@@ -11,14 +11,12 @@
 
 - 分裂短正合列 | split exact | 分裂引理 | split lemma | Definition 5.1.6 | Def 5.1.6 | Exercise 5.7 → def.split-exact
 
-- 带截面的覆盖上 Čech 零调 | Proposition 7.3.3 | Prop 7.3.3 → prop.cech-section-vanishing
+- 核 | kernel | 余核 | cokernel | 左正合列 | 右正合列 | Definition 5.1.5 | Def 5.1.5 → def.kernel-cokernel
 
-- 上同调与不交并 | Exercise 7.38 → prop.cohomology-of-coproduct
+- 零对象与终对象 | Exercise 5.1 → prop.zero-object-final-criterion
 
-- 张量与 RHom 的配对 | Exercise 8.16 → prop.tensor-rhom-natural-map
+- 双积就是积 | Exercise 5.1 → prop.biproduct-is-product
 
-- 单纯对象给出链复形 | 交替和 | Exercise 7.2 → prop.simplicial-to-chain
-
-- 范畴嵌入复形 | Exercise 7.3 → prop.category-into-complexes
+- 预加性结构唯一 | Exercise 5.2 → prop.hom-enrichment-unique
 
 > 续见 alias/aka/homology.2.md
