@@ -1,4 +1,4 @@
-# Cayley–Hamilton　`thm.cayley-hamilton`　·　说明
+# Cayley–Hamilton 定理　`thm.cayley-hamilton`　·　说明
 根 `../`
 
 ⭐ 这条定理说的是「**每个算子都满足自己的特征方程**」—— 于是 $\chi_T$ 是「把 $T$ 送进零」的多项式**之一**，这立刻给出一个把 $K[x]$-模的结构用上的入口（$V$ 成了 $K[x]/(\chi_T)$-模）。

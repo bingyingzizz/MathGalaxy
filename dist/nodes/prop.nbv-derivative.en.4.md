@@ -1,4 +1,4 @@
-# derivative of an NBV function and its measure　`prop.nbv-derivative`
+# Derivative of an NBV Function and Its Measure　`prop.nbv-derivative`
 English entry · root `../`
 [in graph](../#n=prop.nbv-derivative)　·　[Chinese page (authoritative)](./prop.nbv-derivative.md)
 

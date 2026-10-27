@@ -1,4 +1,4 @@
-# Cauchy–Schwarz　`thm.cauchy-schwarz`　·　说明
+# Cauchy–Schwarz 不等式　`thm.cauchy-schwarz`　·　说明
 根 `../`
 
 ⭐ 它是「内积 $\implies$ 范数」这条路上唯一需要证明的一步（三角不等式由它推出）。

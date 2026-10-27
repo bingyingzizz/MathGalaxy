@@ -1,4 +1,4 @@
-# L⁺　`def.lplus`
+# 非负可测函数类　`def.lplus`
 $L^{+}$：非负可测函数全体
 layer 15 · 定义 · 积分 · 分析学
 [在星图里打开](../#n=def.lplus)　·　[节点索引](../index.md)

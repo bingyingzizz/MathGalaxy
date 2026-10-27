@@ -1,4 +1,4 @@
-# mutually singular　`def.mutually-singular`
+# Mutually Singular　`def.mutually-singular`
 English entry · root `../`
 [in graph](../#n=def.mutually-singular)　·　[Chinese page (authoritative)](./def.mutually-singular.md)
 

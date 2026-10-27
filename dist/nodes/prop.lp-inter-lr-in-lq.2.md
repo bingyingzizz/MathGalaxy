@@ -1,4 +1,4 @@
-# L^p ∩ L^r ⊆ L^q　`prop.lp-inter-lr-in-lq`　·　续页（第 2 页）
+# L^p 与 L^r 的交包含于 L^q　`prop.lp-inter-lr-in-lq`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.lp-inter-lr-in-lq)　·　第 1 页 [nodes/prop.lp-inter-lr-in-lq.md](./prop.lp-inter-lr-in-lq.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

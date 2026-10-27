@@ -1,4 +1,4 @@
-# well-formed formula　`def.formula`
+# Well-formed Formula　`def.formula`
 English entry · root `../`
 [in graph](../#n=def.formula)　·　[Chinese page (authoritative)](./def.formula.md)
 

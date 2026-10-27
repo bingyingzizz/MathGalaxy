@@ -8,7 +8,7 @@ layer 21 · 命题 · 有界变差与绝对连续 · 分析学
 $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) NBV 函数的导数与测度的关系 + [`thm.ac-epsilon-delta`](../nodes/thm.ac-epsilon-delta.md) 绝对连续的 ε–δ 刻画：$\mu_F \ll m$ 的 $\varepsilon$–$\delta$ 刻画 $\implies$ 函数绝对连续 $\iff$ 测度绝对连续　[proofs/imp.ac-measure.md](../proofs/imp.ac-measure.md)
+- [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) 规范有界变差函数的导数与测度的关系 + [`thm.ac-epsilon-delta`](../nodes/thm.ac-epsilon-delta.md) 绝对连续的 ε–δ 刻画：$\mu_F \ll m$ 的 $\varepsilon$–$\delta$ 刻画 $\implies$ 函数绝对连续 $\iff$ 测度绝对连续　[proofs/imp.ac-measure.md](../proofs/imp.ac-measure.md)
 
 - …另有入边，续页见 [nodes/prop.ac-iff-measure-ac.2.md](./prop.ac-iff-measure-ac.2.md)
 

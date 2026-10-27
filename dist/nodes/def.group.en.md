@@ -1,4 +1,4 @@
-# group　`def.group`
+# Group　`def.group`
 English entry · root `../`
 [in graph](../#n=def.group)　·　[Chinese page (authoritative)](./def.group.md)
 

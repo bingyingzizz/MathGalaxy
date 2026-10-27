@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 17 · definition · cluster Toposes (`cat.topos`) · Category Theory
-names: `induced topology` (short) · `Induced Topology` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.induced-topology.md` and `proofs/`.

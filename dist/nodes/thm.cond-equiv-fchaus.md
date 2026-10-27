@@ -1,4 +1,4 @@
-# Cond 即 FCHaus 上的层　`thm.cond-equiv-fchaus`
+# 凝聚态集就是有限紧 Hausdorff 空间上的层　`thm.cond-equiv-fchaus`
 $\mathrm{Cond} \simeq \widehat{\mathbf{FCHaus}}$
 layer 18 · 定理 · 凝聚态集 · 凝聚态数学
 [在星图里打开](../#n=thm.cond-equiv-fchaus)　·　[节点索引](../index.md)

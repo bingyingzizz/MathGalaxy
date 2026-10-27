@@ -1,4 +1,4 @@
-# adjoint functor existence　`thm.right-adjoint-criterion`
+# Adjoint Functor Existence　`thm.right-adjoint-criterion`
 English entry · root `../`
 [in graph](../#n=thm.right-adjoint-criterion)　·　[Chinese page (authoritative)](./thm.right-adjoint-criterion.md)
 

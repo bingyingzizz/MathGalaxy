@@ -1,4 +1,4 @@
-# 离散群的 RHom 是常层　`prop.discrete-cond-rhom-constant`　·　说明
+# 离散群的导出 Hom 是常层　`prop.discrete-cond-rhom-constant`　·　说明
 根 `../`
 
 **证明。** 取 $M$ 作为**抽象**阿贝尔群的一个自由消解 $P_{\bullet} \to M$ ✓。
@@ -7,6 +7,5 @@
 - **算出来**：可以用 $\mathrm{c}(P_{\bullet})$ 计算内部的 $\operatorname{RHom}$：
 $$\operatorname{RHom}^{\mathrm{cond}}\bigl(\mathrm{c}(M),\ N\bigr) \cong \operatorname{Hom}\bigl(\mathrm{c}(P_{\bullet}),\ N\bigr) = \mathrm{c}\bigl(\operatorname{Hom}(P_{\bullet},\ N)\bigr),$$
 取上同调即得 $\mathrm{c}\bigl(\operatorname{Ext}^{\bullet}(M,N)\bigr) = \mathrm{c}\bigl(\operatorname{RHom}^{\mathrm{abs}}(M,N)\bigr)$ ✓。
-
 
 > 续见 notes/prop.discrete-cond-rhom-constant.2.md

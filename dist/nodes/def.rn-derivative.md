@@ -1,4 +1,4 @@
-# RN 导数与 Lebesgue 分解　`def.rn-derivative`
+# Radon–Nikodym 导数与 Lebesgue 分解　`def.rn-derivative`
 Radon–Nikodym 导数 $d\nu/d\mu$ 与 Lebesgue 分解
 layer 17 · 定义 · 符号测度与分解 · 分析学
 [在星图里打开](../#n=def.rn-derivative)　·　[节点索引](../index.md)
@@ -13,7 +13,6 @@ $$f = \frac{d\nu}{d\mu}$$
 
 ## 它能推出什么 / 谁在用它
 - 被 [`prop.L1-signed`](../nodes/prop.L1-signed.md) L¹(ν) 与全变差 用
-- 被 [`thm.rn-pointwise`](../nodes/thm.rn-pointwise.md) RN 导数的点态公式 用
 
 - …另有出边，续页见 [nodes/def.rn-derivative.3.md](./def.rn-derivative.3.md)
 

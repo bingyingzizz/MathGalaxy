@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 6 · definition · cluster Topological Spaces (`topology.general`) · Topology
-names: `product topology` (short) · `Product Topology` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.product-topology.md` and `proofs/`.

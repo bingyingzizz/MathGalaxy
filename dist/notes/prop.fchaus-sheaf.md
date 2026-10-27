@@ -1,4 +1,4 @@
-# FCHaus 上层的判据　`prop.fchaus-sheaf`　·　说明
+# 有限紧 Hausdorff 空间上层的判据　`prop.fchaus-sheaf`　·　说明
 根 `../`
 
 **证明。** $\mathbf{FCHaus}$ 上的覆盖就是「有限不交并」，即 $F = \coprod_{i \in I} F_{i}$（$I$ 有限）。对它写层条件：

@@ -1,7 +1,7 @@
 # 特征多项式 + 伴随矩阵 $\implies$ Cayley–Hamilton
 `imp.cayley-hamilton` · 推出 · strong 边 · 根 `../`
 
-`def.char-poly` 特征多项式 + `prop.det-laplace` Laplace 展开 → `thm.cayley-hamilton` Cayley–Hamilton
+`def.char-poly` 特征多项式 + `prop.det-laplace` Laplace 展开 → `thm.cayley-hamilton` Cayley–Hamilton 定理
 
 记 $A \in M_n(K)$，考虑**多项式矩阵** $B(x) := xI - A \in M_n(K[x])$，以及它的伴随矩阵
 

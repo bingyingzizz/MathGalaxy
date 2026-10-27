@@ -1,4 +1,4 @@
-# profinite space　`def.profinite`
+# Profinite Space　`def.profinite`
 English entry · root `../`
 [in graph](../#n=def.profinite)　·　[Chinese page (authoritative)](./def.profinite.md)
 

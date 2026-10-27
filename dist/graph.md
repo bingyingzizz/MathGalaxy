@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-27T07:37:25.548Z
-> 10 星系 / 72 星团 / 1059 节点 / 1890 连线（强边 1881，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-27T08:01:40.750Z
+> 11 星系 / 75 星团 / 1094 节点 / 1955 连线（强边 1946，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -542,7 +542,7 @@ $$A / \sim\ := \{ [a] : a \in A \}$$
 > 造出「集合有多大」这把尺子：等势 → 基数 → 可数与不可数 → Cantor 定理 → 基数可比。
 
 #### Hartogs 定理　`thm.hartogs`
-*定理*　Hartogs 定理（Hartogs' Theorem, 1915）—— ZF 中即可证明
+*定理*　Hartogs 定理 —— ZF 中即可证明
 
 对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。
 
@@ -2067,7 +2067,7 @@ $$\pi_{0} : \mathbf{Top} \longrightarrow \mathbf{Top}_{\mathrm{td}}, \qquad X \m
 
 参考：Le Stum, An introduction to condensed mathematics, §2.2
 
-#### Stone 空间是 CHaus 的反射子范畴　`prop.stone-reflective`
+#### Stone 空间是紧 Hausdorff 空间的反射子范畴　`prop.stone-reflective`
 *命题*　Stone 空间是 $\mathbf{CHaus}$ 的反射子范畴
 
 Stone 空间构成的范畴是 $\mathbf{CHaus}$ 的反射子范畴。
@@ -2523,7 +2523,7 @@ $$R = (q\times q)^{-1}\bigl(\Delta_{X/R}\bigr), \qquad q\times q : X\times X \lo
 
 参考：Le Stum, An introduction to condensed mathematics, §2.3
 
-#### CGWH 是 CG 的反射子范畴　`thm.cgwh-reflective`
+#### 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`thm.cgwh-reflective`
 *定理*　紧生成的弱 Hausdorff 空间是反射子范畴
 
 紧生成的**弱 Hausdorff** 空间构成的范畴 $\mathrm{CGWH}$ 是 $\mathrm{CG}$（紧生成空间）的**反射**子范畴。
@@ -2551,7 +2551,7 @@ $$R_{f} := \{(x, x') : f(x) = f(x')\} = (f,f)^{-1}(\Delta_{Y})$$
 
 参考：Le Stum, An introduction to condensed mathematics, §2.3
 
-#### CGWH 的开闭子空间与滤过余极限　`prop.cgwh-closed`
+#### 弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　`prop.cgwh-closed`
 *命题*　$\mathrm{CGWH}$ 的封闭性
 
 1. 紧生成的弱 Hausdorff 空间的**开子空间**与**闭子空间**仍紧生成且弱 Hausdorff。
@@ -2619,7 +2619,7 @@ $$C\bigl(T,\ kC(k(X\times Y), kZ)\bigr) \cong C\bigl(k(T\times X\times Y),\ Z\bi
 
 参考：Le Stum, An introduction to condensed mathematics, §2.3
 
-#### CG 的指数伴随　`cor.cg-exponential-adjoint`
+#### 紧生成空间的指数伴随　`cor.cg-exponential-adjoint`
 *推论*　$X \mapsto k(X \times Y) \;\dashv\; Z \mapsto kC(kY, Z)$
 
 在紧生成空间范畴上，函子
@@ -3670,7 +3670,7 @@ $P$ 叫**过渡矩阵**。相似的**等价**说法：$A$ 与 $B$ 是同一个�
 
 参考：Hoffman–Kunze, Linear Algebra, Ch. 6
 
-#### Cayley–Hamilton　`thm.cayley-hamilton`
+#### Cayley–Hamilton 定理　`thm.cayley-hamilton`
 *定理*　定理（Cayley–Hamilton）：$\chi_T(T) = 0$
 
 设 $T : V \to V$ 是有限维 $K$-向量空间上的线性映射，$\chi_T$ 是它的特征多项式。把 $\chi_T$ 里出现的 $x$ 换成 $T$（常数项乘 $I$），得到算子 $\chi_T(T)$。则
@@ -3860,7 +3860,7 @@ $$\|u + v\|^{2} + \|u - v\|^{2} = 2\|u\|^{2} + 2\|v\|^{2}$$
 
 参考：Hoffman–Kunze, Linear Algebra, Ch. 8
 
-#### Cauchy–Schwarz　`thm.cauchy-schwarz`
+#### Cauchy–Schwarz 不等式　`thm.cauchy-schwarz`
 *定理*　定理：Cauchy–Schwarz 不等式
 
 设 $V$ 是内积空间，$u, v \in V$。则
@@ -4117,7 +4117,7 @@ $$D_1 > 0,\quad D_2 > 0,\quad \ldots,\quad D_n > 0$$
 参考：Horn–Johnson, Matrix Analysis, Ch. 7
 
 #### 奇异值分解　`thm.svd`
-*定理*　定理（SVD）：$A = U\Sigma V^{\mathsf{T}}$
+*定理*　奇异值分解定理：$A = U\Sigma V^{\mathsf{T}}$
 
 设 $A \in M_{m \times n}(\mathbb{R})$（或 $\mathbb{C}$），秩为 $r$。则存在正交（酉）矩阵 $U \in M_m$、$V \in M_n$ 与「对角」矩阵 $\Sigma$（只有前 $r$ 个对角元非零）使
 
@@ -6056,7 +6056,7 @@ $$\lim_{n \to \infty} x_n = \sup_{n} x_n$$
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 3
 
-#### Bolzano–Weierstrass　`thm.bolzano-weierstrass`
+#### Bolzano–Weierstrass 定理　`thm.bolzano-weierstrass`
 *定理*　Bolzano–Weierstrass 定理（有界列必有收敛子列）
 
 每个有界实数列都有收敛子列。等价地：$\mathbb{R}$ 的每个有界无限子集都有聚点。
@@ -6896,7 +6896,7 @@ $$\int_a^{b} f := \lim_{\varepsilon \to 0^{+}} \int_a^{b - \varepsilon} f$$
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 6
 
-#### Riemann ⟹ Lebesgue　`prop.riemann-implies-lebesgue`
+#### Riemann 可积蕴含 Lebesgue 可积　`prop.riemann-implies-lebesgue`
 *命题*　命题：Riemann 可积 $\implies$ Lebesgue 可积，且积分相等
 
 设 $f : [a, b] \to \mathbb{R}$ 有界且 Riemann 可积。则 $f$ 关于 Lebesgue 测度可测，且 Lebesgue 可积，并且两个积分相等：
@@ -7465,23 +7465,6 @@ $$\pi := 2 \cdot \min \{ x > 0 : \cos x = 0 \}$$
 ⭐ 存在性的关键一步：$\cos 0 = 1 > 0$ 而 $\cos 2 < 0$（由级数估值：$\cos 2 = 1 - 2 + \frac{16}{24} - \cdots$ 的尾巴被控制住），由**介值定理**得到零点。唯一性靠 $\sin > 0$ 在 $(0, 2)$ 上（$\cos' = -\sin$ 且 $\sin$ 递增为正）。
 
 ⚠ 定义里用的是 $\min$，所以先要证明那个集合非空 —— 这正是上面说的介值定理那一步。
-
-参考：Rudin, Principles of Mathematical Analysis, Ch. 8
-
-#### Euler 公式　`thm.euler-formula`
-*定理*　定理：$e^{i\theta} = \cos\theta + i\sin\theta$
-
-对一切实数（或复数）$\theta$，
-
-$$\exp(i\theta) = e^{i\theta} = \cos\theta + i\sin\theta$$
-
-特别地 $e^{i\pi} = -1$。
-
-⭐ 这条公式把**指数、三角、复数**三件事焊成一件：$\theta \mapsto e^{i\theta}$ 是单位圆上以弧长 $\theta$ 为参数的运动，实部是 $\cos$、虚部是 $\sin$。
-
-⭐ 证明就是**重排级数**（见下面的证明）：把 $\exp$ 的级数按奇偶项拆开。表面上看只是换了个写法，实际上它给出了「$\cos$ 与 $\sin$ 是同一个指数函数的两个分量」这个结构性事实。
-
-⚠ 注意这里**不需要**任何几何输入：弧长、角度、单位圆这些词都只是事后对公式的**解释**。反过来，正因为有这条公式，三角函数才可能有周期（周期来自 $e^{2\pi i} = 1$）。
 
 参考：Rudin, Principles of Mathematical Analysis, Ch. 8
 
@@ -8923,7 +8906,7 @@ $$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
 ### 星团：积分
 > 造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。
 
-#### L⁺　`def.lplus`
+#### 非负可测函数类　`def.lplus`
 *定义*　$L^{+}$：非负可测函数全体
 
 固定测度空间 $(X, \mathcal{M}, \mu )$。记
@@ -9046,7 +9029,7 @@ $(\implies )$ 记 $A_n = \{f > 1/n\}$，则 $(1/n)\cdot\mu(A_n) \le \int f = 0$�
 
 参考：Folland, Real Analysis, Prop. 2.16
 
-#### MCT（a.e. 版本）　`cor.mct-ae`
+#### 单调收敛定理（几乎处处版本）　`cor.mct-ae`
 *推论*　推论：单调收敛定理的几乎处处版本
 
 设 $\{f_n\} \subseteq L^+$，$f \in L^+$。若对**几乎处处的** $x$ 有
@@ -9532,7 +9515,7 @@ $\mathcal{C}$ 对**递增并**封闭（用 MCT）；对**递减交**也封闭（
 
 参考：Folland, Real Analysis, Theorem 2.36
 
-#### Fubini–Tonelli　`thm.fubini-tonelli`
+#### Fubini–Tonelli 定理　`thm.fubini-tonelli`
 *定理*　Fubini–Tonelli 定理（重积分可交换次序）
 
 设 $(X, \mathcal{M}, \mu )$、$(Y, \mathcal{N}, \nu )$ 是 **$\sigma$有限**的测度空间。
@@ -9847,7 +9830,7 @@ $$d\rho = f d\mu$$
 
 参考：Folland, Real Analysis, Theorem 3.8
 
-#### RN 导数与 Lebesgue 分解　`def.rn-derivative`
+#### Radon–Nikodym 导数与 Lebesgue 分解　`def.rn-derivative`
 *定义*　Radon–Nikodym 导数 $d\nu/d\mu$ 与 Lebesgue 分解
 
 设 $\nu \ll  \mu$（都是 $\sigma$有限的）。取定理里的 $f$，称
@@ -9866,8 +9849,8 @@ $$f = \frac{d\nu}{d\mu}$$
 
 参考：Folland, Real Analysis, §3.2
 
-#### RN 导数的链式法则　`prop.rn-chain-rule`
-*命题*　命题：RN 导数的换元公式与链式法则
+#### Radon–Nikodym 导数的链式法则　`prop.rn-chain-rule`
+*命题*　命题：Radon–Nikodym 导数的换元公式与链式法则
 
 设 $\nu$ 是 $\sigma$有限符号测度、$\mu$ 与 $\lambda$ 是 $\sigma$有限测度，且
 
@@ -10262,7 +10245,7 @@ $f \in L^+(\mathbb{R}^n)$ 时，$f\cdot dm$ 正则 $\iff$ $f \in L^1_{loc}$ —�
 
 参考：Folland, Real Analysis, §7.2
 
-#### RN 导数的点态公式　`thm.rn-pointwise`
+#### Radon–Nikodym 导数的点态公式　`thm.rn-pointwise`
 *定理*　定理：$\nu(E_{r})/m(E_{r}) \to f(x) \text{a.e.}$，其中 $d\nu = d\lambda + f dm$
 
 设 $\nu$ 是 $\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$d\nu = d\lambda + f\cdot dm$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $x \in \mathbb{R}^n$，
@@ -10331,7 +10314,7 @@ $$0 \le H(x+h) / h \le (\bar{F}(x+h) - \bar{F}(x)) / h\quad  (h > 0)$$
 
 参考：Folland, Real Analysis, Theorem 3.23
 
-#### 有界变差 BV　`def.bounded-variation`
+#### 有界变差函数　`def.bounded-variation`
 *定义*　全变差与有界变差函数
 
 设 $F : \mathbb{R} \to \mathbb{C}$。定义它的**全变差函数**
@@ -10350,8 +10333,8 @@ $T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变
 
 参考：Folland, Real Analysis, §3.5；Rudin, Real and Complex Analysis, Ch. 7
 
-#### BV 的例子与基本性质　`prop.bv-examples`
-*命题*　命题：BV 的几个例子与封闭性
+#### 有界变差函数的例子与基本性质　`prop.bv-examples`
+*命题*　命题：有界变差函数的几个例子与封闭性
 
 1. 若 $F : \mathbb{R} \to \mathbb{R}$ **有界递增**，则 $F \in BV$（此时 $T_F = F - F(-\infty)$）。
 2. $BV$ 是 $\mathbb{C}$向量空间。
@@ -10377,7 +10360,7 @@ $T_F(b) - T_F(a)$ 称为 $F$ 在 $[a, b]$ 上的全变差；$[a,b]$ 上有界变
 参考：Folland, Real Analysis, §3.5
 
 #### T_F ± F 递增　`lem.variation-monotone`
-*引理*　引理：实值 BV 函数的 $T_F + F$ 与 $T_F - F$ 都递增
+*引理*　引理：实值有界变差函数的 $T_F + F$ 与 $T_F - F$ 都递增
 
 设 $F$ 是**实值**有界变差函数。则
 
@@ -10399,7 +10382,7 @@ $$T_F(y) \pm  F(y) \ge \sum_j |F(x_j) - F(x_{j-1})| + (F(y) - F(x)) \pm  F(x) \g
 
 参考：Folland, Real Analysis, Theorem 3.27
 
-#### BV 的 Jordan 分解　`thm.bv-jordan`
+#### 有界变差函数的 Jordan 分解　`thm.bv-jordan`
 *定理*　定理：$F \in BV \iff F = G - H$（G、H 有界递增）
 
 **(a)** $F \in BV \iff \operatorname{Re} F \in BV\text{ 且} \operatorname{Im} F \in BV$。
@@ -10424,8 +10407,8 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 
 参考：Folland, Real Analysis, Theorem 3.27
 
-#### BV 函数的正则性　`prop.bv-regularity`
-*命题*　命题：BV 函数的单侧极限都存在、不连续点可数、a.e. 可导
+#### 有界变差函数的正则性　`prop.bv-regularity`
+*命题*　命题：有界变差函数的单侧极限都存在、不连续点可数、几乎处处可导
 
 设 $F \in BV$。则
 
@@ -10441,8 +10424,8 @@ $$F = (1/2)(T_F + F) - (1/2)(T_F - F)$$
 
 参考：Folland, Real Analysis, Theorem 3.27
 
-#### NBV　`def.nbv`
-*定义*　NBV：右连续且 $F(-\infty) = 0$ 的有界变差函数
+#### 规范有界变差函数　`def.nbv`
+*定义*　规范有界变差函数：右连续且 $F(-\infty) = 0$ 的有界变差函数
 
 $$NBV := \{ F \in BV : F\text{ 右连续},\text{ 且} F(-\infty) = 0 \}$$
 
@@ -10458,7 +10441,7 @@ $$F(x) = \mu((-\infty, x])$$
 
 参考：Folland, Real Analysis, Theorem 3.29
 
-#### 全变差的 NBV 性质　`lem.nbv-variation`
+#### 全变差的规范有界变差性质　`lem.nbv-variation`
 *引理*　引理：$T_F(-\infty) = 0$；F 右连续 $\implies T_F$ 右连续
 
 设 $F \in BV$。则
@@ -10511,8 +10494,8 @@ $$\int_a^b F' = \int_a^b f\cdot dm \le \int_a^b d\mu_G = G(b) - G(a) \le F(b) - 
 
 参考：Folland, Real Analysis, Theorem 3.28
 
-#### 测度 ↔ NBV 的一一对应　`thm.borel-measure-nbv`
-*定理*　定理：$\mathbb{R}$ 上的复 Borel 测度 $\longleftrightarrow$ NBV 函数
+#### 测度与规范有界变差函数的一一对应　`thm.borel-measure-nbv`
+*定理*　定理：$\mathbb{R}$ 上的复 Borel 测度与规范有界变差函数一一对应
 
 **(1)** 若 $\mu$ 是 $\mathbb{R}$ 上的复 Borel 测度，$F(x) := \mu((-\infty, x])$，则 $F \in NBV$。
 
@@ -10532,7 +10515,7 @@ $|\mu_F| = \mu_{T_F}$ 这一条说的是：**取全变差（函数侧）与取�
 
 参考：Folland, Real Analysis, Theorem 3.29
 
-#### NBV 函数的导数与测度的关系　`prop.nbv-derivative`
+#### 规范有界变差函数的导数与测度的关系　`prop.nbv-derivative`
 *命题*　命题：$\mu_F \perp m \iff F' = 0 \text{a.e.}$；$\mu_F \ll m \iff F(x) = \int_{-\infty}^{x} F'$
 
 设 $F \in NBV$。则 $F' \in L^1(m)$，并且
@@ -10553,7 +10536,7 @@ $\cdot$ $\mu_F \ll  m$ 意味着 $\lambda = 0$，于是 $F(x) = \mu_F((-\infty,x
 参考：Folland, Real Analysis, Theorem 3.35
 
 #### 绝对连续函数　`def.ac-function`
-*定义*　绝对连续函数 AC
+*定义*　绝对连续函数
 
 函数 $F : [a, b] \to \mathbb{C}$ 是**绝对连续的**，当且仅当
 
@@ -10580,8 +10563,8 @@ $$F\text{ 绝对连续} \iff \mu_F \ll  m$$
 
 参考：Folland, Real Analysis, Theorem 3.35
 
-#### 积出来的函数是 AC · NBV　`cor.integral-is-ac-nbv`
-*推论*　推论：$f \in L^{1}(m) \implies F(x) = \int_{-\infty}^{x} f$ 是 AC、NBV；反之亦然
+#### 积分得到的函数绝对连续且规范有界变差　`cor.integral-is-ac-nbv`
+*推论*　推论：$f \in L^{1}(m) \implies F(x) = \int_{-\infty}^{x} f$ 绝对连续且规范有界变差；反之亦然
 
 **(1)** 若 $f \in L^1(m)$，则
 
@@ -10605,7 +10588,7 @@ $$\sum_{j}|F(b_{j}) - F(a_{j})| \le \sum_{j}\int_{a_{j}}^{b_{j}}|f| = \int_{\big
 
 参考：Folland, Real Analysis, Theorem 3.35
 
-#### AC ⊆ BV　`lem.ac-subset-bv`
+#### 绝对连续蕴含有界变差　`lem.ac-subset-bv`
 *引理*　引理：绝对连续蕴含绝对变差（紧区间上）
 
 $$AC([a, b]) \subseteq BV([a, b])$$
@@ -10619,7 +10602,7 @@ $$AC([a, b]) \subseteq BV([a, b])$$
 参考：Folland, Real Analysis, §3.5
 
 #### 微积分基本定理（Lebesgue 版）　`thm.ftc-lebesgue`
-*定理*　定理（TFAE）：绝对连续 $\iff$ 是 $L^{1}$ 函数的积分 $\iff$ 导数的积分还原
+*定理*　定理：以下几条等价 —— 绝对连续、是 $L^{1}$ 函数的积分、导数的积分还原
 
 设 $F : [a, b] \to \mathbb{C}$，区间紧。则下列三条**彼此等价**：
 
@@ -10895,7 +10878,7 @@ $$|g|^p = |f|^p \chi_E \le |f|^q \chi_E, \qquad |h|^r = |f|^r \chi_{E^c} \le |f|
 
 参考：Folland, Real Analysis, Prop. 6.4
 
-#### L^p ∩ L^r ⊆ L^q　`prop.lp-inter-lr-in-lq`
+#### L^p 与 L^r 的交包含于 L^q　`prop.lp-inter-lr-in-lq`
 *命题*　命题（插值）：$L^p \cap L^r \subseteq L^q$
 
 设 $0 < p < q < r \le \infty$。若 $f \in L^p \cap L^r$，则 $f \in L^q$，且
@@ -10930,7 +10913,7 @@ $$\|f\|_q^q \le \left[ \int |f|^p \right]^{\lambda q/p} \left[ \int |f|^r \right
 
 参考：Folland, Real Analysis, Prop. 6.4
 
-#### ℓ^p ⊆ ℓ^q　`prop.ell-p-inclusion`
+#### ℓ^p 包含于 ℓ^q　`prop.ell-p-inclusion`
 *命题*　命题（只有衰减的场合）：$\ell^p \subseteq \ell^q$（$0 < p < q \le \infty$）
 
 设 $0 < p < q \le \infty$，$A$ 是任意指标集。则
@@ -11031,7 +11014,7 @@ $$L^q \longrightarrow (L^p)^*, \qquad g \mapsto \varphi_g$$
 
 参考：Folland, Real Analysis, §6.2
 
-#### ‖g‖_q = ‖φ_g‖　`prop.duality-isometry`
+#### 对偶等距：范数相等　`prop.duality-isometry`
 *命题*　命题：$\|\varphi_g\| = \|g\|_q$（$\mu$ 半有限时也含 $q = \infty$）
 
 设 $p, q$ 共轭。则
@@ -11093,7 +11076,7 @@ $$M_g(g) := \sup \left\{ \, \left| \int fg \right| : f \in \Sigma,\ \|f\|_p = 1 
 
 参考：Folland, Real Analysis, Theorem 6.14
 
-#### (L^p)* ≅ L^q　`thm.riesz-representation-lp`
+#### Riesz 表示定理　`thm.riesz-representation-lp`
 *定理*　定理（Riesz 表示）：$1 < p < \infty$ 时 $(L^p)^{*} \cong L^q$
 
 设 $1 < p < \infty$，$q$ 是共轭指数。则对每个 $\Phi \in (L^p)^*$，存在**唯一**（a.e.）的 $g \in L^q$ 使
@@ -13133,7 +13116,7 @@ $$\operatorname{Hom}_{\mathcal{E}}\bigl(F_{2}F_{1}X,\ Z\bigr) \cong \operatornam
 
 参考：Le Stum, An introduction to condensed mathematics, Exercise 1.56
 
-#### Currying　`prop.currying`
+#### 函数的柯里化　`prop.currying`
 *命题*　命题：$X \mapsto X \times Y \;\dashv\; Z \mapsto \mathbf{Set}(Y, Z)$
 
 在 $\mathbf{Set}$ 里 $X \mapsto X \times Y$ **$\dashv$** $Z \mapsto \mathbf{Set}(Y, Z)$：
@@ -15284,7 +15267,7 @@ $$\operatorname{Ext}^{n}(K^{\bullet}, L^{\bullet}) := \operatorname{Hom}_{D(\mat
 
 参考：Le Stum, Definition 7.2.9
 
-#### Ext 就是 RHom　`prop.ext-is-rhom`
+#### Ext 就是导出 Hom　`prop.ext-is-rhom`
 *命题*　$R^{n}\operatorname{Hom}(M, K^{\bullet}) = \operatorname{Ext}^{n}(M, K^{\bullet})$
 
 若 $M \in \mathcal{A}$、$K^{\bullet} \in C^{+}(\mathcal{A})$，则 $R^{n}\operatorname{Hom}(M, K^{\bullet}) = \operatorname{Ext}^{n}(M, K^{\bullet})$（对偶地 $R^{n}\operatorname{Hom}(-, N)$ 给出另一边的 $\operatorname{Ext}$）。
@@ -16851,7 +16834,7 @@ $$M \longmapsto P \otimes_{\mathbb{Z}} M$$
 
 参考：Le Stum, An introduction to condensed mathematics, §5.3
 
-#### 张量与 RHom 的配对　`prop.tensor-rhom-natural-map`
+#### 张量与导出 Hom 的配对　`prop.tensor-rhom-natural-map`
 *命题*　命题：$M \otimes^{\mathbf{L}} \operatorname{RHom}(P, N) \to \operatorname{RHom}(\operatorname{RHom}(M, P), N)$
 
 设 $\mathcal{T}$ 是拓扑斯，$M, N, P$ 是 $\mathcal{T}$ 中的阿贝尔群。则存在自然映射
@@ -18460,7 +18443,7 @@ $$0 \to \ker\delta^{0} \to M \to \ker\delta^{1} \to \ker\delta^{1}\big/\operator
 ### 星团：凝聚态集
 > 造出主角：紧 Hausdorff 空间上的层就是凝聚态集；换到自由对象上，层条件退化成「保有限积」。
 
-#### CHaus 是预拓扑斯　`def.chaus-pretopos`
+#### 紧 Hausdorff 空间构成预拓扑斯　`def.chaus-pretopos`
 *定理*　$\mathbf{CHaus}$ 是预拓扑斯
 
 在 $\mathbf{CHaus}$ 中：
@@ -18562,7 +18545,7 @@ $\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两
 
 参考：Le Stum, §4.1
 
-#### FCHaus 上的预拓扑　`prop.fchaus-pretopology`
+#### 有限紧 Hausdorff 空间上的预拓扑　`prop.fchaus-pretopology`
 *命题*　有限不交并给出自由紧 Hausforff 空间上的预拓扑
 
 记 $\mathbf{FCHaus}$ 为**自由紧 Hausdorff 空间**（即 $\beta I$）构成的满子范畴。$\mathbf{FCHaus}$ 中的对象都是 $\mathrm{Cond}$ 的**投射对象**，满射 $S \to S'$ 总有截面 —— 于是**有限不交并给出 $\mathbf{FCHaus}$ 上的一个预拓扑**。
@@ -18577,7 +18560,7 @@ $\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两
 
 参考：Le Stum, Exercise 4.1
 
-#### FCHaus 上层的判据　`prop.fchaus-sheaf`
+#### 有限紧 Hausdorff 空间上层的判据　`prop.fchaus-sheaf`
 *命题*　自由紧 Hausforff 空间上的层 $\iff$ 保有限积
 
 设 $X$ 是 $\mathbf{FCHaus}$ 上的集合预层。则 $X$ 是层 $\iff$ $X$ **保有限积**。
@@ -18591,7 +18574,7 @@ $$X(F) \longrightarrow \prod_{i} X(F_{i}) \rightrightarrows \prod_{i,j} X(F_{i} 
 
 参考：Le Stum, Exercise 4.2
 
-#### Cond 即 FCHaus 上的层　`thm.cond-equiv-fchaus`
+#### 凝聚态集就是有限紧 Hausdorff 空间上的层　`thm.cond-equiv-fchaus`
 *定理*　$\mathrm{Cond} \simeq \widehat{\mathbf{FCHaus}}$
 
 $\mathbf{CHaus}$ 上的层与 $\mathbf{FCHaus}$ 上的层是**同一个范畴**：
@@ -19027,8 +19010,8 @@ $$\Bigl(\varinjlim_{i} M_{i}\Bigr)\Bigl(\coprod_{j} F_{j}\Bigr) = \varinjlim_{i}
 
 参考：Le Stum, Lemma 6.1.3
 
-#### CondAb 满足 AB6 与 AB4*　`thm.condab-ab`
-*定理*　$\mathrm{CondAb}$ 的 AB 公理
+#### 凝聚态阿贝尔群满足 AB6 与 AB4*　`thm.condab-ab`
+*定理*　凝聚态阿贝尔群的 AB 公理
 
 $\mathrm{CondAb}$ 是**Grothendieck 范畴**，并且满足 **AB6** 与 **AB4\***。
 
@@ -19863,7 +19846,7 @@ $$f = d\Bigl(\sum_{k=1}^{\infty} \frac{1}{2^{k}} h^{n+1}\bigl([2^{k-1}]f\bigr)\B
 
 参考：Le Stum, Proposition 8.3.6
 
-#### 离散对偶的 RHom 与导出张量　`prop.rhom-dual-tensor`
+#### 离散对偶的导出 Hom 与导出张量　`prop.rhom-dual-tensor`
 *命题*　$\operatorname{RHom}(\operatorname{RHom}(M, T), N) \cong M \otimes^{\mathbf{L}}_{\mathbb{Z}} N[-1]$
 
 设 $M, N$ 是**离散**阿贝尔群，$T = \mathbb{R}/\mathbb{Z}$。则
@@ -19886,7 +19869,7 @@ $$M \otimes^{\mathbf{L}}_{\mathbb{Z}} N[-1] \;\cong\; M \otimes^{\mathbf{L}}_{\m
 
 参考：Le Stum, Proposition 8.3.7
 
-#### Pontryagin 对偶的 RHom 刻画　`prop.dual-rhom-characterization`
+#### Pontryagin 对偶的导出 Hom 刻画　`prop.dual-rhom-characterization`
 *命题*　$M^{\vee} \cong \operatorname{RHom}_{\mathbb{Z}}(M, T)$
 
 设 $M$ 是**局部紧 Hausdorff 阿贝尔群**，$M^{\vee}$ 是它的 Pontryagin 对偶。则
@@ -19937,7 +19920,7 @@ $$\operatorname{Ext}^{n}_{\mathbb{Z}}(M, N) = 0.$$
 
 参考：Le Stum, Theorem 8.3.9
 
-#### Z/R/T 的 RHom 计算表　`table.rhom-zrt`
+#### Z、R、T 的导出 Hom 计算表　`table.rhom-zrt`
 *例*　$\operatorname{RHom}_{\mathbb{Z}}(M, N)$ 在 $\mathbb{Z}, \mathbb{R}, T$ 上的取值
 
 下表列出 $\operatorname{RHom}_{\mathbb{Z}}(M, N)$（行是 $M$、列是 $N$）：
@@ -19961,7 +19944,7 @@ $$\begin{array}{c|ccc} & \mathbb{Z} & \mathbb{R} & T \\ \hline \mathbb{Z} & \mat
 
 参考：Le Stum, Exercise 8.17
 
-#### 有限维 Banach 之间的 RHom　`ex.finite-banach-rhom`
+#### 有限维 Banach 空间之间的导出 Hom　`ex.finite-banach-rhom`
 *例*　$\operatorname{RHom}_{\mathbb{Z}}(M, N) = \operatorname{Hom}_{\mathbb{R}}(M, N)$
 
 设 $M, N$ 是有限维实 Banach 空间。则 $\operatorname{RHom}_{\mathbb{Z}}(M, N) = \operatorname{Hom}_{\mathbb{R}}(M, N)$，其中右边集中在 **0 次**。
@@ -19972,7 +19955,7 @@ $$\begin{array}{c|ccc} & \mathbb{Z} & \mathbb{R} & T \\ \hline \mathbb{Z} & \mat
 
 参考：Le Stum, Exercise 8.15
 
-#### 紧 S 对实 Banach 的 RHom　`ex.chaus-banach-rhom`
+#### 紧空间对实 Banach 空间的导出 Hom　`ex.chaus-banach-rhom`
 *例*　$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z} \cdot S,\ N) \cong C(S, N)$
 
 设 $S$ 是紧 Hausdorff 空间、$N$ 是实 Banach 空间。则 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z} \cdot S,\ N) \cong C(S, N)$，集中在 **0 次**。
@@ -20011,7 +19994,7 @@ $$E^{p,q}_{1} = \bigoplus_{i=1}^{r_{p}} H^{q}\bigl(M^{s_{p,i}},\ N\bigr) \implie
 
 参考：Le Stum, Exercise 8.18
 
-#### 非局部紧情形的 RHom　`ex.nonlc-rhom`
+#### 非局部紧情形的导出 Hom　`ex.nonlc-rhom`
 *例*　$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{R}^{I}, \mathbb{Z}) = 0$，$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}^{I}, \mathbb{Z}) = \mathbb{Z} \cdot I$
 
 记 $I$ 为任意指标集。则
@@ -20107,7 +20090,7 @@ $$\operatorname{Ext}^{n}_{\mathbb{Z}}\bigl(\mathbb{Z}\cdot Y,\ N\bigr) = R^{n}\G
 
 参考：Le Stum, An introduction to condensed mathematics, §8.3
 
-#### Stonean 上 Z[S] 的 RHom　`prop.rhom-zs-sections`
+#### Stonean 空间上自由模的导出 Hom　`prop.rhom-zs-sections`
 *命题*　命题：$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[S], N) \cong N(S)$（$S$ Stonean）
 
 设 $S$ 是 **Stonean** 空间，$N$ 是凝聚态阿贝尔群。则
@@ -20124,7 +20107,7 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}[S],\ -\bigr) = \Gamma(S, -) = 
 
 参考：Le Stum, An introduction to condensed mathematics, §8.3
 
-#### 离散空间上 Z[E] 的 RHom　`prop.rhom-ze-powers`
+#### 离散空间上自由模的导出 Hom　`prop.rhom-ze-powers`
 *命题*　命题：$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[E], N) \cong N^{E}$（$E$ 离散）
 
 设 $E$ 是**离散**拓扑空间，$N$ 是凝聚态阿贝尔群。则
@@ -20143,8 +20126,8 @@ $$\operatorname{Hom}_{\mathbb{Z}}\Bigl(\bigoplus_{e \in E} \mathbb{Z},\ N\Bigr) 
 
 参考：Le Stum, An introduction to condensed mathematics, §8.3
 
-#### 离散群的 RHom 是常层　`prop.discrete-cond-rhom-constant`
-*命题*　命题：离散阿贝尔群的 RHom 与导出张量积都落在常层里
+#### 离散群的导出 Hom 是常层　`prop.discrete-cond-rhom-constant`
+*命题*　命题：离散阿贝尔群的导出 Hom 与导出张量积都落在常层里
 
 设 $M, N$ 是**离散**阿贝尔群，也把它们看成对应的常凝聚态阿贝尔群。则
 
@@ -20966,6 +20949,849 @@ $$\operatorname{RHom}_{\mathcal{O}_X}(C, \omega_{X/R})[d] \longrightarrow \opera
 📌 原文 Lecture XI（pp. 71–76）。
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.1
+
+## 星系：微分几何（Differential Geometry）
+> 曲面的活动标架与结构方程、第一与第二基本形式、Gauss–Codazzi、曲率与测地线的内蕴几何。
+
+### 星团：活动标架与结构方程
+> 把「逐项求导」换成「标架怎么转」：活动标架 ${e_i}$ → 联络形式 $omega^i_{ j}$ → 结构方程 $mathrm{d}e_i = omega^j_{ i} e_j$ → 由 $mathrm{d}^2=0$ 读出曲率形式。曲面的所有基本形式与曲率都从这里**一次推出**，不再重复坐标展开。
+
+#### 活动标架　`def.moving-frame`
+*定义*　活动标架与对偶余标架
+
+设 $U_{0} \subseteq S$ 是曲面上的开集。**活动标架**是三个 $C^{1}$ 向量场 $e_{1}, e_{2}, e_{3}$，使每点的 $(e_{1}, e_{2}, e_{3})$ 都是 $\mathbb{R}^{3}$ 的标准正交基（随点移动而变，故名「活动」）。**对偶余标架**是
+
+$$\omega^{i}(v) := \langle v, e_{i}\rangle ,\qquad i = 1,2,3,$$
+
+它们是 $1$-形式，满足 $\omega^{i}(e_{j}) = \delta^{i}_{\ j}$。位置向量的微分按标架展开：
+
+$$\mathrm{d}r = \omega^{1}e_{1}+\omega^{2}e_{2}+\omega^{3}e_{3}.$$
+
+这叫**焊接方程**（soldering）：它把「$r$ 怎么动」翻译成「沿标架的各分量动多少」。
+
+**为什么值得换一套说法**：坐标路线要算 $r_{uu}, r_{uv}, r_{vv}$ 以及 $n$ 的偏导；标架路线只把 $\mathrm{d}r$、$\mathrm{d}e_{i}$ **展开一次**，此后全是 $1$-形式之间的代数（外积、比较系数）。这正是用户要的「用活动标架代替复杂计算」。
+
+**曲面上的标准取法**：$e_{3} = n$（法向），$e_{1}, e_{2}$ 是与 $n$ 正交的单位切向量场。这时 $\omega^{3} = \langle \mathrm{d}r, n\rangle = 0$：曲面上没有法向增量。
+
+⚠️ $(e_{1}, e_{2})$ 只在局部存在，且不唯一（可差一次转动）。凡要写出来的量都要写成与转动无关的形式（如 $I = (\omega^{1})^{2}+(\omega^{2})^{2}$），否则一换标架就变形。
+
+**记号**：$\omega^{i}$ 的上标是编号、不是幂；$(e_{1}, e_{2}, e_{3})$ 与 $(\omega^{1}, \omega^{2}, \omega^{3})$ 互为对偶对，这是活动标架法的全部记账规则。
+
+参考：S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 活动标架与余标架；陈维桓《微分几何讲义》, 「曲面的局部理论」· 活动标架法
+
+#### 联络形式　`def.connection-form`
+*定义*　联络形式
+
+把 $\mathrm{d}e_{i}$ 按标架展开，系数记作 $\omega^{j}_{\ i}$：
+
+$$\mathrm{d}e_{i} = \sum_{j=1}^{3}\omega^{j}_{\ i}\,e_{j},\qquad \omega^{j}_{\ i} = \langle \mathrm{d}e_{i}, e_{j}\rangle .$$
+
+这九个 $1$-形式叫**联络形式**（$\Gamma$-形式）。矩阵 $(\omega^{i}_{\ j})$ 反称（见 `prop.connection-antisymmetric`），故只有三个独立：$\omega^{1}_{\ 2}, \omega^{1}_{\ 3}, \omega^{2}_{\ 3}$。
+
+取 $e_{3} = n$（法向）后它们分成两类：
+
+- $\omega^{1}_{\ 2}$：**内蕴**部分 —— 曲面的 Levi-Civita 联络，Gauss 曲率由它算出；
+- $\omega^{1}_{\ 3}, \omega^{2}_{\ 3}$：**外蕴**部分 —— 第二基本形式由它们算出。
+
+**名字的来历**：$\omega^{j}_{\ i}$ 描述「沿某个方向走时，标架怎么转」。它不是无端造出来的外形式：每一点上是 $\mathbb{R}^{3}$ 的一个 $3\times3$ 反称矩阵（$3$ 个自由度），沿方向取值就成了 $1$-形式。
+
+⭐ **这一拆分就是曲面论**：$\mathbb{R}^{3}$ 里曲率形式恒为零；限制到曲面上，$\omega^{1}_{\ 2}$ 那部分由内蕴度量决定（Gauss 方程），剩下的外蕴部分给出 $II$ 与 Codazzi 方程。整本曲面论都在读这两类形式的系数。
+
+⚠️ $\omega^{i}_{\ j}$ 与 $\omega^{j}_{\ i}$ 差一个负号，是全图最容易抄错的地方。判据只有一条：对 $\langle e_{i}, e_{j}\rangle = \delta_{ij}$ 取外微分，不要凭记忆。
+
+**与 Christoffel 符号的关系**：在**不正交**的标架 $\{r_{u}, r_{v}, n\}$ 上把它写开，系数就是 $\Gamma^{k}_{\ ij}$ 与 $h_{ij}$ 的混合体（见）；只有在正交标架下它才变成干净的反对称矩阵。
+
+参考：S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式；陈维桓《微分几何讲义》, 「曲面的局部理论」· 联络形式
+
+#### 联络形式反对称　`prop.connection-antisymmetric`
+*命题*　正交标架给出反对称的联络形式
+
+设 $(e_{1}, e_{2}, e_{3})$ 是活动标架（正交标架），$\omega^{i}_{\ j}$ 是联络形式。则对一切 $i,j$：
+
+$$\omega^{i}_{\ j}+\omega^{j}_{\ i} = 0 ;$$
+
+特别地 $\omega^{i}_{\ i} = 0$。于是九个联络形式只剩三个独立分量 $\omega^{1}_{\ 2}, \omega^{1}_{\ 3}, \omega^{2}_{\ 3}$。
+
+证明走的是「内积是常数」这一条，不需要任何坐标：对 $\langle e_{i}, e_{j}\rangle = \delta_{ij}$ 取外微分即得（见入边）。
+
+⭐ **这条是正交标架法的地基**：它把 $\mathrm{O}(3)$ 的转动自由度（$3$ 个参数）写成 $3$ 个 $1$-形式，后面结构方程里的两两外积才有意义。
+
+⚠️ 若改用**不正交**的标架（如 $\{r_{u}, r_{v}, n\}$），$g_{ij}$ 不是 $\delta_{ij}$，反对称性不成立，$\omega$ 就退化成 $\Gamma$ 与 $h$ 的混合体 —— 那正是里那套公式的样子。
+
+参考：S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式的反称性；Kühnel, Differential Geometry: Curves - Surfaces - Manifolds, 「Surfaces in three-space」· 结构方程
+
+#### 结构方程　`thm.structure-equations`
+*定理*　第一与第二结构方程
+
+设 $\omega^{i}$ 是对偶余标架（$\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$）、$\omega^{i}_{\ j}$ 是联络形式。则
+
+**第一结构方程**（无挠）
+
+$$\mathrm{d}\omega^{i} = \sum_{j}\omega^{j}\wedge\omega^{i}_{\ j} ;$$
+
+**第二结构方程**（$\mathbb{R}^{3}$ 平坦）
+
+$$\mathrm{d}\omega^{i}_{\ j}+\sum_{k}\omega^{i}_{\ k}\wedge\omega^{k}_{\ j} = 0 ,\qquad \mathrm{d}\omega^{i}_{\ j} = \sum_{k}\omega^{k}_{\ j}\wedge\omega^{i}_{\ k}.$$
+
+两条合起来就是 $\mathrm{d}^{2}=0$ 在标架上的样子：对 $\mathrm{d}r$ 取外微分得第一式，对 $\mathrm{d}e_{i}$ 取外微分得第二式。
+
+**为什么叫「结构」**：这两条方程决定「标架怎么动」的全部约束。给定余标架与联络，曲面的形状连同它在 $\mathbb{R}^{3}$ 里的位置就定了；反过来要检查的相容性只有 $\mathrm{d}^{2}=0$。曲面论基本定理就是把这句话做成定理。
+
+**曲率形式**：一般流形上第二式的右端不为零，那一项叫曲率形式 $\Omega^{i}_{\ j} := \mathrm{d}\omega^{i}_{\ j}+\sum_{k}\omega^{i}_{\ k}\wedge\omega^{k}_{\ j}$；$\mathbb{R}^{3}$ 上 $\Omega \equiv 0$。限制到曲面上时它变成 $\Omega^{i}_{\ j} = \omega^{i}_{\ 3}\wedge\omega^{j}_{\ 3}$ —— 这就是 Gauss 方程。
+
+把同一件事写成「$r_{ij} = \Gamma^{k}_{\ ij}r_{k}+h_{ij}n$、$n_{i} = -h^{j}_{\ i}r_{j}$ 的混合偏导可交换（可积性条件）」。这里只是把「混合偏导」换成 $\mathrm{d}^{2}=0$、把 $\Gamma$ 换成 $\omega$：同一个相容性，写法更短。
+
+⚠️ **符号约定**：本包取 $\omega^{j}_{\ i} = \langle \mathrm{d}e_{i}, e_{j}\rangle$，即 $\mathrm{d}e_{i} = \sum_{j}\omega^{j}_{\ i}e_{j}$。上下指标换一种位置，第二式整体变号；引用前先对齐这一条。
+
+参考：S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 结构方程；陈维桓《微分几何讲义》, 「曲面的局部理论」· 结构方程
+
+#### 适配标架　`lem.adapted-frame`
+*引理*　沿曲面取法向标架
+
+设标架取成适配于曲面的：$e_{3} = n$（法向）。则沿曲面
+
+$$\omega^{3} = 0,\qquad \omega^{i}_{\ 3} = \sum_{j=1}^{2}c_{ij}\,\omega^{j}\quad (i = 1,2),$$
+
+即外蕴联络形式全部落在 $\{\omega^{1}, \omega^{2}\}$ 张成的空间里，由三个函数 $c_{11}, c_{12}, c_{22}$ 决定（$c_{12} = c_{21}$ 见 `lem.second-form-symmetric`）。
+
+**为什么 $\omega^{3} = 0$**：$\omega^{3}(v) = \langle \mathrm{d}r(v), e_{3}\rangle$，而 $\mathrm{d}r(v)$ 是曲面的切向量、$e_{3}$ 是法向。等价说法：$r$ 沿曲面移动时没有法向分量。
+
+⭐ **方程组因此变短**：第一结构方程取 $i=3$ 变成恒等式 $0 = \omega^{1}\wedge\omega^{3}_{\ 1}+\omega^{2}\wedge\omega^{3}_{\ 2}$；第二结构方程取 $i,j \in \{1,2\}$ 时只剩 $k=3$ 那一项「多出来」—— 那一项就是 Gauss 曲率。
+
+⭐ 这一步正是「省掉复杂计算」的入口：用坐标求偏导 $r_{uu}, r_{uv}$ 才拿得到的 $h_{ij}$，在这里只是 $\omega^{i}_{\ 3}$ 的系数。
+
+⚠️ $\omega^{3} = 0$ 是**沿曲面**成立，不是标架本身的性质：在 $\mathbb{R}^{3}$ 的开集上 $\omega^{3}$ 一般不为零，那正对应「曲面朝法向弯出去」。
+
+参考：S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 曲面上的标准标架；do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· Gauss 映射
+
+#### 第二基本形式对称　`lem.second-form-symmetric`
+*引理*　第二基本形式的系数矩阵对称
+
+在 $e_{3} = n$ 的标架下记 $\omega^{i}_{\ 3} = \sum_{j}c_{ij}\omega^{j}$（$i, j = 1,2$）。则
+
+$$c_{12} = c_{21}.$$
+
+令 $h_{ij} := -c_{ij}$，则 $(h_{ij})$ 也对称，于是
+
+$$II = \sum_{i,j=1}^{2}h_{ij}\,\omega^{i}\omega^{j} = h_{11}(\omega^{1})^{2}+2h_{12}\omega^{1}\omega^{2}+h_{22}(\omega^{2})^{2}$$
+
+是对称双线性形式（$\omega^{i}\omega^{j}$ 指对称积）。
+
+**证明只有一行**：把 $\mathrm{d}\omega^{3} = 0$ 代进第一结构方程，得 $(c_{12}-c_{21})\,\omega^{1}\wedge\omega^{2} = 0$。见入边。
+
+**坐标版对照**：是在 $\{r_{u}, r_{v}\}$ 下用「$W$ 的矩阵 $h^{j}_{\ i}$ 由混合偏导相等而自伴」得到对称性的。$\mathrm{d}^{2}=0$ 是同一件事的坐标无关版本，且不必假设参数网特殊。
+
+⭐ **对称性的回报**：实对称矩阵有正交的实特征方向（谱定理）—— 这正是主方向、Euler 公式、Rodrigues 定理的来源。
+
+⚠️ 对称的是**相对正交标架**的矩阵 $(c_{ij})$ 与 $(h_{ij})$；若改用不正交的 $\{r_{u}, r_{v}\}$，对称的是 $h_{ij}$，而 $(h^{j}_{\ i}) = g^{jk}h_{ki}$ 一般不对称。 $\det(h-kg)=0$ 用的正是 $h_{ij}$ 这一支。
+
+参考：S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 第二基本形式的对称性；do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 第二基本形式的对称性
+
+### 星团：曲面论
+> 曲面的两张基本形式与它们的关系：切映射与第一基本形式 → 单位法向与 Weingarten 变换 → 第二基本形式 → Gauss 方程与 Codazzi–Mainardi 方程 → Gauss 曲率与主曲率。全部按活动标架推导。
+
+#### 曲面与参数化　`def.regular-surface`
+*定义*　正则曲面、切平面与 Gauss 映射
+
+设 $U \subseteq \mathbb{R}^{2}$ 是开集，$r\colon U \to \mathbb{R}^{3}$ 是 $C^{2}$ 映射，记 $r_{u} := \partial r/\partial u$、$r_{v} := \partial r/\partial v$。若处处有
+
+$$r_{u}\times r_{v} \ne 0 ,$$
+
+则称 $r$ 是 $U$ 上的**正则参数曲面**，像集 $S = r(U)$ 叫曲面。此时 $\{r_{u}, r_{v}\}$ 张成切平面 $T_{p}S$，而
+
+$$n := \frac{r_{u}\times r_{v}}{\lVert r_{u}\times r_{v}\rVert}$$
+
+是单位法向量，$n\colon U \to S^{2}$ 叫 **Gauss 映射**。切映射 $\mathrm{d}r\colon T_{p}U \to T_{r(p)}S$ 由 $\mathrm{d}r(\partial_{u}) = r_{u}$、$\mathrm{d}r(\partial_{v}) = r_{v}$ 确定。
+
+**一句话**：曲面论的全部内容都是「通过参数空间 $U$ 上的对象，读出曲面上发生了什么」—— 这也是整章的出发点。这里的路线把它做成 $1$-形式的等式（$\mathrm{d}r$、$\mathrm{d}e_{i}$ 按标架展开），而不是对 $r$ 求偏导。
+
+**切映射不是切平面上的恒等**：它是从参数域切空间到 $\mathbb{R}^{3}$ 的线性单射，像恰是切平面。写 $I$ 与 $II$ 时两个自变量都先经 $\mathrm{d}r$ 送到切平面，再做内积。
+
+⚠️ 参数化不是曲面本身：换一组 $(u,v)$ 会改 $E,F,G$ 的表达式，但不改第一基本形式这个张量。所以本包结论一律写成「相对标架」的形式，与参数化无关。
+
+**法向的两种选择**：$n$ 与 $-n$ 都是单位法向。$II$ 与 $H$ 随这个选择变号，$K$ 与 $|H|$ 不变 —— 凡要定符号的地方，本包一律按 $e_{3} = n$（即 $r_{u}\times r_{v}$ 的方向）固定。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· 正则曲面与 Gauss 映射；陈维桓《微分几何讲义》, 「曲面的局部理论」· 参数曲面与切平面
+
+#### 第一基本形式　`def.first-fundamental-form`
+*定义*　第一基本形式
+
+曲面的**第一基本形式**是 $T_{p}U$ 上的对称双线性形式
+
+$$I(v,w) := \langle \mathrm{d}r(v), \mathrm{d}r(w)\rangle .$$
+
+相对参数 $(u,v)$ 它写成 $I = E\,\mathrm{d}u^{2}+2F\,\mathrm{d}u\,\mathrm{d}v+G\,\mathrm{d}v^{2}$，其中 $E = \langle r_{u}, r_{u}\rangle$、$F = \langle r_{u}, r_{v}\rangle$、$G = \langle r_{v}, r_{v}\rangle$；相对正交余标架它写成
+
+$$I = (\omega^{1})^{2}+(\omega^{2})^{2}.$$
+
+它给出切向量的长度与夹角、曲线的弧长，以及面积元 $\mathrm{d}A = \omega^{1}\wedge\omega^{2} = \sqrt{EG-F^{2}}\,\mathrm{d}u\,\mathrm{d}v$。
+
+$I$ 是 $\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\mathrm{d}r$ 把参数域的切向量送进切平面，再用 $\mathbb{R}^{3}$ 的内积量。所以 $I$ 只看见「曲面上的长度」，看不见「曲面怎么弯」—— 弯曲在 $II$ 里。
+
+**为什么正交标架下是两平方和**：$\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\langle \mathrm{d}r, \mathrm{d}r\rangle = \sum_{i}(\omega^{i})^{2}$；沿曲面 $\omega^{3} = 0$，只剩两项。
+
+**矩阵**：$(g_{ij}) = \begin{pmatrix} E & F \\ F & G \end{pmatrix}$，$\det g = EG-F^{2} > 0$。后面所有「$h$ 相对 $g$ 的特征值」都在用这个矩阵。
+
+⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\Gamma$ 就只在那种情形写出来。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· 第一基本形式；陈维桓《微分几何讲义》, 「曲面的局部理论」· 第一基本形式
+
+#### Weingarten 变换　`def.weingarten-map`
+*定义*　Weingarten 变换（形状算子）
+
+设 $e_{3} = n$。**Weingarten 变换**定义为 Gauss 映射微分的相反数：
+
+$$W(v) := -\mathrm{d}n(v) = -\mathrm{d}e_{3}(v),\qquad W\colon T_{p}S \to T_{p}S .$$
+
+它确实落在切平面里（因为 $\langle \mathrm{d}n(v), n\rangle = 0$）。相对标架 $e_{1}, e_{2}$：
+
+$$W(e_{j}) = \sum_{i=1}^{2}h_{ij}\,e_{i},\qquad h_{ij} := -c_{ij} = -\omega^{i}_{\ 3}(e_{j}),$$
+
+并且 $W$ 自伴：$\langle W(v), w\rangle = \langle v, W(w)\rangle$，即 $(h_{ij})$ 对称。
+
+**直观**：$W$ 度量「法向转得多快」，也就是曲面弯得多厉害。单位方向 $V$ 上的弯曲量是 $\langle W(V), V\rangle$，见 `def.normal-curvature`。
+
+**自伴从哪来**：坐标路线用 $r_{uv} = r_{vu}$（混合偏导相等）；标架路线用 $\mathrm{d}\omega^{3} = 0$（`lem.second-form-symmetric` 与入边）。后者更省，也不依赖参数网的特殊选取。
+
+⚠️ **符号**：取 $W := -\mathrm{d}n$ 是为了让「球面 $+$ 外法向」的主曲率为负（与 do Carmo 一致）。若取 $W := \mathrm{d}n$，$II$ 也得跟着变号，否则「主曲率 $=$ $W$ 的特征值」不成立。写的 $W\colon r_{i} \mapsto -n_{i}$ 就是这个约定。
+
+**第三基本形式**：$III(v,w) := \langle \mathrm{d}n(v), \mathrm{d}n(w)\rangle = \langle W(v), W(w)\rangle$。$W$ 的特征方程 $W^{2}-2HW+K\,\mathrm{id} = 0$ 翻成二次形式就是 $III-2H\,II+K\,I = 0$（Cayley–Hamilton）。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 形状算子与自伴性；陈维桓《微分几何讲义》, 「曲面的局部理论」· Weingarten 变换
+
+#### 第二基本形式　`def.second-fundamental-form`
+*定义*　第二基本形式
+
+曲面的**第二基本形式**是
+
+$$II(v,w) := \langle \mathrm{d}r(v), -\mathrm{d}n(w)\rangle = \langle W(\mathrm{d}r(v)), \mathrm{d}r(w)\rangle .$$
+
+在 $e_{3} = n$ 的正交标架下
+
+$$II = -\sum_{i=1}^{2}\omega^{i}\,\omega^{i}_{\ 3} = \sum_{i,j=1}^{2}h_{ij}\,\omega^{i}\omega^{j},$$
+
+相对参数 $(u,v)$ 写成 $II = L\,\mathrm{d}u^{2}+2M\,\mathrm{d}u\,\mathrm{d}v+N\,\mathrm{d}v^{2}$。$II$ 对称，$II(v,v)$ 是 $\mathrm{d}r(v)$ 方向的法向弯曲量。
+
+经 $\mathrm{d}r$ 把 $T_{p}U$ 与切平面 $T_{p}S$ 等同之后，$II$ 也可以直接写在切向量上：$II(V,W) = \langle W(V), W\rangle$。本包下面写 $k_{n}(V)$、Rodrigues 定理、Euler 公式时用的就是这个形式。
+
+**一个负号，三种写法**：$\langle \mathrm{d}r, -\mathrm{d}n\rangle = -\sum_{i}\omega^{i}\omega^{i}_{\ 3} = \sum_{i,j}h_{ij}\omega^{i}\omega^{j}$。这里把负号放进系数（$h_{ij} = -c_{ij}$），好处是 $h$ 恰好就是 $W$ 的矩阵，「主曲率 $=$ $h$ 的特征值」不用再配符号。
+
+⭐ **对称性不用算**：由 $\mathrm{d}\omega^{3} = 0$ 得到（`lem.second-form-symmetric`），不需要「$r_{uu}$、$r_{uv}$ 的混合偏导相等」。
+
+**与参数无关**：$II$ 是张量，$L, M, N$ 只是它在 $(u,v)$ 下的分量。$n \mapsto -n$ 时 $II \mapsto -II$，而 $W$ 的定义里已带负号、随之一并变号，所以 $K$ 与 $|H|$ 不变。
+
+**几何意义**：$II(v,v)$ 是「沿 $v$ 走、在法向上弯多少」；$L, M, N$ 与 $E, F, G$ 一起给出两个主曲率（解 $\det(h-kg) = 0$）。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 第二基本形式；陈维桓《微分几何讲义》, 「曲面的局部理论」· 第二基本形式
+
+#### Gauss 方程　`thm.gauss-equation`
+*定理*　Gauss 方程
+
+在适配标架 $e_{3} = n$ 下，把第二结构方程按 $k = 1,2,3$ 拆开，$k = 3$ 那一项留下来就是曲面的曲率：
+
+$$\mathrm{d}\omega^{1}_{\ 2} = \omega^{1}_{\ 3}\wedge\omega^{2}_{\ 3}.$$
+
+定义 **Gauss 曲率** $K$ 为 $\mathrm{d}\omega^{1}_{\ 2} = K\,\omega^{1}\wedge\omega^{2}$，则
+
+$$K = \det(c_{ij}) = \det(h_{ij}) = \frac{LN-M^{2}}{EG-F^{2}} .$$
+
+等价的无指标形式（$\mathbb{R}^{3}$ 平坦性的曲面分量）：
+
+$$\langle R(X,Y)Z, W\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W).$$
+
+⭐ **本包的枢纽**：一个偏导数都不用展开。$\mathbb{R}^{3}$ 上曲率形式恒为零，拆项后残留的 $\omega^{1}_{\ 3}\wedge\omega^{2}_{\ 3}$ 就是曲率 —— 曲率等于两个外蕴形式的外积。
+
+**坐标版对照**：用 $r_{ij} = \Gamma^{k}_{\ ij}r_{k}+h_{ij}n$ 的混合偏导可交换推出 Gauss 方程，并写成 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$、$R_{1212} = LN-M^{2} = K(EG-F^{2})$。这里改用 $\mathrm{d}\omega^{i}_{\ j}$ 读系数，是同一组方程的更短写法。
+
+⚠️ **指标次序是约定**：若记 $R_{ijkl} = \langle R(e_{i}, e_{j})e_{k}, e_{l}\rangle$，上面的向量形式写成 $R_{ijkl} = h_{jk}h_{il}-h_{ik}h_{jl}$，符号与另一种指标次序相反；若取 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$ 对应把 $W$ 放在后一对位置的约定，那时 $R_{1212} = LN-M^{2} = K(EG-F^{2})$ 成立。用指标式之前先对齐 $R$ 的约定，符号才有意义。
+
+**二维只剩一个独立分量**：$R_{ijkl}$ 的分量被对称性锁死，二维时只有一个（$R_{1212}$），所以二维的 Gauss 方程是**一个**方程 —— 这也是二维曲面论能算得动的原因。
+
+**点的分类**：$K > 0$ 椭圆点、$K = 0$ 且主曲率不全为零是抛物点、$K < 0$ 双曲点；$k_{1} = k_{2}$ 为脐点。
+
+⭐ **读出来的推论（绝妙定理）**：$K = \mathrm{d}\omega^{1}_{\ 2}/(\omega^{1}\wedge\omega^{2})$ 里只出现 $\omega^{1},\omega^{2}$；而 $\omega^{1}_{\ 2}$ 由 $\mathrm{d}\omega^{1},\mathrm{d}\omega^{2}$ 加无挠条件唯一解出（写 $\omega^{1}_{\ 2} = a_{1}\omega^{1}+a_{2}\omega^{2}$，两个方程给两个系数），所以 $K$ 只依赖 $I$ —— 即 Gauss 曲率是**内蕴**量。这条结果在 `diffgeom.intrinsic` 里有独立节点 `thm.theorema-egregium`（证明走标架与测地极坐标两条路），本包按「一个概念一个节点」不再重复建点，只把这一步记在这里。
+
+**面积读法**：Gauss 映射把面积元放大 $\det(\mathrm{d}n) = \det W = K$ 倍（带符号），所以 $K = \pm|n_{u}\times n_{v}|/|r_{u}\times r_{v}|$。这与 $\det h$ 是同一个量。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· Gauss 方程；S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· Gauss 方程与结构方程
+
+#### Codazzi–Mainardi 方程　`thm.codazzi-mainardi`
+*定理*　Codazzi–Mainardi 方程
+
+在适配标架下取第二结构方程的 $j = 3$ 分量（即 $\mathbb{R}^{3}$ 曲率的法向分量为零）：
+
+$$\mathrm{d}\omega^{i}_{\ 3} = \sum_{j=1}^{2}\omega^{j}_{\ 3}\wedge\omega^{i}_{\ j},\qquad i = 1,2 .$$
+
+等价形式：$(\nabla_{X}II)(Y,Z) = (\nabla_{Y}II)(X,Z)$，即 $\nabla II$ 关于前两个变量对称。用系数写就是
+
+$$\nabla_{i}h_{jk} = \nabla_{j}h_{ik},\qquad \nabla_{i}h_{jk} = \partial_{i}h_{jk}-\Gamma^{l}_{\ ij}h_{lk}-\Gamma^{l}_{\ ik}h_{jl}.$$
+
+二维时只有两条独立方程（$i = 1$ 与 $i = 2$，另一个指标由对称性决定）。
+
+**它在说什么**：弯曲变化率在切方向上对称 —— 沿 $X$ 走时 $II$ 的改变量沿 $Y$ 的分量，等于沿 $Y$ 走时沿 $X$ 的分量。等价说法：$\mathbb{R}^{3}$ 曲率的混合分量 $R^{i}_{\ 3jk}$ 必须为零。
+
+⭐ **不是假设，是必要条件**：$\mathbb{R}^{3}$ 平坦，所以任何能嵌入的曲面自动满足 Codazzi。它和 Gauss 方程一起构成「能否实现为 $\mathbb{R}^{3}$ 中的曲面」的完整相容性条件（`thm.fundamental-theorem-surfaces`）。
+
+**坐标版对照**：写成 $n_{ij} = n_{ji}$ 的等价形式，p005 写成 $\nabla_{i}h_{kj} = \nabla_{j}h_{ki}$（$h$ 对称，两种写法一致）。标架版只要看 $\mathrm{d}\omega^{i}_{\ 3}$ 的 $\omega^{1}\wedge\omega^{2}$ 系数，不必碰 Christoffel 符号。
+
+⚠️ 这条只在余维 $1$（曲面在 $\mathbb{R}^{3}$ 里）时取这个简单形状；高余维时右端还要多一项法丛曲率。本包只在 $\mathbb{R}^{3}$ 里用它。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· Mainardi–Codazzi 方程；陈维桓《微分几何讲义》, 「曲面的局部理论」· Codazzi 方程
+
+#### 法曲率　`def.normal-curvature`
+*定义*　法曲率
+
+设 $v \in T_{p}U$，$v \ne 0$。$v$ 方向的**法曲率**是
+
+$$k_{n}(v) := \frac{II(v,v)}{I(v,v)} .$$
+
+若改用切平面上的向量 $V = \mathrm{d}r(v)$ 写（$V \ne 0$），就是 $W$ 的 Rayleigh 商：
+
+$$k_{n}(V) = \frac{\langle W(V), V\rangle}{\langle V, V\rangle}.$$
+
+两种写法由 $\mathrm{d}r$ 的线性同构等同，$k_{n}$ 只依赖方向（零次齐次）。$k_{n} = 0$ 的方向叫**渐近方向**。
+
+⭐ **这就是 Rayleigh 商**：$k_{n}$ 是自伴算子 $W$ 关于内积 $\langle \cdot, \cdot\rangle$ 的 Rayleigh 商。于是它在单位圆上的极值就是 $W$ 的特征值（主曲率），极值方向就是特征方向（主方向）且互相正交 —— 一条结论同时给出 Euler 公式与主方向的正交性。
+
+**几何意义**：$k_{n}(v)$ 是「沿 $v$ 方向、单位速的曲线在法向上的弯曲」，也就是法截线的曲率；由 Meusnier 定理（`thm.meusnier`），它是**所有**过该切方向的曲线曲率在法向上的共同投影。
+
+**渐近方向**：椭圆点没有渐近方向、抛物点 $1$ 条、双曲点 $2$ 条 —— 因为 $k_{n}$ 作为方向的二次型，其零集就是 $II$ 的零点集，形状由 $K$ 的符号决定。
+
+⚠️ $k_{n}$ 的正负随法向变：$n \mapsto -n$ 时 $II \mapsto -II$，$k_{n} \mapsto -k_{n}$，但 $K = k_{1}k_{2}$ 不变。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 法曲率；陈维桓《微分几何讲义》, 「曲面的局部理论」· 法曲率与 Meusnier 定理
+
+#### Meusnier 定理　`thm.meusnier`
+*定理*　Meusnier 定理
+
+设曲线 $\gamma$ 落在曲面 $S$ 上，$\gamma(0) = p$，$\lVert \gamma'(0)\rVert = 1$，曲率 $k_{\gamma}(0) = k > 0$，主法向为 $N_{\gamma}$。则
+
+$$k_{n}(\gamma'(0)) = k\cos\theta ,$$
+
+其中 $\theta$ 是 $N_{\gamma}$ 与曲面法向 $n$ 的夹角。
+
+**含义**：过同一点、同一切方向有无穷多条曲线，它们的曲率各不相同，但 $k\cos\theta$ 恒定 —— 于是「法曲率」是**切方向**的性质，而不是某条曲线的性质。
+
+**法截线**：$\theta = 0$（曲线落在法平面里）时 $k_{\gamma} = k_{n}$，取到该方向的最大曲率。这是「拿一个平面去切曲面、量截线弯曲」这套做法的合法性来源。
+
+⚠️ 需要 $k > 0$：直线段没有主法向，$\theta$ 也就不定义。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· Meusnier 定理；陈维桓《微分几何讲义》, 「曲面的局部理论」· Meusnier 定理
+
+#### 主曲率　`def.principal-curvature`
+*定义*　主曲率与主方向
+
+$W$（等价地对称矩阵 $(h_{ij})$）的特征值叫**主曲率**，记 $k_{1} \ge k_{2}$；对应的单位特征方向叫**主方向**。它们由特征方程给出：
+
+$$\det(h_{ij}-k\,g_{ij}) = 0,\qquad \det(W-k\,\mathrm{id}) = 0 .$$
+
+正交标架下 $g_{ij} = \delta_{ij}$，特征多项式是 $k^{2}-2Hk+K$，其中 $H = \tfrac{1}{2}\operatorname{tr}W$、$K = \det W$。
+
+**为什么是特征值**：$k_{n}$ 是 $W$ 的 Rayleigh 商，单位圆上的极值点满足 $II(v,\cdot) = k\,I(v,\cdot)$，即 $W(\mathrm{d}r(v)) = k\,\mathrm{d}r(v)$（Lagrange 乘子），极值就是特征值 —— 这正是写的「取极值的方向是 $W$ 的特征方向」。
+
+**主方向正交**：实对称矩阵属于不同特征值的特征向量正交（谱定理）。用 Rayleigh 商加变分得到同一个结论，本包直接用谱定理。
+
+**两个特征方程**：$\det(W-kI) = 0$ 与 $\det(h-kg) = 0$ 在正交标架下相同；在参数网 $\{r_{u}, r_{v}\}$ 下必须带上 $g = \begin{pmatrix} E & F \\ F & G \end{pmatrix}$，所以那个 $g$ 不能省。
+
+⚠️ $k_{1}, k_{2}$ 依赖 $n$ 的选择（$n \mapsto -n$ 时全体变号），但「$k_{1} = k_{2}$」（脐点）与 $K = k_{1}k_{2}$ 与选择无关。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 主曲率与主方向；陈维桓《微分几何讲义》, 「曲面的局部理论」· 主方向与主曲率
+
+#### 平均曲率　`def.mean-curvature`
+*定义*　平均曲率
+
+$$H := \frac{1}{2}\operatorname{tr}W = \frac{1}{2}(k_{1}+k_{2}),\qquad K := \det W = k_{1}k_{2}.$$
+
+$H$ 叫**平均曲率**，$K$ 叫 **Gauss 曲率**（与 `thm.gauss-equation` 的定义一致）。用 $I, II$ 的分量写：
+
+$$H = \frac{EN-2FM+GL}{2(EG-F^{2})},\qquad K = \frac{LN-M^{2}}{EG-F^{2}} .$$
+
+**为什么是这两个**：$W$ 是 $2\times2$ 对称矩阵，它的两个不变量就是迹与行列式 —— 也就是特征多项式的两个系数。所以 $H, K$ 不是随便挑的组合，它们是 $II$ 相对 $I$ 的**全部**不变量。
+
+**特征方程**：$W^{2}-2HW+K\,\mathrm{id} = 0$（Cayley–Hamilton），翻成二次形式是 $III-2H\,II+K\,I = 0$。写的就是这条恒等式（原文中间项看起来像 $2H\,I$，按推导应是 $2H\,II$ —— 我按正确形式记在这里）。
+
+**两个极端**：极小曲面 $H \equiv 0$（「定边界曲面中面积取极值」）；可展曲面 $K \equiv 0$（等价于「直纹且 $\langle a^{\prime}, b^{\prime}, b\rangle = 0$」，）。
+
+⚠️ $H$ 的符号随 $n$ 变，$K$ 不变。所以「$H = 0$」「$K = 0$」是与法向无关的陈述，而「$H > 0$」不是。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 平均曲率与 Gauss 曲率；陈维桓《微分几何讲义》, 「曲面的局部理论」· 平均曲率
+
+#### Euler 公式　`thm.euler-formula`
+*定理*　Euler 公式
+
+取主方向标架：$e_{1}, e_{2}$ 是单位正交主方向，$W(e_{i}) = k_{i}e_{i}$。设单位向量 $V = \cos\theta\,e_{1}+\sin\theta\,e_{2}$，则
+
+$$k_{n}(V) = k_{1}\cos^{2}\theta+k_{2}\sin^{2}\theta .$$
+
+**含义**：两个数 $k_{1}, k_{2}$ 决定所有方向的法曲率 —— 法曲率作为方向的函数只是 $\cos^{2}$ 的插值。
+
+**极值**：$\theta = 0$ 与 $\theta = \pi/2$ 分别给出 $k_{1}, k_{2}$，其余方向夹在两者之间。这解释了「主方向 $=$ 法曲率取极值的方向」，也是$k_{n}(v) = k_{1}\cos^{2}\theta+k_{2}\sin^{2}\theta$。
+
+**矩阵说法**：主方向标架下 $h = \operatorname{diag}(k_{1}, k_{2})$，$V = (\cos\theta, \sin\theta)$，于是 $k_{n} = V^{T}hV$。
+
+**平均曲率的名字**：$H = \frac{1}{2\pi}\int_{0}^{2\pi}k_{n}(\theta)\,\mathrm{d}\theta$ —— 法曲率在整圈上的平均，这正是「平均」二字的来处。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· Euler 公式；陈维桓《微分几何讲义》, 「曲面的局部理论」· Euler 公式
+
+#### Rodrigues 定理　`thm.rodrigues`
+*定理*　Rodrigues 定理
+
+设 $v \in T_{p}U$，$v \ne 0$，$k := k_{n}(v)$。则下列三条等价：
+
+1. $\mathrm{d}r(v)$ 是**主方向**，对应的主曲率就是 $k$；
+2. $\mathrm{d}n(v) = -k\,\mathrm{d}r(v)$，即 $W(\mathrm{d}r(v)) = k\,\mathrm{d}r(v)$；
+3. $k_{n}$ 在 $v$ 方向取驻值。
+
+**为什么好看**：$W(u) = ku$ 是线性代数，$\mathrm{d}n(v) = -k\,\mathrm{d}r(v)$ 是几何 —— 它说「沿主方向走时，法向的转动与切向的移动反平行、比例就是主曲率」。
+
+**坐标形式**：曲率线参数网下 $n_{u} = -k_{1}r_{u}$、$n_{v} = -k_{2}r_{v}$。这里用 $\mathrm{d}r, \mathrm{d}n$ 写，不再要求参数网是曲率线网。
+
+⚠️ 负号来自 $W = -\mathrm{d}n$。若某本书取 $W = \mathrm{d}n$，那里的 Rodrigues 公式就没有负号 —— 抄公式前先看它把负号放在 $W$ 还是放在 $II$。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· Rodrigues 定理；Kühnel, Differential Geometry: Curves - Surfaces - Manifolds, 「Surfaces in three-space」· 主方向
+
+#### 曲率线网　`prop.curvature-lines`
+*命题*　曲率线网的判别法
+
+参数网 $\{r_{u}, r_{v}\}$ 叫**曲率线网**，如果两条坐标曲线都是曲率线（即 $r_{u}, r_{v}$ 都是主方向）。设 $p$ **不是脐点**（$k_{1} \ne k_{2}$），则「参数网是曲率线网」等价于下面两条同时成立：
+
+$$F = 0,\qquad M = 0 .$$
+
+在曲率线网下主曲率就是 $k_{1} = L/E$、$k_{2} = N/G$，且 $II$ 与 $I$ 在该参数网下同时对角化。
+
+**两行证明**：若 $F = M = 0$，则 $\{r_{u}, r_{v}\}$ 正交且 $II$ 无交叉项，两个方向都满足 $W(r_{u}) \parallel r_{u}$，故都是主方向；反之两个**不同**的主方向必正交（谱定理，`def.principal-curvature`），故 $F = 0$，又 $M = II(r_{u}, r_{v}) = \langle W(r_{u}), r_{v}\rangle = k\langle r_{u}, r_{v}\rangle = 0$。见入边。
+
+⚠️ **为什么要排除脐点**：$k_{1} = k_{2}$ 时每个切方向都是主方向，「曲率线」不再有区分度，此时 $F$ 与 $M$ 只满足 $M = kF$，可以同时不为零。所以判别法只在非脐点区域使用。
+
+**曲率线的微分方程**：曲线 $(u(t), v(t))$ 的切方向是主方向，当且仅当
+
+$$\begin{vmatrix} (\mathrm{d}u^{1})^{2} & -\mathrm{d}u^{1}\mathrm{d}u^{2} & (\mathrm{d}u^{2})^{2} \\ E & F & G \\ L & M & N \end{vmatrix} = 0 .$$
+
+⭐ **它的用处**：只要 $F = M = 0$，所有公式都塌成对角形（$k_{1} = L/E$、$k_{2} = N/G$，Euler 公式里的 $\theta$ 就是坐标方向的夹角）—— 所以传统路线先找曲率线网再算。本包不需要：标架一取就是正交的。
+
+📌 **注意**：在「曲率线网下」写了两个形如 $L = HE$、$N = HG$ 的等式。按本包的符号核对，那一对只在 $k_{1} = k_{2}$（脐点）时成立；一般情形应是 $k_{1} = L/E$、$k_{2} = N/G$、$H = (k_{1}+k_{2})/2$。按标准记号写在这里。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 曲率线与渐近线；陈维桓《微分几何讲义》, 「曲面的局部理论」· 曲率线网
+
+#### 曲面论基本定理　`thm.fundamental-theorem-surfaces`
+*定理*　曲面论基本定理
+
+设 $U \subseteq \mathbb{R}^{2}$ 单连通，$(g_{ij})$ 是 $U$ 上对称正定的 $C^{2}$ 矩阵值函数，$(h_{ij})$ 对称且 $C^{2}$，$K_{g}$ 是由 $g$ 算出的 Gauss 曲率。若
+
+- **Gauss 方程**：$K_{g} = \dfrac{\det(h_{ij})}{\det(g_{ij})}$；
+- **Codazzi 方程**：$\nabla h$ 关于前两个指标对称
+
+同时成立，则存在 $C^{2}$ 浸入 $r\colon U \to \mathbb{R}^{3}$ 与单位法向 $n$，使
+
+$$I = \sum_{i,j}g_{ij}\,\mathrm{d}u^{i}\mathrm{d}u^{j},\qquad II = \sum_{i,j}h_{ij}\,\mathrm{d}u^{i}\mathrm{d}u^{j},$$
+
+且在相差一个刚体运动的意义下唯一。反过来，任何曲面给出的 $(I, II)$ 必满足这两条方程。
+
+⭐ **为什么 Gauss–Codazzi 恰好是充要条件**：结构方程 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$、$\mathrm{d}e_{i} = \sum_{j}\omega^{j}_{\ i}e_{j}$ 是关于 $(r, e_{1}, e_{2}, e_{3})$ 的一阶线性偏微分方程组，系数 $\omega^{i}, \omega^{i}_{\ j}$ 由 $g, h$ 代数地给出。相容性条件只有 $\mathrm{d}^{2} = 0$，它拆成两块：$\Omega^{1}_{\ 2} = 0$（Gauss）与 $\Omega^{i}_{\ 3} = 0$（Codazzi）。这就是「Gauss–Codazzi 是唯一障碍」的全部内容。
+
+**三步构造**：(i) 由 $g$ 取正交余标架 $\omega^{1}, \omega^{2}$，用无挠条件解出 $\omega^{1}_{\ 2}$；(ii) 由 $h$ 定 $\omega^{i}_{\ 3}$，Gauss–Codazzi 保证 $\mathrm{d}^{2} = 0$，于是（Frobenius 定理）局部解出正交标架 $(e_{1}, e_{2}, e_{3})$；(iii) 再解 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$ —— 这一支只需 $\mathrm{d}^{2}r = 0$，而它正是第一结构方程。
+
+**唯一性**：两组解之差是一个平行的（常）正交变换加平移；把初始标架对齐就重合。
+
+⚠️ **单连通去不掉**：否则整体平行移动会出现和乐（holonomy），局部解拼不成整体曲面。
+
+📌 结论是「既给 C–C 方程是结构方程可积性条件；满足 C–C 方程的曲面局部存在解」，正是本定理的两半。这里把「可积性条件」明确成 $\Omega = 0$ 的两组分量。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 曲面论基本定理；S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 曲面论基本定理（Bonnet）
+
+### 星团：内蕴几何
+> 只靠第一基本形式就能读出的东西：测地线、测地曲率、指数映射、Gauss 绝妙定理（$K$ 内蕴）、Gauss–Bonnet。
+
+#### 内蕴量　`def.intrinsic-quantity`
+*定义*　内蕴量与外在量
+
+设 $S \subseteq \mathbb{R}^{3}$ 是正则曲面，$I$ 是它的第一基本形式。由 $S$ 上的点、切向量与曲线所决定的一个量叫**内蕴的**，如果它只依赖 $I$（等价地：只依赖度量系数 $g_{ij}$ 及其导数）；否则叫**外在的**。
+
+形式化的版本：若 $\varphi : S_{1}\to S_{2}$ 是局部等距，则内蕴量在 $\varphi$ 下不变；反之，一切局部等距都保持的量就是内蕴量。
+
+判别上的经验法则：只用到 $\langle \dot\gamma,\dot\gamma\rangle = 1$、角度、面积这类计算的量是内蕴的；一旦式子里出现曲面的单位法向 $n$ 或第二基本形式，就是外在的。
+
+**内蕴的**：弧长、两条曲线的夹角、区域面积、测地曲率 $k_{g}$、**高斯曲率** $K$、欧拉示性数 $\chi$。
+
+**外在的**：主曲率 $k_{1},k_{2}$、平均曲率 $H$、第二基本形式 $\mathrm{II}$、法曲率 $\kappa_{n}$（法向取定后）、曲线在 $\mathbb{R}^{3}$ 中的曲率 $\kappa$。
+
+⭐ $K$ 出现在「内蕴」这一栏是**定理**而不是定义：它原本定义为两个外在量的乘积 $k_{1}k_{2}$，要等绝妙定理才说明它其实只依赖 $I$。整条内蕴几何都从这一步开始。
+
+⚠️ $\kappa$ 与 $k_{g}$ 不是一回事：$\kappa^{2} = k_{g}^{2}+\kappa_{n}^{2}$，前者外在、后者内蕴。初学者最容易在这里把「曲面的曲率」和「曲线的曲率」混成一个东西。
+
+⚠️ 「内蕴」不是「与嵌入无关」的同义词，它更强：它说的是**只由诱导度量决定**。同一个微分流形上换一个度量，内蕴量就全变了。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 等距与内蕴几何；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 内蕴与外蕴
+
+#### 等距　`def.isometry-surface`
+*定义*　曲面的等距
+
+设 $S_{1},S_{2}$ 是两张曲面。映射 $\varphi : S_{1}\to S_{2}$ 叫**等距**，如果它是微分同胚且保持曲线长度：对每条曲线 $\alpha \subseteq S_{1}$ 有 $\operatorname{length}(\varphi\circ\alpha) = \operatorname{length}(\alpha)$。等价地，微分保持内积：
+
+$$\langle \mathrm{d}\varphi_{p}(v),\mathrm{d}\varphi_{p}(w)\rangle = \langle v,w\rangle,\qquad v,w \in T_{p}S_{1}.$$
+
+若每点都有邻域与之等距，叫**局部等距**（此时只要求 $\varphi$ 是局部微分同胚）。
+
+**判定准则**：写成参数形式，「局部等距」$\iff$ 存在参数化使两张曲面的第一基本形式系数逐个相等（$E = \bar E$、$F = \bar F$、$G = \bar G$）。这就是「$I$ 是唯一的度量不变量」的准确含义。
+
+**经典例子**：平面到圆柱面的卷绕是局部等距（弧长不变），但不是整体等距 —— 圆柱面上一条纬线是闭曲线，平面上没有闭的直线段。这类「局部等距而非整体等距」正是内蕴几何真正关心的现象。
+
+**反向的用处**：绝妙定理说 $K$ 内蕴，于是「$K$ 不同的两片曲面不可能局部等距」。柱面（$K = 0$）与球面（$K = 1/R^{2}$）不局部等距，尽管两者都摆在 $\mathbb{R}^{3}$ 里、看上去都「弯」。
+
+⚠️ 反过来不成立：$K$ 相同**不足以**判定局部等距。常曲率情形是例外 —— Minding 定理说 $K$ 相等的常曲率曲面局部等距。判定两张一般曲面是否局部等距，需要比较整个 $I$，不是比较一个数。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 等距；Kühnel, Differential Geometry: Curves — Surfaces — Manifolds, 「曲面的内蕴几何」一章·等距
+
+#### 克里斯托费尔记号　`def.christoffel-symbol`
+*定义*　克里斯托费尔记号
+
+设 $(x^{1},x^{2})$ 是曲面 $S$ 的局部坐标，$g_{ij} = \langle \partial_{i},\partial_{j}\rangle$，$(g^{ij})$ 是 $(g_{ij})$ 的逆矩阵。**克里斯托费尔记号**定义为
+
+$$\Gamma^{k}_{ij} = \frac{1}{2}g^{k\ell}\left(\partial_{i}g_{j\ell}+\partial_{j}g_{i\ell}-\partial_{\ell}g_{ij}\right).$$
+
+它是 Levi-Civita 联络在坐标标架下的系数：
+
+$$\nabla_{\partial_{i}}\partial_{j} = \Gamma^{k}_{ij}\partial_{k},\qquad \Gamma^{k}_{ij} = \Gamma^{k}_{ji}.$$
+
+（Christoffel symbols。整套内蕴几何的第一台发动机。）
+
+**来处只有 Koszul 公式**。「无挠」与「保度量」两条要求合起来给出唯一解：
+
+$$2\langle \nabla_{X}Y,Z\rangle = X\langle Y,Z\rangle+Y\langle Z,X\rangle-Z\langle X,Y\rangle+\langle [X,Y],Z\rangle-\langle [Y,Z],X\rangle+\langle [Z,X],Y\rangle.$$
+
+对坐标标架 $[\partial_{i},\partial_{j}] = 0$，右端只剩两个导数项，左端是 $2\Gamma^{\ell}_{ij}g_{\ell k}$，解出来就是上面的公式。**推导里只用到 $g_{ij}$ 和它的一阶导数** —— 这是第一个内蕴量。
+
+⚠️ $\Gamma^{k}_{ij}$ **不是张量**：换坐标时多出一个非齐次的二阶导数项，所以「$\Gamma$ 在 $p$ 处等于某个数」随坐标变。但「**存在**使 $\Gamma(p) = 0$ 的坐标」是坐标无关的事实（法坐标），两者的区别是「数值」与「存在性」。
+
+**为什么它决定测地线**：测地线方程里唯一的外来数据就是 $\Gamma$，所以「哪些曲线是测地线」完全是 $I$ 的事 —— 这已经是内蕴几何的第一步。
+
+⚠️ 二维时只有 $2^{3} = 8$ 个记号，但独立的分量由对称性减到 $6$ 个（$k$ 定、$i \le j$）；平坦坐标下它们全为零。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 克里斯托费尔记号；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 联络系数
+
+#### 标架下的联络系数　`prop.christoffel-frame`
+*命题*　正交标架下的联络系数
+
+设 $e_{1},e_{2}$ 是曲面上的局部单位正交标架，联络形式由 $\nabla_{X}e_{j} = \omega^{k}_{j}(X)e_{k}$ 定义（于是 $\omega^{k}_{j} = -\omega^{j}_{k}$）。则
+
+① **Koszul 公式给出全部系数**：
+
+$$\omega^{k}_{j}(e_{i}) = \frac{1}{2}\left(\langle [e_{i},e_{j}],e_{k}\rangle-\langle [e_{j},e_{k}],e_{i}\rangle+\langle [e_{k},e_{i}],e_{j}\rangle\right).$$
+
+② 若标架是**正交坐标的单位化** $e_{1} = \partial_{u}/\sqrt{E}$、$e_{2} = \partial_{v}/\sqrt{G}$（$F = 0$），则
+
+$$\omega^{1}_{2} = \frac{1}{\sqrt{EG}}\left(\frac{E_{v}}{2}\,\mathrm{d}u-\frac{G_{u}}{2}\,\mathrm{d}v\right) = \frac{(\ln E)_{v}}{2\sqrt{G}}\,\omega^{1}-\frac{(\ln G)_{u}}{2\sqrt{E}}\,\omega^{2},$$
+
+其中 $\omega^{1} = \sqrt{E}\,\mathrm{d}u$、$\omega^{2} = \sqrt{G}\,\mathrm{d}v$ 是正交余标架。
+
+一句话：$\Gamma^{k}_{ij}$ 与 $\omega^{k}_{j}$ 是同一件东西（联络系数）在两个标架下的样子。
+
+**① 与 $\Gamma$ 的真实关系**：坐标标架 $\partial_{i}$ 一般既不正交也不单位；正交归一化之后 $e_{i}$ 就不再是坐标标架（$[e_{1},e_{2}]\ne 0$），多出来的 $\langle [e_{i},e_{j}],e_{k}\rangle$ 项正是这件事的代价。所以「$\omega^{k}_{j}(e_{i})$ 等于某个 $\Gamma$」只在度量已经被坐标拉直（平坦的笛卡尔坐标）时才字面成立。
+
+**曲线上两种写法**，这是对照里最有用的一条：
+
+- 坐标标架：$\dot\gamma = \dot x^{k}\partial_{k}$，$\nabla_{\dot\gamma}\dot\gamma = \left(\ddot x^{k}+\Gamma^{k}_{ij}\dot x^{i}\dot x^{j}\right)\partial_{k}$；
+- 正交标架：$\dot\gamma = y^{j}e_{j}$，$\nabla_{\dot\gamma}\dot\gamma = \left(\dot y^{k}+\omega^{k}_{j}(\dot\gamma)y^{j}\right)e_{k}$。
+
+后一式里没有二次项，因为标架自己在转：二次项被吸收进 $\dot y$ 与 $\omega$ 了。**「测地线方程里有没有二次项」取决于标架，不取决于曲面。**
+
+⭐ ② 是刘维尔公式的全部燃料：正交参数网下测地曲率的两个系数项，就是 $\omega^{1}_{2}$ 的两个分量。
+
+⚠️ 符号：$\omega^{1}_{2}$ 的符号随定向与「$e_{1},e_{2}$ 谁在前」而反号。本包统一取 $\omega^{1}_{2} = \langle \nabla e_{2},e_{1}\rangle$。
+
+参考：do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 联络形式与结构方程；do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 克里斯托费尔记号
+
+#### 测地线　`def.geodesic`
+*定义*　测地线与测地线方程
+
+设 $\gamma : I\to S$ 是曲面 $S$ 上按弧长参数化的曲线（$\langle \dot\gamma,\dot\gamma\rangle = 1$）。$\gamma$ 叫**测地线**，如果它的切向量沿自身平行：
+
+$$\nabla_{\dot\gamma(s)}\dot\gamma(s) = 0,\qquad s \in I.$$
+
+展开成坐标就是**测地线方程**：
+
+$$\frac{\mathrm{d}^{2}x^{k}}{\mathrm{d}s^{2}}+\Gamma^{k}_{ij}(\gamma(s))\frac{\mathrm{d}x^{i}}{\mathrm{d}s}\frac{\mathrm{d}x^{j}}{\mathrm{d}s} = 0,\qquad k = 1,2.$$
+
+等价的第三张面孔：$\gamma$ 上任意足够短的一段弧，是连接其两端点的**最短**曲线。
+
+**三种刻画的分工**：$\nabla_{\dot\gamma}\dot\gamma = 0$ 是不变量写法（哪本教材都认），测地线方程是计算工具（两阶 ODE 组），最短性是最初的几何动机（变分）。前两者等价是纯粹的展开，第三者见高斯引理那一段的说明。
+
+**参数必须是仿射参数**：$s\mapsto as+b$ 仍是测地线参数，换成一般参数 $t$ 后方程会多出 $\frac{\mathrm{d}^{2}s}{\mathrm{d}t^{2}}\big/\frac{\mathrm{d}s}{\mathrm{d}t}$ 这一项。曲线本身没变，变的只是「匀速」这件事 —— 所以「测地线」这个词总带仿射参数。
+
+⚠️ **局部最短不等于整体最短**：大圆是球面的测地线，但绕过大半圈的那一段不是最短连线。反过来「最短 $\implies$ 测地线」是真的（变分证明），「测地线 $\implies$ 局部最短」只在足够短的弧上成立（指数映射的单射半径之内）。
+
+**为什么平行移动让长度不变**：$\frac{\mathrm{d}}{\mathrm{d}s}\langle \dot\gamma,\dot\gamma\rangle = 2\langle \nabla_{\dot\gamma}\dot\gamma,\dot\gamma\rangle$，而在测地线上这个式子为零，于是速度恒定、参数必然是弧长的仿射函数。
+
+**唯一的例子都值得记住**：平面上的测地线是直线；球面上的测地线是大圆；旋转面上的测地线由 Clairaut 关系约束；圆柱面上把展开图里直线卷回去即可。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地线；do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 测地线
+
+#### 测地线的局部存在唯一性　`prop.geodesic-existence`
+*命题*　测地线的局部存在唯一性
+
+对任意 $p \in S$ 与任意 $v \in T_{p}S$，存在 $\varepsilon > 0$ 与唯一的测地线 $\gamma_{v} : (-\varepsilon,\varepsilon)\to S$ 使 $\gamma_{v}(0) = p$、$\dot\gamma_{v}(0) = v$。并且解光滑依赖于初值 $(p,v)$，还满足齐次性
+
+$$\gamma_{cv}(t) = \gamma_{v}(ct)\qquad (c > 0).$$
+
+于是从任意一点沿任意方向都能出发，而「出发速度的大小」只决定走多快、不决定走哪条。
+
+**这是纯 ODE 定理**：测地线方程是一阶化之后的方程组 $\dot x^{k} = u^{k}$、$\dot u^{k} = -\Gamma^{k}_{ij}(x)u^{i}u^{j}$，右端关于 $(x,u)$ 光滑（$\Gamma$ 光滑），于是 Picard–Lindelöf 给出局部存在唯一，解对初值的光滑依赖由同一套定理的加强版给出。
+
+**齐次性为什么成立**：方程在 $s\mapsto cs$ 下齐二次，$t\mapsto\gamma_{v}(ct)$ 与 $t\mapsto\gamma_{cv}(t)$ 满足同一个初值问题，由唯一性即得。**这条齐次性是指数映射能定义出来的唯一理由**。
+
+**整体存在不必**：解只保证延拓到极大区间，可能在有限时间「跑出曲面」（例如 $\mathbb{R}^{2}\setminus\{0\}$ 上的直线，或开曲面上走向无穷远的测地线）。紧致曲面才自动完备（Hopf–Rinow 的整体版本）。
+
+⚠️ 「唯一」是**在同一条曲线**意义下的唯一；换一个仿射参数得到的仍是同一条曲线的重参数化，不是另一个解。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地线的存在与唯一性；do Carmo, Riemannian Geometry, 「测地线」一章·指数映射
+
+#### 测地曲率　`def.geodesic-curvature`
+*定义*　测地曲率
+
+设 $\gamma$ 是 $S$ 上按弧长参数化的曲线，$n$ 是 $S$ 的单位法向。**测地曲率向量**与**测地曲率**分别是
+
+$$\vec\kappa_{g} = \nabla_{\dot\gamma}\dot\gamma = (\ddot\gamma)^{\top},\qquad k_{g} = \langle \vec\kappa_{g},\,n\times\dot\gamma\rangle = \langle \ddot\gamma,\,n\times\dot\gamma\rangle,$$
+
+其中 $(\cdot)^{\top}$ 表示投到切平面，$n\times\dot\gamma$ 是切平面内与 $\dot\gamma$ 正交的单位向量（Darboux 标架 $(T,n,u)$ 里的 $u$，$T = \dot\gamma$）。于是「$k_{g}$ 恒等于零」正好就是测地线的判据：
+
+$$k_{g}(\gamma)\equiv 0 \iff \nabla_{\dot\gamma}\dot\gamma\equiv 0 .$$
+
+**符号**：$k_{g}$ 依赖定向。$(T,u,n)$ 取正向时 $u = n\times T$，曲线往 $u$ 那一侧拐则 $k_{g} > 0$。把 $u$ 换成 $-u$ 就整体反号 —— 讨论「$k_{g}$ 的积分」时必须先把定向说清楚，高斯–博内定理里这件事格外要紧。
+
+**为什么内蕴**：$\ddot\gamma$ 的切向部分只用到 $\nabla$（也就是 $I$），完全不需要 $n$ 或第二基本形式。所以 $k_{g}$ 是内蕴量，与 $\kappa_{n}$ 正相反。
+
+**平面上**：$\nabla$ 就是普通导数，$\vec\kappa_{g} = \ddot\gamma$，$k_{g}$ 退化为有号曲率 $\kappa$（半径 $r$ 的圆：$k_{g} = \pm 1/r$）。曲面上的 $k_{g}$ 就是「把曲面沿曲线摊平之后」看到的曲率。
+
+**与平行移动的关系**：$\vec\kappa_{g}$ 度量「切向量偏离平行移动有多快」；$\vec\kappa_{g}\equiv0$ 就是「切向量沿自身平行」，也就是测地线。
+
+⚠️ 与 $\kappa$ 的区别见曲率分解那一条：$\kappa^{2} = k_{g}^{2}+\kappa_{n}^{2}$。$k_{g}$ 是 $\kappa$ 的切向分量，$\kappa_{n}$ 是法向分量。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地曲率；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 测地曲率与联络形式
+
+#### 刘维尔公式　`thm.liouville-formula`
+*定理*　测地曲率的刘维尔公式
+
+设 $(u,v)$ 是 $S$ 的**正交**参数网（$F = 0$，$I = E\,\mathrm{d}u^{2}+G\,\mathrm{d}v^{2}$），$\gamma$ 按弧长参数化，$\theta(s)$ 是 $\dot\gamma(s)$ 与 $u$ 线（$\partial_{u}$ 方向）的夹角。则
+
+$$k_{g}(\gamma) = \frac{\mathrm{d}\theta}{\mathrm{d}s}-\frac{(\ln E)_{v}}{2\sqrt{G}}\cos\theta+\frac{(\ln G)_{u}}{2\sqrt{E}}\sin\theta.$$
+
+特别地：$\gamma$ 是测地线当且仅当 $\theta$ 满足这个一阶方程 —— 测地线的「转向」，被度量系数的导数完全决定。
+
+**结构**：$k_{g} = \frac{\mathrm{d}\theta}{\mathrm{d}s}-\omega^{1}_{2}(\dot\gamma)$，第一项是曲线相对标架的转角，第二项是标架本身的转动；把 $\omega^{1}_{2} = \frac{(\ln E)_{v}}{2\sqrt G}\omega^{1}-\frac{(\ln G)_{u}}{2\sqrt E}\omega^{2}$ 代进去就是上式。
+
+**两处校验**（都能手算）：
+
+- 平面极坐标（$E = 1$，$G = \rho^{2}$）上半径 $\rho_{0}$ 的同心圆：$\theta\equiv\frac{\pi}{2}$、$\frac{\mathrm{d}\theta}{\mathrm{d}s} = 0$，公式给 $k_{g} = \frac{2/\rho_{0}}{2} = \frac{1}{\rho_{0}}$ —— 圆的曲率，正确；
+- 球面（$I = \mathrm{d}\rho^{2}+\sin^{2}\rho\,\mathrm{d}\theta^{2}$）上的纬线圈 $\rho = \rho_{0}$：$k_{g} = \frac{2\cot\rho_{0}}{2} = \cot\rho_{0}$，与直接计算一致。
+
+⚠️ 一个常见的误写是在「曲率线参数」下把上式再简化成 $\frac{\mathrm{d}\theta}{\mathrm{d}s}+(k_{1}-k_{2})\sin\theta\cos\theta$。用球面就能否掉它：平行圆上 $\theta\equiv\frac{\pi}{2}$、$\frac{\mathrm{d}\theta}{\mathrm{d}s}\equiv 0$，而 $k_{g} = \cot\rho_{0}\ne0$；球面 $k_{1} = k_{2} = 1$ 又让右端的两项全为零。**该简化式不成立，不要用。**
+
+**特例**：正交网若还是测地参数（$E\equiv1$），公式退化为 $k_{g} = \frac{\mathrm{d}\theta}{\mathrm{d}s}+\frac{(\ln G)_{u}}{2}\sin\theta$；再若 $G$ 不依赖 $u$，就是平面极坐标那一种情形。
+
+⭐ 这条公式是「量 $k_{g}$ 只需要 $I$」的**显式版本**：右端只有 $E,G$ 和曲线自己的角度，没有任何外在数据。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地曲率；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· 联络形式与测地曲率
+
+#### 曲率分解　`prop.curvature-split`
+*命题*　法曲率与测地曲率的分解
+
+设 $\gamma$ 是 $S$ 上按弧长参数化的曲线，$n$ 是 $S$ 的单位法向，$\kappa$、$\kappa_{n}$、$k_{g}$ 分别是它在 $\mathbb{R}^{3}$ 中的曲率、关于 $n$ 的法曲率和测地曲率。则 $\{n,\,n\times\dot\gamma\}$ 是 $\dot\gamma$ 的正交补的一组单位正交基，且
+
+$$\ddot\gamma = \kappa_{n}n+k_{g}\,(n\times\dot\gamma),\qquad \kappa^{2} = k_{g}^{2}+\kappa_{n}^{2},$$
+
+其中 $\kappa_{n} = \mathrm{II}(\dot\gamma,\dot\gamma) = -\langle \dot\gamma,\mathrm{d}n(\dot\gamma)\rangle$。
+
+**证明就是正交分解**：$|\dot\gamma| = 1$ 给出 $\ddot\gamma\perp\dot\gamma$，而 $\{n, n\times\dot\gamma\}$ 是 $\dot\gamma$ 的正交补的一组单位正交基；两个分量就是两个内积，模长的勾股关系即得。
+
+**这是「内蕴 vs 外在」的定量版**：$\kappa$ 是空间量，$\kappa_{n}$ 纯外在（必须用 $n$），$k_{g}$ 纯内蕴（只用 $\nabla$）。三者被一条勾股关系绑住 —— 知道两个就有第三个。
+
+**两个特例**：$k_{g}\equiv0$（测地线）时 $|\kappa| = |\kappa_{n}|$，此时曲线的曲率整个来自曲面的弯曲；$\kappa_{n}\equiv0$（曲线落在一条渐近线上）时 $|\kappa| = |k_{g}|$，曲率整个来自曲面内部的转动。
+
+⚠️ $H = \frac{1}{2}(k_{1}+k_{2})$ 与 $\kappa_{n}$ 都是外在量，不能用 $I$ 算出来，所以它们在内蕴几何里不出现。反过来说：任何只用 $\kappa$ 与 $k_{g}$ 拼出来的量都不该出现在内蕴公式里 —— 除非恰好拼成 $K$ 或它的导数。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「高斯映射的几何」· 法曲率；do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 测地曲率
+
+#### 指数映射　`def.exponential-map`
+*定义*　指数映射与法坐标
+
+固定 $p \in S$。由测地线的存在唯一性，每个 $v \in T_{p}S$ 有唯一测地线 $\gamma_{v}$ 满足 $\gamma_{v}(0) = p$、$\dot\gamma_{v}(0) = v$。**指数映射**定义为
+
+$$\exp_{p}(v) = \gamma_{v}(1) = \gamma_{v/|v|}(|v|),\qquad \exp_{p}(0) = p,$$
+
+它是 $T_{p}S$ 中原点的一个邻域到 $S$ 上 $p$ 的一个邻域的光滑映射，且
+
+$$(\mathrm{d}\exp_{p})_{0} = \mathrm{id}_{T_{p}S},$$
+
+于是由反函数定理，$\exp_{p}$ 在原点附近是微分同胚。取 $T_{p}S$ 的一组单位正交基，把 $v = x^{1}e_{1}+x^{2}e_{2}$ 送到 $\exp_{p}(v)$ 得到的坐标叫**法坐标**；改用极坐标 $(\rho,\theta)$ 则是**测地极坐标**。
+
+**$(\mathrm{d}\exp_{p})_{0} = \mathrm{id}$ 的三行算法**：取 $c(t) = tv$，则 $(\mathrm{d}\exp_{p})_{0}(v) = \frac{\mathrm{d}}{\mathrm{d}t}\big|_{t=0}\exp_{p}(tv) = \frac{\mathrm{d}}{\mathrm{d}t}\big|_{t=0}\gamma_{v}(t) = \dot\gamma_{v}(0) = v$。这就是「齐次性」换来的东西。
+
+**法坐标在 $p$ 处是欧氏的**：由上一行得 $g_{ij}(p) = \delta_{ij}$，进一步还有 $\Gamma^{k}_{ij}(p) = 0$ 与 $\partial_{k}g_{ij}(p) = 0$（见「法坐标的欧氏性」那条引理）。⚠️ 只在 $p$ **一点**成立 —— 若在邻域上成立，曲面就平了。
+
+**测地极坐标的构造**：$(\rho,\theta)\mapsto \exp_{p}(\rho\cos\theta\,e_{1}+\rho\sin\theta\,e_{2})$。第一条坐标线是测地线、$\rho$ 是弧长，第二条是「测地圆」。由高斯引理，第一基本形式在这个坐标下只剩 $I = \mathrm{d}\rho^{2}+G(\rho,\theta)\,\mathrm{d}\theta^{2}$。
+
+⚠️ $\exp_{p}$ 一般**不是**整体微分同胚：沿一条测地线走太远会撞上另一条测地线的像（对径点、割迹）。只有在单射半径以内它才是微分同胚，越过之后坐标会重复，$I = \mathrm{d}\rho^{2}+G\,\mathrm{d}\theta^{2}$ 也失效。
+
+⭐ 指数映射的用处是**把测地线问题变成坐标问题**：所有「径向」的事情都变成「坐标线」，于是内蕴几何可以用微积分硬算。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 指数映射；do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「高斯映射的几何」· 法坐标
+
+#### 高斯引理　`lem.gauss-lemma`
+*引理*　高斯引理与测地极坐标
+
+设 $p \in S$、$v \in T_{p}S$、$w \in T_{v}(T_{p}S)$。则
+
+$$\langle (\mathrm{d}\exp_{p})_{v}(v),\,(\mathrm{d}\exp_{p})_{v}(w)\rangle = \langle v,w\rangle .$$
+
+也就是说：指数映射在径向方向上按弧长成比例（测地线按弧长参数化），而**测地线与测地圆处处正交**。写成测地极坐标就是
+
+$$I = \mathrm{d}\rho^{2}+G(\rho,\theta)\,\mathrm{d}\theta^{2},\qquad \sqrt{G} = \rho+O(\rho^{3}).$$
+
+**证明骨架（细节在边上）**：沿测地线对 $\langle \partial_{\rho},\partial_{\theta}\rangle$ 求 $\rho$ 的导数，第一项因测地线为零，第二项用 $[\partial_{\rho},\partial_{\theta}] = 0$ 与 $|\partial_{\rho}| = 1$ 化成 $\frac{1}{2}\partial_{\theta}\langle \partial_{\rho},\partial_{\rho}\rangle = 0$。于是这个内积沿 $\rho$ 是常数；$\rho\to0$ 时 $\partial_{\theta}\to0$，常数只能是 $0$。
+
+**同一个引理的两种说法**：几何说法是「径向 $\perp$ 球面」（高斯引理的本来面貌）；坐标说法是「$F\equiv0$」（测地极坐标下的展开）。而 $E = |\partial_{\rho}|^{2} = 1$ 只是因为 $\rho$ 是弧长。
+
+⭐ **这是整门内蕴几何的枢纽**：它把「测地线」翻译成「坐标线」，于是 $I$ 在测地极坐标下只剩**一个**未知函数 $G$。而 $G$ 的展开系数就是曲率：
+
+$$\sqrt{G(\rho,\theta)} = \rho-\frac{K(p)}{6}\rho^{3}+O(\rho^{5}),$$
+
+等价地，半径 $\rho$ 的测地圆周长 $L(\rho) = 2\pi\rho\left(1-\frac{K(p)}{6}\rho^{2}+O(\rho^{4})\right)$。**一个会量长度的人就能把 $K$ 量出来** —— 这就是绝妙定理的操作形式。
+
+⚠️ 只在 $\exp_{p}$ 是微分同胚的范围内成立；越过割迹，同一组 $(\rho,\theta)$ 会对应多个点。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯引理与测地极坐标；Petersen, Riemannian Geometry, 「高斯引理与法坐标」一章
+
+#### 法坐标的欧氏性　`lem.normal-coord-euclidean`
+*引理*　法坐标只在一阶上像欧氏坐标
+
+设 $(x^{1},x^{2})$ 是 $p$ 处的法坐标。则在该点
+
+$$g_{ij}(p) = \delta_{ij},\qquad \Gamma^{k}_{ij}(p) = 0,\qquad \partial_{k}g_{ij}(p) = 0 .$$
+
+即：度量在**任意一点**都可以被坐标一阶拉直。
+
+**$\Gamma(p) = 0$ 的证明**（细节在边上）：$T_{p}S$ 中过原点的每条直线 $t\mapsto tv$（$v = \cos\theta_{0}\,e_{1}+\sin\theta_{0}\,e_{2}$）在 $\exp_{p}$ 下都是测地线，坐标就是 $x^{k}(t) = tv^{k}$。代入测地线方程得 $\Gamma^{k}_{ij}(p)v^{i}v^{j} = 0$，对一切方向 $v$ 成立；于是 $\Gamma$ 的对称部分为零，而 $\Gamma$ 本来就关于下指标对称。
+
+**$\partial_{k}g_{ij}(p) = 0$ 是它的推论**：$\partial_{k}g_{ij} = \langle \nabla_{\partial_{k}}\partial_{i},\partial_{j}\rangle+\langle \partial_{i},\nabla_{\partial_{k}}\partial_{j}\rangle = \Gamma^{\ell}_{ki}g_{\ell j}+\Gamma^{\ell}_{kj}g_{i\ell}$，在 $p$ 处为零。
+
+⭐ **与曲率的关系**：既然 $\Gamma$ 可以在一阶上被坐标杀掉，曲率张量里唯一杀不掉的就是 $\partial\Gamma$ 那一部分，而它由 $g$ 的二阶导数决定。这就是「曲率是二阶不可消除的度量信息」的准确含义 —— 也正是它内蕴的理由。
+
+⚠️ 只在一个点上成立。若要求整个邻域上 $\Gamma\equiv0$，那等价于局部等距于平面（$R\equiv0$）；两者的差距就是曲率。
+
+**用起来最爽的地方**：需要算一个张量恒等式时，挑 $p$ 为任意点、用 $p$ 处的法坐标，$\Gamma$ 与 $\partial g$ 全消失，只剩 $g_{ij} = \delta_{ij}$ —— 对称性论证就退化成线性代数。因为恒等式是张量等式，一点成立即处处成立。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「高斯映射的几何」· 法坐标；Petersen, Riemannian Geometry, 「高斯引理与法坐标」一章·法坐标下度量的展开
+
+#### 黎曼曲率张量　`def.curvature-tensor`
+*定义*　黎曼曲率张量与局部平坦性
+
+曲面上的 Levi-Civita 联络定义**曲率算子**
+
+$$R(X,Y)Z = \nabla_{X}\nabla_{Y}Z-\nabla_{Y}\nabla_{X}Z-\nabla_{[X,Y]}Z,$$
+
+在坐标下记 $R(\partial_{i},\partial_{j})\partial_{k} = R^{\ell}_{ijk}\partial_{\ell}$，其中
+
+$$R^{\ell}_{ijk} = \partial_{i}\Gamma^{\ell}_{jk}-\partial_{j}\Gamma^{\ell}_{ik}+\Gamma^{\ell}_{ip}\Gamma^{p}_{jk}-\Gamma^{\ell}_{jp}\Gamma^{p}_{ik},$$
+
+并降下标 $R_{ijk\ell} = g_{\ell p}R^{p}_{ijk}$。它满足
+
+$$R_{ijk\ell} = -R_{jik\ell} = -R_{ij\ell k} = R_{k\ell ij},\qquad R_{ijk\ell}+R_{jki\ell}+R_{kij\ell} = 0$$
+
+（后者是**第一比安基恒等式**）。**平坦判据**：$R\equiv0$ 当且仅当每点附近有坐标使 $g_{ij} = \delta_{ij}$，即曲面局部等距于平面。
+
+**来处是可积性条件**。想找坐标把 $g_{ij}$ 拉成 $\delta_{ij}$，等价于解 $g_{ij} = \delta_{\alpha\beta}\frac{\partial y^{\alpha}}{\partial x^{i}}\frac{\partial y^{\beta}}{\partial x^{j}}$；而「$\partial_{i}\partial_{j} = \partial_{j}\partial_{i}$」的相容性要求的正是 $R^{\ell}_{ijk} = 0$。所以 $R$ 从一开始就是「能不能把度量摊平」的阻碍。
+
+**Ricci 恒等式**：$[\nabla_{\partial_{i}},\nabla_{\partial_{j}}]\partial_{k} = R^{\ell}_{ijk}\partial_{\ell}$。所以 $R$ 度量的是「协变导数交换次序差多少」—— 这是它最常用的定义方式，也是本图选它的理由。
+
+**为什么内蕴**：$R$ 的公式里只有 $\Gamma$ 与 $\partial\Gamma$，而 $\Gamma$ 只有 $g$ 与 $\partial g$。**第二基本形式没有出现。**
+
+⚠️ 二维时独立分量只有一个（$R_{1212}$，其余由对称性决定），所以曲面上的「曲率」是一个数而不是一堆数；三维以上 $R$ 才真正有张量结构（那时 $K$ 只能给出它的迹的部分）。
+
+⚠️ 符号约定：本包取上式。换一种约定（把括号里两个 $\Gamma$ 乘积项搬到另一边）会让所有分量整体反号，曲率的所有**定义**随之反号，而几何内容不变。用单位球面检验是分辨约定最快的办法。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 曲率张量；do Carmo, Riemannian Geometry, 「曲率」一章·Ricci 恒等式与比安基恒等式
+
+#### 高斯曲率　`def.gauss-curvature`
+*定义*　高斯曲率的内蕴定义
+
+曲面 $S$ 在点 $p$ 的**高斯曲率**由曲率张量定义为
+
+$$K(p) = \frac{\langle R(\partial_{1},\partial_{2})\partial_{2},\partial_{1}\rangle}{\det(g_{ij})} = \frac{R_{1221}}{g_{11}g_{22}-g_{12}^{2}},$$
+
+（$1,2$ 是局部坐标指标）。在单位正交标架 $e_{1},e_{2}$ 下它退化为
+
+$$K = \langle R(e_{1},e_{2})e_{2},e_{1}\rangle .$$
+
+另一方面，若 $h_{ij}$ 是第二基本形式在同一标架下的系数矩阵，则 $K = \det(h_{ij}) = k_{1}k_{2}$。
+
+⚠️ **符号与指标顺序**（本包全包统一）：$R_{ijk\ell} = \langle R(\partial_{i},\partial_{j})\partial_{k},\partial_{\ell}\rangle$，于是单位球面（$K = 1$、$g_{ij} = \delta_{ij}$）上 $R_{1221} = 1$、$R_{1212} = -1$。很多书写成「$K = R_{1212}/\det g$」，那用的是另一种指标顺序（或另一种 $R$ 的符号），数学上是同一件事。**判断约定对不对的检查只有一条：单位球面必须给出 $K = 1$。**
+
+**与缩并写法 $\frac{1}{2}g^{ik}g^{j\ell}R_{ijk\ell}$ 的关系**：二维只有一个独立分量，把四个指标枚举一遍就得到 $K = -\frac{1}{2}g^{ik}g^{j\ell}R_{ijk\ell}$（本包约定下的符号）。两个写法给的是同一个数，差别只在指标顺序带来的负号。
+
+**两条路都通向它**：
+
+- 内蕴方向：$R$ 只含 $g$ 及其一、二阶导数（$\Gamma$ 一阶、$R$ 含 $\partial\Gamma$），所以只要知道 $I$ 就能把 $K$ 算出来；
+- 外在方向：$K = k_{1}k_{2} = \det(h_{ij})$，用的是两个主曲率。
+
+两条路给出同一个数，这就是**绝妙定理**的内容 —— 在那个节点里给证明。
+
+⚠️ $K$ 是**一个点**上的量，与「曲线的曲率」没有直接大小关系：$K = 1$ 的曲面上可以有曲率为 $0$ 的曲线（测地线），$K = 0$ 的柱面上可以有曲率非零的曲线。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯曲率；do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯方程
+
+#### 绝妙定理　`thm.theorema-egregium`
+*定理*　高斯曲率是内蕴量
+
+高斯曲率 $K$ 只依赖第一基本形式 $I$。准确地说：若 $\varphi : S_{1}\to S_{2}$ 是局部等距，则
+
+$$K_{1}(p) = K_{2}(\varphi(p))\qquad (p \in S_{1}).$$
+
+等价地，$K$ 可以只用 $g_{ij}$ 及其一、二阶导数写成一条公式。
+
+而 $K$ 的原始定义 $k_{1}k_{2}$ 用到第二基本形式（外在量）—— 所以这不是定义的推论，而是定理。
+
+**为什么叫「绝妙」**：$K$ 是两个主曲率的乘积，主曲率来自 $\mathrm{d}n$，而 $n$ 是 $\mathbb{R}^{3}$ 里的单位法向 —— 怎么看都是外在数据。可它竟然只靠曲面内部的度量就能读出来。内蕴几何的全部结果（高斯–博内、单值化、$K$ 的拓扑含义）都从这一条长出来。
+
+**操作的读法**：如果一个人住在曲面里、只能量长度，他仍然能测出 $K$。量半径 $\rho$ 的小测地圆周长 $L(\rho)$，则
+
+$$K(p) = \frac{3}{\pi}\lim_{\rho\to0}\frac{2\pi\rho-L(\rho)}{\rho^{3}}.$$
+
+这是把绝妙定理变成实验的说法：曲率就是「圆周长比 $2\pi\rho$ 短多少」的三阶速率。
+
+**两个佐证**：柱面（$K = 0$）与平面局部等距，曲率必然相同；球面（$K = 1/R^{2}$）与任何 $K = 0$ 的曲面都不局部等距，所以曲率确实是等距不变量。
+
+⚠️ **不内蕴的东西**：$k_{1}$、$k_{2}$、$H$ 都不内蕴（柱面与平面就是反例：$k_{1}$ 分别是 $1/R$ 与 $0$）。绝妙定理只对**乘积**成立，不对因子成立。这也解释了为什么内蕴几何里 $K$ 处处出现而 $H$ 几乎不出现。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯的绝妙定理；do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯方程与绝妙定理
+
+#### 高斯博内定理　`thm.gauss-bonnet`
+*定理*　高斯博内定理与欧拉示性数
+
+设 $M \subseteq \mathbb{R}^{3}$ 是紧致、可定向的曲面（允许带分段光滑边界）。则
+
+$$\int_{M}K\,\mathrm{d}A+\int_{\partial M}k_{g}\,\mathrm{d}s = 2\pi\chi(M),$$
+
+其中 $\chi(M)$ 是欧拉示性数，$\mathrm{d}A$ 是面积元，$\partial M$ 取使 $M$ 落在左侧的定向。特别地，**闭**曲面（$\partial M = \emptyset$）上
+
+$$\int_{M}K\,\mathrm{d}A = 2\pi\chi(M).$$
+
+于是 $K$ 的全积分是一个**拓扑**量：球面 $4\pi$、环面 $0$、亏格 $g$ 的闭曲面 $4\pi(1-g)$。
+
+**局部版是核心**（Gauss–Bonnet）：对由一条分段光滑简单闭曲线围成的区域 $D$，
+
+$$\int_{D}K\,\mathrm{d}A+\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi .$$
+
+整体版就是把它沿三角剖分求和，角落项在求和时自动整理成 $2\pi\chi$。详细的提纲在边上。
+
+**测地三角形的特例**：若 $\partial T$ 的三条边都是测地线（$k_{g}\equiv0$），则 $\alpha_{1}+\alpha_{2}+\alpha_{3}-\pi = \int_{T}K\,\mathrm{d}A$ —— 内角和超出 $\pi$ 的部分，正好是高斯曲率的总量。球面上的八分之一球面三角形：三个内角都是直角，$\int_{T}K\,\mathrm{d}A = \frac{\pi}{2}$，与面积 $\frac{4\pi}{8}$ 相符。平面上所有三角形内角和都是 $\pi$，正因为 $K\equiv0$。
+
+⭐ **这条定理的位置**：它把「度量」与「拓扑」缝在一起 —— $K$ 是纯内蕴的度量量，$\chi$ 是纯组合量，而它们的积分被钉死。曲面分类的度量侧（$K$ 的总量）与拓扑侧（亏格）从此等价。
+
+⚠️ 需要**可定向**：否则面积元与 $\omega^{1}_{2}$ 的符号说不清，公式要么模 $2$、要么换成绝对值形式。本图不展开不可定向的情形。
+
+⚠️ 不需要**紧致**也可以有版本，但那时边界与端（尖点、漏斗）要各自记账，形式会变；本节点只写紧致情形，因为它是「$K$ 的积分 = 拓扑量」最干净的说法。
+
+参考：do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 高斯–博内定理；do Carmo, Differential Forms and Applications, 第 4 章「结构方程」· 高斯–博内定理与指标定理
 
 ---
 
@@ -21983,15 +22809,15 @@ $$(i) \int_E f = \int_E g\quad  \forall E \in \mathcal{M}\quad  \iff\quad  \int_
 
 MCT 是绕着这个定义做的。
 
-#### 定义引用：「L⁺」→ 单调收敛定理　`def-link.lplus-mct`
+#### 定义引用：「非负可测函数类」→ 单调收敛定理　`def-link.lplus-mct`
 
 MCT 对整列都要求在 $L^{+}$ 里。
 
-#### 定义引用：「L⁺」→ 复函数的积分　`def-link.lplus-complex`
+#### 定义引用：「非负可测函数类」→ 复函数的积分　`def-link.lplus-complex`
 
 复函数的积分就是把正负部丢回 $L^{+}$ 去算。
 
-#### 定义引用：「L⁺」→ 可积 / L¹　`def-link.lplus-integrable`
+#### 定义引用：「非负可测函数类」→ 可积 / L¹　`def-link.lplus-integrable`
 
 可积 $\iff \int |f| < \infty$，而 $|f| \in L^{+}$。
 
@@ -21999,7 +22825,7 @@ MCT 对整列都要求在 $L^{+}$ 里。
 
 DCT 的前提与结论都在 $L^{1}$ 里。
 
-#### 定义引用：「L⁺」→ 控制收敛定理　`def-link.lplus-dct`
+#### 定义引用：「非负可测函数类」→ 控制收敛定理　`def-link.lplus-dct`
 
 DCT 的证明是正负部各用一次 Fatou —— 又回到 $L^{+}$。
 
@@ -22023,7 +22849,7 @@ DCT 的证明是正负部各用一次 Fatou —— 又回到 $L^{+}$。
 
 逼近用的正是简单函数。
 
-#### 定义引用：「零集与完备」→ MCT（a.e. 版本）　`def-link.nullset-ae-mct`
+#### 定义引用：「零集与完备」→ 单调收敛定理（几乎处处版本）　`def-link.nullset-ae-mct`
 
 「a.e. 版本」的意思就是把零集上的例外丢掉。
 
@@ -22513,7 +23339,7 @@ $\det(xI - A)$ 的结果落在 $K[x]$ 里，是多项式环的元素。
 
 主分解的代数版本里，「$\chi_T$ 的因子」与「极小多项式」是同一套理想论的产物。
 
-#### 特征多项式 + Laplace 展开 ⟹ Cayley–Hamilton　`imp.cayley-hamilton`
+#### 特征多项式 + Laplace 展开 ⟹ Cayley–Hamilton 定理　`imp.cayley-hamilton`
 *特征多项式 + 伴随矩阵 $\implies$ Cayley–Hamilton*
 
 记 $A \in M_n(K)$，考虑**多项式矩阵** $B(x) := xI - A \in M_n(K[x])$，以及它的伴随矩阵
@@ -22553,7 +23379,7 @@ $$0 = A^{n} + c_{n-1}A^{n-1} + \cdots + c_0 I = \chi_A(A)$$
 
 > 证明里真正有内容的是 **(4) $\iff$ (3)**（几何重数 vs 代数重数）与最后一对（**(5) 是无重根判据**）。前三条只是把「对角化」翻译成「有 $n$ 个无关特征向量」。
 
-#### Cayley–Hamilton + 极小多项式 ⟹ 极小多项式整除特征多项式　`imp.minimal-poly-divisor`
+#### Cayley–Hamilton 定理 + 极小多项式 ⟹ 极小多项式整除特征多项式　`imp.minimal-poly-divisor`
 *Cayley–Hamilton $\implies \mu_T \mid \chi_T$ 且同根*
 
 1. **整除**：由 Cayley–Hamilton，$\chi_T(T) = 0$，即 $\chi_T \in I_T = (\mu_T)$，故 $\mu_T \mid \chi_T$。由此 $\deg \mu_T \le \deg \chi_T = n$。
@@ -22653,7 +23479,7 @@ $$\dim \ker (T - \lambda I)^{k}$$
 
 Sylvester 判据判的是二次型的正定性，用的是它的系数矩阵。
 
-#### 内积 + 诱导范数与距离 ⟹ Cauchy–Schwarz　`imp.cauchy-schwarz`
+#### 内积 + 诱导范数与距离 ⟹ Cauchy–Schwarz 不等式　`imp.cauchy-schwarz`
 *内积的正定性 $\implies$ Cauchy–Schwarz*
 
 若 $v = 0$ 结论平凡。设 $v \ne 0$，对一切 $t \in K$ 有
@@ -23978,7 +24804,7 @@ Cauchy 列要求任意两项的距离 $|x_m - x_n|$ 可控。
 
 Cauchy 准则两边都是 $\varepsilon$-$N$ 语句，即绝对的差。
 
-#### 定义引用：「绝对值 |x|」→ Bolzano–Weierstrass　`def-link.abs-bw`
+#### 定义引用：「绝对值 |x|」→ Bolzano–Weierstrass 定理　`def-link.abs-bw`
 
 子列收敛仍然是 $|x_{n_k} - x| < \varepsilon$。
 
@@ -24010,7 +24836,7 @@ $\|f\|_p = \left(\int |f|^{p}\right)^{1/p}$：绝对值取模，$p$ 次幂再开
 
 本性上界是 $|f|$ 的本质上确界 —— 没有绝对值就没有「大小」。
 
-#### 定义引用：「绝对值 |x|」→ 有界变差 BV　`def-link.abs-variation`
+#### 定义引用：「绝对值 |x|」→ 有界变差函数　`def-link.abs-variation`
 
 全变差是 $\sup \sum |F(x_{i+1}) - F(x_i)|$，逐段取绝对值。
 
@@ -24548,7 +25374,7 @@ $$\int \nu(E_x) d\mu(x) = \nu(B)\cdot\mu(A) = \mu \times \nu(A \times B)$$
 
 $>$ ⚠ $\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。
 
-#### 乘积测度由截口给出 + 单调收敛定理 ⟹ Fubini–Tonelli　`imp.tonelli`
+#### 乘积测度由截口给出 + 单调收敛定理 ⟹ Fubini–Tonelli 定理　`imp.tonelli`
 *集合版（截口公式）+ MCT $\implies$ Tonelli*
 
 **① 指示函数。** 取 $f = \chi_E$（$E \in \mathcal{M} \otimes  \mathcal{N}$）。此时
@@ -24585,7 +25411,7 @@ $$\int |f| d(\mu \times \nu) < \infty$$
 
 $>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。
 
-#### Fubini–Tonelli + 完备化定理 + 乘积测度通常不完备 ⟹ 完备情形的 F–T　`imp.fubini-complete`
+#### Fubini–Tonelli 定理 + 完备化定理 + 乘积测度通常不完备 ⟹ 完备情形的 F–T　`imp.fubini-complete`
 *乘积测度通常不完备 $\implies$ 必须补一条完备情形的 F–T*
 
 **① 先证 $f \ge 0$ 的情形。** 由于 $\lambda$ 是 $\mu \times \nu$ 的完备化，$\mathcal{L}$ 中的集合可以写成
@@ -24653,15 +25479,15 @@ $>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而�
 
 定理算的就是乘积测度。
 
-#### 定义引用：「截口」→ Fubini–Tonelli　`def-link.section-fubini`
+#### 定义引用：「截口」→ Fubini–Tonelli 定理　`def-link.section-fubini`
 
 Fubini 的整个陈述都是用截口写的。
 
-#### 定义引用：「乘积测度」→ Fubini–Tonelli　`def-link.productmeasure-fubini`
+#### 定义引用：「乘积测度」→ Fubini–Tonelli 定理　`def-link.productmeasure-fubini`
 
 重积分就是对 $\mu \times \nu$ 积分。
 
-#### 定义引用：「可积 / L¹」→ Fubini–Tonelli　`def-link.integrable-fubini`
+#### 定义引用：「可积 / L¹」→ Fubini–Tonelli 定理　`def-link.integrable-fubini`
 
 Fubini 的 (b) 用的是 $L^{1}(\mu \times \nu )$。
 
@@ -25153,7 +25979,7 @@ $$\varphi : R^{(I)} \to M, \qquad \varphi\bigl((r_{i})_{i}\bigr) := \sum_{i} r_{
 - **左侧**（投射算法）：由同一条定理的对偶 $K^{-}(\mathcal{P}) \simeq D^{-}$，$P_{\bullet}$ 在导出范畴里代表 $M$，于是 $\operatorname{Hom}_{D}(M, N[n]) = \operatorname{Hom}_{K}(P_{\bullet}, N[n]) = H^{n}\operatorname{Hom}(P_{\bullet}, N)$ ✓。
 两条路落在同一个群里，故两者相等 ✓。而「换成别的投射消解结果不变」正是消解的同伦唯一性给的 —— 少了它，左边的写法没有意义 ✓。∎
 
-#### Ext 就是 RHom + 长正合列 + 投射对象没有高次 Ext ⟹ 维数转移　`imp-link.dimshift-extrhom`
+#### Ext 就是导出 Hom + 长正合列 + 投射对象没有高次 Ext ⟹ 维数转移　`imp-link.dimshift-extrhom`
 *Ext 就是 RHom + 长正合列 + 投射没有高次 Ext $\implies$ 维数转移*
 
 取 $N$ 的内射消解 $N \to I^{\bullet}$。$I^{k}$ 内射，故 $\operatorname{Hom}(-, I^{k})$ 正合，把 $0 \to K \to P \to M \to 0$ 逐项作用后得到**复形的短正合列**
@@ -25812,6 +26638,470 @@ $$\rho_{i} := g_{i}/g$$
 
 这条万有性质讲的是 $M\otimes_R N$ 这个对象本身；先有构造（商掉双线性关系），才谈得上它对双线性映射万有。
 
+#### 定义引用：「联络形式」→ 黎曼曲率张量　`def-link.curvature-tensor`
+
+黎曼曲率张量量的是「沿两条路径平行移动的差别」，它的定义对象就是联络：$R(X,Y)=\nabla_X\nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]}$。
+
+#### 定义引用：「内积」→ 曲面与参数化　`dep.dg-ext-inner`
+
+$\langle r_{u}, r_{u}\rangle$、$\lVert r_{u}\times r_{v}\rVert$、$n$ 的单位化全靠 $\mathbb{R}^{3}$ 的内积；整条标架路线的每一步都在用它。
+
+#### 定义引用：「可微与全微分」→ 曲面与参数化　`dep.dg-ext-differential`
+
+切映射 $\mathrm{d}r$ 就是 $r$ 的全微分；后面 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$ 里的 $\mathrm{d}$ 是同一个算子。
+
+#### 定义引用：「特征值与特征向量」→ 主曲率　`dep.dg-ext-eigen`
+
+主曲率就是 $W$（等价地 $h$ 相对 $g$）的特征值；主方向是特征向量。谱定理把「极值方向」与「特征方向」等同起来。
+
+#### 定义引用：「迹」→ 平均曲率　`dep.dg-ext-trace`
+
+$H = \tfrac{1}{2}\operatorname{tr}W$：平均曲率是形状算子的迹的一半。
+
+#### 定义引用：「行列式」→ 平均曲率　`dep.dg-ext-det`
+
+$K = \det W$：Gauss 曲率是形状算子的行列式（二维时恰是两个主曲率之积）。
+
+#### 定义引用：「曲面与参数化」→ 活动标架　`dep.dg-surface-frame`
+
+标架沿曲面移动：$e_{3}$ 取 Gauss 映射的法向、$e_{1}, e_{2}$ 张成切平面 —— 这三样都是正则参数化给的。
+
+#### 定义引用：「活动标架」→ 联络形式　`dep.dg-frame-conn`
+
+联络形式是把 $\mathrm{d}e_{i}$ **按标架展开**得到的系数；没有标架就没有它。
+
+#### 定义引用：「活动标架」→ 适配标架　`dep.dg-frame-adapt`
+
+适配标架是活动标架在曲面上的特殊取法（$e_{3} = n$）；引理的结论都是关于这个取法的。
+
+#### 定义引用：「联络形式」→ 结构方程　`dep.dg-conn-struct`
+
+结构方程的两组对象就是 $\omega^{i}$ 与 $\omega^{i}_{\ j}$；定理本身不含别的量。
+
+#### 定义引用：「活动标架」→ 第一基本形式　`dep.dg-frame-I`
+
+$I = (\omega^{1})^{2}+(\omega^{2})^{2}$ 里的 $\omega^{i}$ 是对偶余标架。用参数 $u, v$ 写还要另配 $\mathrm{d}r$，用余标架写不需要。
+
+#### 定义引用：「活动标架」→ Weingarten 变换　`dep.dg-frame-W`
+
+$W$ 的矩阵 $(h_{ij})$ 是相对标架 $e_{1}, e_{2}$ 写的；换标架只是相似/合同变换，特征值不变。
+
+#### 定义引用：「Weingarten 变换」→ 第二基本形式　`dep.dg-W-II`
+
+$II(v,w) = \langle W(\mathrm{d}r(v)), \mathrm{d}r(w)\rangle$：第二基本形式是形状算子相对 $I$ 的二次形式。
+
+#### 定义引用：「第一基本形式」→ 法曲率　`dep.dg-I-normal`
+
+法曲率是 $II$ 与 $I$ 的商，分母就是第一基本形式（单位化之后归一为 $1$）。
+
+#### 定义引用：「第二基本形式」→ Gauss 方程　`dep.dg-II-gauss`
+
+Gauss 方程右端的 $c_{ij}$、$h_{ij}$ 就是第二基本形式的系数（$II = \sum h_{ij}\omega^{i}\omega^{j}$）。
+
+#### 定义引用：「第二基本形式」→ Codazzi–Mainardi 方程　`dep.dg-II-codazzi`
+
+Codazzi 讲的是 $II$ 的协变导数对称，主语就是第二基本形式。
+
+#### 定义引用：「Weingarten 变换」→ 主曲率　`dep.dg-W-principal`
+
+主曲率定义为 $W$ 的特征值；只有 $W$ 自伴，才有正交的主方向可言。
+
+#### 定义引用：「法曲率」→ Meusnier 定理　`dep.dg-normal-meusnier`
+
+定理的左端就是法曲率，右端是曲线曲率与夹角余弦的乘积。
+
+#### 定义引用：「主曲率」→ 平均曲率　`dep.dg-principal-H`
+
+$H$ 与 $K$ 是 $k_{1}, k_{2}$ 的对称函数，而 $k_{i}$ 正是主曲率。
+
+#### 定义引用：「主曲率」→ Euler 公式　`dep.dg-principal-euler`
+
+Euler 公式里的 $k_{1}, k_{2}$ 与 $\theta$ 分别是主曲率与相对主方向的夹角。
+
+#### 定义引用：「主曲率」→ Rodrigues 定理　`dep.dg-principal-rodrigues`
+
+Rodrigues 定理把「主方向」翻译成 $W$ 的特征向量，两个说法是同一个定义的两面。
+
+#### 定义引用：「第一基本形式」→ 曲率线网　`dep.dg-I-curvlines`
+
+$F = 0$ 就是「参数网正交」，它是第一基本形式的交叉项。
+
+#### 定义引用：「第二基本形式」→ 曲面论基本定理　`dep.dg-II-fundamental`
+
+定理的输入是 $I$ 与 $II$ 的系数矩阵 $g, h$ —— 这对基本形式就是曲面的全部局部数据。
+
+#### 定义引用：「主曲率」→ 曲面论基本定理　`dep.dg-principal-mean`
+
+存在性只用到 $g, h$（即 $I, II$）；$k_{i}$ 与 $H, K$ 是它们的派生量，不进入相容性条件。
+
+#### 曲面与参数化 ⟹ 活动标架　`imp.dg-frame-exists`
+*正则曲面 $\implies$ 存在光滑的活动标架*
+
+取 $r_{u}, r_{v}, n$。正则性 $r_{u}\times r_{v} \ne 0$ 保证三者在每点线性无关；Gram–Schmidt 给出正交基：
+
+$$e_{1} := \frac{r_{u}}{\lVert r_{u}\rVert},\qquad e_{2} := \frac{r_{v}-\langle r_{v}, e_{1}\rangle e_{1}}{\lVert r_{v}-\langle r_{v}, e_{1}\rangle e_{1}\rVert},\qquad e_{3} := e_{1}\times e_{2},$$
+
+再取符号使之等于 $n$（若 $e_{1}\times e_{2} = -n$，把 $e_{2}$ 换成 $-e_{2}$）。$r$ 是 $C^{2}$，故 $n$ 是 $C^{1}$，右端全是 $C^{1}$ 表达式，于是 $(e_{1}, e_{2}, e_{3})$ 是 $C^{1}$ 标架场；对偶余标架 $\omega^{i} = \langle \cdot, e_{i}\rangle$ 也随之 $C^{1}$。∎
+
+#### 联络形式 ⟹ 联络形式反对称　`imp.dg-antisym`
+*正交性 $\implies$ $\omega^{i}_{\ j}+\omega^{j}_{\ i} = 0$*
+
+由 $\langle e_{i}, e_{j}\rangle = \delta_{ij}$ 是常数，取外微分：
+
+$$0 = \mathrm{d}\langle e_{i}, e_{j}\rangle = \langle \mathrm{d}e_{i}, e_{j}\rangle+\langle e_{i}, \mathrm{d}e_{j}\rangle = \omega^{j}_{\ i}+\omega^{i}_{\ j}.$$
+
+中间一步用的是 $\omega^{j}_{\ i} = \langle \mathrm{d}e_{i}, e_{j}\rangle$ 与 $\omega^{i}_{\ j} = \langle \mathrm{d}e_{j}, e_{i}\rangle$，以及内积的对称性。取 $i = j$ 得 $2\omega^{i}_{\ i} = 0$。∎
+
+#### 活动标架 + 联络形式 ⟹ 结构方程　`imp.dg-struct`
+*$\mathrm{d}^{2}=0$ 给出两条结构方程*
+
+**第一式。** 对 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$ 取外微分（$\omega^{i}$ 是 $1$-形式，$e_{i}$ 是向量值 $0$-形式，故第二项带负号）：
+
+$$0 = \mathrm{d}^{2}r = \sum_{i}\mathrm{d}\omega^{i}\wedge e_{i}-\sum_{i}\omega^{i}\wedge \mathrm{d}e_{i} = \sum_{j}\Bigl(\mathrm{d}\omega^{j}-\sum_{i}\omega^{i}\wedge\omega^{j}_{\ i}\Bigr)e_{j}.$$
+
+最后的等号是把 $-\sum_{i}\omega^{i}\wedge \mathrm{d}e_{i} = -\sum_{i,j}\omega^{i}\wedge\omega^{j}_{\ i}e_{j}$ 按 $e_{j}$ 归并。$e_{j}$ 处处线性无关，故系数为零：$\mathrm{d}\omega^{j} = \sum_{i}\omega^{i}\wedge\omega^{j}_{\ i}$，改换指标即第一结构方程。
+
+**第二式。** 对 $\mathrm{d}e_{i} = \sum_{j}\omega^{j}_{\ i}e_{j}$ 取外微分：
+
+$$0 = \mathrm{d}^{2}e_{i} = \sum_{j}\mathrm{d}\omega^{j}_{\ i}\wedge e_{j}-\sum_{j,k}\omega^{j}_{\ i}\wedge\omega^{k}_{\ j}e_{k} = \sum_{j}\Bigl(\mathrm{d}\omega^{j}_{\ i}-\sum_{k}\omega^{k}_{\ i}\wedge\omega^{j}_{\ k}\Bigr)e_{j},$$
+
+故 $\mathrm{d}\omega^{j}_{\ i} = \sum_{k}\omega^{k}_{\ i}\wedge\omega^{j}_{\ k}$；改换指标得 $\mathrm{d}\omega^{i}_{\ j} = \sum_{k}\omega^{k}_{\ j}\wedge\omega^{i}_{\ k}$。由 $1$-形式反交换，这等于 $\mathrm{d}\omega^{i}_{\ j} = -\sum_{k}\omega^{i}_{\ k}\wedge\omega^{k}_{\ j}$，即曲率形式 $\Omega^{i}_{\ j} := \mathrm{d}\omega^{i}_{\ j}+\sum_{k}\omega^{i}_{\ k}\wedge\omega^{k}_{\ j}$ 恒为零。∎
+
+⭐ 反过来也是同一件事：能构造出标架的**唯一**障碍就是这个 $\mathrm{d}^{2}=0$（曲面论基本定理用的就是这一点）。
+
+#### 结构方程 + 曲面与参数化 ⟹ 适配标架　`imp.dg-adapt`
+*沿曲面取 $e_{3} = n$ $\implies$ $\omega^{3} = 0$*
+
+对任意切向量 $v$：$\omega^{3}(v) = \langle \mathrm{d}r(v), e_{3}\rangle = \langle \mathrm{d}r(v), n\rangle = 0$ —— $\mathrm{d}r(v)$ 是曲面的切向量（$r$ 的像落在 $S$ 里），与法向正交。故 $\omega^{3}$ 沿曲面为零，于是 $\mathrm{d}\omega^{3} = 0$。
+
+把 $i = 3$ 代入第一结构方程（含 $\omega^{3}$ 的项全部消失）：
+
+$$0 = \mathrm{d}\omega^{3} = \omega^{1}\wedge\omega^{3}_{\ 1}+\omega^{2}\wedge\omega^{3}_{\ 2}.$$
+
+这条恒等式把 $\omega^{1}_{\ 3}, \omega^{2}_{\ 3}$ 锁在 $\{\omega^{1}, \omega^{2}\}$ 张成的二维空间里：写出 $\omega^{3}_{\ i} = a_{i}\omega^{1}+b_{i}\omega^{2}+c_{i}\omega^{3}$ 代进去，比较 $\omega^{1}\wedge\omega^{3}$ 与 $\omega^{2}\wedge\omega^{3}$ 的系数即得 $c_{1} = c_{2} = 0$，于是 $\omega^{i}_{\ 3} = \sum_{j}c_{ij}\omega^{j}$。剩下的 $\omega^{1}\wedge\omega^{2}$ 系数给出 $b_{1} = a_{2}$，即系数的对称性（见 `lem.second-form-symmetric`）。∎
+
+#### 适配标架 + 结构方程 ⟹ 第二基本形式对称　`imp.dg-hsym`
+*$\mathrm{d}\omega^{3} = 0$ $\implies$ 第二基本形式的系数对称*
+
+记 $\omega^{i}_{\ 3} = \sum_{j}c_{ij}\omega^{j}$（$i, j = 1,2$；因为 $\omega^{3} = 0$，这两个形式只能落在 $\omega^{1}, \omega^{2}$ 张成的空间里）。代入 $\mathrm{d}\omega^{3} = \omega^{1}\wedge\omega^{3}_{\ 1}+\omega^{2}\wedge\omega^{3}_{\ 2} = 0$：
+
+$$0 = \omega^{1}\wedge(c_{11}\omega^{1}+c_{12}\omega^{2})+\omega^{2}\wedge(c_{21}\omega^{1}+c_{22}\omega^{2}) = (c_{12}-c_{21})\,\omega^{1}\wedge\omega^{2}.$$
+
+$\omega^{1}\wedge\omega^{2} \ne 0$（两个独立的 $1$-形式之外积非零），故 $c_{12} = c_{21}$。取 $h_{ij} := -c_{ij}$，则 $(h_{ij})$ 对称，$II = \sum_{i,j}h_{ij}\omega^{i}\omega^{j}$ 也就成了对称双线性形式。∎
+
+#### 活动标架 + 适配标架 ⟹ 第一基本形式　`imp.dg-I`
+*正交余标架 $+$ $\omega^{3}=0$ $\implies$ $I = (\omega^{1})^{2}+(\omega^{2})^{2}$*
+
+直接把 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$ 代进定义，用 $\langle e_{i}, e_{j}\rangle = \delta_{ij}$：
+
+$$I(v,w) = \Bigl\langle \sum_{i}\omega^{i}(v)e_{i},\ \sum_{j}\omega^{j}(w)e_{j}\Bigr\rangle = \sum_{i,j}\omega^{i}(v)\omega^{j}(w)\delta_{ij} = \sum_{i}\omega^{i}(v)\omega^{i}(w),$$
+
+即 $I = \sum_{i}(\omega^{i})^{2}$；沿曲面 $\omega^{3} = 0$，只剩两项。再把 $e_{1}, e_{2}$ 用 $r_{u}, r_{v}$ 展开，就得到 $I = E\,\mathrm{d}u^{2}+2F\,\mathrm{d}u\,\mathrm{d}v+G\,\mathrm{d}v^{2}$ —— 两组分量是同一个张量在不同基下的矩阵。∎
+
+#### 第二基本形式对称 ⟹ Weingarten 变换　`imp.dg-Wselfadj`
+*系数对称 $\implies$ Weingarten 变换自伴*
+
+$W(e_{j}) = -\mathrm{d}n(e_{j}) = -\sum_{i}c_{ij}e_{i} = \sum_{i}h_{ij}e_{i}$，故 $W$ 相对正交基 $(e_{1}, e_{2})$ 的矩阵就是 $(h_{ij})$。于是
+
+$$\langle W(e_{i}), e_{j}\rangle = h_{ij} = h_{ji} = \langle e_{i}, W(e_{j})\rangle ,$$
+
+即 $W$ 自伴。又 $\langle \mathrm{d}n(v), n\rangle = \tfrac{1}{2}\,\mathrm{d}\langle n, n\rangle(v) = 0$，所以 $W$ 确实把切平面映进切平面（而不是映到法向上）。∎
+
+#### Weingarten 变换 + 适配标架 ⟹ 第二基本形式　`imp.dg-II`
+*Weingarten 变换 $+$ $\omega^{3}=0$ $\implies$ $II = -\sum_{i}\omega^{i}\omega^{i}_{\ 3}$*
+
+用 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$、$e_{3} = n$、$\mathrm{d}n = \mathrm{d}e_{3} = \sum_{i}\omega^{i}_{\ 3}e_{i}$：
+
+$$II(v,w) = \langle \mathrm{d}r(v), -\mathrm{d}n(w)\rangle = -\sum_{i}\omega^{i}(v)\,\langle e_{i}, \mathrm{d}e_{3}(w)\rangle = -\sum_{i}\omega^{i}(v)\,\omega^{i}_{\ 3}(w).$$
+
+再代入 $\omega^{i}_{\ 3} = \sum_{j}c_{ij}\omega^{j}$ 与 $h_{ij} = -c_{ij}$，并用 $c_{12} = c_{21}$：
+
+$$II = -\sum_{i,j}c_{ij}\,\omega^{i}\omega^{j} = \sum_{i,j}h_{ij}\,\omega^{i}\omega^{j} = h_{11}(\omega^{1})^{2}+2h_{12}\omega^{1}\omega^{2}+h_{22}(\omega^{2})^{2}.$$
+
+换成参数 $(u,v)$ 就是 $L\,\mathrm{d}u^{2}+2M\,\mathrm{d}u\,\mathrm{d}v+N\,\mathrm{d}v^{2}$：$h_{ij}$ 与 $L, M, N$ 指的是同一组系数在不同基下的矩阵元。∎
+
+#### 结构方程 + 适配标架 + 第二基本形式对称 ⟹ Gauss 方程　`imp.dg-gauss`
+*结构方程拆出 $k=3$ 项 $\implies$ Gauss 方程*
+
+第二结构方程 $\mathrm{d}\omega^{i}_{\ j} = \sum_{k=1}^{3}\omega^{k}_{\ j}\wedge\omega^{i}_{\ k}$ 取 $i, j \in \{1,2\}$，把 $k$ 拆成 $1,2,3$：
+
+$$\mathrm{d}\omega^{1}_{\ 2} = \omega^{1}_{\ 2}\wedge\omega^{1}_{\ 1}+\omega^{2}_{\ 2}\wedge\omega^{1}_{\ 2}+\omega^{3}_{\ 2}\wedge\omega^{1}_{\ 3}.$$
+
+前两项因 $\omega^{1}_{\ 1} = \omega^{2}_{\ 2} = 0$ 消失（`prop.connection-antisymmetric`）；最后一项用 $\omega^{3}_{\ 2} = -\omega^{2}_{\ 3}$：
+
+$$\mathrm{d}\omega^{1}_{\ 2} = \omega^{1}_{\ 3}\wedge\omega^{2}_{\ 3}.$$
+
+代入 $\omega^{i}_{\ 3} = \sum_{j}c_{ij}\omega^{j}$ 并用 $c_{12} = c_{21}$：
+
+$$\omega^{1}_{\ 3}\wedge\omega^{2}_{\ 3} = (c_{11}c_{22}-c_{12}^{2})\,\omega^{1}\wedge\omega^{2}.$$
+
+按定义 $\mathrm{d}\omega^{1}_{\ 2} = K\omega^{1}\wedge\omega^{2}$，故 $K = \det(c_{ij})$。又 $h = -c$，而 $\det(-c) = \det c$（$2\times2$），故 $K = \det(h_{ij})$。在参数网 $\{r_{u}, r_{v}\}$ 下 $h$ 与 $g$ 是同一对基下的两个矩阵，于是 $K = \det h/\det g = (LN-M^{2})/(EG-F^{2})$。
+
+**无指标形式**：同一段 $R^{\mathbb{R}^{3}} = 0$ 的展开，这一次取**切向**分量（而不是法向分量），就得到 $\langle R(X,Y)Z, W\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W)$ —— 法向分量那一半正是 `thm.codazzi-mainardi` 的入边里算的东西。∎
+
+#### 结构方程 + 适配标架 ⟹ Codazzi–Mainardi 方程　`imp.dg-codazzi`
+*结构方程拆出混合分量 $\implies$ Codazzi–Mainardi 方程*
+
+**结构形式。** 第二结构方程取 $j = 3$：
+
+$$\mathrm{d}\omega^{i}_{\ 3} = \sum_{k=1}^{3}\omega^{k}_{\ 3}\wedge\omega^{i}_{\ k} = \omega^{1}_{\ 3}\wedge\omega^{i}_{\ 1}+\omega^{2}_{\ 3}\wedge\omega^{i}_{\ 2},$$
+
+最后一步丢掉 $k = 3$（$\omega^{3}_{\ 3} = 0$）。
+
+**为什么等价于 $\nabla II$ 对称。** 设 $\bar\nabla$ 是 $\mathbb{R}^{3}$ 的平坦联络、$\nabla$ 是曲面的 Levi-Civita 联络。Gauss 公式与 Weingarten 公式为
+
+$$\bar\nabla_{X}Y = \nabla_{X}Y+II(X,Y)n,\qquad \bar\nabla_{X}n = \mathrm{d}n(X) = -W(X).$$
+
+把 $R^{\mathbb{R}^{3}}(X,Y)Z = \bar\nabla_{X}\bar\nabla_{Y}Z-\bar\nabla_{Y}\bar\nabla_{X}Z-\bar\nabla_{[X,Y]}Z = 0$ 展开，两边取**法向分量**（切向分量给出 Gauss 方程）：
+
+$$X\bigl(II(Y,Z)\bigr)-Y\bigl(II(X,Z)\bigr)+II(X,\nabla_{Y}Z)-II(Y,\nabla_{X}Z)-II([X,Y],Z) = 0 .$$
+
+而 $(\nabla_{X}II)(Y,Z) = X(II(Y,Z))-II(\nabla_{X}Y,Z)-II(Y,\nabla_{X}Z)$。代入上式，并用无挠 $\nabla_{X}Y-\nabla_{Y}X = [X,Y]$：
+
+$$(\nabla_{X}II)(Y,Z)-(\nabla_{Y}II)(X,Z) = 0 .$$
+
+这就是 $\nabla II$ 关于前两个变量对称，也就是 $\mathbb{R}^{3}$ 曲率的混合分量 $R^{i}_{\ 3jk}$ 为零。写成系数即 $\nabla_{i}h_{jk} = \nabla_{j}h_{ik}$（$h$ 对称时与$\nabla_{i}h_{kj} = \nabla_{j}h_{ki}$ 是同一组方程）。∎
+
+#### 法曲率 + 第二基本形式 ⟹ Meusnier 定理　`imp.dg-meusnier`
+*法曲率的定义 $\implies$ Meusnier 定理*
+
+设 $\gamma$ 单位速、$\gamma(0) = p$，记 $V := \gamma'(0) \in T_{p}S$。由 $\langle \gamma', n\rangle = 0$ 求导：
+
+$$0 = \langle \gamma'', n\rangle+\langle \gamma', \mathrm{d}n(\gamma')\rangle \implies \langle \gamma'', n\rangle = -\langle V, \mathrm{d}n(V)\rangle = II(V,V).$$
+
+又 $k = \lVert \gamma''\rVert$、$N_{\gamma} = \gamma''/k$，故 $\langle \gamma'', n\rangle = k\langle N_{\gamma}, n\rangle = k\cos\theta$。与 $II(V,V) = k_{n}(V)$（单位速，故 $I$ 的归一化因子为 $1$）比较，得 $k_{n}(V) = k\cos\theta$。∎
+
+#### Weingarten 变换 + 主曲率 ⟹ Rodrigues 定理　`imp.dg-rodrigues`
+*形状算子 $\implies$ Rodrigues 定理*
+
+记 $u := \mathrm{d}r(v) \ne 0$。$v$ 是主方向，按定义就是 $u$ 是 $W$ 的特征向量：$W(u) = k\,u$，其中 $k$ 是对应的主曲率。由 $W = -\mathrm{d}n$，$W(u) = -\mathrm{d}n(v)$，于是 $W(u) = k\,u \iff \mathrm{d}n(v) = -k\,\mathrm{d}r(v)$，即 (1)$\iff$(2)。
+
+(2)$\iff$(3)：$k_{n}$ 在单位向量上取驻值 $\iff$ 存在 $k$ 使 $II(v,\cdot) = k\,I(v,\cdot)$（Lagrange 乘子）$\iff$ $\langle W(\mathrm{d}r(v)), \mathrm{d}r(\cdot)\rangle = k\langle \mathrm{d}r(v), \mathrm{d}r(\cdot)\rangle$ $\iff$ $W(u) = k\,u$。而这时 $k_{n}(v) = II(v,v)/I(v,v) = k$，故驻值恰是对应主曲率。∎
+
+#### 主曲率 + Weingarten 变换 ⟹ Euler 公式　`imp.dg-euler`
+*谱定理 $\implies$ Euler 公式*
+
+主方向标架下 $W(e_{1}) = k_{1}e_{1}$、$W(e_{2}) = k_{2}e_{2}$，且 $e_{1}\perp e_{2}$、$\lVert e_{1}\rVert = \lVert e_{2}\rVert = 1$（`thm.rodrigues` 给出特征向量的几何意义）。设单位向量 $V = \cos\theta\,e_{1}+\sin\theta\,e_{2}$，则
+
+$$k_{n}(V) = \langle W(V), V\rangle = \Bigl\langle k_{1}\cos\theta\,e_{1}+k_{2}\sin\theta\,e_{2},\ \cos\theta\,e_{1}+\sin\theta\,e_{2}\Bigr\rangle = k_{1}\cos^{2}\theta+k_{2}\sin^{2}\theta .$$
+
+最后一步只用 $e_{1}, e_{2}$ 的单位正交性：$\langle e_{1}, e_{2}\rangle = 0$ 把交叉项消掉。∎
+
+#### Rodrigues 定理 + 主曲率 ⟹ 曲率线网　`imp.dg-curvlines`
+*Rodrigues 定理 $\implies$ 曲率线网的判别法*
+
+以下都在非脐点处（$k_{1} \ne k_{2}$）。
+
+**($\Longleftarrow$)** 设 $F = M = 0$。$F = 0$ 给出 $r_{u}\perp r_{v}$；$M = II(r_{u}, r_{v}) = 0$ 说明交叉项为零。记 $\varepsilon_{1}, \varepsilon_{2}$ 为 $r_{u}, r_{v}$ 单位化后的向量，则 $\{\varepsilon_{1}, \varepsilon_{2}\}$ 是正交基且 $II(\varepsilon_{1}, \varepsilon_{2}) = 0$，即 $\langle W(\varepsilon_{1}), \varepsilon_{2}\rangle = 0$，故 $W(\varepsilon_{1})\parallel\varepsilon_{1}$；同理 $W(\varepsilon_{2})\parallel\varepsilon_{2}$。两条坐标曲线都是曲率线（`thm.rodrigues` 的 (1)$\iff$(2)）。
+
+**($\implies$)** 设 $r_{u}, r_{v}$ 都是主方向。非脐点处两个主方向对应不同特征值，谱定理给出正交性，故 $F = \langle r_{u}, r_{v}\rangle = 0$；又
+
+$$M = II(r_{u}, r_{v}) = \langle W(r_{u}), r_{v}\rangle = k_{1}\langle r_{u}, r_{v}\rangle = 0 .$$
+
+（脐点处上面第二种推法失效，这也正是判别法要排除 $k_{1} = k_{2}$ 的原因。）∎
+
+#### 结构方程 + Gauss 方程 + Codazzi–Mainardi 方程 ⟹ 曲面论基本定理　`imp.dg-fundamental`
+*结构方程 $+$ Gauss–Codazzi $\implies$ 曲面论基本定理*
+
+**必要性**：任何曲面都满足 Gauss 与 Codazzi（前面两条定理），因为 $\mathbb{R}^{3}$ 的曲率形式恒为零。
+
+**充分性（构造）**：给定 $g, h$。
+
+1. 由 $g$ 取正交余标架 $\omega^{1}, \omega^{2}$（使 $g = (\omega^{1})^{2}+(\omega^{2})^{2}$，代数地可取），第一结构方程 $\mathrm{d}\omega^{1} = \omega^{2}\wedge\omega^{1}_{\ 2}$、$\mathrm{d}\omega^{2} = -\omega^{1}\wedge\omega^{1}_{\ 2}$ 唯一确定 $\omega^{1}_{\ 2}$。
+2. 令 $c := -h$、$\omega^{i}_{\ 3} := \sum_{j}c_{ij}\omega^{j}$。Gauss 方程保证 $\Omega^{1}_{\ 2} = \omega^{1}_{\ 3}\wedge\omega^{2}_{\ 3}$（即 $\Omega^{1}_{\ 2}$ 与曲率一致），Codazzi 保证 $\Omega^{i}_{\ 3} = 0$；连同第 1 步已经满足的 $\Omega^{i}_{\ j} = 0$，得到**全部**分量 $\Omega^{i}_{\ j} = 0$，也就是整套结构方程的 $\mathrm{d}^{2} = 0$ 都成立。
+3. 于是线性方程组 $\mathrm{d}e_{i} = \sum_{j}\omega^{j}_{\ i}e_{j}$ 满足 Frobenius 可积性条件，在单连通 $U$ 上局部有解；因 $\omega^{i}_{\ j}$ 反称，$\langle e_{i}, e_{j}\rangle$ 的导数全为零，初值取标准正交即保证解处处正交。
+4. 再解 $\mathrm{d}r = \sum_{i}\omega^{i}e_{i}$：相容性 $\mathrm{d}(\omega^{i}e_{i}) = 0$ 正是第一结构方程，已成立；单连通给出 $r$。
+5. 验证：$I = \sum_{i}(\omega^{i})^{2} = g$（第 1 步的取法），$II = -\sum_{i}\omega^{i}\omega^{i}_{\ 3} = \sum_{i,j}h_{ij}\omega^{i}\omega^{j} = h$（第 2 步的取法 $c = -h$）。
+
+**唯一性**：两解 $(r, e_{i})$ 与 $(\tilde r, \tilde e_{i})$ 的 $\omega$ 相同，故它们的相对变换是常数（平行的正交变换），再配一次平移即重合。∎
+
+#### 定义引用：「等距」→ 内蕴量　`dep.isometry-intrinsic`
+
+「内蕴量」正是用等距来定义的：等距不变的量叫内蕴量。所以内蕴性的判据永远是「拿一个等距去试」。
+
+#### 定义引用：「克里斯托费尔记号」→ 测地线　`dep.christoffel-geodesic`
+
+测地线方程里的二次项系数就是 $\Gamma^{k}_{ij}$：测地线不变量地写成 $\nabla_{\dot\gamma}\dot\gamma = 0$，一落到坐标就全靠 $\Gamma$。
+
+#### 定义引用：「测地线」→ 测地曲率　`dep.geodesic-gcurv`
+
+测地曲率是「测地线的偏离量」：以 $k_{g} = 0$ 的那一族曲线为基准，$k_{g}$ 度量一条曲线偏离它们多远。
+
+#### 定义引用：「测地线」→ 指数映射　`dep.geodesic-exp`
+
+指数映射的定义就是把 $T_{p}S$ 的每条射线「顺着测地线走单位时间」，所以它整个建立在测地线的存在唯一性上。
+
+#### 定义引用：「黎曼曲率张量」→ 高斯曲率　`dep.curv-gauss`
+
+高斯曲率是曲率张量在二维时唯一独立分量的归一化：$K = R_{1221}/\det(g)$。没有曲率张量，这个定义无法陈述。
+
+#### 定义引用：「内蕴量」→ 绝妙定理　`dep.intrinsic-egregium`
+
+绝妙定理的结论用的是「内蕴」这个词，所以它必须先有定义：$K$ 是内蕴量 $\iff$ 一切局部等距都保持它。
+
+#### 定义引用：「高斯曲率」→ 高斯博内定理　`dep.gauss-bonnet`
+
+高斯–博内定理的被积函数就是高斯曲率；定理说的是这个被积函数的全积分与拓扑量的关系。
+
+#### 定义引用：「测地曲率」→ 高斯博内定理　`dep.gcurv-bonnet`
+
+带边界的版本里，边界的贡献是测地曲率的积分 —— 少了 $k_{g}$ 的定义，公式右端的 $2\pi$ 就解释不了。
+
+#### 定义引用：「第一基本形式」→ 内蕴量　`dep.iff-intrinsic`
+
+「内蕴」的定义就是「只依赖第一基本形式」。这句定义离开 $I$ 无法陈述。
+
+#### 定义引用：「第一基本形式」→ 克里斯托费尔记号　`dep.iff-christoffel`
+
+克里斯托费尔记号的公式里只有 $g_{ij}$ 与 $\partial_{k}g_{ij}$，而 $g_{ij}$ 就是 $I$ 的系数矩阵。
+
+#### 定义引用：「第一基本形式」→ 等距　`dep.iff-isometry`
+
+局部等距的判定准则是「存在参数化使 $E,F,G$ 相同」，说的就是第一基本形式相同。
+
+#### 定义引用：「活动标架」→ 标架下的联络系数　`dep.frame-christoffel`
+
+该命题把联络系数搬到单位正交标架上讲，用的正是活动标架。
+
+#### 定义引用：「联络形式」→ 标架下的联络系数　`dep.conn-christoffel`
+
+命题里的 $\omega^{k}_{j}$ 就是联络形式；该命题的全部内容是「$\omega$ 与 $\Gamma$ 是同一件东西在两个标架下的样子」。
+
+#### 定义引用：「第二基本形式」→ 曲率分解　`dep.secondff-split`
+
+曲率分解里的法向分量就是第二基本形式：$\kappa_{n} = \mathrm{II}(\dot\gamma,\dot\gamma)$。
+
+#### 定义引用：「法曲率」→ 曲率分解　`dep.normal-curv-split`
+
+分解的另一半是法曲率；勾股关系 $\kappa^{2} = k_{g}^{2}+\kappa_{n}^{2}$ 讲的就是这两个曲率怎么拼成空间曲率。
+
+#### 定义引用：「Weingarten 变换」→ 曲率分解　`dep.weingarten-split`
+
+法曲率的第二种算法 $\kappa_{n} = -\langle \dot\gamma,\mathrm{d}n(\dot\gamma)\rangle$ 用的就是 Weingarten 变换。
+
+#### 定义引用：「主曲率」→ 刘维尔公式　`dep.principal-liouville`
+
+刘维尔公式的 notes 里要用主曲率 $k_{1},k_{2}$ 去否掉一个常见的错误简化式，所以这里必须引用主曲率。
+
+#### 克里斯托费尔记号 ⟹ 标架下的联络系数　`imp.christoffel-frame`
+
+**① Koszul 公式在正交标架上退化。** 对单位正交标架 $e_{1},e_{2}$，Koszul 公式里的三个度量导数项 $e_{i}\langle e_{j},e_{k}\rangle$ 全为零，剩下
+$$2\langle \nabla_{e_{i}}e_{j},e_{k}\rangle = \langle [e_{i},e_{j}],e_{k}\rangle-\langle [e_{j},e_{k}],e_{i}\rangle+\langle [e_{k},e_{i}],e_{j}\rangle .$$
+而正交标架下 $\omega^{k}_{j}(e_{i}) = \langle \nabla_{e_{i}}e_{j},e_{k}\rangle$，两边除以 $2$ 即得 ①。
+**② 算正交参数网的单位化标架。** $e_{1} = \partial_{u}/\sqrt E$、$e_{2} = \partial_{v}/\sqrt G$，于是对任意 $X$
+$$\omega^{1}_{2}(X) = \langle \nabla_{X}e_{2},e_{1}\rangle = \frac{1}{\sqrt{EG}}\langle \nabla_{X}\partial_{v},\partial_{u}\rangle ,$$
+因为 $X$ 作用在系数 $1/\sqrt G$ 上那一项与 $\partial_{u}$ 正交。再用 $F = 0$ 得两条：
+- $\partial_{v}\langle \partial_{u},\partial_{u}\rangle = 2\langle \nabla_{\partial_{v}}\partial_{u},\partial_{u}\rangle = 2\langle \nabla_{\partial_{u}}\partial_{v},\partial_{u}\rangle$（用无挠 $[\partial_{u},\partial_{v}] = 0$），故 $\langle \nabla_{\partial_{u}}\partial_{v},\partial_{u}\rangle = \frac{E_{v}}{2}$；
+- $\partial_{v}\langle \partial_{v},\partial_{u}\rangle = 0$ 给出 $\langle \nabla_{\partial_{v}}\partial_{v},\partial_{u}\rangle = -\frac{1}{2}\partial_{u}\langle \partial_{v},\partial_{v}\rangle = -\frac{G_{u}}{2}$。
+把 $X$ 按 $\mathrm{d}u,\mathrm{d}v$ 展开即得
+$$\omega^{1}_{2} = \frac{1}{\sqrt{EG}}\left(\frac{E_{v}}{2}\,\mathrm{d}u-\frac{G_{u}}{2}\,\mathrm{d}v\right),$$
+再代入 $\omega^{1} = \sqrt E\,\mathrm{d}u$、$\omega^{2} = \sqrt G\,\mathrm{d}v$，得
+$$\omega^{1}_{2} = \frac{(\ln E)_{v}}{2\sqrt G}\,\omega^{1}-\frac{(\ln G)_{u}}{2\sqrt E}\,\omega^{2}. \quad\blacksquare$$
+**与 $\Gamma$ 的对照**：若坐标标架本身就单位正交（$E = G = 1$，$F = 0$，即度量已被坐标拉直），则 $\omega^{1}_{2} = 0$，与「平坦坐标下 $\Gamma\equiv0$」一致。一般情形下差别来自 $[e_{1},e_{2}]\ne0$：$e_{i}$ 不再完整，联络系数就多出括号项。
+
+#### 测地线 + 克里斯托费尔记号 ⟹ 测地线的局部存在唯一性　`imp.geodesic-existence`
+
+**一阶化。** 测地线方程是二阶组 $\ddot x^{k} = -\Gamma^{k}_{ij}(x)\dot x^{i}\dot x^{j}$。令 $u^{k} = \dot x^{k}$，把它写成一阶组
+$$\dot x^{k} = u^{k},\qquad \dot u^{k} = -\Gamma^{k}_{ij}(x)u^{i}u^{j}.$$
+右端关于 $(x,u)$ 光滑（$\Gamma$ 由光滑的 $g_{ij}$ 与 $g^{ij}$ 表出，因而光滑），于是 Picard–Lindelöf 定理给出：对每个初值 $(p,v)$ 存在 $\varepsilon > 0$ 与唯一的解 $(x,u):(-\varepsilon,\varepsilon)\to \mathbb{R}^{4}$。同一套定理的「对参数的光滑依赖」部分给出解对 $(p,v)$ 的光滑依赖。
+**齐次性。** 设 $\gamma_{v}$ 是初值为 $(p,v)$ 的解。定义 $\sigma(t) = \gamma_{v}(ct)$：由链式法则 $\dot\sigma(t) = c\dot\gamma_{v}(ct)$、$\ddot\sigma(t) = c^{2}\ddot\gamma_{v}(ct)$，代入方程得
+$$\ddot\sigma^{k}+\Gamma^{k}_{ij}(\sigma)\dot\sigma^{i}\dot\sigma^{j} = c^{2}\left(\ddot\gamma_{v}^{k}+\Gamma^{k}_{ij}(\gamma_{v})\dot\gamma_{v}^{i}\dot\gamma_{v}^{j}\right) = 0,$$
+且 $\sigma(0) = p$、$\dot\sigma(0) = cv$。由唯一性 $\sigma = \gamma_{cv}$，即 $\gamma_{cv}(t) = \gamma_{v}(ct)$。
+**是测地线且按弧长参数化。** 解出来的曲线满足 $\nabla_{\dot\gamma}\dot\gamma = 0$，正是测地线；又 $\frac{\mathrm{d}}{\mathrm{d}s}\langle \dot\gamma,\dot\gamma\rangle = 2\langle \nabla_{\dot\gamma}\dot\gamma,\dot\gamma\rangle = 0$，故速度恒定。$\blacksquare$
+
+#### 指数映射 + 测地线 ⟹ 高斯引理　`imp.gauss-lemma`
+
+**先证 $\langle \partial_{\rho},\partial_{\theta}\rangle = 0$。** 在测地极坐标下 $\gamma(\rho,\theta) = \exp_{p}(\rho\cos\theta\,e_{1}+\rho\sin\theta\,e_{2})$。对固定的 $\theta$，$\rho\mapsto\gamma(\rho,\theta)$ 是测地线且按弧长参数化，所以 $|\partial_{\rho}| = 1$ 且 $\nabla_{\partial_{\rho}}\partial_{\rho} = 0$；又 $\partial_{\rho},\partial_{\theta}$ 是坐标向量场，$[\partial_{\rho},\partial_{\theta}] = 0$。于是
+$$\partial_{\rho}\langle \partial_{\rho},\partial_{\theta}\rangle = \langle \nabla_{\partial_{\rho}}\partial_{\rho},\partial_{\theta}\rangle+\langle \partial_{\rho},\nabla_{\partial_{\rho}}\partial_{\theta}\rangle = 0+\langle \partial_{\rho},\nabla_{\partial_{\theta}}\partial_{\rho}\rangle = \frac{1}{2}\partial_{\theta}\langle \partial_{\rho},\partial_{\rho}\rangle = 0 .$$
+第一步用了测地线方程，第二步用了无挠（$[\partial_{\rho},\partial_{\theta}] = 0$），第三步用了 $|\partial_{\rho}| = 1$。所以这个内积沿 $\rho$ 是常数。
+**定常数。** $\rho\to0$ 时所有射线汇到同一点 $p$，$\partial_{\theta}\to0$（其长度 $O(\rho)$），故内积的极限为 $0$，常数只能是 $0$：$F\equiv0$，即 $I = \mathrm{d}\rho^{2}+G\,\mathrm{d}\theta^{2}$，其中 $E = |\partial_{\rho}|^{2} = 1$。
+**一般形式（任意方向的 $w$）。** 把 $w\in T_{v}(T_{p}S)\cong T_{p}S$ 分解成径向部分 $\lambda v$ 与正交部分 $w^{\perp}$。正交部分用上面同一套计算（把 $v,w^{\perp}$ 张成的平面当成 $\rho\theta$ 平面）得 $\langle (\mathrm{d}\exp_{p})_{v}(v),(\mathrm{d}\exp_{p})_{v}(w^{\perp})\rangle = 0$。径向部分：$t\mapsto\exp_{p}((1+t)v) = \gamma_{v}(1+t)$ 是单位速度测地线的重参数化，故 $(\mathrm{d}\exp_{p})_{v}(v) = \dot\gamma_{v}(1)$，长度是 $|v|$，于是 $(\mathrm{d}\exp_{p})_{v}(\lambda v) = \lambda\dot\gamma_{v}(1)$ 给出 $\lambda|v|^{2}$。两部分相加：
+$$\langle (\mathrm{d}\exp_{p})_{v}(v),(\mathrm{d}\exp_{p})_{v}(w)\rangle = \lambda|v|^{2}+0 = \langle v,\,\lambda v+w^{\perp}\rangle .$$
+这正是 Gauss 引理。
+**$\sqrt G$ 的展开。** $G = |\partial_{\theta}|^{2}$。$(-\rho,\theta+\pi)$ 与 $(\rho,\theta)$ 是同一点，故 $G$ 在 $\rho$ 方向上是偶的（$\theta$ 上差 $\pi$），Taylor 展开只有 $\rho$ 的偶次项：$G = \rho^{2}+c_{4}\rho^{4}+O(\rho^{6})$，即 $\sqrt G = \rho+O(\rho^{3})$。二次项系数为 $1$ 是因为 $(\mathrm{d}\exp_{p})_{0} = \mathrm{id}$：$\rho = 0$ 处的一阶行为就是欧氏的。$\blacksquare$
+
+#### 指数映射 ⟹ 法坐标的欧氏性　`imp.normal-coord`
+
+**$g_{ij}(p) = \delta_{ij}$** 就是 $(\mathrm{d}\exp_{p})_{0} = \mathrm{id}$ 在坐标下的写法：基向量 $e_{i}$ 被送到 $\partial_{i}|_{p}$。
+**$\Gamma^{k}_{ij}(p) = 0$。** $T_{p}S$ 中过原点的直线 $t\mapsto tv$ 在 $\exp_{p}$ 下是测地线，其中 $v = \cos\theta_{0}\,e_{1}+\sin\theta_{0}\,e_{2}$。它在法坐标下的分量就是 $x^{k}(t) = tv^{k}$，于是 $\dot x^{i} = v^{i}$、$\ddot x^{k} = 0$。代入测地线方程得
+$$\Gamma^{k}_{ij}(p)v^{i}v^{j} = 0,$$
+对一切方向 $v$ 都要成立。
+把 $v$ 换成 $v+w$ 再与 $v$、$w$ 两式相减，得 $\Gamma^{k}_{ij}(p)(v^{i}w^{j}+w^{i}v^{j}) = 0$；任取单位方向即得 $\Gamma^{k}_{ij}(p)+\Gamma^{k}_{ji}(p) = 0$，也就是说 $\Gamma^{k}_{ij}(p)$ 的对称部分为零。而 $\Gamma^{k}_{ij}$ 本来就关于 $i,j$ 对称（无挠），故 $\Gamma^{k}_{ij}(p) = 0$。
+**$\partial_{k}g_{ij}(p) = 0$。**
+$$\partial_{k}g_{ij} = \langle \nabla_{\partial_{k}}\partial_{i},\partial_{j}\rangle+\langle \partial_{i},\nabla_{\partial_{k}}\partial_{j}\rangle = \Gamma^{\ell}_{ki}g_{\ell j}+\Gamma^{\ell}_{kj}g_{i\ell},$$
+在 $p$ 处两个 $\Gamma$ 都为零，右端为零。$\blacksquare$
+
+#### 测地曲率 + 标架下的联络系数 ⟹ 刘维尔公式　`imp.liouville`
+
+**第一步：曲线在正交标架里的绝对导数。** 取 $e_{1} = \partial_{u}/\sqrt E$、$e_{2} = \partial_{v}/\sqrt G$，写 $\dot\gamma = \cos\theta\,e_{1}+\sin\theta\,e_{2}$（$\theta$ 就是与 $u$ 线的夹角），于是 $n\times\dot\gamma = -\sin\theta\,e_{1}+\cos\theta\,e_{2}$。由 $\nabla e_{1} = -\omega^{1}_{2}\otimes e_{2}$、$\nabla e_{2} = \omega^{1}_{2}\otimes e_{1}$ 得
+$$\nabla_{\dot\gamma}\dot\gamma = \left(-\sin\theta\,\frac{\mathrm{d}\theta}{\mathrm{d}s}-\cos\theta\,\omega^{1}_{2}(\dot\gamma)\right)e_{1}+\left(\cos\theta\,\frac{\mathrm{d}\theta}{\mathrm{d}s}-\sin\theta\,\omega^{1}_{2}(\dot\gamma)\right)e_{2}.$$
+与 $n\times\dot\gamma$ 作内积，两组交叉项抵消、平方项各给 $1$：
+$$k_{g} = \langle \nabla_{\dot\gamma}\dot\gamma,\,n\times\dot\gamma\rangle = \frac{\mathrm{d}\theta}{\mathrm{d}s}-\omega^{1}_{2}(\dot\gamma).$$
+**第二步：代入 $\omega^{1}_{2}$。** 由「标架下的联络系数」那一条，
+$$\omega^{1}_{2} = \frac{(\ln E)_{v}}{2\sqrt G}\,\omega^{1}-\frac{(\ln G)_{u}}{2\sqrt E}\,\omega^{2},$$
+而 $\omega^{1}(\dot\gamma) = \cos\theta$、$\omega^{2}(\dot\gamma) = \sin\theta$（因为 $\dot\gamma$ 在这组单位正交余标架下的分量就是 $\cos\theta,\sin\theta$）。所以
+$$\omega^{1}_{2}(\dot\gamma) = \frac{(\ln E)_{v}}{2\sqrt G}\cos\theta-\frac{(\ln G)_{u}}{2\sqrt E}\sin\theta ,$$
+代回第一步即得
+$$k_{g}(\gamma) = \frac{\mathrm{d}\theta}{\mathrm{d}s}-\frac{(\ln E)_{v}}{2\sqrt G}\cos\theta+\frac{(\ln G)_{u}}{2\sqrt E}\sin\theta .$$
+**第三步：测地线的判据。** 由 $\gamma$ 是测地线 $\iff k_{g}\equiv0$，上式为零就是测地线在这组坐标下的方程 —— 一个关于 $\theta$ 的一阶方程，比二阶的测地线方程组好用了整整一个量级。$\blacksquare$
+
+#### 测地曲率 ⟹ 曲率分解　`imp.curvature-split`
+
+**正交基。** $|\dot\gamma| = 1$ 给出 $\langle \ddot\gamma,\dot\gamma\rangle = \frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}s}|\dot\gamma|^{2} = 0$，所以 $\ddot\gamma$ 落在 $\dot\gamma$ 的正交补里。$n$ 是 $S$ 的单位法向因而 $n\perp\dot\gamma$；$n\times\dot\gamma$ 与两者都正交且是单位向量。于是 $\{n,\,n\times\dot\gamma\}$ 是 $T_{\gamma}S$ 中 $\dot\gamma^{\perp}$ 的一组单位正交基（这里 $\dot\gamma^{\perp}$ 指 $\mathbb{R}^{3}$ 中与 $\dot\gamma$ 正交的二维空间）。
+**分解。** 因此
+$$\ddot\gamma = \langle \ddot\gamma,n\rangle n+\langle \ddot\gamma,n\times\dot\gamma\rangle\,(n\times\dot\gamma) = \kappa_{n}n+k_{g}\,(n\times\dot\gamma).$$
+两个系数：第一个就是法曲率 $\kappa_{n} = \langle \ddot\gamma,n\rangle$，而 $\langle \ddot\gamma,n\rangle = -\langle \dot\gamma,\mathrm{d}n(\dot\gamma)\rangle = \mathrm{II}(\dot\gamma,\dot\gamma)$ 由 $\langle \dot\gamma,n\rangle\equiv0$ 求导得到；第二个正是测地曲率的定义。
+**取模长。** 两项正交，故
+$$\kappa^{2} = |\ddot\gamma|^{2} = \kappa_{n}^{2}+k_{g}^{2}. \quad\blacksquare$$
+
+#### 高斯曲率 + 黎曼曲率张量 + 标架下的联络系数 ⟹ 绝妙定理　`imp.egregium-frame`
+
+**思路：$K$ 的两条表达式，一条只含 $I$，一条是 $\det(h_{ij})$，两边必相等。**
+**① 联络形式由 $I$ 唯一确定。** 取局部单位正交余标架 $\omega^{1},\omega^{2}$（由 $I$ 定出，$g = (\omega^{1})^{2}+(\omega^{2})^{2}$）。第一结构方程要求 $\mathrm{d}\omega^{1} = \omega^{2}\wedge\omega^{1}_{2}$、$\mathrm{d}\omega^{2} = \omega^{1}\wedge\omega^{2}_{1}$，加上 $\omega^{1}_{2} = -\omega^{2}_{1}$。写 $\omega^{1}_{2} = a\,\omega^{1}+b\,\omega^{2}$：第一式定出 $a$，第二式定出 $b$（两式分别给出 $a$ 与 $b$ 的一个方程）。所以 $\omega^{1}_{2}$ 完全由 $\mathrm{d}\omega^{1},\mathrm{d}\omega^{2}$ 决定，也就是完全由 $I$ 决定 —— 这正是 Levi-Civita 联络的唯一性。
+**② $\mathrm{d}\omega^{1}_{2}$ 是内蕴可算的。** 由上一步，$\mathrm{d}\omega^{1}_{2}$ 只含 $I$ 的一、二阶导数。
+**③ 外在那一侧。** 在 $\mathbb{R}^{3}$ 的活动标架 $\{e_{1},e_{2},e_{3}\}$（$e_{3} = n$）里，第二结构方程给出 $\mathrm{d}\omega^{1}_{2} = \omega^{3}_{2}\wedge\omega^{1}_{3}$。写 $\omega^{i}_{3} = \sum_{j}h_{ij}\omega^{j}$（$h_{ij}$ 对称），把 $\omega^{3}_{2}\wedge\omega^{1}_{3} = -\omega^{2}_{3}\wedge\omega^{1}_{3}$ 展开：两个交叉项相消，对角项留下 $h_{11}h_{22}-h_{12}^{2}$，所以
+$$\mathrm{d}\omega^{1}_{2} = \omega^{3}_{2}\wedge\omega^{1}_{3} = \det(h_{ij})\,\omega^{1}\wedge\omega^{2}.$$
+而 $n$ 反号会让整个 $h_{ij}$ 反号、$\det$ 不变，所以 $\det(h_{ij}) = k_{1}k_{2}$ 是法向无关的外在量，正是高斯曲率：$\det(h_{ij}) = K$。于是
+$$K\,\omega^{1}\wedge\omega^{2} = \mathrm{d}\omega^{1}_{2},$$
+右端只依赖 $I$（第②步），所以 $K$ 只依赖 $I$。
+**④ 收尾。** 若 $\varphi$ 是局部等距，则 $I_{1} = \varphi^{*}I_{2}$，故两侧的 $\omega$ 都被拉回、$\mathrm{d}\omega^{1}_{2}$ 逐点相等，于是 $K_{1} = K_{2}\circ\varphi$。$\blacksquare$
+⚠️ 符号与约定：本包取 $\omega^{i}_{j} = \langle\nabla e_{j},e_{i}\rangle$。这时单位球面可以直接验算：取测地极坐标，$\omega^{1} = \mathrm{d}\rho$、$\omega^{2} = \sin\rho\,\mathrm{d}\theta$、$\omega^{1}_{2} = -\cos\rho\,\mathrm{d}\theta$，于是 $\mathrm{d}\omega^{1}_{2} = \sin\rho\,\mathrm{d}\rho\wedge\mathrm{d}\theta = +\omega^{1}\wedge\omega^{2}$，即 $K = 1$；同时 $\omega^{1}_{3} = \omega^{1}$、$\omega^{2}_{3} = \omega^{2}$，$h_{ij} = \delta_{ij}$、$\det = 1$ ✓。换另一支约定（$\omega^{i}_{j}$ 整体反号）时，证明里所有 $\omega^{i}_{j}$ 一起反号、$K$ 的符号随之统一反号，「$K$ 内蕴」这个结论不变。
+
+#### 高斯引理 + 高斯曲率 ⟹ 绝妙定理　`imp.egregium-polar`
+
+**目标：把 $K$ 写成只含唯一度量系数 $G$ 的表达式。**
+**① 测地极坐标把 $I$ 压到一个函数。** 由高斯引理，$I = \mathrm{d}\rho^{2}+G(\rho,\theta)\,\mathrm{d}\theta^{2}$，其中 $E\equiv1$、$F\equiv0$。于是所有 $\Gamma$ 都可以用 $G$ 显式写出：$\Gamma^{\theta}_{\rho\theta} = \frac{G_{\rho}}{2G}$、$\Gamma^{\rho}_{\theta\theta} = -\frac{G_{\rho}}{2}$，其余为零。
+**② 直接算唯一独立分量。** 代入 $R^{\ell}_{ijk}$ 的公式，取 $R_{1212}$（$1 = \rho$，$2 = \theta$）：
+$$R_{1212} = \frac{1}{2}\left(\partial_{\rho}\partial_{\rho}G\right)-g_{\theta\theta}\Gamma^{\theta}_{\rho\theta}\Gamma^{\theta}_{\theta\rho} = \frac{G_{\rho\rho}}{2}-\frac{G_{\rho}^{2}}{4G}.$$
+（$g_{11} = 1$，$\Gamma^{\rho}_{\rho\rho} = \Gamma^{\theta}_{\rho\rho} = 0$，两个 $\Gamma\Gamma$ 项在公式里是相减的。）再由 $K = R_{1221}/\det(g) = -R_{1212}/G$ 得
+$$K = -\frac{1}{G}\left(\frac{G_{\rho\rho}}{2}-\frac{G_{\rho}^{2}}{4G}\right) = -\frac{(\sqrt G)_{\rho\rho}}{\sqrt G}.$$
+最后一步是恒等式 $\frac{(\sqrt G)_{\rho\rho}}{\sqrt G} = \frac{G_{\rho\rho}}{2G}-\frac{G_{\rho}^{2}}{4G^{2}}$。
+**③ 结论。** 右端只有 $G$，而 $G$ 是 $I$ 的系数。所以 $K$ 由 $I$ 决定，绝妙定理成立。$\blacksquare$
+**④ 副产品：小圆的读数。** 把 $\sqrt G = \rho-\frac{K(p)}{6}\rho^{3}+O(\rho^{5})$（高斯引理那一条的展开）代回上式，两端逐阶相符 —— 这说明上面的公式是自洽的，也给出可操作的读数：$K(p)$ 就是「半径 $\rho$ 的测地圆比 $2\pi\rho$ 短多少」的三阶速率。
+
+#### 刘维尔公式 + 测地曲率 + 高斯曲率 ⟹ 高斯博内定理　`imp.gauss-bonnet`
+
+**第一步（局部版）：简单闭曲线围成的区域。** 设 $D$ 由分段光滑简单闭曲线 $\partial D$ 围成，取正交单位标架与联络形式 $\omega^{1}_{2}$。由刘维尔公式（或等价地 $k_{g} = \frac{\mathrm{d}\theta}{\mathrm{d}s}-\omega^{1}_{2}(\dot\gamma)$），
+$$\int_{\partial D}k_{g}\,\mathrm{d}s = \int_{\partial D}\mathrm{d}\theta-\int_{\partial D}\omega^{1}_{2} = 2\pi-\int_{D}\mathrm{d}\omega^{1}_{2}.$$
+第一项是切线转角定理：简单闭曲线的切方向恰好转一整圈，$\int\mathrm{d}\theta = 2\pi$（分段光滑也一样，顶点处的外角补齐即可）。第二项用斯托克斯公式。再由高斯方程 $\mathrm{d}\omega^{1}_{2} = K\,\omega^{1}\wedge\omega^{2} = K\,\mathrm{d}A$ 得
+$$\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi-\int_{D}K\,\mathrm{d}A,$$
+移项即得
+$$\int_{D}K\,\mathrm{d}A+\int_{\partial D}k_{g}\,\mathrm{d}s = 2\pi .$$
+**第二步：三角剖分求和。** 把 $M$ 剖分成 $F$ 个三角形，$E$ 条边（内部 $E_{i}$、边界 $E_{b}$），$V$ 个顶点（内部 $V_{i}$、边界 $V_{b}$）。对每个三角形 $T$ 用局部版。三角形是三边都是测地线段时最简单；一般情形把局部版写成带内角 $\beta_{j}$ 的形式：
+$$\int_{T}K\,\mathrm{d}A+\int_{\partial T}k_{g}\,\mathrm{d}s = \beta_{1}+\beta_{2}+\beta_{3}-\pi .$$
+（这就是第一步的局部版：把 $\int\mathrm{d}\theta = 2\pi$ 换成「沿三角形边界的转角 = $2\pi-$ 外角和 = 内角和 $-\pi$」。）
+把所有三角形相加：
+- **边的项**：每条内部边被两个三角形各走一次、方向相反，$\int k_{g}$ 相消；边界边只走一次，留下 $\int_{\partial M}k_{g}$；
+- **角的项**：内部顶点周围的内角合起来恰是 $2\pi$，每个内部顶点贡献 $2\pi$；边界顶点周围的内角合起来是 $\pi$，每个边界顶点贡献 $\pi$。
+于是
+$$\int_{M}K\,\mathrm{d}A+\int_{\partial M}k_{g}\,\mathrm{d}s = 2\pi V_{i}+\pi V_{b}-\pi F .$$
+**第三步：把右端认成 $2\pi\chi$。** 每个三角形有三条边，内部边被数两次、边界边被数一次：$3F = 2E_{i}+E_{b}$，而 $E_{b} = V_{b}$（边界的每条边对应一段）。于是
+$$E = E_{i}+E_{b} = \frac{3F-E_{b}}{2}+E_{b} = \frac{3F+V_{b}}{2},$$
+$$2\pi\left(V-E+F\right) = 2\pi\left(V_{i}+V_{b}-\frac{3F+V_{b}}{2}+F\right) = 2\pi V_{i}+\pi V_{b}-\pi F .$$
+两端相同，且 $V-E+F = \chi(M)$ 与剖分无关，故
+$$\int_{M}K\,\mathrm{d}A+\int_{\partial M}k_{g}\,\mathrm{d}s = 2\pi\chi(M).$$
+**第四步：闭曲面的特例与数值。** $\partial M = \emptyset$ 时边界项消失，得 $\int_{M}K\,\mathrm{d}A = 2\pi\chi(M)$。球面 $\chi = 2$ 给出 $\int K\,\mathrm{d}A = 4\pi$（$K = 1/R^{2}$、面积 $4\pi R^{2}$，相符）；环面 $\chi = 0$ 给出 $\int K = 0$（环面的外侧 $K > 0$、内侧 $K < 0$，正好抵消）；亏格 $g$ 的闭曲面 $\chi = 2-2g$ 给出 $4\pi(1-g)$。$\blacksquare$
+
 #### 符号测度 + 正集的封闭性 ⟹ Hahn 分解定理　`imp.hahn`
 *符号测度 + 正集的封闭性 $\implies$ Hahn 分解*
 
@@ -25953,7 +27243,7 @@ $$\lambda := \sum_j \lambda_j, \quad  f := \sum_j f_j$$
 
 > ⭐ ③ 那一步是全证明的枢纽：假如 $\lambda$ 还「留了一点 $\mu$质量」，就能拿它把 $f$ 往上顶一点、得出比上确界 $a$ 更大的值 —— 于是 $\lambda$ 只能全部跑到 $\mu$ 看不到的地方去，即 $\lambda \perp \mu$。
 
-#### 积分给出绝对连续测度 + 何时两个函数积分处处相同 ⟹ RN 导数的链式法则　`imp.rn-chain-rule`
+#### 积分给出绝对连续测度 + 何时两个函数积分处处相同 ⟹ Radon–Nikodym 导数的链式法则　`imp.rn-chain-rule`
 *换元公式与链式法则*
 
 设 $\nu \ll  \mu \ll  \lambda$。
@@ -26144,7 +27434,7 @@ $$| \frac{1}{m(E_r)} \int_{E_r} f - f(x) | \le \frac{1}{m(E_r)} \int_{E_r} |f(y)
 
 > 全部难度都被「把 L_f 的定义写成 $\int|f(y) - f(x)|$」吸收掉了 —— 这也解释了为什么定义要那么写。
 
-#### 可缩族的微分定理 + 正则 Borel 测度 + 覆盖引理 ⟹ RN 导数的点态公式　`imp.rn-pointwise`
+#### 可缩族的微分定理 + 正则 Borel 测度 + 覆盖引理 ⟹ Radon–Nikodym 导数的点态公式　`imp.rn-pointwise`
 *微分定理 + 正则性 $\implies RN$ 导数的点态公式*
 
 设 $d\nu = d\lambda + f\cdot dm$（$\lambda \perp  m$），$\nu$ 正则。
@@ -26181,7 +27471,7 @@ $$\lambda(E_r) / m(E_r) \le \lambda(B(r,x)) / m(E_r) \le (1/\alpha)\cdot\lambda(
 
 > ⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 $=$ 质量/体积」的严格版本。
 
-#### 定义引用：「RN 导数与 Lebesgue 分解」→ L¹(ν) 与全变差　`def-link.totalvariation-l1`
+#### 定义引用：「Radon–Nikodym 导数与 Lebesgue 分解」→ L¹(ν) 与全变差　`def-link.totalvariation-l1`
 
 $d\nu /d|\nu |$ 就是一个 RN 导数。
 
@@ -26217,19 +27507,19 @@ $L^{1}(\nu )$ 的定义直接搬用 $L^{1}(|\nu |)$。
 
 结论只在 Lebesgue 点上成立。
 
-#### 定义引用：「正则 Borel 测度」→ RN 导数的点态公式　`def-link.regular-pointwise`
+#### 定义引用：「正则 Borel 测度」→ Radon–Nikodym 导数的点态公式　`def-link.regular-pointwise`
 
 定理的第一个前提就是 $\nu$ 正则。
 
-#### 定义引用：「RN 导数与 Lebesgue 分解」→ RN 导数的点态公式　`def-link.rn-pointwise`
+#### 定义引用：「Radon–Nikodym 导数与 Lebesgue 分解」→ Radon–Nikodym 导数的点态公式　`def-link.rn-pointwise`
 
 结论就是：RN 导数等于比值极限。
 
-#### 定义引用：「局部可积」→ RN 导数的点态公式　`def-link.locally-pointwise`
+#### 定义引用：「局部可积」→ Radon–Nikodym 导数的点态公式　`def-link.locally-pointwise`
 
 证明中间要推出 $f \in L^{1}_{l}oc$。
 
-#### T_F ± F 递增 ⟹ BV 的 Jordan 分解　`imp.bv-jordan`
+#### T_F ± F 递增 ⟹ 有界变差函数的 Jordan 分解　`imp.bv-jordan`
 *$T_F \pm F$ 递增 $\implies BV$ 的 Jordan 分解*
 
 **(b) 的 $(\Longleftarrow )$ 方向**：若 $F = G - H$（$G$、$H$ 有界递增），则对任意分划
@@ -26252,7 +27542,7 @@ $$G - H = (1/2)(T_F + F) - (1/2)(T_F - F) = F$$
 
 > ⭐ 这叫「函数版的 Jordan 分解」，与符号测度的 $\nu = \nu ^{+} - \nu ^{-}$ 完全平行 —— 事实上两者通过「测度 $\leftrightarrow NBV$」的对应是同一件事。
 
-#### BV 的 Jordan 分解 + 单调函数几乎处处可导 ⟹ BV 函数的正则性　`imp.bv-regularity`
+#### 有界变差函数的 Jordan 分解 + 单调函数几乎处处可导 ⟹ 有界变差函数的正则性　`imp.bv-regularity`
 *化归到递增函数 $\implies BV$ 的正则性*
 
 由**Jordan 分解**，只需对**有界递增**函数证明这三条 —— 差的性质自动继承。
@@ -26269,7 +27559,7 @@ $$F(x-) = \sup_{y < x} F(y), \quad  F(x+) = \inf_{y > x} F(y)$$
 
 $>$ ⭐ 整个证明的模式很典型：**先证明「递增」这个好情形，再用 Jordan 分解把一般情形搬过去**。
 
-#### 全变差的 NBV 性质 + BV 的 Jordan 分解 ⟹ 测度 ↔ NBV 的一一对应　`imp.borel-nbv`
+#### 全变差的规范有界变差性质 + 有界变差函数的 Jordan 分解 ⟹ 测度与规范有界变差函数的一一对应　`imp.borel-nbv`
 *NBV 的性质 $\implies$ 测度与函数的一一对应*
 
 **(1) 测度 $\implies$ 函数。** 复测度拆成四个正测度 $\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$。令
@@ -26290,7 +27580,7 @@ $$\mu_{T_F}((-\infty, x]) = T_F(x) = \sup\{ \sum|F(x_j) - F(x_{j-1})| \} = |\mu_
 
 （中间那个等号是 $|\mu |$ 的全变差定义 + 测度的可数可加性。）由 $(-\infty , x]$ 生成 $\mathfrak{B}_\mathbb{R}$，两个测度相等。∎
 
-#### NBV 函数的导数与测度的关系 + 绝对连续的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续　`imp.ac-measure`
+#### 规范有界变差函数的导数与测度的关系 + 绝对连续的 ε–δ 刻画 ⟹ 函数绝对连续 ⟺ 测度绝对连续　`imp.ac-measure`
 *$\mu_F \ll m$ 的 $\varepsilon$–$\delta$ 刻画 $\implies$ 函数绝对连续 $\iff$ 测度绝对连续*
 
 **$(\Longleftarrow )$** 设 $\mu_F \ll  m$。应用测度版绝对连续的 $\varepsilon$–$\delta$ 刻画（注意 $\mu _F$ 有限，符合前提）：给定 $\varepsilon > 0$ 取 $\delta > 0$ 使
@@ -26309,7 +27599,7 @@ $$|\mu_F(E)| = \lim_j |\mu_F(U_j)| \le \varepsilon$$
 
 由 $\varepsilon$ 任意，$\mu_F(E) = 0$。故 $\mu_F \ll  m$。∎
 
-#### AC ⊆ BV + 函数绝对连续 ⟺ 测度绝对连续 + NBV 函数的导数与测度的关系 ⟹ 微积分基本定理（Lebesgue 版）　`imp.ftc`
+#### 绝对连续蕴含有界变差 + 函数绝对连续 ⟺ 测度绝对连续 + 规范有界变差函数的导数与测度的关系 ⟹ 微积分基本定理（Lebesgue 版）　`imp.ftc`
 *$(a) \iff (b) \iff (c)$：微积分基本定理的三条等价*
 
 **$(a) \implies (b)$。** 设 $F$ 绝对连续。由**$AC \subseteq BV$**，$F \in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\iff \mu _F \ll m$**，写 Lebesgue 分解时奇异部分 $\lambda = 0$，于是 $d\mu_F = f\cdot dm$，即
@@ -26326,31 +27616,31 @@ $>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**C
 
 > 这条定理是整个「有界变差 / 绝对连续」星团的收官：它把函数侧、积分侧、导数侧三个刻画焊在一起。
 
-#### 定义引用：「有界变差 BV」→ BV 的例子与基本性质　`def-link.bv-variation`
+#### 定义引用：「有界变差函数」→ 有界变差函数的例子与基本性质　`def-link.bv-variation`
 
 几个例子都是在算 T_F。
 
-#### 定义引用：「有界变差 BV」→ T_F ± F 递增　`def-link.bv-jordan-lemma`
+#### 定义引用：「有界变差函数」→ T_F ± F 递增　`def-link.bv-jordan-lemma`
 
 引理里的 T_F 就是全变差函数。
 
-#### 定义引用：「有界变差 BV」→ BV 的 Jordan 分解　`def-link.bv-jordan-thm`
+#### 定义引用：「有界变差函数」→ 有界变差函数的 Jordan 分解　`def-link.bv-jordan-thm`
 
 定理的两边都是 BV 这个类。
 
-#### 定义引用：「有界变差 BV」→ BV 函数的正则性　`def-link.bv-regularity-thm`
+#### 定义引用：「有界变差函数」→ 有界变差函数的正则性　`def-link.bv-regularity-thm`
 
 正则性命题是在 BV 上说的。
 
-#### 定义引用：「NBV」→ 全变差的 NBV 性质　`def-link.nbv-lemma`
+#### 定义引用：「规范有界变差函数」→ 全变差的规范有界变差性质　`def-link.nbv-lemma`
 
 引理要为 NBV 服务（T_F 也要落在 NBV 里）。
 
-#### 定义引用：「有界变差 BV」→ 测度 ↔ NBV 的一一对应　`def-link.bv-nbv-thm`
+#### 定义引用：「有界变差函数」→ 测度与规范有界变差函数的一一对应　`def-link.bv-nbv-thm`
 
 对应定理的左边整块都是 BV 的变体。
 
-#### 定义引用：「测度」→ 测度 ↔ NBV 的一一对应　`def-link.measure-nbv-thm`
+#### 定义引用：「测度」→ 测度与规范有界变差函数的一一对应　`def-link.measure-nbv-thm`
 
 另一边是 $\mathbb{R}$ 上的复 Borel 测度。
 
@@ -26370,7 +27660,7 @@ $>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**C
 
 (b)(c) 里的 $f$、$F'$ 都要求在 $L^{1}$ 里。
 
-#### 定义引用：「NBV」→ 积出来的函数是 AC · NBV　`def-link.nbv-ftc`
+#### 定义引用：「规范有界变差函数」→ 积分得到的函数绝对连续且规范有界变差　`def-link.nbv-ftc`
 
 推论同时落在 NBV 与 AC 的交里。
 
@@ -26478,7 +27768,7 @@ $$\|g\|_q \le \lim_n \|g_n\|_q = \lim_n \int f_n g_n \le \lim_n \int |f_n g| = \
 
 **Step 3：$q = \infty$。** 对 $\varepsilon > 0$ 令 $A = \{|g(x)| \ge M_\infty(g) + \varepsilon\}$。若 $\mu(A) > 0$，由半有限性或 $A \subseteq \{g \ne 0\}$ 的 $\sigma$有限性取 $B \subseteq A$、$0 < \mu(B) < \infty$，令 $f = \mu(B)^{-1} \chi_B \operatorname{sgn} g$，则 $\|f\|_1 = 1$ 而 $\int fg \ge M_\infty(g) + \varepsilon$ —— 矛盾。故 $\mu(A) = 0$，即 $\|g\|_\infty \le M_\infty(g)$；反方向由 Hölder。∎
 
-#### 有界 ⟹ g ∈ L^q + Lebesgue–Radon–Nikodym 定理 + ‖g‖_q = ‖φ_g‖ ⟹ (L^p)* ≅ L^q　`imp.riesz-lp`
+#### 有界 ⟹ g ∈ L^q + Lebesgue–Radon–Nikodym 定理 + 对偶等距：范数相等 ⟹ Riesz 表示定理　`imp.riesz-lp`
 *把泛函变成测度 $\implies$ $(L^p)^* \cong L^q$*
 
 设 $1 < p < \infty$、$\Phi \in (L^p)^*$。
@@ -26541,11 +27831,11 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 整条定理都是在处理 $\|\cdot \|_\infty$。
 
-#### 定义引用：「对偶配对 φ_g」→ ‖g‖_q = ‖φ_g‖　`def-link.duality-holder`
+#### 定义引用：「对偶配对 φ_g」→ 对偶等距：范数相等　`def-link.duality-holder`
 
 命题算的就是 $\varphi _g$ 的算子范数。
 
-#### 定义引用：「共轭指数」→ ‖g‖_q = ‖φ_g‖　`def-link.conjugate-duality`
+#### 定义引用：「共轭指数」→ 对偶等距：范数相等　`def-link.conjugate-duality`
 
 前提是 $p$、$q$ 共轭。
 
@@ -26553,11 +27843,11 @@ Minkowski 就是 L^p 范数的三角不等式。
 
 这条命题说的正是「配对 $\int fg$ 有界」把 $g$ 逼进 L^q。
 
-#### 定义引用：「共轭指数」→ (L^p)* ≅ L^q　`def-link.conjugate-riesz`
+#### 定义引用：「共轭指数」→ Riesz 表示定理　`def-link.conjugate-riesz`
 
 结论那句话里「$q$ 是共轭指数」。
 
-#### 定义引用：「对偶配对 φ_g」→ (L^p)* ≅ L^q　`def-link.duality-riesz`
+#### 定义引用：「对偶配对 φ_g」→ Riesz 表示定理　`def-link.duality-riesz`
 
 定理说 $g \mapsto \varphi _g$ 是等距同构。
 
@@ -26661,7 +27951,7 @@ $\mu(E) = 0$ 里的 $\mu$ 是测度；a.e. 是测度空间上的说法。
 
 绝对连续的定义里，「任意有限个两两不交的区间」说的就是区间。
 
-#### 定义引用：「导数」→ 有界变差 BV　`dep.derivative-bv`
+#### 定义引用：「导数」→ 有界变差函数　`dep.derivative-bv`
 
 全变差与 $F'$ 都在讨论函数的**逐点**行为。
 
@@ -27608,7 +28898,7 @@ $$\bigl(\pi_{g} \circ \widehat{f}\bigr)\bigl(e_{X}(x)\bigr) = (g \circ f)(x) = \
 
 > 这一步是后面 Stone 对偶与 $\mathrm{Cond}$ 里「连通分量可控」的来源：在 $\mathbf{CHaus}$ 里，连通分量由**闭开集**这个可以自由摆弄的族描述出来。
 
-#### 全不连通与 Stone 空间 + 投射有限空间 + Stone 空间是 CHaus 的反射子范畴 + 基与子基 ⟹ Stone ⟺ 投射有限　`imp.stone-profinite`
+#### 全不连通与 Stone 空间 + 投射有限空间 + Stone 空间是紧 Hausdorff 空间的反射子范畴 + 基与子基 ⟹ Stone ⟺ 投射有限　`imp.stone-profinite`
 *Stone 空间 $\iff$ 投射有限空间*
 
 **（$\Longleftarrow$）** 投射有限空间是 Stone 空间的有向极限。Stone 空间对极限封闭（Stone 空间是反射子范畴的推论），而有限离散空间显然是 Stone 空间，所以极限仍是 Stone。∎
@@ -27820,7 +29110,7 @@ $$F(X) \;\cong\; \varprojlim_{X' \to X \in R} F(X')$$
 
 > 证明短得出奇 —— 因为**标准拓扑对覆盖筛的规定，本来就是「$X$ 是这些 $X'$ 的余极限」**。所以「层」在拓扑斯上等于「把余极限送回极限」，几何与范畴在这里合成一句话。
 
-#### CHaus 是预拓扑斯 + 自由表示 + Giraud 定理 ⟹ Cond 是拓扑斯　`imp.cond-topos`
+#### 紧 Hausdorff 空间构成预拓扑斯 + 自由表示 + Giraud 定理 ⟹ Cond 是拓扑斯　`imp.cond-topos`
 *$\mathbf{CHaus}$ 是预拓扑斯 $\implies$ $\mathrm{Cond}$ 是拓扑斯*
 
 用 Giraud 定理的第四条：**造出「预层范畴 + 正合反射」就够了**。
@@ -27835,7 +29125,7 @@ $$F(X) \;\cong\; \varprojlim_{X' \to X \in R} F(X')$$
 
 > 这就是整段路的终点：**从「紧 Hausdorff 空间」这一件拓扑材料出发，造出了一个拓扑斯。**
 
-#### FCHaus 上层的判据 + FCHaus 上的预拓扑 + 自由表示 ⟹ Cond 即 FCHaus 上的层　`imp.cond-fchaus`
+#### 有限紧 Hausdorff 空间上层的判据 + 有限紧 Hausdorff 空间上的预拓扑 + 自由表示 ⟹ 凝聚态集就是有限紧 Hausdorff 空间上的层　`imp.cond-fchaus`
 *$\mathrm{Cond} \simeq \widehat{\mathbf{FCHaus}}$*
 
 **（限制）** 设 $X$ 是 $\mathbf{CHaus}$ 上的层，把它限制到 $\mathbf{FCHaus}$ 上。$\mathbf{FCHaus}$ 上的覆盖更少（只有有限不交并），层的条件只会更容易满足，所以限制仍是层。∎
@@ -28082,35 +29372,35 @@ $\mathbb{R}$ 与 $\mathbb{R}^{\mathrm{disc}}$ 都是拓扑阿贝尔群，$Q$ 是
 
 系数 $N$ 与 Ext 都在凝聚态阿贝尔群里。
 
-#### 定义引用：「投射 / 内射对象」→ Stonean 上 Z[S] 的 RHom　`def-link.zs-proj`
+#### 定义引用：「投射 / 内射对象」→ Stonean 空间上自由模的导出 Hom　`def-link.zs-proj`
 
 证明的关键是 $\mathbb{Z}[S]$ 在 Stonean 上投射。
 
-#### 定义引用：「凝聚态阿贝尔群」→ Stonean 上 Z[S] 的 RHom　`def-link.zs-cond`
+#### 定义引用：「凝聚态阿贝尔群」→ Stonean 空间上自由模的导出 Hom　`def-link.zs-cond`
 
 $N$ 与 $\operatorname{RHom}$ 都在凝聚态阿贝尔群里。
 
-#### 定义引用：「投射 / 内射对象」→ 离散空间上 Z[E] 的 RHom　`def-link.ze-proj`
+#### 定义引用：「投射 / 内射对象」→ 离散空间上自由模的导出 Hom　`def-link.ze-proj`
 
 自由对象 $\mathbb{Z}[E]$ 是投射的（投射对象的直和仍投射）。
 
-#### 定义引用：「凝聚态阿贝尔群」→ 离散空间上 Z[E] 的 RHom　`def-link.ze-cond`
+#### 定义引用：「凝聚态阿贝尔群」→ 离散空间上自由模的导出 Hom　`def-link.ze-cond`
 
 同上，$N$ 是凝聚态阿贝尔群。
 
-#### 定义引用：「内 Hom」→ 离散群的 RHom 是常层　`def-link.drhom-internal`
+#### 定义引用：「内 Hom」→ 离散群的导出 Hom 是常层　`def-link.drhom-internal`
 
 内部的 $\operatorname{RHom}$ 就是内部 Hom 的导出版本。
 
-#### 定义引用：「凝聚态阿贝尔群」→ 离散群的 RHom 是常层　`def-link.drhom-cond`
+#### 定义引用：「凝聚态阿贝尔群」→ 离散群的导出 Hom 是常层　`def-link.drhom-cond`
 
 两个 RHom 分别算在凝聚态阿贝尔群与抽象阿贝尔群里。
 
-#### 定义引用：「内 Hom」→ 张量与 RHom 的配对　`def-link.trnm-internal`
+#### 定义引用：「内 Hom」→ 张量与导出 Hom 的配对　`def-link.trnm-internal`
 
 映射的两端都由内部 Hom（的导出版本）写成。
 
-#### 定义引用：「阿贝尔层的张量积」→ 张量与 RHom 的配对　`def-link.trnm-tensor`
+#### 定义引用：「阿贝尔层的张量积」→ 张量与导出 Hom 的配对　`def-link.trnm-tensor`
 
 映射左边用到拓扑斯上阿贝尔层的张量积（导出版本）。
 
@@ -29017,7 +30307,7 @@ ind-可表示用的就是 Ind-对象。
 
 一批常用伴随。
 
-#### 定义引用：「伴随函子」→ Currying　`def-link.currying-adjoint`
+#### 定义引用：「伴随函子」→ 函数的柯里化　`def-link.currying-adjoint`
 
 Currying 就是一对伴随。
 
@@ -29178,11 +30468,11 @@ Hartogs 数取的是「最小的那种**序数**」，而序数就是传递的�
 
 命题谈的对象就是两个简单函数 $\varphi$、$\psi$。
 
-#### 定义引用：「L⁺」→ Fatou 的推论　`def-link.lplus-fatou-cor`
+#### 定义引用：「非负可测函数类」→ Fatou 的推论　`def-link.lplus-fatou-cor`
 
 $\{f_n\} \subseteq L^+$、$f \in L^+$：整条推论都活在**非负可测函数**里。
 
-#### 定义引用：「L⁺」→ 积分有限的后果　`def-link.lplus-finite-integral`
+#### 定义引用：「非负可测函数类」→ 积分有限的后果　`def-link.lplus-finite-integral`
 
 前提是 $f \in L^+$ 且 $\int f < \infty$。
 
@@ -29222,7 +30512,7 @@ $\int f \, d\mu$ 这个记号走的是**复值函数的积分**。
 
 这条就是「积分关于测度**绝对连续**」的 $\varepsilon$–$\delta$ 形式。
 
-#### 定义引用：「RN 导数与 Lebesgue 分解」→ 互为绝对连续时导数互逆　`def-link.rn-derivative-inverse`
+#### 定义引用：「Radon–Nikodym 导数与 Lebesgue 分解」→ 互为绝对连续时导数互逆　`def-link.rn-derivative-inverse`
 
 两边的 $d\mu/d\lambda$ 与 $d\lambda/d\mu$ 都是 **RN 导数**。
 
@@ -29250,27 +30540,27 @@ $m(U)$、$\sum m(B_j)$ 里的 $m$ 是**测度**（Lebesgue 测度）。
 
 $\int_a^b F'$ 里 $F$ 递增所以 $F' \ge 0$，走的是**非负函数的积分**。
 
-#### 定义引用：「NBV」→ NBV 函数的导数与测度的关系　`def-link.nbv-derivative`
+#### 定义引用：「规范有界变差函数」→ 规范有界变差函数的导数与测度的关系　`def-link.nbv-derivative`
 
 前提就是 $F \in NBV$。
 
-#### 定义引用：「相互奇异」→ NBV 函数的导数与测度的关系　`def-link.mutually-singular-nbv-derivative`
+#### 定义引用：「相互奇异」→ 规范有界变差函数的导数与测度的关系　`def-link.mutually-singular-nbv-derivative`
 
 结论第一条 $\mu_F \perp m$ 用的是**相互奇异**。
 
-#### 定义引用：「绝对连续」→ NBV 函数的导数与测度的关系　`def-link.ac-nbv-derivative`
+#### 定义引用：「绝对连续」→ 规范有界变差函数的导数与测度的关系　`def-link.ac-nbv-derivative`
 
 结论第二条 $\mu_F \ll m$ 用的是**绝对连续**。
 
-#### 定义引用：「RN 导数与 Lebesgue 分解」→ NBV 函数的导数与测度的关系　`def-link.rn-derivative-nbv-derivative`
+#### 定义引用：「Radon–Nikodym 导数与 Lebesgue 分解」→ 规范有界变差函数的导数与测度的关系　`def-link.rn-derivative-nbv-derivative`
 
 $F(x) = \int_{-\infty}^{x} F'$ 等于说 $F' $ 就是那个 **RN 导数** $d\mu_F/dm$。
 
-#### 定义引用：「绝对连续函数」→ AC ⊆ BV　`def-link.ac-function-subset-bv`
+#### 定义引用：「绝对连续函数」→ 绝对连续蕴含有界变差　`def-link.ac-function-subset-bv`
 
 等式的左边就是**绝对连续函数**全体 $AC([a, b])$。
 
-#### 定义引用：「有界变差 BV」→ AC ⊆ BV　`def-link.bv-subset-bv`
+#### 定义引用：「有界变差函数」→ 绝对连续蕴含有界变差　`def-link.bv-subset-bv`
 
 等式的右边是**有界变差**函数全体 $BV([a, b])$。
 
@@ -29290,15 +30580,15 @@ $F(x) = \int_{-\infty}^{x} F'$ 等于说 $F' $ 就是那个 **RN 导数** $d\mu_
 
 $L^q \subseteq L^p + L^r$ 里的三个空间都是 $L^p$ 型的。
 
-#### 定义引用：「L^p 范数」→ L^p ∩ L^r ⊆ L^q　`def-link.lp-norm-interpolation`
+#### 定义引用：「L^p 范数」→ L^p 与 L^r 的交包含于 L^q　`def-link.lp-norm-interpolation`
 
 插值不等式 $\|f\|_q \le \|f\|_p^{\lambda} \|f\|_r^{1-\lambda}$ 全是 $\|\cdot\|_p$ 型的量。
 
-#### 定义引用：「本性上界与 L^∞」→ L^p ∩ L^r ⊆ L^q　`def-link.essential-sup-interpolation`
+#### 定义引用：「本性上界与 L^∞」→ L^p 与 L^r 的交包含于 L^q　`def-link.essential-sup-interpolation`
 
 $r = \infty$ 那一端要把 $\|\cdot\|_r$ 读成**本性上界**。
 
-#### 定义引用：「L^p 范数」→ ℓ^p ⊆ ℓ^q　`def-link.lp-norm-ell-p`
+#### 定义引用：「L^p 范数」→ ℓ^p 包含于 ℓ^q　`def-link.lp-norm-ell-p`
 
 $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
@@ -29334,7 +30624,7 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 同一条命题对**复测度**也适用（全变差对两者定义一致）。
 
-#### 定义引用：「几乎处处」→ MCT（a.e. 版本）　`def-link.ae-mct-ae`
+#### 定义引用：「几乎处处」→ 单调收敛定理（几乎处处版本）　`def-link.ae-mct-ae`
 
 前提放宽成「对**几乎处处**的 $x$ 有 $f_n \uparrow f$」—— 这就是这条推论与 MCT 的唯一区别。
 
@@ -29370,11 +30660,11 @@ $\ell^p$ 就是计数测度下的 $L^p$，范数还是 $\|\cdot\|_p$。
 
 **(a)** 里出现的 $f \in L^1$ 就是**可积**。
 
-#### 定义引用：「可积 / L¹」→ NBV 函数的导数与测度的关系　`def-link.integrable-nbv-derivative`
+#### 定义引用：「可积 / L¹」→ 规范有界变差函数的导数与测度的关系　`def-link.integrable-nbv-derivative`
 
 结论 $F' \in L^1(m)$ 说的是**可积**。
 
-#### 定义引用：「可积 / L¹」→ 积出来的函数是 AC · NBV　`def-link.integrable-integral-is-ac-nbv`
+#### 定义引用：「可积 / L¹」→ 积分得到的函数绝对连续且规范有界变差　`def-link.integrable-integral-is-ac-nbv`
 
 **(1)** 的前提 $f \in L^1(m)$ 是**可积**。
 
@@ -29582,7 +30872,7 @@ $e_{K}$ 是单射那一步用的是**紧 Hausdorff 空间是 $T_{3.5}$ 的**。
 
 命题谈的是**极端不连通**（以及由它推出的全不连通）。
 
-#### 定义引用：「全不连通与 Stone 空间」→ Stone 空间是 CHaus 的反射子范畴　`def-dep.stone-reflective`
+#### 定义引用：「全不连通与 Stone 空间」→ Stone 空间是紧 Hausdorff 空间的反射子范畴　`def-dep.stone-reflective`
 
 「Stone 空间」是**全不连通的紧 Hausdorff 空间**。
 
@@ -29734,19 +31024,19 @@ Giraud 定理给出「是**拓扑斯**」的四个等价说法。
 
 定理说的是 $\mathrm{Cond}$（**凝聚态集**的范畴）是拓扑斯。
 
-#### 定义引用：「自由紧 Hausdorff 空间」→ FCHaus 上的预拓扑　`def-dep.free-pretopology`
+#### 定义引用：「自由紧 Hausdorff 空间」→ 有限紧 Hausdorff 空间上的预拓扑　`def-dep.free-pretopology`
 
 预拓扑搭在**自由紧 Hausdorff 空间**上。
 
-#### 定义引用：「投射 / 内射对象」→ FCHaus 上的预拓扑　`def-dep.projective-pretopology`
+#### 定义引用：「投射 / 内射对象」→ 有限紧 Hausdorff 空间上的预拓扑　`def-dep.projective-pretopology`
 
 「满射有截面」说的是这些对象**投射**。
 
-#### 定义引用：「自由紧 Hausdorff 空间」→ FCHaus 上层的判据　`def-dep.free-sheaf`
+#### 定义引用：「自由紧 Hausdorff 空间」→ 有限紧 Hausdorff 空间上层的判据　`def-dep.free-sheaf`
 
 命题谈的是**自由紧 Hausdorff 空间**上的层。
 
-#### 定义引用：「层」→ Cond 即 FCHaus 上的层　`def-dep.sheaf-cond-equiv`
+#### 定义引用：「层」→ 凝聚态集就是有限紧 Hausdorff 空间上的层　`def-dep.sheaf-cond-equiv`
 
 定理说两边的**层**范畴是同一个。
 
@@ -29786,7 +31076,7 @@ Giraud 定理给出「是**拓扑斯**」的四个等价说法。
 
 结论说它保**所有极限与余极限**。
 
-#### 定义引用：「凝聚态阿贝尔群」→ CondAb 满足 AB6 与 AB4*　`def-dep.condab-ab`
+#### 定义引用：「凝聚态阿贝尔群」→ 凝聚态阿贝尔群满足 AB6 与 AB4*　`def-dep.condab-ab`
 
 定理说的是 $\mathrm{CondAb}$（**凝聚态阿贝尔群**）满足 AB6 与 AB4*。
 
@@ -29850,11 +31140,11 @@ Giraud 定理给出「是**拓扑斯**」的四个等价说法。
 
 「$\operatorname{Hom}(-, I)$ **正合**」说的是这个函子保正合列 —— 与伴随性相关的那条刻画。
 
-#### 定义引用：「Grothendieck 范畴」→ CondAb 满足 AB6 与 AB4*　`def-dep.grothendieck-condab`
+#### 定义引用：「Grothendieck 范畴」→ 凝聚态阿贝尔群满足 AB6 与 AB4*　`def-dep.grothendieck-condab`
 
 定理说的是 $\mathrm{CondAb}$ **是** Grothendieck 范畴，并且额外满足两条。
 
-#### 定义引用：「Grothendieck 的 AB 公理」→ CondAb 满足 AB6 与 AB4*　`def-dep.ab-condab`
+#### 定义引用：「Grothendieck 的 AB 公理」→ 凝聚态阿贝尔群满足 AB6 与 AB4*　`def-dep.ab-condab`
 
 AB6 与 AB4\* 的含义见「Grothendieck 的 AB 公理」那条。
 
@@ -29902,7 +31192,7 @@ $\mathcal{T}(\mathbf{Ab})$ 就是 $\mathcal{T}$ 上的**阿贝尔层**范畴。
 
 对角 $\Delta_{X}$ 住在**乘积** $X \times X$ 里。
 
-#### 定义引用：「紧生成空间」→ CGWH 是 CG 的反射子范畴　`def-dep.cgwh-cg`
+#### 定义引用：「紧生成空间」→ 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`def-dep.cgwh-cg`
 
 $\mathrm{CGWH}$ 是在**紧生成**之上再加弱 Hausdorff。
 
@@ -30058,11 +31348,11 @@ $\mu_F$ 是 $\mathbb{R}$ 上的 **Borel 测度**：定义域是 $\mathfrak{B}_\m
 
 可测空间 $(X, \mathcal{M})$ 就是「集合 $+$ $\sigma$ 代数」；可测性说的是原像落在 $\mathcal{M}$ 里。
 
-#### 定义引用：「可测函数」→ L⁺　`def-dep.measurable-fn-lplus`
+#### 定义引用：「可测函数」→ 非负可测函数类　`def-dep.measurable-fn-lplus`
 
 $L^+$ 是「取值在 $[0, +\infty]$ 里的**可测**函数」全体。
 
-#### 定义引用：「测度」→ L⁺　`def-dep.measure-lplus`
+#### 定义引用：「测度」→ 非负可测函数类　`def-dep.measure-lplus`
 
 $L^+$ 要**先固定一个测度空间** $(X, \mathcal{M}, \mu)$ 才谈得上。
 
@@ -30070,7 +31360,7 @@ $L^+$ 要**先固定一个测度空间** $(X, \mathcal{M}, \mu)$ 才谈得上。
 
 加权和 $\sum_j a_j \, \mu(E_j)$ 里的 $\mu$ 是**测度**。
 
-#### 定义引用：「L⁺」→ 非负函数的积分　`def-dep.lplus-integral-nonneg`
+#### 定义引用：「非负可测函数类」→ 非负函数的积分　`def-dep.lplus-integral-nonneg`
 
 定义写成 $\int f := \sup \{ \int \varphi : 0 \le \varphi \le f \}$，其中 $f \in L^+$。
 
@@ -30142,15 +31432,15 @@ $\nu \ll \mu$ 的定义是「每个 $\mu$ **零集**都是 $\nu$ 零集」。
 
 这里的 $\nu$ 是一个**符号测度**。
 
-#### 定义引用：「绝对连续」→ RN 导数与 Lebesgue 分解　`def-dep.ac-rn-derivative`
+#### 定义引用：「绝对连续」→ Radon–Nikodym 导数与 Lebesgue 分解　`def-dep.ac-rn-derivative`
 
 RN 导数 $d\nu/d\mu$ 就是在 $\nu \ll \mu$ 的前提下取到的那个 $f$。
 
-#### 定义引用：「相互奇异」→ RN 导数与 Lebesgue 分解　`def-dep.mutually-singular-rn-derivative`
+#### 定义引用：「相互奇异」→ Radon–Nikodym 导数与 Lebesgue 分解　`def-dep.mutually-singular-rn-derivative`
 
 Lebesgue 分解 $\nu = \lambda + \rho$ 里的奇异部分要求 $\lambda \perp \mu$。
 
-#### 定义引用：「测度」→ RN 导数与 Lebesgue 分解　`def-dep.measure-rn-derivative`
+#### 定义引用：「测度」→ Radon–Nikodym 导数与 Lebesgue 分解　`def-dep.measure-rn-derivative`
 
 定理要求 $\nu \ll \mu$ 且两者都 $\sigma$ 有限——$\sigma$ 有限性是关于**测度**的。
 
@@ -30202,11 +31492,11 @@ Lebesgue 分解 $\nu = \lambda + \rho$ 里的奇异部分要求 $\lambda \perp \
 
 共轭指数里 $p = \infty$ 要配 $q = 1$，约定 $1/\infty = 0$ —— 用到了**扩充实数**。
 
-#### 定义引用：「有界变差 BV」→ NBV　`def-dep.bv-nbv`
+#### 定义引用：「有界变差函数」→ 规范有界变差函数　`def-dep.bv-nbv`
 
 $NBV := \{ F \in BV : F$ 右连续且 $F(-\infty) = 0 \}$，整个定义建立在**有界变差**之上。
 
-#### 定义引用：「Borel σ-代数」→ NBV　`def-dep.borel-nbv`
+#### 定义引用：「Borel σ-代数」→ 规范有界变差函数　`def-dep.borel-nbv`
 
 加这两个条件的目的，是与 $\mathbb{R}$ 上的**复 Borel 测度**一一对应。
 
@@ -30270,7 +31560,7 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 
 「$m(E_r) > \alpha \cdot m(B(r, x))$」里的 $m$ 是一个**测度**。
 
-#### 定义引用：「L⁺」→ 简单函数的积分　`def-dep.lplus-integral-simple`
+#### 定义引用：「非负可测函数类」→ 简单函数的积分　`def-dep.lplus-integral-simple`
 
 标准形式写的是「$\varphi \in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。
 
@@ -30706,15 +31996,15 @@ $f^{*} \dashv f_{*}$ 是一个**伴随对**。
 
 要求 $f^{*}$ **正合**，即保有限极限。
 
-#### 定义引用：「预拓扑斯」→ CHaus 是预拓扑斯　`def-dep.pretopos-chaus`
+#### 定义引用：「预拓扑斯」→ 紧 Hausdorff 空间构成预拓扑斯　`def-dep.pretopos-chaus`
 
 结论是 $\mathbf{CHaus}$ 满足**预拓扑斯**的四条公理。
 
-#### 定义引用：「紧 Hausdorff 空间范畴」→ CHaus 是预拓扑斯　`def-dep.chaus-pretopos`
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧 Hausdorff 空间构成预拓扑斯　`def-dep.chaus-pretopos`
 
 被检验的范畴是 $\mathbf{CHaus}$。
 
-#### 定义引用：「伴随函子」→ CHaus 是预拓扑斯　`def-dep.adjoint-chaus-pretopos`
+#### 定义引用：「伴随函子」→ 紧 Hausdorff 空间构成预拓扑斯　`def-dep.adjoint-chaus-pretopos`
 
 极限与余极限的算法来自「$\mathbf{CHaus}$ 是**反射子范畴**」，即含入函子有左伴随。
 
@@ -30978,11 +32268,11 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 
 「对角是 $k$-闭」要先用上 **$k$-拓扑**。
 
-#### 定义引用：「Hausdorff 空间」→ CGWH 是 CG 的反射子范畴　`def-dep.cgwh-hausdorff`
+#### 定义引用：「Hausdorff 空间」→ 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`def-dep.cgwh-hausdorff`
 
 反射去掉的是「弱 Hausdorff」，用的是**闭等价关系**。
 
-#### 定义引用：「商拓扑」→ CGWH 是 CG 的反射子范畴　`def-dep.cgwh-quotient`
+#### 定义引用：「商拓扑」→ 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`def-dep.cgwh-quotient`
 
 反射把 $X$ 换成**商空间** $X/R$。
 
@@ -31030,11 +32320,11 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 
 要求 $X$ 是**弱 Hausdorff** 空间。
 
-#### 定义引用：「子空间拓扑」→ CGWH 的开闭子空间与滤过余极限　`def-dep.cgwhclosed-subspace`
+#### 定义引用：「子空间拓扑」→ 弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　`def-dep.cgwhclosed-subspace`
 
 结论说的是**子空间**。
 
-#### 定义引用：「弱 Hausdorff 空间」→ CGWH 的开闭子空间与滤过余极限　`def-dep.cgwhclosed-weakhaus`
+#### 定义引用：「弱 Hausdorff 空间」→ 弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　`def-dep.cgwhclosed-weakhaus`
 
 结论说的是**弱 Hausdorff** 性在子空间与滤过余极限下保持。
 
@@ -31214,11 +32504,11 @@ $(I,+)$ 是加法**子群**；商环先做加法商的**商群**。
 
 定理说的是**紧生成空间**范畴。
 
-#### 定义引用：「紧生成空间是笛卡尔闭的」→ CG 的指数伴随　`def-dep.cgexp-cc`
+#### 定义引用：「紧生成空间是笛卡尔闭的」→ 紧生成空间的指数伴随　`def-dep.cgexp-cc`
 
 伴随那条是笛卡尔闭的重新表述。
 
-#### 定义引用：「伴随函子」→ CG 的指数伴随　`def-dep.cgexp-adjoint`
+#### 定义引用：「伴随函子」→ 紧生成空间的指数伴随　`def-dep.cgexp-adjoint`
 
 结论说的是「左伴随于」。
 
@@ -31658,11 +32948,11 @@ $\operatorname{Ext}^{n}$ 定义成**导出范畴**里的 Hom。
 
 用到了**位移** $L^{\bullet}[n]$。
 
-#### 定义引用：「扩展群 Ext」→ Ext 就是 RHom　`def-dep.extrhom-ext`
+#### 定义引用：「扩展群 Ext」→ Ext 就是导出 Hom　`def-dep.extrhom-ext`
 
 命题说两条 $\operatorname{Ext}$ 的算法一致。
 
-#### 定义引用：「内 Hom」→ Ext 就是 RHom　`def-dep.extrhom-internalhom`
+#### 定义引用：「内 Hom」→ Ext 就是导出 Hom　`def-dep.extrhom-internalhom`
 
 另一边是**内部 Hom** 的导出函子 $R^{n}\operatorname{Hom}$。
 
@@ -32006,19 +33296,19 @@ $K$-有界正合定义在**半范数**阿贝尔群的复形上。
 
 靶是**实 Banach 空间**。
 
-#### 定义引用：「扩展群 Ext」→ 离散对偶的 RHom 与导出张量　`def-dep.rdt-ext`
+#### 定义引用：「扩展群 Ext」→ 离散对偶的导出 Hom 与导出张量　`def-dep.rdt-ext`
 
 两边都是导出 Hom 与导出张量的计算。
 
-#### 定义引用：「阿贝尔层的张量积」→ 离散对偶的 RHom 与导出张量　`def-dep.rdt-tensor`
+#### 定义引用：「阿贝尔层的张量积」→ 离散对偶的导出 Hom 与导出张量　`def-dep.rdt-tensor`
 
 结论里出现**导出张量积** $\otimes^{\mathbf{L}}$。
 
-#### 定义引用：「Pontryagin 对偶」→ Pontryagin 对偶的 RHom 刻画　`def-dep.drc-dual`
+#### 定义引用：「Pontryagin 对偶」→ Pontryagin 对偶的导出 Hom 刻画　`def-dep.drc-dual`
 
 左边是 **Pontryagin 对偶** $M^{\vee}$。
 
-#### 定义引用：「扩展群 Ext」→ Pontryagin 对偶的 RHom 刻画　`def-dep.drc-rhom`
+#### 定义引用：「扩展群 Ext」→ Pontryagin 对偶的导出 Hom 刻画　`def-dep.drc-rhom`
 
 右边用 **$\operatorname{RHom}$** 来写。
 
@@ -32030,23 +33320,23 @@ $K$-有界正合定义在**半范数**阿贝尔群的复形上。
 
 结论是**高次 Ext** 消失。
 
-#### 定义引用：「扩展群 Ext」→ Z/R/T 的 RHom 计算表　`def-dep.zrt-ext`
+#### 定义引用：「扩展群 Ext」→ Z、R、T 的导出 Hom 计算表　`def-dep.zrt-ext`
 
 整张表列的都是 **$\operatorname{RHom}$** 的取值。
 
-#### 定义引用：「扩展群 Ext」→ 有限维 Banach 之间的 RHom　`def-dep.fbr-ext`
+#### 定义引用：「扩展群 Ext」→ 有限维 Banach 空间之间的导出 Hom　`def-dep.fbr-ext`
 
 算的是 **$\operatorname{RHom}$**。
 
-#### 定义引用：「Banach 阿贝尔群」→ 有限维 Banach 之间的 RHom　`def-dep.fbr-banach`
+#### 定义引用：「Banach 阿贝尔群」→ 有限维 Banach 空间之间的导出 Hom　`def-dep.fbr-banach`
 
 源与靶都是**有限维实 Banach 空间**。
 
-#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧 S 对实 Banach 的 RHom　`def-dep.cbr-chaus`
+#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧空间对实 Banach 空间的导出 Hom　`def-dep.cbr-chaus`
 
 测试空间 $S$ **紧 Hausdorff**。
 
-#### 定义引用：「Banach 阿贝尔群」→ 紧 S 对实 Banach 的 RHom　`def-dep.cbr-banach`
+#### 定义引用：「Banach 阿贝尔群」→ 紧空间对实 Banach 空间的导出 Hom　`def-dep.cbr-banach`
 
 靶 $N$ 是**实 Banach 空间**。
 
@@ -32066,7 +33356,7 @@ $K$-有界正合定义在**半范数**阿贝尔群的复形上。
 
 结论是 **Ext** 在 $n \ne 1$ 处消失。
 
-#### 定义引用：「扩展群 Ext」→ 非局部紧情形的 RHom　`def-dep.nlcr-ext`
+#### 定义引用：「扩展群 Ext」→ 非局部紧情形的导出 Hom　`def-dep.nlcr-ext`
 
 算的是 **$\operatorname{RHom}$**（对象不必局部紧）。
 
@@ -32288,7 +33578,7 @@ $$\Bigl| \frac{1}{g(x)} - \frac{1}{B} \Bigr| = \frac{|g(x) - B|}{|g(x)|\,|B|} \l
 
 > 注意第 3 步用的是「长度趋于零」这个前提，第 4、5 步用的是「闭」。
 
-#### 闭区间套定理 ⟹ Bolzano–Weierstrass　`imp.nested-bw`
+#### 闭区间套定理 ⟹ Bolzano–Weierstrass 定理　`imp.nested-bw`
 *闭区间套定理 $\implies$ Bolzano–Weierstrass*
 
 设 $\{x_n\}$ 有界，取 $M > 0$ 使一切 $x_n \in [-M, M]$。二分法：令 $I_0 = [-M, M]$。
@@ -32305,7 +33595,7 @@ $$\Bigl| \frac{1}{g(x)} - \frac{1}{B} \Bigr| = \frac{|g(x) - B|}{|g(x)|\,|B|} \l
 
 > $\mathbb{R}^{n}$ 的情形逐坐标使用本定理：一个有界列的第 $i$ 个坐标是有界实数列，先取一个收敛的子列，再在其上对下一个坐标取子列，依次进行 $n$ 次。
 
-#### Bolzano–Weierstrass ⟹ Cauchy 收敛准则　`imp.bw-cauchy`
+#### Bolzano–Weierstrass 定理 ⟹ Cauchy 收敛准则　`imp.bw-cauchy`
 *Bolzano–Weierstrass $\implies$ Cauchy 收敛准则*
 
 「$\implies$」：设 $x_n \to x$。给定 $\varepsilon > 0$，取 $N$ 使 $n \ge N$ 时 $|x_n - x| < \varepsilon / 2$。则 $m, n \ge N$ 时
@@ -32333,7 +33623,7 @@ $$|x_n - x| \le |x_n - x_{n_k}| + |x_{n_k} - x| < \varepsilon$$
 
 > 这条边的作用是把两套语言对上：**序**那一侧的「确界原理」与**度量**那一侧的「完备」在 $\mathbb{R}$ 上说的是同一件事。
 
-#### ℝ 是完备有序域 + 单调有界定理 + 闭区间套定理 + Bolzano–Weierstrass + Cauchy 收敛准则 + ℝ 是完备度量空间 ⟹ 完备性的六条等价　`imp.completeness-cycle`
+#### ℝ 是完备有序域 + 单调有界定理 + 闭区间套定理 + Bolzano–Weierstrass 定理 + Cauchy 收敛准则 + ℝ 是完备度量空间 ⟹ 完备性的六条等价　`imp.completeness-cycle`
 *六条（强连通块）*
 
 记六条为 (1)–(6)。已有四条箭头：
@@ -32355,7 +33645,7 @@ $$|x_n - x| \le |x_n - x_{n_k}| + |x_{n_k} - x| < \varepsilon$$
 
 > 这正是「强连通块」的含义：**任取一条作公理，其余五条都是定理**。所以要问的不是「哪条对」，而是「哪一种说法在当前语境里最方便」—— 后来在一般完备度量空间里只剩 (6)，在完备格（如 $\overline{\mathbb{R}}$）里只剩 (1)。
 
-#### Bolzano–Weierstrass + 紧的三个等价刻画 ⟹ 有界闭 ⟺ 紧（ℝⁿ）　`imp.bw-heineborel`
+#### Bolzano–Weierstrass 定理 + 紧的三个等价刻画 ⟹ 有界闭 ⟺ 紧（ℝⁿ）　`imp.bw-heineborel`
 *Bolzano–Weierstrass + 紧的三个等价刻画 $\implies$ Heine–Borel*
 
 按「序列紧」来用「紧的三个等价刻画」：在度量空间里 $K$ 紧 $\iff K$ 列紧。
@@ -32419,7 +33709,7 @@ $$S := \{ x \in [a, b] : f(x) \le c \}$$
 
 > 「取到端点之内」这一步正是零点定理比介值定理多出来的那一点内容。
 
-#### Bolzano–Weierstrass + 一致连续 ⟹ 紧集上连续 ⟹ 一致连续　`imp.uniform-compact`
+#### Bolzano–Weierstrass 定理 + 一致连续 ⟹ 紧集上连续 ⟹ 一致连续　`imp.uniform-compact`
 *列紧性 + 一致连续的定义 $\implies$ Cantor 定理*
 
 反证。设 $f$ 在紧度量空间 $X$ 上连续但不一致连续。则存在 $\varepsilon_0 > 0$，使对每个 $\delta > 0$ 都能找到两点距离小于 $\delta$、函数值却相差至少 $\varepsilon_0$：
@@ -32851,7 +34141,7 @@ $$c := \frac{\int_a^b fg}{\int_a^b g} \in [m, M]$$
 
 > 第 1 步是全部关键：**反常积分的收敛问题被翻译成「尾部的积分可以任意小」**，从此与级数判敛的套路完全平行（级数的 Cauchy 准则也长这样）。
 
-#### 可积 ⟺ 不连续点零测 + 可积 / L¹ ⟹ Riemann ⟹ Lebesgue　`imp.riemann-implies-lebesgue`
+#### 可积 ⟺ 不连续点零测 + 可积 / L¹ ⟹ Riemann 可积蕴含 Lebesgue 可积　`imp.riemann-implies-lebesgue`
 *Lebesgue 判据 $\implies$ Riemann 积分是 Lebesgue 积分的特例*
 
 设 $f$ 在 $[a, b]$ 上有界且 Riemann 可积。
@@ -33428,6 +34718,10 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **可度量化 ↔ 仿紧与单位分解**　3 条节点级连线
 - **代数结构 ↔ 群上同调**　5 条节点级连线
 - **层与拓扑 ↔ 层上同调**　9 条节点级连线
+- **活动标架与结构方程 ↔ 内蕴几何**　3 条节点级连线
+- **特征值与 Jordan 型 ↔ 曲面论**　2 条节点级连线
+- **活动标架与结构方程 ↔ 曲面论**　11 条节点级连线
+- **内蕴几何 ↔ 曲面论**　7 条节点级连线
 - **积分 ↔ 符号测度与分解**　5 条节点级连线
 - **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
 - **微分定理 ↔ 积分**　3 条节点级连线

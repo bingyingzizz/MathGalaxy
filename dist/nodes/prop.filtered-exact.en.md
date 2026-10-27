@@ -1,4 +1,4 @@
-# filtered colimits are exact　`prop.filtered-exact`
+# Filtered Colimits Are Exact　`prop.filtered-exact`
 English entry · root `../`
 [in graph](../#n=prop.filtered-exact)　·　[Chinese page (authoritative)](./prop.filtered-exact.md)
 

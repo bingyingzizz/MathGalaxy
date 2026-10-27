@@ -1,4 +1,4 @@
-# acyclic　`def.f-acyclic`
+# Acyclic　`def.f-acyclic`
 English entry · root `../`
 [in graph](../#n=def.f-acyclic)　·　[Chinese page (authoritative)](./def.f-acyclic.md)
 

@@ -1,4 +1,4 @@
-# exact sequence　`def.exact-sequence`
+# Exact Sequence　`def.exact-sequence`
 English entry · root `../`
 [in graph](../#n=def.exact-sequence)　·　[Chinese page (authoritative)](./def.exact-sequence.md)
 

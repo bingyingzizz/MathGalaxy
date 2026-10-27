@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Toposes (`cat.topos`) · Category Theory
-names: `cocontinuous` (short) · `Cocontinuous Functor` (full)
+names: `Cocontinuous` (short) · `Cocontinuous Functor` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.cocontinuous-functor.md` and `proofs/`.

@@ -1,4 +1,4 @@
-# torsion Stonean　`prop.pontryagin-torsion-stone`
+# Torsion Stonean　`prop.pontryagin-torsion-stone`
 English entry · root `../`
 [in graph](../#n=prop.pontryagin-torsion-stone)　·　[Chinese page (authoritative)](./prop.pontryagin-torsion-stone.md)
 

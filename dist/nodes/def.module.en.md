@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 8 · definition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra
-names: `module` (short) · `Module` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.module.md` and `proofs/`.

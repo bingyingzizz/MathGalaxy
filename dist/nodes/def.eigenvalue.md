@@ -15,6 +15,7 @@ $$E_{\lambda} := \ker(T - \lambda\,I) \subseteq V$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.diagonalizable`](../nodes/thm.diagonalizable.md) 可对角化判据
+- 被 [`def.principal-curvature`](../nodes/def.principal-curvature.md) 主曲率 用
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.eigenvalue.2.md](./def.eigenvalue.2.md)

@@ -3,7 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`prop.cg-coreflective`](../nodes/prop.cg-coreflective.md) 紧生成空间是余反射子范畴 用
-- 被 [`cor.cg-exponential-adjoint`](../nodes/cor.cg-exponential-adjoint.md) CG 的指数伴随 用
+- 被 [`cor.cg-exponential-adjoint`](../nodes/cor.cg-exponential-adjoint.md) 紧生成空间的指数伴随 用
 - 被 [`def.morphism-of-sites`](../nodes/def.morphism-of-sites.md) 景的态射 用
 - 被 [`prop.abelianization`](../nodes/prop.abelianization.md) 交换化 用
 - 被 [`prop.left-adjoint-unique`](../nodes/prop.left-adjoint-unique.md) 左伴随唯一 用

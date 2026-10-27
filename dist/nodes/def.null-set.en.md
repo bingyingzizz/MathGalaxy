@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 15 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
-names: `null set` (short) · `Null Set & Complete Measure Space` (full)
+names: `Null Set` (short) · `Null Set & Complete Measure Space` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.null-set.md` and `proofs/`.

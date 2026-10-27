@@ -1,4 +1,4 @@
-# BV 的 Jordan 分解　`thm.bv-jordan`
+# 有界变差函数的 Jordan 分解　`thm.bv-jordan`
 定理：$F \in BV \iff F = G - H$（G、H 有界递增）
 layer 18 · 定理 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=thm.bv-jordan)　·　[节点索引](../index.md)

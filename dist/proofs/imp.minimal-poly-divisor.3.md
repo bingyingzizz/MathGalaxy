@@ -1,7 +1,7 @@
 # Cayley–Hamilton $\implies \mu_T \mid \chi_T$ 且同根
 `imp.minimal-poly-divisor` · 推出 · strong 边 · 根 `../`
 
-`thm.cayley-hamilton` Cayley–Hamilton + `def.minimal-poly` 极小多项式 → `thm.minimal-poly-divisor` 极小多项式整除特征多项式
+`thm.cayley-hamilton` Cayley–Hamilton 定理 + `def.minimal-poly` 极小多项式 → `thm.minimal-poly-divisor` 极小多项式整除特征多项式
 
 于是两者的根集合相同。∎
 

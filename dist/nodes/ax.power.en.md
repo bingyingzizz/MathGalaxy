@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 2 · axiom · cluster The ZFC Axioms (`set.zfc`) · Set Theory
-names: `power set` (short) · `Axiom of Power Set` (full)
+names: `Power Set` (short) · `Axiom of Power Set` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/ax.power.md` and `proofs/`.

@@ -1,7 +1,7 @@
 # Bolzano–Weierstrass $\implies$ Cauchy 收敛准则
 `imp.bw-cauchy` · 推出 · strong 边 · 根 `../`
 
-`thm.bolzano-weierstrass` Bolzano–Weierstrass → `thm.cauchy-criterion` Cauchy 收敛准则
+`thm.bolzano-weierstrass` Bolzano–Weierstrass 定理 → `thm.cauchy-criterion` Cauchy 收敛准则
 
 「$\implies$」：设 $x_n \to x$。给定 $\varepsilon > 0$，取 $N$ 使 $n \ge N$ 时 $|x_n - x| < \varepsilon / 2$。则 $m, n \ge N$ 时
 

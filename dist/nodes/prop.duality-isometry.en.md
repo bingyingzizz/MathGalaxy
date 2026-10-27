@@ -1,4 +1,4 @@
-# isometry　`prop.duality-isometry`
+# Isometry　`prop.duality-isometry`
 English entry · root `../`
 [in graph](../#n=prop.duality-isometry)　·　[Chinese page (authoritative)](./prop.duality-isometry.md)
 

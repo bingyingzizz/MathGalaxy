@@ -1,7 +1,7 @@
 # 闭区间套定理 $\implies$ Bolzano–Weierstrass
 `imp.nested-bw` · 推出 · strong 边 · 根 `../`
 
-`lem.nested-intervals` 闭区间套定理 → `thm.bolzano-weierstrass` Bolzano–Weierstrass
+`lem.nested-intervals` 闭区间套定理 → `thm.bolzano-weierstrass` Bolzano–Weierstrass 定理
 
 设 $\{x_n\}$ 有界，取 $M > 0$ 使一切 $x_n \in [-M, M]$。二分法：令 $I_0 = [-M, M]$。
 

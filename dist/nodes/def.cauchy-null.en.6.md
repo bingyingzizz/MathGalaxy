@@ -1,4 +1,4 @@
-# Cauchy sequences and null sequences　`def.cauchy-null`
+# Cauchy Sequences and Null Sequences　`def.cauchy-null`
 English entry · root `../`
 [in graph](../#n=def.cauchy-null)　·　[Chinese page (authoritative)](./def.cauchy-null.md)
 

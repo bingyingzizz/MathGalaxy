@@ -110,7 +110,7 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Hartogs 定理',
-      title: 'Hartogs 定理（Hartogs\' Theorem, 1915）—— ZF 中即可证明',
+      title: 'Hartogs 定理 —— ZF 中即可证明',
       regions: ['set-theory'],
       tags: ['ZF', '序数', '基数', '不需要选择公理'],
       statement: [

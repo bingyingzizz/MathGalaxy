@@ -1,4 +1,4 @@
-# axiom of choice　`ax.choice`
+# Axiom of Choice　`ax.choice`
 English entry · root `../`
 [in graph](../#n=ax.choice)　·　[Chinese page (authoritative)](./ax.choice.md)
 

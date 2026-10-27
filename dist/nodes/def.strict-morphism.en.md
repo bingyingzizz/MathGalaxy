@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Monos, Epis, Subobjects and Images (`cat.structure`) · Category Theory
-names: `strict morphism` (short) · `Strict Morphism` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.strict-morphism.md` and `proofs/`.

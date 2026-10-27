@@ -1,4 +1,4 @@
-# limit　`def.sequence-limit`
+# Limit　`def.sequence-limit`
 English entry · root `../`
 [in graph](../#n=def.sequence-limit)　·　[Chinese page (authoritative)](./def.sequence-limit.md)
 

@@ -1,4 +1,4 @@
-# cofinal functor　`def.cofinal-functor`
+# Cofinal Functor　`def.cofinal-functor`
 English entry · root `../`
 [in graph](../#n=def.cofinal-functor)　·　[Chinese page (authoritative)](./def.cofinal-functor.md)
 

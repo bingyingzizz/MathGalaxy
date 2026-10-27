@@ -1,4 +1,4 @@
-# Yoneda lemma　`lem.yoneda`
+# Yoneda Lemma　`lem.yoneda`
 English entry · root `../`
 [in graph](../#n=lem.yoneda)　·　[Chinese page (authoritative)](./lem.yoneda.md)
 

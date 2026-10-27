@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 9 · definition · cluster Additive and Abelian Categories (`hom.ab`) · Homological Algebra
-names: `additive functor` (short) · `Additive Functor` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.additive-functor.md` and `proofs/`.

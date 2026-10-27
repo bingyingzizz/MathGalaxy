@@ -1,4 +1,4 @@
-# sheaf with values　`def.presheaf-valued`
+# Sheaf with Values　`def.presheaf-valued`
 English entry · root `../`
 [in graph](../#n=def.presheaf-valued)　·　[Chinese page (authoritative)](./def.presheaf-valued.md)
 

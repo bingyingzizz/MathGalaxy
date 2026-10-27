@@ -1,4 +1,4 @@
-# 有界变差 BV　`def.bounded-variation`　·　说明
+# 有界变差函数　`def.bounded-variation`　·　说明
 根 `../`
 
 直观：$T_F(x)$ 是「沿着图像从 $-\infty$ 走到 $x$ 所走过的总路程」。有界变差就是「走过的路有限」。

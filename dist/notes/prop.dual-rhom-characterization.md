@@ -1,4 +1,4 @@
-# Pontryagin 对偶的 RHom 刻画　`prop.dual-rhom-characterization`　·　说明
+# Pontryagin 对偶的导出 Hom 刻画　`prop.dual-rhom-characterization`　·　说明
 根 `../`
 
 **在说什么。** 经典的 Pontryagin 对偶 $M^{\vee} = \operatorname{Hom}_{\mathrm{cts}}(M, T)$ 说的是「取到圆里的连续同态」。这条给出它在**导出层面**的三种等价写法 —— 于是「取对偶」这个操作可以在导出的世界里做，进而参与 RHom / 张量的计算。

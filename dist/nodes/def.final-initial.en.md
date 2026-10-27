@@ -1,4 +1,4 @@
-# initial object　`def.final-initial`
+# Initial Object　`def.final-initial`
 English entry · root `../`
 [in graph](../#n=def.final-initial)　·　[Chinese page (authoritative)](./def.final-initial.md)
 

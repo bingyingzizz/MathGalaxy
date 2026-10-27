@@ -1,4 +1,4 @@
-# NBV 函数的导数与测度的关系　`prop.nbv-derivative`　·　说明
+# 规范有界变差函数的导数与测度的关系　`prop.nbv-derivative`　·　说明
 根 `../`
 
 证明：写 $d\mu_F = d\lambda + f\cdot dm$（Lebesgue 分解），由测度那条定理 $f = F'$ a.e.。于是

@@ -1,4 +1,4 @@
-# AC ⊆ BV　`lem.ac-subset-bv`　·　说明
+# 绝对连续蕴含有界变差　`lem.ac-subset-bv`　·　说明
 根 `../`
 
 证明：由绝对连续性取 $\delta$ 使「总长 $< \delta \implies$ 总变差 $< 1$」。把 [a,b] 切成有限多段、每段长度 $< \delta$，则每段的变差 $\le 1$，加起来 $\le$ 段数 —— 有限。∎

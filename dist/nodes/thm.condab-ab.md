@@ -1,5 +1,5 @@
-# CondAb 满足 AB6 与 AB4*　`thm.condab-ab`
-$\mathrm{CondAb}$ 的 AB 公理
+# 凝聚态阿贝尔群满足 AB6 与 AB4*　`thm.condab-ab`
+凝聚态阿贝尔群的 AB 公理
 layer 19 · 定理 · 凝聚态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=thm.condab-ab)　·　[节点索引](../index.md)
 

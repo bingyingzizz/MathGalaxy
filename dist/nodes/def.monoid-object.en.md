@@ -1,4 +1,4 @@
-# monoid object　`def.monoid-object`
+# Monoid Object　`def.monoid-object`
 English entry · root `../`
 [in graph](../#n=def.monoid-object)　·　[Chinese page (authoritative)](./def.monoid-object.md)
 

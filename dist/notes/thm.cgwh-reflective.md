@@ -1,4 +1,4 @@
-# CGWH 是 CG 的反射子范畴　`thm.cgwh-reflective`　·　说明
+# 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`thm.cgwh-reflective`　·　说明
 根 `../`
 
 **为什么取「最小的闭等价关系」。** 要让商 $X/R$ 弱 Hausdorff，$R$ 得是 $k$-闭的（上一条）；而要商掉得尽量少、好让反射是「最经济」的改造，就取最小的那个闭等价关系。（$R \mapsto X/R$ 把关系越大商越小，方向别弄反。）

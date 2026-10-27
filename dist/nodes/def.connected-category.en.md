@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 9 · definition · cluster Diagrams and Limits (`cat.limit`) · Category Theory
-names: `connected category` (short) · `Connected Category` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.connected-category.md` and `proofs/`.

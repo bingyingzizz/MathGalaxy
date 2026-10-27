@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Toposes (`cat.topos`) · Category Theory
-names: `quasi-separated` (short) · `Quasi-Separated Object` (full)
+names: `Quasi-separated` (short) · `Quasi-Separated Object` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.quasi-separated.md` and `proofs/`.

@@ -1,4 +1,4 @@
-# weak Hausdorff quasi-separated　`lem.weak-hausdorff-qseparated`
+# Weak Hausdorff Quasi-separated　`lem.weak-hausdorff-qseparated`
 English entry · root `../`
 [in graph](../#n=lem.weak-hausdorff-qseparated)　·　[Chinese page (authoritative)](./lem.weak-hausdorff-qseparated.md)
 

@@ -129,7 +129,7 @@ window.MG = window.MG || {};
       id: 'thm.cayley-hamilton',
       cluster: 'algebra.spectral',
       type: 'theorem',
-      label: 'Cayley–Hamilton',
+      label: 'Cayley–Hamilton 定理',
       title: '定理（Cayley–Hamilton）：$\\chi_T(T) = 0$',
       regions: ['algebra'],
       tags: ['定理', '线性代数', '谱'],

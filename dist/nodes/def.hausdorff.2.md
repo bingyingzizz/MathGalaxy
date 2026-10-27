@@ -8,6 +8,6 @@
 - 被 [`cor.cg-product`](../nodes/cor.cg-product.md) 紧生成空间对积封闭 用
 - 被 [`def.chaus`](../nodes/def.chaus.md) 紧 Hausdorff 空间范畴 用
 - 被 [`def.weak-hausdorff`](../nodes/def.weak-hausdorff.md) 弱 Hausdorff 空间 用
-- 被 [`thm.cgwh-reflective`](../nodes/thm.cgwh-reflective.md) CGWH 是 CG 的反射子范畴 用
+- 被 [`thm.cgwh-reflective`](../nodes/thm.cgwh-reflective.md) 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴 用
 - 被 [`def.normal-space`](../nodes/def.normal-space.md) 正规空间 用
 - 被 [`def.locally-compact`](../nodes/def.locally-compact.md) 局部紧 Hausdorff 空间 用

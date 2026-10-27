@@ -1,4 +1,4 @@
-# CHaus 是预拓扑斯　`def.chaus-pretopos`　·　续页（第 2 页）
+# 紧 Hausdorff 空间构成预拓扑斯　`def.chaus-pretopos`　·　续页（第 2 页）
 [在星图里打开](../#n=def.chaus-pretopos)　·　第 1 页 [nodes/def.chaus-pretopos.md](./def.chaus-pretopos.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

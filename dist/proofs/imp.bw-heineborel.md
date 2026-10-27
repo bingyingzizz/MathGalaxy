@@ -1,7 +1,7 @@
 # Bolzano–Weierstrass + 紧的三个等价刻画 $\implies$ Heine–Borel
 `imp.bw-heineborel` · 推出 · strong 边 · 根 `../`
 
-`thm.bolzano-weierstrass` Bolzano–Weierstrass + `thm.metric-compact-equiv` 紧的三个等价刻画 → `cor.heine-borel` 有界闭 ⟺ 紧（ℝⁿ）
+`thm.bolzano-weierstrass` Bolzano–Weierstrass 定理 + `thm.metric-compact-equiv` 紧的三个等价刻画 → `cor.heine-borel` 有界闭 ⟺ 紧（ℝⁿ）
 
 按「序列紧」来用「紧的三个等价刻画」：在度量空间里 $K$ 紧 $\iff K$ 列紧。
 

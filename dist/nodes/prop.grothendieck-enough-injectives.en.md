@@ -1,4 +1,4 @@
-# enough injectives　`prop.grothendieck-enough-injectives`
+# Enough Injectives　`prop.grothendieck-enough-injectives`
 English entry · root `../`
 [in graph](../#n=prop.grothendieck-enough-injectives)　·　[Chinese page (authoritative)](./prop.grothendieck-enough-injectives.md)
 

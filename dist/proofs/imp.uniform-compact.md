@@ -1,7 +1,7 @@
 # 列紧性 + 一致连续的定义 $\implies$ Cantor 定理
 `imp.uniform-compact` · 推出 · strong 边 · 根 `../`
 
-`thm.bolzano-weierstrass` Bolzano–Weierstrass + `def.uniform-continuity` 一致连续 → `thm.uniform-continuity-compact` 紧集上连续 ⟹ 一致连续
+`thm.bolzano-weierstrass` Bolzano–Weierstrass 定理 + `def.uniform-continuity` 一致连续 → `thm.uniform-continuity-compact` 紧集上连续 ⟹ 一致连续
 
 反证。设 $f$ 在紧度量空间 $X$ 上连续但不一致连续。则存在 $\varepsilon_0 > 0$，使对每个 $\delta > 0$ 都能找到两点距离小于 $\delta$、函数值却相差至少 $\varepsilon_0$：
 

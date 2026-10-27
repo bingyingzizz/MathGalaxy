@@ -7,6 +7,6 @@
 - 被 [`prop.condab-discrete-acyclic`](../nodes/prop.condab-discrete-acyclic.md) 离散空间上零调 用
 - 被 [`prop.condab-quotient-r-disc`](../nodes/prop.condab-quotient-r-disc.md) R/R_disc 在 Stone 上的截面 用
 - 被 [`cor.ext-cond-set-section`](../nodes/cor.ext-cond-set-section.md) Ext 的截面公式 用
-- 被 [`prop.rhom-zs-sections`](../nodes/prop.rhom-zs-sections.md) Stonean 上 Z[S] 的 RHom 用
+- 被 [`prop.rhom-zs-sections`](../nodes/prop.rhom-zs-sections.md) Stonean 空间上自由模的导出 Hom 用
 
 > 续见 [nodes/def.condensed-abelian-group.4.md](./def.condensed-abelian-group.4.md)

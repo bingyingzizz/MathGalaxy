@@ -3,5 +3,5 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`prop.rhom-chaus-banach-zero`](../nodes/prop.rhom-chaus-banach-zero.md) 紧 Haus 到实 Banach 全零 用
-- 被 [`ex.finite-banach-rhom`](../nodes/ex.finite-banach-rhom.md) 有限维 Banach 之间的 RHom 用
-- 被 [`ex.chaus-banach-rhom`](../nodes/ex.chaus-banach-rhom.md) 紧 S 对实 Banach 的 RHom 用
+- 被 [`ex.finite-banach-rhom`](../nodes/ex.finite-banach-rhom.md) 有限维 Banach 空间之间的导出 Hom 用
+- 被 [`ex.chaus-banach-rhom`](../nodes/ex.chaus-banach-rhom.md) 紧空间对实 Banach 空间的导出 Hom 用

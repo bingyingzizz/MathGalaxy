@@ -1,4 +1,4 @@
-# geometric morphism　`def.topos-morphism`
+# Geometric Morphism　`def.topos-morphism`
 English entry · root `../`
 [in graph](../#n=def.topos-morphism)　·　[Chinese page (authoritative)](./def.topos-morphism.md)
 

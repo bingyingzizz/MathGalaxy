@@ -1,4 +1,4 @@
-# L^p ∩ L^r ⊆ L^q　`prop.lp-inter-lr-in-lq`　·　说明
+# L^p 与 L^r 的交包含于 L^q　`prop.lp-inter-lr-in-lq`　·　说明
 根 `../`
 
 这是 **Riesz–Thorin 插值定理**的初等特例：$L^q$ 范数被两端的 $L^p$、$L^r$ 范数「对数凸」地控制住。

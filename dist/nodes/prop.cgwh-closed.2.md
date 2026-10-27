@@ -1,4 +1,4 @@
-# CGWH 的开闭子空间与滤过余极限　`prop.cgwh-closed`　·　续页（第 2 页）
+# 弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　`prop.cgwh-closed`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.cgwh-closed)　·　第 1 页 [nodes/prop.cgwh-closed.md](./prop.cgwh-closed.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

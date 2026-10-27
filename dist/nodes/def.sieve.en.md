@@ -1,4 +1,4 @@
-# sieve　`def.sieve`
+# Sieve　`def.sieve`
 English entry · root `../`
 [in graph](../#n=def.sieve)　·　[Chinese page (authoritative)](./def.sieve.md)
 

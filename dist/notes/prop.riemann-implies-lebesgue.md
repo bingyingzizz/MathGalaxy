@@ -1,4 +1,4 @@
-# Riemann ⟹ Lebesgue　`prop.riemann-implies-lebesgue`　·　说明
+# Riemann 可积蕴含 Lebesgue 可积　`prop.riemann-implies-lebesgue`　·　说明
 根 `../`
 
 ⭐ 这条命题把「两个积分」焊接起来：**Lebesgue 积分是 Riemann 积分的真扩张** —— 能算的照旧能算（值相同），不能算的多了一批。

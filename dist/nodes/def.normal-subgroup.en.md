@@ -1,4 +1,4 @@
-# normal subgroup　`def.normal-subgroup`
+# Normal Subgroup　`def.normal-subgroup`
 English entry · root `../`
 [in graph](../#n=def.normal-subgroup)　·　[Chinese page (authoritative)](./def.normal-subgroup.md)
 

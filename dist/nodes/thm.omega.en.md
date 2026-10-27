@@ -1,4 +1,4 @@
-# natural numbers　`thm.omega`
+# Natural Numbers　`thm.omega`
 English entry · root `../`
 [in graph](../#n=thm.omega)　·　[Chinese page (authoritative)](./thm.omega.md)
 

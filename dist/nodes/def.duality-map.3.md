@@ -3,6 +3,6 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.bounded-functional-gives-lq`](../nodes/prop.bounded-functional-gives-lq.md) 有界 ⟹ g ∈ L^q
-- 被 [`prop.duality-isometry`](../nodes/prop.duality-isometry.md) ‖g‖_q = ‖φ_g‖ 用
+- 被 [`prop.duality-isometry`](../nodes/prop.duality-isometry.md) 对偶等距：范数相等 用
 - 被 [`prop.bounded-functional-gives-lq`](../nodes/prop.bounded-functional-gives-lq.md) 有界 ⟹ g ∈ L^q 用
-- 被 [`thm.riesz-representation-lp`](../nodes/thm.riesz-representation-lp.md) (L^p)* ≅ L^q 用
+- 被 [`thm.riesz-representation-lp`](../nodes/thm.riesz-representation-lp.md) Riesz 表示定理 用

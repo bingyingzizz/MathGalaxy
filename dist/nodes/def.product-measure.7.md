@@ -3,5 +3,5 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`thm.product-measure-sections`](../nodes/thm.product-measure-sections.md) 乘积测度由截口给出 用
-- 被 [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli 用
+- 被 [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli 定理 用
 - 被 [`thm.fubini-complete`](../nodes/thm.fubini-complete.md) 完备情形的 F–T 用

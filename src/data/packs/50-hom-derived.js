@@ -230,7 +230,7 @@ window.MG = window.MG || {};
       id: 'prop.ext-is-rhom',
       cluster: 'hom.complex',
       type: 'proposition',
-      label: 'Ext 就是 RHom',
+      label: 'Ext 就是导出 Hom',
       title: '$R^{n}\\operatorname{Hom}(M, K^{\\bullet}) = \\operatorname{Ext}^{n}(M, K^{\\bullet})$',
       regions: ['homology'],
       tags: ['同调代数', 'Ext', 'RHom', '内射消解'],

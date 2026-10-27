@@ -1,4 +1,4 @@
-# Stone–Čech compactification　`prop.chaus-reflective`
+# Stone–Čech Compactification　`prop.chaus-reflective`
 English entry · root `../`
 [in graph](../#n=prop.chaus-reflective)　·　[Chinese page (authoritative)](./prop.chaus-reflective.md)
 

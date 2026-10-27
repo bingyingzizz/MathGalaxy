@@ -1,4 +1,4 @@
-# 张量与 RHom 的配对　`prop.tensor-rhom-natural-map`　·　说明
+# 张量与导出 Hom 的配对　`prop.tensor-rhom-natural-map`　·　说明
 根 `../`
 
 **证明（由两条配对拼出来）。**

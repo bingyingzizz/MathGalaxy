@@ -1,4 +1,4 @@
-# k-bounded completion　`lem.k-bounded-completion`
+# K-bounded Completion　`lem.k-bounded-completion`
 English entry · root `../`
 [in graph](../#n=lem.k-bounded-completion)　·　[Chinese page (authoritative)](./lem.k-bounded-completion.md)
 

@@ -1,4 +1,4 @@
-# FCHaus 上的预拓扑　`prop.fchaus-pretopology`　·　说明
+# 有限紧 Hausdorff 空间上的预拓扑　`prop.fchaus-pretopology`　·　说明
 根 `../`
 
 **证明（验证预拓扑的三条公理）。** 覆盖约定为：$(F_{i} \to F)_{i \in I}$，$I$ 有限且 $\coprod_{i} F_{i} \to F$ 双射。

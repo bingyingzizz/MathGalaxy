@@ -9,4 +9,4 @@
 - lem.stonean-projective　Stonean 给出有限表现投射对象　layer 17
 - prop.discrete-functor-coproduct　离散函子保直和　layer 18
 - prop.cond-quotient-topological　商群在凝聚态意义下一致　layer 18
-- thm.condab-ab　CondAb 满足 AB6 与 AB4*　layer 19
+- thm.condab-ab　凝聚态阿贝尔群满足 AB6 与 AB4*　layer 19

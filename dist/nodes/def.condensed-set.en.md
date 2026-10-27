@@ -1,4 +1,4 @@
-# condensed set　`def.condensed-set`
+# Condensed Set　`def.condensed-set`
 English entry · root `../`
 [in graph](../#n=def.condensed-set)　·　[Chinese page (authoritative)](./def.condensed-set.md)
 

@@ -1,4 +1,4 @@
-# epi-mono factorization　`prop.sheaf-mono-epi-iso`
+# Epi-mono Factorization　`prop.sheaf-mono-epi-iso`
 English entry · root `../`
 [in graph](../#n=prop.sheaf-mono-epi-iso)　·　[Chinese page (authoritative)](./prop.sheaf-mono-epi-iso.md)
 

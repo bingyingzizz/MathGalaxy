@@ -637,6 +637,31 @@ MG.clusters = [
     parent: 'topology',
     hub: 'thm.urysohn-metrization',
     desc: '回答「这个拓扑能不能由一个度量给出」：正则 + 第二可数 ⇒ 可度量化（Urysohn）→ Nagata–Smirnov 与 Bing 的充要条件（局部有限/离散的基）→ 度量化与仿紧、紧性的关系。'
+  },
+
+  {
+    id: 'diffgeom.frame',
+    name: '活动标架与结构方程',
+    en: 'Moving Frames and Structure Equations',
+    parent: 'diffgeom',
+    hub: 'def.moving-frame',
+    desc: '把「逐项求导」换成「标架怎么转」：活动标架 $\{e_i\}$ → 联络形式 $\omega^i_{\ j}$ → 结构方程 $\mathrm{d}e_i = \omega^j_{\ i} e_j$ → 由 $\mathrm{d}^2=0$ 读出曲率形式。曲面的所有基本形式与曲率都从这里**一次推出**，不再重复坐标展开。'
+  },
+  {
+    id: 'diffgeom.surface',
+    name: '曲面论',
+    en: 'Theory of Surfaces',
+    parent: 'diffgeom',
+    hub: 'def.first-fundamental-form',
+    desc: '曲面的两张基本形式与它们的关系：切映射与第一基本形式 → 单位法向与 Weingarten 变换 → 第二基本形式 → Gauss 方程与 Codazzi–Mainardi 方程 → Gauss 曲率与主曲率。全部按活动标架推导。'
+  },
+  {
+    id: 'diffgeom.intrinsic',
+    name: '内蕴几何',
+    en: 'Intrinsic Geometry',
+    parent: 'diffgeom',
+    hub: 'def.geodesic',
+    desc: '只靠第一基本形式就能读出的东西：测地线、测地曲率、指数映射、Gauss 绝妙定理（$K$ 内蕴）、Gauss–Bonnet。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

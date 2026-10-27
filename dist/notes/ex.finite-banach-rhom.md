@@ -1,4 +1,4 @@
-# 有限维 Banach 之间的 RHom　`ex.finite-banach-rhom`　·　说明
+# 有限维 Banach 空间之间的导出 Hom　`ex.finite-banach-rhom`　·　说明
 根 `../`
 
 **和「实 Banach 在紧 Haus 上零调」是一条链上的**：$\mathbb{Z}$-线性映射 $M \to N$ 已经是 $\mathbb{R}$-线性的（因为 $M$ 是实向量空间，$\mathbb{Z}$-线性 + 连续 $\implies$ $\mathbb{R}$-线性），于是没有高阶修正项。

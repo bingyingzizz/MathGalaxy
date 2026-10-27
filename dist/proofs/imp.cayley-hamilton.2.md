@@ -1,7 +1,7 @@
 # 特征多项式 + 伴随矩阵 $\implies$ Cayley–Hamilton
 `imp.cayley-hamilton` · 推出 · strong 边 · 根 `../`
 
-`def.char-poly` 特征多项式 + `prop.det-laplace` Laplace 展开 → `thm.cayley-hamilton` Cayley–Hamilton
+`def.char-poly` 特征多项式 + `prop.det-laplace` Laplace 展开 → `thm.cayley-hamilton` Cayley–Hamilton 定理
 
 $$0 = A^{n} + c_{n-1}A^{n-1} + \cdots + c_0 I = \chi_A(A)$$
 

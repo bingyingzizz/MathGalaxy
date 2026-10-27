@@ -1,4 +1,4 @@
-# Bolzano–Weierstrass　`thm.bolzano-weierstrass`
+# Bolzano–Weierstrass 定理　`thm.bolzano-weierstrass`
 Bolzano–Weierstrass 定理（有界列必有收敛子列）
 layer 16 · 定理 · 实数完备性的等价刻画 · 分析学
 [在星图里打开](../#n=thm.bolzano-weierstrass)　·　[节点索引](../index.md)

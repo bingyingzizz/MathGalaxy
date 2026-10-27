@@ -1,4 +1,4 @@
-# snake lemma　`thm.snake-lemma`
+# Snake Lemma　`thm.snake-lemma`
 English entry · root `../`
 [in graph](../#n=thm.snake-lemma)　·　[Chinese page (authoritative)](./thm.snake-lemma.md)
 

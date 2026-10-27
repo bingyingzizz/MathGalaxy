@@ -8,6 +8,6 @@
 - 被 [`prop.ac-iff-measure-ac`](../nodes/prop.ac-iff-measure-ac.md) 函数绝对连续 ⟺ 测度绝对连续 用
 - 被 [`cor.ac-integral-continuity`](../nodes/cor.ac-integral-continuity.md) 积分的绝对连续性 用
 - 被 [`cor.rn-inverse`](../nodes/cor.rn-inverse.md) 互为绝对连续时导数互逆 用
-- 被 [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) NBV 函数的导数与测度的关系 用
+- 被 [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) 规范有界变差函数的导数与测度的关系 用
 
 > 续见 [nodes/def.absolute-continuity.4.md](./def.absolute-continuity.4.md)

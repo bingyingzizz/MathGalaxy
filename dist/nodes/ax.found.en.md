@@ -1,4 +1,4 @@
-# foundation　`ax.found`
+# Foundation　`ax.found`
 English entry · root `../`
 [in graph](../#n=ax.found)　·　[Chinese page (authoritative)](./ax.found.md)
 

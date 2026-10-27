@@ -11,7 +11,7 @@
 - prop.positive-set-closure　正集的封闭性　layer 17
 - thm.ac-epsilon-delta　绝对连续的 ε–δ 刻画　layer 17
 - lem.singular-or-lower-bound　要么奇异、要么有下界　layer 17
-- def.rn-derivative　RN 导数与 Lebesgue 分解　layer 17
+- def.rn-derivative　Radon–Nikodym 导数与 Lebesgue 分解　layer 17
 - prop.total-variation-basics　全变差的基本性质　layer 17
 - thm.hahn-decomposition　Hahn 分解定理　layer 18
 - cor.rn-inverse　互为绝对连续时导数互逆　layer 18

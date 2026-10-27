@@ -1,4 +1,4 @@
-# CGWH 是 CG 的反射子范畴　`thm.cgwh-reflective`
+# 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`thm.cgwh-reflective`
 紧生成的弱 Hausdorff 空间是反射子范畴
 layer 17 · 定理 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=thm.cgwh-reflective)　·　[节点索引](../index.md)

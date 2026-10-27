@@ -1,4 +1,4 @@
-# derived category　`def.derived-category`
+# Derived Category　`def.derived-category`
 English entry · root `../`
 [in graph](../#n=def.derived-category)　·　[Chinese page (authoritative)](./def.derived-category.md)
 

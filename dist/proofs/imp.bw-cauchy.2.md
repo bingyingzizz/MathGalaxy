@@ -1,7 +1,7 @@
 # Bolzano–Weierstrass $\implies$ Cauchy 收敛准则
 `imp.bw-cauchy` · 推出 · strong 边 · 根 `../`
 
-`thm.bolzano-weierstrass` Bolzano–Weierstrass → `thm.cauchy-criterion` Cauchy 收敛准则
+`thm.bolzano-weierstrass` Bolzano–Weierstrass 定理 → `thm.cauchy-criterion` Cauchy 收敛准则
 
 1. **先证有界**：取 $\varepsilon = 1$ 得 $N_0$，使 $m, n \ge N_0$ 时 $|x_m - x_n| < 1$。于是 $n \ge N_0$ 时 $|x_n| \le |x_{N_0}| + 1$，而前 $N_0 - 1$ 项有限，故 $\{x_n\}$ 有界。
 2. 由 Bolzano–Weierstrass，存在子列 $x_{n_k} \to x$。

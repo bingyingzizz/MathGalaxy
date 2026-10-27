@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 14 · definition · cluster Real Numbers and Limits (`analysis.real`) · Analysis
-names: `series` (short) · `Series` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.series.md` and `proofs/`.

@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 8 · definition · cluster Functors and Natural Transformations (`cat.functor`) · Category Theory
-names: `functor` (short) · `Functor` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.functor.md` and `proofs/`.

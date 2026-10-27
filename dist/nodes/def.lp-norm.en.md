@@ -1,4 +1,4 @@
-# Lp norm　`def.lp-norm`
+# Lp Norm　`def.lp-norm`
 English entry · root `../`
 [in graph](../#n=def.lp-norm)　·　[Chinese page (authoritative)](./def.lp-norm.md)
 

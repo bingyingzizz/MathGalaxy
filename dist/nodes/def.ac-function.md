@@ -1,5 +1,5 @@
 # 绝对连续函数　`def.ac-function`
-绝对连续函数 AC
+绝对连续函数
 layer 14 · 定义 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=def.ac-function)　·　[节点索引](../index.md)
 

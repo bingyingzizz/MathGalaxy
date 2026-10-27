@@ -5,4 +5,4 @@
 - thm.rn-complex　复测度的 Radon–Nikodym　layer 20
 - cor.ac-integral-continuity　积分的绝对连续性　layer 21
 - thm.lebesgue-radon-nikodym　Lebesgue–Radon–Nikodym 定理　layer 21
-- prop.rn-chain-rule　RN 导数的链式法则　layer 21
+- prop.rn-chain-rule　Radon–Nikodym 导数的链式法则　layer 21

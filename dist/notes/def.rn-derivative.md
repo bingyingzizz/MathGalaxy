@@ -1,4 +1,4 @@
-# RN 导数与 Lebesgue 分解　`def.rn-derivative`　·　说明
+# Radon–Nikodym 导数与 Lebesgue 分解　`def.rn-derivative`　·　说明
 根 `../`
 
 记号的用意：$d\nu = f d\mu$ 看起来就像两个「微分」的商。

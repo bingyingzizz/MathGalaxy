@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 3 · definition · cluster Constructing Sets (`set.construct`) · Set Theory
-names: `power set` (short) · `Power Set` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.power-set.md` and `proofs/`.

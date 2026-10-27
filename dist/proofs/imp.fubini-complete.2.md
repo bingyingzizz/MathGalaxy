@@ -1,7 +1,7 @@
 # 乘积测度通常不完备 $\implies$ 必须补一条完备情形的 F–T
 `imp.fubini-complete` · 推出 · strong 边 · 根 `../`
 
-`thm.fubini-tonelli` Fubini–Tonelli + `thm.completion` 完备化定理 + `prop.product-incomplete` 乘积测度通常不完备 → `thm.fubini-complete` 完备情形的 F–T
+`thm.fubini-tonelli` Fubini–Tonelli 定理 + `thm.completion` 完备化定理 + `prop.product-incomplete` 乘积测度通常不完备 → `thm.fubini-complete` 完备情形的 F–T
 
 $$\int \chi_G d\lambda = 0 = \int ( \int \chi_G d\nu ) d\mu$$
 

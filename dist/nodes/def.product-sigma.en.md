@@ -1,4 +1,4 @@
-# product sigma-algebra　`def.product-sigma`
+# Product Sigma-algebra　`def.product-sigma`
 English entry · root `../`
 [in graph](../#n=def.product-sigma)　·　[Chinese page (authoritative)](./def.product-sigma.md)
 

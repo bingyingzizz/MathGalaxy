@@ -12,5 +12,5 @@
 - def.product-measure　乘积测度　layer 17
 - thm.product-measure-sections　乘积测度由截口给出　layer 18
 - prop.product-incomplete　乘积测度通常不完备　layer 18
-- thm.fubini-tonelli　Fubini–Tonelli　layer 20
+- thm.fubini-tonelli　Fubini–Tonelli 定理　layer 20
 - thm.fubini-complete　完备情形的 F–T　layer 21

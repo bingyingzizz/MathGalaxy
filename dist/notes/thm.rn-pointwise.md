@@ -1,4 +1,4 @@
-# RN 导数的点态公式　`thm.rn-pointwise`　·　说明
+# Radon–Nikodym 导数的点态公式　`thm.rn-pointwise`　·　说明
 根 `../`
 
 ⭐ 这条定理把 Radon–Nikodym 导数从「抽象的存在物」变成了**可以逐点算出来的极限**：

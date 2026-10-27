@@ -238,7 +238,7 @@ window.MG = window.MG || {};
       id: 'prop.currying',
       cluster: 'cat.adjoint',
       type: 'proposition',
-      label: 'Currying',
+      label: '函数的柯里化',
       title: '命题：$X \\mapsto X \\times Y \\;\\dashv\\; Z \\mapsto \\mathbf{Set}(Y, Z)$',
       regions: ['category'],
       tags: ['命题', 'Currying', '笛卡尔闭', '伴随'],

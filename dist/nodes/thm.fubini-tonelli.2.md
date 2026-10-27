@@ -1,4 +1,4 @@
-# Fubini–Tonelli　`thm.fubini-tonelli`　·　续页（第 2 页）
+# Fubini–Tonelli 定理　`thm.fubini-tonelli`　·　续页（第 2 页）
 [在星图里打开](../#n=thm.fubini-tonelli)　·　第 1 页 [nodes/thm.fubini-tonelli.md](./thm.fubini-tonelli.md)
 
 ## 陈述（续）

@@ -1,4 +1,4 @@
-# quotient map product　`thm.quotient-product`
+# Quotient Map Product　`thm.quotient-product`
 English entry · root `../`
 [in graph](../#n=thm.quotient-product)　·　[Chinese page (authoritative)](./thm.quotient-product.md)
 

@@ -1,4 +1,4 @@
-# Fubini–Tonelli　`thm.fubini-tonelli`　·　续页（第 4 页）
+# Fubini–Tonelli 定理　`thm.fubini-tonelli`　·　续页（第 4 页）
 [在星图里打开](../#n=thm.fubini-tonelli)　·　第 1 页 [nodes/thm.fubini-tonelli.md](./thm.fubini-tonelli.md)　·　上一页 [nodes/thm.fubini-tonelli.3.md](./thm.fubini-tonelli.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

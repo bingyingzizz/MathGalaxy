@@ -1,4 +1,4 @@
-# fiber product compact　`prop.cgwh-fiber-product`
+# Fiber Product Compact　`prop.cgwh-fiber-product`
 English entry · root `../`
 [in graph](../#n=prop.cgwh-fiber-product)　·　[Chinese page (authoritative)](./prop.cgwh-fiber-product.md)
 

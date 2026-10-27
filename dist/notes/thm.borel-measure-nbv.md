@@ -1,4 +1,4 @@
-# 测度 ↔ NBV 的一一对应　`thm.borel-measure-nbv`　·　说明
+# 测度与规范有界变差函数的一一对应　`thm.borel-measure-nbv`　·　说明
 根 `../`
 
 这是 **Riesz 表示定理**在实数轴上的形式：测度与一类函数一一对应。

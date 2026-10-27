@@ -5,5 +5,5 @@
 - 被 [`thm.jordan-decomposition`](../nodes/thm.jordan-decomposition.md) Jordan 分解定理 用
 - 被 [`lem.singular-or-lower-bound`](../nodes/lem.singular-or-lower-bound.md) 要么奇异、要么有下界 用
 - 被 [`thm.lebesgue-radon-nikodym`](../nodes/thm.lebesgue-radon-nikodym.md) Lebesgue–Radon–Nikodym 定理 用
-- 被 [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) NBV 函数的导数与测度的关系 用
-- 被 [`def.rn-derivative`](../nodes/def.rn-derivative.md) RN 导数与 Lebesgue 分解 用
+- 被 [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) 规范有界变差函数的导数与测度的关系 用
+- 被 [`def.rn-derivative`](../nodes/def.rn-derivative.md) Radon–Nikodym 导数与 Lebesgue 分解 用

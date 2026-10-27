@@ -1,4 +1,4 @@
-# pretopology　`def.pretopology`
+# Pretopology　`def.pretopology`
 English entry · root `../`
 [in graph](../#n=def.pretopology)　·　[Chinese page (authoritative)](./def.pretopology.md)
 

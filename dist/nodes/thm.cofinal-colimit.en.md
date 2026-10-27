@@ -1,4 +1,4 @@
-# cofinal colimit　`thm.cofinal-colimit`
+# Cofinal Colimit　`thm.cofinal-colimit`
 English entry · root `../`
 [in graph](../#n=thm.cofinal-colimit)　·　[Chinese page (authoritative)](./thm.cofinal-colimit.md)
 

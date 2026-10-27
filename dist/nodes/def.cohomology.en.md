@@ -1,4 +1,4 @@
-# cohomology　`def.cohomology`
+# Cohomology　`def.cohomology`
 English entry · root `../`
 [in graph](../#n=def.cohomology)　·　[Chinese page (authoritative)](./def.cohomology.md)
 

@@ -1,5 +1,5 @@
 # 奇异值分解　`thm.svd`
-定理（SVD）：$A = U\Sigma V^{\mathsf{T}}$
+奇异值分解定理：$A = U\Sigma V^{\mathsf{T}}$
 layer 21 · 定理 · 内积空间与正交性 · 抽象代数
 [在星图里打开](../#n=thm.svd)　·　[节点索引](../index.md)
 

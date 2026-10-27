@@ -1,4 +1,4 @@
-# regular epimorphism　`def.regular-epi`
+# Regular Epimorphism　`def.regular-epi`
 English entry · root `../`
 [in graph](../#n=def.regular-epi)　·　[Chinese page (authoritative)](./def.regular-epi.md)
 

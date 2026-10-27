@@ -1,4 +1,4 @@
-# sigma-ring　`def.sigma-ring`
+# Sigma-ring　`def.sigma-ring`
 English entry · root `../`
 [in graph](../#n=def.sigma-ring)　·　[Chinese page (authoritative)](./def.sigma-ring.md)
 

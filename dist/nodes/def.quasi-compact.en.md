@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 15 · definition · cluster Toposes (`cat.topos`) · Category Theory
-names: `quasi-compact` (short) · `Quasi-Compact Object` (full)
+names: `Quasi-compact` (short) · `Quasi-Compact Object` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.quasi-compact.md` and `proofs/`.

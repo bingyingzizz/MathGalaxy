@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 8 · definition · cluster Algebraic Structures (`algebra.structures`) · Abstract Algebra / Order Theory
-names: `ordered field` (short) · `Ordered Field` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.ordered-field.md` and `proofs/`.

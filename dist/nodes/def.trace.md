@@ -13,6 +13,9 @@ $$\operatorname{tr} A := \sum_{i=1}^{n} a_{ii}$$
 - $\operatorname{tr}(AB) = \operatorname{tr}(BA)$，于是 $\operatorname{tr}(P^{-1}AP) = \operatorname{tr} A$（**相似不变**）；
 - $\operatorname{tr}(ABC) = \operatorname{tr}(BCA)$（**循环不变**）。
 
+## 它能推出什么 / 谁在用它
+- 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.trace.2.md](./def.trace.2.md)
 

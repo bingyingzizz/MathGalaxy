@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Filtrations and Spectral Sequences (`hom.spectral`) · Homological Algebra
-names: `spectral sequence` (short) · `Spectral Sequence` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.spectral-sequence.md` and `proofs/`.

@@ -5,7 +5,7 @@
 - 被 [`def.product-measure`](../nodes/def.product-measure.md) 乘积测度 用
 - 被 [`def.signed-measure`](../nodes/def.signed-measure.md) 符号测度 用
 - 被 [`def.mutually-singular`](../nodes/def.mutually-singular.md) 相互奇异 用
-- 被 [`def.rn-derivative`](../nodes/def.rn-derivative.md) RN 导数与 Lebesgue 分解 用
+- 被 [`def.rn-derivative`](../nodes/def.rn-derivative.md) Radon–Nikodym 导数与 Lebesgue 分解 用
 - 被 [`def.complex-measure`](../nodes/def.complex-measure.md) 复测度 用
 - 被 [`def.average-operator`](../nodes/def.average-operator.md) 平均算子 Aᵣ 用
 - 被 [`def.lp-norm`](../nodes/def.lp-norm.md) L^p 范数 用

@@ -1,4 +1,4 @@
-# quasi-isomorphism　`def.quasi-iso`
+# Quasi-isomorphism　`def.quasi-iso`
 English entry · root `../`
 [in graph](../#n=def.quasi-iso)　·　[Chinese page (authoritative)](./def.quasi-iso.md)
 

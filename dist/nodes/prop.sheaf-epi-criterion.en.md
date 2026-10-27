@@ -1,4 +1,4 @@
-# local epimorphism　`prop.sheaf-epi-criterion`
+# Local Epimorphism　`prop.sheaf-epi-criterion`
 English entry · root `../`
 [in graph](../#n=prop.sheaf-epi-criterion)　·　[Chinese page (authoritative)](./prop.sheaf-epi-criterion.md)
 

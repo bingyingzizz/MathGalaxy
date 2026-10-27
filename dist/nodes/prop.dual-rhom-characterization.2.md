@@ -1,4 +1,4 @@
-# Pontryagin 对偶的 RHom 刻画　`prop.dual-rhom-characterization`　·　续页（第 2 页）
+# Pontryagin 对偶的导出 Hom 刻画　`prop.dual-rhom-characterization`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.dual-rhom-characterization)　·　第 1 页 [nodes/prop.dual-rhom-characterization.md](./prop.dual-rhom-characterization.md)
 
 ## 陈述（续）

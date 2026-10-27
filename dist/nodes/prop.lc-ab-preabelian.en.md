@@ -1,4 +1,4 @@
-# pre-abelian　`prop.lc-ab-preabelian`
+# Pre-abelian　`prop.lc-ab-preabelian`
 English entry · root `../`
 [in graph](../#n=prop.lc-ab-preabelian)　·　[Chinese page (authoritative)](./prop.lc-ab-preabelian.md)
 

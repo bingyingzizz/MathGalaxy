@@ -1,4 +1,4 @@
-# Riemann ⟹ Lebesgue　`prop.riemann-implies-lebesgue`　·　续页（第 2 页）
+# Riemann 可积蕴含 Lebesgue 可积　`prop.riemann-implies-lebesgue`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.riemann-implies-lebesgue)　·　第 1 页 [nodes/prop.riemann-implies-lebesgue.md](./prop.riemann-implies-lebesgue.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

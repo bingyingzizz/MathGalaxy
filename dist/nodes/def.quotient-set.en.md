@@ -1,4 +1,4 @@
-# quotient　`def.quotient-set`
+# Quotient　`def.quotient-set`
 English entry · root `../`
 [in graph](../#n=def.quotient-set)　·　[Chinese page (authoritative)](./def.quotient-set.md)
 

@@ -1,4 +1,4 @@
-# order type　`thm.wellorder-ordinal`
+# Order Type　`thm.wellorder-ordinal`
 English entry · root `../`
 [in graph](../#n=thm.wellorder-ordinal)　·　[Chinese page (authoritative)](./thm.wellorder-ordinal.md)
 

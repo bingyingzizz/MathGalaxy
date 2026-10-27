@@ -1,4 +1,4 @@
-# comma category　`def.comma-category`
+# Comma Category　`def.comma-category`
 English entry · root `../`
 [in graph](../#n=def.comma-category)　·　[Chinese page (authoritative)](./def.comma-category.md)
 

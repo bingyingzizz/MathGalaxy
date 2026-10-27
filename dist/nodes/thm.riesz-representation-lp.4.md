@@ -1,4 +1,4 @@
-# (L^p)* ≅ L^q　`thm.riesz-representation-lp`　·　续页（第 4 页）
+# Riesz 表示定理　`thm.riesz-representation-lp`　·　续页（第 4 页）
 [在星图里打开](../#n=thm.riesz-representation-lp)　·　第 1 页 [nodes/thm.riesz-representation-lp.md](./thm.riesz-representation-lp.md)　·　上一页 [nodes/thm.riesz-representation-lp.3.md](./thm.riesz-representation-lp.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

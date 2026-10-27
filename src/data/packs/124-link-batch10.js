@@ -173,6 +173,13 @@ window.MG = window.MG || {};
       definition: 'def.tensor-module',
       usedBy: 'prop.module-tensor-universal',
       note: '这条万有性质讲的是 $M\\otimes_R N$ 这个对象本身；先有构造（商掉双线性关系），才谈得上它对双线性映射万有。'
+    },
+    {
+      id: 'def-link.curvature-tensor',
+      kind: 'definition',
+      definition: 'def.connection-form',
+      usedBy: 'def.curvature-tensor',
+      note: '黎曼曲率张量量的是「沿两条路径平行移动的差别」，它的定义对象就是联络：$R(X,Y)=\\nabla_X\\nabla_Y-\\nabla_Y\\nabla_X-\\nabla_{[X,Y]}$。'
     }
   ]
 });

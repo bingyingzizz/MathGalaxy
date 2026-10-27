@@ -1,7 +1,7 @@
 # 微分定理 + 正则性 $\implies RN$ 导数的点态公式
 `imp.rn-pointwise` · 推出 · strong 边 · 根 `../`
 
-`thm.differentiation-general` 可缩族的微分定理 + `def.regular-measure` 正则 Borel 测度 + `lem.covering` 覆盖引理 → `thm.rn-pointwise` RN 导数的点态公式
+`thm.differentiation-general` 可缩族的微分定理 + `def.regular-measure` 正则 Borel 测度 + `lem.covering` 覆盖引理 → `thm.rn-pointwise` Radon–Nikodym 导数的点态公式
 
 **③ 把 $\lambda$ 的坏点收集起来。** 不妨设 $\lambda \ge 0$，并取 $A$ 使 $\lambda(A) = m(A^c) = 0$（$\lambda \perp m$ 的见证）。令
 

@@ -9,6 +9,6 @@
 - 被 [`lem.schanuel`](../nodes/lem.schanuel.md) 合冲比较引理 用
 - 被 [`prop.pd-vanishing`](../nodes/prop.pd-vanishing.md) 投射维数与消失 用
 - ⇒ [`thm.gleason`](../nodes/thm.gleason.md) Gleason 定理
-- 被 [`prop.rhom-zs-sections`](../nodes/prop.rhom-zs-sections.md) Stonean 上 Z[S] 的 RHom 用
+- 被 [`prop.rhom-zs-sections`](../nodes/prop.rhom-zs-sections.md) Stonean 空间上自由模的导出 Hom 用
 
 > 续见 [nodes/def.projective-object.5.md](./def.projective-object.5.md)

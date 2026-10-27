@@ -10,14 +10,14 @@
 - thm.holder　Hölder 不等式　layer 19
 - prop.dense-simple-compact-support　紧支简单函数稠密　layer 19
 - prop.lq-in-lp-plus-lr　L^q 落在 L^p + L^r 里　layer 19
-- prop.lp-inter-lr-in-lq　L^p ∩ L^r ⊆ L^q　layer 19
-- prop.ell-p-inclusion　ℓ^p ⊆ ℓ^q　layer 19
+- prop.lp-inter-lr-in-lq　L^p 与 L^r 的交包含于 L^q　layer 19
+- prop.ell-p-inclusion　ℓ^p 包含于 ℓ^q　layer 19
 - prop.lp-inclusion-finite　有限测度时方向反过来　layer 19
 - def.duality-map　对偶配对 φ_g　layer 19
 - cor.lp-reflexive　L^p 自反　layer 19
 - thm.minkowski　Minkowski 不等式　layer 20
 - thm.linf-properties　L^∞ 的性质　layer 20
-- prop.duality-isometry　‖g‖_q = ‖φ_g‖　layer 20
+- prop.duality-isometry　对偶等距：范数相等　layer 20
 - prop.bounded-functional-gives-lq　有界 ⟹ g ∈ L^q　layer 20
 
 > 续见 `index/analysis.lp.2.md`

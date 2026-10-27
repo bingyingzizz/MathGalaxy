@@ -1,7 +1,7 @@
 # $\mu_F \ll m$ 的 $\varepsilon$–$\delta$ 刻画 $\implies$ 函数绝对连续 $\iff$ 测度绝对连续
 `imp.ac-measure` · 推出 · strong 边 · 根 `../`
 
-`prop.nbv-derivative` NBV 函数的导数与测度的关系 + `thm.ac-epsilon-delta` 绝对连续的 ε–δ 刻画 → `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续
+`prop.nbv-derivative` 规范有界变差函数的导数与测度的关系 + `thm.ac-epsilon-delta` 绝对连续的 ε–δ 刻画 → `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续
 
 **$(\Longleftarrow )$** 设 $\mu_F \ll  m$。应用测度版绝对连续的 $\varepsilon$–$\delta$ 刻画（注意 $\mu _F$ 有限，符合前提）：给定 $\varepsilon > 0$ 取 $\delta > 0$ 使
 

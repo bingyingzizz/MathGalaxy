@@ -1,4 +1,4 @@
-# split exact　`def.split-exact`
+# Split Exact　`def.split-exact`
 English entry · root `../`
 [in graph](../#n=def.split-exact)　·　[Chinese page (authoritative)](./def.split-exact.md)
 

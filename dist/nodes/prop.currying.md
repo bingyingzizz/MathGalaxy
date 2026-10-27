@@ -1,4 +1,4 @@
-# Currying　`prop.currying`
+# 函数的柯里化　`prop.currying`
 命题：$X \mapsto X \times Y \;\dashv\; Z \mapsto \mathbf{Set}(Y, Z)$
 layer 10 · 命题 · 伴随与反射 · 范畴论
 [在星图里打开](../#n=prop.currying)　·　[节点索引](../index.md)

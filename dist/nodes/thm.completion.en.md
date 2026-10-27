@@ -1,4 +1,4 @@
-# completion　`thm.completion`
+# Completion　`thm.completion`
 English entry · root `../`
 [in graph](../#n=thm.completion)　·　[Chinese page (authoritative)](./thm.completion.md)
 

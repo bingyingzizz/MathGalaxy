@@ -1,4 +1,4 @@
-# Stonean 上 Z[S] 的 RHom　`prop.rhom-zs-sections`　·　续页（第 2 页）
+# Stonean 空间上自由模的导出 Hom　`prop.rhom-zs-sections`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.rhom-zs-sections)　·　第 1 页 [nodes/prop.rhom-zs-sections.md](./prop.rhom-zs-sections.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

@@ -11,7 +11,7 @@ $$\det A = \sum_{j=1}^{n} a_{ij}\, C_{ij}$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.cramer`](../nodes/thm.cramer.md) Cramer 法则
-- ⇒ [`thm.cayley-hamilton`](../nodes/thm.cayley-hamilton.md) Cayley–Hamilton
+- ⇒ [`thm.cayley-hamilton`](../nodes/thm.cayley-hamilton.md) Cayley–Hamilton 定理
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.det-laplace.2.md](./prop.det-laplace.2.md)

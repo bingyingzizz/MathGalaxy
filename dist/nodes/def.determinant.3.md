@@ -5,3 +5,4 @@
 - ⇒ [`prop.det-laplace`](../nodes/prop.det-laplace.md) Laplace 展开
 - ⇒ [`thm.cramer`](../nodes/thm.cramer.md) Cramer 法则
 - 被 [`def.char-poly`](../nodes/def.char-poly.md) 特征多项式 用
+- 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用

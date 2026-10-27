@@ -1,4 +1,4 @@
-# Z/R/T 的 RHom 计算表　`table.rhom-zrt`　·　说明
+# Z、R、T 的导出 Hom 计算表　`table.rhom-zrt`　·　说明
 根 `../`
 
 **怎么读这张表**（$T = \mathbb{R}/\mathbb{Z}$）：

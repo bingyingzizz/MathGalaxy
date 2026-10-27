@@ -1,4 +1,4 @@
-# exact functor　`def.exact-functor`
+# Exact Functor　`def.exact-functor`
 English entry · root `../`
 [in graph](../#n=def.exact-functor)　·　[Chinese page (authoritative)](./def.exact-functor.md)
 

@@ -1,4 +1,4 @@
-# semi-normed abelian group　`def.semi-normed-ab-group`
+# Semi-normed Abelian Group　`def.semi-normed-ab-group`
 English entry · root `../`
 [in graph](../#n=def.semi-normed-ab-group)　·　[Chinese page (authoritative)](./def.semi-normed-ab-group.md)
 

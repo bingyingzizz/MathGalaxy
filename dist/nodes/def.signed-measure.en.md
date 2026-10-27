@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 15 · definition · cluster Signed Measures and Decompositions (`analysis.signed`) · Analysis
-names: `signed measure` (short) · `Signed Measure` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.signed-measure.md` and `proofs/`.

@@ -1,4 +1,4 @@
-# calculus of fractions　`prop.calculus-of-fractions`
+# Calculus of Fractions　`prop.calculus-of-fractions`
 English entry · root `../`
 [in graph](../#n=prop.calculus-of-fractions)　·　[Chinese page (authoritative)](./prop.calculus-of-fractions.md)
 

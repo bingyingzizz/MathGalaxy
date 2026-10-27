@@ -1,4 +1,4 @@
-# (L^p)* ≅ L^q　`thm.riesz-representation-lp`　·　说明
+# Riesz 表示定理　`thm.riesz-representation-lp`　·　说明
 根 `../`
 
 ⭐ 这是 $L^p$ 理论的高潮：**$L^p$ 上的每一个连续线性泛函，都只是「乘一个 $L^q$ 函数再积分」**。

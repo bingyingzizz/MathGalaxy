@@ -1,4 +1,4 @@
-# sigma-finite　`def.measure-space`
+# Sigma-finite　`def.measure-space`
 English entry · root `../`
 [in graph](../#n=def.measure-space)　·　[Chinese page (authoritative)](./def.measure-space.md)
 

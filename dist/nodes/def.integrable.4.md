@@ -8,7 +8,6 @@
 - 被 [`cor.ac-integral-continuity`](../nodes/cor.ac-integral-continuity.md) 积分的绝对连续性 用
 - 被 [`prop.integrals-equal-iff`](../nodes/prop.integrals-equal-iff.md) 何时两个函数积分处处相同 用
 - 被 [`thm.linf-properties`](../nodes/thm.linf-properties.md) L^∞ 的性质 用
-- 被 [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) NBV 函数的导数与测度的关系 用
-- 被 [`cor.integral-is-ac-nbv`](../nodes/cor.integral-is-ac-nbv.md) 积出来的函数是 AC · NBV 用
+- 被 [`prop.nbv-derivative`](../nodes/prop.nbv-derivative.md) 规范有界变差函数的导数与测度的关系 用
 
 > 续见 [nodes/def.integrable.5.md](./def.integrable.5.md)

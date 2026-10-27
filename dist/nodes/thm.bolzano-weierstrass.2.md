@@ -1,4 +1,4 @@
-# Bolzano–Weierstrass　`thm.bolzano-weierstrass`　·　续页（第 2 页）
+# Bolzano–Weierstrass 定理　`thm.bolzano-weierstrass`　·　续页（第 2 页）
 [在星图里打开](../#n=thm.bolzano-weierstrass)　·　第 1 页 [nodes/thm.bolzano-weierstrass.md](./thm.bolzano-weierstrass.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

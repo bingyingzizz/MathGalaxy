@@ -8,7 +8,7 @@
 - 被 [`thm.gleason`](../nodes/thm.gleason.md) Gleason 定理 用
 - 被 [`thm.stone-profinite`](../nodes/thm.stone-profinite.md) Stone ⟺ 投射有限 用
 - 被 [`prop.stonean-basic`](../nodes/prop.stonean-basic.md) 极端不连通的基本性质 用
-- 被 [`prop.stone-reflective`](../nodes/prop.stone-reflective.md) Stone 空间是 CHaus 的反射子范畴 用
+- 被 [`prop.stone-reflective`](../nodes/prop.stone-reflective.md) Stone 空间是紧 Hausdorff 空间的反射子范畴 用
 - 被 [`prop.td-reflective`](../nodes/prop.td-reflective.md) 全不连通空间是反射子范畴 用
 
 > 续见 [nodes/def.stone-space.4.md](./def.stone-space.4.md)

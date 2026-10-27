@@ -11,7 +11,7 @@
 - prop.adjunction-composition　伴随的复合　layer 10
 - prop.adjunction-naturality　伴随双射的自然性　layer 10
 - prop.forgetful-adjoints-examples　遗忘函子的伴随　layer 10
-- prop.currying　Currying　layer 10
+- prop.currying　函数的柯里化　layer 10
 - prop.copowers-give-adjoint　有余幂则可表示函子有伴随　layer 10
 - prop.adjoint-full-faithful　全忠实与单位　layer 11
 - prop.counit-epi-iff-faithful　余单位与忠实性　layer 11

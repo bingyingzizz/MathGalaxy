@@ -10,7 +10,7 @@ $$m(D) = 0$$
 
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.riemann-implies-lebesgue`](../nodes/prop.riemann-implies-lebesgue.md) Riemann ⟹ Lebesgue
+- ⇒ [`prop.riemann-implies-lebesgue`](../nodes/prop.riemann-implies-lebesgue.md) Riemann 可积蕴含 Lebesgue 可积
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.riemann-lebesgue-criterion.3.md](./thm.riemann-lebesgue-criterion.3.md)

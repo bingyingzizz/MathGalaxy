@@ -1,5 +1,5 @@
-# BV 的例子与基本性质　`prop.bv-examples`
-命题：BV 的几个例子与封闭性
+# 有界变差函数的例子与基本性质　`prop.bv-examples`
+命题：有界变差函数的几个例子与封闭性
 layer 17 · 命题 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=prop.bv-examples)　·　[节点索引](../index.md)
 

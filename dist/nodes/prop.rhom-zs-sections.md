@@ -1,4 +1,4 @@
-# Stonean 上 Z[S] 的 RHom　`prop.rhom-zs-sections`
+# Stonean 空间上自由模的导出 Hom　`prop.rhom-zs-sections`
 命题：$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[S], N) \cong N(S)$（$S$ Stonean）
 layer 18 · 命题 · 凝聚态上同调 · 凝聚态数学
 [在星图里打开](../#n=prop.rhom-zs-sections)　·　[节点索引](../index.md)

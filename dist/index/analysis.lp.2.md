@@ -2,4 +2,4 @@
 根 `../`　·　第 1 页 `index/analysis.lp.md`
 
 - thm.lp-banach　L^p 是 Banach 空间　layer 21
-- thm.riesz-representation-lp　(L^p)* ≅ L^q　layer 22
+- thm.riesz-representation-lp　Riesz 表示定理　layer 22

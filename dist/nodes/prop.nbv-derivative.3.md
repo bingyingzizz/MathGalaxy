@@ -1,4 +1,4 @@
-# NBV 函数的导数与测度的关系　`prop.nbv-derivative`　·　续页（第 3 页）
+# 规范有界变差函数的导数与测度的关系　`prop.nbv-derivative`　·　续页（第 3 页）
 [在星图里打开](../#n=prop.nbv-derivative)　·　第 1 页 [nodes/prop.nbv-derivative.md](./prop.nbv-derivative.md)　·　上一页 [nodes/prop.nbv-derivative.2.md](./prop.nbv-derivative.2.md)
 
 ## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative（续）

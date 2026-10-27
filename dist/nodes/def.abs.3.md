@@ -8,6 +8,6 @@
 - 被 [`thm.absolute-implies-convergent`](../nodes/thm.absolute-implies-convergent.md) 绝对收敛 ⟹ 收敛 用
 - 被 [`def.lp-norm`](../nodes/def.lp-norm.md) L^p 范数 用
 - 被 [`def.essential-sup`](../nodes/def.essential-sup.md) 本性上界与 L^∞ 用
-- 被 [`def.bounded-variation`](../nodes/def.bounded-variation.md) 有界变差 BV 用
+- 被 [`def.bounded-variation`](../nodes/def.bounded-variation.md) 有界变差函数 用
 - 被 [`def.cauchy-null`](../nodes/def.cauchy-null.md) Cauchy 列与零列 用
 - ⇒ [`thm.triangle`](../nodes/thm.triangle.md) 三角不等式

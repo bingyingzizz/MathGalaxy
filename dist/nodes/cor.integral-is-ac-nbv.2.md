@@ -1,4 +1,4 @@
-# 积出来的函数是 AC · NBV　`cor.integral-is-ac-nbv`　·　续页（第 2 页）
+# 积分得到的函数绝对连续且规范有界变差　`cor.integral-is-ac-nbv`　·　续页（第 2 页）
 [在星图里打开](../#n=cor.integral-is-ac-nbv)　·　第 1 页 [nodes/cor.integral-is-ac-nbv.md](./cor.integral-is-ac-nbv.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

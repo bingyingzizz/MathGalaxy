@@ -1,4 +1,4 @@
-# Ext 就是 RHom　`prop.ext-is-rhom`　·　续页（第 2 页）
+# Ext 就是导出 Hom　`prop.ext-is-rhom`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.ext-is-rhom)　·　第 1 页 [nodes/prop.ext-is-rhom.md](./prop.ext-is-rhom.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

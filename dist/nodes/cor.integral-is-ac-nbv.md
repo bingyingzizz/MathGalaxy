@@ -1,5 +1,5 @@
-# 积出来的函数是 AC · NBV　`cor.integral-is-ac-nbv`
-推论：$f \in L^{1}(m) \implies F(x) = \int_{-\infty}^{x} f$ 是 AC、NBV；反之亦然
+# 积分得到的函数绝对连续且规范有界变差　`cor.integral-is-ac-nbv`
+推论：$f \in L^{1}(m) \implies F(x) = \int_{-\infty}^{x} f$ 绝对连续且规范有界变差；反之亦然
 layer 20 · 推论 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=cor.integral-is-ac-nbv)　·　[节点索引](../index.md)
 
@@ -14,7 +14,7 @@ $$F(x) := \int_{-\infty}^{x} f(t) dt$$
 $$F(x) = \int_{-\infty}^{x} F'(t) dt$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.nbv`](../nodes/def.nbv.md) NBV：用到了定义 NBV　[proofs/def-link.nbv-ftc.md](../proofs/def-link.nbv-ftc.md)
+- [`def.nbv`](../nodes/def.nbv.md) 规范有界变差函数：用到了定义 规范有界变差函数　[proofs/def-link.nbv-ftc.md](../proofs/def-link.nbv-ftc.md)
 
 - …另有入边，续页见 [nodes/cor.integral-is-ac-nbv.2.md](./cor.integral-is-ac-nbv.2.md)
 

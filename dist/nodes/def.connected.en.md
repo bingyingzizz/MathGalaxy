@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 5 · definition · cluster Topological Spaces (`topology.general`) · Topology
-names: `connected` (short) · `Connectedness` (full)
+names: `Connected` (short) · `Connectedness` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.connected.md` and `proofs/`.

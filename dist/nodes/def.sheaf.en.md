@@ -1,4 +1,4 @@
-# sheaf　`def.sheaf`
+# Sheaf　`def.sheaf`
 English entry · root `../`
 [in graph](../#n=def.sheaf)　·　[Chinese page (authoritative)](./def.sheaf.md)
 

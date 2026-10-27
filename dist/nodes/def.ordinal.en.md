@@ -1,11 +1,11 @@
-# von Neumann Ordinal　`def.ordinal`
+# Von Neumann Ordinal　`def.ordinal`
 English entry · root `../`
 [in graph](../#n=def.ordinal)　·　[Chinese page (authoritative)](./def.ordinal.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 7 · definition · cluster Ordinals and Transfinite Recursion (`set.ordinal`) · Set Theory
-names: `ordinal` (short) · `von Neumann Ordinal` (full)
+names: `Ordinal` (short) · `Von Neumann Ordinal` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.ordinal.md` and `proofs/`.

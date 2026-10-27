@@ -1,4 +1,4 @@
-# ℓ^p ⊆ ℓ^q　`prop.ell-p-inclusion`　·　说明
+# ℓ^p 包含于 ℓ^q　`prop.ell-p-inclusion`　·　说明
 根 `../`
 
 这里 $\ell^p$ 是**计数测度**下的 $L^p$ —— 没有「局部爆破」可言，只剩「衰减」。

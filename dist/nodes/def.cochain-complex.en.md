@@ -1,4 +1,4 @@
-# complex　`def.cochain-complex`
+# Complex　`def.cochain-complex`
 English entry · root `../`
 [in graph](../#n=def.cochain-complex)　·　[Chinese page (authoritative)](./def.cochain-complex.md)
 

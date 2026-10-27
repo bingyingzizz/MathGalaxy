@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 20 · theorem · cluster Integration (`analysis.integral`) · Analysis
-names: `dominated convergence` (short) · `DCT, Dominated Convergence Theorem` (full)
+names: `Dominated Convergence` (short) · `DCT, Dominated Convergence Theorem` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.dct.md` and `proofs/`.

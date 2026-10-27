@@ -13,7 +13,7 @@ layer 16 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.cond-topos`](../nodes/thm.cond-topos.md) Cond 是拓扑斯
-- ⇒ [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) Cond 即 FCHaus 上的层
+- ⇒ [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) 凝聚态集就是有限紧 Hausdorff 空间上的层
 
 - …另有出边，续页见 [nodes/def.free-presentation.3.md](./def.free-presentation.3.md)
 

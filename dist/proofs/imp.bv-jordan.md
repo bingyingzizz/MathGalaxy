@@ -1,7 +1,7 @@
 # $T_F \pm F$ 递增 $\implies BV$ 的 Jordan 分解
 `imp.bv-jordan` · 推出 · strong 边 · 根 `../`
 
-`lem.variation-monotone` T_F ± F 递增 → `thm.bv-jordan` BV 的 Jordan 分解
+`lem.variation-monotone` T_F ± F 递增 → `thm.bv-jordan` 有界变差函数的 Jordan 分解
 
 **(b) 的 $(\Longleftarrow )$ 方向**：若 $F = G - H$（$G$、$H$ 有界递增），则对任意分划
 

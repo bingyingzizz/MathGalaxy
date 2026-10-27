@@ -3,4 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.minimal-poly`](../nodes/def.minimal-poly.md) 极小多项式 用
-- ⇒ [`thm.cayley-hamilton`](../nodes/thm.cayley-hamilton.md) Cayley–Hamilton
+- ⇒ [`thm.cayley-hamilton`](../nodes/thm.cayley-hamilton.md) Cayley–Hamilton 定理

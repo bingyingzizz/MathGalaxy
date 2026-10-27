@@ -1,5 +1,5 @@
-# 测度 ↔ NBV 的一一对应　`thm.borel-measure-nbv`
-定理：$\mathbb{R}$ 上的复 Borel 测度 $\longleftrightarrow$ NBV 函数
+# 测度与规范有界变差函数的一一对应　`thm.borel-measure-nbv`
+定理：$\mathbb{R}$ 上的复 Borel 测度与规范有界变差函数一一对应
 layer 19 · 定理 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=thm.borel-measure-nbv)　·　[节点索引](../index.md)
 

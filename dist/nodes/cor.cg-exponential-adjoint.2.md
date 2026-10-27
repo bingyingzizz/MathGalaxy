@@ -1,4 +1,4 @@
-# CG 的指数伴随　`cor.cg-exponential-adjoint`　·　续页（第 2 页）
+# 紧生成空间的指数伴随　`cor.cg-exponential-adjoint`　·　续页（第 2 页）
 [在星图里打开](../#n=cor.cg-exponential-adjoint)　·　第 1 页 [nodes/cor.cg-exponential-adjoint.md](./cor.cg-exponential-adjoint.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

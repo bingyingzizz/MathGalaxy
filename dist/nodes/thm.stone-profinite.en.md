@@ -1,4 +1,4 @@
-# Stone duality　`thm.stone-profinite`
+# Stone Duality　`thm.stone-profinite`
 English entry · root `../`
 [in graph](../#n=thm.stone-profinite)　·　[Chinese page (authoritative)](./thm.stone-profinite.md)
 

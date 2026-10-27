@@ -1,4 +1,4 @@
-# 离散对偶的 RHom 与导出张量　`prop.rhom-dual-tensor`　·　续页（第 2 页）
+# 离散对偶的导出 Hom 与导出张量　`prop.rhom-dual-tensor`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.rhom-dual-tensor)　·　第 1 页 [nodes/prop.rhom-dual-tensor.md](./prop.rhom-dual-tensor.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

@@ -1,4 +1,4 @@
-# Cauchy–Schwarz　`thm.cauchy-schwarz`
+# Cauchy–Schwarz 不等式　`thm.cauchy-schwarz`
 定理：Cauchy–Schwarz 不等式
 layer 16 · 定理 · 内积空间与正交性 · 抽象代数+分析学
 [在星图里打开](../#n=thm.cauchy-schwarz)　·　[节点索引](../index.md)

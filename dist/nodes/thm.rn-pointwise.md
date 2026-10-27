@@ -1,4 +1,4 @@
-# RN 导数的点态公式　`thm.rn-pointwise`
+# Radon–Nikodym 导数的点态公式　`thm.rn-pointwise`
 定理：$\nu(E_{r})/m(E_{r}) \to f(x) \text{a.e.}$，其中 $d\nu = d\lambda + f dm$
 layer 27 · 定理 · 微分定理 · 分析学
 [在星图里打开](../#n=thm.rn-pointwise)　·　[节点索引](../index.md)

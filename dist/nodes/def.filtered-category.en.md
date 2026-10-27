@@ -1,4 +1,4 @@
-# filtered category　`def.filtered-category`
+# Filtered Category　`def.filtered-category`
 English entry · root `../`
 [in graph](../#n=def.filtered-category)　·　[Chinese page (authoritative)](./def.filtered-category.md)
 

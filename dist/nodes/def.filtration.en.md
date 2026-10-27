@@ -1,4 +1,4 @@
-# filtration　`def.filtration`
+# Filtration　`def.filtration`
 English entry · root `../`
 [in graph](../#n=def.filtration)　·　[Chinese page (authoritative)](./def.filtration.md)
 

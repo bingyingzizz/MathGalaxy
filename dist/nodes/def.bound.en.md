@@ -1,4 +1,4 @@
-# least upper bound　`def.bound`
+# Least Upper Bound　`def.bound`
 English entry · root `../`
 [in graph](../#n=def.bound)　·　[Chinese page (authoritative)](./def.bound.md)
 

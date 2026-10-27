@@ -1,4 +1,4 @@
-# Fubini–Tonelli　`thm.fubini-tonelli`　·　说明
+# Fubini–Tonelli 定理　`thm.fubini-tonelli`　·　说明
 根 `../`
 
 ⭐ **Tonelli 不需要任何附加条件**（非负就够了），所以实际使用时通常先拿它「试算」：如果两个累次积分里有一个算出来是有限数，那就说明 $f$ 可积，于是可以放心换序。

@@ -1,4 +1,4 @@
-# Kan extensions: colimits and right adjoints　`ex.kan-extension`
+# Kan Extensions: Colimits and Right Adjoints　`ex.kan-extension`
 English entry · root `../`
 [in graph](../#n=ex.kan-extension)　·　[Chinese page (authoritative)](./ex.kan-extension.md)
 

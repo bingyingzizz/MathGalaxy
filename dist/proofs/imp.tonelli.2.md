@@ -1,7 +1,7 @@
 # 集合版（截口公式）+ MCT $\implies$ Tonelli
 `imp.tonelli` · 推出 · strong 边 · 根 `../`
 
-`thm.product-measure-sections` 乘积测度由截口给出 + `thm.mct` 单调收敛定理 → `thm.fubini-tonelli` Fubini–Tonelli
+`thm.product-measure-sections` 乘积测度由截口给出 + `thm.mct` 单调收敛定理 → `thm.fubini-tonelli` Fubini–Tonelli 定理
 
 $$\int_X ( \int_Y f d\nu ) d\mu = \lim_n \int f_n d(\mu \times \nu) = \int f d(\mu \times \nu)$$
 

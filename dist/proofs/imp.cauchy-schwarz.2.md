@@ -1,7 +1,7 @@
 # 内积的正定性 $\implies$ Cauchy–Schwarz
 `imp.cauchy-schwarz` · 推出 · strong 边 · 根 `../`
 
-`def.inner-product` 内积 + `def.induced-norm` 诱导范数与距离 → `thm.cauchy-schwarz` Cauchy–Schwarz
+`def.inner-product` 内积 + `def.induced-norm` 诱导范数与距离 → `thm.cauchy-schwarz` Cauchy–Schwarz 不等式
 
 由此也得三角不等式：$\|u+v\|^{2} = \|u\|^{2} + 2\operatorname{Re}\langle u,v\rangle + \|v\|^{2} \le \|u\|^{2} + 2\|u\|\|v\| + \|v\|^{2} = (\|u\|+\|v\|)^{2}$。
 

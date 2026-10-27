@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 15 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
-names: `premeasure` (short) · `Premeasure` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.premeasure.md` and `proofs/`.

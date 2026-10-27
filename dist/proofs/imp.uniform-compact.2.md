@@ -1,7 +1,7 @@
 # 列紧性 + 一致连续的定义 $\implies$ Cantor 定理
 `imp.uniform-compact` · 推出 · strong 边 · 根 `../`
 
-`thm.bolzano-weierstrass` Bolzano–Weierstrass + `def.uniform-continuity` 一致连续 → `thm.uniform-continuity-compact` 紧集上连续 ⟹ 一致连续
+`thm.bolzano-weierstrass` Bolzano–Weierstrass 定理 + `def.uniform-continuity` 一致连续 → `thm.uniform-continuity-compact` 紧集上连续 ⟹ 一致连续
 
 1. $X$ 紧 $\implies$ 列紧，故 $\{x_n\}$ 有子列 $x_{n_k} \to x^{*} \in X$。
 2. 由 $d(x_{n_k}, x_{n_k}') < 1/n_k \to 0$ 与三角不等式，$x_{n_k}' \to x^{*}$ 也成立。

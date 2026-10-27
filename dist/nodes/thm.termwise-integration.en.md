@@ -1,4 +1,4 @@
-# term-by-term integration　`thm.termwise-integration`
+# Term-by-term Integration　`thm.termwise-integration`
 English entry · root `../`
 [in graph](../#n=thm.termwise-integration)　·　[Chinese page (authoritative)](./thm.termwise-integration.md)
 

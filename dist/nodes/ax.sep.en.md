@@ -1,4 +1,4 @@
-# separation　`ax.sep`
+# Separation　`ax.sep`
 English entry · root `../`
 [in graph](../#n=ax.sep)　·　[Chinese page (authoritative)](./ax.sep.md)
 

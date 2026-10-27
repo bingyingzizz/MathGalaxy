@@ -1,4 +1,4 @@
-# FCHaus 上层的判据　`prop.fchaus-sheaf`
+# 有限紧 Hausdorff 空间上层的判据　`prop.fchaus-sheaf`
 自由紧 Hausforff 空间上的层 $\iff$ 保有限积
 layer 17 · 命题 · 凝聚态集 · 凝聚态数学
 [在星图里打开](../#n=prop.fchaus-sheaf)　·　[节点索引](../index.md)
@@ -9,7 +9,7 @@ layer 17 · 命题 · 凝聚态集 · 凝聚态数学
 - [`def.free-compact-hausdorff`](../nodes/def.free-compact-hausdorff.md) 自由紧 Hausdorff 空间：用到了定义 自由紧 Hausdorff 空间　[proofs/def-dep.free-sheaf.md](../proofs/def-dep.free-sheaf.md)
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) Cond 即 FCHaus 上的层
+- ⇒ [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) 凝聚态集就是有限紧 Hausdorff 空间上的层
 
 refs: Le Stum, Exercise 4.2
 

@@ -6,7 +6,7 @@
 - 被 [`prop.complete-measurable`](../nodes/prop.complete-measurable.md) 完备性 ⟺ 不破坏可测性 用
 - 被 [`prop.completion-measurable-function`](../nodes/prop.completion-measurable-function.md) 完备化后可改在零集上 用
 - 被 [`prop.integral-zero-iff`](../nodes/prop.integral-zero-iff.md) 积分为零 ⟺ 几乎处处为零 用
-- 被 [`cor.mct-ae`](../nodes/cor.mct-ae.md) MCT（a.e. 版本） 用
+- 被 [`cor.mct-ae`](../nodes/cor.mct-ae.md) 单调收敛定理（几乎处处版本） 用
 - 被 [`thm.sard`](../nodes/thm.sard.md) Sard 定理 用
 - 被 [`thm.fubini-complete`](../nodes/thm.fubini-complete.md) 完备情形的 F–T 用
 - 被 [`def.ae`](../nodes/def.ae.md) 几乎处处 用

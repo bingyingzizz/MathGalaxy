@@ -10,7 +10,7 @@ $$\int |f - g| d\mu = 0; $$
 $$f = g\quad  \mu-\text{a.e.}$$
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`prop.rn-chain-rule`](../nodes/prop.rn-chain-rule.md) RN 导数的链式法则
+- ⇒ [`prop.rn-chain-rule`](../nodes/prop.rn-chain-rule.md) Radon–Nikodym 导数的链式法则
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.integrals-equal-iff.2.md](./prop.integrals-equal-iff.2.md)

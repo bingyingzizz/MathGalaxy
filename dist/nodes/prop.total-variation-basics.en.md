@@ -1,4 +1,4 @@
-# total variation　`prop.total-variation-basics`
+# Total Variation　`prop.total-variation-basics`
 English entry · root `../`
 [in graph](../#n=prop.total-variation-basics)　·　[Chinese page (authoritative)](./prop.total-variation-basics.md)
 

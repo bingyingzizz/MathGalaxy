@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Sheaves and Topologies (`cat.sheaf`) · Category Theory
-names: `sections functor` (short) · `Sections Functor` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.section-functor.md` and `proofs/`.

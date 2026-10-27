@@ -1,4 +1,4 @@
-# shrinking　`def.shrinks-nicely`
+# Shrinking　`def.shrinks-nicely`
 English entry · root `../`
 [in graph](../#n=def.shrinks-nicely)　·　[Chinese page (authoritative)](./def.shrinks-nicely.md)
 

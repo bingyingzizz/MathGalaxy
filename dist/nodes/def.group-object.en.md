@@ -1,4 +1,4 @@
-# group object　`def.group-object`
+# Group Object　`def.group-object`
 English entry · root `../`
 [in graph](../#n=def.group-object)　·　[Chinese page (authoritative)](./def.group-object.md)
 

@@ -12,7 +12,7 @@ $$f\text{ 可积} \iff \int |f| d\mu < \infty$$
 $$L^1(\mu) = L^1(X, \mathcal{M}, \mu) = L^1(X, \mu)$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.lplus`](../nodes/def.lplus.md) L⁺：用到了定义 L⁺　[proofs/def-link.lplus-integrable.md](../proofs/def-link.lplus-integrable.md)
+- [`def.lplus`](../nodes/def.lplus.md) 非负可测函数类：用到了定义 非负可测函数类　[proofs/def-link.lplus-integrable.md](../proofs/def-link.lplus-integrable.md)
 
 - …另有入边，续页见 [nodes/def.integrable.2.md](./def.integrable.2.md)
 

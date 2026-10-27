@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 15 · definition · cluster Homology and Exact Sequences (`hom.cohomology`) · Homological Algebra
-names: `cohomological functor` (short) · `Cohomological Functor` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.cohomological-functor.md` and `proofs/`.

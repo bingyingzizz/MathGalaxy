@@ -1,7 +1,7 @@
 # $T_F \pm F$ 递增 $\implies BV$ 的 Jordan 分解
 `imp.bv-jordan` · 推出 · strong 边 · 根 `../`
 
-`lem.variation-monotone` T_F ± F 递增 → `thm.bv-jordan` BV 的 Jordan 分解
+`lem.variation-monotone` T_F ± F 递增 → `thm.bv-jordan` 有界变差函数的 Jordan 分解
 
 **(a)**：把实部虚部分开即可（$|\operatorname{Re} F| \le |F|$、$|F| \le |\operatorname{Re} F| + |\operatorname{Im} F|$，两边夹）。∎
 

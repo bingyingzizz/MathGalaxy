@@ -1,4 +1,4 @@
-# sheaf cohomology　`def.sheaf-cohomology`
+# Sheaf Cohomology　`def.sheaf-cohomology`
 English entry · root `../`
 [in graph](../#n=def.sheaf-cohomology)　·　[Chinese page (authoritative)](./def.sheaf-cohomology.md)
 

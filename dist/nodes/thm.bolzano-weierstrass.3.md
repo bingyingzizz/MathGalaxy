@@ -1,4 +1,4 @@
-# Bolzano–Weierstrass　`thm.bolzano-weierstrass`　·　续页（第 3 页）
+# Bolzano–Weierstrass 定理　`thm.bolzano-weierstrass`　·　续页（第 3 页）
 [在星图里打开](../#n=thm.bolzano-weierstrass)　·　第 1 页 [nodes/thm.bolzano-weierstrass.md](./thm.bolzano-weierstrass.md)　·　上一页 [nodes/thm.bolzano-weierstrass.2.md](./thm.bolzano-weierstrass.2.md)
 
 ## 它能推出什么 / 谁在用它（续）

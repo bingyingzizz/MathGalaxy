@@ -1,5 +1,5 @@
-# BV 函数的正则性　`prop.bv-regularity`
-命题：BV 函数的单侧极限都存在、不连续点可数、a.e. 可导
+# 有界变差函数的正则性　`prop.bv-regularity`
+命题：有界变差函数的单侧极限都存在、不连续点可数、几乎处处可导
 layer 19 · 命题 · 有界变差与绝对连续 · 分析学
 [在星图里打开](../#n=prop.bv-regularity)　·　[节点索引](../index.md)
 

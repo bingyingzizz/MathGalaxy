@@ -9,7 +9,7 @@
 - 被 [`def.reflective-subcategory`](../nodes/def.reflective-subcategory.md) 反射子范畴 用
 - 被 [`def.kan-extension`](../nodes/def.kan-extension.md) Kan 延拓 用
 - 被 [`def.topos-morphism`](../nodes/def.topos-morphism.md) 拓扑斯的态射 用
-- 被 [`def.chaus-pretopos`](../nodes/def.chaus-pretopos.md) CHaus 是预拓扑斯 用
+- 被 [`def.chaus-pretopos`](../nodes/def.chaus-pretopos.md) 紧 Hausdorff 空间构成预拓扑斯 用
 - 被 [`def.tensor-abelian-sheaf`](../nodes/def.tensor-abelian-sheaf.md) 阿贝尔层的张量积 用
 
 > 续见 [nodes/def.adjoint.7.md](./def.adjoint.7.md)

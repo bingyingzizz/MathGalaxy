@@ -1,4 +1,4 @@
-# injective criterion　`prop.injective-criterion`
+# Injective Criterion　`prop.injective-criterion`
 English entry · root `../`
 [in graph](../#n=prop.injective-criterion)　·　[Chinese page (authoritative)](./prop.injective-criterion.md)
 

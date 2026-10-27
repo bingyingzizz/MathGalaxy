@@ -1,18 +1,16 @@
 # Euler 公式　`thm.euler-formula`
-定理：$e^{i\theta} = \cos\theta + i\sin\theta$
-layer 17 · 定理 · 函数列、幂级数与初等函数 · 分析学
+Euler 公式
+layer 27 · 定理 · 曲面论 · 微分几何
 [在星图里打开](../#n=thm.euler-formula)　·　[节点索引](../index.md)
 
-对一切实数（或复数）$\theta$，
+取主方向标架：$e_{1}, e_{2}$ 是单位正交主方向，$W(e_{i}) = k_{i}e_{i}$。设单位向量 $V = \cos\theta\,e_{1}+\sin\theta\,e_{2}$，则
 
-$$\exp(i\theta) = e^{i\theta} = \cos\theta + i\sin\theta$$
-
-特别地 $e^{i\pi} = -1$。
+$$k_{n}(V) = k_{1}\cos^{2}\theta+k_{2}\sin^{2}\theta .$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.exp-function`](../nodes/def.exp-function.md) 指数函数 + [`def.trig-function`](../nodes/def.trig-function.md) 正弦与余弦：级数的奇偶拆分 $\implies$ Euler 公式　[proofs/imp.euler-formula.md](../proofs/imp.euler-formula.md)
+- …另有入边，续页见 [nodes/thm.euler-formula.2.md](./thm.euler-formula.2.md)
 
-refs: Rudin, Principles of Mathematical Analysis, Ch. 8
+refs: do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· Euler 公式；陈维桓《微分几何讲义》, 「曲面的局部理论」· Euler 公式
 
 > 说明见 `notes/thm.euler-formula.md`
 

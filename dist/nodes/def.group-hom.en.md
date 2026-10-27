@@ -1,4 +1,4 @@
-# group homomorphism　`def.group-hom`
+# Group Homomorphism　`def.group-hom`
 English entry · root `../`
 [in graph](../#n=def.group-hom)　·　[Chinese page (authoritative)](./def.group-hom.md)
 

@@ -1,7 +1,7 @@
 # $\mathrm{Cond} \simeq \widehat{\mathbf{FCHaus}}$
 `imp.cond-fchaus` · 推出 · strong 边 · 根 `../`
 
-`prop.fchaus-sheaf` FCHaus 上层的判据 + `prop.fchaus-pretopology` FCHaus 上的预拓扑 + `def.free-presentation` 自由表示 → `thm.cond-equiv-fchaus` Cond 即 FCHaus 上的层
+`prop.fchaus-sheaf` 有限紧 Hausdorff 空间上层的判据 + `prop.fchaus-pretopology` 有限紧 Hausdorff 空间上的预拓扑 + `def.free-presentation` 自由表示 → `thm.cond-equiv-fchaus` 凝聚态集就是有限紧 Hausdorff 空间上的层
 
 **反过来赋值。** 给定右边的一个 $x$ 与一个映射 $f : F'' \to S$（$F''$ 自由），由自由性 $f$ 可以提升为 $\widetilde{f} : F'' \to F$（$F \twoheadrightarrow S$ 是那个自由表示），定义
 

@@ -1,4 +1,4 @@
-# ‖g‖_q = ‖φ_g‖　`prop.duality-isometry`　·　续页（第 2 页）
+# 对偶等距：范数相等　`prop.duality-isometry`　·　续页（第 2 页）
 [在星图里打开](../#n=prop.duality-isometry)　·　第 1 页 [nodes/prop.duality-isometry.md](./prop.duality-isometry.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

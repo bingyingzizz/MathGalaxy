@@ -6,4 +6,4 @@
 - 被 [`prop.condensed-criterion`](../nodes/prop.condensed-criterion.md) 凝聚态集的刻画 用
 - 被 [`def.precanonical-topology`](../nodes/def.precanonical-topology.md) 预标准拓扑 用
 - 被 [`def.topos`](../nodes/def.topos.md) 拓扑斯 用
-- 被 [`def.chaus-pretopos`](../nodes/def.chaus-pretopos.md) CHaus 是预拓扑斯 用
+- 被 [`def.chaus-pretopos`](../nodes/def.chaus-pretopos.md) 紧 Hausdorff 空间构成预拓扑斯 用

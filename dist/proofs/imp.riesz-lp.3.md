@@ -1,7 +1,7 @@
 # 把泛函变成测度 $\implies$ $(L^p)^* \cong L^q$
 `imp.riesz-lp` · 推出 · strong 边 · 根 `../`
 
-`prop.bounded-functional-gives-lq` 有界 ⟹ g ∈ L^q + `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理 + `prop.duality-isometry` ‖g‖_q = ‖φ_g‖ → `thm.riesz-representation-lp` (L^p)* ≅ L^q
+`prop.bounded-functional-gives-lq` 有界 ⟹ g ∈ L^q + `thm.lebesgue-radon-nikodym` Lebesgue–Radon–Nikodym 定理 + `prop.duality-isometry` 对偶等距：范数相等 → `thm.riesz-representation-lp` Riesz 表示定理
 
 **④ 把 $g$ 提升到 $L^q$。** 由 $\left| \int fg \right| = |\Phi(f)| \le \|\Phi\| \, \|f\|_p$，有界泛函那条命题给出 $g \in L^q$ 且 $\|g\|_q \le \|\Phi\|$。再由稠密性（简单函数在 $L^p$ 稠密、$\Phi$ 连续）得 $\Phi(f) = \int fg$ 对**一切** $f \in L^p$ 成立。
 

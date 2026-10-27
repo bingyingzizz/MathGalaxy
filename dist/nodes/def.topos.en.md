@@ -1,4 +1,4 @@
-# topos　`def.topos`
+# Topos　`def.topos`
 English entry · root `../`
 [in graph](../#n=def.topos)　·　[Chinese page (authoritative)](./def.topos.md)
 

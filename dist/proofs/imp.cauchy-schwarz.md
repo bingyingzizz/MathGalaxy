@@ -1,7 +1,7 @@
 # 内积的正定性 $\implies$ Cauchy–Schwarz
 `imp.cauchy-schwarz` · 推出 · strong 边 · 根 `../`
 
-`def.inner-product` 内积 + `def.induced-norm` 诱导范数与距离 → `thm.cauchy-schwarz` Cauchy–Schwarz
+`def.inner-product` 内积 + `def.induced-norm` 诱导范数与距离 → `thm.cauchy-schwarz` Cauchy–Schwarz 不等式
 
 若 $v = 0$ 结论平凡。设 $v \ne 0$，对一切 $t \in K$ 有
 

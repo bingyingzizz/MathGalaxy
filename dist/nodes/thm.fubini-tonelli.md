@@ -1,4 +1,4 @@
-# Fubini–Tonelli　`thm.fubini-tonelli`
+# Fubini–Tonelli 定理　`thm.fubini-tonelli`
 Fubini–Tonelli 定理（重积分可交换次序）
 layer 20 · 定理 · 乘积测度与 Fubini · 分析学
 [在星图里打开](../#n=thm.fubini-tonelli)　·　[节点索引](../index.md)

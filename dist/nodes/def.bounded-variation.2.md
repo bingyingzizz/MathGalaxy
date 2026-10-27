@@ -1,4 +1,4 @@
-# 有界变差 BV　`def.bounded-variation`　·　续页（第 2 页）
+# 有界变差函数　`def.bounded-variation`　·　续页（第 2 页）
 [在星图里打开](../#n=def.bounded-variation)　·　第 1 页 [nodes/def.bounded-variation.md](./def.bounded-variation.md)
 
 ## 陈述（续）

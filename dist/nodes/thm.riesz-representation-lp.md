@@ -1,4 +1,4 @@
-# (L^p)* ≅ L^q　`thm.riesz-representation-lp`
+# Riesz 表示定理　`thm.riesz-representation-lp`
 定理（Riesz 表示）：$1 < p < \infty$ 时 $(L^p)^{*} \cong L^q$
 layer 22 · 定理 · L^p 空间 · 分析学
 [在星图里打开](../#n=thm.riesz-representation-lp)　·　[节点索引](../index.md)

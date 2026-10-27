@@ -135,8 +135,16 @@
       var g = view.graph;
       var html = '';
       html += kindBadge(n.type);
-      /* ⭐ T2.4：英文模式下面板大标题走 title_en（缺了回落 label_en → 中文 title） */
-      html += '<h1 class="pn-h1">' + U.titleHtml(MG.isEn ? MG.titleOf(n) : n.title) + '</h1>';
+      /* ⭐ T2.4：英文模式下面板大标题走 title_en（缺了回落 label_en → 中文 title）
+         ⭐ 2026-10-27：中文模式下，有英文名的节点在标题后补一个括号（用户要求：
+            「点进去标题后加一个括号，里面写对应的英文名称」）。英文名来自
+            title_en，缺了就用 label_en；两个都没有就不加括号。 */
+      var _h1 = MG.isEn ? MG.titleOf(n) : n.title;
+      if (!MG.isEn) {
+        var _en = n.title_en || n.label_en;
+        if (_en) _h1 += '（' + _en + '）';
+      }
+      html += '<h1 class="pn-h1">' + U.titleHtml(_h1) + '</h1>';
       html += '<div class="pn-h2">' + U.escapeHtml(n.id) + '</div>';
       /* 依赖深度：由连线现算（见 core/layers.js），不写在内容里 */
       if (typeof n.layer === 'number') {

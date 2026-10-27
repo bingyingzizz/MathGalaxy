@@ -1,4 +1,4 @@
-# 紧 S 对实 Banach 的 RHom　`ex.chaus-banach-rhom`
+# 紧空间对实 Banach 空间的导出 Hom　`ex.chaus-banach-rhom`
 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z} \cdot S,\ N) \cong C(S, N)$
 layer 16 · 例 · 凝聚态上同调 · 凝聚态数学+同调代数
 [在星图里打开](../#n=ex.chaus-banach-rhom)　·　[节点索引](../index.md)

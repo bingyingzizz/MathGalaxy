@@ -1,4 +1,4 @@
-# abelianization　`prop.abelianization`
+# Abelianization　`prop.abelianization`
 English entry · root `../`
 [in graph](../#n=prop.abelianization)　·　[Chinese page (authoritative)](./prop.abelianization.md)
 

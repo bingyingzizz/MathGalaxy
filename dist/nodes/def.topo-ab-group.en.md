@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Topological Abelian Groups (`cond.topo`) · Condensed Mathematics / Topology
-names: `topological abelian group` (short) · `Topological Abelian Group` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.topo-ab-group.md` and `proofs/`.

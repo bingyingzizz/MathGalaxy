@@ -11,7 +11,6 @@
 - prop.discrete-iff-constant　离散即常　layer 17
 - prop.underlying-preserves-coproduct　底函子保不交并　layer 17
 - thm.cond-topos　Cond 是拓扑斯　layer 18
-- thm.cond-equiv-fchaus　Cond 即 FCHaus 上的层　layer 18
-- cor.cond-ktop-finite-products　底空间保有限积　layer 18
+- thm.cond-equiv-fchaus　凝聚态集就是有限紧 Hausdorff 空间上的层　layer 18
 
 > 续见 `index/cond.set.3.md`

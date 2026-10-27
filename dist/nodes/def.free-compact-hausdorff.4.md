@@ -3,8 +3,8 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`prop.free-projective`](../nodes/prop.free-projective.md) 自由紧 Haus 是投射对象 用
-- 被 [`prop.fchaus-pretopology`](../nodes/prop.fchaus-pretopology.md) FCHaus 上的预拓扑 用
-- 被 [`prop.fchaus-sheaf`](../nodes/prop.fchaus-sheaf.md) FCHaus 上层的判据 用
+- 被 [`prop.fchaus-pretopology`](../nodes/prop.fchaus-pretopology.md) 有限紧 Hausdorff 空间上的预拓扑 用
+- 被 [`prop.fchaus-sheaf`](../nodes/prop.fchaus-sheaf.md) 有限紧 Hausdorff 空间上层的判据 用
 - 被 [`prop.cond-epi`](../nodes/prop.cond-epi.md) 凝聚态集满态射的判据 用
 - 被 [`prop.condab-section`](../nodes/prop.condab-section.md) 截面函子保极限余极限 用
 - 被 [`thm.qcqs-chaus-equiv`](../nodes/thm.qcqs-chaus-equiv.md) 拟紧 与 拟紧拟分离 的判定 用

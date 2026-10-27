@@ -12,7 +12,7 @@ $$P \longmapsto \operatorname{Hom}_{\mathbb{Z}}\bigl(M,\ \operatorname{Hom}_{\ma
 
 
 ## 它能推出什么 / 谁在用它
-- 被 [`prop.tensor-rhom-natural-map`](../nodes/prop.tensor-rhom-natural-map.md) 张量与 RHom 的配对 用
+- 被 [`prop.tensor-rhom-natural-map`](../nodes/prop.tensor-rhom-natural-map.md) 张量与导出 Hom 的配对 用
 
 - …另有出边，续页见 [nodes/def.tensor-abelian-sheaf.5.md](./def.tensor-abelian-sheaf.5.md)
 

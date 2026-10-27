@@ -1,4 +1,4 @@
-# essential supremum　`def.essential-sup`
+# Essential Supremum　`def.essential-sup`
 English entry · root `../`
 [in graph](../#n=def.essential-sup)　·　[Chinese page (authoritative)](./def.essential-sup.md)
 

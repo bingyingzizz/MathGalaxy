@@ -1,4 +1,4 @@
-# 数学星图 · 目录（第 2/2 页）
+# 数学星图 · 目录（第 2/3 页）
 
 根 `../`　·　第 1 页 `index.md`
 
@@ -16,3 +16,5 @@ cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
 
 ## 解析几何（analytic）
 analytic.adic　analytic.dual
+
+> 续见 `index.3.md`

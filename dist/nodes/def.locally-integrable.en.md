@@ -1,4 +1,4 @@
-# locally integrable　`def.locally-integrable`
+# Locally Integrable　`def.locally-integrable`
 English entry · root `../`
 [in graph](../#n=def.locally-integrable)　·　[Chinese page (authoritative)](./def.locally-integrable.md)
 

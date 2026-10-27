@@ -1,4 +1,4 @@
-# right derived functor　`def.right-derived-functor`
+# Right Derived Functor　`def.right-derived-functor`
 English entry · root `../`
 [in graph](../#n=def.right-derived-functor)　·　[Chinese page (authoritative)](./def.right-derived-functor.md)
 

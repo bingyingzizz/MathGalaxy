@@ -6,7 +6,7 @@
 - 被 [`thm.approximation-L1`](../nodes/thm.approximation-L1.md) L¹ 里的逼近 用
 - ⇒ [`prop.L1-implies-measure`](../nodes/prop.L1-implies-measure.md) L¹ 收敛 ⟹ 依测度收敛
 - 被 [`prop.L1-implies-measure`](../nodes/prop.L1-implies-measure.md) L¹ 收敛 ⟹ 依测度收敛 用
-- 被 [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli 用
+- 被 [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli 定理 用
 - 被 [`prop.integral-gives-ac`](../nodes/prop.integral-gives-ac.md) 积分给出绝对连续测度 用
 - 被 [`thm.rn-complex`](../nodes/thm.rn-complex.md) 复测度的 Radon–Nikodym 用
 - 被 [`prop.L1-signed`](../nodes/prop.L1-signed.md) L¹(ν) 与全变差 用

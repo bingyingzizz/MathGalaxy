@@ -5,13 +5,13 @@
 
 - prop.cond-projectives　Cond 有足够多投射对象　layer 15
 - prop.open-covering-covering　开覆盖给出覆盖　layer 15
-- def.chaus-pretopos　CHaus 是预拓扑斯　layer 16
+- def.chaus-pretopos　紧 Hausdorff 空间构成预拓扑斯　layer 16
 - def.condensed-set　凝聚态集　layer 16
 - def.underlying-topological-space　底拓扑空间　layer 16
 - prop.hom-presheaf-sheaf　Hom 预层是层　layer 16
 - prop.condensed-criterion　凝聚态集的刻画　layer 17
-- prop.fchaus-pretopology　FCHaus 上的预拓扑　layer 17
-- prop.fchaus-sheaf　FCHaus 上层的判据　layer 17
+- prop.fchaus-pretopology　有限紧 Hausdorff 空间上的预拓扑　layer 17
+- prop.fchaus-sheaf　有限紧 Hausdorff 空间上层的判据　layer 17
 - prop.cond-epi　凝聚态集满态射的判据　layer 17
 - prop.cond-internal-hom　内部 Hom 的函数空间刻画　layer 17
 - thm.qcqs-chaus-equiv　拟紧 与 拟紧拟分离 的判定　layer 17

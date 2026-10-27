@@ -1,4 +1,4 @@
-# CGWH 的开闭子空间与滤过余极限　`prop.cgwh-closed`
+# 弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限　`prop.cgwh-closed`
 $\mathrm{CGWH}$ 的封闭性
 layer 7 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=prop.cgwh-closed)　·　[节点索引](../index.md)

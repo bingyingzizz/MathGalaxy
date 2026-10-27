@@ -1,7 +1,7 @@
 # $\mathbf{CHaus}$ 是预拓扑斯 $\implies$ $\mathrm{Cond}$ 是拓扑斯
 `imp.cond-topos` · 推出 · strong 边 · 根 `../`
 
-`def.chaus-pretopos` CHaus 是预拓扑斯 + `def.free-presentation` 自由表示 + `thm.giraud` Giraud 定理 → `thm.cond-topos` Cond 是拓扑斯
+`def.chaus-pretopos` 紧 Hausdorff 空间构成预拓扑斯 + `def.free-presentation` 自由表示 + `thm.giraud` Giraud 定理 → `thm.cond-topos` Cond 是拓扑斯
 
 用 Giraud 定理的第四条：**造出「预层范畴 + 正合反射」就够了**。
 

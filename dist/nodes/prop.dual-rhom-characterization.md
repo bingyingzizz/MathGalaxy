@@ -1,4 +1,4 @@
-# Pontryagin 对偶的 RHom 刻画　`prop.dual-rhom-characterization`
+# Pontryagin 对偶的导出 Hom 刻画　`prop.dual-rhom-characterization`
 $M^{\vee} \cong \operatorname{RHom}_{\mathbb{Z}}(M, T)$
 layer 18 · 命题 · 凝聚态上同调 · 凝聚态数学+同调代数
 [在星图里打开](../#n=prop.dual-rhom-characterization)　·　[节点索引](../index.md)

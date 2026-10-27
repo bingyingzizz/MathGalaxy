@@ -1,4 +1,4 @@
-# canonical topology　`def.canonical-topology`
+# Canonical Topology　`def.canonical-topology`
 English entry · root `../`
 [in graph](../#n=def.canonical-topology)　·　[Chinese page (authoritative)](./def.canonical-topology.md)
 

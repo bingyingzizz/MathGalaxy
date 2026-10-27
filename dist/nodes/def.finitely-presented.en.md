@@ -1,4 +1,4 @@
-# finitely presented　`def.finitely-presented`
+# Finitely Presented　`def.finitely-presented`
 English entry · root `../`
 [in graph](../#n=def.finitely-presented)　·　[Chinese page (authoritative)](./def.finitely-presented.md)
 

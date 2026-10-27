@@ -6,7 +6,7 @@ layer 17 · 定理 · 实数完备性的等价刻画 · 分析学
 实数列 $\{x_n\}$ 收敛（到某个实数），当且仅当它是 Cauchy 列。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`thm.bolzano-weierstrass`](../nodes/thm.bolzano-weierstrass.md) Bolzano–Weierstrass：Bolzano–Weierstrass $\implies$ Cauchy 收敛准则　[proofs/imp.bw-cauchy.md](../proofs/imp.bw-cauchy.md)
+- [`thm.bolzano-weierstrass`](../nodes/thm.bolzano-weierstrass.md) Bolzano–Weierstrass 定理：Bolzano–Weierstrass $\implies$ Cauchy 收敛准则　[proofs/imp.bw-cauchy.md](../proofs/imp.bw-cauchy.md)
 - [`def.abs`](../nodes/def.abs.md) 绝对值 |x|：用到了定义 绝对值 |x|　[proofs/def-link.abs-cauchy-criterion.md](../proofs/def-link.abs-cauchy-criterion.md)
 
 - …另有入边，续页见 [nodes/thm.cauchy-criterion.2.md](./thm.cauchy-criterion.2.md)

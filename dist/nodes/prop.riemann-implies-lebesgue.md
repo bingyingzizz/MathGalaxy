@@ -1,4 +1,4 @@
-# Riemann ⟹ Lebesgue　`prop.riemann-implies-lebesgue`
+# Riemann 可积蕴含 Lebesgue 可积　`prop.riemann-implies-lebesgue`
 命题：Riemann 可积 $\implies$ Lebesgue 可积，且积分相等
 layer 20 · 命题 · Riemann 积分 · 分析学
 [在星图里打开](../#n=prop.riemann-implies-lebesgue)　·　[节点索引](../index.md)

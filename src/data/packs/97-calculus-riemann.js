@@ -357,7 +357,7 @@ window.MG = window.MG || {};
       id: 'prop.riemann-implies-lebesgue',
       cluster: 'analysis.riemann',
       type: 'proposition',
-      label: 'Riemann ⟹ Lebesgue',
+      label: 'Riemann 可积蕴含 Lebesgue 可积',
       title: '命题：Riemann 可积 $\\implies$ Lebesgue 可积，且积分相等',
       regions: ['analysis'],
       tags: ['命题', '积分', '测度'],

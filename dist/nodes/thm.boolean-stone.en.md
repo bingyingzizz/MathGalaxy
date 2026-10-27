@@ -1,4 +1,4 @@
-# Stone representation　`thm.boolean-stone`
+# Stone Representation　`thm.boolean-stone`
 English entry · root `../`
 [in graph](../#n=thm.boolean-stone)　·　[Chinese page (authoritative)](./thm.boolean-stone.md)
 

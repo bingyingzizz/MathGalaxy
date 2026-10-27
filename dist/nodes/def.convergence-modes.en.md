@@ -1,4 +1,4 @@
-# modes of convergence　`def.convergence-modes`
+# Modes of Convergence　`def.convergence-modes`
 English entry · root `../`
 [in graph](../#n=def.convergence-modes)　·　[Chinese page (authoritative)](./def.convergence-modes.md)
 

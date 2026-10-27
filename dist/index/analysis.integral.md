@@ -3,13 +3,13 @@
 造出 Lebesgue 积分与 L¹：简单函数的加权和 → 非负函数的 sup → 单调收敛 / Fatou / 控制收敛三大定理 → 可积函数。
 中心天体 def.integrable　·　21 个节点　·　根 `../`　·　续页 `index/analysis.integral.2.md`
 
-- def.lplus　L⁺　layer 15
+- def.lplus　非负可测函数类　layer 15
 - def.integral-simple　简单函数的积分　layer 16
 - prop.finite-integral-consequences　积分有限的后果　layer 16
 - prop.simple-integral-props　简单函数积分的性质　layer 17
 - def.integral-nonneg　非负函数的积分　layer 17
 - prop.integral-zero-iff　积分为零 ⟺ 几乎处处为零　layer 17
-- cor.mct-ae　MCT（a.e. 版本）　layer 17
+- cor.mct-ae　单调收敛定理（几乎处处版本）　layer 17
 - thm.mct　单调收敛定理　layer 18
 - def.integral-complex　复函数的积分　layer 18
 - thm.termwise-integration　逐项积分　layer 19

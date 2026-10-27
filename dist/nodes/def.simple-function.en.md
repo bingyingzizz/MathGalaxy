@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 7 · definition · cluster Measurable Functions and Convergence (`analysis.measurable`) · Analysis
-names: `simple function` (short) · `Simple Function` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.simple-function.md` and `proofs/`.

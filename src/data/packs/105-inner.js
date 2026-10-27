@@ -71,7 +71,7 @@ window.MG = window.MG || {};
       id: 'thm.cauchy-schwarz',
       cluster: 'algebra.inner',
       type: 'theorem',
-      label: 'Cauchy–Schwarz',
+      label: 'Cauchy–Schwarz 不等式',
       title: '定理：Cauchy–Schwarz 不等式',
       regions: ['algebra', 'analysis'],
       tags: ['定理', '线性代数', '内积', '不等式'],
@@ -339,7 +339,7 @@ window.MG = window.MG || {};
       cluster: 'algebra.inner',
       type: 'theorem',
       label: '奇异值分解',
-      title: '定理（SVD）：$A = U\\Sigma V^{\\mathsf{T}}$',
+      title: '奇异值分解定理：$A = U\\Sigma V^{\\mathsf{T}}$',
       regions: ['algebra'],
       tags: ['定理', '线性代数', '内积', '谱'],
       statement: [

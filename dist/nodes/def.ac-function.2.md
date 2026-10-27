@@ -3,4 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`thm.ftc-lebesgue`](../nodes/thm.ftc-lebesgue.md) 微积分基本定理（Lebesgue 版） 用
-- 被 [`lem.ac-subset-bv`](../nodes/lem.ac-subset-bv.md) AC ⊆ BV 用
+- 被 [`lem.ac-subset-bv`](../nodes/lem.ac-subset-bv.md) 绝对连续蕴含有界变差 用

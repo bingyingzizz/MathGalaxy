@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Compact Hausdorff Spaces (`topo.chaus`) · Topology
-names: `free presentation` (short) · `Free Presentation` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.free-presentation.md` and `proofs/`.

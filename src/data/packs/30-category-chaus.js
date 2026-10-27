@@ -308,7 +308,7 @@ window.MG = window.MG || {};
       id: 'prop.stone-reflective',
       cluster: 'topo.stone',
       type: 'proposition',
-      label: 'Stone 空间是 CHaus 的反射子范畴',
+      label: 'Stone 空间是紧 Hausdorff 空间的反射子范畴',
       title: 'Stone 空间是 $\\mathbf{CHaus}$ 的反射子范畴',
       regions: ['topology'],
       tags: ['范畴论', 'Stone', '反射'],

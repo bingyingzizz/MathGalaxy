@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 6 · definition · cluster Order Structures (`order.structure`) · Order Theory
-names: `chain` (short) · `Chain / Antichain` (full)
+names: `Chain` (short) · `Chain / Antichain` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.chain.md` and `proofs/`.

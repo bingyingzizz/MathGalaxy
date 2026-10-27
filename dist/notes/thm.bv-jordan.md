@@ -1,4 +1,4 @@
-# BV 的 Jordan 分解　`thm.bv-jordan`　·　说明
+# 有界变差函数的 Jordan 分解　`thm.bv-jordan`　·　说明
 根 `../`
 
 具体取法（就是测度论 Jordan 分解的函数版）：

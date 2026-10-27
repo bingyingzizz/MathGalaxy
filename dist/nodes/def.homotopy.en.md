@@ -1,4 +1,4 @@
-# homotopy　`def.homotopy`
+# Homotopy　`def.homotopy`
 English entry · root `../`
 [in graph](../#n=def.homotopy)　·　[Chinese page (authoritative)](./def.homotopy.md)
 

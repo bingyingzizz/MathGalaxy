@@ -1,4 +1,4 @@
-# CHaus 是预拓扑斯　`def.chaus-pretopos`　·　说明
+# 紧 Hausdorff 空间构成预拓扑斯　`def.chaus-pretopos`　·　说明
 根 `../`
 
 第 1 条由「$\mathbf{CHaus}$ 是 $\mathbf{Top}$ 的反射子范畴」直接读出：

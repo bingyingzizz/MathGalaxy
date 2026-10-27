@@ -1,4 +1,4 @@
-# Stonean 上 Z[S] 的 RHom　`prop.rhom-zs-sections`　·　说明
+# Stonean 空间上自由模的导出 Hom　`prop.rhom-zs-sections`　·　说明
 根 `../`
 
 **证明。** $S$ Stonean 时 $\mathbb{Z}[S]$ 是**投射**对象：极不连通性给出闭开集上的「截面型」投影性，$\mathbb{Z}[S]$ 是那些 $\mathbb{Z}[C]$（$C$ 闭开）的余极限，投影性沿余极限保持 ✓。于是

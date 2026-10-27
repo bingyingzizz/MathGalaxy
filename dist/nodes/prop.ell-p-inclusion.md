@@ -1,4 +1,4 @@
-# ℓ^p ⊆ ℓ^q　`prop.ell-p-inclusion`
+# ℓ^p 包含于 ℓ^q　`prop.ell-p-inclusion`
 命题（只有衰减的场合）：$\ell^p \subseteq \ell^q$（$0 < p < q \le \infty$）
 layer 19 · 命题 · L^p 空间 · 分析学
 [在星图里打开](../#n=prop.ell-p-inclusion)　·　[节点索引](../index.md)

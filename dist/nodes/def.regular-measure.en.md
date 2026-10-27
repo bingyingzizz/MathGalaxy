@@ -1,4 +1,4 @@
-# regular measure　`def.regular-measure`
+# Regular Measure　`def.regular-measure`
 English entry · root `../`
 [in graph](../#n=def.regular-measure)　·　[Chinese page (authoritative)](./def.regular-measure.md)
 

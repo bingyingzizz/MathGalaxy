@@ -1,4 +1,4 @@
-# injective object　`def.projective-object`
+# Injective Object　`def.projective-object`
 English entry · root `../`
 [in graph](../#n=def.projective-object)　·　[Chinese page (authoritative)](./def.projective-object.md)
 

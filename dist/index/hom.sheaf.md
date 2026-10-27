@@ -13,7 +13,7 @@
 - prop.presheaf-free-projective　自由的预层是投射的　layer 18
 - thm.topos-abelian-grothendieck　拓扑斯上的阿贝尔群是 Grothendieck 范畴　layer 19
 - def.flat-abelian-sheaf　平坦阿贝尔层　layer 19
-- prop.tensor-rhom-natural-map　张量与 RHom 的配对　layer 19
+- prop.tensor-rhom-natural-map　张量与导出 Hom 的配对　layer 19
 - prop.free-sheaf-tensor　自由对象的张量积　layer 19
 
 > 续见 `index/hom.sheaf.2.md`

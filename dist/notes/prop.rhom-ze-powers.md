@@ -1,4 +1,4 @@
-# 离散空间上 Z[E] 的 RHom　`prop.rhom-ze-powers`　·　说明
+# 离散空间上自由模的导出 Hom　`prop.rhom-ze-powers`　·　说明
 根 `../`
 
 **证明。** 离散空间是不交并 $E = \coprod_{e \in E}\{e\}$，自由对象随之分裂成**直和**

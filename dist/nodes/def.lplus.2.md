@@ -1,4 +1,4 @@
-# L⁺　`def.lplus`　·　续页（第 2 页）
+# 非负可测函数类　`def.lplus`　·　续页（第 2 页）
 [在星图里打开](../#n=def.lplus)　·　第 1 页 [nodes/def.lplus.md](./def.lplus.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

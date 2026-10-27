@@ -1,4 +1,4 @@
-# Banach abelian group　`def.banach-ab-group`
+# Banach Abelian Group　`def.banach-ab-group`
 English entry · root `../`
 [in graph](../#n=def.banach-ab-group)　·　[Chinese page (authoritative)](./def.banach-ab-group.md)
 

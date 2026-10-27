@@ -1,4 +1,4 @@
-# 全变差的 NBV 性质　`lem.nbv-variation`　·　说明
+# 全变差的规范有界变差性质　`lem.nbv-variation`　·　说明
 根 `../`
 
 第一部分：给定 $\varepsilon > 0$ 与 $x$，取分划使 $\sum \ge T_F(x) - \varepsilon$；于是对 $y \le x_0$ 有 $T_F(y) \le \varepsilon$。由 $\varepsilon$ 任意，$T_F(-\infty) = 0$。

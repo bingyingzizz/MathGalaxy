@@ -344,7 +344,7 @@ window.MG = window.MG || {};
       id: 'thm.rn-pointwise',
       cluster: 'analysis.differentiation',
       type: 'theorem',
-      label: 'RN 导数的点态公式',
+      label: 'Radon–Nikodym 导数的点态公式',
       title: '定理：$\\nu(E_{r})/m(E_{r}) \\to f(x) \\text{a.e.}$，其中 $d\\nu = d\\lambda + f dm$',
       regions: ['analysis'],
       tags: ['定理', 'RN 导数', '点态', '正则'],

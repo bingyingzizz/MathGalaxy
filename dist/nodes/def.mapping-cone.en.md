@@ -1,4 +1,4 @@
-# mapping cone　`def.mapping-cone`
+# Mapping Cone　`def.mapping-cone`
 English entry · root `../`
 [in graph](../#n=def.mapping-cone)　·　[Chinese page (authoritative)](./def.mapping-cone.md)
 

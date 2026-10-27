@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 5 · definition · cluster Topological Spaces (`topology.general`) · Topology / Analysis
-names: `continuous map` (short) · `Continuous Map` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.continuous-map.md` and `proofs/`.

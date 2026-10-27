@@ -146,7 +146,7 @@ window.MG = window.MG || {};
       id: 'thm.fubini-tonelli',
       cluster: 'analysis.product',
       type: 'theorem',
-      label: 'Fubini–Tonelli',
+      label: 'Fubini–Tonelli 定理',
       title: 'Fubini–Tonelli 定理（重积分可交换次序）',
       regions: ['analysis'],
       tags: ['定理', 'Fubini', 'Tonelli', '重积分'],

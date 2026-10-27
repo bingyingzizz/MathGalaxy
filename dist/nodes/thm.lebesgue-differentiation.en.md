@@ -1,4 +1,4 @@
-# differentiation theorem　`thm.lebesgue-differentiation`
+# Differentiation Theorem　`thm.lebesgue-differentiation`
 English entry · root `../`
 [in graph](../#n=thm.lebesgue-differentiation)　·　[Chinese page (authoritative)](./thm.lebesgue-differentiation.md)
 

@@ -1,4 +1,4 @@
-# rationals　`def.rat`
+# Rationals　`def.rat`
 English entry · root `../`
 [in graph](../#n=def.rat)　·　[Chinese page (authoritative)](./def.rat.md)
 

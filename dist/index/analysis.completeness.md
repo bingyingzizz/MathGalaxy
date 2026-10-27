@@ -7,7 +7,7 @@
 - def.limit-point　聚点　layer 14
 - thm.monotone-convergence　单调有界定理　layer 14
 - lem.nested-intervals　闭区间套定理　layer 15
-- thm.bolzano-weierstrass　Bolzano–Weierstrass　layer 16
+- thm.bolzano-weierstrass　Bolzano–Weierstrass 定理　layer 16
 - thm.cauchy-criterion　Cauchy 收敛准则　layer 17
 - cor.heine-borel　有界闭 ⟺ 紧（ℝⁿ）　layer 17
 - thm.real-complete-metric　ℝ 是完备度量空间　layer 18

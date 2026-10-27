@@ -8,7 +8,7 @@ layer 18 · 推论 · 符号测度与分解 · 分析学
 $$\frac{d\mu}{d\lambda} \cdot \frac{d\lambda}{d\mu} = 1\quad  \text{a.e.}$$
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.rn-derivative`](../nodes/def.rn-derivative.md) RN 导数与 Lebesgue 分解：用到了定义 RN 导数与 Lebesgue 分解　[proofs/def-link.rn-derivative-inverse.md](../proofs/def-link.rn-derivative-inverse.md)
+- [`def.rn-derivative`](../nodes/def.rn-derivative.md) Radon–Nikodym 导数与 Lebesgue 分解：用到了定义 Radon–Nikodym 导数与 Lebesgue 分解　[proofs/def-link.rn-derivative-inverse.md](../proofs/def-link.rn-derivative-inverse.md)
 
 - …另有入边，续页见 [nodes/cor.rn-inverse.2.md](./cor.rn-inverse.2.md)
 

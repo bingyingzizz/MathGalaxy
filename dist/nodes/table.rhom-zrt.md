@@ -1,4 +1,4 @@
-# Z/R/T 的 RHom 计算表　`table.rhom-zrt`
+# Z、R、T 的导出 Hom 计算表　`table.rhom-zrt`
 $\operatorname{RHom}_{\mathbb{Z}}(M, N)$ 在 $\mathbb{Z}, \mathbb{R}, T$ 上的取值
 layer 17 · 例 · 凝聚态上同调 · 凝聚态数学+同调代数
 [在星图里打开](../#n=table.rhom-zrt)　·　[节点索引](../index.md)

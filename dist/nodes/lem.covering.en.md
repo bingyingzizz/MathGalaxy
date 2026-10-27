@@ -1,4 +1,4 @@
-# covering lemma　`lem.covering`
+# Covering Lemma　`lem.covering`
 English entry · root `../`
 [in graph](../#n=lem.covering)　·　[Chinese page (authoritative)](./lem.covering.md)
 

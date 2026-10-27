@@ -1,5 +1,5 @@
 # Hartogs 定理　`thm.hartogs`
-Hartogs 定理（Hartogs' Theorem, 1915）—— ZF 中即可证明
+Hartogs 定理 —— ZF 中即可证明
 layer 8 · 定理 · 基数与等势 · 集合论
 [在星图里打开](../#n=thm.hartogs)　·　[节点索引](../index.md)
 

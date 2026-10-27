@@ -1,4 +1,4 @@
-# NBV　`def.nbv`　·　说明
+# 规范有界变差函数　`def.nbv`　·　说明
 根 `../`
 
 为什么要加这两个条件：因为下一条定理要建立**$\mathbb{R}$ 上的复 Borel 测度 $\leftrightarrow NBV$** 的一一对应，而对应式是

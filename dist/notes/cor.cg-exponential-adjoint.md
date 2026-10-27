@@ -1,4 +1,4 @@
-# CG 的指数伴随　`cor.cg-exponential-adjoint`　·　说明
+# 紧生成空间的指数伴随　`cor.cg-exponential-adjoint`　·　说明
 根 `../`
 
 **两个立刻的推论**：左伴随**保余极限**，所以 $X \mapsto k(X \times Y)$ 保紧生成空间的余极限；右伴随**保极限**，所以 $Z \mapsto kC(kY,Z)$ 保极限。

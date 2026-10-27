@@ -9,7 +9,7 @@ $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy = 0, $$
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} f(y) dy = f(x)$$
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.rn-pointwise`](../nodes/thm.rn-pointwise.md) RN 导数的点态公式
+- ⇒ [`thm.rn-pointwise`](../nodes/thm.rn-pointwise.md) Radon–Nikodym 导数的点态公式
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.differentiation-general.2.md](./thm.differentiation-general.2.md)

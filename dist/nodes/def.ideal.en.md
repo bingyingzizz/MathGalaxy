@@ -1,4 +1,4 @@
-# ideal　`def.ideal`
+# Ideal　`def.ideal`
 English entry · root `../`
 [in graph](../#n=def.ideal)　·　[Chinese page (authoritative)](./def.ideal.md)
 

@@ -1,4 +1,4 @@
-# generated sigma-algebra　`def.generated-sigma`
+# Generated Sigma-algebra　`def.generated-sigma`
 English entry · root `../`
 [in graph](../#n=def.generated-sigma)　·　[Chinese page (authoritative)](./def.generated-sigma.md)
 

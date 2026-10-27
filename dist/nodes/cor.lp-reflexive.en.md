@@ -1,4 +1,4 @@
-# reflexive　`cor.lp-reflexive`
+# Reflexive　`cor.lp-reflexive`
 English entry · root `../`
 [in graph](../#n=cor.lp-reflexive)　·　[Chinese page (authoritative)](./cor.lp-reflexive.md)
 

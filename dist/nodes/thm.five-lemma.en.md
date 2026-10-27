@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 18 · lemma · cluster Additive and Abelian Categories (`hom.ab`) · Homological Algebra
-names: `five lemma` (short) · `Five Lemma` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.five-lemma.md` and `proofs/`.

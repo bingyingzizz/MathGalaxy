@@ -1,4 +1,4 @@
-# cardinality　`def.cardinal`
+# Cardinality　`def.cardinal`
 English entry · root `../`
 [in graph](../#n=def.cardinal)　·　[Chinese page (authoritative)](./def.cardinal.md)
 

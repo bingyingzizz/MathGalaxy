@@ -1,4 +1,4 @@
-# ‖g‖_q = ‖φ_g‖　`prop.duality-isometry`
+# 对偶等距：范数相等　`prop.duality-isometry`
 命题：$\|\varphi_g\| = \|g\|_q$（$\mu$ 半有限时也含 $q = \infty$）
 layer 20 · 命题 · L^p 空间 · 分析学
 [在星图里打开](../#n=prop.duality-isometry)　·　[节点索引](../index.md)

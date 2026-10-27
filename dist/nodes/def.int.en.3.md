@@ -1,4 +1,4 @@
-# integers　`def.int`
+# Integers　`def.int`
 English entry · root `../`
 [in graph](../#n=def.int)　·　[Chinese page (authoritative)](./def.int.md)
 

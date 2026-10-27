@@ -3,7 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`prop.topos-sheaf-limits`](../nodes/prop.topos-sheaf-limits.md) 拓扑斯上的层即保极限的预层 用
-- 被 [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) Cond 即 FCHaus 上的层 用
+- 被 [`thm.cond-equiv-fchaus`](../nodes/thm.cond-equiv-fchaus.md) 凝聚态集就是有限紧 Hausdorff 空间上的层 用
 - 被 [`prop.cond-epi`](../nodes/prop.cond-epi.md) 凝聚态集满态射的判据 用
 - 被 [`def.cech-functor`](../nodes/def.cech-functor.md) Čech 函子 用
 - 被 [`def.condensed-set`](../nodes/def.condensed-set.md) 凝聚态集 用

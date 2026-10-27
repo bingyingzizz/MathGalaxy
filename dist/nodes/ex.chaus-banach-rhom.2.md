@@ -1,4 +1,4 @@
-# 紧 S 对实 Banach 的 RHom　`ex.chaus-banach-rhom`　·　续页（第 2 页）
+# 紧空间对实 Banach 空间的导出 Hom　`ex.chaus-banach-rhom`　·　续页（第 2 页）
 [在星图里打开](../#n=ex.chaus-banach-rhom)　·　第 1 页 [nodes/ex.chaus-banach-rhom.md](./ex.chaus-banach-rhom.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

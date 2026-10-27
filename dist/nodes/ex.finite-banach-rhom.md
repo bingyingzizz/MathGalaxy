@@ -1,4 +1,4 @@
-# 有限维 Banach 之间的 RHom　`ex.finite-banach-rhom`
+# 有限维 Banach 空间之间的导出 Hom　`ex.finite-banach-rhom`
 $\operatorname{RHom}_{\mathbb{Z}}(M, N) = \operatorname{Hom}_{\mathbb{R}}(M, N)$
 layer 17 · 例 · 凝聚态上同调 · 凝聚态数学+同调代数
 [在星图里打开](../#n=ex.finite-banach-rhom)　·　[节点索引](../index.md)

@@ -1,4 +1,4 @@
-# first-order logic　`def.first-order-language`
+# First-order Logic　`def.first-order-language`
 English entry · root `../`
 [in graph](../#n=def.first-order-language)　·　[Chinese page (authoritative)](./def.first-order-language.md)
 

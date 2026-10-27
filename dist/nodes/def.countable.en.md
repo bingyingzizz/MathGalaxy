@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 8 · definition · cluster Cardinals and Equinumerosity (`set.cardinal`) · Set Theory
-names: `countable` (short) · `Countable` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.countable.md` and `proofs/`.

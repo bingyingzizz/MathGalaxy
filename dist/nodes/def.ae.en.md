@@ -1,11 +1,11 @@
-# Almost Everywhere, a.e.　`def.ae`
+# Almost Everywhere, A.e.　`def.ae`
 English entry · root `../`
 [in graph](../#n=def.ae)　·　[Chinese page (authoritative)](./def.ae.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 16 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
-names: `almost everywhere` (short) · `Almost Everywhere, a.e.` (full)
+names: `Almost Everywhere` (short) · `Almost Everywhere, A.e.` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.ae.md` and `proofs/`.

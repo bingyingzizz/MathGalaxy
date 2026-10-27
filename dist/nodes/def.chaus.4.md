@@ -4,7 +4,7 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.free-presentation`](../nodes/def.free-presentation.md) 自由表示 用
 - 被 [`def.stone-space`](../nodes/def.stone-space.md) 全不连通与 Stone 空间 用
-- 被 [`def.chaus-pretopos`](../nodes/def.chaus-pretopos.md) CHaus 是预拓扑斯 用
+- 被 [`def.chaus-pretopos`](../nodes/def.chaus-pretopos.md) 紧 Hausdorff 空间构成预拓扑斯 用
 - 被 [`def.condensed-set`](../nodes/def.condensed-set.md) 凝聚态集 用
 - 被 [`def.underlying-topological-space`](../nodes/def.underlying-topological-space.md) 底拓扑空间 用
 - 被 [`def.compactly-generated`](../nodes/def.compactly-generated.md) 紧生成空间 用

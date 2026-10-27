@@ -1,4 +1,4 @@
-# RN 导数与 Lebesgue 分解　`def.rn-derivative`　·　续页（第 2 页）
+# Radon–Nikodym 导数与 Lebesgue 分解　`def.rn-derivative`　·　续页（第 2 页）
 [在星图里打开](../#n=def.rn-derivative)　·　第 1 页 [nodes/def.rn-derivative.md](./def.rn-derivative.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

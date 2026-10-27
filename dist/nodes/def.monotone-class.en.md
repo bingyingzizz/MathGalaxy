@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 2 · definition · cluster Families of Sets and Sigma-Algebras (`analysis.setclass`) · Analysis
-names: `monotone class` (short) · `Monotone Class` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.monotone-class.md` and `proofs/`.

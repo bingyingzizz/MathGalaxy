@@ -1,4 +1,4 @@
-# CHaus 是预拓扑斯　`def.chaus-pretopos`　·　说明
+# 紧 Hausdorff 空间构成预拓扑斯　`def.chaus-pretopos`　·　说明
 根 `../`
 
 **证明。** 关键在于「哪些 $\mathbf{Top}$ 里的余极限**同时也是** $\mathbf{CHaus}$ 里的余极限」：

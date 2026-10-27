@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 15 · definition · cluster Constructing Measures (`analysis.measure`) · Analysis
-names: `finitely additive` (short) · `Finitely Additive Measure` (full)
+names: `Finitely Additive` (short) · `Finitely Additive Measure` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.finitely-additive.md` and `proofs/`.

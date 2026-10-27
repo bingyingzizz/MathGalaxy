@@ -1,4 +1,4 @@
-# Ext 就是 RHom　`prop.ext-is-rhom`
+# Ext 就是导出 Hom　`prop.ext-is-rhom`
 $R^{n}\operatorname{Hom}(M, K^{\bullet}) = \operatorname{Ext}^{n}(M, K^{\bullet})$
 layer 18 · 命题 · 复形与导出三角 · 同调代数
 [在星图里打开](../#n=prop.ext-is-rhom)　·　[节点索引](../index.md)

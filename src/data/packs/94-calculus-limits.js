@@ -211,7 +211,7 @@ window.MG = window.MG || {};
       id: 'thm.bolzano-weierstrass',
       cluster: 'analysis.completeness',
       type: 'theorem',
-      label: 'Bolzano–Weierstrass',
+      label: 'Bolzano–Weierstrass 定理',
       title: 'Bolzano–Weierstrass 定理（有界列必有收敛子列）',
       regions: ['analysis'],
       tags: ['定理', '完备性'],

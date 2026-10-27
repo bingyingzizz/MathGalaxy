@@ -6,4 +6,4 @@
 - 被 [`prop.inverse-image-tensor`](../nodes/prop.inverse-image-tensor.md) 拉回与内 Hom、张量积相容 用
 - 被 [`def.flat-abelian-sheaf`](../nodes/def.flat-abelian-sheaf.md) 平坦阿贝尔层 用
 - 被 [`prop.ring-tensor-coproduct`](../nodes/prop.ring-tensor-coproduct.md) 交换环的纤维余积是张量积 用
-- 被 [`prop.rhom-dual-tensor`](../nodes/prop.rhom-dual-tensor.md) 离散对偶的 RHom 与导出张量 用
+- 被 [`prop.rhom-dual-tensor`](../nodes/prop.rhom-dual-tensor.md) 离散对偶的导出 Hom 与导出张量 用

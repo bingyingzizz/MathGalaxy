@@ -5,7 +5,6 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 14 · definition · cluster Monos, Epis, Subobjects and Images (`cat.structure`) · Category Theory
-names: `subobject` (short) · `Subobject` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.subobject.md` and `proofs/`.

@@ -12,7 +12,7 @@
 - def.stone-space　全不连通与 Stone 空间　layer 16
 - prop.stonean-basic　极端不连通的基本性质　layer 17
 - prop.td-reflective　全不连通空间是反射子范畴　layer 17
-- prop.stone-reflective　Stone 空间是 CHaus 的反射子范畴　layer 17
+- prop.stone-reflective　Stone 空间是紧 Hausdorff 空间的反射子范畴　layer 17
 - thm.gleason　Gleason 定理　layer 17
 - thm.boolean-stone　Boolean 环与 Stone 空间等价　layer 17
 

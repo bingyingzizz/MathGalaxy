@@ -1,4 +1,4 @@
-# CGWH 是 CG 的反射子范畴　`thm.cgwh-reflective`　·　续页（第 2 页）
+# 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴　`thm.cgwh-reflective`　·　续页（第 2 页）
 [在星图里打开](../#n=thm.cgwh-reflective)　·　第 1 页 [nodes/thm.cgwh-reflective.md](./thm.cgwh-reflective.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

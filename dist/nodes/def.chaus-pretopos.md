@@ -1,4 +1,4 @@
-# CHaus 是预拓扑斯　`def.chaus-pretopos`
+# 紧 Hausdorff 空间构成预拓扑斯　`def.chaus-pretopos`
 $\mathbf{CHaus}$ 是预拓扑斯
 layer 16 · 定理 · 凝聚态集 · 凝聚态数学
 [在星图里打开](../#n=def.chaus-pretopos)　·　[节点索引](../index.md)

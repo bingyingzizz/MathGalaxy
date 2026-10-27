@@ -1,4 +1,4 @@
-# ‖g‖_q = ‖φ_g‖　`prop.duality-isometry`　·　说明
+# 对偶等距：范数相等　`prop.duality-isometry`　·　说明
 根 `../`
 
 证明的要点是**构造一个把 $\varphi_g$ 的范数顶满的 $f$**。

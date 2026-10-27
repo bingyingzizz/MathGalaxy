@@ -5,7 +5,7 @@ English entry · root `../`
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 0 · axiom · cluster The ZFC Axioms (`set.zfc`) · Set Theory
-names: `infinity` (short) · `Axiom of Infinity` (full)
+names: `Infinity` (short) · `Axiom of Infinity` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/ax.inf.md` and `proofs/`.

@@ -1,7 +1,7 @@
 # $\mathrm{Cond} \simeq \widehat{\mathbf{FCHaus}}$
 `imp.cond-fchaus` · 推出 · strong 边 · 根 `../`
 
-`prop.fchaus-sheaf` FCHaus 上层的判据 + `prop.fchaus-pretopology` FCHaus 上的预拓扑 + `def.free-presentation` 自由表示 → `thm.cond-equiv-fchaus` Cond 即 FCHaus 上的层
+`prop.fchaus-sheaf` 有限紧 Hausdorff 空间上层的判据 + `prop.fchaus-pretopology` 有限紧 Hausdorff 空间上的预拓扑 + `def.free-presentation` 自由表示 → `thm.cond-equiv-fchaus` 凝聚态集就是有限紧 Hausdorff 空间上的层
 
 **这就是层的粘合。** 由 $\mathbf{CHaus}$ 里每个对象都有自由表示 $\beta S^{\mathrm{disc}} \twoheadrightarrow S$，取 $R := \beta S^{\mathrm{disc}} \times_{S} \beta S^{\mathrm{disc}}$ 与满射 $\beta R \to R$，则
 

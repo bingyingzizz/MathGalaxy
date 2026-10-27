@@ -9,4 +9,4 @@
 - prop.ext-abelian-groups　阿贝尔群的 Ext　layer 17
 - prop.ext-projective-vanishes　投射对象没有高次 Ext　layer 17
 - thm.universal-coefficients　万有系数定理　layer 18
-- prop.ext-is-rhom　Ext 就是 RHom　layer 18
+- prop.ext-is-rhom　Ext 就是导出 Hom　layer 18

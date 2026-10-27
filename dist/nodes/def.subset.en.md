@@ -1,4 +1,4 @@
-# subset　`def.subset`
+# Subset　`def.subset`
 English entry · root `../`
 [in graph](../#n=def.subset)　·　[Chinese page (authoritative)](./def.subset.md)
 

@@ -1,4 +1,4 @@
-# compactly generated spaces form a coreflective subcategory　`prop.cg-coreflective`
+# Compactly Generated Spaces Form a Coreflective Subcategory　`prop.cg-coreflective`
 English entry · root `../`
 [in graph](../#n=prop.cg-coreflective)　·　[Chinese page (authoritative)](./prop.cg-coreflective.md)
 

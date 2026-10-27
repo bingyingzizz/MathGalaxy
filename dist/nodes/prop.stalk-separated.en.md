@@ -1,4 +1,4 @@
-# stalk　`prop.stalk-separated`
+# Stalk　`prop.stalk-separated`
 English entry · root `../`
 [in graph](../#n=prop.stalk-separated)　·　[Chinese page (authoritative)](./prop.stalk-separated.md)
 

@@ -4,4 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.section-measurable`](../nodes/prop.section-measurable.md) 截口可测
 - 被 [`prop.section-measurable`](../nodes/prop.section-measurable.md) 截口可测 用
-- 被 [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli 用
+- 被 [`thm.fubini-tonelli`](../nodes/thm.fubini-tonelli.md) Fubini–Tonelli 定理 用

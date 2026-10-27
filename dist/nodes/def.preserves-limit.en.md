@@ -1,4 +1,4 @@
-# preserves limits　`def.preserves-limit`
+# Preserves Limits　`def.preserves-limit`
 English entry · root `../`
 [in graph](../#n=def.preserves-limit)　·　[Chinese page (authoritative)](./def.preserves-limit.md)
 

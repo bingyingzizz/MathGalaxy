@@ -1,4 +1,4 @@
-# enough projectives　`def.enough-projectives`
+# Enough Projectives　`def.enough-projectives`
 English entry · root `../`
 [in graph](../#n=def.enough-projectives)　·　[Chinese page (authoritative)](./def.enough-projectives.md)
 

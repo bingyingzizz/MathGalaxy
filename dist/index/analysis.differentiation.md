@@ -16,4 +16,4 @@
 - thm.lebesgue-differentiation　Lebesgue 微分定理　layer 24
 - thm.lebesgue-set-full　Lebesgue 集几乎处处　layer 25
 - thm.differentiation-general　可缩族的微分定理　layer 26
-- thm.rn-pointwise　RN 导数的点态公式　layer 27
+- thm.rn-pointwise　Radon–Nikodym 导数的点态公式　layer 27

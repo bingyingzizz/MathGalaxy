@@ -1,7 +1,7 @@
 # $(a) \iff (b) \iff (c)$：微积分基本定理的三条等价
 `imp.ftc` · 推出 · strong 边 · 根 `../`
 
-`lem.ac-subset-bv` AC ⊆ BV + `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续 + `prop.nbv-derivative` NBV 函数的导数与测度的关系 → `thm.ftc-lebesgue` 微积分基本定理（Lebesgue 版）
+`lem.ac-subset-bv` 绝对连续蕴含有界变差 + `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续 + `prop.nbv-derivative` 规范有界变差函数的导数与测度的关系 → `thm.ftc-lebesgue` 微积分基本定理（Lebesgue 版）
 
 **$(a) \implies (b)$。** 设 $F$ 绝对连续。由**$AC \subseteq BV$**，$F \in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\iff \mu _F \ll m$**，写 Lebesgue 分解时奇异部分 $\lambda = 0$，于是 $d\mu_F = f\cdot dm$，即
 

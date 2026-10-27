@@ -1,4 +1,4 @@
-# underlying weak Hausdorff　`lem.qseparated-underlying-weak-hausdorff`
+# Underlying Weak Hausdorff　`lem.qseparated-underlying-weak-hausdorff`
 English entry · root `../`
 [in graph](../#n=lem.qseparated-underlying-weak-hausdorff)　·　[Chinese page (authoritative)](./lem.qseparated-underlying-weak-hausdorff.md)
 

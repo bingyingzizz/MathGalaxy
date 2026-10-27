@@ -1,7 +1,7 @@
 # NBV 的性质 $\implies$ 测度与函数的一一对应
 `imp.borel-nbv` · 推出 · strong 边 · 根 `../`
 
-`lem.nbv-variation` 全变差的 NBV 性质 + `thm.bv-jordan` BV 的 Jordan 分解 → `thm.borel-measure-nbv` 测度 ↔ NBV 的一一对应
+`lem.nbv-variation` 全变差的规范有界变差性质 + `thm.bv-jordan` 有界变差函数的 Jordan 分解 → `thm.borel-measure-nbv` 测度与规范有界变差函数的一一对应
 
 **(1) 测度 $\implies$ 函数。** 复测度拆成四个正测度 $\mu = \mu_1^+ - \mu_1^- + i(\mu_2^+ - \mu_2^-)$。令
 

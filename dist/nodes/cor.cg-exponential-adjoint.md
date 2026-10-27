@@ -1,4 +1,4 @@
-# CG 的指数伴随　`cor.cg-exponential-adjoint`
+# 紧生成空间的指数伴随　`cor.cg-exponential-adjoint`
 $X \mapsto k(X \times Y) \;\dashv\; Z \mapsto kC(kY, Z)$
 layer 18 · 推论 · 紧生成空间与弱 Hausdorff · 拓扑学
 [在星图里打开](../#n=cor.cg-exponential-adjoint)　·　[节点索引](../index.md)

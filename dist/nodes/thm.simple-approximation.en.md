@@ -1,4 +1,4 @@
-# approximation by simple functions　`thm.simple-approximation`
+# Approximation by Simple Functions　`thm.simple-approximation`
 English entry · root `../`
 [in graph](../#n=thm.simple-approximation)　·　[Chinese page (authoritative)](./thm.simple-approximation.md)
 

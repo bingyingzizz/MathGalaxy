@@ -1,4 +1,4 @@
-# 张量与 RHom 的配对　`prop.tensor-rhom-natural-map`
+# 张量与导出 Hom 的配对　`prop.tensor-rhom-natural-map`
 命题：$M \otimes^{\mathbf{L}} \operatorname{RHom}(P, N) \to \operatorname{RHom}(\operatorname{RHom}(M, P), N)$
 layer 19 · 命题 · 阿贝尔层 · 同调代数
 [在星图里打开](../#n=prop.tensor-rhom-natural-map)　·　[节点索引](../index.md)

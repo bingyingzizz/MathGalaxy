@@ -12,7 +12,7 @@ $$\operatorname{Hom}(X, M) : Y \longmapsto \operatorname{Hom}(X \times Y,\ M) \;
 
 
 ## 它能推出什么 / 谁在用它
-- 被 [`prop.discrete-cond-rhom-constant`](../nodes/prop.discrete-cond-rhom-constant.md) 离散群的 RHom 是常层 用
+- 被 [`prop.discrete-cond-rhom-constant`](../nodes/prop.discrete-cond-rhom-constant.md) 离散群的导出 Hom 是常层 用
 
 - …另有出边，续页见 [nodes/def.internal-hom.4.md](./def.internal-hom.4.md)
 

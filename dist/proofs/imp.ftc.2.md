@@ -1,7 +1,7 @@
 # $(a) \iff (b) \iff (c)$：微积分基本定理的三条等价
 `imp.ftc` · 推出 · strong 边 · 根 `../`
 
-`lem.ac-subset-bv` AC ⊆ BV + `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续 + `prop.nbv-derivative` NBV 函数的导数与测度的关系 → `thm.ftc-lebesgue` 微积分基本定理（Lebesgue 版）
+`lem.ac-subset-bv` 绝对连续蕴含有界变差 + `prop.ac-iff-measure-ac` 函数绝对连续 ⟺ 测度绝对连续 + `prop.nbv-derivative` 规范有界变差函数的导数与测度的关系 → `thm.ftc-lebesgue` 微积分基本定理（Lebesgue 版）
 
 **$(b) \implies (c)$。** 若 $F(x) - F(a) = \int_a^x f$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$d / dx\int_a^x f = f(x)$ a.e.，故 $F' = f$ a.e.、$F' \in L^1$，公式成立。
 

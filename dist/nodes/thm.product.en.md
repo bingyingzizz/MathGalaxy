@@ -1,4 +1,4 @@
-# Cartesian product　`thm.product`
+# Cartesian Product　`thm.product`
 English entry · root `../`
 [in graph](../#n=thm.product)　·　[Chinese page (authoritative)](./thm.product.md)
 

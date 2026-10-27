@@ -1,4 +1,4 @@
-# abelian sheaf　`def.abelian-sheaf`
+# Abelian Sheaf　`def.abelian-sheaf`
 English entry · root `../`
 [in graph](../#n=def.abelian-sheaf)　·　[Chinese page (authoritative)](./def.abelian-sheaf.md)
 

@@ -1,4 +1,4 @@
-# Bolzano–Weierstrass　`thm.bolzano-weierstrass`　·　说明
+# Bolzano–Weierstrass 定理　`thm.bolzano-weierstrass`　·　说明
 根 `../`
 
 ⭐ 这是「$\mathbb{R}^{n}$ 里紧 $\iff$ 有界闭」那一条（Heine–Borel）的分析内核：有界闭集上的连续函数之所以能取到最值，根子在这里。

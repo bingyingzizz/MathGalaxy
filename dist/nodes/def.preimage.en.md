@@ -1,4 +1,4 @@
-# preimage　`def.preimage`
+# Preimage　`def.preimage`
 English entry · root `../`
 [in graph](../#n=def.preimage)　·　[Chinese page (authoritative)](./def.preimage.md)
 

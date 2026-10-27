@@ -8,4 +8,4 @@
 - 被 [`def.lebesgue-stieltjes`](../nodes/def.lebesgue-stieltjes.md) Lebesgue–Stieltjes 测度 用
 - 被 [`def.regular-measure`](../nodes/def.regular-measure.md) 正则 Borel 测度 用
 - 被 [`def.shrinks-nicely`](../nodes/def.shrinks-nicely.md) 可缩族 用
-- 被 [`def.nbv`](../nodes/def.nbv.md) NBV 用
+- 被 [`def.nbv`](../nodes/def.nbv.md) 规范有界变差函数 用

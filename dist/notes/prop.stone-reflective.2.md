@@ -1,4 +1,4 @@
-# Stone 空间是 CHaus 的反射子范畴　`prop.stone-reflective`　·　说明
+# Stone 空间是紧 Hausdorff 空间的反射子范畴　`prop.stone-reflective`　·　说明
 根 `../`
 
 **证明。** Stone 空间 = 紧 Hausdorff **且**全不连通。把两个反射叠起来：

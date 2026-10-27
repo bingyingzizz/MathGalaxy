@@ -1,7 +1,7 @@
 # 化归到递增函数 $\implies BV$ 的正则性
 `imp.bv-regularity` · 推出 · strong 边 · 根 `../`
 
-`thm.bv-jordan` BV 的 Jordan 分解 + `thm.monotone-differentiable` 单调函数几乎处处可导 → `prop.bv-regularity` BV 函数的正则性
+`thm.bv-jordan` 有界变差函数的 Jordan 分解 + `thm.monotone-differentiable` 单调函数几乎处处可导 → `prop.bv-regularity` 有界变差函数的正则性
 
 由**Jordan 分解**，只需对**有界递增**函数证明这三条 —— 差的性质自动继承。
 

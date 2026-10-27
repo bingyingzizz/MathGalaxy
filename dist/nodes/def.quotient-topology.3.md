@@ -8,6 +8,6 @@
 - 被 [`prop.cg-kclosed-quotient`](../nodes/prop.cg-kclosed-quotient.md) k-闭等价关系与弱 Hausdorff 商 用
 - 被 [`def.k-topology`](../nodes/def.k-topology.md) k-开、k-闭与 k-拓扑 用
 - 被 [`thm.quotient-product`](../nodes/thm.quotient-product.md) 商映射与局部紧空间作积 用
-- 被 [`thm.cgwh-reflective`](../nodes/thm.cgwh-reflective.md) CGWH 是 CG 的反射子范畴 用
+- 被 [`thm.cgwh-reflective`](../nodes/thm.cgwh-reflective.md) 弱 Hausdorff 紧生成空间是紧生成空间的反射子范畴 用
 
 > 续见 [nodes/def.quotient-topology.4.md](./def.quotient-topology.4.md)
