@@ -251,6 +251,55 @@
       (clusterW[p[0]] = clusterW[p[0]] || []).push({ to: p[1], w: pairW[key] });
       (clusterW[p[1]] = clusterW[p[1]] || []).push({ to: p[0], w: pairW[key] });
     });
+    /* ⭐ 2026-10-19：**领域中心由跨领域边权解出来**（regions.js 的 center 降级成初始锚）。
+       9 个点、无随机数：有关系对按权重拉向「两盘相切」，所有对都有排斥防止叠。
+       ⚠️ 必须在 `_cap` 算完之后、星团打包之前调用。 */
+    (function solveRegionCenters() {
+      if (!cfg.regionSolve) return;
+      var regs = graph.regions.filter(function (r) { return r._cap > 0 && r.center; });
+      if (regs.length < 3) return;
+      var wt = Object.create(null);
+      graph.edges.forEach(function (e) {
+        var ids = MG.graphUtil.edgeNodes(e);
+        var pr = ids.map(function (id) { var nd = graph.byId[id]; return nd && nd.regions && nd.regions[0]; });
+        for (var a = 0; a < pr.length; a++) for (var b = a + 1; b < pr.length; b++) {
+          if (!pr[a] || !pr[b] || pr[a] === pr[b]) continue;
+          var kk = pr[a] < pr[b] ? pr[a] + '|' + pr[b] : pr[b] + '|' + pr[a];
+          wt[kk] = (wt[kk] || 0) + 1;
+        }
+      });
+      var wsum0 = 0, wn0 = 0;
+      Object.keys(wt).forEach(function (k2) { wsum0 += wt[k2]; wn0++; });
+      var wMean = wn0 ? wsum0 / wn0 : 1;
+      var c0x = 0, c0y = 0;
+      regs.forEach(function (r) { c0x += r.center.x; c0y += r.center.y; });
+      c0x /= regs.length; c0y /= regs.length;
+      for (var it = 0; it < 500; it++) {
+        var damp = 0.5 * (1 - 0.6 * it / 500);
+        regs.forEach(function (A, i) {
+          var fx = 0, fy = 0;
+          regs.forEach(function (B, j) {
+            if (i === j) return;
+            var dx = B.center.x - A.center.x, dy = B.center.y - A.center.y;
+            var d = Math.sqrt(dx * dx + dy * dy) || 0.01, ux = dx / d, uy = dy / d;
+            var key = A.id < B.id ? A.id + '|' + B.id : B.id + '|' + A.id;
+            var w = wt[key] || 0, touch = A._cap + B._cap + 8;
+            /* ⭐ 2026-10-19：权重不封顶 —— 原来 min(1, w/6) 让「一条 4400 长的强边」只拿到
+               0.5 的权重，等于承认它不重要。现在按「相对平均权重」放大（上限 3×），
+               强关系优先被拉近，长边清单才降得下来。 */
+            if (w) { var mul = Math.min(3, w / Math.max(1, wMean)); var pull = (d - touch) * 0.05 * mul; fx += ux * pull; fy += uy * pull; }
+            if (d < touch) { var push = (touch - d) * 0.25; fx -= ux * push; fy -= uy * push; }
+          });
+          fx += (c0x - A.center.x) * 0.002; fy += (c0y - A.center.y) * 0.002;
+          A._fx = fx; A._fy = fy;
+        });
+        regs.forEach(function (A) {
+          A.center.x += A._fx * damp; A.center.y += A._fy * damp;
+          A._fx = 0; A._fy = 0;
+        });
+      }
+    })();
+
     liveClusters.forEach(function (c) {
       var reg = graph.galaxyOf(c);
       var base = (U.hashString(c.id) % 628) / 100;   // 没有外连时的兜底角度
@@ -339,54 +388,6 @@
           （上面那行 `max(reg._cap, far+60)` 量的是星团真实外接半径）。
           早一步用「按节点数估的容量盘」会小看大领域，推了等于没推。
        ⚠️ 移动领域 = 连同它的星团一起平移（节点锚点在下一步才由星团中心算）。 */
-    /* ⭐ 2026-10-19：**领域中心由跨领域边权解出来**（regions.js 的 center 降级成初始锚）。
-       9 个点、无随机数：有关系对按权重拉向「两盘相切」，所有对都有排斥防止叠。
-       ⚠️ 必须在 `_cap` 算完之后、星团打包之前调用。 */
-    (function solveRegionCenters() {
-      if (!cfg.regionSolve) return;
-      var regs = graph.regions.filter(function (r) { return r._cap > 0 && r.center; });
-      if (regs.length < 3) return;
-      var wt = Object.create(null);
-      graph.edges.forEach(function (e) {
-        var ids = MG.graphUtil.edgeNodes(e);
-        var pr = ids.map(function (id) { var nd = graph.byId[id]; return nd && nd.regions && nd.regions[0]; });
-        for (var a = 0; a < pr.length; a++) for (var b = a + 1; b < pr.length; b++) {
-          if (!pr[a] || !pr[b] || pr[a] === pr[b]) continue;
-          var kk = pr[a] < pr[b] ? pr[a] + '|' + pr[b] : pr[b] + '|' + pr[a];
-          wt[kk] = (wt[kk] || 0) + 1;
-        }
-      });
-      var wsum0 = 0, wn0 = 0;
-      Object.keys(wt).forEach(function (k2) { wsum0 += wt[k2]; wn0++; });
-      var wMean = wn0 ? wsum0 / wn0 : 1;
-      var c0x = 0, c0y = 0;
-      regs.forEach(function (r) { c0x += r.center.x; c0y += r.center.y; });
-      c0x /= regs.length; c0y /= regs.length;
-      for (var it = 0; it < 500; it++) {
-        var damp = 0.5 * (1 - 0.6 * it / 500);
-        regs.forEach(function (A, i) {
-          var fx = 0, fy = 0;
-          regs.forEach(function (B, j) {
-            if (i === j) return;
-            var dx = B.center.x - A.center.x, dy = B.center.y - A.center.y;
-            var d = Math.sqrt(dx * dx + dy * dy) || 0.01, ux = dx / d, uy = dy / d;
-            var key = A.id < B.id ? A.id + '|' + B.id : B.id + '|' + A.id;
-            var w = wt[key] || 0, touch = A._cap + B._cap + 8;
-            /* ⭐ 2026-10-19：权重不封顶 —— 原来 min(1, w/6) 让「一条 4400 长的强边」只拿到
-               0.5 的权重，等于承认它不重要。现在按「相对平均权重」放大（上限 3×），
-               强关系优先被拉近，长边清单才降得下来。 */
-            if (w) { var mul = Math.min(3, w / Math.max(1, wMean)); var pull = (d - touch) * 0.05 * mul; fx += ux * pull; fy += uy * pull; }
-            if (d < touch) { var push = (touch - d) * 0.25; fx -= ux * push; fy -= uy * push; }
-          });
-          fx += (c0x - A.center.x) * 0.002; fy += (c0y - A.center.y) * 0.002;
-          A._fx = fx; A._fy = fy;
-        });
-        regs.forEach(function (A) {
-          A.center.x += A._fx * damp; A.center.y += A._fy * damp;
-          A._fx = 0; A._fy = 0;
-        });
-      }
-    })();
     (function packSectors() {
       /* 领域中心已由 solveRegionCenters 解出 ⇒ 板块收拢/推开会把它压扁，整段跳过。 */
       if (cfg.regionSolve) return;
