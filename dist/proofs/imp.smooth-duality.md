@@ -3,7 +3,7 @@
 
 `prop.regular-immersion-dualizing` 正则闭浸入的对偶复形 + `prop.f-shriek-base-change` 对偶函子的扭转与基变换 → `thm.smooth-duality` 光滑映射的对偶复形
 
-把 $\operatorname{Spec} A$ 嵌入仿射空间 $mathbb{A}^n_R$（正则闭浸入），用 `prop.regular-immersion-dualizing` 算出 $f^!R$ 是次数 $d$ 的线丛。
+把 $\operatorname{Spec} A$ 嵌入仿射空间 $\mathbb{A}^n_R$（正则闭浸入），用 `prop.regular-immersion-dualizing` 算出 $f^!R$ 是次数 $d$ 的线丛。
 
 再用对角定出是哪条线丛：$g : A \otimes_R A \to A$ 是余维 $d$ 的正则闭浸入，$p_1, p_2$ 是两个投影。由基变换与投影公式，
 

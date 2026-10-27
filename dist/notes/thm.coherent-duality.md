@@ -5,4 +5,4 @@
 
 ⭐ 与经典做法的区别：经典相干对偶里 $f_!$ 在仿射情形只能靠「形式函数」硬造；这里 $f_!$ 是一对伴随（$j_! \dashv j^*$）的直接产物，而且**不保持离散对象** —— 这正是凝聚态方法的收益。
 
-⚠ $f^!\mathbb{Z}$ 与经典对偶复形 $omega_A$ 的等同要在 `thm.za-analytic` 的框架里证（原文 Lecture XI）。
+⚠ $f^!\mathbb{Z}$ 与经典对偶复形 $\omega_A$ 的等同要在 `thm.za-analytic` 的框架里证（原文 Lecture XI）。

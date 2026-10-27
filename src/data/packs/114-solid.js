@@ -189,7 +189,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{RHom}(Z[S]^{\\blacksquare}, C) \\cong R\\Gamma(S, C).$$',
         '',
-        '它是 Lecture VI 的主计算（把 $C$ 换成 $C \\to C_{\\mathbb{R}} \\to C_{\\mathbb{R}/\\mathbb{Z}}$，再用紧阿贝尔群的两步消解与 $\\mathbb{R}$-模的可缩性）。\n\n⚠ 细节在原文 Lecture VI（pp. 38–41），我们只在这里给出结构与关键计算。'
+        '它是 Lecture VI 的主计算（把 $C$ 换成 $C \\to C_{\\mathbb{R}} \\to C_{\\mathbb{R}/\\mathbb{Z}}$，再用紧阿贝尔群的两步消解与 $\\mathbb{R}$-模的可缩性）。\n\n⭐ **完整证明**见边 `imp.solid-abelian`：化到 $\\prod_I\\mathbb{Z}$ 型复形 $\\to$ 核心断言 (6.1) $\\to$ 把断言推回 $Z[S]^{\\blacksquare}$ $\\to$ 套用完备化判据。'
       ].join('\n'),
     },
     {
@@ -367,15 +367,34 @@ window.MG = window.MG || {};
       target: 'thm.solid-abelian',
       title: '完备化判据 + 关键计算 $\\implies$ $\\mathbf{Solid}$ 是阿贝尔子范畴',
       proof: [
-        '在 `lem.solid-completion-criterion` 中取 $\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$、$\\mathcal{A}_0 = \\{\\mathbb{Z}[S]\\}$（$S$ extremally disconnected）、$F(\\mathbb{Z}[S]) = Z[S]^{\\blacksquare}$。',
+        '**预备。** 取 $\\mathcal{A} = \\operatorname{Cond}(\\mathbf{Ab})$，$\\mathcal{A}_0 = \\{\\mathbb{Z}[S] : S\\ \\text{extremally disconnected}\\}$（紧投射生成元），$F(\\mathbb{Z}[S]) = Z[S]^{\\blacksquare}$。要验证 `lem.solid-completion-criterion` 的假设。',
         '',
-        '需要验证：对由 $\\prod_I \\mathbb{Z}$ 的直和构成的复形 $C$，',
+        '**第一步：化到「$\\prod_I\\mathbb{Z}$ 型」的复形。** 由 `cor.free-solid-product`，每个 $Z[T]^{\\blacksquare} \\cong \\prod_I \\mathbb{Z}$。由引理 5.10，只需对「各项是若干 $\\prod_I\\mathbb{Z}$ 的直和」的复形 $C$ 证明：对一切 profinite $S$，',
+        '$$\\operatorname{RHom}(Z[S]^{\\blacksquare}, C) \\cong \\operatorname{RHom}(\\mathbb{Z}[S], C) = R\\Gamma(S, C).$$',
         '',
-        '$$\\operatorname{RHom}(Z[S]^{\\blacksquare}, C) \\longrightarrow \\operatorname{RHom}(\\mathbb{Z}[S], C) = R\\Gamma(S, C)$$',
+        '**第二步：核心断言。** 对这样的 $C$ 与任意 profinite $S\'$，有',
+        '$$\\operatorname{RHom}(Z[S]^{\\blacksquare}, C)(S\') \\cong R\\Gamma(S \\times S\', C). \\tag{6.1}$$',
         '',
-        '是同构。这是 Lecture VI 的主计算：把 $C$ 放进短正合列 $0 \\to C \\to C_{\\mathbb{R}} \\to C_{\\mathbb{R}/\\mathbb{Z}} \\to 0$，两边对 $\\mathbb{R}$-模项都消没（$\\operatorname{RHom}(\\mathbb{R}, -) = 0$），于是只需分别算 $C_{\\mathbb{R}}$ 与 $C_{\\mathbb{R}/\\mathbb{Z}}$；再把它们写成有限复形的滤过极限，逐项用紧阿贝尔群的两步消解归约到 $\\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), \\prod\\mathbb{R}/\\mathbb{Z})$ 的度 $\\le 1$ 估计。',
+        '分三层证明。',
         '',
-        '条件满足后，`lem.solid-completion-criterion` 直接给出：$\\mathbf{Solid}$ 是阿贝尔子范畴、对极限余极限扩张稳定、$\\prod_I \\mathbb{Z} = Z[S]^{\\blacksquare}$ 是紧投射生成元、含入有保余极限左伴随 $M \\mapsto M^{\\blacksquare}$。$\\blacksquare$'
+        '**(a) $C$ 集中在度 $0$。** 写 $C = M = \\bigoplus_{i \\in I} \\prod_{j \\in J_i} \\mathbb{Z}$。由 Lecture IV 的定理（Eilenberg–MacLane/Breen–Deligne，`thm.breen-deligne`）与 $\\mathbb{Z}[X]$ 的 pseudocoherence，$M(S,\\mathbb{R}/\\mathbb{Z}) \\cong \\prod \\mathbb{R}/\\mathbb{Z}$ 是 pseudocoherent 的，从而 $M(S,\\mathbb{R}/\\mathbb{Z}) \\otimes \\mathbb{Z}[S\']$ 也是。由 Theorem 4.3（`table.rhom-zrt` 那一条的母定理），',
+        '$$\\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), M)(S\') = \\bigoplus_i \\prod_j \\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), \\mathbb{Z})(S\') = \\bigoplus_i \\prod_j C(S \\times S\', \\mathbb{Z})[-1].$$',
+        '另一方面 $R\\Gamma(S, M) = \\bigoplus_i \\prod_j R\\Gamma(S, \\prod \\mathbb{Z}) = \\bigoplus_i \\prod_j C(S,\\mathbb{Z})[0]$（Theorem 3.3）。两边取 $S\'$ 点后一致。',
+        '',
+        '**(b) $C$ 有界。** 对复形长度归纳，用三角与「两边都保有限直和」即得。',
+        '',
+        '**(c) 一般 $C$。** 只需证 $\\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), C)$ 与 $R\\Gamma(S,C)$ 都集中在同调次数 $\\le 1$：然后用愚蠢截断 $C_{\\le i}$ 逼近，$C_{\\ge i+1}$ 的锥两边都在 $\\ge i$，逐次比对即可。写 $C^i = \\bigoplus_j \\prod_k \\mathbb{Z}$，令 $C_\\mathbb{R}^i = \\bigoplus_j \\prod_k \\mathbb{R}$、$C_{\\mathbb{R}/\\mathbb{Z}}^i = C_\\mathbb{R}^i/C^i$，得复形短正合列',
+        '$$0 \\to C \\to C_\\mathbb{R} \\to C_{\\mathbb{R}/\\mathbb{Z}} \\to 0.$$',
+        '只需对 $C_\\mathbb{R}$ 与 $C_{\\mathbb{R}/\\mathbb{Z}}$ 证明两件事都集中在 $\\le 0$。把它们写成典范截断的极限，化到有限复形；再逐项化到微分的核。取 $J_{i+1}$ 有限（滤过余极限 + pseudocoherence），此时 $d_{\\mathbb{R}/\\mathbb{Z},i} : \\prod_{K_{i+1}} \\mathbb{R}/\\mathbb{Z} \\to \\prod_{K_i} \\mathbb{R}/\\mathbb{Z}$ 是紧阿贝尔群的映射，核 $A$ 紧；由 Theorem 4.3 得 $\\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), A)$ 集中在 $\\le 1$，由 $A$ 的两步 $\\prod\\mathbb{R}/\\mathbb{Z}$-消解得 $R\\Gamma(S,A)$ 也集中在 $\\le 1$。',
+        '对 $\\ker d_{\\mathbb{R},i}$：$d_i$ 对偶于 $f : \\bigoplus_{K_i}\\mathbb{Z} \\to \\bigoplus_{K_{i+1}}\\mathbb{Z}$；$f_\\mathbb{R} : \\bigoplus\\mathbb{R} \\to \\bigoplus\\mathbb{R}$ 是 $\\mathbb{R}$-向量空间映射，核掉后余核 $Q \\cong \\bigoplus_L \\mathbb{R}$。于是 $\\ker d_{\\mathbb{R},i} = \\operatorname{Hom}_\\mathbb{R}(Q,\\mathbb{R}) \\cong \\prod_L \\mathbb{R}$。由 Theorem 4.3(ii)，$\\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), \\prod_L\\mathbb{R}) = 0$；由 Theorem 3.3，$R\\Gamma(S, \\prod_L\\mathbb{R})$ 集中在度 $0$。断言得证。',
+        '',
+        '**第三步：从断言到 (6.1)。** 对 $S = \\{*\\}$ 用断言：$\\operatorname{RHom}(\\mathbb{R}/\\mathbb{Z}, C)(S\') = R\\Gamma(S\', C)[-1] = \\operatorname{RHom}(\\mathbb{Z}[1], C)(S\')$，故 $\\operatorname{RHom}(\\mathbb{R}, C) = 0$。于是（$M(S,\\mathbb{R})$ 是凝聚态 $\\mathbb{R}$-模）',
+        '$$\\operatorname{RHom}(M(S,\\mathbb{R}), C) = \\operatorname{RHom}_\\mathbb{R}(M(S,\\mathbb{R}), \\operatorname{RHom}(\\mathbb{R}, C)) = 0.$$',
+        '由 $0 \\to M(S,\\mathbb{Z}) \\to M(S,\\mathbb{R}) \\to M(S,\\mathbb{R}/\\mathbb{Z}) \\to 0$ 得',
+        '$$\\operatorname{RHom}(M(S,\\mathbb{Z}), C) \\cong \\operatorname{RHom}(M(S,\\mathbb{R}/\\mathbb{Z}), C)[1] \\cong R\\Gamma(S \\times S\', C)[-1][1] = R\\Gamma(S \\times S\', C).$$',
+        '而 $M(S,\\mathbb{Z}) = Z[S]^{\\blacksquare}$，这正是 (6.1)。取 $S\' = \\{*\\}$ 得第一步要的同构。',
+        '',
+        '**第四步：收尾。** 第二步给出引理 5.10 的假设，从而引理 5.9 的假设成立；应用 `lem.solid-completion-criterion` 即得：$\\mathbf{Solid}$ 是阿贝尔子范畴、对极限余极限扩张稳定、$Z[S]^{\\blacksquare} \\cong \\prod_I\\mathbb{Z}$ 是紧投射生成元、含入有保余极限左伴随 $M \\mapsto M^{\\blacksquare}$。$\\blacksquare$',
       ].join('\n')
     },
     {

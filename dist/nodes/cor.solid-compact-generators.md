@@ -1,6 +1,6 @@
 # 固态的紧投射对象　`cor.solid-compact-generators`
 推论：紧投射对象恰为 $\prod_I\mathbb{Z}$；$D(\mathbf{Solid})^\omega \simeq D^b(\mathbb{Z})^{\mathrm{op}}$
-layer 18 · 推论 · 固态阿贝尔群 · 凝聚态数学
+layer 19 · 推论 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=cor.solid-compact-generators)　·　[节点索引](../index.md)
 
 **(i)** $\mathbf{Solid}$ 的紧投射对象恰为形如 $\prod_I \mathbb{Z}$ 的群（$I$ 任意）。

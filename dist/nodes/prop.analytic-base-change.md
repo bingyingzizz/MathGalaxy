@@ -1,5 +1,5 @@
 # 解析环的 base change　`prop.analytic-base-change`
-命题：解析环映射给出 $-otimes_{\mathcal{A}}\mathcal{B}$（Prop 7.7）
+命题：解析环映射给出 $-\otimes_{\mathcal{A}}\mathcal{B}$（Prop 7.7）
 layer 20 · 命题 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=prop.analytic-base-change)　·　[节点索引](../index.md)
 

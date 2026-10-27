@@ -15,4 +15,4 @@
 - **5** `def.lp-norm` L^p 范数 · layer 18 · L^p 空间
 - **5** `prop.cg-coreflective` 紧生成空间是余反射子范畴 · layer 18 · 紧生成空间与弱 Hausdorff
 
-（970 个节点里 962 个带强边入边，列了前 10 个；完整清单见 `graph.json`。）
+（970 个节点里 963 个带强边入边，列了前 10 个；完整清单见 `graph.json`。）

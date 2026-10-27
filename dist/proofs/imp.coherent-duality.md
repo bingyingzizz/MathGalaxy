@@ -3,12 +3,8 @@
 
 `thm.za-analytic` 有限生成代数的解析环 → `thm.coherent-duality` 仿射相干对偶
 
-把 $f_!$ 定义为复合 $D(A_\blacksquare) \xrightarrow{j_!} D((A,\mathbb{Z})_\blacksquare) \to D(\mathbb{Z}_\blacksquare)$。
+**记号。** 设 $f : A \to A'$ 是解析环之间的映射，$f^{\mathrm{ad}/\mathbb{Z}} : \operatorname{Spec} A' \to \operatorname{Spec} A$ 是对应的 adic 谱映射，$j : \operatorname{Spec} A' \to \operatorname{Spec}(A',\mathbb{Z})$。按 `def.f-shriek`，$f_! := f^{\mathrm{ad}/\mathbb{Z}}_\ast \circ j_!$。
 
-**保直和与紧。** $j_!$ 由 $M \mapsto M \otimes (A_\infty/A)[-1]$ 给出，保直和；$\operatorname{Mod}^{\mathrm{cond}}_{(A,\mathbb{Z})_\blacksquare} \to \mathbf{Solid}$ 是 base change，也保直和与紧（`prop.analytic-base-change` 与 `cor.solid-compact-generators`）。
-
-**投影公式。** 由 $j_!$ 的定义（张量积）与 $\otimes$ 的结合律形式地得到。
-
-**右伴随。** $f^!$ 存在且由伴随函子定理给出；其显式公式 $f^!M = (M \otimes A_\blacksquare) \otimes f^!\mathbb{Z}$ 由投影公式与 $f^!$ 的右伴随性解出。$f^!\mathbb{Z} = \operatorname{RHom}_{\mathbb{Z}}(f_! A, \mathbb{Z})$，由 $f_!A$ 紧得它是离散有限生成复形。
+**① $f_!$ 保直和。** $j_!$ 是左伴随，保余极限；正常推前按纤维、$\operatorname{Spec}(A',\mathbb{Z})$ 的基变换只在有限个连通块上发生（`thm.adic-structure-sheaf` 的结构层是恒定层），故保直和。合起来 $f_!$ 保直和。
 
 > 续见 proofs/imp.coherent-duality.2.md

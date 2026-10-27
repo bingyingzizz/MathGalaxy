@@ -3,9 +3,9 @@
 layer 19 · 命题 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=prop.rl1-not-analytic)　·　[节点索引](../index.md)
 
-设 $mathbb{R}_{\ell^1}$ 是如下预解析环：下垫凝聚态环为 $mathbb{R}$，对 extremally disconnected 集 $S$ 令
+设 $\mathbb{R}_{\ell^1}$ 是如下预解析环：下垫凝聚态环为 $\mathbb{R}$，对 extremally disconnected 集 $S$ 令
 
-$$mathbb{R}_{\ell^1}[S] := M_b(S, \mathbb{R})$$
+$$\mathbb{R}_{\ell^1}[S] := M_b(S, \mathbb{R})$$
 > 陈述续见 [nodes/prop.rl1-not-analytic.2.md](./prop.rl1-not-analytic.2.md)
 
 

@@ -3,7 +3,7 @@
 
 ⭐ (i) 与 (ii) 其实有同一个证明：两种情形下都有
 
-$$mathcal{A}[S] = \mathbb{Z}_\blacksquare[S] \otimes^{L}_{\mathbb{Z}_\blacksquare} \mathcal{A},$$
+$$\mathcal{A}[S] = \mathbb{Z}_\blacksquare[S] \otimes^{L}_{\mathbb{Z}_\blacksquare} \mathcal{A},$$
 
 而 $C$ 是 $D(\mathbf{Solid})$ 里的 $\mathcal{A}$-模，于是
 

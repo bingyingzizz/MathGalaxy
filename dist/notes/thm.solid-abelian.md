@@ -9,4 +9,4 @@ $$\operatorname{RHom}(Z[S]^{\blacksquare}, C) \cong R\Gamma(S, C).$$
 
 它是 Lecture VI 的主计算（把 $C$ 换成 $C \to C_{\mathbb{R}} \to C_{\mathbb{R}/\mathbb{Z}}$，再用紧阿贝尔群的两步消解与 $\mathbb{R}$-模的可缩性）。
 
-⚠ 细节在原文 Lecture VI（pp. 38–41），我们只在这里给出结构与关键计算。
+⭐ **完整证明**见边 `imp.solid-abelian`：化到 $\prod_I\mathbb{Z}$ 型复形 $\to$ 核心断言 (6.1) $\to$ 把断言推回 $Z[S]^{\blacksquare}$ $\to$ 套用完备化判据。

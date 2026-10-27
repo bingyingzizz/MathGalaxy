@@ -3,14 +3,10 @@
 
 `thm.smooth-duality` 光滑映射的对偶复形 + `def.six-functors` 6-函子形式 → `thm.poincare-solid` 固态 Serre 对偶
 
-由 6-函子形式的 Verdier 对偶
+设 $f : X \to \operatorname{Spec} R$ 是相对维数 $d$ 的光滑映射，$\omega := f^! R$。
 
-$$f_*\operatorname{Hom}_X(C, f^!R) \cong \operatorname{Hom}_R(f_!C, R).$$
+**① $f^! R$ 是可逆复形。** 先设 $X = \mathbb{A}^1_R$。此时 $\Omega^1_{X/R} \cong \mathcal{O}_X$，由 `thm.smooth-duality` 的 Koszul 计算，$f^! R \cong \mathcal{O}_X[d]$，即在局部化后同构于 $\mathcal{O}_X$ 平移 $d$；一般光滑 $f$ 局部上分解为 $d$ 个 $\mathbb{A}^1$ 的复合，$f^!$ 对复合是乘性的，故
+$$\omega = f^! R \cong \det\big(\Omega^1_{X/R}\big)^{\vee}[-d]$$
+（可逆层，集中在一个度上）。这正是 Thm 11.6 的内容。
 
-光滑时 $f^!R = \omega_{X/R}[d]$（`thm.smooth-duality`），$f_* = R\Gamma$，于是
-
-$$\operatorname{RHom}_{\mathcal{O}_X}(C, \omega_{X/R})[d] \cong \operatorname{RHom}_R(f_!C, R).$$
-
-取 $C = \mathcal{O}_X$ 得迹映射 $f_!\omega[d] \to R$。$f$ 固有时 $f_! = R\Gamma$，即经典 Serre 对偶。
-
-**保紧对象。** $f_!$ 保直和，而紧对象 = 与直和交换的对象；由 6-函子的形式性质（$f^!$ 保直和、对偶）即得。$\blacksquare$
+> 续见 proofs/imp.poincare-solid.2.md

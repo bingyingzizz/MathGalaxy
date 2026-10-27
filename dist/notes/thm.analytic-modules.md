@@ -1,7 +1,7 @@
 # 解析环上的模　`thm.analytic-modules`　·　说明
 根 `../`
 
-⭐ 这是 `thm.solid-abelian` 的相对版本：把 $\mathbb{Z}$ 换成任意解析环。**固态模**就是 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 的对象，$D(mathcal{A}) := D(\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}})$ 就是「$mathcal{A}$ 上固态模的导出范畴」。
+⭐ 这是 `thm.solid-abelian` 的相对版本：把 $\mathbb{Z}$ 换成任意解析环。**固态模**就是 $\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}}$ 的对象，$D(\mathcal{A}) := D(\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}})$ 就是「$\mathcal{A}$ 上固态模的导出范畴」。
 
 ⭐ 证明就是 `lem.solid-completion-criterion` 的第二次应用：解析环的定义正好是那条判据的假设。
 

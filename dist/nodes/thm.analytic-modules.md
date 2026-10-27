@@ -3,7 +3,7 @@
 layer 19 · 定理 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=thm.analytic-modules)　·　[节点索引](../index.md)
 
-设 $mathcal{A}$ 是解析环。考虑全子范畴
+设 $\mathcal{A}$ 是解析环。考虑全子范畴
 
 $$\operatorname{Mod}^{\mathrm{cond}}_{\mathcal{A}} \subset \operatorname{Mod}^{\mathrm{cond}}_{A}$$
 > 陈述续见 [nodes/thm.analytic-modules.2.md](./thm.analytic-modules.2.md)

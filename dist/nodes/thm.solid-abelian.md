@@ -1,6 +1,6 @@
 # 固态群构成阿贝尔子范畴　`thm.solid-abelian`
 定理：$\mathbf{Solid}$ 是阿贝尔子范畴，$\prod_I\mathbb{Z}$ 是紧投射生成元
-layer 17 · 定理 · 固态阿贝尔群 · 凝聚态数学
+layer 18 · 定理 · 固态阿贝尔群 · 凝聚态数学
 [在星图里打开](../#n=thm.solid-abelian)　·　[节点索引](../index.md)
 
 设 $\mathbf{Solid} \subset \operatorname{Cond}(\mathbf{Ab})$ 是固态阿贝尔群的全子范畴。则：

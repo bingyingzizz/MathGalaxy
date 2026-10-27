@@ -3,12 +3,8 @@
 
 `thm.adic-structure-sheaf` adic 结构层是层 + `prop.analytic-base-change` 解析环的 base change → `thm.adic-gluing` 导出范畴按无穷范畴粘合
 
-**局部化是全忠实的。** 对有理开集 $U \subseteq X = \operatorname{Spa}(A,A^+)$，遗忘函子
+**记号。** $\mathcal{C}$ = 离散 Huber 对构成的 site，覆盖取「标准覆盖」；$\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\Phi : X \mapsto (|X|, \mathcal{O}_X)$ 从离散 adic 空间到 $\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。
 
-$$D\bigl((\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare\bigr) \longrightarrow D\bigl((A,A^+)_\blacksquare\bigr)$$
-
-全忠实，左伴随是基变换。原因是先忘了凝聚态层：$D(\operatorname{Cond}(\mathcal{O}_X(U))) \to D(\operatorname{Cond}(A))$ 全忠实（$\mathcal{O}_X(U) = A[1/f]$ 是局部化）。
-
-**局部化可交换。** 对 $(A,A^+) \to (B,B^+)$ 与有理开集 $U \subset X$，其原像 $V \subset Y$ 上基变换与遗忘相容（方块交换）。
+**第一步：$\operatorname{Spec}$ 是层。** 对标准覆盖 $\{(A,A^+) \to (A_i,A_i^+)\}$，$\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \to \varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。
 
 > 续见 proofs/imp.adic-gluing.2.md

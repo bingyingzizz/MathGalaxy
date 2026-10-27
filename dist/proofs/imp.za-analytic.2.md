@@ -3,8 +3,8 @@
 
 `prop.analytic-examples` 解析环的例子 + `def.analytic-ring` 解析环 + `thm.solid-abelian` 固态群构成阿贝尔子范畴 → `thm.za-analytic` 有限生成代数的解析环
 
-**④ 定义 $j_!M := M \otimes_{A \otimes^{L} \mathbb{Z}_\blacksquare} (A_\infty/A)[-1]$。** 由 ②③ 可验证 $j_!$ 穿过 $D(A_\blacksquare)$、全忠实，且是 $j^*$ 的左伴随。
+**③ 对 $\prod_I A$ 型系数的消没。** 设 $C$ 的各项是若干 $\prod_I A$ 的直和，则 $\operatorname{RHom}_A(A_\infty, C) = 0$。化到 $C = A$：用 ① 的消解，$\operatorname{RHom}_A(A_\infty, A)$ 由复形
+$$A[U^{-1}]/A \xrightarrow{U - T^{-1}} A[U^{-1}]/A$$
+计算，该映射是单射，故复形无环。有余核时再对 $\prod$ 逐项处理。
 
-**⑤ 解析性。** 对 $\prod_I \mathbb{Z} \otimes A \to \prod_I A$ 的余核用 ③（它 $\otimes A_\infty$ 为零），得 $\operatorname{RHom}_A(\prod_I \mathbb{Z} \otimes A, C) \cong \operatorname{RHom}_A(\prod_I A, C)$，即 $A_\blacksquare$ 的定义条件。
-
-一般有限生成 $A$ 用 Noether 归一化写成有限 $\mathbb{Z}[T]$-模，逐步归约。$\blacksquare$
+> 续见 proofs/imp.za-analytic.3.md

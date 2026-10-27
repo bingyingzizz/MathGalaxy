@@ -10,7 +10,7 @@ layer 14 · 定义 · 紧 Hausdorff 空间 · 拓扑学
 
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.gleason`](../nodes/thm.gleason.md) Gleason 定理
+- 被 [`lem.solid-completion-criterion`](../nodes/lem.solid-completion-criterion.md) 完备化判据 用
 
 - …另有出边，续页见 [nodes/def.projective-object.4.md](./def.projective-object.4.md)
 

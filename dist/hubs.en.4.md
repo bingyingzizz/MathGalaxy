@@ -8,4 +8,4 @@
 - **4** `def.shrinks-nicely` shrinking · layer 15 · 微分定理
 - **4** `def.complex-measure` complex measure · layer 16 · 符号测度与分解
 
-(962 of 970 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)
+(963 of 970 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)

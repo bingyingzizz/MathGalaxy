@@ -3,7 +3,7 @@
 layer 18 · 定义 · 解析环与固态模 · 凝聚态数学
 [在星图里打开](../#n=def.analytic-ring)　·　[节点索引](../index.md)
 
-预解析环 $mathcal{A}$ 叫**解析环**，当且仅当：对任意复形
+预解析环 $\mathcal{A}$ 叫**解析环**，当且仅当：对任意复形
 
 $$C : \cdots \to C_i \to \cdots \to C_1 \to C_0 \to 0$$
 
