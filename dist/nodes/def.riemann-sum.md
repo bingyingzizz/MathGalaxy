@@ -12,6 +12,9 @@ $$S(f, P, \xi) := \sum_{i=1}^{n} f(\xi_i)\,\Delta x_i$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.partition`](../nodes/def.partition.md) 分割：用到了定义 分割　[proofs/dep.partition-riemannsum.md](../proofs/dep.partition-riemannsum.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.riemann-sum.2.md](./def.riemann-sum.2.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 6
 
 > 说明见 `notes/def.riemann-sum.md`

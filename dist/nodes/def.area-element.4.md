@@ -5,3 +5,4 @@
 - 被 [`def.orientable-surface`](../nodes/def.orientable-surface.md) 可定向曲面 用
 - 被 [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) 高斯博内定理 用
 - ⇒ [`def.orientable-surface`](../nodes/def.orientable-surface.md) 可定向曲面
+- 被 [`prop.volume-density-well-defined`](../nodes/prop.volume-density-well-defined.md) 密度与定向无关 用

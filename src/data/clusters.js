@@ -662,7 +662,24 @@ MG.clusters = [
     parent: 'diffgeom',
     hub: 'def.geodesic',
     desc: '只靠第一基本形式就能读出的东西：测地线、测地曲率、指数映射、Gauss 绝妙定理（$K$ 内蕴）、Gauss–Bonnet。'
-  }
+  },
+
+  {
+    id: 'analysis.complex',
+    name: '复变函数',
+    en: 'Complex Analysis',
+    parent: 'analysis',
+    hub: 'def.holomorphic',
+    desc: '从复数与复平面出发：全纯函数与 Cauchy–Riemann、复积分与 Cauchy 定理、幂级数与解析性、留数定理与围道积分、共形映射。'
+  },
+  {
+    id: 'diffgeom.manifold',
+    name: '微分流形',
+    en: 'Smooth Manifolds',
+    parent: 'diffgeom',
+    hub: 'def.manifold-chart',
+    desc: '把曲面换成一般的流形：图册与光滑结构、切空间与向量场、微分形式与外微分、定向与积分、de Rham 上同调、Lie 群与 Lie 代数。'
+  },
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
 ];

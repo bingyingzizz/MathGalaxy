@@ -1,4 +1,4 @@
-# ČEch Cohomology　`def.cech-cohomology`
+# Čech Cohomology　`def.cech-cohomology`
 English entry · root `../`
 [in graph](../#n=def.cech-cohomology)　·　[Chinese page (authoritative)](./def.cech-cohomology.md)
 

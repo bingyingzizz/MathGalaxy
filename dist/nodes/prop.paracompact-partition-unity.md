@@ -8,6 +8,11 @@ layer 16 · 命题 · 拓扑空间 · 拓扑学
 1. $X$ 是**仿紧 Hausdorff** 空间 $\iff$ 每个开覆盖都有一族从属于它的**单位分解**；
 2. $X$ 是**正规**空间 $\iff$ 每个**局部有限**开覆盖都有一族从属于它的单位分解。
 
+## 它能推出什么 / 谁在用它
+- 被 [`thm.smooth-partition-unity`](../nodes/thm.smooth-partition-unity.md) 光滑单位分解 用
+
+- …另有出边，续页见 [nodes/prop.paracompact-partition-unity.4.md](./prop.paracompact-partition-unity.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.paracompact-partition-unity.2.md](./prop.paracompact-partition-unity.2.md)
 

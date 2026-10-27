@@ -214,6 +214,9 @@ function exportJSON(MG, graph) {
         edges: graph.edges.length,
         strong: graph.edges.filter(e => strengthOf(e) === 'strong').length,
         weak: graph.edges.filter(e => strengthOf(e) === 'weak').length,
+        /* 其中**不参与分层**的推出（`layer:false`，见 graph.json 的边字段 layer）。
+           单独计数，好让读导出的人知道「层号方向」这条规则有例外、例外有几条。 */
+        derived: graph.edges.filter(e => e.kind === 'implication' && e.layer === false).length,
         /* 有英文入口页的节点数（T3.1）：llms.txt 的协议里要写这个数 */
         en_pages: graph.nodes.filter(n => n.title_en || n.label_en || n.abstract_en).length,
       },
@@ -229,7 +232,8 @@ function exportJSON(MG, graph) {
           preferGeneral: '同一个结论有多种证法时，保留推广程度最高的那条路径',
         },
         edgeKind: {
-          implication: '推出（有向，sources → target）',
+          implication: '推出（有向，sources → target）。⚠️ 带 layer:false 的是「推论」：' +
+            '真推出，但**不是前提**（用高级工具回头证低级定理），不参与分层、不抬高目标层号',
           equivalence: '等价（无向，proofs 是两个方向的证明）',
           definition: '定义引用（无向，某结论的陈述里用到了某定义）',
           analogy: '类比（无向，思想相通但不是逻辑蕴含）',
@@ -310,6 +314,10 @@ function exportJSON(MG, graph) {
       return {
         id: e.id, kind: e.kind, strength,
         sources: e.sources, target: e.target,
+        /* ⭐ `layer:false` = 「推论」边：真推出，但**不参与分层**（见 core/graph.js
+           的 isDerived）。只在为 false 时才出现 —— 普通边不加这个键，免得
+           把「没有这个字段」也逼成一个要解释的状态。 */
+        layer: e.layer === false ? false : undefined,
         title: e.title || '', proof: e.proof || '', note: e.note || '',
       };
     }),
@@ -331,7 +339,10 @@ function exportMarkdown(MG, graph, data) {
   p(`> 由 \`tools/build.mjs\` 自动生成于 ${data.meta.generated}`);
   p(`> ${data.meta.counts.regions} 星系 / ${data.meta.counts.clusters} 星团 / ` +
     `${data.meta.counts.nodes} 节点 / ${data.meta.counts.edges} 连线` +
-    `（强边 ${data.meta.counts.strong}，弱边 ${data.meta.counts.weak}）`);
+    `（强边 ${data.meta.counts.strong}，弱边 ${data.meta.counts.weak}` +
+    (data.meta.counts.derived
+      ? `；其中**不分层**的「推论」${data.meta.counts.derived} 条（layer:false）`
+      : '') + '）');
   p('');
   p('> ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回');
   p('> 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只');
@@ -1046,6 +1057,11 @@ function assertAI(MG, graph, files, pagesOf) {
       continue;
     }
     if (e.kind === 'analogy') continue;                     // 弱边不参与分层
+    /* ⭐ 推论边（`layer:false` 的 implication）：**是推出，但不是前提**。
+       它不参与分层（core/layers.js 里整条跳过），所以「层号必须往前走」对它
+       不成立 —— 这正是它的语义，不是缺陷。
+       ⛔ 只跳过这一类；equivalence / definition / 普通 implication 的断言一条没动。 */
+    if (e.kind === 'implication' && e.layer === false) continue;
     const pairs = e.kind === 'implication'
       ? (e.sources || []).map(s => [s, e.target])
       : [[e.definition, e.usedBy]];
@@ -1623,6 +1639,11 @@ function exportGlossary(MG) {
     const w = (k === 'analogy') ? 'weak' : 'strong';
     L.push(`- \`${k}\`　${T.edgeNames[k]}　（${w} edge）`);
   }
+  L.push('');
+  L.push('⚠️ `implication` 里另有一类 **`layer:false` 的「推论」**：真推出，但不是前提' +
+    '（用高级工具回头证低级定理），**不参与分层**、不抬高目标层号。');
+  L.push('它不是第五种 kind —— 数据里只多一个 `layer:false`；画成**粉红实线带箭头**' +
+    '（⛔ 不是虚线，虚线是「类比」的语义），不与 `edgeNames` / `edgeStyles` 的键并列。');
   L.push('');
 
   L.push('## 记号表分组（`notation.js` 的 `groups`）');

@@ -6,3 +6,4 @@
 - ⇒ [`thm.regular-value`](../nodes/thm.regular-value.md) 正则值原像定理
 - 被 [`thm.regular-level-set`](../nodes/thm.regular-level-set.md) 正则水平集定理 用
 - ⇒ [`thm.regular-level-set`](../nodes/thm.regular-level-set.md) 正则水平集定理
+- 被 [`def.lie-group`](../nodes/def.lie-group.md) Lie 群 用

@@ -34,6 +34,9 @@ const g = MG.buildGraph(MG.packs, MG.regions, MG.clusters);
 const out = Object.create(null);
 g.nodes.forEach(n => { out[n.id] = new Set(); });
 g.edges.forEach(e => {
+  /* ⭐ 推论边（`layer:false` 的 implication）不参与分层 —— 与 core/layers.js 同一口径：
+     它是真推出，但不是目标的「前提」，跳过它不会让 target 掉层。 */
+  if (e.kind === 'implication' && e.layer === false) return;
   if (e.kind === 'implication') e.sources.forEach(s => { if (out[s]) out[s].add(e.target); });
   else if (e.kind === 'definition') { if (out[e.definition]) out[e.definition].add(e.usedBy); }
   else if (e.kind === 'equivalence') { out[e.a] && out[e.a].add(e.b); out[e.b] && out[e.b].add(e.a); }
@@ -68,6 +71,7 @@ const compOf = Object.create(null);
 comps.forEach((c, i) => c.forEach(id => { compOf[id] = i; }));
 const cadj = comps.map(() => new Set());
 g.edges.forEach(e => {
+  if (e.kind === 'implication' && e.layer === false) return;   // 推论边不参与分层（同上）
   const pairs = e.kind === 'implication' ? e.sources.map(s => [s, e.target])
     : e.kind === 'definition' ? [[e.definition, e.usedBy]]
       : e.kind === 'equivalence' ? [[e.a, e.b]] : [];

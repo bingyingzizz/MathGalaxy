@@ -53,7 +53,13 @@
       pack: packName,
       label: e.label || '',
       /* 强弱：可以在数据里显式覆盖，否则按 kind 查表（见 config 的 edgeStrength） */
-      strength: e.strength || null
+      strength: e.strength || null,
+      /* ⭐ 「推论」边（见 isDerived）：kind 仍然是 implication，靠 `layer:false`
+         声明**不参与分层** —— 它是一条真实的推出，但不是目标的「前提」
+         （用层上同调 / 谱序列这类高级工具回头证明低级定理就是这种）。
+         ⚠️ 这里是**白名单式**拷贝：不在这儿接住的字段会被静默丢掉，
+            所以数据里写了 `layer:false` 而这里漏一行，网页看上去就像没写。 */
+      layer: e.layer === false ? false : null
     };
     if (e.kind === 'analogy') {
       edge.a = e.a || e.from; edge.b = e.b || e.to;
@@ -108,6 +114,24 @@
   }
 
   function isWeak(e) { return strengthOf(e) === 'weak'; }
+
+  /**
+   * 「推论」边（数据写法 `{ kind:'implication', layer:false, sources, target }`）。
+   *
+   * 语义：**是推出，但不是前提**。典型情形是用高级工具（层上同调、谱序列、
+   * Gauss–Bonnet……）回头把一个低级定理证出来 —— 那条推导真实存在、应该画出来，
+   * 但目标节点并没有「用到」它，所以它不该抬高目标的层号，也不该被分层滑杆
+   * 当成依赖（否则整个星图会因为这个「回望」被拽高一大截）。
+   *
+   * ⛔ 判据**只有这一处**：分层（core/layers.js）、渲染（core/renderer.js）、
+   *   图例（core/app.js）、构建断言（tools/build.mjs）都调它，别各写一遍 ——
+   *   抄成四份的话，改语义时必然漏掉其中一份。
+   * ⛔ 不新增 kind：`edgeStyles` / `edgeNames` / `edgeStrength` 的键一个都不动，
+   *   所以筛选、导出、搜索的全套分支都不用改。
+   */
+  function isDerived(e) {
+    return !!e && e.kind === 'implication' && e.layer === false;
+  }
 
   /* ------------------------------------------------------------------ 构建 */
   function buildGraph(packs, regions, clusterDefs) {
@@ -518,6 +542,7 @@
     edgeTarget: edgeTarget,
     strengthOf: strengthOf,
     isWeak: isWeak,
+    isDerived: isDerived,
     visibleEdges: visibleEdges,
     visibleEdgesOf: visibleEdgesOf,
     toArray: toArray

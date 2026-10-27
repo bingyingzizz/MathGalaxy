@@ -10,4 +10,4 @@
 - thm.factor-theorem　因式定理与根　layer 11
 - thm.poly-ufd　K[x] 是唯一分解整环　layer 11
 - prop.root-bound　根的个数不超过次数　layer 12
-- thm.fundamental-algebra　代数基本定理　layer 20
+- thm.fundamental-algebra　代数基本定理　layer 24

@@ -3,3 +3,6 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`def.sectional-curvature`](../nodes/def.sectional-curvature.md) 截面曲率
+- 被 [`def.volume-form`](../nodes/def.volume-form.md) 体积形式 用
+- 被 [`def.volume-density`](../nodes/def.volume-density.md) 体积密度与体积形式 用
+- ⇒ [`prop.volume-density-well-defined`](../nodes/prop.volume-density-well-defined.md) 密度与定向无关

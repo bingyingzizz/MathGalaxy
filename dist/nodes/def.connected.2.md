@@ -2,6 +2,8 @@
 [在星图里打开](../#n=def.connected)　·　第 1 页 [nodes/def.connected.md](./def.connected.md)
 
 ## 它能推出什么 / 谁在用它（续）
+- ⇒ [`thm.de-rham-h0`](../nodes/thm.de-rham-h0.md) 零次上同调
+- ⇒ [`prop.component-clopen`](../nodes/prop.component-clopen.md) 连通分量是闭开邻域之交
 - 被 [`prop.connected-image-closure`](../nodes/prop.connected-image-closure.md) 连通的像与闭包 用
 - 被 [`prop.component-clopen`](../nodes/prop.component-clopen.md) 连通分量是闭开邻域之交 用
 - 被 [`prop.td-reflective`](../nodes/prop.td-reflective.md) 全不连通空间是反射子范畴 用

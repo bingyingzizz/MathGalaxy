@@ -2,7 +2,7 @@
 
 数据根 = 本目录。下一步：读 `index/<星团id>.md` 拿节点清单。
 星团的名字见 `index/<星系id>.md`（那页还有中心天体与点数）。
-规模：12 星系 / 75 星团 / 1116 节点 / 2012 连线。
+规模：12 星系 / 77 星团 / 1177 节点 / 2124 连线。
 
 ## 数理逻辑（logic）
 logic.fol
@@ -20,6 +20,6 @@ topology.general　topology.metric　topo.chaus　topo.stone　topo.cg　topolog
 algebra.structures　algebra.vectorspace　algebra.spectral　algebra.inner　algebra.multilinear　algebra.group-action　algebra.solvable　algebra.matrix　algebra.polynomial　algebra.linmap
 
 ## 数学分析（analysis）
-analysis.real　analysis.real-calc　analysis.completeness　analysis.continuity　analysis.mvt　analysis.riemann　analysis.series　analysis.uniform　analysis.multivariable
+analysis.real　analysis.real-calc　analysis.completeness　analysis.continuity　analysis.mvt　analysis.riemann　analysis.series　analysis.uniform　analysis.multivariable　analysis.complex
 
 > 续见 `index.2.md`

@@ -16,6 +16,8 @@ $$(u \wedge v) \wedge w = u \wedge (v \wedge w), \qquad v \wedge w = (-1)^{|v| |
 ## 它能推出什么 / 谁在用它
 - 被 [`def.differential-form`](../nodes/def.differential-form.md) 微分形式 用
 
+- …另有出边，续页见 [nodes/def.exterior-algebra.3.md](./def.exterior-algebra.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.exterior-algebra.2.md](./def.exterior-algebra.2.md)
 

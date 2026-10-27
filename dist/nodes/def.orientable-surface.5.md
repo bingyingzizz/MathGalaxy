@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`thm.stokes`](../nodes/thm.stokes.md) Stokes 定理 用
+- 被 [`prop.boundary-sign-convention`](../nodes/prop.boundary-sign-convention.md) 边界的符号约定 用

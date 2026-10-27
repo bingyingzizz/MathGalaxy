@@ -456,6 +456,20 @@
       analogy:     'weak'
     },
 
+    /* ⭐ 「推论」边（数据写法 `layer:false` 的 implication，见 core/graph.js 的 isDerived）
+       ------------------------------------------------------------------
+       语义：**是推出，但不是前提** —— 用高级工具（层上同调、谱序列、Gauss–Bonnet……）
+       回头把低级定理证出来。它不参与分层，所以要能和普通推出**一眼分开**。
+
+       画法：**实线 + 箭头 + 粉红**。⛔ 不做虚线 —— 虚线在这个图里是「类比（弱边）」
+             的语义，撞上去就成了另一种承诺。
+       宽度不在这里定义：它直接走 `edge.implicationWidth` 那条代码路径，
+             「与普通推出一致」是靠**共用同一条路径**保证的，不是抄一个数。
+       ⛔ 不新增 kind：`edgeStyles` / `edgeNames` / `edgeStrength` 三个表的键一个不动。 */
+    derivedEdge: {
+      color: '#E0446B'       // 比拓扑领域的 #D9649F 更红一档，放在同一张图上不会混
+    },
+
     font: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif',
     monoFont: 'ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace',
 

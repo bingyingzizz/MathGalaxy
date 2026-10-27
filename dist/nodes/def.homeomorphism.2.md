@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.continuous-map`](../nodes/def.continuous-map.md) 连续映射：用到了定义 连续映射　[proofs/dep.continuous-map-homeo.md](../proofs/dep.continuous-map-homeo.md)
+
+> 续见 [nodes/def.homeomorphism.3.md](./def.homeomorphism.3.md)

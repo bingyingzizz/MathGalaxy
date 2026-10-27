@@ -7,3 +7,6 @@
 - 被 [`def.char-poly`](../nodes/def.char-poly.md) 特征多项式 用
 - 被 [`def.mean-curvature`](../nodes/def.mean-curvature.md) 平均曲率 用
 - 被 [`def.area-element`](../nodes/def.area-element.md) 面积元 用
+- 被 [`def.orientable-manifold`](../nodes/def.orientable-manifold.md) 可定向流形 用
+- 被 [`def.volume-density`](../nodes/def.volume-density.md) 体积密度与体积形式 用
+- 被 [`thm.change-of-variables-manifold`](../nodes/thm.change-of-variables-manifold.md) 流形上的换元公式 用

@@ -14,6 +14,11 @@
 
    弱边（类比）不参与分层 —— 它不是逻辑依赖。
 
+   ⭐ 「推论」边（`{ kind:'implication', layer:false }`）**也不参与分层** ——
+      它是一条真实的推出，但不是目标的「前提」（用高级工具回头证低级定理），
+      所以既不抬高目标的层号，也不该被分层滑杆当成依赖。
+      ⛔ 只跳 implication；equivalence / definition 一个都不动。
+
    层号**不写进内容**：连线一改，层号就该跟着变，所以每次打开现算。
    算完写在节点上（n.layer）和图对象上（graph.maxLayer / graph.layerSizes），
    图例的分层开关与详情面板直接用它们。
@@ -38,6 +43,10 @@
     }
     graph.edges.forEach(function (e) {
       if (e.kind === 'implication') {
+        /* ⭐ 推论边（layer:false）：真实的推出，但**不是前提** ⇒ 不参与分层。
+           跳过它只影响「target 不再被这条边抬高」，其余一切照旧 ——
+           它也**不会**凭空制造反方向的依赖（那会让 source 掉层）。 */
+        if (e.layer === false) return;
         (e.sources || []).forEach(function (s) { link(s, e.target); });
       } else if (e.kind === 'definition') {
         link(e.definition, e.usedBy);

@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.ricci-curvature`](../nodes/def.ricci-curvature.md) Ricci 曲率 用
 - ⇒ [`def.ricci-curvature`](../nodes/def.ricci-curvature.md) Ricci 曲率
+- 被 [`def.tensor-field`](../nodes/def.tensor-field.md) 张量场 用

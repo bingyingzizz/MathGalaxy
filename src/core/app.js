@@ -1147,10 +1147,24 @@
 
       /* ---------- 连线 ---------- */
       var weakCount = graph.edges.filter(function (e) { return GU.isWeak(e); }).length;
+      /* ⭐ 推论边（`layer:false` 的 implication）：真推出，但不参与分层、不抬高目标层号。
+         只在**有**这种边时才出行 —— 和类比那一行同样的做法（没有就不占地方）。
+         ⚠️ 只展示、不加筛选开关：连线本来就没有按 kind 的开关（定义线归「设置」，
+            类比归工具条的「探索」），硬塞一个会多出一套要持久化的状态。 */
+      var derivedCount = graph.edges.filter(function (e) { return GU.isDerived(e); }).length;
+      var derivedColor = (T.derivedEdge && T.derivedEdge.color) || '#E0446B';
       var strongTag = '<em style="color:#A5ABB3;font-style:normal">' + U.escapeHtml(tf('·强')) + '</em>';
       var edgeRows =
         '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>' + U.escapeHtml(tf('等价')) + strongTag + '</span>' +
         '<span class="lg-item"><span class="lg-line" style="border-top-color:#1C1C1E;border-top-width:2px"></span>' + U.escapeHtml(tf('推出 →')) + strongTag + '</span>' +
+        (derivedCount
+          ? '<span class="lg-item" title="' +
+            U.escapeHtml(tf('用高级工具回头证明低级定理的推出：真边，但不抬高目标的层号')) + '">' +
+            '<span class="lg-line" style="border-top-color:' + derivedColor + ';border-top-width:2px"></span>' +
+            U.escapeHtml(tf('推论 · 不分层')) +
+            '<em style="color:#A5ABB3;font-style:normal">' +
+            U.escapeHtml(tf('·{n} 条', { n: derivedCount })) + '</em></span>'
+          : '') +
         '<span class="lg-item"><span class="lg-line" style="border-top-color:rgba(60,112,245,.5);border-top-width:2px"></span>' + U.escapeHtml(tf('定义引用')) + strongTag + '</span>' +
         (weakCount
           ? '<span class="lg-item" style="opacity:' + (C.exploreMode ? 1 : 0.45) + '">' +

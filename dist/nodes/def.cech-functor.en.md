@@ -1,4 +1,4 @@
-# ČEch Functor　`def.cech-functor`
+# Čech Functor　`def.cech-functor`
 English entry · root `../`
 [in graph](../#n=def.cech-functor)　·　[Chinese page (authoritative)](./def.cech-functor.md)
 

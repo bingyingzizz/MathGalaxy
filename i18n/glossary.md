@@ -22,6 +22,9 @@
 - `definition`　定义引用　（strong edge）
 - `analogy`　类比　（weak edge）
 
+⚠️ `implication` 里另有一类 **`layer:false` 的「推论」**：真推出，但不是前提（用高级工具回头证低级定理），**不参与分层**、不抬高目标层号。
+它不是第五种 kind —— 数据里只多一个 `layer:false`；画成**粉红实线带箭头**（⛔ 不是虚线，虚线是「类比」的语义），不与 `edgeNames` / `edgeStyles` 的键并列。
+
 ## 记号表分组（`notation.js` 的 `groups`）
 
 - `set`　逻辑与集合　→　Logic and sets　39 条

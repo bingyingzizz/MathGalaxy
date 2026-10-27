@@ -18,6 +18,8 @@ layer 7 · 定义 · 拓扑空间 · 拓扑学
 ## 它能推出什么 / 谁在用它
 - 被 [`def.smooth-manifold`](../nodes/def.smooth-manifold.md) 光滑流形 用
 
+- …另有出边，续页见 [nodes/def.homeomorphism.3.md](./def.homeomorphism.3.md)
+
 refs: Munkres, Topology, Ch. 2
 
 > 说明见 `notes/def.homeomorphism.md`

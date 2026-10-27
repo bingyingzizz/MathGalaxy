@@ -711,6 +711,18 @@
       return null;
     }
 
+    /** 边的**线色**（只换颜色，别的什么都不换）。
+        ⭐ 推论边（`layer:false` 的 implication，见 GU.isDerived）= 粉红。
+           ⛔ 不算虚线：虚线在本图里是「类比（弱边）」的语义。
+           ⛔ 宽度 / 箭头 / 曲线都不在这里 —— 它们和普通推出走同一条代码路径，
+              「与普通推出一致」是由这个事实保证的，不是由抄一个数保证的。 */
+    function edgeColor(e) {
+      var D = T.derivedEdge;
+      if (GU.isDerived(e) && D && D.color) return D.color;
+      var st = T.edgeStyles[e.kind] || {};
+      return st.color;
+    }
+
     /* ============================================================ 绘制 */
     /* 本帧已被「星系名 / 装置名」占掉的矩形 —— 节点名不许压上去 */
     var nameBoxes = [];
@@ -1522,7 +1534,9 @@
         * (e.kind === 'definition' ? 1 : edgeWidthMul());
 
       // 全图尺度：主干画成一条低调的暖色细线，不抢云雾和装置名
-      var spineOnly = spine && lodA.nodeEdge < 0.9;
+      /* ⛔ 推论边不参与主干降色：主干色（暖橙棕）会把「粉红 = 不分层」这个
+         唯一的视觉线索吃掉。它照样走主干的下限 / 线宽规则，只是颜色不改。 */
+      var spineOnly = spine && !GU.isDerived(e) && lodA.nodeEdge < 0.9;
       if (spineOnly) { a *= 0.55 + 0.45 * lodA.nodeEdge; w = 1.25; }
 
       if (e.kind === 'definition' && !C.showDefinitionLines) return;
@@ -1548,7 +1562,9 @@
         var alpha = (style.alpha != null ? style.alpha : 1) * a;
         ctx.strokeStyle = 'rgba(' + style.color + ',' + alpha.toFixed(3) + ')';
       } else {
-        ctx.strokeStyle = U.rgba(style.color, a);
+        /* ⭐ 推论边（layer:false）在这里换成粉红；普通推出 / 等价仍是墨色。
+           线宽、箭头、曲线一概不动 —— 见 edgeColor() 的注释。 */
+        ctx.strokeStyle = U.rgba(edgeColor(e), a);
       }
 
       ctx.beginPath();
@@ -1611,7 +1627,9 @@
       ctx.lineTo(-sz * 0.72, 0);
       ctx.lineTo(-sz, -sz * 0.42);
       ctx.closePath();
-      ctx.fillStyle = U.rgba(T.edgeStyles.implication.color, a);
+      /* ⭐ 箭头跟线**同色**：推论边（layer:false）用粉红，其余推出保持墨色。
+         ⛔ 只换颜色 —— 箭头的大小 / 形状 / 角度全在下面，一处都不改。 */
+      ctx.fillStyle = U.rgba(edgeColor(e), a);
       ctx.fill();
       ctx.restore();
     }

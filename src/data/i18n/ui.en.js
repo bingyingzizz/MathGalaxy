@@ -108,6 +108,11 @@ MG.uiEn = {
     '连线（{n}）': 'Edges ({n})',
     '·强': '· strong',
     '·弱 {n} 条': '· weak {n}',
+    /* ⭐ 推论边（`layer:false` 的 implication）：真推出，但不参与分层。见 core/graph.js 的 isDerived。 */
+    '推论 · 不分层': 'Derived · any layer',
+    '·{n} 条': '· {n}',
+    '用高级工具回头证明低级定理的推出：真边，但不抬高目标的层号':
+      'A derivation that uses advanced tools to re-prove an elementary theorem: a real edge, but it does not raise the target’s layer',
     '（点右上角「探索」显示）': ' (press “Explore”, top right)',
     '分层 · 显示到第 {n} 层（{k}/{m}）': 'Layer · up to {n} ({k}/{m})',
     '全部': 'All',

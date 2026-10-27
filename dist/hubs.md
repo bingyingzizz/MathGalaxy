@@ -16,4 +16,4 @@
 - **5** `def.product-measure` 乘积测度 · layer 17 · 乘积测度与 Fubini
 - **5** `def.lp-norm` L^p 范数 · layer 18 · L^p 空间
 
-（1116 个节点里 1109 个带强边入边，列了前 11 个；完整清单见 `graph.json`。）
+（1177 个节点里 1170 个带强边入边，列了前 11 个；完整清单见 `graph.json`。）

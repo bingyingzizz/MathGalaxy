@@ -9,6 +9,9 @@ layer 28 · 定理 · 内蕴几何 · 微分几何
 > 陈述续见 [nodes/thm.stokes.2.md](./thm.stokes.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`thm.divergence-theorem`](../nodes/thm.divergence-theorem.md) 散度定理 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.stokes.3.md](./thm.stokes.3.md)
 

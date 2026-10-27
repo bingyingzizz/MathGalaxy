@@ -12,6 +12,8 @@ $$J_f(a) := \Bigl( \frac{\partial f_i}{\partial x_j}(a) \Bigr)_{\substack{1 \le 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.chain-rule-multi`](../nodes/thm.chain-rule-multi.md) 多元链式法则
 
+- …另有出边，续页见 [nodes/def.jacobian.3.md](./def.jacobian.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.jacobian.2.md](./def.jacobian.2.md)
 

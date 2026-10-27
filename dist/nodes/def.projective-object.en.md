@@ -1,10 +1,11 @@
-# Injective Object　`def.projective-object`
+# Projective and Injective Objects　`def.projective-object`
 English entry · root `../`
 [in graph](../#n=def.projective-object)　·　[Chinese page (authoritative)](./def.projective-object.md)
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
 layer 14 · definition · cluster Compact Hausdorff Spaces (`topo.chaus`) · Topology
+names: `Projective and Injective` (short) · `Projective and Injective Objects` (full)
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.projective-object.md` and `proofs/`.
