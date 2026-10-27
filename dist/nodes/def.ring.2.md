@@ -5,6 +5,7 @@
 - 被 [`def.polynomial-ring`](../nodes/def.polynomial-ring.md) 多项式环 用
 - ⇒ [`prop.field-rules`](../nodes/prop.field-rules.md) 环与域的基本等式
 - ⇒ [`prop.ideal-basic`](../nodes/prop.ideal-basic.md) 理想的运算与商环泛性质
+- 被 [`def.discrete-huber-pair`](../nodes/def.discrete-huber-pair.md) 离散 Huber pair 用
 - 被 [`prop.zmod-is-ab`](../nodes/prop.zmod-is-ab.md) Z-模就是阿贝尔群 用
 - 被 [`def.ideal`](../nodes/def.ideal.md) 理想 用
 - 被 [`def.module`](../nodes/def.module.md) 模 用

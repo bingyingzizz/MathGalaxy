@@ -122,5 +122,17 @@ MG.regions = [
     center: { x: 1560, y: -120 },
     radius: 500,
     desc: '把拓扑空间换成「紧 Hausdorff 空间上的层」：凝聚态集、凝聚态阿贝尔群。'
+  },
+  {
+    id: 'analytic',
+    name: '解析几何',
+    en: 'Analytic Geometry',
+    color: '#7A4E9E',
+    /* 2026-10-21 新开：Clausen–Scholze 的 adic 空间 / 解析环 / 相干对偶。
+       放在凝聚态的东侧 —— 它从凝聚态拿固态模，但同时大量引用代数（Huber pair）、
+       拓扑（spectral space）、范畴/同调（∞-范畴、导出范畴）与分析（复解析几何）。 */
+    center: { x: 2280, y: 380 },
+    radius: 520,
+    desc: 'adic 空间与解析环上的固态模：Huber pair → Spa → 结构层 → ∞-范畴粘合 → 6-函子形式与相干对偶。'
   }
 ];

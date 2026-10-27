@@ -7,6 +7,9 @@ layer 20 · 命题 · 解析环与固态模 · 凝聚态数学
 > 陈述续见 [nodes/prop.analytic-base-change.2.md](./prop.analytic-base-change.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.adic-gluing`](../nodes/thm.adic-gluing.md) 导出范畴按无穷范畴粘合
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.analytic-base-change.3.md](./prop.analytic-base-change.3.md)
 

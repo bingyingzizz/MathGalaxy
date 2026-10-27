@@ -46,6 +46,7 @@
 - `category`　范畴论　→　Category Theory
 - `homology`　同调代数　→　Homological Algebra
 - `condensed`　凝聚态数学　→　Condensed Mathematics
+- `analytic`　解析几何　→　Analytic Geometry
 
 ## 其它（`+` = 手工新造）
 

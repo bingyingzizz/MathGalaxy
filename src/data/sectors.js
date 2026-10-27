@@ -51,8 +51,9 @@ MG.sectors = [
     name: '几何与拓扑',
     en: 'Geometry & Topology',
     color: '#D9649F',
-    regions: ['topology'],
-    desc: '开集、连续、紧致与连通；紧 Hausdorff 空间、Stone 空间与紧生成空间 —— 也是凝聚态数学「紧 Hausdorff 上的层」那一侧的原料。'
+    regions: ['topology', 'analytic'],
+    secondary: { analytic: ['algebra', 'condensed', 'foundations'] },
+    desc: '开集、连续、紧致与连通；紧 Hausdorff 空间、Stone 空间与紧生成空间 —— 也是凝聚态数学「紧 Hausdorff 上的层」那一侧的原料。**解析几何**（adic 空间、解析环、相干对偶）归这里：它的主产物是几何对象，原料则来自代数与凝聚态。'
   },
   {
     id: 'number-theory',

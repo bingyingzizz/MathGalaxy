@@ -564,6 +564,22 @@ MG.clusters = [
     parent: 'condensed',
     hub: 'thm.za-analytic',
     desc: '把「自由完备模」抽成函子：预解析环 → 解析环 → 解析环上的固态模范畴（阿贝尔、有紧投射生成元）→ base change → 有限生成 $\\mathbb{Z}$-代数的 $A_\\blacksquare$ 是解析环 → 仿射相干对偶 $f_! \\dashv f^!$。来源：Clausen–Scholze 讲义 Lectures VII–VIII。'
+  },
+  {
+    id: 'analytic.adic',
+    name: 'adic 空间',
+    en: 'Adic Spaces',
+    parent: 'analytic',
+    hub: 'def.discrete-adic-space',
+    desc: '造出解析几何的舞台：离散 Huber pair $(A,A^+)$ → 谱 $\\operatorname{Spa}$ → 有理开集上的局部化 → 结构层是层 → 离散 adic 空间 → 概形的全忠实嵌入 → 导出范畴按 ∞-范畴粘合。来源：Clausen–Scholze 讲义 Lectures IX–X。'
+  },
+  {
+    id: 'analytic.dual',
+    name: '相干对偶',
+    en: 'Coherent Duality',
+    parent: 'analytic',
+    hub: 'thm.poincare-solid',
+    desc: '造出 6-函子形式与固态 Serre 对偶：开浸入的 $j_!$ → $f_! = f^{\\mathrm{ad}/Y}_* j_!$ → $f^!$ 的扭转与平坦基变换 → 正则闭浸入与光滑映射的对偶复形 → 迹配对。来源：Clausen–Scholze 讲义 Lecture XI。'
   }
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-26T15:20:02.863Z
-> 9 星系 / 63 星团 / 955 节点 / 1709 连线（强边 1700，弱边 9）
+> 由 `tools/build.mjs` 自动生成于 2026-10-27T05:59:22.598Z
+> 10 星系 / 65 星团 / 970 节点 / 1727 连线（强边 1718，弱边 9）
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -18427,6 +18427,333 @@ $$0 \to mathbb{R}_{\ell^1}[S] \to E \to mathbb{R}_{\ell^1}[S] \to 0,$$
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Example 7.11 and Proposition 7.12
 
+## 星系：解析几何（Analytic Geometry）
+> adic 空间与解析环上的固态模：Huber pair → Spa → 结构层 → ∞-范畴粘合 → 6-函子形式与相干对偶。
+
+### 星团：adic 空间
+> 造出解析几何的舞台：离散 Huber pair $(A,A^+)$ → 谱 $\operatorname{Spa}$ → 有理开集上的局部化 → 结构层是层 → 离散 adic 空间 → 概形的全忠实嵌入 → 导出范畴按 ∞-范畴粘合。来源：Clausen–Scholze 讲义 Lectures IX–X。
+
+#### 离散 Huber pair　`def.discrete-huber-pair`
+*定义*　离散 Huber pair（Discrete Huber Pair）
+
+一个**离散 Huber pair** 是一对 $(A, A^+)$：
+
+- $A$ 是离散环；
+- $A^+ \subseteq A$ 是**整闭**子环（$A$ 中在 $A^+$ 上整的元素仍属于 $A^+$）。
+
+它对应一个解析环
+
+$$(A, A^+)_\blacksquare := \varinjlim_{(B,B^+) \to (A,A^+)} (B, B^+)_\blacksquare,$$
+
+余极限跑遍所有「$B$ 与 $B^+$ 都有限生成 $\mathbb{Z}$-代数」的子对 $(B,B^+) \subseteq (A,A^+)$。
+
+⭐ 为什么需要 $A^+$：解析几何里「有界」不是 $A$ 自带的，要**额外指定**哪些元素算「$\le 1$」。$A^+$ 就是「单位球的整数模型」。
+
+⭐ 两个极端：$(A, A)$（「一切都有界」）与 $(A, \widetilde{\mathbb{Z}})$（「代数整数才有界」，$\widetilde{\mathbb{Z}}$ 是 $\mathbb{Z}$ 在 $A$ 中的整闭包）。前者给出概形 $\operatorname{Spec} A$ 的 adic 化，后者给出「去掉阿基米德部分」的版本。
+
+⚠ 定义里 $A$ 不要求拓扑 —— 这是「离散」二字的含义。经典 Huber 对允许一般拓扑环，本图只做离散情形（足够覆盖 $\mathbb{Z}$ 上有限型的算术场景）。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1
+
+#### adic 谱 Spa　`def.adic-spectrum`
+*定义*　adic 谱 $\operatorname{Spa}(A,A^+)$（Adic Spectrum）
+
+设 $(A, A^+)$ 是离散 Huber pair。**adic 谱**
+
+$$\operatorname{Spa}(A, A^+) := \bigl\{\, |\cdot| : A \to \Gamma \cup \{0\} \ \big|\ |A^+| \le 1 \,\bigr\} \big/ \sim$$
+
+是 $A$ 上「在 $A^+$ 上 $\le 1$」的赋值 $|\cdot|$ 的等价类全体。这里 $\Gamma$ 是乘法写法的全序阿贝尔群，赋值满足
+
+$$|0| = 0, \quad |1| = 1, \quad |xy| = |x|\,|y|, \quad |x + y| \le \max(|x|, |y|).$$
+
+拓扑由**有理开集**给出：对 $f, g_1, \ldots, g_n \in A$，
+
+$$U\!\left(\tfrac{g_1, \ldots, g_n}{f}\right) := \bigl\{\, x : |g_i(x)| \le |f(x)| \ne 0 \ \text{对一切 } i \,\bigr\}.$$
+
+这些有理开集构成一组基，$\operatorname{Spa}(A,A^+)$ 是 **spectral space**。
+
+⭐ 赋值满足**强三角不等式** $|x+y| \le \max(|x|,|y|)$，这是非阿基米德的标志；换成 $\le |x| + |y|$ 就是阿基米德的（复几何那一边），那是另一套理论。
+
+⭐ 有理开集是「$|g_i| \le |f|$」定义的区域 —— 直觉上就是「$g_i/f$ 有界」的 locus。它们既开又紧（quasicompact），这正是 adic 空间比概形好用的地方：仿射开集自带紧性。
+
+⚠ $\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、$T_0$、有开集基）。所以不能拿度量空间的直觉套它。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1
+
+#### A⁺ 由谱决定　`prop.huber-subring-recovery`
+*命题*　命题：整闭子环与谱的开闭子集一一对应（Prop 9.2）
+
+记 $\operatorname{Spv}(A) := \operatorname{Spa}(A, \widetilde{\mathbb{Z}})$ 为 $A$ 上全部赋值等价类。则
+
+$$A^+ \longmapsto U = \operatorname{Spa}(A, A^+) = \bigcap_{f \in A^+} U_{1,f} \subseteq \operatorname{Spv}(A),$$
+
+给出了「整闭子环 $A^+ \subseteq A$」与「形如 $\bigcap_{f \in I} U_{1,f}$ 的子集 $U$」之间的**双射**，逆映射是
+
+$$U \longmapsto A^+ = \{\, f \in A : \forall x \in U,\ |f(x)| \le 1 \,\}.$$
+
+特别地 $A^+ = \{f \in A : \forall x \in \operatorname{Spa}(A,A^+),\ |f(x)| \le 1\}$。
+
+⭐ 这条说明：**$A^+$ 不是额外数据，而是谱上的「单位球截面」**。换句话说，$(A,A^+)$ 与「$A$ 加上一个谱的开闭子集」是同一件事 —— 这正是把环论翻译成几何的地方。
+
+⚠ 一般 $A^+$ 不可能是任意子环：必须整闭。反例：$A = \mathbb{Z}[T]$、$A^+ = \mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个 $\operatorname{Spa}$。
+
+📌 证明用赋值环的存在性（扎里斯基引理）：若 $f \notin A^+$，在 $A^+[1/f]$ 里取素理想，再取支配它的赋值环，得到 $|f| > 1$ 的点。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.2
+
+#### 有理开集上的局部化　`prop.rational-localization`
+*命题*　命题：有理开集对应局部化（Prop 9.3）
+
+设 $(A,A^+) \to (B,B^+)$ 是离散 Huber pair 的映射，且 $\operatorname{Spa}(B,B^+) \to \operatorname{Spa}(A,A^+)$ 穿过有理开集 $U = U\!\left(\frac{g_1,\ldots,g_n}{f}\right)$。则映射唯一地穿过
+
+$$\Bigl(A\bigl[\tfrac{1}{f}\bigr],\ \widetilde{A^+\bigl[\tfrac{g_1}{f}, \ldots, \tfrac{g_n}{f}\bigr]}\Bigr),$$
+
+其中波浪号表示在 $A[1/f]$ 中的整闭包。并且
+
+$$\operatorname{Spa}\Bigl(A\bigl[\tfrac{1}{f}\bigr],\ \widetilde{A^+\bigl[\tfrac{g_i}{f}\bigr]}\Bigr) \longrightarrow \operatorname{Spa}(A,A^+)$$
+
+是到 $U$ 上的同胚。
+
+⭐ 这是「有理开集 = 仿射开集」的精确含义：每个有理开集本身又是一个 $\operatorname{Spa}$，只是把 $f$ 取逆、把 $g_i/f$ 加进 $A^+$。于是 adic 空间有一套**仿射开集基**，可以像概形一样做层论。
+
+⚠ 唯一性来自「$f$ 在 $\operatorname{Spa}(B,B^+)$ 上处处非零 $\implies$ $f$ 在 $B$ 中可逆」（否则 $\operatorname{Spec}(B/fB)$ 会给一个 $|f| = 0$ 的点）。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.3
+
+#### adic 结构层是层　`thm.adic-structure-sheaf`
+*定理*　定理：$\mathcal{O}_X$ 与 $\mathcal{O}_X^+$ 是层（Prop 9.4）
+
+设 $X = \operatorname{Spa}(A,A^+)$。在有理开集上定义
+
+$$\mathcal{O}_X(U) := A\bigl[\tfrac{1}{f}\bigr], \qquad \mathcal{O}_X^+(U) := \widetilde{A^+\bigl[\tfrac{g_1}{f}, \ldots, \tfrac{g_n}{f}\bigr]}$$
+
+（$U = U\!\left(\frac{g_1,\ldots,g_n}{f}\right)$）。则：
+
+**(i)** $\mathcal{O}_X$ 与 $\mathcal{O}_X^+$ 都是**层**；
+
+**(ii)** 每个点 $x \in X$ 的赋值 $f \mapsto |f(x)|$ 唯一地延拓到茎 $\mathcal{O}_{X,x}$；
+
+**(iii)** $\mathcal{O}_X^+(U) = \{f \in \mathcal{O}_X(U) : \forall x \in U,\ |f(x)| \le 1\}$。
+
+⭐ 证明的关键是一个「借道概形」的技巧：有映射 $\psi : \operatorname{Spec} A \to \operatorname{Spa}(A,A^+)$，把素理想 $\mathfrak{p}$ 送到 $A \to \operatorname{Frac}(A/\mathfrak{p}) \to \{0,1\}$。有理开集在 $\psi$ 下的原像正是 $D(f)$，于是 $\mathcal{O}_{\operatorname{Spa}(A,A^+)}$ 是 $\mathcal{O}_{\operatorname{Spec} A}$ 在 $\psi$ 下的**推前**；推前保层。
+
+⭐ (iii) 说明 $\mathcal{O}^+$ 不是额外结构，而是 $\mathcal{O}$ 里「逐点 $\le 1$」的那部分 —— 与 `prop.huber-subring-recovery` 是同一句话的局部版本。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.4
+
+#### 离散 adic 空间　`def.discrete-adic-space`
+*定义*　离散 adic 空间（Discrete Adic Space）
+
+一个**离散 adic 空间**是一个三元组 $(X, \mathcal{O}_X, (|\cdot(x)|)_{x \in X})$：
+
+- 拓扑空间 $X$；
+- 环层 $\mathcal{O}_X$；
+- 每个点 $x$ 处 $\mathcal{O}_{X,x}$ 上一个赋值等价类 $|\cdot(x)|$，
+
+使得 $(X, \mathcal{O}_X, (|\cdot(x)|))$ **局部**同构于
+
+$$\bigl(\operatorname{Spa}(A,A^+),\ \mathcal{O}_{\operatorname{Spa}(A,A^+)},\ (|\cdot(x)|)_{x}\bigr),$$
+
+其中 $(A,A^+)$ 是离散 Huber pair。
+
+⭐ 概形的两个全忠实嵌入：$X = \operatorname{Spec} A \mapsto X_{\mathrm{ad}} = \operatorname{Spa}(A,A)$（「一切有界」），以及 $X \mapsto X_{\mathrm{ad}/R} = \operatorname{Spa}(A, \widetilde{R})$（相对 $\operatorname{Spec} R$）。两者都保粘合，且有比较映射 $X_{\mathrm{ad}} \to X_{\mathrm{ad}/R}$。
+
+⭐ 点的另一种描述（后面证固有性要用）：$X_{\mathrm{ad}}$ 的点 = 映射 $\operatorname{Spec} V \to X$（$V$ 是赋值环），模掉「忠实平坦的赋值环扩张」；$X_{\mathrm{ad}/R}$ 的点 = 带交换图的
+
+$$\begin{array}{ccc} \operatorname{Spec} K & \to & X \\ \downarrow & & \downarrow \\ \operatorname{Spec} V & \to & \operatorname{Spec} R \end{array}$$
+
+⚠ 这不是「拓扑空间加环层」那么简单：赋值是**逐点**的额外数据，它决定了「哪些函数有界」。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.5
+
+#### 概形嵌入 adic 空间　`prop.scheme-embeds-adic`
+*命题*　命题：分离/固有性对应开浸入/同构（Prop 9.6）
+
+设 $X$ 是 $\operatorname{Spec} R$ 上有限型的概形。则比较映射
+
+$$X_{\mathrm{ad}} \longrightarrow X_{\mathrm{ad}/R}$$
+
+在 $X$ 分离时是**开浸入**；在 $X$ **固有**时是同构。
+
+⭐ 这条把「分离 / 固有」翻译成 adic 语言：固有概形的 adic 化与「相对 $R$ 的 adic 化」完全一致，于是后面可以用 $X_{\mathrm{ad}/R}$ 上的层来计算 $X$ 上的东西。
+
+⭐ 证明就是赋值判据：有限型时局部是开浸入；点集上的单射 / 双射正是分离 / 固有的赋值判据。
+
+⚠ 反过来不成立：adic 空间比概形多得多（$\operatorname{Spa}(\mathbb{Z}_p, \mathbb{Z}_p)$ 就不是某个概形的 adic 化）。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.6
+
+#### 导出范畴按无穷范畴粘合　`thm.adic-gluing`
+*定理*　定理：$U \mapsto D((\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare)$ 是 $\infty$-范畴层（Thm 9.8）
+
+设 $X$ 是离散 adic 空间。把仿射开集 $U = \operatorname{Spa}(A,A^+) \subseteq X$ 送到
+
+$$D\bigl((A,A^+)_\blacksquare\bigr) \subset D(\operatorname{Cond}(A)),$$
+
+这个对应定义了一个 $X$ 上的 **$\infty$-范畴层**（严格说：从仿射开集范畴到 $\infty$-范畴的函子，所有函子有左伴随）。取整体截面得
+
+$$D\bigl((\mathcal{O}_X, \mathcal{O}_X^+)_\blacksquare\bigr),$$
+
+取同伦范畴得到三角范畴，记作 $D(\mathcal{O}_{X,\blacksquare})$。
+
+⚠ **为什么必须上 $\infty$-范畴**：在阿贝尔层面粘不起来 —— 有理开集上的基变换 $-\otimes_{(A,A^+)_\blacksquare} (\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare$ 不正合。具体例子：$(A,A^+) = (\mathbb{F}_p[T], \mathbb{F}_p)$，取有理开集「$|T| \le 1$」，此时 $(\mathcal{O}_X(U),\mathcal{O}_X^+(U)) = (\mathbb{F}_p[T], \mathbb{F}_p[T])$，而单射 $\mathbb{F}_p[T] \hookrightarrow \mathbb{F}_p((T^{-1}))$ 在基变换后变成 $\mathbb{F}_p[T] \to 0$。\n\n⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；在导出范畴上把这两条做成粘合数据，再升到 $\infty$-范畴（同伦之间的同伦要留住）。\n\n📌 原文 Lectures IX–X（pp. 62–70）。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Theorem 9.8
+
+### 星团：相干对偶
+> 造出 6-函子形式与固态 Serre 对偶：开浸入的 $j_!$ → $f_! = f^{\mathrm{ad}/Y}_* j_!$ → $f^!$ 的扭转与平坦基变换 → 正则闭浸入与光滑映射的对偶复形 → 迹配对。来源：Clausen–Scholze 讲义 Lecture XI。
+
+#### 6-函子形式　`def.six-functors`
+*定义*　6-函子形式（Six-Functor Formalism）
+
+一个**6-函子形式**由下列数据组成：
+
+- 每个概形 $X$ 给一个闭对称幺半三角范畴 $D(X)$（张量积 $- \otimes_X -$ 有右伴随 $\operatorname{Hom}_X$）；
+- 每个映射 $f : X \to Y$ 给**拉回** $f^* : D(Y) \to D(X)$，它有右伴随 $f_*$；
+- 每个（满足适当条件的）映射 $f : X \to Y$ 给**紧支撑推前** $f_! : D(X) \to D(Y)$，它有右伴随 $f^!$。
+
+合计六个函子：$\otimes,\ \operatorname{Hom},\ f^*,\ f_*,\ f_!,\ f^!$。它们应当满足：
+
+**(i)** $f$ 固有 $\implies f_! = f_*$；**(ii)** $f$ 平展 $\implies f^! = f^*$；
+
+**(iii) Verdier 对偶**：$f_* \operatorname{Hom}_X(A, f^!B) \cong \operatorname{Hom}_Y(f_!A, B)$；
+
+**(iv) 投影公式**：$f_!(A \otimes_X f^*B) \cong f_!A \otimes_Y B$；
+
+**(v) 固有基变换**：拉回方块中 $g^* f_! \cong f'_! g'^*$；
+
+**(vi) Poincaré 对偶**：$f$ 光滑时 $f^!\mathbf{1}_Y \otimes_X f^*B \to f^!B$ 是同构，且 $f^!\mathbf{1}_Y$ 可逆。
+
+⭐ 前四个函子 $\otimes, \operatorname{Hom}, f^*, f_*$ 通常容易造；**全部难度在 $f_!$**。经典例子是 $\ell$-进层 $D_{\mathrm{et}}(X, \mathbb{Z}_\ell)$ 与凝聚态/固态层。
+
+⭐ 一旦有了 $f_!$，$f^!$ 由伴随给出。反过来，$f_!$ 也由「开浸入 + 固有映射 + Nagata 紧化」决定：$f = \bar f \circ j$ 时 $f_! = \bar f_* j_!$。所以真正要造的只有**开浸入的 $j_!$**（见 `prop.open-immersion-shriek`）。
+
+⚠ 在凝聚态世界里，$f_!$ 不能只用抽象 $A$-模造 —— 开浸入的 $j_!$ 要求 $\prod_I A \otimes_A A[1/f] \cong \prod_I A[1/f]$，这在抽象模里失效、在**固态模**里成立。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, p. 72
+
+#### 开浸入的 j_!　`prop.open-immersion-shriek`
+*命题*　命题：开浸入 $j$ 的 $j_!$ 存在（Prop 11.2）
+
+设 $j : X_{\mathrm{ad}} \to X_{\mathrm{ad}/Y}$ 是开浸入。则遗忘函子
+
+$$j^* : D\bigl((\mathcal{O}_{X_{\mathrm{ad}/Y}}, \mathcal{O}^+_{X_{\mathrm{ad}/Y}})_\blacksquare\bigr) \longrightarrow D\bigl((\mathcal{O}_{X_{\mathrm{ad}}}, \mathcal{O}^+_{X_{\mathrm{ad}}})_\blacksquare\bigr)$$
+
+有**左伴随**
+
+$$j_! : D\bigl((\mathcal{O}_{X_{\mathrm{ad}}}, \mathcal{O}^+_{X_{\mathrm{ad}}})_\blacksquare\bigr) \longrightarrow D\bigl((\mathcal{O}_{X_{\mathrm{ad}/Y}}, \mathcal{O}^+_{X_{\mathrm{ad}/Y}})_\blacksquare\bigr).$$
+
+⭐ 这条是整套 6-函子的**唯一硬点**。$j_!$ 存在等价于 $j^*$ 保极限（因为左伴随存在 $\iff$ 保极限），而 $j^*$ 在开浸入上就是「局部化 $A \mapsto A[1/f]$」。于是要求
+
+$$\prod_I A \otimes_{A_\blacksquare} A[1/f]_\blacksquare \;\cong\; \prod_I A[1/f].$$
+
+在抽象 $A$-模里这**不成立**（$\prod$ 与局部化不交换），在固态 $A$-模里成立 —— 这就是为什么相干对偶需要凝聚态/固态语言。
+
+📌 仿射、有限型情形由 Lecture VIII 附录给出；一般情形归约到仿射。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.2
+
+#### 紧支撑推前 f_!　`def.f-shriek`
+*定义*　紧支撑推前 $f_!$ 与 $f^!$（Def 11.3）
+
+设 $f : X \to Y$ 是分离、有限型的概形映射，对应 adic 空间图
+
+$$\begin{array}{ccc} X_{\mathrm{ad}} & \xrightarrow{\ j\ } & X_{\mathrm{ad}/Y} \\ & f_{\mathrm{ad}} \searrow & \downarrow f_{\mathrm{ad}/Y} \\ & & Y_{\mathrm{ad}} \end{array}$$
+
+其中 $j$ 是开浸入（$f$ 固有时是同构）。定义
+
+$$f_! := (f_{\mathrm{ad}/Y})_* \circ j_! : D(\mathcal{O}_{X,\blacksquare}) \longrightarrow D(\mathcal{O}_{Y,\blacksquare}).$$
+
+它保一切直和，故有右伴随 $f^!$。六个函子至此齐备。
+
+⭐ 定义的形式很朴素：**先开浸入地推出去，再（沿相对 adic 化）正常推前**。全部内容在于 $j_!$ 存在（`prop.open-immersion-shriek`）。
+
+⭐ $f$ 固有时 $j$ 是同构，$f_! = (f^{\mathrm{ad}/Y})_*$，与 $R\Gamma$ 一致 —— 这正是 `thm.poincare-solid` 里「$f$ 固有时与整体截面一致」的来源。
+
+⚠ 「保直和」是 $f^!$ 存在的关键：$j_!$ 作为左伴随保余极限，$(f^{\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，也保直和。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Definition 11.3
+
+#### 对偶函子的扭转与基变换　`prop.f-shriek-base-change`
+*命题*　命题：$f^!$ 是 $f^*$ 的扭转，且平坦基变换（Prop 11.4）
+
+设 $f : R \to A$ 是有限生成、有限 Tor 维数的环映射（诺特环之间映射的基变换）。则自然映射
+
+$$f^!R \otimes^{L}_{A_\blacksquare} f^* \longrightarrow f^!$$
+
+是函子的等价。若 $g : R \to S$ 平坦、$f' : S \to B = A \otimes_R S$ 是基变换（$g' : A \to B$），则
+
+$$g'^* f^! \;\simeq\; f'^! g^* : D(R_\blacksquare) \longrightarrow D(B_\blacksquare).$$
+
+⭐ 读法：**$f^!$ 就是「$f^*$ 再扭一个 $f^!R$」**。于是要算 $f^!$，只需算 $f^!R$（对偶复形）。
+
+⭐ 证明归约到两种情形：$f$ 满射（此时 $f_! = f_*$ 是遗忘函子，$f^! = \operatorname{RHom}_R(A,-)$，基变换显然）与 $A = R[T]$（此时 $f_!M = M \otimes_{(A,R)_\blacksquare} R((T^{-1}))/R[T][-1]$，$f^!R = R[T][1]$，基变换化成 $R((T^{-1}))/R[T]$ 的基变换）。
+
+⚠ 有限 Tor 维数是必需的：否则 $f^!R$ 不是有限复形，扭转公式失效。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.4
+
+#### 正则闭浸入的对偶复形　`prop.regular-immersion-dualizing`
+*命题*　命题：正则闭浸入 $f^!R \cong \det(I/I^2)^*[-c]$（Prop 11.5）
+
+设 $f : R \to A$ 是**正则闭浸入**：$f$ 满射，核 $I$ 在 $\operatorname{Spec} R$ 上局部由正则序列生成；并设 $\operatorname{Spec} A \subset \operatorname{Spec} R$ 处处纯余维 $c$。则
+
+$$f^!R = \operatorname{RHom}_R(A, R) \;\cong\; \det\nolimits_A(I/I^2)^*[-c].$$
+
+⭐ 局部上 $A = R/(f_1, \ldots, f_c)$（正则序列），Koszul 复形直接算出 $\operatorname{RHom}_R(A,R) \cong A[-c]$；$\det(I/I^2)$ 由 $f_1 \wedge \cdots \wedge f_c$ 给出基。整体化要验证与生成元选取无关。
+
+⭐ 这条 + 平坦基变换是算光滑情形的两块砖：把 $\operatorname{Spec} A$ 嵌入仿射空间（正则闭浸入），再用对角把 $\Omega$ 抠出来。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.5
+
+#### 光滑映射的对偶复形　`thm.smooth-duality`
+*定理*　定理：光滑 $f$ 的 $f^!R \cong \det(\Omega^1_{A/R})[d]$（Thm 11.6）
+
+设 $f : R \to A$ 是维数 $d$ 的光滑环映射。则存在自然同构
+
+$$f^!R \;\cong\; \det\nolimits_A\bigl(\Omega^1_{A/R}\bigr)[d].$$
+
+由于同构自然、且一切都局部定义，它整体化到任意光滑映射 $f : X \to Y$。
+
+⭐ 这就是**对偶复形**：光滑情形下 $f^!\mathbf{1}_Y$ 是一条可逆层（线丛）挪到次数 $d$，由 Kähler 微分的行列式给出。
+
+⭐ 证明用对角：$g : A \otimes_R A \to A$ 是余维 $d$ 的正则闭浸入（对角 $\Delta_f$），把 $f^!R$ 用 $g^!$ 与两个投影拆开，再用正则闭浸入的公式，得到
+
+$$f^!R \otimes f^!R \otimes g^!(A \otimes_R A) \;\cong\; f^!R,$$
+
+比较两边即得 $\det(\Omega)[d]$。
+
+⚠ 这是「相干对偶在光滑情形下就是 Poincaré 对偶」的精确来源：$\omega_{X/Y} = \det(\Omega^1_{X/Y})[d]$。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.6
+
+#### 固态 Serre 对偶　`thm.poincare-solid`
+*定理*　定理：光滑映射的紧支撑推前与对偶（Thm 11.1）
+
+设 $f : X \to \operatorname{Spec} R$ 是分离、光滑、有限型、维数 $d$ 的映射，$\omega_{X/R} = \bigwedge^d \Omega^1_{X/R}$。则存在典范函子
+
+$$f_! : D(\mathcal{O}_{X,\blacksquare}) \longrightarrow D(R_\blacksquare),$$
+
+它在 $f$ 固有等同于 $R\Gamma(X,-)$，且**保紧对象**。有**迹映射**
+
+$$f_!\,\omega_{X/R}[d] \longrightarrow R,$$
+
+使得对一切 $C \in D(\mathcal{O}_{X,\blacksquare})$，自然映射
+
+$$\operatorname{RHom}_{\mathcal{O}_X}(C, \omega_{X/R})[d] \longrightarrow \operatorname{RHom}_R(f_!C,\ R)$$
+
+是同构。
+
+⭐ 这就是**固态版的 Serre 对偶 / Poincaré 对偶**：$f_!$ 是紧支撑上同调，$\omega_{X/R}[d]$ 是对偶复形，迹映射把顶次紧支撑上同调送到基环。
+
+⭐ 「保紧对象」是**局部有限性**的版本：$f_!$ 把紧对象送到紧对象，等价于说相干上同调在紧支撑下有限。经典证明要 Chow 引理 + 消解；这里有 6-函子形式后是形式推论。
+
+⚠ 与 `thm.coherent-duality`（仿射版，Lecture VIII）的关系：那是 $f_!$ 的定义与投影公式；这里是**光滑情形**下把 $f^!$ 具体算成 $\omega[d]$ 并给出迹配对。
+
+📌 原文 Lecture XI（pp. 71–76）。
+
+参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.1
+
 ---
 
 ## 全部连线（含推导过程）
@@ -21725,6 +22052,157 @@ $$0 \ne \operatorname{Ext}^1_{\mathbb{R}}(\mathbb{R}_{\ell^1}[S], \mathbb{R}_{\e
 #### 定义引用：「固态阿贝尔群」→ 解析环的例子　`def-link.solid-za`
 
 $\mathbb{Z}_{p,\blacksquare}$ 与 $(A,\mathbb{Z})_\blacksquare$ 的解析性直接归约到 $\mathbb{Z}_\blacksquare$ 的固态性。
+
+#### adic 谱 Spa + 离散 Huber pair ⟹ A⁺ 由谱决定　`imp.huber-subring-recovery`
+*赋值的定义 $\implies$ $A^+$ 由谱决定*
+
+**$A^+$ 整闭。** 若 $f \in A$ 在 $A^+$ 上整，则 $f$ 满足 $f^n + a_{n-1}f^{n-1} + \cdots + a_0 = 0$（$a_i \in A^+$）。对任意 $x \in \operatorname{Spa}(A,A^+)$，$|a_i(x)| \le 1$，于是
+
+$$|f(x)|^n = |a_{n-1}f^{n-1} + \cdots + a_0| \le \max_{i} |a_i(x)|\,|f(x)|^{i} \le \max(1, |f(x)|^{n-1}),$$
+
+这迫使 $|f(x)| \le 1$。
+
+**反向。** 设 $f \notin A^+$。在 $A^+[1/f]$ 中取素理想 $\mathfrak{p}$ 含 $1/f$，取 $\mathfrak{p}$ 下的极小素理想 $\mathfrak{q}$，再取赋值环 $V$ 支配 $A^+[1/f]$ 在 $\mathfrak{p}$ 处的局部化。由于 $\operatorname{Spec} A[1/f] \to \operatorname{Spec} A^+[1/f]$ 的像含 $\mathfrak{q}$，可把赋值提升到 $A[1/f]$。得到的赋值在 $A^+$ 上 $\le 1$、在 $f$ 上 $> 1$，故 $f$ 不在右边。$\blacksquare$
+
+#### adic 谱 Spa + A⁺ 由谱决定 ⟹ 有理开集上的局部化　`imp.rational-localization`
+*有理开集 $\implies$ 局部化*
+
+设 $(A,A^+) \to (B,B^+)$ 的谱映射落在 $U = \{|g_i| \le |f| \ne 0\}$ 内。
+
+**$f$ 在 $B$ 中可逆。** 否则 $B/fB \ne 0$，取素理想 $\mathfrak{p} \supset fB$，它给出 $y \in \operatorname{Spa}(B,B^+)$ 且 $|f(y)| = 0$，与落在 $U$ 内矛盾。于是得到 $A[1/f] \to B$。
+
+**$g_i/f \in B^+$。** 对一切 $y$，$|g_i(y)| \le |f(y)|$ 且 $|f(y)| \ne 0$，故 $|g_i/f(y)| \le 1$；由 `prop.huber-subring-recovery` 得 $g_i/f \in B^+$。于是有 $A^+[g_i/f] \to B^+$，再延拓到整闭包。
+
+**同胚。** 两条映射互逆，展开定义即得。$\blacksquare$
+
+#### 有理开集上的局部化 + A⁺ 由谱决定 ⟹ adic 结构层是层　`imp.adic-structure-sheaf`
+*有理开集上的局部化 $\implies$ 结构层是层*
+
+由 `prop.rational-localization`，$\mathcal{O}_X(U) = A[1/f]$ 只依赖 $U$，且粘合映射唯一，所以它预层化。
+
+**$\mathcal{O}_X$ 是层。** 考虑 $\psi : \operatorname{Spec} A \to \operatorname{Spa}(A,A^+)$，$\mathfrak{p} \mapsto (A \to \operatorname{Frac}(A/\mathfrak{p}) \to \{0,1\})$。有理开集的原像是 $D(f)$，故 $\mathcal{O}_{\operatorname{Spa}}$ 是 $\mathcal{O}_{\operatorname{Spec} A}$ 沿 $\psi$ 的推前；推前保层。
+
+**赋值延拓到茎。** 每个 $x$ 在包含它的有理开集上都有定义，且与局部化相容；取余极限得 $\mathcal{O}_{X,x}$ 上的赋值。
+
+**(iii)** 在每个仿射开集上就是 `prop.huber-subring-recovery`。$\blacksquare$
+
+#### 离散 adic 空间 + 有理开集上的局部化 ⟹ 概形嵌入 adic 空间　`imp.scheme-embeds-adic`
+*赋值判据 $\implies$ 分离/固有*
+
+有限型时，仿射局部上 $X_{\mathrm{ad}} \to X_{\mathrm{ad}/R}$ 就是 $\operatorname{Spa}(A,A) \to \operatorname{Spa}(A,\widetilde{R})$，由 `prop.rational-localization` 知是开浸入。
+
+整体上，开浸入 $\iff$ 点集上单射（局部已是开浸入）；而点集上的单射 / 双射正是分离 / 固有的**赋值判据**（用 `def.discrete-adic-space` 里「点 = 赋值环映射」的描述）。$\blacksquare$
+
+#### adic 结构层是层 + 解析环的 base change ⟹ 导出范畴按无穷范畴粘合　`imp.adic-gluing`
+*结构层 + 局部化的全忠实 $\implies$ $\infty$-范畴粘合*
+
+**局部化是全忠实的。** 对有理开集 $U \subseteq X = \operatorname{Spa}(A,A^+)$，遗忘函子
+
+$$D\bigl((\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare\bigr) \longrightarrow D\bigl((A,A^+)_\blacksquare\bigr)$$
+
+全忠实，左伴随是基变换。原因是先忘了凝聚态层：$D(\operatorname{Cond}(\mathcal{O}_X(U))) \to D(\operatorname{Cond}(A))$ 全忠实（$\mathcal{O}_X(U) = A[1/f]$ 是局部化）。
+
+**局部化可交换。** 对 $(A,A^+) \to (B,B^+)$ 与有理开集 $U \subset X$，其原像 $V \subset Y$ 上基变换与遗忘相容（方块交换）。
+
+**下降。** 「局部为零则整体为零」+「局部化可交换」给 Zariski 型下降；把下降数据升到 $\infty$-范畴（保留同伦），即得 $U \mapsto D((\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare)$ 是 $\infty$-范畴层。$\blacksquare$
+
+#### 定义引用：「环」→ 离散 Huber pair　`def-link.ring-huber`
+
+Huber pair 的第一步是一个**环** $A$；整闭子环 $A^+$ 是在它里面挑「有界元」。
+
+#### 定义引用：「离散 Huber pair」→ adic 谱 Spa　`def-link.huber-spectrum`
+
+谱 $\operatorname{Spa}(A,A^+)$ 的输入正是这个 pair —— 没有 $A^+$ 就不知道「在哪些点上取 $\le 1$」。
+
+#### 定义引用：「adic 谱 Spa」→ 离散 adic 空间　`def-link.spectrum-space`
+
+adic 空间是「局部同构于 $\operatorname{Spa}$」的空间，所以 $\operatorname{Spa}$ 是它的模型。
+
+#### 定义引用：「凝聚态阿贝尔群」→ 导出范畴按无穷范畴粘合　`def-link.condab-adic`
+
+每个 $D((A,A^+)_\blacksquare)$ 都嵌在凝聚态 $A$-模的导出范畴里，粘合是**凝聚态层**意义下的粘合。
+
+#### 紧支撑推前 f_! + 有限生成代数的解析环 ⟹ 开浸入的 j_!　`imp.open-immersion-shriek`
+*固态模里 $\prod$ 与局部化交换 $\implies$ $j_!$ 存在*
+
+$j_!$ 存在 $\iff$ $j^*$ 保极限。$j$ 是开浸入，$j^*$ 就是「把 $A$-模换成 $A[1/f]$-模」；要它保积就等价于
+
+$$\prod_I A \otimes_{A_\blacksquare} A[1/f]_\blacksquare \;\cong\; \prod_I A[1/f].$$
+
+在抽象 $A$-模里，左边是 $\prod_I A[1/f]$ 的**子集**（$\prod$ 与局部化不交换），一般不相等；在固态 $A$-模里，$\prod_I A$ 是紧投射对象（`cor.solid-compact-generators`），$\otimes_{A_\blacksquare}$ 保它，且 $A[1/f]_\blacksquare$ 与 $\prod$ 相容。
+
+仿射、有限型情形由 `thm.za-analytic` 的 $j_!$ 给出；一般情形取仿射开覆盖逐步粘合。$\blacksquare$
+
+#### 开浸入的 j_! + 6-函子形式 ⟹ 紧支撑推前 f_!　`imp.f-shriek`
+*开浸入的 $j_!$ $\implies$ 一般 $f_!$*
+
+对分离有限型 $f : X \to Y$，有交换图 $X_{\mathrm{ad}} \xrightarrow{j} X_{\mathrm{ad}/Y} \to Y_{\mathrm{ad}}$，$j$ 是开浸入（`prop.scheme-embeds-adic` 的类似论证）。定义
+
+$$f_! := (f_{\mathrm{ad}/Y})_* \circ j_!.$$
+
+$j_!$ 存在由 `prop.open-immersion-shriek`；$(f_{\mathrm{ad}/Y})_*$ 是正常推前。$f$ 固有时 $j$ 是同构，$f_! = (f^{\mathrm{ad}/Y})_*$。
+
+**保直和。** $j_!$ 作为左伴随保余极限；$(f^{\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。故 $f_!$ 保直和，右伴随 $f^!$ 存在。$\blacksquare$
+
+#### 对偶函子的扭转与基变换 + 有限生成代数的解析环 ⟹ 对偶函子的扭转与基变换　`imp.f-shriek-base-change`
+*仿射情形 + 基变换*
+
+一切局部化良好，归约到 $f : R \to A$ 是 $A = R[T]$ 或 $f$ 满射两种情形。
+
+**$f$ 满射。** $f_! = f_*$ 是遗忘函子，$f^! = \operatorname{RHom}_R(A,-)$；有限 Tor 维数使 $A$ 是 $R$ 上的 perfect 复形，于是
+
+$$f^! = \operatorname{RHom}_R(A, R) \otimes^{L}_{R_\blacksquare} f^*,$$
+
+而 $\operatorname{RHom}_R(A,R)$ 与平坦基变换交换。
+
+**$A = R[T]$。** $f_!M = M \otimes_{(A,R)_\blacksquare} R((T^{-1}))/R[T][-1]$，$f^!R = R[T][1]$；基变换就是 $R((T^{-1}))/R[T]$ 的基变换。$\blacksquare$
+
+#### 对偶函子的扭转与基变换 + 紧支撑推前 f_! ⟹ 正则闭浸入的对偶复形　`imp.regular-immersion-dualizing`
+*Koszul 复形 $\implies$ 正则闭浸入的对偶复形*
+
+局部 $A = R/(f_1, \ldots, f_c)$，$f_1, \ldots, f_c$ 是正则序列。Koszul 复形 $K(f_\bullet)$ 是 $A$ 的自由 $R$-消解（长度 $c$），于是
+
+$$\operatorname{RHom}_R(A, R) = \operatorname{Hom}_R(K(f_\bullet), R) \cong A[-c].$$
+
+$\det(I/I^2)$ 由 $f_1 \wedge \cdots \wedge f_c$ 给出基，故 $\det(I/I^2) \cong A$，取对偶不改变（线丛平凡化到 $A$）。整体上验证与生成元选取无关，即得自然同构。$\blacksquare$
+
+#### 正则闭浸入的对偶复形 + 对偶函子的扭转与基变换 ⟹ 光滑映射的对偶复形　`imp.smooth-duality`
+*对角 + 正则闭浸入 $\implies$ $f^!R = \det(\Omega)[d]$*
+
+把 $\operatorname{Spec} A$ 嵌入仿射空间 $mathbb{A}^n_R$（正则闭浸入），用 `prop.regular-immersion-dualizing` 算出 $f^!R$ 是次数 $d$ 的线丛。
+
+再用对角定出是哪条线丛：$g : A \otimes_R A \to A$ 是余维 $d$ 的正则闭浸入，$p_1, p_2$ 是两个投影。由基变换与投影公式，
+
+$$f^!R = g^!p_1^!f^!R = g^!\bigl(p_1^*f^!R \otimes p_2^*f^!R\bigr) = f^!R \otimes f^!R \otimes g^!(A \otimes_R A).$$
+
+比较次数与行列式（$g^!(A\otimes_R A) = \det(I/I^2)^*[-d]$，而对角的 $I/I^2 = \Omega^1_{A/R}$），得 $f^!R = \det(\Omega^1_{A/R})[d]$。$\blacksquare$
+
+#### 光滑映射的对偶复形 + 6-函子形式 ⟹ 固态 Serre 对偶　`imp.poincare-solid`
+*6-函子 + $f^!R=\omega[d]$ $\implies$ Serre 对偶*
+
+由 6-函子形式的 Verdier 对偶
+
+$$f_*\operatorname{Hom}_X(C, f^!R) \cong \operatorname{Hom}_R(f_!C, R).$$
+
+光滑时 $f^!R = \omega_{X/R}[d]$（`thm.smooth-duality`），$f_* = R\Gamma$，于是
+
+$$\operatorname{RHom}_{\mathcal{O}_X}(C, \omega_{X/R})[d] \cong \operatorname{RHom}_R(f_!C, R).$$
+
+取 $C = \mathcal{O}_X$ 得迹映射 $f_!\omega[d] \to R$。$f$ 固有时 $f_! = R\Gamma$，即经典 Serre 对偶。
+
+**保紧对象。** $f_!$ 保直和，而紧对象 = 与直和交换的对象；由 6-函子的形式性质（$f^!$ 保直和、对偶）即得。$\blacksquare$
+
+#### 定义引用：「离散 adic 空间」→ 紧支撑推前 f_!　`def-link.adic-dual`
+
+$f_!$ 的定义用的正是 $X_{\mathrm{ad}} \to X_{\mathrm{ad}/Y}$ 这个 adic 空间的图。
+
+#### 定义引用：「解析环」→ 6-函子形式　`def-link.analyticring-dual`
+
+6-函子里的 $D(X)$ 就是固态层 $D(\mathcal{O}_{X,\blacksquare})$，即解析环上的固态模。
+
+#### 定义引用：「仿射相干对偶」→ 紧支撑推前 f_!　`def-link.coherent-affine-global`
+
+仿射版的 $f_!$ 是全局定义的局部模型：在仿射开集上两者一致。
 
 #### 预测度 + Carathéodory 定理 ⟹ 乘积测度　`imp.product-measure`
 *矩形上的预测度 $\implies$ Carathéodory 扩张得到乘积测度*
@@ -29516,6 +29994,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **L^p 空间 ↔ 实数的运算与不等式**　3 条节点级连线
 - **固态阿贝尔群 ↔ Stone 与 Stonean**　2 条节点级连线
 - **解析环与固态模 ↔ 固态阿贝尔群**　4 条节点级连线
+- **相干对偶 ↔ 解析环与固态模**　4 条节点级连线
 - **测度的构造 ↔ 乘积测度与 Fubini**　6 条节点级连线
 - **积分 ↔ 乘积测度与 Fubini**　2 条节点级连线
 - **乘积测度与 Fubini ↔ 集合的构造**　3 条节点级连线

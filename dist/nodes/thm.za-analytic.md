@@ -16,6 +16,8 @@ $$j^* : D(A_\blacksquare) \hookrightarrow D((A,\mathbb{Z})_\blacksquare)$$
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.coherent-duality`](../nodes/thm.coherent-duality.md) 仿射相干对偶
 
+- …另有出边，续页见 [nodes/thm.za-analytic.4.md](./thm.za-analytic.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.za-analytic.3.md](./thm.za-analytic.3.md)
 
