@@ -3,9 +3,9 @@
 「张量不伤正合」的模：定义与一族等价判据 → 自由模平坦、直和项平坦、整环上平坦即无挠 → Lambek 判据（只需对有限生成理想检验）→ Lazard 定理（平坦 = 有限生成自由模的滤过余极限）→ Watts 定理（保直和的正合函子都是张量）。
 中心天体 def.flat-module　·　14 个节点　·　根 `../`　·　续页 `index/hom.flat.2.md`
 
-- def.tor　挠积　layer 12
-- prop.tor-symmetry　挠积的对称性　layer 13
+- def.tor　挠积　layer 13
 - def.flat-module　平坦模　layer 14
+- prop.tor-symmetry　挠积的对称性　layer 14
 - thm.watts　张量函子的刻画　layer 14
 - prop.free-flat　自由模平坦　layer 15
 - thm.lazard　平坦模的结构定理　layer 15

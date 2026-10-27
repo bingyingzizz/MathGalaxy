@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-27T07:35:37.106Z",
+  "generated": "2026-10-27T07:37:25.548Z",
   "counts": {
    "regions": 10,
    "clusters": 72,
    "nodes": 1059,
-   "edges": 1889,
-   "strong": 1880,
+   "edges": 1890,
+   "strong": 1881,
    "weak": 9,
    "en_pages": 299
   },
@@ -9929,7 +9929,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "同调代数",
@@ -10004,7 +10004,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "同调代数",
@@ -10029,7 +10029,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "同调代数",
@@ -10852,7 +10852,7 @@
     "homology"
    ],
    "cluster": "hom.flat",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "挠积",
@@ -10877,7 +10877,7 @@
     "homology"
    ],
    "cluster": "hom.flat",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "挠积",
@@ -29150,7 +29150,7 @@
     "algebra"
    ],
    "cluster": "algebra.structures",
-   "layer": 9,
+   "layer": 12,
    "tags": [
     "命题",
     "张量积",
@@ -37487,6 +37487,14 @@
    "definition": "def.paracompact",
    "usedBy": "thm.paracompact-cech-equals-sheaf",
    "note": "这条定理的前提正是「仿紧 + Hausdorff」：仿紧给出局部有限的加细，单位分解才拼得出来，Čech 与层上同调才会重合。"
+  },
+  {
+   "id": "def-link.tensor-universal",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.tensor-module",
+   "usedBy": "prop.module-tensor-universal",
+   "note": "这条万有性质讲的是 $M\\otimes_R N$ 这个对象本身；先有构造（商掉双线性关系），才谈得上它对双线性映射万有。"
   },
   {
    "id": "imp.hahn",
@@ -49317,7 +49325,7 @@
   {
    "a": "algebra.structures",
    "b": "hom.module",
-   "count": 3,
+   "count": 4,
    "label": "",
    "explicit": false
   },

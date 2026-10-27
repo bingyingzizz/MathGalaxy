@@ -16,9 +16,9 @@
 - prop.zmod-is-ab　Z-模就是阿贝尔群　layer 8
 - thm.first-iso　第一同构定理（Noether）　layer 9
 - def.ideal　理想　layer 9
-- prop.module-tensor-universal　张量积对双线性映射万有　layer 9
 - prop.ideal-basic　理想的运算与商环泛性质　layer 10
 - prop.abelianization　交换化　layer 10
 - prop.prime-ideal　素理想与极大理想　layer 11
+- prop.ring-localization　环的局部化 W⁻¹R　layer 11
 
 > 续见 `index/algebra.structures.2.md`

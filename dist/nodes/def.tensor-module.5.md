@@ -5,3 +5,4 @@
 - 被 [`def.scalar-extension`](../nodes/def.scalar-extension.md) 标量扩张 用
 - ⇒ [`prop.tensor-functor-properties`](../nodes/prop.tensor-functor-properties.md) 张量积的函子性质
 - ⇒ [`thm.hom-tensor-adjunction-mod`](../nodes/thm.hom-tensor-adjunction-mod.md) 张量与内同态的伴随
+- 被 [`prop.module-tensor-universal`](../nodes/prop.module-tensor-universal.md) 张量积对双线性映射万有 用

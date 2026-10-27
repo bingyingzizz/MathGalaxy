@@ -6,7 +6,7 @@
 - def.scalar-restriction　标量限制　layer 8
 - def.tensor-module　模的张量积　layer 11
 - prop.tensor-functor-properties　张量积的函子性质　layer 12
-- thm.hom-tensor-adjunction-mod　张量与内同态的伴随　layer 12
 - def.scalar-extension　标量扩张　layer 12
-- prop.scalar-extension-adjunction　标量扩张与限制互为伴随　layer 13
-- prop.scalar-extension-coproduct　纤维余积与基变换　layer 14
+- thm.hom-tensor-adjunction-mod　张量与内同态的伴随　layer 13
+- prop.scalar-extension-adjunction　标量扩张与限制互为伴随　layer 14
+- prop.scalar-extension-coproduct　纤维余积与基变换　layer 15
