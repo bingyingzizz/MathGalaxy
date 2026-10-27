@@ -1,6 +1,6 @@
 # 光滑映射的对偶复形　`thm.smooth-duality`
 定理：光滑 $f$ 的 $f^!R \cong \det(\Omega^1_{A/R})[d]$（Thm 11.6）
-layer 24 · 定理 · 相干对偶 · 解析几何
+layer 24 · 定理 · 相干对偶 · 解析空间
 [在星图里打开](../#n=thm.smooth-duality)　·　[节点索引](../index.md)
 
 设 $f : R \to A$ 是维数 $d$ 的光滑环映射。则存在自然同构

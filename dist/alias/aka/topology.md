@@ -13,7 +13,7 @@
 
 - 距离空间 | 度量空间 | metric space | 距离 → def.metric-space
 
-- 完备 | complete | Cauchy 列收敛 | 完备性 → def.complete
+- complete | Cauchy 列收敛 | 完备性 | 完备度量空间 → def.complete
 
 - 全有界 | totally bounded | 预紧 → def.totally-bounded
 

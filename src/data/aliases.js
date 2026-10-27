@@ -131,7 +131,7 @@ MG.aliases = {
 
     /* 度量空间 */
     { id: 'def.metric-space', aka: ['距离空间', '度量空间', 'metric space', '距离'] },
-    { id: 'def.complete', aka: ['完备', 'complete', 'Cauchy 列收敛', '完备性'] },
+    { id: 'def.complete', aka: ['complete', 'Cauchy 列收敛', '完备性', '完备度量空间'] },
     { id: 'def.totally-bounded', aka: ['全有界', 'totally bounded', '预紧'] },
     { id: 'def.sequentially-compact', aka: ['列紧', 'sequentially compact'] },
     { id: 'def.compact', aka: ['紧', '紧集', 'compact', '开覆盖', 'Definition 2.1.3', 'Def 2.1.3'] },

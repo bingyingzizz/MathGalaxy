@@ -1,6 +1,6 @@
 # A⁺ 由谱决定　`prop.huber-subring-recovery`
 命题：整闭子环与谱的开闭子集一一对应（Prop 9.2）
-layer 10 · 命题 · adic 空间 · 解析几何
+layer 10 · 命题 · adic 空间 · 解析空间
 [在星图里打开](../#n=prop.huber-subring-recovery)　·　[节点索引](../index.md)
 
 记 $\operatorname{Spv}(A) := \operatorname{Spa}(A, \widetilde{\mathbb{Z}})$ 为 $A$ 上全部赋值等价类。则

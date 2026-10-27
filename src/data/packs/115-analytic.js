@@ -34,12 +34,12 @@ window.MG = window.MG || {};
       statement: [
         '一个**预解析环** $\\mathcal{A}$ 由两部分组成：',
         '',
-        '- 一个凝聚态环 $A$；',
+        '- 一个**凝聚态环** $A$ —— 即凝聚态集范畴里的环对象（等价地：取值在环范畴里的层）；',
         '- 一个函子',
         '',
         '$$\\{\\text{extremally disconnected 集}\\} \\longrightarrow \\operatorname{Mod}^{\\mathrm{cond}}_{A}, \\qquad S \\longmapsto \\mathcal{A}[S],$$',
         '',
-        '它把有限不交并送到**乘积**，并带一个自然变换 $S \\to \\mathcal{A}[S]$。',
+        '它把有限不交并送到**乘积**，并带一族与 $S \\to T$ 相容的映射 $S \\to \\mathcal{A}[S]$：对每个 $s \\in S$ 给出自由完备模里的一个元素 —— 这就是「自由生成元」的抽象版。',
         '',
         '换句话说，$\\mathcal{A}$ 就是「环 $A$ 加上一套指定的自由完备 $A$-模 $\\mathcal{A}[S]$」。'
       ].join('\n'),
@@ -63,7 +63,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{RHom}_{\\mathcal{A}}\\bigl(\\mathcal{A}[S],\\ C\\bigr) \\longrightarrow \\operatorname{RHom}_{A}\\bigl(A[S],\\ C\\bigr)$$',
         '',
-        '是同构。'
+        '是同构。这里「自然映射」是：先有典范映射 $A[S] \\to \\mathcal{A}[S]$（把形式的自由和送进自由完备模），再把 $C$ 看成 $A$-模、沿它拉回得到 $\\operatorname{RHom}_{A}(A[S], C) \\to \\operatorname{RHom}_{A}(\\mathcal{A}[S], C) \\cong \\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C)$ —— 与左边比较即得。'
       ].join('\n'),
       notes: '⭐ 读法：**「$\\mathcal{A}[S]$ 与普通自由模 $A[S]$ 在 $\\operatorname{RHom}$ 里无法区分」**。这正是固态群定义 (ii) 的相对版本；取 $A = \\mathbb{Z}$、$\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ 就回到固态。\n\n⚠ 为什么要求**所有**这样的复形而不只是单个模？因为要得到导出范畴层面的结论（`thm.analytic-modules` (ii)），单点的同构不够，需要它对复形也成立。\n\n⭐ 判定「是不是解析环」通常靠 `prop.analytic-examples` 与 `thm.za-analytic` 这类具体定理，而不是逐条验证定义。'
     },

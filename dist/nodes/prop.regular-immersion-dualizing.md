@@ -1,6 +1,6 @@
 # 正则闭浸入的对偶复形　`prop.regular-immersion-dualizing`
 命题：正则闭浸入 $f^!R \cong \det(I/I^2)^*[-c]$（Prop 11.5）
-layer 23 · 命题 · 相干对偶 · 解析几何
+layer 23 · 命题 · 相干对偶 · 解析空间
 [在星图里打开](../#n=prop.regular-immersion-dualizing)　·　[节点索引](../index.md)
 
 设 $f : R \to A$ 是**正则闭浸入**：$f$ 满射，核 $I$ 在 $\operatorname{Spec} R$ 上局部由正则序列生成；并设 $\operatorname{Spec} A \subset \operatorname{Spec} R

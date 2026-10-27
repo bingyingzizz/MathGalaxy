@@ -5,12 +5,10 @@ layer 17 · 定义 · 解析环与固态模 · 凝聚态数学
 
 一个**预解析环** $\mathcal{A}$ 由两部分组成：
 
-- 一个凝聚态环 $A$；
+- 一个**凝聚态环** $A$ —— 即凝聚态集范畴里的环对象（等价地：取值在环范畴里的层）；
 - 一个函子
 
 $$\{\text{extremally disconnected 集}\} \longrightarrow \operatorname{Mod}^{\mathrm{cond}}_{A}, \qquad S \longmapsto \mathcal{A}[S],$$
-
-它把有限不交并送到**乘积**，并带一个自然变换 $S \to \mathcal{A}[S]$。
 > 陈述续见 [nodes/def.pre-analytic-ring.2.md](./def.pre-analytic-ring.2.md)
 
 

@@ -1,6 +1,6 @@
 # 对偶函子的扭转与基变换　`prop.f-shriek-base-change`
 命题：$f^!$ 是 $f^*$ 的扭转，且平坦基变换（Prop 11.4）
-layer 21 · 命题 · 相干对偶 · 解析几何
+layer 21 · 命题 · 相干对偶 · 解析空间
 [在星图里打开](../#n=prop.f-shriek-base-change)　·　[节点索引](../index.md)
 
 设 $f : R \to A$ 是有限生成、有限 Tor 维数的环映射（诺特环之间映射的基变换）。则自然映射

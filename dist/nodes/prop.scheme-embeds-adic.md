@@ -1,6 +1,6 @@
 # 概形嵌入 adic 空间　`prop.scheme-embeds-adic`
 命题：分离/固有性对应开浸入/同构（Prop 9.6）
-layer 12 · 命题 · adic 空间 · 解析几何
+layer 12 · 命题 · adic 空间 · 解析空间
 [在星图里打开](../#n=prop.scheme-embeds-adic)　·　[节点索引](../index.md)
 
 设 $X$ 是 $\operatorname{Spec} R$ 上有限型的概形。则比较映射

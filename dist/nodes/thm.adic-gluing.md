@@ -1,6 +1,6 @@
 # 导出范畴按无穷范畴粘合　`thm.adic-gluing`
 定理：$U \mapsto D((\mathcal{O}_X(U),\mathcal{O}_X^+(U))_\blacksquare)$ 是 $\infty$-范畴层（Thm 9.8）
-layer 21 · 定理 · adic 空间 · 解析几何
+layer 21 · 定理 · adic 空间 · 解析空间
 [在星图里打开](../#n=thm.adic-gluing)　·　[节点索引](../index.md)
 
 设 $X$ 是离散 adic 空间。把仿射开集 $U = \operatorname{Spa}(A,A^+) \subseteq X$ 送到

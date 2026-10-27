@@ -1,6 +1,6 @@
 # 固态 Serre 对偶　`thm.poincare-solid`
 定理：光滑映射的紧支撑推前与对偶（Thm 11.1）
-layer 25 · 定理 · 相干对偶 · 解析几何
+layer 25 · 定理 · 相干对偶 · 解析空间
 [在星图里打开](../#n=thm.poincare-solid)　·　[节点索引](../index.md)
 
 设 $f : X \to \operatorname{Spec} R$ 是分离、光滑、有限型、维数 $d$ 的映射，$\omega_{X/R} = \bigwedge^d \Omega^1_{X/R}$。则存在典范函子

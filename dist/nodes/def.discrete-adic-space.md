@@ -1,6 +1,6 @@
 # 离散 adic 空间　`def.discrete-adic-space`
 离散 adic 空间
-layer 10 · 定义 · adic 空间 · 解析几何
+layer 10 · 定义 · adic 空间 · 解析空间
 [在星图里打开](../#n=def.discrete-adic-space)　·　[节点索引](../index.md)
 
 一个**离散 adic 空间**是一个三元组 $(X, \mathcal{O}_X, (|\cdot(x)|)_{x \in X})$：

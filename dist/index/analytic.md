@@ -1,4 +1,4 @@
-# 解析几何 / Analytic Geometry（analytic）· 星团目录
+# 解析空间 / Analytic Spaces（analytic）· 星团目录
 第 1/1 页　·　根 `../`
 
 adic 空间与解析环上的固态模：Huber pair → Spa → 结构层 → ∞-范畴粘合 → 6-函子形式与相干对偶。

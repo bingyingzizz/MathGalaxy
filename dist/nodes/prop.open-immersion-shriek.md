@@ -1,6 +1,6 @@
 # 开浸入的 j_!　`prop.open-immersion-shriek`
 命题：开浸入 $j$ 的 $j_!$ 存在（Prop 11.2）
-layer 22 · 命题 · 相干对偶 · 解析几何
+layer 22 · 命题 · 相干对偶 · 解析空间
 [在星图里打开](../#n=prop.open-immersion-shriek)　·　[节点索引](../index.md)
 
 设 $j : X_{\mathrm{ad}} \to X_{\mathrm{ad}/Y}$ 是开浸入。则遗忘函子

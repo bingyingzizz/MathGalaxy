@@ -14,7 +14,7 @@ hom.ab　hom.complex　hom.cohomology　hom.spectral　hom.sheafcoh　hom.sheaf�
 ## 凝聚态数学（condensed）
 cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
 
-## 解析几何（analytic）
+## 解析空间（analytic）
 analytic.adic　analytic.dual
 
 > 续见 `index.3.md`

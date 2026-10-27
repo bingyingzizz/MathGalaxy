@@ -125,8 +125,8 @@ MG.regions = [
   },
   {
     id: 'analytic',
-    name: '解析几何',
-    en: 'Analytic Geometry',
+    name: '解析空间',
+    en: 'Analytic Spaces',
     color: '#7A4E9E',
     /* 2026-10-21 新开：Clausen–Scholze 的 adic 空间 / 解析环 / 相干对偶。
        放在凝聚态的东侧 —— 它从凝聚态拿固态模，但同时大量引用代数（Huber pair）、
@@ -143,8 +143,8 @@ MG.regions = [
     /* 2026-10-27 新开：曲面论（活动标架 / 结构方程 / 基本形式）与内蕴几何。
        位置：拓扑学的西南侧、朝分析那一面的边缘 —— 它从拓扑拿「空间」，
        向分析借微积分与 ODE；挂在几何与拓扑板块下，但次归属登记为分析。 */
-    center: { x: 1650, y: -300 },
-    radius: 470,
+    center: { x: 620, y: 180 },
+    radius: 560,
     desc: '曲面的活动标架与结构方程、第一与第二基本形式、Gauss–Codazzi、曲率与测地线的内蕴几何。'
   }
 ];
