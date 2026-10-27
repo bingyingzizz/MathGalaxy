@@ -11,6 +11,7 @@ $$\mathrm{d}\omega^{1}_{\ 2} = \omega^{1}_{\ 3}\wedge\omega^{2}_{\ 3}.$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.fundamental-theorem-surfaces`](../nodes/thm.fundamental-theorem-surfaces.md) 曲面论基本定理
+- ⇒ [`thm.theorema-egregium`](../nodes/thm.theorema-egregium.md) 绝妙定理
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.gauss-equation.3.md](./thm.gauss-equation.3.md)

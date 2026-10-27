@@ -6,3 +6,4 @@
 - ⇒ [`thm.gauss-equation`](../nodes/thm.gauss-equation.md) Gauss 方程
 - ⇒ [`thm.codazzi-mainardi`](../nodes/thm.codazzi-mainardi.md) Codazzi–Mainardi 方程
 - ⇒ [`thm.fundamental-theorem-surfaces`](../nodes/thm.fundamental-theorem-surfaces.md) 曲面论基本定理
+- ⇒ [`thm.theorema-egregium`](../nodes/thm.theorema-egregium.md) 绝妙定理
