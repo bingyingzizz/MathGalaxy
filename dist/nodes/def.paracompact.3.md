@@ -6,3 +6,4 @@
 - 被 [`prop.paracompact-closed-refinement`](../nodes/prop.paracompact-closed-refinement.md) 闭加细 用
 - 被 [`prop.paracompact-partition-unity`](../nodes/prop.paracompact-partition-unity.md) 仿紧性与单位分解 用
 - ⇒ [`thm.paracompact-hausdorff-normal`](../nodes/thm.paracompact-hausdorff-normal.md) 仿紧豪斯多夫空间正规
+- 被 [`thm.paracompact-cech-equals-sheaf`](../nodes/thm.paracompact-cech-equals-sheaf.md) 仿紧空间上的 Čech 就是上同调 用

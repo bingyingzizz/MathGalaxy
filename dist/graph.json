@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-27T07:27:31.530Z",
+  "generated": "2026-10-27T07:35:37.106Z",
   "counts": {
    "regions": 10,
    "clusters": 72,
    "nodes": 1059,
-   "edges": 1888,
-   "strong": 1879,
+   "edges": 1889,
+   "strong": 1880,
    "weak": 9,
    "en_pages": 299
   },
@@ -37479,6 +37479,14 @@
    "definition": "def.topology-base",
    "usedBy": "def.first-countable",
    "note": "第一可数说的是「每点有可数的局部基」。"
+  },
+  {
+   "id": "def-link.paracompact-cech",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.paracompact",
+   "usedBy": "thm.paracompact-cech-equals-sheaf",
+   "note": "这条定理的前提正是「仿紧 + Hausdorff」：仿紧给出局部有限的加细，单位分解才拼得出来，Čech 与层上同调才会重合。"
   },
   {
    "id": "imp.hahn",
