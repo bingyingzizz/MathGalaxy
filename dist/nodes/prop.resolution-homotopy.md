@@ -9,6 +9,7 @@ layer 17 · 命题 · 消解与维数 · 同调代数
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.ext-balanced`](../nodes/thm.ext-balanced.md) 扩展群的双边算法
+- ⇒ [`def.tor`](../nodes/def.tor.md) 挠积
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.resolution-homotopy.3.md](./prop.resolution-homotopy.3.md)

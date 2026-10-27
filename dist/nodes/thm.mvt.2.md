@@ -1,8 +1,8 @@
 # Lagrange 中值定理　`thm.mvt`　·　续页（第 2 页）
 [在星图里打开](../#n=thm.mvt)　·　第 1 页 [nodes/thm.mvt.md](./thm.mvt.md)
 
-## 它能推出什么 / 谁在用它（续）
-- ⇒ [`cor.constant-iff-zero-derivative`](../nodes/cor.constant-iff-zero-derivative.md) 导数为零 ⟺ 常函数
-- ⇒ [`prop.derivative-monotone`](../nodes/prop.derivative-monotone.md) 导数符号 ⟹ 单调性
-- ⇒ [`thm.convex-criterion`](../nodes/thm.convex-criterion.md) 凸性的导数判据
-- ⇒ [`thm.uniform-limit-derivative`](../nodes/thm.uniform-limit-derivative.md) 导数与极限交换
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`thm.cauchy-mvt`](../nodes/thm.cauchy-mvt.md) Cauchy 中值定理：Cauchy 中值定理取 $g(x)=x$ 就是 Lagrange 中值定理　[proofs/imp.derived-lagrange-mvt-from-cauchy.md](../proofs/imp.derived-lagrange-mvt-from-cauchy.md)
+- [`thm.rolle`](../nodes/thm.rolle.md) Rolle 中值定理：Rolle 定理 $\implies$ Lagrange 中值定理　[proofs/imp.mvt.md](../proofs/imp.mvt.md)
+
+> 续见 [nodes/thm.mvt.3.md](./thm.mvt.3.md)

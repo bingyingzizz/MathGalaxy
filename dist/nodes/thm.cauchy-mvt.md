@@ -11,8 +11,10 @@ $$\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}$$
 - [`thm.rolle`](../nodes/thm.rolle.md) Rolle 中值定理：Rolle 定理 $\implies$ Cauchy 中值定理　[proofs/imp.cauchy-mvt.md](../proofs/imp.cauchy-mvt.md)
 
 ## 它能推出什么 / 谁在用它
+- ⇒ [`thm.mvt`](../nodes/thm.mvt.md) Lagrange 中值定理
 - ⇒ [`thm.lhopital`](../nodes/thm.lhopital.md) L'Hôpital 法则
-- ⇒ [`thm.taylor`](../nodes/thm.taylor.md) Taylor 公式
+
+- …另有出边，续页见 [nodes/thm.cauchy-mvt.2.md](./thm.cauchy-mvt.2.md)
 
 refs: Rudin, Principles of Mathematical Analysis, Ch. 5
 

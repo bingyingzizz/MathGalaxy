@@ -9,6 +9,9 @@ $$K_{1}(p) = K_{2}(\varphi(p))\qquad (p \in S_{1}).$$
 > 陈述续见 [nodes/thm.theorema-egregium.2.md](./thm.theorema-egregium.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`def.isometry-surface`](../nodes/def.isometry-surface.md) 等距
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.theorema-egregium.3.md](./thm.theorema-egregium.3.md)
 

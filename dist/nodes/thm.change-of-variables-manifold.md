@@ -7,6 +7,9 @@ layer 28 · 定理 · 微分流形 · 微分几何
 > 陈述续见 [nodes/thm.change-of-variables-manifold.2.md](./thm.change-of-variables-manifold.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`def.determinant`](../nodes/def.determinant.md) 行列式
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.change-of-variables-manifold.4.md](./thm.change-of-variables-manifold.4.md)
 

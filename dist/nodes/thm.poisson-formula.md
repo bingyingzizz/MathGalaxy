@@ -9,6 +9,9 @@ layer 21 · 定理 · 复变函数 · 数学分析
 > 陈述续见 [nodes/thm.poisson-formula.2.md](./thm.poisson-formula.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.harmonic-mean-value`](../nodes/thm.harmonic-mean-value.md) 调和函数的均值性质
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.poisson-formula.3.md](./thm.poisson-formula.3.md)
 

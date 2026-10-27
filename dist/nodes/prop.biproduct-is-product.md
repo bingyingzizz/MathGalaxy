@@ -11,6 +11,9 @@ $$M \text{ 是} M_{1}, M_{2} \text{ 的直和} \iff (M, p_{1}, p_{2}) \text{ 是
 > 陈述续见 [nodes/prop.biproduct-is-product.2.md](./prop.biproduct-is-product.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`def.split-exact`](../nodes/def.split-exact.md) 分裂短正合列
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.biproduct-is-product.3.md](./prop.biproduct-is-product.3.md)
 

@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.tensor-hom-adjunction`](../nodes/prop.tensor-hom-adjunction.md) 张量 ⊣ 内 Hom
+- ⇒ [`def.multilinear-form`](../nodes/def.multilinear-form.md) 多重线性型

@@ -10,7 +10,7 @@ $$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
 即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.locally-integrable`](../nodes/def.locally-integrable.md) 局部可积：用到了定义 局部可积　[proofs/def-link.locally-integrable-average.md](../proofs/def-link.locally-integrable-average.md)
+- [`thm.lebesgue-differentiation`](../nodes/thm.lebesgue-differentiation.md) Lebesgue 微分定理：Lebesgue 微分定理给出平均算子 $A_{r}$ 的极限　[proofs/imp.derived-average-limit.md](../proofs/imp.derived-average-limit.md)
 
 - …另有入边，续页见 [nodes/def.average-operator.2.md](./def.average-operator.2.md)
 

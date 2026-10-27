@@ -9,6 +9,9 @@ layer 29 · 定理 · 微分流形 · 微分几何
 > 陈述续见 [nodes/thm.de-rham.2.md](./thm.de-rham.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.de-rham-h0`](../nodes/thm.de-rham-h0.md) 零次上同调
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.de-rham.3.md](./thm.de-rham.3.md)
 

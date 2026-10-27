@@ -11,6 +11,9 @@ $$\operatorname{Re} f = u.$$
 > 陈述续见 [nodes/thm.harmonic-conjugate.2.md](./thm.harmonic-conjugate.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.harmonic-mean-value`](../nodes/thm.harmonic-mean-value.md) 调和函数的均值性质
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.harmonic-conjugate.3.md](./thm.harmonic-conjugate.3.md)
 

@@ -9,6 +9,9 @@ $$f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!}\,(x - x_0)^{k} + \frac{f^{(n+1)}
 
 右边第二项叫 **Lagrange 余项**。
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.mvt`](../nodes/thm.mvt.md) Lagrange 中值定理
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.taylor.2.md](./thm.taylor.2.md)
 
