@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.module`](../nodes/def.module.md) 模：用到了定义 模　[proofs/def-dep.freyd-module.md](../proofs/def-dep.freyd-module.md)
+
+> 续见 [nodes/thm.freyd-mitchell.3.md](./thm.freyd-mitchell.3.md)

@@ -12,6 +12,9 @@ layer 17 · 命题 · 复形与导出三角 · 同调代数
 
 - …另有入边，续页见 [nodes/prop.ext-abelian-groups.3.md](./prop.ext-abelian-groups.3.md)
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`cor.gldim-pid`](../nodes/cor.gldim-pid.md) 主理想整环的整体维数
+
 refs: Le Stum, An introduction to condensed mathematics, §7.2
 
 > 说明见 `notes/prop.ext-abelian-groups.md`

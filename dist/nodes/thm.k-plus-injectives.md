@@ -9,6 +9,9 @@ $$\mathbf{K}^{+}(\mathcal{I}) \xrightarrow{\;\sim\;} D^{+}(\mathcal{A})$$
 
 是**范畴等价**。对偶地：有足够多投射对象时 $\mathbf{K}^{-}(\mathcal{P}) \xrightarrow{\;\sim\;} D^{-}(\mathcal{A})$。
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.ext-balanced`](../nodes/thm.ext-balanced.md) 扩展群的双边算法
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.k-plus-injectives.2.md](./thm.k-plus-injectives.2.md)
 

@@ -2,6 +2,7 @@
 [在星图里打开](../#n=def.cochain-complex)　·　第 1 页 [nodes/def.cochain-complex.md](./def.cochain-complex.md)　·　上一页 [nodes/def.cochain-complex.3.md](./def.cochain-complex.3.md)
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 [`def.cohomology`](../nodes/def.cohomology.md) 同调 用
 - 被 [`def.spectral-sequence`](../nodes/def.spectral-sequence.md) 谱序列 用
 - 被 [`def.abelian-category`](../nodes/def.abelian-category.md) 加法 / 阿贝尔范畴 用
 - 被 [`def.right-derived-functor`](../nodes/def.right-derived-functor.md) 右导出函子 用

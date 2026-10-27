@@ -11,3 +11,4 @@
 - ⇒ [`thm.class-equation`](../nodes/thm.class-equation.md) 类方程
 - ⇒ [`thm.cayley`](../nodes/thm.cayley.md) Cayley 定理
 - ⇒ [`thm.sylow`](../nodes/thm.sylow.md) Sylow 定理
+- 被 [`def.semidirect-product`](../nodes/def.semidirect-product.md) 半直积 用

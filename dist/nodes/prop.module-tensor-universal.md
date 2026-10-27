@@ -7,6 +7,10 @@ layer 9 · 命题 · 代数结构 · 抽象代数
 > 陈述续见 [nodes/prop.module-tensor-universal.2.md](./prop.module-tensor-universal.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.hom-tensor-adjunction-mod`](../nodes/thm.hom-tensor-adjunction-mod.md) 张量与内同态的伴随
+- 被 [`def.tor`](../nodes/def.tor.md) 挠积 用
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.module-tensor-universal.3.md](./prop.module-tensor-universal.3.md)
 

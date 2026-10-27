@@ -12,6 +12,11 @@ $$0 \longrightarrow M_{1} \xrightarrow{\;\mathrm{pr}_{1}\;} M_{1} \oplus M_{2} \
 
 （即 $i_{1}$ 是到直和第一个分量的含入、$i_{2}$ 是到第二个分量的投影）。
 
+## 它能推出什么 / 谁在用它
+- 被 [`prop.injective-splitting`](../nodes/prop.injective-splitting.md) 内射的单射可裂 用
+
+- …另有出边，续页见 [nodes/def.split-exact.3.md](./def.split-exact.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.split-exact.2.md](./def.split-exact.2.md)
 

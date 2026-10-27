@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.zero-object`](../nodes/def.zero-object.md) 零对象与直和：用到了定义 零对象与直和　[proofs/def-dep.splitexact-zeroobj.md](../proofs/def-dep.splitexact-zeroobj.md)
+
+> 续见 [nodes/def.split-exact.3.md](./def.split-exact.3.md)

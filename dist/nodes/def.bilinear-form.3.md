@@ -5,3 +5,4 @@
 - 被 [`def.quadratic-form`](../nodes/def.quadratic-form.md) 二次型 用
 - 被 [`def.tensor-product-vs`](../nodes/def.tensor-product-vs.md) 张量积 用
 - 被 [`def.hessian`](../nodes/def.hessian.md) Hessian 矩阵 用
+- 被 [`def.tensor-module`](../nodes/def.tensor-module.md) 模的张量积 用

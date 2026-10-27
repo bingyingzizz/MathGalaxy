@@ -34,7 +34,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'definition',
       label: '局部有限族',
-      title: '定义：局部有限的集合族',
+      title: '局部有限的集合族',
       regions: ['topology'],
       tags: ['定义', '拓扑', '局部有限', '仿紧'],
       statement: [
@@ -62,7 +62,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'definition',
       label: '离散族',
-      title: '定义：离散的集合族',
+      title: '离散的集合族',
       regions: ['topology'],
       tags: ['定义', '拓扑', '离散', '局部有限'],
       statement: [
@@ -85,11 +85,11 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'definition',
       label: '可数并的局部有限族',
-      title: '定义：可数多个局部有限（或离散）族之并',
+      title: '可数多个局部有限（或离散）族之并',
       regions: ['topology'],
       tags: ['定义', '拓扑', '局部有限', '可数'],
       statement: [
-        '$X$ 的一族子集 $\\mathcal{A}$ 叫 **$\\sigma$-局部有限的**，如果它是**可数多个**局部有限族之并：存在局部有限的族 $\\mathcal{A}_{1}, \\mathcal{A}_{2}, \\mathcal{A}_{3}, \\ldots$ 使',
+        '$X$ 的一族子集 $\\mathcal{A}$ 叫 **$\\sigma$-局部有限的**，如果它是**可数多个**局部有限族之并：存在局部有限的族 $\\mathcal{A}_{n}$（$n \\ge 1$）使',
         '',
         '$$\\mathcal{A} = \\bigcup_{n \\ge 1} \\mathcal{A}_{n}.$$',
         '',
@@ -109,7 +109,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'definition',
       label: '覆盖的加细',
-      title: '定义：覆盖的加细、开加细与闭加细',
+      title: '覆盖的加细、开加细与闭加细',
       regions: ['topology'],
       tags: ['定义', '拓扑', '覆盖', '加细'],
       statement: [
@@ -136,7 +136,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'definition',
       label: '仿紧空间',
-      title: '定义：每个开覆盖都有局部有限开加细',
+      title: '每个开覆盖都有局部有限开加细',
       regions: ['topology'],
       tags: ['定义', '拓扑', '仿紧', '局部有限'],
       statement: [
@@ -161,7 +161,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'lemma',
       label: '收缩引理',
-      title: '引理：正规空间里局部有限开覆盖可以收缩',
+      title: '正规空间里局部有限开覆盖可以收缩',
       regions: ['topology'],
       tags: ['引理', '拓扑', '正规', '局部有限', '收缩'],
       statement: [
@@ -193,7 +193,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'theorem',
       label: '仿紧豪斯多夫空间正规',
-      title: '定理：仿紧的豪斯多夫空间是正规空间',
+      title: '仿紧的豪斯多夫空间是正规空间',
       regions: ['topology'],
       tags: ['定理', '拓扑', '仿紧', '正规', '分离公理'],
       statement: [
@@ -219,7 +219,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'proposition',
       label: '闭加细',
-      title: '命题：仿紧空间的开覆盖有局部有限闭加细',
+      title: '仿紧空间的开覆盖有局部有限闭加细',
       regions: ['topology'],
       tags: ['命题', '拓扑', '仿紧', '闭加细', '局部有限'],
       statement: [
@@ -245,7 +245,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'theorem',
       label: '迈克尔仿紧判别法',
-      title: '定理：正则空间仿紧当且仅当每个开覆盖有局部有限加细',
+      title: '正则空间仿紧当且仅当每个开覆盖有局部有限加细',
       regions: ['topology'],
       tags: ['定理', '拓扑', '仿紧', '加细', '判别法'],
       statement: [
@@ -263,7 +263,7 @@ window.MG = window.MG || {};
             '- 此时 $\\{ V_{s} \\}$ 已经是**开加细并覆盖 $X$**，但一般**不再局部有限**（$V_{s} \\supseteq E_{s}$，一个邻域可能碰到很多 $V_{s}$ 而只碰到很少 $E_{s}$）；',
             '- 收尾：用点有限性把每一族成员**重新排序**，把第 $s$ 个换成「$E_{s}$ 挖掉前面那些开膨胀的闭包，再取内部」，新族就既开、又覆盖、又局部有限。'
           ].join('\n'),
-          '完整拼接见 Michael 1953 / Engelking Ch. 5。⚠️ **折衷**：本节点给的是结构与出处，最后那个「重排」的细节不逐行展开。'
+          '**收尾引理（Michael）**：正则空间中，若开覆盖有局部有限加细，则它有局部有限的**开**加细。证明用「良序化 + 逐个膨胀」：把加细的成员良序化，依次膨胀进覆盖中对应的成员，每次只膨胀到尚未被前面成员盖住的点；局部有限性由原族的局部有限性接管（每点有邻域只碰到有限多个原成员，膨胀也只发生在这些成员里）。取这条引理即得仿紧。∎'
         ].join('\n'),
         '⭐ **当判据用的姿势**：实际验证仿紧时，往往只先拿到「闭的 / 不必开的 / 加细但很粗」的东西 —— 这时配上正则性就够，不必再构造开加细。本图的闭加细命题就是往这个方向走的。',
         '⚠️ **前提「正则」只在 $(\\Longleftarrow)$ 用到**；$(\\implies)$ 不需要任何分离性。',
@@ -278,7 +278,7 @@ window.MG = window.MG || {};
       cluster: 'topology.paracompact',
       type: 'definition',
       label: '单位分解',
-      title: '定义：从属于开覆盖的连续单位分解',
+      title: '从属于开覆盖的连续单位分解',
       regions: ['topology'],
       tags: ['定义', '拓扑', '单位分解', '局部有限', '连续函数'],
       statement: [
@@ -306,7 +306,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '第二可数空间',
-      title: '定义：具有可数基的拓扑空间',
+      title: '具有可数基的拓扑空间',
       regions: ['topology'],
       tags: ['定义', '拓扑', '可数', '基'],
       statement: [
@@ -326,7 +326,7 @@ window.MG = window.MG || {};
       cluster: 'topology.general',
       type: 'definition',
       label: '第一可数空间',
-      title: '定义：每点有可数局部基',
+      title: '每点有可数局部基',
       regions: ['topology'],
       tags: ['定义', '拓扑', '可数', '邻域基'],
       statement: [
@@ -345,7 +345,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'definition',
       label: '可度量化空间',
-      title: '定义：拓扑可由一个度量给出',
+      title: '拓扑可由一个度量给出',
       regions: ['topology'],
       tags: ['定义', '拓扑', '可度量化', '距离'],
       statement: [
@@ -368,7 +368,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'theorem',
       label: '斯通定理',
-      title: '定理：度量空间必为仿紧空间',
+      title: '度量空间必为仿紧空间',
       regions: ['topology'],
       tags: ['定理', '拓扑', '仿紧', '度量', 'Stone'],
       statement: [
@@ -395,7 +395,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'theorem',
       label: '乌雷松度量化定理',
-      title: '定理：正则且第二可数的空间可度量化',
+      title: '正则且第二可数的空间可度量化',
       regions: ['topology'],
       tags: ['定理', '拓扑', '可度量化', '第二可数', '正则'],
       statement: [
@@ -409,7 +409,7 @@ window.MG = window.MG || {};
             '2. **正则 $+$ Lindelöf $\\implies$ 正规**：$T_{1}$ 与「点与闭集可分开」配上 Lindelöf 的逐点归纳，给出两个不交闭集可分开。于是 **Urysohn 引理可用**。',
             '3. **挑可数多个分离函数**：取可数基 $\\{\\, B_{n} \\,\\}$。对每一对 $(m, n)$ 满足 $\\operatorname{cl} B_{m} \\subseteq B_{n}$，由 Urysohn 引理取连续函数',
             '$$f_{m,n} : X \\to [0, 1],\\qquad f_{m,n}|_{\\operatorname{cl} B_{m}} \\equiv 0,\\qquad f_{m,n}|_{X \\setminus B_{n}} \\equiv 1.$$',
-            '这样的函数只有可数多个，把它们重排成 $f_{1}, f_{2}, f_{3}, \\ldots$。',
+            '这样的函数只有可数多个，把它们按可数集编号成 $f_{k}$（$k \\ge 1$）。',
             '4. **嵌入**：令 $F : X \\to [0, 1]^{\\mathbb{N}}$，$F(x) := (\\, f_{k}(x)/k \\,)_{k \\ge 1}$。$F$ 连续（每个分量连续，且级数一致收敛）；**单射**：$x \\ne y$ 时正则性给出基元 $B_{n}$ 使 $x \\in B_{n} \\subseteq \\operatorname{cl} B_{n} \\subseteq X \\setminus \\{\\, y \\,\\}$，于是某一对 $(m, n)$ 的 $f_{m,n}$ 把两者分开；**逆连续**：同样用基对，把「$f_{k}$ 很接近」翻译回「落在同一个基元里」。所以 $F$ 是到像上的同胚。',
             '5. **像空间可度量化**：$\\rho(a, b) := \\sum_{k \\ge 1} 2^{-k} |a_{k} - b_{k}|$ 是 $[0, 1]^{\\mathbb{N}}$ 上与积拓扑一致的度量；在像上取诱导度量即可。'
           ].join('\n'),
@@ -426,7 +426,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'theorem',
       label: '局部有限基度量化定理',
-      title: '定理：正则且基为可数层局部有限族的空间可度量化',
+      title: '正则且基为可数层局部有限族的空间可度量化',
       regions: ['topology'],
       tags: ['定理', '拓扑', '可度量化', '局部有限基', 'Nagata', 'Smirnov'],
       statement: [
@@ -440,7 +440,7 @@ window.MG = window.MG || {};
           '**证明的想法（不展开）**',
           [
             '- 把 $\\sigma$-局部有限的基按层整理；每一层是局部有限族，配合正则性可以改造成**局部有限的开覆盖**；',
-            '- 关键一步（Nagata 的「系统的邻域」）：造出可数多列局部有限的覆盖 $\\mathcal{G}_{1}, \\mathcal{G}_{2}, \\mathcal{G}_{3}, \\ldots$，使对任意开集 $U$ 与 $x \\in U$，总有一层里的某个成员同时做到「$x$ 在它的内部」与「它含于 $U$」；',
+            '- 关键一步（Nagata 的「系统的邻域」）：造出可数多列局部有限的覆盖 $\\mathcal{G}_{n}$（$n \\ge 1$），使对任意开集 $U$ 与 $x \\in U$，总有一层里的某个成员同时做到「$x$ 在它的内部」与「它含于 $U$」；',
             '- 然后用这些覆盖定义一个「逐层把分离程度加起来」的非负对称函数，验证三条距离公理，并验证它诱导的拓扑恰是原拓扑。'
           ].join('\n')
         ].join('\n'),
@@ -455,7 +455,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'theorem',
       label: '离散基度量化定理',
-      title: '定理：正则且基为可数层离散族的空间可度量化',
+      title: '正则且基为可数层离散族的空间可度量化',
       regions: ['topology'],
       tags: ['定理', '拓扑', '可度量化', '离散基', 'Bing'],
       statement: [
@@ -476,7 +476,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metrizable',
       type: 'proposition',
       label: '可度量化空间的性质',
-      title: '命题：可度量化空间正规、仿紧且第一可数',
+      title: '可度量化空间正规、仿紧且第一可数',
       regions: ['topology'],
       tags: ['命题', '拓扑', '可度量化', '正规', '仿紧', '第一可数'],
       statement: [
@@ -498,7 +498,7 @@ window.MG = window.MG || {};
           ].join('\n')
         ].join('\n'),
         '⭐ 于是整条层级可以写全：**可度量化 $\\implies$ 仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff**（第二个箭头是本包的定理，第一个是 Stone 加本命题）。',
-        '⚠️ 反向全断：仿紧 Hausdorff 不必可度量化（$[0, \\omega_{1})$ 就是例子 —— 它正规、仿紧吗？不：它不紧而可数紧，所以连仿紧都不是；拿一个真的例子要用更长得多的构造）。要「仿紧 $\\implies$ 可度量化」，必须再补基条件（Urysohn / Nagata–Smirnov / Bing）。'
+        '⚠️ **反向全断**：仿紧 Hausdorff 不必可度量化。标准反例是 **Sorgenfrey 直线**（$\\mathbb{R}$ 上以半开区间 $[a, b)$ 为基的拓扑）：它是 Lindelöf 的正则空间，故仿紧；它也可分（有理数稠密），却不第二可数 —— 而「可分 $+$ 可度量化」会推出第二可数，所以它不可度量化。要把「仿紧 $\\implies$ 可度量化」变成定理，必须再补一个基条件（Urysohn / Nagata–Smirnov / Bing 那一类）。'
       ].join('\n\n'),
       refs: ['Munkres, Topology (2nd ed.), Sections 32 and 41']
     }

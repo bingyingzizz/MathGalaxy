@@ -10,7 +10,7 @@ $$H^{n}(K) \;:=\; Z^{n}(K) \big/ B^{n}(K) \;=\; \ker d^{n} \big/ \operatorname{i
 
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`thm.long-exact`](../nodes/thm.long-exact.md) 长正合列
+- 被 [`thm.universal-coefficients`](../nodes/thm.universal-coefficients.md) 万有系数定理 用
 
 - …另有出边，续页见 [nodes/def.cohomology.4.md](./def.cohomology.4.md)
 

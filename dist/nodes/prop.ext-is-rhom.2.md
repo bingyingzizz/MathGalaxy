@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.internal-hom`](../nodes/def.internal-hom.md) 内 Hom：用到了定义 内 Hom　[proofs/def-dep.extrhom-internalhom.md](../proofs/def-dep.extrhom-internalhom.md)
+
+> 续见 [nodes/prop.ext-is-rhom.3.md](./prop.ext-is-rhom.3.md)

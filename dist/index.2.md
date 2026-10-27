@@ -9,7 +9,7 @@ analysis.real　analysis.real-calc　analysis.completeness　analysis.continuity
 cat.basic　cat.functor　cat.limit　cat.structure　cat.algebra　cat.yoneda　cat.adjoint　cat.sheaf　cat.topos
 
 ## 同调代数（homology）
-hom.ab　hom.complex　hom.cohomology　hom.spectral　hom.sheafcoh　hom.sheaf
+hom.ab　hom.complex　hom.cohomology　hom.spectral　hom.sheafcoh　hom.sheaf　hom.module　hom.flat　hom.injective　hom.resolution　hom.group
 
 ## 凝聚态数学（condensed）
 cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic

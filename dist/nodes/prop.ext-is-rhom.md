@@ -10,6 +10,9 @@ layer 18 · 命题 · 复形与导出三角 · 同调代数
 
 - …另有入边，续页见 [nodes/prop.ext-is-rhom.2.md](./prop.ext-is-rhom.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.ext-is-rhom.3.md](./prop.ext-is-rhom.3.md)
+
 refs: Le Stum, Proposition 7.2.10
 
 > 说明见 `notes/prop.ext-is-rhom.md`

@@ -2,6 +2,7 @@
 [在星图里打开](../#n=def.homotopy)　·　第 1 页 [nodes/def.homotopy.md](./def.homotopy.md)　·　上一页 [nodes/def.homotopy.2.md](./def.homotopy.2.md)
 
 ## 它能推出什么 / 谁在用它（续）
+- 被 [`prop.resolution-homotopy`](../nodes/prop.resolution-homotopy.md) 消解的同伦唯一性 用
 - 被 [`prop.homotopy-equivalence-criterion`](../nodes/prop.homotopy-equivalence-criterion.md) 同伦等价的判据 用
 - 被 [`lem.triangle-morphism`](../nodes/lem.triangle-morphism.md) 三角态射的性质 用
 - 被 [`def.homotopy-category`](../nodes/def.homotopy-category.md) 同伦范畴 用

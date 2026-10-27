@@ -17,6 +17,9 @@ $$V = U \oplus W$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.subspace`](../nodes/def.subspace.md) 子空间：用到了定义 子空间　[proofs/dep.vs-directsum.md](../proofs/dep.vs-directsum.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.direct-sum.2.md](./def.direct-sum.2.md)
+
 refs: Lang, Linear Algebra；Hoffman–Kunze, Linear Algebra, Ch. 3
 
 > 说明见 `notes/def.direct-sum.md`

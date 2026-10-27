@@ -4,10 +4,13 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.induced-norm`](../nodes/def.induced-norm.md) 诱导范数与距离 用
 - 被 [`def.contraction`](../nodes/def.contraction.md) 压缩映射 用
+- 被 [`def.metrizable`](../nodes/def.metrizable.md) 可度量化空间 用
+- ⇒ [`def.metrizable`](../nodes/def.metrizable.md) 可度量化空间
+- 被 [`thm.metric-paracompact`](../nodes/thm.metric-paracompact.md) 斯通定理 用
+- 被 [`def.metrizable`](../nodes/def.metrizable.md) 可度量化空间 用
 - 被 [`lem.covering`](../nodes/lem.covering.md) 覆盖引理 用
 - 被 [`cor.borel-product`](../nodes/cor.borel-product.md) 可数积的 Borel 代数 用
 - 被 [`def.complete`](../nodes/def.complete.md) 完备 用
 - 被 [`def.totally-bounded`](../nodes/def.totally-bounded.md) 全有界 用
-- 被 [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧 用
-- 被 [`def.compact`](../nodes/def.compact.md) 紧 用
-- 被 [`def.shrinks-nicely`](../nodes/def.shrinks-nicely.md) 可缩族 用
+
+> 续见 [nodes/def.metric-space.6.md](./def.metric-space.6.md)

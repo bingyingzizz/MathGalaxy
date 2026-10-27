@@ -12,6 +12,9 @@ $$\mathcal{C} \longrightarrow A\text{-}\mathbf{Mod}.$$
 
 - …另有入边，续页见 [nodes/thm.freyd-mitchell.2.md](./thm.freyd-mitchell.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.freyd-mitchell.3.md](./thm.freyd-mitchell.3.md)
+
 refs: Freyd, Abelian Categories (1964)；Mitchell, The full imbedding theorem (1964)
 
 > 说明见 `notes/thm.freyd-mitchell.md`

@@ -12,6 +12,9 @@ layer 17 · 命题 · 复形与导出三角 · 同调代数
 
 - …另有入边，续页见 [nodes/prop.ext-projective-vanishes.3.md](./prop.ext-projective-vanishes.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.ext-projective-vanishes.4.md](./prop.ext-projective-vanishes.4.md)
+
 refs: Le Stum, An introduction to condensed mathematics, §7.2
 
 > 说明见 `notes/prop.ext-projective-vanishes.md`

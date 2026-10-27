@@ -12,6 +12,8 @@ $$\cdots \to H^{n}(K) \to H^{n}(L) \to H^{n}(M) \xrightarrow{\ \delta\ } H^{n+1}
 推论：$H^{n} : \mathbf{K}(\mathcal{A}) \to \mathcal{A}$ 是**上同调函子**。
 
 ## 它能推出什么 / 谁在用它
+- ⇒ [`prop.dimension-shift`](../nodes/prop.dimension-shift.md) 维数转移
+- ⇒ [`lem.horseshoe`](../nodes/lem.horseshoe.md) 马蹄引理
 - 被 [`thm.derived-long-exact`](../nodes/thm.derived-long-exact.md) 导出函子的长正合列 用
 
 ## 为什么成立（入边，证明在 proofs/）

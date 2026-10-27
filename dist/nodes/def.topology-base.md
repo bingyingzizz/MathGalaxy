@@ -11,7 +11,7 @@ layer 5 · 定义 · 拓扑空间 · 拓扑学
 $\mathcal{S} \subseteq \mathcal{P}(X)$ 是**子基**，当且仅当它的**有限交**全体构成一组基。
 
 ## 它能推出什么 / 谁在用它
-- 被 [`def.metric-space`](../nodes/def.metric-space.md) 距离空间 用
+- 被 [`def.second-countable`](../nodes/def.second-countable.md) 第二可数空间 用
 
 - …另有出边，续页见 [nodes/def.topology-base.3.md](./def.topology-base.3.md)
 
