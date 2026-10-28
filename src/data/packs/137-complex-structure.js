@@ -618,7 +618,7 @@
       refs: [
         '王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem',
-        'Hatcher, Algebraic Topology, §1.1 · $\\pi_1(S^1) = \\mathbb{Z}$；§2.2 · Brouwer 不动点定理',
+        'Hatcher, Algebraic Topology, §1.1 · 基本群（圆周的基本群是 ℤ，用覆叠空间证）；§2.2 · Brouwer 不动点定理',
       ],
     },
     {
@@ -653,7 +653,7 @@
           '但 $S^{1} \\to \\mathbb{R}^{2}$ 不成立（恒等映射没有对径同值点）。',
       ].join('\n'),
       refs: [
-        'Borsuk (1933), Drei Sätze über die $n$-dimensionale euklidische Sphäre',
+        'Borsuk (1933), Drei Sätze über die n-dimensionale euklidische Sphäre',
         'Hatcher, Algebraic Topology, §2.2 · Borsuk–Ulam Theorem',
         'Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · 习题（由 Brouwer 推出）',
       ],

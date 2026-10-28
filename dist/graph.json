@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-28T10:40:51.331Z",
+  "generated": "2026-10-28T10:50:29.029Z",
   "counts": {
    "regions": 13,
    "clusters": 85,
@@ -21390,7 +21390,7 @@
    "refs": [
     "王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）",
     "Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem",
-    "Hatcher, Algebraic Topology, §1.1 · $\\pi_1(S^1) = \\mathbb{Z}$；§2.2 · Brouwer 不动点定理"
+    "Hatcher, Algebraic Topology, §1.1 · 基本群（圆周的基本群是 ℤ，用覆叠空间证）；§2.2 · Brouwer 不动点定理"
    ]
   },
   {
@@ -21413,7 +21413,7 @@
    "statement": "对每个连续映射 $f : S^{2} \\to \\mathbb{R}^{2}$，存在 $x \\in S^{2}$ 使\n\n$$f(x) = f(-x).$$\n\n等价说法：不存在连续奇映射（$g(-x) = -g(x)$）$g : S^{2} \\to S^{1}$。",
    "notes": "**与 Brouwer 的关系**：二维 Borsuk–Ulam 可以由 Brouwer 不动点定理推出（反之亦然）。标准推法：若 $f(x) \\ne f(-x)$ 处处成立，令\n\n$$g(x) := \\frac{f(x) - f(-x)}{|f(x) - f(-x)|} \\in S^{1},$$\n\n则 $g$ 连续且 $g(-x) = -g(x)$。再把 $g$ 限制到赤道 $S^{1} \\subset S^{2}$ 上得到一个连续奇映射 $S^{1} \\to S^{1}$，它的**度**必须是奇数（奇映射的度 $\\equiv 1 \\bmod 2$）；但奇映射 $S^{1} \\to S^{1}$ 又可延拓到上半球面，而可延拓的映射度为 $0$ —— 矛盾。\n\n⭐ **直觉**：地球上任何时刻总有一对对径点温度与气压都相同。这句话是 Borsuk–Ulam 的 $n = 2$ 情形，不是比喻，是定理。\n\n⚠️ 维数不能乱降：$S^{1} \\to \\mathbb{R}^{1}$ 的对应命题成立（中间值定理），但 $S^{1} \\to \\mathbb{R}^{2}$ 不成立（恒等映射没有对径同值点）。",
    "refs": [
-    "Borsuk (1933), Drei Sätze über die $n$-dimensionale euklidische Sphäre",
+    "Borsuk (1933), Drei Sätze über die n-dimensionale euklidische Sphäre",
     "Hatcher, Algebraic Topology, §2.2 · Borsuk–Ulam Theorem",
     "Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · 习题（由 Brouwer 推出）"
    ]

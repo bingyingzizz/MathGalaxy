@@ -2022,6 +2022,17 @@ function stripMath(s) {
 function assertNotation(MG, graph) {
   const N = (MG.notation && MG.notation.checks) || {};
   const errs = [];
+
+  /* ⓪ `label` / `tags` / `refs` 是**纯文本**字段：⛔ 不许出现 `$`。
+     它们不过 markdown/KaTeX，写了 `$…$` 只会把美元符号原样画出来。
+     ⚠️ 2026-10-22 加这一条：两个节点的 refs 里漏进了 `$\\pi_1(S^1)$` 之类的公式，
+     构建当时没拦，靠人肉才发现。 */
+  for (const n of (graph.nodes || [])) {
+    if (String(n.label || '').includes('$')) errs.push(`纯文本字段：\`${n.id}\` 的 label 含 $`);
+    for (const t of (n.tags || [])) if (String(t).includes('$')) errs.push(`纯文本字段：\`${n.id}\` 的 tag「${t}」含 $`);
+    for (const r of (n.refs || [])) if (String(r).includes('$')) errs.push(`纯文本字段：\`${n.id}\` 的 refs 含 $ —— ${String(r).slice(0, 60)}`);
+  }
+
   if (!MG.notation) return errs;
 
   const fields = N.bareUnicode || {};

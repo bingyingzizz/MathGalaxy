@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-28T10:40:51.331Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-28T10:50:29.029Z
 > 13 星系 / 85 星团 / 1270 节点 / 2313 连线（强边 2302，弱边 11；其中**不分层**的「推论」17 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -23446,7 +23446,7 @@ $$r(z) := f(z) + t(z)\left(z - f(z)\right),\qquad t(z) \ge 1 \text{ 由 } |r(z)|
 
 ⚠️ **诚实标注**：连续版本的 Brouwer 定理**不能**只靠复分析得到 —— 需要拓扑（$S^{1}$ 不是收缩核，即 $\pi_{1}(S^{1}) = \mathbb{Z} \ne 0$）。本图把这条记作「绕数同伦不变性 + $\pi_1(S^1)\ne 0$」的推论，证明骨架给到这里，深层输入（基本群）不在本图范围内。全纯版本见下方边上的证明。
 
-参考：王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem；Hatcher, Algebraic Topology, §1.1 · $\pi_1(S^1) = \mathbb{Z}$；§2.2 · Brouwer 不动点定理
+参考：王晓光《复变函数》· Brouwer 不动点定理的复分析证明（全纯情形）；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · Brouwer’s Fixed-Point Theorem；Hatcher, Algebraic Topology, §1.1 · 基本群（圆周的基本群是 ℤ，用覆叠空间证）；§2.2 · Brouwer 不动点定理
 
 #### Borsuk–Ulam 定理（二维）　`thm.borsuk-ulam`
 *定理*　Borsuk–Ulam 定理：$S^{2} \to \mathbb{R}^{2}$ 必有对径点同值
@@ -23467,7 +23467,7 @@ $$g(x) := \frac{f(x) - f(-x)}{|f(x) - f(-x)|} \in S^{1},$$
 
 ⚠️ 维数不能乱降：$S^{1} \to \mathbb{R}^{1}$ 的对应命题成立（中间值定理），但 $S^{1} \to \mathbb{R}^{2}$ 不成立（恒等映射没有对径同值点）。
 
-参考：Borsuk (1933), Drei Sätze über die $n$-dimensionale euklidische Sphäre；Hatcher, Algebraic Topology, §2.2 · Borsuk–Ulam Theorem；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · 习题（由 Brouwer 推出）
+参考：Borsuk (1933), Drei Sätze über die n-dimensionale euklidische Sphäre；Hatcher, Algebraic Topology, §2.2 · Borsuk–Ulam Theorem；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · 习题（由 Brouwer 推出）
 
 #### 火腿三明治定理　`thm.ham-sandwich`
 *定理*　火腿三明治定理：一个平面同时平分三块体

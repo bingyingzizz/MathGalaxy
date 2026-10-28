@@ -15,7 +15,7 @@ $$f(x) = f(-x).$$
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/thm.borsuk-ulam.3.md](./thm.borsuk-ulam.3.md)
 
-refs: Borsuk (1933), Drei Sätze über die $n$-dimensionale euklidische Sphäre；Hatcher, Algebraic Topology, §2.2 · Borsuk–Ulam Theorem；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · 习题（由 Brouwer 推出）
+refs: Borsuk (1933), Drei Sätze über die n-dimensionale euklidische Sphäre；Hatcher, Algebraic Topology, §2.2 · Borsuk–Ulam Theorem；Ahlfors, Complex Analysis (3rd ed.), Ch. 5 §3 · 习题（由 Brouwer 推出）
 
 > 说明见 `notes/thm.borsuk-ulam.md`
 
