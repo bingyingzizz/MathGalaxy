@@ -31,7 +31,11 @@
 - 定义必须**构造出来**（子集 / 幂集 / 笛卡尔积 / 商集 / 函数空间……），
   ⛔ 不许用「满足某组性质、在同构意义下唯一」引入 —— 那是公理刻画。
 - **证明写在边上**（`edges[]` 的 `proof` / `proofs`），不塞进节点正文。
-- 四类边：`implication`（推出）· `equivalence`（等价）· `definition`（定义引用）· `analogy`（类比，弱边，不参与分层）。
+- 四种 `kind`：`implication`（推出）· `equivalence`（等价）· `definition`（定义引用）· `analogy`（类比，弱边，不参与分层）。
+- ⭐ 另有一种**推论标记**（画成**粉红箭头**，不是第五种 `kind`）：`implication` 多写一个
+  `layer: false`。语义是「逻辑上确实推得通，但不是由前面得来」—— 通常拿高级工具回头证
+  低级定理，所以**不参与分层**。判据只有一条：**推得通**；⛔ 不用管循环不循环，
+  黑边已经保证骨架无环。
 - 新加 `src/data/packs/*.js` 文件必须同时在 `index.html` 里挂 `<script>`，否则会出现
   「构建说 N 条、网页说 N−4 条」。
 
@@ -92,9 +96,14 @@ House rules:
   properties, unique up to isomorphism" — that is an axiomatic characterisation and silently
   assumes existence. Properties are theorems with proofs, not definitions.
 - **Proofs live on the edges** (`edges[].proof` / `edges[].proofs`), not in the node body.
-- Four edge kinds: `implication`, `equivalence`, `definition` (all strong, they form the logical
+- Four `kind`s: `implication`, `equivalence`, `definition` (all strong, they form the logical
   skeleton and drive layering) and `analogy` (weak: ideas resonate, nothing is implied;
   it does not take part in layering).
+- ⭐ Plus a **derived** marker, drawn as a **pink arrow** — not a fifth `kind`, but an
+  `implication` with `layer: false`: the implication is valid, yet it is not how the graph was
+  built (usually a high-level tool re-proves a low-level theorem), so it **does not take part
+  in layering**. The only criterion is *does it follow*; ⛔ circularity is irrelevant because
+  the black edges already keep the skeleton acyclic.
 - A new file under `src/data/packs/` must also be added as a `<script>` tag in `index.html`.
 
 **The English layer.** English is generated from a single content tree — never a second copy:
@@ -144,7 +153,7 @@ of truth and a second copy would rot within a week.
    ```bash
    bun tools/build.mjs          # build + all hard assertions (incl. the translation ones)
    bun tools/i18n-status.mjs    # per-item status: draft / reviewed / stale, and why
-   bun tools/_stcheck.mjs       # every English statement fed to the real KaTeX
+   bun tools/_katexcheck-all.mjs  # every formula (both languages) fed to the real KaTeX
    ```
    New items must carry a `basedOn`; `bun tools/i18n-status.mjs --patch` prints the exact value
    (it is the fingerprint of the Chinese source you translated, so it has to be taken now).
@@ -173,7 +182,7 @@ then translations stay per-batch, each carrying its own status header.
 ```bash
 bun tools/build.mjs             # build + all hard assertions
 bun tools/_katexcheck-all.mjs   # every formula fed to the real KaTeX (must be 0 failures)
-bun tools/searchcheck.mjs       # search regression baseline (24 annotated queries)
+bun tools/searchcheck.mjs       # search regression baseline (28 annotated queries)
 bun tools/i18n-status.mjs       # per-item English status (draft / reviewed / stale)
 ```
 
@@ -181,7 +190,7 @@ bun tools/i18n-status.mjs       # per-item English status (draft / reviewed / st
 `bun tools/publish.mjs`; it force-pushes the site repository, so run it serially.
 
 **Search is a contract too.** `tools/searchcheck.mjs` pins the behaviour of the search box
-(hit counts and the top ids for 24 annotated queries — including the `preadditive` case that
+(hit counts and the top ids for 28 annotated queries — including the `preadditive` case that
 once returned 14 wrong nodes). Adding queries is welcome; **changing an existing expectation
 needs a reason**.
 

@@ -15,7 +15,7 @@
 - `corollary`　推论
 - `example`　例
 
-## 边的四种 kind（`edgeNames` / `edgeStyles` 键）
+## 边：四种 kind ＋ 一种推论标记（`edgeNames` / `edgeStyles` 键）
 
 - `implication`　推出　（strong edge）
 - `equivalence`　等价　（strong edge）
@@ -38,7 +38,7 @@
 - `cat`　范畴与同调　→　Categories and homology　21 条
 - `letters`　字母约定　→　Letter conventions　22 条
 
-## 九个星系（`regions.js` 的 `en` 字段）
+## 星系（`regions.js` 的 `en` 字段）
 
 - `logic`　数理逻辑　→　Mathematical Logic
 - `set-theory`　集合论　→　Set Theory
@@ -61,6 +61,7 @@
 - 依赖深度　→　dependency depth　`+`　— layer 的中文名
 - 强边　→　strong edge　`+`　— implication / equivalence / definition
 - 弱边　→　weak edge　`+`　— analogy；不参与分层
+- 推论边　→　derived edge　`+`　— implication + layer:false；粉红实线箭头，逻辑成立但不参与分层
 - 中心天体　→　hub　`+`　— clusters.js 的 hub 字段
 - 定义引用　→　definition reference　`+`　— 蓝色半透明线
 - 别名　→　alias　`+`　— aliases.js 的 aka

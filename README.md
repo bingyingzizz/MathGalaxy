@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **709 nodes / 1398 edges** across **9 galaxies and 45 clusters** (content `v0.9.1`).
+> **1214 nodes / 2226 edges** across **13 galaxies and 77 clusters** (content `v0.9.1`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >
@@ -27,10 +27,11 @@
 > | **black line** | equivalence — click it to see both directions of the proof |
 > | **blue translucent line** | definition reference — the statement of one node uses this definition |
 > | **purple dashed line** | analogy (a *weak* edge; hidden until you turn on Explore) |
+> | **pink arrow** | *derived* implication (`layer: false`) — valid, but not part of the built-up order, so it does not take part in layering |
 >
 > ### For AI agents
 >
-> **Do not fetch `graph.json` in one go** (it is ~1.7 MB). Follow the retrieval
+> **Do not fetch `graph.json` in one go** (it is ~3.7 MB). Follow the retrieval
 > protocol in [`llms.txt`](llms.txt): `dist/alias.md` (plain words / English names → node id)
 > → `dist/index.md` (galaxies → clusters) → `dist/index/<cluster>.md` (node list)
 > → `dist/nodes/<node-id>.md` (statement + in/out edges). Each file is cut to fit one
@@ -50,7 +51,7 @@
 > ### 🔭 在线看图 → <https://bingyingzizz.github.io/mathgalaxy/>
 > 双击 `index.html` 也能用 —— 零依赖、无构建、不联网。
 
-**9 个星系 / 45 个星团 / 七百多个节点**，三层尺度：
+**13 个星系 / 77 个星团 / 一千二百多个节点**，三层尺度：
 数学领域（星系）→ 一套自足的装置（星团）→ 单条结果（节点）。**内容还在长。**
 
 每个节点 = 一条数学内容（公理 / 定义 / 定理 / 引理 / 命题 / 推论）。
@@ -61,6 +62,7 @@
 | **黑色直线** | 等价命题（点它可以看到两个方向的证明） |
 | **蓝色半透明线** | 定义引用 —— 某条结论的陈述里用到了这个定义 |
 | **紫色虚线** | 跨领域**类比**（弱边，默认不显示，点右上角「探索」才出来） |
+| **粉红箭头** | **推论**（`implication` 带 `layer: false`）—— 逻辑上真推得通，但不是「由前面得来」，所以**不参与分层** |
 
 每个板块在背景里有一团彩色「电子云」，越靠边界越淡；
 同时属于两个板块的节点会自动落在两者的**交界处**。
@@ -192,7 +194,7 @@ src/
     graph.js                   图模型：合并内容包、建索引、校验
     layout.js                  布局求解：板块聚簇 + 交界节点 + 力导向松弛
     background.js              电子云背景渲染
-    renderer.js                前景渲染：节点 / 三类连线 / 名称 / 命中检测
+    renderer.js                前景渲染：节点 / 各类连线 / 名称 / 命中检测
     interaction.js             指针、滚轮、双指缩放、点击
     search.js                  搜索
     panel.js                   详情面板
@@ -324,7 +326,7 @@ bun tools/_notationcheck.mjs # 详细报告：按节点与字段列出，另加�
 
 ### 2. 加一条连线
 
-三种连线对应三种 `kind`：
+四种连线对应四种 `kind`（外加一种「推论」标记，见下）：
 
 ```js
 // ① 推出（箭头）：sources 可以是 1 个或多个
@@ -347,7 +349,25 @@ bun tools/_notationcheck.mjs # 详细报告：按节点与字段列出，另加�
 { kind: 'definition',
   definition: 'def.chain', usedBy: 'lem.zorn',
   note: '「P 的每个链都有上界」是佐恩引理的核心条件。' }
+
+// ④ 类比（紫色虚线，弱边）：思想相通，没有逻辑蕴含
+{ kind: 'analogy',
+  a: 'thm.product', b: 'thm.omega',
+  note: '同一个证明模板：幂集造容器 + 分离筛内容。' }
 ```
+
+**另有一种「推论」**（粉红箭头）：`kind` 仍是 `implication`，只多写一个 `layer: false`。
+它的意思是「**逻辑上确实推得通，但不是由前面得来**」—— 典型是用高级工具回头证低级定理。
+所以它**不参与分层**（不抬高目标的层号），也不进「只看主干」视图：
+
+```js
+{ kind: 'implication', layer: false,
+  sources: ['thm.residue'], target: 'thm.cauchy-integral-formula',
+  title: '用留数定理重证 Cauchy 积分公式',
+  proof: '……∎' }
+```
+
+⛔ 判据只有一条：**推得通**。不用操心循环论证 —— 黑边已经保证骨架无环。
 
 小提示：如果 A、B 之间已经有「等价」黑线，默认不会再叠画 A↔B 的箭头（太挤）。
 被隐藏箭头上的推导会自动合并进那条等价线的详情里。想改这个行为，见
@@ -389,7 +409,7 @@ bun tools/_notationcheck.mjs # 详细报告：按节点与字段列出，另加�
 ### 方案 A：单个 HTML 文件（推荐，零依赖）
 
 ```bash
-bun tools/build.mjs            # 产出 dist/mathgalaxy.html（约 2.6 MB，自包含）
+bun tools/build.mjs            # 产出 dist/mathgalaxy.html（约 4.8 MB，自包含）
 ```
 
 这个文件**把所有 CSS / JS / 数据全内联进去了**，是真正自包含的。
@@ -507,7 +527,7 @@ JSON 里每条边都带 `strength` 和 `proof`，节点带稳定的 `id`，
 2. 相通之处**说得出具体是什么**（不是「都很难」这种废话）；
 3. 这个类比**能帮你解决问题** —— 看到一个，能想起另一个的招。
 
-现有的 4 条弱边（可直接当范例读）：
+现有的 9 条弱边（挑几条当范例读）：
 
 - `thm.product` ～ `thm.omega`：同一个证明模板「幂集造容器 + 分离筛内容」
 - `def.finchar` ～ `def.wellorder`：两种「用有限/最小的东西控制无穷」的手法
@@ -643,20 +663,24 @@ python -m http.server 8000     # 然后访问 http://localhost:8000
 
 ## 目前内置的内容
 
-**9 个星系 · 45 个星团 · 七百多个节点**（同时属于两个星系的节点会在两边各计一次）。
-**这只是现在的样子 —— 内容还在长，所以这里不写死具体数字。**
+**13 个星系 · 77 个星团 · 一千二百多个节点**（同时属于两个星系的节点会在两边各计一次）。
+**这只是现在的样子 —— 内容还在长，所以这里不写死具体数字**（权威数字以 `llms.txt` / `dist/graph.json` 的 `meta.counts` 为准）。
 
 | 星系 | 大致是从哪到哪 |
 |---|---|
 | 数理逻辑 | 一阶语言、公式、代入、满足关系 |
 | 集合论 | ZFC 九条公理 → 空集 / 无序对 / 并 / 幂集 / ω / 笛卡尔积 → 关系与函数、商集、序数、基数，直到实数系 ℝ 的构造 |
 | 序理论 | 偏序集、链、界与确界、良序集、有限特征 |
-| 拓扑学 | 拓扑空间与开集 → 连续、同胚、子空间 / 商 / 积 → Hausdorff、紧、连通、正规 → 紧生成空间、局部紧 |
+| 拓扑学 | 拓扑空间与开集 → 连续、同胚、子空间 / 商 / 积 → Hausdorff、紧、连通、正规 → 紧生成空间、局部紧 → 仿紧、可度量化 |
 | 抽象代数 | 向量空间与基、域与有序域、环与理想、模 |
-| 分析学 | 测度的构造 → 可测函数 → 积分 → $L^{p}$ → 符号测度与 RN 导数 → 微分与有界变差；实数列与极限 |
+| 数学分析 | 极限与级数、连续性、微分、Riemann 积分；实数列与实数运算 |
+| 实变函数 | 测度的构造 → 可测函数 → 积分 → $L^{p}$ → 符号测度与 RN 导数 → 微分与有界变差 |
 | 范畴论 | 图与范畴 → 函子与自然变换 → 极限与余极限 → 米田引理 / 伴随 → 拓扑斯与层 |
-| 同调代数 | 加法 / 阿贝尔范畴 → 复形与同伦 → 导出范畴 → 谱序列 → 层上同调 |
-| 凝聚态数学 | 紧 Hausdorff 与 Stone 空间 → 拓扑斯上的层 → 凝聚态集 / 阿贝尔群 → Ext 与 RHom |
+| 同调代数 | 加法 / 阿贝尔范畴 → 复形与同伦 → 导出范畴 → 谱序列 → 层上同调 → 模论与分解 |
+| 凝聚态数学 | 紧 Hausdorff 与 Stone 空间 → 拓扑斯上的层 → 凝聚态集 / 阿贝尔群 → 固态群、解析环 → Ext 与 RHom |
+| 解析空间 | adic 空间（Huber pair、adic 谱、结构层）→ 六函子形式 → 相干对偶 |
+| 复变函数 | 全纯与 Cauchy–Riemann → 围道积分 → Cauchy 理论 → 级数与奇点 → 留数 → 辐角原理 / Rouché |
+| 微分几何 | 曲线曲面（标架、Gauss–Bonnet）→ 流形、切丛、微分形式 → de Rham 上同调 → Lie 群 |
 
 主线之一是**选择原理的等价链**：
 `选择公理 ⟺ 良序定理 ⟺ 佐恩引理 ⟺ Hausdorff 极大原理 ⟺ Tukey 引理`，
