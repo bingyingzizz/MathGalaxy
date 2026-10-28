@@ -25,7 +25,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ ① Cauchy 的逆 */
     {
       id: 'thm.morera',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Morera 定理',
       title: '定理：Morera 定理（Cauchy 定理的逆）',
@@ -65,7 +65,7 @@ window.MG = window.MG || {};
       tags: ['定义', '绕数', '指数', '辐角'],
       refs: ['王晓光《复变函数》· 辐角原理（曲线的绕数）', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
-        '**白话**：绕数是一个整数，数的是「闭曲线绕某个点转了几圈」—— 逆时针一圈记 $+1$，顺时针记 $-1$，没绕记 $0$。',
+        '**白话**：绕数是一个整数，数的是「绕某点转了几圈」—— 逆时针一圈 $+1$，顺时针 $-1$，没绕 $0$。',
         '',
         '设 $\\gamma: [a, b] \\to \\mathbb{C}$ 是分段光滑闭曲线，$a_0 \\notin \\gamma$。定义 $\\gamma$ 关于 $a_0$ 的**绕数**（也叫指数）',
         '',
@@ -95,7 +95,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.argument-principle',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: '辐角原理',
       title: '定理：辐角原理',
@@ -125,7 +125,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.rouche',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: 'Rouché 定理',
       title: '定理：Rouché 定理',
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.hurwitz',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: 'Hurwitz 定理',
       title: '定理：Hurwitz 定理（零点的极限）',
@@ -181,7 +181,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ ② 圆盘上的刚性 */
     {
       id: 'lem.schwarz',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       type: 'lemma',
       label: 'Schwarz 引理',
       title: '引理：Schwarz 引理',
@@ -213,7 +213,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.schwarz-pick',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       type: 'theorem',
       label: 'Schwarz–Pick 定理',
       title: '定理：Schwarz–Pick 定理',
@@ -255,7 +255,7 @@ window.MG = window.MG || {};
       tags: ['定义', '多值函数', '分支', '分支切割'],
       refs: ['王晓光《复变函数》· 多值函数与分支', 'Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
-        '**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常要沿一条曲线把平面剪开，那条缝叫**分支切割**。',
+        '**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；要能连续地挑，常沿一条曲线把平面剪开，那条缝叫**分支切割**。',
         '',
         '设 $D \\subset \\mathbb{C}$ 是区域，$F$ 是「每个 $z \\in D$ 对应一个非空值集 $F(z) \\subset \\mathbb{C}$」的对应。若连续函数 $\\varphi: D \\to \\mathbb{C}$ 满足',
         '',
@@ -355,7 +355,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ ④ 调和函数 */
     {
       id: 'def.harmonic',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.harmonic',
       type: 'definition',
       label: '调和函数',
       title: '定义：调和函数',
@@ -391,7 +391,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.harmonic-mean-value',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.harmonic',
       type: 'theorem',
       label: '调和函数的均值性质',
       title: '定理：调和函数的均值性质',
@@ -423,7 +423,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.poisson-formula',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.harmonic',
       type: 'theorem',
       label: 'Poisson 积分公式',
       title: '定理：Poisson 积分公式',
@@ -455,7 +455,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.harmonic-conjugate',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.harmonic',
       type: 'theorem',
       label: '调和函数的共轭',
       title: '定理：调和函数局部是全纯函数的实部',
@@ -487,7 +487,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.harmonic-maximum',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.harmonic',
       type: 'theorem',
       label: '调和函数的最大值原理',
       title: '定理：调和函数的最大值原理',
@@ -521,7 +521,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ ⑤ 整函数与亚纯函数 */
     {
       id: 'def.entire-meromorphic',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'definition',
       label: '整函数与亚纯函数',
       title: '定义：整函数与亚纯函数',
@@ -551,7 +551,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.mittag-leffler',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: 'Mittag-Leffler 定理',
       title: '定理：Mittag-Leffler 定理（只陈述）',
@@ -587,7 +587,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ ⑥ 留数算实积分 */
     {
       id: 'lem.jordan',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'lemma',
       label: 'Jordan 引理',
       title: '引理：Jordan 引理（大圆弧上的指数衰减）',
@@ -638,7 +638,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.integral-rational',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: '实轴上有理函数的积分',
       title: '定理：用留数计算实轴上有理函数的积分',
@@ -682,7 +682,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.integral-trig',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: '三角有理函数的积分',
       title: '定理：用留数计算三角有理函数的定积分',

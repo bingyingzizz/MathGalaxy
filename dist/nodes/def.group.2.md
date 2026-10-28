@@ -11,7 +11,7 @@
 - 被 [`def.semidirect-product`](../nodes/def.semidirect-product.md) 半直积 用
 - 被 [`def.group-extension`](../nodes/def.group-extension.md) 群扩张 用
 - 被 [`def.lie-group`](../nodes/def.lie-group.md) Lie 群 用
-- 被 [`def.subgroup`](../nodes/def.subgroup.md) 子群 用
-- 被 [`def.normal-subgroup`](../nodes/def.normal-subgroup.md) 正规子群 用
+- 被 [`def.fundamental-group`](../nodes/def.fundamental-group.md) 基本群 用
+- 被 [`def.chain-group`](../nodes/def.chain-group.md) 链群 用
 
 > 续见 [nodes/def.group.3.md](./def.group.3.md)

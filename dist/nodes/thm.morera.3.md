@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`thm.weierstrass-convergence`](../nodes/thm.weierstrass-convergence.md) Weierstrass 收敛性定理
+- ⇒ [`thm.schwarz-reflection`](../nodes/thm.schwarz-reflection.md) Schwarz 反射原理

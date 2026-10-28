@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
+layer 16 · definition · cluster Foundations of Complex Analysis (`analysis.complex`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.mobius.md` and `proofs/`.

@@ -227,7 +227,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'lem.goursat-triangle',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'lemma',
       label: 'Goursat 三角形引理',
       title: '引理：三角形上的积分为零（Goursat）',
@@ -245,7 +245,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.cauchy-goursat',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Cauchy–Goursat 积分定理',
       title: '定理：Cauchy–Goursat 积分定理',
@@ -269,7 +269,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ Cauchy 公式 */
     {
       id: 'thm.cauchy-integral-formula',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Cauchy 积分公式',
       title: '定理：Cauchy 积分公式',
@@ -289,7 +289,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.cauchy-higher-derivative',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: '高阶导数公式',
       title: '定理：高阶导数公式与无穷次可微',
@@ -311,7 +311,7 @@ window.MG = window.MG || {};
     /* --------------------------------------- Cauchy 公式的几个推论 */
     {
       id: 'thm.cauchy-inequality',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Cauchy 不等式',
       title: '定理：Cauchy 不等式',
@@ -333,7 +333,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.liouville',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Liouville 定理',
       title: '定理：Liouville 定理',
@@ -353,7 +353,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.max-modulus',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       type: 'theorem',
       label: '最大模原理',
       title: '定理：最大模原理',
@@ -373,7 +373,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 级数 */
     {
       id: 'thm.taylor-complex',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: '全纯函数的 Taylor 展开',
       title: '定理：全纯函数可展成 Taylor 级数',
@@ -393,7 +393,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'def.laurent-series',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'definition',
       label: 'Laurent 级数',
       title: '定义：Laurent 级数与主部',
@@ -413,7 +413,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.laurent',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Laurent 展开定理',
       title: '定理：Laurent 展开定理',
@@ -459,7 +459,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.riemann-removable',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       type: 'theorem',
       label: 'Riemann 可去奇点定理',
       title: '定理：Riemann 可去奇点定理',
@@ -481,7 +481,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 留数 */
     {
       id: 'def.residue',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'definition',
       label: '留数',
       title: '定义：留数',
@@ -503,7 +503,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'prop.residue-at-pole',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'proposition',
       label: '极点处的留数公式',
       title: '命题：极点处的留数公式',
@@ -523,7 +523,7 @@ window.MG = window.MG || {};
     },
     {
       id: 'thm.residue',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.residue',
       type: 'theorem',
       label: '留数定理',
       title: '定理：留数定理',

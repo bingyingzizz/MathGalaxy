@@ -1,4 +1,4 @@
-# 数学星图 · 目录（第 2/2 页）
+# 数学星图 · 目录（第 2/3 页）
 
 根 `../`　·　第 1 页 `index.md`
 
@@ -18,7 +18,6 @@ cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
 analytic.adic　analytic.dual
 
 ## 复变函数（complex）
-analysis.complex
+analysis.complex　analysis.cauchy　analysis.residue　analysis.mapping　analysis.harmonic　analysis.entire　analysis.topology-app
 
-## 微分几何（diffgeom）
-diffgeom.frame　diffgeom.surface　diffgeom.intrinsic　diffgeom.manifold
+> 续见 `index.3.md`

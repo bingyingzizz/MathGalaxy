@@ -1,6 +1,6 @@
 # 唯一性定理　`thm.identity`
 唯一性定理（解析延拓原理）
-layer 23 · 定理 · 复变函数 · 复变函数
+layer 23 · 定理 · Cauchy 理论 · 复变函数
 [在星图里打开](../#n=thm.identity)　·　[节点索引](../index.md)
 
 设 $f, g$ 在**区域** $\Omega$ 上全纯。若集合
@@ -11,6 +11,9 @@ $$Z := \{\, z \in \Omega : f(z) = g(z) \,\}$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`prop.zero-isolated`](../nodes/prop.zero-isolated.md) 零点的孤立性与阶：零点孤立 + 区域连通 $implies$ 恒等　[proofs/e7:implication.md](../proofs/e7:implication.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.identity.2.md](./thm.identity.2.md)
 
 refs: 王晓光《复变函数》· 唯一性定理与解析延拓；Ahlfors, Complex Analysis (3rd ed.), Ch. 4 §4.3 · The Identity Theorem；Stein–Shakarchi, Complex Analysis, Ch. 2 §2.4 · The identity theorem
 

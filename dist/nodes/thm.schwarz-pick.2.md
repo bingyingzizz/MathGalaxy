@@ -2,6 +2,8 @@
 [在星图里打开](../#n=thm.schwarz-pick)　·　第 1 页 [nodes/thm.schwarz-pick.md](./thm.schwarz-pick.md)
 
 ## 陈述（续）
+$$\left| \frac{f(z) - f(z_0)}{1 - \overline{f(z_0)}\, f(z)} \right| \le \left| \frac{z - z_0}{1 - \overline{z_0}\, z} \right|,$$
+
 微分形式（双曲度量的压缩性）：
 
 $$\frac{|f'(z_0)|}{1 - |f(z_0)|^2} \le \frac{1}{1 - |z_0|^2}.$$

@@ -1,6 +1,6 @@
 # Cauchy 不等式　`thm.cauchy-inequality`
 定理：Cauchy 不等式
-layer 22 · 定理 · 复变函数 · 复变函数
+layer 22 · 定理 · Cauchy 理论 · 复变函数
 [在星图里打开](../#n=thm.cauchy-inequality)　·　[节点索引](../index.md)
 
 **白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。
@@ -16,6 +16,8 @@ $$M(R) := \sup_{z \in D(z_0, R)} |f(z)|.$$
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.liouville`](../nodes/thm.liouville.md) Liouville 定理
 - ⇒ [`thm.montel`](../nodes/thm.montel.md) Montel 定理
+
+- …另有出边，续页见 [nodes/thm.cauchy-inequality.4.md](./thm.cauchy-inequality.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.cauchy-inequality.3.md](./thm.cauchy-inequality.3.md)

@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **1231 nodes / 2246 edges** across **13 galaxies and 77 clusters** (content `v0.9.1`).
+> **1270 nodes / 2313 edges** across **13 galaxies and 85 clusters** (content `v0.9.1`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >
@@ -51,7 +51,7 @@
 > ### 🔭 在线看图 → <https://bingyingzizz.github.io/mathgalaxy/>
 > 双击 `index.html` 也能用 —— 零依赖、无构建、不联网。
 
-**13 个星系 / 77 个星团 / 一千二百多个节点**，三层尺度：
+**13 个星系 / 85 个星团 / 一千二百多个节点**，三层尺度：
 数学领域（星系）→ 一套自足的装置（星团）→ 单条结果（节点）。**内容还在长。**
 
 每个节点 = 一条数学内容（公理 / 定义 / 定理 / 引理 / 命题 / 推论）。
@@ -527,7 +527,7 @@ JSON 里每条边都带 `strength` 和 `proof`，节点带稳定的 `id`，
 2. 相通之处**说得出具体是什么**（不是「都很难」这种废话）；
 3. 这个类比**能帮你解决问题** —— 看到一个，能想起另一个的招。
 
-现有的 9 条弱边（挑几条当范例读）：
+现有的 11 条弱边（挑几条当范例读）：
 
 - `thm.product` ～ `thm.omega`：同一个证明模板「幂集造容器 + 分离筛内容」
 - `def.finchar` ～ `def.wellorder`：两种「用有限/最小的东西控制无穷」的手法
@@ -671,7 +671,7 @@ python -m http.server 8000     # 然后访问 http://localhost:8000
 | 数理逻辑 | 一阶语言、公式、代入、满足关系 |
 | 集合论 | ZFC 九条公理 → 空集 / 无序对 / 并 / 幂集 / ω / 笛卡尔积 → 关系与函数、商集、序数、基数，直到实数系 ℝ 的构造 |
 | 序理论 | 偏序集、链、界与确界、良序集、有限特征 |
-| 拓扑学 | 拓扑空间与开集 → 连续、同胚、子空间 / 商 / 积 → Hausdorff、紧、连通、正规 → 紧生成空间、局部紧 → 仿紧、可度量化 |
+| 拓扑学 | 拓扑空间与开集 → 连续、同胚、子空间 / 商 / 积 → Hausdorff、紧、连通、正规 → 紧生成空间、局部紧 → 仿紧、可度量化 → 基本群 / 覆叠空间 → 单纯与奇异同调 |
 | 抽象代数 | 向量空间与基、域与有序域、环与理想、模 |
 | 数学分析 | 极限与级数、连续性、微分、Riemann 积分；实数列与实数运算 |
 | 实变函数 | 测度的构造 → 可测函数 → 积分 → $L^{p}$ → 符号测度与 RN 导数 → 微分与有界变差 |

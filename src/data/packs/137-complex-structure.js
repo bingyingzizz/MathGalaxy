@@ -218,7 +218,7 @@
       type: 'proposition',
       label: '零点的孤立性与阶',
       title: '非零全纯函数的零点孤立，且在每个零点有有限阶',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       regions: ['complex'],
       tags: ['复变函数', '零点', '零点的阶', '孤立性'],
       statement: [
@@ -255,7 +255,7 @@
       type: 'theorem',
       label: '唯一性定理',
       title: '唯一性定理（解析延拓原理）',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       regions: ['complex'],
       tags: ['复变函数', '唯一性定理', '解析延拓', '零点'],
       statement: [
@@ -291,7 +291,7 @@
       type: 'theorem',
       label: 'Casorati–Weierstrass 定理',
       title: '本性奇点附近函数值稠密（Casorati–Weierstrass）',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       regions: ['complex'],
       tags: ['复变函数', '本性奇点', '孤立奇点', 'Casorati-Weierstrass'],
       statement: [
@@ -329,7 +329,7 @@
       type: 'theorem',
       label: 'Weierstrass 收敛性定理',
       title: 'Weierstrass 收敛性定理：内闭一致收敛的全纯列，极限全纯且导数也收敛',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.cauchy',
       regions: ['complex'],
       tags: ['复变函数', '收敛', '一致收敛', '全纯函数列'],
       statement: [
@@ -370,7 +370,7 @@
       type: 'theorem',
       label: 'Arzelà–Ascoli 定理',
       title: 'Arzelà–Ascoli 定理：一致有界 + 等度连续 $\implies$ 相对紧',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       regions: ['complex', 'analysis'],
       tags: ['复变函数', '紧性', '等度连续', '函数列', '正规族'],
       statement: [
@@ -407,7 +407,7 @@
       type: 'theorem',
       label: 'Montel 定理',
       title: 'Montel 定理：局部一致有界的全纯族是正规族',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       regions: ['complex'],
       tags: ['复变函数', '正规族', '紧性', 'Montel'],
       statement: [
@@ -445,7 +445,7 @@
       type: 'theorem',
       label: '开映射定理',
       title: '开映射定理：非常数全纯函数把开集映成开集',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       regions: ['complex'],
       tags: ['复变函数', '开映射', '最大模原理', '单叶'],
       statement: [
@@ -484,7 +484,7 @@
       type: 'theorem',
       label: 'Riemann 映射定理',
       title: 'Riemann 映射定理：单连通真区域双全纯等价于单位圆盘',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       regions: ['complex'],
       tags: ['复变函数', 'Riemann 映射', '单连通', '共形映射', '正规族'],
       statement: [
@@ -535,7 +535,7 @@
       type: 'proposition',
       label: 'Poincaré 圆盘与双曲几何',
       title: '单位圆盘上的 Poincaré 度量：Schwarz–Pick 就是等距性',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.mapping',
       regions: ['complex'],
       tags: ['复变函数', '双曲几何', 'Poincaré 度量', 'Schwarz-Pick'],
       statement: [
@@ -581,7 +581,7 @@
       type: 'theorem',
       label: 'Brouwer 不动点定理（圆盘）',
       title: 'Brouwer 不动点定理：闭圆盘到自身的连续映射必有不动点',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.topology-app',
       regions: ['complex'],
       tags: ['复变函数', '拓扑', '不动点', 'Brouwer', '绕数'],
       statement: [
@@ -626,7 +626,7 @@
       type: 'theorem',
       label: 'Borsuk–Ulam 定理（二维）',
       title: 'Borsuk–Ulam 定理：$S^{2} \\to \\mathbb{R}^{2}$ 必有对径点同值',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.topology-app',
       regions: ['complex'],
       tags: ['复变函数', '拓扑', 'Borsuk-Ulam', '对径点'],
       statement: [
@@ -663,7 +663,7 @@
       type: 'theorem',
       label: '火腿三明治定理',
       title: '火腿三明治定理：一个平面同时平分三块体',
-      cluster: 'analysis.complex',
+      cluster: 'analysis.topology-app',
       regions: ['complex'],
       tags: ['复变函数', '拓扑', '应用', '火腿三明治', 'Borsuk-Ulam'],
       statement: [

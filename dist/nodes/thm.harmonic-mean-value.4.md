@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.harmonic`](../nodes/def.harmonic.md) 调和函数：用到了定义 调和函数　[proofs/def-link.meanvalue-harmonic.md](../proofs/def-link.meanvalue-harmonic.md)
+
+> 续见 [nodes/thm.harmonic-mean-value.5.md](./thm.harmonic-mean-value.5.md)

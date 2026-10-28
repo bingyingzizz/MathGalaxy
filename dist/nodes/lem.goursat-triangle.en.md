@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · lemma · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
+layer 18 · lemma · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
 names: `Goursat Triangle Lemma` (short) · `Goursat's Triangle Lemma` (full)
 
 ## Statement and proof

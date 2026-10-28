@@ -3,6 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.section`](../nodes/def.section.md) 截口 用
+- 被 [`def.path-homotopy`](../nodes/def.path-homotopy.md) 道路同伦 用
 - 被 [`def.bijection`](../nodes/def.bijection.md) 单射 / 满射 / 双射 用
 - 被 [`def.preimage`](../nodes/def.preimage.md) 像与原像 用
 - 被 [`def.quotient-topology`](../nodes/def.quotient-topology.md) 商拓扑 用
@@ -12,7 +13,5 @@
 - 被 [`def.choicefn`](../nodes/def.choicefn.md) 选择函数 用
 - 被 [`def.metric-space`](../nodes/def.metric-space.md) 距离空间 用
 - 被 [`def.product-sigma`](../nodes/def.product-sigma.md) 积 σ-代数 用
-- 被 [`def.measurable-function`](../nodes/def.measurable-function.md) 可测函数 用
-- 被 [`def.graph`](../nodes/def.graph.md) 图 用
 
 > 续见 [nodes/def.function.3.md](./def.function.3.md)

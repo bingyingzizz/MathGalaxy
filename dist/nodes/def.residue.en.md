@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · definition · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
+layer 18 · definition · cluster Residues and the Argument Principle (`analysis.residue`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.residue.md` and `proofs/`.

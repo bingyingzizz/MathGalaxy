@@ -6,3 +6,5 @@
 
 **(ii)** 反之，若 $f$ 在 $z_0$ 实可微、在 $z_0$ 处保角（保向），则 $f$ 在 $z_0$ 满足 Cauchy–Riemann 方程，从而复可微。
 因此**共形映射 = 全纯且导数处处非零**。
+
+> 续见 [nodes/prop.conformal-iff.3.md](./prop.conformal-iff.3.md)

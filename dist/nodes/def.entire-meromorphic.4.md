@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`thm.mittag-leffler`](../nodes/thm.mittag-leffler.md) Mittag-Leffler 定理
 - 被 [`thm.mittag-leffler`](../nodes/thm.mittag-leffler.md) Mittag-Leffler 定理 用
+- ⇒ [`def.entire-order`](../nodes/def.entire-order.md) 整函数的阶与型

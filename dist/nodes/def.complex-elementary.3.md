@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.exp-local-inverse`](../nodes/prop.exp-local-inverse.md) 指数函数的局部逆
+- ⇒ [`def.elementary-factor`](../nodes/def.elementary-factor.md) Weierstrass 初等因子

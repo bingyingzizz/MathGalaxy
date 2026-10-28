@@ -1,17 +1,18 @@
 # 绕数　`def.winding-number`
 定义：绕数（闭曲线关于一点的指数）
-layer 18 · 定义 · 复变函数 · 复变函数
+layer 18 · 定义 · 复变函数基础 · 复变函数
 [在星图里打开](../#n=def.winding-number)　·　[节点索引](../index.md)
 
-**白话**：绕数是一个整数，数的是「闭曲线绕某个点转了几圈」—— 逆时针一圈记 $+1$，顺时针记 $-1$，没绕记 $0$。
+**白话**：绕数是一个整数，数的是「绕某点转了几圈」—— 逆时针一圈 $+1$，顺时针 $-1$，没绕 $0$。
 
 设 $\gamma: [a, b] \to \mathbb{C}$ 是分段光滑闭曲线，$a_0 \notin \gamma$。定义 $\gamma$ 关于 $a_0$ 的**绕数**（也叫指数）
+
+$$n(\gamma, a_0) := \frac{1}{2\pi i}\oint_{\gamma} \frac{\mathrm{d}\zeta}{\zeta - a_0}.$$
 > 陈述续见 [nodes/def.winding-number.2.md](./def.winding-number.2.md)
 
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.argument-principle`](../nodes/thm.argument-principle.md) 辐角原理
-- 被 [`thm.argument-principle`](../nodes/thm.argument-principle.md) 辐角原理 用
 
 - …另有出边，续页见 [nodes/def.winding-number.4.md](./def.winding-number.4.md)
 

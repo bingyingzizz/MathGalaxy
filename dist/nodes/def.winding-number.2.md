@@ -2,8 +2,6 @@
 [在星图里打开](../#n=def.winding-number)　·　第 1 页 [nodes/def.winding-number.md](./def.winding-number.md)
 
 ## 陈述（续）
-$$n(\gamma, a_0) := \frac{1}{2\pi i}\oint_{\gamma} \frac{\mathrm{d}\zeta}{\zeta - a_0}.$$
-
 它等于 $\arg(\gamma(t) - a_0)$ 沿 $\gamma$ 走完一周的连续变化量除以 $2\pi$：
 
 $$n(\gamma, a_0) = \frac{1}{2\pi}\,\Delta_{\gamma}\,\arg(\zeta - a_0).$$

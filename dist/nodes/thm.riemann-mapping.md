@@ -1,9 +1,9 @@
 # Riemann 映射定理　`thm.riemann-mapping`
 Riemann 映射定理：单连通真区域双全纯等价于单位圆盘
-layer 24 · 定理 · 复变函数 · 复变函数
+layer 24 · 定理 · 共形映射与正规族 · 复变函数
 [在星图里打开](../#n=thm.riemann-mapping)　·　[节点索引](../index.md)
 
-设 $\Omega \subset \mathbb{C}$ 是**单连通**区域，$z_{0} \in \Omega$。则存在唯一的双全纯映射
+设 $\Omega \subset \mathbb{C}$ 是**单连通**区域，$z_{0} \in \Omega$。则存在唯一的双全纯映
 > 陈述续见 [nodes/thm.riemann-mapping.2.md](./thm.riemann-mapping.2.md)
 
 

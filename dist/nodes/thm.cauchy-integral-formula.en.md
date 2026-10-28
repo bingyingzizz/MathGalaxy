@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 20 · theorem · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
+layer 20 · theorem · cluster Cauchy Theory (`analysis.cauchy`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.cauchy-integral-formula.md` and `proofs/`.

@@ -666,11 +666,59 @@ MG.clusters = [
 
   {
     id: 'analysis.complex',
-    name: '复变函数',
-    en: 'Complex Analysis',
+    name: '复变函数基础',
+    en: 'Foundations of Complex Analysis',
     parent: 'complex',
     hub: 'def.holomorphic',
-    desc: '从复数与复平面出发：全纯函数与 Cauchy–Riemann、复积分与 Cauchy 定理、幂级数与解析性、留数定理与围道积分、共形映射。'
+    desc: '把「在 ℂ 上做分析」这件事搭起来：复数与复平面 → 全纯与 Cauchy–Riemann → 初等超越函数（指数、三角、对数）→ 多值函数与单值支 → 围道积分与绕数 → 孤立奇点。后面五个团都长在这一团上。'
+  },
+  {
+    id: 'analysis.cauchy',
+    name: 'Cauchy 理论',
+    en: 'Cauchy Theory',
+    parent: 'complex',
+    hub: 'thm.cauchy-goursat',
+    desc: '一套把「全纯」变成「可积、可展开」的机器：Goursat 三角形引理 → Cauchy–Goursat → Cauchy 积分公式 → 高阶导数 → Cauchy 不等式 → Liouville → Morera；再用它造出 Taylor 与 Laurent 展开，由此得到零点的阶、唯一性定理、三类奇点与 Weierstrass 收敛定理。'
+  },
+  {
+    id: 'analysis.residue',
+    name: '留数与辐角原理',
+    en: 'Residues and the Argument Principle',
+    parent: 'complex',
+    hub: 'thm.residue',
+    desc: '造出「不用原函数也能算积分、也能数零点」的一套：留数 → 留数定理 → 极点处的留数公式 → 实积分（有理、三角、Jordan 引理）→ 辐角原理 → Rouché → Hurwitz；再加 Mittag-Leffler（亚纯函数的构造）。'
+  },
+  {
+    id: 'analysis.mapping',
+    name: '共形映射与正规族',
+    en: 'Conformal Maps and Normal Families',
+    parent: 'complex',
+    hub: 'thm.riemann-mapping',
+    desc: '一套回答「两块区域什么时候共形等价」的装置：最大模原理 → Schwarz 引理与 Schwarz–Pick → 开映射 → Arzelà–Ascoli 与 Montel（正规族）→ Riemann 映射定理 → Poincaré 圆盘上的双曲度量。'
+  },
+  {
+    id: 'analysis.harmonic',
+    name: '调和函数',
+    en: 'Harmonic Functions',
+    parent: 'complex',
+    hub: 'def.harmonic',
+    desc: '全纯函数的实部与虚部那一半：调和函数 → 共轭调和函数 → 均值性质 → Poisson 积分公式 → 最大值原理。'
+  },
+  {
+    id: 'analysis.entire',
+    name: '解析延拓与整函数',
+    en: 'Analytic Continuation and Entire Functions',
+    parent: 'complex',
+    hub: 'thm.weierstrass-product',
+    desc: '回答「一个函数能被推多远、整函数能长成什么样」：函数元素与沿曲线的延拓 → 单值性定理 → Schwarz 反射 → Runge 逼近；再用量增长的阶与 Jensen 公式把零点数压住，造出 Weierstrass 乘积与 Hadamard 分解，最后落到 Picard 两个定理。'
+  },
+  {
+    id: 'analysis.topology-app',
+    name: '复分析的拓扑应用',
+    en: 'Topological Applications of Complex Analysis',
+    parent: 'complex',
+    hub: 'thm.brouwer-fixed-point',
+    desc: '把前面几团的力量往外用一次：绕数（同伦不变）→ Brouwer 不动点 → Borsuk–Ulam → 火腿三明治定理。⚠️ 连续版的 Brouwer 需要 $\\pi_1(S^1) \\ne 0$，图上把这一步标注为外部输入。'
   },
   {
     id: 'diffgeom.manifold',
@@ -679,6 +727,23 @@ MG.clusters = [
     parent: 'diffgeom',
     hub: 'def.manifold-chart',
     desc: '把曲面换成一般的流形：图册与光滑结构、切空间与向量场、微分形式与外微分、定向与积分、de Rham 上同调、Lie 群与 Lie 代数。'
+  },
+
+  {
+    id: 'topology.fg',
+    name: '基本群',
+    en: 'The Fundamental Group',
+    parent: 'topology',
+    hub: 'def.fundamental-group',
+    desc: '把「闭道路绕了几圈」这件事变成一个群：映射同伦 → 道路同伦 → 同伦类上的拼接 → 基本群 π₁ → 诱导同态 → 单连通 → 覆叠空间与唯一提升 → 层数（指数）→ π₁(S¹) = ℤ。有了这台机器才付得起「圆盘不能收缩到边界」「Brouwer 不动点」「van Kampen 拼空间」这几笔账。'
+  },
+  {
+    id: 'topology.homology',
+    name: '同调群',
+    en: 'Homology Groups',
+    parent: 'topology',
+    hub: 'def.simplicial-homology',
+    desc: '把「这个空间有几个 n 维的洞」变成一个可计算的阿贝尔群：标准单纯形 → 单纯复形 → 链群与边缘算子（∂² = 0）→ 单纯同调 → 奇异同调 → 约化同调与 H₀ → 对的长正合列 → Mayer–Vietoris → 球面的同调 → Euler 示性数；最后用单纯逼近把「奇异」与「单纯」缝成同一个东西。'
   },
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
