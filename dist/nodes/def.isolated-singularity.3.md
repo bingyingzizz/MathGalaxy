@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`prop.residue-at-pole`](../nodes/prop.residue-at-pole.md) 极点处的留数公式 用
 - 被 [`def.entire-meromorphic`](../nodes/def.entire-meromorphic.md) 整函数与亚纯函数 用
+- ⇒ [`thm.casorati-weierstrass`](../nodes/thm.casorati-weierstrass.md) Casorati–Weierstrass 定理

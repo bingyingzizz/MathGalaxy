@@ -8,3 +8,5 @@
 - ⇒ [`lem.jordan`](../nodes/lem.jordan.md) Jordan 引理
 - 被 [`def.winding-number`](../nodes/def.winding-number.md) 绕数 用
 - 被 [`lem.jordan`](../nodes/lem.jordan.md) Jordan 引理 用
+- ⇒ [`prop.winding-integral`](../nodes/prop.winding-integral.md) 绕数的积分表示
+- ⇒ [`thm.winding-homotopy`](../nodes/thm.winding-homotopy.md) 绕数的同伦不变性

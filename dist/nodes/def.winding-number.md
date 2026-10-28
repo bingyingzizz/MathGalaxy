@@ -13,6 +13,8 @@ layer 18 · 定义 · 复变函数 · 复变函数
 - ⇒ [`thm.argument-principle`](../nodes/thm.argument-principle.md) 辐角原理
 - 被 [`thm.argument-principle`](../nodes/thm.argument-principle.md) 辐角原理 用
 
+- …另有出边，续页见 [nodes/def.winding-number.4.md](./def.winding-number.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.winding-number.3.md](./def.winding-number.3.md)
 

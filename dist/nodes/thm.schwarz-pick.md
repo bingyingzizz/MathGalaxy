@@ -14,6 +14,9 @@ $$\left| \frac{f(z) - f(z_0)}{1 - \overline{f(z_0)}\, f(z)} \right| \le \left| \
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.schwarz-pick.3.md](./thm.schwarz-pick.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.schwarz-pick.4.md](./thm.schwarz-pick.4.md)
+
 refs: 王晓光《复变函数》· Schwarz–Pick 定理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
 
 > 说明见 `notes/thm.schwarz-pick.md`

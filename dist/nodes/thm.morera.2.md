@@ -8,3 +8,5 @@ $$\oint_{\partial T} f(\zeta)\,\mathrm{d}\zeta = 0,$$
 
 则 $f$ 在 $\Omega$ 上全纯；并且 $f'$ 也全纯，$f$ 在每点都有 Taylor 展开。
 把「闭三角形」换成「边平行于坐标轴的闭矩形」，结论不变（矩形沿一条对角线分成两个三角形）。
+
+> 续见 [nodes/thm.morera.3.md](./thm.morera.3.md)

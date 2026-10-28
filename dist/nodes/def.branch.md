@@ -3,13 +3,15 @@
 layer 17 · 定义 · 复变函数 · 复变函数
 [在星图里打开](../#n=def.branch)　·　[节点索引](../index.md)
 
-**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在某个区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常常要沿一条曲线把平面剪开，那条缝叫**分支切割**。
+**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常要沿一条曲线把平面剪开，那条缝叫**分支切割**。
 > 陈述续见 [nodes/def.branch.2.md](./def.branch.2.md)
 
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.logarithm-branch`](../nodes/def.logarithm-branch.md) 对数与幂的分支 用
 - 被 [`def.riemann-surface`](../nodes/def.riemann-surface.md) Riemann 曲面 用
+
+- …另有出边，续页见 [nodes/def.branch.4.md](./def.branch.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.branch.3.md](./def.branch.3.md)

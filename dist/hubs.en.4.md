@@ -8,4 +8,4 @@
 - **4** `prop.adjoint-full-faithful` fully faithful iff the unit is an isomorphism · layer 11 · 伴随与反射
 - **4** `ex.kan-extension` Kan extensions: colimits and right adjoints · layer 12 · 伴随与反射
 
-(1207 of 1214 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)
+(1224 of 1231 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)

@@ -255,7 +255,7 @@ window.MG = window.MG || {};
       tags: ['定义', '多值函数', '分支', '分支切割'],
       refs: ['王晓光《复变函数》· 多值函数与分支', 'Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
-        '**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在某个区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常常要沿一条曲线把平面剪开，那条缝叫**分支切割**。',
+        '**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常要沿一条曲线把平面剪开，那条缝叫**分支切割**。',
         '',
         '设 $D \\subset \\mathbb{C}$ 是区域，$F$ 是「每个 $z \\in D$ 对应一个非空值集 $F(z) \\subset \\mathbb{C}$」的对应。若连续函数 $\\varphi: D \\to \\mathbb{C}$ 满足',
         '',

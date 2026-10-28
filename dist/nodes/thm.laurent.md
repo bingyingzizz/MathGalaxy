@@ -11,6 +11,9 @@ $$c_n := \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho} \frac{f(\zeta)}{(\zeta - a)^
 > 陈述续见 [nodes/thm.laurent.2.md](./thm.laurent.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.casorati-weierstrass`](../nodes/thm.casorati-weierstrass.md) Casorati–Weierstrass 定理
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.laurent.3.md](./thm.laurent.3.md)
 

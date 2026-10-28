@@ -9,6 +9,9 @@ layer 23 · 定理 · 复变函数 · 复变函数
 > 陈述续见 [nodes/thm.hurwitz.2.md](./thm.hurwitz.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.riemann-mapping`](../nodes/thm.riemann-mapping.md) Riemann 映射定理
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.hurwitz.3.md](./thm.hurwitz.3.md)
 

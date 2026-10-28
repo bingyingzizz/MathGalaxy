@@ -10,6 +10,9 @@ layer 18 · 定理 · 复变函数 · 复变函数
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.contour-integral`](../nodes/def.contour-integral.md) 复围道积分 + [`def.holomorphic`](../nodes/def.holomorphic.md) 全纯函数：连续 + 沿闭三角形积分为零 $\implies$ 全纯　[proofs/imp.morera.md](../proofs/imp.morera.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.morera.3.md](./thm.morera.3.md)
+
 refs: 王晓光《复变函数》· Cauchy 定理的逆命题；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration；Stein–Shakarchi, Complex Analysis, Ch. 2 · Cauchy’s Theorem and Its Applications
 
 > 说明见 `notes/thm.morera.md`

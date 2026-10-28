@@ -16,6 +16,8 @@ layer 22 · 引理 · 复变函数 · 复变函数
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.schwarz-pick`](../nodes/thm.schwarz-pick.md) Schwarz–Pick 定理
 
+- …另有出边，续页见 [nodes/lem.schwarz.3.md](./lem.schwarz.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/lem.schwarz.2.md](./lem.schwarz.2.md)
 

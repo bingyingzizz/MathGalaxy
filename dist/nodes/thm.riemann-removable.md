@@ -11,6 +11,9 @@ $$\lim_{z \to a} (z - a) f(z) = 0 \qquad (\text{等价地，} f(z) = o(|z - a|^{
 > 陈述续见 [nodes/thm.riemann-removable.2.md](./thm.riemann-removable.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.casorati-weierstrass`](../nodes/thm.casorati-weierstrass.md) Casorati–Weierstrass 定理
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.riemann-removable.3.md](./thm.riemann-removable.3.md)
 

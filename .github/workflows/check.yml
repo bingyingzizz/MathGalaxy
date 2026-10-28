@@ -5,7 +5,9 @@ name: 体检
 #   · build.mjs            = 硬门（体积 / 路径 / 层号 / 记号 / xref / 跳转有效性）
 #   · _katexcheck-all.mjs  = 硬门（每条公式喂真 KaTeX，失败即红）
 #   · idstable.mjs         = 硬门（节点 id 是对外契约：删改必须登记退役）
-#   · searchcheck.mjs      = 硬门（搜索排序回归：真 src/core/search.js，25 条标注查询）
+#   · searchcheck.mjs      = 硬门（搜索排序回归：真 src/core/search.js，28 条标注查询）
+#   · doccheck.mjs         = 硬门（README / CONTRIBUTING / 站点 / llms.txt 里的硬数字
+#                            必须与 graph.json 的 meta.counts 一致，防文档过期）
 #   · xlinkcheck.mjs       = 硬门（内文跳转回归：真 src/core/xlink.js 的匹配算法，
 #                            拉丁术语不从单词内部截取 / 复合专名不拆链 / 中文照旧）
 #   · 其余                  = 只打印报告，不拦（它们从不非零退出，留作日志参考）
@@ -34,8 +36,11 @@ jobs:
       - name: 节点 id 契约（快照 / 退役清单）
         run: bun tools/idstable.mjs
 
-      - name: 搜索排序回归（真 search.js，25 条标注查询）
+      - name: 搜索排序回归（真 search.js，28 条标注查询）
         run: bun tools/searchcheck.mjs
+
+      - name: 文档硬数字（README / CONTRIBUTING / 站点 / llms.txt）
+        run: bun tools/doccheck.mjs
 
       - name: 内文跳转回归（真 xlink.js 匹配算法，17 条句子）
         run: bun tools/xlinkcheck.mjs

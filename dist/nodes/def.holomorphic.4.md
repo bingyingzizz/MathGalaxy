@@ -10,3 +10,4 @@
 - ⇒ [`lem.schwarz`](../nodes/lem.schwarz.md) Schwarz 引理
 - 被 [`def.branch`](../nodes/def.branch.md) 多值函数与分支 用
 - 被 [`def.entire-meromorphic`](../nodes/def.entire-meromorphic.md) 整函数与亚纯函数 用
+- ⇒ [`def.complex-elementary`](../nodes/def.complex-elementary.md) 复数初等函数

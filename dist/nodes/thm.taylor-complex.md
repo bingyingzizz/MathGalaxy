@@ -11,6 +11,9 @@ $$f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(z - a)^n,$$
 > 陈述续见 [nodes/thm.taylor-complex.2.md](./thm.taylor-complex.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`prop.zero-isolated`](../nodes/prop.zero-isolated.md) 零点的孤立性与阶
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.taylor-complex.3.md](./thm.taylor-complex.3.md)
 

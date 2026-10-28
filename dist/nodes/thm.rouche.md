@@ -13,6 +13,9 @@ $$|g(z)| < |f(z)|.$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.hurwitz`](../nodes/thm.hurwitz.md) Hurwitz 定理
+- ⇒ [`thm.open-mapping`](../nodes/thm.open-mapping.md) 开映射定理
+
+- …另有出边，续页见 [nodes/thm.rouche.3.md](./thm.rouche.3.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.rouche.2.md](./thm.rouche.2.md)

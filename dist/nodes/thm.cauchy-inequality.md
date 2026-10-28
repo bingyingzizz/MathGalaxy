@@ -15,6 +15,7 @@ $$M(R) := \sup_{z \in D(z_0, R)} |f(z)|.$$
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.liouville`](../nodes/thm.liouville.md) Liouville 定理
+- ⇒ [`thm.montel`](../nodes/thm.montel.md) Montel 定理
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.cauchy-inequality.3.md](./thm.cauchy-inequality.3.md)
