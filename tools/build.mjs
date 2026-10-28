@@ -2019,6 +2019,36 @@ function stripMath(s) {
     .replace(/`[^`\n]*?`/g, ' ');
 }
 
+/* ---------------------------------------------- 边的端点必须真实存在（硬门） */
+/* ⚠️ 2026-10-22 加：`graph.js` 遇到不存在的端点只 push 一条 **warning**，
+   于是写错 id（例如把 `def.mobius` 写成 `prop.mobius`）时那条边会**静默消失**：
+   构建照样通过，画布上却少了东西。这正是最难查的一类事故，所以在这里升成硬失败。 */
+function assertEdgeEndpoints(MG, graph) {
+  const errs = [];
+  const ids = new Set((graph.nodes || []).map((n) => n.id));
+  /* ⚠️ 必须连**原始 packs** 一起扫：端点写错的边会被 graph.js 直接过滤掉，
+     根本不会出现在 graph.edges 里 —— 只扫后者等于什么都没查（踩过）。 */
+  for (const p of (MG.packs || [])) for (const n of (p.nodes || [])) ids.add(n.id);
+  const check = (where, eid, id, role) => {
+    if (id == null) return;
+    if (!ids.has(id)) errs.push(`边端点：${where} 的 \`${eid}\` 里 ${role} 指向不存在的节点 \`${id}\``);
+  };
+  const scan = (edges, where) => {
+    for (const e of (edges || [])) {
+      const eid = e.id || `${(e.sources || [e.a || e.definition || '?']).join('+')} -> ${e.target || e.b || e.usedBy || '?'}`;
+      for (const s of (e.sources || [])) check(where, eid, s, 'sources');
+      check(where, eid, e.target, 'target');
+      check(where, eid, e.a, 'a');
+      check(where, eid, e.b, 'b');
+      check(where, eid, e.definition, 'definition');
+      check(where, eid, e.usedBy, 'usedBy');
+    }
+  };
+  scan(graph.edges, '构建后的图');
+  for (const p of (MG.packs || [])) scan(p.edges, `pack「${p.name || '未命名'}」`);
+  return errs;
+}
+
 function assertNotation(MG, graph) {
   const N = (MG.notation && MG.notation.checks) || {};
   const errs = [];
@@ -2286,6 +2316,7 @@ if (doJSON) {
 
   const errs = assertAI(MG, graph, files, pagesOf);
   errs.push(...enErrs);
+  errs.push(...assertEdgeEndpoints(MG, graph));
   errs.push(...assertNotation(MG, graph));
   errs.push(...assertAliases(MG, graph));
   errs.push(...assertXref(MG, graph));

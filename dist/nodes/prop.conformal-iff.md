@@ -7,6 +7,10 @@ layer 18 · 命题 · 复变函数基础 · 复变函数
 > 陈述续见 [nodes/prop.conformal-iff.2.md](./prop.conformal-iff.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`def.symmetric-point`](../nodes/def.symmetric-point.md) 关于圆的对称点
+- ⇒ [`prop.mobius-symmetry`](../nodes/prop.mobius-symmetry.md) 分式线性变换保对称点
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/prop.conformal-iff.3.md](./prop.conformal-iff.3.md)
 

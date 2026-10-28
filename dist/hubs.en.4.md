@@ -8,4 +8,4 @@
 - **4** `prop.adjoint-full-faithful` fully faithful iff the unit is an isomorphism · layer 11 · 伴随与反射
 - **4** `def.path-homotopy` 道路同伦 · layer 12 · 基本群
 
-(1263 of 1270 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)
+(1275 of 1282 nodes have at least one strong in-edge; the top 30 are listed; the full ranking is in `graph.json`.)

@@ -7,6 +7,9 @@ layer 25 · 定理 · 解析延拓与整函数 · 复变函数
 > 陈述续见 [nodes/thm.schwarz-reflection.2.md](./thm.schwarz-reflection.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.schwarz-christoffel`](../nodes/thm.schwarz-christoffel.md) Schwarz–Christoffel 公式
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.schwarz-reflection.3.md](./thm.schwarz-reflection.3.md)
 
