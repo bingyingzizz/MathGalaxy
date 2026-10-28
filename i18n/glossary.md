@@ -51,6 +51,7 @@
 - `homology`　同调代数　→　Homological Algebra
 - `condensed`　凝聚态数学　→　Condensed Mathematics
 - `analytic`　解析空间　→　Analytic Spaces
+- `complex`　复变函数　→　Complex Analysis
 - `diffgeom`　微分几何　→　Differential Geometry
 
 ## 其它（`+` = 手工新造）
