@@ -6,3 +6,4 @@
 - ⇒ [`thm.long-exact-pair`](../nodes/thm.long-exact-pair.md) 对的长正合列
 - ⇒ [`thm.simplicial-approximation`](../nodes/thm.simplicial-approximation.md) 单纯逼近
 - ～弱边 [`def.fundamental-group`](../nodes/def.fundamental-group.md) 基本群
+- ⇒ [`thm.homotopy-invariance`](../nodes/thm.homotopy-invariance.md) 同伦不变性

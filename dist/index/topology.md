@@ -11,4 +11,4 @@
 - topology.paracompact　仿紧与单位分解 / Paracompact Spaces and Partitions of Unity　中心天体 def.paracompact　10 点
 - topology.metrizable　可度量化 / Metrizability　中心天体 thm.urysohn-metrization　6 点
 - topology.fg　基本群 / The Fundamental Group　中心天体 def.fundamental-group　14 点
-- topology.homology　同调群 / Homology Groups　中心天体 def.simplicial-homology　14 点
+- topology.homology　同调群 / Homology Groups　中心天体 def.simplicial-homology　16 点
