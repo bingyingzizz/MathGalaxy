@@ -33,7 +33,7 @@ window.MG = window.MG || {};
       type: 'proposition',
       label: '模长的三角不等式',
       title: '命题：模长的三角不等式（含等号条件）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['命题', '复数', '不等式'],
       refs: ['王晓光《复变函数》笔记，第 1 章 · 两个不等式', 'Ahlfors, Complex Analysis, Ch. 1 · Complex Numbers'],
       statement: [
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '全纯函数',
       title: '定义：全纯函数与复导数',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '全纯', '复可微', '复变函数'],
       refs: ['王晓光《复变函数》笔记，第 4 章 · 全纯函数', 'Ahlfors, Complex Analysis, Ch. 2 · Complex Functions'],
       statement: [
@@ -81,7 +81,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '复偏导数',
       title: '定义：复偏导数（Wirtinger 算子）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '复偏导数', 'Wirtinger'],
       refs: ['王晓光《复变函数》笔记，第 4 章 · 复偏导数', 'Ahlfors, Complex Analysis, Ch. 2 · Complex Functions'],
       statement: [
@@ -105,7 +105,7 @@ window.MG = window.MG || {};
       type: 'proposition',
       label: '复偏导数的运算法则',
       title: '命题：复偏导数的运算法则',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['命题', '复偏导数', '链式法则'],
       refs: ['王晓光《复变函数》笔记，第 4 章 · 复偏导数', 'Ahlfors, Complex Analysis, Ch. 2 · Complex Functions'],
       statement: [
@@ -133,7 +133,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Cauchy–Riemann 方程',
       title: '定理：全纯性与 Cauchy–Riemann 方程等价',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '全纯', 'Cauchy–Riemann', '偏微分方程'],
       refs: ['王晓光《复变函数》笔记，第 4 章 · 复偏导数与复可微', 'Ahlfors, Complex Analysis, Ch. 2 · Complex Functions'],
       statement: [
@@ -159,7 +159,7 @@ window.MG = window.MG || {};
       type: 'proposition',
       label: '保角性',
       title: '命题：导数非零与保角性等价',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['命题', '保角', '共形映射'],
       refs: ['王晓光《复变函数》笔记，第 5 章 · 共形性质', 'Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping'],
       statement: [
@@ -181,7 +181,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '复围道积分',
       title: '定义：复围道积分',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '复积分', '围道'],
       refs: ['王晓光《复变函数》笔记，第 6 章 · 复积分', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -211,7 +211,7 @@ window.MG = window.MG || {};
       type: 'lemma',
       label: 'Cauchy–Green 恒等式',
       title: '引理：Cauchy–Green 恒等式',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['引理', 'Green 公式', 'Cauchy 定理'],
       refs: ['王晓光《复变函数》笔记，第 7 章 · Cauchy 定理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -231,7 +231,7 @@ window.MG = window.MG || {};
       type: 'lemma',
       label: 'Goursat 三角形引理',
       title: '引理：三角形上的积分为零（Goursat）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['引理', 'Goursat', 'Cauchy 定理'],
       refs: ['王晓光《复变函数》笔记，第 7 章 · Goursat 定理：严格性的典范', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -249,7 +249,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Cauchy–Goursat 积分定理',
       title: '定理：Cauchy–Goursat 积分定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Cauchy 定理', '单连通'],
       refs: ['王晓光《复变函数》笔记，第 7 章 · Cauchy–Goursat 积分定理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -273,7 +273,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Cauchy 积分公式',
       title: '定理：Cauchy 积分公式',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Cauchy 积分公式'],
       refs: ['王晓光《复变函数》笔记，第 8 章 · Cauchy 积分公式', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -293,7 +293,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '高阶导数公式',
       title: '定理：高阶导数公式与无穷次可微',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '高阶导数', 'Cauchy 积分公式'],
       refs: ['王晓光《复变函数》笔记，第 8 章 · 全纯函数的无穷次可微性', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -315,7 +315,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Cauchy 不等式',
       title: '定理：Cauchy 不等式',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Cauchy 不等式', '导数估计'],
       refs: ['王晓光《复变函数》笔记，第 9 章 · Cauchy 不等式', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -337,7 +337,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Liouville 定理',
       title: '定理：Liouville 定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Liouville', '整函数'],
       refs: ['王晓光《复变函数》笔记，第 9 章 · Liouville 定理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -357,7 +357,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '最大模原理',
       title: '定理：最大模原理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '最大模', '平均值公式'],
       refs: ['王晓光《复变函数》笔记，第 9 章 · 最大模原理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -377,7 +377,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '全纯函数的 Taylor 展开',
       title: '定理：全纯函数可展成 Taylor 级数',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Taylor 级数', '幂级数', '解析'],
       refs: ['王晓光《复变函数》笔记，第 11 章 · 全纯函数的幂级数', 'Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments'],
       statement: [
@@ -397,7 +397,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: 'Laurent 级数',
       title: '定义：Laurent 级数与主部',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', 'Laurent 级数', '主部'],
       refs: ['王晓光《复变函数》笔记，第 21 章 · Laurent 分解', 'Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments'],
       statement: [
@@ -417,7 +417,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Laurent 展开定理',
       title: '定理：Laurent 展开定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Laurent 级数', '环域'],
       refs: ['王晓光《复变函数》笔记，第 21 章 · Laurent 级数', 'Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments'],
       statement: [
@@ -439,7 +439,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '孤立奇点及其分类',
       title: '定义：孤立奇点及其三类',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '孤立奇点', '极点', '本性奇点'],
       refs: ['王晓光《复变函数》笔记，第 21 章 · 孤立奇点的分类', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -463,7 +463,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Riemann 可去奇点定理',
       title: '定理：Riemann 可去奇点定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '可去奇点', '延拓'],
       refs: ['王晓光《复变函数》笔记，第 9 章 · Riemann 可去奇点定理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -485,7 +485,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '留数',
       title: '定义：留数',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '留数', 'Laurent 系数'],
       refs: ['王晓光《复变函数》笔记，第 23 章 · 留数定理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -507,7 +507,7 @@ window.MG = window.MG || {};
       type: 'proposition',
       label: '极点处的留数公式',
       title: '命题：极点处的留数公式',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['命题', '留数', '极点'],
       refs: ['王晓光《复变函数》笔记，第 23 章 · 留数定理（极点的留数）', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -527,7 +527,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '留数定理',
       title: '定理：留数定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '留数', '围道积分'],
       refs: ['王晓光《复变函数》笔记，第 23 章 · 留数定理', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -547,7 +547,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '分式线性变换',
       title: '定义：分式线性变换（Möbius 变换）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', 'Möbius', '共形映射', '复球面'],
       refs: ['王晓光《复变函数》笔记，第 13 章 · 分式线性变换', 'Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping'],
       statement: [

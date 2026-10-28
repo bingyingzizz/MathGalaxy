@@ -668,7 +668,7 @@ MG.clusters = [
     id: 'analysis.complex',
     name: '复变函数',
     en: 'Complex Analysis',
-    parent: 'analysis',
+    parent: 'complex',
     hub: 'def.holomorphic',
     desc: '从复数与复平面出发：全纯函数与 Cauchy–Riemann、复积分与 Cauchy 定理、幂级数与解析性、留数定理与围道积分、共形映射。'
   },

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · proposition · cluster Complex Analysis (`analysis.complex`) · Mathematical Analysis
+layer 17 · proposition · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
 names: `Complex Partial Rules` (short) · `Rules for Complex Partial Derivatives` (full)
 
 ## Statement and proof

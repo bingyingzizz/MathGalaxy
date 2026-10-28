@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 21 · theorem · cluster Complex Analysis (`analysis.complex`) · Mathematical Analysis
+layer 21 · theorem · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
 names: `Laurent Expansion` (short) · `Laurent Expansion Theorem` (full)
 
 ## Statement and proof

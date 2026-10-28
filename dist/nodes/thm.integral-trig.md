@@ -1,6 +1,6 @@
 # 三角有理函数的积分　`thm.integral-trig`
 定理：用留数计算三角有理函数的定积分
-layer 21 · 定理 · 复变函数 · 数学分析
+layer 21 · 定理 · 复变函数 · 复变函数
 [在星图里打开](../#n=thm.integral-trig)　·　[节点索引](../index.md)
 
 **白话**：$\cos\theta$、$\sin\theta$ 的有理式在整圈上的积分，用 $z = e^{i\theta}$ 换成单位圆上的围道积分，就化成了留数计算。

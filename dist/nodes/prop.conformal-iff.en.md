@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · proposition · cluster Complex Analysis (`analysis.complex`) · Mathematical Analysis
+layer 18 · proposition · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
 names: `Conformality` (short) · `Nonvanishing Derivative and Conformality` (full)
 
 ## Statement and proof

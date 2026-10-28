@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-27T12:19:56.788Z
-> 12 星系 / 77 星团 / 1214 节点 / 2226 连线（强边 2217，弱边 9；其中**不分层**的「推论」15 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-10-28T05:38:35.228Z
+> 13 星系 / 77 星团 / 1214 节点 / 2226 连线（强边 2217，弱边 9；其中**不分层**的「推论」15 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -7998,1133 +7998,6 @@ $$f\bigl( \{ x \in U : \operatorname{rank} Df(x) < m \} \bigr) \subseteq \mathbb
 细节见 Milnor《Topology from the Differentiable Viewpoint》§3 与 Sternberg《Lectures on Differential Geometry》§II.3。∎
 
 参考：Milnor, Topology from the Differentiable Viewpoint, §3；Sternberg, Lectures on Differential Geometry, §II.3；Guillemin–Pollack, Differential Topology, §2
-
-### 星团：复变函数
-> 从复数与复平面出发：全纯函数与 Cauchy–Riemann、复积分与 Cauchy 定理、幂级数与解析性、留数定理与围道积分、共形映射。
-
-#### 模长的三角不等式　`prop.complex-triangle`
-*命题*　命题：模长的三角不等式（含等号条件）
-
-**白话**：和的模不超过模的和；取等号的唯一情形是这些复数「方向一致」。
-
-对任意 $z_1, \cdots, z_n \in \mathbb{C}$，
-
-$$\left| \sum_{k=1}^{n} z_k \right| \le \sum_{k=1}^{n} |z_k|.$$
-
-等号成立当且仅当：非零的那些 $z_k$ 有**相同的辐角**。
-
-⭐ 证明的妙处在于**不去估和，而是先把和转到实轴上**：令 $\theta$ 是 $\sum_k z_k$ 的一个辐角（和为零时结论显然），则
-
-$$\left| \sum_k z_k \right| = e^{-i\theta}\sum_k z_k = \operatorname{Re}\left( e^{-i\theta}\sum_k z_k \right) = \sum_k \operatorname{Re}\left( e^{-i\theta} z_k \right) \le \sum_k \left| e^{-i\theta} z_k \right| = \sum_k |z_k|.$$
-
-第 2 个等号是「非负实数等于自己的实部」，最后一步是 $\operatorname{Re} w \le |w|$。
-
-⭐ 等号条件从中直接读出：每一步都要取等，即每个 $e^{-i\theta} z_k$ 都是非负实数。
-
-⭐ 两条常用推论：反三角不等式 $\big| |z| - |w| \big| \le |z - w|$；以及积分基本不等式 $\left| \int_\gamma f\,\mathrm{d}z \right| \le \int_\gamma |f|\,|\mathrm{d}z| \le \max_\gamma |f| \cdot L(\gamma)$ —— 后面的 Cauchy 不等式与 Liouville 定理全靠它。
-
-📌 书里同节的另一条是复的 Cauchy–Schwarz 不等式：$\left| \sum_j z_j \overline{w_j} \right|^2 \le \left( \sum_j |z_j|^2 \right)\left( \sum_j |w_j|^2 \right)$，等号当且仅当两组数相差一个复常数倍。
-
-参考：王晓光《复变函数》笔记，第 1 章 · 两个不等式；Ahlfors, Complex Analysis, Ch. 1 · Complex Numbers
-
-#### 全纯函数　`def.holomorphic`
-*定义*　定义：全纯函数与复导数
-
-**白话**：复可微就是「差商在复意义下收敛」—— $h$ 可以从**任何方向、任何方式**趋于 $0$，但差商必须落到同一个复数。
-
-设 $\Omega$ 是平面区域（连通开集），$f: \Omega \to \mathbb{C}$，$z_0 \in \Omega$。若极限
-
-$$f'(z_0) := \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h} \qquad (h \in \mathbb{C},\ h \ne 0,\ z_0 + h \in \Omega)$$
-
-存在，称 $f$ 在 $z_0$ **复可微**，$f'(z_0)$ 称为 $f$ 在 $z_0$ 处的**导数**。若 $f$ 在 $\Omega$ 的每一点都复可微，称 $f$ 在 $\Omega$ 上**全纯**（holomorphic）。
-
-复可微蕴含连续：把定义改写成
-
-$$f(z_0 + h) - f(z_0) = f'(z_0)\,h + o(h),$$
-
-令 $h \to 0$ 即得 $f(z_0 + h) \to f(z_0)$。
-
-⭐ 与实可微的**唯一**区别：$h$ 是复数。实情形只要左右两个方向一致，复情形要求**无穷多个方向**（$h = t e^{i\theta}$，$\theta$ 任意）全部一致 —— 要求极强，收益也极大：一次可微就无穷次可微。
-
-⚠ 这个要求**不是自动的**。$f(z) = \bar z$ 处处不复可微：沿实轴取 $h = t$ 得差商 $1$，沿虚轴取 $h = it$ 得差商 $-1$。两个方向的极限不同。所以「实可微」远不足以推出「复可微」。
-
-⭐ 复可微的等价写法是 $\Delta f = A\,\Delta z + o(\Delta z)$ —— 增量**只**是 $\Delta z$ 的线性函数，不许出现 $\overline{\Delta z}$。写成偏导的语言就是 $\partial f/\partial \bar z = 0$（见 Cauchy–Riemann 方程那条）。
-
-📌 全纯函数的和、积、商（分母不为零）、复合仍全纯，且求导公式与实情形形式相同 —— 因为这些只是「极限的四则运算」，没有用到 $h$ 的实性。
-
-参考：王晓光《复变函数》笔记，第 4 章 · 全纯函数；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
-
-#### 复偏导数　`def.complex-partial`
-*定义*　定义：复偏导数（Wirtinger 算子）
-
-**白话**：把实意义下的两个偏导数 $\partial f/\partial x$、$\partial f/\partial y$ 重新线性组合，得到「沿 $z$ 方向」和「沿 $\bar z$ 方向」的两个复数方向导数。
-
-设 $f = u + iv$ 在 $z_0$ 的邻域内实可微（即 $u, v$ 都实可微）。定义
-
-$$\frac{\partial f}{\partial z} := \frac{1}{2}\left( \frac{\partial f}{\partial x} - i\,\frac{\partial f}{\partial y} \right), \qquad \frac{\partial f}{\partial \bar z} := \frac{1}{2}\left( \frac{\partial f}{\partial x} + i\,\frac{\partial f}{\partial y} \right).$$
-
-在这两个记号下，$f$ 的增量写成
-
-$$f(z_0 + \Delta z) - f(z_0) = \frac{\partial f}{\partial z}(z_0)\,\Delta z + \frac{\partial f}{\partial \bar z}(z_0)\,\overline{\Delta z} + o(\Delta z).$$
-
-两个系数由增量**唯一**决定：若 $A\Delta z + B\overline{\Delta z} = a\Delta z + b\overline{\Delta z} + o(\Delta z)$，分别取 $\Delta z = t$（$t$ 为实数）与 $\Delta z = it$，令 $t \to 0$ 即得 $A = a$、$B = b$。
-
-⭐ $\partial/\partial z$、$\partial/\partial \bar z$ 叫 **Wirtinger 导数**。它们**不是**差商极限：$\bar z$ 沿不同方向的行为不一样，差商没有极限。它们只是实偏导的一对线性组合，是记账工具。
-
-⭐ 记忆法（书里脚注）：把 $x = (z + \bar z)/2$、$y = -i(z - \bar z)/2$ 代进 $f(x, y)$，**形式上**把 $z$、$\bar z$ 当成独立变量用链式法则求偏导，就得到上面两式。⚠ 这只帮助记忆 —— 严格定义是右边的组合，因为 $z$ 与 $\bar z$ 作为 $\mathbb{R}^2$ 上的两个坐标并不独立。
-
-⭐ 真正好用的是它的**判据**性质：$f$ 复可微 $\iff$ $\partial f/\partial \bar z(z_0) = 0$。也就是「$f$ 能否只含 $z$ 不含 $\bar z$」，变成可以逐项验算的事情。
-
-📌 形式上有 $\partial z/\partial z = \partial \bar z/\partial \bar z = 1$，$\partial z/\partial \bar z = \partial \bar z/\partial z = 0$ —— 就像两组独立的坐标。
-
-参考：王晓光《复变函数》笔记，第 4 章 · 复偏导数；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
-
-#### 复偏导数的运算法则　`prop.complex-partial-rules`
-*命题*　命题：复偏导数的运算法则
-
-**白话**：$\partial/\partial z$ 与 $\partial/\partial \bar z$ 和普通偏导数一样服从线性法则、乘积法则、链式法则，而且两者互为共轭。
-
-设 $f, g: \Omega \to \mathbb{C}$ 实可微。则
-
-**(1) 坐标**：$\dfrac{\partial z}{\partial z} = \dfrac{\partial \bar z}{\partial \bar z} = 1$，$\dfrac{\partial z}{\partial \bar z} = \dfrac{\partial \bar z}{\partial z} = 0$；
-
-**(2) 复线性**：$\alpha, \beta \in \mathbb{C}$ 时 $\dfrac{\partial (\alpha f + \beta g)}{\partial z} = \alpha\dfrac{\partial f}{\partial z} + \beta\dfrac{\partial g}{\partial z}$，$\partial/\partial \bar z$ 同理；
-
-**(3) 共轭**：$\overline{\left( \dfrac{\partial f}{\partial z} \right)} = \dfrac{\partial \bar f}{\partial \bar z}$，$\overline{\left( \dfrac{\partial f}{\partial \bar z} \right)} = \dfrac{\partial \bar f}{\partial z}$；
-
-**(4) 乘积**：$\dfrac{\partial (fg)}{\partial z} = \dfrac{\partial f}{\partial z}\,g + f\,\dfrac{\partial g}{\partial z}$，$\partial/\partial \bar z$ 同理；
-
-**(5) 复合**：若 $f: \Omega \to D$、$g: D \to \mathbb{C}$ 都实可微，则
-
-$$\frac{\partial (g \circ f)}{\partial z} = \left( \frac{\partial g}{\partial w} \circ f \right)\frac{\partial f}{\partial z} + \left( \frac{\partial g}{\partial \bar w} \circ f \right)\overline{\left( \frac{\partial f}{\partial \bar z} \right)}.$$
-
-⭐ (5) 的第二项不是笔误：$g$ 的增量里有 $\Delta w$ 与 $\overline{\Delta w}$ 两块，而 $\overline{\Delta w} = \overline{f_z}\,\overline{\Delta z} + \overline{f_{\bar z}}\,\Delta z$ —— 共轭把两类项**互换**了，所以 $g_{\bar w}$ 那一块乘的是 $\overline{f_{\bar z}}$。
-
-⭐ 全纯时 $f_{\bar z} = 0$、$g_{\bar w} = 0$，(5) 就退化成熟悉的 $(g \circ f)' = (g' \circ f)\,f'$ —— 只剩第一项。
-
-⭐ 反过来这也解释了为什么「全纯 $\circ$ 实可微」一般不全纯：此时 $g_{\bar w} \ne 0$，第二项活着，而它偏偏带着 $\overline{f_{\bar z}}$ 这个 $\overline{\Delta z}$ 的系数。
-
-📌 这五条都是把实偏导的对应法则照抄过来再重新组合，没有新的分析内容 —— 但它们让「验算一个表达式全不全纯」变成纯代数操作。
-
-参考：王晓光《复变函数》笔记，第 4 章 · 复偏导数；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
-
-#### Cauchy–Riemann 方程　`thm.cauchy-riemann`
-*定理*　定理：全纯性与 Cauchy–Riemann 方程等价
-
-**白话**：$f = u + iv$ 复可微，当且仅当它实可微、且两个偏导满足一对很具体的方程 —— 「二维的极限条件」被两个一维方程完全替代。
-
-设 $\Omega$ 是平面区域，$f = u + iv: \Omega \to \mathbb{C}$，$z_0 \in \Omega$。以下三条等价：
-
-**(i)** $f$ 在 $z_0$ 复可微；
-
-**(ii)** $f$ 在 $z_0$ 实可微，且
-
-$$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x};$$
-
-**(iii)** $f$ 在 $z_0$ 实可微，且 $\dfrac{\partial f}{\partial \bar z}(z_0) = 0$。
-
-三者成立时 $f'(z_0) = \dfrac{\partial f}{\partial z}(z_0) = \dfrac{\partial u}{\partial x}(z_0) + i\,\dfrac{\partial v}{\partial x}(z_0)$。
-
-⭐ 三条其实是一条。$\Delta z$ 与 $\overline{\Delta z}$ 是 $\mathbb{C}$ 作为实向量空间的一组基，增量中**只许**出现 $\Delta z$ 才可能是「乘一个复数」；而 $\Delta z$ 的系数正是 $u_x + i v_x$。CR 方程就是把「$\overline{\Delta z}$ 的系数为 $0$」写成分量形式。
-
-⭐ 一个有用的副产品：$f$ 在 $z_0$ 的 Jacobi 行列式 $= u_x v_y - u_y v_x = u_x^2 + v_x^2 = |f'(z_0)|^2 \ge 0$。所以全纯映射在导数不为零处**保向**，这也是它「保角」的来源。
-
-⚠ **单独验 CR 方程不够**，还要 $f$ 实可微。反例：$f(x + iy) = \sqrt{|xy|}$，在原点四个偏导全为 $0$（CR 成立），但差商沿 $h = t(1+i)$ 趋于 $1/(1+i) \ne 0$，故不复可微。这同时说明「偏导存在」远弱于「实可微」。
-
-📌 于是全纯性有两条可操作的路：抽象地用差商（几何直觉好），或具体地验 CR（计算方便）。
-
-参考：王晓光《复变函数》笔记，第 4 章 · 复偏导数与复可微；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
-
-#### 保角性　`prop.conformal-iff`
-*命题*　命题：导数非零与保角性等价
-
-**白话**：全纯函数在导数不为零的地方「保角」—— 两条曲线在那里相交的角度，像里还是同样的角度；反过来，实可微又保角的映射一定是全纯的。
-
-**(i)** 设 $f$ 在 $z_0$ 的邻域内全纯且 $f'(z_0) \ne 0$。则 $f$ 在 $z_0$ 处**保角**：任意两条过 $z_0$ 的光滑曲线，其像曲线在 $f(z_0)$ 处的夹角与原来**大小相同、方向相同**。
-
-**(ii)** 反之，若 $f$ 在 $z_0$ 实可微、在 $z_0$ 处保角（保向），则 $f$ 在 $z_0$ 满足 Cauchy–Riemann 方程，从而复可微。
-
-因此**共形映射 = 全纯且导数处处非零**。
-
-⭐ (i) 一行就够：$f(z_0 + h) - f(z_0) \approx f'(z_0)\,h$。乘以非零复数 $f'(z_0) = |f'|e^{i\theta}$ 就是「旋转 $\theta$ + 伸缩 $|f'|$」—— 相似变换，夹角与长度比自然不变。
-
-⭐ (ii) 的要点：保角等价于「增量映射 $\Delta z \mapsto \Delta f$ 是相似变换」，即它只含 $\Delta z$ 不含 $\overline{\Delta z}$。而这正是 $\partial f/\partial \bar z(z_0) = 0$ —— 与 CR 方程是同一句话。
-
-⚠ 「导数非零」不能丢：$f(z) = z^2$ 在 $0$ 处把夹角**加倍**（$0$ 是临界点）；$f(z) = \bar z$ 虽然保角但是**反向**的（它把定向翻过来），所以不在 (ii) 的「保向」范围内，也不全纯。
-
-📌 分式线性变换 $f(z) = (az+b)/(cz+d)$ 的导数是 $(ad-bc)/(cz+d)^2$，$ad - bc \ne 0$ 保证它处处不为零 —— 这就是 Möbius 变换处处共形的原因。
-
-参考：王晓光《复变函数》笔记，第 5 章 · 共形性质；Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping
-
-#### 复围道积分　`def.contour-integral`
-*定义*　定义：复围道积分
-
-**白话**：把路径切成很多小段，每段用 $f$ 在该点的值乘上这一小段对应的**复位移**，加起来取极限 —— 就是沿这条路径的积分。
-
-设 $\gamma: [a, b] \to \mathbb{C}$ 分段光滑（参数曲线），$f$ 在 $\gamma$ 上连续。定义
-
-$$\int_\gamma f(z)\,\mathrm{d}z := \lim_{\text{分割}} \sum_{k=1}^{n} f(\gamma(\tau_k))\,(\gamma(t_k) - \gamma(t_{k-1})),$$
-
-分割取 $[a, b]$ 的任意加细分割、$\tau_k \in [t_{k-1}, t_k]$ 任意，极限存在且与取法无关；它等于
-
-$$\int_\gamma f(z)\,\mathrm{d}z = \int_a^b f(\gamma(t))\,\gamma'(t)\,\mathrm{d}t,$$
-
-右端是实参数 $t$ 上的复值 Riemann 积分。拆成实部虚部（$f = u + iv$，$z = x + iy$）就是两条实线积分：
-
-$$\int_\gamma f\,\mathrm{d}z = \int_\gamma (u\,\mathrm{d}x - v\,\mathrm{d}y) + i\int_\gamma (v\,\mathrm{d}x + u\,\mathrm{d}y).$$
-
-$\gamma$ 为闭曲线时记 $\oint_\gamma$；反向曲线 $\gamma^{-1}$ 上积分变号：$\int_{\gamma^{-1}} f\,\mathrm{d}z = -\int_\gamma f\,\mathrm{d}z$。
-
-⭐ 右端那个实积分就是定义的全部内容：**复围道积分 = 对实参数 $t$ 的复值 Riemann 积分**。于是实积分的一切性质（线性、区间可加、绝对值不等式、换元）自动搬过来。
-
-⭐ 与实积分真正的区别在**路径依赖**：$\int_\gamma f\,\mathrm{d}z$ 一般不只是端点的函数。Cauchy 定理说的正是「全纯时它忽然只依赖端点，闭路上为 $0$」。
-
-⭐ 上面那个实部虚部的拆法是后面接 Green 公式的接口：$P = u$、$Q = -v$ 与 $P = v$、$Q = u$ 各套一次 Green，就得到 Cauchy–Green 恒等式。
-
-参考：王晓光《复变函数》笔记，第 6 章 · 复积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Cauchy–Green 恒等式　`lem.cauchy-green`
-*引理*　引理：Cauchy–Green 恒等式
-
-**白话**：沿闭曲线的复积分，可以换算成曲线内部面积上的一个二重积分，被积的正是 $\partial f/\partial \bar z$ —— 于是「全纯 $\implies$ 积分为零」变成了「被积函数是 $0$」。
-
-设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 是一条分段光滑的简单闭曲线、取正向（逆时针）。若 $f \in C^1(\overline{\Omega})$，则
-
-$$\int_{\partial\Omega} f(z)\,\mathrm{d}z = 2i \iint_{\Omega} \frac{\partial f}{\partial \bar z}(z)\,\mathrm{d}x\,\mathrm{d}y.$$
-
-特别地，若 $f$ 全纯**且 $f'$ 连续**，则右端为零，即 $\displaystyle\oint_{\partial\Omega} f\,\mathrm{d}z = 0$。
-
-⭐ 这就是 Green 公式的直接翻译。Green 公式：$\oint_{\partial\Omega}(P\,\mathrm{d}x + Q\,\mathrm{d}y) = \iint_\Omega (Q_x - P_y)\,\mathrm{d}x\mathrm{d}y$。把积分拆成 $\oint (u\,\mathrm{d}x - v\,\mathrm{d}y) + i\oint (v\,\mathrm{d}x + u\,\mathrm{d}y)$，两次对上号得 $\iint [-(u_y + v_x)] + i\iint(u_x - v_y)$ —— 而 $2i f_{\bar z}$ 逐项算出来正是 $-(u_y + v_x) + i(u_x - v_y)$。
-
-⭐ 它在分量上就是 CR 方程的**积分版**：全纯 $\iff f_{\bar z} = 0 \implies$ 右端为零。
-
-⚠ 这条引理**不是免费的**：Green 公式要求 $P, Q$（从而 $f$）在闭包 $\overline{\Omega}$ 上 $C^1$。全纯只保证 $f$ 可微，**不保证 $f'$ 连续** —— 这个缺口由 Goursat 的三角形分割补上。
-
-参考：王晓光《复变函数》笔记，第 7 章 · Cauchy 定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Goursat 三角形引理　`lem.goursat-triangle`
-*引理*　引理：三角形上的积分为零（Goursat）
-
-**白话**：只要 $f$ 在三角形内部和边界上全纯（别的一概不要求，连 $f'$ 连续都不要），沿三角形边界的积分就是 $0$。这是 Cauchy 定理的「最小内核」。
-
-设 $T$ 是闭三角形，$f$ 在包含 $T$ 的某个开集上全纯。则
-
-$$\int_{\partial T} f(z)\,\mathrm{d}z = 0.$$
-
-⭐ 手法是**二分 + 让三角形缩到一点**，不用 Green、不用 $f'$ 连续。
-
-**第一步（四分）**：取三边中点把 $T$ 分成四个小三角形。整条边界的积分等于四条小边界之和（内部那三条边各被走两次、方向相反，抵消），于是至少有一个满足 $|I| \le 4\,|I(T_1)|$。迭代得 $T \supset T^{(1)} \supset T^{(2)} \supset \cdots$，第 $n$ 个的周长是 $L/2^n$，闭集套定理给出公共点 $z^*$，且 $|I| \le 4^n |I(T^{(n)})|$。
-
-**第二步（把 $f$ 换成线性项）**：在 $z^*$ 附近用复可微的定义：$f(z) = f(z^*) + f'(z^*)(z - z^*) + \eta(z)\,(z - z^*)$，其中 $\eta(z) \to 0$（$z \to z^*$）。前两项是多项式，沿任何闭三角形的积分都是 $0$（可直接算）。
-
-**第三步（估计）**：设 $\varepsilon_n = \sup_{z \in T^{(n)}} |\eta(z)| \to 0$，则 $|I(T^{(n)})| \le \varepsilon_n \cdot (L/2^n) \cdot (L/2^n)$，于是 $|I| \le 4^n \cdot \varepsilon_n \cdot L^2/4^n = \varepsilon_n L^2 \to 0$。
-
-⚠ 全纯在这里只被用了两次：$f$ 连续（用来取 $z^*$），以及差商在 $z \to z^*$ 时有极限（即 $\eta \to 0$）。正因如此，结论比 Green 路线强得多。
-
-参考：王晓光《复变函数》笔记，第 7 章 · Goursat 定理：严格性的典范；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Cauchy–Goursat 积分定理　`thm.cauchy-goursat`
-*定理*　定理：Cauchy–Goursat 积分定理
-
-**白话**：单连通区域上全纯的函数，沿任何闭曲线的积分都是 $0$ —— 这是整个复分析的引擎。
-
-设 $\Omega$ 是**单连通**的平面区域，$f$ 在 $\Omega$ 上全纯，$\gamma$ 是 $\Omega$ 内分段光滑的闭曲线。则
-
-$$\oint_\gamma f(z)\,\mathrm{d}z = 0.$$
-
-多连通的情形：设 $\gamma_0, \gamma_1, \cdots, \gamma_n$ 是 $\Omega$ 内分段光滑的简单闭曲线，$\gamma_1, \cdots, \gamma_n$ 各自在 $\gamma_0$ 的内部且互不相交，$f$ 在它们围成的（多连通）区域上全纯。则
-
-$$\oint_{\gamma_0} f\,\mathrm{d}z = \sum_{k=1}^{n} \oint_{\gamma_k} f\,\mathrm{d}z.$$
-
-⚠ 「单连通」不能丢。$f(z) = 1/z$ 在 $\mathbb{C} \setminus \{0\}$ 上全纯，可是 $\oint_{|z| = 1} \mathrm{d}z/z = 2\pi i \ne 0$。那个洞就是障碍 —— 它的存在让绕数能被感知到。
-
-⭐ 等价说法：全纯函数的围道积分**同伦不变**（路径在区域里连续形变，积分不变）；单连通 = 区域内所有闭曲线都同伦于一点。
-
-⭐ 立刻的推论：单连通区域上的全纯函数**有原函数**（取 $F(z) = \int_{z_0}^{z} f\,\mathrm{d}z$，由 Cauchy 定理知与路径无关，再由 $F' = f$）。这在实分析里没有对应物 —— $1/x$ 在 $\mathbb{R} \setminus \{0\}$ 上就没有原函数。
-
-⚠ 名字里的 Goursat：Cauchy 1825 年的原始证明要求 $f'$ 连续（走 Green 公式）；Goursat 后来用三角形分割去掉了这个假设。现代教材因此把它当成**全纯的基本定理**：结论不是从更强的假设换来的。
-
-参考：王晓光《复变函数》笔记，第 7 章 · Cauchy–Goursat 积分定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Cauchy 积分公式　`thm.cauchy-integral-formula`
-*定理*　定理：Cauchy 积分公式
-
-**白话**：全纯函数在内部一点的值，由它在边界上的值**完全决定** —— 内部的每一点都在「听」边界的话。
-
-设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 是分段光滑的简单闭曲线、取正向，$f$ 在包含 $\overline{\Omega}$ 的开集上全纯。则对任意 $z \in \Omega$，
-
-$$f(z) = \frac{1}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta.$$
-
-更一般地，若 $\gamma$ 是区域内的闭曲线、$f$ 在 $\gamma$ 内部及 $\gamma$ 上全纯，则上式对 $\gamma$ 内部任一点 $z$ 成立。
-
-⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\overline{D(z, r)}$，在剩下的二连通区域 $\Omega_r$ 上对 $g(\zeta) = f(\zeta)/(\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\oint_{\partial\Omega} g = \oint_{|\zeta - z| = r} g$。
-
-再把 $g$ 拆成两块：$\dfrac{f(z)}{\zeta - z} + \dfrac{f(\zeta) - f(z)}{\zeta - z}$。第一块的积分算出 $2\pi i f(z)$；第二块的被积函数在 $\zeta = z$ 处有极限 $f'(z)$（因而有界），由 ML 不等式其积分不超过 $(\text{常数}) \cdot 2\pi r \to 0$。
-
-⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。
-
-⚠ 被积函数 $f(\zeta)/(\zeta - z)$ 在 $\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\Omega$ 上。挖洞不是技巧，是必须的。
-
-参考：王晓光《复变函数》笔记，第 8 章 · Cauchy 积分公式；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 高阶导数公式　`thm.cauchy-higher-derivative`
-*定理*　定理：高阶导数公式与无穷次可微
-
-**白话**：全纯函数不但无穷次可微，而且每一阶导数都能用**同一个**边界积分写出来 —— 只把分母的幂次加一。
-
-设定与 Cauchy 积分公式相同（$f$ 在包含 $\overline{\Omega}$ 的开集上全纯，$\partial\Omega$ 分段光滑简单闭曲线正向）。则对 $n = 0, 1, 2, \cdots$ 与 $z \in \Omega$，
-
-$$f^{(n)}(z) = \frac{n!}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{(\zeta - z)^{n+1}}\,\mathrm{d}\zeta.$$
-
-特别地，$f$ 在 $\Omega$ 上**无穷次可微**，且每一阶导数都全纯。
-
-⭐ 证明就是**在积分号下求导**。$n = 1$ 时，差商与「形式导数」之差是
-
-$$\frac{1}{2\pi i}\oint f(\zeta)\left[ \frac{1}{(\zeta - z - h)(\zeta - z)} - \frac{1}{(\zeta - z)^2} \right]\mathrm{d}\zeta = \frac{h}{2\pi i}\oint \frac{f(\zeta)\,\mathrm{d}\zeta}{(\zeta - z - h)(\zeta - z)^2}.$$
-
-取 $|h| \le \delta/2$，其中 $\delta = \operatorname{dist}(z, \partial\Omega) > 0$，则分母有与 $\zeta$、$h$ 无关的正下界，整个积分的模 $\le C|h| \to 0$ —— 极限存在且正是形式导数。这个表达式对 $z$ 连续，所以 $f'$ 连续、可以再做一次；$n \ge 2$ 归纳。
-
-⭐ 这是复分析与实分析**最大的分水岭**：实函数可以一次可微而不二次（如 $x|x|$），复函数一次可微就无穷次可微。
-
-⚠ 「全纯」本身**没有**假设 $f'$ 连续 —— 连续性是从这条公式**推**出来的，不是前提。这正是 Goursat 那条边的价值：先去掉多余的假设，再把它当结论赚回来。
-
-参考：王晓光《复变函数》笔记，第 8 章 · 全纯函数的无穷次可微性；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Cauchy 不等式　`thm.cauchy-inequality`
-*定理*　定理：Cauchy 不等式
-
-**白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。
-
-设 $f$ 在圆盘 $D = D(z_0, R)$ 上全纯，记
-
-$$M(R) := \sup_{z \in D(z_0, R)} |f(z)|.$$
-
-则对每个 $n = 0, 1, 2, \cdots$，
-
-$$\left| f^{(n)}(z_0) \right| \le \frac{n!}{R^n}\,M(R).$$
-
-⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\mathrm{d}\zeta|$ 的总长是 $2\pi r$，分母是 $r^{n+1}$）：
-
-$$\left| f^{(n)}(z_0) \right| \le \frac{n!}{2\pi} \cdot M(r) \cdot \frac{2\pi r}{r^{n+1}} = \frac{n!\,M(r)}{r^n},$$
-
-再令 $r \to R$ 即得。
-
-⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。
-
-⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $D(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。
-
-⭐ 反向也有内容：若 $|f| \le M$ 在全平面成立，则 $|f^{(n)}(0)| \le n! M/R^n$ 对**一切** $R$ 成立，令 $R \to \infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。
-
-参考：王晓光《复变函数》笔记，第 9 章 · Cauchy 不等式；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Liouville 定理　`thm.liouville`
-*定理*　定理：Liouville 定理
-
-**白话**：在整个复平面上全纯、又有界的函数只能是常数 —— 复平面「太挤」了，容不下一个非常数的有界全纯函数。
-
-若 $f$ 在 $\mathbb{C}$ 上全纯（这样的函数叫**整函数**），且存在常数 $M$ 使
-
-$$|f(z)| \le M, \qquad \forall z \in \mathbb{C},$$
-
-则 $f$ 是常数。
-
-⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $D(z, R)$ 上全纯，故 $|f'(z)| \le M/R$。令 $R \to \infty$ 得 $f'(z) = 0$；由 $z$ 任意，$f' \equiv 0$；区域连通，故 $f$ 是常数。
-
-⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，
-
-$$f(z) - f(0) = \frac{1}{2\pi i}\oint_{|\zeta| = R}\left( \frac{1}{\zeta - z} - \frac{1}{\zeta} \right) f(\zeta)\,\mathrm{d}\zeta,$$
-
-估计得 $|f(z) - f(0)| \le \dfrac{M|z|}{R - |z|} \to 0$（$R \to \infty$），故 $f(z) = f(0)$。
-
-⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。反过来，若只知 $|f(z)| \le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。
-
-⭐ 与实分析对照：$\sin x$ 在 $\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\infty$ 函数」强得多。
-
-参考：王晓光《复变函数》笔记，第 9 章 · Liouville 定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 最大模原理　`thm.max-modulus`
-*定理*　定理：最大模原理
-
-**白话**：全纯函数的模，不可能在区域内部取到最大值 —— 除非它是常数。最大值只可能出现在边界上。
-
-设 $\Omega$ 是平面区域（连通开集），$f$ 在 $\Omega$ 上全纯。则或者 $f$ 是常数，或者
-
-$$|f(z)| < \|f\|_{\Omega} := \sup_{\zeta \in \Omega} |f(\zeta)|, \qquad \forall z \in \Omega.$$
-
-⭐ 证明走**平均值公式**：Cauchy 积分公式在圆心取 $\zeta = z + re^{i\theta}$，得
-
-$$f(z) = \frac{1}{2\pi}\int_0^{2\pi} f(z + re^{i\theta})\,\mathrm{d}\theta$$
-
-（只要 $\overline{D(z, r)} \subset \Omega$）。若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \le \frac{1}{2\pi}\int_0^{2\pi} |f(z_0 + re^{i\theta})|\,\mathrm{d}\theta \le M$，两端相等迫使圆上 $|f| \equiv M$。
-
-⭐ 再由连通性：集合 $\{ z : |f(z)| = M \}$ 既开（每个点周围都有整圆）又闭（$|f|$ 连续），故是全体 $\Omega$；$|f|$ 为常数加上 $f$ 全纯，得 $f$ 为常数。
-
-⭐ 有界区域的推论：若 $\Omega$ 有界、$f$ 在 $\overline{\Omega}$ 上连续、在 $\Omega$ 内全纯，则 $\|f\|_{\overline{\Omega}} = \|f\|_{\partial\Omega}$ —— 最大值在边界取到。这是「用边界值控制内部」的最强形式。
-
-⚠ 对 $|f|$ 的**最小值**没有对应结论：$f(z) = z$ 在单位圆盘上最小值在 $0$（内部）。正确的最小模原理是：$f$ 全纯且**无零点**时，对 $1/f$ 用最大模原理。
-
-参考：王晓光《复变函数》笔记，第 9 章 · 最大模原理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 全纯函数的 Taylor 展开　`thm.taylor-complex`
-*定理*　定理：全纯函数可展成 Taylor 级数
-
-**白话**：全纯函数在任意一点的附近都是一个幂级数 —— 也就是说，对复函数而言「可微」与「能写成幂级数」是同一件事。
-
-设 $f$ 在圆盘 $D(a, R)$ 上全纯。则对 $z \in D(a, R)$，
-
-$$f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(z - a)^n,$$
-
-且右端在 $D(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $D(a, R)$ 内**解析**（等于某个幂级数之和）。
-
-⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。取 $\rho \in (|z - a|, R)$，写
-
-$$\frac{1}{\zeta - z} = \frac{1}{(\zeta - a) - (z - a)} = \sum_{n=0}^{\infty} \frac{(z - a)^n}{(\zeta - a)^{n+1}},$$
-
-比值 $|z - a|/\rho < 1$，级数关于 $\zeta \in \partial D(a, \rho)$ 一致收敛，故可逐项积分；逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。
-
-⭐ 这条把「微分」与「级数」接上了：**全纯 $\iff$ 局部是幂级数 $\iff$ 解析**。实分析里这两件事**不等价** —— $e^{-1/x^2}$ 在 $0$ 处无穷次可微，但 Taylor 级数恒为 $0$，在 $0$ 的任何邻域内都不等于原函数。
-
-⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。
-
-📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \sum a_n (z - a)^n$ 在 $D(a, R)$ 内成立，则 $|a_n| \le M(r)/r^n$（$0 < r < R$）。
-
-参考：王晓光《复变函数》笔记，第 11 章 · 全纯函数的幂级数；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
-
-#### Laurent 级数　`def.laurent-series`
-*定义*　定义：Laurent 级数与主部
-
-**白话**：把幂级数放宽成「两边都有」的级数 —— 负幂次项负责描述函数在中心附近的爆炸，正幂次项负责描述它远处的行为。
-
-设 $0 \le r < R \le +\infty$，环域 $A_{r,R}(a) := \{ z : r < |z - a| < R \}$。形如
-
-$$\sum_{n=-\infty}^{\infty} c_n (z - a)^n = \sum_{n=0}^{\infty} c_n (z - a)^n + \sum_{n=1}^{\infty} c_{-n}\,(z - a)^{-n}$$
-
-且在 $A_{r,R}(a)$ 内（在每个紧子集上）收敛的级数，称为**以 $a$ 为中心的 Laurent 级数**。右端第一块叫**正则部分**，第二块（负幂次之和）叫**主部**（principal part）。
-
-⭐ 两块各有各的收敛范围：正则部分在 $|z - a| < R$ 内收敛，主部在 $|z - a| > r$ 内收敛，交起来正好是**环域** —— 这就是为什么 Laurent 级数的自然舞台是环而不是圆盘。
-
-⚠ 主部才是「奇点信息」的载体：主部为零对应可去奇点；主部只有有限项对应极点（项数为 $m$ 时叫 $m$ 阶）；主部有无穷多项对应本性奇点。所以孤立奇点的三分法，本质上是按主部的形状分的。
-
-📌 书里先做「Laurent 分解」：环域上的全纯函数可以拆成「内圆盘上全纯的一项」加「外域（含无穷远）上全纯的一项」，再由这两项各自的展开合成 Laurent 级数。
-
-参考：王晓光《复变函数》笔记，第 21 章 · Laurent 分解；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
-
-#### Laurent 展开定理　`thm.laurent`
-*定理*　定理：Laurent 展开定理
-
-**白话**：环域上的全纯函数一定能展成 Laurent 级数，而且系数由积分**唯一**确定。
-
-设 $f$ 在环域 $A_{r,R}(a)$ 上全纯（$0 \le r < R \le +\infty$）。则对每个 $n \in \mathbb{Z}$，取任意 $\rho \in (r, R)$ 定义
-
-$$c_n := \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho} \frac{f(\zeta)}{(\zeta - a)^{n+1}}\,\mathrm{d}\zeta,$$
-
-这个值与 $\rho$ 的选取无关，且 $f(z) = \displaystyle\sum_{n=-\infty}^{\infty} c_n (z - a)^n$ 在 $A_{r,R}(a)$ 内成立（在每个紧子集上一致收敛）。
-
-⭐ 证明：取 $r < \rho_1 < |z - a| < \rho_2 < R$，在环域 $A_{\rho_1,\rho_2}(a)$ 上用 Cauchy 积分公式（环域版，边界是外圆减内圆）：
-
-$$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho_2} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta - \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho_1} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta.$$
-
-第一项按 $\dfrac{1}{\zeta - z} = \sum_n \dfrac{(z - a)^n}{(\zeta - a)^{n+1}}$ 展开（因 $|z - a| < \rho_2$）；第二项按 $\dfrac{1}{z - \zeta} = \sum_n \dfrac{(\zeta - a)^n}{(z - a)^{n+1}}$ 展开（因 $|z - a| > \rho_1$），得到负幂次。
-
-⭐ 唯一性：系数由积分公式给出，所以不依赖展开方式 —— 实际计算时可以用任何代数变形（几何级数、待定系数），结果一定一样。
-
-⚠ 环域不能退化成圆盘或外部：$r = 0$ 时主部可能发散，$R = +\infty$ 时正则部分可能发散。**退化情形正是奇点分类的入口**：$r = 0$ 时主部的三种形态对应三类孤立奇点。
-
-参考：王晓光《复变函数》笔记，第 21 章 · Laurent 级数；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
-
-#### 孤立奇点及其分类　`def.isolated-singularity`
-*定义*　定义：孤立奇点及其三类
-
-**白话**：函数在某一点「出问题」，但附近别的地方都好 —— 这时按它靠近该点时的三种走法分类：趋近一个有限值、爆掉、或者乱跳。
-
-设 $f$ 在去心邻域 $D(a, \varepsilon) \setminus \{a\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \to a$ 时的行为分三类：
-
-**(1) 可去奇点**：$\lim_{z \to a} f(z) = w_0 \in \mathbb{C}$ 存在；
-
-**(2) 极点**：$\lim_{z \to a} f(z) = \infty$；
-
-**(3) 本性奇点**：$\lim_{z \to a} f(z)$ 不存在，也不为 $\infty$。
-
-用 Laurent 展开的**主部**刻画：可去对应主部全为 $0$；极点对应主部只有有限项，若从 $(z - a)^{-m}$ 起步则称 **$m$ 阶极点**；本性对应主部有无穷多项。
-
-⭐ 三类**互斥且穷尽**：极限在 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 里只有这三种可能 —— 用 Riemann 球面看，这就是「极限在不在、有限不有限」的平凡三分。
-
-⭐ 极点的代数刻画最实用：$a$ 是 $m$ 阶极点，当且仅当在 $a$ 附近可以写成
-
-$$f(z) = \frac{\psi(z)}{(z - a)^m}, \qquad \psi \text{ 在 } a \text{ 的邻域全纯},\ \psi(a) \ne 0.$$
-
-于是 $f$ 的 Laurent 展开正好从 $(z - a)^{-m}$ 开始 —— 这就是「主部有限项」的具体形状。
-
-⚠ 本性奇点附近的行为极不规则：$e^{1/z}$ 在 $0$ 的任何去心邻域内取遍 $\mathbb{C} \setminus \{0\}$。所以「极限不存在」不是「温和地振荡」。（Casorati–Weierstrass 定理的弱形式：本性奇点附近的值域在 $\mathbb{C}$ 中稠密。）
-
-📌 **非孤立**奇点也会出现：$1/\sin(1/z)$ 在 $0$ 附近有一列极点聚到 $0$，$0$ 就不是孤立奇点 —— 三类分法对它不适用。
-
-参考：王晓光《复变函数》笔记，第 21 章 · 孤立奇点的分类；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### Riemann 可去奇点定理　`thm.riemann-removable`
-*定理*　定理：Riemann 可去奇点定理
-
-**白话**：如果 $f$ 在 $a$ 附近全纯，而且靠近 $a$ 时「爆得比 $1/|z - a|$ 慢」，那 $a$ 这个洞可以补上，补完还是全纯。
-
-设 $f$ 在 $D(a, r) \setminus \{a\}$ 上全纯，且
-
-$$\lim_{z \to a} (z - a) f(z) = 0 \qquad (\text{等价地，} f(z) = o(|z - a|^{-1})).$$
-
-则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。
-
-⭐ 证明：对 $z \in D(a, r) \setminus \{a\}$ 与充分小的 $\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\varepsilon(z)$，其中 $I_r$ 是沿 $|\zeta - a| = r$ 的积分（在 $D(a, r)$ 上全纯），$I_\varepsilon$ 是沿 $|\zeta - a| = \varepsilon$ 的积分。估计
-
-$$|I_\varepsilon(z)| \le \frac{\varepsilon \, \|f\|_{\partial D(a, \varepsilon)}}{|z - a| - \varepsilon} \longrightarrow 0 \qquad (\varepsilon \to 0),$$
-
-最后一步用的正是条件 $(z - a) f(z) \to 0$。但 $I_\varepsilon(z)$ 与 $\varepsilon \in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。于是 $f = I_r$ 在 $D(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。
-
-⭐ 用途：它让「可去奇点」真的可以当没有。例如 $\sin z / z$ 在 $0$ 处补成 $1$，于是 $\sin z / z$ 就是整函数；$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \psi(z)$」都要靠它。
-
-⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。
-
-参考：王晓光《复变函数》笔记，第 9 章 · Riemann 可去奇点定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 留数　`def.residue`
-*定义*　定义：留数
-
-**白话**：留数是 $f$ 在孤立奇点附近 Laurent 展开里 $(z - a)^{-1}$ 那一项的系数 —— 也是沿小圆周积分再除以 $2\pi i$ 得到的那个数。
-
-设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $D(a, \varepsilon) \setminus \{a\}$ 上全纯。定义
-
-$$\operatorname{Res}(f, a) := \frac{1}{2\pi i}\oint_{|\zeta - a| = r} f(\zeta)\,\mathrm{d}\zeta, \qquad 0 < r < \varepsilon,$$
-
-这个值与 $r$ 无关，且等于 $f$ 在 $a$ 处 Laurent 展开的系数 $c_{-1}$。
-
-对**无穷远点**（$f$ 在 $|z| > R$ 上全纯）：$\operatorname{Res}(f, \infty) := -\dfrac{1}{2\pi i}\oint_{|\zeta| = \rho} f(\zeta)\,\mathrm{d}\zeta = -c_{-1}$。
-
-⭐ 为什么叫「留数」：$f$ 在去心邻域上有原函数的充要条件是 $c_{-1} = 0$（因为 $\int \mathrm{d}z/(z - a) = \log(z - a)$ 是多值的）。所以 $c_{-1}$ 正是「挡住原函数存在的那个数」—— 它**留**了下来。
-
-⭐ 与 $r$ 无关：两个同心圆周之间的环域上 $f$ 全纯，由环域版 Cauchy–Goursat，两个积分相等。
-
-⚠ 无穷远点的定义**带负号**，这是坐标变换 $\zeta = 1/w$ 带来的 Jacobi 因子 $1/w^2$。它让「全平面上的留数之和为零」成立：有限个奇点的留数之和加上 $\operatorname{Res}(f, \infty)$ 等于 $0$。
-
-📌 本节所有沿圆周的积分一律取**逆时针**方向；换成顺时针要整体变号。
-
-参考：王晓光《复变函数》笔记，第 23 章 · 留数定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 极点处的留数公式　`prop.residue-at-pole`
-*命题*　命题：极点处的留数公式
-
-**白话**：如果奇点是 $m$ 阶极点，留数不必真去积分 —— 用 $(z - a)^m f(z)$ 在 $a$ 处的第 $m - 1$ 阶导数就能算出来。
-
-设 $a$ 是 $f$ 的 $m$ 阶极点，$f(z) = \psi(z)/(z - a)^m$，$\psi$ 在 $a$ 的邻域全纯且 $\psi(a) \ne 0$。则
-
-$$\operatorname{Res}(f, a) = \frac{\psi^{(m-1)}(a)}{(m-1)!}.$$
-
-特别地：一阶极点时 $\operatorname{Res}(f, a) = \lim_{z \to a} (z - a) f(z) = \psi(a)$；二阶时 $\operatorname{Res}(f, a) = \psi'(a)$。
-
-⭐ 证明：把 $\psi$ 在 $a$ 处 Taylor 展开 $\psi(z) = \sum_k \dfrac{\psi^{(k)}(a)}{k!}(z - a)^k$，再除以 $(z - a)^m$ 得 $f$ 的 Laurent 展开
-
-$$f(z) = \sum_{k=0}^{\infty} \frac{\psi^{(k)}(a)}{k!}\,(z - a)^{k - m},$$
-
-取 $k - m = -1$ 即 $k = m - 1$，系数正是 $\psi^{(m-1)}(a)/(m-1)!$。
-
-⭐ 一阶极点的情形最常用。若 $f = p/q$、$p(a) \ne 0$ 且 $q$ 在 $a$ 有一阶零点，则 $\operatorname{Res}(f, a) = p(a)/q'(a)$ —— 这是实际计算里出现频率最高的那一行。
-
-⚠ $m \ge 2$ 时**不能**只取极限：$f(z) = 1/z^2$ 的留数是 $0$，而 $\lim_{z \to 0} z f(z) = \infty$。拿错公式是留数计算里最常见的错。
-
-参考：王晓光《复变函数》笔记，第 23 章 · 留数定理（极点的留数）；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 留数定理　`thm.residue`
-*定理*　定理：留数定理
-
-**白话**：沿闭曲线的积分等于 $2\pi i$ 乘上曲线内部所有奇点的留数之和 —— 一个二维的积分问题被压缩成有限个代数计算。
-
-设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 由有限条分段光滑的简单闭曲线组成、取正向。$f$ 在 $\Omega$ 上除有限个点 $z_1, \cdots, z_n$ 外全纯，这些点都是**孤立**奇点且不在 $\partial\Omega$ 上。则
-
-$$\oint_{\partial\Omega} f(z)\,\mathrm{d}z = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k).$$
-
-⭐ 证明：以每个 $z_k$ 为心挖去半径 $\varepsilon$ 的闭圆盘（互不相交、都含在 $\Omega$ 内），得 $\Omega_\varepsilon = \Omega \setminus \bigcup_k \overline{D(z_k, \varepsilon)}$。$f$ 在 $\Omega_\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\oint_{\partial\Omega_\varepsilon} f = 0$，也就是
-
-$$\oint_{\partial\Omega} f\,\mathrm{d}z = \sum_{k=1}^{n} \oint_{|\zeta - z_k| = \varepsilon} f\,\mathrm{d}\zeta = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k),$$
-
-最后一步就是留数的定义。
-
-⭐ 这是复分析里最能打的一条：书第 23、24 章那一整批实积分（$\int_0^{2\pi} Q(\sin\theta, \cos\theta)\,\mathrm{d}\theta$、$\int_{-\infty}^{\infty} f(x)\,\mathrm{d}x$、$\int_{-\infty}^{\infty} e^{iax}f(x)\,\mathrm{d}x$、$\int_0^{\infty} x^{a-1}f(x)\,\mathrm{d}x$、级数求和）全靠它，都变成留数计算。
-
-⚠ 闭曲线必须**正向**（逆时针）；反向要整体变号。曲线**外**的奇点对积分没有贡献 —— 也可以改用无穷远点的留数来算。
-
-参考：王晓光《复变函数》笔记，第 23 章 · 留数定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 分式线性变换　`def.mobius`
-*定义*　定义：分式线性变换（Möbius 变换）
-
-**白话**：分式线性变换是复球面上最「刚性」的一类全纯双射 —— 它把圆（含直线）送到圆，并且保持交比不变。
-
-形如
-
-$$f(z) = \frac{az + b}{cz + d}, \qquad a, b, c, d \in \mathbb{C},\ ad - bc \ne 0$$
-
-的映射称为**分式线性变换**（Möbius 变换）。它延拓成 Riemann 球面 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 到自身的双射：$c \ne 0$ 时 $f(-d/c) = \infty$、$f(\infty) = a/c$；$c = 0$ 时 $f(\infty) = \infty$。逆映射仍是分式线性变换：
-
-$$f^{-1}(w) = \frac{dw - b}{-cw + a}.$$
-
-⭐ $ad - bc \ne 0$ 是「非退化」条件：等于 $0$ 时 $f$ 退化为常数。它同时保证 $f'(z) = (ad - bc)/(cz + d)^2 \ne 0$，所以 $f$ **处处共形**（保角，见「保角性」那条）。
-
-⭐ 三个基本构件：平移 $z \mapsto z + b$、伸缩旋转 $z \mapsto az$（$a \ne 0$）、反演 $z \mapsto 1/z$。任何 Möbius 变换都是它们的复合，而 $ad - bc \ne 0$ 保证复合之后不塌成常数。
-
-⭐ 几何性质（书第 13 章）：把**圆或直线**送到圆或直线（统称「广义圆」，在球面上其实就是「圆」）；并且保持**交比**不变：
-
-$$(z_1, z_2; z_3, z_4) = \frac{(z_1 - z_3)(z_2 - z_4)}{(z_1 - z_4)(z_2 - z_3)}.$$
-
-于是 $f$ 由三个点的像**唯一**确定 —— 交比是 Möbius 变换的全不变量。
-
-⚠ 球面上的 $\infty$ 不是「很大的数」：它是用球极投影添进来的一个点。只有在球面上，「$f$ 是双射」这句话才干净 —— 在 $\mathbb{C}$ 上它总漏掉一两个点。
-
-参考：王晓光《复变函数》笔记，第 13 章 · 分式线性变换；Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping
-
-#### Morera 定理　`thm.morera`
-*定理*　定理：Morera 定理（Cauchy 定理的逆）
-
-**白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。
-
-设 $\Omega \subset \mathbb{C}$ 是区域，$f: \Omega \to \mathbb{C}$ **连续**。若对每个闭三角形 $T \subset \Omega$ 都有
-
-$$\oint_{\partial T} f(\zeta)\,\mathrm{d}\zeta = 0,$$
-
-则 $f$ 在 $\Omega$ 上全纯；并且 $f'$ 也全纯，$f$ 在每点都有 Taylor 展开。
-
-把「闭三角形」换成「边平行于坐标轴的闭矩形」，结论不变（矩形沿一条对角线分成两个三角形）。
-
-⭐ 用途：这是**判定全纯**最省事的工具 —— 不需要先验可微，只要「连续」加「某个积分恒为零」。全纯性被换成了一条积分方程。
-
-⭐ 最常用的推论：**内闭一致收敛的全纯函数列，其极限必全纯**。因为 $\partial T$ 是紧的，$\oint_{\partial T} f_k = 0$ 可以取极限得 $\oint_{\partial T} f = 0$，再喂给 Morera。Hurwitz 定理是这条的「零点版」。
-
-⚠ 连续性不能省。少了它，同样的积分条件推不出可微。
-
-⚠ 假设里的「所有三角形」也不能换成「所有圆周」：只知道圆周上的积分为零，不足以保证全纯。
-
-📌 与 Cauchy–Goursat 定理合起来：$f$ 连续时，「$f$ 全纯」与「$f$ 沿每个闭三角形积分恒为零」是**等价**的两句话。
-
-参考：王晓光《复变函数》· Cauchy 定理的逆命题；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration；Stein–Shakarchi, Complex Analysis, Ch. 2 · Cauchy’s Theorem and Its Applications
-
-#### 绕数　`def.winding-number`
-*定义*　定义：绕数（闭曲线关于一点的指数）
-
-**白话**：绕数是一个整数，数的是「闭曲线绕某个点转了几圈」—— 逆时针一圈记 $+1$，顺时针记 $-1$，没绕记 $0$。
-
-设 $\gamma: [a, b] \to \mathbb{C}$ 是分段光滑闭曲线，$a_0 \notin \gamma$。定义 $\gamma$ 关于 $a_0$ 的**绕数**（也叫指数）
-
-$$n(\gamma, a_0) := \frac{1}{2\pi i}\oint_{\gamma} \frac{\mathrm{d}\zeta}{\zeta - a_0}.$$
-
-它等于 $\arg(\gamma(t) - a_0)$ 沿 $\gamma$ 走完一周的连续变化量除以 $2\pi$：
-
-$$n(\gamma, a_0) = \frac{1}{2\pi}\,\Delta_{\gamma}\,\arg(\zeta - a_0).$$
-
-三条基本性质：(1) $n(\gamma, \cdot)$ 在 $\mathbb{C} \setminus \gamma$ 的每个连通分支上是常数，且取整数值；(2) 在无界分支上取 $0$；(3) $\gamma$ 若是正定向的简单闭曲线，则内部 $n = 1$、外部 $n = 0$。
-
-⭐ 整数性是**证**出来的，不是看出来的：沿 $\gamma$ 把 $t$ 从 $a$ 走到 $b$，令
-
-$$g(t) := \frac{\gamma(t) - a_0}{\exp\left( \int_a^t \frac{\gamma'(s)}{\gamma(s) - a_0}\,\mathrm{d}s \right)}.$$
-
-求导可知分子分母的导数恰好抵消，故 $g$ 是常数；取 $t = b$ 得 $\exp\left( \int_a^b \cdot \right) = 1$，于是积分是 $2\pi i$ 的整数倍。
-
-⭐ 与辐角的关系：指数里那个积分正是 $\log(\gamma(t) - a_0)$ 沿 $\gamma$ 连续变动的一个取法（对数只能沿一条路径取定一支），它的虚部就是辐角的变化量。
-
-⚠ 绕数依赖**定向**：同一条曲线反着走，绕数变号。
-
-⚠ 「$n(\gamma, a_0) = 0$」**不等于**「$a_0$ 在曲线外」—— 绕进去又绕出来同样给 $0$。只有对简单闭曲线（Jordan 曲线）它才是内外的判据。
-
-📌 辐角原理会把零极点之差写成 $f \circ \gamma$ 关于 $0$ 的绕数。
-
-参考：王晓光《复变函数》· 辐角原理（曲线的绕数）；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 辐角原理　`thm.argument-principle`
-*定理*　定理：辐角原理
-
-**白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。
-
-设 $\gamma$ 是分段光滑闭曲线，$\Omega$ 含 $\gamma$ 及其内部，$f$ 在 $\Omega$ 上除有限个极点外全纯，且在 $\gamma$ 上既无零点也无极点。则
-
-$$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = Z - P = n(f \circ \gamma,\, 0),$$
-
-其中 $Z$ 是 $f$ 在 $\gamma$ 内部的零点个数（按重数计），$P$ 是极点个数（按阶数计），$n$ 是绕数。
-
-⭐ 特例最常见：$f$ 在内部**全纯**时 $P = 0$，于是 $\oint_{\gamma} f'/f = 2\pi i Z$ —— 「零点个数」变成一个积分。
-
-⭐ 几何读法：$f \circ \gamma$ 是一条绕 $0$ 的闭曲线，$Z - P$ 就是它绕 $0$ 的圈数。零点把像曲线往外「拧」一圈，极点往里「拧」一圈。
-
-⚠ 边界上不能有零点和极点 —— 否则 $f'/f$ 在 $\gamma$ 上无定义，积分根本不存在。
-
-⭐ 顺带的结论：$Z - P$ 对曲线的微小形变**不变**（只要形变过程中不扫过零点或极点），因为它是整数且连续变化。
-
-📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。
-
-参考：王晓光《复变函数》· 辐角原理；Ahlfors, Complex Analysis · 辐角原理与 Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### Rouché 定理　`thm.rouche`
-*定理*　定理：Rouché 定理
-
-**白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。
-
-设 $\gamma$ 是分段光滑闭曲线，$f, g$ 在 $\gamma$ 及其内部全纯，且在 $\gamma$ 上处处
-
-$$|g(z)| < |f(z)|.$$
-
-则 $f$ 与 $f + g$ 在 $\gamma$ 内部有同样多的零点（都按重数计）。
-
-⭐ 用途：数零点不用解方程，只要在边界上比大小。例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。
-
-⭐ 代数基本定理的另一条证明：$f(z) = a_n z^n$、$g(z) = a_{n-1}z^{n-1} + \cdots + a_0$，在 $|z| = R$ 上取 $R$ 充分大就有 $|g| < |f|$，于是 $p$ 与 $a_n z^n$ 在 $|z| < R$ 内零点数相同，都是 $n$ 个。
-
-⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。
-
-📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。
-
-参考：王晓光《复变函数》· Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### Hurwitz 定理　`thm.hurwitz`
-*定理*　定理：Hurwitz 定理（零点的极限）
-
-**白话**：一列都没有零点的全纯函数，如果在内闭一致收敛，那么极限函数要么恒等于零，要么也没有零点。
-
-设 $\Omega$ 是区域，$f_k$ 在 $\Omega$ 上全纯，且在 $\Omega$ 的每个紧子集上一致收敛到 $f$。若每个 $f_k$ 在 $\Omega$ 上**无零点**，则极限 $f$ 或者恒等于零，或者在 $\Omega$ 上处处不为零。
-
-等价的说法：若 $f$ 不恒为零而 $f(z_0) = 0$，则对每个充分大的 $k$，$f_k$ 在 $z_0$ 的任意小邻域内都有零点。
-
-⭐ 「恒为零」这个例外**不能删**：$f_k(z) = 1/k$ 在单位圆盘上处处无零点、内闭一致收敛到 $0$。
-
-⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。
-
-⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \min_{|z - z_0| = r}|f| > 0$；$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。
-
-📌 与 Morera 定理互补：Morera 管「极限全纯」，Hurwitz 管「极限的零点从哪来」。两者一起说明：全纯函数的一些**离散**性质在一致极限下是封闭的。
-
-参考：王晓光《复变函数》· Hurwitz 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### Schwarz 引理　`lem.schwarz`
-*引理*　引理：Schwarz 引理
-
-**白话**：把单位圆盘映到自身、并且固定原点的全纯映射，一定被 $z \mapsto z$ 压住：像点比原像更靠近圆心。
-
-设 $\mathbb{D} = \{\, z : |z| < 1 \,\}$，$f: \mathbb{D} \to \mathbb{D}$ 全纯且 $f(0) = 0$。则
-
-(1) $|f(z)| \le |z|$ 对一切 $z \in \mathbb{D}$ 成立；
-
-(2) $|f'(0)| \le 1$；
-
-(3) 若存在 $z_0 \ne 0$ 使 $|f(z_0)| = |z_0|$，或者 $|f'(0)| = 1$，则 $f$ 是旋转 $f(z) = e^{i\theta} z$。
-
-⭐ 证明的路子：$f(0) = 0$ 让 $f(z)/z$ 在 $0$ 处可去奇点，补上 $f'(0)$ 后得到圆盘上的全纯函数 $g$；在 $|z| = r$ 上 $|g| \le 1/r$，用最大模原理后令 $r \to 1$。
-
-⭐ 三个结论其实是同一个不等式链：$|g(z)| \le 1$ 立即给出 (1) 与 (2)；(3) 是「最大模原理什么时候取等」。
-
-⚠ $f(0) = 0$ 不能省。$f(z) = (z + 1)/2$ 把圆盘映到圆盘，但 $|f(0)| = 1/2 > 0$ —— 只要把原点挪开，引理的结论就全不成立。
-
-⚠ $|f(z)| \le |z|$ 里的等号**只在一个内点**出现就够了，不必处处取等 —— 这是最大模原理的刚性。
-
-📌 不假设 $f(0) = 0$ 的版本是 Schwarz–Pick 定理。这条引理也是「圆盘上的自同构群很小」的根源，是共形映射里的基本工具。
-
-参考：王晓光《复变函数》· Schwarz 引理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
-
-#### Schwarz–Pick 定理　`thm.schwarz-pick`
-*定理*　定理：Schwarz–Pick 定理
-
-**白话**：把「圆盘到圆盘」的全纯映射用分式线性变换把两个点各自挪到原点之后，Schwarz 引理就成了一条不含原点的、对任意基准点都成立的估计。
-
-设 $f: \mathbb{D} \to \mathbb{D}$ 全纯，$z_0 \in \mathbb{D}$。则对一切 $z \in \mathbb{D}$，
-
-$$\left| \frac{f(z) - f(z_0)}{1 - \overline{f(z_0)}\, f(z)} \right| \le \left| \frac{z - z_0}{1 - \overline{z_0}\, z} \right|,$$
-
-微分形式（双曲度量的压缩性）：
-
-$$\frac{|f'(z_0)|}{1 - |f(z_0)|^2} \le \frac{1}{1 - |z_0|^2}.$$
-
-两处等号（对某个 $z \ne z_0$，或对导数）成立当且仅当 $f$ 是 $\mathbb{D}$ 的分式线性自同构。
-
-⭐ 这两个式子都是「把基准点搬到 0」的产物：$\varphi_a(z) = (z - a)/(1 - \overline{a} z)$ 是圆盘的自同构，把 $a$ 送到 $0$；用 $\varphi_{f(z_0)} \circ f \circ \varphi_{z_0}^{-1}$ 造一个固定原点的映射，套 Schwarz 引理，再变回来。
-
-⭐ 双曲度量的读法：$\dfrac{|\mathrm{d}w|}{1 - |w|^2}$ 是圆盘上的双曲长度元，上式说全纯自映射**不会放大**它。等号成立时叫等距。
-
-⚠ 这个不等式对所有 $z_0$ 同时成立，等价于「$f$ 是双曲度量的 $1$-Lipschitz 映射」。这是 Schwarz 引理的完整形式 —— Schwarz 引理只是 $z_0 = 0$、$f(z_0) = 0$ 的特例。
-
-📌 推论：$\mathbb{D}$ 的自同构恰是 $z \mapsto e^{i\theta}\dfrac{z - a}{1 - \overline{a} z}$（$|a| < 1$，$\theta \in \mathbb{R}$）。取等号时 $f$ 必是这种形状，反过来这些映射显然取等号。
-
-参考：王晓光《复变函数》· Schwarz–Pick 定理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
-
-#### 多值函数与分支　`def.branch`
-*定义*　定义：多值函数、分支与分支切割
-
-**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在某个区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常常要沿一条曲线把平面剪开，那条缝叫**分支切割**。
-
-设 $D \subset \mathbb{C}$ 是区域，$F$ 是「每个 $z \in D$ 对应一个非空值集 $F(z) \subset \mathbb{C}$」的对应。若连续函数 $\varphi: D \to \mathbb{C}$ 满足
-
-$$\varphi(z) \in F(z) \qquad (\forall z \in D),$$
-
-称 $\varphi$ 是 $F$ 在 $D$ 上的一个**分支**；若 $\varphi$ 还在 $D$ 上全纯，称它是**全纯分支**。
-
-**分支切割**：从 $\mathbb{C}$ 中删去一条曲线（通常是射线或线段），使剩下的区域 $D$ 单连通，从而 $F$ 在 $D$ 上能分出单值全纯分支；被删去的那条曲线就是**分支切割**。
-
-⭐ 多值性的根源只有一个：**辐角**。$z$ 绕 $0$ 走一圈，$\arg z$ 增加 $2\pi$，凡是依赖 $\arg z$ 的公式都跟着变，所以它在 $\mathbb{C} \setminus \{0\}$ 上不可能单值且连续。反过来，只要区域里绕不了原点（单连通），辐角就能连续地取定一支。
-
-⭐ 例：$F(z) = \{\, w : w^2 = z \,\}$ 有两个分支，两者相差一个符号；$F(z) = \{\, w : w^n = z \,\}$ 有 $n$ 个分支，相互差 $e^{2\pi i k/n}$ 倍。
-
-⚠ 分支切割**不是唯一的**：对数可以在「$\mathbb{C}$ 减去任意一条从 $0$ 射出的射线」上定义，割的位置随你挑，只要它把原点围住。所以「$\log$ 在哪个区域上有分支」问的是区域，不是函数。
-
-⚠ 割线上的函数值不连续（两侧差一个跳跃），所以割线不属于定义域；在割线上讨论「$\operatorname{Log}$ 的连续性」没有意义。
-
-📌 严格的说法要走覆盖空间：分支 = 多值对应所对应的那个覆盖的单值截面。初等处理里只需要记住「单连通才保证能挑」。
-
-参考：王晓光《复变函数》· 多值函数与分支；Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### 对数与幂的分支　`def.logarithm-branch`
-*定义*　定义：复对数、复幂及其分支
-
-**白话**：复对数有无穷多个值，两两差 $2\pi i$ 的整数倍；把虚部限制在 $(-\pi, \pi]$ 就得到主值。幂函数用 $e^{\alpha \log z}$ 定义，挑哪个对数分支就得到哪个幂分支。
-
-**复对数**（多值）：
-
-$$\log z := \ln|z| + i(\arg z + 2k\pi), \qquad k \in \mathbb{Z}.$$
-
-**主值**（$\operatorname{Arg} \in (-\pi, \pi]$），定义在 $\mathbb{C} \setminus (-\infty, 0]$ 上：
-
-$$\operatorname{Log} z := \ln|z| + i\operatorname{Arg} z.$$
-
-**复幂**：对 $\alpha \in \mathbb{C}$，
-
-$$z^{\alpha} := e^{\alpha \log z},$$
-
-即 $z^{\alpha} = e^{\alpha \ln|z|}\, e^{i\alpha(\arg z + 2k\pi)}$，$k \in \mathbb{Z}$。取主值对数得到**主值幂** $z^{\alpha} = e^{\alpha \operatorname{Log} z}$，它在 $\mathbb{C} \setminus (-\infty, 0]$ 上全纯。
-
-⭐ 单值的判据：$z^{\alpha}$ 单值当且仅当 $\alpha \in \mathbb{Z}$。理由：绕一圈多出来的是因子 $e^{2\pi i \alpha}$，它等于 $1$ 当且仅当 $\alpha$ 是整数。于是 $z^{1/n}$ 恰有 $n$ 支，$z^{i}$ 有可数无穷多支。
-
-⭐ 导数：在主值域上 $(\operatorname{Log} z)' = 1/z$。这是反函数定理的结论 —— $\exp$ 在带形 $\{\, |\operatorname{Im} w| < \pi \,\}$ 上是一一的，反函数就是 $\operatorname{Log}$。
-
-⭐ 负实轴上的跳跃：从上方逼近 $-x$（$x > 0$）时 $\operatorname{Arg} \to \pi$，从下方逼近时 $\operatorname{Arg} \to -\pi$，差 $2\pi$。这就是 $\operatorname{Log}$ 必须在 $(-\infty, 0]$ 上开一刀的原因。
-
-⚠ 指数法则会坏：$\log(z_1 z_2) = \log z_1 + \log z_2$ 只在**模 $2\pi i$** 的意义下成立；$(z^{a})^{b} = z^{ab}$ 一般不成立（两边取的对数分支可能不同）。
-
-📌 分支点：$z = 0$ 与 $\infty$ 是对数的分支点 —— 绕它们一圈，函数值回不到原处。$z^{1/n}$ 的分支点也是这两个。
-
-参考：王晓光《复变函数》· 对数函数与幂函数；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### Riemann 曲面　`def.riemann-surface`
-*定义*　定义：Riemann 曲面（多值函数的「定义域」）
-
-**白话**：Riemann 曲面是把多值函数的各支「叠」在一起得到的一层一层的曲面 —— 在它上面，原本多值的函数变成单值全纯函数；平面上看起来的「绕一圈换一支」，在曲面上就是「走到另一层」。
-
-**定义（一维复流形）**：设 $S$ 是连通、Hausdorff、第二可数的拓扑空间，带一族开覆盖 $\{U_{\alpha}\}$ 与同胚
-
-$$\varphi_{\alpha}: U_{\alpha} \to \varphi_{\alpha}(U_{\alpha}) \subset \mathbb{C},$$
-
-使得对任意 $\alpha, \beta$，转移映射 $\varphi_{\beta} \circ \varphi_{\alpha}^{-1}$ 在其定义域上**全纯**。这样的一张 $(S, \{\varphi_{\alpha}\})$ 称为 **Riemann 曲面**。
-
-**多值函数的展开**：若 $F$ 在平面区域上有多个值，令 $S$ 由「点对 $(z, w)$，其中 $w$ 是 $F$ 在 $z$ 处的一个值」连成一个连通空间，投影 $\pi: S \to \mathbb{C}$、$(z, w) \mapsto z$ 在局部是一对一的全纯映射，则 $F$ 提升成 $S$ 上的**单值**全纯函数。
-
-⭐ 例子（只要形状对，不必会证）：
-
-① 对数的曲面是**无穷叶螺旋面**：每绕原点一圈就爬上一层，永不回到原处。
-
-② $z^{1/n}$ 的曲面是 $n$ 叶的，绕原点一圈换一叶，绕 $n$ 圈才回到原处 —— 所以它在 $S$ 上是单值的。
-
-③ Riemann 球面 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 是最简单的紧 Riemann 曲面：两张坐标卡 $z$ 与 $w = 1/z$，转移映射 $z \mapsto 1/z$ 在 $\mathbb{C}^{\times}$ 上全纯。
-
-⭐ 关键的一句话：**分支切割换成了「层」**。割开平面是为了让映射单值，叠成曲面则是把被割掉的部分再接回去 —— 曲线绕过分支点时，走的其实是另一层。
-
-⚠ 单值化定理（任何 Riemann 曲面都全纯同构于商 $\tilde{S}/\Gamma$，$\tilde{S}$ 是球面、平面或圆盘之一）是深定理，这里只作**定义与例子**，不证。
-
-📌 曲面上「全纯」的意义就靠转移映射：一个函数在每张坐标卡里读出来都全纯，就叫全纯。$\hat{\mathbb{C}}$ 上的全纯函数只有常数，但全纯**映射**可以非常多（$\hat{\mathbb{C}} \to \hat{\mathbb{C}}$ 恰当的就是分式线性变换）。
-
-参考：Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### 调和函数　`def.harmonic`
-*定义*　定义：调和函数
-
-**白话**：二阶偏导连续、并且满足 Laplace 方程 $\Delta u = 0$ 的实值函数。通俗说就是「处处不会比周围更凸也不会更凹」的函数。
-
-设 $\Omega \subset \mathbb{R}^2 \cong \mathbb{C}$ 是区域，$u: \Omega \to \mathbb{R}$ 属于 $C^2$。若
-
-$$\Delta u := \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$$
-
-在 $\Omega$ 上处处成立，称 $u$ 是 $\Omega$ 上的**调和函数**。
-
-等价的刻画（局部）：$u$ 是某个全纯函数的实部（圆盘上总可以，单连通区域上也可以，见「调和函数的共轭」那条）。
-
-⭐ 全纯函数的实部、虚部都调和：由 Cauchy–Riemann 方程 $u_x = v_y$、$u_y = -v_x$，得
-
-$$\Delta u = (u_x)_x + (u_y)_y = (v_y)_x + (-v_x)_y = v_{xy} - v_{yx} = 0,$$
-
-最后一步用了混合偏导相等（$v$ 充分光滑）。
-
-⭐ 例子：$\operatorname{Re} z^n$、$x^2 - y^2$、$\ln|z|$（在 $\mathbb{C}^{\times}$ 上）、$e^{x}\cos y$。
-
-⚠ 反例：$|z|^2 = x^2 + y^2$ 不调和，$\Delta(x^2 + y^2) = 4$。$x^3$ 也不调和，$\Delta x^3 = 6x$。
-
-⚠ 定义只要求 $C^2$，但调和函数自动是 $C^{\infty}$ 且实解析 —— 这是「它是全纯函数的实部」的直接后果。
-
-📌 调和函数没有「全纯」那样的刚性：两个调和函数的乘积一般既不调和也不全纯，$u + v$、$cu$ 才是。
-
-参考：王晓光《复变函数》· 调和函数；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
-
-#### 调和函数的均值性质　`thm.harmonic-mean-value`
-*定理*　定理：调和函数的均值性质
-
-**白话**：调和函数在一点的值，等于它在以该点为心、任意半径的圆周上的平均值；也等于圆盘上的面积平均值。
-
-设 $u$ 在 $D(a, R)$ 上调和，$0 < r < R$。则
-
-$$u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta,$$
-
-并且（面积平均）
-
-$$u(a) = \frac{1}{\pi r^2}\iint_{D(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
-
-⭐ 证明只有两步：把 $u$ 写成全纯函数 $f$ 的实部（圆盘单连通），再对 Cauchy 积分公式 $f(a) = \frac{1}{2\pi}\int_0^{2\pi} f(a + r e^{i\theta})\,\mathrm{d}\theta$ 两边取实部。
-
-⭐ 逆命题也成立：若 $u$ 连续且有圆周均值性质，则 $u$ 调和。所以「均值性质」可以当作调和函数的另一个定义 —— 很多书就是这么做（为了绕开二阶可微）。
-
-⚠ 均值必须对**整个圆周**取，不能只对正上方那几个点取；也不能对任意闭曲线取 —— 那正是 Poisson 公式要回答的事。
-
-⚠ $u$ 只需在 $D(a, r)$ 的**内部**调和，不要求闭圆盘上调和。
-
-📌 均值性质直接推出最大值原理（见「调和函数的最大值原理」那条），也是「调和函数实解析」的出发点（把积分展成幂级数）。
-
-参考：王晓光《复变函数》· 调和函数的均值性质；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
-
-#### Poisson 积分公式　`thm.poisson-formula`
-*定理*　定理：Poisson 积分公式
-
-**白话**：圆内的取值由边界上的取值**唯一决定**，而且是有明确公式的加权平均 —— 权重就是 Poisson 核，它在边界附近会「尖起来」。
-
-设 $f$ 在 $D(0, R)$ 的邻域上全纯，$u = \operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，
-
-$$u(z) = \frac{1}{2\pi}\int_0^{2\pi} \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}\, u(r e^{i\theta})\,\mathrm{d}\theta.$$
-
-权函数
-
-$$P_r(z, \theta) := \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}$$
-
-称为 **Poisson 核**。它对固定的 $z$ 满足 $P_r \ge 0$、且 $\frac{1}{2\pi}\int_0^{2\pi} P_r\,\mathrm{d}\theta = 1$。
-
-⭐ 用途：解圆盘上的 **Dirichlet 问题** —— 给定边界上的连续函数 $b$，把上面公式里的 $u(r e^{i\theta})$ 换成 $b$，得到的函数在圆内调和、在内部趋于边界值时趋于 $b$。调和函数在内部的取值「由边界完全决定」，这就是全部内容。
-
-⭐ 核的形状：$z = 0$ 时 $P_r = 1$，公式退化成均值性质；$|z| \to r$ 且方向对准 $e^{i\theta_0}$ 时核在该处爆到 $\infty$ 而在别处趋零 —— 所以说它像一个「近似单位」，把权重堆到边界上的对应点。
-
-⚠ $\operatorname{Re} f$ 版本与 $f$ 版本都成立（核是**实值**的，所以 $f$ 的公式可以直接取实部）。
-
-📌 由 $P_r \ge 0$ 与 $\int P_r = 1$ 立得：调和函数满足**极值不等式** $|u(z)| \le \max_{|\zeta| = r}|u(\zeta)|$，这正是最大值原理。
-
-参考：王晓光《复变函数》· Poisson 积分公式；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
-
-#### 调和函数的共轭　`thm.harmonic-conjugate`
-*定理*　定理：调和函数局部是全纯函数的实部
-
-**白话**：在单连通区域上，每个调和函数都是某个全纯函数的实部 —— 那个虚部叫它的「共轭调和函数」，只差一个常数。
-
-设 $\Omega$ 是**单连通**区域，$u$ 在 $\Omega$ 上调和。则存在 $\Omega$ 上的全纯函数 $f$，使
-
-$$\operatorname{Re} f = u.$$
-
-并且 $v$（**共轭调和函数**，满足 $v_x = -u_y$、$v_y = u_x$）在相差一个**实**常数的意义下唯一 —— 等价地，$f = u + iv$ 在相差一个**纯虚**常数的意义下唯一。
-
-⭐ 证明是「闭 1-形式必恰当」：令 $\omega = -u_y\,\mathrm{d}x + u_x\,\mathrm{d}y$，则
-
-$$\mathrm{d}\omega = (u_{xx} + u_{yy})\,\mathrm{d}x \wedge \mathrm{d}y = 0,$$
-
-$\Omega$ 单连通 $\implies$ 存在 $v$ 使 $\mathrm{d}v = \omega$，即 $v_x = -u_y$、$v_y = u_x$；这两式正是 $(u, v)$ 的 Cauchy–Riemann 方程，故 $f = u + iv$ 全纯。
-
-⭐ 唯一性：若 $\operatorname{Re} f_1 = \operatorname{Re} f_2 = u$，则 $g = f_1 - f_2$ 纯虚且全纯；写 $g = iy$（$y$ 实值），Cauchy–Riemann 给 $y_x = y_y = 0$，故 $y$ 是常数。
-
-⚠ 单连通**不能去掉**：$u(z) = \ln|z|$ 在 $\mathbb{C}^{\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\operatorname{Log}$ 本身，而 $\operatorname{Log}$ 是多值的。绕原点一圈，$\oint \omega = 2\pi \ne 0$。
-
-📌 反方向（全纯 $\implies$ 实部调和）**不需要**单连通，只要 Cauchy–Riemann 方程。所以「调和」比「全纯的实部」宽一点点，缺的正是拓扑条件。
-
-参考：王晓光《复变函数》· 共轭调和函数；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
-
-#### 调和函数的最大值原理　`thm.harmonic-maximum`
-*定理*　定理：调和函数的最大值原理
-
-**白话**：非常数的调和函数在区域内部既取不到最大值，也取不到最小值 —— 要取极值只能跑到边界上去。
-
-设 $u$ 在区域 $\Omega$ 上调和且**不是**常数。则 $u$ 在 $\Omega$ 内既取不到最大值，也取不到最小值。
-
-等价说法：若 $u$ 在 $\Omega$ 内部某点达到最大值（或最小值），则 $u$ 是常数。
-
-⭐ 这是**双边**的原理：最大值和最小值同时被排除。原因是 $-u$ 也调和，对它用一遍就得到最小值那一半。全纯函数没有这个对称性 —— 全纯的 $|f|$ 有最大值原理，但 $f$ 本身可以取到 $0$。
-
-⭐ 证明靠均值性质：若 $u(a)$ 是内部最大 $M$，则
-
-$$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta \le M,$$
-
-被积函数处处 $\le M$ 而平均值恰是 $M$ $\implies$ 整个圆周上 $u \equiv M$。于是取值集合 $\{\, u = M \,\}$ 既开又闭，由连通性等于整个 $\Omega$。
-
-⚠ 「不是常数」这个前提不能省：常函数当然处处是最大值。
-
-⭐ 推论（有用的形式）：$|u|$ 在内部取不到最大值，除非 $u$ 是常数 —— 因为 $|u|$ 的最大值要么是 $u$ 的最大值要么是 $-u$ 的最大值。
-
-📌 与全纯的最大模原理对照：那边限制的是 $|f|$，这边限制的是 $u$ 本身；而且这边两头都堵 —— 对 $u$ 用一遍得「取不到最大」，对 $-u$ 用一遍得「取不到最小」。所以调和函数的极值**只能**出在边界上，这也是 Dirichlet 问题能只谈「边值」的根据。
-
-参考：王晓光《复变函数》· 调和函数的最大值原理；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
-
-#### 整函数与亚纯函数　`def.entire-meromorphic`
-*定义*　定义：整函数与亚纯函数
-
-**白话**：整函数就是在整个复平面上处处全纯的函数；亚纯函数是「除了一堆孤立极点之外处处全纯」的函数，也就是局部上两个全纯函数的商。
-
-**整函数**：$f$ 在 $\mathbb{C}$ 上处处全纯。由 Liouville 定理，有界的整函数必为常数；非常数的整函数在 $\infty$ 处有奇点（多项式是极点，$e^{z}$ 是本性奇点）。
-
-**亚纯函数**：设 $\Omega$ 是区域。若 $f$ 在 $\Omega$ 上除一个**孤立**点集 $P$ 外全纯，且 $P$ 的每一点都是 $f$ 的极点，称 $f$ 在 $\Omega$ 上**亚纯**。
-
-等价刻画：对每个 $a \in \Omega$，存在 $a$ 的邻域 $U$ 与 $U$ 上的全纯函数 $p, q$（$q \not\equiv 0$），使 $f = p/q$ 在 $U$ 上成立。
-
-⭐ 球面上的观点最干净：把 $\Omega$ 换成 $\hat{\mathbb{C}}$，亚纯函数就是 $\hat{\mathbb{C}} \to \hat{\mathbb{C}}$ 的全纯映射 —— 极点就是被映到 $\infty$ 的点。$\hat{\mathbb{C}}$ 上的亚纯函数恰是有理函数。
-
-⭐ 例子：$1/\sin z$（极点在 $k\pi$）、$\tan z$、$\Gamma$ 函数（极点在 $0, -1, -2, \ldots$）。
-
-⚠ 本性奇点**不算**亚纯：$e^{1/z}$ 在 $0$ 附近的行为不是极点，所以 $e^{1/z}$ 在含 $0$ 的区域上不是亚纯的。亚纯要求每个坏点都是极点。
-
-⚠ 「孤立」也不能省：若奇点有聚点，那不叫极点。
-
-📌 极点处的 Laurent 展开只有有限个负幂项；亚纯函数在极点附近就是「有限阶的爆破」。整函数是亚纯函数在 $P = \emptyset$ 时的特例。
-
-参考：王晓光《复变函数》· 整函数与亚纯函数；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
-
-#### Mittag-Leffler 定理　`thm.mittag-leffler`
-*定理*　定理：Mittag-Leffler 定理（只陈述）
-
-**白话**：给定一串没有聚点的点和每个点处的一截「极点主部」，总能造出一个亚纯函数，使它在这些点处的行为恰好就是给定的那些主部。
-
-设 $\Omega \subset \mathbb{C}$ 是区域，$\{a_k\} \subset \Omega$ 在 $\Omega$ 内没有聚点，每个 $a_k$ 配一个主部
-
-$$P_k\left( \frac{1}{z - a_k} \right) = \sum_{j=1}^{m_k} \frac{c_{k j}}{(z - a_k)^{j}}.$$
-
-则存在 $\Omega$ 上的亚纯函数 $f$，它恰以 $\{a_k\}$ 为极点（$a_k$ 处的阶不超过 $m_k$），且 $f - P_k$ 在 $a_k$ 处全纯，即 $a_k$ 处的主部正是 $P_k$；这样的 $f$ 在相差一个 $\Omega$ 上整函数的意义下唯一。
-
-⭐ 一句话：这是「按主部插值」的存在定理。Weierstrass 乘积定理是它的**零点**版，Mittag-Leffler 是**极点**版 —— 一个指定零点的位置与重数，一个指定极点的位置与主部。
-
-⚠ 本条只**陈述**结论。完整证明要用 Runge 逼近或 Weierstrass 收敛因子逐项修正，属于逼近论，这里不展开；边上只记证明的骨架。
-
-⭐ 收敛的障碍在哪：极点无穷多个时 $\sum_k P_k$ 一般处处发散。修正的办法是逐项减去一个在 $a_k$ 附近全纯的函数（通常是 $P_k$ 在 $a_k$ 处的 Taylor 多项式），把它在越来越大的紧集上压得足够小。
-
-⭐ 例子（经典的两个）：
-
-$$\pi^2 \csc^2(\pi z) = \sum_{n \in \mathbb{Z}} \frac{1}{(z - n)^2}, \qquad \pi \cot(\pi z) = \frac{1}{z} + \sum_{n \ne 0} \left( \frac{1}{z - n} + \frac{1}{n} \right).$$
-
-第二个里的 $+1/n$ 就是收敛因子。
-
-📌 与留数的接口：主部里的一次项系数 $c_{k 1}$ 正是 $\operatorname{Res}(f, a_k)$，所以 Mittag-Leffler 也可以读成「任意指定留数与高阶主部」。
-
-参考：王晓光《复变函数》· Mittag-Leffler 定理；Stein–Shakarchi, Complex Analysis · 整函数与亚纯函数
-
-#### Jordan 引理　`lem.jordan`
-*引理*　引理：Jordan 引理（大圆弧上的指数衰减）
-
-**白话**：上半平面的大半圆弧上，$e^{iaz}$（$a > 0$）在圆弧顶部指数衰减；只要 $f$ 在弧上一致趋于零，$f e^{iaz}$ 在弧上的积分就趋于零 —— 比「弧长乘最大模」的粗糙估计强得多。
-
-设 $f$ 在 $\{\, \operatorname{Im} z \ge 0,\ |z| \ge R_0 \,\}$ 上连续，且
-
-$$\lim_{R \to \infty}\ \max_{|z| = R,\ \operatorname{Im} z \ge 0} |f(z)| = 0.$$
-
-则对任意 $a > 0$，以 $C_R$ 记上半平面内半径为 $R$ 的半圆弧（从 $R$ 到 $-R$，逆时针），有
-
-$$\lim_{R \to \infty} \int_{C_R} f(z)\, e^{i a z}\,\mathrm{d}z = 0.$$
-
-定量形式：若 $|f(z)| \le M_R$ 于 $C_R$ 上，则
-
-$$\left| \int_{C_R} f(z)\, e^{i a z}\,\mathrm{d}z \right| \le \frac{\pi M_R}{a}.$$
-
-⭐ 关键不等式 $\sin\theta \ge \dfrac{2\theta}{\pi}$（$0 \le \theta \le \pi/2$）：在 $C_R$ 上 $z = R e^{i\theta}$，$\operatorname{Im} z = R\sin\theta$，故
-
-$$\left| e^{i a z} \right| = e^{-a\, \operatorname{Im} z} = e^{-a R \sin\theta} \le e^{-2 a R \theta/\pi}.$$
-
-沿 $\theta$ 积分得 $\dfrac{2}{a R}$ 量级，再乘弧长 $\pi R$ 与 $M_R$，得 $\pi M_R/a$。**注意这里并没有用到 $R$ 很大** —— 衰减全来自 $e^{iaz}$。
-
-⭐ 与「弧长乘最大模」的对比：只对 $f$ 用 ML 估计得 $\pi R M_R$，只有当 $M_R = O(1/R^{1+\delta})$ 时才趋零；Jordan 引理把要求降到 $M_R \to 0$，也就是 $f$ 只要「不增长」就够。
-
-⚠ $a > 0$ 不可省：$a < 0$ 时 $e^{iaz}$ 在上半平面里指数**增长**，要改到下半平面（顺时针）去做，符号跟着变。
-
-📌 完整计算例（第三个标准型，$a > 0$）：
-
-$$\int_{-\infty}^{\infty} \frac{e^{i a x}}{x^2 + 1}\,\mathrm{d}x.$$
-
-被积函数在 $|z| = R$ 上一致趋于零（$|1/(z^2 + 1)| \le 2/R^2$），Jordan 引理把大弧的贡献抹掉，剩下的就是留数：
-
-$$\int_{-\infty}^{\infty} \frac{e^{i a x}}{x^2 + 1}\,\mathrm{d}x = 2\pi i \, \operatorname{Res}\left( \frac{e^{i a z}}{z^2 + 1},\, i \right) = 2\pi i \cdot \frac{e^{-a}}{2 i} = \pi e^{-a}.$$
-
-取实部、虚部得到两个经典积分（$a > 0$）：
-
-$$\int_{-\infty}^{\infty} \frac{\cos(a x)}{x^2 + 1}\,\mathrm{d}x = \pi e^{-a}, \qquad \int_{-\infty}^{\infty} \frac{\sin(a x)}{x^2 + 1}\,\mathrm{d}x = 0,$$
-
-第二式为 $0$ 是因为被积函数是奇函数。这里 $M_R \le 2/R^2$，这个幂次其实够粗糙的 ML 估计用；但把分母换成一次式（比如 $z$），就只剩 Jordan 引理这一条路 —— 那正是本引理存在的理由。
-
-参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 实轴上有理函数的积分　`thm.integral-rational`
-*定理*　定理：用留数计算实轴上有理函数的积分
-
-**白话**：分母比分子至少高两次、并且在实轴上没有零点的有理函数，它在整条实轴上的积分等于 $2\pi i$ 乘上半平面所有极点的留数之和。
-
-设 $R(x) = P(x)/Q(x)$，$P, Q$ 是实系数多项式，$\deg Q \ge \deg P + 2$，且 $Q$ 在 $\mathbb{R}$ 上无零点。则
-
-$$\int_{-\infty}^{\infty} R(x)\,\mathrm{d}x = 2\pi i \sum_{\operatorname{Im} a_k > 0} \operatorname{Res}(R, a_k),$$
-
-右端对上半平面内的全部极点求和。因为 $R$ 取实值，这个和自动是实数。
-
-⭐ 完整计算一：
-
-$$\int_{-\infty}^{\infty} \frac{\mathrm{d}x}{(x^2 + 1)^2} = \frac{\pi}{2}.$$
-
-上半平面只有一个极点 $i$，阶为 $2$。用极点留数公式（$m = 2$）：
-
-$$\operatorname{Res}\left( \frac{1}{(z^2+1)^2},\, i \right) = \frac{\mathrm{d}}{\mathrm{d}z}\left[ \frac{(z - i)^2}{(z^2+1)^2} \right]_{z=i} = \frac{\mathrm{d}}{\mathrm{d}z}\left[ \frac{1}{(z+i)^2} \right]_{z=i} = \frac{-2}{(2i)^3} = \frac{1}{4i}.$$
-
-于是积分 $= 2\pi i \cdot \dfrac{1}{4i} = \dfrac{\pi}{2}$。$\checkmark$
-
-⭐ 完整计算二：
-
-$$\int_{-\infty}^{\infty} \frac{\mathrm{d}x}{x^4 + 1} = \frac{\pi}{\sqrt{2}}.$$
-
-$x^4 + 1$ 的根是 $e^{i\pi/4}, e^{3i\pi/4}$（上半平面两个）与它们的共轭。一阶极点的留数：由 $R = 1/(z^4+1)$、$R = p/q$ 且 $q$ 在一阶零点 $a$ 处，$\operatorname{Res}(R, a) = 1/(4a^3) = -a/4$（因为 $a^4 = -1$）。两只相加：
-
-$$\sum \operatorname{Res} = -\frac{1}{4}\left( e^{i\pi/4} + e^{3i\pi/4} \right) = -\frac{1}{4}\cdot\frac{\sqrt{2}}{2}\cdot 2i = -\frac{\sqrt{2}}{4}\, i,$$
-
-故积分 $= 2\pi i \cdot \left( -\dfrac{\sqrt{2}}{4} i \right) = \dfrac{\pi\sqrt{2}}{2} = \dfrac{\pi}{\sqrt{2}}$。$\checkmark$
-
-⚠ $\deg Q \ge \deg P + 2$ 是硬条件：只高一次时 $\int R$ 是条件收敛的**主值**，大圆弧不再趋于零，公式要改。
-
-⚠ 实轴上的极点必须不存在（否则积分发散）；若有，需要在小半圆上挖洞，取主值。
-
-参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
-
-#### 三角有理函数的积分　`thm.integral-trig`
-*定理*　定理：用留数计算三角有理函数的定积分
-
-**白话**：$\cos\theta$、$\sin\theta$ 的有理式在整圈上的积分，用 $z = e^{i\theta}$ 换成单位圆上的围道积分，就化成了留数计算。
-
-设 $R(u, v)$ 是 $u, v$ 的有理函数，在圆周（即 $[0, 2\pi]$ 上对应的全部 $\theta$）处无极点。则
-
-$$\int_0^{2\pi} R(\cos\theta, \sin\theta)\,\mathrm{d}\theta = \oint_{|z| = 1} R\left( \frac{z + z^{-1}}{2},\ \frac{z - z^{-1}}{2 i} \right) \frac{\mathrm{d}z}{i z}.$$
-
-⭐ 代换的三个要素：$z = e^{i\theta}$、$\cos\theta = \dfrac{z + z^{-1}}{2}$、$\sin\theta = \dfrac{z - z^{-1}}{2i}$、$\mathrm{d}\theta = \dfrac{\mathrm{d}z}{i z}$。于是整圈 $\theta$ 变成单位圆一圈（逆时针），三角有理式变成 $z$ 的有理函数。
-
-⭐ 完整计算：对 $a > 1$，
-
-$$\int_0^{2\pi} \frac{\mathrm{d}\theta}{a + \cos\theta} = \frac{2\pi}{\sqrt{a^2 - 1}}.$$
-
-代换后
-
-$$\int_0^{2\pi} \frac{\mathrm{d}\theta}{a + \cos\theta} = \oint_{|z|=1} \frac{1}{a + (z + z^{-1})/2}\cdot\frac{\mathrm{d}z}{i z} = \frac{2}{i}\oint_{|z|=1} \frac{\mathrm{d}z}{z^2 + 2 a z + 1}.$$
-
-分母的根是 $z_{\pm} = -a \pm \sqrt{a^2 - 1}$，乘积为 $1$，故恰有一个在单位圆内：$z_{+} = -a + \sqrt{a^2 - 1}$（$|z_{+}| < 1$）。一阶留数
-
-$$\operatorname{Res}\left( \frac{1}{z^2 + 2az + 1},\, z_{+} \right) = \frac{1}{2 z_{+} + 2a} = \frac{1}{2\sqrt{a^2 - 1}}.$$
-
-于是
-
-$$\frac{2}{i}\cdot 2\pi i \cdot \frac{1}{2\sqrt{a^2 - 1}} = \frac{4\pi}{2\sqrt{a^2 - 1}} = \frac{2\pi}{\sqrt{a^2 - 1}}. \checkmark$$
-
-⭐ 立刻的检验：$a = 2$ 时得 $2\pi/\sqrt{3}$，与直接查表一致。
-
-⚠ 条件 $a > 1$ 是为了「分母在整圈上不为零」；$a = 1$ 时 $\theta = \pi$ 处分母为零，积分发散（$\int \mathrm{d}\theta/(1 + \cos\theta)$ 在 $\pi$ 附近像 $\mathrm{d}\theta/\theta^2$）。
-
-📌 这类积分的通病：代换后分子分母可能同乘 $z^{n}$，必须先乘开看清楚有几个根在单位圆内 —— 只有内部的极点才进留数。
-
-参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
 
 ## 星系：实变函数（Functions of a Real Variable）
 > 换一套更听话的积分：σ-代数 → 测度 → 可测函数 → Lebesgue 积分（单调收敛 / Fatou / 控制收敛）→ 乘积测度与 Fubini → 符号测度与 Radon–Nikodym → 微分定理 → $L^p$ 空间。
@@ -22152,6 +21025,1136 @@ $$\operatorname{RHom}_{\mathcal{O}_X}(C, \omega_{X/R})[d] \longrightarrow \opera
 📌 原文 Lecture XI（pp. 71–76）。
 
 参考：Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.1
+
+## 星系：复变函数（Complex Analysis）
+> 全纯函数与 Cauchy–Riemann、Cauchy 定理与积分公式、幂级数与 Laurent 展开、留数定理与围道积分、共形映射与调和函数。
+
+### 星团：复变函数
+> 从复数与复平面出发：全纯函数与 Cauchy–Riemann、复积分与 Cauchy 定理、幂级数与解析性、留数定理与围道积分、共形映射。
+
+#### 模长的三角不等式　`prop.complex-triangle`
+*命题*　命题：模长的三角不等式（含等号条件）
+
+**白话**：和的模不超过模的和；取等号的唯一情形是这些复数「方向一致」。
+
+对任意 $z_1, \cdots, z_n \in \mathbb{C}$，
+
+$$\left| \sum_{k=1}^{n} z_k \right| \le \sum_{k=1}^{n} |z_k|.$$
+
+等号成立当且仅当：非零的那些 $z_k$ 有**相同的辐角**。
+
+⭐ 证明的妙处在于**不去估和，而是先把和转到实轴上**：令 $\theta$ 是 $\sum_k z_k$ 的一个辐角（和为零时结论显然），则
+
+$$\left| \sum_k z_k \right| = e^{-i\theta}\sum_k z_k = \operatorname{Re}\left( e^{-i\theta}\sum_k z_k \right) = \sum_k \operatorname{Re}\left( e^{-i\theta} z_k \right) \le \sum_k \left| e^{-i\theta} z_k \right| = \sum_k |z_k|.$$
+
+第 2 个等号是「非负实数等于自己的实部」，最后一步是 $\operatorname{Re} w \le |w|$。
+
+⭐ 等号条件从中直接读出：每一步都要取等，即每个 $e^{-i\theta} z_k$ 都是非负实数。
+
+⭐ 两条常用推论：反三角不等式 $\big| |z| - |w| \big| \le |z - w|$；以及积分基本不等式 $\left| \int_\gamma f\,\mathrm{d}z \right| \le \int_\gamma |f|\,|\mathrm{d}z| \le \max_\gamma |f| \cdot L(\gamma)$ —— 后面的 Cauchy 不等式与 Liouville 定理全靠它。
+
+📌 书里同节的另一条是复的 Cauchy–Schwarz 不等式：$\left| \sum_j z_j \overline{w_j} \right|^2 \le \left( \sum_j |z_j|^2 \right)\left( \sum_j |w_j|^2 \right)$，等号当且仅当两组数相差一个复常数倍。
+
+参考：王晓光《复变函数》笔记，第 1 章 · 两个不等式；Ahlfors, Complex Analysis, Ch. 1 · Complex Numbers
+
+#### 全纯函数　`def.holomorphic`
+*定义*　定义：全纯函数与复导数
+
+**白话**：复可微就是「差商在复意义下收敛」—— $h$ 可以从**任何方向、任何方式**趋于 $0$，但差商必须落到同一个复数。
+
+设 $\Omega$ 是平面区域（连通开集），$f: \Omega \to \mathbb{C}$，$z_0 \in \Omega$。若极限
+
+$$f'(z_0) := \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h} \qquad (h \in \mathbb{C},\ h \ne 0,\ z_0 + h \in \Omega)$$
+
+存在，称 $f$ 在 $z_0$ **复可微**，$f'(z_0)$ 称为 $f$ 在 $z_0$ 处的**导数**。若 $f$ 在 $\Omega$ 的每一点都复可微，称 $f$ 在 $\Omega$ 上**全纯**（holomorphic）。
+
+复可微蕴含连续：把定义改写成
+
+$$f(z_0 + h) - f(z_0) = f'(z_0)\,h + o(h),$$
+
+令 $h \to 0$ 即得 $f(z_0 + h) \to f(z_0)$。
+
+⭐ 与实可微的**唯一**区别：$h$ 是复数。实情形只要左右两个方向一致，复情形要求**无穷多个方向**（$h = t e^{i\theta}$，$\theta$ 任意）全部一致 —— 要求极强，收益也极大：一次可微就无穷次可微。
+
+⚠ 这个要求**不是自动的**。$f(z) = \bar z$ 处处不复可微：沿实轴取 $h = t$ 得差商 $1$，沿虚轴取 $h = it$ 得差商 $-1$。两个方向的极限不同。所以「实可微」远不足以推出「复可微」。
+
+⭐ 复可微的等价写法是 $\Delta f = A\,\Delta z + o(\Delta z)$ —— 增量**只**是 $\Delta z$ 的线性函数，不许出现 $\overline{\Delta z}$。写成偏导的语言就是 $\partial f/\partial \bar z = 0$（见 Cauchy–Riemann 方程那条）。
+
+📌 全纯函数的和、积、商（分母不为零）、复合仍全纯，且求导公式与实情形形式相同 —— 因为这些只是「极限的四则运算」，没有用到 $h$ 的实性。
+
+参考：王晓光《复变函数》笔记，第 4 章 · 全纯函数；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
+
+#### 复偏导数　`def.complex-partial`
+*定义*　定义：复偏导数（Wirtinger 算子）
+
+**白话**：把实意义下的两个偏导数 $\partial f/\partial x$、$\partial f/\partial y$ 重新线性组合，得到「沿 $z$ 方向」和「沿 $\bar z$ 方向」的两个复数方向导数。
+
+设 $f = u + iv$ 在 $z_0$ 的邻域内实可微（即 $u, v$ 都实可微）。定义
+
+$$\frac{\partial f}{\partial z} := \frac{1}{2}\left( \frac{\partial f}{\partial x} - i\,\frac{\partial f}{\partial y} \right), \qquad \frac{\partial f}{\partial \bar z} := \frac{1}{2}\left( \frac{\partial f}{\partial x} + i\,\frac{\partial f}{\partial y} \right).$$
+
+在这两个记号下，$f$ 的增量写成
+
+$$f(z_0 + \Delta z) - f(z_0) = \frac{\partial f}{\partial z}(z_0)\,\Delta z + \frac{\partial f}{\partial \bar z}(z_0)\,\overline{\Delta z} + o(\Delta z).$$
+
+两个系数由增量**唯一**决定：若 $A\Delta z + B\overline{\Delta z} = a\Delta z + b\overline{\Delta z} + o(\Delta z)$，分别取 $\Delta z = t$（$t$ 为实数）与 $\Delta z = it$，令 $t \to 0$ 即得 $A = a$、$B = b$。
+
+⭐ $\partial/\partial z$、$\partial/\partial \bar z$ 叫 **Wirtinger 导数**。它们**不是**差商极限：$\bar z$ 沿不同方向的行为不一样，差商没有极限。它们只是实偏导的一对线性组合，是记账工具。
+
+⭐ 记忆法（书里脚注）：把 $x = (z + \bar z)/2$、$y = -i(z - \bar z)/2$ 代进 $f(x, y)$，**形式上**把 $z$、$\bar z$ 当成独立变量用链式法则求偏导，就得到上面两式。⚠ 这只帮助记忆 —— 严格定义是右边的组合，因为 $z$ 与 $\bar z$ 作为 $\mathbb{R}^2$ 上的两个坐标并不独立。
+
+⭐ 真正好用的是它的**判据**性质：$f$ 复可微 $\iff$ $\partial f/\partial \bar z(z_0) = 0$。也就是「$f$ 能否只含 $z$ 不含 $\bar z$」，变成可以逐项验算的事情。
+
+📌 形式上有 $\partial z/\partial z = \partial \bar z/\partial \bar z = 1$，$\partial z/\partial \bar z = \partial \bar z/\partial z = 0$ —— 就像两组独立的坐标。
+
+参考：王晓光《复变函数》笔记，第 4 章 · 复偏导数；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
+
+#### 复偏导数的运算法则　`prop.complex-partial-rules`
+*命题*　命题：复偏导数的运算法则
+
+**白话**：$\partial/\partial z$ 与 $\partial/\partial \bar z$ 和普通偏导数一样服从线性法则、乘积法则、链式法则，而且两者互为共轭。
+
+设 $f, g: \Omega \to \mathbb{C}$ 实可微。则
+
+**(1) 坐标**：$\dfrac{\partial z}{\partial z} = \dfrac{\partial \bar z}{\partial \bar z} = 1$，$\dfrac{\partial z}{\partial \bar z} = \dfrac{\partial \bar z}{\partial z} = 0$；
+
+**(2) 复线性**：$\alpha, \beta \in \mathbb{C}$ 时 $\dfrac{\partial (\alpha f + \beta g)}{\partial z} = \alpha\dfrac{\partial f}{\partial z} + \beta\dfrac{\partial g}{\partial z}$，$\partial/\partial \bar z$ 同理；
+
+**(3) 共轭**：$\overline{\left( \dfrac{\partial f}{\partial z} \right)} = \dfrac{\partial \bar f}{\partial \bar z}$，$\overline{\left( \dfrac{\partial f}{\partial \bar z} \right)} = \dfrac{\partial \bar f}{\partial z}$；
+
+**(4) 乘积**：$\dfrac{\partial (fg)}{\partial z} = \dfrac{\partial f}{\partial z}\,g + f\,\dfrac{\partial g}{\partial z}$，$\partial/\partial \bar z$ 同理；
+
+**(5) 复合**：若 $f: \Omega \to D$、$g: D \to \mathbb{C}$ 都实可微，则
+
+$$\frac{\partial (g \circ f)}{\partial z} = \left( \frac{\partial g}{\partial w} \circ f \right)\frac{\partial f}{\partial z} + \left( \frac{\partial g}{\partial \bar w} \circ f \right)\overline{\left( \frac{\partial f}{\partial \bar z} \right)}.$$
+
+⭐ (5) 的第二项不是笔误：$g$ 的增量里有 $\Delta w$ 与 $\overline{\Delta w}$ 两块，而 $\overline{\Delta w} = \overline{f_z}\,\overline{\Delta z} + \overline{f_{\bar z}}\,\Delta z$ —— 共轭把两类项**互换**了，所以 $g_{\bar w}$ 那一块乘的是 $\overline{f_{\bar z}}$。
+
+⭐ 全纯时 $f_{\bar z} = 0$、$g_{\bar w} = 0$，(5) 就退化成熟悉的 $(g \circ f)' = (g' \circ f)\,f'$ —— 只剩第一项。
+
+⭐ 反过来这也解释了为什么「全纯 $\circ$ 实可微」一般不全纯：此时 $g_{\bar w} \ne 0$，第二项活着，而它偏偏带着 $\overline{f_{\bar z}}$ 这个 $\overline{\Delta z}$ 的系数。
+
+📌 这五条都是把实偏导的对应法则照抄过来再重新组合，没有新的分析内容 —— 但它们让「验算一个表达式全不全纯」变成纯代数操作。
+
+参考：王晓光《复变函数》笔记，第 4 章 · 复偏导数；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
+
+#### Cauchy–Riemann 方程　`thm.cauchy-riemann`
+*定理*　定理：全纯性与 Cauchy–Riemann 方程等价
+
+**白话**：$f = u + iv$ 复可微，当且仅当它实可微、且两个偏导满足一对很具体的方程 —— 「二维的极限条件」被两个一维方程完全替代。
+
+设 $\Omega$ 是平面区域，$f = u + iv: \Omega \to \mathbb{C}$，$z_0 \in \Omega$。以下三条等价：
+
+**(i)** $f$ 在 $z_0$ 复可微；
+
+**(ii)** $f$ 在 $z_0$ 实可微，且
+
+$$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x};$$
+
+**(iii)** $f$ 在 $z_0$ 实可微，且 $\dfrac{\partial f}{\partial \bar z}(z_0) = 0$。
+
+三者成立时 $f'(z_0) = \dfrac{\partial f}{\partial z}(z_0) = \dfrac{\partial u}{\partial x}(z_0) + i\,\dfrac{\partial v}{\partial x}(z_0)$。
+
+⭐ 三条其实是一条。$\Delta z$ 与 $\overline{\Delta z}$ 是 $\mathbb{C}$ 作为实向量空间的一组基，增量中**只许**出现 $\Delta z$ 才可能是「乘一个复数」；而 $\Delta z$ 的系数正是 $u_x + i v_x$。CR 方程就是把「$\overline{\Delta z}$ 的系数为 $0$」写成分量形式。
+
+⭐ 一个有用的副产品：$f$ 在 $z_0$ 的 Jacobi 行列式 $= u_x v_y - u_y v_x = u_x^2 + v_x^2 = |f'(z_0)|^2 \ge 0$。所以全纯映射在导数不为零处**保向**，这也是它「保角」的来源。
+
+⚠ **单独验 CR 方程不够**，还要 $f$ 实可微。反例：$f(x + iy) = \sqrt{|xy|}$，在原点四个偏导全为 $0$（CR 成立），但差商沿 $h = t(1+i)$ 趋于 $1/(1+i) \ne 0$，故不复可微。这同时说明「偏导存在」远弱于「实可微」。
+
+📌 于是全纯性有两条可操作的路：抽象地用差商（几何直觉好），或具体地验 CR（计算方便）。
+
+参考：王晓光《复变函数》笔记，第 4 章 · 复偏导数与复可微；Ahlfors, Complex Analysis, Ch. 2 · Complex Functions
+
+#### 保角性　`prop.conformal-iff`
+*命题*　命题：导数非零与保角性等价
+
+**白话**：全纯函数在导数不为零的地方「保角」—— 两条曲线在那里相交的角度，像里还是同样的角度；反过来，实可微又保角的映射一定是全纯的。
+
+**(i)** 设 $f$ 在 $z_0$ 的邻域内全纯且 $f'(z_0) \ne 0$。则 $f$ 在 $z_0$ 处**保角**：任意两条过 $z_0$ 的光滑曲线，其像曲线在 $f(z_0)$ 处的夹角与原来**大小相同、方向相同**。
+
+**(ii)** 反之，若 $f$ 在 $z_0$ 实可微、在 $z_0$ 处保角（保向），则 $f$ 在 $z_0$ 满足 Cauchy–Riemann 方程，从而复可微。
+
+因此**共形映射 = 全纯且导数处处非零**。
+
+⭐ (i) 一行就够：$f(z_0 + h) - f(z_0) \approx f'(z_0)\,h$。乘以非零复数 $f'(z_0) = |f'|e^{i\theta}$ 就是「旋转 $\theta$ + 伸缩 $|f'|$」—— 相似变换，夹角与长度比自然不变。
+
+⭐ (ii) 的要点：保角等价于「增量映射 $\Delta z \mapsto \Delta f$ 是相似变换」，即它只含 $\Delta z$ 不含 $\overline{\Delta z}$。而这正是 $\partial f/\partial \bar z(z_0) = 0$ —— 与 CR 方程是同一句话。
+
+⚠ 「导数非零」不能丢：$f(z) = z^2$ 在 $0$ 处把夹角**加倍**（$0$ 是临界点）；$f(z) = \bar z$ 虽然保角但是**反向**的（它把定向翻过来），所以不在 (ii) 的「保向」范围内，也不全纯。
+
+📌 分式线性变换 $f(z) = (az+b)/(cz+d)$ 的导数是 $(ad-bc)/(cz+d)^2$，$ad - bc \ne 0$ 保证它处处不为零 —— 这就是 Möbius 变换处处共形的原因。
+
+参考：王晓光《复变函数》笔记，第 5 章 · 共形性质；Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping
+
+#### 复围道积分　`def.contour-integral`
+*定义*　定义：复围道积分
+
+**白话**：把路径切成很多小段，每段用 $f$ 在该点的值乘上这一小段对应的**复位移**，加起来取极限 —— 就是沿这条路径的积分。
+
+设 $\gamma: [a, b] \to \mathbb{C}$ 分段光滑（参数曲线），$f$ 在 $\gamma$ 上连续。定义
+
+$$\int_\gamma f(z)\,\mathrm{d}z := \lim_{\text{分割}} \sum_{k=1}^{n} f(\gamma(\tau_k))\,(\gamma(t_k) - \gamma(t_{k-1})),$$
+
+分割取 $[a, b]$ 的任意加细分割、$\tau_k \in [t_{k-1}, t_k]$ 任意，极限存在且与取法无关；它等于
+
+$$\int_\gamma f(z)\,\mathrm{d}z = \int_a^b f(\gamma(t))\,\gamma'(t)\,\mathrm{d}t,$$
+
+右端是实参数 $t$ 上的复值 Riemann 积分。拆成实部虚部（$f = u + iv$，$z = x + iy$）就是两条实线积分：
+
+$$\int_\gamma f\,\mathrm{d}z = \int_\gamma (u\,\mathrm{d}x - v\,\mathrm{d}y) + i\int_\gamma (v\,\mathrm{d}x + u\,\mathrm{d}y).$$
+
+$\gamma$ 为闭曲线时记 $\oint_\gamma$；反向曲线 $\gamma^{-1}$ 上积分变号：$\int_{\gamma^{-1}} f\,\mathrm{d}z = -\int_\gamma f\,\mathrm{d}z$。
+
+⭐ 右端那个实积分就是定义的全部内容：**复围道积分 = 对实参数 $t$ 的复值 Riemann 积分**。于是实积分的一切性质（线性、区间可加、绝对值不等式、换元）自动搬过来。
+
+⭐ 与实积分真正的区别在**路径依赖**：$\int_\gamma f\,\mathrm{d}z$ 一般不只是端点的函数。Cauchy 定理说的正是「全纯时它忽然只依赖端点，闭路上为 $0$」。
+
+⭐ 上面那个实部虚部的拆法是后面接 Green 公式的接口：$P = u$、$Q = -v$ 与 $P = v$、$Q = u$ 各套一次 Green，就得到 Cauchy–Green 恒等式。
+
+参考：王晓光《复变函数》笔记，第 6 章 · 复积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Cauchy–Green 恒等式　`lem.cauchy-green`
+*引理*　引理：Cauchy–Green 恒等式
+
+**白话**：沿闭曲线的复积分，可以换算成曲线内部面积上的一个二重积分，被积的正是 $\partial f/\partial \bar z$ —— 于是「全纯 $\implies$ 积分为零」变成了「被积函数是 $0$」。
+
+设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 是一条分段光滑的简单闭曲线、取正向（逆时针）。若 $f \in C^1(\overline{\Omega})$，则
+
+$$\int_{\partial\Omega} f(z)\,\mathrm{d}z = 2i \iint_{\Omega} \frac{\partial f}{\partial \bar z}(z)\,\mathrm{d}x\,\mathrm{d}y.$$
+
+特别地，若 $f$ 全纯**且 $f'$ 连续**，则右端为零，即 $\displaystyle\oint_{\partial\Omega} f\,\mathrm{d}z = 0$。
+
+⭐ 这就是 Green 公式的直接翻译。Green 公式：$\oint_{\partial\Omega}(P\,\mathrm{d}x + Q\,\mathrm{d}y) = \iint_\Omega (Q_x - P_y)\,\mathrm{d}x\mathrm{d}y$。把积分拆成 $\oint (u\,\mathrm{d}x - v\,\mathrm{d}y) + i\oint (v\,\mathrm{d}x + u\,\mathrm{d}y)$，两次对上号得 $\iint [-(u_y + v_x)] + i\iint(u_x - v_y)$ —— 而 $2i f_{\bar z}$ 逐项算出来正是 $-(u_y + v_x) + i(u_x - v_y)$。
+
+⭐ 它在分量上就是 CR 方程的**积分版**：全纯 $\iff f_{\bar z} = 0 \implies$ 右端为零。
+
+⚠ 这条引理**不是免费的**：Green 公式要求 $P, Q$（从而 $f$）在闭包 $\overline{\Omega}$ 上 $C^1$。全纯只保证 $f$ 可微，**不保证 $f'$ 连续** —— 这个缺口由 Goursat 的三角形分割补上。
+
+参考：王晓光《复变函数》笔记，第 7 章 · Cauchy 定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Goursat 三角形引理　`lem.goursat-triangle`
+*引理*　引理：三角形上的积分为零（Goursat）
+
+**白话**：只要 $f$ 在三角形内部和边界上全纯（别的一概不要求，连 $f'$ 连续都不要），沿三角形边界的积分就是 $0$。这是 Cauchy 定理的「最小内核」。
+
+设 $T$ 是闭三角形，$f$ 在包含 $T$ 的某个开集上全纯。则
+
+$$\int_{\partial T} f(z)\,\mathrm{d}z = 0.$$
+
+⭐ 手法是**二分 + 让三角形缩到一点**，不用 Green、不用 $f'$ 连续。
+
+**第一步（四分）**：取三边中点把 $T$ 分成四个小三角形。整条边界的积分等于四条小边界之和（内部那三条边各被走两次、方向相反，抵消），于是至少有一个满足 $|I| \le 4\,|I(T_1)|$。迭代得 $T \supset T^{(1)} \supset T^{(2)} \supset \cdots$，第 $n$ 个的周长是 $L/2^n$，闭集套定理给出公共点 $z^*$，且 $|I| \le 4^n |I(T^{(n)})|$。
+
+**第二步（把 $f$ 换成线性项）**：在 $z^*$ 附近用复可微的定义：$f(z) = f(z^*) + f'(z^*)(z - z^*) + \eta(z)\,(z - z^*)$，其中 $\eta(z) \to 0$（$z \to z^*$）。前两项是多项式，沿任何闭三角形的积分都是 $0$（可直接算）。
+
+**第三步（估计）**：设 $\varepsilon_n = \sup_{z \in T^{(n)}} |\eta(z)| \to 0$，则 $|I(T^{(n)})| \le \varepsilon_n \cdot (L/2^n) \cdot (L/2^n)$，于是 $|I| \le 4^n \cdot \varepsilon_n \cdot L^2/4^n = \varepsilon_n L^2 \to 0$。
+
+⚠ 全纯在这里只被用了两次：$f$ 连续（用来取 $z^*$），以及差商在 $z \to z^*$ 时有极限（即 $\eta \to 0$）。正因如此，结论比 Green 路线强得多。
+
+参考：王晓光《复变函数》笔记，第 7 章 · Goursat 定理：严格性的典范；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Cauchy–Goursat 积分定理　`thm.cauchy-goursat`
+*定理*　定理：Cauchy–Goursat 积分定理
+
+**白话**：单连通区域上全纯的函数，沿任何闭曲线的积分都是 $0$ —— 这是整个复分析的引擎。
+
+设 $\Omega$ 是**单连通**的平面区域，$f$ 在 $\Omega$ 上全纯，$\gamma$ 是 $\Omega$ 内分段光滑的闭曲线。则
+
+$$\oint_\gamma f(z)\,\mathrm{d}z = 0.$$
+
+多连通的情形：设 $\gamma_0, \gamma_1, \cdots, \gamma_n$ 是 $\Omega$ 内分段光滑的简单闭曲线，$\gamma_1, \cdots, \gamma_n$ 各自在 $\gamma_0$ 的内部且互不相交，$f$ 在它们围成的（多连通）区域上全纯。则
+
+$$\oint_{\gamma_0} f\,\mathrm{d}z = \sum_{k=1}^{n} \oint_{\gamma_k} f\,\mathrm{d}z.$$
+
+⚠ 「单连通」不能丢。$f(z) = 1/z$ 在 $\mathbb{C} \setminus \{0\}$ 上全纯，可是 $\oint_{|z| = 1} \mathrm{d}z/z = 2\pi i \ne 0$。那个洞就是障碍 —— 它的存在让绕数能被感知到。
+
+⭐ 等价说法：全纯函数的围道积分**同伦不变**（路径在区域里连续形变，积分不变）；单连通 = 区域内所有闭曲线都同伦于一点。
+
+⭐ 立刻的推论：单连通区域上的全纯函数**有原函数**（取 $F(z) = \int_{z_0}^{z} f\,\mathrm{d}z$，由 Cauchy 定理知与路径无关，再由 $F' = f$）。这在实分析里没有对应物 —— $1/x$ 在 $\mathbb{R} \setminus \{0\}$ 上就没有原函数。
+
+⚠ 名字里的 Goursat：Cauchy 1825 年的原始证明要求 $f'$ 连续（走 Green 公式）；Goursat 后来用三角形分割去掉了这个假设。现代教材因此把它当成**全纯的基本定理**：结论不是从更强的假设换来的。
+
+参考：王晓光《复变函数》笔记，第 7 章 · Cauchy–Goursat 积分定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Cauchy 积分公式　`thm.cauchy-integral-formula`
+*定理*　定理：Cauchy 积分公式
+
+**白话**：全纯函数在内部一点的值，由它在边界上的值**完全决定** —— 内部的每一点都在「听」边界的话。
+
+设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 是分段光滑的简单闭曲线、取正向，$f$ 在包含 $\overline{\Omega}$ 的开集上全纯。则对任意 $z \in \Omega$，
+
+$$f(z) = \frac{1}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta.$$
+
+更一般地，若 $\gamma$ 是区域内的闭曲线、$f$ 在 $\gamma$ 内部及 $\gamma$ 上全纯，则上式对 $\gamma$ 内部任一点 $z$ 成立。
+
+⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\overline{D(z, r)}$，在剩下的二连通区域 $\Omega_r$ 上对 $g(\zeta) = f(\zeta)/(\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\oint_{\partial\Omega} g = \oint_{|\zeta - z| = r} g$。
+
+再把 $g$ 拆成两块：$\dfrac{f(z)}{\zeta - z} + \dfrac{f(\zeta) - f(z)}{\zeta - z}$。第一块的积分算出 $2\pi i f(z)$；第二块的被积函数在 $\zeta = z$ 处有极限 $f'(z)$（因而有界），由 ML 不等式其积分不超过 $(\text{常数}) \cdot 2\pi r \to 0$。
+
+⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。
+
+⚠ 被积函数 $f(\zeta)/(\zeta - z)$ 在 $\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\Omega$ 上。挖洞不是技巧，是必须的。
+
+参考：王晓光《复变函数》笔记，第 8 章 · Cauchy 积分公式；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 高阶导数公式　`thm.cauchy-higher-derivative`
+*定理*　定理：高阶导数公式与无穷次可微
+
+**白话**：全纯函数不但无穷次可微，而且每一阶导数都能用**同一个**边界积分写出来 —— 只把分母的幂次加一。
+
+设定与 Cauchy 积分公式相同（$f$ 在包含 $\overline{\Omega}$ 的开集上全纯，$\partial\Omega$ 分段光滑简单闭曲线正向）。则对 $n = 0, 1, 2, \cdots$ 与 $z \in \Omega$，
+
+$$f^{(n)}(z) = \frac{n!}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{(\zeta - z)^{n+1}}\,\mathrm{d}\zeta.$$
+
+特别地，$f$ 在 $\Omega$ 上**无穷次可微**，且每一阶导数都全纯。
+
+⭐ 证明就是**在积分号下求导**。$n = 1$ 时，差商与「形式导数」之差是
+
+$$\frac{1}{2\pi i}\oint f(\zeta)\left[ \frac{1}{(\zeta - z - h)(\zeta - z)} - \frac{1}{(\zeta - z)^2} \right]\mathrm{d}\zeta = \frac{h}{2\pi i}\oint \frac{f(\zeta)\,\mathrm{d}\zeta}{(\zeta - z - h)(\zeta - z)^2}.$$
+
+取 $|h| \le \delta/2$，其中 $\delta = \operatorname{dist}(z, \partial\Omega) > 0$，则分母有与 $\zeta$、$h$ 无关的正下界，整个积分的模 $\le C|h| \to 0$ —— 极限存在且正是形式导数。这个表达式对 $z$ 连续，所以 $f'$ 连续、可以再做一次；$n \ge 2$ 归纳。
+
+⭐ 这是复分析与实分析**最大的分水岭**：实函数可以一次可微而不二次（如 $x|x|$），复函数一次可微就无穷次可微。
+
+⚠ 「全纯」本身**没有**假设 $f'$ 连续 —— 连续性是从这条公式**推**出来的，不是前提。这正是 Goursat 那条边的价值：先去掉多余的假设，再把它当结论赚回来。
+
+参考：王晓光《复变函数》笔记，第 8 章 · 全纯函数的无穷次可微性；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Cauchy 不等式　`thm.cauchy-inequality`
+*定理*　定理：Cauchy 不等式
+
+**白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。
+
+设 $f$ 在圆盘 $D = D(z_0, R)$ 上全纯，记
+
+$$M(R) := \sup_{z \in D(z_0, R)} |f(z)|.$$
+
+则对每个 $n = 0, 1, 2, \cdots$，
+
+$$\left| f^{(n)}(z_0) \right| \le \frac{n!}{R^n}\,M(R).$$
+
+⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\mathrm{d}\zeta|$ 的总长是 $2\pi r$，分母是 $r^{n+1}$）：
+
+$$\left| f^{(n)}(z_0) \right| \le \frac{n!}{2\pi} \cdot M(r) \cdot \frac{2\pi r}{r^{n+1}} = \frac{n!\,M(r)}{r^n},$$
+
+再令 $r \to R$ 即得。
+
+⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。
+
+⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $D(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。
+
+⭐ 反向也有内容：若 $|f| \le M$ 在全平面成立，则 $|f^{(n)}(0)| \le n! M/R^n$ 对**一切** $R$ 成立，令 $R \to \infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。
+
+参考：王晓光《复变函数》笔记，第 9 章 · Cauchy 不等式；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Liouville 定理　`thm.liouville`
+*定理*　定理：Liouville 定理
+
+**白话**：在整个复平面上全纯、又有界的函数只能是常数 —— 复平面「太挤」了，容不下一个非常数的有界全纯函数。
+
+若 $f$ 在 $\mathbb{C}$ 上全纯（这样的函数叫**整函数**），且存在常数 $M$ 使
+
+$$|f(z)| \le M, \qquad \forall z \in \mathbb{C},$$
+
+则 $f$ 是常数。
+
+⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $D(z, R)$ 上全纯，故 $|f'(z)| \le M/R$。令 $R \to \infty$ 得 $f'(z) = 0$；由 $z$ 任意，$f' \equiv 0$；区域连通，故 $f$ 是常数。
+
+⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，
+
+$$f(z) - f(0) = \frac{1}{2\pi i}\oint_{|\zeta| = R}\left( \frac{1}{\zeta - z} - \frac{1}{\zeta} \right) f(\zeta)\,\mathrm{d}\zeta,$$
+
+估计得 $|f(z) - f(0)| \le \dfrac{M|z|}{R - |z|} \to 0$（$R \to \infty$），故 $f(z) = f(0)$。
+
+⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。反过来，若只知 $|f(z)| \le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。
+
+⭐ 与实分析对照：$\sin x$ 在 $\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\infty$ 函数」强得多。
+
+参考：王晓光《复变函数》笔记，第 9 章 · Liouville 定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 最大模原理　`thm.max-modulus`
+*定理*　定理：最大模原理
+
+**白话**：全纯函数的模，不可能在区域内部取到最大值 —— 除非它是常数。最大值只可能出现在边界上。
+
+设 $\Omega$ 是平面区域（连通开集），$f$ 在 $\Omega$ 上全纯。则或者 $f$ 是常数，或者
+
+$$|f(z)| < \|f\|_{\Omega} := \sup_{\zeta \in \Omega} |f(\zeta)|, \qquad \forall z \in \Omega.$$
+
+⭐ 证明走**平均值公式**：Cauchy 积分公式在圆心取 $\zeta = z + re^{i\theta}$，得
+
+$$f(z) = \frac{1}{2\pi}\int_0^{2\pi} f(z + re^{i\theta})\,\mathrm{d}\theta$$
+
+（只要 $\overline{D(z, r)} \subset \Omega$）。若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \le \frac{1}{2\pi}\int_0^{2\pi} |f(z_0 + re^{i\theta})|\,\mathrm{d}\theta \le M$，两端相等迫使圆上 $|f| \equiv M$。
+
+⭐ 再由连通性：集合 $\{ z : |f(z)| = M \}$ 既开（每个点周围都有整圆）又闭（$|f|$ 连续），故是全体 $\Omega$；$|f|$ 为常数加上 $f$ 全纯，得 $f$ 为常数。
+
+⭐ 有界区域的推论：若 $\Omega$ 有界、$f$ 在 $\overline{\Omega}$ 上连续、在 $\Omega$ 内全纯，则 $\|f\|_{\overline{\Omega}} = \|f\|_{\partial\Omega}$ —— 最大值在边界取到。这是「用边界值控制内部」的最强形式。
+
+⚠ 对 $|f|$ 的**最小值**没有对应结论：$f(z) = z$ 在单位圆盘上最小值在 $0$（内部）。正确的最小模原理是：$f$ 全纯且**无零点**时，对 $1/f$ 用最大模原理。
+
+参考：王晓光《复变函数》笔记，第 9 章 · 最大模原理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 全纯函数的 Taylor 展开　`thm.taylor-complex`
+*定理*　定理：全纯函数可展成 Taylor 级数
+
+**白话**：全纯函数在任意一点的附近都是一个幂级数 —— 也就是说，对复函数而言「可微」与「能写成幂级数」是同一件事。
+
+设 $f$ 在圆盘 $D(a, R)$ 上全纯。则对 $z \in D(a, R)$，
+
+$$f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(z - a)^n,$$
+
+且右端在 $D(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $D(a, R)$ 内**解析**（等于某个幂级数之和）。
+
+⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。取 $\rho \in (|z - a|, R)$，写
+
+$$\frac{1}{\zeta - z} = \frac{1}{(\zeta - a) - (z - a)} = \sum_{n=0}^{\infty} \frac{(z - a)^n}{(\zeta - a)^{n+1}},$$
+
+比值 $|z - a|/\rho < 1$，级数关于 $\zeta \in \partial D(a, \rho)$ 一致收敛，故可逐项积分；逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。
+
+⭐ 这条把「微分」与「级数」接上了：**全纯 $\iff$ 局部是幂级数 $\iff$ 解析**。实分析里这两件事**不等价** —— $e^{-1/x^2}$ 在 $0$ 处无穷次可微，但 Taylor 级数恒为 $0$，在 $0$ 的任何邻域内都不等于原函数。
+
+⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。
+
+📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \sum a_n (z - a)^n$ 在 $D(a, R)$ 内成立，则 $|a_n| \le M(r)/r^n$（$0 < r < R$）。
+
+参考：王晓光《复变函数》笔记，第 11 章 · 全纯函数的幂级数；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
+
+#### Laurent 级数　`def.laurent-series`
+*定义*　定义：Laurent 级数与主部
+
+**白话**：把幂级数放宽成「两边都有」的级数 —— 负幂次项负责描述函数在中心附近的爆炸，正幂次项负责描述它远处的行为。
+
+设 $0 \le r < R \le +\infty$，环域 $A_{r,R}(a) := \{ z : r < |z - a| < R \}$。形如
+
+$$\sum_{n=-\infty}^{\infty} c_n (z - a)^n = \sum_{n=0}^{\infty} c_n (z - a)^n + \sum_{n=1}^{\infty} c_{-n}\,(z - a)^{-n}$$
+
+且在 $A_{r,R}(a)$ 内（在每个紧子集上）收敛的级数，称为**以 $a$ 为中心的 Laurent 级数**。右端第一块叫**正则部分**，第二块（负幂次之和）叫**主部**（principal part）。
+
+⭐ 两块各有各的收敛范围：正则部分在 $|z - a| < R$ 内收敛，主部在 $|z - a| > r$ 内收敛，交起来正好是**环域** —— 这就是为什么 Laurent 级数的自然舞台是环而不是圆盘。
+
+⚠ 主部才是「奇点信息」的载体：主部为零对应可去奇点；主部只有有限项对应极点（项数为 $m$ 时叫 $m$ 阶）；主部有无穷多项对应本性奇点。所以孤立奇点的三分法，本质上是按主部的形状分的。
+
+📌 书里先做「Laurent 分解」：环域上的全纯函数可以拆成「内圆盘上全纯的一项」加「外域（含无穷远）上全纯的一项」，再由这两项各自的展开合成 Laurent 级数。
+
+参考：王晓光《复变函数》笔记，第 21 章 · Laurent 分解；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
+
+#### Laurent 展开定理　`thm.laurent`
+*定理*　定理：Laurent 展开定理
+
+**白话**：环域上的全纯函数一定能展成 Laurent 级数，而且系数由积分**唯一**确定。
+
+设 $f$ 在环域 $A_{r,R}(a)$ 上全纯（$0 \le r < R \le +\infty$）。则对每个 $n \in \mathbb{Z}$，取任意 $\rho \in (r, R)$ 定义
+
+$$c_n := \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho} \frac{f(\zeta)}{(\zeta - a)^{n+1}}\,\mathrm{d}\zeta,$$
+
+这个值与 $\rho$ 的选取无关，且 $f(z) = \displaystyle\sum_{n=-\infty}^{\infty} c_n (z - a)^n$ 在 $A_{r,R}(a)$ 内成立（在每个紧子集上一致收敛）。
+
+⭐ 证明：取 $r < \rho_1 < |z - a| < \rho_2 < R$，在环域 $A_{\rho_1,\rho_2}(a)$ 上用 Cauchy 积分公式（环域版，边界是外圆减内圆）：
+
+$$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho_2} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta - \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho_1} \frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta.$$
+
+第一项按 $\dfrac{1}{\zeta - z} = \sum_n \dfrac{(z - a)^n}{(\zeta - a)^{n+1}}$ 展开（因 $|z - a| < \rho_2$）；第二项按 $\dfrac{1}{z - \zeta} = \sum_n \dfrac{(\zeta - a)^n}{(z - a)^{n+1}}$ 展开（因 $|z - a| > \rho_1$），得到负幂次。
+
+⭐ 唯一性：系数由积分公式给出，所以不依赖展开方式 —— 实际计算时可以用任何代数变形（几何级数、待定系数），结果一定一样。
+
+⚠ 环域不能退化成圆盘或外部：$r = 0$ 时主部可能发散，$R = +\infty$ 时正则部分可能发散。**退化情形正是奇点分类的入口**：$r = 0$ 时主部的三种形态对应三类孤立奇点。
+
+参考：王晓光《复变函数》笔记，第 21 章 · Laurent 级数；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
+
+#### 孤立奇点及其分类　`def.isolated-singularity`
+*定义*　定义：孤立奇点及其三类
+
+**白话**：函数在某一点「出问题」，但附近别的地方都好 —— 这时按它靠近该点时的三种走法分类：趋近一个有限值、爆掉、或者乱跳。
+
+设 $f$ 在去心邻域 $D(a, \varepsilon) \setminus \{a\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \to a$ 时的行为分三类：
+
+**(1) 可去奇点**：$\lim_{z \to a} f(z) = w_0 \in \mathbb{C}$ 存在；
+
+**(2) 极点**：$\lim_{z \to a} f(z) = \infty$；
+
+**(3) 本性奇点**：$\lim_{z \to a} f(z)$ 不存在，也不为 $\infty$。
+
+用 Laurent 展开的**主部**刻画：可去对应主部全为 $0$；极点对应主部只有有限项，若从 $(z - a)^{-m}$ 起步则称 **$m$ 阶极点**；本性对应主部有无穷多项。
+
+⭐ 三类**互斥且穷尽**：极限在 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 里只有这三种可能 —— 用 Riemann 球面看，这就是「极限在不在、有限不有限」的平凡三分。
+
+⭐ 极点的代数刻画最实用：$a$ 是 $m$ 阶极点，当且仅当在 $a$ 附近可以写成
+
+$$f(z) = \frac{\psi(z)}{(z - a)^m}, \qquad \psi \text{ 在 } a \text{ 的邻域全纯},\ \psi(a) \ne 0.$$
+
+于是 $f$ 的 Laurent 展开正好从 $(z - a)^{-m}$ 开始 —— 这就是「主部有限项」的具体形状。
+
+⚠ 本性奇点附近的行为极不规则：$e^{1/z}$ 在 $0$ 的任何去心邻域内取遍 $\mathbb{C} \setminus \{0\}$。所以「极限不存在」不是「温和地振荡」。（Casorati–Weierstrass 定理的弱形式：本性奇点附近的值域在 $\mathbb{C}$ 中稠密。）
+
+📌 **非孤立**奇点也会出现：$1/\sin(1/z)$ 在 $0$ 附近有一列极点聚到 $0$，$0$ 就不是孤立奇点 —— 三类分法对它不适用。
+
+参考：王晓光《复变函数》笔记，第 21 章 · 孤立奇点的分类；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### Riemann 可去奇点定理　`thm.riemann-removable`
+*定理*　定理：Riemann 可去奇点定理
+
+**白话**：如果 $f$ 在 $a$ 附近全纯，而且靠近 $a$ 时「爆得比 $1/|z - a|$ 慢」，那 $a$ 这个洞可以补上，补完还是全纯。
+
+设 $f$ 在 $D(a, r) \setminus \{a\}$ 上全纯，且
+
+$$\lim_{z \to a} (z - a) f(z) = 0 \qquad (\text{等价地，} f(z) = o(|z - a|^{-1})).$$
+
+则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。
+
+⭐ 证明：对 $z \in D(a, r) \setminus \{a\}$ 与充分小的 $\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\varepsilon(z)$，其中 $I_r$ 是沿 $|\zeta - a| = r$ 的积分（在 $D(a, r)$ 上全纯），$I_\varepsilon$ 是沿 $|\zeta - a| = \varepsilon$ 的积分。估计
+
+$$|I_\varepsilon(z)| \le \frac{\varepsilon \, \|f\|_{\partial D(a, \varepsilon)}}{|z - a| - \varepsilon} \longrightarrow 0 \qquad (\varepsilon \to 0),$$
+
+最后一步用的正是条件 $(z - a) f(z) \to 0$。但 $I_\varepsilon(z)$ 与 $\varepsilon \in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。于是 $f = I_r$ 在 $D(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。
+
+⭐ 用途：它让「可去奇点」真的可以当没有。例如 $\sin z / z$ 在 $0$ 处补成 $1$，于是 $\sin z / z$ 就是整函数；$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \psi(z)$」都要靠它。
+
+⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。
+
+参考：王晓光《复变函数》笔记，第 9 章 · Riemann 可去奇点定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 留数　`def.residue`
+*定义*　定义：留数
+
+**白话**：留数是 $f$ 在孤立奇点附近 Laurent 展开里 $(z - a)^{-1}$ 那一项的系数 —— 也是沿小圆周积分再除以 $2\pi i$ 得到的那个数。
+
+设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $D(a, \varepsilon) \setminus \{a\}$ 上全纯。定义
+
+$$\operatorname{Res}(f, a) := \frac{1}{2\pi i}\oint_{|\zeta - a| = r} f(\zeta)\,\mathrm{d}\zeta, \qquad 0 < r < \varepsilon,$$
+
+这个值与 $r$ 无关，且等于 $f$ 在 $a$ 处 Laurent 展开的系数 $c_{-1}$。
+
+对**无穷远点**（$f$ 在 $|z| > R$ 上全纯）：$\operatorname{Res}(f, \infty) := -\dfrac{1}{2\pi i}\oint_{|\zeta| = \rho} f(\zeta)\,\mathrm{d}\zeta = -c_{-1}$。
+
+⭐ 为什么叫「留数」：$f$ 在去心邻域上有原函数的充要条件是 $c_{-1} = 0$（因为 $\int \mathrm{d}z/(z - a) = \log(z - a)$ 是多值的）。所以 $c_{-1}$ 正是「挡住原函数存在的那个数」—— 它**留**了下来。
+
+⭐ 与 $r$ 无关：两个同心圆周之间的环域上 $f$ 全纯，由环域版 Cauchy–Goursat，两个积分相等。
+
+⚠ 无穷远点的定义**带负号**，这是坐标变换 $\zeta = 1/w$ 带来的 Jacobi 因子 $1/w^2$。它让「全平面上的留数之和为零」成立：有限个奇点的留数之和加上 $\operatorname{Res}(f, \infty)$ 等于 $0$。
+
+📌 本节所有沿圆周的积分一律取**逆时针**方向；换成顺时针要整体变号。
+
+参考：王晓光《复变函数》笔记，第 23 章 · 留数定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 极点处的留数公式　`prop.residue-at-pole`
+*命题*　命题：极点处的留数公式
+
+**白话**：如果奇点是 $m$ 阶极点，留数不必真去积分 —— 用 $(z - a)^m f(z)$ 在 $a$ 处的第 $m - 1$ 阶导数就能算出来。
+
+设 $a$ 是 $f$ 的 $m$ 阶极点，$f(z) = \psi(z)/(z - a)^m$，$\psi$ 在 $a$ 的邻域全纯且 $\psi(a) \ne 0$。则
+
+$$\operatorname{Res}(f, a) = \frac{\psi^{(m-1)}(a)}{(m-1)!}.$$
+
+特别地：一阶极点时 $\operatorname{Res}(f, a) = \lim_{z \to a} (z - a) f(z) = \psi(a)$；二阶时 $\operatorname{Res}(f, a) = \psi'(a)$。
+
+⭐ 证明：把 $\psi$ 在 $a$ 处 Taylor 展开 $\psi(z) = \sum_k \dfrac{\psi^{(k)}(a)}{k!}(z - a)^k$，再除以 $(z - a)^m$ 得 $f$ 的 Laurent 展开
+
+$$f(z) = \sum_{k=0}^{\infty} \frac{\psi^{(k)}(a)}{k!}\,(z - a)^{k - m},$$
+
+取 $k - m = -1$ 即 $k = m - 1$，系数正是 $\psi^{(m-1)}(a)/(m-1)!$。
+
+⭐ 一阶极点的情形最常用。若 $f = p/q$、$p(a) \ne 0$ 且 $q$ 在 $a$ 有一阶零点，则 $\operatorname{Res}(f, a) = p(a)/q'(a)$ —— 这是实际计算里出现频率最高的那一行。
+
+⚠ $m \ge 2$ 时**不能**只取极限：$f(z) = 1/z^2$ 的留数是 $0$，而 $\lim_{z \to 0} z f(z) = \infty$。拿错公式是留数计算里最常见的错。
+
+参考：王晓光《复变函数》笔记，第 23 章 · 留数定理（极点的留数）；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 留数定理　`thm.residue`
+*定理*　定理：留数定理
+
+**白话**：沿闭曲线的积分等于 $2\pi i$ 乘上曲线内部所有奇点的留数之和 —— 一个二维的积分问题被压缩成有限个代数计算。
+
+设 $\Omega$ 是有界区域，边界 $\partial\Omega$ 由有限条分段光滑的简单闭曲线组成、取正向。$f$ 在 $\Omega$ 上除有限个点 $z_1, \cdots, z_n$ 外全纯，这些点都是**孤立**奇点且不在 $\partial\Omega$ 上。则
+
+$$\oint_{\partial\Omega} f(z)\,\mathrm{d}z = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k).$$
+
+⭐ 证明：以每个 $z_k$ 为心挖去半径 $\varepsilon$ 的闭圆盘（互不相交、都含在 $\Omega$ 内），得 $\Omega_\varepsilon = \Omega \setminus \bigcup_k \overline{D(z_k, \varepsilon)}$。$f$ 在 $\Omega_\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\oint_{\partial\Omega_\varepsilon} f = 0$，也就是
+
+$$\oint_{\partial\Omega} f\,\mathrm{d}z = \sum_{k=1}^{n} \oint_{|\zeta - z_k| = \varepsilon} f\,\mathrm{d}\zeta = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k),$$
+
+最后一步就是留数的定义。
+
+⭐ 这是复分析里最能打的一条：书第 23、24 章那一整批实积分（$\int_0^{2\pi} Q(\sin\theta, \cos\theta)\,\mathrm{d}\theta$、$\int_{-\infty}^{\infty} f(x)\,\mathrm{d}x$、$\int_{-\infty}^{\infty} e^{iax}f(x)\,\mathrm{d}x$、$\int_0^{\infty} x^{a-1}f(x)\,\mathrm{d}x$、级数求和）全靠它，都变成留数计算。
+
+⚠ 闭曲线必须**正向**（逆时针）；反向要整体变号。曲线**外**的奇点对积分没有贡献 —— 也可以改用无穷远点的留数来算。
+
+参考：王晓光《复变函数》笔记，第 23 章 · 留数定理；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 分式线性变换　`def.mobius`
+*定义*　定义：分式线性变换（Möbius 变换）
+
+**白话**：分式线性变换是复球面上最「刚性」的一类全纯双射 —— 它把圆（含直线）送到圆，并且保持交比不变。
+
+形如
+
+$$f(z) = \frac{az + b}{cz + d}, \qquad a, b, c, d \in \mathbb{C},\ ad - bc \ne 0$$
+
+的映射称为**分式线性变换**（Möbius 变换）。它延拓成 Riemann 球面 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 到自身的双射：$c \ne 0$ 时 $f(-d/c) = \infty$、$f(\infty) = a/c$；$c = 0$ 时 $f(\infty) = \infty$。逆映射仍是分式线性变换：
+
+$$f^{-1}(w) = \frac{dw - b}{-cw + a}.$$
+
+⭐ $ad - bc \ne 0$ 是「非退化」条件：等于 $0$ 时 $f$ 退化为常数。它同时保证 $f'(z) = (ad - bc)/(cz + d)^2 \ne 0$，所以 $f$ **处处共形**（保角，见「保角性」那条）。
+
+⭐ 三个基本构件：平移 $z \mapsto z + b$、伸缩旋转 $z \mapsto az$（$a \ne 0$）、反演 $z \mapsto 1/z$。任何 Möbius 变换都是它们的复合，而 $ad - bc \ne 0$ 保证复合之后不塌成常数。
+
+⭐ 几何性质（书第 13 章）：把**圆或直线**送到圆或直线（统称「广义圆」，在球面上其实就是「圆」）；并且保持**交比**不变：
+
+$$(z_1, z_2; z_3, z_4) = \frac{(z_1 - z_3)(z_2 - z_4)}{(z_1 - z_4)(z_2 - z_3)}.$$
+
+于是 $f$ 由三个点的像**唯一**确定 —— 交比是 Möbius 变换的全不变量。
+
+⚠ 球面上的 $\infty$ 不是「很大的数」：它是用球极投影添进来的一个点。只有在球面上，「$f$ 是双射」这句话才干净 —— 在 $\mathbb{C}$ 上它总漏掉一两个点。
+
+参考：王晓光《复变函数》笔记，第 13 章 · 分式线性变换；Ahlfors, Complex Analysis, Ch. 3 · Conformal Mapping
+
+#### Morera 定理　`thm.morera`
+*定理*　定理：Morera 定理（Cauchy 定理的逆）
+
+**白话**：一个连续函数，只要沿每个闭三角形（等价地每个小矩形）的积分都是零，它就是全纯的 —— 这是 Cauchy 定理的逆命题。
+
+设 $\Omega \subset \mathbb{C}$ 是区域，$f: \Omega \to \mathbb{C}$ **连续**。若对每个闭三角形 $T \subset \Omega$ 都有
+
+$$\oint_{\partial T} f(\zeta)\,\mathrm{d}\zeta = 0,$$
+
+则 $f$ 在 $\Omega$ 上全纯；并且 $f'$ 也全纯，$f$ 在每点都有 Taylor 展开。
+
+把「闭三角形」换成「边平行于坐标轴的闭矩形」，结论不变（矩形沿一条对角线分成两个三角形）。
+
+⭐ 用途：这是**判定全纯**最省事的工具 —— 不需要先验可微，只要「连续」加「某个积分恒为零」。全纯性被换成了一条积分方程。
+
+⭐ 最常用的推论：**内闭一致收敛的全纯函数列，其极限必全纯**。因为 $\partial T$ 是紧的，$\oint_{\partial T} f_k = 0$ 可以取极限得 $\oint_{\partial T} f = 0$，再喂给 Morera。Hurwitz 定理是这条的「零点版」。
+
+⚠ 连续性不能省。少了它，同样的积分条件推不出可微。
+
+⚠ 假设里的「所有三角形」也不能换成「所有圆周」：只知道圆周上的积分为零，不足以保证全纯。
+
+📌 与 Cauchy–Goursat 定理合起来：$f$ 连续时，「$f$ 全纯」与「$f$ 沿每个闭三角形积分恒为零」是**等价**的两句话。
+
+参考：王晓光《复变函数》· Cauchy 定理的逆命题；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration；Stein–Shakarchi, Complex Analysis, Ch. 2 · Cauchy’s Theorem and Its Applications
+
+#### 绕数　`def.winding-number`
+*定义*　定义：绕数（闭曲线关于一点的指数）
+
+**白话**：绕数是一个整数，数的是「闭曲线绕某个点转了几圈」—— 逆时针一圈记 $+1$，顺时针记 $-1$，没绕记 $0$。
+
+设 $\gamma: [a, b] \to \mathbb{C}$ 是分段光滑闭曲线，$a_0 \notin \gamma$。定义 $\gamma$ 关于 $a_0$ 的**绕数**（也叫指数）
+
+$$n(\gamma, a_0) := \frac{1}{2\pi i}\oint_{\gamma} \frac{\mathrm{d}\zeta}{\zeta - a_0}.$$
+
+它等于 $\arg(\gamma(t) - a_0)$ 沿 $\gamma$ 走完一周的连续变化量除以 $2\pi$：
+
+$$n(\gamma, a_0) = \frac{1}{2\pi}\,\Delta_{\gamma}\,\arg(\zeta - a_0).$$
+
+三条基本性质：(1) $n(\gamma, \cdot)$ 在 $\mathbb{C} \setminus \gamma$ 的每个连通分支上是常数，且取整数值；(2) 在无界分支上取 $0$；(3) $\gamma$ 若是正定向的简单闭曲线，则内部 $n = 1$、外部 $n = 0$。
+
+⭐ 整数性是**证**出来的，不是看出来的：沿 $\gamma$ 把 $t$ 从 $a$ 走到 $b$，令
+
+$$g(t) := \frac{\gamma(t) - a_0}{\exp\left( \int_a^t \frac{\gamma'(s)}{\gamma(s) - a_0}\,\mathrm{d}s \right)}.$$
+
+求导可知分子分母的导数恰好抵消，故 $g$ 是常数；取 $t = b$ 得 $\exp\left( \int_a^b \cdot \right) = 1$，于是积分是 $2\pi i$ 的整数倍。
+
+⭐ 与辐角的关系：指数里那个积分正是 $\log(\gamma(t) - a_0)$ 沿 $\gamma$ 连续变动的一个取法（对数只能沿一条路径取定一支），它的虚部就是辐角的变化量。
+
+⚠ 绕数依赖**定向**：同一条曲线反着走，绕数变号。
+
+⚠ 「$n(\gamma, a_0) = 0$」**不等于**「$a_0$ 在曲线外」—— 绕进去又绕出来同样给 $0$。只有对简单闭曲线（Jordan 曲线）它才是内外的判据。
+
+📌 辐角原理会把零极点之差写成 $f \circ \gamma$ 关于 $0$ 的绕数。
+
+参考：王晓光《复变函数》· 辐角原理（曲线的绕数）；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 辐角原理　`thm.argument-principle`
+*定理*　定理：辐角原理
+
+**白话**：全纯函数沿闭曲线「转了几圈」，正好等于曲线内部的零点个数减去极点个数（都按重数算）—— 数辐角的变化量就等于数零极点。
+
+设 $\gamma$ 是分段光滑闭曲线，$\Omega$ 含 $\gamma$ 及其内部，$f$ 在 $\Omega$ 上除有限个极点外全纯，且在 $\gamma$ 上既无零点也无极点。则
+
+$$\frac{1}{2\pi i}\oint_{\gamma} \frac{f'(z)}{f(z)}\,\mathrm{d}z = Z - P = n(f \circ \gamma,\, 0),$$
+
+其中 $Z$ 是 $f$ 在 $\gamma$ 内部的零点个数（按重数计），$P$ 是极点个数（按阶数计），$n$ 是绕数。
+
+⭐ 特例最常见：$f$ 在内部**全纯**时 $P = 0$，于是 $\oint_{\gamma} f'/f = 2\pi i Z$ —— 「零点个数」变成一个积分。
+
+⭐ 几何读法：$f \circ \gamma$ 是一条绕 $0$ 的闭曲线，$Z - P$ 就是它绕 $0$ 的圈数。零点把像曲线往外「拧」一圈，极点往里「拧」一圈。
+
+⚠ 边界上不能有零点和极点 —— 否则 $f'/f$ 在 $\gamma$ 上无定义，积分根本不存在。
+
+⭐ 顺带的结论：$Z - P$ 对曲线的微小形变**不变**（只要形变过程中不扫过零点或极点），因为它是整数且连续变化。
+
+📌 一切「数零点个数」的技巧（Rouché、Hurwitz）都是从这条式子出发的；它也解释了为什么零点与极点可以在积分层面互相抵消。
+
+参考：王晓光《复变函数》· 辐角原理；Ahlfors, Complex Analysis · 辐角原理与 Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Rouché 定理　`thm.rouche`
+*定理*　定理：Rouché 定理
+
+**白话**：如果两个全纯函数在闭曲线的边界上，「扰动项」的模严格小于「主项」的模，那么加上扰动不会改变曲线内部的零点个数。
+
+设 $\gamma$ 是分段光滑闭曲线，$f, g$ 在 $\gamma$ 及其内部全纯，且在 $\gamma$ 上处处
+
+$$|g(z)| < |f(z)|.$$
+
+则 $f$ 与 $f + g$ 在 $\gamma$ 内部有同样多的零点（都按重数计）。
+
+⭐ 用途：数零点不用解方程，只要在边界上比大小。例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。
+
+⭐ 代数基本定理的另一条证明：$f(z) = a_n z^n$、$g(z) = a_{n-1}z^{n-1} + \cdots + a_0$，在 $|z| = R$ 上取 $R$ 充分大就有 $|g| < |f|$，于是 $p$ 与 $a_n z^n$ 在 $|z| < R$ 内零点数相同，都是 $n$ 个。
+
+⚠ 条件必须**严格**、而且要在**整条边界**上成立。等号是可以出事的位置：$f = z$、$g = -z$ 在 $|z| = 1$ 上有 $|g| = |f|$，$f$ 与 $f + g = 0$ 的零点数完全不同。
+
+📌 「主项」怎么挑：挑边界上模最大的那一项。这与「多项式在远处的行为由最高次项决定」是同一件事。
+
+参考：王晓光《复变函数》· Rouché 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Hurwitz 定理　`thm.hurwitz`
+*定理*　定理：Hurwitz 定理（零点的极限）
+
+**白话**：一列都没有零点的全纯函数，如果在内闭一致收敛，那么极限函数要么恒等于零，要么也没有零点。
+
+设 $\Omega$ 是区域，$f_k$ 在 $\Omega$ 上全纯，且在 $\Omega$ 的每个紧子集上一致收敛到 $f$。若每个 $f_k$ 在 $\Omega$ 上**无零点**，则极限 $f$ 或者恒等于零，或者在 $\Omega$ 上处处不为零。
+
+等价的说法：若 $f$ 不恒为零而 $f(z_0) = 0$，则对每个充分大的 $k$，$f_k$ 在 $z_0$ 的任意小邻域内都有零点。
+
+⭐ 「恒为零」这个例外**不能删**：$f_k(z) = 1/k$ 在单位圆盘上处处无零点、内闭一致收敛到 $0$。
+
+⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。
+
+⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \min_{|z - z_0| = r}|f| > 0$；$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。
+
+📌 与 Morera 定理互补：Morera 管「极限全纯」，Hurwitz 管「极限的零点从哪来」。两者一起说明：全纯函数的一些**离散**性质在一致极限下是封闭的。
+
+参考：王晓光《复变函数》· Hurwitz 定理；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Schwarz 引理　`lem.schwarz`
+*引理*　引理：Schwarz 引理
+
+**白话**：把单位圆盘映到自身、并且固定原点的全纯映射，一定被 $z \mapsto z$ 压住：像点比原像更靠近圆心。
+
+设 $\mathbb{D} = \{\, z : |z| < 1 \,\}$，$f: \mathbb{D} \to \mathbb{D}$ 全纯且 $f(0) = 0$。则
+
+(1) $|f(z)| \le |z|$ 对一切 $z \in \mathbb{D}$ 成立；
+
+(2) $|f'(0)| \le 1$；
+
+(3) 若存在 $z_0 \ne 0$ 使 $|f(z_0)| = |z_0|$，或者 $|f'(0)| = 1$，则 $f$ 是旋转 $f(z) = e^{i\theta} z$。
+
+⭐ 证明的路子：$f(0) = 0$ 让 $f(z)/z$ 在 $0$ 处可去奇点，补上 $f'(0)$ 后得到圆盘上的全纯函数 $g$；在 $|z| = r$ 上 $|g| \le 1/r$，用最大模原理后令 $r \to 1$。
+
+⭐ 三个结论其实是同一个不等式链：$|g(z)| \le 1$ 立即给出 (1) 与 (2)；(3) 是「最大模原理什么时候取等」。
+
+⚠ $f(0) = 0$ 不能省。$f(z) = (z + 1)/2$ 把圆盘映到圆盘，但 $|f(0)| = 1/2 > 0$ —— 只要把原点挪开，引理的结论就全不成立。
+
+⚠ $|f(z)| \le |z|$ 里的等号**只在一个内点**出现就够了，不必处处取等 —— 这是最大模原理的刚性。
+
+📌 不假设 $f(0) = 0$ 的版本是 Schwarz–Pick 定理。这条引理也是「圆盘上的自同构群很小」的根源，是共形映射里的基本工具。
+
+参考：王晓光《复变函数》· Schwarz 引理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
+
+#### Schwarz–Pick 定理　`thm.schwarz-pick`
+*定理*　定理：Schwarz–Pick 定理
+
+**白话**：把「圆盘到圆盘」的全纯映射用分式线性变换把两个点各自挪到原点之后，Schwarz 引理就成了一条不含原点的、对任意基准点都成立的估计。
+
+设 $f: \mathbb{D} \to \mathbb{D}$ 全纯，$z_0 \in \mathbb{D}$。则对一切 $z \in \mathbb{D}$，
+
+$$\left| \frac{f(z) - f(z_0)}{1 - \overline{f(z_0)}\, f(z)} \right| \le \left| \frac{z - z_0}{1 - \overline{z_0}\, z} \right|,$$
+
+微分形式（双曲度量的压缩性）：
+
+$$\frac{|f'(z_0)|}{1 - |f(z_0)|^2} \le \frac{1}{1 - |z_0|^2}.$$
+
+两处等号（对某个 $z \ne z_0$，或对导数）成立当且仅当 $f$ 是 $\mathbb{D}$ 的分式线性自同构。
+
+⭐ 这两个式子都是「把基准点搬到 0」的产物：$\varphi_a(z) = (z - a)/(1 - \overline{a} z)$ 是圆盘的自同构，把 $a$ 送到 $0$；用 $\varphi_{f(z_0)} \circ f \circ \varphi_{z_0}^{-1}$ 造一个固定原点的映射，套 Schwarz 引理，再变回来。
+
+⭐ 双曲度量的读法：$\dfrac{|\mathrm{d}w|}{1 - |w|^2}$ 是圆盘上的双曲长度元，上式说全纯自映射**不会放大**它。等号成立时叫等距。
+
+⚠ 这个不等式对所有 $z_0$ 同时成立，等价于「$f$ 是双曲度量的 $1$-Lipschitz 映射」。这是 Schwarz 引理的完整形式 —— Schwarz 引理只是 $z_0 = 0$、$f(z_0) = 0$ 的特例。
+
+📌 推论：$\mathbb{D}$ 的自同构恰是 $z \mapsto e^{i\theta}\dfrac{z - a}{1 - \overline{a} z}$（$|a| < 1$，$\theta \in \mathbb{R}$）。取等号时 $f$ 必是这种形状，反过来这些映射显然取等号。
+
+参考：王晓光《复变函数》· Schwarz–Pick 定理；Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping
+
+#### 多值函数与分支　`def.branch`
+*定义*　定义：多值函数、分支与分支切割
+
+**白话**：像对数、开方这类「一个 $z$ 对应好几个值」的对应叫多值函数；在某个区域上挑出一支连续（从而全纯）的单值选择，就叫取一个**分支**；为了能连续地挑，常常要沿一条曲线把平面剪开，那条缝叫**分支切割**。
+
+设 $D \subset \mathbb{C}$ 是区域，$F$ 是「每个 $z \in D$ 对应一个非空值集 $F(z) \subset \mathbb{C}$」的对应。若连续函数 $\varphi: D \to \mathbb{C}$ 满足
+
+$$\varphi(z) \in F(z) \qquad (\forall z \in D),$$
+
+称 $\varphi$ 是 $F$ 在 $D$ 上的一个**分支**；若 $\varphi$ 还在 $D$ 上全纯，称它是**全纯分支**。
+
+**分支切割**：从 $\mathbb{C}$ 中删去一条曲线（通常是射线或线段），使剩下的区域 $D$ 单连通，从而 $F$ 在 $D$ 上能分出单值全纯分支；被删去的那条曲线就是**分支切割**。
+
+⭐ 多值性的根源只有一个：**辐角**。$z$ 绕 $0$ 走一圈，$\arg z$ 增加 $2\pi$，凡是依赖 $\arg z$ 的公式都跟着变，所以它在 $\mathbb{C} \setminus \{0\}$ 上不可能单值且连续。反过来，只要区域里绕不了原点（单连通），辐角就能连续地取定一支。
+
+⭐ 例：$F(z) = \{\, w : w^2 = z \,\}$ 有两个分支，两者相差一个符号；$F(z) = \{\, w : w^n = z \,\}$ 有 $n$ 个分支，相互差 $e^{2\pi i k/n}$ 倍。
+
+⚠ 分支切割**不是唯一的**：对数可以在「$\mathbb{C}$ 减去任意一条从 $0$ 射出的射线」上定义，割的位置随你挑，只要它把原点围住。所以「$\log$ 在哪个区域上有分支」问的是区域，不是函数。
+
+⚠ 割线上的函数值不连续（两侧差一个跳跃），所以割线不属于定义域；在割线上讨论「$\operatorname{Log}$ 的连续性」没有意义。
+
+📌 严格的说法要走覆盖空间：分支 = 多值对应所对应的那个覆盖的单值截面。初等处理里只需要记住「单连通才保证能挑」。
+
+参考：王晓光《复变函数》· 多值函数与分支；Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### 对数与幂的分支　`def.logarithm-branch`
+*定义*　定义：复对数、复幂及其分支
+
+**白话**：复对数有无穷多个值，两两差 $2\pi i$ 的整数倍；把虚部限制在 $(-\pi, \pi]$ 就得到主值。幂函数用 $e^{\alpha \log z}$ 定义，挑哪个对数分支就得到哪个幂分支。
+
+**复对数**（多值）：
+
+$$\log z := \ln|z| + i(\arg z + 2k\pi), \qquad k \in \mathbb{Z}.$$
+
+**主值**（$\operatorname{Arg} \in (-\pi, \pi]$），定义在 $\mathbb{C} \setminus (-\infty, 0]$ 上：
+
+$$\operatorname{Log} z := \ln|z| + i\operatorname{Arg} z.$$
+
+**复幂**：对 $\alpha \in \mathbb{C}$，
+
+$$z^{\alpha} := e^{\alpha \log z},$$
+
+即 $z^{\alpha} = e^{\alpha \ln|z|}\, e^{i\alpha(\arg z + 2k\pi)}$，$k \in \mathbb{Z}$。取主值对数得到**主值幂** $z^{\alpha} = e^{\alpha \operatorname{Log} z}$，它在 $\mathbb{C} \setminus (-\infty, 0]$ 上全纯。
+
+⭐ 单值的判据：$z^{\alpha}$ 单值当且仅当 $\alpha \in \mathbb{Z}$。理由：绕一圈多出来的是因子 $e^{2\pi i \alpha}$，它等于 $1$ 当且仅当 $\alpha$ 是整数。于是 $z^{1/n}$ 恰有 $n$ 支，$z^{i}$ 有可数无穷多支。
+
+⭐ 导数：在主值域上 $(\operatorname{Log} z)' = 1/z$。这是反函数定理的结论 —— $\exp$ 在带形 $\{\, |\operatorname{Im} w| < \pi \,\}$ 上是一一的，反函数就是 $\operatorname{Log}$。
+
+⭐ 负实轴上的跳跃：从上方逼近 $-x$（$x > 0$）时 $\operatorname{Arg} \to \pi$，从下方逼近时 $\operatorname{Arg} \to -\pi$，差 $2\pi$。这就是 $\operatorname{Log}$ 必须在 $(-\infty, 0]$ 上开一刀的原因。
+
+⚠ 指数法则会坏：$\log(z_1 z_2) = \log z_1 + \log z_2$ 只在**模 $2\pi i$** 的意义下成立；$(z^{a})^{b} = z^{ab}$ 一般不成立（两边取的对数分支可能不同）。
+
+📌 分支点：$z = 0$ 与 $\infty$ 是对数的分支点 —— 绕它们一圈，函数值回不到原处。$z^{1/n}$ 的分支点也是这两个。
+
+参考：王晓光《复变函数》· 对数函数与幂函数；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Riemann 曲面　`def.riemann-surface`
+*定义*　定义：Riemann 曲面（多值函数的「定义域」）
+
+**白话**：Riemann 曲面是把多值函数的各支「叠」在一起得到的一层一层的曲面 —— 在它上面，原本多值的函数变成单值全纯函数；平面上看起来的「绕一圈换一支」，在曲面上就是「走到另一层」。
+
+**定义（一维复流形）**：设 $S$ 是连通、Hausdorff、第二可数的拓扑空间，带一族开覆盖 $\{U_{\alpha}\}$ 与同胚
+
+$$\varphi_{\alpha}: U_{\alpha} \to \varphi_{\alpha}(U_{\alpha}) \subset \mathbb{C},$$
+
+使得对任意 $\alpha, \beta$，转移映射 $\varphi_{\beta} \circ \varphi_{\alpha}^{-1}$ 在其定义域上**全纯**。这样的一张 $(S, \{\varphi_{\alpha}\})$ 称为 **Riemann 曲面**。
+
+**多值函数的展开**：若 $F$ 在平面区域上有多个值，令 $S$ 由「点对 $(z, w)$，其中 $w$ 是 $F$ 在 $z$ 处的一个值」连成一个连通空间，投影 $\pi: S \to \mathbb{C}$、$(z, w) \mapsto z$ 在局部是一对一的全纯映射，则 $F$ 提升成 $S$ 上的**单值**全纯函数。
+
+⭐ 例子（只要形状对，不必会证）：
+
+① 对数的曲面是**无穷叶螺旋面**：每绕原点一圈就爬上一层，永不回到原处。
+
+② $z^{1/n}$ 的曲面是 $n$ 叶的，绕原点一圈换一叶，绕 $n$ 圈才回到原处 —— 所以它在 $S$ 上是单值的。
+
+③ Riemann 球面 $\hat{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$ 是最简单的紧 Riemann 曲面：两张坐标卡 $z$ 与 $w = 1/z$，转移映射 $z \mapsto 1/z$ 在 $\mathbb{C}^{\times}$ 上全纯。
+
+⭐ 关键的一句话：**分支切割换成了「层」**。割开平面是为了让映射单值，叠成曲面则是把被割掉的部分再接回去 —— 曲线绕过分支点时，走的其实是另一层。
+
+⚠ 单值化定理（任何 Riemann 曲面都全纯同构于商 $\tilde{S}/\Gamma$，$\tilde{S}$ 是球面、平面或圆盘之一）是深定理，这里只作**定义与例子**，不证。
+
+📌 曲面上「全纯」的意义就靠转移映射：一个函数在每张坐标卡里读出来都全纯，就叫全纯。$\hat{\mathbb{C}}$ 上的全纯函数只有常数，但全纯**映射**可以非常多（$\hat{\mathbb{C}} \to \hat{\mathbb{C}}$ 恰当的就是分式线性变换）。
+
+参考：Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### 调和函数　`def.harmonic`
+*定义*　定义：调和函数
+
+**白话**：二阶偏导连续、并且满足 Laplace 方程 $\Delta u = 0$ 的实值函数。通俗说就是「处处不会比周围更凸也不会更凹」的函数。
+
+设 $\Omega \subset \mathbb{R}^2 \cong \mathbb{C}$ 是区域，$u: \Omega \to \mathbb{R}$ 属于 $C^2$。若
+
+$$\Delta u := \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$$
+
+在 $\Omega$ 上处处成立，称 $u$ 是 $\Omega$ 上的**调和函数**。
+
+等价的刻画（局部）：$u$ 是某个全纯函数的实部（圆盘上总可以，单连通区域上也可以，见「调和函数的共轭」那条）。
+
+⭐ 全纯函数的实部、虚部都调和：由 Cauchy–Riemann 方程 $u_x = v_y$、$u_y = -v_x$，得
+
+$$\Delta u = (u_x)_x + (u_y)_y = (v_y)_x + (-v_x)_y = v_{xy} - v_{yx} = 0,$$
+
+最后一步用了混合偏导相等（$v$ 充分光滑）。
+
+⭐ 例子：$\operatorname{Re} z^n$、$x^2 - y^2$、$\ln|z|$（在 $\mathbb{C}^{\times}$ 上）、$e^{x}\cos y$。
+
+⚠ 反例：$|z|^2 = x^2 + y^2$ 不调和，$\Delta(x^2 + y^2) = 4$。$x^3$ 也不调和，$\Delta x^3 = 6x$。
+
+⚠ 定义只要求 $C^2$，但调和函数自动是 $C^{\infty}$ 且实解析 —— 这是「它是全纯函数的实部」的直接后果。
+
+📌 调和函数没有「全纯」那样的刚性：两个调和函数的乘积一般既不调和也不全纯，$u + v$、$cu$ 才是。
+
+参考：王晓光《复变函数》· 调和函数；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 调和函数的均值性质　`thm.harmonic-mean-value`
+*定理*　定理：调和函数的均值性质
+
+**白话**：调和函数在一点的值，等于它在以该点为心、任意半径的圆周上的平均值；也等于圆盘上的面积平均值。
+
+设 $u$ 在 $D(a, R)$ 上调和，$0 < r < R$。则
+
+$$u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta,$$
+
+并且（面积平均）
+
+$$u(a) = \frac{1}{\pi r^2}\iint_{D(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
+
+⭐ 证明只有两步：把 $u$ 写成全纯函数 $f$ 的实部（圆盘单连通），再对 Cauchy 积分公式 $f(a) = \frac{1}{2\pi}\int_0^{2\pi} f(a + r e^{i\theta})\,\mathrm{d}\theta$ 两边取实部。
+
+⭐ 逆命题也成立：若 $u$ 连续且有圆周均值性质，则 $u$ 调和。所以「均值性质」可以当作调和函数的另一个定义 —— 很多书就是这么做（为了绕开二阶可微）。
+
+⚠ 均值必须对**整个圆周**取，不能只对正上方那几个点取；也不能对任意闭曲线取 —— 那正是 Poisson 公式要回答的事。
+
+⚠ $u$ 只需在 $D(a, r)$ 的**内部**调和，不要求闭圆盘上调和。
+
+📌 均值性质直接推出最大值原理（见「调和函数的最大值原理」那条），也是「调和函数实解析」的出发点（把积分展成幂级数）。
+
+参考：王晓光《复变函数》· 调和函数的均值性质；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### Poisson 积分公式　`thm.poisson-formula`
+*定理*　定理：Poisson 积分公式
+
+**白话**：圆内的取值由边界上的取值**唯一决定**，而且是有明确公式的加权平均 —— 权重就是 Poisson 核，它在边界附近会「尖起来」。
+
+设 $f$ 在 $D(0, R)$ 的邻域上全纯，$u = \operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，
+
+$$u(z) = \frac{1}{2\pi}\int_0^{2\pi} \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}\, u(r e^{i\theta})\,\mathrm{d}\theta.$$
+
+权函数
+
+$$P_r(z, \theta) := \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}$$
+
+称为 **Poisson 核**。它对固定的 $z$ 满足 $P_r \ge 0$、且 $\frac{1}{2\pi}\int_0^{2\pi} P_r\,\mathrm{d}\theta = 1$。
+
+⭐ 用途：解圆盘上的 **Dirichlet 问题** —— 给定边界上的连续函数 $b$，把上面公式里的 $u(r e^{i\theta})$ 换成 $b$，得到的函数在圆内调和、在内部趋于边界值时趋于 $b$。调和函数在内部的取值「由边界完全决定」，这就是全部内容。
+
+⭐ 核的形状：$z = 0$ 时 $P_r = 1$，公式退化成均值性质；$|z| \to r$ 且方向对准 $e^{i\theta_0}$ 时核在该处爆到 $\infty$ 而在别处趋零 —— 所以说它像一个「近似单位」，把权重堆到边界上的对应点。
+
+⚠ $\operatorname{Re} f$ 版本与 $f$ 版本都成立（核是**实值**的，所以 $f$ 的公式可以直接取实部）。
+
+📌 由 $P_r \ge 0$ 与 $\int P_r = 1$ 立得：调和函数满足**极值不等式** $|u(z)| \le \max_{|\zeta| = r}|u(\zeta)|$，这正是最大值原理。
+
+参考：王晓光《复变函数》· Poisson 积分公式；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 调和函数的共轭　`thm.harmonic-conjugate`
+*定理*　定理：调和函数局部是全纯函数的实部
+
+**白话**：在单连通区域上，每个调和函数都是某个全纯函数的实部 —— 那个虚部叫它的「共轭调和函数」，只差一个常数。
+
+设 $\Omega$ 是**单连通**区域，$u$ 在 $\Omega$ 上调和。则存在 $\Omega$ 上的全纯函数 $f$，使
+
+$$\operatorname{Re} f = u.$$
+
+并且 $v$（**共轭调和函数**，满足 $v_x = -u_y$、$v_y = u_x$）在相差一个**实**常数的意义下唯一 —— 等价地，$f = u + iv$ 在相差一个**纯虚**常数的意义下唯一。
+
+⭐ 证明是「闭 1-形式必恰当」：令 $\omega = -u_y\,\mathrm{d}x + u_x\,\mathrm{d}y$，则
+
+$$\mathrm{d}\omega = (u_{xx} + u_{yy})\,\mathrm{d}x \wedge \mathrm{d}y = 0,$$
+
+$\Omega$ 单连通 $\implies$ 存在 $v$ 使 $\mathrm{d}v = \omega$，即 $v_x = -u_y$、$v_y = u_x$；这两式正是 $(u, v)$ 的 Cauchy–Riemann 方程，故 $f = u + iv$ 全纯。
+
+⭐ 唯一性：若 $\operatorname{Re} f_1 = \operatorname{Re} f_2 = u$，则 $g = f_1 - f_2$ 纯虚且全纯；写 $g = iy$（$y$ 实值），Cauchy–Riemann 给 $y_x = y_y = 0$，故 $y$ 是常数。
+
+⚠ 单连通**不能去掉**：$u(z) = \ln|z|$ 在 $\mathbb{C}^{\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\operatorname{Log}$ 本身，而 $\operatorname{Log}$ 是多值的。绕原点一圈，$\oint \omega = 2\pi \ne 0$。
+
+📌 反方向（全纯 $\implies$ 实部调和）**不需要**单连通，只要 Cauchy–Riemann 方程。所以「调和」比「全纯的实部」宽一点点，缺的正是拓扑条件。
+
+参考：王晓光《复变函数》· 共轭调和函数；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 调和函数的最大值原理　`thm.harmonic-maximum`
+*定理*　定理：调和函数的最大值原理
+
+**白话**：非常数的调和函数在区域内部既取不到最大值，也取不到最小值 —— 要取极值只能跑到边界上去。
+
+设 $u$ 在区域 $\Omega$ 上调和且**不是**常数。则 $u$ 在 $\Omega$ 内既取不到最大值，也取不到最小值。
+
+等价说法：若 $u$ 在 $\Omega$ 内部某点达到最大值（或最小值），则 $u$ 是常数。
+
+⭐ 这是**双边**的原理：最大值和最小值同时被排除。原因是 $-u$ 也调和，对它用一遍就得到最小值那一半。全纯函数没有这个对称性 —— 全纯的 $|f|$ 有最大值原理，但 $f$ 本身可以取到 $0$。
+
+⭐ 证明靠均值性质：若 $u(a)$ 是内部最大 $M$，则
+
+$$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta \le M,$$
+
+被积函数处处 $\le M$ 而平均值恰是 $M$ $\implies$ 整个圆周上 $u \equiv M$。于是取值集合 $\{\, u = M \,\}$ 既开又闭，由连通性等于整个 $\Omega$。
+
+⚠ 「不是常数」这个前提不能省：常函数当然处处是最大值。
+
+⭐ 推论（有用的形式）：$|u|$ 在内部取不到最大值，除非 $u$ 是常数 —— 因为 $|u|$ 的最大值要么是 $u$ 的最大值要么是 $-u$ 的最大值。
+
+📌 与全纯的最大模原理对照：那边限制的是 $|f|$，这边限制的是 $u$ 本身；而且这边两头都堵 —— 对 $u$ 用一遍得「取不到最大」，对 $-u$ 用一遍得「取不到最小」。所以调和函数的极值**只能**出在边界上，这也是 Dirichlet 问题能只谈「边值」的根据。
+
+参考：王晓光《复变函数》· 调和函数的最大值原理；Ahlfors, Complex Analysis · 调和函数与 Poisson 公式
+
+#### 整函数与亚纯函数　`def.entire-meromorphic`
+*定义*　定义：整函数与亚纯函数
+
+**白话**：整函数就是在整个复平面上处处全纯的函数；亚纯函数是「除了一堆孤立极点之外处处全纯」的函数，也就是局部上两个全纯函数的商。
+
+**整函数**：$f$ 在 $\mathbb{C}$ 上处处全纯。由 Liouville 定理，有界的整函数必为常数；非常数的整函数在 $\infty$ 处有奇点（多项式是极点，$e^{z}$ 是本性奇点）。
+
+**亚纯函数**：设 $\Omega$ 是区域。若 $f$ 在 $\Omega$ 上除一个**孤立**点集 $P$ 外全纯，且 $P$ 的每一点都是 $f$ 的极点，称 $f$ 在 $\Omega$ 上**亚纯**。
+
+等价刻画：对每个 $a \in \Omega$，存在 $a$ 的邻域 $U$ 与 $U$ 上的全纯函数 $p, q$（$q \not\equiv 0$），使 $f = p/q$ 在 $U$ 上成立。
+
+⭐ 球面上的观点最干净：把 $\Omega$ 换成 $\hat{\mathbb{C}}$，亚纯函数就是 $\hat{\mathbb{C}} \to \hat{\mathbb{C}}$ 的全纯映射 —— 极点就是被映到 $\infty$ 的点。$\hat{\mathbb{C}}$ 上的亚纯函数恰是有理函数。
+
+⭐ 例子：$1/\sin z$（极点在 $k\pi$）、$\tan z$、$\Gamma$ 函数（极点在 $0, -1, -2, \ldots$）。
+
+⚠ 本性奇点**不算**亚纯：$e^{1/z}$ 在 $0$ 附近的行为不是极点，所以 $e^{1/z}$ 在含 $0$ 的区域上不是亚纯的。亚纯要求每个坏点都是极点。
+
+⚠ 「孤立」也不能省：若奇点有聚点，那不叫极点。
+
+📌 极点处的 Laurent 展开只有有限个负幂项；亚纯函数在极点附近就是「有限阶的爆破」。整函数是亚纯函数在 $P = \emptyset$ 时的特例。
+
+参考：王晓光《复变函数》· 整函数与亚纯函数；Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm
+
+#### Mittag-Leffler 定理　`thm.mittag-leffler`
+*定理*　定理：Mittag-Leffler 定理（只陈述）
+
+**白话**：给定一串没有聚点的点和每个点处的一截「极点主部」，总能造出一个亚纯函数，使它在这些点处的行为恰好就是给定的那些主部。
+
+设 $\Omega \subset \mathbb{C}$ 是区域，$\{a_k\} \subset \Omega$ 在 $\Omega$ 内没有聚点，每个 $a_k$ 配一个主部
+
+$$P_k\left( \frac{1}{z - a_k} \right) = \sum_{j=1}^{m_k} \frac{c_{k j}}{(z - a_k)^{j}}.$$
+
+则存在 $\Omega$ 上的亚纯函数 $f$，它恰以 $\{a_k\}$ 为极点（$a_k$ 处的阶不超过 $m_k$），且 $f - P_k$ 在 $a_k$ 处全纯，即 $a_k$ 处的主部正是 $P_k$；这样的 $f$ 在相差一个 $\Omega$ 上整函数的意义下唯一。
+
+⭐ 一句话：这是「按主部插值」的存在定理。Weierstrass 乘积定理是它的**零点**版，Mittag-Leffler 是**极点**版 —— 一个指定零点的位置与重数，一个指定极点的位置与主部。
+
+⚠ 本条只**陈述**结论。完整证明要用 Runge 逼近或 Weierstrass 收敛因子逐项修正，属于逼近论，这里不展开；边上只记证明的骨架。
+
+⭐ 收敛的障碍在哪：极点无穷多个时 $\sum_k P_k$ 一般处处发散。修正的办法是逐项减去一个在 $a_k$ 附近全纯的函数（通常是 $P_k$ 在 $a_k$ 处的 Taylor 多项式），把它在越来越大的紧集上压得足够小。
+
+⭐ 例子（经典的两个）：
+
+$$\pi^2 \csc^2(\pi z) = \sum_{n \in \mathbb{Z}} \frac{1}{(z - n)^2}, \qquad \pi \cot(\pi z) = \frac{1}{z} + \sum_{n \ne 0} \left( \frac{1}{z - n} + \frac{1}{n} \right).$$
+
+第二个里的 $+1/n$ 就是收敛因子。
+
+📌 与留数的接口：主部里的一次项系数 $c_{k 1}$ 正是 $\operatorname{Res}(f, a_k)$，所以 Mittag-Leffler 也可以读成「任意指定留数与高阶主部」。
+
+参考：王晓光《复变函数》· Mittag-Leffler 定理；Stein–Shakarchi, Complex Analysis · 整函数与亚纯函数
+
+#### Jordan 引理　`lem.jordan`
+*引理*　引理：Jordan 引理（大圆弧上的指数衰减）
+
+**白话**：上半平面的大半圆弧上，$e^{iaz}$（$a > 0$）在圆弧顶部指数衰减；只要 $f$ 在弧上一致趋于零，$f e^{iaz}$ 在弧上的积分就趋于零 —— 比「弧长乘最大模」的粗糙估计强得多。
+
+设 $f$ 在 $\{\, \operatorname{Im} z \ge 0,\ |z| \ge R_0 \,\}$ 上连续，且
+
+$$\lim_{R \to \infty}\ \max_{|z| = R,\ \operatorname{Im} z \ge 0} |f(z)| = 0.$$
+
+则对任意 $a > 0$，以 $C_R$ 记上半平面内半径为 $R$ 的半圆弧（从 $R$ 到 $-R$，逆时针），有
+
+$$\lim_{R \to \infty} \int_{C_R} f(z)\, e^{i a z}\,\mathrm{d}z = 0.$$
+
+定量形式：若 $|f(z)| \le M_R$ 于 $C_R$ 上，则
+
+$$\left| \int_{C_R} f(z)\, e^{i a z}\,\mathrm{d}z \right| \le \frac{\pi M_R}{a}.$$
+
+⭐ 关键不等式 $\sin\theta \ge \dfrac{2\theta}{\pi}$（$0 \le \theta \le \pi/2$）：在 $C_R$ 上 $z = R e^{i\theta}$，$\operatorname{Im} z = R\sin\theta$，故
+
+$$\left| e^{i a z} \right| = e^{-a\, \operatorname{Im} z} = e^{-a R \sin\theta} \le e^{-2 a R \theta/\pi}.$$
+
+沿 $\theta$ 积分得 $\dfrac{2}{a R}$ 量级，再乘弧长 $\pi R$ 与 $M_R$，得 $\pi M_R/a$。**注意这里并没有用到 $R$ 很大** —— 衰减全来自 $e^{iaz}$。
+
+⭐ 与「弧长乘最大模」的对比：只对 $f$ 用 ML 估计得 $\pi R M_R$，只有当 $M_R = O(1/R^{1+\delta})$ 时才趋零；Jordan 引理把要求降到 $M_R \to 0$，也就是 $f$ 只要「不增长」就够。
+
+⚠ $a > 0$ 不可省：$a < 0$ 时 $e^{iaz}$ 在上半平面里指数**增长**，要改到下半平面（顺时针）去做，符号跟着变。
+
+📌 完整计算例（第三个标准型，$a > 0$）：
+
+$$\int_{-\infty}^{\infty} \frac{e^{i a x}}{x^2 + 1}\,\mathrm{d}x.$$
+
+被积函数在 $|z| = R$ 上一致趋于零（$|1/(z^2 + 1)| \le 2/R^2$），Jordan 引理把大弧的贡献抹掉，剩下的就是留数：
+
+$$\int_{-\infty}^{\infty} \frac{e^{i a x}}{x^2 + 1}\,\mathrm{d}x = 2\pi i \, \operatorname{Res}\left( \frac{e^{i a z}}{z^2 + 1},\, i \right) = 2\pi i \cdot \frac{e^{-a}}{2 i} = \pi e^{-a}.$$
+
+取实部、虚部得到两个经典积分（$a > 0$）：
+
+$$\int_{-\infty}^{\infty} \frac{\cos(a x)}{x^2 + 1}\,\mathrm{d}x = \pi e^{-a}, \qquad \int_{-\infty}^{\infty} \frac{\sin(a x)}{x^2 + 1}\,\mathrm{d}x = 0,$$
+
+第二式为 $0$ 是因为被积函数是奇函数。这里 $M_R \le 2/R^2$，这个幂次其实够粗糙的 ML 估计用；但把分母换成一次式（比如 $z$），就只剩 Jordan 引理这一条路 —— 那正是本引理存在的理由。
+
+参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 实轴上有理函数的积分　`thm.integral-rational`
+*定理*　定理：用留数计算实轴上有理函数的积分
+
+**白话**：分母比分子至少高两次、并且在实轴上没有零点的有理函数，它在整条实轴上的积分等于 $2\pi i$ 乘上半平面所有极点的留数之和。
+
+设 $R(x) = P(x)/Q(x)$，$P, Q$ 是实系数多项式，$\deg Q \ge \deg P + 2$，且 $Q$ 在 $\mathbb{R}$ 上无零点。则
+
+$$\int_{-\infty}^{\infty} R(x)\,\mathrm{d}x = 2\pi i \sum_{\operatorname{Im} a_k > 0} \operatorname{Res}(R, a_k),$$
+
+右端对上半平面内的全部极点求和。因为 $R$ 取实值，这个和自动是实数。
+
+⭐ 完整计算一：
+
+$$\int_{-\infty}^{\infty} \frac{\mathrm{d}x}{(x^2 + 1)^2} = \frac{\pi}{2}.$$
+
+上半平面只有一个极点 $i$，阶为 $2$。用极点留数公式（$m = 2$）：
+
+$$\operatorname{Res}\left( \frac{1}{(z^2+1)^2},\, i \right) = \frac{\mathrm{d}}{\mathrm{d}z}\left[ \frac{(z - i)^2}{(z^2+1)^2} \right]_{z=i} = \frac{\mathrm{d}}{\mathrm{d}z}\left[ \frac{1}{(z+i)^2} \right]_{z=i} = \frac{-2}{(2i)^3} = \frac{1}{4i}.$$
+
+于是积分 $= 2\pi i \cdot \dfrac{1}{4i} = \dfrac{\pi}{2}$。$\checkmark$
+
+⭐ 完整计算二：
+
+$$\int_{-\infty}^{\infty} \frac{\mathrm{d}x}{x^4 + 1} = \frac{\pi}{\sqrt{2}}.$$
+
+$x^4 + 1$ 的根是 $e^{i\pi/4}, e^{3i\pi/4}$（上半平面两个）与它们的共轭。一阶极点的留数：由 $R = 1/(z^4+1)$、$R = p/q$ 且 $q$ 在一阶零点 $a$ 处，$\operatorname{Res}(R, a) = 1/(4a^3) = -a/4$（因为 $a^4 = -1$）。两只相加：
+
+$$\sum \operatorname{Res} = -\frac{1}{4}\left( e^{i\pi/4} + e^{3i\pi/4} \right) = -\frac{1}{4}\cdot\frac{\sqrt{2}}{2}\cdot 2i = -\frac{\sqrt{2}}{4}\, i,$$
+
+故积分 $= 2\pi i \cdot \left( -\dfrac{\sqrt{2}}{4} i \right) = \dfrac{\pi\sqrt{2}}{2} = \dfrac{\pi}{\sqrt{2}}$。$\checkmark$
+
+⚠ $\deg Q \ge \deg P + 2$ 是硬条件：只高一次时 $\int R$ 是条件收敛的**主值**，大圆弧不再趋于零，公式要改。
+
+⚠ 实轴上的极点必须不存在（否则积分发散）；若有，需要在小半圆上挖洞，取主值。
+
+参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
+
+#### 三角有理函数的积分　`thm.integral-trig`
+*定理*　定理：用留数计算三角有理函数的定积分
+
+**白话**：$\cos\theta$、$\sin\theta$ 的有理式在整圈上的积分，用 $z = e^{i\theta}$ 换成单位圆上的围道积分，就化成了留数计算。
+
+设 $R(u, v)$ 是 $u, v$ 的有理函数，在圆周（即 $[0, 2\pi]$ 上对应的全部 $\theta$）处无极点。则
+
+$$\int_0^{2\pi} R(\cos\theta, \sin\theta)\,\mathrm{d}\theta = \oint_{|z| = 1} R\left( \frac{z + z^{-1}}{2},\ \frac{z - z^{-1}}{2 i} \right) \frac{\mathrm{d}z}{i z}.$$
+
+⭐ 代换的三个要素：$z = e^{i\theta}$、$\cos\theta = \dfrac{z + z^{-1}}{2}$、$\sin\theta = \dfrac{z - z^{-1}}{2i}$、$\mathrm{d}\theta = \dfrac{\mathrm{d}z}{i z}$。于是整圈 $\theta$ 变成单位圆一圈（逆时针），三角有理式变成 $z$ 的有理函数。
+
+⭐ 完整计算：对 $a > 1$，
+
+$$\int_0^{2\pi} \frac{\mathrm{d}\theta}{a + \cos\theta} = \frac{2\pi}{\sqrt{a^2 - 1}}.$$
+
+代换后
+
+$$\int_0^{2\pi} \frac{\mathrm{d}\theta}{a + \cos\theta} = \oint_{|z|=1} \frac{1}{a + (z + z^{-1})/2}\cdot\frac{\mathrm{d}z}{i z} = \frac{2}{i}\oint_{|z|=1} \frac{\mathrm{d}z}{z^2 + 2 a z + 1}.$$
+
+分母的根是 $z_{\pm} = -a \pm \sqrt{a^2 - 1}$，乘积为 $1$，故恰有一个在单位圆内：$z_{+} = -a + \sqrt{a^2 - 1}$（$|z_{+}| < 1$）。一阶留数
+
+$$\operatorname{Res}\left( \frac{1}{z^2 + 2az + 1},\, z_{+} \right) = \frac{1}{2 z_{+} + 2a} = \frac{1}{2\sqrt{a^2 - 1}}.$$
+
+于是
+
+$$\frac{2}{i}\cdot 2\pi i \cdot \frac{1}{2\sqrt{a^2 - 1}} = \frac{4\pi}{2\sqrt{a^2 - 1}} = \frac{2\pi}{\sqrt{a^2 - 1}}. \checkmark$$
+
+⭐ 立刻的检验：$a = 2$ 时得 $2\pi/\sqrt{3}$，与直接查表一致。
+
+⚠ 条件 $a > 1$ 是为了「分母在整圈上不为零」；$a = 1$ 时 $\theta = \pi$ 处分母为零，积分发散（$\int \mathrm{d}\theta/(1 + \cos\theta)$ 在 $\pi$ 附近像 $\mathrm{d}\theta/\theta^2$）。
+
+📌 这类积分的通病：代换后分子分母可能同乘 $z^{n}$，必须先乘开看清楚有几个根在单位圆内 —— 只有内部的极点才进留数。
+
+参考：王晓光《复变函数》第 23–24 章 · 用留数计算实积分；Ahlfors, Complex Analysis, Ch. 4 · Complex Integration
 
 ## 星系：微分几何（Differential Geometry）
 > 曲面的活动标架与结构方程、第一与第二基本形式、Gauss–Codazzi、曲率与测地线的内蕴几何。

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 23 · theorem · cluster Complex Analysis (`analysis.complex`) · Mathematical Analysis
+layer 23 · theorem · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.liouville.md` and `proofs/`.

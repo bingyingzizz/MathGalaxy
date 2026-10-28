@@ -1,6 +1,6 @@
 # Schwarz 引理　`lem.schwarz`
 引理：Schwarz 引理
-layer 22 · 引理 · 复变函数 · 数学分析
+layer 22 · 引理 · 复变函数 · 复变函数
 [在星图里打开](../#n=lem.schwarz)　·　[节点索引](../index.md)
 
 **白话**：把单位圆盘映到自身、并且固定原点的全纯映射，一定被 $z \mapsto z$ 压住：像点比原像更靠近圆心。

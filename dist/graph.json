@@ -6,9 +6,9 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-27T12:19:56.788Z",
+  "generated": "2026-10-28T05:38:35.228Z",
   "counts": {
-   "regions": 12,
+   "regions": 13,
    "clusters": 77,
    "nodes": 1214,
    "edges": 2226,
@@ -85,7 +85,7 @@
    "en": "Mathematical Analysis",
    "desc": "从实数出发的初等分析：极限与完备性、连续与紧性、中值定理与 Taylor、多元微分与逆映射定理、级数、一致收敛，顶点是 Riemann 积分与 Newton–Leibniz 公式。",
    "color": "#3AA8D8",
-   "nodeCount": 336
+   "nodeCount": 292
   },
   {
    "id": "analysis-measure",
@@ -126,6 +126,14 @@
    "desc": "adic 空间与解析环上的固态模：Huber pair → Spa → 结构层 → ∞-范畴粘合 → 6-函子形式与相干对偶。",
    "color": "#7A4E9E",
    "nodeCount": 15
+  },
+  {
+   "id": "complex",
+   "name": "复变函数",
+   "en": "Complex Analysis",
+   "desc": "全纯函数与 Cauchy–Riemann、Cauchy 定理与积分公式、幂级数与 Laurent 展开、留数定理与围道积分、共形映射与调和函数。",
+   "color": "#3E7FB8",
+   "nodeCount": 44
   },
   {
    "id": "diffgeom",
@@ -2007,7 +2015,7 @@
    "id": "analysis.complex",
    "name": "复变函数",
    "en": "Complex Analysis",
-   "parent": "analysis",
+   "parent": "complex",
    "desc": "从复数与复平面出发：全纯函数与 Cauchy–Riemann、复积分与 Cauchy 定理、幂级数与解析性、留数定理与围道积分、共形映射。",
    "nodeCount": 44,
    "nodes": [
@@ -17401,9 +17409,9 @@
     }
    },
    "en_page": "nodes/prop.complex-triangle.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 16,
@@ -17442,9 +17450,9 @@
     }
    },
    "en_page": "nodes/def.holomorphic.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 16,
@@ -17484,9 +17492,9 @@
     }
    },
    "en_page": "nodes/def.complex-partial.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 16,
@@ -17525,9 +17533,9 @@
     }
    },
    "en_page": "nodes/prop.complex-partial-rules.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 17,
@@ -17566,9 +17574,9 @@
     }
    },
    "en_page": "nodes/thm.cauchy-riemann.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 17,
@@ -17608,9 +17616,9 @@
     }
    },
    "en_page": "nodes/prop.conformal-iff.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -17649,9 +17657,9 @@
     }
    },
    "en_page": "nodes/def.contour-integral.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 17,
@@ -17690,9 +17698,9 @@
     }
    },
    "en_page": "nodes/lem.cauchy-green.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -17731,9 +17739,9 @@
     }
    },
    "en_page": "nodes/lem.goursat-triangle.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -17772,9 +17780,9 @@
     }
    },
    "en_page": "nodes/thm.cauchy-goursat.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 19,
@@ -17813,9 +17821,9 @@
     }
    },
    "en_page": "nodes/thm.cauchy-integral-formula.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 20,
@@ -17853,9 +17861,9 @@
     }
    },
    "en_page": "nodes/thm.cauchy-higher-derivative.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -17894,9 +17902,9 @@
     }
    },
    "en_page": "nodes/thm.cauchy-inequality.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 22,
@@ -17935,9 +17943,9 @@
     }
    },
    "en_page": "nodes/thm.liouville.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 23,
@@ -17976,9 +17984,9 @@
     }
    },
    "en_page": "nodes/thm.max-modulus.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -18017,9 +18025,9 @@
     }
    },
    "en_page": "nodes/thm.taylor-complex.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -18059,9 +18067,9 @@
     }
    },
    "en_page": "nodes/def.laurent-series.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 16,
@@ -18100,9 +18108,9 @@
     }
    },
    "en_page": "nodes/thm.laurent.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -18141,9 +18149,9 @@
     }
    },
    "en_page": "nodes/def.isolated-singularity.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 17,
@@ -18183,9 +18191,9 @@
     }
    },
    "en_page": "nodes/thm.riemann-removable.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -18224,9 +18232,9 @@
     }
    },
    "en_page": "nodes/def.residue.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -18265,9 +18273,9 @@
     }
    },
    "en_page": "nodes/prop.residue-at-pole.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 19,
@@ -18306,9 +18314,9 @@
     }
    },
    "en_page": "nodes/thm.residue.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 20,
@@ -18347,9 +18355,9 @@
     }
    },
    "en_page": "nodes/def.mobius.en.md",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 16,
@@ -19956,9 +19964,9 @@
    "type": "theorem",
    "label": "Morera 定理",
    "title": "定理：Morera 定理（Cauchy 定理的逆）",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -19980,9 +19988,9 @@
    "type": "definition",
    "label": "绕数",
    "title": "定义：绕数（闭曲线关于一点的指数）",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -20004,9 +20012,9 @@
    "type": "theorem",
    "label": "辐角原理",
    "title": "定理：辐角原理",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -20030,9 +20038,9 @@
    "type": "theorem",
    "label": "Rouché 定理",
    "title": "定理：Rouché 定理",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 22,
@@ -20053,9 +20061,9 @@
    "type": "theorem",
    "label": "Hurwitz 定理",
    "title": "定理：Hurwitz 定理（零点的极限）",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 23,
@@ -20077,9 +20085,9 @@
    "type": "lemma",
    "label": "Schwarz 引理",
    "title": "引理：Schwarz 引理",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 22,
@@ -20101,9 +20109,9 @@
    "type": "theorem",
    "label": "Schwarz–Pick 定理",
    "title": "定理：Schwarz–Pick 定理",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 23,
@@ -20125,9 +20133,9 @@
    "type": "definition",
    "label": "多值函数与分支",
    "title": "定义：多值函数、分支与分支切割",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 17,
@@ -20150,9 +20158,9 @@
    "type": "definition",
    "label": "对数与幂的分支",
    "title": "定义：复对数、复幂及其分支",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -20175,9 +20183,9 @@
    "type": "definition",
    "label": "Riemann 曲面",
    "title": "定义：Riemann 曲面（多值函数的「定义域」）",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -20199,9 +20207,9 @@
    "type": "definition",
    "label": "调和函数",
    "title": "定义：调和函数",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 17,
@@ -20222,9 +20230,9 @@
    "type": "theorem",
    "label": "调和函数的均值性质",
    "title": "定理：调和函数的均值性质",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -20245,9 +20253,9 @@
    "type": "theorem",
    "label": "Poisson 积分公式",
    "title": "定理：Poisson 积分公式",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -20269,9 +20277,9 @@
    "type": "theorem",
    "label": "调和函数的共轭",
    "title": "定理：调和函数局部是全纯函数的实部",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -20293,9 +20301,9 @@
    "type": "theorem",
    "label": "调和函数的最大值原理",
    "title": "定理：调和函数的最大值原理",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 22,
@@ -20316,9 +20324,9 @@
    "type": "definition",
    "label": "整函数与亚纯函数",
    "title": "定义：整函数与亚纯函数",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -20340,9 +20348,9 @@
    "type": "theorem",
    "label": "Mittag-Leffler 定理",
    "title": "定理：Mittag-Leffler 定理（只陈述）",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 19,
@@ -20364,9 +20372,9 @@
    "type": "lemma",
    "label": "Jordan 引理",
    "title": "引理：Jordan 引理（大圆弧上的指数衰减）",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 18,
@@ -20388,9 +20396,9 @@
    "type": "theorem",
    "label": "实轴上有理函数的积分",
    "title": "定理：用留数计算实轴上有理函数的积分",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,
@@ -20412,9 +20420,9 @@
    "type": "theorem",
    "label": "三角有理函数的积分",
    "title": "定理：用留数计算三角有理函数的定积分",
-   "region": "analysis",
+   "region": "complex",
    "regions": [
-    "analysis"
+    "complex"
    ],
    "cluster": "analysis.complex",
    "layer": 21,

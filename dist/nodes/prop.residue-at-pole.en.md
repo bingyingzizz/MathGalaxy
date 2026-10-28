@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · proposition · cluster Complex Analysis (`analysis.complex`) · Mathematical Analysis
+layer 19 · proposition · cluster Complex Analysis (`analysis.complex`) · Complex Analysis
 names: `Residue at a Pole` (short) · `Residue Formula at a Pole` (full)
 
 ## Statement and proof

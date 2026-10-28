@@ -29,7 +29,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Morera 定理',
       title: '定理：Morera 定理（Cauchy 定理的逆）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Morera', '全纯判据'],
       refs: ['王晓光《复变函数》· Cauchy 定理的逆命题', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration', 'Stein–Shakarchi, Complex Analysis, Ch. 2 · Cauchy’s Theorem and Its Applications'],
       statement: [
@@ -61,7 +61,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '绕数',
       title: '定义：绕数（闭曲线关于一点的指数）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '绕数', '指数', '辐角'],
       refs: ['王晓光《复变函数》· 辐角原理（曲线的绕数）', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -99,7 +99,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '辐角原理',
       title: '定理：辐角原理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '辐角原理', '零点', '极点', '绕数'],
       refs: ['王晓光《复变函数》· 辐角原理', 'Ahlfors, Complex Analysis · 辐角原理与 Rouché 定理', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -129,7 +129,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Rouché 定理',
       title: '定理：Rouché 定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Rouché', '零点个数'],
       refs: ['王晓光《复变函数》· Rouché 定理', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -157,7 +157,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Hurwitz 定理',
       title: '定理：Hurwitz 定理（零点的极限）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Hurwitz', '零点', '内闭一致收敛'],
       refs: ['王晓光《复变函数》· Hurwitz 定理', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -185,7 +185,7 @@ window.MG = window.MG || {};
       type: 'lemma',
       label: 'Schwarz 引理',
       title: '引理：Schwarz 引理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['引理', 'Schwarz', '单位圆盘', '最大模原理'],
       refs: ['王晓光《复变函数》· Schwarz 引理', 'Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping'],
       statement: [
@@ -217,7 +217,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Schwarz–Pick 定理',
       title: '定理：Schwarz–Pick 定理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Schwarz–Pick', '双曲度量', '单位圆盘'],
       refs: ['王晓光《复变函数》· Schwarz–Pick 定理', 'Ahlfors, Complex Analysis, Ch. 6 · Conformal Mapping'],
       statement: [
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '多值函数与分支',
       title: '定义：多值函数、分支与分支切割',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '多值函数', '分支', '分支切割'],
       refs: ['王晓光《复变函数》· 多值函数与分支', 'Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -283,7 +283,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '对数与幂的分支',
       title: '定义：复对数、复幂及其分支',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '对数', '幂函数', '主值', '分支切割'],
       refs: ['王晓光《复变函数》· 对数函数与幂函数', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -321,7 +321,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: 'Riemann 曲面',
       title: '定义：Riemann 曲面（多值函数的「定义域」）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', 'Riemann 曲面', '复流形', '单值化'],
       refs: ['Ahlfors, Complex Analysis · 多值函数与 Riemann 曲面', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -359,7 +359,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '调和函数',
       title: '定义：调和函数',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '调和函数', 'Laplace 方程'],
       refs: ['王晓光《复变函数》· 调和函数', 'Ahlfors, Complex Analysis · 调和函数与 Poisson 公式'],
       statement: [
@@ -395,7 +395,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '调和函数的均值性质',
       title: '定理：调和函数的均值性质',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '调和函数', '均值性质'],
       refs: ['王晓光《复变函数》· 调和函数的均值性质', 'Ahlfors, Complex Analysis · 调和函数与 Poisson 公式'],
       statement: [
@@ -427,7 +427,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Poisson 积分公式',
       title: '定理：Poisson 积分公式',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Poisson 公式', 'Dirichlet 问题', '调和函数'],
       refs: ['王晓光《复变函数》· Poisson 积分公式', 'Ahlfors, Complex Analysis · 调和函数与 Poisson 公式'],
       statement: [
@@ -459,7 +459,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '调和函数的共轭',
       title: '定理：调和函数局部是全纯函数的实部',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '调和函数', '共轭调和', 'Cauchy–Riemann'],
       refs: ['王晓光《复变函数》· 共轭调和函数', 'Ahlfors, Complex Analysis · 调和函数与 Poisson 公式'],
       statement: [
@@ -491,7 +491,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '调和函数的最大值原理',
       title: '定理：调和函数的最大值原理',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '最大值原理', '调和函数'],
       refs: ['王晓光《复变函数》· 调和函数的最大值原理', 'Ahlfors, Complex Analysis · 调和函数与 Poisson 公式'],
       statement: [
@@ -525,7 +525,7 @@ window.MG = window.MG || {};
       type: 'definition',
       label: '整函数与亚纯函数',
       title: '定义：整函数与亚纯函数',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定义', '整函数', '亚纯函数', '极点'],
       refs: ['王晓光《复变函数》· 整函数与亚纯函数', 'Stein–Shakarchi, Complex Analysis, Ch. 3 · Meromorphic Functions and the Logarithm'],
       statement: [
@@ -555,7 +555,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: 'Mittag-Leffler 定理',
       title: '定理：Mittag-Leffler 定理（只陈述）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', 'Mittag-Leffler', '主部', '亚纯函数'],
       refs: ['王晓光《复变函数》· Mittag-Leffler 定理', 'Stein–Shakarchi, Complex Analysis · 整函数与亚纯函数'],
       statement: [
@@ -591,7 +591,7 @@ window.MG = window.MG || {};
       type: 'lemma',
       label: 'Jordan 引理',
       title: '引理：Jordan 引理（大圆弧上的指数衰减）',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['引理', 'Jordan', '围道积分', '实积分'],
       refs: ['王晓光《复变函数》第 23–24 章 · 用留数计算实积分', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -642,7 +642,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '实轴上有理函数的积分',
       title: '定理：用留数计算实轴上有理函数的积分',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '留数', '实积分', '有理函数'],
       refs: ['王晓光《复变函数》第 23–24 章 · 用留数计算实积分', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [
@@ -686,7 +686,7 @@ window.MG = window.MG || {};
       type: 'theorem',
       label: '三角有理函数的积分',
       title: '定理：用留数计算三角有理函数的定积分',
-      regions: ['analysis'],
+      regions: ['complex'],
       tags: ['定理', '留数', '实积分', '三角有理函数'],
       refs: ['王晓光《复变函数》第 23–24 章 · 用留数计算实积分', 'Ahlfors, Complex Analysis, Ch. 4 · Complex Integration'],
       statement: [

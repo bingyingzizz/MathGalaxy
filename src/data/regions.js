@@ -154,6 +154,18 @@ MG.regions = [
     desc: 'adic 空间与解析环上的固态模：Huber pair → Spa → 结构层 → ∞-范畴粘合 → 6-函子形式与相干对偶。'
   },
   {
+    id: 'complex',
+    name: '复变函数',
+    en: 'Complex Analysis',
+    color: '#3E7FB8',
+    /* 2026-10-27 从「分析」里拆出来：44 个点，自成一套（全纯 → 积分 → 级数 → 留数 → 共形）。
+       放在分析与代数之间 —— 它从分析拿微积分与幂级数，向代数借多项式与代数闭包，
+       和几何共享共形/Riemann 曲面那一侧。 */
+    center: { x: -820, y: 420 },
+    radius: 440,
+    desc: '全纯函数与 Cauchy–Riemann、Cauchy 定理与积分公式、幂级数与 Laurent 展开、留数定理与围道积分、共形映射与调和函数。'
+  },
+  {
     id: 'diffgeom',
     name: '微分几何',
     en: 'Differential Geometry',
