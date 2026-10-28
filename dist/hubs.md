@@ -5,8 +5,8 @@
 数据根 `./`：每项都能顺着读 `nodes/<id>.md`。
 
 - **6** `lem.zorn` 佐恩引理 · layer 9 · 选择原理
-- **6** `def.submanifold-volume` 诱导体积 · layer 28 · 微分流形
-- **6** `thm.de-rham` de Rham 定理 · layer 29 · 微分流形
+- **6** `def.submanifold-volume` 诱导体积 · layer 28 · 微分形式、积分与 de Rham
+- **6** `thm.de-rham` de Rham 定理 · layer 29 · 微分形式、积分与 de Rham
 - **5** `thm.first-iso` 第一同构定理（Noether） · layer 9 · 代数结构
 - **5** `def.cauchy-null` Cauchy 列与零列 · layer 11 · 数系的构造
 - **5** `def.representable` 表示函子 · layer 12 · 预层与米田

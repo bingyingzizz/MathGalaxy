@@ -1,9 +1,9 @@
 # 切分布　`def.tangent-distribution`
 切分布与光滑性
-layer 20 · 定义 · 微分流形 · 微分几何
+layer 20 · 定义 · 向量场与 Lie 结构 · 微分几何
 [在星图里打开](../#n=def.tangent-distribution)　·　[节点索引](../index.md)
 
-**白话**：把「每点挑一个 $k$ 维方向」摊在整个流形上，就得到一个切分布 —— 它是「一族方向」，不是「一个方向的场」；Frobenius 定理
+**白话**：把「每点挑一个 $k$ 维方向」摊在整个流形上，就得到一个切分布 —— 它是「一族方向」，不是「一个方向的场」；Frobeni
 > 陈述续见 [nodes/def.tangent-distribution.2.md](./def.tangent-distribution.2.md)
 
 

@@ -2,7 +2,7 @@
 [在星图里打开](../#n=lem.single-cube-stokes)　·　第 1 页 [nodes/lem.single-cube-stokes.md](./lem.single-cube-stokes.md)
 
 ## 陈述（续）
-都在这一步被验完。
+。全部符号约定都在这一步被验完。
 设 $\eta$ 是定义在含 $I^{k} = [0,1]^{k}$ 的开集上的 $(k-1)$-形式（$k\ge 1$）。则
 
 $$\int_{I^{k}}\mathrm{d}\eta = \int_{\partial I^{k}}\eta ,$$

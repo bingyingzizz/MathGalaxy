@@ -6,10 +6,10 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-28T12:21:34.166Z",
+  "generated": "2026-10-28T12:27:45.139Z",
   "counts": {
    "regions": 13,
-   "clusters": 85,
+   "clusters": 88,
    "nodes": 1287,
    "edges": 2333,
    "strong": 2322,
@@ -2170,35 +2170,65 @@
   },
   {
    "id": "diffgeom.manifold",
-   "name": "微分流形",
-   "en": "Smooth Manifolds",
+   "name": "流形与向量丛",
+   "en": "Manifolds and Vector Bundles",
    "parent": "diffgeom",
-   "desc": "把曲面换成一般的流形：图册与光滑结构、切空间与向量场、微分形式与外微分、定向与积分、de Rham 上同调、Lie 群与 Lie 代数。",
-   "nodeCount": 54,
+   "desc": "把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量、丛的分类 → 定向与体积形式。这一团是后面三团的地基。",
+   "nodeCount": 12,
    "nodes": [
     "def.manifold-chart",
     "prop.maximal-atlas",
     "def.smooth-map",
-    "def.differential-map",
     "def.tangent-bundle",
-    "def.vector-field",
-    "def.lie-bracket",
-    "def.tensor-field",
     "def.vector-bundle",
     "def.bundle-section",
     "thm.smooth-partition-unity",
     "prop.bundle-metric",
     "def.orientable-manifold",
-    "def.volume-form",
     "prop.volume-form-orientation",
+    "def.boundary-manifold",
+    "thm.bundle-classification"
+   ]
+  },
+  {
+   "id": "diffgeom.vector",
+   "name": "向量场与 Lie 结构",
+   "en": "Vector Fields and Lie Structures",
+   "parent": "diffgeom",
+   "desc": "在流形上做「微分」的那一套：向量场与 Lie 括号 → 流与流的不变量（Lie 导数、内乘、Cartan 公式）→ 张量场与缩并 → 切分布、对合分布与 Frobenius 定理 → Lie 代数。",
+   "nodeCount": 16,
+   "nodes": [
+    "def.differential-map",
+    "def.vector-field",
+    "def.lie-bracket",
+    "def.tensor-field",
+    "def.lie-algebra",
+    "def.tangent-distribution",
+    "def.involutive-distribution",
+    "def.integral-manifold",
+    "thm.frobenius",
+    "def.tensor-contraction",
+    "def.interior-product",
+    "def.flow",
+    "thm.flow-local",
+    "thm.flow-complete",
+    "def.lie-derivative",
+    "thm.cartan-formula"
+   ]
+  },
+  {
+   "id": "diffgeom.form",
+   "name": "微分形式、积分与 de Rham",
+   "en": "Differential Forms, Integration and de Rham Cohomology",
+   "parent": "diffgeom",
+   "desc": "让「积分」在流形上跑起来：奇异方块与链 → 边界算子与 ∂²=0 → 链上的积分与换元、Stokes 与散度定理 → 体积形式与密度 → de Rham 复形、Poincaré 引理、Mayer–Vietoris，最后到 de Rham 定理。",
+   "nodeCount": 21,
+   "nodes": [
+    "def.volume-form",
     "def.de-rham-complex",
     "thm.de-rham-h0",
     "lem.poincare-lemma",
     "thm.mayer-vietoris",
-    "def.lie-group",
-    "def.lie-algebra",
-    "prop.left-invariant-fields",
-    "def.boundary-manifold",
     "def.singular-cube",
     "def.singular-chain",
     "def.boundary-operator",
@@ -2213,23 +2243,23 @@
     "def.divergence",
     "thm.divergence-theorem",
     "thm.change-of-variables-manifold",
-    "def.tangent-distribution",
-    "def.involutive-distribution",
-    "def.integral-manifold",
-    "thm.frobenius",
+    "thm.de-rham",
+    "def.submanifold-volume"
+   ]
+  },
+  {
+   "id": "diffgeom.lieg",
+   "name": "Lie 群",
+   "en": "Lie Groups",
+   "parent": "diffgeom",
+   "desc": "把群结构与流形结构绑在一起：Lie 群 → 左不变向量场与左不变形式 → Maurer–Cartan 方程 → Lie 第三定理（每个有限维 Lie 代数都来自一个 Lie 群）。",
+   "nodeCount": 5,
+   "nodes": [
+    "def.lie-group",
+    "prop.left-invariant-fields",
     "def.left-invariant-form",
     "thm.maurer-cartan",
-    "thm.lie-third",
-    "thm.bundle-classification",
-    "thm.de-rham",
-    "def.tensor-contraction",
-    "def.interior-product",
-    "def.flow",
-    "thm.flow-local",
-    "thm.flow-complete",
-    "def.lie-derivative",
-    "thm.cartan-formula",
-    "def.submanifold-volume"
+    "thm.lie-third"
    ]
   },
   {
@@ -18683,7 +18713,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 20,
    "tags": [
     "定义",
@@ -18768,7 +18798,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 19,
    "tags": [
     "定义",
@@ -18810,7 +18840,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 20,
    "tags": [
     "定义",
@@ -18852,7 +18882,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 20,
    "tags": [
     "定义",
@@ -19106,7 +19136,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 26,
    "tags": [
     "定义",
@@ -19191,7 +19221,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 16,
    "tags": [
     "定义",
@@ -19234,7 +19264,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 17,
    "tags": [
     "定理",
@@ -19276,7 +19306,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 17,
    "tags": [
     "引理",
@@ -19318,7 +19348,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 17,
    "tags": [
     "定理",
@@ -19360,7 +19390,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.lieg",
    "layer": 25,
    "tags": [
     "定义",
@@ -19403,7 +19433,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 21,
    "tags": [
     "定义",
@@ -19445,7 +19475,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.lieg",
    "layer": 26,
    "tags": [
     "命题",
@@ -19531,7 +19561,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 18,
    "tags": [
     "定义",
@@ -19574,7 +19604,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 19,
    "tags": [
     "定义",
@@ -19583,7 +19613,7 @@
     "形式和",
     "奇异方块"
    ],
-   "statement": "**在做什么**：把若干张方块按整数系数叠起来，得到一条「链」—— 它让「带符号地相加」成为合法对象，于是边界和积分都能线性地作用上去。\n\n设 $M$ 是光滑流形。$M$ 上的一条 **$k$-链**是形式和\n\n$$c = \\sum_{i=1}^{N}n_{i}\\,c_{i},\\qquad n_{i}\\in\\mathbb{Z},\\ c_{i}\\in Q_{k}(M),$$\n\n其中 $N<\\infty$。全体 $k$-链记 $C_{k}(M)$，加法按系数相加，它与整数标量构成一个自由阿贝尔群，基就是全体 $k$-方块。\n\n**有限性是定义的一部分**：和只有有限多项，这样每次写 $\\partial c$、$\\int_{c}\\omega$ 都是有限和，不必讨论收敛。\n\n系数取整数（不取实数）：链是**几何的记账**，权重是为「定向」「重数」「相消」服务的，不是权重测度。积分对链线性，所以整数系数已经够用。",
+   "statement": "**在做什么**：把若干张方块按整数系数叠起来，得到一条「链」——「带符号地相加」成了合法对象，边界与积分都能线性地作用上去。\n\n设 $M$ 是光滑流形。$M$ 上的一条 **$k$-链**是形式和\n\n$$c = \\sum_{i=1}^{N}n_{i}\\,c_{i},\\qquad n_{i}\\in\\mathbb{Z},\\ c_{i}\\in Q_{k}(M),$$\n\n其中 $N<\\infty$。全体 $k$-链记 $C_{k}(M)$，加法按系数相加，它与整数标量构成一个自由阿贝尔群，基就是全体 $k$-方块。\n\n**有限性是定义的一部分**：和只有有限多项，这样每次写 $\\partial c$、$\\int_{c}\\omega$ 都是有限和，不必讨论收敛。\n\n系数取整数（不取实数）：链是**几何的记账**，权重是为「定向」「重数」「相消」服务的，不是权重测度。积分对链线性，所以整数系数已经够用。",
    "notes": "**为什么要有链**：单个方块的边界是一条链（$2k$ 个面），一条链的边界可能又是一条链的边界 —— 想写「$\\partial^{2} = 0$」就必须先允许「有限和」这种对象存在。链就是把「和」提前造好的最小代价。\n\n**⚠️ 与序论里那个「链」无关**：这里说的是同调代数里的 chain，不是偏序集的 chain。同一个中文词，两个不相干的概念 —— 本图的节点 id 也因此分开（那个是 `def.chain`）。\n\n**细分不改积分**（这里只用其精神）：把 $[0,1]^{k}$ 用网格切成小方块，$c$ 限制在每块上给出小方块，它们的和与 $c$ 在积分上等价。这条在「把流形剖分成链」时用到，本图的 Stokes 定理两版对照就靠它。\n\n**与同调的关系**：$C_{k}(M)$ 配上 $\\partial$ 是链复形，取同调就是奇异同调 $H_{k}(M)$。本图只用「链能积分」这一面，不取同调 —— 闭链与恰当形式配对那条线属于另一支内容。\n\n**⚠️ 记号**：本图不区分「奇异链」与「链」两种写法，一律写 $k$-链；系数默认在 $\\mathbb{Z}$ 里，需要实数时临时说明。",
    "refs": [
     "Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 奇异链与链上的运算",
@@ -19617,7 +19647,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 20,
    "tags": [
     "定义",
@@ -19660,7 +19690,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 21,
    "tags": [
     "命题",
@@ -19703,7 +19733,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 27,
    "tags": [
     "命题",
@@ -19747,7 +19777,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 28,
    "tags": [
     "定义",
@@ -19790,7 +19820,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 29,
    "tags": [
     "命题",
@@ -19833,7 +19863,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 21,
    "tags": [
     "引理",
@@ -19876,7 +19906,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 29,
    "tags": [
     "定理",
@@ -19920,7 +19950,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 26,
    "tags": [
     "定义",
@@ -19930,7 +19960,7 @@
     "体积形式",
     "定向"
    ],
-   "statement": "**在做什么**：把「度量给的体积大小」写成一个能积分的量。带符号的那版叫体积形式、要定向；不带符号的那版叫密度、不要定向 —— 同一串系数的两种读法。\n\n设 $(M,g)$ 是 $n$ 维黎曼流形，卡 $(U,x)$ 里记 $g_{ij} = g(\\partial_{i},\\partial_{j})$。\n\n**体积密度**（不需要定向）：\n\n$$\\mathrm{d}\\mu_{g} := \\sqrt{\\det(g_{ij})}\\;\\mathrm{d}x^{1}\\cdots\\mathrm{d}x^{n},$$\n\n右边是 Lebesgue 测度乘一个正的光滑函数，所以它是一个**密度**：换卡不变（绝对值那一半在开方里，见 `prop.volume-density-well-defined`），拼接后给出 $M$ 上唯一的 Radon 测度 $\\mu_{g}$。\n\n**体积形式**（需要先取定一个定向）：在每张保向卡里令\n\n$$\\mathrm{d}V := \\sqrt{\\det(g_{ij})}\\;\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}.$$\n\n等价地，它逐点由「在正向标准正交基上取 $1$」刻画：$\\mathrm{d}V_{p}(e_{1},\\ldots,e_{n}) = 1$，其中 $(e_{1},\\ldots,e_{n})$ 是 $T_{p}M$ 的任意一组正向标准正交基 —— 交错性加上「换一组这样的基只差行列式为 $1$ 的变换」保证这刻画与基的选取无关。翻转定向，$\\mathrm{d}V$ 变号。\n\n**体积**：$\\operatorname{vol}_{g}(M) := \\mu_{g}(M)$；$M$ 紧且已定向时它等于 $\\int_{M}\\mathrm{d}V$，并且 $\\mathrm{d}\\mu_{g} = |\\mathrm{d}V|$。",
+   "statement": "**在做什么**：把「度量给的体积大小」写成能积分的量：带符号的叫体积形式（要定向），不带符号的叫密度（不要定向），同一串系数的两种读法。\n\n设 $(M,g)$ 是 $n$ 维黎曼流形，卡 $(U,x)$ 里记 $g_{ij} = g(\\partial_{i},\\partial_{j})$。\n\n**体积密度**（不需要定向）：\n\n$$\\mathrm{d}\\mu_{g} := \\sqrt{\\det(g_{ij})}\\;\\mathrm{d}x^{1}\\cdots\\mathrm{d}x^{n},$$\n\n右边是 Lebesgue 测度乘一个正的光滑函数，所以它是一个**密度**：换卡不变（绝对值那一半在开方里，见 `prop.volume-density-well-defined`），拼接后给出 $M$ 上唯一的 Radon 测度 $\\mu_{g}$。\n\n**体积形式**（需要先取定一个定向）：在每张保向卡里令\n\n$$\\mathrm{d}V := \\sqrt{\\det(g_{ij})}\\;\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}.$$\n\n等价地，它逐点由「在正向标准正交基上取 $1$」刻画：$\\mathrm{d}V_{p}(e_{1},\\ldots,e_{n}) = 1$，其中 $(e_{1},\\ldots,e_{n})$ 是 $T_{p}M$ 的任意一组正向标准正交基 —— 交错性加上「换一组这样的基只差行列式为 $1$ 的变换」保证这刻画与基的选取无关。翻转定向，$\\mathrm{d}V$ 变号。\n\n**体积**：$\\operatorname{vol}_{g}(M) := \\mu_{g}(M)$；$M$ 紧且已定向时它等于 $\\int_{M}\\mathrm{d}V$，并且 $\\mathrm{d}\\mu_{g} = |\\mathrm{d}V|$。",
    "notes": "**为什么系数是 $\\sqrt{\\det g}$**：$\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 在基 $(\\partial_{1},\\ldots,\\partial_{n})$ 上取 $1$，但 $\\partial_{i}$ 一般不是正交基。设 $\\partial_{i} = \\sum_{j}A_{ij}e_{j}$（$e_{j}$ 为标准正交基），则 $g = A^{\\mathsf T}A$，于是 $\\sqrt{\\det g} = |\\det A|$；保向时 $\\det A>0$，而 $\\mathrm{d}V(\\partial_{1},\\ldots,\\partial_{n}) = \\det A$，与「在正交基上取 $1$」相容。面积（体积）放大率就是行列式，这是 $\\sqrt{\\det(g_{ij})}$ 的全部来历。\n\n**两个结构各管一头**：度量管「多大」（$\\sqrt{\\det g}$ 这个标量），定向管「正负」（$\\mathrm{d}x^{1}\\wedge\\cdots$ 的次序）。所以 $\\mathrm{d}V$ 属于「度量 $+$ 定向」，缺一个都定义不出来；而 $\\mathrm{d}\\mu_{g}$ 只要度量，这是它俩唯一但关键的差别。\n\n**存在性**：可定向流形上存在处处非零的 $n$-形式 $\\omega$（可定向即「能被转移映射 Jacobi 行列式处处为正的卡族覆盖」，二维情形见 `def.orientable-surface`）。把 $\\omega$ 除以它在正向标准正交基上的取值，就得到满足 $\\mathrm{d}V(e_{1},\\ldots,e_{n}) = 1$ 的那个形式 —— 所以「可定向 $+$ 度量」恰好给出一个体积形式，且只差一个定向的符号。\n\n**二维时它就是 `def.area-element`**：那里写 $\\mathrm{d}A = \\sqrt{\\det(g_{ij})}\\,\\mathrm{d}u\\wedge\\mathrm{d}v$，与这里逐字相同；「面积元是密度、不是形式」那句话说的就是 $\\mathrm{d}\\mu_{g}$ 那一面。\n\n**例子**：$\\mathbb{R}^{n}$ 标准度量与标准定向给出 $\\mathrm{d}V = \\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$；半径 $R$ 的 $S^{2}$ 在球坐标 $(\\theta,\\varphi)$ 下（取 $\\partial_{\\theta},\\partial_{\\varphi}$ 为保向）给出 $\\mathrm{d}V = R^{2}\\sin\\theta\\,\\mathrm{d}\\theta\\wedge\\mathrm{d}\\varphi$。\n\n**⚠️ 记号分歧**：很多书写 $\\mathrm{d}V$ 指**密度**（不带符号的测度）。本图把两者分开：$\\mathrm{d}V$ 是形式（带定向），$\\mathrm{d}\\mu_{g} = |\\mathrm{d}V|$ 是密度。抄公式前先看清对方用的是哪一种。",
    "refs": [
     "Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 体积元素与体积",
@@ -19964,7 +19994,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 27,
    "tags": [
     "命题",
@@ -20008,7 +20038,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 27,
    "tags": [
     "定义",
@@ -20051,7 +20081,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 29,
    "tags": [
     "定理",
@@ -20095,7 +20125,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 28,
    "tags": [
     "定理",
@@ -20601,7 +20631,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 20,
    "tags": [
     "定义",
@@ -20627,7 +20657,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 21,
    "tags": [
     "定义",
@@ -20653,7 +20683,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 21,
    "tags": [
     "定义",
@@ -20678,7 +20708,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 22,
    "tags": [
     "定理",
@@ -20705,7 +20735,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.lieg",
    "layer": 26,
    "tags": [
     "定义",
@@ -20731,7 +20761,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.lieg",
    "layer": 27,
    "tags": [
     "定理",
@@ -20757,7 +20787,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.lieg",
    "layer": 27,
    "tags": [
     "定理",
@@ -20809,7 +20839,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 29,
    "tags": [
     "定理",
@@ -20835,7 +20865,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 21,
    "tags": [
     "定义",
@@ -20861,7 +20891,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 20,
    "tags": [
     "定义",
@@ -20887,7 +20917,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 20,
    "tags": [
     "定义",
@@ -20914,7 +20944,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 21,
    "tags": [
     "定理",
@@ -20940,7 +20970,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 22,
    "tags": [
     "定理",
@@ -20966,7 +20996,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 21,
    "tags": [
     "定义",
@@ -20992,7 +21022,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.vector",
    "layer": 22,
    "tags": [
     "定理",
@@ -21018,7 +21048,7 @@
    "regions": [
     "diffgeom"
    ],
-   "cluster": "diffgeom.manifold",
+   "cluster": "diffgeom.form",
    "layer": 28,
    "tags": [
     "定义",
@@ -67710,34 +67740,48 @@
   {
    "a": "diffgeom.manifold",
    "b": "topology.general",
-   "count": 10,
+   "count": 6,
    "label": "",
    "explicit": false
   },
   {
    "a": "diffgeom.intrinsic",
    "b": "diffgeom.manifold",
-   "count": 20,
+   "count": 5,
    "label": "",
    "explicit": false
   },
   {
    "a": "analysis.multivariable",
-   "b": "diffgeom.manifold",
-   "count": 4,
+   "b": "diffgeom.vector",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.intrinsic",
+   "b": "diffgeom.vector",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.manifold",
+   "b": "diffgeom.vector",
+   "count": 8,
    "label": "",
    "explicit": false
   },
   {
    "a": "algebra.multilinear",
-   "b": "diffgeom.manifold",
+   "b": "diffgeom.vector",
    "count": 3,
    "label": "",
    "explicit": false
   },
   {
    "a": "algebra.spectral",
-   "b": "diffgeom.manifold",
+   "b": "diffgeom.vector",
    "count": 2,
    "label": "",
    "explicit": false
@@ -67750,21 +67794,56 @@
    "explicit": false
   },
   {
-   "a": "algebra.matrix",
-   "b": "diffgeom.manifold",
+   "a": "diffgeom.form",
+   "b": "diffgeom.frame",
+   "count": 9,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.form",
+   "b": "diffgeom.intrinsic",
+   "count": 11,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.form",
+   "b": "topology.general",
    "count": 4,
    "label": "",
    "explicit": false
   },
   {
-   "a": "diffgeom.frame",
-   "b": "diffgeom.manifold",
-   "count": 17,
+   "a": "diffgeom.intrinsic",
+   "b": "diffgeom.lieg",
+   "count": 2,
    "label": "",
    "explicit": false
   },
   {
-   "a": "diffgeom.manifold",
+   "a": "diffgeom.lieg",
+   "b": "diffgeom.vector",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.form",
+   "b": "diffgeom.manifold",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "algebra.matrix",
+   "b": "diffgeom.form",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.form",
    "b": "diffgeom.surface",
    "count": 3,
    "label": "",
@@ -67785,6 +67864,13 @@
    "explicit": false
   },
   {
+   "a": "diffgeom.frame",
+   "b": "diffgeom.lieg",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
    "a": "diffgeom.manifold",
    "b": "hom.sheafcoh",
    "count": 2,
@@ -67792,7 +67878,14 @@
    "explicit": false
   },
   {
-   "a": "diffgeom.manifold",
+   "a": "diffgeom.frame",
+   "b": "diffgeom.vector",
+   "count": 3,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.vector",
    "b": "topology.metric",
    "count": 2,
    "label": "",

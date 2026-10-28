@@ -63,7 +63,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.tangent-distribution',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '切分布',
       title: '切分布与光滑性',
@@ -105,7 +105,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.involutive-distribution',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '对合分布',
       title: '对合分布',
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.integral-manifold',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '积分流形',
       title: '积分流形与叶片坐标',
@@ -195,7 +195,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.frobenius',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'theorem',
       label: 'Frobenius 定理',
       title: 'Frobenius 定理',
@@ -242,7 +242,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.left-invariant-form',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.lieg',
       type: 'definition',
       label: '左不变形式',
       title: '左不变形式与左不变余标架',
@@ -290,7 +290,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.maurer-cartan',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.lieg',
       type: 'theorem',
       label: 'Maurer–Cartan 方程',
       title: 'Maurer–Cartan 方程',
@@ -336,7 +336,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.lie-third',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.lieg',
       type: 'theorem',
       label: 'Lie 第三定理',
       title: 'Lie 第三定理',
@@ -426,7 +426,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.de-rham',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'theorem',
       label: 'de Rham 定理',
       title: 'de Rham 定理',
@@ -470,7 +470,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.tensor-contraction',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '缩并',
       title: '张量缩并',
@@ -510,7 +510,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.interior-product',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '内乘',
       title: '内乘（内积）',
@@ -552,7 +552,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.flow',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '流',
       title: '流与单参数群',
@@ -598,7 +598,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.flow-local',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'theorem',
       label: '局部流',
       title: '流的局部存在唯一性',
@@ -639,7 +639,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.flow-complete',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'theorem',
       label: '流完备性',
       title: '流的完备性与紧流形',
@@ -677,7 +677,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.lie-derivative',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: 'Lie 导数',
       title: 'Lie 导数',
@@ -726,7 +726,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.cartan-formula',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'theorem',
       label: 'Cartan 公式',
       title: 'Cartan 公式',
@@ -774,7 +774,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.submanifold-volume',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '诱导体积',
       title: '子流形的诱导体积',

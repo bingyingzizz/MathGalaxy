@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 26 · proposition · cluster Smooth Manifolds (`diffgeom.manifold`) · Differential Geometry
+layer 26 · proposition · cluster Lie Groups (`diffgeom.lieg`) · Differential Geometry
 names: `Left-Invariant Fields` (short) · `Left-Invariant Vector Fields` (full)
 
 ## Statement and proof

@@ -1,9 +1,9 @@
 # 方块上的 Stokes 公式　`lem.single-cube-stokes`
 单个方块上的 Stokes 公式
-layer 21 · 引理 · 微分流形 · 微分几何
+layer 21 · 引理 · 微分形式、积分与 de Rham · 微分几何
 [在星图里打开](../#n=lem.single-cube-stokes)　·　[节点索引](../index.md)
 
-**在做什么**：把 Stokes 定理先在一块标准方块上算穿 —— 左边是一个重积分、右边是 $2k$ 个面上的积分，两边逐项对上。全部符号约定
+**在做什么**：把 Stokes 定理先在一块标准方块上算穿 —— 左边是一个重积分、右边是 $2k$ 个面上的积分，两边逐项对上
 > 陈述续见 [nodes/lem.single-cube-stokes.2.md](./lem.single-cube-stokes.2.md)
 
 

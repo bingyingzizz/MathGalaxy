@@ -722,11 +722,35 @@ MG.clusters = [
   },
   {
     id: 'diffgeom.manifold',
-    name: '微分流形',
-    en: 'Smooth Manifolds',
+    name: '流形与向量丛',
+    en: 'Manifolds and Vector Bundles',
     parent: 'diffgeom',
     hub: 'def.manifold-chart',
-    desc: '把曲面换成一般的流形：图册与光滑结构、切空间与向量场、微分形式与外微分、定向与积分、de Rham 上同调、Lie 群与 Lie 代数。'
+    desc: '把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量、丛的分类 → 定向与体积形式。这一团是后面三团的地基。'
+  },
+  {
+    id: 'diffgeom.vector',
+    name: '向量场与 Lie 结构',
+    en: 'Vector Fields and Lie Structures',
+    parent: 'diffgeom',
+    hub: 'def.vector-field',
+    desc: '在流形上做「微分」的那一套：向量场与 Lie 括号 → 流与流的不变量（Lie 导数、内乘、Cartan 公式）→ 张量场与缩并 → 切分布、对合分布与 Frobenius 定理 → Lie 代数。'
+  },
+  {
+    id: 'diffgeom.form',
+    name: '微分形式、积分与 de Rham',
+    en: 'Differential Forms, Integration and de Rham Cohomology',
+    parent: 'diffgeom',
+    hub: 'thm.stokes-chain',
+    desc: '让「积分」在流形上跑起来：奇异方块与链 → 边界算子与 ∂²=0 → 链上的积分与换元、Stokes 与散度定理 → 体积形式与密度 → de Rham 复形、Poincaré 引理、Mayer–Vietoris，最后到 de Rham 定理。'
+  },
+  {
+    id: 'diffgeom.lieg',
+    name: 'Lie 群',
+    en: 'Lie Groups',
+    parent: 'diffgeom',
+    hub: 'def.lie-group',
+    desc: '把群结构与流形结构绑在一起：Lie 群 → 左不变向量场与左不变形式 → Maurer–Cartan 方程 → Lie 第三定理（每个有限维 Lie 代数都来自一个 Lie 群）。'
   },
 
   {

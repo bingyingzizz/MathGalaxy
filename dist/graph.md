@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-28T12:21:34.166Z
-> 13 星系 / 85 星团 / 1287 节点 / 2333 连线（强边 2322，弱边 11；其中**不分层**的「推论」17 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-10-28T12:27:45.139Z
+> 13 星系 / 88 星团 / 1287 节点 / 2333 连线（强边 2322，弱边 11；其中**不分层**的「推论」17 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -25284,8 +25284,8 @@ $$\int_{M}\mathrm{d}\omega = \int_{\partial M}\omega ,$$
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式的积分」· Stokes 定理；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· Stokes 定理与结构方程
 
-### 星团：微分流形
-> 把曲面换成一般的流形：图册与光滑结构、切空间与向量场、微分形式与外微分、定向与积分、de Rham 上同调、Lie 群与 Lie 代数。
+### 星团：流形与向量丛
+> 把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量、丛的分类 → 定向与体积形式。这一团是后面三团的地基。
 
 #### 图卡　`def.manifold-chart`
 *定义*　图卡、坐标与转移映射
@@ -25371,39 +25371,6 @@ $$\psi \circ F \circ \varphi^{-1} : \varphi\bigl(U \cap F^{-1}(V)\bigr) \longrig
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 流形之间的光滑映射；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Manifolds」· 光滑函数与微分同胚
 
-#### 切映射　`def.differential-map`
-*定义*　切映射（微分）
-
-**在说什么**：光滑映射在每点给出一个线性映射，把「沿曲线的方向」送到像上的方向 —— 这就是流形上的导数；流形上没有减法，唯一能做的是「跟着曲线走」。
-
-设 $F : N \to M$ 光滑，$p \in N$。定义
-
-$$\mathrm{d}F_{p} : T_{p}N \longrightarrow T_{F(p)}M,\qquad \mathrm{d}F_{p}([\gamma]) := [F \circ \gamma],$$
-
-即「过 $p$ 的曲线 $\gamma$」所在的类送到「过 $F(p)$ 的曲线 $F \circ \gamma$」所在的类。$\mathrm{d}F_{p}$ 叫 $F$ 在 $p$ 的**切映射**（也叫**微分**、微分映射）。
-
-在卡 $(U,\varphi)$（$N$ 的）与 $(V,\psi)$（$M$ 的）下，$\mathrm{d}F_{p}$ 的矩阵就是 $F$ 的局部表示的 Jacobi 矩阵：
-
-$$\Bigl[\mathrm{d}F_{p}\Bigr]_{\varphi,\psi} = \Bigl(\frac{\partial (\psi \circ F \circ \varphi^{-1})^{i}}{\partial x^{j}}(x)\Bigr)_{i,j},\qquad x = \varphi(p).$$
-
-$\mathrm{d}F_{p}$ 是线性映射，并满足**链式法则**
-
-$$\mathrm{d}(G \circ F)_{p} = \mathrm{d}G_{F(p)} \circ \mathrm{d}F_{p},\qquad \mathrm{d}(\operatorname{id}_{N})_{p} = \operatorname{id}_{T_{p}N}.$$
-
-让 $p$ 跑遍 $N$ 得到一个切丛之间的映射 $\mathrm{d}F : TN \to TM$，$v \mapsto \mathrm{d}F_{\pi(v)}(v)$。
-
-**良定义就是链式法则**：换一张卡 $\varphi$ 换成 $\theta$，两条过 $p$ 的曲线若在 $\varphi$ 卡里速度相同，则在 $\theta$ 卡里也相同（都等于同一个 Jacobi 矩阵乘同一个向量）。类不变，所以 $\mathrm{d}F_{p}$ 有定义 —— 但**存在性**完全靠转移映射光滑，这一点是本节点与前两个节点的接头处。
-
-**导子视角更省事**：$\mathrm{d}F_{p}(v)$ 作为导子就是 $\bigl(\mathrm{d}F_{p}(v)\bigr)(f) = v(f \circ F)$ —— 一个复合，不用提曲线。两条路线给出同一个线性映射。
-
-**为什么它不叫「导数」**：$\mathbb{R}^{n}$ 里 $\mathrm{d}F_{p}$ 是一个矩阵，能与差商直接联系；流形上没有减法，$\mathrm{d}F_{p}$ 只是**切空间之间**的线性映射。它是一阶信息，换坐标时两侧各乘一个 Jacobi 矩阵（一正一反），所以「$\mathrm{d}F$ 是张量」对，但「$\partial_{i}F$ 是张量」不对。
-
-**链式法则的意义**：$M \mapsto T_{p}M$、$F \mapsto \mathrm{d}F_{p}$ 是一个**函子**（切函子）。所以流形与光滑映射这一层，切空间自动继承所有复合结构 —— 这也是 $\mathrm{d}^{2} = 0$ 在形式上能成立的原因。
-
-**记号撞车**：同一个 $\mathrm{d}$ 既记切映射 $\mathrm{d}F_{p}$ 也记外微分 $\mathrm{d}\omega$。它们不是两件事：$\mathrm{d}f$ 就是切映射 $\mathrm{d}f_{p} : T_{p}M \to \mathbb{R}$，即 $1$-形式（`def.exterior-derivative`）。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 切映射与链式法则
-
 #### 切丛　`def.tangent-bundle`
 *定义*　切丛与切丛的流形结构
 
@@ -25434,108 +25401,6 @@ $\pi$ 光滑；**零截面** $o : M \to TM$、$p \mapsto 0_{p}$ 是光滑映射�
 **记号纪律**：$TM$ 里的元素是一个**带起点的向量**，$T_{p}M$ 里的元素只认起点为 $p$。写 $v \in T_{p}M \subseteq TM$ 时，下标的 $p$ 是信息的一部分，丢了下标就成了无主向量，$\mathrm{d}F_{p}$ 也就无从作用。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 切丛
-
-#### 向量场　`def.vector-field`
-*定义*　光滑向量场
-
-**在说什么**：在每一点各挑一个切向量，并挑得随点光滑 —— 这就是向量场。它真正的身份是「对光滑函数求方向导数」的算子。
-
-设 $M$ 是光滑流形。$M$ 上的**向量场**是映射 $X : M \to TM$ 使 $\pi \circ X = \operatorname{id}_{M}$（每点给一个该点处的切向量）。若 $X$ 作为 $M \to TM$ 的映射光滑，称它是**光滑向量场**，全体记 $\mathfrak{X}(M)$。
-
-在每张图卡 $(U,\varphi)$ 里写成
-
-$$X\big|_{U} = \sum_{i=1}^{n} X^{i}\,\frac{\partial}{\partial x^{i}},\qquad X^{i} := \mathrm{d}x^{i}(X) ,$$
-
-则 $X$ 光滑，当且仅当存在一个图册的每张卡上每个 $X^{i}$ 都光滑（只查一个图册就够）。
-
-$X$ **作用在函数上**给出新函数
-
-$$(Xf)(p) := \mathrm{d}f_{p}\bigl(X_{p}\bigr) = \sum_{i} X^{i}(p)\,\frac{\partial f}{\partial x^{i}}(p),$$
-
-于是 $X$ 是 $C^{\infty}(M)$ 上的**导子**：$X(fg) = f\,Xg + g\,Xf$。反过来每个导子都来自唯一的向量场。
-
-$X$ 在 $p$ 处**为零**指 $X_{p} = 0_{p}$；$X$ 的**支集**是 $\overline{\{p \in M : X_{p} \ne 0\}}$。
-
-**「光滑」是唯一要小心的地方**：单纯「每点挑一个切向量」是集合论选择，可以极其病态。光滑性把它锁成局部坐标下的 $n$ 个光滑函数，于是微积分全部能搬过来 —— 这也是「向量场 = 导子」这条等价的用处。
-
-**$\mathfrak{X}(M)$ 是 $C^{\infty}(M)$-模**：$X + Y$、$fX$（$f$ 光滑）仍是向量场。所以向量场不是「逐点相加成数」的对象，而是模里的元素 —— 与「$\mathrm{d}f$ 是 $1$-形式」处在同一层次。
-
-**处处非零的向量场不一定存在**：局部总有，整体不一定。$S^{2}$ 上不存在（毛球定理）；$S^{1}$、$S^{3}$、环面上存在。「有没有零点」是 Poincaré–Hopf 定理与示性类的源头，本图只提。
-
-**坐标变换**：在两族局部坐标下分别展开，分量满足 $X^{i} = \sum_{j}\frac{\partial y^{i}}{\partial x^{j}}X^{j}$ —— 与切向量同一条变换律（反变）。这就是「$X$ 是 $(1,0)$ 型张量场」的意思（`def.tensor-field`）。
-
-**关于支集**：把「$X$ 在哪里不为零」的闭包记作 $\operatorname{supp} X$。单位分解的论证里要的正是「支集落在某张卡里」，所以这个记号与 `def.partition-of-unity` 的 $\operatorname{supp}$ 是同一个（`thm.smooth-partition-unity`）。
-
-**与积分曲线**：向量场给出一阶 ODE $\dot\gamma = X(\gamma)$，其解是积分曲线；局部总有解，整体未必能延拓。本图只用局部存在性，流与单参数群那条线暂不进图。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场与导子
-
-#### Lie 括号　`def.lie-bracket`
-*定义*　向量场的 Lie 括号
-
-**在说什么**：两个向量场各自都不能与另一个「合成」出新的向量场，但它们的交换子可以 —— 两次方向导数相减，二阶项自动抵消，剩下的仍是向量场。这个差值就是 Lie 括号。
-
-设 $X, Y \in \mathfrak{X}(M)$。**Lie 括号** $[X,Y]$ 是作用在光滑函数上的算子
-
-$$[X,Y]f := X(Yf) - Y(Xf),\qquad f \in C^{\infty}(M).$$
-
-右边看着用到二阶导数，但二阶偏导可交换，所以 $[X,Y]f$ 只含 $f$ 的一阶导数 —— 于是它仍是向量场。在卡里显式算出
-
-$$[X,Y] = \sum_{i=1}^{n}\Bigl(\sum_{j=1}^{n}\bigl(X^{j}\partial_{j}Y^{i} - Y^{j}\partial_{j}X^{i}\bigr)\Bigr)\frac{\partial}{\partial x^{i}} .$$
-
-四条性质（$f,g \in C^{\infty}(M)$）：
-
-1. **反称**：$[X,Y] = -[Y,X]$，特别 $[X,X] = 0$；
-2. $\mathbb{R}$-**双线性**；
-3. **Jacobi 恒等式**：$[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0$；
-4. **Leibniz 律**：$[X, fY] = (Xf)\,Y + f\,[X,Y]$，并且 $[fX, gY] = fg\,[X,Y] + f(Xg)\,Y - g(Yf)\,X$。
-
-**为什么结果还是向量场**：$X(Yf)$ 与 $Y(Xf)$ 各自含 $f$ 的二阶导数，在卡里是 $X^{j}\partial_{j}\bigl(Y^{i}\partial_{i}f\bigr)$ 这类项；相减时 $\partial_{j}\partial_{i}f$ 的系数分别是 $X^{j}Y^{i}$ 与 $Y^{j}X^{i}$，而它对 $i,j$ 对称，所以这两项逐项抵消。二阶项消失，剩下的是合法的导子。
-
-**第 4 条说明它不是张量**：$[X,Y]$ 对 $Y$ 不是 $C^{\infty}(M)$-线性的 —— 多出来的 $f(Xg)Y$ 项正是「求两次导」留下的痕迹。所以「两个向量场的括号不能用逐点计算定义」，这是它与一切张量运算（`def.tensor-field`）的根本区别。
-
-**Jacobi 是三件事的合成**：把 Jacobi 写成 $[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]]$，读法是「$[X,\cdot]$ 是导子」。它不是凭空的规定，而是「括号来自一阶微分算子」的必然结果 —— 展开验证时六项两两抵消，用的是乘积求导。
-
-**几何含义**：$[X,Y]$ 量「先沿 $X$ 走一步再沿 $Y$ 走一步」与「反序走」的差，除以步长的平方。所以 $[X,Y] = 0$ 意味着两族积分曲线能拼成坐标网 —— 这是 Frobenius 可积性的起点，本图只提。
-
-**与联络的分界**：$\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\nabla_{X}Y - \nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号
-
-#### 张量场　`def.tensor-field`
-*定义*　张量场与张量丛
-
-**在说什么**：把「每点一个多重线性型」做成光滑对象 —— 张量场就是能按矩阵方式逐点记账的那类量；度量、曲率、微分形式全是它的样子。
-
-设 $M$ 是 $n$ 维光滑流形，$p \in M$。**$(r,s)$ 型张量**是多重线性映射
-
-$$T : \underbrace{T_{p}^{\ast}M \times \cdots \times T_{p}^{\ast}M}_{r} \times \underbrace{T_{p}M \times \cdots \times T_{p}M}_{s} \longrightarrow \mathbb{R},$$
-
-即吃了 $r$ 个余向量与 $s$ 个向量吐一个数。全体记 $T^{(r,s)}_{p}M$，维数 $n^{r+s}$。**张量丛**是
-
-$$T^{(r,s)}M := \bigsqcup_{p \in M} T^{(r,s)}_{p}M ,$$
-
-它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 Jacobi 矩阵的 $s$ 次直积与它的逆的 $r$ 次直积（`def.tangent-bundle`）。
-
-$T^{(r,s)}M$ 的光滑截面叫 **$(r,s)$ 型张量场**。在卡里展开
-
-$$T = \sum T^{i_{1}\cdots i_{r}}_{\ \ j_{1}\cdots j_{s}}\ \partial_{i_{1}} \otimes \cdots \otimes \partial_{i_{r}} \otimes \mathrm{d}x^{j_{1}} \otimes \cdots \otimes \mathrm{d}x^{j_{s}} ,$$
-
-要求每个分量 $T^{i_{1}\cdots i_{r}}_{\ \ j_{1}\cdots j_{s}}$ 都是 $U$ 上的光滑函数。分量换卡时每个上标乘一次 $\partial y/\partial x$、每个下标乘一次 $\partial x/\partial y$。
-
-**四种特殊情况刚好都是见过的对象**：$(0,0)$ 型是光滑函数；$(1,0)$ 型是向量场（`def.vector-field`）；$(0,1)$ 型是 $1$-形式；$(0,k)$ 型且对调任两变元变号的就是 $k$-形式（`def.differential-form`）。所以「张量场」是这些概念的共同外壳。
-
-**为什么叫「张量」**：多重线性加逐点定义，导致分量换卡时只乘 Jacobi 矩阵的乘积，**不出现二阶导数**。这条「变换律只含一阶导」是张量与联络系数（$\Gamma$ 不是张量）的分界线。
-
-**例子**：黎曼度量是 $(0,2)$ 型（`def.riemannian-metric`）；曲率张量是 $(1,3)$ 型，写成 $R_{ijk\ell}$ 时是用 $g$ 把上标拉下来的 $(0,4)$ 型（`def.curvature-tensor`）；辛形式是 $(0,2)$ 型且反称闭；Einstein 张量是 $(0,2)$ 型。
-
-**纤维为什么长得快**：$r+s = 2$、$n = 4$ 时纤维有 $16$ 维，所以「逐点选一个张量」的自由度很快失控 —— 这正是曲率张量的对称性（`prop.curvature-tensor-symmetries`）值得单独数一遍的原因：$n^{4} = 256$ 砍到 $20$。
-
-**上标下标要配对**：$\mathrm{d}x^{i}(\partial_{j}) = \delta^{i}_{\ j}$。写分量时上标配 $\partial$、下标配 $\mathrm{d}x$，配错了就会在不该出现 $\det$ 的地方冒出 $\det$。
-
-**与 `def.exterior-algebra` 的关系**：每点的外代数就是交错张量的全体；「交错」是在张量丛上加一条对称性要求，然后取截面 —— 所以微分形式是张量场的特例，反之不然。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 张量场与张量丛；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 交错张量与微分形式
 
 #### 向量丛　`def.vector-bundle`
 *定义*　向量丛与局部平凡化
@@ -25677,39 +25542,6 @@ $$\det\Bigl(\mathrm{d}(\psi \circ \varphi^{-1})_{x}\Bigr) > 0\qquad \bigl(x \in 
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 定向图册与可定向性
 
-#### 体积形式　`def.volume-form`
-*定义*　体积形式与黎曼体积
-
-**在说什么**：一个处处不为零的 $n$-形式给出「有向体积」；度量的行列式因子乘上坐标体积形式，就是黎曼体积。
-
-设 $M$ 是 $n$ 维光滑流形。**体积形式**是处处非零的 $n$-形式 $\omega \in \Omega^{n}(M)$（即 $\omega_{p} \ne 0$ 对每个 $p$ 成立）。
-
-若 $M$ 还带黎曼度量 $g$（`def.riemannian-metric`）与一个定向，则**黎曼体积形式**在每张保向卡里写成
-
-$$\mathrm{d}V_{g} := \sqrt{\det\bigl(g_{ij}\bigr)}\ \mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n},\qquad g_{ij} = g\Bigl(\frac{\partial}{\partial x^{i}},\frac{\partial}{\partial x^{j}}\Bigr).$$
-
-在**保向正交余标架** $\{\theta^{1},\ldots,\theta^{n}\}$（即 $g = \sum_{i}(\theta^{i})^{2}$）下它化简成没有系数的样子
-
-$$\mathrm{d}V_{g} = \theta^{1}\wedge\cdots\wedge\theta^{n}.$$
-
-于是可积的函数有体积与积分
-
-$$\operatorname{vol}(M) := \int_{M}\mathrm{d}V_{g},\qquad \int_{M}f\,\mathrm{d}V_{g},$$
-
-积分按 `def.integral-form` 的「定向形式积分」定义。
-
-**为什么必须是最高次形式**：换元公式里 $\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$ 的系数变换恰好是 $\det$（保向时无绝对值），与积分换元里出现的 $\det$ 精确匹配 —— 这就是「形式能积分」的全部理由。$k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。
-
-**根号是密度、楔积是定向**：$\sqrt{\det g}$ 对反向换卡不变（它带的是 $\lvert\det\rvert$），$\mathrm{d}x^{1}\wedge\cdots$ 反向变号。所以 $\mathrm{d}V_{g}$ 必须先取定定向才有定义；无定向时能积的只有密度 $\lvert\mathrm{d}V_{g}\rvert$（面积元 $\mathrm{d}A$ 就是这种，`def.area-element`）。
-
-**二维退化成面积元**：$\mathrm{d}V_{g} = \sqrt{EG - F^{2}}\,\mathrm{d}u\wedge\mathrm{d}v$，与 `def.area-element` 的 $\mathrm{d}A$ 逐字相同，只差「要不要把 $\mathrm{d}u\wedge\mathrm{d}v$ 看成带定向的」这一层。
-
-**正交余标架为什么省事**：$g = \sum(\theta^{i})^{2}$ 时 $\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\theta^{1}\wedge\cdots$ 写，不再带根号。这也是「曲面上 $\mathrm{d}A = \omega^{1}\wedge\omega^{2}$」的来源。
-
-**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\sqrt{\det g}$。体积形式 = 定向 + 度量，两部分都要交代。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 体积形式与定向；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架
-
 #### 定向与体积形式　`prop.volume-form-orientation`
 *命题*　可定向当且仅当存在处处非零的最高次形式
 
@@ -25733,153 +25565,207 @@ $$\omega \in \Omega^{n}(M),\qquad \omega_{p} \ne 0\ \ \bigl(\forall p \in M\bigr
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 可定向性与处处非零的最高次形式
 
-#### de Rham 上同调　`def.de-rham-complex`
-*定义*　de Rham 复形与上同调群
+#### 带边流形　`def.boundary-manifold`
+*定义*　带边流形与边界
 
-**在说什么**：外微分满足 $\mathrm{d}^{2} = 0$，于是 $k$-形式排成一串「链」；闭形式模掉恰当形式剩下的那部分就是上同调 —— 它量的是「有多少闭形式是假闭的」。
+**在做什么**：把一个方向上砍掉一边，让「闭区间」「闭圆盘」这类带边的对象也成了流形 —— 有了它，「边界」才能有自己的维度、自己的积分、自己的 $(n-1)$ 维几何。
 
-设 $M$ 是光滑流形，$\Omega^{k}(M)$ 是 $k$-形式的空间。外微分（`def.exterior-derivative`）给出 **de Rham 复形**
+记**半空间**
 
-$$0 \longrightarrow \Omega^{0}(M) \xrightarrow{\ \mathrm{d}\ } \Omega^{1}(M) \xrightarrow{\ \mathrm{d}\ } \Omega^{2}(M) \xrightarrow{\ \mathrm{d}\ } \cdots$$
+$$\mathbb{H}^{n} := \{x\in\mathbb{R}^{n} : x^{n}\le 0\},\qquad \partial\mathbb{H}^{n} = \{x\in\mathbb{R}^{n} : x^{n} = 0\}.$$
 
-由 $\mathrm{d}^{2} = 0$ 得 $\operatorname{im}\mathrm{d} \subseteq \ker\mathrm{d}$。记**闭形式**与**恰当形式**的空间为
+**$n$ 维带边流形**是一个 Hausdorff、第二可数拓扑空间 $M$，带一族卡 $(U,\varphi)$：每个 $U\subseteq M$ 开，$\varphi : U\to\varphi(U)$ 是同胚，$\varphi(U)$ 是 $\mathbb{H}^{n}$ 的**开**子集，且任意两张卡的转移映射 $\psi\circ\varphi^{-1}$ 光滑。
 
-$$Z^{k}(M) := \ker\bigl(\mathrm{d} : \Omega^{k}(M) \to \Omega^{k+1}(M)\bigr),\qquad B^{k}(M) := \operatorname{im}\bigl(\mathrm{d} : \Omega^{k-1}(M) \to \Omega^{k}(M)\bigr),$$
+$p\in M$ 叫**内点**，如果存在一张卡使 $\varphi(p)^{n}<0$；否则叫**边界点**。这两类与卡的选取无关。全部边界点记 $\partial M$，全部内点记 $\operatorname{Int}M$。
 
-（$\Omega^{-1} := 0$，故 $B^{0} = 0$）。**de Rham 上同调群**是商空间
+$\partial M$ 自带一个 $(n-1)$ 维**无边**光滑流形结构：把每张卡与 $\partial\mathbb{H}^{n}$ 求交，$\varphi$ 限制成 $U\cap\partial M\to\{x^{n} = 0\}\cong\mathbb{R}^{n-1}$，重叠处的转移映射仍是光滑映射的限制。若 $M$ 本身是无边流形，则 $\partial M = \emptyset$。
 
-$$H^{k}_{\mathrm{dR}}(M) := Z^{k}(M) / B^{k}(M).$$
+**「内点 / 边界点」为什么与卡无关**：设某张卡给 $\varphi(p)^{n}<0$、另一张给 $\psi(p)^{n} = 0$。则 $h := \psi\circ\varphi^{-1}$ 是开集之间的微分同胚，把点 $\varphi(p)\in\{x^{n}<0\}$ 送到 $\{x^{n} = 0\}$ 上。但 $\varphi(p)$ 有一个整个含在 $\{x^{n}<0\}$ 里的开球邻域，其像必含在 $\{x^{n} = 0\}$ 里 —— 而后者没有内点，矛盾。所以「是不是边界点」属于 $M$，不属于坐标。
 
-给定光滑映射 $F : N \to M$，拉回给出线性映射 $F^{\ast} : H^{k}_{\mathrm{dR}}(M) \to H^{k}_{\mathrm{dR}}(N)$（因为 $F^{\ast}\mathrm{d} = \mathrm{d}F^{\ast}$，见 `prop.pullback-forms`），且 $(G \circ F)^{\ast} = F^{\ast} \circ G^{\ast}$。所以 $H^{k}_{\mathrm{dR}}$ 是光滑流形范畴上的**函子**。
+**为什么用半空间而不是球**：半空间白送一张坐标（$x^{1},\ldots,x^{n-1}$ 沿边、$x^{n}$ 指向内部），「边界」在坐标里就是一条方程 $x^{n} = 0$，要证的东西一步到位。球模型还得额外证明球面那块是流形，白干一遍。
 
-**它测什么**：$H^{k} = 0$ 意味着「闭就恰当」；$H^{k} \ne 0$ 说明存在闭而不恰当的形式。$\mathbb{R}^{2}\setminus\{0\}$ 上的角形式 $\frac{x\,\mathrm{d}y - y\,\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当，它的类生成 $H^{1} \cong \mathbb{R}$，量的是「绕原点的圈数」。
+**边界不是「拓扑边界」**：$\partial M$ 是内蕴的一层 $(n-1)$ 维皮，与有没有谁来包着 $M$ 无关；拓扑意义上的边界要靠 $M$ 先嵌在某个空间里才谈得上。两者只在嵌入的情形下碰头。
 
-**de Rham 定理（只提不证）**：$H^{k}_{\mathrm{dR}}(M) \cong H^{k}_{\mathrm{sing}}(M;\mathbb{R})$ —— 解析构造（形式 + 微分）算出的东西，等于纯拓扑构造（奇异链 + 边界）算出的东西。这一条把微分几何与代数拓扑缝在一起，是本图范畴/同调那一片的接口。
+**⚠️ 定向的约定（只在用到时交代）**：$\partial M$ 的**诱导定向**取「外法向在前」—— 若 $(v_{1},\ldots,v_{n-1})$ 是 $T_{p}\partial M$ 的基，它为正，当且仅当 $(N,v_{1},\ldots,v_{n-1})$ 是 $T_{p}M$ 的正向基，$N$ 是外单位法向。取 $\mathbb{H}^{n}$ 的标准坐标时，这条等价于「用 $x^{1},\ldots,x^{n-1}$ 的次序当定向，但与诱导定向差 $(-1)^{n-1}$」。这个符号在 `prop.boundary-sign-convention` 里会再出现一次，两处必须一致。
 
-**维数有限**：$M$ 紧致时每个 $H^{k}_{\mathrm{dR}}(M)$ 都有限维，且 $k > \dim M$ 时为零。所以上同调是一组有限的数（Betti 数）。本图不证。
+**⚠️ 边界的边界是空的**：$\partial(\partial M) = \emptyset$，因为 $\partial M$ 是无边流形（它的卡值域落在 $\mathbb{R}^{n-1}$ 的开集里）。这一条让 Stokes 型公式能反复用而不会冒出「边界的边界」那一项。
 
-**局部总是零**：任意流形每点都有可缩邻域，由 Poincaré 引理（`lem.poincare-lemma`）$H^{k} = 0$（$k \ge 1$）。所以上同调**纯粹是整体**信息 —— 这就是它比局部微分不变量更有用的原因。
+参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 带边流形与边界；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 几何预备：奇异方块与半空间
 
-**$H^{0}$ 要单独看**：$Z^{0} = \ker(\mathrm{d} : C^{\infty}(M) \to \Omega^{1}(M))$ 是局部常函数，$B^{0} = 0$，所以 $H^{0}$ 数的是连通分支（`thm.de-rham-h0`）。$k \ge 1$ 才需要 Poincaré 引理那类论证。
+#### 丛的分类　`thm.bundle-classification`
+*定理*　向量丛的分类与 Čech 上同调
 
-**它不是同伦不变量意义上的「同调」**：$H^{k}$ 是**上**同调（用形式与拉回），对偶于用链与边界的同调。之所以也叫上同调，是因为拉回是逆变的；两者在 de Rham 定理里被证明同构。
+**白话**：向量丛怎么「粘」，全记在转移函数上；所以「有多少种秩 $k$ 丛」这个问题就是「这些转移函数模掉换基还剩多少」—— 答案是 Čech 的 $H^{1}$。
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 复形与上同调群
+设 $M$ 是光滑流形（第二可数、Hausdorff），$k \ge 1$，$\mathfrak{U} = \{U_{\alpha}\}$ 是开覆盖。记 $U_{\alpha\beta} := U_{\alpha}\cap U_{\beta}$、$U_{\alpha\beta\gamma} := U_{\alpha}\cap U_{\beta}\cap U_{\gamma}$。**$1$-上闭链**是光滑函数族
 
-#### 零次上同调　`thm.de-rham-h0`
-*定理*　零次上同调群与连通分支
+$$g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \operatorname{GL}(k,\mathbb{R}),\qquad g_{\alpha\beta}\,g_{\beta\gamma} = g_{\alpha\gamma}\quad(\text{on } U_{\alpha\beta\gamma}).$$
 
-**在做什么**：把最低那一格算出来 —— $0$-形式是函数，「闭」就是「局部常」，于是 $H^{0}$ 精确地数连通分支的个数。
+两条上闭链**等价**，如果存在光滑的 $h_{\alpha} : U_{\alpha} \to \operatorname{GL}(k,\mathbb{R})$ 使
 
-设 $M$ 是光滑流形，$c$ 是它的连通分支个数。则
+$$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}\qquad(\text{on } U_{\alpha\beta}).$$
 
-$$H^{0}_{\mathrm{dR}}(M) \cong \mathbb{R}^{c}.$$
+则 $M$ 上秩 $k$ 实向量丛的**同构类**与「$1$-上闭链模等价」一一对应。取遍所有覆盖与它们的加细，得到的集合记
 
-特别地，$M$ 连通当且仅当 $\dim H^{0}_{\mathrm{dR}}(M) = 1$（$M \ne \emptyset$）。
+$$\check{H}^{1}\bigl(M;\operatorname{GL}(k,\mathbb{R})\bigr),$$
 
-$0$-形式就是光滑函数，$\mathrm{d}f = 0$ 等价于 $f$ 在每张连通卡上是常数；而 $B^{0} = 0$，所以 $H^{0} = Z^{0}$，没有商可做。
+于是：秩 $k$ 实向量丛的同构类**就是**这个集合的元素。把 $\operatorname{GL}(k,\mathbb{R})$ 换成任意结构群 $G \le \operatorname{GL}(k,\mathbb{R})$，同一句话给出「秩 $k$ 的 $G$-丛」的分类。
 
-**为什么是 $\mathbb{R}^{c}$ 而不是 $\mathbb{Z}^{c}$**：系数是实数，$H^{0}$ 是实向量空间，一组基就是各连通分支的指示函数。所以「$H^{0}$ 数分支」是在**维数**上数的，不是数元素个数。
+**Čech 口径要说清三件事**：
 
-**证明的两步**：① $\mathrm{d}f = 0$ 当且仅当 $f$ 在每个连通分支上常值（分支连通，任两点能用一串卡连起来，相邻两张卡的重叠在连通块上、常值相同）；② $B^{0} = 0$，因为没有 $-1$-形式，没有东西可商。于是 $H^{0}$ 同构于「局部常函数构成的空间」，而这个空间的维数恰是分支数。细节在边上。
+1. **系数不是阿贝尔群**：$\operatorname{GL}(k,\mathbb{R})$ 非交换，所以 $\check{H}^{1}(M;\operatorname{GL}(k))$ 只是一个**带基点的集合**（基点是平凡丛），不是群、不是向量空间。只有当系数落在阿贝尔群层里，Čech 上同调才是群 —— 本图 `def.cech-cohomology` 那条定义取的是阿贝尔预层复形，与本条不是同一个层级的东西，别混。
+2. **只有 $0$ 次与 $1$ 次有意义**：$\check{H}^{0}$ 是整体截面（对 $\operatorname{GL}(k)$ 而言就是常值 $1$，因为 $M$ 连通），$\check{H}^{1}$ 是上面那个「上闭链模上边界」；$\check{H}^{2}$ 起要非阿贝尔上同调的技术（系数带群作用），本图完全不用。
+3. **必须取余极限**：不同覆盖给出不同的 $\check{H}^{1}(\mathfrak{U};\cdot)$，但它们沿加细相容（每步是一个映射，而两个加细有公共加细），取余极限才是不依赖覆盖的量。
 
-**它是函子性的**：$F : N \to M$ 光滑时 $F^{\ast} : H^{0}(M) \to H^{0}(N)$ 就是「把 $M$ 上的局部常函数拉回去」。$M$ 连通而 $N$ 不连通时，$F$ 在每个分支上只能取一个常值 —— 分支结构被这一条完全编码。
+**为什么是 $H^{1}$ 而不是 $H^{0}$**：$H^{0}$ 记的是「什么都不用粘」的数据（整体平凡化），$H^{1}$ 记的是「粘起来差多少」—— 前者数整体对象，后者数障碍。这与层上同调的分工完全一致。
 
-**与同伦的关系**：$H^{0}$ 是 $\pi_{0}(M)$ 上的自由实向量空间，所以它是**同伦不变量**而非微分不变量。这也是 de Rham 定理在 $k = 0$ 时的样子（0 维奇异上同调同样是每个分支贡献一个 $\mathbb{R}$）。
+**换结构群就是换系数**：$\operatorname{GL}(k,\mathbb{R})$ 换成 $\operatorname{O}(k)$ 得「配了纤维度量的丛」（`prop.bundle-metric` 保证总能配上，所以这一步不丢信息）；换成 $\operatorname{GL}(k,\mathbb{C})$ 得复丛；换成 $\operatorname{GL}(k,\mathbb{Z})$ 得平坦丛。所以分类定理的真正形状是「对每个结构群 $G$，秩 $k$ 的 $G$-丛由 $\check{H}^{1}(M;G)$ 分类」。
 
-**别拿 Poincaré 引理套 $H^{0}$**：引理说的是 $k \ge 1$ 且区域可缩才有 $H^{k} = 0$。$H^{0}$ 对非空流形永远不为零，因为它数的是「有几个整体」而不是「有没有局部障碍」。
+**例子（只列结论）**：$S^{1}$ 上的实线丛有两个同构类（平凡丛与 Möbius 带），对应 $\check{H}^{1}(S^{1};\mathbb{R}^{\times}) \cong \mathbb{Z}/2$；$S^{2}$ 上的复线丛由 $\mathbb{Z}$ 分类（Hopf 丛是生成元）。这两个数都不「局部」看得出来 —— 正是上同调该管的事。
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· 零次上同调与连通分支
+⚠️ $\operatorname{GL}(k,\mathbb{R})$ 里的 $k$ 是**丛的秩**；$k = 1$ 时它是 $\mathbb{R}^{\times}$，其连通分支是两个（$\mathbb{R}_{>0}$ 与 $\mathbb{R}_{<0}$），这正是「实线丛只有两种粘法」的来源。
 
-#### Poincaré 引理　`lem.poincare-lemma`
-*引理*　Poincaré 引理：星形区域上的闭形式恰当
+⚠️ 本条的证明是**构造级**的（写在边上）：两个方向的映射都给出、同构对应上边界都验证；「余极限是良定义的」这一步只给论证思路，不给逐字证明 —— 与深定理的折衷口径一致，如实说明。
 
-**在做什么**：给「闭形式何时恰当」一个干净的回答 —— 只要区域能缩成一点（星形），$k \ge 1$ 时闭就必恰当。所以上同调不是分析现象，是拓扑现象。
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 转移函数与上闭链条件；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛的同构与结构群
 
-设 $U \subseteq \mathbb{R}^{n}$ 是**星形**开集：存在 $p_{0} \in U$ 使对每个 $x \in U$，线段 $\{p_{0} + t(x - p_{0}) : t \in [0,1]\}$ 整段落在 $U$ 里。则对 $k \ge 1$，
+### 星团：向量场与 Lie 结构
+> 在流形上做「微分」的那一套：向量场与 Lie 括号 → 流与流的不变量（Lie 导数、内乘、Cartan 公式）→ 张量场与缩并 → 切分布、对合分布与 Frobenius 定理 → Lie 代数。
 
-$$\mathrm{d}\omega = 0 \implies \exists\ \eta \in \Omega^{k-1}(U)\ \text{such that}\ \omega = \mathrm{d}\eta .$$
+#### 切映射　`def.differential-map`
+*定义*　切映射（微分）
 
-等价地说：$H^{k}_{\mathrm{dR}}(U) = 0$ 对一切 $k \ge 1$ 成立；而 $H^{0}_{\mathrm{dR}}(U) = \mathbb{R}$（星形区域连通）。
+**在说什么**：光滑映射在每点给出一个线性映射，把「沿曲线的方向」送到像上的方向 —— 这就是流形上的导数；流形上没有减法，唯一能做的是「跟着曲线走」。
 
-结论对**可缩**开集同样成立：星形蕴含可缩，而论证只用到收缩同伦，不用星形区域的具体形状。
+设 $F : N \to M$ 光滑，$p \in N$。定义
 
-**关键的是一条链同伦**：存在线性映射 $K : \Omega^{k}(U) \to \Omega^{k-1}(U)$（沿 $x \mapsto tx$ 的「积分」，$t \in [0,1]$）使
+$$\mathrm{d}F_{p} : T_{p}N \longrightarrow T_{F(p)}M,\qquad \mathrm{d}F_{p}([\gamma]) := [F \circ \gamma],$$
 
-$$\mathrm{d}K + K\mathrm{d} = \operatorname{id}_{\Omega^{k}}\qquad (k \ge 1),$$
+即「过 $p$ 的曲线 $\gamma$」所在的类送到「过 $F(p)$ 的曲线 $F \circ \gamma$」所在的类。$\mathrm{d}F_{p}$ 叫 $F$ 在 $p$ 的**切映射**（也叫**微分**、微分映射）。
 
-于是在 $\mathrm{d}\omega = 0$ 时 $\omega = \mathrm{d}(K\omega)$，取 $\eta = K\omega$ 即可。$K$ 的具体公式是一段含内乘 $\iota_{X}$ 的积分，本节点不展开 —— 重要的是「存在 $K$」这件事，它把「同伦」翻译成了「代数」。
+在卡 $(U,\varphi)$（$N$ 的）与 $(V,\psi)$（$M$ 的）下，$\mathrm{d}F_{p}$ 的矩阵就是 $F$ 的局部表示的 Jacobi 矩阵：
 
-**星形去不掉**：$U = \mathbb{R}^{2}\setminus\{0\}$ 上的角形式 $\omega = \frac{x\,\mathrm{d}y - y\,\mathrm{d}x}{x^{2}+y^{2}}$ 满足 $\mathrm{d}\omega = 0$，但 $\int_{S^{1}}\omega = 2\pi \ne 0$；若 $\omega = \mathrm{d}\eta$，由 Stokes 定理得 $\int_{S^{1}}\mathrm{d}\eta = \int_{\partial S^{1}}\eta = 0$，矛盾。所以 $H^{1}(\mathbb{R}^{2}\setminus\{0\}) \ne 0$ —— 一个洞就破坏了引理。
+$$\Bigl[\mathrm{d}F_{p}\Bigr]_{\varphi,\psi} = \Bigl(\frac{\partial (\psi \circ F \circ \varphi^{-1})^{i}}{\partial x^{j}}(x)\Bigr)_{i,j},\qquad x = \varphi(p).$$
 
-**$k \ge 1$ 不能放宽**：$k = 0$ 时「闭」是局部常、「恰当」是零（没有 $-1$-形式），两者差得远，所以 $H^{0} = \mathbb{R} \ne 0$。陈述里必须把 $k = 0$ 摘出去。
+$\mathrm{d}F_{p}$ 是线性映射，并满足**链式法则**
 
-**它是局部计算的核心**：流形每点有可缩邻域（卡里的球），于是引理给出「上同调局部为零」。凡是上同调不为零，必定有整体障碍 —— 洞、柄、扭结。这也是 de Rham 上同调能被拓扑方法算出来的原因。
+$$\mathrm{d}(G \circ F)_{p} = \mathrm{d}G_{F(p)} \circ \mathrm{d}F_{p},\qquad \mathrm{d}(\operatorname{id}_{N})_{p} = \operatorname{id}_{T_{p}N}.$$
 
-**为什么叫 Poincaré**：Poincaré 在 19 世纪末的向量分析语言里证过「无旋场局部是梯度」这类结论；形式语言把它一句收完，并指出唯一假设是「区域能缩成一点」。
+让 $p$ 跑遍 $N$ 得到一个切丛之间的映射 $\mathrm{d}F : TN \to TM$，$v \mapsto \mathrm{d}F_{\pi(v)}(v)$。
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理
+**良定义就是链式法则**：换一张卡 $\varphi$ 换成 $\theta$，两条过 $p$ 的曲线若在 $\varphi$ 卡里速度相同，则在 $\theta$ 卡里也相同（都等于同一个 Jacobi 矩阵乘同一个向量）。类不变，所以 $\mathrm{d}F_{p}$ 有定义 —— 但**存在性**完全靠转移映射光滑，这一点是本节点与前两个节点的接头处。
 
-#### Mayer–Vietoris 序列　`thm.mayer-vietoris`
-*定理*　Mayer–Vietoris 长正合列
+**导子视角更省事**：$\mathrm{d}F_{p}(v)$ 作为导子就是 $\bigl(\mathrm{d}F_{p}(v)\bigr)(f) = v(f \circ F)$ —— 一个复合，不用提曲线。两条路线给出同一个线性映射。
 
-**在做什么**：把一个大流形的上同调，拆成两块以及它们交叠的上同调 —— 这是「打补丁」计算上同调的标准机器。
+**为什么它不叫「导数」**：$\mathbb{R}^{n}$ 里 $\mathrm{d}F_{p}$ 是一个矩阵，能与差商直接联系；流形上没有减法，$\mathrm{d}F_{p}$ 只是**切空间之间**的线性映射。它是一阶信息，换坐标时两侧各乘一个 Jacobi 矩阵（一正一反），所以「$\mathrm{d}F$ 是张量」对，但「$\partial_{i}F$ 是张量」不对。
 
-设 $M$ 是光滑流形，$U, V \subseteq M$ 是开集且 $M = U \cup V$。则存在**长正合列**
+**链式法则的意义**：$M \mapsto T_{p}M$、$F \mapsto \mathrm{d}F_{p}$ 是一个**函子**（切函子）。所以流形与光滑映射这一层，切空间自动继承所有复合结构 —— 这也是 $\mathrm{d}^{2} = 0$ 在形式上能成立的原因。
 
-$$\cdots \to H^{k}_{\mathrm{dR}}(M) \to H^{k}_{\mathrm{dR}}(U) \oplus H^{k}_{\mathrm{dR}}(V) \to H^{k}_{\mathrm{dR}}(U \cap V) \xrightarrow{\ \delta\ } H^{k+1}_{\mathrm{dR}}(M) \to \cdots$$
+**记号撞车**：同一个 $\mathrm{d}$ 既记切映射 $\mathrm{d}F_{p}$ 也记外微分 $\mathrm{d}\omega$。它们不是两件事：$\mathrm{d}f$ 就是切映射 $\mathrm{d}f_{p} : T_{p}M \to \mathbb{R}$，即 $1$-形式（`def.exterior-derivative`）。
 
-其中第二个箭头是 $(\omega_{U},\omega_{V}) \mapsto \omega_{U}\big|_{U \cap V} - \omega_{V}\big|_{U \cap V}$，$\delta$ 叫**连接同态**。
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 切映射与链式法则
 
-**本节点只给陈述**：$\delta$ 的显式构造与正合性的逐项验证，本图不写（要先把「形式的拆分」这套机器架起来，篇幅与收益不成比例）。此条按参考书陈述，不附证明。
+#### 向量场　`def.vector-field`
+*定义*　光滑向量场
 
-**$\delta$ 从哪来（给直觉，不是证明）**：取 $[\omega] \in H^{k}(U \cap V)$。用单位分解写 $\omega = \rho_{U}\omega + \rho_{V}\omega$（$\rho_{U} + \rho_{V} = 1$，各自支撑在 $U$、$V$ 里），把两块分别延拓成 $U$、$V$ 上的形式。它们的差在重叠处为零，于是拼成 $M$ 上的 $(k+1)$-形式，它就是 $\delta[\omega]$。符号与 $\mathrm{d}$ 的次序要在具体计算里对齐，本图不替读者对齐。
+**在说什么**：在每一点各挑一个切向量，并挑得随点光滑 —— 这就是向量场。它真正的身份是「对光滑函数求方向导数」的算子。
 
-**最简单的算例**：取 $S^{1} = U \cup V$ 为两个略长的开弧（$U \cap V$ 有两个连通分支），序列给出 $H^{1}(S^{1}) \cong \mathbb{R}$ —— 正是「单位圆上那个角形式」的那一个类。$S^{2}$ 用两个略大于半球的球冠（$U \cap V$ 同伦于 $S^{1}$）给出 $H^{2}(S^{2}) \cong \mathbb{R}$。
+设 $M$ 是光滑流形。$M$ 上的**向量场**是映射 $X : M \to TM$ 使 $\pi \circ X = \operatorname{id}_{M}$（每点给一个该点处的切向量）。若 $X$ 作为 $M \to TM$ 的映射光滑，称它是**光滑向量场**，全体记 $\mathfrak{X}(M)$。
 
-**为什么它是标准工具**：任何流形都能被可缩的开集（卡里的球）覆盖，Mayer–Vietoris 加归纳就把整张流形算出来 —— 这是「好的覆盖」那条计算路线的起点。算的时候用 Čech 侧（`def.cech-cohomology`）更容易，两者的一致性由 de Rham 定理保证。
+在每张图卡 $(U,\varphi)$ 里写成
 
-**为什么要求 $U, V$ 都开**：形式的限制只需要开集，不需要闭集；闭集版本要额外假设（或改用奇异上同调）。开性是「限制到重叠处」的合法保障。
+$$X\big|_{U} = \sum_{i=1}^{n} X^{i}\,\frac{\partial}{\partial x^{i}},\qquad X^{i} := \mathrm{d}x^{i}(X) ,$$
 
-**它的本质是同调代数**：短正合列
+则 $X$ 光滑，当且仅当存在一个图册的每张卡上每个 $X^{i}$ 都光滑（只查一个图册就够）。
 
-$$0 \to \Omega^{\bullet}(M) \to \Omega^{\bullet}(U) \oplus \Omega^{\bullet}(V) \to \Omega^{\bullet}(U \cap V) \to 0$$
+$X$ **作用在函数上**给出新函数
 
-取上同调就长出长正合列。所以 Mayer–Vietoris 不是形式的特殊性质，而是**链复形的一般定理**（蛇引理 / 连接同态）。
+$$(Xf)(p) := \mathrm{d}f_{p}\bigl(X_{p}\bigr) = \sum_{i} X^{i}(p)\,\frac{\partial f}{\partial x^{i}}(p),$$
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Mayer–Vietoris 序列
+于是 $X$ 是 $C^{\infty}(M)$ 上的**导子**：$X(fg) = f\,Xg + g\,Xf$。反过来每个导子都来自唯一的向量场。
 
-#### Lie 群　`def.lie-group`
-*定义*　Lie 群
+$X$ 在 $p$ 处**为零**指 $X_{p} = 0_{p}$；$X$ 的**支集**是 $\overline{\{p \in M : X_{p} \ne 0\}}$。
 
-**在说什么**：既是群又是光滑流形，而且两种结构互相尊重 —— 乘法与取逆都光滑。于是「群运算」可以用微积分研究。
+**「光滑」是唯一要小心的地方**：单纯「每点挑一个切向量」是集合论选择，可以极其病态。光滑性把它锁成局部坐标下的 $n$ 个光滑函数，于是微积分全部能搬过来 —— 这也是「向量场 = 导子」这条等价的用处。
 
-**Lie 群**是集合 $G$，同时带
+**$\mathfrak{X}(M)$ 是 $C^{\infty}(M)$-模**：$X + Y$、$fX$（$f$ 光滑）仍是向量场。所以向量场不是「逐点相加成数」的对象，而是模里的元素 —— 与「$\mathrm{d}f$ 是 $1$-形式」处在同一层次。
 
-1. **群**结构（`def.group`）；
-2. **有限维光滑流形**结构（`def.smooth-manifold`）；
+**处处非零的向量场不一定存在**：局部总有，整体不一定。$S^{2}$ 上不存在（毛球定理）；$S^{1}$、$S^{3}$、环面上存在。「有没有零点」是 Poincaré–Hopf 定理与示性类的源头，本图只提。
 
-使**乘法** $m : G \times G \to G$（$m(g,h) := gh$，$G \times G$ 取乘积流形结构）与**取逆** $i : G \to G$（$i(g) := g^{-1}$）都是光滑映射。
+**坐标变换**：在两族局部坐标下分别展开，分量满足 $X^{i} = \sum_{j}\frac{\partial y^{i}}{\partial x^{j}}X^{j}$ —— 与切向量同一条变换律（反变）。这就是「$X$ 是 $(1,0)$ 型张量场」的意思（`def.tensor-field`）。
 
-对 $g \in G$ 定义**左平移**与**右平移**
+**关于支集**：把「$X$ 在哪里不为零」的闭包记作 $\operatorname{supp} X$。单位分解的论证里要的正是「支集落在某张卡里」，所以这个记号与 `def.partition-of-unity` 的 $\operatorname{supp}$ 是同一个（`thm.smooth-partition-unity`）。
 
-$$L_{g} : G \to G,\quad L_{g}(h) := gh ;\qquad R_{g} : G \to G,\quad R_{g}(h) := hg .$$
+**与积分曲线**：向量场给出一阶 ODE $\dot\gamma = X(\gamma)$，其解是积分曲线；局部总有解，整体未必能延拓。本图只用局部存在性，流与单参数群那条线暂不进图。
 
-两者都是微分同胚（逆分别是 $L_{g^{-1}}$、$R_{g^{-1}}$），且 $L_{g} \circ L_{h} = L_{gh}$。
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场与导子
 
-**例**：$\operatorname{GL}(n,\mathbb{R}) = \{A : \det A \ne 0\}$（$\mathbb{R}^{n^{2}}$ 的开子集，故是 $n^{2}$ 维流形）；$\operatorname{SL}(n,\mathbb{R})$、$\operatorname{O}(n)$、$\operatorname{SO}(n)$、$\operatorname{U}(n)$（由方程切出来，见 `thm.regular-level-set`）；$(\mathbb{R}^{n},+)$；$S^{1} \subseteq \mathbb{C}^{\times}$；任意离散群（$0$ 维）。
+#### Lie 括号　`def.lie-bracket`
+*定义*　向量场的 Lie 括号
 
-**「取逆光滑」其实可以省掉**：只假设乘法光滑，则每个 $L_{g}$、$R_{g}$ 光滑；由隐函数定理 $i$ 在 $e$ 附近光滑，再用 $i = L_{g^{-1}} \circ i \circ R_{g^{-1}}$ 搬到各处。本图按习惯把两条都写进定义，省掉一次对隐函数定理的引用。
+**在说什么**：两个向量场各自都不能与另一个「合成」出新的向量场，但它们的交换子可以 —— 两次方向导数相减，二阶项自动抵消，剩下的仍是向量场。这个差值就是 Lie 括号。
 
-**$\operatorname{GL}(n,\mathbb{R})$ 为什么是流形**：$\det : \mathbb{R}^{n^{2}} \to \mathbb{R}$ 连续，$\mathbb{R}\setminus\{0\}$ 开，所以 $\det^{-1}(\mathbb{R}\setminus\{0\})$ 在 $\mathbb{R}^{n^{2}}$ 里开 —— 一张卡就够，$\varphi = \operatorname{id}$。这是「开子集继承流形结构」最省事的例子。
+设 $X, Y \in \mathfrak{X}(M)$。**Lie 括号** $[X,Y]$ 是作用在光滑函数上的算子
 
-**$\operatorname{O}(n)$ 为什么是流形**：它是 $F(A) = A^{\mathsf{T}}A - I$ 的零点集，$\mathrm{d}F_{A}(B) = A^{\mathsf{T}}B + B^{\mathsf{T}}A$ 在 $F^{-1}(0)$ 上满射（给定对称的 $S$，取 $B = AS/2$ 即得），于是由 `thm.regular-level-set` 得 $\dim = n^{2} - n(n+1)/2 = n(n-1)/2$。群结构由「正交矩阵之积仍正交」给出。
+$$[X,Y]f := X(Yf) - Y(Xf),\qquad f \in C^{\infty}(M).$$
 
-**拓扑限制**：不是每个群都能当 Lie 群（要第二可数、要局部欧氏）。Cartan 的闭子群定理说 Lie 群的闭子群自动是子流形 —— 这一条把「$\operatorname{SL}$、$\operatorname{O}$ 是 Lie 群」一般化，本图只提。
+右边看着用到二阶导数，但二阶偏导可交换，所以 $[X,Y]f$ 只含 $f$ 的一阶导数 —— 于是它仍是向量场。在卡里显式算出
 
-**为什么关心它**：Lie 群把「对称性」变成可微的对象，于是在单位元处求导就得到 Lie 代数（`def.lie-algebra`、`prop.left-invariant-fields`）—— 非线性问题线性化，这是整个理论的技术核心。
+$$[X,Y] = \sum_{i=1}^{n}\Bigl(\sum_{j=1}^{n}\bigl(X^{j}\partial_{j}Y^{i} - Y^{j}\partial_{j}X^{i}\bigr)\Bigr)\frac{\partial}{\partial x^{i}} .$$
 
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 群与例子；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左平移与右平移
+四条性质（$f,g \in C^{\infty}(M)$）：
+
+1. **反称**：$[X,Y] = -[Y,X]$，特别 $[X,X] = 0$；
+2. $\mathbb{R}$-**双线性**；
+3. **Jacobi 恒等式**：$[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0$；
+4. **Leibniz 律**：$[X, fY] = (Xf)\,Y + f\,[X,Y]$，并且 $[fX, gY] = fg\,[X,Y] + f(Xg)\,Y - g(Yf)\,X$。
+
+**为什么结果还是向量场**：$X(Yf)$ 与 $Y(Xf)$ 各自含 $f$ 的二阶导数，在卡里是 $X^{j}\partial_{j}\bigl(Y^{i}\partial_{i}f\bigr)$ 这类项；相减时 $\partial_{j}\partial_{i}f$ 的系数分别是 $X^{j}Y^{i}$ 与 $Y^{j}X^{i}$，而它对 $i,j$ 对称，所以这两项逐项抵消。二阶项消失，剩下的是合法的导子。
+
+**第 4 条说明它不是张量**：$[X,Y]$ 对 $Y$ 不是 $C^{\infty}(M)$-线性的 —— 多出来的 $f(Xg)Y$ 项正是「求两次导」留下的痕迹。所以「两个向量场的括号不能用逐点计算定义」，这是它与一切张量运算（`def.tensor-field`）的根本区别。
+
+**Jacobi 是三件事的合成**：把 Jacobi 写成 $[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]]$，读法是「$[X,\cdot]$ 是导子」。它不是凭空的规定，而是「括号来自一阶微分算子」的必然结果 —— 展开验证时六项两两抵消，用的是乘积求导。
+
+**几何含义**：$[X,Y]$ 量「先沿 $X$ 走一步再沿 $Y$ 走一步」与「反序走」的差，除以步长的平方。所以 $[X,Y] = 0$ 意味着两族积分曲线能拼成坐标网 —— 这是 Frobenius 可积性的起点，本图只提。
+
+**与联络的分界**：$\nabla_{X}Y$ 与 $[X,Y]$ 长得像但性质不同 —— 联络是额外结构（`def.affine-connection`），括号是流形自身就有的。无挠条件 $\nabla_{X}Y - \nabla_{Y}X = [X,Y]$ 就是拿这条免费的括号去约束联络。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 向量场的 Lie 括号
+
+#### 张量场　`def.tensor-field`
+*定义*　张量场与张量丛
+
+**在说什么**：把「每点一个多重线性型」做成光滑对象 —— 张量场就是能按矩阵方式逐点记账的那类量；度量、曲率、微分形式全是它的样子。
+
+设 $M$ 是 $n$ 维光滑流形，$p \in M$。**$(r,s)$ 型张量**是多重线性映射
+
+$$T : \underbrace{T_{p}^{\ast}M \times \cdots \times T_{p}^{\ast}M}_{r} \times \underbrace{T_{p}M \times \cdots \times T_{p}M}_{s} \longrightarrow \mathbb{R},$$
+
+即吃了 $r$ 个余向量与 $s$ 个向量吐一个数。全体记 $T^{(r,s)}_{p}M$，维数 $n^{r+s}$。**张量丛**是
+
+$$T^{(r,s)}M := \bigsqcup_{p \in M} T^{(r,s)}_{p}M ,$$
+
+它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 Jacobi 矩阵的 $s$ 次直积与它的逆的 $r$ 次直积（`def.tangent-bundle`）。
+
+$T^{(r,s)}M$ 的光滑截面叫 **$(r,s)$ 型张量场**。在卡里展开
+
+$$T = \sum T^{i_{1}\cdots i_{r}}_{\ \ j_{1}\cdots j_{s}}\ \partial_{i_{1}} \otimes \cdots \otimes \partial_{i_{r}} \otimes \mathrm{d}x^{j_{1}} \otimes \cdots \otimes \mathrm{d}x^{j_{s}} ,$$
+
+要求每个分量 $T^{i_{1}\cdots i_{r}}_{\ \ j_{1}\cdots j_{s}}$ 都是 $U$ 上的光滑函数。分量换卡时每个上标乘一次 $\partial y/\partial x$、每个下标乘一次 $\partial x/\partial y$。
+
+**四种特殊情况刚好都是见过的对象**：$(0,0)$ 型是光滑函数；$(1,0)$ 型是向量场（`def.vector-field`）；$(0,1)$ 型是 $1$-形式；$(0,k)$ 型且对调任两变元变号的就是 $k$-形式（`def.differential-form`）。所以「张量场」是这些概念的共同外壳。
+
+**为什么叫「张量」**：多重线性加逐点定义，导致分量换卡时只乘 Jacobi 矩阵的乘积，**不出现二阶导数**。这条「变换律只含一阶导」是张量与联络系数（$\Gamma$ 不是张量）的分界线。
+
+**例子**：黎曼度量是 $(0,2)$ 型（`def.riemannian-metric`）；曲率张量是 $(1,3)$ 型，写成 $R_{ijk\ell}$ 时是用 $g$ 把上标拉下来的 $(0,4)$ 型（`def.curvature-tensor`）；辛形式是 $(0,2)$ 型且反称闭；Einstein 张量是 $(0,2)$ 型。
+
+**纤维为什么长得快**：$r+s = 2$、$n = 4$ 时纤维有 $16$ 维，所以「逐点选一个张量」的自由度很快失控 —— 这正是曲率张量的对称性（`prop.curvature-tensor-symmetries`）值得单独数一遍的原因：$n^{4} = 256$ 砍到 $20$。
+
+**上标下标要配对**：$\mathrm{d}x^{i}(\partial_{j}) = \delta^{i}_{\ j}$。写分量时上标配 $\partial$、下标配 $\mathrm{d}x$，配错了就会在不该出现 $\det$ 的地方冒出 $\det$。
+
+**与 `def.exterior-algebra` 的关系**：每点的外代数就是交错张量的全体；「交错」是在张量丛上加一条对称性要求，然后取截面 —— 所以微分形式是张量场的特例，反之不然。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 张量场与张量丛；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 交错张量与微分形式
 
 #### Lie 代数　`def.lie-algebra`
 *定义*　Lie 代数
@@ -25910,456 +25796,6 @@ $\dim\mathfrak{g}$ 叫 Lie 代数的维数。对括号封闭的子空间叫 **Li
 **术语撞车**：「$\mathfrak{g}$ 是 Lie 代数」与「$A$ 是（结合）代数」是两件事。Lie 代数一般不结合，$[X,[Y,Z]]$ 与 $[[X,Y],Z]$ 之差恰是 Jacobi 里那一项。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 代数与例子
-
-#### 左不变向量场　`prop.left-invariant-fields`
-*命题*　左不变向量场与 Lie 代数
-
-**在做什么**：把 Lie 群「在单位元处求导」—— 左平移让单位元处的每个切向量长成一个整体向量场，而这些向量场恰好构成一个 Lie 代数。
-
-设 $G$ 是 Lie 群，$\mathfrak{g} := T_{e}G$（$e$ 是单位元）。向量场 $X \in \mathfrak{X}(G)$ 叫**左不变**，如果对一切 $g, h \in G$ 有
-
-$$X_{gh} = \mathrm{d}(L_{g})_{h}\bigl(X_{h}\bigr).$$
-
-则：
-
-1. **赋值给出同构**：$X \mapsto X_{e}$ 是「左不变向量场的空间」到 $\mathfrak{g}$ 的线性同构（逆是 $v \mapsto \bigl(g \mapsto \mathrm{d}(L_{g})_{e}(v)\bigr)$），于是这个空间是 $\dim G$ 维的；
-2. **对 Lie 括号封闭**：$X, Y$ 左不变，则 $[X,Y]$ 也左不变；
-3. **于是 $\mathfrak{g}$ 带 Lie 代数结构**：定义 $[v,w] := [\tilde v,\tilde w]_{e}$（$\tilde v$ 是 $v$ 对应的左不变向量场），则 $(\mathfrak{g},[\cdot,\cdot])$ 是 Lie 代数（`def.lie-algebra`），叫 $G$ 的 **Lie 代数**，且 $\dim\mathfrak{g} = \dim G$。
-
-所以「Lie 群 $\to$ Lie 代数」是一个函子：$\mathrm{Lie}(G)$。
-
-**为什么赋值是双射**：左不变性把 $X$ 在 $gh$ 处的值**唯一**由 $X_{h}$ 决定，取 $h = e$ 就知 $X$ 完全由 $X_{e}$ 决定（单射）；反过来，给定 $v \in \mathfrak{g}$，令 $X_{g} := \mathrm{d}(L_{g})_{e}(v)$，则 $X_{gh} = \mathrm{d}(L_{gh})_{e}(v) = \mathrm{d}(L_{g})_{h}\bigl(\mathrm{d}(L_{h})_{e}(v)\bigr) = \mathrm{d}(L_{g})_{h}(X_{h})$（链式法则加 $L_{gh} = L_{g} \circ L_{h}$），故左不变（满射）。光滑性：局部用卡写开，$\mathrm{d}(L_{g})$ 对 $g$ 光滑。
-
-**括号为什么能下去**：关键是 Lie 括号的**自然性**
-
-$$\mathrm{d}F\bigl([X,Y]_{p}\bigr) = \bigl[\mathrm{d}F(X),\mathrm{d}F(Y)\bigr]_{F(p)},$$
-
-这里 $F$ 是微分同胚。取 $F = L_{g}$，由左不变性得 $\mathrm{d}(L_{g})X = X$、$\mathrm{d}(L_{g})Y = Y$，于是 $\mathrm{d}(L_{g})[X,Y] = [X,Y]$，即 $[X,Y]$ 左不变。所以「Lie 群给出 Lie 代数」唯一的实质是这条自然性。
-
-**例子**：$G = \operatorname{GL}(n,\mathbb{R})$ 的 Lie 代数是 $\mathfrak{gl}(n,\mathbb{R})$ 配交换子 —— 因为 $L_{A}$ 是线性映射、$\mathrm{d}(L_{A}) = A$ 本身，左不变向量场就是 $X(A) = AM$（$M$ 固定），括号算出来正是 $[M,N] = MN - NM$。
-
-**「Lie 代数决定 Lie 群」是假的**：$S^{1}$ 与 $\mathbb{R}$ 的 Lie 代数都是一维阿贝尔的，但两者不同构（紧 vs 非紧）。所以从 $\mathfrak{g}$ 回不到 $G$，只能回到单连通的 $G$ —— 这是 Lie 第三定理的内容，本图不展开。
-
-**下一步去哪**：左不变**形式**（对偶版本）给出 Maurer–Cartan 方程，本图不展开；那条线与结构方程（`def.connection-form`）是同一套记账。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变向量场与 Lie 代数；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 括号的自然性
-
-#### 带边流形　`def.boundary-manifold`
-*定义*　带边流形与边界
-
-**在做什么**：把一个方向上砍掉一边，让「闭区间」「闭圆盘」这类带边的对象也成了流形 —— 有了它，「边界」才能有自己的维度、自己的积分、自己的 $(n-1)$ 维几何。
-
-记**半空间**
-
-$$\mathbb{H}^{n} := \{x\in\mathbb{R}^{n} : x^{n}\le 0\},\qquad \partial\mathbb{H}^{n} = \{x\in\mathbb{R}^{n} : x^{n} = 0\}.$$
-
-**$n$ 维带边流形**是一个 Hausdorff、第二可数拓扑空间 $M$，带一族卡 $(U,\varphi)$：每个 $U\subseteq M$ 开，$\varphi : U\to\varphi(U)$ 是同胚，$\varphi(U)$ 是 $\mathbb{H}^{n}$ 的**开**子集，且任意两张卡的转移映射 $\psi\circ\varphi^{-1}$ 光滑。
-
-$p\in M$ 叫**内点**，如果存在一张卡使 $\varphi(p)^{n}<0$；否则叫**边界点**。这两类与卡的选取无关。全部边界点记 $\partial M$，全部内点记 $\operatorname{Int}M$。
-
-$\partial M$ 自带一个 $(n-1)$ 维**无边**光滑流形结构：把每张卡与 $\partial\mathbb{H}^{n}$ 求交，$\varphi$ 限制成 $U\cap\partial M\to\{x^{n} = 0\}\cong\mathbb{R}^{n-1}$，重叠处的转移映射仍是光滑映射的限制。若 $M$ 本身是无边流形，则 $\partial M = \emptyset$。
-
-**「内点 / 边界点」为什么与卡无关**：设某张卡给 $\varphi(p)^{n}<0$、另一张给 $\psi(p)^{n} = 0$。则 $h := \psi\circ\varphi^{-1}$ 是开集之间的微分同胚，把点 $\varphi(p)\in\{x^{n}<0\}$ 送到 $\{x^{n} = 0\}$ 上。但 $\varphi(p)$ 有一个整个含在 $\{x^{n}<0\}$ 里的开球邻域，其像必含在 $\{x^{n} = 0\}$ 里 —— 而后者没有内点，矛盾。所以「是不是边界点」属于 $M$，不属于坐标。
-
-**为什么用半空间而不是球**：半空间白送一张坐标（$x^{1},\ldots,x^{n-1}$ 沿边、$x^{n}$ 指向内部），「边界」在坐标里就是一条方程 $x^{n} = 0$，要证的东西一步到位。球模型还得额外证明球面那块是流形，白干一遍。
-
-**边界不是「拓扑边界」**：$\partial M$ 是内蕴的一层 $(n-1)$ 维皮，与有没有谁来包着 $M$ 无关；拓扑意义上的边界要靠 $M$ 先嵌在某个空间里才谈得上。两者只在嵌入的情形下碰头。
-
-**⚠️ 定向的约定（只在用到时交代）**：$\partial M$ 的**诱导定向**取「外法向在前」—— 若 $(v_{1},\ldots,v_{n-1})$ 是 $T_{p}\partial M$ 的基，它为正，当且仅当 $(N,v_{1},\ldots,v_{n-1})$ 是 $T_{p}M$ 的正向基，$N$ 是外单位法向。取 $\mathbb{H}^{n}$ 的标准坐标时，这条等价于「用 $x^{1},\ldots,x^{n-1}$ 的次序当定向，但与诱导定向差 $(-1)^{n-1}$」。这个符号在 `prop.boundary-sign-convention` 里会再出现一次，两处必须一致。
-
-**⚠️ 边界的边界是空的**：$\partial(\partial M) = \emptyset$，因为 $\partial M$ 是无边流形（它的卡值域落在 $\mathbb{R}^{n-1}$ 的开集里）。这一条让 Stokes 型公式能反复用而不会冒出「边界的边界」那一项。
-
-参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 带边流形与边界；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 几何预备：奇异方块与半空间
-
-#### 奇异方块　`def.singular-cube`
-*定义*　奇异方块
-
-**在做什么**：把一个标准方块光滑地放进流形，得到一张允许退化的参数片 —— 积分就挂在这样的参数片上，而它的「面」有整齐的编号。
-
-设 $M$ 是 $n$ 维光滑流形。$M$ 里的一个 **$k$ 维奇异方块**是一个映射
-
-$$c : [0,1]^{k}\longrightarrow M ,$$
-
-它在一个含 $[0,1]^{k}$ 的开集上光滑（等价地：在某张卡里每个分量光滑）。$k = 0$ 时 $[0,1]^{0}$ 是一个点，$0$-方块就是 $M$ 里的一个点。
-
-「**奇异**」说的是 $\mathrm{d}c_{p}$ 不必满秩：$c$ 可以自交、可以把某个方向压成零；它不必是单射，也不必是浸入。压扁了照样是合法的方块，只是像集不再是子流形。
-
-记 $Q_{k}(M)$ 为 $M$ 里全体 $k$-方块。$M$ 上的 $k$-形式 $\omega$ 沿 $c$ 拉回到 $[0,1]^{k}$，这就是「形式在方块上积分」的入口。
-
-**为什么是方块不是单纯形**：单纯形有 $k+1$ 个面（丢一个顶点得到一个），方块有 $2k$ 个面（把某一个坐标钉在两端之一得到一个）。方块赢在两处：面与坐标轴一一对应，于是符号 $(-1)^{i+\alpha}$ 里的 $i$ 就是轴号；而且方块本身自带 Lebesgue 测度与标准定向，在它上面积分不必另行选取定向。
-
-**光滑到边界**：$c$ 只在闭方块上有定义，所以「光滑」必须解释成「能延拓到某个开邻域上光滑」。这个延拓不必唯一，但任何与积分有关的量都只看 $[0,1]^{k}$ 上的值，而边界是零测集，所以不产生歧义。
-
-**退化不是病**：常值方块（整个 $[0,1]^{k}$ 映成一点）也允许，它对积分贡献零。允许退化换来的是「任意光滑映射都能当方块用」，不必先证明像集是子流形 —— 这是链这套记账比「子流形」省事的地方。
-
-**与切空间的关系**：$\mathrm{d}c_{p} : \mathbb{R}^{k}\to T_{c(p)}M$ 是切映射（`def.tangent-space-manifold` 里那个）。满秩时它是浸入，像集局部是 $k$ 维子流形；不满秩时正是「奇异」二字所指。
-
-**⚠️ 记号**：有的书把方块写成 $c : I^{k}\to M$ 并默认 $I = [0,1]$，有的用 $[a,b]$。本图一律取 $I = [0,1]$，与 $\partial c$ 的符号约定配套。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 奇异方块与链；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 几何预备
-
-#### 奇异链　`def.singular-chain`
-*定义*　奇异链
-
-**在做什么**：把若干张方块按整数系数叠起来，得到一条「链」—— 它让「带符号地相加」成为合法对象，于是边界和积分都能线性地作用上去。
-
-设 $M$ 是光滑流形。$M$ 上的一条 **$k$-链**是形式和
-
-$$c = \sum_{i=1}^{N}n_{i}\,c_{i},\qquad n_{i}\in\mathbb{Z},\ c_{i}\in Q_{k}(M),$$
-
-其中 $N<\infty$。全体 $k$-链记 $C_{k}(M)$，加法按系数相加，它与整数标量构成一个自由阿贝尔群，基就是全体 $k$-方块。
-
-**有限性是定义的一部分**：和只有有限多项，这样每次写 $\partial c$、$\int_{c}\omega$ 都是有限和，不必讨论收敛。
-
-系数取整数（不取实数）：链是**几何的记账**，权重是为「定向」「重数」「相消」服务的，不是权重测度。积分对链线性，所以整数系数已经够用。
-
-**为什么要有链**：单个方块的边界是一条链（$2k$ 个面），一条链的边界可能又是一条链的边界 —— 想写「$\partial^{2} = 0$」就必须先允许「有限和」这种对象存在。链就是把「和」提前造好的最小代价。
-
-**⚠️ 与序论里那个「链」无关**：这里说的是同调代数里的 chain，不是偏序集的 chain。同一个中文词，两个不相干的概念 —— 本图的节点 id 也因此分开（那个是 `def.chain`）。
-
-**细分不改积分**（这里只用其精神）：把 $[0,1]^{k}$ 用网格切成小方块，$c$ 限制在每块上给出小方块，它们的和与 $c$ 在积分上等价。这条在「把流形剖分成链」时用到，本图的 Stokes 定理两版对照就靠它。
-
-**与同调的关系**：$C_{k}(M)$ 配上 $\partial$ 是链复形，取同调就是奇异同调 $H_{k}(M)$。本图只用「链能积分」这一面，不取同调 —— 闭链与恰当形式配对那条线属于另一支内容。
-
-**⚠️ 记号**：本图不区分「奇异链」与「链」两种写法，一律写 $k$-链；系数默认在 $\mathbb{Z}$ 里，需要实数时临时说明。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 奇异链与链上的运算；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 代数预备
-
-#### 边界算子　`def.boundary-operator`
-*定义*　边界算子
-
-**在做什么**：「把方块的一个面取出来」这件事有统一的写法：固定某个坐标为此端或彼端，再乘一个符号，全部加起来就是边界。
-
-**插入映射**：对 $1\le i\le k$、$\alpha\in\{0,1\}$ 定义
-
-$$I^{k}_{(i,\alpha)} : I^{k-1}\longrightarrow I^{k},\qquad (x^{1},\ldots,x^{k-1})\longmapsto(x^{1},\ldots,x^{i-1},\alpha,x^{i},\ldots,x^{k-1}).$$
-
-对 $k$-方块 $c$，记 $c_{(i,\alpha)} := c\circ I^{k}_{(i,\alpha)}$，它是 $(k-1)$-方块，叫 $c$ 的**第 $(i,\alpha)$ 面**。
-
-**边界算子** $\partial$ 先把方块送到「面的带符号和」，再线性延拓到链：
-
-$$\partial c := \sum_{i=1}^{k}\sum_{\alpha=0}^{1}(-1)^{i+\alpha}\,c_{(i,\alpha)},\qquad \partial\Bigl(\sum_{l}n_{l}c_{l}\Bigr) := \sum_{l}n_{l}\,\partial c_{l}.$$
-
-约定 $k = 0$ 时 $\partial c := 0$（点是零维的，没有面）。于是 $\partial : C_{k}(M)\to C_{k-1}(M)$ 是群同态。
-
-**符号 $(-1)^{i+\alpha}$ 是谁给的**：它不是硬凑的。取外法向为 $+\partial_{i}$ 的那一端（即 $\alpha = 1$）与取 $(-1)^{i+1}$，另一端的法向是 $-\partial_{i}$、符号是 $(-1)^{i}$，两端的差别正好就是「把外法向搬到最前面要跨过 $i-1$ 个坐标」的那个置换符号。完整的验算在 `prop.boundary-sign-convention` 里 —— 结论是这套符号与「外法向在前」的诱导定向**逐面相同**。
-
-**$2k$ 个面**：$i$ 取 $k$ 个值、$\alpha$ 取两端，共 $2k$ 个 $(k-1)$-方块。它们不是两两不同的映射，但作为链的项是两两不同的（别处可以重合，作为映射不能）。
-
-**平方为零**：见 `prop.boundary-squared-zero`。这是整套记账能用的关键 —— 它保证「边界没有边界」，于是 Stokes 定理两边不会多出一层。
-
-**为什么线性延拓而不是逐项定义**：链已经是形式和，$\partial$ 若不同态就没法算 $\partial(c_{1}+c_{2})$，而 Stokes 定理要对链成立就必须要这一条。
-
-**⚠️ 记号陷阱**：$\partial$ 同时用来表示半空间的边界（$\partial\mathbb{H}^{n}$）、流形的边界（$\partial M$）与链的边界（$\partial c$）。三种用法在 `prop.boundary-sign-convention` 之后统一：对保向方块，链的边界与流形边界逐面一致。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块的边界与边界算子；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 插入映射与面
-
-#### 边界算子平方为零　`prop.boundary-squared-zero`
-*命题*　边界算子平方为零
-
-**在做什么**：连续取两次边界，什么也不剩。这一条把链变成链复形，也是 Stokes 定理两边能对上的代数前提。
-
-对任意 $k$-链 $c$（$k\ge 0$）有
-
-$$\partial(\partial c) = 0 .$$
-
-于是 $(C_{k}(M),\partial)$ 是一个链复形：$\partial^{2} = 0$ 等价于 $\operatorname{im}\partial \subseteq \ker\partial$，「闭链」比「边界」大出来的那一部分才是同调。
-
-按 $\partial$ 的定义，这件事对每条链都必须成立，所以只需对单个方块证明；再用线性延拓推广到链。
-
-**几何上的意思**：一条曲线段的两个端点，各自没有端点；一个方块的四条边，边角的顶点在两条边里各出现一次、符号相反，正好抵消。高维是同一件事的组合版本：每个 $(k-2)$ 维的「棱」被两个不同的面共用，两处的符号相反。
-
-**与 $\mathrm{d}^{2} = 0$ 的对称性**：$\partial$ 把维数降一，$\mathrm{d}$ 把次数升一，两者都平方为零，而且 $\int$ 把 $\partial$ 与 $\mathrm{d}$ 配成对偶（`thm.stokes-chain`）。这条对称性是整个链上的微积分的骨架。
-
-**⚠️ 别指望「取一次面再取一次面」总是有定义**：第二步是在 $(k-1)$ 个坐标里取，编号已经变过一次了。证明里的全部内容就是把这个「编号移位」算清 —— 这也是初学者写错符号的固定位置。
-
-**⚠️ 反例的边界在哪**：若把符号换成不随 $i$ 变的（比如全部取 $+1$），$(k-2)$ 维棱会被两个面各算一次、符号相同，和不为零。所以 $(-1)^{i+\alpha}$ 这个「交替性」是必需的，不是装饰。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 边界的平方为零；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链复形
-
-#### 边界的符号约定　`prop.boundary-sign-convention`
-*命题*　代数边界与诱导定向的边界一致
-
-**在做什么**：把两个「边界」对齐 —— 一个是方块上按坐标编号定出来的代数边界 $\partial c$，一个是带边流形上按「外法向在前」定出来的几何边界。它们相差的正是那串符号 $(-1)^{i+\alpha}$。
-
-设 $M$ 是定向 $n$ 维带边流形，$c : I^{n}\to M$ 是保向的微分同胚，把 $I^{n}$ 映到自己的像上（像是一个带边的 $n$ 维区域，$I^{n}$ 取标准定向）。则对每个面 $(i,\alpha)$：把 $c_{(i,\alpha)}$ 看成 $\partial M$ 的像上的参数化，**它与 $\partial M$ 的诱导定向相符，当且仅当 $(-1)^{i+\alpha} = +1$**。
-
-换句话说：把所有面按诱导定向重新排一次符号，得到的链就是
-
-$$\partial c = \sum_{i=1}^{n}\sum_{\alpha=0}^{1}(-1)^{i+\alpha}\,c_{(i,\alpha)} .$$
-
-所以「代数边界」与「几何边界」不是两套约定，是同一套：符号已经写在 $\partial c$ 的系数里了。
-
-**为什么这条重要**：流形版的 Stokes 定理（`thm.stokes`）用的是几何边界（诱导定向），链版的 Stokes 定理（`thm.stokes-chain`）用的是代数边界（$\partial c$）。两者能写成同一个公式，全靠这个命题。它也是散度定理里那个「外法向 + 诱导定向」符号的真正出处。
-
-**$n = 1$ 的验算**：$I^{1} = [0,1]$，$\partial c = -c_{(1,0)}+c_{(1,1)} = c(1)-c(0)$。而 $0$ 维的诱导定向里，$x = 1$ 那端（外法向 $+e_{1}$）为正、$x = 0$ 那端为负。逐项相符。
-
-**$n = 2$ 的验算**：$\partial c = -c_{(1,0)}+c_{(1,1)}+c_{(2,0)}-c_{(2,1)}$。四条边分别是左、右、下、上；右边（$\alpha = 1$，外法向 $+e_{1}$）取 $+$，左边（外法向 $-e_{1}$）取 $-$，下边（外法向 $-e_{2}$）取 $+$，上边（外法向 $+e_{2}$）取 $-$。按「外法向在前」逐个核对，四条全部相符 —— 而四条边的走向正好构成逆时针一圈。
-
-**⚠️ 顺序容易抄错的方向**：证明里比较的是「面自身的基在 $\mathbb{R}^{n}$ 里与 $N$ 拼起来后的行列式」，不是「面的基与 $N$ 的叉积方向」。前者是纯代数、可逐项验算；后者只在三维有直觉。三维以下的直觉可以帮忙记，但不能当证明。
-
-**⚠️ 保向性不能丢**：若 $c$ 反向，则每个面都多一个负号，命题的结论整体差一个号。所以命题的前提写成「$c$ 保向」，而不是「$c$ 是微分同胚」。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块的边界与定向；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 边界的诱导定向
-
-#### 链上的积分　`def.integral-on-chain`
-*定义*　链上的积分
-
-**在做什么**：链上的积分不是一种新积分 —— 把形式沿方块拉回坐标里，剩下的就是一个普通的重积分。方块自带的坐标次序就是它的定向，所以不必另外选定向。
-
-设 $c : I^{k}\to M$ 是 $k$-方块，$\omega$ 是定义在 $c$ 的像的某个邻域上的 $k$-形式。在 $I^{k}$ 上 $c^{\ast}\omega$ 仍是 $k$-形式，而 $k$ 维区域的 $k$-形式只有一个分量，故存在唯一的 $f\in C^{\infty}(I^{k})$ 使
-
-$$c^{\ast}\omega = f\,\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}.$$
-
-定义方块上的积分
-
-$$\int_{c}\omega := \int_{I^{k}}f = \int_{0}^{1}\cdots\int_{0}^{1}f(x)\,\mathrm{d}x^{1}\cdots\mathrm{d}x^{k},$$
-
-再对链线性延拓：
-
-$$\int_{\sum_{l}n_{l}c_{l}}\omega := \sum_{l}n_{l}\int_{c_{l}}\omega .$$
-
-$k = 0$ 的约定：$0$-方块是点 $p$，$0$-形式是函数，$\int_{p}F := F(p)$，$\int_{\sum n_{l}p_{l}}F := \sum_{l}n_{l}F(p_{l})$。
-
-**系数 $f$ 是什么**：$f = c^{\ast}\omega(\partial_{1},\ldots,\partial_{k})$，即把方块坐标方向的切向量喂给拉回的形式。它是光滑函数，边界上的值由 $c$ 的光滑延拓决定，零测集不影响积分。
-
-**为什么不需要定向**：方块的坐标次序已经钉死了定向 —— $\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$ 在 $I^{k}$ 上就是标准定向。想让方块「反向走」，就把某个坐标换成 $1-x^{i}$；此时 $c^{\ast}\omega$ 自动变号，不需要额外规则。所以「定向」这件事在链这一侧被吃进了参数化里。
-
-**与 `def.integral-form` 的分工**：那边是「$n$-形式在**开集**上积分」，要单位分解才能拼到流形上；这边是「$k$-形式沿**一张方块**积分」，一次重积分到底。整体的意思交给链（求和），不交给单位分解 —— 这是 Spivak 这套记账最省事的地方。
-
-**⚠️ 次数必须匹配**：$k$-形式只配得上 $k$-链。$j$-形式沿 $k$-方块拉回（$j<k$）仍有意义，但那是 $k$ 维区域上的 $j$-形式，积不出来；$j>k$ 时拉回直接为零。所以「链与形式的配对」只在次数相等时有定义。
-
-**⚠️ 退化方块**：若 $c$ 不满秩，$c^{\ast}\omega$ 可以是零（比如 $c$ 常值），积分自然为零。定义不需要为退化情形打补丁。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块与链上的积分；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 拉回与积分
-
-#### 链上积分的双线性　`prop.integral-chain-linear`
-*命题*　链上积分对形式与对链都线性
-
-**在做什么**：把「链上的积分」说成一个配对 —— 左边是链、右边是形式、结果是一个数，两头都线性。这条双线性是后面所有求和与拆分的许可证。
-
-设 $c$ 是 $M$ 上的 $k$-链，$\omega,\eta$ 是 $k$-形式，$a,b\in\mathbb{R}$。则
-
-$$\int_{c}(a\,\omega+b\,\eta) = a\int_{c}\omega+b\int_{c}\eta ,\qquad \int_{a\,c+b\,c'}\omega = a\int_{c}\omega+b\int_{c'}\omega .$$
-
-特别地 $\int_{-c}\omega = -\int_{c}\omega$（系数为 $-1$ 的链就是「反向走」）。
-
-于是积分是一个双线性配对
-
-$$C_{k}(M)\times\Omega^{k}(M)\longrightarrow\mathbb{R},$$
-
-左边是几何的（方块与它们的和），右边是对偶的（形式与它们的和）。
-
-**为什么这条值得单独立一个节点**：它是所有「拆开算」的操作的合法依据 —— 把 $\omega$ 拆成分量、把链拆成方块、把区域拆成小块，用的都是这两条线性。没有它，Stokes 定理只能对单块陈述，说不出「对链成立」。
-
-**配对的观点**：$\Omega^{k}(M)$ 是实数域上的向量空间（维数无穷），$C_{k}(M)$ 是自由阿贝尔群；两者配对到 $\mathbb{R}$，且各自线性。对偶的方向是「$\mathrm{d}$ 升次数、$\partial$ 降次数」，而 $\int$ 正是把这一对对偶串起来的那个括号（`thm.stokes-chain`）。
-
-**⚠️ 反对称性不是「反对称」**：$\int_{-c} = -\int_{c}$ 说的是链的系数为负，不是「交换两个变元变号」。链与形式之间不存在交换律 —— 它们的类型不同。
-
-**⚠️ 系数域**：链的系数在 $\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\mathbb{R}$ 里。这里两者都按实数看待，取整数值只是链的记账习惯；讨论同调时会回到 $\mathbb{Z}$。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上积分的线性；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链与形式的配对
-
-#### 方块上的 Stokes 公式　`lem.single-cube-stokes`
-*引理*　单个方块上的 Stokes 公式
-
-**在做什么**：把 Stokes 定理先在一块标准方块上算穿 —— 左边是一个重积分、右边是 $2k$ 个面上的积分，两边逐项对上。全部符号约定都在这一步被验完。
-
-设 $\eta$ 是定义在含 $I^{k} = [0,1]^{k}$ 的开集上的 $(k-1)$-形式（$k\ge 1$）。则
-
-$$\int_{I^{k}}\mathrm{d}\eta = \int_{\partial I^{k}}\eta ,$$
-
-其中 $I^{k}$ 取标准定向，$\partial I^{k}$ 按 `def.boundary-operator` 的符号约定理解为一条 $(k-1)$-链。
-
-$k = 1$ 时它就是微积分基本定理：$\int_{0}^{1}F^{\prime}(t)\,\mathrm{d}t = F(1)-F(0)$。
-
-**证明的骨架**：把 $\eta$ 按缺哪个 $\mathrm{d}x^{j}$ 拆成 $k$ 项，每项是一个一元积分；$\mathrm{d}\eta$ 是 $\sum_{j}\partial_{j}f_{j}$。对每个 $j$ 用一元基本定理把 $x^{j}$ 那层积完，剩下的正好是第 $j$ 个坐标两端的面积分之差。右边逐面拉回时只有 $j$ 与面号相同的那一项活着 —— 两个符号相乘恰好对上。完整计算见边 `imp.spivak-cube-stokes`。
-
-**为什么这一块必须先做**：一般方块 $c$ 上的情形全靠拉回（$c^{\ast}\mathrm{d} = \mathrm{d}c^{\ast}$），拉回之后就是本引理。所以本引理是链版 Stokes 的**唯一**实质内容，其余都是翻译。
-
-**⚠️ 符号最容易错的地方**：$\eta$ 写成 $\sum_{j}(-1)^{j-1}f_{j}\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{j}}\cdots\wedge\mathrm{d}x^{k}$（带帽表示略去该因子）时，$\mathrm{d}\eta = \sum_{j}\partial_{j}f_{j}\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$ 里**没有**额外符号。若这里多写一个 $(-1)^{j-1}$，右边就会整个错位面。
-
-**⚠️ 边界上的零测集**：$\eta$ 只要求定义在开集上、连续到边界；逐面拉回时用的是 $\eta$ 在面上的值，而 $\partial I^{k}$ 是零测集，所以积分不受延拓方式影响。
-
-**与经典公式的关系**：$k = 2$ 时它就是 Green 公式；$k = 3$ 时是 Kelvin–Stokes（环量形式）。这两个都是本引理的特例，不是另外的定理。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块上的 Stokes 公式；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 微积分基本定理的高维形式
-
-#### 链上的 Stokes 定理　`thm.stokes-chain`
-*定理*　链上的 Stokes 定理
-
-**在做什么**：一个 $(k-1)$-形式在**边界链**上的积分，等于它的外微分在**链**上的积分。它是微积分基本定理、Green 公式、Gauss 公式、Kelvin–Stokes 的共同祖先。
-
-设 $c$ 是 $M$ 上的一条 $k$-链（$k\ge 1$），$\omega$ 是定义在 $c$ 的像的某个邻域上的 $(k-1)$-形式。则
-
-$$\int_{\partial c}\omega = \int_{c}\mathrm{d}\omega .$$
-
-**与流形版的关系**（`thm.stokes`）写清：流形版要求 $M$ 紧致、可定向、带边，$\omega$ 定义在 $M$ 上；链版不要 $M$ 可定向、不要紧致、不要 $\omega$ 有紧支，代价是把「流形」换成了「链」。两者互为特例 —— 把 $M$ 剖分成（或细分成）一条覆盖它的 $n$-链，链版逐项相加就是流形版；反过来，把流形版限制在一块保向参数方块上，就是链版的单块情形。
-
-$k = 1$、$c = \gamma : [0,1]\to\mathbb{R}$ 时：$\partial\gamma = \gamma(1)-\gamma(0)$，公式变成 $F(\gamma(1))-F(\gamma(0)) = \int_{0}^{1}(F^{\prime}\circ\gamma)\,\gamma^{\prime}\,\mathrm{d}t$，正是微积分基本定理。
-
-**证明只有三行**：$\int_{c}\mathrm{d}\omega = \int_{I^{k}}c^{\ast}\mathrm{d}\omega = \int_{I^{k}}\mathrm{d}(c^{\ast}\omega) = \int_{\partial I^{k}}c^{\ast}\omega = \int_{\partial c}\omega$。四步分别用：链上积分的定义、$c^{\ast}$ 与 $\mathrm{d}$ 交换、`lem.single-cube-stokes`、$\partial$ 的定义与线性。难点全在引理里，这里是翻译。
-
-**不需要定向的原因**：链这一侧把定向吃进了参数化（`def.integral-on-chain`），所以整条定理里没有出现「可定向」这个词。要把链版换回流形版时才需要定向 —— 那时符号由 `prop.boundary-sign-convention` 提供。
-
-**四合一**：$k = 1$ 是微积分基本定理；$k = 2$ 是 Green 公式；$k = 3$ 的两种样子分别是 Gauss–Ostrogradsky（通量，也就是散度定理 `thm.divergence-theorem`）与 Kelvin–Stokes（环量）。它们不是四条定理，是同一条在不同 $k$ 上的读法。
-
-**⚠️ 次数与维数**：$\omega$ 的次必须比链的维少一。$k = 0$ 时 $\partial c = 0$、右边为零，公式退化成 $0 = 0$，所以定理从 $k\ge 1$ 说起。
-
-**⚠️ 不能直接说「对任意闭链成立」**：本定理不需要 $c$ 是闭链；$\partial c\ne 0$ 时两边照样相等。闭链与恰当形式配对为零（$\int_{c}\mathrm{d}\omega = 0$）是它的推论，不是前提。
-
-参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上的 Stokes 定理；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 微积分基本定理
-
-#### 体积密度与体积形式　`def.volume-density`
-*定义*　体积密度与体积形式
-
-**在做什么**：把「度量给的体积大小」写成一个能积分的量。带符号的那版叫体积形式、要定向；不带符号的那版叫密度、不要定向 —— 同一串系数的两种读法。
-
-设 $(M,g)$ 是 $n$ 维黎曼流形，卡 $(U,x)$ 里记 $g_{ij} = g(\partial_{i},\partial_{j})$。
-
-**体积密度**（不需要定向）：
-
-$$\mathrm{d}\mu_{g} := \sqrt{\det(g_{ij})}\;\mathrm{d}x^{1}\cdots\mathrm{d}x^{n},$$
-
-右边是 Lebesgue 测度乘一个正的光滑函数，所以它是一个**密度**：换卡不变（绝对值那一半在开方里，见 `prop.volume-density-well-defined`），拼接后给出 $M$ 上唯一的 Radon 测度 $\mu_{g}$。
-
-**体积形式**（需要先取定一个定向）：在每张保向卡里令
-
-$$\mathrm{d}V := \sqrt{\det(g_{ij})}\;\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}.$$
-
-等价地，它逐点由「在正向标准正交基上取 $1$」刻画：$\mathrm{d}V_{p}(e_{1},\ldots,e_{n}) = 1$，其中 $(e_{1},\ldots,e_{n})$ 是 $T_{p}M$ 的任意一组正向标准正交基 —— 交错性加上「换一组这样的基只差行列式为 $1$ 的变换」保证这刻画与基的选取无关。翻转定向，$\mathrm{d}V$ 变号。
-
-**体积**：$\operatorname{vol}_{g}(M) := \mu_{g}(M)$；$M$ 紧且已定向时它等于 $\int_{M}\mathrm{d}V$，并且 $\mathrm{d}\mu_{g} = |\mathrm{d}V|$。
-
-**为什么系数是 $\sqrt{\det g}$**：$\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$ 在基 $(\partial_{1},\ldots,\partial_{n})$ 上取 $1$，但 $\partial_{i}$ 一般不是正交基。设 $\partial_{i} = \sum_{j}A_{ij}e_{j}$（$e_{j}$ 为标准正交基），则 $g = A^{\mathsf T}A$，于是 $\sqrt{\det g} = |\det A|$；保向时 $\det A>0$，而 $\mathrm{d}V(\partial_{1},\ldots,\partial_{n}) = \det A$，与「在正交基上取 $1$」相容。面积（体积）放大率就是行列式，这是 $\sqrt{\det(g_{ij})}$ 的全部来历。
-
-**两个结构各管一头**：度量管「多大」（$\sqrt{\det g}$ 这个标量），定向管「正负」（$\mathrm{d}x^{1}\wedge\cdots$ 的次序）。所以 $\mathrm{d}V$ 属于「度量 $+$ 定向」，缺一个都定义不出来；而 $\mathrm{d}\mu_{g}$ 只要度量，这是它俩唯一但关键的差别。
-
-**存在性**：可定向流形上存在处处非零的 $n$-形式 $\omega$（可定向即「能被转移映射 Jacobi 行列式处处为正的卡族覆盖」，二维情形见 `def.orientable-surface`）。把 $\omega$ 除以它在正向标准正交基上的取值，就得到满足 $\mathrm{d}V(e_{1},\ldots,e_{n}) = 1$ 的那个形式 —— 所以「可定向 $+$ 度量」恰好给出一个体积形式，且只差一个定向的符号。
-
-**二维时它就是 `def.area-element`**：那里写 $\mathrm{d}A = \sqrt{\det(g_{ij})}\,\mathrm{d}u\wedge\mathrm{d}v$，与这里逐字相同；「面积元是密度、不是形式」那句话说的就是 $\mathrm{d}\mu_{g}$ 那一面。
-
-**例子**：$\mathbb{R}^{n}$ 标准度量与标准定向给出 $\mathrm{d}V = \mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$；半径 $R$ 的 $S^{2}$ 在球坐标 $(\theta,\varphi)$ 下（取 $\partial_{\theta},\partial_{\varphi}$ 为保向）给出 $\mathrm{d}V = R^{2}\sin\theta\,\mathrm{d}\theta\wedge\mathrm{d}\varphi$。
-
-**⚠️ 记号分歧**：很多书写 $\mathrm{d}V$ 指**密度**（不带符号的测度）。本图把两者分开：$\mathrm{d}V$ 是形式（带定向），$\mathrm{d}\mu_{g} = |\mathrm{d}V|$ 是密度。抄公式前先看清对方用的是哪一种。
-
-参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 体积元素与体积；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 定向与体积积分
-
-#### 密度与定向无关　`prop.volume-density-well-defined`
-*命题*　体积密度在换卡下不变，体积形式随定向变号
-
-**在做什么**：说明「密度」这个词为什么名副其实 —— 换卡时两个绝对值因子恰好抵消，所以它拼得成整体、也不依赖定向；带符号的那版则会被定向拖着变号。
-
-设 $(M,g)$ 是 $n$ 维黎曼流形，两张卡 $x$、$y$ 有重叠。则
-
-$$\sqrt{\det(g^{y}_{ij})} = \sqrt{\det(g^{x}_{ij})}\;\Bigl|\det\frac{\partial x}{\partial y}\Bigr|,\qquad \mathrm{d}y^{1}\cdots\mathrm{d}y^{n} = \Bigl|\det\frac{\partial y}{\partial x}\Bigr|\,\mathrm{d}x^{1}\cdots\mathrm{d}x^{n},$$
-
-两式相乘，$|\det|$ 因子等于 $1$，故
-
-$$\sqrt{\det(g^{y}_{ij})}\;\mathrm{d}y^{1}\cdots\mathrm{d}y^{n} = \sqrt{\det(g^{x}_{ij})}\;\mathrm{d}x^{1}\cdots\mathrm{d}x^{n}.$$
-
-于是 $\mathrm{d}\mu_{g}$ 是一个**整体良定的密度**，拼接后给出 $M$ 上唯一的 Radon 测度 $\mu_{g}$，且它不依赖定向。
-
-对照：体积形式 $\mathrm{d}V$ 的变换因子是 $\det$（**没有**绝对值），所以 $\mathrm{d}V$ 只在保向换卡下不变、反向变号。有定向时 $\mathrm{d}\mu_{g} = |\mathrm{d}V|$。
-
-**绝对值是开方给的**：$\partial_{y^{i}} = \sum_{k}(\partial x^{k}/\partial y^{i})\partial_{x^{k}}$，故 $g^{y} = J^{\mathsf T}g^{x}J$（$J = \partial x/\partial y$），取行列式得 $\det g^{y} = (\det J)^{2}\det g^{x}$。开方时 $\det J$ 的符号被吃掉，$|\det J|$ 留下 —— 再来一个 $|\det J|^{-1}$ 就正好抵消。**这一步是整条命题的全部内容**。
-
-**拼成整体测度**：局部密度在重叠处相等，剩下的只是把它加成测度。用从属于卡族的单位分解 $\{\rho_{\alpha}\}$（`prop.paracompact-partition-unity`）定义 $\mu_{g}(f) := \sum_{\alpha}\int_{\mathbb{R}^{n}}(\rho_{\alpha}f)\circ x_{\alpha}^{-1}\,\sqrt{\det g}\ \mathrm{d}x$；每项非负、和有限，正性与可数可加性逐块相加即得。
-
-**二维时这条就是 `def.area-element` 的注记**：「面积元是密度、不是形式」—— 换参数化时 $\sqrt{\det g}$ 与 $\mathrm{d}u\,\mathrm{d}v$ 一起变，乘积不变且不变号。$n$ 维只是把 $2\times2$ 的 Gram 行列式换成 $n\times n$ 的。
-
-**与 `def.riemannian-metric` 的关系**：那边的定义把 $\mathrm{d}V$ 记作 $\sqrt{\det(g_{ij})}\,\mathrm{d}x^{1}\cdots\mathrm{d}x^{n}$。严格说这是密度（配 Lebesgue 测度、不带符号）；带符号的形式版是 `def.volume-density` 里那一个。两处是同一串系数，用法不同。
-
-**⚠️ 不可定向流形上照样有体积**：面积、体积、质量这类量都不需要定向；丢掉的只是「带符号的积分」。散度定理那类公式则必须先取定定向（否则 $\mathrm{d}V$ 的符号没有意义）。
-
-参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 体积元素与黎曼体积；Spivak, Calculus on Manifolds, 第 3 章「Integration」· 测度、零测集与单位分解
-
-#### 散度　`def.divergence`
-*定义*　散度
-
-**在做什么**：散度回答「一点附近向量场往外冒得多快」。定义成「沿 $X$ 推着走时体积形式的变化率」—— 不用坐标，而且一写下来就得到散度定理。
-
-设 $(M,g)$ 是定向 $n$ 维黎曼流形，$\mathrm{d}V$ 是体积形式，$X$ 是 $M$ 上的光滑向量场。**散度** $\operatorname{div}X\in C^{\infty}(M)$ 是使
-
-$$\mathcal{L}_{X}\,\mathrm{d}V = (\operatorname{div}X)\,\mathrm{d}V$$
-
-成立的唯一函数，其中 $\mathcal{L}_{X}$ 是沿 $X$ 的 Lie 导数。由 Cartan 公式 $\mathcal{L}_{X} = \mathrm{d}\iota_{X}+\iota_{X}\mathrm{d}$ 与 $\mathrm{d}(\mathrm{d}V) = 0$，等价地
-
-$$\mathrm{d}(\iota_{X}\mathrm{d}V) = (\operatorname{div}X)\,\mathrm{d}V ,$$
-
-其中 $\iota_{X}$ 是内乘（把 $X$ 填进形式的第一个槽）。在保向卡里逐项算出来是
-
-$$\operatorname{div}X = \frac{1}{\sqrt{\det(g_{ij})}}\sum_{i=1}^{n}\partial_{i}\Bigl(\sqrt{\det(g_{ij})}\,X^{i}\Bigr),\qquad X = \sum_{i=1}^{n}X^{i}\partial_{i}.$$
-
-$\mathbb{R}^{n}$ 的标准度量下它退化成 $\sum_{i}\partial_{i}X^{i}$。
-
-**为什么「唯一」**：$n$-形式在每点是一维的，所以 $\mathcal{L}_{X}\mathrm{d}V$ 必然是 $\mathrm{d}V$ 的某个函数倍，那个函数就被定义为散度。存在性不用证，唯一性也不用 —— 这是「用体积形式定义散度」最省事的地方。
-
-**只看度量，不看定向**（容易误以为要看）：$\mathrm{d}V$ 变号时等式两边同时变号，$\operatorname{div}X$ 不变。所以散度是**度量**的函数，定向只是写 $\mathrm{d}V$ 时的脚手架。散度定理里出现的符号来自边界，不来自散度本身。
-
-**坐标公式怎么来的**：$\iota_{X}\mathrm{d}V = \sum_{i}(-1)^{i-1}\sqrt{\det g}\,X^{i}\,\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{i}}\cdots\wedge\mathrm{d}x^{n}$，取 $\mathrm{d}$ 之后每一项贡献 $\partial_{i}(\sqrt{\det g}\,X^{i})$，再提出 $\mathrm{d}V$ 的系数 $\sqrt{\det g}$。
-
-**迹刻画**：$\operatorname{div}X = \operatorname{tr}(v\mapsto\nabla_{v}X)$（Levi-Civita 联络）。两个定义等价，靠的是「体积形式平行」：$\nabla\mathrm{d}V = 0$，于是体积的变化率就是流的迹。
-
-**与微分学那边的接口**：$\operatorname{div}\circ\operatorname{grad} = \Delta$（Laplace–Beltrami 算子），$\operatorname{grad}$ 见 `def.gradient`。所以「散度」是把二阶算子拆成一阶一阶算的那一半。
-
-参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 散度；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 内乘与体积形式
-
-#### 散度定理　`thm.divergence-theorem`
-*定理*　散度定理
-
-**在做什么**：散度在整块流形上积起来，等于流量从边界漏出去的通量。这是 Gauss 公式在任意维数、任意黎曼流形上的样子，也是「散度 = 源密度」这句口号的正式版本。
-
-设 $(M,g)$ 是紧致、定向、带边的 $n$ 维黎曼流形；$\partial M$ 取诱导定向与诱导度量，$\mathrm{d}V$ 是 $M$ 的体积形式，$\mathrm{d}A$ 是 $\partial M$ 的体积形式，$N$ 是沿 $\partial M$ 指向**外**的单位法向量，$X$ 是 $M$ 上的光滑向量场。则
-
-$$\int_{M}(\operatorname{div}X)\,\mathrm{d}V = \int_{\partial M}\langle X,N\rangle\,\mathrm{d}A .$$
-
-$\partial M = \emptyset$ 时右边为零，等式退化成「无边界则总散度为零」。
-
-$n = 3$、$X = (P,Q,R)$ 在平坦区域上给出经典 Gauss–Ostrogradsky 公式，$n = 2$ 给出 Green 公式的另一种写法。
-
-**它不是新定理**：证明就是把 `thm.stokes` 用在 $\omega = \iota_{X}\mathrm{d}V$ 上。所以「微积分基本定理 / Stokes / 散度定理 / Green / Kelvin–Stokes」这五条是同一句公式在五种维数与五种形式次数上的读法。
-
-**符号的两个来源**：$N$ 必须朝**外**，$\partial M$ 必须取**诱导**定向（外法向在前）。两个约定缺一个，整体就差一个负号 —— 而所有二、三维的特例都仍然「看起来对」，所以这个错误特别难查。约定之间的相容性由 `prop.boundary-sign-convention` 保证。
-
-**Green 第一公式**：取 $X = \nabla u$（$\nabla$ 取 $g$ 的梯度），得 $\int_{M}\Delta u\,\mathrm{d}V = \int_{\partial M}\partial_{N}u\,\mathrm{d}A$；再对 $u\,\nabla v$ 用一次并相减，就得到对称的那个版本。
-
-**⚠️ 紧致性**：不紧时右边必须绝对可积，或对穷竭序列 $M_{1}\subset M_{2}\subset\cdots$ 取极限（此时会多出内部边界项，靠它们两两相消收敛）。本图只陈述紧致情形。
-
-**⚠️ 边界为空不等于平凡**：闭流形上 $\int_{M}\operatorname{div}X\,\mathrm{d}V = 0$，这条非平凡 —— 它排除了「处处往外冒」的向量场，是 Hodge 理论与调和形式那一支的起点。
-
-参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 散度定理；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 流形上的 Stokes 定理
-
-#### 流形上的换元公式　`thm.change-of-variables-manifold`
-*定理*　流形上的换元公式
-
-**在做什么**：换元公式在流形上的样子 —— 沿微分同胚把形式搬过去，积分不变；搬的方向反了就变号。它其实是「$n$-形式是唯一能自然积分的东西」的另一种说法。
-
-设 $f : M\to N$ 是定向 $n$ 维光滑流形之间的微分同胚，$\omega\in\Omega^{n}(N)$ 可积（$N$ 紧，或 $\omega$ 有紧支）。则
-
-**$f$ 保向时**
-
-$$\int_{M}f^{\ast}\omega = \int_{N}\omega ;$$
-
-**$f$ 反向时**
-
-$$\int_{M}f^{\ast}\omega = -\int_{N}\omega .$$
-
-两种情形合写成 $\int_{M}f^{\ast}\omega = \varepsilon\int_{N}\omega$，$\varepsilon = +1$ 表示保向、$-1$ 表示反向。
-
-**经典换元是它的坐标版**：取 $M,U\subseteq\mathbb{R}^{n}$、$N = g(U)$、$\omega = F\,\mathrm{d}y^{1}\wedge\cdots\wedge\mathrm{d}y^{n}$，则 $f^{\ast}\omega = (F\circ g)\det(\partial g/\partial x)\,\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$，公式变成 $\int_{g(U)}F\,\mathrm{d}y = \int_{U}(F\circ g)\det(\partial g/\partial x)\,\mathrm{d}x$ —— 与微积分课本上的差别只在「有没有绝对值」。
-
-**绝对值的有无就是定向的有无**：不带定向时能积的只有密度，换元带 $|\det|$（`prop.volume-density-well-defined`）；带定向时 $n$-形式自带符号，换元带 $\det$。同一件事的两种记账。
-
-**为什么只对 $n$-形式成立**：$k<n$ 的形式在微分同胚下按 $k\times k$ 的子式变换，与 $n$ 维体积元对不上，所以不存在「$k$-形式在流形上的换元公式」。要积分 $k$-形式，得先挑一个 $k$ 维子流形把它拉回去（`def.integral-form` 开头那句）。
-
-**证明的两块拼图**：一是「保向微分同胚下积分不变」（`def.integral-form` 的良定性，就是 $\mathbb{R}^{n}$ 上 $\det$ 与换元公式的匹配），二是单位分解（`prop.paracompact-partition-unity`）把整体拆到卡里。两块都在别处证过，所以这条定理本身是拼装。
-
-**⚠️ 微分同胚不能放宽成「光滑满射」**：那样要引入度数与积分重数（$\int_{M}f^{\ast}\omega = \deg(f)\int_{N}\omega$），$\varepsilon$ 就变成整数而不是 $\pm1$。本图只陈述微分同胚情形。
-
-**⚠️ 定向的选取**：若 $M$ 与 $N$ 上各取定向，则 $\varepsilon$ 由 $f$ 相对这两组定向是否保向决定；换掉 $N$ 的定向，$\varepsilon$ 与右边同时变号，等式仍成立。所以「保向」这个说法必须相对定好的两组定向。
-
-参考：Spivak, Calculus on Manifolds, 第 3 章「Integration」· 换元公式；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 流形上的积分与换元
 
 #### 切分布　`def.tangent-distribution`
 *定义*　切分布与光滑性
@@ -26491,171 +25927,6 @@ $$\omega \wedge \mathrm{d}\omega = 0,$$
 ⚠️ 定理的 $k = n$ 情形平凡（$\mathcal{D} = TM$ 总对合、任意坐标都平坦），$k = 0$ 也平凡；**有内容的只有 $1 \le k \le n-1$**，而 $k = 1$ 又总是对合（见 `def.involutive-distribution`）。所以真正的例子从「$2 \le k \le n-1$」才开始。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· 一阶偏微分方程组的相容性
-
-#### 左不变形式　`def.left-invariant-form`
-*定义*　左不变形式与左不变余标架
-
-**白话**：Lie 群上的微分形式如果对左平移「纹丝不动」，它就被单位元处的一个多重线性型完全决定 —— 于是 $G$ 上的左不变 $k$-形式与 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 是同一个东西。
-
-设 $G$ 是 $n$ 维 Lie 群（`def.lie-group`），$\mathfrak{g} = T_{e}G$，$L_{g}$ 是左平移。$k$-形式 $\omega \in \Omega^{k}(G)$ 叫**左不变**，如果
-
-$$L_{g}^{\ast}\omega = \omega\qquad (g \in G),$$
-
-等价地 $\omega_{g}(v_{1},\ldots,v_{k}) = \omega_{e}\bigl(\mathrm{d}(L_{g^{-1}})_{g}v_{1},\ldots,\mathrm{d}(L_{g^{-1}})_{g}v_{k}\bigr)$ —— 即 $\omega$ 在 $G$ 上的值由 $\omega_{e}$ 唯一决定。于是赋值
-
-$$\omega \longmapsto \omega_{e}$$
-
-是「左不变 $k$-形式」的空间到 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 的线性同构，维数为 $\binom{n}{k}$。
-
-**左不变余标架**：取 $\mathfrak{g}$ 的基 $e_{1},\ldots,e_{n}$ 与对偶基 $\omega^{1}_{e},\ldots,\omega^{n}_{e}$（$\omega^{i}_{e}(e_{j}) = \delta^{i}_{\ j}$），把它们左平移出去：
-
-$$\omega^{i}_{g} := \mathrm{d}(L_{g^{-1}})^{\ast}_{e}\,\omega^{i}_{e},\qquad \omega^{i}_{g}\bigl((\tilde e_{j})_{g}\bigr) = \delta^{i}_{\ j},$$
-
-其中 $\tilde e_{j}$ 是 $e_{j}$ 对应的左不变向量场（`prop.left-invariant-fields`）。这组 $\omega^{1},\ldots,\omega^{n}$ 叫**左不变余标架**，结构常数由 $[e_{j},e_{k}] = \sum_{i}c^{i}_{\ jk}e_{i}$ 定义。
-
-**为什么赋值是同构**：左不变性取 $h = e$ 得 $\omega_{g}(\mathrm{d}(L_{g})_{e}w) = \omega_{e}(w)$，故 $\omega_{g} = \mathrm{d}(L_{g^{-1}})^{\ast}\omega_{e}$，即 $\omega$ 由 $\omega_{e}$ 决定（单射）。反向：给定 $\alpha \in \bigwedge^{k}\mathfrak{g}^{\ast}$ 令 $\omega_{g} := \mathrm{d}(L_{g^{-1}})^{\ast}\alpha$，则 $L_{h}^{\ast}\omega = \omega$，因为
-
-$$L_{(hg)^{-1}} = L_{g^{-1}}\circ L_{h^{-1}},\qquad L_{h^{-1}}\circ L_{h} = \operatorname{id},$$
-
-两个左平移把 $\mathrm{d}(L_{h})$ 吃掉，恰好还原。所以 $\omega \mapsto \omega_{e}$ 是双射，线性显然。
-
-**与左不变向量场互为对偶**：`prop.left-invariant-fields` 说左不变向量场与 $\mathfrak{g}$ 同构；这里说左不变 $k$-形式与 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 同构。$k = 1$ 时两组互为对偶基 —— 这正是活动标架法（`def.moving-frame`）在群上的版本：标架自身不动，动的只是点。
-
-**可定向性**：$k = n$ 时 $\bigwedge^{n}\mathfrak{g}^{\ast}$ 一维，取非零元左平移出去得到一个处处非零的 $n$-形式，由 `prop.volume-form-orientation` 得**每个 Lie 群都可定向**（$S^{1}$、$\operatorname{SO}(3)$、$\operatorname{GL}(n,\mathbb{R})$ 都如此，而一般流形未必）。
-
-**Haar 测度的那一半**：$\omega^{1}\wedge\cdots\wedge\omega^{n}$ 是左不变的体积形式，它的绝对值给出左不变测度（Haar 测度）。紧群上左不变与右不变只差一个常数（模函数），非紧时未必 —— 本图只用形式这一面。
-
-⚠️ 左不变**形式**与左不变**向量场**是两族不同的对象，都记下标 $g$，别混：前者的分量矩阵是 Jacobi 矩阵的逆转置，后者是 Jacobi 矩阵本身。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变形式与余标架；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变向量场与 Lie 代数
-
-#### Maurer–Cartan 方程　`thm.maurer-cartan`
-*定理*　Maurer–Cartan 方程
-
-**白话**：Lie 群上那组「随群一起平移」的 $1$-形式，其外微分完全由结构常数决定 —— 一条公式把群的乘法（结构常数）和流形的微分（$\mathrm{d}$）扣在一起。
-
-设 $G$ 是 $n$ 维 Lie 群，$\mathfrak{g} = T_{e}G$，$e_{1},\ldots,e_{n}$ 是 $\mathfrak{g}$ 的基，$\omega^{1},\ldots,\omega^{n}$ 是左不变对偶余标架（`def.left-invariant-form`），**结构常数**由
-
-$$[e_{j},e_{k}] = \sum_{i=1}^{n} c^{i}_{\ jk}\,e_{i}$$
-
-定义（等价地用左不变向量场写：$[\tilde e_{j},\tilde e_{k}] = \sum_{i}c^{i}_{\ jk}\tilde e_{i}$）。则
-
-$$\mathrm{d}\omega^{i} = -\frac{1}{2}\sum_{j,k=1}^{n} c^{i}_{\ jk}\,\omega^{j}\wedge\omega^{k}\qquad (i = 1,\ldots,n).$$
-
-把 $\omega := \sum_{i}\omega^{i}e_{i} \in \Omega^{1}(G;\mathfrak{g})$ 看成一个 $\mathfrak{g}$-值 $1$-形式（**Maurer–Cartan 形式**），并对 $\mathfrak{g}$-值形式定义分次括号 $[\alpha\wedge\beta]$，上式就是 **Maurer–Cartan 方程**
-
-$$\mathrm{d}\omega + \frac{1}{2}[\omega\wedge\omega] = 0,\qquad\mathrm{d}\omega = -\frac{1}{2}[\omega\wedge\omega],$$
-
-两个 $1$-形式的约定是：把 $[\omega\wedge\omega]$ 放在 $(X,Y)$ 上取值，得 $2\,[\omega(X),\omega(Y)]$。
-
-**系数与符号的来历**：把 $[\omega\wedge\omega]$ 逐项写开时，$(j,k)$ 与 $(k,j)$ 两项给出 $c^{i}_{\ jk} - c^{i}_{\ kj} = 2c^{i}_{\ jk}$，恰好抵掉 $\frac{1}{2}$；符号来自「$\mathrm{d}\theta(X,Y) = X\theta(Y) - Y\theta(X) - \theta([X,Y])$」里的最后一项。所以这条公式没有一处自由度是多余的：有的书把括号归一化成不除 $2$，系数就跟着变（$\mathrm{d}\omega = -\frac{1}{2}[\omega,\omega]$ 与 $\mathrm{d}\omega + [\omega\wedge\omega] = 0$ 是同一句话的两种写法）。
-
-**它就是 Cartan 结构方程的群版本**：曲面上的结构方程 $\mathrm{d}\omega^{i} = \sum_{j}\omega^{j}\wedge\omega^{i}_{\ j}$ 描述「标架怎么转」；这里标架不动、群在动，于是 $\mathrm{d}\omega^{i}$ 只剩结构常数这一项。同一套记账，一个描述空间弯曲，一个描述乘法非交换。
-
-**反推 Jacobi**：对 MC 方程两边取 $\mathrm{d}$ 并用 $\mathrm{d}^{2} = 0$，比较 $\omega^{j}\wedge\omega^{k}\wedge\omega^{l}$ 的系数，得到
-
-$$\sum_{i}\bigl(c^{i}_{\ jk}c^{m}_{\ il} + c^{i}_{\ kl}c^{m}_{\ ij} + c^{i}_{\ lj}c^{m}_{\ ik}\bigr) = 0,$$
-
-这正是 $[[e_{j},e_{k}],e_{l}] + [[e_{k},e_{l}],e_{j}] + [[e_{l},e_{j}],e_{k}] = 0$。于是「$\mathfrak{g}$ 是 Lie 代数（Jacobi 成立）」与「$\omega$ 满足 MC 方程」是同一件事 —— 这就是 MC 方程被称为「平坦性条件」的原因。
-
-**与 $H^{1}$、平坦联络的接口**：$\mathrm{d}\omega + \frac{1}{2}[\omega\wedge\omega] = 0$ 是「联络形式零曲率」的方程（把 $\omega$ 看成平凡主丛上的联络）。所以「结构常数」与「平坦联络的模空间」在这个层次上是同一串数；本图只提这一句，不展开。
-
-⚠️ 上标 $i$ 是「结果的第几个分量」、下面两个 $j,k$ 是「输入的两个下标」。反称性只发生在下面两个之间（$c^{i}_{\ jk} = -c^{i}_{\ kj}$），$i$ 与它们之间没有任何对称性可言 —— 抄公式时把 $i$ 写到下标位置，就会凭空多出一次反称，符号全错。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Maurer–Cartan 方程；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 结构常数与 Jacobi 恒等式
-
-#### Lie 第三定理　`thm.lie-third`
-*定理*　Lie 第三定理
-
-**白话**：反过来也成立 —— 随便给一个有限维 Lie 代数，总能找到一个 Lie 群以它为 Lie 代数。这条保证了「Lie 代数」不是凭空造出来的对象。
-
-设 $\mathfrak{g}$ 是有限维**实** Lie 代数（`def.lie-algebra`）。则存在连通且单连通的 Lie 群 $G$ 与 Lie 代数同构
-
-$$\operatorname{Lie}(G) \cong \mathfrak{g},$$
-
-其中 $\operatorname{Lie}(G) := T_{e}G$ 配上左不变向量场的括号（`prop.left-invariant-fields`）。
-
-**唯一性（配套的一半）**：若 $G_{1}, G_{2}$ 都连通单连通且 $\operatorname{Lie}(G_{i}) \cong \mathfrak{g}$，则存在唯一同构 $G_{1} \to G_{2}$。所以「连通单连通 Lie 群」与「有限维实 Lie 代数」在这一层上是同一个东西的两副样子。
-
-**本图只陈述，不证。**
-
-**为什么这里不证**：标准证明要经过三步深结果 —— Ado 定理（每个有限维 Lie 代数有忠实的有限维表示，于是可嵌入 $\mathfrak{gl}(n,\mathbb{R})$）、Baker–Campbell–Hausdorff 公式的收敛性（在 $\mathfrak{g}$ 的某个邻域上把括号积成群的乘法）、以及把局部群「长成」单连通整体群（单连通时局部同构可以整体化）。三步各自是一章的篇幅，本图不承担 —— 这与 `thm.solid-abelian` 等深定理的处理口径一致：**只陈述，如实声明**。
-
-**三个 Lie 定理的分工**（常被混说，这里分开）：第一定理说 $\mathfrak{g} = T_{e}G$ 且左不变向量场与 $\mathfrak{g}$ 同构（`prop.left-invariant-fields`）；第二定理说 $G$ 连通单连通时 $\operatorname{Hom}(G,H) \cong \operatorname{Hom}(\mathfrak{g},\mathfrak{h})$（群同态与 Lie 代数同态一一对应）；第三定理就是本条，管**存在性**。
-
-**单连通为什么不能去掉**：$\mathfrak{g}$ 只记录单位元附近的乘法（「无穷小」），而覆盖映射 $\mathbb{R} \to S^{1}$ 在单位元附近是局部同构、整体却不同构 —— 所以 $\mathfrak{g}$ 只能决定**万有覆盖**。要得到别的连通群，取单连通群对离散中心子群作商（$S^{1} = \mathbb{R}/\mathbb{Z}$ 就是最省事的例子）。
-
-**这条定理的用处**：它把「构造 Lie 群」化归成「写下满足 Jacobi 的括号」（往往容易得多）。给定结构常数表，`thm.maurer-cartan` 保证 Jacobi 成立就自洽，本条保证自洽的结构常数真来自某个群 —— 两条配套使用。
-
-⚠️ **别把它读成范畴等价**：对应只在「连通单连通 Lie 群」与「有限维实 Lie 代数」之间是范畴等价；一般 Lie 群会漏掉信息（$S^{1}$ 与 $\mathbb{R}$ 的 Lie 代数都是 $\mathbb{R}$，但两者不同构）。131 的 `def.lie-algebra` notes 里那句「Lie 代数不能复原群」说的就是这件事。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 第三定理与 Lie 对应；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 单连通 Lie 群与 Lie 代数
-
-#### 丛的分类　`thm.bundle-classification`
-*定理*　向量丛的分类与 Čech 上同调
-
-**白话**：向量丛怎么「粘」，全记在转移函数上；所以「有多少种秩 $k$ 丛」这个问题就是「这些转移函数模掉换基还剩多少」—— 答案是 Čech 的 $H^{1}$。
-
-设 $M$ 是光滑流形（第二可数、Hausdorff），$k \ge 1$，$\mathfrak{U} = \{U_{\alpha}\}$ 是开覆盖。记 $U_{\alpha\beta} := U_{\alpha}\cap U_{\beta}$、$U_{\alpha\beta\gamma} := U_{\alpha}\cap U_{\beta}\cap U_{\gamma}$。**$1$-上闭链**是光滑函数族
-
-$$g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \operatorname{GL}(k,\mathbb{R}),\qquad g_{\alpha\beta}\,g_{\beta\gamma} = g_{\alpha\gamma}\quad(\text{on } U_{\alpha\beta\gamma}).$$
-
-两条上闭链**等价**，如果存在光滑的 $h_{\alpha} : U_{\alpha} \to \operatorname{GL}(k,\mathbb{R})$ 使
-
-$$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}\qquad(\text{on } U_{\alpha\beta}).$$
-
-则 $M$ 上秩 $k$ 实向量丛的**同构类**与「$1$-上闭链模等价」一一对应。取遍所有覆盖与它们的加细，得到的集合记
-
-$$\check{H}^{1}\bigl(M;\operatorname{GL}(k,\mathbb{R})\bigr),$$
-
-于是：秩 $k$ 实向量丛的同构类**就是**这个集合的元素。把 $\operatorname{GL}(k,\mathbb{R})$ 换成任意结构群 $G \le \operatorname{GL}(k,\mathbb{R})$，同一句话给出「秩 $k$ 的 $G$-丛」的分类。
-
-**Čech 口径要说清三件事**：
-
-1. **系数不是阿贝尔群**：$\operatorname{GL}(k,\mathbb{R})$ 非交换，所以 $\check{H}^{1}(M;\operatorname{GL}(k))$ 只是一个**带基点的集合**（基点是平凡丛），不是群、不是向量空间。只有当系数落在阿贝尔群层里，Čech 上同调才是群 —— 本图 `def.cech-cohomology` 那条定义取的是阿贝尔预层复形，与本条不是同一个层级的东西，别混。
-2. **只有 $0$ 次与 $1$ 次有意义**：$\check{H}^{0}$ 是整体截面（对 $\operatorname{GL}(k)$ 而言就是常值 $1$，因为 $M$ 连通），$\check{H}^{1}$ 是上面那个「上闭链模上边界」；$\check{H}^{2}$ 起要非阿贝尔上同调的技术（系数带群作用），本图完全不用。
-3. **必须取余极限**：不同覆盖给出不同的 $\check{H}^{1}(\mathfrak{U};\cdot)$，但它们沿加细相容（每步是一个映射，而两个加细有公共加细），取余极限才是不依赖覆盖的量。
-
-**为什么是 $H^{1}$ 而不是 $H^{0}$**：$H^{0}$ 记的是「什么都不用粘」的数据（整体平凡化），$H^{1}$ 记的是「粘起来差多少」—— 前者数整体对象，后者数障碍。这与层上同调的分工完全一致。
-
-**换结构群就是换系数**：$\operatorname{GL}(k,\mathbb{R})$ 换成 $\operatorname{O}(k)$ 得「配了纤维度量的丛」（`prop.bundle-metric` 保证总能配上，所以这一步不丢信息）；换成 $\operatorname{GL}(k,\mathbb{C})$ 得复丛；换成 $\operatorname{GL}(k,\mathbb{Z})$ 得平坦丛。所以分类定理的真正形状是「对每个结构群 $G$，秩 $k$ 的 $G$-丛由 $\check{H}^{1}(M;G)$ 分类」。
-
-**例子（只列结论）**：$S^{1}$ 上的实线丛有两个同构类（平凡丛与 Möbius 带），对应 $\check{H}^{1}(S^{1};\mathbb{R}^{\times}) \cong \mathbb{Z}/2$；$S^{2}$ 上的复线丛由 $\mathbb{Z}$ 分类（Hopf 丛是生成元）。这两个数都不「局部」看得出来 —— 正是上同调该管的事。
-
-⚠️ $\operatorname{GL}(k,\mathbb{R})$ 里的 $k$ 是**丛的秩**；$k = 1$ 时它是 $\mathbb{R}^{\times}$，其连通分支是两个（$\mathbb{R}_{>0}$ 与 $\mathbb{R}_{<0}$），这正是「实线丛只有两种粘法」的来源。
-
-⚠️ 本条的证明是**构造级**的（写在边上）：两个方向的映射都给出、同构对应上边界都验证；「余极限是良定义的」这一步只给论证思路，不给逐字证明 —— 与深定理的折衷口径一致，如实说明。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 转移函数与上闭链条件；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛的同构与结构群
-
-#### de Rham 定理　`thm.de-rham`
-*定理*　de Rham 定理
-
-**白话**：用微积分造出来的上同调（闭形式模恰当形式），与用「三角形」造出来的拓扑上同调（奇异链取对偶），是同一个东西。这条定理把分析、几何、拓扑焊在一起。
-
-设 $M$ 是光滑流形。对每个 $k \ge 0$ 存在同构
-
-$$\Phi^{k} : H^{k}_{\mathrm{dR}}(M) \longrightarrow H^{k}_{\mathrm{sing}}(M;\mathbb{R}),\qquad [\omega] \longmapsto \Bigl([c] \mapsto \int_{c}\omega\Bigr),$$
-
-其中 $H^{k}_{\mathrm{sing}}(M;\mathbb{R}) := H^{k}\bigl(\operatorname{Hom}(C^{\mathrm{sing}}_{\bullet}(M),\mathbb{R})\bigr)$ 是奇异链复形（`def.singular-chain`）取对偶后的上同调（`def.cohomology`），$\int_{c}\omega$ 是形式在链上的积分（`def.integral-on-chain`）。$\Phi^{k}$ 与拉回相容，故 $k \mapsto \Phi^{k}$ 是一族自然同构：$H^{\bullet}_{\mathrm{dR}}$ 与 $H^{\bullet}_{\mathrm{sing}}$ 是同一个函子的两种算法。
-
-**证明路线的骨架**（细节写在边上）：
-
-1. **配对先良定义**：$\int_{c}\omega$ 只依赖 $[\omega]$ 与 $[c]$ —— 换 $c$ 为同调等价的链差一个边界，而闭形式在边界上的积分为零（`thm.stokes-chain` 的一个方向）；换 $\omega$ 为相差 $\mathrm{d}\eta$ 的形式，差为 $\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（同一条 Stokes 的另一个方向）。
-2. **认成层上同调**：$\Omega^{\bullet}$ 是常层 $\underline{\mathbb{R}}$ 的消解（正合性逐点成立，逐点核为 $\mathbb{R}$，就是 Poincaré 引理 `lem.poincare-lemma`），于是 $H^{\bullet}_{\mathrm{dR}}(M) \cong H^{\bullet}(M;\underline{\mathbb{R}})$。
-3. **Čech–de Rham 双复形**：取「好的覆盖」，把 $\check{C}^{p}(\mathfrak{U},\Omega^{q})$ 排成双复形（横向 Čech 微分、纵向 $\mathrm{d}$），两条谱序列算出同一个全上同调，得到 $H^{\bullet}_{\mathrm{dR}}(M) \cong \check{H}^{\bullet}(M;\underline{\mathbb{R}})$。
-4. **Čech = 层上同调**：仿紧流形上 $\check{H}^{\bullet} \cong H^{\bullet}$（`thm.paracompact-cech-equals-sheaf`）。
-5. **层上同调 = 奇异上同调**：常层的层上同调由「同伦不变 $+$ 单点的值 $+$ 长正合列」唯一确定，奇异上同调满足同一组公理 —— 两者同构（代数拓扑的标准定理，本图不证）。
-
-**为什么它是定理而不是定义**：两边的复形长得完全不同（一边是光滑形式、一边是拓扑单形），能对上不是形式化的。核心内容是第 2 步：「$\Omega^{\bullet}$ 是常层的消解」—— 也就是 Poincaré 引理的**整体化**。
-
-**推论**：$H^{k}_{\mathrm{dR}}$ 是同伦不变量（函子性 + 同伦不变），紧流形上每个 $H^{k}_{\mathrm{dR}}$ 有限维，$k > \dim M$ 时为零。所以「闭而不恰当的形式有多少种」是纯拓扑数据 —— Betti 数。
-
-**与 131 那三条 de Rham 节点接得上**：$H^{0}$ 数连通分支（`thm.de-rham-h0`）、局部为零（`lem.poincare-lemma`）、加减开集有长正合列（`thm.mayer-vietoris`）—— 这三条恰好是上面路线里第 2、5 步的局部版本。
-
-⚠️ **本图的折衷**：这里给的是路线与关键计算，**不**给逐字证明。Čech–de Rham 双复形的谱序列论证、以及「层上同调 = 奇异上同调」都需要单独篇幅；这一条与 `thm.solid-abelian` 那批深定理同一口径：**结构 + 关键计算 + 出处**，如实声明。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 定理；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理与 Mayer–Vietoris 序列
 
 #### 缩并　`def.tensor-contraction`
 *定义*　张量缩并
@@ -26880,6 +26151,577 @@ $$\mathcal{L}_{X} = \mathrm{d}\,\iota_{X} + \iota_{X}\,\mathrm{d},$$
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· Cartan 公式；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 内乘与 Lie 导数的关系
 
+### 星团：微分形式、积分与 de Rham
+> 让「积分」在流形上跑起来：奇异方块与链 → 边界算子与 ∂²=0 → 链上的积分与换元、Stokes 与散度定理 → 体积形式与密度 → de Rham 复形、Poincaré 引理、Mayer–Vietoris，最后到 de Rham 定理。
+
+#### 体积形式　`def.volume-form`
+*定义*　体积形式与黎曼体积
+
+**在说什么**：一个处处不为零的 $n$-形式给出「有向体积」；度量的行列式因子乘上坐标体积形式，就是黎曼体积。
+
+设 $M$ 是 $n$ 维光滑流形。**体积形式**是处处非零的 $n$-形式 $\omega \in \Omega^{n}(M)$（即 $\omega_{p} \ne 0$ 对每个 $p$ 成立）。
+
+若 $M$ 还带黎曼度量 $g$（`def.riemannian-metric`）与一个定向，则**黎曼体积形式**在每张保向卡里写成
+
+$$\mathrm{d}V_{g} := \sqrt{\det\bigl(g_{ij}\bigr)}\ \mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n},\qquad g_{ij} = g\Bigl(\frac{\partial}{\partial x^{i}},\frac{\partial}{\partial x^{j}}\Bigr).$$
+
+在**保向正交余标架** $\{\theta^{1},\ldots,\theta^{n}\}$（即 $g = \sum_{i}(\theta^{i})^{2}$）下它化简成没有系数的样子
+
+$$\mathrm{d}V_{g} = \theta^{1}\wedge\cdots\wedge\theta^{n}.$$
+
+于是可积的函数有体积与积分
+
+$$\operatorname{vol}(M) := \int_{M}\mathrm{d}V_{g},\qquad \int_{M}f\,\mathrm{d}V_{g},$$
+
+积分按 `def.integral-form` 的「定向形式积分」定义。
+
+**为什么必须是最高次形式**：换元公式里 $\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$ 的系数变换恰好是 $\det$（保向时无绝对值），与积分换元里出现的 $\det$ 精确匹配 —— 这就是「形式能积分」的全部理由。$k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。
+
+**根号是密度、楔积是定向**：$\sqrt{\det g}$ 对反向换卡不变（它带的是 $\lvert\det\rvert$），$\mathrm{d}x^{1}\wedge\cdots$ 反向变号。所以 $\mathrm{d}V_{g}$ 必须先取定定向才有定义；无定向时能积的只有密度 $\lvert\mathrm{d}V_{g}\rvert$（面积元 $\mathrm{d}A$ 就是这种，`def.area-element`）。
+
+**二维退化成面积元**：$\mathrm{d}V_{g} = \sqrt{EG - F^{2}}\,\mathrm{d}u\wedge\mathrm{d}v$，与 `def.area-element` 的 $\mathrm{d}A$ 逐字相同，只差「要不要把 $\mathrm{d}u\wedge\mathrm{d}v$ 看成带定向的」这一层。
+
+**正交余标架为什么省事**：$g = \sum(\theta^{i})^{2}$ 时 $\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\theta^{1}\wedge\cdots$ 写，不再带根号。这也是「曲面上 $\mathrm{d}A = \omega^{1}\wedge\omega^{2}$」的来源。
+
+**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\sqrt{\det g}$。体积形式 = 定向 + 度量，两部分都要交代。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 体积形式与定向；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架
+
+#### de Rham 上同调　`def.de-rham-complex`
+*定义*　de Rham 复形与上同调群
+
+**在说什么**：外微分满足 $\mathrm{d}^{2} = 0$，于是 $k$-形式排成一串「链」；闭形式模掉恰当形式剩下的那部分就是上同调 —— 它量的是「有多少闭形式是假闭的」。
+
+设 $M$ 是光滑流形，$\Omega^{k}(M)$ 是 $k$-形式的空间。外微分（`def.exterior-derivative`）给出 **de Rham 复形**
+
+$$0 \longrightarrow \Omega^{0}(M) \xrightarrow{\ \mathrm{d}\ } \Omega^{1}(M) \xrightarrow{\ \mathrm{d}\ } \Omega^{2}(M) \xrightarrow{\ \mathrm{d}\ } \cdots$$
+
+由 $\mathrm{d}^{2} = 0$ 得 $\operatorname{im}\mathrm{d} \subseteq \ker\mathrm{d}$。记**闭形式**与**恰当形式**的空间为
+
+$$Z^{k}(M) := \ker\bigl(\mathrm{d} : \Omega^{k}(M) \to \Omega^{k+1}(M)\bigr),\qquad B^{k}(M) := \operatorname{im}\bigl(\mathrm{d} : \Omega^{k-1}(M) \to \Omega^{k}(M)\bigr),$$
+
+（$\Omega^{-1} := 0$，故 $B^{0} = 0$）。**de Rham 上同调群**是商空间
+
+$$H^{k}_{\mathrm{dR}}(M) := Z^{k}(M) / B^{k}(M).$$
+
+给定光滑映射 $F : N \to M$，拉回给出线性映射 $F^{\ast} : H^{k}_{\mathrm{dR}}(M) \to H^{k}_{\mathrm{dR}}(N)$（因为 $F^{\ast}\mathrm{d} = \mathrm{d}F^{\ast}$，见 `prop.pullback-forms`），且 $(G \circ F)^{\ast} = F^{\ast} \circ G^{\ast}$。所以 $H^{k}_{\mathrm{dR}}$ 是光滑流形范畴上的**函子**。
+
+**它测什么**：$H^{k} = 0$ 意味着「闭就恰当」；$H^{k} \ne 0$ 说明存在闭而不恰当的形式。$\mathbb{R}^{2}\setminus\{0\}$ 上的角形式 $\frac{x\,\mathrm{d}y - y\,\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当，它的类生成 $H^{1} \cong \mathbb{R}$，量的是「绕原点的圈数」。
+
+**de Rham 定理（只提不证）**：$H^{k}_{\mathrm{dR}}(M) \cong H^{k}_{\mathrm{sing}}(M;\mathbb{R})$ —— 解析构造（形式 + 微分）算出的东西，等于纯拓扑构造（奇异链 + 边界）算出的东西。这一条把微分几何与代数拓扑缝在一起，是本图范畴/同调那一片的接口。
+
+**维数有限**：$M$ 紧致时每个 $H^{k}_{\mathrm{dR}}(M)$ 都有限维，且 $k > \dim M$ 时为零。所以上同调是一组有限的数（Betti 数）。本图不证。
+
+**局部总是零**：任意流形每点都有可缩邻域，由 Poincaré 引理（`lem.poincare-lemma`）$H^{k} = 0$（$k \ge 1$）。所以上同调**纯粹是整体**信息 —— 这就是它比局部微分不变量更有用的原因。
+
+**$H^{0}$ 要单独看**：$Z^{0} = \ker(\mathrm{d} : C^{\infty}(M) \to \Omega^{1}(M))$ 是局部常函数，$B^{0} = 0$，所以 $H^{0}$ 数的是连通分支（`thm.de-rham-h0`）。$k \ge 1$ 才需要 Poincaré 引理那类论证。
+
+**它不是同伦不变量意义上的「同调」**：$H^{k}$ 是**上**同调（用形式与拉回），对偶于用链与边界的同调。之所以也叫上同调，是因为拉回是逆变的；两者在 de Rham 定理里被证明同构。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 复形与上同调群
+
+#### 零次上同调　`thm.de-rham-h0`
+*定理*　零次上同调群与连通分支
+
+**在做什么**：把最低那一格算出来 —— $0$-形式是函数，「闭」就是「局部常」，于是 $H^{0}$ 精确地数连通分支的个数。
+
+设 $M$ 是光滑流形，$c$ 是它的连通分支个数。则
+
+$$H^{0}_{\mathrm{dR}}(M) \cong \mathbb{R}^{c}.$$
+
+特别地，$M$ 连通当且仅当 $\dim H^{0}_{\mathrm{dR}}(M) = 1$（$M \ne \emptyset$）。
+
+$0$-形式就是光滑函数，$\mathrm{d}f = 0$ 等价于 $f$ 在每张连通卡上是常数；而 $B^{0} = 0$，所以 $H^{0} = Z^{0}$，没有商可做。
+
+**为什么是 $\mathbb{R}^{c}$ 而不是 $\mathbb{Z}^{c}$**：系数是实数，$H^{0}$ 是实向量空间，一组基就是各连通分支的指示函数。所以「$H^{0}$ 数分支」是在**维数**上数的，不是数元素个数。
+
+**证明的两步**：① $\mathrm{d}f = 0$ 当且仅当 $f$ 在每个连通分支上常值（分支连通，任两点能用一串卡连起来，相邻两张卡的重叠在连通块上、常值相同）；② $B^{0} = 0$，因为没有 $-1$-形式，没有东西可商。于是 $H^{0}$ 同构于「局部常函数构成的空间」，而这个空间的维数恰是分支数。细节在边上。
+
+**它是函子性的**：$F : N \to M$ 光滑时 $F^{\ast} : H^{0}(M) \to H^{0}(N)$ 就是「把 $M$ 上的局部常函数拉回去」。$M$ 连通而 $N$ 不连通时，$F$ 在每个分支上只能取一个常值 —— 分支结构被这一条完全编码。
+
+**与同伦的关系**：$H^{0}$ 是 $\pi_{0}(M)$ 上的自由实向量空间，所以它是**同伦不变量**而非微分不变量。这也是 de Rham 定理在 $k = 0$ 时的样子（0 维奇异上同调同样是每个分支贡献一个 $\mathbb{R}$）。
+
+**别拿 Poincaré 引理套 $H^{0}$**：引理说的是 $k \ge 1$ 且区域可缩才有 $H^{k} = 0$。$H^{0}$ 对非空流形永远不为零，因为它数的是「有几个整体」而不是「有没有局部障碍」。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· 零次上同调与连通分支
+
+#### Poincaré 引理　`lem.poincare-lemma`
+*引理*　Poincaré 引理：星形区域上的闭形式恰当
+
+**在做什么**：给「闭形式何时恰当」一个干净的回答 —— 只要区域能缩成一点（星形），$k \ge 1$ 时闭就必恰当。所以上同调不是分析现象，是拓扑现象。
+
+设 $U \subseteq \mathbb{R}^{n}$ 是**星形**开集：存在 $p_{0} \in U$ 使对每个 $x \in U$，线段 $\{p_{0} + t(x - p_{0}) : t \in [0,1]\}$ 整段落在 $U$ 里。则对 $k \ge 1$，
+
+$$\mathrm{d}\omega = 0 \implies \exists\ \eta \in \Omega^{k-1}(U)\ \text{such that}\ \omega = \mathrm{d}\eta .$$
+
+等价地说：$H^{k}_{\mathrm{dR}}(U) = 0$ 对一切 $k \ge 1$ 成立；而 $H^{0}_{\mathrm{dR}}(U) = \mathbb{R}$（星形区域连通）。
+
+结论对**可缩**开集同样成立：星形蕴含可缩，而论证只用到收缩同伦，不用星形区域的具体形状。
+
+**关键的是一条链同伦**：存在线性映射 $K : \Omega^{k}(U) \to \Omega^{k-1}(U)$（沿 $x \mapsto tx$ 的「积分」，$t \in [0,1]$）使
+
+$$\mathrm{d}K + K\mathrm{d} = \operatorname{id}_{\Omega^{k}}\qquad (k \ge 1),$$
+
+于是在 $\mathrm{d}\omega = 0$ 时 $\omega = \mathrm{d}(K\omega)$，取 $\eta = K\omega$ 即可。$K$ 的具体公式是一段含内乘 $\iota_{X}$ 的积分，本节点不展开 —— 重要的是「存在 $K$」这件事，它把「同伦」翻译成了「代数」。
+
+**星形去不掉**：$U = \mathbb{R}^{2}\setminus\{0\}$ 上的角形式 $\omega = \frac{x\,\mathrm{d}y - y\,\mathrm{d}x}{x^{2}+y^{2}}$ 满足 $\mathrm{d}\omega = 0$，但 $\int_{S^{1}}\omega = 2\pi \ne 0$；若 $\omega = \mathrm{d}\eta$，由 Stokes 定理得 $\int_{S^{1}}\mathrm{d}\eta = \int_{\partial S^{1}}\eta = 0$，矛盾。所以 $H^{1}(\mathbb{R}^{2}\setminus\{0\}) \ne 0$ —— 一个洞就破坏了引理。
+
+**$k \ge 1$ 不能放宽**：$k = 0$ 时「闭」是局部常、「恰当」是零（没有 $-1$-形式），两者差得远，所以 $H^{0} = \mathbb{R} \ne 0$。陈述里必须把 $k = 0$ 摘出去。
+
+**它是局部计算的核心**：流形每点有可缩邻域（卡里的球），于是引理给出「上同调局部为零」。凡是上同调不为零，必定有整体障碍 —— 洞、柄、扭结。这也是 de Rham 上同调能被拓扑方法算出来的原因。
+
+**为什么叫 Poincaré**：Poincaré 在 19 世纪末的向量分析语言里证过「无旋场局部是梯度」这类结论；形式语言把它一句收完，并指出唯一假设是「区域能缩成一点」。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理
+
+#### Mayer–Vietoris 序列　`thm.mayer-vietoris`
+*定理*　Mayer–Vietoris 长正合列
+
+**在做什么**：把一个大流形的上同调，拆成两块以及它们交叠的上同调 —— 这是「打补丁」计算上同调的标准机器。
+
+设 $M$ 是光滑流形，$U, V \subseteq M$ 是开集且 $M = U \cup V$。则存在**长正合列**
+
+$$\cdots \to H^{k}_{\mathrm{dR}}(M) \to H^{k}_{\mathrm{dR}}(U) \oplus H^{k}_{\mathrm{dR}}(V) \to H^{k}_{\mathrm{dR}}(U \cap V) \xrightarrow{\ \delta\ } H^{k+1}_{\mathrm{dR}}(M) \to \cdots$$
+
+其中第二个箭头是 $(\omega_{U},\omega_{V}) \mapsto \omega_{U}\big|_{U \cap V} - \omega_{V}\big|_{U \cap V}$，$\delta$ 叫**连接同态**。
+
+**本节点只给陈述**：$\delta$ 的显式构造与正合性的逐项验证，本图不写（要先把「形式的拆分」这套机器架起来，篇幅与收益不成比例）。此条按参考书陈述，不附证明。
+
+**$\delta$ 从哪来（给直觉，不是证明）**：取 $[\omega] \in H^{k}(U \cap V)$。用单位分解写 $\omega = \rho_{U}\omega + \rho_{V}\omega$（$\rho_{U} + \rho_{V} = 1$，各自支撑在 $U$、$V$ 里），把两块分别延拓成 $U$、$V$ 上的形式。它们的差在重叠处为零，于是拼成 $M$ 上的 $(k+1)$-形式，它就是 $\delta[\omega]$。符号与 $\mathrm{d}$ 的次序要在具体计算里对齐，本图不替读者对齐。
+
+**最简单的算例**：取 $S^{1} = U \cup V$ 为两个略长的开弧（$U \cap V$ 有两个连通分支），序列给出 $H^{1}(S^{1}) \cong \mathbb{R}$ —— 正是「单位圆上那个角形式」的那一个类。$S^{2}$ 用两个略大于半球的球冠（$U \cap V$ 同伦于 $S^{1}$）给出 $H^{2}(S^{2}) \cong \mathbb{R}$。
+
+**为什么它是标准工具**：任何流形都能被可缩的开集（卡里的球）覆盖，Mayer–Vietoris 加归纳就把整张流形算出来 —— 这是「好的覆盖」那条计算路线的起点。算的时候用 Čech 侧（`def.cech-cohomology`）更容易，两者的一致性由 de Rham 定理保证。
+
+**为什么要求 $U, V$ 都开**：形式的限制只需要开集，不需要闭集；闭集版本要额外假设（或改用奇异上同调）。开性是「限制到重叠处」的合法保障。
+
+**它的本质是同调代数**：短正合列
+
+$$0 \to \Omega^{\bullet}(M) \to \Omega^{\bullet}(U) \oplus \Omega^{\bullet}(V) \to \Omega^{\bullet}(U \cap V) \to 0$$
+
+取上同调就长出长正合列。所以 Mayer–Vietoris 不是形式的特殊性质，而是**链复形的一般定理**（蛇引理 / 连接同态）。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Mayer–Vietoris 序列
+
+#### 奇异方块　`def.singular-cube`
+*定义*　奇异方块
+
+**在做什么**：把一个标准方块光滑地放进流形，得到一张允许退化的参数片 —— 积分就挂在这样的参数片上，而它的「面」有整齐的编号。
+
+设 $M$ 是 $n$ 维光滑流形。$M$ 里的一个 **$k$ 维奇异方块**是一个映射
+
+$$c : [0,1]^{k}\longrightarrow M ,$$
+
+它在一个含 $[0,1]^{k}$ 的开集上光滑（等价地：在某张卡里每个分量光滑）。$k = 0$ 时 $[0,1]^{0}$ 是一个点，$0$-方块就是 $M$ 里的一个点。
+
+「**奇异**」说的是 $\mathrm{d}c_{p}$ 不必满秩：$c$ 可以自交、可以把某个方向压成零；它不必是单射，也不必是浸入。压扁了照样是合法的方块，只是像集不再是子流形。
+
+记 $Q_{k}(M)$ 为 $M$ 里全体 $k$-方块。$M$ 上的 $k$-形式 $\omega$ 沿 $c$ 拉回到 $[0,1]^{k}$，这就是「形式在方块上积分」的入口。
+
+**为什么是方块不是单纯形**：单纯形有 $k+1$ 个面（丢一个顶点得到一个），方块有 $2k$ 个面（把某一个坐标钉在两端之一得到一个）。方块赢在两处：面与坐标轴一一对应，于是符号 $(-1)^{i+\alpha}$ 里的 $i$ 就是轴号；而且方块本身自带 Lebesgue 测度与标准定向，在它上面积分不必另行选取定向。
+
+**光滑到边界**：$c$ 只在闭方块上有定义，所以「光滑」必须解释成「能延拓到某个开邻域上光滑」。这个延拓不必唯一，但任何与积分有关的量都只看 $[0,1]^{k}$ 上的值，而边界是零测集，所以不产生歧义。
+
+**退化不是病**：常值方块（整个 $[0,1]^{k}$ 映成一点）也允许，它对积分贡献零。允许退化换来的是「任意光滑映射都能当方块用」，不必先证明像集是子流形 —— 这是链这套记账比「子流形」省事的地方。
+
+**与切空间的关系**：$\mathrm{d}c_{p} : \mathbb{R}^{k}\to T_{c(p)}M$ 是切映射（`def.tangent-space-manifold` 里那个）。满秩时它是浸入，像集局部是 $k$ 维子流形；不满秩时正是「奇异」二字所指。
+
+**⚠️ 记号**：有的书把方块写成 $c : I^{k}\to M$ 并默认 $I = [0,1]$，有的用 $[a,b]$。本图一律取 $I = [0,1]$，与 $\partial c$ 的符号约定配套。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 奇异方块与链；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 几何预备
+
+#### 奇异链　`def.singular-chain`
+*定义*　奇异链
+
+**在做什么**：把若干张方块按整数系数叠起来，得到一条「链」——「带符号地相加」成了合法对象，边界与积分都能线性地作用上去。
+
+设 $M$ 是光滑流形。$M$ 上的一条 **$k$-链**是形式和
+
+$$c = \sum_{i=1}^{N}n_{i}\,c_{i},\qquad n_{i}\in\mathbb{Z},\ c_{i}\in Q_{k}(M),$$
+
+其中 $N<\infty$。全体 $k$-链记 $C_{k}(M)$，加法按系数相加，它与整数标量构成一个自由阿贝尔群，基就是全体 $k$-方块。
+
+**有限性是定义的一部分**：和只有有限多项，这样每次写 $\partial c$、$\int_{c}\omega$ 都是有限和，不必讨论收敛。
+
+系数取整数（不取实数）：链是**几何的记账**，权重是为「定向」「重数」「相消」服务的，不是权重测度。积分对链线性，所以整数系数已经够用。
+
+**为什么要有链**：单个方块的边界是一条链（$2k$ 个面），一条链的边界可能又是一条链的边界 —— 想写「$\partial^{2} = 0$」就必须先允许「有限和」这种对象存在。链就是把「和」提前造好的最小代价。
+
+**⚠️ 与序论里那个「链」无关**：这里说的是同调代数里的 chain，不是偏序集的 chain。同一个中文词，两个不相干的概念 —— 本图的节点 id 也因此分开（那个是 `def.chain`）。
+
+**细分不改积分**（这里只用其精神）：把 $[0,1]^{k}$ 用网格切成小方块，$c$ 限制在每块上给出小方块，它们的和与 $c$ 在积分上等价。这条在「把流形剖分成链」时用到，本图的 Stokes 定理两版对照就靠它。
+
+**与同调的关系**：$C_{k}(M)$ 配上 $\partial$ 是链复形，取同调就是奇异同调 $H_{k}(M)$。本图只用「链能积分」这一面，不取同调 —— 闭链与恰当形式配对那条线属于另一支内容。
+
+**⚠️ 记号**：本图不区分「奇异链」与「链」两种写法，一律写 $k$-链；系数默认在 $\mathbb{Z}$ 里，需要实数时临时说明。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 奇异链与链上的运算；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 代数预备
+
+#### 边界算子　`def.boundary-operator`
+*定义*　边界算子
+
+**在做什么**：「把方块的一个面取出来」这件事有统一的写法：固定某个坐标为此端或彼端，再乘一个符号，全部加起来就是边界。
+
+**插入映射**：对 $1\le i\le k$、$\alpha\in\{0,1\}$ 定义
+
+$$I^{k}_{(i,\alpha)} : I^{k-1}\longrightarrow I^{k},\qquad (x^{1},\ldots,x^{k-1})\longmapsto(x^{1},\ldots,x^{i-1},\alpha,x^{i},\ldots,x^{k-1}).$$
+
+对 $k$-方块 $c$，记 $c_{(i,\alpha)} := c\circ I^{k}_{(i,\alpha)}$，它是 $(k-1)$-方块，叫 $c$ 的**第 $(i,\alpha)$ 面**。
+
+**边界算子** $\partial$ 先把方块送到「面的带符号和」，再线性延拓到链：
+
+$$\partial c := \sum_{i=1}^{k}\sum_{\alpha=0}^{1}(-1)^{i+\alpha}\,c_{(i,\alpha)},\qquad \partial\Bigl(\sum_{l}n_{l}c_{l}\Bigr) := \sum_{l}n_{l}\,\partial c_{l}.$$
+
+约定 $k = 0$ 时 $\partial c := 0$（点是零维的，没有面）。于是 $\partial : C_{k}(M)\to C_{k-1}(M)$ 是群同态。
+
+**符号 $(-1)^{i+\alpha}$ 是谁给的**：它不是硬凑的。取外法向为 $+\partial_{i}$ 的那一端（即 $\alpha = 1$）与取 $(-1)^{i+1}$，另一端的法向是 $-\partial_{i}$、符号是 $(-1)^{i}$，两端的差别正好就是「把外法向搬到最前面要跨过 $i-1$ 个坐标」的那个置换符号。完整的验算在 `prop.boundary-sign-convention` 里 —— 结论是这套符号与「外法向在前」的诱导定向**逐面相同**。
+
+**$2k$ 个面**：$i$ 取 $k$ 个值、$\alpha$ 取两端，共 $2k$ 个 $(k-1)$-方块。它们不是两两不同的映射，但作为链的项是两两不同的（别处可以重合，作为映射不能）。
+
+**平方为零**：见 `prop.boundary-squared-zero`。这是整套记账能用的关键 —— 它保证「边界没有边界」，于是 Stokes 定理两边不会多出一层。
+
+**为什么线性延拓而不是逐项定义**：链已经是形式和，$\partial$ 若不同态就没法算 $\partial(c_{1}+c_{2})$，而 Stokes 定理要对链成立就必须要这一条。
+
+**⚠️ 记号陷阱**：$\partial$ 同时用来表示半空间的边界（$\partial\mathbb{H}^{n}$）、流形的边界（$\partial M$）与链的边界（$\partial c$）。三种用法在 `prop.boundary-sign-convention` 之后统一：对保向方块，链的边界与流形边界逐面一致。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块的边界与边界算子；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 插入映射与面
+
+#### 边界算子平方为零　`prop.boundary-squared-zero`
+*命题*　边界算子平方为零
+
+**在做什么**：连续取两次边界，什么也不剩。这一条把链变成链复形，也是 Stokes 定理两边能对上的代数前提。
+
+对任意 $k$-链 $c$（$k\ge 0$）有
+
+$$\partial(\partial c) = 0 .$$
+
+于是 $(C_{k}(M),\partial)$ 是一个链复形：$\partial^{2} = 0$ 等价于 $\operatorname{im}\partial \subseteq \ker\partial$，「闭链」比「边界」大出来的那一部分才是同调。
+
+按 $\partial$ 的定义，这件事对每条链都必须成立，所以只需对单个方块证明；再用线性延拓推广到链。
+
+**几何上的意思**：一条曲线段的两个端点，各自没有端点；一个方块的四条边，边角的顶点在两条边里各出现一次、符号相反，正好抵消。高维是同一件事的组合版本：每个 $(k-2)$ 维的「棱」被两个不同的面共用，两处的符号相反。
+
+**与 $\mathrm{d}^{2} = 0$ 的对称性**：$\partial$ 把维数降一，$\mathrm{d}$ 把次数升一，两者都平方为零，而且 $\int$ 把 $\partial$ 与 $\mathrm{d}$ 配成对偶（`thm.stokes-chain`）。这条对称性是整个链上的微积分的骨架。
+
+**⚠️ 别指望「取一次面再取一次面」总是有定义**：第二步是在 $(k-1)$ 个坐标里取，编号已经变过一次了。证明里的全部内容就是把这个「编号移位」算清 —— 这也是初学者写错符号的固定位置。
+
+**⚠️ 反例的边界在哪**：若把符号换成不随 $i$ 变的（比如全部取 $+1$），$(k-2)$ 维棱会被两个面各算一次、符号相同，和不为零。所以 $(-1)^{i+\alpha}$ 这个「交替性」是必需的，不是装饰。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 边界的平方为零；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链复形
+
+#### 边界的符号约定　`prop.boundary-sign-convention`
+*命题*　代数边界与诱导定向的边界一致
+
+**在做什么**：把两个「边界」对齐 —— 一个是方块上按坐标编号定出来的代数边界 $\partial c$，一个是带边流形上按「外法向在前」定出来的几何边界。它们相差的正是那串符号 $(-1)^{i+\alpha}$。
+
+设 $M$ 是定向 $n$ 维带边流形，$c : I^{n}\to M$ 是保向的微分同胚，把 $I^{n}$ 映到自己的像上（像是一个带边的 $n$ 维区域，$I^{n}$ 取标准定向）。则对每个面 $(i,\alpha)$：把 $c_{(i,\alpha)}$ 看成 $\partial M$ 的像上的参数化，**它与 $\partial M$ 的诱导定向相符，当且仅当 $(-1)^{i+\alpha} = +1$**。
+
+换句话说：把所有面按诱导定向重新排一次符号，得到的链就是
+
+$$\partial c = \sum_{i=1}^{n}\sum_{\alpha=0}^{1}(-1)^{i+\alpha}\,c_{(i,\alpha)} .$$
+
+所以「代数边界」与「几何边界」不是两套约定，是同一套：符号已经写在 $\partial c$ 的系数里了。
+
+**为什么这条重要**：流形版的 Stokes 定理（`thm.stokes`）用的是几何边界（诱导定向），链版的 Stokes 定理（`thm.stokes-chain`）用的是代数边界（$\partial c$）。两者能写成同一个公式，全靠这个命题。它也是散度定理里那个「外法向 + 诱导定向」符号的真正出处。
+
+**$n = 1$ 的验算**：$I^{1} = [0,1]$，$\partial c = -c_{(1,0)}+c_{(1,1)} = c(1)-c(0)$。而 $0$ 维的诱导定向里，$x = 1$ 那端（外法向 $+e_{1}$）为正、$x = 0$ 那端为负。逐项相符。
+
+**$n = 2$ 的验算**：$\partial c = -c_{(1,0)}+c_{(1,1)}+c_{(2,0)}-c_{(2,1)}$。四条边分别是左、右、下、上；右边（$\alpha = 1$，外法向 $+e_{1}$）取 $+$，左边（外法向 $-e_{1}$）取 $-$，下边（外法向 $-e_{2}$）取 $+$，上边（外法向 $+e_{2}$）取 $-$。按「外法向在前」逐个核对，四条全部相符 —— 而四条边的走向正好构成逆时针一圈。
+
+**⚠️ 顺序容易抄错的方向**：证明里比较的是「面自身的基在 $\mathbb{R}^{n}$ 里与 $N$ 拼起来后的行列式」，不是「面的基与 $N$ 的叉积方向」。前者是纯代数、可逐项验算；后者只在三维有直觉。三维以下的直觉可以帮忙记，但不能当证明。
+
+**⚠️ 保向性不能丢**：若 $c$ 反向，则每个面都多一个负号，命题的结论整体差一个号。所以命题的前提写成「$c$ 保向」，而不是「$c$ 是微分同胚」。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块的边界与定向；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 边界的诱导定向
+
+#### 链上的积分　`def.integral-on-chain`
+*定义*　链上的积分
+
+**在做什么**：链上的积分不是一种新积分 —— 把形式沿方块拉回坐标里，剩下的就是一个普通的重积分。方块自带的坐标次序就是它的定向，所以不必另外选定向。
+
+设 $c : I^{k}\to M$ 是 $k$-方块，$\omega$ 是定义在 $c$ 的像的某个邻域上的 $k$-形式。在 $I^{k}$ 上 $c^{\ast}\omega$ 仍是 $k$-形式，而 $k$ 维区域的 $k$-形式只有一个分量，故存在唯一的 $f\in C^{\infty}(I^{k})$ 使
+
+$$c^{\ast}\omega = f\,\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}.$$
+
+定义方块上的积分
+
+$$\int_{c}\omega := \int_{I^{k}}f = \int_{0}^{1}\cdots\int_{0}^{1}f(x)\,\mathrm{d}x^{1}\cdots\mathrm{d}x^{k},$$
+
+再对链线性延拓：
+
+$$\int_{\sum_{l}n_{l}c_{l}}\omega := \sum_{l}n_{l}\int_{c_{l}}\omega .$$
+
+$k = 0$ 的约定：$0$-方块是点 $p$，$0$-形式是函数，$\int_{p}F := F(p)$，$\int_{\sum n_{l}p_{l}}F := \sum_{l}n_{l}F(p_{l})$。
+
+**系数 $f$ 是什么**：$f = c^{\ast}\omega(\partial_{1},\ldots,\partial_{k})$，即把方块坐标方向的切向量喂给拉回的形式。它是光滑函数，边界上的值由 $c$ 的光滑延拓决定，零测集不影响积分。
+
+**为什么不需要定向**：方块的坐标次序已经钉死了定向 —— $\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$ 在 $I^{k}$ 上就是标准定向。想让方块「反向走」，就把某个坐标换成 $1-x^{i}$；此时 $c^{\ast}\omega$ 自动变号，不需要额外规则。所以「定向」这件事在链这一侧被吃进了参数化里。
+
+**与 `def.integral-form` 的分工**：那边是「$n$-形式在**开集**上积分」，要单位分解才能拼到流形上；这边是「$k$-形式沿**一张方块**积分」，一次重积分到底。整体的意思交给链（求和），不交给单位分解 —— 这是 Spivak 这套记账最省事的地方。
+
+**⚠️ 次数必须匹配**：$k$-形式只配得上 $k$-链。$j$-形式沿 $k$-方块拉回（$j<k$）仍有意义，但那是 $k$ 维区域上的 $j$-形式，积不出来；$j>k$ 时拉回直接为零。所以「链与形式的配对」只在次数相等时有定义。
+
+**⚠️ 退化方块**：若 $c$ 不满秩，$c^{\ast}\omega$ 可以是零（比如 $c$ 常值），积分自然为零。定义不需要为退化情形打补丁。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块与链上的积分；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 拉回与积分
+
+#### 链上积分的双线性　`prop.integral-chain-linear`
+*命题*　链上积分对形式与对链都线性
+
+**在做什么**：把「链上的积分」说成一个配对 —— 左边是链、右边是形式、结果是一个数，两头都线性。这条双线性是后面所有求和与拆分的许可证。
+
+设 $c$ 是 $M$ 上的 $k$-链，$\omega,\eta$ 是 $k$-形式，$a,b\in\mathbb{R}$。则
+
+$$\int_{c}(a\,\omega+b\,\eta) = a\int_{c}\omega+b\int_{c}\eta ,\qquad \int_{a\,c+b\,c'}\omega = a\int_{c}\omega+b\int_{c'}\omega .$$
+
+特别地 $\int_{-c}\omega = -\int_{c}\omega$（系数为 $-1$ 的链就是「反向走」）。
+
+于是积分是一个双线性配对
+
+$$C_{k}(M)\times\Omega^{k}(M)\longrightarrow\mathbb{R},$$
+
+左边是几何的（方块与它们的和），右边是对偶的（形式与它们的和）。
+
+**为什么这条值得单独立一个节点**：它是所有「拆开算」的操作的合法依据 —— 把 $\omega$ 拆成分量、把链拆成方块、把区域拆成小块，用的都是这两条线性。没有它，Stokes 定理只能对单块陈述，说不出「对链成立」。
+
+**配对的观点**：$\Omega^{k}(M)$ 是实数域上的向量空间（维数无穷），$C_{k}(M)$ 是自由阿贝尔群；两者配对到 $\mathbb{R}$，且各自线性。对偶的方向是「$\mathrm{d}$ 升次数、$\partial$ 降次数」，而 $\int$ 正是把这一对对偶串起来的那个括号（`thm.stokes-chain`）。
+
+**⚠️ 反对称性不是「反对称」**：$\int_{-c} = -\int_{c}$ 说的是链的系数为负，不是「交换两个变元变号」。链与形式之间不存在交换律 —— 它们的类型不同。
+
+**⚠️ 系数域**：链的系数在 $\mathbb{Z}$ 里（`def.singular-chain`），形式的系数在 $\mathbb{R}$ 里。这里两者都按实数看待，取整数值只是链的记账习惯；讨论同调时会回到 $\mathbb{Z}$。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上积分的线性；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链与形式的配对
+
+#### 方块上的 Stokes 公式　`lem.single-cube-stokes`
+*引理*　单个方块上的 Stokes 公式
+
+**在做什么**：把 Stokes 定理先在一块标准方块上算穿 —— 左边是一个重积分、右边是 $2k$ 个面上的积分，两边逐项对上。全部符号约定都在这一步被验完。
+
+设 $\eta$ 是定义在含 $I^{k} = [0,1]^{k}$ 的开集上的 $(k-1)$-形式（$k\ge 1$）。则
+
+$$\int_{I^{k}}\mathrm{d}\eta = \int_{\partial I^{k}}\eta ,$$
+
+其中 $I^{k}$ 取标准定向，$\partial I^{k}$ 按 `def.boundary-operator` 的符号约定理解为一条 $(k-1)$-链。
+
+$k = 1$ 时它就是微积分基本定理：$\int_{0}^{1}F^{\prime}(t)\,\mathrm{d}t = F(1)-F(0)$。
+
+**证明的骨架**：把 $\eta$ 按缺哪个 $\mathrm{d}x^{j}$ 拆成 $k$ 项，每项是一个一元积分；$\mathrm{d}\eta$ 是 $\sum_{j}\partial_{j}f_{j}$。对每个 $j$ 用一元基本定理把 $x^{j}$ 那层积完，剩下的正好是第 $j$ 个坐标两端的面积分之差。右边逐面拉回时只有 $j$ 与面号相同的那一项活着 —— 两个符号相乘恰好对上。完整计算见边 `imp.spivak-cube-stokes`。
+
+**为什么这一块必须先做**：一般方块 $c$ 上的情形全靠拉回（$c^{\ast}\mathrm{d} = \mathrm{d}c^{\ast}$），拉回之后就是本引理。所以本引理是链版 Stokes 的**唯一**实质内容，其余都是翻译。
+
+**⚠️ 符号最容易错的地方**：$\eta$ 写成 $\sum_{j}(-1)^{j-1}f_{j}\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{j}}\cdots\wedge\mathrm{d}x^{k}$（带帽表示略去该因子）时，$\mathrm{d}\eta = \sum_{j}\partial_{j}f_{j}\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{k}$ 里**没有**额外符号。若这里多写一个 $(-1)^{j-1}$，右边就会整个错位面。
+
+**⚠️ 边界上的零测集**：$\eta$ 只要求定义在开集上、连续到边界；逐面拉回时用的是 $\eta$ 在面上的值，而 $\partial I^{k}$ 是零测集，所以积分不受延拓方式影响。
+
+**与经典公式的关系**：$k = 2$ 时它就是 Green 公式；$k = 3$ 时是 Kelvin–Stokes（环量形式）。这两个都是本引理的特例，不是另外的定理。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 方块上的 Stokes 公式；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 微积分基本定理的高维形式
+
+#### 链上的 Stokes 定理　`thm.stokes-chain`
+*定理*　链上的 Stokes 定理
+
+**在做什么**：一个 $(k-1)$-形式在**边界链**上的积分，等于它的外微分在**链**上的积分。它是微积分基本定理、Green 公式、Gauss 公式、Kelvin–Stokes 的共同祖先。
+
+设 $c$ 是 $M$ 上的一条 $k$-链（$k\ge 1$），$\omega$ 是定义在 $c$ 的像的某个邻域上的 $(k-1)$-形式。则
+
+$$\int_{\partial c}\omega = \int_{c}\mathrm{d}\omega .$$
+
+**与流形版的关系**（`thm.stokes`）写清：流形版要求 $M$ 紧致、可定向、带边，$\omega$ 定义在 $M$ 上；链版不要 $M$ 可定向、不要紧致、不要 $\omega$ 有紧支，代价是把「流形」换成了「链」。两者互为特例 —— 把 $M$ 剖分成（或细分成）一条覆盖它的 $n$-链，链版逐项相加就是流形版；反过来，把流形版限制在一块保向参数方块上，就是链版的单块情形。
+
+$k = 1$、$c = \gamma : [0,1]\to\mathbb{R}$ 时：$\partial\gamma = \gamma(1)-\gamma(0)$，公式变成 $F(\gamma(1))-F(\gamma(0)) = \int_{0}^{1}(F^{\prime}\circ\gamma)\,\gamma^{\prime}\,\mathrm{d}t$，正是微积分基本定理。
+
+**证明只有三行**：$\int_{c}\mathrm{d}\omega = \int_{I^{k}}c^{\ast}\mathrm{d}\omega = \int_{I^{k}}\mathrm{d}(c^{\ast}\omega) = \int_{\partial I^{k}}c^{\ast}\omega = \int_{\partial c}\omega$。四步分别用：链上积分的定义、$c^{\ast}$ 与 $\mathrm{d}$ 交换、`lem.single-cube-stokes`、$\partial$ 的定义与线性。难点全在引理里，这里是翻译。
+
+**不需要定向的原因**：链这一侧把定向吃进了参数化（`def.integral-on-chain`），所以整条定理里没有出现「可定向」这个词。要把链版换回流形版时才需要定向 —— 那时符号由 `prop.boundary-sign-convention` 提供。
+
+**四合一**：$k = 1$ 是微积分基本定理；$k = 2$ 是 Green 公式；$k = 3$ 的两种样子分别是 Gauss–Ostrogradsky（通量，也就是散度定理 `thm.divergence-theorem`）与 Kelvin–Stokes（环量）。它们不是四条定理，是同一条在不同 $k$ 上的读法。
+
+**⚠️ 次数与维数**：$\omega$ 的次必须比链的维少一。$k = 0$ 时 $\partial c = 0$、右边为零，公式退化成 $0 = 0$，所以定理从 $k\ge 1$ 说起。
+
+**⚠️ 不能直接说「对任意闭链成立」**：本定理不需要 $c$ 是闭链；$\partial c\ne 0$ 时两边照样相等。闭链与恰当形式配对为零（$\int_{c}\mathrm{d}\omega = 0$）是它的推论，不是前提。
+
+参考：Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 链上的 Stokes 定理；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 微积分基本定理
+
+#### 体积密度与体积形式　`def.volume-density`
+*定义*　体积密度与体积形式
+
+**在做什么**：把「度量给的体积大小」写成能积分的量：带符号的叫体积形式（要定向），不带符号的叫密度（不要定向），同一串系数的两种读法。
+
+设 $(M,g)$ 是 $n$ 维黎曼流形，卡 $(U,x)$ 里记 $g_{ij} = g(\partial_{i},\partial_{j})$。
+
+**体积密度**（不需要定向）：
+
+$$\mathrm{d}\mu_{g} := \sqrt{\det(g_{ij})}\;\mathrm{d}x^{1}\cdots\mathrm{d}x^{n},$$
+
+右边是 Lebesgue 测度乘一个正的光滑函数，所以它是一个**密度**：换卡不变（绝对值那一半在开方里，见 `prop.volume-density-well-defined`），拼接后给出 $M$ 上唯一的 Radon 测度 $\mu_{g}$。
+
+**体积形式**（需要先取定一个定向）：在每张保向卡里令
+
+$$\mathrm{d}V := \sqrt{\det(g_{ij})}\;\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}.$$
+
+等价地，它逐点由「在正向标准正交基上取 $1$」刻画：$\mathrm{d}V_{p}(e_{1},\ldots,e_{n}) = 1$，其中 $(e_{1},\ldots,e_{n})$ 是 $T_{p}M$ 的任意一组正向标准正交基 —— 交错性加上「换一组这样的基只差行列式为 $1$ 的变换」保证这刻画与基的选取无关。翻转定向，$\mathrm{d}V$ 变号。
+
+**体积**：$\operatorname{vol}_{g}(M) := \mu_{g}(M)$；$M$ 紧且已定向时它等于 $\int_{M}\mathrm{d}V$，并且 $\mathrm{d}\mu_{g} = |\mathrm{d}V|$。
+
+**为什么系数是 $\sqrt{\det g}$**：$\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$ 在基 $(\partial_{1},\ldots,\partial_{n})$ 上取 $1$，但 $\partial_{i}$ 一般不是正交基。设 $\partial_{i} = \sum_{j}A_{ij}e_{j}$（$e_{j}$ 为标准正交基），则 $g = A^{\mathsf T}A$，于是 $\sqrt{\det g} = |\det A|$；保向时 $\det A>0$，而 $\mathrm{d}V(\partial_{1},\ldots,\partial_{n}) = \det A$，与「在正交基上取 $1$」相容。面积（体积）放大率就是行列式，这是 $\sqrt{\det(g_{ij})}$ 的全部来历。
+
+**两个结构各管一头**：度量管「多大」（$\sqrt{\det g}$ 这个标量），定向管「正负」（$\mathrm{d}x^{1}\wedge\cdots$ 的次序）。所以 $\mathrm{d}V$ 属于「度量 $+$ 定向」，缺一个都定义不出来；而 $\mathrm{d}\mu_{g}$ 只要度量，这是它俩唯一但关键的差别。
+
+**存在性**：可定向流形上存在处处非零的 $n$-形式 $\omega$（可定向即「能被转移映射 Jacobi 行列式处处为正的卡族覆盖」，二维情形见 `def.orientable-surface`）。把 $\omega$ 除以它在正向标准正交基上的取值，就得到满足 $\mathrm{d}V(e_{1},\ldots,e_{n}) = 1$ 的那个形式 —— 所以「可定向 $+$ 度量」恰好给出一个体积形式，且只差一个定向的符号。
+
+**二维时它就是 `def.area-element`**：那里写 $\mathrm{d}A = \sqrt{\det(g_{ij})}\,\mathrm{d}u\wedge\mathrm{d}v$，与这里逐字相同；「面积元是密度、不是形式」那句话说的就是 $\mathrm{d}\mu_{g}$ 那一面。
+
+**例子**：$\mathbb{R}^{n}$ 标准度量与标准定向给出 $\mathrm{d}V = \mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$；半径 $R$ 的 $S^{2}$ 在球坐标 $(\theta,\varphi)$ 下（取 $\partial_{\theta},\partial_{\varphi}$ 为保向）给出 $\mathrm{d}V = R^{2}\sin\theta\,\mathrm{d}\theta\wedge\mathrm{d}\varphi$。
+
+**⚠️ 记号分歧**：很多书写 $\mathrm{d}V$ 指**密度**（不带符号的测度）。本图把两者分开：$\mathrm{d}V$ 是形式（带定向），$\mathrm{d}\mu_{g} = |\mathrm{d}V|$ 是密度。抄公式前先看清对方用的是哪一种。
+
+参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 体积元素与体积；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 定向与体积积分
+
+#### 密度与定向无关　`prop.volume-density-well-defined`
+*命题*　体积密度在换卡下不变，体积形式随定向变号
+
+**在做什么**：说明「密度」这个词为什么名副其实 —— 换卡时两个绝对值因子恰好抵消，所以它拼得成整体、也不依赖定向；带符号的那版则会被定向拖着变号。
+
+设 $(M,g)$ 是 $n$ 维黎曼流形，两张卡 $x$、$y$ 有重叠。则
+
+$$\sqrt{\det(g^{y}_{ij})} = \sqrt{\det(g^{x}_{ij})}\;\Bigl|\det\frac{\partial x}{\partial y}\Bigr|,\qquad \mathrm{d}y^{1}\cdots\mathrm{d}y^{n} = \Bigl|\det\frac{\partial y}{\partial x}\Bigr|\,\mathrm{d}x^{1}\cdots\mathrm{d}x^{n},$$
+
+两式相乘，$|\det|$ 因子等于 $1$，故
+
+$$\sqrt{\det(g^{y}_{ij})}\;\mathrm{d}y^{1}\cdots\mathrm{d}y^{n} = \sqrt{\det(g^{x}_{ij})}\;\mathrm{d}x^{1}\cdots\mathrm{d}x^{n}.$$
+
+于是 $\mathrm{d}\mu_{g}$ 是一个**整体良定的密度**，拼接后给出 $M$ 上唯一的 Radon 测度 $\mu_{g}$，且它不依赖定向。
+
+对照：体积形式 $\mathrm{d}V$ 的变换因子是 $\det$（**没有**绝对值），所以 $\mathrm{d}V$ 只在保向换卡下不变、反向变号。有定向时 $\mathrm{d}\mu_{g} = |\mathrm{d}V|$。
+
+**绝对值是开方给的**：$\partial_{y^{i}} = \sum_{k}(\partial x^{k}/\partial y^{i})\partial_{x^{k}}$，故 $g^{y} = J^{\mathsf T}g^{x}J$（$J = \partial x/\partial y$），取行列式得 $\det g^{y} = (\det J)^{2}\det g^{x}$。开方时 $\det J$ 的符号被吃掉，$|\det J|$ 留下 —— 再来一个 $|\det J|^{-1}$ 就正好抵消。**这一步是整条命题的全部内容**。
+
+**拼成整体测度**：局部密度在重叠处相等，剩下的只是把它加成测度。用从属于卡族的单位分解 $\{\rho_{\alpha}\}$（`prop.paracompact-partition-unity`）定义 $\mu_{g}(f) := \sum_{\alpha}\int_{\mathbb{R}^{n}}(\rho_{\alpha}f)\circ x_{\alpha}^{-1}\,\sqrt{\det g}\ \mathrm{d}x$；每项非负、和有限，正性与可数可加性逐块相加即得。
+
+**二维时这条就是 `def.area-element` 的注记**：「面积元是密度、不是形式」—— 换参数化时 $\sqrt{\det g}$ 与 $\mathrm{d}u\,\mathrm{d}v$ 一起变，乘积不变且不变号。$n$ 维只是把 $2\times2$ 的 Gram 行列式换成 $n\times n$ 的。
+
+**与 `def.riemannian-metric` 的关系**：那边的定义把 $\mathrm{d}V$ 记作 $\sqrt{\det(g_{ij})}\,\mathrm{d}x^{1}\cdots\mathrm{d}x^{n}$。严格说这是密度（配 Lebesgue 测度、不带符号）；带符号的形式版是 `def.volume-density` 里那一个。两处是同一串系数，用法不同。
+
+**⚠️ 不可定向流形上照样有体积**：面积、体积、质量这类量都不需要定向；丢掉的只是「带符号的积分」。散度定理那类公式则必须先取定定向（否则 $\mathrm{d}V$ 的符号没有意义）。
+
+参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 体积元素与黎曼体积；Spivak, Calculus on Manifolds, 第 3 章「Integration」· 测度、零测集与单位分解
+
+#### 散度　`def.divergence`
+*定义*　散度
+
+**在做什么**：散度回答「一点附近向量场往外冒得多快」。定义成「沿 $X$ 推着走时体积形式的变化率」—— 不用坐标，而且一写下来就得到散度定理。
+
+设 $(M,g)$ 是定向 $n$ 维黎曼流形，$\mathrm{d}V$ 是体积形式，$X$ 是 $M$ 上的光滑向量场。**散度** $\operatorname{div}X\in C^{\infty}(M)$ 是使
+
+$$\mathcal{L}_{X}\,\mathrm{d}V = (\operatorname{div}X)\,\mathrm{d}V$$
+
+成立的唯一函数，其中 $\mathcal{L}_{X}$ 是沿 $X$ 的 Lie 导数。由 Cartan 公式 $\mathcal{L}_{X} = \mathrm{d}\iota_{X}+\iota_{X}\mathrm{d}$ 与 $\mathrm{d}(\mathrm{d}V) = 0$，等价地
+
+$$\mathrm{d}(\iota_{X}\mathrm{d}V) = (\operatorname{div}X)\,\mathrm{d}V ,$$
+
+其中 $\iota_{X}$ 是内乘（把 $X$ 填进形式的第一个槽）。在保向卡里逐项算出来是
+
+$$\operatorname{div}X = \frac{1}{\sqrt{\det(g_{ij})}}\sum_{i=1}^{n}\partial_{i}\Bigl(\sqrt{\det(g_{ij})}\,X^{i}\Bigr),\qquad X = \sum_{i=1}^{n}X^{i}\partial_{i}.$$
+
+$\mathbb{R}^{n}$ 的标准度量下它退化成 $\sum_{i}\partial_{i}X^{i}$。
+
+**为什么「唯一」**：$n$-形式在每点是一维的，所以 $\mathcal{L}_{X}\mathrm{d}V$ 必然是 $\mathrm{d}V$ 的某个函数倍，那个函数就被定义为散度。存在性不用证，唯一性也不用 —— 这是「用体积形式定义散度」最省事的地方。
+
+**只看度量，不看定向**（容易误以为要看）：$\mathrm{d}V$ 变号时等式两边同时变号，$\operatorname{div}X$ 不变。所以散度是**度量**的函数，定向只是写 $\mathrm{d}V$ 时的脚手架。散度定理里出现的符号来自边界，不来自散度本身。
+
+**坐标公式怎么来的**：$\iota_{X}\mathrm{d}V = \sum_{i}(-1)^{i-1}\sqrt{\det g}\,X^{i}\,\mathrm{d}x^{1}\wedge\cdots\widehat{\mathrm{d}x^{i}}\cdots\wedge\mathrm{d}x^{n}$，取 $\mathrm{d}$ 之后每一项贡献 $\partial_{i}(\sqrt{\det g}\,X^{i})$，再提出 $\mathrm{d}V$ 的系数 $\sqrt{\det g}$。
+
+**迹刻画**：$\operatorname{div}X = \operatorname{tr}(v\mapsto\nabla_{v}X)$（Levi-Civita 联络）。两个定义等价，靠的是「体积形式平行」：$\nabla\mathrm{d}V = 0$，于是体积的变化率就是流的迹。
+
+**与微分学那边的接口**：$\operatorname{div}\circ\operatorname{grad} = \Delta$（Laplace–Beltrami 算子），$\operatorname{grad}$ 见 `def.gradient`。所以「散度」是把二阶算子拆成一阶一阶算的那一半。
+
+参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 散度；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 内乘与体积形式
+
+#### 散度定理　`thm.divergence-theorem`
+*定理*　散度定理
+
+**在做什么**：散度在整块流形上积起来，等于流量从边界漏出去的通量。这是 Gauss 公式在任意维数、任意黎曼流形上的样子，也是「散度 = 源密度」这句口号的正式版本。
+
+设 $(M,g)$ 是紧致、定向、带边的 $n$ 维黎曼流形；$\partial M$ 取诱导定向与诱导度量，$\mathrm{d}V$ 是 $M$ 的体积形式，$\mathrm{d}A$ 是 $\partial M$ 的体积形式，$N$ 是沿 $\partial M$ 指向**外**的单位法向量，$X$ 是 $M$ 上的光滑向量场。则
+
+$$\int_{M}(\operatorname{div}X)\,\mathrm{d}V = \int_{\partial M}\langle X,N\rangle\,\mathrm{d}A .$$
+
+$\partial M = \emptyset$ 时右边为零，等式退化成「无边界则总散度为零」。
+
+$n = 3$、$X = (P,Q,R)$ 在平坦区域上给出经典 Gauss–Ostrogradsky 公式，$n = 2$ 给出 Green 公式的另一种写法。
+
+**它不是新定理**：证明就是把 `thm.stokes` 用在 $\omega = \iota_{X}\mathrm{d}V$ 上。所以「微积分基本定理 / Stokes / 散度定理 / Green / Kelvin–Stokes」这五条是同一句公式在五种维数与五种形式次数上的读法。
+
+**符号的两个来源**：$N$ 必须朝**外**，$\partial M$ 必须取**诱导**定向（外法向在前）。两个约定缺一个，整体就差一个负号 —— 而所有二、三维的特例都仍然「看起来对」，所以这个错误特别难查。约定之间的相容性由 `prop.boundary-sign-convention` 保证。
+
+**Green 第一公式**：取 $X = \nabla u$（$\nabla$ 取 $g$ 的梯度），得 $\int_{M}\Delta u\,\mathrm{d}V = \int_{\partial M}\partial_{N}u\,\mathrm{d}A$；再对 $u\,\nabla v$ 用一次并相减，就得到对称的那个版本。
+
+**⚠️ 紧致性**：不紧时右边必须绝对可积，或对穷竭序列 $M_{1}\subset M_{2}\subset\cdots$ 取极限（此时会多出内部边界项，靠它们两两相消收敛）。本图只陈述紧致情形。
+
+**⚠️ 边界为空不等于平凡**：闭流形上 $\int_{M}\operatorname{div}X\,\mathrm{d}V = 0$，这条非平凡 —— 它排除了「处处往外冒」的向量场，是 Hodge 理论与调和形式那一支的起点。
+
+参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 散度定理；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 流形上的 Stokes 定理
+
+#### 流形上的换元公式　`thm.change-of-variables-manifold`
+*定理*　流形上的换元公式
+
+**在做什么**：换元公式在流形上的样子 —— 沿微分同胚把形式搬过去，积分不变；搬的方向反了就变号。它其实是「$n$-形式是唯一能自然积分的东西」的另一种说法。
+
+设 $f : M\to N$ 是定向 $n$ 维光滑流形之间的微分同胚，$\omega\in\Omega^{n}(N)$ 可积（$N$ 紧，或 $\omega$ 有紧支）。则
+
+**$f$ 保向时**
+
+$$\int_{M}f^{\ast}\omega = \int_{N}\omega ;$$
+
+**$f$ 反向时**
+
+$$\int_{M}f^{\ast}\omega = -\int_{N}\omega .$$
+
+两种情形合写成 $\int_{M}f^{\ast}\omega = \varepsilon\int_{N}\omega$，$\varepsilon = +1$ 表示保向、$-1$ 表示反向。
+
+**经典换元是它的坐标版**：取 $M,U\subseteq\mathbb{R}^{n}$、$N = g(U)$、$\omega = F\,\mathrm{d}y^{1}\wedge\cdots\wedge\mathrm{d}y^{n}$，则 $f^{\ast}\omega = (F\circ g)\det(\partial g/\partial x)\,\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}$，公式变成 $\int_{g(U)}F\,\mathrm{d}y = \int_{U}(F\circ g)\det(\partial g/\partial x)\,\mathrm{d}x$ —— 与微积分课本上的差别只在「有没有绝对值」。
+
+**绝对值的有无就是定向的有无**：不带定向时能积的只有密度，换元带 $|\det|$（`prop.volume-density-well-defined`）；带定向时 $n$-形式自带符号，换元带 $\det$。同一件事的两种记账。
+
+**为什么只对 $n$-形式成立**：$k<n$ 的形式在微分同胚下按 $k\times k$ 的子式变换，与 $n$ 维体积元对不上，所以不存在「$k$-形式在流形上的换元公式」。要积分 $k$-形式，得先挑一个 $k$ 维子流形把它拉回去（`def.integral-form` 开头那句）。
+
+**证明的两块拼图**：一是「保向微分同胚下积分不变」（`def.integral-form` 的良定性，就是 $\mathbb{R}^{n}$ 上 $\det$ 与换元公式的匹配），二是单位分解（`prop.paracompact-partition-unity`）把整体拆到卡里。两块都在别处证过，所以这条定理本身是拼装。
+
+**⚠️ 微分同胚不能放宽成「光滑满射」**：那样要引入度数与积分重数（$\int_{M}f^{\ast}\omega = \deg(f)\int_{N}\omega$），$\varepsilon$ 就变成整数而不是 $\pm1$。本图只陈述微分同胚情形。
+
+**⚠️ 定向的选取**：若 $M$ 与 $N$ 上各取定向，则 $\varepsilon$ 由 $f$ 相对这两组定向是否保向决定；换掉 $N$ 的定向，$\varepsilon$ 与右边同时变号，等式仍成立。所以「保向」这个说法必须相对定好的两组定向。
+
+参考：Spivak, Calculus on Manifolds, 第 3 章「Integration」· 换元公式；Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 流形上的积分与换元
+
+#### de Rham 定理　`thm.de-rham`
+*定理*　de Rham 定理
+
+**白话**：用微积分造出来的上同调（闭形式模恰当形式），与用「三角形」造出来的拓扑上同调（奇异链取对偶），是同一个东西。这条定理把分析、几何、拓扑焊在一起。
+
+设 $M$ 是光滑流形。对每个 $k \ge 0$ 存在同构
+
+$$\Phi^{k} : H^{k}_{\mathrm{dR}}(M) \longrightarrow H^{k}_{\mathrm{sing}}(M;\mathbb{R}),\qquad [\omega] \longmapsto \Bigl([c] \mapsto \int_{c}\omega\Bigr),$$
+
+其中 $H^{k}_{\mathrm{sing}}(M;\mathbb{R}) := H^{k}\bigl(\operatorname{Hom}(C^{\mathrm{sing}}_{\bullet}(M),\mathbb{R})\bigr)$ 是奇异链复形（`def.singular-chain`）取对偶后的上同调（`def.cohomology`），$\int_{c}\omega$ 是形式在链上的积分（`def.integral-on-chain`）。$\Phi^{k}$ 与拉回相容，故 $k \mapsto \Phi^{k}$ 是一族自然同构：$H^{\bullet}_{\mathrm{dR}}$ 与 $H^{\bullet}_{\mathrm{sing}}$ 是同一个函子的两种算法。
+
+**证明路线的骨架**（细节写在边上）：
+
+1. **配对先良定义**：$\int_{c}\omega$ 只依赖 $[\omega]$ 与 $[c]$ —— 换 $c$ 为同调等价的链差一个边界，而闭形式在边界上的积分为零（`thm.stokes-chain` 的一个方向）；换 $\omega$ 为相差 $\mathrm{d}\eta$ 的形式，差为 $\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（同一条 Stokes 的另一个方向）。
+2. **认成层上同调**：$\Omega^{\bullet}$ 是常层 $\underline{\mathbb{R}}$ 的消解（正合性逐点成立，逐点核为 $\mathbb{R}$，就是 Poincaré 引理 `lem.poincare-lemma`），于是 $H^{\bullet}_{\mathrm{dR}}(M) \cong H^{\bullet}(M;\underline{\mathbb{R}})$。
+3. **Čech–de Rham 双复形**：取「好的覆盖」，把 $\check{C}^{p}(\mathfrak{U},\Omega^{q})$ 排成双复形（横向 Čech 微分、纵向 $\mathrm{d}$），两条谱序列算出同一个全上同调，得到 $H^{\bullet}_{\mathrm{dR}}(M) \cong \check{H}^{\bullet}(M;\underline{\mathbb{R}})$。
+4. **Čech = 层上同调**：仿紧流形上 $\check{H}^{\bullet} \cong H^{\bullet}$（`thm.paracompact-cech-equals-sheaf`）。
+5. **层上同调 = 奇异上同调**：常层的层上同调由「同伦不变 $+$ 单点的值 $+$ 长正合列」唯一确定，奇异上同调满足同一组公理 —— 两者同构（代数拓扑的标准定理，本图不证）。
+
+**为什么它是定理而不是定义**：两边的复形长得完全不同（一边是光滑形式、一边是拓扑单形），能对上不是形式化的。核心内容是第 2 步：「$\Omega^{\bullet}$ 是常层的消解」—— 也就是 Poincaré 引理的**整体化**。
+
+**推论**：$H^{k}_{\mathrm{dR}}$ 是同伦不变量（函子性 + 同伦不变），紧流形上每个 $H^{k}_{\mathrm{dR}}$ 有限维，$k > \dim M$ 时为零。所以「闭而不恰当的形式有多少种」是纯拓扑数据 —— Betti 数。
+
+**与 131 那三条 de Rham 节点接得上**：$H^{0}$ 数连通分支（`thm.de-rham-h0`）、局部为零（`lem.poincare-lemma`）、加减开集有长正合列（`thm.mayer-vietoris`）—— 这三条恰好是上面路线里第 2、5 步的局部版本。
+
+⚠️ **本图的折衷**：这里给的是路线与关键计算，**不**给逐字证明。Čech–de Rham 双复形的谱序列论证、以及「层上同调 = 奇异上同调」都需要单独篇幅；这一条与 `thm.solid-abelian` 那批深定理同一口径：**结构 + 关键计算 + 出处**，如实声明。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· de Rham 定理；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「de Rham Cohomology」· Poincaré 引理与 Mayer–Vietoris 序列
+
 #### 诱导体积　`def.submanifold-volume`
 *定义*　子流形的诱导体积
 
@@ -26916,6 +26758,173 @@ $$\mathrm{d}V_{N} = \pm\,\iota_{\nu}\,\mathrm{d}V_{g},$$
 ⚠️ 本图只做「$k$ 维体积」这一层：余面积公式（coarea）、以及「把 $M$ 上的 $k$-形式积在 $N$ 上」的一般理论（要 $N$ 定向 + $i^{\ast}$）不展开。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 子流形上的诱导度量与体积；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架
+
+### 星团：Lie 群
+> 把群结构与流形结构绑在一起：Lie 群 → 左不变向量场与左不变形式 → Maurer–Cartan 方程 → Lie 第三定理（每个有限维 Lie 代数都来自一个 Lie 群）。
+
+#### Lie 群　`def.lie-group`
+*定义*　Lie 群
+
+**在说什么**：既是群又是光滑流形，而且两种结构互相尊重 —— 乘法与取逆都光滑。于是「群运算」可以用微积分研究。
+
+**Lie 群**是集合 $G$，同时带
+
+1. **群**结构（`def.group`）；
+2. **有限维光滑流形**结构（`def.smooth-manifold`）；
+
+使**乘法** $m : G \times G \to G$（$m(g,h) := gh$，$G \times G$ 取乘积流形结构）与**取逆** $i : G \to G$（$i(g) := g^{-1}$）都是光滑映射。
+
+对 $g \in G$ 定义**左平移**与**右平移**
+
+$$L_{g} : G \to G,\quad L_{g}(h) := gh ;\qquad R_{g} : G \to G,\quad R_{g}(h) := hg .$$
+
+两者都是微分同胚（逆分别是 $L_{g^{-1}}$、$R_{g^{-1}}$），且 $L_{g} \circ L_{h} = L_{gh}$。
+
+**例**：$\operatorname{GL}(n,\mathbb{R}) = \{A : \det A \ne 0\}$（$\mathbb{R}^{n^{2}}$ 的开子集，故是 $n^{2}$ 维流形）；$\operatorname{SL}(n,\mathbb{R})$、$\operatorname{O}(n)$、$\operatorname{SO}(n)$、$\operatorname{U}(n)$（由方程切出来，见 `thm.regular-level-set`）；$(\mathbb{R}^{n},+)$；$S^{1} \subseteq \mathbb{C}^{\times}$；任意离散群（$0$ 维）。
+
+**「取逆光滑」其实可以省掉**：只假设乘法光滑，则每个 $L_{g}$、$R_{g}$ 光滑；由隐函数定理 $i$ 在 $e$ 附近光滑，再用 $i = L_{g^{-1}} \circ i \circ R_{g^{-1}}$ 搬到各处。本图按习惯把两条都写进定义，省掉一次对隐函数定理的引用。
+
+**$\operatorname{GL}(n,\mathbb{R})$ 为什么是流形**：$\det : \mathbb{R}^{n^{2}} \to \mathbb{R}$ 连续，$\mathbb{R}\setminus\{0\}$ 开，所以 $\det^{-1}(\mathbb{R}\setminus\{0\})$ 在 $\mathbb{R}^{n^{2}}$ 里开 —— 一张卡就够，$\varphi = \operatorname{id}$。这是「开子集继承流形结构」最省事的例子。
+
+**$\operatorname{O}(n)$ 为什么是流形**：它是 $F(A) = A^{\mathsf{T}}A - I$ 的零点集，$\mathrm{d}F_{A}(B) = A^{\mathsf{T}}B + B^{\mathsf{T}}A$ 在 $F^{-1}(0)$ 上满射（给定对称的 $S$，取 $B = AS/2$ 即得），于是由 `thm.regular-level-set` 得 $\dim = n^{2} - n(n+1)/2 = n(n-1)/2$。群结构由「正交矩阵之积仍正交」给出。
+
+**拓扑限制**：不是每个群都能当 Lie 群（要第二可数、要局部欧氏）。Cartan 的闭子群定理说 Lie 群的闭子群自动是子流形 —— 这一条把「$\operatorname{SL}$、$\operatorname{O}$ 是 Lie 群」一般化，本图只提。
+
+**为什么关心它**：Lie 群把「对称性」变成可微的对象，于是在单位元处求导就得到 Lie 代数（`def.lie-algebra`、`prop.left-invariant-fields`）—— 非线性问题线性化，这是整个理论的技术核心。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 群与例子；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左平移与右平移
+
+#### 左不变向量场　`prop.left-invariant-fields`
+*命题*　左不变向量场与 Lie 代数
+
+**在做什么**：把 Lie 群「在单位元处求导」—— 左平移让单位元处的每个切向量长成一个整体向量场，而这些向量场恰好构成一个 Lie 代数。
+
+设 $G$ 是 Lie 群，$\mathfrak{g} := T_{e}G$（$e$ 是单位元）。向量场 $X \in \mathfrak{X}(G)$ 叫**左不变**，如果对一切 $g, h \in G$ 有
+
+$$X_{gh} = \mathrm{d}(L_{g})_{h}\bigl(X_{h}\bigr).$$
+
+则：
+
+1. **赋值给出同构**：$X \mapsto X_{e}$ 是「左不变向量场的空间」到 $\mathfrak{g}$ 的线性同构（逆是 $v \mapsto \bigl(g \mapsto \mathrm{d}(L_{g})_{e}(v)\bigr)$），于是这个空间是 $\dim G$ 维的；
+2. **对 Lie 括号封闭**：$X, Y$ 左不变，则 $[X,Y]$ 也左不变；
+3. **于是 $\mathfrak{g}$ 带 Lie 代数结构**：定义 $[v,w] := [\tilde v,\tilde w]_{e}$（$\tilde v$ 是 $v$ 对应的左不变向量场），则 $(\mathfrak{g},[\cdot,\cdot])$ 是 Lie 代数（`def.lie-algebra`），叫 $G$ 的 **Lie 代数**，且 $\dim\mathfrak{g} = \dim G$。
+
+所以「Lie 群 $\to$ Lie 代数」是一个函子：$\mathrm{Lie}(G)$。
+
+**为什么赋值是双射**：左不变性把 $X$ 在 $gh$ 处的值**唯一**由 $X_{h}$ 决定，取 $h = e$ 就知 $X$ 完全由 $X_{e}$ 决定（单射）；反过来，给定 $v \in \mathfrak{g}$，令 $X_{g} := \mathrm{d}(L_{g})_{e}(v)$，则 $X_{gh} = \mathrm{d}(L_{gh})_{e}(v) = \mathrm{d}(L_{g})_{h}\bigl(\mathrm{d}(L_{h})_{e}(v)\bigr) = \mathrm{d}(L_{g})_{h}(X_{h})$（链式法则加 $L_{gh} = L_{g} \circ L_{h}$），故左不变（满射）。光滑性：局部用卡写开，$\mathrm{d}(L_{g})$ 对 $g$ 光滑。
+
+**括号为什么能下去**：关键是 Lie 括号的**自然性**
+
+$$\mathrm{d}F\bigl([X,Y]_{p}\bigr) = \bigl[\mathrm{d}F(X),\mathrm{d}F(Y)\bigr]_{F(p)},$$
+
+这里 $F$ 是微分同胚。取 $F = L_{g}$，由左不变性得 $\mathrm{d}(L_{g})X = X$、$\mathrm{d}(L_{g})Y = Y$，于是 $\mathrm{d}(L_{g})[X,Y] = [X,Y]$，即 $[X,Y]$ 左不变。所以「Lie 群给出 Lie 代数」唯一的实质是这条自然性。
+
+**例子**：$G = \operatorname{GL}(n,\mathbb{R})$ 的 Lie 代数是 $\mathfrak{gl}(n,\mathbb{R})$ 配交换子 —— 因为 $L_{A}$ 是线性映射、$\mathrm{d}(L_{A}) = A$ 本身，左不变向量场就是 $X(A) = AM$（$M$ 固定），括号算出来正是 $[M,N] = MN - NM$。
+
+**「Lie 代数决定 Lie 群」是假的**：$S^{1}$ 与 $\mathbb{R}$ 的 Lie 代数都是一维阿贝尔的，但两者不同构（紧 vs 非紧）。所以从 $\mathfrak{g}$ 回不到 $G$，只能回到单连通的 $G$ —— 这是 Lie 第三定理的内容，本图不展开。
+
+**下一步去哪**：左不变**形式**（对偶版本）给出 Maurer–Cartan 方程，本图不展开；那条线与结构方程（`def.connection-form`）是同一套记账。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变向量场与 Lie 代数；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 括号的自然性
+
+#### 左不变形式　`def.left-invariant-form`
+*定义*　左不变形式与左不变余标架
+
+**白话**：Lie 群上的微分形式如果对左平移「纹丝不动」，它就被单位元处的一个多重线性型完全决定 —— 于是 $G$ 上的左不变 $k$-形式与 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 是同一个东西。
+
+设 $G$ 是 $n$ 维 Lie 群（`def.lie-group`），$\mathfrak{g} = T_{e}G$，$L_{g}$ 是左平移。$k$-形式 $\omega \in \Omega^{k}(G)$ 叫**左不变**，如果
+
+$$L_{g}^{\ast}\omega = \omega\qquad (g \in G),$$
+
+等价地 $\omega_{g}(v_{1},\ldots,v_{k}) = \omega_{e}\bigl(\mathrm{d}(L_{g^{-1}})_{g}v_{1},\ldots,\mathrm{d}(L_{g^{-1}})_{g}v_{k}\bigr)$ —— 即 $\omega$ 在 $G$ 上的值由 $\omega_{e}$ 唯一决定。于是赋值
+
+$$\omega \longmapsto \omega_{e}$$
+
+是「左不变 $k$-形式」的空间到 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 的线性同构，维数为 $\binom{n}{k}$。
+
+**左不变余标架**：取 $\mathfrak{g}$ 的基 $e_{1},\ldots,e_{n}$ 与对偶基 $\omega^{1}_{e},\ldots,\omega^{n}_{e}$（$\omega^{i}_{e}(e_{j}) = \delta^{i}_{\ j}$），把它们左平移出去：
+
+$$\omega^{i}_{g} := \mathrm{d}(L_{g^{-1}})^{\ast}_{e}\,\omega^{i}_{e},\qquad \omega^{i}_{g}\bigl((\tilde e_{j})_{g}\bigr) = \delta^{i}_{\ j},$$
+
+其中 $\tilde e_{j}$ 是 $e_{j}$ 对应的左不变向量场（`prop.left-invariant-fields`）。这组 $\omega^{1},\ldots,\omega^{n}$ 叫**左不变余标架**，结构常数由 $[e_{j},e_{k}] = \sum_{i}c^{i}_{\ jk}e_{i}$ 定义。
+
+**为什么赋值是同构**：左不变性取 $h = e$ 得 $\omega_{g}(\mathrm{d}(L_{g})_{e}w) = \omega_{e}(w)$，故 $\omega_{g} = \mathrm{d}(L_{g^{-1}})^{\ast}\omega_{e}$，即 $\omega$ 由 $\omega_{e}$ 决定（单射）。反向：给定 $\alpha \in \bigwedge^{k}\mathfrak{g}^{\ast}$ 令 $\omega_{g} := \mathrm{d}(L_{g^{-1}})^{\ast}\alpha$，则 $L_{h}^{\ast}\omega = \omega$，因为
+
+$$L_{(hg)^{-1}} = L_{g^{-1}}\circ L_{h^{-1}},\qquad L_{h^{-1}}\circ L_{h} = \operatorname{id},$$
+
+两个左平移把 $\mathrm{d}(L_{h})$ 吃掉，恰好还原。所以 $\omega \mapsto \omega_{e}$ 是双射，线性显然。
+
+**与左不变向量场互为对偶**：`prop.left-invariant-fields` 说左不变向量场与 $\mathfrak{g}$ 同构；这里说左不变 $k$-形式与 $\bigwedge^{k}\mathfrak{g}^{\ast}$ 同构。$k = 1$ 时两组互为对偶基 —— 这正是活动标架法（`def.moving-frame`）在群上的版本：标架自身不动，动的只是点。
+
+**可定向性**：$k = n$ 时 $\bigwedge^{n}\mathfrak{g}^{\ast}$ 一维，取非零元左平移出去得到一个处处非零的 $n$-形式，由 `prop.volume-form-orientation` 得**每个 Lie 群都可定向**（$S^{1}$、$\operatorname{SO}(3)$、$\operatorname{GL}(n,\mathbb{R})$ 都如此，而一般流形未必）。
+
+**Haar 测度的那一半**：$\omega^{1}\wedge\cdots\wedge\omega^{n}$ 是左不变的体积形式，它的绝对值给出左不变测度（Haar 测度）。紧群上左不变与右不变只差一个常数（模函数），非紧时未必 —— 本图只用形式这一面。
+
+⚠️ 左不变**形式**与左不变**向量场**是两族不同的对象，都记下标 $g$，别混：前者的分量矩阵是 Jacobi 矩阵的逆转置，后者是 Jacobi 矩阵本身。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变形式与余标架；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 左不变向量场与 Lie 代数
+
+#### Maurer–Cartan 方程　`thm.maurer-cartan`
+*定理*　Maurer–Cartan 方程
+
+**白话**：Lie 群上那组「随群一起平移」的 $1$-形式，其外微分完全由结构常数决定 —— 一条公式把群的乘法（结构常数）和流形的微分（$\mathrm{d}$）扣在一起。
+
+设 $G$ 是 $n$ 维 Lie 群，$\mathfrak{g} = T_{e}G$，$e_{1},\ldots,e_{n}$ 是 $\mathfrak{g}$ 的基，$\omega^{1},\ldots,\omega^{n}$ 是左不变对偶余标架（`def.left-invariant-form`），**结构常数**由
+
+$$[e_{j},e_{k}] = \sum_{i=1}^{n} c^{i}_{\ jk}\,e_{i}$$
+
+定义（等价地用左不变向量场写：$[\tilde e_{j},\tilde e_{k}] = \sum_{i}c^{i}_{\ jk}\tilde e_{i}$）。则
+
+$$\mathrm{d}\omega^{i} = -\frac{1}{2}\sum_{j,k=1}^{n} c^{i}_{\ jk}\,\omega^{j}\wedge\omega^{k}\qquad (i = 1,\ldots,n).$$
+
+把 $\omega := \sum_{i}\omega^{i}e_{i} \in \Omega^{1}(G;\mathfrak{g})$ 看成一个 $\mathfrak{g}$-值 $1$-形式（**Maurer–Cartan 形式**），并对 $\mathfrak{g}$-值形式定义分次括号 $[\alpha\wedge\beta]$，上式就是 **Maurer–Cartan 方程**
+
+$$\mathrm{d}\omega + \frac{1}{2}[\omega\wedge\omega] = 0,\qquad\mathrm{d}\omega = -\frac{1}{2}[\omega\wedge\omega],$$
+
+两个 $1$-形式的约定是：把 $[\omega\wedge\omega]$ 放在 $(X,Y)$ 上取值，得 $2\,[\omega(X),\omega(Y)]$。
+
+**系数与符号的来历**：把 $[\omega\wedge\omega]$ 逐项写开时，$(j,k)$ 与 $(k,j)$ 两项给出 $c^{i}_{\ jk} - c^{i}_{\ kj} = 2c^{i}_{\ jk}$，恰好抵掉 $\frac{1}{2}$；符号来自「$\mathrm{d}\theta(X,Y) = X\theta(Y) - Y\theta(X) - \theta([X,Y])$」里的最后一项。所以这条公式没有一处自由度是多余的：有的书把括号归一化成不除 $2$，系数就跟着变（$\mathrm{d}\omega = -\frac{1}{2}[\omega,\omega]$ 与 $\mathrm{d}\omega + [\omega\wedge\omega] = 0$ 是同一句话的两种写法）。
+
+**它就是 Cartan 结构方程的群版本**：曲面上的结构方程 $\mathrm{d}\omega^{i} = \sum_{j}\omega^{j}\wedge\omega^{i}_{\ j}$ 描述「标架怎么转」；这里标架不动、群在动，于是 $\mathrm{d}\omega^{i}$ 只剩结构常数这一项。同一套记账，一个描述空间弯曲，一个描述乘法非交换。
+
+**反推 Jacobi**：对 MC 方程两边取 $\mathrm{d}$ 并用 $\mathrm{d}^{2} = 0$，比较 $\omega^{j}\wedge\omega^{k}\wedge\omega^{l}$ 的系数，得到
+
+$$\sum_{i}\bigl(c^{i}_{\ jk}c^{m}_{\ il} + c^{i}_{\ kl}c^{m}_{\ ij} + c^{i}_{\ lj}c^{m}_{\ ik}\bigr) = 0,$$
+
+这正是 $[[e_{j},e_{k}],e_{l}] + [[e_{k},e_{l}],e_{j}] + [[e_{l},e_{j}],e_{k}] = 0$。于是「$\mathfrak{g}$ 是 Lie 代数（Jacobi 成立）」与「$\omega$ 满足 MC 方程」是同一件事 —— 这就是 MC 方程被称为「平坦性条件」的原因。
+
+**与 $H^{1}$、平坦联络的接口**：$\mathrm{d}\omega + \frac{1}{2}[\omega\wedge\omega] = 0$ 是「联络形式零曲率」的方程（把 $\omega$ 看成平凡主丛上的联络）。所以「结构常数」与「平坦联络的模空间」在这个层次上是同一串数；本图只提这一句，不展开。
+
+⚠️ 上标 $i$ 是「结果的第几个分量」、下面两个 $j,k$ 是「输入的两个下标」。反称性只发生在下面两个之间（$c^{i}_{\ jk} = -c^{i}_{\ kj}$），$i$ 与它们之间没有任何对称性可言 —— 抄公式时把 $i$ 写到下标位置，就会凭空多出一次反称，符号全错。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Maurer–Cartan 方程；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 结构常数与 Jacobi 恒等式
+
+#### Lie 第三定理　`thm.lie-third`
+*定理*　Lie 第三定理
+
+**白话**：反过来也成立 —— 随便给一个有限维 Lie 代数，总能找到一个 Lie 群以它为 Lie 代数。这条保证了「Lie 代数」不是凭空造出来的对象。
+
+设 $\mathfrak{g}$ 是有限维**实** Lie 代数（`def.lie-algebra`）。则存在连通且单连通的 Lie 群 $G$ 与 Lie 代数同构
+
+$$\operatorname{Lie}(G) \cong \mathfrak{g},$$
+
+其中 $\operatorname{Lie}(G) := T_{e}G$ 配上左不变向量场的括号（`prop.left-invariant-fields`）。
+
+**唯一性（配套的一半）**：若 $G_{1}, G_{2}$ 都连通单连通且 $\operatorname{Lie}(G_{i}) \cong \mathfrak{g}$，则存在唯一同构 $G_{1} \to G_{2}$。所以「连通单连通 Lie 群」与「有限维实 Lie 代数」在这一层上是同一个东西的两副样子。
+
+**本图只陈述，不证。**
+
+**为什么这里不证**：标准证明要经过三步深结果 —— Ado 定理（每个有限维 Lie 代数有忠实的有限维表示，于是可嵌入 $\mathfrak{gl}(n,\mathbb{R})$）、Baker–Campbell–Hausdorff 公式的收敛性（在 $\mathfrak{g}$ 的某个邻域上把括号积成群的乘法）、以及把局部群「长成」单连通整体群（单连通时局部同构可以整体化）。三步各自是一章的篇幅，本图不承担 —— 这与 `thm.solid-abelian` 等深定理的处理口径一致：**只陈述，如实声明**。
+
+**三个 Lie 定理的分工**（常被混说，这里分开）：第一定理说 $\mathfrak{g} = T_{e}G$ 且左不变向量场与 $\mathfrak{g}$ 同构（`prop.left-invariant-fields`）；第二定理说 $G$ 连通单连通时 $\operatorname{Hom}(G,H) \cong \operatorname{Hom}(\mathfrak{g},\mathfrak{h})$（群同态与 Lie 代数同态一一对应）；第三定理就是本条，管**存在性**。
+
+**单连通为什么不能去掉**：$\mathfrak{g}$ 只记录单位元附近的乘法（「无穷小」），而覆盖映射 $\mathbb{R} \to S^{1}$ 在单位元附近是局部同构、整体却不同构 —— 所以 $\mathfrak{g}$ 只能决定**万有覆盖**。要得到别的连通群，取单连通群对离散中心子群作商（$S^{1} = \mathbb{R}/\mathbb{Z}$ 就是最省事的例子）。
+
+**这条定理的用处**：它把「构造 Lie 群」化归成「写下满足 Jacobi 的括号」（往往容易得多）。给定结构常数表，`thm.maurer-cartan` 保证 Jacobi 成立就自洽，本条保证自洽的结构常数真来自某个群 —— 两条配套使用。
+
+⚠️ **别把它读成范畴等价**：对应只在「连通单连通 Lie 群」与「有限维实 Lie 代数」之间是范畴等价；一般 Lie 群会漏掉信息（$S^{1}$ 与 $\mathbb{R}$ 的 Lie 代数都是 $\mathbb{R}$，但两者不同构）。131 的 `def.lie-algebra` notes 里那句「Lie 代数不能复原群」说的就是这件事。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 第三定理与 Lie 对应；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 单连通 Lie 群与 Lie 代数
 
 ---
 
@@ -43444,19 +43453,28 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **复变函数基础 ↔ Riemann 积分**　2 条节点级连线
 - **Cauchy 理论 ↔ 函数列、幂级数与初等函数**　2 条节点级连线
 - **复变函数基础 ↔ 留数与辐角原理**　8 条节点级连线
-- **微分流形 ↔ 拓扑空间**　10 条节点级连线
-- **内蕴几何 ↔ 微分流形**　20 条节点级连线
-- **多元微分 ↔ 微分流形**　4 条节点级连线
-- **多重线性与张量 ↔ 微分流形**　3 条节点级连线
-- **特征值与 Jordan 型 ↔ 微分流形**　2 条节点级连线
-- **微分流形 ↔ 仿紧与单位分解**　3 条节点级连线
-- **矩阵与行列式 ↔ 微分流形**　4 条节点级连线
-- **活动标架与结构方程 ↔ 微分流形**　17 条节点级连线
-- **微分流形 ↔ 曲面论**　3 条节点级连线
+- **流形与向量丛 ↔ 拓扑空间**　6 条节点级连线
+- **内蕴几何 ↔ 流形与向量丛**　5 条节点级连线
+- **多元微分 ↔ 向量场与 Lie 结构**　3 条节点级连线
+- **内蕴几何 ↔ 向量场与 Lie 结构**　3 条节点级连线
+- **流形与向量丛 ↔ 向量场与 Lie 结构**　8 条节点级连线
+- **多重线性与张量 ↔ 向量场与 Lie 结构**　3 条节点级连线
+- **特征值与 Jordan 型 ↔ 向量场与 Lie 结构**　2 条节点级连线
+- **流形与向量丛 ↔ 仿紧与单位分解**　3 条节点级连线
+- **微分形式、积分与 de Rham ↔ 活动标架与结构方程**　9 条节点级连线
+- **微分形式、积分与 de Rham ↔ 内蕴几何**　11 条节点级连线
+- **微分形式、积分与 de Rham ↔ 拓扑空间**　4 条节点级连线
+- **内蕴几何 ↔ Lie 群**　2 条节点级连线
+- **Lie 群 ↔ 向量场与 Lie 结构**　4 条节点级连线
+- **微分形式、积分与 de Rham ↔ 流形与向量丛**　3 条节点级连线
+- **矩阵与行列式 ↔ 微分形式、积分与 de Rham**　3 条节点级连线
+- **微分形式、积分与 de Rham ↔ 曲面论**　3 条节点级连线
 - **复变函数基础 ↔ 共形映射与正规族**　11 条节点级连线
 - **Cauchy 理论 ↔ 调和函数**　3 条节点级连线
-- **微分流形 ↔ 层上同调**　2 条节点级连线
-- **微分流形 ↔ 度量空间**　2 条节点级连线
+- **活动标架与结构方程 ↔ Lie 群**　4 条节点级连线
+- **流形与向量丛 ↔ 层上同调**　2 条节点级连线
+- **活动标架与结构方程 ↔ 向量场与 Lie 结构**　3 条节点级连线
+- **向量场与 Lie 结构 ↔ 度量空间**　2 条节点级连线
 - **共形映射与正规族 ↔ 留数与辐角原理**　2 条节点级连线
 - **Cauchy 理论 ↔ 解析延拓与整函数**　7 条节点级连线
 - **复变函数基础 ↔ 解析延拓与整函数**　2 条节点级连线

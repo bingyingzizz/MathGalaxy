@@ -175,7 +175,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.differential-map',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '切映射',
       title: '切映射（微分）',
@@ -263,7 +263,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.vector-field',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '向量场',
       title: '光滑向量场',
@@ -308,7 +308,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.lie-bracket',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: 'Lie 括号',
       title: '向量场的 Lie 括号',
@@ -350,7 +350,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.tensor-field',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: '张量场',
       title: '张量场与张量丛',
@@ -595,7 +595,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.volume-form',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '体积形式',
       title: '体积形式与黎曼体积',
@@ -676,7 +676,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.de-rham-complex',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: 'de Rham 上同调',
       title: 'de Rham 复形与上同调群',
@@ -719,7 +719,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.de-rham-h0',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'theorem',
       label: '零次上同调',
       title: '零次上同调群与连通分支',
@@ -754,7 +754,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.poincare-lemma',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'lemma',
       label: 'Poincaré 引理',
       title: 'Poincaré 引理：星形区域上的闭形式恰当',
@@ -793,7 +793,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.mayer-vietoris',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'theorem',
       label: 'Mayer–Vietoris 序列',
       title: 'Mayer–Vietoris 长正合列',
@@ -836,7 +836,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.lie-group',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.lieg',
       type: 'definition',
       label: 'Lie 群',
       title: 'Lie 群',
@@ -879,7 +879,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.lie-algebra',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.vector',
       type: 'definition',
       label: 'Lie 代数',
       title: 'Lie 代数',
@@ -919,7 +919,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.left-invariant-fields',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.lieg',
       type: 'proposition',
       label: '左不变向量场',
       title: '左不变向量场与 Lie 代数',

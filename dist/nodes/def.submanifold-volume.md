@@ -1,9 +1,9 @@
 # 诱导体积　`def.submanifold-volume`
 子流形的诱导体积
-layer 28 · 定义 · 微分流形 · 微分几何
+layer 28 · 定义 · 微分形式、积分与 de Rham · 微分几何
 [在星图里打开](../#n=def.submanifold-volume)　·　[节点索引](../index.md)
 
-**白话**：子流形上的体积不能靠「把 $n$-形式拉回来」得到（拉回来是零），必须用**诱导度量**重新算一个 $k$ 维的
+**白话**：子流形上的体积不能靠「把 $n$-形式拉回来」得到（拉回来是零），必须用**诱导度量**重新
 > 陈述续见 [nodes/def.submanifold-volume.2.md](./def.submanifold-volume.2.md)
 
 

@@ -10,7 +10,7 @@ $$T^{(r,s)}M := \bigsqcup_{p \in M} T^{(r,s)}_{p}M ,$$
 它是 $n + n^{r+s}$ 维光滑流形，造法与切丛相同：转移映射是 Jacobi 矩阵的 $s$ 次直积与它的逆的 $r$ 次直积（`def.tangent-bundle`）。
 
 $T^{(r,s)}M$ 的光滑截面叫 **$(r,s)$ 型张量场**。在卡里展开
-$$T = \sum T^{i_{1}\cdots i_{r}}_{\ \ j_{1}\cdots j_{s}}\ \partial_{i_{1}} \otimes \cdots \otimes \partial_{i_{r}} \otimes \mathrm{d}x^{j_{1}} \otimes \cdots \otimes \mathrm{d}x^{
-j_{s}} ,$$
+$$T = \sum T^{i_{1}\cdots i_{r}}_{\ \ j_{1}\cdots j_{s}}\ \partial_{i_{1}} \otimes \cdots \otimes \partial_{i_{r}} \otimes \mathrm{d}x^{j_{1}} \otimes \cdots \otimes \mathr
+m{d}x^{j_{s}} ,$$
 
 > 续见 [nodes/def.tensor-field.3.md](./def.tensor-field.3.md)

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 19 · definition · cluster Smooth Manifolds (`diffgeom.manifold`) · Differential Geometry
+layer 19 · definition · cluster Vector Fields and Lie Structures (`diffgeom.vector`) · Differential Geometry
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/def.vector-field.md` and `proofs/`.

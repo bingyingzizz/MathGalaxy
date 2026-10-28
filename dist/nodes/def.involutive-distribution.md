@@ -1,9 +1,9 @@
 # 对合分布　`def.involutive-distribution`
 对合分布
-layer 21 · 定义 · 微分流形 · 微分几何
+layer 21 · 定义 · 向量场与 Lie 结构 · 微分几何
 [在星图里打开](../#n=def.involutive-distribution)　·　[节点索引](../index.md)
 
-**白话**：一族方向「对合」，说的是：沿其中两个方向各走一步、交换次序后的那点偏差，仍然落在这族方向里。这一条就是「能被拼成薄
+**白话**：一族方向「对合」，说的是：沿其中两个方向各走一步、交换次序后的那点偏差，仍然落在这族方向里。这一条就是「能
 > 陈述续见 [nodes/def.involutive-distribution.2.md](./def.involutive-distribution.2.md)
 
 

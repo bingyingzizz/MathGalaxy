@@ -2,7 +2,7 @@
 
 > page 1 `hubs.en.md`
 
-- **5** `def.tensor-field` Tensor Field · layer 20 · 微分流形
+- **5** `def.tensor-field` Tensor Field · layer 20 · 向量场与 Lie 结构
 - **5** `prop.nbv-derivative` derivative of an NBV function and its measure · layer 20 · 有界变差与绝对连续
 - **5** `thm.gauss-bonnet` Gauss–Bonnet Theorem · layer 29 · 内蕴几何
 - **4** `thm.ring-monotone-sigma` when a ring is a sigma-ring · layer 5 · 集合族与 σ-代数

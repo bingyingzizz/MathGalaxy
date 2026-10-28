@@ -8,8 +8,8 @@ count.)
 Data root `./`: every entry can be followed to `nodes/<id>.md`.
 
 - **6** `lem.zorn` Zorn's lemma · layer 9 · 选择原理
-- **6** `def.submanifold-volume` 诱导体积 · layer 28 · 微分流形
-- **6** `thm.de-rham` de Rham 定理 · layer 29 · 微分流形
+- **6** `def.submanifold-volume` 诱导体积 · layer 28 · 微分形式、积分与 de Rham
+- **6** `thm.de-rham` de Rham 定理 · layer 29 · 微分形式、积分与 de Rham
 - **5** `thm.first-iso` first isomorphism theorem · layer 9 · 代数结构
 - **5** `def.cauchy-null` Cauchy sequences and null sequences · layer 11 · 数系的构造
 

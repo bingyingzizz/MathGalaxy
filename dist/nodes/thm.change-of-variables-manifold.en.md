@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 28 · theorem · cluster Smooth Manifolds (`diffgeom.manifold`) · Differential Geometry
+layer 28 · theorem · cluster Differential Forms, Integration and de Rham Cohomology (`diffgeom.form`) · Differential Geometry
 names: `Change of Variables` (short) · `Change of Variables on Manifolds` (full)
 
 ## Statement and proof

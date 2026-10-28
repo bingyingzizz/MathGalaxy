@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 16 · definition · cluster Smooth Manifolds (`diffgeom.manifold`) · Differential Geometry
+layer 16 · definition · cluster Differential Forms, Integration and de Rham Cohomology (`diffgeom.form`) · Differential Geometry
 names: `de Rham Cohomology` (short) · `de Rham Complex and Cohomology` (full)
 
 ## Statement and proof

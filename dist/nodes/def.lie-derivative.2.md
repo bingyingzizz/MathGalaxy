@@ -7,9 +7,9 @@ $$(\mathcal{L}_{X}T)_{p} := \left.\frac{\mathrm{d}}{\mathrm{d}t}\right|_{t=0}\bi
 其中 $\varphi_{t}^{\ast}$ 是「沿微分同胚的拉回」：函数与形式用拉回，向量场则用 $\mathrm{d}\varphi_{-t}$ 推过去（向量场没有拉回，只有推前）。逐类写出：
 - **函数**：$\mathcal{L}_{X}f = Xf$；
 - **向量场**：$\mathcal{L}_{X}Y = [X,Y]$（`def.lie-bracket`）；
-- **$1$-形式**：$(\mathcal{L}_{X}\omega)(Y) = X\bigl(
-\omega(Y)\bigr) - \omega\bigl([X,Y]\bigr)$；
-- **张量积**：$\mathcal{L}_{X}(T\otimes S) = (\mathcal{L}_{X}T)\otimes S + T\otimes(\mathcal{L}_{X}S)$，且 $
-\mathcal{L}_{X}$ 与缩并交换。
+- **$1$-形式**：$(\mathcal{L}_{X}\omega)(Y) = X
+\bigl(\omega(Y)\bigr) - \omega\bigl([X,Y]\bigr)$；
+- **张量积**：$\mathcal{L}_{X}(T\otimes S) = (\mathcal{L}_{X}T)\otimes S + T\otimes(\mathcal{
+L}_{X}S)$，且 $\mathcal{L}_{X}$ 与缩并交换。
 
 > 续见 [nodes/def.lie-derivative.3.md](./def.lie-derivative.3.md)

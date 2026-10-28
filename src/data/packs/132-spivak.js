@@ -81,7 +81,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.singular-cube',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '奇异方块',
       regions: ['diffgeom'],
@@ -119,14 +119,14 @@ window.MG = window.MG || {};
 
     {
       id: 'def.singular-chain',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '奇异链',
       title: '奇异链',
       tags: ['定义', '微分几何', '链', '形式和', '奇异方块'],
       regions: ['diffgeom'],
       statement: [
-        '**在做什么**：把若干张方块按整数系数叠起来，得到一条「链」—— 它让「带符号地相加」成为合法对象，于是边界和积分都能线性地作用上去。',
+        '**在做什么**：把若干张方块按整数系数叠起来，得到一条「链」——「带符号地相加」成了合法对象，边界与积分都能线性地作用上去。',
         '',
         '设 $M$ 是光滑流形。$M$ 上的一条 **$k$-链**是形式和',
         '',
@@ -157,7 +157,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.boundary-operator',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '边界算子',
       title: '边界算子',
@@ -197,7 +197,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.boundary-squared-zero',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'proposition',
       label: '边界算子平方为零',
       title: '边界算子平方为零',
@@ -231,7 +231,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.boundary-sign-convention',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'proposition',
       label: '边界的符号约定',
       title: '代数边界与诱导定向的边界一致',
@@ -271,7 +271,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.integral-on-chain',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '链上的积分',
       title: '链上的积分',
@@ -313,7 +313,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.integral-chain-linear',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'proposition',
       label: '链上积分的双线性',
       title: '链上积分对形式与对链都线性',
@@ -355,7 +355,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.single-cube-stokes',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'lemma',
       label: '方块上的 Stokes 公式',
       title: '单个方块上的 Stokes 公式',
@@ -391,7 +391,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.stokes-chain',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'theorem',
       label: '链上的 Stokes 定理',
       title: '链上的 Stokes 定理',
@@ -431,14 +431,14 @@ window.MG = window.MG || {};
 
     {
       id: 'def.volume-density',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '体积密度与体积形式',
       title: '体积密度与体积形式',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '体积', '密度', '体积形式', '定向'],
       statement: [
-        '**在做什么**：把「度量给的体积大小」写成一个能积分的量。带符号的那版叫体积形式、要定向；不带符号的那版叫密度、不要定向 —— 同一串系数的两种读法。',
+        '**在做什么**：把「度量给的体积大小」写成能积分的量：带符号的叫体积形式（要定向），不带符号的叫密度（不要定向），同一串系数的两种读法。',
         '',
         '设 $(M,g)$ 是 $n$ 维黎曼流形，卡 $(U,x)$ 里记 $g_{ij} = g(\\partial_{i},\\partial_{j})$。',
         '',
@@ -477,7 +477,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.volume-density-well-defined',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'proposition',
       label: '密度与定向无关',
       title: '体积密度在换卡下不变，体积形式随定向变号',
@@ -521,7 +521,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.divergence',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'definition',
       label: '散度',
       title: '散度',
@@ -563,7 +563,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.divergence-theorem',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'theorem',
       label: '散度定理',
       title: '散度定理',
@@ -599,7 +599,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.change-of-variables-manifold',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.form',
       type: 'theorem',
       label: '流形上的换元公式',
       title: '流形上的换元公式',
