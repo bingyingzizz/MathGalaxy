@@ -2,7 +2,7 @@
 
 MathGalaxy: a searchable knowledge graph of mathematics.
 1287 nodes / 2333 edges · 13 galaxies / 88 clusters · content v0.9.1.
-Chinese is the source; 721 nodes have English pages.
+Chinese is the source; 728 nodes have English pages.
 13 星系 / 88 星团 / 1287 节点 / 2333 连线。数据根 = 本文件所在目录。
 ## 检索协议
 

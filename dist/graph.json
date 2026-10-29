@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-28T12:27:45.139Z",
+  "generated": "2026-10-29T05:37:25.746Z",
   "counts": {
    "regions": 13,
    "clusters": 88,
@@ -15,7 +15,7 @@
    "strong": 2322,
    "weak": 11,
    "derived": 17,
-   "en_pages": 721
+   "en_pages": 728
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -20195,6 +20195,24 @@
    "type": "theorem",
    "label": "辐角原理",
    "title": "定理：辐角原理",
+   "label_en": "argument principle",
+   "title_en": "argument principle",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.argument-principle.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -20268,6 +20286,24 @@
    "type": "lemma",
    "label": "Schwarz 引理",
    "title": "引理：Schwarz 引理",
+   "label_en": "Schwarz lemma",
+   "title_en": "Schwarz lemma",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.schwarz.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21243,6 +21279,24 @@
    "type": "theorem",
    "label": "Casorati–Weierstrass 定理",
    "title": "本性奇点附近函数值稠密（Casorati–Weierstrass）",
+   "label_en": "Casorati-Weierstrass",
+   "title_en": "Casorati–Weierstrass",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.casorati-weierstrass.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21368,6 +21422,24 @@
    "type": "theorem",
    "label": "Riemann 映射定理",
    "title": "Riemann 映射定理：单连通真区域双全纯等价于单位圆盘",
+   "label_en": "Riemann mapping theorem",
+   "title_en": "Riemann mapping theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.riemann-mapping.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21495,6 +21567,24 @@
    "type": "definition",
    "label": "解析延拓",
    "title": "解析延拓：函数元素、沿曲线的延拓与完全解析函数",
+   "label_en": "analytical continuation",
+   "title_en": "analytical continuation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.analytic-continuation.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -23221,6 +23311,24 @@
    "type": "definition",
    "label": "扩充复平面与球极投影",
    "title": "扩充复平面：把 $\\infty$ 补进来，并用球极投影给出模型",
+   "label_en": "Riemann sphere",
+   "title_en": "Riemann sphere",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.riemann-sphere.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -23245,6 +23353,24 @@
    "type": "proposition",
    "label": "球极投影保圆且共形",
    "title": "球极投影：球面上的圆对应扩充平面上的圆，且保角",
+   "label_en": "stereographic projection",
+   "title_en": "stereographic projection",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.stereographic-circle.en.md",
    "region": "complex",
    "regions": [
     "complex"

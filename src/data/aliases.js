@@ -845,6 +845,37 @@ MG.aliases = {
     { id: 'lem.solid-completion-criterion', aka: ['补全判据'] },
     { id: 'def.discrete-huber-pair', aka: ['Huber 对'] },
     { id: 'def.adic-spectrum', aka: ['赋值谱'] },
+
+    /* 复变函数：**换一种译名就搜不到**的高频词。
+       ⚠️ 2026-10-22 用户搜「Riemann映照定理」找不到 `thm.riemann-mapping` ——
+       库里写的是「映射」，他打的是「映照」，而且中间没有空格。
+       映射 / 映照、Möbius / 莫比乌斯、Rouché / 鲁歇 这几组必须都收。 */
+    { id: 'thm.riemann-mapping', aka: ['Riemann映照定理', 'Riemann 映照定理', '黎曼映照定理', '黎曼映射定理', 'Riemann映射定理', 'Riemann mapping theorem', '共形映射基本定理', '保形映射定理'] },
+    { id: 'def.holomorphic', aka: ['解析函数', 'analytic function', '正则函数'] },
+    { id: 'thm.cauchy-riemann', aka: ['CR 方程', '柯西黎曼方程', 'Cauchy-Riemann 条件'] },
+    { id: 'thm.cauchy-goursat', aka: ['柯西定理', 'Cauchy 定理', '柯西积分定理'] },
+    { id: 'thm.cauchy-integral-formula', aka: ['柯西积分公式'] },
+    { id: 'thm.cauchy-higher-derivative', aka: ['高阶导数公式', '柯西导数公式'] },
+    { id: 'thm.liouville', aka: ['刘维尔定理'] },
+    { id: 'thm.max-modulus', aka: ['最大模原理', 'maximum modulus principle'] },
+    { id: 'thm.residue', aka: ['留数定理', 'residue theorem', '柯西留数定理'] },
+    { id: 'thm.argument-principle', aka: ['辐角原理', 'argument principle'] },
+    { id: 'thm.rouche', aka: ['鲁歇定理', 'Rouche 定理'] },
+    { id: 'thm.schwarz-pick', aka: ['施瓦兹-皮克定理', 'Schwarz-Pick 定理'] },
+    { id: 'lem.schwarz', aka: ['施瓦兹引理', 'Schwarz lemma'] },
+    { id: 'thm.schwarz-christoffel', aka: ['S-C 公式', '许瓦兹-克里斯托费尔公式', 'Schwarz-Christoffel 变换'] },
+    { id: 'def.mobius', aka: ['莫比乌斯变换', '莫比乌斯映射', '线性分式变换', '线性分式映射', 'Möbius transformation', 'Mobius transformation'] },
+    { id: 'def.riemann-sphere', aka: ['黎曼球面', 'Riemann sphere', '扩充平面', '复射影直线'] },
+    { id: 'prop.stereographic-circle', aka: ['球极投影', '赤平投影', 'stereographic projection'] },
+    { id: 'thm.picard-little', aka: ['皮卡小定理', 'Picard 定理'] },
+    { id: 'thm.picard-great', aka: ['皮卡大定理'] },
+    { id: 'thm.casorati-weierstrass', aka: ['Casorati-Weierstrass', '魏尔斯特拉斯-索拉蒂定理', '本性奇点稠密'] },
+    { id: 'thm.hurwitz', aka: ['胡尔维茨定理', 'Hurwitz 定理（复分析）'] },
+    { id: 'def.branch', aka: ['多值函数', '分支', '分支割线'] },
+    { id: 'def.laurent-series', aka: ['洛朗级数', 'Laurent 展开'] },
+    { id: 'thm.mittag-leffler', aka: ['米塔格-莱夫勒定理'] },
+    { id: 'thm.weierstrass-product', aka: ['魏尔斯特拉斯乘积定理'] },
+    { id: 'def.analytic-continuation', aka: ['解析延拓', 'analytical continuation'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */
