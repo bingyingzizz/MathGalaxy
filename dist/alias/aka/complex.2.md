@@ -1,5 +1,5 @@
 # 别名 → 节点 · 复变函数
-根 `../../`　·　索引 `../../alias.md`　·　问法在 `../complex.md`
+根 `../../`　·　索引 `../../alias.md`
 
 - S-C 公式 | 许瓦兹-克里斯托费尔公式 | Schwarz-Christoffel 变换 → thm.schwarz-christoffel
 

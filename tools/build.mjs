@@ -1700,7 +1700,13 @@ function exportAlias(MG, graph, base = '') {
   for (const r of graph.regions) {
     const f = aliasFilter(A, graph, r.id);
     if (!f.nodes.length && !f.hooks.length) continue;
-    L.push(`- ${r.name}　\`${base}alias/${r.id}.md\` ${f.hooks.length}+${f.nodes.length}`);
+    /* ⚠️ 只链**真会生成**的那份：某一类 0 条时 exportAliasProducts 不写这个文件。
+       踩过：复变函数 / 解析空间 / 数理逻辑 只有别名没有问法，索引却照链
+       `alias/<id>.md` ⇒ 26 条复变别名（含「Riemann映照定理」）在已发布文档里无人可达。 */
+    const links = [];
+    if (f.hooks.length) links.push(`\`${base}alias/${r.id}.md\``);
+    if (f.nodes.length) links.push(`\`${base}alias/aka/${r.id}.md\``);
+    L.push(`- ${r.name}　${links.join(' / ')} ${f.hooks.length}+${f.nodes.length}`);
   }
   L.push('');
   return L.join('\n') + '\n';
@@ -1724,18 +1730,35 @@ function exportAliasProducts(MG, graph) {
   const files = [];
   for (const r of graph.regions) {
     const f = aliasFilter(A, graph, r.id);
+    /* 姐妹页的指路也要看它**存不存在**（只有别名没有问法的星系很常见）。 */
+    const akaRef = f.nodes.length ? `　·　别名在 \`aka/${r.id}.md\`` : '';
+    const hookRef = f.hooks.length ? `　·　问法在 \`../${r.id}.md\`` : '';
     if (f.hooks.length) {
       const head = `# 问法 → 节点 · ${r.name}\n` +
-        `根 \`../\`　·　索引 \`../alias.md\`　·　别名在 \`aka/${r.id}.md\`\n\n`;
+        `根 \`../\`　·　索引 \`../alias.md\`${akaRef}\n\n`;
       emitChunks(files, 'alias', r.id, head, aliasHookBody(A, graph, r.id), '见 `../alias.md`。');
     }
     if (f.nodes.length) {
       const head = `# 别名 → 节点 · ${r.name}\n` +
-        `根 \`../../\`　·　索引 \`../../alias.md\`　·　问法在 \`../${r.id}.md\`\n\n`;
+        `根 \`../../\`　·　索引 \`../../alias.md\`${hookRef}\n\n`;
       emitChunks(files, 'alias/aka', r.id, head, aliasAkaBody(A, graph, r.id), '见 `../../alias.md`。');
     }
   }
   return files;
+}
+
+/* ⚠️ 硬门：`alias.md` 索引里链到的页必须真被产出。
+   这一族产物「不生成的页」不会报错 —— 只是少一个文件、索引照链，读者/AI 走到 404。
+   踩过：复变 26 条别名只能进 `alias/aka/complex.md`，索引链的却是 `alias/complex.md`。 */
+function assertAliasLinks(indexText, aliasFiles) {
+  const made = new Set(aliasFiles.map(f => f.path.replace(/\\/g, '/')));
+  const errs = [];
+  const re = /`((?:alias|alias\/aka)\/[\w.\-]+\.md)`/g;
+  let m;
+  while ((m = re.exec(indexText))) {
+    if (!made.has(m[1])) errs.push(`别名索引链接到不存在的页：\`${m[1]}\`（该星系这一类是 0 条？）`);
+  }
+  return errs;
 }
 
 /* -------------------------------------------------------- 别名表断言 */
@@ -2297,9 +2320,12 @@ if (doJSON) {
 
   /* ------------------------------------------------------ 别名表产物 */
   /* 真源是 src/data/aliases.js —— 别名与问法两边共用同一份数据。 */
-  fs.writeFileSync(path.join(DIST, 'alias.md'), exportAlias(MG, graph), 'utf8');
+  const aliasIndex = exportAlias(MG, graph);
+  let aliasErrs = [];
+  fs.writeFileSync(path.join(DIST, 'alias.md'), aliasIndex, 'utf8');
   fs.writeFileSync(path.join(ROOT, 'alias.md'), exportAlias(MG, graph, 'dist/'), 'utf8');
   const aliasFiles = exportAliasProducts(MG, graph);
+  aliasErrs = assertAliasLinks(aliasIndex, aliasFiles);
   for (const f of aliasFiles) files.push(f);
   console.log(`  → dist/alias.md + alias/*.md（${aliasFiles.length} 页）+ alias.md`);
 
@@ -2315,6 +2341,7 @@ if (doJSON) {
   console.log('  → dist/LICENSE.txt + dist/LICENSE-CC-BY-4.0.txt（复制自仓库根 LICENSE / LICENSE-CC-BY-4.0.txt）');
 
   const errs = assertAI(MG, graph, files, pagesOf);
+  errs.push(...aliasErrs);
   errs.push(...enErrs);
   errs.push(...assertEdgeEndpoints(MG, graph));
   errs.push(...assertNotation(MG, graph));

@@ -1,5 +1,5 @@
 # 别名 → 节点 · 解析空间
-根 `../../`　·　索引 `../../alias.md`　·　问法在 `../analytic.md`
+根 `../../`　·　索引 `../../alias.md`
 
 - Huber 对 → def.discrete-huber-pair
 

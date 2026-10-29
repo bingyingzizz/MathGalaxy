@@ -1,5 +1,5 @@
 # 别名 → 节点 · 数理逻辑
-根 `../../`　·　索引 `../../alias.md`　·　问法在 `../logic.md`
+根 `../../`　·　索引 `../../alias.md`
 
 - 一阶逻辑 | first-order logic | FOL | 形式语言 → def.first-order-language
 
