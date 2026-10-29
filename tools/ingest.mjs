@@ -185,7 +185,11 @@ function trimBlock(lines) {
   return lines.slice(a, b).join('\n');
 }
 
-function parseFile(text, file) {
+function parseFile(rawText, file) {
+  /* ⚠️ 去掉 UTF-8 BOM。Windows PowerShell 的 `Set-Content -Encoding UTF8` 会写 BOM
+     （U+FEFF），而 BOM 就在第一个 `#` 前面 ⇒ 行首 `^#` 匹配不上 ⇒
+     **整份文件一个节点都解析不出来**。2026-10-29 让 Codex 实测投稿时踩到。 */
+  const text = String(rawText).replace(/^\uFEFF/, '');
   const warns = [];
   const nodes = [];
   const edges = [];
