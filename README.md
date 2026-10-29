@@ -1,4 +1,4 @@
-# 数学星图 · MathGalaxy
+﻿# 数学星图 · MathGalaxy
 
 <!-- ────────────────────────────────────────────────────────────────────────
      English section (T1.0). 中文从下面「一张可缩放…」开始，一个字没动。
@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **1287 nodes / 2333 edges** across **13 galaxies and 88 clusters** (content `v0.9.1`).
+> **1287 nodes / 2332 edges** across **13 galaxies and 88 clusters** (content `v0.9.1`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >

@@ -1,8 +1,8 @@
-/* ============================================================================
+﻿/* ============================================================================
    内容包 · 复变函数（三）：按「复变函数知识结构 2022」那张手绘图补全
 
    图上每个框都要在这里有对应节点；图上每条箭头都要有一条边。
-     黑边 = 建图的顺序（前提 $\to$ 结论）
+     黑边 = 建图的顺序（前提 $\\to$ 结论）
      粉边 = layer:false 的「推论」：逻辑上真推得通，但不是「由前面得来」
 
    这一批补的是第二轮（130/134 两包）之后仍然空着的框：
@@ -119,10 +119,10 @@
         '充分条件：$D$ 单连通且 $0 \\notin D$。',
       ].join('\n'),
       notes: [
-        '**证明（1 $\implies$ 3）**：若 $e^{f} = z$，则 $f\' = 1/z$，于是 $\\oint_{\\gamma} \\mathrm{d}z/z = \\oint_{\\gamma} f\'\\,\\mathrm{d}z = 0$' +
+        '**证明（1 $\\implies$ 3）**：若 $e^{f} = z$，则 $f\' = 1/z$，于是 $\\oint_{\\gamma} \\mathrm{d}z/z = \\oint_{\\gamma} f\'\\,\\mathrm{d}z = 0$' +
           '（全纯函数的围道积分在单连通区域内为零，这里用「有原函数」的版本）。',
         '',
-        '**证明（3 $\implies$ 2 $\implies$ 1）**：条件 3 说明沿曲线的积分只依赖端点，于是可定义 ' +
+        '**证明（3 $\\implies$ 2 $\\implies$ 1）**：条件 3 说明沿曲线的积分只依赖端点，于是可定义 ' +
           '$f(z) := \\int_{z_{0}}^{z} \\mathrm{d}\\zeta/\\zeta$，它满足 $f\' = 1/z$；' +
           '再验证 $(z e^{-f(z)})\' = e^{-f} - z e^{-f}/z = 0$，故 $z e^{-f}$ 为常数，调整常数即得 $e^{f} = z$。',
         '',
@@ -161,7 +161,7 @@
         '',
         '取 $t = 1$：因 $\\gamma(1) = \\gamma(0)$，有 $e^{\\varphi(1)} = 1$，所以 $\\varphi(1) \\in 2\\pi i \\mathbb{Z}$。' +
           '而 $\\varphi(1) = \\oint_{\\gamma} \\mathrm{d}z/z$，于是积分除以 $2\\pi i$ 是整数，' +
-          '它随 $a$ 连续变化故恰是绕数（整数值 + 连续 $\implies$ 局部常值）。',
+          '它随 $a$ 连续变化故恰是绕数（整数值 + 连续 $\\implies$ 局部常值）。',
         '',
         '⭐ **这条式子的意义**：绕数本来是「曲线绕点转了几圈」的几何说法，这里换成了**积分**，' +
           '于是「几何量」可以参与计算 —— 辐角原理（`thm.argument-principle`）就是拿它去数零点的。',
@@ -193,13 +193,13 @@
       notes: [
         '**绕数部分的证明**：对同伦参数 $s$ 定义 $N(s) := n(H(s, \\cdot), a)$。由积分表示 ' +
           '$N(s) = \\frac{1}{2\\pi i}\\oint_{H(s,\\cdot)} \\mathrm{d}z/(z-a)$，被积函数与积分域都连续依赖 $s$，故 $N$ 连续；' +
-          '而 $N$ 只取整数值，连续 + 取整 $\implies$ 常值。于是 $N(0) = N(1)$。',
+          '而 $N$ 只取整数值，连续 + 取整 $\\implies$ 常值。于是 $N(0) = N(1)$。',
         '',
         '**Cauchy 形式**：因为 $\\Omega$ 单连通化之后 $f\\,\\mathrm{d}z$ 可以沿同伦「连续形变而积分不变」，' +
           '逐 $s$ 求导即得 $\\frac{\\mathrm{d}}{\\mathrm{d}s}\\oint_{H(s,\\cdot)} f\\,\\mathrm{d}z = 0$；' +
           '这条路与「$f$ 有原函数」是同一条，见 `prop.single-valued-branch`。',
         '',
-        '⭐ **它是复分析和拓扑之间的第一根铰链**：绕数是同伦不变量，于是「全纯 $\implies$ 围道积分只看同伦类」，' +
+        '⭐ **它是复分析和拓扑之间的第一根铰链**：绕数是同伦不变量，于是「全纯 $\\implies$ 围道积分只看同伦类」，' +
           '这就是为什么 Cauchy 定理对**任何**能把曲线缩成一点的情形都成立，而不需要区域是凸的。Brouwer 不动点定理' +
           '（`thm.brouwer-fixed-point`）的复分析证明直接把这条用在 $\\gamma(t) = e^{2\\pi i t}$ 上。',
         '',
@@ -307,7 +307,7 @@
         '',
         '则 $|F(z)| < 1/\\rho$ 在 $U$ 上有界，故 $z_{0}$ 是 $F$ 的**可去奇点**（`thm.riemann-removable`），' +
           '$F$ 在 $z_{0}$ 处可补成全纯。于是 $f = w_{0} + 1/F$ 在 $z_{0}$ 附近的行为只可能是：' +
-          '$F(z_{0}) \\ne 0$ $\implies$ $f$ 全纯；$F$ 有 $m$ 阶零点 $\implies$ $f$ 有 $m$ 阶极点；$F \\equiv 0$ $\implies$ $f \\equiv \\infty$（不可能）。' +
+          '$F(z_{0}) \\ne 0$ $\\implies$ $f$ 全纯；$F$ 有 $m$ 阶零点 $\\implies$ $f$ 有 $m$ 阶极点；$F \\equiv 0$ $\\implies$ $f \\equiv \\infty$（不可能）。' +
           '三种都与「$z_{0}$ 是本性奇点」矛盾。∎',
         '',
         '⭐ **怎么记**：三类奇点里，可去奇点附近**有界**，极点附近**趋于无穷**，' +
@@ -369,7 +369,7 @@
       id: 'thm.arzela-ascoli',
       type: 'theorem',
       label: 'Arzelà–Ascoli 定理',
-      title: 'Arzelà–Ascoli 定理：一致有界 + 等度连续 $\implies$ 相对紧',
+      title: 'Arzelà–Ascoli 定理：一致有界 + 等度连续 $\\implies$ 相对紧',
       cluster: 'analysis.mapping',
       regions: ['complex', 'analysis'],
       tags: ['复变函数', '紧性', '等度连续', '函数列', '正规族'],
@@ -383,7 +383,7 @@
         '则 $\\mathcal{F}$ 在 $C(X)$ 中**相对紧**：$\\mathcal{F}$ 中每个序列都有在一致范数下收敛的子列。',
       ].join('\n'),
       notes: [
-        '**证明（对角线法）**：$X$ 紧 $\implies$ 可取可数稠密集 $\\{x_{1}, x_{2}, \\ldots\\}$。' +
+        '**证明（对角线法）**：$X$ 紧 $\\implies$ 可取可数稠密集 $\\{x_{1}, x_{2}, \\ldots\\}$。' +
           '由一致有界，$\\{f_{n}(x_{1})\\}$ 有收敛子列；再从它里面挑使 $\\{f_{n}(x_{2})\\}$ 收敛的子列；如此一层层挑下去，' +
           '取对角线 $g_{k} := f_{n_{k}}$，则 $g_{k}(x_{j})$ 对每个 $j$ 都收敛。',
         '',
@@ -470,7 +470,7 @@
           '故 $B(0, \\delta) \\subseteq f(\\Omega)$，$w_{0}$ 是内点。∎',
         '',
         '⭐ **反过来读更顺**：开映射定理 = 「非常数全纯函数不能把开集压成一条线或一个点」。' +
-          '最大模原理、Schwarz 引理、单叶 $\implies$ 双全纯，都是这句话的换装。',
+          '最大模原理、Schwarz 引理、单叶 $\\implies$ 双全纯，都是这句话的换装。',
         '',
         '⚠️ 「非常数」不能去掉：常值函数把开集映成一点。⚠️ 只对**全纯**成立：实值连续函数没有这条性质。',
       ].join('\n'),
@@ -686,7 +686,7 @@
           '由 **Borsuk–Ulam**（`thm.borsuk-ulam`），存在 $u$ 使 $f(u) = f(-u) = -f(u)$，即 $f(u) = 0$，' +
           '也就是 $t_{1}(u) = t_{2}(u) = t_{3}(u)$ —— 同一个平面同时平分三块。∎',
         '',
-        '⭐ **它是本图最靠外的「应用端」**：辐角原理 $\to$ 绕数 $\to$ Brouwer $\to$ Borsuk–Ulam $\to$ 火腿三明治，' +
+        '⭐ **它是本图最靠外的「应用端」**：辐角原理 $\\to$ 绕数 $\\to$ Brouwer $\\to$ Borsuk–Ulam $\\to$ 火腿三明治，' +
           '一条链把「数零点」和「切三明治」接了起来。这类跨尺度连接正是把图画成星图的理由。',
         '',
         '⚠️ 可测性不能省：不可测集上「体积」本身没定义。⚠️ 只对**有限**块数、维数匹配的情形成立；' +
@@ -702,7 +702,7 @@
   edges: [
     /* ---- §A 初等函数链 ---- */
     { kind: 'implication', sources: ['def.holomorphic'], target: 'def.complex-elementary',
-      title: '幂级数在全平面收敛 $\implies$ 逐项求导 $\implies$ 全纯',
+      title: '幂级数在全平面收敛 $\\implies$ 逐项求导 $\\implies$ 全纯',
       proof: [
         '三个定义式都是收敛半径 $\\infty$ 的幂级数（$e^{z}$ 的系数 $1/n!$ 使 ' +
           '$\\limsup |1/n!|^{1/n} = 0$；$\\cos, \\sin$ 由 $e^{iz}$ 组合而来）。',
@@ -713,7 +713,7 @@
       note: '这一步把「初等函数」正式接进复分析：它们不是新公理，而是幂级数。' },
 
     { kind: 'implication', sources: ['def.complex-elementary'], target: 'prop.exp-local-inverse',
-      title: '$\\exp\' = \\exp \\ne 0$ $\implies$ 局部双全纯',
+      title: '$\\exp\' = \\exp \\ne 0$ $\\implies$ 局部双全纯',
       proof: [
         '由逐项求导 $(e^{z})\' = \\sum_{n \\ge 1} n z^{n-1}/n! = \\sum_{m \\ge 0} z^{m}/m! = e^{z}$。',
         '',
@@ -728,13 +728,13 @@
       proof: [
         '**定义对齐**：`def.branch` 把「多值函数」定义成「每点一个值集」，本节点的单值支就是它的连续选取。',
         '',
-        '**判据（1 $\implies$ 3）**：若 $e^{f} = z$，则 $f\' = 1/z$，于是沿任何闭曲线 ' +
+        '**判据（1 $\\implies$ 3）**：若 $e^{f} = z$，则 $f\' = 1/z$，于是沿任何闭曲线 ' +
           '$\\oint \\mathrm{d}z/z = \\oint f\'\\mathrm{d}z = f(\\gamma(1)) - f(\\gamma(0)) = 0$。',
         '',
-        '**（3 $\implies$ 2）**：条件 3 说明积分与路径无关，故 $f(z) := \\int_{z_{0}}^{z} \\mathrm{d}\\zeta/\\zeta$ 是单值的，' +
+        '**（3 $\\implies$ 2）**：条件 3 说明积分与路径无关，故 $f(z) := \\int_{z_{0}}^{z} \\mathrm{d}\\zeta/\\zeta$ 是单值的，' +
           '且 $f\' = 1/z$。',
         '',
-        '**（2 $\implies$ 1）**：取这样的 $f$，则 $(z e^{-f})\' = e^{-f} - z e^{-f} \\cdot (1/z) = 0$，' +
+        '**（2 $\\implies$ 1）**：取这样的 $f$，则 $(z e^{-f})\' = e^{-f} - z e^{-f} \\cdot (1/z) = 0$，' +
           '故 $z e^{-f} \\equiv c \\ne 0$；令 $f_{1} := f + \\log c$（任取一个复对数值）即得 $e^{f_{1}} = z$。∎',
       ].join('\n'),
       note: '局部逆（上一节点）负责「处处能拼一小段」，这一节点负责「整圈拼回来不跳」—— 缺的正是绕数条件。' },
@@ -756,7 +756,7 @@
       note: '几何量换成积分，是后面辐角原理能算零点个数的技术前提。' },
 
     { kind: 'implication', sources: ['prop.winding-integral', 'def.contour-integral'], target: 'thm.winding-homotopy',
-      title: '同伦 $\implies$ 绕数不变（连续性 + 整数值）',
+      title: '同伦 $\\implies$ 绕数不变（连续性 + 整数值）',
       proof: [
         '设 $H : [0,1]^{2} \\to \\mathbb{C}\\setminus\\{a\\}$ 给出同伦，$\\gamma_{s} := H(s, \\cdot)$。',
         '',
@@ -771,11 +771,11 @@
 
     /* ---- §C 零点/唯一性 ---- */
     { kind: 'implication', sources: ['thm.taylor-complex'], target: 'prop.zero-isolated',
-      title: 'Taylor 展开的首次非零项 $\implies$ 零点的阶',
+      title: 'Taylor 展开的首次非零项 $\\implies$ 零点的阶',
       proof: [
         '把 $f$ 在 $z_{0}$ 处展开：$f(z) = \\sum_{n \\ge 1} a_{n}(z - z_{0})^{n}$（$f(z_{0}) = 0$ 故常数项为零）。',
         '',
-        '$f$ 不恒为零 $\implies$ 某个 $a_{n} \\ne 0$，取最小的 $m \\ge 1$ 使 $a_{m} \\ne 0$。则',
+        '$f$ 不恒为零 $\\implies$ 某个 $a_{n} \\ne 0$，取最小的 $m \\ge 1$ 使 $a_{m} \\ne 0$。则',
         '',
         '$$f(z) = (z - z_{0})^{m}\\underbrace{\\left(a_{m} + a_{m+1}(z - z_{0}) + \\cdots\\right)}_{=: g(z)},\\qquad g(z_{0}) = a_{m} \\ne 0.$$',
         '',
@@ -785,7 +785,7 @@
       note: '这一条是「唯一性定理」与「辐角原理按阶数零点」的共同前提。' },
 
     { kind: 'implication', sources: ['prop.zero-isolated'], target: 'thm.identity',
-      title: '零点孤立 + 区域连通 $\implies$ 恒等',
+      title: '零点孤立 + 区域连通 $\\implies$ 恒等',
       proof: [
         '令 $h := f - g$，$Z$ 为 $h$ 的零点集，$z^{*} \\in \\Omega$ 是 $Z$ 的聚点。由连续性 $h(z^{*}) = 0$。',
         '',
@@ -794,13 +794,13 @@
         '',
         '令 $A := \\{\\, z \\in \\Omega : h \\equiv 0 \\text{ 于 } z \\text{ 的某邻域} \\,\\}$。按定义 $A$ 开、且非空（含 $z^{*}$）。' +
           '$A$ 也闭：若 $z_{n} \\in A$、$z_{n} \\to z \\in \\Omega$，则 $h$ 在 $z$ 的某邻域内被诸 $z_{n}$ 的邻域覆盖而恒为零。' +
-          '区域连通 $\implies$ $A = \\Omega$，即 $h \\equiv 0$。∎',
+          '区域连通 $\\implies$ $A = \\Omega$，即 $h \\equiv 0$。∎',
       ].join('\n'),
       note: '解析延拓的合法性来源：有聚点就够了。' },
 
     { kind: 'implication', sources: ['thm.laurent', 'def.isolated-singularity', 'thm.riemann-removable'],
       target: 'thm.casorati-weierstrass',
-      title: '反证：像集漏一个圆盘 $\implies$ 奇点可去 $\implies$ 矛盾',
+      title: '反证：像集漏一个圆盘 $\\implies$ 奇点可去 $\\implies$ 矛盾',
       proof: [
         '设存在 $w_{0}$, $\\rho > 0$ 使 $f(U) \\cap B(w_{0}, \\rho) = \\emptyset$，其中 $U$ 是 $z_{0}$ 的去心邻域。',
         '',
@@ -811,7 +811,7 @@
           '若 $F$ 在 $z_{0}$ 有 $m$ 阶零点则 $f$ 有 $m$ 阶极点；$F \\equiv 0$ 不可能（$F$ 是倒数）。' +
           '三种情形都与「$z_{0}$ 本性奇点」矛盾，故 $f(U)$ 稠密。∎',
       ].join('\n'),
-      note: '证明的力量全在「有界 $\implies$ 可去」这一句。' },
+      note: '证明的力量全在「有界 $\\implies$ 可去」这一句。' },
 
     /* ---- §D 收敛与正规族 ---- */
     { kind: 'implication', sources: ['thm.morera'], target: 'thm.weierstrass-convergence',
@@ -831,10 +831,10 @@
 
     { kind: 'implication', sources: ['thm.bolzano-weierstrass', 'def.uniform-convergence'],
       target: 'thm.arzela-ascoli',
-      title: '对角线段 + 有限 ε-网 $\implies$ 一致收敛子列',
+      title: '对角线段 + 有限 ε-网 $\\implies$ 一致收敛子列',
       proof: [
         '取可数稠密集 $\\{x_{1}, x_{2}, \\ldots\\} \\subset X$（紧距离空间可分）。' +
-          '一致有界 $\implies$ $\\{f_{n}(x_{1})\\}$ 有界，由 Bolzano–Weierstrass 取收敛子列；' +
+          '一致有界 $\\implies$ $\\{f_{n}(x_{1})\\}$ 有界，由 Bolzano–Weierstrass 取收敛子列；' +
           '在这个子列里再取使 $\\{f_{n}(x_{2})\\}$ 收敛的子列；如此下去，取对角线 $g_{k}$，' +
           '则 $g_{k}(x_{j})$ 对每个 $j$ 收敛。',
         '',
@@ -850,14 +850,14 @@
 
     { kind: 'implication', sources: ['thm.arzela-ascoli', 'thm.weierstrass-convergence', 'thm.cauchy-inequality'],
       target: 'thm.montel',
-      title: 'Cauchy 不等式给出导数界 $\implies$ 等度连续 $\implies$ 对角取子列',
+      title: 'Cauchy 不等式给出导数界 $\\implies$ 等度连续 $\\implies$ 对角取子列',
       proof: [
         '取紧集穷竭 $K_{1} \\subset K_{2} \\subset \\cdots$。设在 $K_{j}$ 的 $r_{j}$-邻域上 $|f| \\le M_{j}$（由局部一致有界性，' +
           '紧集上有限覆盖可得）。`thm.cauchy-inequality` 给出',
         '',
         '$$|f\'(z)| \\le \\frac{M_{j}}{r_{j}},\\qquad z \\in K_{j},\\ f \\in \\mathcal{F},$$',
         '',
-        '右端与 $f$ 无关 $\implies$ $\\mathcal{F}|_{K_{j}}$ 等度连续；又一致有界。由 `thm.arzela-ascoli`，' +
+        '右端与 $f$ 无关 $\\implies$ $\\mathcal{F}|_{K_{j}}$ 等度连续；又一致有界。由 `thm.arzela-ascoli`，' +
           '它在 $K_{j}$ 上有一致收敛子列。对 $j = 1, 2, \\ldots$ 逐层取对角线，得到在每个 $K_{j}$ 上一致收敛的子列，' +
           '即内闭一致收敛。极限全纯由 `thm.weierstrass-convergence`。∎',
       ].join('\n'),
@@ -865,7 +865,7 @@
 
     /* ---- §E 单叶与映射 ---- */
     { kind: 'implication', sources: ['thm.rouche', 'thm.max-modulus'], target: 'thm.open-mapping',
-      title: 'Rouché 数零点 $\implies$ 像含小圆盘 $\implies$ 开映射',
+      title: 'Rouché 数零点 $\\implies$ 像含小圆盘 $\\implies$ 开映射',
       proof: [
         '取 $z_{0} \\in \\Omega$、$w_{0} = f(z_{0})$，平移使 $w_{0} = 0$。由 `prop.zero-isolated`，' +
           '$z_{0}$ 是孤立零点，取 $\\rho > 0$ 使 $f$ 在 $0 < |z - z_{0}| \\le \\rho$ 上无零点，令 ' +
@@ -875,7 +875,7 @@
           '故按 **Rouché 定理**（`thm.rouche`），$f$ 与 $f + w$ 在圆内零点个数相同。' +
           '$f$ 在圆内有零点（$z_{0}$，$m$ 阶），故 $f + w$ 也有零点 $z$，即 $f(z) = -w$。',
         '',
-          '于是 $B(0, \\delta) \\subseteq f(\\Omega)$，任一像点是内点 $\implies$ $f$ 开。∎' +
+          '于是 $B(0, \\delta) \\subseteq f(\\Omega)$，任一像点是内点 $\\implies$ $f$ 开。∎' +
           '\n\n（`thm.max-modulus` 作为第二前提：它给出「$|f|$ 在内部无最大」，与开映射互为等价形式，' +
           '这里作为「非常数」的独立刻画一并挂上。）',
       ].join('\n'),
@@ -884,7 +884,7 @@
     { kind: 'implication', sources: ['thm.montel', 'thm.hurwitz', 'lem.schwarz'], target: 'thm.riemann-mapping',
       title: '正规族 + 极值元 + 平方根技巧：映满圆盘',
       proof: [
-        '**族不空**：因 $\\Omega \\ne \\mathbb{C}$，取 $a \\notin \\Omega$；$\\Omega$ 单连通 $\implies$ $\\sqrt{z - a}$ 有全纯单值支' +
+        '**族不空**：因 $\\Omega \\ne \\mathbb{C}$，取 $a \\notin \\Omega$；$\\Omega$ 单连通 $\\implies$ $\\sqrt{z - a}$ 有全纯单值支' +
           '（`prop.single-valued-branch`）。它单叶（$\\sqrt{z_{1}} = \\pm\\sqrt{z_{2}} \\implies z_{1} = z_{2}$），' +
           '再复合分式线性变换（`def.mobius`）搬进 $\\mathbb{D}$ 并把 $z_{0}$ 送到 $0$。故 ' +
           '$\\mathcal{F} = \\{\\varphi \\text{ 单叶全纯}, \\varphi(z_{0}) = 0, \\varphi(\\Omega) \\subset \\mathbb{D}\\}$ 非空。',
@@ -964,7 +964,7 @@
       note: 'Borsuk–Ulam 与 Brouwer 是同一枚硬币的两面；这里走「度」这条线。' },
 
     { kind: 'implication', sources: ['thm.borsuk-ulam'], target: 'thm.ham-sandwich',
-      title: '法向—偏移参数化 + Borsuk–Ulam $\implies$ 同一个平面平分三块',
+      title: '法向—偏移参数化 + Borsuk–Ulam $\\implies$ 同一个平面平分三块',
       proof: [
         '平面写作 $P(u, t) = \\{\\, x : \\langle x, u\\rangle = t \\,\\}$，$u \\in S^{2}$，$t \\in \\mathbb{R}$。',
         '',
@@ -979,7 +979,7 @@
       note: '整条链的终点：从「数零点」一路推到「切三明治」。' },
 
     { kind: 'implication', sources: ['prop.winding-integral'], target: 'thm.argument-principle',
-      title: '绕数的积分表示 $\implies$ 辐角原理',
+      title: '绕数的积分表示 $\\implies$ 辐角原理',
       proof: [
         '设 $f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯、边界上无零点。则 $f\'/f$ 全纯，且',
         '',
@@ -992,26 +992,32 @@
       note: '这是「绕数」进入「数零点」的桥：把 $f$ 的零点个数算成 $f\\circ\\gamma$ 绕 $0$ 的圈数。' },
 
     /* ---- 粉红边：逻辑上真、但不属于建图顺序 ---- */
-    { kind: 'implication', layer: false, sources: ['thm.rouche'], target: 'thm.argument-principle',
-      title: '（推论）用 Rouché 反推辐角原理',
-      proof: [
-        '设 $f$ 在 $\\gamma$ 内部全纯、边界上无零点。对 $0 < \\lambda \\le 1$ 考虑 $f - \\lambda f = 0$…' +
-          '更干净的走法：Rouché 定理的证明本身就用辐角原理，反过来也能把辐角原理当作 Rouché 的推论：' +
-          '把 $f$ 写成 $f = g \\cdot \\prod (z - z_{j})^{m_{j}}$（$g$ 无零点），对 $g$ 用「无零点 $\implies$ 绕数为 $0$」，' +
-          '逐项相加得到的正是辐角原理的右端。',
-        '',
-        '⭐ 这条**不参与分层**：建图时先有辐角原理、后有 Rouché；这条只是补一句「反推也成立」。',
-      ].join('\n'),
-      note: '粉红边：逻辑成立，但不是这张图的建造顺序。' },
+    /* ⛔ 2026-10-29 撤掉一条：原来这里有一条 `thm.rouche → thm.argument-principle`
+       （「用 Rouché 反推辐角原理」）。造它的时候没验，写下的"证明"其实压根没用 Rouché ——
+       那是 Cauchy 的走法。而 Rouché 本身是从辐角原理证的（黑边 `imp.rouche`），
+       反过来推是循环的；Rouché 最多给出「零点个数」这一半，积分那一半必须靠 Cauchy
+       （对数导数），给不出完整的辐角原理。宁可少一条边，也不留一条假推出。 */
 
     { kind: 'implication', layer: false, sources: ['thm.open-mapping'], target: 'lem.schwarz',
-      title: '（推论）开映射定理 $\implies$ Schwarz 引理的等号情形',
+      title: '（推论）开映射定理 $\\implies$ Schwarz 引理的等号情形',
       proof: [
-        'Schwarz 引理的**等号情形**（$|f\'(0)| = 1$ $\implies$ $f$ 是旋转）可以由开映射定理 + 极值原理推出：' +
-          '若 $f : \\mathbb{D} \\to \\mathbb{D}$、$f(0) = 0$ 且 $|f\'(0)| = 1$，则 $f$ 是开映射且不放大模长，' +
-          '取逆（由单叶性与开映射得双全纯）再对 $f^{-1}$ 用同一条估计，两个不等式合起来逼出等号。',
+        '**要证的**：若 $f : \\mathbb{D} \\to \\mathbb{D}$ 全纯、$f(0) = 0$ 且 $|f^{\\prime}(0)| = 1$，则 $f(z) = cz$，其中 $|c| = 1$。',
         '',
-        '⭐ 不参与分层：建图时 Schwarz 引理在最大模原理之后、开映射定理之前。',
+        '**第一步：把 $f$ 除掉一个 $z$。** Schwarz 引理的**估计部分**给 $|f(z)| \\le |z|$。于是对 $z \\ne 0$ 令',
+        '',
+        '$$g(z) := \\frac{f(z)}{z}, \\qquad |g(z)| \\le 1;$$',
+        '',
+        '而 $f(0) = 0$ 说明 $z = 0$ 是 $g$ 的可去奇点，补充定义 $g(0) := f^{\\prime}(0)$ 后 $g$ 在 $\\mathbb{D}$ 上全纯，且 $g(\\mathbb{D}) \\subseteq \\overline{\\mathbb{D}}$。',
+        '',
+        '**第二步：反设 $g$ 不是常函数。**',
+        '',
+        '**第三步：用开映射定理。** 不是常函数的全纯函数把开集映成开集（`thm.open-mapping`），所以 $g(\\mathbb{D})$ 是 $\\mathbb{C}$ 中的**开集**。',
+        '',
+        '**第四步：矛盾。** 由 $|f^{\\prime}(0)| = 1$ 得 $|g(0)| = 1$ —— 也就是说 $g(0)$ 恰好落在单位圆（$\\mathbb{D}$ 的边界）上。开集 $g(\\mathbb{D})$ 含 $g(0)$，于是含某个 $D(g(0), r)$，$r > 0$；可 $\\mathbb{D}$ 的边界点的任何邻域里都有模 $> 1$ 的点（沿 $g(0)$ 的方向再走一点点），与 $g(\\mathbb{D}) \\subseteq \\overline{\\mathbb{D}}$ 矛盾。',
+        '',
+        '**第五步：收尾。** 故 $g \\equiv c$ 是常数，$c = g(0) = f^{\\prime}(0)$ 满足 $|c| = 1$，于是 $f(z) = cz$ 是旋转。反过来，旋转 $f(z) = cz$（$|c| = 1$）显然满足假设，而且 $|f(z)| = |z|$ 处处取等。$\\blacksquare$',
+        '',
+        '⭐ **这条为什么是粉的**：它用的是「开映射定理 + Schwarz 的估计」倒推「Schwarz 的等号情形」，而图上 Schwarz 引理本身在开映射定理之前（`thm.max-modulus` 一路下来的），所以它不是骨架，只作补充线索 —— 但它确实是一条成立的推出，和上面撤掉的那条不同。',
       ].join('\n'),
       note: '粉红边：真推出，但反过来更自然 —— 只作补充线索。' },
   ],

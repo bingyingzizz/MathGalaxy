@@ -3,4 +3,3 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`thm.brouwer-fixed-point`](../nodes/thm.brouwer-fixed-point.md) Brouwer 不动点定理（圆盘）
-- ⇒ [`thm.argument-principle`](../nodes/thm.argument-principle.md) 辐角原理

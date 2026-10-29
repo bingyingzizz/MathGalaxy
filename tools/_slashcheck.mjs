@@ -62,7 +62,7 @@ for (const f of files) {
           const nxt = ln[i + 1];
           if (nxt && /[A-Za-z]/.test(nxt) && !OKESC.has(nxt)) {
             hits.push({ file: f, line: li + 1, frag: ln.slice(Math.max(0, i - 34), i + 34) });
-          } else if (nxt && '{}%&#_$'.includes(nxt)) {
+          } else if (nxt && '{}%&#_$ ,;:|!'.includes(nxt)) {
             hits.push({ file: f, line: li + 1, frag: ln.slice(Math.max(0, i - 34), i + 34), esc: true });
           } else if (nxt && OKESC.has(nxt)) {
             const run = (ln.slice(i + 1).match(/^[A-Za-z]+/) || [''])[0];
@@ -86,3 +86,11 @@ for (const f of files) {
 console.log('扫了 ' + files.length + ' 个内容包（只看字符串字面量）');
 console.log('疑似丢反斜杠：' + hits.length + ' 处');
 for (const h of hits) console.log('  ' + h.file + ':' + h.line + (h.esc ? ' [转义字母盲区]' : '') + '   …' + h.frag + '…');
+
+/* ⭐ 2026-10-29 起这是**硬门**：以前只打印，于是用户先在面板上看见了
+   「implies」才有人回头看这份报告。有命中就非零退出。 */
+if (hits.length) {
+  console.log('\n✗ 有 ' + hits.length + ' 处单反斜杠 —— LaTeX 命令要写两个反斜杠（`\\\\implies`）。');
+  process.exit(1);
+}
+console.log('✓ 没有多余的单反斜杠');

@@ -407,14 +407,61 @@
       return false;
     }
 
+    /* --------------------------------------------------- 平行边让位 */
+    /* ⚠️ 2026-10-29 用户报：「Rouché 定理到辐角原理，有黑边和粉边，点不到粉红色边」。
+       两条边的端点完全一样 ⇒ 画成同一条线段、命中距离也完全一样，`d < hitD`
+       严格小于 ⇒ 永远只有先遍历到的那条能被选中。
+       解法：同一对点之间的**直线类边**（单源推出 / 等价 / 类比）按组内序号各弯一点，
+       两条都看得见、也都点得中。弓高在世界里是屏幕像素常量 —— 与缩放无关。 */
+    function straightPair(e) {
+      if (e.kind === 'implication') {
+        if (!e.sources || e.sources.length !== 1) return null;   // 多前提要汇聚，不参与让位
+        return [e.sources[0], e.target];
+      }
+      if (e.kind === 'equivalence' || e.kind === 'analogy') return [e.a, e.b];
+      return null;                                               // 定义线本来就弯
+    }
+
+    /** 每对平行边的偏移量（屏幕像素）；没配对的边不在表里 */
+    function bundleOffsets(list) {
+      var groups = Object.create(null);
+      list.forEach(function (e) {
+        var pr = straightPair(e);
+        if (!pr) return;
+        var k = pr[0] < pr[1] ? pr[0] + '|' + pr[1] : pr[1] + '|' + pr[0];
+        (groups[k] = groups[k] || []).push(e);
+      });
+      var off = Object.create(null);
+      var gap = (C.edge && C.edge.bundleGap) || 0;
+      if (!gap) return off;
+      Object.keys(groups).forEach(function (k) {
+        var arr = groups[k];
+        if (arr.length < 2) return;
+        arr.sort(function (x, y) { return x.id < y.id ? -1 : x.id > y.id ? 1 : 0; });
+        arr.forEach(function (e, i) { off[e.id] = (i - (arr.length - 1) / 2) * gap; });
+      });
+      return off;
+    }
+
+    /** 弓形控制点。⚠️ 用「id 小的点 → id 大的点」当基准方向，
+        否则反向的那条边（B→A）垂直方向也跟着反 ⇒ 两条弓**折到同一侧**，
+        等于没分开（这正是黑/粉两条边的形态：方向相反）。 */
+    function bowControl(ax, ay, bx, by, idA, idB, bend) {
+      var s = (idA < idB) ? 1 : -1;
+      return U.perpControl(ax, ay, bx, by, bend * s);
+    }
+
     function buildGeometry() {
       var cam = view.cam;
       var geom = Object.create(null);
       var list = [];
 
+      /* 先按「节点对」分组，算出每条边该让开多少 —— 必须整体先看一眼才谈得上配对。 */
+      var bendOf = bundleOffsets(view.visible);
+
       view.visible.forEach(function (e) {
         if (!cullOff && !edgeInView(e)) return;            // 便宜的一票否决：整条线都在视口同一侧之外
-        var g = computeEdge(e, cam);
+        var g = computeEdge(e, cam, bendOf[e.id] || 0);
         if (!g || !polysHitView(g.polys)) return;   // 精确判据：画出来的形状碰不到视口就不画
         geom[e.id] = g;
         list.push(g);
@@ -520,9 +567,10 @@
         1, E.widthMax == null ? 2.6 : E.widthMax);
     }
 
-    function computeEdge(e, cam) {
+    function computeEdge(e, cam, bend) {
       var byId = view.graph.byId;
       var quads = [], polys = [], arrow = null, glyph = null, ends = [];
+      bend = bend || 0;
 
       if (e.kind === 'definition') {
         var dn = byId[e.definition], un = byId[e.usedBy];
@@ -551,13 +599,28 @@
         var r1 = nodeRadius(na), r2 = nodeRadius(nb);
         var q = trimTo(Pa, Pb, r1 + 1.5);
         var w = trimTo(Pb, Pa, r2 + 1.5);
-        var seg = [{ x: q.x, y: q.y }, { x: w.x, y: w.y }];
-        polys.push(seg);
+        var mid = null;
+        if (bend) {
+          /* 平行边让位：控制点按「小 id → 大 id」定向，反向边才不会折到同一侧 */
+          var eqMax = U.dist(Pa.x, Pa.y, Pb.x, Pb.y) * ((C.edge && C.edge.bundleBendMax) || 0.14);
+          var eqBend = U.clamp(bend, -eqMax, eqMax);
+          var eqCtl = bowControl(Pa.x, Pa.y, Pb.x, Pb.y, e.a, e.b, eqBend);
+          q = trimTo(Pa, eqCtl, r1 + 1.5);
+          w = trimTo(Pb, eqCtl, r2 + 1.5);
+          var eqP0 = { x: q.x, y: q.y }, eqP2 = { x: w.x, y: w.y };
+          quads.push({ p0: eqP0, p1: eqCtl, p2: eqP2 });
+          polys.push(U.flattenQuad(eqP0, eqCtl, eqP2, 16));
+          mid = U.quadPoint(eqP0, eqCtl, eqP2, 0.5);
+        } else {
+          polys.push([{ x: q.x, y: q.y }, { x: w.x, y: w.y }]);
+        }
         if (e.kind === 'equivalence') {
-          glyph = { x: (q.x + w.x) / 2, y: (q.y + w.y) / 2, text: '⟺' };
+          glyph = mid
+            ? { x: mid.x, y: mid.y, text: '⟺' }
+            : { x: (q.x + w.x) / 2, y: (q.y + w.y) / 2, text: '⟺' };
         }
         ends = [e.a, e.b];
-        return edgeGeom(e, [], polys, null, glyph, ends);
+        return edgeGeom(e, quads, polys, null, glyph, ends);
       }
 
       /* implication */
@@ -571,11 +634,26 @@
       if (srcs.length === 1) {
         var s0 = screenOf(srcs[0]);
         var rs0 = nodeRadius(srcs[0]);
-        var dir = trimTo(Pt, s0, rt + 5);              // 从目标朝源方向退开
-        var back = trimTo(s0, Pt, rs0 + 1.5);
-        polys.push([{ x: back.x, y: back.y }, { x: dir.x, y: dir.y }]);
-        arrow = { x: dir.x, y: dir.y, angle: Math.atan2(-dir.uy, -dir.ux) };
-        ends = [srcs[0].id, tg.id];
+        if (bend) {
+          /* 平行边让位：先按节点中心拉一条弓，再把两端收到圆周外 */
+          var impMax = U.dist(s0.x, s0.y, Pt.x, Pt.y) * ((C.edge && C.edge.bundleBendMax) || 0.14);
+          var impBend = U.clamp(bend, -impMax, impMax);
+          var ctl = bowControl(s0.x, s0.y, Pt.x, Pt.y, srcs[0].id, tg.id, impBend);
+          var b0 = trimTo(s0, ctl, rs0 + 1.5);
+          var b2 = trimTo(Pt, ctl, rt + 5);
+          var i0 = { x: b0.x, y: b0.y }, i2 = { x: b2.x, y: b2.y };
+          quads.push({ p0: i0, p1: ctl, p2: i2 });
+          polys.push(U.flattenQuad(i0, ctl, i2, 16));
+          /* 箭头方向取**曲线在终点处的切线**（从控制点指向终点），不然会歪 */
+          arrow = { x: i2.x, y: i2.y, angle: Math.atan2(-(i2.y - ctl.y), -(i2.x - ctl.x)) };
+          ends = [srcs[0].id, tg.id];
+        } else {
+          var dir = trimTo(Pt, s0, rt + 5);              // 从目标朝源方向退开
+          var back = trimTo(s0, Pt, rs0 + 1.5);
+          polys.push([{ x: back.x, y: back.y }, { x: dir.x, y: dir.y }]);
+          arrow = { x: dir.x, y: dir.y, angle: Math.atan2(-dir.uy, -dir.ux) };
+          ends = [srcs[0].id, tg.id];
+        }
       } else {
         // 多前提：先汇聚到一点，再射向结论
         srcs.forEach(function (s) { var p = screenOf(s); wc.x += p.x; wc.y += p.y; });

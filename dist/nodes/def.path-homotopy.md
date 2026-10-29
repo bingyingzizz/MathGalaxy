@@ -9,7 +9,7 @@ $X$ 中的一条**道路**是连续映射 $\alpha : [0, 1] \to X$；$\alpha(0)$ 
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/e34:definition.md](../proofs/e34:definition.md)
+- [`def.function`](../nodes/def.function.md) 映射：用到了定义 映射　[proofs/e33:definition.md](../proofs/e33:definition.md)
 
 - …另有入边，续页见 [nodes/def.path-homotopy.3.md](./def.path-homotopy.3.md)
 

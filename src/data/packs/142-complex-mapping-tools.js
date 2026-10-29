@@ -454,7 +454,7 @@
         '把它代进交比 $(Tz_{1}, Tz_{2}; Tz_{3}, Tz_{4})$，分子分母里的 $(ad-bc)$ 与' +
           '四个 $(cz_{k} + d)$ 逐对抵消，剩下的正是 $(z_{1}, z_{2}; z_{3}, z_{4})$。∎',
       ].join('\n'),
-      note: '交比之所以值得定义，就是因为它是 $\operatorname{PGL}(2,\mathbb{C})$ 下唯一的不变量。' },
+      note: '交比之所以值得定义，就是因为它是 $\\operatorname{PGL}(2,\\mathbb{C})$ 下唯一的不变量。' },
 
     { kind: 'implication', sources: ['def.cross-ratio', 'prop.mobius-three-points'],
       target: 'prop.cross-ratio-real',

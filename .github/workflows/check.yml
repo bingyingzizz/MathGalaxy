@@ -45,6 +45,9 @@ jobs:
       - name: 内文跳转回归（真 xlink.js 匹配算法，17 条句子）
         run: bun tools/xlinkcheck.mjs
 
+      - name: 单反斜杠 / LaTeX 命令被 JS 吃掉
+        run: bun tools/_slashcheck.mjs
+
       - name: 报告类体检（不拦）
         continue-on-error: true
         run: |
@@ -52,4 +55,3 @@ jobs:
           bun tools/_findmeta.mjs
           bun tools/_proofaudit.mjs
           bun tools/_layers.mjs
-          bun tools/_slashcheck.mjs
