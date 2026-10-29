@@ -1,7 +1,9 @@
-# 紧 $\implies$ 列紧
-`imp.compact-seqcompact` · 推出 · strong 边 · 根 `../`
+# 紧 $\iff$ 列紧
+`eq.compact-seqcompact` · 等价 · strong 边 · 根 `../`
 
 `def.compact` 紧 → `def.sequentially-compact` 列紧
+
+**紧 ⇒ 列紧**
 
 设 $\{x_{n}\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。
 
@@ -11,6 +13,4 @@
 
 **③ 造一个开覆盖。** 取
 
-$$\mathcal{U} = \{ U_n : n \in \mathbb{N} \} \cup \{ X \setminus \{x_n : n \in \mathbb{N}\} \}$$
-
-> 续见 proofs/imp.compact-seqcompact.2.md
+> 续见 proofs/eq.compact-seqcompact.2.md

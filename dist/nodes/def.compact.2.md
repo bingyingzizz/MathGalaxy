@@ -2,7 +2,7 @@
 [在星图里打开](../#n=def.compact)　·　第 1 页 [nodes/def.compact.md](./def.compact.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- ⇒ [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧
+- ⟺ [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧
 - ⇒ [`def.complete`](../nodes/def.complete.md) 完备
 - ⇒ [`def.totally-bounded`](../nodes/def.totally-bounded.md) 全有界
 - 被 [`thm.metric-compact-equiv`](../nodes/thm.metric-compact-equiv.md) 紧的三个等价刻画 用

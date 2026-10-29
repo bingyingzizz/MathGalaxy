@@ -1,7 +1,9 @@
-# 紧 $\implies$ 列紧
-`imp.compact-seqcompact` · 推出 · strong 边 · 根 `../`
+# 紧 $\iff$ 列紧
+`eq.compact-seqcompact` · 等价 · strong 边 · 根 `../`
 
 `def.compact` 紧 → `def.sequentially-compact` 列紧
+
+$$\mathcal{U} = \{ U_n : n \in \mathbb{N} \} \cup \{ X \setminus \{x_n : n \in \mathbb{N}\} \}$$
 
 其中 $U_{n}$ 是 ② 中给 $x_{n}$ 的那个邻域（只含有限个 $x_{m}$）。再补上闭集的余集，$\mathcal{U}$ 就是 $X$ 的开覆盖。
 
@@ -9,4 +11,8 @@
 
 故 $\{x_{n}\}$ 必有收敛子列，$X$ 列紧。∎
 
-> 只有这一步不需要选择公理。
+⭐ 只有这一步不需要选择公理。
+
+**列紧 ⇒ 紧**
+
+> 续见 proofs/eq.compact-seqcompact.3.md

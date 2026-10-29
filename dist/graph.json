@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-29T06:08:52.908Z",
+  "generated": "2026-10-29T06:18:56.611Z",
   "counts": {
    "regions": 13,
    "clusters": 88,
    "nodes": 1287,
-   "edges": 2332,
-   "strong": 2321,
+   "edges": 2331,
+   "strong": 2320,
    "weak": 11,
    "derived": 16,
    "en_pages": 728
@@ -46241,16 +46241,23 @@
    "note": "同样的套路可以证明：每个环有极大理想、每个域上每个模有极大无关组、每个偏序集有极大反链。"
   },
   {
-   "id": "imp.compact-seqcompact",
-   "kind": "implication",
+   "id": "eq.compact-seqcompact",
+   "kind": "equivalence",
    "strength": "strong",
-   "sources": [
-    "def.compact"
-   ],
-   "target": "def.sequentially-compact",
-   "title": "紧 $\\implies$ 列紧",
-   "proof": "设 $\\{x_{n}\\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。\n\n**① 点集 $\\{x_{n} : n \\in \\mathbb{N}\\}$ 是闭的。** 任取 $y$ 不在这个点集中。若 $y$ 是某个 $x_{n}$，那 $y$ 显然不在余集里；以下设 $y \\notin \\{x_{n}\\}$。由于 $\\{x_{n}\\}$ 没有收敛子列，$\\{x_{n}\\}$ 中任何子列都不趋于 $y$，于是存在 $\\varepsilon > 0$ 使 $B(y, \\varepsilon )$ 中只含**有限个** $x_{n}$（否则可以挑出趋于 $y$ 的子列）。删掉这有限多个点，就得到一个含 $y$ 的开球不碰 $\\{x_{n}\\}$。故余集开，$\\{x_{n}\\}$ 闭。\n\n**② 每个 $x_{n}$ 有一个只含有限多个 $x_{m}$ 的开邻域。** $x_{n}$ 自己也被排除在子列之外，同上可得。\n\n**③ 造一个开覆盖。** 取\n\n$$\\mathcal{U} = \\{ U_n : n \\in \\mathbb{N} \\} \\cup \\{ X \\setminus \\{x_n : n \\in \\mathbb{N}\\} \\}$$\n\n其中 $U_{n}$ 是 ② 中给 $x_{n}$ 的那个邻域（只含有限个 $x_{m}$）。再补上闭集的余集，$\\mathcal{U}$ 就是 $X$ 的开覆盖。\n\n**④ 由紧性取有限子覆盖** $\\mathcal{V} \\subseteq \\mathcal{U}$。若 $\\mathcal{V}$ 包含那个余集，则没盖住任何 $x_{n}$；若只含有限个 $U_{n}$，而每个 $U_{n}$ 只含有限个 $x_{m}$，则 $\\mathcal{V}$ 总共只盖住**有限多个** $x_{m}$ —— 与 $\\{x_{n}\\}$ 是无限集矛盾（没有收敛子列迫使它无限）。\n\n故 $\\{x_{n}\\}$ 必有收敛子列，$X$ 列紧。∎",
-   "note": "只有这一步不需要选择公理。"
+   "a": "def.compact",
+   "b": "def.sequentially-compact",
+   "title": "紧 $\\iff$ 列紧",
+   "note": "度量空间里「每个开覆盖有有限子覆盖」与「每个序列有收敛子列」是同一件事；两个方向分开证，合起来才是这条等价。",
+   "proofs": [
+    {
+     "label": "紧 ⇒ 列紧",
+     "text": "设 $\\{x_{n}\\}$ 是 $X$ 中的序列。反证：假设它没有收敛的子列。\n\n**① 点集 $\\{x_{n} : n \\in \\mathbb{N}\\}$ 是闭的。** 任取 $y$ 不在这个点集中。若 $y$ 是某个 $x_{n}$，那 $y$ 显然不在余集里；以下设 $y \\notin \\{x_{n}\\}$。由于 $\\{x_{n}\\}$ 没有收敛子列，$\\{x_{n}\\}$ 中任何子列都不趋于 $y$，于是存在 $\\varepsilon > 0$ 使 $B(y, \\varepsilon )$ 中只含**有限个** $x_{n}$（否则可以挑出趋于 $y$ 的子列）。删掉这有限多个点，就得到一个含 $y$ 的开球不碰 $\\{x_{n}\\}$。故余集开，$\\{x_{n}\\}$ 闭。\n\n**② 每个 $x_{n}$ 有一个只含有限多个 $x_{m}$ 的开邻域。** $x_{n}$ 自己也被排除在子列之外，同上可得。\n\n**③ 造一个开覆盖。** 取\n\n$$\\mathcal{U} = \\{ U_n : n \\in \\mathbb{N} \\} \\cup \\{ X \\setminus \\{x_n : n \\in \\mathbb{N}\\} \\}$$\n\n其中 $U_{n}$ 是 ② 中给 $x_{n}$ 的那个邻域（只含有限个 $x_{m}$）。再补上闭集的余集，$\\mathcal{U}$ 就是 $X$ 的开覆盖。\n\n**④ 由紧性取有限子覆盖** $\\mathcal{V} \\subseteq \\mathcal{U}$。若 $\\mathcal{V}$ 包含那个余集，则没盖住任何 $x_{n}$；若只含有限个 $U_{n}$，而每个 $U_{n}$ 只含有限个 $x_{m}$，则 $\\mathcal{V}$ 总共只盖住**有限多个** $x_{m}$ —— 与 $\\{x_{n}\\}$ 是无限集矛盾（没有收敛子列迫使它无限）。\n\n故 $\\{x_{n}\\}$ 必有收敛子列，$X$ 列紧。∎\n\n⭐ 只有这一步不需要选择公理。"
+    },
+    {
+     "label": "列紧 ⇒ 紧",
+     "text": "用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。\n\n**① $X$ 全有界** —— 用另一条箭头「列紧 $\\implies$ 全有界」。\n\n**② 造嵌套的坏球。** 设 $\\mathcal{U}$ 是 $X$ 的开覆盖，且它**没有**有限子覆盖。由全有界，$X$ 能被有限个半径 1 的开球盖住；其中必有一个球不能被 $\\mathcal{U}$ 的有限多个成员盖住 —— 否则把每个球各自的有限覆盖并起来，就得到 $\\mathcal{U}$ 的一个有限子覆盖。称这样的球为**坏球**，取一个记作 $B_{1}$。\n\n再把 $B_{1}$ 用有限个半径 1/2 的球盖住（$B_{1} \\subseteq X$，全有界性对它同样管用），其中必有一个坏球 $B_{2} \\subseteq B_{1}$。如此继续，得到\n\n$$B_1 \\supseteq B_2 \\supseteq B_3 \\supseteq \\cdots, \\quad  B_k\\text{ 的半径} \\le 1/k, \\quad \\text{ 每个} B_k\\text{ 都是坏的}$$\n\n（每一步都只是在**有限**多个球里挑一个，可以规定「取编号最小的那个」，所以这里不动用选择公理。）\n\n**③ 取点，得到 Cauchy 列。** 取 $x_{k} \\in B_{k}$。由嵌套与半径趋于 0，对 $m \\le n$ 有 $x_{m}, x_{n} \\in B_{m}$ 而 $B_{m}$ 的半径 $\\le 1/m$，于是\n\n$$d(x_m, x_n) \\le 2/m\\quad  \\implies\\quad  \\{x_k\\}\\text{ 是} Cauchy\\text{ 列}$$\n\n**④** 由列紧它有子列收敛到某点 $x \\in X$；Cauchy 列一旦有收敛子列就整体收敛，故 $x_{k} \\to x$。\n\n**⑤ 收尾。** $x$ 落在某个 $U \\in \\mathcal{U}$ 中。$U$ 开，故存在 $r > 0$ 使 $B(x, r) \\subseteq U$。取 $k$ 充分大，使 $1/k < r/2$ 且 $d(x_{k}, x) < r/2$；则对任意 $y \\in B_{k}$，\n\n$$d(y, x) \\le d(y, x_k) + d(x_k, x) < 1/k + r/2 < r$$\n\n即 $B_{k} \\subseteq B(x, r) \\subseteq U$。于是 $B_{k}$ 被 $\\mathcal{U}$ 的**一个**成员盖住了，与「$B_{k}$ 是坏球」矛盾。\n\n故 $\\mathcal{U}$ 必有有限子覆盖，$X$ 紧。∎\n\n⭐ 「坏球」这一招的直觉是：让一串被架空的小球缩到一个极限点，再用极限点的开邻域一口吞掉它。整段只用全有界，没用选择公理。"
+    }
+   ]
   },
   {
    "id": "imp.seqcompact-totbdd",
@@ -46275,18 +46282,6 @@
    "title": "列紧 $\\implies$ 完备",
    "proof": "设 $X$ 列紧，$\\{x_{n}\\}$ 是 $X$ 中的 Cauchy 列。\n\n**①** 由列紧，$\\{x_{n}\\}$ 有收敛子列 $x_\\{n_{k}\\} \\to x \\in X$。\n\n**② Cauchy 列只要有收敛子列，就整体收敛到同一个极限**：给定 $\\varepsilon > 0$，取 $N$ 使 $m, n \\ge N$ 时 $d(x_{m}, x_{n}) < \\varepsilon /2$；再取 $K$ 使 $k \\ge K$ 时 $n_{k} \\ge N$ 且 $d(x_\\{n_{k}\\}, x) < \\varepsilon /2$。于是对 $n \\ge N$，取 $k \\ge K$ 使 $n_{k} \\ge N$，得\n\n$$d(x_n, x) \\le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \\varepsilon/2 + \\varepsilon/2 = \\varepsilon$$\n\n故 $x_{n} \\to x$。所以 $X$ 完备。∎",
    "note": "和「紧 $\\implies$ 完备」是同一个套路，只是把「紧」换成它的直接推论「列紧」。"
-  },
-  {
-   "id": "imp.seqcompact-compact",
-   "kind": "implication",
-   "strength": "strong",
-   "sources": [
-    "def.sequentially-compact"
-   ],
-   "target": "def.compact",
-   "title": "列紧 $\\implies$ 紧",
-   "proof": "用**反证 + 一串不断缩小的「坏球」**。设 $X$ 列紧。\n\n**① $X$ 全有界** —— 用上面那条箭头「列紧 $\\implies$ 全有界」。\n\n**② 造嵌套的坏球。** 设 $\\mathcal{U}$ 是 $X$ 的开覆盖，且它**没有**有限子覆盖。由全有界，$X$ 能被有限个半径 1 的开球盖住；其中必有一个球不能被 $\\mathcal{U}$ 的有限多个成员盖住 —— 否则把每个球各自的有限覆盖并起来，就得到 $\\mathcal{U}$ 的一个有限子覆盖。称这样的球为**坏球**，取一个记作 $B_{1}$。\n\n再把 $B_{1}$ 用有限个半径 1/2 的球盖住（$B_{1} \\subseteq X$，全有界性对它同样管用），其中必有一个坏球 $B_{2} \\subseteq B_{1}$。如此继续，得到\n\n$$B_1 \\supseteq B_2 \\supseteq B_3 \\supseteq \\cdots, \\quad  B_k\\text{ 的半径} \\le 1/k, \\quad \\text{ 每个} B_k\\text{ 都是坏的}$$\n\n（每一步都只是在**有限**多个球里挑一个，可以规定「取编号最小的那个」，所以这里不动用选择公理。）\n\n**③ 取点，得到 Cauchy 列。** 取 $x_{k} \\in B_{k}$。由嵌套与半径趋于 0，对 $m \\le n$ 有 $x_{m}, x_{n} \\in B_{m}$ 而 $B_{m}$ 的半径 $\\le 1/m$，于是\n\n$$d(x_m, x_n) \\le 2/m\\quad  \\implies\\quad  \\{x_k\\}\\text{ 是} Cauchy\\text{ 列}$$\n\n**④** 由列紧它有子列收敛到某点 $x \\in X$；Cauchy 列一旦有收敛子列就整体收敛，故 $x_{k} \\to x$。\n\n**⑤ 收尾。** $x$ 落在某个 $U \\in \\mathcal{U}$ 中。$U$ 开，故存在 $r > 0$ 使 $B(x, r) \\subseteq U$。取 $k$ 充分大，使 $1/k < r/2$ 且 $d(x_{k}, x) < r/2$；则对任意 $y \\in B_{k}$，\n\n$$d(y, x) \\le d(y, x_k) + d(x_k, x) < 1/k + r/2 < r$$\n\n即 $B_{k} \\subseteq B(x, r) \\subseteq U$。于是 $B_{k}$ 被 $\\mathcal{U}$ 的**一个**成员盖住了，与「$B_{k}$ 是坏球」矛盾。\n\n故 $\\mathcal{U}$ 必有有限子覆盖，$X$ 紧。∎",
-   "note": "「坏球」这一招的直觉是：让一串被架空的小球缩到一个极限点，再用极限点的开邻域一口吞掉它。整段只用全有界，没用选择公理。"
   },
   {
    "id": "imp.compact-complete",

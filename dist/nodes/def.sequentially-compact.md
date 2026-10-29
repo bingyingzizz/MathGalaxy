@@ -8,7 +8,7 @@ layer 14 · 定义 · 度量空间 · 拓扑学
 $$\forall\{x_n\} \subseteq X, \exists\{x_{n_k}\}\text{ 与} \exists x \in X : x_{n_k} \to x$$
 
 ## 它能推出什么 / 谁在用它
-- ⇒ [`def.totally-bounded`](../nodes/def.totally-bounded.md) 全有界
+- ⟺ [`def.compact`](../nodes/def.compact.md) 紧
 
 - …另有出边，续页见 [nodes/def.sequentially-compact.3.md](./def.sequentially-compact.3.md)
 

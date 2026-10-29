@@ -1,7 +1,7 @@
-# 列紧 $\implies$ 紧
-`imp.seqcompact-compact` · 推出 · strong 边 · 根 `../`
+# 紧 $\iff$ 列紧
+`eq.compact-seqcompact` · 等价 · strong 边 · 根 `../`
 
-`def.sequentially-compact` 列紧 → `def.compact` 紧
+`def.compact` 紧 → `def.sequentially-compact` 列紧
 
 $$B_1 \supseteq B_2 \supseteq B_3 \supseteq \cdots, \quad  B_k\text{ 的半径} \le 1/k, \quad \text{ 每个} B_k\text{ 都是坏的}$$
 
@@ -13,4 +13,4 @@ $$d(x_m, x_n) \le 2/m\quad  \implies\quad  \{x_k\}\text{ 是} Cauchy\text{ 列}$
 
 **④** 由列紧它有子列收敛到某点 $x \in X$；Cauchy 列一旦有收敛子列就整体收敛，故 $x_{k} \to x$。
 
-> 续见 proofs/imp.seqcompact-compact.3.md
+> 续见 proofs/eq.compact-seqcompact.5.md
