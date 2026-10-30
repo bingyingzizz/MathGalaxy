@@ -3,6 +3,8 @@
 
 - Grothendieck 宇宙 | universe | 大范畴 | 小范畴 → def.universe
 
+- 宇宙公理 | Grothendieck 公理 | Universes Axiom | universe axiom | Tarski–Grothendieck | TG 集合论 | 不可达基数无界 → ax.grothendieck-universe
+
 - 图 | graph | 有向图 | 对象与态射 → def.graph
 
 - 图的态射 | graph morphism | 图的同态 → def.graph-morphism
@@ -18,7 +20,5 @@
 - 忠实函子 | 满函子 | 全忠实 | faithful | full | fully faithful | Definition 1.2.3 | Def 1.2.3 → def.ff-faithful
 
 - 本质满 | essentially surjective | 本质满射 → def.essentially-surjective
-
-- 范畴等价 | equivalence of categories | 范畴同构 → def.cat-equivalence
 
 > 续见 alias/aka/category.2.md

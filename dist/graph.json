@@ -6,13 +6,13 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-29T06:18:56.611Z",
+  "generated": "2026-10-30T10:48:04.409Z",
   "counts": {
    "regions": 13,
    "clusters": 88,
-   "nodes": 1287,
-   "edges": 2331,
-   "strong": 2320,
+   "nodes": 1288,
+   "edges": 2332,
+   "strong": 2321,
    "weak": 11,
    "derived": 16,
    "en_pages": 728
@@ -53,7 +53,7 @@
    "en": "Set Theory",
    "desc": "ZFC 公理系统、序数、基数与选择原理。",
    "color": "#4F7CF5",
-   "nodeCount": 59
+   "nodeCount": 60
   },
   {
    "id": "order-theory",
@@ -101,7 +101,7 @@
    "en": "Category Theory",
    "desc": "范畴、函子、自然变换、极限与伴随；再往上走到层论与拓扑斯。",
    "color": "#B03A5B",
-   "nodeCount": 206
+   "nodeCount": 207
   },
   {
    "id": "homology",
@@ -1111,9 +1111,10 @@
    "en": "Categories and Diagrams",
    "parent": "category",
    "desc": "造出「范畴」这个概念本身：先有图 $(V, E, s, t)$，再配上复合与单位，得到一个六元组。",
-   "nodeCount": 17,
+   "nodeCount": 18,
    "nodes": [
     "def.universe",
+    "ax.grothendieck-universe",
     "def.graph",
     "def.graph-morphism",
     "def.category",
@@ -26647,9 +26648,36 @@
     "集合论"
    ],
    "statement": "一个集合 $U$ 叫**宇宙**，如果它对集合论的基本构造封闭：\n\n1. （传递）$x \\in u \\in U \\implies x \\in U$；\n2. $x, y \\in U \\implies \\{ x, y \\} \\in U$；\n3. $x \\in U \\implies \\mathcal{P}(x) \\in U$；\n4. 对任意 $p \\in U$ 与任意 $f : p \\to U$，有 $\\bigcup_{t \\in p} f(t) \\in U$。\n\n若 $U$ 含有无穷集，则 $\\mathbb{N} \\in U$。",
-   "notes": "**宇宙存在**是一条额外的公理（Grothendieck 公理），不在 ZFC 里。\n\n它的用处是给「大」与「小」一个**相对**的标准：$U$ 里的东西叫小，$U$ 本身叫大。$\\mathbf{Set}$、$\\mathbf{Grp}$ 这些范畴的对象全体不构成集合，但相对于一个宇宙它们都是小的 —— 「小范畴」这个词背后就是这件事。\n\n封装的四条足够把常见构造全搬进 $U$：由 2 取 $x = y$ 得单点集，再取一次得有序对 $\\{ \\{x\\}, \\{x,y\\} \\}$；由 3、4 得笛卡尔积（$A \\times B \\subseteq \\mathcal{P}(\\mathcal{P}(A \\cup B))$）与函数集。",
+   "notes": "**宇宙存在**是一条额外的公理，不在 ZFC 里 —— 它自成一个节点：「Grothendieck 宇宙公理」。\n\n它的用处是给「大」与「小」一个**相对**的标准：$U$ 里的东西叫小，$U$ 本身叫大。$\\mathbf{Set}$、$\\mathbf{Grp}$ 这些范畴的对象全体不构成集合，但相对于一个宇宙它们都是小的 —— 「小范畴」这个词背后就是这件事。\n\n封装的四条足够把常见构造全搬进 $U$：由 2 取 $x = y$ 得单点集，再取一次得有序对 $\\{ \\{x\\}, \\{x,y\\} \\}$；由 3、4 得笛卡尔积（$A \\times B \\subseteq \\mathcal{P}(\\mathcal{P}(A \\cup B))$）与函数集。",
    "refs": [
     "SGA 4, I.0"
+   ]
+  },
+  {
+   "id": "ax.grothendieck-universe",
+   "type": "axiom",
+   "label": "Grothendieck 宇宙公理",
+   "title": "Grothendieck 宇宙公理",
+   "region": "category",
+   "regions": [
+    "category",
+    "set-theory"
+   ],
+   "cluster": "cat.basic",
+   "layer": 5,
+   "tags": [
+    "范畴论",
+    "大与小",
+    "集合论",
+    "大基数",
+    "公理"
+   ],
+   "statement": "**每个集合都装得进某个宇宙。** 这是一条独立的公理：\n\n$$\\forall x \\, \\exists U \\left[ U \\text{ 是宇宙} \\wedge  x \\in U \\right]$$\n\n其中「宇宙」按「Grothendieck 宇宙」那份定义：传递，且对配对、幂集、以内部集合为索引的并封闭。\n\n⭐ 等价的常用说法：**强不可达基数无界地多** —— 对每个序数 $\\alpha$ 都有强不可达基数 $\\kappa > \\alpha$，此时 $V_{\\kappa}$ 本身就是一个宇宙。",
+   "notes": "它**不在 ZFC 里**。取强不可达基数 $\\kappa$，$V_{\\kappa} \\models \\mathrm{ZFC}$，所以这条公理蕴含 $\\mathrm{Con}(\\mathrm{ZFC})$；由 Gödel 第二不完备定理，ZFC 若一致就**证不出**它。所以用到它的定理必须把它写进前提，不能默认。\n\n它比「存在一个宇宙」**强**：说的是宇宙无界地多。范畴论要的正是这一点 —— $\\mathbf{Set}$ 相对于 $U$ 是小范畴，而 $U$ 本身落在更大的宇宙 $U^{+}$ 里，于是「$U$-小范畴的范畴」又是 $U^{+}$ 里的小范畴。**每往上走一级都有地方站。**\n\n弱形式：只处理固定的几个范畴时，假设「存在一个宇宙」（等价于「存在一个强不可达基数」）就够，不必要求无界地多。\n\n⚠️ 实践中的替代：类型论用**宇宙层级**把这件事自动化（Lean 的 `Type u`、Coq 的 `Type_i`）；本图按 SGA 的惯例，用一条公理一次性解决。",
+   "refs": [
+    "SGA 4, I.0",
+    "Mac Lane, Categories for the Working Mathematician, I.6",
+    "Jech, Set Theory, 12（不可达基数）"
    ]
   },
   {
@@ -57441,6 +57469,14 @@
    "definition": "def.substitution",
    "usedBy": "ax.repl",
    "note": "替换公理模式把 $A$ 中每个 $x$ 在公式 $\\varphi (x, y, p)$ 下的像收集起来 —— 这一步做的就是**代入**。"
+  },
+  {
+   "id": "def-link.gu-universe",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.universe",
+   "usedBy": "ax.grothendieck-universe",
+   "note": "公理只断言「这样的 $U$ 存在」，把封闭性那四条交给定义。分开写的好处：换一套宇宙的定义（比如换成 Tarski 的写法），公理本身一个字不用改。"
   },
   {
    "id": "imp.equiv-criterion",

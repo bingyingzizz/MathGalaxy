@@ -319,6 +319,7 @@ MG.aliases = {
 
     /* 范畴与图 */
     { id: 'def.universe', aka: ['Grothendieck 宇宙', 'universe', '大范畴', '小范畴'] },
+    { id: 'ax.grothendieck-universe', aka: ['宇宙公理', 'Grothendieck 公理', 'Universes Axiom', 'universe axiom', 'Tarski–Grothendieck', 'TG 集合论', '不可达基数无界'] },
     { id: 'def.graph', aka: ['图', 'graph', '有向图', '对象与态射'] },
     { id: 'def.graph-morphism', aka: ['图的态射', 'graph morphism', '图的同态'] },
     { id: 'def.category', aka: ['范畴', 'category', 'Cat', '态射', 'Definition 1.1.1', 'Def 1.1.1'] },

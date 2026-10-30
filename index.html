@@ -33,12 +33,83 @@
 <!-- KaTeX：数学排版。CSS 与 JS 都放 src/ui/，字体在 src/ui/fonts/（与 CSS 同目录，file:// 也能加载） -->
 <link rel="stylesheet" href="src/ui/katex.min.css" />
 
+<!-- ===== 首屏「加载中」的样式：**内联在这里**，故意的 =====
+     不放进 styles.css、不等任何模块 —— 打开这一页要 4 秒左右（见下面那段注释），
+     那 4 秒里唯一能显示的东西必须自带干粮。 -->
+<style>
+#mg-loading {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #fff; color: #1c1c1e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none; -webkit-user-select: none;
+  transition: opacity .4s ease-out;
+}
+#mg-loading.mgl-out { opacity: 0; pointer-events: none; }
+
+/* 三个点连成的一小段星座 —— 和站点图标同一个形状 */
+#mgl-mark { position: relative; width: 90px; height: 90px; margin-bottom: 20px; }
+#mgl-mark b {
+  position: absolute; height: 1px; border-radius: 1px;
+  background: #4f7cf5; opacity: .3; transform-origin: 0 50%;
+}
+#mgl-mark b:nth-of-type(1) { left: 14px; top: 14px; width: 65px; transform: rotate(17.9deg); }
+#mgl-mark b:nth-of-type(2) { left: 30px; top: 76px; width: 62px; transform: rotate(-42.4deg); }
+#mgl-mark i {
+  position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%; background: #4f7cf5;
+  animation: mgl-twinkle 2.4s ease-in-out infinite;
+}
+#mgl-mark i:nth-of-type(1) { left: 14px; top: 14px; }
+#mgl-mark i:nth-of-type(2) { left: 76px; top: 34px; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; animation-delay: .35s; }
+#mgl-mark i:nth-of-type(3) { left: 30px; top: 76px; animation-delay: .7s; }
+@keyframes mgl-twinkle {
+  0%, 100% { opacity: .26; transform: scale(.72); }
+  50%      { opacity: 1;   transform: scale(1.12); }
+}
+
+#mgl-name { font-size: 17px; font-weight: 600; letter-spacing: .16em; }
+#mgl-text {
+  margin-top: 9px; min-height: 1.25em;
+  font-size: 12.5px; letter-spacing: .04em; color: #7b818b;
+}
+#mgl-bar {
+  margin-top: 20px; width: 176px; height: 3px; border-radius: 3px;
+  background: rgba(79, 124, 245, .13); overflow: hidden;
+}
+/* ⚠️ 进度条只动 transform（走合成器）：主线程在 computeLayout 里卡死 4 秒时，
+      scaleX 照样在动；换成 width / background-position 就会冻住，看着像挂了。
+   ⚠️⚠️ 基础值（没有动画时那个 transform）必须**等于动画的终值 0.88**：
+      中途 JS 要接管进度时会 set 一个内联 transform 并把动画关掉，两者不等就会出现
+      「进度条忽然倒退」。（踩过：基础值是 .04 ⇒ 接管那一瞬间从 80% 跳回 4%。） */
+#mgl-fill {
+  display: block; width: 100%; height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, #6d93f7, #4f7cf5);
+  transform: scaleX(.88); transform-origin: 0 50%; will-change: transform;
+  animation: mgl-creep 9s cubic-bezier(.14, .62, .12, 1) forwards;
+}
+@keyframes mgl-creep { from { transform: scaleX(.04); } to { transform: scaleX(.88); } }
+#mg-loading.mgl-real #mgl-fill { animation: none; transition: transform .35s ease-out; }
+#mg-loading.mgl-fail #mgl-fill { background: #d0483c; }
+#mgl-hint { margin-top: 26px; font-size: 11px; letter-spacing: .14em; color: #b7bcc4; }
+
+@media (prefers-reduced-motion: reduce) {
+  #mgl-mark i { animation: none; opacity: .8; }
+  #mgl-fill { animation: none; transform: scaleX(.55); }
+  #mg-loading { transition: none; }
+}
+</style>
+
 <!-- 出错兜底：任何脚本报错都直接在页面上显示出来，而不是留一片白屏 -->
 <script>
 window.__mgFatal = function (err) {
   var msg = (err && (err.stack || err.message)) || String(err || '未知错误');
   if (window.console) console.error('[数学星图]', err);
   var show = function () {
+    /* 先撤掉首屏那层（z-index 200），否则错误框（99）永远被它盖住 */
+    if (window.MG && window.MG.loading) { try { window.MG.loading.hide(); } catch (e) {} }
     if (document.getElementById('mg-fatal')) return;
     var box = document.createElement('div');
     box.id = 'mg-fatal';
@@ -60,6 +131,85 @@ window.addEventListener('error', function (e) {
 </script>
 </head>
 <body>
+
+<!-- ===== 首屏「加载中」 =====
+     为什么要有它：整页是「100 多个 <script> + 1287 个节点」，而启动时 computeLayout
+     要一口气算 4 秒左右（O(n²) 的斥力迭代）—— 那 4 秒里主线程被占死，用户看到的是纯白。
+     ⚠️ 这一块的样式、脚本全内联，不依赖任何模块；动画只用 transform / opacity。
+     ⚠️ 收起它的时机是「**第一帧星图画完**」（app.js 的 frame()），不是 DOMContentLoaded ——
+        后者在 computeLayout 之前就到了，那时屏幕还是白的。 -->
+<div id="mg-loading" role="status" aria-live="polite">
+  <div id="mgl-mark" aria-hidden="true"><b></b><b></b><i></i><i></i><i></i></div>
+  <div id="mgl-name">数学星图</div>
+  <div id="mgl-text" data-t="正在点亮星空…">正在点亮星空…</div>
+  <div id="mgl-bar"><span id="mgl-fill"></span></div>
+  <div id="mgl-hint">MathGalaxy</div>
+</div>
+<script>
+/* 首屏加载界面 —— 故意内联、不用任何模块：它必须比所有 src/core 更早可用。
+   ⚠️ 文案走 MG.t（键仍是中文原文，表在 src/data/i18n/ui.en.js）。
+      这时候 MG.t 可能还没定义（i18n.js 还没加载），所以必须容错；
+      首屏那两句另由 i18n 的 applyStatic 用 data-t 补一遍。 */
+window.MG = window.MG || {};
+(function (G) {
+  var MG = G.MG, doc = G.document;
+  var box = null, fill = null, textEl = null, gone = false, watchdog = 0;
+
+  function t(s) { return (typeof MG.t === 'function') ? MG.t(s) : s; }
+  function grab() {
+    if (box) return true;
+    box = doc.getElementById('mg-loading');
+    if (!box) return false;
+    fill = doc.getElementById('mgl-fill');
+    textEl = doc.getElementById('mgl-text');
+    return true;
+  }
+
+  /** 报一步：step(百分比, 说明)。百分比可省（只换文案）。 */
+  function step(pct, msg) {
+    if (gone || !grab()) return;
+    if (msg && textEl) textEl.textContent = t(msg);
+    if (typeof pct === 'number' && fill) {
+      box.classList.add('mgl-real');
+      fill.style.transform = 'scaleX(' + Math.min(1, Math.max(0.02, pct / 100)) + ')';
+    }
+    if (watchdog) { G.clearTimeout(watchdog); watchdog = 0; }
+  }
+
+  function hide(delay) {
+    if (gone || !grab()) return;
+    gone = true;
+    if (watchdog) { G.clearTimeout(watchdog); watchdog = 0; }
+    box.classList.remove('mgl-real', 'mgl-fail');
+    box.classList.add('mgl-out');
+    /* ⚠️ 先淡出再摘掉节点；但**别把引用留着** —— 摘掉之后 step() 都是空操作。 */
+    G.setTimeout(function () {
+      if (box && box.parentNode) box.parentNode.removeChild(box);
+      box = fill = textEl = null;
+    }, delay === undefined ? 440 : delay);
+  }
+
+  MG.loading = {
+    step: step,
+    done: function () { step(100); hide(); },   // 画完第一帧：补满再淡出
+    hide: function () { hide(0); },              // 出错兜底：立刻让位给错误框
+    fail: function (msg) {
+      if (gone || !grab()) return;
+      if (msg && textEl) textEl.textContent = msg;
+      box.classList.remove('mgl-real');
+      box.classList.add('mgl-fail');
+    }
+  };
+
+  /* 8 秒还没画完 ⇒ 说句实话。这句话通常要等主线程松手才显示得出来，
+     而那正是用户开始怀疑「是不是挂了」的时候。 */
+  watchdog = G.setTimeout(function () {
+    if (!gone && textEl) textEl.textContent = t('比预期慢一些，仍在计算布局…');
+  }, 8000);
+
+  grab();
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
 
 <!-- ===== 画布层 ===== -->
 <div id="viewport" aria-hidden="true">

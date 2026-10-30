@@ -1029,12 +1029,83 @@ html.ui-no-hint #hint { display: none; }
 
 </style>
 
+<!-- ===== 首屏「加载中」的样式：**内联在这里**，故意的 =====
+     不放进 styles.css、不等任何模块 —— 打开这一页要 4 秒左右（见下面那段注释），
+     那 4 秒里唯一能显示的东西必须自带干粮。 -->
+<style>
+#mg-loading {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #fff; color: #1c1c1e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none; -webkit-user-select: none;
+  transition: opacity .4s ease-out;
+}
+#mg-loading.mgl-out { opacity: 0; pointer-events: none; }
+
+/* 三个点连成的一小段星座 —— 和站点图标同一个形状 */
+#mgl-mark { position: relative; width: 90px; height: 90px; margin-bottom: 20px; }
+#mgl-mark b {
+  position: absolute; height: 1px; border-radius: 1px;
+  background: #4f7cf5; opacity: .3; transform-origin: 0 50%;
+}
+#mgl-mark b:nth-of-type(1) { left: 14px; top: 14px; width: 65px; transform: rotate(17.9deg); }
+#mgl-mark b:nth-of-type(2) { left: 30px; top: 76px; width: 62px; transform: rotate(-42.4deg); }
+#mgl-mark i {
+  position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%; background: #4f7cf5;
+  animation: mgl-twinkle 2.4s ease-in-out infinite;
+}
+#mgl-mark i:nth-of-type(1) { left: 14px; top: 14px; }
+#mgl-mark i:nth-of-type(2) { left: 76px; top: 34px; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; animation-delay: .35s; }
+#mgl-mark i:nth-of-type(3) { left: 30px; top: 76px; animation-delay: .7s; }
+@keyframes mgl-twinkle {
+  0%, 100% { opacity: .26; transform: scale(.72); }
+  50%      { opacity: 1;   transform: scale(1.12); }
+}
+
+#mgl-name { font-size: 17px; font-weight: 600; letter-spacing: .16em; }
+#mgl-text {
+  margin-top: 9px; min-height: 1.25em;
+  font-size: 12.5px; letter-spacing: .04em; color: #7b818b;
+}
+#mgl-bar {
+  margin-top: 20px; width: 176px; height: 3px; border-radius: 3px;
+  background: rgba(79, 124, 245, .13); overflow: hidden;
+}
+/* ⚠️ 进度条只动 transform（走合成器）：主线程在 computeLayout 里卡死 4 秒时，
+      scaleX 照样在动；换成 width / background-position 就会冻住，看着像挂了。
+   ⚠️⚠️ 基础值（没有动画时那个 transform）必须**等于动画的终值 0.88**：
+      中途 JS 要接管进度时会 set 一个内联 transform 并把动画关掉，两者不等就会出现
+      「进度条忽然倒退」。（踩过：基础值是 .04 ⇒ 接管那一瞬间从 80% 跳回 4%。） */
+#mgl-fill {
+  display: block; width: 100%; height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, #6d93f7, #4f7cf5);
+  transform: scaleX(.88); transform-origin: 0 50%; will-change: transform;
+  animation: mgl-creep 9s cubic-bezier(.14, .62, .12, 1) forwards;
+}
+@keyframes mgl-creep { from { transform: scaleX(.04); } to { transform: scaleX(.88); } }
+#mg-loading.mgl-real #mgl-fill { animation: none; transition: transform .35s ease-out; }
+#mg-loading.mgl-fail #mgl-fill { background: #d0483c; }
+#mgl-hint { margin-top: 26px; font-size: 11px; letter-spacing: .14em; color: #b7bcc4; }
+
+@media (prefers-reduced-motion: reduce) {
+  #mgl-mark i { animation: none; opacity: .8; }
+  #mgl-fill { animation: none; transform: scaleX(.55); }
+  #mg-loading { transition: none; }
+}
+</style>
+
 <!-- 出错兜底：任何脚本报错都直接在页面上显示出来，而不是留一片白屏 -->
 <script>
 window.__mgFatal = function (err) {
   var msg = (err && (err.stack || err.message)) || String(err || '未知错误');
   if (window.console) console.error('[数学星图]', err);
   var show = function () {
+    /* 先撤掉首屏那层（z-index 200），否则错误框（99）永远被它盖住 */
+    if (window.MG && window.MG.loading) { try { window.MG.loading.hide(); } catch (e) {} }
     if (document.getElementById('mg-fatal')) return;
     var box = document.createElement('div');
     box.id = 'mg-fatal';
@@ -1056,6 +1127,85 @@ window.addEventListener('error', function (e) {
 </script>
 </head>
 <body>
+
+<!-- ===== 首屏「加载中」 =====
+     为什么要有它：整页是「100 多个 <script> + 1287 个节点」，而启动时 computeLayout
+     要一口气算 4 秒左右（O(n²) 的斥力迭代）—— 那 4 秒里主线程被占死，用户看到的是纯白。
+     ⚠️ 这一块的样式、脚本全内联，不依赖任何模块；动画只用 transform / opacity。
+     ⚠️ 收起它的时机是「**第一帧星图画完**」（app.js 的 frame()），不是 DOMContentLoaded ——
+        后者在 computeLayout 之前就到了，那时屏幕还是白的。 -->
+<div id="mg-loading" role="status" aria-live="polite">
+  <div id="mgl-mark" aria-hidden="true"><b></b><b></b><i></i><i></i><i></i></div>
+  <div id="mgl-name">数学星图</div>
+  <div id="mgl-text" data-t="正在点亮星空…">正在点亮星空…</div>
+  <div id="mgl-bar"><span id="mgl-fill"></span></div>
+  <div id="mgl-hint">MathGalaxy</div>
+</div>
+<script>
+/* 首屏加载界面 —— 故意内联、不用任何模块：它必须比所有 src/core 更早可用。
+   ⚠️ 文案走 MG.t（键仍是中文原文，表在 src/data/i18n/ui.en.js）。
+      这时候 MG.t 可能还没定义（i18n.js 还没加载），所以必须容错；
+      首屏那两句另由 i18n 的 applyStatic 用 data-t 补一遍。 */
+window.MG = window.MG || {};
+(function (G) {
+  var MG = G.MG, doc = G.document;
+  var box = null, fill = null, textEl = null, gone = false, watchdog = 0;
+
+  function t(s) { return (typeof MG.t === 'function') ? MG.t(s) : s; }
+  function grab() {
+    if (box) return true;
+    box = doc.getElementById('mg-loading');
+    if (!box) return false;
+    fill = doc.getElementById('mgl-fill');
+    textEl = doc.getElementById('mgl-text');
+    return true;
+  }
+
+  /** 报一步：step(百分比, 说明)。百分比可省（只换文案）。 */
+  function step(pct, msg) {
+    if (gone || !grab()) return;
+    if (msg && textEl) textEl.textContent = t(msg);
+    if (typeof pct === 'number' && fill) {
+      box.classList.add('mgl-real');
+      fill.style.transform = 'scaleX(' + Math.min(1, Math.max(0.02, pct / 100)) + ')';
+    }
+    if (watchdog) { G.clearTimeout(watchdog); watchdog = 0; }
+  }
+
+  function hide(delay) {
+    if (gone || !grab()) return;
+    gone = true;
+    if (watchdog) { G.clearTimeout(watchdog); watchdog = 0; }
+    box.classList.remove('mgl-real', 'mgl-fail');
+    box.classList.add('mgl-out');
+    /* ⚠️ 先淡出再摘掉节点；但**别把引用留着** —— 摘掉之后 step() 都是空操作。 */
+    G.setTimeout(function () {
+      if (box && box.parentNode) box.parentNode.removeChild(box);
+      box = fill = textEl = null;
+    }, delay === undefined ? 440 : delay);
+  }
+
+  MG.loading = {
+    step: step,
+    done: function () { step(100); hide(); },   // 画完第一帧：补满再淡出
+    hide: function () { hide(0); },              // 出错兜底：立刻让位给错误框
+    fail: function (msg) {
+      if (gone || !grab()) return;
+      if (msg && textEl) textEl.textContent = msg;
+      box.classList.remove('mgl-real');
+      box.classList.add('mgl-fail');
+    }
+  };
+
+  /* 8 秒还没画完 ⇒ 说句实话。这句话通常要等主线程松手才显示得出来，
+     而那正是用户开始怀疑「是不是挂了」的时候。 */
+  watchdog = G.setTimeout(function () {
+    if (!gone && textEl) textEl.textContent = t('比预期慢一些，仍在计算布局…');
+  }, 8000);
+
+  grab();
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
 
 <!-- ===== 画布层 ===== -->
 <div id="viewport" aria-hidden="true">
@@ -11267,6 +11417,7 @@ MG.aliases = {
 
     /* 范畴与图 */
     { id: 'def.universe', aka: ['Grothendieck 宇宙', 'universe', '大范畴', '小范畴'] },
+    { id: 'ax.grothendieck-universe', aka: ['宇宙公理', 'Grothendieck 公理', 'Universes Axiom', 'universe axiom', 'Tarski–Grothendieck', 'TG 集合论', '不可达基数无界'] },
     { id: 'def.graph', aka: ['图', 'graph', '有向图', '对象与态射'] },
     { id: 'def.graph-morphism', aka: ['图的态射', 'graph morphism', '图的同态'] },
     { id: 'def.category', aka: ['范畴', 'category', 'Cat', '态射', 'Definition 1.1.1', 'Def 1.1.1'] },
@@ -14505,6 +14656,15 @@ MG.uiEn = {
     '箭头': 'arrow',
     '为什么等价': 'Why they are equivalent',
     '引用': 'Reference',
+
+    /* ------------------------------------------------------ 首屏加载 */
+    /* 这几条只活 4 秒左右，但英文用户最先看到的就是它们。
+       ⚠️ 它们不走面板那条「键 = 中文原文」的 105 条口径，所以没算进表头那几个数字。 */
+    '正在点亮星空…': 'Lighting up the star map…',
+    '正在建图并计算布局…': 'Building the graph and computing the layout…',
+    '铺开星云…': 'Spreading the nebula…',
+    '准备第一帧…': 'Drawing the first frame…',
+    '比预期慢一些，仍在计算布局…': 'Slower than expected — still computing the layout…',
   }
 };
 
@@ -25814,7 +25974,7 @@ window.MG = window.MG || {};
 </script>
 <script>
 /* ==========================================================================
-   内容包 · 范畴与图（5 条）
+   内容包 · 范畴与图（6 条）
    --------------------------------------------------------------------------
    星系「范畴论」的地基：宇宙 → 图 → 图的态射 → 范畴 → 截面与收缩。
 
@@ -25847,11 +26007,38 @@ window.MG = window.MG || {};
         '若 $U$ 含有无穷集，则 $\\mathbb{N} \\in U$。'
       ].join('\n'),
       notes: [
-        '**宇宙存在**是一条额外的公理（Grothendieck 公理），不在 ZFC 里。',
+        '**宇宙存在**是一条额外的公理，不在 ZFC 里 —— 它自成一个节点：「Grothendieck 宇宙公理」。',
         '它的用处是给「大」与「小」一个**相对**的标准：$U$ 里的东西叫小，$U$ 本身叫大。$\\mathbf{Set}$、$\\mathbf{Grp}$ 这些范畴的对象全体不构成集合，但相对于一个宇宙它们都是小的 —— 「小范畴」这个词背后就是这件事。',
         '封装的四条足够把常见构造全搬进 $U$：由 2 取 $x = y$ 得单点集，再取一次得有序对 $\\{ \\{x\\}, \\{x,y\\} \\}$；由 3、4 得笛卡尔积（$A \\times B \\subseteq \\mathcal{P}(\\mathcal{P}(A \\cup B))$）与函数集。'
       ].join('\n\n'),
       refs: ['SGA 4, I.0']
+    },
+
+    /* --------------------------------------------------------- 宇宙公理 */
+    {
+      id: 'ax.grothendieck-universe',
+      cluster: 'cat.basic',
+      type: 'axiom',
+      label: 'Grothendieck 宇宙公理',
+      title: 'Grothendieck 宇宙公理',
+      regions: ['set-theory', 'category'],
+      tags: ['范畴论', '大与小', '集合论', '大基数', '公理'],
+      statement: [
+        '**每个集合都装得进某个宇宙。** 这是一条独立的公理：',
+        '',
+        '$$\\forall x \\, \\exists U \\left[ U \\text{ 是宇宙} \\wedge  x \\in U \\right]$$',
+        '',
+        '其中「宇宙」按「Grothendieck 宇宙」那份定义：传递，且对配对、幂集、以内部集合为索引的并封闭。',
+        '',
+        '⭐ 等价的常用说法：**强不可达基数无界地多** —— 对每个序数 $\\alpha$ 都有强不可达基数 $\\kappa > \\alpha$，此时 $V_{\\kappa}$ 本身就是一个宇宙。'
+      ].join('\n'),
+      notes: [
+        '它**不在 ZFC 里**。取强不可达基数 $\\kappa$，$V_{\\kappa} \\models \\mathrm{ZFC}$，所以这条公理蕴含 $\\mathrm{Con}(\\mathrm{ZFC})$；由 Gödel 第二不完备定理，ZFC 若一致就**证不出**它。所以用到它的定理必须把它写进前提，不能默认。',
+        '它比「存在一个宇宙」**强**：说的是宇宙无界地多。范畴论要的正是这一点 —— $\\mathbf{Set}$ 相对于 $U$ 是小范畴，而 $U$ 本身落在更大的宇宙 $U^{+}$ 里，于是「$U$-小范畴的范畴」又是 $U^{+}$ 里的小范畴。**每往上走一级都有地方站。**',
+        '弱形式：只处理固定的几个范畴时，假设「存在一个宇宙」（等价于「存在一个强不可达基数」）就够，不必要求无界地多。',
+        '⚠️ 实践中的替代：类型论用**宇宙层级**把这件事自动化（Lean 的 `Type u`、Coq 的 `Type_i`）；本图按 SGA 的惯例，用一条公理一次性解决。'
+      ].join('\n\n'),
+      refs: ['SGA 4, I.0', 'Mac Lane, Categories for the Working Mathematician, I.6', 'Jech, Set Theory, 12（不可达基数）']
     },
 
     /* -------------------------------------------------------------- 图 */
@@ -25977,7 +26164,19 @@ window.MG = window.MG || {};
     }
   ],
 
-  edges: []
+  edges: [
+
+    /* ------------------------------------------------------- 宇宙公理 */
+    /* 「宇宙」这个定义是公理陈述的前提：不先知道那四条封闭性，
+       「$U$ 是宇宙」就是一句空话。（definition 边的方向是 定义 → 用到它的东西） */
+    {
+      id: 'def-link.gu-universe',
+      kind: 'definition',
+      definition: 'def.universe',
+      usedBy: 'ax.grothendieck-universe',
+      note: '公理只断言「这样的 $U$ 存在」，把封闭性那四条交给定义。分开写的好处：换一套宇宙的定义（比如换成 Tarski 的写法），公理本身一个字不用改。'
+    }
+  ]
 });
 
 </script>
@@ -74885,6 +75084,7 @@ MG.trunk = [
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
+    if (MG.loading) MG.loading.step(null, '铺开星云…');   // 同样只换文案，见 safeBoot 的注释
     MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
     /* 画布上的显示名（节点 / 星团 / 星系）：**启动时算一次**，渲染循环只读 `labelShow`。
        ⛔ 不在每帧里查表。见 src/core/i18n.js 的 localizeDisplay。 */
@@ -74990,6 +75190,8 @@ MG.trunk = [
     }
     var rafId = 0;
     var dirty = true;
+    /* 首屏那一帧画过了没（只用来收起「加载中」那层，见 frame() 末尾与 index.html） */
+    var firstPainted = false;
     /* 诊断用：一帧里「我这边花的 JS」的累加（不含被推迟的光栅化 → 剩下的账归「其余」） */
     var drawProf = { ms: 0, n: 0 };
 
@@ -75072,6 +75274,12 @@ MG.trunk = [
         renderer.setGlowLive(useBmp);
         renderer.draw();
         dirty = false;
+        /* ⭐ 第一帧星图**真的画出来了** → 收起首屏「加载中」。
+           判据只能是这个：DOMContentLoaded 在 computeLayout 之前就到了，那时屏幕还是白的。 */
+        if (!firstPainted) {
+          firstPainted = true;
+          if (MG.loading) MG.loading.done();
+        }
       }
       drawProf.ms += performance.now() - tp; drawProf.n++;
       if (animating) requestDraw();
@@ -76978,6 +77186,7 @@ MG.trunk = [
     /* ------------------------------------------------------------ 启动 */
 
     function start() {
+      if (MG.loading) MG.loading.step(88, '准备第一帧…');
       resize();
       if (cloudDirty || !cloudTex) {
         cloudDirty = false;
@@ -77116,7 +77325,18 @@ MG.trunk = [
   }
 
   function safeBoot() {
-    try { boot(); } catch (err) { fatal(err); }
+    /* ⭐ 先把「加载中」这一屏真的画出来，再进同步启动流程。
+       为什么必须这样：boot() 里的 computeLayout 一口气算 4 秒左右（1287 个点、O(n²) 的
+       斥力迭代），期间主线程被占死 —— 要是连一帧都没画过，用户看到的就是纯白。
+       两次 rAF：第一次让浏览器有机会排版绘制，第二次保证上面那帧真的提交了。 */
+    /* ⚠️ 这一句**只换文案、不报百分比**：报百分比会把「爬行」动画关掉换内联 transform，
+       而这一段正好是后面 4 秒卡死主线程的时候 —— 动画一关，进度条就定在那里不动了。 */
+    if (MG.loading) MG.loading.step(null, '正在建图并计算布局…');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        try { boot(); } catch (err) { fatal(err); }
+      });
+    });
   }
 
   if (document.readyState === 'loading') {

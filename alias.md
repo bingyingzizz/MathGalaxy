@@ -7,13 +7,13 @@
 `alias/<星系id>.md` 是**问法**（一句人话 → 节点 id），`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）；行尾 `a+b` 是这两份的条数。
 
 - 数理逻辑　`dist/alias/aka/logic.md` 0+4
-- 集合论　`dist/alias/set-theory.md` / `dist/alias/aka/set-theory.md` 20+56
+- 集合论　`dist/alias/set-theory.md` / `dist/alias/aka/set-theory.md` 20+57
 - 序理论　`dist/alias/order-theory.md` / `dist/alias/aka/order-theory.md` 9+15
 - 拓扑学　`dist/alias/topology.md` / `dist/alias/aka/topology.md` 44+95
 - 抽象代数　`dist/alias/algebra.md` / `dist/alias/aka/algebra.md` 13+25
 - 数学分析　`dist/alias/analysis.md` / `dist/alias/aka/analysis.md` 43+164
 - 实变函数　`dist/alias/analysis-measure.md` / `dist/alias/aka/analysis-measure.md` 35+144
-- 范畴论　`dist/alias/category.md` / `dist/alias/aka/category.md` 63+201
+- 范畴论　`dist/alias/category.md` / `dist/alias/aka/category.md` 63+202
 - 同调代数　`dist/alias/homology.md` / `dist/alias/aka/homology.md` 47+148
 - 凝聚态数学　`dist/alias/condensed.md` / `dist/alias/aka/condensed.md` 40+91
 - 解析空间　`dist/alias/aka/analytic.md` 0+2

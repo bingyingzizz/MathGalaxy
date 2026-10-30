@@ -66,6 +66,7 @@
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
+    if (MG.loading) MG.loading.step(null, '铺开星云…');   // 同样只换文案，见 safeBoot 的注释
     MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
     /* 画布上的显示名（节点 / 星团 / 星系）：**启动时算一次**，渲染循环只读 `labelShow`。
        ⛔ 不在每帧里查表。见 src/core/i18n.js 的 localizeDisplay。 */
@@ -171,6 +172,8 @@
     }
     var rafId = 0;
     var dirty = true;
+    /* 首屏那一帧画过了没（只用来收起「加载中」那层，见 frame() 末尾与 index.html） */
+    var firstPainted = false;
     /* 诊断用：一帧里「我这边花的 JS」的累加（不含被推迟的光栅化 → 剩下的账归「其余」） */
     var drawProf = { ms: 0, n: 0 };
 
@@ -253,6 +256,12 @@
         renderer.setGlowLive(useBmp);
         renderer.draw();
         dirty = false;
+        /* ⭐ 第一帧星图**真的画出来了** → 收起首屏「加载中」。
+           判据只能是这个：DOMContentLoaded 在 computeLayout 之前就到了，那时屏幕还是白的。 */
+        if (!firstPainted) {
+          firstPainted = true;
+          if (MG.loading) MG.loading.done();
+        }
       }
       drawProf.ms += performance.now() - tp; drawProf.n++;
       if (animating) requestDraw();
@@ -2159,6 +2168,7 @@
     /* ------------------------------------------------------------ 启动 */
 
     function start() {
+      if (MG.loading) MG.loading.step(88, '准备第一帧…');
       resize();
       if (cloudDirty || !cloudTex) {
         cloudDirty = false;
@@ -2297,7 +2307,18 @@
   }
 
   function safeBoot() {
-    try { boot(); } catch (err) { fatal(err); }
+    /* ⭐ 先把「加载中」这一屏真的画出来，再进同步启动流程。
+       为什么必须这样：boot() 里的 computeLayout 一口气算 4 秒左右（1287 个点、O(n²) 的
+       斥力迭代），期间主线程被占死 —— 要是连一帧都没画过，用户看到的就是纯白。
+       两次 rAF：第一次让浏览器有机会排版绘制，第二次保证上面那帧真的提交了。 */
+    /* ⚠️ 这一句**只换文案、不报百分比**：报百分比会把「爬行」动画关掉换内联 transform，
+       而这一段正好是后面 4 秒卡死主线程的时候 —— 动画一关，进度条就定在那里不动了。 */
+    if (MG.loading) MG.loading.step(null, '正在建图并计算布局…');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        try { boot(); } catch (err) { fatal(err); }
+      });
+    });
   }
 
   if (document.readyState === 'loading') {

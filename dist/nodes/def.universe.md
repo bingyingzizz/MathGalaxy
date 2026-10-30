@@ -17,6 +17,9 @@ layer 4 · 定义 · 范畴与图 · 范畴论
 
 - …另有入边，续页见 [nodes/def.universe.2.md](./def.universe.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.universe.3.md](./def.universe.3.md)
+
 refs: SGA 4, I.0
 
 > 说明见 `notes/def.universe.md`

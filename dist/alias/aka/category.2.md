@@ -1,6 +1,8 @@
 # 别名 → 节点 · 范畴论
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../category.md`
 
+- 范畴等价 | equivalence of categories | 范畴同构 → def.cat-equivalence
+
 - 交换图 | commutative diagram | diagram | 图（函子） | 索引范畴 | 图范畴 | 常图函子 | 预序 | Definition 1.3.1 | Def 1.3.1 → def.commutative-diagram
 
 - 单纯对象 | simplicial object | 单纯形范畴 | 面映射 | 退化映射 | Definition 1.3.2 | Def 1.3.2 | Exercise 1.25 → def.simplicial

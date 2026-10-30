@@ -240,5 +240,14 @@ MG.uiEn = {
     '箭头': 'arrow',
     '为什么等价': 'Why they are equivalent',
     '引用': 'Reference',
+
+    /* ------------------------------------------------------ 首屏加载 */
+    /* 这几条只活 4 秒左右，但英文用户最先看到的就是它们。
+       ⚠️ 它们不走面板那条「键 = 中文原文」的 105 条口径，所以没算进表头那几个数字。 */
+    '正在点亮星空…': 'Lighting up the star map…',
+    '正在建图并计算布局…': 'Building the graph and computing the layout…',
+    '铺开星云…': 'Spreading the nebula…',
+    '准备第一帧…': 'Drawing the first frame…',
+    '比预期慢一些，仍在计算布局…': 'Slower than expected — still computing the layout…',
   }
 };
