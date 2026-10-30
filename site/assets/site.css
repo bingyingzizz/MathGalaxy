@@ -44,6 +44,15 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
   color:var(--faint);font-size:13px}
 footer a{color:var(--soft)}
 
+/* 英文落地段落（首页 About · English）。字号略小于正文、颜色略淡 ——
+   它是给英文读者与爬虫看的第二语言，不与中文主文争轻重。 */
+.about-en{margin:0 0 8px}
+.about-en p{margin:0 0 14px;color:var(--soft);font-size:15px;line-height:1.72}
+.about-en b{color:var(--ink);font-weight:600}
+.about-en code{font-family:var(--mono);font-size:.88em;background:var(--code-bg);
+  padding:1px 5px;border-radius:5px}
+.about-en .meta-en{color:var(--faint);font-size:13.5px;margin-bottom:0}
+
 /* ------------------------------------------------------------ 卡片（首页） */
 .card{position:relative;display:block;padding:18px 52px 18px 22px;border:1px solid var(--line);
   border-radius:14px;margin-bottom:12px;color:inherit;overflow:hidden;

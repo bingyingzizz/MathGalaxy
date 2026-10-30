@@ -327,9 +327,18 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
     ld: {
       '@context': 'https://schema.org', '@type': 'WebSite',
       name: SITE_NAME, alternateName: 'MathGalaxy',
-      url: `${SITE_ORIGIN}/`, inLanguage: 'zh-CN',
+      url: `${SITE_ORIGIN}/`, inLanguage: ['zh-CN', 'en'],
       description: '数学星图 MathGalaxy —— 可交互的数学知识图谱，把人可读、AI 可查的数学笔记'
-        + '组织成「星系 / 星团 / 恒星」三层尺度的依赖图。',
+        + '组织成「星系 / 星团 / 恒星」三层尺度的依赖图。'
+        + ' An interactive knowledge graph of mathematics: definitions, theorems and proofs,'
+        + ' usable as lecture notes, a study reference and a dependency map of prerequisites.',
+      /* ⭐ 2026-10-20：keywords 是**结构化数据**里的合法字段（WebSite ⊂ CreativeWork），
+         不是 <meta name="keywords"> —— 后者 Google 从 2009 年起完全忽略、Bing 当垃圾信号，
+         ⛔ 所以我们**不加** meta 关键字，只把词放进 JSON-LD。 */
+      keywords: 'mathematics, knowledge graph, lecture notes, study reference, prerequisites,'
+        + 'definitions and theorems, dependency graph, category theory, condensed mathematics,'
+        + 'homological algebra, topology, measure theory, set theory, ZFC, axiom of choice',
+      audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
       sameAs: REPO_URL,
     },
   }),

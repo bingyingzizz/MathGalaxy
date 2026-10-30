@@ -441,7 +441,7 @@ function nodePage(node, rel, ctx) {
     alternateName: enName || (titlePlain !== node.label ? titlePlain : undefined),
     description,
     url,
-    inLanguage: 'zh-CN',
+    inLanguage: enName ? ['zh-CN', 'en'] : 'zh-CN',
     /* T1.4：内容 CC BY 4.0。许可写在每一个概念页上（这是被引用的最小单位），
        ⛔ 不是只在 all.html 上说一次。 */
     license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -735,6 +735,13 @@ function allPage(ctx) {
   <p class="full">${c.regions} 个星系 · ${c.clusters} 个星团 · ${c.nodes} 个概念 · ${c.edges} 条连线（强边 ${c.strong}，弱边 ${c.weak}）</p>
   <p class="lead">每个概念一页：陈述、说明、参考，以及它与别的概念之间的推出、等价与定义引用。
   点击任意概念进入它自己的页面；想在图上看它们的位置，就从 <a href="./">星图首页</a> 进。</p>
+  <!-- 英文落地说一句（与首页 About · English 同一目的）：英文查询要命中，
+       页面上就得有英文。这个页面有全部 ${c.nodes} 个概念的链接，是收录的主入口。 -->
+  <p class="lead" lang="en">Every concept in the graph, grouped by branch and by cluster:
+  ${c.nodes} entries, each with its statement, notes, references and its edges — the
+  definitions it cites, the results it implies, and the equivalences it belongs to.
+  Regions and clusters carry their English names; individual concepts carry theirs
+  where one has been established.</p>
 </header>
 
 <nav class="toc">

@@ -83,7 +83,33 @@
     <i class="go">↓</i>
   </a>
 
-  <footer class="enter" style="--i:13">
+  <!-- ⭐ 2026-10-20：英文落地段落。为什么要有它 —— 英文查询要命中，页面上就得
+       真的有英文。之前整站只有中文（概念页 44% 连英文名都没有），英文搜索自然拿不到。
+       ⛔ 这里是**描述**，不是关键字堆砌：写的是这张图到底是什么、怎么用。
+       ⛔ 不要为了塞词把句子写坏 —— 人也要能读。 -->
+  <h2 class="enter" style="--i:13">About · English</h2>
+  <section class="about-en enter" style="--i:14" lang="en">
+    <p><b>MathGalaxy</b> is an interactive knowledge graph of mathematics. Every definition,
+    theorem and lemma is a node; every arrow is a derivation. Zoom out and you see the
+    branches of the subject; zoom in and you read a single statement together with its
+    remarks, its references, and the proofs that tie it to what it rests on.</p>
+    <p>The graph is organised at three scales — a <b>galaxy</b> (a branch of mathematics),
+    a <b>cluster</b> (a self-contained apparatus built to make one thing work), and a
+    <b>star</b> (one result). It runs from the ZFC axioms and the equivalence chain around
+    the axiom of choice, through algebra, topology, measure theory and homological algebra,
+    up to category theory and condensed mathematics — the parts of the subject a student
+    actually has to walk through in dependency order.</p>
+    <p>It doubles as <b>lecture notes</b>, a <b>study reference</b> and a <b>course companion</b>:
+    read a topic along its prerequisite chain instead of in the order a textbook prints it,
+    and when a proof cites something you have not met yet, follow the edge. Each concept has
+    its own page with statement, notes and references; the whole graph is exported as
+    <code>graph.json</code>, <code>graph.md</code> and <code>llms.txt</code> as well, so an AI
+    agent can look a result up without first guessing the Chinese terminology.</p>
+    <p class="meta-en">Content is licensed CC BY 4.0; the engine is MIT and has no dependencies.
+    Interface and prose are Chinese-first, with English names on the concepts that have them.</p>
+  </section>
+
+  <footer class="enter" style="--i:15">
     最近更新：{{UPDATED}} ·
     由 <a href="{{REPO}}">MathGalaxy</a> 生成 ·
     <a href="{{SITE_REPO}}">本站源码</a>
