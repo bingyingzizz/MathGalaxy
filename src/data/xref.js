@@ -14,7 +14,7 @@
       · 候选一律来自站点**自己的搜索接口**（Wikipedia 的 action=opensearch、
         nLab 的 /nlab/search），⛔ 不靠记忆拼 URL；
       · 每条真发一次请求，要求 **HTTP 200 且 <title> 对得上这个概念**；
-      · 网络两条路都试（直连 / 代理由 127.0.0.1:7890）。
+      · 网络两条路都试（直连 / 代理；代理端口会变，当前见 README「网络」一节）。
    ⭐ 当前 **45 条锚点**（旧 21 条 + 2026-10-16 新核 49 条里的去重结果）全部
       按上面的办法逐条核过；404 的一律**不写**（product+measure、complex+measure、
       monotone+class+theorem、Mathlib 的 Topos/Basic 都是 404，跳过）。

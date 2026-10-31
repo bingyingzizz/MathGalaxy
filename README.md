@@ -545,19 +545,31 @@ JSON 里每条边都带 `strength` 和 `proof`，节点带稳定的 `id`，
 
 ### 网络：本机已配好代理
 
-本机 **127.0.0.1:7890** 上跑着代理（番茄V2航线），走它可以正常访问 GitHub。
-已经配好了一条**只对 github.com 生效**的规则，**全局 + 本仓库各写了一份**：
+本机代理跑在 **127.0.0.1:7897**（番茄V2航线；⚠️ 端口会变，从 7890 改过一次，见下）。
+走它可以正常访问 GitHub。已经配好了一条**只对 github.com 生效**的规则，
+**全局 + 本仓库各写了一份**：
 
 ```bash
-git config --global http.https://github.com/.proxy http://127.0.0.1:7890   # 已配
-git config --local  http.https://github.com/.proxy http://127.0.0.1:7890   # 已配（双保险）
+# 当前生效的端口（改端口时两条都要改）
+git config --global http.https://github.com/.proxy http://127.0.0.1:7897
+git config --local  http.https://github.com/.proxy http://127.0.0.1:7897
 ```
 
 为什么必须写全局：**新设备上第一次 `git clone` 时还没有仓库级配置**，
 不写全局就会卡在「连不上」的死循环里（这个坑实测踩过）。
 
-> ⚠️ 换新设备时，第一件事就是在新机器上执行上面那条 `--global`
-> （把 7890 换成那台机器上的代理端口）。
+> ⚠️⚠️ **换端口时最阴的一个坑（2026-10-31 踩了）**：仓库级 `.git/config` 会**盖掉**
+> 全局。只改全局时 `git config --get-regexp proxy` 已经显示新端口，push 却仍然报
+> `Failed to connect to github.com port 443 via 127.0.0.1` —— 因为真正生效的是
+> `.git/config` 里那份旧的。排查一律用**带来源**的那条：
+>
+> ```bash
+> git config --show-origin --get-regexp proxy     # 看两份配置各自的真实值
+> git config --show-origin --get-all http.https://github.com/.proxy
+> ```
+
+> ⚠️ 换新设备时，第一件事就是在新机器上执行上面那两条
+> （把端口换成那台机器上的代理端口）。
 
 > **重要**：git 用的 libcurl **不读 Windows 的「系统代理」设置**。
 > 即使浏览器已经能打开 github.com（系统代理 / TUN 模式生效），
@@ -595,8 +607,8 @@ git commit -F msg.txt -- src/data/packs/03-order-theory.js
 git push
 ```
 
-> ⚠️ **记得先启动代理**（127.0.0.1:7890）。git 不读 Windows 系统代理，
-> 代理没开时 push/pull 会超时。
+> ⚠️ **记得先启动代理**（127.0.0.1:7897，当前端口见上面「网络」一节）。
+> git 不读 Windows 系统代理，代理没开时 push/pull 会超时。
 
 ### 多端使用
 
