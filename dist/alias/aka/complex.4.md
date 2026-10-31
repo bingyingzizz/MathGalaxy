@@ -27,4 +27,18 @@
 
 - 分式线性变换保对称点 → prop.mobius-symmetry
 
-见 `../../alias.md`。
+- 分式线性变换成群 → prop.mobius-group
+
+- 单值支的存在判据 → prop.single-valued-branch
+
+- Arzelà–Ascoli 定理 → thm.arzela-ascoli
+
+- 分式线性变换的分类 → prop.mobius-classification
+
+- Jordan 引理 → lem.jordan
+
+- Joukowski 映射 → prop.joukowski
+
+- 调和函数 → def.harmonic
+
+> 续见 alias/aka/complex.5.md

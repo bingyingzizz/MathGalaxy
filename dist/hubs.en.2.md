@@ -8,7 +8,7 @@
 - **5** `def.essential-sup` essential supremum · layer 16 · L^p 空间
 - **5** `def.abelian-category` additive and abelian categories · layer 16 · 加法与阿贝尔范畴
 
-- **5** `prop.paracompact-partition-unity` 仿紧性与单位分解 · layer 16 · 拓扑空间
+- **5** `prop.paracompact-partition-unity` paracompactness and partitions of unity · layer 16 · 拓扑空间
 - **5** `def.product-measure` product measure · layer 17 · 乘积测度与 Fubini
 - **5** `def.lp-norm` Lp norm · layer 18 · L^p 空间
 - **5** `prop.cg-coreflective` compactly generated spaces form a coreflective subcategory · layer 18 · 紧生成空间与弱 Hausdorff

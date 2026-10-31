@@ -21,4 +21,20 @@
 
 - Cauchy 乘积 → thm.series-product
 
-见 `../../alias.md`。
+- ℝ 是完备度量空间 → thm.real-complete-metric
+
+- 紧集上连续 ⟹ 有界 → prop.continuous-bounded-on-compact
+
+- Abel 第二定理 → thm.abel-endpoint
+
+- 求导法则 → thm.derivative-rules
+
+- Arzelà–Ascoli 定理 → thm.arzela-ascoli
+
+- 闭区间套定理 → lem.nested-intervals
+
+- 完备性的六条等价 → thm.completeness-equivalent
+
+- 有界闭 ⟺ 紧（ℝⁿ） → cor.heine-borel
+
+> 续见 alias/aka/analysis.14.md

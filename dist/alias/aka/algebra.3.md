@@ -13,4 +13,34 @@
 
 - 奇异值分解 → thm.svd
 
-见 `../../alias.md`。
+- 行列式 → def.determinant
+
+- 可对角化判据 → thm.diagonalizable
+
+- Jordan 标准形 → thm.jordan-canonical-form
+
+- 行列式的存在唯一性 → thm.det-exists-unique
+
+- Laplace 展开 → prop.det-laplace
+
+- 因式定理与根 → thm.factor-theorem
+
+- 极小多项式整除特征多项式 → thm.minimal-poly-divisor
+
+- 根子空间分解 → thm.primary-decomposition
+
+- Jordan 型的唯一性 → cor.jordan-uniqueness
+
+- 线性映射 ⟷ 矩阵 → thm.matrix-linear-map
+
+- Cayley–Hamilton 定理 → thm.cayley-hamilton
+
+- Cauchy–Schwarz 不等式 → thm.cauchy-schwarz
+
+- 张量积的万有性质 → thm.tensor-universal-property
+
+- Lagrange 定理 → thm.lagrange
+
+- 特征多项式 → def.char-poly
+
+> 续见 alias/aka/algebra.4.md

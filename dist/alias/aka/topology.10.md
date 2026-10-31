@@ -29,4 +29,16 @@
 
 - 奇异同调群 → def.singular-homology
 
-见 `../../alias.md`。
+- 紧集上连续 ⟹ 有界 → prop.continuous-bounded-on-compact
+
+- 有界闭 ⟺ 紧（ℝⁿ） → cor.heine-borel
+
+- 紧集上连续 ⟹ 一致连续 → thm.uniform-continuity-compact
+
+- 链同伦 → def.chain-homotopy
+
+- 诱导同态 → prop.induced-homomorphism
+
+- 单纯同调群 → def.simplicial-homology
+
+> 续见 alias/aka/topology.11.md

@@ -19,4 +19,12 @@
 
 - 导出范畴按无穷范畴粘合 → thm.adic-gluing
 
+- 6-函子形式 → def.six-functors
+
+- 有理开集上的局部化 → prop.rational-localization
+
+- A⁺ 由谱决定 → prop.huber-subring-recovery
+
+- adic 结构层是层 → thm.adic-structure-sheaf
+
 见 `../../alias.md`。

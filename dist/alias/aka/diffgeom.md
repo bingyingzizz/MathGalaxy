@@ -19,4 +19,20 @@
 
 - Lie 第三定理 → thm.lie-third
 
+- 丛的分类 → thm.bundle-classification
+
+- 对合分布 → def.involutive-distribution
+
+- 积分流形 → def.integral-manifold
+
+- Lie 导数 → def.lie-derivative
+
+- 内乘 → def.interior-product
+
+- 流 → def.flow
+
+- 缩并 → def.tensor-contraction
+
+- 切分布 → def.tangent-distribution
+
 见 `../../alias.md`。

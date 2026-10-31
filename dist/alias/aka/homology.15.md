@@ -23,4 +23,8 @@
 
 - 正合偶给出谱序列 → thm.exact-couple-spectral
 
+- 过滤复形给出正合偶 → prop.filtered-complex-exact-couple
+
+- 正合偶 → def.exact-couple
+
 见 `../../alias.md`。

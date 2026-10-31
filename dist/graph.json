@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-31T02:21:33.841Z",
+  "generated": "2026-10-31T02:36:14.833Z",
   "counts": {
    "regions": 13,
    "clusters": 88,
@@ -15,7 +15,7 @@
    "strong": 2321,
    "weak": 11,
    "derived": 16,
-   "en_pages": 928
+   "en_pages": 1060
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -4651,6 +4651,24 @@
    "type": "proposition",
    "label": "测度的基本性质",
    "title": "命题：测度的单调性、次可加性与两种连续性",
+   "label_en": "basic properties of measures",
+   "title_en": "basic properties of measures",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.measure-basic.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -4844,6 +4862,23 @@
    "type": "proposition",
    "label": "由预测度诱导外测度",
    "title": "命题：从 $\\mathcal{E}$ 上的 $\\rho$ 诱导出一个外测度",
+   "title_en": "outer measure induced by a premeasure",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.outer-measure-induced.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -4938,6 +4973,23 @@
    "type": "proposition",
    "label": "预测度还原",
    "title": "命题：从预测度出发做 Carathéodory，原代数上的值不变",
+   "title_en": "the Carathéodory extension agrees with the premeasure",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.caratheodory-extension.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5026,6 +5078,23 @@
    "type": "theorem",
    "label": "F ↔ Borel 测度",
    "title": "定理：每个单调右连续的 F 对应一个 Borel 测度（差常数意义下）",
+   "title_en": "Lebesgue–Stieltjes measures and Borel measures",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.ls-exists.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5155,6 +5224,23 @@
    "type": "corollary",
    "label": "连续 ⟹ Borel 可测",
    "title": "推论：连续函数是 Borel 可测的",
+   "title_en": "continuous implies Borel measurable",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.continuous-measurable.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5226,6 +5312,23 @@
    "type": "proposition",
    "label": "可测函数的封闭性",
    "title": "命题：可测函数对和、积、sup、max、极限封闭",
+   "title_en": "closure properties of measurable functions",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.measurable-closure.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5353,6 +5456,23 @@
    "type": "proposition",
    "label": "完备化后可改在零集上",
    "title": "命题：完备化空间上的可测函数，几乎处处等于一个原空间可测函数",
+   "title_en": "after completion one may change on a null set",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.completion-measurable-function.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5421,6 +5541,23 @@
    "type": "proposition",
    "label": "简单函数积分的性质",
    "title": "命题：简单函数积分的四条基本性质",
+   "title_en": "properties of the integral of simple functions",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.simple-integral-props.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5445,6 +5582,23 @@
    "type": "definition",
    "label": "非负函数的积分",
    "title": "非负可测函数的积分：从下面取上确界",
+   "title_en": "integral of a non-negative function",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.integral-nonneg.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5553,6 +5707,23 @@
    "type": "proposition",
    "label": "积分为零 ⟺ 几乎处处为零",
    "title": "命题：$\\int f = 0 \\iff f = 0 \\text{a.e.}$",
+   "title_en": "integral zero iff zero almost everywhere",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.integral-zero-iff.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5773,6 +5944,24 @@
    "type": "proposition",
    "label": "L¹ 是向量空间",
    "title": "命题：可积函数全体是向量空间，$\\int$ 线性",
+   "label_en": "L1 is a vector space",
+   "title_en": "L1 is a vector space",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.L1-vector-space.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5796,6 +5985,23 @@
    "type": "proposition",
    "label": "积分绝对值不等式",
    "title": "命题：$|\\int f| \\le \\int |f|$",
+   "title_en": "triangle inequality for the integral",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.integral-abs-ineq.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5818,6 +6024,23 @@
    "type": "proposition",
    "label": "L¹ 函数的支撑 σ-有限",
    "title": "命题：$f \\in L^{1} \\implies \\{f \\ne 0\\}$ 是 σ-有限的",
+   "title_en": "the support of an L1 function is sigma-finite",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.L1-support-sigma-finite.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -5966,6 +6189,24 @@
    "type": "theorem",
    "label": "L¹ 里的逼近",
    "title": "定理：$L^{1}$ 中可用简单函数 / 连续函数逼近",
+   "label_en": "approximation in L1",
+   "title_en": "approximation in L1",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.approximation-L1.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -6228,6 +6469,23 @@
    "type": "theorem",
    "label": "第一同构定理（向量空间版）",
    "title": "定理：$V / \\ker T \\cong \\operatorname{im} T$",
+   "title_en": "first isomorphism theorem for vector spaces",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.first-iso-vs.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6312,6 +6570,24 @@
    "type": "theorem",
    "label": "秩-零化度定理",
    "title": "定理（秩-零化度）：$\\dim V = \\operatorname{rank} T + \\operatorname{null} T$",
+   "label_en": "rank-nullity theorem",
+   "title_en": "rank-nullity theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.rank-nullity.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6488,6 +6764,24 @@
    "type": "theorem",
    "label": "线性映射 ⟷ 矩阵",
    "title": "定理：选定基后，线性映射与矩阵一一对应",
+   "label_en": "linear maps and matrices",
+   "title_en": "linear maps and matrices",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.matrix-linear-map.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6661,6 +6955,23 @@
    "type": "theorem",
    "label": "行列式的存在唯一性",
    "title": "定理：交错 $n$ 重线性规范函数存在且唯一",
+   "title_en": "existence and uniqueness of the determinant",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.det-exists-unique.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6684,6 +6995,24 @@
    "type": "definition",
    "label": "行列式",
    "title": "行列式 $\\det A$",
+   "label_en": "determinant",
+   "title_en": "determinant",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.determinant.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6729,6 +7058,24 @@
    "type": "proposition",
    "label": "Laplace 展开",
    "title": "命题：Laplace 展开（按一行或一列展开）",
+   "label_en": "Laplace expansion",
+   "title_en": "Laplace expansion",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.det-laplace.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6751,6 +7098,24 @@
    "type": "theorem",
    "label": "Cramer 法则",
    "title": "定理（Cramer）：用行列式解方程组",
+   "label_en": "Cramer's rule",
+   "title_en": "Cramer's rule",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.cramer.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6820,6 +7185,24 @@
    "type": "theorem",
    "label": "带余除法",
    "title": "定理：带余除法（$K[x]$ 是欧几里得整环）",
+   "label_en": "division with remainder",
+   "title_en": "division with remainder",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.division-algorithm.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6843,6 +7226,24 @@
    "type": "theorem",
    "label": "因式定理与根",
    "title": "定理：因式定理 $f(a) = 0 \\iff (x - a) \\mid f$",
+   "label_en": "factor theorem and roots",
+   "title_en": "factor theorem and roots",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.factor-theorem.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -6865,6 +7266,23 @@
    "type": "proposition",
    "label": "根的个数不超过次数",
    "title": "命题：$\\deg f = n$ 时 $f$ 至多有 $n$ 个根（计重数）",
+   "title_en": "a polynomial has at most as many roots as its degree",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.root-bound.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7023,6 +7441,24 @@
    "type": "definition",
    "label": "特征多项式",
    "title": "特征多项式 $\\chi_T(x) = \\det(x I - T)$",
+   "label_en": "characteristic polynomial",
+   "title_en": "characteristic polynomial",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.char-poly.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7091,6 +7527,24 @@
    "type": "theorem",
    "label": "Cayley–Hamilton 定理",
    "title": "定理（Cayley–Hamilton）：$\\chi_T(T) = 0$",
+   "label_en": "Cayley–Hamilton theorem",
+   "title_en": "Cayley–Hamilton theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.cayley-hamilton.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7114,6 +7568,24 @@
    "type": "theorem",
    "label": "可对角化判据",
    "title": "定理：可对角化的几个等价条件",
+   "label_en": "criterion for diagonalisability",
+   "title_en": "criterion for diagonalisability",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.diagonalizable.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7160,6 +7632,23 @@
    "type": "theorem",
    "label": "极小多项式整除特征多项式",
    "title": "定理：$\\mu_T \\mid \\chi_T$，且两者同根",
+   "title_en": "the minimal polynomial divides the characteristic polynomial",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.minimal-poly-divisor.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7183,6 +7672,23 @@
    "type": "theorem",
    "label": "根子空间分解",
    "title": "定理（主分解）：$V = \\bigoplus_i \\ker (T - \\lambda_i I)^{m_i}$",
+   "title_en": "primary decomposition into generalised eigenspaces",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.primary-decomposition.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7206,6 +7712,24 @@
    "type": "theorem",
    "label": "Jordan 标准形",
    "title": "定理（Jordan）：代数闭域上的相似标准形",
+   "label_en": "Jordan canonical form",
+   "title_en": "Jordan canonical form",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.jordan-canonical-form.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7230,6 +7754,24 @@
    "type": "corollary",
    "label": "Jordan 型的唯一性",
    "title": "推论：Jordan 型在块的排列之外唯一",
+   "label_en": "uniqueness of the Jordan form",
+   "title_en": "uniqueness of the Jordan form",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.jordan-uniqueness.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7299,6 +7841,24 @@
    "type": "theorem",
    "label": "Cauchy–Schwarz 不等式",
    "title": "定理：Cauchy–Schwarz 不等式",
+   "label_en": "Cauchy–Schwarz inequality",
+   "title_en": "Cauchy–Schwarz inequality",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.cauchy-schwarz.en.md",
    "region": "algebra",
    "regions": [
     "algebra",
@@ -7367,6 +7927,24 @@
    "type": "theorem",
    "label": "Gram–Schmidt 正交化",
    "title": "定理：Gram–Schmidt 正交化（标准正交基存在）",
+   "label_en": "Gram–Schmidt orthogonalisation",
+   "title_en": "Gram–Schmidt orthogonalisation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.gram-schmidt.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7411,6 +7989,23 @@
    "type": "theorem",
    "label": "最佳逼近与投影公式",
    "title": "定理：正交投影是最佳逼近，且可用标准正交基算出",
+   "title_en": "best approximation and the projection formula",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.projection-formula.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -7735,6 +8330,23 @@
    "type": "theorem",
    "label": "张量积的万有性质",
    "title": "定理：张量积把双线性映射换成线性映射",
+   "title_en": "universal property of the tensor product",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.tensor-universal-property.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -8930,6 +9542,24 @@
    "type": "theorem",
    "label": "轨道–稳定子定理",
    "title": "定理（轨道–稳定子）：$|\\operatorname{Orb} x| = [G : \\operatorname{Stab} x]$",
+   "label_en": "orbit-stabiliser theorem",
+   "title_en": "orbit-stabiliser theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.orbit-stabilizer.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -9050,6 +9680,24 @@
    "type": "theorem",
    "label": "Lagrange 定理",
    "title": "定理（Lagrange）：$|H|$ 整除 $|G|$",
+   "label_en": "Lagrange's theorem",
+   "title_en": "Lagrange's theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.lagrange.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -9098,6 +9746,24 @@
    "type": "theorem",
    "label": "Sylow 定理",
    "title": "定理（Sylow）：存在性、共轭性、计数",
+   "label_en": "Sylow theorems",
+   "title_en": "Sylow theorems",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.sylow.en.md",
    "region": "algebra",
    "regions": [
     "algebra"
@@ -9336,6 +10002,23 @@
    "type": "corollary",
    "label": "阿基米德的 ε 形式与取整",
    "title": "推论：$1/n < \\varepsilon$ 与取整函数",
+   "title_en": "the Archimedean property in epsilon form",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.archimedean-epsilon.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9402,6 +10085,24 @@
    "type": "theorem",
    "label": "n 次方根",
    "title": "定理：$n$ 次方根的存在唯一性（Existence of $n$-th Roots）",
+   "label_en": "nth roots",
+   "title_en": "nth roots",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.nth-root.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9424,6 +10125,24 @@
    "type": "definition",
    "label": "有理指数与实数指数幂",
    "title": "有理指数与实数指数幂",
+   "label_en": "rational and real powers",
+   "title_en": "rational and real powers",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.real-power.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9531,6 +10250,24 @@
    "type": "proposition",
    "label": "四个标准反例",
    "title": "命题：四个标准反例（把各种收敛区分开）",
+   "label_en": "four standard counterexamples",
+   "title_en": "four standard counterexamples",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.convergence-counterexamples.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -9577,6 +10314,23 @@
    "type": "theorem",
    "label": "依测度 Cauchy ⟹ 收敛",
    "title": "定理：依测度 Cauchy 列必有依测度极限，且有一子列 a.e. 收敛",
+   "title_en": "Cauchy in measure implies convergence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.cauchy-in-measure.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -9797,6 +10551,24 @@
    "type": "proposition",
    "label": "极限的基本性质",
    "title": "命题：极限的唯一性、有界性与保号性",
+   "label_en": "basic properties of limits",
+   "title_en": "basic properties of limits",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.limit-basic.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9819,6 +10591,23 @@
    "type": "proposition",
    "label": "连续函数的运算",
    "title": "命题：连续函数的和差积商与复合",
+   "title_en": "arithmetic of continuous functions",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.continuous-arithmetic.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9841,6 +10630,23 @@
    "type": "proposition",
    "label": "可导 ⟹ 连续",
    "title": "命题：可导蕴含连续（Differentiable $\\implies$ Continuous）",
+   "title_en": "differentiable implies continuous",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.differentiable-implies-continuous.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9863,6 +10669,24 @@
    "type": "theorem",
    "label": "求导法则",
    "title": "定理：求导的四则运算与链式法则",
+   "label_en": "rules for differentiation",
+   "title_en": "rules for differentiation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.derivative-rules.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9924,6 +10748,24 @@
    "type": "theorem",
    "label": "几何级数",
    "title": "定理：几何级数",
+   "label_en": "geometric series",
+   "title_en": "geometric series",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.geometric-series.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -9946,6 +10788,24 @@
    "type": "theorem",
    "label": "p-级数",
    "title": "定理：$p$-级数的敛散性（$p$-Series）",
+   "label_en": "p-series",
+   "title_en": "p-series",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.p-series.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -10236,6 +11096,23 @@
    "type": "proposition",
    "label": "固态化把超覆盖变成正合列",
    "title": "命题：超覆盖的固态化正合",
+   "title_en": "solidification turns hypercovers into exact sequences",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.solid-hypercover.en.md",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -10258,6 +11135,24 @@
    "type": "proposition",
    "label": "自由固态群是固态的",
    "title": "命题：$Z[S]^{\\blacksquare}$ 是固态的（作为模与复形）",
+   "label_en": "the free solid group is solid",
+   "title_en": "the free solid group is solid",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.free-solid-solid.en.md",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -10280,6 +11175,24 @@
    "type": "lemma",
    "label": "完备化判据",
    "title": "引理：把子范畴做成阿贝尔子范畴的抽象判据（Lemma 5.9）",
+   "label_en": "criterion for solid completeness",
+   "title_en": "criterion for solid completeness",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.solid-completion-criterion.en.md",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -10599,6 +11512,24 @@
    "type": "theorem",
    "label": "解析环上的模",
    "title": "定理：$\\operatorname{Mod}^{\\mathrm{cond}}_{\\mathcal{A}}$ 是阿贝尔范畴（Prop 7.5）",
+   "label_en": "modules over an analytic ring",
+   "title_en": "modules over an analytic ring",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.analytic-modules.en.md",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -10782,6 +11713,23 @@
    "type": "proposition",
    "label": "R_{ℓ¹} 不是解析环",
    "title": "命题：$\\mathbb{R}_{\\ell^1}$ 不是解析环（Ribe 扩张）",
+   "title_en": "the l1-solidification is not an analytic ring",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.rl1-not-analytic.en.md",
    "region": "condensed",
    "regions": [
     "condensed"
@@ -10850,6 +11798,23 @@
    "type": "proposition",
    "label": "A⁺ 由谱决定",
    "title": "命题：整闭子环与谱的开闭子集一一对应（Prop 9.2）",
+   "title_en": "the integrally closed subring is determined by the spectrum",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.huber-subring-recovery.en.md",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -10872,6 +11837,23 @@
    "type": "proposition",
    "label": "有理开集上的局部化",
    "title": "命题：有理开集对应局部化（Prop 9.3）",
+   "title_en": "localisation on rational open sets",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.rational-localization.en.md",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -10895,6 +11877,23 @@
    "type": "theorem",
    "label": "adic 结构层是层",
    "title": "定理：$\\mathcal{O}_X$ 与 $\\mathcal{O}_X^+$ 是层（Prop 9.4）",
+   "title_en": "the adic structure sheaf is a sheaf",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.adic-structure-sheaf.en.md",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -11003,6 +12002,24 @@
    "type": "definition",
    "label": "6-函子形式",
    "title": "6-函子形式",
+   "label_en": "six functor formalism",
+   "title_en": "six functor formalism",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.six-functors.en.md",
    "region": "analytic",
    "regions": [
     "analytic"
@@ -11566,6 +12583,23 @@
    "type": "proposition",
    "label": "乘积测度通常不完备",
    "title": "注记：$\\mu$、$\\nu$ 完备时，$\\mu \\times \\nu$ 常常不完备",
+   "title_en": "product measures are usually incomplete",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.product-incomplete.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -14377,6 +15411,24 @@
    "type": "definition",
    "label": "正合偶",
    "title": "正合偶",
+   "label_en": "exact couple",
+   "title_en": "exact couple",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.exact-couple.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -14441,6 +15493,23 @@
    "type": "proposition",
    "label": "过滤复形给出正合偶",
    "title": "过滤复形给出正合偶，从而给出谱序列",
+   "title_en": "a filtered complex gives an exact couple",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.filtered-complex-exact-couple.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -18011,6 +19080,23 @@
    "type": "proposition",
    "label": "绝对连续与变差",
    "title": "命题：$\\nu \\ll \\mu \\iff |\\nu| \\ll \\mu \\iff \\nu^{+}$、$\\nu^{-} \\ll \\mu$；$\\nu \\perp \\mu$ 且 $\\nu \\ll \\mu \\implies \\nu = 0$",
+   "title_en": "absolute continuity and variation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.ac-and-variations.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -18035,6 +19121,23 @@
    "type": "theorem",
    "label": "绝对连续的 ε–δ 刻画",
    "title": "定理（有限情形）：$\\nu \\ll \\mu \\iff \\forall\\varepsilon>0 \\exists\\delta>0$ ( $\\mu(E)<\\delta \\implies |\\nu(E)|\\le\\varepsilon$ )",
+   "title_en": "epsilon-delta characterisation of absolute continuity",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.ac-epsilon-delta.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -18058,6 +19161,23 @@
    "type": "proposition",
    "label": "积分给出绝对连续测度",
    "title": "命题：$\\nu(E) = \\int_E f d\\mu$ 关于 $\\mu$ 绝对连续",
+   "title_en": "the integral gives an absolutely continuous measure",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.integral-gives-ac.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -18351,6 +19471,23 @@
    "type": "theorem",
    "label": "复测度的 Radon–Nikodym",
    "title": "定理：复测度的 $\\nu = \\lambda + f d\\mu$ 分解",
+   "title_en": "Radon–Nikodym for complex measures",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.rn-complex.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -21031,6 +22168,24 @@
    "type": "definition",
    "label": "绕数",
    "title": "定义：绕数（闭曲线关于一点的指数）",
+   "label_en": "winding number",
+   "title_en": "winding number",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.winding-number.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21340,6 +22495,24 @@
    "type": "definition",
    "label": "调和函数",
    "title": "定义：调和函数",
+   "label_en": "harmonic function",
+   "title_en": "harmonic function",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.harmonic.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21527,6 +22700,24 @@
    "type": "definition",
    "label": "整函数与亚纯函数",
    "title": "定义：整函数与亚纯函数",
+   "label_en": "entire and meromorphic functions",
+   "title_en": "entire and meromorphic functions",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.entire-meromorphic.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21593,6 +22784,24 @@
    "type": "lemma",
    "label": "Jordan 引理",
    "title": "引理：Jordan 引理（大圆弧上的指数衰减）",
+   "label_en": "Jordan's lemma",
+   "title_en": "Jordan's lemma",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.jordan.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -21699,6 +22908,24 @@
    "type": "definition",
    "label": "切分布",
    "title": "切分布与光滑性",
+   "label_en": "tangent distribution",
+   "title_en": "tangent distribution",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.tangent-distribution.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -21725,6 +22952,24 @@
    "type": "definition",
    "label": "对合分布",
    "title": "对合分布",
+   "label_en": "involutive distribution",
+   "title_en": "involutive distribution",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.involutive-distribution.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -21751,6 +22996,24 @@
    "type": "definition",
    "label": "积分流形",
    "title": "积分流形与叶片坐标",
+   "label_en": "integral manifold",
+   "title_en": "integral manifold",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.integral-manifold.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -21953,6 +23216,24 @@
    "type": "theorem",
    "label": "丛的分类",
    "title": "向量丛的分类与 Čech 上同调",
+   "label_en": "classification of bundles",
+   "title_en": "classification of bundles",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.bundle-classification.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -22023,6 +23304,24 @@
    "type": "definition",
    "label": "缩并",
    "title": "张量缩并",
+   "label_en": "contraction of a tensor",
+   "title_en": "contraction of a tensor",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.tensor-contraction.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -22049,6 +23348,24 @@
    "type": "definition",
    "label": "内乘",
    "title": "内乘（内积）",
+   "label_en": "interior product",
+   "title_en": "interior product",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.interior-product.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -22075,6 +23392,24 @@
    "type": "definition",
    "label": "流",
    "title": "流与单参数群",
+   "label_en": "flow",
+   "title_en": "flow",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.flow.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -22190,6 +23525,24 @@
    "type": "definition",
    "label": "Lie 导数",
    "title": "Lie 导数",
+   "label_en": "Lie derivative",
+   "title_en": "Lie derivative",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.lie-derivative.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -22390,6 +23743,23 @@
    "type": "proposition",
    "label": "单值支的存在判据",
    "title": "单值支：多值函数在区域上何时能取到一个连续单值分支",
+   "title_en": "criterion for a single-valued branch",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.single-valued-branch.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -22669,6 +24039,24 @@
    "type": "theorem",
    "label": "Arzelà–Ascoli 定理",
    "title": "Arzelà–Ascoli 定理：一致有界 + 等度连续 $\\implies$ 相对紧",
+   "label_en": "Arzelà–Ascoli theorem",
+   "title_en": "Arzelà–Ascoli theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.arzela-ascoli.en.md",
    "region": "complex",
    "regions": [
     "complex",
@@ -23468,6 +24856,23 @@
    "type": "proposition",
    "label": "L¹(ν) 与全变差",
    "title": "命题：符号测度的 $L^{1}(\\nu) = L^{1}(|\\nu|)$，以及几条基本不等式",
+   "title_en": "L1 of a signed measure and total variation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.L1-signed.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -23612,6 +25017,23 @@
    "type": "lemma",
    "label": "平均算子联合连续",
    "title": "引理：$A_{r} f(x)$ 关于 (r, x) 联合连续",
+   "title_en": "the averaging operator is jointly continuous",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.average-continuous.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -24062,6 +25484,24 @@
    "type": "lemma",
    "label": "道路拼接",
    "title": "道路的拼接与同伦类上的群算律",
+   "label_en": "concatenation of paths",
+   "title_en": "concatenation of paths",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.path-product.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -24109,6 +25549,24 @@
    "type": "proposition",
    "label": "诱导同态",
    "title": "连续映射诱导 $\\pi_{1}$ 的同态；$\\pi_{1}$ 是同伦不变函子",
+   "label_en": "induced homomorphism",
+   "title_en": "induced homomorphism",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.induced-homomorphism.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -24133,6 +25591,24 @@
    "type": "proposition",
    "label": "基点变换",
    "title": "沿道路换基点：同构，但彼此只差一个共轭",
+   "label_en": "change of basepoint",
+   "title_en": "change of basepoint",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.pi1-basepoint.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -24324,6 +25800,23 @@
    "type": "corollary",
    "label": "高维球面的基本群",
    "title": "$\\pi_{1}(S^{n}) = 1$ 对 $n \\ge 2$",
+   "title_en": "the fundamental group of higher spheres",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.pi1-sphere.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -24417,6 +25910,24 @@
    "type": "definition",
    "label": "链群",
    "title": "链群 $C_{p}(K)$：以 $p$-单纯形为基的自由阿贝尔群",
+   "label_en": "chain group",
+   "title_en": "chain group",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.chain-group.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -24464,6 +25975,24 @@
    "type": "definition",
    "label": "单纯同调群",
    "title": "单纯同调群 $H_{p}(K) = Z_{p} / B_{p}$",
+   "label_en": "simplicial homology groups",
+   "title_en": "simplicial homology groups",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.simplicial-homology.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -24530,6 +26059,24 @@
    "type": "definition",
    "label": "约化同调",
    "title": "约化同调 $\\tilde{H}_{p}$：把「单点也有一个洞」修掉",
+   "label_en": "reduced homology",
+   "title_en": "reduced homology",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.reduced-homology.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -25052,6 +26599,23 @@
    "type": "proposition",
    "label": "分式线性变换的分类",
    "title": "分式线性变换的三种类型：椭圆、双曲、抛物",
+   "title_en": "classification of Möbius transformations",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.mobius-classification.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -25076,6 +26640,23 @@
    "type": "proposition",
    "label": "分式线性变换成群",
    "title": "分式线性变换构成群：$\\operatorname{PGL}(2, \\mathbb{C})$",
+   "title_en": "Möbius transformations form a group",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.mobius-group.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -25185,6 +26766,24 @@
    "type": "proposition",
    "label": "Joukowski 映射",
    "title": "Joukowski 映射：机翼剖面的来历",
+   "label_en": "the Joukowski map",
+   "title_en": "the Joukowski map",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.joukowski.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -25336,6 +26935,23 @@
    "type": "proposition",
    "label": "扩充复平面是紧的",
    "title": "$\\widehat{\\mathbb{C}} \\cong S^{2}$：紧、列紧，$z_{n} \\to \\infty$ 就是 $|z_{n}| \\to \\infty$",
+   "title_en": "the extended complex plane is compact",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.extended-plane-compact.en.md",
    "region": "complex",
    "regions": [
     "complex"
@@ -25360,6 +26976,24 @@
    "type": "definition",
    "label": "链同伦",
    "title": "链同伦：两个链映射之间的「代数同伦」",
+   "label_en": "chain homotopy",
+   "title_en": "chain homotopy",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.chain-homotopy.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -25578,6 +27212,23 @@
    "type": "proposition",
    "label": "有界变差函数的正则性",
    "title": "命题：有界变差函数的单侧极限都存在、不连续点可数、几乎处处可导",
+   "title_en": "regularity of functions of bounded variation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.bv-regularity.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -25623,6 +27274,23 @@
    "type": "lemma",
    "label": "全变差的规范有界变差性质",
    "title": "引理：$T_F(-\\infty) = 0$；F 右连续 $\\implies T_F$ 右连续",
+   "title_en": "properties of the total variation function",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.nbv-variation.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -25670,6 +27338,23 @@
    "type": "theorem",
    "label": "测度与规范有界变差函数的一一对应",
    "title": "定理：$\\mathbb{R}$ 上的复 Borel 测度与规范有界变差函数一一对应",
+   "title_en": "Borel measures and normalised functions of bounded variation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.borel-measure-nbv.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -25836,6 +27521,23 @@
    "type": "corollary",
    "label": "积分得到的函数绝对连续且规范有界变差",
    "title": "推论：$f \\in L^{1}(m) \\implies F(x) = \\int_{-\\infty}^{x} f$ 绝对连续且规范有界变差；反之亦然",
+   "title_en": "the integral of a function is absolutely continuous and of bounded variation",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.integral-is-ac-nbv.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -26237,6 +27939,24 @@
    "type": "theorem",
    "label": "L^∞ 的性质",
    "title": "定理：$L^\\infty$ 的五条基本性质",
+   "label_en": "properties of L-infinity",
+   "title_en": "properties of L-infinity",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.linf-properties.en.md",
    "region": "analysis-measure",
    "regions": [
     "analysis-measure",
@@ -28337,6 +30057,23 @@
    "type": "theorem",
    "label": "完备有序域的唯一性",
    "title": "任何完备有序域都与 $\\mathbb{R}$ 同构（构造无关性）",
+   "title_en": "uniqueness of the complete ordered field",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.real-unique.en.md",
    "region": "set-theory",
    "regions": [
     "set-theory",
@@ -30267,6 +32004,23 @@
    "type": "lemma",
    "label": "预层态射的单满按点检验",
    "title": "预层是逐点算的",
+   "title_en": "monomorphisms of presheaves are pointwise",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.presheaf-mono-pointwise.en.md",
    "region": "category",
    "regions": [
     "category"
@@ -31183,6 +32937,23 @@
    "type": "proposition",
    "label": "连通分量是闭开邻域之交",
    "title": "紧 Hausdorff 空间中连通分量 = 闭开邻域之交",
+   "title_en": "components are intersections of clopen neighbourhoods",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.component-clopen.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -38555,6 +40326,23 @@
    "type": "theorem",
    "label": "过滤复形给出谱序列",
    "title": "下有界过滤复形 $\\implies$ 谱序列",
+   "title_en": "a filtered complex gives a spectral sequence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.filtered-complex-spectral.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -38619,6 +40407,24 @@
    "type": "corollary",
    "label": "Grothendieck 谱序列",
    "title": "Grothendieck 谱序列",
+   "label_en": "Grothendieck spectral sequence",
+   "title_en": "Grothendieck spectral sequence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.grothendieck-spectral.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -42327,6 +44133,23 @@
    "type": "proposition",
    "label": "仿紧性与单位分解",
    "title": "命题：仿紧 Hausdorff / 正规 $\\iff$ 单位分解存在",
+   "title_en": "paracompactness and partitions of unity",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.paracompact-partition-unity.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -43047,6 +44870,23 @@
    "type": "proposition",
    "label": "双复形给出谱序列",
    "title": "命题：下有界双复形 $\\implies$ $E^{0}_{p,q} = K^{p,q} \\Longrightarrow H^{p+q}(K^{\\bullet})$",
+   "title_en": "a bicomplex gives a spectral sequence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.bicomplex-spectral.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -43849,6 +45689,23 @@
    "type": "proposition",
    "label": "谱序列的五项正合列",
    "title": "命题：$0 \\to E^{1,0}_{2} \\to H^{1} \\to E^{0,1}_{2} \\xrightarrow{d_{2}} E^{2,0}_{2} \\to H^{2}$",
+   "title_en": "five-term exact sequence of a spectral sequence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.five-term-spectral-sequence.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -43872,6 +45729,24 @@
    "type": "proposition",
    "label": "过滤复形的第一页",
    "title": "命题：$E^{1}_{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$",
+   "label_en": "first page of a filtered complex",
+   "title_en": "first page of a filtered complex",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.filtered-first-page.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -43936,6 +45811,23 @@
    "type": "proposition",
    "label": "正合因子让谱序列退化",
    "title": "命题：$F$ 正合 $\\implies R^{n}G(FK) \\cong R^{n}(G \\circ F)(K)$",
+   "title_en": "an exact factor degenerates the spectral sequence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.derived-functor-exact-factor.en.md",
    "region": "homology",
    "regions": [
     "homology"
@@ -44935,6 +46827,23 @@
    "type": "proposition",
    "label": "紧空间的商紧",
    "title": "命题：$S$ 紧 $\\implies S/R$ 紧",
+   "title_en": "quotients of compact spaces are compact",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.quotient-of-compact.en.md",
    "region": "topology",
    "regions": [
     "topology"
@@ -47117,6 +49026,24 @@
    "type": "theorem",
    "label": "夹逼定理",
    "title": "夹逼定理",
+   "label_en": "squeeze theorem",
+   "title_en": "squeeze theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.squeeze.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -47279,6 +49206,24 @@
    "type": "lemma",
    "label": "闭区间套定理",
    "title": "引理：闭区间套定理",
+   "label_en": "nested interval theorem",
+   "title_en": "nested interval theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/lem.nested-intervals.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -47378,6 +49323,24 @@
    "type": "theorem",
    "label": "ℝ 是完备度量空间",
    "title": "定理：$(\\mathbb{R}, |x - y|)$ 是完备度量空间",
+   "label_en": "R is a complete metric space",
+   "title_en": "R is a complete metric space",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.real-complete-metric.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -47401,6 +49364,23 @@
    "type": "theorem",
    "label": "完备性的六条等价",
    "title": "定理：下列六条彼此等价",
+   "title_en": "six equivalent forms of completeness",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.completeness-equivalent.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -47424,6 +49404,23 @@
    "type": "corollary",
    "label": "有界闭 ⟺ 紧（ℝⁿ）",
    "title": "推论：Heine–Borel 定理 —— $\\mathbb{R}^{n}$ 中紧 $\\iff$ 有界且闭",
+   "title_en": "closed and bounded iff compact in Rn",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.heine-borel.en.md",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -47470,6 +49467,23 @@
    "type": "proposition",
    "label": "紧集上连续 ⟹ 有界",
    "title": "命题：紧空间上的连续实值函数有界",
+   "title_en": "continuous on a compact set implies bounded",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.continuous-bounded-on-compact.en.md",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -47573,6 +49587,24 @@
    "type": "corollary",
    "label": "零点定理",
    "title": "推论：零点定理（Bolzano 定理）",
+   "label_en": "Bolzano's theorem",
+   "title_en": "Bolzano's theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/cor.zero-point.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -47594,6 +49626,23 @@
    "type": "theorem",
    "label": "紧集上连续 ⟹ 一致连续",
    "title": "定理（Cantor）：紧集上的连续函数一致连续",
+   "title_en": "continuous on a compact set implies uniformly continuous",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.uniform-continuity-compact.en.md",
    "region": "analysis",
    "regions": [
     "analysis",
@@ -47617,6 +49666,23 @@
    "type": "theorem",
    "label": "反函数连续",
    "title": "定理：严格单调连续函数的反函数连续",
+   "title_en": "continuity of the inverse of a strictly monotone function",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.monotone-inverse.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -47682,6 +49748,23 @@
    "type": "theorem",
    "label": "Fermat 引理",
    "title": "Fermat 引理：内点极值 $\\implies$ 导数为零",
+   "title_en": "Fermat's lemma on interior extrema",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.fermat.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -48900,6 +50983,24 @@
    "type": "theorem",
    "label": "Kummer 判别法",
    "title": "定理：Kummer 判别法（正项级数判据的总纲）",
+   "label_en": "Kummer's test",
+   "title_en": "Kummer's test",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.kummer.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -48924,6 +51025,24 @@
    "type": "theorem",
    "label": "根值判别法",
    "title": "定理：根值判别法（Cauchy，用 $\\limsup \\sqrt[n]{a_n}$）",
+   "label_en": "root test",
+   "title_en": "root test",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.root-test.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -48946,6 +51065,24 @@
    "type": "theorem",
    "label": "积分判别法",
    "title": "定理：积分判别法（Cauchy 积分判别法）",
+   "label_en": "integral test",
+   "title_en": "integral test",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.integral-test.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -48969,6 +51106,24 @@
    "type": "theorem",
    "label": "Cauchy 凝聚判别法",
    "title": "定理：Cauchy 凝聚判别法（按 $2^{k}$ 分组）",
+   "label_en": "Cauchy condensation test",
+   "title_en": "Cauchy condensation test",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.cauchy-condensation.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49153,6 +51308,24 @@
    "type": "theorem",
    "label": "Riemann 重排定理",
    "title": "定理（Riemann）：条件收敛级数可以重排成任意和",
+   "label_en": "Riemann rearrangement theorem",
+   "title_en": "Riemann rearrangement theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.riemann-rearrangement.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49238,6 +51411,24 @@
    "type": "definition",
    "label": "一致收敛",
    "title": "一致收敛 $f_n \\rightrightarrows f$",
+   "label_en": "uniform convergence",
+   "title_en": "uniform convergence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.uniform-convergence.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49282,6 +51473,23 @@
    "type": "theorem",
    "label": "一致收敛保连续",
    "title": "定理：一致收敛的连续函数列的极限连续",
+   "title_en": "a uniform limit of continuous functions is continuous",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.uniform-limit-continuous.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49305,6 +51513,23 @@
    "type": "theorem",
    "label": "积分与极限交换",
    "title": "定理：一致收敛 $\\implies$ 极限与积分可交换（Riemann 版）",
+   "title_en": "interchange of integral and limit",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.uniform-limit-integral.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49368,6 +51593,24 @@
    "type": "proposition",
    "label": "Weierstrass 判别法",
    "title": "命题：Weierstrass 判别法（$M$-判别法）",
+   "label_en": "Weierstrass M-test",
+   "title_en": "Weierstrass M-test",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.weierstrass-m-test.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49391,6 +51634,24 @@
    "type": "theorem",
    "label": "Dini 定理",
    "title": "定理（Dini）：紧集上单调的逐点收敛就是一致收敛",
+   "label_en": "Dini's theorem",
+   "title_en": "Dini's theorem",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.dini.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49436,6 +51697,24 @@
    "type": "theorem",
    "label": "收敛半径",
    "title": "定理：Cauchy–Hadamard 收敛半径",
+   "label_en": "radius of convergence",
+   "title_en": "radius of convergence",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.convergence-radius.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49498,6 +51777,23 @@
    "type": "theorem",
    "label": "Abel 第二定理",
    "title": "定理（Abel 第二定理）：端点处的连续性",
+   "title_en": "Abel's second theorem on endpoints",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.abel-endpoint.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
@@ -49606,6 +51902,24 @@
    "type": "theorem",
    "label": "Euler 公式",
    "title": "定理：$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$",
+   "label_en": "Euler's formula",
+   "title_en": "Euler's formula",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/thm.euler-formula.en.md",
    "region": "analysis",
    "regions": [
     "analysis"
