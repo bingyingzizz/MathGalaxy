@@ -196,7 +196,7 @@ MG.aliases = {
     { id: 'def.convergence-modes', aka: ['收敛方式', '五种收敛', 'modes of convergence', '几乎处处收敛', '一致收敛'] },
     { id: 'prop.convergence-counterexamples', en: 'four standard counterexamples', aka: ['反例', '收敛的反例', '标准反例'] },
     { id: 'prop.L1-implies-measure', en: 'L1 convergence implies convergence in measure', aka: ['L1 收敛推出依测度'] },
-    { id: 'thm.egorov', aka: ['Egorov', '叶果洛夫', '叶戈罗夫'] },
+    { id: 'thm.egorov', aka: ['Egorov', '叶果洛夫', '叶戈罗夫', 'Егоров'] },
     { id: 'cor.lusin', aka: ['Lusin', '卢津'] },
 
     /* 积分 */
@@ -1023,7 +1023,7 @@ MG.aliases = {
     { id: 'thm.minimal-poly-divisor', en: 'the minimal polynomial divides the characteristic polynomial', aka: ['极小多项式整除特征多项式'] },
     { id: 'thm.primary-decomposition', en: 'primary decomposition into generalised eigenspaces', aka: ['根子空间分解'] },
     { id: 'cor.jordan-uniqueness', en: 'uniqueness of the Jordan form', aka: ['Jordan 型的唯一性'] },
-    { id: 'cor.archimedean-epsilon', en: 'the Archimedean property in epsilon form', aka: ['阿基米德的 ε 形式与取整'] },
+    { id: 'cor.archimedean-epsilon', en: 'the Archimedean property in epsilon form', aka: ['阿基米德的 ε 形式与取整', '阿基米德'] },
     { id: 'thm.p-series', en: 'p-series', aka: ['p-级数'] },
     { id: 'prop.solid-hypercover', en: 'solidification turns hypercovers into exact sequences', aka: ['固态化把超覆盖变成正合列'] },
     { id: 'def.six-functors', en: 'six functor formalism', aka: ['6-函子形式'] },
@@ -1191,6 +1191,16 @@ MG.aliases = {
     { id: 'def.limit-point', en: 'limit point', aka: ['聚点'] },
     { id: 'def.convex-function', en: 'convex function', aka: ['凸函数'] },
     { id: 'def.pointwise-convergence', en: 'pointwise convergence', aka: ['逐点收敛'] },
+    { id: 'thm.paracompact-hausdorff-normal', aka: ['仿紧豪斯多夫空间正规', '豪斯多夫'] },
+    { id: 'thm.metric-paracompact', aka: ['斯通定理', '斯通'] },
+    { id: 'thm.urysohn-metrization', aka: ['乌雷松度量化定理', '乌雷松'] },
+    { id: 'thm.liouville-formula', aka: ['刘维尔公式', '刘维尔'] },
+    { id: 'lem.gauss-lemma', aka: ['高斯引理'] },
+    { id: 'def.curvature-tensor', aka: ['黎曼曲率张量'] },
+    { id: 'def.gauss-curvature', aka: ['高斯曲率'] },
+    { id: 'thm.gauss-bonnet', aka: ['高斯博内定理'] },
+    { id: 'def.riemannian-metric', aka: ['黎曼度量'] },
+    { id: 'def.volume-form', aka: ['黎曼体积', '黎曼'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

@@ -45,7 +45,7 @@ window.MG = window.MG || {};
       id: 'lem.zorn',
       cluster: 'order.choice',
       type: 'lemma',
-      label: '佐恩引理',
+      label: 'Zorn 引理',
       title: '佐恩引理（Zorn\'s Lemma）',
       // 表面是序理论陈述，主要用途却在集合论/代数 → 边界节点
       regions: ['order-theory', 'set-theory'],

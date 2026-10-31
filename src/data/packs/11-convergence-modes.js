@@ -149,7 +149,7 @@ window.MG = window.MG || {};
       id: 'thm.egorov',
       cluster: 'analysis.measurable',
       type: 'theorem',
-      label: 'Egorov 定理',
+      label: 'Егоров 定理',
       title: 'Egorov 定理：a.e. 收敛 $\\implies$ 近一致',
       regions: ['analysis'],
       tags: ['定理', 'Egorov', '近一致', '有限测度'],

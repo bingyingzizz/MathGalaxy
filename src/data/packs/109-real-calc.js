@@ -102,7 +102,7 @@ window.MG = window.MG || {};
       id: 'cor.archimedean-epsilon',
       cluster: 'analysis.real-calc',
       type: 'corollary',
-      label: '阿基米德的 ε 形式与取整',
+      label: 'Archimedes 的 ε 形式与取整',
       title: '推论：$1/n < \\varepsilon$ 与取整函数',
       regions: ['analysis'],
       tags: ['推论', '阿基米德', '取整'],

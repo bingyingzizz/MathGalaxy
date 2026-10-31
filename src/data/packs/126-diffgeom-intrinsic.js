@@ -258,8 +258,8 @@ window.MG = window.MG || {};
       id: 'thm.liouville-formula',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
-      label: '刘维尔公式',
-      title: '测地曲率的刘维尔公式',
+      label: 'Liouville 公式',
+      title: '测地曲率的 Liouville 公式',
       regions: ['diffgeom'],
       tags: ['定理', '微分几何', '内蕴几何', '测地曲率', '刘维尔公式'],
       statement: [
@@ -354,8 +354,8 @@ window.MG = window.MG || {};
       id: 'lem.gauss-lemma',
       cluster: 'diffgeom.intrinsic',
       type: 'lemma',
-      label: '高斯引理',
-      title: '高斯引理与测地极坐标',
+      label: 'Gauss 引理',
+      title: 'Gauss 引理与测地极坐标',
       regions: ['diffgeom'],
       tags: ['引理', '微分几何', '内蕴几何', '高斯引理', '测地极坐标'],
       statement: [
@@ -414,8 +414,8 @@ window.MG = window.MG || {};
       id: 'def.curvature-tensor',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
-      label: '黎曼曲率张量',
-      title: '黎曼曲率张量与局部平坦性',
+      label: 'Riemann 曲率张量',
+      title: 'Riemann 曲率张量与局部平坦性',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '曲率张量', '比安基恒等式'],
       statement: [
@@ -452,8 +452,8 @@ window.MG = window.MG || {};
       id: 'def.gauss-curvature',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
-      label: '高斯曲率',
-      title: '高斯曲率的内蕴定义',
+      label: 'Gauss 曲率',
+      title: 'Gauss 曲率的内蕴定义',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '高斯曲率', '曲率张量'],
       statement: [
@@ -491,7 +491,7 @@ window.MG = window.MG || {};
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
       label: '绝妙定理',
-      title: '高斯曲率是内蕴量',
+      title: 'Gauss 曲率是内蕴量',
       regions: ['diffgeom'],
       tags: ['定理', '微分几何', '内蕴几何', '高斯曲率', '绝妙定理'],
       statement: [
@@ -521,8 +521,8 @@ window.MG = window.MG || {};
       id: 'thm.gauss-bonnet',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
-      label: '高斯博内定理',
-      title: '高斯博内定理与欧拉示性数',
+      label: 'Gauss–Bonnet 定理',
+      title: 'Gauss–Bonnet 定理与 Euler 示性数',
       regions: ['diffgeom'],
       tags: ['定理', '微分几何', '内蕴几何', '高斯博内', '欧拉示性数'],
       statement: [

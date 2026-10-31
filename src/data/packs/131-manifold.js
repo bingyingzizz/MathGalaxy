@@ -598,7 +598,7 @@ window.MG = window.MG || {};
       cluster: 'diffgeom.form',
       type: 'definition',
       label: '体积形式',
-      title: '体积形式与黎曼体积',
+      title: '体积形式与 Riemann 体积',
       regions: ['diffgeom'],
       tags: ['定义', '微分流形', '体积形式', '黎曼体积', '定向'],
       statement: [

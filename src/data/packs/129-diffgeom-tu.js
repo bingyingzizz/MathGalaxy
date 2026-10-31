@@ -504,8 +504,8 @@ window.MG = window.MG || {};
       id: 'def.riemannian-metric',
       cluster: 'diffgeom.intrinsic',
       type: 'definition',
-      label: '黎曼度量',
-      title: '黎曼度量',
+      label: 'Riemann 度量',
+      title: 'Riemann 度量',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '黎曼几何', '度量', '内积'],
       statement: [
