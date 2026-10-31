@@ -1,4 +1,4 @@
-# 表示函子　`def.representable`
+# representable functor　`def.representable`
 English entry · root `../`
 [in graph](../#n=def.representable)　·　[Chinese page (authoritative)](./def.representable.md)
 

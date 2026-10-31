@@ -1,6 +1,6 @@
 # 二级命中清单（title 定下来的英文名）
 
-> 由 `bun tools/i18n-backfill.mjs` 现算，共 **3** 条（占全部 1287 个节点）。
+> 由 `bun tools/i18n-backfill.mjs` 现算，共 **3** 条（占全部 1288 个节点）。
 > 规则（作者 2026-10-16 拍板）：候选 = 该节点 aka 里**名字样**的英文条目；
 > 匹配 = **大小写不敏感 + 词边界精确匹配**，**只扫 title**；恰好命中一个才采用；
 > 值取 **aka 源字符串**。⛔ 不做子串、不做词形还原、不扩大到 label / statement。
@@ -20,10 +20,11 @@
 「备注」列只写机械看得出来的事实（节点含两个概念 / title 里是 LaTeX 符号），不猜。
 ---
 
-## ⚠️ 跨节点重复的 title_en（3 组，只记录、不自动改）
+## ⚠️ 跨节点重复的 title_en（4 组，只记录、不自动改）
 
 | 英文名 | 用在哪些节点 |
 |---|---|
+| `monotone convergence theorem` | `thm.monotone-convergence`（单调有界定理） · `thm.mct`（单调收敛定理） |
 | `power set` | `ax.power`（幂集公理） · `def.power-set`（幂集 𝒫(X)） |
 | `sections functor` | `prop.condab-section`（截面函子保极限余极限） · `def.section-functor`（截面函子） |
 | `internal hom` | `def.internal-hom`（内 Hom） · `prop.cond-internal-hom`（内部 Hom 的函数空间刻画） |

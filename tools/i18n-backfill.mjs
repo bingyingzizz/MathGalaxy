@@ -146,9 +146,16 @@ export function loadMG() {
 /** 把每个节点按「能不能自动填」分桶。build.mjs 也调这个 —— 口径只有这一份。 */
 export function bucketRows(MG, graph) {
   const akaById = Object.create(null);
-  ((MG.aliases && MG.aliases.nodes) || []).forEach((r) => { if (r && r.id) akaById[r.id] = r.aka || []; });
+  const enById = Object.create(null);     // ⭐ 显式英文名（aka 记录的 `en` 字段）
+  ((MG.aliases && MG.aliases.nodes) || []).forEach((r) => {
+    if (r && r.id) {
+      akaById[r.id] = r.aka || [];
+      if (r.en) enById[r.id] = String(r.en).trim();
+    }
+  });
   return graph.nodes.map((n) => {
     const aka = akaById[n.id] || [];
+    const explicit = enById[n.id] || '';
     const enAll = aka.filter(isEnglish);
     const refs = enAll.filter(refCode);                  // 书号：搜索用，不是名字
     const en = enAll.filter((x) => !refCode(x));
@@ -156,7 +163,7 @@ export function bucketRows(MG, graph) {
     const m = /[（(]([^（）()]{2,90})[）)]/.exec(String(n.title || ''));
     const titleEn = m && cleanTitle(m[1]) ? m[1].trim() : '';
     return {
-      id: n.id, label: n.label, title: n.title, type: n.type, cluster: n.cluster || null,
+      id: n.id, label: n.label, title: n.title, type: n.type, cluster: n.cluster || null, explicit,
       regions: (n.regions || []).slice(), en, refs, clean, titleEn,
     };
   });
@@ -164,9 +171,10 @@ export function bucketRows(MG, graph) {
 
 /** 分桶结果 */
 export function splitBuckets(rows) {
-  const b = { auto: [], ambiguous: [], abbrev: [], refOnly: [], titleOnly: [], none: [] };
+  const b = { explicit: [], auto: [], ambiguous: [], abbrev: [], refOnly: [], titleOnly: [], none: [] };
   rows.forEach((r) => {
-    if (r.clean.length === 1) b.auto.push(r);
+    if (r.explicit) b.explicit.push(r);          // ⭐ 作者显式定的名，优先于一切机械规则
+    else if (r.clean.length === 1) b.auto.push(r);
     else if (r.clean.length >= 2) b.ambiguous.push(r);
     else if (r.en.length >= 1) b.abbrev.push(r);
     else if (r.refs.length >= 1) b.refOnly.push(r);
@@ -239,16 +247,26 @@ export function remarkOf(r, cand) {
 
 /** 一二级合起来的结果 */
 export function decide(rows, b) {
+  /* ⭐ t0 = **显式命名**（作者在 aliases.js 的 aka 记录里写 `en: '...'`）。
+     为什么需要它：机械规则要求 aka 里「恰好一条名字样的英文」，而很多节点的 aka
+     本来就有两三条都是**合法的搜索别名**（`ax.choice` → axiom of choice / Zorn）。
+     删别名会伤站内搜索，猜又有风险 ⇒ 另给一个字段让作者直接定名。
+     ⛔ 这个字段**不会**被机械规则推导 —— 只有人（或经人核过的 agent）能写。 */
+  const t0 = b.explicit.map((r) => ({
+    r,
+    e: { title_en: r.explicit, label_en: r.explicit.length <= 32 ? r.explicit : null, from: 'explicit' },
+  }));
   const t1 = b.auto.map((r) => ({ r, e: entryOf(r) }));
   const t2 = [];
   const gaps = [];
   for (const r of rows) {
+    if (r.explicit) continue;                      // 零级：显式命名
     if (r.clean.length === 1) continue;            // 一级
     const cand = tier2Of(r);
     if (cand) t2.push({ r, e: tier2Entry(cand), cand, form: titleFormOf(r.title, cand) });
     else gaps.push(r);
   }
-  return { t1, t2, gaps };
+  return { t0, t1, t2, gaps };
 }
 
 /** 只记录、不自动改的两类差异 + 跨节点重复检测 */
@@ -372,9 +390,9 @@ export function secondTierText(t2, checks, nAll) {
 
 export function gapsText(rows, b, dec, regionName) {
   const g = [];
-  const t1 = dec.t1.length, t2 = dec.t2.length;
+  const t0 = dec.t0.length, t1 = dec.t1.length, t2 = dec.t2.length;
   const ambLeft = b.ambiguous.length - t2;   // ⚠️ 二级是从「歧义」桶里捞出来的 ⇒ 要减掉，表才互斥
-  const covered = t1 + t2;
+  const covered = t0 + t1 + t2;
   const pct = (x) => (100 * x / rows.length).toFixed(1) + '%';
   g.push('# 英文名缺口清单');
   g.push('');
@@ -389,9 +407,13 @@ export function gapsText(rows, b, dec, regionName) {
   g.push('## 认领方式（怎么把一条缺口填掉）');
   g.push('');
   g.push('1. 在表里挑一条（或一片），记下节点 id；');
-  g.push('2. 打开 `src/data/aliases.js`，在**该节点的 `aka` 数组里加上英文名**');
+  g.push('2. 打开 `src/data/aliases.js`，在**该节点的 `aka` 数组里加上英文名**（或给它加 `en:` 字段，见下）');
   g.push('   （唯一真源就是这里 —— ⛔ 别去改 `src/data/i18n.js`，那是生成物）；');
   g.push('   · 加完要让 aka 里**恰好只剩一条「名字样」英文条目**，一级规则才认；');
+  g.push('   · ⭐ **aka 里本来就有两三条合法英文别名时**（`ax.choice` → axiom of choice / Zorn），');
+  g.push('     别删别名（那会伤站内搜索）—— 改成给记录加一个显式字段：');
+  g.push('     `{ id: \'ax.choice\', en: \'axiom of choice\', aka: [...] }`。');
+  g.push('     `en` 是**零级**规则：有它就直接用，绕过一切歧义判定，也不进内文跳转；');
   g.push('   · 「名字样」= 多个词时至少一个是实词；单个词要纯字母、有元音、不是全大写、不是驼峰；');
   g.push('   · 书号（`Exercise 2.25` / `Theorem 8.3.9`）**不算名字**，加不加都不影响。');
   g.push('3. 跑 `bun tools/i18n-backfill.mjs`（只写生成物，不动内容）；');
@@ -458,7 +480,7 @@ function main() {
   const rows = bucketRows(MG, graph);
   const b = splitBuckets(rows);
   const dec = decide(rows, b);
-  const all = dec.t1.concat(dec.t2);
+  const all = dec.t0.concat(dec.t1, dec.t2);
   const checks = checksOf(all);
   const entries = all.map(({ r, e }) => ({ id: r.id, title_en: e.title_en, label_en: e.label_en, from: e.from }));
   /* MANUAL-KEEP: 手工条目（from:'manual'）永远保留 —— 这些是人工审过的英文名，
@@ -511,7 +533,7 @@ function main() {
       console.error('✗ 漂移 ' + drift.length + ' 处：' + drift.slice(0, 5).join('；') + '（跑 bun tools/i18n-backfill.mjs）');
       process.exit(1);
     }
-    console.log(`✓ 英文名与源一致：一级 ${dec.t1.length} + 二级 ${dec.t2.length} = ${entries.length}` +
+    console.log(`✓ 英文名与源一致：显式 ${dec.t0.length} + 一级 ${dec.t1.length} + 二级 ${dec.t2.length} = ${entries.length}` +
       `（覆盖 ${(100 * entries.length / rows.length).toFixed(1)}%）· 缺口 ${dec.gaps.length}`);
     return;
   }
@@ -525,6 +547,7 @@ function main() {
 
   const pct = (x) => (100 * x / rows.length).toFixed(1) + '%';
   console.log(`节点 ${rows.length} 个：`);
+  console.log(`  ✅ 显式命名（aliases 的 en:）  ：${dec.t0.length}  (${pct(dec.t0.length)})`);
   console.log(`  ✅ 一级 title_en/label_en：${dec.t1.length}  (${pct(dec.t1.length)})`);
   console.log(`  ✅ 二级（title 定名）    ：${dec.t2.length}  (${pct(dec.t2.length)})` +
     `  —— 其中大小写与 aka 不同的 ${checks.caseDiff.length} 处`);

@@ -21,4 +21,6 @@
 
 - Exercise 7.28 → prop.spectral-sequence-page-picture
 
+- 正合偶给出谱序列 → thm.exact-couple-spectral
+
 见 `../../alias.md`。

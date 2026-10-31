@@ -1799,7 +1799,7 @@ function assertI18n(MG, graph) {
   const keys = Object.keys(I.nodes);
   const rows = bucketRows(MG, graph);
   const dec = decide(rows, splitBuckets(rows));
-  dec.t1.concat(dec.t2).forEach(({ r, e }) => {
+  dec.t0.concat(dec.t1, dec.t2).forEach(({ r, e }) => {
     if (!I.nodes[r.id]) {
       errs.push(`英文名漂移：\`${r.id}\` 按口径该填（${e.from}），但 i18n.js 里没有（跑 bun tools/i18n-backfill.mjs）`);
     }
@@ -2012,6 +2012,19 @@ function assertAliases(MG, graph) {  const A = MG.aliases;
     if (seenNode.has(r.id)) errs.push(`别名表：节点 \`${r.id}\` 重复登记`);
     seenNode.add(r.id);
     if (!(r.aka || []).length) errs.push(`别名表：\`${r.id}\` 的 aka 是空的`);
+    /* ⭐ 显式英文名（零级规则，见 tools/i18n-backfill.mjs）：它是**纯文本英文字段**，
+       和 label/tags 一样不能含 $ ；也不许含汉字 —— 那就不叫英文名了。 */
+    if (r.en !== undefined) {
+      const BT = String.fromCharCode(96);
+      const say = (msg) => errs.push('别名表：' + BT + r.id + BT + ' ' + msg);
+      const en = String(r.en).trim();
+      if (!en) say('的 en 是空的');
+      else {
+        if (en.indexOf(String.fromCharCode(36)) >= 0) say('的 en 含 $ ：' + en);
+        if (/[\u4e00-\u9fff\u3400-\u4dbf]/.test(en)) say('的 en 含汉字：' + en);
+        if (en.length > 80) say('的 en 太长（' + en.length + ' > 80）：' + en);
+      }
+    }
     for (const a of (r.aka || [])) {
       if (!String(a).trim()) errs.push(`别名表：\`${r.id}\` 有空别名`);
       if (String(a).includes('$')) {

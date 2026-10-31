@@ -27,4 +27,4 @@
 
 - 解析延拓 | analytical continuation → def.analytic-continuation
 
-见 `../../alias.md`。
+> 续见 alias/aka/complex.3.md
