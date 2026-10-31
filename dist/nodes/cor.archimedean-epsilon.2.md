@@ -1,4 +1,4 @@
-# 阿基米德的 ε 形式与取整　`cor.archimedean-epsilon`　·　续页（第 2 页）
+# Archimedes 的 ε 形式与取整　`cor.archimedean-epsilon`　·　续页（第 2 页）
 [在星图里打开](../#n=cor.archimedean-epsilon)　·　第 1 页 [nodes/cor.archimedean-epsilon.md](./cor.archimedean-epsilon.md)
 
 ## 陈述（续）

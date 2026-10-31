@@ -1089,11 +1089,77 @@
       return { x: x / wsum, y: y / wsum };
     }
 
+    /* ⭐ 诊断：大标签（板块 / 星系 / 星团）的「锚点 y vs 画出来的 y」账本。
+       为的是回答「避让有没有把名字挪得离它该在的地方太远」（用户 2026-10-31 的题目）。
+       默认关，关着时零分配；`setBigTrace(true)` 之后最近一次重算里每个大标签落一条：
+         { id, kind, anchorY, y, dy, fs, fsFull, scale, nudged }
+       ⛔ `dy` 就是判据：它直接就是「名字被挪了多远」，不用在探针里另算。 */
+    var bigTraceOn = false, bigTraceMap = null;
+
+    /* ================================================== 大标签：先缩字，再微挪
+       用户 2026-10-31：「让这个大标签宁可变小也不要避让飞出去，
+       这个标签避让不要以牺牲准确位置为前提。」
+       —— 原来的 placeName 只能挪（最多 ±2 档），板块名一档就是 bh+6 ≈ 54px，
+          两档 108px：名字跑到隔壁板块头上，就是假信息。
+       —— 现在：**从满字号逐档往下缩**，每一档都只在锚点（gap 0）判避让；
+          全缩过还放不下，才允许挪 bigNudge 档（缩过之后一档也小很多）。
+           缩不过 bigMinPx（默认 10px）就不再缩 —— 那时字号已经读不出了。
+       `build(fs)` 负责：设 `ctx.font`、量字宽、返回 { bw, bh, ... }。
+       ⭐ 返回时 `ctx.font` 就是选中那一档的 —— 因为 build 是最后一个被调用的。 */
+    function placeBigName(cx, cy, fsFull, rank, kind, build, id) {
+      /* 参数在 C.node 里（跟 labelSize / labelPad 同一块）：大标签的「缩字阶梯」。 */
+      var scales = (kind === 'sector' ? C.node.bigScalesSector : C.node.bigScales)
+        || C.node.bigScales || [1];
+      var minPx = (C.node && C.node.bigMinPx) || 10;
+      var last = null;
+      function note(fs, slot, scale, nudged) {
+        if (!bigTraceOn) return;
+        bigTraceMap[kind + ':' + (id || (Math.round(cx) + ',' + Math.round(cy)))] = {
+          id: id || '', kind: kind, anchorY: cy, y: slot.y, dy: slot.y - cy,
+          fs: fs, fsFull: fsFull, scale: scale, nudged: !!nudged
+        };
+      }
+      /* 第一趟：**只在锚点**上，从大字号往小试 —— 位置优先，宁可变小 */
+      for (var i = 0; i < scales.length; i++) {
+        var fs1 = fsFull * scales[i];
+        if (fs1 < minPx) break;
+        var m1 = build(fs1);                    // 副作用：ctx.font = 该档字号
+        last = { fs: fs1, m: m1, scale: scales[i] };
+        var s1 = placeName(cx, cy, m1.bw, m1.bh, rank, kind, 0);
+        if (s1) { note(fs1, s1, scales[i], false); return { fs: fs1, m: m1, slot: s1, shrunk: scales[i] < 1 }; }
+      }
+      if (!last) return null;
+      /* 第二趟：锚点真的放不下（另一种大标签占着它）⇒ 才允许挪**一小步**。
+          ⚠️ 这一趟也要逐档缩 —— 否则像板块名那种「锚点上永远与邻居擦肩」的，
+             直接当成「放不下」就丢了整个名字（实测旧版画 4 个板块名，第一版只画出 2 个）。 */
+      var nudge = (C.node && C.node.bigNudge != null) ? C.node.bigNudge : 1;
+      if (nudge > 0) {
+        /* ⚠️ 这一趟**从小到大**试：一档的距离 = bh+6，字号越小挪得越少。
+           用户的口径是「位置 > 字号」，所以宁可小一号、少挪十几像素。 */
+        for (var j = scales.length - 1; j >= 0; j--) {
+          var fs2 = fsFull * scales[j];
+          if (fs2 < minPx) continue;
+          var m2 = build(fs2);
+          var s2 = placeName(cx, cy, m2.bw, m2.bh, rank, kind, nudge);
+          if (s2) { note(fs2, s2, scales[j], true); return { fs: fs2, m: m2, slot: s2, shrunk: true, nudged: true }; }
+        }
+      }
+      /* 实在放不下（连缩到最小、挪一小步都撞）⇒ 这一条不画。账本里留一条 why:'none'，
+         否则探针里只能看到「成功的那些」，会误以为根本没候选（踩过）。 */
+      if (bigTraceOn) {
+        bigTraceMap[kind + ':' + (id || (Math.round(cx) + ',' + Math.round(cy)))] =
+          { id: id || '', kind: kind, anchorY: cy, y: null, dy: null, fs: last.fs, fsFull: fsFull,
+            scale: last.scale, nudged: false, why: 'none' };
+      }
+      return null;
+    }
+
     function drawSectorNames() {
       var a = lodA.sectorName;
-      var fs = U.clamp(26 * Math.pow(view.cam.k, 0.12), 17, 34);
+      var fs0 = U.clamp(26 * Math.pow(view.cam.k, 0.12), 17, 34);
       ctx.save();
-      ctx.font = '800 ' + fs.toFixed(1) + 'px ' + T.font;
+      /* 右边那些 40 / +22 / 0.22 是**尺寸公式**：换字号时得跟着重算，
+         所以整段抽成 build(fs)，不能只改 ctx.font。 */
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       (view.graph.sectors || []).forEach(function (s) {
@@ -1103,20 +1169,28 @@
         var p = w2s(c.x, c.y);
         if (p.x < -400 || p.x > W + 400 || p.y < -300 || p.y > H + 300) return;
         var text = s.nameShow || s.name;
-        var tw = measure(ctx, text, ctx.font);   // 缓存键含 displayLang ⇒ 中英分别量
-        var ls = fs * 0.22;
-        var bw = tw + ls * (text.length - 1) + 40, bh = fs + 22;
-        // rank 2 = 当前尺度主名；放不下就**不画**（不缩字号、不叠到别人身上）
-        var slot = placeName(p.x, p.y, bw, bh, 2);
-        if (!slot) return;
-        var cy = slot.y;
+        var nch = text.length;
+        var pick = placeBigName(p.x, p.y, fs0, 2, 'sector', function (fs) {
+          ctx.font = '800 ' + fs.toFixed(1) + 'px ' + T.font;
+          var tw = measure(ctx, text, ctx.font);   // 缓存键含 displayLang ⇒ 中英分别量
+          var ls = fs * 0.22;
+          /* ⚠️ 内边距也得跟着缩：只缩字号时固定 +40/+22 把框卡在那里，
+             缩到 64% 框只小 16%，根本挤不进缝隙（踩过）。 */
+          var ks = fs / fs0;
+          return { tw: tw, ls: ls,
+            bw: tw + ls * (nch - 1) + 40 * ks, bh: fs + 22 * ks };
+        }, s.id);
+        // 放不下就不画（但现在是「缩到 64% 还放不下」才算放不下）
+        if (!pick) return;
+        var fs = pick.fs, m = pick.m, bw = m.bw, bh = m.bh, tw = m.tw, ls = m.ls;
+        var cy = pick.slot.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.94)';
         ctx.beginPath();
         roundPath(ctx, p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);
         ctx.fill();
         ctx.strokeStyle = U.rgba(s.color, 0.85);
-        ctx.lineWidth = 2.5;
+        ctx.lineWidth = Math.max(1.8, 2.5 * fs / fs0);
         ctx.stroke();
         // 手动加字距（和领域名同一手感，但更粗、更有颜色）
         var chars = text.split('');
@@ -1133,8 +1207,8 @@
         prof.labelCount++;                  // 大板块名也算一个「画上去的标签」
         /* pad = 给**节点名**留的禁入边距（见 drawLabels 里 placed 的膨胀）。
            板块名是最大的字，离它太近的节点名会把它读成一团。 */
-        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2, rank: 2, pad: 10,
-          kind: 'sector', id: s.id || '' });
+        nameBoxes.push({ x0: p.x - bw / 2, y0: cy - bh / 2, x1: p.x + bw / 2, y1: cy + bh / 2,
+          rank: 2, pad: 10, kind: 'sector', id: s.id || '' });
       });
       ctx.restore();
     }
@@ -1142,9 +1216,8 @@
     /* ------------------------------------------------ 星系名 */
     function drawGalaxyNames() {
       var a = lodA.galaxyName;
-      var fs = U.clamp(15 * Math.pow(view.cam.k, 0.30), 13, 34);
+      var fs0 = U.clamp(15 * Math.pow(view.cam.k, 0.30), 13, 34);
       ctx.save();
-      ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       (view.graph.regions || []).forEach(function (r) {
@@ -1157,19 +1230,24 @@
         /* ⭐ T2.4 收尾：画布上的名字也要跟语言走。`nameShow` 是**启动时算一次**的
            （见 src/core/i18n.js 的 MG.localizeDisplay）—— ⛔ 不在每帧里查表。 */
         var text = r.nameShow || r.name;
-        var tw = measure(ctx, text, ctx.font);
-        var ls = fs * 0.18;
-        var bw = tw + ls * (text.length - 1) + 26, bh = fs + 14;
-        // rank 2 = 当前尺度主名；放不下就不画（优先保选中 / 搜索命中的标签）
-        var slot = placeName(p.x, p.y, bw, bh, 2);
-        if (!slot) return;
-        var cy = slot.y;
+        var nch = text.length;
+        /* ⭐ 先缩字号、再微挪（见 placeBigName）：星系名的位置就是它的信息量。 */
+        var pick = placeBigName(p.x, p.y, fs0, 2, 'galaxy', function (fs) {
+          ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
+          var tw = measure(ctx, text, ctx.font);
+          var ls = fs * 0.18;
+          var ks = fs / fs0;                     // 内边距跟着缩（理同 drawSectorNames）
+          return { tw: tw, ls: ls, bw: tw + ls * (nch - 1) + 26 * ks, bh: fs + 14 * ks };
+        }, r.id);
+        if (!pick) return;
+        var fs = pick.fs, m = pick.m, bw = m.bw, bh = m.bh, tw = m.tw, ls = m.ls;
+        var cy = pick.slot.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.86)';
         ctx.beginPath();
         roundPath(ctx, p.x - bw / 2, cy - bh / 2, bw, bh, bh / 2);        ctx.fill();
         ctx.strokeStyle = U.rgba(r.color, 0.55);
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = Math.max(1.1, 1.5 * fs / fs0);
         ctx.stroke();
         // 手动加字距
         var chars = text.split('');
@@ -1310,10 +1388,14 @@
         依据是 nameBoxes（**选中/搜索 → 当前尺度主名 → 节点名**，按这个优先级依次占位）。
         rank：0 选中 / 1 悬停 / 2 当前尺度主名（板块·领域·星团）/ 3 其他。
         ⛔ 放不下就返回 null（调用方隐藏），**不缩字号、不降对比度**。 */
-    function placeName(cx, cy, bw, bh, rank, kind) {
+    function placeName(cx, cy, bw, bh, rank, kind, maxSteps) {
       var step = bh + 6;
       var gaps = [0, -step, step, -2 * step, 2 * step];
-      for (var gi = 0; gi < gaps.length; gi++) {
+      /* ⚠️ maxSteps 限制「为了避让能挪多远」。大标签传 0（只在锚点上找）——
+         见 placeBigName 的注释：位置比字号重要。（2026-10-31） */
+      var lim = (maxSteps == null) ? 2 : maxSteps;
+      var n = 1 + 2 * lim;
+      for (var gi = 0; gi < n && gi < gaps.length; gi++) {
         var y = cy + gaps[gi];
         var box = {
           x0: cx - bw / 2, y0: y - bh / 2, x1: cx + bw / 2, y1: y + bh / 2,
@@ -1330,9 +1412,9 @@
 
     function drawClusterNames() {
       var a = lodA.clusterName;
-      var fs = U.clamp(C.cluster.labelSize * Math.pow(view.cam.k, 0.42), 11, 26);
+      var fs0 = U.clamp(C.cluster.labelSize * Math.pow(view.cam.k, 0.42), 11, 26);
+      var pad = C.cluster.namePad;
       ctx.save();
-      ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       (view.graph.clusters || []).forEach(function (c) {
@@ -1341,15 +1423,18 @@
         var p = w2s(c.stat.cx, c.stat.cy);
         if (p.x < -300 || p.x > W + 300 || p.y < -200 || p.y > H + 200) return;
         var text = c.nameShow || c.name;      // ⭐ T2.4：星团名跟语言走（启动时算一次）
-        var tw = measure(ctx, text, ctx.font);
-        var pad = C.cluster.namePad;
-        var bw = tw + pad * 2, bh = fs + 9;
-        // ⚠️ 装置名之间也要互相避让：两个团挨得近时（比如「代数结构」与
-        //    「向量空间的基」）名字会直接叠在一起，读不清。放不下就不画 ——
-        //    包络还在，放大一点名字自然回来。
-        var slot = placeName(p.x, p.y, bw, bh, 2, 'cluster');
-        if (!slot) return;
-        var y = slot.y;
+        /* ⚠️ 装置名之间也要互相避让：两个团挨得近时（比如「代数结构」与
+           「向量空间的基」）名字会直接叠在一起，读不清。
+           ⭐ 2026-10-31：先缩字号、缩不过才挪一小步 —— 团名的位置也在传信息。 */
+        var pick = placeBigName(p.x, p.y, fs0, 2, 'cluster', function (fs) {
+          ctx.font = '700 ' + fs.toFixed(1) + 'px ' + T.font;
+          var tw = measure(ctx, text, ctx.font);
+          var ks = fs / fs0;                     // 内边距跟着缩（理同 drawSectorNames）
+          return { tw: tw, bw: tw + pad * 2 * ks, bh: fs + 9 * ks };
+        }, c.id);
+        if (!pick) return;                       // 缩到底还放不下：不画（包络还在，放大一点名字自然回来）
+        var fs = pick.fs, m = pick.m, bw = m.bw, bh = m.bh;
+        var y = pick.slot.y;
         ctx.globalAlpha = a;
         ctx.fillStyle = 'rgba(255,255,255,0.88)';
         ctx.beginPath();
@@ -1362,8 +1447,8 @@
         ctx.fillText(text, p.x, y + 0.5);
         ctx.globalAlpha = 1;
         prof.labelCount++;                   // 星团名也是一个「画上去的标签」
-        slot.box.pad = 5;                    // 节点名离团名至少 5px（见 drawLabels）
-        nameBoxes.push(slot.box);
+        pick.slot.box.pad = 5;               // 节点名离团名至少 5px（见 drawLabels）
+        nameBoxes.push(pick.slot.box);
       });
       ctx.restore();
     }
@@ -2526,6 +2611,9 @@
       labelStat: function () { return labelStat; },
       setLabelTrace: function (on) { labelTraceOn = !!on; if (!labelTraceOn) labelTraceMap = null; return labelTraceOn; },
       labelTrace: function () { return labelTraceMap; },
+      /* 诊断：大标签的「锚点 y vs 实际画在 y」账本（默认关、零分配）。见 bigTraceOn 的注释。 */
+      setBigTrace: function (on) { bigTraceOn = !!on; bigTraceMap = bigTraceOn ? Object.create(null) : null; return bigTraceOn; },
+      bigTrace: function () { return bigTraceMap; },
       /* 诊断：逐边 alpha 账本（默认关、零分配）。返回 { [edgeId]: {why,kind,r,lenPx,wlen,a0,a,inside} } */
       setEdgeTrace: function (on) {
         edgeTraceOn = !!on;
