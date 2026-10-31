@@ -6,4 +6,4 @@
 diffgeom.frame　diffgeom.surface　diffgeom.intrinsic　diffgeom.manifold　diffgeom.vector　diffgeom.form　diffgeom.lieg
 
 ## 数论（number）
-number.basic
+number.functions　number.quadratic　number.basic

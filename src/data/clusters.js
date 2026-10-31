@@ -781,6 +781,22 @@ MG.clusters = [
     desc: '把「唯一分解」这件事本身做成环类：**整环**（无零因子）→ gcd 整环 / Bézout 整环 / Euclid 整环 → **PID** → **UFD**，五个类之间的蕴含都是真蕴含（反例各给一个），外加中国剩余定理的环论形式（互素理想 ⇒ 直积分解）。'
   },
   {
+    id: 'number.functions',
+    name: '数论函数与素数分布',
+    en: 'Arithmetic Functions and Distribution of Primes',
+    parent: 'number',
+    hub: 'thm.mobius-inversion',
+    desc: '把「算术函数」做成一套可算的东西：**积性函数** → 除数函数 $\tau, \sigma$ → **Möbius 函数** $\mu$ → **Möbius 反演** → 素数计数 $\pi, \theta, \psi$ → **Чебышёв 估计** → **Bertrand 假设** → 素数定理（只给陈述与骨架）。'
+  },
+  {
+    id: 'number.quadratic',
+    name: '二次剩余与原根',
+    en: 'Quadratic Residues and Primitive Roots',
+    parent: 'number',
+    hub: 'thm.quadratic-reciprocity',
+    desc: '解 $x^{2} \equiv a \pmod p$ 的整套机器：**二次剩余** → **Legendre 符号** → **Euler 判别法** → **Gauss 引理** → **二次互反律** → **Jacobi 符号**（便宜但会撒谎）→ 模 $n$ 的**阶** → **原根**（$\mathbb{F}_{p}^{\times}$ 循环）→ **离散对数**。'
+  },
+  {
     id: 'number.basic',
     name: '整除与同余',
     en: 'Divisibility and Congruences',
