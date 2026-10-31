@@ -1216,6 +1216,15 @@ MG.aliases = {
     { id: 'thm.euler-theorem', en: 'Euler theorem', aka: ['欧拉定理（同余）', 'Euler 同余定理'] },
     { id: 'thm.fermat-little', en: 'Fermat little theorem', aka: ['费马小定理'] },
     { id: 'cor.wilson', en: 'Wilson theorem', aka: ['威尔逊定理'] },
+    { id: 'def.int-domain', en: 'integral domain', aka: ['整环（另一种叫法）', '无零因子环'] },
+    { id: 'def.irreducible-element', en: 'associate irreducible and prime elements', aka: ['不可约元', '素元', '相伴元'] },
+    { id: 'def.gcd-domain', en: 'GCD domain', aka: ['最大公因子整环'] },
+    { id: 'def.bezout-domain', en: 'Bézout domain', aka: ['Bézout 整环', '裴蜀整环'] },
+    { id: 'def.euclidean-domain', en: 'Euclidean domain', aka: ['欧几里得整环', '欧氏整环'] },
+    { id: 'def.pid', en: 'principal ideal domain', aka: ['主理想整环', 'PID'] },
+    { id: 'def.ufd', en: 'unique factorisation domain', aka: ['唯一分解整环', 'UFD'] },
+    { id: 'def.comaximal', en: 'comaximal ideals', aka: ['互素理想', '互极大理想'] },
+    { id: 'thm.crt-rings', en: 'Chinese remainder theorem for rings', aka: ['中国剩余定理（环论）', '互素理想分解'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

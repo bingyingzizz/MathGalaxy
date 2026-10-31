@@ -773,6 +773,14 @@ MG.clusters = [
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
 
   {
+    id: 'algebra.rings',
+    name: '整环与分解',
+    en: 'Integral Domains and Factorisation',
+    parent: 'algebra',
+    hub: 'def.ufd',
+    desc: '把「唯一分解」这件事本身做成环类：**整环**（无零因子）→ gcd 整环 / Bézout 整环 / Euclid 整环 → **PID** → **UFD**，五个类之间的蕴含都是真蕴含（反例各给一个），外加中国剩余定理的环论形式（互素理想 ⇒ 直积分解）。'
+  },
+  {
     id: 'number.basic',
     name: '整除与同余',
     en: 'Divisibility and Congruences',
