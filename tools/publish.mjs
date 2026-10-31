@@ -466,6 +466,28 @@ fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
 }, 'site/read.html'));
 console.log(`   阅读页：${DOCS.map((d) => d.file).join(' · ')} → read.html`);
 
+/* ------------------------------- 星图研究：研究笔记（独立页） */
+// 为什么单独一页：它不是「怎么读这张图」的一部分，是**产物之外**的研究记录，
+// 并且每条结论都要带「已证 / 条件性 / 未证」标记 —— 与 read.html 的口径不同。
+fs.writeFileSync(path.join(STAGE, 'research.html'), fill(readSite('research.html'), {
+  USER,
+  UPDATED: updated,
+  REPO: REPO_URL,
+  SITE_REPO: SITE_REPO_URL,
+  HEAD_EXTRA: headExtra({
+    title: `星图研究 · ${USER}`,
+    desc: '星图研究：围绕数学星图产生的推导笔记。当前收录 Schölze Question 0.10.4 在一般 p-liquid 系数下的否定答案，以及 p-Banach 情形被压成的单一标量缺口。未经同行评审。',
+    url: `${SITE_ORIGIN}/research.html`,
+    ld: {
+      '@context': 'https://schema.org', '@type': 'WebPage',
+      name: '星图研究', url: `${SITE_ORIGIN}/research.html`, inLanguage: 'zh-CN',
+      description: '围绕数学星图产生的推导笔记：Schölze Question 0.10.4 在一般 p-liquid 系数下的否定答案；p-Banach 情形仍开。',
+      isPartOf: { '@type': 'WebSite', name: `${USER}.github.io`, url: `${SITE_ORIGIN}/` },
+    },
+  }),
+}, 'site/research.html'));
+console.log('   研究页：site/research.html → research.html');
+
 /* ------------------------------- 概念页：每个节点一份**真 HTML**（给搜索引擎） */
 // 为什么要这一步：
 //   nodes/<id>.md 由 GitHub Pages 以 `Content-Type: text/markdown` 提供，
@@ -517,6 +539,7 @@ for (const d of contentDirs) {
 const smEntries = [
   { loc: `${SITE_ORIGIN}/`, pri: '1.0', date: gitDate('site') },
   { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8', date: gitDate('site') },
+  { loc: `${SITE_ORIGIN}/research.html`, pri: '0.9', date: gitDate('site') },   // 研究笔记：独一份原创内容，优先级高于 read.html
   { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0', date: gitDate('src') },
   { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9', date: gitDate('src') },        // 全部概念的入口，爬虫从这儿进
   { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8', date: gitDate('src') },  // 184 条真实问法，长尾入口
