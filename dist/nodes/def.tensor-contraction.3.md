@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.trace`](../nodes/def.trace.md) 迹：用到了定义 迹　[proofs/dep.mf2-trace-contraction.md](../proofs/dep.mf2-trace-contraction.md)
+
+> 续见 [nodes/def.tensor-contraction.4.md](./def.tensor-contraction.4.md)

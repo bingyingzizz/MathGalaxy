@@ -12,6 +12,9 @@ layer 21 · 定义 · 向量场与 Lie 结构 · 微分几何
 
 - …另有入边，续页见 [nodes/def.tensor-contraction.3.md](./def.tensor-contraction.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.tensor-contraction.4.md](./def.tensor-contraction.4.md)
+
 refs: Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 张量场的缩并与取迹；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 张量丛的截面
 
 > 说明见 `notes/def.tensor-contraction.md`

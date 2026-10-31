@@ -7,6 +7,11 @@ layer 25 · 推论 · 多元微分 · 数学分析
 
 $$\psi \circ f \circ \varphi^{-1} (x_1, \ldots, x_n) = (x_1, \ldots, x_r, 0, \ldots, 0)$$
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`thm.inverse-function`](../nodes/thm.inverse-function.md) 逆映射定理
+
+- …另有出边，续页见 [nodes/cor.rank-theorem.3.md](./cor.rank-theorem.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/cor.rank-theorem.2.md](./cor.rank-theorem.2.md)
 

@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-31T03:13:26.153Z
-> 13 星系 / 88 星团 / 1288 节点 / 2332 连线（强边 2321，弱边 11；其中**不分层**的「推论」16 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-10-31T03:18:07.287Z
+> 13 星系 / 88 星团 / 1288 节点 / 2337 连线（强边 2326，弱边 11；其中**不分层**的「推论」21 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -8582,7 +8582,7 @@ $$Dg(y) = \bigl( Df(g(y)) \bigr)^{-1}$$
 
 ⚠ 定理只保证 $C^{1}$；但由 $Dg = (Df \circ g)^{-1}$ 立即得：$f$ 光滑 $\implies$ $g$ 光滑（$Df\circ g$ 光滑、求逆是光滑运算）。这就是「$f$ 是微分同胚 $\implies$ $f^{-1}$ 也是」。
 
-⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的，在 Banach 空间里要靠开映射定理另行处理。
+⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。
 
 ⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。
 
@@ -35032,6 +35032,96 @@ $$\frac{f(b)-f(a)}{b-a} = f^{\prime}(\xi),$$
 
 > Cauchy 版本真正的增量在「两个增量用同一个 $\xi$」—— 那才是 L'Hôpital 法则的入口；取 $g = x$ 时这份增量消失，退回 Lagrange。
 
+#### 常秩定理 ⟹ 逆映射定理　`imp.derived-inverse-from-rank`
+*秩定理取 $r = n = m$ 就是逆映射定理*
+
+常秩定理：若 $f : U \to \mathbb{R}^{m}$ 的 Jacobi 矩阵秩在 $U$ 上恒为 $r$，则局部存在光滑坐标变换 $\varphi, \psi$ 使
+
+$$\psi \circ f \circ \varphi^{-1}(x_{1}, \ldots, x_{n}) = (x_{1}, \ldots, x_{r}, 0, \ldots, 0).$$
+
+**① 把「一点满秩」变成「邻域恒满秩」。** 逆映射定理只知道 $Df(a)$ 可逆。但 $x \mapsto \det Df(x)$ 连续且 $\det Df(a) \ne 0$，所以存在 $a$ 的邻域 $U' \subseteq U$ 使 $\det Df(x) \ne 0$ 对一切 $x \in U'$ 成立 —— 即 $\operatorname{rank} Df \equiv n$ 在 $U'$ 上。这里 $n = m$，故 $r = n = m$，常秩定理的前提成立。
+
+**② 代入 $r = n = m$。** 标准形里没有零尾巴，于是
+
+$$\psi \circ f \circ \varphi^{-1} = \mathrm{id} \qquad \Longrightarrow \qquad f = \psi^{-1} \circ \varphi \quad (\text{在 } a \text{ 的邻域上}) .$$
+
+两个坐标变换都是微分同胚，所以 $f$ 局部是微分同胚：存在开邻域 $V \ni a$ 与 $W \ni f(a)$ 使 $f|_{V} : V \to W$ 是双射，且 $g := (f|_{V})^{-1} = \varphi^{-1} \circ \psi$ 也光滑。
+
+**③ 导数。** 由 $g \circ f = \mathrm{id}$ 与链式法则，$Dg(f(x)) \circ Df(x) = I$，取 $x = g(y)$ 即
+
+$$Dg(y) = \bigl( Df(g(y)) \bigr)^{-1}. \qquad \blacksquare$$
+
+> 黑边 `imp.rank-theorem` 走的是反方向（逆映射定理 $+$ 隐函数定理 $\implies$ 秩定理）—— 两条都在，正好把「秩定理是全家桶、逆映射定理是 $r=n=m$ 那一格」这件事画出来。粉边不进分层，不构成环。
+
+#### 常秩定理 ⟹ 隐函数定理　`imp.derived-implicit-from-rank`
+*秩定理的淹没情形 $r = m$ 就是隐函数定理*
+
+沿用隐函数定理的记号：$F : U \subseteq \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}^{m}$，$F(a,b) = 0$，$D_{y}F(a,b)$ 可逆。
+
+**① 秩恒为 $m$。** $D_{y}F$ 是 $DF$ 里的一整块 $m \times m$ 子矩阵，它可逆 $\implies \operatorname{rank} DF(a,b) \ge m$；而值域是 $\mathbb{R}^{m}$，故秩恰为 $m$。由 $\det D_{y}F \ne 0$ 在 $(a,b)$ 附近持续成立，秩在邻域上恒为 $r = m$。
+
+**② 秩定理的坐标片。** 存在光滑坐标 $\varphi$（在 $(a,b)$ 附近）、$\psi$（在 $0$ 附近）使
+
+$$\psi \circ F \circ \varphi^{-1}(x_{1}, \ldots, x_{n+m}) = (x_{1}, \ldots, x_{m}) .$$
+
+于是水平集 $S := \{ F = 0 \}$ 在 $(a,b)$ 附近正好是 $\varphi^{-1}$ 下的坐标片 $\{ x_{1} = \cdots = x_{m} = c \}$（$c = \psi(0)$）—— 一张 $n$ 维的 $C^{1}$ 子流形。
+
+**③ 切空间横截。** $T_{(a,b)}S = \ker DF(a,b)$：一边是「$F$ 在 $S$ 上恒 $0$」，另一边维数对得上（$n = (n+m) - m$）。而 $\ker DF \cap (\{0\} \times \mathbb{R}^{m}) = \{0\}$ —— 落在后一块里的向量满足 $D_{y}F \cdot v = 0$，$D_{y}F$ 可逆；$\ker DF$ 里后一半坐标为零的向量也满足 $D_{y}F \cdot v = 0$。
+
+**④ 换成「$y = g(x)$」。** 记 $\pi_{x}$ 为投影到前 $n$ 个原坐标。由 ③，$\pi_{x}|_{S}$ 的微分在每点单射，而两侧维数都是 $n$，故是同构。再对 $\pi_{x} : S \to \mathbb{R}^{n}$ 用一次逆映射定理：它在 $(a,b)$ 附近是 $C^{1}$ 微分同胚，故 $S$ 是一张图像 $y = g(x)$，$g(a) = b$，$g$ 为 $C^{1}$。
+
+**⑤ 导数。** 把 $F(x, g(x)) \equiv 0$ 对 $x$ 求导：$D_{x}F + D_{y}F \cdot Dg = 0$，即 $Dg = -(D_{y}F)^{-1}D_{x}F$。$\blacksquare$
+
+> 课本里那条短路线是「对 $\Phi(x,y) = (x, F(x,y))$ 用逆映射定理」（黑边 `imp.implicit-function`）；这里走的是秩定理的**淹没情形**，路长一点，但把「隐函数定理也是秩定理的一格」说清楚了。⚠ ④ 用了一次逆映射定理 —— 与黑边那条构成环，粉边的规矩允许（黑边已保证骨架无环）。
+
+#### Schwarz–Pick 定理 ⟹ Schwarz 引理　`imp.derived-schwarz-from-pick`
+*Schwarz–Pick 取 $z_{0} = 0$、$f(0) = 0$ 就是 Schwarz 引理*
+
+Schwarz–Pick：对全纯 $f : \mathbb{D} \to \mathbb{D}$ 与任意 $z_{0} \in \mathbb{D}$，
+
+$$\left| \frac{f(z) - f(z_{0})}{1 - \overline{f(z_{0})}\, f(z)} \right| \le \left| \frac{z - z_{0}}{1 - \overline{z_{0}}\, z} \right|, \qquad \frac{|f^{\prime}(z_{0})|}{1 - |f(z_{0})|^{2}} \le \frac{1}{1 - |z_{0}|^{2}} .$$
+
+**取 $z_{0} = 0$ 并假设 $f(0) = 0$。** 两处分母都变成 $1$，左边分子变成 $|f(z) - 0|$，右边分子变成 $|z - 0|$，于是
+
+$$|f(z)| \le |z|, \qquad |f^{\prime}(0)| \le 1 ,$$
+
+正是 Schwarz 引理的 (1)(2)。
+
+**等号情形。** Pick 说「某个 $z \ne z_{0}$ 或导数处取等号 $\iff$ $f$ 是 $\mathbb{D}$ 的分式线性自同构」。而固定原点的分式线性自同构只有 $\varphi_{0} \equiv 0$ 这一族退化情形可用，即 $z \mapsto e^{i\theta} z$：代入 $\varphi_{a}(z) = (z-a)/(1-\bar a z)$ 取 $a = 0$ 得 $\varphi_{0}(z) = z$，再乘上单位模常数。故等号成立 $\iff$ $f$ 是旋转 —— 正是引理的 (3)。$\blacksquare$
+
+> 黑边 `imp.schwarz-pick` 走反方向（Schwarz 引理 $+$ 圆盘自同构 $\implies$ Pick）。两条并存：一条是证明路线，一条记录「引理只是 Pick 在原点处的那一格」。
+
+#### 缩并 ⟹ 迹　`imp.derived-trace-from-contraction`
+*$(1,1)$ 型缩并就是取迹*
+
+取 $(1,1)$ 型张量场 $T$（$r = s = 1$），缩并 $\mathrm{C}^{1}_{\,1}T$ 是 $(0,0)$ 型 —— 一个函数。在卡里它是
+
+$$\bigl(\mathrm{C}^{1}_{\,1}T\bigr)_{p} = \sum_{a=1}^{n} T^{a}_{\ a}.$$
+
+**它就是迹。** 把 $T$ 在某点的分量写成矩阵 $A = (T^{i}_{\ j})$（第 $i$ 行是上标、第 $j$ 列是下标），则上式正是 $\sum_{a} A_{aa} = \operatorname{tr} A$。所以「缩并」在 $r = s = 1$ 这一格上退化成取迹。
+
+**顺带得到 $\operatorname{tr}(AB) = \operatorname{tr}(BA)$。** 缩并按哪一个上标与哪一个下标配对来定义；而求和号 $\sum_{a} T^{\ldots a \ldots}_{\ldots a \ldots}$ 里的哑标可以任意换名 —— 换成另一对上下标就是另一种缩并，在 $A B$ 上分别算得 $\operatorname{tr}(AB)$ 与 $\operatorname{tr}(BA)$。两者是同一个张量的同一组求和指标的重排，故相等。$\blacksquare$
+
+> 蓝色定义线 `dep.mf2-trace-contraction` 说的是「取迹要用缩并这个定义」；这条粉边说的是反向的识别：取迹就是缩并的最简单一格。
+
+#### Arzelà–Ascoli 定理 + Cauchy 不等式 ⟹ Montel 定理　`imp.derived-montel-from-ascoli`
+*Arzelà–Ascoli 在全纯函数族上就是 Montel 定理*
+
+设 $\mathcal{F}$ 在区域 $\Omega$ 上局部一致有界，$f_{n}$ 是其中一列。
+
+**① 一个紧集上的两条前提。** 取紧的 $K \subset \Omega$，令 $\rho = \operatorname{dist}(K, \partial \Omega) > 0$，取 $K \subseteq \Omega$ 的内点集 $K_{\rho/2} = \{ z : \operatorname{dist}(z, K) \le \rho/2 \}$。局部一致有界 $\implies$ 存在 $M$ 使 $|f| \le M$ 在 $K_{\rho/2}$ 上一族一致地成立。于是
+
+- **一致有界**：$|f| \le M$ 在 $K$ 上；
+- **等度连续**：将 Cauchy 不等式（$n = 1$、半径 $\rho/2$）作用在 $K$ 的各点的小圆盘上，得 $|f^{\prime}| \le 2M/\rho$ 在 $K$ 上对**一切** $f \in \mathcal{F}$ 同时成立；中值不等式遂给 $|f(x) - f(y)| \le (2M/\rho)\,|x - y|$，$\delta = \varepsilon \rho/(2M)$ 与 $f$ 无关。
+
+**② 用 Arzelà–Ascoli。** $K$ 是紧距离空间，对上式那族 $\{ f_{n}|_{K} \}$ 用 Arzelà–Ascoli：存在子列在 $K$ 上一致收敛。
+
+**③ 对角化到内闭一致收敛。** 取穷尽 $\Omega$ 的紧集列 $K_{1} \subset \subset K_{2} \subset \subset \cdots$（$\bigcup K_{j} = \Omega$，每个 $K_{j}$ 含于下一个的内部）。第 ② 步在 $K_{1}$ 上抽出子列，在该子列里对 $K_{2}$ 再抽，依此类推；取「第 $j$ 个子列的第 $j$ 项」这个对角子列，它在每个 $K_{j}$ 上从某一项起都属于第 $j$ 个子列，故在 $K_{j}$ 上一致收敛。
+
+**④ 极限全纯。** 内闭一致收敛的全纯函数列的极限全纯（Weierstrass 定理），故 $\mathcal{F}$ 是正规族。$\blacksquare$
+
+> 两个源缺一不可：Arzelà–Ascoli 给紧性，Cauchy 不等式把「全纯」换成「等度连续」—— 一般连续函数族没有这一条。
+
 #### 全纯函数 ⟹ 复数初等函数　`e1:implication`
 *幂级数在全平面收敛 $\implies$ 逐项求导 $\implies$ 全纯*
 
@@ -43481,7 +43571,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **测度的构造 ↔ 符号测度与分解**　8 条节点级连线
 - **复变函数基础 ↔ 数系的构造**　6 条节点级连线
 - **Cauchy 理论 ↔ 复变函数基础**　9 条节点级连线
-- **Cauchy 理论 ↔ 共形映射与正规族**　2 条节点级连线
+- **Cauchy 理论 ↔ 共形映射与正规族**　3 条节点级连线
 - **Cauchy 理论 ↔ 留数与辐角原理**　6 条节点级连线
 - **复变函数基础 ↔ Riemann 积分**　2 条节点级连线
 - **Cauchy 理论 ↔ 函数列、幂级数与初等函数**　2 条节点级连线
@@ -43492,7 +43582,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **内蕴几何 ↔ 向量场与 Lie 结构**　3 条节点级连线
 - **流形与向量丛 ↔ 向量场与 Lie 结构**　8 条节点级连线
 - **多重线性与张量 ↔ 向量场与 Lie 结构**　3 条节点级连线
-- **特征值与 Jordan 型 ↔ 向量场与 Lie 结构**　2 条节点级连线
+- **特征值与 Jordan 型 ↔ 向量场与 Lie 结构**　3 条节点级连线
 - **流形与向量丛 ↔ 仿紧与单位分解**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 活动标架与结构方程**　9 条节点级连线
 - **微分形式、积分与 de Rham ↔ 内蕴几何**　11 条节点级连线
