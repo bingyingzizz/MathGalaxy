@@ -53,6 +53,7 @@
 - `analytic`　解析空间　→　Analytic Spaces
 - `complex`　复变函数　→　Complex Analysis
 - `diffgeom`　微分几何　→　Differential Geometry
+- `number`　数论　→　Number Theory
 
 ## 其它（`+` = 手工新造）
 

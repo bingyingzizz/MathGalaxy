@@ -60,8 +60,7 @@ MG.sectors = [
     name: '数论',
     en: 'Number Theory',
     color: '#6E8B3D',
-    regions: [],
-    empty: true,
-    desc: '（当前没有内容：全库唯一带 Fermat 名字的节点是极值点的 Fermat 引理，不是数论。按「没内容就不建区域」的约定登记为**空板块**，不占画布、不出名字；将来把领域挂进来即可归位。）'
+    regions: ['number'],
+    desc: '初等数论：整数的算术（华罗庚《数论导引》的顺序：整除 → 同余 → 二次剩余 → 原根）。'
   }
 ];

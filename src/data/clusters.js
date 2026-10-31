@@ -771,4 +771,13 @@ MG.clusters = [
   },
 
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
+
+  {
+    id: 'number.basic',
+    name: '整除与同余',
+    en: 'Divisibility and Congruences',
+    parent: 'number',
+    hub: 'def.congruence',
+    desc: '造出整数的算术：**整除** → 带余除法 → 辗转相除与 $\\gcd$ / Bézout → 素数 → 算术基本定理（唯一分解）→ 同余 → 剩余类环 → 中国剩余定理 → $\\varphi$ → Euler / Fermat / Wilson。'
+  },
 ];

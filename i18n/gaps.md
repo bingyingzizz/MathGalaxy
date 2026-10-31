@@ -31,10 +31,10 @@
 
 | 桶 | 节点数 | 占比 | 意思 |
 |---|---|---|---|
-| ✅ 一级填入（`from: aka` / `from: title`） | 259 | 20.1% | aka 里恰好一条名字样英文 |
+| ✅ 一级填入（`from: aka` / `from: title`） | 259 | 19.9% | aka 里恰好一条名字样英文 |
 | ✅ 二级填入（`from: aka-title`） | 3 | 0.2% | title 里恰好命中一个 aka 候选 —— 清单见 `i18n/second-tier.md`（可整批回滚）|
-| ⛔ 缺口 | 460 | 35.7% | 下面第二节逐条列 |
-| **合计** | **1288** | 100% | 覆盖 828（64.3%），缺口 460 |
+| ⛔ 缺口 | 460 | 35.3% | 下面第二节逐条列 |
+| **合计** | **1303** | 100% | 覆盖 843（64.7%），缺口 460 |
 
 ## 二、缺口为什么填不了（互斥，合计 = 缺口数）
 
@@ -45,7 +45,7 @@
 | ⚠️ 只有书号 | 186 | aka 里只有 Exercise 2.25 / Theorem 8.3.9 这种坐标（搜索用，不是名字）|
 | ⚠️ 只有 title 有 | 10 | aka 没有英文，但 title 括号里是英文 |
 | ⛔ 完全没有 | 237 | aka 与 title 都没有英文名 |
-| **合计** | **460** | = 全部节点 1288 − 已覆盖 828 |
+| **合计** | **460** | = 全部节点 1303 − 已覆盖 843 |
 
 ⚠️ **口径提醒**：脚本内部的分桶是在**二级之前**做的，所以「歧义」原始数是 19，其中 **3** 条被二级捞走了 —— 上表用的是减完的 16。
 两张表各自互斥、各自合计对得上；⛔ 别把两张表的行混着加。
@@ -275,13 +275,13 @@
 | `def.refinement` | 覆盖的加细 | — | 覆盖的加细、开加细与闭加细 | 无候选（aka 与 title 都没有英文） |
 | `def.paracompact` | 仿紧空间 | — | 每个开覆盖都有局部有限开加细 | 无候选（aka 与 title 都没有英文） |
 | `lem.shrink` | 收缩引理 | — | 正规空间里局部有限开覆盖可以收缩 | 无候选（aka 与 title 都没有英文） |
-| `thm.paracompact-hausdorff-normal` | 仿紧豪斯多夫空间正规 | — | 仿紧的豪斯多夫空间是正规空间 | 无候选（aka 与 title 都没有英文） |
+| `thm.paracompact-hausdorff-normal` | 仿紧 Hausdorff 空间正规 | — | 仿紧的 Hausdorff 空间是正规空间 | 无候选（aka 与 title 都没有英文） |
 | `prop.paracompact-closed-refinement` | 闭加细 | — | 仿紧空间的开覆盖有局部有限闭加细 | 无候选（aka 与 title 都没有英文） |
 | `thm.michael-paracompact` | 迈克尔仿紧判别法 | — | 正则空间仿紧当且仅当每个开覆盖有局部有限加细 | 无候选（aka 与 title 都没有英文） |
 | `def.partition-of-unity` | 单位分解 | — | 从属于开覆盖的连续单位分解 | 无候选（aka 与 title 都没有英文） |
 | `def.metrizable` | 可度量化空间 | — | 拓扑可由一个度量给出 | 无候选（aka 与 title 都没有英文） |
-| `thm.metric-paracompact` | 斯通定理 | — | 度量空间必为仿紧空间 | 无候选（aka 与 title 都没有英文） |
-| `thm.urysohn-metrization` | 乌雷松度量化定理 | — | 正则且第二可数的空间可度量化 | 无候选（aka 与 title 都没有英文） |
+| `thm.metric-paracompact` | Stone 定理 | — | 度量空间必为仿紧空间 | 无候选（aka 与 title 都没有英文） |
+| `thm.urysohn-metrization` | Urysohn 度量化定理 | — | 正则且第二可数的空间可度量化 | 无候选（aka 与 title 都没有英文） |
 | `thm.nagata-smirnov` | 局部有限基度量化定理 | — | 正则且基为可数层局部有限族的空间可度量化 | 无候选（aka 与 title 都没有英文） |
 | `thm.bing-metrization` | 离散基度量化定理 | — | 正则且基为可数层离散族的空间可度量化 | 无候选（aka 与 title 都没有英文） |
 | `prop.metrizable-normal` | 可度量化空间的性质 | — | 可度量化空间正规、仿紧且第一可数 | 无候选（aka 与 title 都没有英文） |
@@ -335,15 +335,15 @@
 | `def.geodesic` | 测地线 | — | 测地线与测地线方程 | 无候选（aka 与 title 都没有英文） |
 | `prop.geodesic-existence` | 测地线的局部存在唯一性 | — | 测地线的局部存在唯一性 | 无候选（aka 与 title 都没有英文） |
 | `def.geodesic-curvature` | 测地曲率 | — | 测地曲率 | 无候选（aka 与 title 都没有英文） |
-| `thm.liouville-formula` | 刘维尔公式 | — | 测地曲率的刘维尔公式 | 无候选（aka 与 title 都没有英文） |
+| `thm.liouville-formula` | Liouville 公式 | — | 测地曲率的 Liouville 公式 | 无候选（aka 与 title 都没有英文） |
 | `prop.curvature-split` | 曲率分解 | — | 法曲率与测地曲率的分解 | 无候选（aka 与 title 都没有英文） |
 | `def.exponential-map` | 指数映射 | — | 指数映射与法坐标 | 无候选（aka 与 title 都没有英文） |
-| `lem.gauss-lemma` | 高斯引理 | — | 高斯引理与测地极坐标 | 无候选（aka 与 title 都没有英文） |
+| `lem.gauss-lemma` | Gauss 引理 | — | Gauss 引理与测地极坐标 | 无候选（aka 与 title 都没有英文） |
 | `lem.normal-coord-euclidean` | 法坐标的欧氏性 | — | 法坐标只在一阶上像欧氏坐标 | 无候选（aka 与 title 都没有英文） |
-| `def.curvature-tensor` | 黎曼曲率张量 | — | 黎曼曲率张量与局部平坦性 | 无候选（aka 与 title 都没有英文） |
-| `def.gauss-curvature` | 高斯曲率 | — | 高斯曲率的内蕴定义 | 无候选（aka 与 title 都没有英文） |
-| `thm.theorema-egregium` | 绝妙定理 | — | 高斯曲率是内蕴量 | 无候选（aka 与 title 都没有英文） |
-| `thm.gauss-bonnet` | 高斯博内定理 | — | 高斯博内定理与欧拉示性数 | 无候选（aka 与 title 都没有英文） |
+| `def.curvature-tensor` | Riemann 曲率张量 | — | Riemann 曲率张量与局部平坦性 | 无候选（aka 与 title 都没有英文） |
+| `def.gauss-curvature` | Gauss 曲率 | — | Gauss 曲率的内蕴定义 | 无候选（aka 与 title 都没有英文） |
+| `thm.theorema-egregium` | 绝妙定理 | — | Gauss 曲率是内蕴量 | 无候选（aka 与 title 都没有英文） |
+| `thm.gauss-bonnet` | Gauss–Bonnet 定理 | — | Gauss–Bonnet 定理与 Euler 示性数 | 无候选（aka 与 title 都没有英文） |
 | `def.regular-curve` | 正则曲线 | — | 正则曲线与切线 | 无候选（aka 与 title 都没有英文） |
 | `def.arc-length` | 弧长 | — | 弧长与弧长参数化 | 无候选（aka 与 title 都没有英文） |
 | `def.frenet-frame` | 曲率与挠率 | — | Frenet 标架、曲率与挠率 | 无候选（aka 与 title 都没有英文） |
@@ -357,7 +357,7 @@
 | `def.smooth-manifold` | 光滑流形 | — | 光滑流形与图册 | 无候选（aka 与 title 都没有英文） |
 | `def.tangent-space-manifold` | 切空间 | — | 流形上的切空间 | 无候选（aka 与 title 都没有英文） |
 | `thm.regular-level-set` | 正则水平集定理 | — | 正则水平集定理 | 无候选（aka 与 title 都没有英文） |
-| `def.riemannian-metric` | 黎曼度量 | — | 黎曼度量 | 无候选（aka 与 title 都没有英文） |
+| `def.riemannian-metric` | Riemann 度量 | — | Riemann 度量 | 无候选（aka 与 title 都没有英文） |
 | `def.affine-connection` | 仿射联络 | — | 仿射联络与协变导数 | 无候选（aka 与 title 都没有英文） |
 | `prop.curvature-tensor-symmetries` | 曲率张量的对称性 | — | 曲率张量的对称性与独立分量数 | 无候选（aka 与 title 都没有英文） |
 | `thm.bianchi-identity` | 比安基恒等式 | — | 第一与第二比安基恒等式 | 无候选（aka 与 title 都没有英文） |
@@ -378,7 +378,7 @@
 | `thm.smooth-partition-unity` | 光滑单位分解 | — | 流形上的光滑单位分解 | 无候选（aka 与 title 都没有英文） |
 | `prop.bundle-metric` | 纤维度量 | — | 向量丛上的纤维度量 | 无候选（aka 与 title 都没有英文） |
 | `def.orientable-manifold` | 可定向流形 | — | 可定向流形与定向 | 无候选（aka 与 title 都没有英文） |
-| `def.volume-form` | 体积形式 | — | 体积形式与黎曼体积 | 无候选（aka 与 title 都没有英文） |
+| `def.volume-form` | 体积形式 | — | 体积形式与 Riemann 体积 | 无候选（aka 与 title 都没有英文） |
 | `prop.volume-form-orientation` | 定向与体积形式 | — | 可定向当且仅当存在处处非零的最高次形式 | 无候选（aka 与 title 都没有英文） |
 | `def.de-rham-complex` | de Rham 上同调 | — | de Rham 复形与上同调群 | 无候选（aka 与 title 都没有英文） |
 | `thm.de-rham-h0` | 零次上同调 | — | 零次上同调群与连通分支 | 无候选（aka 与 title 都没有英文） |
