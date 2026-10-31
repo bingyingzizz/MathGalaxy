@@ -466,27 +466,39 @@ fs.writeFileSync(path.join(STAGE, 'read.html'), fill(readSite('read.html'), {
 }, 'site/read.html'));
 console.log(`   阅读页：${DOCS.map((d) => d.file).join(' · ')} → read.html`);
 
-/* ------------------------------- 星图研究：研究笔记（独立页） */
-// 为什么单独一页：它不是「怎么读这张图」的一部分，是**产物之外**的研究记录，
-// 并且每条结论都要带「已证 / 条件性 / 未证」标记 —— 与 read.html 的口径不同。
-fs.writeFileSync(path.join(STAGE, 'research.html'), fill(readSite('research.html'), {
-  USER,
-  UPDATED: updated,
-  REPO: REPO_URL,
-  SITE_REPO: SITE_REPO_URL,
-  HEAD_EXTRA: headExtra({
+/* ------------------------------- 星图研究：索引页 + 论文页 */
+// 索引页列条目，论文各自一页 —— 加新论文只要往这里加一行。
+const RESEARCH_PAGES = [
+  { src: 'research.html', out: 'research.html', pri: '0.8',
     title: `星图研究 · ${USER}`,
-    desc: '星图研究：围绕数学星图产生的推导笔记。当前收录 Schölze Question 0.10.4 在一般 p-liquid 系数下的否定答案，以及 p-Banach 情形被压成的单一标量缺口。未经同行评审。',
-    url: `${SITE_ORIGIN}/research.html`,
-    ld: {
-      '@context': 'https://schema.org', '@type': 'WebPage',
-      name: '星图研究', url: `${SITE_ORIGIN}/research.html`, inLanguage: 'zh-CN',
-      description: '围绕数学星图产生的推导笔记：Schölze Question 0.10.4 在一般 p-liquid 系数下的否定答案；p-Banach 情形仍开。',
-      isPartOf: { '@type': 'WebSite', name: `${USER}.github.io`, url: `${SITE_ORIGIN}/` },
-    },
-  }),
-}, 'site/research.html'));
-console.log('   研究页：site/research.html → research.html');
+    desc: '星图研究：从整理数学星图过程中产生的推导笔记与论文稿。每条注明状态；未经同行评审。',
+    name: '星图研究' },
+  { src: 'research-p-liquid.html', out: 'research-p-liquid.html', pri: '0.9',
+    title: `紧群上 p-liquid 系数的正次数上同调：一般系数的反例 · ${USER}`,
+    desc: '预印本（未经同行评审）：对 G=SU(2) 与 V_p=coker(∂₄) 的平凡作用证明 H³(G,V_p)≠0，'
+      + '在一般 p-liquid 系数量词下否定 Clausen–Scholze Question 0.10.4；p-Banach 情形仍开。',
+    name: '紧群上 p-liquid 系数的正次数同调：一般系数的反例' },
+];
+for (const rp of RESEARCH_PAGES) {
+  fs.writeFileSync(path.join(STAGE, rp.out), fill(readSite(rp.src), {
+    USER,
+    UPDATED: updated,
+    REPO: REPO_URL,
+    SITE_REPO: SITE_REPO_URL,
+    HEAD_EXTRA: headExtra({
+      title: rp.title,
+      desc: rp.desc,
+      url: `${SITE_ORIGIN}/${rp.out}`,
+      ld: {
+        '@context': 'https://schema.org', '@type': 'WebPage',
+        name: rp.name, url: `${SITE_ORIGIN}/${rp.out}`, inLanguage: 'zh-CN',
+        description: rp.desc,
+        isPartOf: { '@type': 'WebSite', name: `${USER}.github.io`, url: `${SITE_ORIGIN}/` },
+      },
+    }),
+  }, 'site/' + rp.src));
+}
+console.log(`   研究页：${RESEARCH_PAGES.map((r) => r.out).join(' · ')}`);
 
 /* ------------------------------- 概念页：每个节点一份**真 HTML**（给搜索引擎） */
 // 为什么要这一步：
@@ -539,7 +551,7 @@ for (const d of contentDirs) {
 const smEntries = [
   { loc: `${SITE_ORIGIN}/`, pri: '1.0', date: gitDate('site') },
   { loc: `${SITE_ORIGIN}/read.html`, pri: '0.8', date: gitDate('site') },
-  { loc: `${SITE_ORIGIN}/research.html`, pri: '0.9', date: gitDate('site') },   // 研究笔记：独一份原创内容，优先级高于 read.html
+  ...RESEARCH_PAGES.map((r) => ({ loc: `${SITE_ORIGIN}/${r.out}`, pri: r.pri, date: gitDate('site') })),
   { loc: `${SITE_ORIGIN}/mathgalaxy/`, pri: '1.0', date: gitDate('src') },
   { loc: `${SITE_ORIGIN}/mathgalaxy/all.html`, pri: '0.9', date: gitDate('src') },        // 全部概念的入口，爬虫从这儿进
   { loc: `${SITE_ORIGIN}/mathgalaxy/questions.html`, pri: '0.8', date: gitDate('src') },  // 184 条真实问法，长尾入口
