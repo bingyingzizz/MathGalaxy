@@ -7,4 +7,8 @@
 
 - 整函数与亚纯函数 → def.entire-meromorphic
 
+- 对数与幂的分支 → def.logarithm-branch
+
+- Riemann 曲面 → def.riemann-surface
+
 见 `../../alias.md`。

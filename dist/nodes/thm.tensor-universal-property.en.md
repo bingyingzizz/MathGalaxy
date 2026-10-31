@@ -1,4 +1,4 @@
-# universal property of the tensor product　`thm.tensor-universal-property`
+# universal property of the tensor product of vector spaces　`thm.tensor-universal-property`
 English entry · root `../`
 [in graph](../#n=thm.tensor-universal-property)　·　[Chinese page (authoritative)](./thm.tensor-universal-property.md)
 

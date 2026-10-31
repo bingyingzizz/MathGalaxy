@@ -27,4 +27,8 @@
 
 - adic 结构层是层 → thm.adic-structure-sheaf
 
+- 概形嵌入 adic 空间 → prop.scheme-embeds-adic
+
+- 离散 adic 空间 → def.discrete-adic-space
+
 见 `../../alias.md`。

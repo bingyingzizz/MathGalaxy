@@ -1,4 +1,4 @@
-# monotone convergence theorem　`thm.monotone-convergence`
+# monotone bounded convergence theorem　`thm.monotone-convergence`
 English entry · root `../`
 [in graph](../#n=thm.monotone-convergence)　·　[Chinese page (authoritative)](./thm.monotone-convergence.md)
 

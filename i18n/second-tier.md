@@ -20,14 +20,9 @@
 「备注」列只写机械看得出来的事实（节点含两个概念 / title 里是 LaTeX 符号），不猜。
 ---
 
-## ⚠️ 跨节点重复的 title_en（4 组，只记录、不自动改）
+## ⚠️ 跨节点重复的 title_en（0 组，只记录、不自动改）
 
-| 英文名 | 用在哪些节点 |
-|---|---|
-| `monotone convergence theorem` | `thm.monotone-convergence`（单调有界定理） · `thm.mct`（单调收敛定理） |
-| `power set` | `ax.power`（幂集公理） · `def.power-set`（幂集 𝒫(X)） |
-| `sections functor` | `prop.condab-section`（截面函子保极限余极限） · `def.section-functor`（截面函子） |
-| `internal hom` | `def.internal-hom`（内 Hom） · `prop.cond-internal-hom`（内部 Hom 的函数空间刻画） |
+（无）
 
 ## 大小写差异（1 处，只记录）
 

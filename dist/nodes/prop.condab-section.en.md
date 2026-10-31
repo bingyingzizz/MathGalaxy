@@ -1,4 +1,4 @@
-# sections functor　`prop.condab-section`
+# the sections functor preserves limits and colimits　`prop.condab-section`
 English entry · root `../`
 [in graph](../#n=prop.condab-section)　·　[Chinese page (authoritative)](./prop.condab-section.md)
 

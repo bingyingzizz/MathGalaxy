@@ -1,4 +1,4 @@
-# power set　`ax.power`
+# power set axiom　`ax.power`
 English entry · root `../`
 [in graph](../#n=ax.power)　·　[Chinese page (authoritative)](./ax.power.md)
 

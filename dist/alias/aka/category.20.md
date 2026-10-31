@@ -23,4 +23,6 @@
 
 - Exercise 3.62 → prop.slice-covering-sieve
 
+- 函子保同构 → prop.functor-preserves-iso
+
 见 `../../alias.md`。

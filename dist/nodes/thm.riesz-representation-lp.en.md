@@ -1,4 +1,4 @@
-# dual space　`thm.riesz-representation-lp`
+# Riesz representation theorem for Lp　`thm.riesz-representation-lp`
 English entry · root `../`
 [in graph](../#n=thm.riesz-representation-lp)　·　[Chinese page (authoritative)](./thm.riesz-representation-lp.md)
 

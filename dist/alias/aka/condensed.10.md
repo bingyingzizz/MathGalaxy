@@ -9,4 +9,6 @@
 
 - 固态化把超覆盖变成正合列 → prop.solid-hypercover
 
+- 整值测度 → def.cond-measure
+
 见 `../../alias.md`。

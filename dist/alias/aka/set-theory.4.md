@@ -23,4 +23,8 @@
 
 - Noether 第一同构定理 | 第一同构定理 | 同构定理 | first isomorphism theorem → thm.first-iso
 
-见 `../../alias.md`。
+- 自然数的运算律 → thm.nat-arith-laws
+
+- ℤ 是交换整环 → thm.int-ring
+
+> 续见 alias/aka/set-theory.5.md

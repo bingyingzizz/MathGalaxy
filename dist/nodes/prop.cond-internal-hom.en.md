@@ -1,4 +1,4 @@
-# internal hom　`prop.cond-internal-hom`
+# the internal hom as a function space　`prop.cond-internal-hom`
 English entry · root `../`
 [in graph](../#n=prop.cond-internal-hom)　·　[Chinese page (authoritative)](./prop.cond-internal-hom.md)
 
