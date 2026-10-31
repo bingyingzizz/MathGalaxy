@@ -36,7 +36,7 @@
 | read 文档英文版 | **4 份 / 11 页** | reading · policy · hubs · notation（+ 仓库根副本 7 个） |
 | 术语表 | 1 份 | `i18n/glossary.md`（有英文键的一律现算） |
 | 外链锚点 `xref` | **45 个节点 / 80 个链接** | Wikipedia 45 · nLab 30 · Mathlib 5（45 个节点里 45 个有 Wikipedia 条），逐条 HTTP 200 + title 核对 |
-| `llms.txt` 英文回退规则 | 已写 | 1287 B（原 1252 B，加字前先砍了等量的水） |
+| `llms.txt` 英文回退规则 | 已写 | 约 1.29 KB |
 | 阅读页中英切换 | 已上 | `?lang=en` + 记住选择 + 浏览器语言 |
 
 ## 二、新增产物清单

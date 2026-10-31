@@ -491,7 +491,7 @@ console.log('   研究页：site/research.html → research.html');
 /* ------------------------------- 概念页：每个节点一份**真 HTML**（给搜索引擎） */
 // 为什么要这一步：
 //   nodes/<id>.md 由 GitHub Pages 以 `Content-Type: text/markdown` 提供，
-//   搜索引擎抓取后判定「这不是网页」，**整站 706 个概念页一个都进不了索引**
+//   搜索引擎抓取后判定「这不是网页」，**整站每个概念页一个都进不了索引**
 //   （实测 site: 查询只返回 3 个 URL：/、/read.html、和意外被抓的 graph.md）。
 //   所以每个概念再出一份 HTML —— 标题是概念名、正文是陈述与证明、公式在构建期
 //   就渲染成静态 MathML，页面互链成网。
@@ -519,7 +519,7 @@ if (pageStats.orphan) console.log(`   ⚠️ 无出入边的孤立概念 ${pageS
 /* -------------------- 站点根：给爬虫与 AI agent 的入口文件 -------------------- */
 // 三个文件的分工：
 //   robots.txt   约定俗成，爬虫从这里知道「随便抓」，并找到 sitemap
-//   sitemap.xml  列**能被搜索引擎索引的 HTML 页**：入口 + 706 个概念页 + all.html
+//   sitemap.xml  列**能被搜索引擎索引的 HTML 页**：入口 + 每个概念页 + all.html
 //   llms.txt     给 AI agent 的固定入口（约定放在域名根）：先读哪几份、怎么引用
 // ⚠️ 手写清单迟早和站点对不上 —— 一律现算。
 const contentDirs = ['nodes', 'index', 'proofs', 'notes'];
