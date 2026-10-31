@@ -1,9 +1,7 @@
 # 光滑流形　`def.smooth-manifold`　·　续页（第 4 页）
 [在星图里打开](../#n=def.smooth-manifold)　·　第 1 页 [nodes/def.smooth-manifold.md](./def.smooth-manifold.md)　·　上一页 [nodes/def.smooth-manifold.3.md](./def.smooth-manifold.3.md)
 
-## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.hausdorff`](../nodes/def.hausdorff.md) Hausdorff 空间：用到了定义 Hausdorff 空间　[proofs/dep.tu-hausdorff-manifold.md](../proofs/dep.tu-hausdorff-manifold.md)
-- [`def.second-countable`](../nodes/def.second-countable.md) 第二可数空间：用到了定义 第二可数空间　[proofs/dep.tu-secondcountable-manifold.md](../proofs/dep.tu-secondcountable-manifold.md)
-- [`def.homeomorphism`](../nodes/def.homeomorphism.md) 同胚：用到了定义 同胚　[proofs/dep.tu-homeo-manifold.md](../proofs/dep.tu-homeo-manifold.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative（续）
+A smooth manifold is a Hausdorff second countable space covered by charts $(U,\varphi)$ into $\mathbb{R}^{n}$ whose transition maps $\psi\circ\varphi^{-1}$ are $C^{\infty}$, equipped with a maximal atlas. Maximising the atlas is what makes smoothness a property of the manifold rather than of a chosen family of charts. Hausdorff separates points, while second countability gives paracompactness and hence partitions of unity, the tool that glues local constructions into global ones. A smooth structure is extra data, not a topological invariant: one topological space c
 
 > 续见 [nodes/def.smooth-manifold.5.md](./def.smooth-manifold.5.md)

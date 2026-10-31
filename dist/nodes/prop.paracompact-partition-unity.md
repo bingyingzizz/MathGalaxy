@@ -4,17 +4,17 @@ layer 16 · 命题 · 拓扑空间 · 拓扑学
 [在星图里打开](../#n=prop.paracompact-partition-unity)　·　[节点索引](../index.md)
 
 对拓扑空间 $X$：
+> 陈述续见 [nodes/prop.paracompact-partition-unity.2.md](./prop.paracompact-partition-unity.2.md)
 
-1. $X$ 是**仿紧 Hausdorff** 空间 $\iff$ 每个开覆盖都有一族从属于它的**单位分解**；
-2. $X$ 是**正规**空间 $\iff$ 每个**局部有限**开覆盖都有一族从属于它的单位分解。
-
-## 它能推出什么 / 谁在用它
-- 被 [`thm.smooth-partition-unity`](../nodes/thm.smooth-partition-unity.md) 光滑单位分解 用
-
-- …另有出边，续页见 [nodes/prop.paracompact-partition-unity.4.md](./prop.paracompact-partition-unity.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
-- …另有入边，续页见 [nodes/prop.paracompact-partition-unity.2.md](./prop.paracompact-partition-unity.2.md)
+- …另有入边，续页见 [nodes/prop.paracompact-partition-unity.5.md](./prop.paracompact-partition-unity.5.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.paracompact-partition-unity.7.md](./prop.paracompact-partition-unity.7.md)
+
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative
+> English abstract 续见 [nodes/prop.paracompact-partition-unity.3.md](./prop.paracompact-partition-unity.3.md)
 
 refs: Le Stum, An introduction to condensed mathematics, §8.3
 

@@ -1,8 +1,7 @@
 # 乌雷松度量化定理　`thm.urysohn-metrization`　·　续页（第 2 页）
 [在星图里打开](../#n=thm.urysohn-metrization)　·　第 1 页 [nodes/thm.urysohn-metrization.md](./thm.urysohn-metrization.md)
 
-## 为什么成立（入边，证明在 proofs/）（续）
-- [`def.second-countable`](../nodes/def.second-countable.md) 第二可数空间：用到了定义 第二可数空间　[proofs/dep.pcp-second-urysohn.md](../proofs/dep.pcp-second-urysohn.md)
-- [`def.metrizable`](../nodes/def.metrizable.md) 可度量化空间：用到了定义 可度量化空间　[proofs/dep.pcp-metrizable-urysohn.md](../proofs/dep.pcp-metrizable-urysohn.md)
-- [`lem.urysohn`](../nodes/lem.urysohn.md) Urysohn 引理：用到了定义 Urysohn 引理　[proofs/dep.pcp-urysohn-lemma-metrization.md](../proofs/dep.pcp-urysohn-lemma-metrization.md)
-- [`def.normal-space`](../nodes/def.normal-space.md) 正规空间：用到了定义 正规空间　[proofs/dep.pcp-normal-urysohn-metrization.md](../proofs/dep.pcp-normal-urysohn-metrization.md)
+## English abstract · **draft** · machine-drafted, pending author review; Chinese is authoritative（续）
+A regular $T_{1}$ space with a countable base is metrisable. The proof embeds $X$ into a countable product of copies of $[0,1]$: second countability makes $X$ Lindelof, regularity together with Lindelof makes it normal, and Urysohn functions attached to pairs $\operatorname{cl}B_{m}\subseteq B_{n}$ of basic open sets separate points from closed sets. The embedding is a homeomorphism onto its image, and the metric of the product pulls back to a metric inducing the topology of $X$.
+
+> 续见 [nodes/thm.urysohn-metrization.3.md](./thm.urysohn-metrization.3.md)

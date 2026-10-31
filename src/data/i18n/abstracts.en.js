@@ -388,5 +388,120 @@ MG.i18nAbstracts = {
       'Hausdorff spaces is again compact Hausdorff.',
       status: 'reviewed', basedOn: 'v0.9.1#f1673aca', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
+    'def.submanifold-volume': {
+      en:
+      'The volume form of an $n$-manifold cannot simply be pulled back to a ' +
+      '$k$-dimensional submanifold: for $k<n$ every $n$-form restricts to the zero ' +
+      'form. The volume of a submanifold therefore comes from the induced metric $g_{N} ' +
+      ':= i^{*}g$, whose volume form in an oriented chart is ' +
+      '$\\sqrt{\\det(g_{ab})}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{k}$ ' +
+      'with $g_{ab} := g(\\partial_{a}i,\\partial_{b}i)$. For a hypersurface this ' +
+      'reduces to the interior product $\\iota_{\\nu}\\,\\mathrm{d}V_{g}$ with the unit ' +
+      'normal, which is exactly where the surface element in the divergence theorem ' +
+      'comes from.',
+      status: 'draft', basedOn: 'v0.9.1#06b84746',
+    },
+
+    'thm.de-rham': {
+      en:
+      'Integrating forms pairs de Rham cohomology, closed forms modulo exact ones, with ' +
+      'singular homology, and the de Rham theorem says the pairing is perfect: for ' +
+      'every $k$ there is an isomorphism $H^{k}_{\\mathrm{dR}}(M)\\to ' +
+      'H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ sending $[\\omega]$ to the functional ' +
+      '$[c]\\mapsto\\int_{c}\\omega$. The maps are compatible with pullbacks, so they ' +
+      'form a natural isomorphism of graded algebras. The theorem welds analysis, ' +
+      'geometry and topology into a single object.',
+      status: 'draft', basedOn: 'v0.9.1#ab97968c',
+    },
+
+    'thm.urysohn-metrization': {
+      en:
+      'A regular $T_{1}$ space with a countable base is metrisable. The proof embeds ' +
+      '$X$ into a countable product of copies of $[0,1]$: second countability makes $X$ ' +
+      'Lindelof, regularity together with Lindelof makes it normal, and Urysohn ' +
+      'functions attached to pairs $\\operatorname{cl}B_{m}\\subseteq B_{n}$ of basic ' +
+      'open sets separate points from closed sets. The embedding is a homeomorphism ' +
+      'onto its image, and the metric of the product pulls back to a metric inducing ' +
+      'the topology of $X$.',
+      status: 'draft', basedOn: 'v0.9.1#60c5ccbe',
+    },
+
+    'prop.paracompact-partition-unity': {
+      en:
+      'For a topological space $X$: $X$ is paracompact Hausdorff exactly when every ' +
+      'open cover has a subordinate partition of unity, and $X$ is normal exactly when ' +
+      'every locally finite open cover has one. In one direction the supports of the ' +
+      'partition give a locally finite open refinement of the cover; in the other, ' +
+      'normality produces the functions one at a time. This is the standard bridge from ' +
+      'local data to global objects, for instance from local metrics to a Riemannian ' +
+      'metric.',
+      status: 'draft', basedOn: 'v0.9.1#0982b826',
+    },
+
+    'def.lp-norm': {
+      en:
+      'For a measure space $(X,\\mathcal{M},\\mu)$ and $0<p<\\infty$ one sets ' +
+      '$\\|f\\|_p := [\\int |f|^{p}\\,\\mathrm{d}\\mu]^{1/p}$, and $L^{p}$ is the space ' +
+      'of measurable $f$ with $\\|f\\|_p<\\infty$. Its elements are classes of ' +
+      'functions equal almost everywhere, which is what makes $\\|f\\|_p = 0$ imply $f ' +
+      '= 0$. For $p<1$ the triangle inequality fails, so one only gets a quasi-norm, ' +
+      'although the space stays complete.',
+      status: 'draft', basedOn: 'v0.9.1#d9b86281',
+    },
+
+    'def.tensor-field': {
+      en:
+      'A tensor field is the smooth version of a multilinear form attached to each ' +
+      'point: an $(r,s)$-tensor at $p$ eats $r$ covectors and $s$ vectors and returns a ' +
+      'number, and the tensor bundle $T^{(r,s)}M$ collects these into a manifold of ' +
+      'dimension $n+n^{r+s}$ whose transition maps are products of Jacobi matrices. ' +
+      'Smooth sections of that bundle are the $(r,s)$-tensor fields. Metrics, ' +
+      'differential forms, symplectic forms and the curvature tensor are all instances, ' +
+      'and because the transition law involves only first derivatives, tensor ' +
+      'components never pick up second derivatives.',
+      status: 'draft', basedOn: 'v0.9.1#549cebae',
+    },
+
+    'thm.gauss-bonnet': {
+      en:
+      'For a compact orientable surface $M\\subseteq\\mathbb{R}^{3}$, possibly with ' +
+      'piecewise smooth boundary, $\\int_{M}K\\,\\mathrm{d}A + \\int_{\\partial ' +
+      'M}k_{g}\\,\\mathrm{d}s = 2\\pi\\chi(M)$, where $K$ is the Gaussian curvature, ' +
+      '$k_{g}$ the geodesic curvature and $\\chi$ the Euler characteristic. In ' +
+      'particular a closed surface satisfies $\\int_{M}K\\,\\mathrm{d}A = ' +
+      '2\\pi\\chi(M)$, so total curvature is a topological invariant: $4\\pi$ for the ' +
+      'sphere, $0$ for the torus and $4\\pi(1-g)$ in genus $g$. The local statement for ' +
+      'a disc bounded by a simple closed curve is the heart of the proof; the global ' +
+      'one follows by summing over a triangulation.',
+      status: 'draft', basedOn: 'v0.9.1#a2b71cd8',
+    },
+
+    'def.smooth-manifold': {
+      en:
+      'A smooth manifold is a Hausdorff second countable space covered by charts ' +
+      '$(U,\\varphi)$ into $\\mathbb{R}^{n}$ whose transition maps ' +
+      '$\\psi\\circ\\varphi^{-1}$ are $C^{\\infty}$, equipped with a maximal atlas. ' +
+      'Maximising the atlas is what makes smoothness a property of the manifold rather ' +
+      'than of a chosen family of charts. Hausdorff separates points, while second ' +
+      'countability gives paracompactness and hence partitions of unity, the tool that ' +
+      'glues local constructions into global ones. A smooth structure is extra data, ' +
+      'not a topological invariant: one topological space can carry inequivalent smooth ' +
+      'structures.',
+      status: 'draft', basedOn: 'v0.9.1#f864fff8',
+    },
+
+    'def.path-homotopy': {
+      en:
+      'A path in $X$ is a continuous map $\\alpha:[0,1]\\to X$, with $\\alpha(0)$ its ' +
+      'start and $\\alpha(1)$ its end. Two paths with the same endpoints $x_{0},x_{1}$ ' +
+      'are path homotopic when some continuous $F:[0,1]\\times[0,1]\\to X$ interpolates ' +
+      'between them while both endpoints stay fixed, written ' +
+      '$\\alpha\\simeq_{p}\\beta$. Fixing the endpoints is essential: $[0,1]$ is ' +
+      'contractible, so without that condition every path would be homotopic to every ' +
+      'other and nothing would be distinguished. Path homotopy classes are the elements ' +
+      'that the fundamental group turns into a group.',
+      status: 'draft', basedOn: 'v0.9.1#bb2f0476',
+    },
+
   },
 };

@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-31T03:05:33.616Z",
+  "generated": "2026-10-31T03:13:26.153Z",
   "counts": {
    "regions": 13,
    "clusters": 88,
@@ -10444,7 +10444,7 @@
     "反函数"
    ],
    "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{n}$ 是 $C^{1}$，$a \\in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \\subseteq U$ 与 $f(a)$ 的开邻域 $W$ 使\n\n$$f\\bigl|_{V} : V \\to W \\quad \\text{是双射}$$\n\n且其逆 $g := (f\\bigl|_{V})^{-1} : W \\to V$ 也是 $C^{1}$，并且对一切 $y \\in W$\n\n$$Dg(y) = \\bigl( Df(g(y)) \\bigr)^{-1}$$",
-   "notes": "⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。",
+   "notes": "⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的，在 Banach 空间里要靠开映射定理另行处理。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
     "Spivak, Calculus on Manifolds, Ch. 2",
@@ -18121,19 +18121,26 @@
    "title": "正则且第二可数的空间可度量化",
    "label_en": "Urysohn Metrization Theorem",
    "title_en": "Urysohn Metrization Theorem",
+   "abstract_en": "A regular $T_{1}$ space with a countable base is metrisable. The proof embeds $X$ into a countable product of copies of $[0,1]$: second countability makes $X$ Lindelof, regularity together with Lindelof makes it normal, and Urysohn functions attached to pairs $\\operatorname{cl}B_{m}\\subseteq B_{n}$ of basic open sets separate points from closed sets. The embedding is a homeomorphism onto its image, and the metric of the product pulls back to a metric inducing the topology of $X$.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#60c5ccbe"
+     }
     }
    },
    "en_page": "nodes/thm.urysohn-metrization.en.md",
@@ -19784,19 +19791,26 @@
    "title": "高斯博内定理与欧拉示性数",
    "label_en": "Gauss–Bonnet Theorem",
    "title_en": "Gauss–Bonnet Theorem",
+   "abstract_en": "For a compact orientable surface $M\\subseteq\\mathbb{R}^{3}$, possibly with piecewise smooth boundary, $\\int_{M}K\\,\\mathrm{d}A + \\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi\\chi(M)$, where $K$ is the Gaussian curvature, $k_{g}$ the geodesic curvature and $\\chi$ the Euler characteristic. In particular a closed surface satisfies $\\int_{M}K\\,\\mathrm{d}A = 2\\pi\\chi(M)$, so total curvature is a topological invariant: $4\\pi$ for the sphere, $0$ for the torus and $4\\pi(1-g)$ in genus $g$. The local statement for a disc bounded by a simple closed curve is the heart of the proof; the global one follows by summing over a triangulation.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#a2b71cd8"
+     }
     }
    },
    "en_page": "nodes/thm.gauss-bonnet.en.md",
@@ -20258,19 +20272,26 @@
    "title": "光滑流形与图册",
    "label_en": "Smooth Manifold",
    "title_en": "Smooth Manifold",
+   "abstract_en": "A smooth manifold is a Hausdorff second countable space covered by charts $(U,\\varphi)$ into $\\mathbb{R}^{n}$ whose transition maps $\\psi\\circ\\varphi^{-1}$ are $C^{\\infty}$, equipped with a maximal atlas. Maximising the atlas is what makes smoothness a property of the manifold rather than of a chosen family of charts. Hausdorff separates points, while second countability gives paracompactness and hence partitions of unity, the tool that glues local constructions into global ones. A smooth structure is extra data, not a topological invariant: one topological space can carry inequivalent smooth structures.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#f864fff8"
+     }
     }
    },
    "en_page": "nodes/def.smooth-manifold.en.md",
@@ -22812,19 +22833,26 @@
    "title": "张量场与张量丛",
    "label_en": "Tensor Field",
    "title_en": "Tensor Field",
+   "abstract_en": "A tensor field is the smooth version of a multilinear form attached to each point: an $(r,s)$-tensor at $p$ eats $r$ covectors and $s$ vectors and returns a number, and the tensor bundle $T^{(r,s)}M$ collects these into a manifold of dimension $n+n^{r+s}$ whose transition maps are products of Jacobi matrices. Smooth sections of that bundle are the $(r,s)$-tensor fields. Metrics, differential forms, symplectic forms and the curvature tensor are all instances, and because the transition law involves only first derivatives, tensor components never pick up second derivatives.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#549cebae"
+     }
     }
    },
    "en_page": "nodes/def.tensor-field.en.md",
@@ -25285,19 +25313,26 @@
    "title": "de Rham 定理",
    "label_en": "de Rham theorem",
    "title_en": "de Rham theorem",
+   "abstract_en": "Integrating forms pairs de Rham cohomology, closed forms modulo exact ones, with singular homology, and the de Rham theorem says the pairing is perfect: for every $k$ there is an isomorphism $H^{k}_{\\mathrm{dR}}(M)\\to H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ sending $[\\omega]$ to the functional $[c]\\mapsto\\int_{c}\\omega$. The maps are compatible with pullbacks, so they form a natural isomorphism of graded algebras. The theorem welds analysis, geometry and topology into a single object.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#ab97968c"
+     }
     }
    },
    "en_page": "nodes/thm.de-rham.en.md",
@@ -25638,19 +25673,26 @@
    "title": "子流形的诱导体积",
    "label_en": "induced volume",
    "title_en": "induced volume",
+   "abstract_en": "The volume form of an $n$-manifold cannot simply be pulled back to a $k$-dimensional submanifold: for $k<n$ every $n$-form restricts to the zero form. The volume of a submanifold therefore comes from the induced metric $g_{N} := i^{*}g$, whose volume form in an oriented chart is $\\sqrt{\\det(g_{ab})}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{k}$ with $g_{ab} := g(\\partial_{a}i,\\partial_{b}i)$. For a hypersurface this reduces to the interior product $\\iota_{\\nu}\\,\\mathrm{d}V_{g}$ with the unit normal, which is exactly where the surface element in the divergence theorem comes from.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#06b84746"
+     }
     }
    },
    "en_page": "nodes/def.submanifold-volume.en.md",
@@ -27504,19 +27546,26 @@
    "title": "道路与固定端点的同伦：同伦类 $[\\alpha]$",
    "label_en": "path homotopy",
    "title_en": "path homotopy",
+   "abstract_en": "A path in $X$ is a continuous map $\\alpha:[0,1]\\to X$, with $\\alpha(0)$ its start and $\\alpha(1)$ its end. Two paths with the same endpoints $x_{0},x_{1}$ are path homotopic when some continuous $F:[0,1]\\times[0,1]\\to X$ interpolates between them while both endpoints stay fixed, written $\\alpha\\simeq_{p}\\beta$. Fixing the endpoints is essential: $[0,1]$ is contractible, so without that condition every path would be homotopic to every other and nothing would be distinguished. Path homotopy classes are the elements that the fundamental group turns into a group.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#bb2f0476"
+     }
     }
    },
    "en_page": "nodes/def.path-homotopy.en.md",
@@ -30004,19 +30053,26 @@
    "title": "$L^p$ 范数与 $L^p$ 空间",
    "label_en": "Lp norm",
    "title_en": "Lp norm",
+   "abstract_en": "For a measure space $(X,\\mathcal{M},\\mu)$ and $0<p<\\infty$ one sets $\\|f\\|_p := [\\int |f|^{p}\\,\\mathrm{d}\\mu]^{1/p}$, and $L^{p}$ is the space of measurable $f$ with $\\|f\\|_p<\\infty$. Its elements are classes of functions equal almost everywhere, which is what makes $\\|f\\|_p = 0$ imply $f = 0$. For $p<1$ the triangle inequality fails, so one only gets a quasi-norm, although the space stays complete.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#d9b86281"
+     }
     }
    },
    "en_page": "nodes/def.lp-norm.en.md",
@@ -47090,19 +47146,26 @@
    "label": "仿紧性与单位分解",
    "title": "命题：仿紧 Hausdorff / 正规 $\\iff$ 单位分解存在",
    "title_en": "paracompactness and partitions of unity",
+   "abstract_en": "For a topological space $X$: $X$ is paracompact Hausdorff exactly when every open cover has a subordinate partition of unity, and $X$ is normal exactly when every locally finite open cover has one. In one direction the supports of the partition give a locally finite open refinement of the cover; in the other, normality produces the functions one at a time. This is the standard bridge from local data to global objects, for instance from local metrics to a Riemannian metric.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "draft",
+     "version": "v0.9.1",
      "fields": [
+      "abstract",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "abstract"
+     ],
      "fieldStatus": {
+      "abstract": "draft",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "abstract": "v0.9.1#0982b826"
+     }
     }
    },
    "en_page": "nodes/prop.paracompact-partition-unity.en.md",
