@@ -46,7 +46,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'lemma',
       label: 'Zorn 引理',
-      title: '佐恩引理（Zorn\'s Lemma）',
+      title: 'Zorn 引理（Zorn\'s Lemma）',
       // 表面是序理论陈述，主要用途却在集合论/代数 → 边界节点
       regions: ['order-theory', 'set-theory'],
       tags: ['ZFC', '等价命题', '极大原理'],

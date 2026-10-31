@@ -15792,7 +15792,7 @@ MG.uiEn = {
       · 候选一律来自站点**自己的搜索接口**（Wikipedia 的 action=opensearch、
         nLab 的 /nlab/search），⛔ 不靠记忆拼 URL；
       · 每条真发一次请求，要求 **HTTP 200 且 <title> 对得上这个概念**；
-      · 网络两条路都试（直连 / 代理由 127.0.0.1:7890）。
+      · 网络两条路都试（直连 / 代理；代理端口会变，当前见 README「网络」一节）。
    ⭐ 当前 **45 条锚点**（旧 21 条 + 2026-10-16 新核 49 条里的去重结果）全部
       按上面的办法逐条核过；404 的一律**不写**（product+measure、complex+measure、
       monotone+class+theorem、Mathlib 的 Topos/Basic 都是 404，跳过）。
@@ -17250,7 +17250,7 @@ window.MG = window.MG || {};
       cluster: 'order.choice',
       type: 'lemma',
       label: 'Zorn 引理',
-      title: '佐恩引理（Zorn\'s Lemma）',
+      title: 'Zorn 引理（Zorn\'s Lemma）',
       // 表面是序理论陈述，主要用途却在集合论/代数 → 边界节点
       regions: ['order-theory', 'set-theory'],
       tags: ['ZFC', '等价命题', '极大原理'],
@@ -20766,7 +20766,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.measurable',
       type: 'theorem',
       label: 'Егоров 定理',
-      title: 'Egorov 定理：a.e. 收敛 $\\implies$ 近一致',
+      title: 'Егоров 定理：a.e. 收敛 $\\implies$ 近一致',
       regions: ['analysis'],
       tags: ['定理', 'Egorov', '近一致', '有限测度'],
       statement: [
@@ -25983,7 +25983,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'lemma',
       label: 'Archimedes 性质',
-      title: '阿基米德性质与 $\\mathbb{Q}$ 的稠密性',
+      title: 'Archimedes 性质与 $\\mathbb{Q}$ 的稠密性',
       regions: ['set-theory', 'analysis'],
       tags: ['引理', '阿基米德', '稠密', '实数'],
       statement: [

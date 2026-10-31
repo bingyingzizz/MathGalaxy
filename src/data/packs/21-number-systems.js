@@ -300,7 +300,7 @@ window.MG = window.MG || {};
       cluster: 'analysis.real-calc',
       type: 'lemma',
       label: 'Archimedes 性质',
-      title: '阿基米德性质与 $\\mathbb{Q}$ 的稠密性',
+      title: 'Archimedes 性质与 $\\mathbb{Q}$ 的稠密性',
       regions: ['set-theory', 'analysis'],
       tags: ['引理', '阿基米德', '稠密', '实数'],
       statement: [

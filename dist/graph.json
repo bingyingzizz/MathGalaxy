@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-10-31T04:15:00.956Z",
+  "generated": "2026-10-31T04:32:37.607Z",
   "counts": {
    "regions": 13,
    "clusters": 88,
@@ -3376,7 +3376,7 @@
    "id": "lem.zorn",
    "type": "lemma",
    "label": "Zorn 引理",
-   "title": "佐恩引理（Zorn's Lemma）",
+   "title": "Zorn 引理（Zorn's Lemma）",
    "label_en": "Zorn's lemma",
    "title_en": "Zorn's Lemma",
    "abstract_en": "Let $(P, \\preceq)$ be a non-empty poset in which every chain has an upper bound in $P$. Then $P$ has a maximal element. Both hypotheses are needed: the empty poset has none, and an upper bound for every chain yields maximality only, never a greatest element. It is the standard engine of existence proofs — bases, maximal ideals, compactness, Hahn–Banach — and it is non-constructive: an element is produced without telling you which one.",
@@ -12064,7 +12064,7 @@
    "id": "thm.egorov",
    "type": "theorem",
    "label": "Егоров 定理",
-   "title": "Egorov 定理：a.e. 收敛 $\\implies$ 近一致",
+   "title": "Егоров 定理：a.e. 收敛 $\\implies$ 近一致",
    "label_en": "Egorov",
    "title_en": "Egorov",
    "translations": {
@@ -32529,7 +32529,7 @@
    "id": "lem.archimedean",
    "type": "lemma",
    "label": "Archimedes 性质",
-   "title": "阿基米德性质与 $\\mathbb{Q}$ 的稠密性",
+   "title": "Archimedes 性质与 $\\mathbb{Q}$ 的稠密性",
    "label_en": "Archimedean",
    "title_en": "Archimedean",
    "translations": {

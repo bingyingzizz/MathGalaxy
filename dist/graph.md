@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-31T04:15:00.956Z
+> 由 `tools/build.mjs` 自动生成于 2026-10-31T04:32:37.607Z
 > 13 星系 / 88 星团 / 1288 节点 / 2337 连线（强边 2326，弱边 11；其中**不分层**的「推论」21 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -1240,7 +1240,7 @@ Zermelo 1904 年为证明「每个集合可良序」而明确提出了选择公�
 参考：Zermelo (1904)；Kunen, Set Theory, I.12
 
 #### Zorn 引理　`lem.zorn`
-*引理*　佐恩引理（Zorn's Lemma）
+*引理*　Zorn 引理（Zorn's Lemma）
 
 设 $(P, \preceq )$ 是**非空**偏序集。若 $P$ 的每个链在 $P$ 中都有上界，则 $P$ 有**极大元**。
 
@@ -6725,7 +6725,7 @@ $$\big| |x| - |y| \big| \le |x - y|, \qquad |x_1 + x_2 + \cdots + x_n| \le |x_1|
 参考：Rudin, Principles of Mathematical Analysis, Ch. 1
 
 #### Archimedes 性质　`lem.archimedean`
-*引理*　阿基米德性质与 $\mathbb{Q}$ 的稠密性
+*引理*　Archimedes 性质与 $\mathbb{Q}$ 的稠密性
 
 设 $K$ 是一个**完备有序域**（比如 $\mathbb{R}$）。则：
 
@@ -9674,7 +9674,7 @@ $$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
 参考：Folland, Real Analysis, Prop. 2.29
 
 #### Егоров 定理　`thm.egorov`
-*定理*　Egorov 定理：a.e. 收敛 $\implies$ 近一致
+*定理*　Егоров 定理：a.e. 收敛 $\implies$ 近一致
 
 设 $\mu(X) < \infty$，且 $f_n \to f$ a.e.。则 $f_n \to f$ **近一致**：
 
