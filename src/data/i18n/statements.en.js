@@ -1274,5 +1274,77 @@ MG.i18nStatements = {
     },
 
 
+    /* ================================================ 2026-11-01 · 入口层：子集 / 有序对 / 关系 / 映射 / 函数
+       ⭐ 逐句对译；公式一字不改。status 直接 'reviewed'（作者 2026-11-01 授权）。 */
+
+    'def.subset': {
+      statement: {
+        en:
+'Let $A$ and $B$ be sets.\\n\\n' +
+'- **$A$ is a subset of $B$** (written $A \\subseteq B$): ' +
+'$\\forall x ( x \\in A \\to x \\in B )$\\n' +
+'- **$A$ is a proper subset of $B$** (written $A \\subset B$): $A \\subseteq B$ and ' +
+'$A \\ne B$.\\n\\n' +
+'Basic properties: $\\subseteq$ is reflexive and transitive; and by the axiom of ' +
+'extensionality, two sets are equal exactly when they contain each other:\\n\\n' +
+'$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$\\n\\n' +
+'This is the most common way to prove two sets equal: **containment both ways**.',
+        status: 'reviewed', basedOn: 'v0.9.1#6fb94ac5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'def.pair': {
+      statement: {
+        en:
+        'Kuratowski\'s definition:\n\n' +
+        '$$(a, b) := \\{ \\{a\\}, \\{a, b\\} \\}$$\n\n' +
+        'The pairing and power-set axioms guarantee that this is a set.\n\n' +
+        '**Characteristic property** (this is all that "ordered" means):\n\n' +
+        '$$(a, b) = (c, d) \\iff a = c \\wedge  b = d$$\n\n' +
+        'An $n$-tuple is defined recursively: ' +
+        '$(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$.',
+        status: 'reviewed', basedOn: 'v0.9.1#a830b9b2', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'def.rel': {
+      statement: {
+        en:
+        'Let $A$ and $B$ be sets.\n\n' +
+        'A **relation** $R$ consists of ordered pairs; $R \\subseteq A \\times B$ means that $R$ ' +
+        'is a relation from $A$ to $B$.\n\n' +
+        '- **domain** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$;\n' +
+        '- **range** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$;\n' +
+        '- **inverse** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$.',
+        status: 'reviewed', basedOn: 'v0.9.1#ebf411a5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'def.function': {
+      statement: {
+        en:
+        'Let $f$ be a relation from $A$ to $B$. Then $f$ is a **map** (written $f : A \\to B$) ' +
+        'if and only if every input has exactly one output:\n\n' +
+        '$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$\n\n' +
+        'Uniqueness is what makes the notation $f(a) = b$ unambiguous; in that case ' +
+        '$\\operatorname{dom} f = A$, and the **image** of $f$ is ' +
+        '$f(A) = \\{ f(a) : a \\in A \\}$.\n\n' +
+        'Injective / surjective / bijective are separate nodes; a map whose values lie in a set ' +
+        'of numbers has its own name, a **function**.',
+        status: 'reviewed', basedOn: 'v0.9.1#2c875827', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'def.number-function': {
+      statement: {
+        en:
+        'Let $X$ be a set and $f : X \\to Y$ a **map**. If its values lie in a **set of numbers** — that is, ' +
+        '$Y \\subseteq \\mathbb{R}$ or $Y \\subseteq \\mathbb{C}$ — then $f$ is called a ' +
+        '**function**.',
+        status: 'reviewed', basedOn: 'v0.9.1#0f3927eb', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+
   },
 };

@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-01T14:37:05.191Z",
+  "generated": "2026-11-01T14:43:52.159Z",
   "counts": {
    "regions": 14,
    "clusters": 92,
@@ -2847,19 +2847,26 @@
    "title": "子集 / 真子集",
    "label_en": "subset",
    "title_en": "subset",
+   "statement_en": "Let $A$ and $B$ be sets.\\n\\n- **$A$ is a subset of $B$** (written $A \\subseteq B$): $\\forall x ( x \\in A \\to x \\in B )$\\n- **$A$ is a proper subset of $B$** (written $A \\subset B$): $A \\subseteq B$ and $A \\ne B$.\\n\\nBasic properties: $\\subseteq$ is reflexive and transitive; and by the axiom of extensionality, two sets are equal exactly when they contain each other:\\n\\n$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$\\n\\nThis is the most common way to prove two sets equal: **containment both ways**.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "reviewed",
+     "version": "v0.9.1",
      "fields": [
+      "statement",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "statement"
+     ],
      "fieldStatus": {
+      "statement": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "statement": "v0.9.1#6fb94ac5"
+     }
     }
    },
    "en_page": "nodes/def.subset.en.md",
@@ -2886,19 +2893,26 @@
    "title": "有序对",
    "label_en": "ordered pair",
    "title_en": "ordered pair",
+   "statement_en": "Kuratowski's definition:\n\n$$(a, b) := \\{ \\{a\\}, \\{a, b\\} \\}$$\n\nThe pairing and power-set axioms guarantee that this is a set.\n\n**Characteristic property** (this is all that \"ordered\" means):\n\n$$(a, b) = (c, d) \\iff a = c \\wedge  b = d$$\n\nAn $n$-tuple is defined recursively: $(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "reviewed",
+     "version": "v0.9.1",
      "fields": [
+      "statement",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "statement"
+     ],
      "fieldStatus": {
+      "statement": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "statement": "v0.9.1#a830b9b2"
+     }
     }
    },
    "en_page": "nodes/def.pair.en.md",
@@ -2925,19 +2939,26 @@
    "title": "关系",
    "label_en": "binary relation",
    "title_en": "binary relation",
+   "statement_en": "Let $A$ and $B$ be sets.\n\nA **relation** $R$ consists of ordered pairs; $R \\subseteq A \\times B$ means that $R$ is a relation from $A$ to $B$.\n\n- **domain** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$;\n- **range** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$;\n- **inverse** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "reviewed",
+     "version": "v0.9.1",
      "fields": [
+      "statement",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "statement"
+     ],
      "fieldStatus": {
+      "statement": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "statement": "v0.9.1#ebf411a5"
+     }
     }
    },
    "en_page": "nodes/def.rel.en.md",
@@ -2964,19 +2985,26 @@
    "title": "映射",
    "label_en": "mapping",
    "title_en": "mapping",
+   "statement_en": "Let $f$ be a relation from $A$ to $B$. Then $f$ is a **map** (written $f : A \\to B$) if and only if every input has exactly one output:\n\n$$\\forall a \\in A, \\exists! b \\in B, (a, b) \\in f$$\n\nUniqueness is what makes the notation $f(a) = b$ unambiguous; in that case $\\operatorname{dom} f = A$, and the **image** of $f$ is $f(A) = \\{ f(a) : a \\in A \\}$.\n\nInjective / surjective / bijective are separate nodes; a map whose values lie in a set of numbers has its own name, a **function**.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "reviewed",
+     "version": "v0.9.1",
      "fields": [
+      "statement",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "statement"
+     ],
      "fieldStatus": {
+      "statement": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "statement": "v0.9.1#2c875827"
+     }
     }
    },
    "en_page": "nodes/def.function.en.md",
@@ -3004,19 +3032,26 @@
    "title": "函数",
    "label_en": "function",
    "title_en": "function",
+   "statement_en": "Let $X$ be a set and $f : X \\to Y$ a **map**. If its values lie in a **set of numbers** — that is, $Y \\subseteq \\mathbb{R}$ or $Y \\subseteq \\mathbb{C}$ — then $f$ is called a **function**.",
    "translations": {
     "en": {
-     "status": "derived",
-     "version": null,
+     "status": "reviewed",
+     "version": "v0.9.1",
      "fields": [
+      "statement",
       "name"
      ],
-     "creative": [],
+     "creative": [
+      "statement"
+     ],
      "fieldStatus": {
+      "statement": "reviewed",
       "name": "derived"
      },
      "staleFields": [],
-     "basedOn": {}
+     "basedOn": {
+      "statement": "v0.9.1#0f3927eb"
+     }
     }
    },
    "en_page": "nodes/def.number-function.en.md",
