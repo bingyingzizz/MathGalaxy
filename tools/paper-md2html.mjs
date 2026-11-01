@@ -133,15 +133,13 @@ if (section === 'abstract') out.push('</div>');
 
 const EN = md.indexOf('## Abstract') >= 0;
 const FRONT = (EN ? [
-  '<p class="kicker">Preprint</p>',
   '<h1>Positive-Degree Cohomology of Compact Groups with p-Liquid Coefficients: a Counterexample for General Coefficients</h1>',
-  '<p class="byline">{{USER}} · October 2026</p>',
+  '<p class="byline">{{USER}} · 1 November 2026</p>',
 ] : [
-  '<p class="kicker">Preprint</p>',
   '<h1>紧群上 $p$-liquid 系数的正次数上同调：一般系数的反例</h1>',
   '<p class="en-title">Positive-degree cohomology of compact groups with $p$-liquid '
     + 'coefficients: a counterexample for general coefficients</p>',
-  '<p class="byline">{{USER}} · 2026 年 10 月</p>',
+  '<p class="byline">{{USER}} · 2026 年 11 月 1 日</p>',
 ]).join(String.fromCharCode(10));
 
 
