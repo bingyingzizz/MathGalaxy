@@ -101,7 +101,7 @@ MG.clusters = [
     en: 'Ordinals and Transfinite Recursion',
     parent: 'set-theory',
     hub: 'def.ordinal',
-    desc: '造出「无穷有多长」这把尺子：良序集的序型 → von Neumann 序数（传递的良序集）→ 三歧性 → 超限递归 / 超限归纳，顺带发现序数全体是真类。'
+    desc: '造出「无穷有多长」这把尺子：良序集的序型 → von Neumann 序数（传递的良序集）→ 三歧性 → 超限递归 / 超限归纳，顺带发现序数全体不构成集合。'
   },
 
   /* ------------------------------------------------ 星系：序理论 */

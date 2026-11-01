@@ -98,7 +98,7 @@ MG.aliases = {
     { id: 'thm.recursion-wellorder', en: 'transfinite recursion', aka: ['超限归纳', '超限递归', 'transfinite recursion', 'transfinite induction'] },
     { id: 'thm.ordinal-trichotomy', en: 'ordinals are comparable', aka: ['序数可比', '序数三分'] },
     { id: 'thm.wellorder-ordinal', aka: ['序型', 'order type', '序数表示'] },
-    { id: 'thm.burali-forti', aka: ['Burali-Forti', '序数全体是真类', '布拉利-福尔蒂'] },
+    { id: 'thm.burali-forti', aka: ['Burali-Forti', '序数全体不构成集合', '布拉利-福尔蒂'] },
 
     /* 序结构 */
     { id: 'def.poset', en: 'partial order', aka: ['偏序', 'partial order', 'poset', '偏序集'] },
