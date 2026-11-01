@@ -209,7 +209,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$。则',
         '',
-        '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{ 对} \\text{a.e.} x \\in \\mathbb{R}^n$$'
+        '$$\\lim_{r\\to0} A_r f(x) = f(x)\\quad \\text{for a.e. } x \\in \\mathbb{R}^n$$'
       ].join('\n'),
       notes: [
         '⭐ 一句话：**可积函数几乎处处等于自己局部平均值的极限**。',

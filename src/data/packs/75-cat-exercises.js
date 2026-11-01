@@ -88,7 +88,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}$ 有纤维积、且**满态射是万有的**（沿任意态射拉回仍是满态射）。则',
         '',
-        '$$X \\text{ 是投射对象} \\iff \\text{每个满态射 } Y \\twoheadrightarrow X \\text{ 都有截面}.$$'
+        '$X$ **是投射对象** $\\iff$ 每个满态射 $Y \\twoheadrightarrow X$ 都**有截面**。'
       ].join('\n'),
       notes: [
         '**证明。**',
@@ -110,7 +110,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $F : \\mathcal{C} \\to \\mathcal{D}$ **保有限积**（含终对象），则它把',
         '',
-        '$$\\text{幺半群对象} \\longmapsto \\text{幺半群对象}, \\qquad \\text{群对象} \\longmapsto \\text{群对象}, \\qquad \\text{环对象} \\longmapsto \\text{环对象},$$',
+        '$F$ 把**幺半群对象**送到幺半群对象、**群对象**送到群对象、**环对象**送到环对象。',
         '',
         '以及 $G$-对象、$A$-模、$k$-代数同理 —— 于是它诱导出 $\\mathrm{Mon}(\\mathcal{C}) \\to \\mathrm{Mon}(\\mathcal{D})$ 等一串函子。'
       ].join('\n'),

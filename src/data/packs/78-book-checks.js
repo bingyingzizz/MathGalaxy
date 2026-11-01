@@ -68,7 +68,7 @@ window.MG = window.MG || {};
       statement: [
         'Grothendieck 拓扑定义里**最后一条公理**可以换成：对一切 $R \\subseteq R\' \\subseteq h_{X}$，',
         '',
-        '$$R \\in J(X) \\implies R\' \\in J(X), \\qquad \\bigl(R\' \\in J(X) \\text{ 且 } \\forall f \\in R\'(Y),\\ f^{-1}(R) \\in J(Y)\\bigr) \\implies R \\in J(X).$$'
+        '$$R \\in J(X) \\implies R\' \\in J(X), \\qquad \\bigl(R\' \\in J(X) \\ \\wedge \\ \\forall f \\in R\'(Y),\\ f^{-1}(R) \\in J(Y)\\bigr) \\implies R \\in J(X).$$'
       ].join('\n'),
       notes: [
         '**证明。** 两条正是原公理 (T2)、(T3) 的「筛版本」：第一句说覆盖**对放大封闭**（原来那条是「沿自身拉回仍覆盖」，两者等价）✓；第二句说**局部是覆盖则整体是覆盖**（原来那条是「覆盖沿覆盖细化」）✓。逐条对照即得 ✓。∎',
@@ -136,7 +136,9 @@ window.MG = window.MG || {};
       statement: [
         '把 $X \\in \\mathcal{C}$ 看成函子 $X : \\mathbf{1} \\to \\mathcal{C}$，它给出拓扑斯态射 $\\widehat{X} : \\mathbf{Set} \\to \\widehat{\\mathcal{C}}$，三个函子在对象上由下式给出：',
         '',
-        '$$\\widehat{X}^{-1}(T) = T(X), \\qquad \\bigl(\\widehat{X}_{!}(E)\\bigr)(Y) = \\begin{cases} E & \\exists\\, Y \\to X,\\\\ \\emptyset & \\text{否则},\\end{cases} \\qquad \\bigl(\\widehat{X}_{*}(E)\\bigr)(Y) = \\begin{cases} E & \\exists\\, X \\to Y,\\\\ \\{0\\} & \\text{否则}.\\end{cases}$$'
+        '$\\widehat{X}^{-1}(T) = T(X)$；而 $\\widehat{X}_{!}(E)$ 在存在 $Y \\to X$ 时取 $E$、**否则取 $\\emptyset$**；$\\widehat{X}_{*}(E)$ 在存在 $X \\to Y$ 时取 $E$、**否则取 $\\{0\\}$**：',
+        '',
+        '$$\\widehat{X}^{-1}(T) = T(X), \\qquad \\bigl(\\widehat{X}_{!}(E)\\bigr)(Y) \\in \\{\\, E,\\ \\emptyset\\, \\}, \\qquad \\bigl(\\widehat{X}_{*}(E)\\bigr)(Y) \\in \\{\\, E,\\ \\{0\\}\\, \\}.$$'
       ].join('\n'),
       notes: [
         '**证明。** 由「任意函子诱导拓扑斯态射」，$X : \\mathbf{1} \\to \\mathcal{C}$ 诱导出 $\\widehat{X}_{!} \\dashv \\widehat{X}^{-1} \\dashv \\widehat{X}_{*}$ ✓。三条公式分别是：拉回就是取值 ✓；左 Kan 延拓沿 $\\mathbf{1} \\to \\mathcal{C}$ 由逗号范畴的余极限给出，而「$\\exists Y \\to X$」正是那个余极限非空的条件 ✓；右伴对偶 ✓。∎'

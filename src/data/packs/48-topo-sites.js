@@ -121,7 +121,8 @@ window.MG = window.MG || {};
         '$$f^{-1} := g : \\mathcal{C} \\longrightarrow \\mathcal{C}\'$$',
         '叫**连续的**，如果沿 $g$ 的预复合把 $\\mathcal{C}\'$ 上的层拉回成 $\\mathcal{C}$ 上的层：',
         '',
-        '$$g^{*} : \\widetilde{\\mathcal{C}\'} \\longrightarrow \\widetilde{\\mathcal{C}}, \\qquad F \\longmapsto F \\circ g, \\qquad \\text{落在层范畴里。}$$'
+        '$$g^{*} : \\widetilde{\\mathcal{C}^{\prime}} \\longrightarrow \\widetilde{\\mathcal{C}}, \\qquad F \\longmapsto F \\circ g$$',
+        '（它把层送到层，所以限制在层范畴上。）'
       ].join('\n'),
       notes: [
         '**读法**：$g$ 的方向是 $\\mathcal{C} \\to \\mathcal{C}\'$，但层是**反变**的，所以 $g$ 把 $\\mathcal{C}\'$ 上的层**拉回**到 $\\mathcal{C}$ 上。这个「方向拧一下」是景态射的一切别扭之处。',

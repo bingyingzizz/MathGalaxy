@@ -69,7 +69,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}$ 是有余积的阿贝尔范畴、$G \\in \\mathcal{C}$。则',
         '',
-        '$$G \\text{ 是生成元} \\iff \\text{对每个 } M \\in \\mathcal{C},\\ \\exists I:\\ G^{(I)} \\twoheadrightarrow M.$$'
+        '$G$ **是生成元** $\\iff$ 对每个 $M \\in \\mathcal{C}$ 都存在指标集 $I$ 与满态射',
+        '',
+        '$$G^{(I)} \\twoheadrightarrow M.$$'
       ].join('\n'),
       notes: [
         [

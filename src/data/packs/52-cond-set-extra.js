@@ -60,7 +60,8 @@ window.MG = window.MG || {};
         '',
         '2. 函子 $S \\mapsto \\underline{S}$（把紧 Hausdorff 空间看成它表示的凝聚态集）给出范畴等价',
         '',
-        '$$\\mathbf{CHaus}\\ \\simeq\\ \\{\\text{紧 Hausdorff 空间}\\} \\longrightarrow \\{\\text{拟紧且拟分离的凝聚态集}\\}.$$'
+        '$$\\mathbf{CHaus}\\ \\simeq\\ \\mathrm{CHaus}\\ \\longrightarrow \\mathrm{CondSet}_{\\mathrm{qcqs}}.$$',
+        '即：**紧 Hausdorff 空间**与**拟紧且拟分离的凝聚态集**等价。'
       ].join('\n'),
       notes: [
         '**这一条在说什么。** 凝聚态集是「用紧 Hausdorff 空间探测出来的层」。这条定理说：探测得最规整的那批对象（拟紧拟分离 的），**原来就是探测者自己**。于是「紧 Hausdorff 空间」这个范畴可以**原封不动**地坐进 $\\mathrm{Cond}$ 里，作为它的「紧块部分」。',

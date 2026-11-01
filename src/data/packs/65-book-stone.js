@@ -23,7 +23,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $S$ 是 **Stone** 空间。则 $S$ 的**任何开覆盖都有有限的、两两不交的闭开加细**：存在有限族 $(C_{r})_{r \\le m}$ 使',
         '',
-        '$$C_{r} \\text{ 闭开}, \\qquad C_{r} \\cap C_{s} = \\emptyset \\ (r \\ne s), \\qquad \\bigsqcup_{r} C_{r} = S,$$',
+        '- 每个 $C_{r}$ **闭开**；',
+        '- $r \\ne s$ 时 $C_{r} \\cap C_{s} = \\emptyset$；',
+        '- $\\bigsqcup_{r} C_{r} = S$。',
         '',
         '且每个 $C_{r}$ 都含在覆盖的某一支之中。'
       ].join('\n'),

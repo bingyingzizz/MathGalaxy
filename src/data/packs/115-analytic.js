@@ -39,7 +39,7 @@ window.MG = window.MG || {};
         '- 一个**凝聚态环** $A$ —— 白话：凝聚态集（「对每个紧 Hausdorff 空间 $S$ 给出一个集合 $A(S)$、且随 $S$ 变小而相容」的那套规则，见 `def.condensed-set`）里**还能做加法与乘法**。等价说法：对每个 $S$，$A(S)$ 是一个普通环，且 $S \\to T$ 诱导的映射是环同态。所以「凝聚态环」不是新对象，就是把「环」搬进凝聚态集的范畴；点开「凝聚态」跳到凝聚态集那页是对的，环这一层就写在下面这句里。最省事的例子：任意普通环取离散拓扑。',
         '- 一个函子',
         '',
-        '$$\\{\\text{extremally disconnected 集}\\} \\longrightarrow \\operatorname{Mod}^{\\mathrm{cond}}_{A}, \\qquad S \\longmapsto \\mathcal{A}[S],$$',
+        '$$\\{\\,\\ S : S \\text{ extremally disconnected}\\, \\} \\longrightarrow \\operatorname{Mod}^{\\mathrm{cond}}_{A}, \\qquad S \\longmapsto \\mathcal{A}[S]$$',
         '',
         '它把有限不交并送到**乘积**，并带一族与 $S \\to T$ 相容的映射 $S \\to \\mathcal{A}[S]$：对每个 $s \\in S$ 给出自由完备模里的一个元素 —— 这就是「自由生成元」的抽象版。',
         '',

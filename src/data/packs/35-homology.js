@@ -121,7 +121,8 @@ window.MG = window.MG || {};
       statement: [
         '**同伦范畴** $\\mathbf{K}(\\mathcal{C})$ 的对象与 $\\mathcal{C}(\\mathcal{C})$ 相同，态射取',
         '',
-        '$$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, L) \\;:=\\; \\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L) \\big/ \\{\\text{零伦态射}\\}$$',
+        '$$\\operatorname{Hom}_{\\mathbf{K}(\\mathcal{C})}(K, L) \\;:=\\; \\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L) \\big/\\ \\sim,$$',
+        '其中 $\\sim$ 由**零同伦**的映射生成。',
         '',
         '其中的同构叫**同伦等价**；在 $\\mathbf{K}(\\mathcal{C})$ 中变成 $0$ 的复形叫**同伦平凡的**。'
       ].join('\n'),
@@ -360,7 +361,7 @@ window.MG = window.MG || {};
         '',
         '进一步：若 $0 \\to M\' \\to M \\to M\'\' \\to 0$ 正合且 $M\'$ 内射，则',
         '',
-        '$$M \\text{ 内射} \\iff M\'\' \\text{ 内射}$$'
+        '$M$ **内射** $\\iff M\\prime\\prime$ **内射**'
       ].join('\n'),
       notes: '证明用一张 $3 \\times 3$ 的 $\\operatorname{Hom}$ 图表：把短正合列 $0 \\to A \\to B \\to C \\to 0$ 用 $\\operatorname{Hom}(-, M)$ 家族拉成三行，用两次蛇引理读出中间一行 $0 \\to \\ker f \\to \\ker g \\to \\ker h \\to \\operatorname{coker} f \\to \\operatorname{coker} g \\to 0$，再看出第一行与第三行都是正合的，于是 $\\ker g = \\operatorname{coker} g = 0$。',
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1–7.3']

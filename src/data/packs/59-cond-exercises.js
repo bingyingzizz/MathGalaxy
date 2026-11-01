@@ -29,7 +29,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{T}$ 是拓扑斯，$X_{0} \\xrightarrow{\\ p\\ } X$ 是态射且**有截面** $s$（$p s = 1_{X}$）。记',
         '',
-        '$$X_{n} := X_{0} \\times_{X} \\cdots \\times_{X} X_{0} \\quad (n+1 \\text{ 个因子}),$$',
+        '$$X_{n} := X_{0} \\times_{X} \\cdots \\times_{X} X_{0},$$',
+        '（共 $n+1$ 个因子。）',
         '',
         '则对 $\\mathcal{T}$ 中任何阿贝尔群 $M$，增广 Čech 复形 $\\check{C}^{\\bullet}\\bigl((X_{0} \\to X)^{+}, M\\bigr)$ 是**同伦平凡**的；特别地',
         '',

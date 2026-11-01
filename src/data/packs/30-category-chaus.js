@@ -220,7 +220,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $S$ 是紧 Hausdorff 空间，$x \\in S$。则 $x$ 的连通分量等于一切包含 $x$ 的闭开集之交：',
         '',
-        '$$C(x) \\;=\\; \\bigcap \\{\\, K \\subseteq S : K \\text{ 闭开},\\ x \\in K \\,\\}$$'
+        '$C(x)$ 是**所有包含 $x$ 的闭开子集之交**：',
+        '$$C(x) \\;=\\; \\bigcap \\{\\, K \\subseteq S : x \\in K \\,$$'
       ].join('\n'),
       notes: '证明见边上那条推导。要点是「**紧 Hausdorff 里有无穷多闭开集可用**」：紧 Hausdorff 空间是正规的（$T_{4}$），所以两个不交闭集能被开集分开，而紧性又把「开集分开」升级成「闭开集分开」。这条把 $\\pi_{0}$ 这个反射函子变得可算：连通分量不是抽象地取出来的，而是闭开集的交。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
@@ -337,7 +338,8 @@ window.MG = window.MG || {};
       statement: [
         '**投射有限空间**是有限离散空间沿一个**有向**系统取极限得到的拓扑空间：',
         '',
-        '$$X \\;=\\; \\varprojlim_{i \\in I} X_{i}, \\qquad X_{i} \\text{ 有限离散},\\quad I \\text{ 有向}$$'
+        '$$X \\;=\\; \\varprojlim_{i \\in I} X_{i},$$',
+        '其中每个 $X_{i}$ 是**有限离散**空间、$I$ 是**有向**集。'
       ].join('\n'),
       notes: '「pro-finite」= 有限者的投射极限。直观上它是「越来越细的有限分辨率」堆出来的对象：$X_{i}$ 是第 $i$ 层分辨率下的样子，$I$ 有向保证任意两层分辨率都能同时加细。',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']

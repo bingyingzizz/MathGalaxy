@@ -446,7 +446,7 @@ MG.i18nAbstracts = {
       'functions equal almost everywhere, which is what makes $\\|f\\|_p = 0$ imply $f ' +
       '= 0$. For $p<1$ the triangle inequality fails, so one only gets a quasi-norm, ' +
       'although the space stays complete.',
-      status: 'reviewed', basedOn: 'v0.9.1#d9b86281', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      status: 'reviewed', basedOn: 'v0.9.1#361b9f22', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'def.tensor-field': {

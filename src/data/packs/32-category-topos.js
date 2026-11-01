@@ -118,7 +118,8 @@ window.MG = window.MG || {};
         '',
         '等价地，下面两条同时成立：',
         '',
-        '$$F\\Bigl(\\coprod_{i \\in I} X_{i}\\Bigr) \\;\\cong\\; \\prod_{i \\in I} F(X_{i}), \\qquad R \\text{ 是 } X \\text{ 上的等价关系} \\implies F(X/R) \\;\\cong\\; \\ker\\bigl(F(X) \\rightrightarrows F(R)\\bigr)$$'
+        '$$F\\Bigl(\\coprod_{i \\in I} X_{i}\\Bigr) \\;\\cong\\; \\prod_{i \\in I} F(X_{i}),$$',
+        '其中 $R$ 是 $X$ 上的**等价关系**（拓扑斯的覆盖所对应的那个）。'
       ].join('\n'),
       notes: [
         ['**证明。** 设覆盖族 $(X_{i} \\to X)_{i \\in I}$（有限、$\\coprod_{i}X_{i} \\to X$ 满）。层条件是对每个这样的族','$$F(X) \\to \\prod_{i}F(X_{i}) \\rightrightarrows \\prod_{i,j}F(X_{i}\\times_{X}X_{j})$$','为等化子。','- **「余积变积」**：取单支覆盖 $X \\to X$（它当然满），则层条件退化成 $F(X) \\cong F(X)$ 的平凡等式 —— 有限余积的层条件要把 $I$ 取成各支自身：对有限族 $(X_{i})$，$\\coprod_{i}X_{i} \\to \\coprod_{i}X_{i}$ 满，层条件给出 $F(\\coprod_{i}X_{i}) \\cong \\prod_{i}F(X_{i})$ ✓（与余积交换 == 与有限积交换，因为 $F$ 是 $\\mathbf{Set}$ 值）。','- **「商变核」**：一般族的覆盖条件里，$\\coprod_{i}X_{i} \\to X$ 是满态射，于是它在预拓扑斯里是**有效满**的：$R := \\coprod_{i,j}X_{i}\\times_{X}X_{j}$ 是 $\\coprod_{i}X_{i}$ 上的等价关系，而 $X$ 是这个关系的商（余等化子）。于是层条件读作 $F(X) \\cong \\ker\\bigl(F(\\coprod X_{i}) \\rightrightarrows F(R)\\bigr)$；再接上「余积变积」就得到陈述里的第一条等式 ✓。反过来取 $X = X/R$ 的商映射作覆盖，得 $F(X/R) \\cong \\ker(F(X)\\rightrightarrows F(R))$ ✓。','- **合起来**：两条所说正是所有覆盖（都是有限族、余积满）的层条件 ✓。','- **推论**：$h_{X} = \\operatorname{Hom}(X,-)$ 满足两条（Hom 把余积送成积、把商送成核），故每个可表示预层都是层 —— 即预标准拓扑是次标准的 ✓。∎'].join('\n'),
@@ -161,7 +162,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}$ 是预拓扑斯、配预标准拓扑。对 $\\mathcal{C}$ 中的态射 $f : X \\to Y$，',
         '',
-        '$$f \\text{ 是单态射（满态射）} \\iff X^{\\sharp} \\to Y^{\\sharp} \\text{ 是单态射（满态射）}$$'
+        '$f$ **是单态射（满态射）** $\\iff X^{\\sharp} \\to Y^{\\sharp}$ **是单态射（满态射）**'
       ].join('\n'),
       notes: [
         ['**证明。** 记层化为 $(-)^{\\sharp}$。','- **$(\\implies)$**：层化是到层范畴的**左伴随**，故保余极限，特别保满态射；又是**左正合**的（保有限极限），故保单态射 ✓。','- **$(\\Longleftarrow)$**：预标准拓扑是次标准的，所以 $h_{X}^{\\sharp} \\cong h_{X}$、$h_{Y}^{\\sharp} \\cong h_{Y}$，且 $f^{\\sharp}$ 在 Yoneda 嵌入下的像就是 $h_{f}$。','- 对可表示预层：$h_{f}$ 单 $\\iff$ $f$ 单（Yoneda 双射把 $h_{f}(Z)$ 的诱导映射写成「与 $f$ 复合」，单射性逐点验出）；$h_{f}$ 满 $\\iff$ $f$ 满（$\\mathbf{Set}$ 值预层范畴中的满态射逐点判定；一边取 $Z = Y$ 与 $1_{Y}$，另一边用 $\\operatorname{Hom}(Z,-)$ 保满态射）✓。','- 于是 $h_{f}$ 单（满）$\\iff$ $h_{f}^{\\sharp}$ 单（满），两头接起来即得 ✓。∎'].join('\n'),

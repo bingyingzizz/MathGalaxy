@@ -95,7 +95,11 @@ window.MG = window.MG || {};
       statement: [
         '定义',
         '',
-        '$$\\mu(n) := \\begin{cases} 1, & n = 1, \\\\ (-1)^{r}, & n = p_{1}p_{2}\\cdots p_{r}\\ \\text{是}\\ r\\ \\text{个互不相同素数之积}, \\\\ 0, & n\\ \\text{含平方因子}\\ (p^{2} \\mid n) . \\end{cases}$$',
+        '$\\mu : \\mathbb{N} \\to \\mathbb{Z}$ 按 $n$ 的素因子结构定义：',
+        '',
+        '- $n = 1$ 时 $\\mu(1) = 1$；',
+        '- $n$ 是 $r$ 个**互不相同**素数之积（$n = p_{1}p_{2}\\cdots p_{r}$）时 $\\mu(n) = (-1)^{r}$；',
+        '- $n$ **含平方因子**（存在素数 $p$ 使 $p^{2} \\mid n$）时 $\\mu(n) = 0$。',
       ].join('\n'),
       notes: [
         '$\\mu$ 是**积性**函数里最简单的一个（也是完全积性以外的第一个「有零值」的积性函数）：由素数幂上的值 $\\mu(p) = -1$、$\\mu(p^{e}) = 0\\ (e \\ge 2)$ 完全确定。',
@@ -137,11 +141,11 @@ window.MG = window.MG || {};
       label: 'Möbius 反演',
       title: '从和函数还原原函数',
       regions: ['number'],
-      tags: ['数论', '数论函数', '定理'],
+      regions: ['number'],
       statement: [
         '设 $f, g : \\mathbb{N}^{+} \\to \\mathbb{C}$。则',
         '',
-        '$$g(n) = \\sum_{d \\mid n} f(d) \\quad \\text{对一切 } n \\qquad \\iff \\qquad f(n) = \\sum_{d \\mid n} \\mu(d)\\, g\\!\\left(\\frac{n}{d}\\right) \\ \\text{对一切 } n .$$',
+        '$$g(n) = \\sum_{d \\mid n} f(d)\\quad \\forall n \\qquad \\iff \\qquad f(n) = \\sum_{d \\mid n} \\mu(d)\\, g\\!\\left(\\frac{n}{d}\\right) \\quad \\forall n .$$',
       ].join('\n'),
       notes: [
         '**$\\Leftarrow$ 的方向**（唯一要看的方向）：把 $f(d)$ 的表达式代进去，',

@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}, \\mathcal{D}$ 是阿贝尔范畴，$F : \\mathcal{C} \\to \\mathcal{D}$ 是函子。则',
         '',
-        '$$F \\text{ 左正合} \\iff F \\text{ 加法，且把左正合列送到左正合列}.$$',
+        '$F$ **左正合** $\\iff$ $F$ **加法，且把左正合列送到左正合列**',
         '',
         '对偶地：$F$ 右正合 $\\iff$ $F$ 加法，且把右正合列送到右正合列。'
       ].join('\n'),
@@ -47,7 +47,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{A}$ 是阿贝尔范畴（有足够多内射）、$\\mathcal{A}\'$ 是阿贝尔范畴，$F : \\mathcal{A} \\to \\mathcal{A}\'$ 是**加法**函子。则',
         '',
-        '$$F \\text{ 左正合} \\iff \\forall M \\in \\mathcal{A}:\\ R^{0}F(M) \\cong F(M).$$',
+        '$F$ **左正合** $\\iff$ 对每个 $M \\in \\mathcal{A}$ 都有 $R^{0}F(M) \\cong F(M)$。',
         '',
         '对偶地（有足够多投射时）：$F$ 右正合 $\\iff L_{0}F \\cong F$。'
       ].join('\n'),

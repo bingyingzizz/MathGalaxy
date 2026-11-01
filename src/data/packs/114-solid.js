@@ -92,7 +92,7 @@ window.MG = window.MG || {};
         '',
         '对任意 profinite 集 $S$，连续函数群 $C(S, \\mathbb{Z})$（见 `def.cond-measure`）',
         '',
-        '$$C(S, \\mathbb{Z}) = \\{\\, f : S \\to \\mathbb{Z}\\ \\text{连续} \\,\\}$$',
+        '$$C(S, \\mathbb{Z}) = \\{\\, f : S \\to \\mathbb{Z}\\ \\mid f \\text{continuous}\\, \\}$$',
         '',
         '是**自由阿贝尔群**。'
       ].join('\n'),

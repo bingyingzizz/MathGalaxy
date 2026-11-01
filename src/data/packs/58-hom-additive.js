@@ -54,7 +54,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}$ 是**预加性范畴**，$M \\in \\mathcal{C}$。则',
         '',
-        '$$M \\text{ 是零对象} \\iff M \\text{ 是终对象} \\iff M \\text{ 是始对象}.$$'
+        '$M$ **是零对象** $\\iff$ $M$ **是终对象** $\\iff$ $M$ **是始对象**'
       ].join('\n'),
       notes: [
         ['**证明。** 预加性给每个 $\\operatorname{Hom}(X,Y)$ 一个阿贝尔群结构，且复合**双线性** —— 于是**零态射**永远存在（它就是群的单位元），并且由双线性把 $0 + h = h$ 展开得','$$0_{Y,Z}\\circ h = 0_{X,Z}, \\qquad f\\circ 0_{X,Y} = 0_{X,Z} ✓$$','**终对象 $\\implies$ 零对象**：$M$ 终对象时 $\\operatorname{End}(M) = \\{1_{M}\\}$ 只有一个元素；而它是阿贝尔群，群里的唯一元素必是单位元，故 $1_{M} = 0_{M}$ ✓。','**零对象 $\\implies$ 终对象**：设 $1_{M} = 0_{M}$。任给 $X$ 与 $f, g : X \\to M$，由双线性','$$f = 1_{M}\\circ f = 0_{M}\\circ f = 0_{X,M}, \\qquad g = 0_{X,M},$$','故 $f = g$：$\\operatorname{Hom}(X,M)$ 至多一个元素，而它非空（有零态射），所以 $M$ 是终对象 ✓。','**始对象**：把整个论证搬到 $\\mathcal{C}^{\\mathrm{op}}$ 即可 ✓。∎'].join('\n'),
@@ -75,7 +75,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}$ 是预加性范畴，$M, M_{1}, M_{2} \\in \\mathcal{C}$。',
         '',
-        '$$M \\text{ 是} M_{1}, M_{2} \\text{ 的直和} \\iff (M, p_{1}, p_{2}) \\text{ 是} M_{1}, M_{2} \\text{ 的积} \\iff (M, i_{1}, i_{2}) \\text{ 是余积},$$',
+        '$M$ **是 $M_{1}, M_{2}$ 的直和** $\\iff$ $(M, p_{1}, p_{2})$ **是 $M_{1}, M_{2}$ 的积**',
         '',
         '其中「直和」指存在 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使',
         '',
@@ -119,7 +119,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{C}, \\mathcal{D}$ 是加法范畴，$F : \\mathcal{C} \\to \\mathcal{D}$ 是函子。则三者等价：',
         '',
-        '$$F \\text{ 加法} \\iff F \\text{ 保零对象与所有直和} \\iff F \\text{ 保所有有限积} \\iff F \\text{ 保所有有限余积}.$$'
+        '$F$ **加法** $\\iff$ $F$ **保零对象与所有直和** $\\iff$ $F$ **保所有有限积** $\\iff$ $F$ **保所有有限余积**'
       ].join('\n'),
       notes: [
         ['**证明。** **① 加法 $\\implies$ 保双积。** $F$ 加法意味着每个 $\\operatorname{Hom}(M,N) \\to \\operatorname{Hom}(FM,FN)$ 是群同态。若 $M$ 是 $M_{1},M_{2}$ 的双积，$F$ 把三条等式送到','$$F(p_{k})F(i_{k}) = 1, \\qquad F(i_{1})F(p_{1}) + F(i_{2})F(p_{2}) = 1_{F(M)},$$','这正是「$F(M)$ 是 $F(M_{1}), F(M_{2})$ 的双积」的定义 ✓；有限多支同理。零对象：$1_{F(0)} = F(1_{0}) = F(0_{0}) = 0_{F(0)}$（群同态把零元送到零元），故 $F(0)$ 是零对象 ✓。','**② 保双积与零对象 $\\implies$ 加法。** 用上面的关键公式 $f + g = \\nabla_{N}(f\\oplus g)\\Delta_{M}$。$F$ 保积、保余积，故 $F(\\Delta_{M}) = \\Delta_{FM}$、$F(\\nabla_{N}) = \\nabla_{FN}$（这三个映射都由「与投影 / 含入复合是什么」唯一刻画，而 $F$ 保投影与含入），且 $F(f \\oplus g) = Ff \\oplus Fg$（由四角刻画同样唯一）。于是','$$F(f+g) = F(\\nabla_{N})F(f\\oplus g)F(\\Delta_{M}) = \\nabla_{FN}(Ff\\oplus Fg)\\Delta_{FM} = Ff + Fg ✓$$','故 $\\operatorname{Hom}(M,N) \\to \\operatorname{Hom}(FM,FN)$ 保加法；它当然保零，所以是群同态，即 $F$ 加法 ✓。','**③ 有限积 / 有限余积**：加法范畴里有限积、有限余积、直和三者重合（见「直和就是积」），所以三个条件说的是同一件事；空积是终对象、空余积是始对象，都是零对象 ✓。∎'].join('\n'),

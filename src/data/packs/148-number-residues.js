@@ -46,7 +46,10 @@ window.MG = window.MG || {};
       statement: [
         '设 $p$ 是奇素数，$p \\nmid a$。定义',
         '',
-        '$$\\left(\\frac{a}{p}\\right) := \\begin{cases} 1, & a\\ \\text{是模}\\ p\\ \\text{的二次剩余}, \\\\ -1, & a\\ \\text{是二次非剩余} . \\end{cases}$$',
+        '$\\left(\\frac{a}{p}\\right)$ 只取值 $\\pm 1$：',
+        '',
+        '- $a$ **是模 $p$ 的二次剩余**（即 $a \\equiv x^{2} \\pmod p$ 有解 $x \\not\\equiv 0$）时取 $1$；',
+        '- $a$ **是二次非剩余**时取 $-1$。',
         '',
         '补充规定 $\\left(\\frac{a}{p}\\right) = 0$ 当 $p \\mid a$。',
       ].join('\n'),
