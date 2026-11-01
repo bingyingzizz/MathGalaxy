@@ -110,7 +110,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $\\{f_n\\}$ 依测度 Cauchy，则存在可测函数 $f$ 使',
         '',
-        '$$f_n \\to f\\text{ 依测度}, $$',
+        '$$f_n \\xrightarrow{\\ \\mu\\ } f$$',
         '',
         '并且存在**子列** $\\{f_{n_j}\\}$ 使',
         '',
@@ -135,7 +135,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $f_n \\to f$ 于 $L^1$，则 $f_n \\to f$ 依测度：',
         '',
-        '$$\\int |f_n - f| \\to 0 \\implies f_n \\to f\\text{ 依测度}$$'
+        '$$\\int |f_n - f| \\to 0 \\implies f_n \\xrightarrow{\\ \\mu\\ } f$$'
       ].join('\n'),
       notes: [
         '工具是 **Markov（Chebyshev）不等式**：$\n\\mu(\\{|g| \\ge \\varepsilon\\}) \\le (1/\\varepsilon)\\cdot\\int |g| d\\mu$',
@@ -156,7 +156,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mu(X) < \\infty$，且 $f_n \\to f$ a.e.。则 $f_n \\to f$ **近一致**：',
         '',
-        '$$\\forall\\varepsilon > 0, \\exists E \\subseteq X : \\mu(E) < \\varepsilon,\\text{ 且} f_n \\rightrightarrows  f\\text{ 在} X \\setminus E\\text{ 上一致}$$'
+        '$$\\forall\\varepsilon > 0,\\ \\exists E \\subseteq X :\\ \\mu(E) < \\varepsilon$$',
+        '且 $f_n \\rightrightarrows  f$ 在 $X \\setminus E$ 上**一致收敛**。'
       ].join('\n'),
       notes: [
         '⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。',
@@ -177,7 +178,8 @@ window.MG = window.MG || {};
       statement: [
         '设 $f : [a, b] \\to \\mathbb{C}$ 是 Lebesgue 可测的。则对任意 $\\varepsilon > 0$，存在**紧集** $E \\subseteq [a, b]$ 使',
         '',
-        '$$\\mu(E^c) < \\varepsilon,\\text{ 且} f|_E\\text{ 连续}$$'
+        '$$\\mu(E^c) < \\varepsilon$$',
+        '且 $f|_E$ **连续**。'
       ].join('\n'),
       notes: [
         '⭐ 「可测」这个条件看起来很弱，但 Lusin 说：可测函数差一点就是**连续**函数 —— 只要允许把定义域挖掉一小块。',

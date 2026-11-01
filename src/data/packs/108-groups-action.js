@@ -104,7 +104,8 @@ window.MG = window.MG || {};
         '',
         '各循环长度组成的多重集叫 $\\sigma$ 的**循环型**。',
         '',
-        '$$\\operatorname{ord}(\\sigma) = \\text{各循环长度的最小公倍数}$$'
+        '$\\operatorname{ord}(\\sigma)$ 等于**各循环长度的最小公倍数**：若循环分解的长度是 $\\ell_1, \\ldots, \\ell_r$，则',
+        '$$\\operatorname{ord}(\\sigma) = \\operatorname{lcm}(\\ell_1, \\ldots, \\ell_r)$$'
       ].join('\n'),
       notes: '⭐ 「不交」是关键词：两个不交的循环**可以交换**，所以循环分解才能看成「把置换拆成互不干扰的零件」。一旦相交就不能随便换序。\n\n⭐ 循环型是 $S_n$ 的**共轭不变量**，而且完全决定共轭类：$\\sigma, \\tau$ 共轭 $\\iff$ 循环型相同。$S_n$ 的共轭类因此与 $n$ 的**分拆**一一对应 —— 这条把组合学的分拆函数拉进了群论。\n\n⭐ 例子：$n = 4$ 的循环型与类大小：$1^{4}$（单位，$1$ 个）、$2\\,1^{2}$（对换，$6$ 个）、$2^{2}$（双对换，$3$ 个）、$3\\,1$（$3$-循环，$8$ 个）、$4$（$4$-循环，$6$ 个），合计 $24 = 4!$ ✓。\n\n⚠ 记号约定：$(a_1\\ a_2\\ \\cdots\\ a_k)$ 表示 $a_1 \\mapsto a_2 \\mapsto \\cdots \\mapsto a_k \\mapsto a_1$，其余点不动。本图一律**右到左**复合（先作用右边的），与 `def.alternating-group` 的符号公式配套。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.1']
@@ -120,7 +121,8 @@ window.MG = window.MG || {};
       statement: [
         '每个 $\\sigma \\in S_n$ 都能写成**对换**（两个点的交换）之积，且所用对换个数的**奇偶性**与分解方式无关。据此定义**符号**',
         '',
-        '$$\\operatorname{sgn}(\\sigma) := (-1)^{k} \\quad (\\sigma = \\text{$k$ 个对换之积})$$',
+        '$$\\operatorname{sgn}(\\sigma) := (-1)^{k}$$',
+        '其中 $\\sigma$ 是 $k$ 个对换之积（良定性由 $\\sigma$ 的奇偶性保证）。',
         '',
         '等价公式（不含分解的任意性）',
         '',
@@ -169,7 +171,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $G$ 是有限群、$H \\le G$。对 $g \\in G$ 记**左陪集** $gH := \\{\\, gh : h \\in H \\,\\}$。则左陪集构成 $G$ 的一个划分，每个左陪集与 $H$ 等势，于是',
         '',
-        '$$|G| = [G : H] \\cdot |H|, \\qquad \\text{即} \\qquad |H| \\mid |G|$$',
+        '$$|G| = [G : H] \\cdot |H|, \\qquad |H| \\mid |G|$$',
         '',
         '其中 $[G : H] := |G|/|H|$ 叫 $H$ 在 $G$ 中的**指数**。'
       ].join('\n'),

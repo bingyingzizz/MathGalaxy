@@ -91,7 +91,8 @@ window.MG = window.MG || {};
       statement: [
         '可测函数 $f : \\mathbb{R}^n \\to \\mathbb{C}$ 是**局部可积的**，当且仅当',
         '',
-        '$$\\int_K |f(x)| dx < \\infty\\quad \\text{ 对每个有界可测集} K \\subseteq \\mathbb{R}^n$$',
+        '对每个**有界可测集** $K \\subseteq \\mathbb{R}^n$ 都有',
+        '$$\\int_K |f(x)| dx < \\infty$$',
         '',
         '局部可积函数全体记作 $L^1_{loc}$（或 $L^1_{loc}(\\mathbb{R}^n)$）。'
       ].join('\n'),
@@ -328,7 +329,7 @@ window.MG = window.MG || {};
         '$\\mathbb{R}^{n}$ 上的 Borel 测度 $\\nu$ 是**正则的**，当且仅当',
         '',
         '$\\cdot$ $\\nu(K) < \\infty$ 对每个紧集 $K$ 成立；',
-        '$\\cdot$ $\\nu(E) = \\inf\\{ \\nu(U) : U\\text{ 开}, E \\subseteq U \\}$ 对每个 $E \\in \\mathfrak{B}_{\\mathbb{R}^n}$ 成立（**外正则**）。',
+        '$\\cdot$ $\\nu(E) = \\inf\\{ \\nu(U) : U \\in \\mathcal{T},\\ E \\subseteq U \\}$ 对每个 $E \\in \\mathfrak{B}_{\\mathbb{R}^n}$ 成立（**外正则**）。',
         '',
         '符号测度或复测度 $\\nu$ 叫正则 $\\iff$ $|\\nu|$ 正则。'
       ].join('\n'),

@@ -189,7 +189,7 @@ window.MG = window.MG || {};
         '',
         '设 $\\gamma: [a, b] \\to \\mathbb{C}$ 分段光滑（参数曲线），$f$ 在 $\\gamma$ 上连续。定义',
         '',
-        '$$\\int_\\gamma f(z)\\,\\mathrm{d}z := \\lim_{\\text{分割}} \\sum_{k=1}^{n} f(\\gamma(\\tau_k))\\,(\\gamma(t_k) - \\gamma(t_{k-1})),$$',
+        '$$\\int_\\gamma f(z)\\,\\mathrm{d}z := \\lim_{\\lVert\\Delta\\rVert \\to 0} \\sum_{k=1}^{n} f(\\gamma(\\tau_k))\\,(\\gamma(t_k) - \\gamma(t_{k-1})),$$',
         '',
         '分割取 $[a, b]$ 的任意加细分割、$\\tau_k \\in [t_{k-1}, t_k]$ 任意，极限存在且与取法无关；它等于',
         '',
@@ -471,7 +471,8 @@ window.MG = window.MG || {};
         '',
         '设 $f$ 在 $D(a, r) \\setminus \\{a\\}$ 上全纯，且',
         '',
-        '$$\\lim_{z \\to a} (z - a) f(z) = 0 \\qquad (\\text{等价地，} f(z) = o(|z - a|^{-1})).$$',
+        '$$\\lim_{z \\to a} (z - a) f(z) = 0.$$',
+        '等价的说法是 $f(z) = o(|z - a|^{-1})$。',
         '',
         '则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。'
       ].join('\n'),

@@ -298,7 +298,7 @@
         '设 $z_{0}$ 是 $f$ 的**本性奇点**（即 Laurent 展开的主部有无穷多项）。则对 $z_{0}$ 的每个去心邻域 ' +
           '$U = \\{\\, 0 < |z - z_{0}| < r \\,\\}$，像集 $f(U)$ 在 $\\mathbb{C}$ 中**稠密**：',
         '',
-        '$$\\forall\\, w \\in \\mathbb{C},\\ \\forall\\, \\varepsilon > 0,\\ \\exists\\, z \\in U \\text{ 使 } |f(z) - w| < \\varepsilon.$$',
+        '$$\\forall\\, w \\in \\mathbb{C},\\ \\forall\\, \\varepsilon > 0,\\ \\exists\\, z \\in U:\\ |f(z) - w| < \\varepsilon.$$',
       ].join('\n'),
       notes: [
         '**证明（反证）**：设存在 $w_{0}$、$\\rho > 0$ 使 $f(U) \\cap B(w_{0}, \\rho) = \\emptyset$。令',

@@ -120,7 +120,8 @@ window.MG = window.MG || {};
       statement: [
         '集合族 $\\mathcal{A}$ 具有**有限特征**，当且仅当对任意集合 $X$：',
         '',
-        '$$X \\in \\mathcal{A} \\iff X\\text{ 的每个有限子集都属于} \\mathcal{A}$$',
+        '记 $[X]^{<\\omega}$ 为 $X$ 的全体**有限子集**，则它等价于',
+        '$$X \\in \\mathcal{A} \\iff \\forall\\, Y \\in [X]^{<\\omega},\\ Y \\in \\mathcal{A}$$',
         '',
         '也就是说：「局部地看起来像 $\\mathcal{A}$ 的成员」$\\implies$「整体就是 $\\mathcal{A}$ 的成员」。'
       ].join('\n'),

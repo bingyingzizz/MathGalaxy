@@ -55,7 +55,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $\\mathcal{M}$ 只是一个**环**（不必是 $\\sigma$代数），而 $\\mu : \\mathcal{M} \\to [0, +\\infty]$ 仍满足测度的两条：',
         '',
-        '$$\\mu(\\emptyset) = 0, \\quad  \\{E_j\\}\\text{ 两两不交} \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
+        '$$\\mu(\\emptyset) = 0, \\quad  E_j \\cap E_k = \\emptyset\\ (j \\ne k) \\implies \\mu(\\bigcup E_j) = \\sum \\mu(E_j)$$',
         '',
         '则称 $\\mu$ 是 $\\mathcal{M}$ 上的**预测度**。'
       ].join('\n'),
@@ -77,7 +77,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $\\mu$ 只满足 (i) 与**有限**可加性：',
         '',
-        '$$A, B \\in \\mathcal{M}\\text{ 两两不交} \\implies \\mu(A \\cup B) = \\mu(A) + \\mu(B)$$',
+        '$$A, B \\in \\mathcal{M},\\ A \\cap B = \\emptyset \\implies \\mu(A \\cup B) = \\mu(A) + \\mu(B)$$',
         '（由归纳，可推到任意有限多个不交集合），',
         '',
         '则 $\\mu$ 称为**有限可加测度**。'

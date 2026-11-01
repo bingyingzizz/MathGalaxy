@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-01T14:15:15.149Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-01T14:26:24.161Z
 > 14 星系 / 92 星团 / 1341 节点 / 2473 连线（强边 2456，弱边 17；其中**不分层**的「推论」21 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -546,7 +546,7 @@ $$A / \sim\ := \{ [a] : a \in A \}$$
 
 对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。
 
-$$\forall X \exists\alpha ( \alpha \hookrightarrow  X\text{ 不成立} ),\text{ 且} \alpha = \aleph(X)\text{ 时}: \forall\beta < \alpha, \beta \hookrightarrow  X\text{ 成立}$$
+$$\forall X \exists\alpha \bigl[\, \neg(\alpha \hookrightarrow  X)\ \wedge \alpha = \aleph(X)\ \wedge \forall\beta < \alpha,\ \beta \hookrightarrow  X\, \bigr]$$
 
 ⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \implies$ 良序定理」「$AC \implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。
 
@@ -1149,7 +1149,8 @@ $\langle \mathbb{N}, \le \rangle$ 是良序的；$\langle \mathbb{Z}, \le \rangl
 
 集合族 $\mathcal{A}$ 具有**有限特征**，当且仅当对任意集合 $X$：
 
-$$X \in \mathcal{A} \iff X\text{ 的每个有限子集都属于} \mathcal{A}$$
+记 $[X]^{<\omega}$ 为 $X$ 的全体**有限子集**，则它等价于
+$$X \in \mathcal{A} \iff \forall\, Y \in [X]^{<\omega},\ Y \in \mathcal{A}$$
 
 也就是说：「局部地看起来像 $\mathcal{A}$ 的成员」$\implies$「整体就是 $\mathcal{A}$ 的成员」。
 
@@ -3579,7 +3580,7 @@ $$H_{0}(X) \;\cong\; \bigoplus_{C \in \pi_{0}(X)} \mathbb{Z}.$$
 
 更精确：从每个分支 $C$ 中取一点 $x_{C}$，则类 $[x_{C}]$ 构成 $H_{0}(X)$ 的一组基。特别地
 
-$$\tilde{H}_{0}(X) = 0 \iff X \text{ 道路连通}.$$
+$$\tilde{H}_{0}(X) = 0 \iff X \text{ is path-connected}.$$
 
 **所以 $H_{0}$ 就是「$X$ 有几块」**。这也解释了为什么 $\tilde{H}_{0}(S^{0}) = \mathbb{Z}$（两点，秩 $2$ 商掉对角那条 $\mathbb{Z}$ 剩秩 $1$），从而球面同调的公式在 $p = 0$ 处也统一。
 
@@ -3707,7 +3708,7 @@ $$g : K^{(m)} \longrightarrow L$$
 
 **推论**：设 $K$ 是有限单纯复形。则包含映射 $C_{*}(K) \hookrightarrow S_{*}(|K|)$ 诱导同构
 
-$$H_{p}(K) \;\cong\; H_{p}(|K|) \qquad (\text{对一切 } p).$$
+$$H_{p}(K) \;\cong\; H_{p}(|K|) \qquad \forall p.$$
 
 于是「多面体的奇异同调可以只按某个三角剖分算成单纯同调」，而后者是**有限矩阵**问题。
 
@@ -5172,7 +5173,8 @@ $$\sigma = (a_1\ a_2\ \cdots\ a_{k_1})(b_1\ \cdots\ b_{k_2}) \cdots$$
 
 各循环长度组成的多重集叫 $\sigma$ 的**循环型**。
 
-$$\operatorname{ord}(\sigma) = \text{各循环长度的最小公倍数}$$
+$\operatorname{ord}(\sigma)$ 等于**各循环长度的最小公倍数**：若循环分解的长度是 $\ell_1, \ldots, \ell_r$，则
+$$\operatorname{ord}(\sigma) = \operatorname{lcm}(\ell_1, \ldots, \ell_r)$$
 
 ⭐ 「不交」是关键词：两个不交的循环**可以交换**，所以循环分解才能看成「把置换拆成互不干扰的零件」。一旦相交就不能随便换序。
 
@@ -5189,7 +5191,8 @@ $$\operatorname{ord}(\sigma) = \text{各循环长度的最小公倍数}$$
 
 每个 $\sigma \in S_n$ 都能写成**对换**（两个点的交换）之积，且所用对换个数的**奇偶性**与分解方式无关。据此定义**符号**
 
-$$\operatorname{sgn}(\sigma) := (-1)^{k} \quad (\sigma = \text{$k$ 个对换之积})$$
+$$\operatorname{sgn}(\sigma) := (-1)^{k}$$
+其中 $\sigma$ 是 $k$ 个对换之积（良定性由 $\sigma$ 的奇偶性保证）。
 
 等价公式（不含分解的任意性）
 
@@ -5241,7 +5244,7 @@ $$\langle g \rangle := \{\, g^{k} : k \in \mathbb{Z} \,\} \quad \subseteq\; G$$
 
 设 $G$ 是有限群、$H \le G$。对 $g \in G$ 记**左陪集** $gH := \{\, gh : h \in H \,\}$。则左陪集构成 $G$ 的一个划分，每个左陪集与 $H$ 等势，于是
 
-$$|G| = [G : H] \cdot |H|, \qquad \text{即} \qquad |H| \mid |G|$$
+$$|G| = [G : H] \cdot |H|, \qquad |H| \mid |G|$$
 
 其中 $[G : H] := |G|/|H|$ 叫 $H$ 在 $G$ 中的**指数**。
 
@@ -6243,7 +6246,8 @@ $$V = U \oplus W$$
 
 整环 $A$ 叫 **gcd 整环**，若任意 $a, b \in A$ 都有**最大公因子**：存在 $d$ 使
 
-$$d \mid a,\quad d \mid b,\quad \text{且任何 } c \mid a,\ c \mid b \text{ 都有 } c \mid d .$$
+$$d \mid a,\quad d \mid b,$$
+并且**任何同时整除 $a, b$ 的 $c$ 都整除 $d$**。
 
 注意「最大」是**整除意义下的最大下界**，不是大小比较 —— 整环上没有全序。
 
@@ -6283,7 +6287,7 @@ Bézout 整环里「不可约 = 素」（因为 $\gcd$ 由线性组合给出，E
 
 整环 $A$ 叫 **Euclid 整环**，若存在函数 $N : A \setminus \{0\} \to \mathbb{N}$（**欧几里得函数**），使对任意 $a \in A$、$b \ne 0$，存在 $q, r \in A$ 满足
 
-$$a = q b + r, \qquad r = 0 \ \text{或}\ N(r) < N(b) .$$
+$$a = q b + r, \qquad r = 0 \ \vee \ N(r) < N(b) .$$
 
 三个例子，三种 $N$：$\mathbb{Z}$ 取 $N(a) = |a|$；$K[x]$ 取 $N(f) = \deg f$（这就是 `thm.division-algorithm`）；$\mathbb{Z}[i]$（Gauss 整数）取 $N(a+bi) = a^{2}+b^{2}$。
 
@@ -8844,7 +8848,7 @@ $$Df(a) : E \to F \quad \text{topological linear isomorphism}$$
 
 设 $E, F, G$ 是 Banach 空间，$U \subseteq E \times F$ 开，$F_0 : U \to G$ 是 $C^{1}$，$(a, b) \in U$ 满足 $F_0(a, b) = 0$ 且偏导
 
-$$D_y F_0(a, b) : F \to G \quad \text{是拓扑线性同构}$$
+而 $D_y F_0(a, b) : F \to G$ 是**拓扑线性同构**。
 
 则存在 $a$ 的邻域 $V \subseteq E$ 与唯一的 $C^{1}$ 映射 $g : V \to F$ 使 $g(a) = b$、$F_0(x, g(x)) = 0$，且
 
@@ -9224,7 +9228,7 @@ $(X, \mathcal{M}, \mu )$ 称为**测度空间**。
 
 若 $\mathcal{M}$ 只是一个**环**（不必是 $\sigma$代数），而 $\mu : \mathcal{M} \to [0, +\infty]$ 仍满足测度的两条：
 
-$$\mu(\emptyset) = 0, \quad  \{E_j\}\text{ 两两不交} \implies \mu(\bigcup E_j) = \sum \mu(E_j)$$
+$$\mu(\emptyset) = 0, \quad  E_j \cap E_k = \emptyset\ (j \ne k) \implies \mu(\bigcup E_j) = \sum \mu(E_j)$$
 
 则称 $\mu$ 是 $\mathcal{M}$ 上的**预测度**。
 
@@ -9239,7 +9243,7 @@ Carathéodory 扩张定理的作用就是把预测度从环一路提升到生成
 
 若 $\mu$ 只满足 (i) 与**有限**可加性：
 
-$$A, B \in \mathcal{M}\text{ 两两不交} \implies \mu(A \cup B) = \mu(A) + \mu(B)$$
+$$A, B \in \mathcal{M},\ A \cap B = \emptyset \implies \mu(A \cup B) = \mu(A) + \mu(B)$$
 （由归纳，可推到任意有限多个不交集合），
 
 则 $\mu$ 称为**有限可加测度**。
@@ -9847,7 +9851,7 @@ $$\forall\varepsilon > 0, \mu(\{x : |f_n(x) - f_m(x)| \ge \varepsilon\}) \to 0\q
 
 若 $\{f_n\}$ 依测度 Cauchy，则存在可测函数 $f$ 使
 
-$$f_n \to f\text{ 依测度}, $$
+$$f_n \xrightarrow{\ \mu\ } f$$
 
 并且存在**子列** $\{f_{n_j}\}$ 使
 
@@ -9866,7 +9870,7 @@ $$f_{n_j} \to f\quad  \text{a.e.}$$
 
 若 $f_n \to f$ 于 $L^1$，则 $f_n \to f$ 依测度：
 
-$$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
+$$\int |f_n - f| \to 0 \implies f_n \xrightarrow{\ \mu\ } f$$
 
 工具是 **Markov（Chebyshev）不等式**：$
 \mu(\{|g| \ge \varepsilon\}) \le (1/\varepsilon)\cdot\int |g| d\mu$
@@ -9882,7 +9886,8 @@ $$\int |f_n - f| \to 0 \implies f_n \to f\text{ 依测度}$$
 
 设 $\mu(X) < \infty$，且 $f_n \to f$ a.e.。则 $f_n \to f$ **近一致**：
 
-$$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ 且} f_n \rightrightarrows  f\text{ 在} X \setminus E\text{ 上一致}$$
+$$\forall\varepsilon > 0,\ \exists E \subseteq X :\ \mu(E) < \varepsilon$$
+且 $f_n \rightrightarrows  f$ 在 $X \setminus E$ 上**一致收敛**。
 
 ⭐ 「几乎处处收敛」听起来很弱，但 Egorov 说：只要空间**有限测度**，它其实差一点就是**一致收敛** —— 代价只是丢掉一个任意小的集合。
 
@@ -9897,7 +9902,8 @@ $$\forall\varepsilon > 0, \exists E \subseteq X : \mu(E) < \varepsilon,\text{ �
 
 设 $f : [a, b] \to \mathbb{C}$ 是 Lebesgue 可测的。则对任意 $\varepsilon > 0$，存在**紧集** $E \subseteq [a, b]$ 使
 
-$$\mu(E^c) < \varepsilon,\text{ 且} f|_E\text{ 连续}$$
+$$\mu(E^c) < \varepsilon$$
+且 $f|_E$ **连续**。
 
 ⭐ 「可测」这个条件看起来很弱，但 Lusin 说：可测函数差一点就是**连续**函数 —— 只要允许把定义域挖掉一小块。
 
@@ -10586,7 +10592,8 @@ $$\int f d\lambda = \int_X ( \int_Y f d\nu ) d\mu = \int_Y ( \int_X f d\mu ) d\n
 - $\nu$ **至多取到 $\pm \infty$ 中的一个**（不能同时取到 $\infty$ 与 $-\infty$）；
 - 对两两不交的 $\{E_j\} \subseteq \mathcal{M}$：
 
-$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),\text{ 且右边的级数绝对收敛}(\text{当} |\nu(\bigsqcup E_j)| < \infty\text{ 时})$$
+$$\nu( \bigsqcup_j E_j ) = \sum_j \nu(E_j),$$
+其中右边的级数**绝对收敛**（在 $|\nu(\bigsqcup_j E_j)| < \infty$ 时）。
 
 ⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $\infty - \infty$。
 
@@ -10722,7 +10729,7 @@ $$\forall E \in \mathcal{M}, \mu(E) = 0 \implies \nu(E) = 0$$
 
 设 $\mu$ 是测度，$\nu$ 是符号测度。则
 
-$$\nu \ll  \mu \iff |\nu| \ll  \mu \iff \nu^+ \ll  \mu\text{ 且} \nu^- \ll  \mu$$
+$$\nu \ll  \mu \iff |\nu| \ll  \mu \iff \nu^+ \ll  \mu\ \wedge \ \nu^- \ll  \mu$$
 
 并且：若同时有 $\nu \perp  \mu$ 与 $\nu \ll  \mu$，则 $\nu = 0$。
 
@@ -10756,7 +10763,7 @@ $$\nu(E) := \int_E f d\mu$$
 
 则 $\nu$ 是符号测度，且 $\nu \ll  \mu$。并且
 
-$$\nu\text{ 有限} \iff f \in L^1(\mu)$$
+$\nu$ **有限** $\iff f \in L^1(\mu)$
 
 这是绝对连续测度的**标准来源**，也是 Radon–Nikodym 定理要反过来证明的那件事：**所有**绝对连续的 $\nu$ 都长这个样子。
 
@@ -11036,7 +11043,8 @@ $$c < m(K) \le 3^n \sum_j m(B_j)\quad  \implies\quad  \sum_j m(B_j) > 3^{-n} c$$
 
 可测函数 $f : \mathbb{R}^n \to \mathbb{C}$ 是**局部可积的**，当且仅当
 
-$$\int_K |f(x)| dx < \infty\quad \text{ 对每个有界可测集} K \subseteq \mathbb{R}^n$$
+对每个**有界可测集** $K \subseteq \mathbb{R}^n$ 都有
+$$\int_K |f(x)| dx < \infty$$
 
 局部可积函数全体记作 $L^1_{loc}$（或 $L^1_{loc}(\mathbb{R}^n)$）。
 
@@ -11229,7 +11237,7 @@ $$\frac{1}{m(E_r)} \int_{E_r} |f - f(x)| \le \frac{1}{m(E_r)} \int_{B(r,x)} |f -
 $\mathbb{R}^{n}$ 上的 Borel 测度 $\nu$ 是**正则的**，当且仅当
 
 $\cdot$ $\nu(K) < \infty$ 对每个紧集 $K$ 成立；
-$\cdot$ $\nu(E) = \inf\{ \nu(U) : U\text{ 开}, E \subseteq U \}$ 对每个 $E \in \mathfrak{B}_{\mathbb{R}^n}$ 成立（**外正则**）。
+$\cdot$ $\nu(E) = \inf\{ \nu(U) : U \in \mathcal{T},\ E \subseteq U \}$ 对每个 $E \in \mathfrak{B}_{\mathbb{R}^n}$ 成立（**外正则**）。
 
 符号测度或复测度 $\nu$ 叫正则 $\iff$ $|\nu|$ 正则。
 
@@ -22194,7 +22202,7 @@ $$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\p
 
 设 $\gamma: [a, b] \to \mathbb{C}$ 分段光滑（参数曲线），$f$ 在 $\gamma$ 上连续。定义
 
-$$\int_\gamma f(z)\,\mathrm{d}z := \lim_{\text{分割}} \sum_{k=1}^{n} f(\gamma(\tau_k))\,(\gamma(t_k) - \gamma(t_{k-1})),$$
+$$\int_\gamma f(z)\,\mathrm{d}z := \lim_{\lVert\Delta\rVert \to 0} \sum_{k=1}^{n} f(\gamma(\tau_k))\,(\gamma(t_k) - \gamma(t_{k-1})),$$
 
 分割取 $[a, b]$ 的任意加细分割、$\tau_k \in [t_{k-1}, t_k]$ 任意，极限存在且与取法无关；它等于
 
@@ -22783,7 +22791,8 @@ $$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho_2} \frac{f(\zeta)}{\zeta - z}
 
 设 $f$ 在 $D(a, r) \setminus \{a\}$ 上全纯，且
 
-$$\lim_{z \to a} (z - a) f(z) = 0 \qquad (\text{等价地，} f(z) = o(|z - a|^{-1})).$$
+$$\lim_{z \to a} (z - a) f(z) = 0.$$
+等价的说法是 $f(z) = o(|z - a|^{-1})$。
 
 则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。
 
@@ -22888,7 +22897,7 @@ $$Z := \{\, z \in \Omega : f(z) = g(z) \,\}$$
 
 设 $z_{0}$ 是 $f$ 的**本性奇点**（即 Laurent 展开的主部有无穷多项）。则对 $z_{0}$ 的每个去心邻域 $U = \{\, 0 < |z - z_{0}| < r \,\}$，像集 $f(U)$ 在 $\mathbb{C}$ 中**稠密**：
 
-$$\forall\, w \in \mathbb{C},\ \forall\, \varepsilon > 0,\ \exists\, z \in U \text{ 使 } |f(z) - w| < \varepsilon.$$
+$$\forall\, w \in \mathbb{C},\ \forall\, \varepsilon > 0,\ \exists\, z \in U:\ |f(z) - w| < \varepsilon.$$
 
 **证明（反证）**：设存在 $w_{0}$、$\rho > 0$ 使 $f(U) \cap B(w_{0}, \rho) = \emptyset$。令
 

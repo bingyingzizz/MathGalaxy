@@ -116,7 +116,7 @@ window.MG = window.MG || {};
       statement: [
         '对任意集合 $X$，都存在一个**不能单射进 $X$** 的序数；取其中最小的那个，记作 $\\aleph (X)$，叫做 $X$ 的 **Hartogs 数**（Hartogs 序数）。',
         '',
-        '$$\\forall X \\exists\\alpha ( \\alpha \\hookrightarrow  X\\text{ 不成立} ),\\text{ 且} \\alpha = \\aleph(X)\\text{ 时}: \\forall\\beta < \\alpha, \\beta \\hookrightarrow  X\\text{ 成立}$$'
+        '$$\\forall X \\exists\\alpha \\bigl[\\, \\neg(\\alpha \\hookrightarrow  X)\\ \\wedge \\alpha = \\aleph(X)\\ \\wedge \\forall\\beta < \\alpha,\\ \\beta \\hookrightarrow  X\\, \\bigr]$$'
       ].join('\n'),
       notes: [
         '⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \\implies$ 良序定理」「$AC \\implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。',

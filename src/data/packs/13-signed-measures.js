@@ -32,7 +32,8 @@ window.MG = window.MG || {};
         '- $\\nu$ **至多取到 $\\pm \\infty$ 中的一个**（不能同时取到 $\\infty$ 与 $-\\infty$）；',
         '- 对两两不交的 $\\{E_j\\} \\subseteq \\mathcal{M}$：',
         '',
-        '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),\\text{ 且右边的级数绝对收敛}(\\text{当} |\\nu(\\bigsqcup E_j)| < \\infty\\text{ 时})$$'
+        '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j),$$',
+        '其中右边的级数**绝对收敛**（在 $|\\nu(\\bigsqcup_j E_j)| < \\infty$ 时）。'
       ].join('\n'),
       notes: [
         '⚠ 「至多取到一个无穷」这一条是**必需的**：否则可数可加性会碰上 $\\infty - \\infty$。',
@@ -205,7 +206,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mu$ 是测度，$\\nu$ 是符号测度。则',
         '',
-        '$$\\nu \\ll  \\mu \\iff |\\nu| \\ll  \\mu \\iff \\nu^+ \\ll  \\mu\\text{ 且} \\nu^- \\ll  \\mu$$',
+        '$$\\nu \\ll  \\mu \\iff |\\nu| \\ll  \\mu \\iff \\nu^+ \\ll  \\mu\\ \\wedge \\ \\nu^- \\ll  \\mu$$',
         '',
         '并且：若同时有 $\\nu \\perp  \\mu$ 与 $\\nu \\ll  \\mu$，则 $\\nu = 0$。'
       ].join('\n'),
@@ -252,7 +253,7 @@ window.MG = window.MG || {};
         '',
         '则 $\\nu$ 是符号测度，且 $\\nu \\ll  \\mu$。并且',
         '',
-        '$$\\nu\\text{ 有限} \\iff f \\in L^1(\\mu)$$'
+        '$\\nu$ **有限** $\\iff f \\in L^1(\\mu)$'
       ].join('\n'),
       notes: [
         '这是绝对连续测度的**标准来源**，也是 Radon–Nikodym 定理要反过来证明的那件事：**所有**绝对连续的 $\\nu$ 都长这个样子。',
