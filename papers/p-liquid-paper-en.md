@@ -146,7 +146,7 @@ Thus \(1/2<r<1\). At the ordinary point, the formal object has unique layer coor
 \quad \mu_n\in\mathbb Z[S],\quad
 \sum_n r^n\|\mu_n\|_1<\infty.
 \]
-A nonzero integral chain has mass at least 1, so the nonzero layers have a common lower bound. The profinite real specialization formula in Theorem 6.9(2) is \(M_q(P)=F_r(P)/dF_r(P)\). We first explain why this also holds for a general compact Hausdorff space \(S\).
+A nonzero integral chain has mass at least 1, so the nonzero layers have a common lower bound. The profinite real specialization formula in Theorem 6.9(2) is \(M_q(P)=F_r(P)/dF_r(P)\). In the notation of Theorem 6.9(2) our \(r=2^{-q}\) is the lecture's \(r'\), the specialisation point is \(t=1/2\) with \(t^q=r\), and the kernel generator is \(f_x=2-T^{-1}\). The theorem is stated for profinite \(S\); the general compact Hausdorff case is what the rest of this subsection proves. We first explain why this also holds for a general compact Hausdorff space \(S\).
 
 Choose a profinite hypercover \(P_\bullet\to S\). Write \(\pi:P_0\to S\) for its augmentation and \(\varepsilon_0,\varepsilon_1:P_1\to P_0\) for its two face maps, and put
 \[
@@ -290,7 +290,7 @@ At the unique real place, \(B\) is the Hamilton quaternion algebra, so it ramifi
 
 ### 5.2 The lattice and torsion-freeness
 
-We use the arithmetic Kleinian lattice theorem: if a number field has exactly one complex place and a quaternion algebra ramifies at every real place, then the reduced-norm-one group of an order projects at the complex place to a lattice of finite covolume in \(\mathrm{PSL}_2(\mathbb C)\). If the algebra is a division algebra, the lattice is cocompact. See Theorem 6 of Page or the survey by Reid. The field \(k\) and algebra \(B\) above satisfy all these hypotheses.
+We use the arithmetic Kleinian lattice theorem: if a number field has exactly one complex place and a quaternion algebra ramifies at every real place, then the reduced-norm-one group of an order projects at the complex place to a lattice of finite covolume in \(\mathrm{PSL}_2(\mathbb C)\). The same theorem states the converse: the lattice is cocompact if and only if the algebra is a division algebra (Page, Theorem 6). See Theorem 6 of Page or the survey by Reid. The field \(k\) and algebra \(B\) above satisfy all these hypotheses.
 
 Set
 \[
@@ -755,13 +755,13 @@ The set \(F_0\) generates a dense subgroup. If the generated group were amenable
 0<E_\beta(z')\le\|\beta\|_\infty
 \sum_f\|R_{k_f}\mu-\mu\|_{\ell^1},
 \]
-a contradiction. Every proper closed subgroup of \(\mathrm{SU}(2)\) is either finite or a finite extension of a circle group, and each is amenable as a discrete group. The closure of this nonamenable subgroup must therefore be all of \(G\). Its matrix entries are algebraic numbers. The Bourgain–Gamburd theorem consequently gives a Haar spectral gap: there is \(\kappa>0\) such that
+a contradiction. Every proper closed subgroup of \(\mathrm{SU}(2)\) is either finite or a finite extension of a circle group, and each is amenable as a discrete group. The closure of this nonamenable subgroup must therefore be all of \(G\). The elements of \(F_0\) are the products \(g_f^+(g_f^-)^{-1}\) of the chosen parameters, and products of algebraic matrices are algebraic; the parameters were chosen algebraic in the preceding paragraph. The hypothesis of that theorem is Zariski density in \(\mathrm{SL}_2(\mathbb C)\), whereas the argument above only produced topological density in \(\mathrm{SU}(2)\). The two agree here: if \(H\subseteq\mathrm{SU}(2)\) had Zariski closure \(Z\subsetneq\mathrm{SL}_2(\mathbb C)\), then \(Z\cap\mathrm{SU}(2)\) would be a proper closed subgroup of \(\mathrm{SU}(2)\) containing \(H\), contradicting topological density. Hence \(H\) is Zariski dense, and the algebraic entries noted above meet the remaining hypothesis. The Bourgain–Gamburd theorem consequently gives a Haar spectral gap: there is \(\kappa>0\) such that
 \[
 \sum_{k\in F_0}\|U_ku-u\|_2^2
 \ge\kappa\|u-\gamma(u)\|_2^2,
 \qquad U_kf(x)=f(xk^{-1}).
 \]
-This step uses the spectral gap in the Haar regular representation.
+The averaging operator in that theorem includes both \(g_j\) and \(g_j^{-1}\). For a unitary \(U\) one has \(\langle(1-U)u,u\rangle=\tfrac12\|Uu-u\|_2^2\), and \(\|U_{k^{-1}}u-u\|_2=\|U_ku-u\|_2\); hence the quadratic form of \(2|F_0|-z\) equals the one-sided sum above. Therefore the spectral gap transfers to the one-sided estimate with the same constant, up to renaming \(\kappa\). This step uses the spectral gap in the Haar regular representation.
 
 To pass from \(L^2\) to \(L^p\), we use medians. For a real function \(f\in L^p\), choose a median \(c\). The functions \(u=(f-c)_+^{p/2}\) and \(v=(c-f)_+^{p/2}\) each have support of measure at most \(1/2\). Their variances are therefore at least half their respective squared norms. Also,
 \[
