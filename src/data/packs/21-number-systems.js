@@ -178,11 +178,11 @@ window.MG = window.MG || {};
       regions: ['set-theory', 'analysis'],
       tags: ['定义', '绝对值', '序'],
       statement: [
-        '设 $K$ 是**有序域**（$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都是），$x \\in K$。定义',
+        '设 $K$ 是**有序域**（$mathbb{Q}$ 与 $mathbb{R}$ 都是），$x in K$。定义',
         '',
-        '$$|x| := \\begin{cases} x, & x \\ge 0 \\\\ -x, & x < 0 \\end{cases} \\qquad\\text{即}\\qquad |x| = \\max\\{x, -x\\}$$',
+        '$$|x| := \\begin{cases} x, & x \\ge 0 \\\\ -x, & x < 0 \\end{cases} \\qquad\\text{i.e.}\\qquad |x| = \\max\\{x, -x\\}$$',
         '',
-        '于是 $|x| \\ge 0$ 恒成立，且 $|x| = 0 \\iff x = 0$。'
+        '于是 $|x| ge 0$ 恒成立，且 $|x| = 0 iff x = 0$。'
       ].join('\n'),
       notes: '⭐ 读法：$|x|$ 是**到原点的距离**，与符号无关。两点之间的距离就是 $|x - y|$ —— 这就是后来**距离空间**里那个距离的原型：把「差」扔掉，只留下「距离」这个概念本身。\n\n立刻能验证的两条（都由定义分情形）：\n- $|-x| = |x|$；\n- $|xy| = |x|\\,|y|$。\n\n⚠ **不等号那一侧的估计不属于定义**：$|x + y| \\le |x| + |y|$ 是一条**定理**（见「三角不等式」）—— 定义里只有分情形，没有不等式。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1']

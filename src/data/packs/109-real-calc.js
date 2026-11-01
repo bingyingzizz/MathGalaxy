@@ -42,9 +42,9 @@ window.MG = window.MG || {};
         '',
         '**(iii)** 若 $A$ 含幺元 $1$，则 $(-1)a = -a$；',
         '',
-        '**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则',
+        '**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则没有零因子、且非零元可约：',
         '',
-        '$$ab = 0 \\implies a = 0 \\text{ 或 } b = 0, \\qquad a \\ne 0,\\ ab = ac \\implies b = c.$$'
+        '$$ab = 0 \\implies a = 0 \\ \\vee\\ b = 0, \\qquad a \\ne 0,\\ ab = ac \\implies b = c.$$'
       ].join('\n'),
       notes: '⭐ 这些等式在 $\\mathbb{R}$、$\\mathbb{Q}$ 上就是**移项、通分、约分**的许可证 —— 极限四则运算、行列式展开、多项式除法里每一处「两边同乘」「约掉」都是在用它，但平时没人把它们单独写下来。\n\n⚠ **无零因子不是环公理**：$\\mathbb{Z}/6\\mathbb{Z}$ 里 $2 \\cdot 3 = 0$，$\\mathbb{Z}/4\\mathbb{Z}$ 里 $2 \\cdot 2 = 0$。所以「$ab = 0 \\implies a=0$ 或 $b=0$」在整环里才成立，在一般环里不能默认。\n\n⭐ 证明只用两样东西：**分配律**与**加法群的消去**（即两边加同一个元素）。这就是「环公理很少，但能推出来的很多」。'
     },
@@ -94,7 +94,7 @@ window.MG = window.MG || {};
         '',
         '**(iv)** $|x| \\le c \\iff -c \\le x \\le c$；$|x| < c \\iff -c < x < c$；',
         '',
-        '**(v)** $|x| > c \\iff x > c \\text{ 或 } x < -c$。'
+        '**(v)** $|x| > c \\iff x > c \\ \\vee\\ x < -c$。'
       ].join('\n'),
       notes: '⭐ **三角不等式是另一条**（见「三角不等式」），这里只收「乘、商、平方、三段式」这些**等式型**的规则。两者合起来才是完整的绝对值工具箱。\n\n⭐ (iv) 是 $\\varepsilon$ 论证里最常用的一句：把「$|f(x) - L| < \\varepsilon$」改写成「$L - \\varepsilon < f(x) < L + \\varepsilon$」，才能与序公理对接。(v) 是它的补集形态。\n\n⚠ $|x|^{2} = x^{2}$ 看着废话，但它把绝对值**去掉了**：需要平方的时候不必再分情形 —— 这也是为什么 $\\ell^{2}$、$L^{2}$ 里的范数可以写成内积。\n\n📌 全部由定义 $|x| = \\max\\{x, -x\\}$ 分 $x \\ge 0$、$x < 0$ 两种情形验证。'
     },
@@ -110,9 +110,9 @@ window.MG = window.MG || {};
       statement: [
         '设 $K$ 是完备有序域（如 $\\mathbb{R}$）。',
         '',
-        '**(i)** 对每个 $\\varepsilon > 0$ 存在 $n \\ge 1$ 使',
+        '**(i)** 对每个 $\\varepsilon > 0$ 存在 $n \\ge 1$ 使 $1/n < \\varepsilon$；等价地，那些 $1/n$ 的下确界是零：',
         '',
-        '$$\\frac{1}{n} < \\varepsilon; \\qquad \\text{等价地} \\qquad \\inf\\left\\{ \\frac{1}{n} : n \\ge 1 \\right\\} = 0.$$',
+        '$$\\frac{1}{n} < \\varepsilon; \\qquad \\inf\\left\\{ \\frac{1}{n} : n \\ge 1 \\right\\} = 0.$$',
         '',
         '**(ii)** 对每个 $x \\in K$ 存在**唯一**的整数 $n$ 使',
         '',

@@ -323,9 +323,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微积分', '多元', '反函数'],
       statement: [
-        '设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{n}$ 是 $C^{1}$，$a \\in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \\subseteq U$ 与 $f(a)$ 的开邻域 $W$ 使',
+        '设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{n}$ 是 $C^{1}$，$a \\in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \\subseteq U$ 与 $f(a)$ 的开邻域 $W$，使限制 $f\\bigl|_{V}$ 是 $V \\to W$ 的**双射**，',
         '',
-        '$$f\\bigl|_{V} : V \\to W \\quad \\text{是双射}$$',
+        '$$f\\bigl|_{V} : V \\to W \\quad \\text{bijective},$$',
         '',
         '且其逆 $g := (f\\bigl|_{V})^{-1} : W \\to V$ 也是 $C^{1}$，并且对一切 $y \\in W$',
         '',
@@ -343,9 +343,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '微积分', '多元', '隐函数'],
       statement: [
-        '设 $U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m}$ 开，$F : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \\in U$ 满足',
+        '设 $U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m}$ 开，$F : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \\in U$ 满足 $F(a, b) = 0$，且 $D_y F(a, b)$ **可逆**：',
         '',
-        '$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{可逆}$$',
+        '$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{invertible}$$',
         '',
         '（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使',
         '',
@@ -367,9 +367,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '泛函', 'Banach', '反函数'],
       statement: [
-        '设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \\subseteq E$ 开，$f : U \\to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \\in \\mathcal{L}(E, F)$ 存在且连续），$a \\in U$ 且',
+        '设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \\subseteq E$ 开，$f : U \\to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \\in \\mathcal{L}(E, F)$ 存在且连续），$a \\in U$ 且 $Df(a)$ **是拓扑线性同构**（有界且逆有界）：',
         '',
-        '$$Df(a) : E \\to F \\quad \\text{是拓扑线性同构（有界且逆有界）}$$',
+        '$$Df(a) : E \\to F \\quad \\text{topological linear isomorphism}$$',
         '',
         '则存在 $a$ 的邻域 $V$ 与 $f(a)$ 的邻域 $W$，使 $f|_{V} : V \\to W$ 是同胚，逆映射 $g$ 是 $C^{1}$，且 $Dg(y) = (Df(g(y)))^{-1}$。'
       ].join('\n'),

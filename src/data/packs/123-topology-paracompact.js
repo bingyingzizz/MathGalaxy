@@ -38,9 +38,9 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['定义', '拓扑', '局部有限', '仿紧'],
       statement: [
-        '设 $X$ 是拓扑空间，$\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 是 $X$ 的一族子集。$\\mathcal{A}$ 叫**局部有限的**，如果每个点都有开邻域只与**有限多个**成员相交：',
+        '设 $X$ 是拓扑空间，$\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 是 $X$ 的一族子集。$\\mathcal{A}$ 叫**局部有限的**，如果每个点都有**开邻域**只与**有限多个**成员相交：对每个 $x \\in X$ 都存在开集 $U \\ni x$，使',
         '',
-        '$$\\forall x \\in X,\\ \\exists U \\ni x \\text{ 开}:\\quad \\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\text{ 有限}.$$',
+        '$$\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\}\\ \\text{finite}.$$',
         '',
         '把「开邻域」换成「点本身」，得到弱一些的**点有限族**：每个点只属于有限多个 $A_{s}$。'
       ].join('\n'),
@@ -66,9 +66,9 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['定义', '拓扑', '离散', '局部有限'],
       statement: [
-        '$X$ 的一族子集 $\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 叫**离散的**，如果每个点都有开邻域至多与**一个**成员相交：',
+        '$X$ 的一族子集 $\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 叫**离散的**，如果每个点都有**开邻域**至多与**一个**成员相交：对每个 $x \\in X$ 都存在开集 $U \\ni x$，使',
         '',
-        '$$\\forall x \\in X,\\ \\exists U \\ni x \\text{ 开}:\\quad \\#\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\le 1.$$',
+        '$$\\#\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\le 1.$$',
         '',
         '离散 $\\implies$ 局部有限 $\\implies$ 点有限；两个反向都不成立。'
       ].join('\n'),
@@ -140,9 +140,9 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['定义', '拓扑', '仿紧', '局部有限'],
       statement: [
-        '拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：',
+        '拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：对每个开覆盖 $\\mathcal{U}$，都存在开覆盖 $\\mathcal{V}$，使',
         '',
-        '$$\\forall\\ \\text{开覆盖}\\ \\mathcal{U},\\quad \\exists\\ \\text{开覆盖}\\ \\mathcal{V}:\\quad \\mathcal{V}\\ \\text{加细}\\ \\mathcal{U}\\ \\text{且}\\ \\mathcal{V}\\ \\text{局部有限}.$$',
+        '$$\\mathcal{V}\\ \\text{refines}\\ \\mathcal{U}\\quad\\text{and}\\quad \\mathcal{V}\\ \\text{is locally finite}.$$',
         '',
         '⚠️ **约定**：本图**不**把 Hausdorff 并进「仿紧」的定义（有些书并进去）。需要分离性时一律显式写「仿紧 Hausdorff」。'
       ].join('\n'),
@@ -249,9 +249,9 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['定理', '拓扑', '仿紧', '加细', '判别法'],
       statement: [
-        '设 $X$ 是**正则**空间。则',
+        '设 $X$ 是**正则**空间。则 $X$ **仿紧**，当且仅当它的每个开覆盖都有**局部有限的加细**（加细的成员不必是开集）：',
         '',
-        '$$X\\ \\text{仿紧}\\quad \\iff \\quad X\\ \\text{的每个开覆盖都有局部有限的加细（加细的成员不必是开集）}.$$'
+        '$X$ **仿紧** $\\iff$ 每个开覆盖都有局部有限的加细'
       ].join('\n'),
       notes: [
         [

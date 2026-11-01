@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-01T14:05:46.080Z",
+  "generated": "2026-11-01T14:15:15.149Z",
   "counts": {
    "regions": 14,
    "clusters": 92,
@@ -10607,7 +10607,7 @@
     "多元",
     "反函数"
    ],
-   "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{n}$ 是 $C^{1}$，$a \\in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \\subseteq U$ 与 $f(a)$ 的开邻域 $W$ 使\n\n$$f\\bigl|_{V} : V \\to W \\quad \\text{是双射}$$\n\n且其逆 $g := (f\\bigl|_{V})^{-1} : W \\to V$ 也是 $C^{1}$，并且对一切 $y \\in W$\n\n$$Dg(y) = \\bigl( Df(g(y)) \\bigr)^{-1}$$",
+   "statement": "设 $U \\subseteq \\mathbb{R}^{n}$ 开，$f : U \\to \\mathbb{R}^{n}$ 是 $C^{1}$，$a \\in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \\subseteq U$ 与 $f(a)$ 的开邻域 $W$，使限制 $f\\bigl|_{V}$ 是 $V \\to W$ 的**双射**，\n\n$$f\\bigl|_{V} : V \\to W \\quad \\text{bijective},$$\n\n且其逆 $g := (f\\bigl|_{V})^{-1} : W \\to V$ 也是 $C^{1}$，并且对一切 $y \\in W$\n\n$$Dg(y) = \\bigl( Df(g(y)) \\bigr)^{-1}$$",
    "notes": "⭐ 定理的形状值得记：**局部可逆 $\\iff$ $Df(a)$ 可逆**，而且「逆映射的导数 = 导数的逆」。后半句完全是线性代数的操作 —— 一旦把 $f$ 局部看成「线性映射加高阶小量」，求逆自然落在 $Df$ 上。\n\n⚠ 「局部」不能去掉。$f(x, y) = (e^{x}\\cos y,\\ e^{x}\\sin y)$ 的 $\\det Df = e^{2x} \\ne 0$ 处处成立，但 $f$ 整体远非单射（$y$ 有周期 $2\\pi$）。\n\n⚠ 定理只保证 $C^{1}$；但由 $Dg = (Df \\circ g)^{-1}$ 立即得：$f$ 光滑 $\\implies$ $g$ 光滑（$Df\\circ g$ 光滑、求逆是光滑运算）。这就是「$f$ 是微分同胚 $\\implies$ $f^{-1}$ 也是」。\n\n⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。\n\n⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。\n\n证明全文在边上（化归到 $Df(a) = I$，用压缩映射原理造出 $f$ 的局部逆，再从 $f \\circ g = \\mathrm{id}$ 反解 $Dg$）。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
@@ -10650,7 +10650,7 @@
     "多元",
     "隐函数"
    ],
-   "statement": "设 $U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m}$ 开，$F : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \\in U$ 满足\n\n$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{可逆}$$\n\n（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使\n\n$$g(a) = b, \\qquad F\\bigl(x,\\ g(x)\\bigr) = 0 \\quad (x \\in V)$$\n\n并且\n\n$$Dg(x) = - \\bigl( D_y F(x, g(x)) \\bigr)^{-1} D_x F(x, g(x))$$",
+   "statement": "设 $U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m}$ 开，$F : U \\to \\mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \\in U$ 满足 $F(a, b) = 0$，且 $D_y F(a, b)$ **可逆**：\n\n$$F(a, b) = 0, \\qquad D_y F(a, b) \\in M_m(\\mathbb{R})\\ \\text{invertible}$$\n\n（$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \\subseteq \\mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使\n\n$$g(a) = b, \\qquad F\\bigl(x,\\ g(x)\\bigr) = 0 \\quad (x \\in V)$$\n\n并且\n\n$$Dg(x) = - \\bigl( D_y F(x, g(x)) \\bigr)^{-1} D_x F(x, g(x))$$",
    "notes": "⭐ 一句话：**方程 $F(x, y) = 0$ 在 $D_yF$ 可逆处可以唯一地解出 $y = g(x)$，而且解出来的映射自动是 $C^{1}$**。这就是「隐函数」这个名字的全部内容 —— 它把「隐式地由方程确定」变成了「真的存在一个函数」。\n\n⭐ 它是**逆映射定理的换装**：把 $F$ 拼成 $\\Phi(x, y) := (x, F(x, y))$，则 $D\\Phi$ 是块上三角矩阵，$\\det D\\Phi = \\det D_y F$，故可逆性等价；而 $\\Phi$ 的逆必然是形状 $(x, y) \\mapsto (x, h(x, y))$，取 $g(x) := h(x, 0)$ 就得到要的隐函数。两个定理是同一件事的两种说法。\n\n⚠ $D_yF$ 可逆这个条件**本质**：$F(x, y) = x^{2} - y^{2}$ 在 $(0,0)$ 处 $D_yF = 0$，方程 $x^{2} = y^{2}$ 在原点附近解不出唯一的 $y = g(x)$（有 $y = \\pm x$ 两支）。\n\n⭐ $Dg$ 的公式不必背：对 $F(x, g(x)) = 0$ 两边求导、用链式法则即可 —— $D_xF + D_yF \\cdot Dg = 0$，解出 $Dg$。\n\n证明全文在边上。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 9",
@@ -10692,7 +10692,7 @@
     "Banach",
     "反函数"
    ],
-   "statement": "设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \\subseteq E$ 开，$f : U \\to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \\in \\mathcal{L}(E, F)$ 存在且连续），$a \\in U$ 且\n\n$$Df(a) : E \\to F \\quad \\text{是拓扑线性同构（有界且逆有界）}$$\n\n则存在 $a$ 的邻域 $V$ 与 $f(a)$ 的邻域 $W$，使 $f|_{V} : V \\to W$ 是同胚，逆映射 $g$ 是 $C^{1}$，且 $Dg(y) = (Df(g(y)))^{-1}$。",
+   "statement": "设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \\subseteq E$ 开，$f : U \\to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \\in \\mathcal{L}(E, F)$ 存在且连续），$a \\in U$ 且 $Df(a)$ **是拓扑线性同构**（有界且逆有界）：\n\n$$Df(a) : E \\to F \\quad \\text{topological linear isomorphism}$$\n\n则存在 $a$ 的邻域 $V$ 与 $f(a)$ 的邻域 $W$，使 $f|_{V} : V \\to W$ 是同胚，逆映射 $g$ 是 $C^{1}$，且 $Dg(y) = (Df(g(y)))^{-1}$。",
    "notes": "⭐ 与有限维版本（`thm.inverse-function`）的差别**只有一处，但很关键**：有限维时「$Df(a)$ 可逆」自动蕴含「逆有界」（有限维空间上的线性映射自动有界，故可逆即有界逆）；**无限维时必须把它写进条件**。「拓扑线性同构」= 线性双射 + 逆连续，缺一不可。\n\n⭐ 证明比有限维多两步，都是 Banach 空间特有的：\n- **Neumann 级数**：$\\|S\\| < 1$ 时 $(I - S)^{-1} = \\sum_{k \\ge 0} S^{k}$（级数在算子范数下收敛，靠的是 $\\mathcal{L}(E, F)$ 的完备性）。这一步把「接近恒等的算子」求逆，是化归 $Df(a) = I$ 的关键；\n- **中值不等式**：$\\|f(x) - f(y)\\| \\le \\sup_{[x,y]} \\|Df\\| \\cdot \\|x - y\\|$（`thm.mean-value-multi`），用来把 $\\Phi_y$ 弄成压缩映射。\n\n⚠ 这是**泛函分析 / 凝聚态数学真正用的形式**：那里的对象是 $C(S)$、$L^{p}$、Fréchet 空间、紧 Hausdorff 上的连续函数群，有限维版本不够用（例如 8.2 节里 $C(S, M)$ 的局部同构论证）。",
    "refs": [
     "Lang, Real and Functional Analysis, Ch. I",
@@ -11653,7 +11653,7 @@
     "代数",
     "运算"
    ],
-   "statement": "设 $A$ 是环，$a, b \\in A$。则\n\n**(i)** $0 \\cdot a = a \\cdot 0 = 0$；\n\n**(ii)** $(-a)b = -(ab) = a(-b)$，且 $(-a)(-b) = ab$；\n\n**(iii)** 若 $A$ 含幺元 $1$，则 $(-1)a = -a$；\n\n**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则\n\n$$ab = 0 \\implies a = 0 \\text{ 或 } b = 0, \\qquad a \\ne 0,\\ ab = ac \\implies b = c.$$",
+   "statement": "设 $A$ 是环，$a, b \\in A$。则\n\n**(i)** $0 \\cdot a = a \\cdot 0 = 0$；\n\n**(ii)** $(-a)b = -(ab) = a(-b)$，且 $(-a)(-b) = ab$；\n\n**(iii)** 若 $A$ 含幺元 $1$，则 $(-1)a = -a$；\n\n**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则没有零因子、且非零元可约：\n\n$$ab = 0 \\implies a = 0 \\ \\vee\\ b = 0, \\qquad a \\ne 0,\\ ab = ac \\implies b = c.$$",
    "notes": "⭐ 这些等式在 $\\mathbb{R}$、$\\mathbb{Q}$ 上就是**移项、通分、约分**的许可证 —— 极限四则运算、行列式展开、多项式除法里每一处「两边同乘」「约掉」都是在用它，但平时没人把它们单独写下来。\n\n⚠ **无零因子不是环公理**：$\\mathbb{Z}/6\\mathbb{Z}$ 里 $2 \\cdot 3 = 0$，$\\mathbb{Z}/4\\mathbb{Z}$ 里 $2 \\cdot 2 = 0$。所以「$ab = 0 \\implies a=0$ 或 $b=0$」在整环里才成立，在一般环里不能默认。\n\n⭐ 证明只用两样东西：**分配律**与**加法群的消去**（即两边加同一个元素）。这就是「环公理很少，但能推出来的很多」。",
    "refs": [
     "Lang, Algebra, Ch. I",
@@ -11734,7 +11734,7 @@
     "绝对值",
     "不等式"
    ],
-   "statement": "设 $K$ 是有序域，$x, y \\in K$，$c \\ge 0$。则\n\n**(i)** $|x| \\ge 0$，$|x| = 0 \\iff x = 0$，$|-x| = |x|$，$-|x| \\le x \\le |x|$；\n\n**(ii)** $|xy| = |x|\\,|y|$，且 $y \\ne 0 \\implies \\left|\\dfrac{x}{y}\\right| = \\dfrac{|x|}{|y|}$；\n\n**(iii)** $|x|^{2} = x^{2}$；\n\n**(iv)** $|x| \\le c \\iff -c \\le x \\le c$；$|x| < c \\iff -c < x < c$；\n\n**(v)** $|x| > c \\iff x > c \\text{ 或 } x < -c$。",
+   "statement": "设 $K$ 是有序域，$x, y \\in K$，$c \\ge 0$。则\n\n**(i)** $|x| \\ge 0$，$|x| = 0 \\iff x = 0$，$|-x| = |x|$，$-|x| \\le x \\le |x|$；\n\n**(ii)** $|xy| = |x|\\,|y|$，且 $y \\ne 0 \\implies \\left|\\dfrac{x}{y}\\right| = \\dfrac{|x|}{|y|}$；\n\n**(iii)** $|x|^{2} = x^{2}$；\n\n**(iv)** $|x| \\le c \\iff -c \\le x \\le c$；$|x| < c \\iff -c < x < c$；\n\n**(v)** $|x| > c \\iff x > c \\ \\vee\\ x < -c$。",
    "notes": "⭐ **三角不等式是另一条**（见「三角不等式」），这里只收「乘、商、平方、三段式」这些**等式型**的规则。两者合起来才是完整的绝对值工具箱。\n\n⭐ (iv) 是 $\\varepsilon$ 论证里最常用的一句：把「$|f(x) - L| < \\varepsilon$」改写成「$L - \\varepsilon < f(x) < L + \\varepsilon$」，才能与序公理对接。(v) 是它的补集形态。\n\n⚠ $|x|^{2} = x^{2}$ 看着废话，但它把绝对值**去掉了**：需要平方的时候不必再分情形 —— 这也是为什么 $\\ell^{2}$、$L^{2}$ 里的范数可以写成内积。\n\n📌 全部由定义 $|x| = \\max\\{x, -x\\}$ 分 $x \\ge 0$、$x < 0$ 两种情形验证。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 1"
@@ -11773,7 +11773,7 @@
     "阿基米德",
     "取整"
    ],
-   "statement": "设 $K$ 是完备有序域（如 $\\mathbb{R}$）。\n\n**(i)** 对每个 $\\varepsilon > 0$ 存在 $n \\ge 1$ 使\n\n$$\\frac{1}{n} < \\varepsilon; \\qquad \\text{等价地} \\qquad \\inf\\left\\{ \\frac{1}{n} : n \\ge 1 \\right\\} = 0.$$\n\n**(ii)** 对每个 $x \\in K$ 存在**唯一**的整数 $n$ 使\n\n$$n \\le x < n + 1.$$\n\n记 $n = \\lfloor x \\rfloor$，叫 $x$ 的**整数部分**（取整函数）；$\\{x\\} := x - \\lfloor x \\rfloor \\in [0, 1)$ 叫**小数部分**。",
+   "statement": "设 $K$ 是完备有序域（如 $\\mathbb{R}$）。\n\n**(i)** 对每个 $\\varepsilon > 0$ 存在 $n \\ge 1$ 使 $1/n < \\varepsilon$；等价地，那些 $1/n$ 的下确界是零：\n\n$$\\frac{1}{n} < \\varepsilon; \\qquad \\inf\\left\\{ \\frac{1}{n} : n \\ge 1 \\right\\} = 0.$$\n\n**(ii)** 对每个 $x \\in K$ 存在**唯一**的整数 $n$ 使\n\n$$n \\le x < n + 1.$$\n\n记 $n = \\lfloor x \\rfloor$，叫 $x$ 的**整数部分**（取整函数）；$\\{x\\} := x - \\lfloor x \\rfloor \\in [0, 1)$ 叫**小数部分**。",
    "notes": "⭐ (i) 是分析里「取 $n$ 足够大」的**标准形态**。阿基米德性质原来说的是「$\\mathbb{N}$ 无上界」，但实际写证明时用的几乎总是 (i)：给 $\\varepsilon$，取 $n > 1/\\varepsilon$。\n\n⭐ (ii) 是把实数「夹到两个相邻整数之间」—— 有理数稠密的证明（`lem.archimedean` 的 (ii)）里就用了它。它依赖 $\\mathbb{Z}$ 在 $K$ 中的**离散性**（相邻整数之间没有别的整数），而不只是无界性。\n\n⚠ $\\mathbb{Q}$ 也满足 (i)（它是阿基米德的），但 $\\mathbb{Q}$ 不满足确界原理 —— 所以 (i) 本身**不**需要完备性，只需要阿基米德性；这里写成完备有序域只是为了和 `lem.archimedean` 对齐。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 1"
@@ -17723,7 +17723,7 @@
     "局部有限",
     "仿紧"
    ],
-   "statement": "设 $X$ 是拓扑空间，$\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 是 $X$ 的一族子集。$\\mathcal{A}$ 叫**局部有限的**，如果每个点都有开邻域只与**有限多个**成员相交：\n\n$$\\forall x \\in X,\\ \\exists U \\ni x \\text{ 开}:\\quad \\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\text{ 有限}.$$\n\n把「开邻域」换成「点本身」，得到弱一些的**点有限族**：每个点只属于有限多个 $A_{s}$。",
+   "statement": "设 $X$ 是拓扑空间，$\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 是 $X$ 的一族子集。$\\mathcal{A}$ 叫**局部有限的**，如果每个点都有**开邻域**只与**有限多个**成员相交：对每个 $x \\in X$ 都存在开集 $U \\ni x$，使\n\n$$\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\}\\ \\text{finite}.$$\n\n把「开邻域」换成「点本身」，得到弱一些的**点有限族**：每个点只属于有限多个 $A_{s}$。",
    "notes": "**为什么要「局部」**：一个族整体上可以无穷（$\\mathbb{R}$ 上的 $\\{\\, (n, n+2) \\,\\}_{n \\in \\mathbb{Z}}$ 有无穷多个成员），但只要每点附近只碰到有限多个，任何逐点求和就自动是**局部有限和**、任何逐点判断都只需看有限多项。仿紧、单位分解、层论里的细部论证全靠这一条。\n\n**三条常用性质**（后两条才是它真正被用到的形式）：\n\n- 局部有限 $\\implies$ 点有限：取只碰有限多个成员的邻域 $U \\ni x$，含 $x$ 的成员只能更少；\n- **并的闭包等于闭包之并**：$\\operatorname{cl}\\bigcup_{s} A_{s} = \\bigcup_{s} \\operatorname{cl} A_{s}$（$\\supseteq$ 恒成立，$\\subseteq$ 那一半用局部有限性）；\n- 若每个 $A_{s}$ 都**闭**，则 $\\bigcup_{s} A_{s}$ 也闭（上一条的直接推论）。\n\n⚠️ 局部有限**不等于**「成员可以很多」，**也不等于**点有限：$\\mathbb{R}$ 上的族 $\\{\\, \\{ 1/n \\} : n \\ge 1 \\,\\}$ 点有限（每点至多属于一个成员）却不局部有限（$0$ 的任何邻域都碰到无穷多个成员）。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 39",
@@ -17765,7 +17765,7 @@
     "离散",
     "局部有限"
    ],
-   "statement": "$X$ 的一族子集 $\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 叫**离散的**，如果每个点都有开邻域至多与**一个**成员相交：\n\n$$\\forall x \\in X,\\ \\exists U \\ni x \\text{ 开}:\\quad \\#\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\le 1.$$\n\n离散 $\\implies$ 局部有限 $\\implies$ 点有限；两个反向都不成立。",
+   "statement": "$X$ 的一族子集 $\\mathcal{A} = \\{ A_{s} \\}_{s \\in S}$ 叫**离散的**，如果每个点都有**开邻域**至多与**一个**成员相交：对每个 $x \\in X$ 都存在开集 $U \\ni x$，使\n\n$$\\#\\{\\, s \\in S : U \\cap A_{s} \\ne \\emptyset \\,\\} \\le 1.$$\n\n离散 $\\implies$ 局部有限 $\\implies$ 点有限；两个反向都不成立。",
    "notes": "**成员必两两不交**：若 $x \\in A_{s} \\cap A_{t}$ 而 $s \\ne t$，则 $x$ 的任何邻域都碰到两个成员，与离散矛盾。所以离散族比局部有限族「更散」：连相交都不许。\n\n**「离散」这个词有两层意思**（容易混）：本节点说的是「**族**离散」；另一种说法「$A \\subseteq X$ 是离散子集」指的是单点族 $\\{\\, \\{ a \\} : a \\in A \\,\\}$ 离散（等价于 $a$ 们在子空间拓扑下是离散的、且 $A$ 在 $X$ 里没有聚点）。仿紧与度量化里用到的一律是「族」的那一层。\n\n⭐ Bing 的度量化定理就是拿「$\\sigma$-离散基」当假设的 —— 它比「$\\sigma$-局部有限基」更紧，但证明里更容易控制（离散族的闭包族仍然离散）。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 39",
@@ -17890,7 +17890,7 @@
     "仿紧",
     "局部有限"
    ],
-   "statement": "拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：\n\n$$\\forall\\ \\text{开覆盖}\\ \\mathcal{U},\\quad \\exists\\ \\text{开覆盖}\\ \\mathcal{V}:\\quad \\mathcal{V}\\ \\text{加细}\\ \\mathcal{U}\\ \\text{且}\\ \\mathcal{V}\\ \\text{局部有限}.$$\n\n⚠️ **约定**：本图**不**把 Hausdorff 并进「仿紧」的定义（有些书并进去）。需要分离性时一律显式写「仿紧 Hausdorff」。",
+   "statement": "拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：对每个开覆盖 $\\mathcal{U}$，都存在开覆盖 $\\mathcal{V}$，使\n\n$$\\mathcal{V}\\ \\text{refines}\\ \\mathcal{U}\\quad\\text{and}\\quad \\mathcal{V}\\ \\text{is locally finite}.$$\n\n⚠️ **约定**：本图**不**把 Hausdorff 并进「仿紧」的定义（有些书并进去）。需要分离性时一律显式写「仿紧 Hausdorff」。",
    "notes": "**在层级里的位置**：紧 $\\implies$ 仿紧（有限子覆盖当然是局部有限的）；仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff（本包的定理）；度量空间 $\\implies$ 仿紧（Stone 定理）。\n\n⭐ **它换来了什么**：单位分解（于是光滑化、流形上的积分与 Stokes、延拓定理都有工具），以及层论里「Čech 上同调等于层上同调」在细部上要的那点局部有限性。流形按定义第二可数，于是自动仿紧 —— 这就是分析里从不担心这件事的原因。\n\n**遗传性**：**开**子空间与**闭**子空间都继承仿紧性（开子空间：把 $X \\setminus Y$ 补进覆盖再求交；闭子空间：把开覆盖的成员与闭子空间求交）。一般的子空间不必仿紧。\n\n⚠️ 反方向全断：正规空间不必仿紧 —— $[0, \\omega_{1})$（第一不可数序数以下的全体序数）是正规的、可数紧的却不紧，而「可数紧 $+$ 仿紧 $\\implies$ 紧」，所以它不仿紧。",
    "refs": [
     "Munkres, Topology (2nd ed.), Section 41",
@@ -18062,7 +18062,7 @@
     "加细",
     "判别法"
    ],
-   "statement": "设 $X$ 是**正则**空间。则\n\n$$X\\ \\text{仿紧}\\quad \\iff \\quad X\\ \\text{的每个开覆盖都有局部有限的加细（加细的成员不必是开集）}.$$",
+   "statement": "设 $X$ 是**正则**空间。则 $X$ **仿紧**，当且仅当它的每个开覆盖都有**局部有限的加细**（加细的成员不必是开集）：\n\n$X$ **仿紧** $\\iff$ 每个开覆盖都有局部有限的加细",
    "notes": "**$(\\Longleftarrow)$ 才是内容，$(\\implies)$ 是废话**：仿紧的加细按定义就是局部有限的，而开加细当然是加细。所以这条定理的全部难点在一句话 —— **把「不必开」的局部有限加细撑成开加细，同时不毁掉局部有限性**。\n**思路（Michael）**：给定开覆盖 $\\mathcal{U}$ 与它的局部有限加细 $\\{ E_{s} \\}$。\n- 先做归约：由局部有限可设加细是**点有限**的（局部有限 $\\implies$ 点有限）；\n- 逐点撑开：对 $x \\in E_{s}$，正则性给出开集 $O_{x}$ 使 $x \\in O_{x} \\subseteq \\operatorname{cl} O_{x} \\subseteq$ 覆盖中含 $E_{s}$ 的那个成员，再令 $V_{s} := \\bigcup \\{\\, O_{x} : x \\in E_{s} \\,\\}$；\n- 此时 $\\{ V_{s} \\}$ 已经是**开加细并覆盖 $X$**，但一般**不再局部有限**（$V_{s} \\supseteq E_{s}$，一个邻域可能碰到很多 $V_{s}$ 而只碰到很少 $E_{s}$）；\n- 收尾：用点有限性把每一族成员**重新排序**，把第 $s$ 个换成「$E_{s}$ 挖掉前面那些开膨胀的闭包，再取内部」，新族就既开、又覆盖、又局部有限。\n**收尾引理（Michael）**：正则空间中，若开覆盖有局部有限加细，则它有局部有限的**开**加细。证明用「良序化 + 逐个膨胀」：把加细的成员良序化，依次膨胀进覆盖中对应的成员，每次只膨胀到尚未被前面成员盖住的点；局部有限性由原族的局部有限性接管（每点有邻域只碰到有限多个原成员，膨胀也只发生在这些成员里）。取这条引理即得仿紧。∎\n\n⭐ **当判据用的姿势**：实际验证仿紧时，往往只先拿到「闭的 / 不必开的 / 加细但很粗」的东西 —— 这时配上正则性就够，不必再构造开加细。本图的闭加细命题就是往这个方向走的。\n\n⚠️ **前提「正则」只在 $(\\Longleftarrow)$ 用到**；$(\\implies)$ 不需要任何分离性。\n\n⚠️ 定理里的「加细」如果是**闭**加细，结论同样成立（闭加细是加细的特例）—— 所以「正则 $+$ 每个开覆盖有局部有限闭加细」$\\implies$ 仿紧，这条常被当成仿紧的实用判据。",
    "refs": [
     "Michael, A note on paracompact spaces, Proc. Amer. Math. Soc. 4 (1953)",
@@ -34332,7 +34332,7 @@
     "拓扑",
     "分离公理"
    ],
-   "statement": "拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：\n\n$$\\forall x \\ne y \\in X,\\ \\exists U \\ni x,\\ V \\ni y \\ \\text{开},\\quad U \\cap V = \\emptyset$$",
+   "statement": "拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：\n\n$$\\forall x \\ne y \\in X,\\ \\exists U \\ni x,\\ V \\ni y\\ \\text{open}:\\quad U \\cap V = \\emptyset$$",
    "notes": "一句话：**极限唯一**。序列只要收敛就只能收敛到一个点 —— 这正是分析里默认的那种空间。\n\n更强的分离性是**正规**（$T_{4}$）：任意两个不交闭集可被开集分开。紧 Hausdorff 空间是正规的（证明用两次紧性造开覆盖再取有限子覆盖）。\n\n$T_{3}$（正则）与 $T_{3.5}$（Tychonoff）夹在中间：$T_{3.5}$ 说的是**不同的点可以被连续函数分离开**，也就是「连续函数足够多」这一条。Stone–Čech 紧化的单射性要求的正是它。",
    "refs": [
     "Munkres, Topology"
@@ -34674,7 +34674,7 @@
     "绝对值",
     "序"
    ],
-   "statement": "设 $K$ 是**有序域**（$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都是），$x \\in K$。定义\n\n$$|x| := \\begin{cases} x, & x \\ge 0 \\\\ -x, & x < 0 \\end{cases} \\qquad\\text{即}\\qquad |x| = \\max\\{x, -x\\}$$\n\n于是 $|x| \\ge 0$ 恒成立，且 $|x| = 0 \\iff x = 0$。",
+   "statement": "设 $K$ 是**有序域**（$mathbb{Q}$ 与 $mathbb{R}$ 都是），$x in K$。定义\n\n$$|x| := \\begin{cases} x, & x \\ge 0 \\\\ -x, & x < 0 \\end{cases} \\qquad\\text{i.e.}\\qquad |x| = \\max\\{x, -x\\}$$\n\n于是 $|x| ge 0$ 恒成立，且 $|x| = 0 iff x = 0$。",
    "notes": "⭐ 读法：$|x|$ 是**到原点的距离**，与符号无关。两点之间的距离就是 $|x - y|$ —— 这就是后来**距离空间**里那个距离的原型：把「差」扔掉，只留下「距离」这个概念本身。\n\n立刻能验证的两条（都由定义分情形）：\n- $|-x| = |x|$；\n- $|xy| = |x|\\,|y|$。\n\n⚠ **不等号那一侧的估计不属于定义**：$|x + y| \\le |x| + |y|$ 是一条**定理**（见「三角不等式」）—— 定义里只有分情形，没有不等式。",
    "refs": [
     "Rudin, Principles of Mathematical Analysis, Ch. 1"

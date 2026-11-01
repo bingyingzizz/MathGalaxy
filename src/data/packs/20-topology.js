@@ -196,7 +196,7 @@ window.MG = window.MG || {};
       statement: [
         '拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：',
         '',
-        '$$\\forall x \\ne y \\in X,\\ \\exists U \\ni x,\\ V \\ni y \\ \\text{开},\\quad U \\cap V = \\emptyset$$'
+        '$$\\forall x \\ne y \\in X,\\ \\exists U \\ni x,\\ V \\ni y\\ \\text{open}:\\quad U \\cap V = \\emptyset$$'
       ].join('\n'),
       notes: [
         '一句话：**极限唯一**。序列只要收敛就只能收敛到一个点 —— 这正是分析里默认的那种空间。',

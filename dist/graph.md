@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-01T14:05:46.080Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-01T14:15:15.149Z
 > 14 星系 / 92 星团 / 1341 节点 / 2473 连线（强边 2456，弱边 17；其中**不分层**的「推论」21 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -1457,7 +1457,7 @@ $$\prod_{i \in I} U_{i} \qquad (U_{i} \in \mathcal{T}_{i},\ \text{除有限多�
 
 拓扑空间 $X$ 叫 **Hausdorff 空间**（或 **$T_{2}$ 空间**），如果任意两个不同点都**可以被开集分开**：
 
-$$\forall x \ne y \in X,\ \exists U \ni x,\ V \ni y \ \text{开},\quad U \cap V = \emptyset$$
+$$\forall x \ne y \in X,\ \exists U \ni x,\ V \ni y\ \text{open}:\quad U \cap V = \emptyset$$
 
 一句话：**极限唯一**。序列只要收敛就只能收敛到一个点 —— 这正是分析里默认的那种空间。
 
@@ -2690,9 +2690,9 @@ $$d(f, g) := \sup_{s \in S}\ d\bigl(f(s),\ g(s)\bigr).$$
 #### 局部有限族　`def.locally-finite-family`
 *定义*　局部有限的集合族
 
-设 $X$ 是拓扑空间，$\mathcal{A} = \{ A_{s} \}_{s \in S}$ 是 $X$ 的一族子集。$\mathcal{A}$ 叫**局部有限的**，如果每个点都有开邻域只与**有限多个**成员相交：
+设 $X$ 是拓扑空间，$\mathcal{A} = \{ A_{s} \}_{s \in S}$ 是 $X$ 的一族子集。$\mathcal{A}$ 叫**局部有限的**，如果每个点都有**开邻域**只与**有限多个**成员相交：对每个 $x \in X$ 都存在开集 $U \ni x$，使
 
-$$\forall x \in X,\ \exists U \ni x \text{ 开}:\quad \{\, s \in S : U \cap A_{s} \ne \emptyset \,\} \text{ 有限}.$$
+$$\{\, s \in S : U \cap A_{s} \ne \emptyset \,\}\ \text{finite}.$$
 
 把「开邻域」换成「点本身」，得到弱一些的**点有限族**：每个点只属于有限多个 $A_{s}$。
 
@@ -2711,9 +2711,9 @@ $$\forall x \in X,\ \exists U \ni x \text{ 开}:\quad \{\, s \in S : U \cap A_{s
 #### 离散族　`def.discrete-family`
 *定义*　离散的集合族
 
-$X$ 的一族子集 $\mathcal{A} = \{ A_{s} \}_{s \in S}$ 叫**离散的**，如果每个点都有开邻域至多与**一个**成员相交：
+$X$ 的一族子集 $\mathcal{A} = \{ A_{s} \}_{s \in S}$ 叫**离散的**，如果每个点都有**开邻域**至多与**一个**成员相交：对每个 $x \in X$ 都存在开集 $U \ni x$，使
 
-$$\forall x \in X,\ \exists U \ni x \text{ 开}:\quad \#\{\, s \in S : U \cap A_{s} \ne \emptyset \,\} \le 1.$$
+$$\#\{\, s \in S : U \cap A_{s} \ne \emptyset \,\} \le 1.$$
 
 离散 $\implies$ 局部有限 $\implies$ 点有限；两个反向都不成立。
 
@@ -2764,9 +2764,9 @@ $$\forall s \in S,\ \exists i \in I :\quad V_{s} \subseteq U_{i}.$$
 #### 仿紧空间　`def.paracompact`
 *定义*　每个开覆盖都有局部有限开加细
 
-拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：
+拓扑空间 $X$ 叫**仿紧的**，如果它的**每个开覆盖都有局部有限的开加细**：对每个开覆盖 $\mathcal{U}$，都存在开覆盖 $\mathcal{V}$，使
 
-$$\forall\ \text{开覆盖}\ \mathcal{U},\quad \exists\ \text{开覆盖}\ \mathcal{V}:\quad \mathcal{V}\ \text{加细}\ \mathcal{U}\ \text{且}\ \mathcal{V}\ \text{局部有限}.$$
+$$\mathcal{V}\ \text{refines}\ \mathcal{U}\quad\text{and}\quad \mathcal{V}\ \text{is locally finite}.$$
 
 ⚠️ **约定**：本图**不**把 Hausdorff 并进「仿紧」的定义（有些书并进去）。需要分离性时一律显式写「仿紧 Hausdorff」。
 
@@ -2843,9 +2843,9 @@ $$\mathcal{A} := \{\, X \setminus F \,\} \cup \{\, G_{y} : y \in F \,\}$$
 #### 迈克尔仿紧判别法　`thm.michael-paracompact`
 *定理*　正则空间仿紧当且仅当每个开覆盖有局部有限加细
 
-设 $X$ 是**正则**空间。则
+设 $X$ 是**正则**空间。则 $X$ **仿紧**，当且仅当它的每个开覆盖都有**局部有限的加细**（加细的成员不必是开集）：
 
-$$X\ \text{仿紧}\quad \iff \quad X\ \text{的每个开覆盖都有局部有限的加细（加细的成员不必是开集）}.$$
+$X$ **仿紧** $\iff$ 每个开覆盖都有局部有限的加细
 
 **$(\Longleftarrow)$ 才是内容，$(\implies)$ 是废话**：仿紧的加细按定义就是局部有限的，而开加细当然是加细。所以这条定理的全部难点在一句话 —— **把「不必开」的局部有限加细撑成开加细，同时不毁掉局部有限性**。
 **思路（Michael）**：给定开覆盖 $\mathcal{U}$ 与它的局部有限加细 $\{ E_{s} \}$。
@@ -6679,9 +6679,9 @@ $$\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n$$
 
 **(iii)** 若 $A$ 含幺元 $1$，则 $(-1)a = -a$；
 
-**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则
+**(iv)** 若 $A$ 是整环（含幺交换、无零因子），则没有零因子、且非零元可约：
 
-$$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b = c.$$
+$$ab = 0 \implies a = 0 \ \vee\ b = 0, \qquad a \ne 0,\ ab = ac \implies b = c.$$
 
 ⭐ 这些等式在 $\mathbb{R}$、$\mathbb{Q}$ 上就是**移项、通分、约分**的许可证 —— 极限四则运算、行列式展开、多项式除法里每一处「两边同乘」「约掉」都是在用它，但平时没人把它们单独写下来。
 
@@ -6729,7 +6729,7 @@ $$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b 
 
 **(iv)** $|x| \le c \iff -c \le x \le c$；$|x| < c \iff -c < x < c$；
 
-**(v)** $|x| > c \iff x > c \text{ 或 } x < -c$。
+**(v)** $|x| > c \iff x > c \ \vee\ x < -c$。
 
 ⭐ **三角不等式是另一条**（见「三角不等式」），这里只收「乘、商、平方、三段式」这些**等式型**的规则。两者合起来才是完整的绝对值工具箱。
 
@@ -6746,9 +6746,9 @@ $$ab = 0 \implies a = 0 \text{ 或 } b = 0, \qquad a \ne 0,\ ab = ac \implies b 
 
 设 $K$ 是完备有序域（如 $\mathbb{R}$）。
 
-**(i)** 对每个 $\varepsilon > 0$ 存在 $n \ge 1$ 使
+**(i)** 对每个 $\varepsilon > 0$ 存在 $n \ge 1$ 使 $1/n < \varepsilon$；等价地，那些 $1/n$ 的下确界是零：
 
-$$\frac{1}{n} < \varepsilon; \qquad \text{等价地} \qquad \inf\left\{ \frac{1}{n} : n \ge 1 \right\} = 0.$$
+$$\frac{1}{n} < \varepsilon; \qquad \inf\left\{ \frac{1}{n} : n \ge 1 \right\} = 0.$$
 
 **(ii)** 对每个 $x \in K$ 存在**唯一**的整数 $n$ 使
 
@@ -6892,11 +6892,11 @@ $$(1 + x)^{n} \ge 1 + n x.$$
 #### 绝对值 |x|　`def.abs`
 *定义*　绝对值 $|x|$
 
-设 $K$ 是**有序域**（$\mathbb{Q}$ 与 $\mathbb{R}$ 都是），$x \in K$。定义
+设 $K$ 是**有序域**（$mathbb{Q}$ 与 $mathbb{R}$ 都是），$x in K$。定义
 
-$$|x| := \begin{cases} x, & x \ge 0 \\ -x, & x < 0 \end{cases} \qquad\text{即}\qquad |x| = \max\{x, -x\}$$
+$$|x| := \begin{cases} x, & x \ge 0 \\ -x, & x < 0 \end{cases} \qquad\text{i.e.}\qquad |x| = \max\{x, -x\}$$
 
-于是 $|x| \ge 0$ 恒成立，且 $|x| = 0 \iff x = 0$。
+于是 $|x| ge 0$ 恒成立，且 $|x| = 0 iff x = 0$。
 
 ⭐ 读法：$|x|$ 是**到原点的距离**，与符号无关。两点之间的距离就是 $|x - y|$ —— 这就是后来**距离空间**里那个距离的原型：把「差」扔掉，只留下「距离」这个概念本身。
 
@@ -8771,9 +8771,9 @@ $$d(x_k, x^{\ast}) \le \frac{q^{k}}{1 - q}\, d(x_0, x_1), \qquad d(x_k, x^{\ast}
 #### 逆映射定理　`thm.inverse-function`
 *定理*　定理（逆映射定理）：$Df(a)$ 可逆 $\implies$ 局部可逆
 
-设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{n}$ 是 $C^{1}$，$a \in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \subseteq U$ 与 $f(a)$ 的开邻域 $W$ 使
+设 $U \subseteq \mathbb{R}^{n}$ 开，$f : U \to \mathbb{R}^{n}$ 是 $C^{1}$，$a \in U$ 且 $Df(a)$ **可逆**。则存在 $a$ 的开邻域 $V \subseteq U$ 与 $f(a)$ 的开邻域 $W$，使限制 $f\bigl|_{V}$ 是 $V \to W$ 的**双射**，
 
-$$f\bigl|_{V} : V \to W \quad \text{是双射}$$
+$$f\bigl|_{V} : V \to W \quad \text{bijective},$$
 
 且其逆 $g := (f\bigl|_{V})^{-1} : W \to V$ 也是 $C^{1}$，并且对一切 $y \in W$
 
@@ -8796,9 +8796,9 @@ $$Dg(y) = \bigl( Df(g(y)) \bigr)^{-1}$$
 #### 隐函数定理　`thm.implicit-function`
 *定理*　定理（隐函数定理）：$D_y F$ 可逆 $\implies$ 局部能解出 $y = g(x)$
 
-设 $U \subseteq \mathbb{R}^{n} \times \mathbb{R}^{m}$ 开，$F : U \to \mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \in U$ 满足
+设 $U \subseteq \mathbb{R}^{n} \times \mathbb{R}^{m}$ 开，$F : U \to \mathbb{R}^{m}$ 是 $C^{1}$，$(a, b) \in U$ 满足 $F(a, b) = 0$，且 $D_y F(a, b)$ **可逆**：
 
-$$F(a, b) = 0, \qquad D_y F(a, b) \in M_m(\mathbb{R})\ \text{可逆}$$
+$$F(a, b) = 0, \qquad D_y F(a, b) \in M_m(\mathbb{R})\ \text{invertible}$$
 
 （$D_y F$ 指只对后 $m$ 个变元求导的偏导数矩阵。）则存在 $a$ 的开邻域 $V \subseteq \mathbb{R}^{n}$ 与**唯一**的 $C^{1}$ 映射 $g : V \to \mathbb{R}^{m}$ 使
 
@@ -8823,9 +8823,9 @@ $$Dg(x) = - \bigl( D_y F(x, g(x)) \bigr)^{-1} D_x F(x, g(x))$$
 #### 逆映射定理（Banach 版）　`thm.inverse-function-banach`
 *定理*　定理：Banach 空间上的逆映射定理
 
-设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \subseteq E$ 开，$f : U \to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \in \mathcal{L}(E, F)$ 存在且连续），$a \in U$ 且
+设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \subseteq E$ 开，$f : U \to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \in \mathcal{L}(E, F)$ 存在且连续），$a \in U$ 且 $Df(a)$ **是拓扑线性同构**（有界且逆有界）：
 
-$$Df(a) : E \to F \quad \text{是拓扑线性同构（有界且逆有界）}$$
+$$Df(a) : E \to F \quad \text{topological linear isomorphism}$$
 
 则存在 $a$ 的邻域 $V$ 与 $f(a)$ 的邻域 $W$，使 $f|_{V} : V \to W$ 是同胚，逆映射 $g$ 是 $C^{1}$，且 $Dg(y) = (Df(g(y)))^{-1}$。
 
