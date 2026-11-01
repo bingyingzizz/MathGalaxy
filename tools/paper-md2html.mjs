@@ -99,7 +99,11 @@ for (; i < lines.length; i++) {
     flush();
     if (tableBuf.length) flushTable();
     const h = l.replace(/^##\s+/, '').trim();
-    if (h === '摘要') { section = 'abstract'; out.push('<div class="abstract"><span class="ablabel">摘要</span>'); continue; }
+    if (h === '摘要' || h === 'Abstract') {
+      section = 'abstract';
+      out.push('<div class="abstract"><span class="ablabel">' + (h === 'Abstract' ? 'Abstract' : '摘要') + '</span>');
+      continue;
+    }
     if (section === 'abstract') { out.push('</div>'); section = ''; }
     out.push(`<h2>${inline(h)}</h2>`);
     continue;
@@ -127,14 +131,20 @@ flush();
 if (tableBuf.length) flushTable();
 if (section === 'abstract') out.push('</div>');
 
-const FRONT = [
+const EN = md.indexOf('## Abstract') >= 0;
+const FRONT = (EN ? [
+  '<p class="kicker">Preprint</p>',
+  '<h1>Positive-Degree Cohomology of Compact Groups with p-Liquid Coefficients: a Counterexample for General Coefficients</h1>',
+  '<p class="byline">{{USER}} · October 2026</p>',
+  '<div class="status">Not peer reviewed. Please cite as a preprint.</div>',
+] : [
   '<p class="kicker">Preprint</p>',
   '<h1>紧群上 $p$-liquid 系数的正次数上同调：一般系数的反例</h1>',
   '<p class="en-title">Positive-degree cohomology of compact groups with $p$-liquid '
     + 'coefficients: a counterexample for general coefficients</p>',
   '<p class="byline">{{USER}} · 2026 年 10 月</p>',
   '<div class="status">未经同行评审。引用请注明 preprint。</div>',
-].join(String.fromCharCode(10));
+]).join(String.fromCharCode(10));
 
 
 /* ------------------------------- 落盘：只换 main 的内容 */
