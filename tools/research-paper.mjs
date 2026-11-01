@@ -14,7 +14,7 @@ import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dir, '..');
 const SRC = path.join(ROOT, 'papers', 'p-liquid.md');
-const OUT = path.join(ROOT, 'site', 'research-p-liquid.html');
+const OUT = path.join(ROOT, '_tools', '_p-liquid-log.html');  // 只是把日志渲染出来自查，不进站点
 
 const raw = fs.readFileSync(SRC, 'utf8').replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
 const lines = raw.split('\n');
