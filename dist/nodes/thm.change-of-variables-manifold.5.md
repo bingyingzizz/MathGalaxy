@@ -3,3 +3,4 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`prop.paracompact-partition-unity`](../nodes/prop.paracompact-partition-unity.md) 仿紧性与单位分解：用到了定义 仿紧性与单位分解　[proofs/dep.spivak-partition-changevars.md](../proofs/dep.spivak-partition-changevars.md)
+- [`prop.pullback-form-manifold`](../nodes/prop.pullback-form-manifold.md) 流形间的拉回：用到了定义 流形间的拉回　[proofs/dep.mf3-pbm-covm.md](../proofs/dep.mf3-pbm-covm.md)

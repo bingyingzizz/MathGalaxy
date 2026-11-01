@@ -229,6 +229,9 @@
         if (cands) {
           for (var k = 0; k < cands.length; k++) {
             var c = cands[k];
+            /* 已经拿到同长度的匹配 ⇒ 后面更短的候选不用再看（表按长度降序排）。
+               这一段是为下面「同名不同物」的择优留的余地。 */
+            if (got && c.n < got.n) break;
             // ⚠️ 先看字面：不匹配的候选直接跳过（长度不够 / 字不对）
             if (i + c.n > text.length) continue;
             var slice = text.substr(i, c.n);
@@ -243,7 +246,18 @@
             // ⭐ aka 来的短词（2 字）默认不在邻域里就跳过 —— 那是行文用词，不是概念指称。
             //   label 不受这条限制：「范畴」「预层」都是 2 字的**节点名**，该链。
             if (!c.isLabel && c.n < 3 && !allowShortAka && !(near && near[c.id])) continue;
-            got = c; break;
+            /* ⭐⭐ 2026-11-01 · **同名不同物**：同一个名字可能对应好几个节点，
+               而 `near` 以前只决定**样式**（近的蓝下划线 / 远的灰点线），
+               不参与「选谁」。于是选中的永远是候选表里第一个命中的 ——
+               而候选表的顺序 = `graph.nodes` 的顺序 ⇒ 链到哪个纯靠运气。
+               实测（用户报）：`thm.inverse-function` 的注里说「Banach 空间里要靠
+               开映射定理另行处理」，被链到了**复变函数**那一条（`thm.open-mapping`，
+               非常数全纯函数是开映射），意思正好反过来。同类的雷还有
+               「Euler 公式」（曲面版 / $e^{i\\theta}$ 版，已各有两个节点）。
+               ⇒ 同长度的候选里**优先取与 fromId 有边相连的那个**：正文提到某个
+                  名字时，指的一般是它在这个节点旁边的那一位。都不相邻才退回第一个。 */
+            if (near && near[c.id]) { got = c; break; }
+            if (!got) got = c;
           }
         }
         if (blocked) continue;

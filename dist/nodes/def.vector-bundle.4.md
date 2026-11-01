@@ -7,3 +7,4 @@
 - 被 [`def.tangent-distribution`](../nodes/def.tangent-distribution.md) 切分布 用
 - 被 [`thm.bundle-classification`](../nodes/thm.bundle-classification.md) 丛的分类 用
 - ⇒ [`thm.bundle-classification`](../nodes/thm.bundle-classification.md) 丛的分类
+- 被 [`def.cotangent-bundle`](../nodes/def.cotangent-bundle.md) 余切丛 用

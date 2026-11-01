@@ -5,3 +5,5 @@
 - 被 [`def.de-rham-complex`](../nodes/def.de-rham-complex.md) de Rham 上同调 用
 - ⇒ [`thm.stokes-chain`](../nodes/thm.stokes-chain.md) 链上的 Stokes 定理
 - 被 [`def.left-invariant-form`](../nodes/def.left-invariant-form.md) 左不变形式 用
+- 被 [`prop.exterior-derivative-manifold`](../nodes/prop.exterior-derivative-manifold.md) 外微分在流形上良定 用
+- 被 [`prop.pullback-form-manifold`](../nodes/prop.pullback-form-manifold.md) 流形间的拉回 用

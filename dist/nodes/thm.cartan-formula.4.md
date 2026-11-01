@@ -3,3 +3,4 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.exterior-derivative`](../nodes/def.exterior-derivative.md) 外微分：用到了定义 外微分　[proofs/dep.mf2-extd-cartan.md](../proofs/dep.mf2-extd-cartan.md)
+- [`prop.exterior-derivative-manifold`](../nodes/prop.exterior-derivative-manifold.md) 外微分在流形上良定：用到了定义 外微分在流形上良定　[proofs/dep.mf3-dm-cartan.md](../proofs/dep.mf3-dm-cartan.md)

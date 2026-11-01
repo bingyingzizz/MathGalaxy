@@ -685,19 +685,21 @@ window.MG = window.MG || {};
       statement: [
         '**在说什么**：外微分满足 $\\mathrm{d}^{2} = 0$，于是 $k$-形式排成一串「链」；闭形式模掉恰当形式剩下的那部分就是上同调 —— 它量的是「有多少闭形式是假闭的」。',
         '',
-        '设 $M$ 是光滑流形，$\\Omega^{k}(M)$ 是 $k$-形式的空间。外微分（`def.exterior-derivative`）给出 **de Rham 复形**',
+        '设 $M$ 是光滑流形，$\\Omega^{k}(M)$ 是 $k$-形式的空间。流形上的外微分给出 **de Rham 复形**',
         '',
         '$$0 \\longrightarrow \\Omega^{0}(M) \\xrightarrow{\\ \\mathrm{d}\\ } \\Omega^{1}(M) \\xrightarrow{\\ \\mathrm{d}\\ } \\Omega^{2}(M) \\xrightarrow{\\ \\mathrm{d}\\ } \\cdots$$',
         '',
         '由 $\\mathrm{d}^{2} = 0$ 得 $\\operatorname{im}\\mathrm{d} \\subseteq \\ker\\mathrm{d}$。记**闭形式**与**恰当形式**的空间为',
         '',
-        '$$Z^{k}(M) := \\ker\\bigl(\\mathrm{d} : \\Omega^{k}(M) \\to \\Omega^{k+1}(M)\\bigr),\\qquad B^{k}(M) := \\operatorname{im}\\bigl(\\mathrm{d} : \\Omega^{k-1}(M) \\to \\Omega^{k}(M)\\bigr),$$',
+        '$$Z^{k}(M) := \\ker\\bigl(\\mathrm{d} : \\Omega^{k}(M) \\to \\Omega^{k+1}(M)\\bigr),$$',
+        '',
+        '$$B^{k}(M) := \\operatorname{im}\\bigl(\\mathrm{d} : \\Omega^{k-1}(M) \\to \\Omega^{k}(M)\\bigr),$$',
         '',
         '（$\\Omega^{-1} := 0$，故 $B^{0} = 0$）。**de Rham 上同调群**是商空间',
         '',
         '$$H^{k}_{\\mathrm{dR}}(M) := Z^{k}(M) / B^{k}(M).$$',
         '',
-        '给定光滑映射 $F : N \\to M$，拉回给出线性映射 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(M) \\to H^{k}_{\\mathrm{dR}}(N)$（因为 $F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$，见 `prop.pullback-forms`），且 $(G \\circ F)^{\\ast} = F^{\\ast} \\circ G^{\\ast}$。所以 $H^{k}_{\\mathrm{dR}}$ 是光滑流形范畴上的**函子**。'
+        '给定光滑映射 $F : N \\to M$，拉回给出线性映射 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(M) \\to H^{k}_{\\mathrm{dR}}(N)$（因为 $F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$，见 `prop.pullback-form-manifold`），且 $(G \\circ F)^{\\ast} = F^{\\ast} \\circ G^{\\ast}$。所以 $H^{k}_{\\mathrm{dR}}$ 是光滑流形范畴上的**函子**。'
       ].join('\n'),
       notes: [
         '**它测什么**：$H^{k} = 0$ 意味着「闭就恰当」；$H^{k} \\ne 0$ 说明存在闭而不恰当的形式。$\\mathbb{R}^{2}\\setminus\\{0\\}$ 上的角形式 $\\frac{x\\,\\mathrm{d}y - y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当，它的类生成 $H^{1} \\cong \\mathbb{R}$，量的是「绕原点的圈数」。',
@@ -1154,16 +1156,16 @@ window.MG = window.MG || {};
     {
       id: 'dep.mf-extd-derham',
       kind: 'definition',
-      definition: 'def.exterior-derivative',
+      definition: 'prop.exterior-derivative-manifold',
       usedBy: 'def.de-rham-complex',
-      note: '复形就是 $\\mathrm{d}$ 排成的链，$\\mathrm{d}^{2} = 0$ 是「$\\operatorname{im} \\subseteq \\ker$」的唯一来源 —— 没有它商空间无从定义。'
+      note: '复形就是 $\\mathrm{d}$ 排成的链，$\\mathrm{d}^{2} = 0$ 是「$\\operatorname{im} \\subseteq \\ker$」的唯一来源 —— 没有它商空间无从定义。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\mathrm{d}$（原来指欧氏开集上那条坐标公式）。de Rham 复形的每一项都是 $\\Omega^{k}(M)$，用到的 d 自然是流形上的 d；它的良定性就是那条命题。'
     },
     {
       id: 'dep.mf-form-derham',
       kind: 'definition',
-      definition: 'def.differential-form',
+      definition: 'def.form-on-manifold',
       usedBy: 'def.de-rham-complex',
-      note: '链的每一项都是 $k$-形式的空间 $\\Omega^{k}(M)$；闭与恰当这两个词也是形式论里的词（`def.exterior-derivative`）。'
+      note: '链的每一项都是 $k$-形式的空间 $\\Omega^{k}(M)$；闭与恰当这两个词也是形式论里的词（`def.exterior-derivative`）。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\Omega^{k}(M)$（原来指欧氏开集上那个坐标模型，于是「$\\Omega^{k}(M)$ 是什么」在图上无处可查）。层号是**算出来的**：de Rham 复形依赖 18 层的形式定义，它就自己在 20 层，不该反过来拿层号去将就。'
     },
     {
       id: 'dep.mf-pullback-derham',

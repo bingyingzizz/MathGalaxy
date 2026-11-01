@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-10-31T15:04:13.339Z
-> 14 星系 / 92 星团 / 1334 节点 / 2424 连线（强边 2407，弱边 17；其中**不分层**的「推论」21 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-01T10:18:35.524Z
+> 14 星系 / 92 星团 / 1340 节点 / 2451 连线（强边 2434，弱边 17；其中**不分层**的「推论」21 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
 > 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只
@@ -8785,7 +8785,7 @@ $$Dg(y) = \bigl( Df(g(y)) \bigr)^{-1}$$
 
 ⚠ 定理只保证 $C^{1}$；但由 $Dg = (Df \circ g)^{-1}$ 立即得：$f$ 光滑 $\implies$ $g$ 光滑（$Df\circ g$ 光滑、求逆是光滑运算）。这就是「$f$ 是微分同胚 $\implies$ $f^{-1}$ 也是」。
 
-⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的，在 Banach 空间里要靠开映射定理另行处理。
+⭐ 定理顺带说明了 $f$ 是**开映射**（把开集 $V$ 映成开集 $W$）—— 这一点在有限维是免费的；在 Banach 空间里它是**另一条定理**（泛函分析的 `开映射定理`，与本图的「非常数全纯函数是开映射」同名但不同物，且尚未收录），不能从这里免费得到。
 
 ⚠ 与 `thm.regular-value`、`cor.rank-theorem` 是一个家族：秩定理说「常秩映射局部只有标准形」，逆映射定理是 $r = n = m$ 的特例。
 
@@ -25853,6 +25853,83 @@ $$\check{H}^{1}\bigl(M;\operatorname{GL}(k,\mathbb{R})\bigr),$$
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 转移函数与上闭链条件；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛的同构与结构群
 
+#### 余切丛　`def.cotangent-bundle`
+*定义*　余切丛：切空间的对偶丛
+
+**在做什么**：切空间装的是「往哪走」，余切空间装的是「怎么量」。把每点的对偶空间摞起来，就得到 1-形式的住处 —— 微分形式不是凭空出现的算式，它是这个丛的截面。
+
+设 $M$ 是 $n$ 维光滑流形。点 $p$ 处的**余切空间**是对偶空间
+$$T_{p}^{\ast}M := (T_{p}M)^{\ast} = \operatorname{Hom}_{\mathbb{R}}\bigl(T_{p}M,\mathbb{R}\bigr),$$
+它的元素叫**余切向量**，也叫 $p$ 处的 **1-形式**（或 Pfaff 形式）。**余切丛**把它们按底点摞起来：
+$$T^{\ast}M := \bigsqcup_{p\in M}T_{p}^{\ast}M,$$
+投影 $\pi : T^{\ast}M\to M$ 把 $\alpha\in T_{p}^{\ast}M$ 送到 $\pi(\alpha) := p$。
+
+**光滑结构**：图卡 $(U,\varphi)$ 上，坐标函数 $x^{1},\ldots,x^{n}$ 的微分 $\mathrm{d}x^{i}\big|_{p}$ 构成 $T_{p}^{\ast}M$ 的一组基（对偶于 $\partial/\partial x^{i}\big|_{p}$），于是
+$$\Phi : \pi^{-1}(U)\longrightarrow\varphi(U)\times\mathbb{R}^{n}$$
+$$\sum_{i=1}^{n}a_{i}\,\mathrm{d}x^{i}\big|_{p}\longmapsto\bigl(\varphi(p),\,a_{1},\ldots,a_{n}\bigr),$$
+是双射。把它当图卡，$T^{\ast}M$ 成为 $2n$ 维光滑流形，并且 $\pi$ 是 $M$ 上**秩 $n$ 的光滑向量丛**：局部平凡化就是上面的 $\Phi$，纤维上的向量空间结构来自对偶空间。
+
+**为什么非要造它**：$k$-形式要在每点吃进 $k$ 个向量、吐一个数、并且对换两个变元要变号 —— 这正是 $\Lambda^{k}T_{p}^{\ast}M$ 里的元素。所以流形上的形式（`def.form-on-manifold`）可以从「余切丛的外积丛的截面」出发，而不是从坐标公式出发；坐标公式只是它在图卡上的样子。
+
+**与切丛的关系**：$T^{\ast}M$ 是切丛 `def.tangent-bundle` 的对偶丛。取对偶不是可有可无的装饰：切丛的截面（向量场）只能正着推、还要求映射是微分同胚；余切丛的截面（1-形式）可以沿**任意**光滑映射拉回（`prop.pullback-form-manifold`）。微分形式好用，根源就在这个不对称上。
+
+⚠️ $\mathrm{d}x^{i}$ 在这里是**坐标函数的微分**，不是「留待定义的记号」：$\mathrm{d}x^{i}\big|_{p}(v) = v(x^{i})$。它和 `def.exterior-derivative` 里那个 $\mathrm{d}$ 是同一个算子作用在 $x^{i}\in C^{\infty}(U)$ 上 —— 所以 $\mathrm{d}x^{i}$ 的「$\mathrm{d}$」也满足 $\mathrm{d}(\mathrm{d}x^{i}) = 0$。
+
+⚠️ 记号陷阱：$T^{\ast}M$ 的双重对偶 $(T^{\ast}_{p}M)^{\ast}$ 在有限维时**自然同构**于 $T_{p}M$，所以有人把两者混着写；但 $TM$ 与 $T^{\ast}M$ 作为丛并不自然同构 —— 要一个同构就得先选黎曼度量（`def.riemannian-metric`）。「升降指标」用的正是这个度量，不是白给的。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 余切空间与余切丛
+
+#### 纤维丛　`def.fiber-bundle`
+*定义*　纤维丛：局部长得像「底 $\times$ 纤维」的丛
+
+**在说什么**：向量丛只要求「纤维是向量空间」。把向量空间换成一个**任意的流形 $F$**，就得到纤维丛 —— 覆叠空间、主丛、向量丛全都落在这一条之下。
+
+设 $E, B, F$ 是光滑流形，$\pi : E\to B$ 是光滑满射。称 $\pi$（连同 $E$）为**以 $F$ 为纤维、以 $B$ 为底的纤维丛**，若每点 $b\in B$ 有开邻域 $U$ 与微分同胚
+$$\Phi : \pi^{-1}(U)\longrightarrow U\times F,\qquad \operatorname{pr}_{1}\circ\Phi = \pi ,$$
+即 $\Phi$ 与投影交换。这样的 $\Phi$ 叫**局部平凡化**，$E_{b} := \pi^{-1}(b)$ 叫 $b$ 处的**纤维**，$E$ 叫**全空间**。
+
+**转移函数**：同一个开覆盖上取两组平凡化，重叠处必然差一个纤维自同胚
+$$\Phi_{\alpha}\circ\Phi_{\beta}^{-1}\,(b, y) = \bigl(b,\ g_{\alpha\beta}(b)\,y\bigr),$$
+其中 $g_{\alpha\beta} : U_{\alpha}\cap U_{\beta}\to\operatorname{Diff}(F)$ 叫**转移函数**。它们满足上闭链条件 $g_{\alpha\alpha} = \operatorname{id}$、$g_{\alpha\beta}\,g_{\beta\gamma}\,g_{\gamma\alpha} = \operatorname{id}$（在重叠处），并且衡量「这块丛歪了多少」。
+
+若再给定 Lie 群 $G$ 在 $F$ 上的作用，并且总能选平凡化使所有 $g_{\alpha\beta}$ 取值落在 $G$ 里，就说这个丛的**结构群**是 $G$。
+
+**为什么要这个概念**：向量丛（`def.vector-bundle`）是 $F = \mathbb{R}^{k}$、$G\subseteq\operatorname{GL}(k,\mathbb{R})$ 的特例；覆叠空间（`def.covering-space`）是 $F$ 离散的特例；主丛（`def.principal-bundle`）是 $F = G$ 本身那一个特例。三件事被这一条统一，判据都是同一句话：**局部长得像「底 $\times$ 纤维」**。
+
+**「纤维」这个词为什么不分下标也说得通**：局部平凡化在每根纤维上是 $\{b\}\times F$ 上的同胚，所以每根纤维都同胚于 $F$。但**没有自然同胚** —— 沿底空间绕一圈回来可能换掉一个自同胚，这个「绕一圈的变形」（monodromy）正是纤维丛不是平凡积的全部原因。
+
+⚠️ 光有「每根纤维都同胚于 $F$」**远远不够**：必须有**局部**平凡化。差别就在于「能不能在邻域上一致地选同胚」—— 不能的话纤维照样各自同胚，但丛已经扭了（覆叠空间里最直观：绕一圈换叶）。所以判据必须落在邻域上，不能落在单点上。
+
+⭐ 分类的口径也来自这里：$\{g_{\alpha\beta}\}$ 模掉「换个平凡化」（即乘上某个上边缘），就是 Čech 的 $H^{1}$（`thm.bundle-classification` 讲向量丛那一支，同一条道理）。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛、局部平凡化与转移函数
+
+#### 主丛　`def.principal-bundle`
+*定义*　主丛：纤维就是结构群本身的纤维丛
+
+**在说什么**：纤维丛里最「自指」的那一类 —— 纤维不是随便一个流形，就是结构群 $G$ 自己，而且 $G$ 在丛上自由地右作用。向量丛都能从主丛造出来（取配丛）。
+
+设 $G$ 是 Lie 群，$P, B$ 是光滑流形，$\pi : P\to B$ 光滑。$P$ 上的**主 $G$-丛**是纤维丛 $\pi$ 连同 $G$ 在 $P$ 上的**右作用**
+$$P\times G\longrightarrow P,\qquad (u,g)\longmapsto u\cdot g ,$$
+使
+
+1. **保纤维**：$\pi(u\cdot g) = \pi(u)$；
+2. **自由且在纤维上可迁**：$u\cdot g = u \iff g = e$，且同一根纤维 $P_{b}$ 中任意两点都差一个右乘（于是 $P_{b}$ 与 $G$ 同胚）；
+3. **局部平凡且 $G$-等变**：每点有邻域 $U$ 与微分同胚 $\Phi : \pi^{-1}(U)\to U\times G$，写成 $\Phi(u) = \bigl(\pi(u),\varphi(u)\bigr)$，并满足
+$$\Phi(u\cdot g) = \bigl(\pi(u),\ \varphi(u)\,g\bigr).$$
+
+此时纤维是 $G$（右乘 $g\mapsto hg$ 把它送到自己），结构群也是 $G$。**帧丛**（每点取纤维的一组基）给出最常用的例子：秩 $k$ 向量丛 $E\to B$ 的帧丛是主 $\operatorname{GL}(k,\mathbb{R})$-丛 —— 这就是「向量丛与主丛」之间那座桥。
+
+**为什么主丛值得单独记**：向量丛的结构群是 $\operatorname{GL}(k)$，但它只藏在转移函数里、看不见；主丛把结构群**变成空间的一部分**（纤维就是群），于是「联络」「曲率」「示性类」都能在主丛上整体地谈，再沿表示拉到配丛上。Tu 讲联络与曲率的路线正是这一条。
+
+⚠️ 右作用还是左作用：约定取**右**作用，好处是转移函数可以顺着写在坐标后面（$\Phi(u\cdot g) = (\pi(u),\varphi(u)g)$），不必写成 $\varphi(g^{-1}u)$ 这类反向的式子。换约定时整条公式都要改，混着用就是符号错误的来源。
+
+⭐ 特例串起来记：主 $G$-丛（纤维 $G$）$\rightsquigarrow$ 取 $G$ 在某个流形 $F$ 上的作用、把纤维换掉，得**配丛**（纤维 $F$；本图尚未收录）$\rightsquigarrow$ 取 $F = \mathbb{R}^{k}$、$G = \operatorname{GL}(k,\mathbb{R})$，得向量丛（`def.vector-bundle`）$\rightsquigarrow$ 取 $F$ 离散，得覆叠空间（`def.covering-space`）。反过来：任何向量丛都有帧丛，都在主丛这一层。
+
+⚠️ 「自由」这一条不能省：若允许 $u\cdot g = u$ 而 $g\ne e$，纤维上就有稳定化子，丛在纤维方向上会「粘住」，此时它不再是主丛、而是某个更小的群的主丛（或一般的纤维丛）。
+
+参考：Tu, Differential Geometry (GTM 275)（⚠️ 手头无该书，章名未核实，只记书名）· 主丛与配丛
+
 ### 星团：向量场与 Lie 结构
 > 在流形上做「微分」的那一套：向量场与 Lie 括号 → 流与流的不变量（Lie 导数、内乘、Cartan 公式）→ 张量场与缩并 → 切分布、对合分布与 Frobenius 定理 → Lie 代数。
 
@@ -26416,19 +26493,21 @@ $$\operatorname{vol}(M) := \int_{M}\mathrm{d}V_{g},\qquad \int_{M}f\,\mathrm{d}V
 
 **在说什么**：外微分满足 $\mathrm{d}^{2} = 0$，于是 $k$-形式排成一串「链」；闭形式模掉恰当形式剩下的那部分就是上同调 —— 它量的是「有多少闭形式是假闭的」。
 
-设 $M$ 是光滑流形，$\Omega^{k}(M)$ 是 $k$-形式的空间。外微分（`def.exterior-derivative`）给出 **de Rham 复形**
+设 $M$ 是光滑流形，$\Omega^{k}(M)$ 是 $k$-形式的空间。流形上的外微分给出 **de Rham 复形**
 
 $$0 \longrightarrow \Omega^{0}(M) \xrightarrow{\ \mathrm{d}\ } \Omega^{1}(M) \xrightarrow{\ \mathrm{d}\ } \Omega^{2}(M) \xrightarrow{\ \mathrm{d}\ } \cdots$$
 
 由 $\mathrm{d}^{2} = 0$ 得 $\operatorname{im}\mathrm{d} \subseteq \ker\mathrm{d}$。记**闭形式**与**恰当形式**的空间为
 
-$$Z^{k}(M) := \ker\bigl(\mathrm{d} : \Omega^{k}(M) \to \Omega^{k+1}(M)\bigr),\qquad B^{k}(M) := \operatorname{im}\bigl(\mathrm{d} : \Omega^{k-1}(M) \to \Omega^{k}(M)\bigr),$$
+$$Z^{k}(M) := \ker\bigl(\mathrm{d} : \Omega^{k}(M) \to \Omega^{k+1}(M)\bigr),$$
+
+$$B^{k}(M) := \operatorname{im}\bigl(\mathrm{d} : \Omega^{k-1}(M) \to \Omega^{k}(M)\bigr),$$
 
 （$\Omega^{-1} := 0$，故 $B^{0} = 0$）。**de Rham 上同调群**是商空间
 
 $$H^{k}_{\mathrm{dR}}(M) := Z^{k}(M) / B^{k}(M).$$
 
-给定光滑映射 $F : N \to M$，拉回给出线性映射 $F^{\ast} : H^{k}_{\mathrm{dR}}(M) \to H^{k}_{\mathrm{dR}}(N)$（因为 $F^{\ast}\mathrm{d} = \mathrm{d}F^{\ast}$，见 `prop.pullback-forms`），且 $(G \circ F)^{\ast} = F^{\ast} \circ G^{\ast}$。所以 $H^{k}_{\mathrm{dR}}$ 是光滑流形范畴上的**函子**。
+给定光滑映射 $F : N \to M$，拉回给出线性映射 $F^{\ast} : H^{k}_{\mathrm{dR}}(M) \to H^{k}_{\mathrm{dR}}(N)$（因为 $F^{\ast}\mathrm{d} = \mathrm{d}F^{\ast}$，见 `prop.pullback-form-manifold`），且 $(G \circ F)^{\ast} = F^{\ast} \circ G^{\ast}$。所以 $H^{k}_{\mathrm{dR}}$ 是光滑流形范畴上的**函子**。
 
 **它测什么**：$H^{k} = 0$ 意味着「闭就恰当」；$H^{k} \ne 0$ 说明存在闭而不恰当的形式。$\mathbb{R}^{2}\setminus\{0\}$ 上的角形式 $\frac{x\,\mathrm{d}y - y\,\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当，它的类生成 $H^{1} \cong \mathbb{R}$，量的是「绕原点的圈数」。
 
@@ -26982,6 +27061,84 @@ $$\mathrm{d}V_{N} = \pm\,\iota_{\nu}\,\mathrm{d}V_{g},$$
 ⚠️ 本图只做「$k$ 维体积」这一层：余面积公式（coarea）、以及「把 $M$ 上的 $k$-形式积在 $N$ 上」的一般理论（要 $N$ 定向 + $i^{\ast}$）不展开。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 子流形上的诱导度量与体积；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 黎曼体积与正交余标架
+
+#### 流形上的微分形式　`def.form-on-manifold`
+*定义*　流形上的微分形式：不靠坐标的内蕴定义
+
+**在做什么**：把「按坐标写出来的 $k$-形式」换成**不依赖图卡**的说法。做到这一点，形式才真的是流形上的对象，而不是「某张图卡里的算式」。
+
+设 $M$ 是 $n$ 维光滑流形。$M$ 上的**微分 $k$-形式** $\omega$ 就是给每点 $p\in M$ 指定一个**交错 $k$-线性型**
+$$\omega_{p} : T_{p}M\times\cdots\times T_{p}M\longrightarrow\mathbb{R},$$
+并且**依赖得光滑**：对每张图卡 $(U,x)$，函数 $p\mapsto\omega_{p}\bigl(\partial_{i_{1}}\big|_{p},\ldots,\partial_{i_{k}}\big|_{p}\bigr)$ 在 $U$ 上光滑。$M$ 上全体 $k$-形式记 $\Omega^{k}(M)$。
+
+**光滑性等价于坐标系数光滑**：在 $(U,x)$ 上 $\omega$ 唯一地写成
+$$\omega\big|_{U} = \sum_{I}a_{I}\,\mathrm{d}x^{I},\qquad \mathrm{d}x^{I} := \mathrm{d}x^{i_{1}}\wedge\cdots\wedge\mathrm{d}x^{i_{k}},$$
+其中 $I$ 跑遍所有 $i_{1}<\cdots<i_{k}$，系数由 $a_{I} := \omega\bigl(\partial_{i_{1}},\ldots,\partial_{i_{k}}\bigr)$ 给出。
+而两张图卡重叠处的两组系数由 Jacobi 矩阵的 $k$ 阶子式互相换算 —— 子式光滑，所以「系数光滑」与选哪张图卡无关。这一步是整条定义能不能成立的关键：**它把局部算式焊成了整体对象**。
+
+**约定**：$\Omega^{0}(M) := C^{\infty}(M)$；$\Omega^{1}(M)$ 就是 1-形式；$k > n$ 时 $\Omega^{k}(M) = 0$（$n$ 维空间上没有非零的交错 $k$-线性型）。直和 $\Omega^{\bullet}(M) = \bigoplus_{k\ge 0}\Omega^{k}(M)$ 带楔积，是分次代数。
+
+**与 $\mathbb{R}^{n}$ 版的关系**：`def.differential-form` 是这一条的**坐标模型**，不是另一套东西 —— 在同一张图卡上把它展开，得到的就是那条陈述里的式子。两条并排放，是为了让「坐标算式」与「内蕴定义」各有一个可点的住处。
+
+**另一种等价说法**：把每点的 $\Lambda^{k}T_{p}^{\ast}M$ 摞成外积丛 $\Lambda^{k}T^{\ast}M$（余切丛 `def.cotangent-bundle` 的外积），则 $\Omega^{k}(M) = \Gamma(\Lambda^{k}T^{\ast}M)$ 是它的光滑截面（`def.bundle-section`）。截面语言自动带来局部平凡化与过渡函数，坐标公式就是它的局部样子 —— 这条等价是 Tu 在「丛」那一章回头补的，两条路殊途同归。
+
+⚠️ $\Omega^{k}(M)$ 是 $C^{\infty}(M)$-**模**：可以逐点乘光滑函数、逐点相加。楔积、内乘、拉回都是模同态；只有 $\mathrm{d}$ 例外 —— 它只是 $\mathbb{R}$-线性的（$\mathrm{d}(f\omega) = \mathrm{d}f\wedge\omega + f\,\mathrm{d}\omega$）。这个不对称正是「$\mathrm{d}$ 不是张量运算」的确切含义，也是它为什么只能在流形上靠图卡良定性才能定义（`prop.exterior-derivative-manifold`）。
+
+⚠️ 别把「$k$-形式」读成「$k$ 个函数排成一排」：在 $n$ 维流形上逐点看，$\Omega^{k}$ 的维数是 $\binom{n}{k}$ 而不是 $n^{k}$ —— 交错条件砍掉了绝大多数自由度。$n = 3$ 时：$\Omega^{0}$ 维数 $1$、$\Omega^{1}$ 与 $\Omega^{2}$ 都是 $3$、$\Omega^{3}$ 是 $1$，这正是经典向量分析里「梯度 / 旋度 / 散度各自落在不同的 $\Omega^{k}$」的来源。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 流形上的 k-形式与光滑性
+
+#### 外微分在流形上良定　`prop.exterior-derivative-manifold`
+*命题*　外微分在流形上良定：局部坐标公式与图卡无关
+
+**在做什么**：$\mathbb{R}^{n}$ 上的 $\mathrm{d}$ 是按坐标公式写的，搬到流形上必须回答一句「换一张图卡算出来的 $\mathrm{d}\omega$ 是不是同一个」。这一条把它钉死，于是 $\mathrm{d}$ 可以整体地写在流形上。
+
+设 $M$ 是光滑流形。存在**唯一**的一族算子 $\mathrm{d} : \Omega^{k}(M)\to\Omega^{k+1}(M)$（$k\ge 0$）使
+
+1. 在函数上 $\mathrm{d}f$ 就是 $f$ 的微分：$\mathrm{d}f_{p}(v) = v(f)$ 对 $v\in T_{p}M$；
+2. $\mathrm{d}$ 是 $\mathbb{R}$-线性的；
+3. **反导子**：$\omega$ 是 $k$-形式时 $\mathrm{d}(\omega\wedge\tau) = \mathrm{d}\omega\wedge\tau + (-1)^{k}\omega\wedge\mathrm{d}\tau$；
+4. $\mathrm{d}^{2} = 0$。
+
+并且它在任意图卡 $(U,x)$ 上就等于坐标公式
+$$\mathrm{d}\Bigl(\sum_{I}a_{I}\,\mathrm{d}x^{I}\Bigr) = \sum_{I}\mathrm{d}a_{I}\wedge\mathrm{d}x^{I},$$
+其中 $\mathrm{d}x^{I} := \mathrm{d}x^{i_{1}}\wedge\cdots\wedge\mathrm{d}x^{i_{k}}$，而 $\mathrm{d}a_{I}$ 是函数 $a_{I}$ 的微分。于是「$\mathrm{d}$ 与图卡无关」不是额外假设，而是这条命题的结论。
+
+**证明的两半**：存在性 = 「图卡上按公式定义 + 重叠处一致 + 用单位分解拼成整体」；唯一性 = 「局部公式 + 反导子公理 + $\mathrm{d}^{2}=0$」。骨架在边上，⚠️ 收尾那一步（单位分解的拼接为什么只有有限项、为什么拼出来的东西仍满足 (3)(4)）只给到提纲。
+
+**这是 Tu 的处理顺序**：先有开集上的坐标公式（`def.exterior-derivative`），再用「与拉回交换」（`prop.pullback-forms` 的第 3 条）证明图卡无关。也可以反过来把「与拉回交换」当公理（一堆教材这么做），但那样就得另证存在性，且难以看出 $\mathrm{d}$ 为什么长这样。
+
+⭐ 有了这一条，`def.de-rham-complex` 里那串 $\Omega^{k}(M)\xrightarrow{\ \mathrm{d}\ }\Omega^{k+1}(M)$ 才真的是一串映射 —— 在这条之前，那串东西只是记号。
+
+⚠️ 顺带钉住一个常见误解：$\mathrm{d}$ 不依赖**度量**，也不依赖**联络**。它是光滑结构本身给出的算子；联络（`def.affine-connection`）与它无关，两者能凑出公式纯属巧合之外的对称性。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 外微分与图卡无关性
+
+#### 流形间的拉回　`prop.pullback-form-manifold`
+*命题*　流形间光滑映射的拉回：与楔积、与外微分都相容
+
+**在做什么**：把 $k$-形式沿**流形之间**的光滑映射搬回去。$\mathbb{R}^{n}$ 开集那版只是它的局部样子。
+
+设 $F : M\to N$ 是光滑映射，$\omega\in\Omega^{k}(N)$。**拉回** $F^{\ast}\omega\in\Omega^{k}(M)$ 逐点定义为
+$$(F^{\ast}\omega)_{p}(v_{1},\ldots,v_{k}) := \omega_{F(p)}\bigl(\mathrm{d}F_{p}v_{1},\ldots,\mathrm{d}F_{p}v_{k}\bigr)$$
+其中 $v_{i}\in T_{p}M$。则 $F^{\ast}\omega$ 光滑，且
+
+1. $F^{\ast}$ 是 $\mathbb{R}$-线性的；对函数 $F^{\ast}f = f\circ F$；
+2. **保楔积**：$F^{\ast}(\omega\wedge\eta) = F^{\ast}\omega\wedge F^{\ast}\eta$；
+3. **与 $\mathrm{d}$ 交换**：$\mathrm{d}(F^{\ast}\omega) = F^{\ast}(\mathrm{d}\omega)$；
+4. **保复合**：$(G\circ F)^{\ast} = F^{\ast}\circ G^{\ast}$，$(\operatorname{id})^{\ast} = \operatorname{id}$。
+
+于是 $F^{\ast} : \Omega^{\bullet}(N)\to\Omega^{\bullet}(M)$ 是**微分分次代数**的同态。
+
+**证明的路线**：$T_{p}M$ 上的交错型在坐标基 $\mathrm{d}x^{I}$ 上线性展开，于是只需在单项 $\omega = \mathrm{d}y^{I}$ 上验 —— 而那正是链式法则加「$\mathrm{d}^{2}=0$」的机械计算，再用上一句的线性拼回去。骨架在边上。
+
+**它和「$\mathrm{d}$ 良定」互为因果**：开集间那条（`prop.pullback-forms`）已经证过 (3)，流形上用图卡局部化即可；反过来，正因为 $\mathrm{d}$ 与拉回交换、而拉回只用链式法则定义，$\mathrm{d}$ 才不依赖坐标（`prop.exterior-derivative-manifold`）。两条一起看，才知道谁也不是循环论证 —— 开集上的 (3) 是初等的。
+
+⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F$ 光滑 $\implies$ $F^{\ast}$ 与 $\mathrm{d}$ 交换 $\implies$ $F^{\ast}$ 下到商空间，得 $F^{\ast} : H^{k}_{\mathrm{dR}}(N)\to H^{k}_{\mathrm{dR}}(M)$。方向是反的，这正是「上同调反变」的意思。
+
+⚠️ 与向量场的对照：向量场**不能**沿任意光滑映射拉回（要 $F$ 是微分同胚才能前推），形式可以。这个不对称不是技术缺陷，而是「形式是 $T^{\ast}M$ 的截面、向量场是 $TM$ 的截面」的直接后果。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 拉回 F* 与它保持的运算
 
 ### 星团：Lie 群
 > 把群结构与流形结构绑在一起：Lie 群 → 左不变向量场与左不变形式 → Maurer–Cartan 方程 → Lie 第三定理（每个有限维 Lie 代数都来自一个 Lie 群）。
@@ -34431,13 +34588,17 @@ $(1,0)$ 型张量场就是向量场；分量变换律 $X^{i} = \sum_{j}\frac{\pa
 
 命题的主语就是「可定向」，它给的是不靠图册的等价判据；「同一个定向」那半句还要用到极大定向图册。
 
-#### 定义引用：「外微分」→ de Rham 上同调　`dep.mf-extd-derham`
+#### 定义引用：「外微分在流形上良定」→ de Rham 上同调　`dep.mf-extd-derham`
 
 复形就是 $\mathrm{d}$ 排成的链，$\mathrm{d}^{2} = 0$ 是「$\operatorname{im} \subseteq \ker$」的唯一来源 —— 没有它商空间无从定义。
 
-#### 定义引用：「微分形式」→ de Rham 上同调　`dep.mf-form-derham`
+⭐ 2026-11-01 改指到**流形上**的 $\mathrm{d}$（原来指欧氏开集上那条坐标公式）。de Rham 复形的每一项都是 $\Omega^{k}(M)$，用到的 d 自然是流形上的 d；它的良定性就是那条命题。
+
+#### 定义引用：「流形上的微分形式」→ de Rham 上同调　`dep.mf-form-derham`
 
 链的每一项都是 $k$-形式的空间 $\Omega^{k}(M)$；闭与恰当这两个词也是形式论里的词（`def.exterior-derivative`）。
+
+⭐ 2026-11-01 改指到**流形上**的 $\Omega^{k}(M)$（原来指欧氏开集上那个坐标模型，于是「$\Omega^{k}(M)$ 是什么」在图上无处可查）。层号是**算出来的**：de Rham 复形依赖 18 层的形式定义，它就自己在 20 层，不该反过来拿层号去将就。
 
 #### 定义引用：「拉回」→ de Rham 上同调　`dep.mf-pullback-derham`
 
@@ -35519,9 +35680,11 @@ $\operatorname{Lie}(G) \cong \mathfrak{g}$ 这句话里的 $\operatorname{Lie}(G
 
 $(1,1)$ 型缩并就是逐点取迹；「缩并是取迹的推广」这句话靠的就是那条定义。
 
-#### 定义引用：「微分形式」→ 内乘　`dep.mf2-dform-iop`
+#### 定义引用：「流形上的微分形式」→ 内乘　`dep.mf2-dform-iop`
 
 内乘的定义是「把 $X_{p}$ 塞进交错多重线性映射的第一个槽」；形式是交错的，所以塞两个向量必然为零（$\iota_{X}^{2} = 0$）。
+
+⭐ 2026-11-01 改指：原来指 `def.differential-form`（欧氏开集上的坐标模型），而内乘的陈述里写的是 $\Omega^{k}(M)$（流形上）。定义链必须指到流形上那条（`def.form-on-manifold`），否则「$\Omega^{k}(M)$ 是什么」在图上无处可查。
 
 #### 定义引用：「向量场」→ 内乘　`dep.mf2-vf-iop`
 
@@ -38217,6 +38380,114 @@ $>$ ⭐ 最容易错的直觉是「a.e. 可导 $F' \in L^{1}$ 就够」——**C
 #### 定义引用：「规范有界变差函数」→ 积分得到的函数绝对连续且规范有界变差　`def-link.nbv-ftc`
 
 推论同时落在 NBV 与 AC 的交里。
+
+#### 定义引用：「微分形式」→ 流形上的微分形式　`dep.mf3-form-rn`
+
+同一条东西的坐标模型：把 $\omega$ 在某张图卡上展开，得到的就是那条陈述里的算式。
+
+#### 定义引用：「切空间」→ 流形上的微分形式　`dep.mf3-form-tanspace`
+
+定义的主语是「$T_{p}M$ 上的交错 $k$-线性型」，没有切空间无从写起。
+
+#### 定义引用：「图卡」→ 流形上的微分形式　`dep.mf3-form-chart`
+
+光滑性与图卡无关，这一步靠图卡之间的 Jacobi 换算完成。
+
+#### 定义引用：「光滑流形」→ 流形上的微分形式　`dep.mf3-form-smoothmanifold`
+
+底流形必须是光滑流形，否则「系数光滑」没有意义。
+
+#### 定义引用：「外微分」→ 外微分在流形上良定　`dep.mf3-dm-extd`
+
+开集上的坐标公式直接搬过来，当图卡上的定义用。
+
+#### 定义引用：「拉回」→ 外微分在流形上良定　`dep.mf3-dm-pullback`
+
+图卡无关性靠「$\mathrm{d}$ 与拉回交换」这条（开集版已证），它才是证明的引擎。
+
+#### 定义引用：「流形上的微分形式」→ 外微分在流形上良定　`dep.mf3-dm-form`
+
+命题的主语就是 $\Omega^{k}(M)$ 上的算子族。
+
+#### 定义引用：「光滑单位分解」→ 外微分在流形上良定　`dep.mf3-dm-pou`
+
+把图卡上的局部定义拼成整体，靠单位分解 —— 存在性那一半的收尾。
+
+#### 定义引用：「流形上的微分形式」→ 流形间的拉回　`dep.mf3-pbm-form`
+
+拉回的两端都是流形上的形式空间。
+
+#### 定义引用：「拉回」→ 流形间的拉回　`dep.mf3-pbm-rn`
+
+开集间那条是这一条的图卡样子；证明靠局部化到图卡搬过来。
+
+#### 定义引用：「切映射」→ 流形间的拉回　`dep.mf3-pbm-dmap`
+
+定义式里把切映射 $\mathrm{d}F_{p}$ 塞进形式 $\omega$ 的槽里 —— 没有它写不出这个式子。
+
+#### 定义引用：「流形间的拉回」→ 流形上的换元公式　`dep.mf3-pbm-covm`
+
+流形上的换元公式就是「拉回体积形式再积分」：$\int_{F(M)}\omega = \int_{M}F^{\ast}\omega$（保向微分同胚时）。
+
+#### 定义引用：「切丛」→ 余切丛　`dep.mf3-cotb-tbundle`
+
+对偶是逐纤维取的：先有 $TM$，才有 $T^{\ast}M$；光滑结构也由切丛的图卡对偶过来。
+
+#### 定义引用：「对偶空间」→ 余切丛　`dep.mf3-cotb-dual`
+
+余切空间就是对偶空间，「纤维是向量空间」这一点全靠它。
+
+#### 定义引用：「向量丛」→ 余切丛　`dep.mf3-cotb-vbundle`
+
+余切丛是秩 $n$ 向量丛的实例；局部平凡化 $\Phi$ 就是那条定义里要求的 $\Phi$。
+
+#### 定义引用：「图卡」→ 余切丛　`dep.mf3-cotb-chart`
+
+基 $\mathrm{d}x^{i}$ 与图卡绑定，丛的光滑结构由它给出。
+
+#### 定义引用：「余切丛」→ 张量场　`dep.mf3-cotb-tensor`
+
+张量场的 $r$ 个逆变槽吃的正是 $T_{p}^{\ast}M$；把逐点的对偶空间摞起来就是余切丛，它的光滑截面就是 1-形式。
+
+#### 定义引用：「图卡」→ 纤维丛　`dep.mf3-fb-chart`
+
+「局部」平凡化的局部，指的是底空间上的开邻域（图卡意义上的）。
+
+#### 定义引用：「光滑映射」→ 纤维丛　`dep.mf3-fb-smooth`
+
+$\pi$ 与每个 $\Phi$ 都要求光滑，丛才是一个光滑对象而不是拓扑对象。
+
+#### 定义引用：「纤维丛」→ 丛的分类　`dep.mf3-fb-class`
+
+转移函数与上闭链条件是纤维丛的语言；分类定理本身对任意结构群都成立，向量丛只是 $G = \operatorname{GL}(k,\mathbb{R})$ 那一支。
+
+#### 定义引用：「Lie 群」→ 主丛　`dep.mf3-prin-lie`
+
+结构群要能谈光滑作用与光滑转移函数，所以必须是 Lie 群。
+
+#### 定义引用：「群作用」→ 主丛　`dep.mf3-prin-act`
+
+主丛 = 纤维丛 + 一个自由的右作用；自由与可迁两条就是作用论里的词。
+
+#### 定义引用：「纤维丛」→ 主丛　`dep.mf3-prin-fb`
+
+主丛首先是纤维丛，只多了「$G$-等变平凡化」与「自由可迁」这两条。
+
+#### 定义引用：「流形上的微分形式」→ Stokes 定理　`dep.mf3-form-stokes`
+
+Stokes 定理里的 $\omega$ 是**流形上**的 $(n-1)$-形式：边界上积、内部积分 $\mathrm{d}\omega$。以前这里只能指欧氏开集上那条定义。
+
+#### 定义引用：「流形上的微分形式」→ 链上积分的双线性　`dep.mf3-form-chainint`
+
+链上积分的双线性是 $\Omega^{k}(M)$ 上的双线性 —— 补上这条，这个节点才第一次有定义边（之前它是「没有定义边的命题」）。
+
+#### 定义引用：「流形上的微分形式」→ 左不变形式　`dep.mf3-form-lieform`
+
+左不变形式是 Lie 群上的 $k$-形式再加一条不变性；本体还是流形上的形式。
+
+#### 定义引用：「外微分在流形上良定」→ Cartan 公式　`dep.mf3-dm-cartan`
+
+Cartan 公式里的 $\mathrm{d}$ 作用在 $\Omega^{k}(M)$ 上，它的良定性就是那条命题的内容。
 
 #### Young 不等式 ⟹ Hölder 不等式　`imp.holder`
 *Young 不等式 $\implies$ Hölder 不等式*
@@ -45400,24 +45671,25 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **内蕴几何 ↔ 流形与向量丛**　5 条节点级连线
 - **多元微分 ↔ 向量场与 Lie 结构**　3 条节点级连线
 - **内蕴几何 ↔ 向量场与 Lie 结构**　3 条节点级连线
-- **流形与向量丛 ↔ 向量场与 Lie 结构**　8 条节点级连线
+- **流形与向量丛 ↔ 向量场与 Lie 结构**　9 条节点级连线
 - **多重线性与张量 ↔ 向量场与 Lie 结构**　3 条节点级连线
 - **特征值与 Jordan 型 ↔ 向量场与 Lie 结构**　3 条节点级连线
 - **流形与向量丛 ↔ 仿紧与单位分解**　3 条节点级连线
-- **微分形式、积分与 de Rham ↔ 活动标架与结构方程**　9 条节点级连线
-- **微分形式、积分与 de Rham ↔ 内蕴几何**　11 条节点级连线
+- **微分形式、积分与 de Rham ↔ 活动标架与结构方程**　11 条节点级连线
+- **微分形式、积分与 de Rham ↔ 内蕴几何**　14 条节点级连线
 - **微分形式、积分与 de Rham ↔ 拓扑空间**　4 条节点级连线
 - **内蕴几何 ↔ Lie 群**　2 条节点级连线
 - **Lie 群 ↔ 向量场与 Lie 结构**　4 条节点级连线
-- **微分形式、积分与 de Rham ↔ 流形与向量丛**　3 条节点级连线
+- **微分形式、积分与 de Rham ↔ 流形与向量丛**　5 条节点级连线
 - **矩阵与行列式 ↔ 微分形式、积分与 de Rham**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 曲面论**　3 条节点级连线
 - **复变函数基础 ↔ 共形映射与正规族**　11 条节点级连线
 - **Cauchy 理论 ↔ 调和函数**　3 条节点级连线
 - **活动标架与结构方程 ↔ Lie 群**　4 条节点级连线
 - **流形与向量丛 ↔ 层上同调**　2 条节点级连线
-- **活动标架与结构方程 ↔ 向量场与 Lie 结构**　3 条节点级连线
+- **微分形式、积分与 de Rham ↔ 向量场与 Lie 结构**　4 条节点级连线
 - **向量场与 Lie 结构 ↔ 度量空间**　2 条节点级连线
+- **活动标架与结构方程 ↔ 向量场与 Lie 结构**　2 条节点级连线
 - **共形映射与正规族 ↔ 留数与辐角原理**　2 条节点级连线
 - **Cauchy 理论 ↔ 解析延拓与整函数**　7 条节点级连线
 - **复变函数基础 ↔ 解析延拓与整函数**　2 条节点级连线

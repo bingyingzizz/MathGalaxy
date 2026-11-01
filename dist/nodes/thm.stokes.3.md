@@ -6,3 +6,5 @@
 - [`def.integral-form`](../nodes/def.integral-form.md) 形式的积分：用到了定义 形式的积分　[proofs/dep.tu-integral-stokes.md](../proofs/dep.tu-integral-stokes.md)
 - [`def.orientable-surface`](../nodes/def.orientable-surface.md) 可定向曲面：用到了定义 可定向曲面　[proofs/dep.tu-orient-stokes.md](../proofs/dep.tu-orient-stokes.md)
 - [`def.exterior-derivative`](../nodes/def.exterior-derivative.md) 外微分：用到了定义 外微分　[proofs/dep.tu-d-stokes.md](../proofs/dep.tu-d-stokes.md)
+
+> 续见 [nodes/thm.stokes.4.md](./thm.stokes.4.md)

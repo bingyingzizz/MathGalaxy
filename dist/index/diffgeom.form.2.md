@@ -1,6 +1,9 @@
 # 微分形式、积分与 de Rham / Differential Forms, Integration and de Rham Cohomology（diffgeom.form）· 节点清单（第 2/2 页）
 根 `../`　·　第 1 页 `index/diffgeom.form.md`
 
+- def.volume-form　体积形式　layer 26
+- def.volume-density　体积密度与体积形式　layer 26
+- prop.boundary-sign-convention　边界的符号约定　layer 27
 - prop.volume-density-well-defined　密度与定向无关　layer 27
 - def.divergence　散度　layer 27
 - def.integral-on-chain　链上的积分　layer 28

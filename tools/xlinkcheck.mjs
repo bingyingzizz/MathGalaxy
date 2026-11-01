@@ -76,6 +76,19 @@ const CASES = [
     why: '多词专名整段命中（表里就是这么写的）' },
   { text: 'locally compact', want: ['def.locally-compact'],
     why: '同上；⛔ 别被拆成 `compact`' },
+
+  /* ---------- 同名不同物：优先链到相邻的那一个 ----------
+     ⭐ 2026-11-01 用户报：`thm.inverse-function` 的注里说「Banach 空间里要靠开映射定理
+        另行处理」，被链到了**复变**那条（`thm.open-mapping`）。根因不在那条内容，
+        而在匹配器：同名候选里永远取候选表第一个，而候选表顺序 = `graph.nodes` 顺序
+        ⇒ 链到哪个纯靠运气，`near` 只算样式、不算选择。现在同长度优先相邻。
+     ⚠️ 下面每条都**指定了 fromId**，因为「链到哪个」本来就取决于站在哪看。 */
+  { text: 'Euler 公式', from: 'def.exp-function', want: ['thm.euler-formula'],
+    why: '同名两个：曲面欧拉公式 / $e^{i\\theta}$。指数函数旁边当然是后者（图里顺序先到曲面那个 ⇒ 旧版必错）' },
+  { text: 'Euler 公式', from: 'def.weingarten-map', want: ['thm.euler-formula-surface'],
+    why: '同一句话在微分几何那边必须落到曲面版（反过来也得住）' },
+  { text: '足够多投射对象', from: 'lem.horseshoe', want: ['def.enough-projectives'],
+    why: '同名两个：定义版 / 模论版。马蹄引理挨的是定义那个（旧版错到 thm.mod-enough-projectives）' },
 ];
 
 /* --------------------------------------------------------- 最小 loadMG */
@@ -110,13 +123,15 @@ if (typeof xl.scan !== 'function') {
 let bad = 0;
 console.log(`内文跳转体检 · ${CASES.length} 条句子`);
 for (const c of CASES) {
-  const hits = xl.scan(c.text, null, true);
+  /* `from` = 站在哪个节点上看（可选）。同名不同物时「该链到哪一个」取决于这个 ——
+     ⚠️ 缺省 null = 没有邻居信息 ⇒ 只能退回候选表第一个，那是旧行为。 */
+  const hits = xl.scan(c.text, c.from || null, true);
   const got = hits.map(h => h.id);
   const ok = got.length === c.want.length && got.every((id, i) => id === c.want[i]);
   if (!ok) bad++;
   if (ok && !LIST) continue;
   const show = (ids) => (ids.join(' ') || '(空)');
-  console.log(`${ok ? '  ✓' : '  ✗'} ${JSON.stringify(c.text)}`);
+  console.log(`${ok ? '  ✓' : '  ✗'} ${JSON.stringify(c.text)}` + (c.from ? `  （from ${c.from}）` : ''));
   if (!ok) console.log(`      期望  ${show(c.want)}\n      实得  ${show(got)}`);
   else console.log(`      命中  ${show(got)}`);
   console.log(`      ↳ ${c.why}`);

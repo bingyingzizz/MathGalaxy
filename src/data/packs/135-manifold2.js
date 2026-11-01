@@ -1041,9 +1041,9 @@ window.MG = window.MG || {};
     {
       id: 'dep.mf2-dform-iop',
       kind: 'definition',
-      definition: 'def.differential-form',
+      definition: 'def.form-on-manifold',
       usedBy: 'def.interior-product',
-      note: '内乘的定义是「把 $X_{p}$ 塞进交错多重线性映射的第一个槽」；形式是交错的，所以塞两个向量必然为零（$\\iota_{X}^{2} = 0$）。'
+      note: '内乘的定义是「把 $X_{p}$ 塞进交错多重线性映射的第一个槽」；形式是交错的，所以塞两个向量必然为零（$\\iota_{X}^{2} = 0$）。\n\n⭐ 2026-11-01 改指：原来指 `def.differential-form`（欧氏开集上的坐标模型），而内乘的陈述里写的是 $\\Omega^{k}(M)$（流形上）。定义链必须指到流形上那条（`def.form-on-manifold`），否则「$\\Omega^{k}(M)$ 是什么」在图上无处可查。'
     },
     {
       id: 'dep.mf2-vf-iop',

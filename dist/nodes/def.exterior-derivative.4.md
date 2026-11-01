@@ -6,9 +6,9 @@
 - 被 [`thm.stokes`](../nodes/thm.stokes.md) Stokes 定理 用
 - ⇒ [`prop.pullback-forms`](../nodes/prop.pullback-forms.md) 拉回
 - ⇒ [`thm.stokes`](../nodes/thm.stokes.md) Stokes 定理
-- 被 [`def.de-rham-complex`](../nodes/def.de-rham-complex.md) de Rham 上同调 用
 - ⇒ [`lem.poincare-lemma`](../nodes/lem.poincare-lemma.md) Poincaré 引理
 - 被 [`lem.single-cube-stokes`](../nodes/lem.single-cube-stokes.md) 方块上的 Stokes 公式 用
 - ⇒ [`lem.single-cube-stokes`](../nodes/lem.single-cube-stokes.md) 方块上的 Stokes 公式
+- 被 [`thm.maurer-cartan`](../nodes/thm.maurer-cartan.md) Maurer–Cartan 方程 用
 
 > 续见 [nodes/def.exterior-derivative.5.md](./def.exterior-derivative.5.md)
