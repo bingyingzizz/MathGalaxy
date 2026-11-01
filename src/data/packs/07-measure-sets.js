@@ -24,7 +24,7 @@ window.MG = window.MG || {};
         '设 $X$ 是集合，$\\mathfrak{A} \\subseteq \\mathcal{P}(X)$。$\\mathfrak{A}$ 是 $X$ 上的一个**基本类**，当且仅当',
         '',
         '- 对**交**封闭：$A, B \\in \\mathfrak{A} \\implies A \\cap B \\in \\mathfrak{A}$',
-        '- 差可以拆开：$A, B \\in \\mathfrak{A} \\implies A \\setminus B\\text{ 是} \\mathfrak{A}\\text{ 中有限多个两两不交集合之并}$'
+        '- 差可以拆开：$A, B \\in \\mathfrak{A} \\implies A \\setminus B$ 是 $\\mathfrak{A}$ 中**有限多个两两不交集合之并**'
       ].join('\n'),
       notes: [
         '它比「环」弱一档：只要求对**交**封闭（不是并），而差只要求「能拆成不交并」。',
@@ -147,17 +147,17 @@ window.MG = window.MG || {};
       statement: [
         '(1) 基本类包含 $\\emptyset$。',
         '',
-        '(2) 代数与 $\\sigma$代数对**有限交**、**可数交**封闭。',
+        '(2) 代数与 $\\sigma$-代数对**有限交**、**可数交**封闭。',
         '',
-        '$(3) \\mathfrak{A}$ 是 $\\sigma$代数 $\\iff \\mathfrak{A}$ 对**可数并**与**取补**都封闭。',
+        '(3) $\\mathfrak{A}$ 是 $\\sigma$-代数 $\\iff$ $\\mathfrak{A}$ 对**可数并**与**取补**都封闭。',
         '',
-        '(5) 若 $\\mathcal{E}$ 是**基本类**，则',
+        '(5) 若 $\\mathcal{E}$ 是**基本类**，则「$\\mathcal{E}$ 中有限多个两两不交集合之并」全体',
         '',
-        '$$\\mathfrak{A} = \\{ \\mathcal{E}\\text{ 中有限多个两两不交集合之并} \\}$$',
+        '$\\mathfrak{A} = \\{ E_1 \\cup \\cdots \\cup E_n : E_1, \\ldots, E_n \\in \\mathcal{E}$ 两两不交 $\\}$',
         '',
         '是一个**环**。',
         '',
-        '（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$环 的判据」里。）'
+        '（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$-环 的判据」里。）'
       ].join('\n'),
       notes: [
         ['**证明。**','(1) 取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset \\in \\mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。','(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）','(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。','(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。','- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；','- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；','- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎'].join('\n'),
@@ -202,10 +202,11 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$。定义',
         '',
-        '$$\\mathcal{M}(\\mathcal{E}) := \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A}\\text{ 是包含} \\mathcal{E}\\text{ 的} \\sigma-\\text{代数} \\}$$',
-        '$$\\mathfrak{m}(\\mathcal{E}) := \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A}\\text{ 是包含} \\mathcal{E}\\text{ 的单调类} \\}$$',
+        '$\\mathcal{M}(\\mathcal{E}) := \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A}$ 是包含 $\\mathcal{E}$ 的 $\\sigma$-代数 $\\}$',
         '',
-        '$\\mathcal{M}(\\mathcal{E})$ 称为**由 $\\mathcal{E}$ 生成的 $\\sigma$代数**，$\\mathfrak{m}(\\mathcal{E})$ 称为由 $\\mathcal{E}$ 生成的单调类。'
+        '$\\mathfrak{m}(\\mathcal{E}) := \\bigcap \\{ \\mathfrak{A} : \\mathfrak{A}$ 是包含 $\\mathcal{E}$ 的单调类 $\\}$',
+        '',
+        '$\\mathcal{M}(\\mathcal{E})$ 称为**由 $\\mathcal{E}$ 生成的 $\\sigma$-代数**，$\\mathfrak{m}(\\mathcal{E})$ 称为由 $\\mathcal{E}$ 生成的单调类。'
       ].join('\n'),
       notes: [
         '为什么这样定义是合法的：这个交非空（$\\mathcal{P}(X)$ 总是一个含 $\\mathcal{E}$ 的 $\\sigma$代数），而且**任意多个 $\\sigma$代数之交仍是 $\\sigma$代数**（单调类也一样），所以交出来的是最小的那一个。',
@@ -251,9 +252,9 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定义', 'Borel', '拓扑'],
       statement: [
-        '设 $X$ 是拓扑空间。$X$ 上的 **$Borel \\sigma$代数**是由全体开集生成的 $\\sigma$代数：',
+        '设 $X$ 是拓扑空间。$X$ 上的 **Borel $\\sigma$-代数**是由全体开集生成的 $\\sigma$-代数：',
         '',
-        '$$\\mathfrak{B}_X := \\mathcal{M}(\\{ U \\subseteq X : U\\text{ 是开集} \\})$$',
+        '$\\mathfrak{B}_X := \\mathcal{M}(\\{ U \\subseteq X : U$ 是开集 $\\})$',
         '',
         '$\\mathfrak{B}_X$ 中的集合称为 **Borel 集**：开集、闭集、可数个开集之交（$G_\\delta$）、可数个闭集之并（$F_\\sigma$）等都属于 $\\mathfrak{B}_X$。'
       ].join('\n'),
@@ -346,13 +347,9 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['推论', 'Borel', '积', '可分'],
       statement: [
-        '设 $X_{1}, X_{2}$ … 是距离空间，$X = \\prod_{j=1}^{\\infty} X_j$ 配以积度量。则',
+        '若每个 $X_j$ 都**可分**，则积 $\\sigma$-代数与 Borel $\\sigma$-代数重合：',
         '',
-        '$$\\otimes _{j=1}^{\\infty} \\mathfrak{B}_{X_j} \\subseteq \\mathfrak{B}_X$$',
-        '',
-        '且当每个 $X_{j}$ **可分**时，等号成立：',
-        '',
-        '$$X_j\\text{ 都可分} \\implies \\otimes _{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_X$$'
+        '$\\bigotimes_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_{X}$'
       ].join('\n'),
       notes: [
         ['**证明。**','- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。','- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。','  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。','两边互包即得等号。∎','⚠️ **可分性不能省**：$\\mathbb{R}^{\\mathbb{R}}$（不可数积）上，积 $\\sigma$代数**真包含于** Borel $\\sigma$代数 —— 那些「只看可数多个坐标」的集合撑不满 Borel 结构。'].join('\n'),

@@ -26,11 +26,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'L⁺'],
       statement: [
-        '固定测度空间 $(X, \\mathcal{M}, \\mu )$。记',
+        '固定测度空间 $(X, \\mathcal{M}, \\mu )$。记 $L^+$ 为取值在**扩充**非负实数里的**可测**函数全体：',
         '',
-        '$$L^+ := \\{ f : X \\to [0, +\\infty] : f\\text{ 可测} \\}$$',
-        '',
-        '即取值在**扩充**非负实数里的可测函数全体。'
+        '$L^+ := \\{ f : X \\to [0, +\\infty] : f$ **可测** $\\}$'
       ].join('\n'),
       notes: [
         '⚠ 取值允许是 $\\infty$，这是刻意的：先把积分对 $[0, +\\infty ]$ 值的函数定义好，收敛定理（sup / 极限）在整个 $L^{+}$ 里封闭，不必反复讨论「积分是不是有限」。',
@@ -48,9 +46,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', '简单函数'],
       statement: [
-        '设 $\\varphi \\in L^+$ 是简单函数，写成标准形式',
+        '设 $\\varphi \\in L^+$ 是简单函数，写成标准形式 —— 系数非负、底集两两不交且都在 $\\mathcal{M}$ 里：',
         '',
-        '$$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}, \\quad  a_j \\ge 0, E_j \\in \\mathcal{M}\\text{ 两两不交}$$',
+        '$\\varphi = \\sum_{j=1}^{n} a_j \\chi_{E_j}, \\quad  a_j \\ge 0,\\ E_j \\in \\mathcal{M}$ **两两不交**',
         '',
         '则定义',
         '',
@@ -98,9 +96,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '积分', 'sup'],
       statement: [
-        '设 $f \\in L^+$。定义',
+        '设 $f \\in L^+$。定义 $f$ 的积分为「不超过它的简单函数积分」的上确界：',
         '',
-        '$$\\int f d\\mu := \\sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f, \\varphi\\text{ 是简单函数} \\}$$'
+        '$\\int f d\\mu := \\sup \\{ \\int \\varphi d\\mu : 0 \\le \\varphi \\le f,\\ \\varphi$ **是简单函数** $\\}$'
       ].join('\n'),
       notes: [
         '直观：用简单函数从**下面**去顶 $f$，取这些面积的**上确界**。这与 Jordan 测度「从外面盖、从里面填」的做法不同 —— 这里只从里面填。',
@@ -119,11 +117,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'MCT', '收敛'],
       statement: [
-        '设 $\\{f_n\\} \\subseteq L^+$ 满足',
+        '设 $\\{f_n\\} \\subseteq L^+$ 是**逐点递增**序列：',
         '',
-        '$$f_1 \\le f_2 \\le \\cdots, \\quad  f_n \\uparrow  f\\text{ 逐点}, $$',
+        '$$f_1 \\le f_2 \\le \\cdots, \\quad  f_n \\uparrow  f$$',
         '',
-        '则',
+        '则积分与极限可以交换：',
         '',
         '$$\\int f = \\lim_{n\\to\\infty} \\int f_n$$'
       ].join('\n'),
@@ -297,13 +295,11 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'L¹', '可积'],
       statement: [
-        '实值可测 $f$ **可积**，当且仅当 $\\int f^+ < \\infty$ 且 $\\int f^- < \\infty$。等价地：',
+        '实值可测 $f$ **可积**，当且仅当 $\\int f^+ < \\infty$ 且 $\\int f^- < \\infty$。等价地，$f$ 可积当且仅当 $|f|$ 的积分有限：',
         '',
-        '$$f\\text{ 可积} \\iff \\int |f| d\\mu < \\infty$$',
+        '$f$ **可积** $\\iff \\int |f| d\\mu < \\infty$',
         '',
-        '复值可测 $f$ 可积，当且仅当 $\\int |f| d\\mu < \\infty$。可积函数全体记作',
-        '',
-        '$$L^1(\\mu) = L^1(X, \\mathcal{M}, \\mu) = L^1(X, \\mu)$$'
+        '复值可测 $f$ 可积，当且仅当 $\\int |f| d\\mu < \\infty$。可积函数全体记作 $L^1$。'
       ].join('\n'),
       notes: [
         '⭐ **可积 $\\iff$ 绝对值可积**：这是 Lebesgue 积分（终于）真正好用的地方 —— 因为 $|f| \\in L^{+}$，一切非负情形的定理都能直接套用。',

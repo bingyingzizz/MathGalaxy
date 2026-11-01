@@ -114,9 +114,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['引理', '全变差', '递增'],
       statement: [
-        '设 $F$ 是**实值**有界变差函数。则',
+        '设 $F$ 是**实值**有界变差函数。则 $T_F + F$ 与 $T_F - F$',
         '',
-        '$$T_F + F\\quad \\text{ 与}\\quad  T_F - F$$',
+        '$$T_F + F\\quad \\text{and}\\quad  T_F - F$$',
         '',
         '都是**递增**函数。'
       ].join('\n'),
@@ -140,11 +140,13 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'BV', 'Jordan 分解'],
       statement: [
-        '**(a)** $F \\in BV \\iff \\operatorname{Re} F \\in BV\\text{ 且} \\operatorname{Im} F \\in BV$。',
+        '**(a)** 若 $F$ 的实部与虚部都是 $BV$，则 $F \\in BV$；反之亦然：',
         '',
-        '**(b)** 设 $F : \\mathbb{R} \\to \\mathbb{R}$。则',
+        '$F \\in BV \\iff \\operatorname{Re} F \\in BV$ **且** $\\operatorname{Im} F \\in BV$。',
         '',
-        '$$F \\in BV \\iff F = G - H,\\text{ 其中} G, H\\text{ 都是有界递增函数}$$'
+        '**(b)** 设 $F : \\mathbb{R} \\to \\mathbb{R}$。则 $F \\in BV$ 当且仅当它可以写成两个有界递增函数之差：',
+        '',
+        '$F \\in BV \\iff F = G - H$，其中 $G, H$ **都是有界递增函数**。'
       ].join('\n'),
       notes: [
         '具体取法（就是测度论 Jordan 分解的函数版）：',
@@ -191,7 +193,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', 'NBV'],
       statement: [
-        '$$NBV := \\{ F \\in BV : F\\text{ 右连续},\\text{ 且} F(-\\infty) = 0 \\}$$'
+        '**规范有界变差函数**指右连续、且在 $-\\infty$ 处取零的 $BV$ 函数：',
+        '',
+        '$NBV := \\{ F \\in BV : F$ **右连续**，且 $F(-\\infty) = 0 \\}$'
       ].join('\n'),
       notes: [
         '为什么要加这两个条件：因为下一条定理要建立**$\\mathbb{R}$ 上的复 Borel 测度 $\\leftrightarrow NBV$** 的一一对应，而对应式是',
@@ -317,9 +321,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '绝对连续', 'AC'],
       statement: [
-        '函数 $F : [a, b] \\to \\mathbb{C}$ 是**绝对连续的**，当且仅当',
+        '函数 $F : [a, b] \\to \\mathbb{C}$ 是**绝对连续的**，当且仅当：对每个 $\\varepsilon > 0$ 都有 $\\delta > 0$，使得对**任意有限个两两不交的区间** $(a_j, b_j) \\subseteq [a, b]$，',
         '',
-        '$$\\forall\\varepsilon > 0, \\exists\\delta > 0 :\\text{ 任意有限个两两不交的区间} (a_j, b_j) \\subseteq [a, b]\\text{ 满足} \\sum(b_j - a_j) < \\delta,\\text{ 就一定有} \\sum|F(b_j) - F(a_j)| < \\varepsilon$$'
+        '$\\sum (b_j - a_j) < \\delta \\implies \\sum |F(b_j) - F(a_j)| < \\varepsilon$'
       ].join('\n'),
       notes: [
         '⚠ 注意与「一致连续」的区别：一致连续是**单个**小区间上控制振幅，而绝对连续要求**任意多个小区间合起来**也能控制 —— 这正是为了堵住 Cantor 函数那种「在零测集上爬升」的情形。',
@@ -337,9 +341,9 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '绝对连续', 'μ_F ≪ m'],
       statement: [
-        '设 $F \\in NBV$。则',
+        '设 $F \\in NBV$。则 $F$ **绝对连续**当且仅当它对应的测度 $\\mu_F$ 关于 Lebesgue 测度绝对连续：',
         '',
-        '$$F\\text{ 绝对连续} \\iff \\mu_F \\ll  m$$'
+        '$F$ **绝对连续** $\\iff \\mu_F \\ll  m$'
       ].join('\n'),
       notes: [
         '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$\\mu_F \\ll  m$ 给出「$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
