@@ -418,7 +418,13 @@
         flushPara();
         var ol = [];
         while (i < lines.length && /^\s*\d+[.)]\s+/.test(lines[i])) {
-          ol.push('<li>' + inlineMd(lines[i].replace(/^\s*\d+[.)]\s+/, '')) + '</li>'); i++;
+          /* ⭐ 2026-11-01：**把源码里的序号写进 `value`**。
+             以前只输出 <li>，序号交给浏览器数 —— 一旦列表被中间的 $$…$$ 或空行断开，
+             后面的条目会另起一个 <ol> 又从 1 数起（实测「容许右分式演算」第 3 条显示成 1）。
+             写 value 之后，作者写几就是几，与列表被切几段无关。 */
+          var om = /^\s*(\d+)[.)]\s+/.exec(lines[i]);
+          ol.push('<li' + (om ? ' value="' + om[1] + '"' : '') +
+            inlineMd(lines[i].replace(/^\s*\d+[.)]\s+/, '')) + '</li>'); i++;
         }
         html.push('<ol>' + ol.join('') + '</ol>');
         continue;
