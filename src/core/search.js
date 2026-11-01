@@ -457,7 +457,11 @@
       return '<div class="sr-item' + (i === active ? ' active' : '') + '" data-i="' + i +
         '" id="sr-item-' + i + '" role="option" aria-selected="' + (i === active ? 'true' : 'false') + '">' +
         '<span class="sr-dot" style="background:' + color + '"></span>' +
-        '<span class="sr-title">' + mark(MG.isEn ? (it.label_en || it.label) : it.label, it.q) + '</span>' +
+        /* ⭐ 2026-11-01：名字的回落链必须与 `MG.labelOf` 一致（`label_en` → `title_en` → `label` → id）。
+           这里原来只写了 `label_en || label`，漏掉 `title_en` 那一级 —— 于是 242 个只有正式英文名、
+           没有短标签的节点（`prop.complete-measurable` 之类）在英文模式下仍然显示中文名。
+           ⛔ 别再在这里手写一份回落逻辑。 */
+        '<span class="sr-title">' + mark(it.node && MG.labelOf ? MG.labelOf(it.node) : (MG.isEn ? (it.label_en || it.label) : it.label), it.q) + '</span>' +
         '<span class="sr-sub">' + U.escapeHtml(tagText) + ' · ' + U.escapeHtml(it.sub) + '</span>' +
         (regionName ? '<span class="sr-region">' + U.escapeHtml(regionName) + '</span>' : '<span class="sr-region">' + U.escapeHtml(tagText) + '</span>') +
         '</div>';
