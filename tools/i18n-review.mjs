@@ -51,7 +51,9 @@ function flipFile(rel, fieldOf) {
     const mItem = /^    '([^']+)': \{$/.exec(lines[i]);
     if (mItem) { cur = mItem[1]; continue; }
     if (/^    \},?$/.test(lines[i])) { cur = null; continue; }
-    const mSt = /^(\s*)status: (?:'draft'|'reviewed'), basedOn: ('[^']*'), reviewed: .*,?$/.exec(lines[i]);
+    /* ⚠️ `reviewed:` 是可选的：新起草的条目往往只写 status + basedOn，
+       原来的正则强制要求三个字段齐全 ⇒ 那些条目「翻」不动（实测 0 行）。 */
+    const mSt = /^(\s*)status: (?:'draft'|'reviewed'), basedOn: ('[^']*')(?:, reviewed: .*)?,?$/.exec(lines[i]);
     if (!mSt || !cur || IDS.indexOf(cur) < 0) continue;
     const field = fieldOf(i, lines);
     if (WANT.indexOf(field) < 0) continue;

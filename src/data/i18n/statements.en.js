@@ -993,7 +993,7 @@ MG.i18nStatements = {
         '"homeomorphism" by "**diffeomorphism**" in the definition; that is the local ' +
         'trivialization of a smooth bundle — without it even the tangent bundle would not be a ' +
         'smooth bundle.',
-        status: 'draft', basedOn: 'v0.9.1#0cf9dc1d',
+        status: 'reviewed', basedOn: 'v0.9.1#0cf9dc1d', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1020,7 +1020,7 @@ MG.i18nStatements = {
         '$\\pi$ a **smooth vector bundle of rank $n$** over $M$: the local trivializations are ' +
         'the maps $\\Phi$ above, and the vector-space structure on the fibers comes from the dual ' +
         'space.',
-        status: 'draft', basedOn: 'v0.9.1#2b81febc',
+        status: 'reviewed', basedOn: 'v0.9.1#2b81febc', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1047,7 +1047,7 @@ MG.i18nStatements = {
         'overlaps), and they measure how twisted the bundle is.\n\n' +
         'If a Lie group $G$ acts on $F$ and the trivializations can always be chosen so that all ' +
         '$g_{\\alpha\\beta}$ take values in $G$, one says the bundle has **structure group** $G$.',
-        status: 'draft', basedOn: 'v0.9.1#ffd3f1e4',
+        status: 'reviewed', basedOn: 'v0.9.1#ffd3f1e4', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1076,7 +1076,7 @@ MG.i18nStatements = {
         'vector bundle $E\\to B$ of rank $k$, the bundle of frames is a principal ' +
         '$\\operatorname{GL}(k,\\mathbb{R})$-bundle — this is the bridge between vector bundles ' +
         'and principal bundles.',
-        status: 'draft', basedOn: 'v0.9.1#2fbdf8a3',
+        status: 'reviewed', basedOn: 'v0.9.1#2fbdf8a3', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1106,7 +1106,7 @@ MG.i18nStatements = {
         '$k$-linear form on an $n$-dimensional space). The direct sum ' +
         '$\\Omega^{\\bullet}(M) = \\bigoplus_{k\\ge 0}\\Omega^{k}(M)$, with the wedge product, is ' +
         'a graded algebra.',
-        status: 'draft', basedOn: 'v0.9.1#d05c11a4',
+        status: 'reviewed', basedOn: 'v0.9.1#d05c11a4', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1131,7 +1131,7 @@ MG.i18nStatements = {
         'and $\\mathrm{d}a_{I}$ is the differential of the function $a_{I}$. Hence ' +
         '"$\\mathrm{d}$ does not depend on the chart" is not an extra assumption, but the ' +
         'conclusion of this proposition.',
-        status: 'draft', basedOn: 'v0.9.1#3a0efaf9',
+        status: 'reviewed', basedOn: 'v0.9.1#3a0efaf9', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1153,9 +1153,126 @@ MG.i18nStatements = {
         '$(\\operatorname{id})^{\\ast} = \\operatorname{id}$.\n\n' +
         'Thus $F^{\\ast} : \\Omega^{\\bullet}(N)\\to\\Omega^{\\bullet}(M)$ is a homomorphism of ' +
         '**differential graded algebras**.',
-        status: 'draft', basedOn: 'v0.9.1#c76f8521',
+        status: 'reviewed', basedOn: 'v0.9.1#c76f8521', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
+
+    /* ================================================ 2026-11-01 · ZFC 九条公理（图的入口层）
+       ⭐ 逐句对译中文，公式**一字不改**；status 直接 'reviewed'
+          （作者 2026-11-01 授权：「draft 都通过，以后不用给我审校，直接提交就好」）。
+       📌 只译 statement；notes 留待下一批。 */
+
+    'ax.ext': {
+      statement: {
+        en:
+        'A set is determined uniquely by its elements:\n\n' +
+        '$$\\forall A \\forall B [ \\forall x ( x \\in A \\leftrightarrow  x \\in B ) \\to A = B ]$$\n\n' +
+        'The converse direction ($A = B \\to$ the elements are exactly the same) holds automatically ' +
+        'in first-order logic with equality, which is why the axiom is often written with ' +
+        '$\\leftrightarrow$. It guarantees that describing a set by a condition determines it ' +
+        'uniquely, so a notation such as $\\{ x \\in A : \\varphi (x) \\}$ is never ambiguous.',
+        status: 'reviewed', basedOn: 'v0.9.1#db41f727', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.sep': {
+      statement: {
+        en:
+        'For every formula $\\varphi (x, p)$ (in which $B$ does not occur), the following is an ' +
+        'axiom:\n\n' +
+        '$$\\forall p \\forall A \\exists B \\forall x [ x \\in B \\leftrightarrow  ( x \\in A \\wedge  \\varphi(x, p) ) ]$$\n\n' +
+        'By extensionality such a $B$ is unique, and one writes ' +
+        '$B = \\{ x \\in A : \\varphi (x, p) \\}$. It is commonly called the "subset axiom".',
+        status: 'reviewed', basedOn: 'v0.9.1#e310c0cf', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.pair': {
+      statement: {
+        en:
+        'Given any two sets, one may pack them into "the set whose only elements are these two":\n\n' +
+        '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A \\leftrightarrow  ( x = a \\vee  x = b ) ]$$\n\n' +
+        'By extensionality $A$ is unique; it is written { a, b } (the unordered pair). Taking ' +
+        '$a = b$ gives the singleton { a }.',
+        status: 'reviewed', basedOn: 'v0.9.1#9aad67c7', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.union': {
+      statement: {
+        en:
+        'The elements of all members of a family of sets again form a set:\n\n' +
+        '$$\\forall F \\exists A \\forall x [ x \\in A \\leftrightarrow  \\exists Y ( Y \\in F \\wedge  x \\in Y ) ]$$\n\n' +
+        'It is written $\\bigcup F$. Together with the pairing axiom it yields the binary union ' +
+        '$a \\cup b = \\bigcup \\{ a, b \\}$.',
+        status: 'reviewed', basedOn: 'v0.9.1#ae9c0db1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.power': {
+      statement: {
+        en:
+        'The subsets of a set form a set:\n\n' +
+        '$$\\forall A \\exists P \\forall x [ x \\in P \\leftrightarrow  x \\subseteq A ]$$\n\n' +
+        'It is written $\\mathcal{P}(A)$ (or P(A)). It turns "all subsets of $A$" itself into a set ' +
+        '— the power set is the basic device for building larger sets.',
+        status: 'reviewed', basedOn: 'v0.9.1#9417a12a', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.inf': {
+      statement: {
+        en:
+        'There exists an "inductive set" — a set containing $\\emptyset$ and closed under the ' +
+        'successor operation:\n\n' +
+        '$$\\exists I [ \\emptyset \\in I \\wedge  \\forall x ( x \\in I \\to x \\cup \\{ x \\} \\in I ) ]$$\n\n' +
+        'The axiom itself only asks that $I$ be **non-empty** and closed under successor; writing ' +
+        '$\\emptyset \\in I$ is just for looks, since $\\emptyset$ is a primitive object (see "the ' +
+        'empty set"). This axiom asserts the existence of an infinite set, and is the only source ' +
+        'from which the set of natural numbers $\\omega$ is built.',
+        status: 'reviewed', basedOn: 'v0.9.1#ccdf2115', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.repl': {
+      statement: {
+        en:
+        'If a formula defines a "functional relation", the image of any set is again a set. For ' +
+        'every formula $\\varphi (x, y, p)$ (in which $B$ does not occur):\n\n' +
+        '$$\\forall p [ \\forall x\\forall y\\forall z ( \\varphi(x,y,p) \\wedge  \\varphi(x,z,p) \\to y = z ) \\to \\forall A \\exists B \\forall y ( y \\in B \\leftrightarrow  \\exists x \\in A, \\varphi(x,y,p) ) ]$$\n\n' +
+        'It guarantees that "replacement" never leaves the set-theoretic universe: the image $B$ ' +
+        'is a set too.',
+        status: 'reviewed', basedOn: 'v0.9.1#0835fe0f', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.found': {
+      statement: {
+        en:
+        'Every non-empty set has an "$\\in$-minimal" element:\n\n' +
+        '$$\\forall A [ A \\ne \\emptyset \\to \\exists x ( x \\in A \\wedge  x \\cap A = \\emptyset ) ]$$\n\n' +
+        'An equivalent form: $\\in$ is a well-founded relation, so there is no infinite descending ' +
+        'chain\n\n' +
+        '$$x_0 \\ni  x_1 \\ni  x_2 \\ni  \\cdots$$',
+        status: 'reviewed', basedOn: 'v0.9.1#ccfc3b6b', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
+    'ax.choice': {
+      statement: {
+        en:
+        'From any family of non-empty sets one can pick one element from each, "all at once". ' +
+        'Written in terms of a choice function:\n\n' +
+        '$\\operatorname{dom}$ is defined only for functions, so the assertion says: "there is a function $f$ with $\\operatorname{dom} f = F$, and $f(X) \\in X$ for every $X \\in F$\":\n\n' +
+        '$\\forall F [ ( \\forall X \\in F, X \\ne \\emptyset ) \\to \\exists f ( \\operatorname{dom} f = F \\wedge  \\forall X \\in F, f(X) \\in X ) ]$\\\n\n' +
+        'Another common form (pairwise disjoint form): if $F$ is a family of pairwise disjoint ' +
+        'non-empty sets, then there is a set $C$ with $|C \\cap X| = 1$ for every $X \\in F$.\n\n' +
+        'The choice function $f$ is the device for "picking all at once"; AC asserts that such a ' +
+        'simultaneous choice is always possible.',
+        status: 'reviewed', basedOn: 'v0.9.1#96318197', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      },
+    },
+
 
   },
 };

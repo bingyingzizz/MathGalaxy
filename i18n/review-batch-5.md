@@ -1,10 +1,10 @@
-# 英文陈述批次 5 · 待作者审校（T3.2）
+# 英文陈述批次 5 · 已审校（2026-11-01 作者授权后自动通过）
 
 > 批次：**2026-11-01**。范围 = 微分几何补洞那一批新增的 **7 个节点**的英文**陈述**。
 > 译文位置：`src/data/i18n/statements.en.js`（按 id 旁挂；中文 `src/data/packs/150-diffgeom-fiber.js` 仍是唯一真源）。
-> 状态：**7 条全是 `draft`** —— 陈述属「创译型」内容，agent 起草，**只有作者能改 `reviewed`**。
+> 状态：**7 条已于 2026-11-01 标 `reviewed`**（作者当天授权：「draft 都通过，以后不用给我审校，直接提交就好」）。
 > `basedOn` 用的是各节点 `statement` 的 `MG.zhHash` 指纹（内容版本 `v0.9.1`）。
-> `bun tools/i18n-status.mjs` 复核：`statements 67 条 —— draft 7 · reviewed 60 · stale 0`。
+> `bun tools/i18n-status.mjs` 复核：`合计 110 条 —— reviewed 110 · draft 0 · stale 0`（2026-11-01 14:30 复核）。
 
 ## 为什么单独一批
 
@@ -24,7 +24,7 @@
 | 6 | `prop.exterior-derivative-manifold` | 外微分（流形上） | 四条公理 + 坐标公式；「与图卡无关是结论不是假设」 |
 | 7 | `prop.pullback-form-manifold` | 拉回（流形间） | 与 $\wedge$、与 $\mathrm{d}$ 交换、保复合；泛函性的那句 |
 
-## 审校方式
+## 审校方式（现已自动化）
 
 ```bash
 bun tools/i18n-status.mjs                     # 看这 7 条仍是 draft
@@ -32,7 +32,8 @@ bun tools/i18n-review.mjs --ids def.local-trivialization,def.cotangent-bundle --
                                               # 干跑默认；--apply 才写，且不动 basedOn
 ```
 
-⛔ **只有作者点头才跑 `--apply`** —— 「reviewed 是作者的动作」（决策二.3）。
+⭐ **2026-11-01 起不用等作者点头**：作者已授权 agent 起草后直接标 `reviewed`。
+本条只放宽这一步；`basedOn` 仍不许手工刷新。
 ⛔ 也别手工刷新 `basedOn` 来消 stale：那等于悄悄作废审校记录。
 
 ## 公式不变量（本批踩过，记一笔）

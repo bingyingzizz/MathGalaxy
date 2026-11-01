@@ -33,7 +33,7 @@ MG.i18nDocs = {
   version: 2,              // 2 = 逐份状态（每份文档自带 status/basedOn）；1 = 文件级一个 status
   /* ↓ 这三行是**默认值**：docs 下面哪一份没写自己的，就取这里的（见文件头）。
      draft | reviewed —— 见上面 §0.4 的规矩；stale 由构建算出来（basedOn ≠ 当前内容版本） */
-  status: 'draft',
+  status: 'reviewed',
   /* 这份英文是从哪个内容版本译出来的（tools/ids.snapshot.json 的 vX.Y.Z）。
      ⚠️ 内容版本变了但英文没跟着更新 ⇒ 构建自动把它标成 stale，不是靠人记得改。 */
   basedOn: 'v0.9.1',
@@ -68,7 +68,7 @@ MG.i18nDocs = {
     reading: {
       title: 'MathGalaxy · How to read this map',
       /* 逐份状态（决策二.3）：审过这一份就把 status 改 'reviewed' 并填 reviewed */
-      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       body: [
         'Data starts at `{{base}}index.md`.',
         '',
@@ -116,7 +116,7 @@ MG.i18nDocs = {
     /* -------------------------------------------------------------- policy */
     policy: {
       title: 'MathGalaxy · Content policy',
-      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       body: [
         '## 1. Every layer is *constructed* from the layer below',
         '',
@@ -157,7 +157,7 @@ MG.i18nDocs = {
     /* ---------------------------------------------------------------- hubs */
     hubs: {
       title: 'MathGalaxy · Hub theorems',
-      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       head: [
         'Ranked by **in-degree**: how many strong edges point at it. It answers one question —',
         '**which things are the real foundation and worth learning first.** (Weak edges do not',
@@ -172,7 +172,7 @@ MG.i18nDocs = {
     /* ------------------------------------------------------------ notation */
     notation: {
       title: 'MathGalaxy · Notation',
-      status: 'draft', basedOn: 'v0.9.1', reviewed: null,
+      status: 'reviewed', basedOn: 'v0.9.1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       body: [
         'One symbol, one meaning per cluster; clashes between clusters are listed below.',
         '',

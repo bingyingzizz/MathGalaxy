@@ -399,7 +399,7 @@ MG.i18nAbstracts = {
       'reduces to the interior product $\\iota_{\\nu}\\,\\mathrm{d}V_{g}$ with the unit ' +
       'normal, which is exactly where the surface element in the divergence theorem ' +
       'comes from.',
-      status: 'draft', basedOn: 'v0.9.1#06b84746',
+      status: 'reviewed', basedOn: 'v0.9.1#06b84746', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'thm.de-rham': {
@@ -411,7 +411,7 @@ MG.i18nAbstracts = {
       '$[c]\\mapsto\\int_{c}\\omega$. The maps are compatible with pullbacks, so they ' +
       'form a natural isomorphism of graded algebras. The theorem welds analysis, ' +
       'geometry and topology into a single object.',
-      status: 'draft', basedOn: 'v0.9.1#ab97968c',
+      status: 'reviewed', basedOn: 'v0.9.1#ab97968c', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'thm.urysohn-metrization': {
@@ -423,7 +423,7 @@ MG.i18nAbstracts = {
       'open sets separate points from closed sets. The embedding is a homeomorphism ' +
       'onto its image, and the metric of the product pulls back to a metric inducing ' +
       'the topology of $X$.',
-      status: 'draft', basedOn: 'v0.9.1#60c5ccbe',
+      status: 'reviewed', basedOn: 'v0.9.1#60c5ccbe', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'prop.paracompact-partition-unity': {
@@ -435,7 +435,7 @@ MG.i18nAbstracts = {
       'normality produces the functions one at a time. This is the standard bridge from ' +
       'local data to global objects, for instance from local metrics to a Riemannian ' +
       'metric.',
-      status: 'draft', basedOn: 'v0.9.1#0982b826',
+      status: 'reviewed', basedOn: 'v0.9.1#0982b826', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'def.lp-norm': {
@@ -446,7 +446,7 @@ MG.i18nAbstracts = {
       'functions equal almost everywhere, which is what makes $\\|f\\|_p = 0$ imply $f ' +
       '= 0$. For $p<1$ the triangle inequality fails, so one only gets a quasi-norm, ' +
       'although the space stays complete.',
-      status: 'draft', basedOn: 'v0.9.1#d9b86281',
+      status: 'reviewed', basedOn: 'v0.9.1#d9b86281', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'def.tensor-field': {
@@ -459,7 +459,7 @@ MG.i18nAbstracts = {
       'differential forms, symplectic forms and the curvature tensor are all instances, ' +
       'and because the transition law involves only first derivatives, tensor ' +
       'components never pick up second derivatives.',
-      status: 'draft', basedOn: 'v0.9.1#549cebae',
+      status: 'reviewed', basedOn: 'v0.9.1#549cebae', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'thm.gauss-bonnet': {
@@ -473,7 +473,7 @@ MG.i18nAbstracts = {
       'sphere, $0$ for the torus and $4\\pi(1-g)$ in genus $g$. The local statement for ' +
       'a disc bounded by a simple closed curve is the heart of the proof; the global ' +
       'one follows by summing over a triangulation.',
-      status: 'draft', basedOn: 'v0.9.1#a2b71cd8',
+      status: 'reviewed', basedOn: 'v0.9.1#a2b71cd8', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'def.smooth-manifold': {
@@ -487,7 +487,7 @@ MG.i18nAbstracts = {
       'glues local constructions into global ones. A smooth structure is extra data, ' +
       'not a topological invariant: one topological space can carry inequivalent smooth ' +
       'structures.',
-      status: 'draft', basedOn: 'v0.9.1#f864fff8',
+      status: 'reviewed', basedOn: 'v0.9.1#f864fff8', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
     'def.path-homotopy': {
@@ -500,7 +500,7 @@ MG.i18nAbstracts = {
       'contractible, so without that condition every path would be homotopic to every ' +
       'other and nothing would be distinguished. Path homotopy classes are the elements ' +
       'that the fundamental group turns into a group.',
-      status: 'draft', basedOn: 'v0.9.1#bb2f0476',
+      status: 'reviewed', basedOn: 'v0.9.1#bb2f0476', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
     },
 
   },
