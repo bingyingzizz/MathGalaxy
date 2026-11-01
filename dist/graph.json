@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-01T10:18:35.524Z",
+  "generated": "2026-11-01T10:42:53.404Z",
   "counts": {
    "regions": 14,
    "clusters": 92,
-   "nodes": 1340,
-   "edges": 2451,
-   "strong": 2434,
+   "nodes": 1341,
+   "edges": 2473,
+   "strong": 2456,
    "weak": 17,
    "derived": 21,
-   "en_pages": 1334
+   "en_pages": 1338
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -141,7 +141,7 @@
    "en": "Differential Geometry",
    "desc": "曲面的活动标架与结构方程、第一与第二基本形式、Gauss–Codazzi、曲率与测地线的内蕴几何。",
    "color": "#C2703F",
-   "nodeCount": 117
+   "nodeCount": 118
   },
   {
    "id": "number",
@@ -2183,7 +2183,7 @@
    "en": "Manifolds and Vector Bundles",
    "parent": "diffgeom",
    "desc": "把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量、丛的分类 → 定向与体积形式。这一团是后面三团的地基。",
-   "nodeCount": 15,
+   "nodeCount": 16,
    "nodes": [
     "def.manifold-chart",
     "prop.maximal-atlas",
@@ -2198,6 +2198,7 @@
     "def.boundary-manifold",
     "thm.bundle-classification",
     "def.cotangent-bundle",
+    "def.local-trivialization",
     "def.fiber-bundle",
     "def.principal-bundle"
    ]
@@ -20153,10 +20154,10 @@
   {
    "id": "def.differential-form",
    "type": "definition",
-   "label": "微分形式",
-   "title": "微分形式",
-   "label_en": "Differential Form",
-   "title_en": "Differential Form",
+   "label": "微分形式（欧氏开集）",
+   "title": "微分形式：欧氏开集上的坐标模型",
+   "label_en": "Differential Form (Euclidean Open Sets)",
+   "title_en": "Differential Form: Coordinate Model on Euclidean Open Sets",
    "translations": {
     "en": {
      "status": "derived",
@@ -20196,10 +20197,10 @@
   {
    "id": "def.exterior-derivative",
    "type": "definition",
-   "label": "外微分",
-   "title": "外微分",
-   "label_en": "Exterior Derivative",
-   "title_en": "Exterior Derivative",
+   "label": "外微分（欧氏开集）",
+   "title": "外微分：欧氏开集上的坐标公式",
+   "label_en": "Exterior Derivative (Euclidean Open Sets)",
+   "title_en": "Exterior Derivative: Coordinate Formula on Euclidean Open Sets",
    "translations": {
     "en": {
      "status": "derived",
@@ -20239,10 +20240,10 @@
   {
    "id": "prop.pullback-forms",
    "type": "proposition",
-   "label": "拉回",
-   "title": "微分形式的拉回",
-   "label_en": "Pullback",
-   "title_en": "Pullback of Differential Forms",
+   "label": "拉回（开集间）",
+   "title": "拉回：开集之间的形式",
+   "label_en": "Pullback (Open Sets)",
+   "title_en": "Pullback: Between Open Sets",
    "translations": {
     "en": {
      "status": "derived",
@@ -20788,7 +20789,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 27,
+   "layer": 14,
    "tags": [
     "定义",
     "微分几何",
@@ -20831,7 +20832,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 28,
+   "layer": 27,
    "tags": [
     "定理",
     "微分几何",
@@ -23300,7 +23301,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 20,
+   "layer": 22,
    "tags": [
     "定义",
     "微分流形",
@@ -23343,7 +23344,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 21,
+   "layer": 23,
    "tags": [
     "定理",
     "微分流形",
@@ -23385,7 +23386,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 21,
+   "layer": 23,
    "tags": [
     "引理",
     "微分流形",
@@ -23427,7 +23428,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 21,
+   "layer": 23,
    "tags": [
     "定理",
     "微分流形",
@@ -23856,7 +23857,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 28,
+   "layer": 20,
    "tags": [
     "定义",
     "微分几何",
@@ -23899,7 +23900,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 29,
+   "layer": 21,
    "tags": [
     "命题",
     "微分几何",
@@ -23985,7 +23986,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 29,
+   "layer": 22,
    "tags": [
     "定理",
     "微分几何",
@@ -24160,7 +24161,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 29,
+   "layer": 28,
    "tags": [
     "定理",
     "微分几何",
@@ -24204,7 +24205,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 28,
+   "layer": 22,
    "tags": [
     "定理",
     "微分几何",
@@ -25441,7 +25442,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 29,
+   "layer": 28,
    "tags": [
     "定理",
     "微分流形",
@@ -25801,7 +25802,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 28,
+   "layer": 27,
    "tags": [
     "定义",
     "微分流形",
@@ -31984,8 +31985,26 @@
   {
    "id": "def.form-on-manifold",
    "type": "definition",
-   "label": "流形上的微分形式",
-   "title": "流形上的微分形式：不靠坐标的内蕴定义",
+   "label": "微分形式",
+   "title": "微分形式：流形上的内蕴定义",
+   "label_en": "Differential Form",
+   "title_en": "Differential Form: Intrinsic Definition on Manifolds",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.form-on-manifold.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -32008,8 +32027,26 @@
   {
    "id": "prop.exterior-derivative-manifold",
    "type": "proposition",
-   "label": "外微分在流形上良定",
-   "title": "外微分在流形上良定：局部坐标公式与图卡无关",
+   "label": "外微分",
+   "title": "外微分：流形上的存在唯一性与图卡无关",
+   "label_en": "Exterior Derivative",
+   "title_en": "Exterior Derivative on Manifolds",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.exterior-derivative-manifold.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -32032,8 +32069,26 @@
   {
    "id": "prop.pullback-form-manifold",
    "type": "proposition",
-   "label": "流形间的拉回",
-   "title": "流形间光滑映射的拉回：与楔积、与外微分都相容",
+   "label": "拉回",
+   "title": "拉回：流形之间光滑映射的拉回",
+   "label_en": "Pullback",
+   "title_en": "Pullback Between Manifolds",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.pullback-form-manifold.en.md",
    "region": "diffgeom",
    "regions": [
     "diffgeom"
@@ -32075,6 +32130,49 @@
    "notes": "**为什么非要造它**：$k$-形式要在每点吃进 $k$ 个向量、吐一个数、并且对换两个变元要变号 —— 这正是 $\\Lambda^{k}T_{p}^{\\ast}M$ 里的元素。所以流形上的形式（`def.form-on-manifold`）可以从「余切丛的外积丛的截面」出发，而不是从坐标公式出发；坐标公式只是它在图卡上的样子。\n\n**与切丛的关系**：$T^{\\ast}M$ 是切丛 `def.tangent-bundle` 的对偶丛。取对偶不是可有可无的装饰：切丛的截面（向量场）只能正着推、还要求映射是微分同胚；余切丛的截面（1-形式）可以沿**任意**光滑映射拉回（`prop.pullback-form-manifold`）。微分形式好用，根源就在这个不对称上。\n\n⚠️ $\\mathrm{d}x^{i}$ 在这里是**坐标函数的微分**，不是「留待定义的记号」：$\\mathrm{d}x^{i}\\big|_{p}(v) = v(x^{i})$。它和 `def.exterior-derivative` 里那个 $\\mathrm{d}$ 是同一个算子作用在 $x^{i}\\in C^{\\infty}(U)$ 上 —— 所以 $\\mathrm{d}x^{i}$ 的「$\\mathrm{d}$」也满足 $\\mathrm{d}(\\mathrm{d}x^{i}) = 0$。\n\n⚠️ 记号陷阱：$T^{\\ast}M$ 的双重对偶 $(T^{\\ast}_{p}M)^{\\ast}$ 在有限维时**自然同构**于 $T_{p}M$，所以有人把两者混着写；但 $TM$ 与 $T^{\\ast}M$ 作为丛并不自然同构 —— 要一个同构就得先选黎曼度量（`def.riemannian-metric`）。「升降指标」用的正是这个度量，不是白给的。",
    "refs": [
     "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 余切空间与余切丛"
+   ]
+  },
+  {
+   "id": "def.local-trivialization",
+   "type": "definition",
+   "label": "局部平凡化",
+   "title": "局部平凡化：把丛的一块摊平成一个乘积",
+   "label_en": "Local Trivialization",
+   "title_en": "Local Trivialization",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.local-trivialization.en.md",
+   "region": "diffgeom",
+   "regions": [
+    "diffgeom"
+   ],
+   "cluster": "diffgeom.manifold",
+   "layer": 8,
+   "tags": [
+    "定义",
+    "微分几何",
+    "纤维丛",
+    "局部平凡化",
+    "平凡化"
+   ],
+   "statement": "**在说什么**：丛之所以叫「丛」，全靠这一条 —— 它在局部一定能摊平成一个乘积。纤维丛、向量丛、主丛、覆叠空间的定义里那句「每点有邻域使…」，说的都是它。\n\n设 $\\pi : E\\to B$ 是连续满射，$F$ 是拓扑空间，$U\\subseteq B$ 是开集。连续映射\n$$\\Phi : \\pi^{-1}(U)\\longrightarrow U\\times F$$\n叫 $\\pi$ 在 $U$ 上的一个**局部平凡化**，若 $\\Phi$ 是同胚、且与投影交换：\n$$\\operatorname{pr}_{1}\\circ\\Phi = \\pi .$$\n\n于是 $\\Phi$ 把丛在 $U$ 上的那一块摊成了**平凡积** $U\\times F$：每根纤维 $E_{b} := \\pi^{-1}(b)$ 被送到 $\\{b\\}\\times F$，从而同胚于 $F$。若 $B$ 的每点都有这样的开邻域与局部平凡化，就说 $\\pi$ 是**局部平凡**的。\n\n**光滑情形**：$E, B, F$ 都是光滑流形、$\\pi$ 光滑时，定义里把「同胚」换成「**微分同胚**」，这才是光滑丛的局部平凡化 —— 否则连切丛都不是光滑丛。",
+   "notes": "**为什么单独给它一个节点**：它是「丛」这个词的全部技术内容。`def.fiber-bundle` / `def.vector-bundle` / `def.principal-bundle` / `def.covering-space` / `def.tangent-bundle` / `def.bundle-section` 等等一大批节点的定义里都在用它当已知量 —— 没有这一条，「局部长得像 $U\\times F$」这句话就没处可查。\n\n**定义本身是拓扑的**：同胚就够了，不需要光滑。光滑丛只是把同胚换成微分同胚再叠上去。这也解释了为什么它的层号能排在光滑流形之前 —— 它不是微分几何専有的概念，而是拓扑那一层的东西被借过来的。\n\n**它和截面的关系**：局部平凡化把丛上的一块摊平之后，丛上的问题就都变回底空间上的「一族函数 / 一族向量」—— 截面的局部表示 $\\sigma : U\\to\\mathbb{R}^{k}$（`def.bundle-section`）就是这么得来的。\n\n⚠️ **局部平凡 $\\ne$ 平凡**：全空间未必等于 $B\\times F$。覆叠空间（$F$ 离散）、切丛都是局部平凡但整体扭的 —— 「扭」由转移函数 $g_{\\alpha\\beta}$ 记（`def.fiber-bundle`）。\n\n⚠️ 平凡化的**不唯一性**就是结构的全部来源：同一块上有无穷多个平凡化，两个差一个纤维自同胚，这正是「结构群」「示性类」的立足点。若平凡化唯一，丛就一定是平凡积。",
+   "refs": [
+    "Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 局部平凡化",
+    "Tu, Differential Geometry (GTM 275)（⚠️ 手头无该书，章名未核实，只记书名）· 丛与平凡化"
    ]
   },
   {
@@ -64334,9 +64432,9 @@
    "id": "dep.tu-orient-integral",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.orientable-surface",
+   "definition": "def.orientable-manifold",
    "usedBy": "def.integral-form",
-   "note": "最高次形式要在**定向**流形上积分；反向的图册会让积分变号。"
+   "note": "最高次形式要在**定向**流形上积分；反向的图册会让积分变号。\n\n⭐ 2026-11-01 改指：原来指向 `def.orientable-surface`（$R^{3}$ 里的 2 维曲面）—— 一条 $U\\subseteq\\mathbb{R}^{n}$ 上的积分定义，却把「可定向曲面」当前置，方向反了。定向这件事的正主是 `def.orientable-manifold`。"
   },
   {
    "id": "dep.tu-form-integral",
@@ -65328,9 +65426,9 @@
    "id": "dep.mf-pullback-derham",
    "kind": "definition",
    "strength": "strong",
-   "definition": "prop.pullback-forms",
+   "definition": "prop.pullback-form-manifold",
    "usedBy": "def.de-rham-complex",
-   "note": "「$H^{k}$ 是函子」全靠拉回与 $\\mathrm{d}$ 交换（$F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$）；否则拉回只能作用在形式上、下不到商空间。"
+   "note": "「$H^{k}$ 是函子」全靠拉回与 $\\mathrm{d}$ 交换（$F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$）；否则拉回只能作用在形式上、下不到商空间。\n\n⭐ 2026-11-01 改指到**流形间**的拉回（原来指开集间那个）。这一改把 de Rham 复形从 20 层推到 22 层 —— 那是应该的：它的每一项都是流形上的形式，凭什么排在拉回之前。层号是算出来的，不是拿来保的。"
   },
   {
    "id": "dep.mf-connected-h0",
@@ -66533,9 +66631,9 @@
    "id": "dep.mf2-integral-subvol",
    "kind": "definition",
    "strength": "strong",
-   "definition": "def.integral-form",
+   "definition": "def.integral-on-chain",
    "usedBy": "def.submanifold-volume",
-   "note": "体积是积分 $\\int_{N}\\mathrm{d}A_{N}$；「怎么在流形上积」的记账（保向卡 + 单位分解）不重写，直接引用那条定义。"
+   "note": "体积是积分 $\\int_{N}\\mathrm{d}A_{N}$；「怎么在流形上积」的记账（保向卡 + 单位分解）不重写，直接引用那条定义。\n\n⭐ 2026-11-01 改指到**流形上**的积分（`def.integral-on-chain`，就是「把形式沿方块拉回坐标里积」那条）；原来指的 `def.integral-form` 只在 $U\\subseteq\\mathbb{R}^{n}$ 上定义。这一改把诱导体积从 28 层推到 29 层 —— 应该的。"
   },
   {
    "id": "imp.mf2-frobenius-flat",
@@ -69420,6 +69518,182 @@
    "definition": "prop.exterior-derivative-manifold",
    "usedBy": "thm.cartan-formula",
    "note": "Cartan 公式里的 $\\mathrm{d}$ 作用在 $\\Omega^{k}(M)$ 上，它的良定性就是那条命题的内容。"
+  },
+  {
+   "id": "dep.mf3-triv-topology",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.topology",
+   "usedBy": "def.local-trivialization",
+   "note": "平凡化里的「开集 $U$」「连续映剔」「同胚」都是拓扑空间的词。"
+  },
+  {
+   "id": "dep.mf3-triv-product",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.product-topology",
+   "usedBy": "def.local-trivialization",
+   "note": "平凡积 $U\\times F$ 就是积拓扑；离开它，「摊平」没有意义。"
+  },
+  {
+   "id": "dep.mf3-triv-homeo",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.homeomorphism",
+   "usedBy": "def.local-trivialization",
+   "note": "局部平凡化的核心要求就是「连 $\\Phi$ 是同胚」—— 光滑情形换成微分同胚。"
+  },
+  {
+   "id": "dep.mf3-triv-vbundle",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.vector-bundle",
+   "note": "向量丛的定义里那条「局部平凡化 $\\Phi : \\pi^{-1}(U)\\to U\\times\\mathbb{R}^{k}$，且在每根纤维上是线性同构」—— 前半句就是这一条，后半句是额外的向量空间结构。"
+  },
+  {
+   "id": "dep.mf3-triv-fbundle",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.fiber-bundle",
+   "note": "纤维丛 = 局部平凡（拓扑的）+ 纤维固定为流形 $F$（光滑的）。"
+  },
+  {
+   "id": "dep.mf3-triv-section",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.bundle-section",
+   "note": "截面的局部表示 $\\sigma : U\\to\\mathbb{R}^{k}$ 就是在平凡化下写出来的。"
+  },
+  {
+   "id": "dep.mf3-triv-tbundle",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.tangent-bundle",
+   "note": "切丛的光滑结构就是靠图卡上的平凡化 $\\Phi : \\pi^{-1}(U)\\to\\varphi(U)\\times\\mathbb{R}^{n}$ 拼出来的。"
+  },
+  {
+   "id": "dep.mf3-triv-cotbundle",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.cotangent-bundle",
+   "note": "余切丛的图卡 $\\Phi : \\pi^{-1}(U)\\to\\varphi(U)\\times\\mathbb{R}^{n}$ 就是它的局部平凡化。"
+  },
+  {
+   "id": "dep.mf3-triv-bclass",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "thm.bundle-classification",
+   "note": "转移函数是「两个平凡化之差」—— 没有平凡化就无从谈起。"
+  },
+  {
+   "id": "dep.mf3-triv-bmetric",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "prop.bundle-metric",
+   "note": "纤维度量是在每块平凡化上先把内积定下来，再用单位分解拼整体。"
+  },
+  {
+   "id": "dep.mf3-triv-form",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.form-on-manifold",
+   "note": "「$\\Omega^{k}(M) = \\Gamma(\\Lambda^{k}T^{\\ast}M)$」这个等价说法能成立，靠的就是外积丛有局部平凡化。"
+  },
+  {
+   "id": "dep.mf3-triv-prin",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.principal-bundle",
+   "note": "主丛的第 3 条就是「局部平凡且 $G$-等变」—— 平凡化这一条加上等变性。"
+  },
+  {
+   "id": "dep.mf3-triv-tdist",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.local-trivialization",
+   "usedBy": "def.tangent-distribution",
+   "note": "「秩 $k$ 分布」的说法就是「切丛的秩 $k$ 子丛」，而子丛的意思要靠在平凡化上取子空间来定义。"
+  },
+  {
+   "id": "dep.mf3-vform-form",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.form-on-manifold",
+   "usedBy": "def.volume-form",
+   "note": "体积形式是 $\\Omega^{n}(M)$ 里处处非零的那个 —— 它的本体是流形上的 $n$-形式，不是 $R^{n}$ 上的（$R^{n}$ 只给出它在卡里的写法）。"
+  },
+  {
+   "id": "dep.mf3-vdensity-form",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.form-on-manifold",
+   "usedBy": "def.volume-density",
+   "note": "体积密度的定义写在黎曼流形 $(M,g)$ 上，用的也是 $M$ 上的形式。"
+  },
+  {
+   "id": "dep.mf3-lieform-form",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.form-on-manifold",
+   "usedBy": "def.left-invariant-form",
+   "note": "左不变形式是 Lie 群（本身就是流形）上的 $k$-形式。"
+  },
+  {
+   "id": "dep.mf3-lieform-pullback",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.pullback-form-manifold",
+   "usedBy": "def.left-invariant-form",
+   "note": "「左不变」是用左平移 $L_{g}$ 的拉回写的：$L_{g}^{\\ast}\\omega = \\omega$，而 $L_{g}$ 是流形之间的光滑映射。"
+  },
+  {
+   "id": "dep.mf3-stokes-dmanifold",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.exterior-derivative-manifold",
+   "usedBy": "thm.stokes",
+   "note": "Stokes 定理里的 $\\mathrm{d}$ 是**流形上**的外微分，不是欧氏开集上的坐标公式。"
+  },
+  {
+   "id": "dep.mf3-mc-dmanifold",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.exterior-derivative-manifold",
+   "usedBy": "thm.maurer-cartan",
+   "note": "Maurer–Cartan 方程里的 $\\mathrm{d}$ 作用在 Lie 群（流形）上的形式，靠的是流形上的 d。"
+  },
+  {
+   "id": "dep.mf3-chainint-form",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.form-on-manifold",
+   "usedBy": "thm.stokes-chain",
+   "note": "链上积分吃的是 $M$ 上的形式（只在方块上把它拉回到 $R^{k}$ 里算）。"
+  },
+  {
+   "id": "dep.mf3-stokes-orientmanifold",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.orientable-manifold",
+   "usedBy": "thm.stokes",
+   "note": "Stokes 要的是**可定向的 $n$ 维带边流形**，不是 $R^{3}$ 里的 2 维曲面 —— 曲面只是它是 2 维特例。"
+  },
+  {
+   "id": "dep.mf3-bsign-orientmanifold",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.orientable-manifold",
+   "usedBy": "prop.boundary-sign-convention",
+   "note": "边界符号约定说的是任意维带边流形上「外法向先」的约定，不限于曲面。"
   },
   {
    "id": "imp.holder",
@@ -80907,7 +81181,7 @@
   {
    "a": "diffgeom.intrinsic",
    "b": "diffgeom.surface",
-   "count": 13,
+   "count": 12,
    "label": "",
    "explicit": false
   },
@@ -80929,6 +81203,13 @@
    "a": "algebra.spectral",
    "b": "diffgeom.intrinsic",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.intrinsic",
+   "b": "diffgeom.manifold",
+   "count": 7,
    "label": "",
    "explicit": false
   },
@@ -80998,14 +81279,7 @@
   {
    "a": "diffgeom.manifold",
    "b": "topology.general",
-   "count": 6,
-   "label": "",
-   "explicit": false
-  },
-  {
-   "a": "diffgeom.intrinsic",
-   "b": "diffgeom.manifold",
-   "count": 5,
+   "count": 9,
    "label": "",
    "explicit": false
   },
@@ -81026,7 +81300,7 @@
   {
    "a": "diffgeom.manifold",
    "b": "diffgeom.vector",
-   "count": 9,
+   "count": 10,
    "label": "",
    "explicit": false
   },
@@ -81054,7 +81328,7 @@
   {
    "a": "diffgeom.form",
    "b": "diffgeom.frame",
-   "count": 11,
+   "count": 10,
    "label": "",
    "explicit": false
   },
@@ -81089,7 +81363,7 @@
   {
    "a": "diffgeom.form",
    "b": "diffgeom.manifold",
-   "count": 5,
+   "count": 7,
    "label": "",
    "explicit": false
   },
@@ -81313,6 +81587,13 @@
   {
    "a": "analysis.bv",
    "b": "analysis.integral",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "diffgeom.form",
+   "b": "diffgeom.lieg",
    "count": 4,
    "label": "",
    "explicit": false

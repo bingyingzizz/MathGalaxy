@@ -1,5 +1,5 @@
-# 流形间的拉回　`prop.pullback-form-manifold`
-流形间光滑映射的拉回：与楔积、与外微分都相容
+# 拉回　`prop.pullback-form-manifold`
+拉回：流形之间光滑映射的拉回
 layer 21 · 命题 · 微分形式、积分与 de Rham · 微分几何
 [在星图里打开](../#n=prop.pullback-form-manifold)　·　[节点索引](../index.md)
 
@@ -8,7 +8,7 @@ layer 21 · 命题 · 微分形式、积分与 de Rham · 微分几何
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.form-on-manifold`](../nodes/def.form-on-manifold.md) 流形上的微分形式：用到了定义 流形上的微分形式　[proofs/dep.mf3-pbm-form.md](../proofs/dep.mf3-pbm-form.md)
+- [`def.form-on-manifold`](../nodes/def.form-on-manifold.md) 微分形式：用到了定义 微分形式　[proofs/dep.mf3-pbm-form.md](../proofs/dep.mf3-pbm-form.md)
 
 - …另有入边，续页见 [nodes/prop.pullback-form-manifold.4.md](./prop.pullback-form-manifold.4.md)
 

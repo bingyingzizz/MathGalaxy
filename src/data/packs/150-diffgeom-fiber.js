@@ -53,8 +53,8 @@ window.MG = window.MG || {};
       id: 'def.form-on-manifold',
       cluster: 'diffgeom.form',
       type: 'definition',
-      label: '流形上的微分形式',
-      title: '流形上的微分形式：不靠坐标的内蕴定义',
+      label: '微分形式',
+      title: '微分形式：流形上的内蕴定义',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '微分形式', '流形', '交错形式'],
       statement: [
@@ -86,8 +86,8 @@ window.MG = window.MG || {};
       id: 'prop.exterior-derivative-manifold',
       cluster: 'diffgeom.form',
       type: 'proposition',
-      label: '外微分在流形上良定',
-      title: '外微分在流形上良定：局部坐标公式与图卡无关',
+      label: '外微分',
+      title: '外微分：流形上的存在唯一性与图卡无关',
       regions: ['diffgeom'],
       tags: ['命题', '微分几何', '外微分', '良定性', '图卡'],
       statement: [
@@ -119,8 +119,8 @@ window.MG = window.MG || {};
       id: 'prop.pullback-form-manifold',
       cluster: 'diffgeom.form',
       type: 'proposition',
-      label: '流形间的拉回',
-      title: '流形间光滑映射的拉回：与楔积、与外微分都相容',
+      label: '拉回',
+      title: '拉回：流形之间光滑映射的拉回',
       regions: ['diffgeom'],
       tags: ['命题', '微分几何', '拉回', '微分形式', '分次代数'],
       statement: [
@@ -182,6 +182,39 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 余切空间与余切丛'
+      ]
+    },
+
+    {
+      id: 'def.local-trivialization',
+      cluster: 'diffgeom.manifold',
+      type: 'definition',
+      label: '局部平凡化',
+      title: '局部平凡化：把丛的一块摊平成一个乘积',
+      regions: ['diffgeom'],
+      tags: ['定义', '微分几何', '纤维丛', '局部平凡化', '平凡化'],
+      statement: [
+        '**在说什么**：丛之所以叫「丛」，全靠这一条 —— 它在局部一定能摊平成一个乘积。纤维丛、向量丛、主丛、覆叠空间的定义里那句「每点有邻域使…」，说的都是它。',
+        '',
+        '设 $\\pi : E\\to B$ 是连续满射，$F$ 是拓扑空间，$U\\subseteq B$ 是开集。连续映射',
+        '$$\\Phi : \\pi^{-1}(U)\\longrightarrow U\\times F$$',
+        '叫 $\\pi$ 在 $U$ 上的一个**局部平凡化**，若 $\\Phi$ 是同胚、且与投影交换：',
+        '$$\\operatorname{pr}_{1}\\circ\\Phi = \\pi .$$',
+        '',
+        '于是 $\\Phi$ 把丛在 $U$ 上的那一块摊成了**平凡积** $U\\times F$：每根纤维 $E_{b} := \\pi^{-1}(b)$ 被送到 $\\{b\\}\\times F$，从而同胚于 $F$。若 $B$ 的每点都有这样的开邻域与局部平凡化，就说 $\\pi$ 是**局部平凡**的。',
+        '',
+        '**光滑情形**：$E, B, F$ 都是光滑流形、$\\pi$ 光滑时，定义里把「同胚」换成「**微分同胚**」，这才是光滑丛的局部平凡化 —— 否则连切丛都不是光滑丛。'
+      ].join('\n'),
+      notes: [
+        '**为什么单独给它一个节点**：它是「丛」这个词的全部技术内容。`def.fiber-bundle` / `def.vector-bundle` / `def.principal-bundle` / `def.covering-space` / `def.tangent-bundle` / `def.bundle-section` 等等一大批节点的定义里都在用它当已知量 —— 没有这一条，「局部长得像 $U\\times F$」这句话就没处可查。',
+        '**定义本身是拓扑的**：同胚就够了，不需要光滑。光滑丛只是把同胚换成微分同胚再叠上去。这也解释了为什么它的层号能排在光滑流形之前 —— 它不是微分几何専有的概念，而是拓扑那一层的东西被借过来的。',
+        '**它和截面的关系**：局部平凡化把丛上的一块摊平之后，丛上的问题就都变回底空间上的「一族函数 / 一族向量」—— 截面的局部表示 $\\sigma : U\\to\\mathbb{R}^{k}$（`def.bundle-section`）就是这么得来的。',
+        '⚠️ **局部平凡 $\\ne$ 平凡**：全空间未必等于 $B\\times F$。覆叠空间（$F$ 离散）、切丛都是局部平凡但整体扭的 —— 「扭」由转移函数 $g_{\\alpha\\beta}$ 记（`def.fiber-bundle`）。',
+        '⚠️ 平凡化的**不唯一性**就是结构的全部来源：同一块上有无穷多个平凡化，两个差一个纤维自同胚，这正是「结构群」「示性类」的立足点。若平凡化唯一，丛就一定是平凡积。'
+      ].join('\n\n'),
+      refs: [
+        'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 局部平凡化',
+        'Tu, Differential Geometry (GTM 275)（⚠️ 手头无该书，章名未核实，只记书名）· 丛与平凡化'
       ]
     },
 
@@ -342,6 +375,79 @@ window.MG = window.MG || {};
       note: '左不变形式是 Lie 群上的 $k$-形式再加一条不变性；本体还是流形上的形式。' },
     { id: 'dep.mf3-dm-cartan', kind: 'definition',
       definition: 'prop.exterior-derivative-manifold', usedBy: 'thm.cartan-formula',
-      note: 'Cartan 公式里的 $\\mathrm{d}$ 作用在 $\\Omega^{k}(M)$ 上，它的良定性就是那条命题的内容。' }
+      note: 'Cartan 公式里的 $\\mathrm{d}$ 作用在 $\\Omega^{k}(M)$ 上，它的良定性就是那条命题的内容。' },
+
+    /* ---------------------------------------------- §D 局部平凡化的接线 */
+    { id: 'dep.mf3-triv-topology', kind: 'definition',
+      definition: 'def.topology', usedBy: 'def.local-trivialization',
+      note: '平凡化里的「开集 $U$」「连续映剔」「同胚」都是拓扑空间的词。' },
+    { id: 'dep.mf3-triv-product', kind: 'definition',
+      definition: 'def.product-topology', usedBy: 'def.local-trivialization',
+      note: '平凡积 $U\\times F$ 就是积拓扑；离开它，「摊平」没有意义。' },
+    { id: 'dep.mf3-triv-homeo', kind: 'definition',
+      definition: 'def.homeomorphism', usedBy: 'def.local-trivialization',
+      note: '局部平凡化的核心要求就是「连 $\\Phi$ 是同胚」—— 光滑情形换成微分同胚。' },
+
+    { id: 'dep.mf3-triv-vbundle', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.vector-bundle',
+      note: '向量丛的定义里那条「局部平凡化 $\\Phi : \\pi^{-1}(U)\\to U\\times\\mathbb{R}^{k}$，且在每根纤维上是线性同构」—— 前半句就是这一条，后半句是额外的向量空间结构。' },
+    { id: 'dep.mf3-triv-fbundle', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.fiber-bundle',
+      note: '纤维丛 = 局部平凡（拓扑的）+ 纤维固定为流形 $F$（光滑的）。' },
+    { id: 'dep.mf3-triv-section', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.bundle-section',
+      note: '截面的局部表示 $\\sigma : U\\to\\mathbb{R}^{k}$ 就是在平凡化下写出来的。' },
+    { id: 'dep.mf3-triv-tbundle', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.tangent-bundle',
+      note: '切丛的光滑结构就是靠图卡上的平凡化 $\\Phi : \\pi^{-1}(U)\\to\\varphi(U)\\times\\mathbb{R}^{n}$ 拼出来的。' },
+    { id: 'dep.mf3-triv-cotbundle', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.cotangent-bundle',
+      note: '余切丛的图卡 $\\Phi : \\pi^{-1}(U)\\to\\varphi(U)\\times\\mathbb{R}^{n}$ 就是它的局部平凡化。' },
+    { id: 'dep.mf3-triv-bclass', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'thm.bundle-classification',
+      note: '转移函数是「两个平凡化之差」—— 没有平凡化就无从谈起。' },
+    { id: 'dep.mf3-triv-bmetric', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'prop.bundle-metric',
+      note: '纤维度量是在每块平凡化上先把内积定下来，再用单位分解拼整体。' },
+    { id: 'dep.mf3-triv-form', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.form-on-manifold',
+      note: '「$\\Omega^{k}(M) = \\Gamma(\\Lambda^{k}T^{\\ast}M)$」这个等价说法能成立，靠的就是外积丛有局部平凡化。' },
+    { id: 'dep.mf3-triv-prin', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.principal-bundle',
+      note: '主丛的第 3 条就是「局部平凡且 $G$-等变」—— 平凡化这一条加上等变性。' },
+    { id: 'dep.mf3-triv-tdist', kind: 'definition',
+      definition: 'def.local-trivialization', usedBy: 'def.tangent-distribution',
+      note: '「秩 $k$ 分布」的说法就是「切丛的秩 $k$ 子丛」，而子丛的意思要靠在平凡化上取子空间来定义。' },
+
+    /* ----------------------------- §E 审计出来的「定义口径窄于使用者」接线 */
+    /* 口径：定义端在 $R^{n}$ / $R^{3}$ 曲面，使用端是流形。处理办法是**加**一条
+       流形版的定义边（保留原坐标模型那条），而不是删掉旧的。 */
+    { id: 'dep.mf3-vform-form', kind: 'definition',
+      definition: 'def.form-on-manifold', usedBy: 'def.volume-form',
+      note: '体积形式是 $\\Omega^{n}(M)$ 里处处非零的那个 —— 它的本体是流形上的 $n$-形式，不是 $R^{n}$ 上的（$R^{n}$ 只给出它在卡里的写法）。' },
+    { id: 'dep.mf3-vdensity-form', kind: 'definition',
+      definition: 'def.form-on-manifold', usedBy: 'def.volume-density',
+      note: '体积密度的定义写在黎曼流形 $(M,g)$ 上，用的也是 $M$ 上的形式。' },
+    { id: 'dep.mf3-lieform-form', kind: 'definition',
+      definition: 'def.form-on-manifold', usedBy: 'def.left-invariant-form',
+      note: '左不变形式是 Lie 群（本身就是流形）上的 $k$-形式。' },
+    { id: 'dep.mf3-lieform-pullback', kind: 'definition',
+      definition: 'prop.pullback-form-manifold', usedBy: 'def.left-invariant-form',
+      note: '「左不变」是用左平移 $L_{g}$ 的拉回写的：$L_{g}^{\\ast}\\omega = \\omega$，而 $L_{g}$ 是流形之间的光滑映射。' },
+    { id: 'dep.mf3-stokes-dmanifold', kind: 'definition',
+      definition: 'prop.exterior-derivative-manifold', usedBy: 'thm.stokes',
+      note: 'Stokes 定理里的 $\\mathrm{d}$ 是**流形上**的外微分，不是欧氏开集上的坐标公式。' },
+    { id: 'dep.mf3-mc-dmanifold', kind: 'definition',
+      definition: 'prop.exterior-derivative-manifold', usedBy: 'thm.maurer-cartan',
+      note: 'Maurer–Cartan 方程里的 $\\mathrm{d}$ 作用在 Lie 群（流形）上的形式，靠的是流形上的 d。' },
+    { id: 'dep.mf3-chainint-form', kind: 'definition',
+      definition: 'def.form-on-manifold', usedBy: 'thm.stokes-chain',
+      note: '链上积分吃的是 $M$ 上的形式（只在方块上把它拉回到 $R^{k}$ 里算）。' },
+    { id: 'dep.mf3-stokes-orientmanifold', kind: 'definition',
+      definition: 'def.orientable-manifold', usedBy: 'thm.stokes',
+      note: 'Stokes 要的是**可定向的 $n$ 维带边流形**，不是 $R^{3}$ 里的 2 维曲面 —— 曲面只是它是 2 维特例。' },
+    { id: 'dep.mf3-bsign-orientmanifold', kind: 'definition',
+      definition: 'def.orientable-manifold', usedBy: 'prop.boundary-sign-convention',
+      note: '边界符号约定说的是任意维带边流形上「外法向先」的约定，不限于曲面。' }
   ]
 });

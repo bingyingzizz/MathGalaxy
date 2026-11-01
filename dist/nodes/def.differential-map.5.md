@@ -2,4 +2,4 @@
 [在星图里打开](../#n=def.differential-map)　·　第 1 页 [nodes/def.differential-map.md](./def.differential-map.md)　·　上一页 [nodes/def.differential-map.4.md](./def.differential-map.4.md)
 
 ## 它能推出什么 / 谁在用它（续）
-- 被 [`prop.pullback-form-manifold`](../nodes/prop.pullback-form-manifold.md) 流形间的拉回 用
+- 被 [`prop.pullback-form-manifold`](../nodes/prop.pullback-form-manifold.md) 拉回 用

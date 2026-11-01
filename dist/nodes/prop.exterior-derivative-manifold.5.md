@@ -1,4 +1,4 @@
-# 外微分在流形上良定　`prop.exterior-derivative-manifold`　·　续页（第 5 页）
+# 外微分　`prop.exterior-derivative-manifold`　·　续页（第 5 页）
 [在星图里打开](../#n=prop.exterior-derivative-manifold)　·　第 1 页 [nodes/prop.exterior-derivative-manifold.md](./prop.exterior-derivative-manifold.md)　·　上一页 [nodes/prop.exterior-derivative-manifold.4.md](./prop.exterior-derivative-manifold.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）（续）

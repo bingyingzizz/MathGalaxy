@@ -1,5 +1,5 @@
-# 流形上的微分形式　`def.form-on-manifold`
-流形上的微分形式：不靠坐标的内蕴定义
+# 微分形式　`def.form-on-manifold`
+微分形式：流形上的内蕴定义
 layer 18 · 定义 · 微分形式、积分与 de Rham · 微分几何
 [在星图里打开](../#n=def.form-on-manifold)　·　[节点索引](../index.md)
 
@@ -8,7 +8,7 @@ layer 18 · 定义 · 微分形式、积分与 de Rham · 微分几何
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.differential-form`](../nodes/def.differential-form.md) 微分形式：用到了定义 微分形式　[proofs/dep.mf3-form-rn.md](../proofs/dep.mf3-form-rn.md)
+- [`def.differential-form`](../nodes/def.differential-form.md) 微分形式（欧氏开集）：用到了定义 微分形式（欧氏开集）　[proofs/dep.mf3-form-rn.md](../proofs/dep.mf3-form-rn.md)
 
 - …另有入边，续页见 [nodes/def.form-on-manifold.4.md](./def.form-on-manifold.4.md)
 

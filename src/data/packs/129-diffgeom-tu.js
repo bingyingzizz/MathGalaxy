@@ -215,8 +215,8 @@ window.MG = window.MG || {};
       id: 'def.differential-form',
       cluster: 'diffgeom.frame',
       type: 'definition',
-      label: '微分形式',
-      title: '微分形式',
+      label: '微分形式（欧氏开集）',
+      title: '微分形式：欧氏开集上的坐标模型',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '微分形式', '外代数', '余切'],
       statement: [
@@ -251,8 +251,8 @@ window.MG = window.MG || {};
       id: 'def.exterior-derivative',
       cluster: 'diffgeom.frame',
       type: 'definition',
-      label: '外微分',
-      title: '外微分',
+      label: '外微分（欧氏开集）',
+      title: '外微分：欧氏开集上的坐标公式',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '外微分', '微分形式', '闭形式'],
       statement: [
@@ -288,8 +288,8 @@ window.MG = window.MG || {};
       id: 'prop.pullback-forms',
       cluster: 'diffgeom.frame',
       type: 'proposition',
-      label: '拉回',
-      title: '微分形式的拉回',
+      label: '拉回（开集间）',
+      title: '拉回：开集之间的形式',
       regions: ['diffgeom'],
       tags: ['命题', '微分几何', '微分形式', '拉回', '链映射'],
       statement: [
@@ -1069,9 +1069,9 @@ window.MG = window.MG || {};
     {
       id: 'dep.tu-orient-integral',
       kind: 'definition',
-      definition: 'def.orientable-surface',
+      definition: 'def.orientable-manifold',
       usedBy: 'def.integral-form',
-      note: '最高次形式要在**定向**流形上积分；反向的图册会让积分变号。'
+      note: '最高次形式要在**定向**流形上积分；反向的图册会让积分变号。\n\n⭐ 2026-11-01 改指：原来指向 `def.orientable-surface`（$R^{3}$ 里的 2 维曲面）—— 一条 $U\\subseteq\\mathbb{R}^{n}$ 上的积分定义，却把「可定向曲面」当前置，方向反了。定向这件事的正主是 `def.orientable-manifold`。'
     },
     {
       id: 'dep.tu-form-integral',

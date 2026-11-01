@@ -1,4 +1,4 @@
-# 流形上的微分形式　`def.form-on-manifold`　·　说明
+# 微分形式　`def.form-on-manifold`　·　说明
 根 `../`
 
 ⚠️ $\Omega^{k}(M)$ 是 $C^{\infty}(M)$-**模**：可以逐点乘光滑函数、逐点相加。楔积、内乘、拉回都是模同态；只有 $\mathrm{d}$ 例外 —— 它只是 $\mathbb{R}$-线性的（$\mathrm{d}(f\omega) = \mathrm{d}f\wedge\omega + f\,\mathrm{d}\omega$）。这个不对称正是「$\mathrm{d}$ 不是张量运算」的确切含义，也是它为什么只能在流形上靠图卡良定性才能定义（`prop.exterior-derivative-manifold`）。

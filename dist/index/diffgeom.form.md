@@ -4,16 +4,16 @@
 中心天体 thm.stokes-chain　·　24 个节点　·　根 `../`　·　续页 `index/diffgeom.form.2.md`
 
 - def.singular-cube　奇异方块　layer 18
-- def.form-on-manifold　流形上的微分形式　layer 18
+- def.form-on-manifold　微分形式　layer 18
 - def.singular-chain　奇异链　layer 19
-- prop.exterior-derivative-manifold　外微分在流形上良定　layer 19
-- def.de-rham-complex　de Rham 上同调　layer 20
+- prop.exterior-derivative-manifold　外微分　layer 19
 - def.boundary-operator　边界算子　layer 20
-- thm.de-rham-h0　零次上同调　layer 21
-- lem.poincare-lemma　Poincaré 引理　layer 21
-- thm.mayer-vietoris　Mayer–Vietoris 序列　layer 21
+- def.integral-on-chain　链上的积分　layer 20
 - prop.boundary-squared-zero　边界算子平方为零　layer 21
+- prop.integral-chain-linear　链上积分的双线性　layer 21
 - lem.single-cube-stokes　方块上的 Stokes 公式　layer 21
-- prop.pullback-form-manifold　流形间的拉回　layer 21
+- prop.pullback-form-manifold　拉回　layer 21
+- def.de-rham-complex　de Rham 上同调　layer 22
+- thm.stokes-chain　链上的 Stokes 定理　layer 22
 
 > 续见 `index/diffgeom.form.2.md`

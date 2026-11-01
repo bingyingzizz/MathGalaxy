@@ -1,9 +1,9 @@
 # 数学星图 MathGalaxy
 
 MathGalaxy: a searchable knowledge graph of mathematics.
-1340 nodes / 2451 edges · 14 galaxies / 92 clusters · content v0.9.1.
-Chinese is the source; 1334 nodes have English pages.
-14 星系 / 92 星团 / 1340 节点 / 2451 连线。数据根 = 本文件所在目录。
+1341 nodes / 2473 edges · 14 galaxies / 92 clusters · content v0.9.1.
+Chinese is the source; 1338 nodes have English pages.
+14 星系 / 92 星团 / 1341 节点 / 2473 连线。数据根 = 本文件所在目录。
 ## 检索协议
 
 0. `dist/alias.md` 大白话 / 英文名 → 节点 id。

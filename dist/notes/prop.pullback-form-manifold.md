@@ -1,4 +1,4 @@
-# 流形间的拉回　`prop.pullback-form-manifold`　·　说明
+# 拉回　`prop.pullback-form-manifold`　·　说明
 根 `../`
 
 **证明的路线**：$T_{p}M$ 上的交错型在坐标基 $\mathrm{d}x^{I}$ 上线性展开，于是只需在单项 $\omega = \mathrm{d}y^{I}$ 上验 —— 而那正是链式法则加「$\mathrm{d}^{2}=0$」的机械计算，再用上一句的线性拼回去。骨架在边上。

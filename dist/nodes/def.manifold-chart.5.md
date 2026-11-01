@@ -10,6 +10,6 @@
 - 被 [`thm.frobenius`](../nodes/thm.frobenius.md) Frobenius 定理 用
 - ⇒ [`thm.frobenius`](../nodes/thm.frobenius.md) Frobenius 定理
 - ⇒ [`thm.flow-local`](../nodes/thm.flow-local.md) 局部流
-- 被 [`def.form-on-manifold`](../nodes/def.form-on-manifold.md) 流形上的微分形式 用
+- 被 [`def.form-on-manifold`](../nodes/def.form-on-manifold.md) 微分形式 用
 
 > 续见 [nodes/def.manifold-chart.6.md](./def.manifold-chart.6.md)
