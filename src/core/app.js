@@ -834,7 +834,7 @@
           （显示名是启动时算一次写进 labelShow 的缓存）。
        ⚠️ 必须把 `?labellang=` 从 URL 里**删掉** —— URL 参数优先级更高，
           不删的话「用 ?labellang=en 看过之后点回『跟随界面』」会被旧参数盖回去。
-       截图对照用：`?labellang=en` / `?labellang=zh` 可以直接贴在 URL 上，见 i18n/SUMMARY.md。 */
+       截图对照用：`?labellang=en` / `?labellang=zh` 可以直接贴在 URL 上，见 `bun tools/i18n-status.mjs` 与 CONTRIBUTING.md 的 i18n 一节。 */
     function switchCanvasLang(next) {
       try { localStorage.setItem(MG.CANVAS_KEY, next); } catch (e) { /* 隐私模式：忽略 */ }
       try {

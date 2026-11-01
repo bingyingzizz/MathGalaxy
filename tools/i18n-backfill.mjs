@@ -388,11 +388,18 @@ export function secondTierText(t2, checks, nAll) {
   return g.join('\n');
 }
 
-export function gapsText(rows, b, dec, regionName) {
+export function gapsText(rows, b, dec, regionName, manualIds) {
   const g = [];
   const t0 = dec.t0.length, t1 = dec.t1.length, t2 = dec.t2.length;
   const ambLeft = b.ambiguous.length - t2;   // ⚠️ 二级是从「歧义」桶里捞出来的 ⇒ 要减掉，表才互斥
-  const covered = t0 + t1 + t2;
+  /* ⭐ 2026-11-01：**手工条目（from:'manual'）也要从缺口里扣掉**。
+     以前这里只算机械规则，于是当人工把 467 条名字补齐之后，本文件仍然列着那 467 条
+     「缺口」、并把覆盖率写成 65.2% —— 文档在说谎（工具自己的 stdout 却是 100%）。
+     口径：覆盖 = 显式 + 一级 + 二级 + manual；缺口 = dec.gaps 里 manual 也没管的。 */
+  const manualSet = manualIds || new Set();
+  const gapRows = dec.gaps.filter((r) => !manualSet.has(r.id));
+  const manCovered = dec.gaps.length - gapRows.length;
+  const covered = t0 + t1 + t2 + manCovered;
   const pct = (x) => (100 * x / rows.length).toFixed(1) + '%';
   g.push('# 英文名缺口清单');
   g.push('');
@@ -429,10 +436,11 @@ export function gapsText(rows, b, dec, regionName) {
   g.push('|---|---|---|---|');
   g.push(`| ✅ 一级填入（\`from: aka\` / \`from: title\`） | ${t1} | ${pct(t1)} | aka 里恰好一条名字样英文 |`);
   g.push(`| ✅ 二级填入（\`from: aka-title\`） | ${t2} | ${pct(t2)} | title 里恰好命中一个 aka 候选 —— 清单见 \`i18n/second-tier.md\`（可整批回滚）|`);
-  g.push(`| ⛔ 缺口 | ${dec.gaps.length} | ${pct(dec.gaps.length)} | 下面第二节逐条列 |`);
-  g.push(`| **合计** | **${rows.length}** | 100% | 覆盖 ${covered}（${pct(covered)}），缺口 ${dec.gaps.length} |`);
+  g.push(`| ✅ 手工填入（\`from: manual\`） | ${manCovered} | ${pct(manCovered)} | 作者/agent 人定的名字，机械规则推不出来 —— 见 \`src/data/i18n.js\` |`);
+  g.push(`| ⛔ 缺口 | ${gapRows.length} | ${pct(gapRows.length)} | 下面第二节逐条列 |`);
+  g.push(`| **合计** | **${rows.length}** | 100% | 覆盖 ${covered}（${pct(covered)}），缺口 ${gapRows.length} |`);
   g.push('');
-  g.push('## 二、缺口为什么填不了（互斥，合计 = 缺口数）');
+  g.push('## 二、缺口为什么填不了（互斥，合计 = 上面那个「缺口」）');
   g.push('');
   g.push('| 桶 | 节点数 | 意思 |');
   g.push('|---|---|---|');
@@ -449,12 +457,12 @@ export function gapsText(rows, b, dec, regionName) {
   g.push('');
   g.push('---');
   g.push('');
-  g.push(`## 缺口按星系分组（${dec.gaps.length}）`);
+  g.push(`## 缺口按星系分组（${gapRows.length}）`);
   g.push('');
   g.push('每行都带上候选集，方便照着 `aliases.js` 补。同一节点属多个星系时只列在第一个里。');
   g.push('');
   const byRegion = new Map();
-  for (const r of dec.gaps) {
+  for (const r of gapRows) {
     const key = (r.regions && r.regions[0]) || '(未分星系)';
     if (!byRegion.has(key)) byRegion.set(key, []);
     byRegion.get(key).push(r);
@@ -516,7 +524,7 @@ function main() {
     }
   }
   const body = sidecarText(entries, updated);
-  const gaps = gapsText(rows, b, dec, regionName);
+  const gaps = gapsText(rows, b, dec, regionName, new Set(manual.keys()));
   const t2txt = secondTierText(dec.t2, checks, rows.length);
 
   const checkOnly = process.argv.includes('--check');
@@ -534,7 +542,7 @@ function main() {
       process.exit(1);
     }
     console.log(`✓ 英文名与源一致：显式 ${dec.t0.length} + 一级 ${dec.t1.length} + 二级 ${dec.t2.length} = ${entries.length}` +
-      `（覆盖 ${(100 * entries.length / rows.length).toFixed(1)}%）· 缺口 ${dec.gaps.length}`);
+      `（覆盖 ${(100 * entries.length / rows.length).toFixed(1)}% · 其中手工 ${manual.size}）· 仍未命名 ${dec.gaps.filter((r) => !manual.has(r.id)).length}`);
     return;
   }
 
