@@ -86,7 +86,7 @@ window.MG = window.MG || {};
       notes: [
         '证法（球套法）分四步：\n' +
         '\n' +
-        '1. **起点**：记 $B_0 := B(x, \\varepsilon)$。$O_1$ 稠密开 ⇒ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n' +
+        '1. **起点**：记 $B_0 := B(x, \\varepsilon)$。$O_1$ 稠密开 $implies$ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n' +
         '\n' +
         '$$\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1 .$$\n' +
         '\n' +
@@ -94,9 +94,9 @@ window.MG = window.MG || {};
         '\n' +
         '$$\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}, \\qquad \\varepsilon_{n+1} < \\frac{1}{n+1} .$$\n' +
         '\n' +
-        '3. **嵌套闭球取点**：半径 $\\varepsilon_n \\to 0$，而 $X$ 完备 ⇒ $\\bigcap_n \\overline{B(x_n, \\varepsilon_n)} \\ne \\emptyset$，取其中一点 $y$。（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）\n' +
+        '3. **嵌套闭球取点**：半径 $\\varepsilon_n \\to 0$，而 $X$ 完备，于是 $\\bigcap_n \\overline{B(x_n, \\varepsilon_n)} \\ne \\emptyset$，取其中一点 $y$。（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）\n' +
         '\n' +
-        '4. **收尾**：对每个 $n$，$y \\in \\overline{B(x_n, \\varepsilon_n)} \\subseteq B_0 \\cap O_n$，所以 $y \\in B_0$ 且 $y \\in \\bigcap_n O_n$。$B_0$ 是任取的 ⇒ $\\bigcap_n O_n$ 与每个非空开集相交 ⇒ 稠密。∎',
+        '4. **收尾**：对每个 $n$，$y \\in \\overline{B(x_n, \\varepsilon_n)} \\subseteq B_0 \\cap O_n$，所以 $y \\in B_0$ 且 $y \\in \\bigcap_n O_n$。$B_0$ 是任取的，于是 $\\bigcap_n O_n$ 与每个非空开集相交 ，故稠密。∎',
         '⭐ 三种等价写法都要会用，转换只需取补集。',
         '⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。'
       ].join('\n\n'),
