@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **1353 nodes / 2503 edges** across **14 galaxies and 92 clusters** (content `v0.9.1`).
+> **1372 nodes / 2551 edges** across **14 galaxies and 93 clusters** (content `v0.9.1`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >
@@ -51,7 +51,7 @@
 > ### 🔭 在线看图 → <https://bingyingzizz.github.io/mathgalaxy/>
 > 双击 `index.html` 也能用 —— 零依赖、无构建、不联网。
 
-**14 个星系 / 92 个星团 / 一千三百多个节点**，三层尺度：
+**14 个星系 / 93 个星团 / 一千三百多个节点**，三层尺度：
 数学领域（星系）→ 一套自足的装置（星团）→ 单条结果（节点）。**内容还在长。**
 
 每个节点 = 一条数学内容（公理 / 定义 / 定理 / 引理 / 命题 / 推论）。
