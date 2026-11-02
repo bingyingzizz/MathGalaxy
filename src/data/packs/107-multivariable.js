@@ -39,7 +39,7 @@ window.MG = window.MG || {};
         '配了范数的 $V$ 叫**赋范空间**。它按 $d(v, w) := \\|v - w\\|$ 成为度量空间，于是「收敛」「连续」「完备」「紧」这些说法全都继承过来。'
       ].join('\n'),
       notes: '⭐ 范数是「长度」的公理化。\n\n三条公理里**只有三角不等式不是逐点的** —— 它管的是「能不能绕路」，也正是它把范数与凸性绑在一起（单位球是凸的）。\n\n⭐ 与内积的关系是单向的：内积 $\\implies$ 范数（`def.induced-norm`），但范数来自内积**当且仅当**满足**平行四边形法则** $\\|v+w\\|^{2} + \\|v-w\\|^{2} = 2\\|v\\|^{2} + 2\\|w\\|^{2}$。\n\n所以「有长度」比「有夹角」弱。\n\n⚠ 有限维时所有范数**等价**（诱导同一个拓扑、同一套收敛列）；\n\n无限维则不然 —— 这正是泛函分析开始变难的地方。\n\n⭐ 本图在凝聚态那一片另有 `def.semi-normed-ab-group`（半范数阿贝尔群）：那里的系数不是向量空间而是拓扑阿贝尔群，所以只能要半范数。',
-      refs: ['Rudin, Functional Analysis, Ch. 1', 'Lang, Real and Functional Analysis, Ch. I']
+      refs: ['Rudin, Functional Analysis', 'Lang, Real and Functional Analysis, Ch. I']
     },
     {
       id: 'def.banach-space',
@@ -53,7 +53,7 @@ window.MG = window.MG || {};
         '赋范空间 $V$ 叫**完备**的，当且仅当它按度量 $d(v, w) = \\|v - w\\|$ 完备，即每个 Cauchy 列都收敛。完备的赋范空间叫 **Banach 空间**。'
       ].join('\n'),
       notes: '⭐ 三个标准范例：$\\mathbb{R}^{n}$（完备性就是 `thm.real-complete-metric` 的有限维版本）、$L^{p}$（`thm.lp-banach`，Riesz–Fischer）、紧 Hausdorff 空间上的 $C(S)$ 配上确界范数。\n\n⚠ 完备性不是自动的：$C[0, 1]$ 配上 $\\|f\\|_{1} = \\int_0^1 |f|$ **不**完备（可以逼近出不连续函数）。\n\n同一批函数换个范数就完备、换回来就不完备 —— 「完备」是范数的性质，不是集合的性质。\n\n⭐ 完备性是下面压缩映射原理的引擎（`thm.banach-fixed-point`）：没有它只能拿到 Cauchy 列，拿不到不动点。\n\n整条「逆映射定理」的构造性证明都靠这一条撑着。',
-      refs: ['Rudin, Functional Analysis, Ch. 1', 'Zeidler, Nonlinear Functional Analysis I, Ch. 1']
+      refs: ['Rudin, Functional Analysis', 'Zeidler, Nonlinear Functional Analysis I, Ch. 1']
     },
 
     {

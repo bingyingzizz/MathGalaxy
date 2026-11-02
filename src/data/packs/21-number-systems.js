@@ -292,7 +292,7 @@ window.MG = window.MG || {};
         '',
         '此外 $\\mathbb{Q}$ 的嵌入像在 $\\mathbb{R}$ 中**稠密**。'
       ].join('\n'),
-      notes: '⚠ **注意这一条的位置**：它是**定理**，不是定义 —— 先有构造（「实数系 $\\mathbb{R}$」），再证明造出来的东西满足这三组性质。\n\n⭐ **第 (iii) 条才是分析学的引擎**：没有它 $\\mathbb{Q}$ 也满足前两条，但 $\\{ x \\in \\mathbb{Q} : x^2 < 2 \\}$ 在 $\\mathbb{Q}$ 里没有上确界。\n\n（$\\mathbb{Q}$ 因此不是完备有序域 —— 这不是缺陷，而正是要把 $\\mathbb{Q}$ 补成 $\\mathbb{R}$ 的理由。）\n\n由 (iii) 推出分析里最常用的两件事：\n- **单调有界数列收敛**；\n\n\n- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。\n\n⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。\n\n📌 (iii) 的走法分两步（见边的证明）：先证**「$\\mathbb{R}$ 里每个 Cauchy 列都收敛」**（用对角线法从代表元里抽出一个有理 Cauchy 列），再由 Cauchy 完备推出确界原理（二分法造递增列与递减上界列，夹逼到同一个极限）。\n\n📌 由这三条推出来的、后面到处要用的性质：**阿基米德性质**与 **$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密**（见「阿基米德性质」）；\n\n$\\mathbb{R}$ 还**不可数**（$|\\mathbb{R}| = 2^{\\aleph_0}$）—— 「稠密」与「一样多」是两件事。',
+      notes: '⚠ **注意这一条的位置**：它是**定理**，不是定义 —— 先有构造（「实数系 $\\mathbb{R}$」），再证明造出来的东西满足这三组性质。\n\n⭐ **第 (iii) 条才是分析学的引擎**：没有它 $\\mathbb{Q}$ 也满足前两条，但 $\\{ x \\in \\mathbb{Q} : x^2 < 2 \\}$ 在 $\\mathbb{Q}$ 里没有上确界。\n\n（$\\mathbb{Q}$ 因此不是完备有序域 —— 这不是缺陷，而正是要把 $\\mathbb{Q}$ 补成 $\\mathbb{R}$ 的理由。）\n\n由 (iii) 推出分析里最常用的两件事：\n- **单调有界数列收敛**；\n\n\n- **闭区间套定理**、**Bolzano–Weierstrass**、**Cauchy 列收敛**。\n\n⚠ 完备性说的是「**上确界存在**」，不是「极限一定存在」—— 后者是它的推论。\n\n📌 (iii) 的走法分两步（见边的证明）：先证**「$\\mathbb{R}$ 里每个 Cauchy 列都收敛」**（用对角线法从代表元里抽出一个有理 Cauchy 列），再由 Cauchy 完备推出确界原理（二分法造递增列与递减上界列，夹逼到同一个极限）。\n\n📌 由这三条推出来的、后面到处要用的性质：**阿基米德性质**与 **$\\mathbb{Q}$ 在 $\\mathbb{R}$ 中稠密**（见「阿基米德性质」）；\n\n$\\mathbb{R}$ 还**不可数**（$\\#\\mathbb{R} = 2^{\\aleph_0}$）—— 「稠密」与「一样多」是两件事。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 1', 'Ch. 3']
     },
 
@@ -344,7 +344,7 @@ window.MG = window.MG || {};
       cluster: 'set.numbers',
       type: 'theorem',
       label: 'ℝ 不可数',
-      title: '实数集是稠密而不可数的：$|\\mathbb{R}| = 2^{\\aleph_0}$',
+      title: '实数集是稠密而不可数的：$\\#\\mathbb{R} = 2^{\\aleph_0}$',
       regions: ['analysis', 'set-theory'],
       tags: ['定理', '实数', '不可数', '基数'],
       statement: [
@@ -354,7 +354,7 @@ window.MG = window.MG || {};
         '',
         '$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$'
       ].join('\n'),
-      notes: '⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\\mathbb{R}$ 可以排成 $x_1, x_2, \\ldots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。\n\n⚠ 整段证明**只用到 $\\mathbb{R}$ 的完备性**（确界原理），不需要基数理论；\n\n$|\\mathbb{R}| = 2^{\\aleph_0}$ 那一半是拿二进制展开与 $\\mathcal{P}(\\mathbb{N})$ 配对，再引用 Cantor 定理。\n\n**这条定理最反直觉的地方**：$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都稠密、都可以逼近彼此，但 $\\mathbb{Q}$ 可数（排得成一个序列）、$\\mathbb{R}$ 不可数。\n\n**「稠密」与「一样多」是两回事** —— 这也正是分析必须做实数、不能只做有理数的根本原因。',
+      notes: '⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\\mathbb{R}$ 可以排成 $x_1, x_2, \\ldots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。\n\n⚠ 整段证明**只用到 $\\mathbb{R}$ 的完备性**（确界原理），不需要基数理论；\n\n$\\#\\mathbb{R} = 2^{\\aleph_0}$ 那一半是拿二进制展开与 $\\mathcal{P}(\\mathbb{N})$ 配对，再引用 Cantor 定理。\n\n**这条定理最反直觉的地方**：$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都稠密、都可以逼近彼此，但 $\\mathbb{Q}$ 可数（排得成一个序列）、$\\mathbb{R}$ 不可数。\n\n**「稠密」与「一样多」是两回事** —— 这也正是分析必须做实数、不能只做有理数的根本原因。',
       refs: ['Tao, Analysis I, Ch. 8（可数性）', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
     }
   ],
@@ -539,7 +539,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.cardinal',
       usedBy: 'thm.real-uncountable',
-      note: '结论写成基数就是 $|\\mathbb{R}| = 2^{\\aleph_0} > \\aleph_0$。'
+      note: '结论写成基数就是 $\\#\\mathbb{R} = 2^{\\aleph_0} > \\aleph_0$。'
     },
     {
       id: 'dep.cantor-uncountable',
@@ -756,7 +756,7 @@ window.MG = window.MG || {};
         '',
         '**③ 矛盾。** 由 ① 知 $x_n \\notin I_n$，由 ② 知 $a \\in I_n$，所以 $a \\ne x_n$ 对**一切** $n$ 成立 —— 但 $a \\in \\mathbb{R} = \\{x_1, x_2, \\ldots\\}$，与序列穷尽了 $\\mathbb{R}$ 矛盾。\n\n故 $\\mathbb{R}$ 不可数。\n\n$\\blacksquare$',
         '',
-        '**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；\n\n反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0}$。\n\n再由 **Cantor 定理** $|\\mathcal{P}(\\mathbb{N})| > |\\mathbb{N}| = \\aleph_0$，即',
+        '**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；\n\n反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $\\#\\mathbb{R} = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0}$。\n\n再由 **Cantor 定理** $|\\mathcal{P}(\\mathbb{N})| > \\#\\mathbb{N} = \\aleph_0$，即',
         '',
         '$$|\\mathbb{R}| = 2^{\\aleph_0} > \\aleph_0$$'
       ].join('\n')

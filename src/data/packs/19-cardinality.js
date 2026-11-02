@@ -47,7 +47,7 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定义', '基数'],
       statement: [
-        '集合 $A$ 与 $B$ **等势**（记 $|A| = |B|$ 或 $A \\approx B$），当且仅当存在**双射**',
+        '集合 $A$ 与 $B$ **等势**（记 $\\#A = \\#B$ 或 $A \\approx B$），当且仅当存在**双射**',
         '',
         '$$f : A \\to B$$',
         '',
@@ -62,22 +62,22 @@ window.MG = window.MG || {};
       id: 'def.cardinal',
       cluster: 'set.cardinal',
       type: 'definition',
-      label: '基数 |A|',
+      label: '基数',
       title: '基数与基数的比较',
       regions: ['set-theory'],
       tags: ['定义', '基数'],
       statement: [
-        '等势把「所有集合」分成一个个类。「集合 $A$ 的**基数**」$|A|$ 指的就是 $A$ 所在的这个等势类 —— 它衡量 $A$ 有多大，而不关心 $A$ 的元素是什么。',
+        '等势把「所有集合」分成一个个类。「集合 $A$ 的**基数**」$\\#A$ 指的就是 $A$ 所在的这个等势类 —— 它衡量 $A$ 有多大，而不关心 $A$ 的元素是什么。',
         '',
         '比较两个基数：',
         '',
-        '- $|A| \\le |B|$：存在**单射** $A \\to B$；',
-        '- $|A| = |B|$：存在**双射** $A \\to B$（等势）；',
-        '- $|A| < |B|$：$|A| \\le |B|$ 但 $|A| \\ne |B|$。',
+        '- $\\#A \\le \\#B$：存在**单射** $A \\to B$；',
+        '- $\\#A = \\#B$：存在**双射** $A \\to B$（等势）；',
+        '- $\\#A < \\#B$：$\\#A \\le \\#B$ 但 $\\#A \\ne \\#B$。',
         '',
-        '若 $|A| \\le |B|$ 且 $|B| \\le |A|$，则 $|A| = |B|$（Schröder–Bernstein 定理）。'
+        '若 $\\#A \\le \\#B$ 且 $\\#B \\le \\#A$，则 $\\#A = \\#B$（Schröder–Bernstein 定理）。'
       ].join('\n'),
-      notes: '⭐ 记号的用法：$|\\mathbb{N}| = \\aleph_0$（可数无限），$|\\mathbb{R}| = 2^{\\aleph_0}$，且 $\\aleph_0 < 2^{\\aleph_0}$。\n\n⚠ 严格说来「等势类」不构成集合，所以 ZFC 里的通行做法是：先有**序数**，再用良序定理（$\\iff$ AC）取每个等势类里最小的那个序数作代表，那个序数就叫基数。\n\n\n> 本星图只用到「$|A| \\le |B|$ 靠单射、$|A| = |B|$ 靠双射」这两件事 —— 它们不需要选代表就能用。\n\n⚠ 任意两个基数**不一定可比**，这正是**基数可比定理**（要用 AC）的内容。',
+      notes: '⭐ 记号的用法：$\\#\\mathbb{N} = \\aleph_0$（可数无限），$\\#\\mathbb{R} = 2^{\\aleph_0}$，且 $\\aleph_0 < 2^{\\aleph_0}$。\n\n⚠ 严格说来「等势类」不构成集合，所以 ZFC 里的通行做法是：先有**序数**，再用良序定理（$\\iff$ AC）取每个等势类里最小的那个序数作代表，那个序数就叫基数。\n\n\n> 本星图只用到「$\\#A \\le \\#B$ 靠单射、$\\#A = \\#B$ 靠双射」这两件事 —— 它们不需要选代表就能用。\n\n⚠ 任意两个基数**不一定可比**，这正是**基数可比定理**（要用 AC）的内容。',
       refs: ['Kunen, Set Theory, I.6']
     },
 
@@ -97,7 +97,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：**不存在**从 $A$ 到 $\\mathcal{P}(A)$ 的满射（当然也不存在双射），但 $a \\mapsto \\{a\\}$ 是单射。'
       ].join('\n'),
-      notes: '⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。\n\n于是\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$|\\mathbb{R}| = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。\n\n这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。',
+      notes: '⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。\n\n于是\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$\\#\\mathbb{R} = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。\n\n这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。',
       refs: ['Kunen, Set Theory, I.6']
     },
 
@@ -129,7 +129,7 @@ window.MG = window.MG || {};
       regions: ['set-theory'],
       tags: ['定理', '基数', '选择'],
       statement: [
-        '在**选择公理**下：对任意两个集合 $A$、$B$，必有 $|A| \\le |B|$ 或 $|B| \\le |A|$。',
+        '在**选择公理**下：对任意两个集合 $A$、$B$，必有 $\\#A \\le \\#B$ 或 $\\#B \\le \\#A$。',
         '',
         '即任意两个基数都可以比较大小。'
       ].join('\n'),
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.cardinal',
       usedBy: 'thm.cantor',
-      note: '「$|A| < |\\mathcal{P}(A)|$」是一个关于**基数**的比较。'
+      note: '「$\\#A < |\\mathcal{P}(A)|$」是一个关于**基数**的比较。'
     },
     {
       id: 'dep.powerset-cantor',
@@ -289,10 +289,10 @@ window.MG = window.MG || {};
         '',
         '**③ 序数可比。** 对任意两个序数 $\\alpha$、$\\beta$，总有 $\\alpha \\in \\beta$、$\\alpha = \\beta$、$\\beta \\in \\alpha$ 三者之一成立（这一步是序数理论的基本事实，用的是良序性）。',
         '',
-        '- 若 $\\alpha \\subseteq \\beta$：序同构给出单射 $A \\to B$，于是 $|A| \\le |B|$；',
-        '- 若 $\\beta \\subseteq \\alpha$：同理 $|B| \\le |A|$。',
+        '- 若 $\\alpha \\subseteq \\beta$：序同构给出单射 $A \\to B$，于是 $\\#A \\le \\#B$；',
+        '- 若 $\\beta \\subseteq \\alpha$：同理 $\\#B \\le \\#A$。',
         '',
-        '所以必有 $|A| \\le |B|$ 或 $|B| \\le |A|$。$\\blacksquare$',
+        '所以必有 $\\#A \\le \\#B$ 或 $\\#B \\le \\#A$。$\\blacksquare$',
         '',
         '> 反过来说：**基数可比定理 $\\implies$ 良序定理**（取 $A$、$B$ 中能单射进另一个的那个方向，可以良序化较小的集合，再把良序搬到较大集合上）。所以它与 AC、良序定理、佐恩引理是同一件事。'
       ].join('\n')

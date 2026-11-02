@@ -491,7 +491,7 @@ MG.i18nStatements = {
       statement: {
         en:
         'Under the **axiom of choice**: for any two sets $A$ and $B$ we have ' +
-        '$|A| \\le |B|$ or $|B| \\le |A|$.\n\n' +
+        '$\\#A \\le \\#B$ or $\\#B \\le \\#A$.\n\n' +
         'That is, any two cardinals are comparable.',
         status: 'reviewed', basedOn: 'v0.9.1#65d602d2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },

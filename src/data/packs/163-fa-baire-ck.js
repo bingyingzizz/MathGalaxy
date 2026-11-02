@@ -32,7 +32,7 @@ window.MG = window.MG || {};
         '例：$\\mathbb{Z} \\subseteq \\mathbb{R}$、$\\{1/n\\}$、Cantor 集。',
         '⭐ Cantor 集是最有教育意义的例子：它**无处稠密**却**不可数**。所以「无处稠密」与「基数小」是两件事。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'def.meager-set',
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
         '⚠️ 第二纲 $\\ne$ 稠密：$[0,1] \\cup \\{2\\}$ 也是第二纲。',
         '⭐ 用法：想说「几乎所有点都满足 $P$」，就去证 $\\{x : \\neg P(x)\\}$ 第一纲。在无穷维里这比测度论更顺手（很多函数空间没有自然测度，但有 Baire 纲）。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'def.g-delta',
@@ -67,7 +67,7 @@ window.MG = window.MG || {};
         '在度量空间里单点闭、开集是可数多个球的并，所以「闭 $\\subseteq F_\\sigma$」「开 $\\subseteq G_\\delta$」。',
         '⭐ Baire 之后，「稠密 $G_\\delta$」是「几乎全部的点」的标准写法：连续点集、可微点集、$C[0,1]$ 里无处可微函数的全体，全是稠密 $G_\\delta$。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'thm.baire',
@@ -99,7 +99,7 @@ window.MG = window.MG || {};
         '⭐ 三种等价写法都要会用，转换只需取补集。',
         '⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26', 'Baire 1899']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法', 'Baire 1899'],
     },
     {
       id: 'thm.locally-compact-baire',
@@ -114,7 +114,7 @@ window.MG = window.MG || {};
         '证法与完备度量情形同构，只把「嵌套闭球半径 $\\to 0$」换成「嵌套紧邻域」：交非空由紧集的**有限交性质**保证（不需要半径趋于零）。',
         '⭐ 意义：这条把 Baire 纲从「度量」里解放出来，于是它能用在 $C(K)$、紧群、Stone 空间这些非度量对象上 —— 凝聚态数学里的紧 Hausdorff 空间因此也能用「一般点」论证。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'prop.baire-characterizations',
@@ -136,7 +136,7 @@ window.MG = window.MG || {};
         '⭐ **纲的用法（讲义原话）**：要证「满足性质 $P$ 的点存在」，就去证 $\\{x : P(x)\\}$ 是**稠密 $G_\\delta$**。这样拿到的不只是「存在」，而是「几乎处处存在」（generic）。',
         '⚠️ (2) 里的「第二纲」作用对象是**非空开集**，不是任意集合。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'thm.baire-open-subset',
@@ -155,7 +155,7 @@ window.MG = window.MG || {};
         '于是 $\\bigcap_n(O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
         '⭐ 用处：开映射定理要在开集上做局部论证、UBP 要看开子集，这条保证「局部化之后 Baire 性质不丢」。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'lem.countable-closed-cover',
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
         '这是把「有一块闭集能被盖住」变成「有一个球里的东西一致地被控制」—— 正是 UBP 与开映射定理要的那一句。',
         '它的对偶写法是「可数个无处稠密闭集之并不含非空开集」，两条是同一件事的两面。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'thm.pointwise-limit-continuity',
@@ -194,7 +194,7 @@ window.MG = window.MG || {};
         '⚠️ 逐点极限**不必**连续（$f_n(x) = x^n$ 在 $[0,1]$ 上）；它只是「连续点很多」。',
         '⭐ 同一模板的经典产物：$C[0,1]$ 里「处处不可微」的函数构成稠密 $G_\\delta$（Banach 1931）。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
     },
     {
       id: 'thm.ubp',
@@ -216,7 +216,7 @@ window.MG = window.MG || {};
         '⭐ **名字**：讲义与很多中文书叫它「共鸣定理」（resonance theorem），也叫「一致有界原理」；本图两个都收进别名。三大定理里它**只要求 $E$ 完备**（$F$ 只要赋范），是最「便宜」的一条。',
         '⚠️ $E$ 完备不能去掉：$E = c_{00}$（有限支撑序列）时取 $u_n(x) = n x_n$，逐点有界而 $\\|u_n\\| = n \\to \\infty$。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26', 'Banach–Steinhaus 1927']
+      refs: ['Rudin, Functional Analysis · 一致有界、开映射、逆算子与闭图像', 'Banach–Steinhaus 1927'],
     },
     {
       id: 'cor.ubp-resonance',
@@ -237,7 +237,7 @@ window.MG = window.MG || {};
         '证法：令 $\\Omega_k = \\{x : M(x) = \\sup_i\\|u_i x\\| > k\\} = \\bigcup_i \\{x : \\|u_i x\\| > k\\}$，是开集；\n\n$R = \\bigcap_k \\Omega_k$ 是 $G_\\delta$。\n\n若某个 $\\Omega_k$ 不稠密，则存在球 $B(x_0, r) \\subseteq \\Omega_k^c$，球上 $M \\le k$，用与 UBP 同样的平移 + 伸缩得 $\\sup_i\\|u_i\\| \\le 2k/r$，矛盾。',
         '⭐ 意义：「发散」不是个别点，而是**几乎处处**。经典应用：Fourier 级数部分和算子满足 $\\|S_N\\| \\to \\infty$，于是**存在**连续函数其 Fourier 级数在某点发散（du Bois-Reymond 1876）—— 而且这样的函数「很多」。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · 一致有界、开映射、逆算子与闭图像'],
     },
     {
       id: 'thm.open-mapping-banach',
@@ -274,7 +274,7 @@ window.MG = window.MG || {};
         '⚠️ **满射不能去掉**（稠密嵌入 $E \\hookrightarrow F$ 不开）；**两边完备都不能去掉**：$E$ 用来拿内点，$F$ 用来去闭包。',
         '⚠️ 与图中 `thm.open-mapping`（**非常数全纯函数**把开集映成开集）**同名不同物**：那条是复分析结论，这条是线性算子的（Baire + 级数逼近）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis, 2.11']
+      refs: ['Rudin, Functional Analysis · 开映射定理（Baire 纲的第一步）']
     },
     {
       id: 'thm.bounded-inverse',
@@ -292,7 +292,7 @@ window.MG = window.MG || {};
         '⭐ 这是「连续 + 双射 $\\implies$ 同胚」在**线性**世界的额外赠品 —— 一般拓扑里不成立。',
         '⭐ 与 `thm.inverse-function-banach`（Banach 版**逆映射定理**）分工：那条是**非线性**的（$f\'(a)$ 可逆 $\\implies$ 局部微分同胚，证明用 Neumann 级数 + 压缩映射）；这条是**线性**双射的（证明用 Baire）。两者常被混称，但内容与证法都不同。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis, 2.12']
+      refs: ['Rudin, Functional Analysis · 开映射定理']
     },
     {
       id: 'thm.closed-graph',
@@ -320,7 +320,7 @@ window.MG = window.MG || {};
         '⚠️ **容易误读的地方**：「连续 $\\implies$ 图像闭」是初等的（连续函数的图像当然闭），所以容易以为两边差不多。其实反方向才是这条定理的内容，而且它**必须**要 Banach + 线性：在非完备空间上图像闭而不连续的线性映射是存在的。',
         '⚠️ 两边完备都不能去掉；$u$ 的**线性**也不能去掉（非线性映射可以图像闭而不连续）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis, 2.15']
+      refs: ['Rudin, Functional Analysis · 闭图像定理']
     },
 
     /* ============================================================ C(K) 与 Stone–Weierstrass */
@@ -343,7 +343,7 @@ window.MG = window.MG || {};
         '上确界取得到（紧 + 连续）。这个度量就是「一致收敛」的度量，不是「逐点收敛」的（与 `def.uniform-convergence` 同口径）。',
         '⭐ 记号允许任意度量空间 $E$，所以这一团的结论（完备性、Arzelà–Ascoli）比经典的 $\\mathbb{R}$-值版本更宽。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-19']
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     },
     {
       id: 'thm.ck-complete',
@@ -360,7 +360,7 @@ window.MG = window.MG || {};
         '证法：Cauchy 列 $\\implies$ 逐点 Cauchy（$d(f_n(x), f_m(x)) \\le \\Delta(f_n, f_m)$）$\\implies$ 逐点极限 $f$（$E$ 完备）$\\implies$ $\\Delta$ 一致的估计给「$f_n \\to f$ 一致」$\\implies$ 一致极限保连续。',
         '⭐ 为什么重要：一致收敛空间让人能「把连续函数的极限留在连续函数里」，这是 Stone–Weierstrass、Arzelà–Ascoli、乃至 $C^*$-代数全部的前提。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-19']
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     },
     {
       id: 'def.equicontinuous',
@@ -382,7 +382,7 @@ window.MG = window.MG || {};
         '$\\mathcal{H} = \\{f\\}$ 时等度连续 $\\iff$ $f$ 连续。',
         '⭐ 这是紧性（Arzelà–Ascoli）里**唯一非平凡**的假设：逐点全有界只是「不发散」，等度连续才是「不会越抖越厉害」。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-19']
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     },
     {
       id: 'thm.equicontinuous-uniform',
@@ -399,7 +399,7 @@ window.MG = window.MG || {};
         '证法：给 $\\varepsilon > 0$。\n\n每点 $x$ 取 $\\eta_x > 0$ 使 $\\delta(y, x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（对一切 $f$）。\n\n紧性给有限覆盖 $K = \\bigcup_i B(x_i, \\eta_{x_i}/2)$，取 $\\eta := \\min_i \\eta_{x_i}/2$。\n\n若 $\\delta(x, y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$（故 $y \\in B(x_i, \\eta_{x_i})$），于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。',
         '⭐ 讲义末尾用的是 **Lebesgue 数** $\\lambda$（$\\delta(x,y) < \\lambda$ 就落在某个覆盖成员里）。两种写法等价；Lebesgue 数版本的好处是 $\\lambda$ 只依赖覆盖。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-19']
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     },
     {
       id: 'thm.arzela-ascoli-general',
@@ -421,7 +421,7 @@ window.MG = window.MG || {};
         '⚠️ 「逐点全有界」不能换成「逐点有界」：$E$ 不完备时相对紧需要「盖得住」，有界只是「不发散」。',
         '配合「$C(K,E)$ 完备」就是标准形式：**全有界 + 完备 $=$ 相对紧**。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-19']
+      refs: ['Brezis, Functional Analysis, Sobolev Spaces and Partial Differential Equations · 等度连续与 Arzelà–Ascoli'],
     },
     {
       id: 'def.subalgebra-separating',
@@ -442,7 +442,7 @@ window.MG = window.MG || {};
         '「分离点」是 Stone–Weierstrass 的必要条件：不分离两个点，就把它们粘成一点，$A$ 张不出粘出来的空间上的 $C$。',
         '⚠️ 自伴矩阵的例子（讲义）：自伴矩阵按 $A \\ge B \\iff A - B$ 半正定排序，一般**不是格**（两个自伴矩阵的逐点 min 未必自伴）。所以「格」不是自动的，要靠「闭 + 含单位」换。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理'],
     },
     {
       id: 'lem.closed-subalgebra-lattice',
@@ -460,7 +460,7 @@ window.MG = window.MG || {};
         '⚠️ 「含单位」不能去掉：不给 $1$ 的话 $\\sqrt{}$ 这一步没有常数可写。',
         '⭐ 这是 Stone–Weierstrass 的**第一步**：先把「代数」升级成「格」，后面才能用 $\\min/\\max$ 上下夹住 $f$。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理'],
     },
     {
       id: 'thm.stone-weierstrass',
@@ -491,7 +491,7 @@ window.MG = window.MG || {};
         '⚠️ 三条假设缺一不可：$A = \\{f : f(0) = 0\\}$ 缺单位；$A = $ 常数函数缺分离点。',
         '⭐ 这是「用**代数**性质换**逼近**能力」的样板：不需要光滑、不需要可数、不需要任何具体核。经典 Weierstrass 定理（多项式逼近）就是 $K = [a,b]$、$A = $ 多项式的特例。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26', 'Stone 1937']
+      refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理', 'Stone 1937'],
     },
     {
       id: 'thm.stone-weierstrass-complex',
@@ -509,7 +509,7 @@ window.MG = window.MG || {};
         '⚠️ 「对共轭封闭」不能去掉：取 $A = $ 圆盘代数 $\\mathrm{Alg}(z) \\subseteq C(S^1, \\mathbb{C})$（含单位、分离点），则 $\\bar z \\notin \\overline A$ —— 因为 $\\int_{S^1} p(z)\\,\\bar z\\,dz = 0$ 对一切多项式 $p$ 成立（Cauchy 定理），而 $\\int_{S^1} \\bar z\\,\\bar z\\,dz \\ne 0$。',
         '⭐ 讲义在这里接上了表示论：紧群 $G$ 的矩阵系数 $e_{ij}$ 生成 $C(G)$（因 $\\{e_{ij}\\}$ 对共轭封闭），且 $\\Delta : C(G) \\to C(G) \\otimes C(G)$，$e_{ij} \\mapsto \\sum_k e_{ik} \\otimes e_{kj}$ —— Peter–Weyl 的代数骨架。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26']
+      refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理'],
     },
     {
       id: 'thm.bernstein-approximation',
@@ -530,7 +530,7 @@ window.MG = window.MG || {};
         '这是 Weierstrass 逼近定理的**显式**证明：$B_n f(x) = \\mathbb{E}[f(S_n/n)]$（$S_n$ 服从参数 $x$ 的二项分布），用三条恒等式（$\\sum \\binom nk x^k(1-x)^{n-k} = 1$、$\\sum k\\binom nk x^k(1-x)^{n-k} = nx$、方差 $\\le n/4$）加 $f$ 的一致连续性把误差压住。',
         '⭐ 与 Stone–Weierstrass 分工：这条给「一个显式算子列」，只对 $[0,1]$、只对实值；S-W 给「只要代数性质就够」，不管构造。两者互相印证，也互相不能替代。'
       ].join('\n\n'),
-      refs: ['泛函分析讲义 2026-10-26', 'Bernstein 1912']
+      refs: ['Rudin, Functional Analysis · Stone–Weierstrass 定理', 'Bernstein 1912'],
     }
   ],
 
