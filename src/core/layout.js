@@ -219,6 +219,22 @@
       liveClusters.push(c);
     });
 
+    /* ------------------------------------------- 1a. 布局缓存（可跳过求解）
+       `MG.layoutCache` 存的是上一次算出来的坐标 + 团/星系的圆心与半径。
+       签名（内容版本 / 节点顺序 / 团归属 / 星系基准中心 / 全部布局常量）一致才用。
+       ⛔ 命中时**跳过** 1b–4（团间耦合、解领域中心、装箱、精化、行星锚点），
+          那些是几百毫秒到一秒的开销；但收尾（包围盒 + 诊断）照常跑，
+          保证两条路径产出的 graph 完全一致。
+       ⛔ 缓存里没有语义字段（target / degree / galaxy …），它们在上面第 0 步刚算过。 */
+    var _cacheHit = false;
+    if (MG.layoutCache) {
+      try { _cacheHit = MG.layoutCache.restore(graph); } catch (e) { _cacheHit = false; }
+    }
+    if (_cacheHit) {
+      finishLayout(graph, liveClusters, 0, tAll);
+      return;
+    }
+
     /* -------------------------------------------- 1b. 团间耦合 → 摆放方向 */
     /* 每个团往「它连得最多的那些团所在的星系」那一侧靠。
        为什么需要：团的位置以前只由「星系内第几个」决定，于是范畴论里跟同调代数
@@ -914,6 +930,15 @@
       c.center = { x: cx, y: cy };   // 用实际重心，便于画星团级连线
     });
 
+    finishLayout(graph, liveClusters, ranIters, tAll);
+  }
+
+  /* ------------------------------------------------------------------
+     收尾：包围盒 + 诊断 + 耗时。缓存命中与正常计算**都**走这里，
+     保证两条路径产出的 graph 字段完全一致。
+     ------------------------------------------------------------------ */
+  function finishLayout(graph, liveClusters, ranIters, tAll) {
+    var nodes = graph.nodes;
     /* ------------------------------------------------ 5. 内容包围盒 */
     graph.bbox = function () {
       var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;

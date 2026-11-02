@@ -27,7 +27,14 @@
       };
     }
 
-    var cam = {
+  
+  /* 镜头「动完」的通知：app 用它把相机存进 localStorage（见 app.js 的 persistCam）。
+     ⚠️ 只是**通知**，camera 不认识 localStorage，也不该认识。 */
+  function settled() {
+    if (MG.onCameraSettle) { try { MG.onCameraSettle(); } catch (e) { /* 忽略 */ } }
+  }
+
+  var cam = {
       k: 1, tx: 0, ty: 0,
       viewW: 1, viewH: 1,
 
@@ -83,6 +90,7 @@
       panBy: function (dx, dy) {
         cam.tx += dx; cam.ty += dy;
         cam._anim = null;
+        settled();
       },
 
       /** 把世界坐标点移到**可用区**中心（扣掉面板之后） */
@@ -120,7 +128,7 @@
         cam._anim = { t0: now(), dur: ms == null ? CFG.animateMs : ms, k0: k0, tx0: tx0, ty0: ty0, k1: k1, tx1: tx1, ty1: ty1 };
       },
 
-      stopAnimation: function () { cam._anim = null; },
+      stopAnimation: function () { cam._anim = null; settled(); },
 
       /** 每帧调用；返回 true 表示还在动画中 */
       tick: function () {
@@ -131,7 +139,7 @@
         cam.k = U.lerp(a.k0, a.k1, e);
         cam.tx = U.lerp(a.tx0, a.tx1, e);
         cam.ty = U.lerp(a.ty0, a.ty1, e);
-        if (p >= 1) cam._anim = null;
+        if (p >= 1) { cam._anim = null; settled(); }
         return true;
       },
 

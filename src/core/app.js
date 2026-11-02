@@ -66,6 +66,9 @@
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
     MG.computeLayout(graph);
+    if (MG.layoutCache && !graph.layoutFromCache) {
+      try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
+    }
     if (MG.loading) MG.loading.step(null, '铺开星云…');   // 同样只换文案，见 safeBoot 的注释
     MG.computeLayers(graph);          // 依赖深度（层号）—— 每次现算，不写进内容
     /* 画布上的显示名（节点 / 星团 / 星系）：**启动时算一次**，渲染循环只读 `labelShow`。
@@ -2185,10 +2188,18 @@
       var fitK = cam.k;
       var cx = (bb.minX + bb.maxX) / 2, cy = (bb.minY + bb.maxY) / 2;
       if (!applyHash()) {
-        // 初始视角：先稍微留白，再平滑推进到「全部适配」
-        cam.k = fitK * 0.72;
-        cam.centerOn(cx, cy);
-        cam.animateTo({ k: fitK, cx: cx, cy: cy }, REDUCE_MOTION ? 1 : 700);
+        /* 上次看到哪儿了？有记录就直接还原（不再播「全部适配」那段动画）。
+           ⚠️ 只在没有深链时才用 —— URL 里的 #n= / #v= 优先级更高。 */
+        var savedCam = MG.layoutCache ? MG.layoutCache.loadCam(graph) : null;
+        if (savedCam) {
+          cam.k = U.clamp(savedCam.k, C.camera.minZoom, C.camera.maxZoom);
+          cam.tx = savedCam.tx; cam.ty = savedCam.ty;
+        } else {
+          // 初始视角：先稍微留白，再平滑推进到「全部适配」
+          cam.k = fitK * 0.72;
+          cam.centerOn(cx, cy);
+          cam.animateTo({ k: fitK, cx: cx, cy: cy }, REDUCE_MOTION ? 1 : 700);
+        }
       }
       /* 图例是**适配之前**渲染的（必须先有 DOM 才量得出可用矩形）⇒ 里面那个
          「导出当前视图（N 点 / K 线）」是拿适配前的相机数的。这里补一次真数。 */
@@ -2197,6 +2208,29 @@
     }
 
     start();
+
+    /* ---------------------------------------------------- 相机持久化
+       「上次看到哪」单独存（`mathgalaxy.camera.v1`）：下次打开直接回到那一屏，
+       不再每次从「全部适配」重新播动画。
+       ⚠️ 只在**没有深链**时写：带 #n= / #v= 打开时镜头由深链决定，
+          这时写回会把用户的深链视角覆盖成旧镜头。 */
+    (function persistCam() {
+      if (!MG.layoutCache) return;
+      var timer = 0;
+      function saveNow() {
+        if (location.hash && /(^|[#&])(n|v)=/.test(location.hash)) return;
+        try { MG.layoutCache.saveCam(cam); } catch (e) { /* 忽略 */ }
+      }
+      /* 停手后再存（拖动/缩放过程中不写，省 IO） */
+      MG.onCameraSettle = function () {
+        clearTimeout(timer);
+        timer = setTimeout(saveNow, 600);
+      };
+      window.addEventListener('pagehide', saveNow);
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') saveNow();
+      });
+    })();
 
     /* ------------------------------------------------ Phase A：世界位图图层
        载体乙（DOM canvas + CSS transform）：拖动只改 transform，合成器搬图层。
@@ -2252,6 +2286,9 @@
         var packs = localPacks.concat(res.packs);
         graph = MG.buildGraph(packs, MG.regions, MG.clusters);
         MG.computeLayout(graph);
+    if (MG.layoutCache && !graph.layoutFromCache) {
+      try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
+    }
         MG.localizeDisplay(graph);    // ⭐ 并入外部内容包之后要把显示名再算一遍
         view.graph = graph;
         vis.rebind(graph);            // 挑选结果保留，丢掉已经不存在的 id
