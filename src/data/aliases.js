@@ -617,7 +617,6 @@ MG.aliases = {
     { id: 'def.completely-normal-space', aka: ['完全正规空间', 'T5', 'T_5', 'T₅', '遗传正规'] },
     { id: 'def.perfectly-normal-space', aka: ['完美正规空间', 'T6', 'T_6', 'T₆', 'perfectly normal'] },
     { id: 'def.interior', aka: ['内部', '开核', 'interior', '边界'] },
-    { id: 'thm.compact-hausdorff-normal', aka: ['紧 Hausdorff 正规', '紧 Hausdorff 空间正规', 'T2 推 T4'] },
     { id: 'lem.urysohn', aka: ['Urysohn 引理', 'Urysohn', 'Lemma 2.1.2', '连续函数足够多'] },
     { id: 'def.topo-ab-group', aka: ['拓扑阿贝尔群', 'topological abelian group', 'AbTop', '连续同态', 'CZ(M,N)'] },
     { id: 'prop.abtop-to-abcond', en: 'topological abelian groups embed into condensed ones', aka: ['关联凝聚态群', 'Proposition 6.2.1', 'Prop 6.2.1', 'AbTop 到 AbCond'] },

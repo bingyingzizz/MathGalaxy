@@ -35,7 +35,6 @@ MG.i18n = {
     'def.completely-regular-space': { title_en: 'Completely Regular Space', label_en: 'Completely Regular Space', from: 'explicit' },
     'def.completely-normal-space': { title_en: 'Completely Normal Space', label_en: 'Completely Normal Space', from: 'explicit' },
     'def.perfectly-normal-space': { title_en: 'Perfectly Normal Space', label_en: 'Perfectly Normal Space', from: 'explicit' },
-    'thm.compact-hausdorff-normal': { title_en: 'Compact Hausdorff Spaces are Normal', label_en: 'Compact Hausdorff is Normal', from: 'explicit' },
     'def.symplectic-form': { title_en: 'Symplectic Form', label_en: 'Symplectic Form', from: 'explicit' },
     'def.symplectic-basis': { title_en: 'Symplectic Basis', label_en: 'Symplectic Basis', from: 'explicit' },
     'thm.symplectic-normal-form': { title_en: 'Symplectic Normal Form Theorem', label_en: 'Symplectic Normal Form', from: 'explicit' },
