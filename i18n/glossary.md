@@ -46,6 +46,7 @@
 - `topology`　拓扑学　→　Topology
 - `algebra`　抽象代数　→　Abstract Algebra
 - `analysis`　数学分析　→　Mathematical Analysis
+- `functional-analysis`　泛函分析　→　Functional Analysis
 - `analysis-measure`　实变函数　→　Functions of a Real Variable
 - `category`　范畴论　→　Category Theory
 - `homology`　同调代数　→　Homological Algebra

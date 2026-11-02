@@ -400,6 +400,44 @@ MG.clusters = [
     desc: '造出函数空间本身：Hölder / Minkowski → Banach 完备 → 空间之间的包含 → 对偶 (L^p)* ≅ L^q。'
   },
 
+  /* ------------------------------------------------ 星系：泛函分析 */
+  /* ⭐ 2026-11-02：四个团按讲义的顺序：赋范（09-28）→ Hilbert（10-12）→
+     C(K) 与 Stone–Weierstrass（10-19 / 10-26）→ Baire 与三大定理（10-26）。
+     每个团都是一个「能用的装置」：有了 B(E,F) 才能谈算子；有了对偶才能谈弱拓扑；
+     有了 Baire 才一次拿下一生三（UBP / OMT / CGT）。 */
+  {
+    id: 'fa.norm',
+    name: '赋范空间与有界算子',
+    en: 'Normed Spaces and Bounded Operators',
+    parent: 'functional-analysis',
+    hub: 'def.norm',
+    desc: '选出「度量」里能算长度的那一层（范数 → 等价范数 → 单位球紧 ⟺ 有限维），再把线性算子装上算子范数：有界 ⟺ 连续 → B(E,F) 是 Banach → 对偶 $E^*$。'
+  },
+  {
+    id: 'fa.hilbert',
+    name: 'Hilbert 空间',
+    en: 'Hilbert Spaces',
+    parent: 'functional-analysis',
+    hub: 'def.hilbert-space',
+    desc: '范数来自内积的那一类：平行四边形法则把它挑出来 → 凸闭集上有投影 → $H^*\\cong\\overline H$（Riesz）→ 伴随算子 → 正交基与 $\\ell^2$。'
+  },
+  {
+    id: 'fa.ck',
+    name: '$C(K)$ 与 Stone–Weierstrass',
+    en: '$C(K)$ and Stone–Weierstrass',
+    parent: 'functional-analysis',
+    hub: 'thm.stone-weierstrass',
+    desc: '一致收敛造出的 Banach 空间：$C(K,E)$ 的完备性 → 等度连续 → 广义 Arzelà–Ascoli → 用代数条件（子代数 + 分离点 + 单位）拿到稠密性。'
+  },
+  {
+    id: 'fa.baire',
+    name: 'Baire 纲与三大定理',
+    en: 'Baire Category and the Three Big Theorems',
+    parent: 'functional-analysis',
+    hub: 'thm.baire',
+    desc: '造出一把「拓扑大小」的尺子（无处稠密 → 第一/第二纲 → 剩余集），然后一次抽出三大定理：一致有界（Banach–Steinhaus）、开映射（含逆算子）、闭图像。'
+  },
+
   /* ------------------------------------------------ 星系：范畴论 */
   {
     id: 'cat.basic',

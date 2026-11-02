@@ -89,6 +89,20 @@ MG.regions = [
     desc: '从实数出发的初等分析：极限与完备性、连续与紧性、中值定理与 Taylor、多元微分与逆映射定理、级数、一致收敛，顶点是 Riemann 积分与 Newton–Leibniz 公式。'
   },
   {
+    id: 'functional-analysis',
+    name: '泛函分析',
+    en: 'Functional Analysis',
+    color: '#2C7FA8',
+    /* ⭐ 2026-11-02：新领域。依据是用户的泛函分析讲义（2026-09-14 ~ 10-26，25 页手写）：
+       赋范/ Banach / Hilbert / 有界算子与对偶 / Baire 纲与三大定理 / C(K) 与 Stone–Weierstrass。
+       ⛔ 不往「数学分析」里塞：那边是有限维的极限与积分，这边是无穷维的**空间本身**，
+          跨度不一样（同 2026-10-27 把「分析学」拆成数学分析 / 实变函数的理由）。
+       方位：放在数学分析与实变函数以南，三者排成一条「分析」带。 */
+    center: { x: -430, y: 1560 },
+    radius: 470,
+    desc: '把「函数」本身当点：赋范空间与 Banach 空间、有界线性算子与对偶、$H^*\\cong H$ 的 Hilbert 空间，再用 Baire 纲一次抽出三大定理（一致有界 / 开映射 / 闭图像）。'
+  },
+  {
     id: 'analysis-measure',
     name: '实变函数',
     en: 'Functions of a Real Variable',

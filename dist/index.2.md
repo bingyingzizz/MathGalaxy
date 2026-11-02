@@ -2,6 +2,9 @@
 
 根 `../`　·　第 1 页 `index.md`
 
+## 泛函分析（functional-analysis）
+fa.norm　fa.hilbert　fa.ck　fa.baire
+
 ## 实变函数（analysis-measure）
 analysis.setclass　analysis.measure　analysis.measurable　analysis.integral　analysis.product　analysis.signed　analysis.differentiation　analysis.bv　analysis.lp
 
@@ -16,8 +19,5 @@ cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
 
 ## 解析空间（analytic）
 analytic.adic　analytic.dual
-
-## 复变函数（complex）
-analysis.complex　analysis.cauchy　analysis.residue　analysis.mapping　analysis.harmonic　analysis.entire　analysis.topology-app
 
 > 续见 `index.3.md`
