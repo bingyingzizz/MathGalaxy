@@ -344,9 +344,9 @@ function exportMarkdown(MG, graph, data) {
       ? `；其中**不分层**的「推论」${data.meta.counts.derived} 条（layer:false）`
       : '') + '）');
   p('');
-  p('> ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回');
-  p('> 约 1000 词元（中文约 3 KB），你会只看到开头一小段，而且同一地址反复抓也只');
-  p('> 会拿到同样的开头。**要检索请走 `llms.txt` 里的检索协议**：');
+  p('> ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次通常只返回');
+  p('> 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，');
+  p('> 而且同一地址反复抓也只会拿到同样的开头。**要检索请走 `llms.txt` 里的检索协议**：');
   p('> `index.md` → `index/<星团id>.md` → `nodes/<节点id>.md`。');
   p('> 这份文件只在「一次性下载 / 离线打包 / 本地处理」时才用。');
   p('');
@@ -1109,7 +1109,7 @@ ${c.regions} 星系 / ${c.clusters} 星团 / ${c.nodes} 节点 / ${c.edges} 连�
    ⛔ 没有英文版的就按中文页读，别猜。
 顺着 id 继续读就是沿图走。
 
-⚠ 单次抓取约 1000 词元（还会转义 \`# * [ ] \\\` _ ~\`）；放不下的分页成 \`<路径>.2.md\`，
+⚠ 抓取上限约 1000 词元（还会转义 \`# * [ ] \\\` _ ~\`）；放不下的分页成 \`<路径>.2.md\`，
 首页永远是 \`<路径>.md\`。\`${base}graph.json\` / \`graph.md\` 只下载，别用来检索。
 
 ## 其它
@@ -1265,27 +1265,97 @@ function exportHubs(MG, graph, data) {
   const L = ['# 数学星图 · 枢纽定理榜', '',
     '边是「前置 → 依赖它的结论」，**出和入说两件相反的事**：',
     '出边多 = **基础工具**（很多结论靠它）；入边多 = **综合结论**（得先懂一片）；',
-    '下游横跨星团多 = **连接枢纽**（位置中心，不是入门顺序）。',
-    '每行两个数按第一个排（连接榜是团/节点）；只数推出与定义，弱边、等价边不计。', ''];
+    '下游横跨星团多 = **连接枢纽**（不是入门顺序）。',
+    '每行两数按前者排；只数推出与定义，弱边、等价边不计。',
+    `每榜前 3 条；完整清单在 \`hubs/<榜>.md\`（各 ${HUB_ROWS} 条）。`, ''];
   const boards = hubBoards(graph);
-  const tail = `（${graph.nodes.length} 个节点；完整清单见 \`graph.json\`。）`;
   const fit = s => aiBytes(s) <= AI_MAXB - 150 && aiCost(s) <= AI_ESC - 150;
   for (const b of boards) {
     const head = `## ${b.zh}`;
-    if (!fit(L.join('\n') + '\n' + head + '\n' + tail)) continue;
+    if (!fit(L.join('\n') + '\n' + head + '\n')) continue;
     L.push(head);
     let k = 0;
-    for (const { n, nodes, edges, more } of b.rows) {
-      /* ⭐ 每榜最多 3 条：整个产物卡在 1300 B，一个榜吃到饱就把另两个挤掉了 */
+    for (const x of b.rows) {
+      /* ⭐ 索引只放前 3：整个产物卡在 1300 B，一个榜吃到饱就把另两个挤掉了。
+         完整清单走 `hubs/<榜>.md`（分页产物）—— ⛔ 不许写「见 graph.json」：那是 550 KB
+         的 bulk 文件，单次抓取只拿到开头，等于把读者推进坑里（见 build.mjs 第 794 行的规矩）。 */
       if (k++ >= 3) break;
-      const deg = b.key === 'cross' ? `**${more} 团 / ${nodes} 节点**` : `**${nodes} / ${edges}**`;
-      const line = `- ${deg} \`${n.id}\` ${n.label} · ${clNameOf(graph, n)}`;
-      if (!fit(L.join('\n') + '\n' + line + '\n' + tail)) break;
+      const line = hubRow(graph, b, x, false);
+      if (!fit(L.join('\n') + '\n' + line + '\n')) break;
       L.push(line);
     }
-    L.push('');
+    L.push(`- 全部：\`hubs/${b.key}.md\``, '');
   }
-  L.push(tail);
+  return L.join('\n') + '\n';
+}
+
+/* 每榜列多少条。30 条 × ~52 B 已经顶破 1300 B，所以单页只放 20（实测 ~1160 B）。
+   再多的部分就进续页 —— `emitChunks` 会自动切（`hubs/<榜>.2.md`）。 */
+const HUB_ROWS = 20;
+
+/** 榜上一行。索引页不带 layer / 星团（省字节），单榜页带上（读的时候要定位）。 */
+function hubRow(graph, b, x, withCtx) {
+  const deg = b.key === 'cross'
+    ? `**${x.more} 团 / ${x.nodes} 节点**` : `**${x.nodes} / ${x.edges}**`;
+  const ctx = withCtx ? ` · layer ${x.n.layer}` : '';
+  return `- ${deg} \`${x.n.id}\` ${x.n.label}${ctx} · ${clNameOf(graph, x.n)}`;
+}
+
+/** 三榜的完整清单 → `hubs/<榜>.md`（放不下自动续页）。和 `notation/*.md` 同一套规矩。
+    ⚠️ **不能直接用 `emitChunks`**：那里面是 `aiChunk`，按字节切文本，会把一行榜切在
+    `· layer ` 中间（实测：base.md 最后一行就断在那里）。排行清单必须**按行**切。 */
+function exportHubProducts(graph) {
+  const files = [];
+  for (const b of hubBoards(graph)) {
+    const head = `# 枢纽定理榜 · ${b.zh}\n索引 \`hubs.md\`\n\n${b.zhWhy}\n`;
+    const rows = b.rows.slice(0, HUB_ROWS).map(x => hubRow(graph, b, x, true));
+    rows.push(`\n（共 ${b.rows.length} 个节点在这一榜上有非零计数；这里列前 ${Math.min(HUB_ROWS, b.rows.length)} 条。）`);
+    emitRows(files, 'hubs', b.key, head, rows, '索引 `hubs.md`。');
+  }
+  return files;
+}
+
+/** 按**行**分页落盘（不切行）。`rows` 里的行自己带换行时要照旧（尾注那种）。
+    续页命名与 proofs / notation 同一套：第 1 页 \`<base>.md\`、第 k 页 \`<base>.<k>.md\`。 */
+function emitRows(files, dir, base, head, rows, tail) {
+  const fits = s => aiBytes(s) <= AI_MAXB && aiCost(s) <= AI_ESC;
+  const render = (rs, last) => head + rs.join('\n') + '\n' + (last ? '\n' + tail + '\n' : '');
+  const contOf = k => `\n> 续见 ${dir}/${base}.${k}.md\n`;
+  const pages = [];
+  let cur = [];
+  for (const r of rows) {
+    if (!cur.length) { cur = [r]; continue; }
+    const next = cur.concat([r]);
+    /* 两种结尾都试：这一页可能是最后一页（带尾注），也可能还有下一页（带「续见」） */
+    const k = pages.length + 2;
+    if (!fits(render(next, true)) && !fits(render(next, false) + contOf(k))) {
+      pages.push(cur); cur = [r];
+    } else cur = next;
+  }
+  if (cur.length) pages.push(cur);
+  pages.forEach((rs, i) => {
+    const last = i === pages.length - 1;
+    files.push({
+      path: `${dir}/${base}${i ? '.' + (i + 1) : ''}.md`,
+      text: render(rs, last) + (last ? '' : contOf(i + 2)),
+    });
+  });
+  return pages.length;
+}
+
+/** 人读的一整篇（站点阅读页用）。⚠️ 与 AI 产物形状**故意不同** —— 理由同 `notation-full.md`。 */
+function exportHubsFull(graph) {
+  const L = ['# 数学星图 · 枢纽定理榜', '',
+    '边的方向是「前置 → 依赖它的结论」，所以同一个节点的**入和出说的是两件相反的事**：',
+    '- **基础工具榜**：被最多结论当前置（出边多）—— 值得优先学熟。',
+    '- **综合结论榜**：由最多前置推出（入边多）—— 学之前得先懂一片，**不是**入门首选。',
+    '- **跨领域连接榜**：下游横跨的星团最多 —— 位置枢纽，**不是**入门顺序。',
+    '每项给「不同节点数 / 边数」（连接榜是「星团数 / 节点数」）；弱边（类比）与等价边不计。', ''];
+  for (const b of hubBoards(graph)) {
+    L.push(`## ${b.zh}`, '', b.zhWhy, '');
+    for (const x of b.rows.slice(0, HUB_ROWS)) L.push(hubRow(graph, b, x, true));
+    L.push('', `（共 ${b.rows.length} 个节点有非零计数；这里列前 ${Math.min(HUB_ROWS, b.rows.length)} 条。）`, '');
+  }
   return L.join('\n') + '\n';
 }
 
@@ -2340,7 +2410,12 @@ if (doJSON) {
   console.log('  → dist/policy.md + policy.md · dist/reading.md + reading.md');
 
   fs.writeFileSync(path.join(DIST, 'hubs.md'), exportHubs(MG, graph, data), 'utf8');
-  console.log('  → dist/hubs.md');
+  /* ⚠️ 单榜产物和 AI 产物共用一套落盘/体积断言 ⇒ 先算好，等 `files` 建好再 push 进去
+     （以前直接在这里 push，报 `Cannot access 'files' before initialization`）。 */
+  const hubFiles = exportHubProducts(graph);
+  /* 人读的一整篇（站点阅读页用）—— 不进 AI 体积断言，理由见 exportHubsFull 的注释 */
+  fs.writeFileSync(path.join(DIST, 'hubs-full.md'), exportHubsFull(graph), 'utf8');
+  console.log(`  → dist/hubs.md + hubs/*.md（${hubFiles.length} 页）+ hubs-full.md`);
 
   /* ------------------------------------------------------- 英文文档（T2.1） */
   /* 正文真源 src/data/i18n/docs.en.js；这里只渲染 + 状态头 + 分页。
@@ -2405,13 +2480,15 @@ if (doJSON) {
     ' + i18n/glossary.md');
 
   /* ---------------------------------------------- AI 按需检索产物 */
-  for (const d of ['nodes', 'proofs', 'notes', 'index', 'notation', 'alias']) {
+  for (const d of ['nodes', 'proofs', 'notes', 'index', 'notation', 'alias', 'hubs']) {
     fs.rmSync(path.join(DIST, d), { recursive: true, force: true });
   }
   // 早期版本产出过 JSON 版索引；抓取工具对 JSON 不友好，已改成纯文本 .md。
   // 这里主动清掉，免得旧的留在 dist/ 里被当成产物发布。
   fs.rmSync(path.join(DIST, 'index.json'), { force: true });
   const { files, notesOut, pagesOf } = exportAIProducts(MG, graph, data);
+  /* 枢纽榜的单榜页（上面算好的）：和 nodes/ proofs/ 一样过体积断言、一样按 files 落盘 */
+  for (const f of hubFiles) files.push(f);
 
   /* ------------------------------------------------- 记号对照表产物 */
   /* 真源是 src/data/notation.js —— 这里只把它排版成「一次抓得完」的分页产物。 */
