@@ -26,6 +26,10 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.closed-form': { title_en: 'Closed Form', label_en: 'Closed Form', from: 'explicit' },
+    'def.exact-form': { title_en: 'Exact Form', label_en: 'Exact Form', from: 'explicit' },
+    'thm.rational-canonical-form': { title_en: 'Rational Canonical Form', label_en: 'Rational Canonical Form', from: 'explicit' },
+    'def.characteristic': { title_en: 'Characteristic of a Field', label_en: 'Characteristic', from: 'explicit' },
     'def.cycle': { title_en: 'Cycles and Cocycles', label_en: 'Cycles', from: 'explicit' },
     'def.boundary': { title_en: 'Boundaries and Coboundaries', label_en: 'Boundaries', from: 'explicit' },
     'def.t3-space': { title_en: 'T3 Space', label_en: 'T3 Space', from: 'explicit' },

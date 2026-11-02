@@ -29,7 +29,7 @@
      · `def.spectral-sequence` / `thm.filtered-complex-spectral` / `prop.bicomplex-spectral`
      · `def.sheaf-cohomology` / `def.cech-cohomology` / `prop.chaus-cech-eq-h`
      · `def.paracompact` / `prop.paracompact-partition-unity`（拓扑那一团给的）
-     · `def.injective-object` 一类（hom.injective 团）
+     · `def.projective-object`（投射 / 内射对象在同一个节点里）
    ========================================================================== */
 window.MG = window.MG || {};
 (window.MG.packs = window.MG.packs || []).push({
