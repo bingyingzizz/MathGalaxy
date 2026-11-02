@@ -182,12 +182,12 @@ window.MG = window.MG || {};
       statement: [
         '设 $\\mathbf{AbHaus}$ 是 **Hausdorff 拓扑阿贝尔群**（态射取连续同态）的范畴。则',
         '',
-        '1. 对连续同态 $f : M \\to N$：$\\ker f = f^{-1}(0)$（带子空间拓扑），$\\operatorname{coker} f = N/\\operatorname{cl}\\bigl(f(M)\\bigr)$（带商拓扑）；',
+        '1. 对连续同态 $f : M \\to N$：$\\ker f = f^{-1}(0)$（带子空间拓扑），$\\operatorname{coker} f = N/\\overline{f(M)}$（带商拓扑）；',
         '2. 连续同态是核 $\\iff$ 它是**到闭子群上的同胚嵌入**；是余核 $\\iff$ 它是**开满射**；',
         '3. 列 $0 \\to M\' \\xrightarrow{\\varphi} M \\xrightarrow{\\psi} M\'\' \\to 0$ **严格正合** $\\iff$ 它作为抽象阿贝尔群正合、且 $\\varphi$ 是闭嵌入、$\\psi$ 是开满射。'
       ].join('\n'),
       notes: [
-        ['**证明。**','**1.** 核是 $f$ 与 $0$ 的等化子；在拓扑阿贝尔群里等化子就是 $\\{x : f(x) = 0\\}$ 配**子空间拓扑**（$f$ 连续而 $N$ 是 Hausdorff，所以这个集合闭）✓。余核是余等化子：$\\mathbf{AbHaus}$ 里的商必须仍然 Hausdorff，而 $N/f(M)$ 只有在 $f(M)$ **闭**时才 Hausdorff，故余等化子只能是 $N/\\operatorname{cl}(f(M))$（带商拓扑）✓ —— 一般连续同态的像**不必闭**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 的像稠密而不闭），所以闭包不能省；像已经闭时就退化成 $N/f(M)$ ✓。','**2.** 「核」是带子空间拓扑的那个等化子，所以它作为映射必然是到闭子群上的同胚嵌入 ✓；反过来，闭嵌入 $\\varphi : M\' \\to M$ 恰好是 $\\varphi$ 与 $0$ 的等化子（等化子带的就是子空间拓扑，像闭保证商/余核那边也对）✓。余核那条同理：商映射是开满射 ✓，反之开满射正是它自己核的余等化子 ✓ —— 「开」不能省：$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 满，但不是余核。','**3.** 若列严格正合，则 $\\varphi$ 实现 $\\ker\\psi$、$\\psi$ 实现 $\\operatorname{coker}\\varphi$，由 2 得 $\\varphi$ 闭嵌入、$\\psi$ 开满射 ✓。反过来，若作为抽象群正合、且 $\\varphi$ 闭嵌入、$\\psi$ 开满射，则 $\\varphi$ 与「$\\psi^{-1}(0)$ 带子空间拓扑」一致、$\\psi$ 与「商去 $\\operatorname{cl}\\varphi(M)$」一致，而 $\\varphi(M)$ 闭、故就是商去像 ✓。于是这条列是核-余核列，即严格正合 ✓。∎'].join('\n'),
+        ['**证明。**','**1.** 核是 $f$ 与 $0$ 的等化子；在拓扑阿贝尔群里等化子就是 $\\{x : f(x) = 0\\}$ 配**子空间拓扑**（$f$ 连续而 $N$ 是 Hausdorff，所以这个集合闭）✓。余核是余等化子：$\\mathbf{AbHaus}$ 里的商必须仍然 Hausdorff，而 $N/f(M)$ 只有在 $f(M)$ **闭**时才 Hausdorff，故余等化子只能是 $N/\\overline{f(M)}$（带商拓扑）✓ —— 一般连续同态的像**不必闭**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 的像稠密而不闭），所以闭包不能省；像已经闭时就退化成 $N/f(M)$ ✓。','**2.** 「核」是带子空间拓扑的那个等化子，所以它作为映射必然是到闭子群上的同胚嵌入 ✓；反过来，闭嵌入 $\\varphi : M\' \\to M$ 恰好是 $\\varphi$ 与 $0$ 的等化子（等化子带的就是子空间拓扑，像闭保证商/余核那边也对）✓。余核那条同理：商映射是开满射 ✓，反之开满射正是它自己核的余等化子 ✓ —— 「开」不能省：$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 满，但不是余核。','**3.** 若列严格正合，则 $\\varphi$ 实现 $\\ker\\psi$、$\\psi$ 实现 $\\operatorname{coker}\\varphi$，由 2 得 $\\varphi$ 闭嵌入、$\\psi$ 开满射 ✓。反过来，若作为抽象群正合、且 $\\varphi$ 闭嵌入、$\\psi$ 开满射，则 $\\varphi$ 与「$\\psi^{-1}(0)$ 带子空间拓扑」一致、$\\psi$ 与「商去 $\\overline{\\varphi(M)}$」一致，而 $\\varphi(M)$ 闭、故就是商去像 ✓。于是这条列是核-余核列，即严格正合 ✓。∎'].join('\n'),
         '⭐ **「严格」不是装饰**：在拓扑阿贝尔群里，「正合」与「严格正合」是实打实的差别 —— 拓扑阿贝尔群**不是**阿贝尔范畴，缺的正是「每个态射都由它的核与余核刻画」这一条。凝聚态数学把这一层补回来的方式，是把拓扑群嵌进 $\\mathrm{CondAb}$。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §5.1']
@@ -308,7 +308,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.kernel-cokernel',
       usedBy: 'prop.abhaus-strict-exact',
-      note: '核与余核在这里被具体算成 $f^{-1}(0)$ 与 $N/\\operatorname{cl}f(M)$。'
+      note: '核与余核在这里被具体算成 $f^{-1}(0)$ 与 $N/\\\overline{f}(M)$。'
     },
     {
       id: 'def-link.abhaus-exact',
