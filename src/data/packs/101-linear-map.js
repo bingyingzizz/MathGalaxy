@@ -40,7 +40,7 @@ window.MG = window.MG || {};
         '',
         '复合 $S \\circ T$ 仍是线性的。'
       ].join('\n'),
-      notes: '⭐ 线性 = **保持两个运算**（加法与数乘）。与群同态（保持一个运算）相比多了一条，但那条数是免费的：$T(0) = 0$ 与 $T(-v) = -T(v)$ 都能从定义推出。\n\n⭐ 「$\\operatorname{Hom}_K(V, W)$ 本身是向量空间」这件事是线性代数特有的：一般范畴里两个对象之间的态射集没有加法（$\\mathbf{Set}$ 里就是如此），而向量空间的范畴是**加法范畴** —— 两个对象之间的态射集自带加法，这是它比一般范畴多出来的结构。\n\n⚠ 线性的关键在于**只看 $K$ 的加法与数乘**：平移 $v \\mapsto v + v_0$（$v_0 \\ne 0$）不是线性的（$0$ 不映到 $0$），但它「差一个平移就是线性的」—— 那叫仿射映射。',
+      notes: '⭐ 线性 = **保持两个运算**（加法与数乘）。\n\n与群同态（保持一个运算）相比多了一条，但那条数是免费的：$T(0) = 0$ 与 $T(-v) = -T(v)$ 都能从定义推出。\n\n⭐ 「$\\operatorname{Hom}_K(V, W)$ 本身是向量空间」这件事是线性代数特有的：一般范畴里两个对象之间的态射集没有加法（$\\mathbf{Set}$ 里就是如此），而向量空间的范畴是**加法范畴** —— 两个对象之间的态射集自带加法，这是它比一般范畴多出来的结构。\n\n⚠ 线性的关键在于**只看 $K$ 的加法与数乘**：平移 $v \\mapsto v + v_0$（$v_0 \\ne 0$）不是线性的（$0$ 不映到 $0$），但它「差一个平移就是线性的」—— 那叫仿射映射。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     },
     {
@@ -60,7 +60,7 @@ window.MG = window.MG || {};
         '',
         '（「$\\iff$」的右到左这一半在有限维时成立；无限维时仍成立，只是「维数」要按基的势来理解。）'
       ].join('\n'),
-      notes: '⭐ 这条「基本事实」是整个有限维线性代数的**取消论**：同构类只由维数决定，所以「$n$ 维向量空间」只有一个（在同构意义下）。于是研究所有有限维向量空间 = 研究所有 $K^{n}$。\n\n⚠ 无限维时结论只在一半成立：等势的基给出同构，但同构当然也给出等势的基 —— 所以其实两个方向都对，只是「维数」要按基的势来理解（见「维数良定义」）。\n\n⭐ 在范畴语言里：$V \\mapsto \\dim V$ 把 $K\\text{-}\\mathbf{Vect}$ 的有限维对象与基数对应起来，加法范畴的结构因此退化成线性代数的具体计算。',
+      notes: '⭐ 这条「基本事实」是整个有限维线性代数的**取消论**：同构类只由维数决定，所以「$n$ 维向量空间」只有一个（在同构意义下）。\n\n于是研究所有有限维向量空间 = 研究所有 $K^{n}$。\n\n⚠ 无限维时结论只在一半成立：等势的基给出同构，但同构当然也给出等势的基 —— 所以其实两个方向都对，只是「维数」要按基的势来理解（见「维数良定义」）。\n\n⭐ 在范畴语言里：$V \\mapsto \\dim V$ 把 $K\\text{-}\\mathbf{Vect}$ 的有限维对象与基数对应起来，加法范畴的结构因此退化成线性代数的具体计算。',
       refs: ['Lang, Linear Algebra']
     },
     {
@@ -84,7 +84,7 @@ window.MG = window.MG || {};
         '',
         '$T$ **满射**，当且仅当 $\\operatorname{im} T = W$。'
       ].join('\n'),
-      notes: '⭐ 「单射 $\\iff$ 核为零」是线性映射最好用的一条：因为 $T(u) = T(v) \\iff T(u - v) = 0$ —— **线性把「两点相同」换成了「差落在核里」**。一般映射没有这个便利。\n\n⭐ 核与像分别是「丢失的信息」与「留下来的信息」：秩-零化度定理说的就是这两块加起来正好是 $V$。\n\n⚠ $\\ker T$ 是 $V$ 的子空间、$\\operatorname{im} T$ 是 $W$ 的子空间 —— 别写反。',
+      notes: '⭐ 「单射 $\\iff$ 核为零」是线性映射最好用的一条：因为 $T(u) = T(v) \\iff T(u - v) = 0$ —— **线性把「两点相同」换成了「差落在核里」**。\n\n一般映射没有这个便利。\n\n⭐ 核与像分别是「丢失的信息」与「留下来的信息」：秩-零化度定理说的就是这两块加起来正好是 $V$。\n\n⚠ $\\ker T$ 是 $V$ 的子空间、$\\operatorname{im} T$ 是 $W$ 的子空间 —— 别写反。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     },
     {
@@ -108,7 +108,7 @@ window.MG = window.MG || {};
         '',
         '商映射 $\\pi : V \\to V/U$、$v \\mapsto v + U$ 是满的线性映射，且 $\\ker \\pi = U$。'
       ].join('\n'),
-      notes: '⭐ 这一条是集合的商集（`def.quotient-set`）**加上结构**：先把 $V$ 按 $U$ 压成集合，再验证运算良定义。良定义的那一步是全部内容 —— 因为运算写在代表元上，而代表元有无数种选法。\n\n⭐ 「每个子空间都是某个线性映射的核」由此得到：取 $\\pi$ 即可。这与群的情形完全平行（每个正规子群都是某个同态的核）。\n\n⚠ 商的是**子空间**（不是任意子集）：否则陪集之和不封闭。群那边对应的是「正规子群」，这里所有子空间自动正规（因为 $K$-向量空间都是交换群）。',
+      notes: '⭐ 这一条是集合的商集（`def.quotient-set`）**加上结构**：先把 $V$ 按 $U$ 压成集合，再验证运算良定义。\n\n良定义的那一步是全部内容 —— 因为运算写在代表元上，而代表元有无数种选法。\n\n⭐ 「每个子空间都是某个线性映射的核」由此得到：取 $\\pi$ 即可。\n\n这与群的情形完全平行（每个正规子群都是某个同态的核）。\n\n⚠ 商的是**子空间**（不是任意子集）：否则陪集之和不封闭。\n\n群那边对应的是「正规子群」，这里所有子空间自动正规（因为 $K$-向量空间都是交换群）。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     },
     {
@@ -128,7 +128,7 @@ window.MG = window.MG || {};
         '',
         '$$V / \\ker T \\cong \\operatorname{im} T$$'
       ].join('\n'),
-      notes: '⭐ 这是图上第三次出现同一个模板：集合的 $A/\\!\\sim$、群的 $G/N \\cong \\operatorname{im}\\varphi$、向量空间的 $V/\\ker T \\cong \\operatorname{im} T$。三处的证明逐字相同 —— **压掉核，剩下的就是像**。\n\n⭐ 特别有用的一支：若 $T$ 满，则 $W \\cong V / \\ker T$；若 $T$ 单，则 $V \\cong \\operatorname{im} T$。\n\n⚠ 良定义那一步不能省：$v + \\ker T = v\' + \\ker T$ 说明 $v - v\' \\in \\ker T$，于是 $T(v) = T(v\')$ —— 正是「$\\overline{T}$ 只依赖陪集」这句话。',
+      notes: '⭐ 这是图上第三次出现同一个模板：集合的 $A/\\!\\sim$、群的 $G/N \\cong \\operatorname{im}\\varphi$、向量空间的 $V/\\ker T \\cong \\operatorname{im} T$。\n\n三处的证明逐字相同 —— **压掉核，剩下的就是像**。\n\n⭐ 特别有用的一支：若 $T$ 满，则 $W \\cong V / \\ker T$；\n\n若 $T$ 单，则 $V \\cong \\operatorname{im} T$。\n\n⚠ 良定义那一步不能省：$v + \\ker T = v\' + \\ker T$ 说明 $v - v\' \\in \\ker T$，于是 $T(v) = T(v\')$ —— 正是「$\\overline{T}$ 只依赖陪集」这句话。',
       refs: ['Lang, Linear Algebra']
     },
     {
@@ -146,7 +146,7 @@ window.MG = window.MG || {};
         '',
         '（即：$U \\subseteq \\ker T$ $\\iff$ $T$ 能「穿过」商映射分解。）'
       ].join('\n'),
-      notes: '⭐ 「万有性质」= **把商空间刻划成「压掉 $U$ 的最一般的落点」**：任何在 $U$ 上消失的映射，都**唯一**地经由 $V/U$ 分解。存在性来自定义、唯一性来自 $\\pi$ 满。\n\n⭐ 这条性质是「余核 / 商」这一族概念的通用配方，在范畴论里叫**余等化子**的万有性质（`def.equalizer` 那一支）。\n\n⚠ 条件是 $U \\subseteq \\ker T$（$T$ 在 $U$ 上为零），不是 $U = \\ker T$ —— 允许多压掉一点。',
+      notes: '⭐ 「万有性质」= **把商空间刻划成「压掉 $U$ 的最一般的落点」**：任何在 $U$ 上消失的映射，都**唯一**地经由 $V/U$ 分解。\n\n存在性来自定义、唯一性来自 $\\pi$ 满。\n\n⭐ 这条性质是「余核 / 商」这一族概念的通用配方，在范畴论里叫**余等化子**的万有性质（`def.equalizer` 那一支）。\n\n⚠ 条件是 $U \\subseteq \\ker T$（$T$ 在 $U$ 上为零），不是 $U = \\ker T$ —— 允许多压掉一点。',
       refs: ['Lang, Linear Algebra']
     },
     {
@@ -164,7 +164,7 @@ window.MG = window.MG || {};
         '',
         '矩阵 $A \\in M_{m \\times n}(K)$ 的秩定义为它作为 $K^{n} \\to K^{m}$ 的线性映射（$x \\mapsto Ax$）的秩。'
       ].join('\n'),
-      notes: '⭐ 秩是「$T$ 留下了多少维信息」的度量。它是线性代数里**唯一**的数值不变量：两个矩阵在换基下等价（不要求同一个基）当且仅当秩相等。\n\n⚠ 秩依赖基的**选择**吗？不依赖：定义里没有出现基（$\\dim \\operatorname{im} T$ 与基无关，因为维数良定义）。这正是秩好用的原因。\n\n⭐ 后面「行列式」那一段会给出一个只用矩阵元素算秩/判可逆的办法（$\\det \\ne 0 \\iff$ 满秩）。',
+      notes: '⭐ 秩是「$T$ 留下了多少维信息」的度量。\n\n它是线性代数里**唯一**的数值不变量：两个矩阵在换基下等价（不要求同一个基）当且仅当秩相等。\n\n⚠ 秩依赖基的**选择**吗？不依赖：定义里没有出现基（$\\dim \\operatorname{im} T$ 与基无关，因为维数良定义）。\n\n这正是秩好用的原因。\n\n⭐ 后面「行列式」那一段会给出一个只用矩阵元素算秩/判可逆的办法（$\\det \\ne 0 \\iff$ 满秩）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 3']
     },
     {
@@ -198,7 +198,7 @@ window.MG = window.MG || {};
         '',
         '$$\\dim V = \\operatorname{rank} T + \\operatorname{null} T = \\dim \\operatorname{im} T + \\dim \\ker T$$'
       ].join('\n'),
-      notes: '⭐ 这是有限维线性代数的**中心定理**：一个线性映射的输入维数，被「留下的」与「丢掉的」两块恰好分完，不多不少。\n\n⭐ 推论（挑三条最常用的）：\n- $T$ 单 $\\iff \\operatorname{rank} T = \\dim V$；$T$ 满 $\\iff \\operatorname{rank} T = \\dim W$；\n- $\\dim V = \\dim W < \\infty$ 时：$T$ 单 $\\iff$ $T$ 满 $\\iff$ $T$ 可逆（**有限维特有**，无限维不成立：移位算子 $T(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 单不满）；\n- $n$ 元齐次线性方程组的解空间维数 $= n - \\operatorname{rank} A$。\n\n⚠ 只有 $\\dim V < \\infty$ 时才是这个干净的等式；无限维时右边是基数的加法，要写成 $\\dim V = \\dim \\ker T + \\dim \\operatorname{im} T$（对基数成立）。',
+      notes: '⭐ 这是有限维线性代数的**中心定理**：一个线性映射的输入维数，被「留下的」与「丢掉的」两块恰好分完，不多不少。\n\n⭐ 推论（挑三条最常用的）：\n- $T$ 单 $\\iff \\operatorname{rank} T = \\dim V$；\n\n$T$ 满 $\\iff \\operatorname{rank} T = \\dim W$；\n\n\n- $\\dim V = \\dim W < \\infty$ 时：$T$ 单 $\\iff$ $T$ 满 $\\iff$ $T$ 可逆（**有限维特有**，无限维不成立：移位算子 $T(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 单不满）；\n\n\n- $n$ 元齐次线性方程组的解空间维数 $= n - \\operatorname{rank} A$。\n\n⚠ 只有 $\\dim V < \\infty$ 时才是这个干净的等式；\n\n无限维时右边是基数的加法，要写成 $\\dim V = \\dim \\ker T + \\dim \\operatorname{im} T$（对基数成立）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 3', 'Lang, Linear Algebra']
     },
     {
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
         '',
         '它线性，且 $(S \\circ T)^{\\ast} = T^{\\ast} \\circ S^{\\ast}$（**反变**）。'
       ].join('\n'),
-      notes: '⭐ 注意方向：$T : V \\to W$ 的对偶 $T^{\\ast}$ 是 $W^{\\ast} \\to V^{\\ast}$，**箭头反过来**。这就是「对偶」这一词的全部含义，也与 $(-)^{\\ast}$ 作为反变函子的地位一致。\n\n⭐ 有限维时 $V \\cong V^{\\ast}$（等维），但**没有自然的同构** —— 要找同构必须先选一组基。而 $V \\cong V^{\\ast\\ast}$ 有自然同构 $v \\mapsto (\\varphi \\mapsto \\varphi(v))$，这是「对偶的对偶回到自己」。\n\n⚠ 无限维时 $V^{\\ast}$ 严格大于 $V$（$\\dim V^{\\ast} = |K|^{\\dim V}$），所以上述同构不成立。',
+      notes: '⭐ 注意方向：$T : V \\to W$ 的对偶 $T^{\\ast}$ 是 $W^{\\ast} \\to V^{\\ast}$，**箭头反过来**。\n\n这就是「对偶」这一词的全部含义，也与 $(-)^{\\ast}$ 作为反变函子的地位一致。\n\n⭐ 有限维时 $V \\cong V^{\\ast}$（等维），但**没有自然的同构** —— 要找同构必须先选一组基。\n\n而 $V \\cong V^{\\ast\\ast}$ 有自然同构 $v \\mapsto (\\varphi \\mapsto \\varphi(v))$，这是「对偶的对偶回到自己」。\n\n⚠ 无限维时 $V^{\\ast}$ 严格大于 $V$（$\\dim V^{\\ast} = |K|^{\\dim V}$），所以上述同构不成立。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     },
     {
@@ -244,7 +244,7 @@ window.MG = window.MG || {};
         '',
         '并且对任意 $\\varphi \\in V^{\\ast}$ 有 $\\varphi = \\sum_i \\varphi(v_i)\\, v_i^{\\ast}$。'
       ].join('\n'),
-      notes: '⭐ 对偶基是「坐标的第 $i$ 个分量」这个泛函：$v_i^{\\ast}(v) = [v]_{\\mathcal{B}}$ 的第 $i$ 个分量。所以坐标本身就是一个线性泛函。\n\n⭐ 由此得到矩阵的转置：$[T^{\\ast}]_{\\mathcal{B}^{\\ast}}^{\\mathcal{C}^{\\ast}} = ([T]_{\\mathcal{C}}^{\\mathcal{B}})^{\\mathsf{T}}$ —— **对偶就是转置**，这就是转置这个名字的来源。\n\n⚠ 对偶基依赖基的选取：换一组基，对偶基也跟着换（且是反向的，见「基变换」）。',
+      notes: '⭐ 对偶基是「坐标的第 $i$ 个分量」这个泛函：$v_i^{\\ast}(v) = [v]_{\\mathcal{B}}$ 的第 $i$ 个分量。\n\n所以坐标本身就是一个线性泛函。\n\n⭐ 由此得到矩阵的转置：$[T^{\\ast}]_{\\mathcal{B}^{\\ast}}^{\\mathcal{C}^{\\ast}} = ([T]_{\\mathcal{C}}^{\\mathcal{B}})^{\\mathsf{T}}$ —— **对偶就是转置**，这就是转置这个名字的来源。\n\n⚠ 对偶基依赖基的选取：换一组基，对偶基也跟着换（且是反向的，见「基变换」）。',
       refs: ['Lang, Linear Algebra']
     },
     {
@@ -289,7 +289,7 @@ window.MG = window.MG || {};
         '',
         '此时每个 $v \\in V$ 都**唯一**地写成 $v = u + w$；映射 $(u, w) \\mapsto u + w$ 是线性同构 $U \\times W \\cong V$。称 $W$ 是 $U$ 在 $V$ 中的**补空间**。'
       ].join('\n'),
-      notes: '⭐ 直和的两条 = 「存在性」+「唯一性」，与基的定义（生成 + 无关）是同一个模式。这也解释了为什么一条都不能少：$U + W = V$ 管存在、$U \\cap W = 0$ 管唯一。\n\n⭐ **补空间总是存在**（有限维或一般情形都可以用 Zorn 引理把 $U$ 的基扩成 $V$ 的基，取新增向量张成 $W$），但**不唯一**（$\\mathbb{R}^{2}$ 里 $x$ 轴的补空间可以是任意另一条过原点的直线）。\n\n⚠ 与「商空间」的分工：$V/U$ 是**压掉** $U$，$U \\oplus W$ 是**拆开** $V$。有补空间时 $V/U \\cong W$（由第一同构定理），但一般情形没有这种拆法。',
+      notes: '⭐ 直和的两条 = 「存在性」+「唯一性」，与基的定义（生成 + 无关）是同一个模式。\n\n这也解释了为什么一条都不能少：$U + W = V$ 管存在、$U \\cap W = 0$ 管唯一。\n\n⭐ **补空间总是存在**（有限维或一般情形都可以用 Zorn 引理把 $U$ 的基扩成 $V$ 的基，取新增向量张成 $W$），但**不唯一**（$\\mathbb{R}^{2}$ 里 $x$ 轴的补空间可以是任意另一条过原点的直线）。\n\n⚠ 与「商空间」的分工：$V/U$ 是**压掉** $U$，$U \\oplus W$ 是**拆开** $V$。\n\n有补空间时 $V/U \\cong W$（由第一同构定理），但一般情形没有这种拆法。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 3']
     }
   ],
@@ -403,7 +403,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $T : V \\to W$ 线性且 $U \\subseteq \\ker T$。',
         '',
-        '**存在性**：令 $\\overline{T}(v + U) := T(v)$。良定义：若 $v - v\' \\in U \\subseteq \\ker T$，则 $T(v - v\') = 0$，即 $T(v) = T(v\')$。线性同第一同构定理的证明。于是 $\\overline{T} \\circ \\pi = T$ 由定义成立。',
+        '**存在性**：令 $\\overline{T}(v + U) := T(v)$。\n\n良定义：若 $v - v\' \\in U \\subseteq \\ker T$，则 $T(v - v\') = 0$，即 $T(v) = T(v\')$。\n\n线性同第一同构定理的证明。\n\n于是 $\\overline{T} \\circ \\pi = T$ 由定义成立。',
         '',
         '**唯一性**：设 $S : V/U \\to W$ 也满足 $S \\circ \\pi = T$。任取 $v + U \\in V/U$，则',
         '',

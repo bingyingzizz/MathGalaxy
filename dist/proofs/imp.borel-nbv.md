@@ -13,4 +13,8 @@ $$F_j^{\pm }(x) := \mu_j^{\pm }((-\infty, x])$$
 
 $$F = F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$
 
+（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；
+
+四块加起来即得 $\mu _F$。
+
 > 续见 proofs/imp.borel-nbv.2.md

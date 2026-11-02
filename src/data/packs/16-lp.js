@@ -231,7 +231,7 @@ window.MG = window.MG || {};
         '**(e)** 简单函数在 $L^\\infty$ 中**稠密**。'
       ].join('\n'),
       notes: [
-        ['**证明。**','**(a)** 由 $|f(x)g(x)| \\le \\|f\\|_{\\infty}|g(x)|$ 对 a.e. $x$ 成立，取积分得 $\\|fg\\|_{1} \\le \\|f\\|_{1}\\|g\\|_{\\infty}$；同理 $\\|fg\\|_{1} \\le \\|g\\|_{1}\\|f\\|_{\\infty}$ ✓。','  等号 $\\|fg\\|_{1} = \\|f\\|_{1}\\|g\\|_{\\infty}$ 成立 $\\iff$ $|g| = \\|g\\|_{\\infty}$ 在 $\\{f \\ne 0\\}$ 上 a.e. —— 否则 $\\{f\\ne0\\}\\cap\\{|g|<\\|g\\|_{\\infty}\\}$ 正测度（在 $\\sigma$ 有限下可取有限测度的子块），那里的严格不等式让整体不等式严格 ✓。','**(b)** $\\|\\cdot\\|_{\\infty}$ 是范数：非负性与齐次显然；$\\|f\\|_{\\infty} = 0 \\iff f = 0$ a.e. ✓；三角不等式由逐点 $|f+g| \\le |f|+|g|$ 取**本质上确界**得到：设 $N$ 是使 $|f| \\le \\|f\\|_{\\infty}$、$|g| \\le \\|g\\|_{\\infty}$ 同时成立的补集，则在 $N^{c}$ 上 $|f+g| \\le \\|f\\|_{\\infty}+\\|g\\|_{\\infty}$，故 $\\|f+g\\|_{\\infty} \\le \\|f\\|_{\\infty}+\\|g\\|_{\\infty}$ ✓。','**(c)** $\\|f_{n}-f\\|_{\\infty} \\to 0$ $\\iff$ 存在**零集** $N$ 使 $f_{n} \\to f$ 在 $N^{c}$ 上**一致**：','- $(\\implies)$ 取 $N := \\bigcup_{n}\\{|f_{n}-f| > \\|f_{n}-f\\|_{\\infty}\\}$，可数并零集 ✓；','- $(\\Longleftarrow)$ $\\|f_{n}-f\\|_{\\infty} \\le \\sup_{N^{c}}|f_{n}-f| \\to 0$ ✓。','**(d)(e)** $L^{\\infty}$ 里简单函数稠密：把 $f$ 按值域分层截断即得一致逼近 ✓。但**紧支**简单函数一般不稠密：取 $f \\equiv 1$（$X$ 非紧），任何紧支 $\\varphi$ 都满足 $\\|f-\\varphi\\|_{\\infty} \\ge 1$ ✓ —— 因为 $L^{\\infty}$ 只看**逐点大小**、不看集合的测度。∎'].join('\n'),
+        ['**证明。**','**(a)** 由 $|f(x)g(x)| \\le \\|f\\|_{\\infty}|g(x)|$ 对 a.e. $x$ 成立，取积分得 $\\|fg\\|_{1} \\le \\|f\\|_{1}\\|g\\|_{\\infty}$；\n\n同理 $\\|fg\\|_{1} \\le \\|g\\|_{1}\\|f\\|_{\\infty}$ ✓。','  等号 $\\|fg\\|_{1} = \\|f\\|_{1}\\|g\\|_{\\infty}$ 成立 $\\iff$ $|g| = \\|g\\|_{\\infty}$ 在 $\\{f \\ne 0\\}$ 上 a.e. —— 否则 $\\{f\\ne0\\}\\cap\\{|g|<\\|g\\|_{\\infty}\\}$ 正测度（在 $\\sigma$ 有限下可取有限测度的子块），那里的严格不等式让整体不等式严格 ✓。','**(b)** $\\|\\cdot\\|_{\\infty}$ 是范数：非负性与齐次显然；$\\|f\\|_{\\infty} = 0 \\iff f = 0$ a.e. ✓；三角不等式由逐点 $|f+g| \\le |f|+|g|$ 取**本质上确界**得到：设 $N$ 是使 $|f| \\le \\|f\\|_{\\infty}$、$|g| \\le \\|g\\|_{\\infty}$ 同时成立的补集，则在 $N^{c}$ 上 $|f+g| \\le \\|f\\|_{\\infty}+\\|g\\|_{\\infty}$，故 $\\|f+g\\|_{\\infty} \\le \\|f\\|_{\\infty}+\\|g\\|_{\\infty}$ ✓。','**(c)** $\\|f_{n}-f\\|_{\\infty} \\to 0$ $\\iff$ 存在**零集** $N$ 使 $f_{n} \\to f$ 在 $N^{c}$ 上**一致**：','- $(\\implies)$ 取 $N := \\bigcup_{n}\\{|f_{n}-f| > \\|f_{n}-f\\|_{\\infty}\\}$，可数并零集 ✓；','- $(\\Longleftarrow)$ $\\|f_{n}-f\\|_{\\infty} \\le \\sup_{N^{c}}|f_{n}-f| \\to 0$ ✓。','**(d)(e)** $L^{\\infty}$ 里简单函数稠密：把 $f$ 按值域分层截断即得一致逼近 ✓。\n\n但**紧支**简单函数一般不稠密：取 $f \\equiv 1$（$X$ 非紧），任何紧支 $\\varphi$ 都满足 $\\|f-\\varphi\\|_{\\infty} \\ge 1$ ✓ —— 因为 $L^{\\infty}$ 只看**逐点大小**、不看集合的测度。\n\n∎'].join('\n'),
         '⚠ (c) 值得注意：$L^\\infty$ 范数收敛 $=$ **「丢掉一个零集之后一致收敛」** —— 这是 $L^\\infty$ 独有的、比其他 $L^p$ 强得多的性质。',
         '⚠ (e) 与「紧支简单函数在 $L^p$ 稠密」形成对照：$L^\\infty$ 里简单函数够稠密，但**紧支**的就不够（因为 $L^\\infty$ 不看测度大小，只看逐点大小）。',
         '一个很有用的直觉 ——「**$L^p$ 怎么样失败？**」：',
@@ -647,7 +647,7 @@ window.MG = window.MG || {};
         '',
         '则 $\\left| \\int fg \\right| = \\mu(B)^{-1/q} \\int_B |g| > \\varepsilon \\, \\mu(B)^{1/p} > \\varepsilon C^{1/p}$，令 $C \\to \\infty$ 就与 $M_g(g) < \\infty$ 矛盾。',
         '',
-        '于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。令',
+        '于是可取 $\\{E_n\\} \\uparrow \\{g \\ne 0\\}$，$\\mu(E_n) < \\infty$；再取简单 $\\varphi_n \\to g$、$|\\varphi_n| \\le |g|$，令 $g_n := \\varphi_n \\chi_{E_n}$，则 $g_n \\to g$、$|g_n| \\le |g|$、且 $g_n$ 在 $E_n^c$ 外为零。\n\n令',
         '',
         '$$f_n := \\frac{|g_n|^{q-1} \\operatorname{sgn} g_n}{\\|g_n\\|_q^{\\,q-1}}, \\qquad \\|f_n\\|_p = 1$$',
         '',
@@ -657,7 +657,11 @@ window.MG = window.MG || {};
         '',
         '（第一个不等号由 Fatou，第二个是 $f_n g_n = |g_n|^q$，中间那个等号用的仍是符号 $\\operatorname{sgn}$ 的消失。）故 $\\|g\\|_q \\le M_g(g) < \\infty$，$g \\in L^q$；反向不等式 $M_g(g) \\le \\|g\\|_q$ 由 Hölder。',
         '',
-        '**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；反方向由 Hölder。∎'
+        '**Step 3：$q = \\infty$。** 对 $\\varepsilon > 0$ 令 $A = \\{|g(x)| \\ge M_\\infty(g) + \\varepsilon\\}$。\n\n' +
+        '若 $\\mu(A) > 0$，由半有限性或 $A \\subseteq \\{g \\ne 0\\}$ 的 $\\sigma$有限性取 $B \\subseteq A$、$0 < \\mu(B) < \\infty$，令 $f = \\mu(B)^{-1} \\chi_B \\operatorname{sgn} g$，则 $\\|f\\|_1 = 1$ 而 $\\int fg \\ge M_\\infty(g) + \\varepsilon$ —— 矛盾。\n\n' +
+        '故 $\\mu(A) = 0$，即 $\\|g\\|_\\infty \\le M_\\infty(g)$；\n\n' +
+        '反方向由 Hölder。\n\n' +
+        '∎'
       ].join('\n')
     },
 
@@ -687,14 +691,16 @@ window.MG = window.MG || {};
         '$$\\Phi(\\chi_E) = \\int \\chi_E g \\, d\\mu$$',
         '对一切简单函数 $f$ 就有 $\\Phi(f) = \\int fg \\, d\\mu$（线性）。',
         '',
-        '**④ 把 $g$ 提升到 $L^q$。** 由 $\\left| \\int fg \\right| = |\\Phi(f)| \\le \\|\\Phi\\| \\, \\|f\\|_p$，有界泛函那条命题给出 $g \\in L^q$ 且 $\\|g\\|_q \\le \\|\\Phi\\|$。再由稠密性（简单函数在 $L^p$ 稠密、$\\Phi$ 连续）得 $\\Phi(f) = \\int fg$ 对**一切** $f \\in L^p$ 成立。',
+        '**④ 把 $g$ 提升到 $L^q$。** 由 $\\left| \\int fg \\right| = |\\Phi(f)| \\le \\|\\Phi\\| \\, \\|f\\|_p$，有界泛函那条命题给出 $g \\in L^q$ 且 $\\|g\\|_q \\le \\|\\Phi\\|$。\n\n再由稠密性（简单函数在 $L^p$ 稠密、$\\Phi$ 连续）得 $\\Phi(f) = \\int fg$ 对**一切** $f \\in L^p$ 成立。',
         '',
-        '**Step 2：$\\mu$ $\\sigma$有限。** 取 $\\{E_n\\} \\uparrow$、$0 < \\mu(E_n) < \\infty$、$X = \\bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。对每个 $n$ 用 Step 1 得 $g_n \\in L^q(E_n)$，且',
+        '**Step 2：$\\mu$ $\\sigma$有限。** 取 $\\{E_n\\} \\uparrow$、$0 < \\mu(E_n) < \\infty$、$X = \\bigcup_n E_n$，并把 $L^p(E_n)$ 等同于「在 $E_n$ 外为零的 $L^p(X)$ 函数」。\n\n对每个 $n$ 用 Step 1 得 $g_n \\in L^q(E_n)$，且',
         '',
         '$$\\|g_n\\|_q \\le \\left\\| \\Phi|_{L^p(E_n)} \\right\\| \\le \\|\\Phi\\|$$',
-        '唯一性（a.e.）给出 $g_n = g_m$ a.e. 于 $E_n$（$n < m$），所以它们拼成一个 a.e. 良定义的 $g$。由 **MCT**，$\\|g\\|_q = \\lim_n \\|g_n\\|_q \\le \\|\\Phi\\|$，故 $g \\in L^q$；而对 $f \\in L^p$，由 **DCT** $f\\chi_{E_n} \\to f$ 于 $L^p$，于是 $\\Phi(f) = \\lim_n \\Phi(f\\chi_{E_n}) = \\lim_n \\int_{E_n} fg = \\int fg$。',
+        '唯一性（a.e.）给出 $g_n = g_m$ a.e. 于 $E_n$（$n < m$），所以它们拼成一个 a.e. 良定义的 $g$。\n\n' +
+        '由 **MCT**，$\\|g\\|_q = \\lim_n \\|g_n\\|_q \\le \\|\\Phi\\|$，故 $g \\in L^q$；\n\n' +
+        '而对 $f \\in L^p$，由 **DCT** $f\\chi_{E_n} \\to f$ 于 $L^p$，于是 $\\Phi(f) = \\lim_n \\Phi(f\\chi_{E_n}) = \\lim_n \\int_{E_n} fg = \\int fg$。',
         '',
-        '**Step 3：$\\mu$ 任意（此时 $p > 1$，故 $q < \\infty$）。** 对每个 $\\sigma$有限集 $E \\subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \\in L^q(E)$ 使 $\\Phi(f) = \\int f g_E$ 对一切 $f \\in L^p(E)$ 成立，且 $\\|g_E\\|_q \\le \\|\\Phi\\|$。若 $F \\supseteq E$ 也 $\\sigma$有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\\|g_F\\|_q \\ge \\|g_E\\|_q$。令',
+        '**Step 3：$\\mu$ 任意（此时 $p > 1$，故 $q < \\infty$）。** 对每个 $\\sigma$有限集 $E \\subseteq X$，Step 2 给出 a.e. 唯一的 $g_E \\in L^q(E)$ 使 $\\Phi(f) = \\int f g_E$ 对一切 $f \\in L^p(E)$ 成立，且 $\\|g_E\\|_q \\le \\|\\Phi\\|$。\n\n若 $F \\supseteq E$ 也 $\\sigma$有限，则 $g_F = g_E$ a.e. 于 $E$，因而 $\\|g_F\\|_q \\ge \\|g_E\\|_q$。\n\n令',
         '',
         '$$M := \\sup \\{\\, \\|g_E\\|_q : E \\text{ 是 }\\sigma\\text{-有限集} \\,\\} \\le \\|\\Phi\\|$$',
         '',

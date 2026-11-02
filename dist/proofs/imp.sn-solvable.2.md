@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-与它们在 $A_5$ 中的**共轭类大小**是：
+素与它们在 $A_5$ 中的**共轭类大小**是：
 
 > 续见 proofs/imp.sn-solvable.3.md

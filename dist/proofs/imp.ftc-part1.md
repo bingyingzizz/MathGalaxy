@@ -5,7 +5,9 @@
 
 设 $|f| \le M$。
 
-**(a)** 对 $x < y$，由区间可加性 $F(y) - F(x) = \int_x^y f$，再由基本估计 $|F(y) - F(x)| \le M(y - x)$。故 $F$ 是 Lipschitz 的，特别地连续（给定 $\varepsilon > 0$ 取 $\delta = \varepsilon / M$，$M = 0$ 时平凡）。
+**(a)** 对 $x < y$，由区间可加性 $F(y) - F(x) = \int_x^y f$，再由基本估计 $|F(y) - F(x)| \le M(y - x)$。
+
+故 $F$ 是 Lipschitz 的，特别地连续（给定 $\varepsilon > 0$ 取 $\delta = \varepsilon / M$，$M = 0$ 时平凡）。
 
 **(b)** 设 $f$ 在 $x_0$ 连续，给定 $\varepsilon > 0$，取 $\delta > 0$ 使 $|x - x_0| < \delta$ 时 $|f(x) - f(x_0)| < \varepsilon$。则对 $0 < h < \delta$
 

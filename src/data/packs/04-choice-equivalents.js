@@ -120,7 +120,12 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐⭐ **它在 ZF 里就能证，不需要选择公理。** 这是它最要紧的性质 —— 正因为不依赖 AC，它才能安全地用在「$AC \\implies$ 良序定理」「$AC \\implies$ 佐恩引理」这类证明里，用来说明超限递归**必定停下来**，而不至于循环论证。',
-        '**证明思路**（全在 ZF 内）：设 $\\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\\mathcal{W} \\subseteq \\mathcal{P}(X \\times X)$。任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；由替换公理，这些序型构成一个集合 $A$。$A$ 在 $\\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\\alpha$**。若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。故 $\\alpha$ 不能单射进 $X$。',
+        '**证明思路**（全在 ZF 内）：设 $\\mathcal{W}$ 为 $X$ 的各个子集上的良序关系全体 —— 它是集合，因为 $\\mathcal{W} \\subseteq \\mathcal{P}(X \\times X)$。\n\n' +
+        '任意两个这样的良序，较短者必同构于较长者的一个初始段，故按「序型」它们两两可比；\n\n' +
+        '由替换公理，这些序型构成一个集合 $A$。\n\n' +
+        '$A$ 在 $\\in$ 下是传递的良序集，于是 **$A$ 本身就是一个序数 $\\alpha$**。\n\n' +
+        '若 $\\alpha$ 能单射进 $X$，把这个单射搬过去，就得到 $X$ 某个子集上的一个良序、其序型恰为 $\\alpha$，即 $\\alpha \\in A = \\alpha$ —— 与序数不能自属矛盾。\n\n' +
+        '故 $\\alpha$ 不能单射进 $X$。',
         '**它怎样让递归「停」**：超限递归每走一步就吐出 $X$ 的一个新元素。若一直走下去，就会得到 $\\aleph (X) \\to X$ 的单射，与 $\\aleph (X)$ 的定义直接冲突。所以递归必在某个 $\\alpha < \\aleph (X)$ 处停止。',
         '**一个立刻的推论**：序数全体不构成集合（Burali–Forti 悖论）。在 Hartogs 定理里取 $X =$ 全体序数即可 —— 每个序数都通过恒等映射单射进它。'
       ].join('\n\n'),
@@ -153,7 +158,7 @@ window.MG = window.MG || {};
             '一旦余集为空就停止。',
             '',
             [
-              '3. **过程一定会停**：取 $X$ 的 **Hartogs 数** $\\aleph (X)$，即最小的不能单射进 $X$ 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。若对一切 $\\alpha < \\aleph (X)$ 过程都没停，则 $\\alpha \\mapsto x(\\alpha )$ 就是 $\\aleph (X)$ 到 $X$ 的单射，与 $\\aleph (X)$ 的定义矛盾。故存在序数 $\\gamma$ 使 $x : \\gamma \\to X$ 是双射。',
+              '3. **过程一定会停**：取 $X$ 的 **Hartogs 数** $\\aleph (X)$，即最小的不能单射进 $X$ 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。\n\n若对一切 $\\alpha < \\aleph (X)$ 过程都没停，则 $\\alpha \\mapsto x(\\alpha )$ 就是 $\\aleph (X)$ 到 $X$ 的单射，与 $\\aleph (X)$ 的定义矛盾。\n\n故存在序数 $\\gamma$ 使 $x : \\gamma \\to X$ 是双射。',
               '4. 把 $\\gamma$ 上的序经 $x$ 搬到 $X$ 上：',
             ].join('\n'),
             '',
@@ -230,7 +235,7 @@ window.MG = window.MG || {};
             '',
             [
               '3. 由佐恩引理，取极大元 $(W, \\preceq )$。',
-              '4. 若 $W \\ne X$，取 $x \\in X \\setminus W$，在 $W \\cup \\{x\\}$ 上定义序：保留 $W$ 上的 $\\preceq$，并令所有 $w \\in W$ 都 $\\preceq x$（把 $x$ 放在最顶端）。这仍是良序，而且是 $(W, \\preceq )$ 的严格延拓，与极大性矛盾。故 $W = X$，即 $X$ 被良序化。∎',
+              '4. 若 $W \\ne X$，取 $x \\in X \\setminus W$，在 $W \\cup \\{x\\}$ 上定义序：保留 $W$ 上的 $\\preceq$，并令所有 $w \\in W$ 都 $\\preceq x$（把 $x$ 放在最顶端）。\n\n这仍是良序，而且是 $(W, \\preceq )$ 的严格延拓，与极大性矛盾。\n\n故 $W = X$，即 $X$ 被良序化。\n\n∎',
             ].join('\n'),
           ].join('\n')
         }
@@ -255,7 +260,12 @@ window.MG = window.MG || {};
             '按包含关系 $\\subseteq$ 排序。给定 $C_{0}$ 时改用 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$，它非空（$C_{0} \\in \\mathcal{C}_{0}$）。',
             '',
             [
-              '1. **$\\mathcal{C}_{0}$ 中每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{C}_{0}$ 是（$\\subseteq$）链，即 $\\mathcal{D}$ 是一族两两可比较的链。令 $U = \\bigcup \\mathcal{D}$。任取 $x, y \\in U$，则有 $D_{1}, D_{2} \\in \\mathcal{D}$ 使 $x \\in D_{1}$、$y \\in D_{2}$；因 $\\mathcal{D}$ 是链，不妨设 $D_{1} \\subseteq D_{2}$，于是 $x, y \\in D_{2}$，而 $D_{2}$ 是链，故 $x$ 与 $y$ 可比。所以 $U$ 是链。又每个 $D \\in \\mathcal{D}$ 都 $\\supseteq C_{0}$，故 $U \\supseteq C_{0}$，即 $U \\in \\mathcal{C}_{0}$，它是 $\\mathcal{D}$ 的上界。',
+              '1. **$\\mathcal{C}_{0}$ 中每个链有上界**：设 $\\mathcal{D} \\subseteq \\mathcal{C}_{0}$ 是（$\\subseteq$）链，即 $\\mathcal{D}$ 是一族两两可比较的链。\n\n' +
+              '令 $U = \\bigcup \\mathcal{D}$。\n\n' +
+              '任取 $x, y \\in U$，则有 $D_{1}, D_{2} \\in \\mathcal{D}$ 使 $x \\in D_{1}$、$y \\in D_{2}$；\n\n' +
+              '因 $\\mathcal{D}$ 是链，不妨设 $D_{1} \\subseteq D_{2}$，于是 $x, y \\in D_{2}$，而 $D_{2}$ 是链，故 $x$ 与 $y$ 可比。\n\n' +
+              '所以 $U$ 是链。\n\n' +
+              '又每个 $D \\in \\mathcal{D}$ 都 $\\supseteq C_{0}$，故 $U \\supseteq C_{0}$，即 $U \\in \\mathcal{C}_{0}$，它是 $\\mathcal{D}$ 的上界。',
               '2. 由佐恩引理，$\\mathcal{C}_{0}$ 有极大元 $M$。$M$ 是包含 $C_{0}$ 的链，且不能再变大，即 $M$ 是包含 $C_{0}$ 的极大链。∎',
             ].join('\n'),
           ].join('\n')
@@ -268,7 +278,7 @@ window.MG = window.MG || {};
             [
               '1. 由 Hausdorff 极大原理（取 $C_{0} = \\emptyset$），$P$ 存在极大链 $M$。',
               '2. M 是链，故由题设有上界 $u \\in P$。',
-              '3. **断言 $u$ 是极大元**：若不然，存在 $v \\in P$ 使 $u \\prec v$。则 $M \\cup \\{v\\}$ 仍是链——任取 $m \\in M$，由 $m \\preceq u \\prec v$ 及传递性得 $m \\preceq v$，故 $m$ 与 $v$ 可比。于是 $M \\subset M \\cup \\{v\\}$ 是一个更大的链，与 $M$ 的极大性矛盾。',
+              '3. **断言 $u$ 是极大元**：若不然，存在 $v \\in P$ 使 $u \\prec v$。\n\n则 $M \\cup \\{v\\}$ 仍是链——任取 $m \\in M$，由 $m \\preceq u \\prec v$ 及传递性得 $m \\preceq v$，故 $m$ 与 $v$ 可比。\n\n于是 $M \\subset M \\cup \\{v\\}$ 是一个更大的链，与 $M$ 的极大性矛盾。',
             ].join('\n'),
             '',
             '故 $u$ 是 $P$ 的极大元。∎'
@@ -298,21 +308,25 @@ window.MG = window.MG || {};
             '',
             [
               '2. $\\mathcal{C}$ 非空（$\\emptyset$ 是链）。由 Tukey 引理，$\\mathcal{C}$ 有极大元 $M$，即 $P$ 的极大链。',
-              '3. 若要包含给定的 $C_{0}$：注意 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。对 $\\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。∎',
+              '3. 若要包含给定的 $C_{0}$：注意 $\\mathcal{C}_{0} = \\{ C \\in \\mathcal{C} : C \\supseteq C_{0} \\}$ 同样具有有限特征——「$X$ 含 $C_{0}$ 且 $X$ 的每个有限子集是链」正是有限特征的形状（含 $C_{0}$ 是整体性质，不对有限子集设限）。\n\n对 $\\mathcal{C}_{0}$ 用 Tukey 引理即得包含 $C_{0}$ 的极大链。\n\n∎',
             ].join('\n'),
           ].join('\n')
         },
         {
           label: 'Hausdorff 极大原理 ⇒ Tukey 引理',
           text: [
-            '设 $\\mathcal{A}$ 是具有有限特征的非空集合族。把 Hausdorff 极大原理用在偏序集 $(\\mathcal{A}, \\subseteq )$ 上，得到 $\\mathcal{A}$ 的一个**极大链** $\\mathcal{C}$（即 $\\mathcal{A}$ 中一族在 $\\subseteq$ 下两两可比较、且不能再扩大成员的子族）。',
+            '设 $\\mathcal{A}$ 是具有有限特征的非空集合族。\n\n把 Hausdorff 极大原理用在偏序集 $(\\mathcal{A}, \\subseteq )$ 上，得到 $\\mathcal{A}$ 的一个**极大链** $\\mathcal{C}$（即 $\\mathcal{A}$ 中一族在 $\\subseteq$ 下两两可比较、且不能再扩大成员的子族）。',
             '',
             '令',
             '',
             '$$U = \\bigcup \\{ A : A \\in \\mathcal{C} \\}$$',
             '',
             [
-              '1. **$U \\in \\mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\\mathcal{A}$。设 $S \\subseteq U$ 有限，则每个 $s \\in S$ 落在某个 $A_s \\in \\mathcal{C}$ 中；$\\mathcal{C}$ 是 $\\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \\subseteq A_{0}$）。因为 $A_{0} \\in \\mathcal{A}$ 且 $\\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\\mathcal{A}$，特别地 $S \\in \\mathcal{A}$。故 $U$ 的每个有限子集属于 $\\mathcal{A}$，从而 $U \\in \\mathcal{A}$。',
+              '1. **$U \\in \\mathcal{A}$**：由有限特征，只需证 $U$ 的每个有限子集属于 $\\mathcal{A}$。\n\n' +
+              '设 $S \\subseteq U$ 有限，则每个 $s \\in S$ 落在某个 $A_s \\in \\mathcal{C}$ 中；\n\n' +
+              '$\\mathcal{C}$ 是 $\\subseteq$链而 $S$ 有限，故其中必有最大的 $A_{0}$ 包含 $S$（即 $S \\subseteq A_{0}$）。\n\n' +
+              '因为 $A_{0} \\in \\mathcal{A}$ 且 $\\mathcal{A}$ 具有有限特征，$A_{0}$ 的每个有限子集都属于 $\\mathcal{A}$，特别地 $S \\in \\mathcal{A}$。\n\n' +
+              '故 $U$ 的每个有限子集属于 $\\mathcal{A}$，从而 $U \\in \\mathcal{A}$。',
               '2. **$U$ 是极大元**：若存在 $B \\in \\mathcal{A}$ 使 $U \\subset B$，则 $\\mathcal{C} \\cup \\{B\\}$ 仍是 $\\subseteq$链（每个 $A \\in \\mathcal{C}$ 满足 $A \\subseteq U \\subseteq B$），与 $\\mathcal{C}$ 的极大性矛盾。',
             ].join('\n'),
             '',
@@ -347,11 +361,11 @@ window.MG = window.MG || {};
         '',
         '于是得到一列严格递增的 $p(0) \\prec p(1) \\prec p(2) \\prec \\cdots$。第 0 步用 $S(\\emptyset ) = P \\ne \\emptyset$，所以 $p(0) = \\varphi (P)$ 有定义。',
         '',
-        '**④ 必停**：由 **Hartogs 定理**，$\\aleph (P)$ 是不能单射进 $P$ 的最小序数。把递归的上限取到 $\\aleph (P)$ 就够 —— 若对一切 $\\alpha < \\aleph (P)$ 都不停，则 $\\alpha \\mapsto p(\\alpha )$ 就是一个单射 $\\aleph (P) \\to P$，与 $\\aleph (P)$ 的定义矛盾。故存在 $\\alpha _{0} < \\aleph (P)$ 使 $S(\\{ p(\\beta ) : \\beta < \\alpha _{0} \\}) = \\emptyset$。（这一步只用到 ZF，不用 AC。）',
+        '**④ 必停**：由 **Hartogs 定理**，$\\aleph (P)$ 是不能单射进 $P$ 的最小序数。\n\n把递归的上限取到 $\\aleph (P)$ 就够 —— 若对一切 $\\alpha < \\aleph (P)$ 都不停，则 $\\alpha \\mapsto p(\\alpha )$ 就是一个单射 $\\aleph (P) \\to P$，与 $\\aleph (P)$ 的定义矛盾。\n\n故存在 $\\alpha _{0} < \\aleph (P)$ 使 $S(\\{ p(\\beta ) : \\beta < \\alpha _{0} \\}) = \\emptyset$。\n\n（这一步只用到 ZF，不用 AC。）',
         '',
         '**⑤ 停下来就给极大元**：令 $C = \\{ p(\\beta ) : \\beta < \\alpha _{0} \\}$，它是 $P$ 的一个链（而且是严格递增的），由题设存在上界 $u \\in P$。',
         '',
-        '**⑥ $u$ 是极大元**：若存在 $v \\in P$ 使 $u \\prec v$，则由 $u \\succeq c$（$\\forall c \\in C$）与传递性得 $v \\succ c$（$\\forall c \\in C$），即 $v \\in S(C)$ —— 与 $S(C) = \\emptyset$ 矛盾。故 $u$ 是 $P$ 的极大元。∎',
+        '**⑥ $u$ 是极大元**：若存在 $v \\in P$ 使 $u \\prec v$，则由 $u \\succeq c$（$\\forall c \\in C$）与传递性得 $v \\succ c$（$\\forall c \\in C$），即 $v \\in S(C)$ —— 与 $S(C) = \\emptyset$ 矛盾。\n\n故 $u$ 是 $P$ 的极大元。\n\n∎',
         '',
         '$>$ 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停」**。对比之下，经由良序定理的证法（见「良序定理 $\\iff$ 佐恩引理」那条黑线）是把「停」交给 Burali–Forti 悖论。'
       ].join('\n'),

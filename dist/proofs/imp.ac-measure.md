@@ -13,4 +13,6 @@ $$\sum_j |F(b_j) - F(a_j)| = \sum_j |\mu_F((a_j, b_j])| \le |\mu_F|(E) < \vareps
 
 这正是函数绝对连续的定义。
 
+**$(\implies )$** 设 $F$ 绝对连续，$E \in \mathfrak{B}_\mathbb{R}$、$m(E) = 0$，要证 $\mu_F(E) = 0$。
+
 > 续见 proofs/imp.ac-measure.2.md

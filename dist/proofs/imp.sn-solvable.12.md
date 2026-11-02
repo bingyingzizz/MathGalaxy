@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-的并，且含 $e$，故
+类的并，且含 $e$，故
 
 > 续见 proofs/imp.sn-solvable.13.md

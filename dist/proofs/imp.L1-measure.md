@@ -7,7 +7,9 @@
 
 $$\mu(\{g \ge \varepsilon\}) \le (1/\varepsilon)\cdot\int g d\mu$$
 
-证明：在 $\{g \ge \varepsilon\}$ 上有 $\varepsilon \le g$，即 $\varepsilon \chi_{\{g \ge \varepsilon\}} \le g$；两边积分得 $\varepsilon\cdot\mu(\{g \ge \varepsilon\}) \le \int g$。
+证明：在 $\{g \ge \varepsilon\}$ 上有 $\varepsilon \le g$，即 $\varepsilon \chi_{\{g \ge \varepsilon\}} \le g$；
+
+两边积分得 $\varepsilon\cdot\mu(\{g \ge \varepsilon\}) \le \int g$。
 
 取 $g = |f_n - f|$。给定 $\delta > 0$，
 

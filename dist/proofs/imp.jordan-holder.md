@@ -11,4 +11,6 @@ $$A(A^{\ast}\cap B^{\ast}) \trianglelefteq A(A^{\ast} \cap B), \qquad B(A^{\ast}
 
 $$\frac{A(A^{\ast}\cap B)}{A(A^{\ast}\cap B^{\ast})} \;\cong\; \frac{B(A^{\ast}\cap B)}{B(A^{\ast}\cap B^{\ast})}.$$
 
+*证明*：考虑映射 $\varphi : A(A^{\ast}\cap B) \to \dfrac{B(A^{\ast}\cap B)}{B(A^{\ast}\cap B^{\ast})}$。
+
 > 续见 proofs/imp.jordan-holder.2.md

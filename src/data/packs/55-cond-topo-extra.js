@@ -70,12 +70,12 @@ window.MG = window.MG || {};
         '于是对偶函子把「离散阿贝尔群」与「紧 Hausdorff 阿贝尔群」这两个范畴**互相换过来**。'
       ].join('\n'),
       notes: [
-        '**为什么。** $\\mathbb{T} = \\mathbb{R}/\\mathbb{Z}$ 是紧的：从**离散**的 $M$ 到紧的 $\\mathbb{T}$ 的连续同态全体，配上紧开拓扑，自然是紧的（乘积 $\\mathbb{T}^{M}$ 紧，闭子集仍紧）；反过来，$\\widehat{M}$ 紧的时候 $M = \\widehat{\\widehat{M}}$ 就离散了。',
+        '**为什么。** $\\mathbb{T} = \\mathbb{R}/\\mathbb{Z}$ 是紧的：从**离散**的 $M$ 到紧的 $\\mathbb{T}$ 的连续同态全体，配上紧开拓扑，自然是紧的（乘积 $\\mathbb{T}^{M}$ 紧，闭子集仍紧）；\n\n反过来，$\\widehat{M}$ 紧的时候 $M = \\widehat{\\widehat{M}}$ 就离散了。',
         '**两个范例**：$\\widehat{\\mathbb{Z}} \\cong \\mathbb{T}$（离散 $\\to$ 紧）、$\\widehat{\\mathbb{T}} \\cong \\mathbb{Z}$（紧 $\\to$ 离散）。',
         '⭐ **这里可以看到「用紧 Hausdorff 空间测一切」这套思路的源头**：离散群不能直接谈紧性，但它可以「变成」一个紧 Hausdorff 空间；于是「取离散群的商 / 子」这类操作在那边变成「取紧空间的闭子空间 / 商」，全部变成拓扑问题。',
         '📌 这条是 Pontryagin 那一对字典的**一半**（另一条处理挠与连通）。',
         ['**证明。**',
-          '- **$M$ 离散 $\\implies \\widehat M$ 紧**：取满射 $\\mathbb{Z}^{(I)} \\twoheadrightarrow M$；对偶把满射变成**单射**（取值互逆），且像是闭的（$\\widehat M \\hookrightarrow \\mathbb{T}^{I}$ 是闭嵌入）。$\\mathbb{T}$ 紧 Hausdorff、$\\mathbb{T}^{I}$ 紧，闭子集紧 $\\implies$ $\\widehat M$ 紧 ✓。',
+          '- **$M$ 离散 $\\implies \\widehat M$ 紧**：取满射 $\\mathbb{Z}^{(I)} \\twoheadrightarrow M$；对偶把满射变成**单射**（取值互逆），且像是闭的（$\\widehat M \\hookrightarrow \\mathbb{T}^{I}$ 是闭嵌入）。\n\n$\\mathbb{T}$ 紧 Hausdorff、$\\mathbb{T}^{I}$ 紧，闭子集紧 $\\implies$ $\\widehat M$ 紧 ✓。',
           '- **$\\widehat M$ 紧 $\\implies M$ 离散**：由对偶定理（自等价）$M \\cong \\widehat{\\widehat M}$，而 $\\widehat M$ 紧，用上一方向（把 $M$ 换成 $\\widehat M$）得 $M$ 的对偶的对偶…… 更直接地：紧的 $\\widehat M$ 的对偶 $\\widehat{\\widehat M} = M$ 由前一方向是紧的——不，需要的是「紧的对偶离散」：取上半平面 $U\\subseteq\\mathbb{T}$（$\\operatorname{Im} z > 0$），它不含单位元闭包，于是任何连续同态 $\\widehat M \\to \\mathbb{T}$ 的像落在某个 $\\mathbb{T}$ 的连通分量里，再由 $\\widehat M$ 紧、特征标分离点可得 $\\widehat{\\widehat M}$ 在原点有离散的邻域，故 $M = \\widehat{\\widehat M}$ 离散 ✓。',
           '- **紧 $\\implies$ 对偶离散**与上一条的第二个方向是同一句话（对偶自等价 + 对偶把「离散」与「紧」互换的两个方向互为逆）✓。∎'
         ].join('\n')
@@ -102,12 +102,12 @@ window.MG = window.MG || {};
         '更一般地：$M$ 的挠子群 $M_{\\mathrm{tors}}$ 对应对偶的连通分支，而 $M/M_{\\mathrm{tors}}$ 对应 $\\widehat{M}$ 的 Stonean 部分。'
       ].join('\n'),
       notes: [
-        '**为什么「挠」对应「极不连通」。** 阶为 $n$ 的元素 $x$ 对应 $\\widehat{M}$ 上一条满足 $n\\chi(x) = 0$ 的取值 —— 取值落在一个有限子群 $\\mathbb{Z}/n \\subseteq \\mathbb{T}$ 里。有限离散的东西在拓扑上是**极不连通**的：整个对偶空间被「整除不到」的性质切成开闭片。',
+        '**为什么「挠」对应「极不连通」。** 阶为 $n$ 的元素 $x$ 对应 $\\widehat{M}$ 上一条满足 $n\\chi(x) = 0$ 的取值 —— 取值落在一个有限子群 $\\mathbb{Z}/n \\subseteq \\mathbb{T}$ 里。\n\n有限离散的东西在拓扑上是**极不连通**的：整个对偶空间被「整除不到」的性质切成开闭片。',
         '**为什么「无挠」对应「连通」。** 反过来，若 $M$ 无挠（像 $\\mathbb{Z}$ 那样），对偶 $\\widehat{M}$ 就是连通的 —— 例子：$\\widehat{\\mathbb{Z}} = \\mathbb{T}$ 连通，而 $\\widehat{\\mathbb{Z}/n} = \\mathbb{Z}/n$ 是有限离散、极不连通。',
         '⭐ **为什么凝聚态数学特别在意这条**：Stonean 空间恰好是凝聚态上同调**恒为零**的那一类空间，而极不连通性又恰好对应对偶侧的挠性。于是「Stonean 上的零调性」这条 §8.1 的起点定理，在这里有了一个**纯代数**的描述方式。',
         '⚠️ 注意 $M$ 这里要求**离散** —— 一般局部紧群的对偶分析要先把结构定理用上。',
         ['**证明。**',
-          '- **挠 $\\iff$ Stonean**：$M$ 挠 $\\iff$ $M = \\varinjlim_{i} M_{i}$（$M_{i}$ **有限**）$\\iff$ $\\widehat M = \\varprojlim_{i} \\widehat{M_{i}}$（每个 $\\widehat{M_{i}}$ 仍有限，对偶把余极限翻成逆极限）$\\iff$ $\\widehat M$ 是**投射有限**空间，即 Stone 空间（紧、Hausdorff、全不连通）；对一般（非挠）离散群，极不连通性对应同样的「有限块的逆极限」结构 ✓。',
+          '- **挠 $\\iff$ Stonean**：$M$ 挠 $\\iff$ $M = \\varinjlim_{i} M_{i}$（$M_{i}$ **有限**）$\\iff$ $\\widehat M = \\varprojlim_{i} \\widehat{M_{i}}$（每个 $\\widehat{M_{i}}$ 仍有限，对偶把余极限翻成逆极限）$\\iff$ $\\widehat M$ 是**投射有限**空间，即 Stone 空间（紧、Hausdorff、全不连通）；\n\n对一般（非挠）离散群，极不连通性对应同样的「有限块的逆极限」结构 ✓。',
           '- **无挠 $\\iff$ 连通**：等价链逐条走 ——',
           '$M$ 不是无挠 $\\iff$ 存在非平凡的**有限**子群单射 $M\' \\hookrightarrow M$ $\\iff$ 存在非平凡有限商 $\\widehat M \\twoheadrightarrow \\widehat{M\'}$（对偶把单射翻成满射）$\\iff$ $\\widehat M$ **不连通** ✓。',
           '（最后一步：紧 Hausdorff 空间不连通 $\\iff$ 有开闭真子集 $\\iff$ 有到非平凡有限离散空间的满连续映射。）∎',

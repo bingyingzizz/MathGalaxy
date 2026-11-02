@@ -30,7 +30,7 @@ window.MG = window.MG || {};
           '- $k\\text{-}\\mathbf{Alg}$：$k$-代数（$k$ 交换环）。'
         ].join('\n')
       ].join('\n'),
-      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。',
+      notes: '⭐ **它们的共同点**：全都是「集合 + 运算 + 公理」，只是运算的元数与公理的条数不同。\n\n所以**关于它们的定理几乎逐字通用**（极限逐点算、遗忘函子保所有极限、自由对象是左伴随……）。\n\n**两个特殊的**：$G\\text{-}\\mathbf{Set}$ 是**函子范畴**（$G$ 看成单对象范畴，$G$-集就是 $G \\to \\mathbf{Set}$ 的函子，$G$-映射就是自然变换）；\n\n$A\\text{-}\\mathbf{Mod}$ 是同调代数的样板间。',
       refs: ['Lang, Algebra']
     },
 
@@ -55,7 +55,7 @@ window.MG = window.MG || {};
         '**例子**：自由群 $F(S)^{\\mathrm{ab}} \\cong \\mathbb{Z}^{\\oplus S}$（自由阿贝尔群）。所以「自由阿贝尔群函子」= 「自由群函子」再交换化。',
         ['**证明。** 要造自然双射',
           '$$\\operatorname{Hom}_{\\mathbf{Grp}}(G,\\ A) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(G^{\\mathrm{ab}},\\ A\\bigr),\\qquad A\\ \\text{阿贝尔}.$$',
-          '- **良定义**：任给群同态 $\\varphi : G\\to A$（$A$ 阿贝尔）。换位子 $ghg^{-1}h^{-1}$ 被送到 $\\varphi(g)\\varphi(h)\\varphi(g)^{-1}\\varphi(h)^{-1} = e$（交换性！），故 $[G,G] \\subseteq \\ker\\varphi$，于是 $\\varphi$ 唯一地穿过商 $G\\twoheadrightarrow G^{\\mathrm{ab}}$ ✓。',
+          '- **良定义**：任给群同态 $\\varphi : G\\to A$（$A$ 阿贝尔）。\n\n换位子 $ghg^{-1}h^{-1}$ 被送到 $\\varphi(g)\\varphi(h)\\varphi(g)^{-1}\\varphi(h)^{-1} = e$（交换性！），故 $[G,G] \\subseteq \\ker\\varphi$，于是 $\\varphi$ 唯一地穿过商 $G\\twoheadrightarrow G^{\\mathrm{ab}}$ ✓。',
           '- **反向**是 $G\\to G^{\\mathrm{ab}}$ 与函数的复合 ✓，且两个方向互逆（在 $G^{\\mathrm{ab}}$ 上验一次、在 $\\operatorname{Hom}(G,A)$ 上验一次）✓。',
           '- **自然性**对 $G$ 与 $A$ 都逐项验证（$G\\to G\'$ 的像把 $[G,G]$ 送进 $[G\',G\']$，故诱导 $G^{\\mathrm{ab}}\\to G\'^{\\mathrm{ab}}$）✓。∎',
           '⭐ 这正是「交换化是左伴随」的含义：它是「把非交换性清零」的**最经济**的函子 —— 任何到阿贝尔群的映射都只能看到 $G^{\\mathrm{ab}}$。'
@@ -81,7 +81,7 @@ window.MG = window.MG || {};
         '只要它们存在。'
       ].join('\n'),
       notes: [
-        ['**证明。** 把偏序集看成范畴时，$\\operatorname{Hom}(x,y)$ 至多一个元素，「锥」$c \\to D$ 就退化成「$c \\preceq D(i)$ 对一切 $i$」，即 $c$ 是 $D$ 的一个**下界** ✓。','- 泛锥 = 下界中**最大**的那一个 = $\\inf D$；「$\\lim D$ 存在」正好就是「$\\inf D$ 存在」✓。','- 对偶地（把 $\\preceq$ 反向），余锥 = 上界，泛余锥 = 最小上界 = $\\sup D$ ✓。','- 特例：单点图 $\\inf = \\sup = $ 该元素；空图给出终对象（最大元）与始对象（最小元）；两元素图给出积 $\\inf\\{x,y\\}$ 与余积 $\\sup\\{x,y\\}$；拉回、推出分别是下确界、上确界（因为相容条件自动满足）；而等化子：$f, g$ 若平行则 $f = g$（Hom 至多一个元素），此时等化子就是恒等 ✓。','因此完备格 $=$ 有所有小极限的偏序集；有界格 $\\leftrightarrow$ 有有限极限与有限余极限 ✓。∎'].join('\n'),
+        ['**证明。** 把偏序集看成范畴时，$\\operatorname{Hom}(x,y)$ 至多一个元素，「锥」$c \\to D$ 就退化成「$c \\preceq D(i)$ 对一切 $i$」，即 $c$ 是 $D$ 的一个**下界** ✓。','- 泛锥 = 下界中**最大**的那一个 = $\\inf D$；「$\\lim D$ 存在」正好就是「$\\inf D$ 存在」✓。','- 对偶地（把 $\\preceq$ 反向），余锥 = 上界，泛余锥 = 最小上界 = $\\sup D$ ✓。','- 特例：单点图 $\\inf = \\sup = $ 该元素；空图给出终对象（最大元）与始对象（最小元）；两元素图给出积 $\\inf\\{x,y\\}$ 与余积 $\\sup\\{x,y\\}$；\n\n拉回、推出分别是下确界、上确界（因为相容条件自动满足）；\n\n而等化子：$f, g$ 若平行则 $f = g$（Hom 至多一个元素），此时等化子就是恒等 ✓。','因此完备格 $=$ 有所有小极限的偏序集；有界格 $\\leftrightarrow$ 有有限极限与有限余极限 ✓。∎'].join('\n'),
         '⭐ **这条把整套范畴语言翻译成序语言**，也是最好的入门例子：',
         '',
         [
@@ -108,7 +108,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **「严格」是阿贝尔范畴与一般范畴的分水岭**：阿贝尔范畴的**每条态射都严格**；而 $\\mathbf{Top}$ 里不严格。',
-        '**反例为什么在拓扑里出现**：$\\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$ 是单态射（同构于自己的像），但它的**余像**平凡（因为像在余核里被商掉了），于是余像 $\\to$ 像那一步不是同构。**这正是一条 $\\mathbf{Top}$ 上「拓扑阿贝尔群不是阿贝尔范畴」的原因。**',
+        '**反例为什么在拓扑里出现**：$\\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$ 是单态射（同构于自己的像），但它的**余像**平凡（因为像在余核里被商掉了），于是余像 $\\to$ 像那一步不是同构。\n\n**这正是一条 $\\mathbf{Top}$ 上「拓扑阿贝尔群不是阿贝尔范畴」的原因。**',
         '**在 $\\mathbf{Set}$ 与 $\\mathbf{Ab}$ 里每条态射都严格**：那边余像与像都能具体算成分解，中间那个映射就是恒等。',
       ].join('\n\n'),
       refs: ['Le Stum, Exercise 1.33'],
@@ -180,7 +180,9 @@ window.MG = window.MG || {};
         ['**证明（极限在遗忘函子下逐项算）。** 阿贝尔群对象的定义是一组态射与**交换图**：',
           '$$m : X \\times X \\to X, \\qquad e : 1 \\to X, \\qquad i : X \\to X$$',
           '配上一串等式（结合、单位、逆、交换性）—— 全是「两个复合相等」形式的图。',
-          '- 设 $D : I \\to \\mathrm{Ab}(\\mathcal{C})$ 是可图表，记 $UX$ 为 $X$ 的底对象。因为极限保持极限（特别地保持有限积与终对象），把上述各图和等式逐项送进 $\\mathcal{C}$ 后仍然成立；于是底对象上的 $\\lim UD$ **自动**带上阿贝尔群对象的结构，$m$ 取 $\\lim (Um \\circ \\text{交换}) $、$e$ 取 $\\lim Ue$。',
+          '- 设 $D : I \\to \\mathrm{Ab}(\\mathcal{C})$ 是可图表，记 $UX$ 为 $X$ 的底对象。\n\n' +
+          '因为极限保持极限（特别地保持有限积与终对象），把上述各图和等式逐项送进 $\\mathcal{C}$ 后仍然成立；\n\n' +
+          '于是底对象上的 $\\lim UD$ **自动**带上阿贝尔群对象的结构，$m$ 取 $\\lim (Um \\circ \\text{交换}) $、$e$ 取 $\\lim Ue$。',
           '- 于是 $\\mathrm{Ab}(\\mathcal{C})$ 有 $I$-极限，而遗忘函子把它送到 $\\mathcal{C}$ 里的 $\\lim UD$ —— 即**保极限**。',
           '- 细节只在一处：$\\lim$ 与有限积的交换（$U \\lim = \\lim U$ 与 $\\lim(X_{i}\\times Y_{i}) = \\lim X_{i}\\times \\lim Y_{i}$），那是极限的一般性质。∎'
         ].join('\n')
@@ -231,11 +233,13 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明（两边各算一次）。** 余极限取在 $\\prod_{j} I_{j}$ 上，而滤过范畴的**积**仍是滤过的（任意两个对象 $(i_{j})$、$(i\'_{j})$ 在每个分量上各取上界，再逐坐标拼起来）。',
-          '- **单**：左边一个元素是某一点 $(i_{j})_{j}$ 上的族 $(x_{j})_{j}$。若它在右边为 $0$，则对每个 $j$ 存在 $i_{j} \\to i\'_{j}$ 把 $x_{j}$ 杀掉；$(i\'_{j})_{j}$ 就是 $\\prod_{j} I_{j}$ 里接受它的那个对象，于是这个类本身就是 $0$。',
+          '- **单**：左边一个元素是某一点 $(i_{j})_{j}$ 上的族 $(x_{j})_{j}$。\n\n' +
+          '若它在右边为 $0$，则对每个 $j$ 存在 $i_{j} \\to i\'_{j}$ 把 $x_{j}$ 杀掉；\n\n' +
+          '$(i\'_{j})_{j}$ 就是 $\\prod_{j} I_{j}$ 里接受它的那个对象，于是这个类本身就是 $0$。',
           '- **满**：右边任给 $(t_{j})_{j}$，每个 $t_{j}$ 由某个 $x_{j} \\in M_{j}(i_{j})$ 表示；把 $(i_{j})_{j}$ 与 $(x_{j})_{j}$ 拼起来就是左边的一个元素，它映到 $(t_{j})_{j}$。∎'
         ].join('\n'),
         ['⚠️ **关键是「每个 $j$ 各有自己的滤过范畴」。** 若所有 $j$ 共用同一个 $I$（取对角），断言**是错的** —— 那时只有 $J$ **有限**才对（那就是「滤过余极限与有限积交换」，来自滤过余极限是 sifted 余极限）。',
-          '反例：$I = (\\mathbb{N}, \\le)$、$M_{i,j} = \\mathbb{Z}/p^{i}$，转移映射取「乘以 $p$」，于是 $\\varinjlim_{i} \\mathbb{Z}/p^{i} = \\mathbb{Z}[1/p]/\\mathbb{Z}$。取 $t = (t_{j})_{j}$，其中 $t_{j}$ 是阶为 $p^{j}$ 的那个元素：任何单个 $i$ 上，元素只能有阶 $\\le p^{i}$，所以 $j > i$ 的分量根本提不出来 —— 而 $\\prod_{j} I_{j}$ 上就没这个问题，每个 $j$ 可以各自跑到够高的层级。'
+          '反例：$I = (\\mathbb{N}, \\le)$、$M_{i,j} = \\mathbb{Z}/p^{i}$，转移映射取「乘以 $p$」，于是 $\\varinjlim_{i} \\mathbb{Z}/p^{i} = \\mathbb{Z}[1/p]/\\mathbb{Z}$。\n\n取 $t = (t_{j})_{j}$，其中 $t_{j}$ 是阶为 $p^{j}$ 的那个元素：任何单个 $i$ 上，元素只能有阶 $\\le p^{i}$，所以 $j > i$ 的分量根本提不出来 —— 而 $\\prod_{j} I_{j}$ 上就没这个问题，每个 $j$ 可以各自跑到够高的层级。'
         ].join('\n'),
         '与 AB5 的关系：AB6 = AB5 + 上面这条（AB5 管「滤过余极限正合」，AB6 再管「它与积交换」）。'
       ].join('\n\n'),
@@ -252,7 +256,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', 'Ind-对象', '反射子范畴', '滤过余极限'],
       statement: '若 $\\mathcal{C}$ 有滤过余极限，则 $\\mathcal{C}$ 是 $\\operatorname{Ind}(\\mathcal{C})$ 的**反射子范畴**。',
       notes: [
-        ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。∎'].join('\n'),
+        ['**证明。** 记嵌入为 $i : \\mathcal{C} \\hookrightarrow \\operatorname{Ind}(\\mathcal{C})$，它把 $X$ 看成常图的形式余极限。','- **反射函子**取 $F\\bigl(\\varinjlim_{i}X_{i}\\bigr) := \\varinjlim_{i}X_{i}$（在 $\\mathcal{C}$ 里真实存在的那个，由假设存在；$\\operatorname{Ind}$ 里形式余极限的表示在同构意义下唯一，故良定义）✓。','- **伴随**：对 $X \\in \\mathcal{C}$ 与形式余极限 $\\varinjlim_{j}Y_{j}$，$\\operatorname{Ind}$ 里的 Hom 由余极限定义，而 $X$ 是**紧**的（在 $\\mathcal{C}$ 里可表示），故','$$\\operatorname{Hom}_{\\operatorname{Ind}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\varinjlim_{j}\\operatorname{Hom}_{\\mathcal{C}}(X, Y_{j}) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, \\varinjlim_{j}Y_{j}\\bigr) \\;=\\; \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X, F(\\varinjlim_{j}Y_{j})\\bigr),$$','对 $X$ 自然 —— 即 $i \\dashv F$（等价地 $F$ 是反射）✓。','- **余单位是同构**：$\\varepsilon : F\\,i(X) = X \\to X$ 就是恒等 ✓；对一般的 $\\varinjlim Y_{j}$，$\\varepsilon: F(\\varinjlim Y_{j}) \\to \\varinjlim Y_{j}$ 也是同构（把表示换到 $\\mathcal{C}$ 里）✓。\n\n∎'].join('\n'),
 '**反射函子**就是「取形式余极限的真正余极限」：把 Ind-对象「$\\varinjlim X_{i}$」送到 $\\mathcal{C}$ 里真实存在的那个 $\\varinjlim X_{i}$。\n\n⭐ 于是 $\\operatorname{Ind}(\\mathcal{C})$ 是「把 $\\mathcal{C}$ 补齐到对滤过余极限封闭」的最小范畴 —— 反射性说的正是「补完之后原来的东西没被改坏」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
@@ -266,7 +270,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '滤过余极限', '余极限', '完备性'],
       statement: '有**滤过余极限**与**有限余极限**的范畴有**所有余极限**。',
-    notes:         ['**证明。** 记 $\\mathcal{C}$ 有有限余极限与滤过余极限。','- **先看小指标**：设 $I$ 是任一小范畴，$D : I \\to \\mathcal{C}$。令 $\\operatorname{Fin}(I)$ 是 $I$ 的**有限子范畴**（对象集有限、且对其中每对对象只取有限多个态射）的全体，按包含构成偏序 —— 它是**滤过**的（两个有限子范畴的并仍有限）✓。','- **两步走**：$\\varinjlim_{I} D$ 可以这样算：先在每个有限子范畴 $J$（沿含入 $J \\hookrightarrow I$）上取余极限 $\\varinjlim_{J}D|_{J}$ —— 这是**有限**余极限（有限图）✓；再沿 $J$ 的滤过序取余极限，得到 $\\varinjlim_{J \\in \\operatorname{Fin}(I)}\\bigl(\\varinjlim_{J} D\\bigr)$，它与 $\\varinjlim_{I}D$ 满足同一个泛性质（两条余锥的相容性互相翻译）故同构 ✓。','- 于是任何余极限都是「有限余极限的滤过余极限」，两者都在 $\\mathcal{C}$ 里，故 $\\mathcal{C}$ 有所有余极限 ✓。∎','⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。'].join('\n'),
+    notes:         ['**证明。** 记 $\\mathcal{C}$ 有有限余极限与滤过余极限。','- **先看小指标**：设 $I$ 是任一小范畴，$D : I \\to \\mathcal{C}$。令 $\\operatorname{Fin}(I)$ 是 $I$ 的**有限子范畴**（对象集有限、且对其中每对对象只取有限多个态射）的全体，按包含构成偏序 —— 它是**滤过**的（两个有限子范畴的并仍有限）✓。','- **两步走**：$\\varinjlim_{I} D$ 可以这样算：先在每个有限子范畴 $J$（沿含入 $J \\hookrightarrow I$）上取余极限 $\\varinjlim_{J}D|_{J}$ —— 这是**有限**余极限（有限图）✓；\n\n再沿 $J$ 的滤过序取余极限，得到 $\\varinjlim_{J \\in \\operatorname{Fin}(I)}\\bigl(\\varinjlim_{J} D\\bigr)$，它与 $\\varinjlim_{I}D$ 满足同一个泛性质（两条余锥的相容性互相翻译）故同构 ✓。','- 于是任何余极限都是「有限余极限的滤过余极限」，两者都在 $\\mathcal{C}$ 里，故 $\\mathcal{C}$ 有所有余极限 ✓。∎','⚠️ 前提「有限余极限」不能只留「余积」：还要有推出 / 余等化子，上面的两步走才封得住。'].join('\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
 
@@ -284,7 +288,9 @@ window.MG = window.MG || {};
           '- **方块交换**：$\\beta(a\\cdot 1_{B}) = a\\otimes 1 = 1\\otimes a\\cdot 1 = \\gamma(a\\cdot 1_{C})$，即 $\\beta\\circ(A\\to B) = \\gamma\\circ(A\\to C)$ ✓；',
           '- **泛性质**：任给交换环 $E$ 与同态 $f : B\\to E$、$g : C\\to E$ 使 $f|_{A} = g|_{A}$，定义',
           '$$\\varphi\\Bigl(\\sum_{k} b_{k}\\otimes c_{k}\\Bigr) := \\sum_{k} f(b_{k})\\,g(c_{k}) \\in E .$$',
-          '它是**良定义**的：$\\otimes$ 的双线性关系逐条被 $f,g$ 的乘法性与 $f|_{A}=g|_{A}$ 满足（例如 $ab\\otimes c - b\\otimes ac \\mapsto f(ab)g(c)-f(b)g(ac) = f(a)f(b)g(c) - f(b)g(a)g(c) = 0$）✓；由交换性 $\\varphi$ 是环同态 ✓；且 $\\varphi\\beta = f$、$\\varphi\\gamma = g$ ✓。',
+          '它是**良定义**的：$\\otimes$ 的双线性关系逐条被 $f,g$ 的乘法性与 $f|_{A}=g|_{A}$ 满足（例如 $ab\\otimes c - b\\otimes ac \\mapsto f(ab)g(c)-f(b)g(ac) = f(a)f(b)g(c) - f(b)g(a)g(c) = 0$）✓；\n\n' +
+          '由交换性 $\\varphi$ 是环同态 ✓；\n\n' +
+          '且 $\\varphi\\beta = f$、$\\varphi\\gamma = g$ ✓。',
           '- **唯一性**：$D$ 由 $\\beta(B)\\cup\\gamma(C)$ 生成（$b\\otimes c = \\beta(b)\\gamma(c)$），故在两个生成块上定死就唯一 ✓。',
           '于是 $D$ 满足推出的泛性质，即 $B\\otimes_{A}C = B\\coprod_{A} C$。∎',
           '⚠️ **交换性是必需的**：非交换环上，$B\\otimes_{A}C$ 一般不是环（乘法在张量积上不下降）—— 那时纤维余积要用自由积 / 余等化子另造。'

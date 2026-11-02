@@ -27,7 +27,11 @@ window.MG = window.MG || {};
         '$$F(X) \\cong F(Y) \\implies X \\cong Y.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 给同构 $u : F(X) \\to F(Y)$。由全忠实，$u$ 唯一地来自某个 $f : X \\to Y$，$u^{-1}$ 唯一地来自某个 $g : Y \\to X$ ✓。于是 $F(g f) = u^{-1} u = 1_{F(X)} = F(1_{X})$ ✓，再由全忠实（忠实）得 $g f = 1_{X}$ ✓；对称地 $f g = 1_{Y}$ ✓。∎',
+        '**证明。** 给同构 $u : F(X) \\to F(Y)$。\n\n' +
+        '由全忠实，$u$ 唯一地来自某个 $f : X \\to Y$，$u^{-1}$ 唯一地来自某个 $g : Y \\to X$ ✓。\n\n' +
+        '于是 $F(g f) = u^{-1} u = 1_{F(X)} = F(1_{X})$ ✓，再由全忠实（忠实）得 $g f = 1_{X}$ ✓；\n\n' +
+        '对称地 $f g = 1_{Y}$ ✓。\n\n' +
+        '∎',
         '⚠️ 反过来不对：本质单射的函子未必全忠实。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.17']
@@ -47,7 +51,10 @@ window.MG = window.MG || {};
         '2. 预序集 $X$ 与它的**有序商** $Y$（把 $x \\le y \\le x$ 粘起来）是**等价**的范畴。'
       ].join('\n'),
       notes: [
-        '**证明。** (1) 两个预序集之间的函子就是保序映射 ✓，而 Hom 集至多一个元素让忠实与满自动成立 ✓。(2) 商映射 $X \\to Y$ 保序 ✓；在每个等价类里选一个代表，给出反方向函子 $Y \\to X$ ✓；两个复合都是恒等（在 $Y$ 上）或与恒等自然同构（在 $X$ 上，$x \\le$ 代表 $\\le x$）✓。∎'
+        '**证明。** (1) 两个预序集之间的函子就是保序映射 ✓，而 Hom 集至多一个元素让忠实与满自动成立 ✓。\n\n' +
+        '(2) 商映射 $X \\to Y$ 保序 ✓；在每个等价类里选一个代表，给出反方向函子 $Y \\to X$ ✓；\n\n' +
+        '两个复合都是恒等（在 $Y$ 上）或与恒等自然同构（在 $X$ 上，$x \\le$ 代表 $\\le x$）✓。\n\n' +
+        '∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.15, Exercise 1.18']
     },
@@ -92,7 +99,9 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**证明。**',
-        '**$(\\Longleftarrow)$** 给满态射 $p : Y \\twoheadrightarrow Z$ 与 $f : X \\to Z$。取拉回 $X \\times_{Z} Y \\to X$：由万有性它是满态射 ✓，于是有截面 $s$ ✓；$s$ 与第二条投影复合给出 $X \\to Y$ 使 $p \\circ (\\text{复合}) = f$ ✓，即 $f$ 提升 ✓。',
+        '**$(\\Longleftarrow)$** 给满态射 $p : Y \\twoheadrightarrow Z$ 与 $f : X \\to Z$。\n\n' +
+        '取拉回 $X \\times_{Z} Y \\to X$：由万有性它是满态射 ✓，于是有截面 $s$ ✓；\n\n' +
+        '$s$ 与第二条投影复合给出 $X \\to Y$ 使 $p \\circ (\\text{复合}) = f$ ✓，即 $f$ 提升 ✓。',
         '**$(\\Longrightarrow)$** 满态射 $Y \\twoheadrightarrow X$ 本身就是一次提升测试（拿 $1_{X}$ 去提升）✓。∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.49']
@@ -115,7 +124,7 @@ window.MG = window.MG || {};
         '以及 $G$-对象、$A$-模、$k$-代数同理 —— 于是它诱导出 $\\mathrm{Mon}(\\mathcal{C}) \\to \\mathrm{Mon}(\\mathcal{D})$ 等一串函子。'
       ].join('\n'),
       notes: [
-        '**证明。** 一个群对象就是「$m : G \\times G \\to G$、$e : \\mathbf{1} \\to G$、$i : G \\to G$ 加上若干交换图」✓。$F$ 保有限积（特别地保 $G \\times G$ 与 $\\mathbf{1}$），把这些态射与交换图逐条搬过去，得到的仍是群对象 ✓。环对象、模、$G$-对象也一样（它们的数据都只用到有限积）✓。∎'
+        '**证明。** 一个群对象就是「$m : G \\times G \\to G$、$e : \\mathbf{1} \\to G$、$i : G \\to G$ 加上若干交换图」✓。\n\n$F$ 保有限积（特别地保 $G \\times G$ 与 $\\mathbf{1}$），把这些态射与交换图逐条搬过去，得到的仍是群对象 ✓。\n\n环对象、模、$G$-对象也一样（它们的数据都只用到有限积）✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.53']
     },
@@ -137,7 +146,7 @@ window.MG = window.MG || {};
         '即 $\\operatorname{Hom}_{\\mathcal{D}^{I}}\\bigl(F \\circ D,\\ E\\bigr) \\cong \\operatorname{Hom}_{\\mathcal{C}^{I}}\\bigl(D,\\ G \\circ E\\bigr)$。'
       ].join('\n'),
       notes: [
-        '**证明。** 图范畴里的 Hom 集是**逐点**交出来的：给出自然变换等价于给出一族相容的态射 ✓。在每个 $i \\in I$ 上用 $F \\dashv G$ 得到 $\\operatorname{Hom}(FD_{i}, E_{i}) \\cong \\operatorname{Hom}(D_{i}, GE_{i})$ ✓；这族同构与 $I$ 中的态射相容（因为原来的同构关于 $F,G$ 自然）✓，于是它们拼成两个 Hom 集之间的同构 ✓。∎'
+        '**证明。** 图范畴里的 Hom 集是**逐点**交出来的：给出自然变换等价于给出一族相容的态射 ✓。\n\n在每个 $i \\in I$ 上用 $F \\dashv G$ 得到 $\\operatorname{Hom}(FD_{i}, E_{i}) \\cong \\operatorname{Hom}(D_{i}, GE_{i})$ ✓；\n\n这族同构与 $I$ 中的态射相容（因为原来的同构关于 $F,G$ 自然）✓，于是它们拼成两个 Hom 集之间的同构 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.63']
     },
@@ -157,7 +166,7 @@ window.MG = window.MG || {};
         '$$p_{!}F \\circ p \\;\\cong\\; F.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 用逐点公式 $p_{!}F(X\') = \\varinjlim_{p(X) \\to X\'} F(X)$ ✓。取 $X\' = p(X_{0})$：逗号范畴 $p \\downarrow p(X_{0})$ 以 $1_{p(X_{0})}$ 为**终对象**（$p$ 全忠实说明 $p(X_0)$ 的态射到 $p(X)$ 唯一地来自 $X_0 \\to X$）✓，而沿带终对象的范畴取余极限就是取终对象处的值 ✓，于是 $(p_{!}F)(p(X_{0})) \\cong F(X_{0})$ ✓。∎'
+        '**证明。** 用逐点公式 $p_{!}F(X\') = \\varinjlim_{p(X) \\to X\'} F(X)$ ✓。\n\n取 $X\' = p(X_{0})$：逗号范畴 $p \\downarrow p(X_{0})$ 以 $1_{p(X_{0})}$ 为**终对象**（$p$ 全忠实说明 $p(X_0)$ 的态射到 $p(X)$ 唯一地来自 $X_0 \\to X$）✓，而沿带终对象的范畴取余极限就是取终对象处的值 ✓，于是 $(p_{!}F)(p(X_{0})) \\cong F(X_{0})$ ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 1.74']
     }

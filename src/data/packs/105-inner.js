@@ -42,7 +42,7 @@ window.MG = window.MG || {};
         '',
         '标准例子：$K^{n}$ 上的内积 $\\langle x, y \\rangle := \\sum_i \\overline{x_i}\\, y_i$。'
       ].join('\n'),
-      notes: '⭐ 复数情形下**不能要求双线性**：若 $\\langle u, v \\rangle$ 对两个变元都线性，则 $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ 恒为负，与正定矛盾。所以复数情形只能是**一个变元线性、另一个共轭线性**（叫**半双线性**或 sesquilinear）。\n\n⭐ 哪一边写成共轭是**约定**：本图取「第一变元线性、第二变元共轭线性」的**物理约定**（与图上别处一致）。换个约定所有公式共轭一下，不改变内容。\n\n⚠ 正定性是内积与「一般双线性型」的分水岭：正定才有「长度」可言，才有 Cauchy–Schwarz、才有正交投影。丢掉正定（只留对称双线性）得到的是**二次型**那一套（见 `def.quadratic-form`），丢掉对称得到的是**辛形式**。',
+      notes: '⭐ 复数情形下**不能要求双线性**：若 $\\langle u, v \\rangle$ 对两个变元都线性，则 $\\langle i v, i v \\rangle = i^{2}\\langle v, v \\rangle = -\\langle v, v \\rangle$ 恒为负，与正定矛盾。\n\n所以复数情形只能是**一个变元线性、另一个共轭线性**（叫**半双线性**或 sesquilinear）。\n\n⭐ 哪一边写成共轭是**约定**：本图取「第一变元线性、第二变元共轭线性」的**物理约定**（与图上别处一致）。\n\n换个约定所有公式共轭一下，不改变内容。\n\n⚠ 正定性是内积与「一般双线性型」的分水岭：正定才有「长度」可言，才有 Cauchy–Schwarz、才有正交投影。\n\n丢掉正定（只留对称双线性）得到的是**二次型**那一套（见 `def.quadratic-form`），丢掉对称得到的是**辛形式**。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
     },
     {
@@ -64,7 +64,7 @@ window.MG = window.MG || {};
         '',
         '（三角不等式来自 Cauchy–Schwarz。）'
       ].join('\n'),
-      notes: '⭐ 于是**内积空间自动是度量空间**，可以谈收敛、完备、紧 —— 分析那一侧的全部工具都能进来。完备的内积空间叫 **Hilbert 空间**。\n\n⭐ 反过来：范数未必来自内积。判据是**平行四边形律**\n\n$$\\|u + v\\|^{2} + \\|u - v\\|^{2} = 2\\|u\\|^{2} + 2\\|v\\|^{2}$$\n\n（$\\ell^{p}$ 在 $p \\ne 2$ 时不满足它，所以 $\\ell^{p}$ 上的范数不来自任何内积 —— 这也是「$L^{2}$ 特别」的原因。）\n\n⭐ 由内积恢复内积的公式是**极化恒等式**：$\\langle u, v\\rangle = \\frac{1}{4}\\bigl( \\|u+v\\|^{2} - \\|u-v\\|^{2} \\bigr)$（实情形）。',
+      notes: '⭐ 于是**内积空间自动是度量空间**，可以谈收敛、完备、紧 —— 分析那一侧的全部工具都能进来。\n\n完备的内积空间叫 **Hilbert 空间**。\n\n⭐ 反过来：范数未必来自内积。\n\n判据是**平行四边形律**\n\n$$\\|u + v\\|^{2} + \\|u - v\\|^{2} = 2\\|u\\|^{2} + 2\\|v\\|^{2}$$\n\n（$\\ell^{p}$ 在 $p \\ne 2$ 时不满足它，所以 $\\ell^{p}$ 上的范数不来自任何内积 —— 这也是「$L^{2}$ 特别」的原因。）\n\n⭐ 由内积恢复内积的公式是**极化恒等式**：$\\langle u, v\\rangle = \\frac{1}{4}\\bigl( \\|u+v\\|^{2} - \\|u-v\\|^{2} \\bigr)$（实情形）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -82,7 +82,7 @@ window.MG = window.MG || {};
         '',
         '等号成立当且仅当 $u, v$ **线性相关**。'
       ].join('\n'),
-      notes: '⭐ 它是「内积 $\\implies$ 范数」这条路上唯一需要证明的一步（三角不等式由它推出）。\n\n⭐ 证明技巧：对一切 $t \\in K$ 令 $f(t) := \\|u - t v\\|^{2} \\ge 0$，展开后是关于 $t$ 的二次式；取 $t = \\langle v, u \\rangle / \\|v\\|^{2}$ 即得结论。\n\n⭐ 它是分析里最常用的不等式之一：$L^{2}$ 上就是 $|\\int f\\bar{g}| \\le \\|f\\|_{2}\\|g\\|_{2}$，概率论里就是 $|\\operatorname{Cov}| \\le \\sigma_X\\sigma_Y$。名字与「数列形式的 Cauchy–Schwarz」（`analysis.lp` 团里的 Hölder 在 $p = q = 2$ 的情形）是同一个。',
+      notes: '⭐ 它是「内积 $\\implies$ 范数」这条路上唯一需要证明的一步（三角不等式由它推出）。\n\n⭐ 证明技巧：对一切 $t \\in K$ 令 $f(t) := \\|u - t v\\|^{2} \\ge 0$，展开后是关于 $t$ 的二次式；\n\n取 $t = \\langle v, u \\rangle / \\|v\\|^{2}$ 即得结论。\n\n⭐ 它是分析里最常用的不等式之一：$L^{2}$ 上就是 $|\\int f\\bar{g}| \\le \\|f\\|_{2}\\|g\\|_{2}$，概率论里就是 $|\\operatorname{Cov}| \\le \\sigma_X\\sigma_Y$。\n\n名字与「数列形式的 Cauchy–Schwarz」（`analysis.lp` 团里的 Hölder 在 $p = q = 2$ 的情形）是同一个。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -165,7 +165,7 @@ window.MG = window.MG || {};
         '- $P_U$ 是**自伴**的：$\\langle P_U u, v \\rangle = \\langle u, P_U v \\rangle$（见「伴随算子」）；',
         '- $v - P_U v \\perp U$。'
       ].join('\n'),
-      notes: '⭐ 一句话：**正交投影 = 幂等 + 自伴**。反过来，任何幂等且自伴的算子都是某个子空间的正交投影 —— 这条「算子语言」的刻画后面在谱定理里直接变成「特征值只有 $0, 1$ 的自伴算子」。\n\n⭐ 幂等但不自伴的算子叫**射影**（projection）：它是「沿 $\\ker P$ 平行地投到 $\\operatorname{im} P$」，一般不是正交投影。两者的区别就是「最短距离」有没有被取到。',
+      notes: '⭐ 一句话：**正交投影 = 幂等 + 自伴**。\n\n反过来，任何幂等且自伴的算子都是某个子空间的正交投影 —— 这条「算子语言」的刻画后面在谱定理里直接变成「特征值只有 $0, 1$ 的自伴算子」。\n\n⭐ 幂等但不自伴的算子叫**射影**（projection）：它是「沿 $\\ker P$ 平行地投到 $\\operatorname{im} P$」，一般不是正交投影。\n\n两者的区别就是「最短距离」有没有被取到。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -187,7 +187,7 @@ window.MG = window.MG || {};
         '',
         '（最后一条叫 **Bessel 不等式**。）'
       ].join('\n'),
-      notes: '⭐ 「最佳逼近」的几何含义：$P_U v$ 是 $U$ 中离 $v$ **最近**的点，而「最近」这件事被内积的范数定义得很好。这是最小二乘法、Fourier 级数（截断到前 $n$ 项最优）的共同来源。\n\n⭐ 显式公式说明标准正交基的威力：投影不必解方程组，只要算 $k$ 个内积。\n\n⚠ 「$U$ 有限维」或「$U$ 闭」是必需的：无限维且不闭时，最近的**点可能不存在**（只有下确界）。',
+      notes: '⭐ 「最佳逼近」的几何含义：$P_U v$ 是 $U$ 中离 $v$ **最近**的点，而「最近」这件事被内积的范数定义得很好。\n\n这是最小二乘法、Fourier 级数（截断到前 $n$ 项最优）的共同来源。\n\n⭐ 显式公式说明标准正交基的威力：投影不必解方程组，只要算 $k$ 个内积。\n\n⚠ 「$U$ 有限维」或「$U$ 闭」是必需的：无限维且不闭时，最近的**点可能不存在**（只有下确界）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -209,7 +209,7 @@ window.MG = window.MG || {};
         '',
         '⚠️ 与范畴论的**伴随函子**不是一回事：那是两个函子之间的关系，这里是同一个空间上的算子。'
       ].join('\n'),
-      notes: '⭐ 定义的方式值得注意：$T^{\\ast}$ 不是构造出来的，而是被**一条恒等式唯一定出**来的（存在性靠 Riesz 表示：$w \\mapsto \\langle T\\cdot, w\\rangle$ 是 $V$ 上的有界线性泛函）。这是「用泛性质定义对象」在有限维内积空间里的版本。\n\n⭐ 复的情形里 $(cT)^{\\ast} = \\bar c T^{\\ast}$ 的共轭**不可丢** —— 它来自内积对第二变元的共轭线性。',
+      notes: '⭐ 定义的方式值得注意：$T^{\\ast}$ 不是构造出来的，而是被**一条恒等式唯一定出**来的（存在性靠 Riesz 表示：$w \\mapsto \\langle T\\cdot, w\\rangle$ 是 $V$ 上的有界线性泛函）。\n\n这是「用泛性质定义对象」在有限维内积空间里的版本。\n\n⭐ 复的情形里 $(cT)^{\\ast} = \\bar c T^{\\ast}$ 的共轭**不可丢** —— 它来自内积对第二变元的共轭线性。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -229,7 +229,7 @@ window.MG = window.MG || {};
         '',
         '等距的等价刻画：$T^{\\ast}T = I$（$\\iff T$ 可逆且 $T^{\\ast} = T^{-1}$）。全体正交（酉）变换构成群 $O(n)$（$U(n)$）。'
       ].join('\n'),
-      notes: '⭐ 等距保持**全部几何**：长度、角度、正交性、体积（$|\\det| = 1$）。所以「两个图形全等」在代数上就是「差一个正交变换」。\n\n⭐ $O(n)$ 是紧李群（有界闭），$SO(n) := \\{Q : \\det Q = 1\\}$ 是它的连通分支（含单位元的那个）—— 旋转群。\n\n⚠ 「保持范数 $\\implies$ 保持内积」的推导用**极化恒等式**：内积可以由范数恢复（$\\langle u,v\\rangle = \\frac{1}{4}\\sum_{k=0}^{3} i^{k}\\|u + i^{k}v\\|^{2}$）—— 这也是「范数未必来自内积」那一节的另一半。',
+      notes: '⭐ 等距保持**全部几何**：长度、角度、正交性、体积（$|\\det| = 1$）。\n\n所以「两个图形全等」在代数上就是「差一个正交变换」。\n\n⭐ $O(n)$ 是紧李群（有界闭），$SO(n) := \\{Q : \\det Q = 1\\}$ 是它的连通分支（含单位元的那个）—— 旋转群。\n\n⚠ 「保持范数 $\\implies$ 保持内积」的推导用**极化恒等式**：内积可以由范数恢复（$\\langle u,v\\rangle = \\frac{1}{4}\\sum_{k=0}^{3} i^{k}\\|u + i^{k}v\\|^{2}$）—— 这也是「范数未必来自内积」那一节的另一半。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -249,7 +249,7 @@ window.MG = window.MG || {};
         '',
         '层次：$\\{$酉$\\} \\subset \\{$正规$\\}$，$\\{$自伴$\\} \\subset \\{$正规$\\}$，两者的交是「自伴且酉」（即 $T^{2} = I$ 的对称变换）。'
       ].join('\n'),
-      notes: '⭐ 为什么要这三个词：**谱定理对正规算子成立**（可酉对角化），而自伴是最重要的一类正规算子（特征值全实）。一般算子做不到（Jordan 块没有标准正交基）。\n\n⭐ 自伴的实特征值 + 不同特征值的特征向量正交 —— 这两条合起来就是谱定理的内容。\n\n⚠ 「正规」在复数情形才把酉与自伴统一起来：实对称（自伴）与实正交（酉）都是实正规算子的特例，但它们在实情形下**不一定可正交对角化**（旋转 $90^\\circ$ 是正交、正规，但没有实特征值）—— 谱定理在实情形要求**对称**。',
+      notes: '⭐ 为什么要这三个词：**谱定理对正规算子成立**（可酉对角化），而自伴是最重要的一类正规算子（特征值全实）。\n\n一般算子做不到（Jordan 块没有标准正交基）。\n\n⭐ 自伴的实特征值 + 不同特征值的特征向量正交 —— 这两条合起来就是谱定理的内容。\n\n⚠ 「正规」在复数情形才把酉与自伴统一起来：实对称（自伴）与实正交（酉）都是实正规算子的特例，但它们在实情形下**不一定可正交对角化**（旋转 $90^\\circ$ 是正交、正规，但没有实特征值）—— 谱定理在实情形要求**对称**。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
     },
     {
@@ -269,7 +269,7 @@ window.MG = window.MG || {};
         '',
         '并且所有特征值 $\\lambda_i$ **都是实数**。矩阵形式：实对称矩阵 $A$ 存在正交矩阵 $Q$ 使 $Q^{\\mathsf{T}} A Q = \\operatorname{diag}(\\lambda_1, \\ldots, \\lambda_n)$。'
       ].join('\n'),
-      notes: '⭐ 与 Jordan 型的区别：Jordan 只保证「相似」，谱定理保证「**酉/正交**相似」，代价是把条件收紧到自伴（正规）。这是有限维里两个不同的分类问题的答案。\n\n⭐ 证明的两步：① 至少有一个（实）特征值（用最值定理：$|Tv|$ 或 $\\langle Tv, v\\rangle$ 在单位球面这个**紧**集上取极值）；② 对特征子空间的正交补归纳（不变性来自自伴：$T(U) \\subseteq U \\implies T(U^{\\perp}) \\subseteq U^{\\perp}$）。\n\n⭐ 无限维的推广是**Hilbert 空间上的谱定理**（自伴算子的谱测度 / 投影值测度）—— 那是泛函分析的内容，图上 `analysis.lp` 那一团的 $L^{2}$ 就是它的舞台。',
+      notes: '⭐ 与 Jordan 型的区别：Jordan 只保证「相似」，谱定理保证「**酉/正交**相似」，代价是把条件收紧到自伴（正规）。\n\n这是有限维里两个不同的分类问题的答案。\n\n⭐ 证明的两步：① 至少有一个（实）特征值（用最值定理：$|Tv|$ 或 $\\langle Tv, v\\rangle$ 在单位球面这个**紧**集上取极值）；\n\n② 对特征子空间的正交补归纳（不变性来自自伴：$T(U) \\subseteq U \\implies T(U^{\\perp}) \\subseteq U^{\\perp}$）。\n\n⭐ 无限维的推广是**Hilbert 空间上的谱定理**（自伴算子的谱测度 / 投影值测度）—— 那是泛函分析的内容，图上 `analysis.lp` 那一团的 $L^{2}$ 就是它的舞台。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
     },
     {
@@ -315,7 +315,7 @@ window.MG = window.MG || {};
         '',
         '由谱定理，$q$ 正定 $\\iff$ $A$ 的所有特征值为正 $\\iff$ 存在可逆 $P$ 使 $A = P^{\\mathsf{T}}P$（即 $A$ 与正定矩阵合同）。'
       ].join('\n'),
-      notes: '⭐ 二次型是「内积」的**放宽版**：内积要求正定，二次型允许不定（甚至退化）。所以内积空间的一切几何结论在二次型里都要重新检查（「长度」可以是负的）。\n\n⭐ 正定二次型与内积一一对应（$\\langle u, v\\rangle := u^{\\mathsf{T}}Av$），而**每个内积空间都可以通过 Gram–Schmidt 变成标准欧氏空间** —— 这就是「正定 $\\implies$ 可由 $P^{\\mathsf{T}}P$ 实现」的含义。\n\n⭐ 不定二次型出现在相对论（Minkowski 度规）、Morse 理论（Hessian 的负惯性指数 = 临界点类型）里。',
+      notes: '⭐ 二次型是「内积」的**放宽版**：内积要求正定，二次型允许不定（甚至退化）。\n\n所以内积空间的一切几何结论在二次型里都要重新检查（「长度」可以是负的）。\n\n⭐ 正定二次型与内积一一对应（$\\langle u, v\\rangle := u^{\\mathsf{T}}Av$），而**每个内积空间都可以通过 Gram–Schmidt 变成标准欧氏空间** —— 这就是「正定 $\\implies$ 可由 $P^{\\mathsf{T}}P$ 实现」的含义。\n\n⭐ 不定二次型出现在相对论（Minkowski 度规）、Morse 理论（Hessian 的负惯性指数 = 临界点类型）里。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
     },
     {
@@ -331,7 +331,7 @@ window.MG = window.MG || {};
         '',
         '$$D_1 > 0,\\quad D_2 > 0,\\quad \\ldots,\\quad D_n > 0$$'
       ].join('\n'),
-      notes: '⭐ 这是**最便宜**的正定性判据：只算 $n$ 个行列式（实际算时用消元法顺带得到），不必求特征值。\n\n⭐ 用途直接可见：多元微分里 $f$ 的 **Hessian 矩阵正定 $\\implies$ 局部极小**（`thm.second-derivative-test`）；线性代数里「$A$ 正定 $\\iff$ 存在 Cholesky 分解 $A = LL^{\\mathsf{T}}$」。\n\n⚠ 只能看**顺序**主子式（左上角那一串），不能只看「所有主子式」或随便挑几个。反过来：所有顺序主子式为正 $\\implies$ 正定，但如果只是「所有主子式非负」那只是半正定。',
+      notes: '⭐ 这是**最便宜**的正定性判据：只算 $n$ 个行列式（实际算时用消元法顺带得到），不必求特征值。\n\n⭐ 用途直接可见：多元微分里 $f$ 的 **Hessian 矩阵正定 $\\implies$ 局部极小**（`thm.second-derivative-test`）；\n\n线性代数里「$A$ 正定 $\\iff$ 存在 Cholesky 分解 $A = LL^{\\mathsf{T}}$」。\n\n⚠ 只能看**顺序**主子式（左上角那一串），不能只看「所有主子式」或随便挑几个。\n\n反过来：所有顺序主子式为正 $\\implies$ 正定，但如果只是「所有主子式非负」那只是半正定。',
       refs: ['Horn–Johnson, Matrix Analysis, Ch. 7']
     },
     {
@@ -349,7 +349,7 @@ window.MG = window.MG || {};
         '',
         '$\\sigma_i$ 叫 $A$ 的**奇异值**，它们是 $A^{\\dagger}A$（或 $AA^{\\dagger}$）的特征值的平方根。'
       ].join('\n'),
-      notes: '⭐ SVD 的几何读法：**任何线性映射 = 旋转/反射 $\\to$ 沿坐标轴拉伸 $\\to$ 再旋转/反射**。于是它把任意矩阵化成了「$U$ 与 $V$ 取好基之后」的对角形 —— 这是**等价**（$A \\mapsto PAQ$）分类的完整答案（对角元即奇异值，非零个数即秩）。\n\n⭐ 与谱定理的分工：谱定理处理**方形且自伴**（相似分类）；SVD 处理**任意形状**（等价分类）。前者要求 $m = n$ 且 $A^{\\ast} = A$，后者没有任何要求。\n\n⭐ 用途（数值线性代数里最重要的一条定理）：降秩逼近（Eckart–Young：截断到前 $k$ 个奇异值给出最优低秩逼近）、主成分分析、伪逆、条件数。',
+      notes: '⭐ SVD 的几何读法：**任何线性映射 = 旋转/反射 $\\to$ 沿坐标轴拉伸 $\\to$ 再旋转/反射**。\n\n于是它把任意矩阵化成了「$U$ 与 $V$ 取好基之后」的对角形 —— 这是**等价**（$A \\mapsto PAQ$）分类的完整答案（对角元即奇异值，非零个数即秩）。\n\n⭐ 与谱定理的分工：谱定理处理**方形且自伴**（相似分类）；\n\nSVD 处理**任意形状**（等价分类）。\n\n前者要求 $m = n$ 且 $A^{\\ast} = A$，后者没有任何要求。\n\n⭐ 用途（数值线性代数里最重要的一条定理）：降秩逼近（Eckart–Young：截断到前 $k$ 个奇异值给出最优低秩逼近）、主成分分析、伪逆、条件数。',
       refs: ['Horn–Johnson, Matrix Analysis, Ch. 7', 'Roman, Advanced Linear Algebra, Ch. 11']
     }
   ],
@@ -506,9 +506,9 @@ window.MG = window.MG || {};
       proof: [
         '设 $T$ 是有限维实内积空间上的自伴算子。',
         '',
-        '1. **存在实特征值**：单位球面 $S := \\{v : \\|v\\| = 1\\}$ 是紧集，函数 $f(v) := \\langle Tv, v\\rangle$ 连续，故在某点 $v_0$ 取到最大值 $\\lambda$（**最值定理**）。用 Lagrange 乘子（或直接对 $v_0$ 附近扰动求导）可得 $Tv_0 = \\lambda v_0$：即在约束 $\\|v\\|^{2} = 1$ 下 $f$ 的极值点满足 $\\nabla f = \\lambda \\nabla(\\|v\\|^{2})$，而两个梯度分别是 $2Tv_0$ 与 $2v_0$。于是 $\\lambda$ 是特征值，且由 $\\lambda = \\langle Tv_0, v_0\\rangle \\in \\mathbb{R}$ 知它是实数。',
+        '1. **存在实特征值**：单位球面 $S := \\{v : \\|v\\| = 1\\}$ 是紧集，函数 $f(v) := \\langle Tv, v\\rangle$ 连续，故在某点 $v_0$ 取到最大值 $\\lambda$（**最值定理**）。\n\n用 Lagrange 乘子（或直接对 $v_0$ 附近扰动求导）可得 $Tv_0 = \\lambda v_0$：即在约束 $\\|v\\|^{2} = 1$ 下 $f$ 的极值点满足 $\\nabla f = \\lambda \\nabla(\\|v\\|^{2})$，而两个梯度分别是 $2Tv_0$ 与 $2v_0$。\n\n于是 $\\lambda$ 是特征值，且由 $\\lambda = \\langle Tv_0, v_0\\rangle \\in \\mathbb{R}$ 知它是实数。',
         '2. **特征子空间的不变性**：$U := E_\\lambda$ 是 $T$-不变的；由**自伴性**，$U^{\\perp}$ 也是 $T$-不变的：若 $w \\perp U$，则对 $u \\in U$，$\\langle u, Tw\\rangle = \\langle Tu, w\\rangle = \\langle \\lambda u, w\\rangle = \\lambda\\langle u, w\\rangle = 0$，即 $Tw \\perp U$。',
-        '3. **归纳**：$T|_{U^{\\perp}}$ 仍自伴，对 $\\dim U^{\\perp} < \\dim V$ 用归纳假设，得 $U^{\\perp} = E_{\\lambda_2}\\oplus\\cdots$（两两正交）。于是 $V = E_{\\lambda} \\oplus U^{\\perp}$ 是所有特征子空间的正交直和。',
+        '3. **归纳**：$T|_{U^{\\perp}}$ 仍自伴，对 $\\dim U^{\\perp} < \\dim V$ 用归纳假设，得 $U^{\\perp} = E_{\\lambda_2}\\oplus\\cdots$（两两正交）。\n\n于是 $V = E_{\\lambda} \\oplus U^{\\perp}$ 是所有特征子空间的正交直和。',
         '4. 在每个 $E_{\\lambda_i}$ 里取标准正交基（Gram–Schmidt），拼起来就是 $V$ 的标准正交基，$T$ 在其中是对角阵。∎'
       ].join('\n'),
       note: '第 1 步是**分析输入**（紧集上连续函数取最值），第 2 步是**自伴性唯一**被用到的地方。这也解释了为什么谱定理在实情形必须要求对称：没有自伴性，$U^{\\perp}$ 不必不变，归纳断掉。'
@@ -537,9 +537,9 @@ window.MG = window.MG || {};
       proof: [
         '设 $A$ 实对称。',
         '',
-        '**($\\Longleftarrow$)** 设所有顺序主子式 $D_k > 0$。对 $k$ 归纳证明 $A$ 的前 $k$ 阶主子矩阵正定：$k = 1$ 显然（$a_{11} = D_1 > 0$）。归纳步：把 $A_k$ 分块 $\\begin{pmatrix} A_{k-1} & b \\\\ b^{\\mathsf{T}} & a_{kk}\\end{pmatrix}$，由 $D_{k} = D_{k-1}\\cdot(a_{kk} - b^{\\mathsf{T}}A_{k-1}^{-1}b) > 0$（**分块行列式公式**）与归纳假设 $D_{k-1} > 0$ 得 Schur 补 $a_{kk} - b^{\\mathsf{T}}A_{k-1}^{-1}b > 0$；由 Schur 补正定 $\\implies A_k$ 正定。',
+        '**($\\Longleftarrow$)** 设所有顺序主子式 $D_k > 0$。\n\n对 $k$ 归纳证明 $A$ 的前 $k$ 阶主子矩阵正定：$k = 1$ 显然（$a_{11} = D_1 > 0$）。\n\n归纳步：把 $A_k$ 分块 $\\begin{pmatrix} A_{k-1} & b \\\\ b^{\\mathsf{T}} & a_{kk}\\end{pmatrix}$，由 $D_{k} = D_{k-1}\\cdot(a_{kk} - b^{\\mathsf{T}}A_{k-1}^{-1}b) > 0$（**分块行列式公式**）与归纳假设 $D_{k-1} > 0$ 得 Schur 补 $a_{kk} - b^{\\mathsf{T}}A_{k-1}^{-1}b > 0$；\n\n由 Schur 补正定 $\\implies A_k$ 正定。',
         '',
-        '**($\\implies$)** 若 $A$ 正定，则每个左上角主子矩阵 $A_k$ 也正定（对 $A_k$ 上的 $x$ 补零得 $x^{\\mathsf{T}}A_kx = \\tilde x^{\\mathsf{T}}A\\tilde x > 0$）。由谱定理 $A_k = Q\\Lambda Q^{\\mathsf{T}}$（$\\Lambda$ 对角且对角元 $> 0$），故 $D_k = \\det A_k = \\prod_i \\lambda_i > 0$。∎'
+        '**($\\implies$)** 若 $A$ 正定，则每个左上角主子矩阵 $A_k$ 也正定（对 $A_k$ 上的 $x$ 补零得 $x^{\\mathsf{T}}A_kx = \\tilde x^{\\mathsf{T}}A\\tilde x > 0$）。\n\n由谱定理 $A_k = Q\\Lambda Q^{\\mathsf{T}}$（$\\Lambda$ 对角且对角元 $> 0$），故 $D_k = \\det A_k = \\prod_i \\lambda_i > 0$。\n\n∎'
       ].join('\n'),
       note: '两个方向的分量不同：($\\Longleftarrow$) 是**归纳 + Schur 补**（纯代数），($\\implies$) 用的是**谱定理**（特征值全正 $\\implies$ 行列式为正）。'
     },
@@ -553,8 +553,8 @@ window.MG = window.MG || {};
         '设 $A \\in M_{m \\times n}(\\mathbb{R})$，秩 $r$。',
         '',
         '1. $A^{\\mathsf{T}}A \\in M_n$ 是**对称半正定**的（$x^{\\mathsf{T}}A^{\\mathsf{T}}Ax = \\|Ax\\|^{2} \\ge 0$），故由谱定理存在标准正交基 $v_1, \\ldots, v_n$ 与 $\\lambda_1 \\ge \\cdots \\ge \\lambda_n \\ge 0$ 使 $A^{\\mathsf{T}}A v_i = \\lambda_i v_i$。',
-        '2. 令 $\\sigma_i := \\sqrt{\\lambda_i}$，设 $\\sigma_1 \\ge \\cdots \\ge \\sigma_r > 0 = \\sigma_{r+1} = \\cdots$。对 $i \\le r$ 令 $u_i := A v_i / \\sigma_i$，则 $\\|u_i\\| = 1$ 且 $\\langle u_i, u_j\\rangle = \\delta_{ij}$（用 $\\langle Av_i, Av_j\\rangle = \\lambda_j\\delta_{ij}$）。',
-        '3. 把 $u_1, \\ldots, u_r$ 扩充成 $\\mathbb{R}^{m}$ 的标准正交基 $u_1, \\ldots, u_m$；把 $v_1, \\ldots, v_n$ 补全成标准正交基。则 $Av_i = \\sigma_i u_i$（$i \\le r$）且 $Av_i = 0$（$i > r$，因为 $\\|Av_i\\|^{2} = \\lambda_i = 0$）。',
+        '2. 令 $\\sigma_i := \\sqrt{\\lambda_i}$，设 $\\sigma_1 \\ge \\cdots \\ge \\sigma_r > 0 = \\sigma_{r+1} = \\cdots$。\n\n对 $i \\le r$ 令 $u_i := A v_i / \\sigma_i$，则 $\\|u_i\\| = 1$ 且 $\\langle u_i, u_j\\rangle = \\delta_{ij}$（用 $\\langle Av_i, Av_j\\rangle = \\lambda_j\\delta_{ij}$）。',
+        '3. 把 $u_1, \\ldots, u_r$ 扩充成 $\\mathbb{R}^{m}$ 的标准正交基 $u_1, \\ldots, u_m$；把 $v_1, \\ldots, v_n$ 补全成标准正交基。\n\n则 $Av_i = \\sigma_i u_i$（$i \\le r$）且 $Av_i = 0$（$i > r$，因为 $\\|Av_i\\|^{2} = \\lambda_i = 0$）。',
         '4. 以 $v_i$ 为定义域基、$u_i$ 为值域基写出矩阵：$A$ 在这两组基下是 $\\Sigma = \\operatorname{diag}(\\sigma_1, \\ldots, \\sigma_r, 0, \\ldots)$，即 $A = U\\Sigma V^{\\mathsf{T}}$。∎'
       ].join('\n'),
       note: '关键观察只有一条：**$A^{\\mathsf{T}}A$ 半正定** —— 于是谱定理给出正交的特征基，而 $A$ 把这组基送到一组正交向量上（差伸缩 $\\sigma_i$）。SVD 的全部内容就是这个观察的坐标化。'

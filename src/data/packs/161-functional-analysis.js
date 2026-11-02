@@ -104,7 +104,7 @@ window.MG = window.MG || {};
         '$$\\alpha\\,\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\,\\|x\\|_\\infty , \\qquad \\|x\\|_\\infty := \\max_{1 \\le k \\le n} |x_k| .$$'
       ].join('\n'),
       notes: [
-        '证法只有两步：**上界**用三角不等式 $\\|x\\| \\le \\sum |x_k|\\,\\|e_k\\| \\le \\|x\\|_\\infty \\sum \\|e_k\\|$；**下界**把 $\\|\\cdot\\|$ 看成单位球面 $S = \\{x : \\|x\\|_\\infty = 1\\}$ 上的连续函数 —— $S$ 紧、$\\|\\cdot\\|$ 无处为零，故取下确界 $\\alpha > 0$。',
+        '证法只有两步：**上界**用三角不等式 $\\|x\\| \\le \\sum |x_k|\\,\\|e_k\\| \\le \\|x\\|_\\infty \\sum \\|e_k\\|$；\n\n**下界**把 $\\|\\cdot\\|$ 看成单位球面 $S = \\{x : \\|x\\|_\\infty = 1\\}$ 上的连续函数 —— $S$ 紧、$\\|\\cdot\\|$ 无处为零，故取下确界 $\\alpha > 0$。',
         '⭐ 整条定理的实质是「**紧 + 连续 + 无零点 $implies$ 有正的最小值**」，也就是「单位球面紧」。所以它在无穷维必错（见「单位球紧 $\\iff$ 有限维」）。',
         '⚠️ 反例（讲义没有列，但值得记）：$C[0,1]$ 上 $\\|\\cdot\\|_\\infty$ 严格强于 $\\|\\cdot\\|_1$：$f_n(x) = x^n$ 在 $\\|\\cdot\\|_1$ 下趋于 $0$，却**不**一致收敛于 $0$（点态极限是 $x = 1$ 处的跳变）。'
       ].join('\n\n'),
@@ -126,7 +126,7 @@ window.MG = window.MG || {};
         '$$\\|e\\| = 1, \\qquad d(e, F) := \\inf_{y \\in F} \\|e - y\\| \\ge 1 - \\varepsilon .$$'
       ].join('\n'),
       notes: [
-        '证明：取 $x \\notin F$，因 $F$ 闭有 $d := d(x, F) > 0$；取 $y\' \\in F$ 使 $\\|x - y\'\\| \\le d/(1 - \\varepsilon)$，令 $e = (x - y\')/\\|x - y\'\\|$。对任意 $y \\in F$，$y\' + \\|x - y\'\\|\\,y \\in F$，于是',
+        '证明：取 $x \\notin F$，因 $F$ 闭有 $d := d(x, F) > 0$；取 $y\' \\in F$ 使 $\\|x - y\'\\| \\le d/(1 - \\varepsilon)$，令 $e = (x - y\')/\\|x - y\'\\|$。\n\n对任意 $y \\in F$，$y\' + \\|x - y\'\\|\\,y \\in F$，于是',
         '',
         '$$\\|e - y\\| = \\frac{\\|x - y\' - \\|x - y\'\\| y\\|}{\\|x - y\'\\|} \\ge \\frac{d}{\\|x - y\'\\|} \\ge 1 - \\varepsilon .$$',
         '⭐ 这叫「几乎正交」：**在无穷维里拿不到真正的正交**（一般没有内积），只能拿到「$1 - \\varepsilon$ 的正交」。这一步是「有限维 $\\ne$ 无穷维」最省力的裂缝，单位球紧性的反方向全靠它。',
@@ -148,7 +148,7 @@ window.MG = window.MG || {};
         '赋范空间 $E$ 的闭单位球 $B_E = \\{x \\in E : \\|x\\| \\le 1\\}$ 紧 $\\iff$ $\\dim E < \\infty$。'
       ].join('\n'),
       notes: [
-        '「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；而坐标球 $\\overline{B}^{\\infty}(0,1) = [-1,1]^{n}$ 是有界闭集，由 Heine–Borel（`thm.heine-borel`）紧。∎',
+        '「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；\n\n而坐标球 $\\overline{B}^{\\infty}(0,1) = [-1,1]^{n}$ 是有界闭集，由 Heine–Borel（`cor.heine-borel`）紧。\n\n∎',
         '「$\\implies$」：若 $\\dim E = \\infty$，用 Riesz 引理（`lem.almost-orthogonal`）递归造单位向量 $\\|e_n - e_m\\| \\ge 1/2$（$n \\ne m$），这样的序列没有收敛子列，于是闭单位球不列紧、因而不紧。',
         '',
         '⭐ 这一条是「有限维  当且仅当  局部紧」的一半：有限维赋范空间局部紧，无穷维的**从不**局部紧。它也是「有界闭集紧」只在有限维成立的精确版本 —— 无穷维里 Heine–Borel 失效。'
@@ -199,7 +199,7 @@ window.MG = window.MG || {};
         '5. $u$ 是 Lipschitz 的。'
       ].join('\n'),
       notes: [
-        '唯一有内容的一步是「在 0 连续 $\\implies$ 有界」，而且必须反证：若不存在这样的 $C$，则对每个 $n$ 有 $x_n$ 使 $\\|u(x_n)\\| \\ge n\\|x_n\\|$；令 $y_n = x_n / (n\\|x_n\\|)$，则 $\\|y_n\\| \\to 0$ 而 $\\|u(y_n)\\| \\ge 1$ —— 与在 $0$ 连续矛盾。',
+        '唯一有内容的一步是「在 0 连续 $\\implies$ 有界」，而且必须反证：若不存在这样的 $C$，则对每个 $n$ 有 $x_n$ 使 $\\|u(x_n)\\| \\ge n\\|x_n\\|$；\n\n令 $y_n = x_n / (n\\|x_n\\|)$，则 $\\|y_n\\| \\to 0$ 而 $\\|u(y_n)\\| \\ge 1$ —— 与在 $0$ 连续矛盾。',
         '⭐ 「一点连续就处处连续」是**线性**的赠品（平移把任意点搬到 $0$）。对非线性映射这句话当然错。',
         '⭐ 于是「连续线性算子」「有界线性算子」「Lipschitz 线性算子」从此是同义词，$B(E,F)$ 这个名字里的「B」正是 bounded。'
       ].join('\n\n'),
@@ -268,7 +268,7 @@ window.MG = window.MG || {};
         '设 $E$ 赋范、$F$ Banach。则 $(B(E, F), \\|\\cdot\\|)$ 是 Banach 空间。特别地，对偶空间 $E^* = B(E, \\mathbb{K})$ **总是** Banach（不论 $E$ 是否完备）。'
       ].join('\n'),
       notes: [
-        '证法（逐点取极限）：取 $B(E,F)$ 里的 Cauchy 列 $u_n$。对每个 $x$，$\\|u_n x - u_m x\\| \\le \\|u_n - u_m\\|\\,\\|x\\| \\to 0$，故 $(u_n x)$ 在 $F$ 里 Cauchy，有极限 $u(x)$。$u$ 线性（极限保线性）、有界（取 $N$ 使 $n, m \\ge N$ 时 $\\|u_n - u_m\\| < \\varepsilon$，则 $\\|u(x)\\| \\le \\|u(x) - u_N(x)\\| + \\|u_N(x)\\| \\le (\\varepsilon + \\|u_N\\|)\\|x\\|$），且 $\\|u_n - u\\| \\to 0$。',
+        '证法（逐点取极限）：取 $B(E,F)$ 里的 Cauchy 列 $u_n$。\n\n对每个 $x$，$\\|u_n x - u_m x\\| \\le \\|u_n - u_m\\|\\,\\|x\\| \\to 0$，故 $(u_n x)$ 在 $F$ 里 Cauchy，有极限 $u(x)$。\n\n$u$ 线性（极限保线性）、有界（取 $N$ 使 $n, m \\ge N$ 时 $\\|u_n - u_m\\| < \\varepsilon$，则 $\\|u(x)\\| \\le \\|u(x) - u_N(x)\\| + \\|u_N(x)\\| \\le (\\varepsilon + \\|u_N\\|)\\|x\\|$），且 $\\|u_n - u\\| \\to 0$。',
         '⭐ 要害是「$\\|u_n\\|$ 一致有界」（Cauchy 列必一致有界），所以极限的范数不会跳。',
         '⚠️ $E$ 不需要完备：完备性只用在 $F$ 上。'
       ].join('\n\n'),
@@ -313,7 +313,9 @@ window.MG = window.MG || {};
         '$$\\|\\tilde u\\| = \\|u\\| .$$'
       ].join('\n'),
       notes: [
-        '证法：给 $x \\in E$ 取 $g_n \\in G$，$g_n \\to x$。由 $\\|u(g_n) - u(g_m)\\| \\le \\|u\\|\\,\\|g_n - g_m\\|$ 知 $(u(g_n))$ 是 Cauchy 列，$F$ 完备给出极限；定义 $\\tilde u(x) := \\lim_n u(g_n)$（与取法无关），逐条验证线性、$\\|\\tilde u\\| \\le \\|u\\|$，而在 $G$ 上 $\\tilde u = u$ 又给出 $\\|\\tilde u\\| \\ge \\|u\\|$。',
+        '证法：给 $x \\in E$ 取 $g_n \\in G$，$g_n \\to x$。\n\n' +
+        '由 $\\|u(g_n) - u(g_m)\\| \\le \\|u\\|\\,\\|g_n - g_m\\|$ 知 $(u(g_n))$ 是 Cauchy 列，$F$ 完备给出极限；\n\n' +
+        '定义 $\\tilde u(x) := \\lim_n u(g_n)$（与取法无关），逐条验证线性、$\\|\\tilde u\\| \\le \\|u\\|$，而在 $G$ 上 $\\tilde u = u$ 又给出 $\\|\\tilde u\\| \\ge \\|u\\|$。',
         '⭐ 这是「**先在好用的稠密子集上造算子，再延拓**」的许可证：Fourier 变换（$L^1 \\cap L^2$ 上先定义）、Stieltjes 积分、特征值问题的变分形式，全走这一步。',
         '⚠️ $F$ 完备不能去掉（去掉就没有极限可拿）；$G$ 稠密也不能去掉（不稠密时延拓不唯一，只剩 Hahn–Banach 那种「保范但有选择」的延拓）。'
       ].join('\n\n'),
@@ -337,7 +339,7 @@ window.MG = window.MG || {};
         '右端按算子范数绝对收敛。'
       ].join('\n'),
       notes: [
-        '证法：$\\|u^k\\| \\le \\|u\\|^k$（次可乘），故 $\\sum \\|u^k\\| \\le (1 - \\|u\\|)^{-1} < \\infty$；$B(E)$ 完备（$E$ 完备 +「$B(E,F)$ 完备」）故级数收敛到某 $v$。部分和满足 $(I - u)\\sum_{k<n} u^k = I - u^n \\to I$，同法右乘，得 $v = (I-u)^{-1}$。',
+        '证法：$\\|u^k\\| \\le \\|u\\|^k$（次可乘），故 $\\sum \\|u^k\\| \\le (1 - \\|u\\|)^{-1} < \\infty$；$B(E)$ 完备（$E$ 完备 +「$B(E,F)$ 完备」）故级数收敛到某 $v$。\n\n部分和满足 $(I - u)\\sum_{k<n} u^k = I - u^n \\to I$，同法右乘，得 $v = (I-u)^{-1}$。',
         '⭐ 这是三大定理之外最常用的「开工工具」：它给的是**显式**的逆，且只要求 $\\|u\\| < 1$。摄动论（$A + tB$ 的谱、Kato 的解析扰动）、数值分析里的迭代收敛、Banach 逆映射定理里的局部逆，全靠它。',
         '⚠️ 反过来「$I - u$ 可逆 $\\implies$ $\\|u\\| < 1$」是**错的**：$u = -2I$ 时 $I - u = 3I$ 可逆。有界逆定理给的是另一件事（双射 $implies$ 逆连续），不是这条。'
       ].join('\n\n'),
@@ -422,7 +424,7 @@ window.MG = window.MG || {};
       regions: ['functional-analysis'],
       tags: ['泛函分析', 'Hilbert 空间', '内积'],
       statement: [
-        '设 $(H, \\langle\\cdot, \\cdot\\rangle)$ 是 $\\mathbb{K}$ 上的内积空间（本图约定：**对第一变元线性，对第二变元共轭线性**），配范数 $\\|x\\| := \\sqrt{\\langle x, x\\rangle}$。若 $(H, \\|\\cdot\\|)$ 完备，则叫 **Hilbert 空间**。'
+        '设 $(H, \\langle\\cdot, \\cdot\\rangle)$ 是 $\\mathbb{K}$ 上的内积空间（本图约定：**对第一变元线性，对第二变元共轭线性**），配范数 $\\|x\\| := \\sqrt{\\langle x, x\\rangle}$。\n\n若 $(H, \\|\\cdot\\|)$ 完备，则叫 **Hilbert 空间**。'
       ].join('\n'),
       notes: [
         '原型：$L^2(\\Omega, \\mu)$（完备性来自 Riesz–Fischer），以及 $\\ell^2(I)$。有限维内积空间自动完备，所以它们是退化的 Hilbert 空间。',
@@ -473,15 +475,24 @@ window.MG = window.MG || {};
         '$$\\|x + y\\|^2 + \\|x - y\\|^2 = 2\\|x\\|^2 + 2\\|y\\|^2 .$$'
       ].join('\n'),
       notes: [
-        '「$\\Longleftarrow$」分三段（顺序不能换）：\n' +
-        '\n' +
-        '1. **用极化恒等式定义内积**。实情形取 $\\langle x,y\\rangle := \\frac14\\bigl(\\|x+y\\|^2 - \\|x-y\\|^2\\bigr)$；复情形取 $\\langle x,y\\rangle := \\frac14\\sum_{k=0}^{3} i^{k}\\|x + i^{k} y\\|^2$。这一段的要点是：平行四边形法则恰好保证「展开后的交叉项能两两抵消」，所以范数真的能反推出双线性型。\n' +
-        '\n' +
-        '2. **加法性**。把 $\\langle x, y+z\\rangle$ 与 $\\langle x,y\\rangle + \\langle x,z\\rangle$ 相减，展开成 8 个范数平方项；对 $(y, z)$ 与 $(x,\\, y+z)$ 各用一次平行四边形法则，所有项成对抵消，得 $0$。这一步**只用平行四边形法则**，不假设任何线性。\n' +
-        '\n' +
-        '3. **齐次性**。先对 $\\lambda \\in \\mathbb{Q}$：整数由加法性归纳，分母靠 $n\\langle x, y\\rangle = \\langle x, ny\\rangle$；再对 $\\lambda \\in \\mathbb{R}$ 取有理数列 $\\lambda_n \\to \\lambda$，用**范数连续**（$\\bigl|\\|u\\| - \\|v\\|\\bigr| \\le \\|u - v\\|$）取极限。复情形额外验一条 $\\langle x, iy\\rangle = i\\langle x,y\\rangle$，之后按 $\\mathbb{C}$-线性延拓，其余公理随实情形继承。\n' +
-        '\n' +
-        '✓ 至此三条公理齐备；正定性来自 $\\langle x,x\\rangle = \\|x\\|^2 \\ge 0$，且等号 $\\iff x = 0$。',
+        '「$\\Longleftarrow$」分三段（顺序不能换）：\n\n' +
+        '1. **用极化恒等式定义内积**。\n\n' +
+        '实情形取 $\\langle x,y\\rangle := \\frac14\\bigl(\\|x+y\\|^2 - \\|x-y\\|^2\\bigr)$；\n\n' +
+        '复情形取 $\\langle x,y\\rangle := \\frac14\\sum_{k=0}^{3} i^{k}\\|x + i^{k} y\\|^2$。\n\n' +
+        '这一段的要点是：平行四边形法则恰好保证「展开后的交叉项能两两抵消」，所以范数真的能反推出双线性型。\n\n' +
+        '\n\n' +
+        '2. **加法性**。\n\n' +
+        '把 $\\langle x, y+z\\rangle$ 与 $\\langle x,y\\rangle + \\langle x,z\\rangle$ 相减，展开成 8 个范数平方项；\n\n' +
+        '对 $(y, z)$ 与 $(x,\\, y+z)$ 各用一次平行四边形法则，所有项成对抵消，得 $0$。\n\n' +
+        '这一步**只用平行四边形法则**，不假设任何线性。\n\n' +
+        '\n\n' +
+        '3. **齐次性**。\n\n' +
+        '先对 $\\lambda \\in \\mathbb{Q}$：整数由加法性归纳，分母靠 $n\\langle x, y\\rangle = \\langle x, ny\\rangle$；\n\n' +
+        '再对 $\\lambda \\in \\mathbb{R}$ 取有理数列 $\\lambda_n \\to \\lambda$，用**范数连续**（$\\bigl|\\|u\\| - \\|v\\|\\bigr| \\le \\|u - v\\|$）取极限。\n\n' +
+        '复情形额外验一条 $\\langle x, iy\\rangle = i\\langle x,y\\rangle$，之后按 $\\mathbb{C}$-线性延拓，其余公理随实情形继承。\n\n' +
+        '\n\n' +
+        '✓ 至此三条公理齐备；\n\n' +
+        '正定性来自 $\\langle x,x\\rangle = \\|x\\|^2 \\ge 0$，且等号 $\\iff x = 0$。',
         '⭐ 经典反例：$\\ell^1$、$\\ell^\\infty$、$C[0,1]$ 都不满足（取不交支撑的 $x, y$ 一看）。所以它们的范数**不是**内积给的 —— 这是「Hilbert 空间为什么特殊」的定量答案。',
         '⚠️ 讲义里写的是「$\\|x+y\\|^2 + \\|x-y\\|^2 = 2\\|x\\|^2 + 2\\|y\\|^2$」加一句「平行四边行」——把几何里的「平行四边形两条对角线平方和 = 四边平方和」直接搬到了范数上。'
       ].join('\n\n'),
@@ -535,7 +546,7 @@ window.MG = window.MG || {};
         '3. 正交分解 $H = E \\oplus E^\\perp$，且 $\\|x\\|^2 = \\|x - P_E x\\|^2 + \\|P_E x\\|^2$。'
       ].join('\n'),
       notes: [
-        '证法：由凸闭集投影，(1) 的「$\\implies$」把 $z$ 换成 $\\pm z$ 消掉实部得 $\\operatorname{Re}\\langle x - y, z\\rangle \\le 0$ 对所有 $z \\in E$，即 $x - y \\perp E$；「$\\Longleftarrow$」用 $\\|x - z\\|^2 = \\|x - y\\|^2 + \\|y - z\\|^2 \\ge \\|x - y\\|^2$。(2) 用 $\\alpha_1 x_1 + \\alpha_2 x_2 - \\alpha_1 P x_1 - \\alpha_2 P x_2 \\perp E$。(3) 勾股定理。',
+        '证法：由凸闭集投影，(1) 的「$\\implies$」把 $z$ 换成 $\\pm z$ 消掉实部得 $\\operatorname{Re}\\langle x - y, z\\rangle \\le 0$ 对所有 $z \\in E$，即 $x - y \\perp E$；\n\n「$\\Longleftarrow$」用 $\\|x - z\\|^2 = \\|x - y\\|^2 + \\|y - z\\|^2 \\ge \\|x - y\\|^2$。\n\n(2) 用 $\\alpha_1 x_1 + \\alpha_2 x_2 - \\alpha_1 P x_1 - \\alpha_2 P x_2 \\perp E$。\n\n(3) 勾股定理。',
         '⚠️ 「$E$ 闭」不能去掉：$E = $ 有限支撑序列在 $\\ell^2$ 里稠密但不闭，最近点存在但**不落在 $E$ 里**，正交分解也失效。',
         '⭐ 这条是 Hilbert 空间与一般 Banach 空间的最大区别之一：一般 Banach 空间里闭子空间不一定有补（$c_0 \\subset \\ell^\\infty$ 就没有），所以「投影」这个词在 Banach 空间里不能乱用。'
       ].join('\n\n'),
@@ -559,7 +570,7 @@ window.MG = window.MG || {};
         '于是 $y \\mapsto \\langle \\cdot, y\\rangle$ 是 $H \\to H^*$ 的等距同构（复情形为共轭线性）。'
       ].join('\n'),
       notes: [
-        '证法：$\\varphi = 0$ 取 $y = 0$。否则 $E = \\ker\\varphi$ 是**闭真**子空间，由正交分解取 $0 \\ne z \\in E^\\perp$，令 $y = \\overline{\\varphi(z)}\\, z / \\|z\\|^2$；则 $x \\mapsto \\langle x, y\\rangle$ 与 $\\varphi$ 在 $E$ 上都为 $0$、在 $z$ 上相等，而 $H = E \\oplus \\mathbb{K} z$，故相等。$\\|y\\| = \\|\\varphi\\|$ 由 $\\|\\varphi\\| = \\sup_{\\|x\\| \\le 1} |\\langle x, y\\rangle| = \\|y\\|$。',
+        '证法：$\\varphi = 0$ 取 $y = 0$。\n\n否则 $E = \\ker\\varphi$ 是**闭真**子空间，由正交分解取 $0 \\ne z \\in E^\\perp$，令 $y = \\overline{\\varphi(z)}\\, z / \\|z\\|^2$；\n\n则 $x \\mapsto \\langle x, y\\rangle$ 与 $\\varphi$ 在 $E$ 上都为 $0$、在 $z$ 上相等，而 $H = E \\oplus \\mathbb{K} z$，故相等。\n\n$\\|y\\| = \\|\\varphi\\|$ 由 $\\|\\varphi\\| = \\sup_{\\|x\\| \\le 1} |\\langle x, y\\rangle| = \\|y\\|$。',
         '⭐ 意义：**Hilbert 空间是自己的对偶**（共轭线性）。Banach 空间一般不是：$(\\ell^1)^* = \\ell^\\infty$、$(\\ell^\\infty)^* \\supsetneq \\ell^1$。这让 Hilbert 空间在「像有限维」这条路上走得最远：泛函与向量可以互换。',
         '⚠️ 共轭线性：$\\alpha y \\mapsto \\bar\\alpha\\,\\varphi$。所以严格说不是「同构」而是「共轭等距同构」（anti-linear isometry）。',
         '⚠️ 别与 $L^p$ 的 Riesz 表示混淆：那是 $(L^p)^* \\cong L^q$（$1<p<\\infty$，$1/p + 1/q = 1$），靠 Hölder 不等式；这条靠正交分解。两者只共享名字。'
@@ -584,7 +595,9 @@ window.MG = window.MG || {};
         '且 $\\|u^*\\| = \\|u\\|$。'
       ].join('\n'),
       notes: [
-        '存在性完全靠 Riesz：固定 $x \\in K$，泛函 $y \\mapsto \\langle x, u(y)\\rangle_K$ 在 $H$ 上连续（界 $\\le \\|x\\|\\,\\|u\\|$），由 Riesz 表示得唯一的 $u^*(x)$。再验 $u^*$ 线性（由 $\\langle x, u(\\cdot)\\rangle$ 对 $x$ 线性）与有界；$\\|u^*\\| = \\|u\\|$ 用两次 sup 交换。',
+        '存在性完全靠 Riesz：固定 $x \\in K$，泛函 $y \\mapsto \\langle x, u(y)\\rangle_K$ 在 $H$ 上连续（界 $\\le \\|x\\|\\,\\|u\\|$），由 Riesz 表示得唯一的 $u^*(x)$。\n\n' +
+        '再验 $u^*$ 线性（由 $\\langle x, u(\\cdot)\\rangle$ 对 $x$ 线性）与有界；\n\n' +
+        '$\\|u^*\\| = \\|u\\|$ 用两次 sup 交换。',
         '⭐ 这解释了为什么 Banach 空间没有「伴随」而只有「转置/共轭」：转置活在**对偶**之间（${}^t\\!: F^* \\to E^*$），而 Hilbert 空间里 $H^* \\cong H$ 让转置可以搬回空间上。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-10-12']
@@ -608,7 +621,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '酉 $\\iff$ 保内积的可逆算子（$\\langle ux, uy\\rangle = \\langle x, y\\rangle$ 且满射）。',
-        '⚠️ **无穷维里「等距」$\\ne$「酉」**：单侧移位 $S(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 满足 $\\|Sx\\| = \\|x\\|$（等距），但不满；$S^*S = I$ 而 $S\\,S^* = I - P_{\\ker S^*}$ 是投影。这就是「部分等距」这个概念的用处：它把「在某个闭子空间上是等距」包起来。',
+        '⚠️ **无穷维里「等距」$\\ne$「酉」**：单侧移位 $S(x_1, x_2, \\ldots) = (0, x_1, x_2, \\ldots)$ 满足 $\\|Sx\\| = \\|x\\|$（等距），但不满；\n\n$S^*S = I$ 而 $S\\,S^* = I - P_{\\ker S^*}$ 是投影。\n\n这就是「部分等距」这个概念的用处：它把「在某个闭子空间上是等距」包起来。',
         '⭐ 极分解 $u = V|u|$（$V$ 部分等距，$|u| = \\sqrt{u^*u}$）就是部分等距的标准出场方式。有限维版本见 `def.unitary-matrix`。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-10-12']
@@ -680,7 +693,10 @@ window.MG = window.MG || {};
         '每个 Hilbert 空间都含一组正交基。'
       ].join('\n'),
       notes: [
-        '证法：令 $\\mathcal{S} = \\{ A \\subseteq H : A \\text{ 标准正交} \\}$，按包含成偏序。全序子族的并仍标准正交（每个元素只与族里有限多个打交道），故有上界；Zorn 给极大元 $M$。若 $\\overline{\\operatorname{span} M} \\ne H$，由正交分解取出 $0 \\ne z \\perp \\overline{\\operatorname{span} M}$，则 $M \\cup \\{z/\\|z\\|\\}$ 严格更大，矛盾。',
+        '证法：令 $\\mathcal{S} = \\{ A \\subseteq H : A \\text{ 标准正交} \\}$，按包含成偏序。\n\n' +
+        '全序子族的并仍标准正交（每个元素只与族里有限多个打交道），故有上界；\n\n' +
+        'Zorn 给极大元 $M$。\n\n' +
+        '若 $\\overline{\\operatorname{span} M} \\ne H$，由正交分解取出 $0 \\ne z \\perp \\overline{\\operatorname{span} M}$，则 $M \\cup \\{z/\\|z\\|\\}$ 严格更大，矛盾。',
         '⭐ 这是**非构造**的存在性（Zorn = 选择公理）：能显式写出正交基的只有少数空间（$L^2[0,1]$ 的 Fourier 基、球面上的球谐函数、Hermite 函数）。',
         '⚠️ 与 Gram–Schmidt 的分工：G–S 只从**可数**线性无关族出发、靠归纳造标准正交集（`thm.gram-schmidt`）；正交基一般不可数，只能靠 Zorn。'
       ].join('\n\n'),
@@ -700,7 +716,9 @@ window.MG = window.MG || {};
         '设 $H$ 是 Hilbert 空间，$\\dim H = |I|$（Hilbert 维数）。则 $H$ 等距同构于 $\\ell^2(I)$。特别地，无穷维可分 Hilbert 空间都等距同构于 $\\ell^2(\\mathbb{N})$。'
       ].join('\n'),
       notes: [
-        '映射 $U : H \\to \\ell^2(I)$，$U(x) := (\\langle x, e_i\\rangle)_{i \\in I}$。由 Bessel 它入 $\\ell^2$、由 Parseval 它保范；满射性：若 $(\\lambda_i) \\in \\ell^2$，则部分和 $\\sum_{i \\in J}\\lambda_i e_i$ 是 Cauchy（$\\|\\sum_{J \\setminus J\'}\\lambda_i e_i\\|^2 = \\sum_{J \\setminus J\'}|\\lambda_i|^2$），其极限的坐标就是 $\\lambda_i$。',
+        '映射 $U : H \\to \\ell^2(I)$，$U(x) := (\\langle x, e_i\\rangle)_{i \\in I}$。\n\n' +
+        '由 Bessel 它入 $\\ell^2$、由 Parseval 它保范；\n\n' +
+        '满射性：若 $(\\lambda_i) \\in \\ell^2$，则部分和 $\\sum_{i \\in J}\\lambda_i e_i$ 是 Cauchy（$\\|\\sum_{J \\setminus J\'}\\lambda_i e_i\\|^2 = \\sum_{J \\setminus J\'}|\\lambda_i|^2$），其极限的坐标就是 $\\lambda_i$。',
         '⭐ 结论：**可分无穷维 Hilbert 空间在等距意义下只有一个**。Banach 空间完全不是这样：$\\ell^p$（不同 $p$）两两不同构，$C[0,1]$、$L^1$、$c_0$ 也各自不同。这就是「Hilbert 空间简单」的确切含义。',
         '⚠️ 「可分」不能去掉：$\\ell^2(I)$（不可数 $I$）与 $\\ell^2(J)$ 同构 $\\iff |I| = |J|$（用正交基的基数比）。'
       ].join('\n\n'),

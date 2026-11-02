@@ -7,6 +7,8 @@
 
 $$\operatorname{Hom}_{\mathbf{Ab}(X)}\bigl(\mathcal{F},\ i_{x,*}A\bigr) \;\cong\; \operatorname{Hom}_{\mathbf{Ab}}\bigl(\mathcal{F}_{x},\ A\bigr), \qquad \varphi \longmapsto \varphi_{x} .$$
 
-**第二步：把内射性搬到茎上。** $i_{x,*}A$ 内射 $\iff$ $\operatorname{Hom}(-, i_{x,*}A)$ 正合 $\iff$ 对每个层的单射 $\mathcal{G} \rightarrowtail \mathcal{H}$，映射 $\operatorname{Hom}(\mathcal{H}, i_{x,*}A) \to \operatorname{Hom}(\mathcal{G}, i_{x,*}A)$ 满。用第一步的同构，这等价于
+**第二步：把内射性搬到茎上。** $i_{x,*}A$ 内射 $\iff$ $\operatorname{Hom}(-, i_{x,*}A)$ 正合 $\iff$ 对每个层的单射 $\mathcal{G} \rightarrowtail \mathcal{H}$，映射 $\operatorname{Hom}(\mathcal{H}, i_{x,*}A) \to \operatorname{Hom}(\mathcal{G}, i_{x,*}A)$ 满。
+
+用第一步的同构，这等价于
 
 > 续见 proofs/imp.skyscraper-injective.2.md

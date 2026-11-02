@@ -3,12 +3,10 @@
 
 `thm.riemann-criterion` 可积的振幅判据 + `def.null-set` 零集与完备 → `thm.riemann-lebesgue-criterion` 可积 ⟺ 不连续点零测
 
-$$\sum_i \omega_i \Delta x_i \le 2M \cdot \frac{\varepsilon}{4M + 1} + \frac{\varepsilon}{2(b - a)} \cdot (b - a) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$$
+4. 现在关键的一步：$D \subseteq \bigcup_{k} \overline{D_k}$ —— 若 $f$ 在 $x$ 处不连续，则 $f$ 在该点的振幅 $\omega(f, x) > 1/k$ 对某个 $k$ 成立，于是 $x$ 属于那些长度可以任意小的区间的闭包。
 
-由振幅判据可积。
+于是 $D$ 被可数多个零测集覆盖，本身是零测集。
 
-**($\implies$)** 设 $f$ 可积。对每个 $k \ge 1$ 取分割 $P_k$ 使 $\sum_i \omega_i \Delta x_i < 1 / k$。把「$\omega_i > 1/k$」的那些小区间记为 $J_{k,1}, \ldots$，则
+∎
 
-$$\sum_j |J_{k, j}| \le k \sum_j \omega_j |J_{k,j}| \le k \cdot \frac{1}{k} = 1$$
-
-> 续见 proofs/imp.riemann-lebesgue.5.md
+> ($\Longleftarrow$) 的 2 与 3 是「**紧性 + 零测**」的标准组合拳：把不连续点用总长度很小的开集包起来，剩下的紧集上连续函数一致连续。这一招在后面（Lusin 定理、Egorov 定理）会反复出现。

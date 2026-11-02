@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-**第一步：$A_5$ 的共轭类。** $|A_5| = 60$。按循环型列举，$A_5$ 中的元素
+**第一步：$A_5$ 的共轭类。** $|A_5| = 60$。按循环型列举，$A_5$ 中的元
 
 > 续见 proofs/imp.sn-solvable.2.md

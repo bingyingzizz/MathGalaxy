@@ -7,7 +7,9 @@
 
 $$(i) \int_E f = \int_E g\quad  \forall E \in \mathcal{M}\quad  \iff\quad  \int_E h = 0\quad  \forall E$$
 
-**$(i) \implies (ii)$**：分别取 $E = \{h \ge 0\}$ 与 $E = \{h < 0\}$。由 $\int_E h = 0$ 且 $h$ 在 $E$ 上不变号，得 $\{h > 0\}$ 与 $\{h < 0\}$ 都是零集（否则积分为正/负），故 $\mu(\{h \ne 0\}) = 0$，于是 $\int|h| = 0$。
+**$(i) \implies (ii)$**：分别取 $E = \{h \ge 0\}$ 与 $E = \{h < 0\}$。
+
+由 $\int_E h = 0$ 且 $h$ 在 $E$ 上不变号，得 $\{h > 0\}$ 与 $\{h < 0\}$ 都是零集（否则积分为正/负），故 $\mu(\{h \ne 0\}) = 0$，于是 $\int|h| = 0$。
 
 **$(ii) \implies (iii)$**：$\int|h| = 0$ 配合「积分为零 $\iff$ 几乎处处为零」，直接得到 $h = 0 \text{a.e.}$。
 

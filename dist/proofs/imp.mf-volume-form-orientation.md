@@ -7,4 +7,8 @@
 
 $$\omega := \sum_{\alpha}\rho_{\alpha}\,\varphi_{\alpha}^{\ast}\bigl(\mathrm{d}x^{1}\wedge\cdots\wedge\mathrm{d}x^{n}\bigr),$$
 
+其中 $\rho_{\alpha}$ 在指标集外面延拓为 $0$。
+
+每一项在 $p$ 处都 $\ge 0$ 倍的「正体积形式」：因为定向图册里任意两张卡的转移 Jacobi 行列式 $> 0$，所以同一张卡上两张卡给的正体积形式只差一个**正**的系数。
+
 > 续见 proofs/imp.mf-volume-form-orientation.2.md

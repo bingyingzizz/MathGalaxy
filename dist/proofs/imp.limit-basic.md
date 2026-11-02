@@ -3,7 +3,9 @@
 
 `def.sequence-limit` 数列极限 + `prop.order-rules` 序与四则运算 → `prop.limit-basic` 极限的基本性质
 
-**(i)** 设 $x_n \to x$、$x_n \to x'$ 且 $x \ne x'$，不妨 $x < x'$。取 $\varepsilon = (x' - x)/2 > 0$，则 $n$ 充分大时同时有 $|x_n - x| < \varepsilon$、$|x_n - x'| < \varepsilon$，于是
+**(i)** 设 $x_n \to x$、$x_n \to x'$ 且 $x \ne x'$，不妨 $x < x'$。
+
+取 $\varepsilon = (x' - x)/2 > 0$，则 $n$ 充分大时同时有 $|x_n - x| < \varepsilon$、$|x_n - x'| < \varepsilon$，于是
 
 $$x' - x \le |x' - x_n| + |x_n - x| < 2\varepsilon = x' - x,$$
 

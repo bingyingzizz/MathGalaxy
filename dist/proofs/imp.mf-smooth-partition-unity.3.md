@@ -9,6 +9,8 @@ $$\psi_{\alpha} \in C^{\infty}(M),\qquad \psi_{\alpha} = 1\ \text{on}\ V_{\alpha
 
 $$\rho_{\alpha} := \frac{\psi_{\alpha}}{\Psi}.$$
 
-则 $\rho_{\alpha} \in C^{\infty}(M)$、$0 \le \rho_{\alpha} \le 1$、$\operatorname{supp}\rho_{\alpha} \subseteq U_{\alpha}$、且 $\sum_{\alpha}\rho_{\alpha} = 1$ 处处成立 —— 三条要求全齐。∎
+则 $\rho_{\alpha} \in C^{\infty}(M)$、$0 \le \rho_{\alpha} \le 1$、$\operatorname{supp}\rho_{\alpha} \subseteq U_{\alpha}$、且 $\sum_{\alpha}\rho_{\alpha} = 1$ 处处成立 —— 三条要求全齐。
+
+∎
 
 > 续见 proofs/imp.mf-smooth-partition-unity.4.md

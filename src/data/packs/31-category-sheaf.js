@@ -23,7 +23,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '筛', '覆盖'],
       statement: [
-        '设 $X \\in \\mathcal{C}$。$X$ 上的**筛**是预层 $h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$ 的一个子函子 $R \\subseteq h_{X}$：对每个 $X\'$ 给一个子集 $R(X\') \\subseteq \\operatorname{Hom}_{\\mathcal{C}}(X\', X)$，使得只要 $f \\in R(X\')$，任何 $g : X\'\' \\to X\'$ 都满足 $f \\circ g \\in R(X\'\')$。',
+        '设 $X \\in \\mathcal{C}$。\n\n$X$ 上的**筛**是预层 $h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$ 的一个子函子 $R \\subseteq h_{X}$：对每个 $X\'$ 给一个子集 $R(X\') \\subseteq \\operatorname{Hom}_{\\mathcal{C}}(X\', X)$，使得只要 $f \\in R(X\')$，任何 $g : X\'\' \\to X\'$ 都满足 $f \\circ g \\in R(X\'\')$。',
         '',
         '一族态射 $(f_{i} : X_{i} \\to X)_{i \\in I}$ **生成的筛**是',
         '',
@@ -75,7 +75,7 @@ window.MG = window.MG || {};
         '带 Grothendieck 拓扑的范畴叫 **景**。'
       ].join('\n'),
       notes: [
-        '$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R\' \\in J(X) \\implies R \\cap R\' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R\'$、$R \\in J(X) \\implies R\' \\in J(X)$）。合起来就是「$J(X)$ 里有一堆「够大」的筛」。',
+        '$J(X)$ 在所有筛的偏序集上构成一个**滤子**：非空；对交封闭（$R, R\' \\in J(X) \\implies R \\cap R\' \\in J(X)$）；对更大的筛封闭（$R \\subseteq R\'$、$R \\in J(X) \\implies R\' \\in J(X)$）。\n\n合起来就是「$J(X)$ 里有一堆「够大」的筛」。',
         '由预拓扑可以生成拓扑：把每个覆盖族换成它生成的筛，再取全部这样的筛。**拓扑比预拓扑更一般** —— 预拓扑要求那些纤维积存在，而在预层范畴里筛的拉回总是存在的。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
@@ -173,7 +173,7 @@ window.MG = window.MG || {};
         '3. $T$ 是分离的（层）$\\iff$ $T \\to \\widehat{H}(T)$ 是单态射（同构）。'
       ].join('\n'),
       notes: [
-        ['**证明。** 记 $\\widehat{H}(T) := \\varinjlim_{(X_{i}\\to X)}\\check{H}^{0}\\bigl((X_{i}),T\\bigr)$，其中 $\\check{H}^{0}$ 是 $\\prod_{i}T(X_{i}) \\rightrightarrows \\prod_{i,j}T(X_{i}\\times_{X}X_{j})$ 的等化子。','**1.（左正合）** $T \\mapsto \\check{H}^{0}((X_{i}),T)$ 只用到 $T$ 的取值与拉回，是有限极限（积 + 等化子）的复合，故保有限极限；而 $\\mathbf{Set}$ 里的**滤过余极限正合**（与有限极限交换）✓。两者合起来给出 $\\widehat{H}$ 左正合 ✓。','**2.（分离 / 层）** $\\widehat{H}(T)(X)$ 的元素是「某个覆盖上的相容族」，两个元素相等 $\\iff$ 存在公共细化使它们在那上面一致（滤过性）。于是：若它们在某个覆盖的每支上相等，则在该覆盖上就已经相等，故 $\\widehat{H}(T) \\to \\prod_{i}\\widehat{H}(T)(X_{i})$ 单 —— 即 $\\widehat{H}(T)$ **分离** ✓。进一步，若 $T$ 分离，任何 $\\widehat{H}(T)$ 上的相容族可以逐层提升到 $T$（分离性保证提升唯一），从而粘成 $\\widehat{H}(T)$ 的一个元素，故 $\\widehat{H}(T)$ 是**层** ✓。','**3.（与嵌入的关系）** 由 $\\check{H}^{0}$ 是等化子，$T(X) \\to \\widehat{H}(T)(X)$ 总是单 $\\iff$ 「$T$ 上两个元素若在某个覆盖上一致则相等」，即 $T$ 分离 ✓；这个映射还是满的 $\\iff$ 每个相容族都能粘合，即 $T$ 是层 ✓。于是 $T$ 分离 $\\iff T \\to \\widehat{H}(T)$ 单、$T$ 是层 $\\iff$ 它是同构 ✓。∎'].join('\n'),
+        ['**证明。** 记 $\\widehat{H}(T) := \\varinjlim_{(X_{i}\\to X)}\\check{H}^{0}\\bigl((X_{i}),T\\bigr)$，其中 $\\check{H}^{0}$ 是 $\\prod_{i}T(X_{i}) \\rightrightarrows \\prod_{i,j}T(X_{i}\\times_{X}X_{j})$ 的等化子。','**1.（左正合）** $T \\mapsto \\check{H}^{0}((X_{i}),T)$ 只用到 $T$ 的取值与拉回，是有限极限（积 + 等化子）的复合，故保有限极限；而 $\\mathbf{Set}$ 里的**滤过余极限正合**（与有限极限交换）✓。两者合起来给出 $\\widehat{H}$ 左正合 ✓。','**2.（分离 / 层）** $\\widehat{H}(T)(X)$ 的元素是「某个覆盖上的相容族」，两个元素相等 $\\iff$ 存在公共细化使它们在那上面一致（滤过性）。\n\n于是：若它们在某个覆盖的每支上相等，则在该覆盖上就已经相等，故 $\\widehat{H}(T) \\to \\prod_{i}\\widehat{H}(T)(X_{i})$ 单 —— 即 $\\widehat{H}(T)$ **分离** ✓。\n\n进一步，若 $T$ 分离，任何 $\\widehat{H}(T)$ 上的相容族可以逐层提升到 $T$（分离性保证提升唯一），从而粘成 $\\widehat{H}(T)$ 的一个元素，故 $\\widehat{H}(T)$ 是**层** ✓。','**3.（与嵌入的关系）** 由 $\\check{H}^{0}$ 是等化子，$T(X) \\to \\widehat{H}(T)(X)$ 总是单 $\\iff$ 「$T$ 上两个元素若在某个覆盖上一致则相等」，即 $T$ 分离 ✓；\n\n这个映射还是满的 $\\iff$ 每个相容族都能粘合，即 $T$ 是层 ✓。\n\n于是 $T$ 分离 $\\iff T \\to \\widehat{H}(T)$ 单、$T$ 是层 $\\iff$ 它是同构 ✓。\n\n∎'].join('\n'),
 '1 的理由很短：$\\operatorname{Hom}(-, T)$ 保极限，而**滤过余极限左正合**。3 说明「分离」与「层」的差别就是「$T$ 在 $\\widehat{H}$ 里是不是已经到顶了」—— 于是「做两次 $\\widehat{H}$」这件事有了明确的意义。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
@@ -296,7 +296,7 @@ window.MG = window.MG || {};
         '2. $u$ 有**唯一的**满-单分解：存在唯一的 $I$ 使 $u = F \\twoheadrightarrow I \\rightarrowtail G$。'
       ].join('\n'),
       notes: [
-        ['**证明。** 设 $u : F \\to G$ 是层之间的态射。','**1.** 设 $u$ 既单又满。由满性（层中满态射的**局部**判据），对 $1_{G} \\in G(G)$ 存在覆盖 $(G_{i}\\to G)$ 与 $t_{i}\\in F(G_{i})$ 使 $u(t_{i}) = 1_{G}|_{G_{i}}$。在双重拉回 $G_{i}\\times_{G}G_{j}$ 上，$t_{i}$ 与 $t_{j}$ 的像都等于 $1_{G}$ 的限制，由 $u$ 单得 $t_{i}|= t_{j}|$ —— 相容 ✓。层条件给唯一的 $v \\in F(G)$ 与 $v|_{G_{i}} = t_{i}$，于是 $u(v) = 1_{G}$（两边在覆盖上一致，层分离）。又 $u(v u) = u$，而 $u$ 单 $\\implies v u = 1_{F}$。故 $u$ 同构 ✓。','**2.** 像分解：拓扑斯里每个态射都有 (满, 单) 分解（像 $= $ 层化后的余等化子）。设 $u = m e$ 与 $u = m\' e\'$ 是两个这样的分解。由 $m e = m\' e\'$ 与满-单的泛性，$e\'$ 通过 $e$ 分解（$e$ 满、$m\'$ 单，用「满 $\\implies$ 左消去」得唯一分解），对称地 $e$ 通过 $e\'$ 分解，两个分解互相比较得 $I \\cong I\'$ ✓。∎'].join('\n'),
+        ['**证明。** 设 $u : F \\to G$ 是层之间的态射。','**1.** 设 $u$ 既单又满。\n\n由满性（层中满态射的**局部**判据），对 $1_{G} \\in G(G)$ 存在覆盖 $(G_{i}\\to G)$ 与 $t_{i}\\in F(G_{i})$ 使 $u(t_{i}) = 1_{G}|_{G_{i}}$。\n\n在双重拉回 $G_{i}\\times_{G}G_{j}$ 上，$t_{i}$ 与 $t_{j}$ 的像都等于 $1_{G}$ 的限制，由 $u$ 单得 $t_{i}|= t_{j}|$ —— 相容 ✓。\n\n层条件给唯一的 $v \\in F(G)$ 与 $v|_{G_{i}} = t_{i}$，于是 $u(v) = 1_{G}$（两边在覆盖上一致，层分离）。\n\n又 $u(v u) = u$，而 $u$ 单 $\\implies v u = 1_{F}$。\n\n故 $u$ 同构 ✓。','**2.** 像分解：拓扑斯里每个态射都有 (满, 单) 分解（像 $= $ 层化后的余等化子）。\n\n设 $u = m e$ 与 $u = m\' e\'$ 是两个这样的分解。\n\n由 $m e = m\' e\'$ 与满-单的泛性，$e\'$ 通过 $e$ 分解（$e$ 满、$m\'$ 单，用「满 $\\implies$ 左消去」得唯一分解），对称地 $e$ 通过 $e\'$ 分解，两个分解互相比较得 $I \\cong I\'$ ✓。\n\n∎'].join('\n'),
 '这两条在 $\\mathbf{Set}$ 里也对，但在层范畴里**不是自动的**，要证。它们恰好就是**预拓扑斯（pretopos）**公理的内容 —— 所以这个位置正是从「层」走向「拓扑斯」的接口。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
@@ -316,7 +316,7 @@ window.MG = window.MG || {};
         '$$s|_{X_{i}} \\in \\operatorname{im}\\bigl(F(X_{i}) \\to G(X_{i})\\bigr) \\qquad (\\forall i \\in I)$$'
       ].join('\n'),
       notes: [
-        ['**证明。**','- **$(\\implies)$** 设 $u : F \\to G$ 是满态射。任取 $X$ 与 $s \\in G(X)$，即 $s : h_{X} \\to G$。取拉回','$$\\begin{array}{ccc} h_{X}\\times_{G}F & \\xrightarrow{\\ \\ } & F\\\\ \\big\\downarrow & & \\big\\downarrow{\\scriptstyle u}\\\\ h_{X} & \\xrightarrow{\\ s\\ } & G\\end{array}$$','底边 $u$ 满 $\\implies$ 左边那条也是满态射（拓扑斯里满态射沿任意态射拉回仍满），即 $h_{X}\\times_{G}F \\to h_{X}$ 是**覆盖**；取它的一族可表示层覆盖 $(X_{i}\\to X)$，则每支给出 $s|_{X_{i}}$ 在 $F(X_{i})$ 里的一个原像 ✓。','- **$(\\Longleftarrow)$** 设条件成立，取像分解 $u = m\\,e$（$e$ 满、$m : I \\rightarrowtail G$ 单）。条件说：对每个 $X$、每个 $s \\in G(X)$，存在覆盖使 $s|_{X_{i}}$ 落在 $\\operatorname{im}u \\subseteq \\operatorname{im}m = I$ 里。而单态射是同构 $\\iff$ 它的像在每个 $X$ 上被覆盖局部地盖住（子对象相等的局部判据）。故 $m$ 是同构，$u = m e$ 满 ✓。∎','一句话：**层的满态射就是「局部满」。**'].join('\n'),
+        ['**证明。**','- **$(\\implies)$** 设 $u : F \\to G$ 是满态射。任取 $X$ 与 $s \\in G(X)$，即 $s : h_{X} \\to G$。取拉回','$$\\begin{array}{ccc} h_{X}\\times_{G}F & \\xrightarrow{\\ \\ } & F\\\\ \\big\\downarrow & & \\big\\downarrow{\\scriptstyle u}\\\\ h_{X} & \\xrightarrow{\\ s\\ } & G\\end{array}$$','底边 $u$ 满 $\\implies$ 左边那条也是满态射（拓扑斯里满态射沿任意态射拉回仍满），即 $h_{X}\\times_{G}F \\to h_{X}$ 是**覆盖**；取它的一族可表示层覆盖 $(X_{i}\\to X)$，则每支给出 $s|_{X_{i}}$ 在 $F(X_{i})$ 里的一个原像 ✓。','- **$(\\Longleftarrow)$** 设条件成立，取像分解 $u = m\\,e$（$e$ 满、$m : I \\rightarrowtail G$ 单）。\n\n条件说：对每个 $X$、每个 $s \\in G(X)$，存在覆盖使 $s|_{X_{i}}$ 落在 $\\operatorname{im}u \\subseteq \\operatorname{im}m = I$ 里。\n\n而单态射是同构 $\\iff$ 它的像在每个 $X$ 上被覆盖局部地盖住（子对象相等的局部判据）。\n\n故 $m$ 是同构，$u = m e$ 满 ✓。\n\n∎','一句话：**层的满态射就是「局部满」。**'].join('\n'),
 '一句话：**层的满态射是「局部满」**。整体上 $s$ 可能没有原像，但总能把 $X$ 切成一层覆盖，每块上都有原像 —— 这是「层上只有局部信息」最典型的体现。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
@@ -339,7 +339,7 @@ window.MG = window.MG || {};
         '',
         '即 $R$ 恰好就是商映射的核对。'
       ].join('\n'),
-      notes: '「有效」说的是**商没有多粘**：先取等价关系再取商、然后再看商映射的核对，回到原来的等价关系。\n\n对照集合：任意 $f : X \\to Y$ 给出的核对 $X \\times_{Y} X$ 一定是有效的（$\\overline{X} \\cong \\operatorname{im} f$）；反过来任意等价关系 $R \\subseteq X \\times X$ 取 $\\overline{X} = X/R$ 也总是回到 $R$。**在 $\\mathbf{Set}$ 里人人都有效**，但在一般范畴里这是要额外要求的一条。',
+      notes: '「有效」说的是**商没有多粘**：先取等价关系再取商、然后再看商映射的核对，回到原来的等价关系。\n\n对照集合：任意 $f : X \\to Y$ 给出的核对 $X \\times_{Y} X$ 一定是有效的（$\\overline{X} \\cong \\operatorname{im} f$）；\n\n反过来任意等价关系 $R \\subseteq X \\times X$ 取 $\\overline{X} = X/R$ 也总是回到 $R$。\n\n**在 $\\mathbf{Set}$ 里人人都有效**，但在一般范畴里这是要额外要求的一条。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
 
@@ -358,7 +358,7 @@ window.MG = window.MG || {};
         '$$\\bigl(T/R\\bigr)^{\\sharp} \\;\\cong\\; T^{\\sharp} / R^{\\sharp}$$'
       ].join('\n'),
       notes: [
-        ['**证明。** 记层化为 $(-)^{\\sharp}$：它是到层范畴的反射，故左伴随。','- 左伴随保**余极限** ✓；它同时又**左正合**（保有限极限，因为拓扑斯都是左正合的）✓。','- **等价关系的条件都是有限极限条件**：$R \\rightrightarrows T$ 是等价关系 $\\iff$ 存在 $R \\to T\\times T$ 使其为单态射（自反、对称、传递三条用对角、交换与拉回表达）。层化保这些有限极限，故 $R^{\\sharp} \\rightrightarrows T^{\\sharp}$ 仍是等价关系 ✓。','- **商是余等化子**：$T/R := \\operatorname{coeq}(R \\rightrightarrows T)$，是余极限，故 $(T/R)^{\\sharp} \\cong \\operatorname{coeq}(R^{\\sharp}\\rightrightarrows T^{\\sharp}) = T^{\\sharp}/R^{\\sharp}$ ✓。','两件事合起来就是「先商再层化 $=$ 先层化再商」✓。∎'].join('\n'),
+        ['**证明。** 记层化为 $(-)^{\\sharp}$：它是到层范畴的反射，故左伴随。','- 左伴随保**余极限** ✓；它同时又**左正合**（保有限极限，因为拓扑斯都是左正合的）✓。','- **等价关系的条件都是有限极限条件**：$R \\rightrightarrows T$ 是等价关系 $\\iff$ 存在 $R \\to T\\times T$ 使其为单态射（自反、对称、传递三条用对角、交换与拉回表达）。\n\n层化保这些有限极限，故 $R^{\\sharp} \\rightrightarrows T^{\\sharp}$ 仍是等价关系 ✓。','- **商是余等化子**：$T/R := \\operatorname{coeq}(R \\rightrightarrows T)$，是余极限，故 $(T/R)^{\\sharp} \\cong \\operatorname{coeq}(R^{\\sharp}\\rightrightarrows T^{\\sharp}) = T^{\\sharp}/R^{\\sharp}$ ✓。','两件事合起来就是「先商再层化 $=$ 先层化再商」✓。∎'].join('\n'),
 '「先取商再层化」与「先层化再取商」结果一样 —— 这类交换性是层化「保余极限」的具体面貌（商是余等化子，是余极限）。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     },
@@ -418,8 +418,8 @@ window.MG = window.MG || {};
         '设 $\\mathcal{C}$ 有有限极限。则 $X = \\coprod_{i \\in I} X_{i}$ 在 $\\mathcal{C}$ 中是**不交的万有余积** $\\iff$ 对任何（等价地：某一个）**次标准拓扑**，它作为层范畴中的余积仍然不交、万有。'
       ].join('\n'),
       notes: [
-        ['**证明。** 记次标准拓扑下的层化为 $(-)^{\\sharp}$，此时可表示预层都是层：$h_{X}^{\\sharp} = h_{X}$。','**$(\\implies)$** 设 $X = \\coprod_{i}X_{i}$ 在 $\\mathcal{C}$ 里不交、万有。Yoneda 嵌入保余积，故 $h_{X} \\cong \\coprod_{i}h_{X_{i}}$，两边都是层，即这个余积在层范畴里就被算出来了 ✓。不交：层范畴的余积逐点算，$\\coprod_{i}h_{X_{i}}$ 的注入都来自 $\\mathcal{C}$ 里的注入，两两拉回是 $h_{0}$（始对象）✓。万有：沿任意 $Z \\to h_{X}$ 的拉回逐点验，落在 $\\mathcal{C}$ 里就是原来的万有性 ✓。','**$(\\Longleftarrow)$** 设某个次标准拓扑下 $h_{X} = \\coprod_{i}h_{X_{i}}$ 不交、万有。逐点（对每个 $Z \\in \\mathcal{C}$）展开：不交给 $\\operatorname{Hom}(Z,X) = \\coprod_{i}\\operatorname{Hom}(Z,X_{i})$ 的不交并；万有给「沿 $Z\' \\to Z$ 拉回保持它」。取 $Z = X$ 与 $1_{X}$ 读出 $X_{i}\\to X$ 的注入性，取 $Z = X_{i}\\times_{X}X_{j}$ 读出两两拉回是始对象，再取任意 $Z$ 得万有性，逐条搬回 $\\mathcal{C}$ ✓。','**结论：标准拓扑恰好把 $\\mathcal{C}$ 里成立的余积性质原样保留，不多也不少。**∎'].join('\n'),
-'一个方向：次标准保证 $X = h_{X}$、$X_{i} = h_{X_{i}}$ 都在层范畴里，而 $\\coprod_{i} h_{X_{i}}$ 本来就不交，所以自动是层。另一个方向：拿 $h_{X} = \\coprod_{i} h_{X_{i}}$ 去逐条验注入性与「拉回是始对象」。\n\n含义：**标准拓扑恰好把 $\\mathcal{C}$ 里成立的那部分余积性质原样保留下来**，不多也不少 —— 这就是「次标准」这个名字该有的分量。'].join('\n\n'),
+        ['**证明。** 记次标准拓扑下的层化为 $(-)^{\\sharp}$，此时可表示预层都是层：$h_{X}^{\\sharp} = h_{X}$。','**$(\\implies)$** 设 $X = \\coprod_{i}X_{i}$ 在 $\\mathcal{C}$ 里不交、万有。\n\nYoneda 嵌入保余积，故 $h_{X} \\cong \\coprod_{i}h_{X_{i}}$，两边都是层，即这个余积在层范畴里就被算出来了 ✓。\n\n不交：层范畴的余积逐点算，$\\coprod_{i}h_{X_{i}}$ 的注入都来自 $\\mathcal{C}$ 里的注入，两两拉回是 $h_{0}$（始对象）✓。\n\n万有：沿任意 $Z \\to h_{X}$ 的拉回逐点验，落在 $\\mathcal{C}$ 里就是原来的万有性 ✓。','**$(\\Longleftarrow)$** 设某个次标准拓扑下 $h_{X} = \\coprod_{i}h_{X_{i}}$ 不交、万有。\n\n逐点（对每个 $Z \\in \\mathcal{C}$）展开：不交给 $\\operatorname{Hom}(Z,X) = \\coprod_{i}\\operatorname{Hom}(Z,X_{i})$ 的不交并；\n\n万有给「沿 $Z\' \\to Z$ 拉回保持它」。\n\n取 $Z = X$ 与 $1_{X}$ 读出 $X_{i}\\to X$ 的注入性，取 $Z = X_{i}\\times_{X}X_{j}$ 读出两两拉回是始对象，再取任意 $Z$ 得万有性，逐条搬回 $\\mathcal{C}$ ✓。','**结论：标准拓扑恰好把 $\\mathcal{C}$ 里成立的余积性质原样保留，不多也不少。**∎'].join('\n'),
+'一个方向：次标准保证 $X = h_{X}$、$X_{i} = h_{X_{i}}$ 都在层范畴里，而 $\\coprod_{i} h_{X_{i}}$ 本来就不交，所以自动是层。\n\n另一个方向：拿 $h_{X} = \\coprod_{i} h_{X_{i}}$ 去逐条验注入性与「拉回是始对象」。\n\n含义：**标准拓扑恰好把 $\\mathcal{C}$ 里成立的那部分余积性质原样保留下来**，不多也不少 —— 这就是「次标准」这个名字该有的分量。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.1–3.2']
     }
   ],
@@ -456,7 +456,10 @@ window.MG = window.MG || {};
         '',
         '$$F(X) \\;\\cong\\; \\ker(\\alpha - \\beta)$$',
         '',
-        '**（$\\implies$）** 层给出 $\\operatorname{Hom}(h_{X}, F) \\cong \\operatorname{Hom}(R, F)$，两边用米田与上面的计算展开就是所要的正合。**（$\\Longleftarrow$）** 反过来，正合序列给出的那个 $\\ker$ 与 $F(X)$ 的同构，对所有由覆盖族生成的筛 $R$ 成立；而每个 $R \\in J(X)$ 都由某个覆盖族生成，所以对一切 $R \\in J(X)$ 都有 $F(X) \\cong \\operatorname{Hom}(R, F)$，即 $F$ 是层。∎',
+        '**（$\\implies$）** 层给出 $\\operatorname{Hom}(h_{X}, F) \\cong \\operatorname{Hom}(R, F)$，两边用米田与上面的计算展开就是所要的正合。\n\n' +
+        '**（$\\Longleftarrow$）** 反过来，正合序列给出的那个 $\\ker$ 与 $F(X)$ 的同构，对所有由覆盖族生成的筛 $R$ 成立；\n\n' +
+        '而每个 $R \\in J(X)$ 都由某个覆盖族生成，所以对一切 $R \\in J(X)$ 都有 $F(X) \\cong \\operatorname{Hom}(R, F)$，即 $F$ 是层。\n\n' +
+        '∎',
         '',
         '⚠️ 细看上面 $\\alpha, \\beta$ 的定义：$\\operatorname{Hom}(R, F)$ 里的相容性条件要通过 $R$ 的**态射结构**（两个投影 $X_{i} \\times_{X} X_{j} \\rightrightarrows X_{i}$）才能写下来，这正是为什么必须用**纤维积**而不是「交」。'
       ].join('\n'),
@@ -475,9 +478,9 @@ window.MG = window.MG || {};
         '',
         '**落到层上。** 对任意预层 $T$，$\\widehat{H}(T)$ 是**分离**的；再对分离的 $\\widehat{H}(T)$ 用一次，得到的 $\\widehat{H}(\\widehat{H}(T))$ 是**层**（Čech 函子的性质 2）。所以 $T^{\\sharp}$ 总是层。∎',
         '',
-        '**从层出发不动。** 设 $F$ 是层。由性质 3（$F$ 是层 $\\iff F \\to \\widehat{H}(F)$ 是同构）得 $\\widehat{H}(F) \\cong F$，再做一次仍得到 $F$。所以 $\\sharp$ 在层上是恒等 —— 这就是**幂等性** $(T^{\\sharp})^{\\sharp} \\cong T^{\\sharp}$。∎',
+        '**从层出发不动。** 设 $F$ 是层。\n\n由性质 3（$F$ 是层 $\\iff F \\to \\widehat{H}(F)$ 是同构）得 $\\widehat{H}(F) \\cong F$，再做一次仍得到 $F$。\n\n所以 $\\sharp$ 在层上是恒等 —— 这就是**幂等性** $(T^{\\sharp})^{\\sharp} \\cong T^{\\sharp}$。\n\n∎',
         '',
-        '**伴随性。** 要证 $\\operatorname{Hom}(T^{\\sharp}, F) \\cong \\operatorname{Hom}(T, F)$（$F$ 是层）。先证 $\\operatorname{Hom}(\\widehat{H}(T), F) \\cong \\operatorname{Hom}(T, F)$：由 $\\widehat{H}$ 的定义逐点展开，',
+        '**伴随性。** 要证 $\\operatorname{Hom}(T^{\\sharp}, F) \\cong \\operatorname{Hom}(T, F)$（$F$ 是层）。\n\n先证 $\\operatorname{Hom}(\\widehat{H}(T), F) \\cong \\operatorname{Hom}(T, F)$：由 $\\widehat{H}$ 的定义逐点展开，',
         '',
         '$$\\operatorname{Hom}\\bigl(\\widehat{H}(T), F\\bigr)(X) \\cong \\operatorname{Hom}\\bigl(\\widehat{H}(T)(X), F(X)\\bigr)$$',
         '',
@@ -485,7 +488,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}\\bigl(\\varinjlim_{R} \\operatorname{Hom}(R, T),\\ F(X)\\bigr) \\;\\cong\\; \\varprojlim_{R} \\operatorname{Hom}\\bigl(\\operatorname{Hom}(R, T),\\ F(X)\\bigr)$$',
         '',
-        '这里只差最后一步：要用「$F$ 是层」把 $\\operatorname{Hom}(\\operatorname{Hom}(R, T), F(X))$ 换回 $T(X)$ 那一侧 —— 这一步是米田引理与层条件的联手（$\\operatorname{Hom}(h_{X}, F) \\cong \\operatorname{Hom}(R, F)$ 对 $R \\in J(X)$ 成立）。逐项套回去即可。于是 $\\operatorname{Hom}(\\widehat{H}(T), F) \\cong \\operatorname{Hom}(T, F)$，再对 $\\widehat{H}(T)$ 用一次（此时它是分离的、用到性质 3）就得到 $\\operatorname{Hom}(T^{\\sharp}, F) \\cong \\operatorname{Hom}(T, F)$。∎',
+        '这里只差最后一步：要用「$F$ 是层」把 $\\operatorname{Hom}(\\operatorname{Hom}(R, T), F(X))$ 换回 $T(X)$ 那一侧 —— 这一步是米田引理与层条件的联手（$\\operatorname{Hom}(h_{X}, F) \\cong \\operatorname{Hom}(R, F)$ 对 $R \\in J(X)$ 成立）。\n\n逐项套回去即可。\n\n于是 $\\operatorname{Hom}(\\widehat{H}(T), F) \\cong \\operatorname{Hom}(T, F)$，再对 $\\widehat{H}(T)$ 用一次（此时它是分离的、用到性质 3）就得到 $\\operatorname{Hom}(T^{\\sharp}, F) \\cong \\operatorname{Hom}(T, F)$。\n\n∎',
         '',
         '**反射子范畴。** 以上合起来：$\\sharp$ 是左伴随、在层上取恒等、且每个对象都映到层里。按反射子范畴的判据，这就是「层范畴是预层范畴的反射子范畴，反射是 $\\sharp$」。∎'
       ].join('\n'),
@@ -525,9 +528,9 @@ window.MG = window.MG || {};
         '',
         '**$R = h_{X}$ 这件事的意义。** $R(Y) \\subseteq \\operatorname{Hom}(Y, X)$ 是「能穿过某个 $X_{i}$」的那些映射。$R = h_{X}$ 就是说**每个** $Y \\to X$ 都能穿过某个 $X_{i}$。',
         '',
-        '**（$\\Longleftarrow$）** 设 $q$ 是满态射，即对任意 $T$ 与任意 $u, v : X \\to T$，$u \\circ q = v \\circ q \\implies u = v$。设 $g : Y \\to X$。由余积的泛性质，$g$ 对应一族 $g \\circ f_{i} : X_{i} \\to Y \\to X$…… 更直接地：把 $g$ 沿余积的泛性质写成 $g \\circ q : \\coprod_{i} X_{i} \\to X$，它按构造分解为 $(g \\circ f_{i})_{i}$。由 $q$ 满（右可消）得 $g$ 必须已经是 $q$ 的「商」—— 即存在某个 $i$ 与 $h : Y \\to X_{i}$ 使 $g = f_{i} \\circ h$。所以 $R(Y) = \\operatorname{Hom}(Y, X)$ 对所有 $Y$ 成立，$R = h_{X}$。',
+        '**（$\\Longleftarrow$）** 设 $q$ 是满态射，即对任意 $T$ 与任意 $u, v : X \\to T$，$u \\circ q = v \\circ q \\implies u = v$。\n\n设 $g : Y \\to X$。\n\n由余积的泛性质，$g$ 对应一族 $g \\circ f_{i} : X_{i} \\to Y \\to X$…… 更直接地：把 $g$ 沿余积的泛性质写成 $g \\circ q : \\coprod_{i} X_{i} \\to X$，它按构造分解为 $(g \\circ f_{i})_{i}$。\n\n由 $q$ 满（右可消）得 $g$ 必须已经是 $q$ 的「商」—— 即存在某个 $i$ 与 $h : Y \\to X_{i}$ 使 $g = f_{i} \\circ h$。\n\n所以 $R(Y) = \\operatorname{Hom}(Y, X)$ 对所有 $Y$ 成立，$R = h_{X}$。',
         '',
-        '**（$\\Longrightarrow$）** 设 $R = h_{X}$。要证 $q$ 右可消。设 $u, v : X \\to T$ 且 $u \\circ q = v \\circ q$。对每个 $i$ 有 $u \\circ f_{i} = v \\circ f_{i}$。对任意 $Y$ 与任意 $g : Y \\to X$，由 $R = h_{X}$ 存在 $i$ 与 $h : Y \\to X_{i}$ 使 $g = f_{i} \\circ h$，于是',
+        '**（$\\Longrightarrow$）** 设 $R = h_{X}$。\n\n要证 $q$ 右可消。\n\n设 $u, v : X \\to T$ 且 $u \\circ q = v \\circ q$。\n\n对每个 $i$ 有 $u \\circ f_{i} = v \\circ f_{i}$。\n\n对任意 $Y$ 与任意 $g : Y \\to X$，由 $R = h_{X}$ 存在 $i$ 与 $h : Y \\to X_{i}$ 使 $g = f_{i} \\circ h$，于是',
         '',
         '$$u \\circ g = u \\circ f_{i} \\circ h = v \\circ f_{i} \\circ h = v \\circ g$$',
         '',

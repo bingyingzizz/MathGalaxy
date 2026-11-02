@@ -3,7 +3,9 @@
 
 `thm.fundamental-arithmetic` 算术基本定理 → `thm.divisor-formula` τ 与 σ 的乘积公式
 
-由唯一分解，$d \mid n$ 当且仅当 $d = p_{1}^{f_{1}}\cdots p_{r}^{f_{r}}$ 且 $0 \le f_{i} \le e_{i}$，且这种 $(f_{1},\cdots,f_{r})$ 与 $d$ 一一对应。于是因数集与 $\prod_{i}[0, e_{i}]$ 的整数点一一对应，个数为 $\prod(e_{i}+1)$。
+由唯一分解，$d \mid n$ 当且仅当 $d = p_{1}^{f_{1}}\cdots p_{r}^{f_{r}}$ 且 $0 \le f_{i} \le e_{i}$，且这种 $(f_{1},\cdots,f_{r})$ 与 $d$ 一一对应。
+
+于是因数集与 $\prod_{i}[0, e_{i}]$ 的整数点一一对应，个数为 $\prod(e_{i}+1)$。
 
 
 

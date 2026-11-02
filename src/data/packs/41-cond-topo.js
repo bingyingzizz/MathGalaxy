@@ -73,7 +73,7 @@ window.MG = window.MG || {};
         '⭐ **这一条的实际用途**：把拓扑问题搬进凝聚态这一侧，用那里的同调代数（长正合列、求导函子）去算，再搬回来。**代价是丢失信息** —— 忠实但不一定满，所以「凝聚态地相等」比「拓扑地相等」更弱。',
         ['**证明（照书：形式上来自「拓扑空间到凝聚态集」那条定理）。** 对拓扑阿贝尔群 $M$，记 $\\underline{M}(S) := C(S, M)$，逐点取加法，得到 $\\mathrm{CondAb}$ 的对象 ✓（层条件是「连续映射的粘合」，逐点成立）。',
           '- **忠实**：$f \\ne g : M \\to N$ 时取一点 $m$ 使 $f(m)\\ne g(m)$，则在 $\\underline{M}(\\bullet)$ 上 $f,g$ 已经不同 ✓（用测试对象 $\\bullet$ 这一个点就够）。',
-          '- **保所有极限**：凝聚态侧的极限逐项计算，而 $C\\bigl(S, \\varprojlim_{i} M_{i}\\bigr) = \\varprojlim_{i} C(S, M_{i})$ —— 拓扑阿贝尔群的极限（积 / 核 / 等化子）里「连续映射由各分量连续决定」✓。逐项取极限得到的仍是层，故它就是 $\\mathrm{CondAb}$ 里的极限 ✓。',
+          '- **保所有极限**：凝聚态侧的极限逐项计算，而 $C\\bigl(S, \\varprojlim_{i} M_{i}\\bigr) = \\varprojlim_{i} C(S, M_{i})$ —— 拓扑阿贝尔群的极限（积 / 核 / 等化子）里「连续映射由各分量连续决定」✓。\n\n逐项取极限得到的仍是层，故它就是 $\\mathrm{CondAb}$ 里的极限 ✓。',
           '- **紧生成那一部分全忠实**：由 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) = C(X, Y)$（紧生成情形，见「内部 Hom 的函数空间刻画」），把 $X, Y$ 取成紧生成的拓扑阿贝尔群、并把同态条件一并带上即得。∎',
           '⚠️ **反向没有伴随**：函子 $X \\mapsto X(\\bullet)$ 不保积（$\\mathrm{CGWH}$ 不是对任意积封闭），所以这个嵌入没有现成的伴随 —— 这也是「凝聚态地相等更弱」的技术原因。'
         ].join('\n')
@@ -134,7 +134,13 @@ window.MG = window.MG || {};
         ['**证明。**',
           '- **左正合**：函子 $M\\mapsto\\underline{M}$ 保所有极限（上一条），于是 $0\\to\\underline{M\'}\\to\\underline{M}$ 正合、且 $\\underline u$ 是单射 ✓。',
           '- **中段的像 = 核**：$v\\circ u = 0$ 逐点成立；反向「$v(m) = 0 \\implies m\\in u(M\')$」逐点由拓扑正合列给出 ✓。',
-          '- **右端满**：由满态射判据（在自由紧 Hausdorff 对象上逐点满），取自由 $F$ 与 $y : F \\to M\'\'$。$y(F)$ 是 $M\'\'$ 里的**紧 Hausdorff** 子集（$F$ 紧、$M\'\'$ 弱 Hausdorff 故 $y(F)$ 闭且 Hausdorff）；由**紧提升条件**取紧 Hausdorff $K\\subseteq M$ 使 $y(F)\\subseteq v(K)$。对每点挑一个原像，得到映射 $F\\to K\\to M$；连续性由「$v$ 在紧块上是商映射」（拓扑正合列里 $v$ 是商映射，限制到$K$、$y(F)$ 上仍是商映射）给出。于是 $y$ 在图下提升，$\\underline v(F)$ 满 ✓。∎'
+          '- **右端满**：由满态射判据（在自由紧 Hausdorff 对象上逐点满），取自由 $F$ 与 $y : F \\to M\'\'$。\n\n' +
+          '$y(F)$ 是 $M\'\'$ 里的**紧 Hausdorff** 子集（$F$ 紧、$M\'\'$ 弱 Hausdorff 故 $y(F)$ 闭且 Hausdorff）；\n\n' +
+          '由**紧提升条件**取紧 Hausdorff $K\\subseteq M$ 使 $y(F)\\subseteq v(K)$。\n\n' +
+          '对每点挑一个原像，得到映射 $F\\to K\\to M$；\n\n' +
+          '连续性由「$v$ 在紧块上是商映射」（拓扑正合列里 $v$ 是商映射，限制到$K$、$y(F)$ 上仍是商映射）给出。\n\n' +
+          '于是 $y$ 在图下提升，$\\underline v(F)$ 满 ✓。\n\n' +
+          '∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 6.2.3']
@@ -160,10 +166,14 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ 这条说明「拓扑阿贝尔群」这个范畴**不够好**：没法在里面做同调代数。这正是要把它搬进凝聚态那侧的理由 —— 那边是 Grothendieck 范畴，要什么有什么。',
-        '**为什么核余核都造得出还是不行。** 阿贝尔范畴要求「每个单态射都是某个态射的核」（等价地：单态射与其余核的核同构，即**严格**）。$\\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$ 是单态射（它同构于自己的像），但它的余核是 $0$ —— 像在余核里被整个商掉了。于是「余核的核」不是原来的对象，严格性破掉。',
+        '**为什么核余核都造得出还是不行。** 阿贝尔范畴要求「每个单态射都是某个态射的核」（等价地：单态射与其余核的核同构，即**严格**）。\n\n$\\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$ 是单态射（它同构于自己的像），但它的余核是 $0$ —— 像在余核里被整个商掉了。\n\n于是「余核的核」不是原来的对象，严格性破掉。',
         ['**证明。**',
           '- **预阿贝尔**：有有限积与有限余积（积 = 积群配积拓扑；余积 = 直和配「余积拓扑」）、核与余核都存在 —— 核是通常的核配**子空间拓扑**；余核是 $N/f(M)$ 配**商拓扑**（商群配商拓扑仍是局部紧 Hausdorff，因为 $f(M)$ 未必闭、商掉的是它的闭包……取 $N/\\overline{f(M)}$ 的那一套标准处理）✓。',
-          '- **不是阿贝尔**：取 $\\mathrm{id} : \\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$。它连续（离散拓扑比欧氏拓扑细）且是单射，故是单态射；它的**余核** $\\mathbb{R}/\\mathbb{R} = 0$。而阿贝尔范畴要求单态射是**严格的**，即 $f = \\ker(\\operatorname{coker} f)$ —— 这里 $\\ker(0) = \\mathbb{R}$，但 $\\ker(0)$ 要带的拓扑是欧氏拓扑，而 $\\mathbb{R}^{\\mathrm{disc}}$ 不是它，二者**同构但不相等**（作为拓扑群的态射不同构）✗。∎',
+          '- **不是阿贝尔**：取 $\\mathrm{id} : \\mathbb{R}^{\\mathrm{disc}} \\to \\mathbb{R}$。\n\n' +
+          '它连续（离散拓扑比欧氏拓扑细）且是单射，故是单态射；\n\n' +
+          '它的**余核** $\\mathbb{R}/\\mathbb{R} = 0$。\n\n' +
+          '而阿贝尔范畴要求单态射是**严格的**，即 $f = \\ker(\\operatorname{coker} f)$ —— 这里 $\\ker(0) = \\mathbb{R}$，但 $\\ker(0)$ 要带的拓扑是欧氏拓扑，而 $\\mathbb{R}^{\\mathrm{disc}}$ 不是它，二者**同构但不相等**（作为拓扑群的态射不同构）✗。\n\n' +
+          '∎',
           '（等价的说法：$\\mathrm{id}$ 同构于它的像，但不是「余核的核」，于是单满分解不是严格的。）'
         ].join('\n')
       ].join('\n\n'),
@@ -192,7 +202,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么是 $\\mathbb{T}$**：它是**紧**的 $T_{1}$ 群，也是最简单的「能承载全部特征标」的群。对偶群因此自动是紧的（当 $M$ 离散时）—— 这就是「对偶把大小反过来」的机制。',
-        '**两个基本例子**（都可以直接算）：$\\widehat{\\mathbb{Z}} \\cong \\mathbb{T}$，$\\widehat{\\mathbb{T}} \\cong \\mathbb{Z}$ —— 对偶把离散的整数群换成紧的圆群，反过来也一样。第三个例子 $\\widehat{\\mathbb{R}} \\cong \\mathbb{R}$ 由 Fourier 变换给出：$y \\mapsto e^{2\\pi i xy}$ 的每个连续特征标都长这样。',
+        '**两个基本例子**（都可以直接算）：$\\widehat{\\mathbb{Z}} \\cong \\mathbb{T}$，$\\widehat{\\mathbb{T}} \\cong \\mathbb{Z}$ —— 对偶把离散的整数群换成紧的圆群，反过来也一样。\n\n第三个例子 $\\widehat{\\mathbb{R}} \\cong \\mathbb{R}$ 由 Fourier 变换给出：$y \\mapsto e^{2\\pi i xy}$ 的每个连续特征标都长这样。',
         '⭐ **对偶到底把什么换成了什么，有两条独立的命题**：',
         '',
         [
@@ -224,14 +234,14 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**「自伴随的等价」是什么意思**：$M \\mapsto \\widehat{M}$ 既是 $M \\mapsto \\widehat{M}$ 的左伴随又是它的右伴随（对偶函子与自己的伴随关系，配对由取值映射 $M \\times \\widehat{M} \\to \\mathbb{T}$ 给出）。',
-        '**整条正合列都对偶过去**：如果 $0 \\to M\' \\to M \\to M\'\' \\to 0$ 是局部紧阿贝尔群的（严格）正合列，那么对偶之后 $0 \\to \\widehat{M\'\'} \\to \\widehat{M} \\to \\widehat{M\'} \\to 0$ 仍正合 —— **箭头全部转向**。这是「自等价保结构」的直接好处：群论问题可以在对偶那边做，再翻回来。',
-        '**几个必记的对应**：$\\widehat{\\mathbb{R}} \\cong \\mathbb{R}$（Fourier 变换）；$\\widehat{\\mathbb{Z}} \\cong \\mathbb{T}$ 与 $\\widehat{\\mathbb{T}} \\cong \\mathbb{Z}$（互相换）；有限维实 Banach 空间上的对偶退化成通常的线性对偶（实 Banach 空间局部紧 $\\iff$ 有限维）。',
+        '**整条正合列都对偶过去**：如果 $0 \\to M\' \\to M \\to M\'\' \\to 0$ 是局部紧阿贝尔群的（严格）正合列，那么对偶之后 $0 \\to \\widehat{M\'\'} \\to \\widehat{M} \\to \\widehat{M\'} \\to 0$ 仍正合 —— **箭头全部转向**。\n\n这是「自等价保结构」的直接好处：群论问题可以在对偶那边做，再翻回来。',
+        '**几个必记的对应**：$\\widehat{\\mathbb{R}} \\cong \\mathbb{R}$（Fourier 变换）；$\\widehat{\\mathbb{Z}} \\cong \\mathbb{T}$ 与 $\\widehat{\\mathbb{T}} \\cong \\mathbb{Z}$（互相换）；\n\n有限维实 Banach 空间上的对偶退化成通常的线性对偶（实 Banach 空间局部紧 $\\iff$ 有限维）。',
         '⭐ **这一条是凝聚态阿贝尔群那套理论的原型**：把 $\\mathbb{T}$ 换成别的测试对象、把「局部紧」换成别的条件，就得到各种对偶（Tannaka、Gelfand……）。凝聚态数学把「$\\mathbb{T}$ 换成 CHaus 上的层」升了一次维。',
         ['**证明（按三类情形拼起来）。**',
-          '- **$M$ 离散**：经典 Pontryagin 对偶。先取满射 $\\mathbb{Z}^{(I)} \\twoheadrightarrow M$，对偶后得闭嵌入 $\\widehat M \\hookrightarrow \\mathbb{T}^{I}$，故 $\\widehat M$ 紧；求值 $M \\to \\widehat{\\widehat M}$ 在有限群与有限生成群上用初等计算验证，再用「$M$ 是有限生成子群的滤过余极限 + 对偶把余极限变成逆极限 + 两边都正合」取极限即得同构 ✓。',
-          '- **$M$ 紧**：$\\widehat M$ 离散（见「离散与紧 Hausdorff 互换」）；对紧群用**特征标分离点**（Pontryagin 的经典论证：紧阿贝尔群的特征标构成足够的分离族，用 Peter–Weyl / 有限维表示论给出），得求值 $M \\to \\widehat{\\widehat M}$ 单；再用前一情形与紧的 $M$ 的对偶离散，把单射性与满性补全 ✓。',
+          '- **$M$ 离散**：经典 Pontryagin 对偶。\n\n先取满射 $\\mathbb{Z}^{(I)} \\twoheadrightarrow M$，对偶后得闭嵌入 $\\widehat M \\hookrightarrow \\mathbb{T}^{I}$，故 $\\widehat M$ 紧；\n\n求值 $M \\to \\widehat{\\widehat M}$ 在有限群与有限生成群上用初等计算验证，再用「$M$ 是有限生成子群的滤过余极限 + 对偶把余极限变成逆极限 + 两边都正合」取极限即得同构 ✓。',
+          '- **$M$ 紧**：$\\widehat M$ 离散（见「离散与紧 Hausdorff 互换」）；对紧群用**特征标分离点**（Pontryagin 的经典论证：紧阿贝尔群的特征标构成足够的分离族，用 Peter–Weyl / 有限维表示论给出），得求值 $M \\to \\widehat{\\widehat M}$ 单；\n\n再用前一情形与紧的 $M$ 的对偶离散，把单射性与满性补全 ✓。',
           '- **$M$ 一般局部紧**：用结构定理——$M$ 含开子群 $V\\oplus K$（$V$ 有限维实向量空间、$K$ 紧）、其余商 $D$ 离散。对群 $V$、$K$、$D$ 分别已知对偶自等价，而三者通过正合列拼起来、对偶把正合列翻成正合列（箭向反转），五引理把中间的求值映射夹成同构 ✓。',
-          '- **自伴随**：配对 $M\\times\\widehat M \\to \\mathbb{T}$（取值）给出伴随 $\\operatorname{Hom}(\\widehat M, N) \\cong \\operatorname{Hom}(M, \\widehat N)$，把 $M$ 换成 $\\widehat M$ 再用两次自等价即得 ✓。∎',
+          '- **自伴随**：配对 $M\\times\\widehat M \\to \\mathbb{T}$（取值）给出伴随 $\\operatorname{Hom}(\\widehat M, N) \\cong \\operatorname{Hom}(M, \\widehat N)$，把 $M$ 换成 $\\widehat M$ 再用两次自等价即得 ✓。\n\n∎',
           '**标准出处**：Morris, *Pontryagin Duality and the Structure of Locally Compact Abelian Groups*。'
         ].join('\n')
       ].join('\n\n'),

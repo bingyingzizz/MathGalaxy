@@ -117,8 +117,8 @@ window.MG = window.MG || {};
         '是连续满射。'
       ].join('\n'),
       notes: [
-        '恒等映射 $S^{\\mathrm{disc}} \\to S$ 连续（离散拓扑最细），沿它的 Stone–Čech 泛性质给出 $\\beta S^{\\mathrm{disc}} \\to S$。既然 $S^{\\mathrm{disc}} \\to S$ 已经是满射，而紧空间的连续满像 $\\beta S^{\\mathrm{disc}} \\to S$ 作用在稠密的 $S^{\\mathrm{disc}}$ 上已经覆盖了 $S$，满射性就跟着来了。',
-        ['**证明（写成正式的）。** 记 $f : S^{\\mathrm{disc}}\\to S$ 为恒等映射，它连续（离散拓扑最细）。由 Stone–Čech 的**泛性质**，$f$ 唯一地延拓为 $\\bar f : \\beta S^{\\mathrm{disc}} \\to S$，使 $\\bar f\\circ\\iota = f$（$\\iota$ 是稠密嵌入）。',
+        '恒等映射 $S^{\\mathrm{disc}} \\to S$ 连续（离散拓扑最细），沿它的 Stone–Čech 泛性质给出 $\\beta S^{\\mathrm{disc}} \\to S$。\n\n既然 $S^{\\mathrm{disc}} \\to S$ 已经是满射，而紧空间的连续满像 $\\beta S^{\\mathrm{disc}} \\to S$ 作用在稠密的 $S^{\\mathrm{disc}}$ 上已经覆盖了 $S$，满射性就跟着来了。',
+        ['**证明（写成正式的）。** 记 $f : S^{\\mathrm{disc}}\\to S$ 为恒等映射，它连续（离散拓扑最细）。\n\n由 Stone–Čech 的**泛性质**，$f$ 唯一地延拓为 $\\bar f : \\beta S^{\\mathrm{disc}} \\to S$，使 $\\bar f\\circ\\iota = f$（$\\iota$ 是稠密嵌入）。',
           '- 由泛性质，两个映射 $\\beta S^{\\mathrm{disc}} \\rightrightarrows S$ 若在 $\\iota(S^{\\mathrm{disc}})$ 上相同则相等；',
           '- 于是 $\\bar f\\bigl(\\overline{\\iota(S^{\\mathrm{disc}})}\\bigr) = \\bar f(\\beta S^{\\mathrm{disc}})$（**连续性 + 稠密性**：像的闭包等于闭包在连续映射下的像）$= \\overline{f(S^{\\mathrm{disc}})} = \\overline{S} = S$ ✓。',
           '故 $\\bar f$ 满。∎',
@@ -164,7 +164,7 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['范畴论', '投射', '自由'],
       statement: '自由紧 Hausdorff 空间是 $\\mathbf{CHaus}$ 中的投射对象。',
-      notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。∎',
+      notes: '设 $F \\cong \\beta I$，给定满态射 $T \\twoheadrightarrow S$ 与 $F \\to S$。\n\n由自由性，$F \\to S$ 等同于 $I$ 上的一族点，于是 $I \\to T$ 就是一个集合层的提升（$I$ 离散、$\\mathbf{Set}$ 中对象都投射，即选择公理）；\n\n再用 $\\beta I$ 的泛性质把它变回 $F \\to T$，而它自动与原有映射相容。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, §2.1–2.2']
     },
 
@@ -187,7 +187,7 @@ window.MG = window.MG || {};
         '此时 $S \\cong \\operatorname{coker}(R \\rightrightarrows F)$。'
       ].join('\n'),
       notes: [
-        '对照集合里的那件事：对 $f : X \\to Y$，令 $R := X \\times_{Y} X = \\{(x_{1},x_{2}) : f(x_{1}) = f(x_{2})\\}$（「像相同的点对」），则 $X/R \\cong \\operatorname{im} f$（**Noether 第一同构定理**）；反过来，给定 $X$ 上的等价关系 $R$，把 $Y := X/R$，就有 $R = X \\times_{Y} X$。',
+        '对照集合里的那件事：对 $f : X \\to Y$，令 $R := X \\times_{Y} X = \\{(x_{1},x_{2}) : f(x_{1}) = f(x_{2})\\}$（「像相同的点对」），则 $X/R \\cong \\operatorname{im} f$（**Noether 第一同构定理**）；\n\n反过来，给定 $X$ 上的等价关系 $R$，把 $Y := X/R$，就有 $R = X \\times_{Y} X$。',
         '自由表示就是把这件事搬进 $\\mathbf{CHaus}$：$R$ 是「把像相同的点粘起来」那个等价关系，而第三条要求 $R$ 自己也能由一个自由紧 Hausdorff 空间满射过来 —— 于是整个 $S$ 由自由对象经过一次余等化子造出来。',
         '$\\mathbf{CHaus}$ 里有余等化子，所以 $\\operatorname{coker}(R \\rightrightarrows F)$ 存在；它就是商空间 $F/R$。'
       ].join('\n\n'),
@@ -264,12 +264,12 @@ window.MG = window.MG || {};
         '**(b)** 极端不连通的 Hausdorff 空间是**全不连通**的。'
       ].join('\n'),
       notes: [
-        '**(a)** 反证：若 $\\overline{U} \\cap \\overline{V}$ 非空，取其中的点 $x$。因为 $X$ 极端不连通，$\\overline{U}$ 与 $\\overline{V}$ 都是闭开的，于是它们与自己的内部的关系逼出矛盾 —— 具体地说，$x$ 的每个邻域都要同时碰到 $U$ 与 $V$，而这两个闭开集又把 $x$ 与「另一个」隔开。',
+        '**(a)** 反证：若 $\\overline{U} \\cap \\overline{V}$ 非空，取其中的点 $x$。\n\n因为 $X$ 极端不连通，$\\overline{U}$ 与 $\\overline{V}$ 都是闭开的，于是它们与自己的内部的关系逼出矛盾 —— 具体地说，$x$ 的每个邻域都要同时碰到 $U$ 与 $V$，而这两个闭开集又把 $x$ 与「另一个」隔开。',
         '**(b)** 设 $x \\ne y$。Hausdorff 性给出分离它们的开集 $U \\ni x$、$V \\ni y$，由 (a) 得两个不交的闭开集把 $x$ 与 $y$ 隔开，于是 $C(x) \\subseteq U \\not\\ni y$，$y \\notin C(x)$。所以每个连通分量是单点。',
         ['**把 (a) 写严。** 设 $U, V$ 不交开。令 $W := X\\setminus \\overline{V}$ —— 它开，且 $U\\subseteq W$。',
-          '因为 $U\\subseteq W = W^{\\circ}$，取闭包得 $\\overline U\\subseteq\\overline{W^{\\circ}}$；而**极端不连通的等价刻画**是「任意开集的闭包开」，即 $\\overline{W^{\\circ}}$ 是开的，于是 $\\overline{W^{\\circ}} = W^{\\circ}$，所以 $\\overline U \\subseteq W^{\\circ} = W = X\\setminus\\overline V$，即 $\\overline U\\cap\\overline V = \\emptyset$ ✓。∎',
+          '因为 $U\\subseteq W = W^{\\circ}$，取闭包得 $\\overline U\\subseteq\\overline{W^{\\circ}}$；而**极端不连通的等价刻画**是「任意开集的闭包开」，即 $\\overline{W^{\\circ}}$ 是开的，于是 $\\overline{W^{\\circ}} = W^{\\circ}$，所以 $\\overline U \\subseteq W^{\\circ} = W = X\\setminus\\overline V$，即 $\\overline U\\cap\\overline V = \\emptyset$ ✓。\n\n∎',
           '（等价说法：极端不连通 $\\iff$ 不交开集的闭包不交。）',
-          '**(b) 写严**：由 (a)，Hausdorff 性给出的分离开集 $U\\ni x$、$V\\ni y$ 满足 $\\overline U\\cap\\overline V = \\emptyset$；而 $\\overline U$、$\\overline V$ 都是**闭开**的（极端不连通），于是它们构成 $x$ 与 $y$ 之间的一个开闭分隔：$x$ 的连通分量含于 $\\overline U$，故不含 $y$ ✓。于是每个连通分量是单点，即全不连通。∎'
+          '**(b) 写严**：由 (a)，Hausdorff 性给出的分离开集 $U\\ni x$、$V\\ni y$ 满足 $\\overline U\\cap\\overline V = \\emptyset$；\n\n而 $\\overline U$、$\\overline V$ 都是**闭开**的（极端不连通），于是它们构成 $x$ 与 $y$ 之间的一个开闭分隔：$x$ 的连通分量含于 $\\overline U$，故不含 $y$ ✓。\n\n于是每个连通分量是单点，即全不连通。\n\n∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §2.2']
@@ -294,7 +294,7 @@ window.MG = window.MG || {};
       notes: [
         '推论：**全不连通空间的任意极限仍是全不连通的** —— 因为 $\\pi_{0}$ 作为反射（一个左伴随）保余极限，而含入函子保极限。这条与「$\\mathbf{CHaus}$ 对极限封闭」叠起来，就是 Stone 空间与 Stonean 空间各自对极限封闭。',
         ['**证明。** 记 $\\mathbf{Top}_{\\mathrm{td}}$ 为全不连通空间范畴，含入 $i : \\mathbf{Top}_{\\mathrm{td}}\\hookrightarrow\\mathbf{Top}$。要证 $i$ 有左伴随 $\\pi_{0}$。',
-          '- **构造**：$\\pi_{0}(X)$ 取 $X$ 的连通分量全体，配**商拓扑**（$X\\to\\pi_{0}(X)$ 把每点送到它的分量）。商拓扑下 $\\pi_{0}(X)$ 全不连通（连通分量的原像是……分量在商里是单点，而商空间里单点是否开闭要看原像是否开闭 —— 一般 $\\pi_{0}$ 只是「全不连通」而未必离散，符合要求）；',
+          '- **构造**：$\\pi_{0}(X)$ 取 $X$ 的连通分量全体，配**商拓扑**（$X\\to\\pi_{0}(X)$ 把每点送到它的分量）。\n\n商拓扑下 $\\pi_{0}(X)$ 全不连通（连通分量的原像是……分量在商里是单点，而商空间里单点是否开闭要看原像是否开闭 —— 一般 $\\pi_{0}$ 只是「全不连通」而未必离散，符合要求）；\n\n',
           '- **泛性质**：任给 $f : X \\to Y$（$Y$ 全不连通）。连续映射把连通集送到连通集，而 $Y$ 的连通子集只有单点，故 $f$ 在每个连通分量上取常值，于是 $f$ 唯一地穿过 $X\\to\\pi_{0}(X)$ ✓。',
           '两个方向互逆，故 $\\pi_{0}\\dashv i$ ✓，即 $\\mathbf{Top}_{\\mathrm{td}}$ 是反射子范畴。',
           '**「$X\\to\\pi_{0}(X)$ 是同构」** $\\iff$ 每个分量是单点 $\\iff$ $X$ 全不连通 ✓。∎',
@@ -318,7 +318,7 @@ window.MG = window.MG || {};
         '推论：**Stone 空间的任意极限仍是 Stone 空间**。把这条与「全不连通空间对极限封闭」并排看，就能读出 Stone 空间的双重身份：它既是「紧 Hausdorff 里全不连通的那些」，也是「紧 Hausdorff 这个反射子范畴里再反射一次剩下的那些」。',
         ['**证明。** Stone 空间 = 紧 Hausdorff **且**全不连通。把两个反射叠起来：',
           '- 含入 $\\mathbf{CHaus}\\hookrightarrow\\mathbf{Top}$ 有**左**伴随 $\\beta$（Stone–Čech 紧化），即 $\\mathbf{CHaus}$ 是反射子范畴；',
-          '- 在 $\\mathbf{CHaus}$ 内部再取全不连通的那些：含入 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 有左伴随「取紧 Hausdorff 空间的连通分量商」$S\\mapsto S/\\!\\sim$（把每个连通分量压成一点），因为连续映射把紧 Hausdorff 的连通分量送到连通集、而全不连通空间里连通集只有单点；',
+          '- 在 $\\mathbf{CHaus}$ 内部再取全不连通的那些：含入 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 有左伴随「取紧 Hausdorff 空间的连通分量商」$S\\mapsto S/\\!\\sim$（把每个连通分量压成一点），因为连续映射把紧 Hausdorff 的连通分量送到连通集、而全不连通空间里连通集只有单点；\n\n',
           '- 于是 $\\mathbf{Stone}\\hookrightarrow\\mathbf{CHaus}$ 是反射子范畴，反射是「取连通分量商」（它对紧 Hausdorff 空间仍是紧 Hausdorff ✓）。∎',
           '⭐ 反射子范畴的**含入保极限**，所以 Stone 空间的极限（在 $\\mathbf{CHaus}$ 或 $\\mathbf{Top}$ 里算）仍是 Stone ✓ —— 这正是「Stone 空间对极限封闭」。'
         ].join('\n')
@@ -386,8 +386,8 @@ window.MG = window.MG || {};
       notes: [
         '这条把 Gleason 定理翻译成了一句「具体拓扑」的话：投射性 = 收缩核。与模论里「投射模 = 自由模的直和项」完全平行 —— 两者都是「投射 = 从自由对象上切一块下来」。',
         ['**证明（把 Gleason 与「$\\mathbf{CHaus}$ 里每个对象都是自由的商」拼起来）。**',
-          '- **$(\\implies)$**：设 $A$ 是 Stonean。取自由紧 Hausdorff 空间 $F$ 与满射 $p : F\\twoheadrightarrow A$（「$\\mathbf{CHaus}$ 里每个对象都是自由的商」）。Stonean $\\implies$ 由 **Gleason 定理** $A$ 是 $\\mathbf{CHaus}$ 里的**投射对象**，于是满射 $p : F\\to A$ 有**截面** $s : A\\to F$，即 $p\\circ s = \\mathrm{id}_{A}$ —— 这正是「$A$ 是 $F$ 的收缩核」（取 $r := p$）✓。',
-          '- **$(\\Longleftarrow)$**：若 $A$ 是自由对象 $F$ 的收缩核（$r: F\\to A$，$r|_A = \\mathrm{id}$），则由**投射对象的收缩核仍投射**（标准事实：投射对象的直和项/收缩核还是投射的），$A$ 在 $\\mathbf{CHaus}$ 里投射；再由 Gleason 定理，$A$ 是 Stonean ✓。∎',
+          '- **$(\\implies)$**：设 $A$ 是 Stonean。\n\n取自由紧 Hausdorff 空间 $F$ 与满射 $p : F\\twoheadrightarrow A$（「$\\mathbf{CHaus}$ 里每个对象都是自由的商」）。\n\nStonean $\\implies$ 由 **Gleason 定理** $A$ 是 $\\mathbf{CHaus}$ 里的**投射对象**，于是满射 $p : F\\to A$ 有**截面** $s : A\\to F$，即 $p\\circ s = \\mathrm{id}_{A}$ —— 这正是「$A$ 是 $F$ 的收缩核」（取 $r := p$）✓。',
+          '- **$(\\Longleftarrow)$**：若 $A$ 是自由对象 $F$ 的收缩核（$r: F\\to A$，$r|_A = \\mathrm{id}$），则由**投射对象的收缩核仍投射**（标准事实：投射对象的直和项/收缩核还是投射的），$A$ 在 $\\mathbf{CHaus}$ 里投射；\n\n再由 Gleason 定理，$A$ 是 Stonean ✓。\n\n∎',
           '⭐ 这条是「Stonean = 自由紧 Hausdorff 的收缩核」的完整论证，也是后面「$\\mathbb{Z}[S]$ 投射」的来源（$S$ 的收缩核给出截面，截面给出 $\\mathbb{Z}[S]$ 的投射性）。'
         ].join('\n')
       ].join('\n\n'),
@@ -415,9 +415,11 @@ window.MG = window.MG || {};
         '',
         '闭子集紧、方块 Hausdorff 而子空间 Hausdorff，所以 $\\beta X \\in \\mathbf{CHaus}$。',
         '',
-        '**函子性。** 连续映射 $\\varphi : X \\to Y$ 诱导 $C(Y,[0,1]) \\to C(X,[0,1])$（$g \\mapsto g \\circ \\varphi$），进而诱导方块的映射 $[0,1]^{C(X,[0,1])} \\to [0,1]^{C(Y,[0,1])}$；它把 $e_{X}(X)$ 送到 $e_{Y}(Y)$，于是把闭包送到闭包，得到 $\\beta\\varphi : \\beta X \\to \\beta Y$。',
+        '**函子性。** 连续映射 $\\varphi : X \\to Y$ 诱导 $C(Y,[0,1]) \\to C(X,[0,1])$（$g \\mapsto g \\circ \\varphi$），进而诱导方块的映射 $[0,1]^{C(X,[0,1])} \\to [0,1]^{C(Y,[0,1])}$；\n\n它把 $e_{X}(X)$ 送到 $e_{Y}(Y)$，于是把闭包送到闭包，得到 $\\beta\\varphi : \\beta X \\to \\beta Y$。',
         '',
-        '**泛性质。** 设 $K \\in \\mathbf{CHaus}$，$f : X \\to K$ 连续。紧 Hausdorff 空间是 $T_{3.5}$ 的（不同的点可被连续函数分离），所以 $e_{K} : K \\to [0,1]^{C(K,[0,1])}$ 是单射；把 $K$ 看成那个方块里的子空间，目标就变成「造一个 $\\widehat{f}$ 使右下三角交换」：',
+        '**泛性质。** 设 $K \\in \\mathbf{CHaus}$，$f : X \\to K$ 连续。\n\n' +
+        '紧 Hausdorff 空间是 $T_{3.5}$ 的（不同的点可被连续函数分离），所以 $e_{K} : K \\to [0,1]^{C(K,[0,1])}$ 是单射；\n\n' +
+        '把 $K$ 看成那个方块里的子空间，目标就变成「造一个 $\\widehat{f}$ 使右下三角交换」：',
         '',
         '$$\\begin{array}{ccc} X & \\xrightarrow{\\ e_{X}\\ } & \\beta X \\subseteq [0,1]^{C(X,[0,1])} \\\\ & \\searrow\\scriptstyle{f} & \\downarrow\\scriptstyle{\\widehat{f}} \\\\ & & K \\subseteq [0,1]^{C(K,[0,1])} \\end{array}$$',
         '',
@@ -431,7 +433,7 @@ window.MG = window.MG || {};
         '',
         '所以 $\\widehat{f} \\circ e_{X} = j_{K} \\circ f$，即 $f = \\widehat{f} \\circ e_{X}$（把 $K$ 与它在方块里的像等同）。',
         '',
-        '**落回 $K$ 里。** 还差 $\\widehat{f}(\\beta X) \\subseteq j_{K}(K)$。只需在稠密的 $e_{X}(X)$ 上验：由上式 $\\widehat{f}(e_{X}(x)) = j_{K}(f(x)) \\in j_{K}(K)$。而 $j_{K}(K)$ 在方块里是紧的因而闭，取闭包即得 $\\widehat{f}(\\beta X) \\subseteq j_{K}(K)$。',
+        '**落回 $K$ 里。** 还差 $\\widehat{f}(\\beta X) \\subseteq j_{K}(K)$。\n\n只需在稠密的 $e_{X}(X)$ 上验：由上式 $\\widehat{f}(e_{X}(x)) = j_{K}(f(x)) \\in j_{K}(K)$。\n\n而 $j_{K}(K)$ 在方块里是紧的因而闭，取闭包即得 $\\widehat{f}(\\beta X) \\subseteq j_{K}(K)$。',
         '',
         '**唯一性。** 两个这样的 $\\widehat{f}$ 在稠密的 $e_{X}(X)$ 上相等，而目标是 Hausdorff，所以处处相等。∎'
       ].join('\n'),
@@ -450,9 +452,9 @@ window.MG = window.MG || {};
         '',
         '**$C(x) \\subseteq C$。** 每个含 $x$ 的闭开集 $K$ 都是既不空又不全的开集，所以 $x$ 的连通分量只能整个落在 $K$ 里或整个落在 $K$ 外；既然 $x \\in K$，就有 $C(x) \\subseteq K$。对一切这样的 $K$ 取交即得。',
         '',
-        '**$C$ 连通。** 反设 $C = F \\sqcup G$，其中 $F, G$ 在 $C$ 中闭、不交、非空，并设 $x \\in F$。$C$ 是闭集之交因而闭，于是 $F, G$ 在 $S$ 中闭。紧 Hausdorff 空间正规，取不交开集 $U \\supseteq F$、$V \\supseteq G$。令 $K := (U \\cup V)^{c}$，它闭且 $K \\cap C = \\emptyset$。',
+        '**$C$ 连通。** 反设 $C = F \\sqcup G$，其中 $F, G$ 在 $C$ 中闭、不交、非空，并设 $x \\in F$。\n\n$C$ 是闭集之交因而闭，于是 $F, G$ 在 $S$ 中闭。\n\n紧 Hausdorff 空间正规，取不交开集 $U \\supseteq F$、$V \\supseteq G$。\n\n令 $K := (U \\cup V)^{c}$，它闭且 $K \\cap C = \\emptyset$。',
         '',
-        '由 $C$ 的定义与 $K \\cap C = \\emptyset$，存在含 $x$ 的闭开集 $H$ 使 $H \\cap K = \\emptyset$，即 $H \\subseteq U \\cup V$。于是 $H \\cap U$ 与 $H \\cap V$ 都是 $H$ 中的闭开集（$U, V$ 不交故各自的补在 $H$ 中开），进而在 $S$ 中闭开（$H$ 闭开）。其中 $H \\cap U \\ni x$，所以由 $C$ 的定义 $C \\subseteq H \\cap U \\subseteq U$，从而 $C \\cap V = \\emptyset$，与 $G \\subseteq C \\cap V$ 非空矛盾。∎'
+        '由 $C$ 的定义与 $K \\cap C = \\emptyset$，存在含 $x$ 的闭开集 $H$ 使 $H \\cap K = \\emptyset$，即 $H \\subseteq U \\cup V$。\n\n于是 $H \\cap U$ 与 $H \\cap V$ 都是 $H$ 中的闭开集（$U, V$ 不交故各自的补在 $H$ 中开），进而在 $S$ 中闭开（$H$ 闭开）。\n\n其中 $H \\cap U \\ni x$，所以由 $C$ 的定义 $C \\subseteq H \\cap U \\subseteq U$，从而 $C \\cap V = \\emptyset$，与 $G \\subseteq C \\cap V$ 非空矛盾。\n\n∎'
       ].join('\n'),
       note: '这一步是后面 Stone 对偶与 $\\mathrm{Cond}$ 里「连通分量可控」的来源：在 $\\mathbf{CHaus}$ 里，连通分量由**闭开集**这个可以自由摆弄的族描述出来。'
     },
@@ -469,13 +471,13 @@ window.MG = window.MG || {};
         '',
         '**（$\\Longrightarrow$）** 设 $S$ 是 Stone 空间。先证**闭开集构成拓扑基**。',
         '',
-        '取 $x \\in S$ 与开邻域 $O \\ni x$。令 $\\mathcal{F} = \\{K : K \\text{ 闭开},\\ x \\in K\\} \\cup \\{\\, O^{c} \\,\\}$，则 $\\bigcap \\mathcal{F} = \\emptyset$：$O^{c}$ 与「含 $x$ 的闭开集」的交为空，因为 $x \\notin O^{c}$。由 $S$ 紧，存在有限个 $K_{1}, \\ldots, K_{n}$ 使',
+        '取 $x \\in S$ 与开邻域 $O \\ni x$。\n\n令 $\\mathcal{F} = \\{K : K \\text{ 闭开},\\ x \\in K\\} \\cup \\{\\, O^{c} \\,\\}$，则 $\\bigcap \\mathcal{F} = \\emptyset$：$O^{c}$ 与「含 $x$ 的闭开集」的交为空，因为 $x \\notin O^{c}$。\n\n由 $S$ 紧，存在有限个 $K_{1}, \\ldots, K_{n}$ 使',
         '',
         '$$(K_{1} \\cap \\ldots \\cap K_{n}) \\cap O^{c} = \\emptyset$$',
         '',
         '令 $U := K_{1} \\cap \\ldots \\cap K_{n}$，它是闭开的、含 $x$、且 $U \\subseteq O$。所以闭开集构成基。',
         '',
-        '现在看**有限闭开划分**的集合：$\\mathcal{E} := \\{\\, E \\subseteq \\operatorname{Open}(S) \\setminus \\{\\emptyset\\} : E \\text{ 有限},\\ E \\text{ 中元素两两不交且闭开},\\ \\bigcup E = S \\,\\}$，按「加细」构成一个逆向系统（加细是部分序，任意两个划分都有公共加细，所以它是有向的）。每个划分 $E$ 给出商映射 $S \\to E$（送 $x$ 到包含它的那一块），目标有限离散。',
+        '现在看**有限闭开划分**的集合：$\\mathcal{E} := \\{\\, E \\subseteq \\operatorname{Open}(S) \\setminus \\{\\emptyset\\} : E \\text{ 有限},\\ E \\text{ 中元素两两不交且闭开},\\ \\bigcup E = S \\,\\}$，按「加细」构成一个逆向系统（加细是部分序，任意两个划分都有公共加细，所以它是有向的）。\n\n每个划分 $E$ 给出商映射 $S \\to E$（送 $x$ 到包含它的那一块），目标有限离散。',
         '',
         '由此得到连续映射 $S \\to \\varprojlim_{E} E$。它是**连续双射**：闭开集构成基保证任何两个单点都能被某个划分分开（单射），而满射性由每块都非空得到。紧空间到 Hausdorff 空间的连续双射是同胚，于是 $S \\cong \\varprojlim_{E} E$，即 $S$ 投射有限。∎'
       ].join('\n'),
@@ -494,15 +496,23 @@ window.MG = window.MG || {};
         '',
         '令 $F := U^{c}$，考虑 $p : U \\sqcup F \\to S$（$U \\sqcup F$ 取不交并拓扑，$p$ 在 $U$ 与 $F$ 上取含入）—— 它是连续满射。由投射性，$p$ 有连续截面 $s : S \\to U \\sqcup F$，即 $p \\circ s = 1_{S}$。',
         '',
-        '于是 $s(U) \\subseteq U$ 且 $p(s(U)) = U$；又 $p(F) \\cap U = \\emptyset$ 迫使 $s(U) \\subseteq U$。开集在连续映射下的原像开：$U = s^{-1}(U)$ 是开的；再由 $s^{-1}(F) = U^{c}$ 也开可得 $U$ 闭。所以 $U$ 闭开，$S$ 极端不连通。∎',
+        '于是 $s(U) \\subseteq U$ 且 $p(s(U)) = U$；又 $p(F) \\cap U = \\emptyset$ 迫使 $s(U) \\subseteq U$。\n\n' +
+        '开集在连续映射下的原像开：$U = s^{-1}(U)$ 是开的；\n\n' +
+        '再由 $s^{-1}(F) = U^{c}$ 也开可得 $U$ 闭。\n\n' +
+        '所以 $U$ 闭开，$S$ 极端不连通。\n\n' +
+        '∎',
         '',
         '**（Stonean $\\Longrightarrow$ 投射）** 因为 $\\mathbf{CHaus}$ 有纤维积、满态射在这里是「universal」的，投射性等价于「每个满态射都有截面」。所以只要证：$S$ Stonean 时每个满态射 $f : T \\to S$ 都有截面。',
         '',
         '由「满射有极小闭子集」那条引理，可以设 $f$ 在**极小**意义下满：即没有真闭子集 $T\' \\subset T$ 使 $f|_{T\'}$ 满。我们来证这样的 $f$ 是单射。',
         '',
-        '反设 $x \\ne x\' \\in T$ 且 $f(x) = f(x\')$。取不交邻域 $U \\ni x$、$U\' \\ni x\'$。$f$ 是闭映射（紧到 Hausdorff 的连续映射把闭集送到闭集），所以 $S_{1} := f(U^{c})$ 与 $S_{1}\' := f(U\'^{c})$ 是 $S$ 中的闭集。由 $f$ 的极小满性，$f|_{U^{c}}$ 与 $f|_{U\'^{c}}$ 都不满，故 $S_{1}, S_{1}\' \\subset S$；于是它们各自的补 $V := S \\setminus S_{1}$、$V\' := S \\setminus S_{1}\'$ 是非空开集，且 $V \\subseteq f(U)$、$V\' \\subseteq f(U\')$。',
+        '反设 $x \\ne x\' \\in T$ 且 $f(x) = f(x\')$。\n\n' +
+        '取不交邻域 $U \\ni x$、$U\' \\ni x\'$。\n\n' +
+        '$f$ 是闭映射（紧到 Hausdorff 的连续映射把闭集送到闭集），所以 $S_{1} := f(U^{c})$ 与 $S_{1}\' := f(U\'^{c})$ 是 $S$ 中的闭集。\n\n' +
+        '由 $f$ 的极小满性，$f|_{U^{c}}$ 与 $f|_{U\'^{c}}$ 都不满，故 $S_{1}, S_{1}\' \\subset S$；\n\n' +
+        '于是它们各自的补 $V := S \\setminus S_{1}$、$V\' := S \\setminus S_{1}\'$ 是非空开集，且 $V \\subseteq f(U)$、$V\' \\subseteq f(U\')$。',
         '',
-        '$f(x) = f(x\') \\in V \\cap V\'$，所以 $V \\cap V\' \\ne \\emptyset$。又 $U, U\'$ 不交，故 $f(U) \\cap f(U\')$ 中的点只有可能来自交叠，于是 $V \\cap V\' \\subseteq \\overline{f(U)} \\cap \\overline{f(U\')}$。而 $V \\cap V\'$ 非空是开集、$S$ 极端不连通意味着不交开集的闭包不交（前一条性质），矛盾。',
+        '$f(x) = f(x\') \\in V \\cap V\'$，所以 $V \\cap V\' \\ne \\emptyset$。\n\n又 $U, U\'$ 不交，故 $f(U) \\cap f(U\')$ 中的点只有可能来自交叠，于是 $V \\cap V\' \\subseteq \\overline{f(U)} \\cap \\overline{f(U\')}$。\n\n而 $V \\cap V\'$ 非空是开集、$S$ 极端不连通意味着不交开集的闭包不交（前一条性质），矛盾。',
         '',
         '所以 $f$ 是单射，从而是同胚，于是它有截面。∎'
       ].join('\n'),

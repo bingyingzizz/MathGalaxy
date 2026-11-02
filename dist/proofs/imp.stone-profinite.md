@@ -7,4 +7,8 @@
 
 **（$\Longrightarrow$）** 设 $S$ 是 Stone 空间。先证**闭开集构成拓扑基**。
 
+取 $x \in S$ 与开邻域 $O \ni x$。
+
+令 $\mathcal{F} = \{K : K \text{ 闭开},\ x \in K\} \cup \{\, O^{c} \,\}$，则 $\bigcap \mathcal{F} = \emptyset$：$O^{c}$ 与「含 $x$ 的闭开集」的交为空，因为 $x \notin O^{c}$。
+
 > 续见 proofs/imp.stone-profinite.2.md

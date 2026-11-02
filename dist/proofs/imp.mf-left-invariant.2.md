@@ -13,4 +13,8 @@ $$\mathrm{d}(L_{g})_{h}\bigl([X,Y]_{h}\bigr) = \bigl[\mathrm{d}(L_{g})X,\ \mathr
 
 即 $[X,Y]$ 左不变。
 
+**(3) $\mathfrak{g}$ 是 Lie 代数。** 由 (1)(2)，$\mathfrak{g} = T_{e}G$ 上定义 $[v,w] := [\tilde v,\tilde w]_{e}$（$\tilde v$ 是 $v$ 对应的左不变向量场）是有意义的。
+
+反称与 Jacobi 由 $\mathfrak{X}(G)$ 上那条括号继承（`imp.mf-bracket-liealgebra`）；
+
 > 续见 proofs/imp.mf-left-invariant.3.md

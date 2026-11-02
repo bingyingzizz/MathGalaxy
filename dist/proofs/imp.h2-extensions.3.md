@@ -3,7 +3,9 @@
 
 `def.group-extension` 群扩张 + `def.cocycle-2` 二维上圈与上边界 + `def.group-cohomology` 群上同调 → `thm.h2-group-extensions` 二维上同调分类群扩张
 
-**换截面只改一个上边界。** 另一截面 $\sigma^{\prime}(g) = i(u(g))\sigma(g)$（$u : G \to A$，因 $\pi\sigma^{\prime} = \pi\sigma$ 必是此形状）。把 $\sigma^{\prime}$ 塞进定义式，展开 $i(u(g_{1}))\sigma(g_{1}) i(u(g_{2}))\sigma(g_{2})$ 并用共轭恒等式，得
+**换截面只改一个上边界。** 另一截面 $\sigma^{\prime}(g) = i(u(g))\sigma(g)$（$u : G \to A$，因 $\pi\sigma^{\prime} = \pi\sigma$ 必是此形状）。
+
+把 $\sigma^{\prime}$ 塞进定义式，展开 $i(u(g_{1}))\sigma(g_{1}) i(u(g_{2}))\sigma(g_{2})$ 并用共轭恒等式，得
 
 $$c^{\prime}(g_{1}, g_{2}) = c(g_{1}, g_{2}) + g_{1}\cdot u(g_{2}) - u(g_{1}g_{2}) + u(g_{1}) = c + \delta^{1}u ,$$
 

@@ -11,4 +11,6 @@
 
 $$0 \longrightarrow C(S_\rho, \mathbb{Z}) \longrightarrow C(S_\rho, \mathbb{Z}) \longrightarrow C(S', \mathbb{Z}) \longrightarrow 0,$$
 
+第二个箭头是「在 $S' \times \{1\}$ 与 $S' \times \{0\}$ 上取值之差」。
+
 > 续见 proofs/imp.csz-free.2.md

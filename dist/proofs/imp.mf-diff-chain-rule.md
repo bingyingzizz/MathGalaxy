@@ -3,7 +3,9 @@
 
 `def.smooth-map` 光滑映射 + `def.jacobian` Jacobi 矩阵 → `def.differential-map` 切映射
 
-**矩阵形状。** 取卡 $(U,\varphi)$（$N$ 的）与 $(V,\psi)$（$M$ 的），记 $G := \psi \circ F \circ \varphi^{-1}$，$y = \varphi(p)$。坐标基下 $\mathrm{d}F_{p}(\partial_{j})$ 的分量由「第 $i$ 个坐标函数的方向导数」给出：
+**矩阵形状。** 取卡 $(U,\varphi)$（$N$ 的）与 $(V,\psi)$（$M$ 的），记 $G := \psi \circ F \circ \varphi^{-1}$，$y = \varphi(p)$。
+
+坐标基下 $\mathrm{d}F_{p}(\partial_{j})$ 的分量由「第 $i$ 个坐标函数的方向导数」给出：
 
 $$\mathrm{d}x^{i}\bigl(\mathrm{d}F_{p}(\partial_{j})\bigr) = \partial_{j}\bigl(G^{i}\bigr)(y),$$
 

@@ -3,7 +3,9 @@
 
 `def.complex-partial` 复偏导数 → `prop.complex-partial-rules` 复偏导数的运算法则
 
-又 $\Delta w = f_z \Delta z + f_{\bar z}\overline{\Delta z} + o(\Delta z)$，取共轭得 $\overline{\Delta w} = \overline{f_z}\,\overline{\Delta z} + \overline{f_{\bar z}}\,\Delta z + o(\Delta z)$。代回去，按 $\Delta z$ 与 $\overline{\Delta z}$ 归并：
+又 $\Delta w = f_z \Delta z + f_{\bar z}\overline{\Delta z} + o(\Delta z)$，取共轭得 $\overline{\Delta w} = \overline{f_z}\,\overline{\Delta z} + \overline{f_{\bar z}}\,\Delta z + o(\Delta z)$。
+
+代回去，按 $\Delta z$ 与 $\overline{\Delta z}$ 归并：
 
 $$\Delta (g \circ f) = \left( g_w f_z + g_{\bar w}\overline{f_{\bar z}} \right)\Delta z + \left( g_w f_{\bar z} + g_{\bar w}\overline{f_z} \right)\overline{\Delta z} + o(\Delta z).$$
 

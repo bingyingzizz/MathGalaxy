@@ -9,7 +9,9 @@ $$\langle s,t\rangle_{\alpha} := \bigl\langle \operatorname{pr}_{2}\Phi_{\alpha}
 
 这是 $U_{\alpha}$ 上的纤维内积，且对 $p$ 光滑（$\Phi_{\alpha}$ 是微分同胚）。
 
-**加细成局部有限。** 把 $\{U_{\alpha}\}$ 换成局部有限的开加细（流形仿紧），必要时重编号，仍记 $\{U_{\alpha}\}_{\alpha \in A}$；取从属于它的光滑单位分解 $\{\rho_{\alpha}\}$（`thm.smooth-partition-unity`），在 $A$ 外延拓 $\rho_{\alpha} \equiv 0$。
+**加细成局部有限。** 把 $\{U_{\alpha}\}$ 换成局部有限的开加细（流形仿紧），必要时重编号，仍记 $\{U_{\alpha}\}_{\alpha \in A}$；
+
+取从属于它的光滑单位分解 $\{\rho_{\alpha}\}$（`thm.smooth-partition-unity`），在 $A$ 外延拓 $\rho_{\alpha} \equiv 0$。
 
 **凸组合。** 令
 

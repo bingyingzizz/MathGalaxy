@@ -54,7 +54,7 @@ window.MG = window.MG || {};
         [
           '**证明。**',
           '**（一）$X = S$ 紧 Hausdorff。** 开覆盖可取有限子覆盖，而紧 Hausdorff 是正规的，每块开集里含一个闭邻域、闭子集紧 ✓ —— 于是把开覆盖换成**有限的紧覆盖**，而「有限族拼起来等于全空间」正是 $\\mathbf{FCHaus}$ 上预拓扑允许的覆盖 ✓。',
-          '**（二）一般 $X$。** 取 $f : S \\to X$（$S$ 紧 Hausdorff），把覆盖拉回：$S = \\bigcup_i f^{-1}(X_{i})$ 仍是开覆盖，由 (一) 得 $(S \\times_{X} X_{i} \\to S)_{i}$ 是 $S$ 的覆盖 ✓；覆盖沿覆盖下降（传递性），于是 $(X_{i} \\to X)_{i}$ 是 $X$ 的覆盖 ✓。∎'
+          '**（二）一般 $X$。** 取 $f : S \\to X$（$S$ 紧 Hausdorff），把覆盖拉回：$S = \\bigcup_i f^{-1}(X_{i})$ 仍是开覆盖，由 (一) 得 $(S \\times_{X} X_{i} \\to S)_{i}$ 是 $S$ 的覆盖 ✓；\n\n覆盖沿覆盖下降（传递性），于是 $(X_{i} \\to X)_{i}$ 是 $X$ 的覆盖 ✓。\n\n∎'
         ].join('\n'),
         '⭐ 用处：$\\mathrm{Cond}$ 里的覆盖可以**直接用拓扑的开覆盖**给出，这是后面「层在开集上算」的依据。'
       ].join('\n\n'),
@@ -134,7 +134,7 @@ window.MG = window.MG || {};
         [
           '**证明。** 只需对每个紧 Hausdorff $S$ 验证 $X(S) \\to \\underline{X(\\cdot)}(S) = C(S, X(\\cdot))$ 是单射 ✓（单态射按点检验）。',
           '由「可数递增余极限」那一条的推广（拟分离 $\\iff$ 含入过渡的滤过余极限），$X = \\varinjlim_i S_{i}$ 且 $X(S) = \\varinjlim_i \\operatorname{Hom}(S, S_{i})$ ✓。',
-          '取 $f, g \\in X(S)$ 映到同一个连续映射：它们都来自某个 $i$ 的 $\\tilde f, \\tilde g : S \\to S_{i}$，而 $S_{i} \\hookrightarrow X(\\cdot)$ 是含入、特别地是单射 ✓，于是 $\\tilde f = \\tilde g$，从而 $f = g$ ✓。∎'
+          '取 $f, g \\in X(S)$ 映到同一个连续映射：它们都来自某个 $i$ 的 $\\tilde f, \\tilde g : S \\to S_{i}$，而 $S_{i} \\hookrightarrow X(\\cdot)$ 是含入、特别地是单射 ✓，于是 $\\tilde f = \\tilde g$，从而 $f = g$ ✓。\n\n∎'
         ].join('\n'),
         '⭐ 读法：**拟分离的凝聚态集不会丢信息** —— 它整个能从底空间里被读回来。反面是一般凝聚态集的底空间会把精细结构抹掉。'
       ].join('\n\n'),
@@ -153,7 +153,7 @@ window.MG = window.MG || {};
       title: '满态射判据 $\\implies$ 开满射是满态射',
       proof: [
         '按「凝聚态集满态射的判据」，只需对每个自由紧 Hausdorff $F$ 验证 $C(F, X) \\to C(F, Y)$ 满 ✓。',
-        '给 $g : F \\to Y$：$g(F)$ 紧 Hausdorff（$F$ 紧、$Y$ 弱 Hausdorff）✓，于是 $g(F) = f(S)$ 对某个紧 Hausdorff $S \\subseteq X$ ✓；$F$ 自由因而投射，$F \\to f(S)$ 可提升为 $F \\to S \\hookrightarrow X$ ✓，即 $g$ 有原像 ✓。∎'
+        '给 $g : F \\to Y$：$g(F)$ 紧 Hausdorff（$F$ 紧、$Y$ 弱 Hausdorff）✓，于是 $g(F) = f(S)$ 对某个紧 Hausdorff $S \\subseteq X$ ✓；\n\n$F$ 自由因而投射，$F \\to f(S)$ 可提升为 $F \\to S \\hookrightarrow X$ ✓，即 $g$ 有原像 ✓。\n\n∎'
       ].join('\n')
     },
     {
@@ -177,7 +177,7 @@ window.MG = window.MG || {};
       target: 'prop.hom-presheaf-sheaf',
       title: '开覆盖是覆盖 $\\implies$ $\\operatorname{Hom}$ 预层是层',
       proof: [
-        '开覆盖 $U = \\bigcup_i U_{i}$ 给出覆盖 $\\coprod_i \\underline{U_{i}} \\to \\underline{U}$ ✓，而拓扑斯里的对象对每个覆盖筛都满足下降（层条件就是「$\\operatorname{Hom}(-, Y)$ 把覆盖筛变成等化子」）✓，于是截面沿开覆盖的等化子条件成立，即 $U \\mapsto Y(U)$ 是层 ✓。∎'
+        '开覆盖 $U = \\bigcup_i U_{i}$ 给出覆盖 $\\coprod_i \\underline{U_{i}} \\to \\underline{U}$ ✓，而拓扑斯里的对象对每个覆盖筛都满足下降（层条件就是「$\\operatorname{Hom}(-, Y)$ 把覆盖筛变成等化子」）✓，于是截面沿开覆盖的等化子条件成立，即 $U \\mapsto Y(U)$ 是层 ✓。\n\n∎'
       ].join('\n')
     },
     {
@@ -201,7 +201,7 @@ window.MG = window.MG || {};
       target: 'prop.qseparated-mono',
       title: '拟分离即含入过渡的滤过余极限 $\\implies$ 嵌入底空间是单的',
       proof: [
-        '若 $X = \\varinjlim_i S_{i}$（含入过渡），则 $X(S) = \\varinjlim_i \\operatorname{Hom}(S, S_{i})$ ✓；两个元素映到底空间里同一个连续映射时，它们来自某个 $S_{i}$，而 $S_{i} \\hookrightarrow X(\\cdot)$ 是含入、特别地单射，故两个元素相等 ✓。于是 $X(S) \\to C(S, X(\\cdot))$ 单射，对每个紧 Hausdorff $S$ 成立即得单态射 ✓。∎'
+        '若 $X = \\varinjlim_i S_{i}$（含入过渡），则 $X(S) = \\varinjlim_i \\operatorname{Hom}(S, S_{i})$ ✓；两个元素映到底空间里同一个连续映射时，它们来自某个 $S_{i}$，而 $S_{i} \\hookrightarrow X(\\cdot)$ 是含入、特别地单射，故两个元素相等 ✓。\n\n于是 $X(S) \\to C(S, X(\\cdot))$ 单射，对每个紧 Hausdorff $S$ 成立即得单态射 ✓。\n\n∎'
       ].join('\n')
     }
 

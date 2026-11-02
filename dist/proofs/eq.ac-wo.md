@@ -14,4 +14,6 @@ $$x(\alpha) = \varphi( X \setminus \{ x(\beta) : \beta < \alpha \} )$$
 
 一旦余集为空就停止。
 
+3. **过程一定会停**：取 $X$ 的 **Hartogs 数** $\aleph (X)$，即最小的不能单射进 $X$ 的序数（见「Hartogs 定理」——它在 ZF 里就能证，不需要 AC）。
+
 > 续见 proofs/eq.ac-wo.2.md

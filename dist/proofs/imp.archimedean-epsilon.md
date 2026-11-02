@@ -3,7 +3,13 @@
 
 `lem.archimedean` Archimedes 性质 → `cor.archimedean-epsilon` Archimedes 的 ε 形式与取整
 
-**(i)** 给定 $\varepsilon > 0$。由阿基米德性质（用于 $x = 1/\varepsilon$）存在 $n \in \mathbb{N}$ 使 $n > 1/\varepsilon$。这样的 $n \ge 1$；两边除以 $n\varepsilon > 0$ 得 $1/n < \varepsilon$。
+**(i)** 给定 $\varepsilon > 0$。
+
+由阿基米德性质（用于 $x = 1/\varepsilon$）存在 $n \in \mathbb{N}$ 使 $n > 1/\varepsilon$。
+
+这样的 $n \ge 1$；
+
+两边除以 $n\varepsilon > 0$ 得 $1/n < \varepsilon$。
 
 **(ii) 存在性。** 由阿基米德性质取 $N \in \mathbb{N}$ 使 $N > |x|$，则 $-N < x < N$。令
 

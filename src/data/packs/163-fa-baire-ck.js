@@ -84,19 +84,18 @@ window.MG = window.MG || {};
         '2. 每个非空开集都是**第二纲**的。'
       ].join('\n'),
       notes: [
-        '证法（球套法）分四步：\n' +
-        '\n' +
-        '1. **起点**：记 $B_0 := B(x, \\varepsilon)$。$O_1$ 稠密开 $implies$ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n' +
-        '\n' +
-        '$$\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1 .$$\n' +
-        '\n' +
-        '2. **归纳**：已取 $x_n, \\varepsilon_n$（且 $\\varepsilon_n < 1/n$）。由 $O_{n+1}$ 稠密开，$B(x_n, \\varepsilon_n) \\cap O_{n+1}$ 仍是非空开，取\n' +
-        '\n' +
-        '$$\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}, \\qquad \\varepsilon_{n+1} < \\frac{1}{n+1} .$$\n' +
-        '\n' +
-        '3. **嵌套闭球取点**：半径 $\\varepsilon_n \\to 0$，而 $X$ 完备，于是 $\\bigcap_n \\overline{B(x_n, \\varepsilon_n)} \\ne \\emptyset$，取其中一点 $y$。（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）\n' +
-        '\n' +
-        '4. **收尾**：对每个 $n$，$y \\in \\overline{B(x_n, \\varepsilon_n)} \\subseteq B_0 \\cap O_n$，所以 $y \\in B_0$ 且 $y \\in \\bigcap_n O_n$。$B_0$ 是任取的，于是 $\\bigcap_n O_n$ 与每个非空开集相交 ，故稠密。∎',
+        '证法（球套法）分四步：\n\n' +
+        '1. **起点**：记 $B_0 := B(x, \\varepsilon)$。\n\n' +
+        '$O_1$ 稠密开 $implies$ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n\n' +
+        '$$\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1 .$$\n\n' +
+        '2. **归纳**：已取 $x_n, \\varepsilon_n$（且 $\\varepsilon_n < 1/n$）。\n\n' +
+        '由 $O_{n+1}$ 稠密开，$B(x_n, \\varepsilon_n) \\cap O_{n+1}$ 仍是非空开，取\n\n' +
+        '$$\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}, \\qquad \\varepsilon_{n+1} < \\frac{1}{n+1} .$$\n\n' +
+        '3. **嵌套闭球取点**：半径 $\\varepsilon_n \\to 0$，而 $X$ 完备，于是 $\\bigcap_n \\overline{B(x_n, \\varepsilon_n)} \\ne \\emptyset$，取其中一点 $y$。\n\n' +
+        '（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）\n\n' +
+        '4. **收尾**：对每个 $n$，$y \\in \\overline{B(x_n, \\varepsilon_n)} \\subseteq B_0 \\cap O_n$，所以 $y \\in B_0$ 且 $y \\in \\bigcap_n O_n$。\n\n' +
+        '$B_0$ 是任取的，于是 $\\bigcap_n O_n$ 与每个非空开集相交 ，故稠密。\n\n' +
+        '∎',
         '⭐ 三种等价写法都要会用，转换只需取补集。',
         '⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。'
       ].join('\n\n'),
@@ -151,7 +150,9 @@ window.MG = window.MG || {};
         '$X$ Baire、$\\Omega \\subseteq X$ 开 $\\implies$ $\\Omega$（带子空间拓扑）是 Baire 空间。'
       ].join('\n'),
       notes: [
-        '证法：设 $O_n$ 在 $\\Omega$ 里稠密开，写 $O_n = \\Omega \\cap O_n\'$（$O_n\'$ 在 $X$ 中开）。则 $O_n\' \\cup \\Omega^c$ 在 $X$ 中**稠密开**；于是 $\\bigcap_n(O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
+        '证法：设 $O_n$ 在 $\\Omega$ 里稠密开，写 $O_n = \\Omega \\cap O_n\'$（$O_n\'$ 在 $X$ 中开）。\n\n' +
+        '则 $O_n\' \\cup \\Omega^c$ 在 $X$ 中**稠密开**；\n\n' +
+        '于是 $\\bigcap_n(O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
         '⭐ 用处：开映射定理要在开集上做局部论证、UBP 要看开子集，这条保证「局部化之后 Baire 性质不丢」。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-10-26']
@@ -189,7 +190,7 @@ window.MG = window.MG || {};
         '是**稠密 $G_\\delta$**。特别地 $f$ 至少在一个稠密 $G_\\delta$ 上连续。'
       ].join('\n'),
       notes: [
-        '证法（骨架）：令 $F_{n,k} = \\{x : \\|f_i(x) - f_j(x)\\| \\le 1/k\\ (\\forall i, j \\ge n)\\}$，它是闭集且 $X = \\bigcup_n F_{n,k}$；由 Baire，$O_k := \\bigcup_n \\operatorname{int} F_{n,k}$ 稠密开。令 $O := \\bigcap_k O_k$（稠密 $G_\\delta$），在 $O$ 上用「$x$ 落在一个 $\\operatorname{int} F_{n,k}$ 里 $\\implies$ 邻域上 $f_n$ 一致接近」得连续性。',
+        '证法（骨架）：令 $F_{n,k} = \\{x : \\|f_i(x) - f_j(x)\\| \\le 1/k\\ (\\forall i, j \\ge n)\\}$，它是闭集且 $X = \\bigcup_n F_{n,k}$；\n\n由 Baire，$O_k := \\bigcup_n \\operatorname{int} F_{n,k}$ 稠密开。\n\n令 $O := \\bigcap_k O_k$（稠密 $G_\\delta$），在 $O$ 上用「$x$ 落在一个 $\\operatorname{int} F_{n,k}$ 里 $\\implies$ 邻域上 $f_n$ 一致接近」得连续性。',
         '⚠️ 逐点极限**不必**连续（$f_n(x) = x^n$ 在 $[0,1]$ 上）；它只是「连续点很多」。',
         '⭐ 同一模板的经典产物：$C[0,1]$ 里「处处不可微」的函数构成稠密 $G_\\delta$（Banach 1931）。'
       ].join('\n\n'),
@@ -211,7 +212,7 @@ window.MG = window.MG || {};
         '则 $\\displaystyle \\sup_{i \\in I}\\|u_i\\| < \\infty$（**一致**有界）。'
       ].join('\n'),
       notes: [
-        '证法：令 $F_k = \\{x : \\sup_i \\|u_i x\\| \\le k\\} = \\bigcap_i \\{x : \\|u_i x\\| \\le k\\}$，每个 $\\{x : \\|u_i x\\| \\le k\\}$ 闭（$u_i$ 连续），故 $F_k$ 闭；逐点有界 $\\implies E = \\bigcup_k F_k$。由 Baire（闭覆盖有内点），某个 $F_k$ 含球 $B(x_0, r)$。于是对 $\\|x\\| \\le r$：$\\sup_i \\|u_i x\\| \\le \\sup_i \\|u_i(x + x_0)\\| + \\sup_i \\|u_i x_0\\| \\le 2k$，取 $x = r y/\\|y\\|$ 得 $\\|u_i y\\| \\le 2k\\|y\\|/r$，故 $\\sup_i\\|u_i\\| \\le 2k/r$。',
+        '证法：令 $F_k = \\{x : \\sup_i \\|u_i x\\| \\le k\\} = \\bigcap_i \\{x : \\|u_i x\\| \\le k\\}$，每个 $\\{x : \\|u_i x\\| \\le k\\}$ 闭（$u_i$ 连续），故 $F_k$ 闭；\n\n逐点有界 $\\implies E = \\bigcup_k F_k$。\n\n由 Baire（闭覆盖有内点），某个 $F_k$ 含球 $B(x_0, r)$。\n\n于是对 $\\|x\\| \\le r$：$\\sup_i \\|u_i x\\| \\le \\sup_i \\|u_i(x + x_0)\\| + \\sup_i \\|u_i x_0\\| \\le 2k$，取 $x = r y/\\|y\\|$ 得 $\\|u_i y\\| \\le 2k\\|y\\|/r$，故 $\\sup_i\\|u_i\\| \\le 2k/r$。',
         '⭐ **名字**：讲义与很多中文书叫它「共鸣定理」（resonance theorem），也叫「一致有界原理」；本图两个都收进别名。三大定理里它**只要求 $E$ 完备**（$F$ 只要赋范），是最「便宜」的一条。',
         '⚠️ $E$ 完备不能去掉：$E = c_{00}$（有限支撑序列）时取 $u_n(x) = n x_n$，逐点有界而 $\\|u_n\\| = n \\to \\infty$。'
       ].join('\n\n'),
@@ -233,7 +234,7 @@ window.MG = window.MG || {};
         '是**稠密 $G_\\delta$**（特别地非空）。'
       ].join('\n'),
       notes: [
-        '证法：令 $\\Omega_k = \\{x : M(x) = \\sup_i\\|u_i x\\| > k\\} = \\bigcup_i \\{x : \\|u_i x\\| > k\\}$，是开集；$R = \\bigcap_k \\Omega_k$ 是 $G_\\delta$。若某个 $\\Omega_k$ 不稠密，则存在球 $B(x_0, r) \\subseteq \\Omega_k^c$，球上 $M \\le k$，用与 UBP 同样的平移 + 伸缩得 $\\sup_i\\|u_i\\| \\le 2k/r$，矛盾。',
+        '证法：令 $\\Omega_k = \\{x : M(x) = \\sup_i\\|u_i x\\| > k\\} = \\bigcup_i \\{x : \\|u_i x\\| > k\\}$，是开集；\n\n$R = \\bigcap_k \\Omega_k$ 是 $G_\\delta$。\n\n若某个 $\\Omega_k$ 不稠密，则存在球 $B(x_0, r) \\subseteq \\Omega_k^c$，球上 $M \\le k$，用与 UBP 同样的平移 + 伸缩得 $\\sup_i\\|u_i\\| \\le 2k/r$，矛盾。',
         '⭐ 意义：「发散」不是个别点，而是**几乎处处**。经典应用：Fourier 级数部分和算子满足 $\\|S_N\\| \\to \\infty$，于是**存在**连续函数其 Fourier 级数在某点发散（du Bois-Reymond 1876）—— 而且这样的函数「很多」。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-10-26']
@@ -251,23 +252,19 @@ window.MG = window.MG || {};
         '',
         '$$u(B_E) \\supseteq r\\, B_F .$$'
         ,
-        '**纲版表述（教科书里最常见的那一版）**：设 $E, F$ 是 Banach 空间、$u \\in B(E,F)$ 满射。则\n' +
-        '\n' +
-        '$$\\text{对 } F \\text{ 的每个非空开集 } \\Omega,\\quad u(E) \\cap \\Omega \\ \\text{是第二纲的（在 } \\Omega \\text{ 中）},$$\n' +
-        '\n' +
-        '特别地 $u(E) = F$ **不是第一纲集**（也就是说：$F$ 不能被 $u(E)$ 的可数个无处稠密子集覆盖 —— 由于 $u$ 满射，这句话在 $F$ 上自动成立，真正的信息是「$u(B_E)$ 含内点」）。\n' +
-        '\n' +
-        '**为什么这三句话是同一件事**：\n' +
-        '\n' +
-        '1. 若 $u(B_E) \\supseteq r B_F$（含球版），则 $u$ 把开集映成开集（把球平移到任意点即得开映射版）；\n' +
-        '2. 若 $u$ 是开映射，则 $u(B_E)$ 是含 $0$ 的开集，自然含球；\n' +
-        '3. 若 $u(E)$ 在某个开集里是第二纲的，则 $u(E)$ 不可能被可数个无处稠密集覆盖 —— 而 $E = \\bigcup_k \\overline{kB_E}$，于是某个 $\\overline{u(kB_E)}$ 必含内点（否则可数个无处稠密集覆盖了 $u(E)$ 的一个开集，与第二纲矛盾）。\n' +
-        '\n' +
-        '**证明的第一步就是纲**（这也是你看到的版本为何那样陈述）：\n' +
-        '\n' +
-        '$$E = \\bigcup_{k \\ge 1} \\overline{k\\,B_E} \\quad\\Longrightarrow\\quad u(E) = F = \\bigcup_{k} \\overline{u(kB_E)} ,$$\n' +
-        '\n' +
-        '右端是可数个闭集之并，由纲定理（`thm.baire`）其中某个 $\\overline{u(kB_E)}$ 必须含内点；再用「$k$ 倍」与「平移」把它搬回 $0$，得 $\\overline{u(B_E)} \\supseteq r B_F$。之后第二步才用 $E$ 的**完备性**去掉闭包（`imp.fa-openmap`）。'
+        '**纲版表述（教科书里最常见的那一版）**：设 $E, F$ 是 Banach 空间、$u \\in B(E,F)$ 满射。\n\n' +
+        '则\n\n' +
+        '$$\\text{对 } F \\text{ 的每个非空开集 } \\Omega,\\quad u(E) \\cap \\Omega \\ \\text{是第二纲的（在 } \\Omega \\text{ 中）},$$\n\n' +
+        '特别地 $u(E) = F$ **不是第一纲集**（也就是说：$F$ 不能被 $u(E)$ 的可数个无处稠密子集覆盖 —— 由于 $u$ 满射，这句话在 $F$ 上自动成立，真正的信息是「$u(B_E)$ 含内点」）。\n\n' +
+        '**为什么这三句话是同一件事**：\n\n' +
+        '1. 若 $u(B_E) \\supseteq r B_F$（含球版），则 $u$ 把开集映成开集（把球平移到任意点即得开映射版）；\n\n' +
+        '\n2. 若 $u$ 是开映射，则 $u(B_E)$ 是含 $0$ 的开集，自然含球；\n\n' +
+        '\n3. 若 $u(E)$ 在某个开集里是第二纲的，则 $u(E)$ 不可能被可数个无处稠密集覆盖 —— 而 $E = \\bigcup_k \\overline{kB_E}$，于是某个 $\\overline{u(kB_E)}$ 必含内点（否则可数个无处稠密集覆盖了 $u(E)$ 的一个开集，与第二纲矛盾）。\n\n' +
+        '**证明的第一步就是纲**（这也是你看到的版本为何那样陈述）：\n\n' +
+        '$$E = \\bigcup_{k \\ge 1} \\overline{k\\,B_E} \\quad\\Longrightarrow\\quad u(E) = F = \\bigcup_{k} \\overline{u(kB_E)} ,$$\n\n' +
+        '右端是可数个闭集之并，由纲定理（`thm.baire`）其中某个 $\\overline{u(kB_E)}$ 必须含内点；\n\n' +
+        '再用「$k$ 倍」与「平移」把它搬回 $0$，得 $\\overline{u(B_E)} \\supseteq r B_F$。\n\n' +
+        '之后第二步才用 $E$ 的**完备性**去掉闭包（`imp.fa-openmap`）。'
       ].join('\n'),
       notes: [
         '证明分三段（**骨架**，细节见 Rudin 2.11）：',
@@ -317,7 +314,7 @@ window.MG = window.MG || {};
         '$$x_n \\to x \\ \\text{且} \\ u(x_n) \\to y \\quad \\Longrightarrow \\quad y = u(x) .$$'
       ].join('\n'),
       notes: [
-        '⭐ **$G(u)$ 不是新造的对象**：按集合论的约定映射就是它的图像（见「映射」），所以 $G(u)$ 与 $u$ 是同一个集合，只是看它的角度不同 —— 写作 $\\{(x, u(x))\\}$ 是为了把它放进 $E \\times F$。理由很简单：**闭是拓扑性质，而映射本身没有「闭」可言**（它只是一个集合），有意义的说法是「它作为 $E\\times F$ 的子集在这两个空间的乘积拓扑下闭」。换成 $u : E \\to F$ 的「图像」而不另立定义，正是为了不让人以为这是两个不同的东西。',
+        '⭐ **$G(u)$ 不是新造的对象**：按集合论的约定映射就是它的图像（见「映射」），所以 $G(u)$ 与 $u$ 是同一个集合，只是看它的角度不同 —— 写作 $\\{(x, u(x))\\}$ 是为了把它放进 $E \\times F$。\n\n理由很简单：**闭是拓扑性质，而映射本身没有「闭」可言**（它只是一个集合），有意义的说法是「它作为 $E\\times F$ 的子集在这两个空间的乘积拓扑下闭」。\n\n换成 $u : E \\to F$ 的「图像」而不另立定义，正是为了不让人以为这是两个不同的东西。',
         '证明：图像闭 $\\implies G(u)$ 是 Banach 空间（闭子集 + 乘积空间完备）。两个投影有界，$\\pi_1 : G(u) \\to E$ 是有界双射，由**逆算子定理** $\\pi_1^{-1}$ 有界，于是 $u = \\pi_2 \\circ \\pi_1^{-1}$ 有界。',
         '⚠️ 「图像闭」比「有界」好验证得多：只需上面那条判据，不用估计 $\\|u x\\|$。这就是它的实用价值。',
         '⚠️ **容易误读的地方**：「连续 $\\implies$ 图像闭」是初等的（连续函数的图像当然闭），所以容易以为两边差不多。其实反方向才是这条定理的内容，而且它**必须**要 Banach + 线性：在非完备空间上图像闭而不连续的线性映射是存在的。',
@@ -399,7 +396,7 @@ window.MG = window.MG || {};
         '设 $(K, \\delta)$ 紧度量、$(E, d)$ 度量、$\\mathcal{H} \\subseteq C(K, E)$ 等度连续。则 $\\mathcal{H}$ **一致等度连续**。'
       ].join('\n'),
       notes: [
-        '证法：给 $\\varepsilon > 0$。每点 $x$ 取 $\\eta_x > 0$ 使 $\\delta(y, x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（对一切 $f$）。紧性给有限覆盖 $K = \\bigcup_i B(x_i, \\eta_{x_i}/2)$，取 $\\eta := \\min_i \\eta_{x_i}/2$。若 $\\delta(x, y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$（故 $y \\in B(x_i, \\eta_{x_i})$），于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。',
+        '证法：给 $\\varepsilon > 0$。\n\n每点 $x$ 取 $\\eta_x > 0$ 使 $\\delta(y, x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（对一切 $f$）。\n\n紧性给有限覆盖 $K = \\bigcup_i B(x_i, \\eta_{x_i}/2)$，取 $\\eta := \\min_i \\eta_{x_i}/2$。\n\n若 $\\delta(x, y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$（故 $y \\in B(x_i, \\eta_{x_i})$），于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。',
         '⭐ 讲义末尾用的是 **Lebesgue 数** $\\lambda$（$\\delta(x,y) < \\lambda$ 就落在某个覆盖成员里）。两种写法等价；Lebesgue 数版本的好处是 $\\lambda$ 只依赖覆盖。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-10-19']
@@ -459,7 +456,7 @@ window.MG = window.MG || {};
         '设 $K$ 紧 Hausdorff，$A \\subseteq C(K, \\mathbb{R})$ 是**含单位**的**闭**子代数。则 $A$ 对 $\\min, \\max$ 封闭。'
       ].join('\n'),
       notes: [
-        '证法：$\\max(f, g) = \\frac12(f + g + |f - g|)$，所以只需证「$f \\ge 0$、$f \\in A$ $\\implies$ $\\sqrt f \\in A$」。不妨 $\\|f\\| < 1$：$\\sqrt{1 - u}$ 在 $[-1+\\varepsilon, 1-\\varepsilon]$ 上解析，其 Taylor 级数一致逼近，代 $u = 2 - \\varepsilon - f^2 \\in A$ 得多项式 $p(2-\\varepsilon-f^2) \\in A$，它一致逼近 $\\sqrt f$；$A$ 闭故 $\\sqrt f \\in A$。',
+        '证法：$\\max(f, g) = \\frac12(f + g + |f - g|)$，所以只需证「$f \\ge 0$、$f \\in A$ $\\implies$ $\\sqrt f \\in A$」。\n\n不妨 $\\|f\\| < 1$：$\\sqrt{1 - u}$ 在 $[-1+\\varepsilon, 1-\\varepsilon]$ 上解析，其 Taylor 级数一致逼近，代 $u = 2 - \\varepsilon - f^2 \\in A$ 得多项式 $p(2-\\varepsilon-f^2) \\in A$，它一致逼近 $\\sqrt f$；\n\n$A$ 闭故 $\\sqrt f \\in A$。',
         '⚠️ 「含单位」不能去掉：不给 $1$ 的话 $\\sqrt{}$ 这一步没有常数可写。',
         '⭐ 这是 Stone–Weierstrass 的**第一步**：先把「代数」升级成「格」，后面才能用 $\\min/\\max$ 上下夹住 $f$。'
       ].join('\n\n'),
@@ -480,13 +477,17 @@ window.MG = window.MG || {};
         '证明三步：',
         '① 取闭包：$\\overline A$ 仍含单位、分离点，并由「含单位的闭子代数是格」成为**格**。',
         '② **两点插值**：$x \\ne y$、目标值 $\\alpha, \\beta \\in \\mathbb{R}$。取 $g \\in A$ 使 $g(x) \\ne g(y)$，解二元一次方程组得 $f = a\\cdot 1 + b g \\in A$ 使 $f(x) = \\alpha$、$f(y) = \\beta$。',
-        '③ **上下夹**（两小步，全程都在 $\\overline{A}$ 里做 —— 它已经由①②验过是闭子代数）：\n' +
-        '\n' +
-        '- **逐点从下方压**：固定 $f \\in C(K)$ 与 $\\varepsilon > 0$。对每个 $x \\in K$，由①（单点上逼近）存在 $h_{x} \\in \\overline{A}$ 使 $h_{x}(x) > f(x) - \\varepsilon$；由 $h_x - f$ 连续，存在 $x$ 的开邻域 $U_{x}$，在其上 $h_{x} > f - \\varepsilon$。\n' +
-        '- **紧性取有限并**：$K$ 紧，于是 有限个 $U_{x_{1}}, \\ldots, U_{x_{m}}$ 覆盖 $K$。由②（$\\overline{A}$ 对 $\\max$ 封闭）得 $h := \\max_{i} h_{x_{i}} \\in \\overline{A}$，且 $h > f - \\varepsilon$ 处处成立。\n' +
-        '\n' +
-        '- **对称地压上方**：对 $-f$ 重复上面两步（等价地直接用 $\\min$），得 $h\' \\in \\overline{A}$ 使 $h\' < f + \\varepsilon$。\n' +
-        '- **合起来**：$h\' \\le h$ 在 $\\overline{A}$ 里夹住 $f$，取 $h\'\' := \\max(h\', \\min(h, f))$ 或直接用 $\\|h - f\\| \\le \\varepsilon$，得 $\\|f - h\\| < 2\\varepsilon$。$\\varepsilon$ 任意，于是 $f \\in \\overline{A}$，于是 $\\overline{A} = C(K)$。∎',
+        '③ **上下夹**（两小步，全程都在 $\\overline{A}$ 里做 —— 它已经由①②验过是闭子代数）：\n\n' +
+        '- **逐点从下方压**：固定 $f \\in C(K)$ 与 $\\varepsilon > 0$。\n\n' +
+        '对每个 $x \\in K$，由①（单点上逼近）存在 $h_{x} \\in \\overline{A}$ 使 $h_{x}(x) > f(x) - \\varepsilon$；\n\n' +
+        '由 $h_x - f$ 连续，存在 $x$ 的开邻域 $U_{x}$，在其上 $h_{x} > f - \\varepsilon$。\n\n' +
+        '\n- **紧性取有限并**：$K$ 紧，于是 有限个 $U_{x_{1}}, \\ldots, U_{x_{m}}$ 覆盖 $K$。\n\n' +
+        '由②（$\\overline{A}$ 对 $\\max$ 封闭）得 $h := \\max_{i} h_{x_{i}} \\in \\overline{A}$，且 $h > f - \\varepsilon$ 处处成立。\n\n' +
+        '\n\n' +
+        '- **对称地压上方**：对 $-f$ 重复上面两步（等价地直接用 $\\min$），得 $h\' \\in \\overline{A}$ 使 $h\' < f + \\varepsilon$。\n\n' +
+        '\n- **合起来**：$h\' \\le h$ 在 $\\overline{A}$ 里夹住 $f$，取 $h\'\' := \\max(h\', \\min(h, f))$ 或直接用 $\\|h - f\\| \\le \\varepsilon$，得 $\\|f - h\\| < 2\\varepsilon$。\n\n' +
+        '$\\varepsilon$ 任意，于是 $f \\in \\overline{A}$，于是 $\\overline{A} = C(K)$。\n\n' +
+        '∎',
         '⚠️ 三条假设缺一不可：$A = \\{f : f(0) = 0\\}$ 缺单位；$A = $ 常数函数缺分离点。',
         '⭐ 这是「用**代数**性质换**逼近**能力」的样板：不需要光滑、不需要可数、不需要任何具体核。经典 Weierstrass 定理（多项式逼近）就是 $K = [a,b]$、$A = $ 多项式的特例。'
       ].join('\n\n'),
@@ -557,8 +558,8 @@ window.MG = window.MG || {};
       title: 'Baire $\\implies$ 开子集是 Baire',
       proof: [
         '设 $O_n$ 在 $\\Omega$ 中稠密开，写 $O_n = \\Omega \\cap O_n\'$（$O_n\'$ 在 $X$ 中开）。',
-        '断言 $O_n\' \\cup \\Omega^c$ 在 $X$ 中稠密：任取非空开 $U$，若 $U \\cap \\Omega = \\emptyset$ 则 $U \\subseteq \\Omega^c$；否则 $U \\cap \\Omega$ 是 $\\Omega$ 中非空开，与 $O_n$ 稠密故交非空，于是 $U \\cap O_n\' \\ne \\emptyset$。',
-        '由 Baire，$\\bigcap_n (O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密。任取 $\\Omega$ 中非空开 $V$，它与该稠密集相交，交点必在 $\\Omega$ 里，故它属于每个 $O_n\' \\cap \\Omega = O_n$。于是 $\\bigcap_n O_n$ 与 $V$ 相交。$\\blacksquare$'
+        '断言 $O_n\' \\cup \\Omega^c$ 在 $X$ 中稠密：任取非空开 $U$，若 $U \\cap \\Omega = \\emptyset$ 则 $U \\subseteq \\Omega^c$；\n\n否则 $U \\cap \\Omega$ 是 $\\Omega$ 中非空开，与 $O_n$ 稠密故交非空，于是 $U \\cap O_n\' \\ne \\emptyset$。',
+        '由 Baire，$\\bigcap_n (O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密。\n\n任取 $\\Omega$ 中非空开 $V$，它与该稠密集相交，交点必在 $\\Omega$ 里，故它属于每个 $O_n\' \\cap \\Omega = O_n$。\n\n于是 $\\bigcap_n O_n$ 与 $V$ 相交。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '讲义里只写了「$O_n\' := O_n \\cup \\Omega^c$ 在 $X$ 稠密」，剩下就是这个补集论证。'
     },
@@ -571,7 +572,7 @@ window.MG = window.MG || {};
       proof: [
         '令 $F_k := \\{x \\in E : \\sup_i \\|u_i x\\| \\le k\\}$。每个 $\\{x : \\|u_i x\\| \\le k\\}$ 是闭集（$u_i$ 与范数连续），故 $F_k$ 闭。',
         '逐点有界 $\\implies E = \\bigcup_k F_k$。由「可数个闭集覆盖 Baire 空间 $\\implies$ 内点之并稠密」，某个 $F_k$ 有内点，即存在 $B(x_0, r) \\subseteq F_k$。',
-        '对 $\\|x\\| \\le r$：$\\sup_i\\|u_i x\\| \\le \\sup_i\\|u_i(x + x_0)\\| + \\sup_i\\|u_i x_0\\| \\le 2k$（两项分别落在 $F_k$ 的两点上）。对任意 $y \\ne 0$ 取 $x = r y/\\|y\\|$，得 $\\|u_i y\\| \\le 2k\\|y\\|/r$ 对一切 $i$，故 $\\sup_i \\|u_i\\| \\le 2k/r < \\infty$。$\\blacksquare$'
+        '对 $\\|x\\| \\le r$：$\\sup_i\\|u_i x\\| \\le \\sup_i\\|u_i(x + x_0)\\| + \\sup_i\\|u_i x_0\\| \\le 2k$（两项分别落在 $F_k$ 的两点上）。\n\n对任意 $y \\ne 0$ 取 $x = r y/\\|y\\|$，得 $\\|u_i y\\| \\le 2k\\|y\\|/r$ 对一切 $i$，故 $\\sup_i \\|u_i\\| \\le 2k/r < \\infty$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '整条证明只有一处非平凡：某个 $F_k$ 必须有内点 —— 那就是 Baire。'
     },
@@ -582,8 +583,8 @@ window.MG = window.MG || {};
       target: 'cor.ubp-resonance',
       title: 'UBP 的补集形态：共振集稠密',
       proof: [
-        '令 $M(x) := \\sup_n \\|u_n x\\|$，$\\Omega_k := \\{x : M(x) > k\\} = \\bigcup_n \\{x : \\|u_n x\\| > k\\}$，每个 $\\{\\cdots\\}$ 开，故 $\\Omega_k$ 开；$R = \\bigcap_k \\Omega_k$ 是 $G_\\delta$。',
-        '稠密性：若某 $\\Omega_k$ 不稠密，则存在球 $B(x_0, r) \\subseteq \\Omega_k^c$，即球上 $M \\le k$。与 UBP 同样的平移 + 伸缩给出 $\\sup_n \\|u_n\\| \\le 2k/r < \\infty$，与 $\\sup_n\\|u_n\\| = \\infty$ 矛盾。故每个 $\\Omega_k$ 稠密，交也稠密（Baire）。$\\blacksquare$'
+        '令 $M(x) := \\sup_n \\|u_n x\\|$，$\\Omega_k := \\{x : M(x) > k\\} = \\bigcup_n \\{x : \\|u_n x\\| > k\\}$，每个 $\\{\\cdots\\}$ 开，故 $\\Omega_k$ 开；\n\n$R = \\bigcap_k \\Omega_k$ 是 $G_\\delta$。',
+        '稠密性：若某 $\\Omega_k$ 不稠密，则存在球 $B(x_0, r) \\subseteq \\Omega_k^c$，即球上 $M \\le k$。\n\n与 UBP 同样的平移 + 伸缩给出 $\\sup_n \\|u_n\\| \\le 2k/r < \\infty$，与 $\\sup_n\\|u_n\\| = \\infty$ 矛盾。\n\n故每个 $\\Omega_k$ 稠密，交也稠密（Baire）。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '⭐ 这条把「一致有界原理」的否定形式写成「发散集是稠密 $G_\\delta$」—— 这才是它在 Fourier 级数、插值算子、数值求积公式里被引用的形态。'
     },
@@ -594,8 +595,13 @@ window.MG = window.MG || {};
       target: 'thm.open-mapping-banach',
       title: '闭覆盖有内点 + 完备 $\\implies$ 开映射定理',
       proof: [
-        '**① 取内点。** $E = \\bigcup_k \\overline{u(kB_E)}$（满射 + 每个 $x$ 缩放后落在某个 $kB_E$ 里）。由「闭覆盖有内点」与 Baire，某个 $\\overline{u(kB_E)}$ 含内点；由线性（$u(kB_E) = k\\,u(B_E)$）可把内点搬回 $0$，得 $r > 0$ 使 $\\overline{u(B_E)} \\supseteq rB_F$。',
-        '**② 去掉闭包。** 归一化后等价于：$u(B_E)$ 在 $B_F$ 里稠密。给定 $y \\in B_F$，递归构造：取 $x_n$ 使 $\\|y_n - u(x_n)\\| < \\varepsilon/2^n$、$\\|x_n\\| \\le \\varepsilon/2^{n-1}$，令 $y_{n+1} := y_n - u(x_n)$。$E$ 完备使 $x := \\sum x_n$ 收敛且 $\\|x\\| \\le 2\\varepsilon$；$u$ 连续给 $u(x) = \\sum u(x_n) = y$（望远镜求和）。',
+        '**① 取内点。** $E = \\bigcup_k \\overline{u(kB_E)}$（满射 + 每个 $x$ 缩放后落在某个 $kB_E$ 里）。\n\n' +
+        '由「闭覆盖有内点」与 Baire，某个 $\\overline{u(kB_E)}$ 含内点；\n\n' +
+        '由线性（$u(kB_E) = k\\,u(B_E)$）可把内点搬回 $0$，得 $r > 0$ 使 $\\overline{u(B_E)} \\supseteq rB_F$。',
+        '**② 去掉闭包。** 归一化后等价于：$u(B_E)$ 在 $B_F$ 里稠密。\n\n' +
+        '给定 $y \\in B_F$，递归构造：取 $x_n$ 使 $\\|y_n - u(x_n)\\| < \\varepsilon/2^n$、$\\|x_n\\| \\le \\varepsilon/2^{n-1}$，令 $y_{n+1} := y_n - u(x_n)$。\n\n' +
+        '$E$ 完备使 $x := \\sum x_n$ 收敛且 $\\|x\\| \\le 2\\varepsilon$；\n\n' +
+        '$u$ 连续给 $u(x) = \\sum u(x_n) = y$（望远镜求和）。',
         '**③ 结论。** 于是 $u$ 把单位球映满 $B_F$ 的一个固定倍数；平移即得任意点的邻域被映满一个球，故 $u$ 把开集映成开集。$\\blacksquare$'
       ].join('\n'),
       note: '⚠️ 第 ② 步是最容易被跳过去的地方（很多笔记只写「由 Baire 得稠密，剩下是标准论证」）。这里的骨架也没把常数的对齐逐字写出 —— 那是 Rudin 2.11 的做法。'
@@ -620,7 +626,7 @@ window.MG = window.MG || {};
       title: '逆算子定理 $\\implies$ 闭图像定理',
       proof: [
         '$G(u) \\subseteq E \\times F$ 是闭子空间，$E \\times F$ 按 $\\|(x,y)\\| = \\|x\\| + \\|y\\|$ 是 Banach，故 $G(u)$ 是 Banach 空间。',
-        '两个投影 $\\pi_1(x, u(x)) = x$、$\\pi_2(x, u(x)) = u(x)$ 都有界。$\\pi_1$ 是双射（满射显然；单射：$\\pi_1(x, u(x)) = 0 \\implies x = 0$），故由逆算子定理 $\\pi_1^{-1} : E \\to G(u)$ 有界。于是 $u = \\pi_2 \\circ \\pi_1^{-1}$ 有界，$\\|u\\| \\le \\|\\pi_2\\|\\,\\|\\pi_1^{-1}\\|$。$\\blacksquare$'
+        '两个投影 $\\pi_1(x, u(x)) = x$、$\\pi_2(x, u(x)) = u(x)$ 都有界。\n\n$\\pi_1$ 是双射（满射显然；单射：$\\pi_1(x, u(x)) = 0 \\implies x = 0$），故由逆算子定理 $\\pi_1^{-1} : E \\to G(u)$ 有界。\n\n于是 $u = \\pi_2 \\circ \\pi_1^{-1}$ 有界，$\\|u\\| \\le \\|\\pi_2\\|\\,\\|\\pi_1^{-1}\\|$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '思路极干净：把「$u$ 的图像」当成空间，把「$u$ 有界」化成「$G(u)$ 上的投影有界」。'
     },
@@ -633,7 +639,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $X$ 局部紧 Hausdorff，$O_n$ 稠密开。任给非空开 $U$，因 $O_1$ 稠密有 $U \\cap O_1 \\ne \\emptyset$；取 $x_1 \\in U \\cap O_1$ 与其**紧**邻域 $V_1 \\subseteq U \\cap O_1$（局部紧 Hausdorff 有紧邻域基）。',
         '归纳：已有 $V_n$，取 $x_{n+1} \\in \\operatorname{int}V_n \\cap O_{n+1}$ 与紧邻域 $V_{n+1} \\subseteq \\operatorname{int}V_n \\cap O_{n+1}$。',
-        '紧集族 $\\{V_n\\}$ 嵌套且每个非空，由**有限交性质** $\\bigcap_n V_n \\ne \\emptyset$；取 $x \\in \\bigcap V_n$，则 $x \\in U$ 且 $x \\in O_n$ 对一切 $n$。故 $\\bigcap O_n$ 与任意非空开 $U$ 相交。$\\blacksquare$'
+        '紧集族 $\\{V_n\\}$ 嵌套且每个非空，由**有限交性质** $\\bigcap_n V_n \\ne \\emptyset$；取 $x \\in \\bigcap V_n$，则 $x \\in U$ 且 $x \\in O_n$ 对一切 $n$。\n\n故 $\\bigcap O_n$ 与任意非空开 $U$ 相交。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '与完备度量的证明逐字对应，唯一的替换是「半径 $\\to 0$」$	o$「紧集的有限交性质」。这也说明 Baire 纲根本不依赖度量。'
     },
@@ -646,7 +652,7 @@ window.MG = window.MG || {};
       proof: [
         '对每个 $k$，令 $F_{n,k} := \\{x : \\|f_i(x) - f_j(x)\\| \\le 1/k,\\ \\forall i, j \\ge n\\}$，是闭集（连续函数集的交）。由「$f_n(x)$ 收敛 $\\implies$ Cauchy」得 $X = \\bigcup_n F_{n,k}$。',
         '由 Baire（闭覆盖有内点），$O_k := \\bigcup_n \\operatorname{int}F_{n,k}$ 是稠密开集；$O := \\bigcap_k O_k$ 是稠密 $G_\\delta$。',
-        '在 $x \\in O$：给 $\\varepsilon$，取 $k$ 使 $1/k < \\varepsilon/3$；$x \\in \\operatorname{int}F_{n,k}$ 对某个 $n$，取邻域 $U$ 在其内；再取 $m \\ge n$ 使 $\\|f_m(x) - f(x)\\| < \\varepsilon/3$、取小邻域 $V \\subseteq U$ 使 $f_m$ 在 $V$ 上变化 $< \\varepsilon/3$。则 $y \\in V$ 时',
+        '在 $x \\in O$：给 $\\varepsilon$，取 $k$ 使 $1/k < \\varepsilon/3$；$x \\in \\operatorname{int}F_{n,k}$ 对某个 $n$，取邻域 $U$ 在其内；\n\n再取 $m \\ge n$ 使 $\\|f_m(x) - f(x)\\| < \\varepsilon/3$、取小邻域 $V \\subseteq U$ 使 $f_m$ 在 $V$ 上变化 $< \\varepsilon/3$。\n\n则 $y \\in V$ 时',
         '',
         '$$\\|f(y) - f(x)\\| \\le \\|f(y) - f_m(y)\\| + \\|f_m(y) - f_m(x)\\| + \\|f_m(x) - f(x)\\| < \\varepsilon . \\blacksquare$$'
       ].join('\n'),
@@ -675,7 +681,7 @@ window.MG = window.MG || {};
       target: 'thm.riesz-ball-compact',
       title: '有限维 $\\implies$ 单位球紧',
       proof: [
-        '由范数等价，$\\alpha\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\|x\\|_\\infty$，故 $B_E \\subseteq \\{x : \\|x\\|_\\infty \\le 1/\\alpha\\}$，右端按坐标范数有界闭，由 Heine–Borel 紧；$B_E$ 是其闭子集（$\\|\\cdot\\|$ 连续），故紧。$\\blacksquare$'
+        '由范数等价，$\\alpha\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\|x\\|_\\infty$，故 $B_E \\subseteq \\{x : \\|x\\|_\\infty \\le 1/\\alpha\\}$，右端按坐标范数有界闭，由 Heine–Borel 紧；\n\n$B_E$ 是其闭子集（$\\|\\cdot\\|$ 连续），故紧。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '只要「有限维 $implies$ 范数等价」，剩下全是 Heine–Borel。'
     },
@@ -699,7 +705,7 @@ window.MG = window.MG || {};
       title: '有界 $\\iff$ 连续（线性）',
       proof: [
         '有界 $\\implies$ Lipschitz：$\\|u(x) - u(y)\\| \\le C\\|x - y\\|$。',
-        '在 $0$ 连续 $\\implies$ 有界：反证。若不存在 $C$，则对每个 $n$ 有 $x_n \\ne 0$ 使 $\\|u(x_n)\\| > n\\|x_n\\|$；令 $y_n = x_n/(n\\|x_n\\|)$，则 $\\|y_n\\| = 1/n \\to 0$ 而 $\\|u(y_n)\\| > 1$，与 $u$ 在 $0$ 连续矛盾。',
+        '在 $0$ 连续 $\\implies$ 有界：反证。\n\n若不存在 $C$，则对每个 $n$ 有 $x_n \\ne 0$ 使 $\\|u(x_n)\\| > n\\|x_n\\|$；令 $y_n = x_n/(n\\|x_n\\|)$，则 $\\|y_n\\| = 1/n \\to 0$ 而 $\\|u(y_n)\\| > 1$，与 $u$ 在 $0$ 连续矛盾。',
         '一点连续 $\\implies$ 在 $0$ 连续：$x \\to 0$ 时 $x + x_0 \\to x_0$，故 $u(x) = u(x + x_0) - u(x_0) \\to 0$。$\\blacksquare$'
       ].join('\n'),
       note: '「一点连续 $implies$ 处处连续」只因为线性（平移是连续双射）。'
@@ -712,7 +718,7 @@ window.MG = window.MG || {};
       title: '次可乘 + 完备 $\\implies$ Neumann 级数',
       proof: [
         '由次可乘性归纳得 $\\|u^k\\| \\le \\|u\\|^k$，故 $\\sum_{k \\ge 0}\\|u^k\\| \\le (1 - \\|u\\|)^{-1} < \\infty$；由 $B(E)$ 完备，级数收敛，记为 $v$。',
-        '部分和 $s_n = \\sum_{k<n} u^k$ 满足 $(I - u)s_n = s_n(I - u) = I - u^n$，而 $\\|u^n\\| \\to 0$，用乘法连续性取极限得 $(I-u)v = v(I-u) = I$。故 $v = (I-u)^{-1}$ 且 $\\|v\\| \\le (1-\\|u\\|)^{-1}$。$\\blacksquare$'
+        '部分和 $s_n = \\sum_{k<n} u^k$ 满足 $(I - u)s_n = s_n(I - u) = I - u^n$，而 $\\|u^n\\| \\to 0$，用乘法连续性取极限得 $(I-u)v = v(I-u) = I$。\n\n故 $v = (I-u)^{-1}$ 且 $\\|v\\| \\le (1-\\|u\\|)^{-1}$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '两个前提都不能少：次可乘给「几何级数收敛」，完备给「收敛就等于有一个算子」。'
     },
@@ -723,8 +729,10 @@ window.MG = window.MG || {};
       target: 'thm.bounded-extension',
       title: '完备性 $\\implies$ 稠密延拓存在',
       proof: [
-        '给 $x \\in E$，取 $g_n \\in G$ 使 $g_n \\to x$。则 $\\|u(g_n) - u(g_m)\\| \\le \\|u\\|\\,\\|g_n - g_m\\| \\to 0$，故 $(u(g_n))$ 在 $F$ 中 Cauchy；$F$ 完备，定义 $\\tilde u(x) := \\lim_n u(g_n)$。',
-        '与取法无关：换一列 $g_n\'$ 时 $\\|u(g_n) - u(g_n\')\\| \\to 0$。线性与界：$\\|\\tilde u(x)\\| \\le \\|u\\|\\,\\|x\\|$，且在 $G$ 上与 $u$ 相同故 $\\|\\tilde u\\| \\ge \\|u\\|$。唯一性：$G$ 稠密、两者都连续。$\\blacksquare$'
+        '给 $x \\in E$，取 $g_n \\in G$ 使 $g_n \\to x$。\n\n' +
+        '则 $\\|u(g_n) - u(g_m)\\| \\le \\|u\\|\\,\\|g_n - g_m\\| \\to 0$，故 $(u(g_n))$ 在 $F$ 中 Cauchy；\n\n' +
+        '$F$ 完备，定义 $\\tilde u(x) := \\lim_n u(g_n)$。',
+        '与取法无关：换一列 $g_n\'$ 时 $\\|u(g_n) - u(g_n\')\\| \\to 0$。\n\n线性与界：$\\|\\tilde u(x)\\| \\le \\|u\\|\\,\\|x\\|$，且在 $G$ 上与 $u$ 相同故 $\\|\\tilde u\\| \\ge \\|u\\|$。\n\n唯一性：$G$ 稠密、两者都连续。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '这条常被当成「显然」跳过，但它依赖 $F$ 完备。'
     },
@@ -736,7 +744,7 @@ window.MG = window.MG || {};
       title: '极化恒等式 $\\implies$ 平行四边形法则刻画内积',
       proof: [
         '必要性：展开 $\\|x \\pm y\\|^2 = \\|x\\|^2 \\pm 2\\operatorname{Re}\\langle x,y\\rangle + \\|y\\|^2$，两式相加即得。',
-        '充分性（实情形）：令 $\\langle x,y\\rangle := \\frac14(\\|x+y\\|^2 - \\|x-y\\|^2)$。对称性显然；线性性把 $\\langle x + x\', y\\rangle - \\langle x,y\\rangle - \\langle x\',y\\rangle$ 展开成两两差平方，用平行四边形法则整理得 $0$；齐次性先对整数、再对有理数，最后用范数的**连续性**推到实数。复情形另验 $\\langle x, iy\\rangle = i\\langle x,y\\rangle$。$\\blacksquare$'
+        '充分性（实情形）：令 $\\langle x,y\\rangle := \\frac14(\\|x+y\\|^2 - \\|x-y\\|^2)$。\n\n对称性显然；线性性把 $\\langle x + x\', y\\rangle - \\langle x,y\\rangle - \\langle x\',y\\rangle$ 展开成两两差平方，用平行四边形法则整理得 $0$；\n\n齐次性先对整数、再对有理数，最后用范数的**连续性**推到实数。\n\n复情形另验 $\\langle x, iy\\rangle = i\\langle x,y\\rangle$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '充分性里唯一的「分析」输入是范数的连续性；其余全是代数。'
     },
@@ -749,7 +757,7 @@ window.MG = window.MG || {};
       proof: [
         '闭子空间是凸闭集，故 $P_E$ 存在唯一，变分不等式给 $\\operatorname{Re}\\langle x - P_E x, z - P_E x\\rangle \\le 0$（$z \\in E$）。',
         '把 $z$ 换成 $P_E x \\pm z$（$z \\in E$）得 $\\operatorname{Re}\\langle x - P_E x, z\\rangle = 0$；再换成 $iz$ 得虚部也为零。故 $x - P_E x \\perp E$。',
-        '线性：$\\alpha x_1 + \\beta x_2 - \\alpha P x_1 - \\beta P x_2 \\perp E$，而 $\\alpha P x_1 + \\beta P x_2 \\in E$，由唯一性即得。界：$\\|x\\|^2 = \\|x - P_E x\\|^2 + \\|P_E x\\|^2$。分解：$x \\in E + E^\\perp$，且两者交为零。$\\blacksquare$'
+        '线性：$\\alpha x_1 + \\beta x_2 - \\alpha P x_1 - \\beta P x_2 \\perp E$，而 $\\alpha P x_1 + \\beta P x_2 \\in E$，由唯一性即得。\n\n界：$\\|x\\|^2 = \\|x - P_E x\\|^2 + \\|P_E x\\|^2$。\n\n分解：$x \\in E + E^\\perp$，且两者交为零。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '这一步把「变分不等式」翻译成「正交」，也是 Riesz 表示的唯一工具。'
     },
@@ -761,8 +769,8 @@ window.MG = window.MG || {};
       title: '正交分解 $\\implies$ Riesz 表示',
       proof: [
         '$\\varphi = 0$ 取 $y = 0$。否则 $E := \\ker\\varphi$ 是闭真子空间，由正交分解取 $0 \\ne z \\in E^\\perp$。',
-        '令 $y := \\overline{\\varphi(z)}\\,z/\\|z\\|^2$。对 $x = e + \\lambda z$（$e \\in E$）：$\\langle x, y\\rangle = \\lambda\\langle z, y\\rangle = \\lambda\\varphi(z) = \\varphi(\\lambda z) = \\varphi(x)$。',
-        '范数：$|\\varphi(x)| = |\\langle x,y\\rangle| \\le \\|x\\|\\,\\|y\\|$ 给 $\\|\\varphi\\| \\le \\|y\\|$；取 $x = y/\\|y\\|$ 得 $\\varphi(x) = \\|y\\|$，故相等。唯一性：差 $\\perp H$ 故为零。$\\blacksquare$'
+        '令 $y := \\overline{\\varphi(z)}\\,z/\\|z\\|^2$。\n\n对 $x = e + \\lambda z$（$e \\in E$）：$\\langle x, y\\rangle = \\lambda\\langle z, y\\rangle = \\lambda\\varphi(z) = \\varphi(\\lambda z) = \\varphi(x)$。',
+        '范数：$|\\varphi(x)| = |\\langle x,y\\rangle| \\le \\|x\\|\\,\\|y\\|$ 给 $\\|\\varphi\\| \\le \\|y\\|$；\n\n取 $x = y/\\|y\\|$ 得 $\\varphi(x) = \\|y\\|$，故相等。\n\n唯一性：差 $\\perp H$ 故为零。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '只用了三件事：$\\ker\\varphi$ 闭、正交分解、共轭线性的约定。'
     },
@@ -774,7 +782,11 @@ window.MG = window.MG || {};
       title: 'Riesz 表示 $\\implies$ 伴随算子存在',
       proof: [
         '固定 $x \\in K$，令 $\\psi_x(y) := \\langle x, u(y)\\rangle_K$；它线性、连续且 $|\\psi_x(y)| \\le \\|x\\|\\,\\|u\\|\\,\\|y\\|$，故 $\\psi_x \\in H^*$。',
-        '由 Riesz 表示，存在唯一 $u^*(x) \\in H$ 使 $\\psi_x = \\langle \\cdot, u^*(x)\\rangle$。线性由 $\\psi_x$ 对 $x$ 线性 + 表示唯一性得到；有界靠 $\\|u^*(x)\\| = \\|\\psi_x\\| \\le \\|u\\|\\,\\|x\\|$；$\\|u^*\\| = \\|u\\|$ 用两次 sup 交换。$\\blacksquare$'
+        '由 Riesz 表示，存在唯一 $u^*(x) \\in H$ 使 $\\psi_x = \\langle \\cdot, u^*(x)\\rangle$。\n\n' +
+        '线性由 $\\psi_x$ 对 $x$ 线性 + 表示唯一性得到；\n\n' +
+        '有界靠 $\\|u^*(x)\\| = \\|\\psi_x\\| \\le \\|u\\|\\,\\|x\\|$；\n\n' +
+        '$\\|u^*\\| = \\|u\\|$ 用两次 sup 交换。\n\n' +
+        '$\\blacksquare$'
       ].join('\n'),
       note: '存在性完全没用到 $u$ 的结构，只用了 $H$ 自对偶。'
     },
@@ -785,8 +797,8 @@ window.MG = window.MG || {};
       target: 'thm.orthonormal-basis-exists',
       title: '正交分解 $\\implies$ 正交基存在（Zorn）',
       proof: [
-        '令 $\\mathcal{S} := \\{A \\subseteq H : A$ 标准正交$\\}$，按包含成偏序。若 $\\mathcal{T}$ 全序，令 $A := \\bigcup_{B \\in \\mathcal{T}} B$：任取 $x, y \\in A$，它们分别落在某个 $B_1 \\subseteq B_2$ 里，故正交且单位长；所以 $A \\in \\mathcal{S}$ 且是上界。',
-        'Zorn 给极大元 $M$。若 $\\overline{\\operatorname{span} M} \\ne H$，由正交分解取 $0 \\ne z \\perp \\overline{\\operatorname{span} M}$，则 $M \\cup \\{z/\\|z\\|\\}$ 仍标准正交且严格更大，矛盾。$\\blacksquare$'
+        '令 $\\mathcal{S} := \\{A \\subseteq H : A$ 标准正交$\\}$，按包含成偏序。\n\n若 $\\mathcal{T}$ 全序，令 $A := \\bigcup_{B \\in \\mathcal{T}} B$：任取 $x, y \\in A$，它们分别落在某个 $B_1 \\subseteq B_2$ 里，故正交且单位长；\n\n所以 $A \\in \\mathcal{S}$ 且是上界。',
+        'Zorn 给极大元 $M$。\n\n若 $\\overline{\\operatorname{span} M} \\ne H$，由正交分解取 $0 \\ne z \\perp \\overline{\\operatorname{span} M}$，则 $M \\cup \\{z/\\|z\\|\\}$ 仍标准正交且严格更大，矛盾。\n\n$\\blacksquare$'
       ].join('\n'),
       note: 'Zorn 在这里只干一件事：把「不断加向量」这个超限过程一次走完。'
     },
@@ -813,7 +825,7 @@ window.MG = window.MG || {};
       title: '一致度量的完备性来自 $E$ 的完备性',
       proof: [
         '设 $(f_n)$ 是 $(C(K,E), \\Delta)$ 中的 Cauchy 列。给 $x$：$d(f_n(x), f_m(x)) \\le \\Delta(f_n, f_m) \\to 0$，故 $(f_n(x))$ 在 $E$ 中 Cauchy，$E$ 完备给出极限 $f(x)$。',
-        '$f_n \\to f$ 在 $\\Delta$ 下：给 $\\varepsilon$，取 $N$ 使 $n, m \\ge N \\implies \\Delta(f_n, f_m) < \\varepsilon/2$；固定 $x$ 令 $m \\to \\infty$ 得 $d(f_n(x), f(x)) \\le \\varepsilon/2$，再对 $x$ 取上确界。',
+        '$f_n \\to f$ 在 $\\Delta$ 下：给 $\\varepsilon$，取 $N$ 使 $n, m \\ge N \\implies \\Delta(f_n, f_m) < \\varepsilon/2$；\n\n固定 $x$ 令 $m \\to \\infty$ 得 $d(f_n(x), f(x)) \\le \\varepsilon/2$，再对 $x$ 取上确界。',
         '$f$ 连续：$d(f(x), f(y)) \\le \\Delta(f, f_n) + d(f_n(x), f_n(y)) + \\Delta(f_n, f)$。$\\blacksquare$'
       ].join('\n'),
       note: '这三步（逐点取极限 $	o$ 一致收敛 $	o$ 保连续）是「一致收敛」语言的万能模板。'
@@ -827,7 +839,7 @@ window.MG = window.MG || {};
       proof: [
         '给 $\\varepsilon$。对每个 $x$ 由等度连续取 $\\eta_x > 0$ 使 $\\delta(y,x) < \\eta_x \\implies d(f(y), f(x)) < \\varepsilon/2$（一切 $f$）。',
         '$\\{B(x, \\eta_x/2)\\}$ 覆盖紧集，取有限子覆盖 $B(x_1, \\eta_{x_1}/2), .., B(x_N, \\eta_{x_N}/2)$，令 $\\eta := \\min_i \\eta_{x_i}/2 > 0$。',
-        '若 $\\delta(x,y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$，则 $\\delta(y, x_i) < \\eta_{x_i}$，于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。$\\blacksquare$'
+        '若 $\\delta(x,y) < \\eta$，取 $i$ 使 $x \\in B(x_i, \\eta_{x_i}/2)$，则 $\\delta(y, x_i) < \\eta_{x_i}$，于是 $d(f(x), f(y)) \\le d(f(x), f(x_i)) + d(f(x_i), f(y)) < \\varepsilon$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '「有限」用两次：一次有界、一次取 min 后仍 $>0$ —— 无限个正数的下确界可以是 0，这正是紧性的用处。'
     },
@@ -856,8 +868,13 @@ window.MG = window.MG || {};
       title: '闭子代数是格 $\\implies$ Stone–Weierstrass',
       proof: [
         '记 $\\bar A$ 为 $A$ 在 $C(K,\\mathbb{R})$ 中的闭包：仍含单位、分离点，且由引理是**格**。',
-        '**两点插值**：$x \\ne y$、$\\alpha, \\beta \\in \\mathbb{R}$。取 $g \\in A$，$g(x) \\ne g(y)$；解 $a + b\\,g(x) = \\alpha$、$a + b\\,g(y) = \\beta$（行列式 $g(x)-g(y) \\ne 0$），得 $f = a\\cdot 1 + b g \\in A$ 在两点取指定值。',
-        '**上下夹**：固定 $f \\in C(K)$、$\\varepsilon > 0$。对每个 $x$ 用插值取 $h_x \\in \\bar A$ 在 $x$ 附近 $> f - \\varepsilon$；紧性取有限覆盖并用 $\\max$ 得 $h > f - \\varepsilon$；再对有限多个点用 $\\min$ 压到 $h < f + \\varepsilon$。故 $\\|f - h\\| < 2\\varepsilon$。$\\blacksquare$'
+        '**两点插值**：$x \\ne y$、$\\alpha, \\beta \\in \\mathbb{R}$。\n\n取 $g \\in A$，$g(x) \\ne g(y)$；解 $a + b\\,g(x) = \\alpha$、$a + b\\,g(y) = \\beta$（行列式 $g(x)-g(y) \\ne 0$），得 $f = a\\cdot 1 + b g \\in A$ 在两点取指定值。',
+        '**上下夹**：固定 $f \\in C(K)$、$\\varepsilon > 0$。\n\n' +
+        '对每个 $x$ 用插值取 $h_x \\in \\bar A$ 在 $x$ 附近 $> f - \\varepsilon$；\n\n' +
+        '紧性取有限覆盖并用 $\\max$ 得 $h > f - \\varepsilon$；\n\n' +
+        '再对有限多个点用 $\\min$ 压到 $h < f + \\varepsilon$。\n\n' +
+        '故 $\\|f - h\\| < 2\\varepsilon$。\n\n' +
+        '$\\blacksquare$'
       ].join('\n'),
       note: '⚠️ 讲义里这一段用了两次有限子覆盖（$U^c_{x,y}$ 与 $V_x^\\varepsilon$），这里按同样逻辑压缩成「先压上、再压下」。'
     },
@@ -868,7 +885,7 @@ window.MG = window.MG || {};
       target: 'thm.stone-weierstrass-complex',
       title: '实情形 $\\implies$ 复情形（多一条共轭封闭）',
       proof: [
-        '令 $A_{\\mathbb{R}} := \\{\\operatorname{Re}\\,f : f \\in A\\}$。对共轭封闭 $\\implies$ $\\operatorname{Re}\\,f = (f + \\bar f)/2 \\in A$、$\\operatorname{Im}\\,f \\in A$；而 $f = \\operatorname{Re}\\,f + i\\,\\operatorname{Im}\\,f$。',
+        '令 $A_{\\mathbb{R}} := \\{\\operatorname{Re}\\,f : f \\in A\\}$。\n\n对共轭封闭 $\\implies$ $\\operatorname{Re}\\,f = (f + \\bar f)/2 \\in A$、$\\operatorname{Im}\\,f \\in A$；\n\n而 $f = \\operatorname{Re}\\,f + i\\,\\operatorname{Im}\\,f$。',
         '$A_{\\mathbb{R}}$ 是含单位的实子代数（$\\operatorname{Re}(fg)$ 是实部的多项式组合）且分离点。由实情形 $\\overline{A_{\\mathbb{R}}} = C(K,\\mathbb{R})$。',
         '于是任意 $f \\in C(K,\\mathbb{C})$ 的实部、虚部都能被 $A$ 中元素逼近，故 $f \\in \\overline A$。$\\blacksquare$'
       ].join('\n'),

@@ -11,6 +11,10 @@
 
 $$\mathcal{B}_{n} := \bigl\{\, B(s, 2^{-n}) : s \in S_{n} \,\bigr\}$$
 
-覆盖 $X$（否则可再加一点，与极大性矛盾）。同一个 $\mathcal{B}_{n}$ 里的球**两两不交**（中心相距 $\ge 2^{-n}$ $\implies$ 半径 $2^{-n}$ 的球不交），所以 $\mathcal{B}_{n}$ 是**离散**族；$\bigcup_{n}\mathcal{B}_{n}$ 是 $\sigma$-离散族。
+覆盖 $X$（否则可再加一点，与极大性矛盾）。
+
+同一个 $\mathcal{B}_{n}$ 里的球**两两不交**（中心相距 $\ge 2^{-n}$ $\implies$ 半径 $2^{-n}$ 的球不交），所以 $\mathcal{B}_{n}$ 是**离散**族；
+
+$\bigcup_{n}\mathcal{B}_{n}$ 是 $\sigma$-离散族。
 
 > 续见 proofs/imp.metric-paracompact.2.md

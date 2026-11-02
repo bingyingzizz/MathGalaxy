@@ -7,6 +7,10 @@
 
 **双函子**：给定 $f : M \to M_{1}$、$g : N \to N_{1}$，$(m, n) \mapsto f(m) \otimes g(n)$ 平衡双加性，唯一给出 $f \otimes g$；加法性由 $\otimes$ 的双加性直接得到 ✓。
 
-**与直和交换**：投影 $\bigoplus_{i} M_{i} \to M_{i_{0}}$ 给出 $\varphi : (\bigoplus_{i} M_{i}) \otimes N \to \bigoplus_{i}(M_{i} \otimes N)$；含入 $M_{i} \otimes N \to (\bigoplus_{i} M_{i}) \otimes N$ 给出反向的 $\psi$。两者在纯张量上互逆，故互为逆同构 ✓。
+**与直和交换**：投影 $\bigoplus_{i} M_{i} \to M_{i_{0}}$ 给出 $\varphi : (\bigoplus_{i} M_{i}) \otimes N \to \bigoplus_{i}(M_{i} \otimes N)$；
+
+含入 $M_{i} \otimes N \to (\bigoplus_{i} M_{i}) \otimes N$ 给出反向的 $\psi$。
+
+两者在纯张量上互逆，故互为逆同构 ✓。
 
 > 续见 proofs/imp.tensor-functor-properties.2.md

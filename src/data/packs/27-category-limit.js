@@ -34,10 +34,12 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**交换性是索引范畴的性质，不是函子给的。** 「$I$ 是预序」当且仅当「任何 $I$-形状的图都交换」：此时 $I$ 里同起终点的两条路径复合出来都是 $\\operatorname{Hom}(i, j)$ 里那**唯一**的态射，必然相等。',
-        '**一般情形只有「形状」。** $I$ 不是预序时 $D$ 只能叫 $I$-形状的图：函子**不要求**平行的 $f \\ne g : i \\rightrightarrows j$ 被送到相等的箭头。最典型的不交换图是**平行对** $\\bullet \\rightrightarrows \\bullet$，它的极限与余极限正是**等化子**与**余等化子**；经典交换方块则对应预序 $\\{A \\le B \\le D,\\ A \\le C \\le D\\}$。',
+        '**一般情形只有「形状」。** $I$ 不是预序时 $D$ 只能叫 $I$-形状的图：函子**不要求**平行的 $f \\ne g : i \\rightrightarrows j$ 被送到相等的箭头。\n\n' +
+        '最典型的不交换图是**平行对** $\\bullet \\rightrightarrows \\bullet$，它的极限与余极限正是**等化子**与**余等化子**；\n\n' +
+        '经典交换方块则对应预序 $\\{A \\le B \\le D,\\ A \\le C \\le D\\}$。',
         '**纸面上的读法。** 画在纸上的图只是**呈现**：给一个有向图 $G$ 的顶点送对象、箭头送态射。说它**交换**，意思是任意两条同起终点的路径在标注下的复合**相等** —— 这是一条**要检查的条件**，等价于标注下降到 $G$ 自由生成的范畴的商上仍是函子。',
         '$I$ 叫**索引范畴**：它只规定图的形状，不规定内容。',
-        '沿一个函子 $\\lambda : I \\to J$ 预复合，得到**重索引** $\\lambda^{*} : \\mathcal{C}^{J} \\to \\mathcal{C}^{I}$：把 $J$ 形状的图截成 $I$ 形状的图。特别地，到终范畴的唯一函子 $I \\to \\mathbf{1}$ 诱导**常图函子** $\\Delta : \\mathcal{C} \\longrightarrow \\mathcal{C}^{I}$，它把对象 $X$ 送到「每个位置都是 $X$、每条箭头都是 $1_X$」的常图。'
+        '沿一个函子 $\\lambda : I \\to J$ 预复合，得到**重索引** $\\lambda^{*} : \\mathcal{C}^{J} \\to \\mathcal{C}^{I}$：把 $J$ 形状的图截成 $I$ 形状的图。\n\n特别地，到终范畴的唯一函子 $I \\to \\mathbf{1}$ 诱导**常图函子** $\\Delta : \\mathcal{C} \\longrightarrow \\mathcal{C}^{I}$，它把对象 $X$ 送到「每个位置都是 $X$、每条箭头都是 $1_X$」的常图。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
@@ -68,7 +70,7 @@ window.MG = window.MG || {};
         '只保留面映射的图（$\\Delta_{\\mathrm{inj}}^{\\mathrm{op}} \\to \\mathcal{C}$）叫**半单纯对象**。'
       ].join('\n'),
       notes: [
-        '把 $[n]$ 画成一个顶点数 $n+1$ 的标准单纯形，面映射就是「贴一个面」，退化映射就是「把一个顶点压扁」。于是 $\\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\\Delta^{\\mathrm{op}} \\to \\mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。',
+        '把 $[n]$ 画成一个顶点数 $n+1$ 的标准单纯形，面映射就是「贴一个面」，退化映射就是「把一个顶点压扁」。\n\n于是 $\\Delta$ 是「所有标准单纯形及其贴合方式」的骨架，$\\Delta^{\\mathrm{op}} \\to \\mathcal{C}$ 的一个图就是把一串层层相套的单纯形安进 $\\mathcal{C}$ 里 —— 这是把空间编码成代数数据的最省事的办法。',
         '取 $\\mathcal{C} = \\mathbf{Set}$，$X([n])$ 就是「$n$ 维单纯形的集合」，$X(\\delta^i)$ 给出「第 $i$ 个面」，$X(\\sigma^i)$ 给出「退化」。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
@@ -119,7 +121,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{\\mathcal{C}^{I}}(\\Delta Y, D) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}}(Y, \\lim D)$$',
         '',
-        '对偶地，$D$ 的**余极限** $\\operatorname{colim} D$ 满足 $\\operatorname{Hom}_{\\mathcal{C}^{I}}(D, \\Delta Y) \\cong \\operatorname{Hom}_{\\mathcal{C}}(\\operatorname{colim} D, Y)$。$I$ 有限时叫**有限极限**。'
+        '对偶地，$D$ 的**余极限** $\\operatorname{colim} D$ 满足 $\\operatorname{Hom}_{\\mathcal{C}^{I}}(D, \\Delta Y) \\cong \\operatorname{Hom}_{\\mathcal{C}}(\\operatorname{colim} D, Y)$。\n\n$I$ 有限时叫**有限极限**。'
       ].join('\n'),
       notes: [
         '泛性质的含义只有一句：**任何别的锥都唯一地穿过它**。所以极限一旦存在，就在同构意义下唯一 —— 不必挑一个具体构造，用哪个都行。',
@@ -219,7 +221,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '直观：等化子是 $X$ 里「被 $f$ 与 $g$ 送到同一处」的那一部分；余等化子是 $Y$ 里「把 $f(x)$ 与 $g(x)$ 粘起来」的商。',
-        '例：$\\mathbf{Set}$ 里 $\\ker(f,g) = \\{x \\in X : f(x) = g(x)\\}$，$\\operatorname{coker}(f,g) = Y/\\!\\sim$（$\\sim$ 由 $f(x) \\sim g(x)$ 生成）。$\\mathbf{Top}$ 里加子空间 / 商拓扑。$\\mathbf{Ab}$ 里 $\\ker(f,g) = \\ker(f - g)$ —— 两个映射的等化子退化成**一个**映射的核，这正是「核」这个名字的来源。'
+        '例：$\\mathbf{Set}$ 里 $\\ker(f,g) = \\{x \\in X : f(x) = g(x)\\}$，$\\operatorname{coker}(f,g) = Y/\\!\\sim$（$\\sim$ 由 $f(x) \\sim g(x)$ 生成）。\n\n$\\mathbf{Top}$ 里加子空间 / 商拓扑。\n\n$\\mathbf{Ab}$ 里 $\\ker(f,g) = \\ker(f - g)$ —— 两个映射的等化子退化成**一个**映射的核，这正是「核」这个名字的来源。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.3']
     },
@@ -251,7 +253,7 @@ window.MG = window.MG || {};
         '**逆是唯一的**：若 $g, g\'$ 都是 $f$ 的逆，则 $g = g \\circ 1_{Y} = g \\circ (f \\circ g\') = (g \\circ f) \\circ g\' = 1_{X} \\circ g\' = g\'$ ✓。',
         '**同构与单态射的关系**：$f$ 是同构 $\\iff$ $f$ 是单态射且有**截面**。',
         '$(\\implies)$ 由 $f \\circ g = 1_{Y}$、$g \\circ f = 1_{X}$ 直接看出（后者说明 $f$ 是分裂单态射，从而是单态射）。',
-        '$(\\Longleftarrow)$ 设 $f \\circ g = 1_{Y}$。则 $f \\circ (g \\circ f) = (f \\circ g) \\circ f = 1_{Y} \\circ f = f = f \\circ 1_{X}$，由 $f$ 单态射得 $g \\circ f = 1_{X}$，故 $f$ 是同构 ✓。',
+        '$(\\Longleftarrow)$ 设 $f \\circ g = 1_{Y}$。\n\n则 $f \\circ (g \\circ f) = (f \\circ g) \\circ f = 1_{Y} \\circ f = f = f \\circ 1_{X}$，由 $f$ 单态射得 $g \\circ f = 1_{X}$，故 $f$ 是同构 ✓。',
         '把箭头全部反向，得到对偶说法：$f$ 是同构 $\\iff$ $f$ 是满态射且有**收缩**。',
         '⚠️ 「单态射 $+$ 满态射」**不够**：环范畴里 $\\mathbb{Z} \\to \\mathbb{Q}$ 既单又满，却不是同构 —— 还差一个截面（或收缩）。'
       ].join('\n\n'),
@@ -301,7 +303,7 @@ window.MG = window.MG || {};
         '这样得到的 $\\lim : \\mathcal{C}^{I} \\to \\mathcal{C}$ 是一个函子。'
       ].join('\n'),
       notes: [
-        ['**证明。**','- **锥**：$\\pi^{F}_{i} : \\lim F \\to F(i)$ 是 $F$ 的泛锥。对每个 $i$，$\\alpha_{i}\\circ\\pi^{F}_{i} : \\lim F \\to G(i)$；由 $\\alpha$ 的自然性','$$G(u)\\circ\\alpha_{i}\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ F(u)\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ\\pi^{F}_{j},$$','故这是一族相容的映射，即 $\\lim F$ 到 $G$ 的锥 ✓。','- **唯一态射**：由 $\\lim G$ 的泛性得到唯一的 $\\lim\\alpha$，并满足 $\\pi^{G}_{i}\\circ\\lim\\alpha = \\alpha_{i}\\circ\\pi^{F}_{i}$ ✓。','- **函子性**：$\\lim(\\mathrm{id}_{F})$ 与 $\\mathrm{id}_{\\lim F}$ 都是使 $\\pi^{F}_{i}\\circ(-) = \\pi^{F}_{i}$ 的态射，由唯一性相等 ✓；同理 $\\lim(\\beta\\alpha)$ 与 $(\\lim\\beta)(\\lim\\alpha)$ 都与同一个锥相容，故相等 ✓。','于是 $\\lim : \\mathcal{C}^{I}\\to\\mathcal{C}$ 是函子 ✓。∎'].join('\n'),
+        ['**证明。**','- **锥**：$\\pi^{F}_{i} : \\lim F \\to F(i)$ 是 $F$ 的泛锥。对每个 $i$，$\\alpha_{i}\\circ\\pi^{F}_{i} : \\lim F \\to G(i)$；由 $\\alpha$ 的自然性','$$G(u)\\circ\\alpha_{i}\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ F(u)\\circ\\pi^{F}_{i} = \\alpha_{j}\\circ\\pi^{F}_{j},$$','故这是一族相容的映射，即 $\\lim F$ 到 $G$ 的锥 ✓。','- **唯一态射**：由 $\\lim G$ 的泛性得到唯一的 $\\lim\\alpha$，并满足 $\\pi^{G}_{i}\\circ\\lim\\alpha = \\alpha_{i}\\circ\\pi^{F}_{i}$ ✓。','- **函子性**：$\\lim(\\mathrm{id}_{F})$ 与 $\\mathrm{id}_{\\lim F}$ 都是使 $\\pi^{F}_{i}\\circ(-) = \\pi^{F}_{i}$ 的态射，由唯一性相等 ✓；\n\n同理 $\\lim(\\beta\\alpha)$ 与 $(\\lim\\beta)(\\lim\\alpha)$ 都与同一个锥相容，故相等 ✓。','于是 $\\lim : \\mathcal{C}^{I}\\to\\mathcal{C}$ 是函子 ✓。∎'].join('\n'),
         '这就是「泛性」的标准用法：**先造一个锥，再让唯一性把态射免费送上门**。极限的对象层是构造，态射层是泛性，两者合起来才是函子。',
         '有了它，「$\\lim$ 保持某个性质」才说得通 —— 后面讨论「某个函子保极限」时，正是拿这个函子去做文章。'
       ].join('\n\n'),
@@ -318,7 +320,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '像', '泛性质'],
       statement: [
-        '态射 $f : X \\to Y$ 的**像** $\\operatorname{im} f$ 是 $Y$ 的一个子对象，它在一切分解 $f : X \\to I \\rightarrowtail Y$ 组成的范畴中是**始对象**（即：任何别的分解都唯一地穿过它）。对偶地，$\\operatorname{coim} f$ 是分解 $X \\twoheadrightarrow I \\to Y$ 的余泛对象。',
+        '态射 $f : X \\to Y$ 的**像** $\\operatorname{im} f$ 是 $Y$ 的一个子对象，它在一切分解 $f : X \\to I \\rightarrowtail Y$ 组成的范畴中是**始对象**（即：任何别的分解都唯一地穿过它）。\n\n对偶地，$\\operatorname{coim} f$ 是分解 $X \\twoheadrightarrow I \\to Y$ 的余泛对象。',
         '',
         '总有一个态射',
         '',

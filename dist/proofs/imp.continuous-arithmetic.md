@@ -7,4 +7,12 @@
 
 **商。** 由 $g(x_0) \ne 0$ 与保号性，$g$ 在 $x_0$ 附近不为零，再用极限的商法则。
 
-**复合。** 给定 $\varepsilon > 0$。$g$ 在 $y_0 := f(x_0)$ 连续，故存在 $\eta > 0$ 使 $|y - y_0| < \eta \implies |g(y) - g(y_0)| < \varepsilon$。$f$ 在 $x_0$ 连续，故存在 $\delta > 0$ 使 $|x - x_0| < \delta \implies |f(x) - f(x_0)| < \eta$。于是 $|x - x_0| < \delta \implies |g(f(x)) - g(f(x_0))| < \varepsilon$。$\blacksquare$
+**复合。** 给定 $\varepsilon > 0$。
+
+$g$ 在 $y_0 := f(x_0)$ 连续，故存在 $\eta > 0$ 使 $|y - y_0| < \eta \implies |g(y) - g(y_0)| < \varepsilon$。
+
+$f$ 在 $x_0$ 连续，故存在 $\delta > 0$ 使 $|x - x_0| < \delta \implies |f(x) - f(x_0)| < \eta$。
+
+于是 $|x - x_0| < \delta \implies |g(f(x)) - g(f(x_0))| < \varepsilon$。
+
+$\blacksquare$

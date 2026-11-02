@@ -8,4 +8,7 @@
 1. **把 $V$ 看成 $K[x]$-模**：令 $x \cdot v := T(v)$。模的公理就是 $T$ 的线性性 + $T^{0} = I$，逐步验证即可。于是 $\chi_T \cdot V = 0$。
 2. **中国剩余定理**：$\chi_T = \prod_i (x - \lambda_i)^{m_i}$ 中诸因子两两互素（互异一次因子的幂），故
 
+$$K[x]/(\chi_T) \;\cong\; \prod_i K[x]/((x - \lambda_i)^{m_i})$$
+3. **翻译回 $V$**：对每个 $i$ 令 $V_i := \ker (T - \lambda_i I)^{m_i}$。
+
 > 续见 proofs/imp.primary-decomposition.2.md

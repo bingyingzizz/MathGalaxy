@@ -3,6 +3,16 @@
 
 `def.skyscraper-sheaf` 天际线层 + `prop.skyscraper-stalks` 天际线层的茎 → `prop.skyscraper-injective` 天际线层是内射层
 
-**第三步：反之。** 设 $i_{x,*}A$ 内射。取 $\mathbf{Ab}$ 中的单射 $B \rightarrowtail C$ 与任意 $B \to A$。$i_{x,*}$ 正合（单点空间上无反例可坏正合性），故 $i_{x,*}B \rightarrowtail i_{x,*}C$；由 $i_{x,*}A$ 内射，$\operatorname{Hom}(i_{x,*}C, i_{x,*}A) \to \operatorname{Hom}(i_{x,*}B, i_{x,*}A)$ 满。而第一步的同构把这个映射认成 $\operatorname{Hom}(C, A) \to \operatorname{Hom}(B, A)$，故后者满 —— $A$ 内射。∎
+而第一步的同构把这个映射认成 $\operatorname{Hom}(C, A) \to \operatorname{Hom}(B, A)$，故后者满 —— $A$ 内射。
 
-> 续见 proofs/imp.skyscraper-injective.4.md
+∎
+
+**第四步：$\mathbf{Ab}$ 里的翻译。** $\mathbf{Ab}$ 中内射 $\iff$ 可除（Baer 判据）。
+
+所以「$A$ 内射」可以读成「$A$ 可除」，而 $\mathbb{Z}$ 不可除 —— 于是 $i_{x,*}\mathbb{Z}$ **不是**内射层。
+
+这一步解释了为什么造内射层必须先把每根茎用内射包撑大。
+
+∎
+
+> 内射性在层范畴里可以「逐点」检验：这一条只用了取茎的伴随与正合性。

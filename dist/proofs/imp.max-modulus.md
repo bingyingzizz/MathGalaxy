@@ -3,7 +3,9 @@
 
 `thm.cauchy-integral-formula` Cauchy 积分公式 → `thm.max-modulus` 最大模原理
 
-**平均值公式。** 设 $\overline{D(z, r)} \subset \Omega$。在 Cauchy 积分公式里取 $\partial\Omega = \partial D(z, r)$，参数化 $\zeta = z + re^{i\theta}$（$\mathrm{d}\zeta = ire^{i\theta}\mathrm{d}\theta$）：
+**平均值公式。** 设 $\overline{D(z, r)} \subset \Omega$。
+
+在 Cauchy 积分公式里取 $\partial\Omega = \partial D(z, r)$，参数化 $\zeta = z + re^{i\theta}$（$\mathrm{d}\zeta = ire^{i\theta}\mathrm{d}\theta$）：
 
 $$f(z) = \frac{1}{2\pi i}\int_0^{2\pi} \frac{f(z + re^{i\theta})}{re^{i\theta}}\, i r e^{i\theta}\,\mathrm{d}\theta = \frac{1}{2\pi}\int_0^{2\pi} f(z + re^{i\theta})\,\mathrm{d}\theta.$$
 

@@ -9,6 +9,8 @@
 
 **② 另一侧**：$\sum_{d \mid p-1}\varphi(d) = p-1$（经典恒等式，由「按 $\gcd(k, p-1)$ 分类」可得）。
 
-**③ $\psi(d) \le \varphi(d)$**：若 $\psi(d) = 0$ 显然。否则取阶为 $d$ 的 $g$，则 $g^{t}$（$1 \le t \le d$）全部互异，其中阶恰为 $d$ 的恰是 $\gcd(t, d) = 1$ 的那些，共 $\varphi(d)$ 个 —— 所以阶为 $d$ 的元素不超过 $\varphi(d)$ 个。
+**③ $\psi(d) \le \varphi(d)$**：若 $\psi(d) = 0$ 显然。
+
+否则取阶为 $d$ 的 $g$，则 $g^{t}$（$1 \le t \le d$）全部互异，其中阶恰为 $d$ 的恰是 $\gcd(t, d) = 1$ 的那些，共 $\varphi(d)$ 个 —— 所以阶为 $d$ 的元素不超过 $\varphi(d)$ 个。
 
 > 续见 proofs/imp.nt-primitive-root.2.md

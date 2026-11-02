@@ -7,4 +7,10 @@
 
 令 $F := U^{c}$，考虑 $p : U \sqcup F \to S$（$U \sqcup F$ 取不交并拓扑，$p$ 在 $U$ 与 $F$ 上取含入）—— 它是连续满射。由投射性，$p$ 有连续截面 $s : S \to U \sqcup F$，即 $p \circ s = 1_{S}$。
 
+于是 $s(U) \subseteq U$ 且 $p(s(U)) = U$；又 $p(F) \cap U = \emptyset$ 迫使 $s(U) \subseteq U$。
+
+开集在连续映射下的原像开：$U = s^{-1}(U)$ 是开的；
+
+再由 $s^{-1}(F) = U^{c}$ 也开可得 $U$ 闭。
+
 > 续见 proofs/imp.gleason.2.md

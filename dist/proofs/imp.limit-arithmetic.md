@@ -5,7 +5,9 @@
 
 以函数版为例（数列版把 $\delta$ 换成 $N$ 即可），记 $A = \lim_{x \to x_0} f(x)$，$B = \lim_{x \to x_0} g(x)$，给定 $\varepsilon > 0$。
 
-**(i) 加法。** 取 $\delta_1, \delta_2$ 分别使 $0 < |x - x_0| < \delta_1$ 时 $|f(x) - A| < \varepsilon / 2$、$0 < |x - x_0| < \delta_2$ 时 $|g(x) - B| < \varepsilon / 2$。取 $\delta = \min\{\delta_1, \delta_2\}$，则
+**(i) 加法。** 取 $\delta_1, \delta_2$ 分别使 $0 < |x - x_0| < \delta_1$ 时 $|f(x) - A| < \varepsilon / 2$、$0 < |x - x_0| < \delta_2$ 时 $|g(x) - B| < \varepsilon / 2$。
+
+取 $\delta = \min\{\delta_1, \delta_2\}$，则
 
 $$|(f + g)(x) - (A + B)| \le |f(x) - A| + |g(x) - B| < \varepsilon$$
 

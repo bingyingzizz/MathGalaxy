@@ -36,7 +36,7 @@ window.MG = window.MG || {};
         '',
         '$\\{0\\}$ 与 $V$ 永远是 $T$-不变的（**平凡**不变子空间）；$T$ 的核与像也都是 $T$-不变的。'
       ].join('\n'),
-      notes: '⭐ 「不变」是「可以拆开算」的前提：若 $V = U_1 \\oplus \\cdots \\oplus U_k$ 且每个 $U_i$ 都不变，则 $T$ 在这组分解下是**分块对角**的 —— 于是求特征值、判断可逆、算幂都可以逐块做。\n\n⭐ 整条 Jordan 分解的思路就是「把 $V$ 拆成尽量小（尽量细）的不变子空间之直和」，而拆得最细的那一组就是 Jordan 块。\n\n⚠ 注意 $T$-不变与「$T$ 的像」不同：不变只要求 $T(U) \\subseteq U$，不要求等于。$\\ker T \\subseteq U$ 的那些 $U$ 都自动不变。',
+      notes: '⭐ 「不变」是「可以拆开算」的前提：若 $V = U_1 \\oplus \\cdots \\oplus U_k$ 且每个 $U_i$ 都不变，则 $T$ 在这组分解下是**分块对角**的 —— 于是求特征值、判断可逆、算幂都可以逐块做。\n\n⭐ 整条 Jordan 分解的思路就是「把 $V$ 拆成尽量小（尽量细）的不变子空间之直和」，而拆得最细的那一组就是 Jordan 块。\n\n⚠ 注意 $T$-不变与「$T$ 的像」不同：不变只要求 $T(U) \\subseteq U$，不要求等于。\n\n$\\ker T \\subseteq U$ 的那些 $U$ 都自动不变。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
     },
     {
@@ -58,7 +58,7 @@ window.MG = window.MG || {};
         '',
         '叫**特征子空间**；$\\dim E_{\\lambda}$ 叫 $\\lambda$ 的**几何重数**。'
       ].join('\n'),
-      notes: '⭐ 一句话：**特征向量是「$T$ 只把它拉伸、不改变方向」的那些向量**，特征值是拉伸倍数。等价说法：$\\lambda$ 是特征值 $\\iff$ $T - \\lambda I$ **不可逆** $\\iff$ $\\det(\\lambda I - T) = 0$。\n\n⭐ 特征子空间 $E_\\lambda$ 是 $T$-不变的（而且 $T$ 在它上面就是「乘 $\\lambda$」），不同特征值的特征子空间**线性无关**（和是直和）。\n\n⚠ $\\lambda$ 必须在 $K$ 里：实矩阵可能没有实特征值（旋转 $90^\\circ$ 的特征值是 $\\pm i$），此时要扩到 $\\mathbb{C}$（或直接说「在 $K$ 上无特征值」）。',
+      notes: '⭐ 一句话：**特征向量是「$T$ 只把它拉伸、不改变方向」的那些向量**，特征值是拉伸倍数。\n\n等价说法：$\\lambda$ 是特征值 $\\iff$ $T - \\lambda I$ **不可逆** $\\iff$ $\\det(\\lambda I - T) = 0$。\n\n⭐ 特征子空间 $E_\\lambda$ 是 $T$-不变的（而且 $T$ 在它上面就是「乘 $\\lambda$」），不同特征值的特征子空间**线性无关**（和是直和）。\n\n⚠ $\\lambda$ 必须在 $K$ 里：实矩阵可能没有实特征值（旋转 $90^\\circ$ 的特征值是 $\\pm i$），此时要扩到 $\\mathbb{C}$（或直接说「在 $K$ 上无特征值」）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
@@ -80,7 +80,7 @@ window.MG = window.MG || {};
         '',
         '$$\\chi_T(x) = x^{n} - (\\operatorname{tr} T)\\,x^{n-1} + \\cdots + (-1)^{n} \\det T$$'
       ].join('\n'),
-      notes: '⭐ 特征多项式把「特征值」这个**几何**问题变成了「多项式求根」这个**代数**问题 —— 于是代数基本定理保证在 $\\mathbb{C}$ 上永远有 $n$ 个特征值（计重数）。\n\n⭐ 系数与不变量的关系：$x^{n-1}$ 的系数是 $-\\operatorname{tr} T$、常数项是 $(-1)^{n}\\det T$。于是「迹 = 特征值之和」「行列式 = 特征值之积」都成了 Vieta 公式的读法，**不必真的解出特征值**。\n\n⚠ 几何重数 $\\le$ 代数重数；两者不等的例子是 $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$（$\\lambda = 1$：代数重数 2、几何重数 1）—— 这正是它不能对角化的原因。',
+      notes: '⭐ 特征多项式把「特征值」这个**几何**问题变成了「多项式求根」这个**代数**问题 —— 于是代数基本定理保证在 $\\mathbb{C}$ 上永远有 $n$ 个特征值（计重数）。\n\n⭐ 系数与不变量的关系：$x^{n-1}$ 的系数是 $-\\operatorname{tr} T$、常数项是 $(-1)^{n}\\det T$。\n\n于是「迹 = 特征值之和」「行列式 = 特征值之积」都成了 Vieta 公式的读法，**不必真的解出特征值**。\n\n⚠ 几何重数 $\\le$ 代数重数；\n\n两者不等的例子是 $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$（$\\lambda = 1$：代数重数 2、几何重数 1）—— 这正是它不能对角化的原因。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6', 'Lang, Linear Algebra']
     },
     {
@@ -102,7 +102,7 @@ window.MG = window.MG || {};
         '- $\\operatorname{tr}(AB) = \\operatorname{tr}(BA)$，于是 $\\operatorname{tr}(P^{-1}AP) = \\operatorname{tr} A$（**相似不变**）；',
         '- $\\operatorname{tr}(ABC) = \\operatorname{tr}(BCA)$（**循环不变**）。'
       ].join('\n'),
-      notes: '⭐ 迹是**最便宜的不变量**：$O(n)$ 就算出来，却已经能区分不少矩阵（比行列式便宜得多）。\n\n⭐ 它的深层含义：$\\operatorname{tr}$ 是矩阵代数的**唯一的（差常数倍）中心线性泛函**，也是「$K^{n}$-代数到 $K$ 的迹型」—— 在 Galois 理论、特征类里都会再遇到。\n\n⚠ 「相似不变」比「循环不变」弱：$\\operatorname{tr}(P^{-1}AP) = \\operatorname{tr}(A P^{-1} P) = \\operatorname{tr}A$ 只是循环不变的特例。反之迹相同不蕴含相似（$\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ 与零矩阵迹都是 $0$ 而不相似）。',
+      notes: '⭐ 迹是**最便宜的不变量**：$O(n)$ 就算出来，却已经能区分不少矩阵（比行列式便宜得多）。\n\n⭐ 它的深层含义：$\\operatorname{tr}$ 是矩阵代数的**唯一的（差常数倍）中心线性泛函**，也是「$K^{n}$-代数到 $K$ 的迹型」—— 在 Galois 理论、特征类里都会再遇到。\n\n⚠ 「相似不变」比「循环不变」弱：$\\operatorname{tr}(P^{-1}AP) = \\operatorname{tr}(A P^{-1} P) = \\operatorname{tr}A$ 只是循环不变的特例。\n\n反之迹相同不蕴含相似（$\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ 与零矩阵迹都是 $0$ 而不相似）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
@@ -122,7 +122,7 @@ window.MG = window.MG || {};
         '',
         '相似的不变量：秩、迹、行列式、特征多项式（从而特征值与它们的代数重数）、极小多项式。'
       ].join('\n'),
-      notes: '⭐ 相似是**等价关系**（自反 / 对称 / 传递），所以 $M_n(K)$ 被分成相似类；**分类问题就是「描述所有相似类」**。\n\n⭐ 两个世界对同一个问题的两种说法：矩阵侧是「$B = P^{-1}AP$」，映射侧是「同一个 $T$、两组基」。图上两条边（`thm.change-of-basis` 与 `dep.linearmap-similarity`）说的就是这件事。\n\n⚠ 相似比**等价**（$B = PAQ$）严格：等价只要求秩相同，相似还要求特征多项式相同。$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ 与 $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ 等价但不相似。',
+      notes: '⭐ 相似是**等价关系**（自反 / 对称 / 传递），所以 $M_n(K)$ 被分成相似类；**分类问题就是「描述所有相似类」**。\n\n⭐ 两个世界对同一个问题的两种说法：矩阵侧是「$B = P^{-1}AP$」，映射侧是「同一个 $T$、两组基」。\n\n图上两条边（`thm.change-of-basis` 与 `dep.linearmap-similarity`）说的就是这件事。\n\n⚠ 相似比**等价**（$B = PAQ$）严格：等价只要求秩相同，相似还要求特征多项式相同。\n\n$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ 与 $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ 等价但不相似。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
@@ -166,7 +166,7 @@ window.MG = window.MG || {};
         '',
         '**(5)** 存在**互异**的 $\\lambda_i$ 使 $T$ 满足 $\\prod_i (T - \\lambda_i I) = 0$（即 $T$ 被一个无重根的多项式零化）。'
       ].join('\n'),
-      notes: '⭐ 最常用的判据是 **(3)/(4)**：$n$ 个线性无关的特征向量存在 $\\iff$ 可对角化。注意「特征值个数 $= n$」不够（重根要按重数算）。\n\n⭐ **(5)** 是最深刻的写法：它把「可对角化」翻译成**极小多项式无重根**（见「极小多项式整除特征多项式」）—— 这一条在谱定理与 Jordan 型的讨论里都要用。\n\n⚠ 判据依赖 $K$：$\\mathbb{R}$ 上的旋转没有实特征值，当然不可对角化；但它到 $\\mathbb{C}$ 上就有特征值 $\\pm i$ 且可对角化。所以「可对角化」永远相对于 $K$ 说。',
+      notes: '⭐ 最常用的判据是 **(3)/(4)**：$n$ 个线性无关的特征向量存在 $\\iff$ 可对角化。\n\n注意「特征值个数 $= n$」不够（重根要按重数算）。\n\n⭐ **(5)** 是最深刻的写法：它把「可对角化」翻译成**极小多项式无重根**（见「极小多项式整除特征多项式」）—— 这一条在谱定理与 Jordan 型的讨论里都要用。\n\n⚠ 判据依赖 $K$：$\\mathbb{R}$ 上的旋转没有实特征值，当然不可对角化；\n\n但它到 $\\mathbb{C}$ 上就有特征值 $\\pm i$ 且可对角化。\n\n所以「可对角化」永远相对于 $K$ 说。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
@@ -206,7 +206,7 @@ window.MG = window.MG || {};
         '- $\\mu_T$ 与 $\\chi_T$ 在 $K$ 的代数闭包中**有完全相同的根**（即相同的特征值集合）；',
         '- 因此 $T$ 可对角化（在代数闭包上看）$\\iff$ $\\mu_T$ 无重根。'
       ].join('\n'),
-      notes: '⭐ 三条里的第一条是 Cayley–Hamilton + 理想性的直接后果：$\\chi_T \\in I_T = (\\mu_T)$。\n\n⭐ 第二条（同根）的证明值得记住：若 $\\lambda$ 是特征值、$v$ 是特征向量，则 $\\mu_T(T)v = \\mu_T(\\lambda) v$，而 $\\mu_T(T) = 0$、$v \\ne 0$，故 $\\mu_T(\\lambda) = 0$；反向由 $\\mu_T \\mid \\chi_T$ 得到。\n\n⚠ 第三个断言的「在代数闭包上看」不能省：$\\mu_T$ 是否无重根要到扩域里判（$\\mathbb{R}$ 上的旋转：$\\mu_T = x^{2} + 1$ 无重根，在 $\\mathbb{C}$ 上可对角化，在 $\\mathbb{R}$ 上不能）。',
+      notes: '⭐ 三条里的第一条是 Cayley–Hamilton + 理想性的直接后果：$\\chi_T \\in I_T = (\\mu_T)$。\n\n⭐ 第二条（同根）的证明值得记住：若 $\\lambda$ 是特征值、$v$ 是特征向量，则 $\\mu_T(T)v = \\mu_T(\\lambda) v$，而 $\\mu_T(T) = 0$、$v \\ne 0$，故 $\\mu_T(\\lambda) = 0$；\n\n反向由 $\\mu_T \\mid \\chi_T$ 得到。\n\n⚠ 第三个断言的「在代数闭包上看」不能省：$\\mu_T$ 是否无重根要到扩域里判（$\\mathbb{R}$ 上的旋转：$\\mu_T = x^{2} + 1$ 无重根，在 $\\mathbb{C}$ 上可对角化，在 $\\mathbb{R}$ 上不能）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 6']
     },
     {
@@ -228,7 +228,7 @@ window.MG = window.MG || {};
         '- $\\dim V_i = m_i$（代数重数），每个 $V_i$ 都是 $T$-不变的，且 $T|_{V_i}$ 只有一个特征值 $\\lambda_i$；',
         '- $E_{\\lambda_i} = \\ker(T - \\lambda_i I) \\subseteq V_i$ 是它里面的「$\\lambda_i$ 那一层」。'
       ].join('\n'),
-      notes: '⭐ 这一步是 Jordan 分解的**第一半**：先把 $V$ 按特征值拆成 $r$ 块，每一块上只剩一个特征值。第二半是在每块里再把「$T - \\lambda_i I$ 的幂零程度」拆成小块（那就是 Jordan 块）。\n\n⭐ 它的代数版本：$V$ 是 $K[x]$-模，$\\chi_T$ 是它上面的「零化多项式」；由 $K[x]$ 的唯一分解，模按 $\\chi_T$ 的不可约因子拆开（**中国剩余定理**）—— 这就是「主分解」这个名字的来源。\n\n⚠ 要求 $K$ 代数闭：否则 $\\chi_T$ 分解不出一次因子，块也不按特征值分（要把「不可约因子」当成块）。',
+      notes: '⭐ 这一步是 Jordan 分解的**第一半**：先把 $V$ 按特征值拆成 $r$ 块，每一块上只剩一个特征值。\n\n第二半是在每块里再把「$T - \\lambda_i I$ 的幂零程度」拆成小块（那就是 Jordan 块）。\n\n⭐ 它的代数版本：$V$ 是 $K[x]$-模，$\\chi_T$ 是它上面的「零化多项式」；\n\n由 $K[x]$ 的唯一分解，模按 $\\chi_T$ 的不可约因子拆开（**中国剩余定理**）—— 这就是「主分解」这个名字的来源。\n\n⚠ 要求 $K$ 代数闭：否则 $\\chi_T$ 分解不出一次因子，块也不按特征值分（要把「不可约因子」当成块）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 7', 'Lang, Algebra, Ch. XIV']
     },
     {
@@ -248,7 +248,7 @@ window.MG = window.MG || {};
         '',
         '等价说法：$T$ 可对角化 $\\iff$ 所有 Jordan 块都是 $1 \\times 1$。'
       ].join('\n'),
-      notes: '⭐ 这是**有限维线性代数唯一的完整分类定理**：代数闭域上「相似」由 Jordan 型完全决定（块的大小与特征值的分布）。它同时给出了「相似不变量」的完整清单。\n\n⭐ 证明的两半：主分解（按特征值拆）＋ 在每个根子空间上对幂零算子 $N = T - \\lambda I$ 取「$\\ker N^{k}$ 的链」并逐层补基（这一步用 `def.quotient-vs` 与归纳）。\n\n⚠ 三个前提都在：**代数闭**（否则没有 $\\lambda$）、**有限维**（否则可能连特征值都没有）、**$K$ 是域**。$\\mathbb{R}$ 上只能用「实 Jordan 形」或改走有理标准型（`thm.rational-canonical-form`）。',
+      notes: '⭐ 这是**有限维线性代数唯一的完整分类定理**：代数闭域上「相似」由 Jordan 型完全决定（块的大小与特征值的分布）。\n\n它同时给出了「相似不变量」的完整清单。\n\n⭐ 证明的两半：主分解（按特征值拆）＋ 在每个根子空间上对幂零算子 $N = T - \\lambda I$ 取「$\\ker N^{k}$ 的链」并逐层补基（这一步用 `def.quotient-vs` 与归纳）。\n\n⚠ 三个前提都在：**代数闭**（否则没有 $\\lambda$）、**有限维**（否则可能连特征值都没有）、**$K$ 是域**。\n\n$\\mathbb{R}$ 上只能用「实 Jordan 形」或改走有理标准型（`thm.rational-canonical-form`）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 7', 'Lang, Algebra, Ch. XIV']
     },
     {
@@ -266,7 +266,7 @@ window.MG = window.MG || {};
         '',
         '更定量地：对每个特征值 $\\lambda$，Jordan 块的**尺寸**构成一个分拆 $\\mu(\\lambda)$；两个矩阵相似当且仅当对每个 $\\lambda$ 都有 $\\mu_A(\\lambda) = \\mu_B(\\lambda)$。'
       ].join('\n'),
-      notes: '⭐ 唯一性的实用形式：**块的个数 = 几何重数**（$\\dim E_\\lambda$）、**块的最大尺寸 = $\\lambda$ 在极小多项式里的次数**、**尺寸之和 = 代数重数**。于是「相似分类」被压缩成一组整数的分拆数据。\n\n⭐ 由此得到一条漂亮的推论：$A$ 幂零（$A^{k} = 0$ 对某 $k$）$\\iff$ 它的特征值只有 $0$ $\\iff$ 它的特征多项式是 $x^{n}$。\n\n⚠ 「不计块的次序」是必须的：Jordan 形是按特征值与块的排列写的，重排块给出同一个算子的另一种写法（换个基而已）。',
+      notes: '⭐ 唯一性的实用形式：**块的个数 = 几何重数**（$\\dim E_\\lambda$）、**块的最大尺寸 = $\\lambda$ 在极小多项式里的次数**、**尺寸之和 = 代数重数**。\n\n于是「相似分类」被压缩成一组整数的分拆数据。\n\n⭐ 由此得到一条漂亮的推论：$A$ 幂零（$A^{k} = 0$ 对某 $k$）$\\iff$ 它的特征值只有 $0$ $\\iff$ 它的特征多项式是 $x^{n}$。\n\n⚠ 「不计块的次序」是必须的：Jordan 形是按特征值与块的排列写的，重排块给出同一个算子的另一种写法（换个基而已）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 7']
     }
   ],
@@ -366,7 +366,7 @@ window.MG = window.MG || {};
       proof: [
         '记 $n = \\dim V$、$\\lambda_1, \\ldots, \\lambda_m$ 为（$K$ 中）互异特征值。',
         '',
-        '**(1) $\\implies$ (2)**：若 $T$ 在某组基下是对角阵 $\\operatorname{diag}(\\lambda_{i_1}, \\ldots)$，则每个基向量都是特征向量，于是这组基（共 $n$ 个）落在 $\\bigcup_i E_{\\lambda_i}$ 中；又不同特征值的特征子空间之和是直和，故 $V = \\bigoplus_i E_{\\lambda_i}$。',
+        '**(1) $\\implies$ (2)**：若 $T$ 在某组基下是对角阵 $\\operatorname{diag}(\\lambda_{i_1}, \\ldots)$，则每个基向量都是特征向量，于是这组基（共 $n$ 个）落在 $\\bigcup_i E_{\\lambda_i}$ 中；\n\n又不同特征值的特征子空间之和是直和，故 $V = \\bigoplus_i E_{\\lambda_i}$。',
         '',
         '**(2) $\\implies$ (3)**：取维数即得 $\\sum_i \\dim E_{\\lambda_i} = n$。',
         '',
@@ -374,7 +374,7 @@ window.MG = window.MG || {};
         '',
         '**(4) $\\iff$ (3)**：恒有 $\\dim E_{\\lambda} \\le m_\\lambda$（代数重数）与 $\\sum_\\lambda m_\\lambda = n$。于是「和 $= n$」等价于「每个都取等号」，即几何重数 $=$ 代数重数。',
         '',
-        '**(5) $\\implies$ (4)**：设 $\\prod_i (T - \\lambda_i I) = 0$ 且 $\\lambda_i$ 互异，则 $\\mu_T \\mid \\prod_i (x - \\lambda_i)$，故 $\\mu_T$ 无重根。“无重根”意味着极小多项式在每个特征值处的重数为 1，结合 $\\mu_T$ 与 $\\chi_T$ 同根、且代数重数 $\\ge$ 几何重数 $\\ge 1$，逐块比较即得几何重数 $=$ 代数重数。',
+        '**(5) $\\implies$ (4)**：设 $\\prod_i (T - \\lambda_i I) = 0$ 且 $\\lambda_i$ 互异，则 $\\mu_T \\mid \\prod_i (x - \\lambda_i)$，故 $\\mu_T$ 无重根。\n\n“无重根”意味着极小多项式在每个特征值处的重数为 1，结合 $\\mu_T$ 与 $\\chi_T$ 同根、且代数重数 $\\ge$ 几何重数 $\\ge 1$，逐块比较即得几何重数 $=$ 代数重数。',
         '',
         '**(1) $\\implies$ (5)**：可对角化时 $\\mu_T = \\prod_i (x - \\lambda_i)$（互异的一次因子之积），代入 $T$ 得零。∎'
       ].join('\n'),
@@ -389,7 +389,7 @@ window.MG = window.MG || {};
       proof: [
         '1. **整除**：由 Cayley–Hamilton，$\\chi_T(T) = 0$，即 $\\chi_T \\in I_T = (\\mu_T)$，故 $\\mu_T \\mid \\chi_T$。由此 $\\deg \\mu_T \\le \\deg \\chi_T = n$。',
         '2. **$\\chi_T$ 的根都是 $\\mu_T$ 的根**：由第 1 步与「$\\mu_T$ 非零」得 $\\mu_T \\mid \\chi_T$，故 $\\chi_T$ 的每个根也是 $\\mu_T$ 的根。',
-        '3. **$\\mu_T$ 的根都是 $\\chi_T$ 的根**：设 $\\mu_T(\\lambda) = 0$。由 $\\mu_T \\ne 0$ 且 $\\mu_T \\mid \\chi_T$，把 $\\mu_T$ 在 $K$ 的代数闭包中分解为 $\\prod (x - \\lambda_j)^{e_j}$；对每个 $j$ 取非零向量 $v_j \\in \\ker(T - \\lambda_j I)^{e_j}$（由第 4 步非零），则 $v := v_j$ 满足 $\\mu_T(T) v = 0$。若 $\\lambda_j$ 不是特征值，则 $T - \\lambda_j I$ 可逆，于是 $(T - \\lambda_j I)^{e_j}$ 可逆，$\\ker = \\{0\\}$，矛盾。故每个 $\\lambda_j$ 都是特征值，即 $\\chi_T(\\lambda_j) = 0$。',
+        '3. **$\\mu_T$ 的根都是 $\\chi_T$ 的根**：设 $\\mu_T(\\lambda) = 0$。\n\n由 $\\mu_T \\ne 0$ 且 $\\mu_T \\mid \\chi_T$，把 $\\mu_T$ 在 $K$ 的代数闭包中分解为 $\\prod (x - \\lambda_j)^{e_j}$；\n\n对每个 $j$ 取非零向量 $v_j \\in \\ker(T - \\lambda_j I)^{e_j}$（由第 4 步非零），则 $v := v_j$ 满足 $\\mu_T(T) v = 0$。\n\n若 $\\lambda_j$ 不是特征值，则 $T - \\lambda_j I$ 可逆，于是 $(T - \\lambda_j I)^{e_j}$ 可逆，$\\ker = \\{0\\}$，矛盾。\n\n故每个 $\\lambda_j$ 都是特征值，即 $\\chi_T(\\lambda_j) = 0$。',
         '4. **每个 $\\ker (T - \\lambda_j I)^{e_j} \\ne \\{0\\}$**：若全为零，则 $\\mu_T$ 的每个因子都可逆、乘积可逆，而 $\\mu_T(T) = 0$ 与可逆性矛盾（$n \\ge 1$ 时 $V \\ne 0$）。',
         '',
         '于是两者的根集合相同。∎'
@@ -409,7 +409,7 @@ window.MG = window.MG || {};
         '2. **中国剩余定理**：$\\chi_T = \\prod_i (x - \\lambda_i)^{m_i}$ 中诸因子两两互素（互异一次因子的幂），故',
         '',
         '$$K[x]/(\\chi_T) \\;\\cong\\; \\prod_i K[x]/((x - \\lambda_i)^{m_i})$$',
-        '3. **翻译回 $V$**：对每个 $i$ 令 $V_i := \\ker (T - \\lambda_i I)^{m_i}$。由互素性可取多项式 $u_i$ 使 $\\sum_i u_i \\cdot \\frac{\\chi_T}{(x-\\lambda_i)^{m_i}} = 1$（Bézout），作用到 $v \\in V$ 上给出分解 $v = \\sum_i v_i$，$v_i \\in V_i$。直和性由「不同因子的核之交为零」得到。',
+        '3. **翻译回 $V$**：对每个 $i$ 令 $V_i := \\ker (T - \\lambda_i I)^{m_i}$。\n\n由互素性可取多项式 $u_i$ 使 $\\sum_i u_i \\cdot \\frac{\\chi_T}{(x-\\lambda_i)^{m_i}} = 1$（Bézout），作用到 $v \\in V$ 上给出分解 $v = \\sum_i v_i$，$v_i \\in V_i$。\n\n直和性由「不同因子的核之交为零」得到。',
         '4. **维数**：$V_i$ 是 $T$-不变的，且 $T|_{V_i}$ 只有一个特征值 $\\lambda_i$，故 $\\chi_{T|_{V_i}} = (x - \\lambda_i)^{\\dim V_i}$；两边取乘积并与 $\\chi_T$ 比较，得 $\\dim V_i = m_i$。',
         '5. **$E_{\\lambda_i} \\subseteq V_i$**：$\\ker(T - \\lambda_i I) \\subseteq \\ker (T - \\lambda_i I)^{m_i}$ 显然。∎'
       ].join('\n'),

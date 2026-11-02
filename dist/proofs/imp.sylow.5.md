@@ -3,8 +3,12 @@
 
 `thm.class-equation` 类方程 + `def.group-action` 群作用 + `thm.orbit-stabilizer` 轨道–稳定子定理 → `thm.sylow` Sylow 定理
 
-由轨道分解 $|X| = \sum |\text{轨道}|$，每个轨道长 $= [P : P_{hQ}]$ 是 $p$ 的幂。若**没有**不动点，则每个轨道长都被 $p$ 整除，于是 $p \mid |X| = m$，矛盾。故有不动点 $hQ$：对一切 $g \in P$ 有 $ghQ = hQ$，即 $h^{-1}Ph \le Q$。两端阶相同（都是 $p^{a}$），故 $h^{-1}Ph = Q$：$P$ 与 $Q$ 共轭。
+**（3）计数。** 设 $\mathcal{S}$ 是全体 Sylow $p$-子群的集合。$G$ 共轭作用在 $\mathcal{S}$ 上（由 (2) 传递）；$P$ 的稳定子是 $N_G(P)$，故
 
-把上面论证中的 $P$ 换成任一 $p$-子群 $R$，同样得到 $h^{-1}Rh \le Q$：**任何 $p$-子群都含在某个 Sylow 子群中**。
+$$n_p = |\mathcal{S}| = [G : N_G(P)].$$
+
+再由 $P \le N_G(P)$ 得 $n_p \mid [G : P] = m$。
+
+最后让 $P$ 共轭作用在 $\mathcal{S}$ 上：轨道长是 $p$ 的幂，而 $P$ 的不动点只有 $P$ 自己（若 $P$ 固定 $Q$，则 $P \le N_G(Q)$，于是 $P$ 与 $Q$ 都是 $N_G(Q)$ 的 Sylow 子群，由 (2) 在 $N_G(Q)$ 中共轭；
 
 > 续见 proofs/imp.sylow.6.md

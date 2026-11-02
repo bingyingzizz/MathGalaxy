@@ -13,6 +13,10 @@ $$E := \{\, z \in \Omega : u(z) = M \,\} \ne \emptyset.$$
 
 $$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.$$
 
-被积函数逐点 $\le M$，而它们的平均恰好是 $M$ $\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。所以圆周落在 $E$ 里；对每个 $0 < \rho \le r$ 同理，于是 $D(a, r) \subset E$。
+被积函数逐点 $\le M$，而它们的平均恰好是 $M$ $\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。
+
+所以圆周落在 $E$ 里；
+
+对每个 $0 < \rho \le r$ 同理，于是 $D(a, r) \subset E$。
 
 > 续见 proofs/imp.harmonic-maximum.2.md

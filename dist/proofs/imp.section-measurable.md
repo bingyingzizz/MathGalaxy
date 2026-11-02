@@ -11,7 +11,9 @@ $$E_x = B\quad  (x \in A), \quad  E_x = \emptyset\quad  (x \notin A)$$
 
 两边都在 $\mathcal{N}$ 里（$\mathcal{N}$ 含 $\emptyset$）；横截口同理。
 
-- **$\mathcal{R}$ 是 $\sigma$代数**：截口运算保持并、交、补 —— 例如 $(\bigcup_n E^{(n)})_x = \bigcup_n E^{(n)}_x$、$(E^c)_x = (E_x)^c$（这里用的是 $Y$ 在 $X \times Y$ 中的「竖条」补集）。故 $\mathcal{R}$ 对可数并与补封闭。
+- **$\mathcal{R}$ 是 $\sigma$代数**：截口运算保持并、交、补 —— 例如 $(\bigcup_n E^{(n)})_x = \bigcup_n E^{(n)}_x$、$(E^c)_x = (E_x)^c$（这里用的是 $Y$ 在 $X \times Y$ 中的「竖条」补集）。
+
+故 $\mathcal{R}$ 对可数并与补封闭。
 
 于是 $\mathcal{R} \supseteq \mathcal{M}($矩形族$) = \mathcal{M} \otimes \mathcal{N}$，(a) 得证。
 

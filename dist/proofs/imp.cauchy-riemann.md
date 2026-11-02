@@ -7,7 +7,11 @@
 
 $$f(z_0 + \Delta z) - f(z_0) = A\,\Delta z + o(\Delta z).$$
 
-这已经是一个形如 $A\Delta z + B\overline{\Delta z} + o(\Delta z)$ 的展开，其中 $B = 0$。比较两个表示的系数（分别取 $\Delta z = t$ 与 $\Delta z = it$，令实数 $t \to 0$）得 $\partial f/\partial z(z_0) = A$、$\partial f/\partial \bar z(z_0) = 0$。同时这也说明 $f$ 实可微（因为 $A\Delta z$ 是 $\Delta z$ 的实线性函数）。
+这已经是一个形如 $A\Delta z + B\overline{\Delta z} + o(\Delta z)$ 的展开，其中 $B = 0$。
+
+比较两个表示的系数（分别取 $\Delta z = t$ 与 $\Delta z = it$，令实数 $t \to 0$）得 $\partial f/\partial z(z_0) = A$、$\partial f/\partial \bar z(z_0) = 0$。
+
+同时这也说明 $f$ 实可微（因为 $A\Delta z$ 是 $\Delta z$ 的实线性函数）。
 
 **(iii) 与 (ii) 等价。** 把定义逐项算出来：
 

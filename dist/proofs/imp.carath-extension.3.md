@@ -7,4 +7,8 @@
 
 $$\mu^*(E \cap A) + \mu^*(E \cap A^c) \le \sum_j \mu_0(E_j \cap A) + \sum_j \mu_0(E_j \cap A^c) = \sum_j \mu_0(E_j) < \mu^*(E) + \varepsilon$$
 
-令 $\varepsilon \to 0$ 即得。所以 $\mathfrak{A} \subseteq \mathcal{M}$；而 $\mathcal{M}$ 是 $\sigma$代数（Carathéodory），故 $\mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$。∎
+令 $\varepsilon \to 0$ 即得。
+
+所以 $\mathfrak{A} \subseteq \mathcal{M}$；而 $\mathcal{M}$ 是 $\sigma$代数（Carathéodory），故 $\mathcal{M}(\mathfrak{A}) \subseteq \mathcal{M}$。
+
+∎

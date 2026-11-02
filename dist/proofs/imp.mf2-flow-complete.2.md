@@ -3,6 +3,20 @@
 
 `def.flow` 流 + `thm.flow-local` 局部流 + `def.compact` 紧 → `thm.flow-complete` 流完备性
 
-**第 2 条（逃逸引理）。** 反设存在紧集 $K$ 与 $t_{1} < b_{q}$ 使 $\gamma([t_{1}, b_{q})) \subseteq K$。对每点 $y \in K$ 取一张卡 $V_{y}$ 与 `thm.flow-local` 给的时间 $\varepsilon_{y} > 0$；$K$ 紧，取有限个 $y_{1},\ldots,y_{m}$ 使 $K \subseteq \bigcup_{i}V_{y_{i}}$，令 $\varepsilon := \min_{i}\varepsilon_{y_{i}} > 0$。取 $t_{1}$ 使 $b_{q} - t_{1} < \varepsilon$，在 $\gamma(t_{1}) \in K$ 处用第 $i$ 个局部流把解延拓到 $b_{q} + (\varepsilon - (b_{q}-t_{1})) > b_{q}$ —— 与 $b_{q}$ 是极大右端点矛盾。$a_{q}$ 一端把 $t$ 换成 $-t$ 同证。
+取 $t_{1}$ 使 $b_{q} - t_{1} < \varepsilon$，在 $\gamma(t_{1}) \in K$ 处用第 $i$ 个局部流把解延拓到 $b_{q} + (\varepsilon - (b_{q}-t_{1})) > b_{q}$ —— 与 $b_{q}$ 是极大右端点矛盾。
+
+$a_{q}$ 一端把 $t$ 换成 $-t$ 同证。
+
+**第 3 条（完备判据）。** 若所有端点都是无穷，则每点的积分曲线都在整个 $\mathbb{R}$ 上有定义，即 $\mathcal{W} = \mathbb{R}\times M$，$X$ 完备。
+
+反之若某个 $b_{q} < +\infty$，则 $(b_{q},q) \notin \mathcal{W}$，故 $\mathcal{W} \ne \mathbb{R}\times M$，不完备。
+
+**紧 $M$ 的推论。** 设 $M$ 紧而 $b_{q} < +\infty$。
+
+在第 2 条里取 $K = M$（紧）：结论要求存在 $t_{2}$ 使 $\varphi_{t_{2}}(q) \notin M$，不可能 —— 矛盾。
+
+故 $b_{q} = +\infty$；
+
+同理 $a_{q} = -\infty$。
 
 > 续见 proofs/imp.mf2-flow-complete.3.md

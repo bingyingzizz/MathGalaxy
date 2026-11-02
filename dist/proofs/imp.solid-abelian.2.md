@@ -8,4 +8,8 @@ $$\operatorname{RHom}(Z[S]^{\blacksquare}, C)(S') \cong R\Gamma(S \times S', C).
 
 分三层证明。
 
+**(a) $C$ 集中在度 $0$。** 写 $C = M = \bigoplus_{i \in I} \prod_{j \in J_i} \mathbb{Z}$。
+
+由 Lecture IV 的定理（Eilenberg–MacLane/Breen–Deligne，`thm.breen-deligne`）与 $\mathbb{Z}[X]$ 的 pseudocoherence，$M(S,\mathbb{R}/\mathbb{Z}) \cong \prod \mathbb{R}/\mathbb{Z}$ 是 pseudocoherent 的，从而 $M(S,\mathbb{R}/\mathbb{Z}) \otimes \mathbb{Z}[S']$ 也是。
+
 > 续见 proofs/imp.solid-abelian.3.md

@@ -104,7 +104,7 @@ window.MG = window.MG || {};
         '$\\mathbf{CHaus}$ 是预拓扑斯，所以它上面的预标准拓扑恰好由两类覆盖生成：**有限不交并**与**满射**。上面第 1、2 条就是这两类覆盖下的层条件 —— 「有限余积变有限积」与「商变核」。',
         '换一种写法：$X$ 是凝聚态集 $\\iff$ 它把有限余积变成有限积、把余等化子变成等化子。这句话后面的所有构造都在用。',
         ['**证明。** 只需对预标准拓扑的**生成元**验证层条件 —— 一般覆盖由「有限不交并」与「满射」复合而成，够用的正是两类：',
-          '- **有限不交并**：覆盖是 $(S_{i} \\hookrightarrow S)_{i \\in I}$（$I$ 有限、$\\coprod_{i} S_{i} \\to S$ 双射）。层条件要求 $X(S) \\to \\prod_{i} X(S_{i}) \\rightrightarrows \\prod_{i,j} X(S_{i} \\times_{S} S_{j})$ 正合；由不交性，$i \\ne j$ 时 $S_{i} \\times_{S} S_{j} = \\emptyset$、$i = j$ 时 $= S_{i}$，而 $X(\\emptyset) = \\{\\ast\\}$，于是那对映射一个是恒等、一个是常值 —— 正合化归为 $X(S) \\cong \\prod_{i} X(S_{i})$，即 (4.1)。特别地取 $I = \\emptyset$ 得 $X(\\emptyset) = \\{\\ast\\}$。',
+          '- **有限不交并**：覆盖是 $(S_{i} \\hookrightarrow S)_{i \\in I}$（$I$ 有限、$\\coprod_{i} S_{i} \\to S$ 双射）。\n\n层条件要求 $X(S) \\to \\prod_{i} X(S_{i}) \\rightrightarrows \\prod_{i,j} X(S_{i} \\times_{S} S_{j})$ 正合；\n\n由不交性，$i \\ne j$ 时 $S_{i} \\times_{S} S_{j} = \\emptyset$、$i = j$ 时 $= S_{i}$，而 $X(\\emptyset) = \\{\\ast\\}$，于是那对映射一个是恒等、一个是常值 —— 正合化归为 $X(S) \\cong \\prod_{i} X(S_{i})$，即 (4.1)。\n\n特别地取 $I = \\emptyset$ 得 $X(\\emptyset) = \\{\\ast\\}$。',
           '- **满射**：覆盖是单个满射 $S\' \\twoheadrightarrow S$。层条件就是 $X(S) \\to X(S\') \\rightrightarrows X(S\' \\times_{S} S\')$ 左正合，即 (4.2)。',
           '反过来，两条条件合起来显然蕴含「对所有覆盖是层」（覆盖可以分解成这两类的复合），于是判据成立。∎'
         ].join('\n')
@@ -147,13 +147,13 @@ window.MG = window.MG || {};
       regions: ['condensed'],
       tags: ['凝聚态', '自由', '预拓扑'],
       statement: [
-        '记 $\\mathbf{FCHaus}$ 为**自由紧 Hausdorff 空间**（即 $\\beta I$）构成的满子范畴。$\\mathbf{FCHaus}$ 中的对象都是 $\\mathrm{Cond}$ 的**投射对象**，满射 $S \\to S\'$ 总有截面 —— 于是**有限不交并给出 $\\mathbf{FCHaus}$ 上的一个预拓扑**。'
+        '记 $\\mathbf{FCHaus}$ 为**自由紧 Hausdorff 空间**（即 $\\beta I$）构成的满子范畴。\n\n$\\mathbf{FCHaus}$ 中的对象都是 $\\mathrm{Cond}$ 的**投射对象**，满射 $S \\to S\'$ 总有截面 —— 于是**有限不交并给出 $\\mathbf{FCHaus}$ 上的一个预拓扑**。'
       ].join('\n'),
       notes: [
         '为什么层条件「自动成立」：在自由紧 Hausdorff 空间上，满射有截面，所以「局部有原像」总能在整体上补出来（分离性由截面的存在直接给出）。**能取截面**是这里最省事的一点。',
         ['**证明（验证预拓扑的三条公理）。** 覆盖约定为：$(F_{i} \\to F)_{i \\in I}$，$I$ 有限且 $\\coprod_{i} F_{i} \\to F$ 双射。',
           '- **恒等**：$\\{\\mathrm{id}_{F}\\}$ 是覆盖；',
-          '- **拉回稳定**：给覆盖与任意 $F\' \\to F$，拉回族 $(F_{i} \\times_{F} F\' \\to F\')_{i}$ 仍然有限，且由「不交并沿任意映射拉回仍是不交并」得 $\\coprod_{i}(F_{i} \\times_{F} F\') \\cong F\'$；$\\mathbf{FCHaus}$ 对有限不交并与纤维积封闭（自由对象的有限不交并还是自由的：$\\beta I \\coprod \\beta J = \\beta(I \\coprod J)$）；',
+          '- **拉回稳定**：给覆盖与任意 $F\' \\to F$，拉回族 $(F_{i} \\times_{F} F\' \\to F\')_{i}$ 仍然有限，且由「不交并沿任意映射拉回仍是不交并」得 $\\coprod_{i}(F_{i} \\times_{F} F\') \\cong F\'$；\n\n$\\mathbf{FCHaus}$ 对有限不交并与纤维积封闭（自由对象的有限不交并还是自由的：$\\beta I \\coprod \\beta J = \\beta(I \\coprod J)$）；\n\n',
           '- **复合**：覆盖的覆盖拼起来还是覆盖。',
           '另外，$\\mathbf{FCHaus}$ 里的覆盖 $\\coprod_{i} F_{i} \\to F$ 是**双射**，于是每个 $F_{i} \\to F$ 都是含入，而「$F \\to F_{i}$ 的截面」由 $F_{i}$ 的闭性 + 完全性给出 —— 这就是为什么这里的层条件好验。∎'
         ].join('\n')
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       notes: [
         ['**证明。** $\\mathbf{FCHaus}$ 上的覆盖就是「有限不交并」，即 $F = \\coprod_{i \\in I} F_{i}$（$I$ 有限）。对它写层条件：',
           '$$X(F) \\longrightarrow \\prod_{i} X(F_{i}) \\rightrightarrows \\prod_{i,j} X(F_{i} \\times_{F} F_{j}).$$',
-          '- 由不交性，$i \\ne j$ 时 $F_{i} \\times_{F} F_{j} = \\emptyset$、$i = j$ 时 $= F_{i}$。于是右边那对映射一个是恒等、另一个把 $i \\ne j$ 的分量送到 $X(\\emptyset)$ —— 而 $X(\\emptyset)$ 由 $I = \\emptyset$ 的层条件（$X$ 保空余积）给出 $X(\\emptyset) \\cong \\{\\ast\\}$。',
+          '- 由不交性，$i \\ne j$ 时 $F_{i} \\times_{F} F_{j} = \\emptyset$、$i = j$ 时 $= F_{i}$。\n\n于是右边那对映射一个是恒等、另一个把 $i \\ne j$ 的分量送到 $X(\\emptyset)$ —— 而 $X(\\emptyset)$ 由 $I = \\emptyset$ 的层条件（$X$ 保空余积）给出 $X(\\emptyset) \\cong \\{\\ast\\}$。',
           '- 所以层条件正合化归为 $X\\bigl(\\coprod_{i} F_{i}\\bigr) \\cong \\prod_{i} X(F_{i})$ —— 这正是「保有限积」。',
           '反过来，若 $X$ 保有限积，则上述每一条层条件自动成立。∎',
           '⭐ **用处**：这一条把「$\\mathrm{Cond}$ 里的层」换成了一句纯代数的话 ——「保有限积的函子」。于是验一条性质是不是层，只要验它是否保有限积。'
@@ -197,7 +197,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{Cond} \\;\\simeq\\; \\widehat{\\mathbf{FCHaus}}$$'
       ].join('\n'),
-      notes: '两个方向：$\\mathbf{CHaus}$ 上的层限制到 $\\mathbf{FCHaus}$ 上仍是层（覆盖变少了，层的条件只会更容易满足）；反过来，$\\mathbf{FCHaus}$ 上的层 $X$ 沿「自由对象到 $S$ 的映射」取滤过余极限延拓回 $\\mathbf{CHaus}$，得到的就是粘合出来的那个值。证明见边上那条推导。',
+      notes: '两个方向：$\\mathbf{CHaus}$ 上的层限制到 $\\mathbf{FCHaus}$ 上仍是层（覆盖变少了，层的条件只会更容易满足）；反过来，$\\mathbf{FCHaus}$ 上的层 $X$ 沿「自由对象到 $S$ 的映射」取滤过余极限延拓回 $\\mathbf{CHaus}$，得到的就是粘合出来的那个值。\n\n证明见边上那条推导。',
       refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
@@ -228,8 +228,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**证明。** 分两步。',
-          '- **自由紧 Hausdorff 空间是投射对象。** 记 $F = \\beta I$ 自由。任给满态射 $X \\twoheadrightarrow Y$ 与 $y \\in Y(F)$。由**满态射的判据**（在自由对象上逐点满），$y$ 在某个覆盖上局部有原像：存在有限不交并分解 $F = \\coprod_{k=1}^{n} F_{k}$ 与 $x_{k} \\in X(F_{k})$ 使 $p(x_{k}) = y|_{F_{k}}$。把 $(x_{k})_{k}$ 拼起来，用「保有限积」的层条件得 $x \\in X(F) = \\prod_{k} X(F_{k})$，且 $p(x) = y$ —— 这就是提升。',
-          '- **足够多投射对象。** 任给凝聚态集 $X$：由「$\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$」（每个紧 Hausdorff 空间都是自由空间的满像），可取含 $X$ 的满态射 $\\coprod_{i} h_{F_{i}} \\twoheadrightarrow X$（$h_{F_{i}}$ 表示自由空间），而自由对象的**余积**仍是投射对象（「投射对象的余积还是投射的」）。于是每个 $X$ 都是某个投射对象的商。∎'
+          '- **自由紧 Hausdorff 空间是投射对象。** 记 $F = \\beta I$ 自由。\n\n任给满态射 $X \\twoheadrightarrow Y$ 与 $y \\in Y(F)$。\n\n由**满态射的判据**（在自由对象上逐点满），$y$ 在某个覆盖上局部有原像：存在有限不交并分解 $F = \\coprod_{k=1}^{n} F_{k}$ 与 $x_{k} \\in X(F_{k})$ 使 $p(x_{k}) = y|_{F_{k}}$。\n\n把 $(x_{k})_{k}$ 拼起来，用「保有限积」的层条件得 $x \\in X(F) = \\prod_{k} X(F_{k})$，且 $p(x) = y$ —— 这就是提升。',
+          '- **足够多投射对象。** 任给凝聚态集 $X$：由「$\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$」（每个紧 Hausdorff 空间都是自由空间的满像），可取含 $X$ 的满态射 $\\coprod_{i} h_{F_{i}} \\twoheadrightarrow X$（$h_{F_{i}}$ 表示自由空间），而自由对象的**余积**仍是投射对象（「投射对象的余积还是投射的」）。\n\n于是每个 $X$ 都是某个投射对象的商。\n\n∎'
         ].join('\n'),
         '⭐ **为什么这件事对凝聚态数学这么要紧**：$\\mathrm{Cond}$ 有足够多**投射**对象（不像一般拓扑斯只有足够多内射），于是「左导出函子」在 $\\mathrm{Cond}$ 里可以直接用自由紧 Hausdorff 块算 —— 这是 $\\mathrm{CondAb}$ 能做导出代数的那一半依据。'
       ].join('\n\n'),
@@ -272,7 +272,7 @@ window.MG = window.MG || {};
         '',
         '是**忠实**的，并且有右伴随 $X \\mapsto X(\\cdot)$。限制到**紧生成空间**的满子范畴上时，它变成**全忠实**的。'
       ].join('\n'),
-      notes: '关键一句：**若 $X$ 是拓扑空间，则它的底空间 $X(\\cdot) \\cong kX$**。\n\n所以「拓扑空间 $\\to$ 凝聚态集 $\\to$ 底拓扑空间」这个来回，做的正是**$k$-化**：它把一般拓扑空间换成紧生成的那一个，之后就不再变化。于是 $k\\mathbf{Top}$ 恰好是 $\\mathrm{Cond}$ 里「完整地记得自己」的那部分，而一般的 $\\mathbf{Top}$ 多出来的那些空间在 $\\mathrm{Cond}$ 里被合并掉了。',
+      notes: '关键一句：**若 $X$ 是拓扑空间，则它的底空间 $X(\\cdot) \\cong kX$**。\n\n所以「拓扑空间 $\\to$ 凝聚态集 $\\to$ 底拓扑空间」这个来回，做的正是**$k$-化**：它把一般拓扑空间换成紧生成的那一个，之后就不再变化。\n\n于是 $k\\mathbf{Top}$ 恰好是 $\\mathrm{Cond}$ 里「完整地记得自己」的那部分，而一般的 $\\mathbf{Top}$ 多出来的那些空间在 $\\mathrm{Cond}$ 里被合并掉了。',
       refs: ['Le Stum, An introduction to condensed mathematics, §4']
     },
 
@@ -351,7 +351,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '一个字读法：**头两条补的是「态射有没有核与余核、单满正不正则」；后面几条一路在补「越来越多的余极限操作是正合的、并且和别的操作交换」。**',
-        '⭐ **这些公理之间还有蕴含关系**（见「AB5 与 AB3*/AB4* 的关系」）：Grothendieck 范畴自动满足 AB3\\*；AB5 与 AB5\\* 互斥（除零范畴外不能同时成立）；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 停在 AB5 + AB3\\*，而 $\\mathrm{CondAb}$ 能上到 AB6 + AB4\\*。',
+        '⭐ **这些公理之间还有蕴含关系**（见「AB5 与 AB3*/AB4* 的关系」）：Grothendieck 范畴自动满足 AB3\\*；AB5 与 AB5\\* 互斥（除零范畴外不能同时成立）；\n\n拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 停在 AB5 + AB3\\*，而 $\\mathrm{CondAb}$ 能上到 AB6 + AB4\\*。',
         '⭐ **哪些范畴落在哪一级**是另一条独立的事，见「AB 公理的例子表」—— 那张表把 $\\mathbf{Ab}$、$\\mathbf{AbTop}$、$\\mathbf{AbCHaus}$、预层范畴、拓扑斯上的阿贝尔群、$\\mathrm{CondAb}$ 全部排了一遍。',
         '⚠️ 这条只给**定义与名字**：AB 公理是一把尺子，用来量「一个范畴能做多少同调代数」。真正有用的是把它用在具体范畴上得到的结论（即上面两条）。'
       ].join('\n\n'),
@@ -369,7 +369,7 @@ window.MG = window.MG || {};
         '**Grothendieck 范畴**是带**生成元**的 **AB5** 范畴（AB5 即：有所有余极限，且滤过余极限正合）。'
       ].join('\n'),
       notes: [
-        '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）。',
+        '例：$A\\text{-}\\mathbf{Mod}$ 是 Grothendieck 范畴；阿贝尔范畴 $\\mathcal{C}$ 的 $\\operatorname{Ind}(\\mathcal{C})$（按滤过余极限补全）也是；\n\n拓扑斯 $\\mathcal{T}$ 上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是（见「拓扑斯上的阿贝尔群是 Grothendieck 范畴」）。',
         '两条随定义而来的事实：Grothendieck 范畴**自动满足 AB3\\***（有所有极限）；而且它**有足够多的内射对象**。',
         '「滤过余极限正合 + 有生成元」这两条合起来，就足以让一套同调代数跑起来 —— 这是 Grothendieck 那一代人为「在抽象范畴上做同调代数」挑出来的最低要求。'
       ].join('\n\n'),
@@ -415,9 +415,9 @@ window.MG = window.MG || {};
         '设 $F$ 是**自由紧 Hausdorff 空间**（更一般地，**Stonean 空间**）。则自由凝聚态阿贝尔群 $\\mathbb{Z}\\cdot F$ 是**有限表现**的**投射**凝聚态阿贝尔群。'
       ].join('\n'),
       notes: [
-        '要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。',
+        '要证的等价形式是：函子 $M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong \\Gamma(F, M)$ 保满态射与滤过余极限。\n\n前半由「自由紧 Hausdorff 空间在 $\\mathrm{Cond}$ 里投射」给出，后半由截面函子的构造给出 —— 而截面函子实际上**保所有余极限**。',
         ['**证明。** 由张量—Hom 伴随，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot F, M) \\cong M(F) = \\Gamma(F, M)$ ✓，所以只需看 $\\Gamma(F,-)$。',
-          '- **保满态射**：上一条说 $\\Gamma(F,-)$ 保**所有**余极限，特别地保余核；$v$ 满 $\\iff$ $\\operatorname{coker} v = 0$ $\\implies$ $\\operatorname{coker}\\Gamma(v) = 0$ $\\implies$ $\\Gamma(v)$ 满 ✓；',
+          '- **保满态射**：上一条说 $\\Gamma(F,-)$ 保**所有**余极限，特别地保余核；$v$ 满 $\\iff$ $\\operatorname{coker} v = 0$ $\\implies$ $\\operatorname{coker}\\Gamma(v) = 0$ $\\implies$ $\\Gamma(v)$ 满 ✓；\n\n',
           '- **保滤过余极限**：同样由「保所有余极限」✓。',
           '而标准判据是：$P$ **投射** $\\iff$ $\\operatorname{Hom}(P,-)$ 保满态射；$P$ **有限表现** $\\iff$ $\\operatorname{Hom}(P,-)$ 保滤过余极限。两条合起来，$\\mathbb{Z}\\cdot F$ 就是有限表现的投射对象。∎'
         ].join('\n')
@@ -437,7 +437,9 @@ window.MG = window.MG || {};
       statement: '$\\mathrm{CondAb}$ 由**有限表现的投射**凝聚态阿贝尔群生成。特别地，它有足够多的投射对象。',
       notes: [
         ['**证明。**',
-          '- **生成**：$\\mathrm{Cond}$ 由 $\\{h_{F}\\}$（$F$ 自由紧 Hausdorff）生成；而一般地「若 $\\{X_{i}\\}$ 生成 $\\mathcal{C}$，则 $\\{\\mathbb{Z}\\cdot X_{i}\\}$ 生成 $\\mathrm{Ab}(\\mathcal{C})$」（用自由阿贝尔群对象的泛性质：两个态射若在所有 $\\mathbb{Z}\\cdot X_{i}$ 上相同则相同）。于是 $\\{\\mathbb{Z}\\cdot F\\}$ 生成 $\\mathrm{CondAb}$ ✓；',
+          '- **生成**：$\\mathrm{Cond}$ 由 $\\{h_{F}\\}$（$F$ 自由紧 Hausdorff）生成；而一般地「若 $\\{X_{i}\\}$ 生成 $\\mathcal{C}$，则 $\\{\\mathbb{Z}\\cdot X_{i}\\}$ 生成 $\\mathrm{Ab}(\\mathcal{C})$」（用自由阿贝尔群对象的泛性质：两个态射若在所有 $\\mathbb{Z}\\cdot X_{i}$ 上相同则相同）。\n\n' +
+          '于是 $\\{\\mathbb{Z}\\cdot F\\}$ 生成 $\\mathrm{CondAb}$ ✓；\n\n' +
+          '',
           '- 而每个 $\\mathbb{Z}\\cdot F$ 由**上一条**是有限表现的投射对象 ✓；',
           '- **足够多投射对象**：任给 $M$，由「生成」存在满态射 $\\bigoplus_{i} \\mathbb{Z}\\cdot F_{i} \\twoheadrightarrow M$，而投射对象的**余积**仍是投射对象 ✓ —— 所以每个 $M$ 都是某个投射对象的商。∎',
           '⭐ **这条是「在 $\\mathrm{CondAb}$ 里能做导出代数」的另一半依据**（另一半是「有足够多内射」，由它是 Grothendieck 范畴给出）：有足够多**投射**对象意味着**左**导出函子也能直接算。'
@@ -523,7 +525,7 @@ window.MG = window.MG || {};
         '',
         '它是 $Y$ 的一个子层。由定义，$p$ 的每个值都落在 $\\operatorname{Im}(p)$ 里，即 $\\operatorname{Im}(p) \\hookrightarrow Y$ 是满态射；而它同时是单态射，故（层里单满即同构）$\\operatorname{Im}(p) = Y$。也就是说：**$p$ 局部满**。',
         '',
-        '现在取 $F \\in \\mathbf{FCHaus}$ 与 $y \\in Y(F)$。由局部满，存在 $F$ 的覆盖，在其每一块 $F_{i}$ 上有 $x_{i} \\in X(F_{i})$ 使 $p(x_{i}) = y|_{F_{i}}$。$\\mathbf{FCHaus}$ 上的覆盖由**有限不交并**给出，而 $F$ 是自由的、余积在它上面就是无交并，所以可以直接把有限块上的 $x_{i}$ 拼起来（这正是「保有限积」那一条）：',
+        '现在取 $F \\in \\mathbf{FCHaus}$ 与 $y \\in Y(F)$。\n\n由局部满，存在 $F$ 的覆盖，在其每一块 $F_{i}$ 上有 $x_{i} \\in X(F_{i})$ 使 $p(x_{i}) = y|_{F_{i}}$。\n\n$\\mathbf{FCHaus}$ 上的覆盖由**有限不交并**给出，而 $F$ 是自由的、余积在它上面就是无交并，所以可以直接把有限块上的 $x_{i}$ 拼起来（这正是「保有限积」那一条）：',
         '',
         '$$x := (x_{i})_{i} \\in \\prod_{i} X(F_{i}) \\;\\cong\\; X\\Bigl(\\coprod_{i} F_{i}\\Bigr) \\;=\\; X(F)$$',
         '',
@@ -540,13 +542,13 @@ window.MG = window.MG || {};
       target: 'thm.top-cond-adjoint',
       title: '$\\mathbf{Top} \\to \\mathrm{Cond}$ 忠实、限制到 $k\\mathbf{Top}$ 全忠实',
       proof: [
-        '**$\\underline{X}$ 是凝聚态集。** 对任一点集 $S$，$\\underline{X}(S) = C(S, X)$；$C(-, X)$ 把 $\\mathbf{CHaus}$ 里的**有限不交并**变成有限积、把**商**变成核（连续映射在无交并上与商上都是逐块决定的）。由凝聚态集的两条判据，$\\underline{X}$ 是凝聚态集。∎',
+        '**$\\underline{X}$ 是凝聚态集。** 对任一点集 $S$，$\\underline{X}(S) = C(S, X)$；$C(-, X)$ 把 $\\mathbf{CHaus}$ 里的**有限不交并**变成有限积、把**商**变成核（连续映射在无交并上与商上都是逐块决定的）。\n\n由凝聚态集的两条判据，$\\underline{X}$ 是凝聚态集。\n\n∎',
         '',
         '**伴随。** 函子 $X \\mapsto \\underline{X}$ 与 $Z \\mapsto Z(\\cdot)$ 之间要给出',
         '',
         '$$\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, Z) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Top}}\\bigl(X, Z(\\cdot)\\bigr)$$',
         '',
-        '而 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, Z) = \\operatorname{Nat}(C(-,X), Z)$，按米田式的计算，它正是「在 $S = \\ast$ 处的取值」加上自然性 —— 也就是 $Z(\\cdot) = Z(\\ast)$ 上的一个元素，并且与所有 $\\underline{X}(S) = C(S,X)$ 相容。这恰恰是「从 $X$ 出发的连续映射」，两边一一对应。∎',
+        '而 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, Z) = \\operatorname{Nat}(C(-,X), Z)$，按米田式的计算，它正是「在 $S = \\ast$ 处的取值」加上自然性 —— 也就是 $Z(\\cdot) = Z(\\ast)$ 上的一个元素，并且与所有 $\\underline{X}(S) = C(S,X)$ 相容。\n\n这恰恰是「从 $X$ 出发的连续映射」，两边一一对应。\n\n∎',
         '',
         '**忠实。** 由上面的伴随式取 $Z = \\underline{Y}$：',
         '',
@@ -558,7 +560,7 @@ window.MG = window.MG || {};
         '',
         '（最后一个同构因为 $k\\mathbf{Top}$ 是余反射子范畴，$k$ 是含入的右伴随：$kX$ 处的映射等同于一切从 $X$ 出发射入紧生成空间的映射。）',
         '',
-        '当 $X$ 本身紧生成时 $kX = X$，上式就是 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) \\cong \\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$，逐对 $X, Y$ 都是双射 —— **限制到 $k\\mathbf{Top}$ 上全忠实**。对一般 $X$，$X \\to kX$ 是同一集合上的恒等映射，所以函子在态射层仍是单射 —— **在 $\\mathbf{Top}$ 上忠实**。∎'
+        '当 $X$ 本身紧生成时 $kX = X$，上式就是 $\\operatorname{Hom}_{\\mathrm{Cond}}(\\underline{X}, \\underline{Y}) \\cong \\operatorname{Hom}_{k\\mathbf{Top}}(X, kY)$，逐对 $X, Y$ 都是双射 —— **限制到 $k\\mathbf{Top}$ 上全忠实**。\n\n对一般 $X$，$X \\to kX$ 是同一集合上的恒等映射，所以函子在态射层仍是单射 —— **在 $\\mathbf{Top}$ 上忠实**。\n\n∎'
       ].join('\n'),
       note: '一句话记住：**「拓扑空间 $\\to$ 凝聚态集」这件事丢掉的东西，正好就是 $k$-化丢掉的东西。** 所以在 $k\\mathbf{Top}$ 上它不丢信息。'
     }

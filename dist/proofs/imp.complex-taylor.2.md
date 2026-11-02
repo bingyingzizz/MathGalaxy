@@ -9,4 +9,6 @@ $$f(z) = \sum_{n=0}^{\infty}\left( \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho}\fr
 
 最后一步是高阶导数公式（把 $z$ 换成 $a$）。
 
-**一致收敛。** 对任意紧集 $K \subset D(a, R)$，取 $\rho$ 使 $K \subset D(a, \rho) \subset D(a, R)$，则 $|c_n| \le \|f\|_{\partial D(a,\rho)}/\rho^n$，优级数在 $K$ 上收敛。$\blacksquare$
+**一致收敛。** 对任意紧集 $K \subset D(a, R)$，取 $\rho$ 使 $K \subset D(a, \rho) \subset D(a, R)$，则 $|c_n| \le \|f\|_{\partial D(a,\rho)}/\rho^n$，优级数在 $K$ 上收敛。
+
+$\blacksquare$

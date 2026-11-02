@@ -3,7 +3,7 @@
 
 `def.cech-functor` Čech 函子 + `prop.cech-properties` Čech 函子的性质 → `thm.sheafification` 层化
 
-**伴随性。** 要证 $\operatorname{Hom}(T^{\sharp}, F) \cong \operatorname{Hom}(T, F)$（$F$ 是层）。先证 $\operatorname{Hom}(\widehat{H}(T), F) \cong \operatorname{Hom}(T, F)$：由 $\widehat{H}$ 的定义逐点展开，
+先证 $\operatorname{Hom}(\widehat{H}(T), F) \cong \operatorname{Hom}(T, F)$：由 $\widehat{H}$ 的定义逐点展开，
 
 $$\operatorname{Hom}\bigl(\widehat{H}(T), F\bigr)(X) \cong \operatorname{Hom}\bigl(\widehat{H}(T)(X), F(X)\bigr)$$
 

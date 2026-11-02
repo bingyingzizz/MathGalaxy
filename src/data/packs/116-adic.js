@@ -30,7 +30,7 @@ window.MG = window.MG || {};
       tags: ['定义', '解析几何', 'adic'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1'],
       statement: [
-        '白话：**Huber pair = 一个环 $A$，加上「哪些元素算有界」这个额外指定 $A^+$**。经典理论里 $A$ 带拓扑、$A^+$ 是它的「单位球」；本图只做**离散**版本 —— $A$ 不带拓扑，「有界」完全由 $A^+$ 这个子环说了算。它要造的对象是「$A$ 的 adic 谱」，即下一节点那个 $\\operatorname{Spa}$。',
+        '白话：**Huber pair = 一个环 $A$，加上「哪些元素算有界」这个额外指定 $A^+$**。\n\n经典理论里 $A$ 带拓扑、$A^+$ 是它的「单位球」；本图只做**离散**版本 —— $A$ 不带拓扑，「有界」完全由 $A^+$ 这个子环说了算。\n\n它要造的对象是「$A$ 的 adic 谱」，即下一节点那个 $\\operatorname{Spa}$。',
         '',
         '一个**离散 Huber pair** 是一对 $(A, A^+)$：',
         '',
@@ -43,7 +43,7 @@ window.MG = window.MG || {};
         '',
         '余极限跑遍所有「$B$ 与 $B^+$ 都有限生成 $\\mathbb{Z}$-代数」的子对 $(B,B^+) \\subseteq (A,A^+)$。'
       ].join('\n'),
-      notes: '⭐ 为什么需要 $A^+$：解析几何里「有界」不是 $A$ 自带的，要**额外指定**哪些元素算「$\\le 1$」。$A^+$ 就是「单位球的整数模型」。\n\n⭐ 两个极端：$(A, A)$（「一切都有界」）与 $(A, \\widetilde{\\mathbb{Z}})$（「代数整数才有界」，$\\widetilde{\\mathbb{Z}}$ 是 $\\mathbb{Z}$ 在 $A$ 中的整闭包）。前者给出概形 $\\operatorname{Spec} A$ 的 adic 化，后者给出「去掉阿基米德部分」的版本。\n\n⚠ 定义里 $A$ 不要求拓扑 —— 这是「离散」二字的含义。经典 Huber 对允许一般拓扑环，本图只做离散情形（足够覆盖 $\\mathbb{Z}$ 上有限型的算术场景）。'
+      notes: '⭐ 为什么需要 $A^+$：解析几何里「有界」不是 $A$ 自带的，要**额外指定**哪些元素算「$\\le 1$」。\n\n$A^+$ 就是「单位球的整数模型」。\n\n⭐ 两个极端：$(A, A)$（「一切都有界」）与 $(A, \\widetilde{\\mathbb{Z}})$（「代数整数才有界」，$\\widetilde{\\mathbb{Z}}$ 是 $\\mathbb{Z}$ 在 $A$ 中的整闭包）。\n\n前者给出概形 $\\operatorname{Spec} A$ 的 adic 化，后者给出「去掉阿基米德部分」的版本。\n\n⚠ 定义里 $A$ 不要求拓扑 —— 这是「离散」二字的含义。\n\n经典 Huber 对允许一般拓扑环，本图只做离散情形（足够覆盖 $\\mathbb{Z}$ 上有限型的算术场景）。'
     },
     {
       id: 'def.adic-spectrum',
@@ -55,13 +55,16 @@ window.MG = window.MG || {};
       tags: ['定义', '解析几何', 'adic', '谱'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Definition 9.1'],
       statement: [
-        '白话：**把环 $A$ 的元素「量大小」的所有方式收集起来，就得到 adic 谱**。每个点是一个「绝对值」（valuation，赋值），$A^+$ 的作用是筛掉「把某个有界元量成 $>1$」的那些点。这是 $\\operatorname{Spec}$ 的「带大小」版本 —— $\\operatorname{Spec}$ 只记「哪些理想的元素为零」，$\\operatorname{Spa}$ 还记「多小」。',
+        '白话：**把环 $A$ 的元素「量大小」的所有方式收集起来，就得到 adic 谱**。\n\n每个点是一个「绝对值」（valuation，赋值），$A^+$ 的作用是筛掉「把某个有界元量成 $>1$」的那些点。\n\n这是 $\\operatorname{Spec}$ 的「带大小」版本 —— $\\operatorname{Spec}$ 只记「哪些理想的元素为零」，$\\operatorname{Spa}$ 还记「多小」。',
         '',
         '先约定术语。**赋值**是「量大小」的函数 $|\\cdot| : A \\to \\Gamma \\cup \\{0\\}$（$\\Gamma$ 是乘法写法的全序阿贝尔群，想成 $\\mathbb{R}_{>0}$ 即可），满足',
         '',
         '$$|0| = 0, \\quad |1| = 1, \\quad |xy| = |x|\\,|y|, \\quad |x + y| \\le \\max(|x|, |y|).$$',
         '',
-        '两个赋值 $|\\cdot|, |\\cdot|_1$ **等价**，如果存在保序的群同构使 $|x|_1 = \\sigma(|x|)$ 对一切 $x$ —— 也就是「它们给 $A$ 排出的大小顺序完全一样」，只是「标尺」换了。$\\operatorname{Spa}$ 取的是赋值的**等价类**（所以同一个点不会因为标尺不同重复计数）。直觉：$|x|$ 是「$x$ 到 $0$ 的距离」，$|x| \\le 1$ 是「$x$ 有界」；$p$-进绝对值 $|p^{n}u| = p^{-n}$（$u$ 与 $p$ 互素）就是标准例子。',
+        '两个赋值 $|\\cdot|, |\\cdot|_1$ **等价**，如果存在保序的群同构使 $|x|_1 = \\sigma(|x|)$ 对一切 $x$ —— 也就是「它们给 $A$ 排出的大小顺序完全一样」，只是「标尺」换了。\n\n' +
+        '$\\operatorname{Spa}$ 取的是赋值的**等价类**（所以同一个点不会因为标尺不同重复计数）。\n\n' +
+        '直觉：$|x|$ 是「$x$ 到 $0$ 的距离」，$|x| \\le 1$ 是「$x$ 有界」；\n\n' +
+        '$p$-进绝对值 $|p^{n}u| = p^{-n}$（$u$ 与 $p$ 互素）就是标准例子。',
         '',
         '设 $(A, A^+)$ 是离散 Huber pair。**adic 谱**',
         '',
@@ -73,7 +76,7 @@ window.MG = window.MG || {};
         '',
         '这些有理开集构成一组基，$\\operatorname{Spa}(A,A^+)$ 是 **spectral space**（谱空间：同胚于某个环的素谱的拓扑空间；等价刻画是「紧、$T_0$、有紧开集作基」）。'
       ].join('\n'),
-      notes: '⭐ 赋值满足**强三角不等式** $|x+y| \\le \\max(|x|,|y|)$，这是非阿基米德的标志；换成 $\\le |x| + |y|$ 就是阿基米德的（复几何那一边），那是另一套理论。\n\n⭐ 有理开集是「$|g_i| \\le |f|$」定义的区域 —— 直觉上就是「$g_i/f$ 有界」的 locus。它们既开又紧（quasicompact），这正是 adic 空间比概形好用的地方：仿射开集自带紧性。\n\n⚠ $\\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、$T_0$、有开集基）。所以不能拿度量空间的直觉套它。'
+      notes: '⭐ 赋值满足**强三角不等式** $|x+y| \\le \\max(|x|,|y|)$，这是非阿基米德的标志；换成 $\\le |x| + |y|$ 就是阿基米德的（复几何那一边），那是另一套理论。\n\n⭐ 有理开集是「$|g_i| \\le |f|$」定义的区域 —— 直觉上就是「$g_i/f$ 有界」的 locus。\n\n它们既开又紧（quasicompact），这正是 adic 空间比概形好用的地方：仿射开集自带紧性。\n\n⚠ $\\operatorname{Spa}(A,A^+)$ 一般**不是** Hausdorff 的，它是 spectral（紧、$T_0$、有开集基）。\n\n所以不能拿度量空间的直觉套它。'
     },
     {
       id: 'prop.huber-subring-recovery',
@@ -97,7 +100,7 @@ window.MG = window.MG || {};
         '',
         '特别地 $A^+ = \\{f \\in A : \\forall x \\in \\operatorname{Spa}(A,A^+),\\ |f(x)| \\le 1\\}$。'
       ].join('\n'),
-      notes: '⭐ 这条说明：**$A^+$ 不是额外数据，而是谱上的「单位球截面」**。换句话说，$(A,A^+)$ 与「$A$ 加上一个谱的开闭子集」是同一件事 —— 这正是把环论翻译成几何的地方。\n\n⚠ 一般 $A^+$ 不可能是任意子环：必须整闭。反例：$A = \\mathbb{Z}[T]$、$A^+ = \\mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个 $\\operatorname{Spa}$。\n\n📌 证明用赋值环的存在性（扎里斯基引理）：若 $f \\notin A^+$，在 $A^+[1/f]$ 里取素理想，再取支配它的赋值环，得到 $|f| > 1$ 的点。'
+      notes: '⭐ 这条说明：**$A^+$ 不是额外数据，而是谱上的「单位球截面」**。\n\n换句话说，$(A,A^+)$ 与「$A$ 加上一个谱的开闭子集」是同一件事 —— 这正是把环论翻译成几何的地方。\n\n⚠ 一般 $A^+$ 不可能是任意子环：必须整闭。\n\n反例：$A = \\mathbb{Z}[T]$、$A^+ = \\mathbb{Z}[T^2]$ 不整闭（$T$ 在 $\\mathbb{Z}[T^2]$ 上整），对应的子集并不是某个 $\\operatorname{Spa}$。\n\n📌 证明用赋值环的存在性（扎里斯基引理）：若 $f \\notin A^+$，在 $A^+[1/f]$ 里取素理想，再取支配它的赋值环，得到 $|f| > 1$ 的点。'
     },
     {
       id: 'prop.rational-localization',
@@ -109,7 +112,7 @@ window.MG = window.MG || {};
       tags: ['命题', '解析几何', 'adic', '局部化'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.3'],
       statement: [
-        '设 $(A,A^+) \\to (B,B^+)$ 是离散 Huber pair 的映射，且 $\\operatorname{Spa}(B,B^+) \\to \\operatorname{Spa}(A,A^+)$ 穿过有理开集 $U = U\\!\\left(\\frac{g_1,\\ldots,g_n}{f}\\right)$。则映射唯一地穿过',
+        '设 $(A,A^+) \\to (B,B^+)$ 是离散 Huber pair 的映射，且 $\\operatorname{Spa}(B,B^+) \\to \\operatorname{Spa}(A,A^+)$ 穿过有理开集 $U = U\\!\\left(\\frac{g_1,\\ldots,g_n}{f}\\right)$。\n\n则映射唯一地穿过',
         '',
         '$$\\Bigl(A\\bigl[\\tfrac{1}{f}\\bigr],\\ \\widetilde{A^+\\bigl[\\tfrac{g_1}{f}, \\ldots, \\tfrac{g_n}{f}\\bigr]}\\Bigr),$$',
         '',
@@ -119,7 +122,7 @@ window.MG = window.MG || {};
         '',
         '是到 $U$ 上的同胚。'
       ].join('\n'),
-      notes: '⭐ 这是「有理开集 = 仿射开集」的精确含义：每个有理开集本身又是一个 $\\operatorname{Spa}$，只是把 $f$ 取逆、把 $g_i/f$ 加进 $A^+$。于是 adic 空间有一套**仿射开集基**，可以像概形一样做层论。\n\n⚠ 唯一性来自「$f$ 在 $\\operatorname{Spa}(B,B^+)$ 上处处非零 $\\implies$ $f$ 在 $B$ 中可逆」（否则 $\\operatorname{Spec}(B/fB)$ 会给一个 $|f| = 0$ 的点）。'
+      notes: '⭐ 这是「有理开集 = 仿射开集」的精确含义：每个有理开集本身又是一个 $\\operatorname{Spa}$，只是把 $f$ 取逆、把 $g_i/f$ 加进 $A^+$。\n\n于是 adic 空间有一套**仿射开集基**，可以像概形一样做层论。\n\n⚠ 唯一性来自「$f$ 在 $\\operatorname{Spa}(B,B^+)$ 上处处非零 $\\implies$ $f$ 在 $B$ 中可逆」（否则 $\\operatorname{Spec}(B/fB)$ 会给一个 $|f| = 0$ 的点）。'
     },
     {
       id: 'thm.adic-structure-sheaf',
@@ -143,7 +146,7 @@ window.MG = window.MG || {};
         '',
         '**(iii)** $\\mathcal{O}_X^+(U) = \\{f \\in \\mathcal{O}_X(U) : \\forall x \\in U,\\ |f(x)| \\le 1\\}$。'
       ].join('\n'),
-      notes: '⭐ 证明的关键是一个「借道概形」的技巧：有映射 $\\psi : \\operatorname{Spec} A \\to \\operatorname{Spa}(A,A^+)$，把素理想 $\\mathfrak{p}$ 送到 $A \\to \\operatorname{Frac}(A/\\mathfrak{p}) \\to \\{0,1\\}$。有理开集在 $\\psi$ 下的原像正是 $D(f)$，于是 $\\mathcal{O}_{\\operatorname{Spa}(A,A^+)}$ 是 $\\mathcal{O}_{\\operatorname{Spec} A}$ 在 $\\psi$ 下的**推前**；推前保层。\n\n⭐ (iii) 说明 $\\mathcal{O}^+$ 不是额外结构，而是 $\\mathcal{O}$ 里「逐点 $\\le 1$」的那部分 —— 与 `prop.huber-subring-recovery` 是同一句话的局部版本。'
+      notes: '⭐ 证明的关键是一个「借道概形」的技巧：有映射 $\\psi : \\operatorname{Spec} A \\to \\operatorname{Spa}(A,A^+)$，把素理想 $\\mathfrak{p}$ 送到 $A \\to \\operatorname{Frac}(A/\\mathfrak{p}) \\to \\{0,1\\}$。\n\n有理开集在 $\\psi$ 下的原像正是 $D(f)$，于是 $\\mathcal{O}_{\\operatorname{Spa}(A,A^+)}$ 是 $\\mathcal{O}_{\\operatorname{Spec} A}$ 在 $\\psi$ 下的**推前**；\n\n推前保层。\n\n⭐ (iii) 说明 $\\mathcal{O}^+$ 不是额外结构，而是 $\\mathcal{O}$ 里「逐点 $\\le 1$」的那部分 —— 与 `prop.huber-subring-recovery` 是同一句话的局部版本。'
     },
     {
       id: 'def.discrete-adic-space',
@@ -170,7 +173,7 @@ window.MG = window.MG || {};
         '其中 $(A,A^+)$ 是离散 Huber pair。'
       ].join('\n'),
       notes: [
-        '⭐ 概形的两个全忠实嵌入：$X = \\operatorname{Spec} A \\mapsto X_{\\mathrm{ad}} = \\operatorname{Spa}(A,A)$（「一切有界」），以及 $X \\mapsto X_{\\mathrm{ad}/R} = \\operatorname{Spa}(A, \\widetilde{R})$（相对 $\\operatorname{Spec} R$）。两者都保粘合，且有比较映射 $X_{\\mathrm{ad}} \\to X_{\\mathrm{ad}/R}$。\n\n⭐ 点的另一种描述（后面证固有性要用）：$X_{\\mathrm{ad}}$ 的点 = 映射 $\\operatorname{Spec} V \\to X$（$V$ 是赋值环），模掉「忠实平坦的赋值环扩张」；$X_{\\mathrm{ad}/R}$ 的点 = 带交换图的',
+        '⭐ 概形的两个全忠实嵌入：$X = \\operatorname{Spec} A \\mapsto X_{\\mathrm{ad}} = \\operatorname{Spa}(A,A)$（「一切有界」），以及 $X \\mapsto X_{\\mathrm{ad}/R} = \\operatorname{Spa}(A, \\widetilde{R})$（相对 $\\operatorname{Spec} R$）。\n\n两者都保粘合，且有比较映射 $X_{\\mathrm{ad}} \\to X_{\\mathrm{ad}/R}$。\n\n\n\n⭐ 点的另一种描述（后面证固有性要用）：$X_{\\mathrm{ad}}$ 的点 = 映射 $\\operatorname{Spec} V \\to X$（$V$ 是赋值环），模掉「忠实平坦的赋值环扩张」；\n\n$X_{\\mathrm{ad}/R}$ 的点 = 带交换图的',
         '',
         '$$\\begin{array}{ccc} \\operatorname{Spec} K & \\to & X \\\\ \\downarrow & & \\downarrow \\\\ \\operatorname{Spec} V & \\to & \\operatorname{Spec} R \\end{array}$$',
         '',
@@ -187,7 +190,7 @@ window.MG = window.MG || {};
       tags: ['命题', '解析几何', 'adic', '概形'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture IX, Proposition 9.6'],
       statement: [
-        '白话：**概形塞进 adic 空间这一步是忠实的** —— 概形 $X$ 有两个 adic 化版本（「一切有界」的 $X_{\\mathrm{ad}}$ 与「相对 $R$」的 $X_{\\mathrm{ad}/R}$），两者之间的比较映射在 $X$ 分离（separation：点能被开集分开）时是开浸入、在 $X$ 固有（proper：紧致性的相对版本）时是同构。于是概形的几何完全落在 adic 几何里。',
+        '白话：**概形塞进 adic 空间这一步是忠实的** —— 概形 $X$ 有两个 adic 化版本（「一切有界」的 $X_{\\mathrm{ad}}$ 与「相对 $R$」的 $X_{\\mathrm{ad}/R}$），两者之间的比较映射在 $X$ 分离（separation：点能被开集分开）时是开浸入、在 $X$ 固有（proper：紧致性的相对版本）时是同构。\n\n于是概形的几何完全落在 adic 几何里。',
         '',
         '设 $X$ 是 $\\operatorname{Spec} R$ 上有限型的概形。则比较映射',
         '',
@@ -195,7 +198,7 @@ window.MG = window.MG || {};
         '',
         '在 $X$ 分离时是**开浸入**；在 $X$ **固有**时是同构。'
       ].join('\n'),
-      notes: '⭐ 这条把「分离 / 固有」翻译成 adic 语言：固有概形的 adic 化与「相对 $R$ 的 adic 化」完全一致，于是后面可以用 $X_{\\mathrm{ad}/R}$ 上的层来计算 $X$ 上的东西。\n\n⭐ 证明就是赋值判据：有限型时局部是开浸入；点集上的单射 / 双射正是分离 / 固有的赋值判据。\n\n⚠ 反过来不成立：adic 空间比概形多得多（$\\operatorname{Spa}(\\mathbb{Z}_p, \\mathbb{Z}_p)$ 就不是某个概形的 adic 化）。'
+      notes: '⭐ 这条把「分离 / 固有」翻译成 adic 语言：固有概形的 adic 化与「相对 $R$ 的 adic 化」完全一致，于是后面可以用 $X_{\\mathrm{ad}/R}$ 上的层来计算 $X$ 上的东西。\n\n⭐ 证明就是赋值判据：有限型时局部是开浸入；\n\n点集上的单射 / 双射正是分离 / 固有的赋值判据。\n\n⚠ 反过来不成立：adic 空间比概形多得多（$\\operatorname{Spa}(\\mathbb{Z}_p, \\mathbb{Z}_p)$ 就不是某个概形的 adic 化）。'
     },
     {
       id: 'thm.adic-gluing',
@@ -219,7 +222,7 @@ window.MG = window.MG || {};
         '',
         '取同伦范畴得到三角范畴，记作 $D(\\mathcal{O}_{X,\\blacksquare})$。'
       ].join('\n'),
-      notes: '⚠ **为什么必须上 $\\infty$-范畴**：在阿贝尔层面粘不起来 —— 有理开集上的基变换 $-\\otimes_{(A,A^+)_\\blacksquare} (\\mathcal{O}_X(U),\\mathcal{O}_X^+(U))_\\blacksquare$ 不正合。具体例子：$(A,A^+) = (\\mathbb{F}_p[T], \\mathbb{F}_p)$，取有理开集「$|T| \\le 1$」，此时 $(\\mathcal{O}_X(U),\\mathcal{O}_X^+(U)) = (\\mathbb{F}_p[T], \\mathbb{F}_p[T])$，而单射 $\\mathbb{F}_p[T] \\hookrightarrow \\mathbb{F}_p((T^{-1}))$ 在基变换后变成 $\\mathbb{F}_p[T] \\to 0$。\\n\\n⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；在导出范畴上把这两条做成粘合数据，再升到 $\\infty$-范畴（同伦之间的同伦要留住）。\\n\\n📌 原文 Lectures IX–X（pp. 62–70）。'
+      notes: '⚠ **为什么必须上 $\\infty$-范畴**：在阿贝尔层面粘不起来 —— 有理开集上的基变换 $-\\otimes_{(A,A^+)_\\blacksquare} (\\mathcal{O}_X(U),\\mathcal{O}_X^+(U))_\\blacksquare$ 不正合。\n\n具体例子：$(A,A^+) = (\\mathbb{F}_p[T], \\mathbb{F}_p)$，取有理开集「$|T| \\le 1$」，此时 $(\\mathcal{O}_X(U),\\mathcal{O}_X^+(U)) = (\\mathbb{F}_p[T], \\mathbb{F}_p[T])$，而单射 $\\mathbb{F}_p[T] \\hookrightarrow \\mathbb{F}_p((T^{-1}))$ 在基变换后变成 $\\mathbb{F}_p[T] \\to 0$。\n\n\\n\\n⭐ 证明思路与概形的 Zariski 下降平行：局部化可交换、局部为零则整体为零；\n\n在导出范畴上把这两条做成粘合数据，再升到 $\\infty$-范畴（同伦之间的同伦要留住）。\n\n\\n\\n📌 原文 Lectures IX–X（pp. 62–70）。'
     }
   ],
 
@@ -235,7 +238,7 @@ window.MG = window.MG || {};
         '',
         '$$|f(x)|^n = |a_{n-1}f^{n-1} + \\cdots + a_0| \\le \\max_{i} |a_i(x)|\\,|f(x)|^{i} \\le \\max(1, |f(x)|^{n-1}),$$',
         '',
-        '这迫使 $|f(x)| \\le 1$。\n\n**反向。** 设 $f \\notin A^+$。在 $A^+[1/f]$ 中取素理想 $\\mathfrak{p}$ 含 $1/f$，取 $\\mathfrak{p}$ 下的极小素理想 $\\mathfrak{q}$，再取赋值环 $V$ 支配 $A^+[1/f]$ 在 $\\mathfrak{p}$ 处的局部化。由于 $\\operatorname{Spec} A[1/f] \\to \\operatorname{Spec} A^+[1/f]$ 的像含 $\\mathfrak{q}$，可把赋值提升到 $A[1/f]$。得到的赋值在 $A^+$ 上 $\\le 1$、在 $f$ 上 $> 1$，故 $f$ 不在右边。$\\blacksquare$'
+        '这迫使 $|f(x)| \\le 1$。\n\n\n\n**反向。** 设 $f \\notin A^+$。\n\n在 $A^+[1/f]$ 中取素理想 $\\mathfrak{p}$ 含 $1/f$，取 $\\mathfrak{p}$ 下的极小素理想 $\\mathfrak{q}$，再取赋值环 $V$ 支配 $A^+[1/f]$ 在 $\\mathfrak{p}$ 处的局部化。\n\n由于 $\\operatorname{Spec} A[1/f] \\to \\operatorname{Spec} A^+[1/f]$ 的像含 $\\mathfrak{q}$，可把赋值提升到 $A[1/f]$。\n\n得到的赋值在 $A^+$ 上 $\\le 1$、在 $f$ 上 $> 1$，故 $f$ 不在右边。\n\n$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -245,7 +248,17 @@ window.MG = window.MG || {};
       target: 'prop.rational-localization',
       title: '有理开集 $\\implies$ 局部化',
       proof: [
-        '设 $(A,A^+) \\to (B,B^+)$ 的谱映射落在 $U = \\{|g_i| \\le |f| \\ne 0\\}$ 内。\n\n**$f$ 在 $B$ 中可逆。** 否则 $B/fB \\ne 0$，取素理想 $\\mathfrak{p} \\supset fB$，它给出 $y \\in \\operatorname{Spa}(B,B^+)$ 且 $|f(y)| = 0$，与落在 $U$ 内矛盾。于是得到 $A[1/f] \\to B$。\n\n**$g_i/f \\in B^+$。** 对一切 $y$，$|g_i(y)| \\le |f(y)|$ 且 $|f(y)| \\ne 0$，故 $|g_i/f(y)| \\le 1$；由 `prop.huber-subring-recovery` 得 $g_i/f \\in B^+$。于是有 $A^+[g_i/f] \\to B^+$，再延拓到整闭包。\n\n**同胚。** 两条映射互逆，展开定义即得。$\\blacksquare$'
+        '设 $(A,A^+) \\to (B,B^+)$ 的谱映射落在 $U = \\{|g_i| \\le |f| \\ne 0\\}$ 内。\n\n' +
+        '\n\n' +
+        '**$f$ 在 $B$ 中可逆。** 否则 $B/fB \\ne 0$，取素理想 $\\mathfrak{p} \\supset fB$，它给出 $y \\in \\operatorname{Spa}(B,B^+)$ 且 $|f(y)| = 0$，与落在 $U$ 内矛盾。\n\n' +
+        '于是得到 $A[1/f] \\to B$。\n\n' +
+        '\n\n' +
+        '**$g_i/f \\in B^+$。** 对一切 $y$，$|g_i(y)| \\le |f(y)|$ 且 $|f(y)| \\ne 0$，故 $|g_i/f(y)| \\le 1$；\n\n' +
+        '由 `prop.huber-subring-recovery` 得 $g_i/f \\in B^+$。\n\n' +
+        '于是有 $A^+[g_i/f] \\to B^+$，再延拓到整闭包。\n\n' +
+        '\n\n' +
+        '**同胚。** 两条映射互逆，展开定义即得。\n\n' +
+        '$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -255,7 +268,17 @@ window.MG = window.MG || {};
       target: 'thm.adic-structure-sheaf',
       title: '有理开集上的局部化 $\\implies$ 结构层是层',
       proof: [
-        '由 `prop.rational-localization`，$\\mathcal{O}_X(U) = A[1/f]$ 只依赖 $U$，且粘合映射唯一，所以它预层化。\n\n**$\\mathcal{O}_X$ 是层。** 考虑 $\\psi : \\operatorname{Spec} A \\to \\operatorname{Spa}(A,A^+)$，$\\mathfrak{p} \\mapsto (A \\to \\operatorname{Frac}(A/\\mathfrak{p}) \\to \\{0,1\\})$。有理开集的原像是 $D(f)$，故 $\\mathcal{O}_{\\operatorname{Spa}}$ 是 $\\mathcal{O}_{\\operatorname{Spec} A}$ 沿 $\\psi$ 的推前；推前保层。\n\n**赋值延拓到茎。** 每个 $x$ 在包含它的有理开集上都有定义，且与局部化相容；取余极限得 $\\mathcal{O}_{X,x}$ 上的赋值。\n\n**(iii)** 在每个仿射开集上就是 `prop.huber-subring-recovery`。$\\blacksquare$'
+        '由 `prop.rational-localization`，$\\mathcal{O}_X(U) = A[1/f]$ 只依赖 $U$，且粘合映射唯一，所以它预层化。\n\n' +
+        '\n\n' +
+        '**$\\mathcal{O}_X$ 是层。** 考虑 $\\psi : \\operatorname{Spec} A \\to \\operatorname{Spa}(A,A^+)$，$\\mathfrak{p} \\mapsto (A \\to \\operatorname{Frac}(A/\\mathfrak{p}) \\to \\{0,1\\})$。\n\n' +
+        '有理开集的原像是 $D(f)$，故 $\\mathcal{O}_{\\operatorname{Spa}}$ 是 $\\mathcal{O}_{\\operatorname{Spec} A}$ 沿 $\\psi$ 的推前；\n\n' +
+        '推前保层。\n\n' +
+        '\n\n' +
+        '**赋值延拓到茎。** 每个 $x$ 在包含它的有理开集上都有定义，且与局部化相容；\n\n' +
+        '取余极限得 $\\mathcal{O}_{X,x}$ 上的赋值。\n\n' +
+        '\n\n' +
+        '**(iii)** 在每个仿射开集上就是 `prop.huber-subring-recovery`。\n\n' +
+        '$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -265,7 +288,11 @@ window.MG = window.MG || {};
       target: 'prop.scheme-embeds-adic',
       title: '赋值判据 $\\implies$ 分离/固有',
       proof: [
-        '有限型时，仿射局部上 $X_{\\mathrm{ad}} \\to X_{\\mathrm{ad}/R}$ 就是 $\\operatorname{Spa}(A,A) \\to \\operatorname{Spa}(A,\\widetilde{R})$，由 `prop.rational-localization` 知是开浸入。\n\n整体上，开浸入 $\\iff$ 点集上单射（局部已是开浸入）；而点集上的单射 / 双射正是分离 / 固有的**赋值判据**（用 `def.discrete-adic-space` 里「点 = 赋值环映射」的描述）。$\\blacksquare$'
+        '有限型时，仿射局部上 $X_{\\mathrm{ad}} \\to X_{\\mathrm{ad}/R}$ 就是 $\\operatorname{Spa}(A,A) \\to \\operatorname{Spa}(A,\\widetilde{R})$，由 `prop.rational-localization` 知是开浸入。\n\n' +
+        '\n\n' +
+        '整体上，开浸入 $\\iff$ 点集上单射（局部已是开浸入）；\n\n' +
+        '而点集上的单射 / 双射正是分离 / 固有的**赋值判据**（用 `def.discrete-adic-space` 里「点 = 赋值环映射」的描述）。\n\n' +
+        '$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -275,13 +302,13 @@ window.MG = window.MG || {};
       target: 'thm.adic-gluing',
       title: '结构层 + 局部化的全忠实 $\\implies$ $\\infty$-范畴粘合',
       proof: [
-        '**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。',
+        '**记号。** $\\mathcal{C}$ = 离散 Huber 对构成的景，覆盖取「标准覆盖」；$\\operatorname{Spec}(A,A^+)$ 表示对应的 adic 谱。\n\n函子 $\\Phi : X \\mapsto (|X|, \\mathcal{O}_X)$ 从离散 adic 空间到 $\\mathcal{C}$ 上的「空间」（局部模型层 + 环层）之范畴。',
         '',
         '**第一步：$\\operatorname{Spec}$ 是层。** 对标准覆盖 $\\{(A,A^+) \\to (A_i,A_i^+)\\}$，$\\operatorname{Spec}$ 的粘合条件逐点验证：覆盖在拓扑空间层面是开覆盖，结构层由 $A \\to \\varprojlim A_i$ 的完全性给出（Prop 10.1(a)）。',
         '',
         '**第二步：全忠实。** 对 adic 空间 $X, Y$，',
         '$$\\operatorname{Hom}(X,Y) \\longrightarrow \\operatorname{Hom}\\big((|X|,\\mathcal{O}_X), (|Y|,\\mathcal{O}_Y)\\big)$$',
-        '是双射（Prop 10.1(b)）。化到 $Y = \\operatorname{Spec}(A,A^+)$ 仿射：一个「空间」映射 $X \\to \\operatorname{Spec}(A,A^+)$ 等价于 Huber 对映射 $(A,A^+) \\to (\\mathcal{O}_X(X), \\mathcal{O}_X(X)^\\circ)$ —— 由第一步的层性，$\\mathcal{O}_X(X)$ 上带自然的拓扑与整环，逐点取局部化即得 adic 空间映射。反方向显然。于是 $\\Phi$ 全忠实。',
+        '是双射（Prop 10.1(b)）。\n\n化到 $Y = \\operatorname{Spec}(A,A^+)$ 仿射：一个「空间」映射 $X \\to \\operatorname{Spec}(A,A^+)$ 等价于 Huber 对映射 $(A,A^+) \\to (\\mathcal{O}_X(X), \\mathcal{O}_X(X)^\\circ)$ —— 由第一步的层性，$\\mathcal{O}_X(X)$ 上带自然的拓扑与整环，逐点取局部化即得 adic 空间映射。\n\n反方向显然。\n\n于是 $\\Phi$ 全忠实。',
         '',
         '**第三步：仿射的纤维积。** 对 Huber 对映射 $A \\to B$、$A \\to C$（$A^+$ 的情形同），',
         '$$\\begin{aligned}',
@@ -298,7 +325,12 @@ window.MG = window.MG || {};
         '',
         '（Prop 10.5 的一般判据；这里用在 $\\mathcal{C}$ 上。）条件 1 给出一族仿射；条件 2 保证胶合数据一致：由第三步，纤维积存在且仍是仿射；由第四步，可用标准覆盖细化；由第一步，胶合出的层与 $\\Phi$ 的像一致。',
         '',
-        '**第六步：构造逆函子。** 给定满足 1、2 的 $F$，取所有 $F_i \\to F$，按第四步把覆盖细化为标准覆盖，用第三步的笛卡尔方块作转移映射。第五步的 2 保证 cocycle 条件；第一步的层性保证粘合唯一。所得 adic 空间 $X$ 满足 $\\Phi(X) \\cong F$，且由第二步全忠实，$X$ 在等价意义下唯一。于是 $\\Phi$ 本质满，因而是范畴等价。$\\blacksquare$',
+        '**第六步：构造逆函子。** 给定满足 1、2 的 $F$，取所有 $F_i \\to F$，按第四步把覆盖细化为标准覆盖，用第三步的笛卡尔方块作转移映射。\n\n' +
+        '第五步的 2 保证 cocycle 条件；\n\n' +
+        '第一步的层性保证粘合唯一。\n\n' +
+        '所得 adic 空间 $X$ 满足 $\\Phi(X) \\cong F$，且由第二步全忠实，$X$ 在等价意义下唯一。\n\n' +
+        '于是 $\\Phi$ 本质满，因而是范畴等价。\n\n' +
+        '$\\blacksquare$',
       ].join('\n')
     },
 

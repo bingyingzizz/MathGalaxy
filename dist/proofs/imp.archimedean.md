@@ -5,7 +5,15 @@
 
 设 $K$ 是完备有序域（把 $\mathbb{N}$、$\mathbb{Z}$、$\mathbb{Q}$ 按 $1$ 生成的子域嵌进去看）。
 
-**(i) 自然数无上界。** 反设 $\mathbb{N}$ 在 $K$ 中有上界。由**完备性**，$s := \sup \mathbb{N}$ 存在。$s - 1 < s$，故 $s - 1$ 不是上界，于是存在 $n \in \mathbb{N}$ 使 $n > s - 1$。但那样 $n + 1 > s$，而 $n + 1 \in \mathbb{N}$ —— 与 $s$ 是上界矛盾。故
+**(i) 自然数无上界。** 反设 $\mathbb{N}$ 在 $K$ 中有上界。
+
+由**完备性**，$s := \sup \mathbb{N}$ 存在。
+
+$s - 1 < s$，故 $s - 1$ 不是上界，于是存在 $n \in \mathbb{N}$ 使 $n > s - 1$。
+
+但那样 $n + 1 > s$，而 $n + 1 \in \mathbb{N}$ —— 与 $s$ 是上界矛盾。
+
+故
 
 $$\forall x \in K, \exists n \in \mathbb{N}: n > x$$
 

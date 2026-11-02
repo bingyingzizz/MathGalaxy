@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
- 中同样中心化子给出 $120/5 = 24$，所以 $S_5$ 里只有一类、$A_5$ 里是两类
+；而 $S_5$ 中同样中心化子给出 $120/5 = 24$，所以 $S_5$ 里只有一类、$A_
 
 > 续见 proofs/imp.sn-solvable.10.md

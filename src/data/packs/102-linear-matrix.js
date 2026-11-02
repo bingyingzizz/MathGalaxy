@@ -35,7 +35,7 @@ window.MG = window.MG || {};
         '',
         '$A$ 的第 $j$ **列**是 $K^{m}$ 中的列向量，第 $i$ **行**是 $K^{n}$ 中的行向量。'
       ].join('\n'),
-      notes: '⭐ 矩阵就是「按行列排好的一堆 $K$ 中元素」—— **本身不含任何数学结构**，它的意义全部来自你怎么读它（读成线性映射的账本、读成方程组的系数、读成双线性型的配方）。\n\n⚠ 两套下标约定（$a_{ij}$ 是第 $i$ 行第 $j$ 列）必须前后一致，否则转置与乘法会全错。本图一律「先行后列」。\n\n⭐ $M_{m \\times n}(K)$ 作为集合就是 $K^{mn}$ —— 所以它当然是 $K$-向量空间（逐分量运算）。',
+      notes: '⭐ 矩阵就是「按行列排好的一堆 $K$ 中元素」—— **本身不含任何数学结构**，它的意义全部来自你怎么读它（读成线性映射的账本、读成方程组的系数、读成双线性型的配方）。\n\n⚠ 两套下标约定（$a_{ij}$ 是第 $i$ 行第 $j$ 列）必须前后一致，否则转置与乘法会全错。\n\n本图一律「先行后列」。\n\n⭐ $M_{m \\times n}(K)$ 作为集合就是 $K^{mn}$ —— 所以它当然是 $K$-向量空间（逐分量运算）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1', 'Lang, Linear Algebra']
     },
     {
@@ -59,7 +59,7 @@ window.MG = window.MG || {};
         '',
         '（$A$ 的列数必须等于 $B$ 的行数，否则不定义。）'
       ].join('\n'),
-      notes: '⭐ 乘法为什么长这样：把 $B$ 的每一列看成 $K^{n}$ 中的向量，则 $AB$ 的第 $j$ 列 $= A \\cdot (B$ 的第 $j$ 列$)$ —— **矩阵乘法就是线性映射的复合**（见「线性映射 $\\leftrightarrow$ 矩阵」）。不是「行列逐条相乘」的偶然配方。\n\n⚠ 乘法**不交换**：$AB \\ne BA$（连形状都可能不合）。例 $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$、$B = \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix}$ 给 $AB = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\ne BA$。\n\n⚠ $AB = 0$ 不必有 $A = 0$ 或 $B = 0$ —— 这就是「$M_n(K)$ 是环但不是整环」的意思，也解释了行列式为什么必要（det 把这件事管住了）。',
+      notes: '⭐ 乘法为什么长这样：把 $B$ 的每一列看成 $K^{n}$ 中的向量，则 $AB$ 的第 $j$ 列 $= A \\cdot (B$ 的第 $j$ 列$)$ —— **矩阵乘法就是线性映射的复合**（见「线性映射 $\\leftrightarrow$ 矩阵」）。\n\n不是「行列逐条相乘」的偶然配方。\n\n⚠ 乘法**不交换**：$AB \\ne BA$（连形状都可能不合）。\n\n例 $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$、$B = \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix}$ 给 $AB = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\ne BA$。\n\n⚠ $AB = 0$ 不必有 $A = 0$ 或 $B = 0$ —— 这就是「$M_n(K)$ 是环但不是整环」的意思，也解释了行列式为什么必要（det 把这件事管住了）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
     {
@@ -91,7 +91,7 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['定理', '线性代数'],
       statement: [
-        '设 $V$ 有有序基 $\\mathcal{B} = (v_1, \\ldots, v_n)$、$W$ 有有序基 $\\mathcal{C} = (w_1, \\ldots, w_m)$，都是有限维 $K$-向量空间。称 $m \\times n$ 矩阵 $[T]_{\\mathcal{B}}^{\\mathcal{C}}$ 为 $T$ 在这两组基下的**矩阵**，其中第 $j$ 列是 $T(v_j)$ 在 $\\mathcal{C}$ 下的坐标。',
+        '设 $V$ 有有序基 $\\mathcal{B} = (v_1, \\ldots, v_n)$、$W$ 有有序基 $\\mathcal{C} = (w_1, \\ldots, w_m)$，都是有限维 $K$-向量空间。\n\n称 $m \\times n$ 矩阵 $[T]_{\\mathcal{B}}^{\\mathcal{C}}$ 为 $T$ 在这两组基下的**矩阵**，其中第 $j$ 列是 $T(v_j)$ 在 $\\mathcal{C}$ 下的坐标。',
         '',
         '于是映射 $T \\mapsto [T]_{\\mathcal{B}}^{\\mathcal{C}}$ 是 $K$-向量空间的同构',
         '',
@@ -101,7 +101,7 @@ window.MG = window.MG || {};
         '',
         '$$[S \\circ T]_{\\mathcal{B}}^{\\mathcal{E}} = [S]_{\\mathcal{C}}^{\\mathcal{E}}\\; [T]_{\\mathcal{B}}^{\\mathcal{C}}$$'
       ].join('\n'),
-      notes: '⭐ 这就是整套矩阵论的**出生证**：矩阵不是被定义出来的对象，而是线性映射在选定基下的**坐标**（与「坐标」那一条完全同一个机制，只是两侧各选一组基）。\n\n⭐ 于是所有矩阵运算都有了意义：加法 = 映射的和、乘法 = 复合、单位矩阵 = 恒等映射、可逆 = 同构。**矩阵的每一个公式都可以翻译成映射的语言**，反之亦然 —— 这是本图把两者分团又用边连起来的原因。\n\n⚠ 这一切都**依赖基的选取**：换一组基，矩阵就变了（变成相似的，见「基变换」）。而线性映射本身不变。',
+      notes: '⭐ 这就是整套矩阵论的**出生证**：矩阵不是被定义出来的对象，而是线性映射在选定基下的**坐标**（与「坐标」那一条完全同一个机制，只是两侧各选一组基）。\n\n⭐ 于是所有矩阵运算都有了意义：加法 = 映射的和、乘法 = 复合、单位矩阵 = 恒等映射、可逆 = 同构。\n\n**矩阵的每一个公式都可以翻译成映射的语言**，反之亦然 —— 这是本图把两者分团又用边连起来的原因。\n\n⚠ 这一切都**依赖基的选取**：换一组基，矩阵就变了（变成相似的，见「基变换」）。\n\n而线性映射本身不变。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 3', 'Lang, Linear Algebra']
     },
     {
@@ -113,13 +113,13 @@ window.MG = window.MG || {};
       regions: ['algebra'],
       tags: ['定理', '线性代数'],
       statement: [
-        '设 $T : V \\to V$ 线性，$\\mathcal{B}, \\mathcal{B}\'$ 是 $V$ 的两组有序基。记 $P := [\\mathrm{id}]_{\\mathcal{B}\'}^{\\mathcal{B}}$（**过渡矩阵**，第 $j$ 列是 $\\mathcal{B}\'$ 的第 $j$ 个向量在 $\\mathcal{B}$ 下的坐标）。则 $P$ 可逆，且',
+        '设 $T : V \\to V$ 线性，$\\mathcal{B}, \\mathcal{B}\'$ 是 $V$ 的两组有序基。\n\n记 $P := [\\mathrm{id}]_{\\mathcal{B}\'}^{\\mathcal{B}}$（**过渡矩阵**，第 $j$ 列是 $\\mathcal{B}\'$ 的第 $j$ 个向量在 $\\mathcal{B}$ 下的坐标）。\n\n则 $P$ 可逆，且',
         '',
         '$$[T]_{\\mathcal{B}\'} = P^{-1}\\,[T]_{\\mathcal{B}}\\,P$$',
         '',
         '此时称两个矩阵**相似**（记 $A \\sim B$）。相似是一个等价关系。'
       ].join('\n'),
-      notes: '⭐ 一句话：**换基就是共轭**。$P^{-1}AP$ 里的 $P$ 管「坐标怎么换」，而两侧一进一出正好把基的选取抹掉 —— 所以「相似」是矩阵的**内在**性质（属于那个线性映射），而不是基质自身的性质。\n\n⭐ 值得记住的分工：$A$ 与 $B$ 相似 $\\iff$ 它们是**同一个**线性映射在两组基下的矩阵；$A$ 与 $B$ 等价（只要求 $B = PAQ$，$P, Q$ 可逆）$\\iff$ 它们秩相等（连空间都可以换）。\n\n⚠ 相似比等价严得多：相似的矩阵**秩相同、迹相同、行列式相同、特征多项式相同** —— 这些都是相似不变量（后面特征值那一团要用）。',
+      notes: '⭐ 一句话：**换基就是共轭**。\n\n$P^{-1}AP$ 里的 $P$ 管「坐标怎么换」，而两侧一进一出正好把基的选取抹掉 —— 所以「相似」是矩阵的**内在**性质（属于那个线性映射），而不是基质自身的性质。\n\n⭐ 值得记住的分工：$A$ 与 $B$ 相似 $\\iff$ 它们是**同一个**线性映射在两组基下的矩阵；\n\n$A$ 与 $B$ 等价（只要求 $B = PAQ$，$P, Q$ 可逆）$\\iff$ 它们秩相等（连空间都可以换）。\n\n⚠ 相似比等价严得多：相似的矩阵**秩相同、迹相同、行列式相同、特征多项式相同** —— 这些都是相似不变量（后面特征值那一团要用）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 4']
     },
     {
@@ -141,7 +141,7 @@ window.MG = window.MG || {};
         '',
         '每个初等矩阵都**可逆**，且逆仍是初等矩阵（同类型的）：互换的逆是自己、乘 $c$ 的逆是乘 $c^{-1}$、加 $c$ 倍的逆是加 $-c$ 倍。'
       ].join('\n'),
-      notes: '⭐ 「左乘 = 行变换」这条对应关系把**操作**变成了**对象**：于是「用消元法解方程组」就是「在左边乘一串初等矩阵」，可以写成等式 $E_k \\cdots E_1 A = R$（$R$ 是行简化阶梯形）。\n\n⭐ 最重要的一条推论：$A$ **可逆当且仅当它是有限多个初等矩阵之积**（消元法把 $A$ 化成 $I_n$，把这一串操作记录下来就是 $A^{-1}$ 的显式分解）。这也是「算逆矩阵」那套 $[A \\mid I] \\to [I \\mid A^{-1}]$ 手法的道理。\n\n⚠ 初等**列**变换对应的是**右乘**。行列混着做就成了等价变换（$A \\mapsto PAQ$），它保持秩但不保持相似。',
+      notes: '⭐ 「左乘 = 行变换」这条对应关系把**操作**变成了**对象**：于是「用消元法解方程组」就是「在左边乘一串初等矩阵」，可以写成等式 $E_k \\cdots E_1 A = R$（$R$ 是行简化阶梯形）。\n\n⭐ 最重要的一条推论：$A$ **可逆当且仅当它是有限多个初等矩阵之积**（消元法把 $A$ 化成 $I_n$，把这一串操作记录下来就是 $A^{-1}$ 的显式分解）。\n\n这也是「算逆矩阵」那套 $[A \\mid I] \\to [I \\mid A^{-1}]$ 手法的道理。\n\n⚠ 初等**列**变换对应的是**右乘**。\n\n行列混着做就成了等价变换（$A \\mapsto PAQ$），它保持秩但不保持相似。',
 
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
@@ -185,7 +185,7 @@ window.MG = window.MG || {};
         '- 齐次方程组 $Ax = 0$ 的解空间就是 $\\ker A$，维数 $= n - \\operatorname{rank} A$；',
         '- 特别地：$m = n$ 且 $\\det A \\ne 0$ 时解**唯一**，$x = A^{-1}b$。'
       ].join('\n'),
-      notes: '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
+      notes: '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。\n\n别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1', 'Lang, Linear Algebra']
     },
     {
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
         '',
         '叫**一般线性群**。'
       ].join('\n'),
-      notes: '⭐ 一条把三个团串起来的等价表：对 $A \\in M_n(K)$，下列命题等价 ——\n- $A$ 可逆；\n- 线性映射 $x \\mapsto Ax$ 是双射（即同构）；\n- $\\operatorname{rank} A = n$（满秩）；\n- $\\ker A = \\{0\\}$（零化度为 $0$）；\n- $A$ 的列向量线性无关（从而是一组基）；\n- $\\det A \\ne 0$；\n- $A$ 可以写成有限多个初等矩阵之积。\n\n⚠ **有限维特有**：只有 $\\dim V < \\infty$ 时「单 $\\iff$ 满 $\\iff$ 可逆」才成立（无限维的单射移位算子可逆吗？不）。\n\n⭐ $\\operatorname{GL}_n(K)$ 是矩阵环 $M_n(K)$ 的**单位群**，也是代数群的原型（它是 $K^{n^{2}}$ 里的一个由多项式方程 $\\det A \\cdot \\det A^{-1} = 1$ 切出来的对象）—— 这一条与代数几何、李群都接得上。',
+      notes: '⭐ 一条把三个团串起来的等价表：对 $A \\in M_n(K)$，下列命题等价 ——\n- $A$ 可逆；\n- 线性映射 $x \\mapsto Ax$ 是双射（即同构）；\n- $\\operatorname{rank} A = n$（满秩）；\n\n\n- $\\ker A = \\{0\\}$（零化度为 $0$）；\n\n\n- $A$ 的列向量线性无关（从而是一组基）；\n\n\n- $\\det A \\ne 0$；\n\n\n- $A$ 可以写成有限多个初等矩阵之积。\n\n⚠ **有限维特有**：只有 $\\dim V < \\infty$ 时「单 $\\iff$ 满 $\\iff$ 可逆」才成立（无限维的单射移位算子可逆吗？不）。\n\n⭐ $\\operatorname{GL}_n(K)$ 是矩阵环 $M_n(K)$ 的**单位群**，也是代数群的原型（它是 $K^{n^{2}}$ 里的一个由多项式方程 $\\det A \\cdot \\det A^{-1} = 1$ 切出来的对象）—— 这一条与代数几何、李群都接得上。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1']
     },
     {
@@ -227,7 +227,7 @@ window.MG = window.MG || {};
         '',
         '$n = 2$ 时叫**双线性型**；固定一组基后，$n$ 重线性型与「$n$ 维数组 $(f(e_{i_1}, \\ldots, e_{i_n}))$」一一对应。'
       ].join('\n'),
-      notes: '⭐ 注意事项的顺序：「对每个变元分别线性」比「整体线性」**弱**得多 —— $f(x, y) = xy$ 对每个变元都线性，但它不是 $\\mathbb{R}^{2} \\to \\mathbb{R}$ 的线性映射（$f(x + x\', y + y\') \\ne f(x,y) + f(x\',y\')$ 一般成立）。**多重线性 $\\ne$ 线性。**\n\n⭐ 它是「张量积」的来源：$n$ 重线性型就是 $V^{\\otimes n}$ 上的线性泛函（见「张量积的万有性质」）。\n\n⭐ 行列式就是 $n = \\dim V$ 时最特殊的那一个多重线性型（再加上交错与规范化两条）。',
+      notes: '⭐ 注意事项的顺序：「对每个变元分别线性」比「整体线性」**弱**得多 —— $f(x, y) = xy$ 对每个变元都线性，但它不是 $\\mathbb{R}^{2} \\to \\mathbb{R}$ 的线性映射（$f(x + x\', y + y\') \\ne f(x,y) + f(x\',y\')$ 一般成立）。\n\n**多重线性 $\\ne$ 线性。**\n\n⭐ 它是「张量积」的来源：$n$ 重线性型就是 $V^{\\otimes n}$ 上的线性泛函（见「张量积的万有性质」）。\n\n⭐ 行列式就是 $n = \\dim V$ 时最特殊的那一个多重线性型（再加上交错与规范化两条）。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 5']
     },
     {
@@ -247,7 +247,7 @@ window.MG = window.MG || {};
         '',
         '在域的特征 $\\ne 2$ 时，**交错 $\\iff$ 反称**。'
       ].join('\n'),
-      notes: '⭐ 「交错」的判据（两个变元相等则取零）用起来最省事，「反称」的公式（带符号）算起来最方便 —— 两者在 $\\operatorname{char} K \\ne 2$ 时等价。\n\n⚠ $\\operatorname{char} K = 2$ 时不等价：此时 $-1 = 1$，反称型自动对称，交错性是更强的条件。本图默认 $\\operatorname{char} K = 0$ 或至少 $\\ne 2$（$\\mathbb{R}, \\mathbb{C}, \\mathbb{Q}$ 都满足）。\n\n⭐ 交错性是行列式之所以为行列式的**核心性质**：交换两行变号（$\\operatorname{sgn}(\\sigma)$）、两行相同则为零。',
+      notes: '⭐ 「交错」的判据（两个变元相等则取零）用起来最省事，「反称」的公式（带符号）算起来最方便 —— 两者在 $\\operatorname{char} K \\ne 2$ 时等价。\n\n⚠ $\\operatorname{char} K = 2$ 时不等价：此时 $-1 = 1$，反称型自动对称，交错性是更强的条件。\n\n本图默认 $\\operatorname{char} K = 0$ 或至少 $\\ne 2$（$\\mathbb{R}, \\mathbb{C}, \\mathbb{Q}$ 都满足）。\n\n⭐ 交错性是行列式之所以为行列式的**核心性质**：交换两行变号（$\\operatorname{sgn}(\\sigma)$）、两行相同则为零。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 5']
     },
     {
@@ -271,7 +271,7 @@ window.MG = window.MG || {};
         '',
         '**(iii) 规范化**：$D(e_1, \\ldots, e_n) = 1$（$(e_i)$ 是任一固定的有序基）。'
       ].join('\n'),
-      notes: '⭐ 这条定理是行列式的**正确出生方式**：不是「对角线相乘再相减」，而是「满足三条公理的唯一函数」。三条公理分别是**线性、交错、规范**，缺一不可。\n\n⭐ 「唯一」比「存在」有用得多：任何满足这三条的函数都等于行列式，所以验证一条恒等式时只要验证这三条即可 —— 例如 $\\det(A^{\\mathsf{T}}) = \\det A$、$\\det(AB) = \\det A \\det B$。\n\n⭐ 「存在」的构造：把 $(v_1, \\ldots, v_n)$ 用基展开成 $n \\times n$ 的系数矩阵 $(a_{ij})$，然后取 Leibniz 公式 $\\sum_{\\sigma} \\operatorname{sgn}(\\sigma) \\prod_i a_{i,\\sigma(i)}$ 为定义 —— 逐条验证三条公理即可（见证明那一节）。\n\n⭐ 与「万有性质」的关系：这不是通常意义上的万有性质（没有松伴随），但它是**同样的手法** —— 用一个泛条件（三条公理）把对象钉死。所以图上把它与 `prop.module-tensor-universal`（张量积的万有性质）看成同一族的证明技术。',
+      notes: '⭐ 这条定理是行列式的**正确出生方式**：不是「对角线相乘再相减」，而是「满足三条公理的唯一函数」。\n\n三条公理分别是**线性、交错、规范**，缺一不可。\n\n⭐ 「唯一」比「存在」有用得多：任何满足这三条的函数都等于行列式，所以验证一条恒等式时只要验证这三条即可 —— 例如 $\\det(A^{\\mathsf{T}}) = \\det A$、$\\det(AB) = \\det A \\det B$。\n\n⭐ 「存在」的构造：把 $(v_1, \\ldots, v_n)$ 用基展开成 $n \\times n$ 的系数矩阵 $(a_{ij})$，然后取 Leibniz 公式 $\\sum_{\\sigma} \\operatorname{sgn}(\\sigma) \\prod_i a_{i,\\sigma(i)}$ 为定义 —— 逐条验证三条公理即可（见证明那一节）。\n\n⭐ 与「万有性质」的关系：这不是通常意义上的万有性质（没有松伴随），但它是**同样的手法** —— 用一个泛条件（三条公理）把对象钉死。\n\n所以图上把它与 `prop.module-tensor-universal`（张量积的万有性质）看成同一族的证明技术。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 5']
     },
     {
@@ -293,7 +293,7 @@ window.MG = window.MG || {};
         '',
         '基本性质：$\\det I_n = 1$；交换两列变号；有两列相同则为 $0$；$\\det A^{\\mathsf{T}} = \\det A$。'
       ].join('\n'),
-      notes: '⭐ 几何读法（$K = \\mathbb{R}$）：$|\\det A|$ 是线性映射 $x \\mapsto Ax$ 把单位立方体拉成的平行体的**体积**，符号是**定向**。于是 $\\det = 0 \\iff$ 这个映射把空间压扁了 $\\iff$ 不可逆。\n\n⭐ 这个几何意义在后面换元积分公式里会再出现一次：$\\int f\\,dx$ 换成 $\\int f\\,|\\det|\\,dy$ —— 那里的 $|\\det|$ 就是体积缩放因子。\n\n⚠ 公式里的 $n!$ 项说明这个定义**不能用来算**（$n = 20$ 就超过 $10^{18}$ 项）；算的时候用消元法或 Laplace 展开。',
+      notes: '⭐ 几何读法（$K = \\mathbb{R}$）：$|\\det A|$ 是线性映射 $x \\mapsto Ax$ 把单位立方体拉成的平行体的**体积**，符号是**定向**。\n\n于是 $\\det = 0 \\iff$ 这个映射把空间压扁了 $\\iff$ 不可逆。\n\n⭐ 这个几何意义在后面换元积分公式里会再出现一次：$\\int f\\,dx$ 换成 $\\int f\\,|\\det|\\,dy$ —— 那里的 $|\\det|$ 就是体积缩放因子。\n\n⚠ 公式里的 $n!$ 项说明这个定义**不能用来算**（$n = 20$ 就超过 $10^{18}$ 项）；\n\n算的时候用消元法或 Laplace 展开。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 5']
     },
     {
@@ -313,7 +313,7 @@ window.MG = window.MG || {};
         '',
         '$$\\det A \\ne 0$$'
       ].join('\n'),
-      notes: '⭐ **乘性**是行列式最重要的一条：它把「矩阵乘法（复合）」翻译成「数量乘法」，于是 $\\det$ 是从环 $M_n(K)$ 到域 $K$ 的**乘法同态**（把 $\\operatorname{GL}_n(K)$ 送到 $K^{\\times}$）。\n\n⭐ 证明的技巧：固定 $B$，看 $A \\mapsto \\det(AB)$ —— 它关于 $A$ 的列是**交错多重线性**的（因为 $AB$ 的列就是 $A$ 的列的线性组合），由存在唯一性它等于常数倍的 $\\det A$；取 $A = I$ 定出常数 $= \\det B$。\n\n⚠ 注意 $\\det(cA) = c^{n}\\det A$（不是 $c\\det A$）—— 每一列都乘了 $c$，共 $n$ 次。',
+      notes: '⭐ **乘性**是行列式最重要的一条：它把「矩阵乘法（复合）」翻译成「数量乘法」，于是 $\\det$ 是从环 $M_n(K)$ 到域 $K$ 的**乘法同态**（把 $\\operatorname{GL}_n(K)$ 送到 $K^{\\times}$）。\n\n⭐ 证明的技巧：固定 $B$，看 $A \\mapsto \\det(AB)$ —— 它关于 $A$ 的列是**交错多重线性**的（因为 $AB$ 的列就是 $A$ 的列的线性组合），由存在唯一性它等于常数倍的 $\\det A$；\n\n取 $A = I$ 定出常数 $= \\det B$。\n\n⚠ 注意 $\\det(cA) = c^{n}\\det A$（不是 $c\\det A$）—— 每一列都乘了 $c$，共 $n$ 次。',
       refs: ['Lang, Linear Algebra']
     },
     {
@@ -331,7 +331,7 @@ window.MG = window.MG || {};
         '',
         '（**按第 $i$ 行展开**；按列同理。）并且「错位展开」给出零：$\\sum_j a_{kj} C_{ij} = 0$（$k \\ne i$）。'
       ].join('\n'),
-      notes: '⭐ 这是行列式的**递归算法**：$n$ 阶化归成 $n$ 个 $n-1$ 阶，复杂度 $O(n!)$。实际计算里先用消元法把某一行化到只剩一个非零元，再展开 —— 两件事配合起来很快。\n\n⭐ 「错位展开等于零」这一条可以直接改写成矩阵等式 $A \\cdot \\operatorname{adj} A = (\\det A) I_n$（$\\operatorname{adj} A$ 是代数余子式的转置），也就是 $A^{-1} = (\\det A)^{-1} \\operatorname{adj} A$ —— Cramer 法则与逆矩阵公式都从这里出来。\n\n⭐ 还有一个常用推论（$K = \\mathbb{R}^{n \\times n}$ 时把 $A$ 看成 $n$ 个行向量）：**行列式对每一行都是线性的**，所以对一行做初等变换时 det 的变化规律可以逐条写出（换行变号、倍加不变、乘 $c$ 则乘 $c$）。Gauss 消元正是靠这三条算行列式的。',
+      notes: '⭐ 这是行列式的**递归算法**：$n$ 阶化归成 $n$ 个 $n-1$ 阶，复杂度 $O(n!)$。\n\n实际计算里先用消元法把某一行化到只剩一个非零元，再展开 —— 两件事配合起来很快。\n\n⭐ 「错位展开等于零」这一条可以直接改写成矩阵等式 $A \\cdot \\operatorname{adj} A = (\\det A) I_n$（$\\operatorname{adj} A$ 是代数余子式的转置），也就是 $A^{-1} = (\\det A)^{-1} \\operatorname{adj} A$ —— Cramer 法则与逆矩阵公式都从这里出来。\n\n⭐ 还有一个常用推论（$K = \\mathbb{R}^{n \\times n}$ 时把 $A$ 看成 $n$ 个行向量）：**行列式对每一行都是线性的**，所以对一行做初等变换时 det 的变化规律可以逐条写出（换行变号、倍加不变、乘 $c$ 则乘 $c$）。\n\nGauss 消元正是靠这三条算行列式的。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 5']
     },
     {
@@ -349,7 +349,7 @@ window.MG = window.MG || {};
         '',
         '其中 $A_j$ 是把 $A$ 的第 $j$ 列换成 $b$ 得到的矩阵。'
       ].join('\n'),
-      notes: '⭐ 理论意义大于计算意义：它给出解对 $b$ **显式**的表达式，从而能立刻看出「解连续地依赖 $b$」（$\\det A \\ne 0$ 时 $A^{-1}$ 存在，$x = A^{-1}b$）。\n\n⚠ 计算上不划算：算 $n$ 个 $n$ 阶行列式比消元法贵得多（除非 $n$ 很小）。现代数值线性代数从不这样解方程组。\n\n⭐ 它是「$\\det A \\ne 0 \\iff$ 可逆」这一条的算法化身：分母不为零 $\\iff$ 唯一解 $\\iff$ 可逆。',
+      notes: '⭐ 理论意义大于计算意义：它给出解对 $b$ **显式**的表达式，从而能立刻看出「解连续地依赖 $b$」（$\\det A \\ne 0$ 时 $A^{-1}$ 存在，$x = A^{-1}b$）。\n\n⚠ 计算上不划算：算 $n$ 个 $n$ 阶行列式比消元法贵得多（除非 $n$ 很小）。\n\n现代数值线性代数从不这样解方程组。\n\n⭐ 它是「$\\det A \\ne 0 \\iff$ 可逆」这一条的算法化身：分母不为零 $\\iff$ 唯一解 $\\iff$ 可逆。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 5', 'Lang, Linear Algebra']
     }
   ],
@@ -504,7 +504,7 @@ window.MG = window.MG || {};
         '把 $A$ 看成映射 $T : K^{n} \\to K^{m}$、$x \\mapsto Ax$（取标准基）。',
         '',
         '1. **列秩**：$A$ 的列向量正是 $T(e_1), \\ldots, T(e_n)$，所以列秩 $= \\dim \\operatorname{im} T = \\operatorname{rank} A$。',
-        '2. **行秩**：$A$ 的转置 $A^{\\mathsf{T}}$ 对应的映射 $T^{\\mathsf{T}} : K^{m} \\to K^{n}$ 就是 $T$ 的对偶（取标准基，见「对偶基」里的 $[T^{\\ast}] = [T]^{\\mathsf{T}}$）。$A$ 的行向量是 $A^{\\mathsf{T}}$ 的列向量，故行秩 $= \\operatorname{rank} A^{\\mathsf{T}}$。',
+        '2. **行秩**：$A$ 的转置 $A^{\\mathsf{T}}$ 对应的映射 $T^{\\mathsf{T}} : K^{m} \\to K^{n}$ 就是 $T$ 的对偶（取标准基，见「对偶基」里的 $[T^{\\ast}] = [T]^{\\mathsf{T}}$）。\n\n$A$ 的行向量是 $A^{\\mathsf{T}}$ 的列向量，故行秩 $= \\operatorname{rank} A^{\\mathsf{T}}$。',
         '3. 只需再证 $\\operatorname{rank} A^{\\mathsf{T}} = \\operatorname{rank} A$：由 $\\operatorname{im} T^{\\mathsf{T}} = (\\ker T)^{0}$（零化子）与 $\\dim U^{0} = \\dim V - \\dim U$，',
         '',
         '$$\\operatorname{rank} A^{\\mathsf{T}} = \\dim \\operatorname{im} T^{\\mathsf{T}} = \\dim (\\ker T)^{0} = n - \\dim \\ker T = \\dim \\operatorname{im} T = \\operatorname{rank} A$$',
@@ -522,9 +522,11 @@ window.MG = window.MG || {};
       proof: [
         '记 $T : K^{n} \\to K^{m}$、$x \\mapsto Ax$。',
         '',
-        '**有解判据**：$Ax = b$ 有解 $\\iff$ $b \\in \\operatorname{im} T$。而 $\\operatorname{im} T$ 就是 $A$ 的列空间，其维数是列秩；把 $b$ 添成一列不改变列空间的维数当且仅当 $b$ 落在其中 —— 即 $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$。',
+        '**有解判据**：$Ax = b$ 有解 $\\iff$ $b \\in \\operatorname{im} T$。\n\n' +
+        '而 $\\operatorname{im} T$ 就是 $A$ 的列空间，其维数是列秩；\n\n' +
+        '把 $b$ 添成一列不改变列空间的维数当且仅当 $b$ 落在其中 —— 即 $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$。',
         '',
-        '**解的结构**：若 $x_0$ 是一个解，则对任意 $u \\in \\ker T$，$A(x_0 + u) = b$，所以 $x_0 + \\ker T \\subseteq$ 解集。反之若 $x$ 也是解，则 $A(x - x_0) = 0$，即 $x - x_0 \\in \\ker T$，故 $x \\in x_0 + \\ker T$。两边相等。',
+        '**解的结构**：若 $x_0$ 是一个解，则对任意 $u \\in \\ker T$，$A(x_0 + u) = b$，所以 $x_0 + \\ker T \\subseteq$ 解集。\n\n反之若 $x$ 也是解，则 $A(x - x_0) = 0$，即 $x - x_0 \\in \\ker T$，故 $x \\in x_0 + \\ker T$。\n\n两边相等。',
         '',
         '**维数**：由秩-零化度定理，$\\dim \\ker T = n - \\operatorname{rank} A$；平移不改变「维数」（仿射子空间与 $\\ker T$ 同维）。',
         '',
@@ -541,13 +543,13 @@ window.MG = window.MG || {};
       proof: [
         '记 $D(e_1, \\ldots, e_n) = 1$ 决定了规范的零点。',
         '',
-        '**唯一性。** 设 $D$ 满足三条。把每个 $v_j = \\sum_i a_{ij} e_i$ 代入，由多重线性展开成 $n^{n}$ 项之和，每一项是 $a_{i_1 1} \\cdots a_{i_n n} D(e_{i_1}, \\ldots, e_{i_n})$。由交错性，只有 $i_1, \\ldots, i_n$ **互不相同**的那些项非零 —— 也就是说，只有置换 $\\sigma \\in S_n$ 对应的项（取 $i_j = \\sigma(j)$）存活。再由交错性 $D(e_{\\sigma(1)}, \\ldots, e_{\\sigma(n)}) = \\operatorname{sgn}(\\sigma)\\, D(e_1, \\ldots, e_n) = \\operatorname{sgn}(\\sigma)$。于是',
+        '**唯一性。** 设 $D$ 满足三条。\n\n把每个 $v_j = \\sum_i a_{ij} e_i$ 代入，由多重线性展开成 $n^{n}$ 项之和，每一项是 $a_{i_1 1} \\cdots a_{i_n n} D(e_{i_1}, \\ldots, e_{i_n})$。\n\n由交错性，只有 $i_1, \\ldots, i_n$ **互不相同**的那些项非零 —— 也就是说，只有置换 $\\sigma \\in S_n$ 对应的项（取 $i_j = \\sigma(j)$）存活。\n\n再由交错性 $D(e_{\\sigma(1)}, \\ldots, e_{\\sigma(n)}) = \\operatorname{sgn}(\\sigma)\\, D(e_1, \\ldots, e_n) = \\operatorname{sgn}(\\sigma)$。\n\n于是',
         '',
         '$$D(v_1, \\ldots, v_n) = \\sum_{\\sigma \\in S_n} \\operatorname{sgn}(\\sigma)\\ a_{\\sigma(1), 1} \\cdots a_{\\sigma(n), n}$$',
         '',
         '右端只依赖 $a_{ij}$，故 $D$ 唯一。',
         '',
-        '**存在性。** 直接把上式取作 $D$ 的定义，逐条验证三条公理：多重线性（每一项对每个 $a_{ij}$ 都是一次的，而 $a_{ij}$ 关于 $v_j$ 线性）、交错性（交换两个变元 = 把置换乘一个对换，$\\operatorname{sgn}$ 变号，而所有项成对相消）、规范性（代入 $a_{ij} = \\delta_{ij}$ 后只剩 $\\sigma = \\mathrm{id}$ 一项，值为 $1$）。∎'
+        '**存在性。** 直接把上式取作 $D$ 的定义，逐条验证三条公理：多重线性（每一项对每个 $a_{ij}$ 都是一次的，而 $a_{ij}$ 关于 $v_j$ 线性）、交错性（交换两个变元 = 把置换乘一个对换，$\\operatorname{sgn}$ 变号，而所有项成对相消）、规范性（代入 $a_{ij} = \\delta_{ij}$ 后只剩 $\\sigma = \\mathrm{id}$ 一项，值为 $1$）。\n\n∎'
       ].join('\n'),
       note: '**唯一性先证、存在性后验**：这是「用泛性质定义对象」的标准套路 —— 先把任何满足条件的对象都逼成一个显式公式，再把那个公式拿回来验证它确实满足条件。'
     },
@@ -579,7 +581,7 @@ window.MG = window.MG || {};
       proof: [
         '把 $\\det A$ 按第 $i$ 行拆开：$A$ 的每一列 $a_j$ 都含 $a_{ij} e_i$ 这一项，由多重线性可把 $\\det$ 展成 $n$ 项之和，第 $j$ 项是「把第 $j$ 列换成 $a_{ij} e_i$、其余列不动」的行列式。',
         '',
-        '该行列式 $= a_{ij} \\cdot \\det(\\ldots, e_i, \\ldots)$，其中 $e_i$ 在第 $j$ 位。把 $e_i$ 通过 $|i - j|$ 次相邻列交换移到第 $1$ 位（每次变号），再按第一列展开，剩下的 $(n-1)$ 阶行列式正是划掉第 $i$ 行、第 $j$ 列后的 $A_{ij}$，符号累计为 $(-1)^{i+j}$。于是',
+        '该行列式 $= a_{ij} \\cdot \\det(\\ldots, e_i, \\ldots)$，其中 $e_i$ 在第 $j$ 位。\n\n把 $e_i$ 通过 $|i - j|$ 次相邻列交换移到第 $1$ 位（每次变号），再按第一列展开，剩下的 $(n-1)$ 阶行列式正是划掉第 $i$ 行、第 $j$ 列后的 $A_{ij}$，符号累计为 $(-1)^{i+j}$。\n\n于是',
         '',
         '$$\\det A = \\sum_j a_{ij}\\,(-1)^{i+j} \\det A_{ij} = \\sum_j a_{ij}\\, C_{ij}$$',
         '',

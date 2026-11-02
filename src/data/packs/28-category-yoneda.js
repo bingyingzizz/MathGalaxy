@@ -34,7 +34,7 @@ window.MG = window.MG || {};
         '',
         [
           '- 偏序集上：对每个 $i$ 给一个 $T_i$，对 $i \\le j$ 给「限制」$T_j \\to T_i$（把反对称性去掉，预序集上同样成立）。',
-          '- 拓扑空间上：$\\operatorname{Open}(X)$ 是开集范畴（态射是含入），预层给每个开集 $u$ 一个 $T(u)$，给 $u\' \\subseteq u$ 一个「限制」$T(u) \\to T(u\')$，$s \\mapsto s|_{u\'}$。连续函数预层 $C^{0}$、光滑函数预层 $C^{\\infty}$、常预层 $\\underline{E}$（$\\underline{E}(u) = E$，限制取恒等）、常函数预层都是。',
+          '- 拓扑空间上：$\\operatorname{Open}(X)$ 是开集范畴（态射是含入），预层给每个开集 $u$ 一个 $T(u)$，给 $u\' \\subseteq u$ 一个「限制」$T(u) \\to T(u\')$，$s \\mapsto s|_{u\'}$。\n\n连续函数预层 $C^{0}$、光滑函数预层 $C^{\\infty}$、常预层 $\\underline{E}$（$\\underline{E}(u) = E$，限制取恒等）、常函数预层都是。',
           '- 固定 $X \\in \\mathcal{C}$：$h_{X} : Y \\mapsto \\operatorname{Hom}_{\\mathcal{C}}(Y, X)$ 是预层，叫**可表示预层**。',
         ].join('\n'),
       ].join('\n\n'),
@@ -57,7 +57,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '它是函子范畴，所以极限与余极限**逐点**算 —— 后面所有关于 $\\widehat{\\mathcal{C}}$ 的构造都从这里出发。',
-        '几个小例子：$\\widehat{\\emptyset} = \\mathbf{1}$（空范畴到 $\\mathbf{Set}$ 的唯一函子）；$\\widehat{\\mathbf{1}} \\simeq \\mathbf{Set}$（选一个对象、一个集合）；$G$ 是幺半群时 $\\widehat{G} \\simeq G\\text{-}\\mathbf{Set}$（带 $G$ 作用的集合，且映射与 $G$ 中每个元素的平移相容）。'
+        '几个小例子：$\\widehat{\\emptyset} = \\mathbf{1}$（空范畴到 $\\mathbf{Set}$ 的唯一函子）；$\\widehat{\\mathbf{1}} \\simeq \\mathbf{Set}$（选一个对象、一个集合）；\n\n$G$ 是幺半群时 $\\widehat{G} \\simeq G\\text{-}\\mathbf{Set}$（带 $G$ 作用的集合，且映射与 $G$ 中每个元素的平移相容）。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
@@ -88,7 +88,7 @@ window.MG = window.MG || {};
         '例：',
         '',
         [
-          '- $k \\in \\operatorname{Ob}(\\mathbf{CRng})$，$F : k\\text{-}\\mathbf{Alg} \\to \\mathbf{Set}$ 是遗忘函子。$(k[t],\\ t)$ 表示 $F$：对 $A \\in k\\text{-}\\mathbf{Alg}$ 与 $a \\in F(A)$，令 $t \\mapsto a$ 诱导出唯一的 $k$-代数同态 $k[t] \\to A$。',
+          '- $k \\in \\operatorname{Ob}(\\mathbf{CRng})$，$F : k\\text{-}\\mathbf{Alg} \\to \\mathbf{Set}$ 是遗忘函子。\n\n$(k[t],\\ t)$ 表示 $F$：对 $A \\in k\\text{-}\\mathbf{Alg}$ 与 $a \\in F(A)$，令 $t \\mapsto a$ 诱导出唯一的 $k$-代数同态 $k[t] \\to A$。',
           '- $F : \\mathbf{Ring} \\to \\mathbf{Set}$ 取常值单点集。$\\mathbb{Z}$ 表示 $F$：每个环都有唯一的 $\\mathbb{Z} \\to R$。',
           '- 固定拓扑空间 $X$ 与子空间 $Y \\subseteq X$，反变函子',
         ].join('\n'),
@@ -121,10 +121,10 @@ window.MG = window.MG || {};
         '即「全体自然变换」与「$F(X)$ 的元素」一一对应。'
       ].join('\n'),
       notes: [
-        ['**证明。** 定义映射','$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$','- **逆映射**：给 $u \\in F(X)$，对每个 $Y$ 定义','$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$','它是自然的：对 $g : Y \\to Z$，由 $F$ 的函子性 $F(g)\\circ F(f) = F(g\\circ f)$，两边正是 $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ 与 $\\Psi(u)_{Z}(g\\circ f)$ ✓。','- **$\\Phi\\Psi = \\mathrm{id}$**：$\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓。','- **$\\Psi\\Phi = \\mathrm{id}$**：给 $\\alpha$ 与 $f : X\\to Y$，用 $\\alpha$ 的自然性（作用在 $f$ 上）','$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$','- **自然性**：$\\Phi$ 对 $F$ 自然（沿 $\\beta : F\\to G$ 两边都变成 $\\beta_{X}\\circ(-)$）✓；对 $X$ 也自然（沿 $k : X\'\\to X$，$h^{k}$ 的前复合与 $F(k)$ 对应）✓。','于是 $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$，双射就是 $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓；对偶地（取 $\\mathcal{C}^{\\mathrm{op}}$）得预层版本 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓。∎'].join('\n'),
+        ['**证明。** 定义映射','$$\\Phi : \\operatorname{Nat}(h^{X}, F) \\longrightarrow F(X), \\qquad \\Phi(\\alpha) := \\alpha_{X}(1_{X}).$$','- **逆映射**：给 $u \\in F(X)$，对每个 $Y$ 定义','$$\\Psi(u)_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad \\Psi(u)_{Y}(f) := F(f)(u).$$','它是自然的：对 $g : Y \\to Z$，由 $F$ 的函子性 $F(g)\\circ F(f) = F(g\\circ f)$，两边正是 $F(g)\\bigl(\\Psi(u)_{Y}(f)\\bigr)$ 与 $\\Psi(u)_{Z}(g\\circ f)$ ✓。','- **$\\Phi\\Psi = \\mathrm{id}$**：$\\Psi(u)_{X}(1_{X}) = F(1_{X})(u) = u$ ✓。','- **$\\Psi\\Phi = \\mathrm{id}$**：给 $\\alpha$ 与 $f : X\\to Y$，用 $\\alpha$ 的自然性（作用在 $f$ 上）','$$\\alpha_{Y}\\circ h^{X}(f) = F(f)\\circ \\alpha_{X} \\;\\implies\\; \\alpha_{Y}(f) = F(f)\\bigl(\\alpha_{X}(1_{X})\\bigr) = \\Psi\\bigl(\\Phi(\\alpha)\\bigr)_{Y}(f) ✓$$','- **自然性**：$\\Phi$ 对 $F$ 自然（沿 $\\beta : F\\to G$ 两边都变成 $\\beta_{X}\\circ(-)$）✓；对 $X$ 也自然（沿 $k : X\'\\to X$，$h^{k}$ 的前复合与 $F(k)$ 对应）✓。','于是 $\\operatorname{Hom}(h^{X}, F) \\cong F(X)$，双射就是 $\\alpha\\mapsto\\alpha_{X}(1_{X})$ ✓；对偶地（取 $\\mathcal{C}^{\\mathrm{op}}$）得预层版本 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$ ✓。\n\n∎'].join('\n'),
         '这个双射在两**边**都自然：对 $F$（自然变换）自然，对 $X$（态射）也自然。两头都自然，才是这条引理真正有分量的地方。',
         '它把「$h^{X}$ 到 $F$ 的所有自然变换」这个原则上无从下手的集合，压成了 $F(X)$ 里的**一个元素**。后面凡是遇到「自然变换不好数」的地方，基本都是靠这一步救场。',
-        '对偶形式：$T$ 是预层（$T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）、$h_{X} = \\operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$。两式只是把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，所以后面的推导两套都用。'
+        '对偶形式：$T$ 是预层（$T : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}$）、$h_{X} = \\operatorname{Hom}(-, X)$ 时可表示预层时，同样有 $\\operatorname{Hom}(h_{X}, T) \\cong T(X)$。\n\n两式只是把 $\\mathcal{C}$ 换成 $\\mathcal{C}^{\\mathrm{op}}$，所以后面的推导两套都用。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
@@ -191,7 +191,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这正是把「元素范畴」搬到预层上：$T(X)$ 的元素当元素看，遗忘函子 $j_{T}$ 把 $(X, s)$ 送回 $X$。',
-        '⭐ 逗号范畴的写法把它的身份说清了：它是**预层 $T$ 沿着 Yoneda 嵌入往回拉**得到的那个范畴 —— 一边是 $\\mathcal{C} \\hookrightarrow \\widehat{\\mathcal{C}}$，一边是 $\\mathbf{1} \\xrightarrow{T} \\widehat{\\mathcal{C}}$。它也解释了为什么 $X \\in \\mathcal{C}$ 时 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$。',
+        '⭐ 逗号范畴的写法把它的身份说清了：它是**预层 $T$ 沿着 Yoneda 嵌入往回拉**得到的那个范畴 —— 一边是 $\\mathcal{C} \\hookrightarrow \\widehat{\\mathcal{C}}$，一边是 $\\mathbf{1} \\xrightarrow{T} \\widehat{\\mathcal{C}}$。\n\n它也解释了为什么 $X \\in \\mathcal{C}$ 时 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$。',
         '它的用处是给预层配一个**指标范畴**：谈「这个预层由哪些点拼起来」时，指标就跑在 $\\mathcal{C}/T$ 上（稠密性定理就是这么用的）。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
@@ -214,7 +214,7 @@ window.MG = window.MG || {};
         '是**笛卡尔的**。上面是**切片范畴到预层范畴的嵌入**，下面是**范畴 $\\mathcal{C}$ 到预层范畴的 Yoneda 嵌入** $h$（$h(X) = h_{X} = \\operatorname{Hom}(-, X)$），两条竖边是两个遗忘函子。'
       ].join('\n'),
       notes: [
-        ['**证明。** 需要证 $\\mathcal{C}/T \\to \\mathcal{C}\\times_{\\widehat{\\mathcal{C}}}\\widehat{\\mathcal{C}}/T$ 是等价。','- **对象**：$\\mathcal{C}/T$ 的对象是 $p : X \\to T$（$X\\in\\mathcal{C}$）；由 **Yoneda**，$\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，所以 $p$ 与一个态射 $h_{X}\\to T$ 一一对应 —— 而右边拉回的对象的正是「$X \\in \\mathcal{C}$ 连同 $h_{X}\\to T$」✓。','- **态射**：$\\mathcal{C}/T$ 中 $p \\to p\'$ 是交换三角（$X\\to X\'$ 与 $T$ 上的相容性）；把 Yoneda 嵌入作用上去得到 $h_{X}\\to h_{X\'}$ 与 $h_{X}\\to T$ 的相容对，右边正是一对这样的数据。由 Yoneda 嵌入**全忠实**（$\\operatorname{Hom}(h_{X},h_{X\'}) \\cong \\operatorname{Hom}(X,X\')$），这个对应在 Hom 上是双射 ✓。','- **函子性 / 等价**：对应在复合下保持（Yoneda 是函子）✓ 于是得到一个范畴等价，即原方块**笛卡尔** ✓。','- **特例**：取 $T = h_{X}$，得 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片与在预层范畴里沿 $h_{X}$ 切片是同一件事 ✓。∎'].join('\n'),
+        ['**证明。** 需要证 $\\mathcal{C}/T \\to \\mathcal{C}\\times_{\\widehat{\\mathcal{C}}}\\widehat{\\mathcal{C}}/T$ 是等价。','- **对象**：$\\mathcal{C}/T$ 的对象是 $p : X \\to T$（$X\\in\\mathcal{C}$）；由 **Yoneda**，$\\operatorname{Hom}(h_{X}, T) \\cong T(X)$，所以 $p$ 与一个态射 $h_{X}\\to T$ 一一对应 —— 而右边拉回的对象的正是「$X \\in \\mathcal{C}$ 连同 $h_{X}\\to T$」✓。','- **态射**：$\\mathcal{C}/T$ 中 $p \\to p\'$ 是交换三角（$X\\to X\'$ 与 $T$ 上的相容性）；把 Yoneda 嵌入作用上去得到 $h_{X}\\to h_{X\'}$ 与 $h_{X}\\to T$ 的相容对，右边正是一对这样的数据。\n\n由 Yoneda 嵌入**全忠实**（$\\operatorname{Hom}(h_{X},h_{X\'}) \\cong \\operatorname{Hom}(X,X\')$），这个对应在 Hom 上是双射 ✓。','- **函子性 / 等价**：对应在复合下保持（Yoneda 是函子）✓ 于是得到一个范畴等价，即原方块**笛卡尔** ✓。','- **特例**：取 $T = h_{X}$，得 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片与在预层范畴里沿 $h_{X}$ 切片是同一件事 ✓。∎'].join('\n'),
 '也就是说：**切片范畴 $\\mathcal{C}/T$ 就是遗忘函子 $\\widehat{\\mathcal{C}}/T \\to \\widehat{\\mathcal{C}}$ 沿 Yoneda 嵌入拉回来的东西**。\n\n特例最能说明问题：$T = h_{X}$（可表示）时，方块给出 $\\mathcal{C}/X \\simeq \\widehat{\\mathcal{C}}/h_{X}$ —— 在 $\\mathcal{C}$ 里沿 $X$ 切片，与在预层范畴里沿 $h_{X}$ 切片，是同一件事。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1–1.5']
     },
@@ -271,7 +271,7 @@ window.MG = window.MG || {};
       proof: [
         '**（$\\Longleftarrow$）** 设 $h^{X} \\cong F$，取一个自然同构 $\\alpha : h^{X} \\implies F$。由米田引理，$\\alpha$ 由元素 $s = \\alpha_{X}(1_{X}) \\in F(X)$ 决定；反过来，给定 $s$ 也能定义出 $\\alpha$。',
         '',
-        '要证 $(X, s)$ 万有。固定 $Y$，则由 $\\alpha$ 是自然同构，$\\alpha_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y)$ 是双射。对任意 $t \\in F(Y)$，记 $f = \\alpha_{Y}^{-1}(t)$，即 $\\alpha_{Y}(f) = t$。',
+        '要证 $(X, s)$ 万有。\n\n固定 $Y$，则由 $\\alpha$ 是自然同构，$\\alpha_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y)$ 是双射。\n\n对任意 $t \\in F(Y)$，记 $f = \\alpha_{Y}^{-1}(t)$，即 $\\alpha_{Y}(f) = t$。',
         '',
         '再用 $\\alpha$ 的自然性（取 $f : X \\to Y$）：',
         '',
@@ -283,7 +283,7 @@ window.MG = window.MG || {};
         '',
         '$$\\alpha_{Y} : \\operatorname{Hom}_{\\mathcal{C}}(X, Y) \\to F(Y), \\qquad f \\mapsto F(f)(s)$$',
         '',
-        '万有性说的正是「对每个 $t \\in F(Y)$ 存在唯一 $f$ 使 $F(f)(s) = t$」，所以每个 $\\alpha_{Y}$ 都是双射。剩下要检查的只有自然性：对 $g : Y \\to Z$，两个复合 $\\alpha_{Z} \\circ \\operatorname{Hom}(X, g)$ 与 $F(g) \\circ \\alpha_{Y}$ 都把那片 $f : X \\to Y$ 送到 $F(g \\circ f)(s)$，所以相等。于是 $\\alpha : h^{X} \\implies F$ 是自然同构，$h^{X} \\cong F$。∎'
+        '万有性说的正是「对每个 $t \\in F(Y)$ 存在唯一 $f$ 使 $F(f)(s) = t$」，所以每个 $\\alpha_{Y}$ 都是双射。\n\n剩下要检查的只有自然性：对 $g : Y \\to Z$，两个复合 $\\alpha_{Z} \\circ \\operatorname{Hom}(X, g)$ 与 $F(g) \\circ \\alpha_{Y}$ 都把那片 $f : X \\to Y$ 送到 $F(g \\circ f)(s)$，所以相等。\n\n于是 $\\alpha : h^{X} \\implies F$ 是自然同构，$h^{X} \\cong F$。\n\n∎'
       ].join('\n'),
       note: '这条的意义在于：**要证明一个函子可表示，只要找到那个万有元素**，同构自动就有了。'
     },
@@ -331,7 +331,11 @@ window.MG = window.MG || {};
         '',
         '$$\\Bigl(\\varinjlim_{(X,s)} h_{X}\\Bigr)(Y) = \\varinjlim_{(X,s)} \\operatorname{Hom}_{\\mathcal{C}}(Y, X) \\longrightarrow T(Y)$$',
         '',
-        '而右边这个集合正是「以 $(X, s)$ 为指标、把每个 $\\psi : Y \\to X$ 送到 $T(\\psi)(s) \\in T(Y)$」的余极限。取 $(X, s) = (Y, t)$ 与 $\\psi = 1_{Y}$，这一项的像就是 $t$ 本身；反过来，自然性 $T(\\psi)(s) \\in T(Y)$ 说明每一项都已经落在 $T(Y)$ 里。于是对每个 $t \\in T(Y)$ 都有来源，且不同的 $t$ 给出不同的项 —— 逐点双射。∎'
+        '而右边这个集合正是「以 $(X, s)$ 为指标、把每个 $\\psi : Y \\to X$ 送到 $T(\\psi)(s) \\in T(Y)$」的余极限。\n\n' +
+        '取 $(X, s) = (Y, t)$ 与 $\\psi = 1_{Y}$，这一项的像就是 $t$ 本身；\n\n' +
+        '反过来，自然性 $T(\\psi)(s) \\in T(Y)$ 说明每一项都已经落在 $T(Y)$ 里。\n\n' +
+        '于是对每个 $t \\in T(Y)$ 都有来源，且不同的 $t$ 给出不同的项 —— 逐点双射。\n\n' +
+        '∎'
       ].join('\n'),
       note: '把这条和米田引理并排看：米田说「$h_{X}$ 到 $T$ 的箭头 = $T$ 在 $X$ 处的元素」，稠密性把它反过来用 —— 既然元素就是箭头，那么全部元素（即 $\\mathcal{C}_{T}$）就决定了 $T$ 自己。'
     },

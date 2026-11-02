@@ -107,7 +107,7 @@ window.MG = window.MG || {};
         '**名字的来历**：$\\omega^{j}_{\\ i}$ 描述「沿某个方向走时，标架怎么转」。它不是无端造出来的外形式：每一点上是 $\\mathbb{R}^{3}$ 的一个 $3\\times3$ 反称矩阵（$3$ 个自由度），沿方向取值就成了 $1$-形式。',
         '⭐ **这一拆分就是曲面论**：$\\mathbb{R}^{3}$ 里曲率形式恒为零；限制到曲面上，$\\omega^{1}_{\\ 2}$ 那部分由内蕴度量决定（Gauss 方程），剩下的外蕴部分给出 $II$ 与 Codazzi 方程。整本曲面论都在读这两类形式的系数。',
         '⚠️ $\\omega^{i}_{\\ j}$ 与 $\\omega^{j}_{\\ i}$ 差一个负号，是全图最容易抄错的地方。判据只有一条：对 $\\langle e_{i}, e_{j}\\rangle = \\delta_{ij}$ 取外微分，不要凭记忆。',
-        '**与 Christoffel 符号的关系**：在**不正交**的标架 $\\{r_{u}, r_{v}, n\\}$ 上把它写开，系数就是 $\\Gamma^{k}_{\\ ij}$ 与 $h_{ij}$ 的混合体（对照 `def.second-fundamental-form` 与 `def.christoffel-symbol`）；只有在正交标架下它才变成干净的反对称矩阵。'
+        '**与 Christoffel 符号的关系**：在**不正交**的标架 $\\{r_{u}, r_{v}, n\\}$ 上把它写开，系数就是 $\\Gamma^{k}_{\\ ij}$ 与 $h_{ij}$ 的混合体（对照 `def.second-fundamental-form` 与 `def.christoffel-symbol`）；\n\n只有在正交标架下它才变成干净的反对称矩阵。'
       ].join('\n\n'),
       refs: [
         'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式',
@@ -166,7 +166,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么叫「结构」**：这两条方程决定「标架怎么动」的全部约束。给定余标架与联络，曲面的形状连同它在 $\\mathbb{R}^{3}$ 里的位置就定了；反过来要检查的相容性只有 $\\mathrm{d}^{2}=0$。曲面论基本定理就是把这句话做成定理。',
-        '**曲率形式**：一般流形上第二式的右端不为零，那一项叫曲率形式 $\\Omega^{i}_{\\ j} := \\mathrm{d}\\omega^{i}_{\\ j}+\\sum_{k}\\omega^{i}_{\\ k}\\wedge\\omega^{k}_{\\ j}$；$\\mathbb{R}^{3}$ 上 $\\Omega \\equiv 0$。限制到曲面上时它变成 $\\Omega^{i}_{\\ j} = \\omega^{i}_{\\ 3}\\wedge\\omega^{j}_{\\ 3}$ —— 这就是 Gauss 方程。',
+        '**曲率形式**：一般流形上第二式的右端不为零，那一项叫曲率形式 $\\Omega^{i}_{\\ j} := \\mathrm{d}\\omega^{i}_{\\ j}+\\sum_{k}\\omega^{i}_{\\ k}\\wedge\\omega^{k}_{\\ j}$；\n\n$\\mathbb{R}^{3}$ 上 $\\Omega \\equiv 0$。\n\n限制到曲面上时它变成 $\\Omega^{i}_{\\ j} = \\omega^{i}_{\\ 3}\\wedge\\omega^{j}_{\\ 3}$ —— 这就是 Gauss 方程。',
         '把同一件事写成「$r_{ij} = \\Gamma^{k}_{\\ ij}r_{k}+h_{ij}n$、$n_{i} = -h^{j}_{\\ i}r_{j}$ 的混合偏导可交换（可积性条件）」。这里只是把「混合偏导」换成 $\\mathrm{d}^{2}=0$、把 $\\Gamma$ 换成 $\\omega$：同一个相容性，写法更短。',
         '⚠️ **符号约定**：本包取 $\\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle$，即 $\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$。上下指标换一种位置，第二式整体变号；引用前先对齐这一条。'
       ].join('\n\n'),
@@ -193,7 +193,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么 $\\omega^{3} = 0$**：$\\omega^{3}(v) = \\langle \\mathrm{d}r(v), e_{3}\\rangle$，而 $\\mathrm{d}r(v)$ 是曲面的切向量、$e_{3}$ 是法向。等价说法：$r$ 沿曲面移动时没有法向分量。',
-        '⭐ **方程组因此变短**：第一结构方程取 $i=3$ 变成恒等式 $0 = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2}$；第二结构方程取 $i,j \\in \\{1,2\\}$ 时只剩 $k=3$ 那一项「多出来」—— 那一项就是 Gauss 曲率。',
+        '⭐ **方程组因此变短**：第一结构方程取 $i=3$ 变成恒等式 $0 = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2}$；\n\n第二结构方程取 $i,j \\in \\{1,2\\}$ 时只剩 $k=3$ 那一项「多出来」—— 那一项就是 Gauss 曲率。',
         '⭐ 这一步正是「省掉复杂计算」的入口：用坐标求偏导 $r_{uu}, r_{uv}$ 才拿得到的 $h_{ij}$，在这里只是 $\\omega^{i}_{\\ 3}$ 的系数。',
         '⚠️ $\\omega^{3} = 0$ 是**沿曲面**成立，不是标架本身的性质：在 $\\mathbb{R}^{3}$ 的开集上 $\\omega^{3}$ 一般不为零，那正对应「曲面朝法向弯出去」。'
       ].join('\n\n'),
@@ -255,7 +255,7 @@ window.MG = window.MG || {};
         '',
         '$$n := \\frac{r_{u}\\times r_{v}}{\\lVert r_{u}\\times r_{v}\\rVert}$$',
         '',
-        '是单位法向量，$n\\colon U \\to S^{2}$ 叫 **Gauss 映射**。切映射 $\\mathrm{d}r\\colon T_{p}U \\to T_{r(p)}S$ 由 $\\mathrm{d}r(\\partial_{u}) = r_{u}$、$\\mathrm{d}r(\\partial_{v}) = r_{v}$ 确定。'
+        '是单位法向量，$n\\colon U \\to S^{2}$ 叫 **Gauss 映射**。\n\n切映射 $\\mathrm{d}r\\colon T_{p}U \\to T_{r(p)}S$ 由 $\\mathrm{d}r(\\partial_{u}) = r_{u}$、$\\mathrm{d}r(\\partial_{v}) = r_{v}$ 确定。'
       ].join('\n'),
       notes: [
         '**一句话**：曲面论的全部内容都是「通过参数空间 $U$ 上的对象，读出曲面上发生了什么」—— 这也是整章的出发点。这里的路线把它做成 $1$-形式的等式（$\\mathrm{d}r$、$\\mathrm{d}e_{i}$ 按标架展开），而不是对 $r$ 求偏导。',
@@ -282,7 +282,7 @@ window.MG = window.MG || {};
         '',
         '$$I(v,w) := \\langle \\mathrm{d}r(v), \\mathrm{d}r(w)\\rangle .$$',
         '',
-        '相对参数 $(u,v)$ 它写成 $I = E\\,\\mathrm{d}u^{2}+2F\\,\\mathrm{d}u\\,\\mathrm{d}v+G\\,\\mathrm{d}v^{2}$，其中 $E = \\langle r_{u}, r_{u}\\rangle$、$F = \\langle r_{u}, r_{v}\\rangle$、$G = \\langle r_{v}, r_{v}\\rangle$；相对正交余标架它写成',
+        '相对参数 $(u,v)$ 它写成 $I = E\\,\\mathrm{d}u^{2}+2F\\,\\mathrm{d}u\\,\\mathrm{d}v+G\\,\\mathrm{d}v^{2}$，其中 $E = \\langle r_{u}, r_{u}\\rangle$、$F = \\langle r_{u}, r_{v}\\rangle$、$G = \\langle r_{v}, r_{v}\\rangle$；\n\n相对正交余标架它写成',
         '',
         '$$I = (\\omega^{1})^{2}+(\\omega^{2})^{2}.$$',
         '',
@@ -290,7 +290,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '$I$ 是 $\\mathbb{R}^{3}$ 的内积沿 $r$ 的**拉回**：$\\mathrm{d}r$ 把参数域的切向量送进切平面，再用 $\\mathbb{R}^{3}$ 的内积量。所以 $I$ 只看见「曲面上的长度」，看不见「曲面怎么弯」—— 弯曲在 $II$ 里。',
-        '**为什么正交标架下是两平方和**：$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\\langle \\mathrm{d}r, \\mathrm{d}r\\rangle = \\sum_{i}(\\omega^{i})^{2}$；沿曲面 $\\omega^{3} = 0$，只剩两项。',
+        '**为什么正交标架下是两平方和**：$\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ 且 $e_{i}$ 标准正交，故 $\\langle \\mathrm{d}r, \\mathrm{d}r\\rangle = \\sum_{i}(\\omega^{i})^{2}$；\n\n沿曲面 $\\omega^{3} = 0$，只剩两项。',
         '**矩阵**：$(g_{ij}) = \\begin{pmatrix} E & F \\\\ F & G \\end{pmatrix}$，$\\det g = EG-F^{2} > 0$。后面所有「$h$ 相对 $g$ 的特征值」都在用这个矩阵。',
         '⚠️ 换参数化会改 $E,F,G$ 的表达式，$I$ 作为张量不变。正交参数化（$F = 0$）能让公式短一半 —— 那串 $\\Gamma$ 就只在那种情形写出来。'
       ].join('\n\n'),
@@ -322,8 +322,8 @@ window.MG = window.MG || {};
       notes: [
         '**直观**：$W$ 度量「法向转得多快」，也就是曲面弯得多厉害。单位方向 $V$ 上的弯曲量是 $\\langle W(V), V\\rangle$，见 `def.normal-curvature`。',
         '**自伴从哪来**：坐标路线用 $r_{uv} = r_{vu}$（混合偏导相等）；标架路线用 $\\mathrm{d}\\omega^{3} = 0$（`lem.second-form-symmetric` 与入边）。后者更省，也不依赖参数网的特殊选取。',
-        '⚠️ **符号**：取 $W := -\\mathrm{d}n$ 是为了让「球面 $+$ 外法向」的主曲率为负（与 do Carmo 一致）。若取 $W := \\mathrm{d}n$，$II$ 也得跟着变号，否则「主曲率 $=$ $W$ 的特征值」不成立。写的 $W\\colon r_{i} \\mapsto -n_{i}$ 就是这个约定。',
-        '**第三基本形式**：$III(v,w) := \\langle \\mathrm{d}n(v), \\mathrm{d}n(w)\\rangle = \\langle W(v), W(w)\\rangle$。$W$ 的特征方程 $W^{2}-2HW+K\\,\\mathrm{id} = 0$ 翻成二次形式就是 $III-2H\\,II+K\\,I = 0$（Cayley–Hamilton）。'
+        '⚠️ **符号**：取 $W := -\\mathrm{d}n$ 是为了让「球面 $+$ 外法向」的主曲率为负（与 do Carmo 一致）。\n\n若取 $W := \\mathrm{d}n$，$II$ 也得跟着变号，否则「主曲率 $=$ $W$ 的特征值」不成立。\n\n写的 $W\\colon r_{i} \\mapsto -n_{i}$ 就是这个约定。',
+        '**第三基本形式**：$III(v,w) := \\langle \\mathrm{d}n(v), \\mathrm{d}n(w)\\rangle = \\langle W(v), W(w)\\rangle$。\n\n$W$ 的特征方程 $W^{2}-2HW+K\\,\\mathrm{id} = 0$ 翻成二次形式就是 $III-2H\\,II+K\\,I = 0$（Cayley–Hamilton）。'
       ].join('\n\n'),
       refs: [
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 形状算子与自伴性',
@@ -353,7 +353,7 @@ window.MG = window.MG || {};
         '经 $\\mathrm{d}r$ 把 $T_{p}U$ 与切平面 $T_{p}S$ 等同之后，$II$ 也可以直接写在切向量上：$II(V,W) = \\langle W(V), W\\rangle$。本包下面写 $k_{n}(V)$、Rodrigues 定理、Euler 公式时用的就是这个形式。'
       ].join('\n'),
       notes: [
-        '**一个负号，三种写法**：$\\langle \\mathrm{d}r, -\\mathrm{d}n\\rangle = -\\sum_{i}\\omega^{i}\\omega^{i}_{\\ 3} = \\sum_{i,j}h_{ij}\\omega^{i}\\omega^{j}$。这里把负号放进系数（$h_{ij} = -c_{ij}$），好处是 $h$ 恰好就是 $W$ 的矩阵，「主曲率 $=$ $h$ 的特征值」不用再配符号。',
+        '**一个负号，三种写法**：$\\langle \\mathrm{d}r, -\\mathrm{d}n\\rangle = -\\sum_{i}\\omega^{i}\\omega^{i}_{\\ 3} = \\sum_{i,j}h_{ij}\\omega^{i}\\omega^{j}$。\n\n这里把负号放进系数（$h_{ij} = -c_{ij}$），好处是 $h$ 恰好就是 $W$ 的矩阵，「主曲率 $=$ $h$ 的特征值」不用再配符号。',
         '⭐ **对称性不用算**：由 $\\mathrm{d}\\omega^{3} = 0$ 得到（`lem.second-form-symmetric`），不需要「$r_{uu}$、$r_{uv}$ 的混合偏导相等」。',
         '**与参数无关**：$II$ 是张量，$L, M, N$ 只是它在 $(u,v)$ 下的分量。$n \\mapsto -n$ 时 $II \\mapsto -II$，而 $W$ 的定义里已带负号、随之一并变号，所以 $K$ 与 $|H|$ 不变。',
         '**几何意义**：$II(v,v)$ 是「沿 $v$ 走、在法向上弯多少」；$L, M, N$ 与 $E, F, G$ 一起给出两个主曲率（解 $\\det(h-kg) = 0$）。'
@@ -387,11 +387,11 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **本包的枢纽**：一个偏导数都不用展开。$\\mathbb{R}^{3}$ 上曲率形式恒为零，拆项后残留的 $\\omega^{1}_{\\ 3}\\wedge\\omega^{2}_{\\ 3}$ 就是曲率 —— 曲率等于两个外蕴形式的外积。',
-        '**坐标版对照**：用 $r_{ij} = \\Gamma^{k}_{\\ ij}r_{k}+h_{ij}n$ 的混合偏导可交换推出 Gauss 方程，并写成 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$、$R_{1212} = LN-M^{2} = K(EG-F^{2})$。这里改用 $\\mathrm{d}\\omega^{i}_{\\ j}$ 读系数，是同一组方程的更短写法。',
-        '⚠️ **指标次序是约定**：若记 $R_{ijkl} = \\langle R(e_{i}, e_{j})e_{k}, e_{l}\\rangle$，上面的向量形式写成 $R_{ijkl} = h_{jk}h_{il}-h_{ik}h_{jl}$，符号与另一种指标次序相反；若取 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$ 对应把 $W$ 放在后一对位置的约定，那时 $R_{1212} = LN-M^{2} = K(EG-F^{2})$ 成立。用指标式之前先对齐 $R$ 的约定，符号才有意义。',
+        '**坐标版对照**：用 $r_{ij} = \\Gamma^{k}_{\\ ij}r_{k}+h_{ij}n$ 的混合偏导可交换推出 Gauss 方程，并写成 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$、$R_{1212} = LN-M^{2} = K(EG-F^{2})$。\n\n这里改用 $\\mathrm{d}\\omega^{i}_{\\ j}$ 读系数，是同一组方程的更短写法。',
+        '⚠️ **指标次序是约定**：若记 $R_{ijkl} = \\langle R(e_{i}, e_{j})e_{k}, e_{l}\\rangle$，上面的向量形式写成 $R_{ijkl} = h_{jk}h_{il}-h_{ik}h_{jl}$，符号与另一种指标次序相反；\n\n若取 $R_{ijkl} = h_{ik}h_{jl}-h_{il}h_{jk}$ 对应把 $W$ 放在后一对位置的约定，那时 $R_{1212} = LN-M^{2} = K(EG-F^{2})$ 成立。\n\n用指标式之前先对齐 $R$ 的约定，符号才有意义。',
         '**二维只剩一个独立分量**：$R_{ijkl}$ 的分量被对称性锁死，二维时只有一个（$R_{1212}$），所以二维的 Gauss 方程是**一个**方程 —— 这也是二维曲面论能算得动的原因。',
         '**点的分类**：$K > 0$ 椭圆点、$K = 0$ 且主曲率不全为零是抛物点、$K < 0$ 双曲点；$k_{1} = k_{2}$ 为脐点。',
-        '⭐ **读出来的推论（绝妙定理）**：$K = \\mathrm{d}\\omega^{1}_{\\ 2}/(\\omega^{1}\\wedge\\omega^{2})$ 里只出现 $\\omega^{1},\\omega^{2}$；而 $\\omega^{1}_{\\ 2}$ 由 $\\mathrm{d}\\omega^{1},\\mathrm{d}\\omega^{2}$ 加挠率为零的条件唯一解出（写 $\\omega^{1}_{\\ 2} = a_{1}\\omega^{1}+a_{2}\\omega^{2}$，两个方程给两个系数），所以 $K$ 只依赖 $I$ —— 即 Gauss 曲率是**内蕴**量。这条结果在 `diffgeom.intrinsic` 里有独立节点 `thm.theorema-egregium`（证明走标架与测地极坐标两条路），本包按「一个概念一个节点」不再重复建点，只把这一步记在这里。',
+        '⭐ **读出来的推论（绝妙定理）**：$K = \\mathrm{d}\\omega^{1}_{\\ 2}/(\\omega^{1}\\wedge\\omega^{2})$ 里只出现 $\\omega^{1},\\omega^{2}$；\n\n而 $\\omega^{1}_{\\ 2}$ 由 $\\mathrm{d}\\omega^{1},\\mathrm{d}\\omega^{2}$ 加挠率为零的条件唯一解出（写 $\\omega^{1}_{\\ 2} = a_{1}\\omega^{1}+a_{2}\\omega^{2}$，两个方程给两个系数），所以 $K$ 只依赖 $I$ —— 即 Gauss 曲率是**内蕴**量。\n\n这条结果在 `diffgeom.intrinsic` 里有独立节点 `thm.theorema-egregium`（证明走标架与测地极坐标两条路），本包按「一个概念一个节点」不再重复建点，只把这一步记在这里。',
         '**面积读法**：Gauss 映射把面积元放大 $\\det(\\mathrm{d}n) = \\det W = K$ 倍（带符号），所以 $K = \\pm|n_{u}\\times n_{v}|/|r_{u}\\times r_{v}|$。这与 $\\det h$ 是同一个量。'
       ].join('\n\n'),
       refs: [
@@ -422,7 +422,7 @@ window.MG = window.MG || {};
       notes: [
         '**它在说什么**：弯曲变化率在切方向上对称 —— 沿 $X$ 走时 $II$ 的改变量沿 $Y$ 的分量，等于沿 $Y$ 走时沿 $X$ 的分量。等价说法：$\\mathbb{R}^{3}$ 曲率的混合分量 $R^{i}_{\\ 3jk}$ 必须为零。',
         '⭐ **不是假设，是必要条件**：$\\mathbb{R}^{3}$ 平坦，所以任何能嵌入的曲面自动满足 Codazzi。它和 Gauss 方程一起构成「能否实现为 $\\mathbb{R}^{3}$ 中的曲面」的完整相容性条件（`thm.fundamental-theorem-surfaces`）。',
-        '**坐标版对照**：写成 $n_{ij} = n_{ji}$ 的等价形式，p005 写成 $\\nabla_{i}h_{kj} = \\nabla_{j}h_{ki}$（$h$ 对称，两种写法一致）。标架版只要看 $\\mathrm{d}\\omega^{i}_{\\ 3}$ 的 $\\omega^{1}\\wedge\\omega^{2}$ 系数，不必碰 Christoffel 符号。',
+        '**坐标版对照**：写成 $n_{ij} = n_{ji}$ 的等价形式，p005 写成 $\\nabla_{i}h_{kj} = \\nabla_{j}h_{ki}$（$h$ 对称，两种写法一致）。\n\n标架版只要看 $\\mathrm{d}\\omega^{i}_{\\ 3}$ 的 $\\omega^{1}\\wedge\\omega^{2}$ 系数，不必碰 Christoffel 符号。',
         '⚠️ 这条只在余维 $1$（曲面在 $\\mathbb{R}^{3}$ 里）时取这个简单形状；高余维时右端还要多一项法丛曲率。本包只在 $\\mathbb{R}^{3}$ 里用它。'
       ].join('\n\n'),
       refs: [
@@ -524,7 +524,7 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '平均曲率', 'Gauss 曲率'],
       statement: [
-        '白话：一个点上有两个主曲率 $k_{1}, k_{2}$（沿两个主方向的弯曲程度），它们的**平均**叫平均曲率 $H$、**乘积**叫 Gauss 曲率 $K$。$H$ 与「极小曲面」（肥皂膜）有关，$K$ 与「曲面弯不弯得平」有关。这两个数就是形状算子 $W$ 的全部不变量（一个 $2\\times2$ 对称矩阵只有迹与行列式两个）。',
+        '白话：一个点上有两个主曲率 $k_{1}, k_{2}$（沿两个主方向的弯曲程度），它们的**平均**叫平均曲率 $H$、**乘积**叫 Gauss 曲率 $K$。\n\n$H$ 与「极小曲面」（肥皂膜）有关，$K$ 与「曲面弯不弯得平」有关。\n\n这两个数就是形状算子 $W$ 的全部不变量（一个 $2\\times2$ 对称矩阵只有迹与行列式两个）。',
         '',
         '$$H := \\frac{1}{2}\\operatorname{tr}W = \\frac{1}{2}(k_{1}+k_{2}),\\qquad K := \\det W = k_{1}k_{2}.$$',
         '',
@@ -611,7 +611,7 @@ window.MG = window.MG || {};
         '在曲率线网下主曲率就是 $k_{1} = L/E$、$k_{2} = N/G$，且 $II$ 与 $I$ 在该参数网下同时对角化。'
       ].join('\n'),
       notes: [
-        '**两行证明**：若 $F = M = 0$，则 $\\{r_{u}, r_{v}\\}$ 正交且 $II$ 无交叉项，两个方向都满足 $W(r_{u}) \\parallel r_{u}$，故都是主方向；反之两个**不同**的主方向必正交（谱定理，`def.principal-curvature`），故 $F = 0$，又 $M = II(r_{u}, r_{v}) = \\langle W(r_{u}), r_{v}\\rangle = k\\langle r_{u}, r_{v}\\rangle = 0$。见入边。',
+        '**两行证明**：若 $F = M = 0$，则 $\\{r_{u}, r_{v}\\}$ 正交且 $II$ 无交叉项，两个方向都满足 $W(r_{u}) \\parallel r_{u}$，故都是主方向；\n\n反之两个**不同**的主方向必正交（谱定理，`def.principal-curvature`），故 $F = 0$，又 $M = II(r_{u}, r_{v}) = \\langle W(r_{u}), r_{v}\\rangle = k\\langle r_{u}, r_{v}\\rangle = 0$。\n\n见入边。',
         '⚠️ **为什么要排除脐点**：$k_{1} = k_{2}$ 时每个切方向都是主方向，「曲率线」不再有区分度，此时 $F$ 与 $M$ 只满足 $M = kF$，可以同时不为零。所以判别法只在非脐点区域使用。',
         '**曲率线的微分方程**：曲线 $(u(t), v(t))$ 的切方向是主方向，当且仅当',
         '$$\\begin{vmatrix} (\\mathrm{d}u^{1})^{2} & -\\mathrm{d}u^{1}\\mathrm{d}u^{2} & (\\mathrm{d}u^{2})^{2} \\\\ E & F & G \\\\ L & M & N \\end{vmatrix} = 0 .$$',
@@ -645,8 +645,8 @@ window.MG = window.MG || {};
         '且在相差一个刚体运动的意义下唯一。反过来，任何曲面给出的 $(I, II)$ 必满足这两条方程。'
       ].join('\n'),
       notes: [
-        '⭐ **为什么 Gauss–Codazzi 恰好是充要条件**：结构方程 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$、$\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$ 是关于 $(r, e_{1}, e_{2}, e_{3})$ 的一阶线性偏微分方程组，系数 $\\omega^{i}, \\omega^{i}_{\\ j}$ 由 $g, h$ 代数地给出。相容性条件只有 $\\mathrm{d}^{2} = 0$，它拆成两块：$\\Omega^{1}_{\\ 2} = 0$（Gauss）与 $\\Omega^{i}_{\\ 3} = 0$（Codazzi）。这就是「Gauss–Codazzi 是唯一障碍」的全部内容。',
-        '**三步构造**：(i) 由 $g$ 取正交余标架 $\\omega^{1}, \\omega^{2}$，用挠率为零的条件解出 $\\omega^{1}_{\\ 2}$；(ii) 由 $h$ 定 $\\omega^{i}_{\\ 3}$，Gauss–Codazzi 保证 $\\mathrm{d}^{2} = 0$，于是（Frobenius 定理）局部解出正交标架 $(e_{1}, e_{2}, e_{3})$；(iii) 再解 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ —— 这一支只需 $\\mathrm{d}^{2}r = 0$，而它正是第一结构方程。',
+        '⭐ **为什么 Gauss–Codazzi 恰好是充要条件**：结构方程 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$、$\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$ 是关于 $(r, e_{1}, e_{2}, e_{3})$ 的一阶线性偏微分方程组，系数 $\\omega^{i}, \\omega^{i}_{\\ j}$ 由 $g, h$ 代数地给出。\n\n相容性条件只有 $\\mathrm{d}^{2} = 0$，它拆成两块：$\\Omega^{1}_{\\ 2} = 0$（Gauss）与 $\\Omega^{i}_{\\ 3} = 0$（Codazzi）。\n\n这就是「Gauss–Codazzi 是唯一障碍」的全部内容。',
+        '**三步构造**：(i) 由 $g$ 取正交余标架 $\\omega^{1}, \\omega^{2}$，用挠率为零的条件解出 $\\omega^{1}_{\\ 2}$；(ii) 由 $h$ 定 $\\omega^{i}_{\\ 3}$，Gauss–Codazzi 保证 $\\mathrm{d}^{2} = 0$，于是（Frobenius 定理）局部解出正交标架 $(e_{1}, e_{2}, e_{3})$；\n\n(iii) 再解 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$ —— 这一支只需 $\\mathrm{d}^{2}r = 0$，而它正是第一结构方程。',
         '**唯一性**：两组解之差是一个平行的（常）正交变换加平移；把初始标架对齐就重合。',
         '⚠️ **单连通去不掉**：否则整体平行移动会出现和乐（holonomy），局部解拼不成整体曲面。',
         '📌 结论是「既给 C–C 方程是结构方程可积性条件；满足 C–C 方程的曲面局部存在解」，正是本定理的两半。这里把「可积性条件」明确成 $\\Omega = 0$ 的两组分量。'
@@ -838,7 +838,10 @@ window.MG = window.MG || {};
         '',
         '$$e_{1} := \\frac{r_{u}}{\\lVert r_{u}\\rVert},\\qquad e_{2} := \\frac{r_{v}-\\langle r_{v}, e_{1}\\rangle e_{1}}{\\lVert r_{v}-\\langle r_{v}, e_{1}\\rangle e_{1}\\rVert},\\qquad e_{3} := e_{1}\\times e_{2},$$',
         '',
-        '再取符号使之等于 $n$（若 $e_{1}\\times e_{2} = -n$，把 $e_{2}$ 换成 $-e_{2}$）。$r$ 是 $C^{2}$，故 $n$ 是 $C^{1}$，右端全是 $C^{1}$ 表达式，于是 $(e_{1}, e_{2}, e_{3})$ 是 $C^{1}$ 标架场；对偶余标架 $\\omega^{i} = \\langle \\cdot, e_{i}\\rangle$ 也随之 $C^{1}$。∎'
+        '再取符号使之等于 $n$（若 $e_{1}\\times e_{2} = -n$，把 $e_{2}$ 换成 $-e_{2}$）。\n\n' +
+        '$r$ 是 $C^{2}$，故 $n$ 是 $C^{1}$，右端全是 $C^{1}$ 表达式，于是 $(e_{1}, e_{2}, e_{3})$ 是 $C^{1}$ 标架场；\n\n' +
+        '对偶余标架 $\\omega^{i} = \\langle \\cdot, e_{i}\\rangle$ 也随之 $C^{1}$。\n\n' +
+        '∎'
       ].join('\n')
     },
 
@@ -853,7 +856,7 @@ window.MG = window.MG || {};
         '',
         '$$0 = \\mathrm{d}\\langle e_{i}, e_{j}\\rangle = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle+\\langle e_{i}, \\mathrm{d}e_{j}\\rangle = \\omega^{j}_{\\ i}+\\omega^{i}_{\\ j}.$$',
         '',
-        '中间一步用的是 $\\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle$ 与 $\\omega^{i}_{\\ j} = \\langle \\mathrm{d}e_{j}, e_{i}\\rangle$，以及内积的对称性。取 $i = j$ 得 $2\\omega^{i}_{\\ i} = 0$。∎'
+        '中间一步用的是 $\\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle$ 与 $\\omega^{i}_{\\ j} = \\langle \\mathrm{d}e_{j}, e_{i}\\rangle$，以及内积的对称性。\n\n取 $i = j$ 得 $2\\omega^{i}_{\\ i} = 0$。\n\n∎'
       ].join('\n')
     },
 
@@ -868,13 +871,13 @@ window.MG = window.MG || {};
         '',
         '$$0 = \\mathrm{d}^{2}r = \\sum_{i}\\mathrm{d}\\omega^{i}\\wedge e_{i}-\\sum_{i}\\omega^{i}\\wedge \\mathrm{d}e_{i} = \\sum_{j}\\Bigl(\\mathrm{d}\\omega^{j}-\\sum_{i}\\omega^{i}\\wedge\\omega^{j}_{\\ i}\\Bigr)e_{j}.$$',
         '',
-        '最后的等号是把 $-\\sum_{i}\\omega^{i}\\wedge \\mathrm{d}e_{i} = -\\sum_{i,j}\\omega^{i}\\wedge\\omega^{j}_{\\ i}e_{j}$ 按 $e_{j}$ 归并。$e_{j}$ 处处线性无关，故系数为零：$\\mathrm{d}\\omega^{j} = \\sum_{i}\\omega^{i}\\wedge\\omega^{j}_{\\ i}$，改换指标即第一结构方程。',
+        '最后的等号是把 $-\\sum_{i}\\omega^{i}\\wedge \\mathrm{d}e_{i} = -\\sum_{i,j}\\omega^{i}\\wedge\\omega^{j}_{\\ i}e_{j}$ 按 $e_{j}$ 归并。\n\n$e_{j}$ 处处线性无关，故系数为零：$\\mathrm{d}\\omega^{j} = \\sum_{i}\\omega^{i}\\wedge\\omega^{j}_{\\ i}$，改换指标即第一结构方程。',
         '',
         '**第二式。** 对 $\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$ 取外微分：',
         '',
         '$$0 = \\mathrm{d}^{2}e_{i} = \\sum_{j}\\mathrm{d}\\omega^{j}_{\\ i}\\wedge e_{j}-\\sum_{j,k}\\omega^{j}_{\\ i}\\wedge\\omega^{k}_{\\ j}e_{k} = \\sum_{j}\\Bigl(\\mathrm{d}\\omega^{j}_{\\ i}-\\sum_{k}\\omega^{k}_{\\ i}\\wedge\\omega^{j}_{\\ k}\\Bigr)e_{j},$$',
         '',
-        '故 $\\mathrm{d}\\omega^{j}_{\\ i} = \\sum_{k}\\omega^{k}_{\\ i}\\wedge\\omega^{j}_{\\ k}$；改换指标得 $\\mathrm{d}\\omega^{i}_{\\ j} = \\sum_{k}\\omega^{k}_{\\ j}\\wedge\\omega^{i}_{\\ k}$。由 $1$-形式反交换，这等于 $\\mathrm{d}\\omega^{i}_{\\ j} = -\\sum_{k}\\omega^{i}_{\\ k}\\wedge\\omega^{k}_{\\ j}$，即曲率形式 $\\Omega^{i}_{\\ j} := \\mathrm{d}\\omega^{i}_{\\ j}+\\sum_{k}\\omega^{i}_{\\ k}\\wedge\\omega^{k}_{\\ j}$ 恒为零。∎',
+        '故 $\\mathrm{d}\\omega^{j}_{\\ i} = \\sum_{k}\\omega^{k}_{\\ i}\\wedge\\omega^{j}_{\\ k}$；改换指标得 $\\mathrm{d}\\omega^{i}_{\\ j} = \\sum_{k}\\omega^{k}_{\\ j}\\wedge\\omega^{i}_{\\ k}$。\n\n由 $1$-形式反交换，这等于 $\\mathrm{d}\\omega^{i}_{\\ j} = -\\sum_{k}\\omega^{i}_{\\ k}\\wedge\\omega^{k}_{\\ j}$，即曲率形式 $\\Omega^{i}_{\\ j} := \\mathrm{d}\\omega^{i}_{\\ j}+\\sum_{k}\\omega^{i}_{\\ k}\\wedge\\omega^{k}_{\\ j}$ 恒为零。\n\n∎',
         '',
         '⭐ 反过来也是同一件事：能构造出标架的**唯一**障碍就是这个 $\\mathrm{d}^{2}=0$（曲面论基本定理用的就是这一点）。'
       ].join('\n')
@@ -887,13 +890,13 @@ window.MG = window.MG || {};
       target: 'lem.adapted-frame',
       title: '沿曲面取 $e_{3} = n$ $\\implies$ $\\omega^{3} = 0$',
       proof: [
-        '对任意切向量 $v$：$\\omega^{3}(v) = \\langle \\mathrm{d}r(v), e_{3}\\rangle = \\langle \\mathrm{d}r(v), n\\rangle = 0$ —— $\\mathrm{d}r(v)$ 是曲面的切向量（$r$ 的像落在 $S$ 里），与法向正交。故 $\\omega^{3}$ 沿曲面为零，于是 $\\mathrm{d}\\omega^{3} = 0$。',
+        '对任意切向量 $v$：$\\omega^{3}(v) = \\langle \\mathrm{d}r(v), e_{3}\\rangle = \\langle \\mathrm{d}r(v), n\\rangle = 0$ —— $\\mathrm{d}r(v)$ 是曲面的切向量（$r$ 的像落在 $S$ 里），与法向正交。\n\n故 $\\omega^{3}$ 沿曲面为零，于是 $\\mathrm{d}\\omega^{3} = 0$。',
         '',
         '把 $i = 3$ 代入第一结构方程（含 $\\omega^{3}$ 的项全部消失）：',
         '',
         '$$0 = \\mathrm{d}\\omega^{3} = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2}.$$',
         '',
-        '这条恒等式把 $\\omega^{1}_{\\ 3}, \\omega^{2}_{\\ 3}$ 锁在 $\\{\\omega^{1}, \\omega^{2}\\}$ 张成的二维空间里：写出 $\\omega^{3}_{\\ i} = a_{i}\\omega^{1}+b_{i}\\omega^{2}+c_{i}\\omega^{3}$ 代进去，比较 $\\omega^{1}\\wedge\\omega^{3}$ 与 $\\omega^{2}\\wedge\\omega^{3}$ 的系数即得 $c_{1} = c_{2} = 0$，于是 $\\omega^{i}_{\\ 3} = \\sum_{j}c_{ij}\\omega^{j}$。剩下的 $\\omega^{1}\\wedge\\omega^{2}$ 系数给出 $b_{1} = a_{2}$，即系数的对称性（见 `lem.second-form-symmetric`）。∎'
+        '这条恒等式把 $\\omega^{1}_{\\ 3}, \\omega^{2}_{\\ 3}$ 锁在 $\\{\\omega^{1}, \\omega^{2}\\}$ 张成的二维空间里：写出 $\\omega^{3}_{\\ i} = a_{i}\\omega^{1}+b_{i}\\omega^{2}+c_{i}\\omega^{3}$ 代进去，比较 $\\omega^{1}\\wedge\\omega^{3}$ 与 $\\omega^{2}\\wedge\\omega^{3}$ 的系数即得 $c_{1} = c_{2} = 0$，于是 $\\omega^{i}_{\\ 3} = \\sum_{j}c_{ij}\\omega^{j}$。\n\n剩下的 $\\omega^{1}\\wedge\\omega^{2}$ 系数给出 $b_{1} = a_{2}$，即系数的对称性（见 `lem.second-form-symmetric`）。\n\n∎'
       ].join('\n')
     },
 
@@ -904,11 +907,11 @@ window.MG = window.MG || {};
       target: 'lem.second-form-symmetric',
       title: '$\\mathrm{d}\\omega^{3} = 0$ $\\implies$ 第二基本形式的系数对称',
       proof: [
-        '记 $\\omega^{i}_{\\ 3} = \\sum_{j}c_{ij}\\omega^{j}$（$i, j = 1,2$；因为 $\\omega^{3} = 0$，这两个形式只能落在 $\\omega^{1}, \\omega^{2}$ 张成的空间里）。代入 $\\mathrm{d}\\omega^{3} = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2} = 0$：',
+        '记 $\\omega^{i}_{\\ 3} = \\sum_{j}c_{ij}\\omega^{j}$（$i, j = 1,2$；因为 $\\omega^{3} = 0$，这两个形式只能落在 $\\omega^{1}, \\omega^{2}$ 张成的空间里）。\n\n代入 $\\mathrm{d}\\omega^{3} = \\omega^{1}\\wedge\\omega^{3}_{\\ 1}+\\omega^{2}\\wedge\\omega^{3}_{\\ 2} = 0$：',
         '',
         '$$0 = \\omega^{1}\\wedge(c_{11}\\omega^{1}+c_{12}\\omega^{2})+\\omega^{2}\\wedge(c_{21}\\omega^{1}+c_{22}\\omega^{2}) = (c_{12}-c_{21})\\,\\omega^{1}\\wedge\\omega^{2}.$$',
         '',
-        '$\\omega^{1}\\wedge\\omega^{2} \\ne 0$（两个独立的 $1$-形式之外积非零），故 $c_{12} = c_{21}$。取 $h_{ij} := -c_{ij}$，则 $(h_{ij})$ 对称，$II = \\sum_{i,j}h_{ij}\\omega^{i}\\omega^{j}$ 也就成了对称双线性形式。∎'
+        '$\\omega^{1}\\wedge\\omega^{2} \\ne 0$（两个独立的 $1$-形式之外积非零），故 $c_{12} = c_{21}$。\n\n取 $h_{ij} := -c_{ij}$，则 $(h_{ij})$ 对称，$II = \\sum_{i,j}h_{ij}\\omega^{i}\\omega^{j}$ 也就成了对称双线性形式。\n\n∎'
       ].join('\n')
     },
 
@@ -923,7 +926,7 @@ window.MG = window.MG || {};
         '',
         '$$I(v,w) = \\Bigl\\langle \\sum_{i}\\omega^{i}(v)e_{i},\\ \\sum_{j}\\omega^{j}(w)e_{j}\\Bigr\\rangle = \\sum_{i,j}\\omega^{i}(v)\\omega^{j}(w)\\delta_{ij} = \\sum_{i}\\omega^{i}(v)\\omega^{i}(w),$$',
         '',
-        '即 $I = \\sum_{i}(\\omega^{i})^{2}$；沿曲面 $\\omega^{3} = 0$，只剩两项。再把 $e_{1}, e_{2}$ 用 $r_{u}, r_{v}$ 展开，就得到 $I = E\\,\\mathrm{d}u^{2}+2F\\,\\mathrm{d}u\\,\\mathrm{d}v+G\\,\\mathrm{d}v^{2}$ —— 两组分量是同一个张量在不同基下的矩阵。∎'
+        '即 $I = \\sum_{i}(\\omega^{i})^{2}$；沿曲面 $\\omega^{3} = 0$，只剩两项。\n\n再把 $e_{1}, e_{2}$ 用 $r_{u}, r_{v}$ 展开，就得到 $I = E\\,\\mathrm{d}u^{2}+2F\\,\\mathrm{d}u\\,\\mathrm{d}v+G\\,\\mathrm{d}v^{2}$ —— 两组分量是同一个张量在不同基下的矩阵。\n\n∎'
       ].join('\n')
     },
 
@@ -980,9 +983,9 @@ window.MG = window.MG || {};
         '',
         '$$\\omega^{1}_{\\ 3}\\wedge\\omega^{2}_{\\ 3} = (c_{11}c_{22}-c_{12}^{2})\\,\\omega^{1}\\wedge\\omega^{2}.$$',
         '',
-        '按定义 $\\mathrm{d}\\omega^{1}_{\\ 2} = K\\omega^{1}\\wedge\\omega^{2}$，故 $K = \\det(c_{ij})$。又 $h = -c$，而 $\\det(-c) = \\det c$（$2\\times2$），故 $K = \\det(h_{ij})$。在参数网 $\\{r_{u}, r_{v}\\}$ 下 $h$ 与 $g$ 是同一对基下的两个矩阵，于是 $K = \\det h/\\det g = (LN-M^{2})/(EG-F^{2})$。',
+        '按定义 $\\mathrm{d}\\omega^{1}_{\\ 2} = K\\omega^{1}\\wedge\\omega^{2}$，故 $K = \\det(c_{ij})$。\n\n又 $h = -c$，而 $\\det(-c) = \\det c$（$2\\times2$），故 $K = \\det(h_{ij})$。\n\n在参数网 $\\{r_{u}, r_{v}\\}$ 下 $h$ 与 $g$ 是同一对基下的两个矩阵，于是 $K = \\det h/\\det g = (LN-M^{2})/(EG-F^{2})$。',
         '',
-        '**无指标形式**：同一段 $R^{\\mathbb{R}^{3}} = 0$ 的展开，这一次取**切向**分量（而不是法向分量），就得到 $\\langle R(X,Y)Z, W\\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W)$ —— 法向分量那一半正是 `thm.codazzi-mainardi` 的入边里算的东西。∎'
+        '**无指标形式**：同一段 $R^{\\mathbb{R}^{3}} = 0$ 的展开，这一次取**切向**分量（而不是法向分量），就得到 $\\langle R(X,Y)Z, W\\rangle = II(Y,Z)II(X,W)-II(X,Z)II(Y,W)$ —— 法向分量那一半正是 `thm.codazzi-mainardi` 的入边里算的东西。\n\n∎'
       ].join('\n')
     },
 
@@ -1011,7 +1014,7 @@ window.MG = window.MG || {};
         '',
         '$$(\\nabla_{X}II)(Y,Z)-(\\nabla_{Y}II)(X,Z) = 0 .$$',
         '',
-        '这就是 $\\nabla II$ 关于前两个变量对称，也就是 $\\mathbb{R}^{3}$ 曲率的混合分量 $R^{i}_{\\ 3jk}$ 为零。写成系数即 $\\nabla_{i}h_{jk} = \\nabla_{j}h_{ik}$（$h$ 对称时与$\\nabla_{i}h_{kj} = \\nabla_{j}h_{ki}$ 是同一组方程）。∎'
+        '这就是 $\\nabla II$ 关于前两个变量对称，也就是 $\\mathbb{R}^{3}$ 曲率的混合分量 $R^{i}_{\\ 3jk}$ 为零。\n\n写成系数即 $\\nabla_{i}h_{jk} = \\nabla_{j}h_{ik}$（$h$ 对称时与$\\nabla_{i}h_{kj} = \\nabla_{j}h_{ki}$ 是同一组方程）。\n\n∎'
       ].join('\n')
     },
 
@@ -1026,7 +1029,7 @@ window.MG = window.MG || {};
         '',
         '$$0 = \\langle \\gamma\'\', n\\rangle+\\langle \\gamma\', \\mathrm{d}n(\\gamma\')\\rangle \\implies \\langle \\gamma\'\', n\\rangle = -\\langle V, \\mathrm{d}n(V)\\rangle = II(V,V).$$',
         '',
-        '又 $k = \\lVert \\gamma\'\'\\rVert$、$N_{\\gamma} = \\gamma\'\'/k$，故 $\\langle \\gamma\'\', n\\rangle = k\\langle N_{\\gamma}, n\\rangle = k\\cos\\theta$。与 $II(V,V) = k_{n}(V)$（单位速，故 $I$ 的归一化因子为 $1$）比较，得 $k_{n}(V) = k\\cos\\theta$。∎'
+        '又 $k = \\lVert \\gamma\'\'\\rVert$、$N_{\\gamma} = \\gamma\'\'/k$，故 $\\langle \\gamma\'\', n\\rangle = k\\langle N_{\\gamma}, n\\rangle = k\\cos\\theta$。\n\n与 $II(V,V) = k_{n}(V)$（单位速，故 $I$ 的归一化因子为 $1$）比较，得 $k_{n}(V) = k\\cos\\theta$。\n\n∎'
       ].join('\n')
     },
 
@@ -1037,9 +1040,9 @@ window.MG = window.MG || {};
       target: 'thm.rodrigues',
       title: '形状算子 $\\implies$ Rodrigues 定理',
       proof: [
-        '记 $u := \\mathrm{d}r(v) \\ne 0$。$v$ 是主方向，按定义就是 $u$ 是 $W$ 的特征向量：$W(u) = k\\,u$，其中 $k$ 是对应的主曲率。由 $W = -\\mathrm{d}n$，$W(u) = -\\mathrm{d}n(v)$，于是 $W(u) = k\\,u \\iff \\mathrm{d}n(v) = -k\\,\\mathrm{d}r(v)$，即 (1)$\\iff$(2)。',
+        '记 $u := \\mathrm{d}r(v) \\ne 0$。\n\n$v$ 是主方向，按定义就是 $u$ 是 $W$ 的特征向量：$W(u) = k\\,u$，其中 $k$ 是对应的主曲率。\n\n由 $W = -\\mathrm{d}n$，$W(u) = -\\mathrm{d}n(v)$，于是 $W(u) = k\\,u \\iff \\mathrm{d}n(v) = -k\\,\\mathrm{d}r(v)$，即 (1)$\\iff$(2)。',
         '',
-        '(2)$\\iff$(3)：$k_{n}$ 在单位向量上取驻值 $\\iff$ 存在 $k$ 使 $II(v,\\cdot) = k\\,I(v,\\cdot)$（Lagrange 乘子）$\\iff$ $\\langle W(\\mathrm{d}r(v)), \\mathrm{d}r(\\cdot)\\rangle = k\\langle \\mathrm{d}r(v), \\mathrm{d}r(\\cdot)\\rangle$ $\\iff$ $W(u) = k\\,u$。而这时 $k_{n}(v) = II(v,v)/I(v,v) = k$，故驻值恰是对应主曲率。∎'
+        '(2)$\\iff$(3)：$k_{n}$ 在单位向量上取驻值 $\\iff$ 存在 $k$ 使 $II(v,\\cdot) = k\\,I(v,\\cdot)$（Lagrange 乘子）$\\iff$ $\\langle W(\\mathrm{d}r(v)), \\mathrm{d}r(\\cdot)\\rangle = k\\langle \\mathrm{d}r(v), \\mathrm{d}r(\\cdot)\\rangle$ $\\iff$ $W(u) = k\\,u$。\n\n而这时 $k_{n}(v) = II(v,v)/I(v,v) = k$，故驻值恰是对应主曲率。\n\n∎'
       ].join('\n')
     },
 
@@ -1050,7 +1053,7 @@ window.MG = window.MG || {};
       target: 'thm.euler-formula-surface',
       title: '谱定理 $\\implies$ Euler 公式',
       proof: [
-        '主方向标架下 $W(e_{1}) = k_{1}e_{1}$、$W(e_{2}) = k_{2}e_{2}$，且 $e_{1}\\perp e_{2}$、$\\lVert e_{1}\\rVert = \\lVert e_{2}\\rVert = 1$（`thm.rodrigues` 给出特征向量的几何意义）。设单位向量 $V = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$，则',
+        '主方向标架下 $W(e_{1}) = k_{1}e_{1}$、$W(e_{2}) = k_{2}e_{2}$，且 $e_{1}\\perp e_{2}$、$\\lVert e_{1}\\rVert = \\lVert e_{2}\\rVert = 1$（`thm.rodrigues` 给出特征向量的几何意义）。\n\n设单位向量 $V = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$，则',
         '',
         '$$k_{n}(V) = \\langle W(V), V\\rangle = \\Bigl\\langle k_{1}\\cos\\theta\\,e_{1}+k_{2}\\sin\\theta\\,e_{2},\\ \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}\\Bigr\\rangle = k_{1}\\cos^{2}\\theta+k_{2}\\sin^{2}\\theta .$$',
         '',
@@ -1067,7 +1070,7 @@ window.MG = window.MG || {};
       proof: [
         '以下都在非脐点处（$k_{1} \\ne k_{2}$）。',
         '',
-        '**($\\Longleftarrow$)** 设 $F = M = 0$。$F = 0$ 给出 $r_{u}\\perp r_{v}$；$M = II(r_{u}, r_{v}) = 0$ 说明交叉项为零。记 $\\varepsilon_{1}, \\varepsilon_{2}$ 为 $r_{u}, r_{v}$ 单位化后的向量，则 $\\{\\varepsilon_{1}, \\varepsilon_{2}\\}$ 是正交基且 $II(\\varepsilon_{1}, \\varepsilon_{2}) = 0$，即 $\\langle W(\\varepsilon_{1}), \\varepsilon_{2}\\rangle = 0$，故 $W(\\varepsilon_{1})\\parallel\\varepsilon_{1}$；同理 $W(\\varepsilon_{2})\\parallel\\varepsilon_{2}$。两条坐标曲线都是曲率线（`thm.rodrigues` 的 (1)$\\iff$(2)）。',
+        '**($\\Longleftarrow$)** 设 $F = M = 0$。\n\n$F = 0$ 给出 $r_{u}\\perp r_{v}$；$M = II(r_{u}, r_{v}) = 0$ 说明交叉项为零。\n\n记 $\\varepsilon_{1}, \\varepsilon_{2}$ 为 $r_{u}, r_{v}$ 单位化后的向量，则 $\\{\\varepsilon_{1}, \\varepsilon_{2}\\}$ 是正交基且 $II(\\varepsilon_{1}, \\varepsilon_{2}) = 0$，即 $\\langle W(\\varepsilon_{1}), \\varepsilon_{2}\\rangle = 0$，故 $W(\\varepsilon_{1})\\parallel\\varepsilon_{1}$；\n\n同理 $W(\\varepsilon_{2})\\parallel\\varepsilon_{2}$。\n\n两条坐标曲线都是曲率线（`thm.rodrigues` 的 (1)$\\iff$(2)）。',
         '',
         '**($\\implies$)** 设 $r_{u}, r_{v}$ 都是主方向。非脐点处两个主方向对应不同特征值，谱定理给出正交性，故 $F = \\langle r_{u}, r_{v}\\rangle = 0$；又',
         '',
@@ -1089,8 +1092,8 @@ window.MG = window.MG || {};
         '**充分性（构造）**：给定 $g, h$。',
         '',
         ['1. 由 $g$ 取正交余标架 $\\omega^{1}, \\omega^{2}$（使 $g = (\\omega^{1})^{2}+(\\omega^{2})^{2}$，代数地可取），第一结构方程 $\\mathrm{d}\\omega^{1} = \\omega^{2}\\wedge\\omega^{1}_{\\ 2}$、$\\mathrm{d}\\omega^{2} = -\\omega^{1}\\wedge\\omega^{1}_{\\ 2}$ 唯一确定 $\\omega^{1}_{\\ 2}$。',
-         '2. 令 $c := -h$、$\\omega^{i}_{\\ 3} := \\sum_{j}c_{ij}\\omega^{j}$。Gauss 方程保证 $\\Omega^{1}_{\\ 2} = \\omega^{1}_{\\ 3}\\wedge\\omega^{2}_{\\ 3}$（即 $\\Omega^{1}_{\\ 2}$ 与曲率一致），Codazzi 保证 $\\Omega^{i}_{\\ 3} = 0$；连同第 1 步已经满足的 $\\Omega^{i}_{\\ j} = 0$，得到**全部**分量 $\\Omega^{i}_{\\ j} = 0$，也就是整套结构方程的 $\\mathrm{d}^{2} = 0$ 都成立。',
-         '3. 于是线性方程组 $\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$ 满足 Frobenius 可积性条件，在单连通 $U$ 上局部有解；因 $\\omega^{i}_{\\ j}$ 反称，$\\langle e_{i}, e_{j}\\rangle$ 的导数全为零，初值取标准正交即保证解处处正交。',
+         '2. 令 $c := -h$、$\\omega^{i}_{\\ 3} := \\sum_{j}c_{ij}\\omega^{j}$。\n\nGauss 方程保证 $\\Omega^{1}_{\\ 2} = \\omega^{1}_{\\ 3}\\wedge\\omega^{2}_{\\ 3}$（即 $\\Omega^{1}_{\\ 2}$ 与曲率一致），Codazzi 保证 $\\Omega^{i}_{\\ 3} = 0$；\n\n连同第 1 步已经满足的 $\\Omega^{i}_{\\ j} = 0$，得到**全部**分量 $\\Omega^{i}_{\\ j} = 0$，也就是整套结构方程的 $\\mathrm{d}^{2} = 0$ 都成立。',
+         '3. 于是线性方程组 $\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$ 满足 Frobenius 可积性条件，在单连通 $U$ 上局部有解；\n\n因 $\\omega^{i}_{\\ j}$ 反称，$\\langle e_{i}, e_{j}\\rangle$ 的导数全为零，初值取标准正交即保证解处处正交。',
          '4. 再解 $\\mathrm{d}r = \\sum_{i}\\omega^{i}e_{i}$：相容性 $\\mathrm{d}(\\omega^{i}e_{i}) = 0$ 正是第一结构方程，已成立；单连通给出 $r$。',
          '5. 验证：$I = \\sum_{i}(\\omega^{i})^{2} = g$（第 1 步的取法），$II = -\\sum_{i}\\omega^{i}\\omega^{i}_{\\ 3} = \\sum_{i,j}h_{ij}\\omega^{i}\\omega^{j} = h$（第 2 步的取法 $c = -h$）。'].join('\n'),
         '',

@@ -68,7 +68,10 @@ window.MG = window.MG || {};
       statement: [
         '**在说什么**：流形没有天生的坐标，所以「坐标」必须一张张地发 —— 一张卡就是「一块地皮 + 一块坐标牌」，换牌子时必须换得光滑。',
         '',
-        '设 $M$ 是拓扑空间，$n \\ge 0$。$M$ 上的一张 **$n$ 维图卡**（坐标卡）是二元组 $(U,\\varphi)$，其中 $U \\subseteq M$ 是开集，$\\varphi : U \\to \\varphi(U) \\subseteq \\mathbb{R}^{n}$ 是同胚（要求 $\\varphi(U)$ 在 $\\mathbb{R}^{n}$ 里开）。$U$ 叫**坐标邻域**，$\\varphi$ 叫**坐标映射**；分量 $x^{i} := \\varphi^{i}$ 叫**局部坐标**，即 $p \\mapsto \\bigl(x^{1}(p),\\ldots,x^{n}(p)\\bigr)$。',
+        '设 $M$ 是拓扑空间，$n \\ge 0$。\n\n' +
+        '$M$ 上的一张 **$n$ 维图卡**（坐标卡）是二元组 $(U,\\varphi)$，其中 $U \\subseteq M$ 是开集，$\\varphi : U \\to \\varphi(U) \\subseteq \\mathbb{R}^{n}$ 是同胚（要求 $\\varphi(U)$ 在 $\\mathbb{R}^{n}$ 里开）。\n\n' +
+        '$U$ 叫**坐标邻域**，$\\varphi$ 叫**坐标映射**；\n\n' +
+        '分量 $x^{i} := \\varphi^{i}$ 叫**局部坐标**，即 $p \\mapsto \\bigl(x^{1}(p),\\ldots,x^{n}(p)\\bigr)$。',
         '',
         '$n = 0$ 时 $\\mathbb{R}^{0}$ 是单点，图卡给的是「这个点在不在 $U$ 里」。',
         '',
@@ -80,7 +83,7 @@ window.MG = window.MG || {};
         '',
         '两两相容、覆盖 $M$ 的一族卡 $\\mathcal{A} = \\{(U_{\\alpha},\\varphi_{\\alpha})\\}$ 叫 $M$ 的 **$n$ 维图册**。',
         '',
-        '**例**：$\\mathbb{R}^{n}$ 上取 $U = \\mathbb{R}^{n}$、$\\varphi = \\operatorname{id}$ 是单张卡的图册。$S^{n} \\subseteq \\mathbb{R}^{n+1}$ 用两张球极投影卡（去北极、去南极各投到 $\\mathbb{R}^{n}$），它们的转移映射是 $x \\mapsto x/\\lVert x\\rVert^{2}$，光滑。'
+        '**例**：$\\mathbb{R}^{n}$ 上取 $U = \\mathbb{R}^{n}$、$\\varphi = \\operatorname{id}$ 是单张卡的图册。\n\n$S^{n} \\subseteq \\mathbb{R}^{n+1}$ 用两张球极投影卡（去北极、去南极各投到 $\\mathbb{R}^{n}$），它们的转移映射是 $x \\mapsto x/\\lVert x\\rVert^{2}$，光滑。'
       ].join('\n'),
       notes: [
         '**为什么要求同胚而不只是双射**：坐标要能承载「连续」「收敛」「紧」这些拓扑概念，否则算出来的东西只是集合的性质。同胚保证这张卡在**拓扑**意义上是坐标 —— 这也是流形定义里必须有拓扑空间这一层的原因。',
@@ -120,7 +123,7 @@ window.MG = window.MG || {};
         '满足这四条的图册是唯一的，叫 $\\mathcal{A}$ 生成的**极大图册**，也叫 $M$ 上的一个**光滑结构**（$C^{\\infty}$-结构）。同样有 $C^{k}$-结构与实解析结构，本图只用 $C^{\\infty}$。'
       ].join('\n'),
       notes: [
-        '**为什么第 2 条要单独说**：相容性对两张「各自与 $\\mathcal{A}$ 相容」的卡不是自动的。取 $(V,\\psi)$、$(W,\\theta) \\in \\mathcal{A}^{+}$，在 $p \\in V \\cap W$ 附近取 $\\mathcal{A}$ 里含 $p$ 的一张卡 $(U,\\varphi)$，则 $\\theta \\circ \\psi^{-1} = (\\theta \\circ \\varphi^{-1}) \\circ (\\varphi \\circ \\psi^{-1})$ 是光滑映射的复合。这一步的实质是「相容性传递」，证明在边上。',
+        '**为什么第 2 条要单独说**：相容性对两张「各自与 $\\mathcal{A}$ 相容」的卡不是自动的。\n\n取 $(V,\\psi)$、$(W,\\theta) \\in \\mathcal{A}^{+}$，在 $p \\in V \\cap W$ 附近取 $\\mathcal{A}$ 里含 $p$ 的一张卡 $(U,\\varphi)$，则 $\\theta \\circ \\psi^{-1} = (\\theta \\circ \\varphi^{-1}) \\circ (\\varphi \\circ \\psi^{-1})$ 是光滑映射的复合。\n\n这一步的实质是「相容性传递」，证明在边上。',
         '',
         '**为什么必须极大化**：只说「有一族相容的卡」时，$f : M \\to \\mathbb{R}$ 光滑与否依赖这族卡的选取（漏掉一张卡，$f$ 在那张卡上可能不光滑）。极大化之后，「与该图册相容的卡」自动在册，光滑性才变成流形的性质。',
         '',
@@ -157,7 +160,7 @@ window.MG = window.MG || {};
         '若 $F$ 光滑、可逆、且逆也光滑，称 $F$ 是**微分同胚**；此时 $N$ 与 $M$ 视为同一个光滑流形。$F : M \\to \\mathbb{R}$ 光滑时记 $F \\in C^{\\infty}(M)$，$C^{\\infty}(M)$ 是 $\\mathbb{R}$-代数（逐点加乘）。'
       ].join('\n'),
       notes: [
-        '**「连续」这个前提不能省**：$\\psi \\circ F \\circ \\varphi^{-1}$ 的定义域是 $\\varphi\\bigl(U \\cap F^{-1}(V)\\bigr)$，要它在 $\\mathbb{R}^{n}$ 里开，就得 $F^{-1}(V)$ 开 —— 这正是 $F$ 连续。光滑比连续强，但陈述里必须先把主语摆好。',
+        '**「连续」这个前提不能省**：$\\psi \\circ F \\circ \\varphi^{-1}$ 的定义域是 $\\varphi\\bigl(U \\cap F^{-1}(V)\\bigr)$，要它在 $\\mathbb{R}^{n}$ 里开，就得 $F^{-1}(V)$ 开 —— 这正是 $F$ 连续。\n\n光滑比连续强，但陈述里必须先把主语摆好。',
         '',
         '**光滑性只查图册**：取任意两张不在图册里的卡，局部表示 $=$ 转移 $\\circ$ 已知局部表示 $\\circ$ 转移，三个都光滑，故仍是 $C^{\\infty}$。所以「光滑」与图册的选取无关 —— 这一步正是极大图册存在的意义（`prop.maximal-atlas`）。',
         '',
@@ -201,15 +204,15 @@ window.MG = window.MG || {};
         '让 $p$ 跑遍 $N$ 得到一个切丛之间的映射 $\\mathrm{d}F : TN \\to TM$，$v \\mapsto \\mathrm{d}F_{\\pi(v)}(v)$。'
       ].join('\n'),
       notes: [
-        '**良定义就是链式法则**：换一张卡 $\\varphi$ 换成 $\\theta$，两条过 $p$ 的曲线若在 $\\varphi$ 卡里速度相同，则在 $\\theta$ 卡里也相同（都等于同一个 Jacobi 矩阵乘同一个向量）。类不变，所以 $\\mathrm{d}F_{p}$ 有定义 —— 但**存在性**完全靠转移映射光滑，这一点是本节点与前两个节点的接头处。',
+        '**良定义就是链式法则**：换一张卡 $\\varphi$ 换成 $\\theta$，两条过 $p$ 的曲线若在 $\\varphi$ 卡里速度相同，则在 $\\theta$ 卡里也相同（都等于同一个 Jacobi 矩阵乘同一个向量）。\n\n类不变，所以 $\\mathrm{d}F_{p}$ 有定义 —— 但**存在性**完全靠转移映射光滑，这一点是本节点与前两个节点的接头处。',
         '',
         '**导子视角更省事**：$\\mathrm{d}F_{p}(v)$ 作为导子就是 $\\bigl(\\mathrm{d}F_{p}(v)\\bigr)(f) = v(f \\circ F)$ —— 一个复合，不用提曲线。两条路线给出同一个线性映射。',
         '',
-        '**为什么它不叫「导数」**：$\\mathbb{R}^{n}$ 里 $\\mathrm{d}F_{p}$ 是一个矩阵，能与差商直接联系；流形上没有减法，$\\mathrm{d}F_{p}$ 只是**切空间之间**的线性映射。它是一阶信息，换坐标时两侧各乘一个 Jacobi 矩阵（一正一反），所以「$\\mathrm{d}F$ 是张量」对，但「$\\partial_{i}F$ 是张量」不对。',
+        '**为什么它不叫「导数」**：$\\mathbb{R}^{n}$ 里 $\\mathrm{d}F_{p}$ 是一个矩阵，能与差商直接联系；流形上没有减法，$\\mathrm{d}F_{p}$ 只是**切空间之间**的线性映射。\n\n它是一阶信息，换坐标时两侧各乘一个 Jacobi 矩阵（一正一反），所以「$\\mathrm{d}F$ 是张量」对，但「$\\partial_{i}F$ 是张量」不对。',
         '',
         '**链式法则的意义**：$M \\mapsto T_{p}M$、$F \\mapsto \\mathrm{d}F_{p}$ 是一个**函子**（切函子）。所以流形与光滑映射这一层，切空间自动继承所有复合结构 —— 这也是 $\\mathrm{d}^{2} = 0$ 在形式上能成立的原因。',
         '',
-        '**记号撞车**：同一个 $\\mathrm{d}$ 既记切映射 $\\mathrm{d}F_{p}$ 也记外微分 $\\mathrm{d}\\omega$。它们不是两件事：$\\mathrm{d}f$ 就是切映射 $\\mathrm{d}f_{p} : T_{p}M \\to \\mathbb{R}$，即 $1$-形式（`def.exterior-derivative`）。'
+        '**记号撞车**：同一个 $\\mathrm{d}$ 既记切映射 $\\mathrm{d}F_{p}$ 也记外微分 $\\mathrm{d}\\omega$。\n\n它们不是两件事：$\\mathrm{d}f$ 就是切映射 $\\mathrm{d}f_{p} : T_{p}M \\to \\mathbb{R}$，即 $1$-形式（`def.exterior-derivative`）。'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Tangent Vectors」· 切映射与链式法则'
@@ -248,7 +251,7 @@ window.MG = window.MG || {};
       notes: [
         '**为什么维数是 $2n$**：$n$ 个坐标记位置、$n$ 个分量记方向。这就是「相空间」的原型 —— 力学里构形空间 $Q$ 的切丛 $TQ$ 正是「位置 + 速度」。',
         '',
-        '**为什么不能直接把 $TM$ 当 $M \\times \\mathbb{R}^{n}$**：$\\mathbb{R}^{n}$ 的开集上可以（一张卡整体平凡化），一般流形不行。$TS^{2}$ 与 $S^{2} \\times \\mathbb{R}^{2}$ 不同胚 —— 理由是球面上的光滑向量场必有零点（毛球定理），所以 $TS^{2}$ 里找不到处处非零的截面。',
+        '**为什么不能直接把 $TM$ 当 $M \\times \\mathbb{R}^{n}$**：$\\mathbb{R}^{n}$ 的开集上可以（一张卡整体平凡化），一般流形不行。\n\n$TS^{2}$ 与 $S^{2} \\times \\mathbb{R}^{2}$ 不同胚 —— 理由是球面上的光滑向量场必有零点（毛球定理），所以 $TS^{2}$ 里找不到处处非零的截面。',
         '',
         '**转移映射就是 Jacobi 矩阵**：这条把「切向量怎么换坐标」写成显式公式，也是 $TM$ 光滑的**唯一**实质内容 —— 前半分量的光滑性来自图册相容，后半是 $\\mathrm{d}(\\psi\\varphi^{-1})$ 光滑。',
         '',
@@ -333,7 +336,7 @@ window.MG = window.MG || {};
          '4. **Leibniz 律**：$[X, fY] = (Xf)\\,Y + f\\,[X,Y]$，并且 $[fX, gY] = fg\\,[X,Y] + f(Xg)\\,Y - g(Yf)\\,X$。'].join('\n')
       ].join('\n'),
       notes: [
-        '**为什么结果还是向量场**：$X(Yf)$ 与 $Y(Xf)$ 各自含 $f$ 的二阶导数，在卡里是 $X^{j}\\partial_{j}\\bigl(Y^{i}\\partial_{i}f\\bigr)$ 这类项；相减时 $\\partial_{j}\\partial_{i}f$ 的系数分别是 $X^{j}Y^{i}$ 与 $Y^{j}X^{i}$，而它对 $i,j$ 对称，所以这两项逐项抵消。二阶项消失，剩下的是合法的导子。',
+        '**为什么结果还是向量场**：$X(Yf)$ 与 $Y(Xf)$ 各自含 $f$ 的二阶导数，在卡里是 $X^{j}\\partial_{j}\\bigl(Y^{i}\\partial_{i}f\\bigr)$ 这类项；\n\n相减时 $\\partial_{j}\\partial_{i}f$ 的系数分别是 $X^{j}Y^{i}$ 与 $Y^{j}X^{i}$，而它对 $i,j$ 对称，所以这两项逐项抵消。\n\n二阶项消失，剩下的是合法的导子。',
         '',
         '**第 4 条说明它不是张量**：$[X,Y]$ 对 $Y$ 不是 $C^{\\infty}(M)$-线性的 —— 多出来的 $f(Xg)Y$ 项正是「求两次导」留下的痕迹。所以「两个向量场的括号不能用逐点计算定义」，这是它与一切张量运算（`def.tensor-field`）的根本区别。',
         '',
@@ -380,7 +383,9 @@ window.MG = window.MG || {};
         '',
         '**为什么叫「张量」**：多重线性加逐点定义，导致分量换卡时只乘 Jacobi 矩阵的乘积，**不出现二阶导数**。这条「变换律只含一阶导」是张量与联络系数（$\\Gamma$ 不是张量）的分界线。',
         '',
-        '**例子**：黎曼度量是 $(0,2)$ 型（`def.riemannian-metric`）；曲率张量是 $(1,3)$ 型，写成 $R_{ijk\\ell}$ 时是用 $g$ 把上标拉下来的 $(0,4)$ 型（`def.curvature-tensor`）；辛形式是 $(0,2)$ 型且反称闭；Einstein 张量是 $(0,2)$ 型。',
+        '**例子**：黎曼度量是 $(0,2)$ 型（`def.riemannian-metric`）；曲率张量是 $(1,3)$ 型，写成 $R_{ijk\\ell}$ 时是用 $g$ 把上标拉下来的 $(0,4)$ 型（`def.curvature-tensor`）；\n\n' +
+        '辛形式是 $(0,2)$ 型且反称闭；\n\n' +
+        'Einstein 张量是 $(0,2)$ 型。',
         '',
         '**纤维为什么长得快**：$r+s = 2$、$n = 4$ 时纤维有 $16$ 维，所以「逐点选一个张量」的自由度很快失控 —— 这正是曲率张量的对称性值得单独数一遍的原因：$n^{4} = 256$ 砍到 $20$。',
         '',
@@ -425,11 +430,11 @@ window.MG = window.MG || {};
         '后者在 $U_{\\alpha} \\cap U_{\\beta} \\cap U_{\\gamma}$ 上成立。反过来，给定开覆盖与满足上闭链条件的光滑 $g_{\\alpha\\beta}$，可以粘出一个向量丛。'
       ].join('\n'),
       notes: [
-        '**为什么「局部平凡」不够，还要上闭链**：局部平凡只说明「每块都像乘积」；真正决定丛的是**怎么粘**，而粘法就记在 $g_{\\alpha\\beta}$ 里。上闭链条件是「粘得自洽」的充要条件，也把丛与 1-上链的上同调类 $H^{1}(M;\\operatorname{GL}(k,\\mathbb{R}))$ 联系起来 —— 这一点本图只提不证。',
+        '**为什么「局部平凡」不够，还要上闭链**：局部平凡只说明「每块都像乘积」；真正决定丛的是**怎么粘**，而粘法就记在 $g_{\\alpha\\beta}$ 里。\n\n上闭链条件是「粘得自洽」的充要条件，也把丛与 1-上链的上同调类 $H^{1}(M;\\operatorname{GL}(k,\\mathbb{R}))$ 联系起来 —— 这一点本图只提不证。',
         '',
-        '**例子**：$TM$ 是秩 $n$ 的（`def.tangent-bundle`）；$M \\times \\mathbb{R}^{k}$ 叫**平凡丛**；余切丛 $T^{\\ast}M$ 与 $(r,s)$ 型张量丛（`def.tensor-field`）；$S^{1}$ 上的 Möbius 带是秩 $1$ 的非平凡丛，$S^{1} \\times \\mathbb{R}$ 是平凡的 —— 两者局部一样，整体不同。',
+        '**例子**：$TM$ 是秩 $n$ 的（`def.tangent-bundle`）；$M \\times \\mathbb{R}^{k}$ 叫**平凡丛**；余切丛 $T^{\\ast}M$ 与 $(r,s)$ 型张量丛（`def.tensor-field`）；\n\n$S^{1}$ 上的 Möbius 带是秩 $1$ 的非平凡丛，$S^{1} \\times \\mathbb{R}$ 是平凡的 —— 两者局部一样，整体不同。',
         '',
-        '**换结构群就是换丛**：$\\operatorname{GL}(k,\\mathbb{R})$ 换成 $\\operatorname{O}(k)$ 得欧氏丛（配了纤维度量），换成 $\\operatorname{GL}(k,\\mathbb{C})$ 得复向量丛，换成 $\\operatorname{GL}(k,\\mathbb{Z})$ 得平坦丛。$TM$ 的结构群能缩到 $\\operatorname{O}(n)$，靠的是「总可配黎曼度量」（`prop.bundle-metric`）—— 这不是自动的。',
+        '**换结构群就是换丛**：$\\operatorname{GL}(k,\\mathbb{R})$ 换成 $\\operatorname{O}(k)$ 得欧氏丛（配了纤维度量），换成 $\\operatorname{GL}(k,\\mathbb{C})$ 得复向量丛，换成 $\\operatorname{GL}(k,\\mathbb{Z})$ 得平坦丛。\n\n$TM$ 的结构群能缩到 $\\operatorname{O}(n)$，靠的是「总可配黎曼度量」（`prop.bundle-metric`）—— 这不是自动的。',
         '',
         '**秩 $1$ 叫线丛**：$S^{1}$ 上的 Möbius 线丛、$\\mathbb{RP}^{1}$ 上的 tautological 线丛、$S^{2}$ 上的 Hopf 线丛是最常用的三个。线丛的同构类由 $H^{2}$ 里一个类（第一陈类）刻画，这是拓扑进入几何的入口。',
         '',
@@ -464,7 +469,7 @@ window.MG = window.MG || {};
         '$\\Gamma(E)$ 是 $C^{\\infty}(M)$-**模**：$s + t$、$f s$（$f$ 光滑）仍是截面。'
       ].join('\n'),
       notes: [
-        '**三个最重要的例子**：$\\Gamma(TM) = \\mathfrak{X}(M)$（向量场）；$\\Gamma(T^{\\ast}M) = \\Omega^{1}(M)$（$1$-形式）；$E = M \\times \\mathbb{R}$ 时 $\\Gamma(E) = C^{\\infty}(M)$（函数）。所以「函数是平凡线丛的截面」是这一族里最平凡的成员，却最能说明问题：截面是**带纤维结构的函数**。',
+        '**三个最重要的例子**：$\\Gamma(TM) = \\mathfrak{X}(M)$（向量场）；$\\Gamma(T^{\\ast}M) = \\Omega^{1}(M)$（$1$-形式）；\n\n$E = M \\times \\mathbb{R}$ 时 $\\Gamma(E) = C^{\\infty}(M)$（函数）。\n\n所以「函数是平凡线丛的截面」是这一族里最平凡的成员，却最能说明问题：截面是**带纤维结构的函数**。',
         '',
         '**为什么是模而不是向量空间**：$\\Gamma(E)$ 上的系数乘法是**光滑函数**，不是实数 —— 同一根纤维里的两个元素不能「加起来成数」。这条区别在「$\\mathrm{d}$ 只作用在形式上、不作用在向量场上」那里又出现一次。',
         '',
@@ -501,11 +506,11 @@ window.MG = window.MG || {};
         '三条要求与 `def.partition-of-unity` 一字不差，区别只在把「连续」升成「光滑」。'
       ].join('\n'),
       notes: [
-        '**证明的两块砖**：① $\\mathbb{R}^{n}$ 上有**鼓包函数** —— 在半径 $1$ 的球内恒为 $1$、半径 $2$ 的球外为 $0$ 的光滑函数，由 $x \\mapsto e^{-1/(1-\\lVert x\\rVert^{2})}$ 平移伸缩拼出来；② 光滑流形是**仿紧**的（第二可数 + Hausdorff + 局部欧氏），于是开覆盖有局部有限加细，可以在每个成员上放一个鼓包再归一化。两块砖缺一不可。',
+        '**证明的两块砖**：① $\\mathbb{R}^{n}$ 上有**鼓包函数** —— 在半径 $1$ 的球内恒为 $1$、半径 $2$ 的球外为 $0$ 的光滑函数，由 $x \\mapsto e^{-1/(1-\\lVert x\\rVert^{2})}$ 平移伸缩拼出来；\n\n② 光滑流形是**仿紧**的（第二可数 + Hausdorff + 局部欧氏），于是开覆盖有局部有限加细，可以在每个成员上放一个鼓包再归一化。\n\n两块砖缺一不可。',
         '',
         '**为什么必须「局部有限」**：没有它，$\\sum\\rho_{\\alpha}$ 在某点附近可能有无穷多项非零，和既不一定收敛也不一定光滑。局部有限保证每点附近只有有限多项，于是和是有限和 —— 光滑性、可积性、线性都自动继承。',
         '',
-        '**它撑起哪些结论**：黎曼度量存在（`def.riemannian-metric`）、向量丛上纤维度量存在（`prop.bundle-metric`）、最高次形式可积分（`def.integral-form`）、可定向性能用处处非零的 $n$-形式刻画（`prop.volume-form-orientation`）。这些证明的骨架全部是「局部造 + 单位分解粘」，没有一次是凭空构造。',
+        '**它撑起哪些结论**：黎曼度量存在（`def.riemannian-metric`）、向量丛上纤维度量存在（`prop.bundle-metric`）、最高次形式可积分（`def.integral-form`）、可定向性能用处处非零的 $n$-形式刻画（`prop.volume-form-orientation`）。\n\n这些证明的骨架全部是「局部造 + 单位分解粘」，没有一次是凭空构造。',
         '',
         '**第二可数不能省**：长直线（long line）是局部欧氏的 Hausdorff 空间，但不可分、不仿紧，上面取不到单位分解 —— 所以流形定义里那两条技术假设不是装饰。',
         '',
@@ -537,7 +542,10 @@ window.MG = window.MG || {};
         '特例：$E = TM$ 时纤维度量就是黎曼度量（`def.riemannian-metric`）；$E$ 为线丛时它就是「处处正定的对称双线性型」。'
       ].join('\n'),
       notes: [
-        '**证明就是单位分解**：取局部平凡化覆盖 $\\{U_{\\alpha}\\}$，在每个 $U_{\\alpha}$ 上把 $E$ 等同于 $U_{\\alpha} \\times \\mathbb{R}^{k}$、取标准内积 $\\langle\\cdot,\\cdot\\rangle_{\\alpha}$；再取光滑单位分解 $\\{\\rho_{\\alpha}\\}$（`thm.smooth-partition-unity`），令 $\\langle s,t\\rangle := \\sum_{\\alpha}\\rho_{\\alpha}\\langle s,t\\rangle_{\\alpha}$。这是**凸组合**：对称双线性显然；正定性由 $\\rho_{\\alpha} \\ge 0$ 与和恒为 $1$ 保证 —— 在每点处它是一组内积的加权平均，权重非负、总和 $1$，故 $\\langle s,s\\rangle = 0$ 只能 $s = 0$。',
+        '**证明就是单位分解**：取局部平凡化覆盖 $\\{U_{\\alpha}\\}$，在每个 $U_{\\alpha}$ 上把 $E$ 等同于 $U_{\\alpha} \\times \\mathbb{R}^{k}$、取标准内积 $\\langle\\cdot,\\cdot\\rangle_{\\alpha}$；\n\n' +
+        '再取光滑单位分解 $\\{\\rho_{\\alpha}\\}$（`thm.smooth-partition-unity`），令 $\\langle s,t\\rangle := \\sum_{\\alpha}\\rho_{\\alpha}\\langle s,t\\rangle_{\\alpha}$。\n\n' +
+        '这是**凸组合**：对称双线性显然；\n\n' +
+        '正定性由 $\\rho_{\\alpha} \\ge 0$ 与和恒为 $1$ 保证 —— 在每点处它是一组内积的加权平均，权重非负、总和 $1$，故 $\\langle s,s\\rangle = 0$ 只能 $s = 0$。',
         '',
         '**为什么度量没有障碍而别的结构有**：正定对称型构成一个**凸集**，凸组合仍正定；复结构（$J^{2} = -\\operatorname{id}$）与辛结构（$\\omega$ 非退化且闭）不是凸条件，粘不起来，各有拓扑障碍。所以「$TM$ 总有度量但不一定有近复结构」不是技术不足，而是「凸 vs 非凸」的本质差别。',
         '',
@@ -576,7 +584,9 @@ window.MG = window.MG || {};
         '**白话判据**：把 $\\mathbb{R}^{n}$ 上的「右手系」沿图册搬到流形上；搬得到处一致（不出现镜像翻转）当且仅当可定向。'
       ].join('\n'),
       notes: [
-        '**为什么是 Jacobi 行列式的符号**：$\\operatorname{GL}(n,\\mathbb{R})$ 不连通，恰有两块 —— $\\det > 0$ 与 $\\det < 0$。换卡就是乘一个 $\\operatorname{GL}(n,\\mathbb{R})$ 里的元素；符号能否保持不变是**整体**问题，一张卡内部永远没问题。',
+        '**为什么是 Jacobi 行列式的符号**：$\\operatorname{GL}(n,\\mathbb{R})$ 不连通，恰有两块 —— $\\det > 0$ 与 $\\det < 0$。\n\n' +
+        '换卡就是乘一个 $\\operatorname{GL}(n,\\mathbb{R})$ 里的元素；\n\n' +
+        '符号能否保持不变是**整体**问题，一张卡内部永远没问题。',
         '',
         '**两个定向**：连通可定向流形上，「定向图册」只有两种极大化结果。所以「取定定向」只有二选一，不存在第三个。不连通时每个连通分支独立二选一，共 $2^{c}$ 个（$c$ 为连通分支数，与 `thm.de-rham-h0` 里那个 $c$ 是同一个）。',
         '',
@@ -621,13 +631,15 @@ window.MG = window.MG || {};
         '积分按 `def.integral-form` 的「定向形式积分」定义。'
       ].join('\n'),
       notes: [
-        '**为什么必须是最高次形式**：换元公式里 $\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 的系数变换恰好是 $\\det$（保向时无绝对值），与积分换元里出现的 $\\det$ 精确匹配 —— 这就是「形式能积分」的全部理由。$k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。',
+        '**为什么必须是最高次形式**：换元公式里 $\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 的系数变换恰好是 $\\det$（保向时无绝对值），与积分换元里出现的 $\\det$ 精确匹配 —— 这就是「形式能积分」的全部理由。\n\n$k < n$ 的形式要积分得先拉回到 $k$ 维子流形上。',
         '',
-        '**根号是密度、楔积是定向**：$\\sqrt{\\det g}$ 对反向换卡不变（它带的是 $\\lvert\\det\\rvert$），$\\mathrm{d}x^{1}\\wedge\\cdots$ 反向变号。所以 $\\mathrm{d}V_{g}$ 必须先取定定向才有定义；无定向时能积的只有密度 $\\lvert\\mathrm{d}V_{g}\\rvert$（面积元 $\\mathrm{d}A$ 就是这种，`def.area-element`）。',
+        '**根号是密度、楔积是定向**：$\\sqrt{\\det g}$ 对反向换卡不变（它带的是 $\\lvert\\det\\rvert$），$\\mathrm{d}x^{1}\\wedge\\cdots$ 反向变号。\n\n' +
+        '所以 $\\mathrm{d}V_{g}$ 必须先取定定向才有定义；\n\n' +
+        '无定向时能积的只有密度 $\\lvert\\mathrm{d}V_{g}\\rvert$（面积元 $\\mathrm{d}A$ 就是这种，`def.area-element`）。',
         '',
         '**二维退化成面积元**：$\\mathrm{d}V_{g} = \\sqrt{EG - F^{2}}\\,\\mathrm{d}u\\wedge\\mathrm{d}v$，与 `def.area-element` 的 $\\mathrm{d}A$ 逐字相同，只差「要不要把 $\\mathrm{d}u\\wedge\\mathrm{d}v$ 看成带定向的」这一层。',
         '',
-        '**正交余标架为什么省事**：$g = \\sum(\\theta^{i})^{2}$ 时 $\\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\\theta^{1}\\wedge\\cdots$ 写，不再带根号。这也是「曲面上 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$」的来源。',
+        '**正交余标架为什么省事**：$g = \\sum(\\theta^{i})^{2}$ 时 $\\det(g_{ij}) = 1$，活动标架法（`def.moving-frame`）里所有体积与曲面积分都用 $\\theta^{1}\\wedge\\cdots$ 写，不再带根号。\n\n这也是「曲面上 $\\mathrm{d}A = \\omega^{1}\\wedge\\omega^{2}$」的来源。',
         '',
         '**它不是度量的一部分**：同一个度量配两个定向，给出两个只差符号的体积形式；同一个定向配不同度量，给出不同的 $\\sqrt{\\det g}$。体积形式 = 定向 + 度量，两部分都要交代。'
       ].join('\n'),
@@ -652,10 +664,10 @@ window.MG = window.MG || {};
         '',
         '$$\\omega \\in \\Omega^{n}(M),\\qquad \\omega_{p} \\ne 0\\ \\ \\bigl(\\forall p \\in M\\bigr).$$',
         '',
-        '更精确地：两个处处非零的 $n$-形式 $\\omega, \\omega_{1}$ 必满足 $\\omega_{1} = f\\,\\omega$，其中 $f$ 是处处非零的光滑函数；它们给出**同一个定向**当且仅当 $f > 0$ 处处成立。于是在连通流形上，「处处非零的 $n$-形式模掉正光滑函数」恰好就是「定向」，与 `def.orientable-manifold` 的极大定向图册一一对应。'
+        '更精确地：两个处处非零的 $n$-形式 $\\omega, \\omega_{1}$ 必满足 $\\omega_{1} = f\\,\\omega$，其中 $f$ 是处处非零的光滑函数；它们给出**同一个定向**当且仅当 $f > 0$ 处处成立。\n\n于是在连通流形上，「处处非零的 $n$-形式模掉正光滑函数」恰好就是「定向」，与 `def.orientable-manifold` 的极大定向图册一一对应。'
       ].join('\n'),
       notes: [
-        '**证明的两半**：$(\\implies)$ 在每张保向卡上取 $\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$，它换卡时乘一个**正**的光滑函数，故能用单位分解加成一个整体的 $\\omega$，正系数保证不归零；$(\\Longleftarrow)$ 给一个处处非零的 $\\omega$，在某张卡上它等于 $f\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 且 $f$ 处处非零，把所有 $f < 0$ 的卡换成反序坐标 —— 于是全族的转移 Jacobi 行列式都为正，得到定向图册。细节在边上。',
+        '**证明的两半**：$(\\implies)$ 在每张保向卡上取 $\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$，它换卡时乘一个**正**的光滑函数，故能用单位分解加成一个整体的 $\\omega$，正系数保证不归零；\n\n$(\\Longleftarrow)$ 给一个处处非零的 $\\omega$，在某张卡上它等于 $f\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 且 $f$ 处处非零，把所有 $f < 0$ 的卡换成反序坐标 —— 于是全族的转移 Jacobi 行列式都为正，得到定向图册。\n\n细节在边上。',
         '',
         '**为什么这里逃不掉单位分解**：局部造的东西只有「正函数倍」的自由度，没有抵消机制 —— 求和时正系数保证不会归零。所以这条是 `thm.smooth-partition-unity` 最标准的用法之一。',
         '',
@@ -699,18 +711,18 @@ window.MG = window.MG || {};
         '',
         '$$H^{k}_{\\mathrm{dR}}(M) := Z^{k}(M) / B^{k}(M).$$',
         '',
-        '给定光滑映射 $F : N \\to M$，拉回给出线性映射 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(M) \\to H^{k}_{\\mathrm{dR}}(N)$（因为 $F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$，见 `prop.pullback-form-manifold`），且 $(G \\circ F)^{\\ast} = F^{\\ast} \\circ G^{\\ast}$。所以 $H^{k}_{\\mathrm{dR}}$ 是光滑流形范畴上的**函子**。'
+        '给定光滑映射 $F : N \\to M$，拉回给出线性映射 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(M) \\to H^{k}_{\\mathrm{dR}}(N)$（因为 $F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$，见 `prop.pullback-form-manifold`），且 $(G \\circ F)^{\\ast} = F^{\\ast} \\circ G^{\\ast}$。\n\n所以 $H^{k}_{\\mathrm{dR}}$ 是光滑流形范畴上的**函子**。'
       ].join('\n'),
       notes: [
-        '**它测什么**：$H^{k} = 0$ 意味着「闭就恰当」；$H^{k} \\ne 0$ 说明存在闭而不恰当的形式。$\\mathbb{R}^{2}\\setminus\\{0\\}$ 上的角形式 $\\frac{x\\,\\mathrm{d}y - y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当，它的类生成 $H^{1} \\cong \\mathbb{R}$，量的是「绕原点的圈数」。',
+        '**它测什么**：$H^{k} = 0$ 意味着「闭就恰当」；$H^{k} \\ne 0$ 说明存在闭而不恰当的形式。\n\n$\\mathbb{R}^{2}\\setminus\\{0\\}$ 上的角形式 $\\frac{x\\,\\mathrm{d}y - y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ 闭而不恰当，它的类生成 $H^{1} \\cong \\mathbb{R}$，量的是「绕原点的圈数」。',
         '',
-        '**de Rham 定理（只提不证）**：$H^{k}_{\\mathrm{dR}}(M) \\cong H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ —— 解析构造（形式 + 微分）算出的东西，等于纯拓扑构造（奇异链 + 边界）算出的东西。这一条把微分几何与代数拓扑缝在一起，是本图范畴/同调那一片的接口。',
+        '**de Rham 定理（只提不证）**：$H^{k}_{\\mathrm{dR}}(M) \\cong H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ —— 解析构造（形式 + 微分）算出的东西，等于纯拓扑构造（奇异链 + 边界）算出的东西。\n\n这一条把微分几何与代数拓扑缝在一起，是本图范畴/同调那一片的接口。',
         '',
         '**维数有限**：$M$ 紧致时每个 $H^{k}_{\\mathrm{dR}}(M)$ 都有限维，且 $k > \\dim M$ 时为零。所以上同调是一组有限的数（Betti 数）。本图不证。',
         '',
         '**局部总是零**：任意流形每点都有可缩邻域，由 Poincaré 引理$H^{k} = 0$（$k \\ge 1$）。所以上同调**纯粹是整体**信息 —— 这就是它比局部微分不变量更有用的原因。',
         '',
-        '**$H^{0}$ 要单独看**：$Z^{0} = \\ker(\\mathrm{d} : C^{\\infty}(M) \\to \\Omega^{1}(M))$ 是局部常函数，$B^{0} = 0$，所以 $H^{0}$ 数的是连通分支（`thm.de-rham-h0`）。$k \\ge 1$ 才需要 Poincaré 引理那类论证。',
+        '**$H^{0}$ 要单独看**：$Z^{0} = \\ker(\\mathrm{d} : C^{\\infty}(M) \\to \\Omega^{1}(M))$ 是局部常函数，$B^{0} = 0$，所以 $H^{0}$ 数的是连通分支（`thm.de-rham-h0`）。\n\n$k \\ge 1$ 才需要 Poincaré 引理那类论证。',
         '',
         '**它不是同伦不变量意义上的「同调」**：$H^{k}$ 是**上**同调（用形式与拉回），对偶于用链与边界的同调。之所以也叫上同调，是因为拉回是逆变的；两者在 de Rham 定理里被证明同构。'
       ].join('\n'),
@@ -780,7 +792,7 @@ window.MG = window.MG || {};
         '',
         '于是在 $\\mathrm{d}\\omega = 0$ 时 $\\omega = \\mathrm{d}(K\\omega)$，取 $\\eta = K\\omega$ 即可。$K$ 的具体公式是一段含内乘 $\\iota_{X}$ 的积分，本节点不展开 —— 重要的是「存在 $K$」这件事，它把「同伦」翻译成了「代数」。',
         '',
-        '**星形去不掉**：$U = \\mathbb{R}^{2}\\setminus\\{0\\}$ 上的角形式 $\\omega = \\frac{x\\,\\mathrm{d}y - y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ 满足 $\\mathrm{d}\\omega = 0$，但 $\\int_{S^{1}}\\omega = 2\\pi \\ne 0$；若 $\\omega = \\mathrm{d}\\eta$，由 Stokes 定理得 $\\int_{S^{1}}\\mathrm{d}\\eta = \\int_{\\partial S^{1}}\\eta = 0$，矛盾。所以 $H^{1}(\\mathbb{R}^{2}\\setminus\\{0\\}) \\ne 0$ —— 一个洞就破坏了引理。',
+        '**星形去不掉**：$U = \\mathbb{R}^{2}\\setminus\\{0\\}$ 上的角形式 $\\omega = \\frac{x\\,\\mathrm{d}y - y\\,\\mathrm{d}x}{x^{2}+y^{2}}$ 满足 $\\mathrm{d}\\omega = 0$，但 $\\int_{S^{1}}\\omega = 2\\pi \\ne 0$；\n\n若 $\\omega = \\mathrm{d}\\eta$，由 Stokes 定理得 $\\int_{S^{1}}\\mathrm{d}\\eta = \\int_{\\partial S^{1}}\\eta = 0$，矛盾。\n\n所以 $H^{1}(\\mathbb{R}^{2}\\setminus\\{0\\}) \\ne 0$ —— 一个洞就破坏了引理。',
         '',
         '**$k \\ge 1$ 不能放宽**：$k = 0$ 时「闭」是局部常、「恰当」是零（没有 $-1$-形式），两者差得远，所以 $H^{0} = \\mathbb{R} \\ne 0$。陈述里必须把 $k = 0$ 摘出去。',
         '',
@@ -813,9 +825,9 @@ window.MG = window.MG || {};
         '**本节点只给陈述**：$\\delta$ 的显式构造与正合性的逐项验证，本图不写（要先把「形式的拆分」这套机器架起来，篇幅与收益不成比例）。此条按参考书陈述，不附证明。'
       ].join('\n'),
       notes: [
-        '**$\\delta$ 从哪来（给直觉，不是证明）**：取 $[\\omega] \\in H^{k}(U \\cap V)$。用单位分解写 $\\omega = \\rho_{U}\\omega + \\rho_{V}\\omega$（$\\rho_{U} + \\rho_{V} = 1$，各自支撑在 $U$、$V$ 里），把两块分别延拓成 $U$、$V$ 上的形式。它们的差在重叠处为零，于是拼成 $M$ 上的 $(k+1)$-形式，它就是 $\\delta[\\omega]$。符号与 $\\mathrm{d}$ 的次序要在具体计算里对齐，本图不替读者对齐。',
+        '**$\\delta$ 从哪来（给直觉，不是证明）**：取 $[\\omega] \\in H^{k}(U \\cap V)$。\n\n用单位分解写 $\\omega = \\rho_{U}\\omega + \\rho_{V}\\omega$（$\\rho_{U} + \\rho_{V} = 1$，各自支撑在 $U$、$V$ 里），把两块分别延拓成 $U$、$V$ 上的形式。\n\n它们的差在重叠处为零，于是拼成 $M$ 上的 $(k+1)$-形式，它就是 $\\delta[\\omega]$。\n\n符号与 $\\mathrm{d}$ 的次序要在具体计算里对齐，本图不替读者对齐。',
         '',
-        '**最简单的算例**：取 $S^{1} = U \\cup V$ 为两个略长的开弧（$U \\cap V$ 有两个连通分支），序列给出 $H^{1}(S^{1}) \\cong \\mathbb{R}$ —— 正是「单位圆上那个角形式」的那一个类。$S^{2}$ 用两个略大于半球的球冠（$U \\cap V$ 同伦于 $S^{1}$）给出 $H^{2}(S^{2}) \\cong \\mathbb{R}$。',
+        '**最简单的算例**：取 $S^{1} = U \\cup V$ 为两个略长的开弧（$U \\cap V$ 有两个连通分支），序列给出 $H^{1}(S^{1}) \\cong \\mathbb{R}$ —— 正是「单位圆上那个角形式」的那一个类。\n\n$S^{2}$ 用两个略大于半球的球冠（$U \\cap V$ 同伦于 $S^{1}$）给出 $H^{2}(S^{2}) \\cong \\mathbb{R}$。',
         '',
         '**为什么它是标准工具**：任何流形都能被可缩的开集（卡里的球）覆盖，Mayer–Vietoris 加归纳就把整张流形算出来 —— 这是「好的覆盖」那条计算路线的起点。算的时候用 Čech 侧（`def.cech-cohomology`）更容易，两者的一致性由 de Rham 定理保证。',
         '',
@@ -860,14 +872,18 @@ window.MG = window.MG || {};
         '',
         '两者都是微分同胚（逆分别是 $L_{g^{-1}}$、$R_{g^{-1}}$），且 $L_{g} \\circ L_{h} = L_{gh}$。',
         '',
-        '**例**：$\\operatorname{GL}(n,\\mathbb{R}) = \\{A : \\det A \\ne 0\\}$（$\\mathbb{R}^{n^{2}}$ 的开子集，故是 $n^{2}$ 维流形）；$\\operatorname{SL}(n,\\mathbb{R})$、$\\operatorname{O}(n)$、$\\operatorname{SO}(n)$、$\\operatorname{U}(n)$（由方程切出来，见 `thm.regular-level-set`）；$(\\mathbb{R}^{n},+)$；$S^{1} \\subseteq \\mathbb{C}^{\\times}$；任意离散群（$0$ 维）。'
+        '**例**：$\\operatorname{GL}(n,\\mathbb{R}) = \\{A : \\det A \\ne 0\\}$（$\\mathbb{R}^{n^{2}}$ 的开子集，故是 $n^{2}$ 维流形）；\n\n' +
+        '$\\operatorname{SL}(n,\\mathbb{R})$、$\\operatorname{O}(n)$、$\\operatorname{SO}(n)$、$\\operatorname{U}(n)$（由方程切出来，见 `thm.regular-level-set`）；\n\n' +
+        '$(\\mathbb{R}^{n},+)$；\n\n' +
+        '$S^{1} \\subseteq \\mathbb{C}^{\\times}$；\n\n' +
+        '任意离散群（$0$ 维）。'
       ].join('\n'),
       notes: [
         '**「取逆光滑」其实可以省掉**：只假设乘法光滑，则每个 $L_{g}$、$R_{g}$ 光滑；由隐函数定理 $i$ 在 $e$ 附近光滑，再用 $i = L_{g^{-1}} \\circ i \\circ R_{g^{-1}}$ 搬到各处。本图按习惯把两条都写进定义，省掉一次对隐函数定理的引用。',
         '',
-        '**$\\operatorname{GL}(n,\\mathbb{R})$ 为什么是流形**：$\\det : \\mathbb{R}^{n^{2}} \\to \\mathbb{R}$ 连续，$\\mathbb{R}\\setminus\\{0\\}$ 开，所以 $\\det^{-1}(\\mathbb{R}\\setminus\\{0\\})$ 在 $\\mathbb{R}^{n^{2}}$ 里开 —— 一张卡就够，$\\varphi = \\operatorname{id}$。这是「开子集继承流形结构」最省事的例子。',
+        '**$\\operatorname{GL}(n,\\mathbb{R})$ 为什么是流形**：$\\det : \\mathbb{R}^{n^{2}} \\to \\mathbb{R}$ 连续，$\\mathbb{R}\\setminus\\{0\\}$ 开，所以 $\\det^{-1}(\\mathbb{R}\\setminus\\{0\\})$ 在 $\\mathbb{R}^{n^{2}}$ 里开 —— 一张卡就够，$\\varphi = \\operatorname{id}$。\n\n这是「开子集继承流形结构」最省事的例子。',
         '',
-        '**$\\operatorname{O}(n)$ 为什么是流形**：它是 $F(A) = A^{\\mathsf{T}}A - I$ 的零点集，$\\mathrm{d}F_{A}(B) = A^{\\mathsf{T}}B + B^{\\mathsf{T}}A$ 在 $F^{-1}(0)$ 上满射（给定对称的 $S$，取 $B = AS/2$ 即得），于是由 `thm.regular-level-set` 得 $\\dim = n^{2} - n(n+1)/2 = n(n-1)/2$。群结构由「正交矩阵之积仍正交」给出。',
+        '**$\\operatorname{O}(n)$ 为什么是流形**：它是 $F(A) = A^{\\mathsf{T}}A - I$ 的零点集，$\\mathrm{d}F_{A}(B) = A^{\\mathsf{T}}B + B^{\\mathsf{T}}A$ 在 $F^{-1}(0)$ 上满射（给定对称的 $S$，取 $B = AS/2$ 即得），于是由 `thm.regular-level-set` 得 $\\dim = n^{2} - n(n+1)/2 = n(n-1)/2$。\n\n群结构由「正交矩阵之积仍正交」给出。',
         '',
         '**拓扑限制**：不是每个群都能当 Lie 群（要第二可数、要局部欧氏）。Cartan 的闭子群定理说 Lie 群的闭子群自动是子流形 —— 这一条把「$\\operatorname{SL}$、$\\operatorname{O}$ 是 Lie 群」一般化，本图只提。',
         '',
@@ -901,7 +917,9 @@ window.MG = window.MG || {};
         '',
         '$\\dim\\mathfrak{g}$ 叫 Lie 代数的维数。对括号封闭的子空间叫 **Lie 子代数**；若还满足 $[\\mathfrak{g},\\mathfrak{h}] \\subseteq \\mathfrak{h}$ 叫 **Lie 理想**。保括号的线性映射叫 **Lie 代数同态**。',
         '',
-        '**例**：$\\mathfrak{gl}(n,\\mathbb{R}) = M_{n}(\\mathbb{R})$ 配 $[A,B] = AB - BA$；$\\mathbb{R}^{3}$ 配叉积 $[u,v] = u \\times v$；任意结合代数配交换子 $[a,b] = ab - ba$；任意向量空间配零括号（**阿贝尔** Lie 代数）。'
+        '**例**：$\\mathfrak{gl}(n,\\mathbb{R}) = M_{n}(\\mathbb{R})$ 配 $[A,B] = AB - BA$；$\\mathbb{R}^{3}$ 配叉积 $[u,v] = u \\times v$；\n\n' +
+        '任意结合代数配交换子 $[a,b] = ab - ba$；\n\n' +
+        '任意向量空间配零括号（**阿贝尔** Lie 代数）。'
       ].join('\n'),
       notes: [
         '**Jacobi 是「括号来自求导」的痕迹**：把 Jacobi 改写成 $[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]]$，读法是「$[X,\\cdot]$ 是导子」。所以这三条不是凭空的规定，而是「一阶微分算子的交换子」的抽象 —— `def.lie-bracket` 里向量场的括号满足它，正是这个原因。',
@@ -943,7 +961,7 @@ window.MG = window.MG || {};
         '所以「Lie 群 $\\to$ Lie 代数」是一个函子：$\\mathrm{Lie}(G)$。'
       ].join('\n'),
       notes: [
-        '**为什么赋值是双射**：左不变性把 $X$ 在 $gh$ 处的值**唯一**由 $X_{h}$ 决定，取 $h = e$ 就知 $X$ 完全由 $X_{e}$ 决定（单射）；反过来，给定 $v \\in \\mathfrak{g}$，令 $X_{g} := \\mathrm{d}(L_{g})_{e}(v)$，则 $X_{gh} = \\mathrm{d}(L_{gh})_{e}(v) = \\mathrm{d}(L_{g})_{h}\\bigl(\\mathrm{d}(L_{h})_{e}(v)\\bigr) = \\mathrm{d}(L_{g})_{h}(X_{h})$（链式法则加 $L_{gh} = L_{g} \\circ L_{h}$），故左不变（满射）。光滑性：局部用卡写开，$\\mathrm{d}(L_{g})$ 对 $g$ 光滑。',
+        '**为什么赋值是双射**：左不变性把 $X$ 在 $gh$ 处的值**唯一**由 $X_{h}$ 决定，取 $h = e$ 就知 $X$ 完全由 $X_{e}$ 决定（单射）；反过来，给定 $v \\in \\mathfrak{g}$，令 $X_{g} := \\mathrm{d}(L_{g})_{e}(v)$，则 $X_{gh} = \\mathrm{d}(L_{gh})_{e}(v) = \\mathrm{d}(L_{g})_{h}\\bigl(\\mathrm{d}(L_{h})_{e}(v)\\bigr) = \\mathrm{d}(L_{g})_{h}(X_{h})$（链式法则加 $L_{gh} = L_{g} \\circ L_{h}$），故左不变（满射）。\n\n光滑性：局部用卡写开，$\\mathrm{d}(L_{g})$ 对 $g$ 光滑。',
         '',
         '**括号为什么能下去**：关键是 Lie 括号的**自然性**',
         '',
@@ -1158,21 +1176,21 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'prop.exterior-derivative-manifold',
       usedBy: 'def.de-rham-complex',
-      note: '复形就是 $\\mathrm{d}$ 排成的链，$\\mathrm{d}^{2} = 0$ 是「$\\operatorname{im} \\subseteq \\ker$」的唯一来源 —— 没有它商空间无从定义。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\mathrm{d}$（原来指欧氏开集上那条坐标公式）。de Rham 复形的每一项都是 $\\Omega^{k}(M)$，用到的 d 自然是流形上的 d；它的良定性就是那条命题。'
+      note: '复形就是 $\\mathrm{d}$ 排成的链，$\\mathrm{d}^{2} = 0$ 是「$\\operatorname{im} \\subseteq \\ker$」的唯一来源 —— 没有它商空间无从定义。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\mathrm{d}$（原来指欧氏开集上那条坐标公式）。\n\nde Rham 复形的每一项都是 $\\Omega^{k}(M)$，用到的 d 自然是流形上的 d；\n\n它的良定性就是那条命题。'
     },
     {
       id: 'dep.mf-form-derham',
       kind: 'definition',
       definition: 'def.form-on-manifold',
       usedBy: 'def.de-rham-complex',
-      note: '链的每一项都是 $k$-形式的空间 $\\Omega^{k}(M)$；闭与恰当这两个词也是形式论里的词（`def.exterior-derivative`）。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\Omega^{k}(M)$（原来指欧氏开集上那个坐标模型，于是「$\\Omega^{k}(M)$ 是什么」在图上无处可查）。层号是**算出来的**：de Rham 复形依赖 18 层的形式定义，它就自己在 20 层，不该反过来拿层号去将就。'
+      note: '链的每一项都是 $k$-形式的空间 $\\Omega^{k}(M)$；闭与恰当这两个词也是形式论里的词（`def.exterior-derivative`）。\n\n⭐ 2026-11-01 改指到**流形上**的 $\\Omega^{k}(M)$（原来指欧氏开集上那个坐标模型，于是「$\\Omega^{k}(M)$ 是什么」在图上无处可查）。\n\n层号是**算出来的**：de Rham 复形依赖 18 层的形式定义，它就自己在 20 层，不该反过来拿层号去将就。'
     },
     {
       id: 'dep.mf-pullback-derham',
       kind: 'definition',
       definition: 'prop.pullback-form-manifold',
       usedBy: 'def.de-rham-complex',
-      note: '「$H^{k}$ 是函子」全靠拉回与 $\\mathrm{d}$ 交换（$F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$）；否则拉回只能作用在形式上、下不到商空间。\n\n⭐ 2026-11-01 改指到**流形间**的拉回（原来指开集间那个）。这一改把 de Rham 复形从 20 层推到 22 层 —— 那是应该的：它的每一项都是流形上的形式，凭什么排在拉回之前。层号是算出来的，不是拿来保的。'
+      note: '「$H^{k}$ 是函子」全靠拉回与 $\\mathrm{d}$ 交换（$F^{\\ast}\\mathrm{d} = \\mathrm{d}F^{\\ast}$）；否则拉回只能作用在形式上、下不到商空间。\n\n⭐ 2026-11-01 改指到**流形间**的拉回（原来指开集间那个）。\n\n这一改把 de Rham 复形从 20 层推到 22 层 —— 那是应该的：它的每一项都是流形上的形式，凭什么排在拉回之前。\n\n层号是算出来的，不是拿来保的。'
     },
     {
       id: 'dep.mf-connected-h0',
@@ -1244,17 +1262,17 @@ window.MG = window.MG || {};
       proof: [
         '把「与 $\\mathcal{A}$ 中每张卡都 $C^{\\infty}$-相容的卡」全部收进来，得到 $\\mathcal{A}^{+}$。逐条验证。',
         '',
-        '**(1) 相容（传递性）。** 取 $(V,\\psi), (W,\\theta) \\in \\mathcal{A}^{+}$，要证 $\\theta \\circ \\psi^{-1}$ 光滑。在 $V \\cap W$ 上任取 $p$，由 $\\mathcal{A}$ 覆盖 $M$ 取含 $p$ 的一张卡 $(U,\\varphi) \\in \\mathcal{A}$。在 $\\varphi(U \\cap V \\cap W)$ 上',
+        '**(1) 相容（传递性）。** 取 $(V,\\psi), (W,\\theta) \\in \\mathcal{A}^{+}$，要证 $\\theta \\circ \\psi^{-1}$ 光滑。\n\n在 $V \\cap W$ 上任取 $p$，由 $\\mathcal{A}$ 覆盖 $M$ 取含 $p$ 的一张卡 $(U,\\varphi) \\in \\mathcal{A}$。\n\n在 $\\varphi(U \\cap V \\cap W)$ 上',
         '',
         '$$\\theta \\circ \\psi^{-1} = (\\theta \\circ \\varphi^{-1}) \\circ (\\varphi \\circ \\psi^{-1}),$$',
         '',
         '右边两个因子都是 $\\mathbb{R}^{n}$ 开集之间的 $C^{\\infty}$ 映射（这正是「与 $\\varphi$ 相容」的意思），故复合光滑。$p$ 任意，得该转移映射处处光滑 —— 这就是相容性的传递性。',
         '',
-        '**(2) 包含与覆盖。** $(V,\\psi) \\in \\mathcal{A}$ 时它与 $\\mathcal{A}$ 中每张卡相容（$\\mathcal{A}$ 本身相容），故 $\\mathcal{A} \\subseteq \\mathcal{A}^{+}$；$\\mathcal{A}^{+}$ 覆盖 $M$ 因为它含覆盖的 $\\mathcal{A}$。由 (1) 它是图册。',
+        '**(2) 包含与覆盖。** $(V,\\psi) \\in \\mathcal{A}$ 时它与 $\\mathcal{A}$ 中每张卡相容（$\\mathcal{A}$ 本身相容），故 $\\mathcal{A} \\subseteq \\mathcal{A}^{+}$；\n\n$\\mathcal{A}^{+}$ 覆盖 $M$ 因为它含覆盖的 $\\mathcal{A}$。\n\n由 (1) 它是图册。',
         '',
-        '**(3) 极大。** 设 $\\mathcal{B} \\supseteq \\mathcal{A}^{+}$ 是图册，取 $(V,\\theta) \\in \\mathcal{B}$。由 $\\mathcal{A} \\subseteq \\mathcal{A}^{+} \\subseteq \\mathcal{B}$ 与 $\\mathcal{B}$ 内两两相容，$(V,\\theta)$ 与 $\\mathcal{A}$ 中每张卡相容，故 $(V,\\theta) \\in \\mathcal{A}^{+}$。于是 $\\mathcal{B} = \\mathcal{A}^{+}$。',
+        '**(3) 极大。** 设 $\\mathcal{B} \\supseteq \\mathcal{A}^{+}$ 是图册，取 $(V,\\theta) \\in \\mathcal{B}$。\n\n由 $\\mathcal{A} \\subseteq \\mathcal{A}^{+} \\subseteq \\mathcal{B}$ 与 $\\mathcal{B}$ 内两两相容，$(V,\\theta)$ 与 $\\mathcal{A}$ 中每张卡相容，故 $(V,\\theta) \\in \\mathcal{A}^{+}$。\n\n于是 $\\mathcal{B} = \\mathcal{A}^{+}$。',
         '',
-        '**(4) 唯一。** 若 $\\mathcal{A}_{1}^{+}, \\mathcal{A}_{2}^{+}$ 都是包含 $\\mathcal{A}$ 的极大图册，对 $\\mathcal{A}_{1}^{+}$ 用一次 (3) 得 $\\mathcal{A}_{2}^{+} \\subseteq \\mathcal{A}_{1}^{+}$、对 $\\mathcal{A}_{2}^{+}$ 用一次得反向包含，故两者相等。∎',
+        '**(4) 唯一。** 若 $\\mathcal{A}_{1}^{+}, \\mathcal{A}_{2}^{+}$ 都是包含 $\\mathcal{A}$ 的极大图册，对 $\\mathcal{A}_{1}^{+}$ 用一次 (3) 得 $\\mathcal{A}_{2}^{+} \\subseteq \\mathcal{A}_{1}^{+}$、对 $\\mathcal{A}_{2}^{+}$ 用一次得反向包含，故两者相等。\n\n∎',
         '',
         '⭐ 全程只用了一次「光滑映射的复合仍光滑」。光滑结构的**存在性**没有深层内容；难的是「同一个拓扑空间上能有几个光滑结构」，那属于 Milnor 那类结果，与本条无关。'
       ].join('\n')
@@ -1267,7 +1285,7 @@ window.MG = window.MG || {};
       target: 'def.differential-map',
       title: '换卡只乘 Jacobi 矩阵 $\\implies$ 切映射良定义',
       proof: [
-        '设 $\\gamma_{1}, \\gamma_{2}$ 是过 $p$ 的两条曲线且在卡 $(U,\\varphi)$ 里相切，即 $(\\varphi \\circ \\gamma_{1})^{\\prime}(0) = (\\varphi \\circ \\gamma_{2})^{\\prime}(0)$。要证 $F \\circ \\gamma_{1}$ 与 $F \\circ \\gamma_{2}$ 在 $F(p)$ 处相切。',
+        '设 $\\gamma_{1}, \\gamma_{2}$ 是过 $p$ 的两条曲线且在卡 $(U,\\varphi)$ 里相切，即 $(\\varphi \\circ \\gamma_{1})^{\\prime}(0) = (\\varphi \\circ \\gamma_{2})^{\\prime}(0)$。\n\n要证 $F \\circ \\gamma_{1}$ 与 $F \\circ \\gamma_{2}$ 在 $F(p)$ 处相切。',
         '',
         '**第一步：结论与卡无关。** 在另一张卡 $(U_{1},\\varphi_{1})$ 里',
         '',
@@ -1281,7 +1299,7 @@ window.MG = window.MG || {};
         '',
         '两个速度相同、$\\mathrm{d}G$ 同一个线性映射，故像的速度相同。即 $F \\circ \\gamma_{1}$ 与 $F \\circ \\gamma_{2}$ 在 $F(p)$ 处相切。',
         '',
-        '**第三步：线性。** 取 $\\gamma$ 使 $(\\varphi \\circ \\gamma)^{\\prime}(0) = v$，则 $(\\varphi \\circ \\gamma_{a})^{\\prime}(0) = av$（重参数化 $t \\mapsto at$），于是 $\\mathrm{d}F_{p}(a[\\gamma]) = a\\,\\mathrm{d}F_{p}([\\gamma])$；加法同理（用 $\\mathbb{R}^{n}$ 卡里向量相加的曲线）。故 $\\mathrm{d}F_{p}$ 是线性映射。∎',
+        '**第三步：线性。** 取 $\\gamma$ 使 $(\\varphi \\circ \\gamma)^{\\prime}(0) = v$，则 $(\\varphi \\circ \\gamma_{a})^{\\prime}(0) = av$（重参数化 $t \\mapsto at$），于是 $\\mathrm{d}F_{p}(a[\\gamma]) = a\\,\\mathrm{d}F_{p}([\\gamma])$；\n\n加法同理（用 $\\mathbb{R}^{n}$ 卡里向量相加的曲线）。\n\n故 $\\mathrm{d}F_{p}$ 是线性映射。\n\n∎',
         '',
         '⭐ 两处「与卡无关」是同一段链式法则：切向量这边一次、切映射那边一次。光滑流形的全部线性代数都建立在这一段计算上。'
       ].join('\n')
@@ -1294,7 +1312,7 @@ window.MG = window.MG || {};
       target: 'def.differential-map',
       title: '光滑 $\\implies$ 切映射的矩阵是 Jacobi 矩阵且满足链式法则',
       proof: [
-        '**矩阵形状。** 取卡 $(U,\\varphi)$（$N$ 的）与 $(V,\\psi)$（$M$ 的），记 $G := \\psi \\circ F \\circ \\varphi^{-1}$，$y = \\varphi(p)$。坐标基下 $\\mathrm{d}F_{p}(\\partial_{j})$ 的分量由「第 $i$ 个坐标函数的方向导数」给出：',
+        '**矩阵形状。** 取卡 $(U,\\varphi)$（$N$ 的）与 $(V,\\psi)$（$M$ 的），记 $G := \\psi \\circ F \\circ \\varphi^{-1}$，$y = \\varphi(p)$。\n\n坐标基下 $\\mathrm{d}F_{p}(\\partial_{j})$ 的分量由「第 $i$ 个坐标函数的方向导数」给出：',
         '',
         '$$\\mathrm{d}x^{i}\\bigl(\\mathrm{d}F_{p}(\\partial_{j})\\bigr) = \\partial_{j}\\bigl(G^{i}\\bigr)(y),$$',
         '',
@@ -1319,17 +1337,17 @@ window.MG = window.MG || {};
       target: 'def.tangent-bundle',
       title: '转移映射的微分光滑 $\\implies$ 切丛是 $2n$ 维流形',
       proof: [
-        '**造卡。** 对 $M$ 的图册里每张 $(U_{\\alpha},\\varphi_{\\alpha})$，令 $\\Phi_{\\alpha}(v) := \\bigl(\\varphi_{\\alpha}(\\pi(v)), \\mathrm{d}(\\varphi_{\\alpha})_{\\pi(v)}(v)\\bigr)$。$\\Phi_{\\alpha}$ 是双射（纤维上 $\\mathrm{d}(\\varphi_{\\alpha})_{p} : T_{p}M \\to \\mathbb{R}^{n}$ 是线性同构），像集是 $\\varphi_{\\alpha}(U_{\\alpha}) \\times \\mathbb{R}^{n}$（开）。',
+        '**造卡。** 对 $M$ 的图册里每张 $(U_{\\alpha},\\varphi_{\\alpha})$，令 $\\Phi_{\\alpha}(v) := \\bigl(\\varphi_{\\alpha}(\\pi(v)), \\mathrm{d}(\\varphi_{\\alpha})_{\\pi(v)}(v)\\bigr)$。\n\n$\\Phi_{\\alpha}$ 是双射（纤维上 $\\mathrm{d}(\\varphi_{\\alpha})_{p} : T_{p}M \\to \\mathbb{R}^{n}$ 是线性同构），像集是 $\\varphi_{\\alpha}(U_{\\alpha}) \\times \\mathbb{R}^{n}$（开）。',
         '',
         '**转移映射。** 在 $\\pi^{-1}(U_{\\alpha} \\cap U_{\\beta})$ 上，从 $\\Phi_{\\alpha}$ 换到 $\\Phi_{\\beta}$：',
         '',
         '$$\\Phi_{\\beta} \\circ \\Phi_{\\alpha}^{-1}(x,\\xi) = \\bigl(\\psi\\varphi^{-1}(x),\\ \\mathrm{d}(\\psi\\varphi^{-1})_{x}(\\xi)\\bigr),$$',
         '',
-        '其中 $\\varphi = \\varphi_{\\alpha}$、$\\psi = \\varphi_{\\beta}$。理由：$\\mathrm{d}(\\psi)_{p} = \\mathrm{d}(\\psi\\varphi^{-1})_{\\varphi(p)} \\circ \\mathrm{d}(\\varphi)_{p}$（链式法则），而 $\\xi = \\mathrm{d}(\\varphi)_{p}(v)$，于是 $\\mathrm{d}(\\psi)_{p}(v) = \\mathrm{d}(\\psi\\varphi^{-1})_{x}(\\xi)$。',
+        '其中 $\\varphi = \\varphi_{\\alpha}$、$\\psi = \\varphi_{\\beta}$。\n\n理由：$\\mathrm{d}(\\psi)_{p} = \\mathrm{d}(\\psi\\varphi^{-1})_{\\varphi(p)} \\circ \\mathrm{d}(\\varphi)_{p}$（链式法则），而 $\\xi = \\mathrm{d}(\\varphi)_{p}(v)$，于是 $\\mathrm{d}(\\psi)_{p}(v) = \\mathrm{d}(\\psi\\varphi^{-1})_{x}(\\xi)$。',
         '',
-        '**光滑。** 第一分量 $\\psi\\varphi^{-1}$ 光滑（图册相容）；第二分量是「光滑矩阵值函数 $\\mathrm{d}(\\psi\\varphi^{-1})$ 与 $\\xi$ 的乘积」，在 $(x,\\xi)$ 上光滑。故转移映射 $C^{\\infty}$，且它的逆（交换 $\\alpha,\\beta$）也 $C^{\\infty}$。',
+        '**光滑。** 第一分量 $\\psi\\varphi^{-1}$ 光滑（图册相容）；第二分量是「光滑矩阵值函数 $\\mathrm{d}(\\psi\\varphi^{-1})$ 与 $\\xi$ 的乘积」，在 $(x,\\xi)$ 上光滑。\n\n故转移映射 $C^{\\infty}$，且它的逆（交换 $\\alpha,\\beta$）也 $C^{\\infty}$。',
         '',
-        '**拓扑条件。** $\\pi : TM \\to M$ 的纤维是 $\\mathbb{R}^{n}$，$TM$ 第二可数（可数多个 $\\pi^{-1}(U_{\\alpha})$ 覆盖）且 Hausdorff（起点不同可用 $M$ 的分离性分开，起点相同则纤维内用 $\\mathbb{R}^{n}$ 的分离性）。于是这些卡构成 $2n$ 维图册，$TM$ 是光滑流形。',
+        '**拓扑条件。** $\\pi : TM \\to M$ 的纤维是 $\\mathbb{R}^{n}$，$TM$ 第二可数（可数多个 $\\pi^{-1}(U_{\\alpha})$ 覆盖）且 Hausdorff（起点不同可用 $M$ 的分离性分开，起点相同则纤维内用 $\\mathbb{R}^{n}$ 的分离性）。\n\n于是这些卡构成 $2n$ 维图册，$TM$ 是光滑流形。',
         '',
         '**零截面。** 在卡里 $p \\mapsto (\\varphi(p), 0)$，光滑。∎'
       ].join('\n')
@@ -1358,7 +1376,7 @@ window.MG = window.MG || {};
         '',
         '**(3) Jacobi。** 六项按 $X,Y,Z$ 排队，每个形如 $X(Y(Zf))$ 的二阶项出现两次、符号相反；三阶项 $XYZf$ 出现六次、符号 $+-+-+-$ 恰好抵消。所以和为零。',
         '',
-        '**(4) Leibniz。** $[X,fY]g = X(fYg) - fY(Xg) = (Xf)(Yg) + fX(Yg) - fY(Xg) = (Xf)(Yg) + f[X,Y]g$，即 $[X,fY] = (Xf)Y + f[X,Y]$。再对第一个变元用反称得 $[fX,gY] = fg[X,Y] + f(Xg)Y - g(Yf)X$。∎',
+        '**(4) Leibniz。** $[X,fY]g = X(fYg) - fY(Xg) = (Xf)(Yg) + fX(Yg) - fY(Xg) = (Xf)(Yg) + f[X,Y]g$，即 $[X,fY] = (Xf)Y + f[X,Y]$。\n\n再对第一个变元用反称得 $[fX,gY] = fg[X,Y] + f(Xg)Y - g(Yf)X$。\n\n∎',
         '',
         '⭐ 全部证明只用了一条：二阶偏导可交换。所以 Lie 括号的存在性是「$\\mathbb{R}^{n}$ 的微积分是交换的」这一事实的几何痕迹。'
       ].join('\n')
@@ -1382,7 +1400,10 @@ window.MG = window.MG || {};
         '',
         '**这个例子的地位**：它是 Lie 代数的**原型** —— 抽象定义里的两条公理就是从这里抄下来的。所以「Lie 代数」不是新发明的代数结构，而是把向量场括号的性质抄成一页纸。',
         '',
-        '**一条容易忽略的差别**：$\\mathfrak{X}(M)$ 是 $C^{\\infty}(M)$-模，而 $[\\cdot,\\cdot]$ **不是** $C^{\\infty}(M)$-双线性的（第 4 条里那个 $(Xf)Y$ 项）。所以「$C^{\\infty}(M)$-模 + Lie 括号」是一份比「Lie 代数」更丰富的结构；把它公理化就是 Lie 代数胚，本图不展开。∎'
+        '**一条容易忽略的差别**：$\\mathfrak{X}(M)$ 是 $C^{\\infty}(M)$-模，而 $[\\cdot,\\cdot]$ **不是** $C^{\\infty}(M)$-双线性的（第 4 条里那个 $(Xf)Y$ 项）。\n\n' +
+        '所以「$C^{\\infty}(M)$-模 + Lie 括号」是一份比「Lie 代数」更丰富的结构；\n\n' +
+        '把它公理化就是 Lie 代数胚，本图不展开。\n\n' +
+        '∎'
       ].join('\n')
     },
 
@@ -1393,7 +1414,7 @@ window.MG = window.MG || {};
       target: 'def.tensor-field',
       title: '张量积与外幂 $\\implies$ 张量场是多重线性场的统一外壳',
       proof: [
-        '**先把逐点的事说清。** 对固定 $p$，$T^{(r,s)}_{p}M = \\bigl(T_{p}M\\bigr)^{\\otimes r} \\otimes \\bigl(T_{p}^{\\ast}M\\bigr)^{\\otimes s}$，而「吃了 $r$ 个余向量与 $s$ 个向量吐一个数」的全体与它自然同构（张量积的泛性质）。维数 $n^{r+s}$。',
+        '**先把逐点的事说清。** 对固定 $p$，$T^{(r,s)}_{p}M = \\bigl(T_{p}M\\bigr)^{\\otimes r} \\otimes \\bigl(T_{p}^{\\ast}M\\bigr)^{\\otimes s}$，而「吃了 $r$ 个余向量与 $s$ 个向量吐一个数」的全体与它自然同构（张量积的泛性质）。\n\n维数 $n^{r+s}$。',
         '',
         '**三种特例对齐。**',
         '',
@@ -1405,7 +1426,7 @@ window.MG = window.MG || {};
         '',
         '$$\\Phi(T) := \\bigl(\\varphi(p),\\ (T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}})\\bigr),$$',
         '',
-        '即「起点」加「全部分量」。转移映射的作用是 $(x,\\xi) \\mapsto \\bigl(\\psi\\varphi^{-1}(x),\\ J_{r,s}(x)\\,\\xi\\bigr)$，其中 $J_{r,s}$ 是 Jacobi 矩阵的 $r$ 次逆直积与 $s$ 次直积（对称群置换指标带来的重排只是固定的线性重编号）。$J_{r,s}$ 光滑，故与切丛（`imp.mf-tangent-bundle-smooth`）同一套论证给出光滑结构。',
+        '即「起点」加「全部分量」。\n\n转移映射的作用是 $(x,\\xi) \\mapsto \\bigl(\\psi\\varphi^{-1}(x),\\ J_{r,s}(x)\\,\\xi\\bigr)$，其中 $J_{r,s}$ 是 Jacobi 矩阵的 $r$ 次逆直积与 $s$ 次直积（对称群置换指标带来的重排只是固定的线性重编号）。\n\n$J_{r,s}$ 光滑，故与切丛（`imp.mf-tangent-bundle-smooth`）同一套论证给出光滑结构。',
         '',
         '**光滑截面就是分量光滑。** 由 $\\Phi$ 的定义，截面 $T$ 光滑当且仅当每个分量函数 $T^{i_{1}\\cdots i_{r}}_{\\ \\ j_{1}\\cdots j_{s}}$ 在卡上光滑；「只需查一个图册」与向量场情形逐字相同。∎',
         '',
@@ -1428,7 +1449,7 @@ window.MG = window.MG || {};
         '',
         '**第二步：局部有限加细。** 流形的第二可数性 + Hausdorff + 局部欧氏给出仿紧；连续版的命题（`prop.paracompact-partition-unity`）给一个局部有限的开加细 $\\{V_{\\alpha}\\}$，每块可设 $\\overline{V_{\\alpha}}$ 紧且落在某张卡 $U_{\\alpha}$ 里（先取卡内的球、再由局部有限性收紧）。',
         '',
-        '**第三步：在每块上放鼓包。** 取 $p_{\\alpha} \\in V_{\\alpha}$ 与 $\\varepsilon_{\\alpha} > 0$ 使 $V_{\\alpha}$ 在卡像里含半径 $2\\varepsilon_{\\alpha}$ 的球、且球的闭包落在 $\\varphi_{\\alpha}(U_{\\alpha})$ 内。令 $\\psi_{\\alpha} := \\beta\\bigl((\\cdot - \\varphi_{\\alpha}(p_{\\alpha}))/\\varepsilon_{\\alpha}\\bigr) \\circ \\varphi_{\\alpha}$，则',
+        '**第三步：在每块上放鼓包。** 取 $p_{\\alpha} \\in V_{\\alpha}$ 与 $\\varepsilon_{\\alpha} > 0$ 使 $V_{\\alpha}$ 在卡像里含半径 $2\\varepsilon_{\\alpha}$ 的球、且球的闭包落在 $\\varphi_{\\alpha}(U_{\\alpha})$ 内。\n\n令 $\\psi_{\\alpha} := \\beta\\bigl((\\cdot - \\varphi_{\\alpha}(p_{\\alpha}))/\\varepsilon_{\\alpha}\\bigr) \\circ \\varphi_{\\alpha}$，则',
         '',
         '$$\\psi_{\\alpha} \\in C^{\\infty}(M),\\qquad \\psi_{\\alpha} = 1\\ \\text{on}\\ V_{\\alpha},\\qquad \\operatorname{supp}\\psi_{\\alpha} \\subseteq U_{\\alpha} .$$',
         '',
@@ -1436,7 +1457,7 @@ window.MG = window.MG || {};
         '',
         '$$\\rho_{\\alpha} := \\frac{\\psi_{\\alpha}}{\\Psi}.$$',
         '',
-        '则 $\\rho_{\\alpha} \\in C^{\\infty}(M)$、$0 \\le \\rho_{\\alpha} \\le 1$、$\\operatorname{supp}\\rho_{\\alpha} \\subseteq U_{\\alpha}$、且 $\\sum_{\\alpha}\\rho_{\\alpha} = 1$ 处处成立 —— 三条要求全齐。∎',
+        '则 $\\rho_{\\alpha} \\in C^{\\infty}(M)$、$0 \\le \\rho_{\\alpha} \\le 1$、$\\operatorname{supp}\\rho_{\\alpha} \\subseteq U_{\\alpha}$、且 $\\sum_{\\alpha}\\rho_{\\alpha} = 1$ 处处成立 —— 三条要求全齐。\n\n∎',
         '',
         '⭐ 复用的两件东西是「$\\mathbb{R}^{n}$ 上的鼓包」与「仿紧给的局部有限加细」。所以流形上一切「局部造 + 整体粘」的论证都是这张图：局部造出想要的，再用 $\\rho_{\\alpha}$ 加权求和。'
       ].join('\n')
@@ -1453,15 +1474,19 @@ window.MG = window.MG || {};
         '',
         '$$\\omega := \\sum_{\\alpha}\\rho_{\\alpha}\\,\\varphi_{\\alpha}^{\\ast}\\bigl(\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}\\bigr),$$',
         '',
-        '其中 $\\rho_{\\alpha}$ 在指标集外面延拓为 $0$。每一项在 $p$ 处都 $\\ge 0$ 倍的「正体积形式」：因为定向图册里任意两张卡的转移 Jacobi 行列式 $> 0$，所以同一张卡上两张卡给的正体积形式只差一个**正**的系数。于是局部只有有限项非零、且没有异号项，$\\omega_{p}$ 是若干非负倍数之和，而至少有一项系数 $\\rho_{\\alpha}(p) > 0$（和为 $1$）且那项在局部坐标下系数为正 —— 故 $\\omega_{p} \\ne 0$。',
+        '其中 $\\rho_{\\alpha}$ 在指标集外面延拓为 $0$。\n\n每一项在 $p$ 处都 $\\ge 0$ 倍的「正体积形式」：因为定向图册里任意两张卡的转移 Jacobi 行列式 $> 0$，所以同一张卡上两张卡给的正体积形式只差一个**正**的系数。\n\n于是局部只有有限项非零、且没有异号项，$\\omega_{p}$ 是若干非负倍数之和，而至少有一项系数 $\\rho_{\\alpha}(p) > 0$（和为 $1$）且那项在局部坐标下系数为正 —— 故 $\\omega_{p} \\ne 0$。',
         '',
-        '**（$\\Longleftarrow$）有体积形式就有定向。** 设 $\\omega$ 处处非零。覆盖 $M$ 的每张卡 $(U_{\\alpha},\\varphi_{\\alpha})$ 上，$\\omega\\big|_{U_{\\alpha}} = f_{\\alpha}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 且 $f_{\\alpha}$ 处处非零。把 $f_{\\alpha} < 0$ 的那些卡换成 $(U_{\\alpha}, \\sigma \\circ \\varphi_{\\alpha})$，其中 $\\sigma$ 是交换前两个坐标的换位（它把 $\\mathrm{d}x^{1}\\wedge\\cdots$ 变号）。这族卡仍覆盖 $M$、仍两两相容（只差一个固定微分同胚），而新坐标系下系数全为正。于是任意两张卡的转移映射满足',
+        '**（$\\Longleftarrow$）有体积形式就有定向。** 设 $\\omega$ 处处非零。\n\n覆盖 $M$ 的每张卡 $(U_{\\alpha},\\varphi_{\\alpha})$ 上，$\\omega\\big|_{U_{\\alpha}} = f_{\\alpha}\\,\\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$ 且 $f_{\\alpha}$ 处处非零。\n\n把 $f_{\\alpha} < 0$ 的那些卡换成 $(U_{\\alpha}, \\sigma \\circ \\varphi_{\\alpha})$，其中 $\\sigma$ 是交换前两个坐标的换位（它把 $\\mathrm{d}x^{1}\\wedge\\cdots$ 变号）。\n\n这族卡仍覆盖 $M$、仍两两相容（只差一个固定微分同胚），而新坐标系下系数全为正。\n\n于是任意两张卡的转移映射满足',
         '',
         '$$\\omega = f_{\\beta}\\,\\mathrm{d}y^{\\beta} = f_{\\alpha}\\,\\det\\Bigl(\\frac{\\partial y}{\\partial x}\\Bigr)\\,\\mathrm{d}x^{\\alpha},\\qquad f_{\\alpha}, f_{\\beta} > 0 ,$$',
         '',
         '故 $\\det(\\partial y/\\partial x) > 0$ —— 这是定向图册。',
         '',
-        '**「同一个定向」的判据。** 处处非零的 $\\omega_{1}, \\omega$ 满足 $\\omega_{1} = f\\omega$，$f$ 处处非零。逐点看体积形式的符号：$f > 0$ 时两者在每张卡上给出同一个正方向，故同一定向；$f$ 在某点 $< 0$ 则两族卡在该点的换序不同，定向相反。连通性只在「$f$ 不能变号」这一步用到（$f$ 连续且无零点）。∎'
+        '**「同一个定向」的判据。** 处处非零的 $\\omega_{1}, \\omega$ 满足 $\\omega_{1} = f\\omega$，$f$ 处处非零。\n\n' +
+        '逐点看体积形式的符号：$f > 0$ 时两者在每张卡上给出同一个正方向，故同一定向；\n\n' +
+        '$f$ 在某点 $< 0$ 则两族卡在该点的换序不同，定向相反。\n\n' +
+        '连通性只在「$f$ 不能变号」这一步用到（$f$ 连续且无零点）。\n\n' +
+        '∎'
       ].join('\n')
     },
 
@@ -1474,11 +1499,11 @@ window.MG = window.MG || {};
       proof: [
         '**$Z^{0}$ 就是局部常函数。** $\\omega \\in \\Omega^{0}(M)$ 是光滑函数 $f$，$\\mathrm{d}f = \\sum_{i}\\partial_{i}f\\,\\mathrm{d}x^{i}$，故 $\\mathrm{d}f = 0$ 当且仅当每张卡上所有偏导为零，即 $f$ 在每张连通卡上常值。',
         '',
-        '**局部常 $\\iff$ 分支上常值。** 设 $f$ 局部常。固定连通分支 $C$，取 $p \\in C$。集合 $A := \\{q \\in C : f(q) = f(p)\\}$ 与 $B := \\{q \\in C : f(q) \\ne f(p)\\}$ 都开（局部常 + 连续性），且 $A \\cup B = C$、$A \\ne \\emptyset$、$A \\cap B = \\emptyset$。由 $C$ 连通得 $B = \\emptyset$，故 $f$ 在 $C$ 上常值。反向显然。',
+        '**局部常 $\\iff$ 分支上常值。** 设 $f$ 局部常。\n\n固定连通分支 $C$，取 $p \\in C$。\n\n集合 $A := \\{q \\in C : f(q) = f(p)\\}$ 与 $B := \\{q \\in C : f(q) \\ne f(p)\\}$ 都开（局部常 + 连续性），且 $A \\cup B = C$、$A \\ne \\emptyset$、$A \\cap B = \\emptyset$。\n\n由 $C$ 连通得 $B = \\emptyset$，故 $f$ 在 $C$ 上常值。\n\n反向显然。',
         '',
         '**$B^{0} = 0$。** 没有 $-1$-形式，$\\operatorname{im}\\bigl(\\mathrm{d} : \\Omega^{-1} \\to \\Omega^{0}\\bigr) = 0$。于是 $H^{0} = Z^{0}/B^{0} = Z^{0}$。',
         '',
-        '**维数。** 设分支为 $\\{C_{\\lambda}\\}_{\\lambda \\in \\Lambda}$（$|\\Lambda| = c$）。每个局部常函数对应一族常数 $(a_{\\lambda})$，反之给定 $(a_{\\lambda})$ 令 $f\\big|_{C_{\\lambda}} \\equiv a_{\\lambda}$ 即得局部常函数（每个分支在 $M$ 里既开又闭，故 $f$ 光滑）。所以 $Z^{0} \\cong \\mathbb{R}^{\\Lambda}$，维数 $c$。',
+        '**维数。** 设分支为 $\\{C_{\\lambda}\\}_{\\lambda \\in \\Lambda}$（$|\\Lambda| = c$）。\n\n每个局部常函数对应一族常数 $(a_{\\lambda})$，反之给定 $(a_{\\lambda})$ 令 $f\\big|_{C_{\\lambda}} \\equiv a_{\\lambda}$ 即得局部常函数（每个分支在 $M$ 里既开又闭，故 $f$ 光滑）。\n\n所以 $Z^{0} \\cong \\mathbb{R}^{\\Lambda}$，维数 $c$。',
         '',
         '**连通情形。** $c = 1$ 时 $H^{0} \\cong \\mathbb{R}$，维数 $1$；$c > 1$ 时维数大于 $1$。故 $M$ 连通当且仅当 $\\dim H^{0} = 1$（$M \\ne \\emptyset$ 保证至少 $1$ 维）。∎'
       ].join('\n')
@@ -1530,13 +1555,13 @@ window.MG = window.MG || {};
         '',
         '**单射。** $r(\\omega) = 0$ 说明 $\\omega$ 在 $U$ 与 $V$ 上都为零，而 $M = U \\cup V$，故 $\\omega = 0$。',
         '',
-        '**满射（这是唯一要动手的一步）。** 给定 $\\omega \\in \\Omega^{k}(U \\cap V)$，取从属于 $\\{U, V\\}$ 的光滑单位分解 $\\rho_{U} + \\rho_{V} = 1$（`thm.smooth-partition-unity`）。把 $\\rho_{U}\\omega$ 在 $U\\setminus\\operatorname{supp}\\rho_{V}$ 外延拓为 $0$、并在 $U$ 上整体定义为 $\\rho_{U}\\omega$（它在 $U \\cap V$ 外本来就该是 $\\omega$ 的 $\\rho_{U}$ 倍），同理得 $\\rho_{V}\\omega$ 在 $V$ 上的形式。于是 $s(\\rho_{U}\\omega, -\\rho_{V}\\omega) = (\\rho_{U} + \\rho_{V})\\omega = \\omega$。',
+        '**满射（这是唯一要动手的一步）。** 给定 $\\omega \\in \\Omega^{k}(U \\cap V)$，取从属于 $\\{U, V\\}$ 的光滑单位分解 $\\rho_{U} + \\rho_{V} = 1$（`thm.smooth-partition-unity`）。\n\n把 $\\rho_{U}\\omega$ 在 $U\\setminus\\operatorname{supp}\\rho_{V}$ 外延拓为 $0$、并在 $U$ 上整体定义为 $\\rho_{U}\\omega$（它在 $U \\cap V$ 外本来就该是 $\\omega$ 的 $\\rho_{U}$ 倍），同理得 $\\rho_{V}\\omega$ 在 $V$ 上的形式。\n\n于是 $s(\\rho_{U}\\omega, -\\rho_{V}\\omega) = (\\rho_{U} + \\rho_{V})\\omega = \\omega$。',
         '',
         '**核等于像。** $s(\\omega_{U},\\omega_{V}) = 0$ 说明两块在重叠处相等，于是它们拼成一个整体形式 $\\omega \\in \\Omega^{k}(M)$，即 $(\\omega_{U},\\omega_{V}) = r(\\omega)$。',
         '',
-        '**取上同调。** 每个 $\\Omega^{k}$ 上都有 $\\mathrm{d}$，且 $r, s$ 与 $\\mathrm{d}$ 交换（限制与差都逐点作用，$\\mathrm{d}$ 是逐点公式），故这是链映射构成的短正合列。链复形的短正合列取上同调得到长正合列（蛇引理 + 连接同态 $\\delta$ 的构造），这就是所要的。',
+        '**取上同调。** 每个 $\\Omega^{k}$ 上都有 $\\mathrm{d}$，且 $r, s$ 与 $\\mathrm{d}$ 交换（限制与差都逐点作用，$\\mathrm{d}$ 是逐点公式），故这是链映射构成的短正合列。\n\n链复形的短正合列取上同调得到长正合列（蛇引理 + 连接同态 $\\delta$ 的构造），这就是所要的。',
         '',
-        '**$\\delta$ 的显式形式。** 沿蛇引理的追踪：取 $[\\omega] \\in H^{k}(U \\cap V)$，按上一步拆成 $(\\omega_{U}, -\\omega_{V})$，在 $M$ 上取它们拼成的 $(k+1)$-形式（差一个 $\\mathrm{d}$ 造成的修正），其类就是 $\\delta[\\omega]$。这一步的符号与 $\\mathrm{d}$ 的次序必须逐项对齐，本图不替读者对齐。∎',
+        '**$\\delta$ 的显式形式。** 沿蛇引理的追踪：取 $[\\omega] \\in H^{k}(U \\cap V)$，按上一步拆成 $(\\omega_{U}, -\\omega_{V})$，在 $M$ 上取它们拼成的 $(k+1)$-形式（差一个 $\\mathrm{d}$ 造成的修正），其类就是 $\\delta[\\omega]$。\n\n这一步的符号与 $\\mathrm{d}$ 的次序必须逐项对齐，本图不替读者对齐。\n\n∎',
         '',
         '⭐ 唯一用到流形结构的地方是「满射」那一步的单位分解；其余全部是同调代数。所以 Mayer–Vietoris 对任何「层」都成立，形式只是其中一个特例。'
       ].join('\n')
@@ -1549,7 +1574,7 @@ window.MG = window.MG || {};
       target: 'prop.left-invariant-fields',
       title: '左不变性 $+$ 括号自然性 $\\implies$ 左不变向量场构成 Lie 代数',
       proof: [
-        '**(1) 赋值是同构。** 设 $X$ 左不变。由 $X_{gh} = \\mathrm{d}(L_{g})_{h}(X_{h})$ 取 $h = e$ 得 $X_{g} = \\mathrm{d}(L_{g})_{e}(X_{e})$ —— 于是 $X$ 完全由 $X_{e}$ 决定，$X \\mapsto X_{e}$ 单射。反之给定 $v \\in \\mathfrak{g} := T_{e}G$，令 $X_{g} := \\mathrm{d}(L_{g})_{e}(v)$，则',
+        '**(1) 赋值是同构。** 设 $X$ 左不变。\n\n由 $X_{gh} = \\mathrm{d}(L_{g})_{h}(X_{h})$ 取 $h = e$ 得 $X_{g} = \\mathrm{d}(L_{g})_{e}(X_{e})$ —— 于是 $X$ 完全由 $X_{e}$ 决定，$X \\mapsto X_{e}$ 单射。\n\n反之给定 $v \\in \\mathfrak{g} := T_{e}G$，令 $X_{g} := \\mathrm{d}(L_{g})_{e}(v)$，则',
         '',
         '$$X_{gh} = \\mathrm{d}(L_{gh})_{e}(v) = \\mathrm{d}\\bigl(L_{g} \\circ L_{h}\\bigr)_{e}(v) = \\mathrm{d}(L_{g})_{h}\\bigl(\\mathrm{d}(L_{h})_{e}(v)\\bigr) = \\mathrm{d}(L_{g})_{h}(X_{h}),$$',
         '',
@@ -1565,7 +1590,11 @@ window.MG = window.MG || {};
         '',
         '即 $[X,Y]$ 左不变。',
         '',
-        '**(3) $\\mathfrak{g}$ 是 Lie 代数。** 由 (1)(2)，$\\mathfrak{g} = T_{e}G$ 上定义 $[v,w] := [\\tilde v,\\tilde w]_{e}$（$\\tilde v$ 是 $v$ 对应的左不变向量场）是有意义的。反称与 Jacobi 由 $\\mathfrak{X}(G)$ 上那条括号继承（`imp.mf-bracket-liealgebra`）；双线性由 $v \\mapsto \\tilde v$ 线性与括号双线性得到。故 $(\\mathfrak{g},[\\cdot,\\cdot])$ 是 Lie 代数。∎',
+        '**(3) $\\mathfrak{g}$ 是 Lie 代数。** 由 (1)(2)，$\\mathfrak{g} = T_{e}G$ 上定义 $[v,w] := [\\tilde v,\\tilde w]_{e}$（$\\tilde v$ 是 $v$ 对应的左不变向量场）是有意义的。\n\n' +
+        '反称与 Jacobi 由 $\\mathfrak{X}(G)$ 上那条括号继承（`imp.mf-bracket-liealgebra`）；\n\n' +
+        '双线性由 $v \\mapsto \\tilde v$ 线性与括号双线性得到。\n\n' +
+        '故 $(\\mathfrak{g},[\\cdot,\\cdot])$ 是 Lie 代数。\n\n' +
+        '∎',
         '',
         '**自然性怎么来的**（一行）：在卡里 $[X,Y]f = X(Yf) - Y(Xf)$，把 $f$ 换成 $f \\circ F$、用链式法则即得 — 因为 $\\mathrm{d}F$ 把 $X$ 的积分曲线推成 $\\mathrm{d}F(X)$ 的积分曲线。'
       ].join('\n')
@@ -1584,7 +1613,7 @@ window.MG = window.MG || {};
         '',
         '这是 $U_{\\alpha}$ 上的纤维内积，且对 $p$ 光滑（$\\Phi_{\\alpha}$ 是微分同胚）。',
         '',
-        '**加细成局部有限。** 把 $\\{U_{\\alpha}\\}$ 换成局部有限的开加细（流形仿紧），必要时重编号，仍记 $\\{U_{\\alpha}\\}_{\\alpha \\in A}$；取从属于它的光滑单位分解 $\\{\\rho_{\\alpha}\\}$（`thm.smooth-partition-unity`），在 $A$ 外延拓 $\\rho_{\\alpha} \\equiv 0$。',
+        '**加细成局部有限。** 把 $\\{U_{\\alpha}\\}$ 换成局部有限的开加细（流形仿紧），必要时重编号，仍记 $\\{U_{\\alpha}\\}_{\\alpha \\in A}$；\n\n取从属于它的光滑单位分解 $\\{\\rho_{\\alpha}\\}$（`thm.smooth-partition-unity`），在 $A$ 外延拓 $\\rho_{\\alpha} \\equiv 0$。',
         '',
         '**凸组合。** 令',
         '',
@@ -1594,7 +1623,7 @@ window.MG = window.MG || {};
         '',
         ['- **双线性**：每个 $\\langle\\cdot,\\cdot\\rangle_{\\alpha}$ 双线性、系数为常数（对固定的 $p$），故线性组合双线性；',
          '- **对称**：每项对称；',
-         '- **正定**：$\\langle s,s\\rangle_{p} = \\sum_{\\alpha}\\rho_{\\alpha}(p)\\lVert\\cdot\\rVert^{2}_{\\alpha} \\ge 0$；等号成立需每个 $\\rho_{\\alpha}(p) > 0$ 对应的项都为零。因 $\\sum_{\\alpha}\\rho_{\\alpha}(p) = 1$，至少一个 $\\rho_{\\alpha}(p) > 0$，而那一项 $\\lVert s\\rVert_{\\alpha} = 0$ 迫使 $s = 0$。'].join('\n'),
+         '- **正定**：$\\langle s,s\\rangle_{p} = \\sum_{\\alpha}\\rho_{\\alpha}(p)\\lVert\\cdot\\rVert^{2}_{\\alpha} \\ge 0$；\n\n等号成立需每个 $\\rho_{\\alpha}(p) > 0$ 对应的项都为零。\n\n因 $\\sum_{\\alpha}\\rho_{\\alpha}(p) = 1$，至少一个 $\\rho_{\\alpha}(p) > 0$，而那一项 $\\lVert s\\rVert_{\\alpha} = 0$ 迫使 $s = 0$。'].join('\n'),
         '',
         '**为什么这条对极性敏感。** 上面只用到两件事：**内积的全体是凸集**（非负权重的加权平均仍是内积），以及**局部总存在**。复结构要求 $J^{2} = -\\operatorname{id}$（不是凸条件）、辛结构要求 $\\omega$ 闭（闭性对凸组合仍保持，但非退化不保持），所以它们不能靠这一招造出来。∎',
         '',

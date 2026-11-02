@@ -3,6 +3,8 @@
 
 `def.projective-object` 投射 / 内射对象 + `def.stone-space` 全不连通与 Stone 空间 + `def.chaus` 紧 Hausdorff 空间范畴 → `thm.gleason` Gleason 定理
 
-反设 $x \ne x' \in T$ 且 $f(x) = f(x')$。取不交邻域 $U \ni x$、$U' \ni x'$。$f$ 是闭映射（紧到 Hausdorff 的连续映射把闭集送到闭集），所以 $S_{1} := f(U^{c})$ 与 $S_{1}' := f(U'^{c})$ 是 $S$ 中的闭集。由 $f$ 的极小满性，$f|_{U^{c}}$ 与 $f|_{U'^{c}}$ 都不满，故 $S_{1}, S_{1}' \subset S$；于是它们各自的补 $V := S \setminus S_{1}$、$V' := S \setminus S_{1}'$ 是非空开集，且 $V \subseteq f(U)$、$V' \subseteq f(U')$。
+而 $V \cap V'$ 非空是开集、$S$ 极端不连通意味着不交开集的闭包不交（前一条性质），矛盾。
 
-> 续见 proofs/imp.gleason.5.md
+所以 $f$ 是单射，从而是同胚，于是它有截面。∎
+
+> 两个方向用的是**同一条投射性**的两种面貌：一面是「把对象从它的两块拼回来」（$U \sqcup F \to S$ 有截面），另一面是「每个满射有截面」。

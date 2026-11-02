@@ -9,4 +9,8 @@ $$|G| = |Z(G)| + \sum_{i=1}^{r} |\text{$x_i$ 的共轭类}| = |Z(G)| + \sum_{i=1
 
 最后一步用了轨道–稳定子（`thm.orbit-stabilizer`）。
 
+**第四步：$p$-群那一档。** 若 $|G| = p^{n}$，则每项 $[G : C_G(x_i)] = p^{k_i}$（$k_i \ge 1$，因为 $x_i$ 非中心故 $C_G(x_i) \ne G$）。
+
+于是右端除 $|Z(G)|$ 外都被 $p$ 整除，左端也被 $p$ 整除，故 $p \mid |Z(G)|$；
+
 > 续见 proofs/imp.class-equation.3.md

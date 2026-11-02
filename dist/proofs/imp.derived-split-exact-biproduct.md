@@ -9,4 +9,6 @@
 
 $$i(ri) = (1_{M}-sp)\,i = i - s(pi) = i \quad\text{（用到 } pi = 0\text{）}\Longrightarrow ri = 1_{M_{1}}.$$
 
+于是 $\{i, p, r, s\}$ 满足双积的三条等式 $ri = 1_{M_{1}}$、$ps = 1_{M_{2}}$、$ir+sp = 1_{M}$。
+
 > 续见 proofs/imp.derived-split-exact-biproduct.2.md

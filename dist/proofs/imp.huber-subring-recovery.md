@@ -9,4 +9,10 @@ $$|f(x)|^n = |a_{n-1}f^{n-1} + \cdots + a_0| \le \max_{i} |a_i(x)|\,|f(x)|^{i} \
 
 这迫使 $|f(x)| \le 1$。
 
+**反向。** 设 $f \notin A^+$。
+
+在 $A^+[1/f]$ 中取素理想 $\mathfrak{p}$ 含 $1/f$，取 $\mathfrak{p}$ 下的极小素理想 $\mathfrak{q}$，再取赋值环 $V$ 支配 $A^+[1/f]$ 在 $\mathfrak{p}$ 处的局部化。
+
+由于 $\operatorname{Spec} A[1/f] \to \operatorname{Spec} A^+[1/f]$ 的像含 $\mathfrak{q}$，可把赋值提升到 $A[1/f]$。
+
 > 续见 proofs/imp.huber-subring-recovery.2.md

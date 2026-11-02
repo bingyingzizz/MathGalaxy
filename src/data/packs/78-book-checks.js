@@ -30,7 +30,7 @@ window.MG = window.MG || {};
         '4. $\\pi$ 是**满射**。'
       ].join('\n'),
       notes: [
-        '**证明（循环）。** (1)$\\implies$(2)：商映射是某个余等化子，因而正则满 ✓。(2)$\\implies$(3)：正则满自动是满态射 ✓。(3)$\\implies$(4)：紧 Hausdorff 之间，满态射就是满射（紧 Hausdorff 是「投射对象够多」的范畴，满态射有截面，特别地满）✓。(4)$\\implies$(1)：紧 Hausdorff 的连续满射是商映射（紧空间到 Hausdorff 空间的连续满射诱导同胚于商）✓。∎',
+        '**证明（循环）。** (1)$\\implies$(2)：商映射是某个余等化子，因而正则满 ✓。\n\n(2)$\\implies$(3)：正则满自动是满态射 ✓。\n\n(3)$\\implies$(4)：紧 Hausdorff 之间，满态射就是满射（紧 Hausdorff 是「投射对象够多」的范畴，满态射有截面，特别地满）✓。\n\n(4)$\\implies$(1)：紧 Hausdorff 的连续满射是商映射（紧空间到 Hausdorff 空间的连续满射诱导同胚于商）✓。\n\n∎',
         '⭐ 用处：在紧 Hausdorff 里验「商映射」不必再拿开集去对，**满射就够了** —— 这是后面把「覆盖」读成「满态射」的依据。',
         '📌 「紧 $\\to$ Hausdorff 的连续满射是商映射」这一步用的是：紧空间里闭子集紧、连续像紧，于是 $T$ 里的闭集若拉回来闭就闭。'
       ].join('\n\n'),
@@ -51,7 +51,7 @@ window.MG = window.MG || {};
         '2. 若 $Y$ 弱 Hausdorff、$f, g : X \\to Y$ 连续，则 $\\ker(f, g) \\subseteq X$ 是 **$k$-闭**的。'
       ].join('\n'),
       notes: [
-        '**证明。** (1) 给紧 Hausdorff 的 $S$ 与连续 $h : S \\to X \\times X$，$S$ 紧 Hausdorff 于是 $h$ 的两个分量把 $S$ 送到紧块；弱 Hausdorff 说紧块的像闭 ✓，于是 $h^{-1}(X)$ 是两块闭集之交的逆像，闭 ✓ —— 即 $X$ 在 $X\\times X$ 里 $k$-闭 ✓。反过来（紧生成时）用「$k$-闭 $\\iff$ 与每个紧块交闭」把弱 Hausdorff 性读出来 ✓。(2) $\\ker(f,g)$ 是对角线沿连续映射 $(f,g) : X \\to Y \\times Y$ 的逆像 ✓，$k$-闭性在逆像下保持 ✓。∎'
+        '**证明。** (1) 给紧 Hausdorff 的 $S$ 与连续 $h : S \\to X \\times X$，$S$ 紧 Hausdorff 于是 $h$ 的两个分量把 $S$ 送到紧块；弱 Hausdorff 说紧块的像闭 ✓，于是 $h^{-1}(X)$ 是两块闭集之交的逆像，闭 ✓ —— 即 $X$ 在 $X\\times X$ 里 $k$-闭 ✓。\n\n反过来（紧生成时）用「$k$-闭 $\\iff$ 与每个紧块交闭」把弱 Hausdorff 性读出来 ✓。\n\n(2) $\\ker(f,g)$ 是对角线沿连续映射 $(f,g) : X \\to Y \\times Y$ 的逆像 ✓，$k$-闭性在逆像下保持 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.36, Exercise 2.37']
     },
@@ -141,7 +141,11 @@ window.MG = window.MG || {};
         '$$\\widehat{X}^{-1}(T) = T(X), \\qquad \\bigl(\\widehat{X}_{!}(E)\\bigr)(Y) \\in \\{\\, E,\\ \\emptyset\\, \\}, \\qquad \\bigl(\\widehat{X}_{*}(E)\\bigr)(Y) \\in \\{\\, E,\\ \\{0\\}\\, \\}.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 由「任意函子诱导拓扑斯态射」，$X : \\mathbf{1} \\to \\mathcal{C}$ 诱导出 $\\widehat{X}_{!} \\dashv \\widehat{X}^{-1} \\dashv \\widehat{X}_{*}$ ✓。三条公式分别是：拉回就是取值 ✓；左 Kan 延拓沿 $\\mathbf{1} \\to \\mathcal{C}$ 由逗号范畴的余极限给出，而「$\\exists Y \\to X$」正是那个余极限非空的条件 ✓；右伴对偶 ✓。∎'
+        '**证明。** 由「任意函子诱导拓扑斯态射」，$X : \\mathbf{1} \\to \\mathcal{C}$ 诱导出 $\\widehat{X}_{!} \\dashv \\widehat{X}^{-1} \\dashv \\widehat{X}_{*}$ ✓。\n\n' +
+        '三条公式分别是：拉回就是取值 ✓；\n\n' +
+        '左 Kan 延拓沿 $\\mathbf{1} \\to \\mathcal{C}$ 由逗号范畴的余极限给出，而「$\\exists Y \\to X$」正是那个余极限非空的条件 ✓；\n\n' +
+        '右伴对偶 ✓。\n\n' +
+        '∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.52']
     },
@@ -163,7 +167,7 @@ window.MG = window.MG || {};
         '而且对连续映射 $f : Y \\to X$，有 $\\widetilde{E}_{Y} = f^{-1}\\widetilde{E}_{X}$。'
       ].join('\n'),
       notes: [
-        '**证明。** $p_{*}$ 是「推前」，在单点上的层就是整体截面 ✓；$p^{-1}$ 是「拉回」，把集合 $E$ 送到 $X$ 上的常层 $\\widetilde{E}_{X}$ ✓（它在 $\\mathbf{Top}$ 上的层就是 $\\underline{E^{\\mathrm{disc}}}$）。最后一式：记 $q : Y \\to \\mathbf{1}$，则 $q = p \\circ f$，而推前/拉回关于复合相容 ✓，于是 $\\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\\widetilde{E}_{X}$ ✓。∎'
+        '**证明。** $p_{*}$ 是「推前」，在单点上的层就是整体截面 ✓；$p^{-1}$ 是「拉回」，把集合 $E$ 送到 $X$ 上的常层 $\\widetilde{E}_{X}$ ✓（它在 $\\mathbf{Top}$ 上的层就是 $\\underline{E^{\\mathrm{disc}}}$）。\n\n最后一式：记 $q : Y \\to \\mathbf{1}$，则 $q = p \\circ f$，而推前/拉回关于复合相容 ✓，于是 $\\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\\widetilde{E}_{X}$ ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.55']
     },
@@ -185,7 +189,7 @@ window.MG = window.MG || {};
         '也就是说：**推前是「只看 $x$ 的开邻域」的常层，拉回就是茎**。'
       ].join('\n'),
       notes: [
-        '**证明。** $x_{*}E$ 的取值是「拉回 $x^{-1}(U)$ 的」：$x^{-1}(U)$ 在单点空间里要么是空集要么是全空间 ✓，于是取值如式 ✓。$x^{-1}$ 是 $x_{*}$ 的左伴随，由伴随公式 $\\operatorname{Hom}(x^{-1}\\mathcal{F}, E) = \\operatorname{Hom}(\\mathcal{F}, x_{*}E) = \\mathcal{F}_{x}$-型的计算即得它就是茎 ✓（也可直接用「茎 = 沿 $x$ 的开邻域取滤过余极限」）✓。∎'
+        '**证明。** $x_{*}E$ 的取值是「拉回 $x^{-1}(U)$ 的」：$x^{-1}(U)$ 在单点空间里要么是空集要么是全空间 ✓，于是取值如式 ✓。\n\n$x^{-1}$ 是 $x_{*}$ 的左伴随，由伴随公式 $\\operatorname{Hom}(x^{-1}\\mathcal{F}, E) = \\operatorname{Hom}(\\mathcal{F}, x_{*}E) = \\mathcal{F}_{x}$-型的计算即得它就是茎 ✓（也可直接用「茎 = 沿 $x$ 的开邻域取滤过余极限」）✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.56']
     },
@@ -207,7 +211,7 @@ window.MG = window.MG || {};
         '3. 在这个等价下，$j_{T!}$ 对应遗忘函子 $\\widetilde{\\mathcal{C}}/\\widetilde{T} \\to \\widetilde{\\mathcal{C}}$，$j_{T}^{-1}$ 对应 $\\mathcal{F} \\mapsto (\\mathcal{F} \\times \\widetilde{T} \\to \\widetilde{T})$。'
       ].join('\n'),
       notes: [
-        '**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。(2) 两个范畴的对象都是「$X \\in \\mathcal{C}$ 加一个截面 $s \\in T(X)$」，层条件也逐字对应 ✓。(3) 把两边的函子按定义写出来即得 ✓。∎'
+        '**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。\n\n(2) 两个范畴的对象都是「$X \\in \\mathcal{C}$ 加一个截面 $s \\in T(X)$」，层条件也逐字对应 ✓。\n\n(3) 把两边的函子按定义写出来即得 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.63, Exercise 3.64']
     },
@@ -249,7 +253,7 @@ window.MG = window.MG || {};
         '2. 于是 $\\mathbf{Et}(X)$（$X$ 上的 étale 空间范畴）$\\simeq$ 晶体层 $\\simeq$ $X$ 上的层 —— 特别地 $\\mathbf{Et}(X)$ 是拓扑斯，因为 $\\mathbf{Et}(X) \\simeq \\widetilde{\\mathbf{Open}(X)}$。'
       ].join('\n'),
       notes: [
-        '**证明的思路。** 从晶体层到 $X$ 上的层是「取 $Y = X$ 那份数据」✓；反方向把 $X$ 上的层 $\\mathcal{F}$ 送到 $\\mathbf{Top}_{/X}$ 上的层 $\\mathcal{F}_{Y} := f^{-1}\\mathcal{F}$（$f : Y \\to X$）✓ —— 这时过渡 $\\alpha_f$ 自动是同构，所以落在晶体层里 ✓。两个方向互逆 ✓。(2) 是 (1) 加上「$X$ 上的层范畴 $\\simeq$ étale 空间范畴」这条标准等价 ✓。∎'
+        '**证明的思路。** 从晶体层到 $X$ 上的层是「取 $Y = X$ 那份数据」✓；反方向把 $X$ 上的层 $\\mathcal{F}$ 送到 $\\mathbf{Top}_{/X}$ 上的层 $\\mathcal{F}_{Y} := f^{-1}\\mathcal{F}$（$f : Y \\to X$）✓ —— 这时过渡 $\\alpha_f$ 自动是同构，所以落在晶体层里 ✓。\n\n两个方向互逆 ✓。\n\n(2) 是 (1) 加上「$X$ 上的层范畴 $\\simeq$ étale 空间范畴」这条标准等价 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.68, Exercise 3.69']
     },
@@ -267,7 +271,7 @@ window.MG = window.MG || {};
         '拓扑空间 $X$ 上的层（对**标准拓扑**而言）**拟紧** $\\iff$ 与它对应的 **espace étalé** 是**紧**空间。'
       ].join('\n'),
       notes: [
-        '**证明。** 拟紧的定义是「从余积出发的满态射可以取有限子族仍然满」✓；在 $X$ 上的层这个具体世界里，「$\\coprod_{i} \\mathcal{F}_{i} \\to \\mathcal{G}$ 满」正是 espace étalé 之间的映射在每根纤维上满，于是「有限子族已经满」$\\iff$「相应的紧空间被有限个块覆盖」✓ —— 两边同时成立 ✓。∎',
+        '**证明。** 拟紧的定义是「从余积出发的满态射可以取有限子族仍然满」✓；在 $X$ 上的层这个具体世界里，「$\\coprod_{i} \\mathcal{F}_{i} \\to \\mathcal{G}$ 满」正是 espace étalé 之间的映射在每根纤维上满，于是「有限子族已经满」$\\iff$「相应的紧空间被有限个块覆盖」✓ —— 两边同时成立 ✓。\n\n∎',
         '⭐ 读法：**拓扑空间上的「拟紧层」就是几何里那个「紧的 étale 空间」**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.70']
@@ -313,7 +317,7 @@ window.MG = window.MG || {};
         '$$\\underline{X} \\;=\\; \\coprod_{i \\in I} \\underline{X_{i}}.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 函子 $X \\mapsto \\underline{X}$（$\\underline{X}(S) = C(S, X)$）是 $X \\mapsto X(\\cdot)$ 的**左伴随** ✓，左伴随保余极限、特别地保余积 ✓。所以把拓扑空间的不交并送进 $\\mathrm{Cond}$，得到的就是余积 ✓（$\\mathrm{Cond}$ 里的余积是「先取逐点不交并、再层化」，正是 $C(S, \\coprod_i X_i)$ 的层化）✓。∎'
+        '**证明。** 函子 $X \\mapsto \\underline{X}$（$\\underline{X}(S) = C(S, X)$）是 $X \\mapsto X(\\cdot)$ 的**左伴随** ✓，左伴随保余极限、特别地保余积 ✓。\n\n所以把拓扑空间的不交并送进 $\\mathrm{Cond}$，得到的就是余积 ✓（$\\mathrm{Cond}$ 里的余积是「先取逐点不交并、再层化」，正是 $C(S, \\coprod_i X_i)$ 的层化）✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 4.8']
     },
@@ -400,7 +404,7 @@ window.MG = window.MG || {};
         '$$\\mathrm{R}\\Gamma\\bigl(X,\\ M^{\\bullet}\\bigr) \\;=\\; \\mathrm{R}\\Gamma\\bigl(\\underline{X},\\ M^{\\bullet}\\bigr), \\qquad \\mathrm{H}^{n}\\bigl(\\underline{X},\\ M^{\\bullet}\\bigr) = \\mathrm{H}^{n}\\bigl(X,\\ M^{\\bullet}\\bigr).$$'
       ].join('\n'),
       notes: [
-        '**证明。** 对任何层 $M$，由关联层的万有性质 $\\operatorname{Hom}(\\underline{X}, M) = M(X) = \\operatorname{Hom}(X, M)$ ✓，即 $\\Gamma(X, M) = \\Gamma(\\underline{X}, M)$。取内射消解 $I^{\\bullet}$，两边逐项相等 ✓，故导出函子相等 ✓。∎'
+        '**证明。** 对任何层 $M$，由关联层的万有性质 $\\operatorname{Hom}(\\underline{X}, M) = M(X) = \\operatorname{Hom}(X, M)$ ✓，即 $\\Gamma(X, M) = \\Gamma(\\underline{X}, M)$。\n\n取内射消解 $I^{\\bullet}$，两边逐项相等 ✓，故导出函子相等 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.36']
     },
@@ -420,7 +424,11 @@ window.MG = window.MG || {};
         '$$\\Gamma\\bigl(X,\\ R\\mathcal{H}(M^{\\bullet})\\bigr) \\;=\\; R\\Gamma\\bigl(X,\\ M^{\\bullet}\\bigr), \\qquad \\Gamma\\bigl(X,\\ \\mathcal{H}^{n}(M^{\\bullet})\\bigr) \\;=\\; H^{n}\\bigl(X,\\ M^{\\bullet}\\bigr).$$'
       ].join('\n'),
       notes: [
-        '**证明。** $\\mathcal{H}$ 与**层化**互为伴随，而层化**正合** ✓，所以 $\\mathcal{H}$ 保内射 ✓（左伴随正合的右伴随保内射）。反过来，函子 $M \\mapsto \\Gamma(X, M)$ 在**预层**上是正合的 ✓。两条合起来套用「导出函子与正合因子的复合」那条，即得第一式 ✓；第二式就是对它取 $n$ 次同调并在层那一侧读出取值 ✓。∎',
+        '**证明。** $\\mathcal{H}$ 与**层化**互为伴随，而层化**正合** ✓，所以 $\\mathcal{H}$ 保内射 ✓（左伴随正合的右伴随保内射）。\n\n' +
+        '反过来，函子 $M \\mapsto \\Gamma(X, M)$ 在**预层**上是正合的 ✓。\n\n' +
+        '两条合起来套用「导出函子与正合因子的复合」那条，即得第一式 ✓；\n\n' +
+        '第二式就是对它取 $n$ 次同调并在层那一侧读出取值 ✓。\n\n' +
+        '∎',
         '⭐ 用处：**上同调预层 $H^{n}(M)$ 的取值就是上同调** —— 这句在算 Čech 与上同调的关系时反复要用。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.42']
@@ -493,7 +501,7 @@ window.MG = window.MG || {};
       target: 'prop.topos-morphism-from-object',
       title: '任意函子诱导拓扑斯态射 $\\implies$ 对象给出 $\\widehat{X}$',
       proof: [
-        '把 $X$ 看成函子 $X : \\mathbf{1} \\to \\mathcal{C}$ ✓，由「任意函子诱导拓扑斯态射」即得 $\\widehat{X}_{!} \\dashv \\widehat{X}^{-1} \\dashv \\widehat{X}_{*}$ ✓；三条公式由 Kan 延拓的逐点公式（逗号范畴上的余极限/极限）算出 ✓。∎'
+        '把 $X$ 看成函子 $X : \\mathbf{1} \\to \\mathcal{C}$ ✓，由「任意函子诱导拓扑斯态射」即得 $\\widehat{X}_{!} \\dashv \\widehat{X}^{-1} \\dashv \\widehat{X}_{*}$ ✓；\n\n三条公式由 Kan 延拓的逐点公式（逗号范畴上的余极限/极限）算出 ✓。\n\n∎'
       ].join('\n')
     },
     {
@@ -524,7 +532,9 @@ window.MG = window.MG || {};
       target: 'prop.topos-morphism-final-map',
       title: '对象给出的拓扑斯态射 $\\implies$ 终映射的情形',
       proof: [
-        '取 $X \\in \\mathbf{Top}$ 与到单点的映射 $p : X \\to \\mathbf{1}$ ✓。沿 $p$ 的推前就是「在 $X$ 上取整体截面」$p_{*}\\mathcal{F} = \\Gamma(X, \\mathcal{F})$ ✓；拉回把集合 $E$ 送到 $X$ 上的常层 $p^{-1}E = \\widetilde{E}_{X}$ ✓（常层就是离散空间给出的层）。',
+        '取 $X \\in \\mathbf{Top}$ 与到单点的映射 $p : X \\to \\mathbf{1}$ ✓。\n\n' +
+        '沿 $p$ 的推前就是「在 $X$ 上取整体截面」$p_{*}\\mathcal{F} = \\Gamma(X, \\mathcal{F})$ ✓；\n\n' +
+        '拉回把集合 $E$ 送到 $X$ 上的常层 $p^{-1}E = \\widetilde{E}_{X}$ ✓（常层就是离散空间给出的层）。',
         '再对连续映射 $f : Y \\to X$ 用「拉回关于复合相容」：$q = p \\circ f$ 给出 $\\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\\widetilde{E}_{X}$ ✓。∎'
       ].join('\n')
     },
@@ -598,7 +608,7 @@ window.MG = window.MG || {};
       target: 'prop.derived-functor-kan-extension',
       title: 'Kan 延拓即伴随 $\\implies$ 导出函子就是 Kan 延拓',
       proof: [
-        '局部化 $\\mathbf{K}^{+}(\\mathcal{A}) \\to \\mathbf{D}^{+}(\\mathcal{A})$ 是预复合函子的左伴随 ✓，而「先作用 $F$ 再局部化」在左正合 $F$ 下表现良好 ✓；由「Kan 延拓与伴随同生同死」与逐点公式，这个复合沿局部化的左 Kan 延拓存在且由 $RF$ 给出 ✓。∎'
+        '局部化 $\\mathbf{K}^{+}(\\mathcal{A}) \\to \\mathbf{D}^{+}(\\mathcal{A})$ 是预复合函子的左伴随 ✓，而「先作用 $F$ 再局部化」在左正合 $F$ 下表现良好 ✓；\n\n由「Kan 延拓与伴随同生同死」与逐点公式，这个复合沿局部化的左 Kan 延拓存在且由 $RF$ 给出 ✓。\n\n∎'
       ].join('\n')
     },
     {

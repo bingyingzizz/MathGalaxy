@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-glelefteq A_5$（第二步），其唯一因子是 $A_5$ 本身；而 $A_5$ 非阿贝尔（例
+rianglelefteq A_5$（第二步），其唯一因子是 $A_5$ 本身；而 $A_5$ 非阿贝
 
 > 续见 proofs/imp.sn-solvable.19.md

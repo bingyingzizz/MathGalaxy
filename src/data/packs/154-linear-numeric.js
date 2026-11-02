@@ -79,7 +79,7 @@ window.MG = window.MG || {};
       notes: [
         '**「顺序主子式全非零」不能去掉**：$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0\\end{pmatrix}$ 的顺序主子式第一个是 $0$，它没有不带置换的 $LU$ 分解（但 $PA = LU$ 有）。这条前提就是「消元时主元不为零」的矩阵语言。',
         '⭐ **它和初等变换的关系**：`def.elementary-matrix` 里那三类初等矩阵，把「第三类（行加倍数）」按顺序乘起来就是 $L^{-1}$。所以 $LU$ 分解 = 高斯消元的矩阵形式，**没有新东西**，只是记账。',
-        '**与 Cholesky 的关系**：若 $A$ 还是**对称正定**，则 $LU$ 可以写成 $A = LL^{T}$（$L$ 下三角），叫 Cholesky 分解。本图未单独收录，它是正定矩阵的直接推论：正定 $\\implies$ 顺序主子式全正（`thm.sylvester-criterion`）$\\implies$ 可做 Cholesky。',
+        '**与 Cholesky 的关系**：若 $A$ 还是**对称正定**，则 $LU$ 可以写成 $A = LL^{T}$（$L$ 下三角），叫 Cholesky 分解。\n\n本图未单独收录，它是正定矩阵的直接推论：正定 $\\implies$ 顺序主子式全正（`thm.sylvester-criterion`）$\\implies$ 可做 Cholesky。',
         '⚠️ 有 $PA = LU$ 之后不要再写 $A = LU$：行交换改变了矩阵，$P$ 必须写出来。'
       ].join('\n\n'),
       refs: [
@@ -110,9 +110,9 @@ window.MG = window.MG || {};
         '**方阵情形**：$A$ 可逆时 $Q$ 是正交（酉）矩阵 —— 这就是 $A$ 的「正交 $\\times$ 上三角」分解，与 LU 的「下三角 $\\times$ 上三角」互为对照。'
       ].join('\n'),
       notes: [
-        '**它其实就是 Gram–Schmidt**：把 $A$ 的列 $a_{1}, \\ldots, a_{n}$ 正交化成 $q_{1}, \\ldots, q_{n}$（`thm.gram-schmidt`），则 $a_{k} = \\sum_{i \\le k} r_{ik}q_{i}$，系数拼起来就是上三角 $R$。唯一的差别是 QR 通常要求 $R$ 的对角为正（这固定了 $q_k$ 的符号）。',
+        '**它其实就是 Gram–Schmidt**：把 $A$ 的列 $a_{1}, \\ldots, a_{n}$ 正交化成 $q_{1}, \\ldots, q_{n}$（`thm.gram-schmidt`），则 $a_{k} = \\sum_{i \\le k} r_{ik}q_{i}$，系数拼起来就是上三角 $R$。\n\n唯一的差别是 QR 通常要求 $R$ 的对角为正（这固定了 $q_k$ 的符号）。',
         '⭐ **为什么不用 Gram–Schmidt 而用 QR**：数学上等价，但数值上不同 —— Gram–Schmidt 会损失正交性（$Q^{T}Q$ 偏离 $I$），实际算法用 Householder 反射或 Givens 旋转直接算 $Q$。**本图只做数学内容，不展开算法**（数值分析不在收录范围）。',
-        '**与最小二乘的关系**：$\\lVert Ax - b\\rVert^{2} = \\lVert Rx - Q^{T}b\\rVert^{2} + \\lVert (I - QQ^{T})b\\rVert^{2}$，最后一项与 $x$ 无关 —— 所以最小二乘解就是解 $Rx = Q^{T}b$（`thm.least-squares`）。这是 QR 在数值上受欢迎的真正原因。',
+        '**与最小二乘的关系**：$\\lVert Ax - b\\rVert^{2} = \\lVert Rx - Q^{T}b\\rVert^{2} + \\lVert (I - QQ^{T})b\\rVert^{2}$，最后一项与 $x$ 无关 —— 所以最小二乘解就是解 $Rx = Q^{T}b$（`thm.least-squares`）。\n\n这是 QR 在数值上受欢迎的真正原因。',
         '⚠️ **列线性无关**这个前提不能去：否则 $Q$ 的列不全、$R$ 不可逆，分解仍可做但失去意义（那种情形要用列主元 QR 或伪逆）。'
       ].join('\n\n'),
       refs: [

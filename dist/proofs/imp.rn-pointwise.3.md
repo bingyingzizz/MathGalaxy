@@ -7,6 +7,10 @@
 
 $$\lambda(B_x) > (1/k)\cdot m(B_x)$$
 
-**⑥ 覆盖引理再来一次。** 令 $V_\varepsilon = \bigcup_{x \in F_k} B_x$（它是 $U$ 中的开集，故 $\lambda(V_\varepsilon) \le \lambda(U) < \varepsilon$）。取 $c < m(V_\varepsilon)$，由**覆盖引理**挑出不交的 $B_{x_1}, \ldots , B_{x_j}$ 使 $\sum m(B_{x_i}) > 3^{-n} c$。于是
+**⑥ 覆盖引理再来一次。** 令 $V_\varepsilon = \bigcup_{x \in F_k} B_x$（它是 $U$ 中的开集，故 $\lambda(V_\varepsilon) \le \lambda(U) < \varepsilon$）。
+
+取 $c < m(V_\varepsilon)$，由**覆盖引理**挑出不交的 $B_{x_1}, \ldots , B_{x_j}$ 使 $\sum m(B_{x_i}) > 3^{-n} c$。
+
+于是
 
 > 续见 proofs/imp.rn-pointwise.4.md

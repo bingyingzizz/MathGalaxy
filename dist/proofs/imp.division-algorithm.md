@@ -13,4 +13,8 @@ $$f_1 := f - c\,x^{m-n} g$$
 
 则 $f_1$ 的 $m$ 次项被消掉，$\deg f_1 < \deg f$。对 $f_1$ 用归纳假设：$f_1 = q_1 g + r$（$\deg r < \deg g$），于是 $f = (c x^{m-n} + q_1) g + r$。
 
+**唯一性**：设 $f = q g + r = q' g + r'$，两式相减得 $(q - q') g = r' - r$。
+
+若 $q \ne q'$，则左端次数 $\ge \deg g$（由 $\deg(fg) = \deg f + \deg g$），而右端次数 $< \deg g$，矛盾。
+
 > 续见 proofs/imp.division-algorithm.2.md

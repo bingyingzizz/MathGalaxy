@@ -3,7 +3,9 @@
 
 `prop.resolution-homotopy` 消解的同伦唯一性 → `def.tor` 挠积
 
-设 $P_{\bullet} \twoheadrightarrow M$ 与 $Q_{\bullet} \twoheadrightarrow M$ 是同一个模的两条投射消解。由「消解的同伦唯一性」存在链映射 $\varphi : P_{\bullet} \to Q_{\bullet}$、$\psi : Q_{\bullet} \to P_{\bullet}$，使
+设 $P_{\bullet} \twoheadrightarrow M$ 与 $Q_{\bullet} \twoheadrightarrow M$ 是同一个模的两条投射消解。
+
+由「消解的同伦唯一性」存在链映射 $\varphi : P_{\bullet} \to Q_{\bullet}$、$\psi : Q_{\bullet} \to P_{\bullet}$，使
 
 $$\psi\varphi \sim 1_{P_{\bullet}}, \qquad \varphi\psi \sim 1_{Q_{\bullet}}.$$
 

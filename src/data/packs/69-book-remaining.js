@@ -44,7 +44,7 @@ window.MG = window.MG || {};
           '对 $f\' : X\' \\to Y\'$，令 $G(f\') : G(X\') \\to G(Y\')$ 是**唯一**使',
           '$$F\\bigl(G(f\')\\bigr) = \\varphi_{Y\'}^{-1} \\circ f\' \\circ \\varphi_{X\'}$$',
           '的态射 —— $F$ 全忠实，这样的态射存在且唯一 ✓。这样定义的 $G$ 保恒等与复合（两边都过了 $F$，再全忠实即得）✓，所以 $G$ 是函子。',
-          '由构造，$\\varphi : F \\circ G \\implies 1_{\\mathcal{C}\'}$ 是自然同构 ✓。另一侧：每个 $X$ 处 $\\varphi_{F(X)}^{-1} : F(X) \\to F\\bigl(GF(X)\\bigr)$ 在全忠实之下来自唯一的 $\\psi_{X} : X \\to GF(X)$，而 $\\psi$ 自然（自然性同样过 $F$ 检验，由 $\\varphi$ 的自然性得到）✓，于是 $\\psi : 1_{\\mathcal{C}} \\implies G \\circ F$ 也是自然同构 ✓。',
+          '由构造，$\\varphi : F \\circ G \\implies 1_{\\mathcal{C}\'}$ 是自然同构 ✓。\n\n另一侧：每个 $X$ 处 $\\varphi_{F(X)}^{-1} : F(X) \\to F\\bigl(GF(X)\\bigr)$ 在全忠实之下来自唯一的 $\\psi_{X} : X \\to GF(X)$，而 $\\psi$ 自然（自然性同样过 $F$ 检验，由 $\\varphi$ 的自然性得到）✓，于是 $\\psi : 1_{\\mathcal{C}} \\implies G \\circ F$ 也是自然同构 ✓。',
           '**$(\\Longrightarrow)$** 设 $F$ 有伪逆 $G$，即 $F G \\cong 1_{\\mathcal{C}\'}$、$G F \\cong 1_{\\mathcal{C}}$。',
           '- **本质满**：$X\' \\cong F\\bigl(G(X\')\\bigr)$ ✓；',
           '- **全忠实**：$\\operatorname{Hom}(X, Y) \\xrightarrow{\\ F\\ } \\operatorname{Hom}(FX, FY)$ 的逆由',
@@ -110,10 +110,10 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。**',
-          '**（一）造 $p_{!}F$ 在对象上的值。** 对每个 $X\' \\in \\mathcal{C}\'$，逗号范畴 $p \\downarrow X\'$ 的对象是 $(X, f : p(X) \\to X\')$，态射是使 $f\' \\circ p(u) = f$ 的 $u : X \\to X\'$。这一族 $\\{F(X)\\}$ 连同「$u$ 给出 $F(u) : F(X) \\to F(X\')$」构成一个余锥，取其余极限就得到 $(p_{!}F)(X\')$ ✓。',
+          '**（一）造 $p_{!}F$ 在对象上的值。** 对每个 $X\' \\in \\mathcal{C}\'$，逗号范畴 $p \\downarrow X\'$ 的对象是 $(X, f : p(X) \\to X\')$，态射是使 $f\' \\circ p(u) = f$ 的 $u : X \\to X\'$。\n\n这一族 $\\{F(X)\\}$ 连同「$u$ 给出 $F(u) : F(X) \\to F(X\')$」构成一个余锥，取其余极限就得到 $(p_{!}F)(X\')$ ✓。',
           '**（二）在态射上的值。** 给定 $u\' : X\' \\to Y\'$，把 $X\'$ 处的余锥沿 $u\'$ 推前（$(X, f) \\mapsto (X, u\' \\circ f)$）得 $Y\'$ 处的余锥，泛性质给出 $(p_{!}F)(u\')$ ✓，函子性由泛性质中的唯一性得到 ✓。',
           '**（三）那条自然变换 $\\alpha : F \\implies p_{!}F \\circ p$。** 在 $X$ 处取 $p(X) \\xrightarrow{\\ 1\\ } p(X)$ 对应的那条腿 $F(X) \\to (p_{!}F)\\bigl(p(X)\\bigr)$ ✓。',
-          '**（四）泛性质。** 设 $G : \\mathcal{C}\' \\to \\mathcal{D}$ 与 $\\gamma : F \\implies G \\circ p$。在 $X\'$ 处，$\\{\\gamma_{X} \\text{ 后接 } G(f) : F(X) \\to G(X\')\\}_{f : p(X) \\to X\'}$ 是 $G(X\')$ 里的一个余锥，于是得唯一的 $\\widetilde{\\gamma}_{X\'} : (p_{!}F)(X\') \\to G(X\')$ ✓；唯一性来自余极限的泛性质，自然性两边都是余锥的映射，逐点验证即可 ✓。',
+          '**（四）泛性质。** 设 $G : \\mathcal{C}\' \\to \\mathcal{D}$ 与 $\\gamma : F \\implies G \\circ p$。\n\n在 $X\'$ 处，$\\{\\gamma_{X} \\text{ 后接 } G(f) : F(X) \\to G(X\')\\}_{f : p(X) \\to X\'}$ 是 $G(X\')$ 里的一个余锥，于是得唯一的 $\\widetilde{\\gamma}_{X\'} : (p_{!}F)(X\') \\to G(X\')$ ✓；\n\n唯一性来自余极限的泛性质，自然性两边都是余锥的映射，逐点验证即可 ✓。',
           '于是 $\\operatorname{Hom}(p_{!}F, G) \\cong \\operatorname{Hom}(F, G \\circ p)$ ✓，即 $p_{!} \\dashv p^{-1}$ ✓。∎'
         ].join('\n'),
         '⭐ 用处：**预层范畴的完备性/余完备性把 Kan 延拓变成自动的**。取 $\\mathcal{D} = \\mathbf{Set}$ 就得到「任何函子在预层范畴之间都诱导一对伴随」—— 这正是「任意函子诱导拓扑斯态射」的引擎。',
@@ -141,7 +141,7 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。** 分两步。',
-          '**（一）逐点定义确实给出极限（余极限）。** 在 $\\mathbf{Set}$ 里对每个 $X \\in \\mathcal{C}$ 取那族集合的极限（或余极限）；对态射 $f : Y \\to X$，限制映射 $\\bigl(\\varprojlim T_i\\bigr)(X) \\to \\bigl(\\varprojlim T_i\\bigr)(Y)$ 由极限的泛性质给出（余极限那一侧由余极限的泛性质给出）✓。这样得到的预层连同逐点给出的锥（余锥）满足泛性质：一个锥到 $\\varprojlim T_i$ 的映射在每一点 $X$ 处都唯一确定，而泛性质是**逐点**陈述的，所以在每一点成立就在整体成立 ✓。',
+          '**（一）逐点定义确实给出极限（余极限）。** 在 $\\mathbf{Set}$ 里对每个 $X \\in \\mathcal{C}$ 取那族集合的极限（或余极限）；对态射 $f : Y \\to X$，限制映射 $\\bigl(\\varprojlim T_i\\bigr)(X) \\to \\bigl(\\varprojlim T_i\\bigr)(Y)$ 由极限的泛性质给出（余极限那一侧由余极限的泛性质给出）✓。\n\n这样得到的预层连同逐点给出的锥（余锥）满足泛性质：一个锥到 $\\varprojlim T_i$ 的映射在每一点 $X$ 处都唯一确定，而泛性质是**逐点**陈述的，所以在每一点成立就在整体成立 ✓。',
           '**（二）$\\mathbf{Set}$ 完备且余完备。**',
           '- **小极限存在**：小积存在（选择公理给出选择函数的集合）；等化子存在（$\\{x : f(x) = g(x)\\}$ 是子集）；而**极限由积与等化子造**，所以所有小极限存在 ✓。',
           '- **小余极限存在**：小余积是不交并；余等化子是商集；对偶地所有小余极限存在 ✓。',
@@ -303,7 +303,7 @@ window.MG = window.MG || {};
         '这里 $\\mathbb{Z}\\cdot X$ 是 $X$ 生成的**自由阿贝尔群层**。'
       ].join('\n'),
       notes: [
-        '⭐ **用处**：它说 $\\mathbb{Z}\\cdot X_{\\bullet} \\to \\mathbb{Z}\\cdot X$ 是一条**自由（因而是投射）消解**。于是「用 Čech 复形算上同调」有了依据 —— $\\check{C}^{\\bullet}(X, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$ 确实是在拿一条投射消解算 $\\operatorname{RHom}$ ✓（见「Čech 上同调是沿覆盖筛的余极限」）。',
+        '⭐ **用处**：它说 $\\mathbb{Z}\\cdot X_{\\bullet} \\to \\mathbb{Z}\\cdot X$ 是一条**自由（因而是投射）消解**。\n\n于是「用 Čech 复形算上同调」有了依据 —— $\\check{C}^{\\bullet}(X, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$ 确实是在拿一条投射消解算 $\\operatorname{RHom}$ ✓（见「Čech 上同调是沿覆盖筛的余极限」）。',
         '⚠️ 注意「覆盖」在这里是**整族** $(X_{i} \\to X)$：零调说的是整条 Čech 脉，而不只是某一个 $X_{i}$。',
         '📌 这条与「带截面的覆盖上 Čech 零调」的关系是：**后者是前者证明里最硬的那一步**（有截面时能写出显式同伦），前者再靠「逐点 + 层化」把截面推广成任意覆盖。'
       ].join('\n\n'),
@@ -466,7 +466,7 @@ window.MG = window.MG || {};
         '$$\\cong \\operatorname{Hom}\\bigl(X,\\ \\operatorname{Hom}(Y, \\underline{Z})\\bigr) \\;\\cong\\; \\operatorname{Hom}\\bigl(X \\times Y,\\ \\underline{Z}\\bigr) ✓$$',
         '3. 再用一次内部 Hom 刻画，并用 $\\operatorname{Hom}(X \\times Y, \\underline{Z}) = (X \\times Y)(\\cdot)$ 的取值定义：',
         '$$\\cong C\\bigl((X \\times Y)(\\cdot),\\ Z\\bigr) ✓$$',
-        '于是 $C\\bigl(k(X(\\cdot) \\times Y(\\cdot)), Z\\bigr) \\cong C\\bigl((X \\times Y)(\\cdot), Z\\bigr)$ 对一切紧生成 $Z$ 成立，由米田引理得 $k\\bigl(X(\\cdot) \\times Y(\\cdot)\\bigr) \\cong (X \\times Y)(\\cdot) ✓$。∎',
+        '于是 $C\\bigl(k(X(\\cdot) \\times Y(\\cdot)), Z\\bigr) \\cong C\\bigl((X \\times Y)(\\cdot), Z\\bigr)$ 对一切紧生成 $Z$ 成立，由米田引理得 $k\\bigl(X(\\cdot) \\times Y(\\cdot)\\bigr) \\cong (X \\times Y)(\\cdot) ✓$。\n\n∎',
         '⚠️ 第一步**必须**在紧生成的世界里做：$\\mathbf{Top}$ 一般不是笛卡尔闭的，不取 $k$-化时同构链在第一步就断了。'
       ].join('\n')
     },
@@ -526,12 +526,15 @@ window.MG = window.MG || {};
       target: 'lem.covering-free-acyclic',
       title: '有截面的 Čech 同伦 $\\implies$ 任意覆盖上自由复形零调',
       proof: [
-        '**（一）化到单个满态射。** 令 $X_{0} := \\coprod_{i} X_{i}$。满态射 $X_{0} \\to X$ 的 Čech 脉的第 $n$ 项正是 $\\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}} = X_{n}$ ✓，所以只需证明 $X_{0} \\twoheadrightarrow X$ 的情形。',
+        '**（一）化到单个满态射。** 令 $X_{0} := \\coprod_{i} X_{i}$。\n\n满态射 $X_{0} \\to X$ 的 Čech 脉的第 $n$ 项正是 $\\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}} = X_{n}$ ✓，所以只需证明 $X_{0} \\twoheadrightarrow X$ 的情形。',
         '**（二）$\\mathcal{T} = \\mathbf{Set}$。** 满射有截面 $s$（选择公理）✓。沿截面取',
         '$$s^{n} := s \\times_{X} 1_{X_{n}} : X_{n} \\longrightarrow X_{n+1},$$',
         '它满足收缩同伦的恒等式 $1_{X_{n}} = s^{n+1} d_{n} + d_{n+1} s^{n}$ ✓（逐面展开即得），于是增广复形同伦平凡，特别地零调 ✓。这正是「带截面的覆盖上 Čech 零调」那条命题。',
         '**（三）$\\mathcal{T} = \\widehat{\\mathcal{C}}$（预层）。** 由上一条定理，预层范畴里的极限与余极限逐点算，而零调是「逐点取同调为零」，于是在每个 $X \\in \\mathcal{C}$ 处化回 (二) ✓。',
-        '**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（景上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。∎'
+        '**（四）$\\mathcal{T} = \\widehat{\\mathcal{C}}^{\\#}$（景上的层）。** 任意满态射都是 $\\widehat{\\mathcal{C}}$ 中某个满态射的**层化** ✓。\n\n' +
+        '层化**正合**（既保有限极限、又保余极限），所以它把预层版本的 Čech 脉逐项送过来、并保持复形的正合性；\n\n' +
+        '再由层化的正合性，预层版本的零调直接给出层版本的零调 ✓。\n\n' +
+        '∎'
       ].join('\n')
     },
 

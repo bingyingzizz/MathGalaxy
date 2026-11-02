@@ -474,9 +474,9 @@
       ].join('\n'),
       notes: [
         '**证明的实际内容**：把 $\\pi_{1}$ 作用到 $r \\circ i = \\operatorname{id}_{S^{1}}$ 上，得' +
-          '$r_{*} \\circ i_{*} = \\operatorname{id}_{\\mathbb{Z}}$。但 $\\pi_{1}(D^{2}) = 1$（圆盘凸 $\\implies$ 可缩），' +
-          '所以 $i_{*}$ 只能是零映射，复合必然是零——矛盾。**整个论证只用了一行群论**，' +
-          '前提是 $\\pi_{1}(S^{1})$ 已知。',
+          '$r_{*} \\circ i_{*} = \\operatorname{id}_{\\mathbb{Z}}$。\n\n' +
+          '但 $\\pi_{1}(D^{2}) = 1$（圆盘凸 $\\implies$ 可缩），所以 $i_{*}$ 只能是零映射，复合必然是零——矛盾。\n\n' +
+          '**整个论证只用了一行群论**，前提是 $\\pi_{1}(S^{1})$ 已知。',
         '',
         '**推广**：同样的论证对任意 $n \\ge 1$ 成立（换成同调群 $H_{n-1}$）：' +
           '$S^{n-1}$ 不是 $D^{n}$ 的收缩核。',
@@ -558,7 +558,7 @@
       ].join('\n'),
       notes: [
         '**差别在哪**：把 $S^{n}$ 拆成两个开半球 $U, V$，各同胚于 $\\mathbb{R}^{n}$，可缩，故 $\\pi_{1}(U) = \\pi_{1}(V) = 1$；' +
-          '而 $U \\cap V \\cong S^{n-1} \\times (-\\varepsilon, \\varepsilon)$ 在 $n \\ge 2$ 时**道路连通**、$n = 1$ 时**不连通**（两段弧）。' +
+          '而 $U \\cap V \\cong S^{n-1} \\times (-\\varepsilon, \\varepsilon)$ 在 $n \\ge 2$ 时**道路连通**、$n = 1$ 时**不连通**（两段弧）。\n\n' +
           'van Kampen 要求交叠道路连通，所以只有 $n \\ge 2$ 能用，且一旦能用，自由积是平凡群，交叠长什么样都不影响。',
         '',
         '⚠️ 常见误读：「$S^{n}$ 没有洞所以基本群平凡」—— $n \\ge 2$ 的 $S^{n}$ **有**一个 $n$ 维的洞，' +
@@ -594,10 +594,8 @@
           '在 $[3/4, 1]$ 上 $\\varphi(t) = (t + 1)/2$。',
         '',
         '它连续、单调、$\\varphi(0) = 0$、$\\varphi(1) = 1$，且直接算得' +
-          '$\\big((\\alpha * \\beta) * \\gamma\\big) \\circ \\varphi = \\alpha * (\\beta * \\gamma)$（逐段核对分段点即可）。' +
-          '而 $\\delta \\circ \\varphi \\simeq_{p} \\delta$，同伦取 $F(t, s) = \\delta((1 - s)\\,\\varphi(t) + s\\,t)$：' +
-          '它连续、$F(\\cdot, 0) = \\delta \\circ \\varphi$、$F(\\cdot, 1) = \\delta$，' +
-          '且 $F(0, s) = \\delta(0)$、$F(1, s) = \\delta(1)$ 不动。',
+          '$\\big((\\alpha * \\beta) * \\gamma\\big) \\circ \\varphi = \\alpha * (\\beta * \\gamma)$（逐段核对分段点即可）。\n\n' +
+          '而 $\\delta \\circ \\varphi \\simeq_{p} \\delta$，同伦取 $F(t, s) = \\delta((1 - s)\\,\\varphi(t) + s\\,t)$：它连续、$F(\\cdot, 0) = \\delta \\circ \\varphi$、$F(\\cdot, 1) = \\delta$，且 $F(0, s) = \\delta(0)$、$F(1, s) = \\delta(1)$ 不动。',
         '',
         '**单位**：$(e_{x_{0}} * \\alpha)(t) = \\alpha(\\max(0, 2t - 1))$，与 $\\alpha$ 只差单调重参数化 $t \\mapsto \\max(0, 2t - 1)$，' +
           '故 $e_{x_{0}} * \\alpha \\simeq_{p} \\alpha$（同一个重参数化论证）。另一侧同理。',
@@ -632,9 +630,9 @@
           '都是映射复合的结合律，逐点成立。',
         '',
         '**同伦不变**：设 $H : f \\simeq g \\; (\\operatorname{rel} \\{x_{0}\\})$。' +
-          '对任意 $[\\alpha]$，令 $\\Phi(t, s) := H(\\alpha(t), s)$。则 $\\Phi$ 连续，' +
-          '$\\Phi(\\cdot, 0) = f \\circ \\alpha$、$\\Phi(\\cdot, 1) = g \\circ \\alpha$，' +
-          '且 $\\Phi(0, s) = H(x_{0}, s) = f(x_{0}) = g(x_{0})$、$\\Phi(1, s) = H(x_{0}, s)$ 同样不动。∎',
+          '对任意 $[\\alpha]$，令 $\\Phi(t, s) := H(\\alpha(t), s)$。\n\n' +
+          '则 $\\Phi$ 连续，$\\Phi(\\cdot, 0) = f \\circ \\alpha$、$\\Phi(\\cdot, 1) = g \\circ \\alpha$，且 $\\Phi(0, s) = H(x_{0}, s) = f(x_{0}) = g(x_{0})$、$\\Phi(1, s) = H(x_{0}, s)$ 同样不动。\n\n' +
+          '∎',
       ].join('\n'),
       note: '关键只有一句：$f$ 与「拼接」交换。这也说明为什么 $f_{*}$ 是**同态**而不是随便一个映射。' },
     { kind: 'implication', sources: ['prop.induced-homomorphism'], target: 'prop.pi1-basepoint',
@@ -671,9 +669,8 @@
       title: '提升给出单射 $\\pi_{1}(E) \\hookrightarrow \\pi_{1}(B)$，纤维就是陪集',
       proof: [
         '**单射**：设 $[\\tilde{\\alpha}] \\in \\pi_{1}(E, e_{0})$ 且 $p_{*}[\\tilde{\\alpha}] = 1$。' +
-          '即存在道路同伦 $F : p \\circ \\tilde{\\alpha} \\simeq_{p} e_{b_{0}}$。由**同伦提升**（`thm.lifting` (2)）' +
-          '得唯一提升 $\\tilde{F}$，它以 $\\tilde{\\alpha}$ 为一端、以 $e_{0}$ 处常值道路为另一端，' +
-          '故 $[\\tilde{\\alpha}] = 1$。',
+          '即存在道路同伦 $F : p \\circ \\tilde{\\alpha} \\simeq_{p} e_{b_{0}}$。\n\n' +
+          '由**同伦提升**（`thm.lifting` (2)）得唯一提升 $\\tilde{F}$，它以 $\\tilde{\\alpha}$ 为一端、以 $e_{0}$ 处常值道路为另一端，故 $[\\tilde{\\alpha}] = 1$。',
         '',
         '**映射 $\\Psi$**：对 $e \\in p^{-1}(b_{0})$，取 $E$ 中从 $e_{0}$ 到 $e$ 的道路 $\\tilde{\\sigma}$（$E$ 道路连通），' +
           '记 $\\sigma := p \\circ \\tilde{\\sigma}$，它是 $b_{0}$ 处的闭道路。令 $\\Psi(e) := [\\sigma] \\cdot p_{*}\\pi_{1}(E, e_{0})$（右陪集）。',
@@ -682,9 +679,10 @@
           '其类属于 $\\pi_{1}(E, e_{0})$，投影后正好给出两个陪集相同。',
         '',
         '**双射**：满射——任给陪集 $[\\alpha]\\,p_{*}\\pi_{1}(E)$，把 $\\alpha$ 从 $e_{0}$ 提升得 $\\tilde{\\alpha}$，' +
-          '$\\Psi(\\tilde{\\alpha}(1)) = $ 该陪集。单射——若 $\\Psi(e) = \\Psi(e\')$，取相应的 $\\tilde{\\sigma}, \\tilde{\\sigma}\'$，' +
-          '则 $[\\sigma\' * \\bar{\\sigma}] \\in p_{*}\\pi_{1}(E)$，即存在 $E$ 中的闭道路 $\\tilde{\\tau}$ 同伦于 $\\sigma\' * \\bar{\\sigma}$ 的提升；' +
-          '由**提升的唯一性**，该提升的终点必同时是 $e\'$ 与 $e$，故 $e = e\'$。∎',
+          '$\\Psi(\\tilde{\\alpha}(1)) = $ 该陪集。\n\n' +
+          '单射——若 $\\Psi(e) = \\Psi(e\')$，取相应的 $\\tilde{\\sigma}, \\tilde{\\sigma}\'$，则 $[\\sigma\' * \\bar{\\sigma}] \\in p_{*}\\pi_{1}(E)$，即存在 $E$ 中的闭道路 $\\tilde{\\tau}$ 同伦于 $\\sigma\' * \\bar{\\sigma}$ 的提升；\n\n' +
+          '由**提升的唯一性**，该提升的终点必同时是 $e\'$ 与 $e$，故 $e = e\'$。\n\n' +
+          '∎',
       ].join('\n'),
       note: '⚠️ 得到的只是**集合**双射。想吃掉「同构」两个字必须另外证明度数同态。' },
     { kind: 'implication', sources: ['prop.covering-index'], target: 'thm.pi1-circle',

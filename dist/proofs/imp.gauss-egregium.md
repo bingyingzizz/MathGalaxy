@@ -7,4 +7,8 @@
 
 $$\mathrm{d}\omega^{1} = \omega^{1}{}_{2}\wedge\omega^{2}, \qquad \mathrm{d}\omega^{2} = \omega^{2}_{\ 1}\wedge\omega^{1} = -\omega^{1}{}_{2}\wedge\omega^{1}.$$
 
+把 $\omega^{1}, \omega^{2}$ 看成 $I = (\omega^{1})^{2}+(\omega^{2})^{2}$ 给出的余标架，这两条方程就是关于 $\omega^{1}{}_{2}$ 的线性方程组。
+
+若 $\tilde\omega^{1}{}_{2}$ 是另一解，则 $(\omega^{1}{}_{2}-\tilde\omega^{1}{}_{2})\wedge\omega^{1} = (\omega^{1}{}_{2}-\tilde\omega^{1}{}_{2})\wedge\omega^{2} = 0$；
+
 > 续见 proofs/imp.gauss-egregium.2.md

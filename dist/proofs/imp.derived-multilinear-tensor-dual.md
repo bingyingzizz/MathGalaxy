@@ -7,6 +7,8 @@
 
 $$\operatorname{Hom}_{K}(V\otimes W, K) \cong \operatorname{Bil}(V,W;K), \qquad \widetilde{B} \mapsto \widetilde{B}\circ\otimes .$$
 
-**归纳到 $n$ 元。** 设 $\operatorname{Mult}_{n-1}(V;K) \cong \operatorname{Hom}_{K}(V^{\otimes n-1}, K)$。给 $f \in \operatorname{Mult}_{n}(V;K)$，固定第一个变元得 $f_{v} \in \operatorname{Mult}_{n-1}(V;K)$，且 $v \mapsto f_{v}$ 是线性的；按归纳假设它是线性映射 $V \to \operatorname{Hom}_{K}(V^{\otimes n-1},K)$，而「线性映射进 Hom」等价于双线性映射（currying）
+**归纳到 $n$ 元。** 设 $\operatorname{Mult}_{n-1}(V;K) \cong \operatorname{Hom}_{K}(V^{\otimes n-1}, K)$。
+
+给 $f \in \operatorname{Mult}_{n}(V;K)$，固定第一个变元得 $f_{v} \in \operatorname{Mult}_{n-1}(V;K)$，且 $v \mapsto f_{v}$ 是线性的；
 
 > 续见 proofs/imp.derived-multilinear-tensor-dual.2.md

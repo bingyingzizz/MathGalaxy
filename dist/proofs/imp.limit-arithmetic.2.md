@@ -9,7 +9,13 @@
 
 $$\Bigl| \frac{1}{g(x)} - \frac{1}{B} \Bigr| = \frac{|g(x) - B|}{|g(x)|\,|B|} \le \frac{2}{|B|^{2}}\,|g(x) - B|$$
 
-**(iv) 保序性。** 设 $f(x) \le g(x)$ 在去心邻域上成立而 $A > B$。取 $\varepsilon = (A - B) / 2$，则充分靠近 $x_0$ 时 $f(x) > A - \varepsilon > B + \varepsilon > g(x)$，与 $f \le g$ 矛盾。故 $A \le B$。∎
+**(iv) 保序性。** 设 $f(x) \le g(x)$ 在去心邻域上成立而 $A > B$。
+
+取 $\varepsilon = (A - B) / 2$，则充分靠近 $x_0$ 时 $f(x) > A - \varepsilon > B + \varepsilon > g(x)$，与 $f \le g$ 矛盾。
+
+故 $A \le B$。
+
+∎
 
 **(v) 绝对值。** 由 $|\,|f(x)| - |A|\,| \le |f(x) - A|$（三角不等式的变形）直接得到。
 

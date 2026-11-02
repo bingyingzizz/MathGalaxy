@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-又 $|N| \mid |A_5| = 60$。枚举全部子集和：$1, 16, 21, 13, 36, 28, 33, 25, 48, 40, 45
+又 $|N| \mid |A_5| = 60$。枚举全部子集和：$1, 16, 21, 13, 36, 28, 33, 25, 48, 40
 
 > 续见 proofs/imp.sn-solvable.15.md

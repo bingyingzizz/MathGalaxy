@@ -51,7 +51,7 @@ window.MG = window.MG || {};
         '',
         '**(vi) Poincaré 对偶**：$f$ 光滑时 $f^!\\mathbf{1}_Y \\otimes_X f^*B \\to f^!B$ 是同构，且 $f^!\\mathbf{1}_Y$ 可逆。'
       ].join('\n'),
-      notes: '⭐ 前四个函子 $\\otimes, \\operatorname{Hom}, f^*, f_*$ 通常容易造；**全部难度在 $f_!$**。经典例子是 $\\ell$-进层 $D_{\\mathrm{et}}(X, \\mathbb{Z}_\\ell)$ 与凝聚态/固态层。\n\n⭐ 一旦有了 $f_!$，$f^!$ 由伴随给出。反过来，$f_!$ 也由「开浸入 + 固有映射 + Nagata 紧化」决定：$f = \\bar f \\circ j$ 时 $f_! = \\bar f_* j_!$。所以真正要造的只有**开浸入的 $j_!$**（见 `prop.open-immersion-shriek`）。\n\n⚠ 在凝聚态世界里，$f_!$ 不能只用抽象 $A$-模造 —— 开浸入的 $j_!$ 要求 $\\prod_I A \\otimes_A A[1/f] \\cong \\prod_I A[1/f]$，这在抽象模里失效、在**固态模**里成立。'
+      notes: '⭐ 前四个函子 $\\otimes, \\operatorname{Hom}, f^*, f_*$ 通常容易造；**全部难度在 $f_!$**。\n\n经典例子是 $\\ell$-进层 $D_{\\mathrm{et}}(X, \\mathbb{Z}_\\ell)$ 与凝聚态/固态层。\n\n⭐ 一旦有了 $f_!$，$f^!$ 由伴随给出。\n\n反过来，$f_!$ 也由「开浸入 + 固有映射 + Nagata 紧化」决定：$f = \\bar f \\circ j$ 时 $f_! = \\bar f_* j_!$。\n\n所以真正要造的只有**开浸入的 $j_!$**（见 `prop.open-immersion-shriek`）。\n\n⚠ 在凝聚态世界里，$f_!$ 不能只用抽象 $A$-模造 —— 开浸入的 $j_!$ 要求 $\\prod_I A \\otimes_A A[1/f] \\cong \\prod_I A[1/f]$，这在抽象模里失效、在**固态模**里成立。'
     },
     {
       id: 'prop.open-immersion-shriek',
@@ -105,7 +105,7 @@ window.MG = window.MG || {};
         '',
         '它保一切直和，故有右伴随 $f^!$。六个函子至此齐备。'
       ].join('\n'),
-      notes: '⭐ 定义的形式很朴素：**先开浸入地推出去，再（沿相对 adic 化）正常推前**。全部内容在于 $j_!$ 存在（`prop.open-immersion-shriek`）。\n\n⭐ $f$ 固有时 $j$ 是同构，$f_! = (f^{\\mathrm{ad}/Y})_*$，与 $R\\Gamma$ 一致 —— 这正是 `thm.poincare-solid` 里「$f$ 固有时与整体截面一致」的来源。\n\n⚠ 「保直和」是 $f^!$ 存在的关键：$j_!$ 作为左伴随保余极限，$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，也保直和。'
+      notes: '⭐ 定义的形式很朴素：**先开浸入地推出去，再（沿相对 adic 化）正常推前**。\n\n全部内容在于 $j_!$ 存在（`prop.open-immersion-shriek`）。\n\n⭐ $f$ 固有时 $j$ 是同构，$f_! = (f^{\\mathrm{ad}/Y})_*$，与 $R\\Gamma$ 一致 —— 这正是 `thm.poincare-solid` 里「$f$ 固有时与整体截面一致」的来源。\n\n⚠ 「保直和」是 $f^!$ 存在的关键：$j_!$ 作为左伴随保余极限，$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，也保直和。'
     },
     {
       id: 'prop.f-shriek-base-change',
@@ -127,7 +127,7 @@ window.MG = window.MG || {};
         '',
         '$$g\'^* f^! \\;\\simeq\\; f\'^! g^* : D(R_\\blacksquare) \\longrightarrow D(B_\\blacksquare).$$'
       ].join('\n'),
-      notes: '⭐ 读法：**$f^!$ 就是「$f^*$ 再扭一个 $f^!R$」**。于是要算 $f^!$，只需算 $f^!R$（对偶复形）。\n\n⭐ 证明归约到两种情形：$f$ 满射（此时 $f_! = f_*$ 是遗忘函子，$f^! = \\operatorname{RHom}_R(A,-)$，基变换显然）与 $A = R[T]$（此时 $f_!M = M \\otimes_{(A,R)_\\blacksquare} R((T^{-1}))/R[T][-1]$，$f^!R = R[T][1]$，基变换化成 $R((T^{-1}))/R[T]$ 的基变换）。\n\n⚠ 有限 Tor 维数是必需的：否则 $f^!R$ 不是有限复形，扭转公式失效。'
+      notes: '⭐ 读法：**$f^!$ 就是「$f^*$ 再扭一个 $f^!R$」**。\n\n于是要算 $f^!$，只需算 $f^!R$（对偶复形）。\n\n⭐ 证明归约到两种情形：$f$ 满射（此时 $f_! = f_*$ 是遗忘函子，$f^! = \\operatorname{RHom}_R(A,-)$，基变换显然）与 $A = R[T]$（此时 $f_!M = M \\otimes_{(A,R)_\\blacksquare} R((T^{-1}))/R[T][-1]$，$f^!R = R[T][1]$，基变换化成 $R((T^{-1}))/R[T]$ 的基变换）。\n\n⚠ 有限 Tor 维数是必需的：否则 $f^!R$ 不是有限复形，扭转公式失效。'
     },
     {
       id: 'prop.regular-immersion-dualizing',
@@ -139,13 +139,15 @@ window.MG = window.MG || {};
       tags: ['命题', '解析几何', '对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Proposition 11.5'],
       statement: [
-        '白话：**闭浸入（把 $\\operatorname{Spec} A$ 塞进 $\\operatorname{Spec} R$）情形下，对偶复形能算成一行**：就是「法丛的行列式」挪到余维那么多次。所谓「正则」，是说 $A$ 由 $R$ 模掉一个**正则序列**（$f_1, \\ldots, f_c$：每个 $f_i$ 都不是前面那些的零因子，像「切得干净、不打架」）得到；此时余维处处是 $c$。',
+        '白话：**闭浸入（把 $\\operatorname{Spec} A$ 塞进 $\\operatorname{Spec} R$）情形下，对偶复形能算成一行**：就是「法丛的行列式」挪到余维那么多次。\n\n' +
+        '所谓「正则」，是说 $A$ 由 $R$ 模掉一个**正则序列**（$f_1, \\ldots, f_c$：每个 $f_i$ 都不是前面那些的零因子，像「切得干净、不打架」）得到；\n\n' +
+        '此时余维处处是 $c$。',
         '',
         '设 $f : R \\to A$ 是**正则闭浸入**：$f$ 满射，核 $I$ 在 $\\operatorname{Spec} R$ 上局部由正则序列生成；并设 $\\operatorname{Spec} A \\subset \\operatorname{Spec} R$ 处处纯余维 $c$。则',
         '',
         '$$f^!R = \\operatorname{RHom}_R(A, R) \\;\\cong\\; \\det\\nolimits_A(I/I^2)^*[-c].$$'
       ].join('\n'),
-      notes: '⭐ 局部上 $A = R/(f_1, \\ldots, f_c)$（正则序列），Koszul 复形直接算出 $\\operatorname{RHom}_R(A,R) \\cong A[-c]$；$\\det(I/I^2)$ 由 $f_1 \\wedge \\cdots \\wedge f_c$ 给出基。整体化要验证与生成元选取无关。\n\n⭐ 这条 + 平坦基变换是算光滑情形的两块砖：把 $\\operatorname{Spec} A$ 嵌入仿射空间（正则闭浸入），再用对角把 $\\Omega$ 抠出来。'
+      notes: '⭐ 局部上 $A = R/(f_1, \\ldots, f_c)$（正则序列），Koszul 复形直接算出 $\\operatorname{RHom}_R(A,R) \\cong A[-c]$；\n\n$\\det(I/I^2)$ 由 $f_1 \\wedge \\cdots \\wedge f_c$ 给出基。\n\n整体化要验证与生成元选取无关。\n\n⭐ 这条 + 平坦基变换是算光滑情形的两块砖：把 $\\operatorname{Spec} A$ 嵌入仿射空间（正则闭浸入），再用对角把 $\\Omega$ 抠出来。'
     },
     {
       id: 'thm.smooth-duality',
@@ -159,7 +161,7 @@ window.MG = window.MG || {};
       statement: [
         '白话：**光滑映射情形下 $f^!R$ 是一条「扭过来的线丛」，由微分形式的行列式给出**。这就是经典几何里的**对偶丛** $\\omega_{X/Y}$（典范丛）。',
         '',
-        '这里 $\\Omega^1_{A/R}$ 是**相对 Kähler 微分模**：形式上由 $\\mathrm{d}a$（$a \\in A$）生成、模掉 Leibniz 规则 $\\mathrm{d}(ab) = a\\,\\mathrm{d}b + b\\,\\mathrm{d}a$ 与 $\\mathrm{d}r = 0$（$r \\in R$），即「$A$ 相对 $R$ 的微分形式」全体（它是 $A$-模，$\\det$ 指取它的最高外幂）。$d$ 是相对维数，公式里的 $[d]$ 表示整个复形挪到同调次数 $d$。',
+        '这里 $\\Omega^1_{A/R}$ 是**相对 Kähler 微分模**：形式上由 $\\mathrm{d}a$（$a \\in A$）生成、模掉 Leibniz 规则 $\\mathrm{d}(ab) = a\\,\\mathrm{d}b + b\\,\\mathrm{d}a$ 与 $\\mathrm{d}r = 0$（$r \\in R$），即「$A$ 相对 $R$ 的微分形式」全体（它是 $A$-模，$\\det$ 指取它的最高外幂）。\n\n$d$ 是相对维数，公式里的 $[d]$ 表示整个复形挪到同调次数 $d$。',
         '',
         '设 $f : R \\to A$ 是维数 $d$ 的光滑环映射。则存在自然同构',
         '',
@@ -168,7 +170,7 @@ window.MG = window.MG || {};
         '由于同构自然、且一切都局部定义，它整体化到任意光滑映射 $f : X \\to Y$。'
       ].join('\n'),
       notes: [
-        '⭐ 这就是**对偶复形**：光滑情形下 $f^!\\mathbf{1}_Y$ 是一条可逆层（线丛）挪到次数 $d$，由 Kähler 微分 $\\Omega^1_{A/R}$ 的行列式给出。\n\n⭐ 证明用对角：$g : A \\otimes_R A \\to A$ 是余维 $d$ 的正则闭浸入（对角 $\\Delta_f$），把 $f^!R$ 用 $g^!$ 与「$A \\otimes_R A$ 的两条分量映射」拆开，再用正则闭浸入的公式，得到',
+        '⭐ 这就是**对偶复形**：光滑情形下 $f^!\\mathbf{1}_Y$ 是一条可逆层（线丛）挪到次数 $d$，由 Kähler 微分 $\\Omega^1_{A/R}$ 的行列式给出。\n\n\n\n⭐ 证明用对角：$g : A \\otimes_R A \\to A$ 是余维 $d$ 的正则闭浸入（对角 $\\Delta_f$），把 $f^!R$ 用 $g^!$ 与「$A \\otimes_R A$ 的两条分量映射」拆开，再用正则闭浸入的公式，得到',
         '',
         '$$f^!R \\otimes f^!R \\otimes g^!(A \\otimes_R A) \\;\\cong\\; f^!R,$$',
         '',
@@ -185,7 +187,10 @@ window.MG = window.MG || {};
       tags: ['定理', '解析几何', '对偶', 'Serre 对偶'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture XI, Theorem 11.1'],
       statement: [
-        '白话：**这就是固态版的 Serre 对偶 / Poincaré 对偶 —— 一句话：「上同调上的内积非退化」**。左边是把 $C$ 与对偶复形配起来，右边是把 $C$ 推到基环再配；断言这两个内积给出同一个答案。那个「积分」的动作就是**迹映射** $f_!\\omega_{X/R}[d] \\to R$（把顶次紧支撑上同调送到基环，类比「把微分形式积分成数」）。',
+        '白话：**这就是固态版的 Serre 对偶 / Poincaré 对偶 —— 一句话：「上同调上的内积非退化」**。\n\n' +
+        '左边是把 $C$ 与对偶复形配起来，右边是把 $C$ 推到基环再配；\n\n' +
+        '断言这两个内积给出同一个答案。\n\n' +
+        '那个「积分」的动作就是**迹映射** $f_!\\omega_{X/R}[d] \\to R$（把顶次紧支撑上同调送到基环，类比「把微分形式积分成数」）。',
         '',
         '设 $f : X \\to \\operatorname{Spec} R$ 是分离、光滑、有限型、维数 $d$ 的映射，$\\omega_{X/R} = \\bigwedge^d \\Omega^1_{X/R}$。则存在典范函子',
         '',
@@ -201,7 +206,7 @@ window.MG = window.MG || {};
         '',
         '是同构。'
       ].join('\n'),
-      notes: '⭐ 这就是**固态版的 Serre 对偶 / Poincaré 对偶**：$f_!$ 是紧支撑上同调，$\\omega_{X/R}[d]$ 是对偶复形，迹映射把顶次紧支撑上同调送到基环。\n\n⭐ 「保紧对象」是**局部有限性**的版本：$f_!$ 把紧对象送到紧对象，等价于说相干上同调在紧支撑下有限。经典证明要 Chow 引理 + 消解；这里有 6-函子形式后是形式推论。\n\n⚠ 与 `thm.coherent-duality`（仿射版，Lecture VIII）的关系：那是 $f_!$ 的定义与投影公式；这里是**光滑情形**下把 $f^!$ 具体算成 $\\omega[d]$ 并给出迹映射。\n\n📌 原文 Lecture XI（pp. 71–76）。'
+      notes: '⭐ 这就是**固态版的 Serre 对偶 / Poincaré 对偶**：$f_!$ 是紧支撑上同调，$\\omega_{X/R}[d]$ 是对偶复形，迹映射把顶次紧支撑上同调送到基环。\n\n⭐ 「保紧对象」是**局部有限性**的版本：$f_!$ 把紧对象送到紧对象，等价于说相干上同调在紧支撑下有限。\n\n经典证明要 Chow 引理 + 消解；\n\n这里有 6-函子形式后是形式推论。\n\n⚠ 与 `thm.coherent-duality`（仿射版，Lecture VIII）的关系：那是 $f_!$ 的定义与投影公式；\n\n这里是**光滑情形**下把 $f^!$ 具体算成 $\\omega[d]$ 并给出迹映射。\n\n📌 原文 Lecture XI（pp. 71–76）。'
     }
   ],
 
@@ -217,7 +222,11 @@ window.MG = window.MG || {};
         '',
         '$$\\prod_I A \\otimes_{A_\\blacksquare} A[1/f]_\\blacksquare \\;\\cong\\; \\prod_I A[1/f].$$',
         '',
-        '在抽象 $A$-模里，左边是 $\\prod_I A[1/f]$ 的**子集**（$\\prod$ 与局部化不交换），一般不相等；在固态 $A$-模里，$\\prod_I A$ 是紧投射对象（`cor.solid-compact-generators`），$\\otimes_{A_\\blacksquare}$ 保它，且 $A[1/f]_\\blacksquare$ 与 $\\prod$ 相容。\n\n仿射、有限型情形由 `thm.za-analytic` 的 $j_!$ 给出；一般情形取仿射开覆盖逐步粘合。$\\blacksquare$'
+        '在抽象 $A$-模里，左边是 $\\prod_I A[1/f]$ 的**子集**（$\\prod$ 与局部化不交换），一般不相等；在固态 $A$-模里，$\\prod_I A$ 是紧投射对象（`cor.solid-compact-generators`），$\\otimes_{A_\\blacksquare}$ 保它，且 $A[1/f]_\\blacksquare$ 与 $\\prod$ 相容。\n\n' +
+        '\n\n' +
+        '仿射、有限型情形由 `thm.za-analytic` 的 $j_!$ 给出；\n\n' +
+        '一般情形取仿射开覆盖逐步粘合。\n\n' +
+        '$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -231,7 +240,13 @@ window.MG = window.MG || {};
         '',
         '$$f_! := (f_{\\mathrm{ad}/Y})_* \\circ j_!.$$',
         '',
-        '$j_!$ 存在由 `prop.open-immersion-shriek`；$(f_{\\mathrm{ad}/Y})_*$ 是正常推前。$f$ 固有时 $j$ 是同构，$f_! = (f^{\\mathrm{ad}/Y})_*$。\n\n**保直和。** $j_!$ 作为左伴随保余极限；$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。故 $f_!$ 保直和，右伴随 $f^!$ 存在。$\\blacksquare$'
+        '$j_!$ 存在由 `prop.open-immersion-shriek`；$(f_{\\mathrm{ad}/Y})_*$ 是正常推前。\n\n' +
+        '$f$ 固有时 $j$ 是同构，$f_! = (f^{\\mathrm{ad}/Y})_*$。\n\n' +
+        '\n\n' +
+        '**保直和。** $j_!$ 作为左伴随保余极限；\n\n' +
+        '$(f^{\\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。\n\n' +
+        '故 $f_!$ 保直和，右伴随 $f^!$ 存在。\n\n' +
+        '$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -291,7 +306,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $f : X \\to \\operatorname{Spec} R$ 是相对维数 $d$ 的光滑映射，$\\omega := f^! R$。',
         '',
-        '**① $f^! R$ 是可逆复形。** 先设 $X = \\mathbb{A}^1_R$。此时 $\\Omega^1_{X/R} \\cong \\mathcal{O}_X$，由 `thm.smooth-duality` 的 Koszul 计算，$f^! R \\cong \\mathcal{O}_X[d]$，即在局部化后同构于 $\\mathcal{O}_X$ 平移 $d$；一般光滑 $f$ 局部上分解为 $d$ 个 $\\mathbb{A}^1$ 的复合，$f^!$ 对复合是乘性的，故',
+        '**① $f^! R$ 是可逆复形。** 先设 $X = \\mathbb{A}^1_R$。\n\n此时 $\\Omega^1_{X/R} \\cong \\mathcal{O}_X$，由 `thm.smooth-duality` 的 Koszul 计算，$f^! R \\cong \\mathcal{O}_X[d]$，即在局部化后同构于 $\\mathcal{O}_X$ 平移 $d$；\n\n一般光滑 $f$ 局部上分解为 $d$ 个 $\\mathbb{A}^1$ 的复合，$f^!$ 对复合是乘性的，故',
         '$$\\omega = f^! R \\cong \\det\\big(\\Omega^1_{X/R}\\big)^{\\vee}[-d]$$',
         '（可逆层，集中在一个度上）。这正是 Thm 11.6 的内容。',
         '',
@@ -305,7 +320,7 @@ window.MG = window.MG || {};
         '$$\\operatorname{RHom}_{\\mathcal{O}_X}(C, \\omega)[d] \\cong \\operatorname{RHom}_R(f_! C, R)$$',
         '（同调意义下），即 $f_!$ 的左伴随与 $f^!$ 在紧对象上互为转置（Verdier 对偶）。',
         '',
-        '**④ $f_!$ 保紧对象。** 归约到 $X = \\mathbb{A}^1_R$：$f$ 局部是 $\\mathbb{A}^1$ 的复合，$f_!$ 对复合也是乘性的，故只需 $\\mathbb{A}^1$ 情形。在 $\\mathbb{A}^1$ 上，$f_!$ 由 `def.f-shriek` 的 $j_!$ 显式给出（$\\mathbb{A}^1$ 的紧化 + 补集的 $A_\\infty/A$ 形式），逐项代入即可看出它把有限生成投射复形送到有限生成投射复形。一般 $R$ 上再用 Noether 归一化把 $R$ 写成 $\\mathbb{Z}[X_1,\\ldots,X_n]$ 的有限模，逐因子做。$\\blacksquare$',
+        '**④ $f_!$ 保紧对象。** 归约到 $X = \\mathbb{A}^1_R$：$f$ 局部是 $\\mathbb{A}^1$ 的复合，$f_!$ 对复合也是乘性的，故只需 $\\mathbb{A}^1$ 情形。\n\n在 $\\mathbb{A}^1$ 上，$f_!$ 由 `def.f-shriek` 的 $j_!$ 显式给出（$\\mathbb{A}^1$ 的紧化 + 补集的 $A_\\infty/A$ 形式），逐项代入即可看出它把有限生成投射复形送到有限生成投射复形。\n\n一般 $R$ 上再用 Noether 归一化把 $R$ 写成 $\\mathbb{Z}[X_1,\\ldots,X_n]$ 的有限模，逐因子做。\n\n$\\blacksquare$',
         '',
         '**⑤ 由 ①–④ 得定理。** ① 给 $\\omega$ 可逆、② 给迹映射、③ 给对偶同构、④ 给 $f_!$ 保紧；四者合起来就是 `thm.smooth-duality` 中陈述的「光滑情形的 Poincaré 对偶」。$\\blacksquare$',
         '',

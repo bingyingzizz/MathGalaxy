@@ -11,6 +11,10 @@ $$s'(t) = \lVert\gamma'(t)\rVert > 0 .$$
 
 $$\tilde\gamma'(s) = \gamma'(h(s))\,h'(s),\qquad \lVert\tilde\gamma'(s)\rVert = \lVert\gamma'(h(s))\rVert\cdot\frac{1}{\lVert\gamma'(h(s))\rVert} = 1 ,$$
 
-所以 $\tilde\gamma$ 是弧长参数化。**长度不变**：换元 $t = h(s)$ 给出 $\int_{a}^{b}\lVert\gamma'(t)\rVert\,\mathrm{d}t = \int_{0}^{L}\lVert\tilde\gamma'(s)\rVert\,\mathrm{d}s = L$。∎
+所以 $\tilde\gamma$ 是弧长参数化。
+
+**长度不变**：换元 $t = h(s)$ 给出 $\int_{a}^{b}\lVert\gamma'(t)\rVert\,\mathrm{d}t = \int_{0}^{L}\lVert\tilde\gamma'(s)\rVert\,\mathrm{d}s = L$。
+
+∎
 
 > 续见 proofs/imp.tu-arclength.2.md

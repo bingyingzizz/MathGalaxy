@@ -49,7 +49,9 @@ window.MG = window.MG || {};
         '',
         '$$M \\otimes_{R} N := F / K, \\qquad m \\otimes n := [\\,(m, n)\\,].$$',
         '',
-        '它的元素是纯张量 $m \\otimes n$ 的**有限和** $\\sum_{i} m_{i} \\otimes n_{i}$。像满足两条双加性关系与一条**平衡**关系 $m r \\otimes n = m \\otimes r n$；并且对每个**平衡双加性**映射 $B : M \\times N \\to P$（$P$ 是阿贝尔群），存在**唯一**的群同态',
+        '它的元素是纯张量 $m \\otimes n$ 的**有限和** $\\sum_{i} m_{i} \\otimes n_{i}$。\n\n' +
+        '像满足两条双加性关系与一条**平衡**关系 $m r \\otimes n = m \\otimes r n$；\n\n' +
+        '并且对每个**平衡双加性**映射 $B : M \\times N \\to P$（$P$ 是阿贝尔群），存在**唯一**的群同态',
         '',
         '$$\\widetilde{B} : M \\otimes_{R} N \\longrightarrow P, \\qquad \\widetilde{B}(m \\otimes n) = B(m, n).$$',
         '',
@@ -88,7 +90,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ 由 2、3 立刻得到：$(-) \\otimes_{R} N$ **保余极限**（直和、余核、滤过余极限）。这一条同时解释了「右正合」（保余核）与「保直和」，是后面 `prop.tensor-right-exact` 与 `prop.free-flat` 的共同根。',
-        '⚠️ 一般**不保**极限：$\\otimes$ 不保核。$0 \\to \\mathbb{Z} \\xrightarrow{\\;2\\;} \\mathbb{Z}$ 是正合列，取 $N = \\mathbb{Q}$ 张量后仍正合（乘 $2$ 在 $\\mathbb{Q}$ 上仍然单），但取 $N = \\mathbb{Z}/2$ 张量后乘 $2$ 变成零映射，核冒出来了（见 `prop.tensor-right-exact`）。它也不保无限积。',
+        '⚠️ 一般**不保**极限：$\\otimes$ 不保核。\n\n$0 \\to \\mathbb{Z} \\xrightarrow{\\;2\\;} \\mathbb{Z}$ 是正合列，取 $N = \\mathbb{Q}$ 张量后仍正合（乘 $2$ 在 $\\mathbb{Q}$ 上仍然单），但取 $N = \\mathbb{Z}/2$ 张量后乘 $2$ 变成零映射，核冒出来了（见 `prop.tensor-right-exact`）。\n\n它也不保无限积。',
         '📌 结合律 4 在交换环上的常见样子：$(M \\otimes_{R} N) \\otimes_{R} P \\cong M \\otimes_{R} N \\otimes_{R} P$，于是可以不加括号地写多重张量积。'
       ].join('\n\n'),
       refs: [
@@ -115,7 +117,7 @@ window.MG = window.MG || {};
         '$$(-) \\otimes_{R} N \\;\\dashv\\; \\operatorname{Hom}_{R}(N, -).$$'
       ].join('\n'),
       notes: [
-        '**证明（显式写映射）**：记 $\\Phi(f) := \\bigl(m \\mapsto (n \\mapsto f(m \\otimes n))\\bigr)$。反向 $\\Psi(g) := \\bigl(m \\otimes n \\mapsto g(m)(n)\\bigr)$：因为 $(m, n) \\mapsto g(m)(n)$ 是平衡双加性的，由 `def.tensor-module` 的万有性质它唯一地给出 $\\Psi(g)$。$\\Phi \\Psi$ 与 $\\Psi \\Phi$ 在纯张量（或 $M$ 的生成元）上是恒等，而生成元张成整个模，故互逆。自然性：$\\Phi$ 的公式里没有任何选取，只用到 $\\otimes$ 与复合。∎',
+        '**证明（显式写映射）**：记 $\\Phi(f) := \\bigl(m \\mapsto (n \\mapsto f(m \\otimes n))\\bigr)$。\n\n反向 $\\Psi(g) := \\bigl(m \\otimes n \\mapsto g(m)(n)\\bigr)$：因为 $(m, n) \\mapsto g(m)(n)$ 是平衡双加性的，由 `def.tensor-module` 的万有性质它唯一地给出 $\\Psi(g)$。\n\n$\\Phi \\Psi$ 与 $\\Psi \\Phi$ 在纯张量（或 $M$ 的生成元）上是恒等，而生成元张成整个模，故互逆。\n\n自然性：$\\Phi$ 的公式里没有任何选取，只用到 $\\otimes$ 与复合。\n\n∎',
         '⭐ 这就是**curry 化**：两个变元的东西，与「取值在函数空间里」的一个变元的东西，是同一件事。',
         '**两条推论立刻可用**：$(-) \\otimes_{R} N$ 是左伴随，故**保余极限**（右正合、保直和、保滤过余极限）；$\\operatorname{Hom}_{R}(N, -)$ 是右伴随，故**保极限**（左正合、保积）。',
         '📌 非交换版本：$M$ 右 $R$-模、$N$ 左 $R$-模、$P$ 为阿贝尔群时，同一条同构改写成',
@@ -147,7 +149,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**读法**：元素一个没动，只是「哪些标量算数」变小了。取 $R = \\mathbb{Z}$、$f$ 为唯一同态时，$f_{\\ast}P$ 就是 $P$ 的加法群 —— 所以「每个模都是阿贝尔群」是标量限制的特例。',
-        '**忠实但一般不全**：$S$-线性蕴含 $R$-线性，故 $\\operatorname{Hom}_{S}(P, Q) \\subseteq \\operatorname{Hom}_{R}(f_{\\ast}P, f_{\\ast}Q)$；反向不成立。例：$\\mathbb{Z} \\to \\mathbb{C}$ 时，共轭 $z \\mapsto \\bar{z}$ 是 $\\mathbb{Z}$-线性的却不是 $\\mathbb{C}$-线性的。',
+        '**忠实但一般不全**：$S$-线性蕴含 $R$-线性，故 $\\operatorname{Hom}_{S}(P, Q) \\subseteq \\operatorname{Hom}_{R}(f_{\\ast}P, f_{\\ast}Q)$；\n\n反向不成立。\n\n例：$\\mathbb{Z} \\to \\mathbb{C}$ 时，共轭 $z \\mapsto \\bar{z}$ 是 $\\mathbb{Z}$-线性的却不是 $\\mathbb{C}$-线性的。',
         '⭐ **正合**：核与余核在标量限制下逐点计算（底层加法群不变），所以 $f_{\\ast}$ 保核、保余核，是正合函子。这与它是右伴随（`prop.scalar-extension-adjunction`）给出的结论一致，但这里比那更直接。',
         '📌 反方向的函子是把 $R$-模做成 $S$-模的**标量扩张** `def.scalar-extension`；那一个才是左伴随。'
       ].join('\n\n'),
@@ -212,8 +214,8 @@ window.MG = window.MG || {};
         '单位 $\\eta_{M} : M \\to f_{\\ast}(S \\otimes_{R} M)$、$m \\mapsto 1 \\otimes m$；余单位 $\\varepsilon_{P} : S \\otimes_{R} f_{\\ast} P \\to P$、$s \\otimes p \\mapsto s p$。'
       ].join('\n'),
       notes: [
-        '**证明**：$S$-线性映射 $g : S \\otimes_{R} M \\to P$ 首先是 $R$-线性映射，于是被 $m \\mapsto g(1 \\otimes m)$ 决定（因为 $s \\otimes m = s(1 \\otimes m)$）；反过来，给定 $R$-线性 $\\varphi : M \\to P$，$S$-平衡式 $(s, m) \\mapsto s \\varphi(m)$ 良定义，由万有性质唯一给出 $S$-线性映射 $S \\otimes_{R} M \\to P$。两个方向互逆，公式里没有选取，故自然 ✓。',
-        '三角恒等式：$\\varepsilon_{S \\otimes M} \\circ (S \\otimes \\eta_{M}) = \\mathrm{id}$ 与 $f_{\\ast}\\varepsilon_{P} \\circ \\eta_{f_{\\ast}P} = \\mathrm{id}$ 在纯张量（或 $M$ 的元素）上验证，再线性延拓 ✓。∎',
+        '**证明**：$S$-线性映射 $g : S \\otimes_{R} M \\to P$ 首先是 $R$-线性映射，于是被 $m \\mapsto g(1 \\otimes m)$ 决定（因为 $s \\otimes m = s(1 \\otimes m)$）；\n\n反过来，给定 $R$-线性 $\\varphi : M \\to P$，$S$-平衡式 $(s, m) \\mapsto s \\varphi(m)$ 良定义，由万有性质唯一给出 $S$-线性映射 $S \\otimes_{R} M \\to P$。\n\n两个方向互逆，公式里没有选取，故自然 ✓。',
+        '三角恒等式：$\\varepsilon_{S \\otimes M} \\circ (S \\otimes \\eta_{M}) = \\mathrm{id}$ 与 $f_{\\ast}\\varepsilon_{P} \\circ \\eta_{f_{\\ast}P} = \\mathrm{id}$ 在纯张量（或 $M$ 的元素）上验证，再线性延拓 ✓。\n\n∎',
         '⭐ **「最自由」的精确含义**：任何把 $M$ 送进某个 $S$-模、且与 $R$-作用相容的映射，都唯一地穿过 $1 \\otimes -$。所以 $S \\otimes_{R} M$ 是「$M$ 在 $S$-模范畴里的像」的标准答案。',
         '**立刻可得**：$S \\otimes_{R} -$ 右正合、保余极限（左伴随）；$f_{\\ast}$ 左正合（右伴随），实际上正合。'
       ].join('\n\n'),
@@ -242,8 +244,8 @@ window.MG = window.MG || {};
         '$$(s \\otimes t) \\cdot (m \\otimes n) := s m \\otimes t n .$$'
       ].join('\n'),
       notes: [
-        '**证明（1）**：$s \\mapsto s \\otimes 1$、$t \\mapsto 1 \\otimes t$ 给出余锥。给余锥 $(\\alpha : S \\to U,\\ \\beta : T \\to U)$，映射 $(s, t) \\mapsto \\alpha(s)\\beta(t)$ 是 $R$-平衡的（这一步用**交换性**：$sr \\otimes t$ 与 $s \\otimes rt$ 给出同一个值），故由万有性质唯一给出 $R$-模映射 $S \\otimes_{R} T \\to U$；交换性又保证它保乘法，所以是代数同态。唯一性由纯张量生成全体给出 ✓。（2）（3）都由同一个平衡双线性表示给出，逐条验证公理 ✓。∎',
-        '⭐ **几何含义**：$\\operatorname{Spec}(S \\otimes_{R} T) \\cong \\operatorname{Spec} S \\times_{\\operatorname{Spec} R} \\operatorname{Spec} T$。环的**推出**对应概形的**纤维积** —— 概形论里所有「基变换」都在用这一条。',
+        '**证明（1）**：$s \\mapsto s \\otimes 1$、$t \\mapsto 1 \\otimes t$ 给出余锥。\n\n给余锥 $(\\alpha : S \\to U,\\ \\beta : T \\to U)$，映射 $(s, t) \\mapsto \\alpha(s)\\beta(t)$ 是 $R$-平衡的（这一步用**交换性**：$sr \\otimes t$ 与 $s \\otimes rt$ 给出同一个值），故由万有性质唯一给出 $R$-模映射 $S \\otimes_{R} T \\to U$；\n\n交换性又保证它保乘法，所以是代数同态。\n\n唯一性由纯张量生成全体给出 ✓。\n\n（2）（3）都由同一个平衡双线性表示给出，逐条验证公理 ✓。\n\n∎',
+        '⭐ **几何含义**：$\\operatorname{Spec}(S \\otimes_{R} T) \\cong \\operatorname{Spec} S \\times_{\\operatorname{Spec} R} \\operatorname{Spec} T$。\n\n环的**推出**对应概形的**纤维积** —— 概形论里所有「基变换」都在用这一条。',
         '⚠️ 交换性不能省：定义乘法 $(s \\otimes t)(s_{1} \\otimes t_{1}) = s s_{1} \\otimes t t_{1}$ 要先把中间因子搬动，非交换环上搬不动，只能得到别的构造（还得多加关系）。',
         '📌 与 `prop.scalar-extension-adjunction` 合起来看：环的推出 = 模范畴里换环的复合，这是「换环是函子」的范畴化说法。'
       ].join('\n\n'),
@@ -279,8 +281,8 @@ window.MG = window.MG || {};
         '（右端那个 $\\to 0$ 永远正合；缺的只有左端的 $0$。）'
       ].join('\n'),
       notes: [
-        '**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{R}(N, -)$。左伴随保所有余极限，而余核是两项图的余极限，故 $(-) \\otimes N$ 保余核 —— 对加法函子来说「保余核」正是「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」✓。',
-        '**直接算也行**：$g$ 满蕴含 $g \\otimes 1$ 满（每个 $m_{2} \\otimes n$ 有原像 $m \\otimes n$）；核：由 $\\ker g = \\operatorname{im} f$，满足 $g(m) = 0$ 的 $m$ 可写 $f(m_{1})$，于是纯张量 $m \\otimes n = (f \\otimes 1)(m_{1} \\otimes n)$，一般元素按双加性拆开即得 $\\ker(g \\otimes 1) \\subseteq \\operatorname{im}(f \\otimes 1)$；反向由 $g f = 0$ ✓。',
+        '**证明（伴随路线，最快）**：由 `thm.hom-tensor-adjunction-mod`，$(-) \\otimes_{R} N \\dashv \\operatorname{Hom}_{R}(N, -)$。\n\n左伴随保所有余极限，而余核是两项图的余极限，故 $(-) \\otimes N$ 保余核 —— 对加法函子来说「保余核」正是「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」✓。',
+        '**直接算也行**：$g$ 满蕴含 $g \\otimes 1$ 满（每个 $m_{2} \\otimes n$ 有原像 $m \\otimes n$）；核：由 $\\ker g = \\operatorname{im} f$，满足 $g(m) = 0$ 的 $m$ 可写 $f(m_{1})$，于是纯张量 $m \\otimes n = (f \\otimes 1)(m_{1} \\otimes n)$，一般元素按双加性拆开即得 $\\ker(g \\otimes 1) \\subseteq \\operatorname{im}(f \\otimes 1)$；\n\n反向由 $g f = 0$ ✓。',
         '⚠️ **左端会丢**：$0 \\to \\mathbb{Z} \\xrightarrow{\\;2\\;} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$ 张量 $N = \\mathbb{Z}/2$ 之后，$\\mathbb{Z} \\otimes \\mathbb{Z}/2 \\xrightarrow{\\;2\\;} \\mathbb{Z} \\otimes \\mathbb{Z}/2$ 是零映射，不再单射。',
         '⭐ 于是「右正合」是白送的、**左正合才是性质**，而那个性质的名字就叫平坦。丢掉的左端不是凭空消失：它是 $\\operatorname{Tor}_{1}^{R}(M_{2}, N)$（见 `prop.flat-equivalences`）。'
       ].join('\n\n'),
@@ -391,9 +393,9 @@ window.MG = window.MG || {};
         '反之，若 $R$ 是**主理想整环**，则无挠 $\\iff$ 平坦。一般整环上「无挠」严格弱于「平坦」。'
       ].join('\n'),
       notes: [
-        '**证明（正方向）**：取 $0 \\ne r \\in R$。$R$ 是整环，$r$ 不是零因子，故 $0 \\to R \\xrightarrow{\\;\\cdot r\\;} R$ 正合（核为零）。$M$ 平坦，把这个列张量掉，得正合列 $0 \\to M \\xrightarrow{\\;\\cdot r\\;} M$ —— 即乘 $r$ 单射 ✓。',
+        '**证明（正方向）**：取 $0 \\ne r \\in R$。\n\n$R$ 是整环，$r$ 不是零因子，故 $0 \\to R \\xrightarrow{\\;\\cdot r\\;} R$ 正合（核为零）。\n\n$M$ 平坦，把这个列张量掉，得正合列 $0 \\to M \\xrightarrow{\\;\\cdot r\\;} M$ —— 即乘 $r$ 单射 ✓。',
         '**主理想整环上的反向**：无挠模的有限生成子模是自由模（PID 上有限生成无挠即自由），而 $M$ 是它的有限生成子模的滤过余极限；自由模平坦、平坦模的滤过余极限平坦（$(-)\\otimes$ 保滤过余极限），故 $M$ 平坦 ✓。',
-        '⚠️ **一般整环上反向失败**：取 $R = k[x, y]$、$I = (x, y)$。$I$ 是 $R$ 的理想，作为 $R$-模显然无挠；但它不平坦 —— $x, y$ 是正则序列，Koszul 复形的正合性给出 $x \\otimes y - y \\otimes x \\ne 0$（在 $I \\otimes_{R} I$ 里），而它在 $I \\otimes I \\to I$ 下的像是 $xy - yx = 0$，故乘法映射不单。',
+        '⚠️ **一般整环上反向失败**：取 $R = k[x, y]$、$I = (x, y)$。\n\n$I$ 是 $R$ 的理想，作为 $R$-模显然无挠；但它不平坦 —— $x, y$ 是正则序列，Koszul 复形的正合性给出 $x \\otimes y - y \\otimes x \\ne 0$（在 $I \\otimes_{R} I$ 里），而它在 $I \\otimes I \\to I$ 下的像是 $xy - yx = 0$，故乘法映射不单。',
         '📌 一句话：**「无挠」是逐理想的除法性质，「平坦」要求对理想整体成立**。整环上后者强于前者，PID 上两者合成一条。'
       ].join('\n\n'),
       refs: [
@@ -423,7 +425,7 @@ window.MG = window.MG || {};
         '**为什么这是强化**：平坦的定义要对**一切**单射检验；`prop.flat-equivalences` 第 4 条已经把它压到「理想」；Lambek 再压到「**有限生成**理想」—— 后者常常是可数的一批，能逐个算。',
         '**证明（反方向，三步）**：',
         '**第一步（化到有限生成）**：$M$ 是它的有限生成子模的滤过余极限，$(-)\\otimes N$ 保滤过余极限，而单射在滤过余极限下封闭，故只需对有限生成的 $M$ 验证。',
-        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M$，令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$。把两个列各自张量后比较，「$K \\otimes M \\to R^{n} \\otimes M$ 单」蕴含「$M_{1} \\otimes M \\to M \\otimes M$ 单」（蛇引理）。于是只需证：对每个**有限生成**子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
+        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M$，令 $K$ 是 $M_{1}$ 的原像，得短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$。\n\n把两个列各自张量后比较，「$K \\otimes M \\to R^{n} \\otimes M$ 单」蕴含「$M_{1} \\otimes M \\to M \\otimes M$ 单」（蛇引理）。\n\n于是只需证：对每个**有限生成**子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
         '**第三步（对 $n$ 归纳）**：$n = 1$ 时 $K$ 就是有限生成右理想，正是假设。$n > 1$ 时写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} := K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则有短正合列',
         '$$0 \\to K_{1} \\to K \\to K_{2} \\to 0, \\qquad 0 \\to R^{n-1} \\to R^{n} \\to R \\to 0 .$$',
         '张量后得到 $3 \\times 3$ 图：左右两列的竖直映射按归纳假设与 $n = 1$ 情形是单射，于是由蛇引理中间那一列也单射 ✓。∎',
@@ -451,8 +453,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**平坦**：$\\mathbb{Z}$ 是主理想整环、$\\mathbb{Q}$ 无挠，由 `prop.flat-domain-torsionfree` 的反向得平坦；也可以直接用 Lambek：理想 $(n)$ 上 $n \\cdot : \\mathbb{Q} \\to \\mathbb{Q}$ 是单射（在 $\\mathbb{Q}$ 里除法随便做）✓。',
-        '**不投射**：假设 $\\mathbb{Q}$ 投射，取满射 $F = \\bigoplus_{i \\in I} \\mathbb{Z} \\twoheadrightarrow \\mathbb{Q}$，投射性给出截面，于是 $\\mathbb{Q}$ 是 $F$ 的直和项、特别地是 $F$ 的**子群**。但 $F$ 没有非平凡可除子群：$F$ 的元素只有有限多个非零坐标，$n$ 倍映射逐坐标作用，若 $x$ 能被任意 $n$ 整除则每个坐标都被任意 $n$ 整除，而 $\\mathbb{Z}$ 中只有 $0$ 如此，故 $x = 0$。与 $\\mathbb{Q} \\ne 0$ 矛盾 ✓。',
-        '**另一条路**：$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, \\mathbb{Z}) = 0$（任何同态把可除性变成「$\\mathbb{Z}$ 里的数能被任意 $n$ 整除」，只能是 $0$）。若 $\\mathbb{Q}$ 投射，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, -)$ 会把满射 $F \\twoheadrightarrow \\mathbb{Q}$ 送到满射 $\\operatorname{Hom}(\\mathbb{Q}, F) \\to \\operatorname{Hom}(\\mathbb{Q}, \\mathbb{Q})$，左边为 $0$、右边含 $\\mathrm{id}$，矛盾 ✓。',
+        '**不投射**：假设 $\\mathbb{Q}$ 投射，取满射 $F = \\bigoplus_{i \\in I} \\mathbb{Z} \\twoheadrightarrow \\mathbb{Q}$，投射性给出截面，于是 $\\mathbb{Q}$ 是 $F$ 的直和项、特别地是 $F$ 的**子群**。\n\n但 $F$ 没有非平凡可除子群：$F$ 的元素只有有限多个非零坐标，$n$ 倍映射逐坐标作用，若 $x$ 能被任意 $n$ 整除则每个坐标都被任意 $n$ 整除，而 $\\mathbb{Z}$ 中只有 $0$ 如此，故 $x = 0$。\n\n与 $\\mathbb{Q} \\ne 0$ 矛盾 ✓。',
+        '**另一条路**：$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, \\mathbb{Z}) = 0$（任何同态把可除性变成「$\\mathbb{Z}$ 里的数能被任意 $n$ 整除」，只能是 $0$）。\n\n若 $\\mathbb{Q}$ 投射，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, -)$ 会把满射 $F \\twoheadrightarrow \\mathbb{Q}$ 送到满射 $\\operatorname{Hom}(\\mathbb{Q}, F) \\to \\operatorname{Hom}(\\mathbb{Q}, \\mathbb{Q})$，左边为 $0$、右边含 $\\mathrm{id}$，矛盾 ✓。',
         '⭐ **意义**：平坦与投射的差正是「消解能短到多短」的差 —— 平坦维数 $0$ 与投射维数 $0$ 是两件事，两者的差由整体维数衡量。'
       ].join('\n\n'),
       refs: [
@@ -540,11 +542,11 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**必要性**：$J \\rightarrowtail R$ 本身就是单射，内射性直接给出延拓 $R \\to I$ ✓。',
-        '**充分性**：给定单射 $A \\subseteq B$ 与 $f : A \\to I$。考虑所有延拓对 $(A_{1}, f_{1})$（$A \\subseteq A_{1} \\subseteq B$、$f_{1}$ 在 $A$ 上与 $f$ 一致），按「定义域更大」排序。一条链的并仍是延拓，故由 **Zorn 引理** 存在极大元 $(A_{1}, f_{1})$。',
+        '**充分性**：给定单射 $A \\subseteq B$ 与 $f : A \\to I$。\n\n考虑所有延拓对 $(A_{1}, f_{1})$（$A \\subseteq A_{1} \\subseteq B$、$f_{1}$ 在 $A$ 上与 $f$ 一致），按「定义域更大」排序。\n\n一条链的并仍是延拓，故由 **Zorn 引理** 存在极大元 $(A_{1}, f_{1})$。',
         '若 $A_{1} \\ne B$，取 $b \\in B \\setminus A_{1}$，令',
         '$$J := \\{\\, r \\in R : r b \\in A_{1} \\,\\}, \\qquad h : J \\to I, \\quad h(r) := f_{1}(r b).$$',
         '$J$ 是左理想、$h$ 是 $R$-线性的。由假设，存在 $x \\in I$ 使 $h(r) = r x$（$\\forall r \\in J$）。定义 $f_{2}(a + r b) := f_{1}(a) + r x$。',
-        '**良定义**：若 $a + r b = a_{1} + r_{1} b$，则 $(r - r_{1}) b = a_{1} - a \\in A_{1}$，故 $r - r_{1} \\in J$，于是 $f_{1}((r - r_{1})b) = f_{1}(a_{1} - a)$，即 $f_{1}(a) + r x = f_{1}(a_{1}) + r_{1} x$ ✓。这与极大性矛盾，故 $A_{1} = B$ ✓。∎',
+        '**良定义**：若 $a + r b = a_{1} + r_{1} b$，则 $(r - r_{1}) b = a_{1} - a \\in A_{1}$，故 $r - r_{1} \\in J$，于是 $f_{1}((r - r_{1})b) = f_{1}(a_{1} - a)$，即 $f_{1}(a) + r x = f_{1}(a_{1}) + r_{1} x$ ✓。\n\n这与极大性矛盾，故 $A_{1} = B$ ✓。\n\n∎',
         '⭐ **意义**：把「对一切单射检验」压成「对 $R$ 的理想检验」，而理想是 $R$ 的子集、通常少得多。这一步是把范畴条件翻译成环上条件的关键，后面 `thm.pid-injective-divisible` 全靠它。',
         '⚠️ 判据里的「理想」不能换成「有限生成理想」：平坦有 Lambek 定理可以只查有限生成理想，内射**没有**这样的对偶弱化（除非环是 Noether 的）。'
       ].join('\n\n'),
@@ -599,7 +601,11 @@ window.MG = window.MG || {};
         '特别地：$\\mathbb{Z}$-模内射当且仅当它是可除群。'
       ].join('\n'),
       notes: [
-        '**可除 $\\implies$ 内射**（用 Baer 判据）：设 $J \\subseteq R$ 是理想，$f : J \\to I$。主理想整环里 $J = (a)$。若 $a = 0$ 则 $J = 0$，取 $x = 0$；若 $a \\ne 0$，记 $y := f(a)$，由可除性取 $x \\in I$ 使 $a x = y$。于是对 $r a \\in J$ 有 $f(r a) = r f(a) = r a x = (r a) x$ ✓，即 $f$ 由「乘 $x$」给出。',
+        '**可除 $\\implies$ 内射**（用 Baer 判据）：设 $J \\subseteq R$ 是理想，$f : J \\to I$。\n\n' +
+        '主理想整环里 $J = (a)$。\n\n' +
+        '若 $a = 0$ 则 $J = 0$，取 $x = 0$；\n\n' +
+        '若 $a \\ne 0$，记 $y := f(a)$，由可除性取 $x \\in I$ 使 $a x = y$。\n\n' +
+        '于是对 $r a \\in J$ 有 $f(r a) = r f(a) = r a x = (r a) x$ ✓，即 $f$ 由「乘 $x$」给出。',
         '**内射 $\\implies$ 可除**：设 $a \\ne 0$、$y \\in I$。把 Baer 判据用在理想 $(a)$ 与映射 $a \\mapsto y$ 上，得 $x$ 使 $a x = y$ ✓。',
         '$\\mathbb{Z}$ 的情形就是 $R = \\mathbb{Z}$（主理想整环），此时 $R$-模即阿贝尔群（`prop.zmod-is-ab`）✓。',
         '⭐ 一句话记住：**「除以 $a$」就是「沿 $(a) \\rightarrowtail R$ 延拓」**。主理想整环上理想结构最简单，Baer 判据就退化成一道除法题。'
@@ -624,9 +630,9 @@ window.MG = window.MG || {};
         '（同一条论证对任意环上的可除模成立；在 $\\mathbb{Z}$ 上「可除」即「内射」，所以这同时说明 $\\mathbb{Z}$-模里内射对象的商仍内射。）'
       ].join('\n'),
       notes: [
-        '**证明**：记 $\\pi : D \\to D/H$。给定 $\\bar{x} \\in D/H$ 与 $n \\ne 0$，取代表 $x$；由 $D$ 可除取 $y$ 使 $n y = x$；则 $n \\bar{y} = \\overline{n y} = \\bar{x}$ ✓。所以 $n \\cdot$ 在 $D/H$ 上满，$D/H$ 可除 ✓。∎',
+        '**证明**：记 $\\pi : D \\to D/H$。\n\n给定 $\\bar{x} \\in D/H$ 与 $n \\ne 0$，取代表 $x$；由 $D$ 可除取 $y$ 使 $n y = x$；则 $n \\bar{y} = \\overline{n y} = \\bar{x}$ ✓。\n\n所以 $n \\cdot$ 在 $D/H$ 上满，$D/H$ 可除 ✓。\n\n∎',
         '⚠️ 只对**商**成立：可除群的子群不必可除（$\\mathbb{Z} \\subseteq \\mathbb{Q}$：$\\mathbb{Q}$ 可除，$\\mathbb{Z}$ 不可除）。',
-        '⭐ 两条对照：在 $\\mathbb{Z}$-模里，内射对象的**商**仍内射（本条），而它的**子模**不必（$\\mathbb{Z} \\subseteq \\mathbb{Q}$）。投射模则两头都不省心：它的商（$\\mathbb{Z}/2$ 之于 $\\mathbb{Z}$）与子模（理想 $(x, y) \\subseteq k[x, y]$）都可以不投射。',
+        '⭐ 两条对照：在 $\\mathbb{Z}$-模里，内射对象的**商**仍内射（本条），而它的**子模**不必（$\\mathbb{Z} \\subseteq \\mathbb{Q}$）。\n\n投射模则两头都不省心：它的商（$\\mathbb{Z}/2$ 之于 $\\mathbb{Z}$）与子模（理想 $(x, y) \\subseteq k[x, y]$）都可以不投射。',
         '📌 一般环上要小心：可除性对商总是封闭的（逐元素论证），但「内射」对商封闭只在 $\\mathbb{Z}$ 这类主理想整环上由「可除即内射」推得，不能当成普遍事实。'
       ].join('\n\n'),
       refs: [
@@ -654,8 +660,10 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**Prüfer 群的余极限**：沿「乘 $p$」的映射 $\\mathbb{Z}/p^{k} \\to \\mathbb{Z}/p^{k+1}$ 取余极限。所以对每个元素都能无限次除以 $p$ —— 这正是可除性。',
-        '**为什么 $\\mathbb{Q}/\\mathbb{Z}$ 重要**：它是同调代数的标准对偶对象。$\\operatorname{Hom}_{\\mathbb{Z}}(-, \\mathbb{Q}/\\mathbb{Z})$ 是**特征标群**（Pontryagin 对偶的代数版），有限群上它就是 $(-)^{\\vee}$；它同时是 `thm.mod-enough-injectives` 里把任意模嵌进内射模的那块砖。',
-        '📌 结构上：$\\mathbb{Q}/\\mathbb{Z} \\cong \\bigoplus_{p}\\bigl(\\mathbb{Z}[1/p]/\\mathbb{Z}\\bigr)$。一个元素只被**有限多个**素数整除，所以是直和而不是直积；$\\mathbb{Q}/\\mathbb{Z}$ 是挠群 —— 可见「可除」与「挠」并不冲突（冲突的是「可除」与「无挠且非零自由」）。',
+        '**为什么 $\\mathbb{Q}/\\mathbb{Z}$ 重要**：它是同调代数的标准对偶对象。\n\n$\\operatorname{Hom}_{\\mathbb{Z}}(-, \\mathbb{Q}/\\mathbb{Z})$ 是**特征标群**（Pontryagin 对偶的代数版），有限群上它就是 $(-)^{\\vee}$；\n\n它同时是 `thm.mod-enough-injectives` 里把任意模嵌进内射模的那块砖。',
+        '📌 结构上：$\\mathbb{Q}/\\mathbb{Z} \\cong \\bigoplus_{p}\\bigl(\\mathbb{Z}[1/p]/\\mathbb{Z}\\bigr)$。\n\n' +
+        '一个元素只被**有限多个**素数整除，所以是直和而不是直积；\n\n' +
+        '$\\mathbb{Q}/\\mathbb{Z}$ 是挠群 —— 可见「可除」与「挠」并不冲突（冲突的是「可除」与「无挠且非零自由」）。',
         '⚠️ $\\mathbb{Q}$ 与 $\\mathbb{Q}/\\mathbb{Z}$ 虽然都内射，但一个无挠、一个全是挠，所以「内射」并不控制挠性。'
       ].join('\n\n'),
       refs: [
@@ -678,7 +686,7 @@ window.MG = window.MG || {};
         '1. $\\mathbb{Q}/\\mathbb{Z}$ 是内射 $\\mathbb{Z}$-模（可除，`thm.pid-injective-divisible`），且是**余生成元**：求值映射',
         '$$A \\longrightarrow \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(\\operatorname{Hom}_{\\mathbb{Z}}(A, \\mathbb{Q}/\\mathbb{Z}),\\ \\mathbb{Q}/\\mathbb{Z}\\bigr)$$',
         '对每个阿贝尔群 $A$ 都是单射。',
-        '2. 对左 $R$-模 $M$，先有单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$、$m \\mapsto (r \\mapsto r m)$；取内射 $\\mathbb{Z}$-模 $E$ 与单射 $M \\hookrightarrow E$（第 1 步给出 $E = M^{\\vee\\vee}$），得 $R$-模单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E)$。',
+        '2. 对左 $R$-模 $M$，先有单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$、$m \\mapsto (r \\mapsto r m)$；\n\n取内射 $\\mathbb{Z}$-模 $E$ 与单射 $M \\hookrightarrow E$（第 1 步给出 $E = M^{\\vee\\vee}$），得 $R$-模单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E)$。',
         '3. $\\operatorname{Hom}_{\\mathbb{Z}}(R, E)$ 是**内射** $R$-模。',
         '',
         '于是每个模都有**内射消解** $0 \\to M \\to I^{0} \\to I^{1} \\to \\cdots$。'
@@ -827,7 +835,7 @@ window.MG = window.MG || {};
         '',
         '**双函子**：给定 $f : M \\to M_{1}$、$g : N \\to N_{1}$，$(m, n) \\mapsto f(m) \\otimes g(n)$ 平衡双加性，唯一给出 $f \\otimes g$；加法性由 $\\otimes$ 的双加性直接得到 ✓。',
         '',
-        '**与直和交换**：投影 $\\bigoplus_{i} M_{i} \\to M_{i_{0}}$ 给出 $\\varphi : (\\bigoplus_{i} M_{i}) \\otimes N \\to \\bigoplus_{i}(M_{i} \\otimes N)$；含入 $M_{i} \\otimes N \\to (\\bigoplus_{i} M_{i}) \\otimes N$ 给出反向的 $\\psi$。两者在纯张量上互逆，故互为逆同构 ✓。',
+        '**与直和交换**：投影 $\\bigoplus_{i} M_{i} \\to M_{i_{0}}$ 给出 $\\varphi : (\\bigoplus_{i} M_{i}) \\otimes N \\to \\bigoplus_{i}(M_{i} \\otimes N)$；\n\n含入 $M_{i} \\otimes N \\to (\\bigoplus_{i} M_{i}) \\otimes N$ 给出反向的 $\\psi$。\n\n两者在纯张量上互逆，故互为逆同构 ✓。',
         '',
         '**单位**：$r \\otimes n \\mapsto r n$ 有反向 $n \\mapsto 1 \\otimes n$，且 $r \\otimes n = (1 \\cdot r) \\otimes n = 1 \\otimes r n$ 由平衡关系成立，故 $R \\otimes_{R} N \\cong N$ ✓。',
         '',
@@ -846,7 +854,7 @@ window.MG = window.MG || {};
       proof: [
         '**万有性质给出一半**：$\\operatorname{Hom}_{R}(M \\otimes_{R} N, P)$ 与「平衡双加性映射 $M \\times N \\to P$」的全体一一对应。',
         '',
-        '**curry 化给出另一半**：平衡双加性映射 $B : M \\times N \\to P$ 与「线性映射 $M \\to \\operatorname{Hom}_{R}(N, P)$」一一对应 —— 给定 $B$，$m \\mapsto B(m, -)$ 线性；给定 $g$，$(m, n) \\mapsto g(m)(n)$ 平衡双加性。两个方向明显互逆 ✓。',
+        '**curry 化给出另一半**：平衡双加性映射 $B : M \\times N \\to P$ 与「线性映射 $M \\to \\operatorname{Hom}_{R}(N, P)$」一一对应 —— 给定 $B$，$m \\mapsto B(m, -)$ 线性；\n\n给定 $g$，$(m, n) \\mapsto g(m)(n)$ 平衡双加性。\n\n两个方向明显互逆 ✓。',
         '',
         '复合两个双射即得同构。**自然性**：同构由显式公式 $f \\mapsto \\bigl(m \\mapsto (n \\mapsto f(m \\otimes n))\\bigr)$ 给出，公式里没有任何选取，故对 $M$ 与 $P$ 都自然 ✓。∎',
         '',
@@ -865,7 +873,7 @@ window.MG = window.MG || {};
         '',
         '而余核是两项图的余极限：$\\operatorname{coker}(f) = \\mathrm{colim}\\bigl(M_{1} \\xrightarrow{f} M\\bigr)$。故 $(-) \\otimes N$ 保余核 ✓。',
         '',
-        '对一个加法函子，「保余核」与「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」是同一句话：$g$ 满 $\\iff$ $\\operatorname{coker} g = 0$ $\\iff$ $\\operatorname{coker}(g \\otimes 1) = 0$ $\\iff$ $g \\otimes 1$ 满；$\\operatorname{im}(f \\otimes 1) = \\ker(g \\otimes 1)$ 由保余核直接给出 ✓。',
+        '对一个加法函子，「保余核」与「把短正合列送成 $M_{1} \\otimes N \\to M \\otimes N \\to M_{2} \\otimes N \\to 0$ 正合」是同一句话：$g$ 满 $\\iff$ $\\operatorname{coker} g = 0$ $\\iff$ $\\operatorname{coker}(g \\otimes 1) = 0$ $\\iff$ $g \\otimes 1$ 满；\n\n$\\operatorname{im}(f \\otimes 1) = \\ker(g \\otimes 1)$ 由保余核直接给出 ✓。',
         '',
         '**左端为什么没有**：$f \\otimes 1$ 的单射性不能由伴随得到（左伴随保的是余极限，不是极限）。$\\mathbb{Z} \\xrightarrow{2} \\mathbb{Z}$ 张量 $\\mathbb{Z}/2$ 就是反例：映射变成零 ✓。∎'
       ].join('\n'),
@@ -880,7 +888,7 @@ window.MG = window.MG || {};
       proof: [
         '**1 与 2**：右正合已由前一条给出，所以「正合」只差左端那一个单射 ✓。',
         '',
-        '**2 蕴含 3**：取 $M$ 的投射消解 $P_{\\bullet} \\to M$。$\\operatorname{Tor}_{1}^{R}(M, N) = H_{1}(P_{\\bullet} \\otimes N)$。若 $N$ 平坦，$P_{\\bullet} \\otimes N$ 仍是正合列（每一项都自由、逐项张量后短正合列仍正合），故 $H_{1} = 0$ ✓。',
+        '**2 蕴含 3**：取 $M$ 的投射消解 $P_{\\bullet} \\to M$。\n\n$\\operatorname{Tor}_{1}^{R}(M, N) = H_{1}(P_{\\bullet} \\otimes N)$。\n\n若 $N$ 平坦，$P_{\\bullet} \\otimes N$ 仍是正合列（每一项都自由、逐项张量后短正合列仍正合），故 $H_{1} = 0$ ✓。',
         '',
         '**3 蕴含 4**：由 $0 \\to I \\to R \\to R/I \\to 0$ 与 $\\operatorname{Tor}_{1}^{R}(R, N) = 0$（$R$ 自由）得长正合列',
         '$$0 \\longrightarrow \\operatorname{Tor}_{1}^{R}(R/I, N) \\longrightarrow I \\otimes N \\longrightarrow N \\longrightarrow \\cdots$$',
@@ -921,7 +929,10 @@ window.MG = window.MG || {};
         '',
         '**（$\\Leftarrow$）** 若 $M$ 与 $M_{2}$ 平坦，右边正合，故 $(-) \\otimes F$ 正合 ✓。',
         '',
-        '**（$\\implies$）** 设 $(-) \\otimes F$ 正合。对任意 $f : A \\to A_{1}$，$f \\otimes F$ 在分解下是对角块 $\\mathrm{diag}(f \\otimes M,\\ f \\otimes M_{2})$。若 $x = (x_{1}, x_{2})$ 被送到零，则两块分别把 $x_{1}$、$x_{2}$ 送到零；单射性逐分量判定，故 $f \\otimes M$ 单 ✓，$M$ 平坦。',
+        '**（$\\implies$）** 设 $(-) \\otimes F$ 正合。\n\n' +
+        '对任意 $f : A \\to A_{1}$，$f \\otimes F$ 在分解下是对角块 $\\mathrm{diag}(f \\otimes M,\\ f \\otimes M_{2})$。\n\n' +
+        '若 $x = (x_{1}, x_{2})$ 被送到零，则两块分别把 $x_{1}$、$x_{2}$ 送到零；\n\n' +
+        '单射性逐分量判定，故 $f \\otimes M$ 单 ✓，$M$ 平坦。',
         '',
         '**直和情形**：$(-) \\otimes \\bigoplus_{i} M_{i} \\cong \\bigoplus_{i} ((-) \\otimes M_{i})$ 正合当且仅当每个分量正合 ✓。∎',
         '',
@@ -959,11 +970,11 @@ window.MG = window.MG || {};
         '',
         '**第一步（化到有限生成）**：$M$ 是它有限生成子模的滤过余极限，$(-) \\otimes M$ 保滤过余极限，故只需对有限生成的 $M$ 验证 ✓。',
         '',
-        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M$，令 $K$ 为 $M_{1}$ 的原像。两个短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$ 与 $0 \\to M_{1} \\to M \\to 0$ 的张量版本摆成 $3 \\times 3$ 图，用蛇引理：若 $K \\otimes M \\to R^{n} \\otimes M$ 单，则 $M_{1} \\otimes M \\to M \\otimes M$ 单 ✓。',
+        '**第二步（化到自由模的子模）**：取满射 $R^{n} \\twoheadrightarrow M$，令 $K$ 为 $M_{1}$ 的原像。\n\n两个短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$ 与 $0 \\to M_{1} \\to M \\to 0$ 的张量版本摆成 $3 \\times 3$ 图，用蛇引理：若 $K \\otimes M \\to R^{n} \\otimes M$ 单，则 $M_{1} \\otimes M \\to M \\otimes M$ 单 ✓。',
         '',
         '**第三步（对 $n$ 归纳）**：只需证对每个有限生成子模 $K \\subseteq R^{n}$，$K \\otimes M \\to R^{n} \\otimes M$ 单。',
         '- $n = 1$：$K$ 是有限生成右理想，正是假设 ✓。',
-        '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合。张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。∎',
+        '- $n > 1$：写 $R^{n} = R^{n-1} \\oplus R$，令 $K_{1} = K \\cap R^{n-1}$、$K_{2}$ 为 $K$ 在第二个分量上的像（有限生成右理想），则 $0 \\to K_{1} \\to K \\to K_{2} \\to 0$ 与 $0 \\to R^{n-1} \\to R^{n} \\to R \\to 0$ 正合。\n\n张量后两列竖直映射（$K_{1} \\to$ 与 $K_{2} \\to$）按归纳假设与 $n = 1$ 情形是单射，故由蛇引理（两条外层单射夹出中间单射）$K \\otimes M \\to R^{n} \\otimes M$ 单 ✓。\n\n∎',
         '',
         '**等价说法的翻译**：由 $0 \\to I \\to R \\to R/I \\to 0$ 与 $\\operatorname{Tor}_{1}^{R}(R, M) = 0$ 得 $\\operatorname{Tor}_{1}^{R}(R/I, M) \\cong \\ker(I \\otimes M \\to M)$，故「$I \\otimes M \\to M$ 单」与「$\\operatorname{Tor}_{1}^{R}(R/I, M) = 0$」是同一句话 ✓。'
       ].join('\n'),
@@ -976,13 +987,13 @@ window.MG = window.MG || {};
       target: 'ex.flat-not-projective',
       title: 'PID 上无挠即平坦 $\\implies$ $\\mathbb{Q}$ 平坦但不投射',
       proof: [
-        '**平坦**：$\\mathbb{Z}$ 是主理想整环、$\\mathbb{Q}$ 无挠，由 `prop.flat-domain-torsionfree` 的反向得平坦。也可以直接对有限生成理想用 Lambek：$\\mathbb{Z}$ 的理想都是 $(n)$，而 $n \\cdot : \\mathbb{Q} \\to \\mathbb{Q}$ 是单射 ✓。',
+        '**平坦**：$\\mathbb{Z}$ 是主理想整环、$\\mathbb{Q}$ 无挠，由 `prop.flat-domain-torsionfree` 的反向得平坦。\n\n也可以直接对有限生成理想用 Lambek：$\\mathbb{Z}$ 的理想都是 $(n)$，而 $n \\cdot : \\mathbb{Q} \\to \\mathbb{Q}$ 是单射 ✓。',
         '',
         '**不投射**：设 $\\mathbb{Q}$ 投射。取满射 $F = \\bigoplus_{i \\in I} \\mathbb{Z} \\twoheadrightarrow \\mathbb{Q}$，投射性给出截面 $s$，于是 $\\mathbb{Q}$ 是 $F$ 的直和项、特别地是 $F$ 的子群。',
         '',
         '但 $F$ 没有非平凡可除子群：$F$ 的元素只有有限多个非零坐标，$n$ 倍映射逐坐标作用；若 $x$ 能被所有 $n \\ge 1$ 整除，则每个坐标都被所有 $n$ 整除，而 $\\mathbb{Z}$ 中只有 $0$ 满足这一点，故 $x = 0$。与 $\\mathbb{Q} \\ne 0$ 矛盾 ✓。',
         '',
-        '**另一条路**：$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, \\mathbb{Z}) = 0$。若 $\\mathbb{Q}$ 投射，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, -)$ 保满射，于是满射 $F \\twoheadrightarrow \\mathbb{Q}$ 被送到满射 $\\operatorname{Hom}(\\mathbb{Q}, F) \\to \\operatorname{Hom}(\\mathbb{Q}, \\mathbb{Q})$，而左边逐个直和项都是 $0$、右边含 $\\mathrm{id}$，矛盾 ✓。∎'
+        '**另一条路**：$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, \\mathbb{Z}) = 0$。\n\n若 $\\mathbb{Q}$ 投射，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Q}, -)$ 保满射，于是满射 $F \\twoheadrightarrow \\mathbb{Q}$ 被送到满射 $\\operatorname{Hom}(\\mathbb{Q}, F) \\to \\operatorname{Hom}(\\mathbb{Q}, \\mathbb{Q})$，而左边逐个直和项都是 $0$、右边含 $\\mathrm{id}$，矛盾 ✓。\n\n∎'
       ].join('\n'),
       note: '这条把「平坦」与「投射」的差距钉在一个具体例子上：$\\mathbb{Q}$ 的平坦性来自「能除」，非投射性来自「不是自由模的直和项」。'
     },
@@ -1013,7 +1024,7 @@ window.MG = window.MG || {};
       target: 'prop.scalar-extension-coproduct',
       title: '换环的泛性质 $\\implies$ 推出与基变换',
       proof: [
-        '**（1）余积**：$s \\mapsto s \\otimes 1$、$t \\mapsto 1 \\otimes t$ 给出 $R$-代数的余锥。给定余锥 $(\\alpha : S \\to U,\\ \\beta : T \\to U)$，映射 $(s, t) \\mapsto \\alpha(s)\\beta(t)$ 是 $R$-平衡的（用 $\\alpha, \\beta$ 保 $R$-作用与交换性），由万有性质唯一给出 $R$-模映射 $S \\otimes_{R} T \\to U$；交换性保证它保乘法。唯一性由纯张量生成给出 ✓。',
+        '**（1）余积**：$s \\mapsto s \\otimes 1$、$t \\mapsto 1 \\otimes t$ 给出 $R$-代数的余锥。\n\n给定余锥 $(\\alpha : S \\to U,\\ \\beta : T \\to U)$，映射 $(s, t) \\mapsto \\alpha(s)\\beta(t)$ 是 $R$-平衡的（用 $\\alpha, \\beta$ 保 $R$-作用与交换性），由万有性质唯一给出 $R$-模映射 $S \\otimes_{R} T \\to U$；\n\n交换性保证它保乘法。\n\n唯一性由纯张量生成给出 ✓。',
         '',
         '**（2）基变换**：$T \\otimes_{R} M$ 与 $(S \\otimes_{R} T) \\otimes_{S} M$ 表示同一个函子：两者都满足「$S$-模 $M$ 与 $T$-模 $N$ 的双线性配对」这一万有性质，对应 $t \\otimes m \\leftrightarrow (1 \\otimes t) \\otimes m$，故同构且对 $M$ 自然 ✓。',
         '',
@@ -1047,11 +1058,13 @@ window.MG = window.MG || {};
       proof: [
         '**（$\\implies$）** $J \\rightarrowtail R$ 本身是单射，内射性直接给出延拓 $R \\to I$，记 $1 \\mapsto x$，则 $f(a) = a x$ ✓。',
         '',
-        '**（$\\Leftarrow$）** 给定单射 $A \\subseteq B$ 与 $f : A \\to I$。考虑一切延拓对 $(A_{1}, f_{1})$（$A \\subseteq A_{1} \\subseteq B$，$f_{1}|_{A} = f$），按定义域包含排序。链的并仍是延拓，故由 **Zorn 引理**存在极大元 $(A_{1}, f_{1})$ ✓。',
+        '**（$\\Leftarrow$）** 给定单射 $A \\subseteq B$ 与 $f : A \\to I$。\n\n考虑一切延拓对 $(A_{1}, f_{1})$（$A \\subseteq A_{1} \\subseteq B$，$f_{1}|_{A} = f$），按定义域包含排序。\n\n链的并仍是延拓，故由 **Zorn 引理**存在极大元 $(A_{1}, f_{1})$ ✓。',
         '',
-        '若 $A_{1} \\ne B$，取 $b \\in B \\setminus A_{1}$，令 $J := \\{\\, r \\in R : r b \\in A_{1} \\,\\}$、$h(r) := f_{1}(r b)$。$J$ 是左理想、$h$ 线性；由假设存在 $x \\in I$ 使 $h(r) = r x$（$\\forall r \\in J$）。',
+        '若 $A_{1} \\ne B$，取 $b \\in B \\setminus A_{1}$，令 $J := \\{\\, r \\in R : r b \\in A_{1} \\,\\}$、$h(r) := f_{1}(r b)$。\n\n' +
+        '$J$ 是左理想、$h$ 线性；\n\n' +
+        '由假设存在 $x \\in I$ 使 $h(r) = r x$（$\\forall r \\in J$）。',
         '',
-        '定义 $f_{2}(a + r b) := f_{1}(a) + r x$。**良定义**：若 $a + r b = a_{1} + r_{1} b$，则 $(r - r_{1}) b = a_{1} - a \\in A_{1}$，故 $r - r_{1} \\in J$，于是 $f_{1}((r-r_{1})b) = f_{1}(a_{1}-a)$，两边即 $f_{1}(a) + rx = f_{1}(a_{1}) + r_{1}x$ ✓。这与极大性矛盾，故 $A_{1} = B$ ✓。∎'
+        '定义 $f_{2}(a + r b) := f_{1}(a) + r x$。\n\n**良定义**：若 $a + r b = a_{1} + r_{1} b$，则 $(r - r_{1}) b = a_{1} - a \\in A_{1}$，故 $r - r_{1} \\in J$，于是 $f_{1}((r-r_{1})b) = f_{1}(a_{1}-a)$，两边即 $f_{1}(a) + rx = f_{1}(a_{1}) + r_{1}x$ ✓。\n\n这与极大性矛盾，故 $A_{1} = B$ ✓。\n\n∎'
       ].join('\n'),
       note: '整条证明只用了「$R$ 是环」与 Zorn 引理，没有任何小性/有限性假设 —— 所以它对**任意**环都成立，这是它比平坦的 Lambek 判据更「硬」的原因。'
     },
@@ -1097,7 +1110,7 @@ window.MG = window.MG || {};
         '',
         '**$\\mathbb{Q}/\\mathbb{Z}$**：$\\mathbb{Q}$ 可除，由 `prop.divisible-quotient` 其商可除 ✓。',
         '',
-        '**Prüfer $p$-群**：$\\mathbb{Z}[1/p]/\\mathbb{Z} = \\varinjlim_{k}\\mathbb{Z}/p^{k}$，余极限沿「乘 $p$」取。给定元素与 $n = p^{s} u$（$p \\nmid u$）：元素来自某一层 $\\mathbb{Z}/p^{k}$，先在该层的第 $k + s$ 层里解 $p^{s} z = x$（这就是无限次除以 $p$ 的意思），再用 $u$ 在模 $p^{k+s}$ 中可逆把 $u$ 除掉 ✓。',
+        '**Prüfer $p$-群**：$\\mathbb{Z}[1/p]/\\mathbb{Z} = \\varinjlim_{k}\\mathbb{Z}/p^{k}$，余极限沿「乘 $p$」取。\n\n给定元素与 $n = p^{s} u$（$p \\nmid u$）：元素来自某一层 $\\mathbb{Z}/p^{k}$，先在该层的第 $k + s$ 层里解 $p^{s} z = x$（这就是无限次除以 $p$ 的意思），再用 $u$ 在模 $p^{k+s}$ 中可逆把 $u$ 除掉 ✓。',
         '',
         '三者由 `thm.pid-injective-divisible` 都是内射 $\\mathbb{Z}$-模 ✓。∎'
       ].join('\n'),
@@ -1110,9 +1123,9 @@ window.MG = window.MG || {};
       target: 'thm.mod-enough-injectives',
       title: '$\\mathbb{Q}/\\mathbb{Z}$ 内射 + 一个伴随 $\\implies$ 足够多内射',
       proof: [
-        '**（一）$\\mathbb{Q}/\\mathbb{Z}$ 是内射 $\\mathbb{Z}$-模且是余生成元。** 内射性由 `thm.pid-injective-divisible`（可除即内射）给出。余生成元：给定 $0 \\ne a \\in A$，$\\langle a \\rangle$ 是循环群（$\\cong \\mathbb{Z}/m$ 或 $\\cong \\mathbb{Z}$），它上面存在非零特征标 $\\langle a \\rangle \\to \\mathbb{Q}/\\mathbb{Z}$，再用内射性延拓到 $A$ ✓。故求值映射 $A \\to A^{\\vee\\vee}$ 单。',
+        '**（一）$\\mathbb{Q}/\\mathbb{Z}$ 是内射 $\\mathbb{Z}$-模且是余生成元。** 内射性由 `thm.pid-injective-divisible`（可除即内射）给出。\n\n余生成元：给定 $0 \\ne a \\in A$，$\\langle a \\rangle$ 是循环群（$\\cong \\mathbb{Z}/m$ 或 $\\cong \\mathbb{Z}$），它上面存在非零特征标 $\\langle a \\rangle \\to \\mathbb{Q}/\\mathbb{Z}$，再用内射性延拓到 $A$ ✓。\n\n故求值映射 $A \\to A^{\\vee\\vee}$ 单。',
         '',
-        '**（二）嵌入内射 $R$-模。** $m \\mapsto (r \\mapsto r m)$ 给出单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$（取 $r = 1$ 复原 $m$）。由（一）取内射 $\\mathbb{Z}$-模 $E \\supseteq M$，则 $\\operatorname{Hom}_{\\mathbb{Z}}(R, -)$ 作用后仍单（它保单射：作为右伴随它保极限，而核是极限），得到 $R$-模单射',
+        '**（二）嵌入内射 $R$-模。** $m \\mapsto (r \\mapsto r m)$ 给出单射 $M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M)$（取 $r = 1$ 复原 $m$）。\n\n由（一）取内射 $\\mathbb{Z}$-模 $E \\supseteq M$，则 $\\operatorname{Hom}_{\\mathbb{Z}}(R, -)$ 作用后仍单（它保单射：作为右伴随它保极限，而核是极限），得到 $R$-模单射',
         '$$M \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, M) \\hookrightarrow \\operatorname{Hom}_{\\mathbb{Z}}(R, E).$$',
         '',
         '**（三）$\\operatorname{Hom}_{\\mathbb{Z}}(R, E)$ 内射。** 它等于遗忘函子 $U$ 的右伴随作用在内射对象上：',

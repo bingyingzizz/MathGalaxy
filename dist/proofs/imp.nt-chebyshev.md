@@ -9,4 +9,6 @@
 
 两式合并：$\dfrac{4^{n}}{2n+1} \le (2n)^{\pi(2n)}$，取对数得 $\pi(2n) \ge \dfrac{2n\log 2 - \log(2n+1)}{\log(2n)} \ge c\,\dfrac{n}{\log n}$。
 
+**上界**：对 $n < p \le 2n$ 的素数，$p$ 整除 $N$ 而 $p > n$ 保证 $p^{2} \nmid N$（$v_{p}(N) = \lfloor 2n/p\rfloor - 2\lfloor n/p\rfloor \le 1$）。
+
 > 续见 proofs/imp.nt-chebyshev.2.md

@@ -38,7 +38,7 @@ window.MG = window.MG || {};
         '例：',
         '',
         [
-          '- **遗忘函子** $\\mathbf{Top} \\to \\mathbf{Set}$：$(X, \\tau) \\mapsto X$，连续映射当作普通映射。拓扑被丢掉，所以叫「遗忘」。同理 $\\mathbf{Ab} \\to \\mathbf{Set}$、$\\mathbf{Grp} \\to \\mathbf{Mon}$（含入）。',
+          '- **遗忘函子** $\\mathbf{Top} \\to \\mathbf{Set}$：$(X, \\tau) \\mapsto X$，连续映射当作普通映射。\n\n拓扑被丢掉，所以叫「遗忘」。\n\n同理 $\\mathbf{Ab} \\to \\mathbf{Set}$、$\\mathbf{Grp} \\to \\mathbf{Mon}$（含入）。',
           '- $\\mathbf{Set} \\to \\mathbf{Top}$ 有两种：$X \\mapsto (X, \\mathcal{P}(X))$（离散拓扑）与 $X \\mapsto (X, \\{ \\emptyset, X \\})$（平凡拓扑）。两者都对，因为从离散空间射出、射入平凡空间的映射总是连续的。',
           '- **自由构造** $\\mathbf{Set} \\to \\mathbf{Ab}$：$X \\mapsto \\bigoplus_X \\mathbb{Z}$；$\\mathbf{Set} \\to \\mathbf{Grp}$：$X \\mapsto \\langle x, x^{-1} \\mid x \\in X \\rangle$。',
           '- **交换化** $\\mathbf{Grp} \\to \\mathbf{Ab}$：$G \\mapsto G / [G, G]$。',
@@ -71,7 +71,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '一句话：$\\alpha$ 的两个分量各管一头，交换性说的就是「先换函子再走 $f$」与「先走 $f$ 再换函子」结果一样。',
-        '有了自然变换，**函子本身也成了对象**：以 $\\mathcal{C} \\to \\mathcal{C}\'$ 的函子为对象、以自然变换为态射，得到一个范畴，记 $\\operatorname{Hom}(\\mathcal{C}, \\mathcal{C}\')$；所有 $F \\implies G$ 的自然变换组成的集合记 $\\operatorname{Nat}(F, G)$。',
+        '有了自然变换，**函子本身也成了对象**：以 $\\mathcal{C} \\to \\mathcal{C}\'$ 的函子为对象、以自然变换为态射，得到一个范畴，记 $\\operatorname{Hom}(\\mathcal{C}, \\mathcal{C}\')$；\n\n所有 $F \\implies G$ 的自然变换组成的集合记 $\\operatorname{Nat}(F, G)$。',
         '例：$\\mathbf{CRng} \\to \\mathbf{Grp}$ 上有两个函子 —— $A \\mapsto GL_n(A)$ 与 $A \\mapsto A^{*}$。行列式',
         '',
         '$$\\det_A : GL_n(A) \\to A^{*}$$',
@@ -140,7 +140,7 @@ window.MG = window.MG || {};
         '',
         '$$F \\circ G \\cong 1_{\\mathcal{C}\'}, \\qquad G \\circ F \\cong 1_{\\mathcal{C}}$$',
         '',
-        '这时记 $\\mathcal{C} \\simeq \\mathcal{C}\'$。若把两个 $\\cong$ 加强成等号 $F \\circ G = 1_{\\mathcal{C}\'}$、$G \\circ F = 1_{\\mathcal{C}}$，则叫**范畴同构**，记 $\\mathcal{C} \\cong \\mathcal{C}\'$。'
+        '这时记 $\\mathcal{C} \\simeq \\mathcal{C}\'$。\n\n若把两个 $\\cong$ 加强成等号 $F \\circ G = 1_{\\mathcal{C}\'}$、$G \\circ F = 1_{\\mathcal{C}}$，则叫**范畴同构**，记 $\\mathcal{C} \\cong \\mathcal{C}\'$。'
       ].join('\n'),
       notes: [
         '同构要求两个复合**等于**恒等函子，等价只要求它们**自然同构于**恒等函子。后者弱得多，也实用得多：例如「有限维向量空间」与「$\\mathbb{F}$ 上的矩阵」等价，但绝不可能是同构（对象层的基数就不对）。',
@@ -167,7 +167,7 @@ window.MG = window.MG || {};
         '',
         '$$g = \\eta_{Y\'}^{-1} \\circ f\' \\circ \\eta_{X\'} : F(G(X\')) \\to F(G(Y\'))$$',
         '',
-        '由 $F$ 全忠实，$\\operatorname{Hom}(G(X\'), G(Y\')) \\to \\operatorname{Hom}(F G(X\'), F G(Y\'))$ 是双射，所以存在**唯一**的 $G(f\')$ 使 $F(G(f\')) = g$。这个唯一性是关键：它让 $G$ 自动保持复合与单位（两边都取 $F$ 之后相等，再用忠实性拉回来）。于是 $G$ 是函子，且 $\\eta : F \\circ G \\implies 1_{\\mathcal{C}\'}$ 是自然同构。',
+        '由 $F$ 全忠实，$\\operatorname{Hom}(G(X\'), G(Y\')) \\to \\operatorname{Hom}(F G(X\'), F G(Y\'))$ 是双射，所以存在**唯一**的 $G(f\')$ 使 $F(G(f\')) = g$。\n\n这个唯一性是关键：它让 $G$ 自动保持复合与单位（两边都取 $F$ 之后相等，再用忠实性拉回来）。\n\n于是 $G$ 是函子，且 $\\eta : F \\circ G \\implies 1_{\\mathcal{C}\'}$ 是自然同构。',
         '',
         '另一半 $G \\circ F \\cong 1_{\\mathcal{C}}$ 同法：令 $\\theta = F^{-1}(\\eta_{F(\\cdot)})$，交换性由 $F$ 保持复合、而 $F^{-1}$ 也跟着保持交换图逐块验证。∎',
         '',

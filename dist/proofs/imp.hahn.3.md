@@ -8,7 +8,11 @@
 
 $$\nu(A) = \nu(B) + \sum_k \nu(A_k)$$
 
-而 $\sum_k |\nu(A_k)| < \infty$（因为左边有限），特别地 $\nu(A_k) \to 0$，这迫使 $n_k \to \infty$，从而对任意 $F \subseteq B$：若 $\nu(F) < -1/n_{k-1}$，就与 $n_k$ 的**最小性**矛盾。于是 $\nu(F) \ge -1/n_{k-1}$ 对一切 $k$ 成立，令 $k \to \infty$ 得 $\nu(F) \ge 0$。故 $B$ 也是正集。
+而 $\sum_k |\nu(A_k)| < \infty$（因为左边有限），特别地 $\nu(A_k) \to 0$，这迫使 $n_k \to \infty$，从而对任意 $F \subseteq B$：若 $\nu(F) < -1/n_{k-1}$，就与 $n_k$ 的**最小性**矛盾。
+
+于是 $\nu(F) \ge -1/n_{k-1}$ 对一切 $k$ 成立，令 $k \to \infty$ 得 $\nu(F) \ge 0$。
+
+故 $B$ 也是正集。
 
 **⑦ 矛盾。** 由 ⑤⑥，$A$ 中含正集 $B$。于
 

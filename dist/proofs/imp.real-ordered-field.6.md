@@ -12,6 +12,10 @@ $$\beta_n - \alpha_n = \frac{\beta_0 - \alpha_0}{2^n} \xrightarrow{\ n \to \inft
 
 两个列都是 Cauchy 列（单调 + 步长趋于 $0$），由 ⑤ 收敛到同一个 $\alpha \in \mathbb{R}$。
 
-**$\alpha$ 是上界**：若不然，存在 $s \in S$ 使 $s > \alpha$。取 $n$ 充分大使 $\beta_n - \alpha_n < s - \alpha$；由 $\alpha_n \to \alpha$ 又有 $\alpha \le \beta_n$ 与 $\alpha_n \le \alpha$，于是 $\alpha_n + (s - \alpha) > \beta_n$，而 $\alpha_n \in S$ 且 $s \in S$ 都是 $\beta_n$ 下面的元素 —— 与「$\beta_n$ 是上界」矛盾。
+**$\alpha$ 是上界**：若不然，存在 $s \in S$ 使 $s > \alpha$。
+
+取 $n$ 充分大使 $\beta_n - \alpha_n < s - \alpha$；
+
+由 $\alpha_n \to \alpha$ 又有 $\alpha \le \beta_n$ 与 $\alpha_n \le \alpha$，于是 $\alpha_n + (s - \alpha) > \beta_n$，而 $\alpha_n \in S$ 且 $s \in S$ 都是 $\beta_n$ 下面的元素 —— 与「$\beta_n$ 是上界」矛盾。
 
 > 续见 proofs/imp.real-ordered-field.7.md

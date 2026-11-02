@@ -11,7 +11,9 @@
 
 
 
-对任意 $a \in I$ 做带余除法：$a = qb + r$，$r = 0$ 或 $N(r) < N(b)$。注意 $r = a - qb \in I$（$a, b \in I$），而 $b$ 的 $N$ 在 $I \setminus \{0\}$ 里最小，故 $N(r) < N(b)$ 不可能 —— 只能 $r = 0$。
+对任意 $a \in I$ 做带余除法：$a = qb + r$，$r = 0$ 或 $N(r) < N(b)$。
+
+注意 $r = a - qb \in I$（$a, b \in I$），而 $b$ 的 $N$ 在 $I \setminus \{0\}$ 里最小，故 $N(r) < N(b)$ 不可能 —— 只能 $r = 0$。
 
 
 

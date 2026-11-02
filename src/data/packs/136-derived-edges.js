@@ -70,11 +70,11 @@ window.MG = window.MG || {};
       proof: [
         '取 $M = U \\subseteq \\mathbb{R}^{n}$ 有界、$N = A(U)$，其中 $A$ 是可逆线性映射（把它看成 $\\mathbb{R}^{n}$ 到自身的微分同胚），$\\omega = \\mathrm{d}x^{1}\\wedge\\cdots\\wedge\\mathrm{d}x^{n}$。',
         '',
-        '**第一步：$A^{\\ast}\\omega = \\det(A)\\,\\omega$。** 左边按定义是 $\\omega(Au_1,\\ldots,Au_n)$ 给出的 $n$ 重交错 $n$ 线性型；$n$ 维空间上这样的型全体是一维的，而 $\\omega(e_1,\\ldots,e_n) = 1$，于是由行列式的「交错、多重线性、取单位阵为 $1$」这三条刻画，',
+        '**第一步：$A^{\\ast}\\omega = \\det(A)\\,\\omega$。** 左边按定义是 $\\omega(Au_1,\\ldots,Au_n)$ 给出的 $n$ 重交错 $n$ 线性型；\n\n$n$ 维空间上这样的型全体是一维的，而 $\\omega(e_1,\\ldots,e_n) = 1$，于是由行列式的「交错、多重线性、取单位阵为 $1$」这三条刻画，',
         '',
         '$$\\omega(Au_1,\\ldots,Au_n) = \\det(A)\\,\\omega(u_1,\\ldots,u_n).$$',
         '',
-        '**第二步：套换元公式。** $A$ 保向时 $\\int_{A(U)}\\omega = \\int_{U} A^{\\ast}\\omega = \\det(A)\\int_{U}\\omega$；反向时按公式多一个负号。两种情形合起来是 $\\int_{A(U)}\\omega = |\\det A|\\int_{U}\\omega$，而左边就是 $A(U)$ 的体积：',
+        '**第二步：套换元公式。** $A$ 保向时 $\\int_{A(U)}\\omega = \\int_{U} A^{\\ast}\\omega = \\det(A)\\int_{U}\\omega$；\n\n反向时按公式多一个负号。\n\n两种情形合起来是 $\\int_{A(U)}\\omega = |\\det A|\\int_{U}\\omega$，而左边就是 $A(U)$ 的体积：',
         '',
         '$$\\operatorname{vol}\\bigl(A(U)\\bigr) = |\\det A| \\cdot \\operatorname{vol}(U).$$',
         '',
@@ -92,7 +92,7 @@ window.MG = window.MG || {};
       target: 'def.tor',
       title: '消解的同伦唯一性保证挠积与消解的选取无关',
       proof: [
-        '设 $P_{\\bullet} \\twoheadrightarrow M$ 与 $Q_{\\bullet} \\twoheadrightarrow M$ 是同一个模的两条投射消解。由「消解的同伦唯一性」存在链映射 $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$、$\\psi : Q_{\\bullet} \\to P_{\\bullet}$，使',
+        '设 $P_{\\bullet} \\twoheadrightarrow M$ 与 $Q_{\\bullet} \\twoheadrightarrow M$ 是同一个模的两条投射消解。\n\n由「消解的同伦唯一性」存在链映射 $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$、$\\psi : Q_{\\bullet} \\to P_{\\bullet}$，使',
         '',
         '$$\\psi\\varphi \\sim 1_{P_{\\bullet}}, \\qquad \\varphi\\psi \\sim 1_{Q_{\\bullet}}.$$',
         '',
@@ -176,11 +176,11 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{K}(V\\otimes W, K) \\cong \\operatorname{Bil}(V,W;K), \\qquad \\widetilde{B} \\mapsto \\widetilde{B}\\circ\\otimes .$$',
         '',
-        '**归纳到 $n$ 元。** 设 $\\operatorname{Mult}_{n-1}(V;K) \\cong \\operatorname{Hom}_{K}(V^{\\otimes n-1}, K)$。给 $f \\in \\operatorname{Mult}_{n}(V;K)$，固定第一个变元得 $f_{v} \\in \\operatorname{Mult}_{n-1}(V;K)$，且 $v \\mapsto f_{v}$ 是线性的；按归纳假设它是线性映射 $V \\to \\operatorname{Hom}_{K}(V^{\\otimes n-1},K)$，而「线性映射进 Hom」等价于双线性映射（currying）',
+        '**归纳到 $n$ 元。** 设 $\\operatorname{Mult}_{n-1}(V;K) \\cong \\operatorname{Hom}_{K}(V^{\\otimes n-1}, K)$。\n\n给 $f \\in \\operatorname{Mult}_{n}(V;K)$，固定第一个变元得 $f_{v} \\in \\operatorname{Mult}_{n-1}(V;K)$，且 $v \\mapsto f_{v}$ 是线性的；\n\n按归纳假设它是线性映射 $V \\to \\operatorname{Hom}_{K}(V^{\\otimes n-1},K)$，而「线性映射进 Hom」等价于双线性映射（currying）',
         '',
         '$$V \\times V^{\\otimes n-1} \\to K, \\qquad (v, w) \\mapsto f_{v}(w).$$',
         '',
-        '对这个双线性映射用二元万有性质，得到唯一的线性 $\\widetilde{f} : V\\otimes V^{\\otimes n-1} \\to K$，即 $\\widetilde{f}\\in\\operatorname{Hom}_{K}(V^{\\otimes n},K)$；反向把 $\\widetilde{f}$ 沿 $\\otimes$ 拉回就得到 $f$。两条互逆，故',
+        '对这个双线性映射用二元万有性质，得到唯一的线性 $\\widetilde{f} : V\\otimes V^{\\otimes n-1} \\to K$，即 $\\widetilde{f}\\in\\operatorname{Hom}_{K}(V^{\\otimes n},K)$；\n\n反向把 $\\widetilde{f}$ 沿 $\\otimes$ 拉回就得到 $f$。\n\n两条互逆，故',
         '',
         '$$\\operatorname{Mult}_{n}(V;K) \\cong \\operatorname{Hom}_{K}(V^{\\otimes n}, K).$$',
         '',
@@ -204,7 +204,7 @@ window.MG = window.MG || {};
         '',
         '$$i(ri) = (1_{M}-sp)\\,i = i - s(pi) = i \\quad\\text{（用到 } pi = 0\\text{）}\\Longrightarrow ri = 1_{M_{1}}.$$',
         '',
-        '于是 $\\{i, p, r, s\\}$ 满足双积的三条等式 $ri = 1_{M_{1}}$、$ps = 1_{M_{2}}$、$ir+sp = 1_{M}$。由「直和就是积」，这三条等式连同 $pi = 0$ 使 $M$ 成为 $M_{1}$ 与 $M_{2}$ 的**双积**：$(M,p)$ 是积、$(M,i)$ 是余积，特别地 $M \\cong M_{1}\\oplus M_{2}$ 且该列同构于标准列，即分裂。',
+        '于是 $\\{i, p, r, s\\}$ 满足双积的三条等式 $ri = 1_{M_{1}}$、$ps = 1_{M_{2}}$、$ir+sp = 1_{M}$。\n\n由「直和就是积」，这三条等式连同 $pi = 0$ 使 $M$ 成为 $M_{1}$ 与 $M_{2}$ 的**双积**：$(M,p)$ 是积、$(M,i)$ 是余积，特别地 $M \\cong M_{1}\\oplus M_{2}$ 且该列同构于标准列，即分裂。',
         '',
         '**分裂就有截面。** 分裂时该列同构于 $0 \\to M_{1} \\xrightarrow{\\operatorname{pr}_{1}} M_{1}\\oplus M_{2} \\xrightarrow{\\operatorname{pr}_{2}} M_{2} \\to 0$，而 $\\operatorname{pr}_{2}$ 有显然的截面 $m_{2}\\mapsto (0,m_{2})$。',
         '',
@@ -252,7 +252,7 @@ window.MG = window.MG || {};
         '',
         '把定义代进去，这正是「$r \\to 0$ 时 $A_{r}f$ 回到 $f$」—— 于是 $\\{A_{r}\\}_{r>0}$ 是一族在 $r\\to 0$ 时收敛到恒等算子的平均算子。',
         '',
-        '**极限只能是 a.e. 的。** 取 $f = \\chi_{\\mathbb{Q}}$：$f = 0$ a.e.，故 $A_{r}f(x) \\to 0$ a.e.；但 $f(0) = 1$，而 $A_{r}f(0) = 0$ 对每个 $r$ 成立，逐点收敛在 $0$ 处就失败了。所以「$A_{r}f \\to f$ 处处」是错的，「a.e.」不能换成「处处」。$\\blacksquare$'
+        '**极限只能是 a.e. 的。** 取 $f = \\chi_{\\mathbb{Q}}$：$f = 0$ a.e.，故 $A_{r}f(x) \\to 0$ a.e.；但 $f(0) = 1$，而 $A_{r}f(0) = 0$ 对每个 $r$ 成立，逐点收敛在 $0$ 处就失败了。\n\n所以「$A_{r}f \\to f$ 处处」是错的，「a.e.」不能换成「处处」。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '定义本身只写了「怎么平均」，没有写「平均收敛到谁」；后一半是定理的内容，而它恰好就是 Lebesgue 微分定理。'
     },
@@ -328,7 +328,7 @@ window.MG = window.MG || {};
         '',
         '$$\\oint_{\\partial\\Omega} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta = 2\\pi i\\,\\operatorname{Res}(g,z) = 2\\pi i\\, f(z),$$',
         '',
-        '即 $f(z) = \\dfrac{1}{2\\pi i}\\oint_{\\partial\\Omega}\\dfrac{f(\\zeta)}{\\zeta-z}\\,\\mathrm{d}\\zeta$。留数定理的证明只用多连通 Cauchy–Goursat（挖洞）与留数的定义，不经过 Cauchy 积分公式，所以这是一条独立路线。$\\blacksquare$'
+        '即 $f(z) = \\dfrac{1}{2\\pi i}\\oint_{\\partial\\Omega}\\dfrac{f(\\zeta)}{\\zeta-z}\\,\\mathrm{d}\\zeta$。\n\n留数定理的证明只用多连通 Cauchy–Goursat（挖洞）与留数的定义，不经过 Cauchy 积分公式，所以这是一条独立路线。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '换句话说：Cauchy 积分公式是留数定理「只有一个一阶极点」的特例。两条路都合法，只是留数那条要多走一步 Laurent 系数。'
     },
@@ -400,7 +400,7 @@ window.MG = window.MG || {};
         '',
         '$$\\psi \\circ f \\circ \\varphi^{-1}(x_{1}, \\ldots, x_{n}) = (x_{1}, \\ldots, x_{r}, 0, \\ldots, 0).$$',
         '',
-        '**① 把「一点满秩」变成「邻域恒满秩」。** 逆映射定理只知道 $Df(a)$ 可逆。但 $x \\mapsto \\det Df(x)$ 连续且 $\\det Df(a) \\ne 0$，所以存在 $a$ 的邻域 $U\' \\subseteq U$ 使 $\\det Df(x) \\ne 0$ 对一切 $x \\in U\'$ 成立 —— 即 $\\operatorname{rank} Df \\equiv n$ 在 $U\'$ 上。这里 $n = m$，故 $r = n = m$，常秩定理的前提成立。',
+        '**① 把「一点满秩」变成「邻域恒满秩」。** 逆映射定理只知道 $Df(a)$ 可逆。\n\n但 $x \\mapsto \\det Df(x)$ 连续且 $\\det Df(a) \\ne 0$，所以存在 $a$ 的邻域 $U\' \\subseteq U$ 使 $\\det Df(x) \\ne 0$ 对一切 $x \\in U\'$ 成立 —— 即 $\\operatorname{rank} Df \\equiv n$ 在 $U\'$ 上。\n\n这里 $n = m$，故 $r = n = m$，常秩定理的前提成立。',
         '',
         '**② 代入 $r = n = m$。** 标准形里没有零尾巴，于是',
         '',
@@ -426,7 +426,7 @@ window.MG = window.MG || {};
       proof: [
         '沿用隐函数定理的记号：$F : U \\subseteq \\mathbb{R}^{n} \\times \\mathbb{R}^{m} \\to \\mathbb{R}^{m}$，$F(a,b) = 0$，$D_{y}F(a,b)$ 可逆。',
         '',
-        '**① 秩恒为 $m$。** $D_{y}F$ 是 $DF$ 里的一整块 $m \\times m$ 子矩阵，它可逆 $\\implies \\operatorname{rank} DF(a,b) \\ge m$；而值域是 $\\mathbb{R}^{m}$，故秩恰为 $m$。由 $\\det D_{y}F \\ne 0$ 在 $(a,b)$ 附近持续成立，秩在邻域上恒为 $r = m$。',
+        '**① 秩恒为 $m$。** $D_{y}F$ 是 $DF$ 里的一整块 $m \\times m$ 子矩阵，它可逆 $\\implies \\operatorname{rank} DF(a,b) \\ge m$；\n\n而值域是 $\\mathbb{R}^{m}$，故秩恰为 $m$。\n\n由 $\\det D_{y}F \\ne 0$ 在 $(a,b)$ 附近持续成立，秩在邻域上恒为 $r = m$。',
         '',
         '**② 秩定理的坐标片。** 存在光滑坐标 $\\varphi$（在 $(a,b)$ 附近）、$\\psi$（在 $0$ 附近）使',
         '',
@@ -434,9 +434,9 @@ window.MG = window.MG || {};
         '',
         '于是水平集 $S := \\{ F = 0 \\}$ 在 $(a,b)$ 附近正好是 $\\varphi^{-1}$ 下的坐标片 $\\{ x_{1} = \\cdots = x_{m} = c \\}$（$c = \\psi(0)$）—— 一张 $n$ 维的 $C^{1}$ 子流形。',
         '',
-        '**③ 切空间横截。** $T_{(a,b)}S = \\ker DF(a,b)$：一边是「$F$ 在 $S$ 上恒 $0$」，另一边维数对得上（$n = (n+m) - m$）。而 $\\ker DF \\cap (\\{0\\} \\times \\mathbb{R}^{m}) = \\{0\\}$ —— 落在后一块里的向量满足 $D_{y}F \\cdot v = 0$，$D_{y}F$ 可逆；$\\ker DF$ 里后一半坐标为零的向量也满足 $D_{y}F \\cdot v = 0$。',
+        '**③ 切空间横截。** $T_{(a,b)}S = \\ker DF(a,b)$：一边是「$F$ 在 $S$ 上恒 $0$」，另一边维数对得上（$n = (n+m) - m$）。\n\n而 $\\ker DF \\cap (\\{0\\} \\times \\mathbb{R}^{m}) = \\{0\\}$ —— 落在后一块里的向量满足 $D_{y}F \\cdot v = 0$，$D_{y}F$ 可逆；\n\n$\\ker DF$ 里后一半坐标为零的向量也满足 $D_{y}F \\cdot v = 0$。',
         '',
-        '**④ 换成「$y = g(x)$」。** 记 $\\pi_{x}$ 为投影到前 $n$ 个原坐标。由 ③，$\\pi_{x}|_{S}$ 的微分在每点单射，而两侧维数都是 $n$，故是同构。再对 $\\pi_{x} : S \\to \\mathbb{R}^{n}$ 用一次逆映射定理：它在 $(a,b)$ 附近是 $C^{1}$ 微分同胚，故 $S$ 是一张图像 $y = g(x)$，$g(a) = b$，$g$ 为 $C^{1}$。',
+        '**④ 换成「$y = g(x)$」。** 记 $\\pi_{x}$ 为投影到前 $n$ 个原坐标。\n\n由 ③，$\\pi_{x}|_{S}$ 的微分在每点单射，而两侧维数都是 $n$，故是同构。\n\n再对 $\\pi_{x} : S \\to \\mathbb{R}^{n}$ 用一次逆映射定理：它在 $(a,b)$ 附近是 $C^{1}$ 微分同胚，故 $S$ 是一张图像 $y = g(x)$，$g(a) = b$，$g$ 为 $C^{1}$。',
         '',
         '**⑤ 导数。** 把 $F(x, g(x)) \\equiv 0$ 对 $x$ 求导：$D_{x}F + D_{y}F \\cdot Dg = 0$，即 $Dg = -(D_{y}F)^{-1}D_{x}F$。$\\blacksquare$'
       ].join('\n'),
@@ -462,7 +462,7 @@ window.MG = window.MG || {};
         '',
         '正是 Schwarz 引理的 (1)(2)。',
         '',
-        '**等号情形。** Pick 说「某个 $z \\ne z_{0}$ 或导数处取等号 $\\iff$ $f$ 是 $\\mathbb{D}$ 的分式线性自同构」。而固定原点的分式线性自同构只有 $\\varphi_{0} \\equiv 0$ 这一族退化情形可用，即 $z \\mapsto e^{i\\theta} z$：代入 $\\varphi_{a}(z) = (z-a)/(1-\\bar a z)$ 取 $a = 0$ 得 $\\varphi_{0}(z) = z$，再乘上单位模常数。故等号成立 $\\iff$ $f$ 是旋转 —— 正是引理的 (3)。$\\blacksquare$'
+        '**等号情形。** Pick 说「某个 $z \\ne z_{0}$ 或导数处取等号 $\\iff$ $f$ 是 $\\mathbb{D}$ 的分式线性自同构」。\n\n而固定原点的分式线性自同构只有 $\\varphi_{0} \\equiv 0$ 这一族退化情形可用，即 $z \\mapsto e^{i\\theta} z$：代入 $\\varphi_{a}(z) = (z-a)/(1-\\bar a z)$ 取 $a = 0$ 得 $\\varphi_{0}(z) = z$，再乘上单位模常数。\n\n故等号成立 $\\iff$ $f$ 是旋转 —— 正是引理的 (3)。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '黑边 `imp.schwarz-pick` 走反方向（Schwarz 引理 $+$ 圆盘自同构 $\\implies$ Pick）。两条并存：一条是证明路线，一条记录「引理只是 Pick 在原点处的那一格」。'
     },
@@ -482,7 +482,7 @@ window.MG = window.MG || {};
         '',
         '**它就是迹。** 把 $T$ 在某点的分量写成矩阵 $A = (T^{i}_{\\ j})$（第 $i$ 行是上标、第 $j$ 列是下标），则上式正是 $\\sum_{a} A_{aa} = \\operatorname{tr} A$。所以「缩并」在 $r = s = 1$ 这一格上退化成取迹。',
         '',
-        '**顺带得到 $\\operatorname{tr}(AB) = \\operatorname{tr}(BA)$。** 缩并按哪一个上标与哪一个下标配对来定义；而求和号 $\\sum_{a} T^{\\ldots a \\ldots}_{\\ldots a \\ldots}$ 里的哑标可以任意换名 —— 换成另一对上下标就是另一种缩并，在 $A B$ 上分别算得 $\\operatorname{tr}(AB)$ 与 $\\operatorname{tr}(BA)$。两者是同一个张量的同一组求和指标的重排，故相等。$\\blacksquare$'
+        '**顺带得到 $\\operatorname{tr}(AB) = \\operatorname{tr}(BA)$。** 缩并按哪一个上标与哪一个下标配对来定义；而求和号 $\\sum_{a} T^{\\ldots a \\ldots}_{\\ldots a \\ldots}$ 里的哑标可以任意换名 —— 换成另一对上下标就是另一种缩并，在 $A B$ 上分别算得 $\\operatorname{tr}(AB)$ 与 $\\operatorname{tr}(BA)$。\n\n两者是同一个张量的同一组求和指标的重排，故相等。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '蓝色定义线 `dep.mf2-trace-contraction` 说的是「取迹要用缩并这个定义」；这条粉边说的是反向的识别：取迹就是缩并的最简单一格。'
     },
@@ -498,14 +498,16 @@ window.MG = window.MG || {};
       proof: [
         '设 $\\mathcal{F}$ 在区域 $\\Omega$ 上局部一致有界，$f_{n}$ 是其中一列。',
         '',
-        '**① 一个紧集上的两条前提。** 取紧的 $K \\subset \\Omega$，令 $\\rho = \\operatorname{dist}(K, \\partial \\Omega) > 0$，取 $K \\subseteq \\Omega$ 的内点集 $K_{\\rho/2} = \\{ z : \\operatorname{dist}(z, K) \\le \\rho/2 \\}$。局部一致有界 $\\implies$ 存在 $M$ 使 $|f| \\le M$ 在 $K_{\\rho/2}$ 上一族一致地成立。于是',
+        '**① 一个紧集上的两条前提。** 取紧的 $K \\subset \\Omega$，令 $\\rho = \\operatorname{dist}(K, \\partial \\Omega) > 0$，取 $K \\subseteq \\Omega$ 的内点集 $K_{\\rho/2} = \\{ z : \\operatorname{dist}(z, K) \\le \\rho/2 \\}$。\n\n局部一致有界 $\\implies$ 存在 $M$ 使 $|f| \\le M$ 在 $K_{\\rho/2}$ 上一族一致地成立。\n\n于是',
         '',
         '- **一致有界**：$|f| \\le M$ 在 $K$ 上；',
-        '- **等度连续**：将 Cauchy 不等式（$n = 1$、半径 $\\rho/2$）作用在 $K$ 的各点的小圆盘上，得 $|f^{\\prime}| \\le 2M/\\rho$ 在 $K$ 上对**一切** $f \\in \\mathcal{F}$ 同时成立；中值不等式遂给 $|f(x) - f(y)| \\le (2M/\\rho)\\,|x - y|$，$\\delta = \\varepsilon \\rho/(2M)$ 与 $f$ 无关。',
+        '- **等度连续**：将 Cauchy 不等式（$n = 1$、半径 $\\rho/2$）作用在 $K$ 的各点的小圆盘上，得 $|f^{\\prime}| \\le 2M/\\rho$ 在 $K$ 上对**一切** $f \\in \\mathcal{F}$ 同时成立；\n\n中值不等式遂给 $|f(x) - f(y)| \\le (2M/\\rho)\\,|x - y|$，$\\delta = \\varepsilon \\rho/(2M)$ 与 $f$ 无关。',
         '',
         '**② 用 Arzelà–Ascoli。** $K$ 是紧距离空间，对上式那族 $\\{ f_{n}|_{K} \\}$ 用 Arzelà–Ascoli：存在子列在 $K$ 上一致收敛。',
         '',
-        '**③ 对角化到内闭一致收敛。** 取穷尽 $\\Omega$ 的紧集列 $K_{1} \\subset \\subset K_{2} \\subset \\subset \\cdots$（$\\bigcup K_{j} = \\Omega$，每个 $K_{j}$ 含于下一个的内部）。第 ② 步在 $K_{1}$ 上抽出子列，在该子列里对 $K_{2}$ 再抽，依此类推；取「第 $j$ 个子列的第 $j$ 项」这个对角子列，它在每个 $K_{j}$ 上从某一项起都属于第 $j$ 个子列，故在 $K_{j}$ 上一致收敛。',
+        '**③ 对角化到内闭一致收敛。** 取穷尽 $\\Omega$ 的紧集列 $K_{1} \\subset \\subset K_{2} \\subset \\subset \\cdots$（$\\bigcup K_{j} = \\Omega$，每个 $K_{j}$ 含于下一个的内部）。\n\n' +
+        '第 ② 步在 $K_{1}$ 上抽出子列，在该子列里对 $K_{2}$ 再抽，依此类推；\n\n' +
+        '取「第 $j$ 个子列的第 $j$ 项」这个对角子列，它在每个 $K_{j}$ 上从某一项起都属于第 $j$ 个子列，故在 $K_{j}$ 上一致收敛。',
         '',
         '**④ 极限全纯。** 内闭一致收敛的全纯函数列的极限全纯（Weierstrass 定理），故 $\\mathcal{F}$ 是正规族。$\\blacksquare$'
       ].join('\n'),

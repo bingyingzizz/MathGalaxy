@@ -5,7 +5,9 @@
 
 全程弧长参数，$\langle T,T\rangle = \langle N,N\rangle = \langle B,B\rangle = 1$，两两正交。
 
-**(1) $T' = \kappa N$。** 由 $\langle T,T\rangle = 1$ 得 $\langle T',T\rangle = 0$，即 $T'\perp T$；而 $N$ 的定义就是 $T'$ 的方向（$N := T'/\kappa$，$\kappa = \lVert T'\rVert$），故 $T' = \lVert T'\rVert N = \kappa N$。
+**(1) $T' = \kappa N$。** 由 $\langle T,T\rangle = 1$ 得 $\langle T',T\rangle = 0$，即 $T'\perp T$；
+
+而 $N$ 的定义就是 $T'$ 的方向（$N := T'/\kappa$，$\kappa = \lVert T'\rVert$），故 $T' = \lVert T'\rVert N = \kappa N$。
 
 **(2) $B' = -\tau N$。** $\langle B,B\rangle = 1$ 给 $B'\perp B$；又 $\langle B,T\rangle = 0$ 给
 

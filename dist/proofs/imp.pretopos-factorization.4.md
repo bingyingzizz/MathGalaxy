@@ -3,6 +3,12 @@
 
 `def.pretopos` 预拓扑斯 + `def.effective-equivalence` 有效等价关系 + `def.regular-epi` 正则满态射 → `prop.pretopos-factorization` 满-单分解
 
-**唯一性。** 若 $f = X \xrightarrow{\ \pi'\ } X' \xrightarrow{\ l'\ } Y$ 是另一个满-单分解，则由 $l'$ 是单态射得 $R = X \times_{X'} X$。记 $\pi'$ 为满态射，由第 4 条它是**正则**的，即 $\pi' = \operatorname{coker}(X \times_{X'} X \rightrightarrows X)$；把 $X \times_{X'} X = R$ 代进去得 $\pi'$ 与 $\pi$ 是同一个余等化子。于是存在互逆的 $\overline{X} \rightleftarrows X'$，$X' \cong \overline{X}$。∎
+于是存在互逆的 $\overline{X} \rightleftarrows X'$，$X' \cong \overline{X}$。
 
-> 续见 proofs/imp.pretopos-factorization.5.md
+∎
+
+**平衡性。** 若 $f$ 既满又单，则 $R = X \times_{Y} X \cong X$（单态射的等价刻画），故 $\overline{X} \cong X$，$f \cong l$ 是单态射；又 $f$ 已是单态射，故 $f$ 是同构。∎
+
+**严格性。** 上面的分解把 $\operatorname{im} f$ 与 $\operatorname{coim} f$ 都算成了 $\overline{X}$，所以它们同构。∎
+
+> 整条证明只用了一个构造「取核对再取商」和一组事实「等价关系有效 + 满态射正则」。这正是预拓扑斯那四条公理想换来的东西。

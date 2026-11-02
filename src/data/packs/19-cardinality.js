@@ -33,7 +33,7 @@ window.MG = window.MG || {};
         '',
         '有限情形的元素个数：$|X| = n \\implies |\\mathcal{P}(X)| = 2^{n}$（每个元素「取或不取」）。'
       ].join('\n'),
-      notes: '⭐ 幂集是「把性质变成对象」的那一步：想谈「$X$ 的所有子集」这件事本身（而不是逐个谈），就得有幂集。$\\mathcal{P}(X)$ 同时是几个重要构造的舞台：\n- 外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$；\n- 环、$\\sigma$-代数、单调类都是 $\\mathcal{P}(X)$ 的某一族子集；\n- 生成的 $\\sigma$-代数取的就是「一切包含 $\\mathcal{E}$ 的 $\\sigma$-代数之交」，而 $\\mathcal{P}(X)$ 保证这个交不空。\n\n⚠ $\\emptyset \\in \\mathcal{P}(X)$ 且 $X \\in \\mathcal{P}(X)$ 对一切 $X$ 成立 —— 幂集从来不是空的。',
+      notes: '⭐ 幂集是「把性质变成对象」的那一步：想谈「$X$ 的所有子集」这件事本身（而不是逐个谈），就得有幂集。\n\n$\\mathcal{P}(X)$ 同时是几个重要构造的舞台：\n- 外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$；\n\n\n- 环、$\\sigma$-代数、单调类都是 $\\mathcal{P}(X)$ 的某一族子集；\n\n\n- 生成的 $\\sigma$-代数取的就是「一切包含 $\\mathcal{E}$ 的 $\\sigma$-代数之交」，而 $\\mathcal{P}(X)$ 保证这个交不空。\n\n⚠ $\\emptyset \\in \\mathcal{P}(X)$ 且 $X \\in \\mathcal{P}(X)$ 对一切 $X$ 成立 —— 幂集从来不是空的。',
       refs: ['Kunen, Set Theory, I.5']
     },
 
@@ -53,7 +53,7 @@ window.MG = window.MG || {};
         '',
         '「等势」是集合之间的一种等价关系：自反（恒等映射）、对称（逆映射）、传递（合成）。'
       ].join('\n'),
-      notes: '⭐ 这是**比较大小的正确方式**：不去数个数（无限集数不完），而是问「能不能一一配对」。\n\n经典结果：\n- $\\mathbb{N}$ 与 $\\mathbb{Q}$、$\\mathbb{N} \\times \\mathbb{N}$ 都等势（可数）；\n- $(0, 1)$ 与 $\\mathbb{R}$ 等势（$x \\mapsto \\tan \\pi(x - 1/2)$ 之类）；\n- $\\mathbb{N}$ 与 $\\mathbb{R}$ **不等势**（Cantor 定理）。\n\n⚠ $A \\subseteq B$ 与「等势」无关：$\\mathbb{N} \\subset \\mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\\iff$ 无限）。',
+      notes: '⭐ 这是**比较大小的正确方式**：不去数个数（无限集数不完），而是问「能不能一一配对」。\n\n经典结果：\n- $\\mathbb{N}$ 与 $\\mathbb{Q}$、$\\mathbb{N} \\times \\mathbb{N}$ 都等势（可数）；\n\n\n- $(0, 1)$ 与 $\\mathbb{R}$ 等势（$x \\mapsto \\tan \\pi(x - 1/2)$ 之类）；\n\n\n- $\\mathbb{N}$ 与 $\\mathbb{R}$ **不等势**（Cantor 定理）。\n\n⚠ $A \\subseteq B$ 与「等势」无关：$\\mathbb{N} \\subset \\mathbb{Q}$ 但两者等势 —— 这正是无限集与有限集的分界（Dedekind 的刻画：与某个真子集等势 $\\iff$ 无限）。',
       refs: ['Kunen, Set Theory, I.6']
     },
 
@@ -77,7 +77,7 @@ window.MG = window.MG || {};
         '',
         '若 $|A| \\le |B|$ 且 $|B| \\le |A|$，则 $|A| = |B|$（Schröder–Bernstein 定理）。'
       ].join('\n'),
-      notes: '⭐ 记号的用法：$|\\mathbb{N}| = \\aleph_0$（可数无限），$|\\mathbb{R}| = 2^{\\aleph_0}$，且 $\\aleph_0 < 2^{\\aleph_0}$。\n\n⚠ 严格说来「等势类」不构成集合，所以 ZFC 里的通行做法是：先有**序数**，再用良序定理（$\\iff$ AC）取每个等势类里最小的那个序数作代表，那个序数就叫基数。\n> 本星图只用到「$|A| \\le |B|$ 靠单射、$|A| = |B|$ 靠双射」这两件事 —— 它们不需要选代表就能用。\n\n⚠ 任意两个基数**不一定可比**，这正是**基数可比定理**（要用 AC）的内容。',
+      notes: '⭐ 记号的用法：$|\\mathbb{N}| = \\aleph_0$（可数无限），$|\\mathbb{R}| = 2^{\\aleph_0}$，且 $\\aleph_0 < 2^{\\aleph_0}$。\n\n⚠ 严格说来「等势类」不构成集合，所以 ZFC 里的通行做法是：先有**序数**，再用良序定理（$\\iff$ AC）取每个等势类里最小的那个序数作代表，那个序数就叫基数。\n\n\n> 本星图只用到「$|A| \\le |B|$ 靠单射、$|A| = |B|$ 靠双射」这两件事 —— 它们不需要选代表就能用。\n\n⚠ 任意两个基数**不一定可比**，这正是**基数可比定理**（要用 AC）的内容。',
       refs: ['Kunen, Set Theory, I.6']
     },
 
@@ -97,7 +97,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：**不存在**从 $A$ 到 $\\mathcal{P}(A)$ 的满射（当然也不存在双射），但 $a \\mapsto \\{a\\}$ 是单射。'
       ].join('\n'),
-      notes: '⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。于是\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$|\\mathbb{R}| = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。',
+      notes: '⭐ 推论：**没有最大的基数** —— 从任何集合出发，取幂集就得到更大的。\n\n于是\n\n$\\aleph_0 < 2^{\\aleph_0} < 2^{2^{\\aleph_0}} < \\cdots$\n\n取 $A = \\mathbb{N}$ 就得到「$\\mathbb{R}$ 不可数」（$|\\mathbb{R}| = 2^{\\aleph_0}$）。\n\n证明用的是**对角线法**（见边的证明）：那个「对角集」$D = \\{ a \\in A : a \\notin f(a) \\}$ 不在 $f$ 的像里。\n\n这是数学史上最会产定理的一个构造，往后 Cantor–Bernstein、Gödel 不完备定理、停机问题用的都是它。',
       refs: ['Kunen, Set Theory, I.6']
     },
 
@@ -133,7 +133,7 @@ window.MG = window.MG || {};
         '',
         '即任意两个基数都可以比较大小。'
       ].join('\n'),
-      notes: '⭐ 这条是「基数排序」的许可证：没有它，连「$A$ 比 $B$ 大」这句话都可能毫无意义。\n\n证明路线（见边）：**良序定理**把 $A$、$B$ 都良序化 $\\to$ 对应的序数可以比较 $\\to$ 于是有一个方向能放进单射。所以这条定理与 AC、良序定理是同一件事的三种说法。\n\n⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。',
+      notes: '⭐ 这条是「基数排序」的许可证：没有它，连「$A$ 比 $B$ 大」这句话都可能毫无意义。\n\n证明路线（见边）：**良序定理**把 $A$、$B$ 都良序化 $\\to$ 对应的序数可以比较 $\\to$ 于是有一个方向能放进单射。\n\n所以这条定理与 AC、良序定理是同一件事的三种说法。\n\n⚠ 没有 AC 时确实有不可比的基数（Jech, *The Axiom of Choice*）。',
       refs: ['Jech, The Axiom of Choice, Ch. 3']
     }
   ],
@@ -269,7 +269,7 @@ window.MG = window.MG || {};
         '',
         '与 $h(A^{\\sharp}) = g^{-1}(A^{\\sharp})$ 不相交 —— 因为 $A^{\\sharp} \\cap (A^{*} \\setminus A_0) = \\emptyset$。',
         '',
-        '**④ $h$ 是满射。** 若 $b \\in B$：令 $a = g(b) \\in A$。若 $a \\in A^{\\sharp}$，则 $h(a) = g^{-1}(a) = b$；若 $a \\in A^{*}$，则 $a \\in A_n$ 对某个 $n \\ge 1$（因为 $a = g(b)$ 落在 $g(B)$ 里），于是 $a = g(f(a\'))$ 对某个 $a\' \\in A_{n-1} \\subseteq A^{*}$，由 $g$ 单射得 $f(a\') = b$，即 $h(a\') = b$。',
+        '**④ $h$ 是满射。** 若 $b \\in B$：令 $a = g(b) \\in A$。\n\n若 $a \\in A^{\\sharp}$，则 $h(a) = g^{-1}(a) = b$；若 $a \\in A^{*}$，则 $a \\in A_n$ 对某个 $n \\ge 1$（因为 $a = g(b)$ 落在 $g(B)$ 里），于是 $a = g(f(a\'))$ 对某个 $a\' \\in A_{n-1} \\subseteq A^{*}$，由 $g$ 单射得 $f(a\') = b$，即 $h(a\') = b$。',
         '',
         '综上 $h$ 是双射，故 $|A| = |B|$。$\\blacksquare$'
       ].join('\n')

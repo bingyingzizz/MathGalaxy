@@ -7,7 +7,9 @@
 
 **$\mathbb{Q}/\mathbb{Z}$**：$\mathbb{Q}$ 可除，由 `prop.divisible-quotient` 其商可除 ✓。
 
-**Prüfer $p$-群**：$\mathbb{Z}[1/p]/\mathbb{Z} = \varinjlim_{k}\mathbb{Z}/p^{k}$，余极限沿「乘 $p$」取。给定元素与 $n = p^{s} u$（$p \nmid u$）：元素来自某一层 $\mathbb{Z}/p^{k}$，先在该层的第 $k + s$ 层里解 $p^{s} z = x$（这就是无限次除以 $p$ 的意思），再用 $u$ 在模 $p^{k+s}$ 中可逆把 $u$ 除掉 ✓。
+**Prüfer $p$-群**：$\mathbb{Z}[1/p]/\mathbb{Z} = \varinjlim_{k}\mathbb{Z}/p^{k}$，余极限沿「乘 $p$」取。
+
+给定元素与 $n = p^{s} u$（$p \nmid u$）：元素来自某一层 $\mathbb{Z}/p^{k}$，先在该层的第 $k + s$ 层里解 $p^{s} z = x$（这就是无限次除以 $p$ 的意思），再用 $u$ 在模 $p^{k+s}$ 中可逆把 $u$ 除掉 ✓。
 
 三者由 `thm.pid-injective-divisible` 都是内射 $\mathbb{Z}$-模 ✓。∎
 

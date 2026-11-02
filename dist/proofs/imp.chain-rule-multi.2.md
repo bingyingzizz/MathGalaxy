@@ -5,6 +5,8 @@
 
 $$(g \circ f)(a + h) = g\bigl( b + k \bigr) = g(b) + M(k) + \eta(k)\,\|k\| = (g \circ f)(a) + (M \circ L)(h) + \underbrace{M\bigl(\varepsilon(h)\|h\|\bigr) + \eta(k)\,\|k\|}_{=: R(h)}$$
 
-**第三步：证明 $R(h) = o(\|h\|)$。** 第一项：$\|M(\varepsilon(h)\|h\|)\| \le \|M\|\,\|\varepsilon(h)\|\,\|h\| = o(\|h\|)$。第二项：由第一步 $\|k\| \le (\|L\|+1)\|h\|$，又 $k \to 0$ 故 $\|\eta(k)\| \to 0$，于是 $\|\eta(k)\|\,\|k\| \le \|\eta(k)\||(\|L\|+1)\|h\| = o(\|h\|)$。
+**第三步：证明 $R(h) = o(\|h\|)$。** 第一项：$\|M(\varepsilon(h)\|h\|)\| \le \|M\|\,\|\varepsilon(h)\|\,\|h\| = o(\|h\|)$。
+
+第二项：由第一步 $\|k\| \le (\|L\|+1)\|h\|$，又 $k \to 0$ 故 $\|\eta(k)\| \to 0$，于是 $\|\eta(k)\|\,\|k\| \le \|\eta(k)\||(\|L\|+1)\|h\| = o(\|h\|)$。
 
 > 续见 proofs/imp.chain-rule-multi.3.md

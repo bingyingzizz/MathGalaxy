@@ -7,4 +7,8 @@
 
 **$R = h_{X}$ 这件事的意义。** $R(Y) \subseteq \operatorname{Hom}(Y, X)$ 是「能穿过某个 $X_{i}$」的那些映射。$R = h_{X}$ 就是说**每个** $Y \to X$ 都能穿过某个 $X_{i}$。
 
+**（$\Longleftarrow$）** 设 $q$ 是满态射，即对任意 $T$ 与任意 $u, v : X \to T$，$u \circ q = v \circ q \implies u = v$。
+
+设 $g : Y \to X$。
+
 > 续见 proofs/imp.covering-sieve-epi.2.md

@@ -24,7 +24,7 @@ window.MG = window.MG || {};
       tags: ['同调代数', '阿贝尔范畴', '加法范畴'],
       statement: [
         '- **预加法范畴**（$\\mathbf{Ab}$-范畴）是每个 $\\operatorname{Hom}$ 集都带有阿贝尔群结构、且复合双线性的范畴；',
-        '- **零对象**是 $\\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \\oplus M_{2}$，如果存在 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；',
+        '- **零对象**是 $\\operatorname{End}(M) = 1$（即 $1_{M} = 0_{M}$）的对象；对象 $M$ 是 $M_{1}, M_{2}$ 的**直和** $M = M_{1} \\oplus M_{2}$，如果存在 $p_{k} : M \\to M_{k}$、$i_{k} : M_{k} \\to M$ 使 $p_{1} i_{1} = 1$、$p_{2} i_{2} = 1$、$i_{1} p_{1} + i_{2} p_{2} = 1_{M}$；\n\n',
         '- **加法范畴**是有零对象与所有直和的预加法范畴（等价地：所有有限积、或所有有限余积存在，此时二者存在且相等）；',
         '- **预阿贝尔范畴**是每个态射都有核与余核的加法范畴（等价地：所有有限极限与有限余极限存在）；',
         '- **阿贝尔范畴**是满足下列**等价**条件之一的预阿贝尔范畴：',
@@ -36,7 +36,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '在阿贝尔范畴里，人们习惯说**单射 / 满射**而不说单态射 / 满态射 —— 因为第 1 条保证了「正则的」与「可消的」是一回事。',
-        '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
+        '例：$A\\text{-}\\mathbf{Mod}$ 是阿贝尔范畴；拓扑斯上的 $\\mathbf{Ab}(\\mathcal{T})$ 也是；$\\mathbf{AbCHaus}$ 也是。\n\n而 $\\mathbf{AbTop}$ **不是**（$\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ 这个恒等映射不严格），$\\mathbf{AbHaus}$ 也不是。',
         '阿贝尔范畴是整套同调代数的**工作环境**：有核有余核，「正合列」才说得出口；而加法范畴只提供加法的骨架（零对象与直和）。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §5.1–5.2']
@@ -59,7 +59,7 @@ window.MG = window.MG || {};
         '若对每个 $n$ 都有 $d^{n} \\circ d^{n-1} = 0$，则称 $K$ 是一个**（上）链复形**，$d$ 叫**微分**。把箭头反向（或等价地在 $\\mathcal{C}^{\\mathrm{op}}$ 里取）得**链复形**，记 $K_{n} := K^{-n}$、$d_{n} := d^{-n}$。'
       ].join('\n'),
       notes: [
-        '$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；同伦范畴那边同样加 $+$ $-$ $b$。',
+        '$K$ 叫**下有界**（$n \\ll 0$ 时 $K^{n} = 0$）、**上有界**、**有界**（两者兼备）。\n\n相应地记复形范畴为 $\\mathcal{C}(\\mathcal{C})$，其下有界、上有界、有界的满子范畴分别记 $\\mathcal{C}^{+}(\\mathcal{C})$、$\\mathcal{C}^{-}(\\mathcal{C})$、$\\mathcal{C}^{b}(\\mathcal{C})$；\n\n同伦范畴那边同样加 $+$ $-$ $b$。',
         '例：$K$ 是（半）单纯对象时，令 $d^{n} := \\sum_{i} (-1)^{i} d_{i}^{n}$，则 $K$ 成为一个链复形 —— 系数 $(-1)^{i}$ 就是让相邻两项的复合正负相消的那个符号，和经典的单纯边界算子完全一致。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
@@ -105,7 +105,7 @@ window.MG = window.MG || {};
         '',
         '记 $f \\sim g$，$s$ 叫一个**同伦**。与 $0$ 同伦的态射叫**零伦的**。'
       ].join('\n'),
-      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。两条合起来，才允许把「同伦」当成要商掉的东西。',
+      notes: '零伦态射构成 $\\operatorname{Hom}_{\\mathcal{C}(\\mathcal{C})}(K, L)$ 的一个**子群**；而且同伦是**两边都相容于复合**的等价关系（$f \\sim g$ 时 $h \\circ f \\circ k \\sim h \\circ g \\circ k$）。\n\n两条合起来，才允许把「同伦」当成要商掉的东西。',
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
     },
 
@@ -128,7 +128,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '等价的说法：$f : K \\to L$ 是同伦等价 $\\iff$ 存在 $g : L \\to K$ 使 $g \\circ f \\sim 1_{K}$、$f \\circ g \\sim 1_{L}$；$K$ 同伦平凡 $\\iff$ $1_{K} \\sim 0_{K}$。',
-        '$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
+        '$\\mathbf{K}(\\mathcal{C})$ 是**加法范畴**，且 $\\mathcal{C}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C})$ 加法；\n\n任何加法函子 $F : \\mathcal{C} \\to \\mathcal{C}\'$ 诱导 $\\mathbf{K}(\\mathcal{C}) \\to \\mathbf{K}(\\mathcal{C}\')$。',
         '为什么要在同伦范畴里干活：同调函子在同伦下不变，所以**先商掉同伦，剩下的信息才是同调真正看得见的**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §7.1']
@@ -191,7 +191,7 @@ window.MG = window.MG || {};
         '在 $\\mathbf{K}(\\mathcal{C})$ 中：',
         '',
         '1. $K \\xrightarrow{\\ 1\\ } K \\to 0 \\to K[1]$ 是导出三角；',
-        '2. **旋转**：$K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1]$ 导出 $\\iff$ 旋转后的 $L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1] \\xrightarrow{\\ -f[1]\\ } L[1]$ 导出；',
+        '2. **旋转**：$K \\xrightarrow{\\ f\\ } L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1]$ 导出 $\\iff$ 旋转后的 $L \\xrightarrow{\\ g\\ } M \\xrightarrow{\\ h\\ } K[1] \\xrightarrow{\\ -f[1]\\ } L[1]$ 导出；\n\n',
         '3. 任意 $f : K \\to L$ 都能（**不唯一**地）嵌入一个导出三角；',
         '4. 导出三角之间的态射可以（**不唯一**地）延拓。'
       ].join('\n'),
@@ -222,8 +222,8 @@ window.MG = window.MG || {};
         '若 $u, v$ 是同伦等价，则 $u_{*}, v_{*}$ 以及它们的平移 $u[1]_{*}, v[1]_{*}$ 都是双射 —— 五引理把中间的 $w_{*}$ 夹成双射。这对**每个** $T$ 都成立，于是由 Yoneda 引理，$w$ 本身就是同伦等价。∎',
         ['**证明第 1 条。** 设三角 $K \\xrightarrow{f} L \\xrightarrow{g} M \\xrightarrow{h} K[1]$ 到自身有态射 $(0, 0, w)$，于是 $g v = w g$、$h w = u[1] h$，即',
           '$$w g = 0, \\qquad h w = 0 .$$',
-          '- 由 $w g = 0$：把共调函子 $\\operatorname{Hom}(-, M)$ 作用在三角上得长正合列 $\\operatorname{Hom}(K[1], M) \\xrightarrow{\\;h^{*}\\;} \\operatorname{Hom}(M, M) \\xrightarrow{\\;g^{*}\\;} \\operatorname{Hom}(L, M)$，而 $g^{*}(w) = w g = 0$，所以 $w$ 落在 $\\operatorname{im} h^{*}$ 里：存在 $w_{1} : K[1] \\to M$ 使 **$w = w_{1} \\circ h$**；',
-          '- 由 $h w = 0$ 得 $(h w_{1}) \\circ h = 0$。把同一套正合列用在**旋转后**的三角 $L \\xrightarrow{g} M \\xrightarrow{h} K[1] \\xrightarrow{-f[1]} L[1]$ 上（对着靶 $K[1]$），$(h w_{1}) \\circ h = 0$ 给出 $h w_{1}$ 落在 $\\operatorname{im}(-f[1])^{*}$ 里：存在 $\\beta : L[1] \\to K[1]$ 使 **$h w_{1} = -\\beta \\circ f[1]$**；',
+          '- 由 $w g = 0$：把共调函子 $\\operatorname{Hom}(-, M)$ 作用在三角上得长正合列 $\\operatorname{Hom}(K[1], M) \\xrightarrow{\\;h^{*}\\;} \\operatorname{Hom}(M, M) \\xrightarrow{\\;g^{*}\\;} \\operatorname{Hom}(L, M)$，而 $g^{*}(w) = w g = 0$，所以 $w$ 落在 $\\operatorname{im} h^{*}$ 里：存在 $w_{1} : K[1] \\to M$ 使 **$w = w_{1} \\circ h$**；\n\n',
+          '- 由 $h w = 0$ 得 $(h w_{1}) \\circ h = 0$。\n\n把同一套正合列用在**旋转后**的三角 $L \\xrightarrow{g} M \\xrightarrow{h} K[1] \\xrightarrow{-f[1]} L[1]$ 上（对着靶 $K[1]$），$(h w_{1}) \\circ h = 0$ 给出 $h w_{1}$ 落在 $\\operatorname{im}(-f[1])^{*}$ 里：存在 $\\beta : L[1] \\to K[1]$ 使 **$h w_{1} = -\\beta \\circ f[1]$**；\n\n',
           '- 于是 $w^{2} = w_{1} h w_{1} h = w_{1}(h w_{1}) h = -w_{1} \\beta f[1] h$。而 $f[1] \\circ h = 0$ —— 那正是旋转公理说的「三角里相邻两步复合为零」。故 $w^{2} = 0$。∎',
           '**第 1 条在说什么**：三角之间的态射被前两步控制得很紧 —— 前两步一旦归零，第三步不但被逼成零平方，还被夹在两条正合列之间。这正是三角范畴公理里那条最不显然的要求的来源。'
         ].join('\n'),
@@ -383,7 +383,7 @@ window.MG = window.MG || {};
         '',
         '$$\\cdots \\subseteq F^{n}M \\subseteq F^{n+1}M \\subseteq \\cdots \\subseteq M$$',
         '',
-        '总假定过滤是**穷尽的**（$\\bigcup_{n} F^{n}M = M$）与**分离的**（$\\bigcap_{n} F^{n}M = 0$）；若 $n \\ll 0$ 时 $F^{n}M = M$ 且 $n \\gg 0$ 时 $F^{n}M = 0$，叫**有限的**。带过滤的对象构成范畴 $\\mathbf{F}(\\mathcal{A})$，**关联分次**记 $\\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。'
+        '总假定过滤是**穷尽的**（$\\bigcup_{n} F^{n}M = M$）与**分离的**（$\\bigcap_{n} F^{n}M = 0$）；若 $n \\ll 0$ 时 $F^{n}M = M$ 且 $n \\gg 0$ 时 $F^{n}M = 0$，叫**有限的**。\n\n带过滤的对象构成范畴 $\\mathbf{F}(\\mathcal{A})$，**关联分次**记 $\\operatorname{Gr}^{n}M := F^{n}M / F^{n+1}M$。'
       ].join('\n'),
       notes: '命题：$\\mathbf{F}(\\mathcal{C}(\\mathcal{A})) \\cong \\mathcal{C}(\\mathbf{F}(\\mathcal{A}))$ —— **「带过滤」与「取复形」可以交换**。所以可以先把复形过滤好，再逐层算同调。',
       refs: ['Le Stum, An introduction to condensed mathematics, §7.2']
@@ -434,7 +434,7 @@ window.MG = window.MG || {};
       target: 'prop.triangle-rotation',
       title: '映射锥 $\\implies$ 三角可旋转、可延拓',
       proof: [
-        '**旋转。** 不妨设 $M = M(f)$，即三角是 $K \\xrightarrow{\\ f\\ } L \\to M(f) \\to K[1]$。要证 $L \\to M(f) \\to K[1] \\to L[1]$ 导出。把 $g : L \\to M(f)$ 取成含入 $(0, 1)^{\\mathrm{T}}$，则它的映射锥是',
+        '**旋转。** 不妨设 $M = M(f)$，即三角是 $K \\xrightarrow{\\ f\\ } L \\to M(f) \\to K[1]$。\n\n要证 $L \\to M(f) \\to K[1] \\to L[1]$ 导出。\n\n把 $g : L \\to M(f)$ 取成含入 $(0, 1)^{\\mathrm{T}}$，则它的映射锥是',
         '',
         '$$M(g)^{n} = L^{n+1} \\oplus M(f)^{n} = L^{n+1} \\oplus K^{n+1} \\oplus L^{n}$$',
         '',

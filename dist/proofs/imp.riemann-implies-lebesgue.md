@@ -9,4 +9,6 @@
 
 $$\varphi_n := \sum_i m_i \chi_{I_i}, \qquad \psi_n := \sum_i M_i \chi_{I_i}$$
 
+（对一列模趋于零的分割），满足 $\varphi_n \le f \le \psi_n$ 且 $\int (\psi_n - \varphi_n) = U(f, P_n) - L(f, P_n) \to 0$（这里 $\int$ 是 Lebesgue 积分，对简单函数与 Riemann 积分一致）。
+
 > 续见 proofs/imp.riemann-implies-lebesgue.2.md

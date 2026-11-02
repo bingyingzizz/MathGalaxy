@@ -59,7 +59,7 @@ window.MG = window.MG || {};
         '',
         '若 $g(x_0) \\ne 0$，则 $f/g$ 在 $x_0$ 连续。若 $g$ 在 $f(x_0)$ 连续，则复合 $g \\circ f$ 在 $x_0$ 连续。'
       ].join('\n'),
-      notes: '⭐ 前五条由**极限的四则运算**（`prop.limit-arithmetic`）直接翻译过来：连续就是「极限等于函数值」，所以极限能做的运算连续也能做。\n\n⚠ 复合那条**不能**照搬：$\\lim_{x \\to x_0} f(x) = f(x_0)$ 与 $\\lim_{y \\to y_0} g(y) = g(y_0)$ 要拼成 $\\lim_{x \\to x_0} g(f(x)) = g(f(x_0))$，中间要过一道 $\\varepsilon$-$\\delta$ 的传递。\n\n⭐ 推论：多项式处处连续；有理函数在分母不为零处连续；由 `thm.elementary-derivatives` 与幂级数，$\\exp$、$\\sin$、$\\cos$ 也连续 —— 于是「初等函数在其定义域内连续」这句话是**证出来的**，不是约定。'
+      notes: '⭐ 前五条由**极限的四则运算**（`prop.limit-arithmetic`）直接翻译过来：连续就是「极限等于函数值」，所以极限能做的运算连续也能做。\n\n⚠ 复合那条**不能**照搬：$\\lim_{x \\to x_0} f(x) = f(x_0)$ 与 $\\lim_{y \\to y_0} g(y) = g(y_0)$ 要拼成 $\\lim_{x \\to x_0} g(f(x)) = g(f(x_0))$，中间要过一道 $\\varepsilon$-$\\delta$ 的传递。\n\n⭐ 推论：多项式处处连续；\n\n有理函数在分母不为零处连续；\n\n由 `thm.elementary-derivatives` 与幂级数，$\\exp$、$\\sin$、$\\cos$ 也连续 —— 于是「初等函数在其定义域内连续」这句话是**证出来的**，不是约定。'
     },
     {
       id: 'prop.differentiable-implies-continuous',
@@ -73,7 +73,7 @@ window.MG = window.MG || {};
       statement: [
         '若 $f$ 在 $x_0$ 可导，则 $f$ 在 $x_0$ 连续。'
       ].join('\n'),
-      notes: '⭐ 一句话证明：$f(x) - f(x_0) = \\dfrac{f(x) - f(x_0)}{x - x_0}\\,(x - x_0)$，右边第一个因子趋于 $f\'(x_0)$、第二个趋于 $0$，乘积趋于 $0$。\n\n⚠ 逆命题不成立：$f(x) = |x|$ 在 $0$ 连续但不可导（左右导数差一个符号）。所以「连续」是比「可导」严格更弱的条件 —— 图上的层号里 $\\text{可导}$ 在 $\\text{连续}$ 之上。\n\n⭐ 这条在 `thm.derivative-rules` 的乘积法则里要用：$g(x) \\to g(x_0)$ 那一步就是它。'
+      notes: '⭐ 一句话证明：$f(x) - f(x_0) = \\dfrac{f(x) - f(x_0)}{x - x_0}\\,(x - x_0)$，右边第一个因子趋于 $f\'(x_0)$、第二个趋于 $0$，乘积趋于 $0$。\n\n⚠ 逆命题不成立：$f(x) = |x|$ 在 $0$ 连续但不可导（左右导数差一个符号）。\n\n所以「连续」是比「可导」严格更弱的条件 —— 图上的层号里 $\\text{可导}$ 在 $\\text{连续}$ 之上。\n\n⭐ 这条在 `thm.derivative-rules` 的乘积法则里要用：$g(x) \\to g(x_0)$ 那一步就是它。'
     },
     {
       id: 'thm.derivative-rules',
@@ -95,7 +95,7 @@ window.MG = window.MG || {};
         '',
         '$$(g \\circ f)\'(x_0) = g\'(f(x_0))\\,f\'(x_0).$$'
       ].join('\n'),
-      notes: '⭐ 乘积法则的证明要点是**加一项减一项**：$f(x)g(x) - f(x_0)g(x_0) = [f(x) - f(x_0)]\\,g(x) + f(x_0)[g(x) - g(x_0)]$。第一项里的 $g(x)$ 要用「可导 $\\implies$ 连续」换成 $g(x_0)$ —— 这就是为什么 `prop.differentiable-implies-continuous` 必须排在它前面。\n\n⚠ 链式法则**不能**直接写 $\\dfrac{\\Delta g}{\\Delta f}\\cdot\\dfrac{\\Delta f}{\\Delta x}$：$\\Delta f$ 可能为 $0$（$f$ 在 $x_0$ 附近取值相同），分母会消失。正确写法是把 $g$ 的增量写成「线性主部 + 余项」：$g(y) - g(y_0) = [g\'(y_0) + \\varepsilon(y)]\\,(y - y_0)$，其中 $\\varepsilon(y) \\to 0$。\n\n⭐ 商法则由乘积法则与 $\\left(\\dfrac{1}{g}\\right)\' = -\\dfrac{g\'}{g^{2}}$ 合成；后者是把 $\\dfrac{1}{g(x)} - \\dfrac{1}{g(x_0)} = -\\dfrac{g(x) - g(x_0)}{g(x)g(x_0)}$ 除以 $x - x_0$ 再取极限。'
+      notes: '⭐ 乘积法则的证明要点是**加一项减一项**：$f(x)g(x) - f(x_0)g(x_0) = [f(x) - f(x_0)]\\,g(x) + f(x_0)[g(x) - g(x_0)]$。\n\n第一项里的 $g(x)$ 要用「可导 $\\implies$ 连续」换成 $g(x_0)$ —— 这就是为什么 `prop.differentiable-implies-continuous` 必须排在它前面。\n\n⚠ 链式法则**不能**直接写 $\\dfrac{\\Delta g}{\\Delta f}\\cdot\\dfrac{\\Delta f}{\\Delta x}$：$\\Delta f$ 可能为 $0$（$f$ 在 $x_0$ 附近取值相同），分母会消失。\n\n正确写法是把 $g$ 的增量写成「线性主部 + 余项」：$g(y) - g(y_0) = [g\'(y_0) + \\varepsilon(y)]\\,(y - y_0)$，其中 $\\varepsilon(y) \\to 0$。\n\n⭐ 商法则由乘积法则与 $\\left(\\dfrac{1}{g}\\right)\' = -\\dfrac{g\'}{g^{2}}$ 合成；\n\n后者是把 $\\dfrac{1}{g(x)} - \\dfrac{1}{g(x_0)} = -\\dfrac{g(x) - g(x_0)}{g(x)g(x_0)}$ 除以 $x - x_0$ 再取极限。'
     },
     {
       id: 'thm.elementary-derivatives',
@@ -115,7 +115,7 @@ window.MG = window.MG || {};
         '',
         '$$(\\exp x)\' = \\exp x, \\qquad (\\ln x)\' = \\frac{1}{x} \\quad (x > 0).$$'
       ].join('\n'),
-      notes: '⭐ 三个来源：$x^{n}$ 用乘积法则归纳（负指数用商法则）；$\\sin$、$\\cos$、$\\exp$ 由**幂级数**定义，所以求导就是**逐项求导**（`thm.power-series-analytic`）；$\\ln$ 是 $\\exp$ 的反函数，用链式法则从 $\\exp(\\ln y) = y$ 两边求导得到。\n\n⭐ $\\sqrt{x}$ 由 $x = (\\sqrt{x})^{2}$ 两边求导：$1 = 2\\sqrt{x}\\,(\\sqrt{x})\'$。\n\n⚠ 这张表是**定理**，不是定义的一部分：`def.trig-function` 与 `def.exp-function` 只用级数规定了函数值，导数要另外算。'
+      notes: '⭐ 三个来源：$x^{n}$ 用乘积法则归纳（负指数用商法则）；$\\sin$、$\\cos$、$\\exp$ 由**幂级数**定义，所以求导就是**逐项求导**（`thm.power-series-analytic`）；\n\n$\\ln$ 是 $\\exp$ 的反函数，用链式法则从 $\\exp(\\ln y) = y$ 两边求导得到。\n\n⭐ $\\sqrt{x}$ 由 $x = (\\sqrt{x})^{2}$ 两边求导：$1 = 2\\sqrt{x}\\,(\\sqrt{x})\'$。\n\n⚠ 这张表是**定理**，不是定义的一部分：`def.trig-function` 与 `def.exp-function` 只用级数规定了函数值，导数要另外算。'
     },
     {
       id: 'thm.geometric-series',
@@ -131,7 +131,7 @@ window.MG = window.MG || {};
         '',
         '$$\\sum_{n=0}^{\\infty} q^{n} = \\frac{1}{1 - q}.$$'
       ].join('\n'),
-      notes: '⭐ 这是所有级数判别法的**标尺**：比较判别法、根值判别法、比值判别法最后都归结到「某个几何级数收敛」。`imp.root-test` 与 `imp.banach-fixed-point` 里那句「几何级数收敛」指的就是这条。\n\n⭐ $|q| < 1$ 时 $q^{n} \\to 0$ 的证明要用 Bernoulli + 阿基米德性：写 $1/|q| = 1 + h$（$h > 0$），则 $(1+h)^{n} \\ge 1 + nh$，于是 $|q|^{n} \\le \\dfrac{1}{1 + nh} \\le \\dfrac{1}{n h}$ 可以任意小。\n\n⚠ $|q| \\ge 1$ 时通项不趋于 $0$，级数必发散 —— 这一半不需要任何判据。'
+      notes: '⭐ 这是所有级数判别法的**标尺**：比较判别法、根值判别法、比值判别法最后都归结到「某个几何级数收敛」。\n\n`imp.root-test` 与 `imp.banach-fixed-point` 里那句「几何级数收敛」指的就是这条。\n\n⭐ $|q| < 1$ 时 $q^{n} \\to 0$ 的证明要用 Bernoulli + 阿基米德性：写 $1/|q| = 1 + h$（$h > 0$），则 $(1+h)^{n} \\ge 1 + nh$，于是 $|q|^{n} \\le \\dfrac{1}{1 + nh} \\le \\dfrac{1}{n h}$ 可以任意小。\n\n⚠ $|q| \\ge 1$ 时通项不趋于 $0$，级数必发散 —— 这一半不需要任何判据。'
     },
     {
       id: 'thm.p-series',
@@ -162,7 +162,7 @@ window.MG = window.MG || {};
       target: 'prop.limit-basic',
       title: '$\\varepsilon$-$N$ 定义 $\\implies$ 极限的基本性质',
       proof: [
-        '**(i)** 设 $x_n \\to x$、$x_n \\to x\'$ 且 $x \\ne x\'$，不妨 $x < x\'$。取 $\\varepsilon = (x\' - x)/2 > 0$，则 $n$ 充分大时同时有 $|x_n - x| < \\varepsilon$、$|x_n - x\'| < \\varepsilon$，于是',
+        '**(i)** 设 $x_n \\to x$、$x_n \\to x\'$ 且 $x \\ne x\'$，不妨 $x < x\'$。\n\n取 $\\varepsilon = (x\' - x)/2 > 0$，则 $n$ 充分大时同时有 $|x_n - x| < \\varepsilon$、$|x_n - x\'| < \\varepsilon$，于是',
         '',
         '$$x\' - x \\le |x\' - x_n| + |x_n - x| < 2\\varepsilon = x\' - x,$$',
         '',
@@ -186,7 +186,7 @@ window.MG = window.MG || {};
         '',
         '**商。** 由 $g(x_0) \\ne 0$ 与保号性，$g$ 在 $x_0$ 附近不为零，再用极限的商法则。',
         '',
-        '**复合。** 给定 $\\varepsilon > 0$。$g$ 在 $y_0 := f(x_0)$ 连续，故存在 $\\eta > 0$ 使 $|y - y_0| < \\eta \\implies |g(y) - g(y_0)| < \\varepsilon$。$f$ 在 $x_0$ 连续，故存在 $\\delta > 0$ 使 $|x - x_0| < \\delta \\implies |f(x) - f(x_0)| < \\eta$。于是 $|x - x_0| < \\delta \\implies |g(f(x)) - g(f(x_0))| < \\varepsilon$。$\\blacksquare$'
+        '**复合。** 给定 $\\varepsilon > 0$。\n\n$g$ 在 $y_0 := f(x_0)$ 连续，故存在 $\\eta > 0$ 使 $|y - y_0| < \\eta \\implies |g(y) - g(y_0)| < \\varepsilon$。\n\n$f$ 在 $x_0$ 连续，故存在 $\\delta > 0$ 使 $|x - x_0| < \\delta \\implies |f(x) - f(x_0)| < \\eta$。\n\n于是 $|x - x_0| < \\delta \\implies |g(f(x)) - g(f(x_0))| < \\varepsilon$。\n\n$\\blacksquare$'
       ].join('\n')
     },
     {

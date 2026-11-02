@@ -3,7 +3,7 @@
 
 `def.sieve` 筛 + `def.grothendieck-topology` Grothendieck 拓扑 + `def.mono` 单态射 / 满态射 / 同构 → `prop.covering-sieve-epi` 覆盖筛即余积满射
 
-**（$\Longrightarrow$）** 设 $R = h_{X}$。要证 $q$ 右可消。设 $u, v : X \to T$ 且 $u \circ q = v \circ q$。对每个 $i$ 有 $u \circ f_{i} = v \circ f_{i}$。对任意 $Y$ 与任意 $g : Y \to X$，由 $R = h_{X}$ 存在 $i$ 与 $h : Y \to X_{i}$ 使 $g = f_{i} \circ h$，于是
+对任意 $Y$ 与任意 $g : Y \to X$，由 $R = h_{X}$ 存在 $i$ 与 $h : Y \to X_{i}$ 使 $g = f_{i} \circ h$，于是
 
 $$u \circ g = u \circ f_{i} \circ h = v \circ f_{i} \circ h = v \circ g$$
 

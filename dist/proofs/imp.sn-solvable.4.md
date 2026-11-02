@@ -3,7 +3,7 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-= 20$ 个，**一类**，大小 $20$；
-- 双对换（型 $2^{2}$）：共 $\binom{5}{4}\cdot 
+t 2 = 20$ 个，**一类**，大小 $20$；
+- 双对换（型 $2^{2}$）：共 $\binom{5}{
 
 > 续见 proofs/imp.sn-solvable.5.md

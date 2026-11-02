@@ -9,6 +9,10 @@
 
 $$(i_{x,*}A)_{y} = \varinjlim_{U \ni y}\ (i_{x,*}A)(U) .$$
 
-**第三步：$y \in \overline{\{x\}}$ 的情形。** 闭包的刻画给出：每个开邻域 $U \ni y$ 都满足 $U \cap \{x\} \ne \emptyset$，即 $x \in U$。于是这个滤过系统里**每一项**都是 $A$，而相邻两个邻域之间的过渡映射都是 $\mathrm{id}_{A}$ —— 常图（constant diagram）的余极限就是 $A$。
+**第三步：$y \in \overline{\{x\}}$ 的情形。** 闭包的刻画给出：每个开邻域 $U \ni y$ 都满足 $U \cap \{x\} \ne \emptyset$，即 $x \in U$。
+
+于是这个滤过系统里**每一项**都是 $A$，而相邻两个邻域之间的过渡映射都是 $\mathrm{id}_{A}$ —— 常图（constant diagram）的余极限就是 $A$。
+
+**第四步：$y \notin \overline{\{x\}}$ 的情形。** 此时存在开邻域 $U_{0} \ni y$ 使 $x \notin U_{0}$。
 
 > 续见 proofs/imp.skyscraper-stalks.2.md

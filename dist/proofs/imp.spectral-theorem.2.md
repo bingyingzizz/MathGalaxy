@@ -3,7 +3,8 @@
 
 `def.normal-operator` 正规算子 + `thm.diagonalizable` 可对角化判据 + `thm.evt` 最值定理 + `def.orthogonal-complement` 正交补 → `thm.spectral-theorem` 谱定理（实对称）
 
-1. **存在实特征值**：单位球面 $S := \{v : \|v\| = 1\}$ 是紧集，函数 $f(v) := \langle Tv, v\rangle$ 连续，故在某点 $v_0$ 取到最大值 $\lambda$（**最值定理**）。用 Lagrange 乘子（或直接对 $v_0$ 附近扰动求导）可得 $Tv_0 = \lambda v_0$：即在约束 $\|v\|^{2} = 1$ 下 $f$ 的极值点满足 $\nabla f = \lambda \nabla(\|v\|^{2})$，而两个梯度分别是 $2Tv_0$ 与 $2v_0$。于是 $\lambda$ 是特征值，且由 $\lambda = \langle Tv_0, v_0\rangle \in \mathbb{R}$ 知它是实数。
-2
+于是 $\lambda$ 是特征值，且由 $\lambda = \langle Tv_0, v_0\rangle \in \mathbb{R}$ 知它是实数。
+2. **特征子空间的不变性**：$U := E_\lambda$ 是 $T$-不变的；由**自伴性**，$U^{\perp}$ 也是 $T$-不变的：若 $w \perp U$，则对 $u \in U$，$\langle u, Tw\rangle = \langle Tu, w\rangle = \langle \lambda u, w\rangle = \lambda\langle u, w\rangle = 0$，即 $Tw \perp U$。
+3. **归纳**：$T|_{U^{\perp}}$ 仍自伴，对 $\dim U^{\perp} < \dim V$ 用归纳假设，得 $U^{\perp} = E_{\lambda_2}\oplus\cdot
 
 > 续见 proofs/imp.spectral-theorem.3.md

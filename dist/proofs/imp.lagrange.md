@@ -3,7 +3,11 @@
 
 `def.subgroup` 子群 → `thm.lagrange` Lagrange 定理
 
-**第一步：左陪集是等价类。** 在 $G$ 上定义关系 $g_1 \sim g_2 :\iff g_1^{-1} g_2 \in H$。它自反（$g^{-1}g = e \in H$）、对称（$g_1^{-1}g_2 \in H \implies (g_1^{-1}g_2)^{-1} = g_2^{-1}g_1 \in H$）、传递（相乘仍属 $H$），故是等价关系。而
+**第一步：左陪集是等价类。** 在 $G$ 上定义关系 $g_1 \sim g_2 :\iff g_1^{-1} g_2 \in H$。
+
+它自反（$g^{-1}g = e \in H$）、对称（$g_1^{-1}g_2 \in H \implies (g_1^{-1}g_2)^{-1} = g_2^{-1}g_1 \in H$）、传递（相乘仍属 $H$），故是等价关系。
+
+而
 
 $$g_1 \sim g_2 \iff g_1^{-1} g_2 \in H \iff g_2 \in g_1 H,$$
 

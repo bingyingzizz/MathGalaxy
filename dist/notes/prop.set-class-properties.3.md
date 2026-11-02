@@ -1,8 +1,6 @@
 # 集合族的基本性质　`prop.set-class-properties`　·　说明
 根 `../`
 
-(1)：取 $A \in \mathfrak{A}$，则 $A \setminus A = \emptyset$ 要能被拆成不交并，只能是空并。
-
 (2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \setminus \bigcup B_{j}$** 这种相对补。
 
 (5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。

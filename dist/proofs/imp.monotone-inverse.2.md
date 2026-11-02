@@ -3,9 +3,12 @@
 
 `thm.ivt` 介值定理 + `thm.monotone-convergence` 单调有界定理 → `thm.monotone-inverse` 反函数连续
 
-1. **$f(I)$ 是区间**：取 $y_1 < y_2$ 属于 $f(I)$，即 $y_i = f(x_i)$。由严格递增 $x_1 < x_2$。任取 $y \in (y_1, y_2)$，则 $f(x_1) < y < f(x_2)$，由介值定理在 $[x_1, x_2]$ 上存在 $x$ 使 $f(x) = y$，故 $y \in f(I)$。
-2. **$f$ 是双射**：严格递增给出单射，$f(I)$ 的定义给出满射。
-3. **$f^{-1}$ 递增**：若 $y_1 < y_2$ 而 $f^{-1}(y_1) \ge f^{-1}(y_2)$，由 $f$ 递增就有 $y_1 \ge y_2$，矛盾。
-4. **$f^{-1}$ 连续**：设 $y_0 = f(x_0)$，给定 $\varepsilon > 0$。由 $x_0$ 在 $I$ 内部的情形（端点同理）取 $x_0 - \varepsilon < x_0 < x_0 + \varepsilon$ 都落在 $I$ 内。令 $y_{-} := f(x_0 - \varepsilon)$、$y_{+} := 
+由 $x_0$ 在 $I$ 内部的情形（端点同理）取 $x_0 - \varepsilon < x_0 < x_0 + \varepsilon$ 都落在 $I$ 内。
 
-> 续见 proofs/imp.monotone-inverse.3.md
+令 $y_{-} := f(x_0 - \varepsilon)$、$y_{+} := f(x_0 + \varepsilon)$，取 $\delta := \min\{y_0 - y_{-},\ y_{+} - y_0\} > 0$。
+
+则 $|y - y_0| < \delta$ 时 $y_{-} < y < y_{+}$，由第 3 步的单调性得 $x_0 - \varepsilon < f^{-1}(y) < x_0 + \varepsilon$，即 $|f^{-1}(y) - x_0| < \varepsilon$。
+
+∎
+
+> 证明里只用到了「严格单调 + 介值」，**没有**用到一致连续 —— 反函数连续是比「$f$ 一致连续」更弱的条件就能得到的结论。

@@ -29,7 +29,7 @@ window.MG = window.MG || {};
       notes: [
         '为什么这个条件自然：由算术基本定理，$n$ 唯一分解成素数幂之积，而这些素数幂两两互素 —— 所以积性函数完全由它在素数幂 $p^{e}$ 上的值决定。这就把「$n$ 的全体」上的函数压成「每个素数一列」的数据。',
         '',
-        '完全积性更强：还要求 $f(p^{e}) = f(p)^{e}$。$\\mu$、$\\varphi$、$\\tau$、$\\sigma$ 都积性；只有 $\\mu$ 与「$\\mathrm{id}$」「$1$」是完全积性，$\\varphi$、$\\tau$、$\\sigma$ 不是（例如 $\\varphi(4) = 2 \\ne \\varphi(2)^{2} = 1$）。',
+        '完全积性更强：还要求 $f(p^{e}) = f(p)^{e}$。\n\n$\\mu$、$\\varphi$、$\\tau$、$\\sigma$ 都积性；只有 $\\mu$ 与「$\\mathrm{id}$」「$1$」是完全积性，$\\varphi$、$\\tau$、$\\sigma$ 不是（例如 $\\varphi(4) = 2 \\ne \\varphi(2)^{2} = 1$）。',
         '',
         '两个积性函数的**狄利克雷卷积**仍积性 —— 这是后面 Möbius 反演的代数背景。',
       ].join('\n\n'),
@@ -156,7 +156,9 @@ window.MG = window.MG || {};
         '',
         '**另一方向**同理（或直接用 $\\Leftarrow$ 于反向的偏序）。所以「反演」不是新定理，是 $\\mu * 1 = \\delta$ 这一句话的两面。',
         '',
-        '**用法**：数论里的「求和  与  还原」几乎都靠它。例如 $\\sum_{d\\mid n}\\varphi(d) = n$ 反演出 $\\varphi(n) = \\sum_{d\\mid n}\\mu(d)\\,(n/d)$；素数计数也是先有 $\\log n! = \\sum_{m \\le n}\\psi(n/m)$ 再反演。',
+        '**用法**：数论里的「求和  与  还原」几乎都靠它。\n\n' +
+        '例如 $\\sum_{d\\mid n}\\varphi(d) = n$ 反演出 $\\varphi(n) = \\sum_{d\\mid n}\\mu(d)\\,(n/d)$；\n\n' +
+        '素数计数也是先有 $\\log n! = \\sum_{m \\le n}\\psi(n/m)$ 再反演。',
       ].join('\n\n'),
       refs: ['华罗庚《数论导引》第三章', 'Apostol, Ch. 2'],
     },
@@ -181,7 +183,7 @@ window.MG = window.MG || {};
         '',
         '$$\\psi(x) = \\sum_{n \\le x} \\Lambda(n), \\qquad \\Lambda(n) = \\begin{cases}\\log p, & n = p^{k},\\\\ 0, & \\text{否则}\\end{cases}$$',
         '',
-        '（$\\Lambda$ 叫 von Mangoldt 函数），而 $\\log n! = \\sum_{n \\le x}\\Lambda(n)\\lfloor x/n\\rfloor$ 把 $\\psi$ 与阶乘直接连起来。三者的关系是 $\\theta \\le \\psi \\le \\theta + O(\\sqrt{x}\\log x)$ 与 $\\pi(x) \\sim \\theta(x)/\\log x$ —— 所以「三者同阶」这句话本身就是定理。',
+        '（$\\Lambda$ 叫 von Mangoldt 函数），而 $\\log n! = \\sum_{n \\le x}\\Lambda(n)\\lfloor x/n\\rfloor$ 把 $\\psi$ 与阶乘直接连起来。\n\n三者的关系是 $\\theta \\le \\psi \\le \\theta + O(\\sqrt{x}\\log x)$ 与 $\\pi(x) \\sim \\theta(x)/\\log x$ —— 所以「三者同阶」这句话本身就是定理。',
         '',
         '⭐ 人名按原文字母写：**Чебышёв**（不用音译，也不用英文拼法 Chebyshev）—— 这是本项目的口径。',
       ].join('\n\n'),
@@ -319,7 +321,7 @@ window.MG = window.MG || {};
       target: 'thm.divisor-formula',
       title: '$\\tau$、$\\sigma$ 的乘积公式：指数独立选取',
       proof: [
-        '由唯一分解，$d \\mid n$ 当且仅当 $d = p_{1}^{f_{1}}\\cdots p_{r}^{f_{r}}$ 且 $0 \\le f_{i} \\le e_{i}$，且这种 $(f_{1},\\cdots,f_{r})$ 与 $d$ 一一对应。于是因数集与 $\\prod_{i}[0, e_{i}]$ 的整数点一一对应，个数为 $\\prod(e_{i}+1)$。',
+        '由唯一分解，$d \\mid n$ 当且仅当 $d = p_{1}^{f_{1}}\\cdots p_{r}^{f_{r}}$ 且 $0 \\le f_{i} \\le e_{i}$，且这种 $(f_{1},\\cdots,f_{r})$ 与 $d$ 一一对应。\n\n于是因数集与 $\\prod_{i}[0, e_{i}]$ 的整数点一一对应，个数为 $\\prod(e_{i}+1)$。',
         '',
         '$\\sigma$：按上述对应，$\\sigma(n) = \\sum_{f_{1}=0}^{e_{1}}\\cdots\\sum_{f_{r}=0}^{e_{r}} p_{1}^{f_{1}}\\cdots p_{r}^{f_{r}} = \\prod_{i}\\left(\\sum_{f=0}^{e_{i}}p_{i}^{f}\\right)$，内层是等比数列，和为 $(p_{i}^{e_{i}+1}-1)/(p_{i}-1)$。',
         '',
@@ -380,7 +382,9 @@ window.MG = window.MG || {};
         '',
         '两式合并：$\\dfrac{4^{n}}{2n+1} \\le (2n)^{\\pi(2n)}$，取对数得 $\\pi(2n) \\ge \\dfrac{2n\\log 2 - \\log(2n+1)}{\\log(2n)} \\ge c\\,\\dfrac{n}{\\log n}$。',
         '',
-        '**上界**：对 $n < p \\le 2n$ 的素数，$p$ 整除 $N$ 而 $p > n$ 保证 $p^{2} \\nmid N$（$v_{p}(N) = \\lfloor 2n/p\\rfloor - 2\\lfloor n/p\\rfloor \\le 1$）。于是 $\\prod_{n<p\\le 2n}p \\le N \\le 4^{n}$，取对数得 $\\theta(2n) - \\theta(n) \\le 2n\\log 2$；把它沿 $n, n/2, n/4, \\cdots$ 累加得 $\\theta(x) \\le C x$，再由 $\\theta \\ge (\\log x)\\,\\pi(\\sqrt{x}) + \\cdots$ 的初等关系得 $\\pi(x) \\le C\' x/\\log x$。',
+        '**上界**：对 $n < p \\le 2n$ 的素数，$p$ 整除 $N$ 而 $p > n$ 保证 $p^{2} \\nmid N$（$v_{p}(N) = \\lfloor 2n/p\\rfloor - 2\\lfloor n/p\\rfloor \\le 1$）。\n\n' +
+        '于是 $\\prod_{n<p\\le 2n}p \\le N \\le 4^{n}$，取对数得 $\\theta(2n) - \\theta(n) \\le 2n\\log 2$；\n\n' +
+        '把它沿 $n, n/2, n/4, \\cdots$ 累加得 $\\theta(x) \\le C x$，再由 $\\theta \\ge (\\log x)\\,\\pi(\\sqrt{x}) + \\cdots$ 的初等关系得 $\\pi(x) \\le C\' x/\\log x$。',
         '',
         '⚠ 这是骨架：常数都没优化，第四步的拼接（$2n$  推出  一般 $x$）省了细节。完整证明见华罗庚《数论导引》第九章。',
       ].join('\n\n'),
@@ -416,7 +420,7 @@ window.MG = window.MG || {};
       target: 'thm.prime-number-theorem',
       title: '素数定理：$\\zeta$ 在 $\\operatorname{Re}\\,s = 1$ 上无零点',
       proof: [
-        '**① $\\zeta$ 的解析延拓。** 对 $\\operatorname{Re}\\,s > 1$，$\\zeta(s) = \\sum_{n\\ge1} n^{-s} = \\prod_{p}(1 - p^{-s})^{-1}$（Euler 乘积，靠唯一分解）。它在 $s = 1$ 有单极点、留数 $1$，并可延拓为 $\\mathbb{C}$ 上的亚纯函数。',
+        '**① $\\zeta$ 的解析延拓。** 对 $\\operatorname{Re}\\,s > 1$，$\\zeta(s) = \\sum_{n\\ge1} n^{-s} = \\prod_{p}(1 - p^{-s})^{-1}$（Euler 乘积，靠唯一分解）。\n\n它在 $s = 1$ 有单极点、留数 $1$，并可延拓为 $\\mathbb{C}$ 上的亚纯函数。',
         '',
         '**② 关键一步：$\\operatorname{Re}\\,s = 1$ 上无零点。** 用 $3 + 4\\cos\\theta + \\cos 2\\theta \\ge 0$ 配上 Euler 乘积的对数导数，得 $\\zeta(1 + it) \\ne 0$。这一步是全部难点，也是「素数不会太集中在一条线上」的本质。',
         '',
@@ -426,7 +430,7 @@ window.MG = window.MG || {};
         '',
         '其中 $\\rho$ 遍历 $\\zeta$ 的非平凡零点（求和按对称方式截断）。',
         '',
-        '**④ 收尾。** 由 ②，$x^{\\rho} = o(x)$（因为 $|\\rho| \\le 1$ 且严格小于 $1$ 的实部给出 $x^{\\operatorname{Re}\\rho}$），于是 $\\psi(x) \\sim x$；再由 $\\psi \\sim \\theta$ 与 $\\theta \\sim \\pi\\log$ 得 $\\pi(x) \\sim x/\\log x$。',
+        '**④ 收尾。** 由 ②，$x^{\\rho} = o(x)$（因为 $|\\rho| \\le 1$ 且严格小于 $1$ 的实部给出 $x^{\\operatorname{Re}\\rho}$），于是 $\\psi(x) \\sim x$；\n\n再由 $\\psi \\sim \\theta$ 与 $\\theta \\sim \\pi\\log$ 得 $\\pi(x) \\sim x/\\log x$。',
         '',
         '⛔ 本节点**只给陈述与骨架**，证明的每一步（尤其 ② 与 ③ 的截断估计）都不在本图 —— 它需要复分析整章（`complex` 星系那一条线）。要真正做完，得先有 $\\zeta$、$\\Gamma$、Perron 公式与零点计数，那是另一个量级的工作。',
       ].join('\n\n'),

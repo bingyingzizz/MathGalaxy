@@ -5,4 +5,6 @@
 
 ⭐ 维数公式 $n - \operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\operatorname{rank} A$ + 自由的 $\dim \ker A$。
 
-⚠ 「有解 $\iff$ $\operatorname{rank} A = \operatorname{rank}(A \mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。
+⚠ 「有解 $\iff$ $\operatorname{rank} A = \operatorname{rank}(A \mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。
+
+别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。

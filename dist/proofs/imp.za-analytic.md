@@ -9,6 +9,8 @@
 $$0 \to \mathbb{Z}[[U]] \otimes A \xrightarrow{U \mapsto T^{-1}} \mathbb{Z}[[U]] \otimes A \to A_\infty \to 0,$$
 前两项在 $\operatorname{Mod}^{cond}_{(A,\mathbb{Z})^{\blacksquare}}$ 中紧投射（它们是 $\prod_I \mathbb{Z} \otimes A$ 的形状），故 $A_\infty$ 紧。
 
-**② $A_\infty$ 幂等。** 由 ① 的表现直接算 $A_\infty \otimes^L A_\infty \cong A_\infty$。于是「$A_\infty$-模」构成 $D((A,\mathbb{Z})^{\blacksquare})$ 的全子范畴，$\mathbb{Z}((T^{-1})) \otimes A$ 是其中的紧生成元。
+**② $A_\infty$ 幂等。** 由 ① 的表现直接算 $A_\infty \otimes^L A_\infty \cong A_\infty$。
+
+于是「$A_\infty$-模」构成 $D((A,\mathbb{Z})^{\blacksquare})$ 的全子范畴，$\mathbb{Z}((T^{-1})) \otimes A$ 是其中的紧生成元。
 
 > 续见 proofs/imp.za-analytic.2.md

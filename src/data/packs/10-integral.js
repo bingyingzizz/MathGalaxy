@@ -467,7 +467,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '意义：**简单函数与连续函数在 $L^{1}$ 里是稠密的**。所以很多命题只要对这两类函数验证就够了，再取极限。',
-        '证明思路：先把 $f$ 拆成 $\\operatorname{Re} f^{+}$、$\\operatorname{Re} f^{-}$、$\\operatorname{Im} f^{+}$、$\\operatorname{Im} f^{-}$ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；$\\mathbb{R}$ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。',
+        '证明思路：先把 $f$ 拆成 $\\operatorname{Re} f^{+}$、$\\operatorname{Re} f^{-}$、$\\operatorname{Im} f^{+}$、$\\operatorname{Im} f^{-}$ 四个非负部分，各自用简单函数逼近（简单函数逼近定理）；\n\n$\\mathbb{R}$ 的情形再把定义域切成有界块，用连续函数去顶半开区间的指示函数。',
         '⚠ 连续函数那一句**依赖 $\\mu$ 是 Lebesgue–Stieltjes 测度**：换一个任意测度，简单函数的逼近照旧，连续函数的说法就不成立了。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.26']
@@ -693,7 +693,7 @@ window.MG = window.MG || {};
         '',
         '$$(i) \\int_E f = \\int_E g\\quad  \\forall E \\in \\mathcal{M}\\quad  \\iff\\quad  \\int_E h = 0\\quad  \\forall E$$',
         '',
-        '**$(i) \\implies (ii)$**：分别取 $E = \\{h \\ge 0\\}$ 与 $E = \\{h < 0\\}$。由 $\\int_E h = 0$ 且 $h$ 在 $E$ 上不变号，得 $\\{h > 0\\}$ 与 $\\{h < 0\\}$ 都是零集（否则积分为正/负），故 $\\mu(\\{h \\ne 0\\}) = 0$，于是 $\\int|h| = 0$。',
+        '**$(i) \\implies (ii)$**：分别取 $E = \\{h \\ge 0\\}$ 与 $E = \\{h < 0\\}$。\n\n由 $\\int_E h = 0$ 且 $h$ 在 $E$ 上不变号，得 $\\{h > 0\\}$ 与 $\\{h < 0\\}$ 都是零集（否则积分为正/负），故 $\\mu(\\{h \\ne 0\\}) = 0$，于是 $\\int|h| = 0$。',
         '',
         '**$(ii) \\implies (iii)$**：$\\int|h| = 0$ 配合「积分为零 $\\iff$ 几乎处处为零」，直接得到 $h = 0 \\text{a.e.}$。',
         '',

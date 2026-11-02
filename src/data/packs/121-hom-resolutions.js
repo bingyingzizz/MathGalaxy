@@ -40,7 +40,7 @@ window.MG = window.MG || {};
         '',
         '是两条**投射消解**。则：',
         '',
-        '1. 存在**链映射** $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$ 提升 $f$：即 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$，且 $\\varphi_{n-1}d_{n} = e_{n}\\varphi_{n}$ 对一切 $n \\ge 1$；',
+        '1. 存在**链映射** $\\varphi : P_{\\bullet} \\to Q_{\\bullet}$ 提升 $f$：即 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$，且 $\\varphi_{n-1}d_{n} = e_{n}\\varphi_{n}$ 对一切 $n \\ge 1$；\n\n',
         '2. 任意两个提升 $\\varphi, \\psi$ **链同伦**：存在 $s_{n} : P_{n} \\to Q_{n+1}$ 使',
         '$$\\varphi_{n} - \\psi_{n} = e_{n+1}s_{n} + s_{n-1}d_{n},$$',
         '其中约定 $s_{-1} = 0$，并把 $e_{0}$ 读作 $\\varepsilon_{Q}$、$d_{0}$ 读作 $\\varepsilon_{P}$。'
@@ -48,10 +48,10 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明（一）存在性：逐层抬升。**',
-          '第 $0$ 层：$f\\varepsilon_{P} : P_{0} \\to N$ 沿满射 $\\varepsilon_{Q} : Q_{0} \\twoheadrightarrow N$ 抬升。$P_{0}$ 投射，故存在 $\\varphi_{0} : P_{0} \\to Q_{0}$ 使 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$ ✓。',
-          '归纳步：设 $\\varphi_{n} : P_{n} \\to Q_{n}$ 已造好，且 $e_{n}\\varphi_{n} = \\varphi_{n-1}d_{n}$。要造 $\\varphi_{n+1}$，只需使 $e_{n+1}\\varphi_{n+1} = \\varphi_{n}d_{n+1}$。令 $\\theta := \\varphi_{n}d_{n+1} : P_{n+1} \\to Q_{n}$，算一下：',
+          '第 $0$ 层：$f\\varepsilon_{P} : P_{0} \\to N$ 沿满射 $\\varepsilon_{Q} : Q_{0} \\twoheadrightarrow N$ 抬升。\n\n$P_{0}$ 投射，故存在 $\\varphi_{0} : P_{0} \\to Q_{0}$ 使 $\\varepsilon_{Q}\\varphi_{0} = f\\varepsilon_{P}$ ✓。',
+          '归纳步：设 $\\varphi_{n} : P_{n} \\to Q_{n}$ 已造好，且 $e_{n}\\varphi_{n} = \\varphi_{n-1}d_{n}$。\n\n要造 $\\varphi_{n+1}$，只需使 $e_{n+1}\\varphi_{n+1} = \\varphi_{n}d_{n+1}$。\n\n令 $\\theta := \\varphi_{n}d_{n+1} : P_{n+1} \\to Q_{n}$，算一下：',
           '$$e_{n}\\theta = e_{n}\\varphi_{n}d_{n+1} = \\varphi_{n-1}d_{n}d_{n+1} = 0,$$',
-          '所以 $\\operatorname{im}\\theta \\subseteq \\ker e_{n} = \\operatorname{im} e_{n+1}$（两端的复形都正合）✓。沿满射 $Q_{n+1} \\twoheadrightarrow \\operatorname{im} e_{n+1}$ 用 $P_{n+1}$ 的投射性抬升 $\\theta$，得 $\\varphi_{n+1}$ ✓。'
+          '所以 $\\operatorname{im}\\theta \\subseteq \\ker e_{n} = \\operatorname{im} e_{n+1}$（两端的复形都正合）✓。\n\n沿满射 $Q_{n+1} \\twoheadrightarrow \\operatorname{im} e_{n+1}$ 用 $P_{n+1}$ 的投射性抬升 $\\theta$，得 $\\varphi_{n+1}$ ✓。'
         ].join('\n'),
         [
           '**（二）同伦唯一性：同样的抬升，目标换成「同伦方程」。** 记 $\\Delta_{n} := \\varphi_{n} - \\psi_{n}$。',
@@ -92,7 +92,7 @@ window.MG = window.MG || {};
         [
           '**证明（比较定理取 $f = 1_{M}$，两次）。**',
           '对 $1_{M} : M \\to M$ 与（$P_{\\bullet}$、$Q_{\\bullet}$）用比较定理的存在性，得提升 $\\varphi$；把两个消解互换再用一次，得提升 $\\psi$。两次都有 $\\varepsilon\\psi = \\varepsilon$。',
-          '再看复合：$\\psi\\varphi : P_{\\bullet} \\to P_{\\bullet}$ 也是 $1_{M}$ 的提升（增广处：$\\varepsilon\\psi\\varphi = \\varepsilon\\varphi = \\varepsilon$ ✓），而 $1_{P_{\\bullet}}$ 当然是 $1_{M}$ 的提升，于是由比较定理的**同伦唯一性**得 $\\psi\\varphi \\sim 1_{P_{\\bullet}}$ ✓；另一边同理 ✓。∎'
+          '再看复合：$\\psi\\varphi : P_{\\bullet} \\to P_{\\bullet}$ 也是 $1_{M}$ 的提升（增广处：$\\varepsilon\\psi\\varphi = \\varepsilon\\varphi = \\varepsilon$ ✓），而 $1_{P_{\\bullet}}$ 当然是 $1_{M}$ 的提升，于是由比较定理的**同伦唯一性**得 $\\psi\\varphi \\sim 1_{P_{\\bullet}}$ ✓；\n\n另一边同理 ✓。\n\n∎'
         ].join('\n'),
         '⭐ **这才是「消解可以随便挑」的合法依据。** 计算时通常挑最短、最显式的那条（自由模、两项、Koszul 复形），换一条不影响结果 —— 但只保证结果同构，**不保证中间出现的族一致**。',
         '**举例（同伦等价但不同构）**：在 $P_{\\bullet}$ 上直和一条形如',
@@ -131,7 +131,7 @@ window.MG = window.MG || {};
         '$$\\operatorname{Ext}^{n}_{R}(M, N) = H^{n}\\bigl(\\operatorname{Hom}_{R}(P_{\\bullet}, N)\\bigr), \\qquad \\operatorname{Tor}_{n}^{R}(M, N) = H_{n}\\bigl(P_{\\bullet} \\otimes_{R} N\\bigr).$$',
         '',
         '右边两个 $H$ 取的都是删除消解本身，而不是带 $M$ 的那条。见「扩展群的双边算法」与「挠积」。',
-        '**两个容易翻的细节。** ① 删除消解**不再正合**：$H_{0}(P_{\\bullet}) = P_{0}/\\operatorname{im} d_{1} \\cong M$，高次同调全为零 —— 它「只在 $0$ 次与原来不同」；② 也有书把 $M$ 留在 $-1$ 次（叫**增广复形**），两者只差一项，写公式时必须说清用的是哪一个。',
+        '**两个容易翻的细节。** ① 删除消解**不再正合**：$H_{0}(P_{\\bullet}) = P_{0}/\\operatorname{im} d_{1} \\cong M$，高次同调全为零 —— 它「只在 $0$ 次与原来不同」；\n\n② 也有书把 $M$ 留在 $-1$ 次（叫**增广复形**），两者只差一项，写公式时必须说清用的是哪一个。',
         '⚠️ **记号陷阱**：$\\operatorname{Hom}(P_{\\bullet}, N)$ 是把 $N$ 看成支在 $0$ 次的复形之后取的 Hom 复形，其次数与 $P_{\\bullet}$ 的**上下标方向相反**（不上对偶就只得到链复形）；所以那里写 $H^{n}$，这里写 $H_{n}$。'
       ].join('\n\n'),
       refs: [
@@ -171,10 +171,10 @@ window.MG = window.MG || {};
           '**① 逐层分裂。** 含入与投影 $0 \\to P_{n} \\to P_{n}\\oplus Q_{n} \\to Q_{n} \\to 0$ 本来就有显式截面 $(p, q) \\mapsto q$、缩回 $x \\mapsto (x, 0)$，与投射性无关；用的是这一步的**分裂性**，不是 $P_{n}$ 投射 ✓。',
           '**② 选微分。** 令',
           '$$d_{n} = \\begin{pmatrix} d_{n}^{P} & \\chi_{n} \\\\ 0 & e_{n} \\end{pmatrix} : P_{n}\\oplus Q_{n} \\longrightarrow P_{n-1}\\oplus Q_{n-1}, \\qquad \\chi_{n} : Q_{n} \\to P_{n-1}.$$',
-          '分块乘法给出 $d_{n-1}d_{n}$ 的右上块 $= d_{n-1}^{P}\\chi_{n} + \\chi_{n-1}e_{n}$，另外三块为零。所以 $d^{2} = 0$ 当且仅当 $d_{n-1}^{P}\\chi_{n} = -\\chi_{n-1}e_{n}$。而 $\\chi_{n}$ 可以**归纳地**选：已有 $\\chi_{n-1}$ 时，',
+          '分块乘法给出 $d_{n-1}d_{n}$ 的右上块 $= d_{n-1}^{P}\\chi_{n} + \\chi_{n-1}e_{n}$，另外三块为零。\n\n所以 $d^{2} = 0$ 当且仅当 $d_{n-1}^{P}\\chi_{n} = -\\chi_{n-1}e_{n}$。\n\n而 $\\chi_{n}$ 可以**归纳地**选：已有 $\\chi_{n-1}$ 时，',
           '$$d_{n-2}^{P}\\bigl(-\\chi_{n-1}e_{n}\\bigr) = -\\bigl(d_{n-2}^{P}\\chi_{n-1}\\bigr)e_{n} = \\chi_{n-2}e_{n-1}e_{n} = 0,$$',
-          '故 $-\\chi_{n-1}e_{n}$ 的像落在 $\\ker d_{n-2}^{P} = \\operatorname{im} d_{n-1}^{P}$ 里（$P_{\\bullet}$ 正合）✓；沿满射 $P_{n-1} \\twoheadrightarrow \\operatorname{im} d_{n-1}^{P}$ 用 $Q_{n}$ 的**投射性**抬升，即得 $\\chi_{n}$ ✓。',
-          '**③ 增广。** $Q_{0}$ 投射、$p$ 满，故 $\\eta$ 沿 $p$ 抬升为 $\\sigma : Q_{0} \\to M$（$p\\sigma = \\eta$）✓；令 $\\varepsilon_{R}(x, y) := i\\varepsilon(x) + \\sigma(y)$。要 $\\varepsilon_{R}d_{0} = 0$，只需在 $\\chi_{0} : Q_{0} \\to P_{-1} = M_{1}$ 上补一个条件：由 $p\\sigma e_{0} = \\eta e_{0} = 0$ 知 $\\sigma e_{0}$ 的像落在 $\\ker p = \\operatorname{im} i$ 里，写成 $i\\theta$；再用 $\\varepsilon$ 满、$Q_{0}$ 投射把 $\\theta : Q_{0} \\to M_{1}$ 抬成 $\\chi_{0}$，即 $\\varepsilon\\chi_{0} = -\\theta$ ✓。于是 $\\varepsilon_{R}d_{0} = i\\varepsilon d_{0}^{P} + i\\varepsilon\\chi_{0} + \\sigma e_{0} = 0 - i\\theta + i\\theta = 0$ ✓。',
+          '故 $-\\chi_{n-1}e_{n}$ 的像落在 $\\ker d_{n-2}^{P} = \\operatorname{im} d_{n-1}^{P}$ 里（$P_{\\bullet}$ 正合）✓；\n\n沿满射 $P_{n-1} \\twoheadrightarrow \\operatorname{im} d_{n-1}^{P}$ 用 $Q_{n}$ 的**投射性**抬升，即得 $\\chi_{n}$ ✓。',
+          '**③ 增广。** $Q_{0}$ 投射、$p$ 满，故 $\\eta$ 沿 $p$ 抬升为 $\\sigma : Q_{0} \\to M$（$p\\sigma = \\eta$）✓；令 $\\varepsilon_{R}(x, y) := i\\varepsilon(x) + \\sigma(y)$。\n\n要 $\\varepsilon_{R}d_{0} = 0$，只需在 $\\chi_{0} : Q_{0} \\to P_{-1} = M_{1}$ 上补一个条件：由 $p\\sigma e_{0} = \\eta e_{0} = 0$ 知 $\\sigma e_{0}$ 的像落在 $\\ker p = \\operatorname{im} i$ 里，写成 $i\\theta$；\n\n再用 $\\varepsilon$ 满、$Q_{0}$ 投射把 $\\theta : Q_{0} \\to M_{1}$ 抬成 $\\chi_{0}$，即 $\\varepsilon\\chi_{0} = -\\theta$ ✓。\n\n于是 $\\varepsilon_{R}d_{0} = i\\varepsilon d_{0}^{P} + i\\varepsilon\\chi_{0} + \\sigma e_{0} = 0 - i\\theta + i\\theta = 0$ ✓。',
           '**④ 验正合（关键一步）。** 于是 $R_{\\bullet}$ 是一条复形，而 $0 \\to P_{\\bullet} \\to R_{\\bullet} \\to Q_{\\bullet} \\to 0$ 是**逐项分裂**的复形短正合列。取它的同调长正合列',
           '$$\\cdots \\to H_{n}(P) \\to H_{n}(R) \\to H_{n}(Q) \\xrightarrow{\\ \\delta\\ } H_{n-1}(P) \\to \\cdots$$',
           '其中 $H_{0}(P) \\cong M_{1}$、$H_{0}(Q) \\cong M_{2}$，而 $H_{n}(P) = H_{n}(Q) = 0$（$n \\ge 1$，两端是消解）。逐段读：',
@@ -217,7 +217,7 @@ window.MG = window.MG || {};
         '于是这些 $P_{n}$ 与 $\\pi_{n}$ 拼成 $M$ 的一条投射（自由）消解，而 $\\Omega^{n}M$ 就是这条消解在 $n$ 次处的「像 / 核」。'
       ].join('\n'),
       notes: [
-        '**名字的来历**：Hilbert 解线性方程组时，$\\Omega M$ 正是「剩下的未知量之间的线性关系」（希腊语 syzygy 原意是「配对」）。在 $M = R/(a_{1}, \\ldots, a_{m})$ 的情形，$\\Omega M$ 就是由关系 $\\sum a_{i}e_{i} = 0$ 生成的子模 —— 也就是**方程组的一次合冲**。',
+        '**名字的来历**：Hilbert 解线性方程组时，$\\Omega M$ 正是「剩下的未知量之间的线性关系」（希腊语 syzygy 原意是「配对」）。\n\n在 $M = R/(a_{1}, \\ldots, a_{m})$ 的情形，$\\Omega M$ 就是由关系 $\\sum a_{i}e_{i} = 0$ 生成的子模 —— 也就是**方程组的一次合冲**。',
         '**它把「消解」翻译成「一列模」。** 一条消解',
         '',
         '$$\\cdots \\to P_{2} \\to P_{1} \\to P_{0} \\to M \\to 0$$',
@@ -258,7 +258,7 @@ window.MG = window.MG || {};
           '两个投影给出交换图，而 $\\pi_{1}$ 满、$\\pi$ 满分别是「$X \\to P$ 满」与「$X \\to P_{1}$ 满」的原因 ✓。逐条读核：',
           '- $\\ker(X \\to P_{1}) = \\{\\, (x, 0) : \\pi(x) = 0 \\,\\} = K$ ✓；',
           '- $\\ker(X \\to P) = \\{\\, (0, x_{1}) : \\pi_{1}(x_{1}) = 0 \\,\\} = K_{1}$ ✓。',
-          '于是得到两条短正合列 $0 \\to K \\to X \\to P_{1} \\to 0$ 与 $0 \\to K_{1} \\to X \\to P \\to 0$。**第一条分裂**：$P_{1}$ 投射，故 $X \\to P_{1}$ 有截面，于是 $X \\cong P_{1}\\oplus K$ ✓。**第二条也分裂**（$P$ 投射），于是 $X \\cong P\\oplus K_{1}$ ✓。两者一比即得 $P_{1}\\oplus K \\cong P\\oplus K_{1}$ ✓。∎'
+          '于是得到两条短正合列 $0 \\to K \\to X \\to P_{1} \\to 0$ 与 $0 \\to K_{1} \\to X \\to P \\to 0$。\n\n**第一条分裂**：$P_{1}$ 投射，故 $X \\to P_{1}$ 有截面，于是 $X \\cong P_{1}\\oplus K$ ✓。\n\n**第二条也分裂**（$P$ 投射），于是 $X \\cong P\\oplus K_{1}$ ✓。\n\n两者一比即得 $P_{1}\\oplus K \\cong P\\oplus K_{1}$ ✓。\n\n∎'
         ].join('\n'),
         '⭐ **它说的是「合冲只差一个投射直和项」**，而且**两条预覆盖的中间项都必须是投射的**才有这个结论 —— 这也是为什么「投射」在合冲的整套叙述里反复出现：它是唯一让「分裂」生效的假设。',
         '⚠️ 结论是**直和同构**，不是同构：$K$ 与 $K_{1}$ 一般不同构。要「取掉」这个自由度，就得在**稳定范畴**里工作 —— 把相差投射直和项的对象等同起来。',
@@ -290,7 +290,7 @@ window.MG = window.MG || {};
           '**证明（对 $n$ 归纳，每次用合冲比较引理）。**',
           '$n = 0$：$M \\cong M$，取 $F = F_{1} = 0$ ✓。',
           '$n = 1$：两条预覆盖 $0 \\to \\Omega M \\to P_{0} \\to M \\to 0$ 与 $0 \\to \\Omega_{1}M \\to Q_{0} \\to M \\to 0$ 都用投射项，直接引比较引理得 $P_{0}\\oplus\\Omega_{1}M \\cong Q_{0}\\oplus\\Omega M$ ✓。',
-          '归纳步：设 $\\Omega^{n}M \\oplus F \\cong \\Omega_{1}^{n}M \\oplus F_{1}$。两条消解在 $n+1$ 次处给出两条预覆盖，中间项 $P_{n}$、$Q_{n}$ 都投射，但它们的「目标」分别是 $\\Omega^{n}M$ 与 $\\Omega_{1}^{n}M$ —— 不同的模，比较引理不能直接用。补救的办法：把直和项并进去。取',
+          '归纳步：设 $\\Omega^{n}M \\oplus F \\cong \\Omega_{1}^{n}M \\oplus F_{1}$。\n\n两条消解在 $n+1$ 次处给出两条预覆盖，中间项 $P_{n}$、$Q_{n}$ 都投射，但它们的「目标」分别是 $\\Omega^{n}M$ 与 $\\Omega_{1}^{n}M$ —— 不同的模，比较引理不能直接用。\n\n补救的办法：把直和项并进去。\n\n取',
           '$$P_{n} \\oplus Q_{n} \\twoheadrightarrow \\Omega^{n}M \\oplus F, \\qquad P_{n} \\oplus Q_{n} \\twoheadrightarrow \\Omega_{1}^{n}M \\oplus F_{1},$$',
           '（第二块用归纳假设中的同构把目标搬过去），两条预覆盖的中间项都是 $P_{n}\\oplus Q_{n}$、都投射 ✓，再用一次比较引理，得',
           '$$\\Omega^{n+1}M \\oplus \\bigl(P_{n}\\oplus Q_{n}\\bigr) \\;\\cong\\; \\Omega_{1}^{n+1}M \\oplus \\bigl(P_{n}\\oplus Q_{n}\\bigr),$$',
@@ -327,8 +327,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**读法**：维数说的不是「消解有多长」，而是「**能压到多短**」。任意 $R$-模都有任意长的投射消解，有趣的是它能不能被截断到某一步。',
-        '**两个端点**：$\\operatorname{pd}_{R} M = 0 \\iff M$ 投射（消解 $0 \\to M \\xrightarrow{\\ 1\\ } M \\to 0$ 就够，长度为 $0$）；$\\operatorname{pd}_{R} M \\le 1$ 说的是「存在投射预覆盖 $P_{0} \\twoheadrightarrow M$ 且它的核投射」。',
-        '**无穷维确实会发生**：取 $R = k[x,y]/(xy)$ 在极大理想 $(x,y)$ 处的局部化，则剩余域 $k = R/(x,y)$ 的投射维数是 $\\infty$。理由是一般的：诺特局部环上 $\\operatorname{gl.dim} R < \\infty$ 恰好等价于 $R$ 正则，而 $k[x,y]/(xy)$ 局部化后在 $(x,y)$ 处不是正则环（维数 $1$、嵌入维数 $2$）✓。',
+        '**两个端点**：$\\operatorname{pd}_{R} M = 0 \\iff M$ 投射（消解 $0 \\to M \\xrightarrow{\\ 1\\ } M \\to 0$ 就够，长度为 $0$）；\n\n$\\operatorname{pd}_{R} M \\le 1$ 说的是「存在投射预覆盖 $P_{0} \\twoheadrightarrow M$ 且它的核投射」。',
+        '**无穷维确实会发生**：取 $R = k[x,y]/(xy)$ 在极大理想 $(x,y)$ 处的局部化，则剩余域 $k = R/(x,y)$ 的投射维数是 $\\infty$。\n\n理由是一般的：诺特局部环上 $\\operatorname{gl.dim} R < \\infty$ 恰好等价于 $R$ 正则，而 $k[x,y]/(xy)$ 局部化后在 $(x,y)$ 处不是正则环（维数 $1$、嵌入维数 $2$）✓。',
         '⭐ **等价刻画**（见「投射维数与扩展群的消失刻画」）：$\\operatorname{pd}_{R} M \\le n$ 当且仅当 $\\operatorname{Ext}^{k}_{R}(M, -) = 0$ 对一切 $k > n$ 成立。于是维数就是「第一个不再消失的次数」减一。',
         '⚠️ **不要与「有投射预覆盖」混淆**：预覆盖只要求 $P_{0} \\twoheadrightarrow M$，任何模都有（自由模盖住即可）；维数是关于**能压多短**的信息，不是关于覆盖存在性的信息。'
       ].join('\n\n'),
@@ -361,7 +361,7 @@ window.MG = window.MG || {};
         '- $\\operatorname{id}_{R} M = 0 \\iff M$ 内射；',
         '- $\\operatorname{id}_{R} M \\le n \\iff \\operatorname{Ext}^{k}_{R}(N, M) = 0$ 对一切 $N$ 与 $k > n$ 成立（注意是**第二个**变量）；',
         '- $\\operatorname{id}_{R} M$ 等于使 $\\operatorname{Ext}^{n}_{R}(-, M)$ 不全为零的最大 $n$。',
-        '**例子（$\\mathbb{Z}$ 上）**：$\\mathbb{Q}$ 内射（可除群）故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Q} = 0$；$\\mathbb{Z}$ 不内射，而 $0 \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{Q}/\\mathbb{Z} \\to 0$ 是长度 $1$ 的内射消解，故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Z} = 1$ ✓。',
+        '**例子（$\\mathbb{Z}$ 上）**：$\\mathbb{Q}$ 内射（可除群）故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Q} = 0$；\n\n$\\mathbb{Z}$ 不内射，而 $0 \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{Q}/\\mathbb{Z} \\to 0$ 是长度 $1$ 的内射消解，故 $\\operatorname{id}_{\\mathbb{Z}}\\mathbb{Z} = 1$ ✓。',
         '⭐ **为什么两边都要有**：算 $\\operatorname{Ext}^{n}(M, N)$ 时，用 $M$ 的**投射**消解（左边）或用 $N$ 的**内射**消解（右边）都行；两边分别由 $\\operatorname{pd} M$ 与 $\\operatorname{id} N$ 决定难易，于是「$\\operatorname{Ext}^{n}(M, -) = 0$（$n > \\operatorname{pd} M$）」与「$\\operatorname{Ext}^{n}(-, N) = 0$（$n > \\operatorname{id} N$）」同时成立。'
       ].join('\n\n'),
       refs: [
@@ -432,7 +432,7 @@ window.MG = window.MG || {};
           '$(1) \\implies (3)$：取长度 $n$ 的投射消解 $P_{\\bullet}$，则删除消解在 $k > n$ 处为零，故 $\\operatorname{Hom}(P_{\\bullet}, N)$ 在 $k > n$ 次也为零，上同调自然为零 ✓（用到了「用投射消解算与用内射消解算给出同一个群」，见「扩展群的双边算法」）。',
           '$(3) \\implies (4)$：取 $k = n+1$ ✓。',
           '$(4) \\implies (1)$：取任意投射消解并算出 $K := \\Omega^{n}M$。由**维数转移**（连用 $n$ 次）得 $\\operatorname{Ext}^{1}_{R}(K, N) \\cong \\operatorname{Ext}^{n+1}_{R}(M, N)$，对一切 $N$ 为零 ✓。',
-          '而「$\\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \\twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\\operatorname{Ext}^{1}_{R}(K, \\ker) \\ne 0$，矛盾 ✓。于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。',
+          '而「$\\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \\twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\\operatorname{Ext}^{1}_{R}(K, \\ker) \\ne 0$，矛盾 ✓。\n\n于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。',
           '$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎'
         ].join('\n'),
         '⭐ **实用形式**：验维数时通常只算**一个**群 —— $\\operatorname{Ext}^{n+1}_{R}(M, N)$ 对一切 $N$ 为零即可，不必逐层算。反过来，想知道 $\\operatorname{pd}$ 到底多大，就找出一个使 $\\operatorname{Ext}^{n}$ 非零的 $N$。',
@@ -469,9 +469,9 @@ window.MG = window.MG || {};
           '$$0 \\to R^{(J)} \\to R^{(I)} \\to M \\to 0 ,$$',
           '正是长度 $1$ 的自由（因而是投射）消解 ✓，故 $\\operatorname{pd}_{R} M \\le 1$ 对一切 $M$ ✓。',
           '**② $\\operatorname{gl.dim} = 0$ 的情形。** 若 $R$ 是域，每个模都是自由模（向量空间取基），故投射，$\\operatorname{pd} = 0$，$\\operatorname{gl.dim} R = 0$ ✓。',
-          '**③ 非域时 $\\operatorname{gl.dim} = 1$。** 取非零非单位的 $a \\in R$，看 $M := R/(a)$。它投射会有矛盾：若投射，则短正合列 $0 \\to (a) \\to R \\to R/(a) \\to 0$ 必分裂（$R/(a)$ 投射），于是 $(a)$ 是 $R$ 的直和项、由某个幂等元切出；而整环里幂等元只有 $0, 1$，$(a) \\ne 0$ 且 $(a) \\ne R$，矛盾 ✓。故 $\\operatorname{pd}_{R} M = 1$（上界由 ① 给出），于是 $\\operatorname{gl.dim} R = 1$ ✓。∎'
+          '**③ 非域时 $\\operatorname{gl.dim} = 1$。** 取非零非单位的 $a \\in R$，看 $M := R/(a)$。\n\n它投射会有矛盾：若投射，则短正合列 $0 \\to (a) \\to R \\to R/(a) \\to 0$ 必分裂（$R/(a)$ 投射），于是 $(a)$ 是 $R$ 的直和项、由某个幂等元切出；\n\n而整环里幂等元只有 $0, 1$，$(a) \\ne 0$ 且 $(a) \\ne R$，矛盾 ✓。\n\n故 $\\operatorname{pd}_{R} M = 1$（上界由 ① 给出），于是 $\\operatorname{gl.dim} R = 1$ ✓。\n\n∎'
         ].join('\n'),
-        '⭐ **与「阿贝尔群的 Ext」是同一件事**：$\\operatorname{gl.dim}\\mathbb{Z} = 1$ 换成 $\\operatorname{Ext}$ 的语言就是「$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N) = 0$ 对一切 $n \\ge 2$」—— 正是「阿贝尔群的 Ext」那条命题。两条说的是同一句话的两副面孔。',
+        '⭐ **与「阿贝尔群的 Ext」是同一件事**：$\\operatorname{gl.dim}\\mathbb{Z} = 1$ 换成 $\\operatorname{Ext}$ 的语言就是「$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N) = 0$ 对一切 $n \\ge 2$」—— 正是「阿贝尔群的 Ext」那条命题。\n\n两条说的是同一句话的两副面孔。',
         '⚠️ **为什么偏偏是 PID**：证明里唯一用到环的地方是「自由模的子模自由」。这条在 $k[x,y]$ 上就失败了，于是 $k[x,y]$ 上确实有 $\\operatorname{pd} = 2$ 的模（$k$ 自己），整体维数升到 $2$。',
         '📌 同一套论证给**主理想整环上的无挠模平坦**（无挠 + 长度 $1$ 自由消解 $\\implies$ 平坦）—— 见「平坦模」。'
       ].join('\n\n'),
@@ -511,7 +511,7 @@ window.MG = window.MG || {};
           '$$\\cdots \\to \\operatorname{Tor}_{n+1}(P, N) \\to \\operatorname{Tor}_{n+1}(M, N) \\to \\operatorname{Tor}_{n}(K, N) \\to \\operatorname{Tor}_{n}(P, N) \\to \\cdots$$',
           '$P$ 投射 $\\implies$ 平坦 $\\implies$ $\\operatorname{Tor}_{k}(P, N) = 0$（$k \\ge 1$），于是 $\\operatorname{Tor}_{n+1}(M, N) \\cong \\operatorname{Tor}_{n}(K, N)$ ✓。∎'
         ].join('\n'),
-        '⭐ **为什么它叫「转移」**：把「$M$ 的 $n+1$ 次不变量」换成「它的合冲的 $n$ 次不变量」。于是任何关于 $\\operatorname{Ext}^{n}$ 的陈述都能**逐次降维**，直到落在 $\\operatorname{Ext}^{0} = \\operatorname{Hom}$ 或 $\\operatorname{Ext}^{1}$ 上 —— 这两个是唯一「看得见元素」的层次。',
+        '⭐ **为什么它叫「转移」**：把「$M$ 的 $n+1$ 次不变量」换成「它的合冲的 $n$ 次不变量」。\n\n于是任何关于 $\\operatorname{Ext}^{n}$ 的陈述都能**逐次降维**，直到落在 $\\operatorname{Ext}^{0} = \\operatorname{Hom}$ 或 $\\operatorname{Ext}^{1}$ 上 —— 这两个是唯一「看得见元素」的层次。',
         '⚠️ 条件「$P$ 投射」不能省：$\\operatorname{Ext}^{n+1}(M,N)\\cong\\operatorname{Ext}^n(K,N)$ 的证明完全靠 $P$ 的那一项消失。对一般短正合列只有一条**五段长正合列**，不是同构。',
         '**与合冲联用**：$\\operatorname{Ext}^{n}(M, N) \\cong \\operatorname{Ext}^{1}(\\Omega^{n-1}M, N)$，配上「一阶扩展的分类」，就把高次 Ext 变成了「$N$ 被 $\\Omega^{n-1}M$ 的扩张」。'
       ].join('\n\n'),
@@ -540,7 +540,7 @@ window.MG = window.MG || {};
         [
           '**证明（把两种算法都认成导出范畴里的同一个 Hom）。** 由 $\\operatorname{Ext}$ 的定义，$\\operatorname{Ext}^{n}_{R}(M, N) = \\operatorname{Hom}_{D(R)}(M, N[n])$，其中 $N$ 支在 $0$ 次。',
           '- **右边**：由「Ext 就是 RHom」，$H^{n}(\\operatorname{Hom}(M, I^{\\bullet})) = R^{n}\\operatorname{Hom}(M, N) = \\operatorname{Ext}^{n}(M, N)$ ✓。',
-          '- **左边**：由「内射复形就是导出范畴」的对偶版本，$K^{-}(\\mathcal{P}) \\to D^{-}(R\\text{-}\\mathbf{Mod})$ 是等价，故 $P_{\\bullet}$ 在导出范畴里代表 $M$、$\\operatorname{Hom}_{K}(P_{\\bullet}, N[n]) = \\operatorname{Hom}_{D}(P_{\\bullet}, N[n])$ ✓。而 $H^{n}(\\operatorname{Hom}(P_{\\bullet}, N)) = \\operatorname{Hom}_{K}(P_{\\bullet}, N[n])$（同调第 $n$ 层就是「同伦类」那一步的标准换算）✓，于是左边也等于 $\\operatorname{Hom}_{D}(M, N[n])$ ✓。',
+          '- **左边**：由「内射复形就是导出范畴」的对偶版本，$K^{-}(\\mathcal{P}) \\to D^{-}(R\\text{-}\\mathbf{Mod})$ 是等价，故 $P_{\\bullet}$ 在导出范畴里代表 $M$、$\\operatorname{Hom}_{K}(P_{\\bullet}, N[n]) = \\operatorname{Hom}_{D}(P_{\\bullet}, N[n])$ ✓。\n\n而 $H^{n}(\\operatorname{Hom}(P_{\\bullet}, N)) = \\operatorname{Hom}_{K}(P_{\\bullet}, N[n])$（同调第 $n$ 层就是「同伦类」那一步的标准换算）✓，于是左边也等于 $\\operatorname{Hom}_{D}(M, N[n])$ ✓。',
           '两条路落在同一个导出 Hom 上，所以两边相等 ✓。∎'
         ].join('\n'),
         '⭐ **实用价值**：挑好算的那一边。$M$ 有很短的（甚至两项的）投射消解时用左边 —— PID、正则局部环、Koszul 情形都是这样；$N$ 有很短的内射消解时用右边 —— 可除群、$\\mathbb{Q}/\\mathbb{Z}$ 这类。两边都不短时才需要谱序列。',
@@ -572,15 +572,22 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         [
-          '**证明（用一条投射预覆盖造映射）。** 取投射预覆盖 $0 \\to K \\to P \\xrightarrow{\\ p\\ } M \\to 0$。由维数转移，$\\operatorname{Ext}^{1}_{R}(M, N) \\cong \\operatorname{coker}\\bigl(\\operatorname{Hom}(P, N) \\to \\operatorname{Hom}(K, N)\\bigr)$ ✓。',
-          '**① 从扩张到类。** 给定扩张 $0 \\to N \\to E \\to M \\to 0$，沿 $p$ 拉回：得 $0 \\to N \\to E_{0} \\to P \\to 0$，其中 $E_{0} = \\{\\, (e, x) : \\pi(e) = p(x) \\,\\}$。$P$ 投射，故这条列**分裂**，取分裂 $\\sigma : P \\to E_{0}$；复合 $K \\hookrightarrow P \\xrightarrow{\\sigma} E_{0} \\to N$ 给出 $\\theta \\in \\operatorname{Hom}(K, N)$ ✓。分裂的选取差一个 $\\operatorname{Hom}(P, N)$ 的元素，所以 $\\theta$ 的**类**在余核里是良定义的 ✓。',
+          '**证明（用一条投射预覆盖造映射）。** 取投射预覆盖 $0 \\to K \\to P \\xrightarrow{\\ p\\ } M \\to 0$。\n\n由维数转移，$\\operatorname{Ext}^{1}_{R}(M, N) \\cong \\operatorname{coker}\\bigl(\\operatorname{Hom}(P, N) \\to \\operatorname{Hom}(K, N)\\bigr)$ ✓。',
+          '**① 从扩张到类。** 给定扩张 $0 \\to N \\to E \\to M \\to 0$，沿 $p$ 拉回：得 $0 \\to N \\to E_{0} \\to P \\to 0$，其中 $E_{0} = \\{\\, (e, x) : \\pi(e) = p(x) \\,\\}$。\n\n' +
+          '$P$ 投射，故这条列**分裂**，取分裂 $\\sigma : P \\to E_{0}$；\n\n' +
+          '复合 $K \\hookrightarrow P \\xrightarrow{\\sigma} E_{0} \\to N$ 给出 $\\theta \\in \\operatorname{Hom}(K, N)$ ✓。\n\n' +
+          '分裂的选取差一个 $\\operatorname{Hom}(P, N)$ 的元素，所以 $\\theta$ 的**类**在余核里是良定义的 ✓。',
           '**② 从类到扩张。** 给定 $\\theta : K \\to N$，作推出（pushout）：$E := (P \\oplus N)/\\{\\, (k, -\\theta k) : k \\in K \\,\\}$，得交换图与短正合列 $0 \\to N \\to E \\to M \\to 0$ ✓。',
           '**③ 两个方向互逆。** 由构造，①② 逐条对消（拉回后再推出同构于原扩张；反过来 $\\theta$ 的类被还原）✓。这一步用的是 ① 里「分裂差一个 $\\operatorname{Hom}(P,N)$」。',
-          '**④ Baer 和。** 给定两个扩张 $E_{1}, E_{2}$，取 $M$ 上的纤维积 $E_{1}\\times_{M}E_{2}$（它在同一个 $M$ 上同时是两者的中间项），再商掉反对角线 $\\{\\, (n, -n) : n \\in N \\,\\}$ 的像 —— 得到的中间项记 $E_{1} + E_{2}$，即 Baer 和 ✓。逐条验：结合、交换来自纤维积与商；零元是 $N\\oplus M$（分裂扩张）；$E$ 的逆元是「把 $E\\to M$ 换成 $N\\to E$ 的负号」，即把 $E$ 里的 $N$ 反号 ✓。于是等价类成阿贝尔群 ✓。',
+          '**④ Baer 和。** 给定两个扩张 $E_{1}, E_{2}$，取 $M$ 上的纤维积 $E_{1}\\times_{M}E_{2}$（它在同一个 $M$ 上同时是两者的中间项），再商掉反对角线 $\\{\\, (n, -n) : n \\in N \\,\\}$ 的像 —— 得到的中间项记 $E_{1} + E_{2}$，即 Baer 和 ✓。\n\n' +
+          '逐条验：结合、交换来自纤维积与商；\n\n' +
+          '零元是 $N\\oplus M$（分裂扩张）；\n\n' +
+          '$E$ 的逆元是「把 $E\\to M$ 换成 $N\\to E$ 的负号」，即把 $E$ 里的 $N$ 反号 ✓。\n\n' +
+          '于是等价类成阿贝尔群 ✓。',
           '**⑤ 与 $\\operatorname{Ext}^{1}$ 的群结构一致。** ①② 那个双射把 Baer 和送到 $\\operatorname{Ext}^{1}$ 里的加法：两条扩张的类相加，其拉回分裂的选择可以并在一起取，于是 $\\theta$ 相加 ✓。∎'
         ].join('\n'),
         '⭐ **这是 $\\operatorname{Ext}^{1}$ 的「元素解释」**：$\\operatorname{Ext}^{1}$ 不是一组抽象的上同调类，它数的是**真正存在的中间项**。于是「$\\operatorname{Ext}^{1}(M, N) = 0$」有了一个可以手算的含义：**一切扩张都分裂**。',
-        '📌 高次 $\\operatorname{Ext}$ 也有元素解释：$\\operatorname{Ext}^{n}(M, N)$ 分类「$Y$ 形如 $N \\to E_{1}\\to \\cdots \\to E_{n}\\to M$ 的 $n$ 次扩张」（长度 $n$ 的正合列的同伦类）。$\\operatorname{Ext}^{1}$ 这条是 $n = 1$ 的最简单情形。',
+        '📌 高次 $\\operatorname{Ext}$ 也有元素解释：$\\operatorname{Ext}^{n}(M, N)$ 分类「$Y$ 形如 $N \\to E_{1}\\to \\cdots \\to E_{n}\\to M$ 的 $n$ 次扩张」（长度 $n$ 的正合列的同伦类）。\n\n$\\operatorname{Ext}^{1}$ 这条是 $n = 1$ 的最简单情形。',
         '⚠️ 「等价」的严格含义：同构必须**恒等在两端**。允许两端也取（非恒等的）同构时，得到的分类会粗一档 —— 那种版本对应的是 $\\operatorname{Hom}$ 里可逆元的轨道，不再是一一对应。'
       ].join('\n\n'),
       refs: [
@@ -675,12 +682,12 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         [
-          '**证明（双复形的两种算法）。** 取 $M, N$ 各自的投射消解 $P_{\\bullet} \\twoheadrightarrow M$、$Q_{\\bullet} \\twoheadrightarrow N$，作双复形 $P \\otimes Q$（$p$ 次行为 $P_{p}\\otimes Q_{q}$），取全复形 $T_{\\bullet}$。对它按**行**过滤：',
+          '**证明（双复形的两种算法）。** 取 $M, N$ 各自的投射消解 $P_{\\bullet} \\twoheadrightarrow M$、$Q_{\\bullet} \\twoheadrightarrow N$，作双复形 $P \\otimes Q$（$p$ 次行为 $P_{p}\\otimes Q_{q}$），取全复形 $T_{\\bullet}$。\n\n对它按**行**过滤：',
           '$$E_{p,q}^{1} = H_{q}\\bigl(P_{p}\\otimes Q_{\\bullet}\\bigr) = \\begin{cases} P_{p}\\otimes N , & q = 0 \\\\ 0 , & q \\ne 0 \\end{cases}$$',
-          '（因为 $Q_{\\bullet} \\to N$ 是消解、$P_{p}$ 平坦，张量后仍正合）✓。于是谱序列在 $E^{1}$ 页就只剩一行，退化，得 $H_{n}(T_{\\bullet}) \\cong H_{n}(P_{\\bullet}\\otimes N) = \\operatorname{Tor}_{n}^{R}(M, N)$ ✓。',
-          '再按**列**过滤（交换环上 $P\\otimes Q \\cong Q\\otimes P$，双复形转置）：同一步计算给出 $H_{n}(T_{\\bullet}) \\cong H_{n}(Q_{\\bullet}\\otimes M) = \\operatorname{Tor}_{n}^{R}(N, M)$ ✓。同一个 $H_{n}(T_{\\bullet})$ 被算出两次，故两者同构 ✓。∎'
+          '（因为 $Q_{\\bullet} \\to N$ 是消解、$P_{p}$ 平坦，张量后仍正合）✓。\n\n于是谱序列在 $E^{1}$ 页就只剩一行，退化，得 $H_{n}(T_{\\bullet}) \\cong H_{n}(P_{\\bullet}\\otimes N) = \\operatorname{Tor}_{n}^{R}(M, N)$ ✓。',
+          '再按**列**过滤（交换环上 $P\\otimes Q \\cong Q\\otimes P$，双复形转置）：同一步计算给出 $H_{n}(T_{\\bullet}) \\cong H_{n}(Q_{\\bullet}\\otimes M) = \\operatorname{Tor}_{n}^{R}(N, M)$ ✓。\n\n同一个 $H_{n}(T_{\\bullet})$ 被算出两次，故两者同构 ✓。\n\n∎'
         ].join('\n'),
-        '⚠️ **「交换」不能省**：非交换时 $M\\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\\otimes_{R} M$ 一般**根本没有定义**。错的方向是「$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$」这种带对偶环的写法。',
+        '⚠️ **「交换」不能省**：非交换时 $M\\otimes_{R} N$ 只在 $M$ 右、$N$ 左时有定义，$N\\otimes_{R} M$ 一般**根本没有定义**。\n\n错的方向是「$\\operatorname{Tor}_{n}^{R}(M,N) \\cong \\operatorname{Tor}_{n}^{R^{\\mathrm{op}}}(N,M)$」这种带对偶环的写法。',
         '⭐ 这条的实际用处：**计算时可以任选一边做消解**。例如算 $\\operatorname{Tor}_{n}^{R}(R/I, N)$ 时，通常用 $R/I$ 的两项消解（$0 \\to I \\to R \\to R/I \\to 0$）更省事 —— 有了对称性就知道这等价于对 $N$ 取消解。'
       ].join('\n\n'),
       refs: [
@@ -709,7 +716,7 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。**',
-          '$(1) \\implies (3)$：取 $F$ 的一个投射消解 $P_{\\bullet} \\to F$。$F$ 平坦时 $\\operatorname{Tor}_{n}$ 还可以改用 $N$ 的消解来算，于是取 $N$ 的投射消解 $Q_{\\bullet}$：$N$ 一侧的消解给出 $\\operatorname{Tor}_{n}(F, N) = H_{n}(F\\otimes Q_{\\bullet})$；而 $F\\otimes -$ 正合、$Q_{\\bullet} \\to N$ 正合，故 $F\\otimes Q_{\\bullet}$ 只在 $0$ 次有同调，高次为零 ✓。',
+          '$(1) \\implies (3)$：取 $F$ 的一个投射消解 $P_{\\bullet} \\to F$。\n\n$F$ 平坦时 $\\operatorname{Tor}_{n}$ 还可以改用 $N$ 的消解来算，于是取 $N$ 的投射消解 $Q_{\\bullet}$：$N$ 一侧的消解给出 $\\operatorname{Tor}_{n}(F, N) = H_{n}(F\\otimes Q_{\\bullet})$；\n\n而 $F\\otimes -$ 正合、$Q_{\\bullet} \\to N$ 正合，故 $F\\otimes Q_{\\bullet}$ 只在 $0$ 次有同调，高次为零 ✓。',
           '$(3) \\implies (2)$：取 $n = 1$ ✓。',
           '$(2) \\implies (1)$：任取单射 $f : M_{1} \\rightarrowtail M$，要证 $F\\otimes M_{1} \\to F\\otimes M$ 单。把它塞进短正合列 $0 \\to M_{1} \\to M \\to M/M_{1} \\to 0$，张量 $F$ 取长正合列',
           '$$\\operatorname{Tor}_{1}^{R}(F,\\ M/M_{1}) \\to F\\otimes M_{1} \\to F\\otimes M \\to F\\otimes M/M_{1} \\to 0 ,$$',
@@ -747,11 +754,11 @@ window.MG = window.MG || {};
           '（$\\mathbb{Z} \\hookrightarrow \\mathbb{Q}$ 单、$\\mathbb{Q} \\twoheadrightarrow \\mathbb{Q}/\\mathbb{Z}$ 满，核恰好是 $\\mathbb{Z}$）。张量 $A$ 取长正合列：',
           '$$\\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}, A) \\to \\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}/\\mathbb{Z}, A) \\to \\mathbb{Z}\\otimes A \\xrightarrow{\\ \\alpha\\ } \\mathbb{Q}\\otimes A .$$',
           '$\\mathbb{Q}$ 在 $\\mathbb{Z}$ 上**平坦**（无挠），故第一项为零 ✓，于是 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A) \\cong \\ker\\alpha$ ✓。',
-          '再识别 $\\alpha$：$\\mathbb{Z}\\otimes A \\cong A$、$\\mathbb{Q}\\otimes A \\cong A\\otimes_{\\mathbb{Z}}\\mathbb{Q}$，$\\alpha$ 就是 $a \\mapsto a\\otimes 1$。它的核恰是挠元 —— 若 $ka = 0$，则',
+          '再识别 $\\alpha$：$\\mathbb{Z}\\otimes A \\cong A$、$\\mathbb{Q}\\otimes A \\cong A\\otimes_{\\mathbb{Z}}\\mathbb{Q}$，$\\alpha$ 就是 $a \\mapsto a\\otimes 1$。\n\n它的核恰是挠元 —— 若 $ka = 0$，则',
           '$$a\\otimes 1 = a\\otimes\\Bigl(k\\cdot\\frac{1}{k}\\Bigr) = (ka)\\otimes\\frac{1}{k} = 0 ;$$',
-          '反之若 $a\\otimes 1 = 0$，则由张量积的显式构造（或「$\\mathbb{Q}$ 上有限个分母的通分」）存在 $k \\ge 1$ 使 $ka = 0$ ✓。于是 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A) \\cong A_{\\mathrm{tors}}$ ✓。∎'
+          '反之若 $a\\otimes 1 = 0$，则由张量积的显式构造（或「$\\mathbb{Q}$ 上有限个分母的通分」）存在 $k \\ge 1$ 使 $ka = 0$ ✓。\n\n于是 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A) \\cong A_{\\mathrm{tors}}$ ✓。\n\n∎'
         ].join('\n'),
-        '⭐ **读法**：$\\mathbb{Q}/\\mathbb{Z}$ 是「所有有限阶循环群 $\\mathbb{Z}/k$ 装在一起的容器」，而 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A)$ 恰好把 $A$ 里所有有限阶的元素挑出来。同一条现象在 $\\operatorname{Hom}$ 那一侧对应 $\\operatorname{Hom}(\\mathbb{Q}/\\mathbb{Z}, A) = A_{\\mathrm{tors}}$（对偶的那一半，Pontryagin 对偶里到处在用）。',
+        '⭐ **读法**：$\\mathbb{Q}/\\mathbb{Z}$ 是「所有有限阶循环群 $\\mathbb{Z}/k$ 装在一起的容器」，而 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A)$ 恰好把 $A$ 里所有有限阶的元素挑出来。\n\n同一条现象在 $\\operatorname{Hom}$ 那一侧对应 $\\operatorname{Hom}(\\mathbb{Q}/\\mathbb{Z}, A) = A_{\\mathrm{tors}}$（对偶的那一半，Pontryagin 对偶里到处在用）。',
         '📌 **一个健康检查**：若 $A$ 无挠（例如 $A = \\mathbb{Z}$、$\\mathbb{Q}$、$\\mathbb{R}$），结论说 $\\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}/\\mathbb{Z}, A) = 0$ —— 与「无挠 $\\iff$ 平坦（PID 上）」一致 ✓。',
         '⚠️ 这里 **$\\operatorname{Tor}_{1}$ 而不是 $\\operatorname{Tor}_{0}$**：$\\operatorname{Tor}_{0}(\\mathbb{Q}/\\mathbb{Z}, A) = (\\mathbb{Q}/\\mathbb{Z})\\otimes A$，那是另一个东西（一般非零、且和挠元无关）。'
       ].join('\n\n'),
@@ -780,8 +787,11 @@ window.MG = window.MG || {};
         [
           '**证明（给骨架与关键一步）。**',
           '$(\\Longleftarrow)$ 有限生成自由模平坦；滤过余极限正合，故与 $\\otimes$ 交换，于是「每个 $F_{i}$ 上 $\\otimes$ 正合」升级为「$F$ 上正合」 ✓。',
-          '$(\\Longrightarrow)$ 方向的心是**用有限生成自由模把 $F$ 逼近**。取遍所有 $R^{(n)} \\to F$（有限生成自由模到 $F$ 的映射），按「映射的像被包含」排成有向集，显然有 $F = \\varinjlim R^{(n)}$；但这样得到的系统不一定「滤过」得足够好（余极限的正确性要逐元素核验）。Lazard 的补救办法是**把有限呈现模也收进系统**：对每个有限呈现 $G$、每个映射 $G \\to F$ 与每个有限步的关系，用 $F$ 的平坦性把「有限的相容性数据」提升为真正的映射（平坦给出 $\\operatorname{Hom}(G,F)$ 上有限相容条件可以逐个满足），再取这些提升组成的系统 —— 它是有向的、滤过的，而余极限仍是 $F$ ✓。',
-          '**关键的过滤性**：把上面那个有向系统重选 —— 对每个有限生成子模 $F_{0} \\subseteq F$ 取一个满射 $R^{(n)} \\twoheadrightarrow F_{0}$，过渡映射沿包含关系取相容的提升；重选后系统仍滤过（两条映射经由其像的和分解），余极限也不变。于是 $F \\cong \\varinjlim F_{i}$ 是滤过余极限。∎'
+          '$(\\Longrightarrow)$ 方向的心是**用有限生成自由模把 $F$ 逼近**。\n\n' +
+          '取遍所有 $R^{(n)} \\to F$（有限生成自由模到 $F$ 的映射），按「映射的像被包含」排成有向集，显然有 $F = \\varinjlim R^{(n)}$；\n\n' +
+          '但这样得到的系统不一定「滤过」得足够好（余极限的正确性要逐元素核验）。\n\n' +
+          'Lazard 的补救办法是**把有限呈现模也收进系统**：对每个有限呈现 $G$、每个映射 $G \\to F$ 与每个有限步的关系，用 $F$ 的平坦性把「有限的相容性数据」提升为真正的映射（平坦给出 $\\operatorname{Hom}(G,F)$ 上有限相容条件可以逐个满足），再取这些提升组成的系统 —— 它是有向的、滤过的，而余极限仍是 $F$ ✓。',
+          '**关键的过滤性**：把上面那个有向系统重选 —— 对每个有限生成子模 $F_{0} \\subseteq F$ 取一个满射 $R^{(n)} \\twoheadrightarrow F_{0}$，过渡映射沿包含关系取相容的提升；\n\n重选后系统仍滤过（两条映射经由其像的和分解），余极限也不变。\n\n于是 $F \\cong \\varinjlim F_{i}$ 是滤过余极限。\n\n∎'
         ].join('\n'),
         '⭐ **意义**：它把平坦模说成「自由模的极限」，于是**凡是对有限生成自由模成立、且对滤过余极限保持的陈述，自动对平坦模成立**。这条路线比「直接对平坦模验」短得多 —— 例如「平坦模的挠积全消失」、「平坦模的直和仍平坦」都可以这样一句话推过去。',
         '📌 同一件事的另一种说法：平坦 = 「局部自由」的精确代数版本。在局部环上平坦 + 有限生成 $\\implies$ 自由（这是局部判据），而 Lazard 定理把它推广到任意环上的任意（不必有限生成的）模。',
@@ -802,7 +812,7 @@ window.MG = window.MG || {};
       regions: ['homology'],
       tags: ['定理', 'Watts', '右正合', '张量函子', '直和'],
       statement: [
-        '设 $R$ 是**交换环**，$F : R\\text{-}\\mathbf{Mod} \\to R\\text{-}\\mathbf{Mod}$ 是**右正合**的加性函子，且 $F$ 与**任意直和**交换（$F\\bigl(\\bigoplus_{i} M_{i}\\bigr) \\cong \\bigoplus_{i} F(M_{i})$，自然）。则存在自然同构',
+        '设 $R$ 是**交换环**，$F : R\\text{-}\\mathbf{Mod} \\to R\\text{-}\\mathbf{Mod}$ 是**右正合**的加性函子，且 $F$ 与**任意直和**交换（$F\\bigl(\\bigoplus_{i} M_{i}\\bigr) \\cong \\bigoplus_{i} F(M_{i})$，自然）。\n\n则存在自然同构',
         '',
         '$$F(M) \\;\\cong\\; M \\otimes_{R} F(R) ,$$',
         '',
@@ -811,16 +821,16 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明（自由模上验、右正合推广）。**',
-          '**① $F(R)$ 是 $R$-模。** $R$ 上的左乘给出 $\\operatorname{End}_{R\\text{-}\\mathbf{Mod}}(R) \\cong R^{\\mathrm{op}}$ 的作用；$F$ 把它送到 $F(R)$ 的自同态，于是 $F(R)$ 自动带上模结构 ✓（交换环上左右不分，可以就写 $R$）。',
+          '**① $F(R)$ 是 $R$-模。** $R$ 上的左乘给出 $\\operatorname{End}_{R\\text{-}\\mathbf{Mod}}(R) \\cong R^{\\mathrm{op}}$ 的作用；\n\n$F$ 把它送到 $F(R)$ 的自同态，于是 $F(R)$ 自动带上模结构 ✓（交换环上左右不分，可以就写 $R$）。',
           '**② 自由模上成立。** 对 $M = R^{(I)} = \\bigoplus_{i \\in I} R$，保直和给出',
           '$$F\\bigl(R^{(I)}\\bigr) \\cong \\bigoplus_{i} F(R) \\cong R^{(I)}\\otimes_{R} F(R)$$',
           '（最后一步是「自由模张量＝按系数重排」）✓。',
-          '**③ 一般模上由右正合推过去。** 取自由表现 $R^{(J)} \\to R^{(I)} \\to M \\to 0$。$F$ 右正合，保这个右正合列；而 $M\\otimes_{R}-$ 也右正合，保同一个右正合列。② 给出两端（$R^{(I)}$ 与 $R^{(J)}$ 处）的自然同构，于是两行比较、用「$F(M) \\to M\\otimes F(R)$ 那个自然变换在两侧都是同构」以及五项（或三项）引理，中间也是同构 ✓。',
+          '**③ 一般模上由右正合推过去。** 取自由表现 $R^{(J)} \\to R^{(I)} \\to M \\to 0$。\n\n$F$ 右正合，保这个右正合列；而 $M\\otimes_{R}-$ 也右正合，保同一个右正合列。\n\n② 给出两端（$R^{(I)}$ 与 $R^{(J)}$ 处）的自然同构，于是两行比较、用「$F(M) \\to M\\otimes F(R)$ 那个自然变换在两侧都是同构」以及五项（或三项）引理，中间也是同构 ✓。',
           '说明：那个自然变换 $\\tau_{M} : F(M) \\to M\\otimes_{R} F(R)$ 的构造是「$M$ 的元素沿 $R \\to M$ 送入、再作用 $F$」的一般化 —— 它在自由模上由 ② 给出、与生成元选取无关 ✓。∎'
         ].join('\n'),
         '⭐ **它说的是「右正合 + 保直和」这个组合已经把函子锁死成张量函子** —— 于是要判定某个构造「是不是张量」，不必猜，只要验这两条再加一个 $F(R)$。',
         '📌 **推论（Eilenberg–Watts）**：范畴等价 $R\\text{-}\\mathbf{Mod} \\to S\\text{-}\\mathbf{Mod}$（保直和、正合）必然是 $M \\mapsto M\\otimes_{R} B$，其中 $B$ 是可逆双模 —— 这就是 Morita 等价的标准形状。',
-        '⚠️ **「保直和」不能省**：证明的第二步要用 $F\\bigl(R^{(I)}\\bigr) \\cong \\bigoplus_{I} F(R)$ 对**任意**下标集 $I$ 成立；只保有限直和时，自由模上的比较就断了，也就没法过渡到一般模。⚠️ **「右正合」也不能省**：不右合时 $F(M)$ 不是自由模那一层的余核，两行根本对不起来。',
+        '⚠️ **「保直和」不能省**：证明的第二步要用 $F\\bigl(R^{(I)}\\bigr) \\cong \\bigoplus_{I} F(R)$ 对**任意**下标集 $I$ 成立；\n\n只保有限直和时，自由模上的比较就断了，也就没法过渡到一般模。\n\n⚠️ **「右正合」也不能省**：不右合时 $F(M)$ 不是自由模那一层的余核，两行根本对不起来。',
         '⚠️ **非交换版本**符号要小心：$F : R\\text{-}\\mathbf{Mod} \\to \\mathbf{Ab}$ 时 $F(R)$ 是右 $R$-模，同构写成 $F(M) \\cong F(R)\\otimes_{R} M$ —— 顺序反了。交换环上两种写法一致，所以本图采用交换的版本。'
       ].join('\n\n'),
       refs: [
@@ -859,9 +869,9 @@ window.MG = window.MG || {};
           '$$H_{n}(C\\otimes A) = \\frac{\\ker\\bigl(Z_{n}\\otimes A \\to B_{n-1}\\otimes A\\bigr)}{\\operatorname{im}\\bigl(B_{n}\\otimes A \\to Z_{n}\\otimes A\\bigr)} .$$',
           '**② 两个端点。** 把第二条张量 $A$（用 $\\operatorname{Tor}_{1}(Z_{n},A) = 0$ 与 $\\operatorname{Tor}_{0} = \\otimes$）得正合段',
           '$$\\operatorname{Tor}_{1}^{R}\\bigl(H_{n}(C), A\\bigr) \\to B_{n}\\otimes A \\to Z_{n}\\otimes A \\to H_{n}(C)\\otimes A \\to 0 ,$$',
-          '于是 $\\operatorname{im}\\bigl(B_{n}\\otimes A \\to Z_{n}\\otimes A\\bigr)$ 是某个映射的像、而 $H_{n}(C)\\otimes A$ 是它的**余核**；把同一条正合段在 $n-1$ 处再用一次，$\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A)$ 正是 $B_{n-1}\\otimes A \\to Z_{n-1}\\otimes A$ 的**核** ✓。',
+          '于是 $\\operatorname{im}\\bigl(B_{n}\\otimes A \\to Z_{n}\\otimes A\\bigr)$ 是某个映射的像、而 $H_{n}(C)\\otimes A$ 是它的**余核**；\n\n把同一条正合段在 $n-1$ 处再用一次，$\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A)$ 正是 $B_{n-1}\\otimes A \\to Z_{n-1}\\otimes A$ 的**核** ✓。',
           '**③ 拼起来。** 把 ① 记成 $H_{n}(C\\otimes A) = L/K$，其中 $L := \\ker(Z_{n}\\otimes A \\to B_{n-1}\\otimes A)$、$K := \\operatorname{im}(B_{n}\\otimes A \\to Z_{n}\\otimes A)$ ✓。',
-          '下段由 ② 在 $n$ 处，得 $(Z_{n}\\otimes A)/K \\cong H_{n}(C)\\otimes A$ ✓；上段由 ② 在 $n-1$ 处，得 $\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A) = \\ker\\bigl(B_{n-1}\\otimes A \\to Z_{n-1}\\otimes A\\bigr)$ ✓。而第一条张量后正合给出 $Z_{n}\\otimes A \\twoheadrightarrow B_{n-1}\\otimes A$，所以 $L$ 正是这个核沿这条满射的**原像** —— 于是 $L/K$ 满射到 $\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A)$、核为 $K$ ✓。合起来即得短正合列',
+          '下段由 ② 在 $n$ 处，得 $(Z_{n}\\otimes A)/K \\cong H_{n}(C)\\otimes A$ ✓；上段由 ② 在 $n-1$ 处，得 $\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A) = \\ker\\bigl(B_{n-1}\\otimes A \\to Z_{n-1}\\otimes A\\bigr)$ ✓。\n\n而第一条张量后正合给出 $Z_{n}\\otimes A \\twoheadrightarrow B_{n-1}\\otimes A$，所以 $L$ 正是这个核沿这条满射的**原像** —— 于是 $L/K$ 满射到 $\\operatorname{Tor}_{1}^{R}(H_{n-1}(C), A)$、核为 $K$ ✓。\n\n合起来即得短正合列',
           '$$0 \\to \\frac{Z_{n}\\otimes A}{K} \\to H_{n}(C\\otimes A) \\to \\operatorname{Tor}_{1}^{R}\\bigl(H_{n-1}(C), A\\bigr) \\to 0 ,$$',
           '左端就是 $H_{n}(C)\\otimes A$ ✓，正是要的那条 ✓。',
           '**④ 分裂。** 第一条短正合列分裂，故 $Z_{n}\\otimes A \\to B_{n-1}\\otimes A$ 可裂，于是 ③ 里的短正合列分裂 ✓。分裂的选法依赖 ① 中选定的截面，故一般**不自然** ✓。∎'
@@ -1217,7 +1227,7 @@ window.MG = window.MG || {};
         '$$\\cdots \\to \\operatorname{Ext}^{n}(M, N) \\to \\operatorname{Ext}^{n}(P, N) \\to \\operatorname{Ext}^{n}(K, N) \\xrightarrow{\\ \\delta\\ } \\operatorname{Ext}^{n+1}(M, N) \\to \\operatorname{Ext}^{n+1}(P, N) \\to \\cdots$$',
         '（$\\operatorname{Ext}^{n}(-, N) = R^{n}\\operatorname{Hom}(-, N)$ 由「Ext 就是 RHom」给出 ✓。）',
         '$P$ 投射使 $\\operatorname{Ext}^{k}(P, N) = 0$（$k \\ge 1$），故 $\\delta$ 两端都是零群，$\\delta$ 是双射：$\\operatorname{Ext}^{n+1}(M, N) \\cong \\operatorname{Ext}^{n}(K, N)$ ✓。',
-        'Tor 一侧照抄：张量 $N$ 取长正合列，$P$ 投射 $\\implies$ 平坦 $\\implies$ $\\operatorname{Tor}_{k}(P, N) = 0$（$k \\ge 1$），于是 $\\operatorname{Tor}_{n+1}(M, N) \\cong \\operatorname{Tor}_{n}(K, N)$ ✓。∎'
+        'Tor 一侧照抄：张量 $N$ 取长正合列，$P$ 投射 $\\implies$ 平坦 $\\implies$ $\\operatorname{Tor}_{k}(P, N) = 0$（$k \\ge 1$），于是 $\\operatorname{Tor}_{n+1}(M, N) \\cong \\operatorname{Tor}_{n}(K, N)$ ✓。\n\n∎'
       ].join('\n')
     },
     {
@@ -1230,7 +1240,7 @@ window.MG = window.MG || {};
         '$(1) \\implies (3)$：长度 $n$ 的投射消解在 $k > n$ 处为零，于是 $\\operatorname{Hom}(P_{\\bullet}, N)$ 在 $k > n$ 处为零，上同调为零 ✓。',
         '$(3) \\implies (4)$：取 $k = n+1$ ✓。',
         '$(4) \\implies (1)$：由维数转移连用 $n$ 次，$\\operatorname{Ext}^{n+1}_{R}(M, N) \\cong \\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, N)$ ✓（这里用到「用投射消解算与用内射消解算给出同一个群」，即两种算法一致，所以维数转移的两个方向都可靠）。',
-        '条件 (4) 于是说的是 $\\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, -)$ 恒为零。若 $\\Omega^{n}M$ 不投射，取自由模盖住它得 $0 \\to L \\to F \\to \\Omega^{n}M \\to 0$，它不分裂，由「一阶扩展的分类」这条路对应 $\\operatorname{Ext}^{1}(\\Omega^{n}M, L)$ 里的**非零**类，矛盾 ✓。故 $\\Omega^{n}M$ 投射，即 (1) ✓。',
+        '条件 (4) 于是说的是 $\\operatorname{Ext}^{1}_{R}(\\Omega^{n}M, -)$ 恒为零。\n\n若 $\\Omega^{n}M$ 不投射，取自由模盖住它得 $0 \\to L \\to F \\to \\Omega^{n}M \\to 0$，它不分裂，由「一阶扩展的分类」这条路对应 $\\operatorname{Ext}^{1}(\\Omega^{n}M, L)$ 里的**非零**类，矛盾 ✓。\n\n故 $\\Omega^{n}M$ 投射，即 (1) ✓。',
         '$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎'
       ].join('\n')
     },
@@ -1255,9 +1265,9 @@ window.MG = window.MG || {};
       target: 'cor.gldim-pid',
       title: '维数消失刻画 + 阿贝尔群只有 $0$、$1$ 次 Ext $\\implies$ 主理想整环的整体维数',
       proof: [
-        '主理想整环上，任取自由模盖住 $M$，其核是自由模的子模、仍自由，故 $M$ 有长度 $1$ 的自由消解 ✓。由「投射维数与消失刻画」的 $(2) \\implies (1)$，$\\operatorname{pd}_{R}M \\le 1$ 对一切 $M$ ✓，故 $\\operatorname{gl.dim} R \\le 1$ ✓。',
+        '主理想整环上，任取自由模盖住 $M$，其核是自由模的子模、仍自由，故 $M$ 有长度 $1$ 的自由消解 ✓。\n\n由「投射维数与消失刻画」的 $(2) \\implies (1)$，$\\operatorname{pd}_{R}M \\le 1$ 对一切 $M$ ✓，故 $\\operatorname{gl.dim} R \\le 1$ ✓。',
         '$\\mathbb{Z}$ 上「只有 $0$、$1$ 次 Ext」那条命题说的正是「$\\operatorname{Ext}^{n}(-, -) = 0$ 对一切 $n \\ge 2$」，由消失刻画这等价于「所有模的投射维数不超过 $1$」✓ —— 两条是同一句话。',
-        '再定值：$R$ 是域时每个模自由，$\\operatorname{pd} = 0$，$\\operatorname{gl.dim} = 0$ ✓；$R$ 不是域时取非零非单位的 $a$，$R/(a)$ 不投射（否则 $(a)$ 是 $R$ 的直和项，而整环里没有非平凡幂等元），故 $\\operatorname{pd}_{R}R/(a) = 1$，$\\operatorname{gl.dim} R = 1$ ✓。∎'
+        '再定值：$R$ 是域时每个模自由，$\\operatorname{pd} = 0$，$\\operatorname{gl.dim} = 0$ ✓；$R$ 不是域时取非零非单位的 $a$，$R/(a)$ 不投射（否则 $(a)$ 是 $R$ 的直和项，而整环里没有非平凡幂等元），故 $\\operatorname{pd}_{R}R/(a) = 1$，$\\operatorname{gl.dim} R = 1$ ✓。\n\n∎'
       ].join('\n')
     },
     {
@@ -1270,7 +1280,10 @@ window.MG = window.MG || {};
         '按马蹄引理的构造，取 $R_{n} = P_{n}\\oplus Q_{n}$、微分 $d_{n} = \\begin{pmatrix} d_{n}^{P} & \\chi_{n} \\\\ 0 & e_{n}\\end{pmatrix}$，其中 $\\chi_{n}$ 归纳地由 $Q_{n}$ 的投射性抬升得出，使 $d^{2} = 0$ ✓。',
         '于是 $0 \\to P_{\\bullet} \\to R_{\\bullet} \\to Q_{\\bullet} \\to 0$ 是**逐项分裂**的复形短正合列。对它用「短正合列给出长正合列」：',
         '$$\\cdots \\to H_{n}(P) \\to H_{n}(R) \\to H_{n}(Q) \\xrightarrow{\\ \\delta\\ } H_{n-1}(P) \\to \\cdots$$',
-        '两端是消解，故 $H_{n}(P) = H_{n}(Q) = 0$（$n \\ge 1$）、$H_{0}(P) \\cong M_{1}$、$H_{0}(Q) \\cong M_{2}$ ✓。逐段读：$n \\ge 2$ 时 $H_{n}(R)$ 被两个零夹住；$n = 1$ 时 $0 \\to H_{1}(R) \\to 0$；$n = 0$ 时 $M_{1} \\to H_{0}(R) \\to M_{2} \\to 0$ 与原来的短正合列比较得 $H_{0}(R) \\cong M$ ✓。',
+        '两端是消解，故 $H_{n}(P) = H_{n}(Q) = 0$（$n \\ge 1$）、$H_{0}(P) \\cong M_{1}$、$H_{0}(Q) \\cong M_{2}$ ✓。\n\n' +
+        '逐段读：$n \\ge 2$ 时 $H_{n}(R)$ 被两个零夹住；\n\n' +
+        '$n = 1$ 时 $0 \\to H_{1}(R) \\to 0$；\n\n' +
+        '$n = 0$ 时 $M_{1} \\to H_{0}(R) \\to M_{2} \\to 0$ 与原来的短正合列比较得 $H_{0}(R) \\cong M$ ✓。',
         '（追图部分用蛇引理把 $\\delta$ 与边际映射对齐，正是「长正合列」那条定理证明里的那一步。）于是 $R_{\\bullet}$ 是 $M$ 的投射消解 ✓。∎'
       ].join('\n')
     },
@@ -1283,7 +1296,7 @@ window.MG = window.MG || {};
       proof: [
         '$(1) \\implies (3)$：由 Lazard，$F \\cong \\varinjlim F_{i}$，$F_{i}$ 有限生成自由。对任意 $N$ 取投射消解 $Q_{\\bullet} \\to N$，则',
         '$$\\operatorname{Tor}_{n}^{R}(F, N) = H_{n}(F\\otimes Q_{\\bullet}) = H_{n}\\bigl(\\varinjlim_{i} (F_{i}\\otimes Q_{\\bullet})\\bigr) = \\varinjlim_{i} H_{n}(F_{i}\\otimes Q_{\\bullet}) = \\varinjlim_{i} \\operatorname{Tor}_{n}^{R}(F_{i}, N),$$',
-        '其中「$H_{n}$ 与滤过余极限交换」用的是滤过余极限**正合** ✓。而 $F_{i}$ 自由 $\\implies$ 平坦 $\\implies$ $\\operatorname{Tor}_{n}(F_{i}, N) = 0$（$n \\ge 1$）✓，故 $\\operatorname{Tor}_{n}(F, N) = 0$ ✓。',
+        '其中「$H_{n}$ 与滤过余极限交换」用的是滤过余极限**正合** ✓。\n\n而 $F_{i}$ 自由 $\\implies$ 平坦 $\\implies$ $\\operatorname{Tor}_{n}(F_{i}, N) = 0$（$n \\ge 1$）✓，故 $\\operatorname{Tor}_{n}(F, N) = 0$ ✓。',
         '$(3) \\implies (2)$ 显然；$(2) \\implies (1)$ 用张量后的长正合列：$\\operatorname{Tor}_{1}(F, M/M_{1}) = 0$ 使 $F\\otimes M_{1}\\to F\\otimes M$ 单，故 $F\\otimes-$ 正合 ✓。∎'
       ].join('\n')
     },
@@ -1297,7 +1310,7 @@ window.MG = window.MG || {};
         '$\\mathbb{Q}$ 在 $\\mathbb{Z}$ 上无挠，故平坦 ✓。对两项消解 $0 \\to \\mathbb{Z} \\to \\mathbb{Q} \\to \\mathbb{Q}/\\mathbb{Z} \\to 0$ 张量 $A$，取长正合列',
         '$$\\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}, A) \\to \\operatorname{Tor}_{1}^{\\mathbb{Z}}(\\mathbb{Q}/\\mathbb{Z}, A) \\to \\mathbb{Z}\\otimes A \\xrightarrow{\\ \\alpha\\ } \\mathbb{Q}\\otimes A .$$',
         '由「平坦 $\\implies$ 高次挠积为零」，第一项为零 ✓，于是 $\\operatorname{Tor}_{1}(\\mathbb{Q}/\\mathbb{Z}, A) \\cong \\ker\\alpha$ ✓。',
-        '而 $\\alpha$ 就是 $a \\mapsto a\\otimes 1$：若 $ka = 0$ 则 $a\\otimes 1 = (ka)\\otimes\\frac{1}{k} = 0$；反之 $a\\otimes 1 = 0$ 迫使 $a$ 有有限阶（把 $\\mathbb{Q}$ 的元素写成有限个分母的通分即可看出）✓。故 $\\ker\\alpha = A_{\\mathrm{tors}}$ ✓。∎'
+        '而 $\\alpha$ 就是 $a \\mapsto a\\otimes 1$：若 $ka = 0$ 则 $a\\otimes 1 = (ka)\\otimes\\frac{1}{k} = 0$；反之 $a\\otimes 1 = 0$ 迫使 $a$ 有有限阶（把 $\\mathbb{Q}$ 的元素写成有限个分母的通分即可看出）✓。\n\n故 $\\ker\\alpha = A_{\\mathrm{tors}}$ ✓。\n\n∎'
       ].join('\n')
     },
     {
@@ -1324,7 +1337,7 @@ window.MG = window.MG || {};
       proof: [
         '嵌入 $E$ 全忠实，于是对任意 $X \\in \\mathcal{C}$ 有自然同构 $\\operatorname{Hom}_{\\mathcal{C}}(P, X) \\cong \\operatorname{Hom}_{A\\text{-}\\mathbf{Mod}}(EP, EX)$ ✓。',
         '**投射。** 设 $EP$ 在 $A\\text{-}\\mathbf{Mod}$ 里投射，即 $\\operatorname{Hom}(EP, -)$ 正合；限制到 $E$ 的像上仍正合，借上面那个自然同构转回 $\\mathcal{C}$，得 $\\operatorname{Hom}_{\\mathcal{C}}(P, -)$ 正合 ✓，故 $P$ 投射 ✓。',
-        '**内射。** 对偶：$\\operatorname{Hom}_{\\mathcal{C}}(-, I) \\cong \\operatorname{Hom}(-, EI)$，$EI$ 内射使右边把单态射送到满态射；而 $E$ 正合（Freyd–Mitchell 定理的另一半）把 $\\mathcal{C}$ 里的单态射送到单态射，故左边也如此 ✓。',
+        '**内射。** 对偶：$\\operatorname{Hom}_{\\mathcal{C}}(-, I) \\cong \\operatorname{Hom}(-, EI)$，$EI$ 内射使右边把单态射送到满态射；\n\n而 $E$ 正合（Freyd–Mitchell 定理的另一半）把 $\\mathcal{C}$ 里的单态射送到单态射，故左边也如此 ✓。',
         '**正合部分**就是 Freyd–Mitchell 定理本身的陈述（$E$ 正合），这条只把「反射」补上 ✓。∎'
       ].join('\n')
     }

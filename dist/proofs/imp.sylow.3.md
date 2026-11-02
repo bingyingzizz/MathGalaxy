@@ -3,6 +3,14 @@
 
 `thm.class-equation` 类方程 + `def.group-action` 群作用 + `thm.orbit-stabilizer` 轨道–稳定子定理 → `thm.sylow` Sylow 定理
 
-。左端被 $p$ 整除、$|Z(G)|$ 不被 $p$ 整除，故存在某个 $i$ 使 $p \nmid [G : C_G(x_i)]$。由 $|G| = [G : C_G(x_i)]\cdot|C_G(x_i)|$ 与 $p^{a} \mid |G|$ 得 $p^{a} \mid |C_G(x_i)|$；又 $x_i$ 非中心故 $C_G(x_i) \ne G$，于是 $|C_G(x_i)| < |G|$。对 $C_G(x_i)$ 用归纳假设得 $p^{a}$ 阶子群，它也是 $G$ 的。
+对 $C_G(x_i)$ 用归纳假设得 $p^{a}$ 阶子群，它也是 $G$ 的。
+
+（$p^{i}$ 阶子群（$i < a$）由对 $p^{a}$ 阶子群再用一次「$p$-群有 $p^{i}$ 阶子群」的归纳得到。）
+
+**（2）共轭性。** 设 $P, Q$ 是 Sylow $p$-子群，考虑 $P$ 在左陪集集合 $X := G/Q$ 上的作用 $g \cdot (hQ) := (gh)Q$。
+
+$$|X| = [G : Q] = m, \qquad p \nmid m.$$
+
+由轨道分解 $|X| = \sum |\text{轨道}|$，每个轨道长 $= [P : P_{hQ}]$ 是 $p$ 的幂。
 
 > 续见 proofs/imp.sylow.4.md

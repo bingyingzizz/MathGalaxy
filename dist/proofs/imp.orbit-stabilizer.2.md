@@ -3,7 +3,7 @@
 
 `def.group-action` 群作用 + `thm.lagrange` Lagrange 定理 → `thm.orbit-stabilizer` 轨道–稳定子定理
 
-**第三步：$\varphi$ 是双射。** 满：$Gx$ 的元素按定义就是 $g\cdot x$。单：若 $g\cdot x = g'\cdot x$，则 $(g^{-1}g')\cdot x = g^{-1}\cdot(g'\cdot x) = g^{-1}\cdot(g\cdot x) = x$，故 $g^{-1}g' \in G_x$，即 $g' \in gG_x$，两个陪集相同。
+单：若 $g\cdot x = g'\cdot x$，则 $(g^{-1}g')\cdot x = g^{-1}\cdot(g'\cdot x) = g^{-1}\cdot(g\cdot x) = x$，故 $g^{-1}g' \in G_x$，即 $g' \in gG_x$，两个陪集相同。
 
 **第四步：取基数。** 由第三步与 Lagrange（`thm.lagrange`），
 

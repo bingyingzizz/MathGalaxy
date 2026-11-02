@@ -24,7 +24,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{d}\\omega^{1} = \\omega^{1}{}_{2}\\wedge\\omega^{2}, \\qquad \\mathrm{d}\\omega^{2} = \\omega^{2}_{\\ 1}\\wedge\\omega^{1} = -\\omega^{1}{}_{2}\\wedge\\omega^{1}.$$',
         '',
-        '把 $\\omega^{1}, \\omega^{2}$ 看成 $I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$ 给出的余标架，这两条方程就是关于 $\\omega^{1}{}_{2}$ 的线性方程组。若 $\\tilde\\omega^{1}{}_{2}$ 是另一解，则 $(\\omega^{1}{}_{2}-\\tilde\\omega^{1}{}_{2})\\wedge\\omega^{1} = (\\omega^{1}{}_{2}-\\tilde\\omega^{1}{}_{2})\\wedge\\omega^{2} = 0$；由 $\\{\\omega^{1},\\omega^{2}\\}$ 是基，差必为零。故 $\\omega^{1}{}_{2}$ **只依赖 $I$**（这是「无挠 Levi-Civita 联络由度量唯一确定」的标架版）。',
+        '把 $\\omega^{1}, \\omega^{2}$ 看成 $I = (\\omega^{1})^{2}+(\\omega^{2})^{2}$ 给出的余标架，这两条方程就是关于 $\\omega^{1}{}_{2}$ 的线性方程组。\n\n若 $\\tilde\\omega^{1}{}_{2}$ 是另一解，则 $(\\omega^{1}{}_{2}-\\tilde\\omega^{1}{}_{2})\\wedge\\omega^{1} = (\\omega^{1}{}_{2}-\\tilde\\omega^{1}{}_{2})\\wedge\\omega^{2} = 0$；\n\n由 $\\{\\omega^{1},\\omega^{2}\\}$ 是基，差必为零。\n\n故 $\\omega^{1}{}_{2}$ **只依赖 $I$**（这是「无挠 Levi-Civita 联络由度量唯一确定」的标架版）。',
         '',
         '**第二步：$K$ 是 $\\omega^{1}{}_{2}$ 的外微分。** 第二结构方程在 $j=2$、去掉 $k=3$ 的项后为',
         '',
@@ -34,7 +34,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{d}\\omega^{1}{}_{2} = \\bigl(h_{11}h_{22}-h_{12}h_{21}\\bigr)\\,\\omega^{1}\\wedge\\omega^{2} = \\det(h_{ij})\\,\\omega^{1}\\wedge\\omega^{2}.$$',
         '',
-        '**第三步：读出来。** Gauss 方程把右边认成 $K\\,\\omega^{1}\\wedge\\omega^{2}$，所以 $K = \\det(h_{ij})$。右边是 $I$-侧的量（第一步只用了 $I$），左边 $\\det h$ 是外蕴的主曲率之积 —— 两者相等即「$K$ 只依赖 $I$」。$\\blacksquare$'
+        '**第三步：读出来。** Gauss 方程把右边认成 $K\\,\\omega^{1}\\wedge\\omega^{2}$，所以 $K = \\det(h_{ij})$。\n\n右边是 $I$-侧的量（第一步只用了 $I$），左边 $\\det h$ 是外蕴的主曲率之积 —— 两者相等即「$K$ 只依赖 $I$」。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '这条把两个包接上：曲率形式这条路**不需要** Christoffel 符号的坐标计算，只需要第一、第二结构方程与 $\\omega^{3}=0$。'
     }

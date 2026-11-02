@@ -118,8 +118,8 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **为什么叫「有理」**：历史上指 $K = \\mathbb{Q}$ 的情形 —— 正是「特征多项式在 $\\mathbb{Q}$ 上不分裂」的典型场合。名字沿用下来，现在指「对任意域都成立」。',
         '**与极小多项式的关系**：不变因子 $d_{s}$ 就是矩阵的**极小多项式**，$d_{1} d_{2} \\cdots d_{s}$ 是特征多项式。所以两个多项式链在有理标准形里被**同时**编码 —— 这是它比 Jordan 形更「代数」的地方。',
-        '⚠️ **实矩阵的坑**：$A \\in M_{n}(\\mathbb{R})$ 的特征值可能是复数，所以「实 Jordan 形」只能给到 $1\\times1$ 与 $2\\times2$ 块（复特征值成对出现）。要对 $\\mathbb{R}$ 上的矩阵讲唯一标准形，有两条路：实 Jordan 形（带 $2\\times2$ 块）或有理标准形（纯 $\\mathbb{R}$ 系数）。本图 `thm.jordan-canonical-form` 讲的是复情形。',
-        '⚠️ **本条的证明**走「$K[x]$-模」：$M_{n}(K)$ 的相似类 $\\leftrightarrow$ $K[x]$-模 $K^{n}$ 的同构类，再用 $K[x]$ 是 PID $\\implies$ 有限生成模分解为循环模（主分解定理）$\\implies$ 每个循环模由 $d_{i}$ 决定。**这条路线正是 PID 上的结构定理**，所以两个定理其实是一件事。本图只给陈述与骨架。'
+        '⚠️ **实矩阵的坑**：$A \\in M_{n}(\\mathbb{R})$ 的特征值可能是复数，所以「实 Jordan 形」只能给到 $1\\times1$ 与 $2\\times2$ 块（复特征值成对出现）。\n\n要对 $\\mathbb{R}$ 上的矩阵讲唯一标准形，有两条路：实 Jordan 形（带 $2\\times2$ 块）或有理标准形（纯 $\\mathbb{R}$ 系数）。\n\n本图 `thm.jordan-canonical-form` 讲的是复情形。',
+        '⚠️ **本条的证明**走「$K[x]$-模」：$M_{n}(K)$ 的相似类 $\\leftrightarrow$ $K[x]$-模 $K^{n}$ 的同构类，再用 $K[x]$ 是 PID $\\implies$ 有限生成模分解为循环模（主分解定理）$\\implies$ 每个循环模由 $d_{i}$ 决定。\n\n**这条路线正是 PID 上的结构定理**，所以两个定理其实是一件事。\n\n本图只给陈述与骨架。'
       ].join('\n\n'),
       refs: [
         'Hoffman–Kunze, Linear Algebra（⚠️ 章节未核实，只记书名）· 有理标准形',
@@ -152,8 +152,8 @@ window.MG = window.MG || {};
         '**关键性质**：$\\operatorname{char} K = p$ 时，对一切 $a \\in K$ 有 $pa = 0$，且 $(a + b)^{p} = a^{p} + b^{p}$（**Frobenius**：二项式系数 $\\binom{p}{k}$ 都被 $p$ 整除）。'
       ].join('\n'),
       notes: [
-        '⭐ **为什么必须是素数**：若 $1$ 加 $n$ 次回到 $0$ 而 $n = ab$ 可分解，则 $0 = n\\cdot 1 = (a\\cdot 1)(b\\cdot 1)$，域无零因子 $\\implies$ $a \\cdot 1 = 0$ 或 $b\\cdot 1 = 0$ $\\implies$ $n$ 不是最小的。所以核只能是 $(0)$ 或 $(p)$，**不存在特征 $4$ 的域**。',
-        '⚠️ **$\\operatorname{char}$ 不是「元素个数」**：$\\mathbb{F}_{p^{n}}$ 的特征是 $p$，不是 $p^{n}$。特征只记「$\\mathbb{Z}$ 怎么映进来」，元数记 $\\lvert K\\rvert$。两者对有限域由 $\\lvert K\\rvert = p^{n}$ 联系（$p$ 是特征），但特征本身是那个 $p$。',
+        '⭐ **为什么必须是素数**：若 $1$ 加 $n$ 次回到 $0$ 而 $n = ab$ 可分解，则 $0 = n\\cdot 1 = (a\\cdot 1)(b\\cdot 1)$，域无零因子 $\\implies$ $a \\cdot 1 = 0$ 或 $b\\cdot 1 = 0$ $\\implies$ $n$ 不是最小的。\n\n所以核只能是 $(0)$ 或 $(p)$，**不存在特征 $4$ 的域**。',
+        '⚠️ **$\\operatorname{char}$ 不是「元素个数」**：$\\mathbb{F}_{p^{n}}$ 的特征是 $p$，不是 $p^{n}$。\n\n特征只记「$\\mathbb{Z}$ 怎么映进来」，元数记 $\\lvert K\\rvert$。\n\n两者对有限域由 $\\lvert K\\rvert = p^{n}$ 联系（$p$ 是特征），但特征本身是那个 $p$。',
         '⚠️ **与 `def.finchar`（有限特征族）无关**：那是序论 / Tukey 引理里的概念（「有限特征族」），只是中文撞了「特征」两个字。名字里带「特征」的东西在图上还有特征值、特征子空间、特征多项式、特征类 —— 各自独立。',
         '⭐ **Frobenius 是特征 $p$ 的标志性现象**：$x \\mapsto x^{p}$ 是域同态（在有限域上还是自同构），而特征 $0$ 里完全没有对应物。$\\mathbb{F}_{p^{n}}$ 的 Galois 群就是 Frobenius 生成的循环群。'
       ].join('\n\n'),

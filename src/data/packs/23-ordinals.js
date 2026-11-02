@@ -42,7 +42,7 @@ window.MG = window.MG || {};
         '',
         '即 $f$ 与 $f^{-1}$ **都保序**。此时称 $A$ 与 $B$ **序同构**，记 $A \\cong B$。'
       ].join('\n'),
-      notes: '⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。这条性质是「序数可以比较」的全部技术来源。\n\n⚠ **序型**是序同构给出的等价类。良序集的序型**不是集合**：所有良序集的序型凑在一起装不进任何集合，用一个具体的代表来替代它 —— 那就是序数。',
+      notes: '⭐ **序同构比「同构」严**：它要求**双向**保序，只要求 $f$ 保序是不够的 —— $f$ 保序且是双射时，$f^{-1}$ 不一定保序。\n\n⭐ **良序集上就省事了**：若两个良序集之间有**保序单射**，它自动是到某个初始段的序同构 —— 不必再回头验逆映射。\n\n这条性质是「序数可以比较」的全部技术来源。\n\n⚠ **序型**是序同构给出的等价类。\n\n良序集的序型**不是集合**：所有良序集的序型凑在一起装不进任何集合，用一个具体的代表来替代它 —— 那就是序数。',
       refs: ['Kunen, Set Theory, I.11', 'Jech, Set Theory, 2.2']
     },
 
@@ -63,7 +63,7 @@ window.MG = window.MG || {};
         '',
         '由传递性，$\\alpha$ 的**每个元素本身也是序数**。约定：$0 := \\emptyset$，**后继序数** $\\alpha + 1 := \\alpha \\cup \\{ \\alpha \\}$；不含最大元的非零序数叫**极限序数**，$\\omega$ 是最小的极限序数。序数全体记作 $\\mathrm{On}$。',
         '',
-        '开头的几个：$\\emptyset,\\ \\{ \\emptyset \\},\\ \\{ \\emptyset, \\{ \\emptyset \\} \\},\\ \\ldots$，即 $0, 1, 2, \\ldots$；接着是 $\\omega,\\ \\omega + 1,\\ \\omega + 2,\\ \\ldots,\\ \\omega + \\omega,\\ \\ldots$'
+        '开头的几个：$\\emptyset,\\ \\{ \\emptyset \\},\\ \\{ \\emptyset, \\{ \\emptyset \\} \\},\\ \\ldots$，即 $0, 1, 2, \\ldots$；\n\n接着是 $\\omega,\\ \\omega + 1,\\ \\omega + 2,\\ \\ldots,\\ \\omega + \\omega,\\ \\ldots$'
       ].join('\n'),
       notes: [
         '⭐⭐ **格式还是「集合 + 关系 + 公理」**：序数不是凭空的对象 —— 一个**传递集**，配上 $\\in$ 这个**现成的**关系，就定出了一个序数。判别一个集合是不是序数，就是核对这两条。',
@@ -229,7 +229,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $(W, \\preceq )$ 是良序集，$G$ 任给。记 $W_{< w} = \\{ v \\in W : v \\prec w \\}$。',
         '',
-        '**① 初始段上的解至多一个。** 设 $w \\in W$，$f, g$ 都是 $W_{< w}$ 上满足递归式的函数。反设 $f \\ne g$，取最小的 $v \\prec w$ 使 $f(v) \\ne g(v)$（这一步用的是**良序性**：$\\{ u \\prec w : f(u) \\ne g(u) \\}$ 非空故有最小元）。于是在 $W_{< v}$ 上 $f$ 与 $g$ 相同，从而',
+        '**① 初始段上的解至多一个。** 设 $w \\in W$，$f, g$ 都是 $W_{< w}$ 上满足递归式的函数。\n\n反设 $f \\ne g$，取最小的 $v \\prec w$ 使 $f(v) \\ne g(v)$（这一步用的是**良序性**：$\\{ u \\prec w : f(u) \\ne g(u) \\}$ 非空故有最小元）。\n\n于是在 $W_{< v}$ 上 $f$ 与 $g$ 相同，从而',
         '',
         '$$f(v) = G\\big( f \\upharpoonright W_{< v} \\big) = G\\big( g \\upharpoonright W_{< v} \\big) = g(v)$$',
         '',
@@ -239,9 +239,9 @@ window.MG = window.MG || {};
         '',
         '$$R = \\{ (w, y) : \\text{存在函数} f \\text{ 定义在} W_{< w} \\text{ 上、满足递归式，且} y = G(f) \\}$$',
         '',
-        '它是集合：候选的 $f$ 都是 $W_{< w} \\times V$ 的子集，先由幂集公理拿到 $\\mathcal{P}(W \\times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。',
+        '它是集合：候选的 $f$ 都是 $W_{< w} \\times V$ 的子集，先由幂集公理拿到 $\\mathcal{P}(W \\times V)$，再用分离公理模式从里面筛出满足条件的那些（$V$ 取一个足够大的集合即可，例如 $G$ 的值域之并的幂集的幂集）。\n\n由 ①，对每个 $w$ 至多一个 $y$，所以 $R$ **是单值的**，即 $R$ 是一个函数。',
         '',
-        '**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \\notin \\operatorname{dom}\\, R$。则 $W_{< w} \\subseteq \\operatorname{dom}\\, R$，于是 $f := R \\upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \\prec w$，由 $v \\in \\operatorname{dom}\\, R$ 及单值性得 $f(v) = G(f \\upharpoonright W_{< v})$）。于是 $(w, G(f)) \\in R$，与 $w \\notin \\operatorname{dom}\\, R$ 矛盾。',
+        '**③ $R$ 的定义域是整个 $W$。** 反设不然，取最小的 $w \\notin \\operatorname{dom}\\, R$。\n\n则 $W_{< w} \\subseteq \\operatorname{dom}\\, R$，于是 $f := R \\upharpoonright W_{< w}$ 是 $W_{< w}$ 上满足递归式的函数（若 $v \\prec w$，由 $v \\in \\operatorname{dom}\\, R$ 及单值性得 $f(v) = G(f \\upharpoonright W_{< v})$）。\n\n于是 $(w, G(f)) \\in R$，与 $w \\notin \\operatorname{dom}\\, R$ 矛盾。',
         '',
         '故 $R$ 就是所求的函数 $F$，由 ① 唯一。',
         '',
@@ -259,16 +259,20 @@ window.MG = window.MG || {};
       proof: [
         '设 $\\alpha, \\beta$ 是序数。',
         '',
-        '**① 序数的元素是序数。** 若 $\\gamma \\in \\alpha$：$\\gamma \\subseteq \\alpha$（$\\alpha$ 传递），故 $\\gamma$ 传递（$\\gamma$ 的元素属于 $\\alpha$，而 $\\alpha$ 传递）；又 $\\in$ 在 $\\gamma$ 上继承 $\\alpha$ 上的良序性，故 $\\gamma$ 是序数。',
+        '**① 序数的元素是序数。** 若 $\\gamma \\in \\alpha$：$\\gamma \\subseteq \\alpha$（$\\alpha$ 传递），故 $\\gamma$ 传递（$\\gamma$ 的元素属于 $\\alpha$，而 $\\alpha$ 传递）；\n\n又 $\\in$ 在 $\\gamma$ 上继承 $\\alpha$ 上的良序性，故 $\\gamma$ 是序数。',
         '',
         '**② 若 $\\beta \\subset \\alpha$ 则 $\\beta \\in \\alpha$。** 取 $b$ 为 $\\alpha \\setminus \\beta$ 的 $\\in$-最小元。断言 $\\beta = b$。',
-        '　$\\subseteq$：设 $x \\in \\beta$。由 $\\beta \\subseteq \\alpha$ 有 $x \\in \\alpha$，故 $x, b \\in \\alpha$；由 $\\in$ 在 $\\alpha$ 上的**三歧性**（良序蕴含全序），$x \\in b$、$x = b$、$b \\in x$ 恰有一个成立。后两种都会给出 $b \\in \\beta$（$x = b$ 直接，$b \\in x$ 用 $\\beta$ 传递），与 $b$ 的取法矛盾。故 $x \\in b$。',
+        '　$\\subseteq$：设 $x \\in \\beta$。\n\n' +
+        '由 $\\beta \\subseteq \\alpha$ 有 $x \\in \\alpha$，故 $x, b \\in \\alpha$；\n\n' +
+        '由 $\\in$ 在 $\\alpha$ 上的**三歧性**（良序蕴含全序），$x \\in b$、$x = b$、$b \\in x$ 恰有一个成立。\n\n' +
+        '后两种都会给出 $b \\in \\beta$（$x = b$ 直接，$b \\in x$ 用 $\\beta$ 传递），与 $b$ 的取法矛盾。\n\n' +
+        '故 $x \\in b$。',
         '　$\\supseteq$：设 $x \\in b$。由 $\\alpha$ 传递得 $x \\in \\alpha$。若 $x \\in \\alpha \\setminus \\beta$，则 $x \\in b$ 与 $b$ 的最小性矛盾（$x \\in b$ 即 $x$ 比 $b$ 小）。故 $x \\in \\beta$。',
         '　于是 $\\beta = b$，而 $b \\in \\alpha$，即 $\\beta \\in \\alpha$。',
         '',
-        '**③ 三歧性。** 若 $\\alpha \\ne \\beta$，则 $\\alpha \\subseteq \\beta$ 与 $\\beta \\subseteq \\alpha$ 不能同时成立。不妨设 $\\beta \\nsubseteq \\alpha$，则 $\\beta \\setminus \\alpha \\ne \\emptyset$，故 $\\beta \\subset \\alpha$ 不成立，由 ② 得 $\\alpha \\in \\beta$。对调 $\\alpha, \\beta$ 同理。',
+        '**③ 三歧性。** 若 $\\alpha \\ne \\beta$，则 $\\alpha \\subseteq \\beta$ 与 $\\beta \\subseteq \\alpha$ 不能同时成立。\n\n不妨设 $\\beta \\nsubseteq \\alpha$，则 $\\beta \\setminus \\alpha \\ne \\emptyset$，故 $\\beta \\subset \\alpha$ 不成立，由 ② 得 $\\alpha \\in \\beta$。\n\n对调 $\\alpha, \\beta$ 同理。',
         '',
-        '**④ 三者不相容。** 若 $\\alpha \\in \\beta$ 且 $\\beta \\in \\alpha$，则由传递性 $\\alpha \\in \\alpha$，与 $\\in$ 在 $\\alpha$ 上是良序（无 $\\in$-循环）矛盾。又 $\\alpha \\in \\beta$ 与 $\\alpha = \\beta$ 显然不相容。',
+        '**④ 三者不相容。** 若 $\\alpha \\in \\beta$ 且 $\\beta \\in \\alpha$，则由传递性 $\\alpha \\in \\alpha$，与 $\\in$ 在 $\\alpha$ 上是良序（无 $\\in$-循环）矛盾。\n\n又 $\\alpha \\in \\beta$ 与 $\\alpha = \\beta$ 显然不相容。',
         '',
         '**⑤ $\\in$ 是良序。** 可比性已得；非空序数集合 $S$ 取 $\\alpha \\in S$，若 $\\alpha$ 不是 $\\in$-最小元，则 $\\alpha \\cap S$ 是集合，由正则公理有 $\\in$-最小元 $m$，而 $m$ 也是 $S$ 的 $\\in$-最小元。∎'
       ].join('\n'),
@@ -292,16 +296,26 @@ window.MG = window.MG || {};
         '',
         '**② $F$ 保序。** 若 $v \\prec w$，则 $F(v) \\in \\{ F(u) : u \\prec w \\} = F(w)$。反过来若 $F(v) \\in F(w)$，则 $F(v) = F(u)$ 对某个 $u \\prec w$；再由 ③ 的单射性得 $v = u \\prec w$。',
         '',
-        '**③ $F$ 是单射。** 反设存在 $v \\ne w$ 使 $F(v) = F(w)$；由于 $\\preceq$ 是全序，不妨 $v \\prec w$。由 ② 得 $F(v) \\in F(w) = F(v)$，即 $F(v) \\in F(v)$ —— 与「任何集合都不属于自身」（正则公理的推论）矛盾。（这一步是真正用到**正则公理**的地方。）',
+        '**③ $F$ 是单射。** 反设存在 $v \\ne w$ 使 $F(v) = F(w)$；由于 $\\preceq$ 是全序，不妨 $v \\prec w$。\n\n由 ② 得 $F(v) \\in F(w) = F(v)$，即 $F(v) \\in F(v)$ —— 与「任何集合都不属于自身」（正则公理的推论）矛盾。\n\n（这一步是真正用到**正则公理**的地方。）',
         '',
-        '**④ $\\alpha := \\operatorname{ran}\\, F$ 是序数。** 由替换公理模式，$\\alpha = \\{ F(w) : w \\in W \\}$ 是集合。**传递性**：若 $x \\in F(w)$，则 $x = F(v)$ 对某个 $v \\prec w$，故 $x \\in \\alpha$。**$\\in$ 良序**：$\\alpha$ 上的 $\\in$ 经 ②③ 就是 $(W, \\prec)$ 的序（$x \\in y \\iff F^{-1}(x) \\prec F^{-1}(y)$），良序性原样搬过来。',
+        '**④ $\\alpha := \\operatorname{ran}\\, F$ 是序数。** 由替换公理模式，$\\alpha = \\{ F(w) : w \\in W \\}$ 是集合。\n\n**传递性**：若 $x \\in F(w)$，则 $x = F(v)$ 对某个 $v \\prec w$，故 $x \\in \\alpha$。\n\n**$\\in$ 良序**：$\\alpha$ 上的 $\\in$ 经 ②③ 就是 $(W, \\prec)$ 的序（$x \\in y \\iff F^{-1}(x) \\prec F^{-1}(y)$），良序性原样搬过来。',
         '',
         '**⑤ 于是 $F$ 是 $(W, \\preceq ) \\to (\\alpha, \\in)$ 的序同构**，故 $W$ 的序型 $\\alpha$ 存在。',
         '',
-        '**⑥ 唯一性。** 设 $\\alpha, \\beta$ 都是 $W$ 的序型，则 $(\\alpha, \\in) \\cong (\\beta, \\in)$。由**三歧性**，$\\alpha \\in \\beta$、$\\alpha = \\beta$、$\\beta \\in \\alpha$ 恰有一个成立。若 $\\alpha \\in \\beta$：由 $\\beta$ 传递得 $\\alpha \\subseteq \\beta$，且 $\\alpha = \\{ x \\in \\beta : x \\in \\alpha \\}$ 是 $\\beta$ 的**真**初始段。把两个序同构接起来，得到 $(\\alpha, \\in)$ 与自己的真初始段序同构 —— 而**良序集不能与自己的真初始段序同构**（见下），矛盾。故 $\\alpha \\notin \\beta$；交换 $\\alpha, \\beta$ 同理得 $\\beta \\notin \\alpha$。于是只能 $\\alpha = \\beta$。',
+        '**⑥ 唯一性。** 设 $\\alpha, \\beta$ 都是 $W$ 的序型，则 $(\\alpha, \\in) \\cong (\\beta, \\in)$。\n\n' +
+        '由**三歧性**，$\\alpha \\in \\beta$、$\\alpha = \\beta$、$\\beta \\in \\alpha$ 恰有一个成立。\n\n' +
+        '若 $\\alpha \\in \\beta$：由 $\\beta$ 传递得 $\\alpha \\subseteq \\beta$，且 $\\alpha = \\{ x \\in \\beta : x \\in \\alpha \\}$ 是 $\\beta$ 的**真**初始段。\n\n' +
+        '把两个序同构接起来，得到 $(\\alpha, \\in)$ 与自己的真初始段序同构 —— 而**良序集不能与自己的真初始段序同构**（见下），矛盾。\n\n' +
+        '故 $\\alpha \\notin \\beta$；\n\n' +
+        '交换 $\\alpha, \\beta$ 同理得 $\\beta \\notin \\alpha$。\n\n' +
+        '于是只能 $\\alpha = \\beta$。',
         '',
         '**引理**（上一步用到）：良序集 $(L, \\prec)$ 不可能与它的真初始段 $L_{< a} = \\{ x \\in L : x \\prec a \\}$ 序同构。',
-        '证：设 $h : L \\to L_{< a}$ 是序同构。对 $x \\prec a$ 用**超限归纳**：若 $\\forall y \\prec x,\\ h(y) = y$，则 $h(x)$ 是 $L_{< a}$ 中大于一切 $h(y) = y\\ (y \\prec x)$ 的最小元，也就是「大于一切 $y \\prec x$ 的最小元」，即 $h(x) = x$（序同构把「小于 $x$ 的全部元素」映成「小于 $h(x)$ 的全部元素」）。故 $h$ 在 $L_{< a}$ 上恒等；于是 $h(a)$ 是 $L_{< a}$ 中大于一切 $y \\prec a$ 的最小元，即 $h(a) = a$ —— 但 $h(a) \\in L_{< a}$ 意为 $h(a) \\prec a$，矛盾。∎'
+        '证：设 $h : L \\to L_{< a}$ 是序同构。\n\n' +
+        '对 $x \\prec a$ 用**超限归纳**：若 $\\forall y \\prec x,\\ h(y) = y$，则 $h(x)$ 是 $L_{< a}$ 中大于一切 $h(y) = y\\ (y \\prec x)$ 的最小元，也就是「大于一切 $y \\prec x$ 的最小元」，即 $h(x) = x$（序同构把「小于 $x$ 的全部元素」映成「小于 $h(x)$ 的全部元素」）。\n\n' +
+        '故 $h$ 在 $L_{< a}$ 上恒等；\n\n' +
+        '于是 $h(a)$ 是 $L_{< a}$ 中大于一切 $y \\prec a$ 的最小元，即 $h(a) = a$ —— 但 $h(a) \\in L_{< a}$ 意为 $h(a) \\prec a$，矛盾。\n\n' +
+        '∎'
       ].join('\n'),
       note: '整个证明只用 **ZF**（递归定理 + 替换公理 + 三歧性），不要选择公理。这正是 Hartogs 定理能在 ZF 里成立的原因之一。'
     },

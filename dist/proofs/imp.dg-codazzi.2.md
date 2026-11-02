@@ -11,4 +11,6 @@ $$X\bigl(II(Y,Z)\bigr)-Y\bigl(II(X,Z)\bigr)+II(X,\nabla_{Y}Z)-II(Y,\nabla_{X}Z)-
 
 $$(\nabla_{X}II)(Y,Z)-(\nabla_{Y}II)(X,Z) = 0 .$$
 
+这就是 $\nabla II$ 关于前两个变量对称，也就是 $\mathbb{R}^{3}$ 曲率的混合分量 $R^{i}_{\ 3jk}$ 为零。
+
 > 续见 proofs/imp.dg-codazzi.3.md

@@ -5,6 +5,14 @@
 
 固定 $a \in U$，记 $r := \operatorname{rank} Df(a)$。
 
-**第一步：选主元并在定义域上换坐标。** $Df(a)$ 有某个 $r \times r$ 子式非零。不妨设前 $r$ 个坐标上的主子式非零（否则先重排坐标 —— 那是线性同构，不影响结论）。把 $x$ 拆成 $(x', x'') \in \mathbb{R}^{r} \times \mathbb{R}^{n-r}$，$f$ 拆成 $(f', f'') \in \mathbb{R}^{r} \times \mathbb{R}^{m-r}$。则 $D_{x'} f'(a)$ 可逆。
+**第一步：选主元并在定义域上换坐标。** $Df(a)$ 有某个 $r \times r$ 子式非零。
+
+不妨设前 $r$ 个坐标上的主子式非零（否则先重排坐标 —— 那是线性同构，不影响结论）。
+
+把 $x$ 拆成 $(x', x'') \in \mathbb{R}^{r} \times \mathbb{R}^{n-r}$，$f$ 拆成 $(f', f'') \in \mathbb{R}^{r} \times \mathbb{R}^{m-r}$。
+
+则 $D_{x'} f'(a)$ 可逆。
+
+**第二步：把 $f'$ 当成新坐标。** 令 $\Phi(x', x'') := \bigl( f'(x', x''),\ x'' \bigr)$。
 
 > 续见 proofs/imp.rank-theorem.2.md

@@ -24,7 +24,7 @@ window.MG = window.MG || {};
         '**Hausdorff 空间**构成 $\\mathbf{Top}$ 的**反射子范畴**：反射是把每个拓扑空间送去它的「Hausdorff 化」$X \\mapsto X/\\!\\sim$。'
       ].join('\n'),
       notes: [
-        '**证明。** 把 $X$ 里「不能被子开集分开」的点粘起来：定义 $x \\sim y$ $\\iff$ $x, y$ 在 $X$ 的每个开覆盖式的分离里都同进同出（等价地：$X$ 到任何 Hausdorff 空间的连续映射都把 $x,y$ 映到同一点）✓。商 $X/\\!\\sim$ 是 Hausdorff ✓，而且任何连续映射 $X \\to H$（$H$ Hausdorff）唯一地穿过它 ✓ —— 这正是反射的泛性质 ✓。∎'
+        '**证明。** 把 $X$ 里「不能被子开集分开」的点粘起来：定义 $x \\sim y$ $\\iff$ $x, y$ 在 $X$ 的每个开覆盖式的分离里都同进同出（等价地：$X$ 到任何 Hausdorff 空间的连续映射都把 $x,y$ 映到同一点）✓。\n\n商 $X/\\!\\sim$ 是 Hausdorff ✓，而且任何连续映射 $X \\to H$（$H$ Hausdorff）唯一地穿过它 ✓ —— 这正是反射的泛性质 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.3']
     },
@@ -42,7 +42,7 @@ window.MG = window.MG || {};
         '设 $X$ 是**正规** Hausdorff 空间、$x \\in X$。则 $x$ 的每个邻域都含一个**闭**邻域。'
       ].join('\n'),
       notes: [
-        '**证明。** 给邻域 $U \\ni x$。取 $x$ 的闭邻域 $F \\subseteq U$：由正规性造开集 $W$ 使 $x \\in W \\subseteq \\overline{W} \\subseteq U$ ✓（正规 = 不交闭集可被开集分开，把 $\\{x\\}$ 与 $X \\setminus U$ 分开），于是 $\\overline{W}$ 就是所含的闭邻域 ✓。∎',
+        '**证明。** 给邻域 $U \\ni x$。\n\n取 $x$ 的闭邻域 $F \\subseteq U$：由正规性造开集 $W$ 使 $x \\in W \\subseteq \\overline{W} \\subseteq U$ ✓（正规 = 不交闭集可被开集分开，把 $\\{x\\}$ 与 $X \\setminus U$ 分开），于是 $\\overline{W}$ 就是所含的闭邻域 ✓。\n\n∎',
         '⭐ 用处：紧空间里闭子集紧，所以「邻域含闭邻域」在紧 Hausdorff 里就变成「邻域含紧邻域」—— 这正是局部紧的常见来源。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.5']
@@ -65,7 +65,10 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。** (1) 给闭子集 $F \\subseteq X$（$X$ 紧）与开覆盖，添上 $X \\setminus F$ 得 $X$ 的开覆盖，取有限子覆盖再删掉那一项 ✓。(2) 给 $f : X \\to Y$（$X$ 紧）与 $Y$ 中开覆盖，拉回得 $X$ 的开覆盖、取有限子覆盖再推回去 ✓。',
-          '(3) 给不交闭集 $A, B$：对每个 $a \\in A$ 用 Hausdorff 性造 $a$ 的开邻域 $U_a$ 使 $\\overline{U_a} \\cap B = \\emptyset$ ✓；$A$ 紧，取有限个覆盖 $A$，令 $U := \\bigcup_{i} U_{a_i}$，则 $\\overline{U} \\cap B = \\emptyset$ ✓；对 $B$ 做一次同样的操作，再把两次得到的开集调小一层，就得到分开 $A, B$ 的开集 ✓。∎'
+          '(3) 给不交闭集 $A, B$：对每个 $a \\in A$ 用 Hausdorff 性造 $a$ 的开邻域 $U_a$ 使 $\\overline{U_a} \\cap B = \\emptyset$ ✓；\n\n' +
+          '$A$ 紧，取有限个覆盖 $A$，令 $U := \\bigcup_{i} U_{a_i}$，则 $\\overline{U} \\cap B = \\emptyset$ ✓；\n\n' +
+          '对 $B$ 做一次同样的操作，再把两次得到的开集调小一层，就得到分开 $A, B$ 的开集 ✓。\n\n' +
+          '∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.6, Exercise 2.7']
@@ -103,7 +106,7 @@ window.MG = window.MG || {};
         '**全不连通**空间的**子空间**仍全不连通；同样地，闭开集限制到子空间上仍是闭开集。'
       ].join('\n'),
       notes: [
-        '**证明。** 给子空间 $Y \\subseteq X$、$y \\in Y$。$X$ 里每个含 $y$ 的闭开集 $K$ 与 $Y$ 交出的 $K \\cap Y$ 在 $Y$ 里仍闭开 ✓；若 $Y$ 在 $y$ 处连通、含有另一个点 $y\'$，则全不连通性给出 $X$ 的闭开集分离 $y, y\'$ ✓，把它交到 $Y$ 上就断开 $Y$ —— 矛盾 ✓。∎'
+        '**证明。** 给子空间 $Y \\subseteq X$、$y \\in Y$。\n\n$X$ 里每个含 $y$ 的闭开集 $K$ 与 $Y$ 交出的 $K \\cap Y$ 在 $Y$ 里仍闭开 ✓；若 $Y$ 在 $y$ 处连通、含有另一个点 $y\'$，则全不连通性给出 $X$ 的闭开集分离 $y, y\'$ ✓，把它交到 $Y$ 上就断开 $Y$ —— 矛盾 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.16']
     },
@@ -142,7 +145,7 @@ window.MG = window.MG || {};
         '$$d(f, g) := \\sup_{s \\in S}\\ d\\bigl(f(s),\\ g(s)\\bigr).$$'
       ].join('\n'),
       notes: [
-        '**证明。** $S$ 紧、$d$ 连续，所以 $s \\mapsto d(f(s), g(s))$ 连续因而**取到上确界** ✓，上式是有限值，给出（半）度量；它诱导的正是紧开拓扑（等度连续/一致收敛就是紧开拓扑在紧空间上的样子）✓。完备性：给 Cauchy 列，由一致收敛取逐点极限 $f$，一致收敛保证 $f$ 连续 ✓，且它在同一度量下收敛 ✓。∎'
+        '**证明。** $S$ 紧、$d$ 连续，所以 $s \\mapsto d(f(s), g(s))$ 连续因而**取到上确界** ✓，上式是有限值，给出（半）度量；它诱导的正是紧开拓扑（等度连续/一致收敛就是紧开拓扑在紧空间上的样子）✓。\n\n完备性：给 Cauchy 列，由一致收敛取逐点极限 $f$，一致收敛保证 $f$ 连续 ✓，且它在同一度量下收敛 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.29']
     },
@@ -164,7 +167,10 @@ window.MG = window.MG || {};
         '3. $T$ **左正合**（保有限极限）。'
       ].join('\n'),
       notes: [
-        '**证明。** (2) $\\iff$ (1)：$T = \\varinjlim_{X \\to T} h_{X}$ 总是成立（元素范畴的余极限给出 $T$）✓，而它落在可表示预层上、指标范畴正是 $\\mathcal{C}/T$ ✓，所以「可表示为滤过余极限」与「$\\mathcal{C}/T$ 滤过」是同一句话 ✓。(1) $\\iff$ (3)：滤过余极限保有限极限 ✓，可表示预层左正合 ✓，于是余极限也左正合；反过来左正合的预层由它自己的元素范畴给出的表达是滤过的 ✓。∎'
+        '**证明。** (2) $\\iff$ (1)：$T = \\varinjlim_{X \\to T} h_{X}$ 总是成立（元素范畴的余极限给出 $T$）✓，而它落在可表示预层上、指标范畴正是 $\\mathcal{C}/T$ ✓，所以「可表示为滤过余极限」与「$\\mathcal{C}/T$ 滤过」是同一句话 ✓。\n\n' +
+        '(1) $\\iff$ (3)：滤过余极限保有限极限 ✓，可表示预层左正合 ✓，于是余极限也左正合；\n\n' +
+        '反过来左正合的预层由它自己的元素范畴给出的表达是滤过的 ✓。\n\n' +
+        '∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.8']
     },
@@ -293,7 +299,7 @@ window.MG = window.MG || {};
         '$$f^{-1}\\bigl(\\overline{E}\\bigr) \\;=\\; \\overline{E}.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 常层由余极限拼出：$\\overline{E} = \\coprod_{e \\in E} \\mathbf{1}$ ✓；而 $f^{-1}$ 是**左伴随**，保余极限，且 $f^{-1}\\mathbf{1} = \\mathbf{1}$ ✓，于是 $f^{-1}\\overline{E} = \\coprod_{e} f^{-1}\\mathbf{1} = \\overline{E}$ ✓。∎'
+        '**证明。** 常层由余极限拼出：$\\overline{E} = \\coprod_{e \\in E} \\mathbf{1}$ ✓；而 $f^{-1}$ 是**左伴随**，保余极限，且 $f^{-1}\\mathbf{1} = \\mathbf{1}$ ✓，于是 $f^{-1}\\overline{E} = \\coprod_{e} f^{-1}\\mathbf{1} = \\overline{E}$ ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.50']
     },

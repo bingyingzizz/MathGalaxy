@@ -35,7 +35,7 @@ window.MG = window.MG || {};
         '',
         '特例：内积（正定对称）、辛形式（非退化交错）、二次型的极化（对称）都是双线性型。'
       ].join('\n'),
-      notes: '⭐ 双线性「比线性弱」：$B$ 不是 $V \\times W \\to U$ 的线性映射（$V \\times W$ 上的线性要求 $B(v + v\', w + w\') = B(v,w) + B(v\',w\')$，一般不对）。这正是张量积要解决的问题 —— **把双线性「翻译」成线性**。\n\n⭐ 固定一组基后，$\\operatorname{Bil}(V, W; K) \\cong M_{m \\times n}(K)$（取 $B(e_i, f_j)$），与「矩阵就是双线性型的系数」一致。\n\n⭐ $\\operatorname{Bil}(V, W; U) \\cong \\operatorname{Hom}(V \\otimes W, U)$ —— 这就是万有性质那一条。',
+      notes: '⭐ 双线性「比线性弱」：$B$ 不是 $V \\times W \\to U$ 的线性映射（$V \\times W$ 上的线性要求 $B(v + v\', w + w\') = B(v,w) + B(v\',w\')$，一般不对）。\n\n这正是张量积要解决的问题 —— **把双线性「翻译」成线性**。\n\n⭐ 固定一组基后，$\\operatorname{Bil}(V, W; K) \\cong M_{m \\times n}(K)$（取 $B(e_i, f_j)$），与「矩阵就是双线性型的系数」一致。\n\n⭐ $\\operatorname{Bil}(V, W; U) \\cong \\operatorname{Hom}(V \\otimes W, U)$ —— 这就是万有性质那一条。',
       refs: ['Lang, Algebra, Ch. XVI', 'Roman, Advanced Linear Algebra, Ch. 14']
     },
     {
@@ -57,7 +57,7 @@ window.MG = window.MG || {};
         '',
         '则 $\\dim(V \\otimes W) = (\\dim V)(\\dim W)$，且这个构造**不依赖基的选取**（见万有性质）。'
       ].join('\n'),
-      notes: '⭐ 元素分两类：**可分解张量** $v \\otimes w$ 与它们的**有限和**。后者才填满整个 $V \\otimes W$ —— 「一般张量不是单个 $v \\otimes w$」是初学者最常踩的坑。\n\n⚠ $v \\otimes w = 0$ 可以发生在 $v \\ne 0, w \\ne 0$ 时吗？不可以（张量积是自由构造，基底是 $e_i \\otimes f_j$）。这与「不可分解为纯张量」是两件事。\n\n⭐ 张量积是**对称的**（$V \\otimes W \\cong W \\otimes V$）且**结合的**，单位元是 $K$（$V \\otimes K \\cong V$）—— 于是有限维向量空间配上 $\\otimes$ 构成一个对称幺半范畴。',
+      notes: '⭐ 元素分两类：**可分解张量** $v \\otimes w$ 与它们的**有限和**。\n\n后者才填满整个 $V \\otimes W$ —— 「一般张量不是单个 $v \\otimes w$」是初学者最常踩的坑。\n\n⚠ $v \\otimes w = 0$ 可以发生在 $v \\ne 0, w \\ne 0$ 时吗？不可以（张量积是自由构造，基底是 $e_i \\otimes f_j$）。\n\n这与「不可分解为纯张量」是两件事。\n\n⭐ 张量积是**对称的**（$V \\otimes W \\cong W \\otimes V$）且**结合的**，单位元是 $K$（$V \\otimes K \\cong V$）—— 于是有限维向量空间配上 $\\otimes$ 构成一个对称幺半范畴。',
       refs: ['Lang, Algebra, Ch. XVI', 'Roman, Advanced Linear Algebra, Ch. 14']
     },
     {
@@ -79,7 +79,7 @@ window.MG = window.MG || {};
         '',
         '（对每个 $U$ 自然，这就是「张量积是双线性函子的**表示**」）'
       ].join('\n'),
-      notes: '⭐ 一句话：**张量积是「多变量线性」的线性化装置** —— 所有双线性的东西，只要写成 $V \\otimes W$ 上的映射就自动变成线性的，后面整套线性代数都能用。\n\n⭐ 「唯一」是万有性质的核心：它保证 $V \\otimes W$ 在**同构唯一**的意义下被确定（存在性给构造、唯一性给「不依赖构造」）。这也是图上「同一招」第三次出现（张量积、商空间、外幂各一次）。\n\n⭐ 任意交换环上也成立（`prop.module-tensor-universal`），系数域只是最简单的情形。',
+      notes: '⭐ 一句话：**张量积是「多变量线性」的线性化装置** —— 所有双线性的东西，只要写成 $V \\otimes W$ 上的映射就自动变成线性的，后面整套线性代数都能用。\n\n⭐ 「唯一」是万有性质的核心：它保证 $V \\otimes W$ 在**同构唯一**的意义下被确定（存在性给构造、唯一性给「不依赖构造」）。\n\n这也是图上「同一招」第三次出现（张量积、商空间、外幂各一次）。\n\n⭐ 任意交换环上也成立（`prop.module-tensor-universal`），系数域只是最简单的情形。',
       refs: ['Lang, Algebra, Ch. XVI']
     },
     {
@@ -99,7 +99,7 @@ window.MG = window.MG || {};
         '',
         '$$(-) \\otimes_K V \\;\\dashv\\; \\operatorname{Hom}_K(V, -)$$'
       ].join('\n'),
-      notes: '⭐ 这是**张量–内 Hom 伴随**（tensor–hom adjunction），也是「自由–遗忘」之外的第二个伴随范本：它把「两个变量的线性映射」与「取值在函数空间里的线性映射」对应起来（**curry 化**）。\n\n⭐ 它在范畴论里的地位：「$\\otimes$ 是闭的」这一条（对称幺半闭范畴）就是这只伴随的存在性 —— 图上 `def.adjoint` 那一团可以直接接过来。\n\n⚠ 「自然」两个字不能省：同构本身容易写，但要让它对 $W, U$ 自然，才足以称为伴随。这也是伴随与「碰巧同构」的区别。',
+      notes: '⭐ 这是**张量–内 Hom 伴随**（tensor–hom adjunction），也是「自由–遗忘」之外的第二个伴随范本：它把「两个变量的线性映射」与「取值在函数空间里的线性映射」对应起来（**curry 化**）。\n\n⭐ 它在范畴论里的地位：「$\\otimes$ 是闭的」这一条（对称幺半闭范畴）就是这只伴随的存在性 —— 图上 `def.adjoint` 那一团可以直接接过来。\n\n⚠ 「自然」两个字不能省：同构本身容易写，但要让它对 $W, U$ 自然，才足以称为伴随。\n\n这也是伴随与「碰巧同构」的区别。',
       refs: ['Lang, Algebra, Ch. XVI', 'Mac Lane, Categories for the Working Mathematician, Ch. IV']
     },
     {
@@ -121,7 +121,7 @@ window.MG = window.MG || {};
         '',
         '并且 $\\dim \\bigwedge^{k} V = \\binom{n}{k}$（$n = \\dim V$）；$k > n$ 时 $\\bigwedge^{k}V = 0$。'
       ].join('\n'),
-      notes: '⭐ 几何含义：$\\dim V = n$ 时 $\\bigwedge^{n} V$ 是**一维**的，而 $v_1 \\wedge \\cdots \\wedge v_n$ 正是「这 $n$ 个向量张成的平行体的有向体积」——它的系数就是行列式。\n\n⭐ 交错性是「商掉」实现的：$v \\wedge v = 0$（把 $v \\otimes v$ 送进商），这正是 `def.alternating-form` 那一条里「两个变元相等则为零」。\n\n⚠ 特征 $2$ 的域里 $v \\wedge w = -w \\wedge v$ 与 $v \\wedge w = w \\wedge v$ 是同一句话（$-1 = 1$），交错与对称不再可分。本图默认 $\\operatorname{char} K \\ne 2$。',
+      notes: '⭐ 几何含义：$\\dim V = n$ 时 $\\bigwedge^{n} V$ 是**一维**的，而 $v_1 \\wedge \\cdots \\wedge v_n$ 正是「这 $n$ 个向量张成的平行体的有向体积」——它的系数就是行列式。\n\n⭐ 交错性是「商掉」实现的：$v \\wedge v = 0$（把 $v \\otimes v$ 送进商），这正是 `def.alternating-form` 那一条里「两个变元相等则为零」。\n\n⚠ 特征 $2$ 的域里 $v \\wedge w = -w \\wedge v$ 与 $v \\wedge w = w \\wedge v$ 是同一句话（$-1 = 1$），交错与对称不再可分。\n\n本图默认 $\\operatorname{char} K \\ne 2$。',
       refs: ['Lang, Algebra, Ch. XIX', 'Roman, Advanced Linear Algebra, Ch. 14']
     },
     {
@@ -143,7 +143,7 @@ window.MG = window.MG || {};
         '',
         '（$|v|$ 是元素的次数。「分次交换」意味着奇次元素之间反交换。）'
       ].join('\n'),
-      notes: '⭐ 外代数是「**带符号的多项式代数**」：它与对称代数一起构成两个极端 —— 对称代数允许交换、外代数强制反交换。两者的共同来源是「把 $V^{\\otimes k}$ 按对称群作用取商 / 取不变量」。\n\n⭐ 用途清单：微分形式（$\\bigwedge^{k}(\\mathbb{R}^{n})^{\\ast}$ 就是 $k$-形式空间）、体积与行列式、Clifford 代数（把 $\\wedge$ 换成 $v^{2} = -\\|v\\|^{2}$）、de Rham 复形。\n\n⚠ 它是**非交换**的（奇次部分反交换），但**分次交换**：这一点在写符号时最容易错（换两个奇元素时要带一个负号）。',
+      notes: '⭐ 外代数是「**带符号的多项式代数**」：它与对称代数一起构成两个极端 —— 对称代数允许交换、外代数强制反交换。\n\n两者的共同来源是「把 $V^{\\otimes k}$ 按对称群作用取商 / 取不变量」。\n\n⭐ 用途清单：微分形式（$\\bigwedge^{k}(\\mathbb{R}^{n})^{\\ast}$ 就是 $k$-形式空间）、体积与行列式、Clifford 代数（把 $\\wedge$ 换成 $v^{2} = -\\|v\\|^{2}$）、de Rham 复形。\n\n⚠ 它是**非交换**的（奇次部分反交换），但**分次交换**：这一点在写符号时最容易错（换两个奇元素时要带一个负号）。',
       refs: ['Lang, Algebra, Ch. XIX']
     },
     {
@@ -163,7 +163,7 @@ window.MG = window.MG || {};
         '',
         '$$\\dim \\operatorname{Sym}^{k} V = \\binom{n + k - 1}{k}, \\qquad \\operatorname{Sym}^{\\bullet} V \\cong K[x_1, \\ldots, x_n] \\ (n = \\dim V)$$'
       ].join('\n'),
-      notes: '⭐ 三个「$V^{\\otimes \\bullet}$ 的商」构成一张完整的表：\n\n- 全不商 $\\implies$ **张量代数** $T^{\\bullet}V$（非交换、自由）；\n- 商掉 $vw - wv$ $\\implies$ **对称代数** $\\operatorname{Sym}^{\\bullet}V \\cong K[x_1, \\ldots, x_n]$（交换）；\n- 商掉 $vw + wv$ $\\implies$ **外代数** $\\bigwedge^{\\bullet}V$（分次交换）。\n\n⭐ «$\\operatorname{Sym}^{\\bullet}V \\cong K[x_1,\\ldots,x_n]$» 说明多项式环不是凭空造出来的 —— 它就是「$n$ 维空间的对称代数」。这解释了为什么多项式与多重线性型的关系这么紧（也回到 `def.polynomial-ring`）。\n\n⭐ 二重线性型的分类（对称 / 交错）在代数层面的化身就是这两个商。',
+      notes: '⭐ 三个「$V^{\\otimes \\bullet}$ 的商」构成一张完整的表：\n\n- 全不商 $\\implies$ **张量代数** $T^{\\bullet}V$（非交换、自由）；\n- 商掉 $vw - wv$ $\\implies$ **对称代数** $\\operatorname{Sym}^{\\bullet}V \\cong K[x_1, \\ldots, x_n]$（交换）；\n\n\n- 商掉 $vw + wv$ $\\implies$ **外代数** $\\bigwedge^{\\bullet}V$（分次交换）。\n\n⭐ «$\\operatorname{Sym}^{\\bullet}V \\cong K[x_1,\\ldots,x_n]$» 说明多项式环不是凭空造出来的 —— 它就是「$n$ 维空间的对称代数」。\n\n这解释了为什么多项式与多重线性型的关系这么紧（也回到 `def.polynomial-ring`）。\n\n⭐ 二重线性型的分类（对称 / 交错）在代数层面的化身就是这两个商。',
       refs: ['Lang, Algebra, Ch. XIX']
     },
     {
@@ -185,7 +185,7 @@ window.MG = window.MG || {};
         '',
         '等价说法：$\\det T$ 是 $T$ 在**最高外幂**这个一维空间上的特征值。'
       ].join('\n'),
-      notes: '⭐ 这条定理把行列式的三条公理**一次性地解释掉了**：\n- 多重线性 $\\Longleftarrow$ $\\wedge$ 对每个变元线性；\n- 交错性 $\\Longleftarrow$ $v \\wedge v = 0$（商空间的构造）；\n- 规范性 $\\Longleftarrow$ 取 $v_i = e_i$ 时 $e_1 \\wedge \\cdots \\wedge e_n$ 是基、系数定为 $1$。\n\n⭐ 于是 `thm.det-exists-unique` 的「存在唯一性」变成了「一维空间上的线性映射只能乘一个数」——**同一个定理的第二种证明**，而且是概念上更干净的那种。\n\n⭐ 它同时说明：$\\det$ 是**换基不变的**（因为 $\\bigwedge^{n}T$ 不依赖基）、$\\det(AB) = \\det A \\det B$（函子性：$\\bigwedge^{n}(AB) = \\bigwedge^{n}A \\circ \\bigwedge^{n}B$，而一维空间上映射的复合就是乘法）—— `thm.det-multiplicative` 也是一条推论。',
+      notes: '⭐ 这条定理把行列式的三条公理**一次性地解释掉了**：\n- 多重线性 $\\Longleftarrow$ $\\wedge$ 对每个变元线性；\n- 交错性 $\\Longleftarrow$ $v \\wedge v = 0$（商空间的构造）；\n\n\n- 规范性 $\\Longleftarrow$ 取 $v_i = e_i$ 时 $e_1 \\wedge \\cdots \\wedge e_n$ 是基、系数定为 $1$。\n\n⭐ 于是 `thm.det-exists-unique` 的「存在唯一性」变成了「一维空间上的线性映射只能乘一个数」——**同一个定理的第二种证明**，而且是概念上更干净的那种。\n\n⭐ 它同时说明：$\\det$ 是**换基不变的**（因为 $\\bigwedge^{n}T$ 不依赖基）、$\\det(AB) = \\det A \\det B$（函子性：$\\bigwedge^{n}(AB) = \\bigwedge^{n}A \\circ \\bigwedge^{n}B$，而一维空间上映射的复合就是乘法）—— `thm.det-multiplicative` 也是一条推论。',
       refs: ['Lang, Algebra, Ch. XIX', 'Roman, Advanced Linear Algebra, Ch. 14']
     }
   ],
@@ -237,7 +237,7 @@ window.MG = window.MG || {};
       target: 'thm.tensor-universal-property',
       title: '张量积的构造 $\\implies$ 万有性质',
       proof: [
-        '**存在性**：给定双线性 $B : V \\times W \\to U$。先在 $V \\times W$ 生成的自由向量空间（形式上取全部 $(v, w)$ 的形式线性组合）上定义 $\\widehat B\\bigl( \\sum c_{ij}(v_i, w_j) \\bigr) := \\sum c_{ij} B(v_i, w_j)$，这是线性的；再由 $B$ 的双线性，$\\widehat B$ 在「双线性关系」张成的子空间上取零，于是由**商空间的万有性质**它唯一地下降为 $\\widetilde B : V \\otimes W \\to U$。',
+        '**存在性**：给定双线性 $B : V \\times W \\to U$。\n\n先在 $V \\times W$ 生成的自由向量空间（形式上取全部 $(v, w)$ 的形式线性组合）上定义 $\\widehat B\\bigl( \\sum c_{ij}(v_i, w_j) \\bigr) := \\sum c_{ij} B(v_i, w_j)$，这是线性的；\n\n再由 $B$ 的双线性，$\\widehat B$ 在「双线性关系」张成的子空间上取零，于是由**商空间的万有性质**它唯一地下降为 $\\widetilde B : V \\otimes W \\to U$。',
         '',
         '**唯一性**：任何满足 $\\widetilde B(v \\otimes w) = B(v, w)$ 的线性映射在可分解张量上取值已定；而可分解张量张成 $V \\otimes W$，故线性映射被取值唯一确定。',
         '',
@@ -275,8 +275,8 @@ window.MG = window.MG || {};
         '设 $\\dim V = n$。',
         '',
         '1. **$\\bigwedge^{n}V$ 是一维的**：取 $V$ 的基 $e_1, \\ldots, e_n$，则 $\\{e_{i_1}\\wedge\\cdots\\wedge e_{i_n}\\}$ 中只有 $i_1, \\ldots, i_n$ 互异的那些非零，即只有 $e_1 \\wedge \\cdots \\wedge e_n$ 一个（差符号），故 $\\dim \\bigwedge^{n}V = 1$。',
-        '2. **一维空间上的线性映射就是乘一个数**：设 $\\dim L = 1$、$\\varphi : L \\to L$ 线性，取 $0 \\ne \\ell \\in L$，则 $\\varphi(\\ell) = c\\,\\ell$ 对某个 $c$；对任意 $t\\ell$ 有 $\\varphi(t\\ell) = t\\varphi(\\ell) = tc\\ell$，故 $\\varphi$ 就是「乘 $c$」。',
-        '3. **定出那个数**：定义 $D(v_1, \\ldots, v_n) := $ 满足 $T(v_1)\\wedge\\cdots\\wedge T(v_n) = D\\cdot(e_1\\wedge\\cdots\\wedge e_n)$ 的系数（先固定 $v_i = e_i$ 定义，再对一般 $v_i$ 用交错多重线性延拓）。逐条验证 $D$ 满足多重线性、交错、规范化三条公理，由**行列式的存在唯一性**得 $D = \\det T$。',
+        '2. **一维空间上的线性映射就是乘一个数**：设 $\\dim L = 1$、$\\varphi : L \\to L$ 线性，取 $0 \\ne \\ell \\in L$，则 $\\varphi(\\ell) = c\\,\\ell$ 对某个 $c$；\n\n对任意 $t\\ell$ 有 $\\varphi(t\\ell) = t\\varphi(\\ell) = tc\\ell$，故 $\\varphi$ 就是「乘 $c$」。',
+        '3. **定出那个数**：定义 $D(v_1, \\ldots, v_n) := $ 满足 $T(v_1)\\wedge\\cdots\\wedge T(v_n) = D\\cdot(e_1\\wedge\\cdots\\wedge e_n)$ 的系数（先固定 $v_i = e_i$ 定义，再对一般 $v_i$ 用交错多重线性延拓）。\n\n逐条验证 $D$ 满足多重线性、交错、规范化三条公理，由**行列式的存在唯一性**得 $D = \\det T$。',
         '',
         '于是 $(\\bigwedge^{n}T)(v_1 \\wedge \\cdots \\wedge v_n) = (\\det T)(v_1 \\wedge \\cdots \\wedge v_n)$。∎'
       ].join('\n'),

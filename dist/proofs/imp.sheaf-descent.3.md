@@ -7,6 +7,12 @@
 
 $$F(X) \;\cong\; \ker(\alpha - \beta)$$
 
-**（$\implies$）** 层给出 $\operatorname{Hom}(h_{X}, F) \cong \operatorname{Hom}(R, F)$，两边用米田与上面的计算展开就是所要的正合。**（$\Longleftarrow$）** 反过来，正合序列给出的那个 $\ker$ 与 $F(X)$ 的同构，对所有由覆盖族生成的筛 $R$ 成立；而每个 $R \in J(X)$ 都由某个覆盖族生成，所以对一切 $R \in J(X)$ 都有 $F(X) \cong \operatorname{Hom}(R, F)$，即 $F$ 是层。∎
+**（$\implies$）** 层给出 $\operatorname{Hom}(h_{X}, F) \cong \operatorname{Hom}(R, F)$，两边用米田与上面的计算展开就是所要的正合。
+
+**（$\Longleftarrow$）** 反过来，正合序列给出的那个 $\ker$ 与 $F(X)$ 的同构，对所有由覆盖族生成的筛 $R$ 成立；
+
+而每个 $R \in J(X)$ 都由某个覆盖族生成，所以对一切 $R \in J(X)$ 都有 $F(X) \cong \operatorname{Hom}(R, F)$，即 $F$ 是层。
+
+∎
 
 > 续见 proofs/imp.sheaf-descent.4.md

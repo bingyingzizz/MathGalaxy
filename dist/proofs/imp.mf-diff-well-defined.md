@@ -3,7 +3,9 @@
 
 `def.manifold-chart` 图卡 + `def.tangent-space-manifold` 切空间 → `def.differential-map` 切映射
 
-设 $\gamma_{1}, \gamma_{2}$ 是过 $p$ 的两条曲线且在卡 $(U,\varphi)$ 里相切，即 $(\varphi \circ \gamma_{1})^{\prime}(0) = (\varphi \circ \gamma_{2})^{\prime}(0)$。要证 $F \circ \gamma_{1}$ 与 $F \circ \gamma_{2}$ 在 $F(p)$ 处相切。
+设 $\gamma_{1}, \gamma_{2}$ 是过 $p$ 的两条曲线且在卡 $(U,\varphi)$ 里相切，即 $(\varphi \circ \gamma_{1})^{\prime}(0) = (\varphi \circ \gamma_{2})^{\prime}(0)$。
+
+要证 $F \circ \gamma_{1}$ 与 $F \circ \gamma_{2}$ 在 $F(p)$ 处相切。
 
 **第一步：结论与卡无关。** 在另一张卡 $(U_{1},\varphi_{1})$ 里
 

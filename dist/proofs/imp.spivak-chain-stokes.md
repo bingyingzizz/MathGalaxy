@@ -7,6 +7,8 @@
 
 $$\int_{c}\mathrm{d}\omega = \int_{I^{k}}c^{\ast}\mathrm{d}\omega = \int_{I^{k}}\mathrm{d}(c^{\ast}\omega) = \int_{I^{k}}\mathrm{d}\eta .$$
 
-按 `lem.single-cube-stokes`，它等于 $\int_{\partial I^{k}}\eta$。再把 $\int_{\partial I^{k}}\eta$ 翻译回 $c$ 的语言：由 $\partial$ 的定义与拉回的复合律 $(c\circ I^{k}_{(i,\alpha)})^{\ast} = (I^{k}_{(i,\alpha)})^{\ast}c^{\ast}$，
+按 `lem.single-cube-stokes`，它等于 $\int_{\partial I^{k}}\eta$。
+
+再把 $\int_{\partial I^{k}}\eta$ 翻译回 $c$ 的语言：由 $\partial$ 的定义与拉回的复合律 $(c\circ I^{k}_{(i,\alpha)})^{\ast} = (I^{k}_{(i,\alpha)})^{\ast}c^{\ast}$，
 
 > 续见 proofs/imp.spivak-chain-stokes.2.md

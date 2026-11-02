@@ -5,7 +5,9 @@
 
 记 $n = \dim V$、$\lambda_1, \ldots, \lambda_m$ 为（$K$ 中）互异特征值。
 
-**(1) $\implies$ (2)**：若 $T$ 在某组基下是对角阵 $\operatorname{diag}(\lambda_{i_1}, \ldots)$，则每个基向量都是特征向量，于是这组基（共 $n$ 个）落在 $\bigcup_i E_{\lambda_i}$ 中；又不同特征值的特征子空间之和是直和，故 $V = \bigoplus_i E_{\lambda_i}$。
+**(1) $\implies$ (2)**：若 $T$ 在某组基下是对角阵 $\operatorname{diag}(\lambda_{i_1}, \ldots)$，则每个基向量都是特征向量，于是这组基（共 $n$ 个）落在 $\bigcup_i E_{\lambda_i}$ 中；
+
+又不同特征值的特征子空间之和是直和，故 $V = \bigoplus_i E_{\lambda_i}$。
 
 **(2) $\implies$ (3)**：取维数即得 $\sum_i \dim E_{\lambda_i} = n$。
 

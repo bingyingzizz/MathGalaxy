@@ -5,4 +5,6 @@
 
 t 就是 RHom」给出 ✓。）
 $P$ 投射使 $\operatorname{Ext}^{k}(P, N) = 0$（$k \ge 1$），故 $\delta$ 两端都是零群，$\delta$ 是双射：$\operatorname{Ext}^{n+1}(M, N) \cong \operatorname{Ext}^{n}(K, N)$ ✓。
-Tor 一侧照抄：张量 $N$ 取长正合列，$P$ 投射 $\implies$ 平坦 $\implies$ $\operatorname{Tor}_{k}(P, N) = 0$（$k \ge 1$），于是 $\operatorname{Tor}_{n+1}(M, N) \cong \operatorname{Tor}_{n}(K, N)$ ✓。∎
+Tor 一侧照抄：张量 $N$ 取长正合列，$P$ 投射 $\implies$ 平坦 $\implies$ $\operatorname{Tor}_{k}(P, N) = 0$（$k \ge 1$），于是 $\operatorname{Tor}_{n+1}(M, N) \cong \operatorname{Tor}_{n}(K, N)$ ✓。
+
+> 续见 proofs/imp-link.dimshift-extrhom.3.md

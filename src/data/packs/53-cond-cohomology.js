@@ -38,11 +38,11 @@ window.MG = window.MG || {};
         '**逆像的形状怎么读**：$\\operatorname{Hom}_{/X}(\\underline{U}, Y)$ 是「越过 $X$ 的、从 $U$ 到 $Y$ 的映射」。$U$ 越小能给的映射越多 —— 这正是层的「限制」味道。',
         '**顺像的形状怎么读**：$\\varinjlim \\underline{U}$ 是「把所有开集拼起来」的余极限 —— 开集沿含入的余极限就是它们并起来。',
         '⭐ 这条是下面 Dyckhoff 定理那条谱序列的**构造基础**：有了这两个方向，$\\mathrm{Cond}/X$ 上的上同调才能被 $\\mathrm{Open}(X)$ 上的层上同调逼近。',
-        ['**证明。** 先看两个函子都有定义：逆像把 $Y \\in \\mathrm{Cond}/X$ 送到预层 $U \\mapsto \\operatorname{Hom}_{/X}(\\underline{U}, Y)$，而 $\\mathrm{Open}(X)$ 上的层条件只涉及开集的含入，逐条验即可；顺像 $\\varinjlim_{U \\subseteq X,\\ s \\in F(U)} \\underline{U}$ 取的是**滤过**余极限（开集沿含入滤过），在 $\\mathrm{Cond}$ 里存在。',
+        ['**证明。** 先看两个函子都有定义：逆像把 $Y \\in \\mathrm{Cond}/X$ 送到预层 $U \\mapsto \\operatorname{Hom}_{/X}(\\underline{U}, Y)$，而 $\\mathrm{Open}(X)$ 上的层条件只涉及开集的含入，逐条验即可；\n\n顺像 $\\varinjlim_{U \\subseteq X,\\ s \\in F(U)} \\underline{U}$ 取的是**滤过**余极限（开集沿含入滤过），在 $\\mathrm{Cond}$ 里存在。',
           '**逆像左正合**：$\\varinjlim$ 在 $\\mathrm{Cond}$ 里正合（AB5）。',
           '**伴随**：逐项算',
           '$$\\operatorname{Hom}_{/X}\\Bigl(\\varinjlim_{U, s} \\underline{U},\\ Y\\Bigr) = \\varinjlim_{U, s} \\operatorname{Hom}_{/X}(\\underline{U}, Y) = \\operatorname{Hom}(F, Y),$$',
-          '第一式是余极限的泛性质，第二式就是把「从 $F$ 到 $Y$ 的映射」按 $F$ 的定义写成相容族 $\\{F(U) \\to \\operatorname{Hom}_{/X}(\\underline{U}, Y)\\}$ —— 两者是同一件事。于是有伴随 $\\varinjlim \\underline{U} \\dashv \\bigl(U \\mapsto \\operatorname{Hom}_{/X}(\\underline{U}, -)\\bigr)$，逆像左正合，故 $c_{X}$ 是拓扑斯态射。∎'
+          '第一式是余极限的泛性质，第二式就是把「从 $F$ 到 $Y$ 的映射」按 $F$ 的定义写成相容族 $\\{F(U) \\to \\operatorname{Hom}_{/X}(\\underline{U}, Y)\\}$ —— 两者是同一件事。\n\n于是有伴随 $\\varinjlim \\underline{U} \\dashv \\bigl(U \\mapsto \\operatorname{Hom}_{/X}(\\underline{U}, -)\\bigr)$，逆像左正合，故 $c_{X}$ 是拓扑斯态射。\n\n∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.1.3']
@@ -63,7 +63,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**一句话**：Stonean 空间对凝聚态上同调是**不可见的** —— 只要系数是凝聚态阿贝尔群，高次上同调一律消失。',
-        '**为什么**。截面函子 $\\Gamma(S, -) = \\operatorname{Hom}(\\mathbb{Z}[S], -)$ 在 Stonean 空间上是**正合**的：Stonean 的极不连通性让 $\\mathbb{Z}[S]$ 是投射的，于是 $\\operatorname{Hom}(\\mathbb{Z}[S], -)$ 保满射，而右导出函子在 $n>0$ 上正好量度「保不保满射」。',
+        '**为什么**。\n\n截面函子 $\\Gamma(S, -) = \\operatorname{Hom}(\\mathbb{Z}[S], -)$ 在 Stonean 空间上是**正合**的：Stonean 的极不连通性让 $\\mathbb{Z}[S]$ 是投射的，于是 $\\operatorname{Hom}(\\mathbb{Z}[S], -)$ 保满射，而右导出函子在 $n>0$ 上正好量度「保不保满射」。',
         '⭐ **这是整章的起点**：后面每一步「零调」都是把一般空间归约到 Stonean（先 Stone 化，再用 Čech 复杂度量偏差），而 Stonean 这一格已经归零。',
         '⚠️ 注意这条对**任意**凝聚态阿贝尔群 $M$ 成立，不要求 $M$ 来自拓扑群。',
         ['**证明。** 截面函子是 $\\Gamma(S, -) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}[S], -)$。',
@@ -117,7 +117,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **这条是把两套上同调接起来的桥。** 凝聚态上同调是从「$X$ 上的层」算的；层上同调是从「$X$ 的开集上的层」算的。这条说：只要 $X$ 局部紧、系数离散，两边**一样**。',
-        '**怎么证**。用拓扑斯态射 $c_{X} : \\mathrm{Cond}/X \\rightleftarrows \\mathrm{Open}(X)$ 及其导出函子，得到一条谱序列，其 $E_{2}$ 项是 $R^{q}c_{*}$ 作用在 $M$ 上。关键计算是 $R^{q}c_{*}\\underline{M} = 0$（$q > 0$），它由**茎**上的计算给出：茎化之后 $M$ 是离散的，没有高阶信息。谱序列退化，两边同构。',
+        '**怎么证**。\n\n用拓扑斯态射 $c_{X} : \\mathrm{Cond}/X \\rightleftarrows \\mathrm{Open}(X)$ 及其导出函子，得到一条谱序列，其 $E_{2}$ 项是 $R^{q}c_{*}$ 作用在 $M$ 上。\n\n关键计算是 $R^{q}c_{*}\\underline{M} = 0$（$q > 0$），它由**茎**上的计算给出：茎化之后 $M$ 是离散的，没有高阶信息。\n\n谱序列退化，两边同构。',
         '**为什么限定「系数离散」**。系数一旦带上拓扑（比如实 Banach 空间），$R^{q}c_{*}$ 一般不再消失，两边就对不上了 —— §8.2 要处理的就是这种情形。',
         '📌 **用法**：任何**局部紧**空间上的凝聚态上同调，可以**直接**用经典的层上同调来算（开覆盖、Čech、细层消解那一整套老工具全都能用）。',
         ['**证明（用 $c_{X}$ 的谱序列，把 $R^{q}c_{X*}$ 算成零）。**',
@@ -127,9 +127,9 @@ window.MG = window.MG || {};
           '- $R^{q}c_{X*}M$ 是预层 $U \\mapsto H^{q}_{\\mathrm{cond}}(U, M)$ 层化得到的层。$X$ **局部紧**，它在 $x$ 处的茎是',
           '$$(R^{q}c_{X*}M)_{x} = \\varinjlim_{x \\in U} H^{q}_{\\mathrm{cond}}(U, M) = \\varinjlim_{x \\in K} H^{q}_{\\mathrm{cond}}(K, M)$$',
           '（$U$ 跑 $x$ 的开邻域、$K$ 跑 $x$ 的紧邻域 —— 局部紧让两个滤过系统共尾）。',
-          '- 固定 $x$ 的一个紧邻域 $K$ 与 Stone 空间 $K_{0}$ 连同满射 $K_{0} \\twoheadrightarrow K$；对 $x$ 的每个紧邻域 $S \\subseteq K$，拉回得 $S_{0} \\to S$。**Stone 的积与子空间仍是 Stone**，所以 $S_{n}$ 全是 Stone 空间，于是由「紧 Hausdorff 上 Čech = 层上同调」与上一条「Stone 上常系数零调」',
+          '- 固定 $x$ 的一个紧邻域 $K$ 与 Stone 空间 $K_{0}$ 连同满射 $K_{0} \\twoheadrightarrow K$；对 $x$ 的每个紧邻域 $S \\subseteq K$，拉回得 $S_{0} \\to S$。\n\n**Stone 的积与子空间仍是 Stone**，所以 $S_{n}$ 全是 Stone 空间，于是由「紧 Hausdorff 上 Čech = 层上同调」与上一条「Stone 上常系数零调」',
           '$$H^{n}_{\\mathrm{cond}}(S, M) = \\check{H}^{n}(S_{\\bullet}, M).$$',
-          '- 滤过余极限正合，于是茎那个余极限化归到 $S = \\{x\\}$ 的情形；而单点的 Čech 复形由「有截面 $\\implies$ 零调」直接给出零。故 $R^{q}c_{X*}M = 0$（$q>0$），谱序列退化，$H^{n}_{\\mathrm{cond}}(X,M) \\cong H^{n}_{\\mathrm{sheaf}}(X,M)$。∎'
+          '- 滤过余极限正合，于是茎那个余极限化归到 $S = \\{x\\}$ 的情形；而单点的 Čech 复形由「有截面 $\\implies$ 零调」直接给出零。\n\n故 $R^{q}c_{X*}M = 0$（$q>0$），谱序列退化，$H^{n}_{\\mathrm{cond}}(X,M) \\cong H^{n}_{\\mathrm{sheaf}}(X,M)$。\n\n∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.1.4']
@@ -222,15 +222,18 @@ window.MG = window.MG || {};
       regions: ['condensed', 'homology'],
       tags: ['凝聚态数学', 'Banach', '完备化', 'K-有界'],
       statement: [
-        '设 $M^{\\bullet}$ 是半范数阿贝尔群复形，$\\widehat{M}^{\\bullet}$ 是它的 Banach 化（Hausdorff 化后再完备化）。则 $M^{\\bullet}$ 在 $M^{n}$ 处 $K$-有界正合 $\\iff$ $\\widehat{M}^{\\bullet}$ 在 $\\widehat{M}^{n}$ 处 $K$-有界正合。'
+        '设 $M^{\\bullet}$ 是半范数阿贝尔群复形，$\\widehat{M}^{\\bullet}$ 是它的 Banach 化（Hausdorff 化后再完备化）。\n\n则 $M^{\\bullet}$ 在 $M^{n}$ 处 $K$-有界正合 $\\iff$ $\\widehat{M}^{\\bullet}$ 在 $\\widehat{M}^{n}$ 处 $K$-有界正合。'
       ].join('\n'),
       notes: [
         '**作用**：这条把「半范数」的一般情形**归结为 Banach 情形**。于是后面只要在 Banach 层面上证定理，一般情形自动跟着走。',
-        '**为什么成立**。完备化把 $M^{n}$ 嵌成一个**稠密**子空间，而 $K$-有界正合只用到范数不等式与「任取 $\\varepsilon > 0$」—— 这类条件在取稠密子空间时**两边都保持**：稠密性保证能在 $M^{n}$ 里找到足够好的逼近，而完备空间的极限点又能落回 $\\widehat{M}^{\\bullet}$。',
+        '**为什么成立**。\n\n完备化把 $M^{n}$ 嵌成一个**稠密**子空间，而 $K$-有界正合只用到范数不等式与「任取 $\\varepsilon > 0$」—— 这类条件在取稠密子空间时**两边都保持**：稠密性保证能在 $M^{n}$ 里找到足够好的逼近，而完备空间的极限点又能落回 $\\widehat{M}^{\\bullet}$。',
         ['**证明（两个方向各算一次 $\\varepsilon/2$）。** 先商掉 $M_{0}$（$K$-有界正合在商掉范数为零的元素下不变），于是可设 $M^{\\bullet} \\subseteq \\widehat{M}^{\\bullet}$ 是稠密保范嵌入。',
-          '- **$\\implies$**：给 $s \\in \\widehat{M}^{n}$ 与 $\\varepsilon>0$。由稠密性取 $t \\in M^{n}$ 使 $\\|s - t\\| \\le \\frac{\\varepsilon}{2(1+K\\|d^{n}\\|)}$；由 $M^{\\bullet}$ 的 $K$-有界性取 $s\' \\in M^{n+1}$ 使 $\\|t - ds\'\\| \\le K\\|dt\\| + \\frac{\\varepsilon}{2}$。于是',
+          '- **$\\implies$**：给 $s \\in \\widehat{M}^{n}$ 与 $\\varepsilon>0$。\n\n' +
+          '由稠密性取 $t \\in M^{n}$ 使 $\\|s - t\\| \\le \\frac{\\varepsilon}{2(1+K\\|d^{n}\\|)}$；\n\n' +
+          '由 $M^{\\bullet}$ 的 $K$-有界性取 $s\' \\in M^{n+1}$ 使 $\\|t - ds\'\\| \\le K\\|dt\\| + \\frac{\\varepsilon}{2}$。\n\n' +
+          '于是',
           '$$\\|s - ds\'\\| \\le \\|s-t\\| + K\\|dt\\| + \\frac{\\varepsilon}{2} = K\\|ds\\| + \\Bigl(\\|s-t\\| + K\\|ds - dt\\| + \\frac{\\varepsilon}{2}\\Bigr) \\le K\\|ds\\| + \\varepsilon .$$',
-          '- **$\\Longleftarrow$**：给 $s \\in M^{n} \\subseteq \\widehat{M}^{n}$。由 $\\widehat{M}^{\\bullet}$ 的 $K$-有界性取 $t\' \\in \\widehat{M}^{n+1}$ 使 $\\|s - dt\'\\| \\le K\\|ds\\| + \\frac{\\varepsilon}{2}$；再由稠密性取 $s\' \\in M^{n+1}$ 使 $\\|s\' - t\'\\| \\le \\frac{\\varepsilon}{2(1+\\|d^{n+1}\\|)}$。于是 $\\|s - ds\'\\| \\le K\\|ds\\| + \\varepsilon$。∎'
+          '- **$\\Longleftarrow$**：给 $s \\in M^{n} \\subseteq \\widehat{M}^{n}$。\n\n由 $\\widehat{M}^{\\bullet}$ 的 $K$-有界性取 $t\' \\in \\widehat{M}^{n+1}$ 使 $\\|s - dt\'\\| \\le K\\|ds\\| + \\frac{\\varepsilon}{2}$；\n\n再由稠密性取 $s\' \\in M^{n+1}$ 使 $\\|s\' - t\'\\| \\le \\frac{\\varepsilon}{2(1+\\|d^{n+1}\\|)}$。\n\n于是 $\\|s - ds\'\\| \\le K\\|ds\\| + \\varepsilon$。\n\n∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Lemma 8.2.2']
@@ -249,7 +252,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**这是「定量 $\\implies$ 定性」的核心一步。** 给定闭链 $s \\in M^{n}$（即 $d^{n}s = 0$），要造出 $s\' \\in M^{n+1}$ 使 $ds\' = s$。',
-        '**造法（几何级数）**。由上一条 $K$-有界条件，先取一个几乎的原像 $s\'_{1}$，误差 $e_{1} = s - ds\'_{1}$ 满足 $\\|e_{1}\\| \\le K\\|ds\\| + \\varepsilon = \\varepsilon$（用了 $ds = 0$）。现在 $e_{1}$ 又是 $M^{n}$ 里的闭链（因为 $de_{1} = ds - d^{2}s\'_{1} = 0$），可以对它再取一次几乎的原像，误差 $\\le \\varepsilon/2$，如此迭代。',
+        '**造法（几何级数）**。\n\n由上一条 $K$-有界条件，先取一个几乎的原像 $s\'_{1}$，误差 $e_{1} = s - ds\'_{1}$ 满足 $\\|e_{1}\\| \\le K\\|ds\\| + \\varepsilon = \\varepsilon$（用了 $ds = 0$）。\n\n现在 $e_{1}$ 又是 $M^{n}$ 里的闭链（因为 $de_{1} = ds - d^{2}s\'_{1} = 0$），可以对它再取一次几乎的原像，误差 $\\le \\varepsilon/2$，如此迭代。',
         '**关键的第二处 $K$-有界**：为保证迭代出的 $s\'_{i}$ 本身**收敛**，每一步都要用 $M^{n-1}$ 处的 $K$-有界正合把「原像之间差了多少」控制住 —— 这样 $\\|s\'_{i} - s\'_{i+1}\\|$ 被一个几何级数控制，$M^{n+1}$ 完备保证极限存在。',
         '**结论**：$s\' = \\sum_{i \\ge 1}(s\'_{i+1} - s\'_{i})$ 的收敛和的 $d$ 正好是 $s$。于是每个闭链都是边界，即正合。',
         ['**严格写法。** 设 $s \\in M^{n}$、$ds = 0$。',
@@ -296,14 +299,14 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**要做的事**：造一个零伦（contraction），把复形每一项的「闭链」都显式地写成边界，并且**范数不超过原来的 $1$ 倍**。$K = 1$ 是能得到的最好常数。',
-        '**怎么造**。先归约到 $S_{0}$、$S$ 都**有限离散**的情形（Stone 空间是投射有限的逆极限，逆极限保持零伦）。有限离散时，满射 $S_{0} \\twoheadrightarrow S$ 允许把一个函数「在 $S$ 的每个纤维内逐点常值化」—— 这一步是线性的、范数不增的，正好给出所需零伦，于是 $\\|h\\| \\le 1$。',
+        '**怎么造**。\n\n先归约到 $S_{0}$、$S$ 都**有限离散**的情形（Stone 空间是投射有限的逆极限，逆极限保持零伦）。\n\n有限离散时，满射 $S_{0} \\twoheadrightarrow S$ 允许把一个函数「在 $S$ 的每个纤维内逐点常值化」—— 这一步是线性的、范数不增的，正好给出所需零伦，于是 $\\|h\\| \\le 1$。',
         '**为什么只到 Stone / 有限离散为止。** 这一步只处理「Stone 空间之间的满射」。要把结论推到紧 Hausdorff，得先把它 Stone 化，再用 Čech 复形与层上同调的谱序列去比较偏差 —— 那正是下面两条要做的事。',
         ['**证明。** 三步归约。',
           '- **归约到 $M$ 离散**：Stone 空间写 $S_{0} = \\varprojlim_{k} S_{0,k}$（$S_{0,k}$ 有限），$S_{k}$ 为它在 $S$ 里的像，则',
           '$$\\varinjlim_{k} \\check{C}^{\\bullet}\\bigl((S_{0,k}\\to S_{k})^{+}, M\\bigr) = \\check{C}^{\\bullet}\\bigl((S_{0}\\to S)^{+}, M^{\\mathrm{disc}}\\bigr) \\hookrightarrow \\check{C}^{\\bullet}\\bigl((S_{0}\\to S)^{+}, M\\bigr),$$',
           '左端的直极限拓扑就是**上确界范数**拓扑；而 $C(S, M^{\\mathrm{disc}})$ 在 $C(S, M)$ 里**稠密**（极不连通性给出有限不交闭开细化，在每块上取常值逼近）。配上「$K$-有界正合在完备化下不变」与「滤过余极限保持 $K$-有界」，只需证**离散那一个**复形 $1$-有界零调（对它自己的拓扑）。',
           '- **归约到 $S, S_{0}$ 有限**：同一个余极限再把离散情形化归到有限。',
-          '- **有限情形**：由「有截面的态射给出零调」，$\\check{C}^{\\bullet}\\bigl((S_{0}\\to S)^{+}, M\\bigr)$ 是**零伦**的，且零伦有形式 $h^{n} : f \\mapsto f \\circ k_{n}$（逐纤维取一个截面点），于是 $\\|h^{n}\\| \\le 1$。由 $\\mathrm{id} = h\\circ d + d\\circ h$，对任意 $s$：',
+          '- **有限情形**：由「有截面的态射给出零调」，$\\check{C}^{\\bullet}\\bigl((S_{0}\\to S)^{+}, M\\bigr)$ 是**零伦**的，且零伦有形式 $h^{n} : f \\mapsto f \\circ k_{n}$（逐纤维取一个截面点），于是 $\\|h^{n}\\| \\le 1$。\n\n由 $\\mathrm{id} = h\\circ d + d\\circ h$，对任意 $s$：',
           '$$\\|s - d(hs)\\| = \\|h(ds)\\| \\le \\|ds\\| ,$$',
           '这正是 $K = 1$ 的 $K$-有界正合。∎'
         ].join('\n')
@@ -325,7 +328,7 @@ window.MG = window.MG || {};
         '$$H^{n}_{\\mathrm{cond}}(S,\\ M) = 0.$$'
       ].join('\n'),
       notes: [
-        '**证法三段**。① 取一个 Stone 满射 $S_{0} \\twoheadrightarrow S$，用它算 Čech 复形；② 上一条给出这个复形是 $1$-有界零调的；③ 那条「$K$-有界零调 $\\implies$ 零调」把它换成通常的零调，于是 Čech 上同调消失，而 Stone 空间上 Čech 上同调就是凝聚态上同调。',
+        '**证法三段**。\n\n① 取一个 Stone 满射 $S_{0} \\twoheadrightarrow S$，用它算 Čech 复形；② 上一条给出这个复形是 $1$-有界零调的；③ 那条「$K$-有界零调 $\\implies$ 零调」把它换成通常的零调，于是 Čech 上同调消失，而 Stone 空间上 Čech 上同调就是凝聚态上同调。',
         '**和「Stone 上常系数零调」的关系**。常系数那条的系数是**离散**阿贝尔群（本质上是「有离散拓扑」的极端情形）；这条的系数是 **Banach** 阿贝尔群 —— 带完整的范数结构。两条结论形状一样，证明路线完全不同：常系数用的是「投射有限逆极限」，Banach 用的是「$K$-有界 + Čech」。'
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 8.2.6']
@@ -347,11 +350,13 @@ window.MG = window.MG || {};
         '是**满**的：每个连续映射 $K \\to V$ 都能延拓到 $X$ 上。'
       ].join('\n'),
       notes: [
-        '**分层归约**。① 有限维：$V = \\mathbb{R}^{m}$，逐坐标用经典 Tietze 延拓（正规空间上实值连续函数的延拓，本质是 Urysohn 引理）。② 一般可分 Banach：每个可分 Banach 空间都同构于 $\\ell^{\\infty}$ 的闭子空间，而 $\\ell^{\\infty}$ 是 **Lipschitz 收缩核** —— 于是可以先把映射延拓到 $\\ell^{\\infty}$ 再收缩回来。③ 不可分的情形用「紧像落在某个可分闭子空间里」再归约到 ②。',
-        '⭐ **为什么凝聚态数学要用它。** §8.2 的主定理「实 Banach 空间在紧 Hausdorff 空间上零调」走的是「把一般紧 Hausdorff 空间 $S$ 用 Stonean 的 $S_{0}$ 覆盖、再把偏差压回去」的路线；偏差项住在一个函数空间 $C(K, V)$ 里，而**要把它压掉就得靠延拓**，即这条 Tietze。',
+        '**分层归约**。\n\n① 有限维：$V = \\mathbb{R}^{m}$，逐坐标用经典 Tietze 延拓（正规空间上实值连续函数的延拓，本质是 Urysohn 引理）。\n\n② 一般可分 Banach：每个可分 Banach 空间都同构于 $\\ell^{\\infty}$ 的闭子空间，而 $\\ell^{\\infty}$ 是 **Lipschitz 收缩核** —— 于是可以先把映射延拓到 $\\ell^{\\infty}$ 再收缩回来。\n\n③ 不可分的情形用「紧像落在某个可分闭子空间里」再归约到 ②。',
+        '⭐ **为什么凝聚态数学要用它。** §8.2 的主定理「实 Banach 空间在紧 Hausdorff 空间上零调」走的是「把一般紧 Hausdorff 空间 $S$ 用 Stonean 的 $S_{0}$ 覆盖、再把偏差压回去」的路线；\n\n偏差项住在一个函数空间 $C(K, V)$ 里，而**要把它压掉就得靠延拓**，即这条 Tietze。',
         '⚠️ **这条一般拓扑里也有实值版本**（Tietze 延拓定理）；这里的增量是：**取值可以让是任意实 Banach 空间**。',
         ['**证明（Dugundji 延拓定理）。** 取值在拓扑向量空间里的 Tietze 是 Dugundji 的定理：设 $X$ **仿紧**（度量空间即可）、$A \\subseteq X$ **闭**、$V$ 是**局部凸**拓扑向量空间，则存在**线性**延拓算子 $C(A, V) \\to C(X, V)$，特别地限制映射满。',
-          '- **构造**：仿紧性给出 $A$ 的一个开邻域系 $\\{U_{i}\\}$ 的局部有限细化与配套的**单位分解** $\\{\\varphi_{i}\\}$（$\\sum \\varphi_{i} = 1$，$\\varphi_{i} \\ge 0$，支集在 $U_{i}$ 里）。每个 $U_{i}$ 上先把 $g|_{A \\cap U_{i}}$ 延拓成一个常值映射 $g_{i}$（取 $A\\cap U_{i}$ 上某点的值）；再令',
+          '- **构造**：仿紧性给出 $A$ 的一个开邻域系 $\\{U_{i}\\}$ 的局部有限细化与配套的**单位分解** $\\{\\varphi_{i}\\}$（$\\sum \\varphi_{i} = 1$，$\\varphi_{i} \\ge 0$，支集在 $U_{i}$ 里）。\n\n' +
+          '每个 $U_{i}$ 上先把 $g|_{A \\cap U_{i}}$ 延拓成一个常值映射 $g_{i}$（取 $A\\cap U_{i}$ 上某点的值）；\n\n' +
+          '再令',
           '$$G := \\sum_{i} \\varphi_{i}\\, g_{i} .$$',
           '- **为什么良定义**：局部有限 $\\implies$ 每个点附近只有有限个 $\\varphi_{i}$ 非零，和是有限的；$V$ 是**向量空间**，凸组合有意义；$\\varphi_{i}$ 连续，故 $G$ 连续。',
           '- **为什么是延拓**：若 $x \\in A$，则所有满足 $\\varphi_{i}(x) > 0$ 的 $U_{i}$ 都含 $x$，而每个 $g_{i}$ 在 $A \\cap U_{i}$ 上等于 $g$，于是 $G(x) = \\sum \\varphi_{i}(x) g(x) = g(x)$。',
@@ -376,15 +381,19 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⭐ **这是 §8.2 的主定理**，也是整章的枢纽：它把「零调」从 Stone 空间推到了一般紧 Hausdorff 空间，代价是系数必须落在实 Banach 空间里。',
-        '**证法**。① 用 Stonean 空间 $S_{0}$ 满射到 $S$（由「紧 Hausdorff 空间沿闭含入的滤过余极限 / Stonean 覆盖」那套技术得到）；② 在 $S_{0}$ 上由「Banach 在 Stone 上零调」知道 Čech 复形零调；③ 比较 $S_{0} \\to S$ 的 Čech 复形与 $S$ 本身的上同调，偏差项住在 $C(K, V)$ 里；④ 用 **Tietze 延拓（Banach 值）** 把偏差压掉，得到 $S$ 上的**有界**零调；⑤ 用「$K$-有界零调 $\\implies$ 零调」转成通常零调。',
+        '**证法**。\n\n' +
+        '① 用 Stonean 空间 $S_{0}$ 满射到 $S$（由「紧 Hausdorff 空间沿闭含入的滤过余极限 / Stonean 覆盖」那套技术得到）；② 在 $S_{0}$ 上由「Banach 在 Stone 上零调」知道 Čech 复形零调；\n\n' +
+        '③ 比较 $S_{0} \\to S$ 的 Čech 复形与 $S$ 本身的上同调，偏差项住在 $C(K, V)$ 里；\n\n' +
+        '④ 用 **Tietze 延拓（Banach 值）** 把偏差压掉，得到 $S$ 上的**有界**零调；\n\n' +
+        '⑤ 用「$K$-有界零调 $\\implies$ 零调」转成通常零调。',
         '⚠️ **复 Banach 空间不成立。** 这是「solid 模 / solid 拟凝聚层」那一整套理论出现的直接原因之一 —— 实的情形能用 Tietze 那样的**序结构**（$\\mathbb{R}$ 上的上确界、分割）把它压下来，复的情形没有这套工具，得上完全不同的机器。',
         '📌 与「局部紧上凝聚态＝层上同调」对照：那条处理的是**离散系数**（且空间只需局部紧），这条处理的是 **Banach 系数**（而空间只需紧）—— 两条合起来覆盖了第 8 章大半的计算。',
         ['**证明（把偏差用单位分解压掉）。** 由「紧 Hausdorff 上 Čech = 层上同调」、「Banach 在 Stone 上零调」与「$K$-有界零调 $\\implies$ 零调」，只需证：对 Stone 空间的连续满射 $S_{0} \\to S$，增广 Čech 复形 $\\check{C}^{\\bullet}\\bigl((S_{0}\\to S)^{+}, V\\bigr)$ 是 **$1$-有界零调**的。',
-          '固定 $\\varepsilon > 0$ 与 $f \\in \\check{C}^{n}$（即 $S_{n} \\to V$ 连续，$S_{n}$ 是 $S_{0}$ 在 $S$ 上的 $(n{+}1)$ 重纤维积）。记 $\\pi_{n} : S_{n} \\to S$ 与 $f_{x} := f|_{\\pi_{n}^{-1}(x)}$。',
+          '固定 $\\varepsilon > 0$ 与 $f \\in \\check{C}^{n}$（即 $S_{n} \\to V$ 连续，$S_{n}$ 是 $S_{0}$ 在 $S$ 上的 $(n{+}1)$ 重纤维积）。\n\n记 $\\pi_{n} : S_{n} \\to S$ 与 $f_{x} := f|_{\\pi_{n}^{-1}(x)}$。',
           '- 对每个 $x \\in S$，对纤维上的满射 $\\pi_{n}^{-1}(x) \\to \\{x\\}$ 用「Stone 满射的 Čech 复形 $1$-有界零调」（逐纤维的版本），得 $g_{x} : \\pi_{n+1}^{-1}(x) \\to V$ 使',
           '$$\\|f_{x} - d g_{x}\\| \\le \\|d f_{x}\\| + \\frac{\\varepsilon}{2} \\le \\|df\\| + \\frac{\\varepsilon}{2}.$$',
           '- 由 **Tietze（Banach 值）**，$g_{x}$ 延拓成 $S_{n+1}$ 上的 $G_{x}$；由连续性，$x$ 有邻域 $V_{x}$ 使在 $\\pi_{n+1}^{-1}(V_{x})$ 上 $\\|f - dG_{x}\\| < \\|df\\| + \\varepsilon$。',
-          '- 取有限的 $V_{1}, \\ldots, V_{r}$ 覆盖 $S$（**紧性**），配从属的单位分解 $\\{\\varphi_{i}\\}$，令 $g := \\sum_{i} (\\varphi_{i}\\circ\\pi_{n+1})\\,G_{i}$。由 $\\sum_{i}(\\varphi_{i}\\circ\\pi_{n}) = 1$ 得 $f = \\sum_{i}(\\varphi_{i}\\circ\\pi_{n}) f$，又 $dg = \\sum_{i}(\\varphi_{i}\\circ\\pi_{n})\\, dG_{i}$，两式相减：',
+          '- 取有限的 $V_{1}, \\ldots, V_{r}$ 覆盖 $S$（**紧性**），配从属的单位分解 $\\{\\varphi_{i}\\}$，令 $g := \\sum_{i} (\\varphi_{i}\\circ\\pi_{n+1})\\,G_{i}$。\n\n由 $\\sum_{i}(\\varphi_{i}\\circ\\pi_{n}) = 1$ 得 $f = \\sum_{i}(\\varphi_{i}\\circ\\pi_{n}) f$，又 $dg = \\sum_{i}(\\varphi_{i}\\circ\\pi_{n})\\, dG_{i}$，两式相减：',
           '$$\\|f - dg\\| = \\Bigl\\|\\sum_{i} (\\varphi_{i}\\circ\\pi_{n})\\,(f - dG_{i})\\Bigr\\| \\le \\max_{i} \\|f - dG_{i}\\| \\le \\|df\\| + \\varepsilon,$$',
           '最后一步是「凸组合的范数不超过最大范数」（$\\varphi_{i} \\ge 0$、$\\sum\\varphi_{i} = 1$）。这正是 $K = 1$ 的 $K$-有界正合。∎'
         ].join('\n')

@@ -77,7 +77,7 @@ window.MG = window.MG || {};
         '而且**拉回是格之间的同态**（保交、保并、保上界）。'
       ].join('\n'),
       notes: [
-        ['**证明。** 「子对象」是单态射 $X\' \\rightarrowtail X$ 的同构类。','- **交**取**拉回**：$X_{1} \\cap X_{2} := X_{1} \\times_{X} X_{2}$。单态射的拉回仍是单态射 ✓；泛性给出「同时分解过 $X_{1}$ 与 $X_{2}$」$\\iff$「分解过拉回」，即它恰是两个子对象的**最大下界** ✓。','- **并**取**像**：$X_{1} \\cup X_{2} := \\operatorname{im}(X_{1} \\coprod X_{2} \\to X)$。余积的泛性给出「同时被 $X_{1}, X_{2}$ 包含的态射 $\\iff$ 从余积出发的态射」，而取像正是把它变成单态射：$X_{1} \\to X$ 与 $X_{2} \\to X$ 都分解过它，且任何同时包含两者的子对象都被它分解过（像的泛性）—— 恰是**最小上界** ✓。（像的存在来自预拓扑斯里余等化子 / 商的存在。）','- **有界**：最小元是始对象到 $X$ 的唯一态射（预拓扑斯里始对象到任何对象都是单态射），最大元是 $1_{X}$ ✓。','- **分配律**：$X_{1} \\cap (X_{2}\\cup X_{3}) = (X_{1}\\cap X_{2}) \\cup (X_{1}\\cap X_{3})$ —— 沿单态射的拉回保余积（预拓扑斯里余积不交且万有），把两边都算成同一个拉回 ✓。','- **拉回是格同态**：$f^{*}(-) := -\\times_{Y} X$ 保拉回（是极限），故保交、保上下界；而它保余积（万有性）与像（像的计算可以搬到拉回里做），故保并 ✓。∎'].join('\n'),
+        ['**证明。** 「子对象」是单态射 $X\' \\rightarrowtail X$ 的同构类。','- **交**取**拉回**：$X_{1} \\cap X_{2} := X_{1} \\times_{X} X_{2}$。单态射的拉回仍是单态射 ✓；泛性给出「同时分解过 $X_{1}$ 与 $X_{2}$」$\\iff$「分解过拉回」，即它恰是两个子对象的**最大下界** ✓。','- **并**取**像**：$X_{1} \\cup X_{2} := \\operatorname{im}(X_{1} \\coprod X_{2} \\to X)$。\n\n余积的泛性给出「同时被 $X_{1}, X_{2}$ 包含的态射 $\\iff$ 从余积出发的态射」，而取像正是把它变成单态射：$X_{1} \\to X$ 与 $X_{2} \\to X$ 都分解过它，且任何同时包含两者的子对象都被它分解过（像的泛性）—— 恰是**最小上界** ✓。\n\n（像的存在来自预拓扑斯里余等化子 / 商的存在。）','- **有界**：最小元是始对象到 $X$ 的唯一态射（预拓扑斯里始对象到任何对象都是单态射），最大元是 $1_{X}$ ✓。','- **分配律**：$X_{1} \\cap (X_{2}\\cup X_{3}) = (X_{1}\\cap X_{2}) \\cup (X_{1}\\cap X_{3})$ —— 沿单态射的拉回保余积（预拓扑斯里余积不交且万有），把两边都算成同一个拉回 ✓。','- **拉回是格同态**：$f^{*}(-) := -\\times_{Y} X$ 保拉回（是极限），故保交、保上下界；而它保余积（万有性）与像（像的计算可以搬到拉回里做），故保并 ✓。∎'].join('\n'),
 '「有界」指的是这个格有最小元（始对象出发的那个子对象）与最大元（$X$ 自己）。把「子对象」当成一个格来看，后面讲拓扑斯内部逻辑时用的就是它 —— 这里的交、并分别是逻辑的「且」与「或」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -122,7 +122,7 @@ window.MG = window.MG || {};
         '其中 $R$ 是 $X$ 上的**等价关系**（拓扑斯的覆盖所对应的那个）。'
       ].join('\n'),
       notes: [
-        ['**证明。** 设覆盖族 $(X_{i} \\to X)_{i \\in I}$（有限、$\\coprod_{i}X_{i} \\to X$ 满）。层条件是对每个这样的族','$$F(X) \\to \\prod_{i}F(X_{i}) \\rightrightarrows \\prod_{i,j}F(X_{i}\\times_{X}X_{j})$$','为等化子。','- **「余积变积」**：取单支覆盖 $X \\to X$（它当然满），则层条件退化成 $F(X) \\cong F(X)$ 的平凡等式 —— 有限余积的层条件要把 $I$ 取成各支自身：对有限族 $(X_{i})$，$\\coprod_{i}X_{i} \\to \\coprod_{i}X_{i}$ 满，层条件给出 $F(\\coprod_{i}X_{i}) \\cong \\prod_{i}F(X_{i})$ ✓（与余积交换 == 与有限积交换，因为 $F$ 是 $\\mathbf{Set}$ 值）。','- **「商变核」**：一般族的覆盖条件里，$\\coprod_{i}X_{i} \\to X$ 是满态射，于是它在预拓扑斯里是**有效满**的：$R := \\coprod_{i,j}X_{i}\\times_{X}X_{j}$ 是 $\\coprod_{i}X_{i}$ 上的等价关系，而 $X$ 是这个关系的商（余等化子）。于是层条件读作 $F(X) \\cong \\ker\\bigl(F(\\coprod X_{i}) \\rightrightarrows F(R)\\bigr)$；再接上「余积变积」就得到陈述里的第一条等式 ✓。反过来取 $X = X/R$ 的商映射作覆盖，得 $F(X/R) \\cong \\ker(F(X)\\rightrightarrows F(R))$ ✓。','- **合起来**：两条所说正是所有覆盖（都是有限族、余积满）的层条件 ✓。','- **推论**：$h_{X} = \\operatorname{Hom}(X,-)$ 满足两条（Hom 把余积送成积、把商送成核），故每个可表示预层都是层 —— 即预标准拓扑是次标准的 ✓。∎'].join('\n'),
+        ['**证明。** 设覆盖族 $(X_{i} \\to X)_{i \\in I}$（有限、$\\coprod_{i}X_{i} \\to X$ 满）。层条件是对每个这样的族','$$F(X) \\to \\prod_{i}F(X_{i}) \\rightrightarrows \\prod_{i,j}F(X_{i}\\times_{X}X_{j})$$','为等化子。','- **「余积变积」**：取单支覆盖 $X \\to X$（它当然满），则层条件退化成 $F(X) \\cong F(X)$ 的平凡等式 —— 有限余积的层条件要把 $I$ 取成各支自身：对有限族 $(X_{i})$，$\\coprod_{i}X_{i} \\to \\coprod_{i}X_{i}$ 满，层条件给出 $F(\\coprod_{i}X_{i}) \\cong \\prod_{i}F(X_{i})$ ✓（与余积交换 == 与有限积交换，因为 $F$ 是 $\\mathbf{Set}$ 值）。','- **「商变核」**：一般族的覆盖条件里，$\\coprod_{i}X_{i} \\to X$ 是满态射，于是它在预拓扑斯里是**有效满**的：$R := \\coprod_{i,j}X_{i}\\times_{X}X_{j}$ 是 $\\coprod_{i}X_{i}$ 上的等价关系，而 $X$ 是这个关系的商（余等化子）。\n\n于是层条件读作 $F(X) \\cong \\ker\\bigl(F(\\coprod X_{i}) \\rightrightarrows F(R)\\bigr)$；\n\n再接上「余积变积」就得到陈述里的第一条等式 ✓。\n\n反过来取 $X = X/R$ 的商映射作覆盖，得 $F(X/R) \\cong \\ker(F(X)\\rightrightarrows F(R))$ ✓。','- **合起来**：两条所说正是所有覆盖（都是有限族、余积满）的层条件 ✓。','- **推论**：$h_{X} = \\operatorname{Hom}(X,-)$ 满足两条（Hom 把余积送成积、把商送成核），故每个可表示预层都是层 —— 即预标准拓扑是次标准的 ✓。∎'].join('\n'),
         '这两条把「层」写成了两条在 $\\mathbf{Set}$ 里显然、在这里需要验的等式：**有限余积变有限积**、**商变核**。它们正是「预拓扑斯里的余积与商和集合里长得一样」的精确说法。',
         '推论：**预标准拓扑是次标准的** —— 可表示预层 $h_{X}$ 满足上面两条（$\\operatorname{Hom}(X, -)$ 保积，$\\operatorname{Hom}(X/R, -)$ 由余等化子给出核），所以它们都是层。'
       ].join('\n\n'),
@@ -146,7 +146,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：$\\mathcal{C}$ 与 $\\mathcal{C}$ 中的 $X \\mapsto h_{X}$ 之间，余积与商**两边算出来一样**。'
       ].join('\n'),
-      notes: '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。∎',
+      notes: '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。\n\n商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -165,7 +165,7 @@ window.MG = window.MG || {};
         '$f$ **是单态射（满态射）** $\\iff X^{\\sharp} \\to Y^{\\sharp}$ **是单态射（满态射）**'
       ].join('\n'),
       notes: [
-        ['**证明。** 记层化为 $(-)^{\\sharp}$。','- **$(\\implies)$**：层化是到层范畴的**左伴随**，故保余极限，特别保满态射；又是**左正合**的（保有限极限），故保单态射 ✓。','- **$(\\Longleftarrow)$**：预标准拓扑是次标准的，所以 $h_{X}^{\\sharp} \\cong h_{X}$、$h_{Y}^{\\sharp} \\cong h_{Y}$，且 $f^{\\sharp}$ 在 Yoneda 嵌入下的像就是 $h_{f}$。','- 对可表示预层：$h_{f}$ 单 $\\iff$ $f$ 单（Yoneda 双射把 $h_{f}(Z)$ 的诱导映射写成「与 $f$ 复合」，单射性逐点验出）；$h_{f}$ 满 $\\iff$ $f$ 满（$\\mathbf{Set}$ 值预层范畴中的满态射逐点判定；一边取 $Z = Y$ 与 $1_{Y}$，另一边用 $\\operatorname{Hom}(Z,-)$ 保满态射）✓。','- 于是 $h_{f}$ 单（满）$\\iff$ $h_{f}^{\\sharp}$ 单（满），两头接起来即得 ✓。∎'].join('\n'),
+        ['**证明。** 记层化为 $(-)^{\\sharp}$。','- **$(\\implies)$**：层化是到层范畴的**左伴随**，故保余极限，特别保满态射；又是**左正合**的（保有限极限），故保单态射 ✓。','- **$(\\Longleftarrow)$**：预标准拓扑是次标准的，所以 $h_{X}^{\\sharp} \\cong h_{X}$、$h_{Y}^{\\sharp} \\cong h_{Y}$，且 $f^{\\sharp}$ 在 Yoneda 嵌入下的像就是 $h_{f}$。','- 对可表示预层：$h_{f}$ 单 $\\iff$ $f$ 单（Yoneda 双射把 $h_{f}(Z)$ 的诱导映射写成「与 $f$ 复合」，单射性逐点验出）；$h_{f}$ 满 $\\iff$ $f$ 满（$\\mathbf{Set}$ 值预层范畴中的满态射逐点判定；\n\n一边取 $Z = Y$ 与 $1_{Y}$，另一边用 $\\operatorname{Hom}(Z,-)$ 保满态射）✓。','- 于是 $h_{f}$ 单（满）$\\iff$ $h_{f}^{\\sharp}$ 单（满），两头接起来即得 ✓。∎'].join('\n'),
 '所以「谁是单的、谁是满的」在 $\\mathcal{C}$ 里和它在层范畴里问出来是同一个答案。这在后面起作用：Giraud 定理里把 $\\mathcal{C}$ 换成 $\\mathcal{T}$ 再配标准拓扑时，单满关系不会走样。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -186,7 +186,7 @@ window.MG = window.MG || {};
         '',
         '是**忠实**的。等价地：只要 $f \\ne g : X \\to Y$，就存在 $a \\in S$ 与 $g_{0} : a \\to X$ 使 $f \\circ g_{0} \\ne g \\circ g_{0}$。$S = \\{G\\}$ 时，$G$ 叫**生成元**。'
       ].join('\n'),
-      notes: '直观：**$S$ 里的对象「看得见」所有态射之间的差别** —— 随便两个不同的态射，总有一个来自 $S$ 的箭头能把它们分开。\n\n例：$\\mathbf{1}$ 是 $\\mathbf{Set}$ 的生成元；$A$ 是 $A\\text{-}\\mathbf{Mod}$ 的生成元；$\\mathcal{C}$ 本身是预层范畴 $\\widehat{\\mathcal{C}}$ 的生成元集。',
+      notes: '直观：**$S$ 里的对象「看得见」所有态射之间的差别** —— 随便两个不同的态射，总有一个来自 $S$ 的箭头能把它们分开。\n\n例：$\\mathbf{1}$ 是 $\\mathbf{Set}$ 的生成元；\n\n$A$ 是 $A\\text{-}\\mathbf{Mod}$ 的生成元；\n\n$\\mathcal{C}$ 本身是预层范畴 $\\widehat{\\mathcal{C}}$ 的生成元集。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -233,7 +233,7 @@ window.MG = window.MG || {};
         '4. 存在范畴使 $\\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。'
       ].join('\n'),
       notes: [
-        '四条的对译：(2)$\\iff$(3) 取 $\\mathcal{C} = \\mathcal{T}$ 配上标准拓扑；(3)$\\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；(1)$\\implies$(2) 也给 $\\mathcal{T}$ 配标准拓扑。',
+        '四条的对译：(2)$\\iff$(3) 取 $\\mathcal{C} = \\mathcal{T}$ 配上标准拓扑；(3)$\\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；\n\n(1)$\\implies$(2) 也给 $\\mathcal{T}$ 配标准拓扑。',
         '第 4 条是最好用的一条：**要造一个拓扑斯，只要造一个预层范畴加一个正合反射**。凝聚态集正是这么来的 —— 取紧 Hausdorff 空间上的层。'
       ].join('\n\n'),
       refs: ['Mac Lane–Moerdijk, Sheaves in Geometry and Logic, Appendix']
@@ -256,8 +256,8 @@ window.MG = window.MG || {};
         '中每个 $F_{i}$ 以及每个 $F_{i} \\times_{F} F_{j}$ 都**可表示**，则 $F$ 也可表示。'
       ].join('\n'),
       notes: [
-        ['**证明。** 记 $F_{i} \\cong h_{X_{i}}$、$F_{i}\\times_{F}F_{j} \\cong h_{X_{i,j}}$，并记 $X := \\coprod_{i}X_{i}$、$R := \\coprod_{i,j}X_{i,j}$。','- **$R$ 是 $X$ 上的等价关系**：满态射 $\\coprod_{i}F_{i} \\to F$ 给出平行对 $R \\rightrightarrows X$ 的两条结构映射（由 $F_{i}\\times_{F}F_{j} \\rightrightarrows F_{i}$ 与 Yoneda 得到）；自反来自对角 $F_{i} \\to F_{i}\\times_{F}F_{i}$，对称来自 $X_{i,j} \\cong X_{j,i}$，传递来自 $F_{i}\\times_{F}F_{j}\\times_{F}F_{k}$ 的三重拉回（这些都在层范畴里是极限，逐层算）✓。','- **等价关系有效**：拓扑斯里等价关系都有效，故商 $X/R$ 存在，且 $h_{X/R}$ 是这个关系在层范畴里的余等化子 ✓。','- **$F \\cong X/R$**：层范畴中的余等化子列','$$\\coprod_{i,j}F_{i}\\times_{F}F_{j} \\rightrightarrows \\coprod_{i}F_{i} \\longrightarrow F$$','说明 $F$ 是这两个对象的余等化子（满态射是有效满的），而同一列换成可表示层就是 $R \\rightrightarrows X \\to X/R$，故 $F \\cong X/R = h_{X/R}$，即 $F$ 可表示 ✓。∎'].join('\n'),
-'把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'].join('\n\n'),
+        ['**证明。** 记 $F_{i} \\cong h_{X_{i}}$、$F_{i}\\times_{F}F_{j} \\cong h_{X_{i,j}}$，并记 $X := \\coprod_{i}X_{i}$、$R := \\coprod_{i,j}X_{i,j}$。','- **$R$ 是 $X$ 上的等价关系**：满态射 $\\coprod_{i}F_{i} \\to F$ 给出平行对 $R \\rightrightarrows X$ 的两条结构映射（由 $F_{i}\\times_{F}F_{j} \\rightrightarrows F_{i}$ 与 Yoneda 得到）；\n\n自反来自对角 $F_{i} \\to F_{i}\\times_{F}F_{i}$，对称来自 $X_{i,j} \\cong X_{j,i}$，传递来自 $F_{i}\\times_{F}F_{j}\\times_{F}F_{k}$ 的三重拉回（这些都在层范畴里是极限，逐层算）✓。','- **等价关系有效**：拓扑斯里等价关系都有效，故商 $X/R$ 存在，且 $h_{X/R}$ 是这个关系在层范畴里的余等化子 ✓。','- **$F \\cong X/R$**：层范畴中的余等化子列','$$\\coprod_{i,j}F_{i}\\times_{F}F_{j} \\rightrightarrows \\coprod_{i}F_{i} \\longrightarrow F$$','说明 $F$ 是这两个对象的余等化子（满态射是有效满的），而同一列换成可表示层就是 $R \\rightrightarrows X \\to X/R$，故 $F \\cong X/R = h_{X/R}$，即 $F$ 可表示 ✓。∎'].join('\n'),
+'把 $F_{i} \\cong X_{i}$、$F_{i} \\times_{F} F_{j} \\cong X_{i,j}$ 记下来，则 $R := \\coprod_{i,j} X_{i,j}$ 定义 $X := \\coprod_{i} X_{i}$ 上的一个等价关系，于是 $F \\cong X/R$ —— 商在拓扑斯里是存在的（等价关系有效），所以 $F$ 是同构于一个可表示层。\n\n这条是 Giraud 定理 $(1) \\implies (2)$ 里最吃力的那一步。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -272,7 +272,7 @@ window.MG = window.MG || {};
       tags: ['范畴论', '拓扑斯', '覆盖'],
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）中，族 $(X_{i} \\to X)_{i \\in I}$ 是覆盖 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。',
       notes: [
-        ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
+        ['**证明。**','- **$(\\Longleftarrow)$**：标准拓扑里，族 $(X_{i}\\to X)$ 是覆盖当且仅当 $\\coprod_{i}X_{i} \\to X$ 是满态射，这正是定义 ✓。','- **$(\\implies)$**：设 $(X_{i}\\to X)$ 覆盖。\n\n在层范畴里取 $s := 1_{X} \\in h_{X}(X)$。\n\n由「层中满态射的局部判据」，只要在每支上找到 $s|_{X_{i}}$ 的原像：取 $t_{i} := 1_{X_{i}} \\in h_{X_{i}}(X_{i})$，它在 $h_{X}(X_{i})$ 里的像就是 $X_{i} \\to X$ 这个态射，正是 $s|_{X_{i}}$ ✓。\n\n故 $\\coprod_{i}h_{X_{i}} \\to h_{X}$ 是满态射 ✓。','- 两个方向合起来：在拓扑斯里，「覆盖」可以完全用**余积 + 满态射**这两个纯范畴概念表达，不需要几何残余 ✓。∎'].join('\n'),
 '这条在一般景里也对，但在拓扑斯里更顺手：拓扑斯的余积是「好」的（不交、万有），所以「覆盖」这个词在这里完全可以用余积与满射这两个纯范畴概念替换掉，一点几何残余都不剩。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -287,7 +287,7 @@ window.MG = window.MG || {};
       regions: ['category'],
       tags: ['范畴论', '拓扑斯', '层'],
       statement: '拓扑斯 $\\mathcal{T}$（配标准拓扑）上的预层 $F : \\mathcal{T}^{\\mathrm{op}} \\to \\mathbf{Set}$ 是层 $\\iff$ $F$ 保持所有极限。',
-      notes: '证明就一行：若 $R$ 是 $X$ 的覆盖筛，则 $X \\cong \\varinjlim_{X\' \\to X \\in R} X\'$ —— 这句话正是覆盖的定义；把它送回 $F$ 就得到 $F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{T}/R} F(X\')$，即层条件。\n\n所以在拓扑斯上，「**层**」与「**把余极限送回极限的预层**」是同一件事。层论里那两条（分离 + 粘合）在这里合成了「连续」这一个词。',
+      notes: '证明就一行：若 $R$ 是 $X$ 的覆盖筛，则 $X \\cong \\varinjlim_{X\' \\to X \\in R} X\'$ —— 这句话正是覆盖的定义；把它送回 $F$ 就得到 $F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{T}/R} F(X\')$，即层条件。\n\n所以在拓扑斯上，「**层**」与「**把余极限送回极限的预层**」是同一件事。\n\n层论里那两条（分离 + 粘合）在这里合成了「连续」这一个词。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -324,7 +324,7 @@ window.MG = window.MG || {};
         '3. 预拓扑斯 $\\mathcal{C}$（配预标准拓扑）上的层 $F$ 拟紧 $\\iff$ 存在满射 $X \\to F$ 且 $X \\in \\mathcal{C}$。'
       ].join('\n'),
       notes: [
-        ['**逐条证明。**','**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。∎'].join('\n'),
+        ['**逐条证明。**','**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。\n\n对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；\n\n由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。\n\n则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。\n\n—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。\n\n∎'].join('\n'),
 '第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
@@ -385,7 +385,7 @@ window.MG = window.MG || {};
         '',
         '满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ **正合**（保有限极限）。$f^{*}$ 叫**拉回函子**，$f_{*}$ 叫**推前函子**。'
       ].join('\n'),
-      notes: '动机来自拓扑空间：连续映射 $\\varphi : X \\to Y$ 给出层范畴之间的一对函子 —— 沿 $\\varphi$ 把层拉回来（$f^{*}$）、再把层推出去（$f_{*}$）。这一对满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ 正合。于是**拓扑斯之间的「映射」就照这个样子定义**：不是函子，而是一对互为伴随的函子，而且方向与几何直觉相反（左边那个是拉回）。',
+      notes: '动机来自拓扑空间：连续映射 $\\varphi : X \\to Y$ 给出层范畴之间的一对函子 —— 沿 $\\varphi$ 把层拉回来（$f^{*}$）、再把层推出去（$f_{*}$）。\n\n这一对满足 $f^{*} \\dashv f_{*}$，并且 $f^{*}$ 正合。\n\n于是**拓扑斯之间的「映射」就照这个样子定义**：不是函子，而是一对互为伴随的函子，而且方向与几何直觉相反（左边那个是拉回）。',
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     }
   ],
@@ -412,11 +412,11 @@ window.MG = window.MG || {};
         '',
         '$$\\begin{array}{ccc} V & \\longrightarrow & Z \\\\ \\downarrow\\scriptstyle{(g_0,h_0)} & & \\downarrow\\scriptstyle{(g,h)} \\\\ X \\times_{X} X & \\xrightarrow{\\ \\pi \\times \\pi\\ } & \\overline{X} \\times \\overline{X} \\end{array}$$',
         '',
-        '笛卡尔。由 $l \\circ g = l \\circ h$ 得 $l \\circ \\pi \\circ g_{0} = l \\circ \\pi \\circ h_{0}$，即 $f \\circ g_{0} = f \\circ h_{0}$。于是 $(g_{0}, h_{0})$ 的像整个落在 $R = X \\times_{Y} X$ 里 —— 换句话说 $(g_{0}, h_{0})$ 穿过 $R$。',
+        '笛卡尔。\n\n由 $l \\circ g = l \\circ h$ 得 $l \\circ \\pi \\circ g_{0} = l \\circ \\pi \\circ h_{0}$，即 $f \\circ g_{0} = f \\circ h_{0}$。\n\n于是 $(g_{0}, h_{0})$ 的像整个落在 $R = X \\times_{Y} X$ 里 —— 换句话说 $(g_{0}, h_{0})$ 穿过 $R$。',
         '',
         '再由 $\\overline{X} = \\operatorname{coker}(R \\rightrightarrows X)$ 的泛性质（两条投影的余等化子），$\\pi \\circ g_{0} = \\pi \\circ h_{0}$，于是 $g = h$。所以 $l$ 是单态射。',
         '',
-        '**唯一性。** 若 $f = X \\xrightarrow{\\ \\pi\'\\ } X\' \\xrightarrow{\\ l\'\\ } Y$ 是另一个满-单分解，则由 $l\'$ 是单态射得 $R = X \\times_{X\'} X$。记 $\\pi\'$ 为满态射，由第 4 条它是**正则**的，即 $\\pi\' = \\operatorname{coker}(X \\times_{X\'} X \\rightrightarrows X)$；把 $X \\times_{X\'} X = R$ 代进去得 $\\pi\'$ 与 $\\pi$ 是同一个余等化子。于是存在互逆的 $\\overline{X} \\rightleftarrows X\'$，$X\' \\cong \\overline{X}$。∎',
+        '**唯一性。** 若 $f = X \\xrightarrow{\\ \\pi\'\\ } X\' \\xrightarrow{\\ l\'\\ } Y$ 是另一个满-单分解，则由 $l\'$ 是单态射得 $R = X \\times_{X\'} X$。\n\n记 $\\pi\'$ 为满态射，由第 4 条它是**正则**的，即 $\\pi\' = \\operatorname{coker}(X \\times_{X\'} X \\rightrightarrows X)$；\n\n把 $X \\times_{X\'} X = R$ 代进去得 $\\pi\'$ 与 $\\pi$ 是同一个余等化子。\n\n于是存在互逆的 $\\overline{X} \\rightleftarrows X\'$，$X\' \\cong \\overline{X}$。\n\n∎',
         '',
         '**平衡性。** 若 $f$ 既满又单，则 $R = X \\times_{Y} X \\cong X$（单态射的等价刻画），故 $\\overline{X} \\cong X$，$f \\cong l$ 是单态射；又 $f$ 已是单态射，故 $f$ 是同构。∎',
         '',
@@ -433,11 +433,11 @@ window.MG = window.MG || {};
       target: 'thm.giraud',
       title: 'Giraud 定理的证明',
       proof: [
-        '**(2) $\\implies$ (3)。** 取 $\\mathcal{C} = \\mathcal{T}$，配上 $\\mathcal{T}$ 上的**标准拓扑**。此时层范畴就是 $\\mathcal{T}$ 自己（因为标准拓扑下的层恰好是可表示的那些），于是 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$。∎',
+        '**(2) $\\implies$ (3)。** 取 $\\mathcal{C} = \\mathcal{T}$，配上 $\\mathcal{T}$ 上的**标准拓扑**。\n\n此时层范畴就是 $\\mathcal{T}$ 自己（因为标准拓扑下的层恰好是可表示的那些），于是 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$。\n\n∎',
         '',
         '**(3) $\\implies$ (4)。** 预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯，而层范畴是它的**反射子范畴**，反射（层化）保有限极限 —— 这正是 (4) 的形式。∎',
         '',
-        '**(4) $\\implies$ (1)。** 设 $\\mathcal{T}$ 是 $\\widehat{\\mathcal{C}}$ 的反射子范畴，反射 $\\sharp$ 正合。$\\widehat{\\mathcal{C}}$ 是拓扑斯，其中「有限极限 / 余积 / 等价关系」都是逐点算的、性质都好。反射子范畴对**极限**封闭（含入函子是右伴随），反射保有限极限与余极限，两份合起来把拓扑斯的四条公理逐一运到 $\\mathcal{T}$ 上：有限极限来自含入函子，余积与商来自「先在大范畴里算、再反射回去」，小生成元集取那些可表示预层的层化。∎',
+        '**(4) $\\implies$ (1)。** 设 $\\mathcal{T}$ 是 $\\widehat{\\mathcal{C}}$ 的反射子范畴，反射 $\\sharp$ 正合。\n\n$\\widehat{\\mathcal{C}}$ 是拓扑斯，其中「有限极限 / 余积 / 等价关系」都是逐点算的、性质都好。\n\n反射子范畴对**极限**封闭（含入函子是右伴随），反射保有限极限与余极限，两份合起来把拓扑斯的四条公理逐一运到 $\\mathcal{T}$ 上：有限极限来自含入函子，余积与商来自「先在大范畴里算、再反射回去」，小生成元集取那些可表示预层的层化。\n\n∎',
         '',
         '**(1) $\\implies$ (2)。** 给 $\\mathcal{T}$ 配标准拓扑。要证每个层都可表示。任取层 $F$。',
         '',
@@ -497,7 +497,7 @@ window.MG = window.MG || {};
         '',
         '左边是 $\\operatorname{Hom}(h_{X}, F)$、右边是 $\\operatorname{Hom}(R, F)$，这正是层的双射条件。∎',
         '',
-        '**(保极限 $\\implies$ 层)** 反过来，若 $F$ 保所有极限，把上式倒过来读：对每个 $R \\in J(X)$，$F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{C}/R} F(X\')$，而右边与 $\\operatorname{Hom}(R, F)$ 同构（前面的计算），所以 $F$ 是层。∎'
+        '**(保极限 $\\implies$ 层)** 反过来，若 $F$ 保所有极限，把上式倒过来读：对每个 $R \\in J(X)$，$F(X) \\cong \\varprojlim_{X\' \\in \\mathcal{C}/R} F(X\')$，而右边与 $\\operatorname{Hom}(R, F)$ 同构（前面的计算），所以 $F$ 是层。\n\n∎'
       ].join('\n'),
       note: '证明短得出奇 —— 因为**标准拓扑对覆盖筛的规定，本来就是「$X$ 是这些 $X\'$ 的余极限」**。所以「层」在拓扑斯上等于「把余极限送回极限」，几何与范畴在这里合成一句话。'
     }

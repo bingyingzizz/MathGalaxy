@@ -7,6 +7,8 @@
 
 $$\langle[\omega],[c]\rangle := \int_{c}\omega .$$
 
-换 $c$ 为 $c + \partial b$：$\int_{\partial b}\omega = \int_{b}\mathrm{d}\omega = 0$（`thm.stokes-chain`，用 $\omega$ 闭）。换 $\omega$ 为 $\omega + \mathrm{d}\eta$：$\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（$c$ 闭）。所以这是良定义的配对 $H^{k}_{\mathrm{dR}} \otimes H^{\mathrm{sing}}_{k} \to \mathbb{R}$，等价地一个线性映射 $\Phi^{k} : H^{k}_{\mathrm{dR}} \to (H^{\mathrm{sing}}_{k})^{\ast} = H^{k}_{\mathrm{sing}}$。
+换 $c$ 为 $c + \partial b$：$\int_{\partial b}\omega = \int_{b}\mathrm{d}\omega = 0$（`thm.stokes-chain`，用 $\omega$ 闭）。
+
+换 $\omega$ 为 $\omega + \mathrm{d}\eta$：$\int_{c}\mathrm{d}\eta = \int_{\partial c}\eta = 0$（$c$ 闭）。
 
 > 续见 proofs/imp.mf2-de-rham.2.md

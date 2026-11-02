@@ -7,6 +7,10 @@
 
 **(3) Jacobi。** 六项按 $X,Y,Z$ 排队，每个形如 $X(Y(Zf))$ 的二阶项出现两次、符号相反；三阶项 $XYZf$ 出现六次、符号 $+-+-+-$ 恰好抵消。所以和为零。
 
-**(4) Leibniz。** $[X,fY]g = X(fYg) - fY(Xg) = (Xf)(Yg) + fX(Yg) - fY(Xg) = (Xf)(Yg) + f[X,Y]g$，即 $[X,fY] = (Xf)Y + f[X,Y]$。再对第一个变元用反称得 $[fX,gY] = fg[X,Y] + f(Xg)Y - g(Yf)X$。∎
+**(4) Leibniz。** $[X,fY]g = X(fYg) - fY(Xg) = (Xf)(Yg) + fX(Yg) - fY(Xg) = (Xf)(Yg) + f[X,Y]g$，即 $[X,fY] = (Xf)Y + f[X,Y]$。
+
+再对第一个变元用反称得 $[fX,gY] = fg[X,Y] + f(Xg)Y - g(Yf)X$。
+
+∎
 
 ⭐ 全部证明只用了一条：二阶偏导可交换。所以 Lie 括号的存在性是「$\mathbb{R}^{n}$ 的微积分是交换的」这一事实的几何痕迹。

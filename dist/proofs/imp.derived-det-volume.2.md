@@ -3,7 +3,11 @@
 
 `thm.change-of-variables-manifold` 流形上的换元公式 → `def.determinant` 行列式
 
-**第二步：套换元公式。** $A$ 保向时 $\int_{A(U)}\omega = \int_{U} A^{\ast}\omega = \det(A)\int_{U}\omega$；反向时按公式多一个负号。两种情形合起来是 $\int_{A(U)}\omega = |\det A|\int_{U}\omega$，而左边就是 $A(U)$ 的体积：
+**第二步：套换元公式。** $A$ 保向时 $\int_{A(U)}\omega = \int_{U} A^{\ast}\omega = \det(A)\int_{U}\omega$；
+
+反向时按公式多一个负号。
+
+两种情形合起来是 $\int_{A(U)}\omega = |\det A|\int_{U}\omega$，而左边就是 $A(U)$ 的体积：
 
 $$\operatorname{vol}\bigl(A(U)\bigr) = |\det A| \cdot \operatorname{vol}(U).$$
 

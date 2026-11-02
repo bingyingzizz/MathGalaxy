@@ -13,4 +13,8 @@ $$F'(0) = \frac{f'(z_0)(1 - |z_0|^2)}{1 - |f(z_0)|^2}.$$
 
 由 $|F'(0)| \le 1$ 即得微分形式。
 
-**第五步：等号。** 某处取等 $\implies$ $F$ 是旋转（Schwarz 引理的 (3)）$\implies$ $f = \varphi_{f(z_0)}^{-1} \circ F \circ \varphi_{z_0}$ 是三个分式线性变换的复合，仍是 $\mathbb{D}$ 的自同构。反之自同构显然处处取等。$\blacksquare$
+**第五步：等号。** 某处取等 $\implies$ $F$ 是旋转（Schwarz 引理的 (3)）$\implies$ $f = \varphi_{f(z_0)}^{-1} \circ F \circ \varphi_{z_0}$ 是三个分式线性变换的复合，仍是 $\mathbb{D}$ 的自同构。
+
+反之自同构显然处处取等。
+
+$\blacksquare$

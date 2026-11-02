@@ -3,7 +3,9 @@
 
 `def.vector-field` 向量场 + `def.exterior-algebra` 外代数 → `def.tensor-field` 张量场
 
-**先把逐点的事说清。** 对固定 $p$，$T^{(r,s)}_{p}M = \bigl(T_{p}M\bigr)^{\otimes r} \otimes \bigl(T_{p}^{\ast}M\bigr)^{\otimes s}$，而「吃了 $r$ 个余向量与 $s$ 个向量吐一个数」的全体与它自然同构（张量积的泛性质）。维数 $n^{r+s}$。
+**先把逐点的事说清。** 对固定 $p$，$T^{(r,s)}_{p}M = \bigl(T_{p}M\bigr)^{\otimes r} \otimes \bigl(T_{p}^{\ast}M\bigr)^{\otimes s}$，而「吃了 $r$ 个余向量与 $s$ 个向量吐一个数」的全体与它自然同构（张量积的泛性质）。
+
+维数 $n^{r+s}$。
 
 **三种特例对齐。**
 

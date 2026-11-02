@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-不可解**。
+故 $A_5$ 没有阿贝尔商的正规链，即 $A_5$ **不可解**。
 
 > 续见 proofs/imp.sn-solvable.21.md

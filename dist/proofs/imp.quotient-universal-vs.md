@@ -5,7 +5,13 @@
 
 设 $T : V \to W$ 线性且 $U \subseteq \ker T$。
 
-**存在性**：令 $\overline{T}(v + U) := T(v)$。良定义：若 $v - v' \in U \subseteq \ker T$，则 $T(v - v') = 0$，即 $T(v) = T(v')$。线性同第一同构定理的证明。于是 $\overline{T} \circ \pi = T$ 由定义成立。
+**存在性**：令 $\overline{T}(v + U) := T(v)$。
+
+良定义：若 $v - v' \in U \subseteq \ker T$，则 $T(v - v') = 0$，即 $T(v) = T(v')$。
+
+线性同第一同构定理的证明。
+
+于是 $\overline{T} \circ \pi = T$ 由定义成立。
 
 **唯一性**：设 $S : V/U \to W$ 也满足 $S \circ \pi = T$。任取 $v + U \in V/U$，则
 

@@ -45,7 +45,7 @@ window.MG = window.MG || {};
         '$$G(x+h) - G(x) = \\mu_G((x, x+h])$$',
         '',
         '于是差商恰好是 $\\mu_G(E_h)/m(E_h)$ —— 其中 $E_h = (x, x+h]$ 是一个**可缩族**。由 RN 导数的点态公式（见「$\\mathbb{R}^{n}$ 上的微分」），这个比值 a.e. 收敛到 $\\mu _G$ 关于 $m$ 的 RN 导数，即 $G\' \\text{a.e.}$ 存在。',
-        '剩下的部分用一个「夹逼」把 $F\' = G\'$ 也拿下：令 $H = G - F \\ge 0$（跳跃函数），它 a.e. 为 0；再令 $\\bar{F}$ 为跳跃的累积函数，则 $\\mu _{\\bar{F}}$ 集中在可数集上，故 $\\mu _{\\bar{F}} \\perp m$，于是 $\\bar{F}\' = 0 \\text{a.e.}$。在 $\\bar{F}\' = 0$ 的点上用',
+        '剩下的部分用一个「夹逼」把 $F\' = G\'$ 也拿下：令 $H = G - F \\ge 0$（跳跃函数），它 a.e. 为 0；再令 $\\bar{F}$ 为跳跃的累积函数，则 $\\mu _{\\bar{F}}$ 集中在可数集上，故 $\\mu _{\\bar{F}} \\perp m$，于是 $\\bar{F}\' = 0 \\text{a.e.}$。\n\n在 $\\bar{F}\' = 0$ 的点上用',
         '',
         '$$0 \\le H(x+h) / h \\le (\\bar{F}(x+h) - \\bar{F}(x)) / h\\quad  (h > 0)$$',
         '',
@@ -282,7 +282,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '这是 **Riesz 表示定理**在实数轴上的形式：测度与一类函数一一对应。',
-        '证明思路：把复测度拆成四个正测度 $\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$，各取 $F_j^{\\pm }(x) = \\mu_j^{\\pm }((-\\infty, x])$ —— 它们递增、右连续、在 $-\\infty$ 处为 0、在 $\\infty$ 处有限，于是 $F \\in NBV$。反方向把 $F \\in NBV$ 拆成 $F_1^+ - F_1^- + i(F_2^+ - F_2^-)$，每一块配一个测度。',
+        '证明思路：把复测度拆成四个正测度 $\\mu = \\mu_1^+ - \\mu_1^- + i(\\mu_2^+ - \\mu_2^-)$，各取 $F_j^{\\pm }(x) = \\mu_j^{\\pm }((-\\infty, x])$ —— 它们递增、右连续、在 $-\\infty$ 处为 0、在 $\\infty$ 处有限，于是 $F \\in NBV$。\n\n反方向把 $F \\in NBV$ 拆成 $F_1^+ - F_1^- + i(F_2^+ - F_2^-)$，每一块配一个测度。',
         '$|\\mu_F| = \\mu_{T_F}$ 这一条说的是：**取全变差（函数侧）与取全变差（测度侧）是同一件事** —— 这也正是引理「$T_F \\in NBV$」的用处。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.29']
@@ -347,7 +347,13 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**$(\\Longleftarrow )$** 由测度的绝对连续的 $\\varepsilon$–$\\delta$ 刻画：$\\mu_F \\ll  m$ 给出「$m(E) < \\delta \\implies |\\mu_F(E)| < \\varepsilon$」。取 $E$ 为区间的有限不交并，就直接得到函数版的绝对连续性。',
-        '**$(\\implies )$** 设 $E \\in \\mathfrak{B}_\\mathbb{R}$ 且 $m(E) = 0$。要证 $\\mu_F(E) = 0$。取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$（由正则性）。每个 $U_k$ 是区间的可数不交并，由函数的绝对连续性与 $m(U_k) < \\delta$ 得 $|\\mu_F(U_j)| < \\varepsilon$；再由测度的上连续性与 $\\bigcap U_k = E$ 得 $|\\mu_F(E)| \\le \\varepsilon$。由 $\\varepsilon$ 任意，$\\mu_F(E) = 0$。∎',
+        '**$(\\implies )$** 设 $E \\in \\mathfrak{B}_\\mathbb{R}$ 且 $m(E) = 0$。\n\n' +
+        '要证 $\\mu_F(E) = 0$。\n\n' +
+        '取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$（由正则性）。\n\n' +
+        '每个 $U_k$ 是区间的可数不交并，由函数的绝对连续性与 $m(U_k) < \\delta$ 得 $|\\mu_F(U_j)| < \\varepsilon$；\n\n' +
+        '再由测度的上连续性与 $\\bigcap U_k = E$ 得 $|\\mu_F(E)| \\le \\varepsilon$。\n\n' +
+        '由 $\\varepsilon$ 任意，$\\mu_F(E) = 0$。\n\n' +
+        '∎',
         '⭐ 这条把两个「绝对连续」**接上了**：函数的和测度的。从此「绝对连续函数」这个微积分里的概念有了测度论的解释。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
@@ -373,7 +379,7 @@ window.MG = window.MG || {};
         '$$F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$'
       ].join('\n'),
       notes: [
-        ['**证明。**','**(1)** 设 $f \\in L^{1}(m)$、$F(x) := \\int_{-\\infty}^{x} f(t)\\,\\mathrm{d}t$。','- **$F \\in NBV$**：$F$ 右连续（$x \\downarrow x_{0}$ 时 $f\\chi_{(-\\infty,x]} \\to f\\chi_{(-\\infty,x_{0}]}$ 逐点且被 $|f|$ 控制，用控制收敛定理）✓；$F(-\\infty) = 0$ ✓；对任意划分 $\\sum|F(x_{j})-F(x_{j-1})| \\le \\int_{a}^{b}|f| < \\infty$，故 $T_{F} < \\infty$ ✓。','- **$F \\in AC$**：给 $\\varepsilon > 0$。由 $|f| \\in L^{1}$ 的绝对连续性取 $\\delta > 0$ 使 $m(E) < \\delta \\implies \\int_{E}|f| < \\varepsilon$；于是对两两不交的区间族 $\\bigsqcup(a_{j}, b_{j})$ 且 $\\sum(b_{j}-a_{j}) < \\delta$，','$$\\sum_{j}|F(b_{j}) - F(a_{j})| \\le \\sum_{j}\\int_{a_{j}}^{b_{j}}|f| = \\int_{\\bigcup(a_{j},b_{j})}|f| < \\varepsilon \\;✓$$','**(2)** 反之设 $F \\in NBV \\cap AC$。$F$ 有界变差 $\\implies$ $F$ 可测、a.e. 可导、$F\' \\in L^{1}(m)$，且有 Lebesgue 分解 $dF = F\'\\,\\mathrm{d}m + dF_{s}$（$F_{s} \\perp m$，由 $F$ 的测度部分给出）；而**绝对连续恰好等价于「测度部分没有奇异部分」**，即 $F_{s} = 0$ ✓。于是 $F(x) = \\int_{-\\infty}^{x}F\'\\,\\mathrm{d}m$ ✓。∎','⭐ 两方向合起来：**绝对连续函数恰好是某个 $L^{1}$ 函数的积分**。'].join('\n'),
+        ['**证明。**','**(1)** 设 $f \\in L^{1}(m)$、$F(x) := \\int_{-\\infty}^{x} f(t)\\,\\mathrm{d}t$。','- **$F \\in NBV$**：$F$ 右连续（$x \\downarrow x_{0}$ 时 $f\\chi_{(-\\infty,x]} \\to f\\chi_{(-\\infty,x_{0}]}$ 逐点且被 $|f|$ 控制，用控制收敛定理）✓；\n\n$F(-\\infty) = 0$ ✓；\n\n对任意划分 $\\sum|F(x_{j})-F(x_{j-1})| \\le \\int_{a}^{b}|f| < \\infty$，故 $T_{F} < \\infty$ ✓。','- **$F \\in AC$**：给 $\\varepsilon > 0$。\n\n由 $|f| \\in L^{1}$ 的绝对连续性取 $\\delta > 0$ 使 $m(E) < \\delta \\implies \\int_{E}|f| < \\varepsilon$；\n\n于是对两两不交的区间族 $\\bigsqcup(a_{j}, b_{j})$ 且 $\\sum(b_{j}-a_{j}) < \\delta$，','$$\\sum_{j}|F(b_{j}) - F(a_{j})| \\le \\sum_{j}\\int_{a_{j}}^{b_{j}}|f| = \\int_{\\bigcup(a_{j},b_{j})}|f| < \\varepsilon \\;✓$$','**(2)** 反之设 $F \\in NBV \\cap AC$。\n\n$F$ 有界变差 $\\implies$ $F$ 可测、a.e. 可导、$F\' \\in L^{1}(m)$，且有 Lebesgue 分解 $dF = F\'\\,\\mathrm{d}m + dF_{s}$（$F_{s} \\perp m$，由 $F$ 的测度部分给出）；\n\n而**绝对连续恰好等价于「测度部分没有奇异部分」**，即 $F_{s} = 0$ ✓。\n\n于是 $F(x) = \\int_{-\\infty}^{x}F\'\\,\\mathrm{d}m$ ✓。\n\n∎','⭐ 两方向合起来：**绝对连续函数恰好是某个 $L^{1}$ 函数的积分**。'].join('\n'),
 '两个方向合起来就是「绝对连续函数正好是某个 $L^{1}$ 函数的积分」。'].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.35']
     },
@@ -498,7 +504,7 @@ window.MG = window.MG || {};
         '',
         '$$F = F_1^+ - F_1^- + i(F_2^+ - F_2^-)$$',
         '',
-        '（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；四块加起来即得 $\\mu _F$。**唯一性**来自「$\\mu$ 由它在 $(-\\infty , x]$ 上的值唯一决定」，而后者生成整个 $\\mathfrak{B}_\\mathbb{R}$。',
+        '（用 NBV 版本的 Jordan 分解，注意右连续与 $F(-\\infty ) = 0$ 都被差保留。）每个递增右连续、$F(-\\infty ) = 0$ 的函数唯一对应一个有限 Borel 测度（取 $\\mu ((a,b]) = F(b) - F(a)$，由 Lebesgue–Stieltjes 那一套扩张）；\n\n四块加起来即得 $\\mu _F$。\n\n**唯一性**来自「$\\mu$ 由它在 $(-\\infty , x]$ 上的值唯一决定」，而后者生成整个 $\\mathfrak{B}_\\mathbb{R}$。',
         '',
         '**$(3) |\\mu _F| = \\mu _\\{T_F\\}$。** 由**引理**，$F \\in NBV \\implies T_F \\in NBV$，所以 $\\mu_{T_F}$ 有意义。两边都是 NBV 函数，逐点比较：对任意 $x$，',
         '',
@@ -525,7 +531,10 @@ window.MG = window.MG || {};
         '',
         '这正是函数绝对连续的定义。',
         '',
-        '**$(\\implies )$** 设 $F$ 绝对连续，$E \\in \\mathfrak{B}_\\mathbb{R}$、$m(E) = 0$，要证 $\\mu_F(E) = 0$。由 $\\mu _F$ 的正则性取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$、$\\bigcap_k U_k = E$。每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $|\\mu_F(U_j)| < \\varepsilon$；再由测度的上连续性（递减列，首项有限）得',
+        '**$(\\implies )$** 设 $F$ 绝对连续，$E \\in \\mathfrak{B}_\\mathbb{R}$、$m(E) = 0$，要证 $\\mu_F(E) = 0$。\n\n' +
+        '由 $\\mu _F$ 的正则性取递减开集列 $U_1 \\supseteq U_2 \\supseteq \\cdots \\supseteq E$ 使 $m(U_k) < \\delta$、$\\bigcap_k U_k = E$。\n\n' +
+        '每个 $U_{k}$ 是区间的可数不交并，把函数绝对连续性的条件用在 $U_{k}$ 的有限截断上，得到 $|\\mu_F(U_j)| < \\varepsilon$；\n\n' +
+        '再由测度的上连续性（递减列，首项有限）得',
         '',
         '$$|\\mu_F(E)| = \\lim_j |\\mu_F(U_j)| \\le \\varepsilon$$',
         '',
@@ -540,7 +549,7 @@ window.MG = window.MG || {};
       target: 'thm.ftc-lebesgue',
       title: '$(a) \\iff (b) \\iff (c)$：微积分基本定理的三条等价',
       proof: [
-        '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $d\\mu_F = f\\cdot dm$，即',
+        '**$(a) \\implies (b)$。** 设 $F$ 绝对连续。\n\n由**$AC \\subseteq BV$**，$F \\in BV$；把它补成 NBV 里的函数（差一个常数与右连续化，不影响导数的积分）。\n\n由**绝对连续 $\\iff \\mu _F \\ll m$**，写 Lebesgue 分解时奇异部分 $\\lambda = 0$，于是 $d\\mu_F = f\\cdot dm$，即',
         '',
         '$$F(x) - F(a) = \\int_a^x f(t) dt$$',
         '',
@@ -548,7 +557,7 @@ window.MG = window.MG || {};
         '',
         '**$(b) \\implies (c)$。** 若 $F(x) - F(a) = \\int_a^x f$，则由积分的绝对连续性，$F$ 绝对连续（这是直接验证）；而由**微分定理**，$d / dx\\int_a^x f = f(x)$ a.e.，故 $F\' = f$ a.e.、$F\' \\in L^1$，公式成立。',
         '',
-        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $F(x) - \\int_a^x F\'$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。故 $F$ 本身绝对连续。∎',
+        '**$(c) \\implies (a)$。** 由 (c)，$F$ 在 a.e. 意义下等于一个积分的原函数；把 $F(x) - \\int_a^x F\'$ 这个差记作 $G$，则 $G$ 绝对连续（$(b) \\implies F$ 的那一段）且 $G\' = 0 \\text{a.e.}$；\n\n再由 (b) 的构造（$\\mu _G \\ll m$ 且密度为 $F\' - F\' = 0$）得 $G \\equiv 0$。\n\n故 $F$ 本身绝对连续。\n\n∎',
         '',
         '$>$ ⭐ 最容易错的直觉是「a.e. 可导 $F\' \\in L^{1}$ 就够」——**Cantor 函数**正是反例：它 a.e. 可导、$F\' \\equiv 0 \\in L^{1}$，但 $\\int _{0}^{1} F\' = 0 \\ne 1$。**绝对连续这一条不能省。**'
       ].join('\n'),

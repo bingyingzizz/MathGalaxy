@@ -3,7 +3,9 @@
 layer 10 · 定理 · 矩阵与行列式 · 抽象代数
 [在星图里打开](../#n=thm.matrix-linear-map)　·　[节点索引](../index.md)
 
-设 $V$ 有有序基 $\mathcal{B} = (v_1, \ldots, v_n)$、$W$ 有有序基 $\mathcal{C} = (w_1, \ldots, w_m)$，都是有限维 $K$-向量空间。称 $m \times n$ 矩阵 $[T]_{\mathcal{B}}^{\mathcal{C}}$ 为 $T$ 在这两组基下的**矩阵**，其中第 $j$ 列是 $T(v_j)$ 在 $\mathcal{C}$ 下的坐标。
+设 $V$ 有有序基 $\mathcal{B} = (v_1, \ldots, v_n)$、$W$ 有有序基 $\mathcal{C} = (w_1, \ldots, w_m)$，都是有限维 $K$-向量空间。
+
+称 $m \times n$ 矩阵 $[T]_{\mathcal{B}}^{\mathcal{C}}$ 为 $T$ 在这两组基下的**矩阵**，其中第 $j$ 列是 $T(v_j)$ 在 $\mathcal{C}$ 下的坐标。
 
 于是映射 $T \mapsto [T]_{\mathcal{B}}^{\mathcal{C}}$ 是 $K$-向量空间的同构
 > 陈述续见 [nodes/thm.matrix-linear-map.2.md](./thm.matrix-linear-map.2.md)

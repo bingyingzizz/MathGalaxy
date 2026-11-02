@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-**第四步：$n \ge 5$ 时 $S_n$ 不可解。** 固定后 $n - 5$ 个点，前 $5$ 个点上
+**第四步：$n \ge 5$ 时 $S_n$ 不可解。** 固定后 $n - 5$ 个点，前 $5$ 个点
 
 > 续见 proofs/imp.sn-solvable.22.md

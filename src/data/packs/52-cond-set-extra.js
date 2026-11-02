@@ -32,7 +32,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**为什么需要它。** $\\mathrm{Cond}$ 是拓扑斯，内部 Hom 由拓扑斯结构**自动**给出 —— 但那是抽象的。这一条给出它的**具体实现**：「内部 Hom 就是连续函数空间」。有了它，内部 Hom 才是一个可以算、可以往 $\\mathbf{Top}$ 里搬的东西。',
-        '**两边分别在说什么。** $X(\\bullet)$ 是 $X$ 的**底空间**（把 $X$ 喂给紧 Hausdorff 测试对象 $S$ 得到的集合，再装上由测试映射定出的拓扑）；$\\operatorname{Hom}(X, \\underline{Y})$ 是「从 $X$ 到 $Y$ 的映射」这个**对象**。等号说：先取底空间再取函数空间，和先取内部 Hom 再取底空间，是一回事。',
+        '**两边分别在说什么。** $X(\\bullet)$ 是 $X$ 的**底空间**（把 $X$ 喂给紧 Hausdorff 测试对象 $S$ 得到的集合，再装上由测试映射定出的拓扑）；$\\operatorname{Hom}(X, \\underline{Y})$ 是「从 $X$ 到 $Y$ 的映射」这个**对象**。\n\n等号说：先取底空间再取函数空间，和先取内部 Hom 再取底空间，是一回事。',
         '⭐ 与「$\\mathrm{Cond}$ 是笛卡尔闭」连起来看：笛卡尔闭给的是**存在性**，这一条给的是**具体形状**。$Y$ 紧生成这个假设不能去掉 —— 紧生成正是让「紧开拓扑」够用的那个条件。',
         ['**证明。** 先设 $X = S$ 是紧 Hausdorff 空间（此时 $X(\\bullet) = S$）。对任意紧 Hausdorff 的 $T$，两边在 $T$ 上取值并逐步用「内部 Hom 的伴随」与「紧生成空间上的指数律」：',
           '$$\\underline{\\operatorname{Hom}}(S, \\underline{Y})(T) = \\operatorname{Hom}\\bigl(T,\\ \\underline{\\operatorname{Hom}}(S,\\underline{Y})\\bigr) \\cong \\operatorname{Hom}(T \\times S,\\ \\underline{Y}) \\cong C(T\\times S,\\ Y) \\cong C\\bigl(T,\\ C(S, Y)\\bigr) = \\underline{C(X(\\bullet), Y)}(T).$$',
@@ -69,8 +69,12 @@ window.MG = window.MG || {};
         '**「自由」的含义**：$\\mathbb{Z}[S]$ 那类由点集生成、不带额外关系的东西 —— 装得上就是「有足够多的点去盖」。',
         '⭐ 一般拓扑斯上的对应结论是「拟紧拟分离 对象 $\\cong$ 紧 Hausdorff 对象」，这里做的是 $\\mathrm{Cond}$ 这个特例。',
         ['**证明（两条都是一般拓扑斯上的定理在 $\\mathrm{Cond}$ 上的特例）。**',
-          '- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。',
-          '- **第 2 条**：拟紧拟分离 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 拟紧拟分离 的（拟紧 由 $S \\to S$ 本身给出；qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。于是 $S \\mapsto \\underline{S}$ 全忠实；本质满则是上一条与拟分离的刻画拼起来。∎'
+          '- **第 1 条**：「拟紧」在拓扑斯里的等价刻画是「存在从**投射 / 自由**对象的满射」—— 反向显然（满射 $F \\twoheadrightarrow X$ 给出一个覆盖，用 $F$ 的参数化把有限子覆盖抽出来，因为自由对象 $F = \\beta I$ 是「由点集生成」的，有限性是逐点的）；\n\n正向用 $\\mathbf{FCHaus}$ 张成 $\\mathbf{CHaus}$ 再把覆盖的参数压进一个自由对象。',
+          '- **第 2 条**：拟紧拟分离 的对象由「它到各紧 Hausdorff 块的值」决定，而 $\\mathrm{Cond}$ 里紧 Hausdorff 空间 $S$ 表示的层 $\\underline{S} = h_{S}$ 正是 拟紧拟分离 的（拟紧 由 $S \\to S$ 本身给出；\n\n' +
+          'qs 由「紧 Hausdorff 的两块相交还是紧 Hausdorff」给出）。\n\n' +
+          '于是 $S \\mapsto \\underline{S}$ 全忠实；\n\n' +
+          '本质满则是上一条与拟分离的刻画拼起来。\n\n' +
+          '∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Theorem 4.2.8']
@@ -96,7 +100,7 @@ window.MG = window.MG || {};
         '⚠️ 这里 $X_{1} \\times_{X} X_{2}$ 的紧性是 $\\mathrm{CGWH}$ 系里那条「紧 Hausdorff 沿弱 Hausdorff 的纤维积」的直接应用。',
         ['**证明。** 不妨设 $X$ 紧生成（弱 Hausdorff 的 $k$-化不改变结论）。对 $i = 1, 2$，由拟紧性取紧 Hausdorff 空间 $S_{i}$ 与满态射 $S_{i} \\twoheadrightarrow X_{i}$（「拟紧 $\\iff$ 有从自由紧 Hausdorff 的满射」）。于是有满态射',
           '$$S_{1} \\times_{X} S_{2} \\twoheadrightarrow X_{1} \\times_{X} X_{2},$$',
-          '（纤维积保满射）。而 $X$ 弱 Hausdorff、$S_{1}, S_{2}$ 紧 Hausdorff，于是 $S_{1} \\times_{X} S_{2}$ 是 $S_{1} \\times S_{2}$ 里的**闭**子集（弱 Hausdorff 的定义：紧 Hausdorff 子空间沿连续映射的纤维积仍紧 Hausdorff），故紧 Hausdorff。',
+          '（纤维积保满射）。\n\n而 $X$ 弱 Hausdorff、$S_{1}, S_{2}$ 紧 Hausdorff，于是 $S_{1} \\times_{X} S_{2}$ 是 $S_{1} \\times S_{2}$ 里的**闭**子集（弱 Hausdorff 的定义：紧 Hausdorff 子空间沿连续映射的纤维积仍紧 Hausdorff），故紧 Hausdorff。',
           '紧 Hausdorff 空间的商还是紧 Hausdorff（连续满像是紧的，Hausdorff 商还是 Hausdorff），故 $X_{1} \\times_{X} X_{2}$ 紧 Hausdorff。∎'
         ].join('\n')
       ].join('\n\n'),
@@ -122,12 +126,15 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠️ **不要读成 $\\operatorname{Ind}(\\mathbf{CHaus}) \\cong \\mathrm{Cond}$。** 整块 $\\operatorname{Ind}(\\mathbf{CHaus})$ 比凝聚态集**大**：一般凝聚态集的紧块过渡映射只是映射、不是含入，所以只有「含入过渡」那一部分才对得上 拟紧拟分离 的对象。',
-        '**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。',
+        '**为什么这条重要。** 它把「拟分离」这个抽象的有限性条件换成了一个**可操作**的写法：$X$ 是一串越来越大的紧 Hausdorff 块 $S_{1} \\hookrightarrow S_{2} \\hookrightarrow \\cdots$ 的余极限。\n\n$\\operatorname{Ind}$-对象这套语言正是为「滤过余极限拼出来的东西」准备的，于是 $\\mathrm{Cond}$ 的很多计算可以逐块做再取余极限。',
         '⭐ 这条也是后面「层上同调用紧块算」那一路技术的起点：先在紧 Hausdorff 块上算，再沿滤过余极限抬上去（滤过余极限正合）。',
         ['**证明。** 只需证正向（反向是定义）。',
           '- 任何凝聚态集 $X$ 都能写成 $X \\cong \\varinjlim_{i} T_{i}$（$T_{i}$ 紧 Hausdorff）—— 这是 $\\mathrm{Cond}$ 里「用紧块拼出来」的一般事实。',
-          '- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。于是由「拟紧拟分离 $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。',
-          '- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。∎'
+          '- 记 $X_{i}$ 为 $T_{i}$ 在 $X$ 中的**像**，则 $X = \\varinjlim_{i} X_{i}$。\n\n' +
+          '每个 $X_{i}$ 作为 $T_{i}$ 的像是**拟紧**的；\n\n' +
+          '而 $X$ 拟分离，故每个 $X_{i}$ 也拟分离（拟分离沿子对象遗传）。\n\n' +
+          '于是由「拟紧拟分离 $\\cong$ 紧 Hausdorff」得 $X_{i} \\cong S_{i}$，$S_{i}$ 紧 Hausdorff。',
+          '- 把族 $(S_{i})$ 换成 $S_{J} := \\bigcup_{i \\in J} S_{i}$（$J$ 有限）—— 因为 $X$ 拟分离，两个紧 Hausdorff 块的交还是紧 Hausdorff（上一条），有限并仍紧 Hausdorff，于是得到一个**有向**的族 $S_{J}$，且 $X = \\varinjlim_{J} S_{J}$，过渡映射都是含入。\n\n∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Lemma 4.2.10']
@@ -167,7 +174,7 @@ window.MG = window.MG || {};
         '⭐ **合起来的意义**：在紧生成的范围里，「弱 Hausdorff」这个**拓扑**条件与「拟分离」这个**层论**条件说的是同一件事。于是 $\\mathrm{CGWH}$ 这一整套同伦论的栖息地，在凝聚态世界里有了一个纯层论的名字。',
         ['**证明。** 两个方向各用一条引理：',
           '- **$\\implies$**：$X$ 紧生成且弱 Hausdorff，则视为凝聚态集时拟分离 —— 这正是「弱 Hausdorff $\\implies$ 拟分离」那条纤维积引理。',
-          '- **$\\Longleftarrow$**：$X$ 紧生成且拟分离，则底空间 $X(\\bullet)$ 弱 Hausdorff；而 $X$ 紧生成意味着 $X(\\bullet) \\cong X$（紧生成空间的 $k$-化就是它自己，且它在凝聚态世界里由 $\\underline{S} \\mapsto \\operatorname{Hom}(S, X)$ 决定），所以 $X$ 本身弱 Hausdorff。∎'
+          '- **$\\Longleftarrow$**：$X$ 紧生成且拟分离，则底空间 $X(\\bullet)$ 弱 Hausdorff；而 $X$ 紧生成意味着 $X(\\bullet) \\cong X$（紧生成空间的 $k$-化就是它自己，且它在凝聚态世界里由 $\\underline{S} \\mapsto \\operatorname{Hom}(S, X)$ 决定），所以 $X$ 本身弱 Hausdorff。\n\n∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, Proposition 4.2.12']

@@ -74,7 +74,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**成员必两两不交**：若 $x \\in A_{s} \\cap A_{t}$ 而 $s \\ne t$，则 $x$ 的任何邻域都碰到两个成员，与离散矛盾。所以离散族比局部有限族「更散」：连相交都不许。',
-        '**「离散」这个词有两层意思**（容易混）：本节点说的是「**族**离散」；另一种说法「$A \\subseteq X$ 是离散子集」指的是单点族 $\\{\\, \\{ a \\} : a \\in A \\,\\}$ 离散（等价于 $a$ 们在子空间拓扑下是离散的、且 $A$ 在 $X$ 里没有聚点）。仿紧与度量化里用到的一律是「族」的那一层。',
+        '**「离散」这个词有两层意思**（容易混）：本节点说的是「**族**离散」；另一种说法「$A \\subseteq X$ 是离散子集」指的是单点族 $\\{\\, \\{ a \\} : a \\in A \\,\\}$ 离散（等价于 $a$ 们在子空间拓扑下是离散的、且 $A$ 在 $X$ 里没有聚点）。\n\n仿紧与度量化里用到的一律是「族」的那一层。',
         '⭐ Bing 的度量化定理就是拿「$\\sigma$-离散基」当假设的 —— 它比「$\\sigma$-局部有限基」更紧，但证明里更容易控制（离散族的闭包族仍然离散）。'
       ].join('\n\n'),
       refs: ['Munkres, Topology (2nd ed.), Section 39', 'Engelking, General Topology, Ch. 5']
@@ -117,7 +117,7 @@ window.MG = window.MG || {};
         '',
         '$$\\forall s \\in S,\\ \\exists i \\in I :\\quad V_{s} \\subseteq U_{i}.$$',
         '',
-        '不要求指标集相同，也不要求单射：多个 $V_{s}$ 可以落在同一个 $U_{i}$ 里。若 $\\mathcal{V}$ 的成员全是开集（闭集），叫**开加细**（**闭加细**）；若 $\\mathcal{V}$ 作为族局部有限（$\\sigma$-局部有限、离散），就叫**局部有限加细**（相应地 $\\sigma$-局部有限加细、离散加细）。'
+        '不要求指标集相同，也不要求单射：多个 $V_{s}$ 可以落在同一个 $U_{i}$ 里。\n\n若 $\\mathcal{V}$ 的成员全是开集（闭集），叫**开加细**（**闭加细**）；若 $\\mathcal{V}$ 作为族局部有限（$\\sigma$-局部有限、离散），就叫**局部有限加细**（相应地 $\\sigma$-局部有限加细、离散加细）。'
       ].join('\n'),
       notes: [
         '**「加细」和「局部有限」是两条独立的要求**，这才是仿紧不平凡的原因：',
@@ -176,9 +176,17 @@ window.MG = window.MG || {};
           '**证明（对指标集良序化，逐个收缩）** 在 $I$ 上取一个良序（这里用到选择公理）。要造开集 $V_{i}$ 使 $\\\overline{V_{i}} \\subseteq U_{i}$，同时保持覆盖。维护不变量：对每个 $i$，族',
           '$$\\mathcal{W}_{i} := \\{\\, V_{j} : j < i \\,\\} \\cup \\{\\, U_{k} : k \\ge i \\,\\}$$',
           '都是 $X$ 的覆盖。',
-          '**后继步**（$i \\to i^{+}$）：令 $A_{i} := X \\setminus \\bigcup \\mathcal{W}_{i^{+}}$。$A_{i}$ 是**闭**集；而 $x \\notin \\mathcal{W}_{i^{+}}$ 意味着 $x \\notin V_{j}$（$j < i$）且 $x \\notin U_{k}$（$k > i$），不变量再把 $x$ 逼进 $U_{i}$ —— 所以 $A_{i} \\subseteq U_{i}$。对不交闭集 $A_{i}$ 与 $X \\setminus U_{i}$ 用正规性，得到开集 $V_{i}$ 使 $A_{i} \\subseteq V_{i}$ 且 $\\\overline{V_{i}} \\subseteq U_{i}$（「闭集含于开集，就能夹一个开集使它的闭包仍含于那个开集」是正规性的标准变形）。于是 $\\mathcal{W}_{i^{+}}$ 仍覆盖 $X$。',
-          '**极限步**（$i$ 是极限序数）：设 $x \\in X$。若 $x \\in U_{k}$ 对某个 $k \\ge i$ 成立，已被覆盖。否则 $x \\notin U_{k}$ 对一切 $k \\ge i$，而 $\\mathcal{W}_{i}$ 覆盖给出某个 $j < i$ 使 $x \\in U_{j}$。由**点有限性**（局部有限 $\\implies$ 点有限），$J := \\{\\, j < i : x \\in U_{j} \\,\\}$ 有限且非空；取 $j := \\max J$，则对一切 $k > j$ 有 $x \\notin U_{k}$，故 $x \\in A_{j} \\subseteq V_{j}$。',
-          '**收尾**：由 $V_{i} \\subseteq U_{i}$，只碰有限多个 $U_{i}$ 的开邻域也只碰有限多个 $V_{i}$，故 $\\mathcal{V}$ 局部有限；覆盖性：给定 $x$，点有限性给出下标 $i$ 大于一切含 $x$ 的 $U_{j}$，再对 $\\mathcal{W}_{i}$ 用覆盖性即得 $x \\in V_{j}$（某个 $j < i$）。∎'
+          '**后继步**（$i \\to i^{+}$）：令 $A_{i} := X \\setminus \\bigcup \\mathcal{W}_{i^{+}}$。\n\n' +
+          '$A_{i}$ 是**闭**集；\n\n' +
+          '而 $x \\notin \\mathcal{W}_{i^{+}}$ 意味着 $x \\notin V_{j}$（$j < i$）且 $x \\notin U_{k}$（$k > i$），不变量再把 $x$ 逼进 $U_{i}$ —— 所以 $A_{i} \\subseteq U_{i}$。\n\n' +
+          '对不交闭集 $A_{i}$ 与 $X \\setminus U_{i}$ 用正规性，得到开集 $V_{i}$ 使 $A_{i} \\subseteq V_{i}$ 且 $\\\overline{V_{i}} \\subseteq U_{i}$（「闭集含于开集，就能夹一个开集使它的闭包仍含于那个开集」是正规性的标准变形）。\n\n' +
+          '于是 $\\mathcal{W}_{i^{+}}$ 仍覆盖 $X$。',
+          '**极限步**（$i$ 是极限序数）：设 $x \\in X$。\n\n' +
+          '若 $x \\in U_{k}$ 对某个 $k \\ge i$ 成立，已被覆盖。\n\n' +
+          '否则 $x \\notin U_{k}$ 对一切 $k \\ge i$，而 $\\mathcal{W}_{i}$ 覆盖给出某个 $j < i$ 使 $x \\in U_{j}$。\n\n' +
+          '由**点有限性**（局部有限 $\\implies$ 点有限），$J := \\{\\, j < i : x \\in U_{j} \\,\\}$ 有限且非空；\n\n' +
+          '取 $j := \\max J$，则对一切 $k > j$ 有 $x \\notin U_{k}$，故 $x \\in A_{j} \\subseteq V_{j}$。',
+          '**收尾**：由 $V_{i} \\subseteq U_{i}$，只碰有限多个 $U_{i}$ 的开邻域也只碰有限多个 $V_{i}$，故 $\\mathcal{V}$ 局部有限；覆盖性：给定 $x$，点有限性给出下标 $i$ 大于一切含 $x$ 的 $U_{j}$，再对 $\\mathcal{W}_{i}$ 用覆盖性即得 $x \\in V_{j}$（某个 $j < i$）。\n\n∎'
         ].join('\n'),
         '**为什么必须局部有限**：极限序数那一步用了「含 $x$ 的成员只有有限多个」。一般的开覆盖没有这条，收缩就可能不存在 —— 这正好解释了「正规」为什么推不出「仿紧」。',
         '⭐ 用处有两处：把仿紧的局部有限开加细换成**局部有限闭加细**（取闭包）；把局部有限开加细换成**单位分解**（在 $A_{i}$ 与 $X \\setminus U_{i}$ 之间用 Urysohn 引理取函数，再归一化）。',
@@ -201,12 +209,20 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         [
-          '**第 1 步：仿紧 Hausdorff $\\implies$ 正则。** 设 $x \\in X$、$F \\subseteq X$ 闭、$x \\notin F$。对每个 $y \\in F$，Hausdorff 性给出不交开集 $O_{1} \\ni y$、$O_{2} \\ni x$；取 $G_{y} := O_{1}$，由 $O_{1} \\subseteq X \\setminus O_{2}$ 得 $\\\overline{G_{y}} \\subseteq X \\setminus O_{2}$，故 $x \\notin \\\overline{G_{y}}$。于是',
+          '**第 1 步：仿紧 Hausdorff $\\implies$ 正则。** 设 $x \\in X$、$F \\subseteq X$ 闭、$x \\notin F$。\n\n' +
+          '对每个 $y \\in F$，Hausdorff 性给出不交开集 $O_{1} \\ni y$、$O_{2} \\ni x$；\n\n' +
+          '取 $G_{y} := O_{1}$，由 $O_{1} \\subseteq X \\setminus O_{2}$ 得 $\\\overline{G_{y}} \\subseteq X \\setminus O_{2}$，故 $x \\notin \\\overline{G_{y}}$。\n\n' +
+          '于是',
           '$$\\mathcal{A} := \\{\\, X \\setminus F \\,\\} \\cup \\{\\, G_{y} : y \\in F \\,\\}$$',
-          '是开覆盖。取它的局部有限开加细 $\\mathcal{C}$，令 $W := \\bigcup \\{\\, C \\in \\mathcal{C} : C \\cap F \\ne \\emptyset \\,\\}$。则 $F \\subseteq W$：$F$ 的点 $y$ 落在某个 $C$ 里，而 $C \\subseteq X \\setminus F$ 不可能（它含 $y$），故 $C \\subseteq G_{y}$，于是 $C$ 被计入 $W$。另一方面，每个计入 $W$ 的 $C$ 都落在某个 $G_{y}$ 里，故 $x \\notin \\\overline{C}$；由局部有限族的「并的闭包等于闭包之并」，$\\\overline{W} = \\bigcup \\{\\, \\\overline{C} : C \\cap F \\ne \\emptyset \\,\\}$ 不含 $x$。所以 $W \\ni F$ 与 $X \\setminus \\\overline{W} \\ni x$ 是分开 $F$ 与 $x$ 的不交开集。',
-          '**第 2 步：正则 $+$ 仿紧 $\\implies$ 正规。** 设 $A, B$ 是不交闭集。对每个 $x \\in A$，正则性（$x \\notin B$）给出开集 $O_{x} \\ni x$ 使 $\\\overline{O_{x}} \\cap B = \\emptyset$。于是 $\\mathcal{A} := \\{\\, X \\setminus A \\,\\} \\cup \\{\\, O_{x} : x \\in A \\,\\}$ 是开覆盖，取局部有限开加细 $\\mathcal{D}$，令 $U := \\bigcup \\{\\, D \\in \\mathcal{D} : D \\cap A \\ne \\emptyset \\,\\}$。同上：$A \\subseteq U$，且每个这样的 $D$ 含于某个 $O_{x}$，给出 $\\\overline{D} \\cap B = \\emptyset$，故 $\\\overline{U} \\cap B = \\emptyset$。于是 $U \\supseteq A$ 与 $X \\setminus \\\overline{U} \\supseteq B$ 是分开 $A, B$ 的不交开集。∎'
+          '是开覆盖。\n\n' +
+          '取它的局部有限开加细 $\\mathcal{C}$，令 $W := \\bigcup \\{\\, C \\in \\mathcal{C} : C \\cap F \\ne \\emptyset \\,\\}$。\n\n' +
+          '则 $F \\subseteq W$：$F$ 的点 $y$ 落在某个 $C$ 里，而 $C \\subseteq X \\setminus F$ 不可能（它含 $y$），故 $C \\subseteq G_{y}$，于是 $C$ 被计入 $W$。\n\n' +
+          '另一方面，每个计入 $W$ 的 $C$ 都落在某个 $G_{y}$ 里，故 $x \\notin \\\overline{C}$；\n\n' +
+          '由局部有限族的「并的闭包等于闭包之并」，$\\\overline{W} = \\bigcup \\{\\, \\\overline{C} : C \\cap F \\ne \\emptyset \\,\\}$ 不含 $x$。\n\n' +
+          '所以 $W \\ni F$ 与 $X \\setminus \\\overline{W} \\ni x$ 是分开 $F$ 与 $x$ 的不交开集。',
+          '**第 2 步：正则 $+$ 仿紧 $\\implies$ 正规。** 设 $A, B$ 是不交闭集。\n\n对每个 $x \\in A$，正则性（$x \\notin B$）给出开集 $O_{x} \\ni x$ 使 $\\\overline{O_{x}} \\cap B = \\emptyset$。\n\n于是 $\\mathcal{A} := \\{\\, X \\setminus A \\,\\} \\cup \\{\\, O_{x} : x \\in A \\,\\}$ 是开覆盖，取局部有限开加细 $\\mathcal{D}$，令 $U := \\bigcup \\{\\, D \\in \\mathcal{D} : D \\cap A \\ne \\emptyset \\,\\}$。\n\n同上：$A \\subseteq U$，且每个这样的 $D$ 含于某个 $O_{x}$，给出 $\\\overline{D} \\cap B = \\emptyset$，故 $\\\overline{U} \\cap B = \\emptyset$。\n\n于是 $U \\supseteq A$ 与 $X \\setminus \\\overline{U} \\supseteq B$ 是分开 $A, B$ 的不交开集。\n\n∎'
         ].join('\n'),
-        '⭐ 这条把「仿紧」接进了分离公理的层级：**紧 Hausdorff $\\implies$ 仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff**。40 号包里的正规性与 Urysohn 引理从此有了来处：紧 Hausdorff 空间（$[0,1]$、$\\beta I$）都是仿紧的。',
+        '⭐ 这条把「仿紧」接进了分离公理的层级：**紧 Hausdorff $\\implies$ 仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff**。\n\n40 号包里的正规性与 Urysohn 引理从此有了来处：紧 Hausdorff 空间（$[0,1]$、$\\beta I$）都是仿紧的。',
         '⚠️ **Hausdorff 不能省**：只有两个点的 Sierpiński 空间是仿紧的（它的开覆盖都有限，局部有限性自动成立）却不是 $T_{1}$，因而非正规。',
         '⚠️ **反方向也不成立**：正规不必仿紧（$[0, \\omega_{1})$）。所以「仿紧」是真的一条新条件，而不是正规的改写。'
       ].join('\n\n'),
@@ -223,11 +239,11 @@ window.MG = window.MG || {};
       regions: ['topology'],
       tags: ['命题', '拓扑', '仿紧', '闭加细', '局部有限'],
       statement: [
-        '设 $X$ 是**仿紧 Hausdorff** 空间，$\\mathcal{U}$ 是 $X$ 的开覆盖。则 $\\mathcal{U}$ 有**局部有限的闭加细** $\\mathcal{F} = \\{ F_{i} \\}_{i \\in I}$：每个 $F_{i}$ 是闭集、含于 $\\mathcal{U}$ 的某个成员、族 $\\mathcal{F}$ 局部有限，且 $\\bigcup_{i} F_{i} = X$。'
+        '设 $X$ 是**仿紧 Hausdorff** 空间，$\\mathcal{U}$ 是 $X$ 的开覆盖。\n\n则 $\\mathcal{U}$ 有**局部有限的闭加细** $\\mathcal{F} = \\{ F_{i} \\}_{i \\in I}$：每个 $F_{i}$ 是闭集、含于 $\\mathcal{U}$ 的某个成员、族 $\\mathcal{F}$ 局部有限，且 $\\bigcup_{i} F_{i} = X$。'
       ].join('\n'),
       notes: [
         [
-          '**证明。** 由仿紧性取局部有限开加细 $\\mathcal{V} = \\{ V_{i} \\}_{i \\in I}$；由定理，$X$ 正规，于是对 $\\mathcal{V}$ 用收缩引理得开覆盖 $\\{ W_{i} \\}$ 使 $\\\overline{W_{i}} \\subseteq V_{i}$。令 $F_{i} := \\\overline{W_{i}}$，则：',
+          '**证明。** 由仿紧性取局部有限开加细 $\\mathcal{V} = \\{ V_{i} \\}_{i \\in I}$；由定理，$X$ 正规，于是对 $\\mathcal{V}$ 用收缩引理得开覆盖 $\\{ W_{i} \\}$ 使 $\\\overline{W_{i}} \\subseteq V_{i}$。\n\n令 $F_{i} := \\\overline{W_{i}}$，则：',
           '- $F_{i}$ 闭，且 $F_{i} \\subseteq V_{i} \\subseteq$ 某个 $\\mathcal{U}$ 的成员（加细的传递性）；',
           '- $\\{ F_{i} \\}$ 覆盖 $X$（$\\{ W_{i} \\}$ 已经覆盖）；',
           '- $\\{ F_{i} \\}$ 局部有限：只碰有限多个 $V_{i}$ 的开邻域也只碰有限多个 $\\\overline{W_{i}}$ —— 这里用的是 $\\\overline{W_{i}} \\subseteq V_{i}$。∎'
@@ -259,7 +275,7 @@ window.MG = window.MG || {};
           '**思路（Michael）**：给定开覆盖 $\\mathcal{U}$ 与它的局部有限加细 $\\{ E_{s} \\}$。',
           [
             '- 先做归约：由局部有限可设加细是**点有限**的（局部有限 $\\implies$ 点有限）；',
-            '- 逐点撑开：对 $x \\in E_{s}$，正则性给出开集 $O_{x}$ 使 $x \\in O_{x} \\subseteq \\\overline{O_{x}} \\subseteq$ 覆盖中含 $E_{s}$ 的那个成员，再令 $V_{s} := \\bigcup \\{\\, O_{x} : x \\in E_{s} \\,\\}$；',
+            '- 逐点撑开：对 $x \\in E_{s}$，正则性给出开集 $O_{x}$ 使 $x \\in O_{x} \\subseteq \\\overline{O_{x}} \\subseteq$ 覆盖中含 $E_{s}$ 的那个成员，再令 $V_{s} := \\bigcup \\{\\, O_{x} : x \\in E_{s} \\,\\}$；\n\n',
             '- 此时 $\\{ V_{s} \\}$ 已经是**开加细并覆盖 $X$**，但一般**不再局部有限**（$V_{s} \\supseteq E_{s}$，一个邻域可能碰到很多 $V_{s}$ 而只碰到很少 $E_{s}$）；',
             '- 收尾：用点有限性把每一族成员**重新排序**，把第 $s$ 个换成「$E_{s}$ 挖掉前面那些开膨胀的闭包，再取内部」，新族就既开、又覆盖、又局部有限。'
           ].join('\n'),
@@ -294,7 +310,7 @@ window.MG = window.MG || {};
       notes: [
         '**它是「把局部的信息粘成整体」的机器**：若每个 $f_{i}$ 只在 $U_{i}$ 附近有定义，就把它们乘上 $\\rho_{i}$ 再相加，得到整体定义的对象；光滑情形取 $\\rho_{i}$ 光滑，就是流形上光滑化的那一招。',
         '**支撑为什么要取闭包**：若改成「$\\rho_{i}$ 在 $U_{i}$ **之外**恒为零」，这套语言在取极限时不稳定（零点集可能跑到 $U_{i}$ 外面去）；取闭包之后「在哪里为零」对极限稳定，局部有限性才有地方落脚。',
-        '**它与仿紧的关系（两边都能走）**：$\\{\\, \\rho_{i}^{-1}((0, 1]) \\,\\}$ 是 $\\mathcal{U}$ 的局部有限**开**加细，所以「任意开覆盖都有从属单位分解」蕴含「有局部有限开加细」；反方向由本包的收缩引理 $+$ Urysohn 引理给出。61 号包里已有的 prop.paracompact-partition-unity 说的正是这两条合起来。',
+        '**它与仿紧的关系（两边都能走）**：$\\{\\, \\rho_{i}^{-1}((0, 1]) \\,\\}$ 是 $\\mathcal{U}$ 的局部有限**开**加细，所以「任意开覆盖都有从属单位分解」蕴含「有局部有限开加细」；\n\n反方向由本包的收缩引理 $+$ Urysohn 引理给出。\n\n61 号包里已有的 prop.paracompact-partition-unity 说的正是这两条合起来。',
         '⚠️ 单说「单位分解」没有意义：它必须**从属于某个覆盖**。同一个空间上换一个覆盖，能拿到的单位分解完全不同（最粗的情形：$\\mathcal{U} = \\{\\, X \\,\\}$，取 $\\rho \\equiv 1$ 就够了）。'
       ].join('\n\n'),
       refs: ['Munkres, Topology (2nd ed.), Section 41', 'Engelking, General Topology, Ch. 5']
@@ -313,7 +329,7 @@ window.MG = window.MG || {};
         '拓扑空间 $X$ 叫**第二可数的**，如果它的拓扑有**可数基**：存在可数族 $\\mathcal{B} = \\{\\, B_{n} \\,\\}_{n \\ge 1}$，使每个开集都是 $\\mathcal{B}$ 中若干成员之并。'
       ].join('\n'),
       notes: [
-        '**它一次给出三条好性质**：第二可数 $\\implies$ 可分（每个非空基元取一点，得到的可数稠密集）；第二可数 $\\implies$ Lindelöf（每个开覆盖有可数子覆盖：对基元做筛子即可）；第二可数 $\\implies$ 第一可数（每点处筛出含该点的可数多个基元）。配上正则性还能再推出正规 —— 这正是 Urysohn 度量化定理的第一步。',
+        '**它一次给出三条好性质**：第二可数 $\\implies$ 可分（每个非空基元取一点，得到的可数稠密集）；第二可数 $\\implies$ Lindelöf（每个开覆盖有可数子覆盖：对基元做筛子即可）；\n\n第二可数 $\\implies$ 第一可数（每点处筛出含该点的可数多个基元）。\n\n配上正则性还能再推出正规 —— 这正是 Urysohn 度量化定理的第一步。',
         '**对可度量化空间，三条可数性其实是同一件事**：可分 $\\iff$ Lindelöf $\\iff$ 第二可数。所以 Urysohn 定理也可以念成「正则 $+$ 可分」。',
         '**遗传性**：子空间继承第二可数（基元与子空间求交，仍可数）；商空间不继承（商映射会把可数基压成很粗的拓扑）。',
         '⚠️ 反过来不成立：不可数离散空间是第一可数的、可度量化的，却不第二可数（它的可数稠密集不存在）。'
@@ -378,7 +394,7 @@ window.MG = window.MG || {};
         [
           '**证明的两条标准路线**（都不在本节点展开到最后一步）：',
           [
-            '- **Stone 的良序化构造**：把开覆盖良序化，对每个 $n \\ge 1$ 用两条筛子造一族开集 $\\{\\, V_{n,i} \\,\\}$：$V_{n,i}$ 由「$U_{i}$ 里、离 $X \\setminus U_{i}$ 至少 $2^{-n}$、且不属于任何 $j < i$ 的 $U_{j}$」的那些点处的小球 $B(x, 2^{-n-2})$ 堆成。三层验证 —— **加细**（小球落在 $U_{i}$ 里：$d(x, X \\setminus U_{i}) > 2^{-n} > 2^{-n-2}$）、**覆盖**（给定 $x$，取含它的最小下标 $i$，再取 $n$ 使 $2^{-n} < d(x, X \\setminus U_{i})$，则 $x \\in V_{n,i}$）、**每层局部有限**（固定 $n$，$2^{-n}$ 的余量与 $2^{-n-2}$ 的球半径配起来，只有下标不超过 $x$ 的最小下标的成员能靠近 $x$）。',
+            '- **Stone 的良序化构造**：把开覆盖良序化，对每个 $n \\ge 1$ 用两条筛子造一族开集 $\\{\\, V_{n,i} \\,\\}$：$V_{n,i}$ 由「$U_{i}$ 里、离 $X \\setminus U_{i}$ 至少 $2^{-n}$、且不属于任何 $j < i$ 的 $U_{j}$」的那些点处的小球 $B(x, 2^{-n-2})$ 堆成。\n\n三层验证 —— **加细**（小球落在 $U_{i}$ 里：$d(x, X \\setminus U_{i}) > 2^{-n} > 2^{-n-2}$）、**覆盖**（给定 $x$，取含它的最小下标 $i$，再取 $n$ 使 $2^{-n} < d(x, X \\setminus U_{i})$，则 $x \\in V_{n,i}$）、**每层局部有限**（固定 $n$，$2^{-n}$ 的余量与 $2^{-n-2}$ 的球半径配起来，只有下标不超过 $x$ 的最小下标的成员能靠近 $x$）。',
             '- **Stone 的全正规性**：距离空间里每个开覆盖都有**开星形加细** —— 对每点取 $r_{x} > 0$ 使 $B(x, r_{x})$ 落在覆盖的某个成员里，再看 $\\{\\, B(x, r_{x}/4) \\,\\}$：若 $B(x, r_{x}/4)$ 与 $B(y, r_{y}/4)$ 相交且 $r_{y} \\ge r_{x}$，则 $B(x, r_{x}/4) \\subseteq B(y, r_{y})$，所以每个成员与它相交的一切成员都落在同一个原成员里。'
           ].join('\n'),
           '把上面得到的 $\\sigma$-局部有限的开加细分层合回**一层**局部有限的加细，是 Stone 证明里最技术的一步（逐层收缩、再用局部有限性重排）。'
@@ -410,7 +426,11 @@ window.MG = window.MG || {};
             '3. **挑可数多个分离函数**：取可数基 $\\{\\, B_{n} \\,\\}$。对每一对 $(m, n)$ 满足 $\\\overline{B_{m}} \\subseteq B_{n}$，由 Urysohn 引理取连续函数',
             '$$f_{m,n} : X \\to [0, 1],\\qquad f_{m,n}|_{\\\overline{B_{m}}} \\equiv 0,\\qquad f_{m,n}|_{X \\setminus B_{n}} \\equiv 1.$$',
             '这样的函数只有可数多个，把它们按可数集编号成 $f_{k}$（$k \\ge 1$）。',
-            '4. **嵌入**：令 $F : X \\to [0, 1]^{\\mathbb{N}}$，$F(x) := (\\, f_{k}(x)/k \\,)_{k \\ge 1}$。$F$ 连续（每个分量连续，且级数一致收敛）；**单射**：$x \\ne y$ 时正则性给出基元 $B_{n}$ 使 $x \\in B_{n} \\subseteq \\\overline{B_{n}} \\subseteq X \\setminus \\{\\, y \\,\\}$，于是某一对 $(m, n)$ 的 $f_{m,n}$ 把两者分开；**逆连续**：同样用基对，把「$f_{k}$ 很接近」翻译回「落在同一个基元里」。所以 $F$ 是到像上的同胚。',
+            '4. **嵌入**：令 $F : X \\to [0, 1]^{\\mathbb{N}}$，$F(x) := (\\, f_{k}(x)/k \\,)_{k \\ge 1}$。\n\n' +
+            '$F$ 连续（每个分量连续，且级数一致收敛）；\n\n' +
+            '**单射**：$x \\ne y$ 时正则性给出基元 $B_{n}$ 使 $x \\in B_{n} \\subseteq \\\overline{B_{n}} \\subseteq X \\setminus \\{\\, y \\,\\}$，于是某一对 $(m, n)$ 的 $f_{m,n}$ 把两者分开；\n\n' +
+            '**逆连续**：同样用基对，把「$f_{k}$ 很接近」翻译回「落在同一个基元里」。\n\n' +
+            '所以 $F$ 是到像上的同胚。',
             '5. **像空间可度量化**：$\\rho(a, b) := \\sum_{k \\ge 1} 2^{-k} |a_{k} - b_{k}|$ 是 $[0, 1]^{\\mathbb{N}}$ 上与积拓扑一致的度量；在像上取诱导度量即可。'
           ].join('\n'),
           '因此 $X$ 同胚于可分度量空间的子空间，即可度量化。∎'
@@ -465,7 +485,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**它与 Nagata–Smirnov 的关系**：离散 $\\implies$ 局部有限，所以 $\\sigma$-离散基是 $\\sigma$-局部有限基的特例 —— 本图的推理边写的就是这一条：Bing 定理由 Nagata–Smirnov 定理得到。',
-        '⚠️ **在正则前提下两条假设其实等价**：$\\sigma$-局部有限基 $\\implies$ 可度量化 $\\implies$ $\\sigma$-离散基 $\\implies$ $\\sigma$-局部有限基。所以 Bing 定理不是「更强的定理」，而是**同一件事的另一条证明路径**：它的价值在于 $\\sigma$-离散性在证明里更好用（离散族的闭包族仍离散，闭包运算因此可以和覆盖运算交换着算）。',
+        '⚠️ **在正则前提下两条假设其实等价**：$\\sigma$-局部有限基 $\\implies$ 可度量化 $\\implies$ $\\sigma$-离散基 $\\implies$ $\\sigma$-局部有限基。\n\n所以 Bing 定理不是「更强的定理」，而是**同一件事的另一条证明路径**：它的价值在于 $\\sigma$-离散性在证明里更好用（离散族的闭包族仍离散，闭包运算因此可以和覆盖运算交换着算）。',
         '⭐ 两族之间的差别只在**非正则**的空间上才看得出来；本图只把它们当两种充分条件并列，不深入这条路。'
       ].join('\n\n'),
       refs: ['Bing, Metrization of topological spaces, Canad. J. Math. 3 (1951)', 'Engelking, General Topology, Ch. 4']
@@ -492,13 +512,16 @@ window.MG = window.MG || {};
           '**证明** 取与拓扑相容的度量 $d$。',
           [
             '1. $\\{\\, B_{d}(x, 1/n) \\,\\}_{n \\ge 1}$ 是可数局部基，故第一可数；$x \\ne y$ 时取 $r := d(x, y)/2$，两个开球不交，故 Hausdorff。',
-            '2. 设 $A, B$ 是不交闭集，令 $f(x) := \\dfrac{d(x, A)}{d(x, A) + d(x, B)}$（函数 $d(\\cdot, A)$ 是 $1$-Lipschitz 的，故连续；分母恒正：距 $A$、$B$ 同时为零的点不存在，因为 $A, B$ 不交且都闭）。于是 $f|_{A} \\equiv 0$、$f|_{B} \\equiv 1$，$f^{-1}([0, 1/2))$ 与 $f^{-1}((1/2, 1])$ 就是分开 $A, B$ 的不交开集。',
+            '2. 设 $A, B$ 是不交闭集，令 $f(x) := \\dfrac{d(x, A)}{d(x, A) + d(x, B)}$（函数 $d(\\cdot, A)$ 是 $1$-Lipschitz 的，故连续；\n\n分母恒正：距 $A$、$B$ 同时为零的点不存在，因为 $A, B$ 不交且都闭）。\n\n于是 $f|_{A} \\equiv 0$、$f|_{B} \\equiv 1$，$f^{-1}([0, 1/2))$ 与 $f^{-1}((1/2, 1])$ 就是分开 $A, B$ 的不交开集。',
             '3. Stone 定理：度量空间仿紧。',
             '最后一步：以上三条都是拓扑性质（同胚不变），而可度量化正是「与某个距离空间同胚」，于是它们对 $X$ 也成立。∎'
           ].join('\n')
         ].join('\n'),
         '⭐ 于是整条层级可以写全：**可度量化 $\\implies$ 仿紧 Hausdorff $\\implies$ 正规 $\\implies$ 正则 $\\implies$ Hausdorff**（第二个箭头是本包的定理，第一个是 Stone 加本命题）。',
-        '⚠️ **反向全断**：仿紧 Hausdorff 不必可度量化。标准反例是 **Sorgenfrey 直线**（$\\mathbb{R}$ 上以半开区间 $[a, b)$ 为基的拓扑）：它是 Lindelöf 的正则空间，故仿紧；它也可分（有理数稠密），却不第二可数 —— 而「可分 $+$ 可度量化」会推出第二可数，所以它不可度量化。要把「仿紧 $\\implies$ 可度量化」变成定理，必须再补一个基条件（Urysohn / Nagata–Smirnov / Bing 那一类）。'
+        '⚠️ **反向全断**：仿紧 Hausdorff 不必可度量化。\n\n' +
+        '标准反例是 **Sorgenfrey 直线**（$\\mathbb{R}$ 上以半开区间 $[a, b)$ 为基的拓扑）：它是 Lindelöf 的正则空间，故仿紧；\n\n' +
+        '它也可分（有理数稠密），却不第二可数 —— 而「可分 $+$ 可度量化」会推出第二可数，所以它不可度量化。\n\n' +
+        '要把「仿紧 $\\implies$ 可度量化」变成定理，必须再补一个基条件（Urysohn / Nagata–Smirnov / Bing 那一类）。'
       ].join('\n\n'),
       refs: ['Munkres, Topology (2nd ed.), Sections 32 and 41']
     }
@@ -705,11 +728,20 @@ window.MG = window.MG || {};
       sources: ['def.paracompact', 'def.hausdorff'],
       target: 'thm.paracompact-hausdorff-normal',
       proof: [
-        '**先证正则。** 设 $x \\notin F$、$F$ 闭。对每个 $y \\in F$ 取不交开集 $O_{1} \\ni y$、$O_{2} \\ni x$ 并令 $G_{y} := O_{1}$：由 $O_{1} \\subseteq X \\setminus O_{2}$ 得 $\\\overline{G_{y}} \\cap O_{2} = \\emptyset$，故 $x \\notin \\\overline{G_{y}}$。开覆盖 $\\{\\, X \\setminus F \\,\\} \\cup \\{\\, G_{y} \\,\\}$ 由仿紧性有局部有限开加细 $\\mathcal{C}$；令 $W := \\bigcup \\{\\, C \\in \\mathcal{C} : C \\cap F \\ne \\emptyset \\,\\}$。',
+        '**先证正则。** 设 $x \\notin F$、$F$ 闭。\n\n' +
+        '对每个 $y \\in F$ 取不交开集 $O_{1} \\ni y$、$O_{2} \\ni x$ 并令 $G_{y} := O_{1}$：由 $O_{1} \\subseteq X \\setminus O_{2}$ 得 $\\\overline{G_{y}} \\cap O_{2} = \\emptyset$，故 $x \\notin \\\overline{G_{y}}$。\n\n' +
+        '开覆盖 $\\{\\, X \\setminus F \\,\\} \\cup \\{\\, G_{y} \\,\\}$ 由仿紧性有局部有限开加细 $\\mathcal{C}$；\n\n' +
+        '令 $W := \\bigcup \\{\\, C \\in \\mathcal{C} : C \\cap F \\ne \\emptyset \\,\\}$。',
         '- $F \\subseteq W$：$y \\in F$ 落在某个 $C$ 里，而 $C \\subseteq X \\setminus F$ 不可能，故 $C \\subseteq G_{y}$，于是 $C$ 计入 $W$；',
         '- $x \\notin \\\overline{W}$：计入的每个 $C$ 都含于某个 $G_{y}$，故 $x \\notin \\\overline{C}$；由局部有限族的并的闭包等于闭包之并，$\\\overline{W}$ 是这些 $\\\overline{C}$ 的并，不含 $x$。',
         '所以 $W \\ni F$ 与 $X \\setminus \\\overline{W} \\ni x$ 是不交开集：正则 ✓。',
-        '**再证正规。** 设 $A, B$ 不交闭。对 $x \\in A$ 用正则性取开集 $O_{x} \\ni x$ 使 $\\\overline{O_{x}} \\cap B = \\emptyset$。开覆盖 $\\{\\, X \\setminus A \\,\\} \\cup \\{\\, O_{x} \\,\\}$ 有局部有限开加细 $\\mathcal{D}$；令 $U := \\bigcup \\{\\, D \\in \\mathcal{D} : D \\cap A \\ne \\emptyset \\,\\}$。同上 $A \\subseteq U$，且每个计入的 $D \\subseteq O_{x}$ 给出 $\\\overline{D} \\cap B = \\emptyset$，由局部有限性得 $\\\overline{U} \\cap B = \\emptyset$。于是 $U$ 与 $X \\setminus \\\overline{U}$ 分开 $A, B$ ✓。∎'
+        '**再证正规。** 设 $A, B$ 不交闭。\n\n' +
+        '对 $x \\in A$ 用正则性取开集 $O_{x} \\ni x$ 使 $\\\overline{O_{x}} \\cap B = \\emptyset$。\n\n' +
+        '开覆盖 $\\{\\, X \\setminus A \\,\\} \\cup \\{\\, O_{x} \\,\\}$ 有局部有限开加细 $\\mathcal{D}$；\n\n' +
+        '令 $U := \\bigcup \\{\\, D \\in \\mathcal{D} : D \\cap A \\ne \\emptyset \\,\\}$。\n\n' +
+        '同上 $A \\subseteq U$，且每个计入的 $D \\subseteq O_{x}$ 给出 $\\\overline{D} \\cap B = \\emptyset$，由局部有限性得 $\\\overline{U} \\cap B = \\emptyset$。\n\n' +
+        '于是 $U$ 与 $X \\setminus \\\overline{U}$ 分开 $A, B$ ✓。\n\n' +
+        '∎'
       ].join('\n')
     },
     {
@@ -718,7 +750,7 @@ window.MG = window.MG || {};
       sources: ['thm.paracompact-hausdorff-normal', 'lem.shrink'],
       target: 'prop.paracompact-closed-refinement',
       proof: [
-        '设 $\\mathcal{U}$ 是仿紧 Hausdorff 空间 $X$ 的开覆盖。仿紧性给出局部有限开加细 $\\mathcal{V} = \\{ V_{i} \\}$；由上一条定理 $X$ 正规，于是可以对 $\\mathcal{V}$ 用收缩引理，得到开覆盖 $\\{ W_{i} \\}$ 使 $\\\overline{W_{i}} \\subseteq V_{i}$。取 $F_{i} := \\\overline{W_{i}}$：',
+        '设 $\\mathcal{U}$ 是仿紧 Hausdorff 空间 $X$ 的开覆盖。\n\n仿紧性给出局部有限开加细 $\\mathcal{V} = \\{ V_{i} \\}$；由上一条定理 $X$ 正规，于是可以对 $\\mathcal{V}$ 用收缩引理，得到开覆盖 $\\{ W_{i} \\}$ 使 $\\\overline{W_{i}} \\subseteq V_{i}$。\n\n取 $F_{i} := \\\overline{W_{i}}$：',
         '- 闭 ✓，且 $F_{i} \\subseteq V_{i} \\subseteq$ 某个 $\\mathcal{U}$ 的成员（加细可传递）；',
         '- 覆盖 $X$ ✓（$\\{ W_{i} \\}$ 已覆盖）；',
         '- 局部有限 ✓：只碰有限多个 $V_{i}$ 的开邻域也只碰有限多个 $\\\overline{W_{i}}$，用的是 $\\\overline{W_{i}} \\subseteq V_{i}$。∎'
@@ -732,9 +764,12 @@ window.MG = window.MG || {};
       proof: [
         '这是已有命题里「仿紧 Hausdorff $\\implies$ 任意开覆盖有从属单位分解」的那一半，逐步重复一遍以显示它不额外需要任何东西：',
         '设 $\\mathcal{U} = \\{ U_{i} \\}$ 是开覆盖。仿紧给局部有限开加细 $\\mathcal{V} = \\{ V_{i} \\}$，正规性（上一条定理）加收缩引理给开覆盖 $\\{ W_{i} \\}$ 使 $\\\overline{W_{i}} \\subseteq V_{i}$。',
-        '对不交闭集 $\\\overline{W_{i}}$ 与 $X \\setminus V_{i}$ 用 Urysohn 引理，取连续 $g_{i} : X \\to [0, 1]$，$g_{i} \\equiv 1$ 在 $\\\overline{W_{i}}$ 上、$g_{i} \\equiv 0$ 在 $X \\setminus V_{i}$ 上。令 $g := \\sum_{i} g_{i}$：局部有限性保证这是局部有限和，故 $g$ 连续；$\\{ W_{i} \\}$ 覆盖说明每点处 $g \\ge 1$。于是',
+        '对不交闭集 $\\\overline{W_{i}}$ 与 $X \\setminus V_{i}$ 用 Urysohn 引理，取连续 $g_{i} : X \\to [0, 1]$，$g_{i} \\equiv 1$ 在 $\\\overline{W_{i}}$ 上、$g_{i} \\equiv 0$ 在 $X \\setminus V_{i}$ 上。\n\n' +
+        '令 $g := \\sum_{i} g_{i}$：局部有限性保证这是局部有限和，故 $g$ 连续；\n\n' +
+        '$\\{ W_{i} \\}$ 覆盖说明每点处 $g \\ge 1$。\n\n' +
+        '于是',
         '$$\\rho_{i} := g_{i}/g$$',
-        '满足：$\\rho_{i} \\ge 0$、$\\sum_{i} \\rho_{i} \\equiv 1$、$\\operatorname{supp} \\rho_{i} \\subseteq \\\overline{V_{i}} \\subseteq$ 某个 $U_{i}$（把 $\\rho_{i}$ 的指标跟着 $V_{i}$ 的指标走）、支撑族局部有限 ✓。这就是从属于 $\\mathcal{U}$ 的单位分解。∎',
+        '满足：$\\rho_{i} \\ge 0$、$\\sum_{i} \\rho_{i} \\equiv 1$、$\\operatorname{supp} \\rho_{i} \\subseteq \\\overline{V_{i}} \\subseteq$ 某个 $U_{i}$（把 $\\rho_{i}$ 的指标跟着 $V_{i}$ 的指标走）、支撑族局部有限 ✓。\n\n这就是从属于 $\\mathcal{U}$ 的单位分解。\n\n∎',
         '反方向（单位分解 $\\implies$ 局部有限开加细）在已有命题的证明里，本图不重复。'
       ].join('\n')
     },
@@ -744,7 +779,7 @@ window.MG = window.MG || {};
       sources: ['def.metric-space'],
       target: 'def.metrizable',
       proof: [
-        '设 $(X, d)$ 是距离空间，$\\mathcal{T}_{d}$ 是开球之并给出的拓扑。取 $X$ 上原来的拓扑 $\\mathcal{T}_{d}$ 与同一个 $d$：恒等映射 $\\mathrm{id} : (X, \\mathcal{T}_{d}) \\to (X, \\mathcal{T}_{d})$ 是同胚，故 $d$ 与拓扑相容，$X$ 可度量化 ✓。',
+        '设 $(X, d)$ 是距离空间，$\\mathcal{T}_{d}$ 是开球之并给出的拓扑。\n\n取 $X$ 上原来的拓扑 $\\mathcal{T}_{d}$ 与同一个 $d$：恒等映射 $\\mathrm{id} : (X, \\mathcal{T}_{d}) \\to (X, \\mathcal{T}_{d})$ 是同胚，故 $d$ 与拓扑相容，$X$ 可度量化 ✓。',
         '⭐ 这条边看着废话，但它确定了术语的**方向**：「可度量化」是比较弱的性质（拓扑恰好来自某个度量），「距离空间」是带了具体度量的对象。图里所有「度量 $\\implies$ 某性质」的结论都要经过这一条才能搬到可度量化空间上。'
       ].join('\n')
     },
@@ -766,7 +801,7 @@ window.MG = window.MG || {};
       target: 'def.first-countable',
       proof: [
         '设 $\\mathcal{B} = \\{ B_{n} \\}$ 是可数基，取 $x \\in X$，令 $\\mathcal{B}_{x} := \\{\\, B_{n} : x \\in B_{n} \\,\\}$：这是可数族（基的子族），且含于开集族内。',
-        '任给含 $x$ 的开集 $U$：$U$ 是基元之并，故存在基元 $B_{n}$ 使 $x \\in B_{n} \\subseteq U$；于是 $B_{n} \\in \\mathcal{B}_{x}$ 且 $B_{n} \\subseteq U$ ✓。所以 $\\mathcal{B}_{x}$ 是 $x$ 处的可数局部基，$X$ 第一可数 ✓。∎',
+        '任给含 $x$ 的开集 $U$：$U$ 是基元之并，故存在基元 $B_{n}$ 使 $x \\in B_{n} \\subseteq U$；于是 $B_{n} \\in \\mathcal{B}_{x}$ 且 $B_{n} \\subseteq U$ ✓。\n\n所以 $\\mathcal{B}_{x}$ 是 $x$ 处的可数局部基，$X$ 第一可数 ✓。\n\n∎',
         '⚠️ 反向不成立：不可数离散空间第一可数（每点取单点邻域即可），却没有可数基。'
       ].join('\n')
     },

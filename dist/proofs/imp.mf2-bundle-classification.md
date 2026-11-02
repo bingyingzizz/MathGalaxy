@@ -3,7 +3,9 @@
 
 `def.vector-bundle` 向量丛 + `def.cech-cohomology` Čech 上同调 → `thm.bundle-classification` 丛的分类
 
-**丛 $\mapsto$ 上闭链。** 取局部平凡化 $\Phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha}\times\mathbb{R}^{k}$，令 $g_{\alpha\beta} := \Phi_{\alpha}\circ\Phi_{\beta}^{-1}$。它光滑、取值 $\operatorname{GL}(k,\mathbb{R})$，且
+**丛 $\mapsto$ 上闭链。** 取局部平凡化 $\Phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha}\times\mathbb{R}^{k}$，令 $g_{\alpha\beta} := \Phi_{\alpha}\circ\Phi_{\beta}^{-1}$。
+
+它光滑、取值 $\operatorname{GL}(k,\mathbb{R})$，且
 
 $$g_{\alpha\beta}\,g_{\beta\gamma} = \bigl(\Phi_{\alpha}\Phi_{\beta}^{-1}\bigr)\bigl(\Phi_{\beta}\Phi_{\gamma}^{-1}\bigr) = \Phi_{\alpha}\Phi_{\gamma}^{-1} = g_{\alpha\gamma}$$
 

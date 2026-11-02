@@ -4,6 +4,6 @@
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
 - $n \le 2$：$S_n$ 阿贝尔，一步链即可；
-- $n = 3$：$\{e\} \trianglelefteq A_3 \tri
+- $n = 3$：$\{e\} \trianglelefteq A_3 
 
 > 续见 proofs/imp.sn-solvable.26.md

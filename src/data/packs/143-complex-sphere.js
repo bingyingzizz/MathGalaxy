@@ -159,8 +159,8 @@
       title: '球极投影是同胚，$S^{2}$ 紧 $\\implies$ $\\widehat{\\mathbb{C}}$ 紧',
       proof: [
         '**同胚**：球极投影 $\\sigma : \\widehat{\\mathbb{C}} \\to S^{2}$ 由有理公式给出，' +
-          '在 $\\mathbb{C}$ 上连续；在 $\\infty$ 处，$|z| \\to \\infty$ 时 $\\sigma(z) \\to (0,0,1) = N$，' +
-          '故整体连续。它是双射（逆公式 $z = (x + iy)/(1 - w)$ 在 $S^{2} \\setminus \\{N\\}$ 上连续）。' +
+          '在 $\\mathbb{C}$ 上连续；在 $\\infty$ 处，$|z| \\to \\infty$ 时 $\\sigma(z) \\to (0,0,1) = N$，故整体连续。\n\n' +
+          '它是双射（逆公式 $z = (x + iy)/(1 - w)$ 在 $S^{2} \\setminus \\{N\\}$ 上连续）。\n\n' +
           '紧空间到 Hausdorff 空间的连续双射是同胚。',
         '',
         '**紧**：$S^{2} \\subset \\mathbb{R}^{3}$ 有界闭，故紧；紧性被同胚保持。',

@@ -9,4 +9,6 @@ $$f_\ast \operatorname{RHom}_{\mathcal{O}_X}(C, f^! M) \cong \operatorname{RHom}
 $$\operatorname{RHom}_{\mathcal{O}_X}(C, \omega)[d] \cong \operatorname{RHom}_R(f_! C, R)$$
 （同调意义下），即 $f_!$ 的左伴随与 $f^!$ 在紧对象上互为转置（Verdier 对偶）。
 
+**④ $f_!$ 保紧对象。** 归约到 $X = \mathbb{A}^1_R$：$f$ 局部是 $\mathbb{A}^1$ 的复合，$f_!$ 对复合也是乘性的，故只需 $\mathbb{A}^1$ 情形。
+
 > 续见 proofs/imp.poincare-solid.4.md

@@ -68,7 +68,7 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '等距'],
       statement: [
-        '设 $S_{1},S_{2}$ 是两张曲面。映射 $\\varphi : S_{1}\\to S_{2}$ 叫**等距**，如果它是微分同胚且保持曲线长度：对每条曲线 $\\alpha \\subseteq S_{1}$ 有 $\\operatorname{length}(\\varphi\\circ\\alpha) = \\operatorname{length}(\\alpha)$。等价地，微分保持内积：',
+        '设 $S_{1},S_{2}$ 是两张曲面。\n\n映射 $\\varphi : S_{1}\\to S_{2}$ 叫**等距**，如果它是微分同胚且保持曲线长度：对每条曲线 $\\alpha \\subseteq S_{1}$ 有 $\\operatorname{length}(\\varphi\\circ\\alpha) = \\operatorname{length}(\\alpha)$。\n\n等价地，微分保持内积：',
         '',
         '$$\\langle \\mathrm{d}\\varphi_{p}(v),\\mathrm{d}\\varphi_{p}(w)\\rangle = \\langle v,w\\rangle,\\qquad v,w \\in T_{p}S_{1}.$$',
         '',
@@ -96,7 +96,7 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '内蕴几何', '联络', '克里斯托费尔记号'],
       statement: [
-        '白话：在曲面上「把向量沿曲线搬家」要一个规则，这个规则叫**联络**；一旦选了局部坐标，联络就退化成 $2^{3}$ 个函数 $\\Gamma^{k}_{ij}$，它们说「$\\partial_{j}$ 沿 $\\partial_{i}$ 方向搬一点，会多出多少 $\\partial_{k}$ 分量」。全部内容只用到度量系数 $g_{ij}$ 和它的一阶导数 —— 所以它是最早出现的**内蕴**对象。',
+        '白话：在曲面上「把向量沿曲线搬家」要一个规则，这个规则叫**联络**；一旦选了局部坐标，联络就退化成 $2^{3}$ 个函数 $\\Gamma^{k}_{ij}$，它们说「$\\partial_{j}$ 沿 $\\partial_{i}$ 方向搬一点，会多出多少 $\\partial_{k}$ 分量」。\n\n全部内容只用到度量系数 $g_{ij}$ 和它的一阶导数 —— 所以它是最早出现的**内蕴**对象。',
         '',
         '设 $(x^{1},x^{2})$ 是曲面 $S$ 的局部坐标，$g_{ij} = \\langle \\partial_{i},\\partial_{j}\\rangle$，$(g^{ij})$ 是 $(g_{ij})$ 的逆矩阵。**克里斯托费尔记号**定义为',
         '',
@@ -146,7 +146,7 @@ window.MG = window.MG || {};
         '一句话：$\\Gamma^{k}_{ij}$ 与 $\\omega^{k}_{j}$ 是同一件东西（联络系数）在两个标架下的样子。'
       ].join('\n'),
       notes: [
-        '**① 与 $\\Gamma$ 的真实关系**：坐标标架 $\\partial_{i}$ 一般既不正交也不单位；正交归一化之后 $e_{i}$ 就不再是坐标标架（$[e_{1},e_{2}]\\ne 0$），多出来的 $\\langle [e_{i},e_{j}],e_{k}\\rangle$ 项正是这件事的代价。所以「$\\omega^{k}_{j}(e_{i})$ 等于某个 $\\Gamma$」只在度量已经被坐标拉直（平坦的笛卡尔坐标）时才字面成立。',
+        '**① 与 $\\Gamma$ 的真实关系**：坐标标架 $\\partial_{i}$ 一般既不正交也不单位；正交归一化之后 $e_{i}$ 就不再是坐标标架（$[e_{1},e_{2}]\\ne 0$），多出来的 $\\langle [e_{i},e_{j}],e_{k}\\rangle$ 项正是这件事的代价。\n\n所以「$\\omega^{k}_{j}(e_{i})$ 等于某个 $\\Gamma$」只在度量已经被坐标拉直（平坦的笛卡尔坐标）时才字面成立。',
         '**曲线上两种写法**，这是对照里最有用的一条：',
         [
           '- 坐标标架：$\\dot\\gamma = \\dot x^{k}\\partial_{k}$，$\\nabla_{\\dot\\gamma}\\dot\\gamma = \\left(\\ddot x^{k}+\\Gamma^{k}_{ij}\\dot x^{i}\\dot x^{j}\\right)\\partial_{k}$；',
@@ -183,7 +183,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**三种刻画的分工**：$\\nabla_{\\dot\\gamma}\\dot\\gamma = 0$ 是不变量写法（哪本教材都认），测地线方程是计算工具（两阶 ODE 组），最短性是最初的几何动机（变分）。前两者等价是纯粹的展开，第三者见高斯引理那一段的说明。',
-        '**参数必须是仿射参数**：$s\\mapsto as+b$ 仍是测地线参数，换成一般参数 $t$ 后方程会多出 $\\frac{\\mathrm{d}^{2}s}{\\mathrm{d}t^{2}}\\big/\\frac{\\mathrm{d}s}{\\mathrm{d}t}$ 这一项。曲线本身没变，变的只是「匀速」这件事 —— 所以「测地线」这个词总带仿射参数。',
+        '**参数必须是仿射参数**：$s\\mapsto as+b$ 仍是测地线参数，换成一般参数 $t$ 后方程会多出 $\\frac{\\mathrm{d}^{2}s}{\\mathrm{d}t^{2}}\\big/\\frac{\\mathrm{d}s}{\\mathrm{d}t}$ 这一项。\n\n曲线本身没变，变的只是「匀速」这件事 —— 所以「测地线」这个词总带仿射参数。',
         '⚠️ **局部最短不等于整体最短**：大圆是球面的测地线，但绕过大半圈的那一段不是最短连线。反过来「最短 $\\implies$ 测地线」是真的（变分证明），「测地线 $\\implies$ 局部最短」只在足够短的弧上成立（指数映射的单射半径之内）。',
         '**为什么平行移动让长度不变**：$\\frac{\\mathrm{d}}{\\mathrm{d}s}\\langle \\dot\\gamma,\\dot\\gamma\\rangle = 2\\langle \\nabla_{\\dot\\gamma}\\dot\\gamma,\\dot\\gamma\\rangle$，而在测地线上这个式子为零，于是速度恒定、参数必然是弧长的仿射函数。',
         '**唯一的例子都值得记住**：平面上的测地线是直线；球面上的测地线是大圆；旋转面上的测地线由 Clairaut 关系约束；圆柱面上把展开图里直线卷回去即可。'
@@ -205,7 +205,7 @@ window.MG = window.MG || {};
       statement: [
         '白话：**从任意一点、朝任意方向，都能画出唯一一条「笔直走」的曲线（测地线）** —— 至少在一小段上。这是解二阶常微分方程的存在唯一性，没有任何几何玄机；它的用途是把「方向」变成「位置」（下一站的指数映射）。',
         '',
-        '对任意 $p \\in S$ 与任意 $v \\in T_{p}S$，存在 $\\varepsilon > 0$ 与唯一的测地线 $\\gamma_{v} : (-\\varepsilon,\\varepsilon)\\to S$ 使 $\\gamma_{v}(0) = p$、$\\dot\\gamma_{v}(0) = v$。并且解光滑依赖于初值 $(p,v)$，还满足齐次性',
+        '对任意 $p \\in S$ 与任意 $v \\in T_{p}S$，存在 $\\varepsilon > 0$ 与唯一的测地线 $\\gamma_{v} : (-\\varepsilon,\\varepsilon)\\to S$ 使 $\\gamma_{v}(0) = p$、$\\dot\\gamma_{v}(0) = v$。\n\n并且解光滑依赖于初值 $(p,v)$，还满足齐次性',
         '',
         '$$\\gamma_{cv}(t) = \\gamma_{v}(ct)\\qquad (c > 0).$$',
         '',
@@ -272,13 +272,13 @@ window.MG = window.MG || {};
         '特别地：$\\gamma$ 是测地线当且仅当 $\\theta$ 满足这个一阶方程 —— 测地线的「转向」，被度量系数的导数完全决定。'
       ].join('\n'),
       notes: [
-        '**结构**：$k_{g} = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\omega^{1}_{2}(\\dot\\gamma)$，第一项是曲线相对标架的转角，第二项是标架本身的转动；把 $\\omega^{1}_{2} = \\frac{(\\ln E)_{v}}{2\\sqrt G}\\omega^{1}-\\frac{(\\ln G)_{u}}{2\\sqrt E}\\omega^{2}$ 代进去就是上式。',
+        '**结构**：$k_{g} = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\omega^{1}_{2}(\\dot\\gamma)$，第一项是曲线相对标架的转角，第二项是标架本身的转动；\n\n把 $\\omega^{1}_{2} = \\frac{(\\ln E)_{v}}{2\\sqrt G}\\omega^{1}-\\frac{(\\ln G)_{u}}{2\\sqrt E}\\omega^{2}$ 代进去就是上式。',
         '**两处校验**（都能手算）：',
         [
-          '- 平面极坐标（$E = 1$，$G = \\rho^{2}$）上半径 $\\rho_{0}$ 的同心圆：$\\theta\\equiv\\frac{\\pi}{2}$、$\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s} = 0$，公式给 $k_{g} = \\frac{2/\\rho_{0}}{2} = \\frac{1}{\\rho_{0}}$ —— 圆的曲率，正确；',
+          '- 平面极坐标（$E = 1$，$G = \\rho^{2}$）上半径 $\\rho_{0}$ 的同心圆：$\\theta\\equiv\\frac{\\pi}{2}$、$\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s} = 0$，公式给 $k_{g} = \\frac{2/\\rho_{0}}{2} = \\frac{1}{\\rho_{0}}$ —— 圆的曲率，正确；\n\n',
           '- 球面（$I = \\mathrm{d}\\rho^{2}+\\sin^{2}\\rho\\,\\mathrm{d}\\theta^{2}$）上的纬线圈 $\\rho = \\rho_{0}$：$k_{g} = \\frac{2\\cot\\rho_{0}}{2} = \\cot\\rho_{0}$，与直接计算一致。'
         ].join('\n'),
-        '⚠️ 一个常见的误写是在「曲率线参数」下把上式再简化成 $\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}+(k_{1}-k_{2})\\sin\\theta\\cos\\theta$。用球面就能否掉它：平行圆上 $\\theta\\equiv\\frac{\\pi}{2}$、$\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}\\equiv 0$，而 $k_{g} = \\cot\\rho_{0}\\ne0$；球面 $k_{1} = k_{2} = 1$ 又让右端的两项全为零。**该简化式不成立，不要用。**',
+        '⚠️ 一个常见的误写是在「曲率线参数」下把上式再简化成 $\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}+(k_{1}-k_{2})\\sin\\theta\\cos\\theta$。\n\n用球面就能否掉它：平行圆上 $\\theta\\equiv\\frac{\\pi}{2}$、$\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}\\equiv 0$，而 $k_{g} = \\cot\\rho_{0}\\ne0$；\n\n球面 $k_{1} = k_{2} = 1$ 又让右端的两项全为零。\n\n**该简化式不成立，不要用。**',
         '**特例**：正交网若还是测地参数（$E\\equiv1$），公式退化为 $k_{g} = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}+\\frac{(\\ln G)_{u}}{2}\\sin\\theta$；再若 $G$ 不依赖 $u$，就是平面极坐标那一种情形。',
         '⭐ 这条公式是「量 $k_{g}$ 只需要 $I$」的**显式版本**：右端只有 $E,G$ 和曲线自己的角度，没有任何外在数据。'
       ].join('\n\n'),
@@ -297,7 +297,7 @@ window.MG = window.MG || {};
       regions: ['diffgeom'],
       tags: ['命题', '微分几何', '内蕴几何', '测地曲率', '法曲率'],
       statement: [
-        '设 $\\gamma$ 是 $S$ 上按弧长参数化的曲线，$n$ 是 $S$ 的单位法向，$\\kappa$、$\\kappa_{n}$、$k_{g}$ 分别是它在 $\\mathbb{R}^{3}$ 中的曲率、关于 $n$ 的法曲率和测地曲率。则 $\\{n,\\,n\\times\\dot\\gamma\\}$ 是 $\\dot\\gamma$ 的正交补的一组单位正交基，且',
+        '设 $\\gamma$ 是 $S$ 上按弧长参数化的曲线，$n$ 是 $S$ 的单位法向，$\\kappa$、$\\kappa_{n}$、$k_{g}$ 分别是它在 $\\mathbb{R}^{3}$ 中的曲率、关于 $n$ 的法曲率和测地曲率。\n\n则 $\\{n,\\,n\\times\\dot\\gamma\\}$ 是 $\\dot\\gamma$ 的正交补的一组单位正交基，且',
         '',
         '$$\\ddot\\gamma = \\kappa_{n}n+k_{g}\\,(n\\times\\dot\\gamma),\\qquad \\kappa^{2} = k_{g}^{2}+\\kappa_{n}^{2},$$',
         '',
@@ -338,9 +338,9 @@ window.MG = window.MG || {};
         '于是由反函数定理，$\\exp_{p}$ 在原点附近是微分同胚。取 $T_{p}S$ 的一组单位正交基，把 $v = x^{1}e_{1}+x^{2}e_{2}$ 送到 $\\exp_{p}(v)$ 得到的坐标叫**法坐标**；改用极坐标 $(\\rho,\\theta)$ 则是**测地极坐标**。'
       ].join('\n'),
       notes: [
-        '**$(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$ 的三行算法**：取 $c(t) = tv$，则 $(\\mathrm{d}\\exp_{p})_{0}(v) = \\frac{\\mathrm{d}}{\\mathrm{d}t}\\big|_{t=0}\\exp_{p}(tv) = \\frac{\\mathrm{d}}{\\mathrm{d}t}\\big|_{t=0}\\gamma_{v}(t) = \\dot\\gamma_{v}(0) = v$。这就是「齐次性」换来的东西。',
+        '**$(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$ 的三行算法**：取 $c(t) = tv$，则 $(\\mathrm{d}\\exp_{p})_{0}(v) = \\frac{\\mathrm{d}}{\\mathrm{d}t}\\big|_{t=0}\\exp_{p}(tv) = \\frac{\\mathrm{d}}{\\mathrm{d}t}\\big|_{t=0}\\gamma_{v}(t) = \\dot\\gamma_{v}(0) = v$。\n\n这就是「齐次性」换来的东西。',
         '**法坐标在 $p$ 处是欧氏的**：由上一行得 $g_{ij}(p) = \\delta_{ij}$，进一步还有 $\\Gamma^{k}_{ij}(p) = 0$ 与 $\\partial_{k}g_{ij}(p) = 0$（见「法坐标的欧氏性」那条引理）。⚠️ 只在 $p$ **一点**成立 —— 若在邻域上成立，曲面就平了。',
-        '**测地极坐标的构造**：$(\\rho,\\theta)\\mapsto \\exp_{p}(\\rho\\cos\\theta\\,e_{1}+\\rho\\sin\\theta\\,e_{2})$。第一条坐标线是测地线、$\\rho$ 是弧长，第二条是「测地圆」。由高斯引理，第一基本形式在这个坐标下只剩 $I = \\mathrm{d}\\rho^{2}+G(\\rho,\\theta)\\,\\mathrm{d}\\theta^{2}$。',
+        '**测地极坐标的构造**：$(\\rho,\\theta)\\mapsto \\exp_{p}(\\rho\\cos\\theta\\,e_{1}+\\rho\\sin\\theta\\,e_{2})$。\n\n第一条坐标线是测地线、$\\rho$ 是弧长，第二条是「测地圆」。\n\n由高斯引理，第一基本形式在这个坐标下只剩 $I = \\mathrm{d}\\rho^{2}+G(\\rho,\\theta)\\,\\mathrm{d}\\theta^{2}$。',
         '⚠️ $\\exp_{p}$ 一般**不是**整体微分同胚：沿一条测地线走太远会撞上另一条测地线的像（对径点、割迹）。只有在单射半径以内它才是微分同胚，越过之后坐标会重复，$I = \\mathrm{d}\\rho^{2}+G\\,\\mathrm{d}\\theta^{2}$ 也失效。',
         '⭐ 指数映射的用处是**把测地线问题变成坐标问题**：所有「径向」的事情都变成「坐标线」，于是内蕴几何可以用微积分硬算。'
       ].join('\n\n'),
@@ -368,7 +368,9 @@ window.MG = window.MG || {};
         '$$I = \\mathrm{d}\\rho^{2}+G(\\rho,\\theta)\\,\\mathrm{d}\\theta^{2},\\qquad \\sqrt{G} = \\rho+O(\\rho^{3}).$$'
       ].join('\n'),
       notes: [
-        '**证明骨架（细节在边上）**：沿测地线对 $\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle$ 求 $\\rho$ 的导数，第一项因测地线为零，第二项用 $[\\partial_{\\rho},\\partial_{\\theta}] = 0$ 与 $|\\partial_{\\rho}| = 1$ 化成 $\\frac{1}{2}\\partial_{\\theta}\\langle \\partial_{\\rho},\\partial_{\\rho}\\rangle = 0$。于是这个内积沿 $\\rho$ 是常数；$\\rho\\to0$ 时 $\\partial_{\\theta}\\to0$，常数只能是 $0$。',
+        '**证明骨架（细节在边上）**：沿测地线对 $\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle$ 求 $\\rho$ 的导数，第一项因测地线为零，第二项用 $[\\partial_{\\rho},\\partial_{\\theta}] = 0$ 与 $|\\partial_{\\rho}| = 1$ 化成 $\\frac{1}{2}\\partial_{\\theta}\\langle \\partial_{\\rho},\\partial_{\\rho}\\rangle = 0$。\n\n' +
+        '于是这个内积沿 $\\rho$ 是常数；\n\n' +
+        '$\\rho\\to0$ 时 $\\partial_{\\theta}\\to0$，常数只能是 $0$。',
         '**同一个引理的两种说法**：几何说法是「径向 $\\perp$ 球面」（高斯引理的本来面貌）；坐标说法是「$F\\equiv0$」（测地极坐标下的展开）。而 $E = |\\partial_{\\rho}|^{2} = 1$ 只是因为 $\\rho$ 是弧长。',
         '⭐ **这是整门内蕴几何的枢纽**：它把「测地线」翻译成「坐标线」，于是 $I$ 在测地极坐标下只剩**一个**未知函数 $G$。而 $G$ 的展开系数就是曲率：',
         '$$\\sqrt{G(\\rho,\\theta)} = \\rho-\\frac{K(p)}{6}\\rho^{3}+O(\\rho^{5}),$$',
@@ -397,7 +399,9 @@ window.MG = window.MG || {};
         '即：度量在**任意一点**都可以被坐标一阶拉直。'
       ].join('\n'),
       notes: [
-        '**$\\Gamma(p) = 0$ 的证明**（细节在边上）：$T_{p}S$ 中过原点的每条直线 $t\\mapsto tv$（$v = \\cos\\theta_{0}\\,e_{1}+\\sin\\theta_{0}\\,e_{2}$）在 $\\exp_{p}$ 下都是测地线，坐标就是 $x^{k}(t) = tv^{k}$。代入测地线方程得 $\\Gamma^{k}_{ij}(p)v^{i}v^{j} = 0$，对一切方向 $v$ 成立；于是 $\\Gamma$ 的对称部分为零，而 $\\Gamma$ 本来就关于下指标对称。',
+        '**$\\Gamma(p) = 0$ 的证明**（细节在边上）：$T_{p}S$ 中过原点的每条直线 $t\\mapsto tv$（$v = \\cos\\theta_{0}\\,e_{1}+\\sin\\theta_{0}\\,e_{2}$）在 $\\exp_{p}$ 下都是测地线，坐标就是 $x^{k}(t) = tv^{k}$。\n\n' +
+        '代入测地线方程得 $\\Gamma^{k}_{ij}(p)v^{i}v^{j} = 0$，对一切方向 $v$ 成立；\n\n' +
+        '于是 $\\Gamma$ 的对称部分为零，而 $\\Gamma$ 本来就关于下指标对称。',
         '**$\\partial_{k}g_{ij}(p) = 0$ 是它的推论**：$\\partial_{k}g_{ij} = \\langle \\nabla_{\\partial_{k}}\\partial_{i},\\partial_{j}\\rangle+\\langle \\partial_{i},\\nabla_{\\partial_{k}}\\partial_{j}\\rangle = \\Gamma^{\\ell}_{ki}g_{\\ell j}+\\Gamma^{\\ell}_{kj}g_{i\\ell}$，在 $p$ 处为零。',
         '⭐ **与曲率的关系**：既然 $\\Gamma$ 可以在一阶上被坐标杀掉，曲率张量里唯一杀不掉的就是 $\\partial\\Gamma$ 那一部分，而它由 $g$ 的二阶导数决定。这就是「曲率是二阶不可去掉的度量信息」的准确含义 —— 也正是它内蕴的理由。',
         '⚠️ 只在一个点上成立。若要求整个邻域上 $\\Gamma\\equiv0$，那等价于局部等距于平面（$R\\equiv0$）；两者的差距就是曲率。',
@@ -436,7 +440,7 @@ window.MG = window.MG || {};
         '（后者是**第一比安基恒等式**）。**平坦判据**：$R\\equiv0$ 当且仅当每点附近有坐标使 $g_{ij} = \\delta_{ij}$，即曲面局部等距于平面。'
       ].join('\n'),
       notes: [
-        '**来处是可积性条件**。想找坐标把 $g_{ij}$ 拉成 $\\delta_{ij}$，等价于解 $g_{ij} = \\delta_{\\alpha\\beta}\\frac{\\partial y^{\\alpha}}{\\partial x^{i}}\\frac{\\partial y^{\\beta}}{\\partial x^{j}}$；而「$\\partial_{i}\\partial_{j} = \\partial_{j}\\partial_{i}$」的相容性要求的正是 $R^{\\ell}_{ijk} = 0$。所以 $R$ 从一开始就是「能不能把度量摊平」的阻碍。',
+        '**来处是可积性条件**。\n\n想找坐标把 $g_{ij}$ 拉成 $\\delta_{ij}$，等价于解 $g_{ij} = \\delta_{\\alpha\\beta}\\frac{\\partial y^{\\alpha}}{\\partial x^{i}}\\frac{\\partial y^{\\beta}}{\\partial x^{j}}$；\n\n而「$\\partial_{i}\\partial_{j} = \\partial_{j}\\partial_{i}$」的相容性要求的正是 $R^{\\ell}_{ijk} = 0$。\n\n所以 $R$ 从一开始就是「能不能把度量摊平」的阻碍。',
         '**Ricci 恒等式**：$[\\nabla_{\\partial_{i}},\\nabla_{\\partial_{j}}]\\partial_{k} = R^{\\ell}_{ijk}\\partial_{\\ell}$。所以 $R$ 度量的是「协变导数交换次序差多少」—— 这是它最常用的定义方式，也是本图选它的理由。',
         '**为什么内蕴**：$R$ 的公式里只有 $\\Gamma$ 与 $\\partial\\Gamma$，而 $\\Gamma$ 只有 $g$ 与 $\\partial g$。**第二基本形式没有出现。**',
         '⚠️ 二维时独立分量只有一个（$R_{1212}$，其余由对称性决定），所以曲面上的「曲率」是一个数而不是一堆数；三维以上 $R$ 才真正有张量结构（那时 $K$ 只能给出它的迹的部分）。',
@@ -470,7 +474,7 @@ window.MG = window.MG || {};
         '另一方面，若 $h_{ij}$ 是第二基本形式在同一标架下的系数矩阵，则 $K = \\det(h_{ij}) = k_{1}k_{2}$。'
       ].join('\n'),
       notes: [
-        '⚠️ **符号与指标顺序**（本包全包统一）：$R_{ijk\\ell} = \\langle R(\\partial_{i},\\partial_{j})\\partial_{k},\\partial_{\\ell}\\rangle$，于是单位球面（$K = 1$、$g_{ij} = \\delta_{ij}$）上 $R_{1221} = 1$、$R_{1212} = -1$。很多书写成「$K = R_{1212}/\\det g$」，那用的是另一种指标顺序（或另一种 $R$ 的符号），数学上是同一件事。**判断约定对不对的检查只有一条：单位球面必须给出 $K = 1$。**',
+        '⚠️ **符号与指标顺序**（本包全包统一）：$R_{ijk\\ell} = \\langle R(\\partial_{i},\\partial_{j})\\partial_{k},\\partial_{\\ell}\\rangle$，于是单位球面（$K = 1$、$g_{ij} = \\delta_{ij}$）上 $R_{1221} = 1$、$R_{1212} = -1$。\n\n很多书写成「$K = R_{1212}/\\det g$」，那用的是另一种指标顺序（或另一种 $R$ 的符号），数学上是同一件事。\n\n**判断约定对不对的检查只有一条：单位球面必须给出 $K = 1$。**',
         '**与缩并写法 $\\frac{1}{2}g^{ik}g^{j\\ell}R_{ijk\\ell}$ 的关系**：二维只有一个独立分量，把四个指标枚举一遍就得到 $K = -\\frac{1}{2}g^{ik}g^{j\\ell}R_{ijk\\ell}$（本包约定下的符号）。两个写法给的是同一个数，差别只在指标顺序带来的负号。',
         '**两条路都通向它**：',
         [
@@ -540,7 +544,7 @@ window.MG = window.MG || {};
         '**局部版是核心**（Gauss–Bonnet）：对由一条分段光滑简单闭曲线围成的区域 $D$，',
         '$$\\int_{D}K\\,\\mathrm{d}A+\\int_{\\partial D}k_{g}\\,\\mathrm{d}s = 2\\pi .$$',
         '整体版就是把它沿三角剖分求和，角落项在求和时自动整理成 $2\\pi\\chi$。详细的提纲在边上。',
-        '**测地三角形的特例**：若 $\\partial T$ 的三条边都是测地线（$k_{g}\\equiv0$），则 $\\alpha_{1}+\\alpha_{2}+\\alpha_{3}-\\pi = \\int_{T}K\\,\\mathrm{d}A$ —— 内角和超出 $\\pi$ 的部分，正好是高斯曲率的总量。球面上的八分之一球面三角形：三个内角都是直角，$\\int_{T}K\\,\\mathrm{d}A = \\frac{\\pi}{2}$，与面积 $\\frac{4\\pi}{8}$ 相符。平面上所有三角形内角和都是 $\\pi$，正因为 $K\\equiv0$。',
+        '**测地三角形的特例**：若 $\\partial T$ 的三条边都是测地线（$k_{g}\\equiv0$），则 $\\alpha_{1}+\\alpha_{2}+\\alpha_{3}-\\pi = \\int_{T}K\\,\\mathrm{d}A$ —— 内角和超出 $\\pi$ 的部分，正好是高斯曲率的总量。\n\n球面上的八分之一球面三角形：三个内角都是直角，$\\int_{T}K\\,\\mathrm{d}A = \\frac{\\pi}{2}$，与面积 $\\frac{4\\pi}{8}$ 相符。\n\n平面上所有三角形内角和都是 $\\pi$，正因为 $K\\equiv0$。',
         '⭐ **这条定理的位置**：它把「度量」与「拓扑」缝在一起 —— $K$ 是纯内蕴的度量量，$\\chi$ 是纯组合量，而它们的积分被钉死。曲面分类的度量侧（$K$ 的总量）与拓扑侧（亏格）从此等价。',
         '⚠️ 需要**可定向**：否则面积元与 $\\omega^{1}_{2}$ 的符号说不清，公式要么模 $2$、要么换成绝对值形式。本图不展开不可定向的情形。',
         '⚠️ 不需要**紧致**也可以有版本，但那时边界与端（尖点、漏斗）要各自记账，形式会变；本节点只写紧致情形，因为它是「$K$ 的积分 = 拓扑量」最干净的说法。'
@@ -691,14 +695,14 @@ window.MG = window.MG || {};
         '$$\\omega^{1}_{2}(X) = \\langle \\nabla_{X}e_{2},e_{1}\\rangle = \\frac{1}{\\sqrt{EG}}\\langle \\nabla_{X}\\partial_{v},\\partial_{u}\\rangle ,$$',
         '因为 $X$ 作用在系数 $1/\\sqrt G$ 上那一项与 $\\partial_{u}$ 正交。再用 $F = 0$ 得两条：',
         [
-          '- $\\partial_{v}\\langle \\partial_{u},\\partial_{u}\\rangle = 2\\langle \\nabla_{\\partial_{v}}\\partial_{u},\\partial_{u}\\rangle = 2\\langle \\nabla_{\\partial_{u}}\\partial_{v},\\partial_{u}\\rangle$（用无挠 $[\\partial_{u},\\partial_{v}] = 0$），故 $\\langle \\nabla_{\\partial_{u}}\\partial_{v},\\partial_{u}\\rangle = \\frac{E_{v}}{2}$；',
+          '- $\\partial_{v}\\langle \\partial_{u},\\partial_{u}\\rangle = 2\\langle \\nabla_{\\partial_{v}}\\partial_{u},\\partial_{u}\\rangle = 2\\langle \\nabla_{\\partial_{u}}\\partial_{v},\\partial_{u}\\rangle$（用无挠 $[\\partial_{u},\\partial_{v}] = 0$），故 $\\langle \\nabla_{\\partial_{u}}\\partial_{v},\\partial_{u}\\rangle = \\frac{E_{v}}{2}$；\n\n',
           '- $\\partial_{v}\\langle \\partial_{v},\\partial_{u}\\rangle = 0$ 给出 $\\langle \\nabla_{\\partial_{v}}\\partial_{v},\\partial_{u}\\rangle = -\\frac{1}{2}\\partial_{u}\\langle \\partial_{v},\\partial_{v}\\rangle = -\\frac{G_{u}}{2}$。'
         ].join('\n'),
         '把 $X$ 按 $\\mathrm{d}u,\\mathrm{d}v$ 展开即得',
         '$$\\omega^{1}_{2} = \\frac{1}{\\sqrt{EG}}\\left(\\frac{E_{v}}{2}\\,\\mathrm{d}u-\\frac{G_{u}}{2}\\,\\mathrm{d}v\\right),$$',
         '再代入 $\\omega^{1} = \\sqrt E\\,\\mathrm{d}u$、$\\omega^{2} = \\sqrt G\\,\\mathrm{d}v$，得',
         '$$\\omega^{1}_{2} = \\frac{(\\ln E)_{v}}{2\\sqrt G}\\,\\omega^{1}-\\frac{(\\ln G)_{u}}{2\\sqrt E}\\,\\omega^{2}. \\quad\\blacksquare$$',
-        '**与 $\\Gamma$ 的对照**：若坐标标架本身就单位正交（$E = G = 1$，$F = 0$，即度量已被坐标拉直），则 $\\omega^{1}_{2} = 0$，与「平坦坐标下 $\\Gamma\\equiv0$」一致。一般情形下差别来自 $[e_{1},e_{2}]\\ne0$：$e_{i}$ 不再完整，联络系数就多出括号项。'
+        '**与 $\\Gamma$ 的对照**：若坐标标架本身就单位正交（$E = G = 1$，$F = 0$，即度量已被坐标拉直），则 $\\omega^{1}_{2} = 0$，与「平坦坐标下 $\\Gamma\\equiv0$」一致。\n\n一般情形下差别来自 $[e_{1},e_{2}]\\ne0$：$e_{i}$ 不再完整，联络系数就多出括号项。'
       ].join('\n')
     },
 
@@ -710,11 +714,11 @@ window.MG = window.MG || {};
       proof: [
         '**一阶化。** 测地线方程是二阶组 $\\ddot x^{k} = -\\Gamma^{k}_{ij}(x)\\dot x^{i}\\dot x^{j}$。令 $u^{k} = \\dot x^{k}$，把它写成一阶组',
         '$$\\dot x^{k} = u^{k},\\qquad \\dot u^{k} = -\\Gamma^{k}_{ij}(x)u^{i}u^{j}.$$',
-        '右端关于 $(x,u)$ 光滑（$\\Gamma$ 由光滑的 $g_{ij}$ 与 $g^{ij}$ 表出，因而光滑），于是 Picard–Lindelöf 定理给出：对每个初值 $(p,v)$ 存在 $\\varepsilon > 0$ 与唯一的解 $(x,u):(-\\varepsilon,\\varepsilon)\\to \\mathbb{R}^{4}$。同一套定理的「对参数的光滑依赖」部分给出解对 $(p,v)$ 的光滑依赖。',
-        '**齐次性。** 设 $\\gamma_{v}$ 是初值为 $(p,v)$ 的解。定义 $\\sigma(t) = \\gamma_{v}(ct)$：由链式法则 $\\dot\\sigma(t) = c\\dot\\gamma_{v}(ct)$、$\\ddot\\sigma(t) = c^{2}\\ddot\\gamma_{v}(ct)$，代入方程得',
+        '右端关于 $(x,u)$ 光滑（$\\Gamma$ 由光滑的 $g_{ij}$ 与 $g^{ij}$ 表出，因而光滑），于是 Picard–Lindelöf 定理给出：对每个初值 $(p,v)$ 存在 $\\varepsilon > 0$ 与唯一的解 $(x,u):(-\\varepsilon,\\varepsilon)\\to \\mathbb{R}^{4}$。\n\n同一套定理的「对参数的光滑依赖」部分给出解对 $(p,v)$ 的光滑依赖。',
+        '**齐次性。** 设 $\\gamma_{v}$ 是初值为 $(p,v)$ 的解。\n\n定义 $\\sigma(t) = \\gamma_{v}(ct)$：由链式法则 $\\dot\\sigma(t) = c\\dot\\gamma_{v}(ct)$、$\\ddot\\sigma(t) = c^{2}\\ddot\\gamma_{v}(ct)$，代入方程得',
         '$$\\ddot\\sigma^{k}+\\Gamma^{k}_{ij}(\\sigma)\\dot\\sigma^{i}\\dot\\sigma^{j} = c^{2}\\left(\\ddot\\gamma_{v}^{k}+\\Gamma^{k}_{ij}(\\gamma_{v})\\dot\\gamma_{v}^{i}\\dot\\gamma_{v}^{j}\\right) = 0,$$',
         '且 $\\sigma(0) = p$、$\\dot\\sigma(0) = cv$。由唯一性 $\\sigma = \\gamma_{cv}$，即 $\\gamma_{cv}(t) = \\gamma_{v}(ct)$。',
-        '**是测地线且按弧长参数化。** 解出来的曲线满足 $\\nabla_{\\dot\\gamma}\\dot\\gamma = 0$，正是测地线；又 $\\frac{\\mathrm{d}}{\\mathrm{d}s}\\langle \\dot\\gamma,\\dot\\gamma\\rangle = 2\\langle \\nabla_{\\dot\\gamma}\\dot\\gamma,\\dot\\gamma\\rangle = 0$，故速度恒定。$\\blacksquare$'
+        '**是测地线且按弧长参数化。** 解出来的曲线满足 $\\nabla_{\\dot\\gamma}\\dot\\gamma = 0$，正是测地线；又 $\\frac{\\mathrm{d}}{\\mathrm{d}s}\\langle \\dot\\gamma,\\dot\\gamma\\rangle = 2\\langle \\nabla_{\\dot\\gamma}\\dot\\gamma,\\dot\\gamma\\rangle = 0$，故速度恒定。\n\n$\\blacksquare$'
       ].join('\n')
     },
 
@@ -724,14 +728,14 @@ window.MG = window.MG || {};
       sources: ['def.exponential-map', 'def.geodesic'],
       target: 'lem.gauss-lemma',
       proof: [
-        '**先证 $\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle = 0$。** 在测地极坐标下 $\\gamma(\\rho,\\theta) = \\exp_{p}(\\rho\\cos\\theta\\,e_{1}+\\rho\\sin\\theta\\,e_{2})$。对固定的 $\\theta$，$\\rho\\mapsto\\gamma(\\rho,\\theta)$ 是测地线且按弧长参数化，所以 $|\\partial_{\\rho}| = 1$ 且 $\\nabla_{\\partial_{\\rho}}\\partial_{\\rho} = 0$；又 $\\partial_{\\rho},\\partial_{\\theta}$ 是坐标向量场，$[\\partial_{\\rho},\\partial_{\\theta}] = 0$。于是',
+        '**先证 $\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle = 0$。** 在测地极坐标下 $\\gamma(\\rho,\\theta) = \\exp_{p}(\\rho\\cos\\theta\\,e_{1}+\\rho\\sin\\theta\\,e_{2})$。\n\n对固定的 $\\theta$，$\\rho\\mapsto\\gamma(\\rho,\\theta)$ 是测地线且按弧长参数化，所以 $|\\partial_{\\rho}| = 1$ 且 $\\nabla_{\\partial_{\\rho}}\\partial_{\\rho} = 0$；\n\n又 $\\partial_{\\rho},\\partial_{\\theta}$ 是坐标向量场，$[\\partial_{\\rho},\\partial_{\\theta}] = 0$。\n\n于是',
         '$$\\partial_{\\rho}\\langle \\partial_{\\rho},\\partial_{\\theta}\\rangle = \\langle \\nabla_{\\partial_{\\rho}}\\partial_{\\rho},\\partial_{\\theta}\\rangle+\\langle \\partial_{\\rho},\\nabla_{\\partial_{\\rho}}\\partial_{\\theta}\\rangle = 0+\\langle \\partial_{\\rho},\\nabla_{\\partial_{\\theta}}\\partial_{\\rho}\\rangle = \\frac{1}{2}\\partial_{\\theta}\\langle \\partial_{\\rho},\\partial_{\\rho}\\rangle = 0 .$$',
         '第一步用了测地线方程，第二步用了无挠（$[\\partial_{\\rho},\\partial_{\\theta}] = 0$），第三步用了 $|\\partial_{\\rho}| = 1$。所以这个内积沿 $\\rho$ 是常数。',
         '**定常数。** $\\rho\\to0$ 时所有射线汇到同一点 $p$，$\\partial_{\\theta}\\to0$（其长度 $O(\\rho)$），故内积的极限为 $0$，常数只能是 $0$：$F\\equiv0$，即 $I = \\mathrm{d}\\rho^{2}+G\\,\\mathrm{d}\\theta^{2}$，其中 $E = |\\partial_{\\rho}|^{2} = 1$。',
-        '**一般形式（任意方向的 $w$）。** 把 $w\\in T_{v}(T_{p}S)\\cong T_{p}S$ 分解成径向部分 $\\lambda v$ 与正交部分 $w^{\\perp}$。正交部分用上面同一套计算（把 $v,w^{\\perp}$ 张成的平面当成 $\\rho\\theta$ 平面）得 $\\langle (\\mathrm{d}\\exp_{p})_{v}(v),(\\mathrm{d}\\exp_{p})_{v}(w^{\\perp})\\rangle = 0$。径向部分：$t\\mapsto\\exp_{p}((1+t)v) = \\gamma_{v}(1+t)$ 是单位速度测地线的重参数化，故 $(\\mathrm{d}\\exp_{p})_{v}(v) = \\dot\\gamma_{v}(1)$，长度是 $|v|$，于是 $(\\mathrm{d}\\exp_{p})_{v}(\\lambda v) = \\lambda\\dot\\gamma_{v}(1)$ 给出 $\\lambda|v|^{2}$。两部分相加：',
+        '**一般形式（任意方向的 $w$）。** 把 $w\\in T_{v}(T_{p}S)\\cong T_{p}S$ 分解成径向部分 $\\lambda v$ 与正交部分 $w^{\\perp}$。\n\n正交部分用上面同一套计算（把 $v,w^{\\perp}$ 张成的平面当成 $\\rho\\theta$ 平面）得 $\\langle (\\mathrm{d}\\exp_{p})_{v}(v),(\\mathrm{d}\\exp_{p})_{v}(w^{\\perp})\\rangle = 0$。\n\n径向部分：$t\\mapsto\\exp_{p}((1+t)v) = \\gamma_{v}(1+t)$ 是单位速度测地线的重参数化，故 $(\\mathrm{d}\\exp_{p})_{v}(v) = \\dot\\gamma_{v}(1)$，长度是 $|v|$，于是 $(\\mathrm{d}\\exp_{p})_{v}(\\lambda v) = \\lambda\\dot\\gamma_{v}(1)$ 给出 $\\lambda|v|^{2}$。\n\n两部分相加：',
         '$$\\langle (\\mathrm{d}\\exp_{p})_{v}(v),(\\mathrm{d}\\exp_{p})_{v}(w)\\rangle = \\lambda|v|^{2}+0 = \\langle v,\\,\\lambda v+w^{\\perp}\\rangle .$$',
         '这正是 Gauss 引理。',
-        '**$\\sqrt G$ 的展开。** $G = |\\partial_{\\theta}|^{2}$。$(-\\rho,\\theta+\\pi)$ 与 $(\\rho,\\theta)$ 是同一点，故 $G$ 在 $\\rho$ 方向上是偶的（$\\theta$ 上差 $\\pi$），Taylor 展开只有 $\\rho$ 的偶次项：$G = \\rho^{2}+c_{4}\\rho^{4}+O(\\rho^{6})$，即 $\\sqrt G = \\rho+O(\\rho^{3})$。二次项系数为 $1$ 是因为 $(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$：$\\rho = 0$ 处的一阶行为就是欧氏的。$\\blacksquare$'
+        '**$\\sqrt G$ 的展开。** $G = |\\partial_{\\theta}|^{2}$。\n\n$(-\\rho,\\theta+\\pi)$ 与 $(\\rho,\\theta)$ 是同一点，故 $G$ 在 $\\rho$ 方向上是偶的（$\\theta$ 上差 $\\pi$），Taylor 展开只有 $\\rho$ 的偶次项：$G = \\rho^{2}+c_{4}\\rho^{4}+O(\\rho^{6})$，即 $\\sqrt G = \\rho+O(\\rho^{3})$。\n\n二次项系数为 $1$ 是因为 $(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$：$\\rho = 0$ 处的一阶行为就是欧氏的。\n\n$\\blacksquare$'
       ].join('\n')
     },
 
@@ -742,10 +746,10 @@ window.MG = window.MG || {};
       target: 'lem.normal-coord-euclidean',
       proof: [
         '**$g_{ij}(p) = \\delta_{ij}$** 就是 $(\\mathrm{d}\\exp_{p})_{0} = \\mathrm{id}$ 在坐标下的写法：基向量 $e_{i}$ 被送到 $\\partial_{i}|_{p}$。',
-        '**$\\Gamma^{k}_{ij}(p) = 0$。** $T_{p}S$ 中过原点的直线 $t\\mapsto tv$ 在 $\\exp_{p}$ 下是测地线，其中 $v = \\cos\\theta_{0}\\,e_{1}+\\sin\\theta_{0}\\,e_{2}$。它在法坐标下的分量就是 $x^{k}(t) = tv^{k}$，于是 $\\dot x^{i} = v^{i}$、$\\ddot x^{k} = 0$。代入测地线方程得',
+        '**$\\Gamma^{k}_{ij}(p) = 0$。** $T_{p}S$ 中过原点的直线 $t\\mapsto tv$ 在 $\\exp_{p}$ 下是测地线，其中 $v = \\cos\\theta_{0}\\,e_{1}+\\sin\\theta_{0}\\,e_{2}$。\n\n它在法坐标下的分量就是 $x^{k}(t) = tv^{k}$，于是 $\\dot x^{i} = v^{i}$、$\\ddot x^{k} = 0$。\n\n代入测地线方程得',
         '$$\\Gamma^{k}_{ij}(p)v^{i}v^{j} = 0,$$',
         '对一切方向 $v$ 都要成立。',
-        '把 $v$ 换成 $v+w$ 再与 $v$、$w$ 两式相减，得 $\\Gamma^{k}_{ij}(p)(v^{i}w^{j}+w^{i}v^{j}) = 0$；任取单位方向即得 $\\Gamma^{k}_{ij}(p)+\\Gamma^{k}_{ji}(p) = 0$，也就是说 $\\Gamma^{k}_{ij}(p)$ 的对称部分为零。而 $\\Gamma^{k}_{ij}$ 本来就关于 $i,j$ 对称（无挠），故 $\\Gamma^{k}_{ij}(p) = 0$。',
+        '把 $v$ 换成 $v+w$ 再与 $v$、$w$ 两式相减，得 $\\Gamma^{k}_{ij}(p)(v^{i}w^{j}+w^{i}v^{j}) = 0$；任取单位方向即得 $\\Gamma^{k}_{ij}(p)+\\Gamma^{k}_{ji}(p) = 0$，也就是说 $\\Gamma^{k}_{ij}(p)$ 的对称部分为零。\n\n而 $\\Gamma^{k}_{ij}$ 本来就关于 $i,j$ 对称（无挠），故 $\\Gamma^{k}_{ij}(p) = 0$。',
         '**$\\partial_{k}g_{ij}(p) = 0$。**',
         '$$\\partial_{k}g_{ij} = \\langle \\nabla_{\\partial_{k}}\\partial_{i},\\partial_{j}\\rangle+\\langle \\partial_{i},\\nabla_{\\partial_{k}}\\partial_{j}\\rangle = \\Gamma^{\\ell}_{ki}g_{\\ell j}+\\Gamma^{\\ell}_{kj}g_{i\\ell},$$',
         '在 $p$ 处两个 $\\Gamma$ 都为零，右端为零。$\\blacksquare$'
@@ -758,7 +762,7 @@ window.MG = window.MG || {};
       sources: ['def.geodesic-curvature', 'prop.christoffel-frame'],
       target: 'thm.liouville-formula',
       proof: [
-        '**第一步：曲线在正交标架里的绝对导数。** 取 $e_{1} = \\partial_{u}/\\sqrt E$、$e_{2} = \\partial_{v}/\\sqrt G$，写 $\\dot\\gamma = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$（$\\theta$ 就是与 $u$ 线的夹角），于是 $n\\times\\dot\\gamma = -\\sin\\theta\\,e_{1}+\\cos\\theta\\,e_{2}$。由 $\\nabla e_{1} = -\\omega^{1}_{2}\\otimes e_{2}$、$\\nabla e_{2} = \\omega^{1}_{2}\\otimes e_{1}$ 得',
+        '**第一步：曲线在正交标架里的绝对导数。** 取 $e_{1} = \\partial_{u}/\\sqrt E$、$e_{2} = \\partial_{v}/\\sqrt G$，写 $\\dot\\gamma = \\cos\\theta\\,e_{1}+\\sin\\theta\\,e_{2}$（$\\theta$ 就是与 $u$ 线的夹角），于是 $n\\times\\dot\\gamma = -\\sin\\theta\\,e_{1}+\\cos\\theta\\,e_{2}$。\n\n由 $\\nabla e_{1} = -\\omega^{1}_{2}\\otimes e_{2}$、$\\nabla e_{2} = \\omega^{1}_{2}\\otimes e_{1}$ 得',
         '$$\\nabla_{\\dot\\gamma}\\dot\\gamma = \\left(-\\sin\\theta\\,\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\cos\\theta\\,\\omega^{1}_{2}(\\dot\\gamma)\\right)e_{1}+\\left(\\cos\\theta\\,\\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\sin\\theta\\,\\omega^{1}_{2}(\\dot\\gamma)\\right)e_{2}.$$',
         '与 $n\\times\\dot\\gamma$ 作内积，两组交叉项抵消、平方项各给 $1$：',
         '$$k_{g} = \\langle \\nabla_{\\dot\\gamma}\\dot\\gamma,\\,n\\times\\dot\\gamma\\rangle = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\omega^{1}_{2}(\\dot\\gamma).$$',
@@ -778,10 +782,13 @@ window.MG = window.MG || {};
       sources: ['def.geodesic-curvature'],
       target: 'prop.curvature-split',
       proof: [
-        '**正交基。** $|\\dot\\gamma| = 1$ 给出 $\\langle \\ddot\\gamma,\\dot\\gamma\\rangle = \\frac{1}{2}\\frac{\\mathrm{d}}{\\mathrm{d}s}|\\dot\\gamma|^{2} = 0$，所以 $\\ddot\\gamma$ 落在 $\\dot\\gamma$ 的正交补里。$n$ 是 $S$ 的单位法向因而 $n\\perp\\dot\\gamma$；$n\\times\\dot\\gamma$ 与两者都正交且是单位向量。于是 $\\{n,\\,n\\times\\dot\\gamma\\}$ 是 $T_{\\gamma}S$ 中 $\\dot\\gamma^{\\perp}$ 的一组单位正交基（这里 $\\dot\\gamma^{\\perp}$ 指 $\\mathbb{R}^{3}$ 中与 $\\dot\\gamma$ 正交的二维空间）。',
+        '**正交基。** $|\\dot\\gamma| = 1$ 给出 $\\langle \\ddot\\gamma,\\dot\\gamma\\rangle = \\frac{1}{2}\\frac{\\mathrm{d}}{\\mathrm{d}s}|\\dot\\gamma|^{2} = 0$，所以 $\\ddot\\gamma$ 落在 $\\dot\\gamma$ 的正交补里。\n\n' +
+        '$n$ 是 $S$ 的单位法向因而 $n\\perp\\dot\\gamma$；\n\n' +
+        '$n\\times\\dot\\gamma$ 与两者都正交且是单位向量。\n\n' +
+        '于是 $\\{n,\\,n\\times\\dot\\gamma\\}$ 是 $T_{\\gamma}S$ 中 $\\dot\\gamma^{\\perp}$ 的一组单位正交基（这里 $\\dot\\gamma^{\\perp}$ 指 $\\mathbb{R}^{3}$ 中与 $\\dot\\gamma$ 正交的二维空间）。',
         '**分解。** 因此',
         '$$\\ddot\\gamma = \\langle \\ddot\\gamma,n\\rangle n+\\langle \\ddot\\gamma,n\\times\\dot\\gamma\\rangle\\,(n\\times\\dot\\gamma) = \\kappa_{n}n+k_{g}\\,(n\\times\\dot\\gamma).$$',
-        '两个系数：第一个就是法曲率 $\\kappa_{n} = \\langle \\ddot\\gamma,n\\rangle$，而 $\\langle \\ddot\\gamma,n\\rangle = -\\langle \\dot\\gamma,\\mathrm{d}n(\\dot\\gamma)\\rangle = \\mathrm{II}(\\dot\\gamma,\\dot\\gamma)$ 由 $\\langle \\dot\\gamma,n\\rangle\\equiv0$ 求导得到；第二个正是测地曲率的定义。',
+        '两个系数：第一个就是法曲率 $\\kappa_{n} = \\langle \\ddot\\gamma,n\\rangle$，而 $\\langle \\ddot\\gamma,n\\rangle = -\\langle \\dot\\gamma,\\mathrm{d}n(\\dot\\gamma)\\rangle = \\mathrm{II}(\\dot\\gamma,\\dot\\gamma)$ 由 $\\langle \\dot\\gamma,n\\rangle\\equiv0$ 求导得到；\n\n第二个正是测地曲率的定义。',
         '**取模长。** 两项正交，故',
         '$$\\kappa^{2} = |\\ddot\\gamma|^{2} = \\kappa_{n}^{2}+k_{g}^{2}. \\quad\\blacksquare$$'
       ].join('\n')
@@ -794,15 +801,15 @@ window.MG = window.MG || {};
       target: 'thm.theorema-egregium',
       proof: [
         '**思路：$K$ 的两条表达式，一条只含 $I$，一条是 $\\det(h_{ij})$，两边必相等。**',
-        '**① 联络形式由 $I$ 唯一确定。** 取局部单位正交余标架 $\\omega^{1},\\omega^{2}$（由 $I$ 定出，$g = (\\omega^{1})^{2}+(\\omega^{2})^{2}$）。第一结构方程要求 $\\mathrm{d}\\omega^{1} = \\omega^{2}\\wedge\\omega^{1}_{2}$、$\\mathrm{d}\\omega^{2} = \\omega^{1}\\wedge\\omega^{2}_{1}$，加上 $\\omega^{1}_{2} = -\\omega^{2}_{1}$。写 $\\omega^{1}_{2} = a\\,\\omega^{1}+b\\,\\omega^{2}$：第一式定出 $a$，第二式定出 $b$（两式分别给出 $a$ 与 $b$ 的一个方程）。所以 $\\omega^{1}_{2}$ 完全由 $\\mathrm{d}\\omega^{1},\\mathrm{d}\\omega^{2}$ 决定，也就是完全由 $I$ 决定 —— 这正是 Levi-Civita 联络的唯一性。',
+        '**① 联络形式由 $I$ 唯一确定。** 取局部单位正交余标架 $\\omega^{1},\\omega^{2}$（由 $I$ 定出，$g = (\\omega^{1})^{2}+(\\omega^{2})^{2}$）。\n\n第一结构方程要求 $\\mathrm{d}\\omega^{1} = \\omega^{2}\\wedge\\omega^{1}_{2}$、$\\mathrm{d}\\omega^{2} = \\omega^{1}\\wedge\\omega^{2}_{1}$，加上 $\\omega^{1}_{2} = -\\omega^{2}_{1}$。\n\n写 $\\omega^{1}_{2} = a\\,\\omega^{1}+b\\,\\omega^{2}$：第一式定出 $a$，第二式定出 $b$（两式分别给出 $a$ 与 $b$ 的一个方程）。\n\n所以 $\\omega^{1}_{2}$ 完全由 $\\mathrm{d}\\omega^{1},\\mathrm{d}\\omega^{2}$ 决定，也就是完全由 $I$ 决定 —— 这正是 Levi-Civita 联络的唯一性。',
         '**② $\\mathrm{d}\\omega^{1}_{2}$ 是内蕴可算的。** 由上一步，$\\mathrm{d}\\omega^{1}_{2}$ 只含 $I$ 的一、二阶导数。',
-        '**③ 外在那一侧。** 在 $\\mathbb{R}^{3}$ 的活动标架 $\\{e_{1},e_{2},e_{3}\\}$（$e_{3} = n$）里，第二结构方程给出 $\\mathrm{d}\\omega^{1}_{2} = \\omega^{3}_{2}\\wedge\\omega^{1}_{3}$。写 $\\omega^{i}_{3} = \\sum_{j}h_{ij}\\omega^{j}$（$h_{ij}$ 对称），把 $\\omega^{3}_{2}\\wedge\\omega^{1}_{3} = -\\omega^{2}_{3}\\wedge\\omega^{1}_{3}$ 展开：两个交叉项相消，对角项留下 $h_{11}h_{22}-h_{12}^{2}$，所以',
+        '**③ 外在那一侧。** 在 $\\mathbb{R}^{3}$ 的活动标架 $\\{e_{1},e_{2},e_{3}\\}$（$e_{3} = n$）里，第二结构方程给出 $\\mathrm{d}\\omega^{1}_{2} = \\omega^{3}_{2}\\wedge\\omega^{1}_{3}$。\n\n写 $\\omega^{i}_{3} = \\sum_{j}h_{ij}\\omega^{j}$（$h_{ij}$ 对称），把 $\\omega^{3}_{2}\\wedge\\omega^{1}_{3} = -\\omega^{2}_{3}\\wedge\\omega^{1}_{3}$ 展开：两个交叉项相消，对角项留下 $h_{11}h_{22}-h_{12}^{2}$，所以',
         '$$\\mathrm{d}\\omega^{1}_{2} = \\omega^{3}_{2}\\wedge\\omega^{1}_{3} = \\det(h_{ij})\\,\\omega^{1}\\wedge\\omega^{2}.$$',
         '而 $n$ 反号会让整个 $h_{ij}$ 反号、$\\det$ 不变，所以 $\\det(h_{ij}) = k_{1}k_{2}$ 是法向无关的外在量，正是高斯曲率：$\\det(h_{ij}) = K$。于是',
         '$$K\\,\\omega^{1}\\wedge\\omega^{2} = \\mathrm{d}\\omega^{1}_{2},$$',
         '右端只依赖 $I$（第②步），所以 $K$ 只依赖 $I$。',
         '**④ 收尾。** 若 $\\varphi$ 是局部等距，则 $I_{1} = \\varphi^{*}I_{2}$，故两侧的 $\\omega$ 都被拉回、$\\mathrm{d}\\omega^{1}_{2}$ 逐点相等，于是 $K_{1} = K_{2}\\circ\\varphi$。$\\blacksquare$',
-        '⚠️ 符号与约定：本包取 $\\omega^{i}_{j} = \\langle\\nabla e_{j},e_{i}\\rangle$。这时单位球面可以直接验算：取测地极坐标，$\\omega^{1} = \\mathrm{d}\\rho$、$\\omega^{2} = \\sin\\rho\\,\\mathrm{d}\\theta$、$\\omega^{1}_{2} = -\\cos\\rho\\,\\mathrm{d}\\theta$，于是 $\\mathrm{d}\\omega^{1}_{2} = \\sin\\rho\\,\\mathrm{d}\\rho\\wedge\\mathrm{d}\\theta = +\\omega^{1}\\wedge\\omega^{2}$，即 $K = 1$；同时 $\\omega^{1}_{3} = \\omega^{1}$、$\\omega^{2}_{3} = \\omega^{2}$，$h_{ij} = \\delta_{ij}$、$\\det = 1$ ✓。换另一支约定（$\\omega^{i}_{j}$ 整体反号）时，证明里所有 $\\omega^{i}_{j}$ 一起反号、$K$ 的符号随之统一反号，「$K$ 内蕴」这个结论不变。'
+        '⚠️ 符号与约定：本包取 $\\omega^{i}_{j} = \\langle\\nabla e_{j},e_{i}\\rangle$。\n\n这时单位球面可以直接验算：取测地极坐标，$\\omega^{1} = \\mathrm{d}\\rho$、$\\omega^{2} = \\sin\\rho\\,\\mathrm{d}\\theta$、$\\omega^{1}_{2} = -\\cos\\rho\\,\\mathrm{d}\\theta$，于是 $\\mathrm{d}\\omega^{1}_{2} = \\sin\\rho\\,\\mathrm{d}\\rho\\wedge\\mathrm{d}\\theta = +\\omega^{1}\\wedge\\omega^{2}$，即 $K = 1$；\n\n同时 $\\omega^{1}_{3} = \\omega^{1}$、$\\omega^{2}_{3} = \\omega^{2}$，$h_{ij} = \\delta_{ij}$、$\\det = 1$ ✓。\n\n换另一支约定（$\\omega^{i}_{j}$ 整体反号）时，证明里所有 $\\omega^{i}_{j}$ 一起反号、$K$ 的符号随之统一反号，「$K$ 内蕴」这个结论不变。'
       ].join('\n')
     },
 
@@ -813,7 +820,7 @@ window.MG = window.MG || {};
       target: 'thm.theorema-egregium',
       proof: [
         '**目标：把 $K$ 写成只含唯一度量系数 $G$ 的表达式。**',
-        '**① 测地极坐标把 $I$ 压到一个函数。** 由高斯引理，$I = \\mathrm{d}\\rho^{2}+G(\\rho,\\theta)\\,\\mathrm{d}\\theta^{2}$，其中 $E\\equiv1$、$F\\equiv0$。于是所有 $\\Gamma$ 都可以用 $G$ 显式写出：$\\Gamma^{\\theta}_{\\rho\\theta} = \\frac{G_{\\rho}}{2G}$、$\\Gamma^{\\rho}_{\\theta\\theta} = -\\frac{G_{\\rho}}{2}$，其余为零。',
+        '**① 测地极坐标把 $I$ 压到一个函数。** 由高斯引理，$I = \\mathrm{d}\\rho^{2}+G(\\rho,\\theta)\\,\\mathrm{d}\\theta^{2}$，其中 $E\\equiv1$、$F\\equiv0$。\n\n于是所有 $\\Gamma$ 都可以用 $G$ 显式写出：$\\Gamma^{\\theta}_{\\rho\\theta} = \\frac{G_{\\rho}}{2G}$、$\\Gamma^{\\rho}_{\\theta\\theta} = -\\frac{G_{\\rho}}{2}$，其余为零。',
         '**② 直接算唯一独立分量。** 代入 $R^{\\ell}_{ijk}$ 的公式，取 $R_{1212}$（$1 = \\rho$，$2 = \\theta$）：',
         '$$R_{1212} = \\frac{1}{2}\\left(\\partial_{\\rho}\\partial_{\\rho}G\\right)-g_{\\theta\\theta}\\Gamma^{\\theta}_{\\rho\\theta}\\Gamma^{\\theta}_{\\theta\\rho} = \\frac{G_{\\rho\\rho}}{2}-\\frac{G_{\\rho}^{2}}{4G}.$$',
         '（$g_{11} = 1$，$\\Gamma^{\\rho}_{\\rho\\rho} = \\Gamma^{\\theta}_{\\rho\\rho} = 0$，两个 $\\Gamma\\Gamma$ 项在公式里是相减的。）再由 $K = R_{1221}/\\det(g) = -R_{1212}/G$ 得',
@@ -830,9 +837,9 @@ window.MG = window.MG || {};
       sources: ['thm.liouville-formula', 'def.geodesic-curvature', 'def.gauss-curvature'],
       target: 'thm.gauss-bonnet',
       proof: [
-        '**第一步（局部版）：简单闭曲线围成的区域。** 设 $D$ 由分段光滑简单闭曲线 $\\partial D$ 围成，取正交单位标架与联络形式 $\\omega^{1}_{2}$。由刘维尔公式（或等价地 $k_{g} = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\omega^{1}_{2}(\\dot\\gamma)$），',
+        '**第一步（局部版）：简单闭曲线围成的区域。** 设 $D$ 由分段光滑简单闭曲线 $\\partial D$ 围成，取正交单位标架与联络形式 $\\omega^{1}_{2}$。\n\n由刘维尔公式（或等价地 $k_{g} = \\frac{\\mathrm{d}\\theta}{\\mathrm{d}s}-\\omega^{1}_{2}(\\dot\\gamma)$），',
         '$$\\int_{\\partial D}k_{g}\\,\\mathrm{d}s = \\int_{\\partial D}\\mathrm{d}\\theta-\\int_{\\partial D}\\omega^{1}_{2} = 2\\pi-\\int_{D}\\mathrm{d}\\omega^{1}_{2}.$$',
-        '第一项是切线转角定理：简单闭曲线的切方向恰好转一整圈，$\\int\\mathrm{d}\\theta = 2\\pi$（分段光滑也一样，顶点处的外角补齐即可）。第二项用斯托克斯公式。再由高斯方程 $\\mathrm{d}\\omega^{1}_{2} = K\\,\\omega^{1}\\wedge\\omega^{2} = K\\,\\mathrm{d}A$ 得',
+        '第一项是切线转角定理：简单闭曲线的切方向恰好转一整圈，$\\int\\mathrm{d}\\theta = 2\\pi$（分段光滑也一样，顶点处的外角补齐即可）。\n\n第二项用斯托克斯公式。\n\n再由高斯方程 $\\mathrm{d}\\omega^{1}_{2} = K\\,\\omega^{1}\\wedge\\omega^{2} = K\\,\\mathrm{d}A$ 得',
         '$$\\int_{\\partial D}k_{g}\\,\\mathrm{d}s = 2\\pi-\\int_{D}K\\,\\mathrm{d}A,$$',
         '移项即得',
         '$$\\int_{D}K\\,\\mathrm{d}A+\\int_{\\partial D}k_{g}\\,\\mathrm{d}s = 2\\pi .$$',
@@ -851,7 +858,11 @@ window.MG = window.MG || {};
         '$$2\\pi\\left(V-E+F\\right) = 2\\pi\\left(V_{i}+V_{b}-\\frac{3F+V_{b}}{2}+F\\right) = 2\\pi V_{i}+\\pi V_{b}-\\pi F .$$',
         '两端相同，且 $V-E+F = \\chi(M)$ 与剖分无关，故',
         '$$\\int_{M}K\\,\\mathrm{d}A+\\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi\\chi(M).$$',
-        '**第四步：闭曲面的特例与数值。** $\\partial M = \\emptyset$ 时边界项消失，得 $\\int_{M}K\\,\\mathrm{d}A = 2\\pi\\chi(M)$。球面 $\\chi = 2$ 给出 $\\int K\\,\\mathrm{d}A = 4\\pi$（$K = 1/R^{2}$、面积 $4\\pi R^{2}$，相符）；环面 $\\chi = 0$ 给出 $\\int K = 0$（环面的外侧 $K > 0$、内侧 $K < 0$，正好抵消）；亏格 $g$ 的闭曲面 $\\chi = 2-2g$ 给出 $4\\pi(1-g)$。$\\blacksquare$'
+        '**第四步：闭曲面的特例与数值。** $\\partial M = \\emptyset$ 时边界项消失，得 $\\int_{M}K\\,\\mathrm{d}A = 2\\pi\\chi(M)$。\n\n' +
+        '球面 $\\chi = 2$ 给出 $\\int K\\,\\mathrm{d}A = 4\\pi$（$K = 1/R^{2}$、面积 $4\\pi R^{2}$，相符）；\n\n' +
+        '环面 $\\chi = 0$ 给出 $\\int K = 0$（环面的外侧 $K > 0$、内侧 $K < 0$，正好抵消）；\n\n' +
+        '亏格 $g$ 的闭曲面 $\\chi = 2-2g$ 给出 $4\\pi(1-g)$。\n\n' +
+        '$\\blacksquare$'
       ].join('\n')
     }
   ]

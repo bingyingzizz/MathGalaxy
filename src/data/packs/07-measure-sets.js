@@ -108,7 +108,7 @@ window.MG = window.MG || {};
       notes: [
         '三条是配套的，缺一不可：只留 (2)(3) 就是**$\\sigma$环**；把 (3) 降成「有限并」就是**代数**。',
         '由 (2)(3) 用 De Morgan 立得对**可数交**封闭：$\\Big( \\bigcap_n A_n \\Big)^c = \\bigcup_n A_n^c \\in \\mathfrak{A}$。于是有限并、有限交、差、对称差全都可用 —— 真正超出「代数」的，只有**可数**这一件事。',
-        '⚠ 方向不能反：$\\sigma$代数一定是代数，代数不一定是 $\\sigma$代数。反例：$X = \\mathbb{R}$ 上「有限集与余有限集」全体是代数，而 $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ 是其中可数多个元素的并、本身既非有限也非余有限，所以那个代数不封闭于可数并。',
+        '⚠ 方向不能反：$\\sigma$代数一定是代数，代数不一定是 $\\sigma$代数。\n\n反例：$X = \\mathbb{R}$ 上「有限集与余有限集」全体是代数，而 $\\mathbb{N} = \\{1\\} \\cup \\{2\\} \\cup \\{3\\} \\cup \\cdots$ 是其中可数多个元素的并、本身既非有限也非余有限，所以那个代数不封闭于可数并。',
         '记号里的「$\\sigma$」表示**可数**（取自德文 Summe / 法文 somme 的首字母），和标准差那个 $\\sigma$ 无关。',
         '为什么非要有它：测度的可数可加性 $\\mu (\\bigcup A_{n}) = \\sum \\mu (A_{n})$ 需要一个对**可数**运算封闭的定义域，否则等式两边根本不在同一个集合族里。整条测度构造就是从这里起步的。'
       ].join('\n\n'),
@@ -160,7 +160,7 @@ window.MG = window.MG || {};
         '（第 (4) 条因为本身是一条定理，单独列在「环 $\\implies \\sigma$-环 的判据」里。）'
       ].join('\n'),
       notes: [
-        ['**证明。**','(1) 取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset \\in \\mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。','(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）','(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。','(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。','- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；','- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；','- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎'].join('\n'),
+        ['**证明。**','(1) 取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset \\in \\mathfrak{A}$（基本类对差封闭），故空集可写成空的不交并 ✓。','(2) 代数：$A_{1}, \\ldots, A_{n} \\in \\mathfrak{A}$ 时 $A_{1}\\cap\\cdots\\cap A_{n} = X \\setminus \\bigl(\\bigcup_{i}(X\\setminus A_{i})\\bigr) \\in \\mathfrak{A}$（补 + 有限并）✓；\n\n可数交由 $\\sigma$代数的定义直接给出，可数交再用一次 De Morgan ✓。\n\n（只含「对不交并封闭」的环上，把「补」换成**相对补** $A \\setminus \\bigcup B_{j}$ 即可。）','(3) $\\sigma$代数 = 对可数并封闭的代数，而对可数并封闭 + 对补封闭 $\\implies$ 对可数交封闭（De Morgan），反之亦然 —— 两条说法等价 ✓。','(5) 设 $\\mathcal{E}$ 是基本类，$\\mathfrak{A} := \\{ \\mathcal{E} \\text{ 中有限多个两两不交的集合之并} \\}$。','- **对有限并封闭**：把两个有限不交并摆在一起，相交的块用 $A = (A\\cap B)\\sqcup(A\\setminus B)$ 逐块拆开（基本类对差封闭），仍写成有限不交并 ✓；','- **对差封闭**：$A \\setminus B$ 逐块做差，同样拆成有限不交并 ✓；','- 含 $\\emptyset$（空并）✓。于是 $\\mathfrak{A}$ 是一个**环** ✓。∎'].join('\n'),
         '(1)：取 $A \\in \\mathfrak{A}$，则 $A \\setminus A = \\emptyset$ 要能被拆成不交并，只能是空并。',
         '(2)：有限交直接由 De Morgan；可数交由 (3) 的补 + 可数并得到。若 $\\mathfrak{A}$ 只是环而不含 $X$，「补」要小心，通常用 **$A \\setminus \\bigcup B_{j}$** 这种相对补。',
         '(5)：这是把基本类升级成环的标准操作 —— 先做不交并保证「差」好算，再验证有限并仍是有限不交并。',
@@ -232,12 +232,14 @@ window.MG = window.MG || {};
         '**这一条是「标准版 + 加强版」合起来的那一个版本。**',
         '**标准版**（Halmos §6 / Folland 2.37）：$\\mathcal{A}$ 是**代数** $\\implies \\mathfrak{m}(\\mathcal{A}) = \\mathcal{M}(\\mathcal{A})$。',
         '上面陈述的是**加强版**：把「$\\mathcal{E}$ 是代数」换成两条更弱的条件——$\\mathcal{E}$ 中集合的**补**与**并**落进 $\\mathfrak{m}(\\mathcal{E})$ 就行。证明仍是单调类定理那三步：',
-        '**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。',
-        '**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。',
-        '**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。',
-        '于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；反向恒成立，两边相等。（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）',
+        '**①** 令 $\\mathcal{K}_{1} = \\{A \\in \\mathfrak{m} : A^{c} \\in \\mathfrak{m}\\}$。\n\n' +
+        '它含 $\\mathcal{E}$（第一条条件），且本身是单调类（$\\mathfrak{m}$ 单调 $\\implies$ 极限仍在 $\\mathfrak{m}$；\n\n' +
+        '补用一次递减极限）$\\implies \\mathcal{K}_{1} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**补**封闭。',
+        '**②** 固定 $A \\in \\mathcal{E}$，令 $\\mathcal{K}_{2} = \\{B \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。\n\n由第二条条件 $\\mathcal{K}_{2} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{2} = \\mathfrak{m}$。',
+        '**③** 固定 $B \\in \\mathfrak{m}$，令 $\\mathcal{K}_{3} = \\{A \\in \\mathfrak{m} : A \\cup B \\in \\mathfrak{m}\\}$。\n\n由 ② 知 $\\mathcal{K}_{3} \\supseteq \\mathcal{E} \\implies \\mathcal{K}_{3} = \\mathfrak{m}$，即 $\\mathfrak{m}$ 对**并**封闭。',
+        '于是 $\\mathfrak{m}$ 对 $\\cup$ 与补封闭、又是单调类 $\\implies \\mathfrak{m}$ 是一个 $\\sigma$代数 $\\implies \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathfrak{m}(\\mathcal{E})$；\n\n反向恒成立，两边相等。\n\n（需 $\\mathcal{E} \\ne \\emptyset$，否则 $\\mathfrak{m}(\\mathcal{E}) = \\{\\emptyset \\}$。）',
         '⚠ 把 $\\cup$ 换成 $\\cap$ 或 $\\setminus$ 结论同样成立 —— 有了补封闭，几种封闭性互相推得出来，所以这一处的符号并不影响定理对不对。',
-        '**用法**（不论哪个版本都一样）：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。',
+        '**用法**（不论哪个版本都一样）：要证某个性质对 $\\mathcal{M}(\\mathcal{E})$ 中所有集合成立，只需（$i$）证明它对 $\\mathcal{E}$ 成立，（ii）证明「成立」这件事被递增并、递减交保持 —— 于是成立的集合构成一个含 $\\mathcal{E}$ 的单调类，它 $\\supseteq \\mathfrak{m}(\\mathcal{E}) = \\mathcal{M}(\\mathcal{E})$。\n\n测度扩张的唯一性、乘积测度的截口公式、可测函数的逼近，用的都是这个模式。',
         '⚠ 与「环 $\\to \\sigma$环 的判据」是姊妹结果：那条说环 $+$ 单调 $\\implies \\sigma$环，这条说代数 $\\implies$ 单调类与 $\\sigma$代数重合。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §6', 'Folland, Real Analysis, Theorem 2.37']
@@ -274,7 +276,7 @@ window.MG = window.MG || {};
       regions: ['analysis', 'topology'],
       tags: ['定义', '积', '柱集'],
       statement: [
-        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$X = \\prod_{\\alpha \\in A} X_\\alpha$，投影 $\\pi _\\alpha : X \\to X_\\alpha$。**积 $\\sigma$代数**定义为',
+        '设 $\\{ (X_\\alpha , \\mathcal{M}_\\alpha ) \\}_\\{\\alpha \\in A\\}$ 是一族可测空间，$X = \\prod_{\\alpha \\in A} X_\\alpha$，投影 $\\pi _\\alpha : X \\to X_\\alpha$。\n\n**积 $\\sigma$代数**定义为',
         '',
         '$$\\otimes _{\\alpha \\in A} \\mathcal{M}_\\alpha := \\mathcal{M}(\\{ \\pi _\\alpha^{-1}(E_\\alpha) : E_\\alpha \\in \\mathcal{M}_\\alpha, \\alpha \\in A \\})$$'
       ].join('\n'),
@@ -352,7 +354,7 @@ window.MG = window.MG || {};
         '$\\bigotimes_{j=1}^{\\infty} \\mathfrak{B}_{X_j} = \\mathfrak{B}_{X}$'
       ].join('\n'),
       notes: [
-        ['**证明。**','- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。','- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。','  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。','两边互包即得等号。∎','⚠️ **可分性不能省**：$\\mathbb{R}^{\\mathbb{R}}$（不可数积）上，积 $\\sigma$代数**真包含于** Borel $\\sigma$代数 —— 那些「只看可数多个坐标」的集合撑不满 Borel 结构。'].join('\n'),
+        ['**证明。**','- **$\\subseteq$**：投影 $\\pi_{j}$ 连续，故 $\\pi_{j}^{-1}(\\text{开集})$ 是 $X$ 的开集（柱集），即每个 $\\pi_{j}^{-1}(U_{j}) \\in \\mathfrak{B}_{X}$；\n\n于是生成它们的 $\\sigma$代数 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}} \\subseteq \\mathfrak{B}_{X}$ ✓。','- **$\\supseteq$（需要可分）**：每个 $X_{j}$ **可分**，取可数稠密集 $C_{j}$，则 $\\{ B(c, r) : c \\in C_{j},\\ r \\in \\mathbb{Q}_{>0} \\}$ 是 $X_{j}$ 的**可数基** ✓。','  $X$ 的基本开集形如 $\\bigcap_{j \\in F}\\pi_{j}^{-1}(U_{j})$（$F$ 有限、$U_{j}$ 取基元素）；每个 $\\pi_{j}^{-1}(U_{j}) \\in \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$，有限交仍在其中，而**开集是基本开集之并**、基又可数 $\\implies$ 一切开集属于 $\\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ $\\implies$ $\\mathfrak{B}_{X} \\subseteq \\bigotimes_{j}\\mathfrak{B}_{X_{j}}$ ✓。','两边互包即得等号。∎','⚠️ **可分性不能省**：$\\mathbb{R}^{\\mathbb{R}}$（不可数积）上，积 $\\sigma$代数**真包含于** Borel $\\sigma$代数 —— 那些「只看可数多个坐标」的集合撑不满 Borel 结构。'].join('\n'),
         '$\\subseteq$ 的原因很直接：投影 $\\pi _{j}$ 连续，所以 $\\pi _{j}^{-1}($开集) 是开集，那些柱集都在 $\\mathfrak{B}_X$ 里。',
         '反方向登场的又是「可分」：$X_{j}$ 可分时取可数稠密集 $C_{j}$，则',
         '',

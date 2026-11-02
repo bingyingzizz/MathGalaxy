@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-因为它是「单位 + 全部三个双对换」这个共轭类的并。）
+S_4/A_4 \cong \mathbb{Z}/2$，全是阿贝尔。
 
 > 续见 proofs/imp.sn-solvable.31.md

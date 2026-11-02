@@ -84,7 +84,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '它比预测度还弱：预测度是可数可加的（只是定义域是环），有限可加测度只要求有限可加。',
-        '⚠ 有限可加 $\\ne$ 可数可加：在 $\\mathbb{N}$ 上定义 $\\mu (E) = 0$（$E$ 有限）、$\\mu (E) = +\\infty$（$E$ 无限），它是有限可加的，但对 $\\bigcup _{n} \\{n\\} = \\mathbb{N}$ 不满足可数可加。历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，但那样连「长度」都构造不出来。'
+        '⚠ 有限可加 $\\ne$ 可数可加：在 $\\mathbb{N}$ 上定义 $\\mu (E) = 0$（$E$ 有限）、$\\mu (E) = +\\infty$（$E$ 无限），它是有限可加的，但对 $\\bigcup _{n} \\{n\\} = \\mathbb{N}$ 不满足可数可加。\n\n历史上（Banach–Tarski 时代）确实认真考虑过只用有限可加性的「测度」，但那样连「长度」都构造不出来。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §9']
     },
@@ -108,7 +108,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '$\\text{有限} \\implies \\sigma-\\text{有限} \\implies\\text{ 半有限}$，两个箭头都不可逆。',
-        '$\\sigma$有限是**最常用的技术假设**：$\\mathbb{R}$ 上的 Lebesgue 测度 $\\sigma$有限（$\\mathbb{R} = \\bigcup _{n} [-n, n]$），而计数测度在 $\\mathbb{R}$ 上不是 $\\sigma$有限的。很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\\sigma$有限。',
+        '$\\sigma$有限是**最常用的技术假设**：$\\mathbb{R}$ 上的 Lebesgue 测度 $\\sigma$有限（$\\mathbb{R} = \\bigcup _{n} [-n, n]$），而计数测度在 $\\mathbb{R}$ 上不是 $\\sigma$有限的。\n\n很多定理（Fubini、Radon–Nikodym、Carathéodory 扩张的唯一性）都要 $\\sigma$有限。',
         '半有限比 $\\sigma$有限弱得多：可以造出「每个可测集要么零测度、要么无穷测度」的测度，它就是半有限的极端反例。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §1.2']
@@ -189,7 +189,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '$\\bar{\\mathcal{M}}$ 的直观：在原来的可测集上「撒一点零集的小碎片」。',
-        '**良定义是要检查的**：$E \\cup F$ 的写法不唯一，若 $E_{1} \\cup F_{1} = E_{2} \\cup F_{2}$，要证明 $\\mu (E_{1}) = \\mu (E_{2})$。做法是用 $E_{1} \\subseteq E_{2} \\cup N_{2}$（$N_{2}$ 零集）得 $\\mu (E_{1}) \\le \\mu (E_{2})$，反向同理。',
+        '**良定义是要检查的**：$E \\cup F$ 的写法不唯一，若 $E_{1} \\cup F_{1} = E_{2} \\cup F_{2}$，要证明 $\\mu (E_{1}) = \\mu (E_{2})$。\n\n做法是用 $E_{1} \\subseteq E_{2} \\cup N_{2}$（$N_{2}$ 零集）得 $\\mu (E_{1}) \\le \\mu (E_{2})$，反向同理。',
         '⚠ 完备化是「把零集的子集塞进来」，代价是 $\\sigma$代数变大、测度不变。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §13', 'Folland, Real Analysis, Prop. 1.6']
@@ -249,7 +249,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '外测度', '覆盖'],
       statement: [
-        '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$，$\\emptyset \\in \\mathcal{E}$，$X \\in \\mathcal{E}$，$\\rho : \\mathcal{E} \\to [0, +\\infty ]$ 满足 $\\rho (\\emptyset ) = 0$。对 $A \\subseteq X$ 定义',
+        '设 $\\mathcal{E} \\subseteq \\mathcal{P}(X)$，$\\emptyset \\in \\mathcal{E}$，$X \\in \\mathcal{E}$，$\\rho : \\mathcal{E} \\to [0, +\\infty ]$ 满足 $\\rho (\\emptyset ) = 0$。\n\n对 $A \\subseteq X$ 定义',
         '',
         '$$\\mu^*(A) := \\inf \\{ \\sum_{j=1}^{\\infty} \\rho(E_j) : E_j \\in \\mathcal{E}, A \\subseteq \\bigcup_{j=1}^{\\infty} E_j \\}$$',
         '',
@@ -316,7 +316,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', 'Carathéodory', '扩张'],
       statement: [
-        '设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是**代数**，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的**预测度**，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度（按上一条命题，取 $\\mathcal{E} = \\mathfrak{A}$、$\\rho = \\mu _{0}$）。则',
+        '设 $\\mathfrak{A} \\subseteq \\mathcal{P}(X)$ 是**代数**，$\\mu _{0}$ 是 $\\mathfrak{A}$ 上的**预测度**，$\\mu^{*}$ 是由 $\\mu _{0}$ 诱导的外测度（按上一条命题，取 $\\mathcal{E} = \\mathfrak{A}$、$\\rho = \\mu _{0}$）。\n\n则',
         '',
         '1. $\\mu^*|_\\mathfrak{A} = \\mu_0$',
         '2. **$\\mathfrak{A}$ 中每个集合都是 $\\mu^{*}$-可测的**，因此',
@@ -350,8 +350,8 @@ window.MG = window.MG || {};
         '且当 $\\mu(E) < \\infty$ 时等号成立；进而，若 $\\mu$ 是 $\\sigma$有限的，则 $\\nu = \\mu$。'
       ].join('\n'),
       notes: [
-        '要点：**Carathéodory 扩张是「最大」的那一个**。原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。',
-        '⚠ 不 $\\sigma$有限时唯一性会**失效**：$\\mathbb{R}$ 上取 $\\mathfrak{A} =$ 有限并的半开区间，$\\mu _{0} = Lebesgue$ 长度限制在 $\\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。$\\sigma$有限性正是用来堵住这种漏洞的。',
+        '要点：**Carathéodory 扩张是「最大」的那一个**。\n\n原因藏在 $\\mu^{*}$ 的定义里 —— 它是用「覆盖取下确界」造的，而任何扩张 $\\nu$ 都要满足次可加性，于是 $\\nu (A) \\le \\sum \\nu (E_{j}) = \\sum \\mu _{0}(E_{j})$，对所有覆盖取下确界就得到 $\\nu \\le \\mu^{*}$。',
+        '⚠ 不 $\\sigma$有限时唯一性会**失效**：$\\mathbb{R}$ 上取 $\\mathfrak{A} =$ 有限并的半开区间，$\\mu _{0} = Lebesgue$ 长度限制在 $\\mathfrak{A}$ 上，则「Lebesgue 测度」与「Lebesgue 测度 + 集中在某个非 Lebesgue 可测集上的无穷值」都是扩张。\n\n$\\sigma$有限性正是用来堵住这种漏洞的。',
         '构造测度的标准收尾就是这一条：**先造预测度（好造），再扩张（Carathéodory 保证存在），最后用 $\\sigma$有限保证唯一**。'
       ].join('\n\n'),
       refs: ['Halmos, Measure Theory, §13', 'Folland, Real Analysis, Theorem 1.14']
@@ -373,7 +373,7 @@ window.MG = window.MG || {};
         '（并规定 $\\mu _{0}(\\emptyset ) = 0$，扩充到由这些区间做有限不交并得到的代数 $\\mathfrak{A}$ 上。）则 $\\mu _{0}$ 是 $\\mathfrak{A}$ 上的一个**预测度**。'
       ].join('\n'),
       notes: [
-        ['**证明。** 记 $\\mathfrak{A}$ 为有限不交并 $\\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\\mu_{0}\\bigl(\\bigsqcup_{j}(a_{j},b_{j}]\\bigr) := \\sum_{j}\\bigl(F(b_{j})-F(a_{j})\\bigr)$。','- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \\le a_{2} < \\cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\\mu_{0}$ 与分解无关 ✓；空并给 $\\mu_{0}(\\emptyset) = 0$ ✓。','- **有限可加**：把两个不交并拼起来直接相加 ✓。','- **可数可加（右连续在这里上场）**：设 $(a, b] = \\bigsqcup_{j \\ge 1}(a_{j}, b_{j}]$。','  **$\\ge$**：对每个 $n$ 有 $(a,b] \\supseteq \\bigsqcup_{j \\le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \\ge \\sum_{j \\le n}\\bigl(F(b_{j})-F(a_{j})\\bigr)$，令 $n \\to \\infty$ ✓；','  **$\\le$**：给 $\\varepsilon > 0$。**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \\varepsilon 2^{-j}$；再用右连续取 $\\delta > 0$ 使 $F(a+\\delta) < F(a) + \\varepsilon$。开区间族 $\\{(a_{j}, c_{j})\\}$ 覆盖紧集 $[a+\\delta, b]$，抽有限子覆盖并按端点排序相加，得','$$F(b) - F(a) \\le 2\\varepsilon + \\sum_{j}\\bigl(F(b_{j}) - F(a_{j})\\bigr),$$','令 $\\varepsilon \\to 0$ 即得 ✓。∎','⭐ 取 $F(x) = x$ 就回到长度 $\\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。'].join('\n'),
+        ['**证明。** 记 $\\mathfrak{A}$ 为有限不交并 $\\bigsqcup_{j=1}^{n}(a_{j}, b_{j}]$ 全体，$\\mu_{0}\\bigl(\\bigsqcup_{j}(a_{j},b_{j}]\\bigr) := \\sum_{j}\\bigl(F(b_{j})-F(a_{j})\\bigr)$。','- **良定义**：半开区间的不交并分解，本质上就是把端点排成一串 $a_{1} < b_{1} \\le a_{2} < \\cdots$；把两种分解细化到公共细分，用 $F$ 的值在端点上的 telescoping 求和即可看出 $\\mu_{0}$ 与分解无关 ✓；空并给 $\\mu_{0}(\\emptyset) = 0$ ✓。','- **有限可加**：把两个不交并拼起来直接相加 ✓。','- **可数可加（右连续在这里上场）**：设 $(a, b] = \\bigsqcup_{j \\ge 1}(a_{j}, b_{j}]$。','  **$\\ge$**：对每个 $n$ 有 $(a,b] \\supseteq \\bigsqcup_{j \\le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \\ge \\sum_{j \\le n}\\bigl(F(b_{j})-F(a_{j})\\bigr)$，令 $n \\to \\infty$ ✓；','  **$\\le$**：给 $\\varepsilon > 0$。\n\n**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \\varepsilon 2^{-j}$；\n\n再用右连续取 $\\delta > 0$ 使 $F(a+\\delta) < F(a) + \\varepsilon$。\n\n开区间族 $\\{(a_{j}, c_{j})\\}$ 覆盖紧集 $[a+\\delta, b]$，抽有限子覆盖并按端点排序相加，得','$$F(b) - F(a) \\le 2\\varepsilon + \\sum_{j}\\bigl(F(b_{j}) - F(a_{j})\\bigr),$$','令 $\\varepsilon \\to 0$ 即得 ✓。∎','⭐ 取 $F(x) = x$ 就回到长度 $\\mu_{0}((a,b]) = b-a$ —— 这正是 Lebesgue 测度的出发点。'].join('\n'),
         '**右连续正是用来保证可数可加性的**：若 (a, b] 是 $(a_{j}, b_{j}]$ 的不交并，把 $b_{j}$ 从左边逼近 $b_{j}$ 就能得到单调性的不等式。',
         '取 $F(x) = x$ 就回到长度 $\\mu _{0}((a, b]) = b - a$ —— 也就是 Lebesgue 测度的出发点。',
         '⚠ 半开区间 (a, b] 比开区间好用：它们做不交并时端点不重叠，$\\mu _{0}$ 的加法好验。用 [a, b) 也一样，只是右连续要换成左连续。'
@@ -445,11 +445,11 @@ window.MG = window.MG || {};
         '',
         '$$\\mu(\\bigcup_j E_j) = \\mu(\\bigcup_j F_j) = \\sum_j \\mu(F_j) \\le \\sum_j \\mu(E_j)$$',
         '',
-        '**(c) 下连续。** 设 $E_{1} \\subseteq E_{2} \\subseteq \\cdots$。令 $A_{1} = E_{1}$，$A_{j} = E_{j} \\setminus E_\\{j-1\\}$（$j \\ge 2$），则 $A_{j}$ 两两不交且 $\\bigcup A_{j} = \\bigcup E_{j}$。由可数可加，',
+        '**(c) 下连续。** 设 $E_{1} \\subseteq E_{2} \\subseteq \\cdots$。\n\n令 $A_{1} = E_{1}$，$A_{j} = E_{j} \\setminus E_\\{j-1\\}$（$j \\ge 2$），则 $A_{j}$ 两两不交且 $\\bigcup A_{j} = \\bigcup E_{j}$。\n\n由可数可加，',
         '',
         '$$\\mu(\\bigcup_j E_j) = \\sum_j \\mu(A_j) = \\lim_{n\\to\\infty} \\sum_{j=1}^{n} \\mu(A_j) = \\lim_{n\\to\\infty} \\mu(E_n)$$',
         '',
-        '**(d) 上连续。** 设 $E_{1} \\supseteq E_{2} \\supseteq \\cdots$ 且 $\\mu (E_{1}) < \\infty$。令 $F_{j} = E_{1} \\setminus E_{j}$，则 $F_{1} \\subseteq F_{2} \\subseteq \\cdots$ 且 $\\bigcup F_{j} = E_{1} \\setminus \\bigcap E_{j}$。由 (c) 与 (a)，',
+        '**(d) 上连续。** 设 $E_{1} \\supseteq E_{2} \\supseteq \\cdots$ 且 $\\mu (E_{1}) < \\infty$。\n\n令 $F_{j} = E_{1} \\setminus E_{j}$，则 $F_{1} \\subseteq F_{2} \\subseteq \\cdots$ 且 $\\bigcup F_{j} = E_{1} \\setminus \\bigcap E_{j}$。\n\n由 (c) 与 (a)，',
         '',
         '$$\\mu(E_1) - \\mu(\\bigcap_j E_j) = \\mu(E_1 \\setminus \\bigcap_j E_j) = \\lim_j \\mu(F_j) = \\lim_j ( \\mu(E_1) - \\mu(E_j) )$$',
         '',
@@ -499,7 +499,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $\\mu^{*}$ 是外测度，$\\mathcal{M} = \\{ A : \\forall E, \\mu^{*}(E) = \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c}) \\}$。',
         '',
-        '**① $\\mathcal{M}$ 是代数。** 条件关于 $A$ 与 $A^{c}$ 对称，故 $A \\in \\mathcal{M} \\implies A^{c} \\in \\mathcal{M}$；$\\emptyset$ 与 $X$ 显然在 $\\mathcal{M}$ 中。若 $A, B \\in \\mathcal{M}$，要证 $A \\cup B \\in \\mathcal{M}$：对任意 $E$，把 $E$ 依 $A$ 切开、再依 $B$ 切开，',
+        '**① $\\mathcal{M}$ 是代数。** 条件关于 $A$ 与 $A^{c}$ 对称，故 $A \\in \\mathcal{M} \\implies A^{c} \\in \\mathcal{M}$；\n\n$\\emptyset$ 与 $X$ 显然在 $\\mathcal{M}$ 中。\n\n若 $A, B \\in \\mathcal{M}$，要证 $A \\cup B \\in \\mathcal{M}$：对任意 $E$，把 $E$ 依 $A$ 切开、再依 $B$ 切开，',
         '',
         '$$\\mu^*(E) = \\mu^*(E\\cap A) + \\mu^*(E\\cap A^c) = \\mu^*(E\\cap A\\cap B) + \\mu^*(E\\cap A\\cap B^c) + \\mu^*(E\\cap A^c\\cap B) + \\mu^*(E\\cap A^c\\cap B^c)$$',
         '',
@@ -540,13 +540,13 @@ window.MG = window.MG || {};
         '',
         '$$\\mu^*(A) \\le \\mu_0(A) + 0 + 0 + \\cdots = \\mu_0(A)$$',
         '',
-        '**② $\\mu^{*}|_\\mathfrak{A} \\ge \\mu _{0}$。** 设 $\\{E_{j}\\} \\subseteq \\mathfrak{A}$ 是 $A$ 的覆盖。令 $F_{j} = E_{j} \\setminus (E_{1} \\cup \\cdots \\cup E_\\{j-1\\})$，则 $F_{j} \\in \\mathfrak{A}$ 两两不交且 $\\bigcup F_{j} \\supseteq A$、$F_{j} \\subseteq E_{j}$。于是',
+        '**② $\\mu^{*}|_\\mathfrak{A} \\ge \\mu _{0}$。** 设 $\\{E_{j}\\} \\subseteq \\mathfrak{A}$ 是 $A$ 的覆盖。\n\n令 $F_{j} = E_{j} \\setminus (E_{1} \\cup \\cdots \\cup E_\\{j-1\\})$，则 $F_{j} \\in \\mathfrak{A}$ 两两不交且 $\\bigcup F_{j} \\supseteq A$、$F_{j} \\subseteq E_{j}$。\n\n于是',
         '',
         '$$\\mu_0(A) = \\mu_0( \\bigcup_j (A \\cap F_j) ) = \\sum_j \\mu_0(A \\cap F_j) \\le \\sum_j \\mu_0(F_j) \\le \\sum_j \\mu_0(E_j)$$',
         '',
         '（第一个等号用 $A$ 是那些不交集合之并；第二个用 $\\mu _{0}$ 可数可加；不等号用单调性。）对所有覆盖取下确界得 $\\mu _{0}(A) \\le \\mu^{*}$(A)。',
         '',
-        '**③ $\\mathfrak{A} \\subseteq \\mathcal{M}$。** 设 $A \\in \\mathfrak{A}$，$E \\subseteq X$，要证 $\\mu^{*}(E) \\ge \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c})$。给定 $\\varepsilon > 0$，取 $\\mathfrak{A}$ 中 $\\{E_{j}\\}$ 覆盖 $E$ 使',
+        '**③ $\\mathfrak{A} \\subseteq \\mathcal{M}$。** 设 $A \\in \\mathfrak{A}$，$E \\subseteq X$，要证 $\\mu^{*}(E) \\ge \\mu^{*}(E\\cap A) + \\mu^{*}(E\\cap A^{c})$。\n\n给定 $\\varepsilon > 0$，取 $\\mathfrak{A}$ 中 $\\{E_{j}\\}$ 覆盖 $E$ 使',
         '',
         '$$\\sum_j \\mu_0(E_j) < \\mu^*(E) + \\varepsilon$$',
         '',
@@ -554,7 +554,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mu^*(E \\cap A) + \\mu^*(E \\cap A^c) \\le \\sum_j \\mu_0(E_j \\cap A) + \\sum_j \\mu_0(E_j \\cap A^c) = \\sum_j \\mu_0(E_j) < \\mu^*(E) + \\varepsilon$$',
         '',
-        '令 $\\varepsilon \\to 0$ 即得。所以 $\\mathfrak{A} \\subseteq \\mathcal{M}$；而 $\\mathcal{M}$ 是 $\\sigma$代数（Carathéodory），故 $\\mathcal{M}(\\mathfrak{A}) \\subseteq \\mathcal{M}$。∎'
+        '令 $\\varepsilon \\to 0$ 即得。\n\n所以 $\\mathfrak{A} \\subseteq \\mathcal{M}$；而 $\\mathcal{M}$ 是 $\\sigma$代数（Carathéodory），故 $\\mathcal{M}(\\mathfrak{A}) \\subseteq \\mathcal{M}$。\n\n∎'
       ].join('\n')
     },
 
@@ -573,9 +573,11 @@ window.MG = window.MG || {};
         '',
         '对所有这样的覆盖取下确界，右边给出 $\\mu^{*}(E) = \\mu (E)$。故 $\\nu (E) \\le \\mu (E)$。',
         '',
-        '**② $\\mu (E) < \\infty$ 时取等。** 此时 $n = \\nu (E)$ 有限（因为 $\\nu (E) \\le \\mu (E) < \\infty$）—— 但要注意 $\\nu \\le \\mu$ 只在一侧，所以直接两边各取补集：$E$ 可测意味着对任意 $F \\subseteq X$ 有 $\\mu (F) = \\mu (F\\cap E) + \\mu (F\\setminus E)$，取 $F = X$ 得 $\\mu (X) = \\mu (E) + \\mu (X\\setminus E)$，**这一步要求 $\\mu (X) < \\infty$** 才好逐项比较。一般情形下改用 $\\mathcal{M}(\\mathfrak{A})$ 中 $\\mu$ 有限的集合 $E_{n} \\uparrow X$ 作近似（见下）。',
+        '**② $\\mu (E) < \\infty$ 时取等。** 此时 $n = \\nu (E)$ 有限（因为 $\\nu (E) \\le \\mu (E) < \\infty$）—— 但要注意 $\\nu \\le \\mu$ 只在一侧，所以直接两边各取补集：$E$ 可测意味着对任意 $F \\subseteq X$ 有 $\\mu (F) = \\mu (F\\cap E) + \\mu (F\\setminus E)$，取 $F = X$ 得 $\\mu (X) = \\mu (E) + \\mu (X\\setminus E)$，**这一步要求 $\\mu (X) < \\infty$** 才好逐项比较。\n\n一般情形下改用 $\\mathcal{M}(\\mathfrak{A})$ 中 $\\mu$ 有限的集合 $E_{n} \\uparrow X$ 作近似（见下）。',
         '',
-        '**③ $\\sigma$有限时唯一。** 取 $\\mu$有限的可测集 $E_{n} \\uparrow X$（$\\sigma$有限的定义）。对每个 $E_{n}$，用 ② 的论证于 $E_{n} \\cap E$ 上得 $\\nu (E \\cap E_{n}) = \\mu (E \\cap E_{n})$；令 $n \\to \\infty$，两侧分别用下连续性（$\\nu$ 与 $\\mu$ 都是测度）得到 $\\nu (E) = \\mu (E)$。',
+        '**③ $\\sigma$有限时唯一。** 取 $\\mu$有限的可测集 $E_{n} \\uparrow X$（$\\sigma$有限的定义）。\n\n' +
+        '对每个 $E_{n}$，用 ② 的论证于 $E_{n} \\cap E$ 上得 $\\nu (E \\cap E_{n}) = \\mu (E \\cap E_{n})$；\n\n' +
+        '令 $n \\to \\infty$，两侧分别用下连续性（$\\nu$ 与 $\\mu$ 都是测度）得到 $\\nu (E) = \\mu (E)$。',
         '',
         '故 $\\sigma$有限时 $\\nu = \\mu$，扩张唯一。∎',
         '',
@@ -592,13 +594,13 @@ window.MG = window.MG || {};
       proof: [
         '设 $F$ 递增右连续。由前一条命题，$\\mu _{0}((a, b]) = F(b) - F(a)$ 扩充成半开区间生成的代数 $\\mathfrak{A}$ 上的**预测度**。',
         '',
-        '**① 存在性。** 由 Carathéodory 扩张定理，$\\mu _{0}$ 诱导的外测度限制在 $\\mathcal{M}(\\mathfrak{A})$ 上就是一个测度 $\\mu _F$，且在 $\\mathfrak{A}$ 上还原成 $\\mu _{0}$。特别地 $\\mu _F((a, b]) = F(b) - F(a)$。',
+        '**① 存在性。** 由 Carathéodory 扩张定理，$\\mu _{0}$ 诱导的外测度限制在 $\\mathcal{M}(\\mathfrak{A})$ 上就是一个测度 $\\mu _F$，且在 $\\mathfrak{A}$ 上还原成 $\\mu _{0}$。\n\n特别地 $\\mu _F((a, b]) = F(b) - F(a)$。',
         '',
         '**② 它是 Borel 测度。** 每个开区间 (a, b) 是可数个 $(a, b - 1/n]$ 之并，故属于 $\\mathcal{M}(\\mathfrak{A})$；于是 $\\mathcal{M}(\\mathfrak{A})$ 包含 $\\mathbb{R}$ 的全体开集（$\\mathbb{R}$ 的开集是可数个开区间之并），从而 $\\mathfrak{B}_\\mathbb{R} \\subseteq \\mathcal{M}(\\mathfrak{A})$。',
         '',
         '**③ 唯一性。** $F$ 递增实值 $\\implies \\mu _F((-n, n]) = F(n) - F(-n) < \\infty$，所以 $\\mu _F$ 是 $\\sigma$有限的（$\\mathbb{R} = \\bigcup _{n} (-n, n]$）。由 $\\sigma$有限时的唯一性，扩张唯一。',
         '',
-        '**④ 「差常数」的来源。** $\\mu _F$ 只看增量：把 $F$ 换成 F + c，对一切 (a, b] 有 $F(b) - F(a)$ 不变，故预测度不变、扩张不变。反过来若 $\\mu _F = \\mu _G$，则对一切 $a < b$，$F(b) - F(a) = G(b) - G(a)$，固定 $a$ 即得 $F - G$ 是常数。∎'
+        '**④ 「差常数」的来源。** $\\mu _F$ 只看增量：把 $F$ 换成 F + c，对一切 (a, b] 有 $F(b) - F(a)$ 不变，故预测度不变、扩张不变。\n\n反过来若 $\\mu _F = \\mu _G$，则对一切 $a < b$，$F(b) - F(a) = G(b) - G(a)$，固定 $a$ 即得 $F - G$ 是常数。\n\n∎'
       ].join('\n')
     },
 
@@ -611,17 +613,17 @@ window.MG = window.MG || {};
       proof: [
         '设 $(X, \\mathcal{M}, \\mu )$ 是测度空间，$\\bar{\\mathcal{M}} = \\{ E \\cup F : E \\in \\mathcal{M}, F \\subseteq N$ 对某个零集 N }。',
         '',
-        '**① $\\bar{\\mathcal{M}}$ 是 $\\sigma$代数。** 含 $X$（$X \\in \\mathcal{M}$）。对可数并：$\\bigcup (E_{j} \\cup F_{j}) = (\\bigcup E_{j}) \\cup (\\bigcup F_{j})$，而 $\\bigcup F_{j} \\subseteq \\bigcup N_{j}$ 是零集。对补：$E \\cup F$ 的补是',
+        '**① $\\bar{\\mathcal{M}}$ 是 $\\sigma$代数。** 含 $X$（$X \\in \\mathcal{M}$）。\n\n对可数并：$\\bigcup (E_{j} \\cup F_{j}) = (\\bigcup E_{j}) \\cup (\\bigcup F_{j})$，而 $\\bigcup F_{j} \\subseteq \\bigcup N_{j}$ 是零集。\n\n对补：$E \\cup F$ 的补是',
         '',
         '$$(E \\cup F)^c = (E^c \\cap N^c) \\cup (E^c \\cap N \\setminus F)$$',
         '',
         '第一块属于 $\\mathcal{M}$，第二块含在零集 $N$ 里，故属于 $\\bar{\\mathcal{M}}$ 的形状。',
         '',
-        '**② $\\bar{\\mu}$ 良定义。** 设 $E_{1} \\cup F_{1} = E_{2} \\cup F_{2}$ 且 $F_{i} \\subseteq N_{i}$（零集）。由 $E_{1} \\subseteq E_{2} \\cup N_{2}$ 得 $\\mu (E_{1}) \\le \\mu (E_{2}) + 0$，反向同理，故 $\\mu (E_{1}) = \\mu (E_{2})$。',
+        '**② $\\bar{\\mu}$ 良定义。** 设 $E_{1} \\cup F_{1} = E_{2} \\cup F_{2}$ 且 $F_{i} \\subseteq N_{i}$（零集）。\n\n由 $E_{1} \\subseteq E_{2} \\cup N_{2}$ 得 $\\mu (E_{1}) \\le \\mu (E_{2}) + 0$，反向同理，故 $\\mu (E_{1}) = \\mu (E_{2})$。',
         '',
         '**③ $\\bar{\\mu}$ 是测度。** 把 $\\mathcal{N}$ 中集合的子集归入「零的一部分」后，可数可加性与 $\\mu$ 上的逐一对应（$E_{j}$ 部分可数可加、$F_{j}$ 部分含于零集）。',
         '',
-        '**④ 完备。** 若 $\\bar{\\mu}(E \\cup F) = 0$，则 $\\mu (E) = 0$，于是 $E \\cup F \\subseteq E \\cup N$ 是零集的子集 —— 按 $\\bar{\\mathcal{M}}$ 的定义它当然还在 $\\bar{\\mathcal{M}}$ 里，即：**$\\bar{\\mathcal{M}}$ 中每个零集的子集都可测**。∎'
+        '**④ 完备。** 若 $\\bar{\\mu}(E \\cup F) = 0$，则 $\\mu (E) = 0$，于是 $E \\cup F \\subseteq E \\cup N$ 是零集的子集 —— 按 $\\bar{\\mathcal{M}}$ 的定义它当然还在 $\\bar{\\mathcal{M}}$ 里，即：**$\\bar{\\mathcal{M}}$ 中每个零集的子集都可测**。\n\n∎'
       ].join('\n')
     },
 

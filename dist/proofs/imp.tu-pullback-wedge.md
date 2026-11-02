@@ -9,6 +9,8 @@
 
 $$F^{\ast}\mathrm{d}x^{i} = \mathrm{d}F^{i} = \sum_{j}\frac{\partial F^{i}}{\partial x^{j}}\ \mathrm{d}x^{j}.$$
 
-**保楔积。** 每点的 $\wedge$ 就是「张量积再交错化」，而交错化只置换变元、线性映射的拉回 $L^{\ast}$ 逐变元作用，两者交换；于是对线性映射 $L$ 有 $L^{\ast}(\alpha\wedge\beta) = L^{\ast}\alpha\wedge L^{\ast}\beta$。取 $L = \mathrm{d}F_{p}$ 并逐点拼接，再用 $F^{\ast}a = a\circ F$ 得
+**保楔积。** 每点的 $\wedge$ 就是「张量积再交错化」，而交错化只置换变元、线性映射的拉回 $L^{\ast}$ 逐变元作用，两者交换；于是对线性映射 $L$ 有 $L^{\ast}(\alpha\wedge\beta) = L^{\ast}\alpha\wedge L^{\ast}\beta$。
+
+取 $L = \mathrm{d}F_{p}$ 并逐点拼接，再用 $F^{\ast}a = a\circ F$ 得
 
 > 续见 proofs/imp.tu-pullback-wedge.2.md

@@ -47,7 +47,7 @@ window.MG = window.MG || {};
         '（乘法**换序**。）若 $A$ 可逆，则 $A^{T}$ 可逆且 $(A^{-1})^{T} = (A^{T})^{-1}$。'
       ].join('\n'),
       notes: [
-        '**为什么乘法要换序**：转置不是「重新排一下」，它是**对偶**。线性映射 $T : V \\to W$ 诱导对偶映射 $T^{*} : W^{*} \\to V^{*}$（方向反过来），而 $T^{*}$ 的矩阵恰好是 $T$ 的矩阵的转置。方向既然反了，复合的次序自然也要反 —— $(AB)^{T} = B^{T}A^{T}$ 说的就是这件事。',
+        '**为什么乘法要换序**：转置不是「重新排一下」，它是**对偶**。\n\n线性映射 $T : V \\to W$ 诱导对偶映射 $T^{*} : W^{*} \\to V^{*}$（方向反过来），而 $T^{*}$ 的矩阵恰好是 $T$ 的矩阵的转置。\n\n方向既然反了，复合的次序自然也要反 —— $(AB)^{T} = B^{T}A^{T}$ 说的就是这件事。',
         '**与配对的相容性**：把向量当列，则 $y^{T}Ax$ 是一个数，且等于 $(A^{T}y)^{T}x$ —— 「把 $A$ 从一边搬到另一边」全靠这条，它是后面「伴随算子」「对称矩阵」全部内容的起点。',
         '⚠️ 转置依赖**基的选取**（需要用对偶基），而下一节的共轭转置（$A^{*}$）在标准正交基下才等于「伴随算子的矩阵」。把两者混同是初学最常见的事故。',
         '⚠️ 别把 $(AB)^{T} = B^{T}A^{T}$ 记成 $A^{T}B^{T}$：只有当 $A, B$ 都是方阵且碰巧可交换时才可能对，一般不成立。'
@@ -83,7 +83,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**它是伴随算子的矩阵**：若在**标准正交基**下取矩阵，线性映射 $T$ 的伴随算子 $T^{*}$（`def.operator-adjoint`）的矩阵就是 $T$ 的矩阵的共轭转置。⚠️ 换了非标准正交基，这两者不再相等 —— 那条关系是「标准正交基」的特权，不是坐标无关的恒等式。',
-        '**为什么必须共轭**：$\\mathbb{C}^{n}$ 的标准内积是 $\\langle x, y\\rangle = \\sum \\overline{x_i} y_i$（对第一个变元共轭），于是把 $A$ 从左边搬到右边时，$\\overline{A}$ 会自然出现。用「只转置」的版本，$\\langle Ax,y\\rangle = \\langle x, A^{T}y\\rangle$ 在复数域上是错的。',
+        '**为什么必须共轭**：$\\mathbb{C}^{n}$ 的标准内积是 $\\langle x, y\\rangle = \\sum \\overline{x_i} y_i$（对第一个变元共轭），于是把 $A$ 从左边搬到右边时，$\\overline{A}$ 会自然出现。\n\n用「只转置」的版本，$\\langle Ax,y\\rangle = \\langle x, A^{T}y\\rangle$ 在复数域上是错的。',
         '⚠️ 三种记法并存：$A^{*}$、$A^{\\dagger}$、$A^{H}$。本图统一用 $A^{*}$（与伴随算子同一个星号）。',
         '⚠️ 「伴随矩阵」这个词在有些书里指**代数余子式矩阵**（本图用 `def.determinant` 那一支的记号）。这里按内积意义使用，遇到中文教材要注意分辨。'
       ].join('\n\n'),
@@ -149,8 +149,8 @@ window.MG = window.MG || {};
         '实对称矩阵是 Hermite 矩阵在 $A$ 取实值时的特例，此时 (iv) 可写成 $Q^{T}AQ$ 为对角阵，$Q$ 正交。'
       ].join('\n'),
       notes: [
-        '**为什么特征值是实的**：取特征向量 $x \\ne 0$ 使 $Ax = \\lambda x$，则 $\\lambda\\langle x, x\\rangle = \\langle Ax, x\\rangle = \\langle x, Ax\\rangle = \\overline{\\lambda}\\langle x, x\\rangle$ —— 第二步用的就是自伴。于是 $\\lambda = \\overline{\\lambda}$。',
-        '**为什么不同特征值的特征向量正交**：若 $Ax = \\lambda x$、$Ay = \\mu y$，则 $\\lambda\\langle x,y\\rangle = \\langle Ax,y\\rangle = \\langle x,Ay\\rangle = \\mu\\langle x,y\\rangle$，而 $\\lambda \\ne \\mu$ $\\implies$ $\\langle x,y\\rangle = 0$。这两行是整章的核心计算，谱定理全靠它起头。',
+        '**为什么特征值是实的**：取特征向量 $x \\ne 0$ 使 $Ax = \\lambda x$，则 $\\lambda\\langle x, x\\rangle = \\langle Ax, x\\rangle = \\langle x, Ax\\rangle = \\overline{\\lambda}\\langle x, x\\rangle$ —— 第二步用的就是自伴。\n\n于是 $\\lambda = \\overline{\\lambda}$。',
+        '**为什么不同特征值的特征向量正交**：若 $Ax = \\lambda x$、$Ay = \\mu y$，则 $\\lambda\\langle x,y\\rangle = \\langle Ax,y\\rangle = \\langle x,Ay\\rangle = \\mu\\langle x,y\\rangle$，而 $\\lambda \\ne \\mu$ $\\implies$ $\\langle x,y\\rangle = 0$。\n\n这两行是整章的核心计算，谱定理全靠它起头。',
         '**它和二次型的关系**：对称矩阵与二次型一一对应（$q(x) = x^{T}Ax$，`def.quadratic-form`）；Hermite 矩阵与 Hermite 型一一对应。「正定」就是这条对应下「$q > 0$」（`def.positive-definite-matrix`）。',
         '⚠️ 别把「Hermite」与「对称」当两件无关的事：实对称 $\\subset$ Hermite。而**复对称**（$A^{T} = A$ 而 $A^{*} \\ne A$）既不是 Hermite 也没有实特征值 —— 复数域上要用 $A^{*}$，不是 $A^{T}$。'
       ].join('\n\n'),
@@ -254,7 +254,7 @@ window.MG = window.MG || {};
         '**特例**：$A$ 正规时 $T$ 必是对角阵 —— 这就是谱定理（`thm.spectral-matrix`）。'
       ].join('\n'),
       notes: [
-        '**证明骨架**：对 $n$ 归纳。取特征向量 $x$（$\\lVert x\\rVert = 1$），补成标准正交基 $U_{1} = (x, \\ldots)$，则 $U_{1}^{*}AU_{1} = \\begin{pmatrix} \\lambda & * \\\\ 0 & A_{1}\\end{pmatrix}$；对 $A_{1}$ 用归纳假设，再拼回去。**关键**是「补成标准正交基」这一步 —— 它保证变换是酉的，从而是稳定的。',
+        '**证明骨架**：对 $n$ 归纳。\n\n取特征向量 $x$（$\\lVert x\\rVert = 1$），补成标准正交基 $U_{1} = (x, \\ldots)$，则 $U_{1}^{*}AU_{1} = \\begin{pmatrix} \\lambda & * \\\\ 0 & A_{1}\\end{pmatrix}$；\n\n对 $A_{1}$ 用归纳假设，再拼回去。\n\n**关键**是「补成标准正交基」这一步 —— 它保证变换是酉的，从而是稳定的。',
         '⭐ **为什么它比 Jordan 标准形更常用**：Jordan 形用任意相似（$P^{-1}AP$），理论上漂亮但 $P$ 可能病态到无法计算；Schur 用酉相似（$U^{*}AU$），条件数永远是 1。所以**数值线性代数一律用 Schur，不用 Jordan**。',
         '**它给出谱定理的捷径**：若 $A$ 正规且 $U^{*}AU = T$ 上三角，则 $T$ 也正规；而上三角且正规 $\\implies$ 必是对角阵（比较 $(TT^{*})_{11}$ 的两边即得第一行除对角元外全零，再归纳）。',
         '⚠️ 实情形**不能**做成实对角/实三角到「只有 $1\\times1$ 块」的程度：旋转 $90^\\circ$ 那个例子说明 $2\\times 2$ 块躲不掉。'
@@ -290,7 +290,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**四个等价说法，任取其一当定义都行**：$A$ 正规；$A$ 有标准正交特征向量基；$A = U\\Lambda U^{*}$；$A$ 的谱测度只取原子值。矩阵语言里第一种最省事，第二种最直观（`thm.spectral-matrix` 的全部内容就是「两者等价」）。',
-        '**谱分解的读法**：$A = \\sum_i \\lambda_i P_i$，其中 $P_i = u_i u_i^{*}$ 是往特征方向上的正交投影，满足 $P_i^2 = P_i$、$P_iP_j = 0$（$i \\ne j$）、$\\sum_i P_i = I$。于是**「对角化」= 「把算子拆成一堆互相垂直的方向，各自乘一个数」**。',
+        '**谱分解的读法**：$A = \\sum_i \\lambda_i P_i$，其中 $P_i = u_i u_i^{*}$ 是往特征方向上的正交投影，满足 $P_i^2 = P_i$、$P_iP_j = 0$（$i \\ne j$）、$\\sum_i P_i = I$。\n\n于是**「对角化」= 「把算子拆成一堆互相垂直的方向，各自乘一个数」**。',
         '⭐ 与函数演算的连接：有了谱分解，任意函数 $f$ 都能作用：$f(A) := \\sum_i f(\\lambda_i)P_i$。$\\sqrt{A}$、$e^{tA}$、$A^{1/2}$ 全是这一条的特例 —— 这也是为什么「正定矩阵可开方」不需要另外构造。',
         '⚠️ 非正规矩阵也可能可对角化（`thm.diagonalizable`），但特征向量**不正交**，相似矩阵 $P$ 一般病态。所以「可对角化」与「酉可对角化」是两件事：后者要求**正交**，强得多。'
       ].join('\n\n'),
@@ -322,7 +322,7 @@ window.MG = window.MG || {};
         '**与 SVD 的关系**：把 $P$ 对角化（$P = V\\Sigma V^{*}$）即得 $A = (UV)\\Sigma V^{*}$ —— 这正是奇异值分解；$\\Sigma$ 的对角元就是**奇异值**。'
       ].join('\n'),
       notes: [
-        '**为什么 $P = \\sqrt{A^{*}A}$**：就像 $\\lvert z\\rvert = \\sqrt{\\bar z z}$。$A^{*}A$ 总是半正定 Hermite（`def.positive-definite-matrix` 的注），所以能开唯一的半正定平方根。定义 $U := AP^{-1}$（$A$ 可逆时），剩下只需验 $U$ 保内积 —— 一行计算：$U^{*}U = P^{-1}A^{*}AP^{-1} = P^{-1}P^{2}P^{-1} = I$。',
+        '**为什么 $P = \\sqrt{A^{*}A}$**：就像 $\\lvert z\\rvert = \\sqrt{\\bar z z}$。\n\n$A^{*}A$ 总是半正定 Hermite（`def.positive-definite-matrix` 的注），所以能开唯一的半正定平方根。\n\n定义 $U := AP^{-1}$（$A$ 可逆时），剩下只需验 $U$ 保内积 —— 一行计算：$U^{*}U = P^{-1}A^{*}AP^{-1} = P^{-1}P^{2}P^{-1} = I$。',
         '⭐ **几何读法**：任何线性映射都是「先沿一组正交方向各自伸缩（$P$），再整体旋转（$U$）」。伸缩因子就是奇异值。这条对**非方阵**也成立（用等距代替酉）。',
         '**与 SVD 的分工**：极分解强调「旋转 $\\times$ 拉伸」这个**结构**，SVD 强调「$A = U\\Sigma V^{*}$ 这个**坐标写法**」。两者信息量相同，SVD 多给了两组基底。',
         '⚠️ 唯一性要说清：$P$ 永远唯一，但 $A$ 奇异时 $U$ 可以在 $A$ 的核上任意取 —— 所以「极分解唯一」这句话只在可逆时成立。'
@@ -358,7 +358,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠️ **公式 (3) 在本图只做到有限维**。一般 Banach 代数上的 Gelfand 公式 $\\rho(a) = \\lim\\lVert a^{n}\\rVert^{1/n}$（以及「谱非空」「谱半径等于谱的上确界」）需要复分析（Liouville）与算子理论，**留给泛函那一批**，这里不展开成独立节点。',
-        '**为什么第 (1) 条成立但常常严格**：取特征对 $Ax = \\lambda x$，则 $\\lvert\\lambda\\rvert\\lVert x\\rVert = \\lVert Ax\\rVert \\le \\lVert A\\rVert\\lVert x\\rVert$。等号不总成立 —— $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0\\end{pmatrix}$ 的 $\\rho = 0$ 而任何范数都 $> 0$，它是**幂零**的。',
+        '**为什么第 (1) 条成立但常常严格**：取特征对 $Ax = \\lambda x$，则 $\\lvert\\lambda\\rvert\\lVert x\\rVert = \\lVert Ax\\rVert \\le \\lVert A\\rVert\\lVert x\\rVert$。\n\n等号不总成立 —— $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0\\end{pmatrix}$ 的 $\\rho = 0$ 而任何范数都 $> 0$，它是**幂零**的。',
         '⭐ **它的用处比范数更准**：$A^{k}$ 的增长其实由 $\\rho$ 控制（Jordan 块的多项式因子只贡献 $k^{m-1}$ 的因子，被 $\\rho^{k}$ 的指数压住）。所以「迭代收敛」的判据一律写 $\\rho < 1$，而不是 $\\lVert A\\rVert < 1$。',
         '⚠️ 非方阵没有谱半径（特征值只对方阵有定义）；伪谱（pseudospectrum）是另一回事，本图未收录。'
       ].join('\n\n'),
@@ -423,7 +423,7 @@ window.MG = window.MG || {};
         '**推论（Weyl 单调性）**：若 $A \\le B$（即 $B - A$ 半正定），则 $\\lambda_{k}(A) \\le \\lambda_{k}(B)$ 对每个 $k$ 成立。'
       ].join('\n'),
       notes: [
-        '**证明骨架（一侧）**：取 $S_{0} = \\operatorname{span}(u_{1},\\ldots,u_{k})$（前 $k$ 个特征向量），在它上面 $\\min R_A = \\lambda_k$ 取到于 $u_k$，于是「$\\max$ 至少是 $\\lambda_k$」。另一侧：任取 $\\dim S = k$，它与 $\\operatorname{span}(u_k, \\ldots, u_n)$ 的维数和 $> n$，必有交，取交里的单位向量即得 $\\min_{S} R_A \\le \\lambda_k$。两个不等式合起来就是等号。',
+        '**证明骨架（一侧）**：取 $S_{0} = \\operatorname{span}(u_{1},\\ldots,u_{k})$（前 $k$ 个特征向量），在它上面 $\\min R_A = \\lambda_k$ 取到于 $u_k$，于是「$\\max$ 至少是 $\\lambda_k$」。\n\n另一侧：任取 $\\dim S = k$，它与 $\\operatorname{span}(u_k, \\ldots, u_n)$ 的维数和 $> n$，必有交，取交里的单位向量即得 $\\min_{S} R_A \\le \\lambda_k$。\n\n两个不等式合起来就是等号。',
         '⭐ **它为什么重要**：把「特征值是方程的根」换成「特征值是某个优化问题的值」，于是特征值有了**连续性**（子空间族是紧的）与**单调性**（Weyl）。扰动理论、数值特征值算法、图谱理论全都建立在这条上。',
         '**与 SVD 的连接**：对 $A^{*}A$ 用这条，就得到奇异值的变分刻画 $\\sigma_k = \\max_{\\dim S=k}\\min_{x\\in S}\\lVert Ax\\rVert/\\lVert x\\rVert$ —— 这是「低秩逼近最优」的严格依据（Eckart–Young）。',
         '⚠️ 前提是 **Hermite**（或实对称）。一般矩阵没有实谱，Rayleigh 商也不是实的，这套不等式不成立；那种情形要用奇异值代替特征值。'

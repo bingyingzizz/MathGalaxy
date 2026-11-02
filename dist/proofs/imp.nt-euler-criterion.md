@@ -7,7 +7,9 @@
 
 
 
-由 Fermat 小定理，$\left(a^{n}\right)^{2} = a^{p-1} \equiv 1 \pmod p$。于是 $a^{n}$ 是 $x^{2} \equiv 1$ 的根，而 $\mathbb{Z}/p\mathbb{Z}$ 是域，$x^{2} - 1 = (x-1)(x+1)$ 只有两根，故 $a^{n} \equiv \pm 1$。
+由 Fermat 小定理，$\left(a^{n}\right)^{2} = a^{p-1} \equiv 1 \pmod p$。
+
+于是 $a^{n}$ 是 $x^{2} \equiv 1$ 的根，而 $\mathbb{Z}/p\mathbb{Z}$ 是域，$x^{2} - 1 = (x-1)(x+1)$ 只有两根，故 $a^{n} \equiv \pm 1$。
 
 
 
@@ -15,7 +17,11 @@
 
 
 
-**若 $a$ 不是剩余**：$x^{n} \equiv 1$ 在 $\mathbb{F}_{p}^{\times}$ 里恰有 $n = \frac{p-1}{2}$ 个解（$\mathbb{F}_{p}^{\times}$ 循环，或直接由「$x^{n} - 1$ 至多 $n$ 个根」加计数），而这 $n$ 个解全是剩余（前一段已证剩余都满足）。剩余的个数也恰是 $n$，故「$a^{n} \equiv 1$」$\iff$「$a$ 是剩余」。剩下的是非剩余只能取 $-1$。
+**若 $a$ 不是剩余**：$x^{n} \equiv 1$ 在 $\mathbb{F}_{p}^{\times}$ 里恰有 $n = \frac{p-1}{2}$ 个解（$\mathbb{F}_{p}^{\times}$ 循环，或直接由「$x^{n} - 1$ 至多 $n$ 个根」加计数），而这 $n$ 个解全是剩余（前一段已证剩余都满足）。
+
+剩余的个数也恰是 $n$，故「$a^{n} \equiv 1$」$\iff$「$a$ 是剩余」。
+
+剩下的是非剩余只能取 $-1$。
 
 
 

@@ -11,4 +11,6 @@ $$r(\omega) := \bigl(\omega\big|_{U},\ \omega\big|_{V}\bigr),\qquad s(\omega_{U}
 
 **单射。** $r(\omega) = 0$ 说明 $\omega$ 在 $U$ 与 $V$ 上都为零，而 $M = U \cup V$，故 $\omega = 0$。
 
+**满射（这是唯一要动手的一步）。** 给定 $\omega \in \Omega^{k}(U \cap V)$，取从属于 $\{U, V\}$ 的光滑单位分解 $\rho_{U} + \rho_{V} = 1$（`thm.smooth-partition-unity`）。
+
 > 续见 proofs/imp.mf-mayer-vietoris.2.md

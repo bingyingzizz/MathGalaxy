@@ -7,7 +7,11 @@
 
 
 
-**唯一性**：设 $p_{1}\cdots p_{r} = q_{1}\cdots q_{s}$。$p_{1}$ 整除右边，由 Euclid 引理（$p \mid xy \implies p \mid x$ 或 $p \mid y$，对乘积归纳）得 $p_{1} = q_{j}$ 对某个 $j$；两边约掉 $p_{1}$，对 $r + s$ 归纳即得 $r = s$ 且两边的素因子多重集相同。
+**唯一性**：设 $p_{1}\cdots p_{r} = q_{1}\cdots q_{s}$。
+
+$p_{1}$ 整除右边，由 Euclid 引理（$p \mid xy \implies p \mid x$ 或 $p \mid y$，对乘积归纳）得 $p_{1} = q_{j}$ 对某个 $j$；
+
+两边约掉 $p_{1}$，对 $r + s$ 归纳即得 $r = s$ 且两边的素因子多重集相同。
 
 
 

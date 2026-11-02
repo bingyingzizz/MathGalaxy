@@ -28,7 +28,7 @@ window.MG = window.MG || {};
         '- **右正合** $\\iff$ 在 $M$、$M\'\'$ 处正合。'
       ].join('\n'),
       notes: [
-        '**证明。** 三句话逐条对照定义即可：「在 $M\'$ 处正合」读作 $\\ker i = 0$（即 $i$ 单）；「在 $M$ 处正合」读作 $\\operatorname{im} i = \\ker p$；「在 $M\'\'$ 处正合」读作 $\\operatorname{coker} p = 0$（即 $p$ 满）✓。把这几条组合起来正是左/右/短正合的定义 ✓。∎',
+        '**证明。** 三句话逐条对照定义即可：「在 $M\'$ 处正合」读作 $\\ker i = 0$（即 $i$ 单）；「在 $M$ 处正合」读作 $\\operatorname{im} i = \\ker p$；\n\n「在 $M\'\'$ 处正合」读作 $\\operatorname{coker} p = 0$（即 $p$ 满）✓。\n\n把这几条组合起来正是左/右/短正合的定义 ✓。\n\n∎',
         '⭐ 用处：把「整条列正合」这件整体的事拆成**逐点检查**，实际验证时用的就是这一条。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 5.10']
@@ -49,7 +49,7 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。**',
-          '**（一）双积。** 伴随（不论左右）都加法：右伴随保积、左伴随保余积 ✓（见「伴随函子都加法」）。于是 $\\mathcal{D}$ 里 $F(X) \\oplus F(Y)$ 是双积，而 $F$ 全忠实把它「如实」搬回 $\\mathcal{C}$：由米田引理，$\\operatorname{Hom}_{\\mathcal{C}}(Z, \\cdot)$ 上的两条等式与 $\\mathcal{D}$ 里的完全一致 ✓。',
+          '**（一）双积。** 伴随（不论左右）都加法：右伴随保积、左伴随保余积 ✓（见「伴随函子都加法」）。\n\n于是 $\\mathcal{D}$ 里 $F(X) \\oplus F(Y)$ 是双积，而 $F$ 全忠实把它「如实」搬回 $\\mathcal{C}$：由米田引理，$\\operatorname{Hom}_{\\mathcal{C}}(Z, \\cdot)$ 上的两条等式与 $\\mathcal{D}$ 里的完全一致 ✓。',
           '**（二）阿贝尔性。** 有了双积后核余核再由 $\\mathcal{D}$ 里「每个态射都严格」（$\\operatorname{coker}(\\ker u) \\cong \\ker(\\operatorname{coker} u)$）沿**正合**函子搬回来 ✓。∎'
         ].join('\n'),
         '⭐ 读法：**「往里放」的全忠实函子只要还有伴随，子范畴就白拿加法结构** —— 这就是「$\\mathbf{Ab}$ 的子范畴为什么自动加法」的答案。'
@@ -76,8 +76,8 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。**',
-          '**$(\\Longrightarrow)$** 取 $I := \\operatorname{Hom}_{\\mathcal{C}}(G, M)$，令 $\\coprod_I G \\to M$ 的各分量按对应态射来 ✓。若它不是满射，则 $M \\to \\operatorname{coker}$ 非零，由生成性存在 $g : G \\to M$ 使这个复合非零 —— 可是 $g$ 本来就是 $I$ 中的一个分量，它的像落在 $\\operatorname{im}$ 里，矛盾 ✓。',
-          '**$(\\Longleftarrow)$** 给 $f \\ne g : M \\to N$，则 $h := f - g \\ne 0$。取满射 $G^{(I)} \\twoheadrightarrow M$，于是 $h \\circ (\\text{满射}) \\ne 0$，特别地某个分量 $G \\to M$ 上非零 ✓，即 $\\operatorname{Hom}(G, h) \\ne 0$ —— 所以 $\\operatorname{Hom}(G, -)$ 忠实，$G$ 是生成元 ✓。∎'
+          '**$(\\Longrightarrow)$** 取 $I := \\operatorname{Hom}_{\\mathcal{C}}(G, M)$，令 $\\coprod_I G \\to M$ 的各分量按对应态射来 ✓。\n\n若它不是满射，则 $M \\to \\operatorname{coker}$ 非零，由生成性存在 $g : G \\to M$ 使这个复合非零 —— 可是 $g$ 本来就是 $I$ 中的一个分量，它的像落在 $\\operatorname{im}$ 里，矛盾 ✓。',
+          '**$(\\Longleftarrow)$** 给 $f \\ne g : M \\to N$，则 $h := f - g \\ne 0$。\n\n取满射 $G^{(I)} \\twoheadrightarrow M$，于是 $h \\circ (\\text{满射}) \\ne 0$，特别地某个分量 $G \\to M$ 上非零 ✓，即 $\\operatorname{Hom}(G, h) \\ne 0$ —— 所以 $\\operatorname{Hom}(G, -)$ 忠实，$G$ 是生成元 ✓。\n\n∎'
         ].join('\n'),
         '⚠️ 这条判据其实**只用到余积**（AB3），滤过余极限没有出场（AB5 的那部分条件用不上）。'
       ].join('\n\n'),
@@ -120,7 +120,7 @@ window.MG = window.MG || {};
         '设 $\\mathcal{C}$ 是范畴、$X \\in \\mathcal{C}$。则 $\\mathbb{Z}\\cdot h_{X}$ 是预层范畴 $\\widehat{\\mathcal{C}}(\\mathbf{Ab})$ 里的**投射对象**；更一般地，$\\mathbb{Z}\\cdot T$（$T$ 是任意预层）也投射。'
       ].join('\n'),
       notes: [
-        '**证明。** 投射性等价于 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot T, -)$ **正合** ✓。由自由对象的万有性质，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot T, M) \\cong M(T)$ —— 这里的 $M(T)$ 指「预层的 $T$ 处取值」那一族逐点取值 ✓；而预层范畴里的正合性是**逐点判**的，逐点正是阿贝尔群之间的 Hom，因而是正合的 ✓。∎',
+        '**证明。** 投射性等价于 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot T, -)$ **正合** ✓。\n\n由自由对象的万有性质，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot T, M) \\cong M(T)$ —— 这里的 $M(T)$ 指「预层的 $T$ 处取值」那一族逐点取值 ✓；\n\n而预层范畴里的正合性是**逐点判**的，逐点正是阿贝尔群之间的 Hom，因而是正合的 ✓。\n\n∎',
         '⭐ 这就是「自由即投射」在层论里的样子，也是 $\\mathbb{Z}\\cdot X_{\\bullet}$ 能充当投射消解的依据。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 5.19']
@@ -143,7 +143,7 @@ window.MG = window.MG || {};
         '是 $\\mathcal{T}(\\mathbf{Ab})$ 的一组生成元。'
       ].join('\n'),
       notes: [
-        '**证明。** 由自由对象的万有性质，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M) = M(X) = \\operatorname{Hom}(X, M)$ ✓ —— 于是「用 $\\mathbb{Z}\\cdot X$ 检测态射」与「用 $X$ 检测态射」是同一件事 ✓。$S$ 生成 $\\mathcal{T}$ 说明后者够用，所以前者也够用 ✓。'
+        '**证明。** 由自由对象的万有性质，$\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X, M) = M(X) = \\operatorname{Hom}(X, M)$ ✓ —— 于是「用 $\\mathbb{Z}\\cdot X$ 检测态射」与「用 $X$ 检测态射」是同一件事 ✓。\n\n$S$ 生成 $\\mathcal{T}$ 说明后者够用，所以前者也够用 ✓。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 5.20']
     },

@@ -13,4 +13,8 @@ $$\frac{(f \circ \gamma_1)'(0)}{(f \circ \gamma_2)'(0)} = \frac{\gamma_1'(0)}{\g
 
 两个复数的商相等，当且仅当它们相差一个正实数倍；而商的辐角就是两切向量的夹角。所以像曲线的夹角与原来**大小和方向都相同** —— 保角。
 
+**(ii) 保角推出 CR。** 设 $f$ 在 $z_0$ 实可微，增量映射是实线性的 $T(\Delta z) = A\Delta z + B\overline{\Delta z}$。
+
+$T$ 保持（有向）夹角，等价于 $T$ 是「乘一个非零复数」，即 $B = 0$。
+
 > 续见 proofs/imp.conformal.2.md

@@ -43,7 +43,9 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '⚠️ **交错 $\\implies$ 每个向量都迷向**：$\\omega(v,v) = 0$ 恒成立，所以辛空间里没有「长度」可言，只有「配对」。这正是它与内积的根本分歧 —— 内积空间里 $\\langle v,v\\rangle > 0$，辛空间里永远是 $0$。',
-        '**为什么交错 = 反对称**：展开 $\\omega(v+w, v+w) = 0$ 得 $\\omega(v,w) + \\omega(w,v) = 0$。$\\operatorname{char} K \\ne 2$ 时两者等价；特征 $2$ 时交错更强（反对称还允许 $\\omega(v,v) \\ne 0$），本图按 $\\operatorname{char} K \\ne 2$ 口径写（与 `thm.witt-cancellation` 一致）。',
+        '**为什么交错 = 反对称**：展开 $\\omega(v+w, v+w) = 0$ 得 $\\omega(v,w) + \\omega(w,v) = 0$。\n\n' +
+        '$\\operatorname{char} K \\ne 2$ 时两者等价；\n\n' +
+        '特征 $2$ 时交错更强（反对称还允许 $\\omega(v,v) \\ne 0$），本图按 $\\operatorname{char} K \\ne 2$ 口径写（与 `thm.witt-cancellation` 一致）。',
         '⭐ **它是「有向面积」的代数化**：在 $\\mathbb{R}^{2}$ 上 $\\omega(u, w) = u_{1}w_{2} - u_{2}w_{1}$ 就是平行四边形面积（带符号）。推广到 $2n$ 维就是各坐标平面上的面积之和。所以辛形式的唯一作用就是**测量二维投影的面积**。',
         '⚠️ 辛形式**一定存在**于偶数维空间（`thm.symplectic-normal-form`），奇数维上只有退化的交错型 —— 这与内积（任意维都有）又一次分道扬镳。'
       ].join('\n\n'),
@@ -108,7 +110,7 @@ window.MG = window.MG || {};
         '**与对称型的对照**：实对称型由惯性指数 $(p, q)$ 分类（`thm.sylvester-law-inertia`），有 $\\frac{n(n+1)}{2}$ 种；辛形式只有**一个**不变量 —— 维数。'
       ].join('\n'),
       notes: [
-        '**证明骨架**：取 $e_{1} \\ne 0$，由非退化性存在 $f_{1}$ 使 $\\omega(e_{1}, f_{1}) = 1$；则 $\\operatorname{span}(e_{1}, f_{1})$ 是一块非退化辛平面，且 $V = \\operatorname{span}(e_{1},f_{1}) \\oplus \\operatorname{span}(e_{1},f_{1})^{\\perp}$（正交补仍是辛空间）。对维数归纳即可。**维数必偶**是这条归纳的副产物。',
+        '**证明骨架**：取 $e_{1} \\ne 0$，由非退化性存在 $f_{1}$ 使 $\\omega(e_{1}, f_{1}) = 1$；则 $\\operatorname{span}(e_{1}, f_{1})$ 是一块非退化辛平面，且 $V = \\operatorname{span}(e_{1},f_{1}) \\oplus \\operatorname{span}(e_{1},f_{1})^{\\perp}$（正交补仍是辛空间）。\n\n对维数归纳即可。\n\n**维数必偶**是这条归纳的副产物。',
         '⭐ **为什么比对称型简单**：对称型要化成对角形，得处理「同一个数能不能开平方」的问题（所以 $\\mathbb{R}$ 上分正负、$\\mathbb{C}$ 上只剩秩）；交错型的标准形 $J_{0}$ 里只有 $0$ 和 $\\pm 1$，**没有待开方的系数**。这就是「辛几何在任意域（char$\\ne$2）上都长一样」的原因。',
         '⚠️ **奇数维时只有退化交错型**：比如 $\\mathbb{R}^{3}$ 上取 $\\omega$ 的秩必为偶数，所以要么退化、要么为零。这与「$\\mathbb{R}^{3}$ 上内积很多」形成鲜明对照。',
         '⚠️ 这条定理是**辛流形上 Darboux 定理的线性影子**：局部看每一点切空间都是标准辛空间，拼起来就是「局部没有不变量」。辛几何之所以「硬」（刚性），正是因为局部平凡、所有信息都在整体。'
@@ -176,8 +178,8 @@ window.MG = window.MG || {};
         '**由上一条立刻得到**：$A^{T}J_{0}A = J_{0}$ $\\implies$ $\\det A = \\pm 1$；事实上 $\\det A = 1$ 恒成立（$\\mathrm{Sp}$ 是 $\\mathrm{SL}$ 的子群）。'
       ].join('\n'),
       notes: [
-        '**为什么行列式必为 $1$**：取行列式得 $(\\det A)^{2}\\det J_{0} = \\det J_{0}$，所以 $\\det A = \\pm 1$。要排除 $-1$：用 Pfaffian（$\\operatorname{Pf}$）或「$\\mathrm{Sp}(2n)$ 连通」—— 本图只记结论，证明属 Lie 群论。',
-        '⭐ **三类经典群的分工**：$O(n)$ 保持对称正定型（内积）、$U(n)$ 保持 Hermite 型、$\\mathrm{Sp}(2n)$ 保持非退化交错型（辛形式）。它们是**同一个判据**（保持某个型不变）在三个不同型上的结果 —— 这条对照本身就是 `def.orthogonally-similar` 那个「填上那一格」的辛版本。',
+        '**为什么行列式必为 $1$**：取行列式得 $(\\det A)^{2}\\det J_{0} = \\det J_{0}$，所以 $\\det A = \\pm 1$。\n\n要排除 $-1$：用 Pfaffian（$\\operatorname{Pf}$）或「$\\mathrm{Sp}(2n)$ 连通」—— 本图只记结论，证明属 Lie 群论。',
+        '⭐ **三类经典群的分工**：$O(n)$ 保持对称正定型（内积）、$U(n)$ 保持 Hermite 型、$\\mathrm{Sp}(2n)$ 保持非退化交错型（辛形式）。\n\n它们是**同一个判据**（保持某个型不变）在三个不同型上的结果 —— 这条对照本身就是 `def.orthogonally-similar` 那个「填上那一格」的辛版本。',
         '⚠️ **$\\mathrm{Sp}(2n)$ 与紧群不同**：$O(n)$、$U(n)$ 都是紧群，而 $\\mathrm{Sp}(2n,\\mathbb{R})$ 非紧（它含有 $\\begin{pmatrix} P & 0 \\\\ 0 & (P^{T})^{-1}\\end{pmatrix}$ 这样任意拉伸的元）—— 这与「辛几何没有局部不变量（`thm.symplectic-normal-form`）」是同一件事的两面。',
         '⚠️ 命名撞车：物理文献里「辛矩阵」有时指 $\\mathrm{Sp}(2)$（单模矩阵），那是**模形式**的对象，不是这里的 $2n$ 维辛群。'
       ].join('\n\n'),
@@ -209,7 +211,7 @@ window.MG = window.MG || {};
         '所以几何上它说的是：**Gram 行列式 = 平行四边形的面积的平方**（`def.gram-matrix`）。'
       ].join('\n'),
       notes: [
-        '**Cauchy–Schwarz 是它的推论**：右边是平方和，非负 $\\implies$ 左边 $\\ge 0$ $\\implies$ $\\lvert\\langle u,w\\rangle\\rvert \\le \\lVert u\\rVert\\lVert w\\rVert$。而且等号成立 $\\iff$ 右边每项为零 $\\iff$ $u, w$ 成比例。所以这条恒等式比 Cauchy–Schwarz **强**：它给出了差多少。',
+        '**Cauchy–Schwarz 是它的推论**：右边是平方和，非负 $\\implies$ 左边 $\\ge 0$ $\\implies$ $\\lvert\\langle u,w\\rangle\\rvert \\le \\lVert u\\rVert\\lVert w\\rVert$。\n\n而且等号成立 $\\iff$ 右边每项为零 $\\iff$ $u, w$ 成比例。\n\n所以这条恒等式比 Cauchy–Schwarz **强**：它给出了差多少。',
         '⭐ **一般 $k$ 个向量**：Gram 行列式 $\\det G$ 等于这 $k$ 个向量张成的平行体体积的平方（`def.gram-matrix` 的注）。$k=2$ 就是本条；$\\det G \\ge 0$ 就是「体积是实数」。',
         '⚠️ 它不是辛的：这里的 $\\langle\\cdot,\\cdot\\rangle$ 是**内积**（对称正定），不是辛形式。名字里的「Lagrange」与 `def.lagrangian-subspace` 是同一个人的不同贡献 —— 前者是内积几何，后者是辛几何，**别把两条接成因果关系**。',
         '⚠️ 复情形要小心：用 Hermite 内积时右边要改成模方 $\\lvert u_{i}\\bar{w}_{j} - u_{j}\\bar{w}_{i}\\rvert^{2}$，左边仍非负，结论不变。'

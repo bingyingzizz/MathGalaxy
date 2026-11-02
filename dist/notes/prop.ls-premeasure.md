@@ -6,6 +6,10 @@
 - **有限可加**：把两个不交并拼起来直接相加 ✓。
 - **可数可加（右连续在这里上场）**：设 $(a, b] = \bigsqcup_{j \ge 1}(a_{j}, b_{j}]$。
   **$\ge$**：对每个 $n$ 有 $(a,b] \supseteq \bigsqcup_{j \le n}(a_{j},b_{j}]$，由递增性 $F(b)-F(a) \ge \sum_{j \le n}\bigl(F(b_{j})-F(a_{j})\bigr)$，令 $n \to \infty$ ✓；
-  **$\le$**：给 $\varepsilon > 0$。**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \varepsilon 2^{-j}$；再用右连续取 $\delta > 0$ 使 $F(a+\delta) < F(a) + \varepsilon$。开区间族 $\{(a_{j}, c_{j})\}
+  **$\le$**：给 $\varepsilon > 0$。
+
+**右连续**给每个 $j$ 一个 $c_{j} > b_{j}$ 使 $F(c_{j}) < F(b_{j}) + \varepsilon 2^{-j}$；
+
+再用右连续取 $\delta > 0$ 使 $F(a+\delta) < F(a) + \varepsilon$。
 
 > 续见 notes/prop.ls-premeasure.2.md

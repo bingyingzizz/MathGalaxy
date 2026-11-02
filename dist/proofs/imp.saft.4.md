@@ -3,6 +3,8 @@
 
 `def.limit` 极限 + `def.comma-category` 逗号范畴 → `thm.saft` 伴随函子定理
 
+用 $\varphi$ 沿 $\eta$ 的互逆性（并用 $G$ 保极限把极限拉回去）得到 $u \circ \pi = v \circ \pi$，于是 $u = v$。
+
 **自然性**由两边各自对 $Y_{0}$ 的自然性逐项核对，略。这样 $\varphi$ 是自然同构，$F \dashv G$。∎
 
 **（$\Longrightarrow$）** 反方向就是「右伴随保极限」那条定理。∎

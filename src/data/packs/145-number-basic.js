@@ -22,7 +22,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $a, b \\in \\mathbb{Z}$。若存在 $c \\in \\mathbb{Z}$ 使 $b = ac$，就说 **$a$ 整除 $b$**，记 $a \\mid b$；否则记 $a \\nmid b$。',
         '',
-        '基本性质：$a \\mid b \\implies a \\mid bc$；$a \\mid b$ 且 $b \\mid c$ $\\implies$ $a \\mid c$；$a \\mid b$ 且 $a \\mid c$ $\\implies$ $a \\mid (mb + nc)$ 对一切 $m, n \\in \\mathbb{Z}$；若 $a, b \\ne 0$，则 $a \\mid b$ 且 $b \\mid a$ $\\iff$ $a = \\pm b$。',
+        '基本性质：$a \\mid b \\implies a \\mid bc$；$a \\mid b$ 且 $b \\mid c$ $\\implies$ $a \\mid c$；$a \\mid b$ 且 $a \\mid c$ $\\implies$ $a \\mid (mb + nc)$ 对一切 $m, n \\in \\mathbb{Z}$；\n\n若 $a, b \\ne 0$，则 $a \\mid b$ 且 $b \\mid a$ $\\iff$ $a = \\pm b$。',
       ].join('\n'),
       notes: [
         '整除在 $\\mathbb{Z}$ 上**不是**偏序：反称性只在正整数上成立（$2 \\mid -2$ 与 $-2 \\mid 2$ 同时成立而 $2 \\ne -2$）。',
@@ -163,7 +163,7 @@ window.MG = window.MG || {};
         '素数有无穷多个。',
       ].join('\n'),
       notes: [
-        '证明只用带余除法：若素数只有 $p_{1}, \\cdots, p_{n}$，令 $N = p_{1}\\cdots p_{n} + 1$。$N > 1$ 必有素因数 $p$，而 $p \\ne p_{i}$（否则 $p \\mid N$ 且 $p \\mid p_{1}\\cdots p_{n}$，于是 $p \\mid 1$），矛盾。',
+        '证明只用带余除法：若素数只有 $p_{1}, \\cdots, p_{n}$，令 $N = p_{1}\\cdots p_{n} + 1$。\n\n$N > 1$ 必有素因数 $p$，而 $p \\ne p_{i}$（否则 $p \\mid N$ 且 $p \\mid p_{1}\\cdots p_{n}$，于是 $p \\mid 1$），矛盾。',
         '',
         '这条证明是**非构造**的：它没说第 $n+1$ 个素数是谁，也没给出 $\\pi(x)$ 的任何估计。定量版本（Чебышёв 的 $\\pi(x) \\asymp x/\\log x$）要用 Stirling 公式与组合恒等式，属于解析数论。',
         '',
@@ -192,7 +192,7 @@ window.MG = window.MG || {};
         '',
         '唯一性：用 Euclid 引理（$p \\mid ab \\implies p \\mid a$ 或 $p \\mid b$）。这是唯一分解整环（UFD）的标准论证。',
         '',
-        '代数里的抽象版本是「$\\mathbb{Z}$ 是唯一分解整环」：$K[x]$ 也有（`thm.poly-ufd`），$\\mathbb{Z}[\\sqrt{-5}]$ 没有（$6 = 2\\cdot 3 = (1+\\sqrt{-5})(1-\\sqrt{-5})$）。层级：Euclid 整环 $\\implies$ UFD $\\implies$ gcd 整环。',
+        '代数里的抽象版本是「$\\mathbb{Z}$ 是唯一分解整环」：$K[x]$ 也有（`thm.poly-ufd`），$\\mathbb{Z}[\\sqrt{-5}]$ 没有（$6 = 2\\cdot 3 = (1+\\sqrt{-5})(1-\\sqrt{-5})$）。\n\n层级：Euclid 整环 $\\implies$ UFD $\\implies$ gcd 整环。',
       ].join('\n\n'),
       refs: ['华罗庚《数论导引》§1'],
     },
@@ -261,7 +261,7 @@ window.MG = window.MG || {};
         '是环同构。等价说法：同余方程组 $x \\equiv a_{i} \\pmod{n_{i}}$（$i = 1, \\cdots, k$）对任意右端都有解，且解模 $N$ 唯一。',
       ].join('\n'),
       notes: [
-        '存在性（构造式）：由 Bézout，取 $e_{i}$ 满足 $e_{i} \\equiv 1 \\pmod{n_{i}}$、$e_{i} \\equiv 0 \\pmod{n_{j}}$（$j \\ne i$），即 $e_{i} = (N/n_{i})\\,u_{i}$，其中 $u_{i}(N/n_{i}) \\equiv 1 \\pmod{n_{i}}$；于是 $x = \\sum_{i} a_{i} e_{i}$ 就是解。',
+        '存在性（构造式）：由 Bézout，取 $e_{i}$ 满足 $e_{i} \\equiv 1 \\pmod{n_{i}}$、$e_{i} \\equiv 0 \\pmod{n_{j}}$（$j \\ne i$），即 $e_{i} = (N/n_{i})\\,u_{i}$，其中 $u_{i}(N/n_{i}) \\equiv 1 \\pmod{n_{i}}$；\n\n于是 $x = \\sum_{i} a_{i} e_{i}$ 就是解。',
         '',
         '唯一性：两个解之差被每个 $n_{i}$ 整除，而 $n_{i}$ 两两互素，故被 $N$ 整除。',
         '',
@@ -421,7 +421,7 @@ window.MG = window.MG || {};
         '',
         '**为什么必停**：余数序列 $r_{1} > r_{2} > \\cdots \\ge 0$ 是严格下降的非负整数串，由 $\\mathbb{N}$ 的良序不能无限下降，故某步得 $0$。',
         '',
-        '**为什么最后那个非零余数是 $\\gcd$**：设 $d \\mid a, d \\mid b$，由 $r_{i+1} = r_{i-1} - q_{i}r_{i}$ 归纳得 $d$ 整除每个 $r_{i}$，特别地 $d \\mid r_{n}$，故 $d \\le r_{n}$。反过来（倒着走）每个 $r_{i+1}$ 都整除 $r_{i-1}$ 与 $r_{i}$，于是 $r_{n}$ 同时整除 $a$ 与 $b$。所以 $r_{n}$ 是不超过一切公因数的公因数 —— 即最大的那个。',
+        '**为什么最后那个非零余数是 $\\gcd$**：设 $d \\mid a, d \\mid b$，由 $r_{i+1} = r_{i-1} - q_{i}r_{i}$ 归纳得 $d$ 整除每个 $r_{i}$，特别地 $d \\mid r_{n}$，故 $d \\le r_{n}$。\n\n反过来（倒着走）每个 $r_{i+1}$ 都整除 $r_{i-1}$ 与 $r_{i}$，于是 $r_{n}$ 同时整除 $a$ 与 $b$。\n\n所以 $r_{n}$ 是不超过一切公因数的公因数 —— 即最大的那个。',
       ].join('\n\n'),
     },
 
@@ -464,7 +464,7 @@ window.MG = window.MG || {};
       proof: [
         '**存在性**：对 $n$ 归纳。$n$ 素则 $n = n$；否则 $n = ab$、$1 < a, b < n$，由归纳假设 $a, b$ 各有分解，乘起来即得 $n$ 的分解（再按大小重排、合并同素因子）。',
         '',
-        '**唯一性**：设 $p_{1}\\cdots p_{r} = q_{1}\\cdots q_{s}$。$p_{1}$ 整除右边，由 Euclid 引理（$p \\mid xy \\implies p \\mid x$ 或 $p \\mid y$，对乘积归纳）得 $p_{1} = q_{j}$ 对某个 $j$；两边约掉 $p_{1}$，对 $r + s$ 归纳即得 $r = s$ 且两边的素因子多重集相同。',
+        '**唯一性**：设 $p_{1}\\cdots p_{r} = q_{1}\\cdots q_{s}$。\n\n$p_{1}$ 整除右边，由 Euclid 引理（$p \\mid xy \\implies p \\mid x$ 或 $p \\mid y$，对乘积归纳）得 $p_{1} = q_{j}$ 对某个 $j$；\n\n两边约掉 $p_{1}$，对 $r + s$ 归纳即得 $r = s$ 且两边的素因子多重集相同。',
         '',
         'Euclid 引理本身来自带余除法：若 $p \\nmid a$，则 $\\gcd(p, a) = 1$，由 Bézout 有 $up + va = 1$，两边乘 $b$ 得 $upb + vab = b$ —— 而 $p$ 整除右边两项（$p \\mid ab$ 与 $p \\mid upb$），故 $p \\mid b$。',
       ].join('\n\n'),
@@ -532,7 +532,7 @@ window.MG = window.MG || {};
         '',
         '于是 $(p-1)! \\equiv 1^{p-3 \\over 2} \\cdot 1 \\cdot (-1) \\equiv -1 \\pmod p$。',
         '',
-        '反过来若 $n$ 合数（$n > 4$），写 $n = ab$ 且 $1 < a, b < n$，则 $a \\mid (n-1)!$ 与 $b \\mid (n-1)!$，在 $\\gcd(a,b) = 1$ 时得 $n \\mid (n-1)!$；$\\gcd(a,b) > 1$ 的情形改用 $n$ 的一个真因子与 $n/\\text{它}$ 同样论证，仍得 $n \\mid (n-1)!$。故不可能 $\\equiv -1$。',
+        '反过来若 $n$ 合数（$n > 4$），写 $n = ab$ 且 $1 < a, b < n$，则 $a \\mid (n-1)!$ 与 $b \\mid (n-1)!$，在 $\\gcd(a,b) = 1$ 时得 $n \\mid (n-1)!$；\n\n$\\gcd(a,b) > 1$ 的情形改用 $n$ 的一个真因子与 $n/\\text{它}$ 同样论证，仍得 $n \\mid (n-1)!$。\n\n故不可能 $\\equiv -1$。',
       ].join('\n\n'),
     },
 

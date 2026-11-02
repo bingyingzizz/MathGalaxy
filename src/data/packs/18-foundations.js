@@ -39,7 +39,7 @@ window.MG = window.MG || {};
         '',
         '显然 $A \\cap B \\subseteq A \\subseteq A \\cup B$。'
       ].join('\n'),
-      notes: '由并集公理，$\\bigcup \\mathcal{A}$ 是集合；$\\bigcap \\mathcal{A}$ 由分离公理模式取出。\n\n⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\\sigma$-环、$\\sigma$-代数、单调类都是这么定义的）。\n\n⚠ 分配律对任意族都成立：$A \\cap \\bigcup_i B_i = \\bigcup_i (A \\cap B_i)$；补与并、交的交换就是 De Morgan 律。',
+      notes: '由并集公理，$\\bigcup \\mathcal{A}$ 是集合；$\\bigcap \\mathcal{A}$ 由分离公理模式取出。\n\n⭐ **「对可数并封闭」「对可数交封闭」是整段测度论反复出现的条件**（$\\sigma$-环、$\\sigma$-代数、单调类都是这么定义的）。\n\n⚠ 分配律对任意族都成立：$A \\cap \\bigcup_i B_i = \\bigcup_i (A \\cap B_i)$；\n\n补与并、交的交换就是 De Morgan 律。',
       refs: ['Kunen, Set Theory, I.5']
     },
     {
@@ -83,7 +83,7 @@ window.MG = window.MG || {};
         '',
         '于是对一切集合 $A$：$\\emptyset \\subseteq A$（空泛真），且 $\\emptyset$ 是 $\\subseteq$ 的最小元。'
       ].join('\n'),
-      notes: '⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 外延公理给的是「**至多**一个」；真正「存在」的那一半是分开来的，见「空集存在」。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。',
+      notes: '⭐「$\\emptyset \\in \\mathcal{A}$」「$\\emptyset \\notin F$」这类条件在测度论里到处都是（选择公理要求集合族里没有空集；$\\mu(\\emptyset) = 0$ 是测度的第一条）。\n\n⚠ 外延公理给的是「**至多**一个」；\n\n真正「存在」的那一半是分开来的，见「空集存在」。\n\n⚠ 区分 $\\emptyset$ 与 $\\{\\emptyset\\}$：后者含一个元素（那个元素是空集），所以 $\\{\\emptyset\\} \\ne \\emptyset$。\n\n\n⚠ $\\emptyset \\subseteq A$ 是**空泛真**（vacuously true）：没有任何 $x \\in \\emptyset$ 需要检查。',
       refs: ['Kunen, Set Theory, I.5']
     },
 
@@ -107,7 +107,7 @@ window.MG = window.MG || {};
         '',
         '于是「存在双射 $A \\to B$」是集合之间的一种等价关系，用来定义**等势**。'
       ].join('\n'),
-      notes: '⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\\alpha \\hookrightarrow X$ 不成立」也是同一个句式。\n\n⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \\mathbb{R} \\to \\mathbb{R}$，$x \\mapsto x^2$ 既不单也不满；把陪域改成 $[0, \\infty)$ 就满了。',
+      notes: '⭐ 单射在这里最常见的用法是**反证**：Hartogs 定理断言「存在不能单射进 $X$ 的序数」，良序定理的证明里「$\\alpha \\hookrightarrow X$ 不成立」也是同一个句式。\n\n⚠ 「是单射/满射」必须相对**指定的 $B$** 说：同一个函数 $f : \\mathbb{R} \\to \\mathbb{R}$，$x \\mapsto x^2$ 既不单也不满；\n\n把陪域改成 $[0, \\infty)$ 就满了。',
       refs: ['Kunen, Set Theory, I.5']
     },
     {
@@ -152,7 +152,7 @@ window.MG = window.MG || {};
         '',
         '不是至多可数的集合叫**不可数**。'
       ].join('\n'),
-      notes: '⭐ 这一条撑起了两大块内容：\n- **$\\sigma$-环 / $\\sigma$-代数 / 单调类**：可数并、可数交里的「可数」就是它；\n- **测度的可数可加**：$\\mu(\\bigcup_n E_n) = \\sum_n \\mu(E_n)$ 里的下标集要可数。\n\n基本事实：$\\mathbb{N} \\times \\mathbb{N}$ 可数；至多可多个可数集的并仍可数；$\\mathbb{R}$ 不可数（Cantor 对角线法）。\n\n⚠ 「可数」不是「数得完」：$\\mathbb{N}$ 自己就可数但数不完。',
+      notes: '⭐ 这一条撑起了两大块内容：\n- **$\\sigma$-环 / $\\sigma$-代数 / 单调类**：可数并、可数交里的「可数」就是它；\n- **测度的可数可加**：$\\mu(\\bigcup_n E_n) = \\sum_n \\mu(E_n)$ 里的下标集要可数。\n\n基本事实：$\\mathbb{N} \\times \\mathbb{N}$ 可数；\n\n至多可多个可数集的并仍可数；\n\n$\\mathbb{R}$ 不可数（Cantor 对角线法）。\n\n⚠ 「可数」不是「数得完」：$\\mathbb{N}$ 自己就可数但数不完。',
       refs: ['Kunen, Set Theory, I.6']
     },
 
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
         '',
         '常见的用法：$f = g$ a.e.（$\\{f \\ne g\\}$ 是零集）、$f_n \\to f$ a.e.（不收敛的点是零集）、$F\' = 0$ a.e.。'
       ].join('\n'),
-      notes: '⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。\n\n⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\\int |f| = 0 \\implies f = 0$ a.e.（而不是处处 0）。\n⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。',
+      notes: '⭐ a.e. 是 Lebesgue 理论的**润滑剂**：$L^1$、$L^p$ 的元素其实是**函数的等价类**（a.e. 相等视为同一个），几乎所有收敛定理（MCT、Fatou、DCT 的 a.e. 版本、Egorov）都只要求 a.e. 收敛 —— 因为零集上的取值对积分没有贡献。\n\n⚠ 「a.e. 相等」与「处处相等」是不同的关系：$\\int |f| = 0 \\implies f = 0$ a.e.（而不是处处 0）。\n\n\n⚠ 零集的**子集**未必可测，除非测度空间完备 —— 这就是「完备化」要解决的问题。',
       refs: ['Rudin, Real and Complex Analysis, Ch. 1']
     }
   ],

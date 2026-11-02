@@ -11,4 +11,10 @@ $$a f + b g = d$$
 
 （把除法的每一步回代即得。）$d$ 就是 $\gcd(f, g)$（首一化之后唯一）。
 
+**第二步：不可约 $\implies$ 素。** 设 $p$ 不可约、$p \mid fg$。
+
+若 $p \nmid f$，则 $\gcd(p, f) = 1$，由 Bézout 有 $ap + bf = 1$；
+
+两边乘 $g$：$apg + bfg = g$。
+
 > 续见 proofs/imp.poly-ufd.2.md

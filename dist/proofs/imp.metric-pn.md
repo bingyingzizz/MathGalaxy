@@ -15,7 +15,9 @@ $$F = \bigcap_{n \ge 1}\Bigl\{\, x : d(x, F) < \tfrac{1}{n} \,\Bigr\} ,$$
 
 $$f(x) := \frac{d(x, A)}{d(x, A) + d(x, B)} ,$$
 
-分母恒不为零（$A \cap B = \emptyset$ 且 $A, B$ 闭 $\implies$ 不可能同时 $d(x,A) = d(x,B) = 0$），$f$ 连续，$f|_{A} \equiv 0$、$f|_{B} \equiv 1$。取 $U = f^{-1}([0, 1/2))$、$V = f^{-1}((1/2, 1])$ 即不交开集 ✓。
+分母恒不为零（$A \cap B = \emptyset$ 且 $A, B$ 闭 $\implies$ 不可能同时 $d(x,A) = d(x,B) = 0$），$f$ 连续，$f|_{A} \equiv 0$、$f|_{B} \equiv 1$。
+
+取 $U = f^{-1}([0, 1/2))$、$V = f^{-1}((1/2, 1])$ 即不交开集 ✓。
 
 于是 $X$ 正规且每个闭集 $G_{\delta}$，即完美正规 ✓。∎
 

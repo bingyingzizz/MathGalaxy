@@ -3,7 +3,11 @@
 
 `def.mapping-cone` 映射锥 + `def.distinguished-triangle` 导出三角 → `prop.triangle-rotation` 三角的旋转与延拓
 
-**旋转。** 不妨设 $M = M(f)$，即三角是 $K \xrightarrow{\ f\ } L \to M(f) \to K[1]$。要证 $L \to M(f) \to K[1] \to L[1]$ 导出。把 $g : L \to M(f)$ 取成含入 $(0, 1)^{\mathrm{T}}$，则它的映射锥是
+**旋转。** 不妨设 $M = M(f)$，即三角是 $K \xrightarrow{\ f\ } L \to M(f) \to K[1]$。
+
+要证 $L \to M(f) \to K[1] \to L[1]$ 导出。
+
+把 $g : L \to M(f)$ 取成含入 $(0, 1)^{\mathrm{T}}$，则它的映射锥是
 
 $$M(g)^{n} = L^{n+1} \oplus M(f)^{n} = L^{n+1} \oplus K^{n+1} \oplus L^{n}$$
 

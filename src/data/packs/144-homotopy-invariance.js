@@ -75,8 +75,8 @@
           '$P_{n} : S_{n}(X) \\to S_{n+1}(Y)$，使 $\\partial P + P\\partial = g_{\\#} - f_{\\#}$。',
         '',
         '**几何图像**：一个奇异单形 $\\sigma : \\Delta^{n} \\to X$ 与 $F$ 一起给出「棱柱」' +
-          '$F \\circ (\\sigma \\times \\mathrm{id}) : \\Delta^{n} \\times [0,1] \\to Y$。' +
-          '棱柱有 $n+2$ 个面：$n+1$ 个「侧面」加底（$f \\circ \\sigma$）和顶（$g \\circ \\sigma$）。' +
+          '$F \\circ (\\sigma \\times \\mathrm{id}) : \\Delta^{n} \\times [0,1] \\to Y$。\n\n' +
+          '棱柱有 $n+2$ 个面：$n+1$ 个「侧面」加底（$f \\circ \\sigma$）和顶（$g \\circ \\sigma$）。\n\n' +
           '把 $\\Delta^{n} \\times [0,1]$ 三角剖分成 $n+1$ 个 $\\Delta^{n+1}$，按定向取侧面之和：',
         '',
         '$$P_{n}(\\sigma) := \\sum_{i=0}^{n} (-1)^{i}\\, F \\circ (\\sigma \\times \\mathrm{id})' +
@@ -136,9 +136,10 @@
           '（系数 $(-1)^{i}$），线性延拓到整个链群。',
         '',
         '**校验 $\\partial P + P\\partial = g_{\\#} - f_{\\#}$**：取边缘后，剖分内部的面对' +
-          '被两块共享且定向相反，相消；剩下底面（给 $f \\circ \\sigma$）、顶面（给 $g \\circ \\sigma$）' +
-          '与侧面。侧面之和正是 $P_{n-1}(\\partial \\sigma)$（因为 $\\partial\\sigma$ 的每个面' +
-          '对应棱柱的一个侧面）。于是恰好得到 $g_{\\#} - f_{\\#}$。∎',
+          '被两块共享且定向相反，相消；剩下底面（给 $f \\circ \\sigma$）、顶面（给 $g \\circ \\sigma$）与侧面。\n\n' +
+          '侧面之和正是 $P_{n-1}(\\partial \\sigma)$（因为 $\\partial\\sigma$ 的每个面对应棱柱的一个侧面）。\n\n' +
+          '于是恰好得到 $g_{\\#} - f_{\\#}$。\n\n' +
+          '∎',
       ].join('\n'),
       note: '棱柱算子把「连续形变」翻译成「链同伦」——这就是同伦不变性的全部内容。' },
 

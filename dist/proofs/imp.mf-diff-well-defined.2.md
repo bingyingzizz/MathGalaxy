@@ -9,4 +9,8 @@ $$(\psi \circ F \circ \gamma_{i})^{\prime}(0) = \mathrm{d}G_{\varphi(p)}\bigl((\
 
 两个速度相同、$\mathrm{d}G$ 同一个线性映射，故像的速度相同。即 $F \circ \gamma_{1}$ 与 $F \circ \gamma_{2}$ 在 $F(p)$ 处相切。
 
+**第三步：线性。** 取 $\gamma$ 使 $(\varphi \circ \gamma)^{\prime}(0) = v$，则 $(\varphi \circ \gamma_{a})^{\prime}(0) = av$（重参数化 $t \mapsto at$），于是 $\mathrm{d}F_{p}(a[\gamma]) = a\,\mathrm{d}F_{p}([\gamma])$；
+
+加法同理（用 $\mathbb{R}^{n}$ 卡里向量相加的曲线）。
+
 > 续见 proofs/imp.mf-diff-well-defined.3.md

@@ -3,10 +3,12 @@
 
 `thm.class-equation` 类方程 + `def.group-action` 群作用 + `thm.orbit-stabilizer` 轨道–稳定子定理 → `thm.sylow` Sylow 定理
 
-（$p^{i}$ 阶子群（$i < a$）由对 $p^{a}$ 阶子群再用一次「$p$-群有 $p^{i}$ 阶子群」的归纳得到。）
+若**没有**不动点，则每个轨道长都被 $p$ 整除，于是 $p \mid |X| = m$，矛盾。
 
-**（2）共轭性。** 设 $P, Q$ 是 Sylow $p$-子群，考虑 $P$ 在左陪集集合 $X := G/Q$ 上的作用 $g \cdot (hQ) := (gh)Q$。
+故有不动点 $hQ$：对一切 $g \in P$ 有 $ghQ = hQ$，即 $h^{-1}Ph \le Q$。
 
-$$|X| = [G : Q] = m, \qquad p \nmid m.$$
+两端阶相同（都是 $p^{a}$），故 $h^{-1}Ph = Q$：$P$ 与 $Q$ 共轭。
+
+把上面论证中的 $P$ 换成任一 $p$-子群 $R$，同样得到 $h^{-1}Rh \le Q$：**任何 $p$-子群都含在某个 Sylow 子群中**。
 
 > 续见 proofs/imp.sylow.5.md

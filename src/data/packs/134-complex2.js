@@ -142,7 +142,7 @@ window.MG = window.MG || {};
         '则 $f$ 与 $f + g$ 在 $\\gamma$ 内部有同样多的零点（都按重数计）。'
       ].join('\n'),
       notes: [
-        '⭐ 用途：数零点不用解方程，只要在边界上比大小。例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \\le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。',
+        '⭐ 用途：数零点不用解方程，只要在边界上比大小。\n\n例：$f(z) = -5z^3$、$g(z) = z^7 + z - 2$，在 $|z| = 1$ 上 $|g| \\le 1 + 1 + 2 = 4 < 5 = |f|$，故 $z^7 - 5z^3 + z - 2$ 在 $|z| < 1$ 内恰有 $3$ 个零点（与 $-5z^3$ 相同）。',
         '',
         '⭐ 代数基本定理的另一条证明：$f(z) = a_n z^n$、$g(z) = a_{n-1}z^{n-1} + \\cdots + a_0$，在 $|z| = R$ 上取 $R$ 充分大就有 $|g| < |f|$，于是 $p$ 与 $a_n z^n$ 在 $|z| < R$ 内零点数相同，都是 $n$ 个。',
         '',
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
         '',
         '⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。',
         '',
-        '⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \\min_{|z - z_0| = r}|f| > 0$；$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \\le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。',
+        '⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \\min_{|z - z_0| = r}|f| > 0$；\n\n$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \\le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。',
         '',
         '📌 与 Morera 定理互补：Morera 管「极限全纯」，Hurwitz 管「极限的零点从哪来」。两者一起说明：全纯函数的一些**离散**性质在一致极限下是封闭的。'
       ].join('\n'),
@@ -301,7 +301,7 @@ window.MG = window.MG || {};
         '',
         '$$z^{\\alpha} := e^{\\alpha \\log z},$$',
         '',
-        '即 $z^{\\alpha} = e^{\\alpha \\ln|z|}\\, e^{i\\alpha(\\arg z + 2k\\pi)}$，$k \\in \\mathbb{Z}$。取主值对数得到**主值幂** $z^{\\alpha} = e^{\\alpha \\operatorname{Log} z}$，它在 $\\mathbb{C} \\setminus (-\\infty, 0]$ 上全纯。'
+        '即 $z^{\\alpha} = e^{\\alpha \\ln|z|}\\, e^{i\\alpha(\\arg z + 2k\\pi)}$，$k \\in \\mathbb{Z}$。\n\n取主值对数得到**主值幂** $z^{\\alpha} = e^{\\alpha \\operatorname{Log} z}$，它在 $\\mathbb{C} \\setminus (-\\infty, 0]$ 上全纯。'
       ].join('\n'),
       notes: [
         '⭐ 单值的判据：$z^{\\alpha}$ 单值当且仅当 $\\alpha \\in \\mathbb{Z}$。理由：绕一圈多出来的是因子 $e^{2\\pi i \\alpha}$，它等于 $1$ 当且仅当 $\\alpha$ 是整数。于是 $z^{1/n}$ 恰有 $n$ 支，$z^{i}$ 有可数无穷多支。',
@@ -480,7 +480,7 @@ window.MG = window.MG || {};
         '',
         '⭐ 唯一性：若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，则 $g = f_1 - f_2$ 纯虚且全纯；写 $g = iy$（$y$ 实值），Cauchy–Riemann 给 $y_x = y_y = 0$，故 $y$ 是常数。',
         '',
-        '⚠ 单连通**不能去掉**：$u(z) = \\ln|z|$ 在 $\\mathbb{C}^{\\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\\operatorname{Log}$ 本身，而 $\\operatorname{Log}$ 是多值的。绕原点一圈，$\\oint \\omega = 2\\pi \\ne 0$。',
+        '⚠ 单连通**不能去掉**：$u(z) = \\ln|z|$ 在 $\\mathbb{C}^{\\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\\operatorname{Log}$ 本身，而 $\\operatorname{Log}$ 是多值的。\n\n绕原点一圈，$\\oint \\omega = 2\\pi \\ne 0$。',
         '',
         '📌 反方向（全纯 $\\implies$ 实部调和）**不需要**单连通，只要 Cauchy–Riemann 方程。所以「调和」比「全纯的实部」宽一点点，缺的正是拓扑条件。'
       ].join('\n'),
@@ -669,7 +669,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int_{-\\infty}^{\\infty} \\frac{\\mathrm{d}x}{x^4 + 1} = \\frac{\\pi}{\\sqrt{2}}.$$',
         '',
-        '$x^4 + 1$ 的根是 $e^{i\\pi/4}, e^{3i\\pi/4}$（上半平面两个）与它们的共轭。一阶极点的留数：由 $R = 1/(z^4+1)$、$R = p/q$ 且 $q$ 在一阶零点 $a$ 处，$\\operatorname{Res}(R, a) = 1/(4a^3) = -a/4$（因为 $a^4 = -1$）。两只相加：',
+        '$x^4 + 1$ 的根是 $e^{i\\pi/4}, e^{3i\\pi/4}$（上半平面两个）与它们的共轭。\n\n一阶极点的留数：由 $R = 1/(z^4+1)$、$R = p/q$ 且 $q$ 在一阶零点 $a$ 处，$\\operatorname{Res}(R, a) = 1/(4a^3) = -a/4$（因为 $a^4 = -1$）。\n\n两只相加：',
         '',
         '$$\\sum \\operatorname{Res} = -\\frac{1}{4}\\left( e^{i\\pi/4} + e^{3i\\pi/4} \\right) = -\\frac{1}{4}\\cdot\\frac{\\sqrt{2}}{2}\\cdot 2i = -\\frac{\\sqrt{2}}{4}\\, i,$$',
         '',
@@ -697,7 +697,7 @@ window.MG = window.MG || {};
         '$$\\int_0^{2\\pi} R(\\cos\\theta, \\sin\\theta)\\,\\mathrm{d}\\theta = \\oint_{|z| = 1} R\\left( \\frac{z + z^{-1}}{2},\\ \\frac{z - z^{-1}}{2 i} \\right) \\frac{\\mathrm{d}z}{i z}.$$'
       ].join('\n'),
       notes: [
-        '⭐ 代换的三个要素：$z = e^{i\\theta}$、$\\cos\\theta = \\dfrac{z + z^{-1}}{2}$、$\\sin\\theta = \\dfrac{z - z^{-1}}{2i}$、$\\mathrm{d}\\theta = \\dfrac{\\mathrm{d}z}{i z}$。于是整圈 $\\theta$ 变成单位圆一圈（逆时针），三角有理式变成 $z$ 的有理函数。',
+        '⭐ 代换的三个要素：$z = e^{i\\theta}$、$\\cos\\theta = \\dfrac{z + z^{-1}}{2}$、$\\sin\\theta = \\dfrac{z - z^{-1}}{2i}$、$\\mathrm{d}\\theta = \\dfrac{\\mathrm{d}z}{i z}$。\n\n于是整圈 $\\theta$ 变成单位圆一圈（逆时针），三角有理式变成 $z$ 的有理函数。',
         '',
         '⭐ 完整计算：对 $a > 1$，',
         '',
@@ -772,7 +772,7 @@ window.MG = window.MG || {};
         '',
         '$$\\frac{f\'(z)}{f(z)} = \\sum_{k=1}^{N} \\frac{m_k}{z - a_k} - \\sum_{j=1}^{M} \\frac{n_j}{z - b_j} + \\frac{g\'(z)}{g(z)}.$$',
         '',
-        '**第三步：逐项算留数。** 每一项都是 $\\gamma$ 内部的一阶极点：$\\operatorname{Res}\\left( \\dfrac{m_k}{z - a_k}, a_k \\right) = m_k$，$\\operatorname{Res}\\left( \\dfrac{-n_j}{z - b_j}, b_j \\right) = -n_j$；而 $g\'/g$ 在内部全纯，没有留数。由留数定理',
+        '**第三步：逐项算留数。** 每一项都是 $\\gamma$ 内部的一阶极点：$\\operatorname{Res}\\left( \\dfrac{m_k}{z - a_k}, a_k \\right) = m_k$，$\\operatorname{Res}\\left( \\dfrac{-n_j}{z - b_j}, b_j \\right) = -n_j$；\n\n而 $g\'/g$ 在内部全纯，没有留数。\n\n由留数定理',
         '',
         '$$\\frac{1}{2\\pi i}\\oint_{\\gamma} \\frac{f\'(z)}{f(z)}\\,\\mathrm{d}z = \\sum_{k} m_k - \\sum_{j} n_j = Z - P.$$',
         '',
@@ -855,7 +855,7 @@ window.MG = window.MG || {};
         '',
         '$$|f(z)| \\le |z| \\qquad (z \\in \\mathbb{D}), \\qquad |f\'(0)| = |g(0)| \\le 1.$$',
         '',
-        '**第四步：等号。** 若存在 $z_0 \\in \\mathbb{D}$ 使 $|g(z_0)| = 1$（$|f(z_0)| = |z_0|$ 时），或 $|g(0)| = 1$（$|f\'(0)| = 1$ 时），最大模原理说 $g$ 是常数 $c$ 且 $|c| = 1$，即 $f(z) = e^{i\\theta} z$。$\\blacksquare$'
+        '**第四步：等号。** 若存在 $z_0 \\in \\mathbb{D}$ 使 $|g(z_0)| = 1$（$|f(z_0)| = |z_0|$ 时），或 $|g(0)| = 1$（$|f\'(0)| = 1$ 时），最大模原理说 $g$ 是常数 $c$ 且 $|c| = 1$，即 $f(z) = e^{i\\theta} z$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '要点是「$f(0) = 0$ 时 $f/z$ 仍全纯」—— 这全靠可去奇点那一侧：$f$ 的 Taylor 展开从 $z^1$ 起，除以 $z$ 之后还是幂级数。'
     },
@@ -892,7 +892,7 @@ window.MG = window.MG || {};
         '',
         '由 $|F\'(0)| \\le 1$ 即得微分形式。',
         '',
-        '**第五步：等号。** 某处取等 $\\implies$ $F$ 是旋转（Schwarz 引理的 (3)）$\\implies$ $f = \\varphi_{f(z_0)}^{-1} \\circ F \\circ \\varphi_{z_0}$ 是三个分式线性变换的复合，仍是 $\\mathbb{D}$ 的自同构。反之自同构显然处处取等。$\\blacksquare$'
+        '**第五步：等号。** 某处取等 $\\implies$ $F$ 是旋转（Schwarz 引理的 (3)）$\\implies$ $f = \\varphi_{f(z_0)}^{-1} \\circ F \\circ \\varphi_{z_0}$ 是三个分式线性变换的复合，仍是 $\\mathbb{D}$ 的自同构。\n\n反之自同构显然处处取等。\n\n$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -936,7 +936,7 @@ window.MG = window.MG || {};
         '',
         '$$0 = \\frac{1}{2\\pi}\\int_0^{2\\pi} \\frac{\\zeta\\, f(\\zeta)}{\\zeta - r^2/\\overline{z}}\\,\\mathrm{d}\\theta.$$',
         '',
-        '**第三步：相减，算核。** 在 $|\\zeta| = r$ 上 $\\zeta\\overline{\\zeta} = r^2$，故 $r^2/\\overline{z} = \\zeta\\overline{\\zeta}/\\overline{z}$，于是 $\\dfrac{\\zeta}{\\zeta - r^2/\\overline{z}} = \\dfrac{\\overline{z}}{\\overline{z} - \\overline{\\zeta}}$。通分得',
+        '**第三步：相减，算核。** 在 $|\\zeta| = r$ 上 $\\zeta\\overline{\\zeta} = r^2$，故 $r^2/\\overline{z} = \\zeta\\overline{\\zeta}/\\overline{z}$，于是 $\\dfrac{\\zeta}{\\zeta - r^2/\\overline{z}} = \\dfrac{\\overline{z}}{\\overline{z} - \\overline{\\zeta}}$。\n\n通分得',
         '',
         '$$\\frac{\\zeta}{\\zeta - z} - \\frac{\\overline{z}}{\\overline{z} - \\overline{\\zeta}} = \\frac{\\zeta(\\overline{z} - \\overline{\\zeta}) - \\overline{z}(\\zeta - z)}{(\\zeta - z)(\\overline{z} - \\overline{\\zeta})} = \\frac{|z|^2 - r^2}{-|\\zeta - z|^2} = \\frac{r^2 - |z|^2}{|\\zeta - z|^2},$$',
         '',
@@ -968,9 +968,9 @@ window.MG = window.MG || {};
         '',
         '**第三步：验证 Cauchy–Riemann。** 这两式正是 $u_x = v_y$、$u_y = -v_x$。$u, v \\in C^1$，故 $f := u + iv$ 在 $\\Omega$ 上全纯，且 $\\operatorname{Re} f = u$。',
         '',
-        '**第四步：唯一性。** 若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i y$（$y$ 实值）。对 $(0, y)$ 用 Cauchy–Riemann 方程：$0 = y_y$ 与 $0 = -y_x$，故 $y$ 是常数，$g$ 是纯虚常数。',
+        '**第四步：唯一性。** 若 $\\operatorname{Re} f_1 = \\operatorname{Re} f_2 = u$，令 $g = f_1 - f_2 = i y$（$y$ 实值）。\n\n对 $(0, y)$ 用 Cauchy–Riemann 方程：$0 = y_y$ 与 $0 = -y_x$，故 $y$ 是常数，$g$ 是纯虚常数。',
         '',
-        '**第五步：单连通不能去掉。** $u(z) = \\ln|z|$ 在 $\\mathbb{C}^{\\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\\operatorname{Log}$，而 $\\operatorname{Log}$ 多值。等价地：$\\oint_{|z| = 1} \\omega = 2\\pi \\ne 0$，闭形式在这里不恰当。$\\blacksquare$'
+        '**第五步：单连通不能去掉。** $u(z) = \\ln|z|$ 在 $\\mathbb{C}^{\\times}$ 上调和，但它不是任何单值全纯函数的实部 —— 那需要 $\\operatorname{Log}$，而 $\\operatorname{Log}$ 多值。\n\n等价地：$\\oint_{|z| = 1} \\omega = 2\\pi \\ne 0$，闭形式在这里不恰当。\n\n$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -990,7 +990,9 @@ window.MG = window.MG || {};
         '',
         '$$M = u(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u(a + r e^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
-        '被积函数逐点 $\\le M$，而它们的平均恰好是 $M$ $\\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。所以圆周落在 $E$ 里；对每个 $0 < \\rho \\le r$ 同理，于是 $D(a, r) \\subset E$。',
+        '被积函数逐点 $\\le M$，而它们的平均恰好是 $M$ $\\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。\n\n' +
+        '所以圆周落在 $E$ 里；\n\n' +
+        '对每个 $0 < \\rho \\le r$ 同理，于是 $D(a, r) \\subset E$。',
         '',
         '**第四步：连通性。** $\\Omega$ 连通而 $E$ 非空、既开又闭，故 $E = \\Omega$，即 $u \\equiv M$。取逆否命题：$u$ 非常数 $\\implies$ 内部取不到最大值。',
         '',
@@ -1101,7 +1103,7 @@ window.MG = window.MG || {};
         '',
         '$$\\int_0^{2\\pi}\\frac{\\mathrm{d}\\theta}{a + \\cos\\theta} = \\frac{2}{i}\\oint_{|z|=1}\\frac{\\mathrm{d}z}{z^2 + 2az + 1}.$$',
         '',
-        '分母两根之积为 $1$，故恰有一根 $z_{+} = -a + \\sqrt{a^2 - 1}$ 在圆内，其留数为 $\\dfrac{1}{2\\sqrt{a^2 - 1}}$。于是积分 $= \\dfrac{2}{i}\\cdot\\dfrac{2\\pi i}{2\\sqrt{a^2 - 1}} = \\dfrac{2\\pi}{\\sqrt{a^2 - 1}}$，与标准答案相符。$\\blacksquare$'
+        '分母两根之积为 $1$，故恰有一根 $z_{+} = -a + \\sqrt{a^2 - 1}$ 在圆内，其留数为 $\\dfrac{1}{2\\sqrt{a^2 - 1}}$。\n\n于是积分 $= \\dfrac{2}{i}\\cdot\\dfrac{2\\pi i}{2\\sqrt{a^2 - 1}} = \\dfrac{2\\pi}{\\sqrt{a^2 - 1}}$，与标准答案相符。\n\n$\\blacksquare$'
       ].join('\n')
     },
 

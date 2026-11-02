@@ -84,7 +84,7 @@ window.MG = window.MG || {};
         '',
         [
           '- $L$ 显然是 $D \\circ F$ 的余锥（余锥的腿复合一下就到 $D \\circ F$ 上）。',
-          '- 设 $\\{\\, g_{j} : D(F(j)) \\to M \\,\\}$ 是 $D\\circ F$ 的余锥。要对**每个** $i \\in I$ 造一条腿 $p_{i} : D(i) \\to M$：由 $i \\downarrow F$ **非空**，取一条 $f : i \\to F(j)$，令 $p_{i} := g_{j} \\circ D(f)$。',
+          '- 设 $\\{\\, g_{j} : D(F(j)) \\to M \\,\\}$ 是 $D\\circ F$ 的余锥。\n\n要对**每个** $i \\in I$ 造一条腿 $p_{i} : D(i) \\to M$：由 $i \\downarrow F$ **非空**，取一条 $f : i \\to F(j)$，令 $p_{i} := g_{j} \\circ D(f)$。',
           '- **良定义**靠连通性：换一条 $f\' : i \\to F(j\')$，两个选择 $(j, f)$、$(j\', f\')$ 由 $i \\downarrow F$ 的连通性被一条锯齿连起来，沿锯齿走一遍交换图，两条腿给出同一个 $p_{i}$。',
           '- 这样 $M$ 变成 $D$ 的余锥，泛性给出唯一的 $L \\to M$ —— 于是 $L$ 满足 $D \\circ F$ 余锥的泛性质。',
           '- 反方向由「余锥复合」直接得到。两边互逆。∎'
@@ -175,7 +175,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{\\mathcal{C}}\\bigl(X,\\ \\lim D\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathcal{C}^{I}}\\bigl(\\underline{\\{0\\}},\\ h^{X} \\circ D\\bigr) \\;\\cong\\; \\lim \\bigl(h^{X} \\circ D\\bigr).$$',
         '',
-        '第一式是**极限的定义**（$\\lim D$ 表示锥函子：$\\operatorname{Hom}(\\Delta Y, D) \\cong \\operatorname{Hom}(Y, \\lim D)$，取 $Y = X$）；第二式是「函子范畴里的极限逐点算」。这里 $\\underline{\\{0\\}}$ 是取值恒为 $\\{0\\}$ 的**常函子**（在函子范畴 $\\mathcal{C}^{I}$ 里它才是 $\\operatorname{Hom}$ 的合法对象）。∎',
+        '第一式是**极限的定义**（$\\lim D$ 表示锥函子：$\\operatorname{Hom}(\\Delta Y, D) \\cong \\operatorname{Hom}(Y, \\lim D)$，取 $Y = X$）；\n\n第二式是「函子范畴里的极限逐点算」。\n\n这里 $\\underline{\\{0\\}}$ 是取值恒为 $\\{0\\}$ 的**常函子**（在函子范畴 $\\mathcal{C}^{I}$ 里它才是 $\\operatorname{Hom}$ 的合法对象）。\n\n∎',
         '再由 $F \\cong \\operatorname{Hom}(X,-)$，同构的函子保的东西一样，$F$ 也保所有极限。',
         '**一批立刻的推论**：',
         '',

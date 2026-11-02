@@ -7,7 +7,9 @@
 
 $$0 = \mathrm{d}^{2}r = \sum_{i}\mathrm{d}\omega^{i}\wedge e_{i}-\sum_{i}\omega^{i}\wedge \mathrm{d}e_{i} = \sum_{j}\Bigl(\mathrm{d}\omega^{j}-\sum_{i}\omega^{i}\wedge\omega^{j}_{\ i}\Bigr)e_{j}.$$
 
-最后的等号是把 $-\sum_{i}\omega^{i}\wedge \mathrm{d}e_{i} = -\sum_{i,j}\omega^{i}\wedge\omega^{j}_{\ i}e_{j}$ 按 $e_{j}$ 归并。$e_{j}$ 处处线性无关，故系数为零：$\mathrm{d}\omega^{j} = \sum_{i}\omega^{i}\wedge\omega^{j}_{\ i}$，改换指标即第一结构方程。
+最后的等号是把 $-\sum_{i}\omega^{i}\wedge \mathrm{d}e_{i} = -\sum_{i,j}\omega^{i}\wedge\omega^{j}_{\ i}e_{j}$ 按 $e_{j}$ 归并。
+
+$e_{j}$ 处处线性无关，故系数为零：$\mathrm{d}\omega^{j} = \sum_{i}\omega^{i}\wedge\omega^{j}_{\ i}$，改换指标即第一结构方程。
 
 **第二式。** 对 $\mathrm{d}e_{i} = \sum_{j}\omega^{j}_{\ i}e_{j}$ 取外微分：
 

@@ -23,4 +23,6 @@ $$-c \le t \le c \iff |t| \le c \qquad (c \ge 0)$$
 
 $$|x + y| \le |x| + |y| \qquad \blacksquare$$
 
+**变形。** 在 $|x + y| \le |x| + |y|$ 中把 $x$ 换成 $x - y$ 得 $|x| \le |x - y| + |y|$，即 $|x| - |y| \le |x - y|$；
+
 > 续见 proofs/imp.triangle.2.md

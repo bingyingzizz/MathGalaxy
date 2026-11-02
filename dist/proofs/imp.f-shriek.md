@@ -7,6 +7,16 @@
 
 $$f_! := (f_{\mathrm{ad}/Y})_* \circ j_!.$$
 
-$j_!$ 存在由 `prop.open-immersion-shriek`；$(f_{\mathrm{ad}/Y})_*$ 是正常推前。$f$ 固有时 $j$ 是同构，$f_! = (f^{\mathrm{ad}/Y})_*$。
+$j_!$ 存在由 `prop.open-immersion-shriek`；$(f_{\mathrm{ad}/Y})_*$ 是正常推前。
 
-**保直和。** $j_!$ 作为左伴随保余极限；$(f^{\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。故 $f_!$ 保直和，右伴随 $f^!$ 存在。$\blacksquare$
+$f$ 固有时 $j$ 是同构，$f_! = (f^{\mathrm{ad}/Y})_*$。
+
+
+
+**保直和。** $j_!$ 作为左伴随保余极限；
+
+$(f^{\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，保直和。
+
+故 $f_!$ 保直和，右伴随 $f^!$ 存在。
+
+$\blacksquare$

@@ -5,7 +5,11 @@
 
 设 $d\nu = d\lambda + f\cdot dm$（$\lambda \perp  m$），$\nu$ 正则。
 
-**① 先算全变差。** 由全变差的性质，$d|\nu| = d|\lambda| + |f|\cdot dm$。既然 $\nu$ 正则，$|\nu |$ 正则，于是 $\lambda$ 与 $f\cdot dm$ 都正则；由「$g\cdot dm$ 正则 $\iff$ $g \in L^1_{loc}$」得 $f \in L^1_{loc}$。
+**① 先算全变差。** 由全变差的性质，$d|\nu| = d|\lambda| + |f|\cdot dm$。
+
+既然 $\nu$ 正则，$|\nu |$ 正则，于是 $\lambda$ 与 $f\cdot dm$ 都正则；
+
+由「$g\cdot dm$ 正则 $\iff$ $g \in L^1_{loc}$」得 $f \in L^1_{loc}$。
 
 **② 拆比值。**
 

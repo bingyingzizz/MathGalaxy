@@ -127,13 +127,13 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **一句话**：$(-)^{G}$ 就是「取不动点」。它把群作用的信息压到 $R$-模上，是群上同调的起点（$H^{0} = (-)^{G}$）。',
         '',
-        '**为什么是 $\\operatorname{Hom}_{R[G]}(R, -)$**：$R[G]$-线性映射 $f : R \\to M$ 由 $f(1)$ 决定，而 $f(1) = f(g \\cdot 1) = g \\cdot f(1)$，所以 $f(1) \\in M^{G}$；反过来任给 $m \\in M^{G}$ 都能这样定义 $f$。于是 $(-)^{G} = \\operatorname{Hom}_{R[G]}(R, -)$ —— 它对第二个变量左正合。',
+        '**为什么是 $\\operatorname{Hom}_{R[G]}(R, -)$**：$R[G]$-线性映射 $f : R \\to M$ 由 $f(1)$ 决定，而 $f(1) = f(g \\cdot 1) = g \\cdot f(1)$，所以 $f(1) \\in M^{G}$；\n\n反过来任给 $m \\in M^{G}$ 都能这样定义 $f$。\n\n于是 $(-)^{G} = \\operatorname{Hom}_{R[G]}(R, -)$ —— 它对第二个变量左正合。',
         '',
         '**左正合但不右正合**：短正合列 $0 \\to L \\to M \\to N \\to 0$ 取不变量只得到',
         '',
         '$$0 \\longrightarrow L^{G} \\longrightarrow M^{G} \\longrightarrow N^{G},$$',
         '',
-        '右边**接不上**。典型反例：$G = \\mathbb{Z}/2$ 以符号作用在 $\\mathbb{Z}$ 上，取 $0 \\to \\mathbb{Z} \\xrightarrow{\\cdot 2} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$，则 $M^{G} = 0$ 而 $N^{G} = \\mathbb{Z}/2$，$M^{G} \\to N^{G}$ 不是满射。',
+        '右边**接不上**。\n\n典型反例：$G = \\mathbb{Z}/2$ 以符号作用在 $\\mathbb{Z}$ 上，取 $0 \\to \\mathbb{Z} \\xrightarrow{\\cdot 2} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$，则 $M^{G} = 0$ 而 $N^{G} = \\mathbb{Z}/2$，$M^{G} \\to N^{G}$ 不是满射。',
         '',
         '⚠️ **对偶那一侧不是它**：$M \\mapsto M_{G} := M\\big/\\langle g m - m \\rangle$（余不变量）右正合，对应群**同调** $H_{n}(G, M)$。本图只走**上**同调这条线。'
       ].join('\n')
@@ -166,7 +166,7 @@ window.MG = window.MG || {};
         '- **内射消解**（定义本身）：取 $M$ 的内射 $R[G]$-模消解 $M \\rightarrowtail I^{\\bullet}$，取不变量、取同调。最干净，但内射 $R[G]$-模看不见摸不着。',
         '- **标准（bar）消解**（可算）：取 $R$ 的**自由** $R[G]$-模消解 $B_{\\bullet} \\to R$，再取 $\\operatorname{Hom}_{R[G]}(B_{\\bullet}, M)$，得到一个**显式**上链复形。这一条给出 $H^{n}$ 的具体公式，见「用标准消解计算群上同调」。',
         '',
-        '**为什么等于 $\\operatorname{Ext}$**：$(-)^{G} = \\operatorname{Hom}_{R[G]}(R, -)$，而用 $R$ 的内射消解算 $R^{n}\\operatorname{Hom}_{R[G]}(R, -)$ 正是 $\\operatorname{Ext}^{n}_{R[G]}(R, -)$。同一个右导出函子，只是换了名字。$H^{n} = 0$（$n < 0$）也正是「右导出函子」的直接后果。',
+        '**为什么等于 $\\operatorname{Ext}$**：$(-)^{G} = \\operatorname{Hom}_{R[G]}(R, -)$，而用 $R$ 的内射消解算 $R^{n}\\operatorname{Hom}_{R[G]}(R, -)$ 正是 $\\operatorname{Ext}^{n}_{R[G]}(R, -)$。\n\n同一个右导出函子，只是换了名字。\n\n$H^{n} = 0$（$n < 0$）也正是「右导出函子」的直接后果。',
         '',
         '**两条立刻能用的**：',
         '- 若 $M$ 是 $\\mathbb{Q}$-向量空间且 $G$ 作用平凡，则 $(-)^{G}$ 就是恒等函子（正合），于是 $H^{n}(G, M) = 0$（$n \\ge 1$）。',
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
         '',
         '$$s_{n}[g_{0}|\\cdots|g_{n}] := [1|g_{0}|\\cdots|g_{n}] \\qquad (n \\ge 0), \\qquad s_{-1}(1) := [1] .$$',
         '',
-        '逐项展开可得 $d_{n+1} s_{n} + s_{n-1} d_{n} = \\mathrm{id}$：$s d$ 给出一串「补上 $1$、删掉某个 $g_{i}$」的项，$d s$ 给出同一串**带相反符号**的项再加一项 $[g_{0}|\\cdots|g_{n}]$ 本身，两串相消，只剩那一项。故增广复形可缩，$H_{n}(B_{\\bullet}) = 0$（$n > 0$）、$H_{0} = R$，消解成立。∎',
+        '逐项展开可得 $d_{n+1} s_{n} + s_{n-1} d_{n} = \\mathrm{id}$：$s d$ 给出一串「补上 $1$、删掉某个 $g_{i}$」的项，$d s$ 给出同一串**带相反符号**的项再加一项 $[g_{0}|\\cdots|g_{n}]$ 本身，两串相消，只剩那一项。\n\n故增广复形可缩，$H_{n}(B_{\\bullet}) = 0$（$n > 0$）、$H_{0} = R$，消解成立。\n\n∎',
         '',
         '⭐ **为什么叫 bar**：符号 $[g_{0}|g_{1}|\\cdots|g_{n}]$ 里那些竖线在旧文献里印成横杠，于是得名。它是「把群的乘积结构逐个拉开」这件事最朴素的做法 —— 没有任何选择，纯组合。'
       ].join('\n')
@@ -274,7 +274,7 @@ window.MG = window.MG || {};
         '',
         '$$\\delta c(g_{1}, g_{2}) = g_{1} c(g_{2}) - c(g_{1} g_{2}) + c(g_{1}),$$',
         '',
-        '所以 $\\delta c = 0 \\iff c(g_{1}g_{2}) = c(g_{1}) + g_{1}c(g_{2})$，即 $Z^{1}$ 恰是交叉同态。又 $C^{0} = M$、$(\\delta^{0}m)(g) = g m - m$，故 $\\operatorname{im}\\delta^{0} = B^{1}$。于是 $H^{1} = \\ker\\delta^{1}/\\operatorname{im}\\delta^{0} = Z^{1}/B^{1}$。∎',
+        '所以 $\\delta c = 0 \\iff c(g_{1}g_{2}) = c(g_{1}) + g_{1}c(g_{2})$，即 $Z^{1}$ 恰是交叉同态。\n\n又 $C^{0} = M$、$(\\delta^{0}m)(g) = g m - m$，故 $\\operatorname{im}\\delta^{0} = B^{1}$。\n\n于是 $H^{1} = \\ker\\delta^{1}/\\operatorname{im}\\delta^{0} = Z^{1}/B^{1}$。\n\n∎',
         '',
         '**两个立刻能用的**：',
         '- 作用**平凡**时 $Z^{1} = \\operatorname{Hom}(G, M)$ 而 $B^{1} = 0$，于是 $H^{1}(G, M) = \\operatorname{Hom}(G, M)$。',
@@ -306,7 +306,7 @@ window.MG = window.MG || {};
         '- 有**分裂**的短正合列 $1 \\to H \\to H \\rtimes_{\\varphi} G \\xrightarrow{\\ \\pi\\ } G \\to 1$，截面 $g \\mapsto (1_{H}, g)$ 是一个**群同态**；',
         '- $\\varphi$ 平凡时 $H \\rtimes_{\\varphi} G = H \\times G$（直积）。',
         '',
-        '⚠️ **反方向要小心**：有同态截面的短正合列 $1 \\to H \\to E \\xrightarrow{\\pi} G \\to 1$ 只告诉你 $E$ 是 $H$ 与 $G$ 的**半直积**（当 $H$ 在 $E$ 中正规时有 $E \\cong H \\rtimes_{\\varphi} G$，$\\varphi$ 由共轭给出）；但**给定 $G$-模结构后，分裂扩张在相差同构的意义下只有一个**。$H^{1}$ 分类的是**截面的选择**，不是扩张本身 —— 见「一维上同调与分裂扩张」里的警告。'
+        '⚠️ **反方向要小心**：有同态截面的短正合列 $1 \\to H \\to E \\xrightarrow{\\pi} G \\to 1$ 只告诉你 $E$ 是 $H$ 与 $G$ 的**半直积**（当 $H$ 在 $E$ 中正规时有 $E \\cong H \\rtimes_{\\varphi} G$，$\\varphi$ 由共轭给出）；\n\n但**给定 $G$-模结构后，分裂扩张在相差同构的意义下只有一个**。\n\n$H^{1}$ 分类的是**截面的选择**，不是扩张本身 —— 见「一维上同调与分裂扩张」里的警告。'
       ].join('\n')
     },
 
@@ -409,11 +409,11 @@ window.MG = window.MG || {};
       notes: [
         '⭐ **一句话**：$H^{2}(G, A)$ 就是「$A$ 与 $G$ 拼成一个群」的所有拼法，模掉同构。',
         '',
-        '**为什么偏偏是 $2$ 次**：拼接的约束是**三元**的结合律，而三元条件正好是一个 $2$-上链的 $\\delta = 0$；换截面带来的「错位」是**二元**的，正好是一个 $1$-上链的 $\\delta$。所以**障碍**落在 $H^{2}$、**可调整性**落在 $H^{1}$。高次上同调对应的是更高阶的结合性障碍（$A_{\\infty}$ 结构那一套），这里不需要。',
+        '**为什么偏偏是 $2$ 次**：拼接的约束是**三元**的结合律，而三元条件正好是一个 $2$-上链的 $\\delta = 0$；换截面带来的「错位」是**二元**的，正好是一个 $1$-上链的 $\\delta$。\n\n所以**障碍**落在 $H^{2}$、**可调整性**落在 $H^{1}$。\n\n高次上同调对应的是更高阶的结合性障碍（$A_{\\infty}$ 结构那一套），这里不需要。',
         '',
-        '**与 $\\operatorname{Ext}$ 的关系**：当 $G$ 在 $A$ 上**作用平凡**时，扩张就是阿贝尔语境里的「$A$ 被 $G$ 的扩张」，由 $\\operatorname{Ext}^{1}_{\\mathbb{Z}}(G, A)$ 分类；一般情形 $H^{2}(G, A)$ 更大 —— 它同时记录了作用不平凡的拼法。⚠️ $\\operatorname{Ext}^{1}$ 用的是**交换群**语境，$H^{2}$ 用的是**群**语境，两者不可混用。',
+        '**与 $\\operatorname{Ext}$ 的关系**：当 $G$ 在 $A$ 上**作用平凡**时，扩张就是阿贝尔语境里的「$A$ 被 $G$ 的扩张」，由 $\\operatorname{Ext}^{1}_{\\mathbb{Z}}(G, A)$ 分类；\n\n一般情形 $H^{2}(G, A)$ 更大 —— 它同时记录了作用不平凡的拼法。\n\n⚠️ $\\operatorname{Ext}^{1}$ 用的是**交换群**语境，$H^{2}$ 用的是**群**语境，两者不可混用。',
         '',
-        '**自然性**：$G$-模的短正合列 $0 \\to A \\to A^{\\prime} \\to A^{\\prime\\prime} \\to 0$ 给出 $H^{2}$ 的长正合列 —— 于是「能否把一个 $A^{\\prime\\prime}$-扩张抬成 $A^{\\prime}$-扩张」这件事变成一次正合性判断。这是群上同调在群论里最常用的用法。',
+        '**自然性**：$G$-模的短正合列 $0 \\to A \\to A^{\\prime} \\to A^{\\prime\\prime} \\to 0$ 给出 $H^{2}$ 的长正合列 —— 于是「能否把一个 $A^{\\prime\\prime}$-扩张抬成 $A^{\\prime}$-扩张」这件事变成一次正合性判断。\n\n这是群上同调在群论里最常用的用法。',
         '',
         '⚠️ **别弄反输入输出**：分类的是「以 $A$ 为核、以 $G$ 为商」的群；$A$ 的 $G$-模结构是**输入**（由扩张自动给出），不是结论。'
       ].join('\n')
@@ -435,7 +435,9 @@ window.MG = window.MG || {};
         '',
         '$$s_{d}(g) := i\\bigl(d(g)\\bigr)\\, s(g) .$$',
         '',
-        '2. **模掉 $A$-共轭之后就是 $H^{1}$**：把两个截面 $s, s^{\\prime}$ 叫 **$A$-共轭**，如果存在 $a \\in A$ 使 $s^{\\prime}(g) = i(a)^{-1} s(g) i(a)$ 对一切 $g \\in G$ 成立。则 $A$-共轭类与 $H^{1}(G, A)$ 一一对应；$s_{d}$ 的共轭类是零类，当且仅当 $d \\in B^{1}(G, A)$。',
+        '2. **模掉 $A$-共轭之后就是 $H^{1}$**：把两个截面 $s, s^{\\prime}$ 叫 **$A$-共轭**，如果存在 $a \\in A$ 使 $s^{\\prime}(g) = i(a)^{-1} s(g) i(a)$ 对一切 $g \\in G$ 成立。\n\n' +
+        '则 $A$-共轭类与 $H^{1}(G, A)$ 一一对应；\n\n' +
+        '$s_{d}$ 的共轭类是零类，当且仅当 $d \\in B^{1}(G, A)$。',
         '',
         '3. 零类对应的正是**半直积** $A \\rtimes_{\\varphi} G$（$\\varphi$ 是给定的 $G$-模结构）的规范截面 $g \\mapsto (0, g)$ 所在的共轭类。'
       ].join('\n'),
@@ -452,7 +454,7 @@ window.MG = window.MG || {};
         '',
         '也就是把 $d$ 换成 $d + (g \\mapsto g \\cdot a - a)$ —— 恰好加上一个**主**交叉同态。反过来任何保持 $i$ 与 $\\pi$ 的扩张同构都能写成这样的共轭，于是 $A$-共轭类恰是 $H^{1}$ 的元素。∎',
         '',
-        '⚠️⚠️ **最容易误读的一条**：$H^{1}(G, A)$ **不是**「分裂扩张的同构类」。给定 $G$-模结构后，分裂扩张在相差同构的意义下**只有一个**（就是 $A \\rtimes_{\\varphi} G$）。$H^{1}$ 分类的是**截面（分裂方式）的选择**。举例最清楚：$G = A = \\mathbb{Z}/2$、作用平凡时 $H^{1} = \\operatorname{Hom}(\\mathbb{Z}/2, \\mathbb{Z}/2) = \\mathbb{Z}/2 \\ne 0$，而分裂扩张只有 $\\mathbb{Z}/2 \\times \\mathbb{Z}/2$ 一个同构类。',
+        '⚠️⚠️ **最容易误读的一条**：$H^{1}(G, A)$ **不是**「分裂扩张的同构类」。\n\n给定 $G$-模结构后，分裂扩张在相差同构的意义下**只有一个**（就是 $A \\rtimes_{\\varphi} G$）。\n\n$H^{1}$ 分类的是**截面（分裂方式）的选择**。\n\n举例最清楚：$G = A = \\mathbb{Z}/2$、作用平凡时 $H^{1} = \\operatorname{Hom}(\\mathbb{Z}/2, \\mathbb{Z}/2) = \\mathbb{Z}/2 \\ne 0$，而分裂扩张只有 $\\mathbb{Z}/2 \\times \\mathbb{Z}/2$ 一个同构类。',
         '',
         '⭐ **分工**：$H^{2}$ 管「拼得上拼不上」，$H^{1}$ 管「拼法内部还能怎么挪」。这也解释了作用的平凡化为何让 $H^{1}$ 变大而不是变小 —— 截面可以自由地在直积的两条腿上错动。'
       ].join('\n')
@@ -580,13 +582,16 @@ window.MG = window.MG || {};
         '',
         '它来自伴随 $i_{x}^{-1} \\dashv i_{x,*}$ 与「$i_{x}^{-1}\\mathcal{F} = \\mathcal{F}_{x}$」。',
         '',
-        '内射性要检验的是：对每个层的单射 $\\mathcal{G} \\rightarrowtail \\mathcal{H}$，$\\operatorname{Hom}(\\mathcal{H}, i_{x,*}A) \\to \\operatorname{Hom}(\\mathcal{G}, i_{x,*}A)$ 满。用上面的同构，这等价于',
+        '内射性要检验的是：对每个层的单射 $\\mathcal{G} \\rightarrowtail \\mathcal{H}$，$\\operatorname{Hom}(\\mathcal{H}, i_{x,*}A) \\to \\operatorname{Hom}(\\mathcal{G}, i_{x,*}A)$ 满。\n\n用上面的同构，这等价于',
         '',
         '$$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathcal{H}_{x},\\ A) \\longrightarrow \\operatorname{Hom}_{\\mathbf{Ab}}(\\mathcal{G}_{x},\\ A)$$',
         '',
         '满。而取茎是滤过余极限、**正合**，故 $\\mathcal{G}_{x} \\rightarrowtail \\mathcal{H}_{x}$ 是阿贝尔群的单射；$A$ 内射于是上式满。∎',
         '',
-        '**反过来**：设 $B \\rightarrowtail C$ 是 $\\mathbf{Ab}$ 中的单射、并给了 $B \\to A$。$i_{x,*}$ 正合，故 $i_{x,*}B \\rightarrowtail i_{x,*}C$ 是层的单射；$i_{x,*}A$ 内射于是 $\\operatorname{Hom}(i_{x,*}C, i_{x,*}A) \\to \\operatorname{Hom}(i_{x,*}B, i_{x,*}A)$ 满，而过同一个伴随同构它就是把 $\\operatorname{Hom}(C, A) \\to \\operatorname{Hom}(B, A)$ 抬上去的那条 —— 故后者满，$A$ 内射。∎',
+        '**反过来**：设 $B \\rightarrowtail C$ 是 $\\mathbf{Ab}$ 中的单射、并给了 $B \\to A$。\n\n' +
+        '$i_{x,*}$ 正合，故 $i_{x,*}B \\rightarrowtail i_{x,*}C$ 是层的单射；\n\n' +
+        '$i_{x,*}A$ 内射于是 $\\operatorname{Hom}(i_{x,*}C, i_{x,*}A) \\to \\operatorname{Hom}(i_{x,*}B, i_{x,*}A)$ 满，而过同一个伴随同构它就是把 $\\operatorname{Hom}(C, A) \\to \\operatorname{Hom}(B, A)$ 抬上去的那条 —— 故后者满，$A$ 内射。\n\n' +
+        '∎',
         '',
         '**为什么必须 $A$ 可除**：$\\mathbf{Ab}$ 里内射 $=$ 可除。$A = \\mathbb{Z}$ 时天际线层**不是**内射层（$\\mathbb{Z} \\rightarrowtail \\mathbb{Q}$ 这一步提升不上去），所以造内射层必须先用内射包把每根茎撑大。'
       ].join('\n')
@@ -613,15 +618,19 @@ window.MG = window.MG || {};
         '3. $f_{*}$ 把内射层送到内射层（$f^{-1}$ 正合、$f^{-1} \\dashv f_{*}$），所以「$f_{*}$ 这一侧的内射类」也够用来算 $Rf_{*}$。'
       ].join('\n'),
       notes: [
-        '**证明：单性。** 层的映射是单射 $\\iff$ 在每个开集上取截面后是单射。取 $U$ 开、$s \\in \\mathcal{F}(U)$；它在第 $x$ 个分量（$x \\in U$ 时）的像是 $s$ 的茎 $s_{x} \\in \\mathcal{F}_{x} \\rightarrowtail I_{x}$（$x \\notin U$ 时分量落进 $0$）。若 $s \\ne 0$，则存在 $x \\in U$ 使 $s_{x} \\ne 0$（**层由它的全部茎决定**），于是某个分量非零。故 $\\mathcal{F} \\to \\prod_{x} i_{x,*}I_{x}$ 单。∎',
+        '**证明：单性。** 层的映射是单射 $\\iff$ 在每个开集上取截面后是单射。\n\n取 $U$ 开、$s \\in \\mathcal{F}(U)$；它在第 $x$ 个分量（$x \\in U$ 时）的像是 $s$ 的茎 $s_{x} \\in \\mathcal{F}_{x} \\rightarrowtail I_{x}$（$x \\notin U$ 时分量落进 $0$）。\n\n若 $s \\ne 0$，则存在 $x \\in U$ 使 $s_{x} \\ne 0$（**层由它的全部茎决定**），于是某个分量非零。\n\n故 $\\mathcal{F} \\to \\prod_{x} i_{x,*}I_{x}$ 单。\n\n∎',
         '',
-        '**证明：目标是内射的。** 要 $\\operatorname{Hom}_{\\mathbf{Ab}(X)}(-, \\prod_{x} i_{x,*}I_{x})$ 正合。$\\operatorname{Hom}$ 与直积在**第二个**变量上都保极限，所以只需逐 $x$ 检验 $i_{x,*}I_{x}$：由伴随与「$i_{x}^{-1} = $ 取茎」，',
+        '**证明：目标是内射的。** 要 $\\operatorname{Hom}_{\\mathbf{Ab}(X)}(-, \\prod_{x} i_{x,*}I_{x})$ 正合。\n\n$\\operatorname{Hom}$ 与直积在**第二个**变量上都保极限，所以只需逐 $x$ 检验 $i_{x,*}I_{x}$：由伴随与「$i_{x}^{-1} = $ 取茎」，',
         '',
         '$$\\operatorname{Hom}_{\\mathbf{Ab}(X)}\\bigl(\\mathcal{F},\\ i_{x,*}I_{x}\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(\\mathcal{F}_{x},\\ I_{x}\\bigr),$$',
         '',
         '而 $\\mathcal{F} \\mapsto \\mathcal{F}_{x}$ 正合、$I_{x}$ 内射，故右端关于 $\\mathcal{F}$ 正合 —— 每个 $i_{x,*}I_{x}$ 内射，它们的直积也内射（逐点论证对直积一字不改地成立）。∎',
         '',
-        '⭐ **为什么这使层上同调的定义「合法」**：定义 $H^{n}(X, \\mathcal{F}) := R^{n}\\Gamma(X, \\mathcal{F})$ 必须先有内射消解。没有足够多内射，消解根本不存在，$R^{n}\\Gamma$ 无从定义。有了上面两条，每个 $\\mathcal{F}$ 都有内射消解；再由**比较定理**（两个内射消解之间的映射在同伦意义下唯一），$H^{n}$ 与消解的选取无关 —— 层上同调这才成为一个**定义良好的函子**。同一句话对 $R^{n}f_{*}$ 成立。',
+        '⭐ **为什么这使层上同调的定义「合法」**：定义 $H^{n}(X, \\mathcal{F}) := R^{n}\\Gamma(X, \\mathcal{F})$ 必须先有内射消解。\n\n' +
+        '没有足够多内射，消解根本不存在，$R^{n}\\Gamma$ 无从定义。\n\n' +
+        '有了上面两条，每个 $\\mathcal{F}$ 都有内射消解；\n\n' +
+        '再由**比较定理**（两个内射消解之间的映射在同伦意义下唯一），$H^{n}$ 与消解的选取无关 —— 层上同调这才成为一个**定义良好的函子**。\n\n' +
+        '同一句话对 $R^{n}f_{*}$ 成立。',
         '',
         '⭐ **论证的形状值得记住**：它只用了「茎」和「直积」两样东西，所以对任何「点足够多」的景都成立：在拓扑空间、拓扑斯的阿贝尔层范畴里，**内射性可以逐点检验**。这也是「层上同调可以从茎一层层读出来」的最朴素来源。',
         '',
@@ -656,9 +665,9 @@ window.MG = window.MG || {};
         '',
         '$$\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}\\bigl(\\mathcal{M}|_{U_{i_{0} \\cdots i_{p}}}\\bigr),$$',
         '',
-        '其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。$\\mathcal{M}$ 是层，故 Čech 正合性可逐点验证；于是 $\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是 $\\mathcal{M}$ 的一个消解，且取整体截面就回到 $\\check{C}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
+        '其中 $j : U_{i_{0} \\cdots i_{p}} \\hookrightarrow X$ 是含入。\n\n$\\mathcal{M}$ 是层，故 Čech 正合性可逐点验证；于是 $\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是 $\\mathcal{M}$ 的一个消解，且取整体截面就回到 $\\check{C}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
         '',
-        '**② 每一项是软的。** 仿紧 Hausdorff 上，局部有限覆盖配**单位分解**（见 `prop.paracompact-partition-unity`）：单位分解可以把 $j_{*}(\\mathcal{M}|_{U})$ 型的层按覆盖成员劈开，于是 $\\check{\\mathcal{C}}^{p}$ 是**细的**（fine，带从属于 $\\mathfrak{U}$ 的分割）；细层在仿紧空间上**软**，而软层对 $\\Gamma$ **无环**（软层可以「局部化到闭集」，再用单位分解把整体截面拼出来）。',
+        '**② 每一项是软的。** 仿紧 Hausdorff 上，局部有限覆盖配**单位分解**（见 `prop.paracompact-partition-unity`）：单位分解可以把 $j_{*}(\\mathcal{M}|_{U})$ 型的层按覆盖成员劈开，于是 $\\check{\\mathcal{C}}^{p}$ 是**细的**（fine，带从属于 $\\mathfrak{U}$ 的分割）；\n\n细层在仿紧空间上**软**，而软层对 $\\Gamma$ **无环**（软层可以「局部化到闭集」，再用单位分解把整体截面拼出来）。',
         '',
         '**③ 无环消解算导出函子。** 由 ① ②，$\\check{\\mathcal{C}}^{\\bullet}$ 是一个由 $\\Gamma$-无环层组成的消解；由 Leray 零调性（零调消解算右导出函子），',
         '',
@@ -666,7 +675,7 @@ window.MG = window.MG || {};
         '',
         '再沿覆盖取余极限（Čech 上同调按定义就是沿覆盖的滤过余极限）得到一般结论。∎',
         '',
-        '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。同一个结论，两套互不依赖的机制。',
+        '⭐ **与「紧 Hausdorff」那条的关系**：紧 Hausdorff 必仿紧，所以这一条把 `prop.chaus-cech-eq-h` 覆盖在内；但两条的**证明**完全不同 —— 紧性用的路子是「有限覆盖在滤过系统里共尾 + 有限直积可由可表对象控制」，仿紧性用的是「局部有限 + 单位分解给出的软性」。\n\n同一个结论，两套互不依赖的机制。',
         '',
         '⚠️ **仿紧这个条件不能去掉**：在一般（甚至紧生成）的空间上，Čech 上同调与层上同调可以不同。「Čech 就是层上同调」是拓扑 / 层论里最常被无条件引用的一句话 —— 引用时一定要带上空间条件。',
         '',
@@ -706,13 +715,13 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**三条良定义性的检验**（这是「导出偶仍是正合偶」的全部难点）：',
-        '- $j^{\\prime}$：若 $i(x) = i(x^{\\prime})$，则 $x - x^{\\prime} \\in \\ker i = \\operatorname{im} k$，于是 $j(x - x^{\\prime}) \\in j(\\operatorname{im} k) = 0$（因为 $kj = 0$）—— 与代表元无关。又 $j(x)$ 是 $d$-闭上链：$d\\, j(x) = j k j(x) = 0$。',
-        '- $k^{\\prime}$：若 $e \\in \\ker d$（即 $j k e = 0$），则 $k e \\in \\ker j = \\operatorname{im} i = D^{\\prime}$，故 $k^{\\prime}$ 落在 $D^{\\prime}$ 里；若 $e \\in \\operatorname{im} d$（即 $e = j k(e_{0})$），则 $k e = k j k(e_{0}) = 0$ —— 与代表元无关。',
+        '- $j^{\\prime}$：若 $i(x) = i(x^{\\prime})$，则 $x - x^{\\prime} \\in \\ker i = \\operatorname{im} k$，于是 $j(x - x^{\\prime}) \\in j(\\operatorname{im} k) = 0$（因为 $kj = 0$）—— 与代表元无关。\n\n又 $j(x)$ 是 $d$-闭上链：$d\\, j(x) = j k j(x) = 0$。',
+        '- $k^{\\prime}$：若 $e \\in \\ker d$（即 $j k e = 0$），则 $k e \\in \\ker j = \\operatorname{im} i = D^{\\prime}$，故 $k^{\\prime}$ 落在 $D^{\\prime}$ 里；\n\n若 $e \\in \\operatorname{im} d$（即 $e = j k(e_{0})$），则 $k e = k j k(e_{0}) = 0$ —— 与代表元无关。',
         '- $i^{\\prime}$：$i(D^{\\prime}) = i^{2}(D) \\subseteq i(D) = D^{\\prime}$。',
         '',
         '再验一遍三处正合即得导出偶又是正合偶。于是可以**无穷递推**：$E_{1} := E$、$E_{r+1} := H(E_{r}, d_{r})$。这正是谱序列的「一页一页算」。',
         '',
-        '**双次数。** 最常用的情形来自**过滤复形**：$i$ 的双次数是 $(-1, 1)$、$j$ 是 $(0, 0)$、$k$ 是 $(1, 0)$。导出一次之后 $j$ 的双次数变成 $(1, -1)$ —— 因为 $j^{\\prime}$ 作用在 $i(x)$ 上、读出的却是 $j(x)$，而 $i$ 已经先把次数挪了一步。$i$、$k$ 在导出时不变。归纳得：$j_{r}$ 的双次数是 $(r - 1,\\ 1 - r)$，于是 $d_{r} = j_{r} k_{r}$ 的双次数是 $(r,\\ 1 - r)$。',
+        '**双次数。** 最常用的情形来自**过滤复形**：$i$ 的双次数是 $(-1, 1)$、$j$ 是 $(0, 0)$、$k$ 是 $(1, 0)$。\n\n导出一次之后 $j$ 的双次数变成 $(1, -1)$ —— 因为 $j^{\\prime}$ 作用在 $i(x)$ 上、读出的却是 $j(x)$，而 $i$ 已经先把次数挪了一步。\n\n$i$、$k$ 在导出时不变。\n\n归纳得：$j_{r}$ 的双次数是 $(r - 1,\\ 1 - r)$，于是 $d_{r} = j_{r} k_{r}$ 的双次数是 $(r,\\ 1 - r)$。',
         '',
         '⭐ **为什么需要它**：直接构造谱序列要求先有一个**过滤**。正合偶把这层依赖剥掉了 —— 只要有一个三角形的正合结构，就能烧出一台谱序列。Bockstein、同伦群、Gysin 那类谱序列都只有这条路可走。'
       ].join('\n')
@@ -748,7 +757,7 @@ window.MG = window.MG || {};
         '',
         '$$d_{r} = j_{r} k_{r} : \\quad (p, q) \\longmapsto \\bigl(p + r,\\ q - (r - 1)\\bigr) .$$',
         '',
-        '- **极限项**：$D_{r+1} = i_{r}(D_{r}) \\subseteq D_{r}$ 是**递降**的，其交 $D_{\\infty}$ 就是「极限项」；$i$ 的像已被取尽、$k$ 的像已被除掉，剩下正好是 $j$ 那一步的商，于是 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q} / D_{\\infty}^{p+1, q-1}$。∎',
+        '- **极限项**：$D_{r+1} = i_{r}(D_{r}) \\subseteq D_{r}$ 是**递降**的，其交 $D_{\\infty}$ 就是「极限项」；$i$ 的像已被取尽、$k$ 的像已被除掉，剩下正好是 $j$ 那一步的商，于是 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q} / D_{\\infty}^{p+1, q-1}$。\n\n∎',
         '',
         '⭐ **读法**：谱序列的「一页一页算」在正合偶语言里就是「把偶导出一次」。$D$ 是「已经知道的东西」，$E$ 是「这一页的商」，$i$ 是「忘掉一层」，$j$ 是「取商」，$k$ 是「连接同态」。',
         '',
@@ -798,7 +807,7 @@ window.MG = window.MG || {};
         '',
         '即「连接同态 + 落到关联分次」，这正是直接构造里 $\\operatorname{Gr}^{p} \\to \\operatorname{Gr}^{p+1}$ 的那个微分，其落点 $(p+1, q)$ 与 $d_{r}$ 的规律 $(r, 1-r)$ 在 $r = 1$ 时吻合。',
         '',
-        '③ **逐叶归纳**：把 $D_{r}$、$E_{r}$ 用 $Z_{r}/B_{r}$ 显式写出（$D_{r}^{p,q}$ 是「$F^{p}$ 里 $d$ 至少跳 $r$ 步仍留在 $F^{p+r-1}$ 内的那些类」），代入导出偶的三条公式，得到的就是上面的 $Z_{r}^{p,q}$、$B_{r}^{p,q}$。归纳步只用到 $d^{2} = 0$ 与核 / 余核的泛性质，没有额外输入。∎',
+        '③ **逐叶归纳**：把 $D_{r}$、$E_{r}$ 用 $Z_{r}/B_{r}$ 显式写出（$D_{r}^{p,q}$ 是「$F^{p}$ 里 $d$ 至少跳 $r$ 步仍留在 $F^{p+r-1}$ 内的那些类」），代入导出偶的三条公式，得到的就是上面的 $Z_{r}^{p,q}$、$B_{r}^{p,q}$。\n\n归纳步只用到 $d^{2} = 0$ 与核 / 余核的泛性质，没有额外输入。\n\n∎',
         '',
         '⭐ **实用价值**：想算某个谱序列时，挑好算的那条路走。**双复形**的情形通常用直接构造（两个方向的过滤各给一台，比较 $E_{2}$ 页即可，见 `prop.bicomplex-spectral`）；而**一般正合偶**（同伦群、Bockstein、Gysin 那类）只有正合偶这条路 —— 那里根本没有一个复形可以过滤。',
         '',
@@ -820,7 +829,7 @@ window.MG = window.MG || {};
       tags: ['同调代数', '层论', 'étale 空间', '局部同胚'],
       refs: ['Godement, Topologie algébrique et théorie des faisceaux, Chapitre II（层与 espace étalé）', 'Iversen, Cohomology of Sheaves —— étale 空间与层的等价'],
       statement: [
-        '设 $X$ 是拓扑空间。连续映射 $p : E \\to X$ 叫 **étale 映射**（局部同胚），如果每个 $e \\in E$ 都有开邻域 $V \\ni e$ 使得 $p(V)$ 是 $X$ 中的开集、且 $p|_{V} : V \\to p(V)$ 是同胚。此时 $(E, p)$ 叫 $X$ 上的一个 **étale 空间**（espace étalé）。'
+        '设 $X$ 是拓扑空间。\n\n连续映射 $p : E \\to X$ 叫 **étale 映射**（局部同胚），如果每个 $e \\in E$ 都有开邻域 $V \\ni e$ 使得 $p(V)$ 是 $X$ 中的开集、且 $p|_{V} : V \\to p(V)$ 是同胚。\n\n此时 $(E, p)$ 叫 $X$ 上的一个 **étale 空间**（espace étalé）。'
       ].join('\n'),
       notes: [
         '**三条立刻要记住的**：',
@@ -832,9 +841,9 @@ window.MG = window.MG || {};
         '',
         '$$\\mathcal{F} \\longmapsto \\Bigl(\\coprod_{x \\in X} \\mathcal{F}_{x} \\longrightarrow X\\Bigr)$$',
         '',
-        '给出：右边带「茎的拓扑」—— 每对 $(U, s)$（$U$ 开、$s \\in \\mathcal{F}(U)$）贡献开集 $\\{\\, s_{x} : x \\in U \\,\\}$。这就是「层 = 局部同构地摊在底空间上的时空」的精确意思，也解释了为什么「推出层 / 推出开集」这类操作在 étale 空间上变成「把纤维拼起来」。',
+        '给出：右边带「茎的拓扑」—— 每对 $(U, s)$（$U$ 开、$s \\in \\mathcal{F}(U)$）贡献开集 $\\{\\, s_{x} : x \\in U \\,\\}$。\n\n这就是「层 = 局部同构地摊在底空间上的时空」的精确意思，也解释了为什么「推出层 / 推出开集」这类操作在 étale 空间上变成「把纤维拼起来」。',
         '',
-        '⚠️ **名词的坑**：这里说的是拓扑空间上的**局部同胚**（法文 espace étalé）。代数几何里的 **étale 映射**是另一回事（局部有限展示 + 平坦 + 无分歧），见「étale 层」。两者共用名字 —— Grothendieck 是有意为之，因为概形的 étale 映射确实是「局部同构 + 有限覆叠」的代数替身 —— 但**不能互换**：局部同胚的纤维是离散的任意集合，étale 概形态射的纤维是一般离散的**有限**概形。'
+        '⚠️ **名词的坑**：这里说的是拓扑空间上的**局部同胚**（法文 espace étalé）。\n\n代数几何里的 **étale 映射**是另一回事（局部有限展示 + 平坦 + 无分歧），见「étale 层」。\n\n两者共用名字 —— Grothendieck 是有意为之，因为概形的 étale 映射确实是「局部同构 + 有限覆叠」的代数替身 —— 但**不能互换**：局部同胚的纤维是离散的任意集合，étale 概形态射的纤维是一般离散的**有限**概形。'
       ].join('\n')
     },
 
@@ -848,7 +857,7 @@ window.MG = window.MG || {};
       tags: ['同调代数', '层论', 'étale 拓扑', 'étale 层'],
       refs: ['Milne, Étale Cohomology —— étale 拓扑与 étale 层', 'Stacks Project —— Étale Cohomology 一章（étale 拓扑的定义）'],
       statement: [
-        '设 $X$ 是概形。记 $X_{\\text{et}}$ 为 $X$ 的**小 étale site**：对象是 étale 映射 $U \\to X$（通常限制到**仿射的、局部有限展示的**那些，以保证范畴本质小），态射是 $X$-态射，**覆盖**是联合满射的 étale 族 $\\{U_{i} \\to U\\}$。$X_{\\text{et}}$ 上的**预层**是反变函子',
+        '设 $X$ 是概形。\n\n记 $X_{\\text{et}}$ 为 $X$ 的**小 étale site**：对象是 étale 映射 $U \\to X$（通常限制到**仿射的、局部有限展示的**那些，以保证范畴本质小），态射是 $X$-态射，**覆盖**是联合满射的 étale 族 $\\{U_{i} \\to U\\}$。\n\n$X_{\\text{et}}$ 上的**预层**是反变函子',
         '',
         '$$\\mathcal{F} : \\bigl(X_{\\text{et}}\\bigr)^{\\mathrm{op}} \\longrightarrow \\mathbf{Ab} .$$',
         '',
@@ -876,7 +885,7 @@ window.MG = window.MG || {};
         '',
         '⚠️ **技术条件不省**：「小 étale site」要能成为集合（而不能大到一个集合装不下），故通常取「仿射的、局部有限展示的 étale $X$-概形」这套对象；不同文献取法略异，但给出的拓扑斯相同。这里不纠结这一点。',
         '',
-        '📌 本图只到「étale 层是什么」这一层。要做 étale 上同调还需要：$\\mathbf{Sh}(X_{\\text{et}}, \\mathbf{Ab})$ 是 Grothendieck 范畴、它上面有足够多内射（同样靠「点足够多」的论证，点取几何点）、以及 $f_{*}$、$R^{n}f_{*}$ 的长正合列相容性 —— 那是另一整套装置。'
+        '📌 本图只到「étale 层是什么」这一层。\n\n要做 étale 上同调还需要：$\\mathbf{Sh}(X_{\\text{et}}, \\mathbf{Ab})$ 是 Grothendieck 范畴、它上面有足够多内射（同样靠「点足够多」的论证，点取几何点）、以及 $f_{*}$、$R^{n}f_{*}$ 的长正合列相容性 —— 那是另一整套装置。'
       ].join('\n')
     },
 
@@ -902,7 +911,7 @@ window.MG = window.MG || {};
         '',
         '3. **常值层**：$\\underline{A}$（把 $A$ 看成离散群、取局部常值函数）是 étale 层，也是 étale 上同调里最常用的系数。⚠️ 常值**预层**（每个 $U$ 都取 $A$、每个映射都取恒等）一般**不是**层，必须层化。',
         '',
-        '4. **具体例子**：$\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$ 是有限 étale 的（次数 $2$）；$t \\mapsto t^{n} : \\mathbb{G}_{m} \\to \\mathbb{G}_{m}$ 在 $n$ 于基上可逆时是有限 étale 的（Kummer 覆叠）。'
+        '4. **具体例子**：$\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$ 是有限 étale 的（次数 $2$）；\n\n$t \\mapsto t^{n} : \\mathbb{G}_{m} \\to \\mathbb{G}_{m}$ 在 $n$ 于基上可逆时是有限 étale 的（Kummer 覆叠）。'
       ].join('\n'),
       notes: [
         '**读法**：étale 层 = 「可以用 étale 覆盖做下降」的预层。上面三道例子的共同点是 —— 它们都是**局部看是常值、或者由覆叠决定**的对象，所以能下降。',
@@ -911,7 +920,7 @@ window.MG = window.MG || {};
         '',
         '**第 2 条为什么叫「常值的推广」**：$Y \\to X$ 有限 étale 时，$Y$ 局部（在 étale 拓扑下）长得像 $n$ 份 $X$，于是 $\\mathcal{G}_{Y}$ 局部同构于常值层。类比是拓扑里的「$n$ 层覆叠 $E \\to X$ 给出局部系（local system）」。',
         '',
-        '**第 4 条两个例子的直觉**：$\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$ 是「$2$ 点盖 $1$ 点」，正是 Galois 覆叠的原型；$t \\mapsto t^{n}$ 是「$n$ 次 Kummer 覆叠」，把开 $n$ 次方这件事变成一层线性结构 —— Kummer 理论说的就是「$\\mu_{n}$-torsor 由 $H^{1}(X_{\\text{et}}, \\mu_{n})$ 分类」。',
+        '**第 4 条两个例子的直觉**：$\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$ 是「$2$ 点盖 $1$ 点」，正是 Galois 覆叠的原型；\n\n$t \\mapsto t^{n}$ 是「$n$ 次 Kummer 覆叠」，把开 $n$ 次方这件事变成一层线性结构 —— Kummer 理论说的就是「$\\mu_{n}$-torsor 由 $H^{1}(X_{\\text{et}}, \\mu_{n})$ 分类」。',
         '',
         '⚠️ **别把第 3 条读成废话**：常值预层不是层这件事，在 Zariski 拓扑下就已经发生（两个开集的交叠上要粘），换成 étale 拓扑后粘合条件更强。层化之后的 $\\underline{A}$ 才是那个「$A$-值局部常值函数」的层。'
       ].join('\n')
@@ -937,9 +946,9 @@ window.MG = window.MG || {};
         '',
         '$$R^{n}F(M) = H^{n}\\bigl(\\operatorname{Hom}_{R[G]}(P_{\\bullet}, M)\\bigr).$$',
         '',
-        '为什么：$\\operatorname{Hom}_{R[G]}(P_{\\bullet}, M)$ 与「先取 $M$ 的内射消解再取 Hom」给出同一族右导出函子（两者都是 $\\delta$-函子，且在 $n = 0$ 处都与 $\\operatorname{Hom}_{R[G]}(R, M) = M^{G}$ 一致、都可擦除），由同调代数的唯一性比较即得。取 $P_{\\bullet} = B_{\\bullet}$ 即可。',
+        '为什么：$\\operatorname{Hom}_{R[G]}(P_{\\bullet}, M)$ 与「先取 $M$ 的内射消解再取 Hom」给出同一族右导出函子（两者都是 $\\delta$-函子，且在 $n = 0$ 处都与 $\\operatorname{Hom}_{R[G]}(R, M) = M^{G}$ 一致、都可擦除），由同调代数的唯一性比较即得。\n\n取 $P_{\\bullet} = B_{\\bullet}$ 即可。',
         '',
-        '**第三步：把 Hom 翻译成函数。** $\\operatorname{Hom}_{R[G]}(B_{n}, M)$ 里的元素由 $c(g_{1}, \\cdots, g_{n}) := f\\bigl([1|g_{1}|\\cdots|g_{n}]\\bigr)$ 唯一确定：给定任意 $c$，令 $f\\bigl(g_{0}[1|g_{1}|\\cdots|g_{n}]\\bigr) := g_{0}\\, c(g_{1}, \\cdots, g_{n})$ 即得 $R[G]$-线性映射（良定义因为 $\\{[1|g_{1}|\\cdots|g_{n}]\\}$ 是 $R[G]$-基）。于是 $C^{n}(G, M) \\cong \\{c : G^{n} \\to M\\}$。',
+        '**第三步：把 Hom 翻译成函数。** $\\operatorname{Hom}_{R[G]}(B_{n}, M)$ 里的元素由 $c(g_{1}, \\cdots, g_{n}) := f\\bigl([1|g_{1}|\\cdots|g_{n}]\\bigr)$ 唯一确定：给定任意 $c$，令 $f\\bigl(g_{0}[1|g_{1}|\\cdots|g_{n}]\\bigr) := g_{0}\\, c(g_{1}, \\cdots, g_{n})$ 即得 $R[G]$-线性映射（良定义因为 $\\{[1|g_{1}|\\cdots|g_{n}]\\}$ 是 $R[G]$-基）。\n\n于是 $C^{n}(G, M) \\cong \\{c : G^{n} \\to M\\}$。',
         '',
         '**第四步：微分对上号。** 由 $d_{n}[1|g_{1}|\\cdots|g_{n}] = [g_{1}|\\cdots|g_{n}] + \\sum_{i=1}^{n} (-1)^{i}[1|\\cdots|g_{i}g_{i+1}|\\cdots|g_{n}] + (-1)^{n+1}[1|\\cdots|g_{n}]$（把 $i = 0$ 那一项用 $R[G]$-线性搬到最左边：$[g_{1}|\\cdots|g_{n}] = g_{1}\\cdot[1|g_{2}|\\cdots|g_{n}]$），对 $f$ 取值并记 $c$ 为对应的函数，逐项读出的就是',
         '',
@@ -987,15 +996,15 @@ window.MG = window.MG || {};
         '',
         '$$s_{d}(g_{1})s_{d}(g_{2}) = i(d(g_{1}))\\, s(g_{1})\\, i(d(g_{2}))\\, s(g_{2}) = i\\bigl(d(g_{1}) + g_{1}d(g_{2})\\bigr)\\, s(g_{1}g_{2}),$$',
         '',
-        '其中用了共轭恒等式 $s(g_{1})\\, i(a)\\, s(g_{1})^{-1} = i(g_{1} \\cdot a)$（这正是 $A$ 上 $G$-模结构的定义）。而 $s_{d}(g_{1}g_{2}) = i(d(g_{1}g_{2})) s(g_{1}g_{2})$。两式相等 $\\iff$ $d(g_{1}g_{2}) = d(g_{1}) + g_{1}d(g_{2})$，即 $d \\in Z^{1}$。反向：任何截面 $s^{\\prime}$ 都满足 $s^{\\prime}(g)s(g)^{-1} \\in \\ker\\pi = i(A)$，故唯一地是 $i(d(g))$ 的形状，而上面的计算说明 $d \\in Z^{1}$。',
+        '其中用了共轭恒等式 $s(g_{1})\\, i(a)\\, s(g_{1})^{-1} = i(g_{1} \\cdot a)$（这正是 $A$ 上 $G$-模结构的定义）。\n\n而 $s_{d}(g_{1}g_{2}) = i(d(g_{1}g_{2})) s(g_{1}g_{2})$。\n\n两式相等 $\\iff$ $d(g_{1}g_{2}) = d(g_{1}) + g_{1}d(g_{2})$，即 $d \\in Z^{1}$。\n\n反向：任何截面 $s^{\\prime}$ 都满足 $s^{\\prime}(g)s(g)^{-1} \\in \\ker\\pi = i(A)$，故唯一地是 $i(d(g))$ 的形状，而上面的计算说明 $d \\in Z^{1}$。',
         '',
         '**② 共轭就是加上一个上边界。** 取 $a \\in A$，把 $s_{d}$ 换成 $i(a)^{-1} s_{d}(g) i(a)$：',
         '',
         '$$i(a)^{-1} i(d(g)) s(g) i(a) = i\\bigl(-a + d(g)\\bigr)\\, i(g \\cdot a)\\, s(g) = i\\bigl(d(g) + g\\cdot a - a\\bigr)\\, s(g) = s_{d + \\delta^{1}a}(g).$$',
         '',
-        '所以 $A$-共轭类恰是 $d$ 模 $B^{1}(G, A)$。另一方面，任何保持 $i$ 与 $\\pi$ 的扩张同构 $E \\to E$ 由 $\\alpha(i(a)s(g)) = i(a)\\alpha(s(g))$ 决定，而 $\\alpha \\circ s$ 是另一个同态截面，于是又回到上面那族 $d$ —— 即「扩张等价」与「$A$-共轭」是同一件事。',
+        '所以 $A$-共轭类恰是 $d$ 模 $B^{1}(G, A)$。\n\n另一方面，任何保持 $i$ 与 $\\pi$ 的扩张同构 $E \\to E$ 由 $\\alpha(i(a)s(g)) = i(a)\\alpha(s(g))$ 决定，而 $\\alpha \\circ s$ 是另一个同态截面，于是又回到上面那族 $d$ —— 即「扩张等价」与「$A$-共轭」是同一件事。',
         '',
-        '**③ 零类就是半直积那一档。** 若 $E = A \\rtimes_{\\varphi} G$ 且 $s(g) = (0, g)$ 是规范截面，则 $s_{d}(g) = (d(g), g)$；而 $i(a)^{-1}(0,g)i(a) = (g\\cdot a - a,\\ g)$。于是 $s_{d}$ 与 $s$ 共轭 $\\iff$ $d = g \\mapsto g\\cdot a - a \\in B^{1}$，即 $[d] = 0$。',
+        '**③ 零类就是半直积那一档。** 若 $E = A \\rtimes_{\\varphi} G$ 且 $s(g) = (0, g)$ 是规范截面，则 $s_{d}(g) = (d(g), g)$；\n\n而 $i(a)^{-1}(0,g)i(a) = (g\\cdot a - a,\\ g)$。\n\n于是 $s_{d}$ 与 $s$ 共轭 $\\iff$ $d = g \\mapsto g\\cdot a - a \\in B^{1}$，即 $[d] = 0$。',
         '',
         '**④ 双射。** 由 ①②，映射 $d \\mapsto s_{d}$ 把 $Z^{1}$ 双射到全体同态截面、把 $B^{1}$ 双射到与 $s$ 共轭的那一片，于是 $H^{1}(G, A) \\to \\{A\\text{-共轭类}\\}$ 是双射。∎',
         '',
@@ -1011,7 +1020,7 @@ window.MG = window.MG || {};
       target: 'thm.h2-group-extensions',
       title: '群扩张 + $2$-上圈 $\\implies$ $H^{2}$ 分类扩张',
       proof: [
-        '**方向一：扩张 $\\mapsto$ 上圈类。** 设 $1 \\to A \\xrightarrow{i} E \\xrightarrow{\\pi} G \\to 1$。取集合论截面 $\\sigma : G \\to E$，$\\pi\\sigma = \\operatorname{id}$、$\\sigma(1) = 1$。由 $\\pi$ 的核是 $i(A)$，存在唯一的 $c(g_{1}, g_{2}) \\in A$ 使',
+        '**方向一：扩张 $\\mapsto$ 上圈类。** 设 $1 \\to A \\xrightarrow{i} E \\xrightarrow{\\pi} G \\to 1$。\n\n取集合论截面 $\\sigma : G \\to E$，$\\pi\\sigma = \\operatorname{id}$、$\\sigma(1) = 1$。\n\n由 $\\pi$ 的核是 $i(A)$，存在唯一的 $c(g_{1}, g_{2}) \\in A$ 使',
         '',
         '$$\\sigma(g_{1})\\, \\sigma(g_{2}) = i\\bigl(c(g_{1}, g_{2})\\bigr)\\, \\sigma(g_{1}g_{2}) .$$',
         '',
@@ -1025,7 +1034,7 @@ window.MG = window.MG || {};
         '',
         '即 $c \\in Z^{2}$。',
         '',
-        '**换截面只改一个上边界。** 另一截面 $\\sigma^{\\prime}(g) = i(u(g))\\sigma(g)$（$u : G \\to A$，因 $\\pi\\sigma^{\\prime} = \\pi\\sigma$ 必是此形状）。把 $\\sigma^{\\prime}$ 塞进定义式，展开 $i(u(g_{1}))\\sigma(g_{1}) i(u(g_{2}))\\sigma(g_{2})$ 并用共轭恒等式，得',
+        '**换截面只改一个上边界。** 另一截面 $\\sigma^{\\prime}(g) = i(u(g))\\sigma(g)$（$u : G \\to A$，因 $\\pi\\sigma^{\\prime} = \\pi\\sigma$ 必是此形状）。\n\n把 $\\sigma^{\\prime}$ 塞进定义式，展开 $i(u(g_{1}))\\sigma(g_{1}) i(u(g_{2}))\\sigma(g_{2})$ 并用共轭恒等式，得',
         '',
         '$$c^{\\prime}(g_{1}, g_{2}) = c(g_{1}, g_{2}) + g_{1}\\cdot u(g_{2}) - u(g_{1}g_{2}) + u(g_{1}) = c + \\delta^{1}u ,$$',
         '',
@@ -1037,7 +1046,7 @@ window.MG = window.MG || {};
         '',
         '单位元是 $(0, 1)$（用归一化 $c(1, g) = c(g, 1) = 0$，它可由换截面达到）；结合律的等式两端之差恰是 $\\delta^{2}c = 0$，故这是群 $E_{c}$。投影 $(a, g) \\mapsto g$ 是满同态、核是 $A \\times \\{1\\} \\cong A$，于是得到扩张。',
         '',
-        '**两个方向互逆。** 从扩张读出的 $c$ 再按方向二造 $E_{c}$，则 $(a, g) \\mapsto i(a)\\sigma(g)$ 是群同构 $E_{c} \\to E$（直接验乘法：$i(a_{1})\\sigma(g_{1})\\, i(a_{2})\\sigma(g_{2}) = i(a_{1} + g_{1}a_{2} + c(g_{1},g_{2}))\\sigma(g_{1}g_{2})$）；反之从 $c$ 出发造 $E_{c}$ 再取截面 $g \\mapsto (0, g)$ 读回 $c$。于是等价类与 $H^{2}(G, A)$ 一一对应。∎',
+        '**两个方向互逆。** 从扩张读出的 $c$ 再按方向二造 $E_{c}$，则 $(a, g) \\mapsto i(a)\\sigma(g)$ 是群同构 $E_{c} \\to E$（直接验乘法：$i(a_{1})\\sigma(g_{1})\\, i(a_{2})\\sigma(g_{2}) = i(a_{1} + g_{1}a_{2} + c(g_{1},g_{2}))\\sigma(g_{1}g_{2})$）；\n\n反之从 $c$ 出发造 $E_{c}$ 再取截面 $g \\mapsto (0, g)$ 读回 $c$。\n\n于是等价类与 $H^{2}(G, A)$ 一一对应。\n\n∎',
         '',
         '**零类**：$c \\in B^{2}$ $\\iff$ 可换截面使 $c = 0$ $\\iff$ 该截面 $\\sigma$ 本身是同态 $\\iff$ 扩张分裂。∎'
       ].join('\n'),
@@ -1051,13 +1060,13 @@ window.MG = window.MG || {};
       target: 'prop.low-degree-exact',
       title: '标准复形的低次项 $\\implies$ 低次正合列',
       proof: [
-        '**第一行。** 由上链复形的显式公式，$\\delta^{0} : M \\to C^{1}(G, M)$ 是 $m \\mapsto (g \\mapsto g m - m)$，故 $\\ker\\delta^{0} = M^{G}$（$\\delta^{0}m = 0$ $\\iff$ 每个 $g$ 都固定 $m$）。而 $Z^{1} = \\ker\\delta^{1}$、$B^{1} = \\operatorname{im}\\delta^{0}$，于是',
+        '**第一行。** 由上链复形的显式公式，$\\delta^{0} : M \\to C^{1}(G, M)$ 是 $m \\mapsto (g \\mapsto g m - m)$，故 $\\ker\\delta^{0} = M^{G}$（$\\delta^{0}m = 0$ $\\iff$ 每个 $g$ 都固定 $m$）。\n\n而 $Z^{1} = \\ker\\delta^{1}$、$B^{1} = \\operatorname{im}\\delta^{0}$，于是',
         '',
         '$$0 \\to \\ker\\delta^{0} \\to M \\xrightarrow{\\ \\delta^{0}\\ } \\ker\\delta^{1} \\to \\ker\\delta^{1}\\big/\\operatorname{im}\\delta^{0} \\to 0$$',
         '',
-        '正合：第一段是 $\\ker$ 的定义；第二段的核恰是 $\\operatorname{im}\\delta^{0}$（把 $\\delta^{0}$ 的靶从 $C^{1}$ 缩到 $\\ker\\delta^{1}$，像不变，因为 $\\delta^{1}\\delta^{0} = 0$）；第三段是商映射。把 $\\ker\\delta^{0}$、$\\ker\\delta^{1}$、右边那一项分别认成 $M^{G}$、$Z^{1}$、$H^{1}$ 即得题述第一行。∎',
+        '正合：第一段是 $\\ker$ 的定义；第二段的核恰是 $\\operatorname{im}\\delta^{0}$（把 $\\delta^{0}$ 的靶从 $C^{1}$ 缩到 $\\ker\\delta^{1}$，像不变，因为 $\\delta^{1}\\delta^{0} = 0$）；\n\n第三段是商映射。\n\n把 $\\ker\\delta^{0}$、$\\ker\\delta^{1}$、右边那一项分别认成 $M^{G}$、$Z^{1}$、$H^{1}$ 即得题述第一行。\n\n∎',
         '',
-        '**作用平凡的情形。** 若 $g\\cdot m = m$ 对一切 $g$，则 $\\delta^{0}m$ 是零函数，所以 $\\delta^{0} = 0$：于是 $M^{G} = \\ker\\delta^{0} = M$、$B^{1} = 0$，而 $Z^{1} = \\{c : c(g_{1}g_{2}) = c(g_{1}) + c(g_{2})\\} = \\operatorname{Hom}(G, M)$。第一行塌成 $0 \\to M \\to M \\to \\operatorname{Hom}(G,M) \\to H^{1} \\to 0$，读出 $H^{1} = \\operatorname{Hom}(G, M)$。∎',
+        '**作用平凡的情形。** 若 $g\\cdot m = m$ 对一切 $g$，则 $\\delta^{0}m$ 是零函数，所以 $\\delta^{0} = 0$：于是 $M^{G} = \\ker\\delta^{0} = M$、$B^{1} = 0$，而 $Z^{1} = \\{c : c(g_{1}g_{2}) = c(g_{1}) + c(g_{2})\\} = \\operatorname{Hom}(G, M)$。\n\n第一行塌成 $0 \\to M \\to M \\to \\operatorname{Hom}(G,M) \\to H^{1} \\to 0$，读出 $H^{1} = \\operatorname{Hom}(G, M)$。\n\n∎',
         '',
         '**第二行。** $0 \\to A \\to B \\to C \\to 0$ 是 $G$-模的短正合列，取右导出函子（$R^{0} = (-)^{G}$、$R^{n} = H^{n}$）得长正合列',
         '',
@@ -1085,11 +1094,11 @@ window.MG = window.MG || {};
         '',
         '$$(i_{x,*}A)_{y} = \\varinjlim_{U \\ni y}\\ (i_{x,*}A)(U) .$$',
         '',
-        '**第三步：$y \\in \\overline{\\{x\\}}$ 的情形。** 闭包的刻画给出：每个开邻域 $U \\ni y$ 都满足 $U \\cap \\{x\\} \\ne \\emptyset$，即 $x \\in U$。于是这个滤过系统里**每一项**都是 $A$，而相邻两个邻域之间的过渡映射都是 $\\mathrm{id}_{A}$ —— 常图（constant diagram）的余极限就是 $A$。',
+        '**第三步：$y \\in \\overline{\\{x\\}}$ 的情形。** 闭包的刻画给出：每个开邻域 $U \\ni y$ 都满足 $U \\cap \\{x\\} \\ne \\emptyset$，即 $x \\in U$。\n\n于是这个滤过系统里**每一项**都是 $A$，而相邻两个邻域之间的过渡映射都是 $\\mathrm{id}_{A}$ —— 常图（constant diagram）的余极限就是 $A$。',
         '',
-        '**第四步：$y \\notin \\overline{\\{x\\}}$ 的情形。** 此时存在开邻域 $U_{0} \\ni y$ 使 $x \\notin U_{0}$。考虑 $\\{U \\ni y : U \\subseteq U_{0}\\}$ —— 它是原系统的一个**共尾**子系统（任给 $U \\ni y$，取 $U \\cap U_{0}$）。这个子系统里每一项都是 $0$，故余极限是 $0$。',
+        '**第四步：$y \\notin \\overline{\\{x\\}}$ 的情形。** 此时存在开邻域 $U_{0} \\ni y$ 使 $x \\notin U_{0}$。\n\n考虑 $\\{U \\ni y : U \\subseteq U_{0}\\}$ —— 它是原系统的一个**共尾**子系统（任给 $U \\ni y$，取 $U \\cap U_{0}$）。\n\n这个子系统里每一项都是 $0$，故余极限是 $0$。',
         '',
-        '**第五步：特化。** $y = x$ 时 $x \\in \\overline{\\{x\\}}$ 恒成立，故 $(i_{x,*}A)_{x} = A$。若 $X$ 是 $T_{1}$，则 $\\overline{\\{x\\}} = \\{x\\}$，于是 $y \\ne x$ 时 $y \\notin \\overline{\\{x\\}}$、茎为 $0$。∎'
+        '**第五步：特化。** $y = x$ 时 $x \\in \\overline{\\{x\\}}$ 恒成立，故 $(i_{x,*}A)_{x} = A$。\n\n若 $X$ 是 $T_{1}$，则 $\\overline{\\{x\\}} = \\{x\\}$，于是 $y \\ne x$ 时 $y \\notin \\overline{\\{x\\}}$、茎为 $0$。\n\n∎'
       ].join('\n'),
       note: '「天际线」只在闭包上立得住：$T_{1}$ 空间上是一个点，一般空间上可能是一整条闭包。'
     },
@@ -1105,15 +1114,20 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}_{\\mathbf{Ab}(X)}\\bigl(\\mathcal{F},\\ i_{x,*}A\\bigr) \\;\\cong\\; \\operatorname{Hom}_{\\mathbf{Ab}}\\bigl(\\mathcal{F}_{x},\\ A\\bigr), \\qquad \\varphi \\longmapsto \\varphi_{x} .$$',
         '',
-        '**第二步：把内射性搬到茎上。** $i_{x,*}A$ 内射 $\\iff$ $\\operatorname{Hom}(-, i_{x,*}A)$ 正合 $\\iff$ 对每个层的单射 $\\mathcal{G} \\rightarrowtail \\mathcal{H}$，映射 $\\operatorname{Hom}(\\mathcal{H}, i_{x,*}A) \\to \\operatorname{Hom}(\\mathcal{G}, i_{x,*}A)$ 满。用第一步的同构，这等价于',
+        '**第二步：把内射性搬到茎上。** $i_{x,*}A$ 内射 $\\iff$ $\\operatorname{Hom}(-, i_{x,*}A)$ 正合 $\\iff$ 对每个层的单射 $\\mathcal{G} \\rightarrowtail \\mathcal{H}$，映射 $\\operatorname{Hom}(\\mathcal{H}, i_{x,*}A) \\to \\operatorname{Hom}(\\mathcal{G}, i_{x,*}A)$ 满。\n\n用第一步的同构，这等价于',
         '',
         '$$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathcal{H}_{x},\\ A) \\longrightarrow \\operatorname{Hom}_{\\mathbf{Ab}}(\\mathcal{G}_{x},\\ A)$$',
         '',
         '满。取茎是滤过余极限、故**正合**，于是 $\\mathcal{G}_{x} \\rightarrowtail \\mathcal{H}_{x}$ 是阿贝尔群的单射；由 $A$ 内射，上式满。∎',
         '',
-        '**第三步：反之。** 设 $i_{x,*}A$ 内射。取 $\\mathbf{Ab}$ 中的单射 $B \\rightarrowtail C$ 与任意 $B \\to A$。$i_{x,*}$ 正合（单点空间上无反例可坏正合性），故 $i_{x,*}B \\rightarrowtail i_{x,*}C$；由 $i_{x,*}A$ 内射，$\\operatorname{Hom}(i_{x,*}C, i_{x,*}A) \\to \\operatorname{Hom}(i_{x,*}B, i_{x,*}A)$ 满。而第一步的同构把这个映射认成 $\\operatorname{Hom}(C, A) \\to \\operatorname{Hom}(B, A)$，故后者满 —— $A$ 内射。∎',
+        '**第三步：反之。** 设 $i_{x,*}A$ 内射。\n\n' +
+        '取 $\\mathbf{Ab}$ 中的单射 $B \\rightarrowtail C$ 与任意 $B \\to A$。\n\n' +
+        '$i_{x,*}$ 正合（单点空间上无反例可坏正合性），故 $i_{x,*}B \\rightarrowtail i_{x,*}C$；\n\n' +
+        '由 $i_{x,*}A$ 内射，$\\operatorname{Hom}(i_{x,*}C, i_{x,*}A) \\to \\operatorname{Hom}(i_{x,*}B, i_{x,*}A)$ 满。\n\n' +
+        '而第一步的同构把这个映射认成 $\\operatorname{Hom}(C, A) \\to \\operatorname{Hom}(B, A)$，故后者满 —— $A$ 内射。\n\n' +
+        '∎',
         '',
-        '**第四步：$\\mathbf{Ab}$ 里的翻译。** $\\mathbf{Ab}$ 中内射 $\\iff$ 可除（Baer 判据）。所以「$A$ 内射」可以读成「$A$ 可除」，而 $\\mathbb{Z}$ 不可除 —— 于是 $i_{x,*}\\mathbb{Z}$ **不是**内射层。这一步解释了为什么造内射层必须先把每根茎用内射包撑大。∎'
+        '**第四步：$\\mathbf{Ab}$ 里的翻译。** $\\mathbf{Ab}$ 中内射 $\\iff$ 可除（Baer 判据）。\n\n所以「$A$ 内射」可以读成「$A$ 可除」，而 $\\mathbb{Z}$ 不可除 —— 于是 $i_{x,*}\\mathbb{Z}$ **不是**内射层。\n\n这一步解释了为什么造内射层必须先把每根茎用内射包撑大。\n\n∎'
       ].join('\n'),
       note: '内射性在层范畴里可以「逐点」检验：这一条只用了取茎的伴随与正合性。'
     },
@@ -1127,17 +1141,20 @@ window.MG = window.MG || {};
       proof: [
         '**目标**：每个 $\\mathcal{F} \\in \\mathbf{Ab}(X)$ 嵌进一个内射层。',
         '',
-        '**第一步：构造。** 对每点 $x$，把茎 $\\mathcal{F}_{x}$ 嵌进 $\\mathbf{Ab}$ 里的内射包 $\\mathcal{F}_{x} \\rightarrowtail I_{x}$（$\\mathbf{Ab}$ 有足够多内射：$\\mathbb{Q}/\\mathbb{Z}$ 的适当直积给出内射余生成元）。令',
+        '**第一步：构造。** 对每点 $x$，把茎 $\\mathcal{F}_{x}$ 嵌进 $\\mathbf{Ab}$ 里的内射包 $\\mathcal{F}_{x} \\rightarrowtail I_{x}$（$\\mathbf{Ab}$ 有足够多内射：$\\mathbb{Q}/\\mathbb{Z}$ 的适当直积给出内射余生成元）。\n\n令',
         '',
         '$$\\mathcal{I} := \\prod_{x \\in X} i_{x,*}\\, I_{x} .$$',
         '',
-        '**第二步：$\\mathcal{F} \\to \\mathcal{I}$ 是单。** 层的映射是单 $\\iff$ 在每个开集上取截面后是单。取 $U$ 开、$s \\in \\mathcal{F}(U)$、$s \\ne 0$。层由其全部茎决定，故存在 $x_{0} \\in U$ 使 $s_{x_{0}} \\ne 0$。$s$ 在第 $x_{0}$ 个分量上的像是 $\\mathcal{F}(U) \\to \\mathcal{F}_{x_{0}} \\rightarrowtail I_{x_{0}}$ 下的 $s_{x_{0}}$（$x_{0} \\in U$，故这个分量落在 $I_{x_{0}}$ 而不是 $0$），非零。于是整个像非零 —— 逐 $U$ 单，故是层的单射。',
+        '**第二步：$\\mathcal{F} \\to \\mathcal{I}$ 是单。** 层的映射是单 $\\iff$ 在每个开集上取截面后是单。\n\n取 $U$ 开、$s \\in \\mathcal{F}(U)$、$s \\ne 0$。\n\n层由其全部茎决定，故存在 $x_{0} \\in U$ 使 $s_{x_{0}} \\ne 0$。\n\n$s$ 在第 $x_{0}$ 个分量上的像是 $\\mathcal{F}(U) \\to \\mathcal{F}_{x_{0}} \\rightarrowtail I_{x_{0}}$ 下的 $s_{x_{0}}$（$x_{0} \\in U$，故这个分量落在 $I_{x_{0}}$ 而不是 $0$），非零。\n\n于是整个像非零 —— 逐 $U$ 单，故是层的单射。',
         '',
-        '**第三步：$\\mathcal{I}$ 内射。** 由上一条，每个 $i_{x,*}I_{x}$ 内射。要证它们的**直积**内射：对层的单射 $\\mathcal{G} \\rightarrowtail \\mathcal{H}$ 与任意 $\\mathcal{G} \\to \\mathcal{I}$，竖着拆成每个 $x$ 的分量 $\\mathcal{G} \\to i_{x,*}I_{x}$；用第二步那个伴随同构，这等价于 $\\mathcal{G}_{x} \\to I_{x}$，而 $\\mathcal{G}_{x} \\rightarrowtail \\mathcal{H}_{x}$ 是阿贝尔群的单射、$I_{x}$ 内射，故可沿 $\\mathcal{G}_{x} \\to \\mathcal{H}_{x}$ 提升为 $\\mathcal{H}_{x} \\to I_{x}$，再翻译回 $\\mathcal{H} \\to i_{x,*}I_{x}$。逐分量做完、由直积的泛性质拼成一个 $\\mathcal{H} \\to \\mathcal{I}$。故 $\\mathcal{I}$ 内射。∎',
+        '**第三步：$\\mathcal{I}$ 内射。** 由上一条，每个 $i_{x,*}I_{x}$ 内射。\n\n要证它们的**直积**内射：对层的单射 $\\mathcal{G} \\rightarrowtail \\mathcal{H}$ 与任意 $\\mathcal{G} \\to \\mathcal{I}$，竖着拆成每个 $x$ 的分量 $\\mathcal{G} \\to i_{x,*}I_{x}$；\n\n用第二步那个伴随同构，这等价于 $\\mathcal{G}_{x} \\to I_{x}$，而 $\\mathcal{G}_{x} \\rightarrowtail \\mathcal{H}_{x}$ 是阿贝尔群的单射、$I_{x}$ 内射，故可沿 $\\mathcal{G}_{x} \\to \\mathcal{H}_{x}$ 提升为 $\\mathcal{H}_{x} \\to I_{x}$，再翻译回 $\\mathcal{H} \\to i_{x,*}I_{x}$。\n\n逐分量做完、由直积的泛性质拼成一个 $\\mathcal{H} \\to \\mathcal{I}$。\n\n故 $\\mathcal{I}$ 内射。\n\n∎',
         '',
-        '**第四步：导出函子合法。** 有了「每个层嵌入内射层」，逐项把 $\\mathcal{F}$ 换成内射层即得内射消解（$\\mathcal{F} \\to I^{0} \\to I^{1} \\to \\cdots$，每次对余核重复），且可取下有界。于是 $R^{q}\\Gamma$、$R^{q}f_{*}$ 按「内射消解 + 取同调」有定义；再由比较定理（任一两个内射消解之间的态射在同伦意义下唯一），$R^{q}$ 与消解选取无关。∎',
+        '**第四步：导出函子合法。** 有了「每个层嵌入内射层」，逐项把 $\\mathcal{F}$ 换成内射层即得内射消解（$\\mathcal{F} \\to I^{0} \\to I^{1} \\to \\cdots$，每次对余核重复），且可取下有界。\n\n' +
+        '于是 $R^{q}\\Gamma$、$R^{q}f_{*}$ 按「内射消解 + 取同调」有定义；\n\n' +
+        '再由比较定理（任一两个内射消解之间的态射在同伦意义下唯一），$R^{q}$ 与消解选取无关。\n\n' +
+        '∎',
         '',
-        '**第五步：$f_{*}$ 保内射。** $f^{-1} \\dashv f_{*}$ 且 $f^{-1}$ 正合；右伴随的左伴随正合 $\\implies$ 右伴随保内射。故 $f_{*}$ 把 $X$ 上的内射层送到 $Y$ 上的内射层 —— 这就是「$f_{*}$ 这一侧有足够多内射」的确切含义，也是 $Rf_{*}$ 能用 $X$ 上的内射消解去算的理由。∎'
+        '**第五步：$f_{*}$ 保内射。** $f^{-1} \\dashv f_{*}$ 且 $f^{-1}$ 正合；右伴随的左伴随正合 $\\implies$ 右伴随保内射。\n\n故 $f_{*}$ 把 $X$ 上的内射层送到 $Y$ 上的内射层 —— 这就是「$f_{*}$ 这一侧有足够多内射」的确切含义，也是 $Rf_{*}$ 能用 $X$ 上的内射消解去算的理由。\n\n∎'
       ].join('\n'),
       note: '「层范畴有足够多内射」的整个证明只用到两件事：取茎是正合的、直积可以逐分量提升。'
     },
@@ -1153,17 +1170,17 @@ window.MG = window.MG || {};
       proof: [
         '**要证**：仿紧 Hausdorff 上 $\\check{H}^{n}(X, \\mathcal{M}) = H^{n}(X, \\mathcal{M})$。走法是「造一个由无环层组成的消解」。',
         '',
-        '**第一步：Čech 层复形是消解。** 对局部有限开覆盖 $\\mathfrak{U} = (U_{i})_{i}$，令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}(\\mathcal{M}|_{U_{i_{0}\\cdots i_{p}}})$。$\\mathcal{M}$ 是层，Čech 正合性可以在每个点的小邻域里逐点验证（局部有限保证「只有有限多个 $U_{i}$ 参与」），于是 $0 \\to \\mathcal{M} \\to \\check{\\mathcal{C}}^{0} \\to \\check{\\mathcal{C}}^{1} \\to \\cdots$ 正合。取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$（直积与截面对 $j_{*}$ 的相容性），故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
+        '**第一步：Čech 层复形是消解。** 对局部有限开覆盖 $\\mathfrak{U} = (U_{i})_{i}$，令 $\\check{\\mathcal{C}}^{p}(\\mathfrak{U}, \\mathcal{M}) := \\prod_{i_{0} < \\cdots < i_{p}} j_{*}(\\mathcal{M}|_{U_{i_{0}\\cdots i_{p}}})$。\n\n$\\mathcal{M}$ 是层，Čech 正合性可以在每个点的小邻域里逐点验证（局部有限保证「只有有限多个 $U_{i}$ 参与」），于是 $0 \\to \\mathcal{M} \\to \\check{\\mathcal{C}}^{0} \\to \\check{\\mathcal{C}}^{1} \\to \\cdots$ 正合。\n\n取整体截面：$\\Gamma(X, \\check{\\mathcal{C}}^{p}) = \\check{C}^{p}(\\mathfrak{U}, \\mathcal{M})$（直积与截面对 $j_{*}$ 的相容性），故其同调就是 $\\check{H}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$。',
         '',
-        '**第二步：每一项软。** 仿紧 Hausdorff 上每个开覆盖有局部有限的开细化，局部有限覆盖配**从属的单位分解**（`prop.paracompact-partition-unity`）：一族连续 $\\varphi_{i} : X \\to [0,1]$，支撑在 $U_{i}$ 里、局部有限、局部求和为 $1$。用 $\\varphi_{i}$ 逐块切截面，就能把 $\\check{\\mathcal{C}}^{p}$ 的整体截面「拆成」各覆盖成员上的截面再拼回来 —— 这正是**软性**（soft：每个闭集上的截面都能延拓到全空间）。',
+        '**第二步：每一项软。** 仿紧 Hausdorff 上每个开覆盖有局部有限的开细化，局部有限覆盖配**从属的单位分解**（`prop.paracompact-partition-unity`）：一族连续 $\\varphi_{i} : X \\to [0,1]$，支撑在 $U_{i}$ 里、局部有限、局部求和为 $1$。\n\n用 $\\varphi_{i}$ 逐块切截面，就能把 $\\check{\\mathcal{C}}^{p}$ 的整体截面「拆成」各覆盖成员上的截面再拼回来 —— 这正是**软性**（soft：每个闭集上的截面都能延拓到全空间）。',
         '',
-        '**第三步：软层对 $\\Gamma$ 无环。** 软层在仿紧 Hausdorff 上无环：给定软层 $\\mathcal{S}$ 与短正合列 $0 \\to \\mathcal{S} \\to \\mathcal{A} \\to \\mathcal{B} \\to 0$，要证 $\\Gamma(\\mathcal{A}) \\to \\Gamma(\\mathcal{B})$ 满。取 $s \\in \\Gamma(\\mathcal{B})$，用仿紧性 + 局部有限覆盖把它**局部**提升成一族局部截面，再用从属于该覆盖的单位分解把它们拼成一个整体截面 —— 拼的时候软性保证每步都合法。于是 $H^{n}(X, \\mathcal{S}) = 0$（$n > 0$）。',
+        '**第三步：软层对 $\\Gamma$ 无环。** 软层在仿紧 Hausdorff 上无环：给定软层 $\\mathcal{S}$ 与短正合列 $0 \\to \\mathcal{S} \\to \\mathcal{A} \\to \\mathcal{B} \\to 0$，要证 $\\Gamma(\\mathcal{A}) \\to \\Gamma(\\mathcal{B})$ 满。\n\n取 $s \\in \\Gamma(\\mathcal{B})$，用仿紧性 + 局部有限覆盖把它**局部**提升成一族局部截面，再用从属于该覆盖的单位分解把它们拼成一个整体截面 —— 拼的时候软性保证每步都合法。\n\n于是 $H^{n}(X, \\mathcal{S}) = 0$（$n > 0$）。',
         '',
-        '**第四步：无环消解算导出函子。** 由第一到第三步，$\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是一个由 $\\Gamma$-无环层组成的消解。由 Leray 零调性（对右导出函子，用 $F$-零调对象组成的消解算出的同调与用内射消解算出的相同 —— 这一步的合法性由「足够多内射」保证，见 `thm.pushforward-enough-injectives`），',
+        '**第四步：无环消解算导出函子。** 由第一到第三步，$\\check{\\mathcal{C}}^{\\bullet}(\\mathfrak{U}, \\mathcal{M})$ 是一个由 $\\Gamma$-无环层组成的消解。\n\n由 Leray 零调性（对右导出函子，用 $F$-零调对象组成的消解算出的同调与用内射消解算出的相同 —— 这一步的合法性由「足够多内射」保证，见 `thm.pushforward-enough-injectives`），',
         '',
         '$$H^{n}(X, \\mathcal{M}) = H^{n}\\bigl(\\Gamma(X, \\check{\\mathcal{C}}^{\\bullet})\\bigr) = \\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) .$$',
         '',
-        '**第五步：去掉局部有限。** 一般开覆盖取局部有限细化 $\\mathfrak{V} \\preceq \\mathfrak{U}$；细化映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to \\check{H}^{n}(\\mathfrak{V}, \\mathcal{M})$ 与到 $H^{n}(X, \\mathcal{M})$ 的规范映射相容，而后者已是同构，故沿覆盖取余极限仍得同构。∎',
+        '**第五步：去掉局部有限。** 一般开覆盖取局部有限细化 $\\mathfrak{V} \\preceq \\mathfrak{U}$；细化映射 $\\check{H}^{n}(\\mathfrak{U}, \\mathcal{M}) \\to \\check{H}^{n}(\\mathfrak{V}, \\mathcal{M})$ 与到 $H^{n}(X, \\mathcal{M})$ 的规范映射相容，而后者已是同构，故沿覆盖取余极限仍得同构。\n\n∎',
         '',
         '⚠️ 三个零件（Čech 正合、软性、软层无环）都**用到了仿紧性**：它同时提供「局部有限细化」与「单位分解」。去掉仿紧性，第一步或第二步会坏，结论就未必成立。'
       ].join('\n'),
@@ -1187,7 +1204,7 @@ window.MG = window.MG || {};
         '',
         '**第二步：$i_{r}$、$k_{r}$ 的双次数不随 $r$ 变。** 因为 $i^{\\prime} = i|_{D^{\\prime}}$ 与 $k^{\\prime}([e]) = k(e)$ 都直接沿用原来的映射，双次数原样保留：$i_{r}$ 恒为 $(-1, 1)$、$k_{r}$ 恒为 $(1, 0)$。',
         '',
-        '**第三步：$j_{r}$ 每步多一个 $(1,-1)$。** 归纳：设 $j_{r}$ 的双次数是 $(a_{r}, b_{r})$。导出时 $j_{r+1}(i_{r}(x)) = [j_{r}(x)]$ —— 输入是 $i_{r}(x)$（比 $x$ 多一个 $(-1,1)$），输出却是 $j_{r}(x)$（没有那一步），所以 $j_{r+1}$ 的双次数是 $j_{r}$ 的加上 $(1,-1)$。由 $j_{1} = j$ 的双次数 $(0,0)$ 起算，得 $j_{r}$ 的双次数是 $(r-1,\\ 1-r)$。',
+        '**第三步：$j_{r}$ 每步多一个 $(1,-1)$。** 归纳：设 $j_{r}$ 的双次数是 $(a_{r}, b_{r})$。\n\n导出时 $j_{r+1}(i_{r}(x)) = [j_{r}(x)]$ —— 输入是 $i_{r}(x)$（比 $x$ 多一个 $(-1,1)$），输出却是 $j_{r}(x)$（没有那一步），所以 $j_{r+1}$ 的双次数是 $j_{r}$ 的加上 $(1,-1)$。\n\n由 $j_{1} = j$ 的双次数 $(0,0)$ 起算，得 $j_{r}$ 的双次数是 $(r-1,\\ 1-r)$。',
         '',
         '**第四步：乘出 $d_{r}$。** $d_{r} = j_{r}k_{r}$ 的双次数是 $(r-1, 1-r) + (1, 0) = (r,\\ 1-r)$，逐分量写出就是',
         '',
@@ -1195,7 +1212,7 @@ window.MG = window.MG || {};
         '',
         '这正是谱序列定义里 $d_{r} : E^{p,q}_{r} \\to E^{p+r,\\, q-r+1}_{r}$ 的那条规律（$q-(r-1) = q-r+1$）。',
         '',
-        '**第五步：极限项。** $D_{r+1} = i_{r}(D_{r}) \\subseteq D_{r}$ 递降，故 $D_{\\infty} := \\bigcap_{r} D_{r}$ 有定义。稳定条件下，$E_{r}$ 在每格上稳定于某个 $E_{\\infty}$，而「$i$ 的像取尽、$k$ 的像除掉之后剩下的正是 $j$ 那一步的商」逐格核对给出 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$。∎',
+        '**第五步：极限项。** $D_{r+1} = i_{r}(D_{r}) \\subseteq D_{r}$ 递降，故 $D_{\\infty} := \\bigcap_{r} D_{r}$ 有定义。\n\n稳定条件下，$E_{r}$ 在每格上稳定于某个 $E_{\\infty}$，而「$i$ 的像取尽、$k$ 的像除掉之后剩下的正是 $j$ 那一步的商」逐格核对给出 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$。\n\n∎',
         '',
         '**为什么这算「收敛」**：$D_{\\infty}$ 就是那个被过滤的极限对象，$D^{p,q}_{\\infty}$ 是它的第 $p$ 层，相邻两层之商就是 $E_{\\infty}^{p,q}$ —— 与谱序列定义里「$\\operatorname{Gr}^{p}H^{p+q} \\cong E^{p,q}_{r}$（$r$ 充分大）」逐字对应。'
       ].join('\n'),
@@ -1217,7 +1234,7 @@ window.MG = window.MG || {};
         '',
         '$$i : D_{1}^{p,q} \\to D_{1}^{p-1,q+1} \\ (\\text{等价地 } D_{1}^{p+1,q-1} \\to D_{1}^{p,q}), \\qquad j : D_{1}^{p,q} \\to E_{1}^{p,q}, \\qquad k : E_{1}^{p,q} \\to D_{1}^{p+1,q} .$$',
         '',
-        '**正合性**：三角形的三处正合恰好就是长正合列中相邻三项的正合性（$\\operatorname{im} i = \\ker j$ 是「$F^{p+1} \\to F^{p} \\to \\operatorname{Gr}^{p}$ 处正合」，$\\operatorname{im} j = \\ker k$、$\\operatorname{im} k = \\ker i$ 同理）。故这是一个正合偶。∎',
+        '**正合性**：三角形的三处正合恰好就是长正合列中相邻三项的正合性（$\\operatorname{im} i = \\ker j$ 是「$F^{p+1} \\to F^{p} \\to \\operatorname{Gr}^{p}$ 处正合」，$\\operatorname{im} j = \\ker k$、$\\operatorname{im} k = \\ker i$ 同理）。\n\n故这是一个正合偶。\n\n∎',
         '',
         '**第二步：由定理得谱序列。** 由 `thm.exact-couple-spectral`，它给出谱序列，微分 $d_{r} : E_{r}^{p,q} \\to E_{r}^{p+r,q-r+1}$。∎',
         '',
@@ -1229,7 +1246,7 @@ window.MG = window.MG || {};
         '- $r = 2$：$d_{1} = jk$ 就是「连接同态 + 落到 $\\operatorname{Gr}^{p+1}$」，其核商掉 $d_{1}$ 的像正好把 $Z_{1}$ 放宽到 $d^{-1}(F^{p+2}K)$ —— 即 $Z_{2}/B_{2}$。✓',
         '- 归纳步：$Z_{r+1}$ 比 $Z_{r}$ 放宽一层（$d$ 允许再跳一格）、$B_{r+1}$ 比 $B_{r}$ 放宽一层（前一步允许再远一格），而导出偶的三条公式代入后给出**逐字相同**的两个递推。这一步只用到 $d^{2}=0$ 与核 / 余核的泛性质，无额外输入。∎',
         '',
-        '**第四步：收敛。** 过滤下有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$；而 $D_{\\infty}^{p,q} = \\bigcap_{r} \\operatorname{im}\\bigl(H^{p+q}(F^{p+r}K) \\to H^{p+q}(F^{p}K)\\bigr) = \\operatorname{im}\\bigl(H^{p+q}(F^{p}K) \\to H^{p+q}(K)\\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。于是 $E_{\\infty}^{p,q} = F^{p}H^{p+q}/F^{p+1}H^{p+q} = \\operatorname{Gr}^{p}H^{p+q}(K)$。∎'
+        '**第四步：收敛。** 过滤下有界时每格稳定，由 `thm.exact-couple-spectral` 得 $E_{\\infty}^{p,q} = D_{\\infty}^{p,q}/D_{\\infty}^{p+1,q-1}$；\n\n而 $D_{\\infty}^{p,q} = \\bigcap_{r} \\operatorname{im}\\bigl(H^{p+q}(F^{p+r}K) \\to H^{p+q}(F^{p}K)\\bigr) = \\operatorname{im}\\bigl(H^{p+q}(F^{p}K) \\to H^{p+q}(K)\\bigr) = F^{p}H^{p+q}(K)$（下有界时这个递降链在每格上稳定到一个偏序集里的极限，而 $\\bigcup_{p} F^{p}K = K$ 让它落在那条映射的像上）。\n\n于是 $E_{\\infty}^{p,q} = F^{p}H^{p+q}/F^{p+1}H^{p+q} = \\operatorname{Gr}^{p}H^{p+q}(K)$。\n\n∎'
       ].join('\n'),
       note: '两条路的差别只在「$Z_{r}/B_{r}$ 的递推怎么打包」：直接构造把递推写在 $E_{r}$ 上，正合偶把递推交给导出机制；两者给出的 $E_{r}$ 与微分逐页相同。'
     },
@@ -1243,22 +1260,25 @@ window.MG = window.MG || {};
       target: 'prop.etale-sheaf-examples',
       title: 'étale 层的定义 $\\implies$ 开浸入、有限 étale 覆叠、常值层都是层',
       proof: [
-        '**准备：层条件要验什么。** 由定义，$\\mathcal{F}$ 是 étale 层 $\\iff$ 对每个联合满射的 étale 族 $\\{U_{i} \\to U\\}$，$\\mathcal{F}(U) \\to \\prod_{i}\\mathcal{F}(U_{i}) \\rightrightarrows \\prod_{i,j}\\mathcal{F}(U_{i}\\times_{U}U_{j})$ 正合。下面逐个验。',
+        '**准备：层条件要验什么。** 由定义，$\\mathcal{F}$ 是 étale 层 $\\iff$ 对每个联合满射的 étale 族 $\\{U_{i} \\to U\\}$，$\\mathcal{F}(U) \\to \\prod_{i}\\mathcal{F}(U_{i}) \\rightrightarrows \\prod_{i,j}\\mathcal{F}(U_{i}\\times_{U}U_{j})$ 正合。\n\n下面逐个验。',
         '',
-        '**① 开浸入与 Zariski 覆盖。** 开浸入是平坦的（开集上的模在 $R^{\\prime}$ 上还是模，局部化正合）、无分歧的（$\\Omega^{1}_{U/U} = 0$ 且局部同构于一），且局部有限展示，故是 étale 映射。于是 Zariski 覆盖 $\\{U_{i} \\to U\\}$ 的每个成员都是 étale 映射、族联合满射，是一个 étale 覆盖。所以 étale 层必须满足 Zariski 层的粘合条件 —— 即**是 Zariski 层**。',
+        '**① 开浸入与 Zariski 覆盖。** 开浸入是平坦的（开集上的模在 $R^{\\prime}$ 上还是模，局部化正合）、无分歧的（$\\Omega^{1}_{U/U} = 0$ 且局部同构于一），且局部有限展示，故是 étale 映射。\n\n于是 Zariski 覆盖 $\\{U_{i} \\to U\\}$ 的每个成员都是 étale 映射、族联合满射，是一个 étale 覆盖。\n\n所以 étale 层必须满足 Zariski 层的粘合条件 —— 即**是 Zariski 层**。',
         '',
-        '**反例方向（为何反之不然）**：étale 覆盖可以有非开浸入的成员（如 $\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$），于是粘合系统更长、条件更严；满足 Zariski 粘合的预层未必满足这些更长的系统。故「étale 层 $\\to$ Zariski 层」不是等价。∎',
+        '**反例方向（为何反之不然）**：étale 覆盖可以有非开浸入的成员（如 $\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$），于是粘合系统更长、条件更严；\n\n满足 Zariski 粘合的预层未必满足这些更长的系统。\n\n故「étale 层 $\\to$ Zariski 层」不是等价。\n\n∎',
         '',
-        '**② 有限 étale 覆叠给出层。** 设 $Y \\to X$ 有限 étale，令 $\\mathcal{G}_{Y}(U) := \\operatorname{Hom}_{X}(U, Y)$。要证：给定 $U_{i}$ 上的态射 $f_{i} : U_{i} \\to Y$，若在双重纤维积上一致（即 $f_{i}$ 与 $f_{j}$ 在 $U_{i}\\times_{U}U_{j}\\to U_{i},U_{j}\\to Y$ 上相同），则存在唯一 $f : U \\to Y$ 拉回成各 $f_{i}$。',
+        '**② 有限 étale 覆叠给出层。** 设 $Y \\to X$ 有限 étale，令 $\\mathcal{G}_{Y}(U) := \\operatorname{Hom}_{X}(U, Y)$。\n\n要证：给定 $U_{i}$ 上的态射 $f_{i} : U_{i} \\to Y$，若在双重纤维积上一致（即 $f_{i}$ 与 $f_{j}$ 在 $U_{i}\\times_{U}U_{j}\\to U_{i},U_{j}\\to Y$ 上相同），则存在唯一 $f : U \\to Y$ 拉回成各 $f_{i}$。',
         '',
         '- **唯一性**：$\\{U_{i} \\to U\\}$ 联合满射（集合层上的满射），故 $|U| = \\bigcup |U_{i}|$，$f$ 的取值被各 $f_{i}$ 完全钉住 —— 至多一个。',
-        '- **存在性**：$Y \\to X$ 是 étale，故 $Y$ 在 étale 拓扑下由 $X$ 上可表的层（$h_{Y}$）；而可表预层在 Grothendieck 拓扑下**总是层**（态射的下降对可表函子成立）。把这条用在族 $\\{U_{i}\\to U\\}$ 上，双重纤维积上的一致条件恰好是下降数据，于是给出 $f : U \\to Y$。',
+        '- **存在性**：$Y \\to X$ 是 étale，故 $Y$ 在 étale 拓扑下由 $X$ 上可表的层（$h_{Y}$）；而可表预层在 Grothendieck 拓扑下**总是层**（态射的下降对可表函子成立）。\n\n把这条用在族 $\\{U_{i}\\to U\\}$ 上，双重纤维积上的一致条件恰好是下降数据，于是给出 $f : U \\to Y$。',
         '',
         '（这一步正是 $\\mathcal{G}_{Y}$ 与常值层的类比所在：$Y = \\coprod_{n} X$ 时 $\\mathcal{G}_{Y}(U)$ 就是「$n$ 个分支的选取」，即常值层。）∎',
         '',
-        '**③ 常值层。** 常值预层 $U \\mapsto A$ 一般不是层（Zariski 下就已经如此：两条开集上的常值函数若在交叠上一致，未必是整体常值）。层化之后的 $\\underline{A}$ 才是「$A$-值局部常值函数」，它在 étale 拓扑下当然是层 —— 因为它由 Zariski 层满足粘合，而 étale 覆盖比 Zariski 覆盖细，粘合条件更强但整体函数仍然唯一决定。∎',
+        '**③ 常值层。** 常值预层 $U \\mapsto A$ 一般不是层（Zariski 下就已经如此：两条开集上的常值函数若在交叠上一致，未必是整体常值）。\n\n层化之后的 $\\underline{A}$ 才是「$A$-值局部常值函数」，它在 étale 拓扑下当然是层 —— 因为它由 Zariski 层满足粘合，而 étale 覆盖比 Zariski 覆盖细，粘合条件更强但整体函数仍然唯一决定。\n\n∎',
         '',
-        '**④ 两个具体例子是有限 étale 的。** $\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$：有限（作为 $\\mathbb{R}$-模秩 $2$）、平坦（自由）、无分歧（$\\mathbb{C}/\\mathbb{R}$ 是可分扩张，$\\Omega^{1} = 0$）。$t \\mapsto t^{n} : \\mathbb{G}_{m} \\to \\mathbb{G}_{m}$：有限平坦；在 $n$ 于基上可逆时无分歧（微分 $n t^{n-1}dt$ 是单位倍的 $dt$）。∎',
+        '**④ 两个具体例子是有限 étale 的。** $\\operatorname{Spec}\\mathbb{C} \\to \\operatorname{Spec}\\mathbb{R}$：有限（作为 $\\mathbb{R}$-模秩 $2$）、平坦（自由）、无分歧（$\\mathbb{C}/\\mathbb{R}$ 是可分扩张，$\\Omega^{1} = 0$）。\n\n' +
+        '$t \\mapsto t^{n} : \\mathbb{G}_{m} \\to \\mathbb{G}_{m}$：有限平坦；\n\n' +
+        '在 $n$ 于基上可逆时无分歧（微分 $n t^{n-1}dt$ 是单位倍的 $dt$）。\n\n' +
+        '∎',
         '',
         '⚠️ **一点诚实提示**：本图只到「这些是 étale 层」这一层，没有把 étale 上同调的长正合列机器搭起来 —— 那需要 site 上的拓扑斯理论（Grothendieck 范畴、几何点、$R^{n}f_{*}$ 的相容性），是另一整套装置。'
       ].join('\n'),

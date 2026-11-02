@@ -11,6 +11,10 @@
 
 $$\mu(\bigcup_j E_j) = \mu(\bigcup_j F_j) = \sum_j \mu(F_j) \le \sum_j \mu(E_j)$$
 
-**(c) 下连续。** 设 $E_{1} \subseteq E_{2} \subseteq \cdots$。令 $A_{1} = E_{1}$，$A_{j} = E_{j} \setminus E_\{j-1\}$（$j \ge 2$），则 $A_{j}$ 两两不交且 $\bigcup A_{j} = \bigcup E_{j}$。由可数可加，
+**(c) 下连续。** 设 $E_{1} \subseteq E_{2} \subseteq \cdots$。
+
+令 $A_{1} = E_{1}$，$A_{j} = E_{j} \setminus E_\{j-1\}$（$j \ge 2$），则 $A_{j}$ 两两不交且 $\bigcup A_{j} = \bigcup E_{j}$。
+
+由可数可加，
 
 > 续见 proofs/imp.measure-props.2.md

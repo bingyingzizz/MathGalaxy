@@ -3,6 +3,6 @@
 
 `def.solvable-group` 可解群 + `def.alternating-group` 符号与交错群 + `thm.solvable-quotients` 可解性对子群与商群封闭 + `def.simple-group` 单群 → `prop.sn-solvable` 对称群的可解性
 
-**第二步：$A_5$ 单。** 设 $\{e\} \ne N \trianglelefteq A_5$。正规子群是共轭类
+**第二步：$A_5$ 单。** 设 $\{e\} \ne N \trianglelefteq A_5$。正规子群是共轭
 
 > 续见 proofs/imp.sn-solvable.12.md

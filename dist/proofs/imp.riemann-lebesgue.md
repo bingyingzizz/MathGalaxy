@@ -7,4 +7,7 @@
 
 **($\Longleftarrow$)** 设 $D$ 是零测集，给定 $\varepsilon > 0$。
 
+1. 取开区间族 $\{ J_k \}$ 覆盖 $D$，且 $\sum_k |J_k| < \varepsilon / (4M + 1)$。
+2. 令 $K := [a, b] \setminus \bigcup_k J_k$ —— 这是**紧集**，且 $f$ 在 $K$ 上每点连续。
+
 > 续见 proofs/imp.riemann-lebesgue.2.md

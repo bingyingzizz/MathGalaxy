@@ -3,7 +3,11 @@
 layer 11 · 定理 · 矩阵与行列式 · 抽象代数
 [在星图里打开](../#n=thm.change-of-basis)　·　[节点索引](../index.md)
 
-设 $T : V \to V$ 线性，$\mathcal{B}, \mathcal{B}'$ 是 $V$ 的两组有序基。记 $P := [\mathrm{id}]_{\mathcal{B}'}^{\mathcal{B}}$（**过渡矩阵**，第 $j$ 列是 $\mathcal{B}'$ 的第 $j$ 个向量在 $\mathcal{B}$ 下的坐标）。则 $P$ 可逆，且
+设 $T : V \to V$ 线性，$\mathcal{B}, \mathcal{B}'$ 是 $V$ 的两组有序基。
+
+记 $P := [\mathrm{id}]_{\mathcal{B}'}^{\mathcal{B}}$（**过渡矩阵**，第 $j$ 列是 $\mathcal{B}'$ 的第 $j$ 个向量在 $\mathcal{B}$ 下的坐标）。
+
+则 $P$ 可逆，且
 
 $$[T]_{\mathcal{B}'} = P^{-1}\,[T]_{\mathcal{B}}\,P$$
 

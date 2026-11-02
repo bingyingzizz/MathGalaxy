@@ -302,7 +302,7 @@ window.MG = window.MG || {};
         '$$P = \\bigcup_n P_n, \\quad  N = \\bigcap_n N_n$$',
         '',
         '$N$ 是每个 $\\nu - n^{-1}\\mu$ 的负集，于是 $0 \\le \\nu(N) \\le n^{-1} \\mu(N)$ 对一切 $n$ 成立，令 $n \\to \\infty$ 得 $\\nu (N) = 0$。',
-        '于是若 $\\mu (P) = 0$，则 $\\nu \\perp \\mu$（取 $E = P$、$F = N$）；若 $\\mu (P) > 0$，则某个 $n$ 有 $\\mu (P_{n}) > 0$，而 $P_{n}$ 是 $\\nu - n^{-1}\\mu$ 的正集，即 $\\nu \\ge n^{-1} \\mu$ 在 $P_{n}$ 上成立。∎'
+        '于是若 $\\mu (P) = 0$，则 $\\nu \\perp \\mu$（取 $E = P$、$F = N$）；若 $\\mu (P) > 0$，则某个 $n$ 有 $\\mu (P_{n}) > 0$，而 $P_{n}$ 是 $\\nu - n^{-1}\\mu$ 的正集，即 $\\nu \\ge n^{-1} \\mu$ 在 $P_{n}$ 上成立。\n\n∎'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.8']
     },
@@ -406,7 +406,7 @@ window.MG = window.MG || {};
         '$$\\frac{d\\mu}{d\\lambda} \\cdot \\frac{d\\lambda}{d\\mu} = 1\\quad  \\text{a.e.}$$'
       ].join('\n'),
       notes: [
-        ['**证明。** $\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu$ 时，Radon–Nikodym 导数满足**链式法则**（乘法性）：若 $\\nu \\ll \\mu \\ll \\rho$，则 $\\frac{d\\nu}{d\\rho} = \\frac{d\\nu}{d\\mu}\\cdot\\frac{d\\mu}{d\\rho}$ $\\rho$-a.e. ✓。把它用在 $\\nu = \\mu = \\rho$ 上：','$$\\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu} = \\frac{d\\mu}{d\\mu} = 1 \\quad \\text{a.e.},$$','最后一步是因为 $d\\mu = 1 \\cdot d\\mu$，而密度在 a.e. 意义下唯一 ✓。∎'].join('\n'),
+        ['**证明。** $\\mu \\ll \\lambda$ 且 $\\lambda \\ll \\mu$ 时，Radon–Nikodym 导数满足**链式法则**（乘法性）：若 $\\nu \\ll \\mu \\ll \\rho$，则 $\\frac{d\\nu}{d\\rho} = \\frac{d\\nu}{d\\mu}\\cdot\\frac{d\\mu}{d\\rho}$ $\\rho$-a.e. ✓。\n\n把它用在 $\\nu = \\mu = \\rho$ 上：','$$\\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu} = \\frac{d\\mu}{d\\mu} = 1 \\quad \\text{a.e.},$$','最后一步是因为 $d\\mu = 1 \\cdot d\\mu$，而密度在 a.e. 意义下唯一 ✓。∎'].join('\n'),
 '两条链式法则一拼：$d\\mu / d\\mu = \\frac{d\\mu}{d\\lambda}\\cdot\\frac{d\\lambda}{d\\mu}$，而 $d\\mu / d\\mu \\equiv  1$。'].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 3.9']
     },
@@ -457,7 +457,7 @@ window.MG = window.MG || {};
         '且在 a.e. 意义下唯一。'
       ].join('\n'),
       notes: [
-        ['**证明（把复情形拆回已经证过的实情形）。**','- **拆复测度**：$\\nu = \\nu_{1} + i\\nu_{2}$，$\\nu_{1}, \\nu_{2}$ 是**有限**符号测度（$\\nu$ 有限 $\\implies$ 其实部虚部有限）✓；','- **符号测度**：对有限符号测度 $\\rho$ 与 $\\sigma$ 有限测度 $\\mu$，先用 Hahn 分解写 $\\rho = \\rho^{+} - \\rho^{-}$，对两个有限正测度各用一次 Radon–Nikodym：$d\\rho^{\\pm} = h^{\\pm}\\,\\mathrm{d}\\mu + d\\rho^{\\pm}_{s}$（$\\rho^{\\pm}_{s} \\perp \\mu$，$h^{\\pm} \\in L^{1}(\\mu)$）✓；','- **拼起来**：令 $f := (h_{1}^{+} - h_{1}^{-}) + i(h_{2}^{+} - h_{2}^{-}) \\in L^{1}(\\mu)$、$\\lambda := (\\rho_{1,a} - \\rho_{1,s}) + i(\\cdots)$ 的奇异部分之和，则 $d\\nu = d\\lambda + f\\,\\mathrm{d}\\mu$、$\\lambda \\perp \\mu$ ✓；','- **唯一性**：若 $d\\lambda + f\\,\\mathrm{d}\\mu = d\\lambda\' + f\'\\,\\mathrm{d}\\mu$，与 $\\mu$ 取 Lebesgue 分解比奇异部分得 $\\lambda = \\lambda\'$；比绝对连续部分并用密度 a.e. 唯一得 $f = f\'$ a.e. ✓。∎','⚠️ 这里 $f \\in L^{1}(\\mu)$（真正可积）而不是「广义可积」，因为复测度**有限**。'].join('\n'),
+        ['**证明（把复情形拆回已经证过的实情形）。**','- **拆复测度**：$\\nu = \\nu_{1} + i\\nu_{2}$，$\\nu_{1}, \\nu_{2}$ 是**有限**符号测度（$\\nu$ 有限 $\\implies$ 其实部虚部有限）✓；','- **符号测度**：对有限符号测度 $\\rho$ 与 $\\sigma$ 有限测度 $\\mu$，先用 Hahn 分解写 $\\rho = \\rho^{+} - \\rho^{-}$，对两个有限正测度各用一次 Radon–Nikodym：$d\\rho^{\\pm} = h^{\\pm}\\,\\mathrm{d}\\mu + d\\rho^{\\pm}_{s}$（$\\rho^{\\pm}_{s} \\perp \\mu$，$h^{\\pm} \\in L^{1}(\\mu)$）✓；\n\n','- **拼起来**：令 $f := (h_{1}^{+} - h_{1}^{-}) + i(h_{2}^{+} - h_{2}^{-}) \\in L^{1}(\\mu)$、$\\lambda := (\\rho_{1,a} - \\rho_{1,s}) + i(\\cdots)$ 的奇异部分之和，则 $d\\nu = d\\lambda + f\\,\\mathrm{d}\\mu$、$\\lambda \\perp \\mu$ ✓；\n\n','- **唯一性**：若 $d\\lambda + f\\,\\mathrm{d}\\mu = d\\lambda\' + f\'\\,\\mathrm{d}\\mu$，与 $\\mu$ 取 Lebesgue 分解比奇异部分得 $\\lambda = \\lambda\'$；\n\n比绝对连续部分并用密度 a.e. 唯一得 $f = f\'$ a.e. ✓。\n\n∎','⚠️ 这里 $f \\in L^{1}(\\mu)$（真正可积）而不是「广义可积」，因为复测度**有限**。'].join('\n'),
         '复测度可以拆成实部与虚部、各自再用符号测度的版本 —— 这是把上一套结论搬到复情形的标准做法。',
         '⚠ 这里 $f \\in L^1(\\mu)$ 而不再是「广义可积」：因为复测度有限，$f$ 必须真可积。'
       ].join('\n\n'),
@@ -482,7 +482,7 @@ window.MG = window.MG || {};
         '$$|\\nu|(E) = \\int_E |f| d\\mu$$'
       ].join('\n'),
       notes: [
-        ['**证明。** 记 $|\\nu|(E) := \\sup\\bigl\\{\\sum_{j}|\\nu(E_{j})| : E = \\bigsqcup_{j} E_{j} \\text{ 可数划分} \\bigr\\}$。','**(a)** 对任意划分，由三角不等式','$$|\\nu(E)| = \\Bigl|\\sum_{j}\\nu(E_{j})\\Bigr| \\le \\sum_{j}|\\nu(E_{j})|,$$','对一切划分取上确界得 $|\\nu(E)| \\le |\\nu|(E)$ ✓。','**(b)** 设 $d\\nu = f\\,\\mathrm{d}\\mu$。','- **上界**：对任意划分','$$\\sum_{j}|\\nu(E_{j})| = \\sum_{j}\\Bigl|\\int_{E_{j}} f\\,\\mathrm{d}\\mu\\Bigr| \\le \\sum_{j}\\int_{E_{j}}|f|\\,\\mathrm{d}\\mu = \\int_{E}|f|\\,\\mathrm{d}\\mu,$$','取上确界得 $|\\nu|(E) \\le \\int_{E}|f|\\,\\mathrm{d}\\mu$ ✓；','- **下界**：取只由 $E \\cap \\{f \\ge 0\\}$ 与 $E \\cap \\{f < 0\\}$ 组成的划分，此时 $\\sum_{j}|\\nu(E_{j})| = \\int_{E}|f|\\,\\mathrm{d}\\mu$，故上确界 $\\ge$ 它 ✓；','两边合起来：$|\\nu|(E) = \\int_{E}|f|\\,\\mathrm{d}\\mu$，即 $d|\\nu| = |f|\\,\\mathrm{d}\\mu$ ✓。','**不同表示的一致性**：若同时有 $d\\nu = f_{1}d\\mu_{1} = f_{2}d\\mu_{2}$，取公共基准 $\\rho := |\\nu| + \\mu_{1} + \\mu_{2}$，把两边都用链式法则换到 $\\rho$ 上，再用上式的上确界论证即得 $|f_{1}|\\frac{d\\mu_{1}}{d\\rho} = |f_{2}|\\frac{d\\mu_{2}}{d\\rho}$ $\\rho$-a.e. ✓。∎'].join('\n'),
+        ['**证明。** 记 $|\\nu|(E) := \\sup\\bigl\\{\\sum_{j}|\\nu(E_{j})| : E = \\bigsqcup_{j} E_{j} \\text{ 可数划分} \\bigr\\}$。','**(a)** 对任意划分，由三角不等式','$$|\\nu(E)| = \\Bigl|\\sum_{j}\\nu(E_{j})\\Bigr| \\le \\sum_{j}|\\nu(E_{j})|,$$','对一切划分取上确界得 $|\\nu(E)| \\le |\\nu|(E)$ ✓。','**(b)** 设 $d\\nu = f\\,\\mathrm{d}\\mu$。','- **上界**：对任意划分','$$\\sum_{j}|\\nu(E_{j})| = \\sum_{j}\\Bigl|\\int_{E_{j}} f\\,\\mathrm{d}\\mu\\Bigr| \\le \\sum_{j}\\int_{E_{j}}|f|\\,\\mathrm{d}\\mu = \\int_{E}|f|\\,\\mathrm{d}\\mu,$$','取上确界得 $|\\nu|(E) \\le \\int_{E}|f|\\,\\mathrm{d}\\mu$ ✓；','- **下界**：取只由 $E \\cap \\{f \\ge 0\\}$ 与 $E \\cap \\{f < 0\\}$ 组成的划分，此时 $\\sum_{j}|\\nu(E_{j})| = \\int_{E}|f|\\,\\mathrm{d}\\mu$，故上确界 $\\ge$ 它 ✓；','两边合起来：$|\\nu|(E) = \\int_{E}|f|\\,\\mathrm{d}\\mu$，即 $d|\\nu| = |f|\\,\\mathrm{d}\\mu$ ✓。','**不同表示的一致性**：若同时有 $d\\nu = f_{1}d\\mu_{1} = f_{2}d\\mu_{2}$，取公共基准 $\\rho := |\\nu| + \\mu_{1} + \\mu_{2}$，把两边都用链式法则换到 $\\rho$ 上，再用上式的上确界论证即得 $|f_{1}|\\frac{d\\mu_{1}}{d\\rho} = |f_{2}|\\frac{d\\mu_{2}}{d\\rho}$ $\\rho$-a.e. ✓。\n\n∎'].join('\n'),
         '(b) 的证法：先取 $\\rho = |\\nu_1| + |\\nu_2|$ 把 $\\nu$ 的两个不同表示拉到一个共同的「基准测度」上，再用 Radon–Nikodym 与链式法则把两个密度都换到 $\\rho$ 上。于是要证的就是',
         '',
         '$$|f_1| \\frac{d\\mu_1}{d\\rho} = |f_2| \\frac{d\\mu_2}{d\\rho}\\quad  \\rho-\\text{a.e.}$$',
@@ -530,7 +530,7 @@ window.MG = window.MG || {};
         '',
         '$$\\nu(A) = \\nu(B) + \\sum_k \\nu(A_k)$$',
         '',
-        '而 $\\sum_k |\\nu(A_k)| < \\infty$（因为左边有限），特别地 $\\nu(A_k) \\to 0$，这迫使 $n_k \\to \\infty$，从而对任意 $F \\subseteq B$：若 $\\nu(F) < -1/n_{k-1}$，就与 $n_k$ 的**最小性**矛盾。于是 $\\nu(F) \\ge -1/n_{k-1}$ 对一切 $k$ 成立，令 $k \\to \\infty$ 得 $\\nu(F) \\ge 0$。故 $B$ 也是正集。',
+        '而 $\\sum_k |\\nu(A_k)| < \\infty$（因为左边有限），特别地 $\\nu(A_k) \\to 0$，这迫使 $n_k \\to \\infty$，从而对任意 $F \\subseteq B$：若 $\\nu(F) < -1/n_{k-1}$，就与 $n_k$ 的**最小性**矛盾。\n\n于是 $\\nu(F) \\ge -1/n_{k-1}$ 对一切 $k$ 成立，令 $k \\to \\infty$ 得 $\\nu(F) \\ge 0$。\n\n故 $B$ 也是正集。',
         '',
         '**⑦ 矛盾。** 由 ⑤⑥，$A$ 中含正集 $B$。于',
         '',
@@ -538,7 +538,11 @@ window.MG = window.MG || {};
         '',
         '说明 $P \\cup B$ 是正集且 $\\nu(P \\cup B) = m + \\nu(B) > m$，与 $m$ 的定义矛盾。故 $N$ 必为负集，$X = P \\sqcup  N$ 就是 Hahn 分解，**存在性得证**。',
         '',
-        '**⑧ 唯一性。** 设 $P\' \\sqcup  N\'$ 是另一对。则 $P \\setminus P\' \\subseteq P$（正集）且 $\\subseteq N\'$（负集），所以它既是正集又是负集 —— 只能是零集；同理 $P\' \\setminus P$ 也是零集。故 $P \\triangle  P\' = N \\triangle  N\'$ 是 $\\nu$零集。∎'
+        '**⑧ 唯一性。** 设 $P\' \\sqcup  N\'$ 是另一对。\n\n' +
+        '则 $P \\setminus P\' \\subseteq P$（正集）且 $\\subseteq N\'$（负集），所以它既是正集又是负集 —— 只能是零集；\n\n' +
+        '同理 $P\' \\setminus P$ 也是零集。\n\n' +
+        '故 $P \\triangle  P\' = N \\triangle  N\'$ 是 $\\nu$零集。\n\n' +
+        '∎'
       ].join('\n'),
       note: '⭐ 「取最小的 $n$」是整段证明的技术核心：因为 $n$ 取最小，后面才能让 $\\nu(F) \\ge -1/n_{k-1}$ 一路通过 $k \\to \\infty$ 得到 $\\nu(F) \\ge 0$。'
     },
@@ -568,7 +572,7 @@ window.MG = window.MG || {};
         '',
         '**④ 至少一个有限。** 由符号测度的定义，$\\nu$ 至多取到 $\\pm \\infty$ 中的一个：若 $\\nu$ 不取 $\\infty$ 则 $\\nu ^{+}$ 有限，若 $\\nu$ 不取 $-\\infty$ 则 $\\nu ^{-}$ 有限。',
         '',
-        '**⑤ 唯一性。** 设 $\\nu = \\mu_1 - \\mu_2$ 也是这种分解（$\\mu_1 \\perp  \\mu_2$）。取见证奇异性的划分 $X = E \\sqcup  F$（$E$ 是 $\\mu _{1}$零集、$F$ 是 $\\mu _{2}$零集）。由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $\\mu_1 = \\nu^+$、$\\mu_2 = \\nu^-$。∎'
+        '**⑤ 唯一性。** 设 $\\nu = \\mu_1 - \\mu_2$ 也是这种分解（$\\mu_1 \\perp  \\mu_2$）。\n\n取见证奇异性的划分 $X = E \\sqcup  F$（$E$ 是 $\\mu _{1}$零集、$F$ 是 $\\mu _{2}$零集）。\n\n由 Hahn 分解的唯一性只能差一个零集，逐块比较即可得到 $\\mu_1 = \\nu^+$、$\\mu_2 = \\nu^-$。\n\n∎'
       ].join('\n')
     },
 
@@ -622,11 +626,11 @@ window.MG = window.MG || {};
         '',
         '故 $h \\in \\mathcal{F}$。',
         '',
-        '**② 取上确界。** 令 $a := \\sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$（这一步用到 $\\nu$ 有限）。取 $\\{f_n\\} \\subseteq \\mathcal{F}$ 使 $\\int f_n d\\mu \\to a$，令',
+        '**② 取上确界。** 令 $a := \\sup\\{ \\int f d\\mu : f \\in \\mathcal{F} \\} \\le \\nu(X) < \\infty$（这一步用到 $\\nu$ 有限）。\n\n取 $\\{f_n\\} \\subseteq \\mathcal{F}$ 使 $\\int f_n d\\mu \\to a$，令',
         '',
         '$$g_n = \\max_{f_1, \\ldots , f_n}, \\quad  f = \\sup_n f_n$$',
         '',
-        '由 ① 每个 $g_n \\in \\mathcal{F}$，且 $g_n \\uparrow  f$、$\\int g_n d\\mu \\ge \\int f_n d\\mu$，故 $\\lim_n \\int g_n d\\mu = a$。由 **MCT**，$f \\in \\mathcal{F}$ 且 $\\int f d\\mu = a$。',
+        '由 ① 每个 $g_n \\in \\mathcal{F}$，且 $g_n \\uparrow  f$、$\\int g_n d\\mu \\ge \\int f_n d\\mu$，故 $\\lim_n \\int g_n d\\mu = a$。\n\n由 **MCT**，$f \\in \\mathcal{F}$ 且 $\\int f d\\mu = a$。',
         '',
         '**③ 断言 $d\\lambda := d\\nu - f d\\mu$ 与 $\\mu$ 奇异。** 反设不然，由**引理**，存在 $\\varepsilon > 0$ 与 $E \\in \\mathcal{M}$、$\\mu (E) > 0$，使 $\\lambda \\ge \\varepsilon\\mu$ 在 $E$ 上成立，即',
         '',

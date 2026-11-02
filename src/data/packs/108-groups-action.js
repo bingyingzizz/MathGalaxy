@@ -44,7 +44,7 @@ window.MG = window.MG || {};
         '',
         '分别叫 $x$ 的**轨道**与**稳定子**。$G_x \\le G$ 是子群；作用的**核**是 $\\bigcap_{x \\in X} G_x$。'
       ].join('\n'),
-      notes: '⭐ **等价说法（全团的技巧都从这里来）**：一个作用等价于一个群同态 $\\rho : G \\to \\operatorname{Sym}(X)$，$\\rho(g)(x) := g \\cdot x$。理由是两条作用公理恰好就是「$\\rho$ 保单位元、保乘法」。于是「群在集合上作用」= 「$G$ 的一个置换表示」，而 `thm.first-iso` 立刻给出 $G/\\ker\\rho \\hookrightarrow \\operatorname{Sym}(X)$。\n\n⭐ 轨道构成 $X$ 的**划分**：$x \\in Gx$（自反）、$y \\in Gx \\implies Gy = Gx$（对称与传递）。所以 $X = \\bigsqcup_{\\text{轨道}} \\text{轨道}$ —— 数轨道的大小就等于数这个划分。\n\n⭐ 三个必会的例子：\n- **自然作用**：$S_n$ 在 $\\{1, \\ldots, n\\}$ 上，轨道只有一个（传递作用）；\n- **左乘（正则）作用**：$G$ 在自身上的 $g \\cdot h := gh$，轨道只有一个，稳定子全平凡（**自由**作用）—— 这是 Cayley 定理的入口；\n- **共轭作用**：$g \\cdot x := gxg^{-1}$，轨道 = 共轭类，稳定子 = 中心化子 —— 这是类方程的入口。\n\n⚠ 左作用与右作用要分清：$(gh)\\cdot x = g\\cdot(h\\cdot x)$ 是左作用；右作用把顺序反过来写成 $x \\cdot (gh) = (x\\cdot g)\\cdot h$。本图一律**左**作用，遇到右作用时先转成左作用（$g \\cdot x := x \\cdot g^{-1}$）再套结论。\n\n⭐ 作用的核 $\\bigcap_x G_x$ 是正规子群（作为 $\\rho$ 的核），它衡量「这个作用丢掉了多少信息」：核平凡 $\\iff$ 作用是**忠实的**（$G$ 真的被看成了一组置换）。',
+      notes: '⭐ **等价说法（全团的技巧都从这里来）**：一个作用等价于一个群同态 $\\rho : G \\to \\operatorname{Sym}(X)$，$\\rho(g)(x) := g \\cdot x$。\n\n理由是两条作用公理恰好就是「$\\rho$ 保单位元、保乘法」。\n\n于是「群在集合上作用」= 「$G$ 的一个置换表示」，而 `thm.first-iso` 立刻给出 $G/\\ker\\rho \\hookrightarrow \\operatorname{Sym}(X)$。\n\n⭐ 轨道构成 $X$ 的**划分**：$x \\in Gx$（自反）、$y \\in Gx \\implies Gy = Gx$（对称与传递）。\n\n所以 $X = \\bigsqcup_{\\text{轨道}} \\text{轨道}$ —— 数轨道的大小就等于数这个划分。\n\n⭐ 三个必会的例子：\n- **自然作用**：$S_n$ 在 $\\{1, \\ldots, n\\}$ 上，轨道只有一个（传递作用）；\n\n\n- **左乘（正则）作用**：$G$ 在自身上的 $g \\cdot h := gh$，轨道只有一个，稳定子全平凡（**自由**作用）—— 这是 Cayley 定理的入口；\n\n\n- **共轭作用**：$g \\cdot x := gxg^{-1}$，轨道 = 共轭类，稳定子 = 中心化子 —— 这是类方程的入口。\n\n⚠ 左作用与右作用要分清：$(gh)\\cdot x = g\\cdot(h\\cdot x)$ 是左作用；\n\n右作用把顺序反过来写成 $x \\cdot (gh) = (x\\cdot g)\\cdot h$。\n\n本图一律**左**作用，遇到右作用时先转成左作用（$g \\cdot x := x \\cdot g^{-1}$）再套结论。\n\n⭐ 作用的核 $\\bigcap_x G_x$ 是正规子群（作为 $\\rho$ 的核），它衡量「这个作用丢掉了多少信息」：核平凡 $\\iff$ 作用是**忠实的**（$G$ 真的被看成了一组置换）。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.1']
     },
     {
@@ -64,7 +64,7 @@ window.MG = window.MG || {};
         '',
         '$$|G| = \\bigl| \\operatorname{Orb}(x) \\bigr| \\cdot \\bigl| \\operatorname{Stab}(x) \\bigr|$$'
       ].join('\n'),
-      notes: '⭐ 这条定理是全团的枢纽：它把「**数轨道的大小**」这件几何/组合的事，换成「**算指数**」这件群论的事。类方程、Sylow、Burnside 引理全都是它的直接推论。\n\n⭐ 一句话记法：**轨道大小 $\\times$ 稳定子大小 = 群大小**。\n\n⚠ 只用 $[G : \\operatorname{Stab}(x)]$ 这个量，所以定理对**无限群**也成立（那时要读成「轨道与陪集集合 $G/G_x$ 等势」）。',
+      notes: '⭐ 这条定理是全团的枢纽：它把「**数轨道的大小**」这件几何/组合的事，换成「**算指数**」这件群论的事。\n\n类方程、Sylow、Burnside 引理全都是它的直接推论。\n\n⭐ 一句话记法：**轨道大小 $\\times$ 稳定子大小 = 群大小**。\n\n⚠ 只用 $[G : \\operatorname{Stab}(x)]$ 这个量，所以定理对**无限群**也成立（那时要读成「轨道与陪集集合 $G/G_x$ 等势」）。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.1']
     },
     {
@@ -84,7 +84,7 @@ window.MG = window.MG || {};
         '',
         '**推论**：若 $|G| = p^{n}$（$p$ 素、$n \\ge 1$），则 $p \\mid |Z(G)|$，特别地 $Z(G) \\ne \\{e\\}$。'
       ].join('\n'),
-      notes: '⭐ 类方程就是「**共轭作用下的轨道分解 + 轨道–稳定子**」：共轭作用 $g \\cdot x := gxg^{-1}$ 的轨道是共轭类，稳定子是中心化子 $C_G(x)$，而固定的点恰是中心 $Z(G)$。\n\n⭐ 中心那一项可以看成「长度为 $1$ 的轨道之和」，于是整式可以统一写成 $|G| = \\sum_{\\text{轨道}} |\\text{轨道}|$ —— 只是把长度 $1$ 的那些单独拎出来了。\n\n⚠ 推论里 $p \\mid |Z(G)|$ 的证明只用一句：右边除 $|Z(G)|$ 外每一项都被 $p$ 整除（因为 $[G : C_G(x_i)] > 1$ 且整除 $p^{n}$，故是 $p$ 的正幂），而左边也被 $p$ 整除。∎\n\n⭐ 这条推论是 Sylow 定理归纳证明里的关键分叉。',
+      notes: '⭐ 类方程就是「**共轭作用下的轨道分解 + 轨道–稳定子**」：共轭作用 $g \\cdot x := gxg^{-1}$ 的轨道是共轭类，稳定子是中心化子 $C_G(x)$，而固定的点恰是中心 $Z(G)$。\n\n⭐ 中心那一项可以看成「长度为 $1$ 的轨道之和」，于是整式可以统一写成 $|G| = \\sum_{\\text{轨道}} |\\text{轨道}|$ —— 只是把长度 $1$ 的那些单独拎出来了。\n\n⚠ 推论里 $p \\mid |Z(G)|$ 的证明只用一句：右边除 $|Z(G)|$ 外每一项都被 $p$ 整除（因为 $[G : C_G(x_i)] > 1$ 且整除 $p^{n}$，故是 $p$ 的正幂），而左边也被 $p$ 整除。\n\n∎\n\n⭐ 这条推论是 Sylow 定理归纳证明里的关键分叉。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.3']
     },
     {
@@ -107,7 +107,7 @@ window.MG = window.MG || {};
         '$\\operatorname{ord}(\\sigma)$ 等于**各循环长度的最小公倍数**：若循环分解的长度是 $\\ell_1, \\ldots, \\ell_r$，则',
         '$$\\operatorname{ord}(\\sigma) = \\operatorname{lcm}(\\ell_1, \\ldots, \\ell_r)$$'
       ].join('\n'),
-      notes: '⭐ 「不交」是关键词：两个不交的循环**可以交换**，所以循环分解才能看成「把置换拆成互不干扰的零件」。一旦相交就不能随便换序。\n\n⭐ 循环型是 $S_n$ 的**共轭不变量**，而且完全决定共轭类：$\\sigma, \\tau$ 共轭 $\\iff$ 循环型相同。$S_n$ 的共轭类因此与 $n$ 的**分拆**一一对应 —— 这条把组合学的分拆函数拉进了群论。\n\n⭐ 例子：$n = 4$ 的循环型与类大小：$1^{4}$（单位，$1$ 个）、$2\\,1^{2}$（对换，$6$ 个）、$2^{2}$（双对换，$3$ 个）、$3\\,1$（$3$-循环，$8$ 个）、$4$（$4$-循环，$6$ 个），合计 $24 = 4!$ ✓。\n\n⚠ 记号约定：$(a_1\\ a_2\\ \\cdots\\ a_k)$ 表示 $a_1 \\mapsto a_2 \\mapsto \\cdots \\mapsto a_k \\mapsto a_1$，其余点不动。本图一律**右到左**复合（先作用右边的），与 `def.alternating-group` 的符号公式配套。',
+      notes: '⭐ 「不交」是关键词：两个不交的循环**可以交换**，所以循环分解才能看成「把置换拆成互不干扰的零件」。\n\n一旦相交就不能随便换序。\n\n⭐ 循环型是 $S_n$ 的**共轭不变量**，而且完全决定共轭类：$\\sigma, \\tau$ 共轭 $\\iff$ 循环型相同。\n\n$S_n$ 的共轭类因此与 $n$ 的**分拆**一一对应 —— 这条把组合学的分拆函数拉进了群论。\n\n⭐ 例子：$n = 4$ 的循环型与类大小：$1^{4}$（单位，$1$ 个）、$2\\,1^{2}$（对换，$6$ 个）、$2^{2}$（双对换，$3$ 个）、$3\\,1$（$3$-循环，$8$ 个）、$4$（$4$-循环，$6$ 个），合计 $24 = 4!$ ✓。\n\n⚠ 记号约定：$(a_1\\ a_2\\ \\cdots\\ a_k)$ 表示 $a_1 \\mapsto a_2 \\mapsto \\cdots \\mapsto a_k \\mapsto a_1$，其余点不动。\n\n本图一律**右到左**复合（先作用右边的），与 `def.alternating-group` 的符号公式配套。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.1']
     },
     {
@@ -134,7 +134,7 @@ window.MG = window.MG || {};
         '',
         '叫 **$n$ 次交错群**：$|A_n| = n!/2$，$A_n \\trianglelefteq S_n$，$[S_n : A_n] = 2$。'
       ].join('\n'),
-      notes: '⭐ 符号是 $S_n$ 到 $\\{\\pm 1\\}$ 的**唯一**非平凡同态（$n \\ge 3$），所以 $A_n$ 是 $S_n$ 的**唯一**指数 $2$ 子群 —— 这个唯一性是后面「$S_n$ 不单」以及 Galois 理论里「二次子扩张唯一」的来源。\n\n⭐ 乘积公式为什么干净：每一项 $\\frac{\\sigma(j)-\\sigma(i)}{j-i}$ 的分母固定、分子只是把同一批差重新排列，故乘积的符号只取决于 $\\sigma$ 引起的排列的奇偶性。这也顺手证明了「奇偶性与分解无关」。\n\n⚠ 边界：$n = 1$ 时 $A_1 = S_1$ 是平凡群，$|A_n| = n!/2$ 不适用。$n = 2$ 时 $A_2 = \\{e\\}$。\n\n⭐ **单性的跳变**：$A_4$ 不单（有正规子群 $V_4 = \\{e, (12)(34), (13)(24), (14)(23)\\}$），而 $A_5$ **单**且非阿贝尔。这个跳变正是 $S_n$ 可解性的分界线（`prop.sn-solvable`）。',
+      notes: '⭐ 符号是 $S_n$ 到 $\\{\\pm 1\\}$ 的**唯一**非平凡同态（$n \\ge 3$），所以 $A_n$ 是 $S_n$ 的**唯一**指数 $2$ 子群 —— 这个唯一性是后面「$S_n$ 不单」以及 Galois 理论里「二次子扩张唯一」的来源。\n\n⭐ 乘积公式为什么干净：每一项 $\\frac{\\sigma(j)-\\sigma(i)}{j-i}$ 的分母固定、分子只是把同一批差重新排列，故乘积的符号只取决于 $\\sigma$ 引起的排列的奇偶性。\n\n这也顺手证明了「奇偶性与分解无关」。\n\n⚠ 边界：$n = 1$ 时 $A_1 = S_1$ 是平凡群，$|A_n| = n!/2$ 不适用。\n\n$n = 2$ 时 $A_2 = \\{e\\}$。\n\n⭐ **单性的跳变**：$A_4$ 不单（有正规子群 $V_4 = \\{e, (12)(34), (13)(24), (14)(23)\\}$），而 $A_5$ **单**且非阿贝尔。\n\n这个跳变正是 $S_n$ 可解性的分界线（`prop.sn-solvable`）。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.5']
     },
     {
@@ -156,7 +156,7 @@ window.MG = window.MG || {};
         '- 有限循环群 $\\cong \\mathbb{Z}/n\\mathbb{Z}$（加法），阶 $n$；',
         '- 无限循环群 $\\cong \\mathbb{Z}$。'
       ].join('\n'),
-      notes: '⭐ 循环群是**同阶唯一**的群（同阶的循环群必同构）—— 这在群论里是罕见的干净情形。\n\n⭐ 子群全循环、且结构完全清楚：$\\mathbb{Z}/n$ 的每个子群都是 $\\langle g^{d}\\rangle$ 的形状，其中 $d \\mid n$；对应地 $\\mathbb{Z}/n$ 的子群与 $n$ 的正因子一一对应（$d \\leftrightarrow$ 由 $n/d$ 生成的子群）。\n\n⭐ $\\mathbb{Z}/n$ 的生成元个数是 Euler 函数 $\\varphi(n)$（与 $n$ 互素的那些 $k$ 对应的 $g^{k}$）。\n\n⭐ $\\mathbb{Z}/p$（$p$ 素）是**素域** $\\mathbb{F}_p$ 的加法群，也是它唯一的真子群来源 —— 这是 `def.characteristic` 与有限域那条线的起点。\n\n⚠ 「循环」不是「$g$ 的幂总是循环排列」这种字面意思；它的意思是「**一个元素就能生成整个群**」（cyclic = 由单个生成元生成的）。',
+      notes: '⭐ 循环群是**同阶唯一**的群（同阶的循环群必同构）—— 这在群论里是罕见的干净情形。\n\n⭐ 子群全循环、且结构完全清楚：$\\mathbb{Z}/n$ 的每个子群都是 $\\langle g^{d}\\rangle$ 的形状，其中 $d \\mid n$；\n\n对应地 $\\mathbb{Z}/n$ 的子群与 $n$ 的正因子一一对应（$d \\leftrightarrow$ 由 $n/d$ 生成的子群）。\n\n⭐ $\\mathbb{Z}/n$ 的生成元个数是 Euler 函数 $\\varphi(n)$（与 $n$ 互素的那些 $k$ 对应的 $g^{k}$）。\n\n⭐ $\\mathbb{Z}/p$（$p$ 素）是**素域** $\\mathbb{F}_p$ 的加法群，也是它唯一的真子群来源 —— 这是 `def.characteristic` 与有限域那条线的起点。\n\n⚠ 「循环」不是「$g$ 的幂总是循环排列」这种字面意思；\n\n它的意思是「**一个元素就能生成整个群**」（cyclic = 由单个生成元生成的）。',
       refs: ['Lang, Algebra, Ch. I §4', 'Dummit–Foote, Abstract Algebra, §2.3']
     },
 
@@ -175,7 +175,7 @@ window.MG = window.MG || {};
         '',
         '其中 $[G : H] := |G|/|H|$ 叫 $H$ 在 $G$ 中的**指数**。'
       ].join('\n'),
-      notes: '⭐ 证明只有两句：**陪集构成划分**（$g_1 H \\cap g_2 H \\ne \\emptyset \\implies g_1 H = g_2 H$，靠 $H$ 对乘法的封闭）+ **平移是双射**（$h \\mapsto gh$ 是 $H \\to gH$ 的双射）。证明全文在边上。\n\n⭐ 三个立刻能用的推论：\n- 每个元素 $g$ 的阶整除 $|G|$（把 $\\langle g\\rangle$ 当 $H$）；\n- 素数阶群必循环（任取非单位元，阶只能是 $1$ 或 $p$）；\n- $g^{|G|} = e$ 对一切 $g$ 成立 —— 于是 Euler 定理 $a^{\\varphi(n)} \\equiv 1 \\pmod n$ 是它的特例（取 $G = (\\mathbb{Z}/n)^{\\times}$）。\n\n⚠ **逆命题不成立**：「$d \\mid |G|$ $\\implies$ 有 $d$ 阶子群」是**假**的。最小反例：$|A_4| = 12$，$6 \\mid 12$，但 $A_4$ 没有 $6$ 阶子群（$6$ 阶子群必指数 $2$ 因而正规，而 $A_4$ 的唯一正规子群是 $V_4$ 与 $A_4$）。所以「整除」只是必要条件 —— 要部分逆命题就得请出 Sylow 定理。',
+      notes: '⭐ 证明只有两句：**陪集构成划分**（$g_1 H \\cap g_2 H \\ne \\emptyset \\implies g_1 H = g_2 H$，靠 $H$ 对乘法的封闭）+ **平移是双射**（$h \\mapsto gh$ 是 $H \\to gH$ 的双射）。\n\n证明全文在边上。\n\n⭐ 三个立刻能用的推论：\n- 每个元素 $g$ 的阶整除 $|G|$（把 $\\langle g\\rangle$ 当 $H$）；\n\n\n- 素数阶群必循环（任取非单位元，阶只能是 $1$ 或 $p$）；\n\n\n- $g^{|G|} = e$ 对一切 $g$ 成立 —— 于是 Euler 定理 $a^{\\varphi(n)} \\equiv 1 \\pmod n$ 是它的特例（取 $G = (\\mathbb{Z}/n)^{\\times}$）。\n\n⚠ **逆命题不成立**：「$d \\mid |G|$ $\\implies$ 有 $d$ 阶子群」是**假**的。\n\n最小反例：$|A_4| = 12$，$6 \\mid 12$，但 $A_4$ 没有 $6$ 阶子群（$6$ 阶子群必指数 $2$ 因而正规，而 $A_4$ 的唯一正规子群是 $V_4$ 与 $A_4$）。\n\n所以「整除」只是必要条件 —— 要部分逆命题就得请出 Sylow 定理。',
       refs: ['Lang, Algebra, Ch. I §4', 'Dummit–Foote, Abstract Algebra, §3.2']
     },
     {
@@ -193,7 +193,7 @@ window.MG = window.MG || {};
         '',
         '特别地，$|G| = n$ 时 $G$ 同构于 $S_n$ 的一个子群。'
       ].join('\n'),
-      notes: '⭐ 定理的哲学含量大于计算含量：**抽象群总能具体地实现为一组置换**。也就是说「群论」与「置换群论」是同一门学问 —— 抽象并没有真的产生新对象，只是换了个看法。\n\n⚠ 代价很大：$|G| = n$ 时嵌进 $S_n$（阶 $n!$），所以 Cayley 定理几乎从不用于计算。它真正的用处是与「表示论」对照：把「作用在集合上」换成「作用在向量空间上」，就是那条线的开端。\n\n⭐ 左乘作用还是**自由**的（每个稳定子都平凡：$gh = h \\implies g = e$），所以它自动是单射 —— 这是证明的核心一句。',
+      notes: '⭐ 定理的哲学含量大于计算含量：**抽象群总能具体地实现为一组置换**。\n\n也就是说「群论」与「置换群论」是同一门学问 —— 抽象并没有真的产生新对象，只是换了个看法。\n\n⚠ 代价很大：$|G| = n$ 时嵌进 $S_n$（阶 $n!$），所以 Cayley 定理几乎从不用于计算。\n\n它真正的用处是与「表示论」对照：把「作用在集合上」换成「作用在向量空间上」，就是那条线的开端。\n\n⭐ 左乘作用还是**自由**的（每个稳定子都平凡：$gh = h \\implies g = e$），所以它自动是单射 —— 这是证明的核心一句。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §4.1']
     },
     {
@@ -217,7 +217,7 @@ window.MG = window.MG || {};
         '',
         '（$P$ 是任一 Sylow $p$-子群，$N_G(P)$ 是它的正规化子。）特别地 $n_p = 1 \\iff P \\trianglelefteq G$。'
       ].join('\n'),
-      notes: '⭐ Sylow 是 **Lagrange 的部分逆命题**：Lagrange 说「$|H|$ 必整除 $|G|$」，「$d \\mid |G|$ $\\implies$ 有 $d$ 阶子群」是假的；Sylow 说「**$p$-部分的最大那一档一定能取到，而且只差一个共轭**」。\n\n⚠ Galois 理论**不需要** Sylow（Galois 对应只用到正规性，不用计数）。它在计划里标的是「可选」；收进来的理由是：它是群作用这套工具最干净的一个出口，也是「有限群分类」这门学问的第一块砖。\n\n⭐ 标准用法（判断群不同构/不单）：$|G| = 15$。$n_3 \\mid 5$ 且 $n_3 \\equiv 1 \\pmod 3$ $\\implies$ $n_3 = 1$；$n_5 \\mid 3$ 且 $n_5 \\equiv 1 \\pmod 5$ $\\implies$ $n_5 = 1$。于是 $P_3 \\trianglelefteq G$、$P_5 \\trianglelefteq G$，且 $P_3 \\cap P_5 = \\{e\\}$（阶互素），故 $G \\cong P_3 \\times P_5 \\cong \\mathbb{Z}/15$ —— **15 阶群必循环**。\n\n⚠ 计数条件只是必要条件：$n_p \\equiv 1 \\pmod p$ 与 $n_p \\mid m$ 同时不满足才排除，满足了也不能反推存在多少个。',
+      notes: '⭐ Sylow 是 **Lagrange 的部分逆命题**：Lagrange 说「$|H|$ 必整除 $|G|$」，「$d \\mid |G|$ $\\implies$ 有 $d$ 阶子群」是假的；Sylow 说「**$p$-部分的最大那一档一定能取到，而且只差一个共轭**」。\n\n⚠ Galois 理论**不需要** Sylow（Galois 对应只用到正规性，不用计数）。\n\n它在计划里标的是「可选」；\n\n收进来的理由是：它是群作用这套工具最干净的一个出口，也是「有限群分类」这门学问的第一块砖。\n\n⭐ 标准用法（判断群不同构/不单）：$|G| = 15$。\n\n$n_3 \\mid 5$ 且 $n_3 \\equiv 1 \\pmod 3$ $\\implies$ $n_3 = 1$；\n\n$n_5 \\mid 3$ 且 $n_5 \\equiv 1 \\pmod 5$ $\\implies$ $n_5 = 1$。\n\n于是 $P_3 \\trianglelefteq G$、$P_5 \\trianglelefteq G$，且 $P_3 \\cap P_5 = \\{e\\}$（阶互素），故 $G \\cong P_3 \\times P_5 \\cong \\mathbb{Z}/15$ —— **15 阶群必循环**。\n\n⚠ 计数条件只是必要条件：$n_p \\equiv 1 \\pmod p$ 与 $n_p \\mid m$ 同时不满足才排除，满足了也不能反推存在多少个。',
       refs: ['Lang, Algebra, Ch. I §6', 'Dummit–Foote, Abstract Algebra, §4.5']
     },
 
@@ -232,7 +232,7 @@ window.MG = window.MG || {};
       statement: [
         '群 $G \\ne \\{e\\}$ 叫**单群**，当且仅当它只有两个正规子群：$\\{e\\}$ 与 $G$ 自身（即它没有非平凡的**真**正规子群）。'
       ].join('\n'),
-      notes: '⭐ 单群是「群论里的素数」：合成列的因子全是单群（`def.composition-series`），Jordan–Hölder 说这些因子唯一 —— 单群扮演的正是素因子在整数分解里的角色。\n\n⭐ 基本的例子与反例：\n- $\\mathbb{Z}/p$（$p$ 素）单：它的每个子群都正规（阿贝尔群），且只有平凡的两个；\n- $A_n$（$n \\ge 5$）单且**非阿贝尔**；\n- $S_n$（$n \\ge 3$）**不**单：$A_n \\trianglelefteq S_n$ 是真正规子群；\n- $A_4$ **不**单：$V_4 = \\{e, (12)(34), (13)(24), (14)(23)\\}$ 正规。\n\n⭐ 「单」与「不可解」的关系是一条清晰的链：单群可解 $\\iff$ 单群阿贝尔 $\\iff$ 素数阶循环群。所以**非阿贝尔单群 = 不可解的砖**，$A_5$ 就是最小的那一块。',
+      notes: '⭐ 单群是「群论里的素数」：合成列的因子全是单群（`def.composition-series`），Jordan–Hölder 说这些因子唯一 —— 单群扮演的正是素因子在整数分解里的角色。\n\n⭐ 基本的例子与反例：\n- $\\mathbb{Z}/p$（$p$ 素）单：它的每个子群都正规（阿贝尔群），且只有平凡的两个；\n\n\n- $A_n$（$n \\ge 5$）单且**非阿贝尔**；\n\n\n- $S_n$（$n \\ge 3$）**不**单：$A_n \\trianglelefteq S_n$ 是真正规子群；\n\n\n- $A_4$ **不**单：$V_4 = \\{e, (12)(34), (13)(24), (14)(23)\\}$ 正规。\n\n⭐ 「单」与「不可解」的关系是一条清晰的链：单群可解 $\\iff$ 单群阿贝尔 $\\iff$ 素数阶循环群。\n\n所以**非阿贝尔单群 = 不可解的砖**，$A_5$ 就是最小的那一块。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.4']
     },
     {
@@ -248,11 +248,11 @@ window.MG = window.MG || {};
         '',
         '$$\\{e\\} = G_0 \\trianglelefteq G_1 \\trianglelefteq \\cdots \\trianglelefteq G_n = G$$',
         '',
-        '（每步只要求 $G_{i} \\trianglelefteq G_{i+1}$，**不**要求 $G_i \\trianglelefteq G$）。若每个商 $G_i / G_{i-1}$ 都是**单群**（$i = 1, \\ldots, n$），这条链叫**合成列**。这些单群叫 $G$ 的**合成因子**，$n$ 叫链的**长度**。',
+        '（每步只要求 $G_{i} \\trianglelefteq G_{i+1}$，**不**要求 $G_i \\trianglelefteq G$）。\n\n若每个商 $G_i / G_{i-1}$ 都是**单群**（$i = 1, \\ldots, n$），这条链叫**合成列**。\n\n这些单群叫 $G$ 的**合成因子**，$n$ 叫链的**长度**。',
         '',
         '有限群必有合成列：对 $|G|$ 归纳 —— 若 $G$ 不单，取非平凡正规子群 $N$，对 $N$ 与 $G/N$ 各取合成列再拼起来。'
       ].join('\n'),
-      notes: '⚠ 「正规」只要求在**相邻两项之间**（$G_i \\trianglelefteq G_{i+1}$）。若要求每个 $G_i$ 都在整个 $G$ 里正规，大多数群根本不会有这种链 —— 这个差别常被读漏。\n\n⭐ 例子（每个都要能自己写出合成因子）：\n- $S_3$：$\\{e\\} \\trianglelefteq A_3 \\trianglelefteq S_3$，因子 $\\mathbb{Z}/3,\\ \\mathbb{Z}/2$；\n- $S_4$：$\\{e\\} \\trianglelefteq \\mathbb{Z}/2 \\trianglelefteq V_4 \\trianglelefteq A_4 \\trianglelefteq S_4$（$V_4 = \\{e,(12)(34),(13)(24),(14)(23)\\}$，它本身不单，还得再插一项），因子 $\\mathbb{Z}/2,\\ \\mathbb{Z}/2,\\ \\mathbb{Z}/3,\\ \\mathbb{Z}/2$；\n- $\\mathbb{Z}/12$：$\\{e\\} \\trianglelefteq \\mathbb{Z}/2 \\trianglelefteq \\mathbb{Z}/6 \\trianglelefteq \\mathbb{Z}/12$，因子 $\\mathbb{Z}/2,\\ \\mathbb{Z}/3,\\ \\mathbb{Z}/2$。\n\n⚠ 不是所有链都是合成列：$\\{e\\} \\trianglelefteq \\mathbb{Z}/2 \\trianglelefteq \\mathbb{Z}/12$ 中间那步的商 $\\mathbb{Z}/6$ **不单**，所以它只是正规链，不是合成列（但可以加细成上面那条）。\n\n⭐ 有限群一定有合成列；**无限群不一定**：$\\mathbb{Z}$ 的任何非平凡子群 $n\\mathbb{Z}$ 都有真子群 $2n\\mathbb{Z}$，子群链无限下降，凑不出「商是单群」的有限链（$\\mathbb{Z}$ 的商里只有 $\\mathbb{Z}/p$ 是单的，而 $\\mathbb{Z}/p \\ne \\mathbb{Z}$）。\n\n⭐ 合成因子必须靠一条定理才能叫「$G$ 的」因子 —— 那就是 `thm.jordan-holder`。',
+      notes: '⚠ 「正规」只要求在**相邻两项之间**（$G_i \\trianglelefteq G_{i+1}$）。\n\n若要求每个 $G_i$ 都在整个 $G$ 里正规，大多数群根本不会有这种链 —— 这个差别常被读漏。\n\n⭐ 例子（每个都要能自己写出合成因子）：\n- $S_3$：$\\{e\\} \\trianglelefteq A_3 \\trianglelefteq S_3$，因子 $\\mathbb{Z}/3,\\ \\mathbb{Z}/2$；\n\n\n- $S_4$：$\\{e\\} \\trianglelefteq \\mathbb{Z}/2 \\trianglelefteq V_4 \\trianglelefteq A_4 \\trianglelefteq S_4$（$V_4 = \\{e,(12)(34),(13)(24),(14)(23)\\}$，它本身不单，还得再插一项），因子 $\\mathbb{Z}/2,\\ \\mathbb{Z}/2,\\ \\mathbb{Z}/3,\\ \\mathbb{Z}/2$；\n\n\n- $\\mathbb{Z}/12$：$\\{e\\} \\trianglelefteq \\mathbb{Z}/2 \\trianglelefteq \\mathbb{Z}/6 \\trianglelefteq \\mathbb{Z}/12$，因子 $\\mathbb{Z}/2,\\ \\mathbb{Z}/3,\\ \\mathbb{Z}/2$。\n\n⚠ 不是所有链都是合成列：$\\{e\\} \\trianglelefteq \\mathbb{Z}/2 \\trianglelefteq \\mathbb{Z}/12$ 中间那步的商 $\\mathbb{Z}/6$ **不单**，所以它只是正规链，不是合成列（但可以加细成上面那条）。\n\n⭐ 有限群一定有合成列；\n\n**无限群不一定**：$\\mathbb{Z}$ 的任何非平凡子群 $n\\mathbb{Z}$ 都有真子群 $2n\\mathbb{Z}$，子群链无限下降，凑不出「商是单群」的有限链（$\\mathbb{Z}$ 的商里只有 $\\mathbb{Z}/p$ 是单的，而 $\\mathbb{Z}/p \\ne \\mathbb{Z}$）。\n\n⭐ 合成因子必须靠一条定理才能叫「$G$ 的」因子 —— 那就是 `thm.jordan-holder`。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.4']
     },
     {
@@ -274,7 +274,7 @@ window.MG = window.MG || {};
         '',
         '即：**合成因子的多重集（同构意义下）与合成列的选取无关**。'
       ].join('\n'),
-      notes: '⭐ 这条定理让「$G$ 的合成因子」这个说法**合法** —— 否则它只是某条链的属性。它在群论里的位置与算术基本定理在整数里完全相同：把对象拆成不可再分的零件，并保证拆法唯一。\n\n⚠ **逆命题不成立**：合成因子相同**不**蕴含同构。例：$\\mathbb{Z}/12$ 与 $\\mathbb{Z}/2 \\times \\mathbb{Z}/6$ 的合成因子都是 $\\mathbb{Z}/2, \\mathbb{Z}/2, \\mathbb{Z}/3$，但前者有 $12$ 阶元、后者没有，故不同构。也就是说「合成因子」是**不变量而不是完全不变量**。\n\n⭐ 证明的路子是「**加细**」：先证任意两条正规链有等价的加细（Schreier 加细定理），再用 Zassenhaus（蝴蝶）引理证加细可以做到。合成列已经最细（因子是单群，不能再加细），所以两条合成列必须等价。证明全文在边上。',
+      notes: '⭐ 这条定理让「$G$ 的合成因子」这个说法**合法** —— 否则它只是某条链的属性。\n\n它在群论里的位置与算术基本定理在整数里完全相同：把对象拆成不可再分的零件，并保证拆法唯一。\n\n⚠ **逆命题不成立**：合成因子相同**不**蕴含同构。\n\n例：$\\mathbb{Z}/12$ 与 $\\mathbb{Z}/2 \\times \\mathbb{Z}/6$ 的合成因子都是 $\\mathbb{Z}/2, \\mathbb{Z}/2, \\mathbb{Z}/3$，但前者有 $12$ 阶元、后者没有，故不同构。\n\n也就是说「合成因子」是**不变量而不是完全不变量**。\n\n⭐ 证明的路子是「**加细**」：先证任意两条正规链有等价的加细（Schreier 加细定理），再用 Zassenhaus（蝴蝶）引理证加细可以做到。\n\n合成列已经最细（因子是单群，不能再加细），所以两条合成列必须等价。\n\n证明全文在边上。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.4']
     },
     {
@@ -298,7 +298,7 @@ window.MG = window.MG || {};
         '',
         '则 $G$ 可解 $\\iff$ 存在 $n$ 使 $G^{(n)} = \\{e\\}$。'
       ].join('\n'),
-      notes: '⭐ 三个等价说法，用哪个都行：\n- 存在**阿贝尔商**的正规链（定义）；\n- **导出列**有限步终止（最好算）；\n- 有合成列且**所有合成因子都是素数阶循环群**（最好判）。\n\n⭐ 名字的来源与它真正的价值：Galois 理论的主定理把「多项式方程可用根式解」翻译成「它的 Galois 群可解」—— Abel–Ruffini 定理就从这里出来。这条线的另一半（域扩张）在批 7。\n\n⚠ 「可解」**不是**「阿贝尔」：$S_3$ 与 $S_4$ 都可解但非阿贝尔。「可解」说的是「能被一串**阿贝尔商**逐层拆开」，即「离阿贝尔群有限步远」。\n\n⭐ 单群 + 可解 $\\implies$ 阿贝尔（因为合成列只能是一条 $\\{e\\} \\trianglelefteq G$，因子 $G$ 单且必须阿贝尔）。所以**非阿贝尔单群一律不可解**，$A_5$ 是第一个例子。\n\n⭐ 两类必会：阿贝尔群全部可解（一步链）；$p$-群全部可解（用类方程归纳，中心非平凡 $\\implies$ 可对 $Z(G)$ 与 $G/Z(G)$ 归纳）。',
+      notes: '⭐ 三个等价说法，用哪个都行：\n- 存在**阿贝尔商**的正规链（定义）；\n- **导出列**有限步终止（最好算）；\n- 有合成列且**所有合成因子都是素数阶循环群**（最好判）。\n\n⭐ 名字的来源与它真正的价值：Galois 理论的主定理把「多项式方程可用根式解」翻译成「它的 Galois 群可解」—— Abel–Ruffini 定理就从这里出来。\n\n这条线的另一半（域扩张）在批 7。\n\n⚠ 「可解」**不是**「阿贝尔」：$S_3$ 与 $S_4$ 都可解但非阿贝尔。\n\n「可解」说的是「能被一串**阿贝尔商**逐层拆开」，即「离阿贝尔群有限步远」。\n\n⭐ 单群 + 可解 $\\implies$ 阿贝尔（因为合成列只能是一条 $\\{e\\} \\trianglelefteq G$，因子 $G$ 单且必须阿贝尔）。\n\n所以**非阿贝尔单群一律不可解**，$A_5$ 是第一个例子。\n\n⭐ 两类必会：阿贝尔群全部可解（一步链）；\n\n$p$-群全部可解（用类方程归纳，中心非平凡 $\\implies$ 可对 $Z(G)$ 与 $G/Z(G)$ 归纳）。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.4']
     },
     {
@@ -320,7 +320,7 @@ window.MG = window.MG || {};
         '',
         '（(a)(b) 说的是「可解性向下传」，(c) 说的是「可解性沿正规扩张向上传」。）'
       ].join('\n'),
-      notes: '⭐ (c) 是这三条里最有用的：判 $G$ 可解时，只要找到一条**正规子群**把 $G$ 夹在中间，两头分别可解即可 —— 这就是把大群拆小的标准手法。\n\n⚠ (a)(b) 的逆都**不**成立，反例很小：\n- 子群可解**推不出**群可解：$\\mathbb{Z}/2 \\le A_5$ 可解，$A_5$ 不可解；\n- 商群可解**推不出**群可解：$S_5 / A_5 \\cong \\mathbb{Z}/2$ 可解，$S_5$ 不可解。\n所以「可解」不是「局部性质」，必须靠 (c) 那样的**两头夹**才往上传。\n\n⭐ 用导出列看这三条几乎是一句话：$H^{(k)} \\le G^{(k)}$；$\\pi(G^{(k)}) = (G/N)^{(k)}$。证明全文在边上。\n\n⭐ 立刻得到一个常用判据：$G$ 可解 $\\iff$ 存在正规链使商**循环**（而不只是阿贝尔）—— 因为阿贝尔群还能再细分成循环因子。',
+      notes: '⭐ (c) 是这三条里最有用的：判 $G$ 可解时，只要找到一条**正规子群**把 $G$ 夹在中间，两头分别可解即可 —— 这就是把大群拆小的标准手法。\n\n⚠ (a)(b) 的逆都**不**成立，反例很小：\n- 子群可解**推不出**群可解：$\\mathbb{Z}/2 \\le A_5$ 可解，$A_5$ 不可解；\n\n\n- 商群可解**推不出**群可解：$S_5 / A_5 \\cong \\mathbb{Z}/2$ 可解，$S_5$ 不可解。\n\n\n所以「可解」不是「局部性质」，必须靠 (c) 那样的**两头夹**才往上传。\n\n⭐ 用导出列看这三条几乎是一句话：$H^{(k)} \\le G^{(k)}$；\n\n$\\pi(G^{(k)}) = (G/N)^{(k)}$。\n\n证明全文在边上。\n\n⭐ 立刻得到一个常用判据：$G$ 可解 $\\iff$ 存在正规链使商**循环**（而不只是阿贝尔）—— 因为阿贝尔群还能再细分成循环因子。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.4']
     },
     {
@@ -336,7 +336,7 @@ window.MG = window.MG || {};
         '',
         '等价地：$S_5$ 与它的一切 $S_n$（$n \\ge 5$）都**不**可解，而 $S_1, S_2, S_3, S_4$ 都可解。'
       ].join('\n'),
-      notes: '⭐ 这条命题是 **Abel–Ruffini 定理的群论一半**：五次以上方程不能用根式解，根子就在这里 —— 方程的通有 Galois 群是 $S_n$，而 $S_n$（$n \\ge 5$）不可解。\n\n⭐ 分界线落在 $A_4$ 与 $A_5$ 之间，这**不是**渐进现象而是一个硬跳变：$A_4$ 有正规子群 $V_4$（所以 $S_4$ 能被拆开），$A_5$ 没有真正规子群，且 $A_5$ 非阿贝尔，于是不可解。\n\n⭐ $S_4$ 的拆法：$\\{e\\} \\trianglelefteq V_4 \\trianglelefteq A_4 \\trianglelefteq S_4$，商依次为 $\\mathbb{Z}/2 \\times \\mathbb{Z}/2$、$\\mathbb{Z}/3$、$\\mathbb{Z}/2$，全是阿贝尔 ✓。$S_3$ 用 $\\{e\\} \\trianglelefteq A_3 \\trianglelefteq S_3$，商 $\\mathbb{Z}/3, \\mathbb{Z}/2$ ✓。\n\n⭐ $A_5$ 单性的证明可以完全初等地做出来：$A_5$ 的共轭类大小只有 $1, 15, 20, 12, 12$，正规子群是若干类的并、且阶整除 $60$ —— 逐项枚举会发现只有 $1$ 与 $60$ 可行。证明全文在边上。',
+      notes: '⭐ 这条命题是 **Abel–Ruffini 定理的群论一半**：五次以上方程不能用根式解，根子就在这里 —— 方程的通有 Galois 群是 $S_n$，而 $S_n$（$n \\ge 5$）不可解。\n\n⭐ 分界线落在 $A_4$ 与 $A_5$ 之间，这**不是**渐进现象而是一个硬跳变：$A_4$ 有正规子群 $V_4$（所以 $S_4$ 能被拆开），$A_5$ 没有真正规子群，且 $A_5$ 非阿贝尔，于是不可解。\n\n⭐ $S_4$ 的拆法：$\\{e\\} \\trianglelefteq V_4 \\trianglelefteq A_4 \\trianglelefteq S_4$，商依次为 $\\mathbb{Z}/2 \\times \\mathbb{Z}/2$、$\\mathbb{Z}/3$、$\\mathbb{Z}/2$，全是阿贝尔 ✓。\n\n$S_3$ 用 $\\{e\\} \\trianglelefteq A_3 \\trianglelefteq S_3$，商 $\\mathbb{Z}/3, \\mathbb{Z}/2$ ✓。\n\n⭐ $A_5$ 单性的证明可以完全初等地做出来：$A_5$ 的共轭类大小只有 $1, 15, 20, 12, 12$，正规子群是若干类的并、且阶整除 $60$ —— 逐项枚举会发现只有 $1$ 与 $60$ 可行。\n\n证明全文在边上。',
       refs: ['Lang, Algebra, Ch. I §5', 'Dummit–Foote, Abstract Algebra, §3.4']
     }
   ],
@@ -486,7 +486,7 @@ window.MG = window.MG || {};
       target: 'thm.lagrange',
       title: '陪集构成划分 + 平移是双射 $\\implies$ Lagrange',
       proof: [
-        '**第一步：左陪集是等价类。** 在 $G$ 上定义关系 $g_1 \\sim g_2 :\\iff g_1^{-1} g_2 \\in H$。它自反（$g^{-1}g = e \\in H$）、对称（$g_1^{-1}g_2 \\in H \\implies (g_1^{-1}g_2)^{-1} = g_2^{-1}g_1 \\in H$）、传递（相乘仍属 $H$），故是等价关系。而',
+        '**第一步：左陪集是等价类。** 在 $G$ 上定义关系 $g_1 \\sim g_2 :\\iff g_1^{-1} g_2 \\in H$。\n\n它自反（$g^{-1}g = e \\in H$）、对称（$g_1^{-1}g_2 \\in H \\implies (g_1^{-1}g_2)^{-1} = g_2^{-1}g_1 \\in H$）、传递（相乘仍属 $H$），故是等价关系。\n\n而',
         '',
         '$$g_1 \\sim g_2 \\iff g_1^{-1} g_2 \\in H \\iff g_2 \\in g_1 H,$$',
         '',
@@ -509,11 +509,11 @@ window.MG = window.MG || {};
       target: 'thm.orbit-stabilizer',
       title: '构造双射 $G/G_x \\to Gx$ $\\implies$ 轨道–稳定子',
       proof: [
-        '**第一步：$G_x$ 是子群。** $e \\in G_x$；若 $g, h \\in G_x$，则 $(gh)\\cdot x = g\\cdot(h\\cdot x) = g \\cdot x = x$，故 $gh \\in G_x$；又 $g \\cdot x = x$ 两边作用 $g^{-1}$ 得 $x = g^{-1}\\cdot x$，故 $g^{-1} \\in G_x$。',
+        '**第一步：$G_x$ 是子群。** $e \\in G_x$；若 $g, h \\in G_x$，则 $(gh)\\cdot x = g\\cdot(h\\cdot x) = g \\cdot x = x$，故 $gh \\in G_x$；\n\n又 $g \\cdot x = x$ 两边作用 $g^{-1}$ 得 $x = g^{-1}\\cdot x$，故 $g^{-1} \\in G_x$。',
         '',
         '**第二步：映射 $\\varphi : G/G_x \\to Gx$，$g G_x \\mapsto g \\cdot x$ 良定义。** 若 $g\' \\in gG_x$，写 $g\' = g h$（$h \\in G_x$），则 $g\'\\cdot x = g\\cdot(h\\cdot x) = g \\cdot x$ —— 与代表元无关。',
         '',
-        '**第三步：$\\varphi$ 是双射。** 满：$Gx$ 的元素按定义就是 $g\\cdot x$。单：若 $g\\cdot x = g\'\\cdot x$，则 $(g^{-1}g\')\\cdot x = g^{-1}\\cdot(g\'\\cdot x) = g^{-1}\\cdot(g\\cdot x) = x$，故 $g^{-1}g\' \\in G_x$，即 $g\' \\in gG_x$，两个陪集相同。',
+        '**第三步：$\\varphi$ 是双射。** 满：$Gx$ 的元素按定义就是 $g\\cdot x$。\n\n单：若 $g\\cdot x = g\'\\cdot x$，则 $(g^{-1}g\')\\cdot x = g^{-1}\\cdot(g\'\\cdot x) = g^{-1}\\cdot(g\\cdot x) = x$，故 $g^{-1}g\' \\in G_x$，即 $g\' \\in gG_x$，两个陪集相同。',
         '',
         '**第四步：取基数。** 由第三步与 Lagrange（`thm.lagrange`），',
         '',
@@ -546,7 +546,10 @@ window.MG = window.MG || {};
         '',
         '最后一步用了轨道–稳定子（`thm.orbit-stabilizer`）。',
         '',
-        '**第四步：$p$-群那一档。** 若 $|G| = p^{n}$，则每项 $[G : C_G(x_i)] = p^{k_i}$（$k_i \\ge 1$，因为 $x_i$ 非中心故 $C_G(x_i) \\ne G$）。于是右端除 $|Z(G)|$ 外都被 $p$ 整除，左端也被 $p$ 整除，故 $p \\mid |Z(G)|$；又 $Z(G) \\ne \\emptyset$ 含 $e$，故 $|Z(G)| \\ge p$，特别地 $Z(G) \\ne \\{e\\}$。∎'
+        '**第四步：$p$-群那一档。** 若 $|G| = p^{n}$，则每项 $[G : C_G(x_i)] = p^{k_i}$（$k_i \\ge 1$，因为 $x_i$ 非中心故 $C_G(x_i) \\ne G$）。\n\n' +
+        '于是右端除 $|Z(G)|$ 外都被 $p$ 整除，左端也被 $p$ 整除，故 $p \\mid |Z(G)|$；\n\n' +
+        '又 $Z(G) \\ne \\emptyset$ 含 $e$，故 $|Z(G)| \\ge p$，特别地 $Z(G) \\ne \\{e\\}$。\n\n' +
+        '∎'
       ].join('\n'),
       note: '⭐ 第三步的「把长度 1 的类拎出来」不是技巧，而是**必须**：中心化子等于 $G$ 时 $[G : C_G(x)] = 1$，直接写求和会让中心被重复计入 $|Z(G)|$ 次。'
     },
@@ -580,8 +583,15 @@ window.MG = window.MG || {};
         '',
         '**（1）存在性：对 $|G|$ 归纳。** $a = 0$ 时取平凡子群。设 $a \\ge 1$。',
         '',
-        '- **情形 A：$p \\mid |Z(G)|$。** 取 $z \\in Z(G)$，$\\operatorname{ord}(z) = p$（Cauchy 引理，由类方差的推论加上对阶归纳可得）。令 $\\overline G := G/\\langle z\\rangle$，则 $|\\overline G| = p^{a-1}m$。由归纳假设 $\\overline G$ 有 $p^{a-1}$ 阶子群 $\\overline P$；取 $\\pi^{-1}(\\overline P) \\le G$（$\\pi : G \\to \\overline G$ 是自然满同态），其阶为 $|\\overline P| \\cdot |\\langle z\\rangle| = p^{a}$。',
-        '- **情形 B：$p \\nmid |Z(G)|$。** 由类方程$|G| = |Z(G)| + \\sum_i [G : C_G(x_i)]$。左端被 $p$ 整除、$|Z(G)|$ 不被 $p$ 整除，故存在某个 $i$ 使 $p \\nmid [G : C_G(x_i)]$。由 $|G| = [G : C_G(x_i)]\\cdot|C_G(x_i)|$ 与 $p^{a} \\mid |G|$ 得 $p^{a} \\mid |C_G(x_i)|$；又 $x_i$ 非中心故 $C_G(x_i) \\ne G$，于是 $|C_G(x_i)| < |G|$。对 $C_G(x_i)$ 用归纳假设得 $p^{a}$ 阶子群，它也是 $G$ 的。',
+        '- **情形 A：$p \\mid |Z(G)|$。** 取 $z \\in Z(G)$，$\\operatorname{ord}(z) = p$（Cauchy 引理，由类方差的推论加上对阶归纳可得）。\n\n' +
+        '令 $\\overline G := G/\\langle z\\rangle$，则 $|\\overline G| = p^{a-1}m$。\n\n' +
+        '由归纳假设 $\\overline G$ 有 $p^{a-1}$ 阶子群 $\\overline P$；\n\n' +
+        '取 $\\pi^{-1}(\\overline P) \\le G$（$\\pi : G \\to \\overline G$ 是自然满同态），其阶为 $|\\overline P| \\cdot |\\langle z\\rangle| = p^{a}$。',
+        '- **情形 B：$p \\nmid |Z(G)|$。** 由类方程$|G| = |Z(G)| + \\sum_i [G : C_G(x_i)]$。\n\n' +
+        '左端被 $p$ 整除、$|Z(G)|$ 不被 $p$ 整除，故存在某个 $i$ 使 $p \\nmid [G : C_G(x_i)]$。\n\n' +
+        '由 $|G| = [G : C_G(x_i)]\\cdot|C_G(x_i)|$ 与 $p^{a} \\mid |G|$ 得 $p^{a} \\mid |C_G(x_i)|$；\n\n' +
+        '又 $x_i$ 非中心故 $C_G(x_i) \\ne G$，于是 $|C_G(x_i)| < |G|$。\n\n' +
+        '对 $C_G(x_i)$ 用归纳假设得 $p^{a}$ 阶子群，它也是 $G$ 的。',
         '',
         '（$p^{i}$ 阶子群（$i < a$）由对 $p^{a}$ 阶子群再用一次「$p$-群有 $p^{i}$ 阶子群」的归纳得到。）',
         '',
@@ -589,7 +599,7 @@ window.MG = window.MG || {};
         '',
         '$$|X| = [G : Q] = m, \\qquad p \\nmid m.$$',
         '',
-        '由轨道分解 $|X| = \\sum |\\text{轨道}|$，每个轨道长 $= [P : P_{hQ}]$ 是 $p$ 的幂。若**没有**不动点，则每个轨道长都被 $p$ 整除，于是 $p \\mid |X| = m$，矛盾。故有不动点 $hQ$：对一切 $g \\in P$ 有 $ghQ = hQ$，即 $h^{-1}Ph \\le Q$。两端阶相同（都是 $p^{a}$），故 $h^{-1}Ph = Q$：$P$ 与 $Q$ 共轭。',
+        '由轨道分解 $|X| = \\sum |\\text{轨道}|$，每个轨道长 $= [P : P_{hQ}]$ 是 $p$ 的幂。\n\n若**没有**不动点，则每个轨道长都被 $p$ 整除，于是 $p \\mid |X| = m$，矛盾。\n\n故有不动点 $hQ$：对一切 $g \\in P$ 有 $ghQ = hQ$，即 $h^{-1}Ph \\le Q$。\n\n两端阶相同（都是 $p^{a}$），故 $h^{-1}Ph = Q$：$P$ 与 $Q$ 共轭。',
         '',
         '把上面论证中的 $P$ 换成任一 $p$-子群 $R$，同样得到 $h^{-1}Rh \\le Q$：**任何 $p$-子群都含在某个 Sylow 子群中**。',
         '',
@@ -597,7 +607,7 @@ window.MG = window.MG || {};
         '',
         '$$n_p = |\\mathcal{S}| = [G : N_G(P)].$$',
         '',
-        '再由 $P \\le N_G(P)$ 得 $n_p \\mid [G : P] = m$。最后让 $P$ 共轭作用在 $\\mathcal{S}$ 上：轨道长是 $p$ 的幂，而 $P$ 的不动点只有 $P$ 自己（若 $P$ 固定 $Q$，则 $P \\le N_G(Q)$，于是 $P$ 与 $Q$ 都是 $N_G(Q)$ 的 Sylow 子群，由 (2) 在 $N_G(Q)$ 中共轭；但 $Q \\trianglelefteq N_G(Q)$ 故只能 $P = Q$）。于是',
+        '再由 $P \\le N_G(P)$ 得 $n_p \\mid [G : P] = m$。\n\n最后让 $P$ 共轭作用在 $\\mathcal{S}$ 上：轨道长是 $p$ 的幂，而 $P$ 的不动点只有 $P$ 自己（若 $P$ 固定 $Q$，则 $P \\le N_G(Q)$，于是 $P$ 与 $Q$ 都是 $N_G(Q)$ 的 Sylow 子群，由 (2) 在 $N_G(Q)$ 中共轭；\n\n但 $Q \\trianglelefteq N_G(Q)$ 故只能 $P = Q$）。\n\n于是',
         '',
         '$$n_p = 1 + \\sum (\\text{长度 } \\ge 2 \\text{ 的轨道长}) \\equiv 1 \\pmod p$$',
         '',
@@ -620,7 +630,7 @@ window.MG = window.MG || {};
         '',
         '$$\\frac{A(A^{\\ast}\\cap B)}{A(A^{\\ast}\\cap B^{\\ast})} \\;\\cong\\; \\frac{B(A^{\\ast}\\cap B)}{B(A^{\\ast}\\cap B^{\\ast})}.$$',
         '',
-        '*证明*：考虑映射 $\\varphi : A(A^{\\ast}\\cap B) \\to \\dfrac{B(A^{\\ast}\\cap B)}{B(A^{\\ast}\\cap B^{\\ast})}$。由 $A \\trianglelefteq A^{\\ast}$、$B \\trianglelefteq B^{\\ast}$ 可逐项验证 $\\varphi$ 是同态，其核恰为 $A(A^{\\ast}\\cap B^{\\ast})$、其像恰为整个商（任取 $b \\in B$，$b$ 的像由 $A$ 部分承担）。于是由第一同构定理（`thm.first-iso`）得同构。对称地做另一边即得引理。∎',
+        '*证明*：考虑映射 $\\varphi : A(A^{\\ast}\\cap B) \\to \\dfrac{B(A^{\\ast}\\cap B)}{B(A^{\\ast}\\cap B^{\\ast})}$。\n\n由 $A \\trianglelefteq A^{\\ast}$、$B \\trianglelefteq B^{\\ast}$ 可逐项验证 $\\varphi$ 是同态，其核恰为 $A(A^{\\ast}\\cap B^{\\ast})$、其像恰为整个商（任取 $b \\in B$，$b$ 的像由 $A$ 部分承担）。\n\n于是由第一同构定理（`thm.first-iso`）得同构。\n\n对称地做另一边即得引理。\n\n∎',
         '',
         '**引理 2（Schreier）**：任意两条正规链都有**等价**的加细（两条加细的因子多重集相同）。',
         '',
@@ -630,7 +640,7 @@ window.MG = window.MG || {};
         '',
         '由引理 1，这两步的商在「对 $i$ 加细」与「对 $j$ 加细」两种看法下同构 —— 于是把双边所有小区间用蝴蝶引理配成对，得到两条等价加细。∎',
         '',
-        '**回到定理**：设两条**合成**列为 $\\mathcal{C}_1, \\mathcal{C}_2$。由引理 2 存在等价加细 $\\mathcal{C}_1^{\\prime}, \\mathcal{C}_2^{\\prime}$。但合成列已无法再加细：其每步商是单群，而单群没有非平凡正规子群，插不进任何中间项。故 $\\mathcal{C}_1^{\\prime} = \\mathcal{C}_1$、$\\mathcal{C}_2^{\\prime} = \\mathcal{C}_2$，于是两条合成列本身等价：长度相同、因子多重集相同。∎'
+        '**回到定理**：设两条**合成**列为 $\\mathcal{C}_1, \\mathcal{C}_2$。\n\n由引理 2 存在等价加细 $\\mathcal{C}_1^{\\prime}, \\mathcal{C}_2^{\\prime}$。\n\n但合成列已无法再加细：其每步商是单群，而单群没有非平凡正规子群，插不进任何中间项。\n\n故 $\\mathcal{C}_1^{\\prime} = \\mathcal{C}_1$、$\\mathcal{C}_2^{\\prime} = \\mathcal{C}_2$，于是两条合成列本身等价：长度相同、因子多重集相同。\n\n∎'
       ].join('\n'),
       note: '⚠ 引理 1 的验证（同态性、核、像）是纯机械的逐项检查，这里略去了细节；它的几何形象是「蝴蝶」——四个子群围成的平行四边形两组对边等长。⭐ 结构上这条定理是「**加细 + 最细即唯一**」，与整数分解里「不断除以素因子直到商为 1」是同一个逻辑。'
     },
@@ -681,7 +691,7 @@ window.MG = window.MG || {};
         '',
         '又 $|N| \\mid |A_5| = 60$。枚举全部子集和：$1, 16, 21, 13, 36, 28, 33, 25, 48, 40, 45, 60$。其中能整除 $60$ 的只有 $1$ 与 $60$。故 $N = \\{e\\}$ 或 $N = A_5$，即 $A_5$ 单。',
         '',
-        '**第三步：$A_5$ 非阿贝尔，故不可解。** $A_5$ 的合成列只能是 $\\{e\\} \\trianglelefteq A_5$（第二步），其唯一因子是 $A_5$ 本身；而 $A_5$ 非阿贝尔（例如 $(123)(124) \\ne (124)(123)$）。故 $A_5$ 没有阿贝尔商的正规链，即 $A_5$ **不可解**。',
+        '**第三步：$A_5$ 非阿贝尔，故不可解。** $A_5$ 的合成列只能是 $\\{e\\} \\trianglelefteq A_5$（第二步），其唯一因子是 $A_5$ 本身；而 $A_5$ 非阿贝尔（例如 $(123)(124) \\ne (124)(123)$）。\n\n故 $A_5$ 没有阿贝尔商的正规链，即 $A_5$ **不可解**。',
         '',
         '**第四步：$n \\ge 5$ 时 $S_n$ 不可解。** 固定后 $n - 5$ 个点，前 $5$ 个点上的偶置换给出 $A_5 \\le A_n \\le S_n$。若 $S_n$ 可解，则由 (a) 其子群 $A_5$ 可解，与第三步矛盾。',
         '',
@@ -689,11 +699,11 @@ window.MG = window.MG || {};
         '',
         '- $n \\le 2$：$S_n$ 阿贝尔，一步链即可；',
         '- $n = 3$：$\\{e\\} \\trianglelefteq A_3 \\trianglelefteq S_3$，商 $\\mathbb{Z}/3$、$\\mathbb{Z}/2$，均阿贝尔；',
-        '- $n = 4$：$\\{e\\} \\trianglelefteq V_4 \\trianglelefteq A_4 \\trianglelefteq S_4$，其中 $V_4 = \\{e, (12)(34), (13)(24), (14)(23)\\}$；商依次为 $V_4 \\cong \\mathbb{Z}/2\\times\\mathbb{Z}/2$、$A_4/V_4 \\cong \\mathbb{Z}/3$、$S_4/A_4 \\cong \\mathbb{Z}/2$，全是阿贝尔。（$V_4 \\trianglelefteq A_4$ 因为它是「单位 + 全部三个双对换」这个共轭类的并。）',
+        '- $n = 4$：$\\{e\\} \\trianglelefteq V_4 \\trianglelefteq A_4 \\trianglelefteq S_4$，其中 $V_4 = \\{e, (12)(34), (13)(24), (14)(23)\\}$；\n\n商依次为 $V_4 \\cong \\mathbb{Z}/2\\times\\mathbb{Z}/2$、$A_4/V_4 \\cong \\mathbb{Z}/3$、$S_4/A_4 \\cong \\mathbb{Z}/2$，全是阿贝尔。\n\n（$V_4 \\trianglelefteq A_4$ 因为它是「单位 + 全部三个双对换」这个共轭类的并。）',
         '',
         '两个方向合起来即得 $S_n$ 可解 $\\iff n \\le 4$。∎'
       ].join('\n'),
-      note: '⭐ 整个证明的关键是**把「$A_5$ 单」变成一个可以逐项核对的有限计算**：共轭类大小只有 $1, 15, 20, 12, 12$，正规子群是若干类的并、且阶整除 $60$ —— 枚举 $2^{4} = 16$ 种组合，只有 $1$ 与 $60$ 可行。这比「抽象地论证单性」可靠得多，也省掉了「证明 $A_n$（$n \\ge 5$）都单」这件更重的事：判 $S_n$ 不可解只需要 $A_5$ 这一个。\n\n⚠ 第四步用了一个小事实：$A_5 \\le A_n$（$n \\ge 5$）—— 固定后 $n-5$ 个点、在前 $5$ 个点上做偶置换即可。它是 $A_n$ 的子群，而子群可解性向下传（`thm.solvable-quotients` (a)）。'
+      note: '⭐ 整个证明的关键是**把「$A_5$ 单」变成一个可以逐项核对的有限计算**：共轭类大小只有 $1, 15, 20, 12, 12$，正规子群是若干类的并、且阶整除 $60$ —— 枚举 $2^{4} = 16$ 种组合，只有 $1$ 与 $60$ 可行。\n\n这比「抽象地论证单性」可靠得多，也省掉了「证明 $A_n$（$n \\ge 5$）都单」这件更重的事：判 $S_n$ 不可解只需要 $A_5$ 这一个。\n\n⚠ 第四步用了一个小事实：$A_5 \\le A_n$（$n \\ge 5$）—— 固定后 $n-5$ 个点、在前 $5$ 个点上做偶置换即可。\n\n它是 $A_n$ 的子群，而子群可解性向下传（`thm.solvable-quotients` (a)）。'
     }
   ]
 });

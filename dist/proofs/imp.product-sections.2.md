@@ -7,4 +7,8 @@
 
 **④ $\mathcal{C}$ 对递减交封闭。** 若 $E_1 \supseteq E_2 \supseteq \cdots$、$E = \bigcap E_n$：因为测度有限，可以用 DCT（控制函数是常数 $\nu(Y) < \infty$）得到同样的等式。
 
+**⑤ 用单调类定理。** 由 ①②③④，$\mathcal{C}$ 是含所有矩形的一个**单调类**。
+
+矩形族生成的**代数**再由矩形构成，所以 $\mathcal{C}$ 含这个代数；
+
 > 续见 proofs/imp.product-sections.3.md

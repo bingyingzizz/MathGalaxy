@@ -30,7 +30,7 @@ window.MG = window.MG || {};
         '的**关联层为零**：它的层化是零层。'
       ].join('\n'),
       notes: [
-        '**证明。** 取 $M$ 的一条内射消解 $I^{\\bullet}$ ✓，则 $H^{n}(U, M) = H^{n}\\Gamma(U, I^{\\bullet})$ ✓。给一个上同调类 $s$，用它在某条覆盖的每一块上的代表上链 $c$：因为 $I^{\\bullet}$ 作为复形在每个点处正合，$c$ 在局部是某个上链的**边界** ✓ —— 于是 $s$ 限制到覆盖的每一块上都是 $0$ ✓，也就是说它在关联层里的芽为 $0$ ✓。∎'
+        '**证明。** 取 $M$ 的一条内射消解 $I^{\\bullet}$ ✓，则 $H^{n}(U, M) = H^{n}\\Gamma(U, I^{\\bullet})$ ✓。\n\n给一个上同调类 $s$，用它在某条覆盖的每一块上的代表上链 $c$：因为 $I^{\\bullet}$ 作为复形在每个点处正合，$c$ 在局部是某个上链的**边界** ✓ —— 于是 $s$ 限制到覆盖的每一块上都是 $0$ ✓，也就是说它在关联层里的芽为 $0$ ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.43']
     },
@@ -127,7 +127,7 @@ window.MG = window.MG || {};
         [
           '**证明。**',
           '**(1) $\\iff$ (2)**：层上同调就是「高次上同调预层」的整体截面，$H^{n}(X, M) = \\Gamma\\bigl(X, H^{n}(M)\\bigr)$ ✓，两边同时为零 ✓。',
-          '**(1) $\\implies$ (3)**：对固定覆盖用 Cartan–Leray 谱序列 $E^{p,q}_{2} = \\check{H}^{p}(\\mathfrak{X}, H^{q}(M)) \\implies H^{p+q}(X,M)$ ✓；(1) 让 $q \\ne 0$ 的行全为零、$H^{p+q}$ 也全为零（$p+q \\ne 0$），谱序列退化给出 $\\check{H}^{n}(\\mathfrak{X}, M) = 0$ ✓。',
+          '**(1) $\\implies$ (3)**：对固定覆盖用 Cartan–Leray 谱序列 $E^{p,q}_{2} = \\check{H}^{p}(\\mathfrak{X}, H^{q}(M)) \\implies H^{p+q}(X,M)$ ✓；\n\n(1) 让 $q \\ne 0$ 的行全为零、$H^{p+q}$ 也全为零（$p+q \\ne 0$），谱序列退化给出 $\\check{H}^{n}(\\mathfrak{X}, M) = 0$ ✓。',
           '**(3) $\\implies$ (4)**：$\\check{H}^{n}(X, -)$ 是沿覆盖取的滤过余极限 ✓，每个覆盖上都为零故为零 ✓。',
           '**(4) $\\implies$ (1)**：把同一句话反过来 —— 用 Čech 到上同调的谱序列逐次消去，$E^{p,q}_{2}$ 的右端全为零，故全为零 ✓。∎'
         ].join('\n')
@@ -328,7 +328,7 @@ window.MG = window.MG || {};
         '对一个**测试对象** $Z$ 也一样：$\\operatorname{Hom}(X, N)(Z) = \\operatorname{Hom}_{\\mathbb{Z}}\\bigl(j_{Z}^{-1} X,\\ j_{Z}^{-1}N\\bigr)$（只是把 $X$ 换成 $Z$ 那一对伴随）。'
       ].join('\n'),
       notes: [
-        '**证明。** 每一步都是一次伴随：内 Hom 的取值 $\\operatorname{Hom}_{\\mathbb{Z}}(M,N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1}_{X})$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \\dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \\dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。∎'
+        '**证明。** 每一步都是一次伴随：内 Hom 的取值 $\\operatorname{Hom}_{\\mathbb{Z}}(M,N)(X) = \\operatorname{Hom}_{\\mathbb{Z}}(M, N)(\\mathbf{1}_{X})$ 与 $\\operatorname{Hom}_{\\mathbb{Z}}(j_{X}^{-1}M, j_{X}^{-1}N)$ 之间用 $j_{X!} \\dashv j_{X}^{-1}$ 搭桥 ✓，$j_{X}^{-1} \\dashv j_{X*}$ 则把中间的 Hom 换成最后一式 ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.60']
     },
@@ -352,7 +352,7 @@ window.MG = window.MG || {};
         '$$M\\cdot X \\;:=\\; M \\otimes_{\\mathbb{Z}} \\mathbb{Z}\\cdot X \\;=\\; j_{X!}j_{X}^{-1}M.$$'
       ].join('\n'),
       notes: [
-        '**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \\dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。最后一式把 $N = \\mathbb{Z}$ 代入并记住 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。∎'
+        '**证明。** 投影公式是「左伴随与封闭幺半结构相容」的一般现象：把两边的 Hom 用 $j_{X!} \\dashv j_{X}^{-1}$ 与张量–内 Hom 伴随对到同一处，由米田引理得同构 ✓。\n\n最后一式把 $N = \\mathbb{Z}$ 代入并记住 $j_{X!}\\mathbb{Z} = \\mathbb{Z}\\cdot X$ ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.61']
     }

@@ -34,7 +34,7 @@ window.MG = window.MG || {};
       notes: [
         '⚠️ **子范畴不等于满子范畴**：满子范畴是「对象取一部分，但态射一个不丢」；一般子范畴允许同时丢掉态射。',
         '**严格（strict）子范畴**：恒等态射在子范畴里也必须是恒等态射。绝大多数场合默认如此。',
-        '**例子**：$\\mathbf{Ab} \\hookrightarrow \\mathbf{Grp}$ 是满子范畴（阿贝尔群之间的同态恰好就是它们作为群的同态）；$\\mathbf{CHaus} \\hookrightarrow \\mathbf{Top}$ 是满子范畴；$\\mathbf{Grp} \\to \\mathbf{Set}$ 不是子范畴（连对象都不是同一批集合）。',
+        '**例子**：$\\mathbf{Ab} \\hookrightarrow \\mathbf{Grp}$ 是满子范畴（阿贝尔群之间的同态恰好就是它们作为群的同态）；$\\mathbf{CHaus} \\hookrightarrow \\mathbf{Top}$ 是满子范畴；\n\n$\\mathbf{Grp} \\to \\mathbf{Set}$ 不是子范畴（连对象都不是同一批集合）。',
         '⭐ 「反射子范畴」「余反射子范畴」都是在满子范畴上再加一条：含入函子有伴随。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §1.1']
@@ -210,7 +210,7 @@ window.MG = window.MG || {};
           '- $i_{1}$ 有**收缩** $r : M \\to M_{1}$（$r \\circ i_{1} = \\mathrm{id}$）；',
           '- $M \\cong M_{1} \\oplus M_{2}$ 与这个列相容。'
         ].join('\n'),
-        ['**证明。** 记 $i := i_{1}$、$p := i_{2}$，则 $i$ 单、$p$ 满且 $\\operatorname{im} i = \\ker p$。','- **有截面 $\\implies$ 分裂**：设 $p s = 1_{M_{2}}$。则 $p(1_{M} - s p) = p - p s p = 0$，故 $1_{M} - sp$ 落在 $\\ker p = \\operatorname{im} i$ 里，于是存在 $r : M \\to M_{1}$ 使','$$i r = 1_{M} - s p.$$','由 $i$ 单：$i(r i) = (1_{M} - sp)\\,i = i - s(p i) = i$（用了 $p i = 0$），故 $r i = 1_{M_{1}}$ ✓。与 $p i = 0$ 合起来，$p_{1} := r$、$i_{1} := i$、$p_{2} := p$、$i_{2} := s$ 满足双积的三条等式（$r i = 1$、$p s = 1$、$i r + s p = 1_{M}$，见「直和就是积」），即 $M$ 就是 $M_{1} \\oplus M_{2}$，该列分裂 ✓。','- **分裂 $\\implies$ 有截面**：分裂时该列同构于 $0 \\to M_{1} \\xrightarrow{\\ \\mathrm{pr}_{1}\\ } M_{1} \\oplus M_{2} \\xrightarrow{\\ \\mathrm{pr}_{2}\\ } M_{2} \\to 0$，而 $\\mathrm{pr}_{2}$ 有显然的截面（到第二个分量的含入），沿同构搬回去就得到 $p$ 的截面 ✓。','- **对偶**：把同一论证搬到 $\\mathcal{C}^{\\mathrm{op}}$，得「分裂 $\\iff$ $i$ 有收缩」✓。∎'].join('\n'),
+        ['**证明。** 记 $i := i_{1}$、$p := i_{2}$，则 $i$ 单、$p$ 满且 $\\operatorname{im} i = \\ker p$。','- **有截面 $\\implies$ 分裂**：设 $p s = 1_{M_{2}}$。则 $p(1_{M} - s p) = p - p s p = 0$，故 $1_{M} - sp$ 落在 $\\ker p = \\operatorname{im} i$ 里，于是存在 $r : M \\to M_{1}$ 使','$$i r = 1_{M} - s p.$$','由 $i$ 单：$i(r i) = (1_{M} - sp)\\,i = i - s(p i) = i$（用了 $p i = 0$），故 $r i = 1_{M_{1}}$ ✓。\n\n与 $p i = 0$ 合起来，$p_{1} := r$、$i_{1} := i$、$p_{2} := p$、$i_{2} := s$ 满足双积的三条等式（$r i = 1$、$p s = 1$、$i r + s p = 1_{M}$，见「直和就是积」），即 $M$ 就是 $M_{1} \\oplus M_{2}$，该列分裂 ✓。','- **分裂 $\\implies$ 有截面**：分裂时该列同构于 $0 \\to M_{1} \\xrightarrow{\\ \\mathrm{pr}_{1}\\ } M_{1} \\oplus M_{2} \\xrightarrow{\\ \\mathrm{pr}_{2}\\ } M_{2} \\to 0$，而 $\\mathrm{pr}_{2}$ 有显然的截面（到第二个分量的含入），沿同构搬回去就得到 $p$ 的截面 ✓。','- **对偶**：把同一论证搬到 $\\mathcal{C}^{\\mathrm{op}}$，得「分裂 $\\iff$ $i$ 有收缩」✓。∎'].join('\n'),
         '⭐ **这就是「分裂引理」**（split lemma）：在加法范畴里，「短正合列分裂」与「有截面」与「是直和」是同一件事。它把**列论的问题化成直和的问题** —— 这是同调代数里最常用的一步化简。',
         '⚠️ 短正合列一般**不**分裂（$0 \\to \\mathbb{Z} \\xrightarrow{2} \\mathbb{Z} \\to \\mathbb{Z}/2 \\to 0$ 就不分裂）—— 分裂是特殊情形，判断它分不分裂正是 $\\operatorname{Ext}^{1}$ 要回答的问题。'
       ].join('\n\n'),
@@ -263,7 +263,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**直观**：「测 $X$」不需要等到极限做完 —— 从 $X$ 出发的映射**在有限阶段就已经确定**，后面的滤过余极限只是把它们拼起来。所以「紧」=「不往无穷处伸手」。',
-        '**例子**：有限集（$\\mathbf{Set}$ 里）、有限生成模（$A\\text{-}\\mathbf{Mod}$ 里）、有限 CW 复形（拓扑里）。$\\mathbb{R}$ 在 $\\mathbf{Top}$ 里**不是**紧的（$\\mathbb{R}$ 是有限区间的滤过余极限，但 $\\operatorname{Hom}(\\mathbb{R},-)$ 不保那个余极限）。',
+        '**例子**：有限集（$\\mathbf{Set}$ 里）、有限生成模（$A\\text{-}\\mathbf{Mod}$ 里）、有限 CW 复形（拓扑里）。\n\n$\\mathbb{R}$ 在 $\\mathbf{Top}$ 里**不是**紧的（$\\mathbb{R}$ 是有限区间的滤过余极限，但 $\\operatorname{Hom}(\\mathbb{R},-)$ 不保那个余极限）。',
         '⭐ **在同调代数里的用处**：$X$ 有限表现 $\\iff$ $h^{X}$ 保滤过余极限 $\\iff$ $X$ 是「小」的测试对象。凝聚态那一侧「CondAb 由有限表现的投射对象生成」正是靠它 —— 有限表现的投射对象是 $\\mathrm{CondAb}$ 的生成元。',
         '⚠️ 「有限表现」与「有限生成」不同：有限生成只要求有一个满射 $A^{n} \\twoheadrightarrow M$；有限表现还要求核也是有限生成的（即 $A^{m} \\to A^{n} \\to M \\to 0$ 正合）。'
       ].join('\n\n'),

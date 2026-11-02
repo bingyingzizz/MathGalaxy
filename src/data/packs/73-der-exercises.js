@@ -73,7 +73,7 @@ window.MG = window.MG || {};
         '$$0 \\longrightarrow E^{1,0}_{2} \\longrightarrow H^{1} \\longrightarrow E^{0,1}_{2} \\xrightarrow{\\ d_{2}\\ } E^{2,0}_{2} \\longrightarrow H^{2}.$$'
       ].join('\n'),
       notes: [
-        '**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \\to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}$ 与 $E^{0,1}$ 都活到 $E^{\\infty}$（没有更低的 $q$ 可以被打到）✓。把 $E^{\\infty}_{1,0} = \\operatorname{Gr}^{1}H^{1}$、$E^{\\infty}_{0,1} = \\operatorname{Gr}^{0}H^{1}$ 连同 $E^{\\infty}_{2,0} = \\operatorname{Gr}^{2}H^{2}$ 的过滤逐项拼起来，就得到上面这条链 ✓。∎',
+        '**证明（逐页核对）。** 第一象限里 $d_{2} : E^{0,1}_{2} \\to E^{2,0}_{2}$ 是这两项唯一可能的非零微分 ✓；$E^{1,0}$ 与 $E^{0,1}$ 都活到 $E^{\\infty}$（没有更低的 $q$ 可以被打到）✓。\n\n把 $E^{\\infty}_{1,0} = \\operatorname{Gr}^{1}H^{1}$、$E^{\\infty}_{0,1} = \\operatorname{Gr}^{0}H^{1}$ 连同 $E^{\\infty}_{2,0} = \\operatorname{Gr}^{2}H^{2}$ 的过滤逐项拼起来，就得到上面这条链 ✓。\n\n∎',
         '⭐ 用处：这是「谱序列直接给出低次正合列」的标准工具，$H^{1}$ 与 $H^{2}$ 的低次项就从这里读出来。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.30']
@@ -94,7 +94,7 @@ window.MG = window.MG || {};
         '$$E^{1}_{p,q} \\;=\\; H^{p+q}\\bigl(\\operatorname{Gr}^{p}K^{\\bullet}\\bigr).$$'
       ].join('\n'),
       notes: [
-        '**证明。** 由 $E^{0}_{p,q} = \\operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分 $d_{0}$ 是过滤商上诱导的微分（也就是 $K^{\\bullet}$ 的微分下到分次片上）✓；取同调即得 $E^{1}_{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$ ✓。∎'
+        '**证明。** 由 $E^{0}_{p,q} = \\operatorname{Gr}^{p}K^{p+q}$ ✓，而第 $0$ 页的微分 $d_{0}$ 是过滤商上诱导的微分（也就是 $K^{\\bullet}$ 的微分下到分次片上）✓；\n\n取同调即得 $E^{1}_{p,q} = H^{p+q}(\\operatorname{Gr}^{p}K^{\\bullet})$ ✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.31']
     },
@@ -112,7 +112,7 @@ window.MG = window.MG || {};
         '设 $K^{\\bullet,\\bullet}$ 是下有界双复形、每项内射，且其全复形 $I^{\\bullet}$ 连同增广给出 $K^{\\bullet}$ 的一条消解。则 $K^{\\bullet} \\to I^{\\bullet}$ **仍是内射消解**。'
       ].join('\n'),
       notes: [
-        '**证明。** 全复形的每一项是**有限**多个内射对象的直和（下有界保证每个次数上只有有限多项），直和仍是内射 ✓；而全复形与双复形同调相容：$H^{n}(\\operatorname{Tot}) \\cong H^{n}$（这里用的是「下有界 + 每列是消解」的收敛性）✓，所以 $K^{\\bullet} \\to I^{\\bullet}$ 是拟同构 ✓。∎',
+        '**证明。** 全复形的每一项是**有限**多个内射对象的直和（下有界保证每个次数上只有有限多项），直和仍是内射 ✓；而全复形与双复形同调相容：$H^{n}(\\operatorname{Tot}) \\cong H^{n}$（这里用的是「下有界 + 每列是消解」的收敛性）✓，所以 $K^{\\bullet} \\to I^{\\bullet}$ 是拟同构 ✓。\n\n∎',
         '⭐ 这一条是 Cartan–Eilenberg 那套「双复形 $\\to$ 全复形」的合法性依据。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.34']
@@ -134,7 +134,7 @@ window.MG = window.MG || {};
         '对偶地，若 $G$ 正合，则 $G\\bigl(R^{n}F(K)\\bigr) \\cong R^{n}(G \\circ F)(K)$。'
       ].join('\n'),
       notes: [
-        '**证明。** 正合函子的高次导出函子为零：$R^{q}F = 0$（$q > 0$）✓。在 Grothendieck 谱序列 $E^{p,q}_{2} = R^{p}G(R^{q}F(K)) \\implies R^{p+q}(G\\circ F)(K)$ 里，$E_{2}$ 页只剩下 $q = 0$ 那一行 ✓，于是谱序列退化，$R^{n}(G\\circ F)(K) \\cong R^{n}G(F(K))$ ✓。对偶地把 $F,G$ 互换（另一半用 $G$ 正合 $\\implies$ $R^{p}G = 0$）✓。∎'
+        '**证明。** 正合函子的高次导出函子为零：$R^{q}F = 0$（$q > 0$）✓。\n\n在 Grothendieck 谱序列 $E^{p,q}_{2} = R^{p}G(R^{q}F(K)) \\implies R^{p+q}(G\\circ F)(K)$ 里，$E_{2}$ 页只剩下 $q = 0$ 那一行 ✓，于是谱序列退化，$R^{n}(G\\circ F)(K) \\cong R^{n}G(F(K))$ ✓。\n\n对偶地把 $F,G$ 互换（另一半用 $G$ 正合 $\\implies$ $R^{p}G = 0$）✓。\n\n∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.35']
     },
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
         '$$\\check{C}^{n}(\\mathfrak{X}, M) \\;=\\; \\prod_{i_{0}, \\ldots, i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr).$$'
       ].join('\n'),
       notes: [
-        '**证明。** 按定义 $\\check{C}^{\\bullet}(\\mathfrak{X}, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$ ✓，而 Čech 脉的 $n$ 次项是 $X_{n} = \\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}$ ✓。自由对象把余积换成直和、把取值写成 Hom：',
+        '**证明。** 按定义 $\\check{C}^{\\bullet}(\\mathfrak{X}, M) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot X_{\\bullet}, M)$ ✓，而 Čech 脉的 $n$ 次项是 $X_{n} = \\coprod_{i_{0},\\ldots,i_{n}} X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}$ ✓。\n\n自由对象把余积换成直和、把取值写成 Hom：',
         '$$\\operatorname{Hom}_{\\mathbb{Z}}\\Bigl(\\bigoplus_{i_{0},\\ldots,i_{n}} \\mathbb{Z}\\cdot\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr),\\ M\\Bigr) = \\prod_{i_{0},\\ldots,i_{n}} M\\bigl(X_{i_{0}} \\times_{X} \\cdots \\times_{X} X_{i_{n}}\\bigr) ✓$$',
         '∎'
       ].join('\n\n'),
@@ -219,7 +219,7 @@ window.MG = window.MG || {};
       title: '退化行 $\\implies$ 五项正合列',
       proof: [
         '第一象限里 $H^{1}$ 只由 $E^{1,0}$、$E^{0,1}$ 两层拼成，$H^{2}$ 的低层是 $E^{2,0}$ ✓。',
-        '把 $E^{\\infty}$ 页的这几项按过滤拼回 $H^{1}$、$H^{2}$：$0 \\to E^{1,0}_{2} \\to H^{1} \\to E^{0,1}_{2}$ 正合用的是 $\\operatorname{Gr}^{1}H^{1} = E^{\\infty}_{1,0}$，而 $E^{0,1}_{2} \\xrightarrow{d_{2}} E^{2,0}_{2}$ 的核正是活到 $E^{\\infty}$ 的部分 ✓，其后 $E^{2,0}_{2} \\to H^{2}$ 用的是 $\\operatorname{Gr}^{2}H^{2} = E^{\\infty}_{2,0}$ ✓。∎'
+        '把 $E^{\\infty}$ 页的这几项按过滤拼回 $H^{1}$、$H^{2}$：$0 \\to E^{1,0}_{2} \\to H^{1} \\to E^{0,1}_{2}$ 正合用的是 $\\operatorname{Gr}^{1}H^{1} = E^{\\infty}_{1,0}$，而 $E^{0,1}_{2} \\xrightarrow{d_{2}} E^{2,0}_{2}$ 的核正是活到 $E^{\\infty}$ 的部分 ✓，其后 $E^{2,0}_{2} \\to H^{2}$ 用的是 $\\operatorname{Gr}^{2}H^{2} = E^{\\infty}_{2,0}$ ✓。\n\n∎'
       ].join('\n')
     },
     {

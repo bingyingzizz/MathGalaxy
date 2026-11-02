@@ -13,4 +13,6 @@ $$\beta X := \overline{e_{X}(X)} \subseteq [0,1]^{C(X,[0,1])}$$
 
 闭子集紧、方块 Hausdorff 而子空间 Hausdorff，所以 $\beta X \in \mathbf{CHaus}$。
 
+**函子性。** 连续映射 $\varphi : X \to Y$ 诱导 $C(Y,[0,1]) \to C(X,[0,1])$（$g \mapsto g \circ \varphi$），进而诱导方块的映射 $[0,1]^{C(X,[0,1])} \to [0,1]^{C(Y,[0,1])}$；
+
 > 续见 proofs/imp.stone-cech.2.md

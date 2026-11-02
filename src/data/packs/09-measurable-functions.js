@@ -49,9 +49,11 @@ window.MG = window.MG || {};
         '$f : X \\to Y$ **可测** $\\iff f^{-1}(E) \\in \\mathcal{M}\\quad  \\forall E \\in \\mathcal{E}$'
       ].join('\n'),
       notes: [
-        ['**证明。**','**(1) 复合**：对 $E \\in \\mathcal{O}$ 有 $(g \\circ f)^{-1}(E) = f^{-1}\\bigl(g^{-1}(E)\\bigr)$；由 $g$ 可测得 $g^{-1}(E) \\in \\mathcal{N}$，再由 $f$ 可测得 $f^{-1}(\\cdot) \\in \\mathcal{M}$ ✓。','**(2) 只需验证生成元**：','- **$(\\Longleftarrow)$** 令 $\\mathcal{C} := \\{\\, E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\,\\}$。原像保持并、交、补（$f^{-1}(E^{c}) = X \\setminus f^{-1}(E)$），故 $\\mathcal{C}$ 是 $Y$ 上的 **$\\sigma$代数** ✓；由假设 $\\mathcal{E} \\subseteq \\mathcal{C}$，取生成的 $\\sigma$代数得 $\\mathcal{N} = \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即一切 $E \\in \\mathcal{N}$ 的原像都可测 ✓。','- **$(\\implies)$** 按可测的定义即得 ✓。','同一论证可用于任何「生成它的族」：拓扑空间上只需开集（或闭集、或基元素）；$\\mathbb{R}$ 上只需 $(-\\infty, a]$ 这类射线 ✓。∎'].join('\n'),
+        ['**证明。**','**(1) 复合**：对 $E \\in \\mathcal{O}$ 有 $(g \\circ f)^{-1}(E) = f^{-1}\\bigl(g^{-1}(E)\\bigr)$；由 $g$ 可测得 $g^{-1}(E) \\in \\mathcal{N}$，再由 $f$ 可测得 $f^{-1}(\\cdot) \\in \\mathcal{M}$ ✓。','**(2) 只需验证生成元**：','- **$(\\Longleftarrow)$** 令 $\\mathcal{C} := \\{\\, E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\,\\}$。\n\n原像保持并、交、补（$f^{-1}(E^{c}) = X \\setminus f^{-1}(E)$），故 $\\mathcal{C}$ 是 $Y$ 上的 **$\\sigma$代数** ✓；\n\n由假设 $\\mathcal{E} \\subseteq \\mathcal{C}$，取生成的 $\\sigma$代数得 $\\mathcal{N} = \\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即一切 $E \\in \\mathcal{N}$ 的原像都可测 ✓。','- **$(\\implies)$** 按可测的定义即得 ✓。','同一论证可用于任何「生成它的族」：拓扑空间上只需开集（或闭集、或基元素）；$\\mathbb{R}$ 上只需 $(-\\infty, a]$ 这类射线 ✓。∎'].join('\n'),
         '(1)：对 $E \\in \\mathcal{O}$ 有 $(g\\circ f)^{-1}(E) = f^{-1}(g^{-1}(E))$，两层都可测。',
-        '(2) 的 $(\\Longleftarrow )$：令 $\\mathcal{C} = \\{ E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\}$。因为原像保持并、交、补，**$\\mathcal{C}$ 是一个 $\\sigma$代数**；题设说 $\\mathcal{E} \\subseteq \\mathcal{C}$，于是 $\\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即所有可测集的原像都可测。',
+        '(2) 的 $(\\Longleftarrow )$：令 $\\mathcal{C} = \\{ E \\subseteq Y : f^{-1}(E) \\in \\mathcal{M} \\}$。\n\n' +
+        '因为原像保持并、交、补，**$\\mathcal{C}$ 是一个 $\\sigma$代数**；\n\n' +
+        '题设说 $\\mathcal{E} \\subseteq \\mathcal{C}$，于是 $\\mathcal{M}(\\mathcal{E}) \\subseteq \\mathcal{C}$，即所有可测集的原像都可测。',
         '(2) 是整段里最常用的判定工具：要证 $f$ 可测，只需在一小族生成元上验证 —— 比如 $\\mathbb{R}$ 值函数只需验证 $f^{-1}((a, \\infty))$ 可测。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.1']
@@ -91,7 +93,7 @@ window.MG = window.MG || {};
       notes: [
         '⚠ **注意这里有个坑：两个 Lebesgue 可测函数的复合不一定 Lebesgue 可测。**',
         '',
-        '原因：复合要跑通 (1) 需要中间那个 $\\sigma$代数配合，而 $\\mathcal{L}$ 严格大于 $\\mathfrak{B}_\\mathbb{R}$。取 $f : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测、$g : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测，则 $g\\circ f$ 关于 $\\mathcal{L}$ 未必可测 —— 因为 $g^{-1}$ 只能保证把 $\\mathfrak{B}_\\mathbb{R}$ 里的集合拉回 $\\mathcal{L}$，而 $f^{-1}$ 需要在 $\\mathbb{R}$ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。',
+        '原因：复合要跑通 (1) 需要中间那个 $\\sigma$代数配合，而 $\\mathcal{L}$ 严格大于 $\\mathfrak{B}_\\mathbb{R}$。\n\n取 $f : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测、$g : \\mathbb{R} \\to \\mathbb{R} Lebesgue$ 可测，则 $g\\circ f$ 关于 $\\mathcal{L}$ 未必可测 —— 因为 $g^{-1}$ 只能保证把 $\\mathfrak{B}_\\mathbb{R}$ 里的集合拉回 $\\mathcal{L}$，而 $f^{-1}$ 需要在 $\\mathbb{R}$ 里取一个**非 Borel 的 Lebesgue 可测集**才能出问题。',
         '标准修法：让中间那个函数 Borel 可测。若 $g$ 是 Borel 可测、$f$ 是 Lebesgue 可测，则 $g\\circ f$ 是 Lebesgue 可测的。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.1']
@@ -106,7 +108,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['命题', '积空间', '实部虚部'],
       statement: [
-        '**(1)** 设 $(X, \\mathcal{M})$、$(Y_\\alpha , \\mathcal{N}_\\alpha ) (\\alpha \\in A)$ 是可测空间，$Y = \\prod_{\\alpha} Y_\\alpha$，$\\mathcal{N} = \\otimes _{\\alpha} \\mathcal{N}_\\alpha$，$\\pi _\\alpha : Y \\to Y_\\alpha$ 是投影。则 $f$ 可测当且仅当所有分量都可测：',
+        '**(1)** 设 $(X, \\mathcal{M})$、$(Y_\\alpha , \\mathcal{N}_\\alpha ) (\\alpha \\in A)$ 是可测空间，$Y = \\prod_{\\alpha} Y_\\alpha$，$\\mathcal{N} = \\otimes _{\\alpha} \\mathcal{N}_\\alpha$，$\\pi _\\alpha : Y \\to Y_\\alpha$ 是投影。\n\n则 $f$ 可测当且仅当所有分量都可测：',
         '',
         '$f : X \\to Y$ **可测** $\\iff f_\\alpha = \\pi _\\alpha \\circ  f$ **可测** $(\\forall\\alpha \\in A)$',
         '',
@@ -222,7 +224,7 @@ window.MG = window.MG || {};
         '**(b)** 每个 $f_n$ 可测且 $f_n \\to f$ $\\mu -\\text{a.e.} \\implies$ $f$ 可测。'
       ].join('\n'),
       notes: [
-        ['**证明。**','**$(\\implies)$** 设 $\\mu$ 完备。记 $N := \\{f \\ne g\\}$、$\\mu(N) = 0$。对任意可测集 $B$，','$$g^{-1}(B) = \\bigl(f^{-1}(B) \\cap N^{c}\\bigr) \\cup \\bigl(g^{-1}(B) \\cap N\\bigr),$$','第一块可测（$f$ 可测）；第二块是**零集的子集**，由完备性可测 ✓。故 $g$ 可测。(b) 同理：$f_{n} \\to f$ a.e. 时把 $f$ 在不收敛的零集上改写成 $\\limsup_{n} f_{n}$，可测性不变，而它与 $f$ 只差一个零集 ✓。','**$(\\Longleftarrow)$** 设 (a) 成立。取零集 $E$（$\\mu(E) = 0$）与任意 $F \\subseteq E$，令 $f \\equiv 0$、$g := \\chi_{F}$。则 $f$ 可测，且 $\\{f \\ne g\\} \\subseteq E$ 是零集，即 $f = g$ a.e.；由 (a)，$g$ 可测；于是 $F = g^{-1}(\\{1\\})$ 可测 ✓。故每个零集的子集都可测，**$\\mu$ 完备** ✓。（用 (b) 也一样：取常列 $f_{n} \\equiv 0$、$f := \\chi_{F}$，$f_{n} \\to f$ a.e.，由 (b) 得 $\\chi_{F}$ 可测。）∎','⭐ 这条说明**完备性恰好就是「重新定义零集上的值不破坏可测性」所需的全部条件**。'].join('\n'),
+        ['**证明。**','**$(\\implies)$** 设 $\\mu$ 完备。记 $N := \\{f \\ne g\\}$、$\\mu(N) = 0$。对任意可测集 $B$，','$$g^{-1}(B) = \\bigl(f^{-1}(B) \\cap N^{c}\\bigr) \\cup \\bigl(g^{-1}(B) \\cap N\\bigr),$$','第一块可测（$f$ 可测）；第二块是**零集的子集**，由完备性可测 ✓。故 $g$ 可测。(b) 同理：$f_{n} \\to f$ a.e. 时把 $f$ 在不收敛的零集上改写成 $\\limsup_{n} f_{n}$，可测性不变，而它与 $f$ 只差一个零集 ✓。','**$(\\Longleftarrow)$** 设 (a) 成立。\n\n取零集 $E$（$\\mu(E) = 0$）与任意 $F \\subseteq E$，令 $f \\equiv 0$、$g := \\chi_{F}$。\n\n则 $f$ 可测，且 $\\{f \\ne g\\} \\subseteq E$ 是零集，即 $f = g$ a.e.；\n\n由 (a)，$g$ 可测；\n\n于是 $F = g^{-1}(\\{1\\})$ 可测 ✓。\n\n故每个零集的子集都可测，**$\\mu$ 完备** ✓。\n\n（用 (b) 也一样：取常列 $f_{n} \\equiv 0$、$f := \\chi_{F}$，$f_{n} \\to f$ a.e.，由 (b) 得 $\\chi_{F}$ 可测。）∎','⭐ 这条说明**完备性恰好就是「重新定义零集上的值不破坏可测性」所需的全部条件**。'].join('\n'),
         '$(\\implies )$ 是完备性的直接好处：重新定义零集上的值不改变可测性。',
         '$(\\Longleftarrow )$ 是这条命题有意思的地方 —— 它说明**完备性恰好是「不破坏可测性」所需的全部**。构造：取零集 $E$（$\\mu (E) = 0$）里一个不可测的子集 $F$（若 $\\mu$ 不完备，这样的 $F$ 存在），令',
         '',
@@ -252,7 +254,10 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '直观：完备化只多加了零集的子集，所以 $\\bar{\\mathcal{M}}$可测函数与 $\\mathcal{M}$可测函数只差在零集上的取值。',
-        '证明思路：先看 $f = \\chi_E$ 的情形（此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于零集，取 $g = \\chi_{E\'}$）；对 $\\mathcal{M}$可测的简单函数显然；一般情形取简单函数列 $\\{\\varphi_n\\} \\to f$，每个 $\\varphi_n$ 在某个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于一个 $\\mathcal{M}$可测的 $\\psi_n$。把零集并起来得 $N \\in \\mathcal{M}$，$\\mu(N) = 0$，$N \\supseteq \\bigcup E_n$，令',
+        '证明思路：先看 $f = \\chi_E$ 的情形（此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于零集，取 $g = \\chi_{E\'}$）；\n\n' +
+        '对 $\\mathcal{M}$可测的简单函数显然；\n\n' +
+        '一般情形取简单函数列 $\\{\\varphi_n\\} \\to f$，每个 $\\varphi_n$ 在某个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于一个 $\\mathcal{M}$可测的 $\\psi_n$。\n\n' +
+        '把零集并起来得 $N \\in \\mathcal{M}$，$\\mu(N) = 0$，$N \\supseteq \\bigcup E_n$，令',
         '',
         '$$g = \\lim_n \\chi_{N^c} \\cdot \\varphi_n$$',
         '',
@@ -318,7 +323,7 @@ window.MG = window.MG || {};
         '',
         '先取 $f = \\chi_E$：此时 $E = E\' \\cup F$，$E\' \\in \\mathcal{M}$、$F$ 含于某个 $\\mathcal{M}$零集，取 $g = \\chi_{E\'}$ 即有 $f = g$ a.e.。对 $\\mathcal{M}$可测的简单函数显然成立（有限线性组合）。',
         '',
-        '一般情形取简单函数列 $\\varphi_n \\to f$，每个 $\\varphi_n$ 在一个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于某个 $\\mathcal{M}$可测的 $\\psi_n$。把 $N := \\bigcup_n E_n$ 并起来（可数并仍是零集），令 $g := \\lim_n \\chi_{N^c} \\cdot \\varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\\mathcal{M}$可测函数的极限仍 $\\mathcal{M}$可测。∎'
+        '一般情形取简单函数列 $\\varphi_n \\to f$，每个 $\\varphi_n$ 在一个 $\\bar{\\mathcal{M}}$零集 $E_n$ 外等于某个 $\\mathcal{M}$可测的 $\\psi_n$。\n\n把 $N := \\bigcup_n E_n$ 并起来（可数并仍是零集），令 $g := \\lim_n \\chi_{N^c} \\cdot \\varphi_n$ —— 它在 $N^c$ 上等于 $f$，且作为 $\\mathcal{M}$可测函数的极限仍 $\\mathcal{M}$可测。\n\n∎'
       ].join('\n')
     },
 

@@ -3,7 +3,11 @@
 
 `def.lie-group` Lie 群 + `def.lie-bracket` Lie 括号 → `prop.left-invariant-fields` 左不变向量场
 
-**(1) 赋值是同构。** 设 $X$ 左不变。由 $X_{gh} = \mathrm{d}(L_{g})_{h}(X_{h})$ 取 $h = e$ 得 $X_{g} = \mathrm{d}(L_{g})_{e}(X_{e})$ —— 于是 $X$ 完全由 $X_{e}$ 决定，$X \mapsto X_{e}$ 单射。反之给定 $v \in \mathfrak{g} := T_{e}G$，令 $X_{g} := \mathrm{d}(L_{g})_{e}(v)$，则
+**(1) 赋值是同构。** 设 $X$ 左不变。
+
+由 $X_{gh} = \mathrm{d}(L_{g})_{h}(X_{h})$ 取 $h = e$ 得 $X_{g} = \mathrm{d}(L_{g})_{e}(X_{e})$ —— 于是 $X$ 完全由 $X_{e}$ 决定，$X \mapsto X_{e}$ 单射。
+
+反之给定 $v \in \mathfrak{g} := T_{e}G$，令 $X_{g} := \mathrm{d}(L_{g})_{e}(v)$，则
 
 $$X_{gh} = \mathrm{d}(L_{gh})_{e}(v) = \mathrm{d}\bigl(L_{g} \circ L_{h}\bigr)_{e}(v) = \mathrm{d}(L_{g})_{h}\bigl(\mathrm{d}(L_{h})_{e}(v)\bigr) = \mathrm{d}(L_{g})_{h}(X_{h}),$$
 

@@ -114,7 +114,10 @@ window.MG = window.MG || {};
       notes: [
         [
           '**证明。** (1) 若 $f(X) = U \\sqcup V$ 是两块不交非空开集，则 $X = f^{-1}(U) \\sqcup f^{-1}(V)$ 断开 $X$ ✓。',
-          '(2) 设 $A \\subseteq X$ 连通、$\\overline{A} = U \\sqcup V$（$U, V$ 在 $\\overline{A}$ 中非空开）。则 $A = (A \\cap U) \\sqcup (A \\cap V)$ ✓；由 $A$ 连通，不妨 $A \\cap V = \\emptyset$，于是 $A \\subseteq U$ 且 $V \\cap U = \\emptyset$ 蕴含 $V$ 在 $\\overline{A}$ 中也是闭的 ✓，故 $\\overline{A} \\subseteq U$，与 $V \\ne \\emptyset$ 矛盾 ✓。∎'
+          '(2) 设 $A \\subseteq X$ 连通、$\\overline{A} = U \\sqcup V$（$U, V$ 在 $\\overline{A}$ 中非空开）。\n\n' +
+          '则 $A = (A \\cap U) \\sqcup (A \\cap V)$ ✓；\n\n' +
+          '由 $A$ 连通，不妨 $A \\cap V = \\emptyset$，于是 $A \\subseteq U$ 且 $V \\cap U = \\emptyset$ 蕴含 $V$ 在 $\\overline{A}$ 中也是闭的 ✓，故 $\\overline{A} \\subseteq U$，与 $V \\ne \\emptyset$ 矛盾 ✓。\n\n' +
+          '∎'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.13']
@@ -137,7 +140,10 @@ window.MG = window.MG || {};
         '其中 $h_{f_{i}} : h_{X_{i}} \\to h_{X}$。也就是说：$g : Y \\to X$ 落在 $R$ 中 $\\iff$ 它在 $\\widehat{\\mathcal{C}}$ 里穿过某个 $f_{i}$。'
       ].join('\n'),
       notes: [
-        '**证明。** 筛就是对每个 $Y$ 给一个 $\\operatorname{Hom}(Y, X)$ 的子集、且对预复合封闭 ✓。按定义，由 $\\{f_i\\}$ 生成的筛是**含全体 $f_{i}$ 的那个最小筛** ✓；而 $\\operatorname{im}(h_{f_{i}})$ 的取值正是「穿过 $f_{i}$ 的那些 $g$」，对预复合封闭 ✓，取并（余积）就得到最小的那个 ✓。∎'
+        '**证明。** 筛就是对每个 $Y$ 给一个 $\\operatorname{Hom}(Y, X)$ 的子集、且对预复合封闭 ✓。\n\n' +
+        '按定义，由 $\\{f_i\\}$ 生成的筛是**含全体 $f_{i}$ 的那个最小筛** ✓；\n\n' +
+        '而 $\\operatorname{im}(h_{f_{i}})$ 的取值正是「穿过 $f_{i}$ 的那些 $g$」，对预复合封闭 ✓，取并（余积）就得到最小的那个 ✓。\n\n' +
+        '∎'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.10']
     },
@@ -157,7 +163,7 @@ window.MG = window.MG || {};
         '$$\\widehat{V} \\;\\cong\\; V^{\\ast} = \\operatorname{Hom}_{\\mathbb{R}}(V,\\ \\mathbb{R}).$$'
       ].join('\n'),
       notes: [
-        '**证明。** 因为 $\\mathbb{T} = \\mathbb{R}/\\mathbb{Z}$，而 $V$ 是有限维实向量空间、特别地**单连通** ✓，连续同态 $V \\to \\mathbb{T}$ 都能唯一地提升为连续同态 $V \\to \\mathbb{R}$ ✓。再注意：**连续的加法映射 $V \\to \\mathbb{R}$ 自动是 $\\mathbb{R}$-线性的** —— 先在有理数上由加性得 $f(qv) = q f(v)$ ✓，再由连续性逼近实数系数 ✓。于是 $\\widehat{V} \\cong \\operatorname{Hom}_{\\mathbb{R}}(V, \\mathbb{R}) = V^{\\ast}$ ✓。∎',
+        '**证明。** 因为 $\\mathbb{T} = \\mathbb{R}/\\mathbb{Z}$，而 $V$ 是有限维实向量空间、特别地**单连通** ✓，连续同态 $V \\to \\mathbb{T}$ 都能唯一地提升为连续同态 $V \\to \\mathbb{R}$ ✓。\n\n再注意：**连续的加法映射 $V \\to \\mathbb{R}$ 自动是 $\\mathbb{R}$-线性的** —— 先在有理数上由加性得 $f(qv) = q f(v)$ ✓，再由连续性逼近实数系数 ✓。\n\n于是 $\\widehat{V} \\cong \\operatorname{Hom}_{\\mathbb{R}}(V, \\mathbb{R}) = V^{\\ast}$ ✓。\n\n∎',
         '📌 前提「有限维」不能去掉：实 Banach 空间**局部紧当且仅当有限维**。'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 6.8']

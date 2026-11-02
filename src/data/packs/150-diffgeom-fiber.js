@@ -62,20 +62,20 @@ window.MG = window.MG || {};
         '',
         '设 $M$ 是 $n$ 维光滑流形。$M$ 上的**微分 $k$-形式** $\\omega$ 就是给每点 $p\\in M$ 指定一个**交错 $k$-线性型**',
         '$$\\omega_{p} : T_{p}M\\times\\cdots\\times T_{p}M\\longrightarrow\\mathbb{R},$$',
-        '并且**依赖得光滑**：对每张图卡 $(U,x)$，函数 $p\\mapsto\\omega_{p}\\bigl(\\partial_{i_{1}}\\big|_{p},\\ldots,\\partial_{i_{k}}\\big|_{p}\\bigr)$ 在 $U$ 上光滑。$M$ 上全体 $k$-形式记 $\\Omega^{k}(M)$。',
+        '并且**依赖得光滑**：对每张图卡 $(U,x)$，函数 $p\\mapsto\\omega_{p}\\bigl(\\partial_{i_{1}}\\big|_{p},\\ldots,\\partial_{i_{k}}\\big|_{p}\\bigr)$ 在 $U$ 上光滑。\n\n$M$ 上全体 $k$-形式记 $\\Omega^{k}(M)$。',
         '',
         '**光滑性等价于坐标系数光滑**：在 $(U,x)$ 上 $\\omega$ 唯一地写成',
         '$$\\omega\\big|_{U} = \\sum_{I}a_{I}\\,\\mathrm{d}x^{I},\\qquad \\mathrm{d}x^{I} := \\mathrm{d}x^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}x^{i_{k}},$$',
         '其中 $I$ 跑遍所有 $i_{1}<\\cdots<i_{k}$，系数由 $a_{I} := \\omega\\bigl(\\partial_{i_{1}},\\ldots,\\partial_{i_{k}}\\bigr)$ 给出。',
         '而两张图卡重叠处的两组系数由 Jacobi 矩阵的 $k$ 阶子式互相换算 —— 子式光滑，所以「系数光滑」与选哪张图卡无关。这一步是整条定义能不能成立的关键：**它把局部算式焊成了整体对象**。',
         '',
-        '**约定**：$\\Omega^{0}(M) := C^{\\infty}(M)$；$\\Omega^{1}(M)$ 就是 1-形式；$k > n$ 时 $\\Omega^{k}(M) = 0$（$n$ 维空间上没有非零的交错 $k$-线性型）。直和 $\\Omega^{\\bullet}(M) = \\bigoplus_{k\\ge 0}\\Omega^{k}(M)$ 带楔积，是分次代数。'
+        '**约定**：$\\Omega^{0}(M) := C^{\\infty}(M)$；$\\Omega^{1}(M)$ 就是 1-形式；$k > n$ 时 $\\Omega^{k}(M) = 0$（$n$ 维空间上没有非零的交错 $k$-线性型）。\n\n直和 $\\Omega^{\\bullet}(M) = \\bigoplus_{k\\ge 0}\\Omega^{k}(M)$ 带楔积，是分次代数。'
       ].join('\n'),
       notes: [
         '**与 $\\mathbb{R}^{n}$ 版的关系**：`def.differential-form` 是这一条的**坐标模型**，不是另一套东西 —— 在同一张图卡上把它展开，得到的就是那条陈述里的式子。两条并排放，是为了让「坐标算式」与「内蕴定义」各有一个可点的住处。',
-        '**另一种等价说法**：把每点的 $\\Lambda^{k}T_{p}^{\\ast}M$ 摞成外积丛 $\\Lambda^{k}T^{\\ast}M$（余切丛 `def.cotangent-bundle` 的外积），则 $\\Omega^{k}(M) = \\Gamma(\\Lambda^{k}T^{\\ast}M)$ 是它的光滑截面（`def.bundle-section`）。截面语言自动带来局部平凡化与过渡函数，坐标公式就是它的局部样子 —— 这条等价是 Tu 在「丛」那一章回头补的，两条路殊途同归。',
-        '⚠️ $\\Omega^{k}(M)$ 是 $C^{\\infty}(M)$-**模**：可以逐点乘光滑函数、逐点相加。楔积、内乘、拉回都是模同态；只有 $\\mathrm{d}$ 例外 —— 它只是 $\\mathbb{R}$-线性的（$\\mathrm{d}(f\\omega) = \\mathrm{d}f\\wedge\\omega + f\\,\\mathrm{d}\\omega$）。这个不对称正是「$\\mathrm{d}$ 不是张量运算」的确切含义，也是它为什么只能在流形上靠图卡良定性才能定义（`prop.exterior-derivative-manifold`）。',
-        '⚠️ 别把「$k$-形式」读成「$k$ 个函数排成一排」：在 $n$ 维流形上逐点看，$\\Omega^{k}$ 的维数是 $\\binom{n}{k}$ 而不是 $n^{k}$ —— 交错条件砍掉了绝大多数自由度。$n = 3$ 时：$\\Omega^{0}$ 维数 $1$、$\\Omega^{1}$ 与 $\\Omega^{2}$ 都是 $3$、$\\Omega^{3}$ 是 $1$，这正是经典向量分析里「梯度 / 旋度 / 散度各自落在不同的 $\\Omega^{k}$」的来源。'
+        '**另一种等价说法**：把每点的 $\\Lambda^{k}T_{p}^{\\ast}M$ 摞成外积丛 $\\Lambda^{k}T^{\\ast}M$（余切丛 `def.cotangent-bundle` 的外积），则 $\\Omega^{k}(M) = \\Gamma(\\Lambda^{k}T^{\\ast}M)$ 是它的光滑截面（`def.bundle-section`）。\n\n截面语言自动带来局部平凡化与过渡函数，坐标公式就是它的局部样子 —— 这条等价是 Tu 在「丛」那一章回头补的，两条路殊途同归。',
+        '⚠️ $\\Omega^{k}(M)$ 是 $C^{\\infty}(M)$-**模**：可以逐点乘光滑函数、逐点相加。\n\n楔积、内乘、拉回都是模同态；只有 $\\mathrm{d}$ 例外 —— 它只是 $\\mathbb{R}$-线性的（$\\mathrm{d}(f\\omega) = \\mathrm{d}f\\wedge\\omega + f\\,\\mathrm{d}\\omega$）。\n\n这个不对称正是「$\\mathrm{d}$ 不是张量运算」的确切含义，也是它为什么只能在流形上靠图卡良定性才能定义（`prop.exterior-derivative-manifold`）。',
+        '⚠️ 别把「$k$-形式」读成「$k$ 个函数排成一排」：在 $n$ 维流形上逐点看，$\\Omega^{k}$ 的维数是 $\\binom{n}{k}$ 而不是 $n^{k}$ —— 交错条件砍掉了绝大多数自由度。\n\n$n = 3$ 时：$\\Omega^{0}$ 维数 $1$、$\\Omega^{1}$ 与 $\\Omega^{2}$ 都是 $3$、$\\Omega^{3}$ 是 $1$，这正是经典向量分析里「梯度 / 旋度 / 散度各自落在不同的 $\\Omega^{k}$」的来源。'
       ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 流形上的 k-形式与光滑性'
@@ -139,8 +139,8 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**证明的路线**：$T_{p}M$ 上的交错型在坐标基 $\\mathrm{d}x^{I}$ 上线性展开，于是只需在单项 $\\omega = \\mathrm{d}y^{I}$ 上验 —— 而那正是链式法则加「$\\mathrm{d}^{2}=0$」的机械计算，再用上一句的线性拼回去。骨架在边上。',
-        '**它和「$\\mathrm{d}$ 良定」互为因果**：开集间那条（`prop.pullback-forms`）已经证过 (3)，流形上用图卡局部化即可；反过来，正因为 $\\mathrm{d}$ 与拉回交换、而拉回只用链式法则定义，$\\mathrm{d}$ 才不依赖坐标（`prop.exterior-derivative-manifold`）。两条一起看，才知道谁也不是循环论证 —— 开集上的 (3) 是初等的。',
-        '⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F$ 光滑 $\\implies$ $F^{\\ast}$ 与 $\\mathrm{d}$ 交换 $\\implies$ $F^{\\ast}$ 下到商空间，得 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(N)\\to H^{k}_{\\mathrm{dR}}(M)$。方向是反的，这正是「上同调反变」的意思。',
+        '**它和「$\\mathrm{d}$ 良定」互为因果**：开集间那条（`prop.pullback-forms`）已经证过 (3)，流形上用图卡局部化即可；反过来，正因为 $\\mathrm{d}$ 与拉回交换、而拉回只用链式法则定义，$\\mathrm{d}$ 才不依赖坐标（`prop.exterior-derivative-manifold`）。\n\n两条一起看，才知道谁也不是循环论证 —— 开集上的 (3) 是初等的。',
+        '⭐ 这一条是 de Rham 上同调「是函子」的全部内容：$F$ 光滑 $\\implies$ $F^{\\ast}$ 与 $\\mathrm{d}$ 交换 $\\implies$ $F^{\\ast}$ 下到商空间，得 $F^{\\ast} : H^{k}_{\\mathrm{dR}}(N)\\to H^{k}_{\\mathrm{dR}}(M)$。\n\n方向是反的，这正是「上同调反变」的意思。',
         '⚠️ 与向量场的对照：向量场**不能**沿任意光滑映射拉回（要 $F$ 是微分同胚才能前推），形式可以。这个不对称不是技术缺陷，而是「形式是 $T^{\\ast}M$ 的截面、向量场是 $TM$ 的截面」的直接后果。'
       ].join('\n\n'),
       refs: [
@@ -177,8 +177,8 @@ window.MG = window.MG || {};
       notes: [
         '**为什么非要造它**：$k$-形式要在每点吃进 $k$ 个向量、吐一个数、并且对换两个变元要变号 —— 这正是 $\\Lambda^{k}T_{p}^{\\ast}M$ 里的元素。所以流形上的形式（`def.form-on-manifold`）可以从「余切丛的外积丛的截面」出发，而不是从坐标公式出发；坐标公式只是它在图卡上的样子。',
         '**与切丛的关系**：$T^{\\ast}M$ 是切丛 `def.tangent-bundle` 的对偶丛。取对偶不是可有可无的装饰：切丛的截面（向量场）只能正着推、还要求映射是微分同胚；余切丛的截面（1-形式）可以沿**任意**光滑映射拉回。微分形式好用，根源就在这个不对称上。',
-        '⚠️ $\\mathrm{d}x^{i}$ 在这里是**坐标函数的微分**，不是「留待定义的记号」：$\\mathrm{d}x^{i}\\big|_{p}(v) = v(x^{i})$。它和 `def.exterior-derivative` 里那个 $\\mathrm{d}$ 是同一个算子作用在 $x^{i}\\in C^{\\infty}(U)$ 上 —— 所以 $\\mathrm{d}x^{i}$ 的「$\\mathrm{d}$」也满足 $\\mathrm{d}(\\mathrm{d}x^{i}) = 0$。',
-        '⚠️ 记号陷阱：$T^{\\ast}M$ 的双重对偶 $(T^{\\ast}_{p}M)^{\\ast}$ 在有限维时**自然同构**于 $T_{p}M$，所以有人把两者混着写；但 $TM$ 与 $T^{\\ast}M$ 作为丛并不自然同构 —— 要一个同构就得先选黎曼度量（`def.riemannian-metric`）。「升降指标」用的正是这个度量，不是白给的。'
+        '⚠️ $\\mathrm{d}x^{i}$ 在这里是**坐标函数的微分**，不是「留待定义的记号」：$\\mathrm{d}x^{i}\\big|_{p}(v) = v(x^{i})$。\n\n它和 `def.exterior-derivative` 里那个 $\\mathrm{d}$ 是同一个算子作用在 $x^{i}\\in C^{\\infty}(U)$ 上 —— 所以 $\\mathrm{d}x^{i}$ 的「$\\mathrm{d}$」也满足 $\\mathrm{d}(\\mathrm{d}x^{i}) = 0$。',
+        '⚠️ 记号陷阱：$T^{\\ast}M$ 的双重对偶 $(T^{\\ast}_{p}M)^{\\ast}$ 在有限维时**自然同构**于 $T_{p}M$，所以有人把两者混着写；但 $TM$ 与 $T^{\\ast}M$ 作为丛并不自然同构 —— 要一个同构就得先选黎曼度量（`def.riemannian-metric`）。\n\n「升降指标」用的正是这个度量，不是白给的。'
       ].join('\n\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· 余切空间与余切丛'
@@ -206,7 +206,7 @@ window.MG = window.MG || {};
         '**光滑情形**：$E, B, F$ 都是光滑流形、$\\pi$ 光滑时，定义里把「同胚」换成「**微分同胚**」，这才是光滑丛的局部平凡化 —— 否则连切丛都不是光滑丛。'
       ].join('\n'),
       notes: [
-        '**为什么单独给它一个节点**：它是「丛」这个词的全部技术内容。`def.fiber-bundle` / `def.vector-bundle` / `def.principal-bundle` / `def.covering-space` / `def.tangent-bundle` / `def.bundle-section` 等等一大批节点的定义里都在用它当已知量 —— 没有这一条，「局部长得像 $U\\times F$」这句话就没处可查。',
+        '**为什么单独给它一个节点**：它是「丛」这个词的全部技术内容。\n\n`def.fiber-bundle` / `def.vector-bundle` / `def.principal-bundle` / `def.covering-space` / `def.tangent-bundle` / `def.bundle-section` 等等一大批节点的定义里都在用它当已知量 —— 没有这一条，「局部长得像 $U\\times F$」这句话就没处可查。',
         '**定义本身是拓扑的**：同胚就够了，不需要光滑。光滑丛只是把同胚换成微分同胚再叠上去。这也解释了为什么它的层号能排在光滑流形之前 —— 它不是微分几何専有的概念，而是拓扑那一层的东西被借过来的。',
         '**它和截面的关系**：局部平凡化把丛上的一块摊平之后，丛上的问题就都变回底空间上的「一族函数 / 一族向量」—— 截面的局部表示 $\\sigma : U\\to\\mathbb{R}^{k}$（`def.bundle-section`）就是这么得来的。',
         '⚠️ **局部平凡 $\\ne$ 平凡**：全空间未必等于 $B\\times F$。覆叠空间（$F$ 离散）、切丛都是局部平凡但整体扭的 —— 「扭」由转移函数 $g_{\\alpha\\beta}$ 记（`def.fiber-bundle`）。',
@@ -235,12 +235,12 @@ window.MG = window.MG || {};
         '',
         '**转移函数**：同一个开覆盖上取两组平凡化，重叠处必然差一个纤维自同胚',
         '$$\\Phi_{\\alpha}\\circ\\Phi_{\\beta}^{-1}\\,(b, y) = \\bigl(b,\\ g_{\\alpha\\beta}(b)\\,y\\bigr),$$',
-        '其中 $g_{\\alpha\\beta} : U_{\\alpha}\\cap U_{\\beta}\\to\\operatorname{Diff}(F)$ 叫**转移函数**。它们满足上闭链条件 $g_{\\alpha\\alpha} = \\operatorname{id}$、$g_{\\alpha\\beta}\\,g_{\\beta\\gamma}\\,g_{\\gamma\\alpha} = \\operatorname{id}$（在重叠处），并且衡量「这块丛歪了多少」。',
+        '其中 $g_{\\alpha\\beta} : U_{\\alpha}\\cap U_{\\beta}\\to\\operatorname{Diff}(F)$ 叫**转移函数**。\n\n它们满足上闭链条件 $g_{\\alpha\\alpha} = \\operatorname{id}$、$g_{\\alpha\\beta}\\,g_{\\beta\\gamma}\\,g_{\\gamma\\alpha} = \\operatorname{id}$（在重叠处），并且衡量「这块丛歪了多少」。',
         '',
         '若再给定 Lie 群 $G$ 在 $F$ 上的作用，并且总能选平凡化使所有 $g_{\\alpha\\beta}$ 取值落在 $G$ 里，就说这个丛的**结构群**是 $G$。'
       ].join('\n'),
       notes: [
-        '**为什么要这个概念**：向量丛是 $F = \\mathbb{R}^{k}$、$G\\subseteq\\operatorname{GL}(k,\\mathbb{R})$ 的特例；覆叠空间是 $F$ 离散的特例；主丛是 $F = G$ 本身那一个特例。三件事被这一条统一，判据都是同一句话：**局部长得像「底 $\\times$ 纤维」**。',
+        '**为什么要这个概念**：向量丛是 $F = \\mathbb{R}^{k}$、$G\\subseteq\\operatorname{GL}(k,\\mathbb{R})$ 的特例；覆叠空间是 $F$ 离散的特例；\n\n主丛是 $F = G$ 本身那一个特例。\n\n三件事被这一条统一，判据都是同一句话：**局部长得像「底 $\\times$ 纤维」**。',
         '**「纤维」这个词为什么不分下标也说得通**：局部平凡化在每根纤维上是 $\\{b\\}\\times F$ 上的同胚，所以每根纤维都同胚于 $F$。但**没有自然同胚** —— 沿底空间绕一圈回来可能换掉一个自同胚，这个「绕一圈的变形」（monodromy）正是纤维丛不是平凡积的全部原因。',
         '⚠️ 光有「每根纤维都同胚于 $F$」**远远不够**：必须有**局部**平凡化。差别就在于「能不能在邻域上一致地选同胚」—— 不能的话纤维照样各自同胚，但丛已经扭了（覆叠空间里最直观：绕一圈换叶）。所以判据必须落在邻域上，不能落在单点上。',
         '⭐ 分类的口径也来自这里：$\\{g_{\\alpha\\beta}\\}$ 模掉「换个平凡化」（即乘上某个上边缘），就是 Čech 的 $H^{1}$（`thm.bundle-classification` 讲向量丛那一支，同一条道理）。'
@@ -275,7 +275,7 @@ window.MG = window.MG || {};
       notes: [
         '**为什么主丛值得单独记**：向量丛的结构群是 $\\operatorname{GL}(k)$，但它只藏在转移函数里、看不见；主丛把结构群**变成空间的一部分**（纤维就是群），于是「联络」「曲率」「示性类」都能在主丛上整体地谈，再沿表示拉到配丛上。Tu 讲联络与曲率的路线正是这一条。',
         '⚠️ 右作用还是左作用：约定取**右**作用，好处是转移函数可以顺着写在坐标后面（$\\Phi(u\\cdot g) = (\\pi(u),\\varphi(u)g)$），不必写成 $\\varphi(g^{-1}u)$ 这类反向的式子。换约定时整条公式都要改，混着用就是符号错误的来源。',
-        '⭐ 特例串起来记：主 $G$-丛（纤维 $G$）$\\rightsquigarrow$ 取 $G$ 在某个流形 $F$ 上的作用、把纤维换掉，得**配丛**（纤维 $F$；本图尚未收录）$\\rightsquigarrow$ 取 $F = \\mathbb{R}^{k}$、$G = \\operatorname{GL}(k,\\mathbb{R})$，得向量丛$\\rightsquigarrow$ 取 $F$ 离散，得覆叠空间。反过来：任何向量丛都有帧丛，都在主丛这一层。',
+        '⭐ 特例串起来记：主 $G$-丛（纤维 $G$）$\\rightsquigarrow$ 取 $G$ 在某个流形 $F$ 上的作用、把纤维换掉，得**配丛**（纤维 $F$；本图尚未收录）$\\rightsquigarrow$ 取 $F = \\mathbb{R}^{k}$、$G = \\operatorname{GL}(k,\\mathbb{R})$，得向量丛$\\rightsquigarrow$ 取 $F$ 离散，得覆叠空间。\n\n反过来：任何向量丛都有帧丛，都在主丛这一层。',
         '⚠️ 「自由」这一条不能省：若允许 $u\\cdot g = u$ 而 $g\\ne e$，纤维上就有稳定化子，丛在纤维方向上会「粘住」，此时它不再是主丛、而是某个更小的群的主丛（或一般的纤维丛）。'
       ].join('\n\n'),
       refs: [

@@ -32,7 +32,7 @@ window.MG = window.MG || {};
         '',
         '$$|\\eta_n|\\le \\varepsilon\\cdot 2^{-n}\\operatorname{diam}T\\cdot 2^{-n}\\operatorname{perim}T.$$',
         '',
-        '代回得 $|\\eta|\\le 4^{n}\\cdot\\varepsilon\\,4^{-n}\\operatorname{diam}T\\operatorname{perim}T=\\varepsilon\\operatorname{diam}T\\operatorname{perim}T$。$\\varepsilon$ 任意，故 $\\eta=0$。$\\blacksquare$'
+        '代回得 $|\\eta|\\le 4^{n}\\cdot\\varepsilon\\,4^{-n}\\operatorname{diam}T\\operatorname{perim}T=\\varepsilon\\operatorname{diam}T\\operatorname{perim}T$。\n\n$\\varepsilon$ 任意，故 $\\eta=0$。\n\n$\\blacksquare$'
       ].join('\n'),
       note: '二分法只用「$f$ 复可微」，不需要 $f\'$ 连续 —— 这正是 Goursat 对 Cauchy 的改进。'
     }

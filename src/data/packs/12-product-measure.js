@@ -200,7 +200,7 @@ window.MG = window.MG || {};
       notes: [
         '为什么需要这一条：**$\\mu \\times \\nu$ 通常不完备**（见下一条），所以 Riesz 意义上的「可积函数」往往落在完备化 $\\lambda$ 里，而不是 $\\mathcal{M}\\otimes\\mathcal{N}$ 里。',
         '代价是所有的断言都退化成「**对几乎处处的 x / y**」—— 因为 $\\mathcal{L}$ 里多出来的那些集合只在零集上有区别。',
-        '证明的核心：先证 $f \\ge 0$。若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。**应该是核心思想，其余都类似**。'
+        '证明的核心：先证 $f \\ge 0$。\n\n若 $f = \\chi _E$，$E = F \\cup G$ 其中 $F \\in \\mathcal{M}\\otimes\\mathcal{N}$、$G \\subseteq H$ 且 $\\mu \\times \\nu (H) = 0$，设不交并，则 $f = \\chi _F + \\chi _G$。\n\n$\\chi _F$ ✓（归 Fubini–Tonelli），$\\chi _G$ ✓（因为每条截口的测度都是 0）。\n\n**应该是核心思想，其余都类似**。'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.39']
     },
@@ -237,9 +237,9 @@ window.MG = window.MG || {};
         '',
         '**② $\\mu_{0}$ 是 $\\mathcal{A}$ 上的预测度。** $\\mathcal{A} =$ 矩形的有限不交并，是代数（矩形的不交并再取差仍是有限个矩形块）。可数可加性由 $\\mu$、$\\nu$ 各自的可数可加性得到：把可数个不交的矩形块按两个方向分别整理成不交并。',
         '',
-        '**③ 用 Carathéodory 扩张。** 由「预测度 $\\to$ 外测度 $\\to$ 可测集 $\\to$ 扩张测度」那一整套：$\\mu_{0}$ 诱导出 $X \\times Y$ 上的外测度 $\\mu^{*}$，全体 $\\mu^{*}$-可测集构成 $\\sigma$代数，$\\mu^{*}$ 在其上成为测度；而代数 $\\mathcal{A}$ 中每个集合都是 $\\mu^{*}$-可测的，且 $\\mu^{*}|_\\mathcal{A} = \\mu_{0}$。',
+        '**③ 用 Carathéodory 扩张。** 由「预测度 $\\to$ 外测度 $\\to$ 可测集 $\\to$ 扩张测度」那一整套：$\\mu_{0}$ 诱导出 $X \\times Y$ 上的外测度 $\\mu^{*}$，全体 $\\mu^{*}$-可测集构成 $\\sigma$代数，$\\mu^{*}$ 在其上成为测度；\n\n而代数 $\\mathcal{A}$ 中每个集合都是 $\\mu^{*}$-可测的，且 $\\mu^{*}|_\\mathcal{A} = \\mu_{0}$。',
         '',
-        '**④ 落到 $\\mathcal{M} \\otimes \\mathcal{N}$ 上。** $\\mathcal{A}$ 含所有矩形，故 $\\mathcal{A}$ 生成 $\\mathcal{M} \\otimes \\mathcal{N} \\subseteq (\\mu^{*}$-可测集)；把 $\\mu^{*}$ 限制在 $\\mathcal{M} \\otimes \\mathcal{N}$ 上，就是所要的测度 $\\mu \\times \\nu$，它在矩形上取值 $\\mu \\times \\nu(A \\times B) = \\mu(A) \\nu(B)$。∎',
+        '**④ 落到 $\\mathcal{M} \\otimes \\mathcal{N}$ 上。** $\\mathcal{A}$ 含所有矩形，故 $\\mathcal{A}$ 生成 $\\mathcal{M} \\otimes \\mathcal{N} \\subseteq (\\mu^{*}$-可测集)；\n\n把 $\\mu^{*}$ 限制在 $\\mathcal{M} \\otimes \\mathcal{N}$ 上，就是所要的测度 $\\mu \\times \\nu$，它在矩形上取值 $\\mu \\times \\nu(A \\times B) = \\mu(A) \\nu(B)$。\n\n∎',
         '',
         '$>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。'
       ].join('\n')
@@ -260,7 +260,7 @@ window.MG = window.MG || {};
         '',
         '两边都在 $\\mathcal{N}$ 里（$\\mathcal{N}$ 含 $\\emptyset$）；横截口同理。',
         '',
-        '- **$\\mathcal{R}$ 是 $\\sigma$代数**：截口运算保持并、交、补 —— 例如 $(\\bigcup_n E^{(n)})_x = \\bigcup_n E^{(n)}_x$、$(E^c)_x = (E_x)^c$（这里用的是 $Y$ 在 $X \\times Y$ 中的「竖条」补集）。故 $\\mathcal{R}$ 对可数并与补封闭。',
+        '- **$\\mathcal{R}$ 是 $\\sigma$代数**：截口运算保持并、交、补 —— 例如 $(\\bigcup_n E^{(n)})_x = \\bigcup_n E^{(n)}_x$、$(E^c)_x = (E_x)^c$（这里用的是 $Y$ 在 $X \\times Y$ 中的「竖条」补集）。\n\n故 $\\mathcal{R}$ 对可数并与补封闭。',
         '',
         '于是 $\\mathcal{R} \\supseteq \\mathcal{M}($矩形族$) = \\mathcal{M} \\otimes \\mathcal{N}$，(a) 得证。',
         '',
@@ -289,9 +289,14 @@ window.MG = window.MG || {};
         '',
         '**④ $\\mathcal{C}$ 对递减交封闭。** 若 $E_1 \\supseteq E_2 \\supseteq \\cdots$、$E = \\bigcap E_n$：因为测度有限，可以用 DCT（控制函数是常数 $\\nu(Y) < \\infty$）得到同样的等式。',
         '',
-        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；由单调类定理，$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$，于是 $\\mathcal{C} = \\mathcal{M} \\otimes \\mathcal{N}$。',
+        '**⑤ 用单调类定理。** 由 ①②③④，$\\mathcal{C}$ 是含所有矩形的一个**单调类**。\n\n' +
+        '矩形族生成的**代数**再由矩形构成，所以 $\\mathcal{C}$ 含这个代数；\n\n' +
+        '由单调类定理，$\\mathfrak{m}(\\text{代数}) = \\mathcal{M}(\\text{代数}) = \\mathcal{M} \\otimes  \\mathcal{N}$，于是 $\\mathcal{C} = \\mathcal{M} \\otimes \\mathcal{N}$。',
         '',
-        '**⑥ 推广到 $\\sigma$有限。** 取 $X = \\bigcup_i X_i$、$Y = \\bigcup_i Y_i$（各自测度有限），则 $X \\times Y = \\bigcup_i (X_i \\times Y_i)$。对每个 $i$，把 ⑤ 用在 $E \\cap (X_i \\times Y_i)$ 上（这一步只用到**有限**测度）；再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。∎',
+        '**⑥ 推广到 $\\sigma$有限。** 取 $X = \\bigcup_i X_i$、$Y = \\bigcup_i Y_i$（各自测度有限），则 $X \\times Y = \\bigcup_i (X_i \\times Y_i)$。\n\n' +
+        '对每个 $i$，把 ⑤ 用在 $E \\cap (X_i \\times Y_i)$ 上（这一步只用到**有限**测度）；\n\n' +
+        '再把 $i$ 加起来，用 MCT 对 $i$ 求极限即可。\n\n' +
+        '∎',
         '',
         '$>$ ⚠ $\\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。'
       ].join('\n')
@@ -330,11 +335,11 @@ window.MG = window.MG || {};
         '',
         '（最后一步又用一次 MCT。）另一边对称。**这就是 Tonelli，全程不需要可积性。**',
         '',
-        '**④ Fubini。** 设 $f \\in L^1(\\mu \\times \\nu)$。把 $f$ 拆成 $\\operatorname{Re} f^+, \\operatorname{Re} f^-, \\operatorname{Im} f^+, \\operatorname{Im} f^-$ 四个非负部分，对每一部分用 ③。由',
+        '**④ Fubini。** 设 $f \\in L^1(\\mu \\times \\nu)$。\n\n把 $f$ 拆成 $\\operatorname{Re} f^+, \\operatorname{Re} f^-, \\operatorname{Im} f^+, \\operatorname{Im} f^-$ 四个非负部分，对每一部分用 ③。\n\n由',
         '',
         '$$\\int |f| d(\\mu \\times \\nu) < \\infty$$',
         '',
-        '和 ③ 的三重等式，得到 $\\int_X (\\int_Y |f| d\\nu) d\\mu < \\infty$，故 $\\int_Y |f(x, \\cdot)| d\\nu < \\infty$ 对 **a.e.** $x$ 成立 —— 即 $f_x \\in L^1(\\nu)$ a.e.；同理 $f^y \\in L^1(\\mu)$ a.e.。既然两个累次积分都已经是有限数，就可以直接相减、不再有 $\\infty - \\infty$ 的危险，三重等式对 $f$ 成立。∎',
+        '和 ③ 的三重等式，得到 $\\int_X (\\int_Y |f| d\\nu) d\\mu < \\infty$，故 $\\int_Y |f(x, \\cdot)| d\\nu < \\infty$ 对 **a.e.** $x$ 成立 —— 即 $f_x \\in L^1(\\nu)$ a.e.；\n\n同理 $f^y \\in L^1(\\mu)$ a.e.。\n\n既然两个累次积分都已经是有限数，就可以直接相减、不再有 $\\infty - \\infty$ 的危险，三重等式对 $f$ 成立。\n\n∎',
         '',
         '$>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。'
       ].join('\n')
@@ -388,7 +393,7 @@ window.MG = window.MG || {};
         '',
         '$$G = \\{(x, x) : x \\in N\\} \\subseteq D$$',
         '',
-        '则 $G \\subseteq D$ 而 $\\mu \\times \\nu (D) = 0$，但 $G$ **不属于** $\\mathfrak{B} \\otimes  \\mathfrak{B}$（它的截口给出的正是 $N$ —— 若 $G \\in \\mathfrak{B} \\otimes  \\mathfrak{B}$，由截口可测性，对每个 $x$ 都有 $G_x \\in \\mathfrak{B}$，而 $G_x$ 是 {x} 或 $\\emptyset$ …… 需要用「$G$ 的截面沿对角线还原出 $N$」这一论证）。故 $\\mu \\times \\nu$ 不完备。∎',
+        '则 $G \\subseteq D$ 而 $\\mu \\times \\nu (D) = 0$，但 $G$ **不属于** $\\mathfrak{B} \\otimes  \\mathfrak{B}$（它的截口给出的正是 $N$ —— 若 $G \\in \\mathfrak{B} \\otimes  \\mathfrak{B}$，由截口可测性，对每个 $x$ 都有 $G_x \\in \\mathfrak{B}$，而 $G_x$ 是 {x} 或 $\\emptyset$ …… 需要用「$G$ 的截面沿对角线还原出 $N$」这一论证）。\n\n故 $\\mu \\times \\nu$ 不完备。\n\n∎',
         '',
         '$>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而乘积里零集特别多**。所以实用时必须先完备化 —— 这就是上一条定理存在的理由。'
       ].join('\n'),

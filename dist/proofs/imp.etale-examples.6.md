@@ -3,6 +3,6 @@
 
 `def.etale-sheaf` étale 层 + `def.etale-space` étale 空间 → `prop.etale-sheaf-examples` étale 层的例子
 
-**③ 常值层。** 常值预层 $U \mapsto A$ 一般不是层（Zariski 下就已经如此：两条开集上的常值函数若在交叠上一致，未必是整体常值）。层化之后的 $\underline{A}$ 才是「$A$-值局部常值函数」，它在 étale 拓扑下当然是层 —— 因为它由 Zariski 层满足粘合，而 étale 覆盖比 Zariski 覆盖细，粘合条件更强但整体函数仍然唯一决定。∎
+⚠️ **一点诚实提示**：本图只到「这些是 étale 层」这一层，没有把 étale 上同调的长正合列机器搭起来 —— 那需要 site 上的拓扑斯理论（Grothendieck 范畴、几何点、$R^{n}f_{*}$ 的相容性），是另一整套装置。
 
-> 续见 proofs/imp.etale-examples.7.md
+> 三个例子其实是一句话：可表的预层在 Grothendieck 拓扑下自动是层；常值层是「$n$ 份 $X$」这个可表对象的特例。

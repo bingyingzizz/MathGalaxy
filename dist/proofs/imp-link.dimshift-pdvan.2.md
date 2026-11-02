@@ -3,5 +3,5 @@
 
 `prop.dimension-shift` 维数转移 + `thm.ext1-extensions` 一阶扩展的分类 → `prop.pd-vanishing` 投射维数与消失
 
-n}M$ 投射，即 (1) ✓。
+故 $\Omega^{n}M$ 投射，即 (1) ✓。
 $(1) \iff (2)$ 是合冲的定义重述 ✓。∎

@@ -3,6 +3,10 @@
 
 `thm.pushforward-enough-injectives` 足够多内射层 + `prop.skyscraper-injective` 天际线层是内射层 → `thm.paracompact-cech-equals-sheaf` 仿紧空间上的 Čech 就是上同调
 
-**第三步：软层对 $\Gamma$ 无环。** 软层在仿紧 Hausdorff 上无环：给定软层 $\mathcal{S}$ 与短正合列 $0 \to \mathcal{S} \to \mathcal{A} \to \mathcal{B} \to 0$，要证 $\Gamma(\mathcal{A}) \to \Gamma(\mathcal{B})$ 满。取 $s \in \Gamma(\mathcal{B})$，用仿紧性 + 局部有限覆盖把它**局部**提升成一族局部截面，再用从属于该覆盖的单位分解把它们拼成一个整体截面 —— 拼的时候软性保证每步都合法。于是 $H^{n}(X, \mathcal{S}) = 0$（$n > 0$）。
+**第四步：无环消解算导出函子。** 由第一到第三步，$\check{\mathcal{C}}^{\bullet}(\mathfrak{U}, \mathcal{M})$ 是一个由 $\Gamma$-无环层组成的消解。
+
+由 Leray 零调性（对右导出函子，用 $F$-零调对象组成的消解算出的同调与用内射消解算出的相同 —— 这一步的合法性由「足够多内射」保证，见 `thm.pushforward-enough-injectives`），
+
+$$H^{n}(X, \mathcal{M}) = H^{n}\bigl(\Gamma(X, \check{\mathcal{C}}^{\bullet})\bigr) = \check{H}^{n}(\mathfrak{U}, \mathcal{M}) .$$
 
 > 续见 proofs/imp.paracompact-cech.6.md

@@ -35,7 +35,7 @@ window.MG = window.MG || {};
         '',
         [
           '- 遗忘函子 $\\mathbf{Top} \\to \\mathbf{Set}$ 有左右**两个**伴随：左伴随是**离散拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(S_{d}, X) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(S, F(X))$），右伴随是**平凡拓扑**（$\\operatorname{Hom}_{\\mathbf{Top}}(X, S_{t}) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(F(X), S)$）。',
-          '- 遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的左伴随是**自由阿贝尔群**：$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathbb{Z}^{(X)}, M) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, \\operatorname{forget} M)$。**自由是遗忘的左伴随**。',
+          '- 遗忘函子 $\\mathbf{Ab} \\to \\mathbf{Set}$ 的左伴随是**自由阿贝尔群**：$\\operatorname{Hom}_{\\mathbf{Ab}}(\\mathbb{Z}^{(X)}, M) \\cong \\operatorname{Hom}_{\\mathbf{Set}}(X, \\operatorname{forget} M)$。\n\n**自由是遗忘的左伴随**。',
         ].join('\n'),
         '',
         '两条运算规则：',
@@ -213,7 +213,7 @@ window.MG = window.MG || {};
         '',
         '$$\\begin{array}{ccc} F(A) & \\xrightarrow{\\;f\\;} & G(B) \\\\[2pt] {\\scriptstyle F(a)}\\big\\downarrow & & \\big\\downarrow{\\scriptstyle G(b)} \\\\[2pt] F(A\') & \\xrightarrow[\\;f\'\\;]{} & G(B\') \\end{array}$$',
         '',
-        '**两个特例**：取 $\\mathcal{A} = \\mathbf{1}$（单对象范畴）时 $F$ 就是「选出 $\\mathcal{C}$ 的一个对象 $X$」，此时 $F \\downarrow G$ 记作 $X \\downarrow G$；取 $\\mathcal{B} = \\mathbf{1}$ 得 $F \\downarrow Y$。'
+        '**两个特例**：取 $\\mathcal{A} = \\mathbf{1}$（单对象范畴）时 $F$ 就是「选出 $\\mathcal{C}$ 的一个对象 $X$」，此时 $F \\downarrow G$ 记作 $X \\downarrow G$；\n\n取 $\\mathcal{B} = \\mathbf{1}$ 得 $F \\downarrow Y$。'
       ].join('\n'),
       notes: [
         '**读法**：$F \\downarrow G$ 把所有「从 $F$ 的世界伸一条箭头到 $G$ 的世界」的方式组织成一个范畴。**对象是箭头本身**（连同它们两端的来源），态射是让箭头之间能互相比较的那一对态射。',
@@ -403,7 +403,7 @@ window.MG = window.MG || {};
         '',
         '给出。于是 $G$ 在态射层也定义好了。',
         '',
-        '**$G$ 是函子。** 把 $G$ 的定义在 $g = 1_{Y}$ 处取出来：由于 $\\alpha_{Y}^{-1}(1_{Y})$ 就是恒等截面，对应的态射是 $G(1_{Y}) = 1_{G(Y)}$。再取 $g \\circ h$，三段拼接与先拼后作用给出同一个自然变换，用米田引理的双射唯一性得 $G(g \\circ h) = G(g) \\circ G(h)$。',
+        '**$G$ 是函子。** 把 $G$ 的定义在 $g = 1_{Y}$ 处取出来：由于 $\\alpha_{Y}^{-1}(1_{Y})$ 就是恒等截面，对应的态射是 $G(1_{Y}) = 1_{G(Y)}$。\n\n再取 $g \\circ h$，三段拼接与先拼后作用给出同一个自然变换，用米田引理的双射唯一性得 $G(g \\circ h) = G(g) \\circ G(h)$。',
         '',
         '**$\\alpha$ 是自然的。** $G$ 的定义本身就让下面的方块交换（左边取 $g \\circ -$，右边取 $- \\circ G(g)$）：',
         '',
@@ -469,11 +469,11 @@ window.MG = window.MG || {};
         '',
         '$$\\varphi : \\operatorname{Hom}_{\\mathcal{D}}\\bigl(F(X), Y_{0}\\bigr) \\longrightarrow \\operatorname{Hom}_{\\mathcal{C}}\\bigl(X,\\ G(Y_{0})\\bigr), \\qquad \\varphi \\mapsto G(\\varphi) \\circ \\eta_{X}$$',
         '',
-        '**满（造逆）。** 给定 $f : X \\to G(Y_{0})$，则 $(Y_{0}, f)$ 是 $X \\downarrow G$ 的一个对象，于是有投影 $\\pi_{(Y_{0}, f)} : F(X) \\to Y_{0}$。由 $\\eta_{X}$ 的构造，$G(\\pi_{(Y_{0},f)}) \\circ \\eta_{X} = f$，所以 $\\varphi(\\pi_{(Y_{0},f)}) = f$。',
+        '**满（造逆）。** 给定 $f : X \\to G(Y_{0})$，则 $(Y_{0}, f)$ 是 $X \\downarrow G$ 的一个对象，于是有投影 $\\pi_{(Y_{0}, f)} : F(X) \\to Y_{0}$。\n\n由 $\\eta_{X}$ 的构造，$G(\\pi_{(Y_{0},f)}) \\circ \\eta_{X} = f$，所以 $\\varphi(\\pi_{(Y_{0},f)}) = f$。',
         '',
         '**单。** 设 $\\varphi(u) = \\varphi(v)$，其中 $u, v : F(X) \\to Y_{0}$。要证 $u = v$。',
         '',
-        '由 $\\mathcal{D}$ 有小极限，取 $(Y_{0}, f)$ 处的投影 $\\pi = \\pi_{(Y_{0}, f)}$。由于 $F(X)$ 是那个极限，$u = v$ 当且仅当 $u \\circ \\pi = v \\circ \\pi$。而 $\\pi$ 是 $f$ 处的那一项，$u \\circ \\pi$ 与 $v \\circ \\pi$ 都是 $F(X) \\to Y_{0}$，且',
+        '由 $\\mathcal{D}$ 有小极限，取 $(Y_{0}, f)$ 处的投影 $\\pi = \\pi_{(Y_{0}, f)}$。\n\n由于 $F(X)$ 是那个极限，$u = v$ 当且仅当 $u \\circ \\pi = v \\circ \\pi$。\n\n而 $\\pi$ 是 $f$ 处的那一项，$u \\circ \\pi$ 与 $v \\circ \\pi$ 都是 $F(X) \\to Y_{0}$，且',
         '',
         '$$G(u \\circ \\pi) \\circ \\eta_{X} = G(u) \\circ G(\\pi) \\circ \\eta_{X} = G(u) \\circ f = G(u) \\circ \\varphi(v) \\circ \\eta_{X}$$',
         '',
@@ -533,7 +533,7 @@ window.MG = window.MG || {};
         '',
         '$$\\operatorname{Hom}(F_{!}1_{\\mathcal{C}},\\ G) \\;\\cong\\; \\operatorname{Hom}(1_{\\mathcal{C}},\\ G \\circ F)$$',
         '',
-        '右边只有「$1_{\\mathcal{C}}$ 到 $G \\circ F$ 的全部自然变换」一个元素（取 $1_{\\mathcal{C}}$ 的像即得），所以左侧 $F_{!}1_{\\mathcal{C}}$ 到每个 $G$ 的态射也恰好只有一个 —— 这正是「$F_{!}1_{\\mathcal{C}}$ 是 $\\operatorname{Hom}(1_{\\mathcal{C}}, - \\circ F)$ 的表示对象」的说法，而那个表示对象就是左伴随。记 $G = F_{!}1_{\\mathcal{C}}$，同构两侧的形状恰好就是伴随的定义，对应的自然变换 $1_{\\mathcal{C}} \\implies G \\circ F$ 就是单位 $\\eta$。∎'
+        '右边只有「$1_{\\mathcal{C}}$ 到 $G \\circ F$ 的全部自然变换」一个元素（取 $1_{\\mathcal{C}}$ 的像即得），所以左侧 $F_{!}1_{\\mathcal{C}}$ 到每个 $G$ 的态射也恰好只有一个 —— 这正是「$F_{!}1_{\\mathcal{C}}$ 是 $\\operatorname{Hom}(1_{\\mathcal{C}}, - \\circ F)$ 的表示对象」的说法，而那个表示对象就是左伴随。\n\n记 $G = F_{!}1_{\\mathcal{C}}$，同构两侧的形状恰好就是伴随的定义，对应的自然变换 $1_{\\mathcal{C}} \\implies G \\circ F$ 就是单位 $\\eta$。\n\n∎'
       ].join('\n'),
       note: '看完这两条，前面那些定义就串成一条线了：**极限与余极限是「沿到终范畴的函子」延拓，伴随是「沿函数子本身」延拓**。'
     }

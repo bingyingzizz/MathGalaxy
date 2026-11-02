@@ -5,4 +5,6 @@
 
 $$0 = \mathrm{d}^{2}e_{i} = \sum_{j}\mathrm{d}\omega^{j}_{\ i}\wedge e_{j}-\sum_{j,k}\omega^{j}_{\ i}\wedge\omega^{k}_{\ j}e_{k} = \sum_{j}\Bigl(\mathrm{d}\omega^{j}_{\ i}-\sum_{k}\omega^{k}_{\ i}\wedge\omega^{j}_{\ k}\Bigr)e_{j},$$
 
+故 $\mathrm{d}\omega^{j}_{\ i} = \sum_{k}\omega^{k}_{\ i}\wedge\omega^{j}_{\ k}$；改换指标得 $\mathrm{d}\omega^{i}_{\ j} = \sum_{k}\omega^{k}_{\ j}\wedge\omega^{i}_{\ k}$。
+
 > 续见 proofs/imp.dg-struct.3.md

@@ -46,7 +46,7 @@ window.MG = window.MG || {};
         '**(c)** $|\\nu_1 + \\nu_2| \\le |\\nu_1| + |\\nu_2|$（即全变差满足三角不等式）。'
       ].join('\n'),
       notes: [
-        ['**证明。**','**(a)** 因为 $|\\nu|(E) = 0 \\implies \\nu(E) = 0$（由 (a) 式 $|\\nu(E)| \\le |\\nu|(E)$），所以 $\\nu \\ll |\\nu|$，由 Radon–Nikodym 取 $g := \\frac{d\\nu}{d|\\nu|}$ ✓。再把上面那条 $(b)$ 用在 $\\mu := |\\nu|$ 上：$d|\\nu| = |g|\\,\\mathrm{d}|\\nu|$，而有限测度对自己的导数恒为 $1$，故 $|g| = 1$ 于 $|\\nu|$-a.e. ✓。','**(b)** 定义 $L^{1}(\\nu) := L^{1}(|\\nu|)$（右边是普通 $L^{1}$ 空间）。对 $f \\in L^{1}(\\nu)$，$\\int f\\,\\mathrm{d}\\nu = \\int f g\\,\\mathrm{d}|\\nu|$，于是','$$\\Bigl|\\int f\\,\\mathrm{d}\\nu\\Bigr| = \\Bigl|\\int fg\\,\\mathrm{d}|\\nu|\\Bigr| \\le \\int|fg|\\,\\mathrm{d}|\\nu| = \\int|f|\\,\\mathrm{d}|\\nu|$$','（中间用积分的绝对值不等式，最后一步用 $|g| = 1$）✓。','**(c)** 取公共基准 $\\rho := |\\nu_{1}| + |\\nu_{2}|$，写 $d\\nu_{k} = f_{k}\\,\\mathrm{d}\\rho$（$|f_{k}| = \\frac{d|\\nu_{k}|}{d\\rho}$）。由 (a)：','$$|\\nu_{1}+\\nu_{2}|(E) = \\int_{E}|f_{1}+f_{2}|\\,\\mathrm{d}\\rho \\le \\int_{E}|f_{1}|\\,\\mathrm{d}\\rho + \\int_{E}|f_{2}|\\,\\mathrm{d}\\rho = |\\nu_{1}|(E) + |\\nu_{2}|(E) \\;✓$$','即全变差满足**三角不等式**，于是 $\\nu \\mapsto |\\nu|(X)$ 是测度空间上的**范数** ✓。∎'].join('\n'),
+        ['**证明。**','**(a)** 因为 $|\\nu|(E) = 0 \\implies \\nu(E) = 0$（由 (a) 式 $|\\nu(E)| \\le |\\nu|(E)$），所以 $\\nu \\ll |\\nu|$，由 Radon–Nikodym 取 $g := \\frac{d\\nu}{d|\\nu|}$ ✓。\n\n再把上面那条 $(b)$ 用在 $\\mu := |\\nu|$ 上：$d|\\nu| = |g|\\,\\mathrm{d}|\\nu|$，而有限测度对自己的导数恒为 $1$，故 $|g| = 1$ 于 $|\\nu|$-a.e. ✓。','**(b)** 定义 $L^{1}(\\nu) := L^{1}(|\\nu|)$（右边是普通 $L^{1}$ 空间）。对 $f \\in L^{1}(\\nu)$，$\\int f\\,\\mathrm{d}\\nu = \\int f g\\,\\mathrm{d}|\\nu|$，于是','$$\\Bigl|\\int f\\,\\mathrm{d}\\nu\\Bigr| = \\Bigl|\\int fg\\,\\mathrm{d}|\\nu|\\Bigr| \\le \\int|fg|\\,\\mathrm{d}|\\nu| = \\int|f|\\,\\mathrm{d}|\\nu|$$','（中间用积分的绝对值不等式，最后一步用 $|g| = 1$）✓。','**(c)** 取公共基准 $\\rho := |\\nu_{1}| + |\\nu_{2}|$，写 $d\\nu_{k} = f_{k}\\,\\mathrm{d}\\rho$（$|f_{k}| = \\frac{d|\\nu_{k}|}{d\\rho}$）。由 (a)：','$$|\\nu_{1}+\\nu_{2}|(E) = \\int_{E}|f_{1}+f_{2}|\\,\\mathrm{d}\\rho \\le \\int_{E}|f_{1}|\\,\\mathrm{d}\\rho + \\int_{E}|f_{2}|\\,\\mathrm{d}\\rho = |\\nu_{1}|(E) + |\\nu_{2}|(E) \\;✓$$','即全变差满足**三角不等式**，于是 $\\nu \\mapsto |\\nu|(X)$ 是测度空间上的**范数** ✓。∎'].join('\n'),
         '(a) 的来源：$d\\nu = g\\cdot d|\\nu|$ 对某个 $g$ 成立（Radon–Nikodym），且 $|g| = 1 \\text{a.e.}$ —— 因为全变差本来就是「把质量取绝对值」得到的。',
         '(b) 说明**积分理论对符号测度不需要重写**：把 $|\\nu |$ 当作底层的真测度，一切照旧。',
         '(c) 让「全变差」成为一个范数，这正是把测度空间看作 Banach 空间的起点。'
@@ -70,7 +70,7 @@ window.MG = window.MG || {};
       notes: [
         '这是 **Vitali 型覆盖引理**的核心估计，极大定理全靠它。',
         '证明的挑法：先取**半径最大**的球 $B_1$；再取与 $B_1$ 不交的、半径最大的球 $B_2$；依此类推。',
-        '为什么这样挑就够了：若某个 $A_i \\in \\mathcal{E}$ 没被取到，则必有某个 $B_j$ 与它相交 —— 取**下标最小**的那个 $B_j$。由挑选规则，$A_i$ 的半径不超过 $B_j$ 的半径（否则取 $B_j$ 时就会取到 $A_i$ 了）。把 $B_j$ 的半径放大 3 倍，就有 $A_i \\subseteq 3B_j$，于是 $K \\subseteq \\bigcup_j 3B_j$。',
+        '为什么这样挑就够了：若某个 $A_i \\in \\mathcal{E}$ 没被取到，则必有某个 $B_j$ 与它相交 —— 取**下标最小**的那个 $B_j$。\n\n由挑选规则，$A_i$ 的半径不超过 $B_j$ 的半径（否则取 $B_j$ 时就会取到 $A_i$ 了）。\n\n把 $B_j$ 的半径放大 3 倍，就有 $A_i \\subseteq 3B_j$，于是 $K \\subseteq \\bigcup_j 3B_j$。',
         '剩下的就是计数：',
         '',
         '$$c < m(K) \\le 3^n \\sum_j m(B_j)\\quad  \\implies\\quad  \\sum_j m(B_j) > 3^{-n} c$$',
@@ -350,7 +350,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', 'RN 导数', '点态', '正则'],
       statement: [
-        '设 $\\nu$ 是 $\\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$d\\nu = d\\lambda + f\\cdot dm$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。则对 **m-a.e.** 的 $x \\in \\mathbb{R}^n$，',
+        '设 $\\nu$ 是 $\\mathbb{R}^{n}$ 上的**正则**符号/复 Borel 测度，$d\\nu = d\\lambda + f\\cdot dm$ 是它关于 Lebesgue 测度 $m$ 的 Lebesgue–Radon–Nikodym 表示。\n\n则对 **m-a.e.** 的 $x \\in \\mathbb{R}^n$，',
         '',
         '$$\\lim_{r\\to0} \\nu(E_r) / m(E_r) = f(x)$$',
         '',
@@ -507,7 +507,9 @@ window.MG = window.MG || {};
       proof: [
         '设 $d\\nu = d\\lambda + f\\cdot dm$（$\\lambda \\perp  m$），$\\nu$ 正则。',
         '',
-        '**① 先算全变差。** 由全变差的性质，$d|\\nu| = d|\\lambda| + |f|\\cdot dm$。既然 $\\nu$ 正则，$|\\nu |$ 正则，于是 $\\lambda$ 与 $f\\cdot dm$ 都正则；由「$g\\cdot dm$ 正则 $\\iff$ $g \\in L^1_{loc}$」得 $f \\in L^1_{loc}$。',
+        '**① 先算全变差。** 由全变差的性质，$d|\\nu| = d|\\lambda| + |f|\\cdot dm$。\n\n' +
+        '既然 $\\nu$ 正则，$|\\nu |$ 正则，于是 $\\lambda$ 与 $f\\cdot dm$ 都正则；\n\n' +
+        '由「$g\\cdot dm$ 正则 $\\iff$ $g \\in L^1_{loc}$」得 $f \\in L^1_{loc}$。',
         '',
         '**② 拆比值。**',
         '',
@@ -525,7 +527,7 @@ window.MG = window.MG || {};
         '',
         '$$\\lambda(B_x) > (1/k)\\cdot m(B_x)$$',
         '',
-        '**⑥ 覆盖引理再来一次。** 令 $V_\\varepsilon = \\bigcup_{x \\in F_k} B_x$（它是 $U$ 中的开集，故 $\\lambda(V_\\varepsilon) \\le \\lambda(U) < \\varepsilon$）。取 $c < m(V_\\varepsilon)$，由**覆盖引理**挑出不交的 $B_{x_1}, \\ldots , B_{x_j}$ 使 $\\sum m(B_{x_i}) > 3^{-n} c$。于是',
+        '**⑥ 覆盖引理再来一次。** 令 $V_\\varepsilon = \\bigcup_{x \\in F_k} B_x$（它是 $U$ 中的开集，故 $\\lambda(V_\\varepsilon) \\le \\lambda(U) < \\varepsilon$）。\n\n取 $c < m(V_\\varepsilon)$，由**覆盖引理**挑出不交的 $B_{x_1}, \\ldots , B_{x_j}$ 使 $\\sum m(B_{x_i}) > 3^{-n} c$。\n\n于是',
         '',
         '$$c < 3^n \\sum_i m(B_{x_i}) \\le 3^n k \\sum_i \\lambda(B_{x_i}) \\le 3^n k\\cdot\\lambda(V_\\varepsilon) \\le 3^n k \\varepsilon$$',
         '',
