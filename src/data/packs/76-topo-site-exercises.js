@@ -14,7 +14,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 2.3 */
     {
       id: 'prop.hausdorff-reflective',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'proposition',
       label: 'Hausdorff 空间是反射子范畴',
       title: '命题：$\\mathbf{Haus} \\subset \\mathbf{Top}$ 是反射子范畴',
@@ -32,7 +32,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 2.5 */
     {
       id: 'prop.normal-locally-closed',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'proposition',
       label: '正规空间的邻域里有闭邻域',
       title: '命题：正规 Hausdorff $\\implies$ 每个邻域含闭邻域',
@@ -51,7 +51,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 2.6 + 2.7 */
     {
       id: 'prop.compact-basic-operations',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'proposition',
       label: '紧性的基本操作',
       title: '命题：闭子集紧、连续像紧、紧 Hausdorff 正规',
@@ -74,7 +74,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 2.8 */
     {
       id: 'prop.quotient-of-compact',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'proposition',
       label: '紧空间的商紧',
       title: '命题：$S$ 紧 $\\implies S/R$ 紧',

@@ -42,7 +42,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------- 局部紧 Hausdorff */
     {
       id: 'def.locally-compact',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '局部紧 Hausdorff 空间',
       title: '局部紧 Hausdorff 空间',
@@ -69,7 +69,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ Tychonoff */
     {
       id: 'thm.tykhonov',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'theorem',
       label: 'Tychonoff 定理',
       title: 'Tychonoff 定理：紧空间的任意积紧',

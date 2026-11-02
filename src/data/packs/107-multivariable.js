@@ -50,7 +50,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定义', '泛函', '完备'],
       statement: [
-        '赋范空间 $V$ 叫**完备**的，当且仅当它按度量 $d(v, w) = \\|v - w\\|$ 完备（`def.complete`），即每个 Cauchy 列都收敛。完备的赋范空间叫 **Banach 空间**。'
+        '赋范空间 $V$ 叫**完备**的，当且仅当它按度量 $d(v, w) = \\|v - w\\|$ 完备，即每个 Cauchy 列都收敛。完备的赋范空间叫 **Banach 空间**。'
       ].join('\n'),
       notes: '⭐ 三个标准范例：$\\mathbb{R}^{n}$（完备性就是 `thm.real-complete-metric` 的有限维版本）、$L^{p}$（`thm.lp-banach`，Riesz–Fischer）、紧 Hausdorff 空间上的 $C(S)$ 配上确界范数。\n\n⚠ 完备性不是自动的：$C[0, 1]$ 配上 $\\|f\\|_{1} = \\int_0^1 |f|$ **不**完备（可以逼近出不连续函数）。同一批函数换个范数就完备、换回来就不完备 —— 「完备」是范数的性质，不是集合的性质。\n\n⭐ 完备性是下面压缩映射原理的引擎（`thm.banach-fixed-point`）：没有它只能拿到 Cauchy 列，拿不到不动点。整条「逆映射定理」的构造性证明都靠这一条撑着。',
       refs: ['Rudin, Functional Analysis, Ch. 1', 'Zeidler, Nonlinear Functional Analysis I, Ch. 1']
@@ -111,7 +111,7 @@ window.MG = window.MG || {};
         '',
         '由偏导定义的线性映射「$h \\mapsto \\bigl(\\sum_j \\partial_j f_i(a)\\, h_j\\bigr)_i$」在偏导连续时就是 $Df(a)$；$f$ 在 $U$ 上各偏导存在且连续时记 $f \\in C^{1}(U)$。'
       ].join('\n'),
-      notes: '⭐ 全微分的实质是**一个线性映射**（`def.linear-map`），不是「一列偏导数」。偏导只是它在标准基下的矩阵（`def.jacobian`）—— 把 $Df(a)$ 想成矩阵会丢掉「换坐标后怎么办」这个最关键的信息。\n\n**唯一性**：若 $L_1, L_2$ 都满足，则 $(L_1 - L_2)(h) = o(\\|h\\|)$。取 $h = tv$（$v \\ne 0$）除以 $t$ 令 $t \\to 0$，得 $(L_1 - L_2)(v) = 0$，故 $L_1 = L_2$。∎\n\n**$C^{1} \\implies$ 可微**：取 $L$ 为偏导矩阵。沿坐标方向逐段用一元中值定理（`thm.mvt`）：把 $h$ 拆成 $n$ 步、每步只动一个坐标，每次得到一个 $O(|h_j|)$ 的余项，累加得余项 $O(\\|h\\|) \\to 0$。∎\n\n⚠ **与 `def.rn-derivative` 必须分清**：那一条里的「$\\mathbb{R}^{n}$ 导数」是 Radon–Nikodym 意义的**密度** $\\frac{d\\nu}{d\\mu}$（测度比），与这里的全微分**同名不同物**，两者之间没有一般关系。\n\n⭐ 层级一览：可微 $\\implies$ 连续，可微 $\\implies$ 一切方向导数存在，可微 $\\implies$ 一切偏导存在；三个反过来的箭头都不成立（反例见 `def.partial-derivative` 与 `def.directional-derivative`）。',
+      notes: '⭐ 全微分的实质是**一个线性映射**，不是「一列偏导数」。偏导只是它在标准基下的矩阵（`def.jacobian`）—— 把 $Df(a)$ 想成矩阵会丢掉「换坐标后怎么办」这个最关键的信息。\n\n**唯一性**：若 $L_1, L_2$ 都满足，则 $(L_1 - L_2)(h) = o(\\|h\\|)$。取 $h = tv$（$v \\ne 0$）除以 $t$ 令 $t \\to 0$，得 $(L_1 - L_2)(v) = 0$，故 $L_1 = L_2$。∎\n\n**$C^{1} \\implies$ 可微**：取 $L$ 为偏导矩阵。沿坐标方向逐段用一元中值定理（`thm.mvt`）：把 $h$ 拆成 $n$ 步、每步只动一个坐标，每次得到一个 $O(|h_j|)$ 的余项，累加得余项 $O(\\|h\\|) \\to 0$。∎\n\n⚠ **与 `def.rn-derivative` 必须分清**：那一条里的「$\\mathbb{R}^{n}$ 导数」是 Radon–Nikodym 意义的**密度** $\\frac{d\\nu}{d\\mu}$（测度比），与这里的全微分**同名不同物**，两者之间没有一般关系。\n\n⭐ 层级一览：可微 $\\implies$ 连续，可微 $\\implies$ 一切方向导数存在，可微 $\\implies$ 一切偏导存在；三个反过来的箭头都不成立（反例见 `def.partial-derivative` 与 `def.directional-derivative`）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Spivak, Calculus on Manifolds, Ch. 2', 'Lang, Undergraduate Analysis, Ch. XVI']
     },
     {
@@ -167,7 +167,7 @@ window.MG = window.MG || {};
         '',
         '若 $f \\in C^{2}$，则 $H_f(a)$ 是**对称**矩阵。'
       ].join('\n'),
-      notes: '⭐ $H_f(a)$ 就是二阶导数 $D^{2} f(a)$ 写成矩阵 —— 而 $D^{2}f(a)$ 本身是 $\\mathbb{R}^{n}$ 上的**对称双线性型**（`def.bilinear-form`），$H_f$ 只是它在标准基下的系数。$f \\in C^{2}$ 时对称性来自 Schwarz 定理（`thm.mixed-partials`）。\n\n⭐ 对称矩阵可以**正交对角化**（`thm.spectral-theorem`），对角元是特征值；于是「$H$ 正定 / 负定 / 不定」就是判极值用的那把尺（`thm.sylvester-criterion`）。这一步是「微积分 $\\times$ 线性代数」在本科阶段最漂亮的一次交汇。\n\n⭐ 进一步：$\\det H_f(a) \\ne 0$ 的临界点叫**非退化临界点**，负特征值个数叫 **Morse 指数** —— 它完全决定临界点附近的局部形状（`thm.morse-lemma`）。\n\n⚠ Hessian 依赖坐标（$H$ 不是张量，换坐标后不变的是**惯性指数**）：线性换基 $x = P u$ 时 $H \\mapsto P^{\\mathsf{T}} H P$，故正定性、负定性、指数都不变（Sylvester 惯性定律），而具体元素会变。',
+      notes: '⭐ $H_f(a)$ 就是二阶导数 $D^{2} f(a)$ 写成矩阵 —— 而 $D^{2}f(a)$ 本身是 $\\mathbb{R}^{n}$ 上的**对称双线性型**，$H_f$ 只是它在标准基下的系数。$f \\in C^{2}$ 时对称性来自 Schwarz 定理（`thm.mixed-partials`）。\n\n⭐ 对称矩阵可以**正交对角化**（`thm.spectral-theorem`），对角元是特征值；于是「$H$ 正定 / 负定 / 不定」就是判极值用的那把尺（`thm.sylvester-criterion`）。这一步是「微积分 $\\times$ 线性代数」在本科阶段最漂亮的一次交汇。\n\n⭐ 进一步：$\\det H_f(a) \\ne 0$ 的临界点叫**非退化临界点**，负特征值个数叫 **Morse 指数** —— 它完全决定临界点附近的局部形状（`thm.morse-lemma`）。\n\n⚠ Hessian 依赖坐标（$H$ 不是张量，换坐标后不变的是**惯性指数**）：线性换基 $x = P u$ 时 $H \\mapsto P^{\\mathsf{T}} H P$，故正定性、负定性、指数都不变（Sylvester 惯性定律），而具体元素会变。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Milnor, Morse Theory, §2']
     },
 
@@ -252,7 +252,7 @@ window.MG = window.MG || {};
         '',
         '$$f(a+h) = f(a) + Df(a)(h) + \\frac{1}{2}\\, D^{2}f(a)(h, h) + o\\bigl(\\|h\\|^{2}\\bigr)$$'
       ].join('\n'),
-      notes: '⭐ 关键观察：**二阶导数 $D^{2}f(a)$ 是 $\\mathbb{R}^{n}$ 上的对称双线性型**（`def.bilinear-form`），不是「一堆二阶偏导」。$k = 2$ 的公式里 $D^{2}f(a)(h,h)$ 就是 $\\sum_{i,j} \\partial_i \\partial_j f(a)\\, h_i h_j = h^{\\mathsf{T}} H_f(a)\\, h$。\n\n⭐ 于是多元 Taylor 与线性代数直接对上：$h^{\\mathsf{T}} H h$ 是一个**二次型**（`def.quadratic-form`），而二次型的正定性有现成判据（`thm.sylvester-criterion`）—— 极值判别（`thm.second-derivative-test`）就是这条公式加那个判据。\n\n⚠ 证明的坑：对 $t \\mapsto f(a + th)$ 用一元 Taylor 只给出**沿一条线**的展开，而且余项里的 $\\theta$ 依赖 $h$。要对所有 $h$ 一致，得对 $k$ 归纳、把余项写成多重指标求和，每一层用一次一元 MVT（或对 $h$ 的坐标迭代）。',
+      notes: '⭐ 关键观察：**二阶导数 $D^{2}f(a)$ 是 $\\mathbb{R}^{n}$ 上的对称双线性型**，不是「一堆二阶偏导」。$k = 2$ 的公式里 $D^{2}f(a)(h,h)$ 就是 $\\sum_{i,j} \\partial_i \\partial_j f(a)\\, h_i h_j = h^{\\mathsf{T}} H_f(a)\\, h$。\n\n⭐ 于是多元 Taylor 与线性代数直接对上：$h^{\\mathsf{T}} H h$ 是一个**二次型**，而二次型的正定性有现成判据（`thm.sylvester-criterion`）—— 极值判别（`thm.second-derivative-test`）就是这条公式加那个判据。\n\n⚠ 证明的坑：对 $t \\mapsto f(a + th)$ 用一元 Taylor 只给出**沿一条线**的展开，而且余项里的 $\\theta$ 依赖 $h$。要对所有 $h$ 一致，得对 $k$ 归纳、把余项写成多重指标求和，每一层用一次一元 MVT（或对 $h$ 的坐标迭代）。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Lang, Undergraduate Analysis, Ch. XVI']
     },
     {
@@ -290,7 +290,7 @@ window.MG = window.MG || {};
         '',
         '最小的这样的 $q$ 叫 $T$ 的**压缩系数**。（$q = 1$ 时叫非扩张映射，那时结论会变。）'
       ].join('\n'),
-      notes: '⚠ 关键是 $q < 1$ 必须**一致**成立，而不是「每点附近小于 $1$」。反例：$f(x) = x + 1/x$ 在 $[1, \\infty)$ 上满足 $|f\'(x)| = 1 - 1/x^{2} < 1$ 处处成立，但它**不是**压缩映射，也**没有**不动点（$f(x) = x$ 无解）。「每点局部收缩」与「整体一致收缩」的差别就是这条定理的生死线。\n\n⭐ 压缩 $\\implies$ 一致连续（`def.uniform-continuity`），比连续强得多；而且 Lipschitz 常数就是 $q$。\n\n⭐ 压缩映射是**唯一**一类「存在性证明顺带给出算法与误差估计」的定理（见 `thm.banach-fixed-point`）—— 这是它在分析里地位极高的原因：逆映射定理、隐函数定理、常微分方程的 Picard–Lindelöf 定理、Bellman 方程，全都把它当引擎。',
+      notes: '⚠ 关键是 $q < 1$ 必须**一致**成立，而不是「每点附近小于 $1$」。反例：$f(x) = x + 1/x$ 在 $[1, \\infty)$ 上满足 $|f\'(x)| = 1 - 1/x^{2} < 1$ 处处成立，但它**不是**压缩映射，也**没有**不动点（$f(x) = x$ 无解）。「每点局部收缩」与「整体一致收缩」的差别就是这条定理的生死线。\n\n⭐ 压缩 $\\implies$ 一致连续，比连续强得多；而且 Lipschitz 常数就是 $q$。\n\n⭐ 压缩映射是**唯一**一类「存在性证明顺带给出算法与误差估计」的定理（见 `thm.banach-fixed-point`）—— 这是它在分析里地位极高的原因：逆映射定理、隐函数定理、常微分方程的 Picard–Lindelöf 定理、Bellman 方程，全都把它当引擎。',
       refs: ['Rudin, Principles of Mathematical Analysis, Ch. 9', 'Zeidler, Nonlinear Functional Analysis I, Ch. 1']
     },
     {
@@ -302,7 +302,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '度量空间', '不动点', '完备'],
       statement: [
-        '设 $(X, d)$ 是**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射（`def.contraction`）。则',
+        '设 $(X, d)$ 是**完备**度量空间（`def.complete`），$T : X \\to X$ 是以 $q < 1$ 为系数的压缩映射。则',
         '',
         '- $T$ 有**唯一**不动点 $x^{\\ast} \\in X$（即 $Tx^{\\ast} = x^{\\ast}$）；',
         '- 对**任意**初值 $x_0 \\in X$，迭代列 $x_{k+1} := T x_k$ 收敛到 $x^{\\ast}$；',
@@ -367,7 +367,7 @@ window.MG = window.MG || {};
       regions: ['analysis'],
       tags: ['定理', '泛函', 'Banach', '反函数'],
       statement: [
-        '设 $E, F$ 是 **Banach 空间**（`def.banach-space`），$U \\subseteq E$ 开，$f : U \\to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \\in \\mathcal{L}(E, F)$ 存在且连续），$a \\in U$ 且 $Df(a)$ **是拓扑线性同构**（有界且逆有界）：',
+        '设 $E, F$ 是 **Banach 空间**，$U \\subseteq E$ 开，$f : U \\to F$ 是 $C^{1}$（Fréchet 意义：全微分 $Df(x) \\in \\mathcal{L}(E, F)$ 存在且连续），$a \\in U$ 且 $Df(a)$ **是拓扑线性同构**（有界且逆有界）：',
         '',
         '$$Df(a) : E \\to F \\quad \\text{topological linear isomorphism}$$',
         '',
@@ -731,7 +731,7 @@ window.MG = window.MG || {};
         '',
         '其中 $D^{j}f$ 是 $j$ 重线性型（$j = 2$ 时即对称双线性型 $D^{2}f(a)(h,h) = h^{\\mathsf{T}} H_f(a) h$）。',
         '',
-        '**第二步：一元 Taylor。** 对 $\\varphi$ 在 $[0,1]$ 上用带 Lagrange 余项的一元 Taylor 公式（`thm.taylor`），存在 $\\theta \\in (0,1)$ 使',
+        '**第二步：一元 Taylor。** 对 $\\varphi$ 在 $[0,1]$ 上用带 Lagrange 余项的一元 Taylor 公式，存在 $\\theta \\in (0,1)$ 使',
         '',
         '$$\\varphi(1) = \\sum_{j=0}^{k} \\frac{\\varphi^{(j)}(0)}{j!} + \\frac{\\varphi^{(k+1)}(\\theta)}{(k+1)!}$$',
         '',
@@ -818,7 +818,7 @@ window.MG = window.MG || {};
         '',
         '$$\\|\\Phi(x) - \\Phi(y)\\| \\le \\tfrac{1}{2}\\|x - y\\|$$',
         '',
-        '**第三步：对每个小 $y$，解 $f(x) = y$。** 设 $\\|y\\| \\le r/2$。定义 $\\Psi_y(x) := y + \\Phi(x)$。若 $\\|x\\| \\le r$ 则 $\\|\\Psi_y(x)\\| \\le \\|y\\| + \\|\\Phi(x) - \\Phi(0)\\| + \\|\\Phi(0)\\| \\le \\frac{r}{2} + \\frac{r}{2} = r$（注意 $\\Phi(0) = 0$），故 $\\Psi_y$ 把闭球 $\\overline{B}(0, r)$ 映入自身；它又是系数 $\\frac{1}{2}$ 的压缩映射。闭球在 $\\mathbb{R}^{n}$ 中**完备**，由压缩映射原理（`thm.banach-fixed-point`）$\\Psi_y$ 有唯一不动点 $x \\in \\overline{B}(0,r)$，即 $f(x) = y$。',
+        '**第三步：对每个小 $y$，解 $f(x) = y$。** 设 $\\|y\\| \\le r/2$。定义 $\\Psi_y(x) := y + \\Phi(x)$。若 $\\|x\\| \\le r$ 则 $\\|\\Psi_y(x)\\| \\le \\|y\\| + \\|\\Phi(x) - \\Phi(0)\\| + \\|\\Phi(0)\\| \\le \\frac{r}{2} + \\frac{r}{2} = r$（注意 $\\Phi(0) = 0$），故 $\\Psi_y$ 把闭球 $\\overline{B}(0, r)$ 映入自身；它又是系数 $\\frac{1}{2}$ 的压缩映射。闭球在 $\\mathbb{R}^{n}$ 中**完备**，由压缩映射原理$\\Psi_y$ 有唯一不动点 $x \\in \\overline{B}(0,r)$，即 $f(x) = y$。',
         '',
         '**第四步：唯一性（局部单射）。** 若 $f(x_1) = f(x_2) = y$ 且 $\\|x_i\\| \\le r$，则 $\\Phi(x_1) - \\Phi(x_2) = (x_1 - x_2) - (f(x_1) - f(x_2)) = x_1 - x_2$，取范数得 $\\|x_1 - x_2\\| \\le \\frac{1}{2}\\|x_1 - x_2\\|$，故 $x_1 = x_2$。于是记 $V := B(0, r) \\cap f^{-1}(B(0, r/2))$、$W := B(0, r/2)$，则 $f|_V : V \\to W$ 是双射。（把 $V$ 取成开球与开原像之交，$V$、$W$ 都开。）',
         '',
@@ -928,7 +928,7 @@ window.MG = window.MG || {};
         '',
         '**第一步：选主元并在定义域上换坐标。** $Df(a)$ 有某个 $r \\times r$ 子式非零。不妨设前 $r$ 个坐标上的主子式非零（否则先重排坐标 —— 那是线性同构，不影响结论）。把 $x$ 拆成 $(x\', x\'\') \\in \\mathbb{R}^{r} \\times \\mathbb{R}^{n-r}$，$f$ 拆成 $(f\', f\'\') \\in \\mathbb{R}^{r} \\times \\mathbb{R}^{m-r}$。则 $D_{x\'} f\'(a)$ 可逆。',
         '',
-        '**第二步：把 $f\'$ 当成新坐标。** 令 $\\Phi(x\', x\'\') := \\bigl( f\'(x\', x\'\'),\\ x\'\' \\bigr)$。它的导数在 $a$ 处是块矩阵 $\\begin{pmatrix} D_{x\'}f\' & D_{x\'\'}f\' \\\\ 0 & I_{n-r} \\end{pmatrix}$，行列式 $= \\det D_{x\'}f\' \\ne 0$，故由逆映射定理（`thm.inverse-function`）$\\Phi$ 在 $a$ 附近是 $C^{1}$ 坐标变换。在 $\\Phi$ 坐标下（记新坐标仍为 $(y\', y\'\')$，其中 $y\' = f\'(x\',x\'\')$、$y\'\' = x\'\'$），$\\Phi$ 把 $f$ 变成',
+        '**第二步：把 $f\'$ 当成新坐标。** 令 $\\Phi(x\', x\'\') := \\bigl( f\'(x\', x\'\'),\\ x\'\' \\bigr)$。它的导数在 $a$ 处是块矩阵 $\\begin{pmatrix} D_{x\'}f\' & D_{x\'\'}f\' \\\\ 0 & I_{n-r} \\end{pmatrix}$，行列式 $= \\det D_{x\'}f\' \\ne 0$，故由逆映射定理$\\Phi$ 在 $a$ 附近是 $C^{1}$ 坐标变换。在 $\\Phi$ 坐标下（记新坐标仍为 $(y\', y\'\')$，其中 $y\' = f\'(x\',x\'\')$、$y\'\' = x\'\'$），$\\Phi$ 把 $f$ 变成',
         '',
         '$$f \\circ \\Phi^{-1}(y\', y\'\') = \\bigl( y\',\\ \\widehat f(y\', y\'\') \\bigr)$$',
         '',
@@ -957,7 +957,7 @@ window.MG = window.MG || {};
         '',
         '**第一步：选主元。** $Df(x_0)$ 是 $m \\times n$ 满秩矩阵，故有某个 $m \\times m$ 子式非零。重排坐标使**后** $m$ 个坐标对应的子式非零（把 $x$ 写成 $(u, v) \\in \\mathbb{R}^{n-m} \\times \\mathbb{R}^{m}$）。',
         '',
-        '**第二步：用隐函数定理解出 $v$。** 令 $F(u, v) := f(u, v) - c$。则 $F(x_0) = 0$，且 $D_vF(x_0)$ 就是上一步那个可逆的 $m \\times m$ 块。由隐函数定理（`thm.implicit-function`），存在 $u_0$ 的邻域 $V$ 与唯一 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使 $g(u_0) = v_0$ 且 $F(u, g(u)) = 0$。',
+        '**第二步：用隐函数定理解出 $v$。** 令 $F(u, v) := f(u, v) - c$。则 $F(x_0) = 0$，且 $D_vF(x_0)$ 就是上一步那个可逆的 $m \\times m$ 块。由隐函数定理，存在 $u_0$ 的邻域 $V$ 与唯一 $C^{1}$ 映射 $g : V \\to \\mathbb{R}^{m}$ 使 $g(u_0) = v_0$ 且 $F(u, g(u)) = 0$。',
         '',
         '**第三步：认出图。** 由第二步，',
         '',

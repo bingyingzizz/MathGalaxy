@@ -313,7 +313,7 @@ window.MG = window.MG || {};
         '$$a^{\\varphi(n)} \\equiv 1 \\pmod n .$$',
       ].join('\n'),
       notes: [
-        '证明只有一行，但是群论的：$[a]$ 落在单位群 $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 里，$|G| = \\varphi(n)$，由 Lagrange 定理（`thm.lagrange`）得 $[a]^{|G|} = 1$。',
+        '证明只有一行，但是群论的：$[a]$ 落在单位群 $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 里，$|G| = \\varphi(n)$，由 Lagrange 定理得 $[a]^{|G|} = 1$。',
         '',
         '所以这条定理的真正内容是「单位群是个有限群」—— 同余只是它的坐标写法。',
         '',
@@ -498,7 +498,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$，$|G| = \\varphi(n)$（因为 $[a]$ 可逆 $\\iff$ $\\gcd(a, n) = 1$）。',
         '',
-        '对任意 $[a] \\in G$，考虑由 $[a]$ 生成的循环子群 $H = \\langle [a] \\rangle$。由 Lagrange 定理（`thm.lagrange`），$|H| \\mid |G|$，即 $|G| = |H| \\cdot m$。',
+        '对任意 $[a] \\in G$，考虑由 $[a]$ 生成的循环子群 $H = \\langle [a] \\rangle$。由 Lagrange 定理，$|H| \\mid |G|$，即 $|G| = |H| \\cdot m$。',
         '',
         '而 $[a]^{|H|} = 1$（循环群的阶就是元素的阶），故 $[a]^{|G|} = ([a]^{|H|})^{m} = 1$。换回同余语言：$a^{\\varphi(n)} \\equiv 1 \\pmod n$。',
       ].join('\n\n'),

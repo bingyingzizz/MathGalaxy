@@ -88,7 +88,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 8.7 */
     {
       id: 'prop.paracompact-partition-unity',
-      cluster: 'topology.general',
+      cluster: 'topology.paracompact',
       type: 'proposition',
       label: '仿紧性与单位分解',
       title: '命题：仿紧 Hausdorff / 正规 $\\iff$ 单位分解存在',

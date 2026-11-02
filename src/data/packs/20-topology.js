@@ -188,7 +188,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------------ 分离公理 */
     {
       id: 'def.hausdorff',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: 'Hausdorff 空间',
       title: 'Hausdorff 空间 / $T_{2}$',

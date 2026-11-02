@@ -164,7 +164,7 @@
           '它随 $a$ 连续变化故恰是绕数（整数值 + 连续 $\\implies$ 局部常值）。',
         '',
         '⭐ **这条式子的意义**：绕数本来是「曲线绕点转了几圈」的几何说法，这里换成了**积分**，' +
-          '于是「几何量」可以参与计算 —— 辐角原理（`thm.argument-principle`）就是拿它去数零点的。',
+          '于是「几何量」可以参与计算 —— 辐角原理就是拿它去数零点的。',
         '',
         '⚠️ 积分结果与 $\\gamma$ 的参数化无关，只与定向有关：反向走一圈，绕数变号。',
       ].join('\n'),
@@ -345,7 +345,7 @@
           '由 Morera，$f$ 全纯。',
         '',
         '**证明（2）**：设 $K \\subset \\Omega$ 紧，取 $r > 0$ 使 $K$ 的 $r$-邻域仍在 $\\Omega$ 内。' +
-          '对 $z \\in K$ 用 Cauchy 高阶导数公式（`thm.cauchy-higher-derivative`）在半径 $r$ 的圆上积分：',
+          '对 $z \\in K$ 用 Cauchy 高阶导数公式在半径 $r$ 的圆上积分：',
         '',
         '$$\\left|f_{k}^{(m)}(z) - f^{(m)}(z)\\right| \\le \\frac{m!}{r^{m}}\\,' +
           '\\sup_{|\\zeta - z| \\le r}\\left|f_{k}(\\zeta) - f(\\zeta)\\right|.$$',
@@ -353,7 +353,7 @@
         '右端与 $z$ 无关且随 $k \\to \\infty$ 趋于 $0$，故在 $K$ 上一致收敛。∎',
         '',
         '⭐ **为什么它是「整章的地基」**：它保证「全纯」这个性质在一致收敛下**封闭**，' +
-          '于是可以放心地取极限 —— 正规族（`thm.montel`）、Riemann 映射定理（`thm.riemann-mapping`）、' +
+          '于是可以放心地取极限 —— 正规族（`thm.montel`）、Riemann 映射定理、' +
           'Hurwitz 定理都靠它把「极限函数仍然是全纯的」这句话合法化。',
         '',
         '⚠️ 条件必须是**内闭一致**（每个紧集上一致）。只在逐点收敛时结论不成立：' +
@@ -417,7 +417,7 @@
       ].join('\n'),
       notes: [
         '**证明**：取紧集穷竭 $K_{1} \\subset K_{2} \\subset \\cdots$、$\\bigcup K_{j} = \\Omega$。' +
-          '在 $K_{j}$ 上由 **Cauchy 不等式**（`thm.cauchy-inequality`）：若 $|f| \\le M_{j}$ 在 $K_{j}$ 的某个 $r$-邻域上，' +
+          '在 $K_{j}$ 上由 **Cauchy 不等式**：若 $|f| \\le M_{j}$ 在 $K_{j}$ 的某个 $r$-邻域上，' +
           '则 $|f\'| \\le M_{j}/r$ 在 $K_{j}$ 上 —— 界与 $f$ 无关，所以 $\\mathcal{F}$ 在 $K_{j}$ 上**等度连续**。' +
           '一致有界是假设给的，于是 `thm.arzela-ascoli` 给出在 $K_{j}$ 上的收敛子列；' +
           '对 $j = 1, 2, \\ldots$ 逐层取对角线，得到在**每个** $K_{j}$ 上一致收敛的子列，即内闭一致收敛。',
@@ -465,7 +465,7 @@
         '',
           '现在任取 $|w| < \\delta$，比较 $f$ 与常值 $-w$：在圆周上 $|f(z)| \\ge \\delta > |w| = |{-w} - f(z) + f(z)|$… ' +
           '更直接地，在圆周上 $|f(z) - (-w)| \\ge |f(z)| - |w| > 0$，而 $f$ 与 $-w$ 在圆内零点个数由 ' +
-          '**Rouché 定理**（`thm.rouche`）比较：$|f| > |{-w} - f|$ 在圆周上成立时两者零点数相同。' +
+          '**Rouché 定理**比较：$|f| > |{-w} - f|$ 在圆周上成立时两者零点数相同。' +
           '$f$ 在圆内有 $m \\ge 1$ 个零点（按阶计），所以 $f + w$ 在圆内也有零点，即 $w = -f(z)$ 被取到。' +
           '故 $B(0, \\delta) \\subseteq f(\\Omega)$，$w_{0}$ 是内点。∎',
         '',
@@ -501,12 +501,12 @@
         '',
         '**第一步：族不空。** $\\Omega \\ne \\mathbb{C}$ 给出 $a \\notin \\Omega$；因 $\\Omega$ 单连通，' +
           '存在全纯的单值支 $\\sqrt{z - a}$（`prop.single-valued-branch`）。它把 $\\Omega$ 双全纯地送到某个区域内，' +
-          '再用分式线性变换（`def.mobius`）把它搬进 $\\mathbb{D}$ 并让 $z_{0} \\mapsto 0$。所以候选族 ' +
+          '再用分式线性变换把它搬进 $\\mathbb{D}$ 并让 $z_{0} \\mapsto 0$。所以候选族 ' +
           '$\\mathcal{F} := \\{\\, \\varphi : \\Omega \\to \\mathbb{D} \\text{ 单叶全纯},\\ \\varphi(z_{0}) = 0 \\,\\}$ 非空。',
         '',
         '**第二步：取极值元。** 由 Cauchy 不等式，$|\\varphi\'(z_{0})|$ 被 $1/\\operatorname{dist}(z_{0}, \\partial\\Omega)$ 控制，' +
           '故 $s := \\sup_{\\varphi \\in \\mathcal{F}} |\\varphi\'(z_{0})| \\in (0, \\infty)$。取 $\\varphi_{n}$ 使 ' +
-          '$|\\varphi_{n}\'(z_{0})| \\to s$；族在 $\\mathbb{D}$ 内一致有界，由 **Montel 定理**（`thm.montel`）' +
+          '$|\\varphi_{n}\'(z_{0})| \\to s$；族在 $\\mathbb{D}$ 内一致有界，由 **Montel 定理**' +
           '有内闭一致收敛子列，极限 $f$ 全纯，$f(z_{0}) = 0$、$|f\'(z_{0})| = s$，且 $f$ 单叶（' +
           '单叶性在一致收敛下保持：若 $f(z_{1}) = f(z_{2})$，用 Rouché 或 Hurwitz 反推 $\\varphi_{n}$ 不单叶，矛盾）。',
         '',
@@ -515,7 +515,7 @@
           '（这一步是纯计算，核心是 $|g\'(0)| = \\frac{1 + |a|}{2\\sqrt{|a|}} > 1$）。故 $f$ 满。∎',
         '',
         '**唯一性**：两个这样的 $f, g$ 给出 $\\mathbb{D}$ 到自身、固定 $0$、导数正实数的双全纯映射；' +
-          '由 **Schwarz 引理**（`lem.schwarz`）它必须是恒等。',
+          '由 **Schwarz 引理**它必须是恒等。',
         '',
         '⭐ **为什么叫「基本定理」**：它把「共形等价」这件事在单连通情形下一举归约到唯一的模型 $\\mathbb{D}$。' +
           '于是任何单连通区域上的问题都可以搬到圆盘上算 —— 双曲几何（`prop.poincare-disk`）就是这么来的。',
@@ -545,7 +545,7 @@
         '',
         '则：(1) 它的曲率恒为 $-1$；(2) 测地线是**与边界圆周正交**的圆弧（直径是特例）；' +
           '(3) 双全纯 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 恰是这个度量的**等距**，' +
-          '而 **Schwarz–Pick 定理**（`thm.schwarz-pick`）正是这句话的微分形式。',
+          '而 **Schwarz–Pick 定理**正是这句话的微分形式。',
         '',
         '经 `thm.riemann-mapping`，任何单连通真区域 $\\Omega \\subset \\mathbb{C}$ 都由此获得一个曲率 $-1$ 的完备度量。',
       ].join('\n'),
@@ -872,7 +872,7 @@
           '$\\delta := \\min_{|z - z_{0}| = \\rho}|f(z)| > 0$。',
         '',
         '任取 $|w| < \\delta$。在圆周 $|z - z_{0}| = \\rho$ 上，$|f(z)| \\ge \\delta > |w| = |{-w}|$，' +
-          '故按 **Rouché 定理**（`thm.rouche`），$f$ 与 $f + w$ 在圆内零点个数相同。' +
+          '故按 **Rouché 定理**，$f$ 与 $f + w$ 在圆内零点个数相同。' +
           '$f$ 在圆内有零点（$z_{0}$，$m$ 阶），故 $f + w$ 也有零点 $z$，即 $f(z) = -w$。',
         '',
           '于是 $B(0, \\delta) \\subseteq f(\\Omega)$，任一像点是内点 $\\implies$ $f$ 开。∎' +
@@ -886,7 +886,7 @@
       proof: [
         '**族不空**：因 $\\Omega \\ne \\mathbb{C}$，取 $a \\notin \\Omega$；$\\Omega$ 单连通 $\\implies$ $\\sqrt{z - a}$ 有全纯单值支' +
           '（`prop.single-valued-branch`）。它单叶（$\\sqrt{z_{1}} = \\pm\\sqrt{z_{2}} \\implies z_{1} = z_{2}$），' +
-          '再复合分式线性变换（`def.mobius`）搬进 $\\mathbb{D}$ 并把 $z_{0}$ 送到 $0$。故 ' +
+          '再复合分式线性变换搬进 $\\mathbb{D}$ 并把 $z_{0}$ 送到 $0$。故 ' +
           '$\\mathcal{F} = \\{\\varphi \\text{ 单叶全纯}, \\varphi(z_{0}) = 0, \\varphi(\\Omega) \\subset \\mathbb{D}\\}$ 非空。',
         '',
         '**极值元存在**：Cauchy 不等式给出 $|\\varphi\'(z_{0})| \\le 1/\\operatorname{dist}(z_{0}, \\partial\\Omega)$，' +
@@ -902,7 +902,7 @@
           '计算给出 $|\\psi\'(z_{0})| = |f\'(z_{0})|\\cdot\\frac{1 + |w_{1}|}{2\\sqrt{|w_{1}|}} > s$，与 $s$ 的极大性矛盾。',
         '',
         '**唯一性**：若 $f, g$ 都满足条件，则 $g \\circ f^{-1} : \\mathbb{D} \\to \\mathbb{D}$ 固定 $0$、导数正实数，' +
-          '由 **Schwarz 引理**（`lem.schwarz`）为恒等。∎',
+          '由 **Schwarz 引理**为恒等。∎',
       ].join('\n'),
       note: '本图里最深的一条；证明的三根支柱（Montel / Hurwitz / Schwarz）都各自是独立节点。' },
 

@@ -114,11 +114,11 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：一族方向「对合」，说的是：沿其中两个方向各走一步、交换次序后的那点偏差，仍然落在这族方向里。这一条就是「能被拼成薄片」的全部障碍。',
         '',
-        '设 $\\mathcal{D}$ 是 $M$ 上的光滑 $k$ 阶切分布（`def.tangent-distribution`）。称 $\\mathcal{D}$ **对合**（involutive），如果对任意开集 $U \\subseteq M$ 与任意 $X, Y \\in \\Gamma(\\mathcal{D}|_{U})$（取值落在 $\\mathcal{D}$ 里的光滑向量场），都有',
+        '设 $\\mathcal{D}$ 是 $M$ 上的光滑 $k$ 阶切分布。称 $\\mathcal{D}$ **对合**（involutive），如果对任意开集 $U \\subseteq M$ 与任意 $X, Y \\in \\Gamma(\\mathcal{D}|_{U})$（取值落在 $\\mathcal{D}$ 里的光滑向量场），都有',
         '',
         '$$[X,Y] \\in \\Gamma(\\mathcal{D}|_{U}),$$',
         '',
-        '其中 $[\\cdot,\\cdot]$ 是向量场的 Lie 括号（`def.lie-bracket`）。',
+        '其中 $[\\cdot,\\cdot]$ 是向量场的 Lie 括号。',
         '',
         '**只需查生成元**：设 $\\mathcal{D}$ 在 $U$ 上由 $X_{1},\\ldots,X_{k}$ 生成，则 $\\mathcal{D}$ 在 $U$ 上对合，当且仅当每个括号都能写成生成元的 $C^{\\infty}$-线性组合',
         '',
@@ -251,7 +251,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：Lie 群上的微分形式如果对左平移「纹丝不动」，它就被单位元处的一个多重线性型完全决定 —— 于是 $G$ 上的左不变 $k$-形式与 $\\bigwedge^{k}\\mathfrak{g}^{\\ast}$ 是同一个东西。',
         '',
-        '设 $G$ 是 $n$ 维 Lie 群（`def.lie-group`），$\\mathfrak{g} = T_{e}G$，$L_{g}$ 是左平移。$k$-形式 $\\omega \\in \\Omega^{k}(G)$ 叫**左不变**，如果',
+        '设 $G$ 是 $n$ 维 Lie 群，$\\mathfrak{g} = T_{e}G$，$L_{g}$ 是左平移。$k$-形式 $\\omega \\in \\Omega^{k}(G)$ 叫**左不变**，如果',
         '',
         '$$L_{g}^{\\ast}\\omega = \\omega\\qquad (g \\in G),$$',
         '',
@@ -265,7 +265,7 @@ window.MG = window.MG || {};
         '',
         '$$\\omega^{i}_{g} := \\mathrm{d}(L_{g^{-1}})^{\\ast}_{e}\\,\\omega^{i}_{e},\\qquad \\omega^{i}_{g}\\bigl((\\tilde e_{j})_{g}\\bigr) = \\delta^{i}_{\\ j},$$',
         '',
-        '其中 $\\tilde e_{j}$ 是 $e_{j}$ 对应的左不变向量场（`prop.left-invariant-fields`）。这组 $\\omega^{1},\\ldots,\\omega^{n}$ 叫**左不变余标架**，结构常数由 $[e_{j},e_{k}] = \\sum_{i}c^{i}_{\\ jk}e_{i}$ 定义。'
+        '其中 $\\tilde e_{j}$ 是 $e_{j}$ 对应的左不变向量场。这组 $\\omega^{1},\\ldots,\\omega^{n}$ 叫**左不变余标架**，结构常数由 $[e_{j},e_{k}] = \\sum_{i}c^{i}_{\\ jk}e_{i}$ 定义。'
       ].join('\n'),
       notes: [
         '**为什么赋值是同构**：左不变性取 $h = e$ 得 $\\omega_{g}(\\mathrm{d}(L_{g})_{e}w) = \\omega_{e}(w)$，故 $\\omega_{g} = \\mathrm{d}(L_{g^{-1}})^{\\ast}\\omega_{e}$，即 $\\omega$ 由 $\\omega_{e}$ 决定（单射）。反向：给定 $\\alpha \\in \\bigwedge^{k}\\mathfrak{g}^{\\ast}$ 令 $\\omega_{g} := \\mathrm{d}(L_{g^{-1}})^{\\ast}\\alpha$，则 $L_{h}^{\\ast}\\omega = \\omega$，因为',
@@ -345,7 +345,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：反过来也成立 —— 随便给一个有限维 Lie 代数，总能找到一个 Lie 群以它为 Lie 代数。这条保证了「Lie 代数」不是凭空造出来的对象。',
         '',
-        '设 $\\mathfrak{g}$ 是有限维**实** Lie 代数（`def.lie-algebra`）。则存在连通且单连通的 Lie 群 $G$ 与 Lie 代数同构',
+        '设 $\\mathfrak{g}$ 是有限维**实** Lie 代数。则存在连通且单连通的 Lie 群 $G$ 与 Lie 代数同构',
         '',
         '$$\\operatorname{Lie}(G) \\cong \\mathfrak{g},$$',
         '',
@@ -439,7 +439,7 @@ window.MG = window.MG || {};
         '',
         '$$\\Phi^{k} : H^{k}_{\\mathrm{dR}}(M) \\longrightarrow H^{k}_{\\mathrm{sing}}(M;\\mathbb{R}),\\qquad [\\omega] \\longmapsto \\Bigl([c] \\mapsto \\int_{c}\\omega\\Bigr),$$',
         '',
-        '其中 $H^{k}_{\\mathrm{sing}}(M;\\mathbb{R}) := H^{k}\\bigl(\\operatorname{Hom}(C^{\\mathrm{sing}}_{\\bullet}(M),\\mathbb{R})\\bigr)$ 是奇异链复形（`def.singular-chain`）取对偶后的上同调（`def.cohomology`），$\\int_{c}\\omega$ 是形式在链上的积分（`def.integral-on-chain`）。$\\Phi^{k}$ 与拉回相容，故 $k \\mapsto \\Phi^{k}$ 是一族自然同构：$H^{\\bullet}_{\\mathrm{dR}}$ 与 $H^{\\bullet}_{\\mathrm{sing}}$ 是同一个函子的两种算法。'
+        '其中 $H^{k}_{\\mathrm{sing}}(M;\\mathbb{R}) := H^{k}\\bigl(\\operatorname{Hom}(C^{\\mathrm{sing}}_{\\bullet}(M),\\mathbb{R})\\bigr)$ 是奇异链复形（`def.singular-chain`）取对偶后的上同调，$\\int_{c}\\omega$ 是形式在链上的积分。$\\Phi^{k}$ 与拉回相容，故 $k \\mapsto \\Phi^{k}$ 是一族自然同构：$H^{\\bullet}_{\\mathrm{dR}}$ 与 $H^{\\bullet}_{\\mathrm{sing}}$ 是同一个函子的两种算法。'
       ].join('\n'),
       notes: [
         '**证明路线的骨架**（细节写在边上）：',
@@ -479,7 +479,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：张量上有一个上标和一个下标时，可以把它们「配对吃掉」，得到一个少两阶的张量 —— 这就是缩并；矩阵的取迹是它最熟悉的特例。',
         '',
-        '设 $T$ 是 $M$ 上的 $(r,s)$ 型张量场（`def.tensor-field`），$r, s \\ge 1$。取定第 $i$ 个上标（$1 \\le i \\le r$）与第 $j$ 个下标（$1 \\le j \\le s$），**缩并** $\\mathrm{C}^{i}_{\\ j}T$ 是 $(r-1,s-1)$ 型张量场，逐点定义为',
+        '设 $T$ 是 $M$ 上的 $(r,s)$ 型张量场，$r, s \\ge 1$。取定第 $i$ 个上标（$1 \\le i \\le r$）与第 $j$ 个下标（$1 \\le j \\le s$），**缩并** $\\mathrm{C}^{i}_{\\ j}T$ 是 $(r-1,s-1)$ 型张量场，逐点定义为',
         '',
         '$$\\bigl(\\mathrm{C}^{i}_{\\ j}T\\bigr)_{p}\\bigl(\\alpha^{1},\\ldots,\\widehat{\\alpha^{i}},\\ldots;\\ v_{1},\\ldots,\\widehat{v_{j}},\\ldots\\bigr) := \\sum_{a=1}^{n} T_{p}\\bigl(\\ldots,\\mathrm{d}x^{a},\\ldots;\\ \\ldots,\\partial_{a},\\ldots\\bigr),$$',
         '',
@@ -534,13 +534,13 @@ window.MG = window.MG || {};
         '名字叫**内积**（interior product），但它与内积空间里的 $\\langle\\cdot,\\cdot\\rangle$ **不是**一回事：前者吃「一个向量 $+$ 一个形式」吐一个低一阶的形式，后者吃「两个向量」吐一个数。'
       ].join('\n'),
       notes: [
-        '**为什么它是「逐点」的而 Lie 导数是「整体」的**：内乘只用 $X_{p}$ 就能算出 $(\\iota_{X}\\omega)_{p}$，所以它是张量运算（对 $X$ 也 $C^{\\infty}$-线性），不需要解任何方程；Lie 导数（`def.lie-derivative`）要对流求导，只对向量场有定义、且对 $X$ 只 $\\mathbb{R}$-线性。这条区别在 Cartan 公式（`thm.cartan-formula`）里正好互补：$\\mathrm{d}\\iota_{X}$ 是「先缩再导」，$\\iota_{X}\\mathrm{d}$ 是「先导再缩」。',
+        '**为什么它是「逐点」的而 Lie 导数是「整体」的**：内乘只用 $X_{p}$ 就能算出 $(\\iota_{X}\\omega)_{p}$，所以它是张量运算（对 $X$ 也 $C^{\\infty}$-线性），不需要解任何方程；Lie 导数要对流求导，只对向量场有定义、且对 $X$ 只 $\\mathbb{R}$-线性。这条区别在 Cartan 公式里正好互补：$\\mathrm{d}\\iota_{X}$ 是「先缩再导」，$\\iota_{X}\\mathrm{d}$ 是「先导再缩」。',
         '',
         '**$\\iota_{X}^{2} = 0$ 的理由**：缩两次等于同一个槽被塞进两个向量，而形式是交错的，把两次缩并交换次序会出 $-$ 号，于是 $(\\iota_{X}^{2}\\omega)(v_{3},\\ldots) = \\omega(X,X,v_{3},\\ldots) = 0$（交错性 + 同一向量自配为零）。',
         '',
         '**物理记号里它就是「缩一个指标」**：电磁场 $F = \\frac{1}{2}F_{ij}\\,\\mathrm{d}x^{i}\\wedge\\mathrm{d}x^{j}$ 与 $\\iota_{E}F$ 给出「电场方向上的磁场通量」这类量；Maxwell 方程组里 $\\mathrm{d}F = 0$、$\\mathrm{d}\\star F = J$，其中 $\\star$ 依赖度量，而 $\\iota$ 与 $\\mathrm{d}$ 是纯组合的。',
         '',
-        '**与缩并（`def.tensor-contraction`）的关系**：$\\iota_{X}\\omega$ 就是把 $X$ 塞进第一个槽再缩并 —— 它是张量缩并在交错张量上的特例，只是塞进去的向量不必是基向量。',
+        '**与缩并的关系**：$\\iota_{X}\\omega$ 就是把 $X$ 塞进第一个槽再缩并 —— 它是张量缩并在交错张量上的特例，只是塞进去的向量不必是基向量。',
         '',
         '**与楔积的搭配**：$\\mathrm{d}\\iota_{X} + \\iota_{X}\\mathrm{d}$ 这个组合之所以自然，是因为 $\\mathrm{d}$ 是 $+1$ 次反导子、$\\iota_{X}$ 是 $-1$ 次反导子，两个反导子复合出「次数 $0$ 的导子」—— 与 Lie 导数同一个类型。Cartan 公式的证明就是拿这个类型去比对。'
       ].join('\n'),
@@ -584,7 +584,7 @@ window.MG = window.MG || {};
         '',
         '**单参数群性质为什么只是局部的**：$\\varphi_{s+t}(p)$ 要在 $s+t$ 处有定义，$\\varphi_{s}(\\varphi_{t}(p))$ 还要求中间点有定义。两条曲线 $\\tau \\mapsto \\varphi_{s+\\tau}(p)$ 与 $\\tau \\mapsto \\varphi_{\\tau}(\\varphi_{s}(p))$ 满足同一个初值问题，由唯一性相等 —— 唯一性是 `thm.flow-local` 给的。',
         '',
-        '**光滑依赖初值**：$\\varphi$ 对 $(t,p)$ 光滑（不只是每个 $p$ 单独有解），这是把 ODE 理论搬上流形时最常被漏掉的一条；它保证 $\\varphi_{t}$ 是**局部微分同胚**，因而 $\\mathrm{d}\\varphi_{t}$ 有意义 —— Lie 导数（`def.lie-derivative`）正是拿它求导。',
+        '**光滑依赖初值**：$\\varphi$ 对 $(t,p)$ 光滑（不只是每个 $p$ 单独有解），这是把 ODE 理论搬上流形时最常被漏掉的一条；它保证 $\\varphi_{t}$ 是**局部微分同胚**，因而 $\\mathrm{d}\\varphi_{t}$ 有意义 —— Lie 导数正是拿它求导。',
         '',
         '**流的三个用途**：① 把向量场「积分」成变换（单参数群）；② 定义 Lie 导数与括号（用 $\\varphi^{X}_{t}$ 把 $Y$ 推来推去再对 $t$ 求导）；③ 判断完备性与整体存在（测地流、Hamilton 流都走这条）。所以「流」是向量场这一族的**表示论**。',
         '',
@@ -743,7 +743,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathcal{L}_{X} = \\mathrm{d}\\,\\iota_{X} + \\iota_{X}\\,\\mathrm{d},$$',
         '',
-        '其中 $\\mathcal{L}_{X}$ 是 Lie 导数（`def.lie-derivative`）、$\\iota_{X}$ 是内乘（`def.interior-product`）、$\\mathrm{d}$ 是外微分（`def.exterior-derivative`），并规定 $\\iota_{X}$ 作用在函数上为 $0$。',
+        '其中 $\\mathcal{L}_{X}$ 是 Lie 导数、$\\iota_{X}$ 是内乘、$\\mathrm{d}$ 是外微分（`def.exterior-derivative`），并规定 $\\iota_{X}$ 作用在函数上为 $0$。',
         '',
         '**推论**：',
         '',
@@ -804,7 +804,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{d}V_{N} = \\pm\\,\\iota_{\\nu}\\,\\mathrm{d}V_{g},$$',
         '',
-        '符号取决于 $\\nu$ 与 $N$ 的定向是否相容。这就是 Gauss 公式与散度定理（`thm.divergence-theorem`）里「边界上的面积元」的来历：内乘（`def.interior-product`）把 $n$-形式沿法向缩成 $(n-1)$-形式。',
+        '符号取决于 $\\nu$ 与 $N$ 的定向是否相容。这就是 Gauss 公式与散度定理里「边界上的面积元」的来历：内乘把 $n$-形式沿法向缩成 $(n-1)$-形式。',
         '',
         '**二维情形就是面积元**：$i : S \\to \\mathbb{R}^{3}$ 时 $g_{ab}$ 是曲面的第一基本形式 $E, F, G$，$\\sqrt{\\det} = \\sqrt{EG - F^{2}}$，与 `def.area-element` 逐字相同。所以「曲面的面积」是这条的一般情形，不是另一套定义。',
         '',
@@ -1305,7 +1305,7 @@ window.MG = window.MG || {};
         '',
         '换 $c$ 为 $c + \\partial b$：$\\int_{\\partial b}\\omega = \\int_{b}\\mathrm{d}\\omega = 0$（`thm.stokes-chain`，用 $\\omega$ 闭）。换 $\\omega$ 为 $\\omega + \\mathrm{d}\\eta$：$\\int_{c}\\mathrm{d}\\eta = \\int_{\\partial c}\\eta = 0$（$c$ 闭）。所以这是良定义的配对 $H^{k}_{\\mathrm{dR}} \\otimes H^{\\mathrm{sing}}_{k} \\to \\mathbb{R}$，等价地一个线性映射 $\\Phi^{k} : H^{k}_{\\mathrm{dR}} \\to (H^{\\mathrm{sing}}_{k})^{\\ast} = H^{k}_{\\mathrm{sing}}$。',
         '',
-        '**第二步：把左边认成层上同调。** $\\Omega^{\\bullet}$ 是常层 $\\underline{\\mathbb{R}}$ 的消解：逐点的正合性就是 Poincaré 引理（`lem.poincare-lemma`），逐点的核是 $\\mathbb{R}$；而 $\\Omega^{0}$ 中 $\\mathrm{d}$-闭的元素正是局部常函数（`thm.de-rham-h0` 的论证），即 $\\underline{\\mathbb{R}}$ 的截面。于是复形的上同调 $H^{\\bullet}_{\\mathrm{dR}}(M)$ 就是层上同调 $H^{\\bullet}(M;\\underline{\\mathbb{R}})$。',
+        '**第二步：把左边认成层上同调。** $\\Omega^{\\bullet}$ 是常层 $\\underline{\\mathbb{R}}$ 的消解：逐点的正合性就是 Poincaré 引理，逐点的核是 $\\mathbb{R}$；而 $\\Omega^{0}$ 中 $\\mathrm{d}$-闭的元素正是局部常函数（`thm.de-rham-h0` 的论证），即 $\\underline{\\mathbb{R}}$ 的截面。于是复形的上同调 $H^{\\bullet}_{\\mathrm{dR}}(M)$ 就是层上同调 $H^{\\bullet}(M;\\underline{\\mathbb{R}})$。',
         '',
         '**第三步：Čech–de Rham 双复形。** 取「好的覆盖」$\\mathfrak{U}$（每点邻域与每个有限交都可缩），把 $\\check{C}^{p}(\\mathfrak{U},\\Omega^{q})$ 排成双复形：横向是 Čech 微分 $\\delta$、纵向是 $\\mathrm{d}$。两条谱序列算出同一个全上同调：',
         '',

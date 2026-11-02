@@ -303,7 +303,7 @@ window.MG = window.MG || {};
     /* ------------------------------------------------ 可度量化 */
     {
       id: 'def.second-countable',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '第二可数空间',
       title: '具有可数基的拓扑空间',
@@ -323,7 +323,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.first-countable',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '第一可数空间',
       title: '每点有可数局部基',

@@ -14,7 +14,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.normal-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: '正规空间',
       title: '正规空间',
@@ -44,7 +44,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.urysohn',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'lemma',
       label: 'Urysohn 引理',
       title: 'Urysohn 引理',

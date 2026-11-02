@@ -215,11 +215,27 @@ MG.clusters = [
   /* ------------------------------------------------ 星系：拓扑学 */
   {
     id: 'topology.general',
-    name: '拓扑空间',
-    en: 'Topological Spaces',
+    name: '拓扑空间的基本语汇',
+    en: 'Topological Spaces and Basic Constructions',
     parent: 'topology',
     hub: 'def.topology',
-    desc: '造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集与闭包 → 基 → 连续映射 → 同胚。'
+    desc: '造出「开集」这套不依赖距离的语言：拓扑空间 → 闭集、闭包与内部 → 基与子基 → 连续映射 → 子空间 / 积 / 商 → 连通与闭开集 → 同胚。⚠️ 2026-11-02 拆团：分离公理（T0–T6、Urysohn、正规与正则那一条线）拆到「分离公理」，网 / 滤子 / 紧化 / 可数性拆到「收敛与紧性」。'
+  },
+  {
+    id: 'topology.separation',
+    name: '分离公理',
+    en: 'Separation Axioms',
+    parent: 'topology',
+    hub: 'def.hausdorff',
+    desc: '造出「能把点与闭集分开」这把尺子：T0 → T1 → **Hausdorff（T2）** → T3（正则空间）→ T3.5（完全正则）→ T4（正规空间）→ T5（完全正规）→ T6（完美正规），外加 **Urysohn 引理**、正规空间的闭邻域、以及 Hausdorff 反射。⚠️ 命名口径：T-number 是裸性质，中文名才带 T1。'
+  },
+  {
+    id: 'topology.convergence',
+    name: '收敛与紧性',
+    en: 'Convergence and Compactness',
+    parent: 'topology',
+    hub: 'def.net',
+    desc: '造出「逼近」这套工具：第一 / 第二可数 → **网**与**滤子**（一般拓扑里的收敛）→ 局部紧 → 紧化的两种极端（一点紧化 / Stone–Čech）→ Tychonoff 乘积定理 → 紧性的基本操作与商。'
   },
   {
     id: 'topology.metric',

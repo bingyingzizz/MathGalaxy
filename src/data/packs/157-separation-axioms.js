@@ -37,7 +37,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.t0-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: 'T0 空间',
       title: 'T0 空间（Kolmogorov）：点可被开集区分',
@@ -68,7 +68,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.t1-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: 'T1 空间',
       title: 'T1 空间（Fréchet）：单点是闭集',
@@ -137,7 +137,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.t3-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: 'T3 空间',
       title: 'T3：单点与闭集可以分开',
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.regular-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: '正则空间',
       title: '正则空间 = $T_{3} + T_{1}$',
@@ -204,7 +204,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.t35-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: 'T3.5 空间',
       title: 'T3.5：单点与闭集可由连续函数分开',
@@ -233,7 +233,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.completely-regular-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: '完全正则空间',
       title: '完全正则空间 = $T_{3.5} + T_{1}$（Tychonoff 空间）',
@@ -267,7 +267,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.completely-normal-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: '完全正规空间',
       title: '完全正规空间（T5）：连子空间都正规',
@@ -297,7 +297,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.perfectly-normal-space',
-      cluster: 'topology.general',
+      cluster: 'topology.separation',
       type: 'definition',
       label: '完美正规空间',
       title: '完美正规空间（T6）：每个闭集都可数交开集',

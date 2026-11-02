@@ -92,7 +92,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.compactification',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '紧化',
       title: '紧化：把空间塞进紧空间里',
@@ -128,7 +128,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.one-point-compactification',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '一点紧化',
       title: '一点紧化：只补一个无穷远点',
@@ -163,7 +163,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.net',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '网',
       title: '网与网的收敛：一般拓扑里的序列',
@@ -199,7 +199,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.filter',
-      cluster: 'topology.general',
+      cluster: 'topology.convergence',
       type: 'definition',
       label: '滤子',
       title: '滤子与超滤子：收敛的另一套语言',

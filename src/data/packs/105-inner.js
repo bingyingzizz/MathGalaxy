@@ -125,7 +125,7 @@ window.MG = window.MG || {};
         '- $U \\subseteq (U^{\\perp})^{\\perp}$；',
         '- **有限维时** $V = U \\oplus U^{\\perp}$，且 $(U^{\\perp})^{\\perp} = U$、$\\dim U^{\\perp} = \\dim V - \\dim U$。'
       ].join('\n'),
-      notes: '⭐ «$V = U \\oplus U^{\\perp}$» 是内积空间比一般向量空间**多出来的东西**：一般的子空间有补空间但不唯一（见 `def.direct-sum`），而正交补是**唯一**的补空间。\n\n⭐ 它与对偶里的零化子（`def.annihilator`）是一对：$U^{\\perp} \\subseteq V$、$U^{0} \\subseteq V^{\\ast}$，两者的维数公式长得一样（$\\dim V - \\dim U$），在「$V \\cong V^{\\ast}$（靠内积）」之下互相翻译。\n\n⚠ $V = U \\oplus U^{\\perp}$ 在**无限维**时对闭子空间才成立，任意子空间不成立（这是 Hilbert 空间理论的一个真定理）。',
+      notes: '⭐ «$V = U \\oplus U^{\\perp}$» 是内积空间比一般向量空间**多出来的东西**：一般的子空间有补空间但不唯一（见 `def.direct-sum`），而正交补是**唯一**的补空间。\n\n⭐ 它与对偶里的零化子是一对：$U^{\\perp} \\subseteq V$、$U^{0} \\subseteq V^{\\ast}$，两者的维数公式长得一样（$\\dim V - \\dim U$），在「$V \\cong V^{\\ast}$（靠内积）」之下互相翻译。\n\n⚠ $V = U \\oplus U^{\\perp}$ 在**无限维**时对闭子空间才成立，任意子空间不成立（这是 Hilbert 空间理论的一个真定理）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']
     },
     {
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
         '',
         '性质：$(T + S)^{\\ast} = T^{\\ast} + S^{\\ast}$、$(cT)^{\\ast} = \\bar{c}\\,T^{\\ast}$、$(TS)^{\\ast} = S^{\\ast}T^{\\ast}$、$T^{\\ast\\ast} = T$。',
         '',
-        '⚠️ 与范畴论的**伴随函子**（`def.adjoint`）不是一回事：那是两个函子之间的关系，这里是同一个空间上的算子。'
+        '⚠️ 与范畴论的**伴随函子**不是一回事：那是两个函子之间的关系，这里是同一个空间上的算子。'
       ].join('\n'),
       notes: '⭐ 定义的方式值得注意：$T^{\\ast}$ 不是构造出来的，而是被**一条恒等式唯一定出**来的（存在性靠 Riesz 表示：$w \\mapsto \\langle T\\cdot, w\\rangle$ 是 $V$ 上的有界线性泛函）。这是「用泛性质定义对象」在有限维内积空间里的版本。\n\n⭐ 复的情形里 $(cT)^{\\ast} = \\bar c T^{\\ast}$ 的共轭**不可丢** —— 它来自内积对第二变元的共轭线性。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8']

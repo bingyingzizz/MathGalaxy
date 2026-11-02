@@ -234,7 +234,7 @@ window.MG = window.MG || {};
         '设 $\\gcd(a, n) = 1$。则 $\\operatorname{ord}_{n}(a) \\mid \\varphi(n)$；特别地 $a^{\\varphi(n)} \\equiv 1 \\pmod n$（Euler 定理）。',
       ].join('\n'),
       notes: [
-        '**证明**：设 $k = \\operatorname{ord}_{n}(a)$，$H = \\{[1], [a], \\cdots, [a]^{k-1}\\}$ 是单位群里的循环子群，$|H| = k$。由 Lagrange 定理（`thm.lagrange`），$k \\mid |G| = \\varphi(n)$。',
+        '**证明**：设 $k = \\operatorname{ord}_{n}(a)$，$H = \\{[1], [a], \\cdots, [a]^{k-1}\\}$ 是单位群里的循环子群，$|H| = k$。由 Lagrange 定理，$k \\mid |G| = \\varphi(n)$。',
         '',
         '**这是 Euler 定理的「原因」**：Euler 定理不是关于同余的，而是「有限群里元素的阶整除群阶」这句话在 $G = (\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ 上的翻译（见 `imp.nt-lagrange-euler`）。',
         '',
@@ -368,7 +368,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $p$ 奇素数、$p \\nmid a$，$n = \\frac{p-1}{2}$。',
         '',
-        '由 Fermat 小定理（`thm.fermat-little`），$\\left(a^{n}\\right)^{2} = a^{p-1} \\equiv 1 \\pmod p$。于是 $a^{n}$ 是 $x^{2} \\equiv 1$ 的根，而 $\\mathbb{Z}/p\\mathbb{Z}$ 是域，$x^{2} - 1 = (x-1)(x+1)$ 只有两根，故 $a^{n} \\equiv \\pm 1$。',
+        '由 Fermat 小定理，$\\left(a^{n}\\right)^{2} = a^{p-1} \\equiv 1 \\pmod p$。于是 $a^{n}$ 是 $x^{2} \\equiv 1$ 的根，而 $\\mathbb{Z}/p\\mathbb{Z}$ 是域，$x^{2} - 1 = (x-1)(x+1)$ 只有两根，故 $a^{n} \\equiv \\pm 1$。',
         '',
         '**若 $a$ 是剩余**：$a \\equiv b^{2}$，则 $a^{n} \\equiv b^{2n} = b^{p-1} \\equiv 1$。',
         '',
@@ -410,7 +410,7 @@ window.MG = window.MG || {};
         '',
         '$|H| = k$：这 $k$ 个元素互不相同（若 $[a]^{i} = [a]^{j}$，$0 \\le i < j < k$，则 $[a]^{j-i} = 1$ 与 $k$ 的最小性矛盾）。',
         '',
-        '由 Lagrange 定理（`thm.lagrange`），$|H|$ 整除 $|G| = \\varphi(n)$，故 $k \\mid \\varphi(n)$。',
+        '由 Lagrange 定理，$|H|$ 整除 $|G| = \\varphi(n)$，故 $k \\mid \\varphi(n)$。',
         '',
         '取 $k \\mid \\varphi(n)$、$\\varphi(n) = k m$ 得 $a^{\\varphi(n)} = (a^{k})^{m} \\equiv 1$ —— 这就是 Euler 定理。',
       ].join('\n\n'),

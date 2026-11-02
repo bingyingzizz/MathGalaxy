@@ -2,6 +2,9 @@
 
 根 `../`　·　第 1 页 `index.md`
 
+## 数学分析（analysis）
+analysis.real　analysis.real-calc　analysis.completeness　analysis.continuity　analysis.mvt　analysis.riemann　analysis.series　analysis.uniform　analysis.multivariable
+
 ## 泛函分析（functional-analysis）
 fa.norm　fa.hilbert　fa.ck　fa.baire
 
@@ -13,11 +16,5 @@ cat.basic　cat.functor　cat.limit　cat.structure　cat.algebra　cat.yoneda�
 
 ## 同调代数（homology）
 hom.ab　hom.complex　hom.cohomology　hom.spectral　hom.sheafcoh　hom.sheaf　hom.module　hom.flat　hom.injective　hom.resolution　hom.group
-
-## 凝聚态数学（condensed）
-cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
-
-## 解析空间（analytic）
-analytic.adic　analytic.dual
 
 > 续见 `index.3.md`
