@@ -145,12 +145,13 @@ window.MG = window.MG || {};
       regions: ['functional-analysis'],
       tags: ['泛函分析', '紧性', '有限维'],
       statement: [
-        '赋范空间 $E$ 的闭单位球 $B_E = \\{x \\in E : \\|x\\| \\le 1\\}$ 紧 $\\iff \\dim E < \\infty$。'
+        '赋范空间 $E$ 的闭单位球 $B_E = \\{x \\in E : \\|x\\| \\le 1\\}$ 紧 $\\iff$ $\\dim E < \\infty$。'
       ].join('\n'),
       notes: [
-        '「$\\Longleftarrow$」：有限维时范数都等价，用 $\\|\\cdot\\|_\\infty$ 的坐标球（有界闭集）套 Heine–Borel。',
-        '「$\\Longrightarrow$」：若 $\\dim E = \\infty$，用几乎正交引理递归取 $e_1, e_2, \\ldots$，满足 $\\|e_n\\| = 1$ 且 $d(e_n, \\operatorname{span}\\{e_1,\\ldots,e_{n-1}\\}) \\ge 1/2$。于是 $\\|e_n - e_m\\| \\ge 1/2$（$n \\ne m$），这列没有收敛子列，与 $B_E$ 紧（列紧）矛盾。',
-        '⭐ 这是「有限维 / 无穷维」的分水岭：**闭有界集不再紧**。所以优化里的「闭有界 $implies$ 有极小元」在无穷维全废 —— 必须换全有界（相对紧）、或弱拓扑（Banach–Alaoglu）、或强制条件（coercivity）。'
+        '「$\\Longleftarrow$」：有限维时所有范数等价（`thm.norm-equiv-finite-dim`），于是可以用 $\\|\\cdot\\|_\\infty$ 的坐标球来判断紧性；而坐标球 $\\overline{B}^{\\infty}(0,1) = [-1,1]^{n}$ 是有界闭集，由 Heine–Borel（`thm.heine-borel`）紧。∎',
+        '「$\\implies$」：若 $\\dim E = \\infty$，用 Riesz 引理（`lem.almost-orthogonal`）递归造单位向量 $\\|e_n - e_m\\| \\ge 1/2$（$n \\ne m$），这样的序列没有收敛子列，于是闭单位球不列紧、因而不紧。',
+        '',
+        '⭐ 这一条是「有限维  当且仅当  局部紧」的一半：有限维赋范空间局部紧，无穷维的**从不**局部紧。它也是「有界闭集紧」只在有限维成立的精确版本 —— 无穷维里 Heine–Borel 失效。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-09-28', 'Riesz 1918']
     },
@@ -472,7 +473,15 @@ window.MG = window.MG || {};
         '$$\\|x + y\\|^2 + \\|x - y\\|^2 = 2\\|x\\|^2 + 2\\|y\\|^2 .$$'
       ].join('\n'),
       notes: [
-        '「$\\implies$」直接展开。「$\\Longleftarrow$」用极化恒等式**定义** $\\langle x,y\\rangle$，再逐条验公理：对实情形，写 $\\langle x, y+z\\rangle$ 并与 $\\langle x,y\\rangle + \\langle x,z\\rangle$ 相减，用平行四边形法则化简得 $0$；齐次性先对有理数成立，再用**连续性**放到实数上（范数连续）；复情形再多验一步 $\\langle x, iy\\rangle = i\\langle x,y\\rangle$。',
+        '「$\\Longleftarrow$」分三段（顺序不能换）：\n' +
+        '\n' +
+        '1. **用极化恒等式定义内积**。实情形取 $\\langle x,y\\rangle := \\frac14\\bigl(\\|x+y\\|^2 - \\|x-y\\|^2\\bigr)$；复情形取 $\\langle x,y\\rangle := \\frac14\\sum_{k=0}^{3} i^{k}\\|x + i^{k} y\\|^2$。这一段的要点是：平行四边形法则恰好保证「展开后的交叉项能两两抵消」，所以范数真的能反推出双线性型。\n' +
+        '\n' +
+        '2. **加法性**。把 $\\langle x, y+z\\rangle$ 与 $\\langle x,y\\rangle + \\langle x,z\\rangle$ 相减，展开成 8 个范数平方项；对 $(y, z)$ 与 $(x,\\, y+z)$ 各用一次平行四边形法则，所有项成对抵消，得 $0$。这一步**只用平行四边形法则**，不假设任何线性。\n' +
+        '\n' +
+        '3. **齐次性**。先对 $\\lambda \\in \\mathbb{Q}$：整数由加法性归纳，分母靠 $n\\langle x, y\\rangle = \\langle x, ny\\rangle$；再对 $\\lambda \\in \\mathbb{R}$ 取有理数列 $\\lambda_n \\to \\lambda$，用**范数连续**（$\\bigl|\\|u\\| - \\|v\\|\\bigr| \\le \\|u - v\\|$）取极限。复情形额外验一条 $\\langle x, iy\\rangle = i\\langle x,y\\rangle$，之后按 $\\mathbb{C}$-线性延拓，其余公理随实情形继承。\n' +
+        '\n' +
+        '✓ 至此三条公理齐备；正定性来自 $\\langle x,x\\rangle = \\|x\\|^2 \\ge 0$，且等号 $\\iff x = 0$。',
         '⭐ 经典反例：$\\ell^1$、$\\ell^\\infty$、$C[0,1]$ 都不满足（取不交支撑的 $x, y$ 一看）。所以它们的范数**不是**内积给的 —— 这是「Hilbert 空间为什么特殊」的定量答案。',
         '⚠️ 讲义里写的是「$\\|x+y\\|^2 + \\|x-y\\|^2 = 2\\|x\\|^2 + 2\\|y\\|^2$」加一句「平行四边行」——把几何里的「平行四边形两条对角线平方和 = 四边平方和」直接搬到了范数上。'
       ].join('\n\n'),
