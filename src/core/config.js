@@ -71,6 +71,14 @@
       /* ⭐ 2026-10-19：领域中心改由**跨领域边权**求解（见 layout.js 的 solveRegionCenters）。
          打开后 packSectors 整段跳过 —— 两条规则会打架。regions.js 的 center 降级成初始锚。 */
       regionSolve: true,
+      /* ⭐ 2026-11-02：**按连通性径向排布星系**。
+         用户向：「实分析和外面有一大圈空，说明它跟别的团没啥关系，为啥在中间？」
+         病根：没有边的星系对之间没力 ⇒ 星系基本停在 regions.js 的种子位置。
+         现在按「跨星系度数」把最连通的放在内圈、孤岛推到外围。 */
+      regionRadial: true,
+      regionRadialInner: 520,   // 最连通的星系离全域重心的目标半径
+      regionRadialOuter: 2300,  // 最孤立的星系的目标半径（取当前地图的实际量级）
+      regionRadialK: 0.10,      // 径向项的力度
 
       /* ⭐ 2026-11-02：**团心松弛**（layout.js 的 relaxClusterCenters）。
          星团只在「自己星系内部」打过包 ⇒ 跨星系的团之间没有碰撞保护：
