@@ -208,7 +208,10 @@
       (pack.edges || []).forEach(function (raw) {
         if (raw && raw.kind === 'cluster-link') return;  // 星团连线请写在 pack.clusterLinks
         var e = normEdge(raw, name);
-        e.id = e.id || ('e' + (++autoId) + ':' + e.kind);
+        /* ⚠️ 分隔符用 '.' 不是 ':' —— Windows 上 'a:b' 是 NTFS 的**备用数据流**语法，
+           fs.writeFile('e19:implication.md') 会造出一个叫 e19 的文件 + 一个看不见的流，
+           而 publish 按名字去拷贝时直接 ENOENT。2026-11-02 踩到（发布被卡住）。 */
+        e.id = e.id || ('e' + (++autoId) + '.' + e.kind);
         edges.push(e);
       });
     });
