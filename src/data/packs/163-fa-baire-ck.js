@@ -32,7 +32,7 @@ window.MG = window.MG || {};
         '例：$\\mathbb{Z} \\subseteq \\mathbb{R}$、$\\{1/n\\}$、Cantor 集。',
         '⭐ Cantor 集是最有教育意义的例子：它**无处稠密**却**不可数**。所以「无处稠密」与「基数小」是两件事。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'def.meager-set',
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
         '⚠️ 第二纲 $\\ne$ 稠密：$[0,1] \\cup \\{2\\}$ 也是第二纲。',
         '⭐ 用法：想说「几乎所有点都满足 $P$」，就去证 $\\{x : \\neg P(x)\\}$ 第一纲。在无穷维里这比测度论更顺手（很多函数空间没有自然测度，但有 Baire 纲）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'def.g-delta',
@@ -67,7 +67,7 @@ window.MG = window.MG || {};
         '在度量空间里单点闭、开集是可数多个球的并，所以「闭 $\\subseteq F_\\sigma$」「开 $\\subseteq G_\\delta$」。',
         '⭐ Baire 之后，「稠密 $G_\\delta$」是「几乎全部的点」的标准写法：连续点集、可微点集、$C[0,1]$ 里无处可微函数的全体，全是稠密 $G_\\delta$。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'thm.baire',
@@ -99,7 +99,7 @@ window.MG = window.MG || {};
         '⭐ 三种等价写法都要会用，转换只需取补集。',
         '⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法', 'Baire 1899'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）', 'Baire 1899'],
     },
     {
       id: 'thm.locally-compact-baire',
@@ -114,7 +114,7 @@ window.MG = window.MG || {};
         '证法与完备度量情形同构，只把「嵌套闭球半径 $\\to 0$」换成「嵌套紧邻域」：交非空由紧集的**有限交性质**保证（不需要半径趋于零）。',
         '⭐ 意义：这条把 Baire 纲从「度量」里解放出来，于是它能用在 $C(K)$、紧群、Stone 空间这些非度量对象上 —— 凝聚态数学里的紧 Hausdorff 空间因此也能用「一般点」论证。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'prop.baire-characterizations',
@@ -136,7 +136,7 @@ window.MG = window.MG || {};
         '⭐ **纲的用法（讲义原话）**：要证「满足性质 $P$ 的点存在」，就去证 $\\{x : P(x)\\}$ 是**稠密 $G_\\delta$**。这样拿到的不只是「存在」，而是「几乎处处存在」（generic）。',
         '⚠️ (2) 里的「第二纲」作用对象是**非空开集**，不是任意集合。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'thm.baire-open-subset',
@@ -155,7 +155,7 @@ window.MG = window.MG || {};
         '于是 $\\bigcap_n(O_n\' \\cup \\Omega^c)$ 在 $X$ 稠密，与 $\\Omega$ 相交得 $\\bigcap_n O_n$ 在 $\\Omega$ 稠密。',
         '⭐ 用处：开映射定理要在开集上做局部论证、UBP 要看开子集，这条保证「局部化之后 Baire 性质不丢」。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'lem.countable-closed-cover',
@@ -172,7 +172,7 @@ window.MG = window.MG || {};
         '这是把「有一块闭集能被盖住」变成「有一个球里的东西一致地被控制」—— 正是 UBP 与开映射定理要的那一句。',
         '它的对偶写法是「可数个无处稠密闭集之并不含非空开集」，两条是同一件事的两面。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'thm.pointwise-limit-continuity',
@@ -194,7 +194,7 @@ window.MG = window.MG || {};
         '⚠️ 逐点极限**不必**连续（$f_n(x) = x^n$ 在 $[0,1]$ 上）；它只是「连续点很多」。',
         '⭐ 同一模板的经典产物：$C[0,1]$ 里「处处不可微」的函数构成稠密 $G_\\delta$（Banach 1931）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · Baire 纲定理与纲的用法'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'thm.ubp',
@@ -216,7 +216,7 @@ window.MG = window.MG || {};
         '⭐ **名字**：讲义与很多中文书叫它「共鸣定理」（resonance theorem），也叫「一致有界原理」；本图两个都收进别名。三大定理里它**只要求 $E$ 完备**（$F$ 只要赋范），是最「便宜」的一条。',
         '⚠️ $E$ 完备不能去掉：$E = c_{00}$（有限支撑序列）时取 $u_n(x) = n x_n$，逐点有界而 $\\|u_n\\| = n \\to \\infty$。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · 一致有界、开映射、逆算子与闭图像', 'Banach–Steinhaus 1927'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）', 'Banach–Steinhaus 1927'],
     },
     {
       id: 'cor.ubp-resonance',
@@ -237,7 +237,7 @@ window.MG = window.MG || {};
         '证法：令 $\\Omega_k = \\{x : M(x) = \\sup_i\\|u_i x\\| > k\\} = \\bigcup_i \\{x : \\|u_i x\\| > k\\}$，是开集；\n\n$R = \\bigcap_k \\Omega_k$ 是 $G_\\delta$。\n\n若某个 $\\Omega_k$ 不稠密，则存在球 $B(x_0, r) \\subseteq \\Omega_k^c$，球上 $M \\le k$，用与 UBP 同样的平移 + 伸缩得 $\\sup_i\\|u_i\\| \\le 2k/r$，矛盾。',
         '⭐ 意义：「发散」不是个别点，而是**几乎处处**。经典应用：Fourier 级数部分和算子满足 $\\|S_N\\| \\to \\infty$，于是**存在**连续函数其 Fourier 级数在某点发散（du Bois-Reymond 1876）—— 而且这样的函数「很多」。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · 一致有界、开映射、逆算子与闭图像'],
+      refs: ['Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）'],
     },
     {
       id: 'thm.open-mapping-banach',
@@ -274,7 +274,7 @@ window.MG = window.MG || {};
         '⚠️ **满射不能去掉**（稠密嵌入 $E \\hookrightarrow F$ 不开）；**两边完备都不能去掉**：$E$ 用来拿内点，$F$ 用来去闭包。',
         '⚠️ 与图中 `thm.open-mapping`（**非常数全纯函数**把开集映成开集）**同名不同物**：那条是复分析结论，这条是线性算子的（Baire + 级数逼近）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · 开映射定理（Baire 纲的第一步）']
+      refs: ['Rudin, Functional Analysis, 2.11']
     },
     {
       id: 'thm.bounded-inverse',
@@ -292,7 +292,7 @@ window.MG = window.MG || {};
         '⭐ 这是「连续 + 双射 $\\implies$ 同胚」在**线性**世界的额外赠品 —— 一般拓扑里不成立。',
         '⭐ 与 `thm.inverse-function-banach`（Banach 版**逆映射定理**）分工：那条是**非线性**的（$f\'(a)$ 可逆 $\\implies$ 局部微分同胚，证明用 Neumann 级数 + 压缩映射）；这条是**线性**双射的（证明用 Baire）。两者常被混称，但内容与证法都不同。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · 开映射定理']
+      refs: ['Rudin, Functional Analysis, 2.12']
     },
     {
       id: 'thm.closed-graph',
@@ -320,7 +320,7 @@ window.MG = window.MG || {};
         '⚠️ **容易误读的地方**：「连续 $\\implies$ 图像闭」是初等的（连续函数的图像当然闭），所以容易以为两边差不多。其实反方向才是这条定理的内容，而且它**必须**要 Banach + 线性：在非完备空间上图像闭而不连续的线性映射是存在的。',
         '⚠️ 两边完备都不能去掉；$u$ 的**线性**也不能去掉（非线性映射可以图像闭而不连续）。'
       ].join('\n\n'),
-      refs: ['Rudin, Functional Analysis · 闭图像定理']
+      refs: ['Rudin, Functional Analysis, 2.15']
     },
 
     /* ============================================================ C(K) 与 Stone–Weierstrass */
