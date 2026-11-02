@@ -165,7 +165,7 @@ function enTranslationOf(n, MG) {
   const firstBase = fields.map(f => rec[f].basedOn).find(Boolean) || null;
   /* ⭐ 汇总只算**创译型**的那几个字段（摘要/陈述/说明）——
      name 是派生的，把它算进去会让「只有一个英文名」的节点从
-     「name only」变成看着像「有译文待审」（290 个节点会集体说谎）。 */
+     「name only」变成看着像「有译文待审」（几百个节点会集体说谎）。 */
   const creative = fields.filter(f => f !== 'name');
   return { en: {
     /* 汇总只算创译型字段；**只有英文名**的节点报 'derived'（派生型，没人审也不需要审）——
@@ -1620,7 +1620,7 @@ function enNodeText(n, MG) {
       L.push(`> fields: ${fieldsOf(rl).map((f) => `${f} ${rl.fieldStatus[f]}`).join(' · ')}`);
     }
   } else {
-    /* ⚠️ 只有英文名（派生型）的节点**必须**说「name only」—— 那 290 个节点的英文
+    /* ⚠️ 只有英文名（派生型）的节点**必须**说「name only」—— 那几百个节点的英文
        没有任何人审过、也没有任何一句正文，⛔ 不能让人以为读到了译文。 */
     L.push('> English: **name only** · auto-derived from the source data; ' +
       'the Chinese page is authoritative.');

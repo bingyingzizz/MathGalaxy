@@ -2,10 +2,12 @@
 /* ============================================================================
    doccheck.mjs —— 文档里的「硬数字」与构建产物对不对得上
 
-   为什么要有这个：README / CONTRIBUTING / 站点首页里写死过
-   「709 nodes / 1398 edges」「9 个星系 / 45 个星团」「24 annotated queries」，
-   内容一长就全成了假话（2026-10-22 用户发现 CONTRIBUTING 还写着「四种边」）。
+   为什么要有这个：README / CONTRIBUTING / 站点首页里写死过「节点数 / 连线数 /
+   星系数 / 星团数 / 问法数」这类快照，内容一长就全成了假话
+   （2026-10-22 用户发现 CONTRIBUTING 还写着「四种边」）。
    判据必须是实体：数字一律跟 dist/graph.json 的 meta.counts 比，不比记忆。
+   ⛔ 更根本的一条：能插值的地方就不该手写 —— 壳页用 %%NODES%% 这类 token，
+      站点页用 {{SIZE_GRAPH_MD}} 这类占位符，界面上直接运行时现算。
 
    检查的是**声明型模式**，不是所有数字（正文里的数学数字不归这里管）：
      `N nodes / M edges`            `N galaxies and M clusters`

@@ -119,7 +119,7 @@ function gitDate(rel) {
   return out;
 }
 
-/* 节点 id → 它在哪个 pack 里（708 个节点分散在 82 个包里 ⇒ 日期才有区分度） */
+/* 节点 id → 它在哪个 pack 里（节点分散在几十个内容包里 ⇒ 日期才有区分度） */
 const packDir = path.join(SRC, 'data', 'packs');
 const packsOfId = new Map();
 let packDates = 0;
