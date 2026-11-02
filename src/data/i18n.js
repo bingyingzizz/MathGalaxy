@@ -26,6 +26,8 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.t3-space': { title_en: 'T3 Space', label_en: 'T3 Space', from: 'explicit' },
+    'def.t35-space': { title_en: 'T3.5 Space', label_en: 'T3.5 Space', from: 'explicit' },
     'def.t0-space': { title_en: 'T0 Space', label_en: 'T0 Space', from: 'explicit' },
     'def.t1-space': { title_en: 'T1 Space', label_en: 'T1 Space', from: 'explicit' },
     'def.interior': { title_en: 'Interior', label_en: 'Interior', from: 'explicit' },
