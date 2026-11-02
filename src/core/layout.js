@@ -512,6 +512,120 @@
       });
     })();
 
+    /* ⭐ 2026-11-02：**团心松弛（连通性 + 全对碰撞）**
+       ------------------------------------------------------------------
+       用户：「如果既然这种没关系的团都能离这么近，那有的有关系的团咋那么远」
+       实测（`_tools/_clmetrics.js`）坐实了两头的毛病：
+         · 没关系的一对，最近的只有 **36** 世界单位（algebra.numeric 与
+           analysis.measurable 直接叠在一起）；102 个团里「到最近无关邻居」的
+           中位数只有 **340**，比有关系那一对的中位（1069）小得多。
+         · 有关系的一对，最远的有 **3700**（代数结构 ↔ 伴随函子）。
+       原因：星团只在**自己星系内部**打过包（`packRegion`），跨星系的团之间
+       没有碰撞保护 —— `config.layout.clusterGap` 一直是死配置（没有代码读它）。
+
+       这一趟只动团心（节点锚点下一步才由它算），三股力：
+         · 吸引：朝「与它有边的团」的加权重心（这是用户要的那一半：有关系的靠近）
+         · 排斥：**所有**（不只有关系的）团对，只要圆盘叠了就推开（消除 36 那种重叠）
+         · 回家：朝打包给它的位置，防止星系被拉散（这是代价最小的一档）
+       ⚠️ 位移硬上限在各自星系容量盘的 45% 以内 —— 星系形状不能因此散掉。
+       ⚠️ 无随机数：同样的内容跑几次结果一样（布局一直以来的规矩）。 */
+    (function relaxClusterCenters() {
+      if (!cfg.clusterRelax) return;
+      var list = liveClusters.filter(function (c) { return c.center && c._cap > 0; });
+      if (list.length < 3) return;
+      var byId = Object.create(null);
+      list.forEach(function (c) { byId[c.id] = c; });
+      var R = cfg.clusterGap == null ? 24 : cfg.clusterGap;
+      var kAttract = cfg.clusterAttract == null ? 0.10 : cfg.clusterAttract;
+      var kRepel = cfg.clusterRepel == null ? 0.55 : cfg.clusterRepel;
+      var kHome = cfg.clusterKeep == null ? 0.10 : cfg.clusterKeep;
+      var maxStep = cfg.clusterMaxStep == null ? 18 : cfg.clusterMaxStep;
+      var reachK = cfg.clusterReach == null ? 0.45 : cfg.clusterReach;
+      var iters = cfg.clusterRelaxIters == null ? 140 : cfg.clusterRelaxIters;
+      /* 无关团之间「多近就嫌近」的倍数，以及它的力度 */
+      var kFar = cfg.clusterFar == null ? 1.7 : cfg.clusterFar;
+      var kRepelFar = cfg.clusterRepelFar == null ? 0.20 : cfg.clusterRepelFar;
+      var home = list.map(function (c) { return { x: c.center.x, y: c.center.y }; });
+      /* ⭐ 中程斥力只对**跨星系的无关对**生效：同星系内的邻居挨着是星系内部结构，
+         推它们只会把世界盒撑大、长边变多（实测 far 从 1.7 加到 2.1 时长边 72→93）。 */
+      var ownG = list.map(function (c) { var reg = graph.galaxyOf(c); return reg ? reg.id : ""; });
+      var crossGalaxy = list.map(function (_, i) {
+        return list.map(function (__, j) { return ownG[i] !== ownG[j]; });
+      });
+      var reach = list.map(function (c) {
+        var reg = graph.galaxyOf(c);
+        return reachK * ((reg && reg._cap) || c._cap * 4);
+      });
+
+      for (var it = 0; it < iters; it++) {
+        var damp = 1 - 0.85 * it / iters;
+        var fx = new Array(list.length), fy = new Array(list.length);
+        for (var i = 0; i < list.length; i++) { fx[i] = 0; fy[i] = 0; }
+
+        /* 吸引：朝伙伴团的加权重心 */
+        for (var i2 = 0; i2 < list.length; i2++) {
+          var c = list[i2], nb = clusterW[c.id];
+          if (!nb || !nb.length) continue;
+          var w = 0, sx = 0, sy = 0;
+          for (var q = 0; q < nb.length; q++) {
+            var o = byId[nb[q].to];
+            if (!o) continue;
+            var ww = Math.min(6, nb[q].w);      // 封顶：一条超大权重的边不许独占方向
+            w += ww; sx += o.center.x * ww; sy += o.center.y * ww;
+          }
+          if (w < 1e-6) continue;
+          fx[i2] += ((sx / w) - c.center.x) * kAttract;
+          fy[i2] += ((sy / w) - c.center.y) * kAttract;
+        }
+
+        /* 排斥：**所有**团对（这才是“没关系的不能叠”的保障） */
+        for (var a = 0; a < list.length; a++) {
+          for (var b = a + 1; b < list.length; b++) {
+            var A = list[a], B = list[b];
+            var dx = B.center.x - A.center.x, dy = B.center.y - A.center.y;
+            var d2 = dx * dx + dy * dy;
+            var need = A._cap + B._cap + R;
+            var d = Math.sqrt(d2) || 0.01;
+            var ux, uy, push = 0;
+            var linked = false;
+            var nbA = clusterW[A.id];
+            if (nbA) for (var z = 0; z < nbA.length; z++) if (nbA[z].to === B.id) { linked = true; break; }
+            if (d2 < need * need) {
+              /* 叠了：硬推开（不分有没有关系） */
+              ux = d2 > 1e-6 ? dx / d : ((a + b) % 2 ? 1 : -1);
+              uy = d2 > 1e-6 ? dy / d : ((a * 7 + b) % 2 ? 1 : -1);
+              push = (need - d) * kRepel;
+            } else if (!linked && crossGalaxy[a][b] && d < need * kFar) {
+              /* ⭐ 没关系的两团、已经靠得比「两盘相切」的 kFar 倍还近 ⇒ 中程斥力。
+                 这一项就是用户那句话的直接对应：**没关系的别鬼鬼祟祟地挨着**。
+                 只对**无边**的对生效，所以不会把有关系的拉开。 */
+              ux = dx / d; uy = dy / d;
+              var want = need * kFar;
+              push = (want - d) / want * kRepelFar * (A._cap + B._cap);
+            } else continue;
+            fx[a] -= ux * push; fy[a] -= uy * push;
+            fx[b] += ux * push; fy[b] += uy * push;
+          }
+        }
+
+        /* 回家 + 限步 */
+        for (var m = 0; m < list.length; m++) {
+          var cc = list[m];
+          var hx = home[m].x, hy = home[m].y;
+          fx[m] += (hx - cc.center.x) * kHome;
+          fy[m] += (hy - cc.center.y) * kHome;
+          var vx = fx[m] * damp, vy = fy[m] * damp;
+          var L = Math.sqrt(vx * vx + vy * vy);
+          if (L > maxStep) { vx *= maxStep / L; vy *= maxStep / L; }
+          var nx = cc.center.x + vx, ny = cc.center.y + vy;
+          /* 不能跑出「自己星系容量盘的 45%」那么远 */
+          var ddx = nx - hx, ddy = ny - hy, dd = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (dd > reach[m]) { nx = hx + ddx * reach[m] / dd; ny = hy + ddy * reach[m] / dd; }
+          cc.center = { x: nx, y: ny };
+        }
+      }
+    })();
+
     /* ------------------------------------------------ 2. 节点锚点 */
     var buckets = Object.create(null);   // 无星团节点按星系分桶
     var borders = [], orphans = [];
