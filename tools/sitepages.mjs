@@ -757,7 +757,7 @@ ${blocks.join('\n\n')}
   <ul class="read-list">
     <li><a href="read.html">读图指南</a>：三层尺度、四种边、层号与字段</li>
     <li><a href="read.html#notation">记号对照表</a>：全图记号的唯一权威</li>
-    <li><a href="read.html#hubs">枢纽定理榜</a>：按被引用次数排序</li>
+    <li><a href="read.html#hubs">枢纽定理榜</a>：基础工具 / 综合结论 / 跨领域连接三榜</li>
     <li><a href="index.md">Markdown 目录</a>：给 AI 的按需检索入口</li>
   </ul>
 </section>

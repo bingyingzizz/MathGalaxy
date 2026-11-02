@@ -98,8 +98,11 @@ MG.i18nDocs = {
         '## layer (dependency depth)',
         '',
         'Counted from the bottom-most ZF axioms and set-theoretic notions along the longest path',
-        'of "premise → what depends on it"; equivalent statements share a layer. Read it as a',
-        '**study order**. ⚠️ It is dependency depth, not curriculum order.',
+        'of "premise → what depends on it"; equivalent statements share a layer. A hit in a higher',
+        'layer means everything there is built on what is below. It is a **rough reading order**.',
+        '⚠️ It records the construction this map chose — not a curriculum order, and not a claim',
+        'that everyone should start from the axioms (reading backwards from known objects is',
+        'usually cheaper).',
         '',
         '## Fields and citation',
         '',
@@ -157,16 +160,23 @@ MG.i18nDocs = {
     /* ---------------------------------------------------------------- hubs */
     hubs: {
       title: 'MathGalaxy · Hub theorems',
-      status: 'reviewed', basedOn: 'v0.9.1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      /* ⚠️ 2026-11-02：旧版这句写反了方向（按入边排却宣称「真正的地基」）——
+         中文底稿已改成三榜，英文随之重写；改完 `bun tools/i18n-status.mjs --patch` 更新 basedOn，
+         并把 status 退回 draft（这份新文字还没人审）。 */
+      status: 'draft', basedOn: 'v0.9.1',
       head: [
-        'Ranked by **in-degree**: how many strong edges point at it. It answers one question —',
-        '**which things are the real foundation and worth learning first.** (Weak edges do not',
-        'count.)',
-        'Data root `./`: every entry can be followed to `nodes/<id>.md`.',
+        'The direction of every edge is **prerequisite → what depends on it**, so in-edges and',
+        'out-edges say opposite things:',
+        '- **Foundations**: the most results take it as a prerequisite (out-edges) — learn these first.',
+        '- **Comprehensive results**: derived from the most prerequisites (in-edges) — you need a lot',
+        '  first; not a first read.',
+        '- **Cross-domain hubs**: their dependents span the most clusters — central, but not a study order.',
+        'Each row gives two numbers: distinct nodes / edges (Foundations, Comprehensive) or',
+        'clusters / nodes (Cross-domain), ranked by the first. Weak (analogy) edges are',
+        'excluded. Data root `./`.',
       ].join('\n'),
-      tail: (shown, total, withIn) =>
-        `(${withIn} of ${total} nodes have at least one strong in-edge; the top ${shown} are listed; ` +
-        'the full ranking is in `graph.json`.)',
+      tail: (shown) =>
+        `(${shown} entries listed across the three boards; the full ranking is in \`graph.json\`.)`,
     },
 
     /* ------------------------------------------------------------ notation */

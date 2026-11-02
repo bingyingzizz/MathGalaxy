@@ -360,7 +360,7 @@ const DOCS = [
   { id: 'policy',   file: 'policy.md',        en: 'policy.en.md',  nav: '内容准则',   navEn: 'Content policy',
     sub: '这张图为什么这么长',                    subEn: 'why the graph is this long' },
   { id: 'hubs',     file: 'hubs.md',          en: 'hubs.en.md',    nav: '枢纽定理榜', navEn: 'Hub theorems',
-    sub: '哪些东西是地基',                        subEn: 'what the foundations are' },
+    sub: '基础 / 综合 / 连接三榜',                    subEn: 'foundations · comprehensive · cross-domain' },
   { id: 'license',  file: 'LICENSE.txt',                            nav: '许可与引用', navEn: 'Licence & citation',
     sub: '内容 CC BY 4.0 · 引用请写节点 id',       subEn: 'content CC BY 4.0 · cite by node id' },
 ];

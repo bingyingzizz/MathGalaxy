@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 709 nodes, 1398 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1460 nodes, 2753 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 709 nodes, 1398 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1460 nodes, 2753 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -1303,7 +1303,7 @@ window.MG = window.MG || {};
     <div class="set-sep"></div>
     <div class="set-title" data-t="去别处">去别处</div>
     <a class="set-link" href="../" data-t="⌂ 站点首页">⌂ 站点首页</a>
-    <a class="set-link" href="all.html" id="set-link-all">全部概念索引（706 个）</a>
+    <a class="set-link" href="all.html" id="set-link-all">全部概念索引（1460 个）</a>
     <a class="set-link" href="questions.html" id="set-link-q">常见问法（184 条）</a>
     <a class="set-link" href="read.html" data-t="读图指南与记号表">读图指南与记号表</a>
     <a class="set-link" href="https://github.com/bingyingzizz/MathGalaxy" target="_blank" rel="noopener" data-t="↗ GitHub 源码">↗ GitHub 源码</a>
@@ -1324,7 +1324,7 @@ window.MG = window.MG || {};
         /mathgalaxy/ 是 2.6 MB 的单文件应用，正文全在 JS 字符串里，渲染完页面上
         只有 97 个字符的可见文本 —— 搜索引擎读不到任何内容，整页等于空壳，
         所以这个 URL 至今没被任何搜索引擎收录（实测 site: 查不到）。
-        这里是页面上唯一的静态可读内容，也是通往 706 个概念页与阅读页的入口。
+        这里是页面上唯一的静态可读内容，也是通往 1460 个概念页与阅读页的入口。
      ⚠️ 首页（/）有它自己的内容，**替代不了这里** —— 搜索引擎按 URL 分别索引，
         而别人分享的链接正是这个 /mathgalaxy/。
      关于折叠：说明用 <details open>，默认展开 ⇒ 爬虫读到的就是展开状态；
@@ -1334,8 +1334,9 @@ window.MG = window.MG || {};
   <h1>数学星图 MathGalaxy</h1>
   <details>
     <summary data-t="这是什么 · 怎么用">这是什么 · 怎么用</summary>
-    <p class="hint-lead" data-t="把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 / 领域 / 星团 / 节点」四层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。">把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 / 领域 / 星团 / 节点」
-    四层组织成一张可交互的依赖图 —— 箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。</p>
+    <p class="hint-lead" data-t="把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 › 领域 › 星团 › 节点」四级导航组织成一张可交互的依赖图 —— 后三级就是星图的「星系 / 星团 / 恒星」三层尺度（大板块只是把领域再归一次类）。箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。">把数学概念（公理 / 定义 / 定理 / 引理 / 命题）按「大板块 › 领域 › 星团 › 节点」
+    四级导航组织成一张可交互的依赖图 —— 后三级就是星图的「星系 / 星团 / 恒星」三层尺度
+    （大板块只是把领域再归一次类）。箭头是推出，黑线是等价，蓝线是定义引用，紫色虚线是跨领域类比。</p>
     <p class="hint-keys"><span data-t="拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走">拖拽平移 · 滚轮 / 双指缩放 · 点击节点聚焦 · 点击连线看推导 · 聚焦后 ←→ 沿边游走</span>
     ｜ <a href="all.html" data-t="全部概念索引">全部概念索引</a> · <a href="questions.html" data-t="常见问法">常见问法</a> · <a href="read.html" data-t="读图指南">读图指南</a> · <a href="llms.txt" data-t="检索协议">检索协议</a></p>
   </details>

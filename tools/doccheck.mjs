@@ -35,6 +35,10 @@ const FILES = [
   'README.md',
   'CONTRIBUTING.md',
   'site/index.html',
+  /* ⚠️ 2026-11-02 加：壳页的 <meta description> / 页内「全部概念索引（N 个）」写明死的数，
+     而爬虫不跑 JS ⇒ 它必须静态，只能靠构建同步（build.mjs 的 syncShellCounts）。
+     列进来的意义：**构建没跑就提交，或手改回去了**，这里当场变红。 */
+  'index.html',
   'i18n/glossary.md',
   'reading.md',
   'llms.txt',
@@ -49,6 +53,13 @@ const RULES = [
   { re: /(\d+)\s+annotated queries/gi, got: m => [Number(m[1])], want: [nQueries], why: `searchcheck 基准 ${nQueries} 条` },
   { re: /(\d+)\s*条弱边/gi, got: m => [Number(m[1])], want: [nWeak], why: `analogy ${nWeak} 条` },
   { re: /(\d+)\s*条推论边/gi, got: m => [Number(m[1])], want: [nPink], why: `layer:false 的 implication ${nPink} 条` },
+  /* 壳页：英文 meta 描述里的总数。带千位逗号的写法也一起认（1460 / 1,460 都行）。 */
+  { re: /([\d,]+)\s+nodes,\s*([\d,]+)\s+edges/gi,
+    got: m => [Number(m[1].replace(/,/g, '')), Number(m[2].replace(/,/g, ''))],
+    want: [C.nodes, C.edges], why: `nodes=${C.nodes} edges=${C.edges}` },
+  /* 壳页：概念索引入口上写明死的个数（曾经是 706） */
+  { re: /全部概念索引（(\d+)\s*个）/g, got: m => [Number(m[1])], want: [C.nodes], why: `nodes=${C.nodes}` },
+  { re: /通往\s*(\d+)\s*个概念页/g, got: m => [Number(m[1])], want: [C.nodes], why: `nodes=${C.nodes}` },
 ];
 
 let bad = 0, checked = 0;

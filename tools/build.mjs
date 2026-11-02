@@ -1140,8 +1140,8 @@ function exportReading(data, base = '') {
 
 ## layer（依赖深度）
 
-从 ZF 公理起，沿「前置 → 依赖它的」最长路径数出的层号，可当**学习顺序**；
-等价命题同层。⚠️ 是依赖深度，不是课程顺序。
+层号从 ZF 沿最长前置链数出（等价命题同层），可作**阅读次序参考**，非课程顺序。
+⚠️ 记的是**构造依赖**，不代表人人从公理学起。
 
 ## 字段与引用
 
@@ -1187,38 +1187,111 @@ function exportPolicy(data, base = '') {
 }
 
 /* --------------------------------------------------------------- hubs.md */
-/** 枢纽定理榜：按「被引用次数」排（只数强边，弱边不算）。 */
-function exportHubs(MG, graph, data) {
-  const indeg = new Map();
-  const bump = k => indeg.set(k, (indeg.get(k) || 0) + 1);
-  for (const e of graph.edges) {
-    if (e.kind === 'implication') bump(e.target);
-    else if (e.kind === 'definition') bump(e.usedBy);
-    else if (e.kind === 'equivalence') { bump(e.a); bump(e.b); }
-    /* analogy（弱边）不计入 —— 枢纽榜只反映逻辑骨架 */
-  }
-  void data;
-  const ranked = graph.nodes
-    .map(n => ({ n, d: indeg.get(n.id) || 0 }))
-    .filter(x => x.d > 0)
-    .sort((a, b) => b.d - a.d || a.n.layer - b.n.layer);
+/* ⭐⭐⭐ 枢纽榜：**入和出说的是两件相反的事**（2026-11-02 外部评审指出，核对后确认它对）
 
-  const L = ['# 数学星图 · 枢纽定理榜', '',
-    '按**入边数**排序：有多少条强边指向它。回答一个问题 ——',
-    '**哪些东西是真正的地基，值得优先学熟。**（弱边不计入。）',
-    '数据根 `./`：每项都能顺着读 `nodes/<id>.md`。', ''];
-  let used = aiCost(L.join('\n'));
-  let shown = 0;
-  for (const { n, d } of ranked) {
-    const line = `- **${d}** \`${n.id}\` ${n.label} · layer ${n.layer} · ` +
-      `${n.cluster && graph.clusterById[n.cluster] ? graph.clusterById[n.cluster].name : '—'}`;
-    if (aiBytes(L.join('\n') + '\n' + line) > AI_MAXB - 150 || shown >= 30) break;
-    L.push(line); shown++;
+   边的方向一律是「前置 → 依赖它的结论」。所以对同一个节点：
+     · 入（上游客多）  ＝ 由很多前置一起推出   ⇒ **综合结论**（学它之前得先懂一片）
+     · 出（下游客多）  ＝ 被很多结论当作前置   ⇒ **基础工具**（值得优先学熟）
+     · 下游横跨星团多  ⇒ **跨领域连接**（位置枢纽，但**不是**入门顺序）
+
+   ⚠️ 旧版只有「入边数」一条，却写成「哪些东西是真正的地基，值得优先学熟」—— 方向恰好反了。
+      实例：`lem.zorn` 入边 7，是因为有多条推导**以它作结论**；它真正的分量在出边。
+   ⚠️ 另一个旧 bug：`definition` 边存的是 `{definition, usedBy}`，旧代码 `bump(usedBy)` 把
+      「用到了几个定义」算进了「被引用次数」—— 口径其实混了两件事。现在两栏分开、方向各自算。
+   每榜同时给「不同节点数 / 边数」，**排名按不同节点数**（边数会被同一对节点多条边灌水）。 */
+function hubBoards(graph) {
+  const use = new Map(), pre = new Map(), useE = new Map(), preE = new Map();
+  const add = (m, k, v) => { if (!m.has(k)) m.set(k, new Set()); m.get(k).add(v); };
+  const cnt = (m, k) => m.set(k, (m.get(k) || 0) + 1);
+  for (const e of graph.edges) {
+    if (e.kind === 'analogy') continue;               // 弱边不进逻辑骨架
+    if (e.kind === 'implication') {
+      for (const s of (e.sources || [])) { add(use, s, e.target); cnt(useE, s); }
+      /* ⚠️ 入边数按**边**数（一条 entails 多个前提也只能算一条边）——
+         否则会和节点面板里「它依赖 N 个」（panel.js 数的是边）对不上 */
+      for (const s of (e.sources || [])) add(pre, e.target, s);
+      cnt(preE, e.target);
+    } else if (e.kind === 'definition') {
+      /* 概念方向是 definition → usedBy（定义是前置） */
+      add(use, e.definition, e.usedBy); cnt(useE, e.definition);
+      add(pre, e.usedBy, e.definition); cnt(preE, e.usedBy);
+    } else if (e.kind === 'equivalence') {
+      /* ⭐ 等价边**不进这两榜**：它两边互推，说「谁是谁的前提」没意义，
+         且节点面板的「它依赖 N 个 / 被 M 个依赖」也只数推出与定义两种边
+         —— 口径一致，读者拿两个数对看不会当场打架。 */
+      continue;
+    }
   }
-  L.push('');
-  L.push(`（${graph.nodes.length} 个节点里 ${ranked.length} 个带强边入边，列了前 ${shown} 个；` +
-    `完整清单见 \`graph.json\`。）`);
+  const nodeById = new Map(graph.nodes.map(n => [n.id, n]));
+  const clName = id => {
+    const n = nodeById.get(id);
+    return (n && n.cluster && graph.clusterById[n.cluster]) ? graph.clusterById[n.cluster].name : '—';
+  };
+  /* 第三榜的「横跨几个团」= 下游节点落在多少个不同星团里 */
+  const spread = new Map();
+  for (const [k, set] of use) {
+    const cs = new Set();
+    for (const id of set) { const n = nodeById.get(id); if (n && n.cluster) cs.add(n.cluster); }
+    spread.set(k, cs.size);
+  }
+  /* ⭐ `by` 决定主排序键：基础/综合按「不同节点数」，跨领域按「横跨星团数」
+     （否则第三榜会与第一榜长得一模一样 —— 下游多的大多横跨得多，但没有区分度） */
+  const rank = (m, e, extra, by) => graph.nodes
+    .map(n => ({ n, nodes: (m.get(n.id) || new Set()).size, edges: e.get(n.id) || 0,
+      more: extra ? extra(n.id) : 0 }))
+    .filter(x => x.nodes > 0 && (!by || x.more > 0))
+    .sort((a, b) => by === 'more'
+      ? (b.more - a.more || b.nodes - a.nodes || a.n.layer - b.n.layer)
+      : (b.nodes - a.nodes || b.edges - a.edges || a.n.layer - b.n.layer));
+  return [
+    { key: 'base', zh: '基础工具榜', en: 'Foundations (most depended on)',
+      zhWhy: '被最多结论当作前置（出边多）—— 值得优先学熟。',
+      enWhy: 'The most results take it as a prerequisite (out-edges) — learn these first.',
+      rows: rank(use, useE) },
+    { key: 'big', zh: '综合结论榜', en: 'Comprehensive results',
+      zhWhy: '由最多前置一起推出（入边多）—— 学它之前得先懂一片，**不是**入门首选。',
+      enWhy: 'Derived from the most prerequisites (in-edges) — you need a lot first; not a first read.',
+      rows: rank(pre, preE) },
+    { key: 'cross', zh: '跨领域连接榜', en: 'Cross-domain hubs',
+      zhWhy: '下游节点横跨的星团最多 —— 位置枢纽，但**不**代表该先学。',
+      enWhy: 'Their dependents span the most clusters — central, but not a study order.',
+      rows: rank(use, useE, id => spread.get(id) || 0, 'more') },
+  ];
+}
+
+/** 枢纽定理榜（中文产物）：三榜并排，各给「不同节点数 / 边数」。 */
+function exportHubs(MG, graph, data) {
+  void data;
+  const L = ['# 数学星图 · 枢纽定理榜', '',
+    '边是「前置 → 依赖它的结论」，**出和入说两件相反的事**：',
+    '出边多 = **基础工具**（很多结论靠它）；入边多 = **综合结论**（得先懂一片）；',
+    '下游横跨星团多 = **连接枢纽**（位置中心，不是入门顺序）。',
+    '每行两个数按第一个排（连接榜是团/节点）；只数推出与定义，弱边、等价边不计。', ''];
+  const boards = hubBoards(graph);
+  const tail = `（${graph.nodes.length} 个节点；完整清单见 \`graph.json\`。）`;
+  const fit = s => aiBytes(s) <= AI_MAXB - 150 && aiCost(s) <= AI_ESC - 150;
+  for (const b of boards) {
+    const head = `## ${b.zh}`;
+    if (!fit(L.join('\n') + '\n' + head + '\n' + tail)) continue;
+    L.push(head);
+    let k = 0;
+    for (const { n, nodes, edges, more } of b.rows) {
+      /* ⭐ 每榜最多 3 条：整个产物卡在 1300 B，一个榜吃到饱就把另两个挤掉了 */
+      if (k++ >= 3) break;
+      const deg = b.key === 'cross' ? `**${more} 团 / ${nodes} 节点**` : `**${nodes} / ${edges}**`;
+      const line = `- ${deg} \`${n.id}\` ${n.label} · ${clNameOf(graph, n)}`;
+      if (!fit(L.join('\n') + '\n' + line + '\n' + tail)) break;
+      L.push(line);
+    }
+    L.push('');
+  }
+  L.push(tail);
   return L.join('\n') + '\n';
+}
+
+/** 星团名的取法只有这一处（两个榜函数共用） */
+function clNameOf(graph, n) {
+  return (n.cluster && graph.clusterById[n.cluster]) ? graph.clusterById[n.cluster].name : '—';
 }
 
 
@@ -1510,32 +1583,26 @@ function enNodeText(n, MG) {
        （aiChunk 对「一整段没空行」的东西只能逐字切）。切在**行与行之间**才诚实。 */
 function hubBlocksEn(MG, graph) {
   const D = MG.i18nDocs, d = D.docs.hubs;
-  const indeg = new Map();
-  const bump = k => indeg.set(k, (indeg.get(k) || 0) + 1);
-  for (const e of graph.edges) {
-    if (e.kind === 'implication') bump(e.target);
-    else if (e.kind === 'definition') bump(e.usedBy);
-    else if (e.kind === 'equivalence') { bump(e.a); bump(e.b); }
-    /* analogy（弱边）不计入 —— 枢纽榜只反映逻辑骨架 */
-  }
-  const ranked = graph.nodes
-    .map(n => ({ n, d: indeg.get(n.id) || 0 }))
-    .filter(x => x.d > 0)
-    .sort((a, b) => b.d - a.d || a.n.layer - b.n.layer);
-
   const blocks = [d.head];
   let rows = [], shown = 0;
-  for (const { n, d: deg } of ranked) {
-    if (shown >= 30) break;
-    const cl = n.cluster && graph.clusterById[n.cluster] ? graph.clusterById[n.cluster].name : '—';
-    rows.push(`- **${deg}** \`${n.id}\` ${enNameOf(n)} · layer ${n.layer} · ${cl}`);
-    shown++;
-    /* ⚠️ 每块别贪多：块是**不可再切**的单位，给大了会整块挤到下一页（页数翻倍）。
-       5 行一块，让打包器自己把页填满。 */
-    if (rows.length === 5) { blocks.push(rows.join('\n')); rows = []; }
+  /* ⚠️ 三榜的算法**只有一处实现**（hubBoards）—— 英文版只是换标题与说明文字，
+     绝不能再抄一遍口径（旧代码抄了一遍，方向错误也就跟着抄了一遍）。 */
+  for (const b of hubBoards(graph)) {
+    rows = [];
+    blocks.push(`## ${b.en}`);
+    for (const { n, nodes, edges, more } of b.rows) {
+      if (shown >= 15) break;
+      const deg = b.key === 'cross' ? `**${more} clusters / ${nodes} nodes**` : `**${nodes} / ${edges}**`;
+      rows.push(`- ${deg} \`${n.id}\` ${enNameOf(n)} · ${clNameOf(graph, n)}`);
+      shown++;
+      /* ⚠️ 每块别贪多：块是**不可再切**的单位，给大了会整块挤到下一页（页数翻倍）。
+         4 行一块，让打包器自己把页填满。 */
+      if (rows.length === 4) { blocks.push(rows.join('\n')); rows = []; }
+    }
+    if (rows.length) blocks.push(rows.join('\n'));
+    rows = [];
   }
-  if (rows.length) blocks.push(rows.join('\n'));
-  blocks.push(d.tail(shown, graph.nodes.length, ranked.length));
+  blocks.push(d.tail(shown, graph.nodes.length));
   return blocks;
 }
 
@@ -2182,6 +2249,28 @@ function assertNotation(MG, graph) {
   return errs;
 }
 
+/* ------------------------------------------------ 壳页里的数量（构建期同步） */
+/* 为什么要**改写源文件**：`index.html` 是「双击就能开」的入口，它的 `<meta description>`
+   必须是**静态**文本（爬虫不跑 JS），所以不能像画布上的东西那样运行时注入；
+   但写死就会过期 —— 2026-11-02 实测：描述里还写着 709 nodes / 1398 edges，
+   实际 1460 / 2753；页内「全部概念索引（706 个）」同理。
+   ⇒ 构建时按 `meta.counts` 就地改写这几处（与根部 `llms.txt` / `reading.md` 同一做法），
+     `tools/doccheck.mjs` 再守一道（构建没跑就提交也能逮到）。
+   ⚠️ 只改**可识别的模式**，绝不做全文数字替换 —— 正文里的数字是数学，不是统计。 */
+function syncShellCounts(C) {
+  const p = path.join(ROOT, 'index.html');
+  const src = fs.readFileSync(p, 'utf8');
+  const en = `${C.nodes} nodes, ${C.edges} edges`;
+  const out = src
+    .replace(/\d+\s*nodes,\s*\d+\s*edges/g, en)
+    .replace(/全部概念索引（\d+ 个）/g, `全部概念索引（${C.nodes} 个）`)
+    .replace(/通往\s*\d+\s*个概念页/g, `通往 ${C.nodes} 个概念页`);
+  if (out !== src) {
+    fs.writeFileSync(p, out, 'utf8');
+    console.log(`  → index.html 数量已同步（${en}）`);
+  }
+}
+
 /* ---------------------------------------------------------------- 单文件 HTML */
 function buildSingleFile() {
   let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
@@ -2228,6 +2317,8 @@ if (graph.warnings.length) {
 
 if (doJSON) {
   const data = exportJSON(MG, graph);
+  /* 壳页（index.html）里写死的数 —— 必须**在单文件打包之前**改，否则打进去的还是旧值 */
+  syncShellCounts(data.meta.counts);
   // 内容没变就沿用旧时间戳 —— 否则每次构建都会把 git 工作区弄脏
   data.meta.generated = stableStamp(path.join(DIST, 'graph.json'), data);
   fs.writeFileSync(path.join(DIST, 'graph.json'), JSON.stringify(data, null, 1), 'utf8');
