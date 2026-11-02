@@ -753,6 +753,14 @@ MG.clusters = [
     desc: '让「积分」在流形上跑起来：奇异方块与链 → 边界算子与 ∂²=0 → 链上的积分与换元、Stokes 与散度定理 → 体积形式与密度 → de Rham 复形、Poincaré 引理、Mayer–Vietoris，最后到 de Rham 定理。'
   },
   {
+    id: 'diffgeom.symplectic',
+    name: '辛流形与 Hamilton 力学',
+    en: 'Symplectic Manifolds and Hamiltonian Mechanics',
+    parent: 'diffgeom',
+    hub: 'thm.darboux',
+    desc: '造出「经典力学的相空间」：辛流形（闭的非退化 2-形式）→ **Darboux 定理**（局部全一样，所以没有局部不变量）→ Hamilton 向量场（函数 ⟹ 流）→ Poisson 括号（函数代数的 Lie 结构）→ Lagrange 子流形（局部是函数的图像）→ Lagrange 括号（与 Poisson 互为逆矩阵，正则变换的旧写法）。线性那半在代数星系的「多重线性与张量」。'
+  },
+  {
     id: 'diffgeom.lieg',
     name: 'Lie 群',
     en: 'Lie Groups',

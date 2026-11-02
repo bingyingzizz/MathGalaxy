@@ -3,7 +3,7 @@
 根 `../`　·　第 1 页 `index.md`
 
 ## 微分几何（diffgeom）
-diffgeom.frame　diffgeom.surface　diffgeom.intrinsic　diffgeom.manifold　diffgeom.vector　diffgeom.form　diffgeom.lieg
+diffgeom.frame　diffgeom.surface　diffgeom.intrinsic　diffgeom.manifold　diffgeom.vector　diffgeom.form　diffgeom.symplectic　diffgeom.lieg
 
 ## 数论（number）
 number.functions　number.quadratic　number.basic
