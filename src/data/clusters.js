@@ -605,11 +605,27 @@ MG.clusters = [
   },
   {
     id: 'cond.cohomology',
-    name: '凝聚态上同调',
-    en: 'Condensed Cohomology',
+    name: '凝聚态导出函子',
+    en: 'Condensed Derived Functors',
     parent: 'condensed',
     hub: 'thm.real-banach-chaus-acyclic',
-    desc: '造出「哪些空间的上同调会自动消失」：Stonean 上零调 → Stone 上常系数零调 → 局部紧上等于层上同调 → 半范数 / Banach 阿贝尔群与 $K$-有界正合 → 实 Banach 在紧 Hausdorff 上零调 → Breen–Deligne 分解 → $\\operatorname{RHom}$ 的逐类计算 → 局部紧阿贝尔群只剩 $\\operatorname{Ext}^{0}, \\operatorname{Ext}^{1}$。'
+    desc: '造出「拿什么算 \\operatorname{RHom}$」：半范数 / Banach 阿贝尔群 → **$K$-有界正合**（凝聚态的「可数极限意义上的正合」）→ $K$-有界正合在完备化与滤过余极限下保持 → 相邻两条 $K$-有界推出正合 → 实 Banach 在紧 Hausdorff 上零调（整个理论的地基）→ Banach 值 Tietze 延拓。⚠️ 2026-11-02 拆团：Breen–Deligne 谱序列拆到「Breen–Deligne 谱序列」，逐类计算拆到「导出 Hom 的具体计算」。'
+  },
+  {
+    id: 'cond.ss',
+    name: 'Breen–Deligne 谱序列',
+    en: 'Breen-Deligne Spectral Sequences',
+    parent: 'condensed',
+    hub: 'thm.breen-deligne',
+    desc: '把 \\operatorname{Ext}$ 展成一片可算的东西：**Breen–Deligne 分解**（把 $\\mathbb{Z}[M]$ 换成一批「$p$ 阶乘同伦」的整系数组合）→ 谱序列 $E_{1}^{p,q} = \\bigoplus_{i} H^{q}(M^{s_{p,i}}, N) \\implies \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M,N)$ → Stonean / Stone 满射上的 $1$-有界零调（保证 $E_{1}$ 那一片真的可算）。'
+  },
+  {
+    id: 'cond.compute',
+    name: '导出 Hom 的具体计算',
+    en: 'Computing Derived Hom',
+    parent: 'condensed',
+    hub: 'table.rhom-zrt',
+    desc: '把那条谱序列**落到具体系数上**算完：Stonean / 离散空间上自由模、Stone 上常系数、\\mathbb{R}/\\mathbb{R}^{\\mathrm{disc}}$ 的截面 → 截面公式 \\operatorname{Ext}^{i}(\\mathbb{Z}[S],N) \\cong H^{i}(S,N)$ → 局部紧阿贝尔群的高次 \\operatorname{Ext}$ 消失（只剩 \\operatorname{Ext}^{0},\\operatorname{Ext}^{1}$）→ \\mathbb{Z}, \\mathbb{R}, \\mathbb{T}$ 的 \\operatorname{RHom}$ 计算表 + 有限维 Banach / 连通局部紧 / 非局部紧三个例子。'
   },
   {
     id: 'cond.solid',

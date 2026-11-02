@@ -17,7 +17,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.cond-slice-topos-morphism',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: 'Cond/X 到开集拓扑斯的态射',
       title: '拓扑斯态射 $c_{X} : \\mathrm{Cond}/X \\rightleftarrows \\mathrm{Open}(X)$',
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.stonean-cond-acyclic',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: 'Stonean 上凝聚阿贝尔群零调',
       title: 'Stonean 空间上一切凝聚态阿贝尔群零调',
@@ -77,7 +77,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.stone-constant-acyclic',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'lemma',
       label: 'Stone 上常系数零调',
       title: 'Stone 空间上常值系数的零调',
@@ -104,7 +104,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.dyckhoff',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'theorem',
       label: '局部紧上凝聚态＝层上同调',
       title: 'Dyckhoff：$H^{n}_{\\mathrm{cond}}(X, M) = H^{n}_{\\mathrm{sheaf}}(X, M)$',
@@ -281,7 +281,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.stone-cech-1-bounded',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.ss',
       type: 'lemma',
       label: 'Stone 满射的 Čech 复形 1-有界零调',
       title: 'Stone 满射的增广 Čech 复形是 $1$-有界零调',

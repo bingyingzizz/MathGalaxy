@@ -69,7 +69,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 8.1 */
     {
       id: 'lem.cech-finite-disjoint-acyclic',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'lemma',
       label: '有限不交覆盖的 Čech 零调',
       title: '引理：紧 Hausdorff 空间上有限不交覆盖的 Čech 高次为零',
@@ -94,7 +94,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 8.2 */
     {
       id: 'prop.condab-discrete-acyclic',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: '离散空间上零调',
       title: '命题：凝聚态阿贝尔群在离散空间与「离散 $\\times$ Stonean」上零调',
@@ -116,7 +116,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 8.3 */
     {
       id: 'prop.condab-quotient-r-disc',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: 'R/R_disc 在 Stone 上的截面',
       title: '命题：$Q = \\mathbb{R}/\\mathbb{R}^{\\mathrm{disc}}$ 的截面是连续函数模局部常值函数',
@@ -140,7 +140,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 8.8 */
     {
       id: 'cor.ext-cond-set-section',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'corollary',
       label: 'Ext 的截面公式',
       title: '推论：$\\operatorname{Ext}^{n}(\\mathbb{Z}\\cdot X, N)(S) \\cong H^{n}(X \\times S, N)$',
@@ -161,7 +161,7 @@ window.MG = window.MG || {};
     /* ----------------------------------------------------- 8.9 */
     {
       id: 'prop.rhom-zs-sections',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: 'Stonean 空间上自由模的导出 Hom',
       title: '命题：$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}[S], N) \\cong N(S)$（$S$ Stonean）',
@@ -184,7 +184,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 8.10 */
     {
       id: 'prop.rhom-ze-powers',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: '离散空间上自由模的导出 Hom',
       title: '命题：$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}[E], N) \\cong N^{E}$（$E$ 离散）',
@@ -207,7 +207,7 @@ window.MG = window.MG || {};
     /* ---------------------------------------------------- 8.11 */
     {
       id: 'prop.discrete-cond-rhom-constant',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: '离散群的导出 Hom 是常层',
       title: '命题：离散阿贝尔群的导出 Hom 与导出张量积都落在常层里',

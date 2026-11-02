@@ -26,6 +26,8 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.frame-bundle': { title_en: 'Frame Bundle', label_en: 'Frame Bundle', from: 'explicit' },
+    'def.associated-bundle': { title_en: 'Associated Bundle', label_en: 'Associated Bundle', from: 'explicit' },
     'def.norm': { title_en: "Norm on a Vector Space", label_en: "Norm", from: 'explicit' },
     'prop.norm-induces-metric': { title_en: "Metric Induced by a Norm", label_en: "Norm-Induced Metric", from: 'explicit' },
     'def.norm-equivalence': { title_en: "Equivalent Norms", label_en: "Equivalent Norms", from: 'explicit' },

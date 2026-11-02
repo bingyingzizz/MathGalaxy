@@ -17,7 +17,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.ext-stonean-section',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'lemma',
       label: 'Stonean 上 Ext 的截面公式',
       title: '$\\operatorname{Ext}^{n}(M, N)(S) \\cong \\operatorname{Ext}^{n}(M \\cdot S,\\ N)$',
@@ -50,7 +50,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.breen-deligne',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.ss',
       type: 'theorem',
       label: 'Breen–Deligne 分解',
       title: 'Breen–Deligne 分解：自由阿贝尔群的有限直和消解',
@@ -77,7 +77,7 @@ window.MG = window.MG || {};
 
     {
       id: 'lem.breen-deligne-scalar-homotopy',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.ss',
       type: 'lemma',
       label: '分解上乘 p 与 M 上乘 p 同伦',
       title: '标量乘法的同伦提升',
@@ -102,7 +102,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.breen-deligne-ss-stonean',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.ss',
       type: 'proposition',
       label: 'Stonean 上 Breen–Deligne 的谱序列',
       title: '$E^{p,q}_{1} = \\bigoplus_{i} H^{q}(M^{s_{p,i}} \\times S,\\ N)$',
@@ -131,7 +131,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.rhom-banach-discrete-zero',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: '有限维 Banach 到离散群全零',
       title: '$\\operatorname{RHom}_{\\mathbb{Z}}(M, N) = 0$（Banach 到 离散）',
@@ -161,7 +161,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.rhom-chaus-banach-zero',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: '紧 Haus 到实 Banach 全零',
       title: '$\\operatorname{RHom}_{\\mathbb{Z}}(M, N) = 0$（紧 Haus 到 Banach）',
@@ -192,7 +192,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.rhom-dual-tensor',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: '离散对偶的导出 Hom 与导出张量',
       title: '$\\operatorname{RHom}(\\operatorname{RHom}(M, T), N) \\cong M \\otimes^{\\mathbf{L}}_{\\mathbb{Z}} N[-1]$',
@@ -221,7 +221,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.dual-rhom-characterization',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'proposition',
       label: 'Pontryagin 对偶的导出 Hom 刻画',
       title: '$M^{\\vee} \\cong \\operatorname{RHom}_{\\mathbb{Z}}(M, T)$',
@@ -256,7 +256,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.lc-ext-vanishing',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'theorem',
       label: '局部紧阿贝尔群高次 Ext 消失',
       title: '$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N) = 0$（$n \\ne 0, 1$）',
@@ -286,7 +286,7 @@ window.MG = window.MG || {};
 
     {
       id: 'table.rhom-zrt',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'example',
       label: 'Z、R、T 的导出 Hom 计算表',
       title: '$\\operatorname{RHom}_{\\mathbb{Z}}(M, N)$ 在 $\\mathbb{Z}, \\mathbb{R}, T$ 上的取值',
@@ -296,6 +296,25 @@ window.MG = window.MG || {};
         '下表列出 $\\operatorname{RHom}_{\\mathbb{Z}}(M, N)$（行是 $M$、列是 $N$）：',
         '',
         '$$\\begin{array}{c|ccc} & \\mathbb{Z} & \\mathbb{R} & T \\\\ \\hline \\mathbb{Z} & \\mathbb{Z} & \\mathbb{R} & T \\\\ \\mathbb{R} & 0 & \\mathbb{R} & \\mathbb{R} \\\\ T & \\mathbb{Z}[-1] & 0 & \\mathbb{Z} \\end{array}$$'
+        ,
+        '**逐格推算：这台机器只用两个事实**\n' +
+        '\n' +
+        '1. **$\\mathbb{Z}$ 是自由（投射）的**：$\\mathbb{Z}$ 的消解可以取成一维的 $[\\mathbb{Z}]$，于是 $\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}, N) = \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}, N) = N$，**没有高阶项**。这一条直接给出表的第一行。\n' +
+        '2. **$\\mathbb{R}$ 可除，因此是 $\\mathbb{Z}$-内射的**：$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, \\mathbb{R}) = 0$ 对一切 $M$ 与 $n \\ge 1$。于是「靶是 $\\mathbb{R}$」的那些格只剩 $0$ 次：$\\operatorname{RHom}(M, \\mathbb{R}) = \\operatorname{Hom}_{\\mathbb{Z}}(M, \\mathbb{R})$。\n' +
+        '\n' +
+        '**把 $T$ 那一列换成 $\\mathbb{Z}$ 再升一次**：取短正合列 $0 \\to \\mathbb{Z} \\to \\mathbb{R} \\to T \\to 0$（$T = \\mathbb{R}/\\mathbb{Z}$）。对固定的 $M$ 取 $\\operatorname{RHom}(M, -)$，得**长正合列**\n' +
+        '\n' +
+        '$$\\cdots \\to \\operatorname{Ext}^{n}(M, \\mathbb{R}) \\to \\operatorname{Ext}^{n}(M, T) \\to \\operatorname{Ext}^{n+1}(M, \\mathbb{Z}) \\to \\operatorname{Ext}^{n+1}(M, \\mathbb{R}) \\to \\cdots$$\n' +
+        '\n' +
+        '既然两端的 $\\mathbb{R}$ 项在 $n \\ge 1$ 全为零，中间就被夹死：\n' +
+        '\n' +
+        '$$\\operatorname{Ext}^{n}(M, T) \\;\\cong\\; \\operatorname{Ext}^{n+1}(M, \\mathbb{Z}) \\qquad (n \\ge 1),$$\n' +
+        '\n' +
+        '以及 $0 \\to \\operatorname{Hom}(M,\\mathbb{Z}) \\to \\operatorname{Hom}(M,\\mathbb{R}) \\to \\operatorname{Hom}(M,T) \\to \\operatorname{Ext}^{1}(M,\\mathbb{Z}) \\to 0$。**这就是表里 $T$ 列与 $\\mathbb{Z}$ 列恰好差一次上标的来源**（例如第三行第一列是 $\\mathbb{Z}[-1]$：$M = T$ 时 $\\operatorname{Ext}^{0}(T,\\mathbb{Z}) = 0$、$\\operatorname{Ext}^{1}(T,\\mathbb{Z}) \\cong \\operatorname{Ext}^{0}(T,T) = \\mathbb{Z}$）。\n' +
+        '\n' +
+        '**为什么「实向量空间 $\\to$ 离散」全零**：$\\mathbb{R}^{n}$ 可除，可除群到任何群都满足「$n$ 倍可解」的条件，于是 $\\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{R}^{n}, \\mathbb{Z}) = 0$（$1/n$ 的像必须能被 $n$ 整除地解出来，只有 $0$）；配合可除性 $\\operatorname{Ext}^{1}(\\mathbb{R}^{n}, \\mathbb{Z}) = 0$，整条 $\\operatorname{RHom}$ 为零。\n' +
+        '\n' +
+        '⚠️ 表中「$\\mathbb{R}$ 行、$T$ 列 = $\\mathbb{R}$」这一格不能只靠上面两条推出（它涉及连续同态 $\\mathbb{R} \\to T = \\mathbb{R}/\\mathbb{Z}$ 的分类，与万有覆盖 $\\mathbb{R} \\to T$ 有关）；本图按笔记的结论记录，**推导留待核对**。'
       ].join('\n'),
       notes: [
         '**怎么读这张表**（$T = \\mathbb{R}/\\mathbb{Z}$）：',
@@ -316,7 +335,7 @@ window.MG = window.MG || {};
 
     {
       id: 'ex.finite-banach-rhom',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'example',
       label: '有限维 Banach 空间之间的导出 Hom',
       title: '$\\operatorname{RHom}_{\\mathbb{Z}}(M, N) = \\operatorname{Hom}_{\\mathbb{R}}(M, N)$',
@@ -332,7 +351,7 @@ window.MG = window.MG || {};
 
     {
       id: 'ex.chaus-banach-rhom',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'example',
       label: '紧空间对实 Banach 空间的导出 Hom',
       title: '$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z} \\cdot S,\\ N) \\cong C(S, N)$',
@@ -349,7 +368,7 @@ window.MG = window.MG || {};
 
     {
       id: 'ex.bd-ss',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.ss',
       type: 'example',
       label: 'Breen–Deligne 的一般谱序列',
       title: '$E^{p,q}_{1} = \\bigoplus_{i} H^{q}(M^{s_{p,i}},\\ N) \\implies \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M, N)$',
@@ -359,6 +378,19 @@ window.MG = window.MG || {};
         '设 $M, N$ 是拓扑斯中的阿贝尔群。由 Breen–Deligne 分解得到自然谱序列',
         '',
         '$$E^{p,q}_{1} = \\bigoplus_{i=1}^{r_{p}} H^{q}\\bigl(M^{s_{p,i}},\\ N\\bigr) \\implies \\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M, N).$$'
+        ,
+        '**把这条谱序列跑一遍要看的三个东西**\n' +
+        '\n' +
+        '1. **$E_{1}$ 页**：$E_{1}^{p,q} = \\bigoplus_{i=1}^{r_{p}} H^{q}(M^{s_{p,i}}, N)$。注意 $p$ 是**分解的次数**、$q$ 是**上同调的次数**，两者完全独立 —— 所以 $E_{1}$ 是一整张「$p$-方向有限、$q$-方向一般是上同调的」的格子，不是一行一列。\n' +
+        '2. **$d_{1}$**：由 Breen–Deligne 消解的微分 $d_{0}, d_{1}, d_{2}$ 诱导，方向是 $p \\mapsto p+1$（沿分解次数走）。因此 $E_{2}^{p,q} = H^{p}\\bigl(E_{1}^{\\bullet, q}, d_{1}\\bigr)$ —— **一行一行地取同调**，行内 $q$ 固定。\n' +
+        '3. **收敛**：谱序列收敛到 $\\operatorname{Ext}^{p+q}_{\\mathbb{Z}}(M,N)$，并且这个收敛带**按分解次数的有限过滤**：$\\operatorname{Ext}^{n}$ 上有一个长度有限的滤链 $F^{p}$，其各项商就是谱序列的 $E_{\\infty}^{p,n-p}$。所以「算 $\\operatorname{Ext}^{n}$」= 把对角线 $p+q = n$ 上所有 $E_{\\infty}^{p,q}$ 按滤链拼起来；当格子里只剩一两项时就直接读出来。\n' +
+        '\n' +
+        '**什么时候算得动**：实际计算里几乎总是遇到下面两种退化情形，那时整张谱序列塌成一两条：\n' +
+        '\n' +
+        '- **某一行为零**：若对某个 $q_{0}$，$H^{q}(M^{s_{p,i}}, N) = 0$ 对所有 $p$ 与 $q \\ne q_{0}$ 成立（也就是每个 $M^{s_{p,i}}$ 在「对 $N$ 取上同调」这件事上是零调的），则 $E_{1}$ 只在 $q = q_{0}$ 一行非零，于是所有 $d_{1}$ 都从这一行打到空的下一行、必然为零，于是 $E_{2} = E_{1}$，且 $\\operatorname{Ext}^{n}(M,N) = E_{1}^{n-q_{0},q_{0}}$。**这就是「空间零调，于是 Ext 退化成一次上同调」的机制**，也是下面「具体计算」那一团的全部技术来源。\n' +
+        '- **某两行相邻存活**：则只有一个 $d_{1}$ 可能非零，$\\operatorname{Ext}$ 被一个**短正合列**夹住（接着用长正合列算），这就是局部紧情形「只剩 $\\operatorname{Ext}^{0},\\operatorname{Ext}^{1}$」的来源。\n' +
+        '\n' +
+        '⚠️ 构造的显式公式（$d_{0},d_{1},d_{2}$ 的组合系数）本图不展开 —— 使用时只需要「$E_{1}$ 的形状 + 上面的退化判据」。'
       ].join('\n'),
       notes: [
         '**与 Stonean 那条的关系**：这条是**一般拓扑斯**里的版本（不带测试空间 $S$）；Stonean 那条是把两边都沿 $S$ 基变换（乘上 $\\mathbb{Z}[S]$）之后的结果。两者是同一条谱序列的「无参数」与「有参数」两种形状。',
@@ -369,7 +401,7 @@ window.MG = window.MG || {};
 
     {
       id: 'ex.connected-lc-ext',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'example',
       label: '连通局部紧到离散只剩 Ext一次',
       title: '$\\operatorname{Ext}^{n}_{\\mathbb{Z}}(M, N) = 0$（$n \\ne 1$，$M$ 连通、$N$ 离散）',
@@ -386,7 +418,7 @@ window.MG = window.MG || {};
 
     {
       id: 'ex.nonlc-rhom',
-      cluster: 'cond.cohomology',
+      cluster: 'cond.compute',
       type: 'example',
       label: '非局部紧情形的导出 Hom',
       title: '$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{R}^{I}, \\mathbb{Z}) = 0$，$\\operatorname{RHom}_{\\mathbb{Z}}(\\mathbb{Z}^{I}, \\mathbb{Z}) = \\mathbb{Z} \\cdot I$',

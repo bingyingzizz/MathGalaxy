@@ -3,7 +3,7 @@
 根 `../`　·　第 1 页 `index.md`
 
 ## 凝聚态数学（condensed）
-cond.set　cond.ab　cond.topo　cond.cohomology　cond.solid　cond.analytic
+cond.set　cond.ab　cond.topo　cond.cohomology　cond.ss　cond.compute　cond.solid　cond.analytic
 
 ## 解析空间（analytic）
 analytic.adic　analytic.dual
