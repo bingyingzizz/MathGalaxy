@@ -31,7 +31,7 @@
 >
 > ### For AI agents
 >
-> **Do not fetch `graph.json` in one go** (it is ~3.7 MB). Follow the retrieval
+> **Do not fetch `graph.json` in one go** (it is several MB — full proofs included). Follow the retrieval
 > protocol in [`llms.txt`](llms.txt): `dist/alias.md` (plain words / English names → node id)
 > → `dist/index.md` (galaxies → clusters) → `dist/index/<cluster>.md` (node list)
 > → `dist/nodes/<node-id>.md` (statement + in/out edges). Each file is cut to fit one
@@ -409,7 +409,7 @@ bun tools/_notationcheck.mjs # 详细报告：按节点与字段列出，另加�
 ### 方案 A：单个 HTML 文件（推荐，零依赖）
 
 ```bash
-bun tools/build.mjs            # 产出 dist/mathgalaxy.html（约 4.8 MB，自包含）
+bun tools/build.mjs            # 产出 dist/mathgalaxy.html（自包含单文件，几 MB）
 ```
 
 这个文件**把所有 CSS / JS / 数据全内联进去了**，是真正自包含的。

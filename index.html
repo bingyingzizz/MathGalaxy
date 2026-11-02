@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1460 nodes, 2753 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: %%NODES%% nodes, %%EDGES%% edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1460 nodes, 2753 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: %%NODES%% nodes, %%EDGES%% edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -133,7 +133,7 @@ window.addEventListener('error', function (e) {
 <body>
 
 <!-- ===== 首屏「加载中」 =====
-     为什么要有它：整页是「100 多个 <script> + 1287 个节点」，而启动时 computeLayout
+     为什么要有它：整页是「100 多个 <script> + 一千多个节点」，而启动时 computeLayout
      要一口气算 4 秒左右（O(n²) 的斥力迭代）—— 那 4 秒里主线程被占死，用户看到的是纯白。
      ⚠️ 这一块的样式、脚本全内联，不依赖任何模块；动画只用 transform / opacity。
      ⚠️ 收起它的时机是「**第一帧星图画完**」（app.js 的 frame()），不是 DOMContentLoaded ——
@@ -307,8 +307,10 @@ window.MG = window.MG || {};
     <div class="set-sep"></div>
     <div class="set-title" data-t="去别处">去别处</div>
     <a class="set-link" href="../" data-t="⌂ 站点首页">⌂ 站点首页</a>
-    <a class="set-link" href="all.html" id="set-link-all">全部概念索引（1460 个）</a>
-    <a class="set-link" href="questions.html" id="set-link-q">常见问法（184 条）</a>
+    <!-- ⚠️ 这两个数字**由 app.js 启动时从图现算**（fixCounts / fixAllCount），这里是 无数字 的静态回退 ——
+        ⛔ 绝对不要在这里手写数量：以前写的 706 / 184 就是这么过时的（爬虫和禁用 JS 的人看到的也是它）。 -->
+    <a class="set-link" href="all.html" id="set-link-all">全部概念索引</a>
+    <a class="set-link" href="questions.html" id="set-link-q">常见问法</a>
     <a class="set-link" href="read.html" data-t="读图指南与记号表">读图指南与记号表</a>
     <a class="set-link" href="https://github.com/bingyingzizz/MathGalaxy" target="_blank" rel="noopener" data-t="↗ GitHub 源码">↗ GitHub 源码</a>
   </div>
@@ -325,10 +327,10 @@ window.MG = window.MG || {};
 
 <!-- ===== 底部：页面标题 + 说明 + 操作提示 =====
      ⚠️ 这一块**必须保持可读**（不能 display:none，也不能靠 sr-only 藏起来）：
-        /mathgalaxy/ 是 2.6 MB 的单文件应用，正文全在 JS 字符串里，渲染完页面上
+        /mathgalaxy/ 是几 MB 的单文件应用，正文全在 JS 字符串里，渲染完页面上
         只有 97 个字符的可见文本 —— 搜索引擎读不到任何内容，整页等于空壳，
         所以这个 URL 至今没被任何搜索引擎收录（实测 site: 查不到）。
-        这里是页面上唯一的静态可读内容，也是通往 1460 个概念页与阅读页的入口。
+        这里是页面上唯一的静态可读内容，也是通往每个概念页与阅读页的入口。
      ⚠️ 首页（/）有它自己的内容，**替代不了这里** —— 搜索引擎按 URL 分别索引，
         而别人分享的链接正是这个 /mathgalaxy/。
      关于折叠：说明用 <details open>，默认展开 ⇒ 爬虫读到的就是展开状态；

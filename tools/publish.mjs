@@ -264,7 +264,19 @@ const SITE_REPO_URL = `https://github.com/${USER}/${SITE_REPO}`;
  * 填 {{占位符}}。填完还残留**已知名字**的占位符 = 模板和脚本对不上，
  * 直接失败 —— 否则 {{COUNTS}} 会原样发到线上，这种事语法上完全看不出来。
  */
-const KNOWN = ['USER', 'COUNTS', 'STRONG_WEAK', 'UPDATED', 'REPO', 'SITE_REPO', 'NAV', 'DOCS', 'HEAD_EXTRA'];
+const KNOWN = ['USER', 'COUNTS', 'STRONG_WEAK', 'UPDATED', 'REPO', 'SITE_REPO', 'NAV', 'DOCS', 'HEAD_EXTRA',
+  'SIZE_GRAPH_MD', 'SIZE_GRAPH_JSON', 'SIZE_SINGLE'];
+/* 文件大小：**现量**。以前首页把「graph.md 约 420 KB / graph.json 约 550 KB」写死了，
+   2026-11-02 实测已经涨到 3.3 MB / 4.7 MB（两边全图、每条边带证明）—— 这种数字
+   必须从 dist/ 里量出来，⛔ 不许手写。 */
+function fmtSize(bytes) {
+  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+  return Math.round(bytes / 1024) + ' KB';
+}
+const fileSize = (rel) => {
+  const p = path.join(DIST, rel);
+  return fs.existsSync(p) ? fmtSize(fs.statSync(p).size) : '?（构建没跑？）';
+};
 function fill(tpl, map, name) {
   const out = tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : m));
   const left = [...new Set(out.match(new RegExp('\\{\\{(' + KNOWN.join('|') + ')\\}\\}', 'g')) || [])];
@@ -315,6 +327,9 @@ fs.writeFileSync(path.join(STAGE, 'index.html'), fill(readSite('index.html'), {
   USER,
   COUNTS: `${cnt.regions} 星系 / ${cnt.clusters} 星团 / ${cnt.nodes} 节点 / ${cnt.edges} 连线`,
   STRONG_WEAK: `强边 ${cnt.strong}，弱边 ${cnt.weak}`,
+  SIZE_GRAPH_MD: fileSize('graph.md'),
+  SIZE_GRAPH_JSON: fileSize('graph.json'),
+  SIZE_SINGLE: fileSize('mathgalaxy.html'),
   UPDATED: updated,
   REPO: REPO_URL,
   SITE_REPO: SITE_REPO_URL,
@@ -611,7 +626,7 @@ const rootLlms = `# ${USER}.github.io
 
 ## 程序化使用
 
-- \`/mathgalaxy/graph.json\`  全量图（约 1.7 MB），schema 见 \`/mathgalaxy/reading.md\`
+- \`/mathgalaxy/graph.json\`  全量图（约 ${fileSize('graph.json')}），schema 见 \`/mathgalaxy/reading.md\`
 
 ## 许可
 

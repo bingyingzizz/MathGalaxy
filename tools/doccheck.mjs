@@ -60,6 +60,18 @@ const RULES = [
   /* 壳页：概念索引入口上写明死的个数（曾经是 706） */
   { re: /全部概念索引（(\d+)\s*个）/g, got: m => [Number(m[1])], want: [C.nodes], why: `nodes=${C.nodes}` },
   { re: /通往\s*(\d+)\s*个概念页/g, got: m => [Number(m[1])], want: [C.nodes], why: `nodes=${C.nodes}` },
+  { re: /常见问法（(\d+)\s*条）/g, got: m => [Number(m[1])], want: [nQueries], why: `问法 ${nQueries} 条（按 searchcheck 同一口径数）` },
+  /* ----------------------------------------------------------------
+     ⭐⭐ 体积：一律不许手写。
+     2026-11-02 实测到的真事 —— 首页写着「graph.md 约 420 KB / graph.json 约 550 KB」，
+     实际已经 3.3 MB / 4.7 MB；graph.md 自己的页头还写着「约 390 KB」。
+     现在一律走占位符（`{{SIZE_GRAPH_MD}}` / `%%SIZE_KB%%`），这里只负责「没人再写回去」。
+     ⇒ 一旦出现字面量大小，就必须和 dist 里那个文件的实际大小一致，否则变红。
+     ---------------------------------------------------------------- */
+  { re: /约\s*([\d.]+)\s*(KB|MB)\b/g,
+    got: m => [`${m[1]} ${m[2]}`],
+    want: null,          // null = 只许用占位符，字面量一律算过期
+    why: '体积数字必须用占位符（{{SIZE_GRAPH_MD}} / {{SIZE_GRAPH_JSON}} / %%SIZE_KB%%），不要手写' },
 ];
 
 let bad = 0, checked = 0;
@@ -75,14 +87,26 @@ for (const rel of FILES) {
       while ((m = r.re.exec(line)) !== null) {
         checked++;
         const got = r.got(m).join(',');
-        const want = r.want.join(',');
-        if (got !== want) {
+        const want = r.want === null ? null : r.want.join(',');
+        if (want === null || got !== want) {
           bad++;
           console.log(`  ✗ ${rel}:${i + 1}  「${m[0].trim()}」应为 ${r.why}`);
         }
       }
     }
   });
+}
+
+/* 占位符必须在位：壳页的数量只能走 token / 运行时现算。
+   改回手写之后，上面的数字规则会变红；但「手写了一个刚好对上的数字」也该拦 ——
+   因为下一个节点进来它就又错了。 */
+for (const [rel, token] of [['index.html', '%%NODES%%'], ['index.html', '%%EDGES%%']]) {
+  const p = path.join(ROOT, rel);
+  if (!fs.existsSync(p)) continue;
+  if (!fs.readFileSync(p, 'utf8').includes(token)) {
+    bad++;
+    console.log(`  ✗ ${rel} 里没有 ${token} 占位符 —— 壳页的数量必须由构建填（meta 描述那种爬虫要的静态文本）`);
+  }
 }
 
 if (bad) {

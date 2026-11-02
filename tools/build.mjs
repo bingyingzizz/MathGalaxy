@@ -344,7 +344,7 @@ function exportMarkdown(MG, graph, data) {
       ? `；其中**不分层**的「推论」${data.meta.counts.derived} 条（layer:false）`
       : '') + '）');
   p('');
-  p('> ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次通常只返回');
+  p('> ⛔ **这是全量 bulk 导出（约 %%SIZE_KB%%），不要单次抓取** —— 抓取工具单次通常只返回');
   p('> 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，');
   p('> 而且同一地址反复抓也只会拿到同样的开头。**要检索请走 `llms.txt` 里的检索协议**：');
   p('> `index.md` → `index/<星团id>.md` → `nodes/<节点id>.md`。');
@@ -464,6 +464,21 @@ function exportMarkdown(MG, graph, data) {
   }
 
   return L.join('\n');
+}
+
+/* ⭐ 文档里报了「这是全量导出（约 N KB）」，而 N 只能**量自己** ——
+   以前写死的 390 KB 早就涨到 3.3 MB 了（2026-11-02 实测）。
+   ⚠️ 迭代几轮就收敛：位数变化会微调总量，但 KB 级别不会振荡。 */
+function withSelfSize(text, token) {
+  const fmt = kb => kb >= 1024 ? (kb / 1024).toFixed(1) + ' MB' : kb + ' KB';
+  let kb = 0, out = '';
+  for (let i = 0; i < 4; i++) {
+    out = text.split(token).join(fmt(kb));
+    const next = Math.round(Buffer.byteLength(out, 'utf8') / 1024);
+    if (next === kb) break;
+    kb = next;
+  }
+  return text.split(token).join(fmt(kb));
 }
 
 /* ==========================================================================
@@ -2319,31 +2334,31 @@ function assertNotation(MG, graph) {
   return errs;
 }
 
-/* ------------------------------------------------ 壳页里的数量（构建期同步） */
-/* 为什么要**改写源文件**：`index.html` 是「双击就能开」的入口，它的 `<meta description>`
-   必须是**静态**文本（爬虫不跑 JS），所以不能像画布上的东西那样运行时注入；
-   但写死就会过期 —— 2026-11-02 实测：描述里还写着 709 nodes / 1398 edges，
-   实际 1460 / 2753；页内「全部概念索引（706 个）」同理。
-   ⇒ 构建时按 `meta.counts` 就地改写这几处（与根部 `llms.txt` / `reading.md` 同一做法），
-     `tools/doccheck.mjs` 再守一道（构建没跑就提交也能逮到）。
-   ⚠️ 只改**可识别的模式**，绝不做全文数字替换 —— 正文里的数字是数学，不是统计。 */
-function syncShellCounts(C) {
-  const p = path.join(ROOT, 'index.html');
-  const src = fs.readFileSync(p, 'utf8');
-  const en = `${C.nodes} nodes, ${C.edges} edges`;
-  const out = src
-    .replace(/\d+\s*nodes,\s*\d+\s*edges/g, en)
-    .replace(/全部概念索引（\d+ 个）/g, `全部概念索引（${C.nodes} 个）`)
-    .replace(/通往\s*\d+\s*个概念页/g, `通往 ${C.nodes} 个概念页`);
-  if (out !== src) {
-    fs.writeFileSync(p, out, 'utf8');
-    console.log(`  → index.html 数量已同步（${en}）`);
+/* ------------------------------------------------ 壳页里的数量（构建期填空） */
+/* 为什么 `index.html` 里放占位符、而不是直接在构建时改写源文件（旧做法）：
+   ① 源文件被构建默默改动 = 每次 build 都可能把工作区弄脏，diff 里全是噪音；
+   ② 数字还是得**静态**（爬虫不跑 JS），又不能手写；
+   ⇒ 源文件写 `%%NODES%%` 这类 token，**只填进产物**（dist/mathgalaxy.html）。
+   ⚠️ token 只认这一组；填完还有残留 ⇒ 直接抛错（漏填比填错更难查）。
+   ⛔ 页面上的数量一律走这里或运行时现算（app.js 的设置窗就是从图算的）。 */
+const SHELL_TOKENS = ['NODES', 'EDGES', 'REGIONS', 'CLUSTERS'];
+function fillShellCounts(html, C) {
+  const val = { NODES: C.nodes, EDGES: C.edges, REGIONS: C.regions, CLUSTERS: C.clusters };
+  let out = html;
+  for (const k of SHELL_TOKENS) {
+    if (!out.includes('%%' + k + '%%')) continue;
+    out = out.split('%%' + k + '%%').join(String(val[k]));
   }
+  const left = out.match(/%%[A-Z_]+%%/g);
+  if (left) throw new Error(`index.html 里有没填的占位符：${[...new Set(left)].join('、')}`);
+  return out;
 }
 
 /* ---------------------------------------------------------------- 单文件 HTML */
-function buildSingleFile() {
-  let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+function buildSingleFile(C) {
+  /* 壳页里的数量（meta description 那种，必须是静态文本）：源文件写 `%%NODES%%` 之类的
+     占位符，**只在这里填一次**，填的都是 `meta.counts` 里的真数字。 */
+  let html = fillShellCounts(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'), C);
   /* 内容版本注入（tools/idstable.mjs 维护；index.html 里写的是 'dev'） */
   html = html.replace("MG.contentVersion = 'dev'", "MG.contentVersion = '" + (CONTENT_VERSION || 'dev') + "'");
 
@@ -2385,16 +2400,18 @@ if (graph.warnings.length) {
   graph.warnings.forEach(w => console.log('    - ' + w));
 }
 
+/* ⚠️ `data` 必须在**两个分支外面**算：JSON 产物要用它，壳页（index.html）的数量占位符也要用它。 */
+const data = exportJSON(MG, graph);
+
 if (doJSON) {
-  const data = exportJSON(MG, graph);
-  /* 壳页（index.html）里写死的数 —— 必须**在单文件打包之前**改，否则打进去的还是旧值 */
-  syncShellCounts(data.meta.counts);
   // 内容没变就沿用旧时间戳 —— 否则每次构建都会把 git 工作区弄脏
   data.meta.generated = stableStamp(path.join(DIST, 'graph.json'), data);
   fs.writeFileSync(path.join(DIST, 'graph.json'), JSON.stringify(data, null, 1), 'utf8');
   console.log('  → dist/graph.json');
 
-  fs.writeFileSync(path.join(DIST, 'graph.md'), exportMarkdown(MG, graph, data), 'utf8');
+  /* graph.md 里那句「约 N KB」是量自己量出来的（见 withSelfSize） */
+  fs.writeFileSync(path.join(DIST, 'graph.md'),
+    withSelfSize(exportMarkdown(MG, graph, data), '%%SIZE_KB%%'), 'utf8');
   console.log('  → dist/graph.md');
 
   fs.writeFileSync(path.join(DIST, 'llms.txt'), exportLlmsTxt(data), 'utf8');
@@ -2566,7 +2583,7 @@ if (doJSON) {
 }
 
 if (doHTML) {
-  const { html } = buildSingleFile();
+  const { html } = buildSingleFile(data.meta.counts);
   fs.writeFileSync(path.join(DIST, 'mathgalaxy.html'), html, 'utf8');
   const kb = (Buffer.byteLength(html, 'utf8') / 1024).toFixed(0);
   console.log(`  → dist/mathgalaxy.html  (${kb} KB，自包含，手机双击即可打开)`);
