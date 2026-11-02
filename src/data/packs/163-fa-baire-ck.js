@@ -84,7 +84,19 @@ window.MG = window.MG || {};
         '2. 每个非空开集都是**第二纲**的。'
       ].join('\n'),
       notes: [
-        '证法（球套法）：设 $O_n$ 稠密开。任给 $x, \\varepsilon$，$B(x, \\varepsilon) \\cap O_1$ 是非空开，取 $x_1, \\varepsilon_1 < \\varepsilon$ 使 $\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1$；归纳取 $\\varepsilon_n < 1/n$ 且 $\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}$。嵌套闭球半径 $\\to 0$ 且空间完备，故交非空；交中一点落在每个 $O_n$ 里，也落在 $B(x, \\varepsilon)$ 里。',
+        '证法（球套法）分四步：\n' +
+        '\n' +
+        '1. **起点**：记 $B_0 := B(x, \\varepsilon)$。$O_1$ 稠密开 ⇒ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n' +
+        '\n' +
+        '$$\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1 .$$\n' +
+        '\n' +
+        '2. **归纳**：已取 $x_n, \\varepsilon_n$（且 $\\varepsilon_n < 1/n$）。由 $O_{n+1}$ 稠密开，$B(x_n, \\varepsilon_n) \\cap O_{n+1}$ 仍是非空开，取\n' +
+        '\n' +
+        '$$\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}, \\qquad \\varepsilon_{n+1} < \\frac{1}{n+1} .$$\n' +
+        '\n' +
+        '3. **嵌套闭球取点**：半径 $\\varepsilon_n \\to 0$，而 $X$ 完备 ⇒ $\\bigcap_n \\overline{B(x_n, \\varepsilon_n)} \\ne \\emptyset$，取其中一点 $y$。（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）\n' +
+        '\n' +
+        '4. **收尾**：对每个 $n$，$y \\in \\overline{B(x_n, \\varepsilon_n)} \\subseteq B_0 \\cap O_n$，所以 $y \\in B_0$ 且 $y \\in \\bigcap_n O_n$。$B_0$ 是任取的 ⇒ $\\bigcap_n O_n$ 与每个非空开集相交 ⇒ 稠密。∎',
         '⭐ 三种等价写法都要会用，转换只需取补集。',
         '⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。'
       ].join('\n\n'),
@@ -187,8 +199,8 @@ window.MG = window.MG || {};
       id: 'thm.ubp',
       cluster: 'fa.baire',
       type: 'theorem',
-      label: '一致有界原理',
-      title: '一致有界原理（Banach–Steinhaus）',
+      label: '共鸣定理',
+      title: '共鸣定理（一致有界原理 / Banach–Steinhaus）',
       regions: ['functional-analysis'],
       tags: ['泛函分析', '三大定理', 'Baire 纲'],
       statement: [
@@ -200,7 +212,7 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '证法：令 $F_k = \\{x : \\sup_i \\|u_i x\\| \\le k\\} = \\bigcap_i \\{x : \\|u_i x\\| \\le k\\}$，每个 $\\{x : \\|u_i x\\| \\le k\\}$ 闭（$u_i$ 连续），故 $F_k$ 闭；逐点有界 $\\implies E = \\bigcup_k F_k$。由 Baire（闭覆盖有内点），某个 $F_k$ 含球 $B(x_0, r)$。于是对 $\\|x\\| \\le r$：$\\sup_i \\|u_i x\\| \\le \\sup_i \\|u_i(x + x_0)\\| + \\sup_i \\|u_i x_0\\| \\le 2k$，取 $x = r y/\\|y\\|$ 得 $\\|u_i y\\| \\le 2k\\|y\\|/r$，故 $\\sup_i\\|u_i\\| \\le 2k/r$。',
-        '⭐ 三大定理里它**只要求 $E$ 完备**（$F$ 只要赋范），是最「便宜」的一条。',
+        '⭐ **名字**：讲义与很多中文书叫它「共鸣定理」（resonance theorem），也叫「一致有界原理」；本图两个都收进别名。三大定理里它**只要求 $E$ 完备**（$F$ 只要赋范），是最「便宜」的一条。',
         '⚠️ $E$ 完备不能去掉：$E = c_{00}$（有限支撑序列）时取 $u_n(x) = n x_n$，逐点有界而 $\\|u_n\\| = n \\to \\infty$。'
       ].join('\n\n'),
       refs: ['泛函分析讲义 2026-10-26', 'Banach–Steinhaus 1927']

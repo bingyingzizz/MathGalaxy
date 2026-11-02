@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-02T06:05:53.354Z",
+  "generated": "2026-11-02T06:21:19.609Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
@@ -37488,7 +37488,7 @@
     "三大定理"
    ],
    "statement": "设 $X$ 是完备度量空间（或局部紧 Hausdorff 空间）。则可数个稠密开集之交仍**稠密**。等价地：\n\n1. 可数个无处稠密闭集之并的内部为空；\n2. 每个非空开集都是**第二纲**的。",
-   "notes": "证法（球套法）：设 $O_n$ 稠密开。任给 $x, \\varepsilon$，$B(x, \\varepsilon) \\cap O_1$ 是非空开，取 $x_1, \\varepsilon_1 < \\varepsilon$ 使 $\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1$；归纳取 $\\varepsilon_n < 1/n$ 且 $\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}$。嵌套闭球半径 $\\to 0$ 且空间完备，故交非空；交中一点落在每个 $O_n$ 里，也落在 $B(x, \\varepsilon)$ 里。\n\n⭐ 三种等价写法都要会用，转换只需取补集。\n\n⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。",
+   "notes": "证法（球套法）分四步：\n\n1. **起点**：记 $B_0 := B(x, \\varepsilon)$。$O_1$ 稠密开 ⇒ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n\n$$\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1 .$$\n\n2. **归纳**：已取 $x_n, \\varepsilon_n$（且 $\\varepsilon_n < 1/n$）。由 $O_{n+1}$ 稠密开，$B(x_n, \\varepsilon_n) \\cap O_{n+1}$ 仍是非空开，取\n\n$$\\overline{B(x_{n+1}, \\varepsilon_{n+1})} \\subseteq B(x_n, \\varepsilon_n) \\cap O_{n+1}, \\qquad \\varepsilon_{n+1} < \\frac{1}{n+1} .$$\n\n3. **嵌套闭球取点**：半径 $\\varepsilon_n \\to 0$，而 $X$ 完备 ⇒ $\\bigcap_n \\overline{B(x_n, \\varepsilon_n)} \\ne \\emptyset$，取其中一点 $y$。（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）\n\n4. **收尾**：对每个 $n$，$y \\in \\overline{B(x_n, \\varepsilon_n)} \\subseteq B_0 \\cap O_n$，所以 $y \\in B_0$ 且 $y \\in \\bigcap_n O_n$。$B_0$ 是任取的 ⇒ $\\bigcap_n O_n$ 与每个非空开集相交 ⇒ 稠密。∎\n\n⭐ 三种等价写法都要会用，转换只需取补集。\n\n⚠️ 完备性不能去掉：$\\mathbb{Q}$ 上每个单点闭且无处稠密，$\\mathbb{Q}$ 可数，故 $\\mathbb{Q}$ 是第一纲 —— 它不是 Baire 空间。",
    "refs": [
     "泛函分析讲义 2026-10-26",
     "Baire 1899"

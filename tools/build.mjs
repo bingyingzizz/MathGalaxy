@@ -1693,9 +1693,9 @@ function exportAlias(MG, graph, base = '') {
   L.push('');
   L.push(A.intro || '');
   L.push('');
-  L.push('用别的叫法（英文名 / 老名字 / 大白话）查不到东西时，先来这里换节点 id。');
+  L.push('查不到时先来这里换节点 id（英文名 / 老名字 / 大白话）。');
   L.push('');
-  L.push('`alias/<星系id>.md` 是**问法**（一句人话 → 节点 id），`alias/aka/<星系id>.md` 是**别名**（别的叫法 → 节点 id）；行尾 `a+b` 是这两份的条数。');
+  L.push('`alias/<星系id>.md` = 问法（一句人话→节点 id），`alias/aka/<星系id>.md` = 别名（别的叫法→节点 id）；行尾 `a+b` 是条数。');
   L.push('');
   for (const r of graph.regions) {
     const f = aliasFilter(A, graph, r.id);

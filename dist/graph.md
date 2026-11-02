@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-02T06:05:53.354Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-02T06:21:19.609Z
 > 15 星系 / 102 星团 / 1460 节点 / 2744 连线（强边 2727，弱边 17；其中**不分层**的「推论」22 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 390 KB），不要单次抓取** —— 抓取工具单次只能返回
@@ -11031,7 +11031,19 @@ $A$ 叫 **$G_\delta$ 集**，若 $A$ 是可数个开集之交；叫 **$F_\sigma$
 1. 可数个无处稠密闭集之并的内部为空；
 2. 每个非空开集都是**第二纲**的。
 
-证法（球套法）：设 $O_n$ 稠密开。任给 $x, \varepsilon$，$B(x, \varepsilon) \cap O_1$ 是非空开，取 $x_1, \varepsilon_1 < \varepsilon$ 使 $\overline{B(x_1, \varepsilon_1)} \subseteq B(x, \varepsilon) \cap O_1$；归纳取 $\varepsilon_n < 1/n$ 且 $\overline{B(x_{n+1}, \varepsilon_{n+1})} \subseteq B(x_n, \varepsilon_n) \cap O_{n+1}$。嵌套闭球半径 $\to 0$ 且空间完备，故交非空；交中一点落在每个 $O_n$ 里，也落在 $B(x, \varepsilon)$ 里。
+证法（球套法）分四步：
+
+1. **起点**：记 $B_0 := B(x, \varepsilon)$。$O_1$ 稠密开 ⇒ $B_0 \cap O_1$ 是非空开，于是可取 $x_1$ 与 $\varepsilon_1 < \min(\varepsilon/2,\ 1)$ 使
+
+$$\overline{B(x_1, \varepsilon_1)} \subseteq B(x, \varepsilon) \cap O_1 .$$
+
+2. **归纳**：已取 $x_n, \varepsilon_n$（且 $\varepsilon_n < 1/n$）。由 $O_{n+1}$ 稠密开，$B(x_n, \varepsilon_n) \cap O_{n+1}$ 仍是非空开，取
+
+$$\overline{B(x_{n+1}, \varepsilon_{n+1})} \subseteq B(x_n, \varepsilon_n) \cap O_{n+1}, \qquad \varepsilon_{n+1} < \frac{1}{n+1} .$$
+
+3. **嵌套闭球取点**：半径 $\varepsilon_n \to 0$，而 $X$ 完备 ⇒ $\bigcap_n \overline{B(x_n, \varepsilon_n)} \ne \emptyset$，取其中一点 $y$。（这里「半径趋于 $0$」不能省：完备性只保证半径趋于 $0$ 的嵌套闭球有公共点。）
+
+4. **收尾**：对每个 $n$，$y \in \overline{B(x_n, \varepsilon_n)} \subseteq B_0 \cap O_n$，所以 $y \in B_0$ 且 $y \in \bigcap_n O_n$。$B_0$ 是任取的 ⇒ $\bigcap_n O_n$ 与每个非空开集相交 ⇒ 稠密。∎
 
 ⭐ 三种等价写法都要会用，转换只需取补集。
 

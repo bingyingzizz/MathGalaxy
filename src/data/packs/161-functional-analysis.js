@@ -538,7 +538,7 @@ window.MG = window.MG || {};
       id: 'thm.riesz-hilbert',
       cluster: 'fa.hilbert',
       type: 'theorem',
-      label: 'Riesz 表示定理（Hilbert 版）',
+      label: 'Riesz 表示（Hilbert）',
       title: 'Riesz 表示：$H^* \\cong \\overline{H}$',
       regions: ['functional-analysis'],
       tags: ['泛函分析', 'Hilbert 空间', '对偶空间'],
