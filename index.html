@@ -180,7 +180,13 @@ window.MG = window.MG || {};
     if (gone || !grab()) return;
     gone = true;
     if (watchdog) { G.clearTimeout(watchdog); watchdog = 0; }
-    box.classList.remove('mgl-real', 'mgl-fail');
+    /* ⛔ 这里**不能**移除 `mgl-real`：一移除，`mgl-creep` 那层 9s 爬行动画就重新挂上，
+       并从 4% 重播 —— 用户看到的就是「补满 → 跳回起点 → 再爬一小段 → 淡出」。
+       （布局进缓存后只要 ~90ms，这一跳特别刺眼。）保留 mgl-real + 补一句内联
+       scaleX(1)，条子就停在满格上淡出。 */
+    box.classList.add('mgl-real');
+    box.classList.remove('mgl-fail');
+    if (fill) fill.style.transform = 'scaleX(1)';
     box.classList.add('mgl-out');
     /* ⚠️ 先淡出再摘掉节点；但**别把引用留着** —— 摘掉之后 step() 都是空操作。 */
     G.setTimeout(function () {
@@ -189,9 +195,25 @@ window.MG = window.MG || {};
     }, delay === undefined ? 440 : delay);
   }
 
+  /* 加载屏的最小展示时长（毫秒）。布局有了 localStorage 缓存之后，启动可能只有
+     100ms 不到 —— 直接淡出就是一次「闪白」，比慢慢出现还难看。宁可多留 ~0.3s。 */
+  var MIN_SHOW = 420;
+  var born = (G.performance && G.performance.now) ? G.performance.now() : Date.now();
+  function nowMs() { return (G.performance && G.performance.now) ? G.performance.now() : Date.now(); }
+
   MG.loading = {
     step: step,
-    done: function () { step(100); hide(); },   // 画完第一帧：补满再淡出
+    done: function () {                            // 画完第一帧：补满再淡出
+      var wait = MIN_SHOW - (nowMs() - born);
+      if (wait > 0) {
+        /* 先补到满格（让人看见「好了」），再按剩余时间淡出 */
+        step(100);
+        G.setTimeout(function () { hide(); }, wait);
+      } else {
+        step(100);
+        hide();
+      }
+    },
     hide: function () { hide(0); },              // 出错兜底：立刻让位给错误框
     fail: function (msg) {
       if (gone || !grab()) return;

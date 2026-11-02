@@ -136,6 +136,15 @@
     return true;
   }
 
+  /* -------------------------------------------------------------- 预判 */
+  /** 只比对签名，不动数据 —— 供「加载文案」之类的场景用（便宜，不碰 localStorage 的写路径） */
+  function peek(graph) {
+    var data = readJSON(KEY);
+    if (!data || !data.p) return false;
+    if (data.p.length !== graph.nodes.length * 2) return false;
+    return data.sig === signature(graph);
+  }
+
   /* -------------------------------------------------------------- 保存 */
   function save(graph) {
     var nodes = graph.nodes;
@@ -194,6 +203,7 @@
   MG.layoutCache = {
     key: KEY, camKey: CAM_KEY,
     signature: signature,
+    peek: peek,
     restore: restore,
     save: save,
     clear: clear,

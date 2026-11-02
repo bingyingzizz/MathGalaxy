@@ -65,6 +65,11 @@
     /* ------------------------------------------------------------ 建图 */
     var localPacks = (MG.packs || []).slice();
     var graph = MG.buildGraph(localPacks, MG.regions, MG.clusters);
+    /* 文案要说实话：布局有了缓存之后常常是「一眨眼」的事，
+       这时候还写「计算布局」会让人以为在算——其实是在读上次的结果。 */
+    if (MG.loading && MG.layoutCache && MG.layoutCache.peek(graph)) {
+      MG.loading.step(null, '恢复上次的布局…');
+    }
     MG.computeLayout(graph);
     if (MG.layoutCache && !graph.layoutFromCache) {
       try { MG.layoutCache.save(graph); } catch (e) { /* 存不下就算了，不影响打开 */ }
