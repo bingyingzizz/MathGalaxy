@@ -15,7 +15,7 @@ Each group is one page under `notation/`; entry **names** are Chinese, the symbo
 are not. Whole table: `notation-full.md`.
 
 - `dist/notation/set.md` Logic and sets 39
-- `dist/notation/order.md` Order, cardinals, ordinals 18
+- `dist/notation/order.md` Order, cardinals, ordinals 19
 - `dist/notation/num.md` Number systems and real analysis 26
 - `dist/notation/topo.md` Topology and metrics 6
 - `dist/notation/measure.md` Measure and σ-algebras 25

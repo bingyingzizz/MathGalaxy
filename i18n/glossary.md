@@ -28,7 +28,7 @@
 ## 记号表分组（`notation.js` 的 `groups`）
 
 - `set`　逻辑与集合　→　Logic and sets　39 条
-- `order`　序、基数与序数　→　Order, cardinals, ordinals　18 条
+- `order`　序、基数与序数　→　Order, cardinals, ordinals　19 条
 - `num`　数系与分析基础　→　Number systems and real analysis　26 条
 - `topo`　拓扑与度量　→　Topology and metrics　6 条
 - `measure`　测度与 σ-代数　→　Measure and σ-algebras　25 条
