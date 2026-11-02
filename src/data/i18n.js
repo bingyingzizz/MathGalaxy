@@ -26,6 +26,12 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.cohomology-class': { title_en: 'Cohomology Class', label_en: 'Cohomology Class', from: 'explicit' },
+    'def.acyclic-complex': { title_en: 'Acyclic Complex', label_en: 'Acyclic Complex', from: 'explicit' },
+    'def.compactification': { title_en: 'Compactification', label_en: 'Compactification', from: 'explicit' },
+    'def.one-point-compactification': { title_en: 'One-Point Compactification', label_en: 'One-Point Compactification', from: 'explicit' },
+    'def.net': { title_en: 'Net', label_en: 'Net', from: 'explicit' },
+    'def.filter': { title_en: 'Filter and Ultrafilter', label_en: 'Filter', from: 'explicit' },
     'def.closed-form': { title_en: 'Closed Form', label_en: 'Closed Form', from: 'explicit' },
     'def.exact-form': { title_en: 'Exact Form', label_en: 'Exact Form', from: 'explicit' },
     'thm.rational-canonical-form': { title_en: 'Rational Canonical Form', label_en: 'Rational Canonical Form', from: 'explicit' },
