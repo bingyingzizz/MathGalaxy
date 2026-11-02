@@ -120,7 +120,7 @@ window.MG = window.MG || {};
         '',
         '（$V = \\{0\\}$ 时约定 $\\dim V = 0$；没有有限基时称 $V$ 是**无限维**的。）'
       ].join('\n'),
-      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le |\\mathcal{B}\'|$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $|A \\times \\mathbb{N}| = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$\\dim(V/U) = \\dim V - \\dim U$。',
+      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $\\#(A \\times \\mathbb{N}) = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$\\dim(V/U) = \\dim V - \\dim U$。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 2']
     }
   ],
@@ -217,11 +217,11 @@ window.MG = window.MG || {};
       proof: [
         '设 $\\mathcal{B}$ 与 $\\mathcal{B}\'$ 是 $V$ 的两组基。',
         '',
-        '1. 由 $\\mathcal{B}$ 是基，它线性无关；由 $\\mathcal{B}\'$ 是基，它生成 $V$。于是由交换引理（取 $S = \\mathcal{B}$、$T = \\mathcal{B}\'$）得 $|\\mathcal{B}| \\le |\\mathcal{B}\'|$。',
-        '2. 交换两者的角色（$S = \\mathcal{B}\'$、$T = \\mathcal{B}$）得 $|\\mathcal{B}\'| \\le |\\mathcal{B}|$。',
-        '3. 由 Bernstein 定理（或直接用两个方向的单射）得 $|\\mathcal{B}| = |\\mathcal{B}\'|$。',
+        '1. 由 $\\mathcal{B}$ 是基，它线性无关；由 $\\mathcal{B}\'$ 是基，它生成 $V$。于是由交换引理（取 $S = \\mathcal{B}$、$T = \\mathcal{B}\'$）得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$。',
+        '2. 交换两者的角色（$S = \\mathcal{B}\'$、$T = \\mathcal{B}$）得 $\\#\\mathcal{B}\' \\le \\#\\mathcal{B}$。',
+        '3. 由 Bernstein 定理（或直接用两个方向的单射）得 $\\#\\mathcal{B} = \\#\\mathcal{B}\'$。',
         '',
-        '于是映射 $\\mathcal{B} \\mapsto |\\mathcal{B}|$ 不依赖基的选取，$\\dim_K V := |\\mathcal{B}|$ 是良定义的。∎',
+        '于是映射 $\\mathcal{B} \\mapsto \\#\\mathcal{B}$ 不依赖基的选取，$\\dim_K V := \\#\\mathcal{B}$ 是良定义的。∎',
         '',
         '⚠ 上面第 1、2 步用的交换引理是**有限**版本；无限维时要用它的无限形式（或 Zorn 引理 + 基数算术），结论相同。'
       ].join('\n'),

@@ -352,7 +352,7 @@ window.MG = window.MG || {};
         '',
         '更强的结论：',
         '',
-        '$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$'
+        '$$\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$$'
       ].join('\n'),
       notes: '⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\\mathbb{R}$ 可以排成 $x_1, x_2, \\ldots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。\n\n⚠ 整段证明**只用到 $\\mathbb{R}$ 的完备性**（确界原理），不需要基数理论；\n\n$\\#\\mathbb{R} = 2^{\\aleph_0}$ 那一半是拿二进制展开与 $\\mathcal{P}(\\mathbb{N})$ 配对，再引用 Cantor 定理。\n\n**这条定理最反直觉的地方**：$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都稠密、都可以逼近彼此，但 $\\mathbb{Q}$ 可数（排得成一个序列）、$\\mathbb{R}$ 不可数。\n\n**「稠密」与「一样多」是两回事** —— 这也正是分析必须做实数、不能只做有理数的根本原因。',
       refs: ['Tao, Analysis I, Ch. 8（可数性）', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
@@ -546,7 +546,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'thm.cantor',
       usedBy: 'thm.real-uncountable',
-      note: '后半句 $2^{\\aleph_0} > \\aleph_0$ 用的就是 Cantor 定理（$|A| < |\\mathcal{P}(A)|$）。'
+      note: '后半句 $2^{\\aleph_0} > \\aleph_0$ 用的就是 Cantor 定理（$\\#A < \\#\\mathcal{P}(A)$）。'
     },
 
     /* -------------------------------------------------- 带证明的推出 */
@@ -756,9 +756,9 @@ window.MG = window.MG || {};
         '',
         '**③ 矛盾。** 由 ① 知 $x_n \\notin I_n$，由 ② 知 $a \\in I_n$，所以 $a \\ne x_n$ 对**一切** $n$ 成立 —— 但 $a \\in \\mathbb{R} = \\{x_1, x_2, \\ldots\\}$，与序列穷尽了 $\\mathbb{R}$ 矛盾。\n\n故 $\\mathbb{R}$ 不可数。\n\n$\\blacksquare$',
         '',
-        '**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；\n\n反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $\\#\\mathbb{R} = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0}$。\n\n再由 **Cantor 定理** $|\\mathcal{P}(\\mathbb{N})| > \\#\\mathbb{N} = \\aleph_0$，即',
+        '**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；\n\n反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0}$。\n\n再由 **Cantor 定理** $\\#\\mathcal{P}(\\mathbb{N}) > \\#\\mathbb{N} = \\aleph_0$，即',
         '',
-        '$$|\\mathbb{R}| = 2^{\\aleph_0} > \\aleph_0$$'
+        '$$\\#\\mathbb{R} = 2^{\\aleph_0} > \\aleph_0$$'
       ].join('\n')
     },
   ]

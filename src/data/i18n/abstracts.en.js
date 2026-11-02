@@ -308,13 +308,13 @@ MG.i18nAbstracts = {
     'thm.real-uncountable': {
       en:
       '$\\mathbb{R}$ is uncountable — there is no surjection $\\mathbb{N} \\to \\mathbb{R}$ — ' +
-      'and in fact $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$. ' +
+      'and in fact $\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$. ' +
       'Uncountability is proved by nested closed intervals and completeness alone, with no ' +
       'cardinal theory; the cardinality statement pairs binary expansions with ' +
       '$\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ ' +
       'and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density ' +
       'and cardinality are different things, which is why analysis needs $\\mathbb{R}$.',
-      status: 'reviewed', basedOn: 'v0.9.2#6b754c3d', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      status: 'reviewed', basedOn: 'v0.9.2#2464e849', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'prop.yoneda-embedding': {

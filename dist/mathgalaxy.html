@@ -14998,13 +14998,13 @@ MG.i18nAbstracts = {
     'thm.real-uncountable': {
       en:
       '$\\mathbb{R}$ is uncountable — there is no surjection $\\mathbb{N} \\to \\mathbb{R}$ — ' +
-      'and in fact $|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$. ' +
+      'and in fact $\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$. ' +
       'Uncountability is proved by nested closed intervals and completeness alone, with no ' +
       'cardinal theory; the cardinality statement pairs binary expansions with ' +
       '$\\mathcal{P}(\\mathbb{N})$ and quotes Cantor. The counterintuitive point: $\\mathbb{Q}$ ' +
       'and $\\mathbb{R}$ are each dense in the other, yet $\\mathbb{Q}$ is countable — density ' +
       'and cardinality are different things, which is why analysis needs $\\mathbb{R}$.',
-      status: 'reviewed', basedOn: 'v0.9.2#6b754c3d', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+      status: 'reviewed', basedOn: 'v0.9.2#2464e849', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
     },
 
     'prop.yoneda-embedding': {
@@ -16057,8 +16057,8 @@ MG.i18nStatements = {
         '$\\mathbb{N}$ onto $\\mathbb{R}$, that is, $\\mathbb{R}$ cannot be arranged as a ' +
         'sequence.\n\n' +
         'A stronger conclusion:\n\n' +
-        '$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$',
-        status: 'reviewed', basedOn: 'v0.9.2#40ca76c6', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        '$$\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$$',
+        status: 'reviewed', basedOn: 'v0.9.2#75028b5a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -16069,7 +16069,7 @@ MG.i18nStatements = {
         '$x_n$.\n\n' +
         '⚠ The whole proof uses **only the completeness of $\\mathbb{R}$** (the ' +
         'least-upper-bound principle); cardinal theory is not needed. The half saying ' +
-        '$|\\mathbb{R}| = 2^{\\aleph_0}$ matches binary expansions against ' +
+        '$\\#\\mathbb{R} = 2^{\\aleph_0}$ matches binary expansions against ' +
         '$\\mathcal{P}(\\mathbb{N})$ and then quotes Cantor\'s theorem.\n\n' +
         '**The most counter-intuitive point of this theorem**: $\\mathbb{Q}$ and ' +
         '$\\mathbb{R}$ are both dense and each can be approximated by the other, yet ' +
@@ -26123,7 +26123,7 @@ window.MG = window.MG || {};
         '',
         '由**幂集公理**，$\\mathcal{P}(X)$ 确实是集合；由外延公理它唯一。',
         '',
-        '有限情形的元素个数：$|X| = n \\implies |\\mathcal{P}(X)| = 2^{n}$（每个元素「取或不取」）。'
+        '有限情形的元素个数：$\\#X = n \\implies \\#\\mathcal{P}(X) = 2^{n}$（每个元素「取或不取」）。'
       ].join('\n'),
       notes: '⭐ 幂集是「把性质变成对象」的那一步：想谈「$X$ 的所有子集」这件事本身（而不是逐个谈），就得有幂集。\n\n$\\mathcal{P}(X)$ 同时是几个重要构造的舞台：\n- 外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$；\n\n\n- 环、$\\sigma$-代数、单调类都是 $\\mathcal{P}(X)$ 的某一族子集；\n\n\n- 生成的 $\\sigma$-代数取的就是「一切包含 $\\mathcal{E}$ 的 $\\sigma$-代数之交」，而 $\\mathcal{P}(X)$ 保证这个交不空。\n\n⚠ $\\emptyset \\in \\mathcal{P}(X)$ 且 $X \\in \\mathcal{P}(X)$ 对一切 $X$ 成立 —— 幂集从来不是空的。',
       refs: ['Kunen, Set Theory, I.5']
@@ -26179,13 +26179,13 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Cantor 定理',
-      title: 'Cantor 定理：$|A| < |\\mathcal{P}(A)|$',
+      title: 'Cantor 定理：$\\#A < \\#\\mathcal{P}(A)$',
       regions: ['set-theory'],
       tags: ['定理', '基数', '对角线'],
       statement: [
         '对任意集合 $A$：',
         '',
-        '$$|A| < |\\mathcal{P}(A)|$$',
+        '$$\\#A < \\#\\mathcal{P}(A)$$',
         '',
         '也就是说：**不存在**从 $A$ 到 $\\mathcal{P}(A)$ 的满射（当然也不存在双射），但 $a \\mapsto \\{a\\}$ 是单射。'
       ].join('\n'),
@@ -26205,7 +26205,7 @@ window.MG = window.MG || {};
       statement: [
         '若存在单射 $f : A \\to B$ 与单射 $g : B \\to A$，则存在**双射** $A \\to B$，即',
         '',
-        '$$|A| \\le |B| \\ \\wedge \\ |B| \\le |A| \\implies |A| = |B|$$'
+        '$$\\#A \\le \\#B \\ \\wedge \\ \\#B \\le \\#A \\implies \\#A = \\#B$$'
       ].join('\n'),
       notes: '⭐ 它的价值在于**省事**：要证两个集合等势，只要各造一个方向的单射，不必显式写出那个双射。（对比：Cantor 定理的另一条路 —— 有单射无满射 —— 用的是对称的说法。）\n\n⚠ 它**不需要**选择公理：证明是构造性的（见边的证明），这也是它比「任意两个基数可比」好用的地方。',
       refs: ['Kunen, Set Theory, I.6']
@@ -26266,7 +26266,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.cardinal',
       usedBy: 'thm.cantor',
-      note: '「$\\#A < |\\mathcal{P}(A)|$」是一个关于**基数**的比较。'
+      note: '「$\\#A < \\#\\mathcal{P}(A)$」是一个关于**基数**的比较。'
     },
     {
       id: 'dep.powerset-cantor',
@@ -26314,7 +26314,7 @@ window.MG = window.MG || {};
       target: 'thm.cantor',
       title: '幂集 $\\implies$ Cantor 定理（对角线法）',
       proof: [
-        '**① $|A| \\le |\\mathcal{P}(A)|$。** 映射 $a \\mapsto \\{a\\}$ 是单射：$\\{a\\} = \\{a\'\\} \\implies a = a\'$。',
+        '**① $\\#A \\le \\#\\mathcal{P}(A)$。** 映射 $a \\mapsto \\{a\\}$ 是单射：$\\{a\\} = \\{a\'\\} \\implies a = a\'$。',
         '',
         '**② 不存在满射 $f : A \\to \\mathcal{P}(A)$。** 反设存在。令',
         '',
@@ -26327,7 +26327,7 @@ window.MG = window.MG || {};
         '- 若 $a_0 \\in D$：由 $D$ 的定义 $a_0 \\notin f(a_0) = D$，矛盾；',
         '- 若 $a_0 \\notin D = f(a_0)$：那么 $a_0$ 满足「$a \\notin f(a)$」，按定义又该有 $a_0 \\in D$，矛盾。',
         '',
-        '两边都不成立，故不存在满射。结合 ① 得 $|A| < |\\mathcal{P}(A)|$。$\\blacksquare$',
+        '两边都不成立，故不存在满射。结合 ① 得 $\\#A < \\#\\mathcal{P}(A)$。$\\blacksquare$',
         '',
         '> $D$ 之所以叫「对角集」：把 $A$ 排成行、把 $\\mathcal{P}(A)$ 排成列，「$a \\in f(a)$」是一张表，$D$ 取的是这张表的**对角线**再逐格取反。'
       ].join('\n')
@@ -26363,7 +26363,7 @@ window.MG = window.MG || {};
         '',
         '**④ $h$ 是满射。** 若 $b \\in B$：令 $a = g(b) \\in A$。\n\n若 $a \\in A^{\\sharp}$，则 $h(a) = g^{-1}(a) = b$；若 $a \\in A^{*}$，则 $a \\in A_n$ 对某个 $n \\ge 1$（因为 $a = g(b)$ 落在 $g(B)$ 里），于是 $a = g(f(a\'))$ 对某个 $a\' \\in A_{n-1} \\subseteq A^{*}$，由 $g$ 单射得 $f(a\') = b$，即 $h(a\') = b$。',
         '',
-        '综上 $h$ 是双射，故 $|A| = |B|$。$\\blacksquare$'
+        '综上 $h$ 是双射，故 $\\#A = \\#B$。$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -27143,7 +27143,7 @@ window.MG = window.MG || {};
         '',
         '更强的结论：',
         '',
-        '$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$'
+        '$$\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$$'
       ].join('\n'),
       notes: '⭐ 证明走**闭区间套 + 对角线**（见边）：假设 $\\mathbb{R}$ 可以排成 $x_1, x_2, \\ldots$，就用二分法造一串套起来的闭区间，把 $x_n$ 逐个排除出去，再用**完备性**取出它们唯一的公共点 —— 它不等于任何一个 $x_n$。\n\n⚠ 整段证明**只用到 $\\mathbb{R}$ 的完备性**（确界原理），不需要基数理论；\n\n$\\#\\mathbb{R} = 2^{\\aleph_0}$ 那一半是拿二进制展开与 $\\mathcal{P}(\\mathbb{N})$ 配对，再引用 Cantor 定理。\n\n**这条定理最反直觉的地方**：$\\mathbb{Q}$ 与 $\\mathbb{R}$ 都稠密、都可以逼近彼此，但 $\\mathbb{Q}$ 可数（排得成一个序列）、$\\mathbb{R}$ 不可数。\n\n**「稠密」与「一样多」是两回事** —— 这也正是分析必须做实数、不能只做有理数的根本原因。',
       refs: ['Tao, Analysis I, Ch. 8（可数性）', 'Rudin, Principles of Mathematical Analysis, Ch. 2']
@@ -27337,7 +27337,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'thm.cantor',
       usedBy: 'thm.real-uncountable',
-      note: '后半句 $2^{\\aleph_0} > \\aleph_0$ 用的就是 Cantor 定理（$|A| < |\\mathcal{P}(A)|$）。'
+      note: '后半句 $2^{\\aleph_0} > \\aleph_0$ 用的就是 Cantor 定理（$\\#A < \\#\\mathcal{P}(A)$）。'
     },
 
     /* -------------------------------------------------- 带证明的推出 */
@@ -27547,9 +27547,9 @@ window.MG = window.MG || {};
         '',
         '**③ 矛盾。** 由 ① 知 $x_n \\notin I_n$，由 ② 知 $a \\in I_n$，所以 $a \\ne x_n$ 对**一切** $n$ 成立 —— 但 $a \\in \\mathbb{R} = \\{x_1, x_2, \\ldots\\}$，与序列穷尽了 $\\mathbb{R}$ 矛盾。\n\n故 $\\mathbb{R}$ 不可数。\n\n$\\blacksquare$',
         '',
-        '**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；\n\n反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $\\#\\mathbb{R} = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0}$。\n\n再由 **Cantor 定理** $|\\mathcal{P}(\\mathbb{N})| > \\#\\mathbb{N} = \\aleph_0$，即',
+        '**④ 基数版本。** 把实数写成二进制小数（约定不用最后全 1 的写法以避开歧义）得到 $\\mathbb{R} \\hookrightarrow \\mathcal{P}(\\mathbb{N})$；\n\n反过来 $\\mathcal{P}(\\mathbb{N}) \\to \\mathbb{R}$ 用三进制展开即可，两边都有单射，由 Schröder–Bernstein 得 $\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0}$。\n\n再由 **Cantor 定理** $\\#\\mathcal{P}(\\mathbb{N}) > \\#\\mathbb{N} = \\aleph_0$，即',
         '',
-        '$$|\\mathbb{R}| = 2^{\\aleph_0} > \\aleph_0$$'
+        '$$\\#\\mathbb{R} = 2^{\\aleph_0} > \\aleph_0$$'
       ].join('\n')
     },
   ]
@@ -46871,7 +46871,7 @@ window.MG = window.MG || {};
         '',
         '（$V = \\{0\\}$ 时约定 $\\dim V = 0$；没有有限基时称 $V$ 是**无限维**的。）'
       ].join('\n'),
-      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le |\\mathcal{B}\'|$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $|A \\times \\mathbb{N}| = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$\\dim(V/U) = \\dim V - \\dim U$。',
+      notes: '⭐ 这条定理的唯一内容是「**良定义**」：基可以有很多组，但势是同一个数 —— 所以「维数」这个词才说得通。\n\n证明全部来自 Steinitz：两组基互为无关集与生成集，两次使用交换引理即得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$ 与反向。\n\n⚠ 有限维的情形交换引理就够了；\n\n无限维要证明「无限基等势」（用 $\\#(A \\times \\mathbb{N}) = \\#A$ 那一套基数算术），比有限情形麻烦得多。\n\n⭐ 维数的基本性质：$\\dim(U + W) + \\dim(U \\cap W) = \\dim U + \\dim W$；\n\n$\\dim(V/U) = \\dim V - \\dim U$。',
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 2']
     }
   ],
@@ -46968,11 +46968,11 @@ window.MG = window.MG || {};
       proof: [
         '设 $\\mathcal{B}$ 与 $\\mathcal{B}\'$ 是 $V$ 的两组基。',
         '',
-        '1. 由 $\\mathcal{B}$ 是基，它线性无关；由 $\\mathcal{B}\'$ 是基，它生成 $V$。于是由交换引理（取 $S = \\mathcal{B}$、$T = \\mathcal{B}\'$）得 $|\\mathcal{B}| \\le |\\mathcal{B}\'|$。',
-        '2. 交换两者的角色（$S = \\mathcal{B}\'$、$T = \\mathcal{B}$）得 $|\\mathcal{B}\'| \\le |\\mathcal{B}|$。',
-        '3. 由 Bernstein 定理（或直接用两个方向的单射）得 $|\\mathcal{B}| = |\\mathcal{B}\'|$。',
+        '1. 由 $\\mathcal{B}$ 是基，它线性无关；由 $\\mathcal{B}\'$ 是基，它生成 $V$。于是由交换引理（取 $S = \\mathcal{B}$、$T = \\mathcal{B}\'$）得 $\\#\\mathcal{B} \\le \\#\\mathcal{B}\'$。',
+        '2. 交换两者的角色（$S = \\mathcal{B}\'$、$T = \\mathcal{B}$）得 $\\#\\mathcal{B}\' \\le \\#\\mathcal{B}$。',
+        '3. 由 Bernstein 定理（或直接用两个方向的单射）得 $\\#\\mathcal{B} = \\#\\mathcal{B}\'$。',
         '',
-        '于是映射 $\\mathcal{B} \\mapsto |\\mathcal{B}|$ 不依赖基的选取，$\\dim_K V := |\\mathcal{B}|$ 是良定义的。∎',
+        '于是映射 $\\mathcal{B} \\mapsto \\#\\mathcal{B}$ 不依赖基的选取，$\\dim_K V := \\#\\mathcal{B}$ 是良定义的。∎',
         '',
         '⚠ 上面第 1、2 步用的交换引理是**有限**版本；无限维时要用它的无限形式（或 Zorn 引理 + 基数算术），结论相同。'
       ].join('\n'),
@@ -51279,7 +51279,7 @@ window.MG = window.MG || {};
         '',
         '所以等价类正是左陪集。等价类构成划分，故**左陪集两两不交且覆盖 $G$**。',
         '',
-        '**第二步：每个左陪集与 $H$ 等势。** 映射 $\\varphi : H \\to gH$，$h \\mapsto gh$，有逆 $gh \\mapsto h$（良定义：$gh_1 = gh_2 \\implies h_1 = h_2$）。故 $|gH| = \\#H$。',
+        '**第二步：每个左陪集与 $H$ 等势。** 映射 $\\varphi : H \\to gH$，$h \\mapsto gh$，有逆 $gh \\mapsto h$（良定义：$gh_1 = gh_2 \\implies h_1 = h_2$）。故 $\\#gH = \\#H$。',
         '',
         '**第三步：数个数。** 设不同左陪集为 $g_1H, \\ldots, g_k H$。由第一步 $G = \\bigsqcup_{i} g_i H$，两边取基数并用第二步：',
         '',
@@ -52923,7 +52923,7 @@ window.MG = window.MG || {};
       tags: ['推论', '固态', '乘积'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Corollary 5.5'],
       statement: [
-        '对任意 profinite 集 $S$，存在集合 $I$（$|I| \\le 2^{|S|}$）与凝聚态阿贝尔群的同构',
+        '对任意 profinite 集 $S$，存在集合 $I$（$\\#I \\le 2^{\\#S}$）与凝聚态阿贝尔群的同构',
         '',
         '$$Z[S]^{\\blacksquare} \\cong \\prod_{I} \\mathbb{Z}.$$',
         '',
@@ -75433,7 +75433,7 @@ window.MG = window.MG || {};
       notes: [
         '证明：$n = 1$ 显然。设 $n = p_{1}^{e_{1}}\\cdots p_{r}^{e_{r}}$，$r \\ge 1$。含平方因子的 $d$ 贡献 $0$，所以只需对「由互异素因子组成的 $d$」求和：',
         '',
-        '$$\\sum_{d\\mid n}\\mu(d) = \\sum_{S \\subseteq \\{1,\\cdots,r\\}} (-1)^{|S|} = (1 - 1)^{r} = 0 .$$',
+        '$$\\sum_{d\\mid n}\\mu(d) = \\sum_{S \\subseteq \\{1,\\cdots,r\\}} (-1)^{\\#S} = (1 - 1)^{r} = 0 .$$',
         '',
         '即二项式展开。这条恒等式是 $\\mu$ 的**唯一**用处：它把「求和」变成「投影到 $n = 1$ 上」。',
       ].join('\n\n'),
@@ -75646,7 +75646,7 @@ window.MG = window.MG || {};
         '',
         '$n > 1$：设 $n = p_{1}^{e_{1}}\\cdots p_{r}^{e_{r}}$，$r \\ge 1$。$\\mu(d) \\ne 0$ 只当 $d$ 由**互异**素因子组成，故',
         '',
-        '$$\\sum_{d \\mid n}\\mu(d) = \\sum_{S \\subseteq \\{1,\\cdots,r\\}} (-1)^{|S|} = \\sum_{k=0}^{r}\\binom{r}{k}(-1)^{k} = (1-1)^{r} = 0 .$$',
+        '$$\\sum_{d \\mid n}\\mu(d) = \\sum_{S \\subseteq \\{1,\\cdots,r\\}} (-1)^{\\#S} = \\sum_{k=0}^{r}\\binom{r}{k}(-1)^{k} = (1-1)^{r} = 0 .$$',
         '',
         '正负项按 $|S|$ 配对抵消 —— 这就是全部内容。',
       ].join('\n\n'),
@@ -76252,7 +76252,7 @@ window.MG = window.MG || {};
         '**推论**：$A \\ne 0$ 时取 $I = 0$，得极大理想存在；再由「$M$ 极大 $\\iff$ $A/M$ 是域」（`prop.prime-ideal` 的等价刻画），得「每个非零环都有域作为商」。\n\n' +
         '\n\n' +
         '⚠ 这一步**只**用了 Zorn；\n\n' +
-        '$\u0060prop.prime-ideal` 正文此前写明「存在性不在本条里」，本边把它补上。',
+        '\u0060prop.prime-ideal` 正文此前写明「存在性不在本条里」，本边把它补上。',
       ].join('\n\n'),
     },
     {

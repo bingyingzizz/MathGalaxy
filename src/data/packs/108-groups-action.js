@@ -492,7 +492,7 @@ window.MG = window.MG || {};
         '',
         '所以等价类正是左陪集。等价类构成划分，故**左陪集两两不交且覆盖 $G$**。',
         '',
-        '**第二步：每个左陪集与 $H$ 等势。** 映射 $\\varphi : H \\to gH$，$h \\mapsto gh$，有逆 $gh \\mapsto h$（良定义：$gh_1 = gh_2 \\implies h_1 = h_2$）。故 $|gH| = \\#H$。',
+        '**第二步：每个左陪集与 $H$ 等势。** 映射 $\\varphi : H \\to gH$，$h \\mapsto gh$，有逆 $gh \\mapsto h$（良定义：$gh_1 = gh_2 \\implies h_1 = h_2$）。故 $\\#gH = \\#H$。',
         '',
         '**第三步：数个数。** 设不同左陪集为 $g_1H, \\ldots, g_k H$。由第一步 $G = \\bigsqcup_{i} g_i H$，两边取基数并用第二步：',
         '',

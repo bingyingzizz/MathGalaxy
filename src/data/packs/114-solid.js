@@ -108,7 +108,7 @@ window.MG = window.MG || {};
       tags: ['推论', '固态', '乘积'],
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture V, Corollary 5.5'],
       statement: [
-        '对任意 profinite 集 $S$，存在集合 $I$（$|I| \\le 2^{|S|}$）与凝聚态阿贝尔群的同构',
+        '对任意 profinite 集 $S$，存在集合 $I$（$\\#I \\le 2^{\\#S}$）与凝聚态阿贝尔群的同构',
         '',
         '$$Z[S]^{\\blacksquare} \\cong \\prod_{I} \\mathbb{Z}.$$',
         '',

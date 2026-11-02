@@ -856,8 +856,8 @@ MG.i18nStatements = {
         '$\\mathbb{N}$ onto $\\mathbb{R}$, that is, $\\mathbb{R}$ cannot be arranged as a ' +
         'sequence.\n\n' +
         'A stronger conclusion:\n\n' +
-        '$$|\\mathbb{R}| = |\\mathcal{P}(\\mathbb{N})| = 2^{\\aleph_0} > \\aleph_0$$',
-        status: 'reviewed', basedOn: 'v0.9.2#40ca76c6', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        '$$\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$$',
+        status: 'reviewed', basedOn: 'v0.9.2#75028b5a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -868,7 +868,7 @@ MG.i18nStatements = {
         '$x_n$.\n\n' +
         '⚠ The whole proof uses **only the completeness of $\\mathbb{R}$** (the ' +
         'least-upper-bound principle); cardinal theory is not needed. The half saying ' +
-        '$|\\mathbb{R}| = 2^{\\aleph_0}$ matches binary expansions against ' +
+        '$\\#\\mathbb{R} = 2^{\\aleph_0}$ matches binary expansions against ' +
         '$\\mathcal{P}(\\mathbb{N})$ and then quotes Cantor\'s theorem.\n\n' +
         '**The most counter-intuitive point of this theorem**: $\\mathbb{Q}$ and ' +
         '$\\mathbb{R}$ are both dense and each can be approximated by the other, yet ' +

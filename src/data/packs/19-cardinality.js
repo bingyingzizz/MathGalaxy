@@ -31,7 +31,7 @@ window.MG = window.MG || {};
         '',
         '由**幂集公理**，$\\mathcal{P}(X)$ 确实是集合；由外延公理它唯一。',
         '',
-        '有限情形的元素个数：$|X| = n \\implies |\\mathcal{P}(X)| = 2^{n}$（每个元素「取或不取」）。'
+        '有限情形的元素个数：$\\#X = n \\implies \\#\\mathcal{P}(X) = 2^{n}$（每个元素「取或不取」）。'
       ].join('\n'),
       notes: '⭐ 幂集是「把性质变成对象」的那一步：想谈「$X$ 的所有子集」这件事本身（而不是逐个谈），就得有幂集。\n\n$\\mathcal{P}(X)$ 同时是几个重要构造的舞台：\n- 外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$；\n\n\n- 环、$\\sigma$-代数、单调类都是 $\\mathcal{P}(X)$ 的某一族子集；\n\n\n- 生成的 $\\sigma$-代数取的就是「一切包含 $\\mathcal{E}$ 的 $\\sigma$-代数之交」，而 $\\mathcal{P}(X)$ 保证这个交不空。\n\n⚠ $\\emptyset \\in \\mathcal{P}(X)$ 且 $X \\in \\mathcal{P}(X)$ 对一切 $X$ 成立 —— 幂集从来不是空的。',
       refs: ['Kunen, Set Theory, I.5']
@@ -87,13 +87,13 @@ window.MG = window.MG || {};
       cluster: 'set.cardinal',
       type: 'theorem',
       label: 'Cantor 定理',
-      title: 'Cantor 定理：$|A| < |\\mathcal{P}(A)|$',
+      title: 'Cantor 定理：$\\#A < \\#\\mathcal{P}(A)$',
       regions: ['set-theory'],
       tags: ['定理', '基数', '对角线'],
       statement: [
         '对任意集合 $A$：',
         '',
-        '$$|A| < |\\mathcal{P}(A)|$$',
+        '$$\\#A < \\#\\mathcal{P}(A)$$',
         '',
         '也就是说：**不存在**从 $A$ 到 $\\mathcal{P}(A)$ 的满射（当然也不存在双射），但 $a \\mapsto \\{a\\}$ 是单射。'
       ].join('\n'),
@@ -113,7 +113,7 @@ window.MG = window.MG || {};
       statement: [
         '若存在单射 $f : A \\to B$ 与单射 $g : B \\to A$，则存在**双射** $A \\to B$，即',
         '',
-        '$$|A| \\le |B| \\ \\wedge \\ |B| \\le |A| \\implies |A| = |B|$$'
+        '$$\\#A \\le \\#B \\ \\wedge \\ \\#B \\le \\#A \\implies \\#A = \\#B$$'
       ].join('\n'),
       notes: '⭐ 它的价值在于**省事**：要证两个集合等势，只要各造一个方向的单射，不必显式写出那个双射。（对比：Cantor 定理的另一条路 —— 有单射无满射 —— 用的是对称的说法。）\n\n⚠ 它**不需要**选择公理：证明是构造性的（见边的证明），这也是它比「任意两个基数可比」好用的地方。',
       refs: ['Kunen, Set Theory, I.6']
@@ -174,7 +174,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.cardinal',
       usedBy: 'thm.cantor',
-      note: '「$\\#A < |\\mathcal{P}(A)|$」是一个关于**基数**的比较。'
+      note: '「$\\#A < \\#\\mathcal{P}(A)$」是一个关于**基数**的比较。'
     },
     {
       id: 'dep.powerset-cantor',
@@ -222,7 +222,7 @@ window.MG = window.MG || {};
       target: 'thm.cantor',
       title: '幂集 $\\implies$ Cantor 定理（对角线法）',
       proof: [
-        '**① $|A| \\le |\\mathcal{P}(A)|$。** 映射 $a \\mapsto \\{a\\}$ 是单射：$\\{a\\} = \\{a\'\\} \\implies a = a\'$。',
+        '**① $\\#A \\le \\#\\mathcal{P}(A)$。** 映射 $a \\mapsto \\{a\\}$ 是单射：$\\{a\\} = \\{a\'\\} \\implies a = a\'$。',
         '',
         '**② 不存在满射 $f : A \\to \\mathcal{P}(A)$。** 反设存在。令',
         '',
@@ -235,7 +235,7 @@ window.MG = window.MG || {};
         '- 若 $a_0 \\in D$：由 $D$ 的定义 $a_0 \\notin f(a_0) = D$，矛盾；',
         '- 若 $a_0 \\notin D = f(a_0)$：那么 $a_0$ 满足「$a \\notin f(a)$」，按定义又该有 $a_0 \\in D$，矛盾。',
         '',
-        '两边都不成立，故不存在满射。结合 ① 得 $|A| < |\\mathcal{P}(A)|$。$\\blacksquare$',
+        '两边都不成立，故不存在满射。结合 ① 得 $\\#A < \\#\\mathcal{P}(A)$。$\\blacksquare$',
         '',
         '> $D$ 之所以叫「对角集」：把 $A$ 排成行、把 $\\mathcal{P}(A)$ 排成列，「$a \\in f(a)$」是一张表，$D$ 取的是这张表的**对角线**再逐格取反。'
       ].join('\n')
@@ -271,7 +271,7 @@ window.MG = window.MG || {};
         '',
         '**④ $h$ 是满射。** 若 $b \\in B$：令 $a = g(b) \\in A$。\n\n若 $a \\in A^{\\sharp}$，则 $h(a) = g^{-1}(a) = b$；若 $a \\in A^{*}$，则 $a \\in A_n$ 对某个 $n \\ge 1$（因为 $a = g(b)$ 落在 $g(B)$ 里），于是 $a = g(f(a\'))$ 对某个 $a\' \\in A_{n-1} \\subseteq A^{*}$，由 $g$ 单射得 $f(a\') = b$，即 $h(a\') = b$。',
         '',
-        '综上 $h$ 是双射，故 $|A| = |B|$。$\\blacksquare$'
+        '综上 $h$ 是双射，故 $\\#A = \\#B$。$\\blacksquare$'
       ].join('\n')
     },
     {
