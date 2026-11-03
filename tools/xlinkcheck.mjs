@@ -148,7 +148,9 @@ const DASH = /[-\u2010-\u2015\u2212\uFE63\uFF0D]/;
 const LAT = /[0-9A-Za-z]/;
 let texts = 0, hits = 0, latinHits = 0, violations = [];
 function checkText(text, where) {
-  if (!text) return;
+  /* ⚠️ 只吃字符串：数组（还没 join 的 notes / proof）直接跳过 ——
+     否则整个体检会崩在 charAt 上，而真正的问题（漏 join）反而看不见。 */
+  if (!text || typeof text !== 'string') return;
   texts++;
   for (const h of xl.scan(text, null, true)) {
     hits++;

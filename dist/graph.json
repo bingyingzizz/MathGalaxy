@@ -6,14 +6,14 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T06:43:42.904Z",
+  "generated": "2026-11-03T06:48:59.876Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
    "nodes": 1473,
-   "edges": 2805,
-   "strong": 2788,
-   "weak": 17,
+   "edges": 2810,
+   "strong": 2789,
+   "weak": 21,
    "derived": 31,
    "en_pages": 1473
   },
@@ -6555,7 +6555,7 @@
     "analysis"
    ],
    "cluster": "analysis.integral",
-   "layer": 17,
+   "layer": 19,
    "tags": [
     "推论",
     "MCT",
@@ -78730,6 +78730,54 @@
    "definition": "def.vector-space",
    "usedBy": "def.linear-isomorphism",
    "note": "线性同构 = 双射的线性映射；两端的结构就是向量空间结构。"
+  },
+  {
+   "id": "e162.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "thm.first-iso",
+   "b": "thm.first-iso-vs",
+   "title": "第一同构定理：群版与向量空间版是同一句话",
+   "note": "两个节点一个说「群同态 $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$」，一个说「线性映射 $V/\\ker T \\cong \\operatorname{im} T$」。\n\n**谁也没推出谁**（群不是向量空间、向量空间加法群也不决定标量乘法），但证明**逐字一样**：良定义 \\$\\to\\$ 同态（线性）\\$\\to\\$ 双射。群版那条的注已经把这件事写明了：「它其实是『集合 + 运算 + 公理』这套格式的通用定理，不是群的专利」。\n\n⭐ 所以这条只能当**类比**：想要真正的一次性说法，得有「阿贝尔范畴里的第一同构定理」那个节点。"
+  },
+  {
+   "id": "e163.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "thm.mayer-vietoris",
+   "b": "thm.mv-homology",
+   "title": "Mayer–Vietoris：de Rham 版与奇异同调版",
+   "note": "同一条长正合列，一个在 de Rham 上同调（`thm.mayer-vietoris`，微分几何侧），一个在奇异同调（`thm.mv-homology`，代数拓扑侧）。\n\n⚠ 两边此前**都是叶子**：几何侧不知道拓扑侧已经有同一条列，反之亦然。本图尚未收「奇异上同调 = de Rham」那座桥（de Rham 定理只在光滑流形上），所以这里只记类比。"
+  },
+  {
+   "id": "e164.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "thm.riesz-representation-lp",
+   "b": "thm.riesz-hilbert",
+   "title": "Riesz 表示定理：$L^{p}$ 版与 Hilbert 版",
+   "note": "$L^{p}$ 版：$(L^{p})^{*} \\cong L^{q}$（$1/p + 1/q = 1$），靠 Hölder 不等式；Hilbert 版：$H^{*} \\cong H$，靠投影定理。\n\n两条都是「把泛函换成向量」，$p = 2$ 时它们重合（Hilbert 空间就是 $L^{2}$ 的抽象版）。一般 $p$ 下没有谁推出谁，所以是**类比**而不是依赖。"
+  },
+  {
+   "id": "imp.mct-ae",
+   "kind": "implication",
+   "strength": "strong",
+   "sources": [
+    "thm.mct"
+   ],
+   "target": "cor.mct-ae",
+   "title": "逐点单调收敛 $\\implies$ 几乎处处单调收敛",
+   "proof": "设 $f_{n} \\uparrow f$ 在 $N$ 之外处处成立，$\\mu(N) = 0$。\n\n把 $f_{n}$ 与 $f$ 在 $N$ 上改成 $0$（得到 $g_{n}, g$）：逐点单调收敛处处成立，由 `thm.mct` 得 $\\int g = \\lim \\int g_{n}$。\n\n零集上改动不影响积分（$\\int = \\int g$ 且 $\\int f_{n} = \\int g_{n}$），于是 $\\int f = \\lim \\int f_{n}$。∎\n\n⚠ **修的是一个层号倒置**：「推论」`cor.mct-ae` 原来只有 L17，比原定理 `thm.mct`（L18）还浅 —— 因为这条边一直不存在。接上之后它回到 L19。",
+   "note": ""
+  },
+  {
+   "id": "e165.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "thm.taylor",
+   "b": "prop.taylor-peano",
+   "title": "Taylor 公式：Lagrange 余项与 Peano 余项",
+   "note": "同一个展开式，两种余项、两套假设：`thm.taylor` 要 $n+1$ 阶可导、给出**定量**余项（存在 $\\xi$）；`prop.taylor-peano` 只要 $n$ 阶导数在 $x_{0}$ 连续，给出**定性**的 $o((x-x_{0})^{n})$。\n\n两者互不包含：Peano 版假设更弱但结论只在小 $o$ 意义下；Lagrange 版能用它估误差。所以是**同一台机器的两种用法**，不是依赖。"
   },
   {
    "id": "dep.subset-union-inter",

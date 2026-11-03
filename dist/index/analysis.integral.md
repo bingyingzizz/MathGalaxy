@@ -9,10 +9,10 @@
 - prop.simple-integral-props　简单函数积分的性质　layer 17
 - def.integral-nonneg　非负函数的积分　layer 17
 - prop.integral-zero-iff　积分为零 ⟺ 几乎处处为零　layer 17
-- cor.mct-ae　单调收敛定理（几乎处处版本）　layer 17
 - thm.mct　单调收敛定理　layer 18
 - def.integral-complex　复函数的积分　layer 18
 - thm.termwise-integration　逐项积分　layer 19
+- cor.mct-ae　单调收敛定理（几乎处处版本）　layer 19
 - lem.fatou　Fatou 引理　layer 19
 - def.integrable　可积 / L¹　layer 19
 - cor.fatou　Fatou 的推论　layer 20

@@ -12,6 +12,8 @@ $$\varphi(x) = \langle x, y\rangle \qquad \forall x \in H , \qquad \text{且} \ 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.adjoint-hilbert`](../nodes/thm.adjoint-hilbert.md) 伴随算子
 
+- …另有出边，续页见 [nodes/thm.riesz-hilbert.3.md](./thm.riesz-hilbert.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.riesz-hilbert.2.md](./thm.riesz-hilbert.2.md)
 

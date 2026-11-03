@@ -12,6 +12,11 @@ $$f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!}\,(x - x_0)^{k} + o\bigl( (x - x_
 ## 为什么成立（入边，证明在 proofs/）
 - [`thm.lhopital`](../nodes/thm.lhopital.md) L'Hôpital 法则：L'Hôpital 法则 $\implies$ Peano 余项　[proofs/imp.taylor-peano.md](../proofs/imp.taylor-peano.md)
 
+- …另有入边，续页见 [nodes/prop.taylor-peano.2.md](./prop.taylor-peano.2.md)
+
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.taylor-peano.3.md](./prop.taylor-peano.3.md)
+
 refs: Rudin, Principles of Mathematical Analysis, Ch. 5
 
 > 说明见 `notes/prop.taylor-peano.md`

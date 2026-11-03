@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2805 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2810 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2805 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2810 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -84563,6 +84563,109 @@ window.MG = window.MG || {};
       definition: 'def.vector-space',
       usedBy: 'def.linear-isomorphism',
       note: '线性同构 = 双射的线性映射；两端的结构就是向量空间结构。',
+    },
+  ],
+});
+
+</script>
+  <script>
+/* ============================================================================
+   内容包 · 审计接线（2026-11-03，T10 / C1）：近同名节点互不相认
+   ----------------------------------------------------------------------------
+   来源：`_audit/星图问题清单-2026-11-03.md` §4-C1 —— 近似同名 42 对里 24 对**零边**。
+   这一包接上其中最该接的 5 对。⛔ 不改任何节点正文，只加边。
+
+   用什么边，判据只有一条：
+     · 两个节点是**同一个定理在两个范畴/两套理论里的样子** ⇒ `analogy`（弱边，不参与分层）；
+     · 一个是另一个的**推论** ⇒ `implication`。
+
+   ⚠️ 审计 C1 里还有一对 `def.absolute-continuity` ↔ `def.ac-function`，**这一对不接**：
+      它们是两个不同的概念（测度的绝对连续 vs 函数的绝对连续），
+      已有的 `prop.ac-iff-measure-ac` 正是那座桥，两边都指向它 —— 再加直接边反而错。
+   ========================================================================== */
+(window.MG.packs = window.MG.packs || []).push({
+  name: '审计接线：近同名节点（C1）',
+
+  nodes: [],
+
+  edges: [
+    /* ------------------------------------------------ 1. 第一同构定理两个版本 */
+    {
+      kind: 'analogy',
+      a: 'thm.first-iso',
+      b: 'thm.first-iso-vs',
+      title: '第一同构定理：群版与向量空间版是同一句话',
+      note: [
+        '两个节点一个说「群同态 $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$」，' +
+          '一个说「线性映射 $V/\\ker T \\cong \\operatorname{im} T$」。',
+        '**谁也没推出谁**（群不是向量空间、向量空间加法群也不决定标量乘法），但证明**逐字一样**：' +
+          '良定义 \\$\\to\\$ 同态（线性）\\$\\to\\$ 双射。群版那条的注已经把这件事写明了：' +
+          '「它其实是『集合 + 运算 + 公理』这套格式的通用定理，不是群的专利」。',
+        '⭐ 所以这条只能当**类比**：想要真正的一次性说法，得有「阿贝尔范畴里的第一同构定理」那个节点。',
+      ].join('\n\n'),
+    },
+
+    /* ------------------------------------------- 2. Mayer–Vietoris 两个版本 */
+    {
+      kind: 'analogy',
+      a: 'thm.mayer-vietoris',
+      b: 'thm.mv-homology',
+      title: 'Mayer–Vietoris：de Rham 版与奇异同调版',
+      note: [
+        '同一条长正合列，一个在 de Rham 上同调（`thm.mayer-vietoris`，微分几何侧），' +
+          '一个在奇异同调（`thm.mv-homology`，代数拓扑侧）。',
+        '⚠ 两边此前**都是叶子**：几何侧不知道拓扑侧已经有同一条列，反之亦然。' +
+          '本图尚未收「奇异上同调 = de Rham」那座桥（de Rham 定理只在光滑流形上），所以这里只记类比。',
+      ].join('\n\n'),
+    },
+
+    /* ------------------------------------------- 3. Riesz 表示定理两个版本 */
+    {
+      kind: 'analogy',
+      a: 'thm.riesz-representation-lp',
+      b: 'thm.riesz-hilbert',
+      title: 'Riesz 表示定理：$L^{p}$ 版与 Hilbert 版',
+      note: [
+        '$L^{p}$ 版：$(L^{p})^{*} \\cong L^{q}$（$1/p + 1/q = 1$），靠 Hölder 不等式；' +
+          'Hilbert 版：$H^{*} \\cong H$，靠投影定理。',
+        '两条都是「把泛函换成向量」，$p = 2$ 时它们重合（Hilbert 空间就是 $L^{2}$ 的抽象版）。' +
+          '一般 $p$ 下没有谁推出谁，所以是**类比**而不是依赖。',
+      ].join('\n\n'),
+    },
+
+    /* ------------------------------------- 4. 单调收敛：几乎处处版是推论 */
+    {
+      id: 'imp.mct-ae',
+      kind: 'implication',
+      sources: ['thm.mct'],
+      target: 'cor.mct-ae',
+      title: '逐点单调收敛 $\\implies$ 几乎处处单调收敛',
+      proof: [
+        '设 $f_{n} \\uparrow f$ 在 $N$ 之外处处成立，$\\mu(N) = 0$。',
+        '',
+        '把 $f_{n}$ 与 $f$ 在 $N$ 上改成 $0$（得到 $g_{n}, g$）：逐点单调收敛处处成立，' +
+          '由 `thm.mct` 得 $\\int g = \\lim \\int g_{n}$。',
+        '',
+        '零集上改动不影响积分（$\\int = \\int g$ 且 $\\int f_{n} = \\int g_{n}$），于是 ' +
+          '$\\int f = \\lim \\int f_{n}$。∎',
+        '',
+        '⚠ **修的是一个层号倒置**：「推论」`cor.mct-ae` 原来只有 L17，比原定理 `thm.mct`（L18）还浅 —— ' +
+          '因为这条边一直不存在。接上之后它回到 L19。',
+      ].join('\n'),
+    },
+
+    /* ------------------------------------------- 5. Taylor 两种余项 */
+    {
+      kind: 'analogy',
+      a: 'thm.taylor',
+      b: 'prop.taylor-peano',
+      title: 'Taylor 公式：Lagrange 余项与 Peano 余项',
+      note: [
+        '同一个展开式，两种余项、两套假设：`thm.taylor` 要 $n+1$ 阶可导、给出**定量**余项' +
+          '（存在 $\\xi$）；`prop.taylor-peano` 只要 $n$ 阶导数在 $x_{0}$ 连续，给出**定性**的 $o((x-x_{0})^{n})$。',
+        '两者互不包含：Peano 版假设更弱但结论只在小 $o$ 意义下；Lagrange 版能用它估误差。' +
+          '所以是**同一台机器的两种用法**，不是依赖。',
+      ].join('\n\n'),
     },
   ],
 });

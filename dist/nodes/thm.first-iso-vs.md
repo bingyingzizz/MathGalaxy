@@ -14,8 +14,10 @@ $$V / \ker T \cong \operatorname{im} T$$
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.kernel-image-vs`](../nodes/def.kernel-image-vs.md) 核与像 + [`def.quotient-vs`](../nodes/def.quotient-vs.md) 商空间：核 / 像 / 商空间 $\implies$ 第一同构定理　[proofs/imp.first-iso-vs.md](../proofs/imp.first-iso-vs.md)
 
+- …另有入边，续页见 [nodes/thm.first-iso-vs.2.md](./thm.first-iso-vs.2.md)
+
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/thm.first-iso-vs.2.md](./thm.first-iso-vs.2.md)
+- …另有出边，续页见 [nodes/thm.first-iso-vs.3.md](./thm.first-iso-vs.3.md)
 
 refs: Lang, Linear Algebra
 

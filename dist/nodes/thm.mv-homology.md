@@ -9,6 +9,7 @@ layer 21 · 定理 · 同调群 · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - ⇒ [`thm.sphere-homology`](../nodes/thm.sphere-homology.md) 球面的同调
+- ～弱边 [`thm.mayer-vietoris`](../nodes/thm.mayer-vietoris.md) Mayer–Vietoris 序列
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.mv-homology.3.md](./thm.mv-homology.3.md)
