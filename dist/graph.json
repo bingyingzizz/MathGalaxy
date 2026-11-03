@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T08:00:52.668Z",
+  "generated": "2026-11-03T08:17:59.254Z",
   "counts": {
    "regions": 15,
    "clusters": 103,
-   "nodes": 1481,
-   "edges": 2835,
-   "strong": 2809,
+   "nodes": 1487,
+   "edges": 2850,
+   "strong": 2824,
    "weak": 26,
    "derived": 33,
-   "en_pages": 1481
+   "en_pages": 1487
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -69,7 +69,7 @@
    "en": "Topology",
    "desc": "开集、连续、紧致与连通；再往上是紧 Hausdorff、Stone 空间与紧生成空间。",
    "color": "#D9649F",
-   "nodeCount": 171
+   "nodeCount": 177
   },
   {
    "id": "algebra",
@@ -2578,12 +2578,18 @@
    "en": "Surfaces: connected sum and genus",
    "parent": "topology",
    "desc": "闭曲面分类之前必须先有地形：连通和（挖球 + 沿边界粘）与亏格（一阶同调的秩的一半）。这两个概念都刻意避开「分类定理」：亏格用同调定义，所以不会绕回分类。下一刀才放拓扑流形 / 闭曲面 / 分类定理。",
-   "nodeCount": 4,
+   "nodeCount": 10,
    "nodes": [
     "def.connected-sum",
     "def.genus",
     "def.closed-surface",
-    "thm.classification-surfaces"
+    "thm.classification-surfaces",
+    "prop.eulerchar-genus",
+    "prop.eulerchar-nonorientable",
+    "ex.sphere",
+    "ex.torus",
+    "ex.projective-plane",
+    "ex.klein-bottle"
    ]
   },
   {
@@ -39589,6 +39595,253 @@
     "Munkres, Topology, Ch. 12（Classification of Surfaces）",
     "Massey, A Basic Course in Algebraic Topology, Ch. 1",
     "Radó, Über den Begriff der Riemannschen Fläche (1925)——三角剖分存在性"
+   ]
+  },
+  {
+   "id": "prop.eulerchar-genus",
+   "type": "proposition",
+   "label": "Euler 示性数与亏格",
+   "title": "闭可定向曲面：$\\chi = 2 - 2g$",
+   "status": "skeleton",
+   "label_en": "Euler characteristic and genus",
+   "title_en": "Euler characteristic and genus",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.eulerchar-genus.en.md",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.surfaces",
+   "layer": 23,
+   "tags": [
+    "命题",
+    "拓扑",
+    "曲面",
+    "同调"
+   ],
+   "statement": "设 $S$ 是**闭可定向曲面**，亏格 $g = \\tfrac{1}{2}\\operatorname{rank} H_{1}(S;\\mathbb{Z})$（`def.genus`）。则\n\n$$\\chi(S) = 2 - 2g .$$\n\n于是 $\\chi$ 与 $g$ 互相决定：$g = (2 - \\chi)/2$。",
+   "notes": "⭐ **两种算法给出同一个数**（这正是 `thm.euler-characteristic` 的内容：「数单纯形」与「数 Betti 数」一致）：\n\n- **组合侧**：$\\chi = V - E + F$，给 $S$ 一个三角剖分去数；\n\n- **同调侧**：$\\chi = \\sum_{i}(-1)^{i}\\operatorname{rank} H_{i} = 1 - 2g + 1 = 2 - 2g$（$H_{0} \\cong \\mathbb{Z}$、$H_{1} \\cong \\mathbb{Z}^{2g}$、$H_{2} \\cong \\mathbb{Z}$）。\n\n同调那一行是**一行算完**的 —— 这也是为什么亏格要用同调定义（`def.genus` 的注里写了原因：避开分类定理）。\n\n⚠ **组合侧的骨架**：从「一个环面的剖分」（$V = 9$、$E = 27$、$F = 18$，故 $\\chi = 0$）出发，每做一次连通和挖一个球、沿边界粘一个洞，$\\chi$ 就减 2（球面 $\\chi = 2$ $\\to$ 环面 $0$ $\\to$ 双环面 $-2$）。**为什么不逐格写 $g$ 个环面的剖分**：粘接处的顶点/边/面簿记在 $g$ 大时很啰嗦，本图没有展开。\n\n⭐ 三个直接读数：球面 $g = 0$、$\\chi = 2$；环面 $g = 1$、$\\chi = 0$；双环面 $g = 2$、$\\chi = -2$。\n\n📌 与几何的接口：`thm.gauss-bonnet` 说 $\\int_{M} K\\,\\mathrm{d}A = 2\\pi\\chi(M)$。把它和本条合起来就是「$\\int K = 4\\pi(1 - g)$」——**曲率的总量只由亏格决定**，这是「拓扑控制几何」最干净的一个例子。",
+   "refs": [
+    "Munkres, Topology, Ch. 12",
+    "Hatcher, Algebraic Topology, Ch. 2.2"
+   ]
+  },
+  {
+   "id": "prop.eulerchar-nonorientable",
+   "type": "proposition",
+   "label": "Euler 示性数与不可定向亏格",
+   "title": "闭不可定向曲面：$\\chi = 2 - k$",
+   "status": "skeleton",
+   "title_en": "Euler characteristic and nonorientable genus",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/prop.eulerchar-nonorientable.en.md",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.surfaces",
+   "layer": 23,
+   "tags": [
+    "命题",
+    "拓扑",
+    "曲面",
+    "同调"
+   ],
+   "statement": "设 $S$ 是**闭不可定向曲面**，且 $S \\cong \\mathbb{RP}^{2}\\#\\cdots\\#\\mathbb{RP}^{2}$（$k$ 个，见 `thm.classification-surfaces`；$k$ 叫**不可定向亏格**）。则\n\n$$\\chi(S) = 2 - k .$$",
+   "notes": "⭐ **和可定向侧对照着记**：可定向是 $\\chi = 2 - 2g$（斜率 $-2$），不可定向是 $\\chi = 2 - k$（斜率 $-1$）。所以「同一个 $\\chi$ 值」在两族里对应不同的曲面 —— 比如 $\\chi = 0$ 既是环面（$g=1$）也是克莱因瓶（$k=2$）；**光看 $\\chi$ 分不出它们**，还要加可定向性。\n\n⭐ **同调侧为什么是 $k$ 而不是 $2k$**：不可定向曲面的 $H_{1}$ 有挠部，\n\n\n\n$$H_{1}(S;\\mathbb{Z}) \\cong \\mathbb{Z}^{k-1} \\oplus \\mathbb{Z}/2 ,$$\n\n\n\n自由秩是 $k - 1$（不是 $2g$ 那种「两个一组」），而 $\\chi = 1 - (k-1) + 1 - 1 = 2 - k$（末项 $-1$ 来自 $H_{2} = 0$：不可定向紧曲面不能像可定向那样有一个「整体基本类」）。\n\n⚠ **所以「亏格」这个词在不可定向侧不能照搬**：`def.genus` 只对可定向定义（除以 2 那个说法依赖 $H_{1}$ 自由秩为偶数）。不可定向侧的标准量是 $k$，关系是 $\\chi = 2 - k$。\n\n⭐ 读数：$\\mathbb{RP}^{2}$：$k = 1$、$\\chi = 1$；克莱因瓶：$k = 2$、$\\chi = 0$；三个射影平面的连通和：$k = 3$、$\\chi = -1$。",
+   "refs": [
+    "Munkres, Topology, Ch. 12",
+    "Massey, A Basic Course in Algebraic Topology, Ch. 1"
+   ]
+  },
+  {
+   "id": "ex.sphere",
+   "type": "example",
+   "label": "球面 S²",
+   "title": "球面 $S^{2}$：闭曲面，亏格 0，$\\chi = 2$",
+   "label_en": "sphere",
+   "title_en": "sphere",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.sphere.en.md",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.surfaces",
+   "layer": 20,
+   "tags": [
+    "例",
+    "拓扑",
+    "曲面"
+   ],
+   "statement": "$$S^{2} := \\{\\, x \\in \\mathbb{R}^{3} : \\lVert x \\rVert = 1 \\,\\}$$\n\n配子空间拓扑，是一个**闭曲面**（`def.closed-surface`）。它的亏格 $g = 0$，Euler 示性数 $\\chi(S^{2}) = 2$。",
+   "notes": "⭐ **它是分类定理里的第一个标准形**，也是连通和的单位元：$S^{2} \\# M \\cong M$（`def.connected-sum` 的注）。\n\n⭐ **两种图卡覆盖**：球极投影给出两张图卡（去掉北极 / 去掉南极），转移映射是 $x \\mapsto x/\\lVert x\\rVert^{2}$ 那一类 ——这直接说明 $S^{2}$ 是 2 维拓扑流形，而且光滑。\n\n⚠ **$S^{2}$ 与 $\\mathbb{R}^{2}$ 不同胚**（一个是紧的、一个不是），尽管去掉一点之后同胚。这也是「紧」这个条件在闭曲面定义里非有不可的原因之一。\n\n📌 $H_{0} = \\mathbb{Z}$、$H_{1} = 0$、$H_{2} = \\mathbb{Z}$，所以 $\\chi = 1 - 0 + 1 = 2$ —— 与 $2 - 2g$ 一致。",
+   "refs": [
+    "Munkres, Topology, Ch. 12"
+   ]
+  },
+  {
+   "id": "ex.torus",
+   "type": "example",
+   "label": "环面 T²",
+   "title": "环面 $T^{2} = S^{1} \\times S^{1}$：亏格 1，$\\chi = 0$",
+   "label_en": "torus",
+   "title_en": "torus",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.torus.en.md",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.surfaces",
+   "layer": 24,
+   "tags": [
+    "例",
+    "拓扑",
+    "曲面"
+   ],
+   "statement": "$$T^{2} := S^{1} \\times S^{1} ,$$\n\n（乘积拓扑）是一个**闭可定向曲面**，亏格 $g = 1$，Euler 示性数 $\\chi(T^{2}) = 0$。",
+   "notes": "⭐ **三种等价的描述**：① $S^{1} \\times S^{1}$；② 正方形对边粘合（$[0,1]^{2}$ 按 $(0,t)\\sim(1,t)$、$(s,0)\\sim(s,1)$ 取商）；③ $\\mathbb{R}^{2}/\\mathbb{Z}^{2}$。第三种最方便算：它就是「平面模整数平移」，基本群是 $\\mathbb{Z}^{2}$。\n\n⭐ **$\\chi = 0$ 的算法**：正方形粘合成的复形有 $V = 1$、$E = 2$、$F = 1$，故 $\\chi = 1 - 2 + 1 = 0$，与 $2 - 2g = 0$ 一致。\n\n⭐ **它是「咖啡杯 = 甜甜圈」那句话的主角**：两者都同胚于 $T^{2}$（杯子有一个洞、甜甜圈有一个洞），所以拓扑上不可区分 —— 与它们嵌在 $\\mathbb{R}^{3}$ 里的**几何形状**无关（那是 `def.orientable-surface` 那一侧的事）。\n\n⚠ **$T^{2}$ 不能嵌入 $\\mathbb{R}^{2}$**：它是紧的、无边界、2 维，若嵌进平面就得是平面里的紧开集 —— 只有空集。所以「画在纸上」的环面只是它的**投影**。\n\n📌 $H_{0} = \\mathbb{Z}$、$H_{1} = \\mathbb{Z}^{2}$、$H_{2} = \\mathbb{Z}$，$\\chi = 1 - 2 + 1 = 0$；注意 $H_{1}$ 的秩是 **2**，而亏格是 **1**（`def.genus` 里那个「除以 2」的来处）。",
+   "refs": [
+    "Munkres, Topology, Ch. 12",
+    "Hatcher, Algebraic Topology, Ch. 1"
+   ]
+  },
+  {
+   "id": "ex.projective-plane",
+   "type": "example",
+   "label": "射影平面 RP²",
+   "title": "射影平面 $\\mathbb{RP}^{2}$：闭不可定向曲面，$k = 1$，$\\chi = 1$",
+   "label_en": "projective plane",
+   "title_en": "projective plane",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.projective-plane.en.md",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.surfaces",
+   "layer": 24,
+   "tags": [
+    "例",
+    "拓扑",
+    "曲面"
+   ],
+   "statement": "$$\\mathbb{RP}^{2} := S^{2} \\big/ (x \\sim -x) ,$$\n\n（对径粘合的商拓扑）是一个**闭不可定向曲面**，不可定向亏格 $k = 1$，Euler 示性数 $\\chi(\\mathbb{RP}^{2}) = 1$。",
+   "notes": "⭐ **三个等价描述**：① 球面按对径点粘合；② 圆盘把边界上的对径点粘合；③ 正方形对边**反向**粘合（$T^{2}$ 是「同向」粘合，差别就在这个反向上）。\n\n⭐ **$\\chi = 1$ 的算法**：从圆盘出发（$\\chi = 1$），把边界对径粘起来相当于粘一条「半扭转的带子」，它把边界吃掉了，$V$ 从一整圈变成 1 个点、$E$ 变成 1 条闭曲线，于是 $\\chi = 1 - 1 + 1 = 1$，与 $2 - k = 1$ 一致。\n\n⭐ **不可定向的直观理由**：在 $\\mathbb{RP}^{2}$ 上沿一条直线走一圈回来，「正面」会变成「反面」—— 它就是**莫比乌斯带的「盖子」**：把莫比乌斯带的边界（一条圆）粘上一个圆盘，得到 $\\mathbb{RP}^{2}$。\n\n⚠ **$\\mathbb{RP}^{2}$ 不能嵌入 $\\mathbb{R}^{3}$**（紧无边的不可定向闭曲面都嵌不进 $\\mathbb{R}^{3}$；要嵌得跳到 $\\mathbb{R}^{4}$）。所以「画不出来」不是画技问题，是拓扑事实 —— 常见的「交叉帽」图是它的**浸入**，不是嵌入。\n\n📌 $H_{1}(\\mathbb{RP}^{2};\\mathbb{Z}) \\cong \\mathbb{Z}/2$（纯挠，自由秩 0），$H_{2} = 0$，故 $\\chi = 1 - 0 + 0 = 1$。",
+   "refs": [
+    "Munkres, Topology, Ch. 12",
+    "Hatcher, Algebraic Topology, Ch. 2.2"
+   ]
+  },
+  {
+   "id": "ex.klein-bottle",
+   "type": "example",
+   "label": "克莱因瓶",
+   "title": "克莱因瓶：闭不可定向曲面，$k = 2$，$\\chi = 0$",
+   "label_en": "Klein bottle",
+   "title_en": "Klein bottle",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/ex.klein-bottle.en.md",
+   "region": "topology",
+   "regions": [
+    "topology"
+   ],
+   "cluster": "topology.surfaces",
+   "layer": 24,
+   "tags": [
+    "例",
+    "拓扑",
+    "曲面"
+   ],
+   "statement": "克莱因瓶 $K$ 是 $\\mathbb{RP}^{2} \\# \\mathbb{RP}^{2}$（两个射影平面的连通和），也是「正方形对边按一同一反粘合」得到的商空间。它是一个**闭不可定向曲面**，不可定向亏格 $k = 2$，$\\chi(K) = 0$。",
+   "notes": "⭐ **两种等价描述**：① 正方形：一对对边**同向**粘（像 $T^{2}$）、另一对**反向**粘；② 两个莫比乌斯带沿边界粘起来。两种说法给出同一个曲面（本图只记结论，不证）。\n\n⭐ **$\\chi = 0$**：$2 - k = 2 - 2 = 0$。注意这与**环面**相同 ——所以「$\\chi = 0$」这条信息本身不足以认出克莱因瓶，还得看可定向性。这两个曲面是「同一张 $\\chi$、两种拓扑型」的典型例子。\n\n⚠ **仍然嵌不进 $\\mathbb{R}^{3}$**：任何紧无边的不可定向闭曲面都嵌不进 $\\mathbb{R}^{3}$。那个著名的「瓶脖子穿过瓶身」的玻璃模型是一个**浸入**（自交的像），不是嵌入。\n\n📌 $H_{1}(K;\\mathbb{Z}) \\cong \\mathbb{Z} \\oplus \\mathbb{Z}/2$，$H_{2} = 0$，故 $\\chi = 1 - 1 + 0 = 0$。\n\n⚠ 本图没有「莫比乌斯带」节点（E4 缺口），所以上面「两个莫比乌斯带粘起来」只作说明，没有连线。",
+   "refs": [
+    "Munkres, Topology, Ch. 12"
    ]
   },
   {
@@ -79344,6 +79597,126 @@
    "note": "`def.orientable-surface` 说的是：$\\mathbb{R}^{3}$ 里被参数化覆盖的点集，能不能**连续地选一侧法向**（外加一个外法向，才有了面积元与 Gauss 映射）。那是**外在**的说法，用到了嵌入与度量。\n\n本节点说的是**内在**拓扑条件：紧、连通、无边界、局部欧氏 —— 完全没有「嵌在哪里」。\n\n⚠ 两者**不是同一件事**：一个闭曲面可以嵌进 $\\mathbb{R}^{3}$，也可以不嵌（抽象地存在）；而「外在可定向」在嵌入下才谈得上。所以这里只连类比，⛔ 不连 implication/definition。\n\n📌 桥梁是嵌入定理（每个闭可定向曲面都能嵌入 $\\mathbb{R}^{3}$）与 Gauss–Bonnet（$\\int K = 2\\pi\\chi$），本图都没有写成节点。"
   },
   {
+   "id": "dep.classification-eulerchargenus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.classification-surfaces",
+   "usedBy": "prop.eulerchar-genus",
+   "note": "「闭可定向曲面就是 $g$ 个环面的连通和」是分类定理给的标准形 —— 命题的**证明**用它，虽然结论 $\\chi = 2 - 2g$ 也能纯同调算出来（见注）。"
+  },
+  {
+   "id": "dep.eulerchar-eulerchargenus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.euler-characteristic",
+   "usedBy": "prop.eulerchar-genus",
+   "note": "$\\chi$ 的两种算法（数单纯形 / 数 Betti 数）相等，正是这条定理的内容。"
+  },
+  {
+   "id": "dep.genus-eulerchargenus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.genus",
+   "usedBy": "prop.eulerchar-genus",
+   "note": "命题说的就是「$\\chi$ 与 $g$ 互相决定」，$g$ 的定义必须在这里。"
+  },
+  {
+   "id": "dep.classification-eulercharnonor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.classification-surfaces",
+   "usedBy": "prop.eulerchar-nonorientable",
+   "note": "不可定向标准形（$k$ 个射影平面的连通和）同样来自分类定理。"
+  },
+  {
+   "id": "dep.eulerchar-eulercharnonor",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.euler-characteristic",
+   "usedBy": "prop.eulerchar-nonorientable",
+   "note": "$\\chi$ 的组合算法（$V - E + F$）是这一条的另一半。"
+  },
+  {
+   "id": "dep.closedsurface-sphere",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.closed-surface",
+   "usedBy": "ex.sphere",
+   "note": "球面满足闭曲面的三个条件：紧（$\\mathbb{R}^{3}$ 里的有界闭集）、连通、无边界。"
+  },
+  {
+   "id": "dep.closedsurface-torus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.closed-surface",
+   "usedBy": "ex.torus",
+   "note": "$S^{1} \\times S^{1}$ 是紧空间的乘积，故紧；连通、无边界同理。"
+  },
+  {
+   "id": "dep.closedsurface-rp2",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.closed-surface",
+   "usedBy": "ex.projective-plane",
+   "note": "紧空间的对径商仍紧（连续像），连通性与无边界继承下来。"
+  },
+  {
+   "id": "dep.connectedsum-klein",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.connected-sum",
+   "usedBy": "ex.klein-bottle",
+   "note": "克莱因瓶的定义（$\\mathbb{RP}^{2} \\# \\mathbb{RP}^{2}$）里直接用到连通和。"
+  },
+  {
+   "id": "dep.closedsurface-klein",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.closed-surface",
+   "usedBy": "ex.klein-bottle",
+   "note": "两个闭曲面的连通和仍是闭曲面（紧、连通、无边界都保持）。"
+  },
+  {
+   "id": "dep.genus-sphere",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.genus",
+   "usedBy": "ex.sphere",
+   "note": "球面的 $g = 0$ 不是「约定」：$H_{1}(S^{2}) = 0$，所以 $\\tfrac{1}{2}\\operatorname{rank} = 0$。"
+  },
+  {
+   "id": "dep.genus-torus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.genus",
+   "usedBy": "ex.torus",
+   "note": "环面的 $g = 1$：$H_{1} \\cong \\mathbb{Z}^{2}$，秩 2，除以 2 得 1。"
+  },
+  {
+   "id": "dep.eulerchargenus-torus",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.eulerchar-genus",
+   "usedBy": "ex.torus",
+   "note": "例子里「$\\chi = 0$」这个值由这条命题（$2 - 2g$）算出，不是另算的。"
+  },
+  {
+   "id": "dep.eulercharnonor-rp2",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.eulerchar-nonorientable",
+   "usedBy": "ex.projective-plane",
+   "note": "「$k = 1$、$\\chi = 1$」由不可定向那条判据（$2 - k$）读出。"
+  },
+  {
+   "id": "dep.eulercharnonor-klein",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "prop.eulerchar-nonorientable",
+   "usedBy": "ex.klein-bottle",
+   "note": "「$k = 2$、$\\chi = 0$」同上。"
+  },
+  {
    "id": "dep.subset-union-inter",
    "kind": "definition",
    "strength": "strong",
@@ -91339,7 +91712,7 @@
   {
    "a": "topology.homology",
    "b": "topology.surfaces",
-   "count": 3,
+   "count": 5,
    "label": "",
    "explicit": false
   },

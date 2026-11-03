@@ -1443,6 +1443,12 @@ MG.aliases = {
     { id: 'def.topological-manifold', en: 'topological manifold', aka: ['拓扑流形', 'n 维拓扑流形'] },
     { id: 'def.closed-surface', en: 'closed surface', aka: ['闭曲面', '紧曲面'] },
     { id: 'thm.classification-surfaces', en: 'classification of closed surfaces', aka: ['闭曲面分类定理', '曲面分类定理'] },
+    { id: 'prop.eulerchar-genus', en: 'Euler characteristic and genus', aka: ['欧拉示性数与亏格', 'chi=2-2g', 'χ=2-2g'] },
+    { id: 'prop.eulerchar-nonorientable', en: 'Euler characteristic and nonorientable genus', aka: ['欧拉示性数与不可定向亏格', 'chi=2-k', 'χ=2-k'] },
+    { id: 'ex.sphere', en: 'sphere', aka: ['球面', 'S^2', '二维球面', 'sphere'] },
+    { id: 'ex.torus', en: 'torus', aka: ['环面', 'T^2', '甜甜圈', '咖啡杯', 'torus'] },
+    { id: 'ex.projective-plane', en: 'projective plane', aka: ['射影平面', 'RP^2', '实射影平面'] },
+    { id: 'ex.klein-bottle', en: 'Klein bottle', aka: ['克莱因瓶', '克莱因壶', 'Klein 瓶'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

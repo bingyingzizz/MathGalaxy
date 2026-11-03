@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`thm.euler-characteristic`](../nodes/thm.euler-characteristic.md) Euler 示性数：用到了定义 Euler 示性数　[proofs/dep.eulerchar-classification.md](../proofs/dep.eulerchar-classification.md)
+
+> 续见 [nodes/thm.classification-surfaces.5.md](./thm.classification-surfaces.5.md)

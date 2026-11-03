@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T08:00:52.668Z",
+ "generated": "2026-11-03T08:17:59.254Z",
  "terms": 76,
  "missing": [
   {
@@ -57,60 +57,6 @@
    ]
   },
   {
-   "term": "环面",
-   "total": 18,
-   "nodes": [
-    {
-     "id": "def.genus",
-     "c": 6
-    },
-    {
-     "id": "def.orientable-surface",
-     "c": 2
-    },
-    {
-     "id": "thm.gauss-bonnet",
-     "c": 1
-    },
-    {
-     "id": "def.vector-field",
-     "c": 1
-    },
-    {
-     "id": "def.integral-manifold",
-     "c": 1
-    },
-    {
-     "id": "thm.frobenius",
-     "c": 1
-    },
-    {
-     "id": "def.simply-connected",
-     "c": 1
-    },
-    {
-     "id": "thm.mv-homology",
-     "c": 1
-    },
-    {
-     "id": "def.principal-bundle",
-     "c": 1
-    },
-    {
-     "id": "def.connected-sum",
-     "c": 1
-    },
-    {
-     "id": "def.closed-surface",
-     "c": 1
-    },
-    {
-     "id": "thm.classification-surfaces",
-     "c": 1
-    }
-   ]
-  },
-  {
    "term": "原函数",
    "total": 16,
    "nodes": [
@@ -158,7 +104,7 @@
   },
   {
    "term": "三角剖分",
-   "total": 14,
+   "total": 15,
    "nodes": [
     {
      "id": "thm.classification-surfaces",
@@ -186,6 +132,10 @@
     },
     {
      "id": "thm.homotopy-invariance",
+     "c": 1
+    },
+    {
+     "id": "prop.eulerchar-genus",
      "c": 1
     }
    ]
@@ -329,6 +279,20 @@
    ]
   },
   {
+   "term": "莫比乌斯带",
+   "total": 5,
+   "nodes": [
+    {
+     "id": "ex.klein-bottle",
+     "c": 3
+    },
+    {
+     "id": "ex.projective-plane",
+     "c": 2
+    }
+   ]
+  },
+  {
    "term": "偏微分方程",
    "total": 5,
    "nodes": [
@@ -346,28 +310,6 @@
     },
     {
      "id": "def.closed-form",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "射影平面",
-   "total": 4,
-   "nodes": [
-    {
-     "id": "thm.euler-characteristic",
-     "c": 1
-    },
-    {
-     "id": "def.genus",
-     "c": 1
-    },
-    {
-     "id": "def.closed-surface",
-     "c": 1
-    },
-    {
-     "id": "thm.classification-surfaces",
      "c": 1
     }
    ]
@@ -462,16 +404,6 @@
    "nodes": [
     {
      "id": "def.trig-function",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "克莱因瓶",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "def.closed-surface",
      "c": 1
     }
    ]
@@ -1869,7 +1801,6 @@
   "正切",
   "反正弦",
   "反三角函数",
-  "莫比乌斯带",
   "三角剖分存在性",
   "zeta 函数",
   "ζ 函数",
@@ -1887,8 +1818,6 @@
   "Riesz–Markov",
   "图论",
   "组合数学",
-  "咖啡杯",
-  "甜甜圈",
   "负负得正",
   "除以零",
   "芝诺",

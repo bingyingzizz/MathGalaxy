@@ -7,6 +7,11 @@ layer 22 · 定理 · 曲面的地形 · 拓扑学
 > 陈述续见 [nodes/thm.classification-surfaces.2.md](./thm.classification-surfaces.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- 被 [`prop.eulerchar-genus`](../nodes/prop.eulerchar-genus.md) Euler 示性数与亏格 用
+
+- …另有出边，续页见 [nodes/thm.classification-surfaces.5.md](./thm.classification-surfaces.5.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.classification-surfaces.3.md](./thm.classification-surfaces.3.md)
 

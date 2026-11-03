@@ -31,4 +31,12 @@
 
 - 闭曲面分类定理 | 曲面分类定理 → thm.classification-surfaces
 
-见 `../../alias.md`。
+- 欧拉示性数与亏格 | chi=2-2g | χ=2-2g → prop.eulerchar-genus
+
+- 欧拉示性数与不可定向亏格 | chi=2-k | χ=2-k → prop.eulerchar-nonorientable
+
+- 球面 | S^2 | 二维球面 | sphere → ex.sphere
+
+- 环面 | T^2 | 甜甜圈 | 咖啡杯 | torus → ex.torus
+
+> 续见 alias/aka/topology.14.md

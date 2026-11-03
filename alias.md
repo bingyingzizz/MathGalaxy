@@ -7,7 +7,7 @@
 - 数理逻辑　`dist/alias/aka/logic.md` 0+7
 - 集合论　`dist/alias/set-theory.md` / `dist/alias/aka/set-theory.md` 25+60
 - 序理论　`dist/alias/order-theory.md` / `dist/alias/aka/order-theory.md` 10+16
-- 拓扑学　`dist/alias/topology.md` / `dist/alias/aka/topology.md` 48+158
+- 拓扑学　`dist/alias/topology.md` / `dist/alias/aka/topology.md` 48+164
 - 抽象代数　`dist/alias/algebra.md` / `dist/alias/aka/algebra.md` 16+163
 - 数学分析　`dist/alias/analysis.md` / `dist/alias/aka/analysis.md` 48+268
 - 泛函分析　`dist/alias/aka/functional-analysis.md` 0+54
