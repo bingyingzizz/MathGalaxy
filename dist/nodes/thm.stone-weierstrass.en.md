@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 11 · theorem · cluster $C(K)$ and Stone–Weierstrass (`fa.ck`) · Functional Analysis
+layer 12 · theorem · cluster $C(K)$ and Stone–Weierstrass (`fa.ck`) · Functional Analysis
 names: `Stone-Weierstrass (Real)` (short) · `Stone-Weierstrass Theorem, Real Case` (full)
 
 ## Statement and proof

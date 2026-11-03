@@ -119,7 +119,8 @@ MG.aliases = {
     /* 代数结构 */
     { id: 'def.field', aka: ['域', 'field', '数域'] },
     { id: 'def.ordered-field', aka: ['有序域', 'ordered field'] },
-    { id: 'def.vs', en: 'basis', aka: ['线性无关', '张成', '基', 'basis', 'span', 'linearly independent', '向量空间'] },
+    { id: 'def.vs', en: 'basis', aka: ['线性无关', '张成', '基', 'basis', 'span', 'linearly independent'] },
+    { id: 'def.vector-space', en: 'vector space', aka: ['向量空间', '线性空间', 'vector space', 'K-向量空间'] },
     { id: 'thm.vsbasis', en: 'every vector space has a basis', aka: ['每个向量空间有基', 'Hamel 基', '基的存在性'] },
 
     /* 拓扑空间 */

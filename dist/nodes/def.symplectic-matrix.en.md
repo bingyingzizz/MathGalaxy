@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster Multilinear Algebra and Tensors (`algebra.multilinear`) · Abstract Algebra
+layer 16 · definition · cluster Multilinear Algebra and Tensors (`algebra.multilinear`) · Abstract Algebra
 names: `Symplectic Matrix` (short) · `Symplectic Matrix and Symplectic Group` (full)
 
 ## Statement and proof

@@ -4,7 +4,7 @@
 群、环、域、模与线性代数；佐恩引理的经典应用场。
 
 - algebra.structures　代数结构 / Algebraic Structures　中心天体 def.group　21 点
-- algebra.vectorspace　向量空间的基 / Bases of Vector Spaces　中心天体 def.vs　7 点
+- algebra.vectorspace　向量空间与基 / Bases of Vector Spaces　中心天体 def.vs　8 点
 - algebra.spectral　特征值与 Jordan 型 / Eigenvalues and Jordan Form　中心天体 thm.jordan-canonical-form　16 点
 - algebra.inner　内积空间与正交性 / Inner Product Spaces and Orthogonality　中心天体 thm.spectral-theorem　29 点
 - algebra.multilinear　多重线性与张量 / Multilinear Algebra and Tensors　中心天体 def.exterior-algebra　23 点

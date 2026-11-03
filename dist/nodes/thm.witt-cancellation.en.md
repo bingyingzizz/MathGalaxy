@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · theorem · cluster Multilinear Algebra and Tensors (`algebra.multilinear`) · Abstract Algebra
+layer 15 · theorem · cluster Multilinear Algebra and Tensors (`algebra.multilinear`) · Abstract Algebra
 names: `Witt Cancellation` (short) · `Witt Cancellation Theorem` (full)
 
 ## Statement and proof

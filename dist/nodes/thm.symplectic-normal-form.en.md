@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · theorem · cluster Multilinear Algebra and Tensors (`algebra.multilinear`) · Abstract Algebra
+layer 16 · theorem · cluster Multilinear Algebra and Tensors (`algebra.multilinear`) · Abstract Algebra
 names: `Symplectic Normal Form` (short) · `Symplectic Normal Form Theorem` (full)
 
 ## Statement and proof

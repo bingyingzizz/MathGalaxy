@@ -6,8 +6,8 @@
 - **17 / 19** `def.metric-space` 距离空间 · layer 13 · 度量空间
 - **17 / 17** `def.category` 范畴 · layer 7 · 范畴与图
 - **17 / 17** `def.ring` 环 · layer 7 · 代数结构
-- **17 / 17** `def.inner-product` 内积 · layer 9 · 内积空间与正交性
+- **17 / 17** `def.inner-product` 内积 · layer 10 · 内积空间与正交性
 
-（共 877 个节点在这一榜上有非零计数；这里列前 20 条。）
+（共 878 个节点在这一榜上有非零计数；这里列前 20 条。）
 
 索引 `hubs.md`。

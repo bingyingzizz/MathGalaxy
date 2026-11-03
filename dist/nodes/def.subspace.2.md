@@ -3,5 +3,6 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.vs`](../nodes/def.vs.md) 向量空间的基：用到了定义 向量空间的基　[proofs/dep.vs-subspace.md](../proofs/dep.vs-subspace.md)
+- [`def.vector-space`](../nodes/def.vector-space.md) 向量空间：用到了定义 向量空间　[proofs/dep.vectorspace-subspace.md](../proofs/dep.vectorspace-subspace.md)
 
 > 续见 [nodes/def.subspace.3.md](./def.subspace.3.md)

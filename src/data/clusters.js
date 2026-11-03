@@ -133,7 +133,7 @@ MG.clusters = [
   },
   {
     id: 'algebra.vectorspace',
-    name: '向量空间的基',
+    name: '向量空间与基',
     en: 'Bases of Vector Spaces',
     parent: 'algebra',
     hub: 'def.vs',

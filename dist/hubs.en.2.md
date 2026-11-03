@@ -9,8 +9,8 @@
 
 - **26 / 26** `def.topology` topology · 拓扑空间的基本语汇
 - **25 / 28** `def.sheaf` sheaf · 层与拓扑
+- **24 / 24** `def.group` group · 代数结构
 - **23 / 23** `def.function` mapping · 关系与函数
-- **23 / 23** `def.group` group · 代数结构
 
 - **22 / 22** `def.functor` functor · 函子与自然变换
 - **21 / 23** `def.chaus` compact Hausdorff · 紧 Hausdorff 空间

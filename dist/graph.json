@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T06:36:05.164Z",
+  "generated": "2026-11-03T06:40:46.943Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
-   "nodes": 1472,
-   "edges": 2799,
-   "strong": 2782,
+   "nodes": 1473,
+   "edges": 2805,
+   "strong": 2788,
    "weak": 17,
    "derived": 31,
-   "en_pages": 1472
+   "en_pages": 1473
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -77,7 +77,7 @@
    "en": "Abstract Algebra",
    "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
    "color": "#E08A3C",
-   "nodeCount": 186
+   "nodeCount": 187
   },
   {
    "id": "analysis",
@@ -349,11 +349,11 @@
   },
   {
    "id": "algebra.vectorspace",
-   "name": "向量空间的基",
+   "name": "向量空间与基",
    "en": "Bases of Vector Spaces",
    "parent": "algebra",
    "desc": "造出线性代数的地基：线性无关 / 张成 → 基 → 维数（任意两组基等势）。$\\operatorname{span} S = \\bigcap \\{W \\supseteq S\\}$ 这个「取一切之交」的模板与 $\\sigma$-代数的生成是同一招。",
-   "nodeCount": 7,
+   "nodeCount": 8,
    "nodes": [
     "def.vs",
     "thm.vsbasis",
@@ -361,7 +361,8 @@
     "prop.subspace-criterion",
     "def.coordinate",
     "thm.steinitz",
-    "thm.dimension"
+    "thm.dimension",
+    "def.vector-space"
    ]
   },
   {
@@ -4049,7 +4050,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 8,
+   "layer": 9,
    "tags": [
     "定义",
     "线性代数"
@@ -7130,7 +7131,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数"
@@ -7170,7 +7171,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "命题",
     "线性代数"
@@ -7209,7 +7210,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数"
@@ -7249,7 +7250,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定理",
     "线性代数"
@@ -7289,7 +7290,7 @@
     "algebra"
    ],
    "cluster": "algebra.vectorspace",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定理",
     "线性代数",
@@ -7330,7 +7331,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数"
@@ -7370,7 +7371,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7409,7 +7410,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7488,7 +7489,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定理",
     "线性代数"
@@ -7565,7 +7566,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7604,7 +7605,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7643,7 +7644,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数",
@@ -7684,7 +7685,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7724,7 +7725,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7763,7 +7764,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -7803,7 +7804,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7843,7 +7844,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数"
@@ -7882,7 +7883,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -7921,7 +7922,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定理",
     "线性代数",
@@ -7962,7 +7963,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定理",
     "线性代数"
@@ -8002,7 +8003,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定理",
     "线性代数"
@@ -8040,7 +8041,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -8079,7 +8080,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数",
@@ -8118,7 +8119,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数"
@@ -8158,7 +8159,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数"
@@ -8197,7 +8198,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数"
@@ -8237,7 +8238,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数"
@@ -8276,7 +8277,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定理",
     "线性代数",
@@ -8317,7 +8318,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -8357,7 +8358,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数",
@@ -8397,7 +8398,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "命题",
     "线性代数",
@@ -8437,7 +8438,7 @@
     "algebra"
    ],
    "cluster": "algebra.matrix",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -8806,7 +8807,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数",
@@ -8847,7 +8848,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -8887,7 +8888,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -8929,7 +8930,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -8969,7 +8970,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -9009,7 +9010,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -9050,7 +9051,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -9090,7 +9091,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -9131,7 +9132,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -9171,7 +9172,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -9212,7 +9213,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -9254,7 +9255,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "推论",
     "线性代数",
@@ -9295,7 +9296,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "线性代数",
@@ -9419,7 +9420,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数",
@@ -9459,7 +9460,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -9499,7 +9500,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数",
@@ -9539,7 +9540,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -9578,7 +9579,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -9619,7 +9620,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数",
@@ -9658,7 +9659,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数",
@@ -9698,7 +9699,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -9821,7 +9822,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -9945,7 +9946,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "线性代数",
@@ -9986,7 +9987,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -10026,7 +10027,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "线性代数",
@@ -10066,7 +10067,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "线性代数",
@@ -10108,7 +10109,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -10149,7 +10150,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -10189,7 +10190,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -10228,7 +10229,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定理",
     "线性代数",
@@ -10270,7 +10271,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "泛函",
@@ -10476,7 +10477,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "微积分",
@@ -11098,7 +11099,7 @@
     "analysis"
    ],
    "cluster": "analysis.multivariable",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "微积分",
@@ -14962,7 +14963,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "同调代数",
@@ -15004,7 +15005,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "命题",
     "同调代数",
@@ -15047,7 +15048,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定理",
     "同调代数",
@@ -15133,7 +15134,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "同调代数",
@@ -15176,7 +15177,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "同调代数",
@@ -15219,7 +15220,7 @@
     "homology"
    ],
    "cluster": "hom.module",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "同调代数",
@@ -16636,7 +16637,7 @@
     "homology"
    ],
    "cluster": "hom.flat",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "挠积",
@@ -16679,7 +16680,7 @@
     "homology"
    ],
    "cluster": "hom.flat",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "命题",
     "挠积",
@@ -20529,7 +20530,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.frame",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "微分几何",
@@ -20572,7 +20573,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.frame",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "微分几何",
@@ -20615,7 +20616,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.frame",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "命题",
     "微分几何",
@@ -21139,7 +21140,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.intrinsic",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "微分几何",
@@ -23355,7 +23356,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "定义",
     "微分流形",
@@ -23397,7 +23398,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "微分流形",
@@ -23524,7 +23525,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "微分流形",
@@ -23609,7 +23610,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "命题",
     "微分流形",
@@ -32700,7 +32701,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -32742,7 +32743,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -32785,7 +32786,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -32828,7 +32829,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -32871,7 +32872,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -32913,7 +32914,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -32956,7 +32957,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -32999,7 +33000,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "定理",
     "线性代数",
@@ -33085,7 +33086,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -33128,7 +33129,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -33171,7 +33172,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -33214,7 +33215,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -33256,7 +33257,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33299,7 +33300,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33341,7 +33342,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -33384,7 +33385,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33427,7 +33428,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33470,7 +33471,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33513,7 +33514,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -33556,7 +33557,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -33599,7 +33600,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "定义",
     "线性代数",
@@ -33641,7 +33642,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定义",
     "线性代数",
@@ -33684,7 +33685,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -33727,7 +33728,7 @@
     "algebra"
    ],
    "cluster": "algebra.linmap",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "定义",
     "线性代数",
@@ -33770,7 +33771,7 @@
     "algebra"
    ],
    "cluster": "algebra.inner",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -33897,7 +33898,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定理",
     "线性代数",
@@ -33939,7 +33940,7 @@
     "algebra"
    ],
    "cluster": "algebra.numeric",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -34025,7 +34026,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "线性代数",
@@ -34068,7 +34069,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -34111,7 +34112,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -34154,7 +34155,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "定义",
     "线性代数",
@@ -34197,7 +34198,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定义",
     "线性代数",
@@ -34240,7 +34241,7 @@
     "algebra"
    ],
    "cluster": "algebra.multilinear",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "定理",
     "线性代数",
@@ -35872,7 +35873,7 @@
     "algebra"
    ],
    "cluster": "algebra.spectral",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "定理",
     "线性代数",
@@ -35958,7 +35959,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36039,7 +36040,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36119,7 +36120,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "赋范空间",
@@ -36200,7 +36201,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36240,7 +36241,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36280,7 +36281,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "有界算子",
@@ -36559,7 +36560,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "基",
@@ -36600,7 +36601,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.norm",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36761,7 +36762,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 15,
+   "layer": 16,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36802,7 +36803,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 16,
+   "layer": 17,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36843,7 +36844,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36883,7 +36884,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 18,
+   "layer": 19,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36923,7 +36924,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 14,
+   "layer": 15,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -36963,7 +36964,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37003,7 +37004,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37043,7 +37044,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 17,
+   "layer": 18,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -37083,7 +37084,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.hilbert",
-   "layer": 13,
+   "layer": 14,
    "tags": [
     "泛函分析",
     "Hilbert 空间",
@@ -38136,7 +38137,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 9,
+   "layer": 10,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38176,7 +38177,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38216,7 +38217,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -38258,7 +38259,7 @@
     "functional-analysis"
    ],
    "cluster": "fa.ck",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "泛函分析",
     "连续函数空间",
@@ -39007,7 +39008,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 10,
+   "layer": 11,
    "tags": [
     "定义",
     "微分几何",
@@ -39193,6 +39194,46 @@
    "refs": [
     "Milnor–Stasheff, Characteristic Classes · 分裂原理",
     "Bott–Tu, Differential Forms in Algebraic Topology"
+   ]
+  },
+  {
+   "id": "def.vector-space",
+   "type": "definition",
+   "label": "向量空间",
+   "title": "向量空间 / 线性空间（$K$ 上的）",
+   "label_en": "vector space",
+   "title_en": "vector space",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.vector-space.en.md",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.vectorspace",
+   "layer": 8,
+   "tags": [
+    "定义",
+    "线性代数"
+   ],
+   "statement": "设 $K$ 是**域**。$K$ 上的**向量空间**（也叫**线性空间**）是一个集合 $V$，配两种运算\n\n$$\\text{加法}: V \\times V \\to V,\\qquad \\text{标量乘法}: K \\times V \\to V,$$\n\n使得 $(V, +)$ 是**阿贝尔群**，并且对一切 $a, b \\in K$、$u, v \\in V$：\n\n- $a(u + v) = au + av$（标量对向量和的分配律）；\n- $(a + b)v = av + bv$（向量对标量和的分配律）；\n- $(ab)v = a(bv)$（标量乘法的结合）；\n- $1 \\cdot v = v$（单位律）。\n\n$V$ 的零元记 $0$，$v$ 的加法逆元记 $-v$；$V$ 的元素叫**向量**，$K$ 的元素叫**标量**。",
+   "notes": "⭐ **它是由两块现成的东西拼出来的，不是新公理**：$(V, +)$ 是**阿贝尔群**（`def.group`），$K$ 是**域**（`def.field`），两者靠「标量乘法」这条**作用**连起来。所以「向量空间」= 群 + 域 + 一个作用 + 四条混合律。\n\n⭐ **它就是 $R = K$ 时的模**：把域放宽成环，上面四条混合律原样有意义（见 `def.tensor-module` 那一族）。向量空间比一般模好使，只因为 $K$ 里**每个非零元都可逆** —— 于是「线性无关」能被补成「基」，而模一般没有基。\n\n⚠ **基与维数不在这里**：本节点只说「什么叫向量空间」。线性无关 / 张成 / 基见 `def.vs`，维数良定义见 `thm.dimension`，存在性（每个向量空间都有基）见 `thm.vsbasis`。\n\n⚠ 常说的「八条公理」是把加法那四条也写出来；这里把加法那半收进「阿贝尔群」，所以只剩四条要写。\n\n⭐ 常见的三个例子：$K^{n}$（分量运算逐条验证）；$K[X]$ 与 $M_{n}(K)$（加法就是逐项加）；函数空间 $\\{f : S \\to K\\}$（点态运算）—— 三个都是「同一套验证」的重复。",
+   "refs": [
+    "Lang, Linear Algebra",
+    "Hoffman–Kunze, Linear Algebra, Ch. 2"
    ]
   },
   {
@@ -58706,7 +58747,7 @@
     "algebra"
    ],
    "cluster": "algebra.structures",
-   "layer": 12,
+   "layer": 13,
    "tags": [
     "命题",
     "张量积",
@@ -78643,6 +78684,54 @@
    "note": "「陈根」$x_{j}$ 就是各线丛的 $c_{1}$。"
   },
   {
+   "id": "dep.field-vectorspace",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.field",
+   "usedBy": "def.vector-space",
+   "note": "标量取自**域**：$K$ 要能加、能乘，**非零元还要可逆** —— 整个「线性」理论都要靠这一条（没有逆元就解不出 $a v = w$，也就没有「基可以换」）。"
+  },
+  {
+   "id": "dep.group-vectorspace",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.group",
+   "usedBy": "def.vector-space",
+   "note": "加法那一半就是**阿贝尔群**：结合、单位元、逆元来自群公理，交换性单独要（$u + v = v + u$）。"
+  },
+  {
+   "id": "dep.vectorspace-vs",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.vector-space",
+   "usedBy": "def.vs",
+   "note": "「基 / 线性无关 / 张成」全部是对向量空间说的：没有 `def.vector-space`，这一整条线是悬空的。"
+  },
+  {
+   "id": "dep.vectorspace-subspace",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.vector-space",
+   "usedBy": "def.subspace",
+   "note": "子空间的定义第一句就是「设 $V$ 是域 $K$ 上的向量空间」（原文如此）—— 此前它指向的是一块空地。"
+  },
+  {
+   "id": "dep.vectorspace-linearmap",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.vector-space",
+   "usedBy": "def.linear-map",
+   "note": "线性映射是「保持两种运算的映射」，两端都是向量空间。"
+  },
+  {
+   "id": "dep.vectorspace-lineariso",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.vector-space",
+   "usedBy": "def.linear-isomorphism",
+   "note": "线性同构 = 双射的线性映射；两端的结构就是向量空间结构。"
+  },
+  {
    "id": "dep.subset-union-inter",
    "kind": "definition",
    "strength": "strong",
@@ -89511,7 +89600,7 @@
   {
    "a": "algebra.linmap",
    "b": "algebra.vectorspace",
-   "count": 4,
+   "count": 6,
    "label": "",
    "explicit": false
   },
@@ -90611,6 +90700,13 @@
    "a": "analysis.real",
    "b": "order.structure",
    "count": 2,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "algebra.structures",
+   "b": "algebra.vectorspace",
+   "count": 3,
    "label": "",
    "explicit": false
   },

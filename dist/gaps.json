@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T06:36:05.164Z",
+ "generated": "2026-11-03T06:40:46.943Z",
  "terms": 76,
  "missing": [
   {
@@ -581,11 +581,11 @@
   {
    "node": "def.invariant-polynomial",
    "nodeLabel": "不变多项式",
-   "nodeLayer": 10,
+   "nodeLayer": 11,
    "def": "def.characteristic-class",
    "defLabel": "示性类",
    "defLayer": 31,
-   "gap": 21
+   "gap": 20
   },
   {
    "node": "def.fiber-bundle",
@@ -615,33 +615,6 @@
    "gap": 10
   },
   {
-   "node": "def.bundle-section",
-   "nodeLabel": "丛的截面",
-   "nodeLayer": 10,
-   "def": "def.vector-field",
-   "defLabel": "向量场",
-   "defLayer": 19,
-   "gap": 9
-  },
-  {
-   "node": "def.exterior-derivative",
-   "nodeLabel": "外微分（欧氏开集）",
-   "nodeLayer": 15,
-   "def": "def.closed-form",
-   "defLabel": "闭形式",
-   "defLayer": 23,
-   "gap": 8
-  },
-  {
-   "node": "def.exterior-derivative",
-   "nodeLabel": "外微分（欧氏开集）",
-   "nodeLayer": 15,
-   "def": "def.exact-form",
-   "defLabel": "恰当形式",
-   "defLayer": 23,
-   "gap": 8
-  },
-  {
    "node": "def.smooth-manifold",
    "nodeLabel": "光滑流形",
    "nodeLayer": 8,
@@ -662,10 +635,10 @@
   {
    "node": "def.bundle-section",
    "nodeLabel": "丛的截面",
-   "nodeLayer": 10,
-   "def": "def.form-on-manifold",
-   "defLabel": "微分形式",
-   "defLayer": 18,
+   "nodeLayer": 11,
+   "def": "def.vector-field",
+   "defLabel": "向量场",
+   "defLayer": 19,
    "gap": 8
   },
   {
@@ -675,6 +648,33 @@
    "def": "def.uniform-convergence",
    "defLabel": "一致收敛",
    "defLayer": 15,
+   "gap": 7
+  },
+  {
+   "node": "def.exterior-derivative",
+   "nodeLabel": "外微分（欧氏开集）",
+   "nodeLayer": 16,
+   "def": "def.closed-form",
+   "defLabel": "闭形式",
+   "defLayer": 23,
+   "gap": 7
+  },
+  {
+   "node": "def.exterior-derivative",
+   "nodeLabel": "外微分（欧氏开集）",
+   "nodeLayer": 16,
+   "def": "def.exact-form",
+   "defLabel": "恰当形式",
+   "defLayer": 23,
+   "gap": 7
+  },
+  {
+   "node": "def.bundle-section",
+   "nodeLabel": "丛的截面",
+   "nodeLayer": 11,
+   "def": "def.form-on-manifold",
+   "defLabel": "微分形式",
+   "defLayer": 18,
    "gap": 7
   },
   {
@@ -741,6 +741,15 @@
    "gap": 5
   },
   {
+   "node": "def.subspace-topology",
+   "nodeLabel": "子空间拓扑",
+   "nodeLayer": 5,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 10,
+   "gap": 5
+  },
+  {
    "node": "prop.generators-abelian-sheaves",
    "nodeLabel": "生成元给出阿贝尔层的生成元",
    "nodeLayer": 11,
@@ -748,6 +757,24 @@
    "defLabel": "拓扑斯",
    "defLayer": 16,
    "gap": 5
+  },
+  {
+   "node": "def.quotient-vs",
+   "nodeLabel": "商空间",
+   "nodeLayer": 6,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 10,
+   "gap": 4
+  },
+  {
+   "node": "def.quotient-vs",
+   "nodeLabel": "商空间",
+   "nodeLayer": 6,
+   "def": "def.linear-map",
+   "defLabel": "线性映射",
+   "defLayer": 10,
+   "gap": 4
   },
   {
    "node": "prop.syzygy-stability",
@@ -770,10 +797,10 @@
   {
    "node": "def.bundle-section",
    "nodeLabel": "丛的截面",
-   "nodeLayer": 10,
+   "nodeLayer": 11,
    "def": "def.differential-form",
    "defLabel": "微分形式（欧氏开集）",
-   "defLayer": 14,
+   "defLayer": 15,
    "gap": 4
   },
   {
@@ -795,30 +822,21 @@
    "gap": 4
   },
   {
-   "node": "def.subspace-topology",
-   "nodeLabel": "子空间拓扑",
-   "nodeLayer": 5,
+   "node": "thm.quotient-universal-vs",
+   "nodeLabel": "商空间的万有性质",
+   "nodeLayer": 7,
    "def": "def.subspace",
    "defLabel": "子空间",
-   "defLayer": 9,
-   "gap": 4
-  },
-  {
-   "node": "def.quotient-vs",
-   "nodeLabel": "商空间",
-   "nodeLayer": 6,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 9,
+   "defLayer": 10,
    "gap": 3
   },
   {
-   "node": "def.quotient-vs",
-   "nodeLabel": "商空间",
-   "nodeLayer": 6,
+   "node": "thm.quotient-universal-vs",
+   "nodeLabel": "商空间的万有性质",
+   "nodeLayer": 7,
    "def": "def.linear-map",
    "defLabel": "线性映射",
-   "defLayer": 9,
+   "defLayer": 10,
    "gap": 3
   },
   {
@@ -849,24 +867,6 @@
    "gap": 3
   },
   {
-   "node": "prop.pullback-forms",
-   "nodeLabel": "拉回（开集间）",
-   "nodeLayer": 16,
-   "def": "def.vector-field",
-   "defLabel": "向量场",
-   "defLayer": 19,
-   "gap": 3
-  },
-  {
-   "node": "thm.separable-hilbert-is-l2",
-   "nodeLabel": "可分 Hilbert 空间等距于 ℓ²",
-   "nodeLayer": 13,
-   "def": "def.hilbert-space",
-   "defLabel": "Hilbert 空间",
-   "defLayer": 16,
-   "gap": 3
-  },
-  {
    "node": "def.cauchy-null",
    "nodeLabel": "Cauchy 列与零列",
    "nodeLayer": 11,
@@ -894,12 +894,30 @@
    "gap": 3
   },
   {
+   "node": "prop.cgwh-closed",
+   "nodeLabel": "弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限",
+   "nodeLayer": 7,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 10,
+   "gap": 3
+  },
+  {
    "node": "prop.k-calculus-fractions",
    "nodeLabel": "K(A) 允许分式演算",
    "nodeLayer": 15,
    "def": "def.quasi-iso",
    "defLabel": "拟同构",
    "defLayer": 18,
+   "gap": 3
+  },
+  {
+   "node": "prop.totally-disconnected-subspace",
+   "nodeLabel": "全不连通对子空间封闭",
+   "nodeLayer": 7,
+   "def": "def.subspace",
+   "defLabel": "子空间",
+   "defLayer": 10,
    "gap": 3
   },
   {
@@ -921,30 +939,21 @@
    "gap": 2
   },
   {
-   "node": "thm.quotient-universal-vs",
-   "nodeLabel": "商空间的万有性质",
-   "nodeLayer": 7,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 9,
-   "gap": 2
-  },
-  {
-   "node": "thm.quotient-universal-vs",
-   "nodeLabel": "商空间的万有性质",
-   "nodeLayer": 7,
-   "def": "def.linear-map",
-   "defLabel": "线性映射",
-   "defLayer": 9,
+   "node": "def.quotient-vs",
+   "nodeLabel": "商空间",
+   "nodeLayer": 6,
+   "def": "def.vector-space",
+   "defLabel": "向量空间",
+   "defLayer": 8,
    "gap": 2
   },
   {
    "node": "def.similarity",
    "nodeLabel": "相似",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.minimal-poly",
    "defLabel": "极小多项式",
-   "defLayer": 14,
+   "defLayer": 15,
    "gap": 2
   },
   {
@@ -984,12 +993,12 @@
    "gap": 2
   },
   {
-   "node": "def.tor",
-   "nodeLabel": "挠积",
-   "nodeLayer": 13,
-   "def": "def.deleted-resolution",
-   "defLabel": "删除消解",
-   "defLayer": 15,
+   "node": "def.scalar-restriction",
+   "nodeLabel": "标量限制",
+   "nodeLayer": 8,
+   "def": "def.linear-map",
+   "defLabel": "线性映射",
+   "defLayer": 10,
    "gap": 2
   },
   {
@@ -999,6 +1008,15 @@
    "def": "def.second-fundamental-form",
    "defLabel": "第二基本形式",
    "defLayer": 26,
+   "gap": 2
+  },
+  {
+   "node": "prop.pullback-forms",
+   "nodeLabel": "拉回（开集间）",
+   "nodeLayer": 17,
+   "def": "def.vector-field",
+   "defLabel": "向量场",
+   "defLayer": 19,
    "gap": 2
   },
   {
@@ -1013,10 +1031,10 @@
   {
    "node": "def.congruent-matrices",
    "nodeLabel": "合同矩阵",
-   "nodeLayer": 13,
+   "nodeLayer": 14,
    "def": "def.inertia-index",
    "defLabel": "惯性指数",
-   "defLayer": 15,
+   "defLayer": 16,
    "gap": 2
   },
   {
@@ -1026,6 +1044,15 @@
    "def": "def.regular-space",
    "defLabel": "正则空间",
    "defLayer": 8,
+   "gap": 2
+  },
+  {
+   "node": "thm.separable-hilbert-is-l2",
+   "nodeLabel": "可分 Hilbert 空间等距于 ℓ²",
+   "nodeLayer": 14,
+   "def": "def.hilbert-space",
+   "defLabel": "Hilbert 空间",
+   "defLayer": 16,
    "gap": 2
   },
   {
@@ -1074,30 +1101,12 @@
    "gap": 2
   },
   {
-   "node": "prop.cgwh-closed",
-   "nodeLabel": "弱 Hausdorff 紧生成空间的开闭子空间与滤过余极限",
-   "nodeLayer": 7,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 9,
-   "gap": 2
-  },
-  {
    "node": "prop.injective-resolution-lift",
    "nodeLabel": "内射消解之间的提升",
    "nodeLayer": 16,
    "def": "def.quasi-iso",
    "defLabel": "拟同构",
    "defLayer": 18,
-   "gap": 2
-  },
-  {
-   "node": "prop.totally-disconnected-subspace",
-   "nodeLabel": "全不连通对子空间封闭",
-   "nodeLayer": 7,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 9,
    "gap": 2
   },
   {
@@ -1121,28 +1130,28 @@
   {
    "node": "def.similarity",
    "nodeLabel": "相似",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.char-poly",
    "defLabel": "特征多项式",
-   "defLayer": 13,
+   "defLayer": 14,
    "gap": 1
   },
   {
    "node": "def.inner-product",
    "nodeLabel": "内积",
-   "nodeLayer": 9,
+   "nodeLayer": 10,
    "def": "def.bilinear-form",
    "defLabel": "双线性型",
-   "defLayer": 10,
+   "defLayer": 11,
    "gap": 1
   },
   {
    "node": "def.operator-adjoint",
    "nodeLabel": "伴随算子",
-   "nodeLayer": 10,
+   "nodeLayer": 11,
    "def": "def.orthonormal-set",
    "defLabel": "正交基",
-   "defLayer": 11,
+   "defLayer": 12,
    "gap": 1
   },
   {
@@ -1155,12 +1164,12 @@
    "gap": 1
   },
   {
-   "node": "def.scalar-restriction",
-   "nodeLabel": "标量限制",
-   "nodeLayer": 8,
-   "def": "def.linear-map",
-   "defLabel": "线性映射",
-   "defLayer": 9,
+   "node": "def.tor",
+   "nodeLabel": "挠积",
+   "nodeLayer": 14,
+   "def": "def.deleted-resolution",
+   "defLabel": "删除消解",
+   "defLayer": 15,
    "gap": 1
   },
   {
@@ -1202,10 +1211,10 @@
   {
    "node": "def.vector-bundle",
    "nodeLabel": "向量丛",
-   "nodeLayer": 9,
+   "nodeLayer": 10,
    "def": "def.linear-isomorphism",
    "defLabel": "线性同构",
-   "defLayer": 10,
+   "defLayer": 11,
    "gap": 1
   },
   {
@@ -1247,19 +1256,10 @@
   {
    "node": "def.eigenspace",
    "nodeLabel": "特征子空间",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.char-poly",
    "defLabel": "特征多项式",
-   "defLayer": 13,
-   "gap": 1
-  },
-  {
-   "node": "thm.projection-convex",
-   "nodeLabel": "凸闭集的最近点",
-   "nodeLayer": 15,
-   "def": "def.hilbert-space",
-   "defLabel": "Hilbert 空间",
-   "defLayer": 16,
+   "defLayer": 14,
    "gap": 1
   },
   {
@@ -1364,37 +1364,37 @@
   {
    "node": "def.direct-sum",
    "nodeLabel": "直和与补空间",
-   "nodeLayer": 10,
+   "nodeLayer": 11,
    "def": "def.linear-isomorphism",
    "defLabel": "线性同构",
-   "defLayer": 10,
+   "defLayer": 11,
    "gap": 0
   },
   {
    "node": "def.invariant-subspace",
    "nodeLabel": "不变子空间",
-   "nodeLayer": 10,
+   "nodeLayer": 11,
    "def": "def.kernel-image-vs",
    "defLabel": "核与像",
-   "defLayer": 10,
+   "defLayer": 11,
    "gap": 0
   },
   {
    "node": "def.similarity",
    "nodeLabel": "相似",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.determinant",
    "defLabel": "行列式",
-   "defLayer": 12,
+   "defLayer": 13,
    "gap": 0
   },
   {
    "node": "thm.det-as-exterior",
    "nodeLabel": "行列式 = 最高外幂上的作用",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.determinant",
    "defLabel": "行列式",
-   "defLayer": 12,
+   "defLayer": 13,
    "gap": 0
   },
   {
@@ -1409,10 +1409,10 @@
   {
    "node": "prop.tensor-functor-properties",
    "nodeLabel": "张量积的函子性质",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.tensor-product-vs",
    "defLabel": "张量积（向量空间）",
-   "defLayer": 12,
+   "defLayer": 13,
    "gap": 0
   },
   {
@@ -1422,6 +1422,15 @@
    "def": "def.projective-dimension",
    "defLabel": "投射维数",
    "defLayer": 20,
+   "gap": 0
+  },
+  {
+   "node": "def.invariant-functor",
+   "nodeLabel": "不变量函子",
+   "nodeLayer": 10,
+   "def": "def.linear-map",
+   "defLabel": "线性映射",
+   "defLayer": 10,
    "gap": 0
   },
   {
@@ -1479,15 +1488,6 @@
    "gap": 0
   },
   {
-   "node": "def.vector-bundle",
-   "nodeLabel": "向量丛",
-   "nodeLayer": 9,
-   "def": "def.smooth-map",
-   "defLabel": "光滑映射",
-   "defLayer": 9,
-   "gap": 0
-  },
-  {
    "node": "lem.poincare-lemma",
    "nodeLabel": "Poincaré 引理",
    "nodeLayer": 23,
@@ -1533,30 +1533,39 @@
    "gap": 0
   },
   {
-   "node": "thm.schur-triangularization",
-   "nodeLabel": "Schur 三角化",
-   "nodeLayer": 14,
-   "def": "def.normal-matrix",
-   "defLabel": "正规矩阵",
-   "defLayer": 14,
+   "node": "def.fiber-bundle",
+   "nodeLabel": "纤维丛",
+   "nodeLayer": 10,
+   "def": "def.vector-bundle",
+   "defLabel": "向量丛",
+   "defLayer": 10,
    "gap": 0
   },
   {
    "node": "thm.schur-triangularization",
    "nodeLabel": "Schur 三角化",
-   "nodeLayer": 14,
+   "nodeLayer": 15,
+   "def": "def.normal-matrix",
+   "defLabel": "正规矩阵",
+   "defLayer": 15,
+   "gap": 0
+  },
+  {
+   "node": "thm.schur-triangularization",
+   "nodeLabel": "Schur 三角化",
+   "nodeLayer": 15,
    "def": "def.orthogonally-similar",
    "defLabel": "正交相似",
-   "defLayer": 14,
+   "defLayer": 15,
    "gap": 0
   },
   {
    "node": "thm.symplectic-normal-form",
    "nodeLabel": "辛标准形定理",
-   "nodeLayer": 15,
+   "nodeLayer": 16,
    "def": "def.inertia-index",
    "defLabel": "惯性指数",
-   "defLayer": 15,
+   "defLayer": 16,
    "gap": 0
   },
   {
@@ -1578,8 +1587,8 @@
    "gap": 0
   },
   {
-   "node": "thm.projection-subspace",
-   "nodeLabel": "闭子空间的正交投影",
+   "node": "thm.projection-convex",
+   "nodeLabel": "凸闭集的最近点",
    "nodeLayer": 16,
    "def": "def.hilbert-space",
    "defLabel": "Hilbert 空间",
@@ -1823,10 +1832,10 @@
   {
    "node": "prop.module-tensor-universal",
    "nodeLabel": "张量积对双线性映射万有",
-   "nodeLayer": 12,
+   "nodeLayer": 13,
    "def": "def.tensor-product-vs",
    "defLabel": "张量积（向量空间）",
-   "defLayer": 12,
+   "defLayer": 13,
    "gap": 0
   },
   {
@@ -1862,6 +1871,15 @@
    "nodeLayer": 8,
    "def": "def.subcategory",
    "defLabel": "子范畴",
+   "defLayer": 8,
+   "gap": 0
+  },
+  {
+   "node": "prop.matrix-category",
+   "nodeLabel": "矩阵范畴",
+   "nodeLayer": 8,
+   "def": "def.vector-space",
+   "defLabel": "向量空间",
    "defLayer": 8,
    "gap": 0
   },

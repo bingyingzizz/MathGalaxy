@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · proposition · cluster Flat Modules (`hom.flat`) · Homological Algebra
+layer 15 · proposition · cluster Flat Modules (`hom.flat`) · Homological Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.tor-symmetry.md` and `proofs/`.

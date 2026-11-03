@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 15 · definition · cluster Eigenvalues and Jordan Form (`algebra.spectral`) · Abstract Algebra
+layer 16 · definition · cluster Eigenvalues and Jordan Form (`algebra.spectral`) · Abstract Algebra
 names: `Nilpotent` (short) · `Nilpotent Operator` (full)
 
 ## Statement and proof

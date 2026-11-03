@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · proposition · cluster Matrices and Determinants (`algebra.matrix`) · Abstract Algebra
+layer 14 · proposition · cluster Matrices and Determinants (`algebra.matrix`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/prop.det-laplace.md` and `proofs/`.

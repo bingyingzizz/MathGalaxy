@@ -681,6 +681,7 @@ MG.i18n = {
     'def.volume-density': { title_en: 'Volume Density', label_en: 'Volume Density', from: 'manual' },
     'def.volume-form': { title_en: 'Volume Form', label_en: 'Volume Form', from: 'manual' },
     'def.vs': { title_en: 'basis', label_en: 'basis', from: 'explicit' },
+    'def.vector-space': { title_en: 'vector space', label_en: 'vector space', from: 'explicit' },
     'def.weak-hausdorff': { title_en: 'weak Hausdorff', label_en: 'weak Hausdorff', from: 'aka' },
     'def.weingarten-map': { title_en: 'Weingarten Map (Shape Operator)', label_en: 'Weingarten Map', from: 'manual' },
     'def.wellorder': { title_en: 'well-order', label_en: 'well-order', from: 'explicit' },

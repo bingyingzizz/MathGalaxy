@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 12 · proposition · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
+layer 13 · proposition · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
 names: `Operator Product Inequality` (short) · `Norm Inequality for Operator Products` (full)
 
 ## Statement and proof

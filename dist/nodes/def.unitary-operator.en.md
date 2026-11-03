@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 14 · definition · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
+layer 15 · definition · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
 names: `Unitary Operator` (short) · `Unitary Operators and Partial Isometries` (full)
 
 ## Statement and proof

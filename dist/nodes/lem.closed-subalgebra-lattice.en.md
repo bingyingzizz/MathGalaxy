@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · lemma · cluster $C(K)$ and Stone–Weierstrass (`fa.ck`) · Functional Analysis
+layer 11 · lemma · cluster $C(K)$ and Stone–Weierstrass (`fa.ck`) · Functional Analysis
 names: `Closed Subalgebra Is a Lattice` (short) · `Closed Unital Subalgebras Are Lattices` (full)
 
 ## Statement and proof

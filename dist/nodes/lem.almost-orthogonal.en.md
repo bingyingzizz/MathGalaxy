@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 11 · lemma · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
+layer 12 · lemma · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
 names: `Almost Orthogonal Lemma` (short) · `Riesz's Almost Orthogonal Lemma` (full)
 
 ## Statement and proof

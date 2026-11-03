@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
+layer 18 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
 names: `Riesz Representation` (short) · `Riesz Representation Theorem for Hilbert Spaces` (full)
 
 ## Statement and proof

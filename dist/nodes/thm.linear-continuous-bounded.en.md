@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 12 · theorem · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
+layer 13 · theorem · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
 names: `Continuous iff Bounded` (short) · `A Linear Map Is Continuous iff Bounded` (full)
 
 ## Statement and proof

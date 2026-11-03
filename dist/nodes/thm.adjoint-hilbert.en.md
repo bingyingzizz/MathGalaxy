@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 18 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
+layer 19 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
 names: `Adjoint Operator` (short) · `Adjoint Operator on a Hilbert Space` (full)
 
 ## Statement and proof

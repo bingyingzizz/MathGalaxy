@@ -1,6 +1,6 @@
 # 向量空间的基　`def.vs`
 向量空间 / 线性无关 / 基
-layer 8 · 定义 · 向量空间的基 · 抽象代数
+layer 9 · 定义 · 向量空间与基 · 抽象代数
 [在星图里打开](../#n=def.vs)　·　[节点索引](../index.md)
 
 设 $K$ 是域，$V$ 是 $K$ 上的向量空间，$S \subseteq V$。
@@ -14,7 +14,7 @@ layer 8 · 定义 · 向量空间的基 · 抽象代数
 ## 它能推出什么 / 谁在用它
 - 被 [`def.subspace`](../nodes/def.subspace.md) 子空间 用
 
-- …另有出边，续页见 [nodes/def.vs.3.md](./def.vs.3.md)
+- …另有出边，续页见 [nodes/def.vs.4.md](./def.vs.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.vs.2.md](./def.vs.2.md)

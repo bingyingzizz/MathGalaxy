@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 9 · definition · cluster $C(K)$ and Stone–Weierstrass (`fa.ck`) · Functional Analysis
+layer 10 · definition · cluster $C(K)$ and Stone–Weierstrass (`fa.ck`) · Functional Analysis
 names: `Subalgebra and Separating Points` (short) · `Subalgebras, Separating Points and Lattices` (full)
 
 ## Statement and proof

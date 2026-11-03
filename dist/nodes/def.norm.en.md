@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 10 · definition · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
+layer 11 · definition · cluster Normed Spaces and Bounded Operators (`fa.norm`) · Functional Analysis
 names: `Norm` (short) · `Norm on a Vector Space` (full)
 
 ## Statement and proof

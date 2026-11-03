@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
+layer 14 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analysis
 names: `Separable Hilbert as ell-2` (short) · `Separable Hilbert Spaces Are Isometric to ell-2` (full)
 
 ## Statement and proof

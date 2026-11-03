@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 12 · theorem · cluster Linear Maps and Rank (`algebra.linmap`) · Abstract Algebra
+layer 13 · theorem · cluster Linear Maps and Rank (`algebra.linmap`) · Abstract Algebra
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.rank-nullity.md` and `proofs/`.

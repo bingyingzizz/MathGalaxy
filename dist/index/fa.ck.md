@@ -4,10 +4,10 @@
 中心天体 thm.stone-weierstrass　·　10 个节点　·　根 `../`
 
 - def.equicontinuous　等度连续　layer 6
-- def.subalgebra-separating　子代数与分离点　layer 9
-- lem.closed-subalgebra-lattice　闭子代数是格　layer 10
-- thm.stone-weierstrass　Stone–Weierstrass 定理　layer 11
-- thm.stone-weierstrass-complex　Stone–Weierstrass（复情形）　layer 12
+- def.subalgebra-separating　子代数与分离点　layer 10
+- lem.closed-subalgebra-lattice　闭子代数是格　layer 11
+- thm.stone-weierstrass　Stone–Weierstrass 定理　layer 12
+- thm.stone-weierstrass-complex　Stone–Weierstrass（复情形）　layer 13
 - thm.equicontinuous-uniform　等度连续与一致等度连续　layer 15
 - def.ck-space　C(K,E)　layer 16
 - thm.ck-complete　C(K,E) 完备　layer 17

@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 13 · definition · cluster Linear Maps and Rank (`algebra.linmap`) · Abstract Algebra
+layer 14 · definition · cluster Linear Maps and Rank (`algebra.linmap`) · Abstract Algebra
 names: `Idempotent` (short) · `Idempotent Operator` (full)
 
 ## Statement and proof

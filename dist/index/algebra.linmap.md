@@ -5,15 +5,15 @@
 
 - def.quotient-vs　商空间　layer 6
 - thm.quotient-universal-vs　商空间的万有性质　layer 7
-- def.linear-map　线性映射　layer 9
-- def.linear-isomorphism　线性同构　layer 10
-- def.kernel-image-vs　核与像　layer 10
-- def.dual-space　对偶空间　layer 10
-- def.direct-sum　直和与补空间　layer 10
-- thm.first-iso-vs　第一同构定理（向量空间版）　layer 11
-- def.rank　秩　layer 11
-- def.nullity　零化度　layer 11
-- def.dual-basis　对偶基　layer 11
-- def.annihilator　零化子　layer 11
-- thm.rank-nullity　秩-零化度定理　layer 12
-- def.idempotent　幂等　layer 13
+- def.linear-map　线性映射　layer 10
+- def.linear-isomorphism　线性同构　layer 11
+- def.kernel-image-vs　核与像　layer 11
+- def.dual-space　对偶空间　layer 11
+- def.direct-sum　直和与补空间　layer 11
+- thm.first-iso-vs　第一同构定理（向量空间版）　layer 12
+- def.rank　秩　layer 12
+- def.nullity　零化度　layer 12
+- def.dual-basis　对偶基　layer 12
+- def.annihilator　零化子　layer 12
+- thm.rank-nullity　秩-零化度定理　layer 13
+- def.idempotent　幂等　layer 14
