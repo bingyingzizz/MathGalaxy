@@ -309,6 +309,14 @@ window.MG = window.MG || {};
         '3. 对一切 $R$-模 $M$，$\\operatorname{Tor}_{1}^{R}(M, N) = 0$；',
         '4. 对每个**理想** $I \\subseteq R$，乘法映射 $I \\otimes_{R} N \\to N$、$a \\otimes n \\mapsto a n$，是单射（等价地 $I \\otimes_{R} N \\cong I N$）；',
         '5. 对每个由有限表现模给出的短正合列 $0 \\to K \\to R^{n} \\to M \\to 0$，张量后 $0 \\to K \\otimes N \\to N^{n} \\to M \\otimes N \\to 0$ 仍正合。'
+      ].join('\n'),
+      notes: [
+        '**1 与 2 是同一句话**（右正合白送）。**2 与 3**：取 $M$ 的投射消解，$\\operatorname{Tor}_{1}$ 度量的正是「张量之后丢掉的那块单射性」。',
+        '**3 蕴含 4**：由 $0 \\to I \\to R \\to R/I \\to 0$ 与 $\\operatorname{Tor}_{1}^{R}(R, N) = 0$ 得长正合列',
+        '$$0 \\longrightarrow \\operatorname{Tor}_{1}^{R}(R/I, N) \\longrightarrow I \\otimes N \\longrightarrow N,$$',
+        '故 $\\operatorname{Tor}_{1}^{R}(R/I, N) = 0$ 推出 $I \\otimes N \\to N$ 单 ✓。',
+        '**4 蕴含 1**：只需对一切单射检验；先化到 $M$ 有限生成（$(-)\\otimes N$ 保滤过余极限），再对生成元个数归纳，每一步用理想情形 —— 完整论证见 `thm.lambek` ✓。',
+        '⭐ **第 4 条是唯一能算的**：理想通常比子模少得多，而乘法映射 $I \\otimes N \\to N$ 又常能显式写出来。PID 上理想只有主理想，判据几乎自动（这就是「无挠即平坦」的来源）。',
         ,
         '**各方向用到的假设**（平坦的五条说法里，差别全在“用多大的模去检验”）：\n' +
         '\n' +
@@ -320,14 +328,6 @@ window.MG = window.MG || {};
         '- (5) $\\implies$ (2)：**不需要额外假设**（(5) 就是 (2) 在有限表现模上的截断，取 $K$ 逐个检验）。\n' +
         '\n' +
         '**一句话**：真正的分水岭是 (4) —— **只检验理想就够**，这是平坦性可计算的原因（也解释了为什么 Noether 环上只检验有限生成理想就行）。'
-      ].join('\n'),
-      notes: [
-        '**1 与 2 是同一句话**（右正合白送）。**2 与 3**：取 $M$ 的投射消解，$\\operatorname{Tor}_{1}$ 度量的正是「张量之后丢掉的那块单射性」。',
-        '**3 蕴含 4**：由 $0 \\to I \\to R \\to R/I \\to 0$ 与 $\\operatorname{Tor}_{1}^{R}(R, N) = 0$ 得长正合列',
-        '$$0 \\longrightarrow \\operatorname{Tor}_{1}^{R}(R/I, N) \\longrightarrow I \\otimes N \\longrightarrow N,$$',
-        '故 $\\operatorname{Tor}_{1}^{R}(R/I, N) = 0$ 推出 $I \\otimes N \\to N$ 单 ✓。',
-        '**4 蕴含 1**：只需对一切单射检验；先化到 $M$ 有限生成（$(-)\\otimes N$ 保滤过余极限），再对生成元个数归纳，每一步用理想情形 —— 完整论证见 `thm.lambek` ✓。',
-        '⭐ **第 4 条是唯一能算的**：理想通常比子模少得多，而乘法映射 $I \\otimes N \\to N$ 又常能显式写出来。PID 上理想只有主理想，判据几乎自动（这就是「无挠即平坦」的来源）。'
       ].join('\n\n'),
       refs: [
         'Atiyah–Macdonald, Introduction to Commutative Algebra, Chapter 2「Modules」, flatness and Tor',

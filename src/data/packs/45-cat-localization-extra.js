@@ -87,16 +87,6 @@ window.MG = window.MG || {};
           '2. $\\widetilde{R} \\simeq \\underline{X}$；',
           '3. $\\underline{X} \\simeq \\varinjlim_{Y \\in \\mathcal{C}/R} \\underline{Y}$；',
           '4. $\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\longrightarrow \\underline{X}$ 是**满态射**。'
-        ,
-        '**四条里哪条是“定义”、哪条要用 Yoneda**（这条命题是把「覆盖」翻译成「层论条件」的枢纽，各方向代价差别很大）：\n' +
-        '\n' +
-        '- (1) $\\iff$ (2)：**这一跳要用「层化」**。$\\widetilde{R}$ 是筛 $R$ 对应的**层**（这是 Grothendieck 拓扑里“覆盖 $\\implies$ 层条件”的标准构造）：$R$ 覆盖 $\\iff$ 层化后 $R$ 与 $X$ 的代表层一致。**这一步需要景的定义（覆盖筛的封闭性公理）**，不是形式推演。\n' +
-        '- (2) $\\iff$ (3)：**这是 Yoneda 引理的直接翻译**。$\\varinjlim_{Y \\in \\mathcal{C}/R}\\underline{Y}$ 就是把「$R$ 的元素」当成可表函子的余极限；而 $\\widetilde R$ 的定义正是这个余极限。**不需要额外假设**（只用到余极限的存在性）。\n' +
-        '- (3) $\\iff$ (4)：**这一步要用「余极限 = 余积的商」**，于是「余极限等于 $\\underline X$」等价于「$\\coprod \\underline Y \\to \\underline X$ 是满态射」。**关键假设是「景里有余积」** —— 若 $\\mathcal{C}$ 是小范畴、$\\underline{Y}$ 取在 $\\mathbf{Set}$ 里，这一步自动成立；若景没有足够余积，则要另作解释（用筛的定义直接验证）。\n' +
-        '\n' +
-        '**为什么这条命题重要**：它说明「覆盖」可以**不用筛的语言**定义 —— 只要说「$\\coprod_{Y \\to X \\in R} \\underline{Y} \\to \\underline{X}$ 满」。这就是「Grothendieck 拓扑 = 由一族满态射给出」的精确含义，也是比较「筛式」与「覆盖族式」两种定义时的桥梁。\n' +
-        '\n' +
-        '⚠️ **两处常见误读**：(a) 「满态射」在一般范畴里**不等于**满射，这里说的是范畴意义下的满（右可消）；在 $\\mathbf{Set}$ / 层范畴里两者一致，所以容易忘掉这个区别。(b) $\\mathcal{C}/R$ 的下标是**筛里的对象**（含所有 $Y \\to X$ 落在 $R$ 里的那些），不是「覆盖族」的下标 —— 两者差一个“向上封闭”的取法。'
         ].join('\n')
       ].join('\n'),
       notes: [
@@ -114,6 +104,16 @@ window.MG = window.MG || {};
           '$$\\widetilde{R} \\;=\\; \\sharp\\Bigl(\\operatorname{im}\\bigl(\\coprod_{Y \\in \\mathcal{C}/R} h_{Y} \\to h_{X}\\bigr)\\Bigr) \\;=\\; \\operatorname{im}\\Bigl(\\coprod_{Y \\in \\mathcal{C}/R} \\underline{Y} \\to \\underline{X}\\Bigr).$$',
           '',
           '于是 4（那个映射是满态射）$\\iff$ 那个像是整个 $\\underline{X}$ $\\iff$ $\\widetilde{R} = \\underline{X}$ $\\iff$ 2。∎',
+        ,
+        '**四条里哪条是“定义”、哪条要用 Yoneda**（这条命题是把「覆盖」翻译成「层论条件」的枢纽，各方向代价差别很大）：\n' +
+        '\n' +
+        '- (1) $\\iff$ (2)：**这一跳要用「层化」**。$\\widetilde{R}$ 是筛 $R$ 对应的**层**（这是 Grothendieck 拓扑里“覆盖 $\\implies$ 层条件”的标准构造）：$R$ 覆盖 $\\iff$ 层化后 $R$ 与 $X$ 的代表层一致。**这一步需要景的定义（覆盖筛的封闭性公理）**，不是形式推演。\n' +
+        '- (2) $\\iff$ (3)：**这是 Yoneda 引理的直接翻译**。$\\varinjlim_{Y \\in \\mathcal{C}/R}\\underline{Y}$ 就是把「$R$ 的元素」当成可表函子的余极限；而 $\\widetilde R$ 的定义正是这个余极限。**不需要额外假设**（只用到余极限的存在性）。\n' +
+        '- (3) $\\iff$ (4)：**这一步要用「余极限 = 余积的商」**，于是「余极限等于 $\\underline X$」等价于「$\\coprod \\underline Y \\to \\underline X$ 是满态射」。**关键假设是「景里有余积」** —— 若 $\\mathcal{C}$ 是小范畴、$\\underline{Y}$ 取在 $\\mathbf{Set}$ 里，这一步自动成立；若景没有足够余积，则要另作解释（用筛的定义直接验证）。\n' +
+        '\n' +
+        '**为什么这条命题重要**：它说明「覆盖」可以**不用筛的语言**定义 —— 只要说「$\\coprod_{Y \\to X \\in R} \\underline{Y} \\to \\underline{X}$ 满」。这就是「Grothendieck 拓扑 = 由一族满态射给出」的精确含义，也是比较「筛式」与「覆盖族式」两种定义时的桥梁。\n' +
+        '\n' +
+        '⚠️ **两处常见误读**：(a) 「满态射」在一般范畴里**不等于**满射，这里说的是范畴意义下的满（右可消）；在 $\\mathbf{Set}$ / 层范畴里两者一致，所以容易忘掉这个区别。(b) $\\mathcal{C}/R$ 的下标是**筛里的对象**（含所有 $Y \\to X$ 落在 $R$ 里的那些），不是「覆盖族」的下标 —— 两者差一个“向上封闭”的取法。'
         ].join('\n'),
         '**一族态射的版本**（紧跟着的推论）：族 $(X_{i} \\to X)_{i \\in I}$ 生成覆盖筛 $\\iff \\coprod_{i \\in I} X_{i} \\to X$ 是满态射。'
       ].join('\n\n'),

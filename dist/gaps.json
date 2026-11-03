@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T05:35:07.411Z",
+ "generated": "2026-11-03T05:49:20.889Z",
  "terms": 76,
  "missing": [
   {
@@ -849,15 +849,6 @@
    "gap": 3
   },
   {
-   "node": "thm.linear-continuous-bounded",
-   "nodeLabel": "连续 ⟺ 有界",
-   "nodeLayer": 12,
-   "def": "def.banach-space",
-   "defLabel": "Banach 空间",
-   "defLayer": 15,
-   "gap": 3
-  },
-  {
    "node": "thm.separable-hilbert-is-l2",
    "nodeLabel": "可分 Hilbert 空间等距于 ℓ²",
    "nodeLayer": 13,
@@ -891,15 +882,6 @@
    "def": "def.topos",
    "defLabel": "拓扑斯",
    "defLayer": 16,
-   "gap": 3
-  },
-  {
-   "node": "prop.injective-criterion",
-   "nodeLabel": "内射对象的判据",
-   "nodeLayer": 15,
-   "def": "def.grothendieck-category",
-   "defLabel": "Grothendieck 范畴",
-   "defLayer": 18,
    "gap": 3
   },
   {
@@ -1017,15 +999,6 @@
    "def": "def.absolute-continuity",
    "defLabel": "绝对连续",
    "defLayer": 16,
-   "gap": 2
-  },
-  {
-   "node": "def.spectral-radius",
-   "nodeLabel": "谱半径",
-   "nodeLayer": 12,
-   "def": "def.orthogonally-similar",
-   "defLabel": "正交相似",
-   "defLayer": 14,
    "gap": 2
   },
   {
@@ -1254,15 +1227,6 @@
    "gap": 1
   },
   {
-   "node": "def.spectral-radius",
-   "nodeLabel": "谱半径",
-   "nodeLayer": 12,
-   "def": "def.char-poly",
-   "defLabel": "特征多项式",
-   "defLayer": 13,
-   "gap": 1
-  },
-  {
    "node": "def.eigenspace",
    "nodeLabel": "特征子空间",
    "nodeLayer": 12,
@@ -1404,15 +1368,6 @@
    "def": "def.determinant",
    "defLabel": "行列式",
    "defLayer": 12,
-   "gap": 0
-  },
-  {
-   "node": "def.orthogonality",
-   "nodeLabel": "正交",
-   "nodeLayer": 10,
-   "def": "def.bilinear-form",
-   "defLabel": "双线性型",
-   "defLayer": 10,
    "gap": 0
   },
   {
