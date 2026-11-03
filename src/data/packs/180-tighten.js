@@ -7,7 +7,7 @@
    A. **真关系 → 补边**（5 条）
       1. `def.genus` 的定义域就是「闭可定向曲面」⇒ 闭曲面 → 亏格（definition）。
       2. 球面是连通和的**单位元** ⇒ 连通和 → 球面（definition）。
-      3. 拓扑曲面 ↔ $\mathbb{R}^{3}$ 里的参数化曲面：**同名不同物**（内蕴 vs 外在）⇒ analogy。
+      3. 拓扑曲面 ↔ $\\mathbb{R}^{3}$ 里的参数化曲面：**同名不同物**（内蕴 vs 外在）⇒ analogy。
       4. 拓扑曲面 ↔ Riemann 曲面：**同名不同物**（拓扑 vs 一维复结构）⇒ analogy。
       5. 分类定理 ↔ Gauss–Bonnet：**同一个 $\chi$** 把两者焊在一起 ⇒ analogy
          （⛔ 不连 implication：$\int K = 2\pi\chi$ 是 Gauss–Bonnet 的结论，
@@ -45,7 +45,7 @@
       kind: 'analogy',
       a: 'def.closed-surface',
       b: 'def.regular-surface',
-      title: '两个「曲面」：拓扑的 vs $\mathbb{R}^{3}$ 里被参数化覆盖的',
+      title: '两个「曲面」：拓扑的 vs $\\mathbb{R}^{3}$ 里被参数化覆盖的',
       note: [
         '**同名不同物**，这正是审计 B2 点出的那件事：',
         '- `def.regular-surface` 说的是「$U \\subseteq \\mathbb{R}^{2}$ 经 $r$ 打到 $\\mathbb{R}^{3}$ 的像」，' +

@@ -325,7 +325,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.kernel-cokernel',
       usedBy: 'prop.abhaus-strict-exact',
-      note: '核与余核在这里被具体算成 $f^{-1}(0)$ 与 $N/\\\overline{f}(M)$。'
+      note: '核与余核在这里被具体算成 $f^{-1}(0)$ 与 $N/\\overline{f}(M)$。'
     },
     {
       id: 'def-link.abhaus-exact',

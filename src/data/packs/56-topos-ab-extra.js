@@ -32,7 +32,7 @@ window.MG = window.MG || {};
         '',
         '**余极限不能这样算** —— 它是「先在预层里逐点取余极限、再**层化**」：',
         '',
-        '$$\\Bigl(\\varinjlim_{i} X_{i}\\Bigr)(S) = \\Bigl(\\operatorname{sh}\\bigl(S^{\prime} \\mapsto \\varinjlim_{i} X_{i}(S^{\prime})\\bigr)\\Bigr)(S).$$'
+        '$$\\Bigl(\\varinjlim_{i} X_{i}\\Bigr)(S) = \\Bigl(\\operatorname{sh}\\bigl(S^{\\prime} \\mapsto \\varinjlim_{i} X_{i}(S^{\\prime})\\bigr)\\Bigr)(S).$$'
       ].join('\n'),
       notes: [
         ['**证明极限那一半。** 层范畴 $\\mathrm{Cond}$ 是预层范畴 $\\widehat{\\mathbf{CHaus}}$ 的**反射**满子范畴，含入函子 $i$ 有左伴随（层化）。右伴随保极限，所以 $i$ 保极限：$\\mathrm{Cond}$ 里的极限就是预层里的极限；而预层里的极限是**逐点**算的。∎',

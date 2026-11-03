@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-03T12:33:02.247Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-03T12:49:54.344Z
 > 15 星系 / 104 星团 / 1500 节点 / 2882 连线（强边 2848，弱边 34；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.5 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -9602,7 +9602,7 @@ $\Phi_{n}(x) := \prod_{\zeta \text{ 本原}} (x - \zeta)$
 
 叫**第 $n$ 个分圆多项式**，它整系数、不可约（Gauss），且 $x^{n} - 1 = \prod_{d \mid n} \Phi_{d}(x)$。
 
-⭐ **它为什么在 Galois 那条线上**：用根式解方程时，最后一步是「开 $n$ 次方」，而开方在域里的样子正是「添加一个 $n$ 次单位根之后，$x^{n} - a$ 的根可以写成 $\sqrt[n]{a}\cdot\zeta^{k}$」。所以**根式可解 $implies$ 可解**那个方向必须先把 $\mu_{n}$ 加进来（`thm.radical-solvable` 的路线里提到过）。
+⭐ **它为什么在 Galois 那条线上**：用根式解方程时，最后一步是「开 $n$ 次方」，而开方在域里的样子正是「添加一个 $n$ 次单位根之后，$x^{n} - a$ 的根可以写成 $\sqrt[n]{a}\cdot\zeta^{k}$」。所以**根式可解 $\implies$ 可解**那个方向必须先把 $\mu_{n}$ 加进来（`thm.radical-solvable` 的路线里提到过）。
 
 ⭐ **$\Phi_{n}$ 的伽罗瓦群是 $(\mathbb{Z}/n)^{\times}$**（每个 $\sigma$ 由 $\zeta \mapsto \zeta^{k}$ 决定，$k$ 与 $n$ 互素）—— 这是「伽罗瓦群可以是任何有限阿贝尔群」的第一次亮相（Kronecker–Weber 的起点）。
 
@@ -20990,7 +20990,7 @@ $$f^{*} : \mathcal{T}' \longrightarrow \mathcal{T}, \qquad f_{*} : \mathcal{T} \
 $$f^{-1} := g : \mathcal{C} \longrightarrow \mathcal{C}'$$
 叫**连续的**，如果沿 $g$ 的预复合把 $\mathcal{C}'$ 上的层拉回成 $\mathcal{C}$ 上的层：
 
-$$g^{*} : \widetilde{\mathcal{C}^{prime}} \longrightarrow \widetilde{\mathcal{C}}, \qquad F \longmapsto F \circ g$$
+$$g^{*} : \widetilde{\mathcal{C}^{\prime}} \longrightarrow \widetilde{\mathcal{C}}, \qquad F \longmapsto F \circ g$$
 （它把层送到层，所以限制在层范畴上。）
 
 **读法**：$g$ 的方向是 $\mathcal{C} \to \mathcal{C}'$，但层是**反变**的，所以 $g$ 把 $\mathcal{C}'$ 上的层**拉回**到 $\mathcal{C}$ 上。这个「方向拧一下」是景态射的一切别扭之处。
@@ -26820,7 +26820,7 @@ $$\Bigl(\varprojlim_{i} X_{i}\Bigr)(S) = \varprojlim_{i} X_{i}(S).$$
 
 **余极限不能这样算** —— 它是「先在预层里逐点取余极限、再**层化**」：
 
-$$\Bigl(\varinjlim_{i} X_{i}\Bigr)(S) = \Bigl(\operatorname{sh}\bigl(S^{prime} \mapsto \varinjlim_{i} X_{i}(S^{prime})\bigr)\Bigr)(S).$$
+$$\Bigl(\varinjlim_{i} X_{i}\Bigr)(S) = \Bigl(\operatorname{sh}\bigl(S^{\prime} \mapsto \varinjlim_{i} X_{i}(S^{\prime})\bigr)\Bigr)(S).$$
 
 **证明极限那一半。** 层范畴 $\mathrm{Cond}$ 是预层范畴 $\widehat{\mathbf{CHaus}}$ 的**反射**满子范畴，含入函子 $i$ 有左伴随（层化）。右伴随保极限，所以 $i$ 保极限：$\mathrm{Cond}$ 里的极限就是预层里的极限；而预层里的极限是**逐点**算的。∎
 **余极限为什么不行。** 层化只是 $i$ 的**左**伴随，它不保余极限，所以余极限要先在预层里逐点取、再层化一次。
@@ -59118,7 +59118,7 @@ Tychonoff 是每个坐标空间的紧性拼出乘积空间的紧性；紧致性�
 ⛔ 不能连 definition/implication：一边是域，一边是拓扑空间，没有谁是谁的前提。
 
 #### 闭曲面 ～ 曲面与参数化　`e174.analogy`
-*两个「曲面」：拓扑的 vs $mathbb{R}^{3}$ 里被参数化覆盖的*
+*两个「曲面」：拓扑的 vs $\mathbb{R}^{3}$ 里被参数化覆盖的*
 
 **同名不同物**，这正是审计 B2 点出的那件事：
 
