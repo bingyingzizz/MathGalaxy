@@ -434,8 +434,10 @@ window.MG = window.MG || {};
     {
       id: 'imp.t1-t0',
       kind: 'implication',
+      layer: false,
       sources: ['def.t1-space'],
       target: 'def.t0-space',
+      note: '「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。',
       proof: [
         '设 $x \\ne y \\in X$。由 $T_{1}$，单点集 $\\{y\\}$ 是**闭集**，于是 $U := X \\setminus \\{y\\}$ 是**开集**，且 $x \\in U$、$y \\notin U$。',
         '',
@@ -447,8 +449,10 @@ window.MG = window.MG || {};
     {
       id: 'imp.t2-t1',
       kind: 'implication',
+      layer: false,
       sources: ['def.hausdorff'],
       target: 'def.t1-space',
+      note: '「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。',
       proof: [
         '要证每个单点集闭，即证其补 $X \\setminus \\{y\\}$ 开。对每个 $x \\ne y$，由 $T_{2}$ 有不交开集 $U_{x} \\ni x$、$V_{x} \\ni y$；由不交性 $U_{x} \\subseteq X \\setminus \\{y\\}$。于是',
         '',
@@ -476,8 +480,10 @@ window.MG = window.MG || {};
     {
       id: 'imp.t35-t3',
       kind: 'implication',
+      layer: false,
       sources: ['def.t35-space'],
       target: 'def.t3-space',
+      note: '「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。',
       proof: [
         '设 $F$ 闭、$x \\notin F$。由 $T_{3.5}$ 取连续 $f : X \\to [0,1]$ 使 $f(x) = 0$、$f|_{F} \\equiv 1$。令',
         '',
@@ -491,8 +497,10 @@ window.MG = window.MG || {};
     {
       id: 'imp.cr-regular',
       kind: 'implication',
+      layer: false,
       sources: ['def.completely-regular-space'],
       target: 'def.regular-space',
+      note: '「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。',
       proof: [
         '完全正则空间 = $T_{3.5} + T_{1}$；正则空间 = $T_{3} + T_{1}$。两条 $T_{1}$ 直接对上，剩下要证 $T_{3.5} \\implies T_{3}$ —— 见 `imp.t35-t3`（取 $f^{-1}([0,1/2))$ 与 $f^{-1}((1/2,1])$）。∎'
       ].join('\n')
@@ -500,8 +508,10 @@ window.MG = window.MG || {};
     {
       id: 'imp.normal-completely-regular',
       kind: 'implication',
+      layer: false,
       sources: ['def.normal-space'],
       target: 'def.completely-regular-space',
+      note: '「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。',
       proof: [
         '正规空间的定义里已含 $T_{1}$，所以只需证 $T_{3.5}$ 那一半。',
         '',
@@ -517,8 +527,10 @@ window.MG = window.MG || {};
     {
       id: 'imp.cn-normal',
       kind: 'implication',
+      layer: false,
       sources: ['def.completely-normal-space'],
       target: 'def.normal-space',
+      note: '「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。',
       proof: [
         '$X$ 本身是 $X$ 的一个子空间（取子空间拓扑时 $X$ 的开集族不变）。完全正规要求**每个**子空间都正规，取 $X$ 自己即得 $X$ 正规 ✓。∎',
         '',
@@ -566,6 +578,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.lch-cr',
       kind: 'implication',
+      layer: false,
       sources: ['def.locally-compact'],
       target: 'def.completely-regular-space',
       proof: [

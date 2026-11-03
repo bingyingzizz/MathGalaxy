@@ -104,11 +104,10 @@
 ### 调和形式　出现 1 次
 `thm.divergence-theorem`
 
-## 二、陈述用到更深的定义却没有边（143 处）
+## 二、陈述用到更深的定义却没有边（144 处）
 
 - `def.invariant-polynomial`（不变多项式 · L10）用到 `def.characteristic-class`（示性类 · L31）　落差 21
 - `def.fiber-bundle`（纤维丛 · L10）用到 `def.lie-group`（Lie 群 · L25）　落差 15
-- `def.t35-space`（T3.5 空间 · L6）用到 `def.regular-space`（正则空间 · L18）　落差 12
 - `def.discrete-huber-pair`（离散 Huber pair · L8）用到 `def.analytic-ring`（解析环 · L18）　落差 10
 - `ex.ab-of-categories`（Ab(C) 的例子 · L15）用到 `def.lie-group`（Lie 群 · L25）　落差 10
 - `def.bundle-section`（丛的截面 · L10）用到 `def.vector-field`（向量场 · L19）　落差 9
@@ -124,12 +123,13 @@
 - `def.connection-form`（联络形式 · L21）用到 `def.second-fundamental-form`（第二基本形式 · L26）　落差 5
 - `prop.single-valued-branch`（单值支的存在判据 · L19）用到 `def.analytic-continuation`（解析延拓 · L24）　落差 5
 - `thm.lifting`（提升定理 · L7）用到 `def.path-homotopy`（道路同伦 · L12）　落差 5
+- `def.hamiltonian-vector-field`（Hamilton 向量场 · L21）用到 `def.volume-form`（体积形式 · L26）　落差 5
 - `prop.generators-abelian-sheaves`（生成元给出阿贝尔层的生成元 · L11）用到 `def.topos`（拓扑斯 · L16）　落差 5
 - `prop.syzygy-stability`（合冲的稳定性 · L16）用到 `def.projective-dimension`（投射维数 · L20）　落差 4
 - `def.affine-connection`（仿射联络 · L22）用到 `def.geodesic`（测地线 · L26）　落差 4
 - `def.bundle-section`（丛的截面 · L10）用到 `def.differential-form`（微分形式（欧氏开集） · L14）　落差 4
 - `def.lie-algebra`（Lie 代数 · L21）用到 `def.lie-group`（Lie 群 · L25）　落差 4
-- `def.hamiltonian-vector-field`（Hamilton 向量场 · L22）用到 `def.volume-form`（体积形式 · L26）　落差 4
+- `thm.darboux`（Darboux 定理 · L21）用到 `def.riemannian-metric`（Riemann 度量 · L25）　落差 4
 - `def.subspace-topology`（子空间拓扑 · L5）用到 `def.subspace`（子空间 · L9）　落差 4
 - `def.quotient-vs`（商空间 · L6）用到 `def.subspace`（子空间 · L9）　落差 3
 - `def.quotient-vs`（商空间 · L6）用到 `def.linear-map`（线性映射 · L9）　落差 3
@@ -137,7 +137,6 @@
 - `def.curvature-tensor`（Riemann 曲率张量 · L23）用到 `def.second-fundamental-form`（第二基本形式 · L26）　落差 3
 - `def.frenet-frame`（曲率与挠率 · L17）用到 `def.moving-frame`（活动标架 · L20）　落差 3
 - `prop.pullback-forms`（拉回（开集间） · L16）用到 `def.vector-field`（向量场 · L19）　落差 3
-- `thm.darboux`（Darboux 定理 · L22）用到 `def.riemannian-metric`（Riemann 度量 · L25）　落差 3
 - `thm.separable-hilbert-is-l2`（可分 Hilbert 空间等距于 ℓ² · L13）用到 `def.hilbert-space`（Hilbert 空间 · L16）　落差 3
 - `def.cauchy-null`（Cauchy 列与零列 · L11）用到 `def.cauchy-sequence`（Cauchy 列 · L14）　落差 3
 - `prop.quasi-compact-properties`（拟紧的性质 · L13）用到 `def.precanonical-topology`（预标准拓扑 · L16）　落差 3
@@ -156,6 +155,7 @@
 - `def.gauss-curvature`（Gauss 曲率 · L24）用到 `def.second-fundamental-form`（第二基本形式 · L26）　落差 2
 - `def.ac-function`（绝对连续函数 · L14）用到 `def.absolute-continuity`（绝对连续 · L16）　落差 2
 - `def.congruent-matrices`（合同矩阵 · L13）用到 `def.inertia-index`（惯性指数 · L15）　落差 2
+- `def.t35-space`（T3.5 空间 · L6）用到 `def.regular-space`（正则空间 · L8）　落差 2
 - `def.real`（实数系 ℝ · L12）用到 `def.cauchy-sequence`（Cauchy 列 · L14）　落差 2
 - `lem.representable-quotient`（可表示性的下降 · L14）用到 `def.topos`（拓扑斯 · L16）　落差 2
 - `prop.quasi-compact-properties`（拟紧的性质 · L13）用到 `def.canonical-topology`（标准拓扑 · L15）　落差 2
@@ -241,6 +241,7 @@
 - `def.underlying-topological-space`（底拓扑空间 · L16）用到 `def.condensed-set`（凝聚态集 · L16）
 - `lem.stonean-projective`（Stonean 给出有限表现投射对象 · L17）用到 `def.condensed-abelian-group`（凝聚态阿贝尔群 · L17）
 - `thm.long-exact`（长正合列 · L18）用到 `def.cohomological-functor`（上同调函子 · L18）
+- `thm.tietze-banach`（Tietze 延拓（Banach 值） · L15）用到 `def.banach-space`（Banach 空间 · L15）
 - `prop.breen-deligne-ss-stonean`（Stonean 上 Breen–Deligne 的谱序列 · L17）用到 `def.condensed-abelian-group`（凝聚态阿贝尔群 · L17）
 - `prop.hom-presheaf-sheaf`（Hom 预层是层 · L16）用到 `def.condensed-set`（凝聚态集 · L16）
 - `prop.module-tensor-universal`（张量积对双线性映射万有 · L12）用到 `def.tensor-product-vs`（张量积（向量空间） · L12）

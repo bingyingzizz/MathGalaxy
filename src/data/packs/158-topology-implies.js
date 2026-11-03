@@ -36,6 +36,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.compact-paracompact',
       kind: 'implication',
+      layer: false,
       sources: ['def.compact'],
       target: 'def.paracompact',
       proof: [
@@ -54,6 +55,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.metric-paracompact',
       kind: 'implication',
+      layer: false,
       sources: ['def.metric-space'],
       target: 'def.paracompact',
       proof: [

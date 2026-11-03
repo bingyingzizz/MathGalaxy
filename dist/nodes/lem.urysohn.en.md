@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 17 · lemma · cluster Separation Axioms (`topology.separation`) · Topology
+layer 15 · lemma · cluster Separation Axioms (`topology.separation`) · Topology
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/lem.urysohn.md` and `proofs/`.

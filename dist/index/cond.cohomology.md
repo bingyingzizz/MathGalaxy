@@ -7,7 +7,7 @@
 - def.k-bounded-exact　K-有界正合　layer 11
 - prop.k-bounded-exact-filtered-colimit　K-有界正合沿滤过余极限保持　layer 12
 - def.banach-ab-group　Banach 阿贝尔群　layer 15
+- thm.tietze-banach　Tietze 延拓（Banach 值）　layer 15
 - lem.k-bounded-completion　K-有界正合在完备化下不变　layer 16
-- prop.k-bounded-implies-exact　相邻两条 K-有界 推出 正合　layer 16
 
 > 续见 `index/cond.cohomology.2.md`

@@ -4,6 +4,6 @@ English entry · root `../`
 
 > English: **stale** · stale fields: abstract (the Chinese wording changed since this translation); the Chinese page is authoritative.
 
-layer 18 · proposition · cluster Paracompact Spaces and Partitions of Unity (`topology.paracompact`) · Topology
+layer 16 · proposition · cluster Paracompact Spaces and Partitions of Unity (`topology.paracompact`) · Topology
 
 > 续见 nodes/prop.paracompact-partition-unity.en.2.md

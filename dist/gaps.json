@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T06:14:53.137Z",
+ "generated": "2026-11-03T06:36:05.164Z",
  "terms": 76,
  "missing": [
   {
@@ -597,15 +597,6 @@
    "gap": 15
   },
   {
-   "node": "def.t35-space",
-   "nodeLabel": "T3.5 空间",
-   "nodeLayer": 6,
-   "def": "def.regular-space",
-   "defLabel": "正则空间",
-   "defLayer": 18,
-   "gap": 12
-  },
-  {
    "node": "def.discrete-huber-pair",
    "nodeLabel": "离散 Huber pair",
    "nodeLayer": 8,
@@ -741,6 +732,15 @@
    "gap": 5
   },
   {
+   "node": "def.hamiltonian-vector-field",
+   "nodeLabel": "Hamilton 向量场",
+   "nodeLayer": 21,
+   "def": "def.volume-form",
+   "defLabel": "体积形式",
+   "defLayer": 26,
+   "gap": 5
+  },
+  {
    "node": "prop.generators-abelian-sheaves",
    "nodeLabel": "生成元给出阿贝尔层的生成元",
    "nodeLayer": 11,
@@ -786,12 +786,12 @@
    "gap": 4
   },
   {
-   "node": "def.hamiltonian-vector-field",
-   "nodeLabel": "Hamilton 向量场",
-   "nodeLayer": 22,
-   "def": "def.volume-form",
-   "defLabel": "体积形式",
-   "defLayer": 26,
+   "node": "thm.darboux",
+   "nodeLabel": "Darboux 定理",
+   "nodeLayer": 21,
+   "def": "def.riemannian-metric",
+   "defLabel": "Riemann 度量",
+   "defLayer": 25,
    "gap": 4
   },
   {
@@ -855,15 +855,6 @@
    "def": "def.vector-field",
    "defLabel": "向量场",
    "defLayer": 19,
-   "gap": 3
-  },
-  {
-   "node": "thm.darboux",
-   "nodeLabel": "Darboux 定理",
-   "nodeLayer": 22,
-   "def": "def.riemannian-metric",
-   "defLabel": "Riemann 度量",
-   "defLayer": 25,
    "gap": 3
   },
   {
@@ -1026,6 +1017,15 @@
    "def": "def.inertia-index",
    "defLabel": "惯性指数",
    "defLayer": 15,
+   "gap": 2
+  },
+  {
+   "node": "def.t35-space",
+   "nodeLabel": "T3.5 空间",
+   "nodeLayer": 6,
+   "def": "def.regular-space",
+   "defLabel": "正则空间",
+   "defLayer": 8,
    "gap": 2
   },
   {
@@ -1791,6 +1791,15 @@
    "def": "def.cohomological-functor",
    "defLabel": "上同调函子",
    "defLayer": 18,
+   "gap": 0
+  },
+  {
+   "node": "thm.tietze-banach",
+   "nodeLabel": "Tietze 延拓（Banach 值）",
+   "nodeLayer": 15,
+   "def": "def.banach-space",
+   "defLabel": "Banach 空间",
+   "defLayer": 15,
    "gap": 0
   },
   {

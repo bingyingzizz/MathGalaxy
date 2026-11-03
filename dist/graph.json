@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T06:14:53.137Z",
+  "generated": "2026-11-03T06:36:05.164Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
@@ -14,7 +14,7 @@
    "edges": 2799,
    "strong": 2782,
    "weak": 17,
-   "derived": 22,
+   "derived": 31,
    "en_pages": 1472
   },
   "readingGuide": {
@@ -18170,7 +18170,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 15,
+   "layer": 7,
    "tags": [
     "定义",
     "拓扑",
@@ -18212,7 +18212,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 17,
+   "layer": 10,
    "tags": [
     "引理",
     "拓扑",
@@ -18255,7 +18255,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 16,
+   "layer": 8,
    "tags": [
     "定理",
     "拓扑",
@@ -18298,7 +18298,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 18,
+   "layer": 11,
    "tags": [
     "命题",
     "拓扑",
@@ -18600,7 +18600,7 @@
     "topology"
    ],
    "cluster": "topology.metrizable",
-   "layer": 18,
+   "layer": 16,
    "tags": [
     "定理",
     "拓扑",
@@ -18730,7 +18730,7 @@
     "topology"
    ],
    "cluster": "topology.metrizable",
-   "layer": 17,
+   "layer": 15,
    "tags": [
     "命题",
     "拓扑",
@@ -23439,7 +23439,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 19,
+   "layer": 17,
    "tags": [
     "定理",
     "微分流形",
@@ -23482,7 +23482,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.manifold",
-   "layer": 20,
+   "layer": 18,
    "tags": [
     "命题",
     "微分流形",
@@ -32412,7 +32412,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.form",
-   "layer": 20,
+   "layer": 19,
    "tags": [
     "命题",
     "微分几何",
@@ -34283,7 +34283,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.symplectic",
-   "layer": 21,
+   "layer": 20,
    "tags": [
     "定义",
     "微分几何",
@@ -34326,7 +34326,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.symplectic",
-   "layer": 22,
+   "layer": 21,
    "tags": [
     "定理",
     "微分几何",
@@ -34369,7 +34369,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.symplectic",
-   "layer": 22,
+   "layer": 21,
    "tags": [
     "定义",
     "微分几何",
@@ -34412,7 +34412,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.symplectic",
-   "layer": 23,
+   "layer": 22,
    "tags": [
     "定义",
     "微分几何",
@@ -34455,7 +34455,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.symplectic",
-   "layer": 22,
+   "layer": 21,
    "tags": [
     "定义",
     "微分几何",
@@ -34498,7 +34498,7 @@
     "diffgeom"
    ],
    "cluster": "diffgeom.symplectic",
-   "layer": 24,
+   "layer": 23,
    "tags": [
     "定义",
     "微分几何",
@@ -34541,7 +34541,7 @@
     "topology"
    ],
    "cluster": "topology.separation",
-   "layer": 7,
+   "layer": 6,
    "tags": [
     "定义",
     "拓扑",
@@ -34713,7 +34713,7 @@
     "topology"
    ],
    "cluster": "topology.separation",
-   "layer": 18,
+   "layer": 8,
    "tags": [
     "定义",
     "拓扑",
@@ -34799,7 +34799,7 @@
     "topology"
    ],
    "cluster": "topology.separation",
-   "layer": 17,
+   "layer": 7,
    "tags": [
     "定义",
     "拓扑",
@@ -48377,7 +48377,7 @@
     "topology"
    ],
    "cluster": "topology.separation",
-   "layer": 16,
+   "layer": 6,
    "tags": [
     "拓扑",
     "分离公理",
@@ -48418,7 +48418,7 @@
     "topology"
    ],
    "cluster": "topology.separation",
-   "layer": 17,
+   "layer": 15,
    "tags": [
     "拓扑",
     "正规",
@@ -52729,7 +52729,7 @@
     "topology"
    ],
    "cluster": "cond.cohomology",
-   "layer": 17,
+   "layer": 15,
    "tags": [
     "凝聚态数学",
     "Tietze",
@@ -55280,7 +55280,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 18,
+   "layer": 16,
    "tags": [
     "命题",
     "拓扑",
@@ -58132,7 +58132,7 @@
     "topology"
    ],
    "cluster": "topology.separation",
-   "layer": 17,
+   "layer": 7,
    "tags": [
     "命题",
     "正规空间",
@@ -76656,9 +76656,10 @@
     "def.t1-space"
    ],
    "target": "def.t0-space",
+   "layer": false,
    "title": "",
    "proof": "设 $x \\ne y \\in X$。由 $T_{1}$，单点集 $\\{y\\}$ 是**闭集**，于是 $U := X \\setminus \\{y\\}$ 是**开集**，且 $x \\in U$、$y \\notin U$。\n\n这正是 $T_{0}$ 要求的「存在开集恰好只含其中一个点」✓。∎\n\n⭐ 这条几乎不需要证明 —— 它说明 $T_{1}$ 比 $T_{0}$ 多的那点内容是「每个点都能被自己单独关进闭集」。",
-   "note": ""
+   "note": "「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。"
   },
   {
    "id": "imp.t2-t1",
@@ -76668,9 +76669,10 @@
     "def.hausdorff"
    ],
    "target": "def.t1-space",
+   "layer": false,
    "title": "",
    "proof": "要证每个单点集闭，即证其补 $X \\setminus \\{y\\}$ 开。对每个 $x \\ne y$，由 $T_{2}$ 有不交开集 $U_{x} \\ni x$、$V_{x} \\ni y$；由不交性 $U_{x} \\subseteq X \\setminus \\{y\\}$。于是\n\n$$X \\setminus \\{y\\} = \\bigcup_{x \\ne y} U_{x}$$\n\n是一族开集之并 = 开集 ✓。所以每个单点集闭，即 $T_{1}$。∎\n\n⚠️ **反向不成立**：余有限拓扑 $T_{1}$ 但不 $T_{2}$（任意两个非空开集必相交）。",
-   "note": ""
+   "note": "「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。"
   },
   {
    "id": "imp.regular-hausdorff",
@@ -76693,9 +76695,10 @@
     "def.t35-space"
    ],
    "target": "def.t3-space",
+   "layer": false,
    "title": "",
    "proof": "设 $F$ 闭、$x \\notin F$。由 $T_{3.5}$ 取连续 $f : X \\to [0,1]$ 使 $f(x) = 0$、$f|_{F} \\equiv 1$。令\n\n$$U := f^{-1}\\bigl([0, 1/2)\\bigr), \\qquad V := f^{-1}\\bigl((1/2, 1]\\bigr) .$$\n\n两者都是开集（$f$ 连续、两个目标集在 $[0,1]$ 中开）、不交、$x \\in U$、$F \\subseteq V$ —— 这正是 $T_{3}$ ✓。∎\n\n⭐ 这条是**无条件**的（不需要 $T_{1}$），与「$T_{3} \\implies T_{2}$」形成对照 —— 后者才需要 $T_{1}$。",
-   "note": ""
+   "note": "「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。"
   },
   {
    "id": "imp.cr-regular",
@@ -76705,9 +76708,10 @@
     "def.completely-regular-space"
    ],
    "target": "def.regular-space",
+   "layer": false,
    "title": "",
    "proof": "完全正则空间 = $T_{3.5} + T_{1}$；正则空间 = $T_{3} + T_{1}$。两条 $T_{1}$ 直接对上，剩下要证 $T_{3.5} \\implies T_{3}$ —— 见 `imp.t35-t3`（取 $f^{-1}([0,1/2))$ 与 $f^{-1}((1/2,1])$）。∎",
-   "note": ""
+   "note": "「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。"
   },
   {
    "id": "imp.normal-completely-regular",
@@ -76717,9 +76721,10 @@
     "def.normal-space"
    ],
    "target": "def.completely-regular-space",
+   "layer": false,
    "title": "",
    "proof": "正规空间的定义里已含 $T_{1}$，所以只需证 $T_{3.5}$ 那一半。\n\n设 $F \\subseteq X$ 闭、$x \\notin F$。由 $T_{1}$，$\\{x\\}$ 是闭集，于是 $F$ 与 $\\{x\\}$ 是两个**不交闭集**。由 Urysohn 引理存在连续 $f : X \\to [0,1]$ 使\n\n$$f|_{F} \\equiv 0, \\qquad f(x) = 1 .$$\n\n对任意闭集 $F$ 与 $x \\notin F$ 都有这样的 $f$，即 $X$ 是 $T_{3.5}$；又已知 $T_{1}$，故完全正则 ✓。∎\n\n⛔ **方向不能反**：这里用的是**正规**，不是正则。$T_{3}$ 只给不交开集、不给连续函数，所以「正则 $\\implies$ 完全正则」是**假**的（Sorgenfrey 平面正是这种例子：它正则、完全正则，但存在正则而不完全正则的空间）。",
-   "note": ""
+   "note": "「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。"
   },
   {
    "id": "imp.cn-normal",
@@ -76729,9 +76734,10 @@
     "def.completely-normal-space"
    ],
    "target": "def.normal-space",
+   "layer": false,
    "title": "",
    "proof": "$X$ 本身是 $X$ 的一个子空间（取子空间拓扑时 $X$ 的开集族不变）。完全正规要求**每个**子空间都正规，取 $X$ 自己即得 $X$ 正规 ✓。∎\n\n⚠️ **反向不成立**（这正是 $T_{5}$ 存在的理由）：正规空间的子空间未必正规，经典反例是 Tychonoff plank。",
-   "note": ""
+   "note": "「强 $\\implies$ 弱」的推出：用更强的分离公理去证更弱的，若参与分层会与定义边形成层号倒置（正则 L18 vs T3.5 L6）。按**推论边**处理：真推得通，但不是建造顺序。"
   },
   {
    "id": "imp.pn-cn",
@@ -76765,6 +76771,7 @@
     "def.locally-compact"
    ],
    "target": "def.completely-regular-space",
+   "layer": false,
    "title": "",
    "proof": "局部紧 Hausdorff 空间已含 $T_{1}$，只需证 $T_{3.5}$。\n\n设 $F$ 闭、$x \\notin F$。\n\n因 $X \\setminus F$ 是 $x$ 的开邻域、且 $x$ 有紧邻域，可取**紧邻域** $K \\ni x$ 使 $K \\subseteq X \\setminus F$（把原来的紧邻域与 $X \\setminus F$ 取交，紧集的闭子集仍紧）。\n\n于是 $K \\cap F = \\emptyset$。\n\n记 $\\partial K := K \\setminus \\mathring{K}$（紧集，闭）。\n\n$x \\in \\mathring{K}$ 故 $x \\notin \\partial K$。\n\n$K$ 作为紧 Hausdorff 空间是**正规**的（紧 $\\implies$ 仿紧 $\\implies$（加 Hausdorff）正规，见 `thm.paracompact-hausdorff-normal`），于是由 Urysohn 引理存在连续 $h : K \\to [0,1]$ 使\n\n$$h(x) = 0, \\qquad h|_{\\partial K} \\equiv 1 .$$\n\n定义 $f : X \\to [0,1]$ 为：$f = h$ 在 $K$ 上，$f \\equiv 1$ 在 $X \\setminus \\mathring{K}$ 上。\n\n两片在重叠处 $\\partial K$ 都是 $1$，故 $f$ 良定义且连续（闭覆盖引理）。\n\n又 $F \\cap K = \\emptyset$ $\\implies$ $F \\subseteq X \\setminus \\mathring{K}$ $\\implies$ $f|_{F} \\equiv 1$，而 $f(x) = 0$。\n\n所以 $X$ 是 $T_{3.5}$，加上 $T_{1}$ 得完全正则 ✓。∎\n\n⭐ 这条是**一点紧化**理论的前置：局部紧 Hausdorff 的一点紧化是紧 Hausdorff，其上的函数全靠这条从 $X$ 上「拉回来」。",
    "note": ""
@@ -76789,6 +76796,7 @@
     "def.compact"
    ],
    "target": "def.paracompact",
+   "layer": false,
    "title": "",
    "proof": "设 $X$ 紧，$\\mathcal{U}$ 是 $X$ 的任一开覆盖。由紧性取**有限**子覆盖 $U_{1}, \\ldots, U_{n}$，令 $\\mathcal{V} := \\{\\, U_{1}, \\ldots, U_{n} \\,\\}$。\n\n检查仿紧的两条要求（`def.paracompact`）：\n\n1. **加细**：$\\mathcal{V} \\subseteq \\mathcal{U}$，是自身的加细 ✓；\n2. **局部有限**：有限族在**任意点**都只碰到有限多个成员 —— 事实上最多碰到 $n$ 个 ✓。\n\n所以每个开覆盖都有局部有限的開加细，$X$ 仿紧 ✓。∎\n\n⚠️ **反向不成立**：$\\mathbb{R}$ 仿紧但不紧。仿紧是「局部有限」这一侧的紧性，比紧弱得多。",
    "note": ""
@@ -76801,6 +76809,7 @@
     "def.metric-space"
    ],
    "target": "def.paracompact",
+   "layer": false,
    "title": "",
    "proof": "**骨架**（Stone 定理：距离空间都仿紧；完整证明属一般拓扑的标准定理，这里给结构与关键构造）。\n\n设 $(X, d)$ 是距离空间，$\\mathcal{U}$ 是开覆盖。分三步：\n\n**第 1 步（造 $\\sigma$-离散加细）**：对每个 $n \\ge 1$，取极大的「$2^{-n}$-分离」子集 $S_{n} \\subseteq X$（任意两点距离 $\\ge 2^{-n}$；用 Zorn 引理或超限递归取极大）。由极大性，球族\n\n$$\\mathcal{B}_{n} := \\bigl\\{\\, B(s, 2^{-n}) : s \\in S_{n} \\,\\bigr\\}$$\n\n覆盖 $X$（否则可再加一点，与极大性矛盾）。\n\n同一个 $\\mathcal{B}_{n}$ 里的球**两两不交**（中心相距 $\\ge 2^{-n}$ $\\implies$ 半径 $2^{-n}$ 的球不交），所以 $\\mathcal{B}_{n}$ 是**离散**族；\n\n$\\bigcup_{n}\\mathcal{B}_{n}$ 是 $\\sigma$-离散族。\n\n**第 2 步（$\\sigma$-离散 $\\implies$ 局部有限）**：对一个固定点 $x$，$B(x, 2^{-n})$ 只与 $S_{n}$ 中有限多个点相交（它们两两相距 $\\ge 2^{-n}$，而都落在 $B(x, 2^{-n+1})$ 里 —— 直径有限的距离空间里这样的点最多有限多个）。\n\n于是 $x$ 的一个邻域只碰到 $\\mathcal{B}_{n}$ 中有限多个成员 ✓。\n\n**第 3 步（贴回覆盖）**：把 $\\mathcal{B}_{n}$ 的每个球 $B(s, 2^{-n})$ 换成「$s$ 所在的某个 $U \\in \\mathcal{U}$」，并对 $n$ 用 $\\sigma$-离散 $\\implies$ 由 Stone 的加细定理（$\\sigma$-离散族可加细进任意开覆盖）得到 $\\mathcal{U}$ 的局部有限开加细。\n\n于是 $X$ 仿紧 ✓。\n\n∎\n\n⛔ **这条不能靠「度量 $\\implies$ 正规」绕过去**：正规**不**蕴含仿紧（Sorgenfrey 直线正规、仿紧，但存在正规而不仿紧的空间）。所以度量 $\\implies$ 仿紧是一条**独立**的定理，不是分离公理的推论。",
    "note": ""

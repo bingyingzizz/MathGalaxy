@@ -9,7 +9,7 @@
 - **6 / 6** `def.submanifold-volume` 诱导体积 · layer 27 · 微分形式、积分与 de Rham
 - **6 / 6** `thm.gauss-bonnet` Gauss–Bonnet 定理 · layer 29 · 内蕴几何
 - **6 / 5** `lem.zorn` Zorn 引理 · layer 9 · 选择原理
-- **6 / 5** `prop.paracompact-partition-unity` 仿紧性与单位分解 · layer 18 · 仿紧与单位分解
+- **6 / 5** `prop.paracompact-partition-unity` 仿紧性与单位分解 · layer 16 · 仿紧与单位分解
 - **6 / 4** `thm.lp-banach` L^p 是 Banach 空间 · layer 21 · L^p 空间
 - **6 / 4** `thm.frobenius` Frobenius 定理 · layer 22 · 向量场与 Lie 结构
 - **6 / 1** `thm.completeness-equivalent` 完备性的六条等价 · layer 19 · 实数完备性的等价刻画
