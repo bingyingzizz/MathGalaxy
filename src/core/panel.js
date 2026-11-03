@@ -328,7 +328,7 @@
       if (!e) { hide(); return; }
       var g = view.graph;
       var name = MG.edgeName(e.kind);
-      var color = e.kind === 'definition' ? '#3C70F5' : '#1C1C1E';
+      var color = e.kind === 'definition' ? '#2A5BD7' : '#1C1C1E';   // 白字 ≥ 4.5:1（与 nodeTypes 同一条要求）
       var html = '';
 
       html += '<span class="pn-kind" style="background:' + color + '">' +

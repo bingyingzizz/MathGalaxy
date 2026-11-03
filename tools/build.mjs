@@ -2266,6 +2266,26 @@ function exportAliasProducts(MG, graph) {
 /* ⚠️ 硬门：`alias.md` 索引里链到的页必须真被产出。
    这一族产物「不生成的页」不会报错 —— 只是少一个文件、索引照链，读者/AI 走到 404。
    踩过：复变 26 条别名只能进 `alias/aka/complex.md`，索引链的却是 `alias/complex.md`。 */
+/* ------------------------------------------------- 类型色 vs 白字对比度 */
+/* 节点类型色同时充当 `.pn-kind` 徽章的底色（白字 11.5px），要 ≥ 4.5:1（WCAG AA 小字）。
+   2026-11-03 之前有 6/7 不达标（2.58–4.22），是**没人量**而不是没人知道该量 ——
+   所以把它做成硬门：改色值前先保证自己算过。 */
+function assertContrast(MG) {
+  const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+  const lum = (hex) => {
+    const n = parseInt(String(hex).slice(1), 16);
+    return 0.2126 * lin((n >> 16) & 255) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255);
+  };
+  const errs = [];
+  const types = (MG.theme && MG.theme.nodeTypes) || {};
+  for (const [k, t] of Object.entries(types)) {
+    if (!t || !/^#[0-9a-f]{6}$/i.test(String(t.color))) { errs.push(`类型色：nodeTypes.${k} 不是 #rrggbb（白字对比度算不出来）`); continue; }
+    const cr = 1.05 / (lum(t.color) + 0.05);
+    if (cr < 4.5) errs.push(`类型色：nodeTypes.${k} = ${t.color} 上白字只有 ${cr.toFixed(2)}:1（小字要 ≥ 4.5:1）`);
+  }
+  return errs;
+}
+
 function assertAliasLinks(indexText, aliasFiles) {
   const made = new Set(aliasFiles.map(f => f.path.replace(/\\/g, '/')));
   const errs = [];
@@ -2955,6 +2975,7 @@ if (doJSON) {
   errs.push(...aliasErrs);
   errs.push(...enErrs);
   errs.push(...assertEdgeEndpoints(MG, graph));
+  errs.push(...assertContrast(MG));
   errs.push(...assertNotation(MG, graph));
   errs.push(...assertAliases(MG, graph));
   errs.push(...assertXref(MG, graph));

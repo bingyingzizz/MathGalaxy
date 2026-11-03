@@ -462,15 +462,18 @@
 
     /* 节点类型 → 颜色。改这里即可换配色。
        ⭐ T2.4：加 `nameEn` —— 界面英文模式下的类型名（「公理」→ Axiom）。
-          它是**引擎侧**的界面文案，不是数学内容；⛔ 不要跟 label_en/title_en 混。 */
+          它是**引擎侧**的界面文案，不是数学内容；⛔ 不要跟 label_en/title_en 混。
+       ⚠️ 这七个色值**同时是 `.pn-kind` 徽章的底色**，白字 11.5px 要 ≥ 4.5:1
+          （WCAG AA 小字）。2026-11-03 之前六色只有 2.58–4.22，已整体压深一档；
+          构建里 `assertContrast()` 会拦住退回去的改动。 */
     nodeTypes: {
       axiom:       { name: '公理',  nameEn: 'Axiom',       color: '#7A5CD6', short: '公理' },
-      definition:  { name: '定义',  nameEn: 'Definition',  color: '#8B93A7', short: '定义' },
-      theorem:     { name: '定理',  nameEn: 'Theorem',     color: '#2F9E63', short: '定理' },
-      lemma:       { name: '引理',  nameEn: 'Lemma',       color: '#E08434', short: '引理' },
-      proposition: { name: '命题',  nameEn: 'Proposition', color: '#12A0B8', short: '命题' },
-      corollary:   { name: '推论',  nameEn: 'Corollary',   color: '#3A7BD5', short: '推论' },
-      example:     { name: '例',    nameEn: 'Example',     color: '#A79BC4', short: '例' }
+      definition:  { name: '定义',  nameEn: 'Definition',  color: '#6B7280', short: '定义' },
+      theorem:     { name: '定理',  nameEn: 'Theorem',     color: '#1F7A4C', short: '定理' },
+      lemma:       { name: '引理',  nameEn: 'Lemma',       color: '#B45309', short: '引理' },
+      proposition: { name: '命题',  nameEn: 'Proposition', color: '#0E7490', short: '命题' },
+      corollary:   { name: '推论',  nameEn: 'Corollary',   color: '#2F5FC4', short: '推论' },
+      example:     { name: '例',    nameEn: 'Example',     color: '#7B5EA7', short: '例' }
     },
 
     /* 边的视觉 */
