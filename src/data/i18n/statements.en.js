@@ -720,9 +720,11 @@ MG.i18nStatements = {
     'thm.metric-compact-equiv': {
       statement: {
         en:
-        'Let (X, d) be a metric space. Then the following three conditions are ' +
-        '**equivalent**: $X$ is compact $\\iff$ $X$ is sequentially compact $\\iff$ $X$ is ' +
-        'complete and totally bounded.',
+        "Let $X$ be a metric space with metric $d$. Then the following three conditions are **equivalent**:\n\n" +
+        "- (a) $X$ is **compact**: every open cover has a finite subcover;\n" +
+        "- (b) $X$ is **sequentially compact**: every sequence has a subsequence converging in $X$;\n" +
+        "- (c) $X$ is **complete and totally bounded**.\n\n" +
+        "That is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded.",
         status: 'reviewed', basedOn: 'v0.9.2#8c5b3033', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
