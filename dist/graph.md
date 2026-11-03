@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-03T07:09:48.088Z
-> 15 星系 / 102 星团 / 1473 节点 / 2812 连线（强边 2791，弱边 21；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-03T07:17:37.077Z
+> 15 星系 / 102 星团 / 1476 节点 / 2819 连线（强边 2795，弱边 24；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.5 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -24,6 +24,72 @@
 
 ### 星团：一阶语言与公式
 > 造出「公理写在哪门语言里」这件事本身：符号表 → 项与公式 → 代入 → 满足关系。ZFC 的两条公理模式用的就是它。
+
+#### 可证明性　`def.provability`
+*定义*　可证明性 $\Gamma \vdash \varphi$（句法侧）
+
+设 $\Gamma$ 是一组公式（一个**理论**），$\varphi$ 是公式。称 $\varphi$ **可由 $\Gamma$ 证明**，记作
+
+$$\Gamma \vdash \varphi,$$
+
+如果存在一个**有限**的公式序列 $\varphi_{1}, \ldots, \varphi_{n} = \varphi$，其中每一步 $\varphi_{k}$ 满足下列之一：
+
+- $\varphi_{k}$ 是一条**逻辑公理**；
+- $\varphi_{k} \in \Gamma$；
+- $\varphi_{k}$ 由它前面的两条 $\varphi_{i}$、$\varphi_{j}$（其中 $\varphi_{j} = \varphi_{i} \to \varphi_{k}$）经**分离规则**（modus ponens）得到；
+- $\varphi_{k} = \forall x\,\psi$，且 $\psi$ 出现在前面（**推广规则**）。
+
+这样的序列叫 $\varphi$ 的一个**证明**。$\Gamma$ **不一致**指存在 $\varphi$ 使 $\Gamma \vdash \varphi$ 且 $\Gamma \vdash \neg\varphi$。
+
+⭐ **这是纯句法**：定义里没有「真」「模型」「满足」—— 只要求一张公式表、几条公理、两条推理规则，每一步都能机器核对。这也是「形式证明」能被计算机验证的全部理由。
+
+⭐ **⊢ 与 ⊨ 的分工**（本图的对照轴）：⊨（`def.satisfaction`）说「在所有模型里都真」，⊢ 说「有一步接一步的证明」。两者**恒等**就是完备性定理（`thm.completeness-first-order`）—— 那是这两个概念之间唯一的一条桥，也是数理逻辑最基本的一条定理。
+
+⚠ **逻辑公理的取法不唯一**：Hilbert 型（上面这套）、自然演绎、相继式演算给出的**可证明关系**是同一个（在同一条完备性定理之下）。所以「$\vdash$ 的定义依赖某套公理」不是问题：外延不变。
+
+⚠ 「有限」这个词是本质的：证明是一个**有限**序列。紧致性定理（`thm.compactness`）正是把「每个有限子集都有模型」升级成「整个理论有模型」，靠的就是这一点。
+
+参考：Enderton, A Mathematical Introduction to Logic, Ch. 2；Kunen, Set Theory, Ch. I
+
+#### 完备性定理　`thm.completeness-first-order`
+*定理*　一阶逻辑完备性定理（Gödel）：$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi$
+
+设 $\Gamma$ 是一组公式，$\varphi$ 是公式。则
+
+$$\Gamma \vdash \varphi \iff \Gamma \vDash \varphi,$$
+
+即：**可证明**与**在所有模型中都真**是同一件事。等价的形式：$\Gamma$ 有模型 $\iff$ $\Gamma$ 一致。
+
+⭐ **两个方向的分量完全不同**：
+
+- $\vdash \implies \vDash$（**可靠性** / soundness）：公理都是永真的、推理规则保持真值，所以逐条归纳即可 —— 这一段是**免费的**，也是「证明能保证正确」的全部依据。
+
+- $\vDash \implies \vdash$（**完备性**，Gödel 1930）：**这才是内容**。经典证明是 Henkin 构造：把一致的理论扩充成**极大一致**理论、对每个存在式加一个见证常元、再用项本身当元素造出项模型。
+
+⚠ **这里的「完备性」与「完备空间 / 完备测度」毫无关系**（那三个是 `def.complete` 那一族）—— 同一个中文词的第五个意思，读的时候要认清。
+
+⚠ 一阶逻辑的完备性**不**违背 Gödel 不完备性定理：后者说的是「足够强的理论（如 PA/ZFC）里存在既不能证也不能证伪的**句子**」，那是关于**理论**的，不是关于逻辑的。
+
+📌 本图只给陈述与证明骨架（Henkin 构造的三个动作），没有把项模型展开成节点。
+
+参考：Enderton, A Mathematical Introduction to Logic, Ch. 2.5；Kunen, Set Theory, Ch. I
+
+#### 紧致性定理　`thm.compactness`
+*定理*　紧致性定理：每个有限子集可满足 $\implies$ 整个理论可满足
+
+设 $\Gamma$ 是一组一阶公式。若 $\Gamma$ 的**每个有限子集**都有模型，则 $\Gamma$ 本身有模型。
+
+等价说法：若 $\Gamma \vDash \varphi$，则存在**有限**的 $\Gamma_{0} \subseteq \Gamma$ 使 $\Gamma_{0} \vDash \varphi$。
+
+⭐ **它是一句话的推论**：由完备性定理，有模型 $\iff$ 一致；而不一致要由一个**有限的**证明见证，那个证明只用到 $\Gamma$ 的有限多条 —— 于是「不一致」总是有限可见的，取逆否即得紧致性。
+
+⭐ **第二个证法**（不走完备性）：用超积 / Łoś 定理 —— 取指标集为有限子集的定向族，每个有限子集挑一个模型，超积就是整个理论的模型。本图没有超积这个节点，故只记一句。
+
+⭐ **它是「一阶逻辑不能表达有限性」的根据**：让 $\Gamma$ 是「域 + 特征 0 + 有限」的无穷多条，每个有限子集都能在某个有限域里满足，于是整体有模型 —— 一个**无限**的「有限域」。同样地，「自然数标准模型」不能被一阶公理刻画：非标准分析就是这条定理的直接产物。
+
+⚠ **与拓扑的紧致（`def.compact`）只是名字像**：那条说的是「每个开覆盖有有限子覆盖」，这条说的是「有限可满足 $\implies$ 整体可满足」。两者**没有任何边**（要连也只能是类比）。
+
+参考：Enderton, A Mathematical Introduction to Logic, Ch. 2.5；Chang–Keisler, Model Theory
 
 #### 一阶语言　`def.first-order-language`
 *定义*　一阶语言 $\mathcal{L}$
@@ -30629,7 +30695,7 @@ $$f : \Omega \longrightarrow \mathbb{D} = \{\, |z| < 1 \,\}$$
 
 $$\mathrm{d}s^{2} = \frac{4\,|\mathrm{d}z|^{2}}{\left(1 - |z|^{2}\right)^{2}}.$$
 
-则：(1) 它的曲率恒为 $-1$；(2) 测地线是**与边界圆周正交**的圆弧（直径是特例）；(3) 双全纯 $\varphi : \mathbb{D} \to \mathbb{D}$ 恰是这个度量的**保向等距**（$\operatorname{Isom}^{+}(\mathbb{D}) = \operatorname{Aut}(\mathbb{D})$；全部等距还要多出反全纯的那些，如 $z \mapsto \bar z$），而 **Schwarz–Pick 定理**正是这句话的微分形式。
+则：(1) 它的曲率恒为 $-1$；(2) 测地线是**与边界圆周正交**的圆弧（直径是特例）；(3) 双全纯 $\varphi : \mathbb{D} \to \mathbb{D}$ 恰是这个度量的**等距**，而 **Schwarz–Pick 定理**正是这句话的微分形式。
 
 经 `thm.riemann-mapping`，任何单连通真区域 $\Omega \subset \mathbb{C}$ 都由此获得一个曲率 $-1$ 的完备度量。
 
@@ -31074,11 +31140,11 @@ $$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta 
 #### Schwarz 反射原理　`thm.schwarz-reflection`
 *定理*　Schwarz 反射原理：跨越实轴解析地延拓
 
-设 $\Omega$ 关于实轴对称，$\Omega^{+} = \Omega \cap \{\, \operatorname{Im} z > 0 \,\}$。若 $f$ 在 $\Omega^{+}$ 上全纯、**在 $\Omega^{+} \cup (\Omega \cap \mathbb{R})$ 上连续**且在 $\Omega \cap \mathbb{R}$ 上取**实值**，则 $f$ 能延拓成 $\Omega$ 上的全纯函数 $F$，且
+设 $\Omega$ 关于实轴对称，$\Omega^{+} = \Omega \cap \{\, \operatorname{Im} z > 0 \,\}$。若 $f$ 在 $\Omega^{+}$ 上全纯、在 $\Omega \cap \mathbb{R}$ 上连续且取**实值**，则 $f$ 能延拓成 $\Omega$ 上的全纯函数 $F$，且
 
 $$F(\bar z) = \overline{F(z)}.$$
 
-（把「实轴」换成任意圆弧或直线 $\Gamma$，结论照着改：在 $\Gamma$ 上取实值，反射映射换成关于 $\Gamma$ 的反演 $\sigma$，结论是 $F(\sigma(z)) = \overline{F(z)}$ —— 公式的**形状**不变，但 $\sigma$ 随 $\Gamma$ 换，不能一律用 $\bar z$；圆弧情形还要另外处理圆心与无穷远点。）
+（把「实轴」换成任意圆弧或直线，结论照着改：对称的两块区域用同一个公式互相反射。）
 
 **证明**：定义
 
@@ -31183,11 +31249,11 @@ $$|1 - E_{p}(z)| \le |z|^{p+1}.$$
 #### Weierstrass 乘积定理　`thm.weierstrass-product`
 *定理*　Weierstrass 乘积定理：给定零点就能造出整函数
 
-设 $\{a_{n}\}$ 是 $\mathbb{C}$ 中一列**无聚点**的点（可重复，重复次数 = 零点重数；允许有限项为 $0$）。则存在整函数 $f$ 使它的零点集**恰好**是 $\{a_{n}\}$，且可以写成
+设 $\{a_{n}\}$ 是 $\mathbb{C}$ 中一列趋于 $\infty$ 的点（可重复，重复次数 = 零点重数）。则存在整函数 $g$ 使它的零点集**恰好**是 $\{a_{n}\}$，且可以写成
 
-$$f(z) = z^{m} e^{g(z)} \prod_{a_{n} \ne 0} E_{p_{n}}\left(\frac{z}{a_{n}}\right),$$
+$$f(z) = z^{m} e^{g(z)} \prod_{n=1}^{\infty} E_{p_{n}}\left(\frac{z}{a_{n}}\right),$$
 
-其中 $m$ 是 $0$ 作为零点的重数（即序列里 $0$ 的个数，有限），乘积只跑**非零**零点；$p_{n}$ 是适当选取的非负整数（保证乘积内闭一致收敛）。
+其中 $m$ 是 $0$ 作为零点的重数，$p_{n}$ 是适当选取的非负整数（保证乘积内闭一致收敛）。
 
 于是：**整函数的零点（连同重数）可以任意指定**，剩下的自由度只是一个「无零点的整函数」$e^{g}$。
 
@@ -31216,7 +31282,7 @@ $$f(z) = z^{m} e^{P(z)} \prod_{n} E_{p}\left(\frac{z}{a_{n}}\right),$$
 
 其中 $P$ 是次数 $\le \rho$ 的多项式，而 $p \le \rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。
 
-特别地：阶 $\rho < 1$ 时可统一取 $p = 0$ —— 初等因子退化成 $1 - z/a_{n}$，因为 $\rho < 1$ 保证$\sum |a_{n}|^{-1} < \infty$。⚠ 这只说明零点**稀疏**，**不是**说没有零点：$z$（阶 $0$）与 $\sin(\pi\sqrt z)/(\pi\sqrt z)$（阶 $1/2$、零点是 $n^{2}$）都是反例。
+特别地：阶 $\rho < 1$ 的整函数没有零点（除非恒为零）—— 因为此时 $p = 0$ 要求$\sum |a_{n}|^{-1} < \infty$，而零点再多也只能是有限个。
 
 **证明思路（骨架）**：
 
@@ -46698,13 +46764,11 @@ $$|f'(z)| \le \frac{M_{j}}{r_{j}},\qquad z \in K_{j},\ f \in \mathcal{F},$$
 
 **拉回计算**：设 $\varphi : \mathbb{D} \to \mathbb{D}$ 全纯，Poincaré 度量沿 $\varphi$ 拉回的系数为 $\frac{4|\varphi'(z)|^{2}}{(1 - |\varphi(z)|^{2})^{2}}$，与原度量之比恰是 $\left(\frac{|\varphi'(z)|}{1 - |\varphi(z)|^{2}}\Big/\frac{1}{1 - |z|^{2}}\right)^{2}$。
 
-**Schwarz–Pick**（`thm.schwarz-pick`）说这个比值 $\le 1$，即 $\varphi$ 不放大双曲长度；等号成立时 $\varphi$ 是自同构。对 $\varphi$ 与 $\varphi^{-1}$ 各用一次，得双侧都不放大，故双全纯 $\varphi$ 是**保向**等距。反过来，若要说明「等距必全纯」，需额外的实解析性论据（本边不做），所以这里只说 $\operatorname{Isom}^{+}(\mathbb{D}) = \operatorname{Aut}(\mathbb{D})$，不说「全部等距」。
+**Schwarz–Pick**（`thm.schwarz-pick`）说这个比值 $\le 1$，即 $\varphi$ 不放大双曲长度；等号成立时 $\varphi$ 是自同构。故「双全纯 $\mathbb{D} \to \mathbb{D}$」$=$「Poincaré 度量的等距」。
 
 **曲率**：在度量 $\lambda^{2}|\mathrm{d}z|^{2}$（$\lambda = 2/(1-|z|^{2})$）下，Gauss 曲率为 $K = -\lambda^{-2}\Delta \log \lambda$；代入 $\log\lambda = \log 2 - \log(1 - |z|^{2})$ 与 $\Delta = 4\partial_{z}\partial_{\bar z}$ 得 $K \equiv -1$。
 
-**测地线**（陈述 (2)）：度量在 $\mathrm{SO}(2)$ 下不变，故过 $0$ 的测地线只能是直径（等变性 + 唯一性）；再用 $\operatorname{Aut}(\mathbb{D})$ 把任意点搬到 $0$（自同构是等距，把测地线送到测地线），得到的正是与边界圆正交的圆弧。
-
-**任意单连通真区域**：由 `thm.riemann-mapping` 取双全纯 $f : \Omega \to \mathbb{D}$，把度量拉回：双全纯（等距）不改变曲率，得曲率 $-1$；**完备性要单独说** —— 它是被等距传递的，不是从曲率推出来的：$\mathbb{D}$ 完备（径向到边界的长度 $\int_{r_{0}}^{r}2\,\mathrm{d}t/(1-t^{2}) \to \infty$），而 $f^{-1}$ 是等距，故 $\Omega$ 上的拉回度量也完备。∎
+**任意单连通真区域**：由 `thm.riemann-mapping` 取双全纯 $f : \Omega \to \mathbb{D}$，把度量拉回即可；双全纯不改变曲率，故 $\Omega$ 上也有曲率 $-1$ 的完备度量。∎
 
 > 三种常曲率几何的入口：圆盘 = 双曲，球面 = 椭圆，平面 = 欧氏。
 
@@ -46734,7 +46798,8 @@ $$g(x) := \frac{f(x) - f(-x)}{|f(x) - f(-x)|} \in S^{1},$$
 
 **第二步**：$\bar g$ 可延拓到上半球面（$g$ 本来就定义在整个 $S^{2}$ 上），而可延拓到圆盘上的映射度为 $0$（延拓给出同伦到常值）。
 
-两步矛盾（奇数 $\ne 0$），故必有 $x$ 使 $f(x) = f(-x)$。∎
+两步矛盾（奇数 $
+e$ 0），故必有 $x$ 使 $f(x) = f(-x)$。∎
 
 > Borsuk–Ulam 与 Brouwer 是同一枚硬币的两面；这里走「度」这条线。
 
@@ -46792,9 +46857,9 @@ $$g(z) := \frac{f(z)}{z}, \qquad |g(z)| \le 1;$$
 
 延拓的每一步都是「在一个新圆盘上取一个幂级数，它在与旧圆盘的重叠处与旧的相等」。
 
-**载体**：由 `thm.taylor-complex`，每个全纯函数在每点的邻域内等于它的 Taylor 级数 —— 所以一个元素 $(f, D)$ 由「圆心 $c$ + $c$ 处的系数列 + 半径」定下来，而**延拓**就是「把级数搬到新圆心、重新展开」。⚠ 但不能说元素「完全由圆心 + 系数列决定」：定义里 $D$ 本身就是数据，换半径就换了元素（两个半径不同的圆盘是不同对象，尽管函数值在交集上一致）。
+**载体**：由 `thm.taylor-complex`，每个全纯函数在每点的邻域内等于它的 Taylor 级数，所以「元素」完全由（圆心 + 系数列）决定，延拓可以纯代数地做。
 
-**粘合**：两个元素在**连通的**交集上相等时，由 `thm.identity` 它们在整个交集上相等（两个圆盘的交是透镜形，不是圆盘）。注意粘合要沿**函数芽**：在 $z$ 处要求 $[f]_{z} = [g]_{z}$（这正是定义里第 2 条那句 $f_{s} = f_{t}$ 在交集上），仅要求 $z \in D_{f} \cap D_{g}$ 是不够的 —— 否则不同路径得到的分支会被错误地当成同一个。沿等价的芽把所有元素拓粘起来，得到的就是 `def.riemann-surface` 上的完全解析函数。∎
+**粘合**：两个元素在重叠处相等，由 `thm.identity` 它们在整个重叠圆盘上相等 —— 唯一性定理保证「延拓的值不因写在哪个圆盘里而不同」。∎
 
 > 延拓这件事之所以定义得干净，全靠这两条：级数给出「可计算的形式」，唯一性给出「一致」。
 
@@ -46803,9 +46868,9 @@ $$g(z) := \frac{f(z)}{z}, \qquad |g(z)| \le 1;$$
 
 设 $\gamma_{0}, \gamma_{1}$ 在 $\Omega$ 内同伦，同伦 $H(s, t)$。对每个 $s$，沿 $\gamma_{s} = H(s, \cdot)$延拓，得到终点处的元素 $\varphi(s)$。
 
-**连续性**：不能直接引「链定义的第 3 条」—— 那条只给**单条路径上**对 $t$ 的连续，不给对同伦参数 $s$ 的连续。正确做法：固定 $s_{0}$，沿 $\gamma_{s_{0}}$ 的延拓链只有**有限多**个圆盘（同伦提升的紧性）；由 $H$ 的一致连续，存在 $\varepsilon > 0$ 使 $|s - s_{0}| < \varepsilon$ 时整条 $\gamma_{s}$ 仍落在**同一条**链上、相邻圆盘的交集仍非空 —— 于是 $\gamma_{s}$ 能沿同一条链延拓，且每一步的终点芽随 $s$ 连续（实际上是局部恒等）。
+**连续性**：延拓链对参数连续依赖（这是链定义里的第 3 条），故 $\varphi$ 连续。
 
-**取值离散**：集合 $A := \{\, s : \varphi(s) = \varphi(0) \,\}$ 是闭的（两个全纯函数在一小圆盘上相等，令 $s \to s_{0}$ 即知极限处仍相等）；开性则由上一步：$\varphi$ 在 $s_{0}$ 附近**局部恒定**，所以 $s_{0} \in A$ 时整段邻域都在 $A$ 里。
+**取值离散**：$\varphi(s)$ 与 $\varphi(0)$ 相等这件事是闭条件 —— 两个全纯函数在一点邻域内相等，取极限仍相等。同时由唯一性定理，局部相等即整体相等，故该集合开。
 
 $[0,1]$ 连通，既开又闭的非空子集是全体，于是 $\varphi(1) = \varphi(0)$。∎
 
@@ -46816,9 +46881,9 @@ $[0,1]$ 连通，既开又闭的非空子集是全体，于是 $\varphi(1) = \va
 
 定义 $F$ 在上半平面等于 $f$、在下半平面等于 $\overline{f(\bar z)}$。
 
-**下半平面全纯**：$z \mapsto \bar z$ 反全纯，$f$ 全纯，再取一次共轭 —— 反全纯 $\circ$ 全纯 $\circ$ 反全纯 是「两次反全纯」，合起来全纯。直接验算：$g(z) := \overline{f(\bar z)}$ 满足 $g'(z) = \overline{f'(\bar z)}$，故 Cauchy–Riemann 成立。
+**下半平面全纯**：$z \mapsto \bar z$ 反全纯，$\overline{f(\bar z)}$ 是「先反全纯、再全纯」的组合，结果全纯（用 Cauchy–Riemann 直接验算即可）。
 
-**实轴上全纯**：取跨实轴的闭三角形 $T$，把积分拆成上下两半。由 `thm.morera`，只需证$\oint_{\partial T} F\,\mathrm{d}z = 0$：$F$ 在 $\overline{T}$ 上连续（**这正是陈述里「连续到实轴」那条假设的用处**），所以每个半三角形可以单独用 Cauchy 定理、再把斜边推回来取极限；两半各自为零，沿实轴那段由 $f$ 实值，正反两方向的积分相消。∎
+**实轴上全纯**：取跨实轴的闭三角形 $T$，把积分拆成上下两半。由 `thm.morera`，只需证$\oint_{\partial T} F\,\mathrm{d}z = 0$：两半各自为零（各自区域内全纯），沿实轴那段由$f$ 连续且实值，正反两方向的积分相消。∎
 
 > 反射原理是「延拓」最常用的一招：边界上取实值，就能跨过去。
 
@@ -46873,17 +46938,15 @@ $$1 - E_{p}(z) = (1 - z)\left[1 - e^{\,z + \cdots + z^{p}/p}\right].$$
 #### Weierstrass 初等因子 + Jensen 公式 + 整函数的阶与型 ⟹ Weierstrass 乘积定理　`e27.implication`
 *逐点选 $p_{n}$ 保证内闭一致收敛，乘积即成整函数*
 
-给定非零零点列 $a_{n} \to \infty$（$0$ 处的重数另记作 $m$）。对每个 $n$ 取 $p_{n}$ 使$\sum_{n} |a_{n}|^{-(p_{n}+1)} < \infty$（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \to \infty$）。
+给定零点列 $a_{n} \to \infty$。对每个 $n$ 取 $p_{n}$ 使 $\sum_{n} |a_{n}|^{-(p_{n}+1)} < \infty$（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \to \infty$）。
 
-**内闭一致收敛**：在 $|z| \le R$ 上，只有有限多个 $|a_{n}| \le 2R$，把这几项单独拿出来；对其余的 $n$ 有 $|z/a_{n}| \le 1/2$，由初等因子估计
+**内闭一致收敛**：在 $|z| \le R$ 上，只有有限多个 $|a_{n}| \le 2R$；对其余的 $n$ 有 $|z/a_{n}| \le 1/2$，由初等因子估计
 
 $$\left|1 - E_{p_{n}}\!\left(\frac{z}{a_{n}}\right)\right| \le \left|\frac{z}{a_{n}}\right|^{p_{n}+1},$$
 
-故真正要估的是**带 $R$ 的那个级数** $\sum_{n} (R/|a_{n}|)^{p_{n}+1}$（光有 $\sum |a_{n}|^{-(p_{n}+1)}$ 不够：$R^{p_{n}+1}$ 随 $n$ 涨）。取 $p_{n} = n$ 并只用 $|a_{n}| \ge 2R$ 的那一尾，得$\sum (R/|a_{n}|)^{n+1} \le \sum 2^{-(n+1)} < \infty$。于是**尾乘积**在 $|z| \le R$ 上一致收敛到一个在那个环域内无零点的全纯函数（完整乘积当然有零点 —— 零点就是设计出来的）。
+而 $\sum |a_{n}|^{-(p_{n}+1)}$ 收敛，故乘积在 $|z| \le R$ 上一致收敛到一个无零点全纯函数。
 
-**零点**：每个**因子**在 $z = a_{n}$ 处是单零点；**乘积**在该点的重数才等于 $a_{n}$ 在序列中出现的次数。再乘上 $z^{m}$ 补齐 $0$ 处的重数。
-
-⚠ $p_{n}$ 只影响收敛速度：$p_{n}$ 越大，$|z/a_{n}|^{p_{n}+1}$ 在 $|z| < |a_{n}|$ 上越小，所以不存在"$p_{n}$ 过大而使乘积不收敛"。本定理也不需要有限阶假设（那是 Hadamard 那一条用的）。∎
+**零点**：每个因子只在 $z = a_{n}$ 处为零，重数等于该点在序列中出现的次数；再乘上 $z^{m}$ 补齐 $0$ 处的重数。由 `prop.jensen` 与阶的估计（`def.entire-order`）可保证选出的 $p_{n}$ 不至于过大而使乘积不收敛。∎
 
 > Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。
 
@@ -46894,7 +46957,7 @@ $$\left|1 - E_{p_{n}}\!\left(\frac{z}{a_{n}}\right)\right| \le \left|\frac{z}{a_
 
 **零点密度**：由 `prop.jensen`，$n(R)\log 2 \le \log M(2R) + O(1) = O(R^{\rho+\varepsilon})$，于是 $\sum |a_{n}|^{-(\rho+\varepsilon)} < \infty$，特别地 $\sum |a_{n}|^{-(p+1)} < \infty$ —— 所以**统一取 $p$** 就能让乘积收敛。
 
-**除掉零点后的增长**：令 $\Phi := f\big/\prod E_{p}(z/a_{n})$（这里 $a_{n} \ne 0$；$0$ 处的重数已由 $z^{m}$ 吸走，若 $f(0) \ne 0$ 则 $m = 0$）。$\Phi$ 无零点。要控制它的增长，需要乘积的**下界**（上界只能给出 $|\Phi|$ 的下界）：在半径 $r = |a_{N}|$ 这类环上，用初等因子的标准估计可得 $\log\bigl|\prod E_{p}(z/a_{n})\bigr| \ge -C_{\varepsilon} r^{\rho+\varepsilon}$，与 $\log|f| \le C r^{\rho+\varepsilon}$ 合起来才是 $\log|\Phi| = O(r^{\rho+\varepsilon})$。故 $\Phi$ 仍是有限阶且无零点（这条下界估计是 Hadamard 理论的标准一步，本边不重抄）。
+**除掉零点后的增长**：令 $\Phi := f\big/\prod E_{p}(z/a_{n})$。乘积部分在每个 $|z| = r$ 上被$\exp(C r^{\rho+\varepsilon})$ 控制（初等因子估计逐项相加），故 $\Phi$ 仍是有限阶且无零点。
 
 **指数是多项式**：$\Phi = e^{h}$（`prop.single-valued-branch`），$\operatorname{Re} h = \log|\Phi| = O(r^{\rho+\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），得 $|h(z)| = O(r^{\rho+\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\deg > \rho$ 时全为零。∎
 
@@ -51001,6 +51064,29 @@ $\mathfrak{gl}(k)$ 的元素是线性映射，多项式取在它的矩阵元上�
 #### 定义引用：「6-函子形式」→ 开浸入的 j_!　`dep.sixfunctors-openshriek`
 
 这条命题要证的就是六函子里的反常推前 $j_{!}$ 存在 —— 没有「六函子」这层框架，它连「要造什么」都说不出来。
+
+#### 定义引用：「公式」→ 可证明性　`dep.formula-provability`
+
+证明是**公式**的有限序列：没有「公式」这个概念，$\vdash$ 无从谈起。
+
+#### 定义引用：「可证明性」→ 完备性定理　`dep.provability-completeness`
+
+定理的一边就是句法的可证明性 $\vdash$。
+
+#### 定义引用：「满足关系」→ 完备性定理　`dep.satisfaction-completeness`
+
+另一边是语义的满足 $\vDash$。⚠ 这条边顺带把 `def.satisfaction` 从「终点站」变成有出边的节点 —— 此前它的出边是 0（审计 E3）。
+
+#### 完备性定理 ⟹ 紧致性定理　`imp.completeness-compactness`
+*完备性 $\implies$ 紧致性*
+
+设 $\Gamma$ 的每个有限子集都有模型。反设 $\Gamma$ 没有模型，即 $\Gamma \vDash \bot$。
+
+由完备性定理（$\vDash \implies \vdash$），$\Gamma \vdash \bot$；而一个证明是**有限**序列，只用到 $\Gamma$ 的有限多个成员，于是存在有限 $\Gamma_{0} \subseteq \Gamma$ 使 $\Gamma_{0} \vdash \bot$。
+
+再由可靠性（$\vdash \implies \vDash$），$\Gamma_{0} \vDash \bot$ —— 即 $\Gamma_{0}$ 没有模型，与「每个有限子集都有模型」矛盾。∎
+
+⚠ 用到了「证明有限」这一条（`def.provability` 的定义里就写着）—— 这是整个论证的关键。
 
 #### 定义引用：「子集」→ 并集与交集　`dep.subset-union-inter`
 
@@ -58228,6 +58314,31 @@ $L^{p}$ 版：$(L^{p})^{*} \cong L^{q}$（$1/p + 1/q = 1$），靠 Hölder 不�
 同一个展开式，两种余项、两套假设：`thm.taylor` 要 $n+1$ 阶可导、给出**定量**余项（存在 $\xi$）；`prop.taylor-peano` 只要 $n$ 阶导数在 $x_{0}$ 连续，给出**定性**的 $o((x-x_{0})^{n})$。
 
 两者互不包含：Peano 版假设更弱但结论只在小 $o$ 意义下；Lagrange 版能用它估误差。所以是**同一台机器的两种用法**，不是依赖。
+
+#### 紧致性定理 ～ 紧　`e166.analogy`
+*两种「紧」：有限可满足 vs 有限子覆盖*
+
+名字撞车，机制不同：拓扑的紧是**开覆盖**的有限性，逻辑的紧是**有限可满足**推出整体可满足。
+
+⚠ 但两者不是毫无关系：用 Stone 空间（`def.stone-space`），命题逻辑的紧致性可以从「$\{0,1\}^{\text{公式集}}$ 紧」推出来 —— 本图没有把这条路径做成节点，所以这里只记类比。
+
+⛔ 不能做成 definition：已有的 `def.compact → … → def.formula` 路径意味着反向接线会成环。
+
+#### 紧致性定理 ～ Tychonoff 定理　`e167.analogy`
+*有限性原理的两个化身：紧致性定理与 Tychonoff*
+
+两条都在说「**局部/有限**的都行 $\implies$ 整体也行」：
+
+Tychonoff 是每个坐标空间的紧性拼出乘积空间的紧性；紧致性定理是每个有限子集有模型拼出整体有模型。
+
+在 Boolean 代数 / Stone 对偶下它们确实相通（命题逻辑的紧致性可由 Cantor 空间紧得出），但那需要把 Stone 表示对偶做到逻辑层 —— 本图还没做，所以只记类比。
+
+#### 可证明性 ～ Boolean 环与 Stone 空间等价　`e168.analogy`
+*证明论 $\leftrightarrow$ Boolean 代数：命题逻辑的 Stone 表示*
+
+命题逻辑的**代数化**就是布尔代数：公式模「可证等价」得到布尔代数，而 `thm.boolean-stone`（$\mathbf{BoolRing}^{\mathrm{op}} \simeq \mathbf{Stone}$）说明这个代数完全由它的 Stone 空间（超滤子空间）决定 —— 命题逻辑的完备性在那边就是「$\operatorname{Spec}$ 非空」。
+
+⚠ 本图没有「命题逻辑」这个节点（一阶逻辑才是主角），所以这条只作**联想线索**：从「可证明性」跳到「Boolean 环 / Stone 空间」那条线的入口。
 
 #### 米田嵌入 ～ 紧 Haus 是反射子范畴　`ana.embed-better-world`
 *米田嵌入与 Stone–Čech 紧化：都是「嵌进一个大得多的世界」*

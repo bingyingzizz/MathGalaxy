@@ -15,6 +15,9 @@ $$\mathbf{BoolRing}^{\mathrm{op}}\;\simeq\;\mathbf{Stone}.$$
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.boolean-stone.2.md](./thm.boolean-stone.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.boolean-stone.3.md](./thm.boolean-stone.3.md)
+
 refs: Le Stum, Exercise 2.22
 
 > 说明见 `notes/thm.boolean-stone.md`

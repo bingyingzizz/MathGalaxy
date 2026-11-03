@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1473 节点 / 2812 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1476 节点 / 2819 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -9,7 +9,7 @@
 
 ⚠️ 第二节会误报（「顺嘴提一句」也算），所以只列出来给人看，不做断言。
 
-## 一、提到了但没有节点（31 个）
+## 一、提到了但没有节点（29 个）
 
 ### 单位圆　出现 25 次
 `thm.integral-trig` · `thm.euler-formula` · `def.normal-curvature` · `def.principal-curvature` · `thm.rodrigues` · `thm.max-modulus` 等 21 个节点
@@ -38,9 +38,6 @@
 ### 概率　出现 6 次
 `def.lebesgue-stieltjes` · `thm.cauchy-schwarz` · `def.tangent-distribution` · `def.jacobi-symbol` · `def.convex-function`
 
-### 完备性定理　出现 5 次
-`def.satisfaction`
-
 ### 偏微分方程　出现 5 次
 `thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form`
 
@@ -55,6 +52,12 @@
 
 ### 闭曲面　出现 3 次
 `thm.gauss-bonnet` · `def.orientable-surface` · `def.orientable-manifold`
+
+### 超积　出现 3 次
+`thm.compactness`
+
+### 一阶逻辑的完备性　出现 2 次
+`thm.completeness-first-order` · `def.satisfaction`
 
 ### 群的阶　出现 1 次
 `def.primitive-root`
@@ -88,15 +91,6 @@
 
 ### 正规扩张　出现 1 次
 `thm.solvable-quotients`
-
-### 可证明性　出现 1 次
-`def.satisfaction`
-
-### 紧致性定理　出现 1 次
-`lem.zorn`
-
-### 一阶逻辑的完备性　出现 1 次
-`def.satisfaction`
 
 ### Hodge 理论　出现 1 次
 `thm.divergence-theorem`
@@ -253,6 +247,6 @@
 - `prop.matrix-category`（矩阵范畴 · L8）用到 `def.vector-space`（向量空间 · L8）
 - `prop.discontinuity-types`（间断点分类 · L15）用到 `def.function-limit-onesided`（单侧极限 · L15）
 
-## 三、候选词表里从没被提到的（35 个）
+## 三、候选词表里从没被提到的（34 个）
 
-换底公式 · 自然对数 · 正切 · 反正弦 · 反三角函数 · 克莱因瓶 · 莫比乌斯带 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 伽罗瓦群 · 可分扩张 · 代数扩张 · 分裂域 · 求根公式 · 五次方程 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · 超积 · Radó · 咖啡杯 · 甜甜圈 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
+换底公式 · 自然对数 · 正切 · 反正弦 · 反三角函数 · 克莱因瓶 · 莫比乌斯带 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 伽罗瓦群 · 可分扩张 · 代数扩张 · 分裂域 · 求根公式 · 五次方程 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · Radó · 咖啡杯 · 甜甜圈 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理

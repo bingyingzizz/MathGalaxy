@@ -4,7 +4,7 @@
 
 `alias/<星系>.md` 问法 · `alias/aka/<星系>.md` 别名；行尾 `a+b` 是条数。
 
-- 数理逻辑　`dist/alias/aka/logic.md` 0+4
+- 数理逻辑　`dist/alias/aka/logic.md` 0+7
 - 集合论　`dist/alias/set-theory.md` / `dist/alias/aka/set-theory.md` 25+60
 - 序理论　`dist/alias/order-theory.md` / `dist/alias/aka/order-theory.md` 10+16
 - 拓扑学　`dist/alias/topology.md` / `dist/alias/aka/topology.md` 48+153

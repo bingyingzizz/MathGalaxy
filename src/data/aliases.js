@@ -1432,6 +1432,9 @@ MG.aliases = {
     { id: 'def.pseudoinverse', en: 'Moore-Penrose Pseudoinverse', aka: ['伪逆'] },
     { id: 'thm.chern-weil', en: 'Chern-Weil homomorphism', aka: ['陈–Weil 同态', 'Chern–Weil 同态'] },
     { id: 'prop.chern-class-line-bundle', en: 'Chern class of a line bundle', aka: ['线丛的陈类计算', '陈类（线丛）'] },
+    { id: 'def.provability', en: 'provability', aka: ['可证明', '可证', '证明论', '句法', '推演'] },
+    { id: 'thm.completeness-first-order', en: 'Gödel completeness theorem', aka: ['完备性定理', '哥德尔完备性定理', '一阶逻辑完备性'] },
+    { id: 'thm.compactness', en: 'compactness theorem', aka: ['紧致性定理', '紧致性', '有限可满足'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T07:09:48.088Z",
+ "generated": "2026-11-03T07:17:37.077Z",
  "terms": 76,
  "missing": [
   {
@@ -309,16 +309,6 @@
    ]
   },
   {
-   "term": "完备性定理",
-   "total": 5,
-   "nodes": [
-    {
-     "id": "def.satisfaction",
-     "c": 5
-    }
-   ]
-  },
-  {
    "term": "偏微分方程",
    "total": 5,
    "nodes": [
@@ -412,6 +402,30 @@
     },
     {
      "id": "def.orientable-manifold",
+     "c": 1
+    }
+   ]
+  },
+  {
+   "term": "超积",
+   "total": 3,
+   "nodes": [
+    {
+     "id": "thm.compactness",
+     "c": 3
+    }
+   ]
+  },
+  {
+   "term": "一阶逻辑的完备性",
+   "total": 2,
+   "nodes": [
+    {
+     "id": "thm.completeness-first-order",
+     "c": 1
+    },
+    {
+     "id": "def.satisfaction",
      "c": 1
     }
    ]
@@ -522,36 +536,6 @@
    "nodes": [
     {
      "id": "thm.solvable-quotients",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "可证明性",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "def.satisfaction",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "紧致性定理",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "lem.zorn",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "一阶逻辑的完备性",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "def.satisfaction",
      "c": 1
     }
    ]
@@ -1918,7 +1902,6 @@
   "Riesz–Markov",
   "图论",
   "组合数学",
-  "超积",
   "Radó",
   "咖啡杯",
   "甜甜圈",

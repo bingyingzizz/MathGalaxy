@@ -9,10 +9,12 @@ $$X = \bigcup_{k=1}^{n} U_{i_k}$$
 
 ## 为什么成立（入边，证明在 proofs/）
 - [`def.sequentially-compact`](../nodes/def.sequentially-compact.md) 列紧：紧 $\iff$ 列紧　[proofs/eq.compact-seqcompact.md](../proofs/eq.compact-seqcompact.md)
-- [`def.metric-space`](../nodes/def.metric-space.md) 距离空间：用到了定义 距离空间　[proofs/def-dep.metric-compact.md](../proofs/def-dep.metric-compact.md)
+- [`thm.compactness`](../nodes/thm.compactness.md) 紧致性定理：两种「紧」：有限可满足 vs 有限子覆盖　[proofs/e166.analogy.md](../proofs/e166.analogy.md)
+
+- …另有入边，续页见 [nodes/def.compact.2.md](./def.compact.2.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.compact.2.md](./def.compact.2.md)
+- …另有出边，续页见 [nodes/def.compact.3.md](./def.compact.3.md)
 
 refs: Munkres, Topology, §26
 
