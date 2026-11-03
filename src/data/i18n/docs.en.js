@@ -204,6 +204,7 @@ MG.i18nDocs = {
         topo: 'Topology and metrics',
         measure: 'Measure and σ-algebras',
         integral: 'Integration and function spaces',
+        linalg: 'Linear algebra',
         layout: 'Typesetting and arrows',
         cat: 'Categories and homology',
         letters: 'Letter conventions',

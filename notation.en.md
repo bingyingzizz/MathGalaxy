@@ -20,7 +20,7 @@ are not. Whole table: `notation-full.md`.
 - `dist/notation/topo.md` Topology and metrics 7
 - `dist/notation/measure.md` Measure and σ-algebras 25
 - `dist/notation/integral.md` Integration and function spaces 16
-- `dist/notation/linalg.md` 线性代数 16
+- `dist/notation/linalg.md` Linear algebra 16
 - `dist/notation/layout.md` Typesetting and arrows 16
 - `dist/notation/cat.md` Categories and homology 21
 - `dist/notation/letters.md` Letter conventions 23
