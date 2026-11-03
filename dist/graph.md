@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-03T13:19:28.048Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-03T13:22:49.506Z
 > 15 星系 / 105 星团 / 1500 节点 / 2902 连线（强边 2868，弱边 34；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.5 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -27631,7 +27631,7 @@ $$\widehat{V} \;\cong\; V^{\ast} = \operatorname{Hom}_{\mathbb{R}}(V,\ \mathbb{R
 参考：Le Stum, An introduction to condensed mathematics, Exercise 6.8
 
 ### 星团：凝聚态导出函子
-> 造出「拿什么算 \operatorname{RHom}$」：半范数 / Banach 阿贝尔群 → **$K$-有界正合**（凝聚态的「可数极限意义上的正合」）→ $K$-有界正合在完备化与滤过余极限下保持 → 相邻两条 $K$-有界推出正合 → 实 Banach 在紧 Hausdorff 上零调（整个理论的地基）→ Banach 值 Tietze 延拓。⚠️ 2026-11-02 拆团：Breen–Deligne 谱序列拆到「Breen–Deligne 谱序列」，逐类计算拆到「导出 Hom 的具体计算」。
+> 造出「拿什么算 $\operatorname{RHom}$」：半范数 / Banach 阿贝尔群 → **$K$-有界正合**（凝聚态的「可数极限意义上的正合」）→ $K$-有界正合在完备化与滤过余极限下保持 → 相邻两条 $K$-有界推出正合 → 实 Banach 在紧 Hausdorff 上零调（整个理论的地基）→ Banach 值 Tietze 延拓。⚠️ 2026-11-02 拆团：Breen–Deligne 谱序列拆到「Breen–Deligne 谱序列」，逐类计算拆到「导出 Hom 的具体计算」。
 
 #### 半范数阿贝尔群　`def.semi-normed-ab-group`
 *定义*　半范数阿贝尔群
@@ -27899,7 +27899,7 @@ $$S = \bigcup_{m \in M} f^{-1}\bigl(B(m, \varepsilon/2)\bigr)$$
 参考：Le Stum, An introduction to condensed mathematics, §8.2
 
 ### 星团：Breen–Deligne 谱序列
-> 把 \operatorname{Ext}$ 展成一片可算的东西：**Breen–Deligne 分解**（把 $\mathbb{Z}[M]$ 换成一批「$p$ 阶乘同伦」的整系数组合）→ 谱序列 $E_{1}^{p,q} = \bigoplus_{i} H^{q}(M^{s_{p,i}}, N) \implies \operatorname{Ext}^{p+q}_{\mathbb{Z}}(M,N)$ → Stonean / Stone 满射上的 $1$-有界零调（保证 $E_{1}$ 那一片真的可算）。
+> 把 $\operatorname{Ext}$ 展成一片可算的东西：**Breen–Deligne 分解**（把 $\mathbb{Z}[M]$ 换成一批「$p$ 阶乘同伦」的整系数组合）→ 谱序列 $E_{1}^{p,q} = \bigoplus_{i} H^{q}(M^{s_{p,i}}, N) \implies \operatorname{Ext}^{p+q}_{\mathbb{Z}}(M,N)$ → Stonean / Stone 满射上的 $1$-有界零调（保证 $E_{1}$ 那一片真的可算）。
 
 #### Stone 满射的 Čech 复形 1-有界零调　`lem.stone-cech-1-bounded`
 *引理*　Stone 满射的增广 Čech 复形是 $1$-有界零调
