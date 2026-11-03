@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1500 nodes, 2901 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1500 nodes, 2882 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1500 nodes, 2901 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1500 nodes, 2882 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -15650,8 +15650,8 @@ MG.i18nAbstracts = {
     'def.shrinks-nicely': {
       en:
       'A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ shrinks nicely to $x$ ' +
-      'when $E_r \\subseteq B(r,x)$ for every $r$ and there is $\\alpha > 0$ with ' +
-      '$m(E_r) > \\alpha \\cdot m(B(r,x))$ for all $r$. The two conditions say "fits inside ' +
+      'when $E_r \\subseteq B(x, r)$ for every $r$ and there is $\\alpha > 0$ with ' +
+      '$m(E_r) > \\alpha \\cdot m(B(x, r))$ for all $r$. The two conditions say "fits inside ' +
       'the ball" and "is not too thin". Balls themselves qualify, as does any fixed shape ' +
       'rescaled inside them; a thin sliver does not. The notion exists so that ' +
       'differentiation theorems do not depend on the shape of the sets being shrunk.',
@@ -16625,16 +16625,16 @@ MG.i18nStatements = {
         en:
         'A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ is said to ' +
         '**shrink nicely to $x$** iff\n\n' +
-        '$\\cdot$ $E_r \\subseteq B(r, x)$ holds for every $r$;\n' +
+        '$\\cdot$ $E_r \\subseteq B(x, r)$ holds for every $r$;\n' +
         '$\\cdot$ there is $\\alpha > 0$ with ' +
-        '$m(E_r) > \\alpha\\cdot m(B(r, x))$ for every $r$.',
+        '$m(E_r) > \\alpha\\cdot m(B(x, r))$ for every $r$.',
         status: 'reviewed', basedOn: 'v0.9.3#def659f2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
         'What the two conditions say: **it fits inside** ($E_r$ lies in the ball) and **it ' +
         'is not too flat** (its volume is at least $\\alpha$ times that of the ball).\n\n' +
-        'Typical examples: take $E_r = B(r, x)$ itself ($\\alpha = 1$); or take $E_r$ to be ' +
+        'Typical examples: take $E_r = B(x, r)$ itself ($\\alpha = 1$); or take $E_r$ to be ' +
         'a fixed shape inside the ball (a cube, say), rescaled proportionally.\n\n' +
         'Counterexample: let $E_r$ be a long thin sliver inside the ball — the volume ratio ' +
         'can tend to 0, and such a family does not shrink nicely to $x$.\n\n' +
@@ -17889,7 +17889,13 @@ MG.notation = {
     { g: 'topo', tex: '\\mathcal{B}', uni: 'ℬ', name: '拓扑的一组基' },
     { g: 'topo', tex: '\\mathcal{S}', uni: '𝒮', name: '子基' },
     { g: 'topo', tex: 'd(x, y)',      uni: '', name: '距离' },
-    { g: 'topo', tex: 'B(x, \\varepsilon)', uni: '', name: '开球' },
+    { g: 'topo', tex: 'B(x, r)', uni: '', name: '开球 / 开圆盘：**中心在前、半径在后**',
+      note: '参数顺序一律 **(中心, 半径)**：$B(x, r)$、$B(x_0, \\varepsilon)$、$B(z_0, R)$。' +
+        '⛔ 不写 $B(r, x)$（半径在前是 Folland 的写法，本图不用；构建有硬门）。' +
+        '复变里的开圆盘同样写 $B(z, r)$，**不写 $D(z, r)$** —— $D$ 在本图另有三个意思（见「字母约定」的 $D$ 条）。' +
+        '单位圆盘是一个**空间的名字**，写 $\\mathbb{D}$。' },
+    { g: 'topo', tex: '\\mathbb{D}', uni: '𝔻', name: '单位圆盘 $\\{\\, z : |z| < 1 \\,\\}$',
+      note: '作为一个**有名字的空间**用（$f: \\mathbb{D} \\to \\mathbb{D}$）；带半径的一般圆盘用 $B(z, r)$。' },
     { g: 'topo', tex: '\\mathfrak{B}_X', uni: '𝔅_X', name: 'Borel σ-代数' },
 
     /* -------- 测度与 σ-代数 -------- */
@@ -18003,6 +18009,15 @@ MG.notation = {
       note: '交换图里竖边的方向。' },
     { g: 'layout', tex: '\\varinjlim, \\varprojlim', uni: 'lim→／lim←', name: '余极限 / 极限',
       note: '带指标的极限写作 $\\varinjlim_{(X,s)} h_{X}$；不带指标时可以用 $\\lim$、$\\operatorname{colim}$。' },
+    { g: 'layout', tex: 'A \\cong B', uni: '≅', name: '**同构**（结构相同）',
+      note: '全图最泛的关系符：群 / 环 / 模 / 拓扑空间 / 层**同构**，以及函子的**自然同构**，一律 $\\cong$。' +
+        '⛔ 不要用 $\\simeq$ 表示同构 —— 分工见下一条。' },
+    { g: 'layout', tex: 'f \\simeq g', uni: '≃', name: '同伦 / 范畴等价 / 近似（**一符三义**）',
+      note: '靠上下文分：① 映射的**同伦** $f \\simeq g$（拓扑、基本群、同伦不变性）；' +
+        '② 范畴或复形范畴的**等价**（$D(\\mathbf{Solid})^{\\omega} \\simeq D^{b}(\\mathbb Z)$）；' +
+        '③ 非正式的「近似于」。' },
+    { g: 'layout', tex: 'a \\approx b', uni: '≈', name: '数值近似相等',
+      note: '只用于数值估计，不进陈述；陈述里写不等式。' },
     { g: 'layout', tex: '\\dashv',  uni: '⊣', name: '左伴随 $F \\dashv G$',
       note: '写 $F \\dashv G$ 表示 $F$ 是 $G$ 的**左**伴随。箭头朝右也朝下，别写成 $\\vdash$（那是有穷逻辑的可推导）。' },
     { g: 'layout', tex: '\\checkmark', uni: '✓', name: '证毕时的对勾',
@@ -18055,6 +18070,10 @@ MG.notation = {
     { g: 'letters', tex: '\\pi',      uni: 'π', name: '投影 $\\pi_{\\alpha}$' },
     { g: 'letters', tex: '\\theta',   uni: 'θ', name: '角度' },
     { g: 'letters', tex: '\\tau',     uni: 'τ', name: '停时 / 一般函数（罕见）' },
+    { g: 'letters', tex: 'D',         uni: 'D', name: '**一符三义**：导出范畴 / 行列式多重线性函数 / （旧）圆盘',
+      note: '① $D(\\mathcal{A})$、$D^{b}(\\mathrm{Coh})$：复形的导出范畴（范畴论、凝聚态；与 $\\mathbf{K}(\\mathcal{C})$ 配对）；' +
+        '② $D(v_1, \\ldots, v_n)$：行列式**作为交错多重线性函数**（线性代数，见 `def.determinant`）；' +
+        '③ 复变里曾用 $D(z, r)$ 表示开圆盘 —— **已全库改成 $B(z, r)$**，不要再写。' },
     { g: 'letters', tex: '\\xi',      uni: 'ξ', name: '中值定理里那个「介于两者之间」的点',
       note: '$\\xi$ 只表示**存在**，位置不可控 —— 所以中值定理只能证明结构性质，不能用来计算差。' },
     { g: 'letters', tex: '\\zeta',    uni: 'ζ', name: '（罕见）' },
@@ -18114,6 +18133,8 @@ MG.notation = {
       { re: '\\\\complement', fix: 'A^{c}', why: '补集用上标 c' },
       { re: '\\\\impliedby', fix: '\\\\Longleftarrow', why: '同字形，只留一个写法' },
       { re: '\\\\Longleftrightarrow', fix: '\\\\iff', why: '同字形，元语言的等价一律 \\iff' },
+      { re: 'B\\(\\s*r[a-z_]*(?:\\^\\{[^}]*\\})?\\s*,', fix: 'B(x, r)',
+        why: '开球参数顺序是 (中心, 半径)：写 B(x, r)，不写 B(r, x)；复变圆盘同样写 B(z, r)，不写 D(z, r)' },
     ],
   },
 
@@ -22841,7 +22862,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.5', 'Halmos, Measure Theory, §35']
     },
-
     {
       id: 'def.section',
       cluster: 'analysis.product',
@@ -22868,7 +22888,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.5']
     },
-
     {
       id: 'prop.section-measurable',
       cluster: 'analysis.product',
@@ -22896,8 +22915,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.34']
     },
-
-
     {
       id: 'thm.product-measure-sections',
       cluster: 'analysis.product',
@@ -22930,7 +22947,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.36']
     },
-
     {
       id: 'thm.fubini-tonelli',
       cluster: 'analysis.product',
@@ -22964,7 +22980,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37']
     },
-
     {
       id: 'thm.fubini-complete',
       cluster: 'analysis.product',
@@ -22993,7 +23008,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.39']
     },
-
     {
       id: 'prop.product-incomplete',
       cluster: 'analysis.product',
@@ -23033,7 +23047,6 @@ window.MG = window.MG || {};
         '$>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。'
       ].join('\n')
     },
-
     {
       id: 'imp.section-measurable',
       kind: 'implication',
@@ -23060,7 +23073,6 @@ window.MG = window.MG || {};
         '而 $f^{-1}(B) \\in \\mathcal{M} \\otimes  \\mathcal{N}$，由 (a) 它的纵截口属于 $\\mathcal{N}$，即 $f_x^{-1}(B) \\in \\mathcal{N}$。所以 $f_x$ 可测。横截口同理。∎'
       ].join('\n')
     },
-
     {
       id: 'imp.product-sections',
       kind: 'implication',
@@ -23090,7 +23102,6 @@ window.MG = window.MG || {};
         '$>$ ⚠ $\\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。'
       ].join('\n')
     },
-
     {
       id: 'imp.tonelli',
       kind: 'implication',
@@ -23133,7 +23144,6 @@ window.MG = window.MG || {};
         '$>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。'
       ].join('\n')
     },
-
     {
       id: 'imp.fubini-complete',
       kind: 'implication',
@@ -23162,7 +23172,6 @@ window.MG = window.MG || {};
         '$>$ 要点：**核心就是把 $E$ 拆成 $F \\sqcup G$** —— $F$ 归老定理、$G$ 归「截口都是零集」。'
       ].join('\n')
     },
-
     {
       id: 'imp.product-incomplete',
       kind: 'implication',
@@ -23217,13 +23226,6 @@ window.MG = window.MG || {};
       definition: 'def.monotone-class',
       usedBy: 'thm.product-measure-sections',
       note: '截口公式的证明走的正是单调类定理：先验证矩形成立，再说明「满足它的集合」构成一个单调类。'
-    },
-    {
-      id: 'def-link.generated-monotone-lemma',
-      kind: 'definition',
-      definition: 'def.generated-sigma',
-      usedBy: 'thm.monotone-class',
-      note: '定理的陈述里用到 $\\mathfrak{m}(\\mathcal{E})$ 与 $\\mathcal{M}(\\mathcal{E})$ 两个生成记号。'
     },
     {
       id: 'def-link.productmeasure-sections-thm',
@@ -24248,7 +24250,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$，$x \\in \\mathbb{R}^n$，$r > 0$。定义',
         '',
-        '$$A_r f(x) := \\frac{1}{m(B(r, x))} \\int_{B(r, x)} f(y) dy$$',
+        '$$A_r f(x) := \\frac{1}{m(B(x, r))} \\int_{B(x, r)} f(y) dy$$',
         '',
         '即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。'
       ].join('\n'),
@@ -24274,16 +24276,16 @@ window.MG = window.MG || {};
       notes: [
         '证明的骨架：把积分写成',
         '',
-        '$$\\int_{B(r, x)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(r, x)}(y) f(y) dy$$',
+        '$$\\int_{B(x, r)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(x, r)}(y) f(y) dy$$',
         '',
-        '于是只需证 $\\chi_{B(r,x)} \\to \\chi_{B(r_0,x_0)}$（当 $(r,x) \\to (r_0,x_0)$）在足够好的意义上成立，再用 DCT。',
+        '于是只需证 $\\chi_{B(x, r)} \\to \\chi_{B(x_0, r_0)}$（当 $(x, r) \\to (x_0, r_0)$）在足够好的意义上成立，再用 DCT。',
         '分两块看（取目标点 $(r_0, x_0)$）：',
         '',
         '$\\cdot$ 若 $y$ 在球内：$\\varepsilon := r_0 - |y - x_0| > 0$；当 $|x - x_0| < \\varepsilon/2$ 且 $|r - r_0| < \\varepsilon/2$ 时 $|y - x| < r$，故 $\\chi = 1$；',
         '$\\cdot$ 若 $y$ 在球外：$\\varepsilon := |y - x_0| - r_0 > 0$；同样的小扰动下 $|y - x| > r$，故 $\\chi = 0$。',
         '',
         '两边合起来说明：对**几乎处处的** $y$（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。',
-        '控制函数取 $\\chi_{B(r_0+1, x_0)}(y)\\cdot|f(y)| \\in L^1$，由 **DCT** 得连续性。∎'
+        '控制函数取 $\\chi_{B(x_0, r_0+1)}(y)\\cdot|f(y)| \\in L^1$，由 **DCT** 得连续性。∎'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.16']
     },
@@ -24299,7 +24301,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$。定义',
         '',
-        '$$Hf(x) := \\sup_{r > 0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
+        '$$Hf(x) := \\sup_{r > 0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
         '',
         '称为 $f$ 的 **Hardy–Littlewood 极大函数**。'
       ].join('\n'),
@@ -24364,7 +24366,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$。定义',
         '',
-        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y) - f(x)| dy = 0 \\}$$',
+        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy = 0 \\}$$',
         '',
         '称为 $f$ 的 **Lebesgue 集**。'
       ].join('\n'),
@@ -24395,7 +24397,7 @@ window.MG = window.MG || {};
         '证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $|f(x) - c|$ 上，得到「除一个零集 $E_c$ 外，$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$」。',
         '然后取 **$\\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $E = \\bigcup_{c \\in D} E_c$（可数并仍是零集）。对 $x \\notin E$ 与任意 $\\varepsilon > 0$，取 $c \\in D$ 使 $|f(x) - c| < \\varepsilon$，于是',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
         '',
         '令 $\\varepsilon \\to 0$ 即得。∎',
         '⭐ 「取一个可数稠密子集」这一步是可数性技巧的典型用法：把不可数多个条件化归成可数多个零集之并。'
@@ -24414,12 +24416,12 @@ window.MG = window.MG || {};
       statement: [
         '$\\mathbb{R}^n$ 的一族 Borel 子集 $\\{E_r\\}_{r > 0}$ 叫**可缩地趋于 $x$**，当且仅当',
         '',
-        '$\\cdot$ $E_r \\subseteq B(r, x)$ 对每个 $r$ 成立；',
-        '$\\cdot$ 存在 $\\alpha > 0$，使 $m(E_r) > \\alpha\\cdot m(B(r, x))$ 对一切 $r$ 成立。'
+        '$\\cdot$ $E_r \\subseteq B(x, r)$ 对每个 $r$ 成立；',
+        '$\\cdot$ 存在 $\\alpha > 0$，使 $m(E_r) > \\alpha\\cdot m(B(x, r))$ 对一切 $r$ 成立。'
       ].join('\n'),
       notes: [
         '两个条件的含义：**装得进去**（$E_r$ 在球里）、**不能太瘪**（体积至少是球的 $\\alpha$ 倍）。',
-        '典型例子：取 $E_r = B(r, x)$ 本身（$\\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。',
+        '典型例子：取 $E_r = B(x, r)$ 本身（$\\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。',
         '反例：$E_r$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 $x$。',
         '⭐ 引入这个概念是为了让微分定理**不依赖球的形状**：只要不瘪，结论照旧。'
       ].join('\n\n'),
@@ -24441,9 +24443,9 @@ window.MG = window.MG || {};
         '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} f(y) dy = f(x)$$'
       ].join('\n'),
       notes: [
-        '证明是一行估计：由 $E_r \\subseteq B(r,x)$ 与 $m(E_r) > \\alpha m(B(r,x))$，',
+        '证明是一行估计：由 $E_r \\subseteq B(x, r)$ 与 $m(E_r) > \\alpha m(B(x, r))$，',
         '',
-        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f - f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f - f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f - f(x)|$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f - f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(x, r)} |f - f(x)| \\le (1/\\alpha)\\cdot m(B(x, r)) \\int_{B(x, r)} |f - f(x)|$$',
         '',
         '而最右边由「$x \\in L_f$」趋于 0。∎',
         '⭐ 全部难度都在把 L_f 的定义选对（用 $|f(y) - f(x)|$ 而不是 $|f(y)|$）—— 选对之后这一步就是白送的。'
@@ -24493,7 +24495,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ 这条定理把 Radon–Nikodym 导数从「抽象的存在物」变成了**可以逐点算出来的极限**：',
         '',
-        '$$f(x) = \\lim_{r\\to0} \\nu(B(r, x)) / m(B(r, x))$$',
+        '$$f(x) = \\lim_{r\\to0} \\nu(B(x, r)) / m(B(x, r))$$',
         '',
         '这正是微积分里「密度 $=$ 质量 / 体积」的严格版本，也是「RN 导数是导数的推广」这一说法的根据。',
         '证明的思路：先验证 $d|\\nu| = d|\\lambda| + |f| dm$，于是 $\\lambda$ 与 f dm 都正则、特别地 $f \\in L^1_{loc}$；把比值拆成',
@@ -24517,11 +24519,11 @@ window.MG = window.MG || {};
       proof: [
         '**① 把坏集换成球族。** 令 $E_\\alpha = \\{x : Hf(x) > \\alpha\\}$。对每个 $x \\in E_\\alpha$，由 Hf 的定义（上确界）存在 $r_x > 0$ 使',
         '',
-        '$$A_{r_x}|f|(x) > \\alpha\\quad  \\iff\\quad  \\int_{B(r_x, x)} |f(y)| dy > \\alpha\\cdot m(B(r_x, x))$$',
+        '$$A_{r_x}|f|(x) > \\alpha\\quad  \\iff\\quad  \\int_{B(x, r_x)} |f(y)| dy > \\alpha\\cdot m(B(x, r_x))$$',
         '',
-        '于是 $\\{B(r_x, x)\\}_{x \\in E_\\alpha}$ 是 $E_\\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
+        '于是 $\\{B(x, r_x)\\}_{x \\in E_\\alpha}$ 是 $E_\\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
         '',
-        '**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\\alpha)$（先设 $m(E_\\alpha ) < \\infty$）。由**覆盖引理**，存在 $x_1, \\ldots , x_k \\in E_\\alpha$ 使 $B_j = B(r_{x_j}, x_j)$ 两两不交，且',
+        '**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\\alpha)$（先设 $m(E_\\alpha ) < \\infty$）。由**覆盖引理**，存在 $x_1, \\ldots , x_k \\in E_\\alpha$ 使 $B_j = B(x_j, r_{x_j})$ 两两不交，且',
         '',
         '$$\\sum_j m(B_j) > 3^{-n} c$$',
         '',
@@ -24589,7 +24591,7 @@ window.MG = window.MG || {};
       proof: [
         '**① 对每个复数 $c$ 用一次微分定理。** 固定 $c \\in \\mathbb{C}$，把微分定理用在函数 $h(x) = |f(x) - c|$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $E_c$，使对 $x \\notin E_c$，',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy = |f(x) - c|$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - c| dy = |f(x) - c|$$',
         '',
         '**② 只取可数多个 $c$。** 取 $\\mathbb{C}$ 的一个**可数稠密子集** $D$（比如 $\\mathbb{Q} + i\\mathbb{Q}$），令',
         '',
@@ -24599,7 +24601,7 @@ window.MG = window.MG || {};
         '',
         '**③ 在 $E$ 外验证**。设 $x \\notin E$，任给 $\\varepsilon > 0$，取 $c \\in D$ 使 $|f(x) - c| < \\varepsilon$。则',
         '',
-        '$$\\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy + |f(x) - c|$$',
+        '$$\\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy \\le \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - c| dy + |f(x) - c|$$',
         '',
         '右边第一项由 ①（$x \\notin E_c$）在 $r \\to 0$ 时趋于 $|f(x) - c|$，于是整个右端的极限 $\\le$ $|f(x) - c| + \\varepsilon < 2\\varepsilon$。令 $\\varepsilon \\to 0$ 得极限为 0，即 $x \\in L_f$。',
         '',
@@ -24615,11 +24617,11 @@ window.MG = window.MG || {};
       target: 'thm.differentiation-general',
       title: 'Lebesgue 集 + 可缩条件 $\\implies$ 一般族的微分定理',
       proof: [
-        '设 $x \\in L_f$，$\\{E_r\\}$ 可缩地趋于 $x$，即 $E_r \\subseteq B(r,x)$ 且 $m(E_r) > \\alpha\\cdot m(B(r,x))$。',
+        '设 $x \\in L_f$，$\\{E_r\\}$ 可缩地趋于 $x$，即 $E_r \\subseteq B(x, r)$ 且 $m(E_r) > \\alpha\\cdot m(B(x, r))$。',
         '',
-        '**① 关键估计（一行）。** 因为 $E_r \\subseteq B(r,x)$，把积分域放大到球上只会变大；再用 $m(E_r) > \\alpha m(B(r,x))$ 把分母换小：',
+        '**① 关键估计（一行）。** 因为 $E_r \\subseteq B(x, r)$，把积分域放大到球上只会变大；再用 $m(E_r) > \\alpha m(B(x, r))$ 把分母换小：',
         '',
-        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f(y) - f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) - f(x)| dy$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(x, r)} |f(y) - f(x)| dy \\le (1/\\alpha)\\cdot m(B(x, r)) \\int_{B(x, r)} |f(y) - f(x)| dy$$',
         '',
         '**② 收尾。** 由 $x \\in L_f$ 的定义，最右边当 $r \\to 0$ 时趋于 0。故第一个极限为 0。',
         '',
@@ -24653,7 +24655,7 @@ window.MG = window.MG || {};
         '',
         '**③ 把 $\\lambda$ 的坏点收集起来。** 不妨设 $\\lambda \\ge 0$，并取 $A$ 使 $\\lambda(A) = m(A^c) = 0$（$\\lambda \\perp m$ 的见证）。令',
         '',
-        '$$F_k = \\{ x \\in A : \\limsup_{r\\to0} \\lambda(B(r, x)) / m(B(r, x)) > 1 / k \\}$$',
+        '$$F_k = \\{ x \\in A : \\limsup_{r\\to0} \\lambda(B(x, r)) / m(B(x, r)) > 1 / k \\}$$',
         '',
         '**④ 用正则性把 $\\lambda$ 压小。** 给定 $\\varepsilon > 0$，由 $\\lambda$ 的正则性（从外面用开集逼近）取开集 $U \\supseteq A$ 使 $\\lambda(U) < \\varepsilon$（注意 $\\lambda(A) = 0$，但 $U$ 比 $A$ 大，多出来的部分也可以做得任意小）。',
         '',
@@ -24665,13 +24667,13 @@ window.MG = window.MG || {};
         '',
         '$$c < 3^n \\sum_i m(B_{x_i}) \\le 3^n k \\sum_i \\lambda(B_{x_i}) \\le 3^n k\\cdot\\lambda(V_\\varepsilon) \\le 3^n k \\varepsilon$$',
         '',
-        '**⑦ 令 $\\varepsilon \\to 0$。** 得 $m(V_\\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\\lim_{r\\to0} \\lambda(B(r,x))/m(B(r,x)) = 0$ 对 m-a.e. x 成立。',
+        '**⑦ 令 $\\varepsilon \\to 0$。** 得 $m(V_\\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\\lim_{r\\to0} \\lambda(B(x, r))/m(B(x, r)) = 0$ 对 m-a.e. x 成立。',
         '',
         '**⑧ 从球换到可缩族。** 上面用的是球；要换成一般的可缩族 $E_r$，用',
         '',
-        '$$\\lambda(E_r) / m(E_r) \\le \\lambda(B(r,x)) / m(E_r) \\le (1/\\alpha)\\cdot\\lambda(B(r,x)) / m(B(r,x)) \\to 0$$',
+        '$$\\lambda(E_r) / m(E_r) \\le \\lambda(B(x, r)) / m(E_r) \\le (1/\\alpha)\\cdot\\lambda(B(x, r)) / m(B(x, r)) \\to 0$$',
         '',
-        '（第二个不等号用了 $m(E_r) > \\alpha m(B(r,x))$，并且 $E_r \\subseteq B(r,x)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎'
+        '（第二个不等号用了 $m(E_r) > \\alpha m(B(x, r))$，并且 $E_r \\subseteq B(x, r)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎'
       ].join('\n'),
       note: '⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 $=$ 质量/体积」的严格版本。'
     },
@@ -26760,13 +26762,6 @@ window.MG = window.MG || {};
       definition: 'def.bound',
       usedBy: 'def.integral-nonneg',
       note: '非负函数的积分定义成 $\\sup \\{ \\int \\varphi \\}$ —— 取的是实数（或 $+\\infty$）的上确界。'
-    },
-    {
-      id: 'dep.extended-measure',
-      kind: 'definition',
-      definition: 'def.extended-real',
-      usedBy: 'def.measure',
-      note: '测度的取值放在 $[0, +\\infty]$ 里，正是扩充实数。'
     },
     {
       id: 'dep.real-metric',
@@ -55711,7 +55706,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.f-shriek-base-change',
       kind: 'implication',
-      sources: ['prop.f-shriek-base-change', 'thm.za-analytic'],
+      sources: ['def.f-shriek', 'thm.za-analytic'],
       target: 'prop.f-shriek-base-change',
       title: '仿射情形 + 基变换',
       proof: [
@@ -57112,7 +57107,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 投射消解（projective resolutions）一节 · Comparison Theorem'
       ]
     },
-
     {
       id: 'prop.resolution-homotopy',
       cluster: 'hom.resolution',
@@ -57147,7 +57141,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 投射消解（projective resolutions）一节 · 两条消解同伦等价'
       ]
     },
-
     {
       id: 'def.deleted-resolution',
       cluster: 'hom.resolution',
@@ -57273,7 +57266,6 @@ window.MG = window.MG || {};
         'Eisenbud, Commutative Algebra with a View Toward Algebraic Geometry, 自由消解（free resolutions）的部分 · syzygy'
       ]
     },
-
     {
       id: 'lem.schanuel',
       cluster: 'hom.resolution',
@@ -57311,7 +57303,6 @@ window.MG = window.MG || {};
         'Cartan–Eilenberg, Homological Algebra (1956), 关于合冲与维数的部分 · Schanuel 引理'
       ]
     },
-
     {
       id: 'prop.syzygy-stability',
       cluster: 'hom.resolution',
@@ -57379,7 +57370,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于投射维数（projective dimension）的部分'
       ]
     },
-
     {
       id: 'def.injective-dimension',
       cluster: 'hom.resolution',
@@ -57411,7 +57401,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于内射维数（injective dimension）的部分'
       ]
     },
-
     {
       id: 'def.global-dimension',
       cluster: 'hom.resolution',
@@ -57449,7 +57438,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于整体维数（global dimension）与半单环的部分'
       ]
     },
-
     {
       id: 'prop.pd-vanishing',
       cluster: 'hom.resolution',
@@ -57501,7 +57489,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于投射维数与 Ext 消失的部分'
       ]
     },
-
     {
       id: 'cor.gldim-pid',
       cluster: 'hom.resolution',
@@ -57577,7 +57564,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于维数转移（dimension shifting）的部分'
       ]
     },
-
     {
       id: 'thm.ext-balanced',
       cluster: 'hom.resolution',
@@ -57609,7 +57595,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于平衡函子（balanced functors）的部分'
       ]
     },
-
     {
       id: 'thm.ext1-extensions',
       cluster: 'hom.resolution',
@@ -57693,7 +57678,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于平坦模（flat modules）的部分'
       ]
     },
-
     {
       id: 'def.tor',
       cluster: 'hom.flat',
@@ -57721,7 +57705,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于 Tor（torsion product）的部分'
       ]
     },
-
     {
       id: 'prop.tor-symmetry',
       cluster: 'hom.flat',
@@ -57752,7 +57735,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于 Tor 的对称性（symmetry）的部分'
       ]
     },
-
     {
       id: 'prop.tor-flat-vanishing',
       cluster: 'hom.flat',
@@ -57803,7 +57785,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于平坦模与 Tor 消失的部分'
       ]
     },
-
     {
       id: 'thm.tor-torsion',
       cluster: 'hom.flat',
@@ -57839,7 +57820,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于 Tor 与挠子群的部分'
       ]
     },
-
     {
       id: 'thm.lazard',
       cluster: 'hom.flat',
@@ -57875,7 +57855,6 @@ window.MG = window.MG || {};
         'Lazard, Autour de la platitude, Bull. Soc. Math. France 97 (1969)'
       ]
     },
-
     {
       id: 'thm.watts',
       cluster: 'hom.flat',
@@ -57962,7 +57941,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于万有系数定理（universal coefficient theorem）的部分'
       ]
     },
-
     {
       id: 'prop.mitchell-exactness',
       cluster: 'hom.ab',
@@ -58153,13 +58131,6 @@ window.MG = window.MG || {};
       definition: 'def.module',
       usedBy: 'def.flat-module',
       note: '平坦性说的是 $R$-模范畴里张量函子的正合性。'
-    },
-    {
-      id: 'def-link.flat-exact',
-      kind: 'definition',
-      definition: 'def.exact-functor',
-      usedBy: 'def.flat-module',
-      note: '「$-\\otimes_{R} F$ 正合」用的正是正合函子这条定义。'
     },
     {
       id: 'def-link.tor-derived',
@@ -60817,20 +60788,6 @@ window.MG = window.MG || {};
       definition: 'def.metric-space',
       usedBy: 'thm.metric-paracompact',
       note: '度量空间的度量给出可数局部基，仿紧性就是从这层结构长出来的。'
-    },
-    {
-      id: 'def-link.metrizable-metric',
-      kind: 'definition',
-      definition: 'def.metric-space',
-      usedBy: 'def.metrizable',
-      note: '「可度量化」就是问：这个拓扑能不能由某个度量诱导出来。'
-    },
-    {
-      id: 'def-link.second-countable-base',
-      kind: 'definition',
-      definition: 'def.topology-base',
-      usedBy: 'def.second-countable',
-      note: '第二可数说的是「有可数的基」，所以先要有基这个概念。'
     },
     {
       id: 'def-link.first-countable-base',
@@ -64687,7 +64644,7 @@ window.MG = window.MG || {};
         '',
         '更一般地，若 $\\gamma$ 是区域内的闭曲线、$f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯，则上式对 $\\gamma$ 内部任一点 $z$ 成立。'
       ].join('\n'),
-      notes: '⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\\overline{D(z, r)}$，在剩下的二连通区域 $\\Omega_r$ 上对 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\\oint_{\\partial\\Omega} g = \\oint_{|\\zeta - z| = r} g$。\n\n再把 $g$ 拆成两块：$\\dfrac{f(z)}{\\zeta - z} + \\dfrac{f(\\zeta) - f(z)}{\\zeta - z}$。\n\n第一块的积分算出 $2\\pi i f(z)$；\n\n第二块的被积函数在 $\\zeta = z$ 处有极限 $f\'(z)$（因而有界），由 ML 不等式其积分不超过 $(\\text{常数}) \\cdot 2\\pi r \\to 0$。\n\n⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。\n\n挖洞不是技巧，是必须的。'
+      notes: '⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\\overline{B(z, r)}$，在剩下的二连通区域 $\\Omega_r$ 上对 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\\oint_{\\partial\\Omega} g = \\oint_{|\\zeta - z| = r} g$。\n\n再把 $g$ 拆成两块：$\\dfrac{f(z)}{\\zeta - z} + \\dfrac{f(\\zeta) - f(z)}{\\zeta - z}$。\n\n第一块的积分算出 $2\\pi i f(z)$；\n\n第二块的被积函数在 $\\zeta = z$ 处有极限 $f\'(z)$（因而有界），由 ML 不等式其积分不超过 $(\\text{常数}) \\cdot 2\\pi r \\to 0$。\n\n⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。\n\n挖洞不是技巧，是必须的。'
     },
     {
       id: 'thm.cauchy-higher-derivative',
@@ -64723,15 +64680,15 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。',
         '',
-        '设 $f$ 在圆盘 $D = D(z_0, R)$ 上全纯，记',
+        '设 $f$ 在圆盘 $B(z_0, R)$ 上全纯，记',
         '',
-        '$$M(R) := \\sup_{z \\in D(z_0, R)} |f(z)|.$$',
+        '$$M(R) := \\sup_{z \\in B(z_0, R)} |f(z)|.$$',
         '',
         '则对每个 $n = 0, 1, 2, \\cdots$，',
         '',
         '$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{R^n}\\,M(R).$$'
       ].join('\n'),
-      notes: '⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\\mathrm{d}\\zeta|$ 的总长是 $2\\pi r$，分母是 $r^{n+1}$）：\n\n$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot M(r) \\cdot \\frac{2\\pi r}{r^{n+1}} = \\frac{n!\\,M(r)}{r^n},$$\n\n再令 $r \\to R$ 即得。\n\n⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。\n\n⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $D(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。\n\n⭐ 反向也有内容：若 $|f| \\le M$ 在全平面成立，则 $|f^{(n)}(0)| \\le n! M/R^n$ 对**一切** $R$ 成立，令 $R \\to \\infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。'
+      notes: '⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\\mathrm{d}\\zeta|$ 的总长是 $2\\pi r$，分母是 $r^{n+1}$）：\n\n$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot M(r) \\cdot \\frac{2\\pi r}{r^{n+1}} = \\frac{n!\\,M(r)}{r^n},$$\n\n再令 $r \\to R$ 即得。\n\n⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。\n\n⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $B(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。\n\n⭐ 反向也有内容：若 $|f| \\le M$ 在全平面成立，则 $|f^{(n)}(0)| \\le n! M/R^n$ 对**一切** $R$ 成立，令 $R \\to \\infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。'
     },
     {
       id: 'thm.liouville',
@@ -64751,7 +64708,7 @@ window.MG = window.MG || {};
         '',
         '则 $f$ 是常数。'
       ].join('\n'),
-      notes: '⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $D(z, R)$ 上全纯，故 $|f\'(z)| \\le M/R$。\n\n令 $R \\to \\infty$ 得 $f\'(z) = 0$；\n\n由 $z$ 任意，$f\' \\equiv 0$；\n\n区域连通，故 $f$ 是常数。\n\n⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\n估计得 $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$（$R \\to \\infty$），故 $f(z) = f(0)$。\n\n⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。\n\n反过来，若只知 $|f(z)| \\le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。\n\n⭐ 与实分析对照：$\\sin x$ 在 $\\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\\infty$ 函数」强得多。'
+      notes: '⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $B(z, R)$ 上全纯，故 $|f\'(z)| \\le M/R$。\n\n令 $R \\to \\infty$ 得 $f\'(z) = 0$；\n\n由 $z$ 任意，$f\' \\equiv 0$；\n\n区域连通，故 $f$ 是常数。\n\n⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\n估计得 $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$（$R \\to \\infty$），故 $f(z) = f(0)$。\n\n⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。\n\n反过来，若只知 $|f(z)| \\le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。\n\n⭐ 与实分析对照：$\\sin x$ 在 $\\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\\infty$ 函数」强得多。'
     },
     {
       id: 'thm.max-modulus',
@@ -64769,7 +64726,7 @@ window.MG = window.MG || {};
         '',
         '$$|f(z)| < \\|f\\|_{\\Omega} := \\sup_{\\zeta \\in \\Omega} |f(\\zeta)|, \\qquad \\forall z \\in \\Omega.$$'
       ].join('\n'),
-      notes: '⭐ 证明走**平均值公式**：Cauchy 积分公式在圆心取 $\\zeta = z + re^{i\\theta}$，得\n\n$$f(z) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z + re^{i\\theta})\\,\\mathrm{d}\\theta$$\n\n（只要 $\\overline{D(z, r)} \\subset \\Omega$）。\n\n若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \\le \\frac{1}{2\\pi}\\int_0^{2\\pi} |f(z_0 + re^{i\\theta})|\\,\\mathrm{d}\\theta \\le M$，两端相等迫使圆上 $|f| \\equiv M$。\n\n⭐ 再由连通性：集合 $\\{ z : |f(z)| = M \\}$ 既开（每个点周围都有整圆）又闭（$|f|$ 连续），故是全体 $\\Omega$；\n\n$|f|$ 为常数加上 $f$ 全纯，得 $f$ 为常数。\n\n⭐ 有界区域的推论：若 $\\Omega$ 有界、$f$ 在 $\\overline{\\Omega}$ 上连续、在 $\\Omega$ 内全纯，则 $\\|f\\|_{\\overline{\\Omega}} = \\|f\\|_{\\partial\\Omega}$ —— 最大值在边界取到。\n\n这是「用边界值控制内部」的最强形式。\n\n⚠ 对 $|f|$ 的**最小值**没有对应结论：$f(z) = z$ 在单位圆盘上最小值在 $0$（内部）。\n\n正确的最小模原理是：$f$ 全纯且**无零点**时，对 $1/f$ 用最大模原理。'
+      notes: '⭐ 证明走**平均值公式**：Cauchy 积分公式在圆心取 $\\zeta = z + re^{i\\theta}$，得\n\n$$f(z) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z + re^{i\\theta})\\,\\mathrm{d}\\theta$$\n\n（只要 $\\overline{B(z, r)} \\subset \\Omega$）。\n\n若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \\le \\frac{1}{2\\pi}\\int_0^{2\\pi} |f(z_0 + re^{i\\theta})|\\,\\mathrm{d}\\theta \\le M$，两端相等迫使圆上 $|f| \\equiv M$。\n\n⭐ 再由连通性：集合 $\\{ z : |f(z)| = M \\}$ 既开（每个点周围都有整圆）又闭（$|f|$ 连续），故是全体 $\\Omega$；\n\n$|f|$ 为常数加上 $f$ 全纯，得 $f$ 为常数。\n\n⭐ 有界区域的推论：若 $\\Omega$ 有界、$f$ 在 $\\overline{\\Omega}$ 上连续、在 $\\Omega$ 内全纯，则 $\\|f\\|_{\\overline{\\Omega}} = \\|f\\|_{\\partial\\Omega}$ —— 最大值在边界取到。\n\n这是「用边界值控制内部」的最强形式。\n\n⚠ 对 $|f|$ 的**最小值**没有对应结论：$f(z) = z$ 在单位圆盘上最小值在 $0$（内部）。\n\n正确的最小模原理是：$f$ 全纯且**无零点**时，对 $1/f$ 用最大模原理。'
     },
 
     /* ------------------------------------------------------ 级数 */
@@ -64785,13 +64742,13 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：全纯函数在任意一点的附近都是一个幂级数 —— 也就是说，对复函数而言「可微」与「能写成幂级数」是同一件事。',
         '',
-        '设 $f$ 在圆盘 $D(a, R)$ 上全纯。则对 $z \\in D(a, R)$，',
+        '设 $f$ 在圆盘 $B(a, R)$ 上全纯。则对 $z \\in B(a, R)$，',
         '',
         '$$f(z) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}\\,(z - a)^n,$$',
         '',
-        '且右端在 $D(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $D(a, R)$ 内**解析**（等于某个幂级数之和）。'
+        '且右端在 $B(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $B(a, R)$ 内**解析**（等于某个幂级数之和）。'
       ].join('\n'),
-      notes: '⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。\n\n取 $\\rho \\in (|z - a|, R)$，写\n\n$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$\n\n比值 $|z - a|/\\rho < 1$，级数关于 $\\zeta \\in \\partial D(a, \\rho)$ 一致收敛，故可逐项积分；\n\n逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。\n\n⭐ 这条把「微分」与「级数」接上了：**全纯 $\\iff$ 局部是幂级数 $\\iff$ 解析**。\n\n实分析里这两件事**不等价** —— $e^{-1/x^2}$ 在 $0$ 处无穷次可微，但 Taylor 级数恒为 $0$，在 $0$ 的任何邻域内都不等于原函数。\n\n⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。\n\n📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \\sum a_n (z - a)^n$ 在 $D(a, R)$ 内成立，则 $|a_n| \\le M(r)/r^n$（$0 < r < R$）。'
+      notes: '⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。\n\n取 $\\rho \\in (|z - a|, R)$，写\n\n$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$\n\n比值 $|z - a|/\\rho < 1$，级数关于 $\\zeta \\in \\partial B(a, \\rho)$ 一致收敛，故可逐项积分；\n\n逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。\n\n⭐ 这条把「微分」与「级数」接上了：**全纯 $\\iff$ 局部是幂级数 $\\iff$ 解析**。\n\n实分析里这两件事**不等价** —— $e^{-1/x^2}$ 在 $0$ 处无穷次可微，但 Taylor 级数恒为 $0$，在 $0$ 的任何邻域内都不等于原函数。\n\n⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。\n\n📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \\sum a_n (z - a)^n$ 在 $B(a, R)$ 内成立，则 $|a_n| \\le M(r)/r^n$（$0 < r < R$）。'
     },
     {
       id: 'def.laurent-series',
@@ -64847,7 +64804,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：函数在某一点「出问题」，但附近别的地方都好 —— 这时按它靠近该点时的三种走法分类：趋近一个有限值、爆掉、或者乱跳。',
         '',
-        '设 $f$ 在去心邻域 $D(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \\to a$ 时的行为分三类：',
+        '设 $f$ 在去心邻域 $B(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \\to a$ 时的行为分三类：',
         '',
         '**(1) 可去奇点**：$\\lim_{z \\to a} f(z) = w_0 \\in \\mathbb{C}$ 存在；',
         '',
@@ -64871,14 +64828,14 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：如果 $f$ 在 $a$ 附近全纯，而且靠近 $a$ 时「爆得比 $1/|z - a|$ 慢」，那 $a$ 这个洞可以补上，补完还是全纯。',
         '',
-        '设 $f$ 在 $D(a, r) \\setminus \\{a\\}$ 上全纯，且',
+        '设 $f$ 在 $B(a, r) \\setminus \\{a\\}$ 上全纯，且',
         '',
         '$$\\lim_{z \\to a} (z - a) f(z) = 0.$$',
         '等价的说法是 $f(z) = o(|z - a|^{-1})$。',
         '',
-        '则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。'
+        '则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $B(a, r)$ 上的全纯延拓。'
       ].join('\n'),
-      notes: '⭐ 证明：对 $z \\in D(a, r) \\setminus \\{a\\}$ 与充分小的 $\\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\\varepsilon(z)$，其中 $I_r$ 是沿 $|\\zeta - a| = r$ 的积分（在 $D(a, r)$ 上全纯），$I_\\varepsilon$ 是沿 $|\\zeta - a| = \\varepsilon$ 的积分。\n\n估计\n\n$$|I_\\varepsilon(z)| \\le \\frac{\\varepsilon \\, \\|f\\|_{\\partial D(a, \\varepsilon)}}{|z - a| - \\varepsilon} \\longrightarrow 0 \\qquad (\\varepsilon \\to 0),$$\n\n最后一步用的正是条件 $(z - a) f(z) \\to 0$。\n\n但 $I_\\varepsilon(z)$ 与 $\\varepsilon \\in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。\n\n于是 $f = I_r$ 在 $D(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。\n\n⭐ 用途：它让「可去奇点」真的可以当没有。\n\n例如 $\\sin z / z$ 在 $0$ 处补成 $1$，于是 $\\sin z / z$ 就是整函数；\n\n$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \\psi(z)$」都要靠它。\n\n⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。\n\n真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。'
+      notes: '⭐ 证明：对 $z \\in B(a, r) \\setminus \\{a\\}$ 与充分小的 $\\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\\varepsilon(z)$，其中 $I_r$ 是沿 $|\\zeta - a| = r$ 的积分（在 $B(a, r)$ 上全纯），$I_\\varepsilon$ 是沿 $|\\zeta - a| = \\varepsilon$ 的积分。\n\n估计\n\n$$|I_\\varepsilon(z)| \\le \\frac{\\varepsilon \\, \\|f\\|_{\\partial B(a, \\varepsilon)}}{|z - a| - \\varepsilon} \\longrightarrow 0 \\qquad (\\varepsilon \\to 0),$$\n\n最后一步用的正是条件 $(z - a) f(z) \\to 0$。\n\n但 $I_\\varepsilon(z)$ 与 $\\varepsilon \\in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。\n\n于是 $f = I_r$ 在 $B(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。\n\n⭐ 用途：它让「可去奇点」真的可以当没有。\n\n例如 $\\sin z / z$ 在 $0$ 处补成 $1$，于是 $\\sin z / z$ 就是整函数；\n\n$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \\psi(z)$」都要靠它。\n\n⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。\n\n真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。'
     },
 
     /* ------------------------------------------------------ 留数 */
@@ -64894,7 +64851,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：留数是 $f$ 在孤立奇点附近 Laurent 展开里 $(z - a)^{-1}$ 那一项的系数 —— 也是沿小圆周积分再除以 $2\\pi i$ 得到的那个数。',
         '',
-        '设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $D(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯。定义',
+        '设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $B(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯。定义',
         '',
         '$$\\operatorname{Res}(f, a) := \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = r} f(\\zeta)\\,\\mathrm{d}\\zeta, \\qquad 0 < r < \\varepsilon,$$',
         '',
@@ -64940,7 +64897,7 @@ window.MG = window.MG || {};
         '',
         '$$\\oint_{\\partial\\Omega} f(z)\\,\\mathrm{d}z = 2\\pi i \\sum_{k=1}^{n} \\operatorname{Res}(f, z_k).$$'
       ].join('\n'),
-      notes: '⭐ 证明：以每个 $z_k$ 为心挖去半径 $\\varepsilon$ 的闭圆盘（互不相交、都含在 $\\Omega$ 内），得 $\\Omega_\\varepsilon = \\Omega \\setminus \\bigcup_k \\overline{D(z_k, \\varepsilon)}$。\n\n$f$ 在 $\\Omega_\\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\\oint_{\\partial\\Omega_\\varepsilon} f = 0$，也就是\n\n$$\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = \\sum_{k=1}^{n} \\oint_{|\\zeta - z_k| = \\varepsilon} f\\,\\mathrm{d}\\zeta = 2\\pi i \\sum_{k=1}^{n} \\operatorname{Res}(f, z_k),$$\n\n最后一步就是留数的定义。\n\n⭐ 这是复分析里最能打的一条：书第 23、24 章那一整批实积分（$\\int_0^{2\\pi} Q(\\sin\\theta, \\cos\\theta)\\,\\mathrm{d}\\theta$、$\\int_{-\\infty}^{\\infty} f(x)\\,\\mathrm{d}x$、$\\int_{-\\infty}^{\\infty} e^{iax}f(x)\\,\\mathrm{d}x$、$\\int_0^{\\infty} x^{a-1}f(x)\\,\\mathrm{d}x$、级数求和）全靠它，都变成留数计算。\n\n⚠ 闭曲线必须**正向**（逆时针）；\n\n反向要整体变号。\n\n曲线**外**的奇点对积分没有贡献 —— 也可以改用无穷远点的留数来算。'
+      notes: '⭐ 证明：以每个 $z_k$ 为心挖去半径 $\\varepsilon$ 的闭圆盘（互不相交、都含在 $\\Omega$ 内），得 $\\Omega_\\varepsilon = \\Omega \\setminus \\bigcup_k \\overline{B(z_k, \\varepsilon)}$。\n\n$f$ 在 $\\Omega_\\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\\oint_{\\partial\\Omega_\\varepsilon} f = 0$，也就是\n\n$$\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = \\sum_{k=1}^{n} \\oint_{|\\zeta - z_k| = \\varepsilon} f\\,\\mathrm{d}\\zeta = 2\\pi i \\sum_{k=1}^{n} \\operatorname{Res}(f, z_k),$$\n\n最后一步就是留数的定义。\n\n⭐ 这是复分析里最能打的一条：书第 23、24 章那一整批实积分（$\\int_0^{2\\pi} Q(\\sin\\theta, \\cos\\theta)\\,\\mathrm{d}\\theta$、$\\int_{-\\infty}^{\\infty} f(x)\\,\\mathrm{d}x$、$\\int_{-\\infty}^{\\infty} e^{iax}f(x)\\,\\mathrm{d}x$、$\\int_0^{\\infty} x^{a-1}f(x)\\,\\mathrm{d}x$、级数求和）全靠它，都变成留数计算。\n\n⚠ 闭曲线必须**正向**（逆时针）；\n\n反向要整体变号。\n\n曲线**外**的奇点对积分没有贡献 —— 也可以改用无穷远点的留数来算。'
     },
 
     /* ------------------------------------------------------ 共形 */
@@ -65133,7 +65090,7 @@ window.MG = window.MG || {};
       target: 'thm.cauchy-integral-formula',
       title: 'Cauchy–Goursat（多连通版）$\\implies$ Cauchy 积分公式',
       proof: [
-        '**挖洞。** 固定 $z \\in \\Omega$，令 $d = \\operatorname{dist}(z, \\partial\\Omega) > 0$，取 $0 < r < d$，令 $\\Omega_r = \\Omega \\setminus \\overline{D(z, r)}$。\n\n$\\Omega_r$ 是二连通区域，而 $g(\\zeta) := f(\\zeta)/(\\zeta - z)$ 在 $\\Omega_r$ 上全纯（分母在 $\\Omega_r$ 上不为零）。\n\n由多连通 Cauchy–Goursat，$\\oint_{\\partial\\Omega_r} g = 0$，即',
+        '**挖洞。** 固定 $z \\in \\Omega$，令 $d = \\operatorname{dist}(z, \\partial\\Omega) > 0$，取 $0 < r < d$，令 $\\Omega_r = \\Omega \\setminus \\overline{B(z, r)}$。\n\n$\\Omega_r$ 是二连通区域，而 $g(\\zeta) := f(\\zeta)/(\\zeta - z)$ 在 $\\Omega_r$ 上全纯（分母在 $\\Omega_r$ 上不为零）。\n\n由多连通 Cauchy–Goursat，$\\oint_{\\partial\\Omega_r} g = 0$，即',
         '',
         '$$\\oint_{\\partial\\Omega} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta = \\oint_{|\\zeta - z| = r} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta.$$',
         '',
@@ -65193,7 +65150,7 @@ window.MG = window.MG || {};
         '',
         '$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot \\frac{\\max_{|\\zeta - z_0| = r}|f(\\zeta)|}{r^{n+1}} \\cdot 2\\pi r = \\frac{n!\\,M(r)}{r^n},$$',
         '',
-        '其中 $M(r) = \\sup_{D(z_0, r)}|f|$（圆周上的上确界不超过圆盘上的）。$M(r)$ 关于 $r$ 单调不减，故 $M(r) \\le M(R)$，得 $|f^{(n)}(z_0)| \\le n! M(R)/r^n$。',
+        '其中 $M(r) = \\sup_{B(z_0, r)}|f|$（圆周上的上确界不超过圆盘上的）。$M(r)$ 关于 $r$ 单调不减，故 $M(r) \\le M(R)$，得 $|f^{(n)}(z_0)| \\le n! M(R)/r^n$。',
         '',
         '左端与 $r$ 无关，令 $r \\to R^-$ 即得 $|f^{(n)}(z_0)| \\le n! M(R)/R^n$。$\\blacksquare$'
       ].join('\n')
@@ -65207,7 +65164,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $f$ 在 $\\mathbb{C}$ 上全纯且 $|f| \\le M$。',
         '',
-        '**逐点估计。** 固定任意 $z \\in \\mathbb{C}$ 与任意 $R > 0$。$f$ 在 $D(z, R)$ 上全纯，由 $n = 1$ 的 Cauchy 不等式',
+        '**逐点估计。** 固定任意 $z \\in \\mathbb{C}$ 与任意 $R > 0$。$f$ 在 $B(z, R)$ 上全纯，由 $n = 1$ 的 Cauchy 不等式',
         '',
         '$$|f\'(z)| \\le \\frac{1!}{R^{1}}\\,M(R) \\le \\frac{M}{R}.$$',
         '',
@@ -65215,7 +65172,7 @@ window.MG = window.MG || {};
         '',
         '**从导数到函数。** $f\' \\equiv 0$ 且 $\\mathbb{C}$ 连通：沿连接任意两点的折线，$\\frac{\\mathrm{d}}{\\mathrm{d}t} f(z_0 + tv) = f\' \\cdot v = 0$，故 $f$ 在这条路上为常数。所以 $f$ 是常数。',
         '',
-        '**为什么必须是「全平面」。** 同一论证在 $D(0, R_0)$ 上只给出 $|f\'(z)| \\le M/(R_0 - |z|)$，右端随 $R_0$ 固定而不趋零 —— 所以有界全纯函数在**有界**区域上可以非常数（恒等映射在单位圆盘上就是）。$\\blacksquare$'
+        '**为什么必须是「全平面」。** 同一论证在 $B(0, R_0)$ 上只给出 $|f\'(z)| \\le M/(R_0 - |z|)$，右端随 $R_0$ 固定而不趋零 —— 所以有界全纯函数在**有界**区域上可以非常数（恒等映射在单位圆盘上就是）。$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -65233,7 +65190,7 @@ window.MG = window.MG || {};
         '',
         '$$|p(z)| \\ge |a_n||z|^n - \\sum_{k=0}^{n-1}|a_k||z|^k \\ge |a_n||z|^n - n\\,C\\,|z|^{n-1},$$',
         '',
-        '其中 $C = \\max_{k < n}|a_k|$。\n\n右端当 $|z|$ 足够大时 $\\ge \\frac{|a_n|}{2}|z|^n \\to +\\infty$。\n\n故存在 $R_0$ 使 $|z| > R_0$ 时 $|p(z)| \\ge 1$，从而 $|g(z)| \\le 1$。\n\n在紧集 $\\overline{D(0, R_0)}$ 上 $g$ 连续、因而有界，设为 $M_0$。\n\n于是 $|g| \\le \\max\\{1, M_0\\}$ 在全平面成立。',
+        '其中 $C = \\max_{k < n}|a_k|$。\n\n右端当 $|z|$ 足够大时 $\\ge \\frac{|a_n|}{2}|z|^n \\to +\\infty$。\n\n故存在 $R_0$ 使 $|z| > R_0$ 时 $|p(z)| \\ge 1$，从而 $|g(z)| \\le 1$。\n\n在紧集 $\\overline{B(0, R_0)}$ 上 $g$ 连续、因而有界，设为 $M_0$。\n\n于是 $|g| \\le \\max\\{1, M_0\\}$ 在全平面成立。',
         '',
         '**用 Liouville。** $g$ 是有界整函数，故 $g$ 是常数，从而 $p = 1/g$ 也是常数 —— 与 $n \\ge 1$（$a_n \\ne 0$）矛盾。',
         '',
@@ -65247,13 +65204,13 @@ window.MG = window.MG || {};
       target: 'thm.max-modulus',
       title: 'Cauchy 积分公式 $\\implies$ 平均值公式 $\\implies$ 最大模原理',
       proof: [
-        '**平均值公式。** 设 $\\overline{D(z, r)} \\subset \\Omega$。\n\n在 Cauchy 积分公式里取 $\\partial\\Omega = \\partial D(z, r)$，参数化 $\\zeta = z + re^{i\\theta}$（$\\mathrm{d}\\zeta = ire^{i\\theta}\\mathrm{d}\\theta$）：',
+        '**平均值公式。** 设 $\\overline{B(z, r)} \\subset \\Omega$。\n\n在 Cauchy 积分公式里取 $\\partial\\Omega = \\partial B(z, r)$，参数化 $\\zeta = z + re^{i\\theta}$（$\\mathrm{d}\\zeta = ire^{i\\theta}\\mathrm{d}\\theta$）：',
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\int_0^{2\\pi} \\frac{f(z + re^{i\\theta})}{re^{i\\theta}}\\, i r e^{i\\theta}\\,\\mathrm{d}\\theta = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z + re^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
         '即：**函数在中心的值 = 它在圆周上的平均值**。',
         '',
-        '**取最大值的点附近。** 设 $M = \\sup_\\Omega |f|$ 在**内点** $z_0$ 被取到（即 $|f(z_0)| = M$，且 $M < \\infty$）。对任意 $r$ 使 $\\overline{D(z_0, r)} \\subset \\Omega$：',
+        '**取最大值的点附近。** 设 $M = \\sup_\\Omega |f|$ 在**内点** $z_0$ 被取到（即 $|f(z_0)| = M$，且 $M < \\infty$）。对任意 $r$ 使 $\\overline{B(z_0, r)} \\subset \\Omega$：',
         '',
         '$$M = |f(z_0)| = \\left| \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z_0 + re^{i\\theta})\\mathrm{d}\\theta \\right| \\le \\frac{1}{2\\pi}\\int_0^{2\\pi} |f(z_0 + re^{i\\theta})|\\,\\mathrm{d}\\theta \\le M.$$',
         '',
@@ -65276,7 +65233,7 @@ window.MG = window.MG || {};
       target: 'thm.taylor-complex',
       title: 'Cauchy 积分公式 + 几何级数 $\\implies$ Taylor 展开',
       proof: [
-        '**取一个稍小的圆。** 固定 $z \\in D(a, R)$，取 $\\rho$ 使 $|z - a| < \\rho < R$。由 Cauchy 积分公式（在 $D(a, \\rho)$ 上）',
+        '**取一个稍小的圆。** 固定 $z \\in B(a, R)$，取 $\\rho$ 使 $|z - a| < \\rho < R$。由 Cauchy 积分公式（在 $B(a, \\rho)$ 上）',
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = \\rho}\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta.$$',
         '',
@@ -65284,15 +65241,15 @@ window.MG = window.MG || {};
         '',
         '$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\frac{1}{\\zeta - a}\\cdot\\frac{1}{1 - \\frac{z - a}{\\zeta - a}} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$',
         '',
-        '右端关于 $\\zeta \\in \\partial D(a, \\rho)$ **一致收敛**（优级数 $\\sum q^n/\\rho$）。',
+        '右端关于 $\\zeta \\in \\partial B(a, \\rho)$ **一致收敛**（优级数 $\\sum q^n/\\rho$）。',
         '',
-        '**逐项积分。** $f$ 在紧集 $\\partial D(a, \\rho)$ 上有界，一致收敛允许交换求和与积分：',
+        '**逐项积分。** $f$ 在紧集 $\\partial B(a, \\rho)$ 上有界，一致收敛允许交换求和与积分：',
         '',
         '$$f(z) = \\sum_{n=0}^{\\infty}\\left( \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = \\rho}\\frac{f(\\zeta)}{(\\zeta - a)^{n+1}}\\,\\mathrm{d}\\zeta \\right)(z - a)^n = \\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(z - a)^n,$$',
         '',
         '最后一步是高阶导数公式（把 $z$ 换成 $a$）。',
         '',
-        '**一致收敛。** 对任意紧集 $K \\subset D(a, R)$，取 $\\rho$ 使 $K \\subset D(a, \\rho) \\subset D(a, R)$，则 $|c_n| \\le \\|f\\|_{\\partial D(a,\\rho)}/\\rho^n$，优级数在 $K$ 上收敛。\n\n$\\blacksquare$'
+        '**一致收敛。** 对任意紧集 $K \\subset B(a, R)$，取 $\\rho$ 使 $K \\subset B(a, \\rho) \\subset B(a, R)$，则 $|c_n| \\le \\|f\\|_{\\partial B(a, \\rho)}/\\rho^n$，优级数在 $K$ 上收敛。\n\n$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -65332,17 +65289,17 @@ window.MG = window.MG || {};
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = r}\\frac{f(\\zeta)}{\\zeta - z}\\mathrm{d}\\zeta - \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = \\varepsilon}\\frac{f(\\zeta)}{\\zeta - z}\\mathrm{d}\\zeta =: I_r(z) - I_\\varepsilon(z).$$',
         '',
-        '**$I_r$ 是好的。** 分母 $\\zeta - z$ 在 $|\\zeta - a| = r$ 上不为零（因为 $|z - a| < r$），故 $I_r$ 在 $D(a, r)$ 上定义且全纯（在积分号下求导，做法与高阶导数那条边相同）。',
+        '**$I_r$ 是好的。** 分母 $\\zeta - z$ 在 $|\\zeta - a| = r$ 上不为零（因为 $|z - a| < r$），故 $I_r$ 在 $B(a, r)$ 上定义且全纯（在积分号下求导，做法与高阶导数那条边相同）。',
         '',
         '**$I_\\varepsilon$ 趋零。** 在 $|\\zeta - a| = \\varepsilon$ 上 $|\\zeta - z| \\ge |z - a| - \\varepsilon > 0$，于是',
         '',
-        '$$|I_\\varepsilon(z)| \\le \\frac{1}{2\\pi}\\cdot\\frac{\\max_{|\\zeta - a| = \\varepsilon}|f(\\zeta)|}{|z - a| - \\varepsilon}\\cdot 2\\pi\\varepsilon = \\frac{\\varepsilon\\,\\|f\\|_{\\partial D(a, \\varepsilon)}}{|z - a| - \\varepsilon}.$$',
+        '$$|I_\\varepsilon(z)| \\le \\frac{1}{2\\pi}\\cdot\\frac{\\max_{|\\zeta - a| = \\varepsilon}|f(\\zeta)|}{|z - a| - \\varepsilon}\\cdot 2\\pi\\varepsilon = \\frac{\\varepsilon\\,\\|f\\|_{\\partial B(a, \\varepsilon)}}{|z - a| - \\varepsilon}.$$',
         '',
-        '条件 $\\lim_{z \\to a}(z - a)f(z) = 0$ 说的正是 $\\varepsilon \\|f\\|_{\\partial D(a, \\varepsilon)} \\to 0$（把 $z$ 取成圆上使 $|f|$ 最大的点）。故 $I_\\varepsilon(z) \\to 0$。',
+        '条件 $\\lim_{z \\to a}(z - a)f(z) = 0$ 说的正是 $\\varepsilon \\|f\\|_{\\partial B(a, \\varepsilon)} \\to 0$（把 $z$ 取成圆上使 $|f|$ 最大的点）。故 $I_\\varepsilon(z) \\to 0$。',
         '',
         '**$\\varepsilon$ 不能被「取极限」牵动。** $I_\\varepsilon(z)$ 由 $f$ 在圆周 $|\\zeta - a| = \\varepsilon$ 上的值决定；而对每个固定的 $\\varepsilon \\in (0, |z - a|)$，它是 $f(z) - I_r(z)$ 的一部分，是个**定值**。\n\n既然它被任意小的常数压住，只能是 $0$。',
         '',
-        '**收尾。** $f(z) = I_r(z)$ 对 $z \\in D(a, r) \\setminus \\{a\\}$ 成立，令 $f(a) := I_r(a)$ 就把 $f$ 延拓成 $D(a, r)$ 上的全纯函数。$\\blacksquare$'
+        '**收尾。** $f(z) = I_r(z)$ 对 $z \\in B(a, r) \\setminus \\{a\\}$ 成立，令 $f(a) := I_r(a)$ 就把 $f$ 延拓成 $B(a, r)$ 上的全纯函数。$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -65352,9 +65309,9 @@ window.MG = window.MG || {};
       target: 'thm.residue',
       title: '挖洞 + 多连通 Cauchy–Goursat $\\implies$ 留数定理',
       proof: [
-        '**挖洞。** 取 $\\varepsilon > 0$ 足够小，使闭圆盘 $\\overline{D(z_k, \\varepsilon)}$（$k = 1, \\cdots, n$）两两不交、且都含在 $\\Omega$ 内。令',
+        '**挖洞。** 取 $\\varepsilon > 0$ 足够小，使闭圆盘 $\\overline{B(z_k, \\varepsilon)}$（$k = 1, \\cdots, n$）两两不交、且都含在 $\\Omega$ 内。令',
         '',
-        '$$\\Omega_\\varepsilon := \\Omega \\setminus \\bigcup_{k=1}^{n}\\overline{D(z_k, \\varepsilon)}.$$',
+        '$$\\Omega_\\varepsilon := \\Omega \\setminus \\bigcup_{k=1}^{n}\\overline{B(z_k, \\varepsilon)}.$$',
         '',
         '$\\Omega_\\varepsilon$ 是 $n$ 连通的，而 $f$ 在它上面全纯（挖掉的正是全部奇点）。',
         '',
@@ -65453,7 +65410,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.power-series',
       usedBy: 'thm.taylor-complex',
-      note: '「$f$ 在 $D(a, R)$ 内解析」的定义就是：存在幂级数在 $D(a, R)$ 内收敛到 $f$。定理说的正是全纯蕴含这件事。'
+      note: '「$f$ 在 $B(a, R)$ 内解析」的定义就是：存在幂级数在 $B(a, R)$ 内收敛到 $f$。定理说的正是全纯蕴含这件事。'
     },
     {
       id: 'def-link.residue-contour',
@@ -68393,7 +68350,7 @@ window.MG = window.MG || {};
         '',
         '⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。',
         '',
-        '⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \\min_{|z - z_0| = r}|f| > 0$；\n\n$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \\le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。',
+        '⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\\overline{B(z_0, r)}$ 内只有这一个零点，则 $m = \\min_{|z - z_0| = r}|f| > 0$；\n\n$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \\le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。',
         '',
         '📌 与 Morera 定理互补：Morera 管「极限全纯」，Hurwitz 管「极限的零点从哪来」。两者一起说明：全纯函数的一些**离散**性质在一致极限下是封闭的。'
       ].join('\n'),
@@ -68622,13 +68579,13 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：调和函数在一点的值，等于它在以该点为心、任意半径的圆周上的平均值；也等于圆盘上的面积平均值。',
         '',
-        '设 $u$ 在 $D(a, R)$ 上调和，$0 < r < R$。则',
+        '设 $u$ 在 $B(a, R)$ 上调和，$0 < r < R$。则',
         '',
         '$$u(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u(a + r e^{i\\theta})\\,\\mathrm{d}\\theta,$$',
         '',
         '并且（面积平均）',
         '',
-        '$$u(a) = \\frac{1}{\\pi r^2}\\iint_{D(a, r)} u(x, y)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$'
+        '$$u(a) = \\frac{1}{\\pi r^2}\\iint_{B(a, r)} u(x, y)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$'
       ].join('\n'),
       notes: [
         '⭐ 证明只有两步：把 $u$ 写成全纯函数 $f$ 的实部（圆盘单连通），再对 Cauchy 积分公式 $f(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(a + r e^{i\\theta})\\,\\mathrm{d}\\theta$ 两边取实部。',
@@ -68637,7 +68594,7 @@ window.MG = window.MG || {};
         '',
         '⚠ 均值必须对**整个圆周**取，不能只对正上方那几个点取；也不能对任意闭曲线取 —— 那正是 Poisson 公式要回答的事。',
         '',
-        '⚠ $u$ 只需在 $D(a, r)$ 的**内部**调和，不要求闭圆盘上调和。',
+        '⚠ $u$ 只需在 $B(a, r)$ 的**内部**调和，不要求闭圆盘上调和。',
         '',
         '📌 均值性质直接推出最大值原理（见「调和函数的最大值原理」那条），也是「调和函数实解析」的出发点（把积分展成幂级数）。'
       ].join('\n'),
@@ -68654,7 +68611,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：圆内的取值由边界上的取值**唯一决定**，而且是有明确公式的加权平均 —— 权重就是 Poisson 核，它在边界附近会「尖起来」。',
         '',
-        '设 $f$ 在 $D(0, R)$ 的邻域上全纯，$u = \\operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，',
+        '设 $f$ 在 $B(0, R)$ 的邻域上全纯，$u = \\operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，',
         '',
         '$$u(z) = \\frac{1}{2\\pi}\\int_0^{2\\pi} \\frac{r^2 - |z|^2}{|r e^{i\\theta} - z|^2}\\, u(r e^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
@@ -68957,9 +68914,9 @@ window.MG = window.MG || {};
       target: 'thm.morera',
       title: '连续 + 沿闭三角形积分为零 $\\implies$ 全纯',
       proof: [
-        '在 $\\Omega$ 内任取一个圆盘 $D(a, r) \\subset \\Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。',
+        '在 $\\Omega$ 内任取一个圆盘 $B(a, r) \\subset \\Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。',
         '',
-        '**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \\in D(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义',
+        '**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \\in B(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义',
         '',
         '$$F(z) := \\int_{x_0}^{x} f(t + i y_0)\\,\\mathrm{d}t + \\int_{y_0}^{y} f(x + i t)\\,\\mathrm{d}t.$$',
         '',
@@ -68969,7 +68926,7 @@ window.MG = window.MG || {};
         '',
         '$$F(z + h) - F(z) = \\int_{x}^{x + h} f(t + i y)\\,\\mathrm{d}t,$$',
         '',
-        '除以 $h$ 后用 $f$ 的**连续性**：$\\dfrac{1}{h}\\displaystyle\\int_x^{x+h} f(t + iy)\\,\\mathrm{d}t \\to f(x + iy) = f(z)$（$h \\to 0$）。竖直方向同理。所以 $F$ 在 $D(a, r)$ 内复可微且 $F\' = f$。',
+        '除以 $h$ 后用 $f$ 的**连续性**：$\\dfrac{1}{h}\\displaystyle\\int_x^{x+h} f(t + iy)\\,\\mathrm{d}t \\to f(x + iy) = f(z)$（$h \\to 0$）。竖直方向同理。所以 $F$ 在 $B(a, r)$ 内复可微且 $F\' = f$。',
         '',
         '**第三步：$f$ 全纯。** $F$ 全纯 $\\implies$ $F$ 无穷次可微（Taylor 展开）$\\implies$ $F\' = f$ 也全纯，且 $f$ 在该点有 Taylor 展开。圆盘任取，故 $f$ 在 $\\Omega$ 上全纯。$\\blacksquare$'
       ].join('\n'),
@@ -69039,13 +68996,13 @@ window.MG = window.MG || {};
       proof: [
         '设 $f$ 不恒为零，且 $f(z_0) = 0$。只需在这个零点处导出矛盾。',
         '',
-        '**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\\overline{D(z_0, r)} \\subset \\Omega$，且 $f$ 在 $\\overline{D(z_0, r)}$ 内只有 $z_0$ 一个零点。令',
+        '**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\\overline{B(z_0, r)} \\subset \\Omega$，且 $f$ 在 $\\overline{B(z_0, r)}$ 内只有 $z_0$ 一个零点。令',
         '',
         '$$m := \\min_{|z - z_0| = r} |f(z)| > 0$$',
         '',
         '（圆周上无零点，连续函数在紧集上有正的最小值）。',
         '',
-        '**第二步：一致收敛让扰动变小。** 在紧集 $\\overline{D(z_0, r)}$ 上 $f_k \\rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点',
+        '**第二步：一致收敛让扰动变小。** 在紧集 $\\overline{B(z_0, r)}$ 上 $f_k \\rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点',
         '',
         '$$|f_k(z) - f(z)| \\le \\|f_k - f\\|_{\\infty} < m \\le |f(z)|.$$',
         '',
@@ -69136,7 +69093,7 @@ window.MG = window.MG || {};
         '',
         '**第四步：面积平均。** 把上式中的 $r$ 换成 $\\rho$ 再乘 $\\rho$，在 $0 < \\rho < r$ 上积分：',
         '',
-        '$$\\int_0^{r} 2\\pi u(a)\\,\\rho\\,\\mathrm{d}\\rho = \\int_0^{r}\\int_0^{2\\pi} u(a + \\rho e^{i\\theta})\\,\\rho\\,\\mathrm{d}\\theta\\,\\mathrm{d}\\rho = \\iint_{D(a, r)} u\\,\\mathrm{d}A.$$',
+        '$$\\int_0^{r} 2\\pi u(a)\\,\\rho\\,\\mathrm{d}\\rho = \\int_0^{r}\\int_0^{2\\pi} u(a + \\rho e^{i\\theta})\\,\\rho\\,\\mathrm{d}\\theta\\,\\mathrm{d}\\rho = \\iint_{B(a, r)} u\\,\\mathrm{d}A.$$',
         '',
         '左边 $= \\pi r^2 u(a)$，两边除以 $\\pi r^2$ 即得面积形式。$\\blacksquare$'
       ].join('\n')
@@ -69148,7 +69105,7 @@ window.MG = window.MG || {};
       target: 'thm.poisson-formula',
       title: 'Cauchy 积分公式 + 调和 $\\implies$ Poisson 公式',
       proof: [
-        '设 $f$ 在 $D(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \\operatorname{Re} f$。',
+        '设 $f$ 在 $B(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \\operatorname{Re} f$。',
         '',
         '**第一步：把圆周积分写成 $\\theta$。** 在 $|\\zeta| = r$ 上 $\\mathrm{d}\\zeta = i\\zeta\\,\\mathrm{d}\\theta$，故',
         '',
@@ -69208,13 +69165,13 @@ window.MG = window.MG || {};
         '',
         '**第二步：$E$ 是闭的。** $u$ 连续，$E$ 是闭集 $\\{M\\}$ 在 $\\Omega$ 中的原像。',
         '',
-        '**第三步：$E$ 是开的。** 取 $a \\in E$，取 $r > 0$ 使 $\\overline{D(a, r)} \\subset \\Omega$。由均值性质',
+        '**第三步：$E$ 是开的。** 取 $a \\in E$，取 $r > 0$ 使 $\\overline{B(a, r)} \\subset \\Omega$。由均值性质',
         '',
         '$$M = u(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u(a + r e^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
         '被积函数逐点 $\\le M$，而它们的平均恰好是 $M$ $\\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。\n\n' +
         '所以圆周落在 $E$ 里；\n\n' +
-        '对每个 $0 < \\rho \\le r$ 同理，于是 $D(a, r) \\subset E$。',
+        '对每个 $0 < \\rho \\le r$ 同理，于是 $B(a, r) \\subset E$。',
         '',
         '**第四步：连通性。** $\\Omega$ 连通而 $E$ 非空、既开又闭，故 $E = \\Omega$，即 $u \\equiv M$。取逆否命题：$u$ 非常数 $\\implies$ 内部取不到最大值。',
         '',
@@ -71157,7 +71114,7 @@ window.MG = window.MG || {};
       proof: [
         '平均算子定义为',
         '',
-        '$$A_{r}f(x) := \\frac{1}{m\\bigl(B(r,x)\\bigr)}\\int_{B(r,x)} f\\,\\mathrm{d}m,$$',
+        '$$A_{r}f(x) := \\frac{1}{m\\bigl(B(x, r)\\bigr)}\\int_{B(x, r)} f\\,\\mathrm{d}m,$$',
         '',
         '即 $f$ 在球上的平均值。Lebesgue 微分定理说：对 $f \\in L^{1}_{\\mathrm{loc}}$，',
         '',
@@ -71255,9 +71212,9 @@ window.MG = window.MG || {};
       target: 'thm.harmonic-mean-value',
       title: 'Poisson 积分公式在圆心处退化成均值性质',
       proof: [
-        '**先取得全纯函数。** 圆盘 $D(a,r)$ 单连通，由调和函数的共轭，$D(a,r)$ 上的调和 $u$ 是某个全纯函数 $f$ 的实部。',
+        '**先取得全纯函数。** 圆盘 $B(a, r)$ 单连通，由调和函数的共轭，$B(a, r)$ 上的调和 $u$ 是某个全纯函数 $f$ 的实部。',
         '',
-        '**把原点搬到 $a$。** 令 $v(h) := u(a+h)$，则 $v$ 在 $D(0,r)$ 上调和，且仍是全纯函数的实部（取 $f(a+h)$）。',
+        '**把原点搬到 $a$。** 令 $v(h) := u(a+h)$，则 $v$ 在 $B(0, r)$ 上调和，且仍是全纯函数的实部（取 $f(a+h)$）。',
         '',
         '**Poisson 公式**（对 $v$，$0 < \\rho < r$、$|z| < \\rho$）：',
         '',
@@ -71271,7 +71228,7 @@ window.MG = window.MG || {};
         '',
         '**面积平均。** 对 $s \\in (0,r)$ 用一圈的均值 $u(a) = \\frac{1}{2\\pi}\\int_{0}^{2\\pi}u(a+se^{i\\theta})\\,\\mathrm{d}\\theta$，再乘 $2\\pi s$ 对 $s$ 积分并用极坐标：',
         '',
-        '$$\\iint_{D(a,r)} u\\,\\mathrm{d}x\\,\\mathrm{d}y = \\int_{0}^{r} 2\\pi s\\, u(a)\\,\\mathrm{d}s = \\pi r^{2} u(a).$$',
+        '$$\\iint_{B(a, r)} u\\,\\mathrm{d}x\\,\\mathrm{d}y = \\int_{0}^{r} 2\\pi s\\, u(a)\\,\\mathrm{d}s = \\pi r^{2} u(a).$$',
         '',
         '两条合起来就是均值性质。$\\blacksquare$'
       ].join('\n'),
@@ -78365,11 +78322,7 @@ window.MG = window.MG || {};
       note: '体积形式是 $\\Omega^{n}(M)$ 里处处非零的那个 —— 它的本体是流形上的 $n$-形式，不是 $R^{n}$ 上的（$R^{n}$ 只给出它在卡里的写法）。' },
     { id: 'dep.mf3-vdensity-form', kind: 'definition',
       definition: 'def.form-on-manifold', usedBy: 'def.volume-density',
-      note: '体积密度的定义写在黎曼流形 $(M,g)$ 上，用的也是 $M$ 上的形式。' },
-    { id: 'dep.mf3-lieform-form', kind: 'definition',
-      definition: 'def.form-on-manifold', usedBy: 'def.left-invariant-form',
-      note: '左不变形式是 Lie 群（本身就是流形）上的 $k$-形式。' },
-    { id: 'dep.mf3-lieform-pullback', kind: 'definition',
+      note: '体积密度的定义写在黎曼流形 $(M,g)$ 上，用的也是 $M$ 上的形式。' },    { id: 'dep.mf3-lieform-pullback', kind: 'definition',
       definition: 'prop.pullback-form-manifold', usedBy: 'def.left-invariant-form',
       note: '「左不变」是用左平移 $L_{g}$ 的拉回写的：$L_{g}^{\\ast}\\omega = \\omega$，而 $L_{g}$ 是流形之间的光滑映射。' },
     { id: 'dep.mf3-stokes-dmanifold', kind: 'definition',
@@ -82821,11 +82774,7 @@ window.MG = window.MG || {};
       note: '分裂原理是关于陈类（Whitney 和）的恒等式工具。' },
     { id: 'dep-sp-clb', kind: 'definition',
       definition: 'prop.chern-class-line-bundle', usedBy: 'thm.splitting-principle',
-      note: '分裂到线丛之后，每一块都用线丛那条公式算。' },
-    { id: 'dep-sp-cc2', kind: 'definition',
-      definition: 'def.chern-class', usedBy: 'thm.splitting-principle',
-      note: '「陈根」$x_{j}$ 就是各线丛的 $c_{1}$。' }
-  ]
+      note: '分裂到线丛之后，每一块都用线丛那条公式算。' },  ]
 });
 
 </script>
@@ -84534,10 +84483,7 @@ window.MG = window.MG || {};
       note: '反例（圆盘代数 $\\mathrm{Alg}(z)$）缺的正是「对共轭封闭」：$\\bar z$ 不在闭包里。'
     },
 
-    /* ------------------------------------------------ 定义引用（跨团/跨领域） */
-    { id: 'def-link.fa-vs-norm', kind: 'definition', definition: 'def.vs', usedBy: 'def.norm',
-      note: '范数加在向量空间上：第二条公理就是「与标量乘法相容」。' },
-    { id: 'def-link.fa-metric-normind', kind: 'definition', definition: 'def.metric-space', usedBy: 'prop.norm-induces-metric',
+    /* ------------------------------------------------ 定义引用（跨团/跨领域） */    { id: 'def-link.fa-metric-normind', kind: 'definition', definition: 'def.metric-space', usedBy: 'prop.norm-induces-metric',
       note: '范数诱导的距离就是度量空间那条定义里的距离，额外要求平移不变与齐次。' },
     { id: 'def-link.fa-complete-BEF', kind: 'definition', definition: 'def.complete', usedBy: 'thm.bounded-operators-banach',
       note: '这里要的是 $F$ 的度量完备（Cauchy 列收敛）。' },
@@ -87336,7 +87282,6 @@ window.MG = window.MG || {};
       usedBy: 'prop.lp-inclusion-finite',
       note: '前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。'
     },
-
     {
       id: 'def-link.sup-real-ordered-field',
       kind: 'definition',
@@ -88149,13 +88094,6 @@ window.MG = window.MG || {};
       note: '限制到**紧生成空间**上时那个函子变得全忠实。'
     },
     {
-      id: 'def-dep.cg-coreflective',
-      kind: 'definition',
-      definition: 'def.compactly-generated',
-      usedBy: 'prop.cg-coreflective',
-      note: '命题说的是**紧生成空间**是余反射子范畴。'
-    },
-    {
       id: 'def-dep.adjoint-cg-coreflective',
       kind: 'definition',
       definition: 'def.adjoint',
@@ -88405,13 +88343,6 @@ window.MG = window.MG || {};
       definition: 'def.quotient-group',
       usedBy: 'thm.first-iso',
       note: '定理左端的 $G/\\ker\\varphi$ 是**商群**。'
-    },
-    {
-      id: 'def-dep.firstiso-kernel',
-      kind: 'definition',
-      definition: 'def.group-hom',
-      usedBy: 'thm.first-iso',
-      note: '核与像都是**群同态**的概念。'
     },
     {
       id: 'def-dep.firstiso-normal',
@@ -88754,8 +88685,6 @@ window.MG = window.MG || {};
       '$\\mu$ 零集是「$\\mu(E) = 0$ 的可测集」，$E$ 与 $\\mu$ 都来自**测度空间**。'],
     ['def.subset', 'def.outer-measure', 'def-dep.subset-outer-measure',
       '外测度定义在**全体子集**上：$\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$。'],
-    ['def.power-set', 'def.outer-measure', 'def-dep.powerset-outer-measure',
-      '定义域是**幂集** $\\mathcal{P}(X)$ —— 不是某个 $\\sigma$-代数。'],
     ['def.extended-real', 'def.outer-measure', 'def-dep.extreal-outer-measure',
       '取值落在**扩充实数** $[0, +\\infty]$ 里：外测度可以取 $+\\infty$（$\\mathbb{R}$ 的 Lebesgue 测度就是）。'],
     ['def.extended-real', 'def.measure', 'def-dep.extreal-measure',
@@ -88832,7 +88761,7 @@ window.MG = window.MG || {};
     ['def.integrable', 'def.locally-integrable', 'def-dep.integrable-locally-integrable',
       '判据 $\\int_K |f| < \\infty$ 与 $L^1$ 的可积判据同源，只是把整个空间换成有界可测集 $K$。'],
     ['def.measure', 'def.average-operator', 'def-dep.measure-average-operator',
-      '平均值里的 $m(B(r, x))$ 是 **Lebesgue 测度**。'],
+      '平均值里的 $m(B(x, r))$ 是 **Lebesgue 测度**。'],
     ['def.locally-integrable', 'def.lebesgue-set', 'def-dep.locally-integrable-lebesgue-set',
       '「设 $f \\in L^1_{loc}$」——Lebesgue 集只对**局部可积**函数谈。'],
     ['def.average-operator', 'def.lebesgue-set', 'def-dep.average-operator-lebesgue-set',
@@ -88840,7 +88769,7 @@ window.MG = window.MG || {};
     ['def.borel', 'def.shrinks-nicely', 'def-dep.borel-shrinks-nicely',
       '要求 $\\{ E_r \\}$ 是一族 **Borel 子集**，这样 $m(E_r)$ 才有意义。'],
     ['def.subset', 'def.shrinks-nicely', 'def-dep.subset-shrinks-nicely',
-      '第一条是 $E_r \\subseteq B(r, x)$——一个**子集**关系。'],
+      '第一条是 $E_r \\subseteq B(x, r)$——一个**子集**关系。'],
     ['def.poset', 'def.real', 'def-dep.poset-real',
       '实数系是一个**全序**域：序公理里说的「全序」就是偏序再加上可比性。'],
     ['def.extended-real', 'def.conjugate-exponents', 'def-dep.extended-conjugate',
@@ -88879,9 +88808,9 @@ window.MG = window.MG || {};
     ['def.complex-measure', 'def.regular-measure', 'def-dep.complex-regular-measure',
       '同一条对**复测度**再说一遍。'],
     ['def.metric-space', 'def.shrinks-nicely', 'def-dep.metric-shrinks-nicely',
-      '「$E_r \\subseteq B(r, x)$」里的 $B(r, x)$ 是**距离空间**里的球。'],
+      '「$E_r \\subseteq B(x, r)$」里的 $B(x, r)$ 是**距离空间**里的球。'],
     ['def.measure', 'def.shrinks-nicely', 'def-dep.measure-shrinks-nicely',
-      '「$m(E_r) > \\alpha \\cdot m(B(r, x))$」里的 $m$ 是一个**测度**。'],
+      '「$m(E_r) > \\alpha \\cdot m(B(x, r))$」里的 $m$ 是一个**测度**。'],
     ['def.lplus', 'def.integral-simple', 'def-dep.lplus-integral-simple',
       '标准形式写的是「$\\varphi \\in L^+$ 是简单函数」—— 定义域落在 $L^+$ 里。'],
     /* --------------------------------------------------- 范畴论（地基） */
@@ -89221,8 +89150,6 @@ window.MG = window.MG || {};
     /* ------------------------------- 紧生成空间与弱 Hausdorff（18 条那一批） */
     ['def.topology', 'def.compactly-generated', 'def-dep.cg-topology',
       '紧生成说的是**拓扑空间**上的一条性质。'],
-    ['def.chaus', 'def.compactly-generated', 'def-dep.cg-chaus',
-      '测试空间取的是**紧 Hausdorff** 空间。'],
     ['def.compactly-generated', 'def.k-topology', 'def-dep.ktopo-cg',
       '$k$-开集就是用「从**紧 Hausdorff** 空间进来的映射」去测。'],
     ['def.quotient-topology', 'def.k-topology', 'def-dep.ktopo-quotient',
@@ -89235,16 +89162,8 @@ window.MG = window.MG || {};
       '余反射的函子 $k$ 就是**换成 $k$-拓扑**。'],
     ['def.compactly-generated', 'prop.cg-coreflective', 'def-dep.cgcoref-cg',
       '标的范畴 $k\\mathbf{Top}$ 是**紧生成**空间。'],
-    ['def.adjoint', 'prop.cg-coreflective', 'def-dep.cgcoref-adjoint',
-      '「余反射」= 含入函子有**右伴随**。'],
-    ['def.quotient-topology', 'thm.quotient-product', 'def-dep.quotprod-quotient',
-      '定理说的是**商映射**。'],
-    ['def.product-topology', 'thm.quotient-product', 'def-dep.quotprod-product',
-      '结论说的是**乘积** $X \\times Z \\to Y \\times Z$。'],
     ['def.compactly-generated', 'cor.cg-product', 'def-dep.cgprod-cg',
       '推论说的是**紧生成**空间作积。'],
-    ['def.k-topology', 'prop.k-product', 'def-dep.kprod-ktopo',
-      '两边的 $k$ 都是**$k$-化**。'],
     ['def.product-topology', 'prop.k-product', 'def-dep.kprod-product',
       '式子说的是**积**与 $k$-化的交换。'],
     ['def.hausdorff', 'def.weak-hausdorff', 'def-dep.weakhaus-hausdorff',
@@ -89291,14 +89210,10 @@ window.MG = window.MG || {};
       '正规子群先要是**群**的子群。'],
     ['def.quotient-set', 'def.quotient-group', 'def-dep.quotgroup-quotientset',
       '商群 = 陪集做成的**商集**再加一层运算。'],
-    ['def.normal-subgroup', 'def.quotient-group', 'def-dep.quotgroup-normal',
-      '商群只对**正规**子群有。'],
     ['def.group', 'def.group-hom', 'def-dep.grouphom-group',
       '同态是两个**群**之间的映射。'],
     ['def.normal-subgroup', 'def.group-hom', 'def-dep.grouphom-kernel',
       '核是**正规**子群。'],
-    ['def.quotient-group', 'thm.first-iso', 'def-dep.firstiso-quotient',
-      '$G/\\ker\\varphi$ 是**商群**。'],
     ['def.group-hom', 'thm.first-iso', 'def-dep.firstiso-hom',
       '定理的输入是一个**群同态**（要用到它的核与像）。'],
     ['def.group', 'def.field', 'def-dep.field-group',
@@ -89877,8 +89792,6 @@ window.MG = window.MG || {};
       '结论给出的是一个**双复形**。'],
     ['def.spectral-sequence', 'lem.cartan-eilenberg', 'def-dep.carteil-spectral',
       '它的用途是保证两类过滤给出**相容谱序列**。'],
-    ['def.sheaf-cohomology', 'prop.filtered-limit-cohomology', 'def-dep.flimcohom-cohom',
-      '结论算的是**层上同调**。'],
     ['def.chaus', 'prop.filtered-limit-cohomology', 'def-dep.flimcohom-chaus',
       '空间是一族**紧 Hausdorff** 空间的滤过极限。'],
     ['def.ring', 'def.boolean-ring', 'def-dep.boolring-ring',

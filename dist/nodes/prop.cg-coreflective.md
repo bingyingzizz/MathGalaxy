@@ -11,7 +11,7 @@ layer 18 · 命题 · 紧生成空间与弱 Hausdorff · 拓扑学
 - …另有入边，续页见 [nodes/prop.cg-coreflective.4.md](./prop.cg-coreflective.4.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/prop.cg-coreflective.6.md](./prop.cg-coreflective.6.md)
+- …另有出边，续页见 [nodes/prop.cg-coreflective.5.md](./prop.cg-coreflective.5.md)
 
 ## English abstract · reviewed by bingyingzizz (2026-10-16) · Chinese is authoritative
 > English abstract 续见 [nodes/prop.cg-coreflective.3.md](./prop.cg-coreflective.3.md)

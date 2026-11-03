@@ -5,7 +5,7 @@ layer 22 · 定义 · 微分定理 · 实变函数+数学分析
 
 设 $f \in L^1_{loc}$。定义
 
-$$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
+$$Hf(x) := \sup_{r > 0} \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
 
 称为 $f$ 的 **Hardy–Littlewood 极大函数**。
 

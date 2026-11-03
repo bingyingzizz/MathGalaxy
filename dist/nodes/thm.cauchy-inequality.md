@@ -5,9 +5,9 @@ layer 22 · 定理 · Cauchy 理论 · 复变函数
 
 **白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。
 
-设 $f$ 在圆盘 $D = D(z_0, R)$ 上全纯，记
+设 $f$ 在圆盘 $B(z_0, R)$ 上全纯，记
 
-$$M(R) := \sup_{z \in D(z_0, R)} |f(z)|.$$
+$$M(R) := \sup_{z \in B(z_0, R)} |f(z)|.$$
 
 则对每个 $n = 0, 1, 2, \cdots$，
 > 陈述续见 [nodes/thm.cauchy-inequality.2.md](./thm.cauchy-inequality.2.md)

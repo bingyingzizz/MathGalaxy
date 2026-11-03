@@ -70,7 +70,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 投射消解（projective resolutions）一节 · Comparison Theorem'
       ]
     },
-
     {
       id: 'prop.resolution-homotopy',
       cluster: 'hom.resolution',
@@ -105,7 +104,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 投射消解（projective resolutions）一节 · 两条消解同伦等价'
       ]
     },
-
     {
       id: 'def.deleted-resolution',
       cluster: 'hom.resolution',
@@ -231,7 +229,6 @@ window.MG = window.MG || {};
         'Eisenbud, Commutative Algebra with a View Toward Algebraic Geometry, 自由消解（free resolutions）的部分 · syzygy'
       ]
     },
-
     {
       id: 'lem.schanuel',
       cluster: 'hom.resolution',
@@ -269,7 +266,6 @@ window.MG = window.MG || {};
         'Cartan–Eilenberg, Homological Algebra (1956), 关于合冲与维数的部分 · Schanuel 引理'
       ]
     },
-
     {
       id: 'prop.syzygy-stability',
       cluster: 'hom.resolution',
@@ -337,7 +333,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于投射维数（projective dimension）的部分'
       ]
     },
-
     {
       id: 'def.injective-dimension',
       cluster: 'hom.resolution',
@@ -369,7 +364,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于内射维数（injective dimension）的部分'
       ]
     },
-
     {
       id: 'def.global-dimension',
       cluster: 'hom.resolution',
@@ -407,7 +401,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于整体维数（global dimension）与半单环的部分'
       ]
     },
-
     {
       id: 'prop.pd-vanishing',
       cluster: 'hom.resolution',
@@ -459,7 +452,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于投射维数与 Ext 消失的部分'
       ]
     },
-
     {
       id: 'cor.gldim-pid',
       cluster: 'hom.resolution',
@@ -535,7 +527,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于维数转移（dimension shifting）的部分'
       ]
     },
-
     {
       id: 'thm.ext-balanced',
       cluster: 'hom.resolution',
@@ -567,7 +558,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于平衡函子（balanced functors）的部分'
       ]
     },
-
     {
       id: 'thm.ext1-extensions',
       cluster: 'hom.resolution',
@@ -651,7 +641,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于平坦模（flat modules）的部分'
       ]
     },
-
     {
       id: 'def.tor',
       cluster: 'hom.flat',
@@ -679,7 +668,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于 Tor（torsion product）的部分'
       ]
     },
-
     {
       id: 'prop.tor-symmetry',
       cluster: 'hom.flat',
@@ -710,7 +698,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于 Tor 的对称性（symmetry）的部分'
       ]
     },
-
     {
       id: 'prop.tor-flat-vanishing',
       cluster: 'hom.flat',
@@ -761,7 +748,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于平坦模与 Tor 消失的部分'
       ]
     },
-
     {
       id: 'thm.tor-torsion',
       cluster: 'hom.flat',
@@ -797,7 +783,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于 Tor 与挠子群的部分'
       ]
     },
-
     {
       id: 'thm.lazard',
       cluster: 'hom.flat',
@@ -833,7 +818,6 @@ window.MG = window.MG || {};
         'Lazard, Autour de la platitude, Bull. Soc. Math. France 97 (1969)'
       ]
     },
-
     {
       id: 'thm.watts',
       cluster: 'hom.flat',
@@ -920,7 +904,6 @@ window.MG = window.MG || {};
         'Weibel, An Introduction to Homological Algebra, 关于万有系数定理（universal coefficient theorem）的部分'
       ]
     },
-
     {
       id: 'prop.mitchell-exactness',
       cluster: 'hom.ab',
@@ -1111,13 +1094,6 @@ window.MG = window.MG || {};
       definition: 'def.module',
       usedBy: 'def.flat-module',
       note: '平坦性说的是 $R$-模范畴里张量函子的正合性。'
-    },
-    {
-      id: 'def-link.flat-exact',
-      kind: 'definition',
-      definition: 'def.exact-functor',
-      usedBy: 'def.flat-module',
-      note: '「$-\\otimes_{R} F$ 正合」用的正是正合函子这条定义。'
     },
     {
       id: 'def-link.tor-derived',

@@ -115,7 +115,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$，$x \\in \\mathbb{R}^n$，$r > 0$。定义',
         '',
-        '$$A_r f(x) := \\frac{1}{m(B(r, x))} \\int_{B(r, x)} f(y) dy$$',
+        '$$A_r f(x) := \\frac{1}{m(B(x, r))} \\int_{B(x, r)} f(y) dy$$',
         '',
         '即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。'
       ].join('\n'),
@@ -141,16 +141,16 @@ window.MG = window.MG || {};
       notes: [
         '证明的骨架：把积分写成',
         '',
-        '$$\\int_{B(r, x)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(r, x)}(y) f(y) dy$$',
+        '$$\\int_{B(x, r)} f(y) dy = \\int_{\\mathbb{R}^n} \\chi_{B(x, r)}(y) f(y) dy$$',
         '',
-        '于是只需证 $\\chi_{B(r,x)} \\to \\chi_{B(r_0,x_0)}$（当 $(r,x) \\to (r_0,x_0)$）在足够好的意义上成立，再用 DCT。',
+        '于是只需证 $\\chi_{B(x, r)} \\to \\chi_{B(x_0, r_0)}$（当 $(x, r) \\to (x_0, r_0)$）在足够好的意义上成立，再用 DCT。',
         '分两块看（取目标点 $(r_0, x_0)$）：',
         '',
         '$\\cdot$ 若 $y$ 在球内：$\\varepsilon := r_0 - |y - x_0| > 0$；当 $|x - x_0| < \\varepsilon/2$ 且 $|r - r_0| < \\varepsilon/2$ 时 $|y - x| < r$，故 $\\chi = 1$；',
         '$\\cdot$ 若 $y$ 在球外：$\\varepsilon := |y - x_0| - r_0 > 0$；同样的小扰动下 $|y - x| > r$，故 $\\chi = 0$。',
         '',
         '两边合起来说明：对**几乎处处的** $y$（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。',
-        '控制函数取 $\\chi_{B(r_0+1, x_0)}(y)\\cdot|f(y)| \\in L^1$，由 **DCT** 得连续性。∎'
+        '控制函数取 $\\chi_{B(x_0, r_0+1)}(y)\\cdot|f(y)| \\in L^1$，由 **DCT** 得连续性。∎'
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Lemma 3.16']
     },
@@ -166,7 +166,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$。定义',
         '',
-        '$$Hf(x) := \\sup_{r > 0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
+        '$$Hf(x) := \\sup_{r > 0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y)| dy = \\sup_{r > 0} A_r |f|(x)$$',
         '',
         '称为 $f$ 的 **Hardy–Littlewood 极大函数**。'
       ].join('\n'),
@@ -231,7 +231,7 @@ window.MG = window.MG || {};
       statement: [
         '设 $f \\in L^1_{loc}$。定义',
         '',
-        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(r, x))} \\int_{B(r, x)} |f(y) - f(x)| dy = 0 \\}$$',
+        '$$L_f := \\{ x : \\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy = 0 \\}$$',
         '',
         '称为 $f$ 的 **Lebesgue 集**。'
       ].join('\n'),
@@ -262,7 +262,7 @@ window.MG = window.MG || {};
         '证明的思路很巧：对每个复数 $c$，把微分定理用在函数 $|f(x) - c|$ 上，得到「除一个零集 $E_c$ 外，$\\lim_{1/m(B)}\\int|f(y) - c|dy = |f(x) - c|$」。',
         '然后取 **$\\mathbb{C}$ 的一个可数稠密子集 $D$**，令 $E = \\bigcup_{c \\in D} E_c$（可数并仍是零集）。对 $x \\notin E$ 与任意 $\\varepsilon > 0$，取 $c \\in D$ 使 $|f(x) - c| < \\varepsilon$，于是',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy \\le |f(x) - c| + \\varepsilon < 2\\varepsilon$$',
         '',
         '令 $\\varepsilon \\to 0$ 即得。∎',
         '⭐ 「取一个可数稠密子集」这一步是可数性技巧的典型用法：把不可数多个条件化归成可数多个零集之并。'
@@ -281,12 +281,12 @@ window.MG = window.MG || {};
       statement: [
         '$\\mathbb{R}^n$ 的一族 Borel 子集 $\\{E_r\\}_{r > 0}$ 叫**可缩地趋于 $x$**，当且仅当',
         '',
-        '$\\cdot$ $E_r \\subseteq B(r, x)$ 对每个 $r$ 成立；',
-        '$\\cdot$ 存在 $\\alpha > 0$，使 $m(E_r) > \\alpha\\cdot m(B(r, x))$ 对一切 $r$ 成立。'
+        '$\\cdot$ $E_r \\subseteq B(x, r)$ 对每个 $r$ 成立；',
+        '$\\cdot$ 存在 $\\alpha > 0$，使 $m(E_r) > \\alpha\\cdot m(B(x, r))$ 对一切 $r$ 成立。'
       ].join('\n'),
       notes: [
         '两个条件的含义：**装得进去**（$E_r$ 在球里）、**不能太瘪**（体积至少是球的 $\\alpha$ 倍）。',
-        '典型例子：取 $E_r = B(r, x)$ 本身（$\\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。',
+        '典型例子：取 $E_r = B(x, r)$ 本身（$\\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。',
         '反例：$E_r$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 $x$。',
         '⭐ 引入这个概念是为了让微分定理**不依赖球的形状**：只要不瘪，结论照旧。'
       ].join('\n\n'),
@@ -308,9 +308,9 @@ window.MG = window.MG || {};
         '$$\\lim_{r\\to0} \\frac{1}{m(E_r)} \\int_{E_r} f(y) dy = f(x)$$'
       ].join('\n'),
       notes: [
-        '证明是一行估计：由 $E_r \\subseteq B(r,x)$ 与 $m(E_r) > \\alpha m(B(r,x))$，',
+        '证明是一行估计：由 $E_r \\subseteq B(x, r)$ 与 $m(E_r) > \\alpha m(B(x, r))$，',
         '',
-        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f - f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f - f(x)| \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f - f(x)|$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f - f(x)| \\le \\frac{1}{m(E_r)} \\int_{B(x, r)} |f - f(x)| \\le (1/\\alpha)\\cdot m(B(x, r)) \\int_{B(x, r)} |f - f(x)|$$',
         '',
         '而最右边由「$x \\in L_f$」趋于 0。∎',
         '⭐ 全部难度都在把 L_f 的定义选对（用 $|f(y) - f(x)|$ 而不是 $|f(y)|$）—— 选对之后这一步就是白送的。'
@@ -360,7 +360,7 @@ window.MG = window.MG || {};
       notes: [
         '⭐ 这条定理把 Radon–Nikodym 导数从「抽象的存在物」变成了**可以逐点算出来的极限**：',
         '',
-        '$$f(x) = \\lim_{r\\to0} \\nu(B(r, x)) / m(B(r, x))$$',
+        '$$f(x) = \\lim_{r\\to0} \\nu(B(x, r)) / m(B(x, r))$$',
         '',
         '这正是微积分里「密度 $=$ 质量 / 体积」的严格版本，也是「RN 导数是导数的推广」这一说法的根据。',
         '证明的思路：先验证 $d|\\nu| = d|\\lambda| + |f| dm$，于是 $\\lambda$ 与 f dm 都正则、特别地 $f \\in L^1_{loc}$；把比值拆成',
@@ -384,11 +384,11 @@ window.MG = window.MG || {};
       proof: [
         '**① 把坏集换成球族。** 令 $E_\\alpha = \\{x : Hf(x) > \\alpha\\}$。对每个 $x \\in E_\\alpha$，由 Hf 的定义（上确界）存在 $r_x > 0$ 使',
         '',
-        '$$A_{r_x}|f|(x) > \\alpha\\quad  \\iff\\quad  \\int_{B(r_x, x)} |f(y)| dy > \\alpha\\cdot m(B(r_x, x))$$',
+        '$$A_{r_x}|f|(x) > \\alpha\\quad  \\iff\\quad  \\int_{B(x, r_x)} |f(y)| dy > \\alpha\\cdot m(B(x, r_x))$$',
         '',
-        '于是 $\\{B(r_x, x)\\}_{x \\in E_\\alpha}$ 是 $E_\\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
+        '于是 $\\{B(x, r_x)\\}_{x \\in E_\\alpha}$ 是 $E_\\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。',
         '',
-        '**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\\alpha)$（先设 $m(E_\\alpha ) < \\infty$）。由**覆盖引理**，存在 $x_1, \\ldots , x_k \\in E_\\alpha$ 使 $B_j = B(r_{x_j}, x_j)$ 两两不交，且',
+        '**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\\alpha)$（先设 $m(E_\\alpha ) < \\infty$）。由**覆盖引理**，存在 $x_1, \\ldots , x_k \\in E_\\alpha$ 使 $B_j = B(x_j, r_{x_j})$ 两两不交，且',
         '',
         '$$\\sum_j m(B_j) > 3^{-n} c$$',
         '',
@@ -456,7 +456,7 @@ window.MG = window.MG || {};
       proof: [
         '**① 对每个复数 $c$ 用一次微分定理。** 固定 $c \\in \\mathbb{C}$，把微分定理用在函数 $h(x) = |f(x) - c|$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $E_c$，使对 $x \\notin E_c$，',
         '',
-        '$$\\lim_{r\\to0} \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy = |f(x) - c|$$',
+        '$$\\lim_{r\\to0} \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - c| dy = |f(x) - c|$$',
         '',
         '**② 只取可数多个 $c$。** 取 $\\mathbb{C}$ 的一个**可数稠密子集** $D$（比如 $\\mathbb{Q} + i\\mathbb{Q}$），令',
         '',
@@ -466,7 +466,7 @@ window.MG = window.MG || {};
         '',
         '**③ 在 $E$ 外验证**。设 $x \\notin E$，任给 $\\varepsilon > 0$，取 $c \\in D$ 使 $|f(x) - c| < \\varepsilon$。则',
         '',
-        '$$\\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - f(x)| dy \\le \\frac{1}{m(B(r,x))} \\int_{B(r,x)} |f(y) - c| dy + |f(x) - c|$$',
+        '$$\\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - f(x)| dy \\le \\frac{1}{m(B(x, r))} \\int_{B(x, r)} |f(y) - c| dy + |f(x) - c|$$',
         '',
         '右边第一项由 ①（$x \\notin E_c$）在 $r \\to 0$ 时趋于 $|f(x) - c|$，于是整个右端的极限 $\\le$ $|f(x) - c| + \\varepsilon < 2\\varepsilon$。令 $\\varepsilon \\to 0$ 得极限为 0，即 $x \\in L_f$。',
         '',
@@ -482,11 +482,11 @@ window.MG = window.MG || {};
       target: 'thm.differentiation-general',
       title: 'Lebesgue 集 + 可缩条件 $\\implies$ 一般族的微分定理',
       proof: [
-        '设 $x \\in L_f$，$\\{E_r\\}$ 可缩地趋于 $x$，即 $E_r \\subseteq B(r,x)$ 且 $m(E_r) > \\alpha\\cdot m(B(r,x))$。',
+        '设 $x \\in L_f$，$\\{E_r\\}$ 可缩地趋于 $x$，即 $E_r \\subseteq B(x, r)$ 且 $m(E_r) > \\alpha\\cdot m(B(x, r))$。',
         '',
-        '**① 关键估计（一行）。** 因为 $E_r \\subseteq B(r,x)$，把积分域放大到球上只会变大；再用 $m(E_r) > \\alpha m(B(r,x))$ 把分母换小：',
+        '**① 关键估计（一行）。** 因为 $E_r \\subseteq B(x, r)$，把积分域放大到球上只会变大；再用 $m(E_r) > \\alpha m(B(x, r))$ 把分母换小：',
         '',
-        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(r,x)} |f(y) - f(x)| dy \\le (1/\\alpha)\\cdot m(B(r,x)) \\int_{B(r,x)} |f(y) - f(x)| dy$$',
+        '$$\\frac{1}{m(E_r)} \\int_{E_r} |f(y) - f(x)| dy \\le \\frac{1}{m(E_r)} \\int_{B(x, r)} |f(y) - f(x)| dy \\le (1/\\alpha)\\cdot m(B(x, r)) \\int_{B(x, r)} |f(y) - f(x)| dy$$',
         '',
         '**② 收尾。** 由 $x \\in L_f$ 的定义，最右边当 $r \\to 0$ 时趋于 0。故第一个极限为 0。',
         '',
@@ -520,7 +520,7 @@ window.MG = window.MG || {};
         '',
         '**③ 把 $\\lambda$ 的坏点收集起来。** 不妨设 $\\lambda \\ge 0$，并取 $A$ 使 $\\lambda(A) = m(A^c) = 0$（$\\lambda \\perp m$ 的见证）。令',
         '',
-        '$$F_k = \\{ x \\in A : \\limsup_{r\\to0} \\lambda(B(r, x)) / m(B(r, x)) > 1 / k \\}$$',
+        '$$F_k = \\{ x \\in A : \\limsup_{r\\to0} \\lambda(B(x, r)) / m(B(x, r)) > 1 / k \\}$$',
         '',
         '**④ 用正则性把 $\\lambda$ 压小。** 给定 $\\varepsilon > 0$，由 $\\lambda$ 的正则性（从外面用开集逼近）取开集 $U \\supseteq A$ 使 $\\lambda(U) < \\varepsilon$（注意 $\\lambda(A) = 0$，但 $U$ 比 $A$ 大，多出来的部分也可以做得任意小）。',
         '',
@@ -532,13 +532,13 @@ window.MG = window.MG || {};
         '',
         '$$c < 3^n \\sum_i m(B_{x_i}) \\le 3^n k \\sum_i \\lambda(B_{x_i}) \\le 3^n k\\cdot\\lambda(V_\\varepsilon) \\le 3^n k \\varepsilon$$',
         '',
-        '**⑦ 令 $\\varepsilon \\to 0$。** 得 $m(V_\\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\\lim_{r\\to0} \\lambda(B(r,x))/m(B(r,x)) = 0$ 对 m-a.e. x 成立。',
+        '**⑦ 令 $\\varepsilon \\to 0$。** 得 $m(V_\\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\\lim_{r\\to0} \\lambda(B(x, r))/m(B(x, r)) = 0$ 对 m-a.e. x 成立。',
         '',
         '**⑧ 从球换到可缩族。** 上面用的是球；要换成一般的可缩族 $E_r$，用',
         '',
-        '$$\\lambda(E_r) / m(E_r) \\le \\lambda(B(r,x)) / m(E_r) \\le (1/\\alpha)\\cdot\\lambda(B(r,x)) / m(B(r,x)) \\to 0$$',
+        '$$\\lambda(E_r) / m(E_r) \\le \\lambda(B(x, r)) / m(E_r) \\le (1/\\alpha)\\cdot\\lambda(B(x, r)) / m(B(x, r)) \\to 0$$',
         '',
-        '（第二个不等号用了 $m(E_r) > \\alpha m(B(r,x))$，并且 $E_r \\subseteq B(r,x)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎'
+        '（第二个不等号用了 $m(E_r) > \\alpha m(B(x, r))$，并且 $E_r \\subseteq B(x, r)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎'
       ].join('\n'),
       note: '⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 $=$ 质量/体积」的严格版本。'
     },

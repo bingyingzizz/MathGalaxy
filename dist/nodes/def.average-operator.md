@@ -5,7 +5,7 @@ layer 21 · 定义 · 微分定理 · 实变函数+数学分析
 
 设 $f \in L^1_{loc}$，$x \in \mathbb{R}^n$，$r > 0$。定义
 
-$$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
+$$A_r f(x) := \frac{1}{m(B(x, r))} \int_{B(x, r)} f(y) dy$$
 
 即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。
 

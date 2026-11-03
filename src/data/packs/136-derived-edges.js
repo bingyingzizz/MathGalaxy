@@ -244,7 +244,7 @@ window.MG = window.MG || {};
       proof: [
         '平均算子定义为',
         '',
-        '$$A_{r}f(x) := \\frac{1}{m\\bigl(B(r,x)\\bigr)}\\int_{B(r,x)} f\\,\\mathrm{d}m,$$',
+        '$$A_{r}f(x) := \\frac{1}{m\\bigl(B(x, r)\\bigr)}\\int_{B(x, r)} f\\,\\mathrm{d}m,$$',
         '',
         '即 $f$ 在球上的平均值。Lebesgue 微分定理说：对 $f \\in L^{1}_{\\mathrm{loc}}$，',
         '',
@@ -342,9 +342,9 @@ window.MG = window.MG || {};
       target: 'thm.harmonic-mean-value',
       title: 'Poisson 积分公式在圆心处退化成均值性质',
       proof: [
-        '**先取得全纯函数。** 圆盘 $D(a,r)$ 单连通，由调和函数的共轭，$D(a,r)$ 上的调和 $u$ 是某个全纯函数 $f$ 的实部。',
+        '**先取得全纯函数。** 圆盘 $B(a, r)$ 单连通，由调和函数的共轭，$B(a, r)$ 上的调和 $u$ 是某个全纯函数 $f$ 的实部。',
         '',
-        '**把原点搬到 $a$。** 令 $v(h) := u(a+h)$，则 $v$ 在 $D(0,r)$ 上调和，且仍是全纯函数的实部（取 $f(a+h)$）。',
+        '**把原点搬到 $a$。** 令 $v(h) := u(a+h)$，则 $v$ 在 $B(0, r)$ 上调和，且仍是全纯函数的实部（取 $f(a+h)$）。',
         '',
         '**Poisson 公式**（对 $v$，$0 < \\rho < r$、$|z| < \\rho$）：',
         '',
@@ -358,7 +358,7 @@ window.MG = window.MG || {};
         '',
         '**面积平均。** 对 $s \\in (0,r)$ 用一圈的均值 $u(a) = \\frac{1}{2\\pi}\\int_{0}^{2\\pi}u(a+se^{i\\theta})\\,\\mathrm{d}\\theta$，再乘 $2\\pi s$ 对 $s$ 积分并用极坐标：',
         '',
-        '$$\\iint_{D(a,r)} u\\,\\mathrm{d}x\\,\\mathrm{d}y = \\int_{0}^{r} 2\\pi s\\, u(a)\\,\\mathrm{d}s = \\pi r^{2} u(a).$$',
+        '$$\\iint_{B(a, r)} u\\,\\mathrm{d}x\\,\\mathrm{d}y = \\int_{0}^{r} 2\\pi s\\, u(a)\\,\\mathrm{d}s = \\pi r^{2} u(a).$$',
         '',
         '两条合起来就是均值性质。$\\blacksquare$'
       ].join('\n'),

@@ -52,7 +52,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.5', 'Halmos, Measure Theory, §35']
     },
-
     {
       id: 'def.section',
       cluster: 'analysis.product',
@@ -79,7 +78,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, §2.5']
     },
-
     {
       id: 'prop.section-measurable',
       cluster: 'analysis.product',
@@ -107,8 +105,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Prop. 2.34']
     },
-
-
     {
       id: 'thm.product-measure-sections',
       cluster: 'analysis.product',
@@ -141,7 +137,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.36']
     },
-
     {
       id: 'thm.fubini-tonelli',
       cluster: 'analysis.product',
@@ -175,7 +170,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.37']
     },
-
     {
       id: 'thm.fubini-complete',
       cluster: 'analysis.product',
@@ -204,7 +198,6 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: ['Folland, Real Analysis, Theorem 2.39']
     },
-
     {
       id: 'prop.product-incomplete',
       cluster: 'analysis.product',
@@ -244,7 +237,6 @@ window.MG = window.MG || {};
         '$>$ ⭐ 这一段没有任何新东西 —— 全是把「测度的构造」那个星团的机器搬过来用一次。这也正是那个星团存在的理由：**它是所有具体测度的生产线**。'
       ].join('\n')
     },
-
     {
       id: 'imp.section-measurable',
       kind: 'implication',
@@ -271,7 +263,6 @@ window.MG = window.MG || {};
         '而 $f^{-1}(B) \\in \\mathcal{M} \\otimes  \\mathcal{N}$，由 (a) 它的纵截口属于 $\\mathcal{N}$，即 $f_x^{-1}(B) \\in \\mathcal{N}$。所以 $f_x$ 可测。横截口同理。∎'
       ].join('\n')
     },
-
     {
       id: 'imp.product-sections',
       kind: 'implication',
@@ -301,7 +292,6 @@ window.MG = window.MG || {};
         '$>$ ⚠ $\\sigma$有限正是在 ⑥ 用掉的：没有它，就没法把无穷测度的空间切成可数块有限块。'
       ].join('\n')
     },
-
     {
       id: 'imp.tonelli',
       kind: 'implication',
@@ -344,7 +334,6 @@ window.MG = window.MG || {};
         '$>$ ⭐ 分工很干净：**Tonelli 负责非负（无条件），Fubini 用「可积」把四个非负部分的结论拼起来**。'
       ].join('\n')
     },
-
     {
       id: 'imp.fubini-complete',
       kind: 'implication',
@@ -373,7 +362,6 @@ window.MG = window.MG || {};
         '$>$ 要点：**核心就是把 $E$ 拆成 $F \\sqcup G$** —— $F$ 归老定理、$G$ 归「截口都是零集」。'
       ].join('\n')
     },
-
     {
       id: 'imp.product-incomplete',
       kind: 'implication',
@@ -428,13 +416,6 @@ window.MG = window.MG || {};
       definition: 'def.monotone-class',
       usedBy: 'thm.product-measure-sections',
       note: '截口公式的证明走的正是单调类定理：先验证矩形成立，再说明「满足它的集合」构成一个单调类。'
-    },
-    {
-      id: 'def-link.generated-monotone-lemma',
-      kind: 'definition',
-      definition: 'def.generated-sigma',
-      usedBy: 'thm.monotone-class',
-      note: '定理的陈述里用到 $\\mathfrak{m}(\\mathcal{E})$ 与 $\\mathcal{M}(\\mathcal{E})$ 两个生成记号。'
     },
     {
       id: 'def-link.productmeasure-sections-thm',

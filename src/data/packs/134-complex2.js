@@ -172,7 +172,7 @@ window.MG = window.MG || {};
         '',
         '⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。',
         '',
-        '⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \\min_{|z - z_0| = r}|f| > 0$；\n\n$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \\le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。',
+        '⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\\overline{B(z_0, r)}$ 内只有这一个零点，则 $m = \\min_{|z - z_0| = r}|f| > 0$；\n\n$f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \\le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。',
         '',
         '📌 与 Morera 定理互补：Morera 管「极限全纯」，Hurwitz 管「极限的零点从哪来」。两者一起说明：全纯函数的一些**离散**性质在一致极限下是封闭的。'
       ].join('\n'),
@@ -401,13 +401,13 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：调和函数在一点的值，等于它在以该点为心、任意半径的圆周上的平均值；也等于圆盘上的面积平均值。',
         '',
-        '设 $u$ 在 $D(a, R)$ 上调和，$0 < r < R$。则',
+        '设 $u$ 在 $B(a, R)$ 上调和，$0 < r < R$。则',
         '',
         '$$u(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u(a + r e^{i\\theta})\\,\\mathrm{d}\\theta,$$',
         '',
         '并且（面积平均）',
         '',
-        '$$u(a) = \\frac{1}{\\pi r^2}\\iint_{D(a, r)} u(x, y)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$'
+        '$$u(a) = \\frac{1}{\\pi r^2}\\iint_{B(a, r)} u(x, y)\\,\\mathrm{d}x\\,\\mathrm{d}y.$$'
       ].join('\n'),
       notes: [
         '⭐ 证明只有两步：把 $u$ 写成全纯函数 $f$ 的实部（圆盘单连通），再对 Cauchy 积分公式 $f(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(a + r e^{i\\theta})\\,\\mathrm{d}\\theta$ 两边取实部。',
@@ -416,7 +416,7 @@ window.MG = window.MG || {};
         '',
         '⚠ 均值必须对**整个圆周**取，不能只对正上方那几个点取；也不能对任意闭曲线取 —— 那正是 Poisson 公式要回答的事。',
         '',
-        '⚠ $u$ 只需在 $D(a, r)$ 的**内部**调和，不要求闭圆盘上调和。',
+        '⚠ $u$ 只需在 $B(a, r)$ 的**内部**调和，不要求闭圆盘上调和。',
         '',
         '📌 均值性质直接推出最大值原理（见「调和函数的最大值原理」那条），也是「调和函数实解析」的出发点（把积分展成幂级数）。'
       ].join('\n'),
@@ -433,7 +433,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：圆内的取值由边界上的取值**唯一决定**，而且是有明确公式的加权平均 —— 权重就是 Poisson 核，它在边界附近会「尖起来」。',
         '',
-        '设 $f$ 在 $D(0, R)$ 的邻域上全纯，$u = \\operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，',
+        '设 $f$ 在 $B(0, R)$ 的邻域上全纯，$u = \\operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，',
         '',
         '$$u(z) = \\frac{1}{2\\pi}\\int_0^{2\\pi} \\frac{r^2 - |z|^2}{|r e^{i\\theta} - z|^2}\\, u(r e^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
@@ -736,9 +736,9 @@ window.MG = window.MG || {};
       target: 'thm.morera',
       title: '连续 + 沿闭三角形积分为零 $\\implies$ 全纯',
       proof: [
-        '在 $\\Omega$ 内任取一个圆盘 $D(a, r) \\subset \\Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。',
+        '在 $\\Omega$ 内任取一个圆盘 $B(a, r) \\subset \\Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。',
         '',
-        '**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \\in D(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义',
+        '**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \\in B(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义',
         '',
         '$$F(z) := \\int_{x_0}^{x} f(t + i y_0)\\,\\mathrm{d}t + \\int_{y_0}^{y} f(x + i t)\\,\\mathrm{d}t.$$',
         '',
@@ -748,7 +748,7 @@ window.MG = window.MG || {};
         '',
         '$$F(z + h) - F(z) = \\int_{x}^{x + h} f(t + i y)\\,\\mathrm{d}t,$$',
         '',
-        '除以 $h$ 后用 $f$ 的**连续性**：$\\dfrac{1}{h}\\displaystyle\\int_x^{x+h} f(t + iy)\\,\\mathrm{d}t \\to f(x + iy) = f(z)$（$h \\to 0$）。竖直方向同理。所以 $F$ 在 $D(a, r)$ 内复可微且 $F\' = f$。',
+        '除以 $h$ 后用 $f$ 的**连续性**：$\\dfrac{1}{h}\\displaystyle\\int_x^{x+h} f(t + iy)\\,\\mathrm{d}t \\to f(x + iy) = f(z)$（$h \\to 0$）。竖直方向同理。所以 $F$ 在 $B(a, r)$ 内复可微且 $F\' = f$。',
         '',
         '**第三步：$f$ 全纯。** $F$ 全纯 $\\implies$ $F$ 无穷次可微（Taylor 展开）$\\implies$ $F\' = f$ 也全纯，且 $f$ 在该点有 Taylor 展开。圆盘任取，故 $f$ 在 $\\Omega$ 上全纯。$\\blacksquare$'
       ].join('\n'),
@@ -818,13 +818,13 @@ window.MG = window.MG || {};
       proof: [
         '设 $f$ 不恒为零，且 $f(z_0) = 0$。只需在这个零点处导出矛盾。',
         '',
-        '**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\\overline{D(z_0, r)} \\subset \\Omega$，且 $f$ 在 $\\overline{D(z_0, r)}$ 内只有 $z_0$ 一个零点。令',
+        '**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\\overline{B(z_0, r)} \\subset \\Omega$，且 $f$ 在 $\\overline{B(z_0, r)}$ 内只有 $z_0$ 一个零点。令',
         '',
         '$$m := \\min_{|z - z_0| = r} |f(z)| > 0$$',
         '',
         '（圆周上无零点，连续函数在紧集上有正的最小值）。',
         '',
-        '**第二步：一致收敛让扰动变小。** 在紧集 $\\overline{D(z_0, r)}$ 上 $f_k \\rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点',
+        '**第二步：一致收敛让扰动变小。** 在紧集 $\\overline{B(z_0, r)}$ 上 $f_k \\rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点',
         '',
         '$$|f_k(z) - f(z)| \\le \\|f_k - f\\|_{\\infty} < m \\le |f(z)|.$$',
         '',
@@ -915,7 +915,7 @@ window.MG = window.MG || {};
         '',
         '**第四步：面积平均。** 把上式中的 $r$ 换成 $\\rho$ 再乘 $\\rho$，在 $0 < \\rho < r$ 上积分：',
         '',
-        '$$\\int_0^{r} 2\\pi u(a)\\,\\rho\\,\\mathrm{d}\\rho = \\int_0^{r}\\int_0^{2\\pi} u(a + \\rho e^{i\\theta})\\,\\rho\\,\\mathrm{d}\\theta\\,\\mathrm{d}\\rho = \\iint_{D(a, r)} u\\,\\mathrm{d}A.$$',
+        '$$\\int_0^{r} 2\\pi u(a)\\,\\rho\\,\\mathrm{d}\\rho = \\int_0^{r}\\int_0^{2\\pi} u(a + \\rho e^{i\\theta})\\,\\rho\\,\\mathrm{d}\\theta\\,\\mathrm{d}\\rho = \\iint_{B(a, r)} u\\,\\mathrm{d}A.$$',
         '',
         '左边 $= \\pi r^2 u(a)$，两边除以 $\\pi r^2$ 即得面积形式。$\\blacksquare$'
       ].join('\n')
@@ -927,7 +927,7 @@ window.MG = window.MG || {};
       target: 'thm.poisson-formula',
       title: 'Cauchy 积分公式 + 调和 $\\implies$ Poisson 公式',
       proof: [
-        '设 $f$ 在 $D(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \\operatorname{Re} f$。',
+        '设 $f$ 在 $B(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \\operatorname{Re} f$。',
         '',
         '**第一步：把圆周积分写成 $\\theta$。** 在 $|\\zeta| = r$ 上 $\\mathrm{d}\\zeta = i\\zeta\\,\\mathrm{d}\\theta$，故',
         '',
@@ -987,13 +987,13 @@ window.MG = window.MG || {};
         '',
         '**第二步：$E$ 是闭的。** $u$ 连续，$E$ 是闭集 $\\{M\\}$ 在 $\\Omega$ 中的原像。',
         '',
-        '**第三步：$E$ 是开的。** 取 $a \\in E$，取 $r > 0$ 使 $\\overline{D(a, r)} \\subset \\Omega$。由均值性质',
+        '**第三步：$E$ 是开的。** 取 $a \\in E$，取 $r > 0$ 使 $\\overline{B(a, r)} \\subset \\Omega$。由均值性质',
         '',
         '$$M = u(a) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u(a + r e^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
         '被积函数逐点 $\\le M$，而它们的平均恰好是 $M$ $\\implies$ 被积函数在**整个圆周**上恒等于 $M$；否则若某一段严格小于 $M$，由连续性就有一段正长度的区间严格小于 $M$，积分随之严格小于 $M$。\n\n' +
         '所以圆周落在 $E$ 里；\n\n' +
-        '对每个 $0 < \\rho \\le r$ 同理，于是 $D(a, r) \\subset E$。',
+        '对每个 $0 < \\rho \\le r$ 同理，于是 $B(a, r) \\subset E$。',
         '',
         '**第四步：连通性。** $\\Omega$ 连通而 $E$ 非空、既开又闭，故 $E = \\Omega$，即 $u \\equiv M$。取逆否命题：$u$ 非常数 $\\implies$ 内部取不到最大值。',
         '',

@@ -500,7 +500,6 @@ window.MG = window.MG || {};
       usedBy: 'prop.lp-inclusion-finite',
       note: '前提 $\\mu(X) < \\infty$ 用的是**有限测度**这个概念。'
     },
-
     {
       id: 'def-link.sup-real-ordered-field',
       kind: 'definition',
@@ -1313,13 +1312,6 @@ window.MG = window.MG || {};
       note: '限制到**紧生成空间**上时那个函子变得全忠实。'
     },
     {
-      id: 'def-dep.cg-coreflective',
-      kind: 'definition',
-      definition: 'def.compactly-generated',
-      usedBy: 'prop.cg-coreflective',
-      note: '命题说的是**紧生成空间**是余反射子范畴。'
-    },
-    {
       id: 'def-dep.adjoint-cg-coreflective',
       kind: 'definition',
       definition: 'def.adjoint',
@@ -1569,13 +1561,6 @@ window.MG = window.MG || {};
       definition: 'def.quotient-group',
       usedBy: 'thm.first-iso',
       note: '定理左端的 $G/\\ker\\varphi$ 是**商群**。'
-    },
-    {
-      id: 'def-dep.firstiso-kernel',
-      kind: 'definition',
-      definition: 'def.group-hom',
-      usedBy: 'thm.first-iso',
-      note: '核与像都是**群同态**的概念。'
     },
     {
       id: 'def-dep.firstiso-normal',

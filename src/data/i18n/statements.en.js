@@ -808,16 +808,16 @@ MG.i18nStatements = {
         en:
         'A family $\\{E_r\\}_{r > 0}$ of Borel subsets of $\\mathbb{R}^n$ is said to ' +
         '**shrink nicely to $x$** iff\n\n' +
-        '$\\cdot$ $E_r \\subseteq B(r, x)$ holds for every $r$;\n' +
+        '$\\cdot$ $E_r \\subseteq B(x, r)$ holds for every $r$;\n' +
         '$\\cdot$ there is $\\alpha > 0$ with ' +
-        '$m(E_r) > \\alpha\\cdot m(B(r, x))$ for every $r$.',
+        '$m(E_r) > \\alpha\\cdot m(B(x, r))$ for every $r$.',
         status: 'reviewed', basedOn: 'v0.9.3#def659f2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
         'What the two conditions say: **it fits inside** ($E_r$ lies in the ball) and **it ' +
         'is not too flat** (its volume is at least $\\alpha$ times that of the ball).\n\n' +
-        'Typical examples: take $E_r = B(r, x)$ itself ($\\alpha = 1$); or take $E_r$ to be ' +
+        'Typical examples: take $E_r = B(x, r)$ itself ($\\alpha = 1$); or take $E_r$ to be ' +
         'a fixed shape inside the ball (a cube, say), rescaled proportionally.\n\n' +
         'Counterexample: let $E_r$ be a long thin sliver inside the ball — the volume ratio ' +
         'can tend to 0, and such a family does not shrink nicely to $x$.\n\n' +

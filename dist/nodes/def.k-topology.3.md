@@ -6,5 +6,4 @@
 - 被 [`prop.k-product`](../nodes/prop.k-product.md) k-化与积 用
 - 被 [`prop.ktx-colimit`](../nodes/prop.ktx-colimit.md) kX 是紧空间的余极限 用
 - 被 [`prop.cg-coreflective`](../nodes/prop.cg-coreflective.md) 紧生成空间是余反射子范畴 用
-- 被 [`prop.k-product`](../nodes/prop.k-product.md) k-化与积 用
 - 被 [`prop.weak-hausdorff-basic`](../nodes/prop.weak-hausdorff-basic.md) 弱 Hausdorff 的基本性质 用

@@ -254,7 +254,7 @@ window.MG = window.MG || {};
     {
       id: 'imp.f-shriek-base-change',
       kind: 'implication',
-      sources: ['prop.f-shriek-base-change', 'thm.za-analytic'],
+      sources: ['def.f-shriek', 'thm.za-analytic'],
       target: 'prop.f-shriek-base-change',
       title: '仿射情形 + 基变换',
       proof: [

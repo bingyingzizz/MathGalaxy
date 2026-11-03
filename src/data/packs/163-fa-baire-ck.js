@@ -916,10 +916,7 @@ window.MG = window.MG || {};
       note: '反例（圆盘代数 $\\mathrm{Alg}(z)$）缺的正是「对共轭封闭」：$\\bar z$ 不在闭包里。'
     },
 
-    /* ------------------------------------------------ 定义引用（跨团/跨领域） */
-    { id: 'def-link.fa-vs-norm', kind: 'definition', definition: 'def.vs', usedBy: 'def.norm',
-      note: '范数加在向量空间上：第二条公理就是「与标量乘法相容」。' },
-    { id: 'def-link.fa-metric-normind', kind: 'definition', definition: 'def.metric-space', usedBy: 'prop.norm-induces-metric',
+    /* ------------------------------------------------ 定义引用（跨团/跨领域） */    { id: 'def-link.fa-metric-normind', kind: 'definition', definition: 'def.metric-space', usedBy: 'prop.norm-induces-metric',
       note: '范数诱导的距离就是度量空间那条定义里的距离，额外要求平移不变与齐次。' },
     { id: 'def-link.fa-complete-BEF', kind: 'definition', definition: 'def.complete', usedBy: 'thm.bounded-operators-banach',
       note: '这里要的是 $F$ 的度量完备（Cauchy 列收敛）。' },

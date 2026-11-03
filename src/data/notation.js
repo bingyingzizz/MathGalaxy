@@ -224,7 +224,13 @@ MG.notation = {
     { g: 'topo', tex: '\\mathcal{B}', uni: 'ℬ', name: '拓扑的一组基' },
     { g: 'topo', tex: '\\mathcal{S}', uni: '𝒮', name: '子基' },
     { g: 'topo', tex: 'd(x, y)',      uni: '', name: '距离' },
-    { g: 'topo', tex: 'B(x, \\varepsilon)', uni: '', name: '开球' },
+    { g: 'topo', tex: 'B(x, r)', uni: '', name: '开球 / 开圆盘：**中心在前、半径在后**',
+      note: '参数顺序一律 **(中心, 半径)**：$B(x, r)$、$B(x_0, \\varepsilon)$、$B(z_0, R)$。' +
+        '⛔ 不写 $B(r, x)$（半径在前是 Folland 的写法，本图不用；构建有硬门）。' +
+        '复变里的开圆盘同样写 $B(z, r)$，**不写 $D(z, r)$** —— $D$ 在本图另有三个意思（见「字母约定」的 $D$ 条）。' +
+        '单位圆盘是一个**空间的名字**，写 $\\mathbb{D}$。' },
+    { g: 'topo', tex: '\\mathbb{D}', uni: '𝔻', name: '单位圆盘 $\\{\\, z : |z| < 1 \\,\\}$',
+      note: '作为一个**有名字的空间**用（$f: \\mathbb{D} \\to \\mathbb{D}$）；带半径的一般圆盘用 $B(z, r)$。' },
     { g: 'topo', tex: '\\mathfrak{B}_X', uni: '𝔅_X', name: 'Borel σ-代数' },
 
     /* -------- 测度与 σ-代数 -------- */
@@ -338,6 +344,15 @@ MG.notation = {
       note: '交换图里竖边的方向。' },
     { g: 'layout', tex: '\\varinjlim, \\varprojlim', uni: 'lim→／lim←', name: '余极限 / 极限',
       note: '带指标的极限写作 $\\varinjlim_{(X,s)} h_{X}$；不带指标时可以用 $\\lim$、$\\operatorname{colim}$。' },
+    { g: 'layout', tex: 'A \\cong B', uni: '≅', name: '**同构**（结构相同）',
+      note: '全图最泛的关系符：群 / 环 / 模 / 拓扑空间 / 层**同构**，以及函子的**自然同构**，一律 $\\cong$。' +
+        '⛔ 不要用 $\\simeq$ 表示同构 —— 分工见下一条。' },
+    { g: 'layout', tex: 'f \\simeq g', uni: '≃', name: '同伦 / 范畴等价 / 近似（**一符三义**）',
+      note: '靠上下文分：① 映射的**同伦** $f \\simeq g$（拓扑、基本群、同伦不变性）；' +
+        '② 范畴或复形范畴的**等价**（$D(\\mathbf{Solid})^{\\omega} \\simeq D^{b}(\\mathbb Z)$）；' +
+        '③ 非正式的「近似于」。' },
+    { g: 'layout', tex: 'a \\approx b', uni: '≈', name: '数值近似相等',
+      note: '只用于数值估计，不进陈述；陈述里写不等式。' },
     { g: 'layout', tex: '\\dashv',  uni: '⊣', name: '左伴随 $F \\dashv G$',
       note: '写 $F \\dashv G$ 表示 $F$ 是 $G$ 的**左**伴随。箭头朝右也朝下，别写成 $\\vdash$（那是有穷逻辑的可推导）。' },
     { g: 'layout', tex: '\\checkmark', uni: '✓', name: '证毕时的对勾',
@@ -390,6 +405,10 @@ MG.notation = {
     { g: 'letters', tex: '\\pi',      uni: 'π', name: '投影 $\\pi_{\\alpha}$' },
     { g: 'letters', tex: '\\theta',   uni: 'θ', name: '角度' },
     { g: 'letters', tex: '\\tau',     uni: 'τ', name: '停时 / 一般函数（罕见）' },
+    { g: 'letters', tex: 'D',         uni: 'D', name: '**一符三义**：导出范畴 / 行列式多重线性函数 / （旧）圆盘',
+      note: '① $D(\\mathcal{A})$、$D^{b}(\\mathrm{Coh})$：复形的导出范畴（范畴论、凝聚态；与 $\\mathbf{K}(\\mathcal{C})$ 配对）；' +
+        '② $D(v_1, \\ldots, v_n)$：行列式**作为交错多重线性函数**（线性代数，见 `def.determinant`）；' +
+        '③ 复变里曾用 $D(z, r)$ 表示开圆盘 —— **已全库改成 $B(z, r)$**，不要再写。' },
     { g: 'letters', tex: '\\xi',      uni: 'ξ', name: '中值定理里那个「介于两者之间」的点',
       note: '$\\xi$ 只表示**存在**，位置不可控 —— 所以中值定理只能证明结构性质，不能用来计算差。' },
     { g: 'letters', tex: '\\zeta',    uni: 'ζ', name: '（罕见）' },
@@ -449,6 +468,8 @@ MG.notation = {
       { re: '\\\\complement', fix: 'A^{c}', why: '补集用上标 c' },
       { re: '\\\\impliedby', fix: '\\\\Longleftarrow', why: '同字形，只留一个写法' },
       { re: '\\\\Longleftrightarrow', fix: '\\\\iff', why: '同字形，元语言的等价一律 \\iff' },
+      { re: 'B\\(\\s*r[a-z_]*(?:\\^\\{[^}]*\\})?\\s*,', fix: 'B(x, r)',
+        why: '开球参数顺序是 (中心, 半径)：写 B(x, r)，不写 B(r, x)；复变圆盘同样写 B(z, r)，不写 D(z, r)' },
     ],
   },
 

@@ -286,7 +286,7 @@ window.MG = window.MG || {};
         '',
         '更一般地，若 $\\gamma$ 是区域内的闭曲线、$f$ 在 $\\gamma$ 内部及 $\\gamma$ 上全纯，则上式对 $\\gamma$ 内部任一点 $z$ 成立。'
       ].join('\n'),
-      notes: '⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\\overline{D(z, r)}$，在剩下的二连通区域 $\\Omega_r$ 上对 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\\oint_{\\partial\\Omega} g = \\oint_{|\\zeta - z| = r} g$。\n\n再把 $g$ 拆成两块：$\\dfrac{f(z)}{\\zeta - z} + \\dfrac{f(\\zeta) - f(z)}{\\zeta - z}$。\n\n第一块的积分算出 $2\\pi i f(z)$；\n\n第二块的被积函数在 $\\zeta = z$ 处有极限 $f\'(z)$（因而有界），由 ML 不等式其积分不超过 $(\\text{常数}) \\cdot 2\\pi r \\to 0$。\n\n⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。\n\n挖洞不是技巧，是必须的。'
+      notes: '⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\\overline{B(z, r)}$，在剩下的二连通区域 $\\Omega_r$ 上对 $g(\\zeta) = f(\\zeta)/(\\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\\oint_{\\partial\\Omega} g = \\oint_{|\\zeta - z| = r} g$。\n\n再把 $g$ 拆成两块：$\\dfrac{f(z)}{\\zeta - z} + \\dfrac{f(\\zeta) - f(z)}{\\zeta - z}$。\n\n第一块的积分算出 $2\\pi i f(z)$；\n\n第二块的被积函数在 $\\zeta = z$ 处有极限 $f\'(z)$（因而有界），由 ML 不等式其积分不超过 $(\\text{常数}) \\cdot 2\\pi r \\to 0$。\n\n⭐ 这条公式是复分析的**枢纽**：由它推出无穷次可微、Cauchy 不等式、Liouville、最大模原理、Taylor 展开、Laurent 展开、留数定理 —— 本批几乎所有结论。\n\n⚠ 被积函数 $f(\\zeta)/(\\zeta - z)$ 在 $\\zeta = z$ 处**不**全纯，所以不能把 Cauchy 定理直接用在整块 $\\Omega$ 上。\n\n挖洞不是技巧，是必须的。'
     },
     {
       id: 'thm.cauchy-higher-derivative',
@@ -322,15 +322,15 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。',
         '',
-        '设 $f$ 在圆盘 $D = D(z_0, R)$ 上全纯，记',
+        '设 $f$ 在圆盘 $B(z_0, R)$ 上全纯，记',
         '',
-        '$$M(R) := \\sup_{z \\in D(z_0, R)} |f(z)|.$$',
+        '$$M(R) := \\sup_{z \\in B(z_0, R)} |f(z)|.$$',
         '',
         '则对每个 $n = 0, 1, 2, \\cdots$，',
         '',
         '$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{R^n}\\,M(R).$$'
       ].join('\n'),
-      notes: '⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\\mathrm{d}\\zeta|$ 的总长是 $2\\pi r$，分母是 $r^{n+1}$）：\n\n$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot M(r) \\cdot \\frac{2\\pi r}{r^{n+1}} = \\frac{n!\\,M(r)}{r^n},$$\n\n再令 $r \\to R$ 即得。\n\n⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。\n\n⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $D(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。\n\n⭐ 反向也有内容：若 $|f| \\le M$ 在全平面成立，则 $|f^{(n)}(0)| \\le n! M/R^n$ 对**一切** $R$ 成立，令 $R \\to \\infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。'
+      notes: '⭐ 证明只有一步估计：取 $0 < r < R$，把高阶导数公式写在圆周 $|\\zeta - z_0| = r$ 上，取模、用 ML 不等式（$|\\mathrm{d}\\zeta|$ 的总长是 $2\\pi r$，分母是 $r^{n+1}$）：\n\n$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot M(r) \\cdot \\frac{2\\pi r}{r^{n+1}} = \\frac{n!\\,M(r)}{r^n},$$\n\n再令 $r \\to R$ 即得。\n\n⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。\n\n⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $B(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。\n\n⭐ 反向也有内容：若 $|f| \\le M$ 在全平面成立，则 $|f^{(n)}(0)| \\le n! M/R^n$ 对**一切** $R$ 成立，令 $R \\to \\infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。'
     },
     {
       id: 'thm.liouville',
@@ -350,7 +350,7 @@ window.MG = window.MG || {};
         '',
         '则 $f$ 是常数。'
       ].join('\n'),
-      notes: '⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $D(z, R)$ 上全纯，故 $|f\'(z)| \\le M/R$。\n\n令 $R \\to \\infty$ 得 $f\'(z) = 0$；\n\n由 $z$ 任意，$f\' \\equiv 0$；\n\n区域连通，故 $f$ 是常数。\n\n⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\n估计得 $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$（$R \\to \\infty$），故 $f(z) = f(0)$。\n\n⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。\n\n反过来，若只知 $|f(z)| \\le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。\n\n⭐ 与实分析对照：$\\sin x$ 在 $\\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\\infty$ 函数」强得多。'
+      notes: '⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $B(z, R)$ 上全纯，故 $|f\'(z)| \\le M/R$。\n\n令 $R \\to \\infty$ 得 $f\'(z) = 0$；\n\n由 $z$ 任意，$f\' \\equiv 0$；\n\n区域连通，故 $f$ 是常数。\n\n⭐ 书里还给了**只用 Cauchy 积分公式**的第二证明：取 $R > |z|$，\n\n$$f(z) - f(0) = \\frac{1}{2\\pi i}\\oint_{|\\zeta| = R}\\left( \\frac{1}{\\zeta - z} - \\frac{1}{\\zeta} \\right) f(\\zeta)\\,\\mathrm{d}\\zeta,$$\n\n估计得 $|f(z) - f(0)| \\le \\dfrac{M|z|}{R - |z|} \\to 0$（$R \\to \\infty$），故 $f(z) = f(0)$。\n\n⚠ 有界性不能随便放松：$e^z$ 在右半平面有界，但在全平面无界。\n\n反过来，若只知 $|f(z)| \\le C(1 + |z|)^k$，同样的论证只给出「$f$ 是次数不超过 $k$ 的多项式」。\n\n⭐ 与实分析对照：$\\sin x$ 在 $\\mathbb{R}$ 上有界且无穷次可微，却不是常数 —— 因为「整函数」比「$C^\\infty$ 函数」强得多。'
     },
     {
       id: 'thm.max-modulus',
@@ -368,7 +368,7 @@ window.MG = window.MG || {};
         '',
         '$$|f(z)| < \\|f\\|_{\\Omega} := \\sup_{\\zeta \\in \\Omega} |f(\\zeta)|, \\qquad \\forall z \\in \\Omega.$$'
       ].join('\n'),
-      notes: '⭐ 证明走**平均值公式**：Cauchy 积分公式在圆心取 $\\zeta = z + re^{i\\theta}$，得\n\n$$f(z) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z + re^{i\\theta})\\,\\mathrm{d}\\theta$$\n\n（只要 $\\overline{D(z, r)} \\subset \\Omega$）。\n\n若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \\le \\frac{1}{2\\pi}\\int_0^{2\\pi} |f(z_0 + re^{i\\theta})|\\,\\mathrm{d}\\theta \\le M$，两端相等迫使圆上 $|f| \\equiv M$。\n\n⭐ 再由连通性：集合 $\\{ z : |f(z)| = M \\}$ 既开（每个点周围都有整圆）又闭（$|f|$ 连续），故是全体 $\\Omega$；\n\n$|f|$ 为常数加上 $f$ 全纯，得 $f$ 为常数。\n\n⭐ 有界区域的推论：若 $\\Omega$ 有界、$f$ 在 $\\overline{\\Omega}$ 上连续、在 $\\Omega$ 内全纯，则 $\\|f\\|_{\\overline{\\Omega}} = \\|f\\|_{\\partial\\Omega}$ —— 最大值在边界取到。\n\n这是「用边界值控制内部」的最强形式。\n\n⚠ 对 $|f|$ 的**最小值**没有对应结论：$f(z) = z$ 在单位圆盘上最小值在 $0$（内部）。\n\n正确的最小模原理是：$f$ 全纯且**无零点**时，对 $1/f$ 用最大模原理。'
+      notes: '⭐ 证明走**平均值公式**：Cauchy 积分公式在圆心取 $\\zeta = z + re^{i\\theta}$，得\n\n$$f(z) = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z + re^{i\\theta})\\,\\mathrm{d}\\theta$$\n\n（只要 $\\overline{B(z, r)} \\subset \\Omega$）。\n\n若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \\le \\frac{1}{2\\pi}\\int_0^{2\\pi} |f(z_0 + re^{i\\theta})|\\,\\mathrm{d}\\theta \\le M$，两端相等迫使圆上 $|f| \\equiv M$。\n\n⭐ 再由连通性：集合 $\\{ z : |f(z)| = M \\}$ 既开（每个点周围都有整圆）又闭（$|f|$ 连续），故是全体 $\\Omega$；\n\n$|f|$ 为常数加上 $f$ 全纯，得 $f$ 为常数。\n\n⭐ 有界区域的推论：若 $\\Omega$ 有界、$f$ 在 $\\overline{\\Omega}$ 上连续、在 $\\Omega$ 内全纯，则 $\\|f\\|_{\\overline{\\Omega}} = \\|f\\|_{\\partial\\Omega}$ —— 最大值在边界取到。\n\n这是「用边界值控制内部」的最强形式。\n\n⚠ 对 $|f|$ 的**最小值**没有对应结论：$f(z) = z$ 在单位圆盘上最小值在 $0$（内部）。\n\n正确的最小模原理是：$f$ 全纯且**无零点**时，对 $1/f$ 用最大模原理。'
     },
 
     /* ------------------------------------------------------ 级数 */
@@ -384,13 +384,13 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：全纯函数在任意一点的附近都是一个幂级数 —— 也就是说，对复函数而言「可微」与「能写成幂级数」是同一件事。',
         '',
-        '设 $f$ 在圆盘 $D(a, R)$ 上全纯。则对 $z \\in D(a, R)$，',
+        '设 $f$ 在圆盘 $B(a, R)$ 上全纯。则对 $z \\in B(a, R)$，',
         '',
         '$$f(z) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}\\,(z - a)^n,$$',
         '',
-        '且右端在 $D(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $D(a, R)$ 内**解析**（等于某个幂级数之和）。'
+        '且右端在 $B(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $B(a, R)$ 内**解析**（等于某个幂级数之和）。'
       ].join('\n'),
-      notes: '⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。\n\n取 $\\rho \\in (|z - a|, R)$，写\n\n$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$\n\n比值 $|z - a|/\\rho < 1$，级数关于 $\\zeta \\in \\partial D(a, \\rho)$ 一致收敛，故可逐项积分；\n\n逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。\n\n⭐ 这条把「微分」与「级数」接上了：**全纯 $\\iff$ 局部是幂级数 $\\iff$ 解析**。\n\n实分析里这两件事**不等价** —— $e^{-1/x^2}$ 在 $0$ 处无穷次可微，但 Taylor 级数恒为 $0$，在 $0$ 的任何邻域内都不等于原函数。\n\n⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。\n\n📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \\sum a_n (z - a)^n$ 在 $D(a, R)$ 内成立，则 $|a_n| \\le M(r)/r^n$（$0 < r < R$）。'
+      notes: '⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。\n\n取 $\\rho \\in (|z - a|, R)$，写\n\n$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$\n\n比值 $|z - a|/\\rho < 1$，级数关于 $\\zeta \\in \\partial B(a, \\rho)$ 一致收敛，故可逐项积分；\n\n逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。\n\n⭐ 这条把「微分」与「级数」接上了：**全纯 $\\iff$ 局部是幂级数 $\\iff$ 解析**。\n\n实分析里这两件事**不等价** —— $e^{-1/x^2}$ 在 $0$ 处无穷次可微，但 Taylor 级数恒为 $0$，在 $0$ 的任何邻域内都不等于原函数。\n\n⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。\n\n📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \\sum a_n (z - a)^n$ 在 $B(a, R)$ 内成立，则 $|a_n| \\le M(r)/r^n$（$0 < r < R$）。'
     },
     {
       id: 'def.laurent-series',
@@ -446,7 +446,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：函数在某一点「出问题」，但附近别的地方都好 —— 这时按它靠近该点时的三种走法分类：趋近一个有限值、爆掉、或者乱跳。',
         '',
-        '设 $f$ 在去心邻域 $D(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \\to a$ 时的行为分三类：',
+        '设 $f$ 在去心邻域 $B(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \\to a$ 时的行为分三类：',
         '',
         '**(1) 可去奇点**：$\\lim_{z \\to a} f(z) = w_0 \\in \\mathbb{C}$ 存在；',
         '',
@@ -470,14 +470,14 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：如果 $f$ 在 $a$ 附近全纯，而且靠近 $a$ 时「爆得比 $1/|z - a|$ 慢」，那 $a$ 这个洞可以补上，补完还是全纯。',
         '',
-        '设 $f$ 在 $D(a, r) \\setminus \\{a\\}$ 上全纯，且',
+        '设 $f$ 在 $B(a, r) \\setminus \\{a\\}$ 上全纯，且',
         '',
         '$$\\lim_{z \\to a} (z - a) f(z) = 0.$$',
         '等价的说法是 $f(z) = o(|z - a|^{-1})$。',
         '',
-        '则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。'
+        '则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $B(a, r)$ 上的全纯延拓。'
       ].join('\n'),
-      notes: '⭐ 证明：对 $z \\in D(a, r) \\setminus \\{a\\}$ 与充分小的 $\\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\\varepsilon(z)$，其中 $I_r$ 是沿 $|\\zeta - a| = r$ 的积分（在 $D(a, r)$ 上全纯），$I_\\varepsilon$ 是沿 $|\\zeta - a| = \\varepsilon$ 的积分。\n\n估计\n\n$$|I_\\varepsilon(z)| \\le \\frac{\\varepsilon \\, \\|f\\|_{\\partial D(a, \\varepsilon)}}{|z - a| - \\varepsilon} \\longrightarrow 0 \\qquad (\\varepsilon \\to 0),$$\n\n最后一步用的正是条件 $(z - a) f(z) \\to 0$。\n\n但 $I_\\varepsilon(z)$ 与 $\\varepsilon \\in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。\n\n于是 $f = I_r$ 在 $D(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。\n\n⭐ 用途：它让「可去奇点」真的可以当没有。\n\n例如 $\\sin z / z$ 在 $0$ 处补成 $1$，于是 $\\sin z / z$ 就是整函数；\n\n$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \\psi(z)$」都要靠它。\n\n⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。\n\n真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。'
+      notes: '⭐ 证明：对 $z \\in B(a, r) \\setminus \\{a\\}$ 与充分小的 $\\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\\varepsilon(z)$，其中 $I_r$ 是沿 $|\\zeta - a| = r$ 的积分（在 $B(a, r)$ 上全纯），$I_\\varepsilon$ 是沿 $|\\zeta - a| = \\varepsilon$ 的积分。\n\n估计\n\n$$|I_\\varepsilon(z)| \\le \\frac{\\varepsilon \\, \\|f\\|_{\\partial B(a, \\varepsilon)}}{|z - a| - \\varepsilon} \\longrightarrow 0 \\qquad (\\varepsilon \\to 0),$$\n\n最后一步用的正是条件 $(z - a) f(z) \\to 0$。\n\n但 $I_\\varepsilon(z)$ 与 $\\varepsilon \\in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。\n\n于是 $f = I_r$ 在 $B(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。\n\n⭐ 用途：它让「可去奇点」真的可以当没有。\n\n例如 $\\sin z / z$ 在 $0$ 处补成 $1$，于是 $\\sin z / z$ 就是整函数；\n\n$z^k f(z)$ 的零点阶、以及「全纯函数在零点附近可写成 $(z - a)^k \\psi(z)$」都要靠它。\n\n⚠ 条件比「有界」更宽（有界就够了）：它允许 $f$ 以 $o(1/|z - a|)$ 的速度增长，仍然可去。\n\n真正不可去的是 $1/(z - a)$ 这样的速度 —— 那是极点。'
     },
 
     /* ------------------------------------------------------ 留数 */
@@ -493,7 +493,7 @@ window.MG = window.MG || {};
       statement: [
         '**白话**：留数是 $f$ 在孤立奇点附近 Laurent 展开里 $(z - a)^{-1}$ 那一项的系数 —— 也是沿小圆周积分再除以 $2\\pi i$ 得到的那个数。',
         '',
-        '设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $D(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯。定义',
+        '设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $B(a, \\varepsilon) \\setminus \\{a\\}$ 上全纯。定义',
         '',
         '$$\\operatorname{Res}(f, a) := \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = r} f(\\zeta)\\,\\mathrm{d}\\zeta, \\qquad 0 < r < \\varepsilon,$$',
         '',
@@ -539,7 +539,7 @@ window.MG = window.MG || {};
         '',
         '$$\\oint_{\\partial\\Omega} f(z)\\,\\mathrm{d}z = 2\\pi i \\sum_{k=1}^{n} \\operatorname{Res}(f, z_k).$$'
       ].join('\n'),
-      notes: '⭐ 证明：以每个 $z_k$ 为心挖去半径 $\\varepsilon$ 的闭圆盘（互不相交、都含在 $\\Omega$ 内），得 $\\Omega_\\varepsilon = \\Omega \\setminus \\bigcup_k \\overline{D(z_k, \\varepsilon)}$。\n\n$f$ 在 $\\Omega_\\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\\oint_{\\partial\\Omega_\\varepsilon} f = 0$，也就是\n\n$$\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = \\sum_{k=1}^{n} \\oint_{|\\zeta - z_k| = \\varepsilon} f\\,\\mathrm{d}\\zeta = 2\\pi i \\sum_{k=1}^{n} \\operatorname{Res}(f, z_k),$$\n\n最后一步就是留数的定义。\n\n⭐ 这是复分析里最能打的一条：书第 23、24 章那一整批实积分（$\\int_0^{2\\pi} Q(\\sin\\theta, \\cos\\theta)\\,\\mathrm{d}\\theta$、$\\int_{-\\infty}^{\\infty} f(x)\\,\\mathrm{d}x$、$\\int_{-\\infty}^{\\infty} e^{iax}f(x)\\,\\mathrm{d}x$、$\\int_0^{\\infty} x^{a-1}f(x)\\,\\mathrm{d}x$、级数求和）全靠它，都变成留数计算。\n\n⚠ 闭曲线必须**正向**（逆时针）；\n\n反向要整体变号。\n\n曲线**外**的奇点对积分没有贡献 —— 也可以改用无穷远点的留数来算。'
+      notes: '⭐ 证明：以每个 $z_k$ 为心挖去半径 $\\varepsilon$ 的闭圆盘（互不相交、都含在 $\\Omega$ 内），得 $\\Omega_\\varepsilon = \\Omega \\setminus \\bigcup_k \\overline{B(z_k, \\varepsilon)}$。\n\n$f$ 在 $\\Omega_\\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\\oint_{\\partial\\Omega_\\varepsilon} f = 0$，也就是\n\n$$\\oint_{\\partial\\Omega} f\\,\\mathrm{d}z = \\sum_{k=1}^{n} \\oint_{|\\zeta - z_k| = \\varepsilon} f\\,\\mathrm{d}\\zeta = 2\\pi i \\sum_{k=1}^{n} \\operatorname{Res}(f, z_k),$$\n\n最后一步就是留数的定义。\n\n⭐ 这是复分析里最能打的一条：书第 23、24 章那一整批实积分（$\\int_0^{2\\pi} Q(\\sin\\theta, \\cos\\theta)\\,\\mathrm{d}\\theta$、$\\int_{-\\infty}^{\\infty} f(x)\\,\\mathrm{d}x$、$\\int_{-\\infty}^{\\infty} e^{iax}f(x)\\,\\mathrm{d}x$、$\\int_0^{\\infty} x^{a-1}f(x)\\,\\mathrm{d}x$、级数求和）全靠它，都变成留数计算。\n\n⚠ 闭曲线必须**正向**（逆时针）；\n\n反向要整体变号。\n\n曲线**外**的奇点对积分没有贡献 —— 也可以改用无穷远点的留数来算。'
     },
 
     /* ------------------------------------------------------ 共形 */
@@ -732,7 +732,7 @@ window.MG = window.MG || {};
       target: 'thm.cauchy-integral-formula',
       title: 'Cauchy–Goursat（多连通版）$\\implies$ Cauchy 积分公式',
       proof: [
-        '**挖洞。** 固定 $z \\in \\Omega$，令 $d = \\operatorname{dist}(z, \\partial\\Omega) > 0$，取 $0 < r < d$，令 $\\Omega_r = \\Omega \\setminus \\overline{D(z, r)}$。\n\n$\\Omega_r$ 是二连通区域，而 $g(\\zeta) := f(\\zeta)/(\\zeta - z)$ 在 $\\Omega_r$ 上全纯（分母在 $\\Omega_r$ 上不为零）。\n\n由多连通 Cauchy–Goursat，$\\oint_{\\partial\\Omega_r} g = 0$，即',
+        '**挖洞。** 固定 $z \\in \\Omega$，令 $d = \\operatorname{dist}(z, \\partial\\Omega) > 0$，取 $0 < r < d$，令 $\\Omega_r = \\Omega \\setminus \\overline{B(z, r)}$。\n\n$\\Omega_r$ 是二连通区域，而 $g(\\zeta) := f(\\zeta)/(\\zeta - z)$ 在 $\\Omega_r$ 上全纯（分母在 $\\Omega_r$ 上不为零）。\n\n由多连通 Cauchy–Goursat，$\\oint_{\\partial\\Omega_r} g = 0$，即',
         '',
         '$$\\oint_{\\partial\\Omega} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta = \\oint_{|\\zeta - z| = r} \\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta.$$',
         '',
@@ -792,7 +792,7 @@ window.MG = window.MG || {};
         '',
         '$$\\left| f^{(n)}(z_0) \\right| \\le \\frac{n!}{2\\pi} \\cdot \\frac{\\max_{|\\zeta - z_0| = r}|f(\\zeta)|}{r^{n+1}} \\cdot 2\\pi r = \\frac{n!\\,M(r)}{r^n},$$',
         '',
-        '其中 $M(r) = \\sup_{D(z_0, r)}|f|$（圆周上的上确界不超过圆盘上的）。$M(r)$ 关于 $r$ 单调不减，故 $M(r) \\le M(R)$，得 $|f^{(n)}(z_0)| \\le n! M(R)/r^n$。',
+        '其中 $M(r) = \\sup_{B(z_0, r)}|f|$（圆周上的上确界不超过圆盘上的）。$M(r)$ 关于 $r$ 单调不减，故 $M(r) \\le M(R)$，得 $|f^{(n)}(z_0)| \\le n! M(R)/r^n$。',
         '',
         '左端与 $r$ 无关，令 $r \\to R^-$ 即得 $|f^{(n)}(z_0)| \\le n! M(R)/R^n$。$\\blacksquare$'
       ].join('\n')
@@ -806,7 +806,7 @@ window.MG = window.MG || {};
       proof: [
         '设 $f$ 在 $\\mathbb{C}$ 上全纯且 $|f| \\le M$。',
         '',
-        '**逐点估计。** 固定任意 $z \\in \\mathbb{C}$ 与任意 $R > 0$。$f$ 在 $D(z, R)$ 上全纯，由 $n = 1$ 的 Cauchy 不等式',
+        '**逐点估计。** 固定任意 $z \\in \\mathbb{C}$ 与任意 $R > 0$。$f$ 在 $B(z, R)$ 上全纯，由 $n = 1$ 的 Cauchy 不等式',
         '',
         '$$|f\'(z)| \\le \\frac{1!}{R^{1}}\\,M(R) \\le \\frac{M}{R}.$$',
         '',
@@ -814,7 +814,7 @@ window.MG = window.MG || {};
         '',
         '**从导数到函数。** $f\' \\equiv 0$ 且 $\\mathbb{C}$ 连通：沿连接任意两点的折线，$\\frac{\\mathrm{d}}{\\mathrm{d}t} f(z_0 + tv) = f\' \\cdot v = 0$，故 $f$ 在这条路上为常数。所以 $f$ 是常数。',
         '',
-        '**为什么必须是「全平面」。** 同一论证在 $D(0, R_0)$ 上只给出 $|f\'(z)| \\le M/(R_0 - |z|)$，右端随 $R_0$ 固定而不趋零 —— 所以有界全纯函数在**有界**区域上可以非常数（恒等映射在单位圆盘上就是）。$\\blacksquare$'
+        '**为什么必须是「全平面」。** 同一论证在 $B(0, R_0)$ 上只给出 $|f\'(z)| \\le M/(R_0 - |z|)$，右端随 $R_0$ 固定而不趋零 —— 所以有界全纯函数在**有界**区域上可以非常数（恒等映射在单位圆盘上就是）。$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -832,7 +832,7 @@ window.MG = window.MG || {};
         '',
         '$$|p(z)| \\ge |a_n||z|^n - \\sum_{k=0}^{n-1}|a_k||z|^k \\ge |a_n||z|^n - n\\,C\\,|z|^{n-1},$$',
         '',
-        '其中 $C = \\max_{k < n}|a_k|$。\n\n右端当 $|z|$ 足够大时 $\\ge \\frac{|a_n|}{2}|z|^n \\to +\\infty$。\n\n故存在 $R_0$ 使 $|z| > R_0$ 时 $|p(z)| \\ge 1$，从而 $|g(z)| \\le 1$。\n\n在紧集 $\\overline{D(0, R_0)}$ 上 $g$ 连续、因而有界，设为 $M_0$。\n\n于是 $|g| \\le \\max\\{1, M_0\\}$ 在全平面成立。',
+        '其中 $C = \\max_{k < n}|a_k|$。\n\n右端当 $|z|$ 足够大时 $\\ge \\frac{|a_n|}{2}|z|^n \\to +\\infty$。\n\n故存在 $R_0$ 使 $|z| > R_0$ 时 $|p(z)| \\ge 1$，从而 $|g(z)| \\le 1$。\n\n在紧集 $\\overline{B(0, R_0)}$ 上 $g$ 连续、因而有界，设为 $M_0$。\n\n于是 $|g| \\le \\max\\{1, M_0\\}$ 在全平面成立。',
         '',
         '**用 Liouville。** $g$ 是有界整函数，故 $g$ 是常数，从而 $p = 1/g$ 也是常数 —— 与 $n \\ge 1$（$a_n \\ne 0$）矛盾。',
         '',
@@ -846,13 +846,13 @@ window.MG = window.MG || {};
       target: 'thm.max-modulus',
       title: 'Cauchy 积分公式 $\\implies$ 平均值公式 $\\implies$ 最大模原理',
       proof: [
-        '**平均值公式。** 设 $\\overline{D(z, r)} \\subset \\Omega$。\n\n在 Cauchy 积分公式里取 $\\partial\\Omega = \\partial D(z, r)$，参数化 $\\zeta = z + re^{i\\theta}$（$\\mathrm{d}\\zeta = ire^{i\\theta}\\mathrm{d}\\theta$）：',
+        '**平均值公式。** 设 $\\overline{B(z, r)} \\subset \\Omega$。\n\n在 Cauchy 积分公式里取 $\\partial\\Omega = \\partial B(z, r)$，参数化 $\\zeta = z + re^{i\\theta}$（$\\mathrm{d}\\zeta = ire^{i\\theta}\\mathrm{d}\\theta$）：',
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\int_0^{2\\pi} \\frac{f(z + re^{i\\theta})}{re^{i\\theta}}\\, i r e^{i\\theta}\\,\\mathrm{d}\\theta = \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z + re^{i\\theta})\\,\\mathrm{d}\\theta.$$',
         '',
         '即：**函数在中心的值 = 它在圆周上的平均值**。',
         '',
-        '**取最大值的点附近。** 设 $M = \\sup_\\Omega |f|$ 在**内点** $z_0$ 被取到（即 $|f(z_0)| = M$，且 $M < \\infty$）。对任意 $r$ 使 $\\overline{D(z_0, r)} \\subset \\Omega$：',
+        '**取最大值的点附近。** 设 $M = \\sup_\\Omega |f|$ 在**内点** $z_0$ 被取到（即 $|f(z_0)| = M$，且 $M < \\infty$）。对任意 $r$ 使 $\\overline{B(z_0, r)} \\subset \\Omega$：',
         '',
         '$$M = |f(z_0)| = \\left| \\frac{1}{2\\pi}\\int_0^{2\\pi} f(z_0 + re^{i\\theta})\\mathrm{d}\\theta \\right| \\le \\frac{1}{2\\pi}\\int_0^{2\\pi} |f(z_0 + re^{i\\theta})|\\,\\mathrm{d}\\theta \\le M.$$',
         '',
@@ -875,7 +875,7 @@ window.MG = window.MG || {};
       target: 'thm.taylor-complex',
       title: 'Cauchy 积分公式 + 几何级数 $\\implies$ Taylor 展开',
       proof: [
-        '**取一个稍小的圆。** 固定 $z \\in D(a, R)$，取 $\\rho$ 使 $|z - a| < \\rho < R$。由 Cauchy 积分公式（在 $D(a, \\rho)$ 上）',
+        '**取一个稍小的圆。** 固定 $z \\in B(a, R)$，取 $\\rho$ 使 $|z - a| < \\rho < R$。由 Cauchy 积分公式（在 $B(a, \\rho)$ 上）',
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = \\rho}\\frac{f(\\zeta)}{\\zeta - z}\\,\\mathrm{d}\\zeta.$$',
         '',
@@ -883,15 +883,15 @@ window.MG = window.MG || {};
         '',
         '$$\\frac{1}{\\zeta - z} = \\frac{1}{(\\zeta - a) - (z - a)} = \\frac{1}{\\zeta - a}\\cdot\\frac{1}{1 - \\frac{z - a}{\\zeta - a}} = \\sum_{n=0}^{\\infty} \\frac{(z - a)^n}{(\\zeta - a)^{n+1}},$$',
         '',
-        '右端关于 $\\zeta \\in \\partial D(a, \\rho)$ **一致收敛**（优级数 $\\sum q^n/\\rho$）。',
+        '右端关于 $\\zeta \\in \\partial B(a, \\rho)$ **一致收敛**（优级数 $\\sum q^n/\\rho$）。',
         '',
-        '**逐项积分。** $f$ 在紧集 $\\partial D(a, \\rho)$ 上有界，一致收敛允许交换求和与积分：',
+        '**逐项积分。** $f$ 在紧集 $\\partial B(a, \\rho)$ 上有界，一致收敛允许交换求和与积分：',
         '',
         '$$f(z) = \\sum_{n=0}^{\\infty}\\left( \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = \\rho}\\frac{f(\\zeta)}{(\\zeta - a)^{n+1}}\\,\\mathrm{d}\\zeta \\right)(z - a)^n = \\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(z - a)^n,$$',
         '',
         '最后一步是高阶导数公式（把 $z$ 换成 $a$）。',
         '',
-        '**一致收敛。** 对任意紧集 $K \\subset D(a, R)$，取 $\\rho$ 使 $K \\subset D(a, \\rho) \\subset D(a, R)$，则 $|c_n| \\le \\|f\\|_{\\partial D(a,\\rho)}/\\rho^n$，优级数在 $K$ 上收敛。\n\n$\\blacksquare$'
+        '**一致收敛。** 对任意紧集 $K \\subset B(a, R)$，取 $\\rho$ 使 $K \\subset B(a, \\rho) \\subset B(a, R)$，则 $|c_n| \\le \\|f\\|_{\\partial B(a, \\rho)}/\\rho^n$，优级数在 $K$ 上收敛。\n\n$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -931,17 +931,17 @@ window.MG = window.MG || {};
         '',
         '$$f(z) = \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = r}\\frac{f(\\zeta)}{\\zeta - z}\\mathrm{d}\\zeta - \\frac{1}{2\\pi i}\\oint_{|\\zeta - a| = \\varepsilon}\\frac{f(\\zeta)}{\\zeta - z}\\mathrm{d}\\zeta =: I_r(z) - I_\\varepsilon(z).$$',
         '',
-        '**$I_r$ 是好的。** 分母 $\\zeta - z$ 在 $|\\zeta - a| = r$ 上不为零（因为 $|z - a| < r$），故 $I_r$ 在 $D(a, r)$ 上定义且全纯（在积分号下求导，做法与高阶导数那条边相同）。',
+        '**$I_r$ 是好的。** 分母 $\\zeta - z$ 在 $|\\zeta - a| = r$ 上不为零（因为 $|z - a| < r$），故 $I_r$ 在 $B(a, r)$ 上定义且全纯（在积分号下求导，做法与高阶导数那条边相同）。',
         '',
         '**$I_\\varepsilon$ 趋零。** 在 $|\\zeta - a| = \\varepsilon$ 上 $|\\zeta - z| \\ge |z - a| - \\varepsilon > 0$，于是',
         '',
-        '$$|I_\\varepsilon(z)| \\le \\frac{1}{2\\pi}\\cdot\\frac{\\max_{|\\zeta - a| = \\varepsilon}|f(\\zeta)|}{|z - a| - \\varepsilon}\\cdot 2\\pi\\varepsilon = \\frac{\\varepsilon\\,\\|f\\|_{\\partial D(a, \\varepsilon)}}{|z - a| - \\varepsilon}.$$',
+        '$$|I_\\varepsilon(z)| \\le \\frac{1}{2\\pi}\\cdot\\frac{\\max_{|\\zeta - a| = \\varepsilon}|f(\\zeta)|}{|z - a| - \\varepsilon}\\cdot 2\\pi\\varepsilon = \\frac{\\varepsilon\\,\\|f\\|_{\\partial B(a, \\varepsilon)}}{|z - a| - \\varepsilon}.$$',
         '',
-        '条件 $\\lim_{z \\to a}(z - a)f(z) = 0$ 说的正是 $\\varepsilon \\|f\\|_{\\partial D(a, \\varepsilon)} \\to 0$（把 $z$ 取成圆上使 $|f|$ 最大的点）。故 $I_\\varepsilon(z) \\to 0$。',
+        '条件 $\\lim_{z \\to a}(z - a)f(z) = 0$ 说的正是 $\\varepsilon \\|f\\|_{\\partial B(a, \\varepsilon)} \\to 0$（把 $z$ 取成圆上使 $|f|$ 最大的点）。故 $I_\\varepsilon(z) \\to 0$。',
         '',
         '**$\\varepsilon$ 不能被「取极限」牵动。** $I_\\varepsilon(z)$ 由 $f$ 在圆周 $|\\zeta - a| = \\varepsilon$ 上的值决定；而对每个固定的 $\\varepsilon \\in (0, |z - a|)$，它是 $f(z) - I_r(z)$ 的一部分，是个**定值**。\n\n既然它被任意小的常数压住，只能是 $0$。',
         '',
-        '**收尾。** $f(z) = I_r(z)$ 对 $z \\in D(a, r) \\setminus \\{a\\}$ 成立，令 $f(a) := I_r(a)$ 就把 $f$ 延拓成 $D(a, r)$ 上的全纯函数。$\\blacksquare$'
+        '**收尾。** $f(z) = I_r(z)$ 对 $z \\in B(a, r) \\setminus \\{a\\}$ 成立，令 $f(a) := I_r(a)$ 就把 $f$ 延拓成 $B(a, r)$ 上的全纯函数。$\\blacksquare$'
       ].join('\n')
     },
     {
@@ -951,9 +951,9 @@ window.MG = window.MG || {};
       target: 'thm.residue',
       title: '挖洞 + 多连通 Cauchy–Goursat $\\implies$ 留数定理',
       proof: [
-        '**挖洞。** 取 $\\varepsilon > 0$ 足够小，使闭圆盘 $\\overline{D(z_k, \\varepsilon)}$（$k = 1, \\cdots, n$）两两不交、且都含在 $\\Omega$ 内。令',
+        '**挖洞。** 取 $\\varepsilon > 0$ 足够小，使闭圆盘 $\\overline{B(z_k, \\varepsilon)}$（$k = 1, \\cdots, n$）两两不交、且都含在 $\\Omega$ 内。令',
         '',
-        '$$\\Omega_\\varepsilon := \\Omega \\setminus \\bigcup_{k=1}^{n}\\overline{D(z_k, \\varepsilon)}.$$',
+        '$$\\Omega_\\varepsilon := \\Omega \\setminus \\bigcup_{k=1}^{n}\\overline{B(z_k, \\varepsilon)}.$$',
         '',
         '$\\Omega_\\varepsilon$ 是 $n$ 连通的，而 $f$ 在它上面全纯（挖掉的正是全部奇点）。',
         '',
@@ -1052,7 +1052,7 @@ window.MG = window.MG || {};
       kind: 'definition',
       definition: 'def.power-series',
       usedBy: 'thm.taylor-complex',
-      note: '「$f$ 在 $D(a, R)$ 内解析」的定义就是：存在幂级数在 $D(a, R)$ 内收敛到 $f$。定理说的正是全纯蕴含这件事。'
+      note: '「$f$ 在 $B(a, R)$ 内解析」的定义就是：存在幂级数在 $B(a, R)$ 内收敛到 $f$。定理说的正是全纯蕴含这件事。'
     },
     {
       id: 'def-link.residue-contour',

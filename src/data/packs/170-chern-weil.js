@@ -227,9 +227,5 @@ window.MG = window.MG || {};
       note: '分裂原理是关于陈类（Whitney 和）的恒等式工具。' },
     { id: 'dep-sp-clb', kind: 'definition',
       definition: 'prop.chern-class-line-bundle', usedBy: 'thm.splitting-principle',
-      note: '分裂到线丛之后，每一块都用线丛那条公式算。' },
-    { id: 'dep-sp-cc2', kind: 'definition',
-      definition: 'def.chern-class', usedBy: 'thm.splitting-principle',
-      note: '「陈根」$x_{j}$ 就是各线丛的 $c_{1}$。' }
-  ]
+      note: '分裂到线丛之后，每一块都用线丛那条公式算。' },  ]
 });

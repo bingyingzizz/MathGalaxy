@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-03T12:10:41.485Z
-> 15 星系 / 104 星团 / 1500 节点 / 2901 连线（强边 2867，弱边 34；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-03T12:33:02.247Z
+> 15 星系 / 104 星团 / 1500 节点 / 2882 连线（强边 2848，弱边 34；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.5 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -16407,7 +16407,7 @@ $$\int_K |f(x)| dx < \infty$$
 
 设 $f \in L^1_{loc}$，$x \in \mathbb{R}^n$，$r > 0$。定义
 
-$$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
+$$A_r f(x) := \frac{1}{m(B(x, r))} \int_{B(x, r)} f(y) dy$$
 
 即 $f$ 在以 $x$ 为心、$r$ 为半径的球上的**平均值**。
 
@@ -16426,11 +16426,11 @@ $$A_r f(x) := \frac{1}{m(B(r, x))} \int_{B(r, x)} f(y) dy$$
 
 
 
-$$\int_{B(r, x)} f(y) dy = \int_{\mathbb{R}^n} \chi_{B(r, x)}(y) f(y) dy$$
+$$\int_{B(x, r)} f(y) dy = \int_{\mathbb{R}^n} \chi_{B(x, r)}(y) f(y) dy$$
 
 
 
-于是只需证 $\chi_{B(r,x)} \to \chi_{B(r_0,x_0)}$（当 $(r,x) \to (r_0,x_0)$）在足够好的意义上成立，再用 DCT。
+于是只需证 $\chi_{B(x, r)} \to \chi_{B(x_0, r_0)}$（当 $(x, r) \to (x_0, r_0)$）在足够好的意义上成立，再用 DCT。
 
 分两块看（取目标点 $(r_0, x_0)$）：
 
@@ -16444,7 +16444,7 @@ $\cdot$ 若 $y$ 在球外：$\varepsilon := |y - x_0| - r_0 > 0$；同样的小�
 
 两边合起来说明：对**几乎处处的** $y$（只排除球面），特征函数最终稳定 —— 即逐点收敛 a.e.。
 
-控制函数取 $\chi_{B(r_0+1, x_0)}(y)\cdot|f(y)| \in L^1$，由 **DCT** 得连续性。∎
+控制函数取 $\chi_{B(x_0, r_0+1)}(y)\cdot|f(y)| \in L^1$，由 **DCT** 得连续性。∎
 
 参考：Folland, Real Analysis, Lemma 3.16
 
@@ -16453,7 +16453,7 @@ $\cdot$ 若 $y$ 在球外：$\varepsilon := |y - x_0| - r_0 > 0$；同样的小�
 
 设 $f \in L^1_{loc}$。定义
 
-$$Hf(x) := \sup_{r > 0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
+$$Hf(x) := \sup_{r > 0} \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y)| dy = \sup_{r > 0} A_r |f|(x)$$
 
 称为 $f$ 的 **Hardy–Littlewood 极大函数**。
 
@@ -16500,7 +16500,7 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{for a.e. } x \in \mathbb{R}^n$$
 
 设 $f \in L^1_{loc}$。定义
 
-$$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y) - f(x)| dy = 0 \}$$
+$$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y) - f(x)| dy = 0 \}$$
 
 称为 $f$ 的 **Lebesgue 集**。
 
@@ -16527,7 +16527,7 @@ $$m(L_f^c) = 0$$
 
 
 
-$$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le |f(x) - c| + \varepsilon < 2\varepsilon$$
+$$\lim_{r\to0} \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y) - f(x)| dy \le |f(x) - c| + \varepsilon < 2\varepsilon$$
 
 
 
@@ -16542,12 +16542,12 @@ $$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le |f(x) - c|
 
 $\mathbb{R}^n$ 的一族 Borel 子集 $\{E_r\}_{r > 0}$ 叫**可缩地趋于 $x$**，当且仅当
 
-$\cdot$ $E_r \subseteq B(r, x)$ 对每个 $r$ 成立；
-$\cdot$ 存在 $\alpha > 0$，使 $m(E_r) > \alpha\cdot m(B(r, x))$ 对一切 $r$ 成立。
+$\cdot$ $E_r \subseteq B(x, r)$ 对每个 $r$ 成立；
+$\cdot$ 存在 $\alpha > 0$，使 $m(E_r) > \alpha\cdot m(B(x, r))$ 对一切 $r$ 成立。
 
 两个条件的含义：**装得进去**（$E_r$ 在球里）、**不能太瘪**（体积至少是球的 $\alpha$ 倍）。
 
-典型例子：取 $E_r = B(r, x)$ 本身（$\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。
+典型例子：取 $E_r = B(x, r)$ 本身（$\alpha = 1$）；或取 $E_r$ 为球内某个固定形状（如立方体）按比例缩放。
 
 反例：$E_r$ 取成球内一条细长的薄片 —— 体积比可以趋于 0，这样的族就不是「可缩地」趋于 $x$。
 
@@ -16563,11 +16563,11 @@ $\cdot$ 存在 $\alpha > 0$，使 $m(E_r) > \alpha\cdot m(B(r, x))$ 对一切 $r
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy = 0, $$
 $$\lim_{r\to0} \frac{1}{m(E_r)} \int_{E_r} f(y) dy = f(x)$$
 
-证明是一行估计：由 $E_r \subseteq B(r,x)$ 与 $m(E_r) > \alpha m(B(r,x))$，
+证明是一行估计：由 $E_r \subseteq B(x, r)$ 与 $m(E_r) > \alpha m(B(x, r))$，
 
 
 
-$$\frac{1}{m(E_r)} \int_{E_r} |f - f(x)| \le \frac{1}{m(E_r)} \int_{B(r,x)} |f - f(x)| \le (1/\alpha)\cdot m(B(r,x)) \int_{B(r,x)} |f - f(x)|$$
+$$\frac{1}{m(E_r)} \int_{E_r} |f - f(x)| \le \frac{1}{m(E_r)} \int_{B(x, r)} |f - f(x)| \le (1/\alpha)\cdot m(B(x, r)) \int_{B(x, r)} |f - f(x)|$$
 
 
 
@@ -16610,7 +16610,7 @@ $$\lim_{r\to0} \nu(E_r) / m(E_r) = f(x)$$
 
 
 
-$$f(x) = \lim_{r\to0} \nu(B(r, x)) / m(B(r, x))$$
+$$f(x) = \lim_{r\to0} \nu(B(x, r)) / m(B(x, r))$$
 
 
 
@@ -29890,7 +29890,7 @@ Green 公式：$\oint_{\partial\Omega}(P\,\mathrm{d}x + Q\,\mathrm{d}y) = \iint_
 
 **白话**：函数在某一点「出问题」，但附近别的地方都好 —— 这时按它靠近该点时的三种走法分类：趋近一个有限值、爆掉、或者乱跳。
 
-设 $f$ 在去心邻域 $D(a, \varepsilon) \setminus \{a\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \to a$ 时的行为分三类：
+设 $f$ 在去心邻域 $B(a, \varepsilon) \setminus \{a\}$ 上全纯，称 $a$ 是 $f$ 的**孤立奇点**。按 $z \to a$ 时的行为分三类：
 
 **(1) 可去奇点**：$\lim_{z \to a} f(z) = w_0 \in \mathbb{C}$ 存在；
 
@@ -30331,7 +30331,7 @@ $$f(z) = \frac{1}{2\pi i}\oint_{\partial\Omega} \frac{f(\zeta)}{\zeta - z}\,\mat
 
 更一般地，若 $\gamma$ 是区域内的闭曲线、$f$ 在 $\gamma$ 内部及 $\gamma$ 上全纯，则上式对 $\gamma$ 内部任一点 $z$ 成立。
 
-⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\overline{D(z, r)}$，在剩下的二连通区域 $\Omega_r$ 上对 $g(\zeta) = f(\zeta)/(\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\oint_{\partial\Omega} g = \oint_{|\zeta - z| = r} g$。
+⭐ 证明的骨架就是**挖洞**：以 $z$ 为心挖掉一个闭小圆盘 $\overline{B(z, r)}$，在剩下的二连通区域 $\Omega_r$ 上对 $g(\zeta) = f(\zeta)/(\zeta - z)$ 用多连通 Cauchy–Goursat，得 $\oint_{\partial\Omega} g = \oint_{|\zeta - z| = r} g$。
 
 再把 $g$ 拆成两块：$\dfrac{f(z)}{\zeta - z} + \dfrac{f(\zeta) - f(z)}{\zeta - z}$。
 
@@ -30383,9 +30383,9 @@ $n \ge 2$ 归纳。
 
 **白话**：$n$ 阶导数是一个半径 $R$ 的圆周上的积分，所以它的模被「圆上 $|f|$ 的最大值除以 $R^n$」卡住 —— 半径越大，导数估计越好。
 
-设 $f$ 在圆盘 $D = D(z_0, R)$ 上全纯，记
+设 $f$ 在圆盘 $B(z_0, R)$ 上全纯，记
 
-$$M(R) := \sup_{z \in D(z_0, R)} |f(z)|.$$
+$$M(R) := \sup_{z \in B(z_0, R)} |f(z)|.$$
 
 则对每个 $n = 0, 1, 2, \cdots$，
 
@@ -30399,7 +30399,7 @@ $$\left| f^{(n)}(z_0) \right| \le \frac{n!}{2\pi} \cdot M(r) \cdot \frac{2\pi r}
 
 ⭐ 它把「导数的增长」和「函数值的增长」绑在一起 —— 这是 Liouville 定理**唯一**的输入。
 
-⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $D(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。
+⚠ 上界里的 $R$ 是「能写多大就写多大」：$f$ 在 $B(z_0, R)$ 上全纯的 $R$ 有上限（到最近奇点的距离），不能随意放大。
 
 ⭐ 反向也有内容：若 $|f| \le M$ 在全平面成立，则 $|f^{(n)}(0)| \le n! M/R^n$ 对**一切** $R$ 成立，令 $R \to \infty$ 得 $f^{(n)}(0) = 0$ —— 这正是 Liouville。
 
@@ -30416,7 +30416,7 @@ $$|f(z)| \le M, \qquad \forall z \in \mathbb{C},$$
 
 则 $f$ 是常数。
 
-⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $D(z, R)$ 上全纯，故 $|f'(z)| \le M/R$。
+⭐ 证明（用 Cauchy 不等式）：对任意 $z$ 与任意 $R > 0$，$f$ 在 $B(z, R)$ 上全纯，故 $|f'(z)| \le M/R$。
 
 令 $R \to \infty$ 得 $f'(z) = 0$；
 
@@ -30443,11 +30443,11 @@ $$f(z) - f(0) = \frac{1}{2\pi i}\oint_{|\zeta| = R}\left( \frac{1}{\zeta - z} - 
 
 **白话**：全纯函数在任意一点的附近都是一个幂级数 —— 也就是说，对复函数而言「可微」与「能写成幂级数」是同一件事。
 
-设 $f$ 在圆盘 $D(a, R)$ 上全纯。则对 $z \in D(a, R)$，
+设 $f$ 在圆盘 $B(a, R)$ 上全纯。则对 $z \in B(a, R)$，
 
 $$f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(z - a)^n,$$
 
-且右端在 $D(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $D(a, R)$ 内**解析**（等于某个幂级数之和）。
+且右端在 $B(a, R)$ 的任意紧子集上**一致收敛**。于是 $f$ 在 $B(a, R)$ 内**解析**（等于某个幂级数之和）。
 
 ⭐ 证明只有两步：Cauchy 积分公式 + 几何级数。
 
@@ -30455,7 +30455,7 @@ $$f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(z - a)^n,$$
 
 $$\frac{1}{\zeta - z} = \frac{1}{(\zeta - a) - (z - a)} = \sum_{n=0}^{\infty} \frac{(z - a)^n}{(\zeta - a)^{n+1}},$$
 
-比值 $|z - a|/\rho < 1$，级数关于 $\zeta \in \partial D(a, \rho)$ 一致收敛，故可逐项积分；
+比值 $|z - a|/\rho < 1$，级数关于 $\zeta \in \partial B(a, \rho)$ 一致收敛，故可逐项积分；
 
 逐项积分的系数正是 $f^{(n)}(a)/n!$（高阶导数公式）。
 
@@ -30465,7 +30465,7 @@ $$\frac{1}{\zeta - z} = \frac{1}{(\zeta - a) - (z - a)} = \sum_{n=0}^{\infty} \f
 
 ⚠ 收敛半径至少是 $a$ 到最近奇点的距离 —— 这正是「奇点在哪」那一讲的主题（书第 12 章）。
 
-📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \sum a_n (z - a)^n$ 在 $D(a, R)$ 内成立，则 $|a_n| \le M(r)/r^n$（$0 < r < R$）。
+📌 同节还有「级数形式的 Cauchy 不等式」：若 $f = \sum a_n (z - a)^n$ 在 $B(a, R)$ 内成立，则 $|a_n| \le M(r)/r^n$（$0 < r < R$）。
 
 参考：王晓光《复变函数》笔记，第 11 章 · 全纯函数的幂级数；Ahlfors, Complex Analysis, Ch. 5 · Series and Product Developments
 
@@ -30526,24 +30526,24 @@ $$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho_2} \frac{f(\zeta)}{\zeta - z}
 
 **白话**：如果 $f$ 在 $a$ 附近全纯，而且靠近 $a$ 时「爆得比 $1/|z - a|$ 慢」，那 $a$ 这个洞可以补上，补完还是全纯。
 
-设 $f$ 在 $D(a, r) \setminus \{a\}$ 上全纯，且
+设 $f$ 在 $B(a, r) \setminus \{a\}$ 上全纯，且
 
 $$\lim_{z \to a} (z - a) f(z) = 0.$$
 等价的说法是 $f(z) = o(|z - a|^{-1})$。
 
-则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $D(a, r)$ 上的全纯延拓。
+则 $a$ 是 $f$ 的**可去奇点**：存在 $f$ 在 $B(a, r)$ 上的全纯延拓。
 
-⭐ 证明：对 $z \in D(a, r) \setminus \{a\}$ 与充分小的 $\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\varepsilon(z)$，其中 $I_r$ 是沿 $|\zeta - a| = r$ 的积分（在 $D(a, r)$ 上全纯），$I_\varepsilon$ 是沿 $|\zeta - a| = \varepsilon$ 的积分。
+⭐ 证明：对 $z \in B(a, r) \setminus \{a\}$ 与充分小的 $\varepsilon < |z - a|$，把 $f$ 写成两个 Cauchy 型积分之差 $f(z) = I_r(z) - I_\varepsilon(z)$，其中 $I_r$ 是沿 $|\zeta - a| = r$ 的积分（在 $B(a, r)$ 上全纯），$I_\varepsilon$ 是沿 $|\zeta - a| = \varepsilon$ 的积分。
 
 估计
 
-$$|I_\varepsilon(z)| \le \frac{\varepsilon \, \|f\|_{\partial D(a, \varepsilon)}}{|z - a| - \varepsilon} \longrightarrow 0 \qquad (\varepsilon \to 0),$$
+$$|I_\varepsilon(z)| \le \frac{\varepsilon \, \|f\|_{\partial B(a, \varepsilon)}}{|z - a| - \varepsilon} \longrightarrow 0 \qquad (\varepsilon \to 0),$$
 
 最后一步用的正是条件 $(z - a) f(z) \to 0$。
 
 但 $I_\varepsilon(z)$ 与 $\varepsilon \in (0, |z - a|)$ 的选取**无关**，所以只能恒为 $0$。
 
-于是 $f = I_r$ 在 $D(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。
+于是 $f = I_r$ 在 $B(a, r)$ 上全纯，补上 $f(a) := I_r(a)$ 即可。
 
 ⭐ 用途：它让「可去奇点」真的可以当没有。
 
@@ -30708,7 +30708,7 @@ $$\left|f_{k}^{(m)}(z) - f^{(m)}(z)\right| \le \frac{m!}{r^{m}}\,\sup_{|\zeta - 
 
 **白话**：留数是 $f$ 在孤立奇点附近 Laurent 展开里 $(z - a)^{-1}$ 那一项的系数 —— 也是沿小圆周积分再除以 $2\pi i$ 得到的那个数。
 
-设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $D(a, \varepsilon) \setminus \{a\}$ 上全纯。定义
+设 $a$ 是 $f$ 的孤立奇点，$f$ 在 $B(a, \varepsilon) \setminus \{a\}$ 上全纯。定义
 
 $$\operatorname{Res}(f, a) := \frac{1}{2\pi i}\oint_{|\zeta - a| = r} f(\zeta)\,\mathrm{d}\zeta, \qquad 0 < r < \varepsilon,$$
 
@@ -30768,7 +30768,7 @@ $$f(z) = \sum_{k=0}^{\infty} \frac{\psi^{(k)}(a)}{k!}\,(z - a)^{k - m},$$
 
 $$\oint_{\partial\Omega} f(z)\,\mathrm{d}z = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k).$$
 
-⭐ 证明：以每个 $z_k$ 为心挖去半径 $\varepsilon$ 的闭圆盘（互不相交、都含在 $\Omega$ 内），得 $\Omega_\varepsilon = \Omega \setminus \bigcup_k \overline{D(z_k, \varepsilon)}$。
+⭐ 证明：以每个 $z_k$ 为心挖去半径 $\varepsilon$ 的闭圆盘（互不相交、都含在 $\Omega$ 内），得 $\Omega_\varepsilon = \Omega \setminus \bigcup_k \overline{B(z_k, \varepsilon)}$。
 
 $f$ 在 $\Omega_\varepsilon$ 上全纯，由**多连通** Cauchy–Goursat，$\oint_{\partial\Omega_\varepsilon} f = 0$，也就是
 
@@ -30845,7 +30845,7 @@ $$|g(z)| < |f(z)|.$$
 
 ⚠ 需要的是「在每个紧集上一致收敛」（内闭一致），不是逐点收敛。逐点收敛时结论不成立。
 
-⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\overline{D(z_0, r)}$ 内只有这一个零点，则 $m = \min_{|z - z_0| = r}|f| > 0$；
+⭐ 证明用一个紧的小圆盘 + Rouché：若 $f$ 在 $z_0$ 有零点，取 $r$ 使 $f$ 在 $\overline{B(z_0, r)}$ 内只有这一个零点，则 $m = \min_{|z - z_0| = r}|f| > 0$；
 
 $f_k$ 一致收敛保证在圆周上 $|f_k - f| < m \le |f|$，Rouché 就把 $f$ 的零点「搬」到 $f_k$ 身上，矛盾。
 
@@ -31017,7 +31017,7 @@ $$|f(z)| < \|f\|_{\Omega} := \sup_{\zeta \in \Omega} |f(\zeta)|, \qquad \forall 
 
 $$f(z) = \frac{1}{2\pi}\int_0^{2\pi} f(z + re^{i\theta})\,\mathrm{d}\theta$$
 
-（只要 $\overline{D(z, r)} \subset \Omega$）。
+（只要 $\overline{B(z, r)} \subset \Omega$）。
 
 若 $|f|$ 在**内部**某点 $z_0$ 取到最大值 $M$，则 $M = |f(z_0)| \le \frac{1}{2\pi}\int_0^{2\pi} |f(z_0 + re^{i\theta})|\,\mathrm{d}\theta \le M$，两端相等迫使圆上 $|f| \equiv M$。
 
@@ -31506,13 +31506,13 @@ $$\Delta u = (u_x)_x + (u_y)_y = (v_y)_x + (-v_x)_y = v_{xy} - v_{yx} = 0,$$
 
 **白话**：调和函数在一点的值，等于它在以该点为心、任意半径的圆周上的平均值；也等于圆盘上的面积平均值。
 
-设 $u$ 在 $D(a, R)$ 上调和，$0 < r < R$。则
+设 $u$ 在 $B(a, R)$ 上调和，$0 < r < R$。则
 
 $$u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta,$$
 
 并且（面积平均）
 
-$$u(a) = \frac{1}{\pi r^2}\iint_{D(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
+$$u(a) = \frac{1}{\pi r^2}\iint_{B(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
 
 ⭐ 证明只有两步：把 $u$ 写成全纯函数 $f$ 的实部（圆盘单连通），再对 Cauchy 积分公式 $f(a) = \frac{1}{2\pi}\int_0^{2\pi} f(a + r e^{i\theta})\,\mathrm{d}\theta$ 两边取实部。
 
@@ -31520,7 +31520,7 @@ $$u(a) = \frac{1}{\pi r^2}\iint_{D(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
 
 ⚠ 均值必须对**整个圆周**取，不能只对正上方那几个点取；也不能对任意闭曲线取 —— 那正是 Poisson 公式要回答的事。
 
-⚠ $u$ 只需在 $D(a, r)$ 的**内部**调和，不要求闭圆盘上调和。
+⚠ $u$ 只需在 $B(a, r)$ 的**内部**调和，不要求闭圆盘上调和。
 
 📌 均值性质直接推出最大值原理（见「调和函数的最大值原理」那条），也是「调和函数实解析」的出发点（把积分展成幂级数）。
 
@@ -31531,7 +31531,7 @@ $$u(a) = \frac{1}{\pi r^2}\iint_{D(a, r)} u(x, y)\,\mathrm{d}x\,\mathrm{d}y.$$
 
 **白话**：圆内的取值由边界上的取值**唯一决定**，而且是有明确公式的加权平均 —— 权重就是 Poisson 核，它在边界附近会「尖起来」。
 
-设 $f$ 在 $D(0, R)$ 的邻域上全纯，$u = \operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，
+设 $f$ 在 $B(0, R)$ 的邻域上全纯，$u = \operatorname{Re} f$。则对 $0 < r < R$ 与 $|z| < r$，
 
 $$u(z) = \frac{1}{2\pi}\int_0^{2\pi} \frac{r^2 - |z|^2}{|r e^{i\theta} - z|^2}\, u(r e^{i\theta})\,\mathrm{d}\theta.$$
 
@@ -41352,7 +41352,7 @@ $(f^{\mathrm{ad}/Y})_*$ 在仿射局部上是有限个遗忘函子的极限，�
 
 $\blacksquare$
 
-#### 对偶函子的扭转与基变换 + 有限生成代数的解析环 ⟹ 对偶函子的扭转与基变换　`imp.f-shriek-base-change`
+#### 紧支撑推前 f_! + 有限生成代数的解析环 ⟹ 对偶函子的扭转与基变换　`imp.f-shriek-base-change`
 *仿射情形 + 基变换*
 
 一切局部化良好，归约到 $f : R \to A$ 是 $A = R[T]$ 或 $f$ 满射两种情形。
@@ -41625,10 +41625,6 @@ $>$ ⭐ 一句话总结：**完备性可以被「零集的子集」打破，而�
 #### 定义引用：「单调类」→ 乘积测度由截口给出　`def-link.monotoneclass-lemma`
 
 截口公式的证明走的正是单调类定理：先验证矩形成立，再说明「满足它的集合」构成一个单调类。
-
-#### 定义引用：「生成的 σ-代数」→ 单调类定理　`def-link.generated-monotone-lemma`
-
-定理的陈述里用到 $\mathfrak{m}(\mathcal{E})$ 与 $\mathcal{M}(\mathcal{E})$ 两个生成记号。
 
 #### 定义引用：「乘积测度」→ 乘积测度由截口给出　`def-link.productmeasure-sections-thm`
 
@@ -42118,10 +42114,6 @@ $$\varphi : R^{(I)} \to M, \qquad \varphi\bigl((r_{i})_{i}\bigr) := \sum_{i} r_{
 #### 定义引用：「模」→ 平坦模　`def-link.flat-module`
 
 平坦性说的是 $R$-模范畴里张量函子的正合性。
-
-#### 定义引用：「正合函子」→ 平坦模　`def-link.flat-exact`
-
-「$-\otimes_{R} F$ 正合」用的正是正合函子这条定义。
 
 #### 定义引用：「右导出函子」→ 挠积　`def-link.tor-derived`
 
@@ -43050,14 +43042,6 @@ $$\rho_{i} := g_{i}/g$$
 #### 定义引用：「距离空间」→ Stone 定理　`def-link.metric-paracompact`
 
 度量空间的度量给出可数局部基，仿紧性就是从这层结构长出来的。
-
-#### 定义引用：「距离空间」→ 可度量化空间　`def-link.metrizable-metric`
-
-「可度量化」就是问：这个拓扑能不能由某个度量诱导出来。
-
-#### 定义引用：「基与子基」→ 第二可数空间　`def-link.second-countable-base`
-
-第二可数说的是「有可数的基」，所以先要有基这个概念。
 
 #### 定义引用：「基与子基」→ 第一可数空间　`def-link.first-countable-base`
 
@@ -44611,7 +44595,7 @@ $\blacksquare$
 #### Cauchy–Goursat 积分定理 ⟹ Cauchy 积分公式　`imp.cauchy-integral-formula`
 *Cauchy–Goursat（多连通版）$\implies$ Cauchy 积分公式*
 
-**挖洞。** 固定 $z \in \Omega$，令 $d = \operatorname{dist}(z, \partial\Omega) > 0$，取 $0 < r < d$，令 $\Omega_r = \Omega \setminus \overline{D(z, r)}$。
+**挖洞。** 固定 $z \in \Omega$，令 $d = \operatorname{dist}(z, \partial\Omega) > 0$，取 $0 < r < d$，令 $\Omega_r = \Omega \setminus \overline{B(z, r)}$。
 
 $\Omega_r$ 是二连通区域，而 $g(\zeta) := f(\zeta)/(\zeta - z)$ 在 $\Omega_r$ 上全纯（分母在 $\Omega_r$ 上不为零）。
 
@@ -44671,7 +44655,7 @@ $$f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_{|\zeta - z_0| = r}\frac{f(\zeta)}{(\zet
 
 $$\left| f^{(n)}(z_0) \right| \le \frac{n!}{2\pi} \cdot \frac{\max_{|\zeta - z_0| = r}|f(\zeta)|}{r^{n+1}} \cdot 2\pi r = \frac{n!\,M(r)}{r^n},$$
 
-其中 $M(r) = \sup_{D(z_0, r)}|f|$（圆周上的上确界不超过圆盘上的）。$M(r)$ 关于 $r$ 单调不减，故 $M(r) \le M(R)$，得 $|f^{(n)}(z_0)| \le n! M(R)/r^n$。
+其中 $M(r) = \sup_{B(z_0, r)}|f|$（圆周上的上确界不超过圆盘上的）。$M(r)$ 关于 $r$ 单调不减，故 $M(r) \le M(R)$，得 $|f^{(n)}(z_0)| \le n! M(R)/r^n$。
 
 左端与 $r$ 无关，令 $r \to R^-$ 即得 $|f^{(n)}(z_0)| \le n! M(R)/R^n$。$\blacksquare$
 
@@ -44680,7 +44664,7 @@ $$\left| f^{(n)}(z_0) \right| \le \frac{n!}{2\pi} \cdot \frac{\max_{|\zeta - z_0
 
 设 $f$ 在 $\mathbb{C}$ 上全纯且 $|f| \le M$。
 
-**逐点估计。** 固定任意 $z \in \mathbb{C}$ 与任意 $R > 0$。$f$ 在 $D(z, R)$ 上全纯，由 $n = 1$ 的 Cauchy 不等式
+**逐点估计。** 固定任意 $z \in \mathbb{C}$ 与任意 $R > 0$。$f$ 在 $B(z, R)$ 上全纯，由 $n = 1$ 的 Cauchy 不等式
 
 $$|f'(z)| \le \frac{1!}{R^{1}}\,M(R) \le \frac{M}{R}.$$
 
@@ -44688,7 +44672,7 @@ $$|f'(z)| \le \frac{1!}{R^{1}}\,M(R) \le \frac{M}{R}.$$
 
 **从导数到函数。** $f' \equiv 0$ 且 $\mathbb{C}$ 连通：沿连接任意两点的折线，$\frac{\mathrm{d}}{\mathrm{d}t} f(z_0 + tv) = f' \cdot v = 0$，故 $f$ 在这条路上为常数。所以 $f$ 是常数。
 
-**为什么必须是「全平面」。** 同一论证在 $D(0, R_0)$ 上只给出 $|f'(z)| \le M/(R_0 - |z|)$，右端随 $R_0$ 固定而不趋零 —— 所以有界全纯函数在**有界**区域上可以非常数（恒等映射在单位圆盘上就是）。$\blacksquare$
+**为什么必须是「全平面」。** 同一论证在 $B(0, R_0)$ 上只给出 $|f'(z)| \le M/(R_0 - |z|)$，右端随 $R_0$ 固定而不趋零 —— 所以有界全纯函数在**有界**区域上可以非常数（恒等映射在单位圆盘上就是）。$\blacksquare$
 
 #### Liouville 定理 ⟹ 代数基本定理　`imp.liouville-fa`
 *Liouville 定理 $\implies$ 代数基本定理（复分析路线）*
@@ -44707,7 +44691,7 @@ $$|p(z)| \ge |a_n||z|^n - \sum_{k=0}^{n-1}|a_k||z|^k \ge |a_n||z|^n - n\,C\,|z|^
 
 故存在 $R_0$ 使 $|z| > R_0$ 时 $|p(z)| \ge 1$，从而 $|g(z)| \le 1$。
 
-在紧集 $\overline{D(0, R_0)}$ 上 $g$ 连续、因而有界，设为 $M_0$。
+在紧集 $\overline{B(0, R_0)}$ 上 $g$ 连续、因而有界，设为 $M_0$。
 
 于是 $|g| \le \max\{1, M_0\}$ 在全平面成立。
 
@@ -44718,15 +44702,15 @@ $$|p(z)| \ge |a_n||z|^n - \sum_{k=0}^{n-1}|a_k||z|^k \ge |a_n||z|^n - n\,C\,|z|^
 #### Cauchy 积分公式 ⟹ 最大模原理　`imp.max-modulus`
 *Cauchy 积分公式 $\implies$ 平均值公式 $\implies$ 最大模原理*
 
-**平均值公式。** 设 $\overline{D(z, r)} \subset \Omega$。
+**平均值公式。** 设 $\overline{B(z, r)} \subset \Omega$。
 
-在 Cauchy 积分公式里取 $\partial\Omega = \partial D(z, r)$，参数化 $\zeta = z + re^{i\theta}$（$\mathrm{d}\zeta = ire^{i\theta}\mathrm{d}\theta$）：
+在 Cauchy 积分公式里取 $\partial\Omega = \partial B(z, r)$，参数化 $\zeta = z + re^{i\theta}$（$\mathrm{d}\zeta = ire^{i\theta}\mathrm{d}\theta$）：
 
 $$f(z) = \frac{1}{2\pi i}\int_0^{2\pi} \frac{f(z + re^{i\theta})}{re^{i\theta}}\, i r e^{i\theta}\,\mathrm{d}\theta = \frac{1}{2\pi}\int_0^{2\pi} f(z + re^{i\theta})\,\mathrm{d}\theta.$$
 
 即：**函数在中心的值 = 它在圆周上的平均值**。
 
-**取最大值的点附近。** 设 $M = \sup_\Omega |f|$ 在**内点** $z_0$ 被取到（即 $|f(z_0)| = M$，且 $M < \infty$）。对任意 $r$ 使 $\overline{D(z_0, r)} \subset \Omega$：
+**取最大值的点附近。** 设 $M = \sup_\Omega |f|$ 在**内点** $z_0$ 被取到（即 $|f(z_0)| = M$，且 $M < \infty$）。对任意 $r$ 使 $\overline{B(z_0, r)} \subset \Omega$：
 
 $$M = |f(z_0)| = \left| \frac{1}{2\pi}\int_0^{2\pi} f(z_0 + re^{i\theta})\mathrm{d}\theta \right| \le \frac{1}{2\pi}\int_0^{2\pi} |f(z_0 + re^{i\theta})|\,\mathrm{d}\theta \le M.$$
 
@@ -44747,7 +44731,7 @@ $\Omega$ 连通，故 $E = \Omega$。
 #### Cauchy 积分公式 ⟹ 全纯函数的 Taylor 展开　`imp.complex-taylor`
 *Cauchy 积分公式 + 几何级数 $\implies$ Taylor 展开*
 
-**取一个稍小的圆。** 固定 $z \in D(a, R)$，取 $\rho$ 使 $|z - a| < \rho < R$。由 Cauchy 积分公式（在 $D(a, \rho)$ 上）
+**取一个稍小的圆。** 固定 $z \in B(a, R)$，取 $\rho$ 使 $|z - a| < \rho < R$。由 Cauchy 积分公式（在 $B(a, \rho)$ 上）
 
 $$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho}\frac{f(\zeta)}{\zeta - z}\,\mathrm{d}\zeta.$$
 
@@ -44755,15 +44739,15 @@ $$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho}\frac{f(\zeta)}{\zeta - z}\,\
 
 $$\frac{1}{\zeta - z} = \frac{1}{(\zeta - a) - (z - a)} = \frac{1}{\zeta - a}\cdot\frac{1}{1 - \frac{z - a}{\zeta - a}} = \sum_{n=0}^{\infty} \frac{(z - a)^n}{(\zeta - a)^{n+1}},$$
 
-右端关于 $\zeta \in \partial D(a, \rho)$ **一致收敛**（优级数 $\sum q^n/\rho$）。
+右端关于 $\zeta \in \partial B(a, \rho)$ **一致收敛**（优级数 $\sum q^n/\rho$）。
 
-**逐项积分。** $f$ 在紧集 $\partial D(a, \rho)$ 上有界，一致收敛允许交换求和与积分：
+**逐项积分。** $f$ 在紧集 $\partial B(a, \rho)$ 上有界，一致收敛允许交换求和与积分：
 
 $$f(z) = \sum_{n=0}^{\infty}\left( \frac{1}{2\pi i}\oint_{|\zeta - a| = \rho}\frac{f(\zeta)}{(\zeta - a)^{n+1}}\,\mathrm{d}\zeta \right)(z - a)^n = \sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(z - a)^n,$$
 
 最后一步是高阶导数公式（把 $z$ 换成 $a$）。
 
-**一致收敛。** 对任意紧集 $K \subset D(a, R)$，取 $\rho$ 使 $K \subset D(a, \rho) \subset D(a, R)$，则 $|c_n| \le \|f\|_{\partial D(a,\rho)}/\rho^n$，优级数在 $K$ 上收敛。
+**一致收敛。** 对任意紧集 $K \subset B(a, R)$，取 $\rho$ 使 $K \subset B(a, \rho) \subset B(a, R)$，则 $|c_n| \le \|f\|_{\partial B(a, \rho)}/\rho^n$，优级数在 $K$ 上收敛。
 
 $\blacksquare$
 
@@ -44799,26 +44783,26 @@ $\blacksquare$
 
 $$f(z) = \frac{1}{2\pi i}\oint_{|\zeta - a| = r}\frac{f(\zeta)}{\zeta - z}\mathrm{d}\zeta - \frac{1}{2\pi i}\oint_{|\zeta - a| = \varepsilon}\frac{f(\zeta)}{\zeta - z}\mathrm{d}\zeta =: I_r(z) - I_\varepsilon(z).$$
 
-**$I_r$ 是好的。** 分母 $\zeta - z$ 在 $|\zeta - a| = r$ 上不为零（因为 $|z - a| < r$），故 $I_r$ 在 $D(a, r)$ 上定义且全纯（在积分号下求导，做法与高阶导数那条边相同）。
+**$I_r$ 是好的。** 分母 $\zeta - z$ 在 $|\zeta - a| = r$ 上不为零（因为 $|z - a| < r$），故 $I_r$ 在 $B(a, r)$ 上定义且全纯（在积分号下求导，做法与高阶导数那条边相同）。
 
 **$I_\varepsilon$ 趋零。** 在 $|\zeta - a| = \varepsilon$ 上 $|\zeta - z| \ge |z - a| - \varepsilon > 0$，于是
 
-$$|I_\varepsilon(z)| \le \frac{1}{2\pi}\cdot\frac{\max_{|\zeta - a| = \varepsilon}|f(\zeta)|}{|z - a| - \varepsilon}\cdot 2\pi\varepsilon = \frac{\varepsilon\,\|f\|_{\partial D(a, \varepsilon)}}{|z - a| - \varepsilon}.$$
+$$|I_\varepsilon(z)| \le \frac{1}{2\pi}\cdot\frac{\max_{|\zeta - a| = \varepsilon}|f(\zeta)|}{|z - a| - \varepsilon}\cdot 2\pi\varepsilon = \frac{\varepsilon\,\|f\|_{\partial B(a, \varepsilon)}}{|z - a| - \varepsilon}.$$
 
-条件 $\lim_{z \to a}(z - a)f(z) = 0$ 说的正是 $\varepsilon \|f\|_{\partial D(a, \varepsilon)} \to 0$（把 $z$ 取成圆上使 $|f|$ 最大的点）。故 $I_\varepsilon(z) \to 0$。
+条件 $\lim_{z \to a}(z - a)f(z) = 0$ 说的正是 $\varepsilon \|f\|_{\partial B(a, \varepsilon)} \to 0$（把 $z$ 取成圆上使 $|f|$ 最大的点）。故 $I_\varepsilon(z) \to 0$。
 
 **$\varepsilon$ 不能被「取极限」牵动。** $I_\varepsilon(z)$ 由 $f$ 在圆周 $|\zeta - a| = \varepsilon$ 上的值决定；而对每个固定的 $\varepsilon \in (0, |z - a|)$，它是 $f(z) - I_r(z)$ 的一部分，是个**定值**。
 
 既然它被任意小的常数压住，只能是 $0$。
 
-**收尾。** $f(z) = I_r(z)$ 对 $z \in D(a, r) \setminus \{a\}$ 成立，令 $f(a) := I_r(a)$ 就把 $f$ 延拓成 $D(a, r)$ 上的全纯函数。$\blacksquare$
+**收尾。** $f(z) = I_r(z)$ 对 $z \in B(a, r) \setminus \{a\}$ 成立，令 $f(a) := I_r(a)$ 就把 $f$ 延拓成 $B(a, r)$ 上的全纯函数。$\blacksquare$
 
 #### Cauchy–Goursat 积分定理 + 留数 ⟹ 留数定理　`imp.residue-theorem`
 *挖洞 + 多连通 Cauchy–Goursat $\implies$ 留数定理*
 
-**挖洞。** 取 $\varepsilon > 0$ 足够小，使闭圆盘 $\overline{D(z_k, \varepsilon)}$（$k = 1, \cdots, n$）两两不交、且都含在 $\Omega$ 内。令
+**挖洞。** 取 $\varepsilon > 0$ 足够小，使闭圆盘 $\overline{B(z_k, \varepsilon)}$（$k = 1, \cdots, n$）两两不交、且都含在 $\Omega$ 内。令
 
-$$\Omega_\varepsilon := \Omega \setminus \bigcup_{k=1}^{n}\overline{D(z_k, \varepsilon)}.$$
+$$\Omega_\varepsilon := \Omega \setminus \bigcup_{k=1}^{n}\overline{B(z_k, \varepsilon)}.$$
 
 $\Omega_\varepsilon$ 是 $n$ 连通的，而 $f$ 在它上面全纯（挖掉的正是全部奇点）。
 
@@ -44889,7 +44873,7 @@ $\blacksquare$
 
 #### 定义引用：「幂级数」→ 全纯函数的 Taylor 展开　`def-link.taylor-power-series`
 
-「$f$ 在 $D(a, R)$ 内解析」的定义就是：存在幂级数在 $D(a, R)$ 内收敛到 $f$。定理说的正是全纯蕴含这件事。
+「$f$ 在 $B(a, R)$ 内解析」的定义就是：存在幂级数在 $B(a, R)$ 内收敛到 $f$。定理说的正是全纯蕴含这件事。
 
 #### 定义引用：「复围道积分」→ 留数　`def-link.residue-contour`
 
@@ -45806,9 +45790,9 @@ $\blacksquare$
 #### 复围道积分 + 全纯函数 ⟹ Morera 定理　`imp.morera`
 *连续 + 沿闭三角形积分为零 $\implies$ 全纯*
 
-在 $\Omega$ 内任取一个圆盘 $D(a, r) \subset \Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。
+在 $\Omega$ 内任取一个圆盘 $B(a, r) \subset \Omega$，只要在圆盘上造出原函数就够（全纯是局部性质）。
 
-**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \in D(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义
+**第一步：沿折线的积分与路径无关。** 对 $z = x + iy \in B(a, r)$，取 $a = x_0 + i y_0$，沿「先水平后竖直」的折线定义
 
 $$F(z) := \int_{x_0}^{x} f(t + i y_0)\,\mathrm{d}t + \int_{y_0}^{y} f(x + i t)\,\mathrm{d}t.$$
 
@@ -45818,7 +45802,7 @@ $$F(z) := \int_{x_0}^{x} f(t + i y_0)\,\mathrm{d}t + \int_{y_0}^{y} f(x + i t)\,
 
 $$F(z + h) - F(z) = \int_{x}^{x + h} f(t + i y)\,\mathrm{d}t,$$
 
-除以 $h$ 后用 $f$ 的**连续性**：$\dfrac{1}{h}\displaystyle\int_x^{x+h} f(t + iy)\,\mathrm{d}t \to f(x + iy) = f(z)$（$h \to 0$）。竖直方向同理。所以 $F$ 在 $D(a, r)$ 内复可微且 $F' = f$。
+除以 $h$ 后用 $f$ 的**连续性**：$\dfrac{1}{h}\displaystyle\int_x^{x+h} f(t + iy)\,\mathrm{d}t \to f(x + iy) = f(z)$（$h \to 0$）。竖直方向同理。所以 $F$ 在 $B(a, r)$ 内复可微且 $F' = f$。
 
 **第三步：$f$ 全纯。** $F$ 全纯 $\implies$ $F$ 无穷次可微（Taylor 展开）$\implies$ $F' = f$ 也全纯，且 $f$ 在该点有 Taylor 展开。圆盘任取，故 $f$ 在 $\Omega$ 上全纯。$\blacksquare$
 
@@ -45879,13 +45863,13 @@ $$N(t) := \frac{1}{2\pi i}\oint_{\gamma} \frac{h_t'(z)}{h_t(z)}\,\mathrm{d}z.$$
 
 设 $f$ 不恒为零，且 $f(z_0) = 0$。只需在这个零点处导出矛盾。
 
-**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\overline{D(z_0, r)} \subset \Omega$，且 $f$ 在 $\overline{D(z_0, r)}$ 内只有 $z_0$ 一个零点。令
+**第一步：挖一个只含这个零点的小圆盘。** 不恒为零的全纯函数零点是孤立的，取 $r > 0$ 使 $\overline{B(z_0, r)} \subset \Omega$，且 $f$ 在 $\overline{B(z_0, r)}$ 内只有 $z_0$ 一个零点。令
 
 $$m := \min_{|z - z_0| = r} |f(z)| > 0$$
 
 （圆周上无零点，连续函数在紧集上有正的最小值）。
 
-**第二步：一致收敛让扰动变小。** 在紧集 $\overline{D(z_0, r)}$ 上 $f_k \rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点
+**第二步：一致收敛让扰动变小。** 在紧集 $\overline{B(z_0, r)}$ 上 $f_k \rightrightarrows f$，故当 $k$ 充分大时，对圆周上每一点
 
 $$|f_k(z) - f(z)| \le \|f_k - f\|_{\infty} < m \le |f(z)|.$$
 
@@ -45968,14 +45952,14 @@ $$u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.$$
 
 **第四步：面积平均。** 把上式中的 $r$ 换成 $\rho$ 再乘 $\rho$，在 $0 < \rho < r$ 上积分：
 
-$$\int_0^{r} 2\pi u(a)\,\rho\,\mathrm{d}\rho = \int_0^{r}\int_0^{2\pi} u(a + \rho e^{i\theta})\,\rho\,\mathrm{d}\theta\,\mathrm{d}\rho = \iint_{D(a, r)} u\,\mathrm{d}A.$$
+$$\int_0^{r} 2\pi u(a)\,\rho\,\mathrm{d}\rho = \int_0^{r}\int_0^{2\pi} u(a + \rho e^{i\theta})\,\rho\,\mathrm{d}\theta\,\mathrm{d}\rho = \iint_{B(a, r)} u\,\mathrm{d}A.$$
 
 左边 $= \pi r^2 u(a)$，两边除以 $\pi r^2$ 即得面积形式。$\blacksquare$
 
 #### Cauchy 积分公式 + 调和函数 ⟹ Poisson 积分公式　`imp.poisson-formula`
 *Cauchy 积分公式 + 调和 $\implies$ Poisson 公式*
 
-设 $f$ 在 $D(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \operatorname{Re} f$。
+设 $f$ 在 $B(0, R)$ 的邻域上全纯，$|z| < r < R$，记 $u = \operatorname{Re} f$。
 
 **第一步：把圆周积分写成 $\theta$。** 在 $|\zeta| = r$ 上 $\mathrm{d}\zeta = i\zeta\,\mathrm{d}\theta$，故
 
@@ -46033,7 +46017,7 @@ $$E := \{\, z \in \Omega : u(z) = M \,\} \ne \emptyset.$$
 
 **第二步：$E$ 是闭的。** $u$ 连续，$E$ 是闭集 $\{M\}$ 在 $\Omega$ 中的原像。
 
-**第三步：$E$ 是开的。** 取 $a \in E$，取 $r > 0$ 使 $\overline{D(a, r)} \subset \Omega$。由均值性质
+**第三步：$E$ 是开的。** 取 $a \in E$，取 $r > 0$ 使 $\overline{B(a, r)} \subset \Omega$。由均值性质
 
 $$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.$$
 
@@ -46041,7 +46025,7 @@ $$M = u(a) = \frac{1}{2\pi}\int_0^{2\pi} u(a + r e^{i\theta})\,\mathrm{d}\theta.
 
 所以圆周落在 $E$ 里；
 
-对每个 $0 < \rho \le r$ 同理，于是 $D(a, r) \subset E$。
+对每个 $0 < \rho \le r$ 同理，于是 $B(a, r) \subset E$。
 
 **第四步：连通性。** $\Omega$ 连通而 $E$ 非空、既开又闭，故 $E = \Omega$，即 $u \equiv M$。取逆否命题：$u$ 非常数 $\implies$ 内部取不到最大值。
 
@@ -46871,7 +46855,7 @@ $$i(ri) = (1_{M}-sp)\,i = i - s(pi) = i \quad\text{（用到 } pi = 0\text{）}\
 
 平均算子定义为
 
-$$A_{r}f(x) := \frac{1}{m\bigl(B(r,x)\bigr)}\int_{B(r,x)} f\,\mathrm{d}m,$$
+$$A_{r}f(x) := \frac{1}{m\bigl(B(x, r)\bigr)}\int_{B(x, r)} f\,\mathrm{d}m,$$
 
 即 $f$ 在球上的平均值。Lebesgue 微分定理说：对 $f \in L^{1}_{\mathrm{loc}}$，
 
@@ -46949,9 +46933,9 @@ $\blacksquare$
 #### Poisson 积分公式 + 调和函数的共轭 ⟹ 调和函数的均值性质　`imp.derived-mean-value-poisson`
 *Poisson 积分公式在圆心处退化成均值性质*
 
-**先取得全纯函数。** 圆盘 $D(a,r)$ 单连通，由调和函数的共轭，$D(a,r)$ 上的调和 $u$ 是某个全纯函数 $f$ 的实部。
+**先取得全纯函数。** 圆盘 $B(a, r)$ 单连通，由调和函数的共轭，$B(a, r)$ 上的调和 $u$ 是某个全纯函数 $f$ 的实部。
 
-**把原点搬到 $a$。** 令 $v(h) := u(a+h)$，则 $v$ 在 $D(0,r)$ 上调和，且仍是全纯函数的实部（取 $f(a+h)$）。
+**把原点搬到 $a$。** 令 $v(h) := u(a+h)$，则 $v$ 在 $B(0, r)$ 上调和，且仍是全纯函数的实部（取 $f(a+h)$）。
 
 **Poisson 公式**（对 $v$，$0 < \rho < r$、$|z| < \rho$）：
 
@@ -46965,7 +46949,7 @@ $$u(a) = v(0) = \frac{1}{2\pi}\int_{0}^{2\pi} u\bigl(a + \rho e^{i\theta}\bigr)\
 
 **面积平均。** 对 $s \in (0,r)$ 用一圈的均值 $u(a) = \frac{1}{2\pi}\int_{0}^{2\pi}u(a+se^{i\theta})\,\mathrm{d}\theta$，再乘 $2\pi s$ 对 $s$ 积分并用极坐标：
 
-$$\iint_{D(a,r)} u\,\mathrm{d}x\,\mathrm{d}y = \int_{0}^{r} 2\pi s\, u(a)\,\mathrm{d}s = \pi r^{2} u(a).$$
+$$\iint_{B(a, r)} u\,\mathrm{d}x\,\mathrm{d}y = \int_{0}^{r} 2\pi s\, u(a)\,\mathrm{d}s = \pi r^{2} u(a).$$
 
 两条合起来就是均值性质。$\blacksquare$
 
@@ -47584,11 +47568,11 @@ $H_{n} = \ker \partial_{n} / \operatorname{im} \partial_{n+1}$ —— 同调群�
 
 **① 把坏集换成球族。** 令 $E_\alpha = \{x : Hf(x) > \alpha\}$。对每个 $x \in E_\alpha$，由 Hf 的定义（上确界）存在 $r_x > 0$ 使
 
-$$A_{r_x}|f|(x) > \alpha\quad  \iff\quad  \int_{B(r_x, x)} |f(y)| dy > \alpha\cdot m(B(r_x, x))$$
+$$A_{r_x}|f|(x) > \alpha\quad  \iff\quad  \int_{B(x, r_x)} |f(y)| dy > \alpha\cdot m(B(x, r_x))$$
 
-于是 $\{B(r_x, x)\}_{x \in E_\alpha}$ 是 $E_\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。
+于是 $\{B(x, r_x)\}_{x \in E_\alpha}$ 是 $E_\alpha$ 的一个开球覆盖，且每个球都满足上面那个「超额」不等式。
 
-**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\alpha)$（先设 $m(E_\alpha ) < \infty$）。由**覆盖引理**，存在 $x_1, \ldots , x_k \in E_\alpha$ 使 $B_j = B(r_{x_j}, x_j)$ 两两不交，且
+**② 用覆盖引理挑不交子族。** 任取 $c < m(E_\alpha)$（先设 $m(E_\alpha ) < \infty$）。由**覆盖引理**，存在 $x_1, \ldots , x_k \in E_\alpha$ 使 $B_j = B(x_j, r_{x_j})$ 两两不交，且
 
 $$\sum_j m(B_j) > 3^{-n} c$$
 
@@ -47646,7 +47630,7 @@ $$\lim_{r\to0} A_r f(x) = f(x)\quad \text{ 对一切} x \notin \bigcup_{m\in\mat
 
 **① 对每个复数 $c$ 用一次微分定理。** 固定 $c \in \mathbb{C}$，把微分定理用在函数 $h(x) = |f(x) - c|$ 上（它是 $L^{1}_{l}oc$ 的）：存在零集 $E_c$，使对 $x \notin E_c$，
 
-$$\lim_{r\to0} \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - c| dy = |f(x) - c|$$
+$$\lim_{r\to0} \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y) - c| dy = |f(x) - c|$$
 
 **② 只取可数多个 $c$。** 取 $\mathbb{C}$ 的一个**可数稠密子集** $D$（比如 $\mathbb{Q} + i\mathbb{Q}$），令
 
@@ -47656,7 +47640,7 @@ $$E = \bigcup_{c \in D} E_c$$
 
 **③ 在 $E$ 外验证**。设 $x \notin E$，任给 $\varepsilon > 0$，取 $c \in D$ 使 $|f(x) - c| < \varepsilon$。则
 
-$$\frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le \frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - c| dy + |f(x) - c|$$
+$$\frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y) - f(x)| dy \le \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y) - c| dy + |f(x) - c|$$
 
 右边第一项由 ①（$x \notin E_c$）在 $r \to 0$ 时趋于 $|f(x) - c|$，于是整个右端的极限 $\le$ $|f(x) - c| + \varepsilon < 2\varepsilon$。令 $\varepsilon \to 0$ 得极限为 0，即 $x \in L_f$。
 
@@ -47667,11 +47651,11 @@ $$\frac{1}{m(B(r,x))} \int_{B(r,x)} |f(y) - f(x)| dy \le \frac{1}{m(B(r,x))} \in
 #### Lebesgue 集几乎处处 + 可缩族 ⟹ 可缩族的微分定理　`imp.differentiation-general`
 *Lebesgue 集 + 可缩条件 $\implies$ 一般族的微分定理*
 
-设 $x \in L_f$，$\{E_r\}$ 可缩地趋于 $x$，即 $E_r \subseteq B(r,x)$ 且 $m(E_r) > \alpha\cdot m(B(r,x))$。
+设 $x \in L_f$，$\{E_r\}$ 可缩地趋于 $x$，即 $E_r \subseteq B(x, r)$ 且 $m(E_r) > \alpha\cdot m(B(x, r))$。
 
-**① 关键估计（一行）。** 因为 $E_r \subseteq B(r,x)$，把积分域放大到球上只会变大；再用 $m(E_r) > \alpha m(B(r,x))$ 把分母换小：
+**① 关键估计（一行）。** 因为 $E_r \subseteq B(x, r)$，把积分域放大到球上只会变大；再用 $m(E_r) > \alpha m(B(x, r))$ 把分母换小：
 
-$$\frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy \le \frac{1}{m(E_r)} \int_{B(r,x)} |f(y) - f(x)| dy \le (1/\alpha)\cdot m(B(r,x)) \int_{B(r,x)} |f(y) - f(x)| dy$$
+$$\frac{1}{m(E_r)} \int_{E_r} |f(y) - f(x)| dy \le \frac{1}{m(E_r)} \int_{B(x, r)} |f(y) - f(x)| dy \le (1/\alpha)\cdot m(B(x, r)) \int_{B(x, r)} |f(y) - f(x)| dy$$
 
 **② 收尾。** 由 $x \in L_f$ 的定义，最右边当 $r \to 0$ 时趋于 0。故第一个极限为 0。
 
@@ -47702,7 +47686,7 @@ $$\nu(E_r) / m(E_r) = \lambda(E_r) / m(E_r) + \frac{1}{m(E_r)} \int_{E_r} f\cdot
 
 **③ 把 $\lambda$ 的坏点收集起来。** 不妨设 $\lambda \ge 0$，并取 $A$ 使 $\lambda(A) = m(A^c) = 0$（$\lambda \perp m$ 的见证）。令
 
-$$F_k = \{ x \in A : \limsup_{r\to0} \lambda(B(r, x)) / m(B(r, x)) > 1 / k \}$$
+$$F_k = \{ x \in A : \limsup_{r\to0} \lambda(B(x, r)) / m(B(x, r)) > 1 / k \}$$
 
 **④ 用正则性把 $\lambda$ 压小。** 给定 $\varepsilon > 0$，由 $\lambda$ 的正则性（从外面用开集逼近）取开集 $U \supseteq A$ 使 $\lambda(U) < \varepsilon$（注意 $\lambda(A) = 0$，但 $U$ 比 $A$ 大，多出来的部分也可以做得任意小）。
 
@@ -47718,13 +47702,13 @@ $$\lambda(B_x) > (1/k)\cdot m(B_x)$$
 
 $$c < 3^n \sum_i m(B_{x_i}) \le 3^n k \sum_i \lambda(B_{x_i}) \le 3^n k\cdot\lambda(V_\varepsilon) \le 3^n k \varepsilon$$
 
-**⑦ 令 $\varepsilon \to 0$。** 得 $m(V_\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\lim_{r\to0} \lambda(B(r,x))/m(B(r,x)) = 0$ 对 m-a.e. x 成立。
+**⑦ 令 $\varepsilon \to 0$。** 得 $m(V_\varepsilon) = 0$，故某个零集包含了一切 $F_k$，即 $F_k$ 全是零集，从而 $\lim_{r\to0} \lambda(B(x, r))/m(B(x, r)) = 0$ 对 m-a.e. x 成立。
 
 **⑧ 从球换到可缩族。** 上面用的是球；要换成一般的可缩族 $E_r$，用
 
-$$\lambda(E_r) / m(E_r) \le \lambda(B(r,x)) / m(E_r) \le (1/\alpha)\cdot\lambda(B(r,x)) / m(B(r,x)) \to 0$$
+$$\lambda(E_r) / m(E_r) \le \lambda(B(x, r)) / m(E_r) \le (1/\alpha)\cdot\lambda(B(x, r)) / m(B(x, r)) \to 0$$
 
-（第二个不等号用了 $m(E_r) > \alpha m(B(r,x))$，并且 $E_r \subseteq B(r,x)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎
+（第二个不等号用了 $m(E_r) > \alpha m(B(x, r))$，并且 $E_r \subseteq B(x, r)$ 使分子变大。）把 ⑦ 的结果搬过来即可。∎
 
 > ⭐ 这条把 Radon–Nikodym 导数彻底「算得出来」了：它就是在小球上质量比的极限 —— 正是「密度 $=$ 质量/体积」的严格版本。
 
@@ -49538,10 +49522,6 @@ Cartan 公式里的 $\mathrm{d}$ 作用在 $\Omega^{k}(M)$ 上，它的良定性
 
 体积密度的定义写在黎曼流形 $(M,g)$ 上，用的也是 $M$ 上的形式。
 
-#### 定义引用：「微分形式」→ 左不变形式　`dep.mf3-lieform-form`
-
-左不变形式是 Lie 群（本身就是流形）上的 $k$-形式。
-
 #### 定义引用：「拉回」→ 左不变形式　`dep.mf3-lieform-pullback`
 
 「左不变」是用左平移 $L_{g}$ 的拉回写的：$L_{g}^{\ast}\omega = \omega$，而 $L_{g}$ 是流形之间的光滑映射。
@@ -51024,10 +51004,6 @@ $A_{\mathbb{R}}$ 是含单位的实子代数（$\operatorname{Re}(fg)$ 是实部
 
 > 反例（圆盘代数 $\mathrm{Alg}(z)$）缺的正是「对共轭封闭」：$\bar z$ 不在闭包里。
 
-#### 定义引用：「线性无关与基」→ 范数　`def-link.fa-vs-norm`
-
-范数加在向量空间上：第二条公理就是「与标量乘法相容」。
-
 #### 定义引用：「距离空间」→ 范数诱导的距离　`def-link.fa-metric-normind`
 
 范数诱导的距离就是度量空间那条定义里的距离，额外要求平移不变与齐次。
@@ -51532,10 +51508,6 @@ $\mathfrak{gl}(k)$ 的元素是线性映射，多项式取在它的矩阵元上�
 
 分裂到线丛之后，每一块都用线丛那条公式算。
 
-#### 定义引用：「陈类」→ 分裂原理　`dep-sp-cc2`
-
-「陈根」$x_{j}$ 就是各线丛的 $c_{1}$。
-
 #### 定义引用：「域」→ 向量空间　`dep.field-vectorspace`
 
 标量取自**域**：$K$ 要能加、能乘，**非零元还要可逆** —— 整个「线性」理论都要靠这一条（没有逆元就解不出 $a v = w$，也就没有「基可以换」）。
@@ -51921,10 +51893,6 @@ $\mu(E) = 0$ 里的 $\mu$ 是测度；a.e. 是测度空间上的说法。
 #### 定义引用：「界与确界」→ 非负函数的积分　`dep.sup-integral-nonneg`
 
 非负函数的积分定义成 $\sup \{ \int \varphi \}$ —— 取的是实数（或 $+\infty$）的上确界。
-
-#### 定义引用：「扩充实数 [−∞,+∞]」→ 测度　`dep.extended-measure`
-
-测度的取值放在 $[0, +\infty]$ 里，正是扩充实数。
 
 #### 定义引用：「实数系 ℝ」→ 距离空间　`dep.real-metric`
 
@@ -55371,10 +55339,6 @@ Giraud 定理给出「是**拓扑斯**」的四个等价说法。
 
 限制到**紧生成空间**上时那个函子变得全忠实。
 
-#### 定义引用：「紧生成空间」→ 紧生成空间是余反射子范畴　`def-dep.cg-coreflective`
-
-命题说的是**紧生成空间**是余反射子范畴。
-
 #### 定义引用：「伴随函子」→ 紧生成空间是余反射子范畴　`def-dep.adjoint-cg-coreflective`
 
 「余反射」的意思是含入函子有**右伴随**。
@@ -55515,10 +55479,6 @@ $\mathrm{CGWH}$ 是在**紧生成**之上再加弱 Hausdorff。
 
 定理左端的 $G/\ker\varphi$ 是**商群**。
 
-#### 定义引用：「群同态、核与像」→ 第一同构定理（Noether）　`def-dep.firstiso-kernel`
-
-核与像都是**群同态**的概念。
-
 #### 定义引用：「正规子群」→ 第一同构定理（Noether）　`def-dep.firstiso-normal`
 
 核是**正规**子群 —— 这正是它能被商掉的理由。
@@ -55626,10 +55586,6 @@ $\mu$ 零集是「$\mu(E) = 0$ 的可测集」，$E$ 与 $\mu$ 都来自**测度
 #### 定义引用：「子集」→ 外测度　`def-dep.subset-outer-measure`
 
 外测度定义在**全体子集**上：$\mu^* : \mathcal{P}(X) \to [0, +\infty]$。
-
-#### 定义引用：「幂集 𝒫(X)」→ 外测度　`def-dep.powerset-outer-measure`
-
-定义域是**幂集** $\mathcal{P}(X)$ —— 不是某个 $\sigma$-代数。
 
 #### 定义引用：「扩充实数 [−∞,+∞]」→ 外测度　`def-dep.extreal-outer-measure`
 
@@ -55777,7 +55733,7 @@ Lebesgue 分解 $\nu = \lambda + \rho$ 里的奇异部分要求 $\lambda \perp \
 
 #### 定义引用：「测度」→ 平均算子 Aᵣ　`def-dep.measure-average-operator`
 
-平均值里的 $m(B(r, x))$ 是 **Lebesgue 测度**。
+平均值里的 $m(B(x, r))$ 是 **Lebesgue 测度**。
 
 #### 定义引用：「局部可积」→ Lebesgue 集　`def-dep.locally-integrable-lebesgue-set`
 
@@ -55793,7 +55749,7 @@ Lebesgue 分解 $\nu = \lambda + \rho$ 里的奇异部分要求 $\lambda \perp \
 
 #### 定义引用：「子集」→ 可缩族　`def-dep.subset-shrinks-nicely`
 
-第一条是 $E_r \subseteq B(r, x)$——一个**子集**关系。
+第一条是 $E_r \subseteq B(x, r)$——一个**子集**关系。
 
 #### 定义引用：「偏序集」→ 实数系 ℝ　`def-dep.poset-real`
 
@@ -55865,11 +55821,11 @@ $g \in L^\infty$ 那一头（$p = 1$）要用本性上界。
 
 #### 定义引用：「距离空间」→ 可缩族　`def-dep.metric-shrinks-nicely`
 
-「$E_r \subseteq B(r, x)$」里的 $B(r, x)$ 是**距离空间**里的球。
+「$E_r \subseteq B(x, r)$」里的 $B(x, r)$ 是**距离空间**里的球。
 
 #### 定义引用：「测度」→ 可缩族　`def-dep.measure-shrinks-nicely`
 
-「$m(E_r) > \alpha \cdot m(B(r, x))$」里的 $m$ 是一个**测度**。
+「$m(E_r) > \alpha \cdot m(B(x, r))$」里的 $m$ 是一个**测度**。
 
 #### 定义引用：「非负可测函数类」→ 简单函数的积分　`def-dep.lplus-integral-simple`
 
@@ -56519,10 +56475,6 @@ $\otimes_{\mathbb{Z}}$ 与 $\operatorname{Hom}_{\mathbb{Z}}$ **互为伴随**。
 
 紧生成说的是**拓扑空间**上的一条性质。
 
-#### 定义引用：「紧 Hausdorff 空间范畴」→ 紧生成空间　`def-dep.cg-chaus`
-
-测试空间取的是**紧 Hausdorff** 空间。
-
 #### 定义引用：「紧生成空间」→ k-开、k-闭与 k-拓扑　`def-dep.ktopo-cg`
 
 $k$-开集就是用「从**紧 Hausdorff** 空间进来的映射」去测。
@@ -56547,25 +56499,9 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 
 标的范畴 $k\mathbf{Top}$ 是**紧生成**空间。
 
-#### 定义引用：「伴随函子」→ 紧生成空间是余反射子范畴　`def-dep.cgcoref-adjoint`
-
-「余反射」= 含入函子有**右伴随**。
-
-#### 定义引用：「商拓扑」→ 商映射与局部紧空间作积　`def-dep.quotprod-quotient`
-
-定理说的是**商映射**。
-
-#### 定义引用：「积拓扑」→ 商映射与局部紧空间作积　`def-dep.quotprod-product`
-
-结论说的是**乘积** $X \times Z \to Y \times Z$。
-
 #### 定义引用：「紧生成空间」→ 紧生成空间对积封闭　`def-dep.cgprod-cg`
 
 推论说的是**紧生成**空间作积。
-
-#### 定义引用：「k-开、k-闭与 k-拓扑」→ k-化与积　`def-dep.kprod-ktopo`
-
-两边的 $k$ 都是**$k$-化**。
 
 #### 定义引用：「积拓扑」→ k-化与积　`def-dep.kprod-product`
 
@@ -56655,10 +56591,6 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 
 商群 = 陪集做成的**商集**再加一层运算。
 
-#### 定义引用：「正规子群」→ 商群　`def-dep.quotgroup-normal`
-
-商群只对**正规**子群有。
-
 #### 定义引用：「群」→ 群同态、核与像　`def-dep.grouphom-group`
 
 同态是两个**群**之间的映射。
@@ -56666,10 +56598,6 @@ $kX$ 是沿紧 Hausdorff 空间取余极限。
 #### 定义引用：「正规子群」→ 群同态、核与像　`def-dep.grouphom-kernel`
 
 核是**正规**子群。
-
-#### 定义引用：「商群」→ 第一同构定理（Noether）　`def-dep.firstiso-quotient`
-
-$G/\ker\varphi$ 是**商群**。
 
 #### 定义引用：「群同态、核与像」→ 第一同构定理（Noether）　`def-dep.firstiso-hom`
 
@@ -57758,10 +57686,6 @@ $K$-有界正合定义在**半范数**阿贝尔群的复形上。
 #### 定义引用：「谱序列」→ Cartan–Eilenberg 分解　`def-dep.carteil-spectral`
 
 它的用途是保证两类过滤给出**相容谱序列**。
-
-#### 定义引用：「层上同调」→ 滤过极限的上同调　`def-dep.flimcohom-cohom`
-
-结论算的是**层上同调**。
 
 #### 定义引用：「紧 Hausdorff 空间范畴」→ 滤过极限的上同调　`def-dep.flimcohom-chaus`
 
@@ -59454,7 +59378,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **乘积测度与 Fubini ↔ 关系与函数**　2 条节点级连线
 - **代数结构 ↔ 模的张量积与标量限制**　4 条节点级连线
 - **多重线性与张量 ↔ 模的张量积与标量限制**　2 条节点级连线
-- **函子与自然变换 ↔ 平坦模**　3 条节点级连线
+- **函子与自然变换 ↔ 平坦模**　2 条节点级连线
 - **加法与阿贝尔范畴 ↔ 平坦模**　3 条节点级连线
 - **加法与阿贝尔范畴 ↔ 内射模与可除群**　3 条节点级连线
 - **代数结构 ↔ 内射模与可除群**　3 条节点级连线
@@ -59469,8 +59393,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **加法与阿贝尔范畴 ↔ 复形与导出三角**　11 条节点级连线
 - **仿紧与单位分解 ↔ 分离公理**　5 条节点级连线
 - **拓扑空间的基本语汇 ↔ 仿紧与单位分解**　3 条节点级连线
-- **度量空间 ↔ 可度量化**　4 条节点级连线
-- **收敛与紧性 ↔ 拓扑空间的基本语汇**　9 条节点级连线
+- **度量空间 ↔ 可度量化**　3 条节点级连线
+- **收敛与紧性 ↔ 拓扑空间的基本语汇**　8 条节点级连线
 - **收敛与紧性 ↔ 可度量化**　3 条节点级连线
 - **可度量化 ↔ 分离公理**　3 条节点级连线
 - **可度量化 ↔ 仿紧与单位分解**　3 条节点级连线
@@ -59545,7 +59469,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **有界变差与绝对连续 ↔ 测度的构造**　2 条节点级连线
 - **有界变差与绝对连续 ↔ 积分**　4 条节点级连线
 - **线性映射与秩 ↔ 流形与向量丛**　2 条节点级连线
-- **微分形式、积分与 de Rham ↔ Lie 群**　4 条节点级连线
+- **微分形式、积分与 de Rham ↔ Lie 群**　3 条节点级连线
 - **内积空间与正交性 ↔ 矩阵与行列式**　2 条节点级连线
 - **内积空间与正交性 ↔ 线性映射与秩**　2 条节点级连线
 - **多重线性与张量 ↔ 向量空间与基**　2 条节点级连线
@@ -59567,7 +59491,6 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **赋范空间与有界算子 ↔ 度量空间**　5 条节点级连线
 - **$C(K)$ 与 Stone–Weierstrass ↔ 度量空间**　4 条节点级连线
 - **共形映射与正规族 ↔ $C(K)$ 与 Stone–Weierstrass**　2 条节点级连线
-- **向量空间与基 ↔ 赋范空间与有界算子**　2 条节点级连线
 - **多元微分 ↔ 赋范空间与有界算子**　6 条节点级连线
 - **线性映射与秩 ↔ 赋范空间与有界算子**　2 条节点级连线
 - **内积空间与正交性 ↔ Hilbert 空间**　8 条节点级连线
@@ -59590,12 +59513,11 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **集合的构造 ↔ 关系与函数**　3 条节点级连线
 - **基数与等势 ↔ 关系与函数**　4 条节点级连线
 - **基数与等势 ↔ 数系的构造**　4 条节点级连线
-- **测度的构造 ↔ 实数与极限**　3 条节点级连线
 - **有界变差与绝对连续 ↔ 实数与极限**　3 条节点级连线
 - **L^p 空间 ↔ 数系的构造**　2 条节点级连线
 - **基数与等势 ↔ 集合的构造**　2 条节点级连线
 - **集合族与 σ-代数 ↔ 集合的构造**　4 条节点级连线
-- **测度的构造 ↔ 集合的构造**　3 条节点级连线
+- **测度的构造 ↔ 集合的构造**　2 条节点级连线
 - **集合的构造 ↔ 拓扑空间的基本语汇**　4 条节点级连线
 - **关系与函数 ↔ 拓扑空间的基本语汇**　2 条节点级连线
 - **数系的构造 ↔ 关系与函数**　6 条节点级连线
@@ -59664,14 +59586,15 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 层与拓扑**　8 条节点级连线
 - **单满、子对象与像 ↔ 拓扑斯**　2 条节点级连线
 - **图与极限 ↔ 拓扑斯**　5 条节点级连线
-- **伴随与反射 ↔ 紧生成空间与弱 Hausdorff**　3 条节点级连线
+- **伴随与反射 ↔ 紧生成空间与弱 Hausdorff**　2 条节点级连线
 - **凝聚态阿贝尔群 ↔ 紧 Hausdorff 空间**　3 条节点级连线
 - **图与极限 ↔ 同调与正合列**　3 条节点级连线
 - **凝聚态阿贝尔群 ↔ 加法与阿贝尔范畴**　2 条节点级连线
 - **加法与阿贝尔范畴 ↔ 阿贝尔层**　2 条节点级连线
-- **紧生成空间与弱 Hausdorff ↔ 拓扑空间的基本语汇**　13 条节点级连线
+- **紧生成空间与弱 Hausdorff ↔ 拓扑空间的基本语汇**　11 条节点级连线
 - **紧生成空间与弱 Hausdorff ↔ 分离公理**　3 条节点级连线
 - **向量空间与基 ↔ 序结构**　2 条节点级连线
+- **测度的构造 ↔ 实数与极限**　2 条节点级连线
 - **微分定理 ↔ 集合族与 σ-代数**　2 条节点级连线
 - **集合族与 σ-代数 ↔ 符号测度与分解**　2 条节点级连线
 - **范畴与图 ↔ 集合的构造**　5 条节点级连线
@@ -59681,7 +59604,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **图与极限 ↔ 单满、子对象与像**　4 条节点级连线
 - **伴随与反射 ↔ 关系与函数**　2 条节点级连线
 - **图与极限 ↔ 紧生成空间与弱 Hausdorff**　2 条节点级连线
-- **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　3 条节点级连线
+- **紧生成空间与弱 Hausdorff ↔ 紧 Hausdorff 空间**　2 条节点级连线
 - **范畴与图 ↔ 复形与导出三角**　4 条节点级连线
 - **预层与米田 ↔ 阿贝尔层**　2 条节点级连线
 - **范畴与图 ↔ 单满、子对象与像**　3 条节点级连线

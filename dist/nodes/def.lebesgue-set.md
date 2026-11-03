@@ -5,7 +5,7 @@ layer 22 · 定义 · 微分定理 · 实变函数+数学分析
 
 设 $f \in L^1_{loc}$。定义
 
-$$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(r, x))} \int_{B(r, x)} |f(y) - f(x)| dy = 0 \}$$
+$$L_f := \{ x : \lim_{r\to0} \frac{1}{m(B(x, r))} \int_{B(x, r)} |f(y) - f(x)| dy = 0 \}$$
 
 称为 $f$ 的 **Lebesgue 集**。
 

@@ -5,7 +5,7 @@ layer 21 · 定理 · Cauchy 理论 · 复变函数
 
 **白话**：全纯函数在任意一点的附近都是一个幂级数 —— 也就是说，对复函数而言「可微」与「能写成幂级数」是同一件事。
 
-设 $f$ 在圆盘 $D(a, R)$ 上全纯。则对 $z \in D(a, R)$，
+设 $f$ 在圆盘 $B(a, R)$ 上全纯。则对 $z \in B(a, R)$，
 
 $$f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(z - a)^n,$$
 > 陈述续见 [nodes/thm.taylor-complex.2.md](./thm.taylor-complex.2.md)

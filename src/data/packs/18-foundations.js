@@ -279,13 +279,6 @@ window.MG = window.MG || {};
       note: '非负函数的积分定义成 $\\sup \\{ \\int \\varphi \\}$ —— 取的是实数（或 $+\\infty$）的上确界。'
     },
     {
-      id: 'dep.extended-measure',
-      kind: 'definition',
-      definition: 'def.extended-real',
-      usedBy: 'def.measure',
-      note: '测度的取值放在 $[0, +\\infty]$ 里，正是扩充实数。'
-    },
-    {
       id: 'dep.real-metric',
       kind: 'definition',
       definition: 'def.real',

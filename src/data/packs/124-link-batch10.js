@@ -140,20 +140,6 @@ window.MG = window.MG || {};
       note: '度量空间的度量给出可数局部基，仿紧性就是从这层结构长出来的。'
     },
     {
-      id: 'def-link.metrizable-metric',
-      kind: 'definition',
-      definition: 'def.metric-space',
-      usedBy: 'def.metrizable',
-      note: '「可度量化」就是问：这个拓扑能不能由某个度量诱导出来。'
-    },
-    {
-      id: 'def-link.second-countable-base',
-      kind: 'definition',
-      definition: 'def.topology-base',
-      usedBy: 'def.second-countable',
-      note: '第二可数说的是「有可数的基」，所以先要有基这个概念。'
-    },
-    {
       id: 'def-link.first-countable-base',
       kind: 'definition',
       definition: 'def.topology-base',
