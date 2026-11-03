@@ -28,6 +28,15 @@ window.MG = window.MG || {};
         '2. $\\pi$ 是**正则满态射**；',
         '3. $\\pi$ 是**满态射**；',
         '4. $\\pi$ 是**满射**。'
+        ,
+        '**四条里真正的“桥”是 (2) $\\iff$ (3)**，而它完全靠**紧 Hausdorff**：\n' +
+        '\n' +
+        '- (1) $\\iff$ (4)：在**任意**拓扑空间里「商映射 + 满」就是这样定义的（商的万有性质），**不需要紧性**。注意 (1) 说的是「$T$ 上的开集 $\\iff$ 原像是开集」，而 $\\pi$ 连续已给出一个方向，所以 (1) 的实质是「$\\pi$ 把饱和开集送到开集」。\n' +
+        '- (3) $\\implies$ (4)：**紧 Hausdorff 时满态射就是满射**。这一条要**紧性**：$S$ 紧 $\\implies$ $\\pi(S)$ 紧 $\\implies$ 在 Hausdorff 的 $T$ 里闭；若 $\\pi$ 不满，则 $T \\setminus \\pi(S)$ 是非空开集，于是存在从 $T$ 到两点 Sierpiński 型空间的映射把它分出去，与「$\\pi$ 是满态射」（任意两个平行态射若在 $\\pi$ 后相等则相等）矛盾。**在一般拓扑空间里满态射不满**是常态（例如 $\\mathbb{Q} \\to \\mathbb{R}$ 的包含）。\n' +
+        '- (2) $\\iff$ (3)：**这一步是「正则满态射」在紧 Hausdorff 空间范畴 $\\mathbf{CHaus}$ 里的特殊性** —— $\\mathbf{CHaus}$ 是正规范畴（regular category），其中「满态射 = 正则满态射 = 满射」。换成一般 $\\mathbf{Top}$ 就不成立。\n' +
+        '- (1) $\\implies$ (2)：商映射在 $\\mathbf{CHaus}$ 里自动正则（因为紧 Hausdorff 的商仍紧 Hausdorff，且核对存在）。\n' +
+        '\n' +
+        '⚠️ **假设不能去掉的对照**：把「紧 Hausdorff」换成「Hausdorff」，(3) $\\implies$ (4) 立刻失效（$\\mathbb{Q} \\hookrightarrow \\mathbb{R}$ 是满态射而非满射）；换成「紧」（不 Hausdorff），$\\pi(S)$ 不必闭，(4) 也塌。所以这条命题的四个字「紧 Hausdorff」是**全部内容所在**。'
       ].join('\n'),
       notes: [
         '**证明（循环）。** (1)$\\implies$(2)：商映射是某个余等化子，因而正则满 ✓。\n\n(2)$\\implies$(3)：正则满自动是满态射 ✓。\n\n(3)$\\implies$(4)：紧 Hausdorff 之间，满态射就是满射（紧 Hausdorff 是「投射对象够多」的范畴，满态射有截面，特别地满）✓。\n\n(4)$\\implies$(1)：紧 Hausdorff 的连续满射是商映射（紧空间到 Hausdorff 空间的连续满射诱导同胚于商）✓。\n\n∎',

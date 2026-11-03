@@ -184,6 +184,18 @@ window.MG = window.MG || {};
         '其中 $x_0$ 是任一特解；于是解空间的维数是 $n - \\operatorname{rank} A$；',
         '- 齐次方程组 $Ax = 0$ 的解空间就是 $\\ker A$，维数 $= n - \\operatorname{rank} A$；',
         '- 特别地：$m = n$ 且 $\\det A \\ne 0$ 时解**唯一**，$x = A^{-1}b$。'
+        ,
+        '**四条里哪条是“定理”、哪条只是重述**（这一组常被当成四条并列，其实最后一条依赖前两条）：\n' +
+        '\n' +
+        '- **有解 $\\iff \\operatorname{rank}A = \\operatorname{rank}(A\\mid b)$**：**这一步有真内容**，等价于「$b \\in \\operatorname{col}(A)$」。证明用行化简（Gauss 消元）—— 出现 $0 = c \\ne 0$ 的行当且仅当秩不相等。**只用「$K$ 是域」**（域上才能自由消元；$\\mathbb{Z}$ 上要换 Smith 标准形）。\n' +
+        '- **解集 = 特解 + 齐次解**：**这一步是纯线性**（不需要域、不需要有限维）：若 $Ax_{0} = b$、$Au = 0$，则 $A(x_{0}+u) = b$；反之两解之差属于 $\\ker A$。**仿射子空间不一定是子空间** —— 除非 $b = 0$。\n' +
+        '- **$\\dim \\ker A = n - \\operatorname{rank} A$**：**这一步要用秩-零化度定理**（`thm.rank-nullity`），这是唯一的维度输入；它本身要用有限维假设。\n' +
+        '- **$m=n$、$\\det A \\ne 0$ $\\implies$ 唯一解**：这条**只是前两条的特例**（$\\det \\ne 0 \\iff \\operatorname{rank} A = n \\iff \\ker A = 0$），并没有独立内容。\n' +
+        '\n' +
+        '⚠️ **三个不能省的条件**：\n' +
+        '- 「$K$ 是**域**」：$\\mathbb{Z}$ 上的方程 $2x = 1$ 无解、$2x = 2$ 有解，秩判据要改成 Smith 标准形（或者用「解的存在性 $\\iff$ gcd 条件」）。\n' +
+        '- 「**有限维**」：无穷维时 $\\dim \\ker A = n - \\operatorname{rank} A$ 里的 $n$ 不存在，要用「余维数」的说法。\n' +
+        '- 「$\\det A \\ne 0$」只在 $m = n$ 时有意义；$m \\ne n$ 时不要说「$\\det$」，那是伪逆/最小二乘的场合（`def.pseudoinverse`）。'
       ].join('\n'),
       notes: '⭐ 「解集 = 特解 + 齐次解」是线性代数的中心图景：**非齐次没有结构，齐次才有**（它是子空间），非齐次只是它的一个平移（仿射子空间）。\n\n⭐ 维数公式 $n - \\operatorname{rank} A$ 就是秩-零化度定理的方程组版本：变量数 $n$ = 约束掉的 $\\operatorname{rank} A$ + 自由的 $\\dim \\ker A$。\n\n⚠ 「有解 $\\iff$ $\\operatorname{rank} A = \\operatorname{rank}(A \\mid b)$」的几何意思：$b$ 落在 $A$ 的列空间里。\n\n别把它误记成「rank A = m」（那是有解**且解唯一**的条件）。',
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 1', 'Lang, Linear Algebra']

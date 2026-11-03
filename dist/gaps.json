@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T04:19:33.450Z",
+ "generated": "2026-11-03T04:42:13.273Z",
  "terms": 76,
  "missing": [
   {
@@ -874,6 +874,15 @@
    "gap": 3
   },
   {
+   "node": "prop.injective-criterion",
+   "nodeLabel": "内射对象的判据",
+   "nodeLayer": 15,
+   "def": "def.grothendieck-category",
+   "defLabel": "Grothendieck 范畴",
+   "defLayer": 18,
+   "gap": 3
+  },
+  {
    "node": "prop.k-calculus-fractions",
    "nodeLabel": "K(A) 允许分式演算",
    "nodeLayer": 15,
@@ -988,6 +997,15 @@
    "def": "def.absolute-continuity",
    "defLabel": "绝对连续",
    "defLayer": 16,
+   "gap": 2
+  },
+  {
+   "node": "def.spectral-radius",
+   "nodeLabel": "谱半径",
+   "nodeLayer": 12,
+   "def": "def.orthogonally-similar",
+   "defLabel": "正交相似",
+   "defLayer": 14,
    "gap": 2
   },
   {
@@ -1216,6 +1234,15 @@
    "gap": 1
   },
   {
+   "node": "def.spectral-radius",
+   "nodeLabel": "谱半径",
+   "nodeLayer": 12,
+   "def": "def.char-poly",
+   "defLabel": "特征多项式",
+   "defLayer": 13,
+   "gap": 1
+  },
+  {
    "node": "def.eigenspace",
    "nodeLabel": "特征子空间",
    "nodeLayer": 12,
@@ -1357,6 +1384,15 @@
    "def": "def.determinant",
    "defLabel": "行列式",
    "defLayer": 12,
+   "gap": 0
+  },
+  {
+   "node": "def.orthogonality",
+   "nodeLabel": "正交",
+   "nodeLayer": 10,
+   "def": "def.bilinear-form",
+   "defLabel": "双线性型",
+   "defLayer": 10,
    "gap": 0
   },
   {

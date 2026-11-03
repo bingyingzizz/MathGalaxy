@@ -365,6 +365,18 @@ window.MG = window.MG || {};
         '2. 相似不变：$\\rho(P^{-1}AP) = \\rho(A)$（特征值不变）；',
         '3. $\\rho(A) = \\lim_{k\\to\\infty}\\lVert A^{k}\\rVert^{1/k}$（这一条在有限维可由 Jordan 形直接验证）；',
         '4. $\\rho(A) < 1 \\iff A^{k} \\to 0$。'
+        ,
+        '**四条里哪条依赖什么**（谱半径这一组最容易被误当成“都能从定义直推”，其实第 3 条最贵）：\n' +
+        '\n' +
+        '- (1) $\\rho(A) \\le \\lVert A\\rVert$：**对任意从属范数**（算子范数）成立，一行：(1) 的算子范数就是「最大放大倍数」，而特征向量满足 $Av = \\lambda v$ $\\implies$ $\\lvert\\lambda\\rvert\\lVert v\\rVert \\le \\lVert A\\rVert\\lVert v\\rVert$。⚠️ 对**非从属**的任意矩阵范数（例如 $\\lVert A\\rVert = \\max_{ij}\\lvert a_{ij}\\rvert$ 的变体）不一定成立。\n' +
+        '- (2) 相似不变：**只用「相似保持特征多项式」**（`def.char-poly`），不需要任何范数。\n' +
+        '- (3) $\\rho(A) = \\lim_{k}\\lVert A^{k}\\rVert^{1/k}$：**这是全组唯一有真内容的**。$(\\le)$ 用 (1) 与谱半径的幂性质；$(\\ge)$ 要用 **Jordan 标准形**（`thm.jordan-canonical-form`）+ 一个 $\\varepsilon$ 技巧（把 $\\rho + \\varepsilon$ 当成“放大后的谱半径”，证明 $\\lVert(A/(\\rho+\\varepsilon))^{k}\\rVert$ 有界）。**必须有限维**：无穷维时这条公式一般**不**成立（要看算子谱的边界与范数之间的关系）。\n' +
+        '- (4) $\\rho(A) < 1 \\iff A^{k} \\to 0$：**只依赖 (3) 或 Jordan 形**。($\\Longleftarrow$) 若 $\\rho \\ge 1$，取模最大的特征值 $\\lambda$，则 $\\lVert A^{k}v\\rVert = \\lvert\\lambda\\rvert^{k}\\lVert v\\rVert$ 不趋于 $0$。($\\implies$) 由 (3) 得 $\\lVert A^{k}\\rVert^{1/k} \\to \\rho < 1$，故 $\\lVert A^{k}\\rVert \\to 0$。\n' +
+        '\n' +
+        '⚠️ **三处必须记住的假设**：\n' +
+        '- **(1) 与 (3) 都要求有限维**；(3) 还要求**取遍所有从属范数时不依赖范数** —— 极限值恰好与范数无关，这正是它有用的原因（Gelfand 公式）。\n' +
+        '- **$\\rho(A) < 1$ 与 $\\lVert A\\rVert < 1$ 不是一回事**：前者是谱条件（相似不变量），后者是范数条件（依范数而变）。存在 $\\rho(A) < 1$ 而 $\\lVert A\\rVert > 1$ 的矩阵（例如 $\\begin{pmatrix}0 & 10\\\\ 0.1 & 0\\end{pmatrix}$：$\\rho = 1$…… 换成 $\\begin{pmatrix}0 & 9\\\\ 0.1 & 0\\end{pmatrix}$ 则 $\\rho = \\sqrt{0.9} < 1$ 而 $\\lVert A\\rVert_{\\infty} = 9$）。\n' +
+        '- **(2) 不能加强成「合同不变」或「正交相似不变」之外的更多**：谱半径对**任意相似**不变，但对合同（$P^{T}AP$）**不**不变。'
       ].join('\n'),
       notes: [
         '⚠️ **公式 (3) 在本图只做到有限维**。一般 Banach 代数上的 Gelfand 公式 $\\rho(a) = \\lim\\lVert a^{n}\\rVert^{1/n}$（以及「谱非空」「谱半径等于谱的上确界」）需要复分析（Liouville）与算子理论，**留给泛函那一批**，这里不展开成独立节点。',
