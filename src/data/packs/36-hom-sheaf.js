@@ -128,7 +128,7 @@ window.MG = window.MG || {};
       cluster: 'hom.sheaf',
       type: 'definition',
       label: '阿贝尔层的张量积',
-      title: '张量积与封闭幺半结构',
+      title: '阿贝尔层的张量积与封闭幺半结构',
       regions: ['homology'],
       tags: ['同调代数', '张量积', '封闭幺半'],
       statement: [

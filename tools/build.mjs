@@ -113,6 +113,8 @@ function loadMG() {
        graph.js 挂好的字段读，不直接加载这两个文件。 */
     'data/i18n/abstracts.en.js',
     'data/i18n/statements.en.js',
+    /* 缺口候选词表（I2）：只给 build 用——浏览器端不需要，所以也不挂进 index.html */
+    'data/gaps.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -1380,6 +1382,110 @@ function clNameOf(graph, n) {
 }
 
 
+/* ------------------------------------------------------------- 缺口清单 */
+/* ⭐ 2026-11-03（审计 I2）：图只记录**存在的东西**，于是「我还缺哪一块」查不到。
+   这份产物把两类洞写出来（都是**警告级**，不是硬门）：
+     ① 候选词表里的词：正文提到了，却没有任何节点的 label / aka 对得上；
+     ② 陈述里出现了某个**定义**的 label，却没有指向它的定义边（且那个定义并不比它浅）。
+   ⛔ ② 会误报（「顺嘴提一句」也算），所以只进报告，不进断言。
+   ⚠️ 词表在 `src/data/gaps.js`：加词的门槛是「一个读者会顺着这个词去找定义」。 */
+function exportGaps(MG, graph) {
+  const TERMS = ((MG.gaps && MG.gaps.terms) || []).slice();
+  const akaOf = new Map(((MG.aliases && MG.aliases.nodes) || []).map((r) => [r.id, r.aka || []]));
+  const body = (n) => (n.statement || '') + '\n' +
+    (Array.isArray(n.notes) ? n.notes.join('\n') : (n.notes || ''));
+  const count = (s, t) => { let c = 0, i = 0; while ((i = s.indexOf(t, i)) >= 0) { c++; i += t.length; } return c; };
+
+  const rows = TERMS.map((t) => {
+    const holders = graph.nodes.filter((n) =>
+      String(n.label).includes(t) || (akaOf.get(n.id) || []).some((a) => String(a).includes(t)));
+    const mentions = [];
+    let total = 0;
+    for (const n of graph.nodes) {
+      const c = count(body(n), t);
+      if (c) { mentions.push({ id: n.id, c }); total += c; }
+    }
+    mentions.sort((a, b) => b.c - a.c);
+    return { term: t, holders: holders.map((n) => n.id), total, mentions };
+  });
+
+  const missing = rows.filter((r) => !r.holders.length && r.total > 0)
+    .sort((a, b) => b.total - a.total);
+  const never = rows.filter((r) => !r.total).map((r) => r.term);
+
+  /* ② 陈述用到更深的定义却没边（同一条边任一方向都算「接上了」） */
+  /* 口径与审计脚本 _nov16.mjs 一致：只看**陈述**，label 去掉括注后至少 3 字，
+     且只算「定义不比它浅」的情形 —— 否则「顺嘴提一句」会把这份报告冲到上千条。 */
+  const bare = (x) => String(x || '').replace(/（.*?）|(.*?)/g, '').trim();
+  const defs = graph.nodes.filter((n) => n.type === 'definition' && bare(n.label).length >= 3);
+  const EDGE_PAIRS = new Set();
+  for (const e of graph.edges) {
+    const p = e.kind === 'implication'
+      ? { from: e.sources || [], to: [e.target] }
+      : e.kind === 'definition' ? { from: [e.definition], to: [e.usedBy] }
+        : { from: [e.a], to: [e.b] };
+    for (const a of p.from) for (const b of p.to) { EDGE_PAIRS.add(a + '>' + b); EDGE_PAIRS.add(b + '>' + a); }
+  }
+  const noEdge = [];
+  for (const n of graph.nodes) {
+    const st = n.statement || '';
+    if (!st) continue;
+    for (const d of defs) {
+      if (d.id === n.id) continue;
+      const base = bare(d.label);
+      if (base.length < 3 || !st.includes(base)) continue;
+      if (EDGE_PAIRS.has(n.id + '>' + d.id)) continue;
+      const gap = (d.layer || 0) - (n.layer || 0);
+      if (gap < 0) continue;            // 定义比它浅 ⇒ 不算「往下掉」（同审计口径）
+      noEdge.push({ node: n.id, nodeLabel: n.label, nodeLayer: n.layer, def: d.id, defLabel: d.label, defLayer: d.layer, gap });
+    }
+  }
+  noEdge.sort((a, b) => b.gap - a.gap);
+
+  const cnt = graph.metaCounts || { nodes: graph.nodes.length, edges: graph.edges.length };
+  const L = [
+    '# 数学星图 · 缺口清单（提到了，但没节点 / 没边）',
+    '',
+    `规模：${cnt.nodes} 节点 / ${cnt.edges} 连线。本文件由 \`tools/build.mjs\` 生成，**警告级**，不是硬门。`,
+    '',
+    '怎么读：',
+    '- **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。',
+    '- **第二节**：某节点陈述里出现了定义 `X` 的名字，却没有通向 `X` 的边 —— 读者顺着这个词会掉下去。',
+    '- **第三节**：候选词表里**一次都没提到**的词（真空白：连「提过」都没有）。',
+    '',
+    '⚠️ 第二节会误报（「顺嘴提一句」也算），所以只列出来给人看，不做断言。',
+    '',
+    `## 一、提到了但没有节点（${missing.length} 个）`,
+    '',
+  ];
+  if (!missing.length) L.push('（没有）');
+  for (const r of missing) {
+    L.push(`### ${r.term}　出现 ${r.total} 次`);
+    L.push(r.mentions.slice(0, 6).map((m) => `\`${m.id}\``).join(' · ') +
+      (r.mentions.length > 6 ? ` 等 ${r.mentions.length} 个节点` : ''));
+    L.push('');
+  }
+  L.push(`## 二、陈述用到更深的定义却没有边（${noEdge.length} 处）`, '');
+  if (!noEdge.length) L.push('（没有）');
+  for (const x of noEdge.slice(0, 200)) {
+    L.push(`- \`${x.node}\`（${x.nodeLabel} · L${x.nodeLayer}）用到 \`${x.def}\`（${x.defLabel} · L${x.defLayer}）` +
+      (x.gap > 0 ? `　落差 ${x.gap}` : ''));
+  }
+  if (noEdge.length > 200) L.push(`\n（只列落差最大的 200 处；完整清单见 \`gaps.json\`）`);
+  L.push('', `## 三、候选词表里从没被提到的（${never.length} 个）`, '', never.join(' · ') || '（没有）');
+
+  return {
+    md: L.join('\n') + '\n',
+    json: {
+      generated: null,
+      terms: TERMS.length,
+      missing: missing.map((r) => ({ term: r.term, total: r.total, nodes: r.mentions.slice(0, 12) })),
+      noEdge: noEdge.map((x) => x),
+      never,
+    },
+  };
+}
+
 /* ---------------------------------------------------------- notation.md */
 /* 记号对照表产物。真源在 `src/data/notation.js` —— 这里只是把它排版出来。
    为什么必须分页：整张表 100 多条，远超单次抓取上限（1300 B），
@@ -1845,9 +1951,7 @@ function exportAlias(MG, graph, base = '') {
   L.push('');
   L.push(A.intro || '');
   L.push('');
-  L.push('查不到时先来这里换节点 id（英文名 / 老名字 / 大白话）。');
-  L.push('');
-  L.push('`alias/<星系id>.md` = 问法（一句人话→节点 id），`alias/aka/<星系id>.md` = 别名（别的叫法→节点 id）；行尾 `a+b` 是条数。');
+  L.push('`alias/<星系>.md` 问法 · `alias/aka/<星系>.md` 别名；行尾 `a+b` 是条数。');
   L.push('');
   for (const r of graph.regions) {
     const f = aliasFilter(A, graph, r.id);
@@ -2433,6 +2537,13 @@ if (doJSON) {
   /* 人读的一整篇（站点阅读页用）—— 不进 AI 体积断言，理由见 exportHubsFull 的注释 */
   fs.writeFileSync(path.join(DIST, 'hubs-full.md'), exportHubsFull(graph), 'utf8');
   console.log(`  → dist/hubs.md + hubs/*.md（${hubFiles.length} 页）+ hubs-full.md`);
+
+  /* 缺口清单（I2）：警告级产物，不进断言 */
+  const gaps = exportGaps(MG, graph);
+  fs.writeFileSync(path.join(DIST, 'gaps.md'), gaps.md, 'utf8');
+  fs.writeFileSync(path.join(DIST, 'gaps.json'),
+    JSON.stringify({ ...gaps.json, generated: data.meta.generated }, null, 1), 'utf8');
+  console.log(`  → dist/gaps.md + gaps.json（无节点 ${gaps.json.missing.length} 个 · 缺边 ${gaps.json.noEdge.length} 处）`);
 
   /* ------------------------------------------------------- 英文文档（T2.1） */
   /* 正文真源 src/data/i18n/docs.en.js；这里只渲染 + 状态头 + 分页。

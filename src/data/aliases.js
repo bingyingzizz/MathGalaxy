@@ -29,7 +29,7 @@ MG.aliases = {
   version: 1,
   updated: '2026-09-23',
 
-  intro: '同一个东西的别的叫法；常见问法该看哪几个节点。',
+  intro: '别的叫法与常见问法。',
 
   /* ------------------------------------------------------------ 别名 */
   nodes: [
@@ -1194,7 +1194,8 @@ MG.aliases = {
     { id: 'def.isometry', en: 'isometry and orthogonal transformation', aka: ['等距与正交变换'] },
     { id: 'def.quadratic-form', en: 'quadratic form', aka: ['二次型'] },
     { id: 'def.bilinear-form', en: 'bilinear form', aka: ['双线性型'] },
-    { id: 'def.tensor-product-vs', en: 'tensor product', aka: ['张量积'] },
+    { id: 'def.tensor-product-vs', en: 'tensor product', aka: ['向量空间的张量积'] },
+    { id: 'def.tensor-module', en: 'tensor product of modules', aka: ['张量积', '模的张量积', '张量积（模）'] },
     { id: 'def.exterior-power', en: 'exterior power', aka: ['外幂'] },
     { id: 'def.symmetric-algebra', en: 'symmetric algebra', aka: ['对称代数'] },
     { id: 'def.permutation-group', en: 'permutation and symmetric group', aka: ['置换群与对称群'] },

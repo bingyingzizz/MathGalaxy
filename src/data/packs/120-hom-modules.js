@@ -36,7 +36,7 @@ window.MG = window.MG || {};
       id: 'def.tensor-module',
       cluster: 'hom.module',
       type: 'definition',
-      label: '模的张量积',
+      label: '张量积',
       title: '模的张量积 $M \\otimes_{R} N$',
       regions: ['homology'],
       tags: ['定义', '同调代数', '模', '张量积'],

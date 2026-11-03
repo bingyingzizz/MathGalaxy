@@ -487,6 +487,72 @@ function cmdDeps(id, opt) {
   walk(id, 0);
 }
 
+/* ------------------------------------------------------------ impact */
+/* ⭐ 2026-11-03（审计 I1）：**下游比上游重要** ——
+   deps 回答「要不要读」，impact 回答「**敢不敢改**」：改弱一条引理 / 给一条定理加假设，
+   会波及哪些结论。就是 deps 的反图，用同一套边方向（两边永远一致）。
+   ⛔ 类比边不参与（不是逻辑蕴含，见 directedEdgesOf 的注释）。 */
+function cmdImpact(id, opt) {
+  if (!byId.has(id)) die(`没有这个节点：${id}`);
+  const depth = opt.depth || 1;
+  const seen = new Set([id]);
+  const KIND = (e) => e.kind === 'equivalence' ? '⟺等价' : (e.kind === 'definition' ? '▸定义' : '⟹推出');
+
+  function walk(cur, level) {
+    const n = byId.get(cur);
+    if (level === 0) console.log(`${C.b(cur)}  ${n ? n.label : '?'}`);
+    if (level >= depth) return;
+    const outs = directedEdgesOf(cur);
+    if (!outs.length) {
+      if (level > 0) console.log(`${'  '.repeat(level + 1)}${C.dim('↳（它没有下游）')}`);
+      return;
+    }
+    for (const { e, to } of outs) {
+      const tn = byId.get(to);
+      const dup = seen.has(to);
+      console.log(`${'  '.repeat(level + 1)}${C.dim(KIND(e))} ${to}  ${tn ? tn.label : '?'}` +
+        (dup ? C.dim(' ↺') : '') + C.dim(`  [${e.id}]`));
+      if (!dup) { seen.add(to); walk(to, level + 1); }
+    }
+  }
+  console.log(C.b(`# ${id} 的下游（深度 ${depth}：改它会影响谁）`));
+  walk(id, 0);
+  console.log(C.dim(`\n共 ${seen.size - 1} 个不同节点受波及（含等价类，深度上限 ${depth}）`));
+  if (depth < 99) console.log(C.dim('--depth N 看更深（--depth 99 = 全部下游）'));
+}
+
+/* ------------------------------------------------------------ gaps */
+/* ⭐ 2026-11-03（审计 I2）：图只记录「存在的东西」，所以「我还缺什么」查不到。
+   数据来自 `dist/gaps.json`（build.mjs 生成）：候选词表里提到却没节点的词 +
+   陈述用到更深定义却无边的位置。⚠️ 第二节会误报，只当线索看。 */
+function cmdGaps(opt) {
+  const P = path.join(ROOT, 'dist', 'gaps.json');
+  if (!fs.existsSync(P)) die('找不到 dist/gaps.json —— 先跑 `bun tools/build.mjs`');
+  const g = JSON.parse(fs.readFileSync(P, 'utf8'));
+  const min = opt.min || 1;
+  const kind = opt.which || 'all';
+  if (kind === 'all' || kind === 'nodes') {
+    console.log(C.b(`# 提到了、但没有节点的词（${g.missing.length} 个）`));
+    for (const m of g.missing) {
+      if (m.total < min) continue;
+      console.log(`  ${String(m.total).padStart(3)}×  ${C.b(m.term)}  ${C.dim('← ' + m.nodes.slice(0, 4).map((x) => x.id).join(' · '))}`);
+    }
+    if (!g.missing.length) console.log(C.dim('  （没有）'));
+  }
+  if (kind === 'all' || kind === 'edges') {
+    const rows = (g.noEdge || []).filter((x) => (x.gap || 0) >= (opt.minGap || 0));
+    console.log('');
+    console.log(C.b(`# 陈述用到更深的定义却没边（${rows.length} 处，落差最大的在前）`));
+    for (const x of rows.slice(0, opt.limit || 20)) {
+      console.log(`  L${x.nodeLayer} ${x.node}  用到 L${x.defLayer} ${x.def}  (${x.defLabel})` +
+        (x.gap ? C.dim(`  落差 ${x.gap}`) : ''));
+    }
+    if (rows.length > (opt.limit || 20)) console.log(C.dim(`  … 还有 ${rows.length - (opt.limit || 20)} 处（--limit N 多看几条）`));
+  }
+  console.log('');
+  console.log(C.dim(`候选词表 ${g.terms} 个（src/data/gaps.js）· 生成于 ${g.generated || '?'}`));
+}
+
 /* ------------------------------------------------------------ ls */
 function cmdLs(only) {
   if (only) {
@@ -532,6 +598,9 @@ function main() {
     if (a === '--no-body') { opt.noBody = true; continue; }
     if (a === '--proof') { opt.proof = true; continue; }
     if (a === '--depth') { opt.depth = Math.max(1, parseInt(argv[++i], 10) || 1); continue; }
+    if (a === '--min') { opt.min = Math.max(1, parseInt(argv[++i], 10) || 1); continue; }
+    if (a === '--nodes') { opt.which = 'nodes'; continue; }
+    if (a === '--edges') { opt.which = 'edges'; continue; }
     if (a === '-h' || a === '--help') { usage(); return; }
     pos.push(a);
   }
@@ -544,6 +613,8 @@ function main() {
     case 'cluster': return cmdCluster(rest[0]);
     case 'path': return cmdPath(rest[0], rest[1]);
     case 'deps': return cmdDeps(rest[0], opt);
+    case 'impact': return cmdImpact(rest[0], opt);
+    case 'gaps': return cmdGaps(opt);
     case 'ls': return cmdLs(rest[0]);
     case 'stat': return cmdStat();
     default: usage();
@@ -560,6 +631,7 @@ function usage() {
   bun tools/mg.mjs cluster <星团id>    星团内的节点清单
   bun tools/mg.mjs path <A> <B>        A ⟹ B 的有向推导链（走不通会说）
   bun tools/mg.mjs deps <id> [--depth N]  这个结论站在什么上面
+  bun tools/mg.mjs impact <id> [--depth N]  改它会影响谁（下游闭包）
   bun tools/mg.mjs ls [星系id]         星系 / 星团概览
   bun tools/mg.mjs stat                规模与数据新鲜度
 

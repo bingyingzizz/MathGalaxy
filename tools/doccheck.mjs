@@ -28,6 +28,10 @@ const edges = g.edges;
 const nWeak = edges.filter(e => e.kind === 'analogy').length;
 const nPink = edges.filter(e => e.kind === 'implication' && e.layer === false).length;
 
+/* 内容版本：真源在 tools/ids.snapshot.json（idstable --apply 时 +1）。
+   ⛔ 文档里不许手写版本号 —— 它会和 counts 一样过时。 */
+const VERSION = JSON.parse(fs.readFileSync(path.join(ROOT, "tools/ids.snapshot.json"), "utf8")).version;
+
 /* searchcheck 的基准条数：数 `{ q:` 开头的条目 */
 const scPath = path.join(ROOT, 'tools/searchcheck.mjs');
 const scSrc = fs.readFileSync(scPath, 'utf8');
@@ -55,6 +59,9 @@ const RULES = [
   { re: /(\d+)\s+annotated queries/gi, got: m => [Number(m[1])], want: [nQueries], why: `searchcheck 基准 ${nQueries} 条` },
   { re: /(\d+)\s*条弱边/gi, got: m => [Number(m[1])], want: [nWeak], why: `analogy ${nWeak} 条` },
   { re: /(\d+)\s*条推论边/gi, got: m => [Number(m[1])], want: [nPink], why: `layer:false 的 implication ${nPink} 条` },
+  /* 内容版本号（README 的引用示例、llms.txt 的状态行都写着它） */
+  { re: /content (v\d[\d.]*\d)/gi, got: m => [m[1]], want: [VERSION], why: `content ${VERSION}（tools/ids.snapshot.json）` },
+  { re: /内容 (v\d[\d.]*\d)/g, got: m => [m[1]], want: [VERSION], why: `内容 ${VERSION}` },
   /* 壳页：英文 meta 描述里的总数。带千位逗号的写法也一起认（1460 / 1,460 都行）。 */
   { re: /([\d,]+)\s+nodes,\s*([\d,]+)\s+edges/gi,
     got: m => [Number(m[1].replace(/,/g, '')), Number(m[2].replace(/,/g, ''))],

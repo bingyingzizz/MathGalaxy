@@ -42,7 +42,7 @@ window.MG = window.MG || {};
       id: 'def.tensor-product-vs',
       cluster: 'algebra.multilinear',
       type: 'definition',
-      label: '张量积',
+      label: '张量积（向量空间）',
       title: '向量空间的张量积 $V \\otimes W$',
       regions: ['algebra'],
       tags: ['定义', '线性代数', '张量'],
