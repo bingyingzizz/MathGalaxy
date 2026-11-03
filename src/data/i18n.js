@@ -26,6 +26,8 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.transition-function': { title_en: "Transition Function", label_en: "Transition Function", from: 'explicit' },
+    'def.structure-group': { title_en: "Structure Group", label_en: "Structure Group", from: 'explicit' },
     'def.lebesgue-number': { title_en: "Lebesgue Number", label_en: "Lebesgue Number", from: 'explicit' },
     'thm.riemann-lebesgue': { title_en: "Riemann-Lebesgue Lemma", label_en: "Riemann-Lebesgue Lemma", from: 'explicit' },
     'def.frame-bundle': { title_en: 'Frame Bundle', label_en: 'Frame Bundle', from: 'explicit' },
