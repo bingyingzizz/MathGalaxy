@@ -259,7 +259,15 @@ window.MG = window.MG || {};
         '',
         '在域的特征 $\\ne 2$ 时，**交错 $\\iff$ 反称**。'
       ].join('\n'),
-      notes: '⭐ 「交错」的判据（两个变元相等则取零）用起来最省事，「反称」的公式（带符号）算起来最方便 —— 两者在 $\\operatorname{char} K \\ne 2$ 时等价。\n\n⚠ $\\operatorname{char} K = 2$ 时不等价：此时 $-1 = 1$，反称型自动对称，交错性是更强的条件。\n\n本图默认 $\\operatorname{char} K = 0$ 或至少 $\\ne 2$（$\\mathbb{R}, \\mathbb{C}, \\mathbb{Q}$ 都满足）。\n\n⭐ 交错性是行列式之所以为行列式的**核心性质**：交换两行变号（$\\operatorname{sgn}(\\sigma)$）、两行相同则为零。',
+      notes: [
+        '⭐ 「交错」的判据（两个变元相等则取零）用起来最省事，「反称」的公式（带符号）算起来最方便 —— 两者在 $\\operatorname{char} K \\ne 2$ 时等价。\n\n⚠ $\\operatorname{char} K = 2$ 时不等价：此时 $-1 = 1$，反称型自动对称，交错性是更强的条件。\n\n本图默认 $\\operatorname{char} K = 0$ 或至少 $\\ne 2$（$\\mathbb{R}, \\mathbb{C}, \\mathbb{Q}$ 都满足）。\n\n⭐ 交错性是行列式之所以为行列式的**核心性质**：交换两行变号（$\\operatorname{sgn}(\\sigma)$）、两行相同则为零。',
+        ,
+        '**各方向用到的假设**（交错推出反称无需除以二，反向需要）：\n' +
+        '- 交错 $\\iff$ 两个变元相等时值为零，是定义展开，任意特征都成立。\n' +
+        '- 交错 $\\implies$ 交换两变元变号：将两个位置同时代入 $u+v$，用多重线性展开；再分解置换得反称，不要求 $\\operatorname{char}K\\ne2$。\n' +
+        '- 反称 $\\implies$ 交错：交换两个相等的变元得到 $2f=0$，须 $\\operatorname{char}K\\ne2$ 才能消去 $2$；这是等价中真正的域条件。\n' +
+        '- 特征 $2$ 的反例：$K=\\mathbb F_2$ 上双线性型 $f(x,y)=xy$ 反称却有 $f(1,1)=1$，所以不交错。\n'
+      ].join('\n\n'),
       refs: ['Lang, Linear Algebra', 'Hoffman–Kunze, Linear Algebra, Ch. 5']
     },
     {

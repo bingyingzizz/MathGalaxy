@@ -77,7 +77,13 @@ window.MG = window.MG || {};
         ['**证明。**',
           '- **$M$ 离散 $\\implies \\widehat M$ 紧**：取满射 $\\mathbb{Z}^{(I)} \\twoheadrightarrow M$；对偶把满射变成**单射**（取值互逆），且像是闭的（$\\widehat M \\hookrightarrow \\mathbb{T}^{I}$ 是闭嵌入）。\n\n$\\mathbb{T}$ 紧 Hausdorff、$\\mathbb{T}^{I}$ 紧，闭子集紧 $\\implies$ $\\widehat M$ 紧 ✓。',
           '- **$\\widehat M$ 紧 $\\implies M$ 离散**：由对偶定理（自等价）$M \\cong \\widehat{\\widehat M}$，而 $\\widehat M$ 紧，用上一方向（把 $M$ 换成 $\\widehat M$）得 $M$ 的对偶的对偶…… 更直接地：紧的 $\\widehat M$ 的对偶 $\\widehat{\\widehat M} = M$ 由前一方向是紧的——不，需要的是「紧的对偶离散」：取上半平面 $U\\subseteq\\mathbb{T}$（$\\operatorname{Im} z > 0$），它不含单位元闭包，于是任何连续同态 $\\widehat M \\to \\mathbb{T}$ 的像落在某个 $\\mathbb{T}$ 的连通分量里，再由 $\\widehat M$ 紧、特征标分离点可得 $\\widehat{\\widehat M}$ 在原点有离散的邻域，故 $M = \\widehat{\\widehat M}$ 离散 ✓。',
-          '- **紧 $\\implies$ 对偶离散**与上一条的第二个方向是同一句话（对偶自等价 + 对偶把「离散」与「紧」互换的两个方向互为逆）✓。∎'
+          '- **紧 $\\implies$ 对偶离散**与上一条的第二个方向是同一句话（对偶自等价 + 对偶把「离散」与「紧」互换的两个方向互为逆）✓。∎',
+        ,
+        '**各方向用到的假设**（正向的紧性证明与反向的双对偶定理分工不同）：\n' +
+        '- $M$ 离散 $\\implies$ $\\widehat M$ 紧 Hausdorff：特征标是 $\\mathbb T^M$ 的闭子群，且紧开拓扑等于逐点拓扑；用 Tychonoff 紧性定理，通常在选择公理框架下，不是定义展开。\n' +
+        '- $M$ 紧 $\\implies$ $\\widehat M$ 离散：取单位元附近不含非平凡子群的小圆弧，要求特征标在整个紧群上取值于该弧，就只剩零特征标；用紧开拓扑定义及圆群的无小子群性质。\n' +
+        '- $\\widehat M$ 紧 $\\implies$ $M$ 离散及 $\\widehat M$ 离散 $\\implies$ $M$ 紧：分别应用前两条并用 Pontryagin 双对偶同构；局部紧、Hausdorff、阿贝尔是所用对偶定理的假设。\n' +
+        '- 原注取不含单位元的上半圆不能构成零特征标的邻域，应取含单位元的小圆弧；离散与紧的互换本身都不是定义同义反复。非阿贝尔群的圆值特征标只看阿贝尔化，不能恢复原群。\n'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, §6.2', 'Le Stum, Exercise 6.9']
@@ -111,7 +117,14 @@ window.MG = window.MG || {};
           '- **无挠 $\\iff$ 连通**：等价链逐条走 ——',
           '$M$ 不是无挠 $\\iff$ 存在非平凡的**有限**子群单射 $M\' \\hookrightarrow M$ $\\iff$ 存在非平凡有限商 $\\widehat M \\twoheadrightarrow \\widehat{M\'}$（对偶把单射翻成满射）$\\iff$ $\\widehat M$ **不连通** ✓。',
           '（最后一步：紧 Hausdorff 空间不连通 $\\iff$ 有开闭真子集 $\\iff$ 有到非平凡有限离散空间的满连续映射。）∎',
-          '⭐ 「挠子群 $\\leftrightarrow$ 连通分支」「无挠商 $\\leftrightarrow$ Stonean 部分」两个字典都可以从这两条链逐字读出。'
+          '⭐ 「挠子群 $\\leftrightarrow$ 连通分支」「无挠商 $\\leftrightarrow$ Stonean 部分」两个字典都可以从这两条链逐字读出。',
+        ,
+        '**各方向用到的假设**（原文 Stonean 应改读为 Stone，二者不可混同）：\n' +
+        '- 挠 $\\implies$ 对偶为 Stone：离散阿贝尔挠群是其有限生成有限子群的滤过并；对偶把它化为有限群的逆极限，故紧 Hausdorff 且全不连通。这用对偶和逆极限理论，不是定义。\n' +
+        '- Stone 对偶 $\\implies$ 挠：紧全不连通群有开子群邻域基，任意圆值特征标因圆群无小子群而有开核，故像有限；再用双对偶识别 $M$。\n' +
+        '- 挠 $\\implies$ Stonean（极不连通）并不成立：$M=\\bigoplus_{n\\ge1}\\mathbb Z/2$ 的对偶是 Cantor 群 $\\prod_{n\\ge1}\\mathbb Z/2$，它是 Stone 而非极不连通空间；原等价不能靠补假设说明当作已证事实。\n' +
+        '- 无挠 $\\iff$ 对偶连通：用紧阿贝尔群的连通性判据「无非平凡有限连续商」，及对偶把有限商与有限子群互换；不能只用一般空间的连续映射判据替代群同态判据。\n' +
+        '- 两条都保留 $M$ 离散的假设；精确对应为 $(\\widehat M)^0\\cong\\widehat{M/M_{\\mathrm{tors}}}$ 及 $\\widehat M/(\\widehat M)^0\\cong\\widehat{M_{\\mathrm{tors}}}$。各元素有限阶才是挠的定义，其拓扑刻画不是免费重述。\n'
         ].join('\n')
       ].join('\n\n'),
       refs: ['Le Stum, §6.2', 'Le Stum, Exercise 6.9']

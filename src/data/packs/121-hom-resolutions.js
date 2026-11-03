@@ -433,7 +433,22 @@ window.MG = window.MG || {};
           '$(3) \\implies (4)$：取 $k = n+1$ ✓。',
           '$(4) \\implies (1)$：取任意投射消解并算出 $K := \\Omega^{n}M$。由**维数转移**（连用 $n$ 次）得 $\\operatorname{Ext}^{1}_{R}(K, N) \\cong \\operatorname{Ext}^{n+1}_{R}(M, N)$，对一切 $N$ 为零 ✓。',
           '而「$\\operatorname{Ext}^{1}_{R}(K, -)$ 恒为零」迫使 $K$ 投射：若 $K$ 不投射，取满射 $F \\twoheadrightarrow K$（$F$ 自由），它不分裂，于是由「一阶扩展的分类」得到 $\\operatorname{Ext}^{1}_{R}(K, \\ker) \\ne 0$，矛盾 ✓。\n\n于是 $M$ 有一条长度 $n$ 的投射消解 ✓，即 $(1)$。',
-          '$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎'
+          '$(1) \\iff (2)$ 是合冲的定义重述 ✓。∎',
+        ,
+        '**四条里 2 $\\implies$ 3 是唯一的「实质一步」，且它要长正合列 + 归纳**：\n' +
+        '\n' +
+        '- (1) $\\iff$ (2)：**定义展开**（$\\mathrm{pd} \\le n$ 就是「有长度 $n$ 的投射消解」，等价于第 $n$ 合冲投射）。\n' +
+        '- (2) $\\implies$ (3)：**这一步是真内容**。用投射消解 $\\cdots \\to P_{1} \\to P_{0} \\to M \\to 0$ 算 $\\operatorname{Ext}$：$\\operatorname{Ext}^{k}(M,N)$ 是消解上同调，而长度 $n$ 的消解在 $k > n$ 处没有项，故为零。⚠️ 这里要用「**投射消解可用来算 $\\operatorname{Ext}$**」这一条（维数偏移/平衡性），它本身要证。\n' +
+        '- (3) $\\implies$ (4)：**特例**（$k = n+1$）。\n' +
+        '- (4) $\\implies$ (2)：**这一步要用「维数偏移」反向**：若 $\\operatorname{Ext}^{n+1}(M, -)$ 恒为零，取一个长度 $n$ 的部分消解，其第 $n$ 合冲 $K$ 满足 $\\operatorname{Ext}^{1}(K, -) = 0$，于是 $K$ 投射（`prop.ext-projective-vanishes` 的反向）。**⚠️ 这一步用到「$\\operatorname{Ext}^{1} = 0 \\implies$ 投射」在模范畴里成立**（不需要额外假设，因为模范畴有足够多投射）；在更一般的阿贝尔范畴里要小心。\n' +
+        '\n' +
+        '⚠️ **$n = 0$ 的情形**：$\\mathrm{pd} M \\le 0$ $\\iff$ $M$ 投射 $\\iff$ $\\operatorname{Ext}^{k}(M,-) = 0$ 对所有 $k \\ge 1$。别把「$\\operatorname{Ext}^{1} = 0$ 就投射」当成对**任意** $n$ 都有：只有 $n = 0$（即 $\\operatorname{Ext}^{1}$）这一档如此。\n',
+        ,
+        '**各方向用到的假设**（模范畴中的维数转移判据）：\n' +
+        '- (1) $\\iff$ 存在长度 $n$ 的投射消解是定义；若 (2) 指任意已选消解的第 $n$ 合冲，则独立于消解的结论还需 Schanuel 引理或维数转移，不能全算作定义。\n' +
+        '- (2) $\\implies$ (3)：截断投射消解并用它计算 $\\operatorname{Ext}$，须用消解计算定理；(3) $\\implies$ (4) 只是取 $k=n+1$，免费。\n' +
+        '- (4) $\\implies$ (2)：维数转移把条件化为 $\\operatorname{Ext}^1(\\Omega^nM,N)=0$ 对所有 $N$ 成立，再由短正合列分裂判投射；模范畴有足够多投射，不要求环是 PID。\n' +
+        '- 对所有 $N$ 的量词不能改成某个 $N$：取 $N=0$ 时消失对任意 $M$ 成立；例如 $\\mathbb Z/2$ 并非投射 $\\mathbb Z$-模。\n'
         ].join('\n'),
         '⭐ **实用形式**：验维数时通常只算**一个**群 —— $\\operatorname{Ext}^{n+1}_{R}(M, N)$ 对一切 $N$ 为零即可，不必逐层算。反过来，想知道 $\\operatorname{pd}$ 到底多大，就找出一个使 $\\operatorname{Ext}^{n}$ 非零的 $N$。',
         '⚠️ **两个方向别记反**：$\\operatorname{pd}_{R} M$ 管的是 $\\operatorname{Ext}(M, -)$（**第一个**变量），$\\operatorname{id}_{R} N$ 管的是 $\\operatorname{Ext}(-, N)$（**第二个**变量）。',
@@ -720,7 +735,22 @@ window.MG = window.MG || {};
           '$(3) \\implies (2)$：取 $n = 1$ ✓。',
           '$(2) \\implies (1)$：任取单射 $f : M_{1} \\rightarrowtail M$，要证 $F\\otimes M_{1} \\to F\\otimes M$ 单。把它塞进短正合列 $0 \\to M_{1} \\to M \\to M/M_{1} \\to 0$，张量 $F$ 取长正合列',
           '$$\\operatorname{Tor}_{1}^{R}(F,\\ M/M_{1}) \\to F\\otimes M_{1} \\to F\\otimes M \\to F\\otimes M/M_{1} \\to 0 ,$$',
-          '左端为零（条件 2），故 $F\\otimes M_{1} \\to F\\otimes M$ 是**单射** ✓，即 $F\\otimes -$ 正合 ✓。∎'
+          '左端为零（条件 2），故 $F\\otimes M_{1} \\to F\\otimes M$ 是**单射** ✓，即 $F\\otimes -$ 正合 ✓。∎',
+        ,
+        '**三条里 (2)$\\implies$(3) 是唯一要归纳的，(1)$\\iff$(2) 只是定义**：\n' +
+        '\n' +
+        '- (1) $\\iff$ (2)：**定义展开**（平坦 = $(-)\\otimes F$ 正合 = $\\operatorname{Tor}_{1}$ 恒消失）。\n' +
+        '- (2) $\\implies$ (3)：**这一步要用“维数偏移”**：若 $\\operatorname{Tor}_{1}(F, N) = 0$ 对一切 $N$，则取 $N$ 的短正合列，用长正合列归纳得 $\\operatorname{Tor}_{n} = 0$。⚠️ 需要「长正合列」这一工具（`thm.long-exact` 的 Tor 版本）。\n' +
+        '- (3) $\\implies$ (2)：**特例**（$n = 1$）。\n' +
+        '\n' +
+        '⚠️ **与“投射”的对照**：投射 $\\iff$ $\\operatorname{Ext}^{n}(M,-) = 0$ 对所有 $n \\ge 1$；平坦 $\\iff$ $\\operatorname{Tor}_{n}(-,N) = 0$ 对所有 $n \\ge 1$。两者形状对称，但**平坦比投射弱**（投射 $\\implies$ 平坦，反之不成立；反例：$\\mathbb{Q}$ 在 $\\mathbb{Z}$ 上平坦但不投射）。\n' +
+        '⚠️ $\\operatorname{Tor}$ 对**两个变元**都可以算：本节用 $F$ 在左、$N$ 在右；换了顺序结果同构（$\\operatorname{Tor}$ 平衡）。\n',
+        ,
+        '**各方向用到的假设**（平坦的定义是张量正合，Tor 判据需要导出工具）：\n' +
+        '- 平坦 $\\iff$ $F\\otimes_R-$ 正合才是定义展开；(1) $\\implies$ (3) 还要用左模 $N$ 的投射消解计算 Tor，及正合函子保持消解的正合性。\n' +
+        '- (3) $\\implies$ (2)：取 $n=1$，纯逻辑特例；(2) $\\implies$ (1)：用短正合列的 Tor 长正合列得张量保持单射，再合并张量固有的右正合性，并非仅仅定义。\n' +
+        '- 这些方向对任意有单位环成立，不要求交换、Noether 或 PID；但 $F$ 为右模、$N$ 为左模的搭配不可省，非交换情形不能任意交换两个输入。\n' +
+        '- 必须对所有 $N$ 消失；仅验 $N=R$ 对任何 $F$ 都成立，例如 $F=\\mathbb Z/2$ 却不平坦。平坦也不能替换为投射，$\\mathbb Q$ 是平坦而非投射的 $\\mathbb Z$-模。\n'
         ].join('\n'),
         '⭐ **它把「平坦」变成了可以逐项验算的条件**：不必考察所有单射，只要对每一个 $N$ 算 $\\operatorname{Tor}_{1}$。实践中这条常与「只需要对有限生成理想验」的 Lambek 判据合用。',
         '📌 **推论**：平坦模的**直和项**平坦（$\\operatorname{Tor}$ 与直和交换）、直和**平坦**；投射模平坦（$\\operatorname{Ext}$ 一侧的高次消失是同一现象的对偶）。',

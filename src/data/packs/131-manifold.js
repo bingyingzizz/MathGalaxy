@@ -930,7 +930,13 @@ window.MG = window.MG || {};
         '',
         '**阿贝尔情形**：零括号满足一切公理，对应交换的 Lie 群（如 $(\\mathbb{R}^{n},+)$）。所以 Lie 代数**不能**复原群 —— 从代数回到群要做指数映射，那需要额外结构（本图不展开）。',
         '',
-        '**术语撞车**：「$\\mathfrak{g}$ 是 Lie 代数」与「$A$ 是（结合）代数」是两件事。Lie 代数一般不结合，$[X,[Y,Z]]$ 与 $[[X,Y],Z]$ 之差恰是 Jacobi 里那一项。'
+        '**术语撞车**：「$\\mathfrak{g}$ 是 Lie 代数」与「$A$ 是（结合）代数」是两件事。Lie 代数一般不结合，$[X,[Y,Z]]$ 与 $[[X,Y],Z]$ 之差恰是 Jacobi 里那一项。',
+        ,
+        '**各方向用到的假设**（反称与交替的等价有特征限制）：\n' +
+        '- 实 Lie 代数 $\\implies$ 双线性、反称和 Jacobi：定义展开；Jacobi 与 $\\operatorname{ad}_X$ 为导子互相改写只用双线性及反称。\n' +
+        '- 交替 $[X,X]=0$ $\\implies$ 反称：展开 $[X+Y,X+Y]$，任意特征均成立。\n' +
+        '- 反称 $\\implies$ 交替：需 $2$ 可逆，本节点在实数上满足；特征二中一维括号 $[e,e]=e$ 反称却不交替，因此单凭反称不能替代交替条件。\n' +
+        '- 结合代数 $\\implies$ 交换子 Lie 代数：Jacobi 展开后逐项抵消，关键是假定原乘法结合；反称本身不推出 Jacobi。\n'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· Lie 代数与例子'

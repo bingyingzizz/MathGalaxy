@@ -234,7 +234,15 @@ window.MG = window.MG || {};
         '',
         '**口径**：本图用「$k$ 维子空间族」的语言；一般教材用「微分理想 $I \\subseteq \\Omega^{\\bullet}(M)$ 的积分流形」，两者等价（取 $I$ 为湮灭 $\\mathcal{D}$ 的形式生成的理想）。本图不引入理想语言，以免两套记号打架。',
         '',
-        '⚠️ 定理的 $k = n$ 情形平凡（$\\mathcal{D} = TM$ 总对合、任意坐标都平坦），$k = 0$ 也平凡；**有内容的只有 $1 \\le k \\le n-1$**，而 $k = 1$ 又总是对合（见 `def.involutive-distribution`）。\n\n所以真正的例子从「$2 \\le k \\le n-1$」才开始。'
+        '⚠️ 定理的 $k = n$ 情形平凡（$\\mathcal{D} = TM$ 总对合、任意坐标都平坦），$k = 0$ 也平凡；**有内容的只有 $1 \\le k \\le n-1$**，而 $k = 1$ 又总是对合（见 `def.involutive-distribution`）。\n\n所以真正的例子从「$2 \\le k \\le n-1$」才开始。',
+        ,
+        '**四条里“对合”是唯一的假设，其余三条是它的等价翻译**（这条定理的全部难度在 1$\\implies$2）：\n' +
+        '\n' +
+        '- (1) $\\iff$ (2)：**这是定理的实质**。$(\\Leftarrow)$ 一行（坐标面 $\\partial_{1},\\ldots,\\partial_{k}$ 的括号为零）；$(\\implies)$ 是 Frobenius 的**分析核心**：对 $k$ 归纳，把“沿 $\\partial_{1}$ 的流”与“补方向上的分布”交替使用，构造出 $x^{k+1},\\ldots,x^{n}$ 使它们的方向与 $\\mathcal{D}$ 相切为零。⚠️ 这一步**需要 $\\mathcal{D}$ 的光滑性**（要 Picard–Lindelöf 解 ODE），只在 $C^{1}$ 以下会出现反例。\n' +
+        '- (1) $\\iff$ (3)：**局部可积 = 对合的局部形式**（由 2 直接得到积分流形 $x^{k+1}=\\cdots=x^{n}=0$）。\n' +
+        '- (3) $\\iff$ (4)：**这一步要用集合论的“极大连通积分流形的并”**（Zorn 或等价的取并论证）+ 局部可积保证叶在局部不打架。⚠️ 需要 $M$ 仿紧/第二可数，否则“极大连通”可能构造不好（一般流形定义里已含第二可数，所以常被忽略）。\n' +
+        '\n' +
+        '⚠️ **最常见的误用**：把“对合”当成“可积”的充分条件用在**非光滑**分布上。§1 的光滑性是必须的：存在 $C^{1}$ 分布处处不对合却处处有积分曲面（经典的“不可积性”例子）。\n'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Frobenius Theorem」· Frobenius 定理与叶状结构',
@@ -676,7 +684,13 @@ window.MG = window.MG || {};
         '',
         '**非紧时的两个反例**：$M = (0,1)$、$X = \\partial_{x}$ 的解 $\\gamma(t) = t + 1/2$ 在 $t = 1/2$ 处撞到端点（端点不在 $M$ 里）；\n\n$M = \\mathbb{R}$、$X = x^{2}\\partial_{x}$ 的解在有限时刻爆破。\n\n前者是「流形本身的洞」，后者是「场长得太快」—— 两种病不同，但都表现为「在有限时刻离开每个紧集」。',
         '',
-        '**Riemann 情形**：$(M,g)$ 度量完备时测地流也完备（Hopf–Rinow 的一半）。本图只用「紧 $\\implies$ 完备」这一条，Hopf–Rinow 不展开。'
+        '**Riemann 情形**：$(M,g)$ 度量完备时测地流也完备（Hopf–Rinow 的一半）。本图只用「紧 $\\implies$ 完备」这一条，Hopf–Rinow 不展开。',
+        ,
+        '**各方向用到的假设**（完备判据是定义改写，紧性负责把局部解延拓到所有时间）：\n' +
+        '- 完备 $\\iff$ 每个 $J_q=\\mathbb{R}$：由极大流的定义域按初值分解直接得到，是免费改写，不要求紧性。\n' +
+        '- 极大积分区间为开集：需光滑向量场的局部存在唯一性，在有限端点若仍有定义便可继续延拓；并非只靠“极大”二字。\n' +
+        '- 有限端点 $\\implies$ 逃离紧集：用局部流的存在唯一性及紧集有限覆盖给出的统一存在时间；不要求整个流形紧。\n' +
+        '- 紧流形 $\\implies$ 场完备：取逃逸引理中的紧集为整个无边界流形。去掉紧性，$x^2\\partial_x$ 在 $\\mathbb{R}$ 上有限时爆破；逆向不成立，$\\partial_x$ 在 $\\mathbb{R}$ 上完备。\n'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Lie Groups and Lie Algebras」· 流的极大性与完备性',
@@ -769,7 +783,13 @@ window.MG = window.MG || {};
         '',
         '**两个边界情形**：$k = 0$ 时 $\\iota_{X}f = 0$，故 $\\mathcal{L}_{X}f = \\iota_{X}\\mathrm{d}f = \\mathrm{d}f(X) = Xf$，与 `def.lie-derivative` 的第一条一致；\n\n$k = n$ 时 $\\mathrm{d}\\omega = 0$，故 $\\mathcal{L}_{X}\\omega = \\mathrm{d}\\iota_{X}\\omega$ 恰当 —— 这是「体积沿流的变率等于散度乘体积」那条公式的起点。',
         '',
-        '⚠️ 符号约定：本图的 $\\iota_{X}$ 用「塞进第一个槽」的约定，故 $(\\mathcal{L}_{X}\\omega)(Y) = X\\omega(Y) - \\omega([X,Y])$；若有人把内乘定义成「塞进最后一个槽」，那 Cartan 公式要补一个 $(-1)^{k}$。抄公式前先看对方的内乘约定。'
+        '⚠️ 符号约定：本图的 $\\iota_{X}$ 用「塞进第一个槽」的约定，故 $(\\mathcal{L}_{X}\\omega)(Y) = X\\omega(Y) - \\omega([X,Y])$；若有人把内乘定义成「塞进最后一个槽」，那 Cartan 公式要补一个 $(-1)^{k}$。抄公式前先看对方的内乘约定。',
+        ,
+        '**各方向用到的假设**（逐形式恒等式与算子恒等式等价，实质在局部微分运算）：\n' +
+        '- 对每个 $\\omega$ 成立 $\\iff$ 算子相等：纯属算子相等的定义展开，无额外假设。\n' +
+        '- 从沿流定义的 Lie 导数得到 Cartan 公式：需光滑向量场、光滑形式及流拉回与外微分交换；在函数与坐标微分上验证，再用导子律推广，并非 Lie 导数定义本身。\n' +
+        '- Cartan 公式 $\\implies$ 与 $\\mathrm{d}$ 交换：只代入 $\\mathrm{d}^2=0$；闭形式 $\\implies$ Lie 导数恰当也只需令 $\\mathrm{d}\\omega=0$。\n' +
+        '- 不需要紧性或向量场完备性，零时刻附近的局部流已经足够；闭性不能从第二个推论删去，例如 $X=\\partial_x$、$\\omega=x^2\\,\\mathrm{d}y$ 时 $\\mathcal{L}_X\\omega=2x\\,\\mathrm{d}y$ 甚至不闭。\n'
       ].join('\n'),
       refs: [
         'Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Differential Forms」· Cartan 公式',

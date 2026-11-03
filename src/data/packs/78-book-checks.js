@@ -59,9 +59,7 @@ window.MG = window.MG || {};
         '1. 若 $X$ 弱 Hausdorff，则对角线 $X \\subseteq X \\times X$ 是 **$k$-闭**的；$X$ 紧生成时反过来也对；',
         '2. 若 $Y$ 弱 Hausdorff、$f, g : X \\to Y$ 连续，则 $\\ker(f, g) \\subseteq X$ 是 **$k$-闭**的。'
       ].join('\n'),
-      notes: [
-        '**证明。** (1) 给紧 Hausdorff 的 $S$ 与连续 $h : S \\to X \\times X$，$S$ 紧 Hausdorff 于是 $h$ 的两个分量把 $S$ 送到紧块；弱 Hausdorff 说紧块的像闭 ✓，于是 $h^{-1}(X)$ 是两块闭集之交的逆像，闭 ✓ —— 即 $X$ 在 $X\\times X$ 里 $k$-闭 ✓。\n\n反过来（紧生成时）用「$k$-闭 $\\iff$ 与每个紧块交闭」把弱 Hausdorff 性读出来 ✓。\n\n(2) $\\ker(f,g)$ 是对角线沿连续映射 $(f,g) : X \\to Y \\times Y$ 的逆像 ✓，$k$-闭性在逆像下保持 ✓。\n\n∎'
-      ].join('\n\n'),
+      notes: '**证明。** (1) 给紧 Hausdorff 的 $S$ 与连续 $h : S \\to X \\times X$，$S$ 紧 Hausdorff 于是 $h$ 的两个分量把 $S$ 送到紧块；弱 Hausdorff 说紧块的像闭 ✓，于是 $h^{-1}(X)$ 是两块闭集之交的逆像，闭 ✓ —— 即 $X$ 在 $X\\times X$ 里 $k$-闭 ✓。\n\n反过来（紧生成时）用「$k$-闭 $\\iff$ 与每个紧块交闭」把弱 Hausdorff 性读出来 ✓。\n\n(2) $\\ker(f,g)$ 是对角线沿连续映射 $(f,g) : X \\to Y \\times Y$ 的逆像 ✓，$k$-闭性在逆像下保持 ✓。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 2.36, Exercise 2.37']
     },
 
@@ -175,9 +173,7 @@ window.MG = window.MG || {};
         '',
         '而且对连续映射 $f : Y \\to X$，有 $\\widetilde{E}_{Y} = f^{-1}\\widetilde{E}_{X}$。'
       ].join('\n'),
-      notes: [
-        '**证明。** $p_{*}$ 是「推前」，在单点上的层就是整体截面 ✓；$p^{-1}$ 是「拉回」，把集合 $E$ 送到 $X$ 上的常层 $\\widetilde{E}_{X}$ ✓（它在 $\\mathbf{Top}$ 上的层就是 $\\underline{E^{\\mathrm{disc}}}$）。\n\n最后一式：记 $q : Y \\to \\mathbf{1}$，则 $q = p \\circ f$，而推前/拉回关于复合相容 ✓，于是 $\\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\\widetilde{E}_{X}$ ✓。\n\n∎'
-      ].join('\n\n'),
+      notes: '**证明。** $p_{*}$ 是「推前」，在单点上的层就是整体截面 ✓；$p^{-1}$ 是「拉回」，把集合 $E$ 送到 $X$ 上的常层 $\\widetilde{E}_{X}$ ✓（它在 $\\mathbf{Top}$ 上的层就是 $\\underline{E^{\\mathrm{disc}}}$）。\n\n最后一式：记 $q : Y \\to \\mathbf{1}$，则 $q = p \\circ f$，而推前/拉回关于复合相容 ✓，于是 $\\widetilde{E}_{Y} = q^{-1}E = f^{-1}p^{-1}E = f^{-1}\\widetilde{E}_{X}$ ✓。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.55']
     },
 
@@ -197,9 +193,7 @@ window.MG = window.MG || {};
         '',
         '也就是说：**推前是「只看 $x$ 的开邻域」的常层，拉回就是茎**。'
       ].join('\n'),
-      notes: [
-        '**证明。** $x_{*}E$ 的取值是「拉回 $x^{-1}(U)$ 的」：$x^{-1}(U)$ 在单点空间里要么是空集要么是全空间 ✓，于是取值如式 ✓。\n\n$x^{-1}$ 是 $x_{*}$ 的左伴随，由伴随公式 $\\operatorname{Hom}(x^{-1}\\mathcal{F}, E) = \\operatorname{Hom}(\\mathcal{F}, x_{*}E) = \\mathcal{F}_{x}$-型的计算即得它就是茎 ✓（也可直接用「茎 = 沿 $x$ 的开邻域取滤过余极限」）✓。\n\n∎'
-      ].join('\n\n'),
+      notes: '**证明。** $x_{*}E$ 的取值是「拉回 $x^{-1}(U)$ 的」：$x^{-1}(U)$ 在单点空间里要么是空集要么是全空间 ✓，于是取值如式 ✓。\n\n$x^{-1}$ 是 $x_{*}$ 的左伴随，由伴随公式 $\\operatorname{Hom}(x^{-1}\\mathcal{F}, E) = \\operatorname{Hom}(\\mathcal{F}, x_{*}E) = \\mathcal{F}_{x}$-型的计算即得它就是茎 ✓（也可直接用「茎 = 沿 $x$ 的开邻域取滤过余极限」）✓。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.56']
     },
 
@@ -220,7 +214,13 @@ window.MG = window.MG || {};
         '3. 在这个等价下，$j_{T!}$ 对应遗忘函子 $\\widetilde{\\mathcal{C}}/\\widetilde{T} \\to \\widetilde{\\mathcal{C}}$，$j_{T}^{-1}$ 对应 $\\mathcal{F} \\mapsto (\\mathcal{F} \\times \\widetilde{T} \\to \\widetilde{T})$。'
       ].join('\n'),
       notes: [
-        '**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。\n\n(2) 两个范畴的对象都是「$X \\in \\mathcal{C}$ 加一个截面 $s \\in T(X)$」，层条件也逐字对应 ✓。\n\n(3) 把两边的函子按定义写出来即得 ✓。\n\n∎'
+        '**证明。** (1) 余连续说的是「$j_{T}$ 把覆盖送到覆盖」，这由覆盖筛在切片里的定义直接核对 ✓，于是由「余连续函子给出拓扑斯态射」得到 $j_{T}$ ✓。\n\n(2) 两个范畴的对象都是「$X \\in \\mathcal{C}$ 加一个截面 $s \\in T(X)$」，层条件也逐字对应 ✓。\n\n(3) 把两边的函子按定义写出来即得 ✓。\n\n∎',
+        ,
+        '**各方向用到的假设**（切片等价依赖诱导拓扑与层化）：\n' +
+        '- 从切片层构造到基底层的映射：将元素范畴上的数据作相应层化，得到指向 $\\widetilde T$ 的层；当 $T$ 仅是预层时，不能把这步说成对象逐字相同。\n' +
+        '- 反向由 $F\\to\\widetilde T$ 得到切片层：沿截面拉回；切片使用基底诱导的覆盖，层条件才相容，互逆性用层的下降与层化。\n' +
+        '- 等价建立后，遗忘函子与乘积拉回的伴随关系只需泛性质，属于免费的形式核对；不要求基底拓扑次标准。\n' +
+        '- 投影的覆盖提升可按诱导拓扑直接检查，但“把覆盖送到覆盖”与余连续的一般定义不能混同；脱离诱导拓扑，本等价没有这一保证。\n'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.63, Exercise 3.64']
     },
@@ -262,7 +262,13 @@ window.MG = window.MG || {};
         '2. 于是 $\\mathbf{Et}(X)$（$X$ 上的 étale 空间范畴）$\\simeq$ 晶体层 $\\simeq$ $X$ 上的层 —— 特别地 $\\mathbf{Et}(X)$ 是拓扑斯，因为 $\\mathbf{Et}(X) \\simeq \\widetilde{\\mathbf{Open}(X)}$。'
       ].join('\n'),
       notes: [
-        '**证明的思路。** 从晶体层到 $X$ 上的层是「取 $Y = X$ 那份数据」✓；反方向把 $X$ 上的层 $\\mathcal{F}$ 送到 $\\mathbf{Top}_{/X}$ 上的层 $\\mathcal{F}_{Y} := f^{-1}\\mathcal{F}$（$f : Y \\to X$）✓ —— 这时过渡 $\\alpha_f$ 自动是同构，所以落在晶体层里 ✓。\n\n两个方向互逆 ✓。\n\n(2) 是 (1) 加上「$X$ 上的层范畴 $\\simeq$ étale 空间范畴」这条标准等价 ✓。\n\n∎'
+        '**证明的思路。** 从晶体层到 $X$ 上的层是「取 $Y = X$ 那份数据」✓；反方向把 $X$ 上的层 $\\mathcal{F}$ 送到 $\\mathbf{Top}_{/X}$ 上的层 $\\mathcal{F}_{Y} := f^{-1}\\mathcal{F}$（$f : Y \\to X$）✓ —— 这时过渡 $\\alpha_f$ 自动是同构，所以落在晶体层里 ✓。\n\n两个方向互逆 ✓。\n\n(2) 是 (1) 加上「$X$ 上的层范畴 $\\simeq$ étale 空间范畴」这条标准等价 ✓。\n\n∎',
+        ,
+        '**各方向用到的假设**（晶体条件使全部数据由终对象确定）：\n' +
+        '- 晶体层 $\\mathcal F$ 到 $\\mathcal F_X$：限制到恒等映射是免费的；由 $f:Y\\to X$ 的晶体过渡同构，才得到 $f^{-1}\\mathcal F_X\\cong\\mathcal F_Y$。\n' +
+        '- $X$ 上的层到晶体层：取 $\\mathcal F_Y=f^{-1}\\mathcal F$，用逆像的复合相容同构与开覆盖下降；没有 Hausdorff 或局部连通假设。\n' +
+        '- 层到 étale 空间的反向构造用茎的不交并及芽拓扑；étale 空间到层取局部截面。互逆性是层与局部同胚的标准定理，不只是术语替换。\n' +
+        '- 晶体条件不可省：一般相容系统的过渡可以不是同构，因而不能从终对象的数据恢复整个系统；晶体性也不表示任意同伦不变性。\n'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 3.68, Exercise 3.69']
     },
@@ -306,7 +312,13 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         '**证明。** (1)$\\iff$(2)：离散空间 $E$ 给出的凝聚态集取值是 $\\underline{E}(S) = C(S, E)$，也就是「$S$ 上的局部常值 $E$-值映射」✓；而常层 $\\widetilde{E}$ 的取值按定义正是局部常值映射 ✓ —— 两个函子一致 ✓（见「拓扑空间上的常层就是离散空间的层」）。',
-        '(2)$\\iff$(3)：局部常值映射只依赖 $S$ 的连通块结构，而这正是「沿 $S$ 的离散商取投影极限」读出来的信息 ✓；反过来若 $X(S) = \\varprojlim_{S \\twoheadrightarrow S\'}X(S\')$，则 $X$ 只看得见离散商，等价于常 ✓。∎'
+        '(2)$\\iff$(3)：局部常值映射只依赖 $S$ 的连通块结构，而这正是「沿 $S$ 的离散商取投影极限」读出来的信息 ✓；反过来若 $X(S) = \\varprojlim_{S \\twoheadrightarrow S\'}X(S\')$，则 $X$ 只看得见离散商，等价于常 ✓。∎',
+        ,
+        '**各方向用到的假设**（离散表示与常层一致，但商公式须核对）：\n' +
+        '- (1) $\\implies$ (2) 与 (2) $\\implies$ (1)：常预层层化后得到局部常值映射，而非原常预层；紧 Hausdorff 探测空间上的有限开闭分割给出此识别。\n' +
+        '- 离散性 $\\implies$ 经过有限离散商因子化：连续映射 $S\\to E$ 的像因紧性而有限，纤维开闭；去掉紧性，离散无限空间的恒等映射就不经过有限商。\n' +
+        '- 原文 (3) 的 $\\varprojlim$ 此处不确定，待核：逆变函子沿离散商的细化给出向更细商的拉回，通常应以过滤余极限表达局部常值映射，不能据现有投影极限公式宣称等价。\n' +
+        '- 若改成自然的过滤余极限公式，则反向利用有限离散集上层的取值为 $X(*)$ 的有限乘积，恢复常层；这一步需要层条件及公式对 $S$ 的自然性。\n'
       ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 4.5']
     },
@@ -325,9 +337,7 @@ window.MG = window.MG || {};
         '',
         '$$\\underline{X} \\;=\\; \\coprod_{i \\in I} \\underline{X_{i}}.$$'
       ].join('\n'),
-      notes: [
-        '**证明。** 函子 $X \\mapsto \\underline{X}$（$\\underline{X}(S) = C(S, X)$）是 $X \\mapsto X(\\cdot)$ 的**左伴随** ✓，左伴随保余极限、特别地保余积 ✓。\n\n所以把拓扑空间的不交并送进 $\\mathrm{Cond}$，得到的就是余积 ✓（$\\mathrm{Cond}$ 里的余积是「先取逐点不交并、再层化」，正是 $C(S, \\coprod_i X_i)$ 的层化）✓。\n\n∎'
-      ].join('\n\n'),
+      notes: '**证明。** 函子 $X \\mapsto \\underline{X}$（$\\underline{X}(S) = C(S, X)$）是 $X \\mapsto X(\\cdot)$ 的**左伴随** ✓，左伴随保余极限、特别地保余积 ✓。\n\n所以把拓扑空间的不交并送进 $\\mathrm{Cond}$，得到的就是余积 ✓（$\\mathrm{Cond}$ 里的余积是「先取逐点不交并、再层化」，正是 $C(S, \\coprod_i X_i)$ 的层化）✓。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 4.8']
     },
 
@@ -412,9 +422,7 @@ window.MG = window.MG || {};
         '',
         '$$\\mathrm{R}\\Gamma\\bigl(X,\\ M^{\\bullet}\\bigr) \\;=\\; \\mathrm{R}\\Gamma\\bigl(\\underline{X},\\ M^{\\bullet}\\bigr), \\qquad \\mathrm{H}^{n}\\bigl(\\underline{X},\\ M^{\\bullet}\\bigr) = \\mathrm{H}^{n}\\bigl(X,\\ M^{\\bullet}\\bigr).$$'
       ].join('\n'),
-      notes: [
-        '**证明。** 对任何层 $M$，由关联层的万有性质 $\\operatorname{Hom}(\\underline{X}, M) = M(X) = \\operatorname{Hom}(X, M)$ ✓，即 $\\Gamma(X, M) = \\Gamma(\\underline{X}, M)$。\n\n取内射消解 $I^{\\bullet}$，两边逐项相等 ✓，故导出函子相等 ✓。\n\n∎'
-      ].join('\n\n'),
+      notes: '**证明。** 对任何层 $M$，由关联层的万有性质 $\\operatorname{Hom}(\\underline{X}, M) = M(X) = \\operatorname{Hom}(X, M)$ ✓，即 $\\Gamma(X, M) = \\Gamma(\\underline{X}, M)$。\n\n取内射消解 $I^{\\bullet}$，两边逐项相等 ✓，故导出函子相等 ✓。\n\n∎',
       refs: ['Le Stum, An introduction to condensed mathematics, Exercise 7.36']
     },
 

@@ -30,6 +30,14 @@ window.MG = window.MG || {};
       title: '预解析环',
       regions: ['condensed'],
       tags: ['定义', '凝聚态', '解析环'],
+      notes: [
+        '⭐ 这个定义是在抽公理：固态理论里真正用到的不是 $A$ 本身，而是「$S$ 上的自由完备模是什么」。\n\n把这件事做成一个函子，就能对任意环（甚至解析空间）复制整套构造。\n\n⭐ 三个基本例子：\n- $\\mathbb{Z}_\\blacksquare$：$A = \\mathbb{Z}$，$\\mathbb{Z}_\\blacksquare[S] = Z[S]^{\\blacksquare}$；\n\n\n- $\\mathbb{Z}_{p,\\blacksquare}$：$A = \\mathbb{Z}_p$，$\\mathbb{Z}_{p,\\blacksquare}[S] = \\varprojlim_i \\mathbb{Z}_p[S_i]$（$p$-进测度）；\n\n\n- $(A,\\mathbb{Z})_\\blacksquare$（$A$ 离散）：$A[S] = Z[S]^{\\blacksquare} \\otimes_{\\mathbb{Z}} A$。\n\n⚠ 这个定义在原文里带一条警告：它应当允许「导出」版本（$A$ 是单纯环）才足够一般。\n\n本图只写经典版本，够用到现在这一步。',
+        '**各方向用到的假设**（这是指定数据，不是自动完成的补全）：\n' +
+        '- 预解析环 $\\iff$ 凝聚态环、指定模函子及相容生成元映射：定义展开免费；还须函子把有限不交并送到有限乘积。\n' +
+        '- 凝聚态环 $\\implies$ 每个取值为环且限制映射为环同态：环对象定义展开；反向还须底层集合预层满足层条件，单有逐点环结构不够。\n' +
+        '- 相容映射 $S\\to\\mathcal A[S]$ $\\implies$ $A[S]\\to\\mathcal A[S]$：用凝聚态自由模的泛性质；这里 $A[S]$ 不是把紧空间底层点集机械取普通自由模。\n' +
+        '- 预解析 $\\implies$ 解析并非定义后果，另需 `def.analytic-ring` 的导出条件；具体固态例子的公式依赖相应构造定理，不能从这些数据直接推出。\n'
+      ].join('\n\n'),
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.1'],
       statement: [
         '白话：**预解析环 = 一个环 $A$，加上「$S$ 上的自由完备模长什么样」这套指定**。固态理论真正用到的是后者（自由模），所以干脆把后者抽出来当公理。',
@@ -54,7 +62,7 @@ window.MG = window.MG || {};
         '',
         '换句话说，$\\mathcal{A}$ 就是「环 $A$ 加上一套指定的自由完备模 $\\mathcal{A}[S]$」。'
       ].join('\n'),
-      notes: '⭐ 这个定义是在抽公理：固态理论里真正用到的不是 $A$ 本身，而是「$S$ 上的自由完备模是什么」。\n\n把这件事做成一个函子，就能对任意环（甚至解析空间）复制整套构造。\n\n⭐ 三个基本例子：\n- $\\mathbb{Z}_\\blacksquare$：$A = \\mathbb{Z}$，$\\mathbb{Z}_\\blacksquare[S] = Z[S]^{\\blacksquare}$；\n\n\n- $\\mathbb{Z}_{p,\\blacksquare}$：$A = \\mathbb{Z}_p$，$\\mathbb{Z}_{p,\\blacksquare}[S] = \\varprojlim_i \\mathbb{Z}_p[S_i]$（$p$-进测度）；\n\n\n- $(A,\\mathbb{Z})_\\blacksquare$（$A$ 离散）：$A[S] = Z[S]^{\\blacksquare} \\otimes_{\\mathbb{Z}} A$。\n\n⚠ 这个定义在原文里带一条警告：它应当允许「导出」版本（$A$ 是单纯环）才足够一般。\n\n本图只写经典版本，够用到现在这一步。'
+
     },
     {
       id: 'def.analytic-ring',
@@ -64,6 +72,14 @@ window.MG = window.MG || {};
       title: '解析环',
       regions: ['condensed'],
       tags: ['定义', '凝聚态', '解析环'],
+      notes: [
+        '⭐ 读法：**「$\\mathcal{A}[S]$ 与普通自由模 $A[S]$ 在 $\\operatorname{RHom}$ 里无法区分」**。\n\n这正是固态群定义 (ii) 的相对版本；\n\n取 $A = \\mathbb{Z}$、$\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ 就回到固态。\n\n⚠ 为什么要求**所有**这样的复形而不只是单个模？因为要得到导出范畴层面的结论（`thm.analytic-modules` (ii)），单点的同构不够，需要它对复形也成立。\n\n⭐ 判定「是不是解析环」通常靠 `prop.analytic-examples` 与 `thm.za-analytic` 这类具体定理，而不是逐条验证定义。',
+        '**各方向用到的假设**（解析性是对整类复形的导出检验）：\n' +
+        '- 解析 $\\iff$ 所列所有复形与极端不连通 $S$ 的比较映射为拟同构：这是定义展开，前提已经给定预解析环。\n' +
+        '- 典范映射 $A[S]\\to\\mathcal A[S]$ $\\implies$ 反变的导出 Hom 比较映射：用预复合的函子性，不需要先假定解析性。\n' +
+        '- 只检验零次普通 Hom $\\implies$ 导出比较同构不免费；普通 Hom 看不到高次 Ext，不能替代对复形的条件。\n' +
+        '- 原文把 $\\operatorname{RHom}_{\\mathcal A}$ 与 $\\operatorname{RHom}_A$ 直接识别的解释有循环风险：一般预解析环尚未建立完备模导出范畴，此处不确定，待核；检验条件宜先在底层凝聚态 $A$-模导出范畴表述。\n'
+      ].join('\n\n'),
       refs: ['Clausen–Scholze, Lectures on Condensed Mathematics (Bonn 2019), Lecture VII, Definition 7.4'],
       statement: [
         '预解析环 $\\mathcal{A}$ 叫**解析环**，当且仅当：对任意复形',
@@ -82,7 +98,7 @@ window.MG = window.MG || {};
         '',
         '把 2、3 接起来，就是公式里那个箭头 $\\operatorname{RHom}_{\\mathcal{A}}(\\mathcal{A}[S], C) \\to \\operatorname{RHom}_A(A[S], C)$。'
       ].join('\n'),
-      notes: '⭐ 读法：**「$\\mathcal{A}[S]$ 与普通自由模 $A[S]$ 在 $\\operatorname{RHom}$ 里无法区分」**。\n\n这正是固态群定义 (ii) 的相对版本；\n\n取 $A = \\mathbb{Z}$、$\\mathcal{A}[S] = Z[S]^{\\blacksquare}$ 就回到固态。\n\n⚠ 为什么要求**所有**这样的复形而不只是单个模？因为要得到导出范畴层面的结论（`thm.analytic-modules` (ii)），单点的同构不够，需要它对复形也成立。\n\n⭐ 判定「是不是解析环」通常靠 `prop.analytic-examples` 与 `thm.za-analytic` 这类具体定理，而不是逐条验证定义。'
+
     },
     {
       id: 'thm.analytic-modules',

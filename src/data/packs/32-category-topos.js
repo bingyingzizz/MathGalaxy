@@ -157,7 +157,15 @@ window.MG = window.MG || {};
         '',
         '也就是说：$\\mathcal{C}$ 与 $\\mathcal{C}$ 中的 $X \\mapsto h_{X}$ 之间，余积与商**两边算出来一样**。'
       ].join('\n'),
-      notes: '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。\n\n商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。\n\n∎',
+      notes: [
+        '证明一句话：对任意层 $F$，由 $F$ 是层（上一条的乘积等式）得 $\\operatorname{Hom}(X \\coprod Y, F) = F(X \\coprod Y) \\cong F(X) \\times F(Y) = \\operatorname{Hom}(X, F) \\times \\operatorname{Hom}(Y, F) = \\operatorname{Hom}(X \\coprod Y, F)$，所以层范畴里这个余积的泛性质原样成立。\n\n商的情形是把正合列 $F(X/R) \\to F(X) \\rightrightarrows F(R)$ 读成 $\\operatorname{Hom}(X/R, F) \\cong \\ker\\bigl(\\operatorname{Hom}(X, F) \\rightrightarrows \\operatorname{Hom}(R, F)\\bigr)$。\n\n∎',
+        ,
+        '**各方向用到的假设**（保余积与保商来自层条件的泛性质）：\n' +
+        '- 有限余积的层条件 $F(\\coprod_iX_i)\\cong\\prod_iF(X_i)$ $\\implies$ Yoneda 嵌入保该余积：对任意层应用 Yoneda 引理，就是余积泛性质。\n' +
+        '- 反向若可表示层的余积确为 $h_{\\coprod_iX_i}$，对任意层取 Hom 即恢复乘积公式；这一步是免费的范畴论形式转换。\n' +
+        '- 商的层条件 $F(X/R)\\cong\\operatorname{Eq}(F(X)\\rightrightarrows F(R))$ $\\iff$ $h_{X/R}$ 是相应余等化子，同样由 Yoneda 与泛性质转换；有效下降来自预拓扑斯和预标准拓扑。\n' +
+        '- 拓扑假设不可省：有限集合范畴配平凡拓扑时所有预层都是层，而常值两元素预层满足 $F(\\{1,2\\})$ 只有两元素，不能等于 $F(\\{1\\})\\times F(\\{2\\})$ 的四元素。有限余积的结论也不自动涵盖无限余积。\n'
+      ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 
@@ -360,7 +368,14 @@ window.MG = window.MG || {};
       ].join('\n'),
       notes: [
         ['**逐条证明。**','**1.** 景里的覆盖族与它在标准拓扑下生成的层范畴里的覆盖族一一对应（次标准性保证可表示层原样保留），而「拟紧」只用到覆盖族这件事，故两种说法一致 ✓。','**2.** 设 $X$ 被拟紧对象 $X_{1}, \\ldots, X_{n}$ 的有限族覆盖，给 $X$ 的任一覆盖 $(Y_{j}\\to X)$。\n\n对每个 $k$ 沿 $X_{k}\\to X$ 拉回得到 $X_{k}$ 的覆盖 $(Y_{j}\\times_{X}X_{k} \\to X_{k})$；\n\n由 $X_{k}$ 拟紧抽出有限子族 $(j \\in J_{k})$。\n\n则 $J := \\bigcup_{k}J_{k}$ 有限，且 $(Y_{j}\\to X)_{j\\in J}$ 已是覆盖（每支 $X_{k}$ 都被覆盖，而 $\\{X_{k}\\}$ 覆盖 $X$）✓。','**3.** $(\\Longleftarrow)$ 若 $X \\to F$ 满且 $X \\in \\mathcal{C}$，则任何由可表示层给出的覆盖 $(h_{X_{i}} \\to F)$ 沿 $X \\to F$ 拉回得到 $X$ 的覆盖，由「$h_{X}$ 拟紧」（$X \\in \\mathcal{C}$）抽出有限子族，复合 $h_{X_{i}} \\to h_{X} \\to F$ 给出 $F$ 的有限子覆盖 ✓。','$(\\implies)$ 反之，$\\mathcal{C}$ 的对象构成层范畴的生成元族，故有满态射 $\\coprod_{i}h_{X_{i}} \\to F$；由 $F$ 拟紧抽出有限子族 $(i \\in I,\\ |I| < \\infty)$，令 $X := \\coprod_{i\\in I}X_{i} \\in \\mathcal{C}$，则 $h_{X} = \\coprod_{i\\in I}h_{X_{i}} \\to F$ 仍满 ✓。\n\n—— 在凝聚态集里这条读作「凝聚态集拟紧 $\\iff$ 有紧 Hausdorff 空间到它的满射」✓。\n\n∎'].join('\n'),
-'第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。'].join('\n\n'),
+'第 3 条最有用：它把「层 $F$ 拟紧」换成了「$F$ 能被一个小对象盖住」—— 在凝聚态集里，这就是「凝聚态集 $X$ 拟紧 $\\iff$ 存在紧 Hausdorff 空间到它的满射」。',
+        ,
+        '**各方向用到的假设**（有限覆盖判据依赖站点覆盖与层覆盖的对应）：\n' +
+        '- 第 1 条两个方向均需站点与其层范畴的覆盖比较，把可表示对象理解为层化后的表示预层；在次标准情形才可不写层化。这是覆盖比较，不能单靠改名证明。\n' +
+        '- 第 2 条从有限拟紧覆盖推出拟紧：将任意覆盖拉回各块、分别取有限子族，再用覆盖的传递性；无限离散空间的单点覆盖说明“有限”不能删。\n' +
+        '- 第 3 条正向：可表示层生成层范畴给出满覆盖，拟紧性抽有限支，有限余积把它们合成一个 $X$；最后一步用预标准拓扑下保有限余积。\n' +
+        '- 第 3 条反向：$h_X\\to F$ 满且 $h_X$ 拟紧时，拉回覆盖并取有限子族，再由满性下降覆盖。关键是该拓扑下可表示层拟紧；任意站点不能免费假定这一点，例如非拟紧拓扑空间的终层。\n'
+      ].join('\n\n'),
       refs: ['Le Stum, An introduction to condensed mathematics, §3.3']
     },
 

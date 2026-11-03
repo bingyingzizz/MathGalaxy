@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-03T05:03:30.637Z",
+ "generated": "2026-11-03T05:35:07.411Z",
  "terms": 76,
  "missing": [
   {
    "term": "单位圆",
-   "total": 24,
+   "total": 25,
    "nodes": [
     {
      "id": "thm.integral-trig",
@@ -20,6 +20,10 @@
     },
     {
      "id": "def.principal-curvature",
+     "c": 1
+    },
+    {
+     "id": "thm.rodrigues",
      "c": 1
     },
     {
@@ -49,17 +53,17 @@
     {
      "id": "thm.runge",
      "c": 1
-    },
-    {
-     "id": "prop.mobius-circle",
-     "c": 1
     }
    ]
   },
   {
    "term": "原函数",
-   "total": 14,
+   "total": 16,
    "nodes": [
+    {
+     "id": "prop.single-valued-branch",
+     "c": 3
+    },
     {
      "id": "thm.ftc-riemann-part2",
      "c": 3
@@ -73,10 +77,6 @@
      "c": 2
     },
     {
-     "id": "prop.single-valued-branch",
-     "c": 2
-    },
-    {
      "id": "thm.taylor-complex",
      "c": 1
     },
@@ -86,6 +86,10 @@
     },
     {
      "id": "thm.darboux",
+     "c": 1
+    },
+    {
+     "id": "thm.arzela-ascoli-general",
      "c": 1
     },
     {
@@ -164,7 +168,7 @@
   },
   {
    "term": "环面",
-   "total": 8,
+   "total": 9,
    "nodes": [
     {
      "id": "def.orientable-surface",
@@ -193,13 +197,21 @@
     {
      "id": "thm.mv-homology",
      "c": 1
+    },
+    {
+     "id": "def.principal-bundle",
+     "c": 1
     }
    ]
   },
   {
    "term": "素因子",
-   "total": 6,
+   "total": 7,
    "nodes": [
+    {
+     "id": "thm.minimal-poly-divisor",
+     "c": 1
+    },
     {
      "id": "def.simple-group",
      "c": 1
@@ -222,6 +234,24 @@
     },
     {
      "id": "thm.quadratic-reciprocity",
+     "c": 1
+    }
+   ]
+  },
+  {
+   "term": "代数闭包",
+   "total": 6,
+   "nodes": [
+    {
+     "id": "thm.minimal-poly-divisor",
+     "c": 4
+    },
+    {
+     "id": "thm.diagonalizable",
+     "c": 1
+    },
+    {
+     "id": "def.nilpotent",
      "c": 1
     }
    ]
@@ -279,20 +309,12 @@
    ]
   },
   {
-   "term": "代数闭包",
+   "term": "完备性定理",
    "total": 5,
    "nodes": [
     {
-     "id": "thm.minimal-poly-divisor",
-     "c": 3
-    },
-    {
-     "id": "thm.diagonalizable",
-     "c": 1
-    },
-    {
-     "id": "def.nilpotent",
-     "c": 1
+     "id": "def.satisfaction",
+     "c": 5
     }
    ]
   },
@@ -520,16 +542,6 @@
    "nodes": [
     {
      "id": "lem.zorn",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "完备性定理",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "def.satisfaction",
      "c": 1
     }
    ]

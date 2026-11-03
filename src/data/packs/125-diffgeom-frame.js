@@ -587,7 +587,13 @@ window.MG = window.MG || {};
       notes: [
         '**为什么好看**：$W(u) = ku$ 是线性代数，$\\mathrm{d}n(v) = -k\\,\\mathrm{d}r(v)$ 是几何 —— 它说「沿主方向走时，法向的转动与切向的移动反平行、比例就是主曲率」。',
         '**坐标形式**：曲率线参数网下 $n_{u} = -k_{1}r_{u}$、$n_{v} = -k_{2}r_{v}$。这里用 $\\mathrm{d}r, \\mathrm{d}n$ 写，不再要求参数网是曲率线网。',
-        '⚠️ 负号来自 $W = -\\mathrm{d}n$。若某本书取 $W = \\mathrm{d}n$，那里的 Rodrigues 公式就没有负号 —— 抄公式前先看它把负号放在 $W$ 还是放在 $II$。'
+        '⚠️ 负号来自 $W = -\\mathrm{d}n$。若某本书取 $W = \\mathrm{d}n$，那里的 Rodrigues 公式就没有负号 —— 抄公式前先看它把负号放在 $W$ 还是放在 $II$。',
+        ,
+        '**各方向用到的假设**（几何公式靠定义，驻值判据靠形算子的自伴性）：\n' +
+        '- (1) $\\iff$ (2)：主方向按形算子的非零特征向量定义，结合 $W\\circ\\mathrm dr=-\\mathrm dn$ 即为定义展开；负号取决于法向和形算子约定。\n' +
+        '- (2) $\\implies$ (3)：法曲率是自伴算子的 Rayleigh 商，在单位切向圆上求导，特征向量使一阶导数为零；不是只凭术语即可得到。\n' +
+        '- (3) $\\implies$ (2)：在所有垂直于该方向的单位圆切向变分上导数为零，推出 $Wu-ku$ 平行于 $u$，再由 $k=\\langle Wu,u\\rangle/\\langle u,u\\rangle$ 得其为零。\n' +
+        '- 要求至少足够光滑的正则曲面、单位法向及 $v\\ne0$，以保证第一基本形式正定、$W$ 自伴；零向量没有方向或法曲率。一般非自伴算子不满足判据，例如非零反对称平面旋转的 Rayleigh 商恒零但无实特征方向。\n'
       ].join('\n\n'),
       refs: [
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· Rodrigues 定理',
