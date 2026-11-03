@@ -10,5 +10,5 @@ layer 14 · theorem · cluster Tensor Products and Scalar Restriction (`hom.modu
 Chinese only — see the Chinese page `nodes/thm.hom-tensor-adjunction-mod.md` and `proofs/`.
 
 
-Cite: `thm.hom-tensor-adjunction-mod` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.hom-tensor-adjunction-mod` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

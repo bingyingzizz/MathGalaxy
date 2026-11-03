@@ -10,5 +10,5 @@ layer 13 · definition · cluster Matrices and Determinants (`algebra.matrix`) �
 Chinese only — see the Chinese page `nodes/def.determinant.md` and `proofs/`.
 
 
-Cite: `def.determinant` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.determinant` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

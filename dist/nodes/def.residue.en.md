@@ -10,5 +10,5 @@ layer 18 · definition · cluster Residues and the Argument Principle (`analysis
 Chinese only — see the Chinese page `nodes/def.residue.md` and `proofs/`.
 
 
-Cite: `def.residue` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.residue` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

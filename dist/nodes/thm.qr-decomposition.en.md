@@ -10,5 +10,5 @@ layer 15 · theorem · cluster Matrix Factorizations and Least Squares (`algebra
 Chinese only — see the Chinese page `nodes/thm.qr-decomposition.md` and `proofs/`.
 
 
-Cite: `thm.qr-decomposition` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.qr-decomposition` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

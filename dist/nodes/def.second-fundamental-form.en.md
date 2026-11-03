@@ -10,5 +10,5 @@ layer 26 · definition · cluster Theory of Surfaces (`diffgeom.surface`) · Dif
 Chinese only — see the Chinese page `nodes/def.second-fundamental-form.md` and `proofs/`.
 
 
-Cite: `def.second-fundamental-form` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.second-fundamental-form` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

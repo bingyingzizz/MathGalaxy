@@ -10,5 +10,5 @@ layer 25 · definition · cluster Normed Spaces and Bounded Operators (`fa.norm`
 Chinese only — see the Chinese page `nodes/thm.frechet-derivative.md` and `proofs/`.
 
 
-Cite: `thm.frechet-derivative` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.frechet-derivative` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

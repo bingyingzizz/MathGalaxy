@@ -1,4 +1,4 @@
-# Uniform Boundedness Principle　`thm.ubp`
+# uniform boundedness principle (Banach-Steinhaus)　`thm.ubp`
 English entry · root `../`
 [in graph](../#n=thm.ubp)　·　[Chinese page (authoritative)](./thm.ubp.md)
 
@@ -10,5 +10,5 @@ layer 16 · theorem · cluster Baire Category and the Three Big Theorems (`fa.ba
 Chinese only — see the Chinese page `nodes/thm.ubp.md` and `proofs/`.
 
 
-Cite: `thm.ubp` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.ubp` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

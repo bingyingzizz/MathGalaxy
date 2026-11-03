@@ -10,5 +10,5 @@ layer 13 · theorem · cluster Linear Maps and Rank (`algebra.linmap`) · Abstra
 Chinese only — see the Chinese page `nodes/thm.rank-nullity.md` and `proofs/`.
 
 
-Cite: `thm.rank-nullity` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.rank-nullity` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 12 · theorem · cluster Matrices and Determinants (`algebra.matrix`) · A
 Chinese only — see the Chinese page `nodes/thm.det-exists-unique.md` and `proofs/`.
 
 
-Cite: `thm.det-exists-unique` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.det-exists-unique` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

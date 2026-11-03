@@ -10,5 +10,5 @@ layer 26 · theorem · cluster Differentiation Theorems (`analysis.differentiati
 Chinese only — see the Chinese page `nodes/thm.differentiation-general.md` and `proofs/`.
 
 
-Cite: `thm.differentiation-general` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.differentiation-general` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

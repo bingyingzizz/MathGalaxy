@@ -23,4 +23,4 @@ refs: Lang, Linear Algebra
 
 > 说明见 `notes/thm.first-iso-vs.md`
 
-引用：`thm.first-iso-vs`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.first-iso-vs`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

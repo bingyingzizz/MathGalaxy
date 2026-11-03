@@ -10,5 +10,5 @@ layer 11 · theorem · cluster Bases of Vector Spaces (`algebra.vectorspace`) ·
 Chinese only — see the Chinese page `nodes/thm.dimension.md` and `proofs/`.
 
 
-Cite: `thm.dimension` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.dimension` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

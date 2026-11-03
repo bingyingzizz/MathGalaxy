@@ -18,4 +18,4 @@ refs: Rudin, Principles of Mathematical Analysis, Ch. 6（振荡与逼近）；Z
 
 > 说明见 `notes/thm.riemann-lebesgue.md`
 
-引用：`thm.riemann-lebesgue`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.riemann-lebesgue`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

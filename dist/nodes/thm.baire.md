@@ -21,4 +21,4 @@ refs: Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）；Baire 18
 
 > 说明见 `notes/thm.baire.md`
 
-引用：`thm.baire`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.baire`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

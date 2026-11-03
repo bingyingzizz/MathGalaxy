@@ -11,5 +11,5 @@ names: `Jacobian` (short) · `Jacobian Matrix` (full)
 Chinese only — see the Chinese page `nodes/def.jacobian.md` and `proofs/`.
 
 
-Cite: `def.jacobian` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.jacobian` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

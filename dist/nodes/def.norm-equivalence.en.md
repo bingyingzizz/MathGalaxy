@@ -1,4 +1,4 @@
-# Equivalent Norms　`def.norm-equivalence`
+# equivalent norms　`def.norm-equivalence`
 English entry · root `../`
 [in graph](../#n=def.norm-equivalence)　·　[Chinese page (authoritative)](./def.norm-equivalence.md)
 
@@ -10,5 +10,5 @@ layer 12 · definition · cluster Normed Spaces and Bounded Operators (`fa.norm`
 Chinese only — see the Chinese page `nodes/def.norm-equivalence.md` and `proofs/`.
 
 
-Cite: `def.norm-equivalence` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.norm-equivalence` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

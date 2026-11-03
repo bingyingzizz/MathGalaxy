@@ -19,4 +19,4 @@ refs: Milnor–Stasheff, Characteristic Classes · 转移函数；Tu, Differenti
 
 > 说明见 `notes/def.transition-function.md`
 
-引用：`def.transition-function`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.transition-function`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

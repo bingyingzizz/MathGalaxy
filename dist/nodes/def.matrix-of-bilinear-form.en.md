@@ -10,5 +10,5 @@ layer 13 · definition · cluster Multilinear Algebra and Tensors (`algebra.mult
 Chinese only — see the Chinese page `nodes/def.matrix-of-bilinear-form.md` and `proofs/`.
 
 
-Cite: `def.matrix-of-bilinear-form` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.matrix-of-bilinear-form` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

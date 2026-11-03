@@ -10,5 +10,5 @@ layer 22 · theorem · cluster Differential Forms, Integration and de Rham Cohom
 Chinese only — see the Chinese page `nodes/thm.stokes-chain.md` and `proofs/`.
 
 
-Cite: `thm.stokes-chain` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.stokes-chain` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

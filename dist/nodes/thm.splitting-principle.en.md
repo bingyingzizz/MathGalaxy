@@ -10,5 +10,5 @@ layer 34 · theorem · cluster Manifolds and Vector Bundles (`diffgeom.manifold`
 Chinese only — see the Chinese page `nodes/thm.splitting-principle.md` and `proofs/`.
 
 
-Cite: `thm.splitting-principle` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.splitting-principle` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

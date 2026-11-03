@@ -15,4 +15,4 @@ refs: Munkres, Topology (2nd ed.), Section 34；Engelking, General Topology, Ch.
 
 > 说明见 `notes/thm.urysohn-metrization.md`
 
-引用：`thm.urysohn-metrization`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.urysohn-metrization`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -10,5 +10,5 @@ layer 15 · lemma · cluster Separation Axioms (`topology.separation`) · Topolo
 Chinese only — see the Chinese page `nodes/lem.urysohn.md` and `proofs/`.
 
 
-Cite: `lem.urysohn` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `lem.urysohn` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

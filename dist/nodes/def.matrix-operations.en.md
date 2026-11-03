@@ -10,5 +10,5 @@ layer 11 · definition · cluster Matrices and Determinants (`algebra.matrix`) �
 Chinese only — see the Chinese page `nodes/def.matrix-operations.md` and `proofs/`.
 
 
-Cite: `def.matrix-operations` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.matrix-operations` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

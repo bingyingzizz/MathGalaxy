@@ -15,4 +15,8 @@
 
 - 埃塔勒层的例子 → prop.etale-sheaf-examples
 
+- 上同调类 → def.cohomology-class
+
+- 零调复形 → def.acyclic-complex
+
 见 `../../alias.md`。

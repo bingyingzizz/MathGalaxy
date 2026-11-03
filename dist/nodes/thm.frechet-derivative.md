@@ -14,4 +14,4 @@ refs: Rudin, Functional Analysis · Fréchet 导数；Brezis, Functional Analysi
 
 > 说明见 `notes/thm.frechet-derivative.md`
 
-引用：`thm.frechet-derivative`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.frechet-derivative`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -1,4 +1,4 @@
-# 陈类　`def.chern-class`
+# Chern class　`def.chern-class`
 English entry · root `../`
 [in graph](../#n=def.chern-class)　·　[Chinese page (authoritative)](./def.chern-class.md)
 
@@ -10,5 +10,5 @@ layer 32 · theorem · cluster Manifolds and Vector Bundles (`diffgeom.manifold`
 Chinese only — see the Chinese page `nodes/def.chern-class.md` and `proofs/`.
 
 
-Cite: `def.chern-class` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.chern-class` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

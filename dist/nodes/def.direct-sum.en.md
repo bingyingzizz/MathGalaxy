@@ -10,5 +10,5 @@ layer 11 · definition · cluster Linear Maps and Rank (`algebra.linmap`) · Abs
 Chinese only — see the Chinese page `nodes/def.direct-sum.md` and `proofs/`.
 
 
-Cite: `def.direct-sum` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.direct-sum` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

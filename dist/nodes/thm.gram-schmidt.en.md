@@ -10,5 +10,5 @@ layer 14 · theorem · cluster Inner Product Spaces and Orthogonality (`algebra.
 Chinese only — see the Chinese page `nodes/thm.gram-schmidt.md` and `proofs/`.
 
 
-Cite: `thm.gram-schmidt` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.gram-schmidt` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

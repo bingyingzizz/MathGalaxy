@@ -41,7 +41,7 @@ MG.i18nStatements = {
         en:
         'Let $(P, \\preceq )$ be a **non-empty** poset. If every chain in $P$ has an upper bound ' +
         'in $P$, then $P$ has a **maximal element**.',
-        status: 'reviewed', basedOn: 'v0.9.2#88c083ff', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#88c083ff', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -55,7 +55,7 @@ MG.i18nStatements = {
         'Kuratowski–Zorn lemma.\n\n' +
         '⚠ Non-constructive: what one obtains is "there exists a maximal element", and usually ' +
         'one cannot say which.',
-        status: 'reviewed', basedOn: 'v0.9.2#4e157a1c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#4e157a1c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -69,7 +69,7 @@ MG.i18nStatements = {
         'g \\ker\\varphi \\;\\longmapsto\\; \\varphi(g).$$\n\n' +
         'In particular: **the image of a surjective homomorphism is the quotient group** ' +
         '($G/\\ker\\varphi \\cong G\'$ when $\\varphi$ is surjective).',
-        status: 'reviewed', basedOn: 'v0.9.2#1f75f342', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#1f75f342', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -97,7 +97,7 @@ MG.i18nStatements = {
         'two-part answer: the **kernel** (what is collapsed) and the **image** (what survives), ' +
         'locked together by a single isomorphism. So studying homomorphisms is studying normal ' +
         'subgroups — which is why group theory turns into the study of the lattice of subgroups.',
-        status: 'reviewed', basedOn: 'v0.9.2#3edf241b', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#3edf241b', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -115,7 +115,7 @@ MG.i18nStatements = {
         'topology on $X$.\n\n' +
         'Given $\\varepsilon > 0$, a set $D \\subseteq X$ is called an **$\\varepsilon$-net** if ' +
         '$\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$.',
-        status: 'reviewed', basedOn: 'v0.9.2#31649b03', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#31649b03', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -125,8 +125,9 @@ MG.i18nStatements = {
         'only on the open sets and are **topological**; **completeness / total boundedness** ' +
         'use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n' +
         '⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval ' +
-        '(0, 1) are homeomorphic, yet only the first is complete.',
-        status: 'reviewed', basedOn: 'v0.9.2#a1cebdb4', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        '(0, 1) are homeomorphic, yet only the first is complete.' +
+        '**Only one of the three axioms is "hard"** (they are usually listed side by side, but they carry very different weight):\n\n- **Non-degeneracy** $d(x,y)=0 \\iff x=y$: **read it as two halves.** "$x=y \\implies d(x,y)=0$" is nearly free (often built into how $d$ is given); "$d(x,y)=0 \\implies x=y$" is the half with content (weakening it gives a **pseudometric**).\n- **Symmetry**: **can be dropped** \\u2014 what is left is a **quasi-metric** (e.g. a "one-way shortest path"); the topology is still definable, but balls are asymmetric (the ball for $d$ and the ball for the reversed quasi-metric differ).\n- **Triangle inequality**: **the only indispensable one.** Without it the open balls no longer form a base for a topology \\u2014 the concrete failure is that an intersection stops containing a ball, which is precisely what the definition of "open" uses.\n\n\\u26A0 **"$d$ takes values in $[0,+\\infty)$ rather than $[0,+\\infty]$"**: allowing $+\\infty$ wrecks the notion of a connected component (the discrete metric $d \\equiv +\\infty$ misbehaves), so the standard definition takes finite values; if a map between metric spaces needs $+\\infty$, say so explicitly.',
+        status: 'reviewed', basedOn: 'v0.9.3#8cd35552', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -153,7 +154,7 @@ MG.i18nStatements = {
         '$(x_n - y_n)$ is a null sequence.\n\n' +
         '($\\sim$ is an equivalence relation: reflexivity and symmetry are immediate, ' +
         'transitivity follows from the triangle inequality.)',
-        status: 'reviewed', basedOn: 'v0.9.2#4ba3632c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#4ba3632c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -173,7 +174,7 @@ MG.i18nStatements = {
         'some index on** (for some positive rational $\\delta$) — hence its reciprocal, after ' +
         'discarding finitely many terms, is again Cauchy. The third fact is the entire basis ' +
         'for "multiplication has inverses".',
-        status: 'reviewed', basedOn: 'v0.9.2#bf2a2534', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#bf2a2534', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -189,7 +190,7 @@ MG.i18nStatements = {
         'One then also says that $F$ is **represented** by $(X, s)$.\n\n' +
         '**(ii) Representable.** If $F \\cong \\operatorname{Hom}_{\\mathcal{C}}(X, -)$, one says ' +
         'that $F$ is **represented** by $X$, and $X$ is called a **representing object** of $F$.',
-        status: 'reviewed', basedOn: 'v0.9.2#befbd619', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#befbd619', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -212,7 +213,7 @@ MG.i18nStatements = {
         '\\{\\, f \\in \\mathcal{C}(Z, X) \\ \\mid\\ f(Z) \\subseteq Y \\,\\}$$\n\n' +
         '  (here $\\mathcal{C}(Z, X)$ denotes the set of continuous maps $Z \\to X$). ' +
         'It is represented by the natural element $i : Y \\rightarrowtail X$ of $F(Y)$.',
-        status: 'reviewed', basedOn: 'v0.9.2#c93883dc', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#c93883dc', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -243,7 +244,7 @@ MG.i18nStatements = {
         '4. for every $f : M \\to N$, ' +
         '$\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong ' +
         '\\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$.',
-        status: 'reviewed', basedOn: 'v0.9.2#70512d43', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#70512d43', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -256,8 +257,9 @@ MG.i18nStatements = {
         'strict), and neither is $\\mathbf{AbHaus}$.\n\n' +
         'An abelian category is the **working environment** of homological algebra as a whole: ' +
         'with kernels and cokernels one can even state "exact sequence"; an additive category ' +
-        'only supplies the additive skeleton (zero object and direct sums).',
-        status: 'reviewed', basedOn: 'v0.9.2#9884bb71', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        'only supplies the additive skeleton (zero object and direct sums).' +
+        '**Which of the four is the real axiom, and which are its consequences** (they are usually listed side by side, but condition 4 is the weakest and behaves most like an axiom, while the first three each cost something):\n\n- (1) $\\implies$ (2): **one kernel-plus-cokernel diagram chase.** $i : N \\rightarrowtail M$ identifies $N$ with $\\ker(M \\to \\operatorname{coker} i)$; this uses only the preabelian fact that a monomorphism is its own kernel \\u2014 **no assumption beyond the additive structure**.\n- (2) $\\implies$ (1): **almost free in reverse** ($N$ being isomorphic to the kernel of a cokernel simply says $i$ is a kernel, i.e. regular).\n- (1) $\\iff$ (3): **this step needs kernels and cokernels** (i.e. preabelian). Factor $f = M \\to N$ as $M \\twoheadrightarrow \\operatorname{im} f \\rightarrowtail N$; "the epimorphism half is regular" is exactly (1). \\u26A0 Uniqueness holds **up to isomorphism** \\u2014 the word matters: the factorisation is not strict, since one image can have different representatives.\n- (1) $\\iff$ (4): **the most "algebraic" one** (Abel\'s original form): $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. It is equivalent to "the first isomorphism theorem holds in the category", and needs **kernels and cokernels to exist** plus **regularity of mono/epi**.\n\n\\u26A0 **Preabelian $\\ne$ abelian \\u2014 the point**: preabelian asks only that kernels and cokernels exist; any one of (1)\\u2013(4) can **fail**. The standard counterexamples are $\\mathbf{PreAb}$ (preabelian groups) or filtered vector spaces, where an epimorphism need not be a cokernel and a monomorphism need not be a kernel. So **abelian = preabelian + (any one of the equivalent conditions)**, and that last clause cannot be dropped.\n\n\\u26A0 **Two more traps**: in the definition of "additive category", "all direct sums" and "all finite products" agree only **given preadditivity** (in a general category finite products and finite coproducts need not coincide); and "all finite limits and colimits" is the phrasing attached to (2), which does **not** imply abelianness ($\\mathbf{Set}$ has finite limits and coproducts yet is far from abelian) \\u2014 the difference lies in disjointness, universality and effectiveness.',
+        status: 'reviewed', basedOn: 'v0.9.3#e667995c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -279,7 +281,7 @@ MG.i18nStatements = {
         'it to $\\mathcal{M} \\otimes  \\mathcal{N}$ gives a measure, written\n\n' +
         '$$\\mu \\times \\nu$$\n\n' +
         'that is, the **product measure**.',
-        status: 'reviewed', basedOn: 'v0.9.2#174abecd', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#174abecd', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -293,7 +295,7 @@ MG.i18nStatements = {
         '⚠ The whole machine of this step (premeasure $\\to$ outer measure $\\to$ Carathéodory ' +
         'extension $\\to$ uniqueness) is exactly the off-the-shelf quartet from the ' +
         '"constructing measures" cluster.',
-        status: 'reviewed', basedOn: 'v0.9.2#15d8cb14', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#15d8cb14', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -307,7 +309,7 @@ MG.i18nStatements = {
         '$$k : \\mathbf{Top} \\longrightarrow k\\mathbf{Top}, \\qquad X \\mapsto kX$$\n\n' +
         'that is, $i \\dashv k$. The space $kX$ has the same underlying set as $X$, with the ' +
         'topology replaced by the $k$-topology.',
-        status: 'reviewed', basedOn: 'v0.9.2#0d2ec83c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#0d2ec83c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -335,7 +337,7 @@ MG.i18nStatements = {
         '$k\\mathbf{Top}$ is **coreflective** (the inclusion has a **right** adjoint $k$). One ' +
         '"tightens" a space, the other "loosens" it — hence the former is closed under limits ' +
         'and the latter under **colimits**.',
-        status: 'reviewed', basedOn: 'v0.9.2#b6c3c8a9', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#b6c3c8a9', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -346,7 +348,7 @@ MG.i18nStatements = {
         'If $\\mathcal{T}$ is a topos, then the category $\\mathcal{T}(\\mathbf{Ab})$ of abelian ' +
         'sheaves on $\\mathcal{T}$ is a **Grothendieck category**: it has a small set of ' +
         'generators, has all colimits, and filtered colimits are exact.',
-        status: 'reviewed', basedOn: 'v0.9.2#f13b85f8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#f13b85f8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -366,7 +368,7 @@ MG.i18nStatements = {
         '$\\mathcal{T}(\\mathbf{Ab})$ (look at presheaves first: ' +
         '$M \\mapsto \\operatorname{Hom}_{\\mathbb{Z}}(\\mathbb{Z}\\cdot h_{X}, M) \\cong M(X)$ ' +
         'is exact on presheaves).',
-        status: 'reviewed', basedOn: 'v0.9.2#07b048c8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#07b048c8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -377,7 +379,7 @@ MG.i18nStatements = {
         'Let $F \\in NBV$. Then $F\' \\in L^1(m)$, and\n\n' +
         '$$\\mu_F \\perp  m \\iff F\' = 0\\quad  \\text{a.e.}$$\n' +
         '$$\\mu_F \\ll  m \\iff F(x) = \\int_{-\\infty}^{x} F\'(t) dt$$',
-        status: 'reviewed', basedOn: 'v0.9.2#2fff7b16', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#2fff7b16', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -390,7 +392,7 @@ MG.i18nStatements = {
         '⭐ This is the measure-theoretic version of the fundamental theorem of calculus: ' +
         '**whether a function can be integrated back depends on whether $\\mu _F$ is absolutely ' +
         'continuous**.',
-        status: 'reviewed', basedOn: 'v0.9.2#e730d43c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#e730d43c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -402,7 +404,7 @@ MG.i18nStatements = {
         '1. $\\mathfrak{A}$ is a $\\sigma$-ring;\n' +
         '2. $\\mathfrak{A}$ is a monotone class;\n' +
         '3. $\\mathfrak{A}$ is closed under countable disjoint unions.',
-        status: 'reviewed', basedOn: 'v0.9.2#5d3aa74a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#5d3aa74a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -411,8 +413,9 @@ MG.i18nStatements = {
         'itself does not imply being a $\\sigma$-ring.\n\n' +
         'This theorem is the technical core of the monotone class theorem: it is precisely what ' +
         'lets one reduce "true for all $\\sigma$-algebras" to "first verify it on a ring, then ' +
-        'pass to monotone limits".',
-        status: 'reviewed', basedOn: 'v0.9.2#ce1b4b57', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        'pass to monotone limits".' +
+        '**Which hypothesis each direction uses** (all three conditions are purely about set operations, but the ring hypothesis cannot be dropped):\n\n- (1) $\\implies$ (3): a countable disjoint union is a special case of a countable union \\u2014 free.\n- (1) $\\implies$ (2): increasing unions are immediate from the definition; for decreasing intersections take the first term minus the successive differences as a countable union (the whole set need not belong to the family).\n- (2) $\\implies$ (1): the ring gives finite unions, and the monotone class keeps their increasing limit inside the family.\n- (3) $\\implies$ (1): set $B_n = A_n \\setminus \\bigcup_{j<n} A_j$; the ring guarantees every $B_n$ lies in the family, and closure under disjoint unions finishes.\n- The ring hypothesis cannot be dropped: on a two-point set, the family of the two singletons is a monotone class, yet it does not contain their union.',
+        status: 'reviewed', basedOn: 'v0.9.3#a3966daf', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -428,14 +431,14 @@ MG.i18nStatements = {
         'Here "maximal chain" means a chain that is maximal under inclusion $\\subseteq$: if ' +
         '$M \\subseteq M\' \\subseteq P$ and $M\'$ is again a chain, then $M\' = M$.\n\n' +
         'Taking $C_{0} = \\emptyset$ gives: **every non-empty poset has a maximal chain.**',
-        status: 'reviewed', basedOn: 'v0.9.2#317a7f66', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#317a7f66', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
         'In form it predates Zorn\'s lemma (Hausdorff, 1914), and it is equivalent to it.\n\n' +
         'The existence of a maximal chain is exactly the rigorous version of the intuition ' +
         '"keep adding elements from below until you can add no more".',
-        status: 'reviewed', basedOn: 'v0.9.2#53809b5a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#53809b5a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -450,7 +453,7 @@ MG.i18nStatements = {
         'section** at $y$.\n\n' +
         'Similarly, for a function $f : X \\times Y \\to \\mathbb{C}$ define\n\n' +
         '$$f_x(y) := f^y(x) := f(x, y)$$',
-        status: 'reviewed', basedOn: 'v0.9.2#ad479275', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#ad479275', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -459,7 +462,7 @@ MG.i18nStatements = {
         'Sections are the language of Fubini\'s theorem: the double integral ' +
         '$\\iint f d(\\mu \\times \\nu)$ is "integrate along the sections first, then integrate ' +
         'the resulting function of the other variable".',
-        status: 'reviewed', basedOn: 'v0.9.2#8645e773', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#8645e773', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -472,7 +475,7 @@ MG.i18nStatements = {
         'In other words: every set $X$ is equinumerous with some ordinal.\n\n' +
         'In particular, every set has a cardinality, and the real line admits a well-ordering ' +
         '(though this well-ordering cannot be written down explicitly).',
-        status: 'reviewed', basedOn: 'v0.9.2#f0e20930', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#f0e20930', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -482,7 +485,7 @@ MG.i18nStatements = {
         'cardinals**: any two sets have comparable cardinalities.\n\n' +
         'It cannot be proved in ZF; but ZF together with it proves AC, so the two are ' +
         'equivalent.',
-        status: 'reviewed', basedOn: 'v0.9.2#bf8c5d7a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#bf8c5d7a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -493,7 +496,7 @@ MG.i18nStatements = {
         'Under the **axiom of choice**: for any two sets $A$ and $B$ we have ' +
         '$\\#A \\le \\#B$ or $\\#B \\le \\#A$.\n\n' +
         'That is, any two cardinals are comparable.',
-        status: 'reviewed', basedOn: 'v0.9.2#ffeadee2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#ffeadee2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -504,7 +507,7 @@ MG.i18nStatements = {
         'admits an injection. So this theorem, AC and the well-ordering theorem are three ' +
         'ways of saying the same thing.\n\n' +
         '⚠ Without AC there really are incomparable cardinals (Jech, *The Axiom of Choice*).',
-        status: 'reviewed', basedOn: 'v0.9.2#90e06db8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#90e06db8', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -515,7 +518,7 @@ MG.i18nStatements = {
         'Let $F \\dashv G$ with unit $\\eta$ and counit $\\varepsilon$. Then $F$ is ' +
         '**fully faithful** $\\iff$ $\\eta$ is an isomorphism; $G$ is **fully faithful** ' +
         '$\\iff$ $\\varepsilon$ is an isomorphism.',
-        status: 'reviewed', basedOn: 'v0.9.2#315d7da7', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#315d7da7', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -526,7 +529,7 @@ MG.i18nStatements = {
         'reflective means "the inclusion functor has a left adjoint", and an inclusion ' +
         'functor is always fully faithful (full subcategory), so for a reflection the counit ' +
         'is always an isomorphism.',
-        status: 'reviewed', basedOn: 'v0.9.2#9b807211', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#9b807211', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -540,7 +543,7 @@ MG.i18nStatements = {
         '$$\\mathcal{M}(\\mathcal{E}) = \\mathfrak{m}(\\mathcal{E}) \\iff ' +
         '\\forall A \\in \\mathcal{E} : A^c \\in \\mathfrak{m}(\\mathcal{E})\\ \\wedge\\ ' +
         '\\forall A, B \\in \\mathcal{E} : A \\cup B \\in \\mathfrak{m}(\\mathcal{E})$$',
-        status: 'reviewed', basedOn: 'v0.9.2#48f20867', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#48f20867', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -584,7 +587,7 @@ MG.i18nStatements = {
         '⚠ It is a sister result of "the criterion for a ring to be a $\\sigma$-ring": that ' +
         'one says ring $+$ monotone $\\implies$ $\\sigma$-ring, this one says algebra ' +
         '$\\implies$ monotone class and $\\sigma$-algebra coincide.',
-        status: 'reviewed', basedOn: 'v0.9.2#42f670ae', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#42f670ae', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -598,7 +601,7 @@ MG.i18nStatements = {
         '**(b)** If $f$ is $\\mathcal{M} \\otimes  \\mathcal{N}$-measurable, then for every ' +
         '$x$ the function $f_x$ is $\\mathcal{N}$-measurable, and for every $y$ the function ' +
         '$f^y$ is $\\mathcal{M}$-measurable.',
-        status: 'reviewed', basedOn: 'v0.9.2#2db4532b', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#2db4532b', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -612,7 +615,7 @@ MG.i18nStatements = {
         '$$f_x^{-1}(B) = (f^{-1}(B))_x, \\quad  f^{y-1}(B) = (f^{-1}(B))^y$$\n\n' +
         '⚠ Note that (b) says "**every** $x$ works", whereas Fubini\'s theorem can only ' +
         'guarantee "almost every" — because Fubini also needs integrability.',
-        status: 'reviewed', basedOn: 'v0.9.2#bd705c8a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#bd705c8a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -624,7 +627,7 @@ MG.i18nStatements = {
         'space. Then\n\n' +
         '$$q \\times \\mathrm{id}_{Z} : X \\times Z \\longrightarrow Y \\times Z$$\n\n' +
         'is again a quotient map.',
-        status: 'reviewed', basedOn: 'v0.9.2#aca983a4', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#aca983a4', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -650,7 +653,7 @@ MG.i18nStatements = {
         'should have.\n\n' +
         'Terminology: some write this as "$Z$ locally compact Hausdorff $\\implies$ the ' +
         'functor $- \\times Z$ preserves quotient maps".',
-        status: 'reviewed', basedOn: 'v0.9.2#34fccb9f', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#34fccb9f', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -671,7 +674,7 @@ MG.i18nStatements = {
         '$$[a, b] \\le [c, d] :\\iff a + d \\le b + c$$\n\n' +
         'Here addition and order come from those of $\\mathbb{N}$, and the formula for ' +
         'multiplication is copied from $(a - b)(c - d) = ac + bd - (ad + bc)$.',
-        status: 'reviewed', basedOn: 'v0.9.2#5c26a908', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#5c26a908', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -683,7 +686,7 @@ MG.i18nStatements = {
         '⚠ Inside $\\mathbb{Z}$, the copy of $\\mathbb{N}$ is **embedded** via ' +
         '$a \\mapsto [a, 0]$ (injective, and preserving the operations and the order), so ' +
         'writing $3 \\in \\mathbb{Z}$ uses this embedding — that step cannot be skipped.',
-        status: 'reviewed', basedOn: 'v0.9.2#fe258a30', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#fe258a30', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -702,7 +705,7 @@ MG.i18nStatements = {
         'G) \\cong \\operatorname{Hom}(1_{\\mathcal{C}},\\ G \\circ F)$$\n\n' +
         'The map $1_{\\mathcal{C}} \\implies G \\circ F$ corresponding to the right-hand ' +
         'side is exactly the **unit** $\\eta$.',
-        status: 'reviewed', basedOn: 'v0.9.2#15b421bb', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#15b421bb', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -710,7 +713,7 @@ MG.i18nStatements = {
         'extensions**. The Kan extension is the unifying exit of this whole cluster — the ' +
         'definitions scattered earlier (limit, adjunction, reflection) each fall into place ' +
         'inside it.',
-        status: 'reviewed', basedOn: 'v0.9.2#77203f35', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#77203f35', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -724,8 +727,9 @@ MG.i18nStatements = {
         "- (a) $X$ is **compact**: every open cover has a finite subcover;\n" +
         "- (b) $X$ is **sequentially compact**: every sequence has a subsequence converging in $X$;\n" +
         "- (c) $X$ is **complete and totally bounded**.\n\n" +
-        "That is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded.",
-        status: 'reviewed', basedOn: 'v0.9.2#8c5b3033', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        "That is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded." +
+        'That is, compactness, sequential compactness, and completeness together with total boundedness are all equivalent.',
+        status: 'reviewed', basedOn: 'v0.9.3#b828d710', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -744,8 +748,9 @@ MG.i18nStatements = {
         'agree.\n\n' +
         '⚠ In a general topological space only "compact $\\implies$ sequentially compact" ' +
         'holds — **the converse fails**: sequential compactness is a piece of luck peculiar ' +
-        'to metric spaces.',
-        status: 'reviewed', basedOn: 'v0.9.2#8e05fc76', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        'to metric spaces.' +
+        '**What each direction uses, and whether any extra hypothesis is needed** (this list *is* the content of the equivalence):\n\n- (a) $\\implies$ (b): **no hypothesis needed.** Pass to a finite subcover and pick, by pigeonhole, a subsequence lying inside one member of the cover (Lebesgue number, or a direct induction), then take a convergent subsequence inside that member.\n- (a) $\\implies$ (c), "complete": **no extra hypothesis.** A Cauchy sequence with a convergent subsequence converges, and to the same point.\n- (a) $\\implies$ (c), "totally bounded": **no extra hypothesis.** Cover by all balls of radius $\\varepsilon$; a finite subcover is a finite $\\varepsilon$-net.\n- (b) $\\implies$ (a): **uses only total boundedness, not the axiom of choice** (the "bad ball" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\\ge \\varepsilon$, which has no convergent subsequence).\n- (b) $\\implies$ (c), "complete": **no extra hypothesis** (the limit of the convergent subsequence is the limit of the Cauchy sequence).\n- (b) $\\implies$ (c), "totally bounded": **this step really uses countable choice (DC)** \\u2014 the only place in the whole proof. For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.\n- (c) $\\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, keep at each layer a ball with infinitely many terms, take the diagonal subsequence \\u2014 it is Cauchy \\u2014 and converge by completeness).',
+        status: 'reviewed', basedOn: 'v0.9.3#0c5aa523', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -758,7 +763,7 @@ MG.i18nStatements = {
         'limits.\n\n' +
         'The left adjoint is given by a limit construction:\n\n' +
         '$$F(X) \\;=\\; \\varprojlim_{(Y,\\, f) \\in (X \\downarrow G)} Y$$',
-        status: 'reviewed', basedOn: 'v0.9.2#f6d84124', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#f6d84124', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -770,7 +775,7 @@ MG.i18nStatements = {
         'object of $\\mathcal{D}$ "closest" to $X$. Every $X \\to G(Y)$ can be organised as ' +
         '$X \\to G(F(X)) \\to G(Y)$.\n\n' +
         'The proof is the derivation on the edge.',
-        status: 'reviewed', basedOn: 'v0.9.2#bdd6e136', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#bdd6e136', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -782,7 +787,7 @@ MG.i18nStatements = {
         '$$\\delta : \\mathcal{C} \\longrightarrow \\widehat{\\mathcal{C}}, \\qquad ' +
         'X \\mapsto h_{X} = \\operatorname{Hom}_{\\mathcal{C}}(-, X)$$\n\n' +
         'is a **fully faithful** functor, and it **preserves all limits**.',
-        status: 'reviewed', basedOn: 'v0.9.2#f759aee2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#f759aee2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -793,7 +798,7 @@ MG.i18nStatements = {
         'Once $\\mathcal{C}$ is embedded in $\\widehat{\\mathcal{C}}$, questions inside ' +
         '$\\mathcal{C}$ can be solved in a category that **has all limits and colimits** — ' +
         'this is the standard way of "completing" a category.',
-        status: 'reviewed', basedOn: 'v0.9.2#94b15f1c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#94b15f1c', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -806,7 +811,7 @@ MG.i18nStatements = {
         '$\\cdot$ $E_r \\subseteq B(r, x)$ holds for every $r$;\n' +
         '$\\cdot$ there is $\\alpha > 0$ with ' +
         '$m(E_r) > \\alpha\\cdot m(B(r, x))$ for every $r$.',
-        status: 'reviewed', basedOn: 'v0.9.2#def659f2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#def659f2', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -818,7 +823,7 @@ MG.i18nStatements = {
         'can tend to 0, and such a family does not shrink nicely to $x$.\n\n' +
         '⭐ The notion was introduced so that differentiation theorems **do not depend on ' +
         'the shape of the ball**: as long as it is not flat, the conclusion stands.',
-        status: 'reviewed', basedOn: 'v0.9.2#cd8d3dd5', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#cd8d3dd5', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -834,7 +839,7 @@ MG.i18nStatements = {
         '- **Monotone**: $A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n' +
         '- **Countably subadditive**: ' +
         '$\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$',
-        status: 'reviewed', basedOn: 'v0.9.2#24d3359e', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#24d3359e', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -845,8 +850,9 @@ MG.i18nStatements = {
         'well" (the next definition); on those the outer measure does become a genuine ' +
         'measure.\n\n' +
         'What Lebesgue first constructed was an outer measure: ' +
-        '$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.',
-        status: 'reviewed', basedOn: 'v0.9.2#32c28e62', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        '$\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.' +
+        '**Which of the three conditions is "hard"** (the three are asymmetric \\u2014 one is normalisation, one is almost free, one is a real condition):\n\n- $\\mu^{*}(\\emptyset) = 0$: **normalisation**, there only so that $0 \\le \\mu^{*}$ below is meaningful (otherwise the constant $+\\infty$ would satisfy the other two).\n- **Monotonicity**: **almost free**, but deriving it uses countable subadditivity: $B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$; monotonicity is usually listed as an axiom to save that step, and in a concrete construction (Carath\\u00E9odory) it is verified directly.\n- **Countable subadditivity**: **this is the real condition**, the only one with content \\u2014 it ties "the size of one set" to "countable operations". \\u26A0 Note that it is an **inequality**: an outer measure is **not** additive (additivity on disjoint unions is what makes it a measure, and that is an extra conclusion on Carath\\u00E9odory-measurable sets).\n\n**Two distinctions that must stay separate**:\n\n- **An outer measure is defined on $\\mathcal{P}(X)$** (all subsets), whereas a measure (`def.measure`) is defined only on a $\\sigma$-algebra \\u2014 that is the whole point of an outer measure as a **construction device**: first put a crude "size" on all subsets, then single out the subsets on which it is additive.\n- **Monotone plus countably subadditive does not say "the value on a countable union is the limit"**: on increasing unions an outer measure only guarantees $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$; equality needs continuity from below, hence measurability \\u2014 exactly what the Carath\\u00E9odory condition supplies.\n\n\\u26A0 Notation: the star in $\\mu^{*}$ means "defined on $\\mathcal{P}(X)$", not "dual of something". Some books write $m^{*}$ or $\\nu^{*}$.',
+        status: 'reviewed', basedOn: 'v0.9.3#63a085ee', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -859,7 +865,7 @@ MG.i18nStatements = {
         'sequence.\n\n' +
         'A stronger conclusion:\n\n' +
         '$$\\#\\mathbb{R} = \\#\\mathcal{P}(\\mathbb{N}) = 2^{\\aleph_0} > \\aleph_0$$',
-        status: 'reviewed', basedOn: 'v0.9.2#75028b5a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#75028b5a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -878,7 +884,7 @@ MG.i18nStatements = {
         '$\\mathbb{R}$ is not. **"Dense" and "equally many" are two different things** — ' +
         'and this is precisely why analysis has to be done over the reals rather than over ' +
         'the rationals.',
-        status: 'reviewed', basedOn: 'v0.9.2#f1e86a60', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#f1e86a60', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -895,7 +901,7 @@ MG.i18nStatements = {
         '\\operatorname{Hom}_{\\mathbf{Top}}\\bigl(X,\\ K\\bigr)$$\n\n' +
         'and the inclusion $X \\to \\beta X$ is an isomorphism whenever $X$ itself is ' +
         'compact Hausdorff.',
-        status: 'reviewed', basedOn: 'v0.9.2#2b01d3a4', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#2b01d3a4', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -911,7 +917,7 @@ MG.i18nStatements = {
         'This is what the general statement "a reflective subcategory is closed under ' +
         'limits" looks like here — from now on, taking limits in $\\mathbf{CHaus}$ no ' +
         'longer requires re-checking compactness and Hausdorffness.',
-        status: 'reviewed', basedOn: 'v0.9.2#5e7e6161', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#5e7e6161', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -926,7 +932,7 @@ MG.i18nStatements = {
         'and for pairwise disjoint $\\{E_j\\} \\subseteq \\mathcal{M}$:\n\n' +
         '$$\\nu( \\bigsqcup_j E_j ) = \\sum_j \\nu(E_j)$$\n\n' +
         '(the series on the right converges absolutely).',
-        status: 'reviewed', basedOn: 'v0.9.2#bde1a964', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#bde1a964', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -936,7 +942,7 @@ MG.i18nStatements = {
         'So in the world of complex measures the headaches of "finiteness" and ' +
         '"rearrangement" disappear entirely — at the cost of no longer having examples ' +
         'with "infinite mass".',
-        status: 'reviewed', basedOn: 'v0.9.2#e5f47458', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#e5f47458', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -953,7 +959,7 @@ MG.i18nStatements = {
         'at "measurable function") put\n\n' +
         '$$\nL^\\infty(X, \\mathcal{M}, \\mu) := \\{\\, f : X \\to \\mathbb{C} : ' +
         '\\|f\\|_\\infty < \\infty \\,\\}\n$$',
-        status: 'reviewed', basedOn: 'v0.9.2#fd63d442', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#fd63d442', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
       notes: {
         en:
@@ -964,7 +970,7 @@ MG.i18nStatements = {
         'we still have $\\|f\\|_\\infty = 0$.\n\n' +
         '⚠ $\\|f\\|_\\infty$ differs from "$\\sup |f|$": the latter can become large ' +
         'because of a single point on a null set.',
-        status: 'reviewed', basedOn: 'v0.9.2#667e877a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
+        status: 'reviewed', basedOn: 'v0.9.3#667e877a', reviewed: { by: 'bingyingzizz', date: '2026-10-16' },
       },
     },
 
@@ -995,7 +1001,7 @@ MG.i18nStatements = {
         '"homeomorphism" by "**diffeomorphism**" in the definition; that is the local ' +
         'trivialization of a smooth bundle — without it even the tangent bundle would not be a ' +
         'smooth bundle.',
-        status: 'reviewed', basedOn: 'v0.9.2#0cf9dc1d', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#0cf9dc1d', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1022,7 +1028,7 @@ MG.i18nStatements = {
         '$\\pi$ a **smooth vector bundle of rank $n$** over $M$: the local trivializations are ' +
         'the maps $\\Phi$ above, and the vector-space structure on the fibers comes from the dual ' +
         'space.',
-        status: 'reviewed', basedOn: 'v0.9.2#2b81febc', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#2b81febc', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1049,7 +1055,7 @@ MG.i18nStatements = {
         'overlaps), and they measure how twisted the bundle is.\n\n' +
         'If a Lie group $G$ acts on $F$ and the trivializations can always be chosen so that all ' +
         '$g_{\\alpha\\beta}$ take values in $G$, one says the bundle has **structure group** $G$.',
-        status: 'reviewed', basedOn: 'v0.9.2#32b532b4', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#32b532b4', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1078,7 +1084,7 @@ MG.i18nStatements = {
         'vector bundle $E\\to B$ of rank $k$, the bundle of frames is a principal ' +
         '$\\operatorname{GL}(k,\\mathbb{R})$-bundle — this is the bridge between vector bundles ' +
         'and principal bundles.',
-        status: 'reviewed', basedOn: 'v0.9.2#2fbdf8a3', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#2fbdf8a3', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1108,7 +1114,7 @@ MG.i18nStatements = {
         '$k$-linear form on an $n$-dimensional space). The direct sum ' +
         '$\\Omega^{\\bullet}(M) = \\bigoplus_{k\\ge 0}\\Omega^{k}(M)$, with the wedge product, is ' +
         'a graded algebra.',
-        status: 'reviewed', basedOn: 'v0.9.2#5038a87a', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#5038a87a', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1133,7 +1139,7 @@ MG.i18nStatements = {
         'and $\\mathrm{d}a_{I}$ is the differential of the function $a_{I}$. Hence ' +
         '"$\\mathrm{d}$ does not depend on the chart" is not an extra assumption, but the ' +
         'conclusion of this proposition.',
-        status: 'reviewed', basedOn: 'v0.9.2#3a0efaf9', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#3a0efaf9', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1155,7 +1161,7 @@ MG.i18nStatements = {
         '$(\\operatorname{id})^{\\ast} = \\operatorname{id}$.\n\n' +
         'Thus $F^{\\ast} : \\Omega^{\\bullet}(N)\\to\\Omega^{\\bullet}(M)$ is a homomorphism of ' +
         '**differential graded algebras**.',
-        status: 'reviewed', basedOn: 'v0.9.2#c76f8521', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#c76f8521', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1173,7 +1179,7 @@ MG.i18nStatements = {
         'in first-order logic with equality, which is why the axiom is often written with ' +
         '$\\leftrightarrow$. It guarantees that describing a set by a condition determines it ' +
         'uniquely, so a notation such as $\\{ x \\in A : \\varphi (x) \\}$ is never ambiguous.',
-        status: 'reviewed', basedOn: 'v0.9.2#db41f727', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#db41f727', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1185,7 +1191,7 @@ MG.i18nStatements = {
         '$$\\forall p \\forall A \\exists B \\forall x [ x \\in B \\leftrightarrow  ( x \\in A \\wedge  \\varphi(x, p) ) ]$$\n\n' +
         'By extensionality such a $B$ is unique, and one writes ' +
         '$B = \\{ x \\in A : \\varphi (x, p) \\}$. It is commonly called the "subset axiom".',
-        status: 'reviewed', basedOn: 'v0.9.2#e310c0cf', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#e310c0cf', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1196,7 +1202,7 @@ MG.i18nStatements = {
         '$$\\forall a \\forall b \\exists A \\forall x [ x \\in A \\leftrightarrow  ( x = a \\vee  x = b ) ]$$\n\n' +
         'By extensionality $A$ is unique; it is written { a, b } (the unordered pair). Taking ' +
         '$a = b$ gives the singleton { a }.',
-        status: 'reviewed', basedOn: 'v0.9.2#9aad67c7', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#9aad67c7', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1207,7 +1213,7 @@ MG.i18nStatements = {
         '$$\\forall F \\exists A \\forall x [ x \\in A \\leftrightarrow  \\exists Y ( Y \\in F \\wedge  x \\in Y ) ]$$\n\n' +
         'It is written $\\bigcup F$. Together with the pairing axiom it yields the binary union ' +
         '$a \\cup b = \\bigcup \\{ a, b \\}$.',
-        status: 'reviewed', basedOn: 'v0.9.2#ae9c0db1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#ae9c0db1', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1218,7 +1224,7 @@ MG.i18nStatements = {
         '$$\\forall A \\exists P \\forall x [ x \\in P \\leftrightarrow  x \\subseteq A ]$$\n\n' +
         'It is written $\\mathcal{P}(A)$ (or P(A)). It turns "all subsets of $A$" itself into a set ' +
         '— the power set is the basic device for building larger sets.',
-        status: 'reviewed', basedOn: 'v0.9.2#9417a12a', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#9417a12a', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1232,7 +1238,7 @@ MG.i18nStatements = {
         '$\\emptyset \\in I$ is just for looks, since $\\emptyset$ is a primitive object (see "the ' +
         'empty set"). This axiom asserts the existence of an infinite set, and is the only source ' +
         'from which the set of natural numbers $\\omega$ is built.',
-        status: 'reviewed', basedOn: 'v0.9.2#ccdf2115', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#ccdf2115', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1244,7 +1250,7 @@ MG.i18nStatements = {
         '$$\\forall p [ \\forall x\\forall y\\forall z ( \\varphi(x,y,p) \\wedge  \\varphi(x,z,p) \\to y = z ) \\to \\forall A \\exists B \\forall y ( y \\in B \\leftrightarrow  \\exists x \\in A, \\varphi(x,y,p) ) ]$$\n\n' +
         'It guarantees that "replacement" never leaves the set-theoretic universe: the image $B$ ' +
         'is a set too.',
-        status: 'reviewed', basedOn: 'v0.9.2#0835fe0f', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#0835fe0f', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1256,7 +1262,7 @@ MG.i18nStatements = {
         'An equivalent form: $\\in$ is a well-founded relation, so there is no infinite descending ' +
         'chain\n\n' +
         '$$x_0 \\ni  x_1 \\ni  x_2 \\ni  \\cdots$$',
-        status: 'reviewed', basedOn: 'v0.9.2#ccfc3b6b', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#ccfc3b6b', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1271,7 +1277,7 @@ MG.i18nStatements = {
         'non-empty sets, then there is a set $C$ with $|C \\cap X| = 1$ for every $X \\in F$.\n\n' +
         'The choice function $f$ is the device for "picking all at once"; AC asserts that such a ' +
         'simultaneous choice is always possible.',
-        status: 'reviewed', basedOn: 'v0.9.2#96318197', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#96318197', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1291,7 +1297,7 @@ MG.i18nStatements = {
 'extensionality, two sets are equal exactly when they contain each other:\\n\\n' +
 '$$A = B \\iff A \\subseteq B \\wedge  B \\subseteq A$$\\n\\n' +
 'This is the most common way to prove two sets equal: **containment both ways**.',
-        status: 'reviewed', basedOn: 'v0.9.2#6fb94ac5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#6fb94ac5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1305,7 +1311,7 @@ MG.i18nStatements = {
         '$$(a, b) = (c, d) \\iff a = c \\wedge  b = d$$\n\n' +
         'An $n$-tuple is defined recursively: ' +
         '$(a_{1}$ …$a_{n}) = ( (a_{1}$ …$a_{n-1}), a_{n} )$.',
-        status: 'reviewed', basedOn: 'v0.9.2#a830b9b2', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#a830b9b2', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1318,7 +1324,7 @@ MG.i18nStatements = {
         '- **domain** $\\operatorname{dom} R = \\{ a : \\exists b (a, b) \\in R \\}$;\n' +
         '- **range** $\\operatorname{ran} R = \\{ b : \\exists a (a, b) \\in R \\}$;\n' +
         '- **inverse** $R^{-1} = \\{ (b, a) : (a, b) \\in R \\}$.',
-        status: 'reviewed', basedOn: 'v0.9.2#ebf411a5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#ebf411a5', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1333,7 +1339,7 @@ MG.i18nStatements = {
         '$f(A) = \\{ f(a) : a \\in A \\}$.\n\n' +
         'Injective / surjective / bijective are separate nodes; a map whose values lie in a set ' +
         'of numbers has its own name, a **function**.',
-        status: 'reviewed', basedOn: 'v0.9.2#2c875827', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#2c875827', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 
@@ -1343,7 +1349,7 @@ MG.i18nStatements = {
         'Let $X$ be a set and $f : X \\to Y$ a **map**. If its values lie in a **set of numbers** — that is, ' +
         '$Y \\subseteq \\mathbb{R}$ or $Y \\subseteq \\mathbb{C}$ — then $f$ is called a ' +
         '**function**.',
-        status: 'reviewed', basedOn: 'v0.9.2#0f3927eb', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+        status: 'reviewed', basedOn: 'v0.9.3#0f3927eb', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       },
     },
 

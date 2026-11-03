@@ -17,4 +17,4 @@ refs: Milnor–Stasheff, Characteristic Classes · 示性类；Bott–Tu, Differ
 
 > 说明见 `notes/def.characteristic-class.md`
 
-引用：`def.characteristic-class`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.characteristic-class`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

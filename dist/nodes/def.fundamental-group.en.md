@@ -10,5 +10,5 @@ layer 13 · definition · cluster The Fundamental Group (`topology.fg`) · Topol
 Chinese only — see the Chinese page `nodes/def.fundamental-group.md` and `proofs/`.
 
 
-Cite: `def.fundamental-group` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.fundamental-group` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -1,4 +1,4 @@
-# Neumann Series　`thm.neumann-series`
+# Neumann series　`thm.neumann-series`
 English entry · root `../`
 [in graph](../#n=thm.neumann-series)　·　[Chinese page (authoritative)](./thm.neumann-series.md)
 
@@ -10,5 +10,5 @@ layer 16 · theorem · cluster Normed Spaces and Bounded Operators (`fa.norm`) �
 Chinese only — see the Chinese page `nodes/thm.neumann-series.md` and `proofs/`.
 
 
-Cite: `thm.neumann-series` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.neumann-series` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

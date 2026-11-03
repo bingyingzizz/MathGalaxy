@@ -10,5 +10,5 @@ layer 16 · definition · cluster Topological Abelian Groups (`cond.topo`) · Co
 Chinese only — see the Chinese page `nodes/def.topo-ab-group.md` and `proofs/`.
 
 
-Cite: `def.topo-ab-group` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.topo-ab-group` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

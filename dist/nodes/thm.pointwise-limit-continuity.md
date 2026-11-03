@@ -16,4 +16,4 @@ refs: Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）
 
 > 说明见 `notes/thm.pointwise-limit-continuity.md`
 
-引用：`thm.pointwise-limit-continuity`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.pointwise-limit-continuity`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

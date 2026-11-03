@@ -10,5 +10,5 @@ layer 18 · definition · cluster Homology Groups (`topology.homology`) · Topol
 Chinese only — see the Chinese page `nodes/def.simplicial-homology.md` and `proofs/`.
 
 
-Cite: `def.simplicial-homology` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.simplicial-homology` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

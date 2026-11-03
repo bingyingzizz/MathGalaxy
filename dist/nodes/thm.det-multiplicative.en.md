@@ -10,5 +10,5 @@ layer 14 · theorem · cluster Matrices and Determinants (`algebra.matrix`) · A
 Chinese only — see the Chinese page `nodes/thm.det-multiplicative.md` and `proofs/`.
 
 
-Cite: `thm.det-multiplicative` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.det-multiplicative` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 17 · theorem · cluster The Riemann Integral (`analysis.riemann`) · Math
 Chinese only — see the Chinese page `nodes/thm.riemann-lebesgue.md` and `proofs/`.
 
 
-Cite: `thm.riemann-lebesgue` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.riemann-lebesgue` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

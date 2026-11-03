@@ -10,5 +10,5 @@ layer 24 · theorem · cluster Multivariable Differentiation (`analysis.multivar
 Chinese only — see the Chinese page `nodes/thm.implicit-function.md` and `proofs/`.
 
 
-Cite: `thm.implicit-function` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.implicit-function` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -1,4 +1,4 @@
-# Polarization Identity　`thm.polarization`
+# polarization identity　`thm.polarization`
 English entry · root `../`
 [in graph](../#n=thm.polarization)　·　[Chinese page (authoritative)](./thm.polarization.md)
 
@@ -10,5 +10,5 @@ layer 16 · theorem · cluster Hilbert Spaces (`fa.hilbert`) · Functional Analy
 Chinese only — see the Chinese page `nodes/thm.polarization.md` and `proofs/`.
 
 
-Cite: `thm.polarization` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.polarization` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -17,4 +17,4 @@ refs: Tu, Differential Geometry（⚠️ 章节未核实，只记书名）· 配
 
 > 说明见 `notes/def.associated-bundle.md`
 
-引用：`def.associated-bundle`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.associated-bundle`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

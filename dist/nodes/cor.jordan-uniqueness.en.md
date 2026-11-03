@@ -10,5 +10,5 @@ layer 18 · corollary · cluster Eigenvalues and Jordan Form (`algebra.spectral`
 Chinese only — see the Chinese page `nodes/cor.jordan-uniqueness.md` and `proofs/`.
 
 
-Cite: `cor.jordan-uniqueness` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `cor.jordan-uniqueness` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

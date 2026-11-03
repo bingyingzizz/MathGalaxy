@@ -1,4 +1,4 @@
-# Schauder Basis　`def.schauder-basis`
+# Schauder basis　`def.schauder-basis`
 English entry · root `../`
 [in graph](../#n=def.schauder-basis)　·　[Chinese page (authoritative)](./def.schauder-basis.md)
 
@@ -10,5 +10,5 @@ layer 12 · definition · cluster Normed Spaces and Bounded Operators (`fa.norm`
 Chinese only — see the Chinese page `nodes/def.schauder-basis.md` and `proofs/`.
 
 
-Cite: `def.schauder-basis` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.schauder-basis` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

@@ -10,5 +10,5 @@ layer 17 · theorem · cluster Matrix Factorizations and Least Squares (`algebra
 Chinese only — see the Chinese page `nodes/thm.least-squares.md` and `proofs/`.
 
 
-Cite: `thm.least-squares` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.least-squares` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

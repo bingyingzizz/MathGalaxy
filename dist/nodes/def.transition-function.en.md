@@ -10,5 +10,5 @@ layer 11 · definition · cluster Manifolds and Vector Bundles (`diffgeom.manifo
 Chinese only — see the Chinese page `nodes/def.transition-function.md` and `proofs/`.
 
 
-Cite: `def.transition-function` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.transition-function` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

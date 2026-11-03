@@ -10,5 +10,5 @@ layer 14 · definition · cluster Multilinear Algebra and Tensors (`algebra.mult
 Chinese only — see the Chinese page `nodes/def.congruent-matrices.md` and `proofs/`.
 
 
-Cite: `def.congruent-matrices` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.congruent-matrices` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

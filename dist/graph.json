@@ -2,11 +2,11 @@
  "meta": {
   "name": "数学星图 MathGalaxy",
   "schema": "mathgalaxy/v1",
-  "version": "v0.9.2",
+  "version": "v0.9.3",
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T06:48:59.876Z",
+  "generated": "2026-11-03T06:58:04.290Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
@@ -2667,7 +2667,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2681,7 +2681,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#db41f727"
+      "statement": "v0.9.3#db41f727"
      }
     }
    },
@@ -2714,7 +2714,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2728,7 +2728,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#e310c0cf"
+      "statement": "v0.9.3#e310c0cf"
      }
     }
    },
@@ -2761,7 +2761,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2775,7 +2775,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#9aad67c7"
+      "statement": "v0.9.3#9aad67c7"
      }
     }
    },
@@ -2806,7 +2806,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2820,7 +2820,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#ae9c0db1"
+      "statement": "v0.9.3#ae9c0db1"
      }
     }
    },
@@ -2851,7 +2851,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2865,7 +2865,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#9417a12a"
+      "statement": "v0.9.3#9417a12a"
      }
     }
    },
@@ -2897,7 +2897,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2911,7 +2911,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#ccdf2115"
+      "statement": "v0.9.3#ccdf2115"
      }
     }
    },
@@ -2944,7 +2944,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -2958,7 +2958,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#0835fe0f"
+      "statement": "v0.9.3#0835fe0f"
      }
     }
    },
@@ -2991,7 +2991,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3005,7 +3005,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#ccfc3b6b"
+      "statement": "v0.9.3#ccfc3b6b"
      }
     }
    },
@@ -3038,7 +3038,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3052,7 +3052,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#96318197"
+      "statement": "v0.9.3#96318197"
      }
     }
    },
@@ -3091,7 +3091,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3105,7 +3105,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#6fb94ac5"
+      "statement": "v0.9.3#6fb94ac5"
      }
     }
    },
@@ -3137,7 +3137,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3151,7 +3151,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#a830b9b2"
+      "statement": "v0.9.3#a830b9b2"
      }
     }
    },
@@ -3183,7 +3183,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3197,7 +3197,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#ebf411a5"
+      "statement": "v0.9.3#ebf411a5"
      }
     }
    },
@@ -3229,7 +3229,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3243,7 +3243,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#2c875827"
+      "statement": "v0.9.3#2c875827"
      }
     }
    },
@@ -3276,7 +3276,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -3290,7 +3290,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#0f3927eb"
+      "statement": "v0.9.3#0f3927eb"
      }
     }
    },
@@ -3762,7 +3762,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -3782,9 +3782,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#5ba4f775",
-      "statement": "v0.9.2#f0e20930",
-      "notes": "v0.9.2#bf8c5d7a"
+      "abstract": "v0.9.3#5ba4f775",
+      "statement": "v0.9.3#f0e20930",
+      "notes": "v0.9.3#bf8c5d7a"
      }
     }
    },
@@ -3824,7 +3824,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -3844,9 +3844,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#bb7411b4",
-      "statement": "v0.9.2#88c083ff",
-      "notes": "v0.9.2#4e157a1c"
+      "abstract": "v0.9.3#bb7411b4",
+      "statement": "v0.9.3#88c083ff",
+      "notes": "v0.9.3#4e157a1c"
      }
     }
    },
@@ -3888,7 +3888,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -3908,9 +3908,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#dece7db3",
-      "statement": "v0.9.2#317a7f66",
-      "notes": "v0.9.2#53809b5a"
+      "abstract": "v0.9.3#dece7db3",
+      "statement": "v0.9.3#317a7f66",
+      "notes": "v0.9.3#53809b5a"
      }
     }
    },
@@ -4111,11 +4111,11 @@
    "title_en": "metric space",
    "abstract_en": "A metric space is a pair $(X, d)$ with $d : X \\times X \\to [0, +\\infty)$ satisfying $d(x,y) = 0 \\iff x = y$, symmetry and the triangle inequality; open balls $B(x,r) = \\{y : d(x,y) < r\\}$ generate a topology, and they form a base for it. The point of the definition here is the split that follows: compactness and closedness use only the open sets, while completeness and total boundedness use $d$. Completeness is genuinely not topological — $\\mathbb{R}$ and $(0,1)$ are homeomorphic but only the first is complete.",
    "statement_en": "A **metric space** is a pair (X, d): $X$ is a set and $d : X \\times X \\to [0, +\\infty )$ is a **metric** on $X$, satisfying\n\n- **non-degeneracy**: $d(x, y) = 0 \\iff x = y$\n- **symmetry**: $d(x, y) = d(y, x)$\n- **triangle inequality**: $d(x, z) \\le d(x, y) + d(y, z)$\n\nFrom $d$ one defines the **open balls** $B(x, r) = \\{ y \\in X : d(x, y) < r \\}$, and declares $U \\subseteq X$ to be open $\\iff U$ is a union of open balls. This puts a topology on $X$.\n\nGiven $\\varepsilon > 0$, a set $D \\subseteq X$ is called an **$\\varepsilon$-net** if $\\forall x \\in X, \\exists y \\in D : d(x, y) < \\varepsilon$.",
-   "notes_en": "The open balls form a **base** for this topology. Every metric space is first countable and normal (hence Hausdorff).\n\nThe properties that follow fall into two classes: **compactness / closedness** depend only on the open sets and are **topological**; **completeness / total boundedness** use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval (0, 1) are homeomorphic, yet only the first is complete.",
+   "notes_en": "The open balls form a **base** for this topology. Every metric space is first countable and normal (hence Hausdorff).\n\nThe properties that follow fall into two classes: **compactness / closedness** depend only on the open sets and are **topological**; **completeness / total boundedness** use $d$ and are **metric**. This dividing line is the point of the whole cluster.\n\n⚠ Completeness is **not** a topological property: $\\mathbb{R}$ and the open interval (0, 1) are homeomorphic, yet only the first is complete.**Only one of the three axioms is \"hard\"** (they are usually listed side by side, but they carry very different weight):\n\n- **Non-degeneracy** $d(x,y)=0 \\iff x=y$: **read it as two halves.** \"$x=y \\implies d(x,y)=0$\" is nearly free (often built into how $d$ is given); \"$d(x,y)=0 \\implies x=y$\" is the half with content (weakening it gives a **pseudometric**).\n- **Symmetry**: **can be dropped** \\u2014 what is left is a **quasi-metric** (e.g. a \"one-way shortest path\"); the topology is still definable, but balls are asymmetric (the ball for $d$ and the ball for the reversed quasi-metric differ).\n- **Triangle inequality**: **the only indispensable one.** Without it the open balls no longer form a base for a topology \\u2014 the concrete failure is that an intersection stops containing a ball, which is precisely what the definition of \"open\" uses.\n\n\\u26A0 **\"$d$ takes values in $[0,+\\infty)$ rather than $[0,+\\infty]$\"**: allowing $+\\infty$ wrecks the notion of a connected component (the discrete metric $d \\equiv +\\infty$ misbehaves), so the standard definition takes finite values; if a map between metric spaces needs $+\\infty$, say so explicitly.",
    "translations": {
     "en": {
-     "status": "stale",
-     "version": "v0.9.2",
+     "status": "reviewed",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -4128,19 +4128,16 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
+      "abstract": "reviewed",
       "statement": "reviewed",
-      "notes": "stale",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract",
-      "notes"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#00da69f8",
-      "statement": "v0.9.2#31649b03",
-      "notes": "v0.9.2#a1cebdb4"
+      "abstract": "v0.9.3#15dc0086",
+      "statement": "v0.9.3#31649b03",
+      "notes": "v0.9.3#8cd35552"
      }
     }
    },
@@ -4336,12 +4333,12 @@
    "label_en": "Heine-Borel",
    "title_en": "Heine-Borel",
    "abstract_en": "In a metric space the following are equivalent: compact, sequentially compact, and complete together with totally bounded. The skeleton lives in the implications: compact implies sequentially compact; sequentially compact implies totally bounded (the one place dependent choice is used) and complete; sequentially compact implies compact by the \"bad ball\" argument; complete and totally bounded implies sequentially compact by diagonalisation. In general topological spaces only the first implication survives — sequential compactness is a metric-space luxury.",
-   "statement_en": "Let $X$ be a metric space with metric $d$. Then the following three conditions are **equivalent**:\n\n- (a) $X$ is **compact**: every open cover has a finite subcover;\n- (b) $X$ is **sequentially compact**: every sequence has a subsequence converging in $X$;\n- (c) $X$ is **complete and totally bounded**.\n\nThat is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded.",
-   "notes_en": "The whole logical skeleton is in the arrows (click an arrow to see its proof):\n\n- compact $\\implies$ sequentially compact\n- sequentially compact $\\implies$ totally bounded　(the **only** step in this cluster that genuinely uses a choice principle — DC)\n- sequentially compact $\\implies$ complete\n- sequentially compact $\\implies$ compact　(the \"bad balls\" argument; it uses total boundedness only, and no choice)\n- compact $\\implies$ complete, compact $\\implies$ totally bounded\n- complete + totally bounded $\\implies$ sequentially compact　(the diagonal argument; again no choice)\n\nSo \"sequentially compact $\\implies$ totally bounded $\\implies$ compact\" and \"compact $\\implies$ sequentially compact\" close the circle, and the three notions agree.\n\n⚠ In a general topological space only \"compact $\\implies$ sequentially compact\" holds — **the converse fails**: sequential compactness is a piece of luck peculiar to metric spaces.",
+   "statement_en": "Let $X$ be a metric space with metric $d$. Then the following three conditions are **equivalent**:\n\n- (a) $X$ is **compact**: every open cover has a finite subcover;\n- (b) $X$ is **sequentially compact**: every sequence has a subsequence converging in $X$;\n- (c) $X$ is **complete and totally bounded**.\n\nThat is, $X$ compact $\\iff$ $X$ sequentially compact $\\iff$ $X$ complete $+$ totally bounded.That is, compactness, sequential compactness, and completeness together with total boundedness are all equivalent.",
+   "notes_en": "The whole logical skeleton is in the arrows (click an arrow to see its proof):\n\n- compact $\\implies$ sequentially compact\n- sequentially compact $\\implies$ totally bounded　(the **only** step in this cluster that genuinely uses a choice principle — DC)\n- sequentially compact $\\implies$ complete\n- sequentially compact $\\implies$ compact　(the \"bad balls\" argument; it uses total boundedness only, and no choice)\n- compact $\\implies$ complete, compact $\\implies$ totally bounded\n- complete + totally bounded $\\implies$ sequentially compact　(the diagonal argument; again no choice)\n\nSo \"sequentially compact $\\implies$ totally bounded $\\implies$ compact\" and \"compact $\\implies$ sequentially compact\" close the circle, and the three notions agree.\n\n⚠ In a general topological space only \"compact $\\implies$ sequentially compact\" holds — **the converse fails**: sequential compactness is a piece of luck peculiar to metric spaces.**What each direction uses, and whether any extra hypothesis is needed** (this list *is* the content of the equivalence):\n\n- (a) $\\implies$ (b): **no hypothesis needed.** Pass to a finite subcover and pick, by pigeonhole, a subsequence lying inside one member of the cover (Lebesgue number, or a direct induction), then take a convergent subsequence inside that member.\n- (a) $\\implies$ (c), \"complete\": **no extra hypothesis.** A Cauchy sequence with a convergent subsequence converges, and to the same point.\n- (a) $\\implies$ (c), \"totally bounded\": **no extra hypothesis.** Cover by all balls of radius $\\varepsilon$; a finite subcover is a finite $\\varepsilon$-net.\n- (b) $\\implies$ (a): **uses only total boundedness, not the axiom of choice** (the \"bad ball\" argument: if no finite cover existed, one would build recursively a sequence with pairwise distances $\\ge \\varepsilon$, which has no convergent subsequence).\n- (b) $\\implies$ (c), \"complete\": **no extra hypothesis** (the limit of the convergent subsequence is the limit of the Cauchy sequence).\n- (b) $\\implies$ (c), \"totally bounded\": **this step really uses countable choice (DC)** \\u2014 the only place in the whole proof. For each $n$ one picks a $1/n$-ball containing infinitely many terms, and shrinks layer by layer.\n- (c) $\\implies$ (b): **no choice needed** (diagonal argument: using $1/n$-nets, keep at each layer a ball with infinitely many terms, take the diagonal subsequence \\u2014 it is Cauchy \\u2014 and converge by completeness).",
    "translations": {
     "en": {
-     "status": "stale",
-     "version": "v0.9.2",
+     "status": "reviewed",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -4354,20 +4351,16 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
-      "statement": "stale",
-      "notes": "stale",
+      "abstract": "reviewed",
+      "statement": "reviewed",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract",
-      "statement",
-      "notes"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#90481f72",
-      "statement": "v0.9.2#8c5b3033",
-      "notes": "v0.9.2#8e05fc76"
+      "abstract": "v0.9.3#7adc980c",
+      "statement": "v0.9.3#b828d710",
+      "notes": "v0.9.3#0c5aa523"
      }
     }
    },
@@ -4735,11 +4728,11 @@
    "title_en": "when a ring is a sigma-ring",
    "abstract_en": "For a ring $\\mathfrak{A}$ of sets, the following are equivalent: $\\mathfrak{A}$ is a $\\sigma$-ring, $\\mathfrak{A}$ is a monotone class, and $\\mathfrak{A}$ is closed under countable disjoint unions. The hypothesis that $\\mathfrak{A}$ is a ring cannot be dropped: a monotone class need not be closed under finite unions. This equivalence is the technical core of the monotone class theorem, since it reduces \"true for the $\\sigma$-algebra\" to \"check a ring, then take monotone limits\".",
    "statement_en": "Let $\\mathfrak{A}$ be a **ring**. Then the following three conditions are equivalent:\n\n1. $\\mathfrak{A}$ is a $\\sigma$-ring;\n2. $\\mathfrak{A}$ is a monotone class;\n3. $\\mathfrak{A}$ is closed under countable disjoint unions.",
-   "notes_en": "Note that the hypothesis \"$\\mathfrak{A}$ is a ring\" cannot be dropped — a monotone class is in general not closed under finite unions, so being a monotone class by itself does not imply being a $\\sigma$-ring.\n\nThis theorem is the technical core of the monotone class theorem: it is precisely what lets one reduce \"true for all $\\sigma$-algebras\" to \"first verify it on a ring, then pass to monotone limits\".",
+   "notes_en": "Note that the hypothesis \"$\\mathfrak{A}$ is a ring\" cannot be dropped — a monotone class is in general not closed under finite unions, so being a monotone class by itself does not imply being a $\\sigma$-ring.\n\nThis theorem is the technical core of the monotone class theorem: it is precisely what lets one reduce \"true for all $\\sigma$-algebras\" to \"first verify it on a ring, then pass to monotone limits\".**Which hypothesis each direction uses** (all three conditions are purely about set operations, but the ring hypothesis cannot be dropped):\n\n- (1) $\\implies$ (3): a countable disjoint union is a special case of a countable union \\u2014 free.\n- (1) $\\implies$ (2): increasing unions are immediate from the definition; for decreasing intersections take the first term minus the successive differences as a countable union (the whole set need not belong to the family).\n- (2) $\\implies$ (1): the ring gives finite unions, and the monotone class keeps their increasing limit inside the family.\n- (3) $\\implies$ (1): set $B_n = A_n \\setminus \\bigcup_{j<n} A_j$; the ring guarantees every $B_n$ lies in the family, and closure under disjoint unions finishes.\n- The ring hypothesis cannot be dropped: on a two-point set, the family of the two singletons is a monotone class, yet it does not contain their union.",
    "translations": {
     "en": {
-     "status": "stale",
-     "version": "v0.9.2",
+     "status": "reviewed",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -4752,19 +4745,16 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
+      "abstract": "reviewed",
       "statement": "reviewed",
-      "notes": "stale",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract",
-      "notes"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#a6257d0e",
-      "statement": "v0.9.2#5d3aa74a",
-      "notes": "v0.9.2#ce1b4b57"
+      "abstract": "v0.9.3#1c8fd440",
+      "statement": "v0.9.3#5d3aa74a",
+      "notes": "v0.9.3#a3966daf"
      }
     }
    },
@@ -4847,7 +4837,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -4867,9 +4857,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#d6fb12ae",
-      "statement": "v0.9.2#48f20867",
-      "notes": "v0.9.2#42f670ae"
+      "abstract": "v0.9.3#d6fb12ae",
+      "statement": "v0.9.3#48f20867",
+      "notes": "v0.9.3#42f670ae"
      }
     }
    },
@@ -5445,11 +5435,11 @@
    "title_en": "outer measure",
    "abstract_en": "An outer measure on a non-empty set $X$ is a function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ with $\\mu^*(\\emptyset) = 0$ that is monotone and countably subadditive. It is defined on every subset, and the price is exactly that subadditivity: it is not a measure. Carathéodory's idea is to single out the sets on which $\\mu^*$ is additive, and there it becomes a genuine measure. Lebesgue's original construction, $\\mu^*(A) = \\inf \\sum (b_n - a_n)$ over countable interval covers, is the prototypical example.",
    "statement_en": "Let $X$ be a non-empty set. A function $\\mu^* : \\mathcal{P}(X) \\to [0, +\\infty]$ is an **outer measure** iff\n\n- $\\mu^*(\\emptyset) = 0$\n- **Monotone**: $A \\subseteq B \\implies \\mu^*(A) \\le \\mu^*(B)$\n- **Countably subadditive**: $\\mu^*( \\bigcup_{j=1}^{\\infty} A_j ) \\le \\sum_{j=1}^{\\infty} \\mu^*(A_j)$",
-   "notes_en": "An outer measure is defined on **all** subsets ($\\mathcal{P}(X)$, not on some $\\sigma$-algebra); the price is that it only has **sub**additivity.\n\nSo an outer measure is not a measure — it is too large even to be additive on $\\mathcal{P}(X)$. Carathéodory's idea is to single out the sets that \"behave well\" (the next definition); on those the outer measure does become a genuine measure.\n\nWhat Lebesgue first constructed was an outer measure: $\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.",
+   "notes_en": "An outer measure is defined on **all** subsets ($\\mathcal{P}(X)$, not on some $\\sigma$-algebra); the price is that it only has **sub**additivity.\n\nSo an outer measure is not a measure — it is too large even to be additive on $\\mathcal{P}(X)$. Carathéodory's idea is to single out the sets that \"behave well\" (the next definition); on those the outer measure does become a genuine measure.\n\nWhat Lebesgue first constructed was an outer measure: $\\mu^{*}(A) = \\inf\\{ \\sum (b_{n} - a_{n}) : A \\subseteq \\bigcup (a_{n}, b_{n}) \\}$.**Which of the three conditions is \"hard\"** (the three are asymmetric \\u2014 one is normalisation, one is almost free, one is a real condition):\n\n- $\\mu^{*}(\\emptyset) = 0$: **normalisation**, there only so that $0 \\le \\mu^{*}$ below is meaningful (otherwise the constant $+\\infty$ would satisfy the other two).\n- **Monotonicity**: **almost free**, but deriving it uses countable subadditivity: $B = A \\cup (B \\setminus A)$ $\\implies$ $\\mu^{*}(B) \\le \\mu^{*}(A) + \\mu^{*}(B\\setminus A)$; monotonicity is usually listed as an axiom to save that step, and in a concrete construction (Carath\\u00E9odory) it is verified directly.\n- **Countable subadditivity**: **this is the real condition**, the only one with content \\u2014 it ties \"the size of one set\" to \"countable operations\". \\u26A0 Note that it is an **inequality**: an outer measure is **not** additive (additivity on disjoint unions is what makes it a measure, and that is an extra conclusion on Carath\\u00E9odory-measurable sets).\n\n**Two distinctions that must stay separate**:\n\n- **An outer measure is defined on $\\mathcal{P}(X)$** (all subsets), whereas a measure (`def.measure`) is defined only on a $\\sigma$-algebra \\u2014 that is the whole point of an outer measure as a **construction device**: first put a crude \"size\" on all subsets, then single out the subsets on which it is additive.\n- **Monotone plus countably subadditive does not say \"the value on a countable union is the limit\"**: on increasing unions an outer measure only guarantees $\\mu^{*}(\\bigcup A_{n}) \\le \\lim \\mu^{*}(A_{n})$; equality needs continuity from below, hence measurability \\u2014 exactly what the Carath\\u00E9odory condition supplies.\n\n\\u26A0 Notation: the star in $\\mu^{*}$ means \"defined on $\\mathcal{P}(X)$\", not \"dual of something\". Some books write $m^{*}$ or $\\nu^{*}$.",
    "translations": {
     "en": {
-     "status": "stale",
-     "version": "v0.9.2",
+     "status": "reviewed",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -5462,19 +5452,16 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
+      "abstract": "reviewed",
       "statement": "reviewed",
-      "notes": "stale",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract",
-      "notes"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#1d1a972f",
-      "statement": "v0.9.2#24d3359e",
-      "notes": "v0.9.2#32c28e62"
+      "abstract": "v0.9.3#57c392f3",
+      "statement": "v0.9.3#24d3359e",
+      "notes": "v0.9.3#63a085ee"
      }
     }
    },
@@ -14604,7 +14591,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -14624,9 +14611,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#1b243432",
-      "statement": "v0.9.2#174abecd",
-      "notes": "v0.9.2#15d8cb14"
+      "abstract": "v0.9.3#1b243432",
+      "statement": "v0.9.3#174abecd",
+      "notes": "v0.9.3#15d8cb14"
      }
     }
    },
@@ -14667,7 +14654,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -14687,9 +14674,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#0a85dee1",
-      "statement": "v0.9.2#ad479275",
-      "notes": "v0.9.2#8645e773"
+      "abstract": "v0.9.3#0a85dee1",
+      "statement": "v0.9.3#ad479275",
+      "notes": "v0.9.3#8645e773"
      }
     }
    },
@@ -14723,7 +14710,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -14743,9 +14730,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#56ffe956",
-      "statement": "v0.9.2#2db4532b",
-      "notes": "v0.9.2#bd705c8a"
+      "abstract": "v0.9.3#56ffe956",
+      "statement": "v0.9.3#2db4532b",
+      "notes": "v0.9.3#bd705c8a"
      }
     }
    },
@@ -18577,7 +18564,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -18591,7 +18578,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#46d84e3a"
+      "abstract": "v0.9.3#46d84e3a"
      }
     }
    },
@@ -20247,7 +20234,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -20261,7 +20248,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#f50628dc"
+      "abstract": "v0.9.3#f50628dc"
      }
     }
    },
@@ -20728,7 +20715,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -20742,7 +20729,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#8fbaf65c"
+      "abstract": "v0.9.3#8fbaf65c"
      }
     }
    },
@@ -21863,7 +21850,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -21883,9 +21870,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#38afc3f7",
-      "statement": "v0.9.2#bde1a964",
-      "notes": "v0.9.2#e5f47458"
+      "abstract": "v0.9.3#38afc3f7",
+      "statement": "v0.9.3#bde1a964",
+      "notes": "v0.9.3#e5f47458"
      }
     }
    },
@@ -23289,7 +23276,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -23303,7 +23290,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#06e55f52"
+      "abstract": "v0.9.3#06e55f52"
      }
     }
    },
@@ -25769,7 +25756,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -25783,7 +25770,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#9a6ce556"
+      "abstract": "v0.9.3#9a6ce556"
      }
     }
    },
@@ -26129,7 +26116,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -26143,7 +26130,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#0f5e4425"
+      "abstract": "v0.9.3#0f5e4425"
      }
     }
    },
@@ -27784,7 +27771,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -27804,9 +27791,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#a792035c",
-      "statement": "v0.9.2#def659f2",
-      "notes": "v0.9.2#cd8d3dd5"
+      "abstract": "v0.9.3#a792035c",
+      "statement": "v0.9.3#def659f2",
+      "notes": "v0.9.3#cd8d3dd5"
      }
     }
    },
@@ -28002,7 +27989,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -28016,7 +28003,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#bb2f0476"
+      "abstract": "v0.9.3#bb2f0476"
      }
     }
    },
@@ -32076,7 +32063,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -32096,9 +32083,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#aa637905",
-      "statement": "v0.9.2#2fff7b16",
-      "notes": "v0.9.2#e730d43c"
+      "abstract": "v0.9.3#aa637905",
+      "statement": "v0.9.3#2fff7b16",
+      "notes": "v0.9.3#e730d43c"
      }
     }
    },
@@ -32340,7 +32327,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32354,7 +32341,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#5038a87a"
+      "statement": "v0.9.3#5038a87a"
      }
     }
    },
@@ -32389,7 +32376,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32403,7 +32390,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#3a0efaf9"
+      "statement": "v0.9.3#3a0efaf9"
      }
     }
    },
@@ -32438,7 +32425,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32452,7 +32439,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#c76f8521"
+      "statement": "v0.9.3#c76f8521"
      }
     }
    },
@@ -32487,7 +32474,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32501,7 +32488,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#2b81febc"
+      "statement": "v0.9.3#2b81febc"
      }
     }
    },
@@ -32536,7 +32523,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32550,7 +32537,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#0cf9dc1d"
+      "statement": "v0.9.3#0cf9dc1d"
      }
     }
    },
@@ -32586,7 +32573,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32600,7 +32587,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#32b532b4"
+      "statement": "v0.9.3#32b532b4"
      }
     }
    },
@@ -32635,7 +32622,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "statement",
       "name"
@@ -32649,7 +32636,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "statement": "v0.9.2#2fbdf8a3"
+      "statement": "v0.9.3#2fbdf8a3"
      }
     }
    },
@@ -33491,8 +33478,8 @@
    "type": "theorem",
    "label": "惯性定理",
    "title": "Sylvester 惯性定理：实对称型由惯性指数完全分类",
-   "label_en": "Sylvester's Law of Inertia",
-   "title_en": "Sylvester's Law of Inertia",
+   "label_en": "Sylvester",
+   "title_en": "Sylvester",
    "translations": {
     "en": {
      "status": "derived",
@@ -33534,7 +33521,7 @@
    "type": "theorem",
    "label": "Witt 消去定理",
    "title": "Witt 消去：非退化型的分解是唯一的",
-   "label_en": "Witt Cancellation",
+   "label_en": "Witt Cancellation Theorem",
    "title_en": "Witt Cancellation Theorem",
    "translations": {
     "en": {
@@ -33662,7 +33649,7 @@
    "type": "definition",
    "label": "幂零",
    "title": "幂零算子与幂零矩阵",
-   "label_en": "Nilpotent",
+   "label_en": "Nilpotent Operator",
    "title_en": "Nilpotent Operator",
    "translations": {
     "en": {
@@ -33705,7 +33692,7 @@
    "type": "definition",
    "label": "幂等",
    "title": "幂等算子与投影",
-   "label_en": "Idempotent",
+   "label_en": "Idempotent Operator",
    "title_en": "Idempotent Operator",
    "translations": {
     "en": {
@@ -33748,7 +33735,7 @@
    "type": "definition",
    "label": "正交相似",
    "title": "正交相似与酉相似",
-   "label_en": "Orthogonally Similar",
+   "label_en": "Orthogonally Similar Matrices",
    "title_en": "Orthogonally Similar Matrices",
    "translations": {
     "en": {
@@ -33960,7 +33947,7 @@
    "type": "definition",
    "label": "伪逆",
    "title": "Moore–Penrose 伪逆：不可逆矩阵的「逆」",
-   "label_en": "Pseudoinverse",
+   "label_en": "Moore-Penrose Pseudoinverse",
    "title_en": "Moore-Penrose Pseudoinverse",
    "translations": {
     "en": {
@@ -34089,7 +34076,7 @@
    "type": "theorem",
    "label": "辛标准形定理",
    "title": "辛标准形定理：维数必偶，且总有辛基",
-   "label_en": "Symplectic Normal Form",
+   "label_en": "Symplectic Normal Form Theorem",
    "title_en": "Symplectic Normal Form Theorem",
    "translations": {
     "en": {
@@ -34175,7 +34162,6 @@
    "type": "definition",
    "label": "辛矩阵与辛群",
    "title": "辛矩阵与辛群 $\\mathrm{Sp}(2n)$",
-   "label_en": "Symplectic Matrix",
    "title_en": "Symplectic Matrix and Symplectic Group",
    "translations": {
     "en": {
@@ -34908,7 +34894,7 @@
    "type": "definition",
    "label": "闭链",
    "title": "闭链与上闭链：被微分杀掉的元素",
-   "label_en": "Cycles",
+   "label_en": "Cycles and Cocycles",
    "title_en": "Cycles and Cocycles",
    "translations": {
     "en": {
@@ -34951,7 +34937,7 @@
    "type": "definition",
    "label": "边缘",
    "title": "边缘与上边缘：被微分打出来的元素",
-   "label_en": "Boundaries",
+   "label_en": "Boundaries and Coboundaries",
    "title_en": "Boundaries and Coboundaries",
    "translations": {
     "en": {
@@ -35000,7 +34986,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -35014,7 +35000,7 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#361b9f22"
+      "abstract": "v0.9.3#361b9f22"
      }
     }
    },
@@ -35259,7 +35245,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -35279,9 +35265,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#0d075471",
-      "statement": "v0.9.2#fd63d442",
-      "notes": "v0.9.2#667e877a"
+      "abstract": "v0.9.3#0d075471",
+      "statement": "v0.9.3#fd63d442",
+      "notes": "v0.9.3#667e877a"
      }
     }
    },
@@ -35893,7 +35879,7 @@
    "type": "definition",
    "label": "域的特征",
    "title": "域的特征：$1$ 加多少次回到 $0$",
-   "label_en": "Characteristic",
+   "label_en": "Characteristic of a Field",
    "title_en": "Characteristic of a Field",
    "translations": {
     "en": {
@@ -35936,8 +35922,8 @@
    "type": "definition",
    "label": "范数",
    "title": "范数（赋范空间）",
-   "label_en": "Norm",
-   "title_en": "Norm on a Vector Space",
+   "label_en": "norm and normed space",
+   "title_en": "norm and normed space",
    "translations": {
     "en": {
      "status": "derived",
@@ -35977,8 +35963,8 @@
    "type": "proposition",
    "label": "范数诱导的距离",
    "title": "范数诱导的距离：平移不变 + 齐次",
-   "label_en": "Norm-Induced Metric",
-   "title_en": "Metric Induced by a Norm",
+   "label_en": "the metric induced by a norm",
+   "title_en": "the metric induced by a norm",
    "translations": {
     "en": {
      "status": "derived",
@@ -36017,8 +36003,8 @@
    "type": "definition",
    "label": "等价范数",
    "title": "强弱范数与等价范数",
-   "label_en": "Equivalent Norms",
-   "title_en": "Equivalent Norms",
+   "label_en": "equivalent norms",
+   "title_en": "equivalent norms",
    "translations": {
     "en": {
      "status": "derived",
@@ -36057,8 +36043,7 @@
    "type": "theorem",
    "label": "有限维范数等价",
    "title": "有限维空间上所有范数等价",
-   "label_en": "Finite-Dimensional Norm Equivalence",
-   "title_en": "All Norms Are Equivalent in Finite Dimension",
+   "title_en": "all norms are equivalent in finite dimension",
    "translations": {
     "en": {
      "status": "derived",
@@ -36097,8 +36082,8 @@
    "type": "lemma",
    "label": "几乎正交引理",
    "title": "闭真子空间外的单位向量（Riesz 引理）",
-   "label_en": "Almost Orthogonal Lemma",
-   "title_en": "Riesz's Almost Orthogonal Lemma",
+   "label_en": "almost orthogonal lemma",
+   "title_en": "almost orthogonal lemma",
    "translations": {
     "en": {
      "status": "derived",
@@ -36137,8 +36122,7 @@
    "type": "theorem",
    "label": "单位球紧 ⟺ 有限维",
    "title": "闭单位球紧 $\\iff$ 有限维（Riesz）",
-   "label_en": "Unit Ball Compact iff Finite-Dimensional",
-   "title_en": "Closed Unit Ball Is Compact iff Finite-Dimensional",
+   "title_en": "the closed unit ball is compact iff finite dimensional",
    "translations": {
     "en": {
      "status": "derived",
@@ -36178,8 +36162,7 @@
    "type": "definition",
    "label": "有界线性算子",
    "title": "有界线性算子与算子范数",
-   "label_en": "Bounded Operator",
-   "title_en": "Bounded Linear Operator and Operator Norm",
+   "title_en": "bounded operator and operator norm",
    "translations": {
     "en": {
      "status": "derived",
@@ -36218,8 +36201,7 @@
    "type": "theorem",
    "label": "连续 ⟺ 有界",
    "title": "线性映射连续 $\\iff$ 有界",
-   "label_en": "Continuous iff Bounded",
-   "title_en": "A Linear Map Is Continuous iff Bounded",
+   "title_en": "a linear map is continuous iff bounded",
    "translations": {
     "en": {
      "status": "derived",
@@ -36258,8 +36240,7 @@
    "type": "proposition",
    "label": "算子乘法的范数不等式",
    "title": "复合与算子范数：$\\|vu\\| \\le \\|v\\|\\,\\|u\\|$",
-   "label_en": "Operator Product Inequality",
-   "title_en": "Norm Inequality for Operator Products",
+   "title_en": "submultiplicativity of the operator norm",
    "translations": {
     "en": {
      "status": "derived",
@@ -36298,8 +36279,8 @@
    "type": "definition",
    "label": "Banach 代数",
    "title": "Banach 代数",
-   "label_en": "Banach Algebra",
-   "title_en": "Banach Algebra",
+   "label_en": "Banach algebra",
+   "title_en": "Banach algebra",
    "translations": {
     "en": {
      "status": "derived",
@@ -36337,8 +36318,7 @@
    "type": "theorem",
    "label": "B(E,F) 完备",
    "title": "$F$ 完备 $\\implies$ $B(E,F)$ 是 Banach 空间",
-   "label_en": "B(E,F) Is Banach",
-   "title_en": "B(E,F) Is Complete When F Is",
+   "title_en": "bounded operators form a Banach space",
    "translations": {
     "en": {
      "status": "derived",
@@ -36377,8 +36357,8 @@
    "type": "definition",
    "label": "连续对偶空间",
    "title": "对偶空间 $E^*$（连续对偶）",
-   "label_en": "Continuous Dual",
-   "title_en": "Continuous Dual Space",
+   "label_en": "the continuous dual space",
+   "title_en": "the continuous dual space",
    "translations": {
     "en": {
      "status": "derived",
@@ -36417,8 +36397,7 @@
    "type": "theorem",
    "label": "有界算子的延拓",
    "title": "稠密子空间上的有界算子唯一延拓",
-   "label_en": "Bounded Operator Extension",
-   "title_en": "Extension of a Bounded Operator from a Dense Subspace",
+   "title_en": "extension of bounded operators from a dense subspace",
    "translations": {
     "en": {
      "status": "derived",
@@ -36457,8 +36436,8 @@
    "type": "theorem",
    "label": "Neumann 级数",
    "title": "$\\|u\\| < 1 \\implies I - u$ 可逆（Neumann 级数）",
-   "label_en": "Neumann Series",
-   "title_en": "Neumann Series",
+   "label_en": "Neumann series",
+   "title_en": "Neumann series",
    "translations": {
     "en": {
      "status": "derived",
@@ -36497,8 +36476,8 @@
    "type": "definition",
    "label": "可分空间",
    "title": "可分空间",
-   "label_en": "Separable Space",
-   "title_en": "Separable Space",
+   "label_en": "separable space",
+   "title_en": "separable space",
    "translations": {
     "en": {
      "status": "derived",
@@ -36537,8 +36516,8 @@
    "type": "definition",
    "label": "Schauder 基",
    "title": "Schauder 基",
-   "label_en": "Schauder Basis",
-   "title_en": "Schauder Basis",
+   "label_en": "Schauder basis",
+   "title_en": "Schauder basis",
    "translations": {
     "en": {
      "status": "derived",
@@ -36578,8 +36557,8 @@
    "type": "definition",
    "label": "ℓ²(I)",
    "title": "$\\ell^2(I)$：任意指标集上的平方可和族",
-   "label_en": "ell-2(I)",
-   "title_en": "The Space ell-2 of Index I",
+   "label_en": "the space l2 of index set I",
+   "title_en": "the space l2 of index set I",
    "translations": {
     "en": {
      "status": "derived",
@@ -36618,8 +36597,8 @@
    "type": "definition",
    "label": "Hilbert 空间",
    "title": "Hilbert 空间（完备的内积空间）",
-   "label_en": "Hilbert Space",
-   "title_en": "Hilbert Space",
+   "label_en": "Hilbert space",
+   "title_en": "Hilbert space",
    "translations": {
     "en": {
      "status": "derived",
@@ -36658,8 +36637,8 @@
    "type": "theorem",
    "label": "极化恒等式",
    "title": "极化恒等式：内积由范数恢复",
-   "label_en": "Polarization Identity",
-   "title_en": "Polarization Identity",
+   "label_en": "polarization identity",
+   "title_en": "polarization identity",
    "translations": {
     "en": {
      "status": "derived",
@@ -36698,8 +36677,7 @@
    "type": "theorem",
    "label": "平行四边形法则",
    "title": "平行四边形法则 $\\iff$ 范数来自内积（Jordan–von Neumann）",
-   "label_en": "Parallelogram Law",
-   "title_en": "Parallelogram Law and Inner Products",
+   "title_en": "parallelogram law characterises inner products",
    "translations": {
     "en": {
      "status": "derived",
@@ -36739,8 +36717,7 @@
    "type": "theorem",
    "label": "凸闭集的最近点",
    "title": "凸闭集上的最近点（投影算子）",
-   "label_en": "Nearest Point in Convex Set",
-   "title_en": "Nearest Point in a Closed Convex Set",
+   "title_en": "nearest point in a closed convex set",
    "translations": {
     "en": {
      "status": "derived",
@@ -36780,8 +36757,7 @@
    "type": "theorem",
    "label": "闭子空间的正交投影",
    "title": "正交投影与正交分解：$H = E \\oplus E^\\perp$",
-   "label_en": "Orthogonal Projection",
-   "title_en": "Orthogonal Projection onto a Closed Subspace",
+   "title_en": "orthogonal projection onto a closed subspace",
    "translations": {
     "en": {
      "status": "derived",
@@ -36821,8 +36797,7 @@
    "type": "theorem",
    "label": "Riesz 表示（Hilbert）",
    "title": "Riesz 表示：$H^* \\cong \\overline{H}$",
-   "label_en": "Riesz Representation",
-   "title_en": "Riesz Representation Theorem for Hilbert Spaces",
+   "title_en": "Riesz representation theorem for Hilbert spaces",
    "translations": {
     "en": {
      "status": "derived",
@@ -36861,8 +36836,7 @@
    "type": "theorem",
    "label": "伴随算子",
    "title": "伴随算子存在且 $\\|u^*\\| = \\|u\\|$",
-   "label_en": "Adjoint Operator",
-   "title_en": "Adjoint Operator on a Hilbert Space",
+   "title_en": "adjoint operator on Hilbert spaces",
    "translations": {
     "en": {
      "status": "derived",
@@ -36901,8 +36875,7 @@
    "type": "definition",
    "label": "酉算子",
    "title": "酉算子与部分等距",
-   "label_en": "Unitary Operator",
-   "title_en": "Unitary Operators and Partial Isometries",
+   "title_en": "unitary operator and partial isometry",
    "translations": {
     "en": {
      "status": "derived",
@@ -36941,8 +36914,7 @@
    "type": "definition",
    "label": "正交基",
    "title": "标准正交集、完备性与正交基",
-   "label_en": "Orthonormal Basis",
-   "title_en": "Orthonormal Sets and Orthonormal Bases",
+   "title_en": "orthonormal set and orthonormal basis",
    "translations": {
     "en": {
      "status": "derived",
@@ -36981,8 +36953,7 @@
    "type": "theorem",
    "label": "Bessel 与 Parseval",
    "title": "Bessel 不等式与 Parseval 等式",
-   "label_en": "Bessel and Parseval",
-   "title_en": "Bessel's Inequality and Parseval's Identity",
+   "title_en": "Bessel inequality and Parseval identity",
    "translations": {
     "en": {
      "status": "derived",
@@ -37021,8 +36992,7 @@
    "type": "theorem",
    "label": "正交基存在",
    "title": "每个 Hilbert 空间都有正交基（Zorn）",
-   "label_en": "Orthonormal Basis Exists",
-   "title_en": "Every Hilbert Space Has an Orthonormal Basis",
+   "title_en": "every Hilbert space has an orthonormal basis",
    "translations": {
     "en": {
      "status": "derived",
@@ -37061,8 +37031,8 @@
    "type": "theorem",
    "label": "可分 Hilbert 空间等距于 ℓ²",
    "title": "可分 Hilbert 空间等距同构于 $\\ell^2$",
-   "label_en": "Separable Hilbert as ell-2",
-   "title_en": "Separable Hilbert Spaces Are Isometric to ell-2",
+   "label_en": "separable Hilbert spaces are l2",
+   "title_en": "separable Hilbert spaces are l2",
    "translations": {
     "en": {
      "status": "derived",
@@ -37316,7 +37286,7 @@
    "type": "definition",
    "label": "滤子",
    "title": "滤子与超滤子：收敛的另一套语言",
-   "label_en": "Filter",
+   "label_en": "Filter and Ultrafilter",
    "title_en": "Filter and Ultrafilter",
    "translations": {
     "en": {
@@ -37359,8 +37329,8 @@
    "type": "definition",
    "label": "无处稠密",
    "title": "无处稠密集",
-   "label_en": "Nowhere Dense",
-   "title_en": "Nowhere Dense Set",
+   "label_en": "nowhere dense set",
+   "title_en": "nowhere dense set",
    "translations": {
     "en": {
      "status": "derived",
@@ -37398,8 +37368,8 @@
    "type": "definition",
    "label": "第一纲 / 第二纲",
    "title": "第一纲集、第二纲集与剩余集",
-   "label_en": "Meager Set",
-   "title_en": "Meager and Comeager Sets",
+   "label_en": "meager and residual sets",
+   "title_en": "meager and residual sets",
    "translations": {
     "en": {
      "status": "derived",
@@ -37437,8 +37407,8 @@
    "type": "definition",
    "label": "G_δ 与 F_σ",
    "title": "$G_\\delta$ 集与 $F_\\sigma$ 集",
-   "label_en": "G-delta and F-sigma",
-   "title_en": "G-delta and F-sigma Sets",
+   "label_en": "G-delta and F-sigma sets",
+   "title_en": "G-delta and F-sigma sets",
    "translations": {
     "en": {
      "status": "derived",
@@ -37476,8 +37446,8 @@
    "type": "theorem",
    "label": "Baire 纲定理",
    "title": "Baire 纲定理",
-   "label_en": "Baire's Category Theorem",
-   "title_en": "Baire's Category Theorem",
+   "label_en": "Baire category theorem",
+   "title_en": "Baire category theorem",
    "translations": {
     "en": {
      "status": "derived",
@@ -37517,8 +37487,7 @@
    "type": "theorem",
    "label": "局部紧 Hausdorff 是 Baire",
    "title": "局部紧 Hausdorff 空间是 Baire 空间",
-   "label_en": "Locally Compact Hausdorff Is Baire",
-   "title_en": "Locally Compact Hausdorff Spaces Are Baire",
+   "title_en": "locally compact Hausdorff spaces are Baire",
    "translations": {
     "en": {
      "status": "derived",
@@ -37556,8 +37525,7 @@
    "type": "proposition",
    "label": "Baire 的三条等价刻画",
    "title": "Baire 空间的等价刻画与「纲的用法」",
-   "label_en": "Baire Space Characterizations",
-   "title_en": "Equivalent Characterizations of Baire Spaces",
+   "title_en": "equivalent characterisations of Baire spaces",
    "translations": {
     "en": {
      "status": "derived",
@@ -37595,8 +37563,7 @@
    "type": "theorem",
    "label": "Baire 的开子集是 Baire",
    "title": "Baire 空间的开子集仍是 Baire 空间",
-   "label_en": "Open Subset of Baire Is Baire",
-   "title_en": "Open Subsets of Baire Spaces Are Baire",
+   "title_en": "open subsets of Baire spaces are Baire",
    "translations": {
     "en": {
      "status": "derived",
@@ -37634,8 +37601,7 @@
    "type": "lemma",
    "label": "闭覆盖的内点",
    "title": "可数个闭集覆盖 $X$ $\\implies$ 内点之并稠密",
-   "label_en": "Countable Closed Cover",
-   "title_en": "Countable Closed Covers and Interior Points",
+   "title_en": "a countable closed cover has dense interior union",
    "translations": {
     "en": {
      "status": "derived",
@@ -37673,8 +37639,7 @@
    "type": "theorem",
    "label": "连续点集是稠密 G_δ",
    "title": "连续函数点态极限的连续点集",
-   "label_en": "Continuity Points of Pointwise Limit",
-   "title_en": "Continuity Points of a Pointwise Limit Form a Dense G-delta",
+   "title_en": "points of continuity of a pointwise limit",
    "translations": {
     "en": {
      "status": "derived",
@@ -37712,8 +37677,7 @@
    "type": "theorem",
    "label": "共鸣定理",
    "title": "共鸣定理（一致有界原理 / Banach–Steinhaus）",
-   "label_en": "Uniform Boundedness Principle",
-   "title_en": "Uniform Boundedness Principle",
+   "title_en": "uniform boundedness principle (Banach-Steinhaus)",
    "translations": {
     "en": {
      "status": "derived",
@@ -37753,8 +37717,7 @@
    "type": "corollary",
    "label": "共振集是稠密 G_δ",
    "title": "共振集：一致无界 $\\implies$ 发散点稠密",
-   "label_en": "Resonance Set",
-   "title_en": "The Resonance Set Is a Dense G-delta",
+   "title_en": "the resonance set is a dense G-delta",
    "translations": {
     "en": {
      "status": "derived",
@@ -37793,8 +37756,7 @@
    "type": "theorem",
    "label": "开映射定理（Banach 版）",
    "title": "开映射定理：满射有界算子把开集映成开集",
-   "label_en": "Open Mapping Theorem",
-   "title_en": "Open Mapping Theorem for Banach Spaces",
+   "title_en": "open mapping theorem for Banach spaces",
    "translations": {
     "en": {
      "status": "derived",
@@ -37834,8 +37796,8 @@
    "type": "theorem",
    "label": "逆算子定理",
    "title": "逆算子定理：双射有界算子的逆也有界",
-   "label_en": "Bounded Inverse Theorem",
-   "title_en": "Bounded Inverse Theorem",
+   "label_en": "bounded inverse theorem",
+   "title_en": "bounded inverse theorem",
    "translations": {
     "en": {
      "status": "derived",
@@ -37875,8 +37837,8 @@
    "type": "theorem",
    "label": "闭图像定理",
    "title": "闭图像定理：图像闭的线性映射连续",
-   "label_en": "Closed Graph Theorem",
-   "title_en": "Closed Graph Theorem",
+   "label_en": "closed graph theorem",
+   "title_en": "closed graph theorem",
    "translations": {
     "en": {
      "status": "derived",
@@ -37915,8 +37877,7 @@
    "type": "definition",
    "label": "C(K,E)",
    "title": "$C(K,E)$ 与一致度量",
-   "label_en": "C(K,E)",
-   "title_en": "The Space C(K,E) with the Uniform Metric",
+   "title_en": "the space of continuous functions with the uniform metric",
    "translations": {
     "en": {
      "status": "derived",
@@ -37954,8 +37915,8 @@
    "type": "theorem",
    "label": "C(K,E) 完备",
    "title": "$E$ 完备 $\\implies$ $C(K,E)$ 完备",
-   "label_en": "C(K,E) Is Complete",
-   "title_en": "C(K,E) Is Complete When E Is",
+   "label_en": "C(K,E) is complete when E is",
+   "title_en": "C(K,E) is complete when E is",
    "translations": {
     "en": {
      "status": "derived",
@@ -37994,8 +37955,8 @@
    "type": "definition",
    "label": "等度连续",
    "title": "等度连续与一致等度连续",
-   "label_en": "Equicontinuous",
-   "title_en": "Equicontinuity",
+   "label_en": "equicontinuity",
+   "title_en": "equicontinuity",
    "translations": {
     "en": {
      "status": "derived",
@@ -38034,8 +37995,7 @@
    "type": "theorem",
    "label": "等度连续与一致等度连续",
    "title": "紧度量空间上等度连续 $\\implies$ 一致等度连续",
-   "label_en": "Equicontinuity and Uniform Equicontinuity",
-   "title_en": "Equicontinuity Implies Uniform Equicontinuity on Compact Metric Spaces",
+   "title_en": "equicontinuous implies uniformly equicontinuous on compacta",
    "translations": {
     "en": {
      "status": "derived",
@@ -38074,8 +38034,8 @@
    "type": "theorem",
    "label": "广义 Arzelà–Ascoli",
    "title": "广义 Arzelà–Ascoli：全有界 $\\iff$ 等度连续 + 逐点全有界",
-   "label_en": "Generalized Arzela-Ascoli",
-   "title_en": "Generalized Arzela-Ascoli Theorem",
+   "label_en": "general Arzela-Ascoli theorem",
+   "title_en": "general Arzela-Ascoli theorem",
    "translations": {
     "en": {
      "status": "derived",
@@ -38114,8 +38074,8 @@
    "type": "definition",
    "label": "子代数与分离点",
    "title": "子代数、分离点、格",
-   "label_en": "Subalgebra and Separating Points",
-   "title_en": "Subalgebras, Separating Points and Lattices",
+   "label_en": "subalgebra and separating points",
+   "title_en": "subalgebra and separating points",
    "translations": {
     "en": {
      "status": "derived",
@@ -38154,8 +38114,7 @@
    "type": "lemma",
    "label": "闭子代数是格",
    "title": "含单位的闭子代数是格",
-   "label_en": "Closed Subalgebra Is a Lattice",
-   "title_en": "Closed Unital Subalgebras Are Lattices",
+   "title_en": "a closed unital subalgebra is a lattice",
    "translations": {
     "en": {
      "status": "derived",
@@ -38194,8 +38153,8 @@
    "type": "theorem",
    "label": "Stone–Weierstrass 定理",
    "title": "Stone–Weierstrass 定理（实情形）",
-   "label_en": "Stone-Weierstrass (Real)",
-   "title_en": "Stone-Weierstrass Theorem, Real Case",
+   "label_en": "Stone-Weierstrass theorem",
+   "title_en": "Stone-Weierstrass theorem",
    "translations": {
     "en": {
      "status": "derived",
@@ -38236,8 +38195,7 @@
    "type": "theorem",
    "label": "Stone–Weierstrass（复情形）",
    "title": "Stone–Weierstrass 定理（复情形）",
-   "label_en": "Stone-Weierstrass (Complex)",
-   "title_en": "Stone-Weierstrass Theorem, Complex Case",
+   "title_en": "Stone-Weierstrass theorem, complex case",
    "translations": {
     "en": {
      "status": "derived",
@@ -38276,8 +38234,7 @@
    "type": "theorem",
    "label": "Bernstein 多项式逼近",
    "title": "Bernstein 多项式逼近（Weierstrass 定理的显式证明）",
-   "label_en": "Bernstein Approximation",
-   "title_en": "Bernstein Polynomial Approximation",
+   "title_en": "Bernstein polynomial approximation",
    "translations": {
     "en": {
      "status": "derived",
@@ -39028,8 +38985,8 @@
    "type": "theorem",
    "label": "陈–Weil 同态",
    "title": "陈–Weil 同态：用曲率算出的上同调类与联络无关",
-   "label_en": "陈–Weil Homomorphism",
-   "title_en": "陈–Weil Homomorphism",
+   "label_en": "Chern-Weil homomorphism",
+   "title_en": "Chern-Weil homomorphism",
    "translations": {
     "en": {
      "status": "derived",
@@ -39072,8 +39029,8 @@
    "type": "theorem",
    "label": "陈类",
    "title": "陈类：由曲率算出的示性类",
-   "label_en": "陈类",
-   "title_en": "陈类",
+   "label_en": "Chern class",
+   "title_en": "Chern class",
    "translations": {
     "en": {
      "status": "derived",
@@ -39115,8 +39072,8 @@
    "type": "proposition",
    "label": "线丛的陈类计算",
    "title": "命题：线丛的陈类就是曲率（差一个 $\\frac{i}{2\\pi}$）",
-   "label_en": "陈类 of a Line Bundle",
-   "title_en": "陈类 of a Line Bundle",
+   "label_en": "Chern class of a line bundle",
+   "title_en": "Chern class of a line bundle",
    "translations": {
     "en": {
      "status": "derived",
@@ -39727,7 +39684,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -39747,9 +39704,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#cdc1cc69",
-      "statement": "v0.9.2#ffeadee2",
-      "notes": "v0.9.2#90e06db8"
+      "abstract": "v0.9.3#cdc1cc69",
+      "statement": "v0.9.3#ffeadee2",
+      "notes": "v0.9.3#90e06db8"
      }
     }
    },
@@ -40350,7 +40307,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -40370,9 +40327,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#481df90f",
-      "statement": "v0.9.2#5c26a908",
-      "notes": "v0.9.2#fe258a30"
+      "abstract": "v0.9.3#481df90f",
+      "statement": "v0.9.3#5c26a908",
+      "notes": "v0.9.3#fe258a30"
      }
     }
    },
@@ -40532,7 +40489,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -40552,9 +40509,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#fa570817",
-      "statement": "v0.9.2#4ba3632c",
-      "notes": "v0.9.2#bf2a2534"
+      "abstract": "v0.9.3#fa570817",
+      "statement": "v0.9.3#4ba3632c",
+      "notes": "v0.9.3#bf2a2534"
      }
     }
    },
@@ -40764,7 +40721,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -40784,9 +40741,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#2464e849",
-      "statement": "v0.9.2#75028b5a",
-      "notes": "v0.9.2#f1e86a60"
+      "abstract": "v0.9.3#2464e849",
+      "statement": "v0.9.3#75028b5a",
+      "notes": "v0.9.3#f1e86a60"
      }
     }
    },
@@ -42379,7 +42336,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -42399,9 +42356,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#5839abf6",
-      "statement": "v0.9.2#befbd619",
-      "notes": "v0.9.2#c93883dc"
+      "abstract": "v0.9.3#5839abf6",
+      "statement": "v0.9.3#befbd619",
+      "notes": "v0.9.3#c93883dc"
      }
     }
    },
@@ -42524,7 +42481,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -42544,9 +42501,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#1bc8f10f",
-      "statement": "v0.9.2#f759aee2",
-      "notes": "v0.9.2#94b15f1c"
+      "abstract": "v0.9.3#1bc8f10f",
+      "statement": "v0.9.3#f759aee2",
+      "notes": "v0.9.3#94b15f1c"
      }
     }
    },
@@ -42868,7 +42825,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -42888,9 +42845,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#c81ceb51",
-      "statement": "v0.9.2#315d7da7",
-      "notes": "v0.9.2#9b807211"
+      "abstract": "v0.9.3#c81ceb51",
+      "statement": "v0.9.3#315d7da7",
+      "notes": "v0.9.3#9b807211"
      }
     }
    },
@@ -43009,7 +42966,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -43029,9 +42986,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#5b78b019",
-      "statement": "v0.9.2#f6d84124",
-      "notes": "v0.9.2#bdd6e136"
+      "abstract": "v0.9.3#5b78b019",
+      "statement": "v0.9.3#f6d84124",
+      "notes": "v0.9.3#bdd6e136"
      }
     }
    },
@@ -43229,7 +43186,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -43249,9 +43206,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#118bf379",
-      "statement": "v0.9.2#15b421bb",
-      "notes": "v0.9.2#77203f35"
+      "abstract": "v0.9.3#118bf379",
+      "statement": "v0.9.3#15b421bb",
+      "notes": "v0.9.3#77203f35"
      }
     }
    },
@@ -43370,7 +43327,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -43390,9 +43347,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#f1673aca",
-      "statement": "v0.9.2#2b01d3a4",
-      "notes": "v0.9.2#5e7e6161"
+      "abstract": "v0.9.3#f1673aca",
+      "statement": "v0.9.3#2b01d3a4",
+      "notes": "v0.9.3#5e7e6161"
      }
     }
    },
@@ -46229,11 +46186,11 @@
    "title_en": "additive and abelian categories",
    "abstract_en": "The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to \\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian means that kernels and cokernels exist, and abelian means any one of four equivalent conditions: every monomorphism is regular; $N \\cong \\ker(M \\to \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every map factors uniquely as an epimorphism followed by a monomorphism; $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. Abelian categories are the working environment of homological algebra — exactness needs kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a topos are abelian; $\\mathbf{AbTop}$ is not.",
    "statement_en": "- A **preadditive category** (an $\\mathbf{Ab}$-category) is a category in which every $\\operatorname{Hom}$ set carries an abelian group structure and composition is bilinear;\n- A **zero object** is an object with $\\operatorname{End}(M) = 1$ (that is, $1_{M} = 0_{M}$); an object $M$ is the **direct sum** $M = M_{1} \\oplus M_{2}$ of $M_{1}, M_{2}$ if there are $p_{k} : M \\to M_{k}$, $i_{k} : M_{k} \\to M$ with $p_{1} i_{1} = 1$, $p_{2} i_{2} = 1$, $i_{1} p_{1} + i_{2} p_{2} = 1_{M}$;\n- An **additive category** is a preadditive category with a zero object and all direct sums (equivalently: all finite products exist, or all finite coproducts exist — in which case both exist and agree);\n- A **preabelian category** is an additive category in which every morphism has a kernel and a cokernel (equivalently: all finite limits and finite colimits exist);\n- An **abelian category** is a preabelian category satisfying one of the following **equivalent** conditions:\n\n1. every monomorphism is regular (dually, every epimorphism is regular);\n2. if $i : N \\rightarrowtail M$ is a monomorphism, then $N \\cong \\ker\\bigl(M \\twoheadrightarrow \\operatorname{coker}(i)\\bigr)$ (and dually);\n3. every morphism factors (uniquely up to isomorphism) as an epimorphism followed by a monomorphism;\n4. for every $f : M \\to N$, $\\ker\\bigl(N \\to \\operatorname{coker} f\\bigr) \\cong \\operatorname{coker}\\bigl(\\ker f \\to M\\bigr)$.",
-   "notes_en": "In an abelian category one says **injective / surjective** rather than monomorphism / epimorphism — because condition 1 guarantees that \"regular\" and \"cancellable\" are the same thing.\n\nExamples: $A\\text{-}\\mathbf{Mod}$ is abelian; so is $\\mathbf{Ab}(\\mathcal{T})$ for a topos; so is $\\mathbf{AbCHaus}$. But $\\mathbf{AbTop}$ is **not** (the identity map $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is not strict), and neither is $\\mathbf{AbHaus}$.\n\nAn abelian category is the **working environment** of homological algebra as a whole: with kernels and cokernels one can even state \"exact sequence\"; an additive category only supplies the additive skeleton (zero object and direct sums).",
+   "notes_en": "In an abelian category one says **injective / surjective** rather than monomorphism / epimorphism — because condition 1 guarantees that \"regular\" and \"cancellable\" are the same thing.\n\nExamples: $A\\text{-}\\mathbf{Mod}$ is abelian; so is $\\mathbf{Ab}(\\mathcal{T})$ for a topos; so is $\\mathbf{AbCHaus}$. But $\\mathbf{AbTop}$ is **not** (the identity map $\\mathbb{Z}^{\\mathrm{disc}} \\to \\mathbb{Z}^{\\mathrm{coarse}}$ is not strict), and neither is $\\mathbf{AbHaus}$.\n\nAn abelian category is the **working environment** of homological algebra as a whole: with kernels and cokernels one can even state \"exact sequence\"; an additive category only supplies the additive skeleton (zero object and direct sums).**Which of the four is the real axiom, and which are its consequences** (they are usually listed side by side, but condition 4 is the weakest and behaves most like an axiom, while the first three each cost something):\n\n- (1) $\\implies$ (2): **one kernel-plus-cokernel diagram chase.** $i : N \\rightarrowtail M$ identifies $N$ with $\\ker(M \\to \\operatorname{coker} i)$; this uses only the preabelian fact that a monomorphism is its own kernel \\u2014 **no assumption beyond the additive structure**.\n- (2) $\\implies$ (1): **almost free in reverse** ($N$ being isomorphic to the kernel of a cokernel simply says $i$ is a kernel, i.e. regular).\n- (1) $\\iff$ (3): **this step needs kernels and cokernels** (i.e. preabelian). Factor $f = M \\to N$ as $M \\twoheadrightarrow \\operatorname{im} f \\rightarrowtail N$; \"the epimorphism half is regular\" is exactly (1). \\u26A0 Uniqueness holds **up to isomorphism** \\u2014 the word matters: the factorisation is not strict, since one image can have different representatives.\n- (1) $\\iff$ (4): **the most \"algebraic\" one** (Abel's original form): $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. It is equivalent to \"the first isomorphism theorem holds in the category\", and needs **kernels and cokernels to exist** plus **regularity of mono/epi**.\n\n\\u26A0 **Preabelian $\\ne$ abelian \\u2014 the point**: preabelian asks only that kernels and cokernels exist; any one of (1)\\u2013(4) can **fail**. The standard counterexamples are $\\mathbf{PreAb}$ (preabelian groups) or filtered vector spaces, where an epimorphism need not be a cokernel and a monomorphism need not be a kernel. So **abelian = preabelian + (any one of the equivalent conditions)**, and that last clause cannot be dropped.\n\n\\u26A0 **Two more traps**: in the definition of \"additive category\", \"all direct sums\" and \"all finite products\" agree only **given preadditivity** (in a general category finite products and finite coproducts need not coincide); and \"all finite limits and colimits\" is the phrasing attached to (2), which does **not** imply abelianness ($\\mathbf{Set}$ has finite limits and coproducts yet is far from abelian) \\u2014 the difference lies in disjointness, universality and effectiveness.",
    "translations": {
     "en": {
-     "status": "stale",
-     "version": "v0.9.2",
+     "status": "reviewed",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -46246,19 +46203,16 @@
       "notes"
      ],
      "fieldStatus": {
-      "abstract": "stale",
+      "abstract": "reviewed",
       "statement": "reviewed",
-      "notes": "stale",
+      "notes": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract",
-      "notes"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#99eb2ae5",
-      "statement": "v0.9.2#70512d43",
-      "notes": "v0.9.2#9884bb71"
+      "abstract": "v0.9.3#fba78198",
+      "statement": "v0.9.3#70512d43",
+      "notes": "v0.9.3#e667995c"
      }
     }
    },
@@ -47014,7 +46968,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -47034,9 +46988,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#3239a1df",
-      "statement": "v0.9.2#f13b85f8",
-      "notes": "v0.9.2#07b048c8"
+      "abstract": "v0.9.3#3239a1df",
+      "statement": "v0.9.3#f13b85f8",
+      "notes": "v0.9.3#07b048c8"
      }
     }
    },
@@ -47397,7 +47351,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -47417,9 +47371,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#99cc7668",
-      "statement": "v0.9.2#0d2ec83c",
-      "notes": "v0.9.2#b6c3c8a9"
+      "abstract": "v0.9.3#99cc7668",
+      "statement": "v0.9.3#0d2ec83c",
+      "notes": "v0.9.3#b6c3c8a9"
      }
     }
    },
@@ -47459,7 +47413,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -47479,9 +47433,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#b724ea06",
-      "statement": "v0.9.2#aca983a4",
-      "notes": "v0.9.2#34fccb9f"
+      "abstract": "v0.9.3#b724ea06",
+      "statement": "v0.9.3#aca983a4",
+      "notes": "v0.9.3#34fccb9f"
      }
     }
    },
@@ -48256,7 +48210,7 @@
    "translations": {
     "en": {
      "status": "reviewed",
-     "version": "v0.9.2",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "statement",
@@ -48276,9 +48230,9 @@
      },
      "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#36bc4b18",
-      "statement": "v0.9.2#1f75f342",
-      "notes": "v0.9.2#3edf241b"
+      "abstract": "v0.9.3#36bc4b18",
+      "statement": "v0.9.3#1f75f342",
+      "notes": "v0.9.3#3edf241b"
      }
     }
    },
@@ -55294,8 +55248,8 @@
    "abstract_en": "For a topological space $X$: $X$ is paracompact Hausdorff exactly when every open cover has a subordinate partition of unity, and $X$ is normal exactly when every locally finite open cover has one. In one direction the supports of the partition give a locally finite open refinement of the cover; in the other, normality produces the functions one at a time. This is the standard bridge from local data to global objects, for instance from local metrics to a Riemannian metric.",
    "translations": {
     "en": {
-     "status": "stale",
-     "version": "v0.9.2",
+     "status": "reviewed",
+     "version": "v0.9.3",
      "fields": [
       "abstract",
       "name"
@@ -55304,14 +55258,12 @@
       "abstract"
      ],
      "fieldStatus": {
-      "abstract": "stale",
+      "abstract": "reviewed",
       "name": "derived"
      },
-     "staleFields": [
-      "abstract"
-     ],
+     "staleFields": [],
      "basedOn": {
-      "abstract": "v0.9.2#ed13b078"
+      "abstract": "v0.9.3#32f06eb0"
      }
     }
    },

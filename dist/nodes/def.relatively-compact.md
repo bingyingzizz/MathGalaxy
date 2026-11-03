@@ -16,4 +16,4 @@ refs: Munkres, Topology · 相对紧；Rudin, Functional Analysis · 紧性
 
 > 说明见 `notes/def.relatively-compact.md`
 
-引用：`def.relatively-compact`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.relatively-compact`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -19,4 +19,4 @@ refs: Rudin, Functional Analysis, Ch. 1；Lang, Real and Functional Analysis, Ch
 
 > 说明见 `notes/def.normed-space.md`
 
-引用：`def.normed-space`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.normed-space`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

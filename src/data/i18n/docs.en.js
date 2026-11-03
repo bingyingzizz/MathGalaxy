@@ -36,7 +36,7 @@ MG.i18nDocs = {
   status: 'reviewed',
   /* 这份英文是从哪个内容版本译出来的（tools/ids.snapshot.json 的 vX.Y.Z）。
      ⚠️ 内容版本变了但英文没跟着更新 ⇒ 构建自动把它标成 stale，不是靠人记得改。 */
-  basedOn: 'v0.9.2',
+  basedOn: 'v0.9.3',
   drafted: '2026-10-16',
   reviewed: null,          // 审校后：{ by: '作者名', date: 'YYYY-MM-DD' }
 
@@ -68,7 +68,7 @@ MG.i18nDocs = {
     reading: {
       title: 'MathGalaxy · How to read this map',
       /* 逐份状态（决策二.3）：审过这一份就把 status 改 'reviewed' 并填 reviewed */
-      status: 'reviewed', basedOn: 'v0.9.2', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      status: 'reviewed', basedOn: 'v0.9.3', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       body: [
         'Data starts at `{{base}}index.md`.',
         '',
@@ -119,7 +119,7 @@ MG.i18nDocs = {
     /* -------------------------------------------------------------- policy */
     policy: {
       title: 'MathGalaxy · Content policy',
-      status: 'reviewed', basedOn: 'v0.9.2', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      status: 'reviewed', basedOn: 'v0.9.3', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       body: [
         '## 1. Every layer is *constructed* from the layer below',
         '',
@@ -163,7 +163,7 @@ MG.i18nDocs = {
       /* ⚠️ 2026-11-02：旧版这句写反了方向（按入边排却宣称「真正的地基」）——
          中文底稿已改成三榜，英文随之重写；改完 `bun tools/i18n-status.mjs --patch` 更新 basedOn，
          并把 status 退回 draft（这份新文字还没人审）。 */
-      status: 'draft', basedOn: 'v0.9.2',
+      status: 'draft', basedOn: 'v0.9.3',
       head: [
         'The direction of every edge is **prerequisite → what depends on it**, so in-edges and',
         'out-edges say opposite things:',
@@ -182,7 +182,7 @@ MG.i18nDocs = {
     /* ------------------------------------------------------------ notation */
     notation: {
       title: 'MathGalaxy · Notation',
-      status: 'reviewed', basedOn: 'v0.9.2', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
+      status: 'reviewed', basedOn: 'v0.9.3', reviewed: { by: 'bingyingzizz', date: '2026-11-01' },
       body: [
         'One symbol, one meaning per cluster; clashes between clusters are listed below.',
         '',

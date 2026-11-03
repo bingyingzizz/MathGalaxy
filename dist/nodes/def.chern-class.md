@@ -25,4 +25,4 @@ refs: Milnor–Stasheff, Characteristic Classes · 陈类；Bott–Tu, Different
 
 > 说明见 `notes/def.chern-class.md`
 
-引用：`def.chern-class`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.chern-class`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

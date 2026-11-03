@@ -10,5 +10,5 @@ layer 20 · definition · cluster Symplectic Manifolds and Hamiltonian Mechanics
 Chinese only — see the Chinese page `nodes/def.symplectic-manifold.md` and `proofs/`.
 
 
-Cite: `def.symplectic-manifold` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.symplectic-manifold` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

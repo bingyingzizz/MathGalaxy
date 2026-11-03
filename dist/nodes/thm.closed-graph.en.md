@@ -1,4 +1,4 @@
-# Closed Graph Theorem　`thm.closed-graph`
+# closed graph theorem　`thm.closed-graph`
 English entry · root `../`
 [in graph](../#n=thm.closed-graph)　·　[Chinese page (authoritative)](./thm.closed-graph.md)
 
@@ -10,5 +10,5 @@ layer 26 · theorem · cluster Baire Category and the Three Big Theorems (`fa.ba
 Chinese only — see the Chinese page `nodes/thm.closed-graph.md` and `proofs/`.
 
 
-Cite: `thm.closed-graph` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.closed-graph` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

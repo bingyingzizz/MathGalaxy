@@ -19,4 +19,4 @@ refs: Milnor–Stasheff, Characteristic Classes · 线丛；Bott–Tu, Different
 
 > 说明见 `notes/prop.chern-class-line-bundle.md`
 
-引用：`prop.chern-class-line-bundle`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`prop.chern-class-line-bundle`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

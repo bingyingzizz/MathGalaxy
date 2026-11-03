@@ -10,5 +10,5 @@ layer 13 · theorem · cluster Matrices and Determinants (`algebra.matrix`) · A
 Chinese only — see the Chinese page `nodes/thm.rank-row-col.md` and `proofs/`.
 
 
-Cite: `thm.rank-row-col` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `thm.rank-row-col` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

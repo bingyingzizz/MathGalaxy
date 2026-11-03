@@ -10,5 +10,5 @@ layer 15 · definition · cluster Metric Spaces (`topology.metric`) · Topology
 Chinese only — see the Chinese page `nodes/def.lebesgue-number.md` and `proofs/`.
 
 
-Cite: `def.lebesgue-number` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.lebesgue-number` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

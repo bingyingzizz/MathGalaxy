@@ -10,5 +10,5 @@ layer 16 · definition · cluster Homology Groups (`topology.homology`) · Topol
 Chinese only — see the Chinese page `nodes/def.chain-group.md` and `proofs/`.
 
 
-Cite: `def.chain-group` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.chain-group` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

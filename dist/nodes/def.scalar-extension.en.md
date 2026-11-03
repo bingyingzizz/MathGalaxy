@@ -10,5 +10,5 @@ layer 13 · definition · cluster Tensor Products and Scalar Restriction (`hom.m
 Chinese only — see the Chinese page `nodes/def.scalar-extension.md` and `proofs/`.
 
 
-Cite: `def.scalar-extension` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.scalar-extension` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

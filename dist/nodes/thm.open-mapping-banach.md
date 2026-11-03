@@ -18,4 +18,4 @@ refs: Rudin, Functional Analysis, 2.11
 
 > 说明见 `notes/thm.open-mapping-banach.md`
 
-引用：`thm.open-mapping-banach`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`thm.open-mapping-banach`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

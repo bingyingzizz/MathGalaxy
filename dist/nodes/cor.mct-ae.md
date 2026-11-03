@@ -21,4 +21,4 @@ refs: Folland, Real Analysis, §2.2；Rudin, Real and Complex Analysis, Ch. 1
 
 > 说明见 `notes/cor.mct-ae.md`
 
-引用：`cor.mct-ae`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`cor.mct-ae`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

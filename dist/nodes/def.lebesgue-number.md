@@ -16,4 +16,4 @@ refs: Munkres, Topology, 27（Lebesgue number lemma）；Rudin, Principles of Ma
 
 > 说明见 `notes/def.lebesgue-number.md`
 
-引用：`def.lebesgue-number`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`def.lebesgue-number`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

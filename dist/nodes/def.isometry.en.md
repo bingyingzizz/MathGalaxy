@@ -10,5 +10,5 @@ layer 11 · definition · cluster Inner Product Spaces and Orthogonality (`algeb
 Chinese only — see the Chinese page `nodes/def.isometry.md` and `proofs/`.
 
 
-Cite: `def.isometry` (content v0.9.2) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
+Cite: `def.isometry` (content v0.9.3) · CC BY 4.0: [LICENSE.txt](../LICENSE.txt)
 

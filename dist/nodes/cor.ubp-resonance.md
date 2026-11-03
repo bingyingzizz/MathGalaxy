@@ -16,4 +16,4 @@ refs: Rudin, Functional Analysis, Ch. 2（Baire 纲与三大定理）
 
 > 说明见 `notes/cor.ubp-resonance.md`
 
-引用：`cor.ubp-resonance`（内容 v0.9.2）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)
+引用：`cor.ubp-resonance`（内容 v0.9.3）· CC BY 4.0 [LICENSE.txt](../LICENSE.txt)

@@ -31,4 +31,20 @@
 
 - 拉格朗日括号 → def.lagrange-bracket
 
-见 `../../alias.md`。
+- 不变多项式 → def.invariant-polynomial
+
+- 分裂原理 → thm.splitting-principle
+
+- 转移函数 → def.transition-function
+
+- 结构群 → def.structure-group
+
+- 帧丛 → def.frame-bundle
+
+- 配丛 → def.associated-bundle
+
+- 闭形式 → def.closed-form
+
+- 恰当形式 → def.exact-form
+
+> 续见 alias/aka/diffgeom.4.md
