@@ -26,6 +26,8 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.lebesgue-number': { title_en: "Lebesgue Number", label_en: "Lebesgue Number", from: 'explicit' },
+    'thm.riemann-lebesgue': { title_en: "Riemann-Lebesgue Lemma", label_en: "Riemann-Lebesgue Lemma", from: 'explicit' },
     'def.frame-bundle': { title_en: 'Frame Bundle', label_en: 'Frame Bundle', from: 'explicit' },
     'def.associated-bundle': { title_en: 'Associated Bundle', label_en: 'Associated Bundle', from: 'explicit' },
     'def.norm': { title_en: "Norm on a Vector Space", label_en: "Norm", from: 'explicit' },

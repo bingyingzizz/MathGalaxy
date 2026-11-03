@@ -140,6 +140,10 @@
           ttl: U.plain(n.title),
           refs: (n.refs || []).slice(),
           label_en: n.label_en || '', title_en: n.title_en || '',
+          /* 归一化名字（给 score / nameScore 用；显示仍用上面那几个原始字段） */
+          kLabel: key(n.label), kTitle: key(n.title),
+          kLabelEn: key(n.label_en), kTitleEn: key(n.title_en),
+          kAka: aka.map(key),
           st_en: n.abstract_en ? U.plain(n.abstract_en) : (n.statement_en ? U.plain(n.statement_en) : ''),
           stm_en: n.abstract_en ? U.plainMath(n.abstract_en) : (n.statement_en ? U.plainMath(n.statement_en) : '') };
       });
@@ -202,6 +206,19 @@
       return false;
     }
 
+    /* ---------------------------------------------------------- 比较键
+       ⭐ 名字比较一律走 key()：小写 → 各种破折号统一成 '-' → **去掉所有空白**。
+       为什么必须这样（2026-11-02 用户实测）：
+         · 库里写 `Riemann–Lebesgue`（en dash），用户敲 `Riemann-Lebesgue`（ASCII '-'）；
+         · 库里写 `Banach–Steinhaus`，用户敲 `Banach-Steinhaus`；
+         · 用户还可能敲 `RiemannLebesgue`、`Riemann Lebesgue`（带不带空格）。
+       这几种写法在**人**看来是同一个词，在字符串比较里却是四个不同的词。
+       归一化之后就都撞得上了。 */
+    var DASHES = /[‐‑‒–—―−﹘﹣－]/g;
+    function key(s) {
+      return String(s == null ? '' : s).toLowerCase().replace(DASHES, '-').replace(/s+/g, '');
+    }
+
     function termsOf(q) {
       var Q = q.toLowerCase();
       var hit = [];
@@ -250,39 +267,74 @@
           搜 `zorn` 会让「选择公理」压过「佐恩引理」—— 实测就是这个结果，
           而 `Zorn's Lemma` 才是那个名字。别名再准也只是别名。 */
     function score(entry, q) {
-      var nf = [entry.label, entry.title, entry.label_en, entry.title_en];
+      /* ⚠️ q 是**词**（可能带空格），比较前也要走 key() */
+      var qk = key(q);
+      var nf = [entry.kLabel, entry.kTitle, entry.kLabelEn, entry.kTitleEn];
       var i, v, exact = false, prefix = false, has = false;
       for (i = 0; i < nf.length; i++) {
         v = String(nf[i] || '').toLowerCase();
         if (!v) continue;
-        if (v.indexOf(q) >= 0) has = true;
-        if (v === q) exact = true;
-        if (v.indexOf(q) === 0) prefix = true;
+        if (v.indexOf(qk) >= 0) has = true;
+        if (v === qk) exact = true;
+        if (v.indexOf(qk) === 0) prefix = true;
       }
-      var aka = entry.aka || [], akaExact = false, akaHas = false;
+      var aka = entry.kAka || [], akaExact = false, akaHas = false;
       for (i = 0; i < aka.length; i++) {
-        v = String(aka[i] || '').toLowerCase();
+        v = String(aka[i] || '');
         if (!v) continue;
-        if (v === q) akaExact = true;
-        if (v.indexOf(q) >= 0) akaHas = true;
+        if (v === qk) akaExact = true;
+        if (v.indexOf(qk) >= 0) akaHas = true;
       }
       var id = entry.node.id.toLowerCase();
       var s = 0;
       if (exact) s = 1000;
-      else if (id === q) s = 850;
+      else if (id === qk) s = 850;
       else if (prefix) s = 500;
       else if (akaExact) s = 400;
       else if (has) s = 260;
       /* id 里含（`prop.measurable-closure` 这类）—— id 是英文词干，英文查询的实际
          检索面之一。⛔ 别把这档删掉：删了之后「只有 id 里有这个英文词」的节点会
          掉到「正文里提过一句」的节点后面（2026-10-16 实测过）。 */
-      else if (id.indexOf(q) >= 0) s = 240;
+      else if (id.indexOf(qk) >= 0) s = 240;
       else if (akaHas) s = 150;
       else if (String((entry.node.tags || []).join(' ')).toLowerCase().indexOf(q) >= 0) s = 110;
       else if (entry.node.type.toLowerCase().indexOf(q) >= 0) s = 60;
       /* 正文 / 英文摘要 / 别的字段里也提到了 —— 宽泛命中，加一点但不改档 */
       if (entry.hay.indexOf(q) >= 0) s += 40;
       return s;
+    }
+
+    /* ⭐ 整条查询的「正名」加权（2026-11-02 用户报「Riemann 积分那个节点在第五位」）。
+       为什么必须有：`run` 会把查询拆成词逐个打分，于是
+         · 标签**正好等于**查询的节点；
+         · 标签只是**包含**查询里那几个词的节点；
+       拿到的分几乎一样。拆词是必要的（要支持多词），但不该抹掉「这就是它的名字」。
+       这里给整条查询单算一次，命中正名时给一个**高于任意词组合**的分。 */
+    function nameScore(entry, q) {
+      var qk = key(q);
+      var nf = [entry.kLabel, entry.kTitle, entry.kLabelEn, entry.kTitleEn];
+      var best = 0, i, v;
+      for (i = 0; i < nf.length; i++) {
+        v = String(nf[i] || '');
+        if (!v) continue;
+        if (v === qk) best = Math.max(best, 3000);
+        else if (v.indexOf(qk) === 0) best = Math.max(best, 1800);   /* 前缀：查询是名字的开头 */
+      }
+      var aka = entry.kAka || [];
+      for (i = 0; i < aka.length; i++) {
+        v = String(aka[i] || '');
+        if (!v) continue;
+        if (v === qk) best = Math.max(best, 2600);
+        else if (v.indexOf(qk) === 0) best = Math.max(best, 1500);
+      }
+      /* id 的末段也算名字：lem.zorn 的正文名是「佐恩引理」，用户敲 zorn 时它才是原主；
+         而 aka 里挂了 Zorn 的 ax.choice 不该压过它。
+         （2026-11-02 实测：只按 label/aka 加正名权重，会让 ax.choice 顶掉 lem.zorn。） */
+      var idLow = entry.node.id.toLowerCase();
+      var tail = idLow.split('.').pop();
+      if (tail === qk) best = Math.max(best, 2800);
+      else if (idLow.replace(/^[a-z]+\./, '') === qk) best = Math.max(best, 900);
+      return best;
     }
 
     function run(q) {
@@ -333,6 +385,13 @@
             tot[e.node.id] = (tot[e.node.id] || 0) + s;
             cnt[e.node.id] = (cnt[e.node.id] || 0) + 1;
           });
+        });
+        /* 整条查询的正名加权：即使它的词没有全中，只要**名字就是它**也要顶上来 */
+        index.forEach(function (e) {
+          var ns = nameScore(e, q);
+          if (!ns) return;
+          tot[e.node.id] = (tot[e.node.id] || 0) + ns;
+          if (!cnt[e.node.id]) cnt[e.node.id] = 1;
         });
       }
 

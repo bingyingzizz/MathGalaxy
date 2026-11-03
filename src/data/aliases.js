@@ -143,7 +143,7 @@ MG.aliases = {
     { id: 'def.extended-real', aka: ['扩充实数', 'extended real', '广义实数'] },
     { id: 'def.interval', aka: ['区间', 'interval'] },
     { id: 'def.sequence-limit', en: 'limit of a sequence', aka: ['数列极限', '极限', 'limit', '收敛', 'convergence'] },
-    { id: 'thm.real-ordered-field', en: 'least upper bound property', aka: ['确界原理', '实数完备', '完备性', 'least upper bound property', 'completeness of R'] },
+    { id: 'thm.real-ordered-field', en: 'least upper bound property', aka: ['确界原理', '实数完备', '完备性', 'least upper bound property', 'completeness of R', '实数的运算律', 'ℝ 上的运算律', '实数加法交换律', '实数的加法交换律', '实数的乘法交换律'] },
     { id: 'def.series', aka: ['级数', 'series', '级数收敛'] },
     { id: 'def.continuous', aka: ['连续', 'continuous', '连续函数'] },
     { id: 'def.derivative', aka: ['导数', 'derivative', '可导'] },
@@ -862,6 +862,11 @@ MG.aliases = {
        ⚠️ 2026-10-22 用户搜「Riemann映照定理」找不到 `thm.riemann-mapping` ——
        库里写的是「映射」，他打的是「映照」，而且中间没有空格。
        映射 / 映照、Möbius / 莫比乌斯、Rouché / 鲁歇 这几组必须都收。 */
+    /* ⭐ 2026-11-02 用户报「搜 Riemann 积分，那个节点在第五位、搜不出来」：
+       节点 label 是「Riemann 可积」（正文讲的是 Riemann 积分的定义与可积性），
+       于是「积分」二字进不了名字档 ⇒ 补上人们真正会敲的叫法。 */
+    { id: 'def.riemann-integrable', aka: ['Riemann 积分', '定积分', 'Riemann 积分定义', 'Riemann 积分的定义', '黎曼积分'] },
+    { id: 'thm.riemann-lebesgue', aka: ['Riemann-Lebesgue 引理', 'Riemann–Lebesgue', 'Riemann-Lebesgue', '傅里叶系数趋于零', '黎曼-勒贝格引理'] },
     { id: 'thm.riemann-mapping', aka: ['Riemann映照定理', 'Riemann 映照定理', '黎曼映照定理', '黎曼映射定理', 'Riemann映射定理', 'Riemann mapping theorem', '共形映射基本定理', '保形映射定理'] },
     { id: 'def.holomorphic', aka: ['解析函数', 'analytic function', '正则函数'] },
     { id: 'thm.cauchy-riemann', aka: ['CR 方程', '柯西黎曼方程', 'Cauchy-Riemann 条件'] },
@@ -1102,7 +1107,7 @@ MG.aliases = {
     { id: 'thm.det-as-exterior', en: 'the determinant is the action on the top exterior power', aka: ['行列式 = 最高外幂上的作用'] },
     { id: 'thm.solvable-quotients', en: 'solvability passes to subgroups and quotients', aka: ['可解性对子群与商群封闭'] },
     { id: 'prop.sn-solvable', en: 'solvability of symmetric groups', aka: ['对称群的可解性'] },
-    { id: 'thm.nat-arith-laws', en: 'arithmetic laws for the natural numbers', aka: ['自然数的运算律'] },
+    { id: 'thm.nat-arith-laws', en: 'arithmetic laws for the natural numbers', aka: ['自然数的运算律', '自然数运算律', '加法交换律', '乘法交换律', '加法结合律', '乘法结合律', '分配律', 'ℕ 上的运算律'] },
     { id: 'prop.scheme-embeds-adic', en: 'schemes embed into adic spaces', aka: ['概形嵌入 adic 空间'] },
     { id: 'def.logarithm-branch', en: 'branches of the logarithm and of powers', aka: ['对数与幂的分支'] },
     { id: 'def.riemann-surface', en: 'Riemann surface', aka: ['Riemann 曲面'] },
@@ -1135,7 +1140,7 @@ MG.aliases = {
     { id: 'thm.jordan-holder', en: 'Jordan–Hölder theorem', aka: ['Jordan–Hölder 定理'] },
     { id: 'prop.abs-properties', en: 'properties of the absolute value', aka: ['绝对值的运算性质'] },
     { id: 'def.power', en: 'integer powers', aka: ['整数幂'] },
-    { id: 'thm.rat-ordered-field', en: 'Q is an ordered field', aka: ['ℚ 是有序域'] },
+    { id: 'thm.rat-ordered-field', en: 'Q is an ordered field', aka: ['ℚ 是有序域', '有理数的运算律', 'ℚ 上的运算律', '有理数加法交换律', '有理数的加法交换律', '有理数的乘法交换律'] },
     { id: 'prop.covering-index', en: 'index of a covering', aka: ['覆叠的指数'] },
     { id: 'thm.van-kampen', en: 'van Kampen theorem', aka: ['van Kampen 定理'] },
     { id: 'def.higher-derivative', en: 'higher derivatives and C-k functions', aka: ['高阶导数与 C^k'] },
@@ -1302,7 +1307,7 @@ MG.aliases = {
     { id: 'thm.baire-open-subset', en: 'open subsets of Baire spaces are Baire', aka: ['开子集 Baire'] },
     { id: 'lem.countable-closed-cover', en: 'a countable closed cover has dense interior union', aka: ['闭覆盖', '内点之并稠密'] },
     { id: 'thm.pointwise-limit-continuity', en: 'points of continuity of a pointwise limit', aka: ['连续点集', 'Baire-Osgood', '逐点极限连续点'] },
-    { id: 'thm.ubp', en: 'uniform boundedness principle (Banach-Steinhaus)', aka: ['共鸣定理', '共振定理', 'Banach-Steinhaus', 'Banach-Steinhaus 定理', '一致有界', '一致有界定理', '一致有界性原理', '共鸣', 'uniform boundedness'] },
+    { id: 'thm.ubp', en: 'uniform boundedness principle (Banach-Steinhaus)', aka: ['共鸣定理', '共振定理', 'Banach-Steinhaus', 'Banach-Steinhaus 定理', '一致有界', '一致有界定理', '一致有界性原理', '共鸣', 'uniform boundedness', 'Banach Steinhaus', '一致有界原理', 'UBP'] },
     { id: 'cor.ubp-resonance', en: 'the resonance set is a dense G-delta', aka: ['共振集', '共鸣集', '发散点稠密'] },
     { id: 'thm.open-mapping-banach', en: 'open mapping theorem for Banach spaces', aka: ['开映射定理（线性）', '巴拿赫开映射定理', '开映射（线性算子）', 'open mapping for operators'] },
     { id: 'thm.bounded-inverse', en: 'bounded inverse theorem', aka: ['逆算子定理', '有界逆定理', '连续性定理'] },
