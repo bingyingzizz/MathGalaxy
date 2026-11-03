@@ -1619,6 +1619,8 @@
         #e=<连线id>        聚焦某条连线
         #r=<星系id>        适配到某个星系
         #c=<星团id>        适配到某个星团
+        #q=<关键词>        把词填进搜索框并把结果列出来（落地页的搜索框用它；
+                           可写成 `+` 分隔的词，空格也行）
         &ly=<k>            只显示第 0…k 层（缺省 = 不限层）
         &tr=1              主干模式
         &sub=<id>&sd=<deps|users|both>&sh=<跳数>&sb=<0|1>   只看某个节点的子图
@@ -1813,7 +1815,8 @@
       var isView = hasCam || kv.ly != null || kv.tr != null || kv.sub != null ||
         kv.hide != null || kv.dl != null || kv.lb != null || kv.ex != null ||
         kv.ae != null;
-      if (!isView && kv.n == null && kv.e == null && kv.r == null && kv.c == null) return false;
+      if (!isView && kv.n == null && kv.e == null && kv.r == null && kv.c == null &&
+          kv.q == null) return false;
 
       hashState.applying = true;
       try {
@@ -1852,6 +1855,11 @@
         } else if (kv.c != null && graph.clusterById[dec(kv.c)]) {
           if (!hasCam) fitCluster(dec(kv.c));
         }
+
+        /* ⭐ `#q=<关键词>`：把词填进搜索框并把结果**列出来**（落地页的搜索框就靠它）。
+           写在 n/e/r/c **之后**：`#n=…&q=…` 时先聚焦节点、再把词留在框里给人改。
+           ⚠️ q **不算视图状态**（不进 isView）—— 它不覆盖接收者的隐藏集合。 */
+        if (kv.q != null) search.applyQuery(dec(kv.q));
 
         if (hasCam) {
           var pq = dec(kv.v).split(',');

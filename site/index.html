@@ -30,8 +30,19 @@
   <!-- ⭐ 首屏就让人「能开始做一件事」（外部评审 2026-11-02 提的，认了）：
        三个入口都只用**已有的**深链能力（#n= 节点 / #e= 连线 / all.html 索引），
        不新增前端逻辑。项目目录往后排，因为它回答的是「这是什么」而不是「我能干什么」。 -->
+  <!-- ⭐ 落地页搜索（2026-11-03 加，K1）：星图页一直没有 `#q=`，所以这里只能把人
+       送到索引页重新开始。现在星图支持 `#q=<关键词>`，这里就能放一个真搜索框：
+       提交后直接把词带过去、结果已经在图上列好。
+       ⛔ 不引 JS 框架：这里只有 8 行内联脚本；无脚本时退回 all.html（索引页也能搜）。 -->
+  <form class="find enter" style="--i:2" role="search" aria-label="在星图里搜索"
+        onsubmit="var v=this.q.value.trim();if(!v){return false;}location.href='mathgalaxy/#q='+encodeURIComponent(v);return false;">
+    <input type="search" name="q" placeholder="搜一个概念：一致收敛 · 紧 · 示性类 …" aria-label="搜索节点" autocomplete="off">
+    <button type="submit">在星图里搜</button>
+    <noscript><a href="mathgalaxy/all.html">索引页</a></noscript>
+  </form>
+
   <nav class="tasks enter" style="--i:2" aria-label="开始使用">
-    <a href="mathgalaxy/all.html"><b>查一个概念</b><span>中文名 / 英文名 / 常见叫法都行 —— 从索引找到那一页</span></a>
+    <a href="mathgalaxy/all.html"><b>浏览索引</b><span>按星系 / 星团列出全部节点 —— 不想打字时从这里看</span></a>
     <a href="mathgalaxy/#n=thm.de-rham"><b>看前置知识</b><span>选一个目标，右侧面板列出它依赖什么、又被谁依赖</span></a>
     <a href="mathgalaxy/"><b>随便探索</b><span>直接进完整星图：滚轮缩放、拖拽平移、点节点看详情</span></a>
   </nav>

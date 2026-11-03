@@ -620,6 +620,18 @@
       close();
     }
 
+    /** 深链 `#q=…`（2026-11-03 加，K1）：把查询填进搜索框、**把结果列出来**，不改镜头。
+        ⭐ 刻意不自动选中第一条 —— 落地页上打了个词就被人拽到某个节点上很吓人；
+           结果列在那里，人自己选。返回第一条节点命中的 id（没命中返回 null）仅供调用方判断。 */
+    function applyQuery(q) {
+      q = String(q == null ? '' : q).trim();
+      if (!q) return null;
+      input.value = q;
+      run(q);
+      for (var i = 0; i < items.length; i++) if (items[i].kind === 'node') return items[i].id;
+      return null;
+    }
+
     /* ---------------------------------------------------------- 事件 */
     input.addEventListener('input', function () { run(input.value); });
     input.addEventListener('focus', function () {
@@ -660,6 +672,7 @@
       reindex: reindex,
       clear: clear,
       close: close,
+      applyQuery: applyQuery,
       focus: function () { input.focus(); input.select(); }
     };
   }
