@@ -86,7 +86,7 @@ window.MG = window.MG || {};
       notes: [
         '证法（球套法）分四步：\n\n' +
         '1. **起点**：记 $B_0 := B(x, \\varepsilon)$。\n\n' +
-        '$O_1$ 稠密开 $implies$ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n\n' +
+        '$O_1$ 稠密开 $\\implies$ $B_0 \\cap O_1$ 是非空开，于是可取 $x_1$ 与 $\\varepsilon_1 < \\min(\\varepsilon/2,\\ 1)$ 使\n\n' +
         '$$\\overline{B(x_1, \\varepsilon_1)} \\subseteq B(x, \\varepsilon) \\cap O_1 .$$\n\n' +
         '2. **归纳**：已取 $x_n, \\varepsilon_n$（且 $\\varepsilon_n < 1/n$）。\n\n' +
         '由 $O_{n+1}$ 稠密开，$B(x_n, \\varepsilon_n) \\cap O_{n+1}$ 仍是非空开，取\n\n' +
@@ -677,7 +677,7 @@ window.MG = window.MG || {};
       proof: [
         '由范数等价，$\\alpha\\|x\\|_\\infty \\le \\|x\\| \\le \\beta\\|x\\|_\\infty$，故 $B_E \\subseteq \\{x : \\|x\\|_\\infty \\le 1/\\alpha\\}$，右端按坐标范数有界闭，由 Heine–Borel 紧；\n\n$B_E$ 是其闭子集（$\\|\\cdot\\|$ 连续），故紧。\n\n$\\blacksquare$'
       ].join('\n'),
-      note: '只要「有限维 $implies$ 范数等价」，剩下全是 Heine–Borel。'
+      note: '只要「有限维 $\\implies$ 范数等价」，剩下全是 Heine–Borel。'
     },
     {
       id: 'imp.fa-almostorth-riesz',
@@ -702,7 +702,7 @@ window.MG = window.MG || {};
         '在 $0$ 连续 $\\implies$ 有界：反证。\n\n若不存在 $C$，则对每个 $n$ 有 $x_n \\ne 0$ 使 $\\|u(x_n)\\| > n\\|x_n\\|$；令 $y_n = x_n/(n\\|x_n\\|)$，则 $\\|y_n\\| = 1/n \\to 0$ 而 $\\|u(y_n)\\| > 1$，与 $u$ 在 $0$ 连续矛盾。',
         '一点连续 $\\implies$ 在 $0$ 连续：$x \\to 0$ 时 $x + x_0 \\to x_0$，故 $u(x) = u(x + x_0) - u(x_0) \\to 0$。$\\blacksquare$'
       ].join('\n'),
-      note: '「一点连续 $implies$ 处处连续」只因为线性（平移是连续双射）。'
+      note: '「一点连续 $\\implies$ 处处连续」只因为线性（平移是连续双射）。'
     },
     {
       id: 'imp.fa-neumann',

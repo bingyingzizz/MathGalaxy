@@ -53,15 +53,15 @@ window.MG = window.MG || {};
         '',
         '$$(b, y) \\sim (b,\\ g_{\\alpha\\beta}(b)\\,y) \\quad (b \\in U_{\\alpha\\beta}) ,$$',
         '',
-        '取商即得以 $F$ 为纤维的丛。**这两个方向互逆**（差一个自然同构），所以说「丛 = 覆盖 + 满足上闭链的转移函数」。'
+        '取商即得以 $F$ 为纤维的丛。**两方向互逆**（差自然同构），故「丛 = 覆盖 + 满足上闭链的转移函数」。'
       ].join('\n'),
       notes: [
-        '**为什么它是「全部数据」**：局部上丛永远是平凡的（$U \\times F$），所以丛的全部区别都在重叠处。换句话说，丛的几何 = 转移函数的几何。这也解释了为什么分类丛要模掉换基：换一组平凡化（$\\Phi_{\\alpha} \\mapsto h_{\\alpha}\\Phi_{\\alpha}$）会把 $g_{\\alpha\\beta}$ 换成 $h_{\\alpha} g_{\\alpha\\beta} h_{\\beta}^{-1}$，而丛本身没变 —— 这就是分类定理里的「等价」关系（见 `thm.bundle-classification`）。',
+        '**为什么它是「全部数据」**：局部上丛总是平凡的（$U \\times F$），全部区别都在重叠处：丛的几何 = 转移函数的几何。这也解释了为什么分类丛要模掉换基：换一组平凡化（$\\Phi_{\\alpha} \\mapsto h_{\\alpha}\\Phi_{\\alpha}$）会把 $g_{\\alpha\\beta}$ 换成 $h_{\\alpha} g_{\\alpha\\beta} h_{\\beta}^{-1}$，而丛本身没变 —— 这就是分类定理里的「等价」关系（见 `thm.bundle-classification`）。',
         '**取值落在哪里，就决定了是什么丛**：$g_{\\alpha\\beta}$ 落在 $\\mathrm{GL}(k,\\mathbb{R})$ $\\implies$ 实向量丛；落在 $\\mathrm{O}(k)$ $\\implies$ 配了纤维度量的丛；落在 $\\mathrm{GL}(k,\\mathbb{C})$ $\\implies$ 复丛；落在离散群 $\\implies$ 平坦丛。这个「落在哪」的群就叫**结构群**（`def.structure-group`），所以「换结构群」在技术上就是「把转移函数的取值限制在更小的子群里」。',
         '⚠️ **上闭链不是可选项**：$g_{\\alpha\\beta} g_{\\beta\\alpha} = \\mathrm{id}$ 与三重叠条件是**丛存在**的必要条件（它们只是「换基的自洽性」）。但仅有上闭链条件并不保证丛是平凡的 —— 恰恰相反，**第一个障碍**就在三重叠处：那正是 Čech $H^{1}$（非阿贝尔情形）度量的东西。',
         '⚠️ **记号有两套**：$g_{\\alpha\\beta}$（上闭链，丛的粘合）与 $g_{ij}$（流形图卡之间的坐标变换）长得一样，但后者只是 $\\mathrm{id}$ 平凡丛的转移函数。读文献时看上下文：讲丛分类时是前者。'
       ].join('\n\n'),
-      refs: ['Tu, Differential Geometry（⚠️ 章名未核实，只记书名）· 转移函数', 'Milnor–Stasheff, Characteristic Classes']
+      refs: ['Milnor–Stasheff, Characteristic Classes · 转移函数', 'Tu, Differential Geometry']
     },
 
     {

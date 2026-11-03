@@ -26,6 +26,9 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.relatively-compact': { title_en: "Relatively Compact", label_en: "Relatively Compact", from: 'explicit' },
+    'thm.frechet-derivative': { title_en: "Fréchet Derivative", label_en: "Fréchet Derivative", from: 'explicit' },
+    'def.characteristic-class': { title_en: "Characteristic Class", label_en: "Characteristic Class", from: 'explicit' },
     'def.transition-function': { title_en: "Transition Function", label_en: "Transition Function", from: 'explicit' },
     'def.structure-group': { title_en: "Structure Group", label_en: "Structure Group", from: 'explicit' },
     'def.lebesgue-number': { title_en: "Lebesgue Number", label_en: "Lebesgue Number", from: 'explicit' },
