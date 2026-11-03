@@ -9,6 +9,7 @@ layer 21 · 定理 · 同调群 · 拓扑学
 
 ## 它能推出什么 / 谁在用它
 - 被 [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) Gauss–Bonnet 定理 用
+- ～弱边 [`def.genus`](../nodes/def.genus.md) 亏格
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.euler-characteristic.3.md](./thm.euler-characteristic.3.md)

@@ -399,8 +399,16 @@
       var byEnt = Object.create(null);
       index.forEach(function (e) { byEnt[e.node.id] = e; });
 
+      var need = terms.length;
       var hits = Object.keys(tot).map(function (id) {
         var s = tot[id] * (1 + 0.5 * (cnt[id] - 1));
+        /* ⭐ 2026-11-03（审计 I8）：「**所有词都命中**」的节点给一档加成。
+           原来多词查询本质上是 OR（分数相加），于是「紧 Hausdorff」这类两词查询
+           会被「只沾一个词但连接多」的节点顶下去。这里不做硬 AND（那会把只沾一个
+           词的真命中全删掉），而是把「交集」抬到单词语音之上：
+             两词各命中正文 = (100+40)*2 再乘本档；而「名字正好等于查询」仍然是 3000 档。
+           ⛔ 以后若要真 AND，改的是这里，不要在 terms 循环里 return。 */
+        if (need >= 2 && cnt[id] >= need) s *= 1.8;
         if (boost[id]) s += 5000;
         var e = byEnt[id];
         return { id: id, s: s, deg: e ? (e.node.degree || 0) : 0, grp: boost[id] ? 'hook' : 'all' };

@@ -39,8 +39,10 @@ node_modules/
 # ---------- 个人笔记（按需开启）----------
 # 外部内容包默认是「内置示例 / 可公开的笔记」，所以会被跟踪。
 # 如果你想把自己的私人笔记也放在同一个仓库里又不想公开，把笔记放进
-# src/data/local/ ，下面这行会保证它们不被提交：
-src/data/local/
+# src/data/local/
+# 下面这行保证它们不被提交；模板（annotations.example.js）例外。
+src/data/local/*
+!src/data/local/annotations.example.js
 
 # 或者更保守一点：整个外部内容包目录都不进 Git（取消下一行注释）
 # src/data/external/

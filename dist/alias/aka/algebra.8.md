@@ -1,6 +1,10 @@
 # 别名 → 节点 · 抽象代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../algebra.md`
 
+- 埃塔勒层 | 平展层 → def.etale-sheaf
+
+- 埃塔勒层的例子 → prop.etale-sheaf-examples
+
 - 埃尔米特矩阵 | 厄米矩阵 → def.hermitian-matrix
 
 - 舒尔三角化 → thm.schur-triangularization
@@ -38,9 +42,5 @@
 - 合同矩阵 → def.congruent-matrices
 
 - 迷向向量 → def.isotropic-vector
-
-- 迷向子空间 → def.isotropic-subspace
-
-- 双曲平面 → def.hyperbolic-plane
 
 > 续见 alias/aka/algebra.9.md

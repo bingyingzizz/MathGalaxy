@@ -581,6 +581,13 @@ html.ui-no-hint #hint { display: none; }
 
 /* ---------- 详情面板：已读标记 ---------- */
 /* 绿 = 读完。和工具条/图例里的蓝（功能色）分开，免得看成又一个开关。 */
+/* 证明完成度徽章（T13/I5）：骨架 / 依赖外部定理时在陈述上方提一句 */
+.pn-status { margin: 10px 0 0; padding: 6px 10px; border-radius: 8px; font-size: 12px;
+  line-height: 1.5; border: 1px solid #e6d3b3; background: #fdf7ea; color: #7a5a1e; }
+.pn-status-external-input { border-color: #d9c3d6; background: #fbf3fa; color: #6d3a67; }
+/* 私人批注（T17/I9）：视觉上必须和「内容」区分开 —— 它不进 git、不发布 */
+.pn-note-local { border-left: 3px solid #b9c7e8; background: #f4f7fd; padding: 6px 10px; border-radius: 0 8px 8px 0; }
+
 .pn-read { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 2px; }
 .pn-btn.pn-read-btn {
   border-color: rgba(46, 158, 91, .38);

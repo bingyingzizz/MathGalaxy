@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T07:25:47.494Z",
+ "generated": "2026-11-03T07:45:44.515Z",
  "terms": 76,
  "missing": [
   {
@@ -103,6 +103,52 @@
    ]
   },
   {
+   "term": "环面",
+   "total": 16,
+   "nodes": [
+    {
+     "id": "def.genus",
+     "c": 6
+    },
+    {
+     "id": "def.orientable-surface",
+     "c": 2
+    },
+    {
+     "id": "thm.gauss-bonnet",
+     "c": 1
+    },
+    {
+     "id": "def.vector-field",
+     "c": 1
+    },
+    {
+     "id": "def.integral-manifold",
+     "c": 1
+    },
+    {
+     "id": "thm.frobenius",
+     "c": 1
+    },
+    {
+     "id": "def.simply-connected",
+     "c": 1
+    },
+    {
+     "id": "thm.mv-homology",
+     "c": 1
+    },
+    {
+     "id": "def.principal-bundle",
+     "c": 1
+    },
+    {
+     "id": "def.connected-sum",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "角度",
    "total": 10,
    "nodes": [
@@ -162,44 +208,6 @@
     },
     {
      "id": "thm.homotopy-invariance",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "环面",
-   "total": 9,
-   "nodes": [
-    {
-     "id": "def.orientable-surface",
-     "c": 2
-    },
-    {
-     "id": "thm.gauss-bonnet",
-     "c": 1
-    },
-    {
-     "id": "def.vector-field",
-     "c": 1
-    },
-    {
-     "id": "def.integral-manifold",
-     "c": 1
-    },
-    {
-     "id": "thm.frobenius",
-     "c": 1
-    },
-    {
-     "id": "def.simply-connected",
-     "c": 1
-    },
-    {
-     "id": "thm.mv-homology",
-     "c": 1
-    },
-    {
-     "id": "def.principal-bundle",
      "c": 1
     }
    ]
@@ -331,24 +339,6 @@
    ]
   },
   {
-   "term": "亏格",
-   "total": 4,
-   "nodes": [
-    {
-     "id": "thm.gauss-bonnet",
-     "c": 2
-    },
-    {
-     "id": "def.nullity",
-     "c": 1
-    },
-    {
-     "id": "def.orientable-manifold",
-     "c": 1
-    }
-   ]
-  },
-  {
    "term": "表示论",
    "total": 4,
    "nodes": [
@@ -417,6 +407,34 @@
    ]
   },
   {
+   "term": "拓扑流形",
+   "total": 2,
+   "nodes": [
+    {
+     "id": "prop.maximal-atlas",
+     "c": 1
+    },
+    {
+     "id": "def.connected-sum",
+     "c": 1
+    }
+   ]
+  },
+  {
+   "term": "射影平面",
+   "total": 2,
+   "nodes": [
+    {
+     "id": "thm.euler-characteristic",
+     "c": 1
+    },
+    {
+     "id": "def.genus",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "一阶逻辑的完备性",
    "total": 2,
    "nodes": [
@@ -461,41 +479,11 @@
    ]
   },
   {
-   "term": "拓扑流形",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "prop.maximal-atlas",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "连通和",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "thm.mv-homology",
-     "c": 1
-    }
-   ]
-  },
-  {
    "term": "曲面分类",
    "total": 1,
    "nodes": [
     {
      "id": "thm.gauss-bonnet",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "射影平面",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "thm.euler-characteristic",
      "c": 1
     }
    ]

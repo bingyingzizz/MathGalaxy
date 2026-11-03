@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1476 节点 / 2819 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1478 节点 / 2824 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -9,7 +9,7 @@
 
 ⚠️ 第二节会误报（「顺嘴提一句」也算），所以只列出来给人看，不做断言。
 
-## 一、提到了但没有节点（29 个）
+## 一、提到了但没有节点（27 个）
 
 ### 单位圆　出现 25 次
 `thm.integral-trig` · `thm.euler-formula` · `def.normal-curvature` · `def.principal-curvature` · `thm.rodrigues` · `thm.max-modulus` 等 21 个节点
@@ -17,14 +17,14 @@
 ### 原函数　出现 16 次
 `prop.single-valued-branch` · `thm.ftc-riemann-part2` · `thm.cauchy-goursat` · `def.residue` · `thm.taylor-complex` · `thm.winding-homotopy` 等 10 个节点
 
+### 环面　出现 16 次
+`def.genus` · `def.orientable-surface` · `thm.gauss-bonnet` · `def.vector-field` · `def.integral-manifold` · `thm.frobenius` 等 10 个节点
+
 ### 角度　出现 10 次
 `thm.liouville-formula` · `prop.conformal-iff` · `def.isometry` · `def.intrinsic-quantity` · `def.riemannian-metric` · `def.trig-function` 等 7 个节点
 
 ### 三角剖分　出现 9 次
 `def.singular-homology` · `thm.simplicial-approximation` · `thm.gauss-bonnet` · `def.simplicial-complex` · `thm.euler-characteristic` · `thm.homotopy-invariance`
-
-### 环面　出现 9 次
-`def.orientable-surface` · `thm.gauss-bonnet` · `def.vector-field` · `def.integral-manifold` · `thm.frobenius` · `def.simply-connected` 等 8 个节点
 
 ### 素因子　出现 7 次
 `thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 7 个节点
@@ -41,9 +41,6 @@
 ### 偏微分方程　出现 5 次
 `thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form`
 
-### 亏格　出现 4 次
-`thm.gauss-bonnet` · `def.nullity` · `def.orientable-manifold`
-
 ### 表示论　出现 4 次
 `thm.cayley` · `def.flow` · `thm.stone-weierstrass-complex` · `thm.pontryagin-van-kampen`
 
@@ -55,6 +52,12 @@
 
 ### 超积　出现 3 次
 `thm.compactness`
+
+### 拓扑流形　出现 2 次
+`prop.maximal-atlas` · `def.connected-sum`
+
+### 射影平面　出现 2 次
+`thm.euler-characteristic` · `def.genus`
 
 ### 一阶逻辑的完备性　出现 2 次
 `thm.completeness-first-order` · `def.satisfaction`
@@ -68,17 +71,8 @@
 ### 弧度　出现 1 次
 `def.trig-function`
 
-### 拓扑流形　出现 1 次
-`prop.maximal-atlas`
-
-### 连通和　出现 1 次
-`thm.mv-homology`
-
 ### 曲面分类　出现 1 次
 `thm.gauss-bonnet`
-
-### 射影平面　出现 1 次
-`thm.euler-characteristic`
 
 ### 解析数论　出现 1 次
 `thm.euclid-infinite-primes`

@@ -44,5 +44,5 @@
 
 值只许 `complete`（缺省）/ `skeleton` / `external-input`。正文自己说「骨架 / 未展开 / 外部输入」却没标注的，列在下面。
 
-（没有）
+- 该标未标：`def.connected-sum`
 

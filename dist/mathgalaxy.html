@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1476 nodes, 2819 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1478 nodes, 2824 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1476 nodes, 2819 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1478 nodes, 2824 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -613,6 +613,13 @@ html.ui-no-hint #hint { display: none; }
 
 /* ---------- 详情面板：已读标记 ---------- */
 /* 绿 = 读完。和工具条/图例里的蓝（功能色）分开，免得看成又一个开关。 */
+/* 证明完成度徽章（T13/I5）：骨架 / 依赖外部定理时在陈述上方提一句 */
+.pn-status { margin: 10px 0 0; padding: 6px 10px; border-radius: 8px; font-size: 12px;
+  line-height: 1.5; border: 1px solid #e6d3b3; background: #fdf7ea; color: #7a5a1e; }
+.pn-status-external-input { border-color: #d9c3d6; background: #fbf3fa; color: #6d3a67; }
+/* 私人批注（T17/I9）：视觉上必须和「内容」区分开 —— 它不进 git、不发布 */
+.pn-note-local { border-left: 3px solid #b9c7e8; background: #f4f7fd; padding: 6px 10px; border-radius: 0 8px 8px 0; }
+
 .pn-read { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 2px; }
 .pn-btn.pn-read-btn {
   border-color: rgba(46, 158, 91, .38);
@@ -9168,8 +9175,16 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       var byEnt = Object.create(null);
       index.forEach(function (e) { byEnt[e.node.id] = e; });
 
+      var need = terms.length;
       var hits = Object.keys(tot).map(function (id) {
         var s = tot[id] * (1 + 0.5 * (cnt[id] - 1));
+        /* ⭐ 2026-11-03（审计 I8）：「**所有词都命中**」的节点给一档加成。
+           原来多词查询本质上是 OR（分数相加），于是「紧 Hausdorff」这类两词查询
+           会被「只沾一个词但连接多」的节点顶下去。这里不做硬 AND（那会把只沾一个
+           词的真命中全删掉），而是把「交集」抬到单词语音之上：
+             两词各命中正文 = (100+40)*2 再乘本档；而「名字正好等于查询」仍然是 3000 档。
+           ⛔ 以后若要真 AND，改的是这里，不要在 terms 循环里 return。 */
+        if (need >= 2 && cnt[id] >= need) s *= 1.8;
         if (boost[id]) s += 5000;
         var e = byEnt[id];
         return { id: id, s: s, deg: e ? (e.node.degree || 0) : 0, grp: boost[id] ? 'hook' : 'all' };
@@ -9673,12 +9688,31 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
           U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + warn + '</div>';
       }
 
+      /* 证明完成度徽章（T13/I5）：引用前的第一道筛子。
+         ⚠️ 缺省不画 —— 大部分节点是 complete，不刷屏。 */
+      if (n.status) {
+        var stChip = n.status === 'skeleton' ? tf('骨架 · 只看陈述与思路，当不得完整证明')
+          : n.status === 'external-input' ? tf('依赖本图外部的定理')
+            : tf('完整');
+        html += '<div class="pn-status pn-status-' + U.escapeHtml(n.status) + '">' +
+          U.escapeHtml('⚠ ' + stChip) + '</div>';
+      }
       if (n.statement) html += section(tf('陈述'), '<div class="pn-body">' + U.md(n.statement) + '</div>');
       if (n.notes) html += section(tf('说明 / 备注'), '<div class="pn-body">' + U.md(n.notes) + '</div>');
       if (n.refs && n.refs.length) {
         html += section(tf('参考'), '<div class="pn-body"><ul>' + n.refs.map(function (r) {
           return '<li>' + U.escapeHtml(r) + '</li>';
         }).join('') + '</ul></div>');
+      }
+
+
+      /* 私人批注（T17/I9）：只在你自己写了的时候出现。
+         数据源是本地文件 `src/data/local/annotations.js`（**不进 git、不进构建产物**）。
+         ⛔ 不要把它写进 n.notes —— 那是公共内容，会被发布。 */
+      var myNote = (MG.localNotes && MG.localNotes[n.id]) || '';
+      if (myNote) {
+        html += section('📝 ' + tf('我的批注'),
+          '<div class="pn-body pn-note-local">' + U.md(String(myNote)) + '</div>');
       }
 
       /* 相关连线 */
@@ -11863,6 +11897,16 @@ MG.clusters = [
     desc: '把「这个空间有几个 n 维的洞」变成一个可计算的阿贝尔群：标准单纯形 → 单纯复形 → 链群与边缘算子（∂² = 0）→ 单纯同调 → 奇异同调 → 约化同调与 H₀ → 对的长正合列 → Mayer–Vietoris → 球面的同调 → Euler 示性数；最后用单纯逼近把「奇异」与「单纯」缝成同一个东西。'
   },
 
+  {
+    id: 'topology.surfaces',
+    name: '曲面的地形',
+    en: 'Surfaces: connected sum and genus',
+    parent: 'topology',
+    hub: 'def.genus',
+    desc: '闭曲面分类之前必须先有地形：连通和（挖球 + 沿边界粘）与亏格（一阶同调的秩的一半）。' +
+      '这两个概念都刻意避开「分类定理」：亏格用同调定义，所以不会绕回分类。下一刀才放拓扑流形 / 闭曲面 / 分类定理。'
+  },
+
   /* 以后加内容时，新星团往这里追加即可。留空不写 = 该星系的节点直属于星系。 */
 
   {
@@ -11978,7 +12022,7 @@ MG.aliases = {
     { id: 'thm.schroder-bernstein', en: 'Schröder–Bernstein theorem', aka: ['Cantor–Bernstein', '施罗德-伯恩斯坦', 'Cantor-Bernstein-Schroeder', '施罗德–伯恩斯坦定理'] },
     { id: 'thm.hartogs', aka: ['Hartogs', '哈托格斯'] },
     { id: 'def.countable', aka: ['可数', 'countable', '可数无穷', '可列'] },
-    { id: 'def.cardinal', en: 'cardinality', aka: ['基数', 'cardinality', '势', 'cardinal number'] },
+    { id: 'def.cardinal', en: 'cardinality', aka: ['基数', 'cardinality', '势', 'cardinal number', '#A', '|A|', 'card'] },
     { id: 'thm.cantor', aka: ['对角线论证', 'diagonal argument', '幂集比原集大', '康托', '康托尔', '康托尔定理'] },
     { id: 'thm.cardinal-comparable', aka: ['基数可比', '三分律', 'comparability of cardinals'] },
 
@@ -12046,11 +12090,11 @@ MG.aliases = {
     /* 实数与极限 */
     { id: 'def.extended-real', aka: ['扩充实数', 'extended real', '广义实数'] },
     { id: 'def.interval', aka: ['区间', 'interval'] },
-    { id: 'def.sequence-limit', en: 'limit of a sequence', aka: ['数列极限', '极限', 'limit', '收敛', 'convergence'] },
+    { id: 'def.sequence-limit', en: 'limit of a sequence', aka: ['数列极限', '极限', 'limit', '收敛', 'convergence', 'lim_{n→∞}', 'lim a_n'] },
     { id: 'thm.real-ordered-field', en: 'least upper bound property', aka: ['确界原理', '实数完备', '完备性', 'least upper bound property', 'completeness of R', '实数的运算律', 'ℝ 上的运算律', '实数加法交换律', '实数的加法交换律', '实数的乘法交换律'] },
     { id: 'def.series', aka: ['级数', 'series', '级数收敛'] },
-    { id: 'def.continuous', aka: ['连续', 'continuous', '连续函数'] },
-    { id: 'def.derivative', aka: ['导数', 'derivative', '可导', '微分', '求导'] },
+    { id: 'def.continuous', aka: ['连续', 'continuous', '连续函数', '连续 ε-δ', 'ε-δ'] },
+    { id: 'def.derivative', aka: ['导数', 'derivative', '可导', '微分', '求导', 'd/dx', 'f\'', 'df/dx'] },
 
     /* 集合族与 σ-代数 */
     { id: 'def.set-ring', en: 'ring of sets', aka: ['环', '代数', 'ring of sets', 'algebra of sets', '集合环'] },
@@ -12065,7 +12109,7 @@ MG.aliases = {
     { id: 'prop.set-class-properties', en: 'basic properties of families of sets', aka: ['集合族的性质'] },
 
     /* 测度的构造 */
-    { id: 'def.measure', aka: ['测度', 'measure', '可数可加'] },
+    { id: 'def.measure', aka: ['测度', 'measure', '可数可加', 'μ(A)', '测度 μ'] },
     { id: 'def.outer-measure', aka: ['外测度', 'outer measure'] },
     { id: 'def.premeasure', aka: ['预测度', 'premeasure'] },
     { id: 'def.finitely-additive', aka: ['有限可加', 'finitely additive'] },
@@ -12240,10 +12284,10 @@ MG.aliases = {
     { id: 'def.commutative-diagram', en: 'diagram and commutative diagram', aka: ['交换图', 'commutative diagram', 'diagram', '图（函子）', '索引范畴', '图范畴', '常图函子', '预序', 'Definition 1.3.1', 'Def 1.3.1'] },
     { id: 'def.simplicial', aka: ['单纯对象', 'simplicial object', '单纯形范畴', '面映射', '退化映射', 'Definition 1.3.2', 'Def 1.3.2', 'Exercise 1.25'] },
     { id: 'def.cone', en: 'cone and cocone', aka: ['锥', 'cone', '余锥', 'cocone', 'Definition 1.3.3', 'Def 1.3.3'] },
-    { id: 'def.limit', en: 'limit and colimit', aka: ['极限', 'limit', '余极限', 'colimit', '泛锥', '有限极限', 'Definition 1.3.4', 'Def 1.3.4', 'Exercise 1.26', 'Exercise 1.34'] },
+    { id: 'def.limit', en: 'limit and colimit', aka: ['极限', 'limit', '余极限', 'colimit', '泛锥', '有限极限', 'Definition 1.3.4', 'Def 1.3.4', 'Exercise 1.26', 'Exercise 1.34', 'lim', '极限 lim'] },
     { id: 'def.final-initial', aka: ['终对象', '始对象', 'terminal object', 'initial object', '零对象', 'Definition 1.3.5', 'Def 1.3.5'] },
-    { id: 'def.product', en: 'product and coproduct', aka: ['积', '余积', 'product', 'coproduct', '直积', '直和', 'Definition 1.3.6', 'Def 1.3.6'] },
-    { id: 'def.fibered-product', en: 'pullback and pushout', aka: ['纤维积', '拉回', 'pullback', 'fibered product', '推出', 'pushout', '笛卡尔方块', 'Definition 1.3.7', 'Def 1.3.7'] },
+    { id: 'def.product', en: 'product and coproduct', aka: ['积', '余积', 'product', 'coproduct', '直积', '直和', 'Definition 1.3.6', 'Def 1.3.6', '∏', '×'] },
+    { id: 'def.fibered-product', en: 'pullback and pushout', aka: ['纤维积', '拉回', 'pullback', 'fibered product', '推出', 'pushout', '笛卡尔方块', 'Definition 1.3.7', 'Def 1.3.7', '纤维积 ×_S'] },
     { id: 'def.equalizer', en: 'equalizer and coequalizer', aka: ['等化子', '余等化子', 'equalizer', 'coequalizer', '核', 'ker', 'coker', 'Definition 1.3.8', 'Def 1.3.8', 'Exercise 1.36'] },
     { id: 'def.mono', en: 'monomorphism, epimorphism and isomorphism', aka: ['单态射', '满态射', '同构', '同构映射', 'mono', 'epi', 'monomorphism', 'epimorphism', 'isomorphism', 'isomorphic', '可消', 'Definition 1.3.9', 'Def 1.3.9'] },
     { id: 'def.subobject', aka: ['子对象', 'subobject', '子对象之交', '原像', 'Definition 1.3.10', 'Def 1.3.10'] },
@@ -12264,7 +12308,7 @@ MG.aliases = {
     { id: 'lem.presheaf-mono-pointwise', en: 'monomorphisms of presheaves are pointwise', aka: ['预层逐点检验', '预层的单满'] },
 
     /* 伴随与反射 */
-    { id: 'def.adjoint', aka: ['伴随函子', 'adjoint functor', '左伴随', '右伴随', 'adjunction', 'Definition 1.5.1', 'Def 1.5.1'] },
+    { id: 'def.adjoint', aka: ['伴随函子', 'adjoint functor', '左伴随', '右伴随', 'adjunction', 'Definition 1.5.1', 'Def 1.5.1', '⊣', 'F ⊣ G'] },
     { id: 'def.adjunction-unit', aka: ['单位', '余单位', 'unit', 'counit', '三角等式', 'Proposition 1.5.2', 'Prop 1.5.2', 'Definition 1.5.3', 'Def 1.5.3'] },
     { id: 'thm.right-adjoint-criterion', aka: ['右伴随存在的判据', 'adjoint functor existence'] },
     { id: 'prop.adjoint-full-faithful', aka: ['全忠实等价于单位同构', 'fully faithful iff the unit is an isomorphism'] },
@@ -12366,7 +12410,7 @@ MG.aliases = {
     { id: 'thm.filtered-complex-spectral', en: 'a filtered complex gives a spectral sequence', aka: ['过滤复形给出谱序列', 'Theorem 7.2.16', 'Thm 7.2.16'] },
     { id: 'def.bicomplex', aka: ['双复形', 'bicomplex', '复形的复形', 'Definition 7.2.17', 'Def 7.2.17'] },
     { id: 'cor.grothendieck-spectral', en: 'Grothendieck spectral sequence', aka: ['Grothendieck 谱序列', 'Corollary 7.2.13', 'Cor 7.2.13', 'Corollary 7.2.21', 'Proposition 7.2.20'] },
-    { id: 'def.sheaf-cohomology', aka: ['层上同调', 'sheaf cohomology', 'H^n(X,M)', 'Definition 7.3.1', 'Def 7.3.1'] },
+    { id: 'def.sheaf-cohomology', aka: ['层上同调', 'sheaf cohomology', 'H^n(X,M)', 'Definition 7.3.1', 'Def 7.3.1', 'H^i(X,F)', '层上同调 H^i'] },
     { id: 'def.cech-cohomology', aka: ['Čech 上同调', 'Cech 上同调', 'Čech cohomology', 'Definition 7.3.5', 'Def 7.3.5'] },
     { id: 'prop.cech-as-colim', aka: ['Čech 上同调是余极限', 'Exercise 7.46', 'Proposition 7.3.4'] },
     { id: 'thm.cartan-leray', aka: ['Cartan-Leray', 'Cartan–Leray 谱序列', 'Theorem 7.3.6', 'Thm 7.3.6', 'Corollary 7.3.7'] },
@@ -12475,7 +12519,7 @@ MG.aliases = {
     { id: 'def.presheaf-valued', en: 'sheaf with values in a category', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
     { id: 'def.abelian-sheaf', en: 'abelian sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14', 'Exercise 5.22'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'abelian groups in a topos form a Grothendieck category', 'Theorem 5.3.2'] },
-    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8', 'Exercise 5.21', 'Exercise 5.23', 'Exercise 5.30', 'Exercise 3.44'] },
+    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8', 'Exercise 5.21', 'Exercise 5.23', 'Exercise 5.30', 'Exercise 3.44', 'Hom(-,-)', '内 Hom Hom'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28', 'Exercise 5.26', 'Exercise 5.27'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3', 'Exercise 5.31'] },
 
@@ -12559,7 +12603,7 @@ MG.aliases = {
     { id: 'lem.triangle-morphism', aka: ['三角态射的性质', 'Proposition 7.1.9', 'Prop 7.1.9', 'Lemma 7.1.8'] },
     { id: 'def.cycle', en: 'Cycles and Cocycles', aka: ['闭链', '上闭链', 'cycle', 'cocycle', '闭链群', '上闭链群', 'Z^n'] },
     { id: 'def.boundary', en: 'Boundaries and Coboundaries', aka: ['边缘', '上边缘', 'boundary', 'coboundary', '边缘群', '上边缘群', 'B^n'] },
-    { id: 'def.cohomology', en: 'cohomology', aka: ['同调', '上同调', 'cohomology', 'homology', 'H^n', 'Exercise 7.12', 'Exercise 7.14', 'Definition 7.1.11', 'Def 7.1.11'] },
+    { id: 'def.cohomology', en: 'cohomology', aka: ['同调', '上同调', 'cohomology', 'homology', 'H^n', 'Exercise 7.12', 'Exercise 7.14', 'Definition 7.1.11', 'Def 7.1.11', 'H_n', '同调群 H_n'] },
     { id: 'prop.cohomology-exact-sequence', en: 'short exact sequence in cohomology', aka: ['同调的短正合列'] },
     { id: 'def.cohomological-functor', aka: ['上同调函子', 'cohomological functor', 'Exercise 7.15', 'Definition 7.1.12', 'Def 7.1.12', 'Corollary 7.1.16', 'Cor 7.1.16', 'Proposition 7.1.13', 'Corollary 7.1.10', 'Cor 7.1.10'] },
     { id: 'thm.long-exact', en: 'long exact sequence', aka: ['长正合列', 'long exact sequence', '蛇引理', 'snake lemma', '连接同态', 'Theorem 7.1.15', 'Thm 7.1.15'] },
@@ -12760,7 +12804,7 @@ MG.aliases = {
     { id: 'def.solid-group', en: 'solid abelian group', aka: ['固态群'] },
     { id: 'lem.solid-completion-criterion', en: 'criterion for solid completeness', aka: ['补全判据'] },
     { id: 'def.discrete-huber-pair', en: 'discrete Huber pair', aka: ['Huber 对'] },
-    { id: 'def.adic-spectrum', en: 'the adic spectrum', aka: ['赋值谱'] },
+    { id: 'def.adic-spectrum', en: 'the adic spectrum', aka: ['赋值谱', 'Spa', 'Spa(A,A⁺)'] },
 
     /* 复变函数：**换一种译名就搜不到**的高频词。
        ⚠️ 2026-10-22 用户搜「Riemann映照定理」找不到 `thm.riemann-mapping` ——
@@ -12769,7 +12813,7 @@ MG.aliases = {
     /* ⭐ 2026-11-02 用户报「搜 Riemann 积分，那个节点在第五位、搜不出来」：
        节点 label 是「Riemann 可积」（正文讲的是 Riemann 积分的定义与可积性），
        于是「积分」二字进不了名字档 ⇒ 补上人们真正会敲的叫法。 */
-    { id: 'def.riemann-integrable', aka: ['Riemann 积分', '定积分', 'Riemann 积分定义', 'Riemann 积分的定义', '黎曼积分', '积分'] },
+    { id: 'def.riemann-integrable', aka: ['Riemann 积分', '定积分', 'Riemann 积分定义', 'Riemann 积分的定义', '黎曼积分', '积分', '∫', '∫_a^b'] },
     { id: 'thm.riemann-lebesgue', en: 'Riemann-Lebesgue Lemma', aka: ['Riemann-Lebesgue 引理', 'Riemann–Lebesgue', 'Riemann-Lebesgue', '傅里叶系数趋于零', '黎曼-勒贝格引理'] },
     { id: 'thm.riemann-mapping', aka: ['Riemann映照定理', 'Riemann 映照定理', '黎曼映照定理', '黎曼映射定理', 'Riemann映射定理', 'Riemann mapping theorem', '共形映射基本定理', '保形映射定理'] },
     { id: 'def.holomorphic', aka: ['解析函数', 'analytic function', '正则函数'] },
@@ -12828,7 +12872,7 @@ MG.aliases = {
     { id: 'def.entire-order', en: 'order and type of an entire function', aka: ['整函数的阶与型'] },
     { id: 'prop.jensen', en: 'Jensen\'s formula', aka: ['Jensen 公式'] },
     { id: 'thm.hadamard-factorization', en: 'Hadamard factorization theorem', aka: ['Hadamard 分解定理'] },
-    { id: 'thm.euler-characteristic', en: 'Euler characteristic', aka: ['Euler 示性数'] },
+    { id: 'thm.euler-characteristic', en: 'Euler characteristic', aka: ['Euler 示性数', 'χ', 'χ(M)'] },
     { id: 'thm.cauchy-mvt', en: 'Cauchy\'s mean value theorem', aka: ['Cauchy 中值定理'] },
     { id: 'thm.solid-abelian', en: 'solid abelian groups form an abelian subcategory', aka: ['固态群构成阿贝尔子范畴'] },
     { id: 'thm.za-analytic', en: 'analytic rings from finitely generated algebras', aka: ['有限生成代数的解析环'] },
@@ -12932,7 +12976,7 @@ MG.aliases = {
     { id: 'def.uniform-convergence', en: 'uniform convergence', aka: ['一致收敛'] },
     { id: 'prop.weierstrass-m-test', en: 'Weierstrass M-test', aka: ['Weierstrass 判别法'] },
     { id: 'thm.convergence-radius', en: 'radius of convergence', aka: ['收敛半径'] },
-    { id: 'def.determinant', en: 'determinant', aka: ['行列式'] },
+    { id: 'def.determinant', en: 'determinant', aka: ['行列式', 'det', 'det A'] },
     { id: 'thm.diagonalizable', en: 'criterion for diagonalisability', aka: ['可对角化判据'] },
     { id: 'thm.jordan-canonical-form', en: 'Jordan canonical form', aka: ['Jordan 标准形', '若尔当标准形', '约当标准形'] },
     { id: 'prop.differentiable-implies-continuous', en: 'differentiable implies continuous', aka: ['可导 ⟹ 连续'] },
@@ -13048,7 +13092,7 @@ MG.aliases = {
     { id: 'def.uniform-continuity', en: 'uniform continuity', aka: ['一致连续'] },
     { id: 'def.pi', en: 'the number pi', aka: ['圆周率 π'] },
     { id: 'prop.subspace-criterion', en: 'criterion for a subspace', aka: ['子空间判据'] },
-    { id: 'def.trace', en: 'trace', aka: ['迹'] },
+    { id: 'def.trace', en: 'trace', aka: ['迹', 'tr', 'Tr A'] },
     { id: 'def.orthogonal-projection', en: 'orthogonal projection', aka: ['正交投影'] },
     { id: 'thm.jordan-holder', en: 'Jordan–Hölder theorem', aka: ['Jordan–Hölder 定理'] },
     { id: 'prop.abs-properties', en: 'properties of the absolute value', aka: ['绝对值的运算性质'] },
@@ -13081,18 +13125,18 @@ MG.aliases = {
     { id: 'def.dual-space', en: 'dual space', aka: ['对偶空间'] },
     { id: 'def.dual-basis', en: 'dual basis', aka: ['对偶基'] },
     { id: 'def.annihilator', en: 'annihilator', aka: ['零化子'] },
-    { id: 'def.direct-sum', en: 'direct sum and complement', aka: ['直和与补空间'] },
+    { id: 'def.direct-sum', en: 'direct sum and complement', aka: ['直和与补空间', '⊕', '直和 ⊕'] },
     { id: 'def.matrix', en: 'matrix', aka: ['矩阵'] },
     { id: 'def.matrix-operations', en: 'addition and multiplication of matrices', aka: ['矩阵的加法与乘法'] },
     { id: 'def.elementary-matrix', en: 'elementary operations and elementary matrices', aka: ['初等变换与初等矩阵'] },
     { id: 'def.invertible-matrix', en: 'invertible matrix', aka: ['可逆矩阵'] },
     { id: 'def.alternating-form', en: 'alternating form', aka: ['交错型'] },
     { id: 'def.polynomial', en: 'polynomials in one variable', aka: ['一元多项式'] },
-    { id: 'def.polynomial-ring', en: 'polynomial ring', aka: ['多项式环'] },
+    { id: 'def.polynomial-ring', en: 'polynomial ring', aka: ['多项式环', 'k[x]', 'K[X]', 'R[x]'] },
     { id: 'def.irreducible-poly', en: 'irreducible polynomial', aka: ['不可约多项式'] },
     { id: 'def.invariant-subspace', en: 'invariant subspace', aka: ['不变子空间'] },
     { id: 'def.eigenvalue', en: 'eigenvalue and eigenvector', aka: ['特征值与特征向量', '几何重数', '特征值'] },
-    { id: 'def.inner-product', en: 'inner product', aka: ['内积'] },
+    { id: 'def.inner-product', en: 'inner product', aka: ['内积', '⟨u,v⟩', '内积 ⟨,⟩'] },
     { id: 'def.orthogonality', en: 'orthogonality', aka: ['正交'] },
     { id: 'def.orthogonal-complement', en: 'orthogonal complement', aka: ['正交补'] },
     { id: 'def.operator-adjoint', en: 'adjoint operator', aka: ['伴随算子'] },
@@ -13100,7 +13144,7 @@ MG.aliases = {
     { id: 'def.quadratic-form', en: 'quadratic form', aka: ['二次型'] },
     { id: 'def.bilinear-form', en: 'bilinear form', aka: ['双线性型'] },
     { id: 'def.tensor-product-vs', en: 'tensor product', aka: ['向量空间的张量积'] },
-    { id: 'def.tensor-module', en: 'tensor product of modules', aka: ['张量积', '模的张量积', '张量积（模）'] },
+    { id: 'def.tensor-module', en: 'tensor product of modules', aka: ['张量积', '模的张量积', '张量积（模）', '⊗', '⊗_R', 'M⊗N'] },
     { id: 'def.exterior-power', en: 'exterior power', aka: ['外幂'] },
     { id: 'def.symmetric-algebra', en: 'symmetric algebra', aka: ['对称代数'] },
     { id: 'def.permutation-group', en: 'permutation and symmetric group', aka: ['置换群与对称群'] },
@@ -13113,7 +13157,7 @@ MG.aliases = {
     { id: 'def.second-countable', en: 'second countable space', aka: ['第二可数空间'] },
     { id: 'def.first-countable', en: 'first countable space', aka: ['第一可数空间'] },
     { id: 'def.homotopy-maps', en: 'homotopy of maps', aka: ['映射同伦'] },
-    { id: 'def.fundamental-group', en: 'fundamental group', aka: ['基本群'] },
+    { id: 'def.fundamental-group', en: 'fundamental group', aka: ['基本群', 'π_1', 'π₁', 'pi_1'] },
     { id: 'def.covering-space', en: 'covering space', aka: ['覆叠空间'] },
     { id: 'thm.lifting', en: 'lifting theorem', aka: ['提升定理'] },
     { id: 'def.cauchy-sequence', en: 'Cauchy sequence', aka: ['Cauchy 列'] },
@@ -13183,7 +13227,7 @@ MG.aliases = {
        `G_δ` / `ℓ²` / `ε-δ` 这类符号，人不会照抄；而带连字符的拉丁词（Banach–Steinhaus）
        用的是 en dash（–），人打的却是普通连字符（-）—— 两条都得进 aka。
        ⛔ aka 是纯文本：不能含 `$`，数学记号写成可搜的朴素形式。 */
-    { id: 'def.norm', en: 'norm and normed space', aka: ['范数公理', '赋范空间'] },
+    { id: 'def.norm', en: 'norm and normed space', aka: ['范数公理', '赋范空间', '‖x‖', '||x||', '范数 ‖·‖'] },
     { id: 'prop.norm-induces-metric', en: 'the metric induced by a norm', aka: ['诱导距离', '平移不变度量'] },
     { id: 'def.norm-equivalence', en: 'equivalent norms', aka: ['等价范数', '强弱范数', '范数等价'] },
     { id: 'thm.norm-equiv-finite-dim', en: 'all norms are equivalent in finite dimension', aka: ['有限维范数等价', '范数都等价'] },
@@ -13267,7 +13311,7 @@ MG.aliases = {
     { id: 'thm.taylor-complex', aka: ['泰勒展开', '泰勒级数'] },
     { id: 'thm.laurent', aka: ['洛朗展开', '洛朗级数'] },
     { id: 'thm.riemann-removable', aka: ['黎曼可去奇点'] },
-    { id: 'def.lie-bracket', aka: ['李括号'] },
+    { id: 'def.lie-bracket', aka: ['李括号', '[X,Y]', '李括号 [X,Y]'] },
     { id: 'def.de-rham-complex', aka: ['德拉姆上同调', 'de Rham 复形'] },
     { id: 'lem.poincare-lemma', aka: ['庞加莱引理'] },
     { id: 'thm.mayer-vietoris', aka: ['迈耶–维托里斯序列'] },
@@ -13338,6 +13382,11 @@ MG.aliases = {
     { id: 'def.provability', en: 'provability', aka: ['可证明', '可证', '证明论', '句法', '推演'] },
     { id: 'thm.completeness-first-order', en: 'Gödel completeness theorem', aka: ['完备性定理', '哥德尔完备性定理', '一阶逻辑完备性'] },
     { id: 'thm.compactness', en: 'compactness theorem', aka: ['紧致性定理', '紧致性', '有限可满足'] },
+    { id: 'def.boundary-operator', en: 'boundary operator', aka: ['边界算子', '∂', '边界 ∂'] },
+    { id: 'def.gradient', en: 'gradient', aka: ['梯度', '∇', 'grad'] },
+    { id: 'def.exterior-derivative', en: 'exterior derivative', aka: ['外微分', 'dω', '外微分 d'] },
+    { id: 'def.connected-sum', en: 'connected sum', aka: ['连通和', 'connect sum', 'M#N'] },
+    { id: 'def.genus', en: 'genus', aka: ['亏格', 'genus', '洞的个数'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */
@@ -13834,6 +13883,7 @@ MG.i18n = {
     'def.conjugate-transpose': { title_en: 'Conjugate Transpose (Adjugate)', label_en: 'Conjugate Transpose', from: 'manual' },
     'def.connected': { title_en: 'connected', label_en: 'connected', from: 'aka' },
     'def.connected-category': { title_en: 'connected category', label_en: 'connected category', from: 'aka' },
+    'def.connected-sum': { title_en: 'connected sum', label_en: 'connected sum', from: 'explicit' },
     'def.connection-form': { title_en: 'Connection Form', label_en: 'Connection Form', from: 'manual' },
     'def.continuous': { title_en: 'continuous', label_en: 'continuous', from: 'aka' },
     'def.continuous-functor': { title_en: 'continuous functor', label_en: 'continuous functor', from: 'aka' },
@@ -13946,6 +13996,7 @@ MG.i18n = {
     'def.generalized-eigenvector': { title_en: 'Generalized Eigenvector', label_en: 'Generalized Eigenvector', from: 'explicit' },
     'def.generated-sigma': { title_en: 'generated sigma-algebra', label_en: 'generated sigma-algebra', from: 'aka' },
     'def.generator': { title_en: 'Generator', label_en: 'Generator', from: 'manual' },
+    'def.genus': { title_en: 'genus', label_en: 'genus', from: 'explicit' },
     'def.geodesic': { title_en: 'Geodesic', label_en: 'Geodesic', from: 'manual' },
     'def.geodesic-curvature': { title_en: 'Geodesic Curvature', label_en: 'Geodesic Curvature', from: 'manual' },
     'def.global-dimension': { title_en: 'Global Dimension', label_en: 'Global Dimension', from: 'manual' },
@@ -17529,6 +17580,8 @@ MG.xref = {
 };
 
 </script>
+<!-- 私人批注（可选）：本地文件、不进 git、不进构建产物；模板见 src/data/local/annotations.example.js -->
+<script src="src/data/local/annotations.js"></script>
 <script>
 /* ==========================================================================
    数学星图 · 记号对照表（真源）
@@ -84711,7 +84764,7 @@ window.MG = window.MG || {};
         '两个节点一个说「群同态 $G/\\ker\\varphi \\cong \\operatorname{im}\\varphi$」，' +
           '一个说「线性映射 $V/\\ker T \\cong \\operatorname{im} T$」。',
         '**谁也没推出谁**（群不是向量空间、向量空间加法群也不决定标量乘法），但证明**逐字一样**：' +
-          '良定义 \\$\\to\\$ 同态（线性）\\$\\to\\$ 双射。群版那条的注已经把这件事写明了：' +
+          '良定义 $\\to$ 同态（线性）$\\to$ 双射。群版那条的注已经把这件事写明了：' +
           '「它其实是『集合 + 运算 + 公理』这套格式的通用定理，不是群的专利」。',
         '⭐ 所以这条只能当**类比**：想要真正的一次性说法，得有「阿贝尔范畴里的第一同构定理」那个节点。',
       ].join('\n\n'),
@@ -85014,6 +85067,154 @@ window.MG = window.MG || {};
           '完全由它的 Stone 空间（超滤子空间）决定 —— 命题逻辑的完备性在那边就是「$\\operatorname{Spec}$ 非空」。',
         '⚠ 本图没有「命题逻辑」这个节点（一阶逻辑才是主角），所以这条只作**联想线索**：' +
           '从「可证明性」跳到「Boolean 环 / Stone 空间」那条线的入口。',
+      ].join('\n\n'),
+    },
+  ],
+});
+
+</script>
+<script>
+/* ============================================================================
+   内容包 · 曲面地形 第一刀（2026-11-03，T18 / 审计 B2·B6）
+   ----------------------------------------------------------------------------
+   病灶：图里三种「曲面」互不相等，而**闭曲面分类定理要的那个对象根本不存在**：
+     · `def.regular-surface` / `def.orientable-surface` —— $S \subseteq \mathbb{R}^{3}$ 的参数化曲面（外在）
+     · `def.riemann-surface` —— 一维复流形
+     · `def.smooth-manifold` —— 图册 + 光滑转移
+     · **拓扑流形 / 闭曲面 / 亏格 / 连通和** —— 全都没有节点
+   ⇒ 分类定理（第二刀）一开口就得说「紧连通二维拓扑流形」，而这个词在图里是空的。
+
+   这一刀只补**三块地基**（审计 §10 已定）：
+     · `def.connected-sum` —— 连通和（挖球 + 沿边界粘）
+     · `def.genus`         —— 亏格，按「方案 1」用同调定义，避开循环
+     · 星团 `topology.surfaces`（本刀新开；第二刀往这里放分类定理）
+
+   ⚠️ **亏格的定义**：审计写的是 `g := rank H₁`，但那是**两倍**——闭可定向曲面的
+      $H_{1} \cong \mathbb{Z}^{2g}$（环面 rank = 2 而亏格是 1）。所以这里定义成
+      $g := \tfrac{1}{2}\operatorname{rank}_{\mathbb{Z}} H_{1}$，并在注里把「为什么除 2」写清。
+      ⛔ 不改审计的意图（用同调避开循环），只把因子写对。
+   ========================================================================== */
+(window.MG.packs = window.MG.packs || []).push({
+  name: '曲面地形（一）：连通和与亏格',
+
+  nodes: [
+    {
+      id: 'def.connected-sum',
+      cluster: 'topology.surfaces',
+      type: 'definition',
+      label: '连通和',
+      title: '连通和 $M \\# N$（挖球再沿边界粘）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '曲面'],
+      statement: [
+        '设 $M$、$N$ 是两个 $n$ 维**连通**拓扑流形（$n \\ge 1$）。在 $M$ 里取一个开球 $B_{M}$、' +
+          '在 $N$ 里取一个开球 $B_{N}$，挖掉它们的内部，得到两个带边界球面的流形',
+        '',
+        '$$M^{\\circ} := M \\setminus \\operatorname{int} B_{M}, \\qquad N^{\\circ} := N \\setminus \\operatorname{int} B_{N},$$',
+        '',
+        '它们的边界都是 $S^{n-1}$。任取一个同胚 $h : \\partial M^{\\circ} \\to \\partial N^{\\circ}$，把两者沿边界粘起来：',
+        '',
+        '$$M \\# N := M^{\\circ} \\sqcup N^{\\circ} \\big/ \\bigl( x \\sim h(x) \\bigr).$$',
+        '',
+        '得到的拓扑空间叫 $M$ 与 $N$ 的**连通和**。',
+      ].join('\n'),
+      notes: [
+        '⭐ **粘合就是取商**：$\\sqcup$ 之后按 $x \\sim h(x)$ 取商拓扑（`def.quotient-set` 那一套：' +
+          '开集是「原像开」的集合）。所以连通和不是新构造，是「不交并 + 商」的组合。',
+        '⭐ **结果是流形，且与选取无关**：接缝处 $M^{\\circ}$ 的那一圈 $S^{n-1}$ 与 $N^{\\circ}$ 的那一圈' +
+          '在粘之后各自有半边的欧氏邻域，拼起来仍是 $\\mathbb{R}^{n}$ 的开集 —— 每一点都有图卡。' +
+          '换成别的球或别的同胚，得到的结果同胚（这一点靠「球内任何两个嵌入的球都同痕」，本图未展开）。',
+        '⭐ 球面是**单位元**：$S^{n} \\# M \\cong M$（在 $M$ 里挖一个球、把 $S^{n}$ 也挖一个球，' +
+          '粘回去正好把洞补成原来的样子）。于是「$n$ 维闭流形」在连通和下构成一个**交换幺半群**：' +
+          '交换、有单位元，但**一般没有逆元**（这正是分类问题有意思的地方）。',
+        '⚠ **必须在同一个维数下取连通和**，而且要连通（不连通的话挖球可能挖在不同的分支上，' +
+          '结果依赖选取）。',
+        '📌 亏格（`def.genus`）就是「一个曲面等于几个环面的连通和」的那个数 —— 本图把这条等价' +
+          '留到分类定理（下一刀），这里只立定义。',
+      ].join('\n\n'),
+      refs: ['Munkres, Topology, Ch. 12（分类定理前的准备）', 'Hatcher, Algebraic Topology, Ch. 0'],
+    },
+
+    {
+      id: 'def.genus',
+      cluster: 'topology.surfaces',
+      type: 'definition',
+      label: '亏格',
+      title: '亏格 $g$（闭可定向曲面：$\\tfrac{1}{2}\\operatorname{rank} H_{1}$）',
+      regions: ['topology'],
+      tags: ['定义', '拓扑', '曲面', '同调'],
+      statement: [
+        '设 $M$ 是**闭的**（紧、无边界）**可定向**曲面。定义它的**亏格**为',
+        '',
+        '$$g(M) := \\tfrac{1}{2} \\operatorname{rank}_{\\mathbb{Z}} H_{1}(M; \\mathbb{Z}).$$',
+        '',
+        '即一阶整同调的自由秩的一半。',
+      ].join('\n'),
+      notes: [
+        '⭐ **为什么除以 2**：闭可定向曲面的 $H_{1}$ 是自由阿贝尔群，且',
+        '',
+        '$$H_{1}(M; \\mathbb{Z}) \\cong \\mathbb{Z}^{2g},$$',
+        '',
+        '所以 **rank 是 $2g$**。环面是第一个例子：$H_{1}(T^{2}) \\cong \\mathbb{Z}^{2}$，rank = 2，' +
+          '而亏格是 **1**。若直接把亏格定义成 rank，环面就成了「亏格 2」，' +
+          '连带 $\\chi = 2 - 2g$ 也会算错（环面 $\\chi = 0$）。除以 2 才是那个「洞的个数」。',
+        '⭐ **为什么不用「环柄个数」或「$\\chi = 2-2g$」来定义**：那两条都要先有分类定理' +
+          '（每个闭可定向曲面都是若干环面的连通和），而分类定理本身要用 $g$ —— 会成环。' +
+          '同调定义**不依赖分类**，所以它是这一层唯一干净的选择。',
+        '⭐ 由定义立刻能算的三个值：球面 $g = 0$（$H_{1} = 0$）；环面 $g = 1$；' +
+          '$g$ 个环面的连通和满足 $g(M \\# N) = g(M) + g(N)$（连通和的 $H_{1}$ 是两个加项直和的那一部分）。' +
+          '⚠ 最后这条是**定理**（要 Mayer–Vietoris），本图还没写成节点。',
+        '⚠ **这个定义只对闭可定向曲面上班**：带边界的曲面要看相对同调或先补洞；' +
+          '**不可定向**的情形 $H_{1}$ 有挠部（射影平面 $H_{1} \\cong \\mathbb{Z}/2$），' +
+          '「亏格」得换成别的量（不可定向亏格 $k$，$\\chi = 2 - k$）。',
+        '📌 与 Euler 示性数的关系 $\\chi(M) = 2 - 2g(M)$ 也是**定理**（下一刀），这里只记一句。',
+      ].join('\n\n'),
+      refs: ['Hatcher, Algebraic Topology, Ch. 2.2（曲面与亏格）', 'Massey, A Basic Course in Algebraic Topology'],
+    },
+  ],
+
+  edges: [
+    /* -------- 连通和的两块原料 -------- */
+    {
+      id: 'dep.quotientset-connectedsum',
+      kind: 'definition',
+      definition: 'def.quotient-set',
+      usedBy: 'def.connected-sum',
+      note: '粘合这一步**就是商空间**：不交并之后按 $x \\sim h(x)$ 取商拓扑。',
+    },
+    {
+      id: 'dep.smoothmanifold-connectedsum',
+      kind: 'definition',
+      definition: 'def.smooth-manifold',
+      usedBy: 'def.connected-sum',
+      note: '连通和是在 $n$ 维**流形**上做的：要先有「开球」「边界球面」这些概念。',
+    },
+    /* -------- 亏格的两块原料 -------- */
+    {
+      id: 'dep.simphomology-genus',
+      kind: 'definition',
+      definition: 'def.simplicial-homology',
+      usedBy: 'def.genus',
+      note: '亏格用**一阶整同调的秩**定义 —— 这是为了避开「先有分类定理」的循环（见该节点的注）。',
+    },
+    {
+      id: 'dep.connectedsum-genus',
+      kind: 'definition',
+      definition: 'def.connected-sum',
+      usedBy: 'def.genus',
+      note: '「$g$ 就是几个环面的连通和」这个直觉要靠连通和才说得出来；' +
+        '但那件事本身是**定理**（分类定理，下一刀），定义里不用它。',
+    },
+    /* -------- 与 Euler 示性数的桥：先记类比，定理留给下一刀 -------- */
+    {
+      kind: 'analogy',
+      a: 'def.genus',
+      b: 'thm.euler-characteristic',
+      title: '亏格与 Euler 示性数：同一个数换了身衣服',
+      note: [
+        '闭可定向曲面上 $\\chi(M) = 2 - 2g(M)$ —— 两个数互相决定，所以「数 Betti 数」与「数洞」是同一件事。',
+        '⚠ 本图把这条**留成类比**而不是 implication：它需要一个正经的定理节点（下一刀补），' +
+          '现在写死成推出关系就等于把「还没写的证明」当成已证。',
       ].join('\n\n'),
     },
   ],

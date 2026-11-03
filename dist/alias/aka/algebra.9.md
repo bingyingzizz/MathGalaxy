@@ -1,6 +1,10 @@
 # 别名 → 节点 · 抽象代数
 根 `../../`　·　索引 `../../alias.md`　·　问法在 `../algebra.md`
 
+- 迷向子空间 → def.isotropic-subspace
+
+- 双曲平面 → def.hyperbolic-plane
+
 - 惯性指数 → def.inertia-index
 
 - 惯性定理 → thm.sylvester-law-inertia

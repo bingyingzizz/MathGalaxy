@@ -75,7 +75,7 @@ MG.aliases = {
     { id: 'thm.schroder-bernstein', en: 'Schröder–Bernstein theorem', aka: ['Cantor–Bernstein', '施罗德-伯恩斯坦', 'Cantor-Bernstein-Schroeder', '施罗德–伯恩斯坦定理'] },
     { id: 'thm.hartogs', aka: ['Hartogs', '哈托格斯'] },
     { id: 'def.countable', aka: ['可数', 'countable', '可数无穷', '可列'] },
-    { id: 'def.cardinal', en: 'cardinality', aka: ['基数', 'cardinality', '势', 'cardinal number'] },
+    { id: 'def.cardinal', en: 'cardinality', aka: ['基数', 'cardinality', '势', 'cardinal number', '#A', '|A|', 'card'] },
     { id: 'thm.cantor', aka: ['对角线论证', 'diagonal argument', '幂集比原集大', '康托', '康托尔', '康托尔定理'] },
     { id: 'thm.cardinal-comparable', aka: ['基数可比', '三分律', 'comparability of cardinals'] },
 
@@ -143,11 +143,11 @@ MG.aliases = {
     /* 实数与极限 */
     { id: 'def.extended-real', aka: ['扩充实数', 'extended real', '广义实数'] },
     { id: 'def.interval', aka: ['区间', 'interval'] },
-    { id: 'def.sequence-limit', en: 'limit of a sequence', aka: ['数列极限', '极限', 'limit', '收敛', 'convergence'] },
+    { id: 'def.sequence-limit', en: 'limit of a sequence', aka: ['数列极限', '极限', 'limit', '收敛', 'convergence', 'lim_{n→∞}', 'lim a_n'] },
     { id: 'thm.real-ordered-field', en: 'least upper bound property', aka: ['确界原理', '实数完备', '完备性', 'least upper bound property', 'completeness of R', '实数的运算律', 'ℝ 上的运算律', '实数加法交换律', '实数的加法交换律', '实数的乘法交换律'] },
     { id: 'def.series', aka: ['级数', 'series', '级数收敛'] },
-    { id: 'def.continuous', aka: ['连续', 'continuous', '连续函数'] },
-    { id: 'def.derivative', aka: ['导数', 'derivative', '可导', '微分', '求导'] },
+    { id: 'def.continuous', aka: ['连续', 'continuous', '连续函数', '连续 ε-δ', 'ε-δ'] },
+    { id: 'def.derivative', aka: ['导数', 'derivative', '可导', '微分', '求导', 'd/dx', 'f\'', 'df/dx'] },
 
     /* 集合族与 σ-代数 */
     { id: 'def.set-ring', en: 'ring of sets', aka: ['环', '代数', 'ring of sets', 'algebra of sets', '集合环'] },
@@ -162,7 +162,7 @@ MG.aliases = {
     { id: 'prop.set-class-properties', en: 'basic properties of families of sets', aka: ['集合族的性质'] },
 
     /* 测度的构造 */
-    { id: 'def.measure', aka: ['测度', 'measure', '可数可加'] },
+    { id: 'def.measure', aka: ['测度', 'measure', '可数可加', 'μ(A)', '测度 μ'] },
     { id: 'def.outer-measure', aka: ['外测度', 'outer measure'] },
     { id: 'def.premeasure', aka: ['预测度', 'premeasure'] },
     { id: 'def.finitely-additive', aka: ['有限可加', 'finitely additive'] },
@@ -337,10 +337,10 @@ MG.aliases = {
     { id: 'def.commutative-diagram', en: 'diagram and commutative diagram', aka: ['交换图', 'commutative diagram', 'diagram', '图（函子）', '索引范畴', '图范畴', '常图函子', '预序', 'Definition 1.3.1', 'Def 1.3.1'] },
     { id: 'def.simplicial', aka: ['单纯对象', 'simplicial object', '单纯形范畴', '面映射', '退化映射', 'Definition 1.3.2', 'Def 1.3.2', 'Exercise 1.25'] },
     { id: 'def.cone', en: 'cone and cocone', aka: ['锥', 'cone', '余锥', 'cocone', 'Definition 1.3.3', 'Def 1.3.3'] },
-    { id: 'def.limit', en: 'limit and colimit', aka: ['极限', 'limit', '余极限', 'colimit', '泛锥', '有限极限', 'Definition 1.3.4', 'Def 1.3.4', 'Exercise 1.26', 'Exercise 1.34'] },
+    { id: 'def.limit', en: 'limit and colimit', aka: ['极限', 'limit', '余极限', 'colimit', '泛锥', '有限极限', 'Definition 1.3.4', 'Def 1.3.4', 'Exercise 1.26', 'Exercise 1.34', 'lim', '极限 lim'] },
     { id: 'def.final-initial', aka: ['终对象', '始对象', 'terminal object', 'initial object', '零对象', 'Definition 1.3.5', 'Def 1.3.5'] },
-    { id: 'def.product', en: 'product and coproduct', aka: ['积', '余积', 'product', 'coproduct', '直积', '直和', 'Definition 1.3.6', 'Def 1.3.6'] },
-    { id: 'def.fibered-product', en: 'pullback and pushout', aka: ['纤维积', '拉回', 'pullback', 'fibered product', '推出', 'pushout', '笛卡尔方块', 'Definition 1.3.7', 'Def 1.3.7'] },
+    { id: 'def.product', en: 'product and coproduct', aka: ['积', '余积', 'product', 'coproduct', '直积', '直和', 'Definition 1.3.6', 'Def 1.3.6', '∏', '×'] },
+    { id: 'def.fibered-product', en: 'pullback and pushout', aka: ['纤维积', '拉回', 'pullback', 'fibered product', '推出', 'pushout', '笛卡尔方块', 'Definition 1.3.7', 'Def 1.3.7', '纤维积 ×_S'] },
     { id: 'def.equalizer', en: 'equalizer and coequalizer', aka: ['等化子', '余等化子', 'equalizer', 'coequalizer', '核', 'ker', 'coker', 'Definition 1.3.8', 'Def 1.3.8', 'Exercise 1.36'] },
     { id: 'def.mono', en: 'monomorphism, epimorphism and isomorphism', aka: ['单态射', '满态射', '同构', '同构映射', 'mono', 'epi', 'monomorphism', 'epimorphism', 'isomorphism', 'isomorphic', '可消', 'Definition 1.3.9', 'Def 1.3.9'] },
     { id: 'def.subobject', aka: ['子对象', 'subobject', '子对象之交', '原像', 'Definition 1.3.10', 'Def 1.3.10'] },
@@ -361,7 +361,7 @@ MG.aliases = {
     { id: 'lem.presheaf-mono-pointwise', en: 'monomorphisms of presheaves are pointwise', aka: ['预层逐点检验', '预层的单满'] },
 
     /* 伴随与反射 */
-    { id: 'def.adjoint', aka: ['伴随函子', 'adjoint functor', '左伴随', '右伴随', 'adjunction', 'Definition 1.5.1', 'Def 1.5.1'] },
+    { id: 'def.adjoint', aka: ['伴随函子', 'adjoint functor', '左伴随', '右伴随', 'adjunction', 'Definition 1.5.1', 'Def 1.5.1', '⊣', 'F ⊣ G'] },
     { id: 'def.adjunction-unit', aka: ['单位', '余单位', 'unit', 'counit', '三角等式', 'Proposition 1.5.2', 'Prop 1.5.2', 'Definition 1.5.3', 'Def 1.5.3'] },
     { id: 'thm.right-adjoint-criterion', aka: ['右伴随存在的判据', 'adjoint functor existence'] },
     { id: 'prop.adjoint-full-faithful', aka: ['全忠实等价于单位同构', 'fully faithful iff the unit is an isomorphism'] },
@@ -463,7 +463,7 @@ MG.aliases = {
     { id: 'thm.filtered-complex-spectral', en: 'a filtered complex gives a spectral sequence', aka: ['过滤复形给出谱序列', 'Theorem 7.2.16', 'Thm 7.2.16'] },
     { id: 'def.bicomplex', aka: ['双复形', 'bicomplex', '复形的复形', 'Definition 7.2.17', 'Def 7.2.17'] },
     { id: 'cor.grothendieck-spectral', en: 'Grothendieck spectral sequence', aka: ['Grothendieck 谱序列', 'Corollary 7.2.13', 'Cor 7.2.13', 'Corollary 7.2.21', 'Proposition 7.2.20'] },
-    { id: 'def.sheaf-cohomology', aka: ['层上同调', 'sheaf cohomology', 'H^n(X,M)', 'Definition 7.3.1', 'Def 7.3.1'] },
+    { id: 'def.sheaf-cohomology', aka: ['层上同调', 'sheaf cohomology', 'H^n(X,M)', 'Definition 7.3.1', 'Def 7.3.1', 'H^i(X,F)', '层上同调 H^i'] },
     { id: 'def.cech-cohomology', aka: ['Čech 上同调', 'Cech 上同调', 'Čech cohomology', 'Definition 7.3.5', 'Def 7.3.5'] },
     { id: 'prop.cech-as-colim', aka: ['Čech 上同调是余极限', 'Exercise 7.46', 'Proposition 7.3.4'] },
     { id: 'thm.cartan-leray', aka: ['Cartan-Leray', 'Cartan–Leray 谱序列', 'Theorem 7.3.6', 'Thm 7.3.6', 'Corollary 7.3.7'] },
@@ -572,7 +572,7 @@ MG.aliases = {
     { id: 'def.presheaf-valued', en: 'sheaf with values in a category', aka: ['取值在范畴里的层', 'sheaf with values', 'presheaf with values', '一般值的层'] },
     { id: 'def.abelian-sheaf', en: 'abelian sheaf', aka: ['阿贝尔层', 'abelian sheaf', '阿贝尔群层', 'sheaf of abelian groups', 'Ab(C)', '层上的阿贝尔群', 'Definition 5.3.1', 'Exercise 5.14', 'Exercise 5.22'] },
     { id: 'thm.topos-abelian-grothendieck', aka: ['拓扑斯上的阿贝尔群', 'Ab(T) 是 Grothendieck 范畴', 'abelian groups in a topos form a Grothendieck category', 'Theorem 5.3.2'] },
-    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8', 'Exercise 5.21', 'Exercise 5.23', 'Exercise 5.30', 'Exercise 3.44'] },
+    { id: 'def.internal-hom', aka: ['内 Hom', 'internal hom', 'Hom(X,M)', '内层', '内部 Hom', 'Exercise 3.43', 'Proposition 3.3.7', 'Proposition 6.1.8', 'Exercise 5.21', 'Exercise 5.23', 'Exercise 5.30', 'Exercise 3.44', 'Hom(-,-)', '内 Hom Hom'] },
     { id: 'def.tensor-abelian-sheaf', aka: ['阿贝尔层的张量积', '封闭对称幺半', 'closed symmetric monoidal', 'Tensor', 'internal hom', '封闭张量结构', 'Exercise 5.25', 'Exercise 5.28', 'Exercise 5.26', 'Exercise 5.27'] },
     { id: 'def.flat-abelian-sheaf', aka: ['平坦阿贝尔层', 'flat', '平坦性', '无挠', 'Definition 5.3.3', 'Exercise 5.31'] },
 
@@ -656,7 +656,7 @@ MG.aliases = {
     { id: 'lem.triangle-morphism', aka: ['三角态射的性质', 'Proposition 7.1.9', 'Prop 7.1.9', 'Lemma 7.1.8'] },
     { id: 'def.cycle', en: 'Cycles and Cocycles', aka: ['闭链', '上闭链', 'cycle', 'cocycle', '闭链群', '上闭链群', 'Z^n'] },
     { id: 'def.boundary', en: 'Boundaries and Coboundaries', aka: ['边缘', '上边缘', 'boundary', 'coboundary', '边缘群', '上边缘群', 'B^n'] },
-    { id: 'def.cohomology', en: 'cohomology', aka: ['同调', '上同调', 'cohomology', 'homology', 'H^n', 'Exercise 7.12', 'Exercise 7.14', 'Definition 7.1.11', 'Def 7.1.11'] },
+    { id: 'def.cohomology', en: 'cohomology', aka: ['同调', '上同调', 'cohomology', 'homology', 'H^n', 'Exercise 7.12', 'Exercise 7.14', 'Definition 7.1.11', 'Def 7.1.11', 'H_n', '同调群 H_n'] },
     { id: 'prop.cohomology-exact-sequence', en: 'short exact sequence in cohomology', aka: ['同调的短正合列'] },
     { id: 'def.cohomological-functor', aka: ['上同调函子', 'cohomological functor', 'Exercise 7.15', 'Definition 7.1.12', 'Def 7.1.12', 'Corollary 7.1.16', 'Cor 7.1.16', 'Proposition 7.1.13', 'Corollary 7.1.10', 'Cor 7.1.10'] },
     { id: 'thm.long-exact', en: 'long exact sequence', aka: ['长正合列', 'long exact sequence', '蛇引理', 'snake lemma', '连接同态', 'Theorem 7.1.15', 'Thm 7.1.15'] },
@@ -857,7 +857,7 @@ MG.aliases = {
     { id: 'def.solid-group', en: 'solid abelian group', aka: ['固态群'] },
     { id: 'lem.solid-completion-criterion', en: 'criterion for solid completeness', aka: ['补全判据'] },
     { id: 'def.discrete-huber-pair', en: 'discrete Huber pair', aka: ['Huber 对'] },
-    { id: 'def.adic-spectrum', en: 'the adic spectrum', aka: ['赋值谱'] },
+    { id: 'def.adic-spectrum', en: 'the adic spectrum', aka: ['赋值谱', 'Spa', 'Spa(A,A⁺)'] },
 
     /* 复变函数：**换一种译名就搜不到**的高频词。
        ⚠️ 2026-10-22 用户搜「Riemann映照定理」找不到 `thm.riemann-mapping` ——
@@ -866,7 +866,7 @@ MG.aliases = {
     /* ⭐ 2026-11-02 用户报「搜 Riemann 积分，那个节点在第五位、搜不出来」：
        节点 label 是「Riemann 可积」（正文讲的是 Riemann 积分的定义与可积性），
        于是「积分」二字进不了名字档 ⇒ 补上人们真正会敲的叫法。 */
-    { id: 'def.riemann-integrable', aka: ['Riemann 积分', '定积分', 'Riemann 积分定义', 'Riemann 积分的定义', '黎曼积分', '积分'] },
+    { id: 'def.riemann-integrable', aka: ['Riemann 积分', '定积分', 'Riemann 积分定义', 'Riemann 积分的定义', '黎曼积分', '积分', '∫', '∫_a^b'] },
     { id: 'thm.riemann-lebesgue', en: 'Riemann-Lebesgue Lemma', aka: ['Riemann-Lebesgue 引理', 'Riemann–Lebesgue', 'Riemann-Lebesgue', '傅里叶系数趋于零', '黎曼-勒贝格引理'] },
     { id: 'thm.riemann-mapping', aka: ['Riemann映照定理', 'Riemann 映照定理', '黎曼映照定理', '黎曼映射定理', 'Riemann映射定理', 'Riemann mapping theorem', '共形映射基本定理', '保形映射定理'] },
     { id: 'def.holomorphic', aka: ['解析函数', 'analytic function', '正则函数'] },
@@ -925,7 +925,7 @@ MG.aliases = {
     { id: 'def.entire-order', en: 'order and type of an entire function', aka: ['整函数的阶与型'] },
     { id: 'prop.jensen', en: 'Jensen\'s formula', aka: ['Jensen 公式'] },
     { id: 'thm.hadamard-factorization', en: 'Hadamard factorization theorem', aka: ['Hadamard 分解定理'] },
-    { id: 'thm.euler-characteristic', en: 'Euler characteristic', aka: ['Euler 示性数'] },
+    { id: 'thm.euler-characteristic', en: 'Euler characteristic', aka: ['Euler 示性数', 'χ', 'χ(M)'] },
     { id: 'thm.cauchy-mvt', en: 'Cauchy\'s mean value theorem', aka: ['Cauchy 中值定理'] },
     { id: 'thm.solid-abelian', en: 'solid abelian groups form an abelian subcategory', aka: ['固态群构成阿贝尔子范畴'] },
     { id: 'thm.za-analytic', en: 'analytic rings from finitely generated algebras', aka: ['有限生成代数的解析环'] },
@@ -1029,7 +1029,7 @@ MG.aliases = {
     { id: 'def.uniform-convergence', en: 'uniform convergence', aka: ['一致收敛'] },
     { id: 'prop.weierstrass-m-test', en: 'Weierstrass M-test', aka: ['Weierstrass 判别法'] },
     { id: 'thm.convergence-radius', en: 'radius of convergence', aka: ['收敛半径'] },
-    { id: 'def.determinant', en: 'determinant', aka: ['行列式'] },
+    { id: 'def.determinant', en: 'determinant', aka: ['行列式', 'det', 'det A'] },
     { id: 'thm.diagonalizable', en: 'criterion for diagonalisability', aka: ['可对角化判据'] },
     { id: 'thm.jordan-canonical-form', en: 'Jordan canonical form', aka: ['Jordan 标准形', '若尔当标准形', '约当标准形'] },
     { id: 'prop.differentiable-implies-continuous', en: 'differentiable implies continuous', aka: ['可导 ⟹ 连续'] },
@@ -1145,7 +1145,7 @@ MG.aliases = {
     { id: 'def.uniform-continuity', en: 'uniform continuity', aka: ['一致连续'] },
     { id: 'def.pi', en: 'the number pi', aka: ['圆周率 π'] },
     { id: 'prop.subspace-criterion', en: 'criterion for a subspace', aka: ['子空间判据'] },
-    { id: 'def.trace', en: 'trace', aka: ['迹'] },
+    { id: 'def.trace', en: 'trace', aka: ['迹', 'tr', 'Tr A'] },
     { id: 'def.orthogonal-projection', en: 'orthogonal projection', aka: ['正交投影'] },
     { id: 'thm.jordan-holder', en: 'Jordan–Hölder theorem', aka: ['Jordan–Hölder 定理'] },
     { id: 'prop.abs-properties', en: 'properties of the absolute value', aka: ['绝对值的运算性质'] },
@@ -1178,18 +1178,18 @@ MG.aliases = {
     { id: 'def.dual-space', en: 'dual space', aka: ['对偶空间'] },
     { id: 'def.dual-basis', en: 'dual basis', aka: ['对偶基'] },
     { id: 'def.annihilator', en: 'annihilator', aka: ['零化子'] },
-    { id: 'def.direct-sum', en: 'direct sum and complement', aka: ['直和与补空间'] },
+    { id: 'def.direct-sum', en: 'direct sum and complement', aka: ['直和与补空间', '⊕', '直和 ⊕'] },
     { id: 'def.matrix', en: 'matrix', aka: ['矩阵'] },
     { id: 'def.matrix-operations', en: 'addition and multiplication of matrices', aka: ['矩阵的加法与乘法'] },
     { id: 'def.elementary-matrix', en: 'elementary operations and elementary matrices', aka: ['初等变换与初等矩阵'] },
     { id: 'def.invertible-matrix', en: 'invertible matrix', aka: ['可逆矩阵'] },
     { id: 'def.alternating-form', en: 'alternating form', aka: ['交错型'] },
     { id: 'def.polynomial', en: 'polynomials in one variable', aka: ['一元多项式'] },
-    { id: 'def.polynomial-ring', en: 'polynomial ring', aka: ['多项式环'] },
+    { id: 'def.polynomial-ring', en: 'polynomial ring', aka: ['多项式环', 'k[x]', 'K[X]', 'R[x]'] },
     { id: 'def.irreducible-poly', en: 'irreducible polynomial', aka: ['不可约多项式'] },
     { id: 'def.invariant-subspace', en: 'invariant subspace', aka: ['不变子空间'] },
     { id: 'def.eigenvalue', en: 'eigenvalue and eigenvector', aka: ['特征值与特征向量', '几何重数', '特征值'] },
-    { id: 'def.inner-product', en: 'inner product', aka: ['内积'] },
+    { id: 'def.inner-product', en: 'inner product', aka: ['内积', '⟨u,v⟩', '内积 ⟨,⟩'] },
     { id: 'def.orthogonality', en: 'orthogonality', aka: ['正交'] },
     { id: 'def.orthogonal-complement', en: 'orthogonal complement', aka: ['正交补'] },
     { id: 'def.operator-adjoint', en: 'adjoint operator', aka: ['伴随算子'] },
@@ -1197,7 +1197,7 @@ MG.aliases = {
     { id: 'def.quadratic-form', en: 'quadratic form', aka: ['二次型'] },
     { id: 'def.bilinear-form', en: 'bilinear form', aka: ['双线性型'] },
     { id: 'def.tensor-product-vs', en: 'tensor product', aka: ['向量空间的张量积'] },
-    { id: 'def.tensor-module', en: 'tensor product of modules', aka: ['张量积', '模的张量积', '张量积（模）'] },
+    { id: 'def.tensor-module', en: 'tensor product of modules', aka: ['张量积', '模的张量积', '张量积（模）', '⊗', '⊗_R', 'M⊗N'] },
     { id: 'def.exterior-power', en: 'exterior power', aka: ['外幂'] },
     { id: 'def.symmetric-algebra', en: 'symmetric algebra', aka: ['对称代数'] },
     { id: 'def.permutation-group', en: 'permutation and symmetric group', aka: ['置换群与对称群'] },
@@ -1210,7 +1210,7 @@ MG.aliases = {
     { id: 'def.second-countable', en: 'second countable space', aka: ['第二可数空间'] },
     { id: 'def.first-countable', en: 'first countable space', aka: ['第一可数空间'] },
     { id: 'def.homotopy-maps', en: 'homotopy of maps', aka: ['映射同伦'] },
-    { id: 'def.fundamental-group', en: 'fundamental group', aka: ['基本群'] },
+    { id: 'def.fundamental-group', en: 'fundamental group', aka: ['基本群', 'π_1', 'π₁', 'pi_1'] },
     { id: 'def.covering-space', en: 'covering space', aka: ['覆叠空间'] },
     { id: 'thm.lifting', en: 'lifting theorem', aka: ['提升定理'] },
     { id: 'def.cauchy-sequence', en: 'Cauchy sequence', aka: ['Cauchy 列'] },
@@ -1280,7 +1280,7 @@ MG.aliases = {
        `G_δ` / `ℓ²` / `ε-δ` 这类符号，人不会照抄；而带连字符的拉丁词（Banach–Steinhaus）
        用的是 en dash（–），人打的却是普通连字符（-）—— 两条都得进 aka。
        ⛔ aka 是纯文本：不能含 `$`，数学记号写成可搜的朴素形式。 */
-    { id: 'def.norm', en: 'norm and normed space', aka: ['范数公理', '赋范空间'] },
+    { id: 'def.norm', en: 'norm and normed space', aka: ['范数公理', '赋范空间', '‖x‖', '||x||', '范数 ‖·‖'] },
     { id: 'prop.norm-induces-metric', en: 'the metric induced by a norm', aka: ['诱导距离', '平移不变度量'] },
     { id: 'def.norm-equivalence', en: 'equivalent norms', aka: ['等价范数', '强弱范数', '范数等价'] },
     { id: 'thm.norm-equiv-finite-dim', en: 'all norms are equivalent in finite dimension', aka: ['有限维范数等价', '范数都等价'] },
@@ -1364,7 +1364,7 @@ MG.aliases = {
     { id: 'thm.taylor-complex', aka: ['泰勒展开', '泰勒级数'] },
     { id: 'thm.laurent', aka: ['洛朗展开', '洛朗级数'] },
     { id: 'thm.riemann-removable', aka: ['黎曼可去奇点'] },
-    { id: 'def.lie-bracket', aka: ['李括号'] },
+    { id: 'def.lie-bracket', aka: ['李括号', '[X,Y]', '李括号 [X,Y]'] },
     { id: 'def.de-rham-complex', aka: ['德拉姆上同调', 'de Rham 复形'] },
     { id: 'lem.poincare-lemma', aka: ['庞加莱引理'] },
     { id: 'thm.mayer-vietoris', aka: ['迈耶–维托里斯序列'] },
@@ -1435,6 +1435,11 @@ MG.aliases = {
     { id: 'def.provability', en: 'provability', aka: ['可证明', '可证', '证明论', '句法', '推演'] },
     { id: 'thm.completeness-first-order', en: 'Gödel completeness theorem', aka: ['完备性定理', '哥德尔完备性定理', '一阶逻辑完备性'] },
     { id: 'thm.compactness', en: 'compactness theorem', aka: ['紧致性定理', '紧致性', '有限可满足'] },
+    { id: 'def.boundary-operator', en: 'boundary operator', aka: ['边界算子', '∂', '边界 ∂'] },
+    { id: 'def.gradient', en: 'gradient', aka: ['梯度', '∇', 'grad'] },
+    { id: 'def.exterior-derivative', en: 'exterior derivative', aka: ['外微分', 'dω', '外微分 d'] },
+    { id: 'def.connected-sum', en: 'connected sum', aka: ['连通和', 'connect sum', 'M#N'] },
+    { id: 'def.genus', en: 'genus', aka: ['亏格', 'genus', '洞的个数'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

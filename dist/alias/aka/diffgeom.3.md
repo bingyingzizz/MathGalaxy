@@ -9,7 +9,7 @@
 
 - 斯托克斯公式（方块） → lem.single-cube-stokes
 
-- 李括号 → def.lie-bracket
+- 李括号 | [X,Y] | 李括号 [X,Y] → def.lie-bracket
 
 - 德拉姆上同调 | de Rham 复形 → def.de-rham-complex
 
@@ -44,7 +44,5 @@
 - 配丛 → def.associated-bundle
 
 - 闭形式 → def.closed-form
-
-- 恰当形式 → def.exact-form
 
 > 续见 alias/aka/diffgeom.4.md

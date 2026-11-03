@@ -241,12 +241,31 @@
           U.escapeHtml(tf(isRead ? '✓ 已读 · 点一下取消' : '✓ 标记已读')) + '</button>' + tip + warn + '</div>';
       }
 
+      /* 证明完成度徽章（T13/I5）：引用前的第一道筛子。
+         ⚠️ 缺省不画 —— 大部分节点是 complete，不刷屏。 */
+      if (n.status) {
+        var stChip = n.status === 'skeleton' ? tf('骨架 · 只看陈述与思路，当不得完整证明')
+          : n.status === 'external-input' ? tf('依赖本图外部的定理')
+            : tf('完整');
+        html += '<div class="pn-status pn-status-' + U.escapeHtml(n.status) + '">' +
+          U.escapeHtml('⚠ ' + stChip) + '</div>';
+      }
       if (n.statement) html += section(tf('陈述'), '<div class="pn-body">' + U.md(n.statement) + '</div>');
       if (n.notes) html += section(tf('说明 / 备注'), '<div class="pn-body">' + U.md(n.notes) + '</div>');
       if (n.refs && n.refs.length) {
         html += section(tf('参考'), '<div class="pn-body"><ul>' + n.refs.map(function (r) {
           return '<li>' + U.escapeHtml(r) + '</li>';
         }).join('') + '</ul></div>');
+      }
+
+
+      /* 私人批注（T17/I9）：只在你自己写了的时候出现。
+         数据源是本地文件 `src/data/local/annotations.js`（**不进 git、不进构建产物**）。
+         ⛔ 不要把它写进 n.notes —— 那是公共内容，会被发布。 */
+      var myNote = (MG.localNotes && MG.localNotes[n.id]) || '';
+      if (myNote) {
+        html += section('📝 ' + tf('我的批注'),
+          '<div class="pn-body pn-note-local">' + U.md(String(myNote)) + '</div>');
       }
 
       /* 相关连线 */

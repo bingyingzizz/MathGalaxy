@@ -9,7 +9,7 @@
 >
 > **MathGalaxy** is a zoomable, searchable knowledge graph of mathematics: every
 > concept is a star, every proof is a line between them.
-> **1476 nodes / 2819 edges** across **15 galaxies and 102 clusters** (content `v0.9.3`).
+> **1478 nodes / 2824 edges** across **15 galaxies and 103 clusters** (content `v0.9.3`).
 > Zero dependencies, no build step — **double-click `index.html` and it runs offline**,
 > in the browser, with the same data the published site serves.
 >
@@ -51,7 +51,7 @@
 > ### 🔭 在线看图 → <https://bingyingzizz.github.io/mathgalaxy/>
 > 双击 `index.html` 也能用 —— 零依赖、无构建、不联网。
 
-**15 个星系 / 102 个星团 / 一千四百多个节点**，三层尺度：
+**15 个星系 / 103 个星团 / 一千四百多个节点**，三层尺度：
 数学领域（星系）→ 一套自足的装置（星团）→ 单条结果（节点）。**内容还在长。**
 
 每个节点 = 一条数学内容（公理 / 定义 / 定理 / 引理 / 命题 / 推论）。
@@ -527,7 +527,7 @@ JSON 里每条边都带 `strength` 和 `proof`，节点带稳定的 `id`，
 2. 相通之处**说得出具体是什么**（不是「都很难」这种废话）；
 3. 这个类比**能帮你解决问题** —— 看到一个，能想起另一个的招。
 
-现有的 24 条弱边（挑几条当范例读）：
+现有的 25 条弱边（挑几条当范例读）：
 
 - `thm.product` ～ `thm.omega`：同一个证明模板「幂集造容器 + 分离筛内容」
 - `def.finchar` ～ `def.wellorder`：两种「用有限/最小的东西控制无穷」的手法

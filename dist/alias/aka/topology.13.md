@@ -21,4 +21,8 @@
 
 - 滤子 → def.filter
 
+- 连通和 | connect sum | M#N → def.connected-sum
+
+- 亏格 | genus | 洞的个数 → def.genus
+
 见 `../../alias.md`。
