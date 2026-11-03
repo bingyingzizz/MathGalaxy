@@ -29,6 +29,8 @@ bun tools/mg.mjs show thm.xxx --proof   # 连证明正文一起
 bun tools/mg.mjs edge imp.xxx           # 一条边的完整证明
 bun tools/mg.mjs path def.a thm.b       # A ⟹ B 的有向推导链
 bun tools/mg.mjs deps thm.b --depth 2   # 这个结论站在什么上面
+bun tools/mg.mjs impact thm.b --depth 2 # 改它会波及谁（下游闭包）
+bun tools/mg.mjs gaps --min 3        # 缺口清单：提到了但没节点 / 用了更深定义却没边
 bun tools/mg.mjs cluster analysis.uniform   # 某个星团里有什么
 bun tools/mg.mjs ls                     # 星系 → 星团总览
 ```
