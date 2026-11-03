@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - ⇒ [`prop.subspace-criterion`](../nodes/prop.subspace-criterion.md) 子空间判据
 - 被 [`def.direct-sum`](../nodes/def.direct-sum.md) 直和与补空间 用
+- ～弱边 [`def.subspace-topology`](../nodes/def.subspace-topology.md) 子空间拓扑

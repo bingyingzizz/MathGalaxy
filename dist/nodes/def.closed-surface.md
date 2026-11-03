@@ -14,7 +14,7 @@ layer 15 · 定义 · 曲面的地形 · 拓扑学
 ## 它能推出什么 / 谁在用它
 - 被 [`thm.classification-surfaces`](../nodes/thm.classification-surfaces.md) 闭曲面分类定理 用
 
-- …另有出边，续页见 [nodes/def.closed-surface.3.md](./def.closed-surface.3.md)
+- …另有出边，续页见 [nodes/def.closed-surface.4.md](./def.closed-surface.4.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.closed-surface.2.md](./def.closed-surface.2.md)

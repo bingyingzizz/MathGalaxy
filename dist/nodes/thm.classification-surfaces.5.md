@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`prop.eulerchar-nonorientable`](../nodes/prop.eulerchar-nonorientable.md) Euler 示性数与不可定向亏格 用
+- ～弱边 [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) Gauss–Bonnet 定理

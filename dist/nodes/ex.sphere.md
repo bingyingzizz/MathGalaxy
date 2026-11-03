@@ -11,6 +11,8 @@ $$S^{2} := \{\, x \in \mathbb{R}^{3} : \lVert x \rVert = 1 \,\}$$
 - [`def.closed-surface`](../nodes/def.closed-surface.md) 闭曲面：用到了定义 闭曲面　[proofs/dep.closedsurface-sphere.md](../proofs/dep.closedsurface-sphere.md)
 - [`def.genus`](../nodes/def.genus.md) 亏格：用到了定义 亏格　[proofs/dep.genus-sphere.md](../proofs/dep.genus-sphere.md)
 
+- …另有入边，续页见 [nodes/ex.sphere.2.md](./ex.sphere.2.md)
+
 refs: Munkres, Topology, Ch. 12
 
 > 说明见 `notes/ex.sphere.md`

@@ -8,3 +8,4 @@
 - 被 [`def.orientable-surface`](../nodes/def.orientable-surface.md) R³ 中的可定向曲面 用
 - ⇒ [`def.riemannian-metric`](../nodes/def.riemannian-metric.md) Riemann 度量
 - ⇒ [`def.orientable-surface`](../nodes/def.orientable-surface.md) R³ 中的可定向曲面
+- ～弱边 [`def.closed-surface`](../nodes/def.closed-surface.md) 闭曲面

@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1500 节点 / 2892 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1500 节点 / 2901 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -74,7 +74,7 @@
 ### Radó　出现 1 次
 `thm.classification-surfaces`
 
-## 二、陈述用到更深的定义却没有边（149 处）
+## 二、陈述用到更深的定义却没有边（148 处）
 
 - `def.invariant-polynomial`（不变多项式 · L11）用到 `def.characteristic-class`（示性类 · L31）　落差 20
 - `def.fiber-bundle`（纤维丛 · L10）用到 `def.lie-group`（Lie 群 · L25）　落差 15
@@ -94,7 +94,6 @@
 - `prop.single-valued-branch`（单值支的存在判据 · L19）用到 `def.analytic-continuation`（解析延拓 · L24）　落差 5
 - `thm.lifting`（提升定理 · L7）用到 `def.path-homotopy`（道路同伦 · L12）　落差 5
 - `def.hamiltonian-vector-field`（Hamilton 向量场 · L21）用到 `def.volume-form`（体积形式 · L26）　落差 5
-- `def.subspace-topology`（子空间拓扑 · L5）用到 `def.subspace`（子空间 · L10）　落差 5
 - `prop.generators-abelian-sheaves`（生成元给出阿贝尔层的生成元 · L11）用到 `def.topos`（拓扑斯 · L16）　落差 5
 - `def.quotient-vs`（商空间 · L6）用到 `def.subspace`（子空间 · L10）　落差 4
 - `def.quotient-vs`（商空间 · L6）用到 `def.linear-map`（线性映射 · L10）　落差 4

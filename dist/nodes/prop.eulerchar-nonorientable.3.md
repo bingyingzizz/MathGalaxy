@@ -3,3 +3,4 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`ex.klein-bottle`](../nodes/ex.klein-bottle.md) 克莱因瓶 用
+- ～弱边 [`def.genus`](../nodes/def.genus.md) 亏格

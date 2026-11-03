@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T11:48:24.023Z",
+ "generated": "2026-11-03T12:10:41.485Z",
  "terms": 76,
  "missing": [
   {
@@ -602,15 +602,6 @@
    "def": "def.volume-form",
    "defLabel": "体积形式",
    "defLayer": 26,
-   "gap": 5
-  },
-  {
-   "node": "def.subspace-topology",
-   "nodeLabel": "子空间拓扑",
-   "nodeLayer": 5,
-   "def": "def.subspace",
-   "defLabel": "子空间",
-   "defLayer": 10,
    "gap": 5
   },
   {

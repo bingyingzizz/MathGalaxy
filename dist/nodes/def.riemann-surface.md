@@ -7,6 +7,9 @@ layer 18 · 定义 · 复变函数基础 · 复变函数
 > 陈述续见 [nodes/def.riemann-surface.2.md](./def.riemann-surface.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ～弱边 [`def.closed-surface`](../nodes/def.closed-surface.md) 闭曲面
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.riemann-surface.3.md](./def.riemann-surface.3.md)
 

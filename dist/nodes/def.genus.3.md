@@ -6,3 +6,4 @@
 - 被 [`prop.eulerchar-genus`](../nodes/prop.eulerchar-genus.md) Euler 示性数与亏格 用
 - 被 [`ex.sphere`](../nodes/ex.sphere.md) 球面 S² 用
 - 被 [`ex.torus`](../nodes/ex.torus.md) 环面 T² 用
+- ～弱边 [`prop.eulerchar-nonorientable`](../nodes/prop.eulerchar-nonorientable.md) Euler 示性数与不可定向亏格
