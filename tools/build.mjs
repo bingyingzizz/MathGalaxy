@@ -2064,8 +2064,13 @@ function assertI18n(MG, graph) {
     if (!graph.byId[id]) { errs.push(`英文名字段：i18n.js 里的节点不存在 \`${id}\``); continue; }
     const e = I.nodes[id] || {};
     if (!e.title_en) errs.push(`英文名字段：\`${id}\` 缺 title_en`);
-    if (/[\u4e00-\u9fff]/.test(String(e.title_en || ''))) errs.push(`英文名字段：\`${id}\` 的 title_en 含汉字 —— 那不是英文名`);
-    if (e.label_en && /[\u4e00-\u9fff]/.test(e.label_en)) errs.push(`英文名字段：\`${id}\` 的 label_en 含汉字`);
+    /* ⭐ 例外：**人名用本人语言的写法**（用户 2026-11-03 拍板，见 CONTRIBUTING.md）。
+       俄罗斯人写西里尔（`Чебышёв 估计`）、中国人写汉字（`陈类`）—— 中英两种语言都这么写，
+       罗马化只放进节点正文。这样的条目在 i18n 表里标 `native: true`，本门放行汉字。
+       ⛔ 不标 native 的条目仍然不许含汉字（防止英文名退化成中文）。 */
+    const isNative = e.native === true;
+    if (!isNative && /[\u4e00-\u9fff]/.test(String(e.title_en || ''))) errs.push(`英文名字段：\`${id}\` 的 title_en 含汉字 —— 那不是英文名`);
+    if (!isNative && e.label_en && /[\u4e00-\u9fff]/.test(e.label_en)) errs.push(`英文名字段：\`${id}\` 的 label_en 含汉字`);
   }
   const on = graph.nodes.filter((n) => n.title_en).length;
   if (on !== keys.length) errs.push(`英文名字段：挂上 title_en 的节点 ${on} 个 ≠ 旁挂表 ${keys.length} 条`);

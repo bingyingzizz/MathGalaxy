@@ -26,6 +26,11 @@ MG.i18n = {
   generatedBy: 'tools/i18n-backfill.mjs',
   updated: '2026-11-01',
   nodes: {
+    'def.invariant-polynomial': { title_en: "Invariant Polynomial", label_en: "Invariant Polynomial", from: 'explicit' },
+    'thm.chern-weil': { title_en: "陈–Weil Homomorphism", label_en: "陈–Weil Homomorphism", from: 'explicit', native: true },
+    'def.chern-class': { title_en: "陈类", label_en: "陈类", from: 'explicit', native: true },
+    'prop.chern-class-line-bundle': { title_en: "陈类 of a Line Bundle", label_en: "陈类 of a Line Bundle", from: 'explicit', native: true },
+    'thm.splitting-principle': { title_en: "Splitting Principle", label_en: "Splitting Principle", from: 'explicit' },
     'def.relatively-compact': { title_en: "Relatively Compact", label_en: "Relatively Compact", from: 'explicit' },
     'thm.frechet-derivative': { title_en: "Fréchet Derivative", label_en: "Fréchet Derivative", from: 'explicit' },
     'def.characteristic-class': { title_en: "Characteristic Class", label_en: "Characteristic Class", from: 'explicit' },

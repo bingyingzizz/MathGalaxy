@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T05:49:20.889Z",
+ "generated": "2026-11-03T06:03:43.637Z",
  "terms": 76,
  "missing": [
   {
@@ -579,6 +579,15 @@
  ],
  "noEdge": [
   {
+   "node": "def.invariant-polynomial",
+   "nodeLabel": "不变多项式",
+   "nodeLayer": 10,
+   "def": "def.characteristic-class",
+   "defLabel": "示性类",
+   "defLayer": 31,
+   "gap": 21
+  },
+  {
    "node": "def.fiber-bundle",
    "nodeLabel": "纤维丛",
    "nodeLayer": 10,
@@ -684,6 +693,15 @@
    "def": "def.geodesic",
    "defLabel": "测地线",
    "defLayer": 26,
+   "gap": 7
+  },
+  {
+   "node": "thm.chern-weil",
+   "nodeLabel": "陈–Weil 同态",
+   "nodeLayer": 24,
+   "def": "def.characteristic-class",
+   "defLabel": "示性类",
+   "defLayer": 31,
    "gap": 7
   },
   {
