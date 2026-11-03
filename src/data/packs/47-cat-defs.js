@@ -45,6 +45,7 @@ window.MG = window.MG || {};
       id: 'def.simplex-category',
       cluster: 'cat.limit',
       type: 'definition',
+      status: 'skeleton',
       label: '单纯形范畴',
       title: '单纯形范畴 $\\Delta$',
       regions: ['category'],

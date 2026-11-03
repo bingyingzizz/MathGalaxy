@@ -156,6 +156,7 @@ window.MG = window.MG || {};
       id: 'thm.metric-compact-equiv',
       cluster: 'topology.metric',
       type: 'theorem',
+      status: 'skeleton',
       label: '紧的三个等价刻画',
       title: '度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
       regions: ['topology'],

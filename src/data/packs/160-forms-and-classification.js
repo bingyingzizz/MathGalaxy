@@ -96,6 +96,7 @@ window.MG = window.MG || {};
       id: 'thm.rational-canonical-form',
       cluster: 'algebra.spectral',
       type: 'theorem',
+      status: 'skeleton',
       label: '有理标准形',
       title: '有理标准形：任意域上都成立的标准形',
       regions: ['algebra'],

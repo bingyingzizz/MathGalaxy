@@ -182,6 +182,7 @@ window.MG = window.MG || {};
       id: 'thm.za-analytic',
       cluster: 'cond.analytic',
       type: 'theorem',
+      status: 'skeleton',
       label: '有限生成代数的解析环',
       title: '定理：$A$ 有限生成 $\\mathbb{Z}$-代数 $\\implies$ $A_\\blacksquare$ 是解析环（Thm 8.1）',
       regions: ['condensed'],

@@ -18,6 +18,7 @@ window.MG = window.MG || {};
       id: 'def.abelian-category',
       cluster: 'hom.ab',
       type: 'definition',
+      status: 'skeleton',
       label: '加法 / 阿贝尔范畴',
       title: '加法范畴与阿贝尔范畴',
       regions: ['homology'],

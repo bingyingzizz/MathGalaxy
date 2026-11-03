@@ -59,6 +59,7 @@ window.MG = window.MG || {};
       id: 'thm.darboux',
       cluster: 'diffgeom.symplectic',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Darboux 定理',
       title: 'Darboux 定理：辛流形局部都长一样',
       regions: ['diffgeom'],

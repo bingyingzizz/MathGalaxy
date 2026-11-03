@@ -665,6 +665,7 @@ window.MG = window.MG || {};
       id: 'thm.paracompact-cech-equals-sheaf',
       cluster: 'hom.sheafcoh',
       type: 'theorem',
+      status: 'skeleton',
       label: '仿紧空间上的 Čech 就是上同调',
       title: '仿紧 Hausdorff：Čech 上同调等于层上同调',
       regions: ['homology', 'topology'],

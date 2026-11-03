@@ -40,3 +40,9 @@
   - 环上的边：`imp.seqcompact-totbdd` · `imp.seqcompact-complete` · `imp.complete-totbdd-seqcompact`
   - 为什么不算循环：多前提假环：列紧 ⟹ 全有界（无条件），完备 + 全有界 ⟹ 列紧（带假设）。图层对 sources 一视同仁，于是「完备是列紧的前提」与「列紧是完备的前提」同时成立 —— 不是数学循环。
 
+## 四、证明完成度标注（status）
+
+值只许 `complete`（缺省）/ `skeleton` / `external-input`。正文自己说「骨架 / 未展开 / 外部输入」却没标注的，列在下面。
+
+（没有）
+

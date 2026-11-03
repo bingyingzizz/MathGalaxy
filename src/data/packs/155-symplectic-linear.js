@@ -100,6 +100,7 @@ window.MG = window.MG || {};
       id: 'thm.symplectic-normal-form',
       cluster: 'algebra.multilinear',
       type: 'theorem',
+      status: 'skeleton',
       label: '辛标准形定理',
       title: '辛标准形定理：维数必偶，且总有辛基',
       regions: ['algebra'],

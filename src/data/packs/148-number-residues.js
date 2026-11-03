@@ -120,6 +120,7 @@ window.MG = window.MG || {};
       id: 'thm.quadratic-reciprocity',
       cluster: 'number.quadratic',
       type: 'theorem',
+      status: 'skeleton',
       label: '二次互反律',
       title: 'Gauss 的二次互反律',
       regions: ['number'],

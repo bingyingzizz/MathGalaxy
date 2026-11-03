@@ -57,6 +57,7 @@
     {
       id: 'thm.homotopy-invariance',
       type: 'theorem',
+      status: 'skeleton',
       label: '同伦不变性',
       title: '同伦不变性：$f \\simeq g$ 蕴含 $f_{*} = g_{*}$（棱柱算子）',
       cluster: 'topology.homology',

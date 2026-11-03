@@ -265,6 +265,9 @@ function exportJSON(MG, graph) {
       type: n.type,
       label: n.label,
       title: n.title,
+      /* 证明完成度（T13/I5）：complete（缺省）| skeleton | external-input。
+         ⛔ 只标「不完全」的 —— 缺省就是 complete，别把 1400 多个节点全写上。 */
+      status: n.status || undefined,
       /* 英文名（T1.1）：由 src/data/i18n.js 提供、graph.js 挂到节点上。
          缺省 = 没有 ⇒ 消费方按 label_en → title_en → 中文 label 回落。 */
       label_en: n.label_en || undefined,
@@ -1532,7 +1535,19 @@ function auditContent(MG, graph) {
     });
   }
 
-  return { dangling, nearPairs, cycles };
+  /* ---------- ④ 证明完成度（T13 / I5） ---------- */
+  /* 值只许三选一；正文自己说「骨架 / 未展开 / 外部输入」的**必须**显式标注 ——
+     研究者引用前要能一眼看出「这条敢不敢引」。缺省 = complete（不写）。 */
+  const OK_STATUS = new Set(['complete', 'skeleton', 'external-input']);
+  const statusBad = [];
+  const statusMissing = [];
+  for (const n of graph.nodes) {
+    if (n.status && !OK_STATUS.has(n.status)) statusBad.push(n.id + ' → ' + n.status);
+    const txt = String(n.statement || '') + ' ' + String(n.notes || '');
+    if (!n.status && /骨架|未展开|只给陈述|外部输入/.test(txt)) statusMissing.push(n.id);
+  }
+
+  return { dangling, nearPairs, cycles, statusBad, statusMissing };
 }
 
 /** 把体检结果写成 `dist/audit.md`（警告级产物） */
@@ -1568,6 +1583,12 @@ function exportAudit(audit, graph) {
       L.push('  - 三种处理：无条件互推 ⇒ 改 `equivalence`（双向 proofs）；用更强工具回头证 ⇒ 标 `layer: false`；都不是 ⇒ 数据错。');
     }
   }
+  L.push('', `## 四、证明完成度标注（status）`, '');
+  L.push('值只许 `complete`（缺省）/ `skeleton` / `external-input`。正文自己说「骨架 / 未展开 / 外部输入」却没标注的，列在下面。');
+  L.push('');
+  if (!audit.statusBad.length && !audit.statusMissing.length) L.push('（没有）');
+  for (const x of audit.statusBad) L.push(`- ⚠️ 非法取值：${x}`);
+  for (const x of audit.statusMissing) L.push(`- 该标未标：\`${x}\``);
   L.push('');
   return L.join('\n') + '\n';
 }

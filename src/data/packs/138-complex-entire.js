@@ -135,6 +135,7 @@
     {
       id: 'thm.runge',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Runge 逼近定理',
       title: 'Runge 逼近定理：没有洞的区域上，全纯函数可以用多项式逼近',
       cluster: 'analysis.entire',
@@ -299,6 +300,7 @@
     {
       id: 'thm.weierstrass-product',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Weierstrass 乘积定理',
       title: 'Weierstrass 乘积定理：给定零点就能造出整函数',
       cluster: 'analysis.entire',
@@ -341,6 +343,7 @@
     {
       id: 'thm.hadamard-factorization',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Hadamard 分解定理',
       title: 'Hadamard 分解定理：有限阶整函数的因子分解',
       cluster: 'analysis.entire',
@@ -388,6 +391,7 @@
     {
       id: 'thm.picard-little',
       type: 'theorem',
+      status: 'external-input',
       label: 'Picard 小定理',
       title: 'Picard 小定理：非常数整函数至多漏掉一个值',
       cluster: 'analysis.entire',

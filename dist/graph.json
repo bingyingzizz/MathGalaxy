@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T07:17:37.077Z",
+  "generated": "2026-11-03T07:25:47.494Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
@@ -4333,6 +4333,7 @@
    "type": "theorem",
    "label": "紧的三个等价刻画",
    "title": "度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界",
+   "status": "skeleton",
    "label_en": "Heine-Borel",
    "title_en": "Heine-Borel",
    "abstract_en": "In a metric space the following are equivalent: compact, sequentially compact, and complete together with totally bounded. The skeleton lives in the implications: compact implies sequentially compact; sequentially compact implies totally bounded (the one place dependent choice is used) and complete; sequentially compact implies compact by the \"bad ball\" argument; complete and totally bounded implies sequentially compact by diagonalisation. In general topological spaces only the first implication survives — sequential compactness is a metric-space luxury.",
@@ -8649,6 +8650,7 @@
    "type": "theorem",
    "label": "代数基本定理",
    "title": "定理（代数基本定理）：$\\mathbb{C}$ 代数闭",
+   "status": "skeleton",
    "label_en": "fundamental theorem of algebra",
    "title_en": "fundamental theorem of algebra",
    "translations": {
@@ -12672,6 +12674,7 @@
    "type": "theorem",
    "label": "ℚ 是有序域",
    "title": "定理：$\\mathbb{Q}$ 是有序域（$\\mathbb{Q}$ is an Ordered Field）",
+   "status": "skeleton",
    "label_en": "Q is an ordered field",
    "title_en": "Q is an ordered field",
    "translations": {
@@ -13868,6 +13871,7 @@
    "type": "theorem",
    "label": "有限生成代数的解析环",
    "title": "定理：$A$ 有限生成 $\\mathbb{Z}$-代数 $\\implies$ $A_\\blacksquare$ 是解析环（Thm 8.1）",
+   "status": "skeleton",
    "title_en": "analytic rings from finitely generated algebras",
    "translations": {
     "en": {
@@ -16776,6 +16780,7 @@
    "type": "theorem",
    "label": "平坦模的结构定理",
    "title": "平坦模是有限生成自由模的滤过余极限",
+   "status": "skeleton",
    "label_en": "Lazard's Theorem",
    "title_en": "Lazard's Theorem",
    "translations": {
@@ -17674,6 +17679,7 @@
    "type": "theorem",
    "label": "仿紧空间上的 Čech 就是上同调",
    "title": "仿紧 Hausdorff：Čech 上同调等于层上同调",
+   "status": "skeleton",
    "label_en": "Čech Equals Sheaf Cohomology",
    "title_en": "Čech Cohomology Equals Sheaf Cohomology on Paracompact Spaces",
    "translations": {
@@ -20017,6 +20023,7 @@
    "type": "lemma",
    "label": "Gauss 引理",
    "title": "Gauss 引理与测地极坐标",
+   "status": "skeleton",
    "label_en": "Gauss's Lemma",
    "title_en": "Gauss's Lemma",
    "translations": {
@@ -20805,6 +20812,7 @@
    "type": "theorem",
    "label": "正则水平集定理",
    "title": "正则水平集定理",
+   "status": "skeleton",
    "label_en": "Regular Level Set Theorem",
    "title_en": "Regular Level Set Theorem",
    "translations": {
@@ -22399,6 +22407,7 @@
    "type": "theorem",
    "label": "Cauchy 积分公式",
    "title": "定理：Cauchy 积分公式",
+   "status": "skeleton",
    "label_en": "Cauchy Integral Formula",
    "title_en": "Cauchy Integral Formula",
    "translations": {
@@ -23407,6 +23416,7 @@
    "type": "theorem",
    "label": "光滑单位分解",
    "title": "流形上的光滑单位分解",
+   "status": "skeleton",
    "label_en": "Smooth Partition of Unity",
    "title_en": "Smooth Partition of Unity",
    "translations": {
@@ -23746,6 +23756,7 @@
    "type": "theorem",
    "label": "Mayer–Vietoris 序列",
    "title": "Mayer–Vietoris 长正合列",
+   "status": "skeleton",
    "label_en": "Mayer–Vietoris Sequence",
    "title_en": "Mayer–Vietoris Sequence",
    "translations": {
@@ -24088,6 +24099,7 @@
    "type": "proposition",
    "label": "边界算子平方为零",
    "title": "边界算子平方为零",
+   "status": "skeleton",
    "label_en": "Boundary Squares to Zero",
    "title_en": "The Boundary Operator Squares to Zero",
    "translations": {
@@ -24261,6 +24273,7 @@
    "type": "lemma",
    "label": "方块上的 Stokes 公式",
    "title": "单个方块上的 Stokes 公式",
+   "status": "skeleton",
    "label_en": "Stokes on a Cube",
    "title_en": "Stokes' Formula on a Single Cube",
    "translations": {
@@ -25235,6 +25248,7 @@
    "type": "theorem",
    "label": "Mittag-Leffler 定理",
    "title": "定理：Mittag-Leffler 定理（只陈述）",
+   "status": "skeleton",
    "label_en": "Mittag-Leffler theorem",
    "title_en": "Mittag-Leffler theorem",
    "translations": {
@@ -25532,6 +25546,7 @@
    "type": "theorem",
    "label": "Frobenius 定理",
    "title": "Frobenius 定理",
+   "status": "skeleton",
    "label_en": "Frobenius theorem",
    "title_en": "Frobenius theorem",
    "translations": {
@@ -25753,6 +25768,7 @@
    "type": "theorem",
    "label": "de Rham 定理",
    "title": "de Rham 定理",
+   "status": "skeleton",
    "label_en": "de Rham theorem",
    "title_en": "de Rham theorem",
    "abstract_en": "Integrating forms pairs de Rham cohomology, closed forms modulo exact ones, with singular homology, and the de Rham theorem says the pairing is perfect: for every $k$ there is an isomorphism $H^{k}_{\\mathrm{dR}}(M)\\to H^{k}_{\\mathrm{sing}}(M;\\mathbb{R})$ sending $[\\omega]$ to the functional $[c]\\mapsto\\int_{c}\\omega$. The maps are compatible with pullbacks, so they form a natural isomorphism of graded algebras. The theorem welds analysis, geometry and topology into a single object.",
@@ -26675,6 +26691,7 @@
    "type": "theorem",
    "label": "Riemann 映射定理",
    "title": "Riemann 映射定理：单连通真区域双全纯等价于单位圆盘",
+   "status": "skeleton",
    "label_en": "Riemann mapping theorem",
    "title_en": "Riemann mapping theorem",
    "translations": {
@@ -26761,6 +26778,7 @@
    "type": "theorem",
    "label": "Brouwer 不动点定理（圆盘）",
    "title": "Brouwer 不动点定理：闭圆盘到自身的连续映射必有不动点",
+   "status": "skeleton",
    "label_en": "Brouwer fixed point theorem",
    "title_en": "Brouwer fixed point theorem",
    "translations": {
@@ -27019,6 +27037,7 @@
    "type": "theorem",
    "label": "Runge 逼近定理",
    "title": "Runge 逼近定理：没有洞的区域上，全纯函数可以用多项式逼近",
+   "status": "skeleton",
    "label_en": "Runge approximation theorem",
    "title_en": "Runge approximation theorem",
    "translations": {
@@ -27191,6 +27210,7 @@
    "type": "theorem",
    "label": "Weierstrass 乘积定理",
    "title": "Weierstrass 乘积定理：给定零点就能造出整函数",
+   "status": "skeleton",
    "label_en": "Weierstrass product theorem",
    "title_en": "Weierstrass product theorem",
    "translations": {
@@ -27235,6 +27255,7 @@
    "type": "theorem",
    "label": "Hadamard 分解定理",
    "title": "Hadamard 分解定理：有限阶整函数的因子分解",
+   "status": "skeleton",
    "label_en": "Hadamard factorization theorem",
    "title_en": "Hadamard factorization theorem",
    "translations": {
@@ -27278,6 +27299,7 @@
    "type": "theorem",
    "label": "Picard 小定理",
    "title": "Picard 小定理：非常数整函数至多漏掉一个值",
+   "status": "external-input",
    "label_en": "little Picard theorem",
    "title_en": "little Picard theorem",
    "translations": {
@@ -27524,6 +27546,7 @@
    "type": "lemma",
    "label": "平均算子联合连续",
    "title": "引理：$A_{r} f(x)$ 关于 (r, x) 联合连续",
+   "status": "skeleton",
    "title_en": "the averaging operator is jointly continuous",
    "translations": {
     "en": {
@@ -28450,6 +28473,7 @@
    "type": "theorem",
    "label": "van Kampen 定理",
    "title": "Seifert–van Kampen：把 $\\pi_{1}$ 从两块拼起来",
+   "status": "skeleton",
    "label_en": "van Kampen theorem",
    "title_en": "van Kampen theorem",
    "translations": {
@@ -28697,6 +28721,7 @@
    "type": "definition",
    "label": "边缘算子",
    "title": "边缘算子 $\\partial_{p}$ 与 $\\partial^{2} = 0$",
+   "status": "skeleton",
    "label_en": "simplicial boundary operator",
    "title_en": "simplicial boundary operator",
    "translations": {
@@ -28906,6 +28931,7 @@
    "type": "theorem",
    "label": "球面的同调",
    "title": "$H_{p}(S^{n})$：只有在 $p = 0$ 与 $p = n$ 处非平凡",
+   "status": "skeleton",
    "label_en": "homology of spheres",
    "title_en": "homology of spheres",
    "translations": {
@@ -28990,6 +29016,7 @@
    "type": "theorem",
    "label": "对的长正合列",
    "title": "拓扑对 (X, A) 的长正合列",
+   "status": "skeleton",
    "label_en": "long exact sequence of a pair",
    "title_en": "long exact sequence of a pair",
    "translations": {
@@ -29032,6 +29059,7 @@
    "type": "theorem",
    "label": "Mayer–Vietoris（同调）",
    "title": "Mayer–Vietoris 序列（同调版，$\\mathbb{Z}$ 系数）",
+   "status": "skeleton",
    "title_en": "Mayer–Vietoris sequence in homology",
    "translations": {
     "en": {
@@ -29073,6 +29101,7 @@
    "type": "theorem",
    "label": "单纯逼近",
    "title": "单纯逼近定理：奇异同调 $=$ 单纯同调",
+   "status": "skeleton",
    "label_en": "simplicial approximation",
    "title_en": "simplicial approximation",
    "translations": {
@@ -29487,6 +29516,7 @@
    "type": "theorem",
    "label": "Schwarz–Christoffel 公式",
    "title": "Schwarz–Christoffel 公式：把上半平面映成多边形",
+   "status": "skeleton",
    "label_en": "Schwarz–Christoffel formula",
    "title_en": "Schwarz–Christoffel formula",
    "translations": {
@@ -29572,6 +29602,7 @@
    "type": "theorem",
    "label": "边界对应定理",
    "title": "边界对应：Jordan 区域的共形映射能延拓到边界",
+   "status": "skeleton",
    "label_en": "boundary correspondence theorem",
    "title_en": "boundary correspondence theorem",
    "translations": {
@@ -29782,6 +29813,7 @@
    "type": "theorem",
    "label": "同伦不变性",
    "title": "同伦不变性：$f \\simeq g$ 蕴含 $f_{*} = g_{*}$（棱柱算子）",
+   "status": "skeleton",
    "label_en": "homotopy invariance",
    "title_en": "homotopy invariance",
    "translations": {
@@ -31060,6 +31092,7 @@
    "type": "theorem",
    "label": "Чебышёв 估计",
    "title": "$\\pi(x)$ 与 $x/\\log x$ 同阶（初等上下界）",
+   "status": "skeleton",
    "label_en": "Chebyshev estimate",
    "title_en": "Chebyshev estimate",
    "translations": {
@@ -31142,6 +31175,7 @@
    "type": "theorem",
    "label": "素数定理",
    "title": "$\\pi(x) \\sim x/\\log x$",
+   "status": "skeleton",
    "label_en": "prime number theorem",
    "title_en": "prime number theorem",
    "translations": {
@@ -31340,6 +31374,7 @@
    "type": "theorem",
    "label": "二次互反律",
    "title": "Gauss 的二次互反律",
+   "status": "skeleton",
    "label_en": "law of quadratic reciprocity",
    "title_en": "law of quadratic reciprocity",
    "translations": {
@@ -32373,6 +32408,7 @@
    "type": "proposition",
    "label": "外微分",
    "title": "外微分：流形上的存在唯一性与图卡无关",
+   "status": "skeleton",
    "label_en": "Exterior Derivative",
    "title_en": "Exterior Derivative on Manifolds",
    "statement_en": "**What it does**: the operator $\\mathrm{d}$ on $\\mathbb{R}^{n}$ is written by a coordinate formula; carried to a manifold it must answer one question — is $\\mathrm{d}\\omega$ computed in one chart the same object as in another? This proposition settles it, and then $\\mathrm{d}$ can be written globally on a manifold.\n\nLet $M$ be a smooth manifold. There is a **unique** family of operators $\\mathrm{d} : \\Omega^{k}(M)\\to\\Omega^{k+1}(M)$ for $k\\ge 0$ such that\n\n1. on functions $\\mathrm{d}f$ is the differential of $f$: $\\mathrm{d}f_{p}(v) = v(f)$ for $v\\in T_{p}M$;\n2. $\\mathrm{d}$ is $\\mathbb{R}$-linear;\n3. **anti-derivation**: for a $k$-form $\\omega$, $\\mathrm{d}(\\omega\\wedge\\tau) = \\mathrm{d}\\omega\\wedge\\tau + (-1)^{k}\\omega\\wedge\\mathrm{d}\\tau$;\n4. $\\mathrm{d}^{2} = 0$.\n\nMoreover, in any chart $(U,x)$ it equals the coordinate formula\n\n$$\\mathrm{d}\\Bigl(\\sum_{I}a_{I}\\,\\mathrm{d}x^{I}\\Bigr) = \\sum_{I}\\mathrm{d}a_{I}\\wedge\\mathrm{d}x^{I},$$\n\nwhere $\\mathrm{d}x^{I} := \\mathrm{d}x^{i_{1}}\\wedge\\cdots\\wedge\\mathrm{d}x^{i_{k}}$ and $\\mathrm{d}a_{I}$ is the differential of the function $a_{I}$. Hence \"$\\mathrm{d}$ does not depend on the chart\" is not an extra assumption, but the conclusion of this proposition.",
@@ -32422,6 +32458,7 @@
    "type": "proposition",
    "label": "拉回",
    "title": "拉回：流形之间光滑映射的拉回",
+   "status": "skeleton",
    "label_en": "Pullback",
    "title_en": "Pullback Between Manifolds",
    "statement_en": "**What it does**: it carries a $k$-form back along a smooth map **between manifolds**. The version for open subsets of $\\mathbb{R}^{n}$ is only its local appearance.\n\nLet $F : M\\to N$ be a smooth map and $\\omega\\in\\Omega^{k}(N)$. The **pullback** $F^{\\ast}\\omega\\in\\Omega^{k}(M)$ is defined pointwise by\n\n$$(F^{\\ast}\\omega)_{p}(v_{1},\\ldots,v_{k}) := \\omega_{F(p)}\\bigl(\\mathrm{d}F_{p}v_{1},\\ldots,\\mathrm{d}F_{p}v_{k}\\bigr)$$\n\nfor $v_{i}\\in T_{p}M$. Then $F^{\\ast}\\omega$ is smooth, and\n\n1. $F^{\\ast}$ is $\\mathbb{R}$-linear; on functions $F^{\\ast}f = f\\circ F$;\n2. **it preserves the wedge product**: $F^{\\ast}(\\omega\\wedge\\eta) = F^{\\ast}\\omega\\wedge F^{\\ast}\\eta$;\n3. **it commutes with $\\mathrm{d}$**: $\\mathrm{d}(F^{\\ast}\\omega) = F^{\\ast}(\\mathrm{d}\\omega)$;\n4. **it preserves composition**: $(G\\circ F)^{\\ast} = F^{\\ast}\\circ G^{\\ast}$ and $(\\operatorname{id})^{\\ast} = \\operatorname{id}$.\n\nThus $F^{\\ast} : \\Omega^{\\bullet}(N)\\to\\Omega^{\\bullet}(M)$ is a homomorphism of **differential graded algebras**.",
@@ -32924,6 +32961,7 @@
    "type": "theorem",
    "label": "Schur 三角化",
    "title": "Schur 三角化：任何复方阵都酉相似于上三角",
+   "status": "skeleton",
    "label_en": "Schur Triangularization",
    "title_en": "Schur Triangularization",
    "translations": {
@@ -33139,6 +33177,7 @@
    "type": "theorem",
    "label": "Courant–Fischer 极小极大原理",
    "title": "Courant–Fischer：第 $k$ 个特征值的变分刻画",
+   "status": "skeleton",
    "label_en": "Courant–Fischer Minimax",
    "title_en": "Courant–Fischer Minimax Principle",
    "translations": {
@@ -33481,6 +33520,7 @@
    "type": "theorem",
    "label": "惯性定理",
    "title": "Sylvester 惯性定理：实对称型由惯性指数完全分类",
+   "status": "skeleton",
    "label_en": "Sylvester",
    "title_en": "Sylvester",
    "translations": {
@@ -34079,6 +34119,7 @@
    "type": "theorem",
    "label": "辛标准形定理",
    "title": "辛标准形定理：维数必偶，且总有辛基",
+   "status": "skeleton",
    "label_en": "Symplectic Normal Form Theorem",
    "title_en": "Symplectic Normal Form Theorem",
    "translations": {
@@ -34293,6 +34334,7 @@
    "type": "theorem",
    "label": "Darboux 定理",
    "title": "Darboux 定理：辛流形局部都长一样",
+   "status": "skeleton",
    "label_en": "Darboux’s Theorem",
    "title_en": "Darboux’s Theorem",
    "translations": {
@@ -34853,6 +34895,7 @@
    "type": "definition",
    "label": "完美正规空间",
    "title": "完美正规空间（T6）：每个闭集都可数交开集",
+   "status": "skeleton",
    "label_en": "Perfectly Normal Space",
    "title_en": "Perfectly Normal Space",
    "translations": {
@@ -35839,6 +35882,7 @@
    "type": "theorem",
    "label": "有理标准形",
    "title": "有理标准形：任意域上都成立的标准形",
+   "status": "skeleton",
    "label_en": "Rational Canonical Form",
    "title_en": "Rational Canonical Form",
    "translations": {
@@ -37074,6 +37118,7 @@
    "type": "definition",
    "label": "上同调类",
    "title": "上同调类：闭链模掉边缘",
+   "status": "skeleton",
    "label_en": "Cohomology Class",
    "title_en": "Cohomology Class",
    "translations": {
@@ -37642,6 +37687,7 @@
    "type": "theorem",
    "label": "连续点集是稠密 G_δ",
    "title": "连续函数点态极限的连续点集",
+   "status": "skeleton",
    "title_en": "points of continuity of a pointwise limit",
    "translations": {
     "en": {
@@ -38198,6 +38244,7 @@
    "type": "theorem",
    "label": "Stone–Weierstrass（复情形）",
    "title": "Stone–Weierstrass 定理（复情形）",
+   "status": "skeleton",
    "title_en": "Stone-Weierstrass theorem, complex case",
    "translations": {
     "en": {
@@ -38536,6 +38583,7 @@
    "type": "definition",
    "label": "示性类",
    "title": "示性类：向量丛到上同调的函子",
+   "status": "skeleton",
    "label_en": "Characteristic Class",
    "title_en": "Characteristic Class",
    "translations": {
@@ -39242,6 +39290,7 @@
    "type": "theorem",
    "label": "完备性定理",
    "title": "一阶逻辑完备性定理（Gödel）：$\\Gamma \\vdash \\varphi \\iff \\Gamma \\vDash \\varphi$",
+   "status": "skeleton",
    "label_en": "Gödel completeness theorem",
    "title_en": "Gödel completeness theorem",
    "translations": {
@@ -41893,6 +41942,7 @@
    "type": "definition",
    "label": "单纯对象",
    "title": "单纯对象",
+   "status": "skeleton",
    "label_en": "simplicial object",
    "title_en": "simplicial object",
    "translations": {
@@ -46308,6 +46358,7 @@
    "type": "definition",
    "label": "加法 / 阿贝尔范畴",
    "title": "加法范畴与阿贝尔范畴",
+   "status": "skeleton",
    "label_en": "additive and abelian categories",
    "title_en": "additive and abelian categories",
    "abstract_en": "The ladder of definitions runs $\\text{preadditive} \\to \\text{zero object} \\to \\text{direct sums} \\to \\text{additive} \\to \\text{preabelian} \\to \\text{abelian}$, where preadditive means $\\mathbf{Ab}$-enriched with bilinear composition, preabelian means that kernels and cokernels exist, and abelian means any one of four equivalent conditions: every monomorphism is regular; $N \\cong \\ker(M \\to \\operatorname{coker} i)$ for $i : N \\rightarrowtail M$; every map factors uniquely as an epimorphism followed by a monomorphism; $\\ker(N \\to \\operatorname{coker} f) \\cong \\operatorname{coker}(\\ker f \\to M)$. Abelian categories are the working environment of homological algebra — exactness needs kernels and cokernels. $A\\text{-}\\mathbf{Mod}$ and $\\mathbf{Ab}(\\mathcal{T})$ for a topos are abelian; $\\mathbf{AbTop}$ is not.",
@@ -49722,6 +49773,7 @@
    "type": "definition",
    "label": "单纯形范畴",
    "title": "单纯形范畴 $\\Delta$",
+   "status": "skeleton",
    "label_en": "simplex category",
    "title_en": "simplex category",
    "translations": {

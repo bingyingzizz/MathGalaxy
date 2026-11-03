@@ -501,6 +501,7 @@
     {
       id: 'thm.van-kampen',
       type: 'theorem',
+      status: 'skeleton',
       label: 'van Kampen 定理',
       title: 'Seifert–van Kampen：把 $\\pi_{1}$ 从两块拼起来',
       cluster: 'topology.fg',

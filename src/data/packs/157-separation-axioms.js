@@ -329,6 +329,7 @@ window.MG = window.MG || {};
       id: 'def.perfectly-normal-space',
       cluster: 'topology.separation',
       type: 'definition',
+      status: 'skeleton',
       label: '完美正规空间',
       title: '完美正规空间（T6）：每个闭集都可数交开集',
       regions: ['topology'],

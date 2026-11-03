@@ -498,6 +498,7 @@ window.MG = window.MG || {};
       id: 'thm.regular-level-set',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
+      status: 'skeleton',
       label: '正则水平集定理',
       title: '正则水平集定理',
       regions: ['diffgeom'],

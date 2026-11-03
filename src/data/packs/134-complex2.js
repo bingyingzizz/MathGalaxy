@@ -553,6 +553,7 @@ window.MG = window.MG || {};
       id: 'thm.mittag-leffler',
       cluster: 'analysis.residue',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Mittag-Leffler 定理',
       title: '定理：Mittag-Leffler 定理（只陈述）',
       regions: ['complex'],

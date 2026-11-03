@@ -54,6 +54,7 @@
       id: 'thm.completeness-first-order',
       cluster: 'logic.fol',
       type: 'theorem',
+      status: 'skeleton',
       label: '完备性定理',
       title: '一阶逻辑完备性定理（Gödel）：$\\Gamma \\vdash \\varphi \\iff \\Gamma \\vDash \\varphi$',
       regions: ['logic'],

@@ -49,6 +49,7 @@ window.MG = window.MG || {};
       id: 'def.simplicial',
       cluster: 'cat.limit',
       type: 'definition',
+      status: 'skeleton',
       label: '单纯对象',
       title: '单纯对象',
       regions: ['category'],

@@ -331,6 +331,7 @@
     {
       id: 'thm.schwarz-christoffel',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Schwarz–Christoffel 公式',
       title: 'Schwarz–Christoffel 公式：把上半平面映成多边形',
       cluster: 'analysis.mapping',
@@ -409,6 +410,7 @@
     {
       id: 'thm.boundary-correspondence',
       type: 'theorem',
+      status: 'skeleton',
       label: '边界对应定理',
       title: '边界对应：Jordan 区域的共形映射能延拓到边界',
       cluster: 'analysis.mapping',

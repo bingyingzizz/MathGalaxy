@@ -288,6 +288,12 @@ function cmdShow(ids, opt) {
     console.log('\n' + C.b(`# ${n.id} · ${n.label}`));
     console.log(C.dim(`${where(n)} · 层 ${n.layer} · ${TYPE_ZH[n.type] || n.type}`));
     if (n.title && n.title !== n.label) console.log(C.dim(`title: ${n.title}`));
+    /* 证明完成度（T13/I5）：引用前要一眼看出「敢不敢引」。 */
+    if (n.status) {
+      const why = n.status === 'skeleton' ? '（只给骨架，别当完整证明引）'
+        : n.status === 'external-input' ? '（依赖本图外部的定理）' : '';
+      console.log(C.y(`status: ${n.status}${why}`));
+    }
     if (n.tags && n.tags.length) console.log(C.dim('tags: ' + n.tags.join(' / ')));
     const aka = akaOf.get(n.id);
     if (aka && aka.length) console.log(C.dim('也叫: ' + aka.join(' / ')));

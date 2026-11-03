@@ -495,6 +495,7 @@
     {
       id: 'thm.riemann-mapping',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Riemann 映射定理',
       title: 'Riemann 映射定理：单连通真区域双全纯等价于单位圆盘',
       cluster: 'analysis.mapping',
@@ -591,6 +592,7 @@
     {
       id: 'thm.brouwer-fixed-point',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Brouwer 不动点定理（圆盘）',
       title: 'Brouwer 不动点定理：闭圆盘到自身的连续映射必有不动点',
       cluster: 'analysis.topology-app',

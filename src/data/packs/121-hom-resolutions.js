@@ -802,6 +802,7 @@ window.MG = window.MG || {};
       id: 'thm.lazard',
       cluster: 'hom.flat',
       type: 'theorem',
+      status: 'skeleton',
       label: '平坦模的结构定理',
       title: '平坦模是有限生成自由模的滤过余极限',
       regions: ['homology'],

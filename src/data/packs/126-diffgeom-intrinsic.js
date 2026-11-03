@@ -354,6 +354,7 @@ window.MG = window.MG || {};
       id: 'lem.gauss-lemma',
       cluster: 'diffgeom.intrinsic',
       type: 'lemma',
+      status: 'skeleton',
       label: 'Gauss 引理',
       title: 'Gauss 引理与测地极坐标',
       regions: ['diffgeom'],

@@ -26,6 +26,7 @@ window.MG = window.MG || {};
       id: 'def.characteristic-class',
       cluster: 'diffgeom.manifold',
       type: 'definition',
+      status: 'skeleton',
       label: '示性类',
       title: '示性类：向量丛到上同调的函子',
       regions: ['diffgeom'],

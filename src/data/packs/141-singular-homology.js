@@ -201,6 +201,7 @@
     {
       id: 'def.simplicial-boundary',
       type: 'definition',
+      status: 'skeleton',
       label: '边缘算子',
       title: '边缘算子 $\\partial_{p}$ 与 $\\partial^{2} = 0$',
       cluster: 'topology.homology',
@@ -425,6 +426,7 @@
     {
       id: 'thm.sphere-homology',
       type: 'theorem',
+      status: 'skeleton',
       label: '球面的同调',
       title: '$H_{p}(S^{n})$：只有在 $p = 0$ 与 $p = n$ 处非平凡',
       cluster: 'topology.homology',
@@ -505,6 +507,7 @@
     {
       id: 'thm.long-exact-pair',
       type: 'theorem',
+      status: 'skeleton',
       label: '对的长正合列',
       title: '拓扑对 (X, A) 的长正合列',
       cluster: 'topology.homology',
@@ -551,6 +554,7 @@
     {
       id: 'thm.mv-homology',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Mayer–Vietoris（同调）',
       title: 'Mayer–Vietoris 序列（同调版，$\\mathbb{Z}$ 系数）',
       cluster: 'topology.homology',
@@ -599,6 +603,7 @@
     {
       id: 'thm.simplicial-approximation',
       type: 'theorem',
+      status: 'skeleton',
       label: '单纯逼近',
       title: '单纯逼近定理：奇异同调 $=$ 单纯同调',
       cluster: 'topology.homology',

@@ -80,6 +80,7 @@ window.MG = window.MG || {};
       id: 'thm.rat-ordered-field',
       cluster: 'set.numbers',
       type: 'theorem',
+      status: 'skeleton',
       label: 'ℚ 是有序域',
       title: '定理：$\\mathbb{Q}$ 是有序域（$\\mathbb{Q}$ is an Ordered Field）',
       regions: ['set-theory'],

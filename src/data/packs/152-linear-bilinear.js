@@ -280,6 +280,7 @@ window.MG = window.MG || {};
       id: 'thm.sylvester-law-inertia',
       cluster: 'algebra.multilinear',
       type: 'theorem',
+      status: 'skeleton',
       label: '惯性定理',
       title: 'Sylvester 惯性定理：实对称型由惯性指数完全分类',
       regions: ['algebra'],

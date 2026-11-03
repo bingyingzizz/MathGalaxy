@@ -130,6 +130,7 @@ window.MG = window.MG || {};
       id: 'lem.average-continuous',
       cluster: 'analysis.differentiation',
       type: 'lemma',
+      status: 'skeleton',
       label: '平均算子联合连续',
       title: '引理：$A_{r} f(x)$ 关于 (r, x) 联合连续',
       regions: ['analysis'],

@@ -271,6 +271,7 @@ window.MG = window.MG || {};
       id: 'thm.cauchy-integral-formula',
       cluster: 'analysis.cauchy',
       type: 'theorem',
+      status: 'skeleton',
       label: 'Cauchy 积分公式',
       title: '定理：Cauchy 积分公式',
       regions: ['complex'],

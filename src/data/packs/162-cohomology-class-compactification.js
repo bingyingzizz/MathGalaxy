@@ -28,6 +28,7 @@ window.MG = window.MG || {};
       id: 'def.cohomology-class',
       cluster: 'hom.cohomology',
       type: 'definition',
+      status: 'skeleton',
       label: '上同调类',
       title: '上同调类：闭链模掉边缘',
       regions: ['homology'],

@@ -121,6 +121,7 @@ window.MG = window.MG || {};
       id: 'thm.fundamental-algebra',
       cluster: 'algebra.polynomial',
       type: 'theorem',
+      status: 'skeleton',
       label: '代数基本定理',
       title: '定理（代数基本定理）：$\\mathbb{C}$ 代数闭',
       regions: ['analysis', 'algebra'],
