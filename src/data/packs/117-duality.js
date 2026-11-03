@@ -214,9 +214,11 @@ window.MG = window.MG || {};
     {
       id: 'imp.open-immersion-shriek',
       kind: 'implication',
+      layer: false,
       sources: ['def.f-shriek', 'thm.za-analytic'],
       target: 'prop.open-immersion-shriek',
       title: '固态模里 $\\prod$ 与局部化交换 $\\implies$ $j_!$ 存在',
+      note: '「用更强的工具回头证」：构造顺序是 {!}$（开浸入）→ {!}$（见 imp.f-shriek），反向这一条是拿定义一般 {!}$ 之后的结果去反推 {!}$ 的存在，故按推论边处理（不参与分层）。',
       proof: [
         '$j_!$ 存在 $\\iff$ $j^*$ 保极限。$j$ 是开浸入，$j^*$ 就是「把 $A$-模换成 $A[1/f]$-模」；要它保积就等价于',
         '',

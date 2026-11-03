@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 <title>数学星图 MathGalaxy · 可交互的数学知识图谱</title>
-<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2810 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta name="description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2812 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <!-- 分享/收录用。线上地址固定是 GitHub Pages 那一个；file:// 打开时这几行不起作用，无害 -->
 <link rel="canonical" href="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="数学星图 MathGalaxy" />
 <meta property="og:title" content="数学星图 MathGalaxy · 可交互的数学知识图谱" />
-<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2810 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
+<meta property="og:description" content="数学星图 MathGalaxy：把数学概念（定理 / 定义 / 引理）按「星系 / 星团 / 恒星」三层组织成一张可交互的依赖图。每个概念都有独立页面可以单独检索。 MathGalaxy is a zoomable, searchable knowledge graph of mathematics: 1473 nodes, 2812 edges, four kinds of edges (implication / equivalence / definition / analogy); every concept has its own page." />
 <meta property="og:url" content="https://bingyingzizz.github.io/mathgalaxy/" />
 <meta property="og:locale" content="zh_CN" />
 <!-- 同一个 URL 承载双语 ⇒ 不用 hreflang（那是给不同 URL 的），用 alternate 说明这页里也有英文 -->
@@ -19086,9 +19086,11 @@ window.MG = window.MG || {};
     {
       id: 'imp.hartogs-zorn',
       kind: 'implication',
+      layer: false,
       sources: ['ax.choice', 'thm.hartogs'],
       target: 'lem.zorn',
       title: '选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）',
+      note: 'AC ⟺ 良序 ⟺ Zorn 已经有三条 equivalence 边；这一条是**第二条路线**（借 Hartogs 定理），按推论边处理：真推得通，但不是建造顺序（分层由等价类负责）。',
       proof: [
         '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。',
         '',
@@ -55502,9 +55504,11 @@ window.MG = window.MG || {};
     {
       id: 'imp.open-immersion-shriek',
       kind: 'implication',
+      layer: false,
       sources: ['def.f-shriek', 'thm.za-analytic'],
       target: 'prop.open-immersion-shriek',
       title: '固态模里 $\\prod$ 与局部化交换 $\\implies$ $j_!$ 存在',
+      note: '「用更强的工具回头证」：构造顺序是 {!}$（开浸入）→ {!}$（见 imp.f-shriek），反向这一条是拿定义一般 {!}$ 之后的结果去反推 {!}$ 的存在，故按推论边处理（不参与分层）。',
       proof: [
         '$j_!$ 存在 $\\iff$ $j^*$ 保极限。$j$ 是开浸入，$j^*$ 就是「把 $A$-模换成 $A[1/f]$-模」；要它保积就等价于',
         '',
@@ -71803,8 +71807,9 @@ window.MG = window.MG || {};
         '$$\\mathrm{d}s^{2} = \\frac{4\\,|\\mathrm{d}z|^{2}}{\\left(1 - |z|^{2}\\right)^{2}}.$$',
         '',
         '则：(1) 它的曲率恒为 $-1$；(2) 测地线是**与边界圆周正交**的圆弧（直径是特例）；' +
-          '(3) 双全纯 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 恰是这个度量的**等距**，' +
-          '而 **Schwarz–Pick 定理**正是这句话的微分形式。',
+          '(3) 双全纯 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 恰是这个度量的**保向等距**' +
+          '（$\\operatorname{Isom}^{+}(\\mathbb{D}) = \\operatorname{Aut}(\\mathbb{D})$；全部等距还要多出反全纯的那些，' +
+          '如 $z \\mapsto \\bar z$），而 **Schwarz–Pick 定理**正是这句话的微分形式。',
         '',
         '经 `thm.riemann-mapping`，任何单连通真区域 $\\Omega \\subset \\mathbb{C}$ 都由此获得一个曲率 $-1$ 的完备度量。',
       ].join('\n'),
@@ -71936,8 +71941,11 @@ window.MG = window.MG || {};
       notes: [
         '**证明（由 Borsuk–Ulam）**：平面由单位法向 $u \\in S^{2}$ 与偏移 $t \\in \\mathbb{R}$ 决定，记 ' +
           '$P(u, t) := \\{\\, x : \\langle x, u\\rangle = t \\,\\}$。\n\n' +
-          '对固定 $u$，函数 $t \\mapsto \\operatorname{vol}(A_{i} \\cap \\{\\langle x, u\\rangle \\le t\\})$ 连续、从 $0$ 增到 $\\operatorname{vol}(A_{i})$，故存在唯一的 $t_{i}(u)$ 平分 $A_{i}$；\n\n' +
-          '且 $t_{i}(-u) = -t_{i}(u)$（法向反向，平面不变而「正侧」互换）。',
+          '对固定 $u$，函数 $t \\mapsto \\operatorname{vol}(A_{i} \\cap \\{\\langle x, u\\rangle \\le t\\})$ 连续、从 $0$ 增到 $\\operatorname{vol}(A_{i})$，' +
+          '故平分的 $t$ 构成一个**非空闭区间** $[\\alpha_{i}(u), \\beta_{i}(u)]$（有间隙的集合整段都平分）；' +
+          '**取其中点** $t_{i}(u) := \\tfrac12(\\alpha_{i} + \\beta_{i})$（若 $\\operatorname{vol}(A_{i}) = 0$ 则约定 $t_{i} \\equiv 0$）；\n\n' +
+          '且 $t_{i}(-u) = -t_{i}(u)$：法向反向时「正侧」互换，平分区间的两个端点也跟着反号，中点自然反号。' +
+          '⚠ 不能取「最小的」那个 —— 最小值不满足奇性。',
         '',
         '于是 $u \\mapsto (t_{1}(u) - t_{3}(u),\\ t_{2}(u) - t_{3}(u)) \\in \\mathbb{R}^{2}$ 是连续映射，' +
           '由 **Borsuk–Ulam**（`thm.borsuk-ulam`），存在 $u$ 使 $f(u) = f(-u) = -f(u)$，即 $f(u) = 0$，' +
@@ -72171,14 +72179,22 @@ window.MG = window.MG || {};
           '$\\left(\\frac{|\\varphi\'(z)|}{1 - |\\varphi(z)|^{2}}\\Big/\\frac{1}{1 - |z|^{2}}\\right)^{2}$。',
         '',
         '**Schwarz–Pick**（`thm.schwarz-pick`）说这个比值 $\\le 1$，即 $\\varphi$ 不放大双曲长度；' +
-          '等号成立时 $\\varphi$ 是自同构。故「双全纯 $\\mathbb{D} \\to \\mathbb{D}$」$=$「Poincaré 度量的等距」。',
+          '等号成立时 $\\varphi$ 是自同构。对 $\\varphi$ 与 $\\varphi^{-1}$ 各用一次，得双侧都不放大，' +
+          '故双全纯 $\\varphi$ 是**保向**等距。反过来，若要说明「等距必全纯」，需额外的实解析性论据（本边不做），' +
+          '所以这里只说 $\\operatorname{Isom}^{+}(\\mathbb{D}) = \\operatorname{Aut}(\\mathbb{D})$，不说「全部等距」。',
         '',
         '**曲率**：在度量 $\\lambda^{2}|\\mathrm{d}z|^{2}$（$\\lambda = 2/(1-|z|^{2})$）下，Gauss 曲率为 ' +
           '$K = -\\lambda^{-2}\\Delta \\log \\lambda$；代入 $\\log\\lambda = \\log 2 - \\log(1 - |z|^{2})$ 与 ' +
           '$\\Delta = 4\\partial_{z}\\partial_{\\bar z}$ 得 $K \\equiv -1$。',
         '',
-        '**任意单连通真区域**：由 `thm.riemann-mapping` 取双全纯 $f : \\Omega \\to \\mathbb{D}$，把度量拉回即可；' +
-          '双全纯不改变曲率，故 $\\Omega$ 上也有曲率 $-1$ 的完备度量。∎',
+        '**测地线**（陈述 (2)）：度量在 $\\mathrm{SO}(2)$ 下不变，故过 $0$ 的测地线只能是直径（等变性 + 唯一性）；' +
+          '再用 $\\operatorname{Aut}(\\mathbb{D})$ 把任意点搬到 $0$（自同构是等距，把测地线送到测地线），' +
+          '得到的正是与边界圆正交的圆弧。',
+        '',
+        '**任意单连通真区域**：由 `thm.riemann-mapping` 取双全纯 $f : \\Omega \\to \\mathbb{D}$，把度量拉回：' +
+          '双全纯（等距）不改变曲率，得曲率 $-1$；**完备性要单独说** —— 它是被等距传递的，不是从曲率推出来的：' +
+          '$\\mathbb{D}$ 完备（径向到边界的长度 $\\int_{r_{0}}^{r}2\\,\\mathrm{d}t/(1-t^{2}) \\to \\infty$），' +
+          '而 $f^{-1}$ 是等距，故 $\\Omega$ 上的拉回度量也完备。∎',
       ].join('\n'),
       note: '三种常曲率几何的入口：圆盘 = 双曲，球面 = 椭圆，平面 = 欧氏。' },
 
@@ -72215,7 +72231,7 @@ window.MG = window.MG || {};
         '**第二步**：$\\bar g$ 可延拓到上半球面（$g$ 本来就定义在整个 $S^{2}$ 上），' +
           '而可延拓到圆盘上的映射度为 $0$（延拓给出同伦到常值）。',
         '',
-        '两步矛盾（奇数 $\ne$ 0），故必有 $x$ 使 $f(x) = f(-x)$。∎',
+        '两步矛盾（奇数 $\\ne 0$），故必有 $x$ 使 $f(x) = f(-x)$。∎',
       ].join('\n'),
       note: 'Borsuk–Ulam 与 Brouwer 是同一枚硬币的两面；这里走「度」这条线。' },
 
@@ -72225,12 +72241,20 @@ window.MG = window.MG || {};
         '平面写作 $P(u, t) = \\{\\, x : \\langle x, u\\rangle = t \\,\\}$，$u \\in S^{2}$，$t \\in \\mathbb{R}$。',
         '',
         '**对固定 $u$**：$t \\mapsto \\operatorname{vol}(A_{i} \\cap \\{\\langle x, u\\rangle \\le t\\})$ 连续、单调、' +
-          '从 $0$ 到 $\\operatorname{vol}(A_{i})$，故存在（不唯一时取最小的）$t_{i}(u)$ 使两侧体积相等。' +
-          '又 $t_{i}(-u) = -t_{i}(u)$：法向反向时「正侧」互换，而平分平面本身不变。',
+          '从 $0$ 到 $\\operatorname{vol}(A_{i})$，故平分的 $t$ 构成非空闭区间 $[\\alpha_{i}(u), \\beta_{i}(u)]$；' +
+          '**取中点** $t_{i}(u) := \\tfrac12(\\alpha_{i}(u) + \\beta_{i}(u))$。',
+        '',
+        '为什么要中点：$\\{\\langle x, -u\\rangle \\le t\\} = \\{\\langle x, u\\rangle \\ge -t\\}$，所以 $-u$ 的平分区间是' +
+          '$[-\\beta_{i}(u), -\\alpha_{i}(u)]$，中点满足 $t_{i}(-u) = -t_{i}(u)$（且 $\\alpha_{i}, \\beta_{i}$ 随 $u$ 连续，故 $t_{i}$ 连续）。' +
+          '若 $\\operatorname{vol}(A_{i}) = 0$，每个 $t$ 都平分、区间是 $\\mathbb{R}$，没有中点 —— 约定 $t_{i} \\equiv 0$（仍是连续的奇函数）。',
+        '',
+        '⚠ **「取最小的」是错的**：取两块等体积球（心在 $\\pm2$、半径 $1$），$u = e_{1}$ 时最小平分参数是 $-1$，' +
+          '换成 $-u$ 仍是 $-1$，而 $-t_{i}(u) = +1$ —— 那样 $F$ 就不是奇函数，Borsuk–Ulam 的假设不成立。',
         '',
         '**取差**：$F(u) := (t_{1}(u) - t_{3}(u),\\ t_{2}(u) - t_{3}(u))$ 连续，且 $F(-u) = -F(u)$（奇）。' +
-          '由 **Borsuk–Ulam**（`thm.borsuk-ulam`），存在 $u$ 使 $F(u) = F(-u) = -F(u)$，故 $F(u) = 0$，' +
-          '即 $t_{1}(u) = t_{2}(u) = t_{3}(u)$。同一个平面 $P(u, t_{1}(u))$ 平分三块。∎',
+          '由 **Borsuk–Ulam**（`thm.borsuk-ulam`，二维版），存在 $u$ 使 $F(u) = F(-u) = -F(u)$，故 $F(u) = 0$，' +
+          '即 $t_{1}(u) = t_{2}(u) = t_{3}(u)$。同一个平面 $P(u, t_{1}(u))$ 平分三块。' +
+          '（陈述末尾的 $n$ 维推广要靠 $S^{n-1} \\to \\mathbb{R}^{n-1}$ 的一般 Borsuk–Ulam，本边只做了 $n = 3$。）∎',
       ].join('\n'),
       note: '整条链的终点：从「数零点」一路推到「切三明治」。' },
 
@@ -72389,12 +72413,15 @@ window.MG = window.MG || {};
       tags: ['复变函数', '解析延拓', 'Schwarz 反射', '对称原理'],
       statement: [
         '设 $\\Omega$ 关于实轴对称，$\\Omega^{+} = \\Omega \\cap \\{\\, \\operatorname{Im} z > 0 \\,\\}$。' +
-          '若 $f$ 在 $\\Omega^{+}$ 上全纯、在 $\\Omega \\cap \\mathbb{R}$ 上连续且取**实值**，' +
+          '若 $f$ 在 $\\Omega^{+}$ 上全纯、**在 $\\Omega^{+} \\cup (\\Omega \\cap \\mathbb{R})$ 上连续**' +
+          '且在 $\\Omega \\cap \\mathbb{R}$ 上取**实值**，' +
           '则 $f$ 能延拓成 $\\Omega$ 上的全纯函数 $F$，且',
         '',
         '$$F(\\bar z) = \\overline{F(z)}.$$',
         '',
-        '（把「实轴」换成任意圆弧或直线，结论照着改：对称的两块区域用同一个公式互相反射。）',
+        '（把「实轴」换成任意圆弧或直线 $\\Gamma$，结论照着改：在 $\\Gamma$ 上取实值，反射映射换成关于 $\\Gamma$ 的' +
+          '反演 $\\sigma$，结论是 $F(\\sigma(z)) = \\overline{F(z)}$ —— 公式的**形状**不变，但 $\\sigma$ 随 $\\Gamma$ 换，' +
+          '不能一律用 $\\bar z$；圆弧情形还要另外处理圆心与无穷远点。）',
       ].join('\n'),
       notes: [
         '**证明**：定义',
@@ -72590,12 +72617,13 @@ window.MG = window.MG || {};
       regions: ['complex'],
       tags: ['复变函数', 'Weierstrass 乘积', '整函数', '零点', '因子分解'],
       statement: [
-        '设 $\\{a_{n}\\}$ 是 $\\mathbb{C}$ 中一列趋于 $\\infty$ 的点（可重复，重复次数 = 零点重数）。' +
-          '则存在整函数 $g$ 使它的零点集**恰好**是 $\\{a_{n}\\}$，且可以写成',
+        '设 $\\{a_{n}\\}$ 是 $\\mathbb{C}$ 中一列**无聚点**的点（可重复，重复次数 = 零点重数；允许有限项为 $0$）。' +
+          '则存在整函数 $f$ 使它的零点集**恰好**是 $\\{a_{n}\\}$，且可以写成',
         '',
-        '$$f(z) = z^{m} e^{g(z)} \\prod_{n=1}^{\\infty} E_{p_{n}}\\left(\\frac{z}{a_{n}}\\right),$$',
+        '$$f(z) = z^{m} e^{g(z)} \\prod_{a_{n} \\ne 0} E_{p_{n}}\\left(\\frac{z}{a_{n}}\\right),$$',
         '',
-        '其中 $m$ 是 $0$ 作为零点的重数，$p_{n}$ 是适当选取的非负整数（保证乘积内闭一致收敛）。',
+        '其中 $m$ 是 $0$ 作为零点的重数（即序列里 $0$ 的个数，有限），乘积只跑**非零**零点；' +
+          '$p_{n}$ 是适当选取的非负整数（保证乘积内闭一致收敛）。',
         '',
         '于是：**整函数的零点（连同重数）可以任意指定**，剩下的自由度只是一个「无零点的整函数」$e^{g}$。',
       ].join('\n'),
@@ -72639,8 +72667,9 @@ window.MG = window.MG || {};
         '其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数' +
           '（不再像 Weierstrass 那样逐个选）。',
         '',
-        '特别地：阶 $\\rho < 1$ 的整函数没有零点（除非恒为零）—— 因为此时 $p = 0$ 要求' +
-          '$\\sum |a_{n}|^{-1} < \\infty$，而零点再多也只能是有限个。',
+        '特别地：阶 $\\rho < 1$ 时可统一取 $p = 0$ —— 初等因子退化成 $1 - z/a_{n}$，因为 $\\rho < 1$ 保证' +
+          '$\\sum |a_{n}|^{-1} < \\infty$。⚠ 这只说明零点**稀疏**，**不是**说没有零点：' +
+          '$z$（阶 $0$）与 $\\sin(\\pi\\sqrt z)/(\\pi\\sqrt z)$（阶 $1/2$、零点是 $n^{2}$）都是反例。',
       ].join('\n'),
       notes: [
         '**证明思路（骨架）**：',
@@ -72748,11 +72777,14 @@ window.MG = window.MG || {};
       proof: [
         '延拓的每一步都是「在一个新圆盘上取一个幂级数，它在与旧圆盘的重叠处与旧的相等」。',
         '',
-        '**载体**：由 `thm.taylor-complex`，每个全纯函数在每点的邻域内等于它的 Taylor 级数，' +
-          '所以「元素」完全由（圆心 + 系数列）决定，延拓可以纯代数地做。',
+        '**载体**：由 `thm.taylor-complex`，每个全纯函数在每点的邻域内等于它的 Taylor 级数 —— ' +
+          '所以一个元素 $(f, D)$ 由「圆心 $c$ + $c$ 处的系数列 + 半径」定下来，而**延拓**就是「把级数搬到新圆心、重新展开」。' +
+          '⚠ 但不能说元素「完全由圆心 + 系数列决定」：定义里 $D$ 本身就是数据，换半径就换了元素（两个半径不同的圆盘是不同对象，尽管函数值在交集上一致）。',
         '',
-        '**粘合**：两个元素在重叠处相等，由 `thm.identity` 它们在整个重叠圆盘上相等 —— ' +
-          '唯一性定理保证「延拓的值不因写在哪个圆盘里而不同」。∎',
+        '**粘合**：两个元素在**连通的**交集上相等时，由 `thm.identity` 它们在整个交集上相等（两个圆盘的交是透镜形，不是圆盘）。' +
+          '注意粘合要沿**函数芽**：在 $z$ 处要求 $[f]_{z} = [g]_{z}$（这正是定义里第 2 条那句 $f_{s} = f_{t}$ 在交集上），' +
+          '仅要求 $z \\in D_{f} \\cap D_{g}$ 是不够的 —— 否则不同路径得到的分支会被错误地当成同一个。' +
+          '沿等价的芽把所有元素拓粘起来，得到的就是 `def.riemann-surface` 上的完全解析函数。∎',
       ].join('\n'),
       note: '延拓这件事之所以定义得干净，全靠这两条：级数给出「可计算的形式」，唯一性给出「一致」。' },
 
@@ -72762,10 +72794,13 @@ window.MG = window.MG || {};
         '设 $\\gamma_{0}, \\gamma_{1}$ 在 $\\Omega$ 内同伦，同伦 $H(s, t)$。对每个 $s$，沿 $\\gamma_{s} = H(s, \\cdot)$' +
           '延拓，得到终点处的元素 $\\varphi(s)$。',
         '',
-        '**连续性**：延拓链对参数连续依赖（这是链定义里的第 3 条），故 $\\varphi$ 连续。',
+        '**连续性**：不能直接引「链定义的第 3 条」—— 那条只给**单条路径上**对 $t$ 的连续，不给对同伦参数 $s$ 的连续。' +
+          '正确做法：固定 $s_{0}$，沿 $\\gamma_{s_{0}}$ 的延拓链只有**有限多**个圆盘（同伦提升的紧性）；' +
+          '由 $H$ 的一致连续，存在 $\\varepsilon > 0$ 使 $|s - s_{0}| < \\varepsilon$ 时整条 $\\gamma_{s}$ 仍落在**同一条**链上、' +
+          '相邻圆盘的交集仍非空 —— 于是 $\\gamma_{s}$ 能沿同一条链延拓，且每一步的终点芽随 $s$ 连续（实际上是局部恒等）。',
         '',
-        '**取值离散**：$\\varphi(s)$ 与 $\\varphi(0)$ 相等这件事是闭条件 —— 两个全纯函数在一点邻域内相等，' +
-          '取极限仍相等。同时由唯一性定理，局部相等即整体相等，故该集合开。',
+        '**取值离散**：集合 $A := \\{\\, s : \\varphi(s) = \\varphi(0) \\,\\}$ 是闭的（两个全纯函数在一小圆盘上相等，令 $s \\to s_{0}$ 即知极限处仍相等）；' +
+          '开性则由上一步：$\\varphi$ 在 $s_{0}$ 附近**局部恒定**，所以 $s_{0} \\in A$ 时整段邻域都在 $A$ 里。',
         '',
         '$[0,1]$ 连通，既开又闭的非空子集是全体，于是 $\\varphi(1) = \\varphi(0)$。∎',
       ].join('\n'),
@@ -72776,12 +72811,14 @@ window.MG = window.MG || {};
       proof: [
         '定义 $F$ 在上半平面等于 $f$、在下半平面等于 $\\overline{f(\\bar z)}$。',
         '',
-        '**下半平面全纯**：$z \\mapsto \\bar z$ 反全纯，$\\overline{f(\\bar z)}$ 是「先反全纯、再全纯」的组合，' +
-          '结果全纯（用 Cauchy–Riemann 直接验算即可）。',
+        '**下半平面全纯**：$z \\mapsto \\bar z$ 反全纯，$f$ 全纯，再取一次共轭 —— ' +
+          '反全纯 $\\circ$ 全纯 $\\circ$ 反全纯 是「两次反全纯」，合起来全纯。' +
+          '直接验算：$g(z) := \\overline{f(\\bar z)}$ 满足 $g\'(z) = \\overline{f\'(\\bar z)}$，故 Cauchy–Riemann 成立。',
         '',
         '**实轴上全纯**：取跨实轴的闭三角形 $T$，把积分拆成上下两半。由 `thm.morera`，只需证' +
-          '$\\oint_{\\partial T} F\\,\\mathrm{d}z = 0$：两半各自为零（各自区域内全纯），沿实轴那段由' +
-          '$f$ 连续且实值，正反两方向的积分相消。∎',
+          '$\\oint_{\\partial T} F\\,\\mathrm{d}z = 0$：$F$ 在 $\\overline{T}$ 上连续（**这正是陈述里「连续到实轴」那条假设的用处**），' +
+          '所以每个半三角形可以单独用 Cauchy 定理、再把斜边推回来取极限；两半各自为零，' +
+          '沿实轴那段由 $f$ 实值，正反两方向的积分相消。∎',
       ].join('\n'),
       note: '反射原理是「延拓」最常用的一招：边界上取实值，就能跨过去。' },
 
@@ -72845,19 +72882,24 @@ window.MG = window.MG || {};
       target: 'thm.weierstrass-product',
       title: '逐点选 $p_{n}$ 保证内闭一致收敛，乘积即成整函数',
       proof: [
-        '给定零点列 $a_{n} \\to \\infty$。对每个 $n$ 取 $p_{n}$ 使 $\\sum_{n} |a_{n}|^{-(p_{n}+1)} < \\infty$' +
-          '（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \\to \\infty$）。',
+        '给定非零零点列 $a_{n} \\to \\infty$（$0$ 处的重数另记作 $m$）。对每个 $n$ 取 $p_{n}$ 使' +
+          '$\\sum_{n} |a_{n}|^{-(p_{n}+1)} < \\infty$（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \\to \\infty$）。',
         '',
-        '**内闭一致收敛**：在 $|z| \\le R$ 上，只有有限多个 $|a_{n}| \\le 2R$；对其余的 $n$ 有 ' +
-          '$|z/a_{n}| \\le 1/2$，由初等因子估计',
+        '**内闭一致收敛**：在 $|z| \\le R$ 上，只有有限多个 $|a_{n}| \\le 2R$，把这几项单独拿出来；' +
+          '对其余的 $n$ 有 $|z/a_{n}| \\le 1/2$，由初等因子估计',
         '',
         '$$\\left|1 - E_{p_{n}}\\!\\left(\\frac{z}{a_{n}}\\right)\\right| \\le \\left|\\frac{z}{a_{n}}\\right|^{p_{n}+1},$$',
         '',
-        '而 $\\sum |a_{n}|^{-(p_{n}+1)}$ 收敛，故乘积在 $|z| \\le R$ 上一致收敛到一个无零点全纯函数。',
+        '故真正要估的是**带 $R$ 的那个级数** $\\sum_{n} (R/|a_{n}|)^{p_{n}+1}$（光有 $\\sum |a_{n}|^{-(p_{n}+1)}$ 不够：' +
+          '$R^{p_{n}+1}$ 随 $n$ 涨）。取 $p_{n} = n$ 并只用 $|a_{n}| \\ge 2R$ 的那一尾，得' +
+          '$\\sum (R/|a_{n}|)^{n+1} \\le \\sum 2^{-(n+1)} < \\infty$。于是**尾乘积**在 $|z| \\le R$ 上一致收敛到' +
+          '一个在那个环域内无零点的全纯函数（完整乘积当然有零点 —— 零点就是设计出来的）。',
         '',
-        '**零点**：每个因子只在 $z = a_{n}$ 处为零，重数等于该点在序列中出现的次数；' +
-          '再乘上 $z^{m}$ 补齐 $0$ 处的重数。由 `prop.jensen` 与阶的估计（`def.entire-order`）可保证' +
-          '选出的 $p_{n}$ 不至于过大而使乘积不收敛。∎',
+        '**零点**：每个**因子**在 $z = a_{n}$ 处是单零点；**乘积**在该点的重数才等于 $a_{n}$ 在序列中出现的次数。' +
+          '再乘上 $z^{m}$ 补齐 $0$ 处的重数。',
+        '',
+        '⚠ $p_{n}$ 只影响收敛速度：$p_{n}$ 越大，$|z/a_{n}|^{p_{n}+1}$ 在 $|z| < |a_{n}|$ 上越小，所以不存在"$p_{n}$ 过大而使乘积不收敛"。' +
+          '本定理也不需要有限阶假设（那是 Hadamard 那一条用的）。∎',
       ].join('\n'),
       note: 'Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。' },
 
@@ -72871,8 +72913,12 @@ window.MG = window.MG || {};
           '于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$，特别地 $\\sum |a_{n}|^{-(p+1)} < \\infty$ —— ' +
           '所以**统一取 $p$** 就能让乘积收敛。',
         '',
-        '**除掉零点后的增长**：令 $\\Phi := f\\big/\\prod E_{p}(z/a_{n})$。乘积部分在每个 $|z| = r$ 上被' +
-          '$\\exp(C r^{\\rho+\\varepsilon})$ 控制（初等因子估计逐项相加），故 $\\Phi$ 仍是有限阶且无零点。',
+        '**除掉零点后的增长**：令 $\\Phi := f\\big/\\prod E_{p}(z/a_{n})$（这里 $a_{n} \\ne 0$；' +
+          '$0$ 处的重数已由 $z^{m}$ 吸走，若 $f(0) \\ne 0$ 则 $m = 0$）。$\\Phi$ 无零点。' +
+          '要控制它的增长，需要乘积的**下界**（上界只能给出 $|\\Phi|$ 的下界）：在半径 $r = |a_{N}|$ 这类' +
+          '环上，用初等因子的标准估计可得 $\\log\\bigl|\\prod E_{p}(z/a_{n})\\bigr| \\ge -C_{\\varepsilon} r^{\\rho+\\varepsilon}$，' +
+          '与 $\\log|f| \\le C r^{\\rho+\\varepsilon}$ 合起来才是 $\\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。' +
+          '故 $\\Phi$ 仍是有限阶且无零点（这条下界估计是 Hadamard 理论的标准一步，本边不重抄）。',
         '',
         '**指数是多项式**：$\\Phi = e^{h}$（`prop.single-valued-branch`），$\\operatorname{Re} h = \\log|\\Phi| = ' +
           'O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），' +
@@ -75334,15 +75380,18 @@ window.MG = window.MG || {};
       proof: [
         '（**骨架**，完整证明是 Carathéodory–Osgood 定理。）',
         '',
-        '**第一步：径向极限存在**。对每个 $\\zeta \\in \\partial\\Omega$，证明 $f(r\\zeta)$ 当 ' +
-          '$r \\to 1^{-}$ 时有极限 —— 用「$\\Omega$ 的边界是 Jordan 曲线」把区域夹在两条圆弧之间，' +
-          '再用 Schwarz 引理型的估计控制振荡。',
+        '**第一步：径向极限存在**。证的是**逆映射** $g := f^{-1} : \\mathbb{D} \\to \\Omega$ 的径向极限：' +
+          '对每个 $e^{it} \\in \\partial\\mathbb{D}$，证明 $\\lim_{r \\to 1^{-}} g(re^{it})$ 存在' +
+          '（$g$ 在圆盘内，$re^{it}$ 才有定义；用「$\\Omega$ 的边界是 Jordan 曲线」把区域夹在两条圆弧之间，' +
+          '再用 Schwarz 引理型的估计控制振荡，得到极限落在 $\\partial\\Omega$ 上）。',
         '',
         '**第二步：极限映射连续且单射**。两部分都靠 Jordan 曲线的分离性质：' +
           '若两个边界点映到同一点，则内部会出现「被挤压」的连通分支，与单叶性矛盾。',
         '',
-        '**第三步：紧空间上的连续单射 = 同胚**。$\\overline{\\Omega}$ 紧、$\\overline{\\mathbb{D}}$ Hausdorff，' +
-          '连续单射自动是同胚。∎',
+        '**第三步：紧空间上的连续单射 $\\Rightarrow$ 同胚（到像上）**。$\\overline{\\Omega}$ 紧、' +
+          '$\\overline{\\mathbb{D}}$ Hausdorff，连续单射自动是同胚**到其像**；还要补一句满射：' +
+          '$\\Omega$ 连到 $\\partial\\Omega$ 的极限点全落在像里，且 $f(\\Omega) = \\mathbb{D}$，' +
+          '故 $\\overline{\\mathbb{D}} = \\overline{f(\\Omega)} \\subseteq f(\\overline{\\Omega}) \\subseteq \\overline{\\mathbb{D}}$，即 $f(\\overline{\\Omega}) = \\overline{\\mathbb{D}}$。∎',
       ].join('\n'),
       note: '它给 S–C 公式的「$x_{k}$ 对应顶点」提供了合法性。' },
   ],
@@ -84713,6 +84762,45 @@ window.MG = window.MG || {};
         '两者互不包含：Peano 版假设更弱但结论只在小 $o$ 意义下；Lagrange 版能用它估误差。' +
           '所以是**同一台机器的两种用法**，不是依赖。',
       ].join('\n\n'),
+    },
+  ],
+});
+
+</script>
+  <script>
+/* ============================================================================
+   内容包 · H2 门抓到的东西（2026-11-03）：给 `prop.open-immersion-shriek` 补前提
+   ----------------------------------------------------------------------------
+   背景：审计 H2 判据说「用更强工具回头证 ⇒ 标 layer:false」。`imp.open-immersion-shriek`
+   （$f_!$ 存在 + Za 定理 ⟹ $j_!$ 存在）正是这种回头证，改粉之后环消了 —— 但那个节点
+   原来**只有这一条入边**，于是层号掉到 **L0**（和公理一层），这显然不对：
+   「开浸入的 $j_!$ 存在」明明要用固态理论那块东西。
+
+   补两条 definition 边（都是陈述里真用到的）：
+     · `def.submersion-immersion` —— 开浸入首先是浸入；
+     · `def.six-functors` —— 这条命题的舞台就是六函子形式（$j_!$ 是其中一个）。
+   ⛔ 不改任何正文，只补前提。
+   ========================================================================== */
+(window.MG.packs = window.MG.packs || []).push({
+  name: 'H2 补前提：开浸入的 j_! 站在什么上面',
+
+  nodes: [],
+
+  edges: [
+    {
+      id: 'dep.immersion-openshriek',
+      kind: 'definition',
+      definition: 'def.submersion-immersion',
+      usedBy: 'prop.open-immersion-shriek',
+      note: '开浸入是**浸入**的特例（$U \\subseteq V$ 开，包含映射），所以「开浸入」这个概念先要有。',
+    },
+    {
+      id: 'dep.sixfunctors-openshriek',
+      kind: 'definition',
+      definition: 'def.six-functors',
+      usedBy: 'prop.open-immersion-shriek',
+      note: '这条命题要证的就是六函子里的反常推前 $j_{!}$ 存在 —— 没有「六函子」这层框架，' +
+        '它连「要造什么」都说不出来。',
     },
   ],
 });

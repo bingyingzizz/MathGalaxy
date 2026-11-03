@@ -7,8 +7,11 @@ $$\mathrm{d}s^{2} = \frac{4\,|\mathrm{d}z|^{2}}{\left(1
 则：(1) 它的曲率恒为 $-1$；(2) 测地线是**
 与边界圆周正交**的圆弧（直径是特例）；
 (3) 双全纯 $\varphi : \mathbb{D} \to \mathbb{D}$ 恰
-是这个度量的**等距**，而 **Schwarz–Pick 定
-理**正是这句话的微分形式。
+是这个度量的**保向等距**（$\operatorname{Isom
+}^{+}(\mathbb{D}) = \operatorname{Aut}(\mathbb{D})$；
+全部等距还要多出反全纯的那些，如 $z \map
+sto \bar z$），而 **Schwarz–Pick 定理**正是这
+句话的微分形式。
 经 `thm.riemann-mapping`，任何单连通真区域 $\O
 mega \subset \mathbb{C}$ 都由此获得一个曲率 $-1
 $ 的完备度量。

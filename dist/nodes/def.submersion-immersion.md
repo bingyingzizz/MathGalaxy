@@ -13,6 +13,8 @@ layer 13 · 定义 · 多元微分 · 数学分析
 ## 它能推出什么 / 谁在用它
 - 被 [`def.integral-manifold`](../nodes/def.integral-manifold.md) 积分流形 用
 
+- …另有出边，续页见 [nodes/def.submersion-immersion.3.md](./def.submersion-immersion.3.md)
+
 refs: Lang, Undergraduate Analysis, Ch. XVI；Guillemin–Pollack, Differential Topology, §1
 
 > 说明见 `notes/def.submersion-immersion.md`

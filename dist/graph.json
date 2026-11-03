@@ -6,15 +6,15 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T06:58:04.290Z",
+  "generated": "2026-11-03T07:09:48.088Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
    "nodes": 1473,
-   "edges": 2810,
-   "strong": 2789,
+   "edges": 2812,
+   "strong": 2791,
    "weak": 21,
-   "derived": 31,
+   "derived": 33,
    "en_pages": 1473
   },
   "readingGuide": {
@@ -3063,7 +3063,7 @@
     "set-theory"
    ],
    "cluster": "order.choice",
-   "layer": 9,
+   "layer": 8,
    "tags": [
     "ZFC",
     "选择",
@@ -3795,7 +3795,7 @@
     "set-theory"
    ],
    "cluster": "order.choice",
-   "layer": 9,
+   "layer": 8,
    "tags": [
     "ZFC",
     "等价命题",
@@ -3857,7 +3857,7 @@
     "set-theory"
    ],
    "cluster": "order.choice",
-   "layer": 9,
+   "layer": 8,
    "tags": [
     "ZFC",
     "等价命题",
@@ -3920,7 +3920,7 @@
     "order-theory"
    ],
    "cluster": "order.choice",
-   "layer": 9,
+   "layer": 8,
    "tags": [
     "ZFC",
     "等价命题",
@@ -3966,7 +3966,7 @@
     "order-theory"
    ],
    "cluster": "order.choice",
-   "layer": 9,
+   "layer": 8,
    "tags": [
     "ZFC",
     "等价命题",
@@ -14368,7 +14368,7 @@
     "analytic"
    ],
    "cluster": "analytic.dual",
-   "layer": 22,
+   "layer": 20,
    "tags": [
     "命题",
     "解析几何",
@@ -18200,7 +18200,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 10,
+   "layer": 9,
    "tags": [
     "引理",
     "拓扑",
@@ -18286,7 +18286,7 @@
     "topology"
    ],
    "cluster": "topology.paracompact",
-   "layer": 11,
+   "layer": 10,
    "tags": [
     "命题",
     "拓扑",
@@ -26745,7 +26745,7 @@
     "Poincaré 度量",
     "Schwarz-Pick"
    ],
-   "statement": "在 $\\mathbb{D}$ 上赋**Poincaré 度量**\n\n$$\\mathrm{d}s^{2} = \\frac{4\\,|\\mathrm{d}z|^{2}}{\\left(1 - |z|^{2}\\right)^{2}}.$$\n\n则：(1) 它的曲率恒为 $-1$；(2) 测地线是**与边界圆周正交**的圆弧（直径是特例）；(3) 双全纯 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 恰是这个度量的**等距**，而 **Schwarz–Pick 定理**正是这句话的微分形式。\n\n经 `thm.riemann-mapping`，任何单连通真区域 $\\Omega \\subset \\mathbb{C}$ 都由此获得一个曲率 $-1$ 的完备度量。",
+   "statement": "在 $\\mathbb{D}$ 上赋**Poincaré 度量**\n\n$$\\mathrm{d}s^{2} = \\frac{4\\,|\\mathrm{d}z|^{2}}{\\left(1 - |z|^{2}\\right)^{2}}.$$\n\n则：(1) 它的曲率恒为 $-1$；(2) 测地线是**与边界圆周正交**的圆弧（直径是特例）；(3) 双全纯 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 恰是这个度量的**保向等距**（$\\operatorname{Isom}^{+}(\\mathbb{D}) = \\operatorname{Aut}(\\mathbb{D})$；全部等距还要多出反全纯的那些，如 $z \\mapsto \\bar z$），而 **Schwarz–Pick 定理**正是这句话的微分形式。\n\n经 `thm.riemann-mapping`，任何单连通真区域 $\\Omega \\subset \\mathbb{C}$ 都由此获得一个曲率 $-1$ 的完备度量。",
    "notes": "**为什么是这三种几何**：常曲率二维模型只有三个 —— 球面（$+1$）、欧氏平面（$0$）、双曲平面（$-1$）。球面经球极投影变成 $\\widehat{\\mathbb{C}} = \\mathbb{C} \\cup \\{\\infty\\}$ 上的度量，圆盘承载双曲的，而 $\\mathbb{C}$ 自己承载欧氏的。**单值化定理**说：任何单连通 Riemann 曲面（`def.riemann-surface`）都共形等价于这三者之一。\n\n**与 Schwarz–Pick 的关系**：Schwarz–Pick 说 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 全纯时\n\n$$\\frac{|\\varphi'(z)|}{1 - |\\varphi(z)|^{2}} \\le \\frac{1}{1 - |z|^{2}},$$\n\n左端正是把 Poincaré 度量沿 $\\varphi$ 拉回后的系数比 —— 所以这句话读作「全纯映射不放大双曲长度」，等号成立（在某点）时 $\\varphi$ 是自同构。\n\n⭐ **几何的图像**：双曲平面里「直线」是垂直撞到边界圆周的圆弧，三角形的内角和**小于** $\\pi$，面积有上界。这些性质都可以用圆盘上的度量算出来，不需要另建模型。\n\n⚠️ 边界圆周 **不属于** 双曲平面：度量在 $|z| \\to 1$ 时发散，所以 $\\mathbb{D}$ 在这个度量下是**完备**的，而边界是「无穷远」。",
    "refs": [
     "王晓光《复变函数》· 共形映射与 Schwarz–Pick 的几何意义",
@@ -27003,7 +27003,7 @@
     "Schwarz 反射",
     "对称原理"
    ],
-   "statement": "设 $\\Omega$ 关于实轴对称，$\\Omega^{+} = \\Omega \\cap \\{\\, \\operatorname{Im} z > 0 \\,\\}$。若 $f$ 在 $\\Omega^{+}$ 上全纯、在 $\\Omega \\cap \\mathbb{R}$ 上连续且取**实值**，则 $f$ 能延拓成 $\\Omega$ 上的全纯函数 $F$，且\n\n$$F(\\bar z) = \\overline{F(z)}.$$\n\n（把「实轴」换成任意圆弧或直线，结论照着改：对称的两块区域用同一个公式互相反射。）",
+   "statement": "设 $\\Omega$ 关于实轴对称，$\\Omega^{+} = \\Omega \\cap \\{\\, \\operatorname{Im} z > 0 \\,\\}$。若 $f$ 在 $\\Omega^{+}$ 上全纯、**在 $\\Omega^{+} \\cup (\\Omega \\cap \\mathbb{R})$ 上连续**且在 $\\Omega \\cap \\mathbb{R}$ 上取**实值**，则 $f$ 能延拓成 $\\Omega$ 上的全纯函数 $F$，且\n\n$$F(\\bar z) = \\overline{F(z)}.$$\n\n（把「实轴」换成任意圆弧或直线 $\\Gamma$，结论照着改：在 $\\Gamma$ 上取实值，反射映射换成关于 $\\Gamma$ 的反演 $\\sigma$，结论是 $F(\\sigma(z)) = \\overline{F(z)}$ —— 公式的**形状**不变，但 $\\sigma$ 随 $\\Gamma$ 换，不能一律用 $\\bar z$；圆弧情形还要另外处理圆心与无穷远点。）",
    "notes": "**证明**：定义\n\n$$F(z) = \\begin{cases} f(z), & \\operatorname{Im} z > 0,\\\\ \\overline{f(\\bar z)}, & \\operatorname{Im} z < 0.\\end{cases}$$\n\n下半平面的 $F$ 是全纯的（共轭 + 再共轭，两次反全纯抵消）。剩下要证 $F$ 在实轴上全纯：用 **Morera**（`thm.morera`）—— 取跨过实轴的闭三角形，上半部分用 $f$、下半部分用定义，沿实轴那一段的积分由连续性取极限为零（$f$ 在实轴上实值，正负两侧抵消），故整条积分路径上为零。∎\n\n⭐ **它是「最省事的延拓工具」**：只要边界上「取实值」或「落在一条直线上」，就能白拿一半的延拓。共形映射里把上半平面映成多边形的 Schwarz–Christoffel 公式、以及椭圆函数的对称性讨论都靠它。\n\n⚠️ 「边界上连续且实值」不能只要求「有极限」：必须**取实值**，否则反射出来的下半平面部分与上半对不上。",
    "refs": [
     "王晓光《复变函数》· 对称原理与解析延拓",
@@ -27219,7 +27219,7 @@
     "零点",
     "因子分解"
    ],
-   "statement": "设 $\\{a_{n}\\}$ 是 $\\mathbb{C}$ 中一列趋于 $\\infty$ 的点（可重复，重复次数 = 零点重数）。则存在整函数 $g$ 使它的零点集**恰好**是 $\\{a_{n}\\}$，且可以写成\n\n$$f(z) = z^{m} e^{g(z)} \\prod_{n=1}^{\\infty} E_{p_{n}}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $m$ 是 $0$ 作为零点的重数，$p_{n}$ 是适当选取的非负整数（保证乘积内闭一致收敛）。\n\n于是：**整函数的零点（连同重数）可以任意指定**，剩下的自由度只是一个「无零点的整函数」$e^{g}$。",
+   "statement": "设 $\\{a_{n}\\}$ 是 $\\mathbb{C}$ 中一列**无聚点**的点（可重复，重复次数 = 零点重数；允许有限项为 $0$）。则存在整函数 $f$ 使它的零点集**恰好**是 $\\{a_{n}\\}$，且可以写成\n\n$$f(z) = z^{m} e^{g(z)} \\prod_{a_{n} \\ne 0} E_{p_{n}}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $m$ 是 $0$ 作为零点的重数（即序列里 $0$ 的个数，有限），乘积只跑**非零**零点；$p_{n}$ 是适当选取的非负整数（保证乘积内闭一致收敛）。\n\n于是：**整函数的零点（连同重数）可以任意指定**，剩下的自由度只是一个「无零点的整函数」$e^{g}$。",
    "notes": "**证明（骨架）**：\n\n**第一步：选 $p_{n}$。** 由初等因子的估计 $|1 - E_{p}(z)| \\le |z|^{p+1}$（$|z| \\le 1$），只要 $\\sum_{n} |z/a_{n}|^{p_{n}+1}$ 在每个 $|z| \\le R$ 上收敛，乘积就内闭一致收敛。\n\n因为 $a_{n} \\to \\infty$，对每个 $n$ 取 $p_{n}$ 使 $\\sum |a_{n}|^{-(p_{n}+1)} < \\infty$ 总做得到（例如取 $p_{n} = n$）。\n\n**第二步：乘积是整函数。** 内闭一致收敛的乘积，在每个紧集上只有有限个因子可能为零，其余部分一致收敛到无零点全纯函数（用 `thm.weierstrass-convergence` 的乘积版），故极限全纯。\n\n**第三步：零点恰好是 $\\{a_{n}\\}$。** 每个 $E_{p_{n}}(z/a_{n})$ 只在 $z = a_{n}$ 处为零，次数等于 $a_{n}$ 在序列里出现的次数。∎\n\n⭐ **它是「整函数 = 零点 $\\times$ 无零点」的分解**。和 Mittag-Leffler（`thm.mittag-leffler`）对照着看最清楚：一个管**零点**（乘法），一个管**主部/极点**（加法）。\n\n⚠️ 乘积的具体形式**不唯一**（$p_{n}$ 可以取大一点），所以定理说的是「存在」，不是「唯一」。",
    "refs": [
     "王晓光《复变函数》· Weierstrass 乘积定理",
@@ -27262,7 +27262,7 @@
     "因子分解",
     "整函数的阶"
    ],
-   "statement": "设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则\n\n$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。\n\n特别地：阶 $\\rho < 1$ 的整函数没有零点（除非恒为零）—— 因为此时 $p = 0$ 要求$\\sum |a_{n}|^{-1} < \\infty$，而零点再多也只能是有限个。",
+   "statement": "设 $f$ 是**有限阶** $\\rho$ 的整函数，零点为 $\\{a_{n}\\}$（按重数计）。则\n\n$$f(z) = z^{m} e^{P(z)} \\prod_{n} E_{p}\\left(\\frac{z}{a_{n}}\\right),$$\n\n其中 $P$ 是次数 $\\le \\rho$ 的多项式，而 $p \\le \\rho$ 是**统一**取定的整数（不再像 Weierstrass 那样逐个选）。\n\n特别地：阶 $\\rho < 1$ 时可统一取 $p = 0$ —— 初等因子退化成 $1 - z/a_{n}$，因为 $\\rho < 1$ 保证$\\sum |a_{n}|^{-1} < \\infty$。⚠ 这只说明零点**稀疏**，**不是**说没有零点：$z$（阶 $0$）与 $\\sin(\\pi\\sqrt z)/(\\pi\\sqrt z)$（阶 $1/2$、零点是 $n^{2}$）都是反例。",
    "notes": "**证明思路（骨架）**：\n\n**第一步：零点密度。** 由 Jensen 公式$n(R) \\log 2 \\le \\log M(2R) + O(1)$，而 $\\log M(2R) = O(R^{\\rho + \\varepsilon})$，故 $n(R) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$。\n\n这一步说明**统一取 $p = \\lfloor \\rho \\rfloor$ 就够**。\n\n**第二步：除掉零点。** 令 $\\Phi(z) := f(z)\\big/\\prod E_{p}(z/a_{n})$，则 $\\Phi$ 无零点、且仍是有限阶（乘积的贡献被初等因子的估计压住）。\n\n**第三步：无零点的有限阶整函数 = $e^{\\text{多项式}}$。** 写 $\\Phi = e^{h}$（单连通，`prop.single-valued-branch`），则 $\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式，得 $h$ 是次数 $\\le \\rho$ 的多项式。∎\n\n⭐ **它是 Weierstrass 乘积的「定量版」**：一旦知道增长阶，就能把因子统一化、并把自由度压成一个多项式。Picard 小定理在有限阶情形就靠它证。\n\n⚠️ 「有限阶」不能省。无穷阶整函数照样能分解（Weierstrass），但指数部分不再是多项式，而且没有这么强的结论。",
    "refs": [
     "王晓光《复变函数》· Hadamard 分解定理",
@@ -39716,7 +39716,7 @@
     "set-theory"
    ],
    "cluster": "set.cardinal",
-   "layer": 10,
+   "layer": 9,
    "tags": [
     "定理",
     "基数",
@@ -64262,6 +64262,7 @@
     "thm.hartogs"
    ],
    "target": "lem.zorn",
+   "layer": false,
    "title": "选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）",
    "proof": "设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。\n\n**① 一个选择函数**：由 AC，$\\mathcal{P}(P) \\setminus \\{\\emptyset \\}$ 上有选择函数 $\\varphi$，即 $\\varphi (A) \\in A$ 对每个非空 $A \\subseteq P$ 成立。整段证明只挑这一次。\n\n**② 链的严格上界**：对链 $C \\subseteq P$ 记\n\n$$S(C) = \\{ p \\in P : \\forall c \\in C, p \\succ  c \\}$$\n\n（约定 $S(\\emptyset ) = P$。）注意「$C$ 有上界」与「$S(C) \\ne \\emptyset$」不是一回事：$S$ 要的是**严格**上界。\n\n**③ 超限递归**：只要 $S$ 非空就往下走 ——\n\n$$p(\\alpha) = \\varphi( S(\\{ p(\\beta) : \\beta < \\alpha \\}) )\\quad \\text{ 只要} S(\\{ p(\\beta) : \\beta < \\alpha \\}) \\ne \\emptyset;\\text{ 一旦} S\\text{ 为空就停}$$\n\n于是得到一列严格递增的 $p(0) \\prec p(1) \\prec p(2) \\prec \\cdots$。第 0 步用 $S(\\emptyset ) = P \\ne \\emptyset$，所以 $p(0) = \\varphi (P)$ 有定义。\n\n**④ 必停**：由 **Hartogs 定理**，$\\aleph (P)$ 是不能单射进 $P$ 的最小序数。\n\n把递归的上限取到 $\\aleph (P)$ 就够 —— 若对一切 $\\alpha < \\aleph (P)$ 都不停，则 $\\alpha \\mapsto p(\\alpha )$ 就是一个单射 $\\aleph (P) \\to P$，与 $\\aleph (P)$ 的定义矛盾。\n\n故存在 $\\alpha _{0} < \\aleph (P)$ 使 $S(\\{ p(\\beta ) : \\beta < \\alpha _{0} \\}) = \\emptyset$。\n\n（这一步只用到 ZF，不用 AC。）\n\n**⑤ 停下来就给极大元**：令 $C = \\{ p(\\beta ) : \\beta < \\alpha _{0} \\}$，它是 $P$ 的一个链（而且是严格递增的），由题设存在上界 $u \\in P$。\n\n**⑥ $u$ 是极大元**：若存在 $v \\in P$ 使 $u \\prec v$，则由 $u \\succeq c$（$\\forall c \\in C$）与传递性得 $v \\succ c$（$\\forall c \\in C$），即 $v \\in S(C)$ —— 与 $S(C) = \\emptyset$ 矛盾。\n\n故 $u$ 是 $P$ 的极大元。\n\n∎\n\n$>$ 这一路线的分工很干净：**AC 负责「挑」，Hartogs 负责「停」**。对比之下，经由良序定理的证法（见「良序定理 $\\iff$ 佐恩引理」那条黑线）是把「停」交给 Burali–Forti 悖论。",
    "note": "比走良序定理更直：整段只挑一次元素，终止性由 Hartogs 定理（ZF 可证）兜底。"
@@ -67575,9 +67576,10 @@
     "thm.za-analytic"
    ],
    "target": "prop.open-immersion-shriek",
+   "layer": false,
    "title": "固态模里 $\\prod$ 与局部化交换 $\\implies$ $j_!$ 存在",
    "proof": "$j_!$ 存在 $\\iff$ $j^*$ 保极限。$j$ 是开浸入，$j^*$ 就是「把 $A$-模换成 $A[1/f]$-模」；要它保积就等价于\n\n$$\\prod_I A \\otimes_{A_\\blacksquare} A[1/f]_\\blacksquare \\;\\cong\\; \\prod_I A[1/f].$$\n\n在抽象 $A$-模里，左边是 $\\prod_I A[1/f]$ 的**子集**（$\\prod$ 与局部化不交换），一般不相等；在固态 $A$-模里，$\\prod_I A$ 是紧投射对象（`cor.solid-compact-generators`），$\\otimes_{A_\\blacksquare}$ 保它，且 $A[1/f]_\\blacksquare$ 与 $\\prod$ 相容。\n\n\n\n仿射、有限型情形由 `thm.za-analytic` 的 $j_!$ 给出；\n\n一般情形取仿射开覆盖逐步粘合。\n\n$\\blacksquare$",
-   "note": ""
+   "note": "「用更强的工具回头证」：构造顺序是 {!}$（开浸入）→ {!}$（见 imp.f-shriek），反向这一条是拿定义一般 {!}$ 之后的结果去反推 {!}$ 的存在，故按推论边处理（不参与分层）。"
   },
   {
    "id": "imp.f-shriek",
@@ -73106,7 +73108,7 @@
    ],
    "target": "prop.poincare-disk",
    "title": "圆盘上的度量、等距群 = 自同构，Schwarz–Pick 是等距性",
-   "proof": "**拉回计算**：设 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 全纯，Poincaré 度量沿 $\\varphi$ 拉回的系数为 $\\frac{4|\\varphi'(z)|^{2}}{(1 - |\\varphi(z)|^{2})^{2}}$，与原度量之比恰是 $\\left(\\frac{|\\varphi'(z)|}{1 - |\\varphi(z)|^{2}}\\Big/\\frac{1}{1 - |z|^{2}}\\right)^{2}$。\n\n**Schwarz–Pick**（`thm.schwarz-pick`）说这个比值 $\\le 1$，即 $\\varphi$ 不放大双曲长度；等号成立时 $\\varphi$ 是自同构。故「双全纯 $\\mathbb{D} \\to \\mathbb{D}$」$=$「Poincaré 度量的等距」。\n\n**曲率**：在度量 $\\lambda^{2}|\\mathrm{d}z|^{2}$（$\\lambda = 2/(1-|z|^{2})$）下，Gauss 曲率为 $K = -\\lambda^{-2}\\Delta \\log \\lambda$；代入 $\\log\\lambda = \\log 2 - \\log(1 - |z|^{2})$ 与 $\\Delta = 4\\partial_{z}\\partial_{\\bar z}$ 得 $K \\equiv -1$。\n\n**任意单连通真区域**：由 `thm.riemann-mapping` 取双全纯 $f : \\Omega \\to \\mathbb{D}$，把度量拉回即可；双全纯不改变曲率，故 $\\Omega$ 上也有曲率 $-1$ 的完备度量。∎",
+   "proof": "**拉回计算**：设 $\\varphi : \\mathbb{D} \\to \\mathbb{D}$ 全纯，Poincaré 度量沿 $\\varphi$ 拉回的系数为 $\\frac{4|\\varphi'(z)|^{2}}{(1 - |\\varphi(z)|^{2})^{2}}$，与原度量之比恰是 $\\left(\\frac{|\\varphi'(z)|}{1 - |\\varphi(z)|^{2}}\\Big/\\frac{1}{1 - |z|^{2}}\\right)^{2}$。\n\n**Schwarz–Pick**（`thm.schwarz-pick`）说这个比值 $\\le 1$，即 $\\varphi$ 不放大双曲长度；等号成立时 $\\varphi$ 是自同构。对 $\\varphi$ 与 $\\varphi^{-1}$ 各用一次，得双侧都不放大，故双全纯 $\\varphi$ 是**保向**等距。反过来，若要说明「等距必全纯」，需额外的实解析性论据（本边不做），所以这里只说 $\\operatorname{Isom}^{+}(\\mathbb{D}) = \\operatorname{Aut}(\\mathbb{D})$，不说「全部等距」。\n\n**曲率**：在度量 $\\lambda^{2}|\\mathrm{d}z|^{2}$（$\\lambda = 2/(1-|z|^{2})$）下，Gauss 曲率为 $K = -\\lambda^{-2}\\Delta \\log \\lambda$；代入 $\\log\\lambda = \\log 2 - \\log(1 - |z|^{2})$ 与 $\\Delta = 4\\partial_{z}\\partial_{\\bar z}$ 得 $K \\equiv -1$。\n\n**测地线**（陈述 (2)）：度量在 $\\mathrm{SO}(2)$ 下不变，故过 $0$ 的测地线只能是直径（等变性 + 唯一性）；再用 $\\operatorname{Aut}(\\mathbb{D})$ 把任意点搬到 $0$（自同构是等距，把测地线送到测地线），得到的正是与边界圆正交的圆弧。\n\n**任意单连通真区域**：由 `thm.riemann-mapping` 取双全纯 $f : \\Omega \\to \\mathbb{D}$，把度量拉回：双全纯（等距）不改变曲率，得曲率 $-1$；**完备性要单独说** —— 它是被等距传递的，不是从曲率推出来的：$\\mathbb{D}$ 完备（径向到边界的长度 $\\int_{r_{0}}^{r}2\\,\\mathrm{d}t/(1-t^{2}) \\to \\infty$），而 $f^{-1}$ 是等距，故 $\\Omega$ 上的拉回度量也完备。∎",
    "note": "三种常曲率几何的入口：圆盘 = 双曲，球面 = 椭圆，平面 = 欧氏。"
   },
   {
@@ -73131,7 +73133,7 @@
    ],
    "target": "thm.borsuk-ulam",
    "title": "反证：奇映射的度既是奇数又必须是 0",
-   "proof": "设连续 $f : S^{2} \\to \\mathbb{R}^{2}$ 满足 $f(x) \\ne f(-x)$ 处处成立。令\n\n$$g(x) := \\frac{f(x) - f(-x)}{|f(x) - f(-x)|} \\in S^{1},$$\n\n则 $g$ 连续且 $g(-x) = -g(x)$（奇映射）。\n\n**第一步**：把 $g$ 限制到赤道 $S^{1} \\subset S^{2}$，得连续奇映射 $\\bar g : S^{1} \\to S^{1}$。奇映射在 $S^{1}$ 上的**度**必为奇数：由 $\\bar g(e^{i(t+\\pi)}) = -\\bar g(e^{it})$ 可提升为 $\\theta(t + \\pi) = \\theta(t) + \\pi + 2k\\pi$，故 $\\theta(t + 2\\pi) = \\theta(t) + 2\\pi + 4k\\pi$，度为 $1 + 2k$。\n\n**第二步**：$\\bar g$ 可延拓到上半球面（$g$ 本来就定义在整个 $S^{2}$ 上），而可延拓到圆盘上的映射度为 $0$（延拓给出同伦到常值）。\n\n两步矛盾（奇数 $\ne$ 0），故必有 $x$ 使 $f(x) = f(-x)$。∎",
+   "proof": "设连续 $f : S^{2} \\to \\mathbb{R}^{2}$ 满足 $f(x) \\ne f(-x)$ 处处成立。令\n\n$$g(x) := \\frac{f(x) - f(-x)}{|f(x) - f(-x)|} \\in S^{1},$$\n\n则 $g$ 连续且 $g(-x) = -g(x)$（奇映射）。\n\n**第一步**：把 $g$ 限制到赤道 $S^{1} \\subset S^{2}$，得连续奇映射 $\\bar g : S^{1} \\to S^{1}$。奇映射在 $S^{1}$ 上的**度**必为奇数：由 $\\bar g(e^{i(t+\\pi)}) = -\\bar g(e^{it})$ 可提升为 $\\theta(t + \\pi) = \\theta(t) + \\pi + 2k\\pi$，故 $\\theta(t + 2\\pi) = \\theta(t) + 2\\pi + 4k\\pi$，度为 $1 + 2k$。\n\n**第二步**：$\\bar g$ 可延拓到上半球面（$g$ 本来就定义在整个 $S^{2}$ 上），而可延拓到圆盘上的映射度为 $0$（延拓给出同伦到常值）。\n\n两步矛盾（奇数 $\\ne 0$），故必有 $x$ 使 $f(x) = f(-x)$。∎",
    "note": "Borsuk–Ulam 与 Brouwer 是同一枚硬币的两面；这里走「度」这条线。"
   },
   {
@@ -73181,7 +73183,7 @@
    ],
    "target": "def.analytic-continuation",
    "title": "幂级数当载体、唯一性定理当粘合剂",
-   "proof": "延拓的每一步都是「在一个新圆盘上取一个幂级数，它在与旧圆盘的重叠处与旧的相等」。\n\n**载体**：由 `thm.taylor-complex`，每个全纯函数在每点的邻域内等于它的 Taylor 级数，所以「元素」完全由（圆心 + 系数列）决定，延拓可以纯代数地做。\n\n**粘合**：两个元素在重叠处相等，由 `thm.identity` 它们在整个重叠圆盘上相等 —— 唯一性定理保证「延拓的值不因写在哪个圆盘里而不同」。∎",
+   "proof": "延拓的每一步都是「在一个新圆盘上取一个幂级数，它在与旧圆盘的重叠处与旧的相等」。\n\n**载体**：由 `thm.taylor-complex`，每个全纯函数在每点的邻域内等于它的 Taylor 级数 —— 所以一个元素 $(f, D)$ 由「圆心 $c$ + $c$ 处的系数列 + 半径」定下来，而**延拓**就是「把级数搬到新圆心、重新展开」。⚠ 但不能说元素「完全由圆心 + 系数列决定」：定义里 $D$ 本身就是数据，换半径就换了元素（两个半径不同的圆盘是不同对象，尽管函数值在交集上一致）。\n\n**粘合**：两个元素在**连通的**交集上相等时，由 `thm.identity` 它们在整个交集上相等（两个圆盘的交是透镜形，不是圆盘）。注意粘合要沿**函数芽**：在 $z$ 处要求 $[f]_{z} = [g]_{z}$（这正是定义里第 2 条那句 $f_{s} = f_{t}$ 在交集上），仅要求 $z \\in D_{f} \\cap D_{g}$ 是不够的 —— 否则不同路径得到的分支会被错误地当成同一个。沿等价的芽把所有元素拓粘起来，得到的就是 `def.riemann-surface` 上的完全解析函数。∎",
    "note": "延拓这件事之所以定义得干净，全靠这两条：级数给出「可计算的形式」，唯一性给出「一致」。"
   },
   {
@@ -73194,7 +73196,7 @@
    ],
    "target": "thm.monodromy",
    "title": "同伦族上的延拓连续 $\\implies$ 单值",
-   "proof": "设 $\\gamma_{0}, \\gamma_{1}$ 在 $\\Omega$ 内同伦，同伦 $H(s, t)$。对每个 $s$，沿 $\\gamma_{s} = H(s, \\cdot)$延拓，得到终点处的元素 $\\varphi(s)$。\n\n**连续性**：延拓链对参数连续依赖（这是链定义里的第 3 条），故 $\\varphi$ 连续。\n\n**取值离散**：$\\varphi(s)$ 与 $\\varphi(0)$ 相等这件事是闭条件 —— 两个全纯函数在一点邻域内相等，取极限仍相等。同时由唯一性定理，局部相等即整体相等，故该集合开。\n\n$[0,1]$ 连通，既开又闭的非空子集是全体，于是 $\\varphi(1) = \\varphi(0)$。∎",
+   "proof": "设 $\\gamma_{0}, \\gamma_{1}$ 在 $\\Omega$ 内同伦，同伦 $H(s, t)$。对每个 $s$，沿 $\\gamma_{s} = H(s, \\cdot)$延拓，得到终点处的元素 $\\varphi(s)$。\n\n**连续性**：不能直接引「链定义的第 3 条」—— 那条只给**单条路径上**对 $t$ 的连续，不给对同伦参数 $s$ 的连续。正确做法：固定 $s_{0}$，沿 $\\gamma_{s_{0}}$ 的延拓链只有**有限多**个圆盘（同伦提升的紧性）；由 $H$ 的一致连续，存在 $\\varepsilon > 0$ 使 $|s - s_{0}| < \\varepsilon$ 时整条 $\\gamma_{s}$ 仍落在**同一条**链上、相邻圆盘的交集仍非空 —— 于是 $\\gamma_{s}$ 能沿同一条链延拓，且每一步的终点芽随 $s$ 连续（实际上是局部恒等）。\n\n**取值离散**：集合 $A := \\{\\, s : \\varphi(s) = \\varphi(0) \\,\\}$ 是闭的（两个全纯函数在一小圆盘上相等，令 $s \\to s_{0}$ 即知极限处仍相等）；开性则由上一步：$\\varphi$ 在 $s_{0}$ 附近**局部恒定**，所以 $s_{0} \\in A$ 时整段邻域都在 $A$ 里。\n\n$[0,1]$ 连通，既开又闭的非空子集是全体，于是 $\\varphi(1) = \\varphi(0)$。∎",
    "note": "单值是「同伦不变」的直接翻译 —— 与 `thm.winding-homotopy` 是同一个技术：连续 + 离散 $\\implies$ 常值。"
   },
   {
@@ -73207,7 +73209,7 @@
    ],
    "target": "thm.schwarz-reflection",
    "title": "反射定义 + Morera 判全纯",
-   "proof": "定义 $F$ 在上半平面等于 $f$、在下半平面等于 $\\overline{f(\\bar z)}$。\n\n**下半平面全纯**：$z \\mapsto \\bar z$ 反全纯，$\\overline{f(\\bar z)}$ 是「先反全纯、再全纯」的组合，结果全纯（用 Cauchy–Riemann 直接验算即可）。\n\n**实轴上全纯**：取跨实轴的闭三角形 $T$，把积分拆成上下两半。由 `thm.morera`，只需证$\\oint_{\\partial T} F\\,\\mathrm{d}z = 0$：两半各自为零（各自区域内全纯），沿实轴那段由$f$ 连续且实值，正反两方向的积分相消。∎",
+   "proof": "定义 $F$ 在上半平面等于 $f$、在下半平面等于 $\\overline{f(\\bar z)}$。\n\n**下半平面全纯**：$z \\mapsto \\bar z$ 反全纯，$f$ 全纯，再取一次共轭 —— 反全纯 $\\circ$ 全纯 $\\circ$ 反全纯 是「两次反全纯」，合起来全纯。直接验算：$g(z) := \\overline{f(\\bar z)}$ 满足 $g'(z) = \\overline{f'(\\bar z)}$，故 Cauchy–Riemann 成立。\n\n**实轴上全纯**：取跨实轴的闭三角形 $T$，把积分拆成上下两半。由 `thm.morera`，只需证$\\oint_{\\partial T} F\\,\\mathrm{d}z = 0$：$F$ 在 $\\overline{T}$ 上连续（**这正是陈述里「连续到实轴」那条假设的用处**），所以每个半三角形可以单独用 Cauchy 定理、再把斜边推回来取极限；两半各自为零，沿实轴那段由 $f$ 实值，正反两方向的积分相消。∎",
    "note": "反射原理是「延拓」最常用的一招：边界上取实值，就能跨过去。"
   },
   {
@@ -73272,7 +73274,7 @@
    ],
    "target": "thm.weierstrass-product",
    "title": "逐点选 $p_{n}$ 保证内闭一致收敛，乘积即成整函数",
-   "proof": "给定零点列 $a_{n} \\to \\infty$。对每个 $n$ 取 $p_{n}$ 使 $\\sum_{n} |a_{n}|^{-(p_{n}+1)} < \\infty$（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \\to \\infty$）。\n\n**内闭一致收敛**：在 $|z| \\le R$ 上，只有有限多个 $|a_{n}| \\le 2R$；对其余的 $n$ 有 $|z/a_{n}| \\le 1/2$，由初等因子估计\n\n$$\\left|1 - E_{p_{n}}\\!\\left(\\frac{z}{a_{n}}\\right)\\right| \\le \\left|\\frac{z}{a_{n}}\\right|^{p_{n}+1},$$\n\n而 $\\sum |a_{n}|^{-(p_{n}+1)}$ 收敛，故乘积在 $|z| \\le R$ 上一致收敛到一个无零点全纯函数。\n\n**零点**：每个因子只在 $z = a_{n}$ 处为零，重数等于该点在序列中出现的次数；再乘上 $z^{m}$ 补齐 $0$ 处的重数。由 `prop.jensen` 与阶的估计（`def.entire-order`）可保证选出的 $p_{n}$ 不至于过大而使乘积不收敛。∎",
+   "proof": "给定非零零点列 $a_{n} \\to \\infty$（$0$ 处的重数另记作 $m$）。对每个 $n$ 取 $p_{n}$ 使$\\sum_{n} |a_{n}|^{-(p_{n}+1)} < \\infty$（例如 $p_{n} = n$ 即可，因为 $|a_{n}| \\to \\infty$）。\n\n**内闭一致收敛**：在 $|z| \\le R$ 上，只有有限多个 $|a_{n}| \\le 2R$，把这几项单独拿出来；对其余的 $n$ 有 $|z/a_{n}| \\le 1/2$，由初等因子估计\n\n$$\\left|1 - E_{p_{n}}\\!\\left(\\frac{z}{a_{n}}\\right)\\right| \\le \\left|\\frac{z}{a_{n}}\\right|^{p_{n}+1},$$\n\n故真正要估的是**带 $R$ 的那个级数** $\\sum_{n} (R/|a_{n}|)^{p_{n}+1}$（光有 $\\sum |a_{n}|^{-(p_{n}+1)}$ 不够：$R^{p_{n}+1}$ 随 $n$ 涨）。取 $p_{n} = n$ 并只用 $|a_{n}| \\ge 2R$ 的那一尾，得$\\sum (R/|a_{n}|)^{n+1} \\le \\sum 2^{-(n+1)} < \\infty$。于是**尾乘积**在 $|z| \\le R$ 上一致收敛到一个在那个环域内无零点的全纯函数（完整乘积当然有零点 —— 零点就是设计出来的）。\n\n**零点**：每个**因子**在 $z = a_{n}$ 处是单零点；**乘积**在该点的重数才等于 $a_{n}$ 在序列中出现的次数。再乘上 $z^{m}$ 补齐 $0$ 处的重数。\n\n⚠ $p_{n}$ 只影响收敛速度：$p_{n}$ 越大，$|z/a_{n}|^{p_{n}+1}$ 在 $|z| < |a_{n}|$ 上越小，所以不存在\"$p_{n}$ 过大而使乘积不收敛\"。本定理也不需要有限阶假设（那是 Hadamard 那一条用的）。∎",
    "note": "Weierstrass 乘积 = 「零点可任意指定」；剩下的自由度正是 $e^{g}$。"
   },
   {
@@ -73286,7 +73288,7 @@
    ],
    "target": "thm.hadamard-factorization",
    "title": "阶给出统一的 $p$，Jensen 给出零点密度",
-   "proof": "设 $f$ 的阶为 $\\rho$。取 $p = \\lfloor \\rho \\rfloor$。\n\n**零点密度**：由 `prop.jensen`，$n(R)\\log 2 \\le \\log M(2R) + O(1) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$，特别地 $\\sum |a_{n}|^{-(p+1)} < \\infty$ —— 所以**统一取 $p$** 就能让乘积收敛。\n\n**除掉零点后的增长**：令 $\\Phi := f\\big/\\prod E_{p}(z/a_{n})$。乘积部分在每个 $|z| = r$ 上被$\\exp(C r^{\\rho+\\varepsilon})$ 控制（初等因子估计逐项相加），故 $\\Phi$ 仍是有限阶且无零点。\n\n**指数是多项式**：$\\Phi = e^{h}$（`prop.single-valued-branch`），$\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），得 $|h(z)| = O(r^{\\rho+\\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\\deg > \\rho$ 时全为零。∎",
+   "proof": "设 $f$ 的阶为 $\\rho$。取 $p = \\lfloor \\rho \\rfloor$。\n\n**零点密度**：由 `prop.jensen`，$n(R)\\log 2 \\le \\log M(2R) + O(1) = O(R^{\\rho+\\varepsilon})$，于是 $\\sum |a_{n}|^{-(\\rho+\\varepsilon)} < \\infty$，特别地 $\\sum |a_{n}|^{-(p+1)} < \\infty$ —— 所以**统一取 $p$** 就能让乘积收敛。\n\n**除掉零点后的增长**：令 $\\Phi := f\\big/\\prod E_{p}(z/a_{n})$（这里 $a_{n} \\ne 0$；$0$ 处的重数已由 $z^{m}$ 吸走，若 $f(0) \\ne 0$ 则 $m = 0$）。$\\Phi$ 无零点。要控制它的增长，需要乘积的**下界**（上界只能给出 $|\\Phi|$ 的下界）：在半径 $r = |a_{N}|$ 这类环上，用初等因子的标准估计可得 $\\log\\bigl|\\prod E_{p}(z/a_{n})\\bigr| \\ge -C_{\\varepsilon} r^{\\rho+\\varepsilon}$，与 $\\log|f| \\le C r^{\\rho+\\varepsilon}$ 合起来才是 $\\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。故 $\\Phi$ 仍是有限阶且无零点（这条下界估计是 Hadamard 理论的标准一步，本边不重抄）。\n\n**指数是多项式**：$\\Phi = e^{h}$（`prop.single-valued-branch`），$\\operatorname{Re} h = \\log|\\Phi| = O(r^{\\rho+\\varepsilon})$。对 $h$ 用 Borel–Carathéodory 不等式（由 Cauchy 不等式加实部控制），得 $|h(z)| = O(r^{\\rho+\\varepsilon})$，于是 $h$ 的 Taylor 系数在 $\\deg > \\rho$ 时全为零。∎",
    "note": "Hadamard = Weierstrass 乘积 + 增长阶：因子统一、指数退化成多项式。"
   },
   {
@@ -78730,6 +78732,22 @@
    "b": "prop.taylor-peano",
    "title": "Taylor 公式：Lagrange 余项与 Peano 余项",
    "note": "同一个展开式，两种余项、两套假设：`thm.taylor` 要 $n+1$ 阶可导、给出**定量**余项（存在 $\\xi$）；`prop.taylor-peano` 只要 $n$ 阶导数在 $x_{0}$ 连续，给出**定性**的 $o((x-x_{0})^{n})$。\n\n两者互不包含：Peano 版假设更弱但结论只在小 $o$ 意义下；Lagrange 版能用它估误差。所以是**同一台机器的两种用法**，不是依赖。"
+  },
+  {
+   "id": "dep.immersion-openshriek",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.submersion-immersion",
+   "usedBy": "prop.open-immersion-shriek",
+   "note": "开浸入是**浸入**的特例（$U \\subseteq V$ 开，包含映射），所以「开浸入」这个概念先要有。"
+  },
+  {
+   "id": "dep.sixfunctors-openshriek",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.six-functors",
+   "usedBy": "prop.open-immersion-shriek",
+   "note": "这条命题要证的就是六函子里的反常推前 $j_{!}$ 存在 —— 没有「六函子」这层框架，它连「要造什么」都说不出来。"
   },
   {
    "id": "dep.subset-union-inter",

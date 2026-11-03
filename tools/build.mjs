@@ -1382,6 +1382,196 @@ function clNameOf(graph, n) {
 }
 
 
+/* ============================================================ 内容体检（警告级） */
+/* ⭐ 2026-11-03（审计 §9 H1/H2）：A–G 那一堆问题之所以「每加一批内容就复发」，
+   是因为构建只有四个硬门（边端点 / 纯文本字段 / 体积 / 层向）。
+   这里补三个**内容级**检查，全部**警告级**（只报告，不返回错误）：
+     ① 正文里 `反引号` 引用的 id 不存在（改名遗留、拼错；审计 G1）
+     ② 归一化后近同名、却**没有任何边**的两颗星（同一件事造了两个节点；审计 C1）
+     ③ 黑边子图上的环（审计 H2）：等价边在环里 = 合法；白名单 = 多前提假环；其余 = 可疑
+   ⛔ 为什么不做成红灯：②③ 都会误报（「顺嘴提一句」「多前提互推」都是合法情形），
+      先观察一批再收紧。②的细口径与 `_tools/_nov15.mjs` 一致（审计的数字就是它算的）。
+      缺口清单里已有的「陈述用到更深的定义却没边」= 审计的 ②（H1 第二项），不重复实现。
+   ⚠️ 审计 H1 的第四项「implication 是否该是粉边」不单独实现：它能自动抓的那一半
+      （A⟹B 且 B⟹A）正好就是③报出来的 2-环，分类时一并判断。 */
+
+/** 归一化 label：去掉括注、空格、连字符，统一小写（和 _nov15 同一口径） */
+function normLabel(s) {
+  return String(s || '').replace(/（.*?）|\(.*?\)/g, '').replace(/[·・\s\-–—]/g, '').toLowerCase();
+}
+/** 两颗星的 label 是否「近同名」（前者是后者的前缀且长度差 ≤2，或完全相同） */
+function nearLabel(a, b) {
+  if (a === b) return true;
+  const [x, y] = a.length < b.length ? [a, b] : [b, a];
+  if (x.length < 4) return x === y;
+  let i = 0;
+  while (i < x.length && x[i] === y[i]) i++;
+  if (i < Math.min(x.length, y.length) - 1) return false;
+  return y.length - x.length <= 2;
+}
+
+function auditContent(MG, graph) {
+  const nodeIds = new Set(graph.nodes.map((n) => n.id));
+  const edgeIds = new Set(graph.edges.map((e) => e.id).filter(Boolean));
+  const clusterIds = new Set(graph.clusters.map((c) => c.id));
+
+  /* ---------- ① 正文引用的 id 是否存在 ---------- */
+  /* 例外：源码文件名（`notation.js`）、工具名 —— 它们不是节点/边/团 */
+  const FILE_OK = /\.(js|mjs|json|md|txt|html|css)$/;
+  const dangling = new Map();
+  const scan = (text, where) => {
+    if (typeof text !== 'string' || !text) return;
+    for (const m of text.matchAll(/`([a-z][a-z0-9]*(?:\.[a-z0-9][a-z0-9-]*)+)`/g)) {
+      const id = m[1];
+      if (nodeIds.has(id) || edgeIds.has(id) || clusterIds.has(id)) continue;
+      if (FILE_OK.test(id)) continue;
+      if (!dangling.has(id)) dangling.set(id, []);
+      const arr = dangling.get(id);
+      if (arr.length < 6) arr.push(where);
+    }
+  };
+  for (const n of graph.nodes) {
+    for (const f of ['statement', 'notes', 'title']) scan(n[f], n.id + '.' + f);
+  }
+  for (const e of graph.edges) {
+    if (e.kind === 'definition' || e.kind === 'analogy') scan(e.note, e.id + '.note');
+    else scan(e.proof, e.id + '.proof');
+    for (const p of (e.proofs || [])) scan(p && p.text, e.id + '.proofs');
+  }
+
+  /* ---------- ② 近同名却无边 ---------- */
+  const adj = new Map(graph.nodes.map((n) => [n.id, new Set()]));
+  const link = (a, b) => { if (adj.has(a) && adj.has(b) && a !== b) { adj.get(a).add(b); adj.get(b).add(a); } };
+  for (const e of graph.edges) {
+    const f = e.kind === 'implication' ? (e.sources || []) : e.kind === 'definition' ? [e.definition] : [e.a];
+    const t = e.kind === 'implication' ? [e.target] : e.kind === 'definition' ? [e.usedBy] : [e.b];
+    for (const x of f) for (const y of t) link(x, y);
+  }
+  const labs = graph.nodes.map((n) => [normLabel(n.label), n]).filter((x) => x[0] && x[0].length >= 3);
+  const nearPairs = [];
+  for (let i = 0; i < labs.length; i++) {
+    for (let j = i + 1; j < labs.length; j++) {
+      const [la, a] = labs[i], [lb, b] = labs[j];
+      if (a.id === b.id || !nearLabel(la, lb)) continue;
+      if (adj.get(a.id).has(b.id)) continue;
+      nearPairs.push([a, b]);
+    }
+  }
+  nearPairs.sort((p, q) => Math.abs(q[0].layer - q[1].layer) - Math.abs(p[0].layer - p[1].layer));
+
+  /* ---------- ③ 黑边子图上的环 ---------- */
+  /* 参与分层的边 = definition + 黑 implication + equivalence（粉边与类比不进）。 */
+  const N = graph.nodes.length;
+  const idx = new Map(graph.nodes.map((n, i) => [n.id, i]));
+  const out = Array.from({ length: N }, () => []);
+  const layerEdge = [];          // { from, to, e }
+  for (const e of graph.edges) {
+    if (e.kind === 'analogy') continue;
+    if (e.kind === 'implication' && e.layer === false) continue;
+    const f = e.kind === 'implication' ? (e.sources || []) : e.kind === 'definition' ? [e.definition] : [e.a];
+    const t = e.kind === 'implication' ? [e.target] : e.kind === 'definition' ? [e.usedBy] : [e.b];
+    for (const x of f) for (const y of t) {
+      const i = idx.get(x), j = idx.get(y);
+      if (i == null || j == null || i === j) continue;
+      out[i].push(j);
+      layerEdge.push({ i, j, e });
+    }
+  }
+  /* Tarjan（迭代版） */
+  const index = new Int32Array(N).fill(-1), low = new Int32Array(N), on = new Uint8Array(N);
+  const comp = new Int32Array(N).fill(-1), stk = [];
+  let counter = 0, cc = 0;
+  for (let root = 0; root < N; root++) {
+    if (index[root] !== -1) continue;
+    const work = [[root, 0]];
+    while (work.length) {
+      const top = work[work.length - 1], v = top[0], pi = top[1];
+      if (pi === 0) { index[v] = low[v] = counter++; stk.push(v); on[v] = 1; }
+      let recursed = false;
+      for (let k = pi; k < out[v].length; k++) {
+        const w = out[v][k];
+        if (index[w] === -1) { top[1] = k + 1; work.push([w, 0]); recursed = true; break; }
+        if (on[w]) low[v] = Math.min(low[v], index[w]);
+      }
+      if (recursed) continue;
+      if (low[v] === index[v]) {
+        for (;;) { const w = stk.pop(); on[w] = 0; comp[w] = cc; if (w === v) break; }
+        cc++;
+      }
+      work.pop();
+      if (work.length) {
+        const parent = work[work.length - 1][0];
+        low[parent] = Math.min(low[parent], low[v]);
+      }
+    }
+  }
+  const okIds = new Set(((MG.gaps && MG.gaps.cycleOk) || []).map((x) => x.id));
+  const okWhy = new Map(((MG.gaps && MG.gaps.cycleOk) || []).map((x) => [x.id, x.why]));
+  const cycles = [];
+  const byComp = new Map();
+  for (const le of layerEdge) {
+    /* ⚠️ 只有**两端在同一个 SCC** 的边才在环上；跨 SCC 的边不是环（踩过：
+       先按起点分组、再把两端都算进成员 ⇒ 每条普通边都被当成一个「环」）。 */
+    if (comp[le.i] !== comp[le.j]) continue;
+    const c = comp[le.i];
+    if (!byComp.has(c)) byComp.set(c, []);
+    byComp.get(c).push(le);
+  }
+  for (const [c, list] of byComp) {
+    const members = new Set();
+    for (const le of list) { members.add(le.i); members.add(le.j); }
+    if (members.size < 2) continue;                    // 单点 SCC = 没有环
+    const hasEquiv = list.some((le) => le.e.kind === 'equivalence');
+    const okEdge = list.find((le) => okIds.has(le.e.id));
+    const verdict = hasEquiv ? 'ok-equiv' : okEdge ? 'ok-whitelist' : 'suspicious';
+    cycles.push({
+      verdict,
+      nodes: [...members].map((i) => graph.nodes[i].id),
+      edges: [...new Set(list.map((le) => le.e.id))],
+      why: okEdge ? okWhy.get(okEdge.e.id) : '',
+    });
+  }
+
+  return { dangling, nearPairs, cycles };
+}
+
+/** 把体检结果写成 `dist/audit.md`（警告级产物） */
+function exportAudit(audit, graph) {
+  const L = ['# 数学星图 · 内容体检（警告级）', ''];
+  L.push('由 `tools/build.mjs` 生成。**不是硬门**：这三类都会误报，先看，别急着改数据。');
+  L.push('');
+  L.push(`## 一、正文引用了不存在的 id（${audit.dangling.size} 个）`, '');
+  if (!audit.dangling.size) L.push('（没有）');
+  for (const [id, wheres] of audit.dangling) {
+    L.push(`- \`${id}\` ← ${wheres.join(' · ')}`);
+  }
+  L.push('', `## 二、近同名却没有任何边（${audit.nearPairs.length} 对）`, '');
+  L.push('判据：label 去掉括注/空格后相同或前缀相近（与 `_tools/_nov15.mjs` 同口径），且两颗星之间一条边都没有。');
+  L.push('');
+  if (!audit.nearPairs.length) L.push('（没有）');
+  for (const [a, b] of audit.nearPairs) {
+    L.push(`- ${a.label}（\`${a.id}\` L${a.layer}）⇸ ${b.label}（\`${b.id}\` L${b.layer}）`);
+  }
+  L.push('', `## 三、黑边子图上的环（${audit.cycles.length} 个）`, '');
+  L.push('判据见审计 §9-H2：**环里有 equivalence 边 = 合法**（等价类本来就会缩成一个 SCC）；' +
+    '**白名单 = 多前提假环**（`src/data/gaps.js` 的 `cycleOk`，每条都写了理由）；' +
+    '**其余 = 可疑**（要么改 `equivalence`，要么标 `layer:false`，要么这条边就是错的）。');
+  L.push('');
+  if (!audit.cycles.length) L.push('（没有）');
+  for (const c of audit.cycles) {
+    const tag = c.verdict === 'ok-equiv' ? '✅ 等价类（合法）'
+      : c.verdict === 'ok-whitelist' ? '⚪ 白名单（多前提假环）' : '⚠️ 可疑 —— 需要人看';
+    L.push(`- ${tag}：${c.nodes.map((x) => '`' + x + '`').join(' ↔ ')}`);
+    L.push(`  - 环上的边：${c.edges.map((x) => '`' + x + '`').join(' · ')}`);
+    if (c.why) L.push(`  - 为什么不算循环：${c.why}`);
+    if (c.verdict === 'suspicious') {
+      L.push('  - 三种处理：无条件互推 ⇒ 改 `equivalence`（双向 proofs）；用更强工具回头证 ⇒ 标 `layer: false`；都不是 ⇒ 数据错。');
+    }
+  }
+  L.push('');
+  return L.join('\n') + '\n';
+}
+
 /* ------------------------------------------------------------- 缺口清单 */
 /* ⭐ 2026-11-03（审计 I2）：图只记录**存在的东西**，于是「我还缺哪一块」查不到。
    这份产物把两类洞写出来（都是**警告级**，不是硬门）：
@@ -2550,6 +2740,12 @@ if (doJSON) {
     JSON.stringify({ ...gaps.json, generated: data.meta.generated }, null, 1), 'utf8');
   console.log(`  → dist/gaps.md + gaps.json（无节点 ${gaps.json.missing.length} 个 · 缺边 ${gaps.json.noEdge.length} 处）`);
 
+
+  /* 内容体检（审计 H1 ①②③ + H2）：警告级产物，不进断言 */
+  const audit = auditContent(MG, graph);
+  fs.writeFileSync(path.join(DIST, 'audit.md'), exportAudit(audit, graph), 'utf8');
+  const suspicious = audit.cycles.filter((c) => c.verdict === 'suspicious').length;
+  console.log(`  → dist/audit.md（悬空 id ${audit.dangling.size} · 近同名无边 ${audit.nearPairs.length} 对 · 黑边环 ${audit.cycles.length} 个，可疑 ${suspicious}）`);
   /* ------------------------------------------------------- 英文文档（T2.1） */
   /* 正文真源 src/data/i18n/docs.en.js；这里只渲染 + 状态头 + 分页。
      ⭐ reading / policy 天生装不进一次抓取（英文卡在「转义后字符数」那条上限上），

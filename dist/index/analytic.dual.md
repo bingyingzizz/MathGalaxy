@@ -4,8 +4,8 @@
 中心天体 thm.poincare-solid　·　7 个节点　·　根 `../`
 
 - def.six-functors　6-函子形式　layer 19
+- prop.open-immersion-shriek　开浸入的 j_!　layer 20
 - prop.f-shriek-base-change　对偶函子的扭转与基变换　layer 21
-- prop.open-immersion-shriek　开浸入的 j_!　layer 22
 - def.f-shriek　紧支撑推前 f_!　layer 22
 - prop.regular-immersion-dualizing　正则闭浸入的对偶复形　layer 23
 - thm.smooth-duality　光滑映射的对偶复形　layer 24

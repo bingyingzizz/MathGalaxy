@@ -341,9 +341,11 @@ window.MG = window.MG || {};
     {
       id: 'imp.hartogs-zorn',
       kind: 'implication',
+      layer: false,
       sources: ['ax.choice', 'thm.hartogs'],
       target: 'lem.zorn',
       title: '选择公理 + Hartogs 定理 $\\implies$ 佐恩引理（路线 $1\\implies2$）',
+      note: 'AC ⟺ 良序 ⟺ Zorn 已经有三条 equivalence 边；这一条是**第二条路线**（借 Hartogs 定理），按推论边处理：真推得通，但不是建造顺序（分层由等价类负责）。',
       proof: [
         '设 $(P, \\preceq )$ 是非空偏序集，且 $P$ 的每个链都有上界。目标是造出一个极大元。',
         '',

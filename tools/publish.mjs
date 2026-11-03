@@ -185,7 +185,7 @@ fs.mkdirSync(path.join(STAGE, 'mathgalaxy'), { recursive: true });
 // 星图本体
 fs.copyFileSync(path.join(DIST, 'mathgalaxy.html'), path.join(STAGE, 'mathgalaxy', 'index.html'));
 for (const f of ['graph.json', 'graph.md', 'llms.txt', 'policy.md', 'reading.md', 'hubs.md', 'hubs-full.md', 'index.md',
-                 'notation.md', 'notation-full.md', 'alias.md', 'gaps.md', 'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']) {
+                 'notation.md', 'notation-full.md', 'alias.md', 'gaps.md', 'audit.md', 'LICENSE.txt', 'LICENSE-CC-BY-4.0.txt']) {
   const src = path.join(DIST, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(STAGE, 'mathgalaxy', f));
 }
