@@ -115,6 +115,8 @@ function loadMG() {
     'data/i18n/statements.en.js',
     /* 缺口候选词表（I2）：只给 build 用——浏览器端不需要，所以也不挂进 index.html */
     'data/gaps.js',
+    /* 假设受控词表（I6/T14）：同样只给构建用 */
+    'data/hypotheses.js',
   ];
   const packDir = path.join(SRC, 'data', 'packs');
   fs.readdirSync(packDir).sort().forEach(f => { if (f.endsWith('.js')) files.push('data/packs/' + f); });
@@ -268,6 +270,7 @@ function exportJSON(MG, graph) {
       /* 证明完成度（T13/I5）：complete（缺省）| skeleton | external-input。
          ⛔ 只标「不完全」的 —— 缺省就是 complete，别把 1400 多个节点全写上。 */
       status: n.status || undefined,
+      hypotheses: Array.isArray(n.hypotheses) && n.hypotheses.length ? n.hypotheses : undefined,
       /* 英文名（T1.1）：由 src/data/i18n.js 提供、graph.js 挂到节点上。
          缺省 = 没有 ⇒ 消费方按 label_en → title_en → 中文 label 回落。 */
       label_en: n.label_en || undefined,
@@ -1563,7 +1566,24 @@ function auditContent(MG, graph) {
     if (!n.status && /骨架|未展开|只给陈述|外部输入/.test(txt)) statusMissing.push(n.id);
   }
 
-  return { dangling, nearPairs, cycles, statusBad, statusMissing };
+  /* ---------- 五、假设标注（T14 / I6） ---------- */
+  /* 值必须来自 `src/data/hypotheses.js` 的受控词表。陈述里命中某条 hint 却没标 ⇒ 列清单。
+     ⛔ **只提醒，不自动打标**：「注里提到」与「陈述里的假设」是两件事，自动标会大面误标
+     （比如「这里不需要选择公理」会被当成「需要」）。 */
+  const HY = (MG.hypotheses && MG.hypotheses.list) || [];
+  const VOCAB = new Set(HY.map((x) => x.zh));
+  const HINTS = HY.map((x) => ({ zh: x.zh, rx: new RegExp(x.hint, 'g') }));
+  const hypBad = [];
+  const hypMissing = [];
+  for (const n of graph.nodes) {
+    for (const h of (n.hypotheses || [])) if (!VOCAB.has(h)) hypBad.push(n.id + ' → ' + h);
+    if (n.hypotheses && n.hypotheses.length) continue;
+    const st = String(n.statement || '');
+    if (!st) continue;
+    for (const v of HINTS) { v.rx.lastIndex = 0; if (v.rx.test(st)) { hypMissing.push(n.id + '  ‹' + v.zh + '›'); break; } }
+  }
+
+  return { dangling, nearPairs, cycles, statusBad, statusMissing, hypBad, hypMissing };
 }
 
 /** 把体检结果写成 `dist/audit.md`（警告级产物） */
@@ -1605,6 +1625,19 @@ function exportAudit(audit, graph) {
   if (!audit.statusBad.length && !audit.statusMissing.length) L.push('（没有）');
   for (const x of audit.statusBad) L.push(`- ⚠️ 非法取值：${x}`);
   for (const x of audit.statusMissing) L.push(`- 该标未标：\`${x}\``);
+  L.push('');
+  /* ---------- 五、假设标注（T14/I6） ---------- */
+  L.push('', `## 五、假设标注（hypotheses）`, '');
+  L.push('值必须来自 `src/data/hypotheses.js` 的受控词表。第二条**只是提醒**：陈述里命中「假设关键词」却没标注 —— ⛔ 不自动打标（「注里提到」不等于「陈述里的假设」）。');
+  L.push('');
+  if (!audit.hypBad.length) L.push('- 词表外取值：（没有）');
+  for (const x of audit.hypBad) L.push(`- ⚠️ 不在词表里：${x}`);
+  L.push(`- 陈述里出现假设关键词、但没标注：**${audit.hypMissing.length}** 处`);
+  if (audit.hypMissing.length) {
+    L.push('');
+    L.push(audit.hypMissing.slice(0, 40).map((x) => '  - ' + x).join('\n'));
+    if (audit.hypMissing.length > 40) L.push(`  - …还有 ${audit.hypMissing.length - 40} 处`);
+  }
   L.push('');
   return L.join('\n') + '\n';
 }

@@ -207,6 +207,16 @@ function proofSize(e) {
 
 /* ------------------------------------------------------------ find */
 function cmdFind(words, opt) {
+  /* ⭐ T14/I6：--hyp <假设> 按受控词表过滤（例：mg find --hyp 选择公理） */
+  if (opt.hyp) {
+    const hit = NODES.filter((n) => (n.hypotheses || []).includes(opt.hyp));
+    console.log(C.b(`# 假设「${opt.hyp}」下的节点（${hit.length} 个）`));
+    for (const n of hit.sort((a, b) => a.layer - b.layer)) {
+      console.log(`  L${String(n.layer).padStart(2)}  ${C.b(n.id)}  ${n.label}  ${C.dim(where(n))}`);
+    }
+    if (!hit.length) console.log(C.dim('  （没有；词表见 src/data/hypotheses.js）'));
+    return;
+  }
   const q = words.join(' ').toLowerCase();
   if (!q) die('find 要给词，例如：mg find 一致收敛');
   const terms = words.filter((w) => w.trim()).map((w) => w.toLowerCase());
@@ -295,6 +305,10 @@ function cmdShow(ids, opt) {
       console.log(C.y(`status: ${n.status}${why}`));
     }
     if (n.tags && n.tags.length) console.log(C.dim('tags: ' + n.tags.join(' / ')));
+    /* 假设（T14/I6）：按假设检索是研究者最常用的一维 */
+    if (n.hypotheses && n.hypotheses.length) {
+      console.log(C.dim('假设: ' + n.hypotheses.join(' / ')));
+    }
     const aka = akaOf.get(n.id);
     if (aka && aka.length) console.log(C.dim('也叫: ' + aka.join(' / ')));
 
@@ -613,6 +627,7 @@ function main() {
     if (a === '--limit') { opt.limit = parseInt(argv[++i], 10) || 8; continue; }
     if (a === '--no-body') { opt.noBody = true; continue; }
     if (a === '--proof') { opt.proof = true; continue; }
+    if (a === '--hyp') { opt.hyp = argv[++i] || ''; continue; }
     if (a === '--depth') { opt.depth = Math.max(1, parseInt(argv[++i], 10) || 1); continue; }
     if (a === '--min') { opt.min = Math.max(1, parseInt(argv[++i], 10) || 1); continue; }
     if (a === '--nodes') { opt.which = 'nodes'; continue; }
@@ -641,6 +656,7 @@ function usage() {
   console.log(`数学星图 · mg —— 查询命令
 
   bun tools/mg.mjs find <词> [更多词]   搜节点（名字 / 别名 / 标签 / 正文）
+  bun tools/mg.mjs find --hyp 选择公理   按**假设**筛（受控词表，见 src/data/hypotheses.js）
   bun tools/mg.mjs show <id>           节点详情（陈述、注、出入边）
   bun tools/mg.mjs show <id> --proof   连边的证明正文一起看
   bun tools/mg.mjs edge <边id>         一条边的完整证明

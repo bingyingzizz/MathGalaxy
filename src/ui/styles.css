@@ -588,6 +588,10 @@ html.ui-no-hint #hint { display: none; }
 /* 私人批注（T17/I9）：视觉上必须和「内容」区分开 —— 它不进 git、不发布 */
 .pn-note-local { border-left: 3px solid #b9c7e8; background: #f4f7fd; padding: 6px 10px; border-radius: 0 8px 8px 0; }
 
+/* 假设芯片（T14/I6）：与星系/星团那行区分开，它回答「要什么条件」 */
+.pn-hyps { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 0; }
+.pn-hyp { background: rgba(90, 110, 160, .1); border: 1px solid rgba(90, 110, 160, .28); color: #3d4a63; font-size: 11.5px; }
+
 .pn-read { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 2px; }
 .pn-btn.pn-read-btn {
   border-color: rgba(46, 158, 91, .38);

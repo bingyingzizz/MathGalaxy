@@ -285,6 +285,7 @@ window.MG = window.MG || {};
       id: 'cor.heine-borel',
       cluster: 'analysis.completeness',
       type: 'corollary',
+      hypotheses: ['紧', '有限维'],
       /* ⚠️ label 刻意**不写** Heine–Borel：那个词在图上已经登记给 `thm.metric-compact-equiv`
          （见 aliases.js）。两个节点不能抢同一个正文词条 —— 内文跳转是按 label/aka 建词表的。 */
       label: '有界闭 ⟺ 紧（ℝⁿ）',

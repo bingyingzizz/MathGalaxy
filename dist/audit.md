@@ -46,3 +46,53 @@
 
 - 该标未标：`def.connected-sum`
 
+
+## 五、假设标注（hypotheses）
+
+值必须来自 `src/data/hypotheses.js` 的受控词表。第二条**只是提醒**：陈述里命中「假设关键词」却没标注 —— ⛔ 不自动打标（「注里提到」不等于「陈述里的假设」）。
+
+- 词表外取值：（没有）
+- 陈述里出现假设关键词、但没标注：**226** 处
+
+  - ax.choice  ‹选择公理›
+  - def.choicefn  ‹选择公理›
+  - def.bound  ‹完备›
+  - def.complete  ‹完备›
+  - def.totally-bounded  ‹完备›
+  - prop.subset-compact-equiv  ‹完备›
+  - cor.borel-product  ‹可分›
+  - def.null-set  ‹完备›
+  - thm.completion  ‹完备›
+  - thm.caratheodory  ‹完备›
+  - prop.complete-measurable  ‹完备›
+  - prop.completion-measurable-function  ‹完备›
+  - def.linear-isomorphism  ‹有限维›
+  - thm.rank-nullity  ‹有限维›
+  - def.dual-basis  ‹有限维›
+  - thm.matrix-linear-map  ‹有限维›
+  - thm.fundamental-algebra  ‹代数闭›
+  - thm.cayley-hamilton  ‹有限维›
+  - thm.minimal-poly-divisor  ‹代数闭›
+  - thm.primary-decomposition  ‹代数闭›
+  - thm.jordan-canonical-form  ‹代数闭›
+  - def.orthogonal-complement  ‹有限维›
+  - thm.gram-schmidt  ‹有限维›
+  - def.orthogonal-projection  ‹有限维›
+  - thm.projection-formula  ‹有限维›
+  - def.operator-adjoint  ‹有限维›
+  - def.normal-operator  ‹有限维›
+  - thm.spectral-theorem  ‹有限维›
+  - cor.spectral-normal  ‹有限维›
+  - def.normed-space  ‹完备›
+  - def.banach-space  ‹完备›
+  - thm.banach-fixed-point  ‹完备›
+  - cor.archimedean-epsilon  ‹完备›
+  - thm.nth-root  ‹完备›
+  - def.cond-measure  ‹Hausdorff›
+  - def.pre-analytic-ring  ‹Hausdorff›
+  - def.analytic-ring  ‹完备›
+  - thm.analytic-modules  ‹完备›
+  - def.discrete-huber-pair  ‹完备›
+  - prop.scheme-embeds-adic  ‹紧›
+  - …还有 186 处
+

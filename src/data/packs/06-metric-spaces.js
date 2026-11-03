@@ -157,6 +157,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'theorem',
       status: 'skeleton',
+      hypotheses: ['完备'],
       label: '紧的三个等价刻画',
       title: '度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
       regions: ['topology'],

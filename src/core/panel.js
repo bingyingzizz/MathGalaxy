@@ -66,6 +66,15 @@
       }).join('') + '</div>';
     }
 
+    /* 假设（T14/I6）：单独一行的小芯片，与星系/星团那一行分开 ——
+       它回答的是「这条定理要什么条件」，不是「它属于哪里」。 */
+    function hypothesisChips(node) {
+      if (!node.hypotheses || !node.hypotheses.length) return '';
+      return '<div class="pn-hyps">' + node.hypotheses.map(function (h) {
+        return '<span class="pn-chip pn-hyp">' + U.escapeHtml(h) + '</span>';
+      }).join('') + '</div>';
+    }
+
     function nodeRow(n, prefix, keyword) {
       var st = MG.typeStyle(n.type);
       /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文）
@@ -172,6 +181,7 @@
         '<button class="pn-btn" data-sub="both" title="' + U.escapeHtml(tf('两个方向都要')) + '">' + U.escapeHtml(tf('看它周围')) + '</button>' +
         '</div>';
       html += regionChips(n);
+      html += hypothesisChips(n);
 
       /* 「引用此节点」（T1.4）与「独立页面」（T1.5）。内容以 CC BY 4.0 授权，
          标 id + 版本是**请求** —— 「引用」按钮把这个请求变成一次点击

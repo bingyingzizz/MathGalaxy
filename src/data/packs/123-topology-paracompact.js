@@ -426,6 +426,7 @@ window.MG = window.MG || {};
       id: 'thm.urysohn-metrization',
       cluster: 'topology.metrizable',
       type: 'theorem',
+      hypotheses: ['第二可数', 'Hausdorff'],
       label: 'Urysohn 度量化定理',
       title: '正则且第二可数的空间可度量化',
       regions: ['topology'],

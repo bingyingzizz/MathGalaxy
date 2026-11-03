@@ -124,6 +124,7 @@ window.MG = window.MG || {};
       id: 'thm.cardinal-comparable',
       cluster: 'set.cardinal',
       type: 'theorem',
+      hypotheses: ['选择公理'],
       label: '基数可比定理',
       title: '基数可比定理（需要选择公理）',
       regions: ['set-theory'],

@@ -526,6 +526,7 @@ window.MG = window.MG || {};
       id: 'thm.gauss-bonnet',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
+      hypotheses: ['紧', '可定向'],
       label: 'Gauss–Bonnet 定理',
       title: 'Gauss–Bonnet 定理与 Euler 示性数',
       regions: ['diffgeom'],

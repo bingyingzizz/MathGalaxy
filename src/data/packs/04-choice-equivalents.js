@@ -18,6 +18,7 @@ window.MG = window.MG || {};
       id: 'thm.wellordering',
       cluster: 'order.choice',
       type: 'theorem',
+      hypotheses: ['选择公理'],
       label: '良序定理',
       /* ⚠️ 括号里的英文名**不要带年份**：一级英文名规则会在「title 括号里的英文与 aka 一致」时
          取 title 那一条 ⇒ 带年份的话 `title_en` 就成了「Well-Ordering Theorem, Zermelo 1904」

@@ -71,6 +71,7 @@ window.MG = window.MG || {};
       id: 'thm.tykhonov',
       cluster: 'topology.convergence',
       type: 'theorem',
+      hypotheses: ['紧', '选择公理'],
       label: 'Tychonoff 定理',
       title: 'Tychonoff 定理：紧空间的任意积紧',
       regions: ['topology'],

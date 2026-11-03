@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T08:26:05.316Z",
+  "generated": "2026-11-03T08:30:21.247Z",
   "counts": {
    "regions": 15,
    "clusters": 103,
@@ -3778,6 +3778,9 @@
    "type": "theorem",
    "label": "良序定理",
    "title": "良序定理 / 良序原理",
+   "hypotheses": [
+    "选择公理"
+   ],
    "label_en": "well-ordering theorem",
    "title_en": "well-ordering theorem",
    "abstract_en": "Every set can be well ordered: $\\forall X\\, \\exists \\preceq$ a well-ordering of $X$, equivalently every set is equinumerous with an ordinal. Zermelo introduced the axiom of choice in 1904 precisely to prove this, and over ZF the statement is equivalent to AC. Immediate consequence: any two cardinals are comparable, and $\\mathbb{R}$ carries a well-ordering that cannot be written down explicitly.",
@@ -4355,6 +4358,9 @@
    "label": "紧的三个等价刻画",
    "title": "度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界",
    "status": "skeleton",
+   "hypotheses": [
+    "完备"
+   ],
    "label_en": "Heine-Borel",
    "title_en": "Heine-Borel",
    "abstract_en": "In a metric space the following are equivalent: compact, sequentially compact, and complete together with totally bounded. The skeleton lives in the implications: compact implies sequentially compact; sequentially compact implies totally bounded (the one place dependent choice is used) and complete; sequentially compact implies compact by the \"bad ball\" argument; complete and totally bounded implies sequentially compact by diagonalisation. In general topological spaces only the first implication survives — sequential compactness is a metric-space luxury.",
@@ -18588,6 +18594,10 @@
    "type": "theorem",
    "label": "Urysohn 度量化定理",
    "title": "正则且第二可数的空间可度量化",
+   "hypotheses": [
+    "第二可数",
+    "Hausdorff"
+   ],
    "label_en": "Urysohn Metrization Theorem",
    "title_en": "Urysohn Metrization Theorem",
    "abstract_en": "A regular $T_{1}$ space with a countable base is metrisable. The proof embeds $X$ into a countable product of copies of $[0,1]$: second countability makes $X$ Lindelöf, regularity together with Lindelöf makes it normal, and Urysohn functions attached to pairs $\\operatorname{cl}B_{m}\\subseteq B_{n}$ of basic open sets separate points from closed sets. The embedding is a homeomorphism onto its image, and the metric of the product pulls back to a metric inducing the topology of $X$.",
@@ -20259,6 +20269,10 @@
    "type": "theorem",
    "label": "Gauss–Bonnet 定理",
    "title": "Gauss–Bonnet 定理与 Euler 示性数",
+   "hypotheses": [
+    "紧",
+    "可定向"
+   ],
    "label_en": "Gauss–Bonnet Theorem",
    "title_en": "Gauss–Bonnet Theorem",
    "abstract_en": "For a compact orientable surface $M\\subseteq\\mathbb{R}^{3}$, possibly with piecewise smooth boundary, $\\int_{M}K\\,\\mathrm{d}A + \\int_{\\partial M}k_{g}\\,\\mathrm{d}s = 2\\pi\\chi(M)$, where $K$ is the Gaussian curvature, $k_{g}$ the geodesic curvature and $\\chi$ the Euler characteristic. In particular a closed surface satisfies $\\int_{M}K\\,\\mathrm{d}A = 2\\pi\\chi(M)$, so total curvature is a topological invariant: $4\\pi$ for the sphere, $0$ for the torus and $4\\pi(1-g)$ in genus $g$. The local statement for a disc bounded by a simple closed curve is the heart of the proof; the global one follows by summing over a triangulation.",
@@ -21179,6 +21193,10 @@
    "type": "theorem",
    "label": "Stokes 定理",
    "title": "Stokes 定理",
+   "hypotheses": [
+    "紧",
+    "可定向"
+   ],
    "label_en": "Stokes' Theorem",
    "title_en": "Stokes' Theorem",
    "translations": {
@@ -36111,6 +36129,9 @@
    "type": "theorem",
    "label": "有限维范数等价",
    "title": "有限维空间上所有范数等价",
+   "hypotheses": [
+    "有限维"
+   ],
    "title_en": "all norms are equivalent in finite dimension",
    "translations": {
     "en": {
@@ -36190,6 +36211,9 @@
    "type": "theorem",
    "label": "单位球紧 ⟺ 有限维",
    "title": "闭单位球紧 $\\iff$ 有限维（Riesz）",
+   "hypotheses": [
+    "有限维"
+   ],
    "title_en": "the closed unit ball is compact iff finite dimensional",
    "translations": {
     "en": {
@@ -37099,6 +37123,9 @@
    "type": "theorem",
    "label": "可分 Hilbert 空间等距于 ℓ²",
    "title": "可分 Hilbert 空间等距同构于 $\\ell^2$",
+   "hypotheses": [
+    "可分"
+   ],
    "label_en": "separable Hilbert spaces are l2",
    "title_en": "separable Hilbert spaces are l2",
    "translations": {
@@ -37747,6 +37774,9 @@
    "type": "theorem",
    "label": "共鸣定理",
    "title": "共鸣定理（一致有界原理 / Banach–Steinhaus）",
+   "hypotheses": [
+    "完备"
+   ],
    "title_en": "uniform boundedness principle (Banach-Steinhaus)",
    "translations": {
     "en": {
@@ -37826,6 +37856,9 @@
    "type": "theorem",
    "label": "开映射定理（Banach 版）",
    "title": "开映射定理：满射有界算子把开集映成开集",
+   "hypotheses": [
+    "完备"
+   ],
    "title_en": "open mapping theorem for Banach spaces",
    "translations": {
     "en": {
@@ -37907,6 +37940,9 @@
    "type": "theorem",
    "label": "闭图像定理",
    "title": "闭图像定理：图像闭的线性映射连续",
+   "hypotheses": [
+    "完备"
+   ],
    "label_en": "closed graph theorem",
    "title_en": "closed graph theorem",
    "translations": {
@@ -40327,6 +40363,9 @@
    "type": "theorem",
    "label": "基数可比定理",
    "title": "基数可比定理（需要选择公理）",
+   "hypotheses": [
+    "选择公理"
+   ],
    "label_en": "comparability of cardinals",
    "title_en": "comparability of cardinals",
    "abstract_en": "Assuming the axiom of choice, any two sets $A$, $B$ satisfy $\\#A \\le \\#B$ or $\\#B \\le \\#A$, that is, any two cardinals are comparable. This is the licence for ordering cardinals at all: without it even \"$A$ is bigger than $B$\" can be meaningless. The proof runs through the well-ordering theorem: well-order both sets, compare the corresponding ordinals, and read off an injection in one direction. Without AC there really are incomparable cardinals.",
@@ -50744,6 +50783,10 @@
    "type": "theorem",
    "label": "Tychonoff 定理",
    "title": "Tychonoff 定理：紧空间的任意积紧",
+   "hypotheses": [
+    "紧",
+    "选择公理"
+   ],
    "label_en": "Tychonoff",
    "title_en": "Tychonoff",
    "translations": {
@@ -61967,6 +62010,10 @@
    "type": "corollary",
    "label": "有界闭 ⟺ 紧（ℝⁿ）",
    "title": "推论：Heine–Borel 定理 —— $\\mathbb{R}^{n}$ 中紧 $\\iff$ 有界且闭",
+   "hypotheses": [
+    "紧",
+    "有限维"
+   ],
    "title_en": "closed and bounded iff compact in Rn",
    "translations": {
     "en": {
@@ -62088,6 +62135,9 @@
    "type": "theorem",
    "label": "最值定理",
    "title": "最值定理",
+   "hypotheses": [
+    "紧"
+   ],
    "label_en": "extreme value theorem",
    "title_en": "extreme value theorem",
    "translations": {
@@ -62207,6 +62257,9 @@
    "type": "theorem",
    "label": "紧集上连续 ⟹ 一致连续",
    "title": "定理（Cantor）：紧集上的连续函数一致连续",
+   "hypotheses": [
+    "紧"
+   ],
    "title_en": "continuous on a compact set implies uniformly continuous",
    "translations": {
     "en": {

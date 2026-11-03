@@ -620,6 +620,10 @@ html.ui-no-hint #hint { display: none; }
 /* 私人批注（T17/I9）：视觉上必须和「内容」区分开 —— 它不进 git、不发布 */
 .pn-note-local { border-left: 3px solid #b9c7e8; background: #f4f7fd; padding: 6px 10px; border-radius: 0 8px 8px 0; }
 
+/* 假设芯片（T14/I6）：与星系/星团那行区分开，它回答「要什么条件」 */
+.pn-hyps { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 0; }
+.pn-hyp { background: rgba(90, 110, 160, .1); border: 1px solid rgba(90, 110, 160, .28); color: #3d4a63; font-size: 11.5px; }
+
 .pn-read { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 2px; }
 .pn-btn.pn-read-btn {
   border-color: rgba(46, 158, 91, .38);
@@ -2851,6 +2855,8 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
          ⚠️ normNode 是**白名单式**的 —— 不在这里写上，节点上就算有这字段也会被丢掉
          （踩过：数据里标了 52 个，graph.json 里一个都没有）。 */
       status: n.status || null,
+      /* 假设（T14/I6）：受控词表在 src/data/hypotheses.js；只标「陈述里真的作为假设出现」的。 */
+      hypotheses: Array.isArray(n.hypotheses) ? n.hypotheses.slice() : [],
       pack: packName,
       /* 布局结果 */
       x: 0, y: 0,
@@ -9513,6 +9519,15 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
       }).join('') + '</div>';
     }
 
+    /* 假设（T14/I6）：单独一行的小芯片，与星系/星团那一行分开 ——
+       它回答的是「这条定理要什么条件」，不是「它属于哪里」。 */
+    function hypothesisChips(node) {
+      if (!node.hypotheses || !node.hypotheses.length) return '';
+      return '<div class="pn-hyps">' + node.hypotheses.map(function (h) {
+        return '<span class="pn-chip pn-hyp">' + U.escapeHtml(h) + '</span>';
+      }).join('') + '</div>';
+    }
+
     function nodeRow(n, prefix, keyword) {
       var st = MG.typeStyle(n.type);
       /* 英文模式：描述优先英文摘要/陈述，名字走 label_en（缺了回落中文）
@@ -9619,6 +9634,7 @@ window.MG = window.MG || {}; MG.contentVersion = 'v0.9.3';</script>
         '<button class="pn-btn" data-sub="both" title="' + U.escapeHtml(tf('两个方向都要')) + '">' + U.escapeHtml(tf('看它周围')) + '</button>' +
         '</div>';
       html += regionChips(n);
+      html += hypothesisChips(n);
 
       /* 「引用此节点」（T1.4）与「独立页面」（T1.5）。内容以 CC BY 4.0 授权，
          标 id + 版本是**请求** —— 「引用」按钮把这个请求变成一次点击
@@ -18855,6 +18871,7 @@ window.MG = window.MG || {};
       id: 'thm.wellordering',
       cluster: 'order.choice',
       type: 'theorem',
+      hypotheses: ['选择公理'],
       label: '良序定理',
       /* ⚠️ 括号里的英文名**不要带年份**：一级英文名规则会在「title 括号里的英文与 aka 一致」时
          取 title 那一条 ⇒ 带年份的话 `title_en` 就成了「Well-Ordering Theorem, Zermelo 1904」
@@ -19495,6 +19512,7 @@ window.MG = window.MG || {};
       cluster: 'topology.metric',
       type: 'theorem',
       status: 'skeleton',
+      hypotheses: ['完备'],
       label: '紧的三个等价刻画',
       title: '度量空间中：紧 $\\iff$ 列紧 $\\iff$ 完备 + 全有界',
       regions: ['topology'],
@@ -26916,6 +26934,7 @@ window.MG = window.MG || {};
       id: 'thm.cardinal-comparable',
       cluster: 'set.cardinal',
       type: 'theorem',
+      hypotheses: ['选择公理'],
       label: '基数可比定理',
       title: '基数可比定理（需要选择公理）',
       regions: ['set-theory'],
@@ -35916,6 +35935,7 @@ window.MG = window.MG || {};
       id: 'thm.tykhonov',
       cluster: 'topology.convergence',
       type: 'theorem',
+      hypotheses: ['紧', '选择公理'],
       label: 'Tychonoff 定理',
       title: 'Tychonoff 定理：紧空间的任意积紧',
       regions: ['topology'],
@@ -45025,6 +45045,7 @@ window.MG = window.MG || {};
       id: 'cor.heine-borel',
       cluster: 'analysis.completeness',
       type: 'corollary',
+      hypotheses: ['紧', '有限维'],
       /* ⚠️ label 刻意**不写** Heine–Borel：那个词在图上已经登记给 `thm.metric-compact-equiv`
          （见 aliases.js）。两个节点不能抢同一个正文词条 —— 内文跳转是按 label/aka 建词表的。 */
       label: '有界闭 ⟺ 紧（ℝⁿ）',
@@ -45355,6 +45376,7 @@ window.MG = window.MG || {};
       id: 'thm.evt',
       cluster: 'analysis.continuity',
       type: 'theorem',
+      hypotheses: ['紧'],
       label: '最值定理',
       title: '最值定理',
       regions: ['analysis', 'topology'],
@@ -45403,6 +45425,7 @@ window.MG = window.MG || {};
       id: 'thm.uniform-continuity-compact',
       cluster: 'analysis.continuity',
       type: 'theorem',
+      hypotheses: ['紧'],
       label: '紧集上连续 ⟹ 一致连续',
       title: '定理（Cantor）：紧集上的连续函数一致连续',
       regions: ['analysis', 'topology'],
@@ -60195,6 +60218,7 @@ window.MG = window.MG || {};
       id: 'thm.urysohn-metrization',
       cluster: 'topology.metrizable',
       type: 'theorem',
+      hypotheses: ['第二可数', 'Hausdorff'],
       label: 'Urysohn 度量化定理',
       title: '正则且第二可数的空间可度量化',
       regions: ['topology'],
@@ -62449,6 +62473,7 @@ window.MG = window.MG || {};
       id: 'thm.gauss-bonnet',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
+      hypotheses: ['紧', '可定向'],
       label: 'Gauss–Bonnet 定理',
       title: 'Gauss–Bonnet 定理与 Euler 示性数',
       regions: ['diffgeom'],
@@ -63651,6 +63676,7 @@ window.MG = window.MG || {};
       id: 'thm.stokes',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
+      hypotheses: ['紧', '可定向'],
       label: 'Stokes 定理',
       title: 'Stokes 定理',
       regions: ['diffgeom'],
@@ -82873,6 +82899,7 @@ window.MG = window.MG || {};
       id: 'thm.norm-equiv-finite-dim',
       cluster: 'fa.norm',
       type: 'theorem',
+      hypotheses: ['有限维'],
       label: '有限维范数等价',
       title: '有限维空间上所有范数等价',
       regions: ['functional-analysis'],
@@ -82919,6 +82946,7 @@ window.MG = window.MG || {};
       id: 'thm.riesz-ball-compact',
       cluster: 'fa.norm',
       type: 'theorem',
+      hypotheses: ['有限维'],
       label: '单位球紧 ⟺ 有限维',
       title: '闭单位球紧 $\\iff$ 有限维（Riesz）',
       regions: ['functional-analysis'],
@@ -83529,6 +83557,7 @@ window.MG = window.MG || {};
       id: 'thm.separable-hilbert-is-l2',
       cluster: 'fa.hilbert',
       type: 'theorem',
+      hypotheses: ['可分'],
       label: '可分 Hilbert 空间等距于 ℓ²',
       title: '可分 Hilbert 空间等距同构于 $\\ell^2$',
       regions: ['functional-analysis'],
@@ -83773,6 +83802,7 @@ window.MG = window.MG || {};
       id: 'thm.ubp',
       cluster: 'fa.baire',
       type: 'theorem',
+      hypotheses: ['完备'],
       label: '共鸣定理',
       title: '共鸣定理（一致有界原理 / Banach–Steinhaus）',
       regions: ['functional-analysis'],
@@ -83816,6 +83846,7 @@ window.MG = window.MG || {};
       id: 'thm.open-mapping-banach',
       cluster: 'fa.baire',
       type: 'theorem',
+      hypotheses: ['完备'],
       label: '开映射定理（Banach 版）',
       title: '开映射定理：满射有界算子把开集映成开集',
       regions: ['functional-analysis'],
@@ -83866,6 +83897,7 @@ window.MG = window.MG || {};
       id: 'thm.closed-graph',
       cluster: 'fa.baire',
       type: 'theorem',
+      hypotheses: ['完备'],
       label: '闭图像定理',
       title: '闭图像定理：图像闭的线性映射连续',
       regions: ['functional-analysis'],

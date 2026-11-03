@@ -810,6 +810,7 @@ window.MG = window.MG || {};
       id: 'thm.stokes',
       cluster: 'diffgeom.intrinsic',
       type: 'theorem',
+      hypotheses: ['紧', '可定向'],
       label: 'Stokes 定理',
       title: 'Stokes 定理',
       regions: ['diffgeom'],
