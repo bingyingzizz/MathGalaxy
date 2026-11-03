@@ -12,6 +12,9 @@ $$\operatorname{Ext}^{n}_{\mathbb{Z}}(M, N) = 0.$$
 
 - …另有入边，续页见 [nodes/thm.lc-ext-vanishing.2.md](./thm.lc-ext-vanishing.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.lc-ext-vanishing.3.md](./thm.lc-ext-vanishing.3.md)
+
 refs: Le Stum, Theorem 8.3.9
 
 > 说明见 `notes/thm.lc-ext-vanishing.md`

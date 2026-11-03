@@ -55,7 +55,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.chern-weil',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'theorem',
       label: '陈–Weil 同态',
       title: '陈–Weil 同态：用曲率算出的上同调类与联络无关',
@@ -93,7 +93,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.chern-class',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'theorem',
       label: '陈类',
       title: '陈类：由曲率算出的示性类',
@@ -129,7 +129,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.chern-class-line-bundle',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'proposition',
       label: '线丛的陈类计算',
       title: '命题：线丛的陈类就是曲率（差一个 $\\frac{i}{2\\pi}$）',
@@ -157,7 +157,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.splitting-principle',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'theorem',
       label: '分裂原理',
       title: '分裂原理：把丛拆成线丛来算',

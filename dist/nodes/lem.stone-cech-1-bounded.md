@@ -14,6 +14,9 @@ $$\check{C}^{\bullet}\bigl((S_{0} \to S)^{+},\ M\bigr)$$
 
 - …另有入边，续页见 [nodes/lem.stone-cech-1-bounded.2.md](./lem.stone-cech-1-bounded.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/lem.stone-cech-1-bounded.3.md](./lem.stone-cech-1-bounded.3.md)
+
 refs: Le Stum, Lemma 8.2.5
 
 > 说明见 `notes/lem.stone-cech-1-bounded.md`

@@ -24,7 +24,7 @@ window.MG = window.MG || {};
   nodes: [
     {
       id: 'def.characteristic-class',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'definition',
       status: 'skeleton',
       label: '示性类',

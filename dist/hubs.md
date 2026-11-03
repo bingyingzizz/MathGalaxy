@@ -13,7 +13,7 @@
 - 全部：`hubs/base.md`
 
 ## 综合结论榜
-- **7 / 8** `thm.bundle-classification` 丛的分类 · 流形与向量丛
+- **7 / 8** `thm.bundle-classification` 丛的分类 · 丛的示性类
 - **7 / 4** `thm.theorema-egregium` 绝妙定理 · 内蕴几何
 - **6 / 7** `thm.stokes` Stokes 定理 · 内蕴几何
 - 全部：`hubs/big.md`

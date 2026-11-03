@@ -12,7 +12,7 @@ analytic.adic　analytic.dual
 analysis.complex　analysis.cauchy　analysis.residue　analysis.mapping　analysis.harmonic　analysis.entire　analysis.topology-app
 
 ## 微分几何（diffgeom）
-diffgeom.frame　diffgeom.surface　diffgeom.intrinsic　diffgeom.manifold　diffgeom.vector　diffgeom.form　diffgeom.symplectic　diffgeom.lieg
+diffgeom.frame　diffgeom.surface　diffgeom.intrinsic　diffgeom.manifold　diffgeom.characteristic　diffgeom.vector　diffgeom.form　diffgeom.symplectic　diffgeom.lieg
 
 ## 数论（number）
 number.functions　number.quadratic　number.basic

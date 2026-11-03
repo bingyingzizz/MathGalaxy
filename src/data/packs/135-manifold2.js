@@ -393,7 +393,7 @@ window.MG = window.MG || {};
 
     {
       id: 'thm.bundle-classification',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'theorem',
       label: '丛的分类',
       title: '向量丛的分类与 Čech 上同调',

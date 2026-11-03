@@ -12,6 +12,9 @@ layer 15 · 定理 · 矩阵分解与最小二乘 · 抽象代数
 
 - …另有入边，续页见 [nodes/thm.qr-decomposition.3.md](./thm.qr-decomposition.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.qr-decomposition.4.md](./thm.qr-decomposition.4.md)
+
 refs: Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· Gram–Schmidt；Horn–Johnson, Matrix Analysis（⚠️ 章名未核实，只记书名）· QR 分解
 
 > 说明见 `notes/thm.qr-decomposition.md`

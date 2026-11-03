@@ -17,7 +17,7 @@ window.MG = window.MG || {};
 
     {
       id: 'prop.cond-slice-topos-morphism',
-      cluster: 'cond.compute',
+      cluster: 'cond.set',
       type: 'proposition',
       label: 'Cond/X 到开集拓扑斯的态射',
       title: '拓扑斯态射 $c_{X} : \\mathrm{Cond}/X \\rightleftarrows \\mathrm{Open}(X)$',

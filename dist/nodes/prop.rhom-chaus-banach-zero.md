@@ -12,6 +12,9 @@ $$\operatorname{RHom}_{\mathbb{Z}}(M,\ N) = 0.$$
 
 - …另有入边，续页见 [nodes/prop.rhom-chaus-banach-zero.2.md](./prop.rhom-chaus-banach-zero.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.rhom-chaus-banach-zero.3.md](./prop.rhom-chaus-banach-zero.3.md)
+
 refs: Le Stum, Proposition 8.3.6
 
 > 说明见 `notes/prop.rhom-chaus-banach-zero.md`

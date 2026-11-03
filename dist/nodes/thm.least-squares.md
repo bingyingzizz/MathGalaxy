@@ -9,6 +9,9 @@ layer 17 · 定理 · 矩阵分解与最小二乘 · 抽象代数
 > 陈述续见 [nodes/thm.least-squares.2.md](./thm.least-squares.2.md)
 
 
+## 它能推出什么 / 谁在用它
+- ⇒ [`def.pseudoinverse`](../nodes/def.pseudoinverse.md) 伪逆
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.least-squares.3.md](./thm.least-squares.3.md)
 

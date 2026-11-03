@@ -1,7 +1,7 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-03T12:49:54.344Z
-> 15 星系 / 104 星团 / 1500 节点 / 2882 连线（强边 2848，弱边 34；其中**不分层**的「推论」33 条（layer:false））
+> 由 `tools/build.mjs` 自动生成于 2026-11-03T13:19:28.048Z
+> 15 星系 / 105 星团 / 1500 节点 / 2902 连线（强边 2868，弱边 34；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.5 MB），不要单次抓取** —— 抓取工具单次通常只返回
 > 约 1000 词元（中文约 3 KB；各工具上限不同，这里说的是常见量级），你会只看到开头一小段，
@@ -9201,7 +9201,7 @@ $$T^{2} = T .$$
 参考：Hoffman–Kunze, Linear Algebra, 「Operators on Inner Product Spaces」· 投影；北大《高等代数》· 幂等变换
 
 ### 星团：矩阵分解与最小二乘
-> 造出「真的把 $Ax = b$ 解出来」这台机器：矩阵范数（量「大小」）→ LU（消元的矩阵形式）→ QR（Gram–Schmidt 的矩阵形式）→ **最小二乘**（无解时求最近的解，即正交投影）→ 伪逆（连「解不唯一」也能挑出规范的那个）。⛔ 只写数学（存在性/唯一性/变分刻画），不写数值算法。
+> 「真的把 $Ax = b$ 解出来」的四件工具，**靠团外的结果接起来**：矩阵范数（量「大小」）· LU（消元的矩阵形式，靠初等矩阵）· QR（Gram–Schmidt 的矩阵形式）· **最小二乘**（无解时求最近的解，即正交投影）与伪逆（连「解不唯一」也能挑出规范的那个）。团内**真有的链条只有两条**：QR $\implies$ 最小二乘（法方程化成上三角回代）、最小二乘（列满秩）$\implies$ 伪逆就是 $(A^{T}A)^{-1}A^{T}$。矩阵范数与 LU 的依赖都在团外。⛔ 只写数学（存在性/唯一性/变分刻画），不写数值算法。
 
 #### 矩阵范数　`def.matrix-norm`
 *定义*　矩阵范数与算子范数
@@ -26811,6 +26811,40 @@ $$X(\bullet) = \varinjlim_{i} S_{i}$$
 
 参考：Le Stum, Proposition 4.2.12
 
+#### Cond/X 到开集拓扑斯的态射　`prop.cond-slice-topos-morphism`
+*命题*　拓扑斯态射 $c_{X} : \mathrm{Cond}/X \rightleftarrows \mathrm{Open}(X)$
+
+设 $X$ 是拓扑空间。存在拓扑斯态射
+
+$$c_{X} : \mathrm{Cond}/X \rightleftarrows \mathrm{Open}(X),$$
+
+其中 $\mathrm{Open}(X)$ 是 $X$ 的开集所成的拓扑空间对应的拓扑斯（开集按含入组成的偏序，配上它的标准拓扑）。
+
+**逆像**把 $Y \in \mathrm{Cond}/X$ 送到 $U \mapsto \operatorname{Hom}_{/X}(\underline{U}, Y)$；
+**顺像**把 $F \in \mathrm{Open}(X)$ 送到 $\varinjlim_{U \subseteq X,\ s \in F(U)} \underline{U}$。
+
+**在做什么。** $\mathrm{Cond}/X$ 是「把 $X$ 当成基点、在上面做凝聚态数学」的世界；$\mathrm{Open}(X)$ 是「$X$ 的开集格」这个世界。这条态射把两边接起来：**两个世界算出来的上同调可以互相换算**。
+
+**逆像的形状怎么读**：$\operatorname{Hom}_{/X}(\underline{U}, Y)$ 是「越过 $X$ 的、从 $U$ 到 $Y$ 的映射」。$U$ 越小能给的映射越多 —— 这正是层的「限制」味道。
+
+**顺像的形状怎么读**：$\varinjlim \underline{U}$ 是「把所有开集拼起来」的余极限 —— 开集沿含入的余极限就是它们并起来。
+
+⭐ 这条是下面 Dyckhoff 定理那条谱序列的**构造基础**：有了这两个方向，$\mathrm{Cond}/X$ 上的上同调才能被 $\mathrm{Open}(X)$ 上的层上同调逼近。
+
+**证明。** 先看两个函子都有定义：逆像把 $Y \in \mathrm{Cond}/X$ 送到预层 $U \mapsto \operatorname{Hom}_{/X}(\underline{U}, Y)$，而 $\mathrm{Open}(X)$ 上的层条件只涉及开集的含入，逐条验即可；
+
+顺像 $\varinjlim_{U \subseteq X,\ s \in F(U)} \underline{U}$ 取的是**滤过**余极限（开集沿含入滤过），在 $\mathrm{Cond}$ 里存在。
+**逆像左正合**：$\varinjlim$ 在 $\mathrm{Cond}$ 里正合（AB5）。
+**伴随**：逐项算
+$$\operatorname{Hom}_{/X}\Bigl(\varinjlim_{U, s} \underline{U},\ Y\Bigr) = \varinjlim_{U, s} \operatorname{Hom}_{/X}(\underline{U}, Y) = \operatorname{Hom}(F, Y),$$
+第一式是余极限的泛性质，第二式就是把「从 $F$ 到 $Y$ 的映射」按 $F$ 的定义写成相容族 $\{F(U) \to \operatorname{Hom}_{/X}(\underline{U}, Y)\}$ —— 两者是同一件事。
+
+于是有伴随 $\varinjlim \underline{U} \dashv \bigl(U \mapsto \operatorname{Hom}_{/X}(\underline{U}, -)\bigr)$，逆像左正合，故 $c_{X}$ 是拓扑斯态射。
+
+∎
+
+参考：Le Stum, Proposition 8.1.3
+
 #### Cond 的极限与余极限　`prop.cond-limits-colimits`
 *命题*　$\mathrm{Cond}$ 的极限逐点算，余极限要先层化
 
@@ -28016,40 +28050,6 @@ $$E^{p,q}_{1} = \bigoplus_{i=1}^{r_{p}} H^{q}\bigl(M^{s_{p,i}},\ N\bigr) \implie
 
 ### 星团：导出 Hom 的具体计算
 > 把那条谱序列**落到具体系数上**算完：Stonean / 离散空间上自由模、Stone 上常系数、\mathbb{R}/\mathbb{R}^{\mathrm{disc}}$ 的截面 → 截面公式 \operatorname{Ext}^{i}(\mathbb{Z}[S],N) \cong H^{i}(S,N)$ → 局部紧阿贝尔群的高次 \operatorname{Ext}$ 消失（只剩 \operatorname{Ext}^{0},\operatorname{Ext}^{1}$）→ \mathbb{Z}, \mathbb{R}, \mathbb{T}$ 的 \operatorname{RHom}$ 计算表 + 有限维 Banach / 连通局部紧 / 非局部紧三个例子。
-
-#### Cond/X 到开集拓扑斯的态射　`prop.cond-slice-topos-morphism`
-*命题*　拓扑斯态射 $c_{X} : \mathrm{Cond}/X \rightleftarrows \mathrm{Open}(X)$
-
-设 $X$ 是拓扑空间。存在拓扑斯态射
-
-$$c_{X} : \mathrm{Cond}/X \rightleftarrows \mathrm{Open}(X),$$
-
-其中 $\mathrm{Open}(X)$ 是 $X$ 的开集所成的拓扑空间对应的拓扑斯（开集按含入组成的偏序，配上它的标准拓扑）。
-
-**逆像**把 $Y \in \mathrm{Cond}/X$ 送到 $U \mapsto \operatorname{Hom}_{/X}(\underline{U}, Y)$；
-**顺像**把 $F \in \mathrm{Open}(X)$ 送到 $\varinjlim_{U \subseteq X,\ s \in F(U)} \underline{U}$。
-
-**在做什么。** $\mathrm{Cond}/X$ 是「把 $X$ 当成基点、在上面做凝聚态数学」的世界；$\mathrm{Open}(X)$ 是「$X$ 的开集格」这个世界。这条态射把两边接起来：**两个世界算出来的上同调可以互相换算**。
-
-**逆像的形状怎么读**：$\operatorname{Hom}_{/X}(\underline{U}, Y)$ 是「越过 $X$ 的、从 $U$ 到 $Y$ 的映射」。$U$ 越小能给的映射越多 —— 这正是层的「限制」味道。
-
-**顺像的形状怎么读**：$\varinjlim \underline{U}$ 是「把所有开集拼起来」的余极限 —— 开集沿含入的余极限就是它们并起来。
-
-⭐ 这条是下面 Dyckhoff 定理那条谱序列的**构造基础**：有了这两个方向，$\mathrm{Cond}/X$ 上的上同调才能被 $\mathrm{Open}(X)$ 上的层上同调逼近。
-
-**证明。** 先看两个函子都有定义：逆像把 $Y \in \mathrm{Cond}/X$ 送到预层 $U \mapsto \operatorname{Hom}_{/X}(\underline{U}, Y)$，而 $\mathrm{Open}(X)$ 上的层条件只涉及开集的含入，逐条验即可；
-
-顺像 $\varinjlim_{U \subseteq X,\ s \in F(U)} \underline{U}$ 取的是**滤过**余极限（开集沿含入滤过），在 $\mathrm{Cond}$ 里存在。
-**逆像左正合**：$\varinjlim$ 在 $\mathrm{Cond}$ 里正合（AB5）。
-**伴随**：逐项算
-$$\operatorname{Hom}_{/X}\Bigl(\varinjlim_{U, s} \underline{U},\ Y\Bigr) = \varinjlim_{U, s} \operatorname{Hom}_{/X}(\underline{U}, Y) = \operatorname{Hom}(F, Y),$$
-第一式是余极限的泛性质，第二式就是把「从 $F$ 到 $Y$ 的映射」按 $F$ 的定义写成相容族 $\{F(U) \to \operatorname{Hom}_{/X}(\underline{U}, Y)\}$ —— 两者是同一件事。
-
-于是有伴随 $\varinjlim \underline{U} \dashv \bigl(U \mapsto \operatorname{Hom}_{/X}(\underline{U}, -)\bigr)$，逆像左正合，故 $c_{X}$ 是拓扑斯态射。
-
-∎
-
-参考：Le Stum, Proposition 8.1.3
 
 #### Stonean 上凝聚阿贝尔群零调　`prop.stonean-cond-acyclic`
 *命题*　Stonean 空间上一切凝聚态阿贝尔群零调
@@ -33601,7 +33601,7 @@ $$\int_{M}\mathrm{d}\omega = \int_{\partial M}\omega ,$$
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「微分形式的积分」· Stokes 定理；do Carmo, Differential Forms and Applications, 第 3 章「联络形式」· Stokes 定理与结构方程
 
 ### 星团：流形与向量丛
-> 把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量、丛的分类 → 定向与体积形式。这一团是后面三团的地基。
+> 把「曲面」换成一般的流形：图卡与图册 → 光滑映射与光滑结构 → 切丛与向量丛 → 截面、纤维度量 → 定向与体积形式。这一团是后面几团的地基（丛上「多一层结构」的东西在「示性类与丛的分类」那团）。
 
 #### 图卡　`def.manifold-chart`
 *定义*　图卡、坐标与转移映射
@@ -33968,61 +33968,6 @@ $\partial M$ 自带一个 $(n-1)$ 维**无边**光滑流形结构：把每张卡
 
 参考：Spivak, Calculus on Manifolds, 第 5 章「Integration on Manifolds」· 带边流形与边界；Spivak, Calculus on Manifolds, 第 4 章「Integration on Chains」· 几何预备：奇异方块与半空间
 
-#### 丛的分类　`thm.bundle-classification`
-*定理*　向量丛的分类与 Čech 上同调
-
-**白话**：向量丛怎么「粘」，全记在转移函数上；所以「有多少种秩 $k$ 丛」这个问题就是「这些转移函数模掉换基还剩多少」—— 答案是 Čech 的 $H^{1}$。
-
-设 $M$ 是光滑流形（第二可数、Hausdorff），$k \ge 1$，$\mathfrak{U} = \{U_{\alpha}\}$ 是开覆盖。
-
-记 $U_{\alpha\beta} := U_{\alpha}\cap U_{\beta}$、$U_{\alpha\beta\gamma} := U_{\alpha}\cap U_{\beta}\cap U_{\gamma}$。
-
-**$1$-上闭链**是光滑函数族
-
-$$g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \operatorname{GL}(k,\mathbb{R}),\qquad g_{\alpha\beta}\,g_{\beta\gamma} = g_{\alpha\gamma}\quad(\text{on } U_{\alpha\beta\gamma}).$$
-
-两条上闭链**等价**，如果存在光滑的 $h_{\alpha} : U_{\alpha} \to \operatorname{GL}(k,\mathbb{R})$ 使
-
-$$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}\qquad(\text{on } U_{\alpha\beta}).$$
-
-则 $M$ 上秩 $k$ 实向量丛的**同构类**与「$1$-上闭链模等价」一一对应。取遍所有覆盖与它们的加细，得到的集合记
-
-$$\check{H}^{1}\bigl(M;\operatorname{GL}(k,\mathbb{R})\bigr),$$
-
-于是：秩 $k$ 实向量丛的同构类**就是**这个集合的元素。把 $\operatorname{GL}(k,\mathbb{R})$ 换成任意结构群 $G \le \operatorname{GL}(k,\mathbb{R})$，同一句话给出「秩 $k$ 的 $G$-丛」的分类。
-
-**Čech 口径要说清三件事**：
-
-1. **系数不是阿贝尔群**：$\operatorname{GL}(k,\mathbb{R})$ 非交换，所以 $\check{H}^{1}(M;\operatorname{GL}(k))$ 只是一个**带基点的集合**（基点是平凡丛），不是群、不是向量空间。
-
-只有当系数落在阿贝尔群层里，Čech 上同调才是群 —— 本图 `def.cech-cohomology` 那条定义取的是阿贝尔预层复形，与本条不是同一个层级的东西，别混。
-2. **只有 $0$ 次与 $1$ 次有意义**：$\check{H}^{0}$ 是整体截面（对 $\operatorname{GL}(k)$ 而言就是常值 $1$，因为 $M$ 连通），$\check{H}^{1}$ 是上面那个「上闭链模上边界」；
-
-$\check{H}^{2}$ 起要非阿贝尔上同调的技术（系数带群作用），本图完全不用。
-3. **必须取余极限**：不同覆盖给出不同的 $\check{H}^{1}(\mathfrak{U};\cdot)$，但它们沿加细相容（每步是一个映射，而两个加细有公共加细），取余极限才是不依赖覆盖的量。
-
-**为什么是 $H^{1}$ 而不是 $H^{0}$**：$H^{0}$ 记的是「什么都不用粘」的数据（整体平凡化），$H^{1}$ 记的是「粘起来差多少」—— 前者数整体对象，后者数障碍。这与层上同调的分工完全一致。
-
-**换结构群就是换系数**：$\operatorname{GL}(k,\mathbb{R})$ 换成 $\operatorname{O}(k)$ 得「配了纤维度量的丛」（`prop.bundle-metric` 保证总能配上，所以这一步不丢信息）；
-
-换成 $\operatorname{GL}(k,\mathbb{C})$ 得复丛；
-
-换成 $\operatorname{GL}(k,\mathbb{Z})$ 得平坦丛。
-
-所以分类定理的真正形状是「对每个结构群 $G$，秩 $k$ 的 $G$-丛由 $\check{H}^{1}(M;G)$ 分类」。
-
-**例子（只列结论）**：$S^{1}$ 上的实线丛有两个同构类（平凡丛与 Möbius 带），对应 $\check{H}^{1}(S^{1};\mathbb{R}^{\times}) \cong \mathbb{Z}/2$；
-
-$S^{2}$ 上的复线丛由 $\mathbb{Z}$ 分类（Hopf 丛是生成元）。
-
-这两个数都不「局部」看得出来 —— 正是上同调该管的事。
-
-⚠️ $\operatorname{GL}(k,\mathbb{R})$ 里的 $k$ 是**丛的秩**；$k = 1$ 时它是 $\mathbb{R}^{\times}$，其连通分支是两个（$\mathbb{R}_{>0}$ 与 $\mathbb{R}_{<0}$），这正是「实线丛只有两种粘法」的来源。
-
-⚠️ 本条的证明是**构造级**的（写在边上）：两个方向的映射都给出、同构对应上边界都验证；「余极限是良定义的」这一步只给论证思路，不给逐字证明 —— 与深定理的折衷口径一致，如实说明。
-
-参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 转移函数与上闭链条件；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛的同构与结构群
-
 #### 余切丛　`def.cotangent-bundle`
 *定义*　余切丛：切空间的对偶丛
 
@@ -34111,6 +34056,144 @@ $$\Phi_{\alpha}\circ\Phi_{\beta}^{-1}\,(b, y) = \bigl(b,\ g_{\alpha\beta}(b)\,y\
 ⭐ 分类的口径也来自这里：$\{g_{\alpha\beta}\}$ 模掉「换个平凡化」（即乘上某个上边缘），就是 Čech 的 $H^{1}$（`thm.bundle-classification` 讲向量丛那一支，同一条道理）。
 
 参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛、局部平凡化与转移函数
+
+#### 转移函数　`def.transition-function`
+*定义*　转移函数：一块丛「怎么粘」的全部数据
+
+**在做什么**：丛不是由一片片「$U \times F$」决定的，而是由**重叠处怎么对齐**决定的。这些对齐就是转移函数 —— 丛的一切（同构类、结构群、联络、特征类）都从它读出来。
+
+设 $\pi : E \to B$ 是以 $F$ 为纤维的纤维丛，$\{U_{\alpha}\}$ 是一组**局部平凡化** $\Phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ 的覆盖（`def.local-trivialization`）。在重叠 $U_{\alpha\beta} := U_{\alpha} \cap U_{\beta}$ 上，两条平凡化相差一个纤维自同胚：
+
+$$\Phi_{\alpha} \circ \Phi_{\beta}^{-1} (b, y) = \bigl(b,\ g_{\alpha\beta}(b)\, y\bigr), \qquad g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \mathrm{Homeo}(F) .$$
+
+光滑丛要求 $g_{\alpha\beta}$ 光滑（$F$ 是流形时取 $\mathrm{Diff}(F)$）；向量丛要求它逐纤维线性（于是取值在 $\mathrm{GL}(k)$ 里）。这些 $g_{\alpha\beta}$ 就叫**转移函数**。
+
+**上闭链条件**：三个覆盖相交处，两次换基必须与一次换基一致 —— 因为左端 $(\Phi_{\alpha}\Phi_{\beta}^{-1})(\Phi_{\beta}\Phi_{\gamma}^{-1}) = \Phi_{\alpha}\Phi_{\gamma}^{-1}$，于是
+
+$$g_{\alpha\alpha} = \mathrm{id}, \qquad g_{\alpha\beta}\, g_{\beta\gamma}\, g_{\gamma\alpha} = \mathrm{id} \quad \text{在}\ U_{\alpha\beta\gamma}\ \text{上} .$$
+
+**反过来**（丛的粘合构造）：给定覆盖 $\{U_{\alpha}\}$、纤维 $F$ 与满足上闭链条件的一族 $g_{\alpha\beta}$，在不交并 $\bigsqcup_{\alpha} U_{\alpha} \times F$ 上令
+
+$$(b, y) \sim (b,\ g_{\alpha\beta}(b)\,y) \quad (b \in U_{\alpha\beta}) ,$$
+
+取商即得以 $F$ 为纤维的丛。**两方向互逆**（差自然同构），故「丛 = 覆盖 + 满足上闭链的转移函数」。
+
+**为什么它是「全部数据」**：局部上丛总是平凡的（$U \times F$），全部区别都在重叠处：丛的几何 = 转移函数的几何。这也解释了为什么分类丛要模掉换基：换一组平凡化（$\Phi_{\alpha} \mapsto h_{\alpha}\Phi_{\alpha}$）会把 $g_{\alpha\beta}$ 换成 $h_{\alpha} g_{\alpha\beta} h_{\beta}^{-1}$，而丛本身没变 —— 这就是分类定理里的「等价」关系（见 `thm.bundle-classification`）。
+
+**取值落在哪里，就决定了是什么丛**：$g_{\alpha\beta}$ 落在 $\mathrm{GL}(k,\mathbb{R})$ $\implies$ 实向量丛；落在 $\mathrm{O}(k)$ $\implies$ 配了纤维度量的丛；落在 $\mathrm{GL}(k,\mathbb{C})$ $\implies$ 复丛；落在离散群 $\implies$ 平坦丛。这个「落在哪」的群就叫**结构群**（`def.structure-group`），所以「换结构群」在技术上就是「把转移函数的取值限制在更小的子群里」。
+
+⚠️ **上闭链不是可选项**：$g_{\alpha\beta} g_{\beta\alpha} = \mathrm{id}$ 与三重叠条件是**丛存在**的必要条件（它们只是「换基的自洽性」）。但仅有上闭链条件并不保证丛是平凡的 —— 恰恰相反，**第一个障碍**就在三重叠处：那正是 Čech $H^{1}$（非阿贝尔情形）度量的东西。
+
+⚠️ **记号有两套**：$g_{\alpha\beta}$（上闭链，丛的粘合）与 $g_{ij}$（流形图卡之间的坐标变换）长得一样，但后者只是 $\mathrm{id}$ 平凡丛的转移函数。读文献时看上下文：讲丛分类时是前者。
+
+参考：Milnor–Stasheff, Characteristic Classes · 转移函数；Tu, Differential Geometry
+
+#### 不变多项式　`def.invariant-polynomial`
+*定义*　不变多项式：在共轭下不变的多项式函数
+
+**在做什么**：示性类要用「曲率矩阵的多项式」来算，而曲率换基会变（$F \mapsto g^{-1}Fg$）。所以必须挑出**在共轭下不变**的那些多项式 —— 它们才是几何量。
+
+设 $\mathfrak{g} = \mathfrak{gl}(k, \mathbb{K})$（$\mathbb{K} = \mathbb{R}$ 或 $\mathbb{C}$）。一个多项式函数
+
+$$P : \mathfrak{gl}(k,\mathbb{K}) \longrightarrow \mathbb{K}$$
+（取矩阵元的多项式，且**齐次**：$P(\lambda A) = \lambda^{m}P(A)$）叫**不变多项式**，若对一切可逆 $g$ 有
+
+$$P(g^{-1} A\, g) = P(A) .$$
+
+**等价刻画**：$P$ 可写成矩阵 $A$ 的**特征值**的对称多项式。具体地，记 $c_{j}(A)$ 为 $\det(tI + A) = \sum_{j} c_{j}(A)\,t^{k-j}$ 的系数（即初等对称多项式在特征值上的取值），则
+
+$$P\ \text{不变} \iff P\ \text{是}\ c_{1}, \ldots, c_{k}\ \text{的多项式} .$$
+
+**两个最常用的**：$P_{1}(A) = \operatorname{tr} A$（$c_{1}$）与 $P_{k}(A) = \det A$（$c_{k}$）；中间那些是 $\operatorname{tr}(A^{j})$ 的组合。
+
+**为什么“不变”是硬要求**：曲率形式 $F$ 是**取值在 $\mathfrak{gl}(k)$ 里的 2-形式**，换局部标架时 $F \mapsto g^{-1}Fg$（逐点共轭，见 `def.connection-form`）。若 $P$ 不变，则 $P(F)$ 是**标架无关**的 $2m$-形式 —— 于是可以对它取 $\mathrm{d}$、取上同调类。这是整台装置的入口。
+
+**“不变”与“对称”的翻译**：$\mathfrak{gl}(k,\mathbb{C})$ 里每个矩阵可上三角化（Jordan），于是 $P$ 由它在对角情形（特征值）的取值决定；共轭不变就等价于「只依赖特征值、且对置换对称」。这就是它与**对称多项式**的桥梁（对称多项式基本定理：齐次对称多项式 = 初等对称多项式的多项式）。
+
+⚠️ **只对可逆 $g$ 要求不变是不够的？** 不 —— 可逆元在 $\mathfrak{gl}(k)$ 里稠密，多项式连续，所以对可逆 $g$ 成立就自动对一切 $g$ 成立。**别用“$g$ 是 Lie 群元素”这种更强假设**。
+
+⚠️ **实情形要注意符号**：$\mathbb{K} = \mathbb{R}$ 时特征值可能复，但 $c_{j}(A)$ 仍是实多项式（它们是对称多项式的实系数组合），所以不碍事。
+
+参考：Milnor–Stasheff, Characteristic Classes · 不变多项式；Bott–Tu, Differential Forms in Algebraic Topology
+
+#### 拓扑流形　`def.topological-manifold`
+*定义*　拓扑流形（$n$ 维，不假设光滑结构）
+
+设 $n \ge 0$。一个**拓扑空间** $M$ 叫 **$n$ 维拓扑流形**，如果
+
+- $M$ 是 **Hausdorff** 的；
+- $M$ 是**第二可数**的；
+- 每一点 $p \in M$ 都有开邻域 $U$ 与一个**同胚** $\varphi : U \to V$，其中 $V \subseteq \mathbb{R}^{n}$ 是开集。
+
+这样的 $(U, \varphi)$ 叫 $M$ 的一张**图卡**，$n$ 叫**维数**。
+
+⭐ **它比光滑流形弱**：只说「局部像 $\mathbb{R}^{n}$」，**不要求**两张图卡之间的转移映射光滑。所以「光滑流形」（`def.smooth-manifold`）是拓扑流形**加上**一个光滑图册 —— 两者是同一批点集上的不同结构。
+
+⭐ **Hausdorff 与第二可数是分开要的**：局部欧氏只约束「局部」，像「带两个原点的直线」这种空间处处局部欧氏却不 Hausdorff；第二可数则排除「不可数多条实直线粘在一起」这种太肥的流形。少了它们，许多定理（单位分解、可度量化）会失效。
+
+⚠ **维数良定义**要一条定理（区域不变性 / Brouwer）：同一个连通流形不能既 $n$ 维又 $m$ 维。本图没有这条定理的节点，所以这里只记一句。
+
+📌 本图另一条线（`def.smooth-manifold`）是从**图册**出发造流形；这里是从**拓扑空间**出发加条件。两条路给出同一批对象（在加上光滑结构之后），但**拓扑流形可以不光滑** —— 4 维以上确实存在不可光滑化的拓扑流形（本图不展开）。
+
+参考：Munkres, Topology, Ch. 12；Lee, Introduction to Topological Manifolds, Ch. 1
+
+### 星团：丛的示性类
+> 造出「丛的数值不变量」这一整套装置：主丛与结构群 → 帧丛（把主丛变成 $GL_{n}$-主丛）→ 配丛（结构群的更换）→ 丛的分类（同伦类 = 同构类）→ 陈–Weil 同态（不变多项式 $	o$ 上同调类）→ 示性类与陈类 → 线丛的陈类计算 → 分裂原理（把任意丛拆成线丛之和来算）。从「流形与向量丛」那一团里分出来，因为它不是地基，而是一套独立的计数器。
+
+#### 丛的分类　`thm.bundle-classification`
+*定理*　向量丛的分类与 Čech 上同调
+
+**白话**：向量丛怎么「粘」，全记在转移函数上；所以「有多少种秩 $k$ 丛」这个问题就是「这些转移函数模掉换基还剩多少」—— 答案是 Čech 的 $H^{1}$。
+
+设 $M$ 是光滑流形（第二可数、Hausdorff），$k \ge 1$，$\mathfrak{U} = \{U_{\alpha}\}$ 是开覆盖。
+
+记 $U_{\alpha\beta} := U_{\alpha}\cap U_{\beta}$、$U_{\alpha\beta\gamma} := U_{\alpha}\cap U_{\beta}\cap U_{\gamma}$。
+
+**$1$-上闭链**是光滑函数族
+
+$$g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \operatorname{GL}(k,\mathbb{R}),\qquad g_{\alpha\beta}\,g_{\beta\gamma} = g_{\alpha\gamma}\quad(\text{on } U_{\alpha\beta\gamma}).$$
+
+两条上闭链**等价**，如果存在光滑的 $h_{\alpha} : U_{\alpha} \to \operatorname{GL}(k,\mathbb{R})$ 使
+
+$$g^{\prime}_{\alpha\beta} = h_{\alpha}\,g_{\alpha\beta}\,h_{\beta}^{-1}\qquad(\text{on } U_{\alpha\beta}).$$
+
+则 $M$ 上秩 $k$ 实向量丛的**同构类**与「$1$-上闭链模等价」一一对应。取遍所有覆盖与它们的加细，得到的集合记
+
+$$\check{H}^{1}\bigl(M;\operatorname{GL}(k,\mathbb{R})\bigr),$$
+
+于是：秩 $k$ 实向量丛的同构类**就是**这个集合的元素。把 $\operatorname{GL}(k,\mathbb{R})$ 换成任意结构群 $G \le \operatorname{GL}(k,\mathbb{R})$，同一句话给出「秩 $k$ 的 $G$-丛」的分类。
+
+**Čech 口径要说清三件事**：
+
+1. **系数不是阿贝尔群**：$\operatorname{GL}(k,\mathbb{R})$ 非交换，所以 $\check{H}^{1}(M;\operatorname{GL}(k))$ 只是一个**带基点的集合**（基点是平凡丛），不是群、不是向量空间。
+
+只有当系数落在阿贝尔群层里，Čech 上同调才是群 —— 本图 `def.cech-cohomology` 那条定义取的是阿贝尔预层复形，与本条不是同一个层级的东西，别混。
+2. **只有 $0$ 次与 $1$ 次有意义**：$\check{H}^{0}$ 是整体截面（对 $\operatorname{GL}(k)$ 而言就是常值 $1$，因为 $M$ 连通），$\check{H}^{1}$ 是上面那个「上闭链模上边界」；
+
+$\check{H}^{2}$ 起要非阿贝尔上同调的技术（系数带群作用），本图完全不用。
+3. **必须取余极限**：不同覆盖给出不同的 $\check{H}^{1}(\mathfrak{U};\cdot)$，但它们沿加细相容（每步是一个映射，而两个加细有公共加细），取余极限才是不依赖覆盖的量。
+
+**为什么是 $H^{1}$ 而不是 $H^{0}$**：$H^{0}$ 记的是「什么都不用粘」的数据（整体平凡化），$H^{1}$ 记的是「粘起来差多少」—— 前者数整体对象，后者数障碍。这与层上同调的分工完全一致。
+
+**换结构群就是换系数**：$\operatorname{GL}(k,\mathbb{R})$ 换成 $\operatorname{O}(k)$ 得「配了纤维度量的丛」（`prop.bundle-metric` 保证总能配上，所以这一步不丢信息）；
+
+换成 $\operatorname{GL}(k,\mathbb{C})$ 得复丛；
+
+换成 $\operatorname{GL}(k,\mathbb{Z})$ 得平坦丛。
+
+所以分类定理的真正形状是「对每个结构群 $G$，秩 $k$ 的 $G$-丛由 $\check{H}^{1}(M;G)$ 分类」。
+
+**例子（只列结论）**：$S^{1}$ 上的实线丛有两个同构类（平凡丛与 Möbius 带），对应 $\check{H}^{1}(S^{1};\mathbb{R}^{\times}) \cong \mathbb{Z}/2$；
+
+$S^{2}$ 上的复线丛由 $\mathbb{Z}$ 分类（Hopf 丛是生成元）。
+
+这两个数都不「局部」看得出来 —— 正是上同调该管的事。
+
+⚠️ $\operatorname{GL}(k,\mathbb{R})$ 里的 $k$ 是**丛的秩**；$k = 1$ 时它是 $\mathbb{R}^{\times}$，其连通分支是两个（$\mathbb{R}_{>0}$ 与 $\mathbb{R}_{<0}$），这正是「实线丛只有两种粘法」的来源。
+
+⚠️ 本条的证明是**构造级**的（写在边上）：两个方向的映射都给出、同构对应上边界都验证；「余极限是良定义的」这一步只给论证思路，不给逐字证明 —— 与深定理的折衷口径一致，如实说明。
+
+参考：Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 转移函数与上闭链条件；Tu, An Introduction to Manifolds (2nd ed., GTM 334), 「Vector Bundles」· 丛的同构与结构群
 
 #### 主丛　`def.principal-bundle`
 *定义*　主丛：纤维就是结构群本身的纤维丛
@@ -34216,37 +34299,6 @@ $$\mathrm{Fr}(E) \times_{\mathrm{GL}(k)} \mathbb{R}^{k} \;\cong\; E ,$$
 
 参考：Tu, Differential Geometry（⚠️ 章节未核实，只记书名）· 配丛；Kobayashi–Nomizu, Foundations of Differential Geometry（⚠️ 章节未核实，只记书名）
 
-#### 转移函数　`def.transition-function`
-*定义*　转移函数：一块丛「怎么粘」的全部数据
-
-**在做什么**：丛不是由一片片「$U \times F$」决定的，而是由**重叠处怎么对齐**决定的。这些对齐就是转移函数 —— 丛的一切（同构类、结构群、联络、特征类）都从它读出来。
-
-设 $\pi : E \to B$ 是以 $F$ 为纤维的纤维丛，$\{U_{\alpha}\}$ 是一组**局部平凡化** $\Phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ 的覆盖（`def.local-trivialization`）。在重叠 $U_{\alpha\beta} := U_{\alpha} \cap U_{\beta}$ 上，两条平凡化相差一个纤维自同胚：
-
-$$\Phi_{\alpha} \circ \Phi_{\beta}^{-1} (b, y) = \bigl(b,\ g_{\alpha\beta}(b)\, y\bigr), \qquad g_{\alpha\beta} : U_{\alpha\beta} \longrightarrow \mathrm{Homeo}(F) .$$
-
-光滑丛要求 $g_{\alpha\beta}$ 光滑（$F$ 是流形时取 $\mathrm{Diff}(F)$）；向量丛要求它逐纤维线性（于是取值在 $\mathrm{GL}(k)$ 里）。这些 $g_{\alpha\beta}$ 就叫**转移函数**。
-
-**上闭链条件**：三个覆盖相交处，两次换基必须与一次换基一致 —— 因为左端 $(\Phi_{\alpha}\Phi_{\beta}^{-1})(\Phi_{\beta}\Phi_{\gamma}^{-1}) = \Phi_{\alpha}\Phi_{\gamma}^{-1}$，于是
-
-$$g_{\alpha\alpha} = \mathrm{id}, \qquad g_{\alpha\beta}\, g_{\beta\gamma}\, g_{\gamma\alpha} = \mathrm{id} \quad \text{在}\ U_{\alpha\beta\gamma}\ \text{上} .$$
-
-**反过来**（丛的粘合构造）：给定覆盖 $\{U_{\alpha}\}$、纤维 $F$ 与满足上闭链条件的一族 $g_{\alpha\beta}$，在不交并 $\bigsqcup_{\alpha} U_{\alpha} \times F$ 上令
-
-$$(b, y) \sim (b,\ g_{\alpha\beta}(b)\,y) \quad (b \in U_{\alpha\beta}) ,$$
-
-取商即得以 $F$ 为纤维的丛。**两方向互逆**（差自然同构），故「丛 = 覆盖 + 满足上闭链的转移函数」。
-
-**为什么它是「全部数据」**：局部上丛总是平凡的（$U \times F$），全部区别都在重叠处：丛的几何 = 转移函数的几何。这也解释了为什么分类丛要模掉换基：换一组平凡化（$\Phi_{\alpha} \mapsto h_{\alpha}\Phi_{\alpha}$）会把 $g_{\alpha\beta}$ 换成 $h_{\alpha} g_{\alpha\beta} h_{\beta}^{-1}$，而丛本身没变 —— 这就是分类定理里的「等价」关系（见 `thm.bundle-classification`）。
-
-**取值落在哪里，就决定了是什么丛**：$g_{\alpha\beta}$ 落在 $\mathrm{GL}(k,\mathbb{R})$ $\implies$ 实向量丛；落在 $\mathrm{O}(k)$ $\implies$ 配了纤维度量的丛；落在 $\mathrm{GL}(k,\mathbb{C})$ $\implies$ 复丛；落在离散群 $\implies$ 平坦丛。这个「落在哪」的群就叫**结构群**（`def.structure-group`），所以「换结构群」在技术上就是「把转移函数的取值限制在更小的子群里」。
-
-⚠️ **上闭链不是可选项**：$g_{\alpha\beta} g_{\beta\alpha} = \mathrm{id}$ 与三重叠条件是**丛存在**的必要条件（它们只是「换基的自洽性」）。但仅有上闭链条件并不保证丛是平凡的 —— 恰恰相反，**第一个障碍**就在三重叠处：那正是 Čech $H^{1}$（非阿贝尔情形）度量的东西。
-
-⚠️ **记号有两套**：$g_{\alpha\beta}$（上闭链，丛的粘合）与 $g_{ij}$（流形图卡之间的坐标变换）长得一样，但后者只是 $\mathrm{id}$ 平凡丛的转移函数。读文献时看上下文：讲丛分类时是前者。
-
-参考：Milnor–Stasheff, Characteristic Classes · 转移函数；Tu, Differential Geometry
-
 #### 结构群　`def.structure-group`
 *定义*　结构群：转移函数允许落在哪个群
 
@@ -34322,34 +34374,6 @@ $$c_{i}(E) \in H^{i}(B; \Lambda),$$
 - 已定向实丛具有 Spin 提升 $\iff$ $w_2=0$，是双覆盖提升的障碍理论结论；原注所谓还需额外整系数条件不适用于通常 Spin 判据。未定向时须先要求 $w_1=0$。
 
 参考：Milnor–Stasheff, Characteristic Classes · 示性类；Bott–Tu, Differential Forms in Algebraic Topology
-
-#### 不变多项式　`def.invariant-polynomial`
-*定义*　不变多项式：在共轭下不变的多项式函数
-
-**在做什么**：示性类要用「曲率矩阵的多项式」来算，而曲率换基会变（$F \mapsto g^{-1}Fg$）。所以必须挑出**在共轭下不变**的那些多项式 —— 它们才是几何量。
-
-设 $\mathfrak{g} = \mathfrak{gl}(k, \mathbb{K})$（$\mathbb{K} = \mathbb{R}$ 或 $\mathbb{C}$）。一个多项式函数
-
-$$P : \mathfrak{gl}(k,\mathbb{K}) \longrightarrow \mathbb{K}$$
-（取矩阵元的多项式，且**齐次**：$P(\lambda A) = \lambda^{m}P(A)$）叫**不变多项式**，若对一切可逆 $g$ 有
-
-$$P(g^{-1} A\, g) = P(A) .$$
-
-**等价刻画**：$P$ 可写成矩阵 $A$ 的**特征值**的对称多项式。具体地，记 $c_{j}(A)$ 为 $\det(tI + A) = \sum_{j} c_{j}(A)\,t^{k-j}$ 的系数（即初等对称多项式在特征值上的取值），则
-
-$$P\ \text{不变} \iff P\ \text{是}\ c_{1}, \ldots, c_{k}\ \text{的多项式} .$$
-
-**两个最常用的**：$P_{1}(A) = \operatorname{tr} A$（$c_{1}$）与 $P_{k}(A) = \det A$（$c_{k}$）；中间那些是 $\operatorname{tr}(A^{j})$ 的组合。
-
-**为什么“不变”是硬要求**：曲率形式 $F$ 是**取值在 $\mathfrak{gl}(k)$ 里的 2-形式**，换局部标架时 $F \mapsto g^{-1}Fg$（逐点共轭，见 `def.connection-form`）。若 $P$ 不变，则 $P(F)$ 是**标架无关**的 $2m$-形式 —— 于是可以对它取 $\mathrm{d}$、取上同调类。这是整台装置的入口。
-
-**“不变”与“对称”的翻译**：$\mathfrak{gl}(k,\mathbb{C})$ 里每个矩阵可上三角化（Jordan），于是 $P$ 由它在对角情形（特征值）的取值决定；共轭不变就等价于「只依赖特征值、且对置换对称」。这就是它与**对称多项式**的桥梁（对称多项式基本定理：齐次对称多项式 = 初等对称多项式的多项式）。
-
-⚠️ **只对可逆 $g$ 要求不变是不够的？** 不 —— 可逆元在 $\mathfrak{gl}(k)$ 里稠密，多项式连续，所以对可逆 $g$ 成立就自动对一切 $g$ 成立。**别用“$g$ 是 Lie 群元素”这种更强假设**。
-
-⚠️ **实情形要注意符号**：$\mathbb{K} = \mathbb{R}$ 时特征值可能复，但 $c_{j}(A)$ 仍是实多项式（它们是对称多项式的实系数组合），所以不碍事。
-
-参考：Milnor–Stasheff, Characteristic Classes · 不变多项式；Bott–Tu, Differential Forms in Algebraic Topology
 
 #### 陈–Weil 同态　`thm.chern-weil`
 *定理*　陈–Weil 同态：用曲率算出的上同调类与联络无关
@@ -34464,27 +34488,6 @@ $$c(E) = \prod_{j=1}^{k}\bigl(1 + x_{j}\bigr), \qquad x_{j} := c_{1}(L_{j}) ,$$
 **典型的用法**：由 $c(E) = \prod(1+x_{j})$ 立刻得到 $c_{1}(E) = \sum x_{j} = c_{1}(\det E)$ 与 $c_{k}(E) = \prod x_{j} = e(E)$（顶陈类 = Euler 类）。这两个公式在一般秩上靠分裂原理一次得到。
 
 参考：Milnor–Stasheff, Characteristic Classes · 分裂原理；Bott–Tu, Differential Forms in Algebraic Topology
-
-#### 拓扑流形　`def.topological-manifold`
-*定义*　拓扑流形（$n$ 维，不假设光滑结构）
-
-设 $n \ge 0$。一个**拓扑空间** $M$ 叫 **$n$ 维拓扑流形**，如果
-
-- $M$ 是 **Hausdorff** 的；
-- $M$ 是**第二可数**的；
-- 每一点 $p \in M$ 都有开邻域 $U$ 与一个**同胚** $\varphi : U \to V$，其中 $V \subseteq \mathbb{R}^{n}$ 是开集。
-
-这样的 $(U, \varphi)$ 叫 $M$ 的一张**图卡**，$n$ 叫**维数**。
-
-⭐ **它比光滑流形弱**：只说「局部像 $\mathbb{R}^{n}$」，**不要求**两张图卡之间的转移映射光滑。所以「光滑流形」（`def.smooth-manifold`）是拓扑流形**加上**一个光滑图册 —— 两者是同一批点集上的不同结构。
-
-⭐ **Hausdorff 与第二可数是分开要的**：局部欧氏只约束「局部」，像「带两个原点的直线」这种空间处处局部欧氏却不 Hausdorff；第二可数则排除「不可数多条实直线粘在一起」这种太肥的流形。少了它们，许多定理（单位分解、可度量化）会失效。
-
-⚠ **维数良定义**要一条定理（区域不变性 / Brouwer）：同一个连通流形不能既 $n$ 维又 $m$ 维。本图没有这条定理的节点，所以这里只记一句。
-
-📌 本图另一条线（`def.smooth-manifold`）是从**图册**出发造流形；这里是从**拓扑空间**出发加条件。两条路给出同一批对象（在加上光滑结构之后），但**拓扑流形可以不光滑** —— 4 维以上确实存在不可光滑化的拓扑流形（本图不展开）。
-
-参考：Munkres, Topology, Ch. 12；Lee, Introduction to Topological Manifolds, Ch. 1
 
 ### 星团：向量场与 Lie 结构
 > 在流形上做「微分」的那一套：向量场与 Lie 括号 → 流与流的不变量（Lie 导数、内乘、Cartan 公式）→ 张量场与缩并 → 切分布、对合分布与 Frobenius 定理 → Lie 代数。
@@ -51942,6 +51945,190 @@ $L^p$ 的元素取复值：$f : X \to \mathbb{C}$。
 
 球面是连通和的**单位元**（$S^{2}\# M \cong M$）—— 这句话要用连通和才说得出来，所以这个例子的说明依赖连通和。
 
+#### Stonean 上 Ext 的截面公式 ⟹ Stonean 空间上自由模的导出 Hom　`imp.section-formula-free`
+*截面公式（$M = \mathbb{Z}$）$\implies$ 自由模的导出 Hom 是截面*
+
+截面公式说 $\operatorname{Ext}^{n}_{\mathbb{Z}}(M,N)(S) \cong \operatorname{Ext}^{n}_{\mathbb{Z}}(M\cdot S,\ N)$，其中 $M \cdot S = M \otimes_{\mathbb{Z}} \mathbb{Z}[S]$。取 $M = \mathbb{Z}$：
+
+$$\operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}, N)(S) \;\cong\; \operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}[S],\ N).$$
+
+左边是**常层** $\underline{\operatorname{Ext}^{n}(\mathbb{Z},N)}$ 在 $S$ 上的截面，而 $\mathbb{Z}$ 自由（投射）$\implies$ $\operatorname{Ext}^{n}(\mathbb{Z},N) = 0$（$n > 0$）、$\operatorname{Ext}^{0} = N$，于是左边 $= N(S)$。
+
+所以 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[S], N) \cong N(S)$，集中在 $0$ 次。
+
+#### Stonean 上 Ext 的截面公式 ⟹ Ext 的截面公式　`imp.section-formula-condset`
+*截面公式（$M = \mathbb{Z}\cdot X$）$\implies$ 凝聚态集的版本*
+
+把截面公式里的 $M$ 取成自由凝聚态阿贝尔群 $\mathbb{Z}\cdot X$（$X$ 是凝聚态集）。此时
+
+$$M \cdot S = \mathbb{Z}\cdot X \otimes_{\mathbb{Z}} \mathbb{Z}[S] = \mathbb{Z}\cdot(X \times S),$$
+
+代回 $\operatorname{Ext}^{n}(M,N)(S) \cong \operatorname{Ext}^{n}(M\cdot S, N)$ 得
+
+$$\operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}\cdot X,\ N)(S) \;\cong\; \operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}\cdot(X \times S),\ N) \;=\; H^{n}(X \times S,\ N),$$
+
+最后一步是凝聚态上同调的定义（$H^{n}(T,M) := \operatorname{Ext}^{n}(\mathbb{Z}\cdot T, M)$，即「$T$ 上的层」的余同调）。
+
+#### Stonean 空间上自由模的导出 Hom ⟹ Stonean 上凝聚阿贝尔群零调　`imp.free-rhom-acyclic`
+*自由模的 RHom 落在 0 次 $\implies$ Stonean 上正次上同调为零*
+
+凝聚态上同调的定义是 $H^{n}_{\mathrm{cond}}(S, M) := \operatorname{Ext}^{n}_{\mathbb{Z}}(\mathbb{Z}[S], M)$。由 $\operatorname{RHom}(\mathbb{Z}[S],M) \cong M(S)$ 只在 $0$ 次非零，立即得 $H^{n} = 0$（$n > 0$）。
+
+⭐ 这就是「Stonean 空间上一个高次上同调都没有」的全部内容：$\mathbb{Z}[S]$ 是投射对象，投射对象上的 $\operatorname{RHom}$ 就是 $\operatorname{Hom}$。
+
+#### 离散空间上自由模的导出 Hom ⟹ 离散空间上零调　`imp.free-powers-acyclic`
+*离散指标的自由模 $\implies$ 离散空间上零调*
+
+第 1 条直接由 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[E], N) \cong N^{E}$（$E$ 离散）落在 $0$ 次得到：$H^{n}_{\mathrm{cond}}(E,M) = \operatorname{Ext}^{n}(\mathbb{Z}[E],M) = 0$（$n>0$）。
+
+第 2 条（$E \times S$，$S$ Stonean）是同一台机器配上截面公式：$\operatorname{Ext}^{n}(\mathbb{Z}[E\times S], M) \cong \operatorname{Ext}^{n}(\mathbb{Z}[E], M)(S) = 0$。
+
+⚠ **本图没有单独立节点**的是「$\mathbb{Z}[E \times S] = \mathbb{Z}[E]\otimes_{\mathbb{Z}}\mathbb{Z}[S]$ 与截面公式的合成」这一步，它在凝聚态理论里是标准的张量积相容性。
+
+#### Stonean 空间上自由模的导出 Hom ⟹ 紧空间对实 Banach 空间的导出 Hom　`imp.rhom-zs-chaus`
+*Stonean 上的计算 $\implies$ 一般紧 Hausdorff 上的 $C(S,N)$*
+
+命题 `prop.rhom-zs-sections` 只对 **Stonean** 的 $S$ 说。一般紧 Hausdorff 空间 $S$ 取一个 **Stonean 超覆盖** $\tilde S \to S$（紧 Hausdorff 空间的层论天然带这种覆盖），在这个超覆盖上算 $\operatorname{RHom}(\mathbb{Z}[\tilde S], N) \cong N(\tilde S)$，再用下降把相容族收回到 $S$ 上。
+
+结果就是 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}\cdot S,\ N) \cong N(S) = C(S, N)$（$S$ 紧 Hausdorff、$N$ 是实 Banach 空间时，凝聚态意义的 $N(S)$ 就是连续映射全体）。
+
+⚠ **骨架程度的说明**：本图没有把「超覆盖的下降引理」单独立节点，这一步在这里只记机制（用超覆盖从 Stonean 铺到一切紧 Hausdorff），不算完整证明。
+
+#### 有限维 Banach 到离散群全零 ⟹ 离散对偶的导出 Hom 与导出张量　`imp.banach-discrete-dual-tensor`
+*实向量空间 $\to$ 离散全零 $\implies$ 对偶的导出 Hom 变成导出张量*
+
+取短正合列 $0 \to \mathbb{Z} \to \mathbb{R} \to T \to 0$（$T = \mathbb{R}/\mathbb{Z}$），对靶取 $\operatorname{RHom}_{\mathbb{Z}}(M, -)$：
+
+由 $\operatorname{RHom}_{\mathbb{Z}}(\mathbb{R}, N) = 0$（实向量空间到离散群全零，即本包引用的那条结论）得
+
+$$\operatorname{RHom}_{\mathbb{Z}}(T,\ N) \;\cong\; \operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}[1],\ N) \;=\; N[-1].$$
+
+把这条代进 $\operatorname{RHom}(\operatorname{RHom}(M,T),\ N)$ 并逐层展开（$M$ 离散时 $\operatorname{RHom}(M,-)$ 与导出张量互为伴随），就得到 $\operatorname{RHom}(\operatorname{RHom}(M,T),N) \cong M \otimes^{\mathbf{L}}_{\mathbb{Z}} N[-1]$。
+
+⭐ 这一步是那个「$T$ 在导出层面等价于降一次数」的来源。
+
+#### Stonean 空间上自由模的导出 Hom ⟹ Z、R、T 的导出 Hom 计算表　`imp.table-from-free`
+*自由源没有高阶 $\implies$ 表的第一行*
+
+$\operatorname{RHom}_{\mathbb{Z}}(\mathbb{Z}, N) = \operatorname{Hom}_{\mathbb{Z}}(\mathbb{Z}, N) = N$，没有高阶项（$\mathbb{Z}$ 的消解取成一维的 $[\mathbb{Z}]$）。这就是计算表第一行 $\mathbb{Z} \mapsto (\mathbb{Z}, \mathbb{R}, T)$ 的全部理由。
+
+#### 有限维 Banach 到离散群全零 ⟹ Z、R、T 的导出 Hom 计算表　`imp.table-from-banach`
+*实向量空间 $\to$ 离散全零 $\implies$ 表的第二行第一列是 $0$*
+
+表里 $M = \mathbb{R}$、$N = \mathbb{Z}$ 那格是 $0$，用的正是「有限维实 Banach 空间到离散阿贝尔群，导出 Hom 全零」这一条：$\mathbb{R}$ 可除，$\operatorname{Hom}_{\mathbb{Z}}(\mathbb{R}, \mathbb{Z}) = 0$（$1/n$ 的像必须被 $n$ 整除地解出来，只能为 $0$），可除性再把高阶也杀掉。
+
+#### 紧 Haus 到实 Banach 全零 ⟹ Z、R、T 的导出 Hom 计算表　`imp.table-from-chaus`
+*紧 Hausdorff $\to$ 实 Banach 全零 $\implies$ 表的第三行第二列是 $0$*
+
+表里 $M = T$、$N = \mathbb{R}$ 那格是 $0$：$T$ 是紧 Hausdorff 阿贝尔群、$\mathbb{R}$ 是实 Banach 空间，正好是「紧 Hausdorff 到实 Banach 全零」这一条的直接实例。
+
+#### 局部紧阿贝尔群高次 Ext 消失 ⟹ 连通局部紧到离散只剩 Ext一次　`imp.connected-lc-ext`
+*高次 Ext 只剩 $0,1$ 次 $\implies$ 连通时只剩 $1$ 次*
+
+局部紧阿贝尔群的高次 Ext 消失给出：$n \ne 0,1$ 时 $\operatorname{Ext}^{n}(M,N) = 0$。
+
+$0$ 次那项用**连通性**再杀一次：$M$ 连通、$N$ 离散时，$\operatorname{Hom}_{\mathbb{Z}}(M, N)$ 里的像必然落在 $N$ 的连通分支里，而 $N$ 离散 $\implies$ 分支是单点 $\implies$ 同态只能是零。
+
+所以只剩 $\operatorname{Ext}^{1}$ 可能非零。
+
+#### 离散群的导出 Hom 是常层 ⟹ 离散对偶的导出 Hom 与导出张量　`imp.discrete-cond-dual-tensor`
+*离散群的凝聚态 $\operatorname{RHom}$ = 常层化的抽象 $\operatorname{RHom}$ $\implies$ 导出张量那一步能落地*
+
+`prop.rhom-dual-tensor` 的证法里有一句「再用**自由情形**的导出张量计算」 —— 那一步要的正是把凝聚态里的 $\operatorname{RHom}$/$\otimes^{\mathbf{L}}$ 换回抽象群论里能算的东西：
+
+$$\operatorname{RHom}^{\mathrm{cond}}_{\mathbb{Z}}(M,N) \cong \mathrm{c}\bigl(\operatorname{RHom}^{\mathrm{abs}}_{\mathbb{Z}}(M,N)\bigr), \qquad M \otimes^{\mathbf{L},\mathrm{cond}}_{\mathbb{Z}} N \cong \mathrm{c}\bigl(M \otimes^{\mathbf{L},\mathrm{abs}}_{\mathbb{Z}} N\bigr).$$
+
+有了这两条，右端 $M \otimes^{\mathbf{L}}_{\mathbb{Z}} N[-1]$ 就可以用 $M$ 的自由消解逐项算出来。
+
+⚠ 本图把这一步当成**引理**引（`prop.discrete-cond-rhom-constant`），没有展开它的证明。
+
+#### 离散对偶的导出 Hom 与导出张量 ⟹ Pontryagin 对偶的导出 Hom 刻画　`imp.dual-tensor-pontryagin`
+*$T$ 在导出层等于降一次数 $\implies$ Pontryagin 对偶能写成 $\operatorname{RHom}$*
+
+$\operatorname{RHom}_{\mathbb{Z}}(-,\,T)$ 把离散群送到它自己的 $[-1]$（上一条边）。把这个当定义/刻画用：局部紧阿贝尔群 $M$ 的对偶 $M^{\vee}$ 就写成 $\operatorname{RHom}_{\mathbb{Z}}(M,\,T)$；紧与 Banach 两种特殊情形再由靶的选取不同（$\mathbb{Z}$ 与 $\mathbb{R}$）各偏一位。
+
+⭐ 这也是「为什么对偶函子要放进导出范畴」的原因：只有在导出层，$\operatorname{RHom}(-,\,T)$ 才是一个**统一的**写法。
+
+#### 有限维 Banach 到离散群全零 ⟹ 非局部紧情形的导出 Hom　`imp.banach-discrete-nonlc`
+*实向量空间到离散群全零 $\implies$ $\operatorname{RHom}(\mathbb{R}^{I},\mathbb{Z}) = 0$*
+
+`prop.rhom-banach-discrete-zero` 的陈述里带着**更一般的**一条：$V$ 是任意 $\mathbb{R}$-模、$N$ 离散 $\implies \operatorname{RHom}_{\mathbb{Z}}(V,N) = 0$。取 $V = \mathbb{R}^{I}$（任意多个 $\mathbb{R}$ 的积，仍是 $\mathbb{R}$-模）、$N = \mathbb{Z}$，就是例子的第一条。
+
+⚠ 例子的第二条（$\operatorname{RHom}(\mathbb{Z}^{I},\mathbb{Z}) = \mathbb{Z}\cdot I$）用的一般不是同一条：它算的是**紧**側的对偶（$\mathbb{Z}^{I}$ 的对偶是 $\mathbb{Z}$ 上的测度），这里只把第一条挂在这条边上。
+
+#### Stone 上常系数零调 ⟹ 局部紧上凝聚态＝层上同调　`imp.stone-constant-dyckhoff`
+*Stone 上常系数无高次 $\implies$ 局部紧上凝聚态 $=$ 层上同调*
+
+两边都是「层」的上同调，差别只在算它的范畴：右边是 $X$ 上开集景里的层上同调，左边是凝聚态（紧 Hausdorff 测试空间上的层）的上同调。
+
+比较的办法：先在 **Stone 空间**上比 —— 常系数在 Stone 上没有高次（本包引用的引理），两边的谱序列在 $E_{2}$ 处就对齐了；再把一般局部紧 Hausdorff 的 $X$ 写成紧块／紧子集的滤过余极限，用「上同调与滤过余极限交换」（紧块都是 Stone 的商/子空间）搬过去。
+
+⚠ **骨架说明**：本图没有把「上同调沿滤过余极限的行为」单独立节点，这一步只记机制；完整的比较需要 Clausen–Scholze 里那一套解析环上同调的估计。
+
+#### Breen–Deligne 分解 ⟹ Stonean 上 Breen–Deligne 的谱序列　`imp.bd-ss-stonean`
+*Breen–Deligne 分解 $\implies$ Stonean 上的谱序列*
+
+取 Breen–Deligne 左消解 $F(M)^{\bullet} \twoheadrightarrow M$（每一项是有限个 $\mathbb{Z}\cdot M^{s_{n,i}}$ 的直和）。
+
+对 $\operatorname{Ext}^{\bullet}_{\mathbb{Z}}(-,\, N)(S)$ 应用这个消解：每个 $\mathbb{Z}\cdot M^{s}$ 项带上 $S$ 之后由**截面公式**（`lem.ext-stonean-section`）化成 $H^{q}(M^{s} \times S,\ N)$。
+
+按**分解的次数** $p$ 过滤得到的双复形，其谱序列第一页正是
+
+$$E^{p,q}_{1} = \bigoplus_{i=1}^{r_{p}} H^{q}\bigl(M^{s_{p,i}} \times S,\ N\bigr) \implies \operatorname{Ext}^{p+q}_{\mathbb{Z}}(M,N)(S).$$
+
+⭐ 分解的作用就是把「$M$ 上算 Ext」换成「自由项上算 Ext」，而自由项由截面公式已经算完了。
+
+#### Stonean 上 Breen–Deligne 的谱序列 ⟹ Breen–Deligne 的一般谱序列　`imp.bd-ss-general`
+*Stonean 版谱序列 $\implies$ 一般（拓扑斯里的）版本*
+
+同一台机器去掉「在 $S$ 上取截面」这一步：在拓扑斯 $\mathcal{T}$ 里对 $\mathbb{Z}\cdot M^{s_{n,i}}$ 这一族自由项算 $H^{q}(-,\,N)$，过滤按分解次数走，得到
+
+$$E^{p,q}_{1} = \bigoplus_{i=1}^{r_{p}} H^{q}\bigl(M^{s_{p,i}},\ N\bigr) \implies \operatorname{Ext}^{p+q}_{\mathbb{Z}}(M,N).$$
+
+Stonean 版是它在 $S$ 上取截面的样子（$H^{q}(M^{s}\times S, N)$ 就是 $H^{q}(M^{s},N)(S)$）。
+
+#### Breen–Deligne 分解 ⟹ 分解上乘 p 与 M 上乘 p 同伦　`imp.bd-resolution-scalar-homotopy`
+*分解存在 $\implies$ 「乘 $p$」可以沿分解同伦地提升*
+
+这条**不是**「分解由它推出」，而是「它是分解本身的性质」，所以前提正是分解的存在性。
+
+分解的每一项是 $\mathbb{Z}\cdot M^{s}$：乘 $p$ 在两个因子（$\mathbb{Z}$ 与 $M^{s}$）上分别作用，得到逐项映射；把它与「在 $M$ 上乘 $p$ 再沿 $\twoheadrightarrow$ 提升」相比，两者的差是 $\mathbb{Z}\cdot M^{s} \to M$ 的零伦映射 —— 逐项构造同伦即可（分解的标准构造里这一步是显式给出的）。
+
+⚠ 本图未收 Breen–Deligne 分解的完整构造（`thm.breen-deligne` 的证明本身是骨架），所以这条同伦也只到「构造上逐项验证」这个程度。
+
+#### Stone 满射的 Čech 复形 1-有界零调 ⟹ Stonean 上 Breen–Deligne 的谱序列　`imp.stone-cech-ss`
+*$1$-有界零调 $\implies$ $E_{1}$ 那一片真的可算*
+
+谱序列的 $E_{1}$ 项是 $H^{q}(M^{s} \times S,\ N)$。要把它算出来，需要一条能从 $S$ 上「一层层剥」的复形 —— 用的正是 Stone 满射 $S_{0} \twoheadrightarrow S$ 的增广 Čech 复形。
+
+$1$-有界零调保证这条复形在 $q > 0$ 的部分有正确的零调性、$q = 0$ 的部分给出截面，于是每一项都能被压成「$M^{s}$ 上的同调 + $S$ 上的截面」，$E_{1}$ 页才真的可算。
+
+⚠ **骨架说明**：本图没有收 $1$-有界零调的证明（它是 Clausen–Scholze 讲义里对半范数复形的一整套估计），这里只把它当**输入**用。
+
+#### QR 分解 ⟹ 最小二乘　`imp.qr-least-squares`
+*$A = QR$ $\implies$ 最小二乘解法方程化成一个上三角方程*
+
+设 $A = QR$（$Q^{T}Q = I_{n}$、$R$ 上三角且对角元为正，列满秩时唯一）。由 $Q^{T}Q = I$ 得 $A^{T}A = R^{T}R$、$A^{T}b = R^{T}Q^{T}b$，于是**法方程** $A^{T}A\,x = A^{T}b$ 变成
+
+$$R^{T}R\,x = R^{T}Q^{T}b \;\iff\; Rx = Q^{T}b,$$
+
+（$R$ 可逆 $\implies$ $R^{T}$ 可逆），即解**一个上三角方程**，回代是 $O(n^{2})$。
+
+⭐ 这条边说明：QR 不是「另一个算法」，它把最小二乘归约成回代 —— 而且顺带给出 $x = R^{-1}Q^{T}b$，与 $(A^{T}A)^{-1}A^{T}b$ 逐字相等。
+
+⚠ 反过来解不出来：$R$ 可逆这一条依赖列满秩，QR 的存在性并不蕴含「最小二乘解唯一」。所以这只是单向的归约，不是等价。
+
+#### 最小二乘 ⟹ 伪逆　`imp.least-squares-pseudoinverse`
+*列满秩时最小二乘算子就是伪逆*
+
+最小二乘解是 $x = (A^{T}A)^{-1}A^{T}b$，右端是 $b$ 的**线性**函数，记它对应的矩阵为 $A^{+}_{LS} := (A^{T}A)^{-1}A^{T}$。
+
+逐条验证 Penrose 四式（$A$ 列满秩）：$A A^{+}_{LS} = A(A^{T}A)^{-1}A^{T}$ 是对称幂等（到列空间的正交投影）；$A^{+}_{LS}A = I$；于是 $AA^{+}A = A$、$A^{+}AA^{+} = A^{+}$ 与两条对称性都成立。伪逆的唯一性 $\implies$ $A^{+} = (A^{T}A)^{-1}A^{T}$。
+
+⭐ 所以伪逆在**列满秩**时就是最小二乘算子：$x = A^{+}b$。
+
+⚠ **这是刻画，不是构造**：伪逆的一般定义（Penrose 四式 / SVD 构造）对**任意**矩阵成立，而这条边只覆盖列满秩这一情形；奇异与欠定情形（此时 $AA^{+}$ 投影到列空间、$A^{+}$ 仍唯一）要另作处理，本图由 SVD 那条边（`dep.pinv-svd`）覆盖。
+
 #### 定义引用：「向量空间」→ 维数良定义　`dep.vectorspace-dimension`
 
 「维数良定义」的陈述第一句就是「设 $V$ 是 $K$ 上的向量空间」—— 它测的是**向量空间**的维数，此前这条边不在图上（`def.vector-space` 的注里写了「见 `thm.dimension`」，却是空的）。
@@ -59425,22 +59612,22 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **流形与向量丛 ↔ 向量场与 Lie 结构**　10 条节点级连线
 - **多重线性与张量 ↔ 向量场与 Lie 结构**　3 条节点级连线
 - **特征值与 Jordan 型 ↔ 向量场与 Lie 结构**　3 条节点级连线
-- **流形与向量丛 ↔ 仿紧与单位分解**　4 条节点级连线
+- **流形与向量丛 ↔ 仿紧与单位分解**　3 条节点级连线
 - **流形与向量丛 ↔ 收敛与紧性**　2 条节点级连线
 - **微分形式、积分与 de Rham ↔ 活动标架与结构方程**　10 条节点级连线
 - **微分形式、积分与 de Rham ↔ 内蕴几何**　14 条节点级连线
 - **微分形式、积分与 de Rham ↔ 拓扑空间的基本语汇**　2 条节点级连线
 - **内蕴几何 ↔ Lie 群**　2 条节点级连线
 - **Lie 群 ↔ 向量场与 Lie 结构**　4 条节点级连线
-- **活动标架与结构方程 ↔ 流形与向量丛**　3 条节点级连线
-- **微分形式、积分与 de Rham ↔ 流形与向量丛**　9 条节点级连线
+- **微分形式、积分与 de Rham ↔ 流形与向量丛**　7 条节点级连线
 - **矩阵与行列式 ↔ 微分形式、积分与 de Rham**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 曲面论**　3 条节点级连线
 - **微分形式、积分与 de Rham ↔ 仿紧与单位分解**　2 条节点级连线
 - **复变函数基础 ↔ 共形映射与正规族**　11 条节点级连线
 - **Cauchy 理论 ↔ 调和函数**　3 条节点级连线
 - **活动标架与结构方程 ↔ Lie 群**　4 条节点级连线
-- **流形与向量丛 ↔ 层上同调**　2 条节点级连线
+- **丛的示性类 ↔ 流形与向量丛**　18 条节点级连线
+- **丛的示性类 ↔ 层上同调**　2 条节点级连线
 - **微分形式、积分与 de Rham ↔ 向量场与 Lie 结构**　4 条节点级连线
 - **向量场与 Lie 结构 ↔ 度量空间**　2 条节点级连线
 - **活动标架与结构方程 ↔ 向量场与 Lie 结构**　2 条节点级连线
@@ -59500,6 +59687,8 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **拓扑空间的基本语汇 ↔ 度量空间**　5 条节点级连线
 - **实数与极限 ↔ 数系的构造**　3 条节点级连线
 - **实数与极限 ↔ 序结构**　2 条节点级连线
+- **丛的示性类 ↔ 活动标架与结构方程**　2 条节点级连线
+- **丛的示性类 ↔ 微分形式、积分与 de Rham**　2 条节点级连线
 - **代数结构 ↔ 向量空间与基**　3 条节点级连线
 - **内蕴几何 ↔ 曲面的地形**　2 条节点级连线
 - **同调群 ↔ 曲面的地形**　5 条节点级连线
@@ -59539,7 +59728,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **层与拓扑 ↔ 单满、子对象与像**　2 条节点级连线
 - **层与拓扑 ↔ 拓扑斯**　20 条节点级连线
 - **凝聚态集 ↔ 紧 Hausdorff 空间**　12 条节点级连线
-- **拓扑斯 ↔ 凝聚态集**　10 条节点级连线
+- **拓扑斯 ↔ 凝聚态集**　11 条节点级连线
 - **层与拓扑 ↔ 凝聚态集**　6 条节点级连线
 - **凝聚态集 ↔ 紧生成空间与弱 Hausdorff**　10 条节点级连线
 - **图与极限 ↔ 加法与阿贝尔范畴**　14 条节点级连线
@@ -59548,7 +59737,7 @@ $\mathcal{P}(X)$（或整个空间）保证了候选族不空。这两句话就�
 - **阿贝尔层 ↔ 层上同调**　4 条节点级连线
 - **导出 Hom 的具体计算 ↔ 层上同调**　4 条节点级连线
 - **凝聚态阿贝尔群 ↔ 导出 Hom 的具体计算**　8 条节点级连线
-- **导出 Hom 的具体计算 ↔ 凝聚态集**　3 条节点级连线
+- **导出 Hom 的具体计算 ↔ 凝聚态集**　2 条节点级连线
 - **导出 Hom 的具体计算 ↔ 拓扑阿贝尔群**　2 条节点级连线
 - **导出 Hom 的具体计算 ↔ 紧 Hausdorff 空间**　4 条节点级连线
 - **导出 Hom 的具体计算 ↔ 阿贝尔层**　2 条节点级连线

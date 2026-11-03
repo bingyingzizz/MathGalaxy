@@ -31,13 +31,13 @@
 - **17 / 17** `def.ring` 环 · layer 7 · 代数结构
 - **17 / 17** `def.inner-product` 内积 · layer 10 · 内积空间与正交性
 
-（共 903 个节点有非零计数；这里列前 20 条。）
+（共 917 个节点有非零计数；这里列前 20 条。）
 
 ## 综合结论榜
 
 由最多前置一起推出（入边多）—— 学它之前得先懂一片，**不是**入门首选。
 
-- **7 / 8** `thm.bundle-classification` 丛的分类 · layer 30 · 流形与向量丛
+- **7 / 8** `thm.bundle-classification` 丛的分类 · layer 30 · 丛的示性类
 - **7 / 4** `thm.theorema-egregium` 绝妙定理 · layer 29 · 内蕴几何
 - **6 / 7** `thm.stokes` Stokes 定理 · layer 27 · 内蕴几何
 - **6 / 6** `thm.radical-solvable` 根式可解 与 伽罗瓦群可解 · layer 17 · Galois 理论
@@ -85,5 +85,5 @@
 - **8 团 / 19 节点** `def.integrable` 可积 / L¹ · layer 19 · 积分
 - **8 团 / 17 节点** `def.category` 范畴 · layer 7 · 范畴与图
 
-（共 903 个节点有非零计数；这里列前 20 条。）
+（共 917 个节点有非零计数；这里列前 20 条。）
 

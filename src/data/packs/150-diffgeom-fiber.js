@@ -254,7 +254,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.principal-bundle',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'definition',
       label: '主丛',
       title: '主丛：纤维就是结构群本身的纤维丛',

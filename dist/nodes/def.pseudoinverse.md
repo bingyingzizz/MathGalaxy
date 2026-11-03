@@ -8,7 +8,7 @@ layer 22 · 定义 · 矩阵分解与最小二乘 · 抽象代数
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`thm.svd`](../nodes/thm.svd.md) 奇异值分解：用到了定义 奇异值分解　[proofs/dep.pinv-svd.md](../proofs/dep.pinv-svd.md)
+- [`thm.least-squares`](../nodes/thm.least-squares.md) 最小二乘：列满秩时最小二乘算子就是伪逆　[proofs/imp.least-squares-pseudoinverse.md](../proofs/imp.least-squares-pseudoinverse.md)
 
 - …另有入边，续页见 [nodes/def.pseudoinverse.3.md](./def.pseudoinverse.3.md)
 

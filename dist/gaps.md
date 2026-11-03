@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1500 节点 / 2882 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1500 节点 / 2902 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -74,7 +74,7 @@
 ### Radó　出现 1 次
 `thm.classification-surfaces`
 
-## 二、陈述用到更深的定义却没有边（148 处）
+## 二、陈述用到更深的定义却没有边（147 处）
 
 - `def.invariant-polynomial`（不变多项式 · L11）用到 `def.characteristic-class`（示性类 · L31）　落差 20
 - `def.fiber-bundle`（纤维丛 · L10）用到 `def.lie-group`（Lie 群 · L25）　落差 15
@@ -215,7 +215,6 @@
 - `lem.stonean-projective`（Stonean 给出有限表现投射对象 · L17）用到 `def.condensed-abelian-group`（凝聚态阿贝尔群 · L17）
 - `thm.long-exact`（长正合列 · L18）用到 `def.cohomological-functor`（上同调函子 · L18）
 - `thm.tietze-banach`（Tietze 延拓（Banach 值） · L15）用到 `def.banach-space`（Banach 空间 · L15）
-- `prop.breen-deligne-ss-stonean`（Stonean 上 Breen–Deligne 的谱序列 · L17）用到 `def.condensed-abelian-group`（凝聚态阿贝尔群 · L17）
 - `prop.hom-presheaf-sheaf`（Hom 预层是层 · L16）用到 `def.condensed-set`（凝聚态集 · L16）
 - `prop.module-tensor-universal`（张量积对双线性映射万有 · L13）用到 `def.tensor-product-vs`（张量积（向量空间） · L13）
 - `prop.coproduct-chaus`（不交并是紧 Hausdorff 的余积 · L16）用到 `def.free-compact-hausdorff`（自由紧 Hausdorff 空间 · L16）

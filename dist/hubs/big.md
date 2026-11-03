@@ -2,7 +2,7 @@
 索引 `hubs.md`
 
 由最多前置一起推出（入边多）—— 学它之前得先懂一片，**不是**入门首选。
-- **7 / 8** `thm.bundle-classification` 丛的分类 · layer 30 · 流形与向量丛
+- **7 / 8** `thm.bundle-classification` 丛的分类 · layer 30 · 丛的示性类
 - **7 / 4** `thm.theorema-egregium` 绝妙定理 · layer 29 · 内蕴几何
 - **6 / 7** `thm.stokes` Stokes 定理 · layer 27 · 内蕴几何
 - **6 / 6** `thm.radical-solvable` 根式可解 与 伽罗瓦群可解 · layer 17 · Galois 理论

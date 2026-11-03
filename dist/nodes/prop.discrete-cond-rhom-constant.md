@@ -12,6 +12,9 @@ layer 18 · 命题 · 导出 Hom 的具体计算 · 凝聚态数学
 
 - …另有入边，续页见 [nodes/prop.discrete-cond-rhom-constant.3.md](./prop.discrete-cond-rhom-constant.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.discrete-cond-rhom-constant.4.md](./prop.discrete-cond-rhom-constant.4.md)
+
 refs: Le Stum, An introduction to condensed mathematics, §8.3
 
 > 说明见 `notes/prop.discrete-cond-rhom-constant.md`

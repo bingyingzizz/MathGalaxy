@@ -14,6 +14,9 @@ $$\operatorname{RHom}_{\mathbb{Z}}\bigl(\mathbb{Z}[E],\ N\bigr) \;\cong\; N^{E} 
 
 - …另有入边，续页见 [nodes/prop.rhom-ze-powers.2.md](./prop.rhom-ze-powers.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/prop.rhom-ze-powers.3.md](./prop.rhom-ze-powers.3.md)
+
 refs: Le Stum, An introduction to condensed mathematics, §8.3
 
 > 说明见 `notes/prop.rhom-ze-powers.md`

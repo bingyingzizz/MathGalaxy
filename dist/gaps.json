@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T12:49:54.344Z",
+ "generated": "2026-11-03T13:19:28.048Z",
  "terms": 76,
  "missing": [
   {
@@ -1691,15 +1691,6 @@
    "def": "def.banach-space",
    "defLabel": "Banach 空间",
    "defLayer": 15,
-   "gap": 0
-  },
-  {
-   "node": "prop.breen-deligne-ss-stonean",
-   "nodeLabel": "Stonean 上 Breen–Deligne 的谱序列",
-   "nodeLayer": 17,
-   "def": "def.condensed-abelian-group",
-   "defLabel": "凝聚态阿贝尔群",
-   "defLayer": 17,
    "gap": 0
   },
   {

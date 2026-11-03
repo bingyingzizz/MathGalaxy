@@ -66,7 +66,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.structure-group',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'definition',
       label: '结构群',
       title: '结构群：转移函数允许落在哪个群',

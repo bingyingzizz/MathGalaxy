@@ -4,7 +4,7 @@ English entry · root `../`
 
 > English: **name only** · auto-derived from the source data; the Chinese page is authoritative.
 
-layer 24 · theorem · cluster Manifolds and Vector Bundles (`diffgeom.manifold`) · Differential Geometry
+layer 24 · theorem · cluster Characteristic Classes (`diffgeom.characteristic`) · Differential Geometry
 
 ## Statement and proof
 Chinese only — see the Chinese page `nodes/thm.chern-weil.md` and `proofs/`.

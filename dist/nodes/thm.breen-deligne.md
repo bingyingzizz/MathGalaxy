@@ -16,6 +16,9 @@ $$F(M)_{n} = \bigoplus_{i=1}^{r_{n}} \mathbb{Z} \cdot M^{s_{n,i}}.$$
 
 - …另有入边，续页见 [nodes/thm.breen-deligne.2.md](./thm.breen-deligne.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.breen-deligne.3.md](./thm.breen-deligne.3.md)
+
 refs: Le Stum, Theorem 8.3.2
 
 > 说明见 `notes/thm.breen-deligne.md`

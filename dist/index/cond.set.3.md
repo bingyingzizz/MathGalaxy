@@ -1,6 +1,7 @@
 # 凝聚态集 / Condensed Sets（cond.set）· 节点清单（第 3/3 页）
 根 `../`　·　第 1 页 `index/cond.set.md`　·　上一页 `index/cond.set.2.md`
 
+- prop.cond-slice-topos-morphism　Cond/X 到开集拓扑斯的态射　layer 18
 - cor.cond-ktop-finite-products　底空间保有限积　layer 18
 - prop.cond-epi-open-surjective　开满射是满态射　layer 18
 - prop.qseparated-mono　拟分离嵌入底空间　layer 18

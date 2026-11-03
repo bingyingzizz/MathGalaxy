@@ -27,7 +27,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.frame-bundle',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'definition',
       label: '帧丛',
       title: '帧丛：把向量丛变成主 $\\mathrm{GL}(k)$-丛',
@@ -64,7 +64,7 @@ window.MG = window.MG || {};
 
     {
       id: 'def.associated-bundle',
-      cluster: 'diffgeom.manifold',
+      cluster: 'diffgeom.characteristic',
       type: 'definition',
       label: '配丛',
       title: '配丛：主 $G$-丛配上一个 $G$-作用得到的新丛',

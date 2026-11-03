@@ -12,6 +12,9 @@ $$H^{n}_{\mathrm{cond}}(S,\ \underline{A}) = 0.$$
 
 - …另有入边，续页见 [nodes/lem.stone-constant-acyclic.2.md](./lem.stone-constant-acyclic.2.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/lem.stone-constant-acyclic.3.md](./lem.stone-constant-acyclic.3.md)
+
 refs: Le Stum, Lemma 8.1.2
 
 > 说明见 `notes/lem.stone-constant-acyclic.md`
