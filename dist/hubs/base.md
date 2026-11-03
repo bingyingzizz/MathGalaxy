@@ -4,9 +4,9 @@
 被最多结论当作前置（出边多）—— 值得优先学熟。
 - **30 / 33** `def.limit` 极限 · layer 11 · 图与极限
 - **28 / 32** `def.adjoint` 伴随函子 · layer 9 · 伴随与反射
+- **28 / 31** `def.compact` 紧 · layer 14 · 度量空间
 - **28 / 29** `def.measure` 测度 · layer 14 · 测度的构造
-- **27 / 30** `def.compact` 紧 · layer 14 · 度量空间
-- **26 / 26** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
+- **27 / 27** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
 - **25 / 28** `def.sheaf` 层 · layer 15 · 层与拓扑
 - **24 / 24** `def.group` 群 · layer 6 · 代数结构
 - **23 / 23** `def.function` 映射 · layer 5 · 关系与函数

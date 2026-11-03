@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1478 节点 / 2824 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1481 节点 / 2835 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -9,22 +9,22 @@
 
 ⚠️ 第二节会误报（「顺嘴提一句」也算），所以只列出来给人看，不做断言。
 
-## 一、提到了但没有节点（27 个）
+## 一、提到了但没有节点（26 个）
 
 ### 单位圆　出现 25 次
 `thm.integral-trig` · `thm.euler-formula` · `def.normal-curvature` · `def.principal-curvature` · `thm.rodrigues` · `thm.max-modulus` 等 21 个节点
 
+### 环面　出现 18 次
+`def.genus` · `def.orientable-surface` · `thm.gauss-bonnet` · `def.vector-field` · `def.integral-manifold` · `thm.frobenius` 等 12 个节点
+
 ### 原函数　出现 16 次
 `prop.single-valued-branch` · `thm.ftc-riemann-part2` · `thm.cauchy-goursat` · `def.residue` · `thm.taylor-complex` · `thm.winding-homotopy` 等 10 个节点
 
-### 环面　出现 16 次
-`def.genus` · `def.orientable-surface` · `thm.gauss-bonnet` · `def.vector-field` · `def.integral-manifold` · `thm.frobenius` 等 10 个节点
+### 三角剖分　出现 14 次
+`thm.classification-surfaces` · `def.singular-homology` · `thm.simplicial-approximation` · `thm.gauss-bonnet` · `def.simplicial-complex` · `thm.euler-characteristic` 等 7 个节点
 
 ### 角度　出现 10 次
 `thm.liouville-formula` · `prop.conformal-iff` · `def.isometry` · `def.intrinsic-quantity` · `def.riemannian-metric` · `def.trig-function` 等 7 个节点
-
-### 三角剖分　出现 9 次
-`def.singular-homology` · `thm.simplicial-approximation` · `thm.gauss-bonnet` · `def.simplicial-complex` · `thm.euler-characteristic` · `thm.homotopy-invariance`
 
 ### 素因子　出现 7 次
 `thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 7 个节点
@@ -41,23 +41,17 @@
 ### 偏微分方程　出现 5 次
 `thm.frobenius` · `thm.fundamental-theorem-surfaces` · `def.involutive-distribution` · `def.closed-form`
 
+### 射影平面　出现 4 次
+`thm.euler-characteristic` · `def.genus` · `def.closed-surface` · `thm.classification-surfaces`
+
 ### 表示论　出现 4 次
 `thm.cayley` · `def.flow` · `thm.stone-weierstrass-complex` · `thm.pontryagin-van-kampen`
 
 ### 二元运算　出现 3 次
 `def.field` · `def.group` · `def.ring`
 
-### 闭曲面　出现 3 次
-`thm.gauss-bonnet` · `def.orientable-surface` · `def.orientable-manifold`
-
 ### 超积　出现 3 次
 `thm.compactness`
-
-### 拓扑流形　出现 2 次
-`prop.maximal-atlas` · `def.connected-sum`
-
-### 射影平面　出现 2 次
-`thm.euler-characteristic` · `def.genus`
 
 ### 一阶逻辑的完备性　出现 2 次
 `thm.completeness-first-order` · `def.satisfaction`
@@ -71,8 +65,8 @@
 ### 弧度　出现 1 次
 `def.trig-function`
 
-### 曲面分类　出现 1 次
-`thm.gauss-bonnet`
+### 克莱因瓶　出现 1 次
+`def.closed-surface`
 
 ### 解析数论　出现 1 次
 `thm.euclid-infinite-primes`
@@ -91,6 +85,9 @@
 
 ### 调和形式　出现 1 次
 `thm.divergence-theorem`
+
+### Radó　出现 1 次
+`thm.classification-surfaces`
 
 ## 二、陈述用到更深的定义却没有边（146 处）
 
@@ -241,6 +238,6 @@
 - `prop.matrix-category`（矩阵范畴 · L8）用到 `def.vector-space`（向量空间 · L8）
 - `prop.discontinuity-types`（间断点分类 · L15）用到 `def.function-limit-onesided`（单侧极限 · L15）
 
-## 三、候选词表里从没被提到的（34 个）
+## 三、候选词表里从没被提到的（32 个）
 
-换底公式 · 自然对数 · 正切 · 反正弦 · 反三角函数 · 克莱因瓶 · 莫比乌斯带 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 伽罗瓦群 · 可分扩张 · 代数扩张 · 分裂域 · 求根公式 · 五次方程 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · Radó · 咖啡杯 · 甜甜圈 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
+换底公式 · 自然对数 · 正切 · 反正弦 · 反三角函数 · 莫比乌斯带 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 伽罗瓦群 · 可分扩张 · 代数扩张 · 分裂域 · 求根公式 · 五次方程 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · 咖啡杯 · 甜甜圈 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理

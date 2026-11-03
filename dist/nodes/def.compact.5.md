@@ -3,6 +3,7 @@
 
 ## 它能推出什么 / 谁在用它（续）
 - ～弱边 [`thm.compactness`](../nodes/thm.compactness.md) 紧致性定理
+- 被 [`def.closed-surface`](../nodes/def.closed-surface.md) 闭曲面 用
 - ⇒ [`prop.chaus-reflective`](../nodes/prop.chaus-reflective.md) 紧 Haus 是反射子范畴
 - 被 [`prop.compact-basic-operations`](../nodes/prop.compact-basic-operations.md) 紧性的基本操作 用
 - 被 [`prop.chaus-reflective`](../nodes/prop.chaus-reflective.md) 紧 Haus 是反射子范畴 用

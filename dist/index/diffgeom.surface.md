@@ -10,7 +10,7 @@
 - def.area-element　面积元　layer 25
 - def.second-fundamental-form　第二基本形式　layer 26
 - def.principal-curvature　主曲率　layer 26
-- def.orientable-surface　可定向曲面　layer 26
+- def.orientable-surface　R³ 中的可定向曲面　layer 26
 - thm.gauss-equation　Gauss 方程　layer 27
 - thm.codazzi-mainardi　Codazzi–Mainardi 方程　layer 27
 - thm.meusnier　Meusnier 定理　layer 27

@@ -13,4 +13,6 @@
 
 - 外微分 | dω | 外微分 d → def.exterior-derivative
 
+- 拓扑流形 | n 维拓扑流形 → def.topological-manifold
+
 见 `../../alias.md`。

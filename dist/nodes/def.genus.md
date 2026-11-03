@@ -17,6 +17,8 @@ $$g(M) := \tfrac{1}{2} \operatorname{rank}_{\mathbb{Z}} H_{1}(M; \mathbb{Z}).$$
 ## 它能推出什么 / 谁在用它
 - ～弱边 [`thm.euler-characteristic`](../nodes/thm.euler-characteristic.md) Euler 示性数
 
+- …另有出边，续页见 [nodes/def.genus.3.md](./def.genus.3.md)
+
 refs: Hatcher, Algebraic Topology, Ch. 2.2（曲面与亏格）；Massey, A Basic Course in Algebraic Topology
 
 > 说明见 `notes/def.genus.md`

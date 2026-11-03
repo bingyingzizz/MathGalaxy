@@ -4,10 +4,10 @@
 
 - **30 / 33** `def.limit` limit and colimit · 图与极限
 - **28 / 32** `def.adjoint` Adjunction · 伴随与反射
+- **28 / 31** `def.compact` compact · 度量空间
 - **28 / 29** `def.measure` measure · 测度的构造
-- **27 / 30** `def.compact` compact · 度量空间
 
-- **26 / 26** `def.topology` topology · 拓扑空间的基本语汇
+- **27 / 27** `def.topology` topology · 拓扑空间的基本语汇
 - **25 / 28** `def.sheaf` sheaf · 层与拓扑
 - **24 / 24** `def.group` group · 代数结构
 - **23 / 23** `def.function` mapping · 关系与函数

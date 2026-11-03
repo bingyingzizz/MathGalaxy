@@ -1,4 +1,4 @@
-# 可定向曲面　`def.orientable-surface`
+# R³ 中的可定向曲面　`def.orientable-surface`
 可定向曲面与定向
 layer 26 · 定义 · 曲面论 · 微分几何
 [在星图里打开](../#n=def.orientable-surface)　·　[节点索引](../index.md)
@@ -11,7 +11,7 @@ layer 26 · 定义 · 曲面论 · 微分几何
 - 被 [`thm.gauss-bonnet`](../nodes/thm.gauss-bonnet.md) Gauss–Bonnet 定理 用
 - 被 [`thm.stokes`](../nodes/thm.stokes.md) Stokes 定理 用
 
-- …另有出边，续页见 [nodes/def.orientable-surface.5.md](./def.orientable-surface.5.md)
+- …另有出边，续页见 [nodes/def.orientable-surface.6.md](./def.orientable-surface.6.md)
 
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.orientable-surface.4.md](./def.orientable-surface.4.md)

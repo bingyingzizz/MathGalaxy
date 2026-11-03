@@ -14,6 +14,8 @@ $$M^{\circ} := M \setminus \operatorname{int} B_{M}, \qquad N^{\circ} := N \setm
 ## 它能推出什么 / 谁在用它
 - 被 [`def.genus`](../nodes/def.genus.md) 亏格 用
 
+- …另有出边，续页见 [nodes/def.connected-sum.4.md](./def.connected-sum.4.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/def.connected-sum.3.md](./def.connected-sum.3.md)
 

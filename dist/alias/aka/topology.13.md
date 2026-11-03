@@ -25,4 +25,10 @@
 
 - 亏格 | genus | 洞的个数 → def.genus
 
+- 拓扑流形 | n 维拓扑流形 → def.topological-manifold
+
+- 闭曲面 | 紧曲面 → def.closed-surface
+
+- 闭曲面分类定理 | 曲面分类定理 → thm.classification-surfaces
+
 见 `../../alias.md`。

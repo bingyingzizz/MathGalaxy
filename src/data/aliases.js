@@ -1440,6 +1440,9 @@ MG.aliases = {
     { id: 'def.exterior-derivative', en: 'exterior derivative', aka: ['外微分', 'dω', '外微分 d'] },
     { id: 'def.connected-sum', en: 'connected sum', aka: ['连通和', 'connect sum', 'M#N'] },
     { id: 'def.genus', en: 'genus', aka: ['亏格', 'genus', '洞的个数'] },
+    { id: 'def.topological-manifold', en: 'topological manifold', aka: ['拓扑流形', 'n 维拓扑流形'] },
+    { id: 'def.closed-surface', en: 'closed surface', aka: ['闭曲面', '紧曲面'] },
+    { id: 'thm.classification-surfaces', en: 'classification of closed surfaces', aka: ['闭曲面分类定理', '曲面分类定理'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

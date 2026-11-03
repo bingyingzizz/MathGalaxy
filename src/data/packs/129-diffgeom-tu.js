@@ -386,7 +386,7 @@ window.MG = window.MG || {};
       id: 'def.orientable-surface',
       cluster: 'diffgeom.surface',
       type: 'definition',
-      label: '可定向曲面',
+      label: 'R³ 中的可定向曲面',
       title: '可定向曲面与定向',
       regions: ['diffgeom'],
       tags: ['定义', '微分几何', '曲面', '定向', '法向场'],

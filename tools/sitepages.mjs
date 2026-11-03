@@ -573,6 +573,9 @@ ${enName ? '<meta property="og:locale:alternate" content="en">\n' : ''}<meta nam
     }</p>
     ${akaHtml}
     ${xrefHtml}
+    ${node.status ? '<p class="status-note">⚠ ' + esc(node.status === 'skeleton'
+      ? '骨架：只看陈述与思路，当不得完整证明'
+      : node.status === 'external-input' ? '依赖本图外部的定理' : '完整') + '</p>' : ''}
   </header>
 
   <section class="sec statement">
