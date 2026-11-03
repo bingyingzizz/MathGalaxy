@@ -76,7 +76,7 @@ window.MG = window.MG || {};
         '**记号**：$\\omega^{i}$ 的上标是编号、不是幂；$(e_{1}, e_{2}, e_{3})$ 与 $(\\omega^{1}, \\omega^{2}, \\omega^{3})$ 互为对偶对，这是活动标架法的全部记账规则。'
       ].join('\n\n'),
       refs: [
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 活动标架与余标架',
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 活动标架与余标架',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 活动标架法'
       ]
     },
@@ -110,7 +110,7 @@ window.MG = window.MG || {};
         '**与 Christoffel 符号的关系**：在**不正交**的标架 $\\{r_{u}, r_{v}, n\\}$ 上把它写开，系数就是 $\\Gamma^{k}_{\\ ij}$ 与 $h_{ij}$ 的混合体（对照 `def.second-fundamental-form` 与 `def.christoffel-symbol`）；\n\n只有在正交标架下它才变成干净的反对称矩阵。'
       ].join('\n\n'),
       refs: [
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式',
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 联络形式'
       ]
     },
@@ -136,7 +136,7 @@ window.MG = window.MG || {};
         '⚠️ 若改用**不正交**的标架（如 $\\{r_{u}, r_{v}, n\\}$），$g_{ij}$ 不是 $\\delta_{ij}$，反对称性不成立，$\\omega$ 就退化成 $\\Gamma$ 与 $h$ 的混合体 —— 那正是里那套公式的样子。'
       ].join('\n\n'),
       refs: [
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式的反称性',
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 联络形式的反称性',
         'Kühnel, Differential Geometry: Curves - Surfaces - Manifolds, 「Surfaces in three-space」· 结构方程'
       ]
     },
@@ -171,7 +171,7 @@ window.MG = window.MG || {};
         '⚠️ **符号约定**：本包取 $\\omega^{j}_{\\ i} = \\langle \\mathrm{d}e_{i}, e_{j}\\rangle$，即 $\\mathrm{d}e_{i} = \\sum_{j}\\omega^{j}_{\\ i}e_{j}$。上下指标换一种位置，第二式整体变号；引用前先对齐这一条。'
       ].join('\n\n'),
       refs: [
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 结构方程',
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 结构方程',
         '陈维桓《微分几何讲义》, 「曲面的局部理论」· 结构方程'
       ]
     },
@@ -198,7 +198,7 @@ window.MG = window.MG || {};
         '⚠️ $\\omega^{3} = 0$ 是**沿曲面**成立，不是标架本身的性质：在 $\\mathbb{R}^{3}$ 的开集上 $\\omega^{3}$ 一般不为零，那正对应「曲面朝法向弯出去」。'
       ].join('\n\n'),
       refs: [
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 曲面上的标准标架',
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 曲面上的标准标架',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 2 章「正则曲面」· Gauss 映射'
       ]
     },
@@ -229,7 +229,7 @@ window.MG = window.MG || {};
         '⚠️ 对称的是**相对正交标架**的矩阵 $(c_{ij})$ 与 $(h_{ij})$；若改用不正交的 $\\{r_{u}, r_{v}\\}$，对称的是 $h_{ij}$，而 $(h^{j}_{\\ i}) = g^{jk}h_{ki}$ 一般不对称。 $\\det(h-kg)=0$ 用的正是 $h_{ij}$ 这一支。'
       ].join('\n\n'),
       refs: [
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 第二基本形式的对称性',
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 第二基本形式的对称性',
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 3 章「Gauss 映射的几何」· 第二基本形式的对称性'
       ]
     },
@@ -396,7 +396,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· Gauss 方程',
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· Gauss 方程与结构方程'
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· Gauss 方程与结构方程'
       ]
     },
 
@@ -659,7 +659,7 @@ window.MG = window.MG || {};
       ].join('\n\n'),
       refs: [
         'do Carmo, Differential Geometry of Curves and Surfaces, 第 4 章「曲面的内蕴几何」· 曲面论基本定理',
-        'S. S. Chern, Curves and Surfaces in Euclidean Space, 「Surfaces」· 曲面论基本定理（Bonnet）'
+        '陈省身（S. S. Chern）, Curves and Surfaces in Euclidean Space, 「Surfaces」· 曲面论基本定理（Bonnet）'
       ]
     }
 
