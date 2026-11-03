@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T04:42:13.273Z",
+ "generated": "2026-11-03T05:03:30.637Z",
  "terms": 76,
  "missing": [
   {
@@ -279,6 +279,24 @@
    ]
   },
   {
+   "term": "代数闭包",
+   "total": 5,
+   "nodes": [
+    {
+     "id": "thm.minimal-poly-divisor",
+     "c": 3
+    },
+    {
+     "id": "thm.diagonalizable",
+     "c": 1
+    },
+    {
+     "id": "def.nilpotent",
+     "c": 1
+    }
+   ]
+  },
+  {
    "term": "偏微分方程",
    "total": 5,
    "nodes": [
@@ -373,16 +391,6 @@
     {
      "id": "def.orientable-manifold",
      "c": 1
-    }
-   ]
-  },
-  {
-   "term": "代数闭包",
-   "total": 3,
-   "nodes": [
-    {
-     "id": "thm.minimal-poly-divisor",
-     "c": 3
     }
    ]
   },

@@ -327,6 +327,15 @@ window.MG = window.MG || {};
         '由谱定理，$q$ 正定 $\\iff$ $A$ 的所有特征值为正 $\\iff$ 存在可逆 $P$ 使 $A = P^{\\mathsf{T}}P$（即 $A$ 与正定矩阵合同）。'
       ].join('\n'),
       notes: '⭐ 二次型是「内积」的**放宽版**：内积要求正定，二次型允许不定（甚至退化）。\n\n所以内积空间的一切几何结论在二次型里都要重新检查（「长度」可以是负的）。\n\n⭐ 正定二次型与内积一一对应（$\\langle u, v\\rangle := u^{\\mathsf{T}}Av$），而**每个内积空间都可以通过 Gram–Schmidt 变成标准欧氏空间** —— 这就是「正定 $\\implies$ 可由 $P^{\\mathsf{T}}P$ 实现」的含义。\n\n⭐ 不定二次型出现在相对论（Minkowski 度规）、Morse 理论（Hessian 的负惯性指数 = 临界点类型）里。',
+      notes: [
+        '**“二次型 / 对称矩阵 / 对称双线性型”三者的对译要一条极化公式，而它需要 $\\operatorname{char} \\ne 2$**：\n' +
+        '\n' +
+        '- $q(x) = x^{\\mathsf{T}}Ax$（**$A$ 对称**）：这里已经用了「$A$ 对称」这一约定 —— 非对称的 $A$ 给出同一个 $q$（因为 $x^{\\mathsf{T}}A x$ 只看对称部分），所以**二次型与对称矩阵一一对应**。\n' +
+        '- $q \\leftrightarrow$ **对称双线性型** $B$：由**极化公式** $B(x,y) = \\frac{1}{2}\\bigl(q(x+y) - q(x) - q(y)\\bigr)$。⚠️ **$\\frac{1}{2}$ 要求 $\\operatorname{char} K \\ne 2$**；特征 $2$ 时二次型与双线性型**不再对应**（这是二次型理论在 char 2 要单独处理的原因）。\n' +
+        '- **正定 $\\iff$ 特征值全正 $\\iff$ 合同于 $I$**：第一条用谱定理（实对称）；第三条用**惯性定理**（`thm.sylvester-law-inertia`），只要求可逆合同、不要求正交。\n' +
+        '\n' +
+        '⚠️ **别把“二次型”与“二次齐次多项式”混为一谈**：每个二次齐次多项式都能写成 $x^{\\mathsf{T}}Ax$（取 $A$ 对称即可），但在**特征 $2$** 的情形，「$x_{1}x_{2}$」这种交叉项的对称化会退化。\n'
+      ].join('\n\n'),
       refs: ['Hoffman–Kunze, Linear Algebra, Ch. 8', 'Roman, Advanced Linear Algebra, Ch. 11']
     },
     {

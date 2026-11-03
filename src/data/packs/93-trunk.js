@@ -32,7 +32,7 @@ MG.trunk = [
 
   /* ================= 一、从 ZFC 造出数系（地基，一步一层） ================= */
   'ax.ext',                    //  0 层  外延公理：集合相等靠什么
-  'def.empty',                 //  0 层  空集 ∅
+  'def.empty',                 //  0 层  空集 $\\emptyset$
   'def.subset',                //  1 层  子集
   'def.power-set',             //  3 层  幂集 𝒫(X)（生成的 σ-代数、外测度都踩在它上面）
   'thm.empty',                 //  5 层  空集存在
@@ -71,7 +71,7 @@ MG.trunk = [
   'def.measure',               // 14 层  测度
   'def.outer-measure',         // 14 层  外测度（定义在幂集上，只有次可加性）
   'def.null-set',              // 15 层  零集与完备
-  'thm.caratheodory',          // 16 层  Carathéodory 定理：外测度 → 测度
+  'thm.caratheodory',          // 16 层  Carathéodory 定理：外测度 $\\to$ 测度
   'def.ae',                    // 16 层  几乎处处
 
   /* ============================== 四、积分 ============================== */
@@ -142,6 +142,6 @@ MG.trunk = [
   'prop.banach-stone-acyclic', // 17 层  Banach 阿贝尔群在 Stone 上零调
   'thm.real-banach-chaus-acyclic', // 16 层  实 Banach 空间在紧 Hausdorff 上零调
   'thm.breen-deligne',         // 18 层  Breen–Deligne 分解（把 Ext 化成可算的）
-  'lem.ext-stonean-section',   // 17 层  Stonean 上的截面公式：Ext(M,N)(S) ≅ Ext(M·S,N)
+  'lem.ext-stonean-section',   // 17 层  Stonean 上的截面公式：Ext(M,N)(S) ≅ Ext(M$\\cdot$S,N)
   'thm.lc-ext-vanishing'       // 24 层  局部紧阿贝尔群的高次 Ext 消失（本段终点）
 ];
