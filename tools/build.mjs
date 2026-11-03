@@ -324,6 +324,12 @@ function exportJSON(MG, graph) {
            把「没有这个字段」也逼成一个要解释的状态。 */
         layer: e.layer === false ? false : undefined,
         title: e.title || '', proof: e.proof || '', note: e.note || '',
+        /* 多证法（T15）：等价边与 implication 都可能带 proofs[]；
+           ⚠️ 以前这里只导 `proof`，于是写成 `proofs[]` 的证法在 graph.json 里**静默消失**
+           （体现就是面板和 mg 都看不到、只有 .md 产物里能看到）。 */
+        proofs: Array.isArray(e.proofs) && e.proofs.length
+          ? e.proofs.map((p) => ({ label: p.label || '', text: p.text || '' }))
+          : undefined,
       };
     }),
 
@@ -585,7 +591,17 @@ function packPages(node, items, maxB, maxC) {
 
 /** 一条边的正文：证明（implication / equivalence）或说明（definition / analogy） */
 function edgeBody(e) {
-  if (e.kind === 'implication') return (e.proof || '').trim();
+  /* ⭐ 2026-11-03（T15）：implication 也允许写 proofs[]（一种结论、多种证法）。
+     多个证法时按 label 分段排；否则走旧的单个 proof。
+     ⚠️ 产物页体积有硬门（1300 B）—— 多证法很容易顶破，会自己续页。 */
+  if (e.kind === 'implication') {
+    if (Array.isArray(e.proofs) && e.proofs.length) {
+      return e.proofs
+        .map((p, i) => `**${p && p.label ? p.label : '证法 ' + (i + 1)}**\n\n${((p && p.text) || '').trim()}`)
+        .join('\n\n');
+    }
+    return (e.proof || '').trim();
+  }
   if (e.kind === 'equivalence') {
     return (e.proofs || []).map(p => `**${p.label || ''}**\n\n${(p.text || '').trim()}`).join('\n\n');
   }

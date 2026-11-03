@@ -363,6 +363,16 @@ function cmdEdge(id) {
   console.log(withLabel(from) + '  ⟹  ' + withLabel(to));
   if (e.title) console.log(C.dim('title: ' + e.title));
   if (e.note) console.log(C.dim('note: ' + e.note));
+  /* 多证法（T15）：一条边可能有好几只证明，全打出来并编号 */
+  if (e.kind === 'implication' && Array.isArray(e.proofs) && e.proofs.length) {
+    console.log(C.dim(`\n## 证法 ${e.proofs.length} 种\n`));
+    e.proofs.forEach((p, i) => {
+      console.log(C.b('### ' + ((p && p.label) || ('证法 ' + (i + 1)))));
+      console.log(wrap((p && p.text) || ''));
+      console.log('');
+    });
+    return;
+  }
   const body = edgeBody(e);
   if (body) { console.log('\n## 证明\n'); console.log(wrap(body)); }
   else console.log(C.dim('\n（这条边没有写证明：定义引用 / 类比边通常不写）'));

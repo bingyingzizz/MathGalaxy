@@ -561,17 +561,26 @@ window.MG = window.MG || {};
       sources: ['def.multilinear-form', 'def.alternating-form'],
       target: 'thm.det-exists-unique',
       title: '多重线性 + 交错 $\\implies$ 行列式的存在唯一性',
-      proof: [
-        '记 $D(e_1, \\ldots, e_n) = 1$ 决定了规范的零点。',
-        '',
-        '**唯一性。** 设 $D$ 满足三条。\n\n把每个 $v_j = \\sum_i a_{ij} e_i$ 代入，由多重线性展开成 $n^{n}$ 项之和，每一项是 $a_{i_1 1} \\cdots a_{i_n n} D(e_{i_1}, \\ldots, e_{i_n})$。\n\n由交错性，只有 $i_1, \\ldots, i_n$ **互不相同**的那些项非零 —— 也就是说，只有置换 $\\sigma \\in S_n$ 对应的项（取 $i_j = \\sigma(j)$）存活。\n\n再由交错性 $D(e_{\\sigma(1)}, \\ldots, e_{\\sigma(n)}) = \\operatorname{sgn}(\\sigma)\\, D(e_1, \\ldots, e_n) = \\operatorname{sgn}(\\sigma)$。\n\n于是',
-        '',
-        '$$D(v_1, \\ldots, v_n) = \\sum_{\\sigma \\in S_n} \\operatorname{sgn}(\\sigma)\\ a_{\\sigma(1), 1} \\cdots a_{\\sigma(n), n}$$',
-        '',
-        '右端只依赖 $a_{ij}$，故 $D$ 唯一。',
-        '',
-        '**存在性。** 直接把上式取作 $D$ 的定义，逐条验证三条公理：多重线性（每一项对每个 $a_{ij}$ 都是一次的，而 $a_{ij}$ 关于 $v_j$ 线性）、交错性（交换两个变元 = 把置换乘一个对换，$\\operatorname{sgn}$ 变号，而所有项成对相消）、规范性（代入 $a_{ij} = \\delta_{ij}$ 后只剩 $\\sigma = \\mathrm{id}$ 一项，值为 $1$）。\n\n∎'
-      ].join('\n'),
+      proofs: [
+        {
+          label: '证法一：Leibniz 公式（先逼出唯一性，再把公式拿回来验存在）',
+          text: [
+            '记 $D(e_1, \\ldots, e_n) = 1$ 决定了规范的零点。',
+            '',
+            '**唯一性。** 设 $D$ 满足三条。\n\n把每个 $v_j = \\sum_i a_{ij} e_i$ 代入，由多重线性展开成 $n^{n}$ 项之和，每一项是 $a_{i_1 1} \\cdots a_{i_n n} D(e_{i_1}, \\ldots, e_{i_n})$。\n\n由交错性，只有 $i_1, \\ldots, i_n$ **互不相同**的那些项非零 —— 也就是说，只有置换 $\\sigma \\in S_n$ 对应的项（取 $i_j = \\sigma(j)$）存活。\n\n再由交错性 $D(e_{\\sigma(1)}, \\ldots, e_{\\sigma(n)}) = \\operatorname{sgn}(\\sigma)\\, D(e_1, \\ldots, e_n) = \\operatorname{sgn}(\\sigma)$。\n\n于是',
+            '',
+            '$$D(v_1, \\ldots, v_n) = \\sum_{\\sigma \\in S_n} \\operatorname{sgn}(\\sigma)\\ a_{\\sigma(1), 1} \\cdots a_{\\sigma(n), n}$$',
+            '',
+            '右端只依赖 $a_{ij}$，故 $D$ 唯一。',
+            '',
+            '**存在性。** 直接把上式取作 $D$ 的定义，逐条验证三条公理：多重线性（每一项对每个 $a_{ij}$ 都是一次的，而 $a_{ij}$ 关于 $v_j$ 线性）、交错性（交换两个变元 = 把置换乘一个对换，$\\operatorname{sgn}$ 变号，而所有项成对相消）、规范性（代入 $a_{ij} = \\delta_{ij}$ 后只剩 $\\sigma = \\mathrm{id}$ 一项，值为 $1$）。\n\n∎',
+          ].join('\n'),
+        },
+        {
+          label: '证法二：外代数（⋀ⁿV ≅ K，几行读完）',
+          text: '\\u8BBE $\\dim V = n$\\u3002\\u5916\\u5E42 $\\bigwedge^{n} V$ \\u662F\\u4E00\\u7EF4\\u7684\\uFF0C\\u4E14 $v_{1} \\wedge \\cdots \\wedge v_{n} = 0$ \\u5F53\\u4E14\\u4EC5\\u5F53 $v_{1}, \\ldots, v_{n}$ \\u7EBF\\u6027\\u76F8\\u5173\\u3002\n\n\\u4E8E\\u662F\\u53EF\\u4EE5\\u7528\\u5B83**\\u5B9A\\u4E49** $D(v_{1}, \\ldots, v_{n})$\\uFF1A$v_{1} \\wedge \\cdots \\wedge v_{n} = D(v_{1}, \\ldots, v_{n})\\, e_{1} \\wedge \\cdots \\wedge e_{n}$\\u3002\n\n\\u4E09\\u6761\\u516C\\u7406\\u5404\\u81EA\\u514D\\u8D39\\uFF1A**\\u591A\\u91CD\\u7EBF\\u6027**\\u6765\\u81EA $\\wedge$ \\u5BF9\\u6BCF\\u4E2A\\u53D8\\u5143\\u7EBF\\u6027\\uFF1B**\\u4EA4\\u9519\\u6027**\\u6765\\u81EA $v \\wedge v = 0$\\uFF08\\u5546\\u7A7A\\u95F4\\u6784\\u9020\\u91CC\\u76F4\\u63A5\\u6740\\u6389\\u7684\\uFF09\\uFF1B**\\u89C4\\u8303\\u6027**\\u6765\\u81EA $e_{1} \\wedge \\cdots \\wedge e_{n}$ \\u53D6\\u4F5C\\u57FA\\u3001\\u7CFB\\u6570\\u5B9A\\u4E3A $1$\\u3002\n\n**\\u552F\\u4E00\\u6027**\\u4E5F\\u662F\\u514D\\u8D39\\u7684\\uFF1A\\u4E00\\u7EF4\\u7A7A\\u95F4\\u4E0A\\u7684\\u7EBF\\u6027\\u6620\\u5C04\\u53EA\\u80FD\\u4E58\\u4E00\\u4E2A\\u6570\\uFF0C\\u800C\\u90A3\\u4E2A\\u6570\\u88AB $D(e_{1}, \\ldots, e_{n}) = 1$ \\u9489\\u6B7B\\u3002\\u220E\n\n\\u2B50 \\u4E24\\u79CD\\u8BC1\\u6CD5\\u5206\\u5DE5\\u4E0D\\u540C\\uFF1ALeibniz \\u90A3\\u4E00\\u8DEF\\u7ED9\\u51FA**\\u663E\\u5F0F\\u516C\\u5F0F**\\uFF08\\u80FD\\u7B97\\uFF09\\uFF0C\\u5916\\u4EE3\\u6570\\u8FD9\\u4E00\\u8DEF\\u7ED9\\u51FA**\\u4E3A\\u4EC0\\u4E48\\u975E\\u8FD9\\u6837\\u4E0D\\u53EF**\\uFF08$\\bigwedge^{n}V$ \\u4E00\\u7EF4\\u8FD9\\u4EF6\\u4E8B\\u672C\\u8EAB\\u5C31\\u8BF4\\u660E\\u4E86\\uFF09\\u3002\n\n\\u26A0 \\u8FD9\\u4E00\\u8DEF\\u4F9D\\u8D56\\u5916\\u5E42\\uFF08\\`def.exterior-power\\`\\uFF09\\uFF1A\\u672C\\u56FE\\u90A3\\u6761\\u94FE\\u662F \\`imp.det-as-exterior\\`\\uFF0C\\u5B83\\u4ECE\\u672C\\u6761\\u51FA\\u53D1\\u8BB2\\u5916\\u79EF \\u2014\\u2014 \\u6240\\u4EE5\\u8FD9\\u91CC\\u53EA\\u8BB0\\u601D\\u8DEF\\uFF0C\\u4E0D\\u58F0\\u79F0\\u300C\\u4E0D\\u4F9D\\u8D56\\u884C\\u5217\\u5F0F\\u300D\\u3002',
+        },
+      ],
       note: '**唯一性先证、存在性后验**：这是「用泛性质定义对象」的标准套路 —— 先把任何满足条件的对象都逼成一个显式公式，再把那个公式拿回来验证它确实满足条件。'
     },
     {

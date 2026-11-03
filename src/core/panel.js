@@ -349,7 +349,9 @@
       }
       html += '<div class="pn-arith">' + gph + '</div>';
 
-      /* 过程：等价线会把「被它遮住的同向箭头」的证明也一并列出来 */
+      /* 过程：等价线会把「被它遮住的同向箭头」的证明也一并列出来；
+         ⭐ 2026-11-03（T15）**implication 也支持 proofs[]**（一种结论多种证法）：
+         多个证法按 label 列成步骤，第一个展开、其余收进 <details>（不刷屏）。 */
       var steps = [];
       if (e.kind === 'equivalence') {
         (e.proofs || []).forEach(function (p) {
@@ -373,6 +375,15 @@
             U.titleHtml(p.label || '') + '</div>' +
             '<div class="pn-body">' + U.md(p.text || '') + '</div></div>';
         }).join(''));
+      } else if (e.kind === 'implication' && e.proofs && e.proofs.length > 1) {
+        /* 多证法：第一个展开，其余折叠（用原生 <details>，零脚本） */
+        html += section(tf('推导过程 · {n} 种证法', { n: e.proofs.length }),
+          e.proofs.map(function (p, i) {
+            var body = '<div class="pn-body">' + U.md(p.text || '') + '</div>';
+            var head = U.titleHtml(p.label || tf('证法 {n}', { n: i + 1 }));
+            return i === 0 ? '<div class="pn-step">' + head + body + '</div>'
+              : '<details class="pn-step"><summary>' + head + '</summary>' + body + '</details>';
+          }).join(''));
       } else if (e.proof) {
         html += section(tf(e.kind === 'implication' ? '推导过程' : '说明'), '<div class="pn-body">' + U.md(e.proof) + '</div>');
       } else if (e.kind === 'definition') {

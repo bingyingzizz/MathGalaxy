@@ -1,6 +1,6 @@
 # 数学星图 · 全量导出
 
-> 由 `tools/build.mjs` 自动生成于 2026-11-03T08:17:59.254Z
+> 由 `tools/build.mjs` 自动生成于 2026-11-03T08:26:05.316Z
 > 15 星系 / 103 星团 / 1487 节点 / 2850 连线（强边 2824，弱边 26；其中**不分层**的「推论」33 条（layer:false））
 
 > ⛔ **这是全量 bulk 导出（约 3.5 MB），不要单次抓取** —— 抓取工具单次通常只返回
@@ -38481,26 +38481,6 @@ $$\operatorname{rank} A^{\mathsf{T}} = \dim \operatorname{im} T^{\mathsf{T}} = \
 
 #### 多重线性型 + 交错型 ⟹ 行列式的存在唯一性　`imp.det-exists-unique`
 *多重线性 + 交错 $\implies$ 行列式的存在唯一性*
-
-记 $D(e_1, \ldots, e_n) = 1$ 决定了规范的零点。
-
-**唯一性。** 设 $D$ 满足三条。
-
-把每个 $v_j = \sum_i a_{ij} e_i$ 代入，由多重线性展开成 $n^{n}$ 项之和，每一项是 $a_{i_1 1} \cdots a_{i_n n} D(e_{i_1}, \ldots, e_{i_n})$。
-
-由交错性，只有 $i_1, \ldots, i_n$ **互不相同**的那些项非零 —— 也就是说，只有置换 $\sigma \in S_n$ 对应的项（取 $i_j = \sigma(j)$）存活。
-
-再由交错性 $D(e_{\sigma(1)}, \ldots, e_{\sigma(n)}) = \operatorname{sgn}(\sigma)\, D(e_1, \ldots, e_n) = \operatorname{sgn}(\sigma)$。
-
-于是
-
-$$D(v_1, \ldots, v_n) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma)\ a_{\sigma(1), 1} \cdots a_{\sigma(n), n}$$
-
-右端只依赖 $a_{ij}$，故 $D$ 唯一。
-
-**存在性。** 直接把上式取作 $D$ 的定义，逐条验证三条公理：多重线性（每一项对每个 $a_{ij}$ 都是一次的，而 $a_{ij}$ 关于 $v_j$ 线性）、交错性（交换两个变元 = 把置换乘一个对换，$\operatorname{sgn}$ 变号，而所有项成对相消）、规范性（代入 $a_{ij} = \delta_{ij}$ 后只剩 $\sigma = \mathrm{id}$ 一项，值为 $1$）。
-
-∎
 
 > **唯一性先证、存在性后验**：这是「用泛性质定义对象」的标准套路 —— 先把任何满足条件的对象都逼成一个显式公式，再把那个公式拿回来验证它确实满足条件。
 
