@@ -6,16 +6,16 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T08:50:53.471Z",
+  "generated": "2026-11-03T11:48:24.023Z",
   "counts": {
    "regions": 15,
    "clusters": 104,
-   "nodes": 1498,
-   "edges": 2878,
-   "strong": 2851,
-   "weak": 27,
+   "nodes": 1500,
+   "edges": 2892,
+   "strong": 2863,
+   "weak": 29,
    "derived": 33,
-   "en_pages": 1498
+   "en_pages": 1500
   },
   "readingGuide": {
    "layers": "星系(region) → 星团(cluster) → 恒星(node)",
@@ -77,7 +77,7 @@
    "en": "Abstract Algebra",
    "desc": "群、环、域、模与线性代数；佐恩引理的经典应用场。",
    "color": "#E08A3C",
-   "nodeCount": 198
+   "nodeCount": 200
   },
   {
    "id": "analysis",
@@ -141,7 +141,7 @@
    "en": "Complex Analysis",
    "desc": "全纯函数与 Cauchy–Riemann、Cauchy 定理与积分公式、幂级数与 Laurent 展开、留数定理与围道积分、共形映射与调和函数。",
    "color": "#3E7FB8",
-   "nodeCount": 87
+   "nodeCount": 88
   },
   {
    "id": "diffgeom",
@@ -2598,7 +2598,7 @@
    "en": "Galois Theory",
    "parent": "algebra",
    "desc": "从「域扩张」到「五次方程没有根式解」的一条链：域扩张与次数 → 代数元与极小多项式 → 分裂域 → 正规 / 可分 → 伽罗瓦群 → 伽罗瓦扩张 → 伽罗瓦对应（基本定理）→ 根式可解 ⟺ 群可解 → 五次方程。核心是「域与群是同一张格子的两面」。",
-   "nodeCount": 11,
+   "nodeCount": 13,
    "nodes": [
     "def.field-extension",
     "def.algebraic-element",
@@ -2610,7 +2610,9 @@
     "def.galois-extension",
     "thm.galois-correspondence",
     "thm.radical-solvable",
-    "thm.quintic-unsolvable"
+    "thm.quintic-unsolvable",
+    "def.algebraically-closed",
+    "def.roots-of-unity"
    ]
   },
   {
@@ -9138,7 +9140,7 @@
     "谱",
     "多项式"
    ],
-   "statement": "设 $\\dim V < \\infty$，$T : V \\to V$。集合\n\n$$I_T := \\{\\, p \\in K[x] : p(T) = 0 \\,\\}$$\n\n是 $K[x]$ 的一个非零理想（由 Cayley–Hamilton，$\\chi_T \\in I_T$）。由于 $K[x]$ 是主理想整环，存在**唯一**的首一多项式 $\\mu_T$ 使 $I_T = (\\mu_T)$。\n\n$\\mu_T$ 叫 $T$ 的**极小多项式**。它是零化 $T$ 的**次数最低**的首一多项式（唯一）。\n\n⚠️ 与域论里的「代数元的极小多项式」（那个概念本图未单独收录）区分：一个是零化算子的、一个是零化代数元的，形式上是一回事，名字要分开。",
+   "statement": "设 $\\dim V < \\infty$，$T : V \\to V$。集合\n\n$$I_T := \\{\\, p \\in K[x] : p(T) = 0 \\,\\}$$\n\n是 $K[x]$ 的一个非零理想（由 Cayley–Hamilton，$\\chi_T \\in I_T$）。由于 $K[x]$ 是主理想整环，存在**唯一**的首一多项式 $\\mu_T$ 使 $I_T = (\\mu_T)$。\n\n$\\mu_T$ 叫 $T$ 的**极小多项式**。它是零化 $T$ 的**次数最低**的首一多项式（唯一）。\n\n⚠️ 与域论里的「代数元的极小多项式」（`def.algebraic-element`，本图已收录）区分：一个是零化算子的、一个是零化代数元的，形式上是一回事，名字要分开。",
    "notes": "⭐ 极小多项式是**相似完全不变量**中最细的那一个（与特征多项式合起来）：Jordan 型完全由它们决定，而两个矩阵相似 $\\iff$ 它们有相同的**不变因子**（等价于相同的 Jordan 型）。\n\n⭐ $I_T$ 是理想这件事本身很重要：$p(T) = 0$、$q(T) = 0 \\implies (p + q)(T) = 0$，且 $r\\,p$ 也在里面 —— 于是 $T$ 在 $K[x]$ 上成了**模**（$x$ 作用 = $T$），后面 Jordan 型的证明全在这个模里做。\n\n⚠ 极小多项式与特征多项式的根**相同**（差一个重数）：两者都等于「$T$ 的特征值全体」。",
    "refs": [
     "Hoffman–Kunze, Linear Algebra, Ch. 6",
@@ -12547,7 +12549,7 @@
     "Markov"
    ],
    "statement": "若 $f_n \\to f$ 于 $L^1$，则 $f_n \\to f$ 依测度：\n\n$$\\int |f_n - f| \\to 0 \\implies f_n \\xrightarrow{\\ \\mu\\ } f$$",
-   "notes": "工具是 **Markov（Chebyshev）不等式**：$\n\\mu(\\{|g| \\ge \\varepsilon\\}) \\le (1/\\varepsilon)\\cdot\\int |g| d\\mu$\n\n（因为 $\\varepsilon \\chi_{\\{|g| \\ge \\varepsilon\\}} \\le |g|$，两边积分即可。）取 $g = f_n - f$ 就得到结论。\n\n⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 $L^{1}$ 收敛。",
+   "notes": "工具是 **Markov（Chebyshev）不等式**：$$\n\\mu(\\{|g| \\ge \\varepsilon\\}) \\le (1/\\varepsilon)\\cdot\\int |g| d\\mu$$\n\n（因为 $\\varepsilon \\chi_{\\{|g| \\ge \\varepsilon\\}} \\le |g|$，两边积分即可。）取 $g = f_n - f$ 就得到结论。\n\n⚠ 反方向不成立：反例 (iii) 就是依测度收敛但不 $L^{1}$ 收敛。",
    "refs": [
     "Folland, Real Analysis, Prop. 2.29"
    ]
@@ -40133,7 +40135,7 @@
     "algebra"
    ],
    "cluster": "algebra.galois",
-   "layer": 11,
+   "layer": 12,
    "tags": [
     "定义",
     "代数",
@@ -40181,7 +40183,7 @@
     "域论"
    ],
    "statement": "设 $K/F$ 是域扩张。$K$ 的**$F$-自同构**指域同构 $\\sigma : K \\to K$ 且 $\\sigma|_{F} = \\mathrm{id}_{F}$。它们全体在复合下构成一个群，记\n\n$$\\operatorname{Gal}(K/F) := \\operatorname{Aut}_{F}(K).$$\n\n对多项式 $f \\in F[x]$，常记 $\\operatorname{Gal}(f) := \\operatorname{Gal}(K/F)$，其中 $K$ 是 $f$ 的分裂域。",
-   "notes": "⭐ **$F$-自同构必然把根送到根**：若 $\\alpha$ 是 $f \\in F[x]$ 的根，则\n\n\n\n$$f(\\sigma(\\alpha)) = \\sigma(f(\\alpha)) = \\sigma(0) = 0$$\n\n\n\n（因为 $\\sigma$ 固定 $F$ 的系数）。所以 $\\operatorname{Gal}(K/F)$ **作用**在「$f$ 的根集」上 —— 整个伽罗瓦理论就是在数这个作用。\n\n⭐ **这给了群与域之间的桥**：一边是子域（域的中间层），一边是这个群（群论对象），伽罗瓦对应（`thm.galois-correspondence`）说它们是**同一张格子的两面**。\n\n⚠ **$\\operatorname{Gal}(K/F)$ 一般不必交换**：$x^{3} - 2$ 的分裂域上它是 $S_{3}$。「可解」这个词能起作用，恰恰因为非交换群也有「可解」这个概念（`def.solvable-group`）。",
+   "notes": "⭐ **$F$-自同构必然把根送到根**：若 $\\alpha$ 是 $f \\in F[x]$ 的根，则\n\n\n\n$$f(\\sigma(\\alpha)) = \\sigma(f(\\alpha)) = \\sigma(0) = 0$$\n\n\n\n（因为 $\\sigma$ 固定 $F$ 的系数）。所以 $\\operatorname{Gal}(K/F)$ **作用**在「$f$ 的根集」上 —— 整个伽罗瓦理论就是在数这个作用。\n\n⭐ **这给了群与域之间的桥**：一边是子域（域的中间层），一边是这个群（群论对象），伽罗瓦对应（`thm.galois-correspondence`）说它们是**同一张格子的两面**。\n\n⚠ **$\\operatorname{Gal}(K/F)$ 一般不必交换**：$x^{3} - 2$ 的分裂域上它是 $S_{3}$。「可解」这个词能起作用，恰恰因为非交换群也有「可解」这个概念（可解群）。",
    "refs": [
     "Lang, Algebra, Ch. VI §1"
    ]
@@ -40298,7 +40300,7 @@
     "algebra"
    ],
    "cluster": "algebra.galois",
-   "layer": 11,
+   "layer": 17,
    "tags": [
     "定理",
     "代数",
@@ -40306,7 +40308,7 @@
     "群论"
    ],
    "statement": "设 $F$ 是**特征 0** 的域，$f \\in F[x]$ 非零，$K$ 是 $f$ 的分裂域。则\n\n$f$ 的根可以用**根式**（四则运算与开 $n$ 次方）从 $F$ 的元素表示出来 $\\iff$ $\\operatorname{Gal}(K/F)$ 是**可解群**。",
-   "notes": "⚠ **骨架**。两个方向各有一条主线，本图只记路线：\n\n- **$\\Leftarrow$（可解 $\\implies$ 根式可解）**：把可解列 $G = G_{0} \\trianglerighteq G_{1} \\trianglerighteq \\cdots \\trianglerighteq \\{e\\}$ 翻译成域塔 $F = E_{0} \\subseteq E_{1} \\subseteq \\cdots \\subseteq K$，每一步商群是循环群；循环扩张在 char 0 下可以靠**添加单位根 + Kummer 理论**用开方实现。\n\n- **$\\implies$（根式可解 $\\implies$ 可解）**：反过来，把根式塔翻译成群塔，用「循环扩张的伽罗瓦群是循环群」（这一步又靠伽罗瓦对应 + `thm.solvable-quotients`），拼出可解列。\n\n⭐ **为什么必须 char 0**：可解 $\\implies$ 根式那一步要用 $n$ 次单位根与 Kummer 理论；char $p$ 时 $x^{p} - x - a$ 这类 Artin–Schreier 扩张取代了纯开方扩张，结论要改写。\n\n📌 这条定理是「五次方程」那条线**唯一的入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（`prop.sn-solvable`：$S_{n}$ 可解 $\\iff n \\le 4$）。",
+   "notes": "⚠ **骨架**。两个方向各有一条主线，本图只记路线：\n\n- **$\\Leftarrow$（可解 $\\implies$ 根式可解）**：把可解列 $G = G_{0} \\trianglerighteq G_{1} \\trianglerighteq \\cdots \\trianglerighteq \\{e\\}$ 翻译成域塔 $F = E_{0} \\subseteq E_{1} \\subseteq \\cdots \\subseteq K$，每一步商群是循环群；循环扩张在 char 0 下可以靠**添加单位根 + Kummer 理论**用开方实现。\n\n- **$\\implies$（根式可解 $\\implies$ 可解）**：反过来，把根式塔翻译成群塔，用「循环扩张的伽罗瓦群是循环群」（这一步又靠伽罗瓦对应 + `thm.solvable-quotients`），拼出可解列。\n\n⭐ **为什么必须 char 0**：可解 $\\implies$ 根式那一步要用 $n$ 次单位根与 Kummer 理论；char $p$ 时 $x^{p} - x - a$ 这类 Artin–Schreier 扩张取代了纯开方扩张，结论要改写。\n\n📌 这条定理是「五次方程」那条线**唯一的入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（$S_{n}$ 可解 $\\iff n \\le 4$，见「对称群的可解性」）。",
    "refs": [
     "Lang, Algebra, Ch. VI §6",
     "Hungerford, Algebra, Ch. V §5",
@@ -40342,7 +40344,7 @@
     "algebra"
    ],
    "cluster": "algebra.galois",
-   "layer": 13,
+   "layer": 18,
    "tags": [
     "定理",
     "代数",
@@ -40350,10 +40352,93 @@
     "群论"
    ],
    "statement": "存在有理系数的五次多项式 $f \\in \\mathbb{Q}[x]$，它的根**不能**用四则运算与开方从 $\\mathbb{Q}$ 的元素表示；更准确地说，$\\operatorname{Gal}(f) \\cong S_{5}$，而 $S_{5}$ 不可解。\n\n因此**不存在**用根式写出一般五次方程根的通用公式（Abel–Ruffini，1824）。",
-   "notes": "⚠ **骨架**，但这一步的拼装很短，本图的零件已经齐了：\n\n1. 取 $f = x^{5} - 4x + 2$（或任何 $\\operatorname{Gal}(f) = S_{5}$ 的五次多项式）—— 需要一条判据（模 $p$ 的分解型定出伽罗瓦群的循环子群），本图未收；\n\n2. $S_{5}$ 不可解（`prop.sn-solvable`：$A_{5}$ 单且非交换）；\n\n3. 由 `thm.radical-solvable`，$\\operatorname{Gal}(f)$ 不可解 $\\implies$ 无根式解。\n\n⭐ **精确的说法**：不是「五次方程没有解」，是「**没有用根式写出的通用公式**」——根当然存在（代数基本定理），只是写不成开方的组合。有些特殊的五次方程有根式解（例如 $x^{5} - 2 = 0$，伽罗瓦群是循环群）。\n\n⭐ **为什么是 5**：$S_{4}$ 可解（$A_{4}$ 可解），所以四次还有 Ferrari 公式；$A_{5}$ 是**最小的非交换单群**，可解性在这里第一次断掉 —— 数字 5 的全部特殊性就在这。\n\n📌 这条定理在图上终于接上了：以前的图里 `prop.sn-solvable` 是一句孤立的话「$S_{5}$ 不可解」，没有一条线通向「所以五次方程没有根式解」。现在那条线是：`def.solvable-group` $\\to$ `prop.sn-solvable` $\\to$ `thm.radical-solvable` $\\to$ 本条。",
+   "notes": "⚠ **骨架**，但这一步的拼装很短，本图的零件已经齐了：\n\n1. 取 $f = x^{5} - 4x + 2$（或任何 $\\operatorname{Gal}(f) = S_{5}$ 的五次多项式）—— 需要一条判据（模 $p$ 的分解型定出伽罗瓦群的循环子群），本图未收；\n\n2. $S_{5}$ 不可解（$A_{5}$ 单且非交换，见「对称群的可解性」）；\n\n3. 由 `thm.radical-solvable`，$\\operatorname{Gal}(f)$ 不可解 $\\implies$ 无根式解。\n\n⭐ **精确的说法**：不是「五次方程没有解」，是「**没有用根式写出的通用公式**」——根当然存在（代数基本定理），只是写不成开方的组合。有些特殊的五次方程有根式解（例如 $x^{5} - 2 = 0$，伽罗瓦群是循环群）。\n\n⭐ **为什么是 5**：$S_{4}$ 可解（$A_{4}$ 可解），所以四次还有 Ferrari 公式；$A_{5}$ 是**最小的非交换单群**，可解性在这里第一次断掉 —— 数字 5 的全部特殊性就在这。\n\n📌 这条定理在图上终于接上了：以前「$S_{5}$ 不可解」是一句孤立的话，没有一条线通向「所以五次方程没有根式解」。现在那条线是：$\\operatorname{Gal}(f)$ 的可解性 $\\to$ 根式可解那条定理 $\\to$ 本条。",
    "refs": [
     "Lang, Algebra, Ch. VI §6",
     "Stewart, Galois Theory, Ch. 24"
+   ]
+  },
+  {
+   "id": "def.algebraically-closed",
+   "type": "definition",
+   "label": "代数闭域",
+   "title": "代数闭域：每个非常数多项式都分解成一次因子",
+   "label_en": "algebraically closed field",
+   "title_en": "algebraically closed field",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.algebraically-closed.en.md",
+   "region": "algebra",
+   "regions": [
+    "algebra"
+   ],
+   "cluster": "algebra.galois",
+   "layer": 25,
+   "tags": [
+    "定义",
+    "代数",
+    "域论"
+   ],
+   "statement": "域 $K$ 叫**代数闭**的，如果 $K[x]$ 中每个**非常数**多项式都在 $K[x]$ 中分解成一次因子的乘积（等价地：每个非常数 $f \\in K[x]$ 在 $K$ 中有根）。\n\n若 $\\overline{F}/F$ 是代数扩张且 $\\overline{F}$ 代数闭，则称 $\\overline{F}$ 是 $F$ 的**代数闭包**。",
+   "notes": "⭐ **$\\mathbb{C}$ 是代数闭的**，这就是代数基本定理（`thm.fundamental-algebra`）：$\\mathbb{C} = \\mathbb{R}(i)$ 是 $\\mathbb{R}$ 的代数闭包。而 $\\overline{\\mathbb{Q}}$（$\\mathbb{Q}$ 在 $\\mathbb{C}$ 中的代数闭包）是**代数扩张但次数无限**的典型例子 —— 这也正是「代数 $\\ne$ 有限」的出处。\n\n⭐ **代数闭包的存在性要靠选择**：把 $F$ 上所有首一不可约多项式排成良序，逐个模掉、归纳地造出一串扩张，再用 **Zorn 引理**取并（并仍是域，且代数）。所以「每个域都有代数闭包」这条定理在图上的位置很特别：它是**域论里少见的需要 AC 的存在性定理**。\n\n⚠ **代数闭包在同构意义下唯一**（都是 $F$ 的代数扩张且代数闭），但**不唯一到唯一同构** —— 例如 $\\mathbb{Q}(\\sqrt{2})$ 的两个嵌入可以走到 $\\overline{\\mathbb{Q}}$ 里两个不同的位置。\n\n📌 与 Galois 的关系：$\\overline{F}/F$ 一般**不是**有限扩张，所以它不是伽罗瓦扩张（基本定理要求有限）。它的「伽罗瓦群」是 profinite 群 $\\operatorname{Gal}(\\overline{F}/F)$，要做无穷版本的理论。",
+   "refs": [
+    "Lang, Algebra, Ch. V §2",
+    "Hungerford, Algebra, Ch. V §3"
+   ]
+  },
+  {
+   "id": "def.roots-of-unity",
+   "type": "definition",
+   "label": "单位根",
+   "title": "$n$ 次单位根与分圆多项式 $\\Phi_{n}$",
+   "label_en": "roots of unity",
+   "title_en": "roots of unity",
+   "translations": {
+    "en": {
+     "status": "derived",
+     "version": null,
+     "fields": [
+      "name"
+     ],
+     "creative": [],
+     "fieldStatus": {
+      "name": "derived"
+     },
+     "staleFields": [],
+     "basedOn": {}
+    }
+   },
+   "en_page": "nodes/def.roots-of-unity.en.md",
+   "region": "algebra",
+   "regions": [
+    "algebra",
+    "complex"
+   ],
+   "cluster": "algebra.galois",
+   "layer": 16,
+   "tags": [
+    "定义",
+    "代数",
+    "域论"
+   ],
+   "statement": "设 $n \\ge 1$。多项式 $x^{n} - 1$ 在 $\\mathbb{C}$ 中的根叫 **$n$ 次单位根**：\n\n$\\mu_{n} := \\{\\, \\zeta \\in \\mathbb{C} : \\zeta^{n} = 1 \\,\\} = \\{\\, e^{2\\pi i k/n} : k = 0, 1, \\ldots, n-1 \\,\\}.$\n\n它在乘法下构成一个 $n$ 阶**循环群**。其中**本原**的那些（阶恰为 $n$）有 $\\varphi(n)$ 个，以它们为根的首一多项式\n\n$\\Phi_{n}(x) := \\prod_{\\zeta \\text{ 本原}} (x - \\zeta)$\n\n叫**第 $n$ 个分圆多项式**，它整系数、不可约（Gauss），且 $x^{n} - 1 = \\prod_{d \\mid n} \\Phi_{d}(x)$。",
+   "notes": "⭐ **它为什么在 Galois 那条线上**：用根式解方程时，最后一步是「开 $n$ 次方」，而开方在域里的样子正是「添加一个 $n$ 次单位根之后，$x^{n} - a$ 的根可以写成 $\\sqrt[n]{a}\\cdot\\zeta^{k}$」。所以**根式可解 $implies$ 可解**那个方向必须先把 $\\mu_{n}$ 加进来（`thm.radical-solvable` 的路线里提到过）。\n\n⭐ **$\\Phi_{n}$ 的伽罗瓦群是 $(\\mathbb{Z}/n)^{\\times}$**（每个 $\\sigma$ 由 $\\zeta \\mapsto \\zeta^{k}$ 决定，$k$ 与 $n$ 互素）—— 这是「伽罗瓦群可以是任何有限阿贝尔群」的第一次亮相（Kronecker–Weber 的起点）。\n\n⭐ **$\\mu_{n} \\subseteq \\mathbb{Q}$ 只有 $n = 1, 2$**：$n \\ge 3$ 时 $\\zeta$ 不是有理数。所以「添加单位根」是真的扩张，不是形式上的。\n\n⚠ **本图没有「分圆域 $\\mathbb{Q}(\\zeta_{n})$」节点**：那是这条线的下一步（它的伽罗瓦群与分圆多项式一起构成一个完整例子），留作后续。",
+   "refs": [
+    "Lang, Algebra, Ch. VI §3",
+    "Stewart, Galois Theory, Ch. 13"
    ]
   },
   {
@@ -46257,7 +46342,7 @@
     "拓扑斯"
    ],
    "statement": "范畴 $\\mathcal{T}$ 叫**拓扑斯**，如果\n\n1. 存在一个**小**的生成元集；\n2. 有限极限存在；\n3. 余积存在，并且是不交的、万有的（等价地说：所有余极限存在）；\n4. 等价关系是有效的且万有的。",
-   "notes": "与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。\n\n例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；景的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**\n\n⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。\n\n\n\n**四条里“哪条是拓扑斯独有的”**（这一组与预拓扑斯的差别全在第 1 条与第 3 条的加强上）：\n\n- **① 小生成元集**：**这是“小性”条件，预拓扑斯没有它**。它保证拓扑斯有足够好的表现（能做内语言、能取层化），也是「\\(\\mathcal{T} \\simeq \\operatorname{Sh}(\\mathcal{C}, J)\\) 且 \\(\\mathcal{C}\\) 小」的前提。⚠️ 少了它，范畴可能“太大”而无法化为层范畴。\n- **② 有限极限**：与预拓扑斯相同，纯结构要求。\n- **③ 余积存在且不交万有**（等价：**所有**余极限存在）：**比预拓扑斯强了一档** —— 预拓扑斯只要求**有限**余积。这一条加上 ② 得到「余极限都能算」，才使「层化」可行（层化是沿筛取余极限）。\n- **④ 等价关系有效且万有**：与预拓扑斯相同。\n\n**与预拓扑斯合起来看**：拓扑斯 \\(=\\) 预拓扑斯 \\(+\\)「小生成元 \\(+\\) 任意余极限」。所以「预拓扑斯」是“缺小性与大余极限的拓扑斯”，很多构造（内部等价关系、有效满射、核对）在那一层就能做。\n\n⚠️ **四条不能随便删**：删 ①，\\(\\operatorname{Sh}(\\mathcal{C})\\)（\\(\\mathcal{C}\\) 大）仍满足 ②③④ 但不是拓扑斯（无小生成元）；删 ③ 的“不交万有”只剩“余积存在”，\\(\\mathbf{Grp}^{\\mathrm{op}}\\) 之类会混进来；删 ④，「商 = 等价关系」失效，内语言里的“集合”语义就崩了。\n\n⚠️ **② 里的“不交且万有”是最常被忽略的**：只说「余积存在」不算拓扑斯 —— 拓扑斯里的余积必须在拉回下**稳定**（万有），这是内部语言中「不交并」的行为来源。",
+   "notes": "与预拓扑斯的差别只有第 1 条：**拓扑斯 = 带小生成元集的预拓扑斯**。所以「拓扑斯就是把预拓扑斯缩小到一个集合能管住」。\n\n例：$\\mathbf{Set}$、$G\\text{-}\\mathbf{Set}$ 是拓扑斯；预层范畴 $\\widehat{\\mathcal{C}}$ 是拓扑斯；景的层范畴是拓扑斯；拓扑空间上的层、它的 étalé 空间也是拓扑斯。**$\\mathbf{Top}$ 不是拓扑斯。**\n\n⭐ **凝聚态集的范畴是拓扑斯** —— 这是后面 Cond 那一段的地基。\n\n\n\n**四条里“哪条是拓扑斯独有的”**（这一组与预拓扑斯的差别全在第 1 条与第 3 条的加强上）：\n\n- **① 小生成元集**：**这是“小性”条件，预拓扑斯没有它**。它保证拓扑斯有足够好的表现（能做内语言、能取层化），也是「$\\mathcal{T} \\simeq \\operatorname{Sh}(\\mathcal{C}, J)$ 且 $\\mathcal{C}$ 小」的前提。⚠️ 少了它，范畴可能“太大”而无法化为层范畴。\n- **② 有限极限**：与预拓扑斯相同，纯结构要求。\n- **③ 余积存在且不交万有**（等价：**所有**余极限存在）：**比预拓扑斯强了一档** —— 预拓扑斯只要求**有限**余积。这一条加上 ② 得到「余极限都能算」，才使「层化」可行（层化是沿筛取余极限）。\n- **④ 等价关系有效且万有**：与预拓扑斯相同。\n\n**与预拓扑斯合起来看**：拓扑斯 $=$ 预拓扑斯 $+$「小生成元 $+$ 任意余极限」。所以「预拓扑斯」是“缺小性与大余极限的拓扑斯”，很多构造（内部等价关系、有效满射、核对）在那一层就能做。\n\n⚠️ **四条不能随便删**：删 ①，$\\operatorname{Sh}(\\mathcal{C})$（$\\mathcal{C}$ 大）仍满足 ②③④ 但不是拓扑斯（无小生成元）；删 ③ 的“不交万有”只剩“余积存在”，$\\mathbf{Grp}^{\\mathrm{op}}$ 之类会混进来；删 ④，「商 = 等价关系」失效，内语言里的“集合”语义就崩了。\n\n⚠️ **② 里的“不交且万有”是最常被忽略的**：只说「余积存在」不算拓扑斯 —— 拓扑斯里的余积必须在拉回下**稳定**（万有），这是内部语言中「不交并」的行为来源。",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, §3.3"
    ],
@@ -46301,7 +46386,7 @@
     "拓扑斯"
    ],
    "statement": "对范畴 $\\mathcal{T}$，下列四条等价：\n\n1. $\\mathcal{T}$ 是拓扑斯；\n2. $\\mathcal{T}$ 上对**标准拓扑**而言的层都是**可表示的**，且存在小生成元集；\n3. 存在景 $\\mathcal{C}$ 使 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$；\n4. 存在范畴使 $\\mathcal{T}$ 是它的**反射子范畴**，且反射**正合**（保有限极限）。",
-   "notes": "四条的对译：(2)$\\iff$(3) 取 $\\mathcal{C} = \\mathcal{T}$ 配上标准拓扑；(3)$\\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；\n\n(1)$\\implies$(2) 也给 $\\mathcal{T}$ 配标准拓扑。\n\n第 4 条是最好用的一条：**要造一个拓扑斯，只要造一个预层范畴加一个正合反射**。凝聚态集正是这么来的 —— 取紧 Hausdorff 空间上的层。\n\n\n\n**四条是四个不同层次的说法**（这条定理的价值就在于把「公理式」「层论式」「反射式」三种刻画焊在一起）：\n\n- (1) $\\implies$ (2)：**从公理推层论**。用拓扑斯内部的正合性与小生成元，验证「标准拓扑下的层都可表」—— 这一步要用 **①（小生成元）与 ③（任意余极限）**，也是四条里最技术的一环。\n- (2) $\\implies$ (3)：**从层论推表示**。取 \\(\\mathcal{C}\\) 为小生成元全体、\\(J\\) 为标准拓扑（\"\\(R\\) 覆盖 \\(\\iff\\) \\(\\coprod_{Y\\in\\mathcal{C}/R}\\underline Y \\to \\underline X\\) 满\"），则 \\(\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}\\)。**这一步就是「拓扑斯 = 层范畴」的定义展开**，需要小生成元来保证 \\(\\mathcal{C}\\) 是小范畴。\n- (3) $\\implies$ (4)：**从层范畴推反射**。\\(\\widehat{\\mathcal{C}}\\) 是 \\(\\mathbf{Set}^{\\mathcal{C}^{\\mathrm{op}}}\\) 的反射子范畴（层化 \\(\\mathbf{a} \\dashv \\iota\\)），而层化**保有限极限**（这是 Grothendieck 拓扑的核⼼性质）。**注意“反射正合”不能弱成“有反射”** —— 任意反射子范畴都不正合，正合性正是“层”的特征。\n- (4) $\\implies$ (1)：**从反射推公理**。反射正合给出有限极限（反射保），\\(\\mathbf{Set}^{\\mathcal{C}^{\\mathrm{op}}}\\) 的余极限与有效等价关系沿反射下去，即得 ②③④。\n\n⚠️ **四个字「反射正合」是全部内容**：只有反射（左伴随）而无正合性，得到的是**预拓扑斯**（有些书正好这么定义预拓扑斯：预拓扑斯 \\(=\\) 正合反射的反射子范畴，但**不要求**有小生成元）；加上小性与余极限，才升格为拓扑斯。\n\n⚠️ **比较用的对照**：(1)$\\iff$(3) 是 **Giraud 定理的主干**（拓扑斯 \\(=\\) 层范畴），也是实践中最常用的判据：**要证某个范畴是拓扑斯，通常直接把它实现成层范畴**，而不是逐条验证四条公理。",
+   "notes": "四条的对译：(2)$\\iff$(3) 取 $\\mathcal{C} = \\mathcal{T}$ 配上标准拓扑；(3)$\\iff$(4) 平凡（预层范畴对层范畴的层化是正合反射）；(4)$\\implies$(1) 用「预层范畴是拓扑斯」配合反射把结构运下来；\n\n(1)$\\implies$(2) 也给 $\\mathcal{T}$ 配标准拓扑。\n\n第 4 条是最好用的一条：**要造一个拓扑斯，只要造一个预层范畴加一个正合反射**。凝聚态集正是这么来的 —— 取紧 Hausdorff 空间上的层。\n\n\n\n**四条是四个不同层次的说法**（这条定理的价值就在于把「公理式」「层论式」「反射式」三种刻画焊在一起）：\n\n- (1) $\\implies$ (2)：**从公理推层论**。用拓扑斯内部的正合性与小生成元，验证「标准拓扑下的层都可表」—— 这一步要用 **①（小生成元）与 ③（任意余极限）**，也是四条里最技术的一环。\n- (2) $\\implies$ (3)：**从层论推表示**。取 $\\mathcal{C}$ 为小生成元全体、$J$ 为标准拓扑（\"$R$ 覆盖 $\\iff$ $\\coprod_{Y\\in\\mathcal{C}/R}\\underline Y \\to \\underline X$ 满\"），则 $\\mathcal{T} \\simeq \\widehat{\\mathcal{C}}$。**这一步就是「拓扑斯 = 层范畴」的定义展开**，需要小生成元来保证 $\\mathcal{C}$ 是小范畴。\n- (3) $\\implies$ (4)：**从层范畴推反射**。$\\widehat{\\mathcal{C}}$ 是 $\\mathbf{Set}^{\\mathcal{C}^{\\mathrm{op}}}$ 的反射子范畴（层化 $\\mathbf{a} \\dashv \\iota$），而层化**保有限极限**（这是 Grothendieck 拓扑的核⼼性质）。**注意“反射正合”不能弱成“有反射”** —— 任意反射子范畴都不正合，正合性正是“层”的特征。\n- (4) $\\implies$ (1)：**从反射推公理**。反射正合给出有限极限（反射保），$\\mathbf{Set}^{\\mathcal{C}^{\\mathrm{op}}}$ 的余极限与有效等价关系沿反射下去，即得 ②③④。\n\n⚠️ **四个字「反射正合」是全部内容**：只有反射（左伴随）而无正合性，得到的是**预拓扑斯**（有些书正好这么定义预拓扑斯：预拓扑斯 $=$ 正合反射的反射子范畴，但**不要求**有小生成元）；加上小性与余极限，才升格为拓扑斯。\n\n⚠️ **比较用的对照**：(1)$\\iff$(3) 是 **Giraud 定理的主干**（拓扑斯 $=$ 层范畴），也是实践中最常用的判据：**要证某个范畴是拓扑斯，通常直接把它实现成层范畴**，而不是逐条验证四条公理。",
    "refs": [
     "Mac Lane–Moerdijk, Sheaves in Geometry and Logic, Appendix"
    ]
@@ -58524,7 +58609,7 @@
     "层上同调"
    ],
    "statement": "设 $M$ 是景 $\\mathcal{C}$ 上的阿贝尔层。以下四条等价：\n\n1. $M$ **无环**：$H^{n}(M) = 0$（$n \\ne 0$）；\n2. 对每个 $X \\in \\mathcal{C}$：$H^{n}(X, M) = 0$（$n \\ne 0$）；\n3. 对每个覆盖族 $\\mathfrak{X}$：$\\check{H}^{n}(\\mathfrak{X}, M) = 0$（$n \\ne 0$）；\n4. 对每个 $X \\in \\mathcal{C}$：$\\check{H}^{n}(X, M) = 0$（$n \\ne 0$）。",
-   "notes": "**证明。**\n**(1) $\\iff$ (2)**：层上同调就是「高次上同调预层」的整体截面，$H^{n}(X, M) = \\Gamma\\bigl(X, H^{n}(M)\\bigr)$ ✓，两边同时为零 ✓。\n**(1) $\\implies$ (3)**：对固定覆盖用 Cartan–Leray 谱序列 $E^{p,q}_{2} = \\check{H}^{p}(\\mathfrak{X}, H^{q}(M)) \\implies H^{p+q}(X,M)$ ✓；\n\n(1) 让 $q \\ne 0$ 的行全为零、$H^{p+q}$ 也全为零（$p+q \\ne 0$），谱序列退化给出 $\\check{H}^{n}(\\mathfrak{X}, M) = 0$ ✓。\n**(3) $\\implies$ (4)**：$\\check{H}^{n}(X, -)$ 是沿覆盖取的滤过余极限 ✓，每个覆盖上都为零故为零 ✓。\n**(4) $\\implies$ (1)**：把同一句话反过来 —— 用 Čech 到上同调的谱序列逐次消去，$E^{p,q}_{2}$ 的右端全为零，故全为零 ✓。∎\n\n**四条里 (1)$\\iff$(2) 只是换记号，(2)$\\iff$(3) 要用比较定理，(3)$\\iff$(4) 要用极限**：\n\n- (1) $\\iff$ (2)：**同义反复**。层的上同调就是逐点取值的上同调；$H^{n}(\\mathcal{C}, M)$ 按定义等于 $H^{n}(X \\mapsto\\Gamma(X,M))$ 的导出。\n- (2) $\\iff$ (4)：**这一步是 Čech 与导出函子的比较**：对**任意** $X$ 与**任意**覆盖，Čech 上同调与层上同调通过一个谱序列相连；无环时谱序列退化，两者一致。⚠️ 一般情形下**不**一致（要 \\(\\mathcal{C}\\) 是仿紧/开覆盖足够好，见 `thm.paracompact-cech-equals-sheaf`）。\n- (2) $\\iff$ (3)：**要用「覆盖族的余极限」**：$H^{n}(X, M) = \\varinjlim_{\\mathfrak{X}} \\check{H}^{n}(\\mathfrak{X}, M)$（沿覆盖加细取极限）。既然每个 Čech 群为零，极限为零；反向由「每个覆盖都可细到单点覆盖」得。⚠️ 这一步要求该余极限**确实**是层上同调（即上述比较成立）。\n\n⚠️ **本命题的准确用法**：它是「判定某个具体层是否无环」的工具，但它**不能**用来判定「景是否足够好」—— 反过来，正是「Čech = 导出」这一条需要景的额外假设。别把两个方向混起来。\n\n\n**各方向用到的假设**（原节点记号与 Čech 比较的适用范围需核实）：\n- (1) $\\iff$ (2)：只有将 $H^n(M)$ 明确定义为预层 $X\\mapsto H^n(X,M)$ 时才是定义展开；若指层化后的上同调层或终对象上的上同调，就不能这样读。此处不确定，待核。\n- (2) $\\implies$ (3)：需对覆盖及其有限纤维积使用 Čech 到导出上同调谱序列，并用各交叠对象上的高次上同调为零使其退化；覆盖及交叠的具体假设此处不确定，待核。\n- (3) $\\implies$ (4)：若对象上的 Čech 上同调定义为沿覆盖加细的余极限，则每项为零推出余极限为零；只用定义和余极限性质。\n- (4) $\\implies$ (3) 不能仅由余极限为零推出，类可能仅在加细后消失；(4) $\\implies$ (2) 也不能直接宣布谱序列退化，所需比较或消去定理此处不确定，待核。\n- 原注“每个覆盖都可细到单点覆盖”不是一般事实；单对象恒等覆盖通常是被其他覆盖加细的方向。保留原文待人工核验，本段不将四条的无条件等价当作已证结论。\n",
+   "notes": "**证明。**\n**(1) $\\iff$ (2)**：层上同调就是「高次上同调预层」的整体截面，$H^{n}(X, M) = \\Gamma\\bigl(X, H^{n}(M)\\bigr)$ ✓，两边同时为零 ✓。\n**(1) $\\implies$ (3)**：对固定覆盖用 Cartan–Leray 谱序列 $E^{p,q}_{2} = \\check{H}^{p}(\\mathfrak{X}, H^{q}(M)) \\implies H^{p+q}(X,M)$ ✓；\n\n(1) 让 $q \\ne 0$ 的行全为零、$H^{p+q}$ 也全为零（$p+q \\ne 0$），谱序列退化给出 $\\check{H}^{n}(\\mathfrak{X}, M) = 0$ ✓。\n**(3) $\\implies$ (4)**：$\\check{H}^{n}(X, -)$ 是沿覆盖取的滤过余极限 ✓，每个覆盖上都为零故为零 ✓。\n**(4) $\\implies$ (1)**：把同一句话反过来 —— 用 Čech 到上同调的谱序列逐次消去，$E^{p,q}_{2}$ 的右端全为零，故全为零 ✓。∎\n\n**四条里 (1)$\\iff$(2) 只是换记号，(2)$\\iff$(3) 要用比较定理，(3)$\\iff$(4) 要用极限**：\n\n- (1) $\\iff$ (2)：**同义反复**。层的上同调就是逐点取值的上同调；$H^{n}(\\mathcal{C}, M)$ 按定义等于 $H^{n}(X \\mapsto\\Gamma(X,M))$ 的导出。\n- (2) $\\iff$ (4)：**这一步是 Čech 与导出函子的比较**：对**任意** $X$ 与**任意**覆盖，Čech 上同调与层上同调通过一个谱序列相连；无环时谱序列退化，两者一致。⚠️ 一般情形下**不**一致（要 $\\mathcal{C}$ 是仿紧/开覆盖足够好，见 `thm.paracompact-cech-equals-sheaf`）。\n- (2) $\\iff$ (3)：**要用「覆盖族的余极限」**：$H^{n}(X, M) = \\varinjlim_{\\mathfrak{X}} \\check{H}^{n}(\\mathfrak{X}, M)$（沿覆盖加细取极限）。既然每个 Čech 群为零，极限为零；反向由「每个覆盖都可细到单点覆盖」得。⚠️ 这一步要求该余极限**确实**是层上同调（即上述比较成立）。\n\n⚠️ **本命题的准确用法**：它是「判定某个具体层是否无环」的工具，但它**不能**用来判定「景是否足够好」—— 反过来，正是「Čech = 导出」这一条需要景的额外假设。别把两个方向混起来。\n\n\n**各方向用到的假设**（原节点记号与 Čech 比较的适用范围需核实）：\n- (1) $\\iff$ (2)：只有将 $H^n(M)$ 明确定义为预层 $X\\mapsto H^n(X,M)$ 时才是定义展开；若指层化后的上同调层或终对象上的上同调，就不能这样读。此处不确定，待核。\n- (2) $\\implies$ (3)：需对覆盖及其有限纤维积使用 Čech 到导出上同调谱序列，并用各交叠对象上的高次上同调为零使其退化；覆盖及交叠的具体假设此处不确定，待核。\n- (3) $\\implies$ (4)：若对象上的 Čech 上同调定义为沿覆盖加细的余极限，则每项为零推出余极限为零；只用定义和余极限性质。\n- (4) $\\implies$ (3) 不能仅由余极限为零推出，类可能仅在加细后消失；(4) $\\implies$ (2) 也不能直接宣布谱序列退化，所需比较或消去定理此处不确定，待核。\n- 原注“每个覆盖都可细到单点覆盖”不是一般事实；单对象恒等覆盖通常是被其他覆盖加细的方向。保留原文待人工核验，本段不将四条的无条件等价当作已证结论。\n",
    "refs": [
     "Le Stum, An introduction to condensed mathematics, Exercise 7.49"
    ]
@@ -80481,6 +80566,120 @@
    "note": "两处都在做**同一件事**：先定一个「结构」（这里是域扩张 $K/F$，那里是向量空间），再取「保持它不变的变换」（$F$-自同构 / 线性映射），然后数这些变换。\n\n差别在于：向量空间那边数出来的是**环**（$\\operatorname{End}$），伽罗瓦这边数出来的是**群**，而域的自同构太少（只有群，没有加法结构可加），这恰恰是伽罗瓦理论能反过来说「域由群决定」的原因。"
   },
   {
+   "id": "dep.fieldext-algclosed",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.field-extension",
+   "usedBy": "def.algebraically-closed",
+   "note": "代数闭包是「代数扩张 + 代数闭」两条一起说的，先要有扩张。"
+  },
+  {
+   "id": "dep.zorn-algclosed",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "lem.zorn",
+   "usedBy": "def.algebraically-closed",
+   "note": "**存在性**要 Zorn 引理：把「已经造好的代数扩张」按包含排成偏序集，取全序链的并，再用 Zorn 取极大元（极大元必代数闭，否则还能再扩）。⚠ 这是域论里少见的「需要 AC 的存在性定理」。"
+  },
+  {
+   "id": "dep.complex-algclosed",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex",
+   "usedBy": "def.algebraically-closed",
+   "note": "$\\mathbb{C}$ 是代数闭域的**第一个例子**（代数基本定理），$\\overline{\\mathbb{Q}}$ 在里面取。"
+  },
+  {
+   "id": "dep.fundamentalgebra-algclosed",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.fundamental-algebra",
+   "usedBy": "def.algebraically-closed",
+   "note": "$\\mathbb{C}$ 代数闭**就是**代数基本定理的内容：既然每个复系数多项式都有根，就能逐个除掉一次因子。"
+  },
+  {
+   "id": "dep.complex-rootsofunity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.complex",
+   "usedBy": "def.roots-of-unity",
+   "note": "$n$ 次单位根是 $\\mathbb{C}$ 里的点：$e^{2\\pi i k/n}$。"
+  },
+  {
+   "id": "dep.cyclic-rootsofunity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.cyclic-group",
+   "usedBy": "def.roots-of-unity",
+   "note": "$\\mu_{n}$ 在乘法下是 $n$ 阶**循环群**；分圆多项式的伽罗瓦群是 $(\\mathbb{Z}/n)^{\\times}$。"
+  },
+  {
+   "id": "dep.polyring-rootsofunity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.polynomial-ring",
+   "usedBy": "def.roots-of-unity",
+   "note": "单位根是 $x^{n} - 1$ 的根；分圆多项式 $\\Phi_{n}$ 是 $\\mathbb{Q}[x]$ 里的对象。"
+  },
+  {
+   "id": "dep.eulerphi-rootsofunity",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.euler-phi",
+   "usedBy": "def.roots-of-unity",
+   "note": "本原 $n$ 次单位根恰有 $\\varphi(n)$ 个，所以 $\\deg \\Phi_{n} = \\varphi(n)$。"
+  },
+  {
+   "id": "dep.rootsofunity-radical",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.roots-of-unity",
+   "usedBy": "thm.radical-solvable",
+   "note": "根式可解 $\\implies$ 可解那条路线必须**先添加 $n$ 次单位根**（否则开方写不出来）。"
+  },
+  {
+   "id": "dep.correspondence-radical",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "thm.galois-correspondence",
+   "usedBy": "thm.radical-solvable",
+   "note": "「根式塔 $\\leftrightarrow$ 群塔」的翻译**全靠基本定理**：每添加一次开方对应一个循环扩张，域塔对应子群链、正规性对应正规子群，于是域的可解性变成群的可解性。"
+  },
+  {
+   "id": "dep.solvable-quintic",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.solvable-group",
+   "usedBy": "thm.quintic-unsolvable",
+   "note": "「$S_{5}$ 不可解」这句话用的是群论的可解（`def.solvable-group`）；此前这条只在正文里提了一句、没有连线。"
+  },
+  {
+   "id": "dep.algext-separable",
+   "kind": "definition",
+   "strength": "strong",
+   "definition": "def.algebraic-extension",
+   "usedBy": "def.separable-extension",
+   "note": "可分性是**代数扩张**的性质（超越扩张上「极小多项式」都无从谈起）。"
+  },
+  {
+   "id": "e172.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.minimal-poly",
+   "b": "def.algebraic-element",
+   "title": "两个「极小多项式」：零化一个算子 vs 零化一个元素",
+   "note": "写法**一模一样**：取 $\\{\\, p : p(\\text{对象}) = 0 \\,\\}$，验证它是 $K[x]$ 的**非零理想**，再由 $K[x]$ 是主理想整环取**首一生成元**。\n\n- 算子的（`def.minimal-poly`）：对象是线性算子 $T$，非零理由来自 Cayley–Hamilton（$\\chi_{T}$ 零化 $T$）；\n\n- 元素的（`def.algebraic-element`）：对象是扩域里的 $\\alpha$，非零理由来自「代数」这个前提本身。\n\n⚠ 别混：$\\mu_{T}$ 的**次数**刻画算子的可对角化性；$m_{\\alpha}$ 的**次数**是 $[F(\\alpha):F]$。同一个名字、同一套论证、完全不同的用途 —— 这类同名不同物只能用类比边，不能连依赖。"
+  },
+  {
+   "id": "e173.analogy",
+   "kind": "analogy",
+   "strength": "weak",
+   "a": "def.galois-group",
+   "b": "def.fundamental-group",
+   "title": "Galois 群与基本群：覆盖空间版的伽罗瓦理论",
+   "note": "同一个形状在两个世界里出现：\n\n- 域这边：$K/F$ 的**中间域** $\\leftrightarrow$ $\\operatorname{Gal}(K/F)$ 的**子群**（伽罗瓦对应）；\n\n- 空间这边：$X$ 的**覆盖空间** $\\leftrightarrow$ $\\pi_{1}(X)$ 的**子群**（覆盖空间分类）。\n\n两边都是「**反序**双射」，连正规性的对应都一样：域那边「中间域正规 $\\iff$ 子群正规」，空间那边「覆盖是正规（伽罗瓦）覆盖 $\\iff$ 子群正规」。\n\n⭐ 这不是巧合：Grothendieck 的伽罗瓦理论把两者**统一**成「有限 étale 代数 $\\leftrightarrow$ 有限 $\\pi_{1}$-集」，域扩张成了「一点上的覆盖」。本图没有那套范畴机器（étale 只到层论那一层），所以这里只能记类比。\n\n⛔ 不能连 definition/implication：一边是域，一边是拓扑空间，没有谁是谁的前提。"
+  },
+  {
    "id": "dep.subset-union-inter",
    "kind": "definition",
    "strength": "strong",
@@ -92497,6 +92696,13 @@
   {
    "a": "algebra.galois",
    "b": "algebra.polynomial",
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "algebra.galois",
+   "b": "algebra.group-action",
    "count": 2,
    "label": "",
    "explicit": false
@@ -92504,7 +92710,14 @@
   {
    "a": "algebra.galois",
    "b": "algebra.solvable",
-   "count": 3,
+   "count": 4,
+   "label": "",
+   "explicit": false
+  },
+  {
+   "a": "algebra.galois",
+   "b": "set.numbers",
+   "count": 2,
    "label": "",
    "explicit": false
   },

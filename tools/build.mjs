@@ -2663,6 +2663,37 @@ function assertNotation(MG, graph) {
       `—— 要写成 $…$ 里的 LaTeX（详见 dist/notation.md）`);
   }
 
+  /* ①bis **裸 LaTeX 命令**（在 $…$ 外面）—— 2026-11-03 踩到的：一个批量替换脚本把
+     `$$…$$` 的定界符删掉了，公式于是变成裸文本 ``\mu_{n} := …``；
+     KaTeX 一道错都不报（因为它根本没拿到公式），`_katexcheck` 也看不见（没有块）。
+     ⇒ 这里直接查「正文里出现 \\命令 但不在 $…$ 里」。
+     ⚠️ 只认**明确的数学命令**白名单 —— Windows 路径（`C:\Users`）不能误伤。 */
+  /* 白名单：只用**明确的数学命令**，避免把 Windows 路径（`C:\Users`）误伤。 */
+  const BARE_CMDS = ['frac', 'dfrac', 'tfrac', 'sqrt', 'sum', 'prod', 'int', 'oint', 'partial', 'nabla', 'infty', 'emptyset', 'mathbb', 'mathcal', 'mathfrak', 'operatorname', 'mathrm', 'text', 'quad', 'qquad', 'left', 'right', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'varepsilon', 'zeta', 'eta', 'theta', 'lambda', 'mu', 'nu', 'xi', 'pi', 'rho', 'sigma', 'tau', 'phi', 'varphi', 'chi', 'psi', 'omega', 'Gamma', 'Delta', 'Theta', 'Lambda', 'Sigma', 'Phi', 'Psi', 'Omega', 'le', 'ge', 'ne', 'approx', 'cong', 'simeq', 'equiv', 'subset', 'subseteq', 'supset', 'supseteq', 'in', 'notin', 'to', 'mapsto', 'implies', 'iff', 'Leftarrow', 'Rightarrow', 'leftrightarrow', 'cdots', 'ldots', 'dots', 'times', 'otimes', 'oplus', 'circ', 'pm', 'mid', 'ker', 'dim', 'det', 'lim', 'sup', 'inf', 'max', 'min', 'sin', 'cos', 'tan', 'log', 'exp'];
+  /* ⚠️ 反斜杠要加在**每个命令前**（'\frac' 而不是 '\(frac'）：
+     写成 String.fromCharCode(92) + '(?:…' 会把分组括号转义掉，正则直接报 unmatched parentheses。 */
+  /* ⚠️ 两个坑都在这一行：① 反斜杠要加在**每个命令前**；② 正则里要写 '\\命令'（两个反斜杠），
+     写成单个 '\l' 会被当成「转义字母 l」= 字面 l，于是 'measurable' 里的 'le' 也会命中（实测报了 362 处假警）。 */
+  const BARE_RX = new RegExp('(?:' + BARE_CMDS.map((c) => String.fromCharCode(92, 92) + c).join('|') + ')(?![a-zA-Z])', 'g');
+  /* 先把 $…$ 与 $$…$$ 挖掉，剩下还能匹配到命令 ⇒ 定界符丢了。 */
+  /* 先把 $…$、$$…$$、以及**反引号里的代码**挖掉 —— 反引号里写的是「命令本身」
+     （例：小写 phi 一律写 `\varphi`），不是数学，不该报。 */
+  const stripMathForBare = (s) => String(s || '')
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$[^$\n]*?\$/g, ' ')
+    .replace(/`[^`]*`/g, ' ');
+  const bare = [];
+  for (const it of items) {
+    const t = stripMathForBare(it.text);
+    BARE_RX.lastIndex = 0;
+    const m = BARE_RX.exec(t);
+    if (m) bare.push(`${it.id}.${it.field}（…${t.slice(Math.max(0, m.index), m.index + 30).replace(/\n/g, ' ')}…）`);
+  }
+  for (const b of bare.slice(0, 6)) {
+    errs.push(`公式：${b} 里出现了**不在 $…$ 内的 LaTeX 命令** —— 多半是定界符被删了（或忘了包裹）`);
+  }
+  if (bare.length > 6) errs.push(`公式：另有 ${bare.length - 6} 处同类问题（共 ${bare.length} 处）`);
+
   /* ② 行内 `$$…$$`（R2）—— 渲染上和 `$…$` 没差别，但产物喂给标准 Markdown
         渲染器时 `$$` 是「独立公式块」的信号，会把句子切断。 */
   const inlineFields = (N.inlineDollars && N.inlineDollars.fields) || [];

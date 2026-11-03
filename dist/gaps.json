@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T08:50:53.471Z",
+ "generated": "2026-11-03T11:48:24.023Z",
  "terms": 76,
  "missing": [
   {
@@ -204,28 +204,6 @@
     },
     {
      "id": "thm.quadratic-reciprocity",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "代数闭包",
-   "total": 7,
-   "nodes": [
-    {
-     "id": "thm.minimal-poly-divisor",
-     "c": 4
-    },
-    {
-     "id": "thm.diagonalizable",
-     "c": 1
-    },
-    {
-     "id": "def.nilpotent",
-     "c": 1
-    },
-    {
-     "id": "def.algebraic-extension",
      "c": 1
     }
    ]
@@ -627,15 +605,6 @@
    "gap": 5
   },
   {
-   "node": "def.algebraic-element",
-   "nodeLabel": "代数元与极小多项式",
-   "nodeLayer": 10,
-   "def": "def.minimal-poly",
-   "defLabel": "极小多项式",
-   "defLayer": 15,
-   "gap": 5
-  },
-  {
    "node": "def.subspace-topology",
    "nodeLabel": "子空间拓扑",
    "nodeLayer": 5,
@@ -717,15 +686,6 @@
    "gap": 4
   },
   {
-   "node": "def.separable-extension",
-   "nodeLabel": "可分扩张",
-   "nodeLayer": 11,
-   "def": "def.minimal-poly",
-   "defLabel": "极小多项式",
-   "defLayer": 15,
-   "gap": 4
-  },
-  {
    "node": "thm.quotient-universal-vs",
    "nodeLabel": "商空间的万有性质",
    "nodeLayer": 7,
@@ -768,6 +728,15 @@
    "def": "def.moving-frame",
    "defLabel": "活动标架",
    "defLayer": 20,
+   "gap": 3
+  },
+  {
+   "node": "def.separable-extension",
+   "nodeLabel": "可分扩张",
+   "nodeLayer": 12,
+   "def": "def.minimal-poly",
+   "defLabel": "极小多项式",
+   "defLayer": 15,
    "gap": 3
   },
   {
@@ -1515,15 +1484,6 @@
    "def": "def.locally-compact",
    "defLabel": "局部紧 Hausdorff 空间",
    "defLayer": 15,
-   "gap": 0
-  },
-  {
-   "node": "def.separable-extension",
-   "nodeLabel": "可分扩张",
-   "nodeLayer": 11,
-   "def": "def.algebraic-extension",
-   "defLabel": "代数扩张",
-   "defLayer": 11,
    "gap": 0
   },
   {

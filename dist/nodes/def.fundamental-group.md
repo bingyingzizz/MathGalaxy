@@ -17,7 +17,7 @@ $$\Omega(X, x_{0}) := \{\, \alpha : \alpha(0) = \alpha(1) = x_{0} \,\},$$
 - …另有入边，续页见 [nodes/def.fundamental-group.3.md](./def.fundamental-group.3.md)
 
 ## 它能推出什么 / 谁在用它
-- …另有出边，续页见 [nodes/def.fundamental-group.4.md](./def.fundamental-group.4.md)
+- …另有出边，续页见 [nodes/def.fundamental-group.5.md](./def.fundamental-group.5.md)
 
 refs: Munkres, Topology (2nd ed.), Ch. 9 · The Fundamental Group；Hatcher, Algebraic Topology, Ch. 1 §1.1 · The fundamental group
 

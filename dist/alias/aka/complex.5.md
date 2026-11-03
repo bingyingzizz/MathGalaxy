@@ -23,4 +23,6 @@
 
 - 黎曼可去奇点 → thm.riemann-removable
 
+- 单位根 | 分圆多项式 | n 次单位根 | roots of unity → def.roots-of-unity
+
 见 `../../alias.md`。

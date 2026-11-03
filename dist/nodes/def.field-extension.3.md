@@ -5,3 +5,4 @@
 - 被 [`def.algebraic-element`](../nodes/def.algebraic-element.md) 代数元与极小多项式 用
 - 被 [`def.splitting-field`](../nodes/def.splitting-field.md) 分裂域 用
 - 被 [`def.galois-group`](../nodes/def.galois-group.md) 伽罗瓦群 用
+- 被 [`def.algebraically-closed`](../nodes/def.algebraically-closed.md) 代数闭域 用

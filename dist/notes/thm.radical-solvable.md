@@ -9,4 +9,4 @@
 
 ⭐ **为什么必须 char 0**：可解 $\implies$ 根式那一步要用 $n$ 次单位根与 Kummer 理论；char $p$ 时 $x^{p} - x - a$ 这类 Artin–Schreier 扩张取代了纯开方扩张，结论要改写。
 
-📌 这条定理是「五次方程」那条线**唯一的入口**：它把「有没有根式公式」这个分析/代数混着的问题，换成一个纯群论问题（`prop.sn-solvable`：$S_{n}$ 可解 $\iff n \le 4$）。
+> 续见 notes/thm.radical-solvable.2.md

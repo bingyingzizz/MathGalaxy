@@ -5,7 +5,7 @@
 
 1. 取 $f = x^{5} - 4x + 2$（或任何 $\operatorname{Gal}(f) = S_{5}$ 的五次多项式）—— 需要一条判据（模 $p$ 的分解型定出伽罗瓦群的循环子群），本图未收；
 
-2. $S_{5}$ 不可解（`prop.sn-solvable`：$A_{5}$ 单且非交换）；
+2. $S_{5}$ 不可解（$A_{5}$ 单且非交换，见「对称群的可解性」）；
 
 3. 由 `thm.radical-solvable`，$\operatorname{Gal}(f)$ 不可解 $\implies$ 无根式解。
 

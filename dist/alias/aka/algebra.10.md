@@ -7,4 +7,8 @@
 
 - 五次方程没有根式解 | Abel-Ruffini | 五次方程 → thm.quintic-unsolvable
 
+- 代数闭 | 代数闭包 | algebraically closed → def.algebraically-closed
+
+- 单位根 | 分圆多项式 | n 次单位根 | roots of unity → def.roots-of-unity
+
 见 `../../alias.md`。

@@ -13,6 +13,8 @@ $$p(z) = c\,(z - z_1)^{e_1} \cdots (z - z_m)^{e_m}, \qquad c \in \mathbb{C}^{\ti
 ## 它能推出什么 / 谁在用它
 - ⇒ [`def.char-poly`](../nodes/def.char-poly.md) 特征多项式
 
+- …另有出边，续页见 [nodes/thm.fundamental-algebra.3.md](./thm.fundamental-algebra.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.fundamental-algebra.2.md](./thm.fundamental-algebra.2.md)
 

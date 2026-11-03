@@ -1460,6 +1460,8 @@ MG.aliases = {
     { id: 'thm.galois-correspondence', en: 'fundamental theorem of Galois theory', aka: ['伽罗瓦基本定理', '伽罗瓦对应', '基本定理（Galois）'] },
     { id: 'thm.radical-solvable', en: 'solvable by radicals', aka: ['根式可解', '根式解', '可解性判据'] },
     { id: 'thm.quintic-unsolvable', en: 'insolubility of the quintic', aka: ['五次方程没有根式解', 'Abel-Ruffini', '五次方程'] },
+    { id: 'def.algebraically-closed', en: 'algebraically closed field', aka: ['代数闭', '代数闭包', 'algebraically closed'] },
+    { id: 'def.roots-of-unity', en: 'roots of unity', aka: ['单位根', '分圆多项式', 'n 次单位根', 'roots of unity'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

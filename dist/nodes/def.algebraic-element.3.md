@@ -4,3 +4,4 @@
 ## 它能推出什么 / 谁在用它（续）
 - 被 [`def.algebraic-extension`](../nodes/def.algebraic-extension.md) 代数扩张 用
 - 被 [`def.separable-extension`](../nodes/def.separable-extension.md) 可分扩张 用
+- ～弱边 [`def.minimal-poly`](../nodes/def.minimal-poly.md) 极小多项式

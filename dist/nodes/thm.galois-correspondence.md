@@ -12,6 +12,9 @@ layer 14 · 定理 · Galois 理论 · 抽象代数
 
 - …另有入边，续页见 [nodes/thm.galois-correspondence.3.md](./thm.galois-correspondence.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/thm.galois-correspondence.4.md](./thm.galois-correspondence.4.md)
+
 refs: Lang, Algebra, Ch. VI §2；Hungerford, Algebra, Ch. V §4；Artin, Galois Theory
 
 > 说明见 `notes/thm.galois-correspondence.md`
