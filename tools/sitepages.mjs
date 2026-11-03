@@ -905,6 +905,12 @@ export function buildSitePages(graph, { origin, user }) {
   const regions = new Map(graph.regions.map((r) => [r.id, r]));
   const clusters = new Map(graph.clusters.map((c) => [c.id, c]));
   const byId = new Map(graph.nodes.map((n) => [n.id, n]));
+  /* ⭐ 2026-11-03：把节点表交给 util.js —— **概念页上反引号里的 id 也要能点**。
+     在此之前只有面板（panel.js 的 show()）登记，于是 `\`thm.x\`` 在所有概念页上
+     都退回成一坨灰底代码（全库 328 处“死指针”，clustercheck 里报的就是它们）。
+     登记后 U.md() 会把可识别的 id 渲染成 `<a class="pn-xlink" data-xlink=…>`，
+     显示中文名 —— 和面板里一模一样。⛔ 引擎仍然不知道图里有什么，是靠这里注入的。 */
+  U.setNodeTable(Object.fromEntries(byId));
 
   // 同星团成员（按 layer 再按 id —— 和学习顺序一致）
   const clusterMembers = new Map();

@@ -6,8 +6,11 @@
 
    查四类「加完团之后才会暴露」的问题（都不是硬门，是给人看的清单）：
 
-     ① **文引无边**：正文里用 **反引号** 点名了某个节点，却没有连线。
-        ⇒ 反引号是**承诺**（读者会点进去），要么补边，要么把它降成普通文字（`def.x` → 「中文名」）。
+     ① **死指针**：正文里用 **反引号** 点名的 id **不存在**（拼错 / 改名遗留）。
+        ✅ 反引号里的 id **不需要有图上的边** —— 只要 id 存在，渲染时就会变成可点链接（显示中文名）。
+        （2026-11-03 修：此前只有面板登记了节点表，概念页上这些 id 全是灰底代码，全库 328 处；
+          现在 `tools/sitepages.mjs` 也调用 `U.setNodeTable()`，两条渲染路径一致。）
+        ⇒ 只有「点进去 404」才算问题。
      ② **提到名字但无边**：正文出现了某个节点的 label / aka（长名字优先），却没有边。
         ⇒ 分两种：真依赖（补边）／同名不同物（补消歧注或类比边）／顺带一提（不管）。
      ③ **refs 为空 / 孤岛（出=入=0）**：引用与接线的基本检查。
@@ -24,6 +27,8 @@
 /* 团体检主体 */
 import fs from 'node:fs';
 const G = JSON.parse(fs.readFileSync('dist/graph.json', 'utf8'));
+const EDGE_IDS = new Set(G.edges.map((e) => e.id).filter(Boolean));
+const CLUSTER_IDS = new Set(G.clusters.map((c) => c.id));
 const by = Object.fromEntries(G.nodes.map((n) => [n.id, n]));
 const clusterId = process.argv[2];
 const nodes = G.nodes.filter((n) => n.cluster === clusterId);
@@ -61,16 +66,22 @@ for (const n of nodes) {
   const outs = (G.edges.filter((e) => { const { f } = ends(e); return f.includes(n.id); })).length;
   const ins = (G.edges.filter((e) => { const { t } = ends(e); return t.includes(n.id); })).length;
   /* ① 正文里 `id` 引用但无边 */
-  const refsIds = [...txt.matchAll(/`([a-z][a-z0-9]*\.[a-z0-9-]+)`/g)].map((m) => m[1])
-    .filter((id) => by[id] && id !== n.id);
-  const missingEdgeRefs = [...new Set(refsIds)].filter((id) => !adj.get(n.id).has(id));
+  /* ① 死指针：反引号里点名的 id 在不在？（**不再要求它必须有边**） */
+  const TICKRX = new RegExp(String.fromCharCode(96) + "([a-z][a-z0-9]*[.][a-z0-9-]+)" + String.fromCharCode(96), 'g');
+  const allRefIds = [...new Set([...txt.matchAll(TICKRX)].map((m) => m[1]))].filter((id) => id !== n.id);
+  /* 边 id（imp./dep./eq./ana.）与星团 id 在正文里也会被反引号点名，它们**存在但不是节点**
+     —— 没有可点的页面，属于「文档指针」而不是「死链接」（审计 G1 的原话）。 */
+  /* 源码文件名（`notation.js`、`tools/build.mjs`）也不是节点，放行。 */
+  const FILE_OK = /[.](js|mjs|json|md|txt|html|css|png|woff2)$/;
+  const deadRefs = allRefIds.filter((id) => !by[id] && !EDGE_IDS.has(id) && !CLUSTER_IDS.has(id) && !FILE_OK.test(id));
+  const unlinkedRefs = allRefIds.filter((id) => by[id] && !adj.get(n.id).has(id));
   /* ② 正文里出现别的节点的名字但无边（只取长名字，避免噪音） */
   const nameHits = [];
   for (const [s, id] of names) {
     if (id === n.id || adj.get(n.id).has(id)) continue;
     if (txt.includes(s)) { nameHits.push(`${s}(${id})`); if (nameHits.length >= 6) break; }
   }
-  rows.push({ n, outs, ins, missingEdgeRefs, nameHits, refs: (n.refs || []).length, len: txt.length });
+  rows.push({ n, outs, ins, deadRefs, unlinkedRefs, nameHits, refs: (n.refs || []).length, len: txt.length });
 }
 
 let bad = 0;
@@ -79,9 +90,10 @@ for (const r of rows) {
   const flags = [];
   if (!r.refs) flags.push('无 refs');
   if (!r.outs && !r.ins) flags.push('孤岛');
-  if (r.missingEdgeRefs.length) flags.push('文引无边 ' + r.missingEdgeRefs.length);
+  if (r.deadRefs.length) flags.push('死指针 ' + r.deadRefs.length);
   console.log(`L${String(n.layer).padStart(2)} ${n.id.padEnd(32)} 出${String(r.outs).padStart(2)} 入${String(r.ins).padStart(2)} refs${r.refs} ${(n.status || '').padEnd(9)} 注${r.len}字 ` + (flags.length ? '⚠ ' + flags.join(' / ') : ''));
-  if (r.missingEdgeRefs.length) console.log('     文引无边: ' + r.missingEdgeRefs.join(', '));
+  if (r.deadRefs.length) console.log('     死指针（id 不存在）: ' + r.deadRefs.join(', '));
+  if (r.unlinkedRefs.length) console.log('     提示（有链接但图上无边）: ' + r.unlinkedRefs.slice(0, 6).join(', '));
   if (r.nameHits.length) console.log('     提到名字但无边: ' + r.nameHits.join(' · '));
   if (flags.length) bad++;
 }
