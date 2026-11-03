@@ -4,7 +4,7 @@
 中心天体 def.vs　·　8 个节点　·　根 `../`
 
 - def.vector-space　向量空间　layer 8
-- def.vs　向量空间的基　layer 9
+- def.vs　线性无关与基　layer 9
 - thm.vsbasis　每个向量空间有基　layer 10
 - def.subspace　子空间　layer 10
 - def.coordinate　坐标　layer 10

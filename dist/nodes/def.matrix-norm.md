@@ -10,7 +10,7 @@ layer 22 · 定义 · 矩阵分解与最小二乘 · 抽象代数
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.vs`](../nodes/def.vs.md) 向量空间的基：用到了定义 向量空间的基　[proofs/dep.mnorm-vs.md](../proofs/dep.mnorm-vs.md)
+- [`def.vs`](../nodes/def.vs.md) 线性无关与基：用到了定义 线性无关与基　[proofs/dep.mnorm-vs.md](../proofs/dep.mnorm-vs.md)
 
 - …另有入边，续页见 [nodes/def.matrix-norm.3.md](./def.matrix-norm.3.md)
 

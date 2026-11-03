@@ -10,7 +10,7 @@ layer 10 · 定义 · 流形与向量丛 · 微分几何
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.vs`](../nodes/def.vs.md) 向量空间的基：用到了定义 向量空间的基　[proofs/dep.mf-vs-vectorbundle.md](../proofs/dep.mf-vs-vectorbundle.md)
+- [`def.vs`](../nodes/def.vs.md) 线性无关与基：用到了定义 线性无关与基　[proofs/dep.mf-vs-vectorbundle.md](../proofs/dep.mf-vs-vectorbundle.md)
 
 - …另有入边，续页见 [nodes/def.vector-bundle.4.md](./def.vector-bundle.4.md)
 

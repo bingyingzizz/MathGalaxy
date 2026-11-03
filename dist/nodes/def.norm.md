@@ -12,7 +12,7 @@ layer 11 · 定义 · 赋范空间与有界算子 · 泛函分析
 带范数的空间叫**赋范空间**。只满足 2、3（允许非零元素有零范数）叫**半范数**。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.vs`](../nodes/def.vs.md) 向量空间的基：用到了定义 向量空间的基　[proofs/def-link.fa-vs-norm.md](../proofs/def-link.fa-vs-norm.md)
+- [`def.vs`](../nodes/def.vs.md) 线性无关与基：用到了定义 线性无关与基　[proofs/def-link.fa-vs-norm.md](../proofs/def-link.fa-vs-norm.md)
 
 - …另有入边，续页见 [nodes/def.norm.2.md](./def.norm.2.md)
 

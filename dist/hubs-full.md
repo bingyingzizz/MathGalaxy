@@ -75,7 +75,7 @@
 - **10 团 / 20 节点** `def.abs` 绝对值 |x| · layer 9 · 实数的运算与不等式
 - **10 团 / 16 节点** `def.fibered-product` 纤维积 / 纤维余积 · layer 12 · 图与极限
 - **10 团 / 15 节点** `def.hausdorff` Hausdorff 空间 · layer 5 · 分离公理
-- **10 团 / 15 节点** `def.vs` 向量空间的基 · layer 9 · 向量空间与基
+- **10 团 / 15 节点** `def.vs` 线性无关与基 · layer 9 · 向量空间与基
 - **9 团 / 28 节点** `def.adjoint` 伴随函子 · layer 9 · 伴随与反射
 - **9 团 / 22 节点** `def.functor` 函子 · layer 8 · 函子与自然变换
 - **9 团 / 17 节点** `def.ring` 环 · layer 7 · 代数结构

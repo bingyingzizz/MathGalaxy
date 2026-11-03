@@ -12,7 +12,7 @@ $$\langle \cdot, \cdot \rangle : V \times V \longrightarrow K$$
 
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.vs`](../nodes/def.vs.md) 向量空间的基：用到了定义 向量空间的基　[proofs/dep.vs-innerproduct.md](../proofs/dep.vs-innerproduct.md)
+- [`def.vs`](../nodes/def.vs.md) 线性无关与基：用到了定义 线性无关与基　[proofs/dep.vs-innerproduct.md](../proofs/dep.vs-innerproduct.md)
 
 ## 它能推出什么 / 谁在用它
 - 被 [`def.induced-norm`](../nodes/def.induced-norm.md) 诱导范数与距离 用

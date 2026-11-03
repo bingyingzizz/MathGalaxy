@@ -6,7 +6,7 @@
   "license": "CC-BY-4.0",
   "licenseCode": "MIT",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "generated": "2026-11-03T06:40:46.943Z",
+  "generated": "2026-11-03T06:43:42.904Z",
   "counts": {
    "regions": 15,
    "clusters": 102,
@@ -4025,8 +4025,8 @@
   {
    "id": "def.vs",
    "type": "definition",
-   "label": "向量空间的基",
-   "title": "向量空间 / 线性无关 / 基",
+   "label": "线性无关与基",
+   "title": "线性无关 / 张成 / 基",
    "label_en": "basis",
    "title_en": "basis",
    "translations": {

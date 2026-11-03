@@ -9,7 +9,7 @@ layer 10 · 定理 · 向量空间与基 · 抽象代数
 - 可以从 $T$ 中**删去** $n$ 个向量、换入 $S$ 的全部向量，得到的 $m$ 个向量仍生成 $V$。特别地，$V$ 有一组基，其元素取自 $T \cup S$ 且含 $S$。
 
 ## 为什么成立（入边，证明在 proofs/）
-- [`def.vs`](../nodes/def.vs.md) 向量空间的基：线性无关与生成的定义 $\implies$ 交换引理　[proofs/imp.steinitz.md](../proofs/imp.steinitz.md)
+- [`def.vs`](../nodes/def.vs.md) 线性无关与基：线性无关与生成的定义 $\implies$ 交换引理　[proofs/imp.steinitz.md](../proofs/imp.steinitz.md)
 
 ## 它能推出什么 / 谁在用它
 - …另有出边，续页见 [nodes/thm.steinitz.2.md](./thm.steinitz.2.md)
