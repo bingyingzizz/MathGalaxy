@@ -1449,6 +1449,17 @@ MG.aliases = {
     { id: 'ex.torus', en: 'torus', aka: ['环面', 'T^2', '甜甜圈', '咖啡杯', 'torus'] },
     { id: 'ex.projective-plane', en: 'projective plane', aka: ['射影平面', 'RP^2', '实射影平面'] },
     { id: 'ex.klein-bottle', en: 'Klein bottle', aka: ['克莱因瓶', '克莱因壶', 'Klein 瓶'] },
+    { id: 'def.field-extension', en: 'field extension', aka: ['域扩张', '扩域', '次数', 'K over F'] },
+    { id: 'def.algebraic-element', en: 'algebraic element', aka: ['代数元', '超越元', '极小多项式'] },
+    { id: 'def.algebraic-extension', en: 'algebraic extension', aka: ['代数扩张', '超越扩张'] },
+    { id: 'def.splitting-field', en: 'splitting field', aka: ['分裂域', '分解域'] },
+    { id: 'def.normal-extension', en: 'normal extension', aka: ['正规扩张', '正规扩域'] },
+    { id: 'def.separable-extension', en: 'separable extension', aka: ['可分扩张', '不可分扩张'] },
+    { id: 'def.galois-group', en: 'Galois group', aka: ['伽罗瓦群', 'Galois 群', 'F-自同构'] },
+    { id: 'def.galois-extension', en: 'Galois extension', aka: ['伽罗瓦扩张', 'Galois 扩张'] },
+    { id: 'thm.galois-correspondence', en: 'fundamental theorem of Galois theory', aka: ['伽罗瓦基本定理', '伽罗瓦对应', '基本定理（Galois）'] },
+    { id: 'thm.radical-solvable', en: 'solvable by radicals', aka: ['根式可解', '根式解', '可解性判据'] },
+    { id: 'thm.quintic-unsolvable', en: 'insolubility of the quintic', aka: ['五次方程没有根式解', 'Abel-Ruffini', '五次方程'] },
   ],
 
   /* -------------------------------------------------- 内文**不链**的别名 */

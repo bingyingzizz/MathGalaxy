@@ -9,7 +9,7 @@
 
 - **27 / 27** `def.topology` topology · 拓扑空间的基本语汇
 - **25 / 28** `def.sheaf` sheaf · 层与拓扑
-- **24 / 24** `def.group` group · 代数结构
+- **25 / 25** `def.group` group · 代数结构
 - **23 / 23** `def.function` mapping · 关系与函数
 
 - **22 / 22** `def.functor` functor · 函子与自然变换

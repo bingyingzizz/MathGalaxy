@@ -16,6 +16,8 @@ layer 10 · 定理 · 合成列与可解群 · 抽象代数
 ## 它能推出什么 / 谁在用它
 - ⇒ [`prop.sn-solvable`](../nodes/prop.sn-solvable.md) 对称群的可解性
 
+- …另有出边，续页见 [nodes/thm.solvable-quotients.3.md](./thm.solvable-quotients.3.md)
+
 ## 为什么成立（入边，证明在 proofs/）
 - …另有入边，续页见 [nodes/thm.solvable-quotients.2.md](./thm.solvable-quotients.2.md)
 

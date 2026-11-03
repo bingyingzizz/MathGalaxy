@@ -8,7 +8,7 @@
 - **28 / 29** `def.measure` 测度 · layer 14 · 测度的构造
 - **27 / 27** `def.topology` 拓扑空间与开集 · layer 4 · 拓扑空间的基本语汇
 - **25 / 28** `def.sheaf` 层 · layer 15 · 层与拓扑
-- **24 / 24** `def.group` 群 · layer 6 · 代数结构
+- **25 / 25** `def.group` 群 · layer 6 · 代数结构
 - **23 / 23** `def.function` 映射 · layer 5 · 关系与函数
 - **22 / 22** `def.functor` 函子 · layer 8 · 函子与自然变换
 - **21 / 23** `def.chaus` 紧 Hausdorff 空间范畴 · layer 15 · 紧 Hausdorff 空间

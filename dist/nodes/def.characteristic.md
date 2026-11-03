@@ -16,6 +16,9 @@ $$\varphi : \mathbb{Z} \to K, \qquad \varphi(n) = \underbrace{1 + 1 + \cdots + 1
 
 - …另有入边，续页见 [nodes/def.characteristic.3.md](./def.characteristic.3.md)
 
+## 它能推出什么 / 谁在用它
+- …另有出边，续页见 [nodes/def.characteristic.4.md](./def.characteristic.4.md)
+
 refs: Dummit–Foote, Abstract Algebra（⚠️ 章节未核实，只记书名）· 域的特征；北大《高等代数》· 域的特征与素域
 
 > 说明见 `notes/def.characteristic.md`

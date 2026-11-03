@@ -1,6 +1,6 @@
 # 数学星图 · 缺口清单（提到了，但没节点 / 没边）
 
-规模：1487 节点 / 2850 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
+规模：1498 节点 / 2878 连线。本文件由 `tools/build.mjs` 生成，**警告级**，不是硬门。
 
 怎么读：
 - **第一节**：`src/data/gaps.js` 里的候选词，正文提到了 N 次，却没有任何节点的名字/别名对得上 ⇒ 这是个洞。
@@ -9,7 +9,7 @@
 
 ⚠️ 第二节会误报（「顺嘴提一句」也算），所以只列出来给人看，不做断言。
 
-## 一、提到了但没有节点（24 个）
+## 一、提到了但没有节点（22 个）
 
 ### 单位圆　出现 25 次
 `thm.integral-trig` · `thm.euler-formula` · `def.normal-curvature` · `def.principal-curvature` · `thm.rodrigues` · `thm.max-modulus` 等 21 个节点
@@ -26,8 +26,8 @@
 ### 素因子　出现 7 次
 `thm.minimal-poly-divisor` · `def.simple-group` · `def.divisor-function` · `def.mobius-function` · `thm.mu-sum` · `thm.bertrand` 等 7 个节点
 
-### 代数闭包　出现 6 次
-`thm.minimal-poly-divisor` · `thm.diagonalizable` · `def.nilpotent`
+### 代数闭包　出现 7 次
+`thm.minimal-poly-divisor` · `thm.diagonalizable` · `def.nilpotent` · `def.algebraic-extension`
 
 ### Fourier 变换　出现 6 次
 `thm.riemann-lebesgue` · `thm.bounded-extension` · `thm.closed-graph` · `def.pontryagin-dual` · `thm.pontryagin-van-kampen`
@@ -68,12 +68,6 @@
 ### 模形式　出现 1 次
 `def.symplectic-matrix`
 
-### 域扩张　出现 1 次
-`def.solvable-group`
-
-### 正规扩张　出现 1 次
-`thm.solvable-quotients`
-
 ### Hodge 理论　出现 1 次
 `thm.divergence-theorem`
 
@@ -83,7 +77,7 @@
 ### Radó　出现 1 次
 `thm.classification-surfaces`
 
-## 二、陈述用到更深的定义却没有边（146 处）
+## 二、陈述用到更深的定义却没有边（151 处）
 
 - `def.invariant-polynomial`（不变多项式 · L11）用到 `def.characteristic-class`（示性类 · L31）　落差 20
 - `def.fiber-bundle`（纤维丛 · L10）用到 `def.lie-group`（Lie 群 · L25）　落差 15
@@ -103,6 +97,7 @@
 - `prop.single-valued-branch`（单值支的存在判据 · L19）用到 `def.analytic-continuation`（解析延拓 · L24）　落差 5
 - `thm.lifting`（提升定理 · L7）用到 `def.path-homotopy`（道路同伦 · L12）　落差 5
 - `def.hamiltonian-vector-field`（Hamilton 向量场 · L21）用到 `def.volume-form`（体积形式 · L26）　落差 5
+- `def.algebraic-element`（代数元与极小多项式 · L10）用到 `def.minimal-poly`（极小多项式 · L15）　落差 5
 - `def.subspace-topology`（子空间拓扑 · L5）用到 `def.subspace`（子空间 · L10）　落差 5
 - `prop.generators-abelian-sheaves`（生成元给出阿贝尔层的生成元 · L11）用到 `def.topos`（拓扑斯 · L16）　落差 5
 - `def.quotient-vs`（商空间 · L6）用到 `def.subspace`（子空间 · L10）　落差 4
@@ -112,6 +107,7 @@
 - `def.bundle-section`（丛的截面 · L11）用到 `def.differential-form`（微分形式（欧氏开集） · L15）　落差 4
 - `def.lie-algebra`（Lie 代数 · L21）用到 `def.lie-group`（Lie 群 · L25）　落差 4
 - `thm.darboux`（Darboux 定理 · L21）用到 `def.riemannian-metric`（Riemann 度量 · L25）　落差 4
+- `def.separable-extension`（可分扩张 · L11）用到 `def.minimal-poly`（极小多项式 · L15）　落差 4
 - `thm.quotient-universal-vs`（商空间的万有性质 · L7）用到 `def.subspace`（子空间 · L10）　落差 3
 - `thm.quotient-universal-vs`（商空间的万有性质 · L7）用到 `def.linear-map`（线性映射 · L10）　落差 3
 - `def.connection-form`（联络形式 · L21）用到 `def.gauss-curvature`（Gauss 曲率 · L24）　落差 3
@@ -127,6 +123,7 @@
 - `def.bound`（界与确界 · L6）用到 `def.ordered-field`（有序域 · L8）　落差 2
 - `def.quotient-vs`（商空间 · L6）用到 `def.vector-space`（向量空间 · L8）　落差 2
 - `def.similarity`（相似 · L13）用到 `def.minimal-poly`（极小多项式 · L15）　落差 2
+- `thm.solvable-quotients`（可解性对子群与商群封闭 · L10）用到 `def.normal-extension`（正规扩张 · L12）　落差 2
 - `cor.free-solid-product`（自由固态群是大乘积 · L15）用到 `def.condensed-abelian-group`（凝聚态阿贝尔群 · L17）　落差 2
 - `prop.solid-hypercover`（固态化把超覆盖变成正合列 · L15）用到 `def.condensed-abelian-group`（凝聚态阿贝尔群 · L17）　落差 2
 - `prop.free-solid-solid`（自由固态群是固态的 · L16）用到 `def.solid-group`（固态阿贝尔群 · L18）　落差 2
@@ -199,6 +196,8 @@
 - `thm.bounded-extension`（有界算子的延拓 · L15）用到 `def.banach-space`（Banach 空间 · L15）
 - `thm.projection-convex`（凸闭集的最近点 · L16）用到 `def.hilbert-space`（Hilbert 空间 · L16）
 - `thm.baire`（Baire 纲定理 · L15）用到 `def.locally-compact`（局部紧 Hausdorff 空间 · L15）
+- `def.separable-extension`（可分扩张 · L11）用到 `def.algebraic-extension`（代数扩张 · L11）
+- `def.galois-group`（伽罗瓦群 · L10）用到 `def.splitting-field`（分裂域 · L10）
 - `def.empty`（空集 ∅ · L0）用到 `def.first-order-language`（一阶语言 · L0）
 - `def.quotient-topology`（商拓扑 · L6）用到 `def.quotient-vs`（商空间 · L6）
 - `def.commutative-diagram`（图与交换图 · L9）用到 `def.natural-transformation`（自然变换 · L9）
@@ -232,6 +231,6 @@
 - `prop.matrix-category`（矩阵范畴 · L8）用到 `def.vector-space`（向量空间 · L8）
 - `prop.discontinuity-types`（间断点分类 · L15）用到 `def.function-limit-onesided`（单侧极限 · L15）
 
-## 三、候选词表里从没被提到的（29 个）
+## 三、候选词表里从没被提到的（24 个）
 
-换底公式 · 自然对数 · 正切 · 反正弦 · 反三角函数 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 伽罗瓦群 · 可分扩张 · 代数扩张 · 分裂域 · 求根公式 · 五次方程 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理
+换底公式 · 自然对数 · 正切 · 反正弦 · 反三角函数 · 三角剖分存在性 · zeta 函数 · ζ 函数 · 黎曼猜想 · 狄利克雷级数 · 求根公式 · 尺规作图 · 命题逻辑 · 幂对象 · Riesz–Markov · 图论 · 组合数学 · 负负得正 · 除以零 · 芝诺 · 费马大定理 · 哥德巴赫猜想 · 连续统假设 · 哥德尔不完备定理

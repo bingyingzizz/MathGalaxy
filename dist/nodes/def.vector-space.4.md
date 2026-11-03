@@ -5,3 +5,5 @@
 - 被 [`def.subspace`](../nodes/def.subspace.md) 子空间 用
 - 被 [`def.linear-map`](../nodes/def.linear-map.md) 线性映射 用
 - 被 [`def.linear-isomorphism`](../nodes/def.linear-isomorphism.md) 线性同构 用
+- 被 [`def.field-extension`](../nodes/def.field-extension.md) 域扩张 用
+- ～弱边 [`def.galois-group`](../nodes/def.galois-group.md) 伽罗瓦群

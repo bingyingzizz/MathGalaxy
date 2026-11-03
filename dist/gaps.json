@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T08:30:21.247Z",
+ "generated": "2026-11-03T08:50:53.471Z",
  "terms": 76,
  "missing": [
   {
@@ -210,7 +210,7 @@
   },
   {
    "term": "代数闭包",
-   "total": 6,
+   "total": 7,
    "nodes": [
     {
      "id": "thm.minimal-poly-divisor",
@@ -222,6 +222,10 @@
     },
     {
      "id": "def.nilpotent",
+     "c": 1
+    },
+    {
+     "id": "def.algebraic-extension",
      "c": 1
     }
    ]
@@ -429,26 +433,6 @@
    ]
   },
   {
-   "term": "域扩张",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "def.solvable-group",
-     "c": 1
-    }
-   ]
-  },
-  {
-   "term": "正规扩张",
-   "total": 1,
-   "nodes": [
-    {
-     "id": "thm.solvable-quotients",
-     "c": 1
-    }
-   ]
-  },
-  {
    "term": "Hodge 理论",
    "total": 1,
    "nodes": [
@@ -643,6 +627,15 @@
    "gap": 5
   },
   {
+   "node": "def.algebraic-element",
+   "nodeLabel": "代数元与极小多项式",
+   "nodeLayer": 10,
+   "def": "def.minimal-poly",
+   "defLabel": "极小多项式",
+   "defLayer": 15,
+   "gap": 5
+  },
+  {
    "node": "def.subspace-topology",
    "nodeLabel": "子空间拓扑",
    "nodeLayer": 5,
@@ -721,6 +714,15 @@
    "def": "def.riemannian-metric",
    "defLabel": "Riemann 度量",
    "defLayer": 25,
+   "gap": 4
+  },
+  {
+   "node": "def.separable-extension",
+   "nodeLabel": "可分扩张",
+   "nodeLayer": 11,
+   "def": "def.minimal-poly",
+   "defLabel": "极小多项式",
+   "defLayer": 15,
    "gap": 4
   },
   {
@@ -856,6 +858,15 @@
    "def": "def.minimal-poly",
    "defLabel": "极小多项式",
    "defLayer": 15,
+   "gap": 2
+  },
+  {
+   "node": "thm.solvable-quotients",
+   "nodeLabel": "可解性对子群与商群封闭",
+   "nodeLayer": 10,
+   "def": "def.normal-extension",
+   "defLabel": "正规扩张",
+   "defLayer": 12,
    "gap": 2
   },
   {
@@ -1507,6 +1518,24 @@
    "gap": 0
   },
   {
+   "node": "def.separable-extension",
+   "nodeLabel": "可分扩张",
+   "nodeLayer": 11,
+   "def": "def.algebraic-extension",
+   "defLabel": "代数扩张",
+   "defLayer": 11,
+   "gap": 0
+  },
+  {
+   "node": "def.galois-group",
+   "nodeLabel": "伽罗瓦群",
+   "nodeLayer": 10,
+   "def": "def.splitting-field",
+   "defLabel": "分裂域",
+   "defLayer": 10,
+   "gap": 0
+  },
+  {
    "node": "def.empty",
    "nodeLabel": "空集 ∅",
    "nodeLayer": 0,
@@ -1806,12 +1835,7 @@
   "ζ 函数",
   "黎曼猜想",
   "狄利克雷级数",
-  "伽罗瓦群",
-  "可分扩张",
-  "代数扩张",
-  "分裂域",
   "求根公式",
-  "五次方程",
   "尺规作图",
   "命题逻辑",
   "幂对象",

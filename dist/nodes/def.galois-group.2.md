@@ -1,0 +1,8 @@
+# 伽罗瓦群　`def.galois-group`　·　续页（第 2 页）
+[在星图里打开](../#n=def.galois-group)　·　第 1 页 [nodes/def.galois-group.md](./def.galois-group.md)
+
+## 为什么成立（入边，证明在 proofs/）（续）
+- [`def.group`](../nodes/def.group.md) 群：用到了定义 群　[proofs/dep.group-galoisgroup.md](../proofs/dep.group-galoisgroup.md)
+- [`def.vector-space`](../nodes/def.vector-space.md) 向量空间：「固定基域的自同构」与「保持结构的映射」是同一个套路　[proofs/e171.analogy.md](../proofs/e171.analogy.md)
+
+> 续见 [nodes/def.galois-group.3.md](./def.galois-group.3.md)

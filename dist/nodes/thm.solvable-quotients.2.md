@@ -3,3 +3,5 @@
 
 ## 为什么成立（入边，证明在 proofs/）（续）
 - [`def.solvable-group`](../nodes/def.solvable-group.md) 可解群 + [`thm.first-iso`](../nodes/thm.first-iso.md) 第一同构定理（Noether）：导出列的三条函子性 $\implies$ 封闭性　[proofs/imp.solvable-quotients.md](../proofs/imp.solvable-quotients.md)
+
+> 续见 [nodes/thm.solvable-quotients.3.md](./thm.solvable-quotients.3.md)
